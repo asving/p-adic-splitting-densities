@@ -5,6 +5,7 @@ Authors: Asvin G
 -/
 import Mathlib
 import LeanUrat.Scaffold.O12.PolygonData
+import LeanUrat.L4
 
 /-!
 # Scaffold/O12/Semantic — the semantic hypothesis rows [unit II-M0]
@@ -788,5 +789,122 @@ theorem L1_root_coeff
       ∀ i ∈ Finset.Icc 1 g.natDegree,
         (i : ℤ) ≤ OrderDual.ofDual (v (g.coeff (g.natDegree - i))).toAdd) :=
   addValuation_L1_root_coeff (AddValuation.ofValuation v) g roots hroots hintegral
+
+/-!
+## Unit II-M7 — `cell_volume` (L6a volume; WRAPPER on landed `L4.cellVolume_eq`)
+
+BP_II §1.9 displays this unit as `theorem cell_volume ...` — the signature is
+elided in the blueprint; the mathematical content is pinned by the displayed
+docstring (kept verbatim on `cell_volume` below) and the §2 unit-table sketch
+("WRAPPER on landed `L4.cellVolume_eq`: FaceKind→LatticePolygon transport,
+N(P) = `newtonExponent`, k = `newtonVertexCount`"), same convention as units
+II-M4/II-M5/II-M8 above.
+
+Realization: `FaceKind.toLatticePolygon` sends the II-P1/II-P2 data (κ, s) to
+the landed BB1 lattice data (`LeanUrat.L4.LatticePolygon`) — width `e`, ceiling
+heights `⌈h_i⌉` (naturals via `Int.toNat`, faithful by `one_le_ceil_height`),
+vertex predicate marking the abscissa columns `x_j`, `j < k`. The two displayed
+dictionary entries are certified as `toLatticePolygon_newtonExponent`
+(N(P) = `newtonExponent`: same per-column ceiling sum) and
+`toLatticePolygon_newtonVertexCount` (k = `newtonVertexCount`: the abscissas
+`x_0 < x_1 < ⋯ < x_{k−1} < e` are exactly the vertex columns, counted by the
+bijection `j ↦ x_j`). `cell_volume` then fires the landed `L4.cellVolume_eq`
+through the transport, INHERITING its recorded-via-hypothesis convention: the
+(HAAR-COORD) measure input enters as the same `hfactor` row (the per-column
+box/shell factorization of the cell volume), and the closed value transports to
+`(1 − Q⁻¹)^k · Q^{−N(P)}` (zpow: `Npg : ℤ`). The unit-table dep II-M6
+(`hull_eq_iff_cell`, the L6a cell-identification companion of the same display)
+identifies WHICH set the cell is; the volume transport does not consume it.
+-/
+
+/-- Vertex abscissas are strictly increasing while in range: `x_j < x_{j'}` for
+`j < j' ≤ k` (each face has width `L_j ≥ 1`). [II-M7 helper.] -/
+theorem FaceKind.x_lt_of_lt (κ : FaceKind e) {j j' : ℕ} (hjj' : j < j')
+    (hj' : j' ≤ κ.faces.length) : κ.x j < κ.x j' := by
+  have hjk : j < κ.faces.length := by omega
+  have h1 : κ.x (j + 1) = κ.x j + (κ.faces[j].1 : ℕ) := κ.x_succ_of_lt hjk
+  have hL : 1 ≤ (κ.faces[j].1 : ℕ) := κ.faces[j].1.pos
+  have h2 : κ.x (j + 1) ≤ κ.x j' := κ.x_mono (by omega)
+  omega
+
+/-- In-range vertex abscissas lie strictly left of the width: `x_j < e` for
+`j < k` (the rightmost vertex `x_k = e` is the excluded column). [II-M7
+helper.] -/
+theorem FaceKind.x_lt_width (κ : FaceKind e) {j : ℕ} (hj : j < κ.faces.length) :
+    κ.x j < e := by
+  have h := κ.x_lt_of_lt hj le_rfl
+  rwa [κ.x_length] at h
+
+/-- The FaceKind → LatticePolygon transport (unit II-M7): the BB1 lattice data
+of the polygon of (κ, s) — width `e`, per-column integer ceiling heights
+`⌈h_i⌉` (faithfully in ℕ: every `⌈h_i⌉ ≥ 1` by `one_le_ceil_height`), and the
+vertex predicate marking the abscissa columns `x_j`, `j < k`, among
+`{0,…,e−1}`. -/
+noncomputable def FaceKind.toLatticePolygon (κ : FaceKind e) (s : SlopeTuple κ) :
+    L4.LatticePolygon where
+  width := e
+  ceilHeights := fun i => ⌈heights κ s (i : ℕ)⌉.toNat
+  isVertex := fun i => decide (∃ j, j < κ.faces.length ∧ κ.x j = (i : ℕ))
+
+/-- Dictionary entry N(P) = `newtonExponent` (unit II-M7): the landed BB1
+lattice exponent of the transported polygon is `Npg κ s` — both are the sum of
+the per-column ceilings `⌈h_i⌉` over `i < e`, and the `Int.toNat` passage is
+faithful since every ceiling is ≥ 1 (`one_le_ceil_height`). -/
+theorem toLatticePolygon_newtonExponent (κ : FaceKind e) (s : SlopeTuple κ) :
+    ((L4.newtonExponent (κ.toLatticePolygon s) : ℕ) : ℤ) = Npg κ s := by
+  unfold L4.newtonExponent FaceKind.toLatticePolygon Npg
+  rw [Nat.cast_sum, Finset.sum_range fun i => ⌈heights κ s i⌉]
+  exact Finset.sum_congr rfl fun i _ =>
+    Int.toNat_of_nonneg (le_trans zero_le_one (one_le_ceil_height κ s i.isLt))
+
+/-- Dictionary entry k = `newtonVertexCount` (unit II-M7): the landed BB1
+vertex count of the transported polygon is the face count `k`: the marked
+columns are exactly the abscissas `x_0 < x_1 < ⋯ < x_{k−1} < e`
+(`FaceKind.x_lt_of_lt`, `FaceKind.x_lt_width`), counted by the bijection
+`j ↦ x_j`. -/
+theorem toLatticePolygon_newtonVertexCount (κ : FaceKind e) (s : SlopeTuple κ) :
+    L4.newtonVertexCount (κ.toLatticePolygon s) = κ.faces.length := by
+  classical
+  unfold L4.newtonVertexCount FaceKind.toLatticePolygon
+  refine ((Finset.card_bij
+    (fun j hj => (⟨κ.x j, κ.x_lt_width (Finset.mem_range.mp hj)⟩ : Fin e))
+    ?_ ?_ ?_).symm.trans (Finset.card_range κ.faces.length))
+  · -- maps into the marked columns: `x_j` is a vertex column (witness `j`)
+    intro j hj
+    simp only [Finset.mem_filter, Finset.mem_univ, true_and, decide_eq_true_eq]
+    exact ⟨j, Finset.mem_range.mp hj, rfl⟩
+  · -- injective: the abscissas are strictly increasing in range
+    intro j hj j' hj' heq
+    have hx : κ.x j = κ.x j' := congrArg Fin.val heq
+    rcases lt_trichotomy j j' with h | h | h
+    · exact absurd hx (Nat.ne_of_lt
+        (κ.x_lt_of_lt h (Nat.le_of_lt (Finset.mem_range.mp hj'))))
+    · exact h
+    · exact absurd hx.symm (Nat.ne_of_lt
+        (κ.x_lt_of_lt h (Nat.le_of_lt (Finset.mem_range.mp hj))))
+  · -- surjective: every marked column IS an `x_j`, `j < k`
+    intro i hi
+    simp only [Finset.mem_filter, Finset.mem_univ, true_and,
+      decide_eq_true_eq] at hi
+    obtain ⟨j, hjk, hxj⟩ := hi
+    exact ⟨j, Finset.mem_range.mpr hjk, Fin.ext hxj⟩
+
+/-- **L6a, volume** — REUSE: `LeanUrat.L4.cellVolume_eq` gives
+(1 − q₀⁻¹)^k · q₀^{−N(P)} from (HAAR-COORD); this unit is the FaceKind → LatticePolygon
+transport (N(P) = `newtonExponent`, k = `newtonVertexCount`). [Unit II-M7. The
+`hfactor` hypothesis is the landed L4 recorded-via-hypothesis row carrying the
+(HAAR-COORD) per-column box/shell factorization — the module-head convention;
+`Q` is the residue size and the exponent `Npg κ s : ℤ` enters as a zpow.] -/
+theorem cell_volume (cellVol : L4.LatticePolygon → ℕ → ℚ)
+    (κ : FaceKind e) (s : SlopeTuple κ) (Q : ℕ) (hQ : 1 ≤ Q)
+    (hfactor : cellVol (κ.toLatticePolygon s) Q =
+      ∏ i : Fin (κ.toLatticePolygon s).width,
+        L4.columnMeasure (κ.toLatticePolygon s) Q i) :
+    cellVol (κ.toLatticePolygon s) Q =
+      (1 - (Q : ℚ)⁻¹) ^ κ.faces.length * ((Q : ℚ) ^ Npg κ s)⁻¹ := by
+  rw [L4.cellVolume_eq cellVol (κ.toLatticePolygon s) Q hQ hfactor]
+  unfold L4.bb1Value
+  rw [toLatticePolygon_newtonVertexCount κ s,
+    ← toLatticePolygon_newtonExponent κ s, zpow_natCast]
 
 end LeanUrat.Scaffold

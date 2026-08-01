@@ -1411,12 +1411,29 @@ at its announced conditioning scope; family-(v) mass identification
 refuted; M1(b) needs an unproved prefix-free restriction) and Step 18b <-
 Theorem M2 (false at displayed universal scope; the repair premise —
 semantic verdict-row allocation — is billed in NO hypothesis row). The
-(H5)/(H6)/(H7) re-homing does NOT cover this content. THE PHASE-C
-ACCEPTANCE IS SUSPENDED pending r11: repair the D-11 leaf at true scope
-and/or price the missing premises as new displayed [M] members, then
-re-run the end-to-end bar (counter resets to ZERO). The VC9/VC10 passes
+(H5)/(H6)/(H7) re-homing does NOT cover this content. The VC9/VC10 passes
 remain valid AS composition-level audits (the composition displayed D-11
 honestly as pass-owed); what failed is the leaf under its owed pass —
 exactly what the owed-pass discipline exists to catch. O-11's critical is
 insulated (ROOT fixes n>=2); O-14a' core clean (gaps outside the consumed
-core). Repair design unit dispatched.
+core).
+R11 STATUS (2026-08-04, unit ROOT r11 — ROOT REVISION 10): the suspension
+is CURED AT COMPOSITION LEVEL. The repair design
+(lean/notes/openmath/R11_REPAIR_DESIGN_V5_2026-08-04.md, five plan-review
+rounds) executed: Unit A repaired D-11 at true scope
+(D11_rev4_2026-08-04.md, REVISION 3), twice hostile-passed — r4 pass 1
+CRITICAL (folded), r4 pass 2 GAPS-ONLY with all design-§7 obligations
+((b-EX) route-(a), (O-1)-(O-5), (O-GLOB), (ROW-Σ)) adjudicated VALID AS
+PROOFS; Unit B (ROOT REVISION 10) re-pointed Steps 17/18b to that leaf and
+priced every missing premise as a displayed [M] member: (PACK-iv) into
+(H5) (fourth row-law; consumed at Step 18b direct + Step 17's E1 (ROW-Σ)
+display only — the leaf's closed edge set), NEW rows (H8)=(K-CUT) and
+(H9)=(NSF) ((NSF-INT) with its displayed (K1-CANON) premise; (NSF-KEY)
+KNOWN FALSE AT HEAD, retiring only by the sign-off-gated Unit C). §3.1 is
+now TWELVE [M] rows ↔ (H1)-(H9); nothing refuted remains consumed-as-
+proved. THE ACCEPTANCE IS NOT YET RE-EARNED: the end-to-end bar RESTARTS —
+counter ZERO of 2 toward two consecutive clean model-diverse passes on the
+identical REVISION-10 text (VC-next charge at ROOT §16). Owed beyond the
+bar: the D-11 confirming pass, O-11 pass 3, Unit C (statement-fence
+sign-off required), the (K1-CANON) discharge, the (H8) retirement
+adjudication (O-11 §8 charge (vi)).

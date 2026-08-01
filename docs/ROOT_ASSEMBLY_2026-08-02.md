@@ -138,6 +138,27 @@ index (flags, never substitutes). The tree's §4 acceptance criterion applies ve
 PROVED-UNVERIFIED is never consumed by an acceptance claim, and this assembly becomes
 THE COMPLETE PROOF only when §3's ledger empties into VERIFIED + LITERATURE-audited.
 
+**SUSPENSION + REVISION 10 (r11) — the CURRENT standing (2026-08-04; supersedes the
+acceptance language above as status).** The Phase-C acceptance was **SUSPENDED**
+(2026-08-03, stop-the-line; ledger entry at 44ce0a7; `docs/PROJECT_STATE.md`
+addendum): the owed D-11 pass 3 (`D11_owedpass_2026-08-03.md`) returned CRITICAL,
+and two MANDATORY steps (17, 18b) consumed the refuted layers AS PROVED. **REVISION
+10 (§16, unit ROOT r11)** executes the repair design
+(`lean/notes/openmath/R11_REPAIR_DESIGN_V5_2026-08-04.md`, Unit B): Steps 17/18b now
+consume the REPAIRED true-scope D-11 leaf (`D11_rev4_2026-08-04.md` at REVISION 3,
+twice hostile-passed: r4 pass 1 CRITICAL → folded; r4 pass 2 **GAPS-ONLY, all
+design-§7 obligations adjudicated VALID as proofs**), and every premise the audit
+found unpriced is a displayed [M] member: **(PACK-iv)** joins (H5) as its FOURTH
+row-law, and TWO NEW rows enter §3.1 — **(H8) = (K-CUT)** and **(H9) = (NSF)**
+(whose member (NSF-KEY) is KNOWN FALSE AT HEAD, retiring only by the design's
+sign-off-gated Unit C). The §3.1 roster is now **TWELVE rows ↔ (H1)–(H9)**. The
+suspension's defect is CURED at composition level — nothing refuted remains
+consumed-as-proved — but **the acceptance is NOT re-earned: the consecutive-clean
+counter is ZERO of 2**, and the end-to-end bar (two consecutive clean model-diverse
+passes on identical text, fresh verifiers) must be re-run on THIS REVISION-10 text.
+Until it passes, every acceptance statement in this document is historical record,
+not current status.
+
 **Status vocabulary** (tree §0, compressed): **VERIFIED** = survived ≥ 2 consecutive
 clean adversarial passes in fresh contexts, at least two models (VERIFIED-DUAL), or
 machine-checked in Lean with a faithfulness audit (VERIFIED-LEAN). **PROVED-UNVERIFIED**
@@ -251,7 +272,21 @@ elements have no poles at any real q ≥ 2, hence at any prime power.
 > chain [added at REVISION 6, finding F-1: the LAST of O-11 r2's declared
 > D-a/D-b/D-c interface rows adjudicated hypothesis-grade, by the same rule as
 > (H6); the own-row-vs-(H6)-membership adjudication is displayed at the §3.1
-> row and §12].
+> row and §12];
+> **(H8)** (K-CUT), the shallow-cut decomposition kernel (§3.1) [NEW row at
+> REVISION 10, r11, from the O-11 owed-pass G-2]: exactly-one shallow
+> decomposition with exhaustive-exclusive read ownership and the
+> weight-preserving product law μ(fiber T) = W(Ŝ)·∏_i weight(D_i) — M04 Lemma
+> 3.3's hypothesis, consumed inside Step 18's K1 regrouping; an OPEN KERNEL of
+> T-6, previously displayed NOWHERE in this document;
+> **(H9)** (NSF), the ns-routing interface row (§3.1) [NEW row at REVISION 10,
+> r11]: two members retiring SEPARATELY — **(NSF-INT)**, the interface
+> implication chain pin → predicate → corpus (with its TWO displayed premises,
+> the §1.4 marks-vocabulary premise and **(K1-CANON)**, housed in the member's
+> statement), and **(NSF-KEY)**, as-built keying conformance, **KNOWN FALSE AT
+> HEAD** (the M02 exact-square poison V₀), retiring ONLY by the repair design's
+> sign-off-gated Unit C ((NSF-KEY-RET)); enters Step 18's K1/K4 chain and Step
+> 17's M3 leg (via Steps 11/12).
 > Then for each n ≥ 2 and each splitting type τ of degree n there is a single
 > R_τ ∈ ℛ such that clauses (0), (SQ), (R) hold at EVERY prime p including every wild
 > p ≤ n, and clause (UB) holds. Hypothesis attribution, exact [REVISION 2, finding
@@ -264,14 +299,19 @@ elements have no poles at any real q ≥ 2, hence at any prime power.
 > (H1)–(H3), including (ADM) and the conditional classifier-transfer route, to
 > (SQ); the classifier-side counting machinery rides the evaluation squeeze inside
 > clause (R)'s scope instead]; clause (R) consumes (H1)–(H3) + (H4a) + (H5) + the
-> (K3-δ) fragment of (H4b) + (H6) + (H7) [(H6) added at REVISION 5, findings
+> (K3-δ) fragment of (H4b) + (H6) + (H7) + (H8) + (H9) [(H6) added at REVISION 5,
+> findings
 > VC5-1/VC5-2; (H7) added at REVISION 6, finding F-1 — Step 18's K1 consumes
 > O-10's product law at the engine's strata only through it; (H1)'s group
 > ENLARGED at REVISION 6, findings F-2/F-3, so the "(H1)" here now carries the
-> GD-1/GD-6 members too];
+> GD-1/GD-6 members too; (H8)/(H9) added at REVISION 10, r11 — (H8) inside Step
+> 18's K1 regrouping (Lemma 3.3's cut hypothesis), (H9) at Step 18's K1/K4 label
+> routing and Step 17's M3 leg];
 > NO clause other than (UB) consumes (H4b) BEYOND its (K3-δ) fragment; clause (UB)
 > consumes
-> **(H1)–(H3) + (H4a) + (H4b) + (H5) + (H6) + (H7)** [(H6) added at REVISION 5: the
+> **(H1)–(H3) + (H4a) + (H4b) + (H5) + (H6) + (H7) + (H8) + (H9)** [(H8)/(H9)
+> added at REVISION 10, r11: the transported K1/K4 chain at q ↦ q^δ consumes the
+> same cut-decomposition and ns-routing content; (H6) added at REVISION 5: the
 > transported evaluation chain at q ↦ q^δ consumes the same terminal-verdict and
 > fence-conformance content; attribution COMPLETED at REVISION 3, finding B1: the
 > former display read "(H4a) + (H4b)" as (UB)'s full set — but (H1) enters (UB)
@@ -297,7 +337,9 @@ elements have no poles at any real q ≥ 2, hence at any prime power.
 > implication is therefore itself PROVED-UNVERIFIED (never consumed by an acceptance
 > claim) until §3.2/§3.3 empty and the end-to-end passes land. (ROOT) = (ROOT-C) +
 > discharge of (H1) (the full group — four members since REVISION 7), (H2), (H3),
-> (H4a), (H4b), (H5) (incl. the REVISION-7 PACK-i/ii/iii clauses), (H6), (H7).
+> (H4a), (H4b), (H5) (incl. the REVISION-7 PACK-i/ii/iii clauses AND the
+> REVISION-10 (PACK-iv)), (H6), (H7), (H8), (H9) (both members — (NSF-KEY) via
+> the sign-off-gated Unit C only).
 
 **Wild-prime scope, explicit.** The content is at p ≤ n (p | n!), where factorization
 is governed by higher-order Okutsu–Montes (OM) Newton-polygon towers whose combinatorics
@@ -765,7 +807,14 @@ LITUNIT. The abstract counting core is Lean-formalized (`MovesU/O5CountingB.lean
 Consumes: Steps 7/8/10/11 via CU-7's interface; LIT-3; GMN Def 3.10/eq. (37) +
 Cor 4.19 + LIT-2 defectlessness.
 Delivers: correct semantic leaf labels for O-11's K1 (Step 18) and D-11's M3 (Step 17);
-type(g) = typemult(T) for every lift g.
+type(g) = typemult(T) for every MONIC SEPARABLE lift g of the decided class —
+Theorem E's own scope [RESCOPED at REVISION 10, r11, edit E-M3, per the D-11 r4
+REVISION-2 gap-6 record: the former "for every lift g" was BROADER than the
+premise displays (ns-null justifies only a.e., not all-lifts); the nonseparable
+locus is Haar-null (T-6 (ns-null)), so every mass/counting consumer is unaffected,
+and the D-11 r4 §4A walk certifies no mandatory consumer reads the unrescoped
+breadth (its sites 1–6 are M3-free/label-blind; site 7 consumes mass-mediated at
+separable scope)].
 
 **Step 13 (O-4 + O4T — drainage: undec(k) → 0 at every prime, wild included).**
 Statement, in two layers: (SEMANTIC, unconditional) the M05/V2-verified core — Lemma A
@@ -981,14 +1030,41 @@ Delivers: clause (UB) at the displayed conditional scope.
 O-11 composition datum while O-11 consumed D-11's pack side — a genuine cycle as
 originally displayed. The honest order is **D-11 {M1, M1′, M3} ≺ O-11 ≺ D-11 M2**, and
 the steps now follow it: this step carries ONLY the first tranche; M2 is Step 18b.]
-Statement: (M1, one-step) every solve entry of 𝔅_n at every prime power IS the Haar
-mass of its continuation event — Σ = 1 across each row now a THEOREM; a.s. termination
-from the (r1) margins reread as termination margins — UNCONDITIONAL over the VERIFIED
-O-12 lemma base (L1–L6′). (M1′) the (O2) verdict-row coarseness finding (gate object,
-not a density carrier). (M3) row labels are true types: σ-constancy across one
-continuation event's cylinder ← O5triple Theorem E + D-15 (per-box lift uniformity) —
-NO ∼_OM/OB2 consumption (the DELTA-3 §D3.1 audit, re-confirmed constructively by this
-unit; zero root-side BNS touch-points). OL-O12-2's mathematical half CLOSED here.
+Statement [REWRITTEN at REVISION 10, r11, edit E1 — the r4 true-scope form; the
+consumed leaf is `D11_rev4_2026-08-04.md` (REVISION 3), whose reference measures
+are named PER CLAUSE]: (M1, one-step) every family-(i)/(ii)/(iii) solve entry of
+𝔅_n at every prime power IS the Haar mass of its continuation event CONDITIONAL
+on the block state law C_e; family-(v) atoms at their per-occurrence (a′) readings
+(MEASURE-SPECIFIC: ambient boxes C_e/R_e/□(P) incl. Lemma (BOX-VOL)'s relaxed-box
+reading of the L6a factor; the CONDITIONAL ratio P(R_e | C_e) = q₀^{−(E−e)};
+per-cell singleton residuals; the (O3) scalings NOT masses — their whole mass
+content is (a)'s resummed-event bullet); families (iv)/(vi)/(vii) excluded
+IN-STATEMENT ((a″) — family-(iv) verdict rows under arbitrary α carry no per-entry
+mass identity). Σ = 1 holds at the displayed ONE-STEP STRATA (M1(d)); member-row
+normalization at (RE)/(PACK-iv) members is **(ROW-Σ), a PROVED lemma** (the leaf's
+§2A.2 theorem, adjudicated AS A PROOF at the r4 passes): solved totals
+Σ_σ β_e(σ)(q₀) = 1, and the per-booking verdict-row totals are the Corollary-D
+termination margins Φ^{(O1)}/Φ^{(O2′)}/Φ^{(O3)} — NO booking's displayed row total
+is 1. Multi-step disjointness holds at prefix-free families (**(b-PF)**, proved);
+grammar exhaustiveness = **(b-EX), a PROVED lemma at its route-(a) scope**
+(quantified over the EXPLICITLY RESUMMED row terms — the (O3) kernel resummation
+and the (O3)-scaled exit rows; solved-value legs are non-booked continuation
+values, excluded); the infinite loop-0 word and the finite-time Z_e encounters per
+**(LOOP-∞)** (null + disjoint, exact decomposition). Per-block a.s. exit is
+UNCONDITIONAL; multi-block a.s. termination lives at Lemma M2.0's
+(S1-m)+(DET) conditionality with the (O-1)–(O-5) + (O-GLOB) write-outs PROVED at
+that displayed billing (Step 18b's layer). All of M1 at this scope is
+UNCONDITIONAL over the VERIFIED O-12 lemma base (L1–L6′). (M1′) the (O2)
+verdict-row coarseness finding (gate object, not a density carrier). (M3) row
+labels are true types AT SEPARABLE-LIFT SCOPE: σ-constancy across one continuation
+event's cylinder for every MONIC SEPARABLE lift (Theorem E's own scope; ns-locus
+Haar-null, so mass/counting consumers unaffected) ← O5triple Theorem E + D-15
+(per-box lift uniformity) — NO ∼_OM/OB2 consumption (the DELTA-3 §D3.1 audit,
+re-confirmed constructively by this unit; zero root-side BNS touch-points); the
+routing of these labels into the COUNTED corpus is priced at **(H9) = (NSF)**
+(§3.1: (NSF-INT) for the pin → predicate → corpus chain incl. its displayed
+(K1-CANON) premise; (NSF-KEY) for the as-built keying, KNOWN FALSE AT HEAD).
+OL-O12-2's mathematical half CLOSED here.
 Status [REVISION 1 status sync]: **PROVED-UNVERIFIED, r2 owed** (attempt landed,
 commit 0cae7d8; wave-10 adjudication: "THEOREM M1 PROVED UNCONDITIONALLY over the
 VERIFIED O-12 lemma base"; verify pass 1 NOT ACCEPTED as billed, commit 2587c70 — 1
@@ -1009,12 +1085,31 @@ LEDGER ROW — the §3.1 [M] row **(PACK)**, carried by (ROOT-C)(H5): what Steps
 consume of this step is the M1/M1′/M3 layers at their displayed conditionality PLUS
 that correspondence, and the correspondence has no proof on file — it cannot ride
 the §3.2 D-11 [V] row (a pass-debt class requires a proof on file), so it is priced
-as hypothesis-grade open mathematics.]
+as hypothesis-grade open mathematics.] [REVISION 10 status sync, r11, edit E2: the
+owed pass 3 RAN — **CRITICAL** (`D11_owedpass_2026-08-03.md`: 6 criticals/3 gaps —
+M1's conditioning scope, the family-(v) factor-as-mass claim, the §5/§7 billing,
+M1(b)'s multi-step disjointness, M2's universal scope, M3(b)'s silent clause-4
+consumption) — the STOP-THE-LINE event that SUSPENDED the Phase-C acceptance
+(ledger 44ce0a7). Repaired at TRUE SCOPE per the five-round repair design
+(`R11_REPAIR_DESIGN_V5_2026-08-04.md`) as **r4** = `D11_rev4_2026-08-04.md`, then
+hostile-passed TWICE: r4 pass 1 (`D11r4_pass1_2026-08-04.md`) CRITICAL — folded at
+the leaf's REVISION 2; r4 pass 2 (`D11r4_pass2_2026-08-04.md`) **GAPS-ONLY: no
+critical remains, all six pass-1 repairs adjudicated VALID, and the design-§7
+obligations ((b-EX) at route (a), (O-1)–(O-5), (O-GLOB), (ROW-Σ)) adjudicated AS
+PROOFS**; its three bookkeeping gaps folded at the leaf's REVISION 3. This step
+consumes the REVISION-3 text; the leaf's own clean bar (a confirming pass on that
+text) rides the §3.2 D-11 row.]
 Falsifier: N6-regp-ext2000, 303/303 primes < 2000, all EMPTY, margin sharp at 6/7.
 Consumes: Step 5's lemma base (as the mass statements they are), Step 6 (D-15), Step
 12 (Thm E), T-3/T-6 mass laws. NOTHING from Steps 18/18b.
-Delivers: the pack-side mass laws + true row labels that Step 18's K1/K2 consume;
-D-9k's escape input at the pack; the (r1) uniqueness pivot Step 18b re-uses.
+Delivers [synced at REVISION 10, r11]: the pack-side mass laws AT the r4 per-clause
+scope + true row labels (separable-lift scope, at the (H9) price) that Step 18's
+K1/K2 consume; **(ROW-Σ)** as a PROVED lemma in this tranche — per the leaf's §2A.4
+closure walk this Statement display is (ROW-Σ)'s ONLY delivery edge (no consuming
+proof line on the mandatory path reads a member-row normalization, relative to the
+displayed residue (EDGE-RES)), and THROUGH this edge (ROW-Σ)'s (RE) hypothesis at
+the consumed member = **(PACK-iv)** ((H5)) enters this tranche; D-9k's escape input
+at the pack; the (r1) uniqueness pivot Step 18b re-uses.
 
 **Step 18 (O-11 — SERIES-TIE: per-τ tree series = R_τ).** Statement — displayed
 exactly, since Step 19's attribution rides on it [REVISION 1, finding 11]:
@@ -1029,7 +1124,22 @@ re-priced at the D-9 corrected dependency set: K1 ← O-10 (guarded) + (I-τ)→
 (I-τ)/K-LOC interface = §3.1 (H7) since REVISION 6, finding F-1 — without it K1 does
 not receive O-10's product law at the engine's strata] + CU
 leaf labels [which carry the terminal-seam (H6) content and (FRESH) — the A-5 route
-leg]; K2 ← O-12 at 𝔅_n + D-11 PACK SIDE (= Step 17's tranche, never M2) + the
+leg] + the Lemma-3.3 shallow-cut regrouping, whose cut hypothesis is **(H8) =
+(K-CUT)** (§3.1) [NEW at REVISION 10, r11, from the O-11 owed-pass G-2: the
+exactly-one-decomposition / read-ownership / weight-preservation kernel that M04
+Lemma 3.3 consumes — an open kernel of T-6 previously displayed nowhere in this
+document] + the ns-ROUTING of K1's labeled corpus at **(H9) = (NSF)** (§3.1) [NEW
+at REVISION 10, r11: the (H9) TARGET — at any instantiation satisfying the
+interface pin (q-4), every K1/K4-labeled box lies in the decided-ns-free counted
+corpus and D-15's exact-classification package applies with no a.e. weakening —
+holds at the INTENDED/PINNED instantiation only at the row's two priced members
+((NSF-INT), incl. its displayed (K1-CANON) premise, and (NSF-KEY)); it must NEVER
+be read as covering the HEAD Lean wiring while (NSF-KEY) is unretired (known false
+there — the M02 V₀ exact-square poison); consumption is two-channel per the D-11
+r4 §4A audit: (ch-1) K1's exact combinatorics is label-semantics-blind, (ch-2) the
+semantic tie is mass-mediated at Step 19's squeeze; (CH-COV) executed CLEAN at the
+walked closure, corpus-relative residue (CH-RES)]; K2 ← O-12 at 𝔅_n + D-11 PACK
+SIDE (= Step 17's tranche, never M2) + the
 **(PACK)** correspondence-plus-row-laws (§3.1, = (ROOT-C)(H5): that the concrete
 assembled pack IS
 the intended 𝔅_n instantiation entry-for-entry — Step 17's OPEN clause 4, consumed
@@ -1047,7 +1157,11 @@ NOT supply them); K3 =
 [1v]-FULL value correctness ASSEMBLED from T-7s + O-9's census + O-8b
 (arbitrary-DVR), with **(PACK-iii) wsh_ok** the membership input to K3's
 evaluation ring-hom evalAt (with D-6) [REVISION 8, finding VC8-2];
-K4 ← Dfloor/D-15/CU mass semantics. Every consumption displayed (the unit's 20-row
+K4 ← Dfloor/D-15/CU mass semantics — D-15's supplier scope is "T decided ns-free",
+so K4's in-scope invocation at the labeled corpus rides **(H9) = (NSF)** exactly as
+at K1 [(NSF-INT)(ii)'s K4 leg is proved at the interface pin in the D-11 r4 §4B
+leaf proof; the as-built HEAD coincidence FAILS — (NSF-KEY), Unit-C-gated; REVISION
+10, r11]. Every consumption displayed (the unit's 20-row
 table). δ-stable interface note [REVISION 3, finding A5; PRICED at REVISION 4,
 finding VC4-1]: O-8b's law is declared AT
 δ-STABLE position classes only (Step 16), and that K3-c's realized δ > 1 pools are
@@ -1118,17 +1232,32 @@ at REVISION 1, findings 2/11.] Statement:
                the σ-graded tree series of T_can; equivalently, the solved values are
                the real conditional densities.
 
-Proof: the D-11 M2 argument (commit 0cae7d8) with its two seams now supplied by
-EARLIER steps: **(S1)** = the GD-3-FULL/O-9 residual-descent hand-off ← Step 14 (+ its
+Proof [REWRITTEN at REVISION 10, r11, edit E3]: the D-11 **r4** M2 argument
+(`D11_rev4_2026-08-04.md` §3, REVISION 3 — the twice-passed repaired leaf) **at its
+(RE) scope**: Theorem M2 (r4) is a theorem about members satisfying the re-entrant
+booking-profile hypothesis (RE) — every block booked (O1)/(O2′)/(O3), never (O2);
+no allocation datum; family-(iv) rows the canonical 0/1-coefficient assembly with
+only the displayed (O2′)/(O3) adjustments — with arbitrary-α members EXCLUDED
+IN-STATEMENT (the owed-pass C6 counterexample class; for them only O-12's pole/zero
+theorem speaks). At the CONSUMED member, (RE)+row-form is PRICED as **(PACK-iv)**
+((H5)'s FOURTH row-law, NEW at REVISION 10; the former definitional-discharge
+display — that O-12's §1 booking sentence pins the consumed member's profile — is
+WITHDRAWN, design §3.3). The repaired proof step consumes M1(a) at families
+(ii)/(iii) ONLY (the r4 rescope; never family (iv)), and M2's exhaustiveness note
+consumes M1(b)/(d) + (b-PF)/(b-EX)/(LOOP-∞) at their proved r4 scopes. Seams as
+before: **(S1)** = the GD-3-FULL/O-9 residual-descent hand-off ← Step 14 (+ its
 (GR-B)/(FRESH)/(ADM) conditionality, §3.1 — the census is consumed at its full
-displayed hypothesis set; the former "(GR-B) conditionality" summary omitted the
-other two inherited rows [(ADM) added at REVISION 4, finding VC4-5 — a local
-consumer-accounting fix; the root-level clause-(R) attribution already included
-(ADM)]); **(S2)** = the O-11 composition datum ← Step 18. (r1) is
+displayed hypothesis set [(ADM) added at REVISION 4, finding VC4-5]); **(S2)** =
+the O-11 composition datum ← Step 18. (r1) is
 the uniqueness pivot (Step 17). With Step 18 this closes the chain
 α = (tree series) = R_τ — as an identification of the CONCRETE pack's densities with
 the solve values, conditional also on **(PACK)** (§3.1, (ROOT-C)(H5)) through the
-Step 17/18 consumption [REVISION 4, finding VC4-3].
+Step 17/18 consumption [REVISION 4, finding VC4-3]: the concrete pack's conformance
+to the member is (H5)'s correspondence clause, and the member's booking/row-form
+profile is (PACK-iv) — consumed HERE directly (Theorem M2's (RE) instantiation)
+and, per the leaf's §2A.4 closed edge walk, at exactly ONE other place: Step 17's
+(ROW-Σ) delivery display. NOTHING of M2 flows into Steps 17/18 (acyclicity intact:
+(ROW-Σ) is M2-free at Step 17's layer).
 **Scope: MONIC — and the third seam (S3) is NOT consumed here [REVISION 2, finding
 V2-1].** M2's stated conclusion is about the monic ensemble — exactly clause (0)'s μ
 (monic degree-n ≅ ℤ_p^n), which is all this walk needs. D-11 r2's third seam **(S3)**
@@ -1140,10 +1269,17 @@ normalization is ANNEX by standing directive (§1 "Relation to the tree's root")
 Step 5's pole-free claim covers the weight as a RATIONAL FUNCTION ((g2) of the O-12
 grammar); its mass reading enters nowhere on the mandatory path. The proof above
 therefore names (S1), (S2), (r1) and nothing else — correctly, not by omission.
-Status: **PROVED-UNVERIFIED, r2 owed** (same D-11 record and pass-1 verdict as Step
-17; the M2-specific pass-1 gap — the (O2′) balance-equation leg underderived — rides
-the r2).
-Consumes: Steps 14, 17, 18 — all earlier; the (GR-B)/(FRESH) rows through (S1).
+Status [REVISION 10 status sync, r11]: **PROVED-UNVERIFIED at the r4 two-pass
+record** — same leaf arc as Step 17's E2 display: pass 3 CRITICAL (M2 false at its
+displayed universal scope, the C6 finding — the suspension trigger) → r4 restated
+AT (RE) with the proof step re-derived from the verified §2.3(iv) grammar display →
+r4 pass 1 validated "M2's (RE)/(PACK-iv) scoping" → r4 pass 2 GAPS-ONLY, no-churn
+confirmed on M2; the leaf's confirming clean pass rides the §3.2 D-11 row. Lemma
+M2.0 (multi-block a.s. termination) is PROVED at its displayed (S1-m)+(DET)
+billing via the loop-extended addresses + (O-1)–(O-5) + (O-GLOB), adjudicated as
+proofs at the same passes.
+Consumes: Steps 14, 17, 18 — all earlier; the (GR-B)/(FRESH) rows through (S1);
+(PACK-iv) ((H5)) directly.
 Delivers: the α = series identification; with Step 18, the α(n,τ;p) = R_τ(p)
 evaluation clause of (R).
 
@@ -1242,10 +1378,11 @@ mathematics (no proof on file). The CUC §0 pending-verdict registry
 | **(R1)–(R4)** (O-8b's base) **= (ROOT-C)(H4a)** [re-scoped at REVISION 2, finding V2-2] | the T-1 stage-tower laws re-proved verbatim over O_δ = W(F_{p^δ}) | O-8b (M14's conditional proof closes given them) | expected mechanical ("nobody has written it" — tree O-8b); N8 exhaustive. Borderline [M]/[T]; kept here for honesty. Enters Step 16 AND Step 18 (O-11 K3-c — declared row D-c at O-11 r2): NOT clause-(UB)-only — through K3-c it conditions clause (R)'s α = R_τ evaluation wherever verdict rows consume base-changed β-legs (δ > 1 pools). Audit note [REVISION 3, finding A5; PRICED at REVISION 4, finding VC4-1]: O-8b's law is declared at δ-STABLE position classes; that K3-c's realized δ > 1 pools are of that kind is asserted at the D-c interface with no supplying row — so the presumption is NO LONGER carried inside (H4a): the fragment is named **(K3-δ)** (= (UB-X)(b) restricted to K3-c's realized pools, displayed on the (UB-X) row) and clause (R)'s attribution consumes it explicitly; the match display (or a re-scope) rides the next O-11/O-8b touch and would retire (K3-δ) from clause (R) |
 | **(ADM)** — O-9's census admissibility [NEW row at REVISION 2, finding V2-5; REWRITTEN to the single operative form at REVISION 4, finding VC4-2] | **THE OPERATIVE DEFINITION (O-9 r4, FULL attainment):** every on-line lattice slot's β_k is FULLY attained by the ledger — dim_{F_q} G_{β_k} = s(β_k+1) − s(β_k) = d, equivalently #{𝐣 : wt(𝐣) ≡ β_k (mod e), wt(𝐣) ≤ β_k} = d — the explicit hypothesis on CEN-W/CEN-J (O-9 r4, unit of record 35faac7). Two earlier displays are REFUTED and superseded, kept here so no reader can consume them: the r2 CLASS form "β_k mod e ∈ {wt(𝐣) mod e}" (refuted by K6's r = 1 countermodel, 256/26244) and the r3 VALUE form "G_{β_k} ≠ 0" (refuted at d ≥ 2 by the pass-3 countermodel, 73728 vs 49152, ratio (q+1)/q per partially-attained slot) | O-9 (Step 14) | p-free and per-datum DECIDABLE (a finite lattice check; at r = 1 the displayed inequality β_k ≥ h₁((h₁^{−1}β_k mod e₁) + (f₁−1)e₁), collapsing to the r3 form at f₁ = 1), so borderline [M]/[T] like (R1)–(R4); kept [M] for honesty. **Automaticity, exact:** automatic at r = 0 ONLY (dim = f₀ = d on nonnegative on-line data); NOT automatic at r ≥ 1 (two explicit r = 1 countermodels on file); every older "automatic at orders ≤ 1" phrasing in this document is superseded by this row [finding VC4-2's charge]. Enters Step 14 (CEN-W/CEN-J), hence Step 18's K3 census half (K3-b) AND Step 18b through seam (S1) [added at REVISION 4, finding VC4-5], AND Step 16/clause (UB) through Step 16's consumption of the census over any complete DVR [REVISION 3, finding B1]; carried by (ROOT-C)(H3); consumed by clauses (R)/(UB) only — NOT (SQ) [REVISION 4, finding VC4-4]. Unattained-vertex data have census 0 (the padding value), so the hypothesis prices attainment, not positivity. Falsifier state: K6 (class refuted, 0 = 0 exact) + K7 (value-vs-FULL dichotomy — countermodel refuted, first d ≥ 2 VALUE gate exact: census q^14(q²−1)² at p ∈ {2,3}). O-9 pass 4 in flight; the [M] classification is unchanged |
 | **(UB-X)** — the clause-(UB) residue [NEW at REVISION 1, finding 7] | (a) the per-leaf O_δ re-base audit for the ℚ_p-stated leaves (the "per-leaf scope hygiene" of the D-3 collapse, declared at the GD dispatch but unwritten); (b) δ-stable position classes exhaust the realized ledger at every δ — **whose restriction to Step 18 K3-c's realized δ > 1 pools is the named fragment (K3-δ), consumed by clause (R) [REVISION 4, finding VC4-1]**; (c) full solve + type aggregation commute with unramified base change | D-3/O-8b (Step 16; the (K3-δ) fragment also Step 18) | until written, clause (UB) is proved ONLY at the Step-16 displayed scope; (ROOT-C) makes this explicit as hypothesis **(H4b)** (renamed from (H4) at the REVISION-2 split, finding V2-2 — since REVISION 4 the genuinely clause-(UB)-only part is (H4b) MINUS its (K3-δ) fragment: clause (R)'s attribution includes (K3-δ) until the δ-stable match display lands at the O-11/O-8b interface). N8 numerically supports the law it scopes |
-| **(PACK)** — the actual-pack correspondence + the pack row-laws **= (ROOT-C)(H5)** [NEW row at REVISION 4, finding VC4-3; ENLARGED at REVISION 7, finding VC7-2] | D-11's clause 4, OPEN as the D-11 r3 record cites it (8a0786c, pass-2 P3: the completed-node overclaim withdrawn): the CONCRETE assembled pack — the realized tables/rows whose mass laws Step 17's M1 covers and whose root/entrance rows M2's (R-read) layer excludes in-statement — equals the intended 𝔅_n instantiation ENTRY-FOR-ENTRY (= OL-O12-2's remaining DATA half, `O12_phaseB_attempt_rev4.md` §3). **PLUS [ENLARGED at REVISION 7, finding VC7-2] the three named row-laws, stated AT THE 𝔅_n ROWS (hence, through the correspondence, holding at the concrete pack's rows): (PACK-i) rsh_interp** — the interpolation law (RatBurdens' interpolation face): for every row σ and every prime power q₀, the evaluation at q₀ of the symbolic shape series Rsh(vmap σ) equals Rval(vmap σ)(q₀) — the Rsh → Rval conversion Step 18's K2 evaluation glue consumes; **(PACK-ii) r_bdd** — the bound: Rval(vmap σ)(q₀) ∈ [0,1] at every prime power q₀ (what makes ENNReal.ofReal faithful there — with (PACK-i) the K2-evaluation-glue pair); **(PACK-iii) wsh_ok** — regular-subring membership: every row's weight/shape series lies in the regular subring on which the evaluation ring-hom evalAt is defined (with D-6, the membership input to Step 18's K3 evaluation ring-hom — NOT K2's glue; sub-attribution made uniform at REVISION 8, finding VC8-2). The three are EXPLICIT clauses, NOT consequences of the correspondence: entry-for-entry equality transfers a law to the concrete pack only if an earlier displayed theorem establishes that law at the corresponding 𝔅_n rows, and NO consulted record displays one — Steps 2/5 state none of the three by name nor an explicit implication to them (the VC7 finding-2 warrant charge; the REVISION-6 A-6(ii) "priced inside the correspondence" inference is WITHDRAWN as invalid). Steps 18 (item (v)'s row-law consumption, sub-attributed [REVISION 8, finding VC8-2]: PACK-i/ii at K2's evaluation glue; PACK-iii at K3's evaluation ring-hom, with D-6) and 18b consume Step 17 AS this correspondence-plus-laws; no proof is on file, so it cannot ride the §3.2 D-11 [V] row | D-11/O-12 (Steps 17, 18, 18b; the n = 3 instance = the §3.3 OL-O12-2 data pass); the row-law clauses: the D-11 owner with O-14d/D-11 pack construction (O-11 r3 §5 row 20) | per D-11 r3 the content is a finite per-n data comparison ("finite"/"engineering" ≠ "proved" — the pass-2 P3 charge), so borderline [M]/[T]; kept [M] for honesty until executed and passed — the row-law clauses included (properties to be established at 𝔅_n, not data checks). Enters clause (R) (Steps 17 → 18/18b: the α = R_τ evaluation runs THROUGH the identification and through PACK-i/ii at K2's glue and PACK-iii at K3's ring-hom) and clause (UB) (the same chain at q ↦ q^δ). NOT (SQ)/(0). Numerics: the n = 2 real-pack triple re-derivation (O-11's falsifier) and RESUM-n3 65/65 are its executed instances at n ≤ 3 — the O-11 record's "checked at RESUM-n3" covers the row-laws' instances too — flags, not the general-n proof. Related but DISTINCT: D-11's widened-charge item (vii) (H.6-fence conformance of the built tables) — the REVISION-4 flag "whether it too should be promoted to hypothesis grade" was RESOLVED at REVISION 5, finding VC5-1: promoted, into the (H6) group below |
+| **(PACK)** — the actual-pack correspondence + the pack row-laws **= (ROOT-C)(H5)** [NEW row at REVISION 4, finding VC4-3; ENLARGED at REVISION 7, finding VC7-2; ENLARGED AGAIN at REVISION 10, r11, edit E4 — the FOURTH row-law (PACK-iv), an ADDITION to the roster, never a clarification] | D-11's clause 4, OPEN as the D-11 r3 record cites it (8a0786c, pass-2 P3: the completed-node overclaim withdrawn): the CONCRETE assembled pack — the realized tables/rows whose mass laws Step 17's M1 covers and whose root/entrance rows M2's (R-read) layer excludes in-statement — equals the intended 𝔅_n instantiation ENTRY-FOR-ENTRY (= OL-O12-2's remaining DATA half, `O12_phaseB_attempt_rev4.md` §3). **PLUS [ENLARGED at REVISION 7, finding VC7-2] the three named row-laws, stated AT THE 𝔅_n ROWS (hence, through the correspondence, holding at the concrete pack's rows): (PACK-i) rsh_interp** — the interpolation law (RatBurdens' interpolation face): for every row σ and every prime power q₀, the evaluation at q₀ of the symbolic shape series Rsh(vmap σ) equals Rval(vmap σ)(q₀) — the Rsh → Rval conversion Step 18's K2 evaluation glue consumes; **(PACK-ii) r_bdd** — the bound: Rval(vmap σ)(q₀) ∈ [0,1] at every prime power q₀ (what makes ENNReal.ofReal faithful there — with (PACK-i) the K2-evaluation-glue pair); **(PACK-iii) wsh_ok** — regular-subring membership: every row's weight/shape series lies in the regular subring on which the evaluation ring-hom evalAt is defined (with D-6, the membership input to Step 18's K3 evaluation ring-hom — NOT K2's glue; sub-attribution made uniform at REVISION 8, finding VC8-2); **AND (PACK-iv) sem_alloc — semantic verdict-row form at the intended member** [NEW at REVISION 10, r11]: at every block e of the intended 𝔅_n instantiation, the booking is re-entrant ((O1)/(O2′)/(O3)) and the family-(iv) source/verdict rows are the canonical semantic assembly — every verdict-row entry equals Σ_{F exit} m(F)·Σ_{comp_F(σ⃗)=σ} ∏_i β_{μ_i}(σ_i)(q^{D_i}) — plus, at (O2′), the displayed κ₁ re-feed leg and, at (O3), the displayed family-(v) exit scaling, and nothing else — with m(F) the member's family-(ii)/(iii) mass entry and the β's its family-(vi) legs; the member carries no allocation adjustment beyond these. [The premise D-11 r4's Theorem M2 names as **(RE)**; (S1)/(S2) do NOT imply it (owed-pass C6). CONSUMED AT exactly TWO displayed sites — the D-11 r4 §2A.4 closure walk's CLOSED two-element set (relative to its displayed residue (EDGE-RES)), which REPLACES the design's former "untraced cover / possibly within 17/18" clause: **Step 18b DIRECT** (Theorem M2's (RE) instantiation) AND **Step 17's E1 delivery display of (ROW-Σ)** (the proved member-row normalization theorem — its (RE) hypothesis at the consumed member IS this clause; (ROW-Σ) itself is M2-free, so the 17 ≺ 18 ≺ 18b order is untouched). Step 18's K2/K3 glue consumes PACK-i/ii/iii, and Step 17's M1 excludes family (iv) in-statement ((a″)). RETIREMENT ROUTES (design §3.3): (route-a), n = 3 — the OL-O12-2 transcription-and-correspondence pass EXTENDED by the named per-row booking-profile duty (verify each sealed block's booking against the (O3) forms and each row against §2.3(iv)'s canonical assembly + the displayed scaling); (route-b), general n — the O-14d instance population constructing the member IN the (O1) booking, the profile then holding by construction.] The first three are EXPLICIT clauses, NOT consequences of the correspondence: entry-for-entry equality transfers a law to the concrete pack only if an earlier displayed theorem establishes that law at the corresponding 𝔅_n rows, and NO consulted record displays one — Steps 2/5 state none of the three by name nor an explicit implication to them (the VC7 finding-2 warrant charge; the REVISION-6 A-6(ii) "priced inside the correspondence" inference is WITHDRAWN as invalid). Steps 18 (item (v)'s row-law consumption, sub-attributed [REVISION 8, finding VC8-2]: PACK-i/ii at K2's evaluation glue; PACK-iii at K3's evaluation ring-hom, with D-6; PACK-iv at Step 18b direct + Step 17's E1 (ROW-Σ) delivery display ONLY [REVISION 10, r11 — the leaf's closed edge set]) and 18b consume Step 17 AS this correspondence-plus-laws; no proof is on file, so it cannot ride the §3.2 D-11 [V] row | D-11/O-12 (Steps 17, 18, 18b; the n = 3 instance = the §3.3 OL-O12-2 data pass); the row-law clauses: the D-11 owner with O-14d/D-11 pack construction (O-11 r3 §5 row 20) | per D-11 r3 the content is a finite per-n data comparison ("finite"/"engineering" ≠ "proved" — the pass-2 P3 charge), so borderline [M]/[T]; kept [M] for honesty until executed and passed — the row-law clauses included (properties to be established at 𝔅_n, not data checks). Enters clause (R) (Steps 17 → 18/18b: the α = R_τ evaluation runs THROUGH the identification and through PACK-i/ii at K2's glue and PACK-iii at K3's ring-hom) and clause (UB) (the same chain at q ↦ q^δ). NOT (SQ)/(0). Numerics: the n = 2 real-pack triple re-derivation (O-11's falsifier) and RESUM-n3 65/65 are its executed instances at n ≤ 3 — the O-11 record's "checked at RESUM-n3" covers the row-laws' instances too — flags, not the general-n proof. Related but DISTINCT: D-11's widened-charge item (vii) (H.6-fence conformance of the built tables) — the REVISION-4 flag "whether it too should be promoted to hypothesis grade" was RESOLVED at REVISION 5, finding VC5-1: promoted, into the (H6) group below |
 | **(T-DEC)/(T-READ)/(T-VERD) + D-11 item (vii)** — the terminal-seam engine-conformance group **= (ROOT-C)(H6)** [NEW row group at REVISION 5, findings VC5-1/VC5-2] | (a) CU-2t's THREE terminal rows (first displayed CUC §9.4; split/amended at R3, 81589e9): **(T-DEC)** — emission discipline at decided sites ((T-DEC-dec)) + the corner fence ((T-DEC-cor), at the Corollary's own conditionality); **(T-READ)** — the emitted shape/position fields equal the (c1)-shape polygon-side datum (the (RC-read) supply; NO displayed machine-side home on file, purely owed); **(T-VERD)** — terminal verdict-field conformance. (b) **D-11 widened-charge item (vii)** — general-n H.6 in-fence conformance of the built tables (the surviving live condition of the tree T-5 row's "six fences gate [1v]-FULL"; the six fence kernels themselves stay off the mandatory path — if a built pack ever NEEDS fenced territory, the kernel so touched becomes ADDITIONAL open mathematics beyond this row). All four sat in §3.3 [T] through REVISION 4; VC5 applied the ledger's OWN classification rule — [T] requires content pinned to a printed source or an existing proof, and these are OPEN PROPOSITIONS consumed on clause (R)'s mandatory path with no proof on file — so they are [M], hypothesis-grade like (PACK) | GD-4/GD-2-family owners per CU-2t R4's grading: (T-READ) re-graded OUT of the "engine bookkeeping" GD-4 label into the GD-2/GD-5 read-semantics-conformance family (at k′ ≥ 1 an OL-2-min instance + the terminal-BINDING clause, which stays GD-4; at k′ = 0 no sibling in the OL residue — a proof-by-construction route cannot discharge it); (T-DEC)/(T-VERD) GD-4 (proof-by-construction routes on record); item (vii): the D-11 owner (Steps 17/18) | enters clause (R) at Step 11's route — CU-2t's §9.5 terminal-verdict conditionality (CU-2t is VERIFIED at scope MODULO exactly these rows), consumed by Step 18 through D-a/K4-CYL — through the terminal-seam leaf labels riding O5triple's counting (Steps 11/12 → Step 17's M3/Thm-E leg) into Step 18's K1 ("CU leaf labels" — the same K1 route the (FRESH) row displays; leg added at REVISION 6, finding A-5) — and, for item (vii), at Step 18's K3-a; clause (UB) inherits the same content through the transported chain at q ↦ q^δ; NOT (0)/(SQ). Falsifier state: the CU-2t sealed gates + V-n3 178/178 / H-n3 151/151 (sealed n = 3 evidence for (vii)) — flags, not the general-n proofs |
 | **(I-τ)/K-LOC — the sibling-interface engine-stratum conformance pair = (ROOT-C)(H7)** [NEW row at REVISION 6, finding F-1 — the LAST of O-11 r2's declared D-a/D-b/D-c interface triple adjudicated: D-a → (H6) at VC5-2, D-c → (H4a)/(K3-δ) at V2-2/VC4-1, and this row is D-b] | **(I-τ)**: the engine's realized site strata present as O-10's ρ-separated adapted cells (the adapted-cell → engine-stratum presentation Theorem 2 needs). **(K-LOC)** (= M07 OL-3, an exactly-stated OPEN lemma — the document's own naming): continuation reads of branch j on the stratum = OM reads of f_j up to cell-constant normalization. Without the pair, Step 18's K1 does not receive O-10's product law at the engine's strata — triple-displayed consumption (Step 15's application line; Step 18's K1 "(I-τ)→GD"; the former §3.3 row's own owner column). **Adjudication own-row-vs-(H6), displayed [the F-1 charge]:** the pair is engine-conformance GENRE (kin to (H6), and K-LOC's read-semantics content is (T-READ)'s GD-2/GD-5 family), but its SEAM is the sibling/product-law interface (K1, Steps 15 → 18), not the terminal seam; its owners are O-10/GD-family (not the CU-2t/D-11 owners); and (H6)'s membership is PINNED by the leaf-#9 interlock (CU-2t VERIFIED at scope modulo exactly its three rows + item (vii)) — so a SIBLING row, not an (H6) member | O-10 consumers / GD-family presentation (Steps 15, 18); discharge = the K-LOC lemma (M07 OL-3) + the (I-τ) presentation write-up | the former disposition "both priced into the GD families" (Step 15) had NO displayed [M] landing — no GD row carried read-locality/normalization content — so under the ledger's own rule the pair could not sit in [T]: no pin, no proof on file, consumed on clause (R)'s mandatory path. Enters Step 15 (application to realized strata) and Step 18 (K1), hence clauses (R)/(UB) only; NOT (0)/(SQ). Falsifier state: O-10's harness 68/0 + U6/IFK gates exercise the adapted-cell law itself — flags for the pair's instances, not the general proof |
-| **D-12r** | TB-CAP's (τ-irr) completeness perimeter: the D4R.0-K(c) verdict-pin residual | [3t] VP owner (tree D-12r) | perimeter-conditional wherever TB-CAP is consumed (Steps 2 (T-6's declared TB-CAP conditionality), 3, 11, 12, and Step 19 — where T-6's leg serves the classifier-side counting tie inside the evaluation squeeze, at clause (R)'s conditionality — AND Step 16/clause (UB) through the (UB-X)(a)-transported dictionary/CU/drainage layers, the §1 B1 attribution's displayed entry [added to this row's list at REVISION 9, VC10 advisory 2, mirroring the B1 fix already applied at the (ADM)/(FRESH) rows]; the REVISION-3 A6(ii) phrasing "the (SQ) bracket consumes T-6" is SUPERSEDED at REVISION 4, finding VC4-4 — the semantic (SQ) bracket is Step 1's, unconditional); displayed, not discharged |
+| **(H8) = (K-CUT) — the shallow-cut decomposition kernel** [NEW row at REVISION 10, r11, from the O-11 owed-pass G-2] | For every n ≥ 2, every prime p, and every splitting type σ of degree n, every complete type-σ canonical tree T admits EXACTLY ONE decomposition into a shallow shape Ŝ plus per-branch block derivations (D_1, …, D_r) — exhaustive-exclusive read ownership at the first-split cut — and the decomposition is weight-preserving, μ(fiber T) = W(Ŝ)·∏_i weight(D_i), as M04 Lemma 3.3's hypothesis consumes it at Step 18's K1. Status: an OPEN KERNEL of T-6 (the T-6 row's own naming); the O-11 r3 record's serving map (← D-14 read locality + CU-3 coherent nonempty locus) is a correspondence CLAIM, not a demonstrated implication (O-11 pass-2 G-1; owed-pass G-2: "overlapping ownership, an unowned read, or two different shallow decompositions" are unexcluded). Before this row it was displayed NOWHERE in this document (`rg CUT-WD` = 0 hits at r10) — an open proposition consumed on clause (R)'s mandatory path cannot ride an unexecuted adjudication promise (the VC5/VC6/F-1 genre rule). One-home adjudication: NOT (H6) (its seam is the first-split cut inside K1, not the terminal seam; (H6)'s membership is pinned by the leaf-#9 interlock) and NOT an (H7) member (the K1 seam class matches but the owners differ — T-6/O-1thr/CU-3 vs O-10/GD-family — and this content carries its OWN retirement route): a sibling row, per the F-1 precedent | T-6/O-1thr/CU-3 arc; NAMED RETIREMENT ROUTE: O-11 §8 charge (vi) — the adjudication of the serving map against T-6's §T-ASSEMBLY; if that adjudication demonstrates the implication from on-file content, this row RETIRES into the consuming leaves' [V] debts | Enters Step 18 (K1's Lemma-3.3 regrouping), hence clause (R); clause (UB) inherits through the transported chain at q ↦ q^δ. NOT (0)/(SQ) |
+| **(H9) = (NSF) — the ns-routing interface row** [NEW row at REVISION 10, r11; TWO members retiring SEPARATELY — neither retirement discharges the other] | THE TARGET (the row's conditional statement): at any instantiation satisfying (q-4)'s interface pin (the ClassifierSpec docstring: `some σ` = complete finite realizable tree, all leaves (τ-irr)/(τ-hen), certified at level N), every K1/K4-labeled box lies in the decided-ns-free counted corpus and D-15's exact-classification package applies with no a.e. weakening — the round-3 attempt to PROVE this by chaining displayed quotes was refuted and stands WITHDRAWN; the two priced members: **(NSF-INT) — the interface implication chain (pin → predicate → corpus).** At every consumed site of Step 18's K1/K4 chain: (i) irr/hen-terminal completeness excludes ns-marks — a complete finite realizable tree with all leaves (τ-irr)/(τ-hen) carries no ns-marks (in particular the Hensel payload carries none) — so every box labeled under (q-4)'s pin fibers a tree that is decided ns-free in (q-1)'s sense; and (ii) M04's "complete-finite-realizable" scope coincides with the guarded TREE-N corpus ((q-3)'s all-leaves-(τ-irr)/(τ-hen), `hdet`-guarded trees) at every consumed site. The interface quotes (q-1)–(q-6) are CONTEXT, not proof. **Displayed premises housed IN this member (one-home; the D-11 r4 passes surfaced them):** the §1.4 marks-vocabulary premise (a mark is the RECORD of an NsHalts event — §1.4's sole generation rule; claim (i)'s premise) and **(K1-CANON)** — at every consumed Step-18 site, K1's "canonical tree" denotes (q-4)'s pinned notion; equivalently (the interface-lemma form), every tree at which the mandatory path invokes K1 satisfies the all-leaves-(τ-irr)/(τ-hen) guard [the r4 source-inheritance inference — that K1's bare quantifier carries the guard FROM its cited sources — is WITHDRAWN (r4 pass-1 gap 5): a theorem's quantifier does not inherit its source lemmas' restriction, and the `hdet` guard scopes one machine-checked candidate, not K1]. The D-11 r4 §4B leaf proof (artifact I-1) proves (i) from the §1.4 displays + the marks-vocabulary premise and (ii) site-by-site over the closed I-2 list {K1, K4} — the K4 leg at the pin directly, the K1 leg UNDER (K1-CANON). **(NSF-KEY) — as-built keying conformance [ONE proposition].** At the wired instance: for every n, p, level N, box f, and σ — if the wired classifier labels f (`bridgeCanonical … N f = some σ`) then f fibers a carried tree of the σ-carrier satisfying `MovesT.NsFree` (no ns-marked chain) at threshold ≤ N. **KNOWN FALSE AT HEAD**: the M02 exact-square poison V₀ (ns-marked, self-realized, carried — `bridgeTree` carries NO ns-free conjunct at HEAD) is labeled "totally split" by `bridgeCanonical`; c_{V₀}(N) = p^{N−2} against (SCALE)'s forced p²-per-level growth — `count_tie` as typed REFUTED, `canonical_stable` refuted at the intended instance, `VPSound` unsatisfiable. This member is an obligation certain to fire, not a contingency. [The `NsFree` conjunct on `bridgeTree` is the sanctioned realization MECHANISM (M02's "Minimal repair", proposed NOT executed); the three re-typed statements are downstream VALIDATION GATES; neither is the proposition itself.] One-home argument: both members are the ns-routing face of the SAME classifier interface — (NSF-INT) the interface/paper side, (NSF-KEY) the as-built/Lean side; same seam (K1/N2 label routing at Step 18), same owners, same consumption chain (the VC7-2 one-home precedent) | the O-1thr/M04/M02 classifier-interface arc. RETIREMENT, exact: **(NSF-INT)** by (NSF-INT-RET) — I-1 (the §4B leaf proof, ON FILE) + I-2 (the closed site list {K1 (M04 §5.5 (K1) + Lemma 3.3), K4 (M04 §5.5 (K4) + D-15)}, closed by the §4A walk relative to (CH-RES)) + I-3 (the r4 hostile pass's ACCEPT of §4B as a proof — GRANTED at the r4 passes: pass 2 adjudicated the conditional argument VALID) **+ a separate discharge of (K1-CANON)** (leaf-external — the M04-side pin display or the interface-lemma form; r4 pass-2 gap 3: I-3's accept of a CONDITIONAL proof verifies only (K1-CANON) ⇒ the K1 scope conclusion and cannot itself establish (K1-CANON)) — until that discharge, (NSF-INT) stands PRICED; **(NSF-KEY)** ONLY by the design's Unit C per (NSF-KEY-RET) (R-0 sign-off precondition — the statement fence — through R-5 Codex diff confirmation), NEVER by any leaf text | Enters Step 18's K1/K4 chain and Step 17's M3 leg (via Steps 11/12), hence clause (R); clause (UB) inherits through the transported chain. NOT (0)/(SQ). Two-channel consumption (D-11 r4 §4A, outcome CLEAN at the walked closure, residue (CH-RES)): (ch-1) label-blind exact combinatorics; (ch-2) mass-mediated semantic tie at Step 19's squeeze. The (H9) target must NEVER be displayed as covering the HEAD wiring while (NSF-KEY) is unretired | TB-CAP's (τ-irr) completeness perimeter: the D4R.0-K(c) verdict-pin residual | [3t] VP owner (tree D-12r) | perimeter-conditional wherever TB-CAP is consumed (Steps 2 (T-6's declared TB-CAP conditionality), 3, 11, 12, and Step 19 — where T-6's leg serves the classifier-side counting tie inside the evaluation squeeze, at clause (R)'s conditionality — AND Step 16/clause (UB) through the (UB-X)(a)-transported dictionary/CU/drainage layers, the §1 B1 attribution's displayed entry [added to this row's list at REVISION 9, VC10 advisory 2, mirroring the B1 fix already applied at the (ADM)/(FRESH) rows]; the REVISION-3 A6(ii) phrasing "the (SQ) bracket consumes T-6" is SUPERSEDED at REVISION 4, finding VC4-4 — the semantic (SQ) bracket is Step 1's, unconditional); displayed, not discharged |
 | **(E-N)** | O-1thr Theorem 3(c)'s exhaustion caveat | O-1thr package | OPEN, scoped, touches CU-4 through Thm 3(c) (risk row R2 of the O3adj display) — AND enters Step 16/clause (UB) through the (UB-X)(a)-transported dictionary/CU/drainage layers, the SAME CU-4/Thm 3(c) content transported at q ↦ q^δ: the §1 B1 attribution's displayed entry [added to this row's list at REVISION 9, VC10 advisory 2, mirroring the B1 fix already applied at the (ADM)/(FRESH) rows]. Beyond that CU-4 touch and its clause-(UB) transport, NO other mandatory-path site consumes it [reworded at REVISION 9 — the former "NOT consumed by the mandatory path elsewhere" could be read as denying the transported (UB) entry §1 displays] |
 
 **(AGR) relocated [REVISION 1, finding 10]:** the drainage agreement seam
@@ -1264,14 +1401,14 @@ inherited-[V] row it is; general-n drainage stays conditional until those passes
 | **P(O5t r3)** | fresh hostile pass on O5triple rev 3 (V23 0-critical arc) | O5triple (Step 12) |
 | **P(O-8b/M14)** [NEW row at REVISION 3, finding B2] | fresh hostile pass on M14's conditional O-8b proof (on file; the alphabet law at δ-stable position classes over (R1)–(R4)) — the one consumed PROVED-UNVERIFIED proof whose pending pass was named nowhere; it sits on the mandatory path of clause (R) (Step 18's K3-c), not just (UB) | O-8b/M14 (Steps 16, 18) |
 | **P(O-14a′ r3)** [NEW row at REVISION 9, VC10 advisory 1 — grade-display conformance, post-acceptance] | the O-14a′ (RunRealizerExists) verification record, displayed in the §0 vocabulary. ON RECORD, exactly: core Theorems 1–3 STABLE across the V11 and V15 passes (rev 3 on file); the consumed instance RRE(p, ZMod p) FORMALIZED Lean-core (`MovesD/R7_runRealizer.lean`, `runRealizerExists_zmod`); the CUC §0 "VERIFIED homes (no pass condition)" registry line as provenance. OWED: the in-document display of the V11/V15 arc's models and pass-cleanliness (or one fresh named hostile pass) — until then the leaf is graded **PROVED-UNVERIFIED with this named pass row**, NOT VERIFIED: the §0 bar (≥ 2 consecutive clean passes, ≥ 2 models) is not checkable from this document's four corners. This resolves the VC10-noted asymmetry precedent (O-2a's core is thrice confirmed yet carries P(O-2a r5)): every consumed PROVED-UNVERIFIED leaf now carries a named §3.2 pass row, O-14a′ included — the §§13/14 invariant is checkable in-document | O-14a′ (Step 9) |
-| **D-11 verification cycle (at r3)** [synced at REVISIONS 1/3; clause 4 carved out at REVISION 4, finding VC4-3] | pass 1 NOT ACCEPTED as billed (2587c70) → r2 (566b967) → pass 2: 2 criticals, both CONTAINED at **r3** (8a0786c: M1(a) rescoped, completed-node overclaim withdrawn — honestly LAYERED; M2.0 rewritten over countable addresses); pass 3 owed. **Scope of this [V] row, exact:** it prices the passes on D-11's ON-FILE proof layers (M1 families/M1′/M3/M2 at their displayed conditionality) ONLY — clause 4 (the actual-pack correspondence) has NO proof on file and is NOT covered here: it is the §3.1 [M] row (PACK) = (ROOT-C)(H5) | D-11 (Steps 17/18b) |
+| **D-11 verification cycle (at r4 REVISION 3)** [synced at REVISIONS 1/3; clause 4 carved out at REVISION 4, finding VC4-3; the pass-3-owed disposition RETIRED at REVISION 10, r11 — replaced by the two-pass r4 record] | pass 1 NOT ACCEPTED as billed (2587c70) → r2 (566b967) → pass 2: 2 criticals, both CONTAINED at r3 (8a0786c) → **pass 3 RAN: CRITICAL** (`D11_owedpass_2026-08-03.md`, 6 crit/3 gap — the STOP-THE-LINE event, ledger 44ce0a7) → the five-round repair design (`R11_REPAIR_DESIGN_V5_2026-08-04.md`) → **r4** (`D11_rev4_2026-08-04.md`: true-scope repairs + the obligations (b-EX)/(O-1)–(O-5)/(O-GLOB)/(ROW-Σ) written out + the (CH-COV)/§2A.4 audits + the §4B (NSF-INT) leaf proof) → **r4 pass 1: CRITICAL** (`D11r4_pass1_2026-08-04.md`, 3 crit/3 gap; folded at the leaf's REVISION 2) → **r4 pass 2: GAPS-ONLY** (`D11r4_pass2_2026-08-04.md`: NO critical remains; all six pass-1 repairs adjudicated VALID; the design-§7 obligations adjudicated AS PROOFS; 3 bookkeeping gaps folded at the leaf's REVISION 3). OWED NOW: one confirming clean pass on the REVISION-3 text toward the leaf's own two-consecutive-clean bar (pass 2's gaps were folded AFTER it, so the leaf bar is not yet met). **Scope of this [V] row, exact:** it prices the passes on D-11's ON-FILE proof layers (M1 families/M1′/M3/M2-at-(RE)/M2.0/(ROW-Σ)/(b-EX)/(O-GLOB) at their displayed conditionality) ONLY — clause 4 (the actual-pack correspondence) and the (RE) profile of the consumed member ((PACK-iv)) have NO proof on file and are NOT covered here: they are the §3.1 [M] row (PACK) = (ROOT-C)(H5); the (H9) members likewise sit in §3.1, never here | D-11 (Steps 17/18b) |
 | **O-11 verification cycle (at r3)** [synced at REVISIONS 1/3] | pass 1 NOT ACCEPTED AS STATED (a7ede72) → r2 (1bd8bd1, D-a/D-b/D-c declared + oracle-pin supplement) → pass 2 (V32): billing precision → **r3** (7aef1b9: tier 2 split into hypothesis-grade rows H-1..H-4; walk/cores byte-stable); pass 3 owed | O-11 (Step 18) |
 | **(AGR) inherited [V]** [relocated from §3.1 at REVISION 1, finding 10] | the drainage agreement seam, ASSEMBLED from CU-2 + CU-4 + GMN Cor 4.19 (all on file); its residue = exactly the pass debts of CU-2/CU-4 (this table) + the Cor 4.19 literature row (§4) — nothing else | O-4/O4T TR-OM (Step 13) |
 | **Dfloor 3 minor gaps** | ID reduced-rep, ADD induction coprimality, TRANSFER sum-regularity — ride the next doc touch | Dfloor (Step 1) |
 | **O-10 2 minor gaps** [added at REVISION 3 status sync] | the D-8 value-vs-law framing (collapses definitionally) + the box-count transport cite — found at the VERIFYING pass 2; **repaired at O-10 r2, landed at revision close** (3956500: the D-8 separation dropped as definitional with the existence range displayed; the (BOX) transport display + M07 §2.1 cite row; cores byte-stable). Per the wave-14 ledger: VERIFIED (leaf #6) STANDS, framing fixed; the r2 diff-confirmation rides the next harvest | O-10 (Step 15) |
 | **B-layer verification rounds** [row added at REVISION 1, finding 3; B-4 added at REVISION 2, finding V2-4; **B-3 (doc level) added at REVISION 3, finding B4**] | B-1, B-2 (doc level), **B-3 (doc level)**, **B-4 (order-r layer)**, B-5, B-6, B-7 are PROVED-UNVERIFIED June documents (grades displayed at Step 2); the tree §4 protocol already schedules their verification-only rounds; B-3's core and B-2's counting core are VERIFIED-LEAN (B-3's doc level has the same status shape as B-2's — Lean-verified core + PROVED-UNVERIFIED June document — and is now listed like it); B-4's order-1 instance = B-3's VERIFIED-LEAN core, and its order-r content (`M6_lemma.md`) has as modern face O-9's OL-B, discharged to GD-3 — on the modern path the orders-≥ 2 content rides §3.1's (GR-B), so this row prices only the June-document verification rounds; B-8 SUPERSEDED, cited nowhere | B-layer (Steps 2, 3) |
 | **K-12 faithfulness-audit record** | the Lean `undec`/`hExhaustP` vs mathematical-classifier audit (DELTA-1 §D1.5(g)); grade held pending | K-12/n = 2 anchor |
-| **End-to-end passes on THIS document** [synced at REVISIONS 1/3/4/5/6/7/8/9] | passes 1–8 RAN, each COMPOSITION-GAPS → each repaired by its revision (§§7–14): VC1 (Codex) → REVISION 1; VC2 (Codex) → REVISION 2; VC3 (Fable, model-diverse) → REVISION 3 — VC3 confirmed the composition's MATHEMATICS; VC4 (Codex) → REVISION 4 — again all attribution/ledger integrity (a new hypothesis-grade row surfaced ((PACK)), one attribution weakened favorably ((SQ) unconditional)); VC5 (Codex) → REVISION 5 — two blockers of ONE genre (consumed [T] rows are open propositions: the (H6) promotion) + the standing T-U advisory, with the eight-row mapping, both unconditional clauses, the (ADM) operative form, the (PACK)/(K3-δ) propagation, acyclicity, and the Σ_τ R_τ = 1 derivation all PASSING; VC6 (Fable, model-diverse) → REVISION 6 — 3 blockers, the VC5 genre WALKED TO COMPLETION (the last consumed-open-in-[T] rows: (H1) enlarged by GD-1-beyond-1 + the GD-6 instances; (H7) = (I-τ)/K-LOC) + 6 advisories (incl. A-9: the T-U §U.SQ.6 table now EXECUTED at §3.4), with the nine-row bijection, per-clause attribution, acyclicity, Σ_τ R_τ = 1, (SL≥2), and the leaf-#8 interlock all PASSING; VC7 (Codex) → REVISION 7 — 2 blockers, BOTH attribution/warrant findings at REVISION-6 A-6 adjudications (Step 6's all-order KEY1 consumption had no displayed (H1) member → member (d) added; (PACK)'s correspondence could not warrant the three pack row-laws → the (H5) enlargement PACK-i/ii/iii) + 3 advisories, with VC7's findings 6–11 CONFIRMING the composition (the §3.4 T-U tables genuine incl. the three flagged adjudications; the (H1) enlargement + (H7) sound; the TEN-row bijection correct with per-clause attribution consistent; the walk proving (ROOT-C) quantifier-for-quantifier; acyclicity PASSING); VC8 (Codex) → REVISION 8 — 1 blocker + 1 advisory, the NARROWEST residue of the eight passes, BOTH at the REVISION-7 repairs themselves ((H1)(d)'s "key has degree > 1" quantifier rested on an UNPROVEN identification with the order-≥ 2 reads → the member REQUANTIFIED to read order; the PACK K2/K3 sub-attribution inconsistent across summaries → synced, PACK-i/ii at K2's glue, PACK-iii at K3's ring-hom with D-6), with all three r8 advisory repairs, the TEN-row count, the quantifier walk (Σ_τ R_τ = 1 properly delayed to Step 19), acyclicity incl. 17 ≺ 18 ≺ 18b, and no regression on the §3.4 tables/(H7)/bijection/pack-law non-inference all PASSING. The criterion: ≥ 2 consecutive CLEAN end-to-end passes, ≥ 2 models, verifiers who saw none of the per-leaf rounds (tree §4 Root criterion); after pass 8 the consecutive-clean counter stood at ZERO, with VC9 next (charge at §14). **ACCEPTANCE [synced at REVISION 9]:** VC9 (Codex) and VC10 (Fable — the model-diverse pass) RAN on the IDENTICAL REVISION-8 text and BOTH returned **COMPOSITION-SOUND, ZERO blockers** (`lean/notes/openmath/VC9_root_report.md`, `lean/notes/openmath/VC10_fable_report.md`) — the criterion is MET (two consecutive clean passes, two models, fresh verifiers): the composition is **ACCEPTED at (ROOT-C)'s displayed conditional scope**, and the consecutive-clean counter is **TWO**. VC10's three ADVISORIES (display hygiene only) are dispositioned at §15 (REVISION 9, post-acceptance) — advisories do NOT reset the counter; it STAYS TWO | Phase C |
+| **End-to-end passes on THIS document** [synced at REVISIONS 1/3/4/5/6/7/8/9] | passes 1–8 RAN, each COMPOSITION-GAPS → each repaired by its revision (§§7–14): VC1 (Codex) → REVISION 1; VC2 (Codex) → REVISION 2; VC3 (Fable, model-diverse) → REVISION 3 — VC3 confirmed the composition's MATHEMATICS; VC4 (Codex) → REVISION 4 — again all attribution/ledger integrity (a new hypothesis-grade row surfaced ((PACK)), one attribution weakened favorably ((SQ) unconditional)); VC5 (Codex) → REVISION 5 — two blockers of ONE genre (consumed [T] rows are open propositions: the (H6) promotion) + the standing T-U advisory, with the eight-row mapping, both unconditional clauses, the (ADM) operative form, the (PACK)/(K3-δ) propagation, acyclicity, and the Σ_τ R_τ = 1 derivation all PASSING; VC6 (Fable, model-diverse) → REVISION 6 — 3 blockers, the VC5 genre WALKED TO COMPLETION (the last consumed-open-in-[T] rows: (H1) enlarged by GD-1-beyond-1 + the GD-6 instances; (H7) = (I-τ)/K-LOC) + 6 advisories (incl. A-9: the T-U §U.SQ.6 table now EXECUTED at §3.4), with the nine-row bijection, per-clause attribution, acyclicity, Σ_τ R_τ = 1, (SL≥2), and the leaf-#8 interlock all PASSING; VC7 (Codex) → REVISION 7 — 2 blockers, BOTH attribution/warrant findings at REVISION-6 A-6 adjudications (Step 6's all-order KEY1 consumption had no displayed (H1) member → member (d) added; (PACK)'s correspondence could not warrant the three pack row-laws → the (H5) enlargement PACK-i/ii/iii) + 3 advisories, with VC7's findings 6–11 CONFIRMING the composition (the §3.4 T-U tables genuine incl. the three flagged adjudications; the (H1) enlargement + (H7) sound; the TEN-row bijection correct with per-clause attribution consistent; the walk proving (ROOT-C) quantifier-for-quantifier; acyclicity PASSING); VC8 (Codex) → REVISION 8 — 1 blocker + 1 advisory, the NARROWEST residue of the eight passes, BOTH at the REVISION-7 repairs themselves ((H1)(d)'s "key has degree > 1" quantifier rested on an UNPROVEN identification with the order-≥ 2 reads → the member REQUANTIFIED to read order; the PACK K2/K3 sub-attribution inconsistent across summaries → synced, PACK-i/ii at K2's glue, PACK-iii at K3's ring-hom with D-6), with all three r8 advisory repairs, the TEN-row count, the quantifier walk (Σ_τ R_τ = 1 properly delayed to Step 19), acyclicity incl. 17 ≺ 18 ≺ 18b, and no regression on the §3.4 tables/(H7)/bijection/pack-law non-inference all PASSING. The criterion: ≥ 2 consecutive CLEAN end-to-end passes, ≥ 2 models, verifiers who saw none of the per-leaf rounds (tree §4 Root criterion); after pass 8 the consecutive-clean counter stood at ZERO, with VC9 next (charge at §14). **ACCEPTANCE [synced at REVISION 9]:** VC9 (Codex) and VC10 (Fable — the model-diverse pass) RAN on the IDENTICAL REVISION-8 text and BOTH returned **COMPOSITION-SOUND, ZERO blockers** (`lean/notes/openmath/VC9_root_report.md`, `lean/notes/openmath/VC10_fable_report.md`) — the criterion is MET (two consecutive clean passes, two models, fresh verifiers): the composition is **ACCEPTED at (ROOT-C)'s displayed conditional scope**, and the consecutive-clean counter is **TWO**. VC10's three ADVISORIES (display hygiene only) are dispositioned at §15 (REVISION 9, post-acceptance) — advisories do NOT reset the counter; it STAYS TWO. **SUSPENSION + REVISION 10 [r11, 2026-08-04 — the CURRENT standing]:** the acceptance was **SUSPENDED** at the stop-the-line (ledger 44ce0a7): the owed D-11 pass 3 returned CRITICAL and Steps 17/18b consumed the refuted layers AS PROVED. REVISION 10 (§16) CURES the composition-level defect (the repaired r4 leaf consumed at true scope; every missing premise a displayed [M] member; TWELVE rows ↔ (H1)–(H9)) — but a suspension cure is a TEXT CHANGE: **the consecutive-clean counter is ZERO of 2**, the acceptance is NOT in force, and it is re-earned ONLY by two fresh consecutive clean model-diverse end-to-end passes on the IDENTICAL REVISION-10 text (fresh verifiers, tree §4 Root criterion). VC-next charge at §16 | Phase C |
 
 **GD23 row RETIRED [REVISION 1 status sync]:** the former "GD23 gap-9 light repairs"
 row is DISCHARGED — rev 4 repaired all 9 gaps (f9878d1, cores byte-stable), the
@@ -1399,13 +1536,13 @@ findings VC7-3/VC7-5]).
 | 5. CL-4 X.3 termination a.e. | a.e. decidedness | → Step 13 (Lemma A: drainage ⇔ a.e.-decidedness + Theorem E at every prime, SEMANTIC layer unconditional; canonical-classifier transfer at general n = (AGR), the §3.2 inherited-[V] row; n ≤ 3 unconditional by Thm N3) |
 | 6(i). CL-5 XHD = M4a-X (+ (ENT-U)) | the height-domains package | → Step 2 (T-5 H-DOMAINS at its VERIFIED-DUAL perimeter), consumed by Step 18's K3-a at exactly that perimeter; the package's open kernels are item 14's six fences — see item 14 |
 | 6(ii). CL-5 D4R.0 | marked CLOSED in-list (ledger echo, not distance) | → Step 2 (T-3 §D4-R, dual-verified derivation; (a)/(b) discharged); the K-residual (c) = VP routes to item 10 |
-| 6(iii)–(ix) + 7. the CTS-M family (PART / REP / MEAS / HMC / ACT / INIT+ENT-COUNT / COMP-typing) + CTS-M(iv)-POLY (CL-6) | the per-species value/mass semantic laws | governed by the recorded re-scopes (DELTA-1 §D1.5(e): T-1/T-7 semantic clauses route through the dictionary; D-9: [1v]-FULL re-owned by O-11): symbolic halves → Step 2 (T-7s/T-3); mass laws → Step 17 (M1/M1′/M3 over O-12's L1–L6′ base, Step 5) with measurability/cylinder structure → Steps 1/6 (D-1, D-15) and leaf labels → Step 12; the COUNT laws (CL-6's polynomiality = the census) → Step 14 (M08/O-9) and Step 18's K3 assembly; COMP-typing → Steps 7/10 (Θ's typing; OL-6 binding); ACT's (REG-p)-separateness note → Steps 4/5 + the D1.5(f) T-8 re-scope. Open residue priced at §3.1 [residue list CORRECTED at REVISION 7, finding VC7-3 — the routes through Steps 6/11/12/17 also inherit D-12r and (E-N), i.e. the rest of (H3); the table's reading rule (step pointers inherit each step's declared conditionality) already prevented a hidden hypothesis, but the former list ((H1), (FRESH), (ADM), (PACK), (H6)) was inaccurate as a purported exhaustive residue]: (H1) group, (H2) = (FRESH), the FULL (H3) ((ADM) + D-12r + (E-N)), **(H4a) + (K3-δ)** [RUN TO CLOSURE at REVISION 9, VC10 advisory 3 — this row's own route through Step 18's K3 inherits them at K3-c's base-changed β-legs (the δ > 1 pools), exactly as row 9 already names explicitly; the VC7-3 correction completed], (PACK), (H6) — the list is now CLOSED under the table's own reading rule (step pointers inherit each step's declared conditionality; every step route this row names has been traced): no CTS-M face is consumed outside these homes |
+| 6(iii)–(ix) + 7. the CTS-M family (PART / REP / MEAS / HMC / ACT / INIT+ENT-COUNT / COMP-typing) + CTS-M(iv)-POLY (CL-6) | the per-species value/mass semantic laws | governed by the recorded re-scopes (DELTA-1 §D1.5(e): T-1/T-7 semantic clauses route through the dictionary; D-9: [1v]-FULL re-owned by O-11): symbolic halves → Step 2 (T-7s/T-3); mass laws → Step 17 (M1/M1′/M3 over O-12's L1–L6′ base, Step 5 — at M1's r4 per-clause scope [REVISION 10, r11, edit E6]: families (i)–(iii) conditional on C_e, family-(v) per-occurrence readings, families (iv)/(vi)/(vii) excluded at (a″); M3 at separable-lift scope with the (H9) routing price) with measurability/cylinder structure → Steps 1/6 (D-1, D-15) and leaf labels → Step 12; the COUNT laws (CL-6's polynomiality = the census) → Step 14 (M08/O-9) and Step 18's K3 assembly; COMP-typing → Steps 7/10 (Θ's typing; OL-6 binding); ACT's (REG-p)-separateness note → Steps 4/5 + the D1.5(f) T-8 re-scope. Open residue priced at §3.1 [residue list CORRECTED at REVISION 7, finding VC7-3 — the routes through Steps 6/11/12/17 also inherit D-12r and (E-N), i.e. the rest of (H3); the table's reading rule (step pointers inherit each step's declared conditionality) already prevented a hidden hypothesis, but the former list ((H1), (FRESH), (ADM), (PACK), (H6)) was inaccurate as a purported exhaustive residue]: (H1) group, (H2) = (FRESH), the FULL (H3) ((ADM) + D-12r + (E-N)), **(H4a) + (K3-δ)** [RUN TO CLOSURE at REVISION 9, VC10 advisory 3 — this row's own route through Step 18's K3 inherits them at K3-c's base-changed β-legs (the δ > 1 pools), exactly as row 9 already names explicitly; the VC7-3 correction completed], (PACK), (H6) — the list is now CLOSED under the table's own reading rule (step pointers inherit each step's declared conditionality; every step route this row names has been traced): no CTS-M face is consumed outside these homes |
 | 8. CL-7 TRACK-COUNT + L(n)/D(n) + positive-genuine-increment | p-uniform decided-family bounds | EVICTED — tree O-6, route R-QNT (§3.3 eviction list; K-3's repaired math = O-6, likewise struck); the count-native walk needs only per-level finiteness (inside Step 1's cylinder count) + the p-free menu bound (Step 3). Lean face `BK.slice_bound` carried, permanently fenced (census §2.3) |
 | 9. CL-8 REL.1 / REL.2(a)(b)(d)(e) / REL.3 | the relative-measure ledger | → Steps 15 (O-10's adapted-cell product law — the (SIB) mass statements), 17 (M1 mass laws), and the β(q^δ)-typing leg (e) → Step 16 + Step 18's K3-c = (H4a) + (K3-δ) (§3.1); the PCI/height-elimination package (REL.2(a)/(b)/(d) + XRB) is CL-9's RS.0(β), proved in [3] = the VERIFIED-DUAL T-5/T-8 layer (Step 2) |
 | 10. CL-10 (SIB)/(SIB-STEP) + (JC-multi); VP; VP-SOUND; TREE-EXP/TREE-N | the tree-assembly package | (SIB)/(SIB-STEP)/(JC-multi) → Step 15 (Thm 2 unconditional in factor coordinates; T-6's (SIB-STEP) at the statement layer per Step 15's Delivers; engine-stratum application = (H7), §3.1). VP = the D4R.0-K(c) verdict pin → Step 6 (D-15, the pin's home) with TB-CAP per clause: (τ-hen) proved, (τ-irr) = the (H3) D-12r row, (ns-null) → Step 1's Appendix A + T-6 (Step 2). VP-SOUND's two cites → Step 12 (LIT-3 coprime Hensel + GMN Cor 3.8/Def 3.9 — both §4-pinned). TREE-EXP/TREE-N → Step 2 (T-3/T-6) + Step 6 (D-14's per-site read locality = the transfer kernel's repaired form) |
 | 11. CL-11 no-equal-e-feedback + DEG-CONS | degree conservation / well-foundedness | DISCHARGED: PROVED at all n Lean-core (M09 `KsubGeneral.lean`, census §2.3) + Step 5's (SL≥2)/L4 strict descent + Step 17's M1 degree checksums (Step 12 Thm B consumes checksums only) |
 | 12. CL-17 shallow assembly (routing + unique shallow cut + W_Ŝ regrouping; (ii) production) | the RS.1 interface | → Step 2 (T-8's block-triangular solve + T-5 domains, VERIFIED-DUAL); the production burden is PROVED Lean-core at every chain (`w17ii_pin`, census §2.3 — the banked burden retired) |
-| 13. CL-18 (J-RAT); CL-19 (JC-INV) | per-cell rational tables; joint-cell invariance | (J-RAT) → Step 2 (T-7s tables) + Step 14 (census polynomials) + Step 17 (M1: entries ARE masses); its general-n table BUILD = Step 18's K3 + (H5)/(PACK). (JC-INV) = `cl19_rep`: REFUTED AS STATED (K-7 → refuted, §3.3 closed/refuted roster; M11's 4 ≠ 0 countermodel at n = 2) — the mandatory path never consumes it: D-11 needs per-box lift uniformity instead (D-15, Step 6; DELTA-3 §D3.1, zero ∼_OM/OB2 touch-points); the repaired carrier form = O-14b, §3.3, consumed by NO §2 step |
+| 13. CL-18 (J-RAT); CL-19 (JC-INV) | per-cell rational tables; joint-cell invariance | (J-RAT) → Step 2 (T-7s tables) + Step 14 (census polynomials) + Step 17 (M1 r4: family-(i)/(ii)/(iii) entries ARE masses CONDITIONAL on C_e, families (iv)/(vi)/(vii) excluded at (a″) [re-scoped at REVISION 10, r11, edit E6]); its general-n table BUILD = Step 18's K3 + (H5)/(PACK). (JC-INV) = `cl19_rep`: REFUTED AS STATED (K-7 → refuted, §3.3 closed/refuted roster; M11's 4 ≠ 0 countermodel at n = 2) — the mandatory path never consumes it: D-11 needs per-box lift uniformity instead (D-15, Step 6; DELTA-3 §D3.1, zero ∼_OM/OB2 touch-points); the repaired carrier form = O-14b, §3.3, consumed by NO §2 step |
 | 13a. CL-13 CTS-M(i) SYNTAX | the ONE fixed finite p-independent state set | → Steps 2/3 (T-4's letter catalogue + O-13/D-12's p-free Sk(n); `cl13_wf` DISCHARGED — `menuWFT_holds`, census §2.3) |
 | 13b. CL-14 M1 + M5 | marked CLOSED in-list (ledger echo) | → Steps 2/3 (the finite branch-shape catalogue); residuals route per the list itself (VP → item 10; SP-FIN/SP-OUT → item 13a) |
 | 13c. CL-15 X.1a per-species GMN index dictionary | envelope-constants dictionary | EVICTED by consumer audit **[NEW — VC7]**: CL-15's own text names its consumers as X.2's constants + the depth ⟹ disc envelope — the R-QNT family (items 2/3/4); distinct from item 4's proof duty but same disposition; the count-native discriminant bound is Step 13's Lemma C |
@@ -1670,7 +1807,23 @@ match display, the (PACK) data pass + the three row-law displays at 𝔅_n, the
 (H6) conformance-unit write-ups, the (H7) discharge unit, the GD-7 flag
 reading session; then the GD order-≥ 2 campaign for the ENLARGED (H1) group
 and (FRESH) — the heavy remainder; (3) the §5 matrix re-runs green at final
-acceptance; (4) the completeness audit.]
+acceptance; (4) the completeness audit.] [Updated at REVISION 10 — SUSPENSION
+CURED, ACCEPTANCE NOT RE-EARNED: the D-11 pass 3 ran CRITICAL (the stop-the-line,
+ledger 44ce0a7 — acceptance SUSPENDED per `docs/PROJECT_STATE.md`); the five-round
+repair design (`R11_REPAIR_DESIGN_V5_2026-08-04.md`) executed as Unit A (the D-11
+r4 leaf, twice hostile-passed: pass 1 CRITICAL folded, pass 2 GAPS-ONLY with all
+design-§7 obligations VALID as proofs) and Unit B (THIS document's r11 = §16:
+Steps 17/18b re-pointed to the repaired true-scope leaf; (PACK-iv) into (H5);
+NEW rows (H8) = (K-CUT) and (H9) = (NSF); E-M3 at Step 12; TWELVE rows ↔
+(H1)–(H9)). Dispatch now: **VC-next — the fresh end-to-end bar on this
+REVISION-10 text, counter ZERO of 2** (charge at §16: verify the r11 edits, the
+twelve-row invariant, no regression); in flight/owed BEYOND the bar: the D-11
+confirming clean pass on the leaf's REVISION-3 text + the O-11 pass 3, Unit C =
+the sign-off-gated (NSF-KEY) execution ((NSF-KEY-RET) R-0..R-5), the (K1-CANON)
+discharge (M04-side pin display or interface lemma), the (H8) retirement
+adjudication (O-11 §8 charge (vi)), the (PACK) data pass now INCLUDING
+(route-a)'s booking-profile duty, and the standing queue above ((H6)/(H7)
+units, registry passes, (UB-X)/(R1)–(R4), the GD order-≥ 2 campaign).]
 
 — ROOT ASSEMBLY complete, 2026-08-02. Composed at HEAD d730669 + the recorded
 in-flight events (O4T pass 2, untracked). Every §2 grade traces to a named commit or
@@ -1703,8 +1856,19 @@ display hygiene only: it repairs VC10's three advisories (the O-14a′
 §0-vocabulary grade display + the NEW §3.2 row P(O-14a′ r3); the D-12r/(E-N)
 rows' Step-16/clause-(UB) transport entries; Table A's 6(iii)–(ix)+7 residue
 list run to closure with (H4a)+(K3-δ)), with no [M] member, no step content,
-and no clause attribution changed. The ACCEPTANCE STANDS; the consecutive-clean
-counter is TWO and stays TWO — advisories do not reset it.
+and no clause attribution changed. [The "ACCEPTANCE STANDS ... counter TWO"
+close of that revision is SUPERSEDED by the record below.] SUSPENSION
+(2026-08-03, ledger 44ce0a7): the owed D-11 pass 3 returned CRITICAL and Steps
+17/18b consumed the refuted layers as proved — the Phase-C acceptance
+SUSPENDED. REVISION 10 (§16, unit ROOT r11, 2026-08-04) applied: Steps 17/18b
+re-pointed to the twice-passed true-scope D-11 r4 leaf (REVISION 3); (PACK-iv)
+added as (H5)'s fourth row-law (consumed at Step 18b direct + Step 17's E1
+(ROW-Σ) display only — the leaf's closed edge set); NEW [M] rows (H8) = (K-CUT)
+and (H9) = (NSF) ((NSF-KEY) KNOWN FALSE AT HEAD, Unit-C/sign-off-gated);
+Step 12's delivery rescoped to separable lifts (E-M3); the §3.1 roster is
+TWELVE rows ↔ (H1)–(H9). **The suspension's composition-level defect is CURED;
+the ACCEPTANCE is NOT re-earned: the consecutive-clean counter is ZERO of 2**,
+and the end-to-end bar re-runs on this REVISION-10 text (charge at §16).
 
 ---
 
@@ -2449,4 +2613,94 @@ its unit of record (unit ROOT r10).
 
 — REVISION 9 complete. The ACCEPTANCE (VC9 + VC10 on REVISION 8) STANDS; this
 revision changes displays only; the ≥ 2 consecutive-clean counter is TWO and
-stays TWO.
+stays TWO. [Historical close — superseded by the §16 suspension record.]
+
+## 16. REVISION 10 (r11 executed, 2026-08-04, unit ROOT r11) — the suspension record: stop-the-line CURED, acceptance NOT re-earned, counter ZERO
+
+**The suspension (what happened).** The Phase-C acceptance (VC9 + VC10 on the
+REVISION-8 text, §15) was **SUSPENDED at the 2026-08-03 stop-the-line** (ledger
+`BRIDGE_ADJUDICATIONS_2026-07-30.md` entry at 44ce0a7; `docs/PROJECT_STATE.md`
+correction addendum): the owed D-11 pass 3 (`D11_owedpass_2026-08-03.md`, Codex,
+fresh context) returned **CRITICAL** (6 criticals/3 gaps), and the hostile impact
+audit showed two MANDATORY steps of REVISION 9 consuming the refuted layers AS
+PROVED — Step 17 ← Theorem M1 (refuted at its announced conditioning scope, at
+the family-(v) per-entry mass claim, at its billing, and at M1(b)'s multi-step
+disjointness) and Step 18b ← Theorem M2 (FALSE at its displayed universal scope;
+the missing premise billed in NO hypothesis row). The VC9/VC10 passes remain
+valid AS composition-level audits — what failed was the leaf under its owed
+pass, exactly what the owed-pass discipline exists to catch.
+
+**The cure (what this revision consumes and why nothing refuted remains).**
+Governing design: `lean/notes/openmath/R11_REPAIR_DESIGN_V5_2026-08-04.md`
+(five Codex plan-review rounds; execution-ready per its §9). Unit A produced
+the repaired leaf `D11_rev4_2026-08-04.md` — true-scope repairs at every pass-3
+finding site plus the written-out obligations ((b-PF)/(b-EX)/(LOOP-∞),
+(O-1)–(O-5), (O-GLOB), (ROW-Σ)) and audits ((CH-COV) §4A, the (ROW-Σ) edge walk
+§2A.4, the (NSF-INT) leaf proof §4B) — which then passed its own hostile bar:
+**r4 pass 1 CRITICAL** (`D11r4_pass1_2026-08-04.md`; folded at the leaf's
+REVISION 2), **r4 pass 2 GAPS-ONLY** (`D11r4_pass2_2026-08-04.md`: no critical
+remains, all six pass-1 repairs VALID, the design-§7 obligations adjudicated AS
+PROOFS; its three bookkeeping gaps folded at the leaf's REVISION 3). THIS
+revision (Unit B) re-points ROOT's consumption at that final state:
+
+| edit | disposition |
+|---|---|
+| E1 (Step 17 Statement) | REWRITTEN to the r4 true-scope form: per-clause reference measures; families (iv)/(vi)/(vii) excluded at (a″); the "Σ = 1 across each row" fragment RESCOPED to cite **(ROW-Σ)** (the leaf's §2A.2 PROVED theorem: solved totals = 1; per-booking verdict-row totals = Φ^{(O1)}/Φ^{(O2′)}/Φ^{(O3)}); (b) via (b-PF) + (b-EX) at its route-(a) scope; (LOOP-∞) exact; M3 at separable-lift scope with the (H9) routing price |
+| E2 (Step 17 Status) | the pass-3 CRITICAL record + the r4 two-pass record displayed; the leaf's confirming pass rides §3.2 |
+| E3 (Step 18b Proof) | re-pointed to Theorem M2 (r4) AT its (RE) scope; arbitrary-α members excluded in-statement; the definitional discharge WITHDRAWN; (RE) at the consumed member = **(PACK-iv)** |
+| E4 ((H5) enlargement) | **(PACK-iv) sem_alloc** added as the FOURTH row-law (an addition, never a clarification); consumption set = the leaf's CLOSED two-element edge set {Step 18b direct; Step 17's E1 (ROW-Σ) delivery display} — the design's "untraced cover" clause replaced by the executed §2A.4 walk (residue (EDGE-RES)) |
+| E5 (new rows) | **(H8) = (K-CUT)** (the Lemma-3.3 cut kernel, owed-pass G-2; retirement = O-11 §8 charge (vi)) and **(H9) = (NSF)** ((NSF-INT) with its displayed marks-vocabulary + **(K1-CANON)** premises housed in-member; (NSF-KEY) KNOWN FALSE AT HEAD, retiring ONLY by the sign-off-gated Unit C per (NSF-KEY-RET)); §1's (ROOT-C) display, per-clause attribution, Step 18's K1/K4 lines synced |
+| E6 (§3.4) | rows 6(iii)–(ix)+7 and 13: "(M1: entries ARE masses)" pointers re-scoped to the r4 per-clause form |
+| E7 (§3.2 D-11 row) | pass-3-owed disposition RETIRED → the two-pass r4 record; O-11's row stays owed, unchanged |
+| E8 (standing) | header/§1/§3.2/§6/footer read SUSPENDED-then-CURED with the counter at ZERO; no display reads "accepted" as current status |
+| E9 ((H9) displays) | Step 18's K1/K4 lines + Step 17's M3 leg carry the (H9) target AT ITS INTERFACE-PIN SCOPE with both members + two-channel attribution + (CH-COV) status; NO display covers the HEAD wiring ((NSF-KEY) unretired — Unit C has NOT run; no executed status is written) |
+| E-M3 (Step 12) | the "every lift g" delivery RESCOPED to every MONIC SEPARABLE lift + the ns-null mass note (the leaf's REVISION-2 gap-6/G6 record) |
+
+Nothing refuted is consumed-as-proved anywhere: Step 17/18b consume the
+twice-passed repaired layers at their displayed scopes, and every premise the
+audit found unpriced is a displayed [M] member ((PACK-iv), (H8), (H9)).
+
+**The completeness invariant, re-run.** §3.1 has **TWELVE rows ↔ (ROOT-C)'s
+(H1)–(H9)**: (H1) the graded-dictionary family · (H2) = (FRESH) · (H3) =
+{(ADM), D-12r, (E-N)} (three rows, one group) · (H4a) = (R1)–(R4) · (H4b) =
+(UB-X) · (H5) = (PACK) (row-law roster now FOUR: PACK-i/ii/iii/iv, plus the
+correspondence clause) · (H6) the terminal-seam group · (H7) = (I-τ)/K-LOC ·
+**(H8) = (K-CUT)** · **(H9) = (NSF)** (two members). Ten → twelve; (PACK-iv)
+adds a MEMBER, not a row. Per-clause attribution: (0)/(SQ) UNTOUCHED
+(unconditional, consuming no §3.1 row); (R) and (UB) each gain (H8) + (H9).
+
+**Acyclicity note.** The stratification Step 17 ≺ Step 18 ≺ Step 18b is
+INTACT: (ROW-Σ) is proved at Step 17's layer with NO M2 content (hypotheses:
+(PACK-iv), M1(a)(ii)/(iii), M1(d), the O-12 solve displays); (PACK-iv) is
+hypothesis-class with no step-dependencies, entering at Step 18b (direct) and
+at Step 17's E1 display only; no 18b content flows into 17/18.
+
+**The counter and the bar.** REVISION 10 is a text change after the VC9/VC10
+passes, and the acceptance those passes earned is suspended: **the
+CONSECUTIVE-CLEAN COUNTER = ZERO.** The acceptance condition is restated in
+full: **two consecutive CLEAN end-to-end passes on the IDENTICAL REVISION-10
+text, fresh-context verifiers, ≥ 2 models (the model-diverse bar), verifiers
+who saw none of the per-leaf rounds** — the tree §4 Root criterion, exactly as
+at REVISION 8. Any text change after a pass restarts the counter.
+
+**VC-next charge (the next end-to-end pass).** Verify (i) the r11 edits
+themselves — E1/E2/E3/E4/E5/E6/E7/E8/E9/E-M3 above, each against the D-11 r4
+leaf's final state (REVISION 3) and design V5; (ii) the TWELVE-row invariant —
+the §3.1 roster ↔ (H1)–(H9) bijection, the per-clause attribution ((0)/(SQ)
+untouched; (R)/(UB) gaining exactly (H8)/(H9)), and the (PACK-iv)
+member-not-row accounting; (iii) NO REGRESSION on the VC9/VC10-confirmed
+composition items (the walk, acyclicity incl. 17 ≺ 18 ≺ 18b, the §3.4 tables,
+the quantifier-for-quantifier (ROOT-C) reading). Standing charge riders: the
+(H9) display must nowhere read as covering the HEAD Lean wiring; no display
+may read "accepted" as current status.
+
+**Bookkeeping.** Historical §§7–15 untouched (their acceptance language is
+historical record, marked superseded at §15's close and the footer). No leaf
+status upgraded: D-11 stays PROVED-UNVERIFIED at its two-pass record (the
+confirming pass owed); VERIFIED = 9 stands. Unit C ((NSF-KEY) execution) has
+NOT run — it awaits Asvin's sign-off per (NSF-KEY-RET) R-0 (statement fence);
+the O-11 pass 3 and the (K1-CANON) discharge remain owed. The commit closing
+this revision is its unit of record (unit ROOT r11).
+
+— REVISION 10 complete. The stop-the-line is CURED at composition level; the
+acceptance is NOT re-earned; the counter is ZERO of 2 toward the restated bar.
