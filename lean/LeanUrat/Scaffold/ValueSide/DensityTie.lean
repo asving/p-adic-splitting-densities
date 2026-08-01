@@ -6,8 +6,8 @@ the PROVED corpus `TreeSeam.finiteness_stack`), D0a (`dmass_monotone`,
 `dmass` monotone in N from `canonical_stable` + T0), D0 (`cylDensity`,
 BP_IV §1.6 verbatim), D2 (`sum_cylDensity_eq_one`, the squeeze — BP_IV §1.6
 verbatim; the corpus box partition `boxN` (U1) + D0a monotone convergence +
-the `henv` binder).  Later waves add
-D3 (`cylDensity_eq_seriesSum`), D5 (`renewal_unique_of_margin`), and D4
+the `henv` binder), D3 (`cylDensity_eq_seriesSum`).  Later waves add
+D5 (`renewal_unique_of_margin`) and D4
 (`valueSide_massTie`, the movement CAPSTONE).
 Import graph (BP_IV §1.0/§4): this module imports the completed
 `SeriesTie.lean`; `SeriesTie.lean` never imports this module.  D0a's T0
@@ -37,7 +37,7 @@ import LeanUrat.MovesU.U1_boxN
 
 namespace LeanUrat.Scaffold
 
-open LeanUrat.MovesU ENNReal Filter Topology Filter
+open LeanUrat.MovesU ENNReal Filter Topology
 
 /-- D1 (slice identity — REUSE, not re-proof; BP_IV §1.6): dmass σ N = slice
     sum, i.e. the corpus `TreeSeam.finiteness_stack`
@@ -143,6 +143,76 @@ noncomputable def cylDensity {n p : ℕ} [Fact p.Prime] (X : ClassifierSpec n p)
     (σ : SplittingType n) : ℝ := ⨆ N, X.dmass σ N
 
 /-!
+**PROVENANCE (unit D2; BP_IV §1.6 code block + §2 D-table row D2).**
+Statement transcribed VERBATIM from §1.6 (the trailing `Fintype` comment line
+of the blueprint block is met by the corpus instance
+`instSplittingTypeFintype`, unit U0b — imported via `MovesU.U1_boxN`).
+Proof per the D2 row sketch, generalizing the proved n = 2 pattern
+`decided6_lower/upper` (`OM/SeriesAssembly.lean`): the corpus box partition
+`boxN` (U1, PROVED: Σ_σ decided_σ(N) + undec(N) = p^{nN}) divided by the
+level-N normalizer gives Σ_σ dmass σ N = 1 − env N with defect env N — the
+§1.6 docstring's env-defect display; each `dmass σ` is monotone (D0a) and
+bounded by 1, so `tendsto_atTop_ciSup` makes every `cylDensity` a true limit;
+the finite Σ_σ of limits then meets the `henv`-squeezed limit 1 and
+`tendsto_nhds_unique` closes.
+-/
+
+/-- D2 (the squeeze): Σ_σ dmass σ N = 1 − env-defect N with defect ≤ env N;
+    with `env → 0` (Step 13's delivery) every cylDensity exists as a true limit
+    and Σ_σ cylDensity = 1.  (Generalizes the proved n = 2 pattern
+    `decided6_lower/upper` in `OM/SeriesAssembly.lean`.) -/
+theorem sum_cylDensity_eq_one {n p : ℕ} [Fact p.Prime]
+    {X : ClassifierSpec n p} (henv : Tendsto X.env atTop (nhds 0)) :
+    ∑ σ : SplittingType n, cylDensity X σ = 1 := by
+  have hp : p.Prime := Fact.out
+  haveI : NeZero p := ⟨hp.ne_zero⟩
+  have hp0 : (0 : ℝ) < (p : ℝ) := by exact_mod_cast hp.pos
+  -- the real box partition (boxN/p^{nN}): Σ_σ dmass σ N + env N = 1
+  have hpart : ∀ N, (∑ σ : SplittingType n, X.dmass σ N) + X.env N = 1 := by
+    intro N
+    have hP : (0 : ℝ) < (p : ℝ) ^ (n * N) := pow_pos hp0 _
+    have hcast : (∑ σ : SplittingType n, (X.decided σ N : ℝ)) + (X.undec N : ℝ)
+        = (p : ℝ) ^ (n * N) := by exact_mod_cast boxN X N
+    unfold ClassifierSpec.dmass ClassifierSpec.env
+    rw [← Finset.sum_div, ← add_div, hcast, div_self hP.ne']
+  have hnn : ∀ (σ : SplittingType n) (N : ℕ), 0 ≤ X.dmass σ N := fun σ N =>
+    div_nonneg (Nat.cast_nonneg _) (pow_pos hp0 _).le
+  have henv_nn : ∀ N, 0 ≤ X.env N := fun N =>
+    div_nonneg (Nat.cast_nonneg _) (pow_pos hp0 _).le
+  -- each dmass σ N ≤ 1 (its Σ_σ' companion terms and env N are ≥ 0)
+  have hle1 : ∀ (σ : SplittingType n) (N : ℕ), X.dmass σ N ≤ 1 := by
+    intro σ N
+    calc X.dmass σ N
+        ≤ ∑ σ' : SplittingType n, X.dmass σ' N :=
+          Finset.single_le_sum (fun σ' _ => hnn σ' N) (Finset.mem_univ σ)
+      _ ≤ (∑ σ' : SplittingType n, X.dmass σ' N) + X.env N :=
+          le_add_of_nonneg_right (henv_nn N)
+      _ = 1 := hpart N
+  -- monotone convergence (D0a + the bound): dmass σ → cylDensity X σ
+  have hlim : ∀ σ : SplittingType n,
+      Tendsto (X.dmass σ) atTop (nhds (cylDensity X σ)) := by
+    intro σ
+    have hb : BddAbove (Set.range (X.dmass σ)) := by
+      refine ⟨1, ?_⟩
+      rintro x ⟨N, rfl⟩
+      exact hle1 σ N
+    exact tendsto_atTop_ciSup (ClassifierSpec.dmass_monotone X σ) hb
+  -- the finite sum of the limits …
+  have hsum : Tendsto (fun N => ∑ σ : SplittingType n, X.dmass σ N) atTop
+      (nhds (∑ σ : SplittingType n, cylDensity X σ)) :=
+    tendsto_finsetSum _ fun σ _ => hlim σ
+  -- … equals the henv-squeezed limit of 1 − env N
+  have hone : Tendsto (fun N => ∑ σ : SplittingType n, X.dmass σ N) atTop
+      (nhds 1) := by
+    have heq : (fun N => ∑ σ : SplittingType n, X.dmass σ N)
+        = fun N => 1 - X.env N := by
+      funext N
+      linarith [hpart N]
+    rw [heq]
+    simpa using henv.const_sub 1
+  exact tendsto_nhds_unique hsum hone
+
+/-!
 **PROVENANCE (unit D3; BP_IV §1.6 code block + §2 D-table row D3).**
 Statement transcribed VERBATIM from §1.6.  Proof per the D3 row sketch
 "D1 + imported S0 + toReal cast under `hfin`": D3a is the imported S0
@@ -155,14 +225,14 @@ closes from D1 + S0 + `hfin` alone (the lower/⨆ form needs no envelope),
 `henv` being consumed by the D2/D4 legs.
 -/
 
-/-- D3 (density IS the series, D-11 M2's (S2)-free half): cylDensity =
-    (seriesSum's ℝ-value) — from D1 + M04 Theorem 1's ⨆-characterization of
-    seriesSum + henv.  D3a: seriesSum σ = ⨆ N (slice sum) (M04 Thm 1, an
-    interface lemma over `mem_slice_iff`); D3b: the cast chain. -/
 -- `henv` is the §1.6 verbatim binder (statement fence); this (S2)-free leg
 -- does not consume it, so the unused-variable lint is silenced for this
 -- declaration only.
 set_option linter.unusedVariables false in
+/-- D3 (density IS the series, D-11 M2's (S2)-free half): cylDensity =
+    (seriesSum's ℝ-value) — from D1 + M04 Theorem 1's ⨆-characterization of
+    seriesSum + henv.  D3a: seriesSum σ = ⨆ N (slice sum) (M04 Thm 1, an
+    interface lemma over `mem_slice_iff`); D3b: the cast chain. -/
 theorem cylDensity_eq_seriesSum {n p : ℕ} [Fact p.Prime] [NeZero p]
     {X : ClassifierSpec n p} {F : FiberSeries n p X} (seam : TreeSeam n p X F)
     (henv : Tendsto X.env atTop (nhds 0)) (σ : SplittingType n)
@@ -180,5 +250,61 @@ theorem cylDensity_eq_seriesSum {n p : ℕ} [Fact p.Prime] [NeZero p]
     ENNReal.toReal_iSup hslice]
   -- termwise: D1 (slice identity)
   exact iSup_congr fun N => dmass_eq_sliceSum seam σ N
+
+/-!
+**PROVENANCE (unit D5; BP_IV §1.6 code block + §2 D-table row D5).**
+Statement transcribed VERBATIM from §1.6.  Proof per the D5 row sketch
+"least solution + any solution differ by a fixed point of A; margin kills
+it": the difference d = x − y of any two renewal solutions is a fixed point
+of A (the b's cancel); at an argmax coordinate i₀ of |d| the row-sum margin
+gives |d i₀| ≤ ρ·|d i₀| with ρ < 1, forcing |d i₀| = 0 and hence d = 0.
+(S1b leastness + S4a finiteness locate the value; uniqueness itself closes
+from the margin alone.)
+-/
+
+/-- D5 (the (r1) uniqueness pivot): under the margin, the renewal solution is
+    UNIQUE (not merely least) — S1b's leastness + S4a's finiteness. -/
+theorem renewal_unique_of_margin {m : ℕ}
+    (A : Matrix (Fin m) (Fin m) ℝ) (b x y : Fin m → ℝ)
+    (hmargin : ∃ ρ : ℝ, 0 ≤ ρ ∧ ρ < 1 ∧
+      ∀ i, ∑ j, |A i j| ≤ ρ)
+    (hx : x = b + A.mulVec x) (hy : y = b + A.mulVec y) :
+    x = y := by
+  obtain ⟨ρ, hρ0, hρ1, hrow⟩ := hmargin
+  -- the difference of two solutions is a fixed point of A (the b's cancel)
+  have hfix : ∀ i, x i - y i = ∑ j, A i j * (x j - y j) := by
+    intro i
+    have hx' := congrFun hx i
+    have hy' := congrFun hy i
+    simp only [Pi.add_apply, Matrix.mulVec, dotProduct] at hx' hy'
+    rw [hx', hy']
+    simp only [mul_sub]
+    rw [Finset.sum_sub_distrib]
+    ring
+  -- the margin kills the fixed point, coordinatewise
+  suffices hz : ∀ i, x i - y i = 0 by
+    funext i
+    have := hz i
+    linarith
+  intro i
+  have : Nonempty (Fin m) := ⟨i⟩
+  -- argmax coordinate of |x − y|
+  obtain ⟨i₀, hi₀⟩ := Finite.exists_max fun k => |x k - y k|
+  -- contraction at the argmax: |d i₀| ≤ ρ · |d i₀|
+  have hbound : |x i₀ - y i₀| ≤ ρ * |x i₀ - y i₀| :=
+    calc |x i₀ - y i₀| = |∑ j, A i₀ j * (x j - y j)| := by rw [hfix i₀]
+      _ ≤ ∑ j, |A i₀ j * (x j - y j)| := Finset.abs_sum_le_sum_abs _ _
+      _ = ∑ j, |A i₀ j| * |x j - y j| := by simp only [abs_mul]
+      _ ≤ ∑ j, |A i₀ j| * |x i₀ - y i₀| :=
+          Finset.sum_le_sum fun j _ =>
+            mul_le_mul_of_nonneg_left (hi₀ j) (abs_nonneg _)
+      _ = (∑ j, |A i₀ j|) * |x i₀ - y i₀| := by rw [Finset.sum_mul]
+      _ ≤ ρ * |x i₀ - y i₀| :=
+          mul_le_mul_of_nonneg_right (hrow i₀) (abs_nonneg _)
+  -- ρ < 1 forces the max to vanish
+  have hmax0 : |x i₀ - y i₀| ≤ 0 := by nlinarith [abs_nonneg (x i₀ - y i₀)]
+  have hi : |x i - y i| = 0 :=
+    le_antisymm (le_trans (hi₀ i) hmax0) (abs_nonneg _)
+  exact abs_eq_zero.mp hi
 
 end LeanUrat.Scaffold

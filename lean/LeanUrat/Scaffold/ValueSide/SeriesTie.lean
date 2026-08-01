@@ -2,10 +2,13 @@
 BP_IV §1.5 — Step 18, the resummation core + the tie assembly
 (`SeriesTie.lean`).
 Units in this file: SKEL (module skeleton) · S0 (seriesSum = ⨆ of slice sums —
-located HERE so this file never depends on `DensityTie.lean`; REV-2 finding 5).
-Later waves add S1a/S1b (Neumann sum + leastness), S2a/S2b
-(`seriesSum_eq_lfp`), S3a/S3b (Bekić), S4a–S4c (margin/summability/solve
-agreement), and S5 (`seriesTie_of_kernels`, targeting the corpus row
+located HERE so this file never depends on `DensityTie.lean`; REV-2 finding 5)
+· S3a (Bekić block, with the §1.5-verbatim `neumannSum` def) · S1b (leastness)
+· S1a (solution half + `neumannSum_isLFP`) · S4a (summability from the
+row-sum margin — the power bound, geometric comparison, and finiteness).
+Later waves add S2a/S2b (`seriesSum_eq_lfp`), S3b, S4b/S4c (telescope/solve
+agreement, assembling the §1.5-verbatim parent `neumann_eq_solve_of_margin`),
+and S5 (`seriesTie_of_kernels`, targeting the corpus row
 `BridgeKernels.series_tie`).
 Import graph (BP_IV §1.0/§4): this module NEVER imports `DensityTie.lean`;
 `DensityTie.lean` imports the completed `SeriesTie.lean`.
@@ -185,7 +188,7 @@ theorem mulVec_mono {m : ℕ} (A : Matrix (Fin m) (Fin m) ℝ≥0∞)
     {x y : Fin m → ℝ≥0∞} (h : x ≤ y) : A.mulVec x ≤ A.mulVec y := by
   intro i
   simp only [Matrix.mulVec, dotProduct]
-  exact Finset.sum_le_sum fun j _ => mul_le_mul_left' (h j) (A i j)
+  exact Finset.sum_le_sum fun j _ => mul_le_mul' le_rfl (h j)
 
 /-- S1b helper (the row-sketch induction, "partial sums ≤ any solution"):
     every partial Neumann sum Σ_{k<N} A^k·b sits below any solution `y` of
@@ -196,7 +199,7 @@ theorem partialNeumann_le_solution {m : ℕ} {A : Matrix (Fin m) (Fin m) ℝ≥0
     {b y : Fin m → ℝ≥0∞} (hy : y = b + A.mulVec y) (N : ℕ) :
     ∑ k ∈ Finset.range N, (A ^ k).mulVec b ≤ y := by
   induction N with
-  | zero => simpa using zero_le y
+  | zero => simp
   | succ N ih =>
     have hstep : ∑ k ∈ Finset.range (N + 1), (A ^ k).mulVec b
         = b + A.mulVec (∑ k ∈ Finset.range N, (A ^ k).mulVec b) := by
@@ -205,7 +208,7 @@ theorem partialNeumann_le_solution {m : ℕ} {A : Matrix (Fin m) (Fin m) ℝ≥0
       exact add_comm _ b
     calc ∑ k ∈ Finset.range (N + 1), (A ^ k).mulVec b
         = b + A.mulVec (∑ k ∈ Finset.range N, (A ^ k).mulVec b) := hstep
-      _ ≤ b + A.mulVec y := add_le_add_left (mulVec_mono A ih) b
+      _ ≤ b + A.mulVec y := add_le_add le_rfl (mulVec_mono A ih)
       _ = y := hy.symm
 
 /-- **S1b** (M04 Lemma 3.1, leastness half; BP_IV §2 S-table row S1b — the
@@ -222,5 +225,205 @@ theorem neumannSum_isLFP_least {m : ℕ} (A : Matrix (Fin m) (Fin m) ℝ≥0∞)
   rw [ENNReal.tsum_eq_iSup_nat]
   exact iSup_le fun N => by
     simpa using partialNeumann_le_solution hy N i
+
+/-!
+## Unit S1a — the solution half of `neumannSum_isLFP` + the packaging
+
+**PROVENANCE (unit S1a; BP_IV §1.5 S1 block + §2 S-table row S1a).**
+
+* Blueprint statement (§1.5, S1 block, VERBATIM): the `neumannSum` def
+  (single copy kept above, S3a section, per that unit's dedup note — S1a
+  adds no second one) and the theorem `neumannSum_isLFP` below (both
+  conjuncts exactly as displayed in §1.5).
+* S-table row S1a: "`neumannSum` solves x = b + A·x | ℝ≥0∞ tsum shift
+  Σ_k A^{k+1}b = A·Σ A^k b (ENNReal.tsum commutes with mulVec — finite
+  sums)".
+* Math source of record: M04 Lemma 3.1 (half 1: the Neumann sum solves the
+  affine recursion x = b + A·x in (ℝ≥0∞)^m).
+* Serial split (BP_IV §2/§5: S1a → S1b): S1a supplies the SOLUTION conjunct
+  (`neumannSum_solves`) and packages `neumannSum_isLFP` from it together
+  with S1b's leastness conjunct (`neumannSum_isLFP_least`, landed above).
+-/
+
+/-- S1a helper (the "ENNReal.tsum commutes with mulVec" leg of the row
+    sketch): `mulVec` is a finite sum per coordinate, so it commutes with
+    an ℕ-indexed `tsum` in `ℝ≥0∞` — pull the scalar inside each summand by
+    `ENNReal.tsum_mul_left`, then swap the Finset sum with the tsum
+    (`Summable.tsum_finsetSum`; everything is summable in `ℝ≥0∞`). -/
+theorem mulVec_tsum {m : ℕ} (A : Matrix (Fin m) (Fin m) ℝ≥0∞)
+    (v : ℕ → Fin m → ℝ≥0∞) (i : Fin m) :
+    A.mulVec (fun j => ∑' k, v k j) i = ∑' k, A.mulVec (v k) i := by
+  simp only [Matrix.mulVec, dotProduct]
+  calc ∑ j, A i j * ∑' k, v k j
+      = ∑ j, ∑' k, A i j * v k j := by simp_rw [ENNReal.tsum_mul_left]
+    _ = ∑' k, ∑ j, A i j * v k j :=
+        (Summable.tsum_finsetSum fun j _ => ENNReal.summable).symm
+
+/-- **S1a** (M04 Lemma 3.1 half 1, solution leg; BP_IV §2 S-table row S1a):
+    the Neumann sum solves x = b + A·x.  Proof per the row sketch: peel the
+    k = 0 term of the `ℝ≥0∞` tsum (`tsum_eq_zero_add'`, unconditional
+    summability), rewrite `A^{k+1} b = A·(A^k b)` (`pow_succ'` +
+    `Matrix.mulVec_mulVec`), then pull the tsum through `mulVec` by
+    `mulVec_tsum`. -/
+theorem neumannSum_solves {m : ℕ} (A : Matrix (Fin m) (Fin m) ℝ≥0∞)
+    (b : Fin m → ℝ≥0∞) :
+    neumannSum A b = b + A.mulVec (neumannSum A b) := by
+  funext i
+  calc neumannSum A b i
+      = (A ^ 0).mulVec b i + ∑' k, (A ^ (k + 1)).mulVec b i :=
+        tsum_eq_zero_add' ENNReal.summable
+    _ = b i + ∑' k, A.mulVec ((A ^ k).mulVec b) i := by
+        simp only [pow_zero, Matrix.one_mulVec, pow_succ', ← Matrix.mulVec_mulVec]
+    _ = b i + A.mulVec (neumannSum A b) i :=
+        congrArg (b i + ·) (mulVec_tsum A (fun k => (A ^ k).mulVec b) i).symm
+    _ = (b + A.mulVec (neumannSum A b)) i := rfl
+
+/-- S1 (M04 Lemma 3.1 half 1): the Neumann sum solves the affine recursion
+    x = b + A·x and is its LEAST solution in (ℝ≥0∞)^m (S1a: solution;
+    S1b: leastness by induction on partial sums). -/
+theorem neumannSum_isLFP {m : ℕ} (A : Matrix (Fin m) (Fin m) ℝ≥0∞)
+    (b : Fin m → ℝ≥0∞) :
+    neumannSum A b = b + A.mulVec (neumannSum A b)
+    ∧ ∀ y, y = b + A.mulVec y → neumannSum A b ≤ y :=
+  ⟨neumannSum_solves A b, neumannSum_isLFP_least A b⟩
+
+/-!
+## Unit S4a — summability from the row-sum margin
+
+**PROVENANCE (unit S4a; BP_IV §2 S-table row S4a + §1.5 S4 block).**
+
+* S-table row S4a: "summability from margin | row-sum ρ ≤ q₀^{1−E} ≤ 1/2
+  (M3') ⇒ ‖A^k b‖ ≤ 2^{−k}‖b‖; comparison | dep M3' | MED | M04 Lemma 3.3".
+* Parent statement (§1.5 S4 block, VERBATIM target of the S4 chain):
+  `neumann_eq_solve_of_margin` — S4a's binders `(hfiniteA) (hfiniteb) (ρ)
+  (hρ0) (hρ1) (hmargin)` are transcribed EXACTLY from that display, so
+  S4b/S4c consume these lemmas without hypothesis adaptation.
+* Math source of record: M04 Lemma 3.3 (geometric domination of the
+  Neumann tail under a strict row-sum margin).
+* Dep M3' (the margin input ρ ≤ q₀^{1−E} ≤ 1/2) stays an EXPLICIT
+  hypothesis binder (`hmargin`; `hhalf` in the 2^{−k} display) — never an
+  axiom, per the [M]-hypothesis discipline.
+* The norm of the row sketch is realized as the total entrance mass
+  `∑ j, b j` (equivalent to the sup norm within a factor m; the comparison
+  test needs only SOME finite dominator, and total mass avoids an empty-
+  `Fin 0` sup corner).
+-/
+
+/-- S4a step 0 (margin transport): under entrywise finiteness, the `toReal`
+    row-sum margin of the parent display lifts to ℝ≥0∞ — every row of `A`
+    sums to at most `ENNReal.ofReal ρ`. -/
+theorem rowSum_le_ofReal_of_margin {m : ℕ}
+    (A : Matrix (Fin m) (Fin m) ℝ≥0∞)
+    (hfiniteA : ∀ i j, A i j ≠ ⊤)
+    (ρ : ℝ) (hρ0 : 0 ≤ ρ)
+    (hmargin : ∀ i, ∑ j, (A i j).toReal ≤ ρ) :
+    ∀ i, ∑ j, A i j ≤ ENNReal.ofReal ρ := by
+  intro i
+  have hne : (∑ j, A i j) ≠ ⊤ :=
+    (ENNReal.sum_lt_top.mpr fun j _ => (hfiniteA i j).lt_top).ne
+  rw [ENNReal.le_ofReal_iff_toReal_le hne hρ0,
+    ENNReal.toReal_sum fun j _ => hfiniteA i j]
+  exact hmargin i
+
+/-- S4a step 1 (the row-sketch power bound "‖A^k b‖ ≤ ρ^k·‖b‖", ℝ≥0∞ form):
+    under the margin, every coordinate of `A^k·b` is at most `(ofReal ρ)^k`
+    times the total entrance mass.  Induction on k: the base case is one
+    summand of the total mass; the step peels one factor of `A`
+    (`pow_succ'`/`mulVec_mulVec`) and prices its row by
+    `rowSum_le_ofReal_of_margin`. -/
+theorem pow_mulVec_le_of_margin {m : ℕ}
+    (A : Matrix (Fin m) (Fin m) ℝ≥0∞) (b : Fin m → ℝ≥0∞)
+    (hfiniteA : ∀ i j, A i j ≠ ⊤)
+    (ρ : ℝ) (hρ0 : 0 ≤ ρ)
+    (hmargin : ∀ i, ∑ j, (A i j).toReal ≤ ρ) :
+    ∀ (k : ℕ) (i : Fin m),
+      (A ^ k).mulVec b i ≤ ENNReal.ofReal ρ ^ k * ∑ j, b j := by
+  intro k
+  induction k with
+  | zero =>
+    intro i
+    simpa [Matrix.one_mulVec] using
+      Finset.single_le_sum (f := b) (fun j _ => zero_le _) (Finset.mem_univ i)
+  | succ k ih =>
+    intro i
+    have hstep : (A ^ (k + 1)).mulVec b i
+        = A.mulVec ((A ^ k).mulVec b) i := by
+      rw [Matrix.mulVec_mulVec, ← pow_succ']
+    rw [hstep]
+    calc A.mulVec ((A ^ k).mulVec b) i
+        = ∑ j, A i j * (A ^ k).mulVec b j := by
+          simp [Matrix.mulVec, dotProduct]
+      _ ≤ ∑ j, A i j * (ENNReal.ofReal ρ ^ k * ∑ j', b j') :=
+          Finset.sum_le_sum fun j _ => mul_le_mul' le_rfl (ih j)
+      _ = (∑ j, A i j) * (ENNReal.ofReal ρ ^ k * ∑ j', b j') :=
+          (Finset.sum_mul ..).symm
+      _ ≤ ENNReal.ofReal ρ * (ENNReal.ofReal ρ ^ k * ∑ j', b j') :=
+          mul_le_mul'
+            (rowSum_le_ofReal_of_margin A hfiniteA ρ hρ0 hmargin i) le_rfl
+      _ = ENNReal.ofReal ρ ^ (k + 1) * ∑ j', b j' := by
+          rw [pow_succ', mul_assoc]
+
+/-- S4a display (the S-table row's literal 2^{−k} shape, at M3''s
+    ρ ≤ 1/2): with margin at most one half, ‖A^k b‖ ≤ 2^{−k}·‖b‖ —
+    coordinatewise, `(A^k·b)_i ≤ 2⁻¹^k · Σ_j b j`. -/
+theorem pow_mulVec_le_two_pow_of_margin_half {m : ℕ}
+    (A : Matrix (Fin m) (Fin m) ℝ≥0∞) (b : Fin m → ℝ≥0∞)
+    (hfiniteA : ∀ i j, A i j ≠ ⊤)
+    (ρ : ℝ) (hρ0 : 0 ≤ ρ) (hhalf : ρ ≤ 1 / 2)
+    (hmargin : ∀ i, ∑ j, (A i j).toReal ≤ ρ) :
+    ∀ (k : ℕ) (i : Fin m),
+      (A ^ k).mulVec b i ≤ (2 : ℝ≥0∞)⁻¹ ^ k * ∑ j, b j := by
+  intro k i
+  refine (pow_mulVec_le_of_margin A b hfiniteA ρ hρ0 hmargin k i).trans
+    (mul_le_mul' (pow_le_pow_left' ?_ k) le_rfl)
+  calc ENNReal.ofReal ρ
+      ≤ ENNReal.ofReal (1 / 2) := ENNReal.ofReal_le_ofReal hhalf
+    _ = (2 : ℝ≥0∞)⁻¹ := by
+        rw [show (1 / 2 : ℝ) = (2 : ℝ)⁻¹ by norm_num,
+          ENNReal.ofReal_inv_of_pos (by norm_num : (0 : ℝ) < 2),
+          ENNReal.ofReal_ofNat]
+
+/-- **S4a** (M04 Lemma 3.3, summability from margin — the comparison half;
+    BP_IV §2 S-table row S4a): under the row-sum margin, the Neumann sum is
+    dominated coordinatewise by the geometric value
+    `(1 − ofReal ρ)⁻¹ · Σ_j b j`.  Proof: termwise comparison against the
+    power bound, then `ENNReal.tsum_geometric` resummation (§3 corpus-reuse
+    map row "geometric resummation" for this unit). -/
+theorem neumannSum_le_geometric_of_margin {m : ℕ}
+    (A : Matrix (Fin m) (Fin m) ℝ≥0∞) (b : Fin m → ℝ≥0∞)
+    (hfiniteA : ∀ i j, A i j ≠ ⊤)
+    (ρ : ℝ) (hρ0 : 0 ≤ ρ)
+    (hmargin : ∀ i, ∑ j, (A i j).toReal ≤ ρ) :
+    ∀ i, neumannSum A b i ≤ (1 - ENNReal.ofReal ρ)⁻¹ * ∑ j, b j := by
+  intro i
+  calc neumannSum A b i
+      = ∑' k, (A ^ k).mulVec b i := rfl
+    _ ≤ ∑' k : ℕ, ENNReal.ofReal ρ ^ k * ∑ j, b j :=
+        ENNReal.tsum_le_tsum fun k =>
+          pow_mulVec_le_of_margin A b hfiniteA ρ hρ0 hmargin k i
+    _ = (∑' k : ℕ, ENNReal.ofReal ρ ^ k) * ∑ j, b j := ENNReal.tsum_mul_right
+    _ = (1 - ENNReal.ofReal ρ)⁻¹ * ∑ j, b j := by rw [ENNReal.tsum_geometric]
+
+/-- **S4a finiteness** (the clause D5's row and S4b consume — "S4a's
+    finiteness"): under the STRICT margin ρ < 1 with finite kernel and
+    entrance data, every coordinate of the Neumann sum is finite.  Binders
+    are exactly the parent `neumann_eq_solve_of_margin`'s (§1.5 VERBATIM
+    display), minus the solution `x`. -/
+theorem neumannSum_ne_top_of_margin {m : ℕ}
+    (A : Matrix (Fin m) (Fin m) ℝ≥0∞) (b : Fin m → ℝ≥0∞)
+    (hfiniteA : ∀ i j, A i j ≠ ⊤) (hfiniteb : ∀ i, b i ≠ ⊤)
+    (ρ : ℝ) (hρ0 : 0 ≤ ρ) (hρ1 : ρ < 1)
+    (hmargin : ∀ i, ∑ j, (A i j).toReal ≤ ρ) :
+    ∀ i, neumannSum A b i ≠ ⊤ := by
+  intro i
+  have hb : (∑ j, b j) ≠ ⊤ :=
+    (ENNReal.sum_lt_top.mpr fun j _ => (hfiniteb j).lt_top).ne
+  have hρ' : ENNReal.ofReal ρ < 1 := ENNReal.ofReal_lt_one.mpr hρ1
+  have hsub : (1 : ℝ≥0∞) - ENNReal.ofReal ρ ≠ 0 := by
+    rw [Ne, tsub_eq_zero_iff_le]
+    exact fun h => absurd hρ' (not_lt.mpr h)
+  exact
+    ((neumannSum_le_geometric_of_margin A b hfiniteA ρ hρ0 hmargin i).trans_lt
+      (ENNReal.mul_ne_top (ENNReal.inv_ne_top.mpr hsub) hb).lt_top).ne
 
 end LeanUrat.Scaffold
