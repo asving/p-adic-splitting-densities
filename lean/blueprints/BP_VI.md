@@ -325,38 +325,71 @@ Imports: `LeanUrat.OM.UniformCapstone`, `LeanUrat.OM.SeriesAssembly`,
 discipline): each re-fires a machine-checked instance in scaffold shape so a
 regression anywhere in the spine's import cone breaks a visible gate.
 
+The anchor pattern (REVISION 3): each anchor `def` states THE ACTUAL
+PROPOSITION its corpus gate proves (never `Nonempty` of a proof term — the
+Revision-2 shape was a compiler-refuted category error), and its consumption
+theorem's proof is the corpus gate term verbatim. For VI-N1 a definitional
+pin (`example : AnchorN2 p σ hσ = type_of% (montes_uniform_n2 p σ hσ) := rfl`)
+certifies the transcription is exact.
+
 ```lean
 /-- VI-N1 is the exact capstone proposition, not a hand-reconstructed partial
     record. This preserves pole-freeness, the common rational family, value tie,
     and bracket uniqueness together, with the prime instance explicit. -/
 def AnchorN2 (p : ℕ) [Fact p.Prime] (σ : FactorizationType)
     (hσ : σ.degree = 2) : Prop :=
-  Nonempty (montes_uniform_n2 σ hσ)
+  (uniformDen σ ≠ 0 ∧
+    (∀ q' : ℕ, 1 < q' → (uniformDen σ).eval (q' : ℚ) ≠ 0 ∧
+      (∑ T ∈ shapesOfU σ, CU T q')
+        = (uniformNum σ).eval (q' : ℚ) / (uniformDen σ).eval (q' : ℚ)) ∧
+    ((M7 p).countingDensity σ
+        = (uniformNum σ).eval ((p : ℕ) : ℚ) / (uniformDen σ).eval ((p : ℕ) : ℚ)
+      ∧ (uniformDen σ).eval ((p : ℕ) : ℚ) ≠ 0)) ∧
+  ∀ d : ℚ, (∀ N : ℕ, 1 ≤ N →
+      (M7 p).decidedCount σ N / (p : ℚ) ^ (2 * N) ≤ d ∧
+      d ≤ (M7 p).decidedCount σ N / (p : ℚ) ^ (2 * N)
+            + (M7 p).undecidedCount N / (p : ℚ) ^ (2 * N)) →
+    d = (M7 p).countingDensity σ
 
 theorem anchor_n2 (p : ℕ) [Fact p.Prime] (σ : FactorizationType)
-    (hσ : σ.degree = 2) : AnchorN2 p σ :=
-  ⟨montes_uniform_n2 σ hσ⟩
+    (hσ : σ.degree = 2) : AnchorN2 p σ hσ :=
+  montes_uniform_n2 p σ hσ
+
+example (p : ℕ) [Fact p.Prime] (σ : FactorizationType) (hσ : σ.degree = 2) :
+    AnchorN2 p σ hσ = type_of% (montes_uniform_n2 p σ hσ) := rfl
 
 /-- VI-N2: the exact `hExhaust_n2` proposition is preserved by a named wrapper;
     no denominator or coercion is retyped in the scaffold. -/
-def AnchorN2Drainage : Prop := Nonempty hExhaust_n2
-theorem anchor_n2_drainage : AnchorN2Drainage := ⟨hExhaust_n2⟩
+def AnchorN2Drainage : Prop :=
+  Tendsto (fun N => undecidedCount6 N / (M9.realP : ℚ) ^ (2 * N)) atTop (nhds 0)
+theorem anchor_n2_drainage : AnchorN2Drainage := hExhaust_n2
 
 /-- VI-N3: stable named declarations, each preserving the complete proposition
     and all coercions of its corpus gate definitionally. -/
-def AnchorV2ValueInert2 : Prop := Nonempty gate_v2_value_inert2
+def AnchorV2ValueInert2 : Prop :=
+  (∑ T ∈ OMCountV2.omMenu 2 (Order0.unramType 2 (Nat.Partition.indiscrete 2)),
+      OMCountV2.omCount T M9.realP) = 1 / 4
 theorem anchor_v2_value_inert2 : AnchorV2ValueInert2 :=
-  ⟨gate_v2_value_inert2⟩
+  gate_v2_value_inert2
 
-def AnchorV2SplitQ3 : Prop := Nonempty gate_v2_split_q3
-theorem anchor_v2_split_q3 : AnchorV2SplitQ3 := ⟨gate_v2_split_q3⟩
+def AnchorV2SplitQ3 : Prop :=
+  (∑ T ∈ OMCountV2.omMenu 2 (Order0.unramType 2 OMCountV2.lam11),
+      OMCountV2.omCount T 3) = 1 / 9
+theorem anchor_v2_split_q3 : AnchorV2SplitQ3 := gate_v2_split_q3
 
-def AnchorV2InertQ3 : Prop := Nonempty gate_v2_inert_q3
-theorem anchor_v2_inert_q3 : AnchorV2InertQ3 := ⟨gate_v2_inert_q3⟩
+def AnchorV2InertQ3 : Prop :=
+  (∑ T ∈ OMCountV2.omMenu 2 (Order0.unramType 2 OMCountV2.lam2),
+      OMCountV2.omCount T 3) = 1 / 3
+theorem anchor_v2_inert_q3 : AnchorV2InertQ3 := gate_v2_inert_q3
 
-def AnchorV2SigmaSeparation : Prop := Nonempty gate_v2_sigma_separation
+def AnchorV2SigmaSeparation : Prop :=
+  Order0.unramType 2 OMCountV2.lam11 ≠ Order0.unramType 2 OMCountV2.lam2
+    ∧ (∑ T ∈ OMCountV2.omMenu 2 (Order0.unramType 2 OMCountV2.lam11),
+          OMCountV2.omCount T 3)
+      ≠ (∑ T ∈ OMCountV2.omMenu 2 (Order0.unramType 2 OMCountV2.lam2),
+          OMCountV2.omCount T 3)
 theorem anchor_v2_sigma_separation : AnchorV2SigmaSeparation :=
-  ⟨gate_v2_sigma_separation⟩
+  gate_v2_sigma_separation
 ```
 
 ### 1.5 `Scaffold/AxChk.lean` — the axiom-census extension [wave VI-3]
@@ -405,7 +438,7 @@ math source it transcribes.
 | VI-S3 | Scaffold/Spine.lean | `TheoremUTuple` literal five-clause signature + `RootC_iff_tuple` | destruct/rebuild in the recorded bracket, dmass, trueDmass, zpRead, drainage order | VI-S2 | EASY | §1.2 fidelity note |
 | VI-B1 | Scaffold/CorpusBridge.lean | `rootC_of_theoremU` (signature = theoremU's binder list, conclusion `RootC …`) | `obtain ⟨R,hR,hs,h⟩ := theoremU …; exact ⟨R,hR,hs, fun p hp hr => let t := h p hp hr; ⟨t.1,t.2.1,t.2.2.1,t.2.2.2.1,t.2.2.2.2⟩⟩` | VI-S2; MovesU.U10_theoremU | EASY | §1.3; ROOT Step 19 |
 | VI-B2 | Scaffold/CorpusBridge.lean | `rootC_fired` with `KT`, all thirteen propositions/proofs, `BP`, and `BD` visible | direct specialization of VI-B1 at `bridgeSolve`/`mkUInstance`; `theoremU_fired` is a parallel corpus check, not an output argument | VI-B1; MovesU.BridgeMk | MECH | §1.3; BridgeMk IB-F5 |
-| VI-B3 | Scaffold/CorpusBridge.lean | `structure SlotAssignment` with fixed `(𝓕, SS)` binders and thirteen typed slot faces | structure declaration only; no E-phase interface decision remains | MovesU.SlotsG2–G10, G18 | MECH | §1.3; U10 residual-bare-rows docstring |
+| VI-B3 | Scaffold/CorpusBridge.lean | `structure SlotAssignment` with fixed `(𝓕, Sv, SS)` binders (REVISION 3) and thirteen typed slot faces | structure declaration only; no E-phase interface decision remains | MovesU.SlotsG2–G10, G18 | MECH | §1.3; U10 residual-bare-rows docstring |
 | VI-B4 | Scaffold/CorpusBridge.lean | full `rootC_fired_at_slots` signature: explicit `KT`, `BP`, `RP`, `𝓕`, `SS`, `SA`, and `BD`; conclusion shows the complete `mkUInstance` family | apply VI-B2 with all thirteen proposition parameters set to the displayed slot faces and all thirteen proofs projected from `SA` | VI-B2, VI-B3 | MECH | §1.3 |
 | VI-N1 | Scaffold/AnchorN2.lean | `AnchorN2` exact-proposition wrapper + `anchor_n2`, with explicit `p` and `[Fact p.Prime]` | constructor containing `montes_uniform_n2 σ hσ` | OM.UniformCapstone | EASY | §1.4; ROOT §1 verified-instances block |
 | VI-N2 | Scaffold/AnchorN2.lean | `AnchorN2Drainage` + named `anchor_n2_drainage`, preserving the exact `hExhaust_n2` type | constructor containing `hExhaust_n2` | OM.SeriesAssembly | MECH | §1.4 |
@@ -491,3 +524,26 @@ cannot be stated before the divisions' step statements exist.
 | 14 | FIXED | the census is split into four ≤40-line units with a mandatory finite declaration enumeration. |
 | 15 | FIXED | §1.3 explicitly imports G2, G3, G4–G10, and G18; VI-B3 matches that dependency set. |
 | 16 | FIXED | the blanket isolation claim is removed and every wave now has an explicit per-file `lake env lean` gate. |
+
+## REVISION 3 (statement repairs, compile-gated, 2026-08-01)
+
+The BP_VI division run landed 12/18 units; six (VI-B3, VI-B4, VI-N1, VI-N2,
+VI-N3, VI-A2) were BLOCKED because the Revision-2 verbatim displays were
+ILL-TYPED against the built corpus (the provers correctly refused to alter
+statements; their compiler evidence is quoted in the Scaffold BLOCKED comments
+of record). These repairs are sanctioned ONLY because the old statements were
+compiler-refuted — ill-typed displays carry no mathematical content, so no
+content is lost; the intended mathematics of each unit is preserved exactly.
+EVERY repaired statement below was compile-verified through a probe file
+(`lake env lean`, 2026-08-01, zero errors) BEFORE entering this blueprint, and
+the landed files passed their per-file gates + the VI-A2/AxChk census
+(Lean-core footprints `[propext, Classical.choice, Quot.sound]` on all rows).
+
+| unit | old (Revision 2, refuted) | new (Revision 3, compiled) | compiler evidence for the old form |
+|---|---|---|---|
+| VI-B3 | `SlotAssignment … (𝓕 : CtsFamily n) (SS : StepSys n 𝓕)` with `m4b : Slot_m4bConst n 𝓕 SS` | binders `(𝓕 : CtsFamily n) (Sv : StepSys n) (SS : CtsMeasured n 𝓕 Sv)` with `m4b : Slot_m4bConst n SS` (`𝓕`-before-`SS` order kept) | corpus `MovesV.StepSys` takes only `(n : ℕ)` (Defs.lean:81): "Function expected at MovesV.StepSys n but this term has type Type 1"; `Slot_m4bConst`'s explicit arg after `n` is the MEASURED carrier (SlotsG9:74): "argument 𝓕 has type MovesV.CtsFamily n but is expected to have type MovesV.CtsMeasured n ?m ?m" |
+| VI-B4 | `rootC_fired_at_slots` over `(SS : StepSys n 𝓕)` / `SA : SlotAssignment n C KC K7 RP 𝓕 SS` | same signature over the three repaired binders, `SA : SlotAssignment n C KC K7 RP 𝓕 Sv SS`; proof = VI-B2 at the thirteen sited faces with proofs projected from `SA` | inherits the VI-B3 binder refutation |
+| VI-N1 | `AnchorN2 … : Prop := Nonempty (montes_uniform_n2 σ hσ)`; `anchor_n2 : AnchorN2 p σ := ⟨montes_uniform_n2 σ hσ⟩` | `AnchorN2 p σ hσ : Prop :=` the capstone's EXACT proposition written out; `anchor_n2 : AnchorN2 p σ hσ := montes_uniform_n2 p σ hσ`; plus definitional pin `AnchorN2 p σ hσ = type_of% (montes_uniform_n2 p σ hσ) := rfl` | `montes_uniform_n2` is a THEOREM: "argument montes_uniform_n2 … has type ⟨the capstone conjunction⟩ : Prop but is expected to have type Sort ?u" (`Nonempty : Sort u → Prop` cannot consume a proof term); also missing explicit leading `p` (UniformCapstone.lean:295 section variable): "argument σ has type FactorizationType but is expected to have type ℕ" |
+| VI-N2 | `AnchorN2Drainage : Prop := Nonempty hExhaust_n2` | `AnchorN2Drainage : Prop := Tendsto (fun N => undecidedCount6 N / (M9.realP : ℚ) ^ (2 * N)) atTop (nhds 0)` (= `hExhaust_n2`'s exact statement, SeriesAssembly.lean:1745); `anchor_n2_drainage := hExhaust_n2` | same `Nonempty`-of-proof-term category error |
+| VI-N3 | four `Nonempty gate_v2_…` wrappers with `⟨gate_v2_…⟩` proofs | four defs = the gates' exact propositions (RealInstanceV2Gates.lean:90/120/127/136); four theorems proved by the gate terms verbatim | same `Nonempty`-of-proof-term category error |
+| VI-A2 | census rows fenced (no targets at HEAD) | rows unfenced; `import LeanUrat.Scaffold.AnchorN2` added; `rootC_fired_at_slots` row added to VI-A1; all rows Lean-core | targets did not exist while VI-N1–N3 were blocked |
