@@ -14,10 +14,12 @@ slice identity transcribed as its dependencies — see that section's
 deviation record on the carrier's `: Prop` ascription)
 · S4c1 (finite evaluation: the Neumann value = the Cramer/matrix solve
 `(1 − A_ℝ)⁻¹ · b_ℝ`, invertibility as the explicit M4-shaped `hdet` binder).
-Later waves add S3b2, S4c2 (SolveSeam agreement — the tie to
-`SolveSeam.r_is_solve`'s `Rsh`),
-and S5 (`seriesTie_of_kernels`, targeting the corpus row
-`BridgeKernels.series_tie`).
+· S5a (state/block reindexing)
+· S4c2 (SolveSeam agreement — the tie to `SolveSeam.r_is_solve`'s `Rsh`
+under RegP, the evalℝ/Rval read of the margin evaluation).
+Later waves add S3b2
+and S5b (`seriesTie_of_kernels`, targeting the corpus row
+`BridgeKernels.series_tie`; BLOCKED at probe time — see its section).
 Import graph (BP_IV §1.0/§4): this module NEVER imports `DensityTie.lean`;
 `DensityTie.lean` imports the completed `SeriesTie.lean`.
 -/
@@ -832,5 +834,279 @@ binder types (`UCarriers`/`ClassifierSpec`/`FiberSeries`/`CensusData`/
 proof-deps S5a (state/block reindexing), S3b2, S4c2 not yet landed.  M04 F1
 fence stands: the DEVICE `n2Chain` must never instantiate S5's carriers.
 -/
+
+/-!
+## Unit S5a — state/block reindexing: the first split of the S5 assembly
+
+**PROVENANCE (unit S5a; BP_IV §4 wave 3 "S5a (state/block reindexing) →
+S5b (`seriesTie_of_kernels`) → D4"; parent statement §1.5 S5 + §2 S-table
+row S5).**
+
+* HONESTY NOTE (statement provenance): BP_IV displays NO standalone S5a
+  Lean statement — §2's closing note splits the composite S5 row at
+  assignment time ("each assignment targeting one definition or one proof
+  idea").  The §1.5-VERBATIM parent `seriesTie_of_kernels` is owned by
+  unit S5b (BLOCKED above, owner rows absent) and is NOT touched here; no
+  displayed signature is changed.  Per this file's standing split-unit
+  discipline (S3b1's and S4a's helper layers), S5a lands the named glue
+  the parent's proof route consumes.
+* The proof idea (M04 Thm 4 assembly, the reindexing leg; O11 r3 §tiers):
+  the per-σ series value is read AT THE σ-STATE (`hrec.stateOf σ`, S2b's
+  K1 leg), that state lives in the active BLOCK PREFIX (`i.1 < k`, the
+  Bekić passage of M04 Lemma 3.2 — S3a's truncation), and the truncated
+  Neumann value crosses to ℝ and back through the margin evaluation
+  (S4a's finiteness + S4b's uniqueness + S4c1's Cramer solve).  S5a
+  packages exactly this composite, so S5b's remaining content is purely
+  the row identifications (K3 census + K4 seam + S4c2's `Rsh` tie).
+* Deps at landing time: S2b (`seriesSum_eq_lfp`), S3a
+  (`neumannSum_blockTriangular`), S4a (`neumannSum_ne_top_of_margin`),
+  S4b (`neumann_eq_solve_of_margin`), S4c1
+  (`neumann_eq_matrixSolve_of_margin`) — all landed above.  S3b2 and
+  S4c2 had NOT landed at S5a landing time; they are S5b-side inputs
+  (chained truncation resp. `SolveSeam` agreement), consumed there, not
+  here.
+* The prefix-transport lemmas exist so S5b may price the truncated system
+  from FULL-system finiteness/margin rows when that is the form M3'/M4
+  deliver.
+-/
+
+/-- S5a transport (block reindexing bookkeeping): entrywise finiteness
+    descends from the kernel to its prefix truncation. -/
+theorem prefixMatrix_ne_top {m k : ℕ} {A : Matrix (Fin m) (Fin m) ℝ≥0∞}
+    (hfiniteA : ∀ i j, A i j ≠ ⊤) :
+    ∀ i j, prefixMatrix k A i j ≠ ⊤ := by
+  intro i j
+  show (if i.1 < k ∧ j.1 < k then A i j else 0) ≠ ⊤
+  split_ifs with h
+  · exact hfiniteA i j
+  · exact ENNReal.zero_ne_top
+
+/-- S5a transport: entrywise finiteness descends from the entrance vector
+    to its prefix truncation. -/
+theorem prefixVector_ne_top {m k : ℕ} {b : Fin m → ℝ≥0∞}
+    (hfiniteb : ∀ i, b i ≠ ⊤) :
+    ∀ i, prefixVector k b i ≠ ⊤ := by
+  intro i
+  show (if i.1 < k then b i else 0) ≠ ⊤
+  split_ifs with h
+  · exact hfiniteb i
+  · exact ENNReal.zero_ne_top
+
+/-- S5a transport: the row-sum margin descends from the kernel to its
+    prefix truncation (each truncated entry is the original or 0). -/
+theorem prefixMatrix_rowSum_toReal_le {m k : ℕ}
+    {A : Matrix (Fin m) (Fin m) ℝ≥0∞} {ρ : ℝ}
+    (hmargin : ∀ i, ∑ j, (A i j).toReal ≤ ρ) :
+    ∀ i, ∑ j, (prefixMatrix k A i j).toReal ≤ ρ := by
+  intro i
+  refine le_trans (Finset.sum_le_sum fun j _ => ?_) (hmargin i)
+  show (if i.1 < k ∧ j.1 < k then A i j else 0).toReal ≤ (A i j).toReal
+  split_ifs with h
+  · exact le_rfl
+  · simp
+
+/-- S5a core (the ofReal/toReal reindexing of the margin evaluation):
+    under S4b's exact binders (§1.5 VERBATIM display), the ℝ≥0∞ Neumann
+    value IS `ofReal` of the real affine solution — S4a's finiteness makes
+    the round trip lawful. -/
+theorem neumannSum_eq_ofReal_solve_of_margin {m : ℕ}
+    (A : Matrix (Fin m) (Fin m) ℝ≥0∞) (b : Fin m → ℝ≥0∞)
+    (hfiniteA : ∀ i j, A i j ≠ ⊤) (hfiniteb : ∀ i, b i ≠ ⊤)
+    (ρ : ℝ) (hρ0 : 0 ≤ ρ) (hρ1 : ρ < 1)
+    (hmargin : ∀ i, ∑ j, (A i j).toReal ≤ ρ)
+    (x : Fin m → ℝ)
+    (hx : x = vectorToReal b + (matrixToReal A).mulVec x) :
+    ∀ i, neumannSum A b i = ENNReal.ofReal (x i) := by
+  intro i
+  rw [← neumann_eq_solve_of_margin A b hfiniteA hfiniteb ρ hρ0 hρ1 hmargin x hx i]
+  exact (ENNReal.ofReal_toReal
+    (neumannSum_ne_top_of_margin A b hfiniteA hfiniteb ρ hρ0 hρ1 hmargin i)).symm
+
+open MovesU (ClassifierSpec FiberSeries SplittingType) in
+/-- **S5a, state leg** (σ ↦ state reindexing): a K1 recursion (S2b) plus
+    the margin evaluation reads the per-σ series value off the real
+    solution vector AT THE σ-STATE. -/
+theorem seriesSum_eq_ofReal_solve {n p m : ℕ} [Fact p.Prime]
+    {X : ClassifierSpec n p} {F : FiberSeries n p X}
+    {A : Matrix (Fin m) (Fin m) ℝ≥0∞} {b : Fin m → ℝ≥0∞}
+    (hrec : TreeRecursion X F A b)
+    (hfiniteA : ∀ i j, A i j ≠ ⊤) (hfiniteb : ∀ i, b i ≠ ⊤)
+    (ρ : ℝ) (hρ0 : 0 ≤ ρ) (hρ1 : ρ < 1)
+    (hmargin : ∀ i, ∑ j, (A i j).toReal ≤ ρ)
+    (x : Fin m → ℝ)
+    (hx : x = vectorToReal b + (matrixToReal A).mulVec x) :
+    ∀ σ : SplittingType n,
+      F.seriesSum σ = ENNReal.ofReal (x (hrec.stateOf σ)) := fun σ =>
+  (seriesSum_eq_lfp hrec σ).trans
+    (neumannSum_eq_ofReal_solve_of_margin A b hfiniteA hfiniteb ρ hρ0 hρ1
+      hmargin x hx (hrec.stateOf σ))
+
+open MovesU (ClassifierSpec FiberSeries SplittingType) in
+/-- **S5a, block leg** (state/block reindexing — THE unit deliverable):
+    when every σ-state lives in the block prefix `i.1 < k` of a
+    block-triangular kernel, the per-σ series value is `ofReal` of the
+    TRUNCATED system's real solution at the σ-state — the M04 Lemma 3.2
+    Bekić passage threaded through S2b + S3a + S4a/S4b.  The margin and
+    finiteness binders are those of the truncated system (descend from the
+    full system via the transport lemmas above when needed). -/
+theorem seriesSum_eq_ofReal_prefixSolve {n p m : ℕ} [Fact p.Prime]
+    {X : ClassifierSpec n p} {F : FiberSeries n p X}
+    {A : Matrix (Fin m) (Fin m) ℝ≥0∞} {b : Fin m → ℝ≥0∞}
+    (hrec : TreeRecursion X F A b) (k : ℕ)
+    (htri : ∀ i j, i.1 < k → k ≤ j.1 → A i j = 0)
+    (hstate : ∀ σ : SplittingType n, (hrec.stateOf σ).1 < k)
+    (hfiniteA : ∀ i j, prefixMatrix k A i j ≠ ⊤)
+    (hfiniteb : ∀ i, prefixVector k b i ≠ ⊤)
+    (ρ : ℝ) (hρ0 : 0 ≤ ρ) (hρ1 : ρ < 1)
+    (hmargin : ∀ i, ∑ j, (prefixMatrix k A i j).toReal ≤ ρ)
+    (x : Fin m → ℝ)
+    (hx : x = vectorToReal (prefixVector k b)
+      + (matrixToReal (prefixMatrix k A)).mulVec x) :
+    ∀ σ : SplittingType n,
+      F.seriesSum σ = ENNReal.ofReal (x (hrec.stateOf σ)) := by
+  intro σ
+  rw [seriesSum_eq_lfp hrec σ,
+    neumannSum_blockTriangular A b htri (hrec.stateOf σ) (hstate σ)]
+  exact neumannSum_eq_ofReal_solve_of_margin _ _ hfiniteA hfiniteb ρ hρ0 hρ1
+    hmargin x hx (hrec.stateOf σ)
+
+open MovesU (ClassifierSpec FiberSeries SplittingType) in
+/-- **S5a, solved block leg** (the composite with S4c1's Cramer form —
+    the exact shape S5b rewrites by the K3/K4 rows and S4c2's `Rsh` tie):
+    with a nonzero determinant on the truncated system (M4's output
+    shape), the per-σ series value is `ofReal` of the truncated matrix
+    solve at the σ-state. -/
+theorem seriesSum_eq_ofReal_prefixMatrixSolve {n p m : ℕ} [Fact p.Prime]
+    {X : ClassifierSpec n p} {F : FiberSeries n p X}
+    {A : Matrix (Fin m) (Fin m) ℝ≥0∞} {b : Fin m → ℝ≥0∞}
+    (hrec : TreeRecursion X F A b) (k : ℕ)
+    (htri : ∀ i j, i.1 < k → k ≤ j.1 → A i j = 0)
+    (hstate : ∀ σ : SplittingType n, (hrec.stateOf σ).1 < k)
+    (hfiniteA : ∀ i j, prefixMatrix k A i j ≠ ⊤)
+    (hfiniteb : ∀ i, prefixVector k b i ≠ ⊤)
+    (ρ : ℝ) (hρ0 : 0 ≤ ρ) (hρ1 : ρ < 1)
+    (hmargin : ∀ i, ∑ j, (prefixMatrix k A i j).toReal ≤ ρ)
+    (hdet : (1 - matrixToReal (prefixMatrix k A)).det ≠ 0) :
+    ∀ σ : SplittingType n,
+      F.seriesSum σ = ENNReal.ofReal
+        ((1 - matrixToReal (prefixMatrix k A))⁻¹.mulVec
+          (vectorToReal (prefixVector k b)) (hrec.stateOf σ)) := by
+  intro σ
+  rw [seriesSum_eq_lfp hrec σ,
+    neumannSum_blockTriangular A b htri (hrec.stateOf σ) (hstate σ),
+    ← neumann_eq_matrixSolve_of_margin _ _ hfiniteA hfiniteb ρ hρ0 hρ1
+      hmargin hdet (hrec.stateOf σ)]
+  exact (ENNReal.ofReal_toReal
+    (neumannSum_ne_top_of_margin _ _ hfiniteA hfiniteb ρ hρ0 hρ1 hmargin
+      (hrec.stateOf σ))).symm
+
+/-!
+## Unit S4c2 — the SolveSeam agreement: the `r_is_solve`/`Rsh` tie under RegP
+
+**PROVENANCE (unit S4c2; BP_IV §2 S-table row S4c, SolveSeam-agreement leg;
+§4 wave split S4a → S4b → S4c1 → S4c2; §3 corpus-reuse map rows
+"`SolveSeam` (+ `r_is_solve`, `R_defined`) (`DefsLedger.lean:578`) | the
+solve pin to `MovesS.Rsh` | S4c, S5 (K2 leg)" and
+"`RegP.detFull_ne_zero` … | M4, S4c".)**
+
+* HONESTY NOTE (statement provenance; same discipline as the S5a section):
+  BP_IV displays NO standalone S4c2 Lean statement — §2's closing note
+  splits the composite S4c row at assignment time.  The §1.5-VERBATIM S4
+  parent `neumann_eq_solve_of_margin` is landed (S4b) and untouched; NO
+  displayed signature is changed here.  S4c2 lands exactly the S-table
+  row's remaining leg: "agreement with the RatFunc solve value at q₀ under
+  RegP … tie to `SolveSeam.r_is_solve`'s `Rsh`".
+* THE TIE, in the corpus's own vocabulary (all BY IMPORT, §3 discipline):
+  the solve pin arrives as the EXPLICIT binder `hsolve`, byte-identical in
+  type to the corpus field `SolveSeam.r_is_solve` (`DefsLedger.lean:578`)
+  — the pin of the abstract solve output `S.R σ` to THE real Cramer/
+  adjugate solve `MovesS.Rsh` over the blockSolve.  It is a named
+  hypothesis row, NEVER the full `SolveSeam` (whose OTHER field is
+  `series_tie`, the [3t] TARGET row — binding the full seam here would be
+  circular for S5b).  Under (REG-p) — `hreg : RegP D` through
+  `hpin : RegPin C D`, M4's evaluation regime — `RegPin.detHyp` supplies
+  `DetHyp`, and the chain's OWN solve law `rsh_interp` (RS.4) evaluates
+  that `Rsh` at q₀ = p to the measured value `Rval`: so the literal
+  evaluation `evalℝ S σ p` of the pinned solve IS
+  `C.chain.Rval (vmap C.T σ) (p : ℚ)` (`evalℝ_eq_Rval_of_solvePin` —
+  the standalone-leg form of the corpus `SolveSeam.evalℝ_eq_Rval`
+  derivation, NOT an alias: it consumes the leg, not the seam).
+* The unit theorem (`neumann_eq_solveValue_of_margin`) then ties S4's
+  margin evaluation to that value: any real affine solution `x` read off
+  at the σ-state by the evaluated solve (`hread`, the O11-K2 evaluation-
+  plumbing row — a named binder for the identification S5b's K3/K4 census
+  rows will discharge) prices the Neumann value AT q₀: it equals the
+  RatFunc solve value `evalℝ S σ p` AND the chain's measured
+  `Rval (vmap C.T σ) (p : ℚ)`.
+* Math source of record: M04 Lemma 3.3 + O11 K2.
+* Deps: S4b (`neumann_eq_solve_of_margin`, landed), S4c1 (landed;
+  its Cramer form is the canonical `x` supplier), M4's row shape
+  (`r1_margin_of_regP`; consumed as the (REG-p) binders, per §3).
+-/
+
+/-- S4c2 pin tie (the `Rsh` leg of S-table row S4c; the standalone-leg form
+    of the corpus `SolveSeam.evalℝ_eq_Rval` derivation — consumes ONLY the
+    `r_is_solve`-shaped pin `hsolve`, never the full `SolveSeam`, so S5b can
+    use it without assuming the [3t] target row): under (REG-p), the literal
+    evaluation of the pinned solve output at q₀ = p IS the chain's measured
+    value — `S.R σ` is `Rsh` by the pin, and RS.4's own solve law
+    `rsh_interp` evaluates `Rsh` to `Rval` at the prime pool. -/
+theorem evalℝ_eq_Rval_of_solvePin {n p : ℕ} {C : MovesU.UCarriers n}
+    {S : MovesU.SolveData n} {D : MovesU.RegData p}
+    (hpin : MovesU.RegPin C D) (hreg : MovesU.RegP D) (hp : p.Prime)
+    (hsolve : ∀ (hdet : MovesS.DetHyp C.T C.RB C.hK)
+      (σ : MovesU.SplittingType n),
+      S.R σ = MovesS.Rsh C.T C.MS C.RB C.hdc C.hK hdet C.Fam C.chain.WshP
+        (MovesU.vmap C.T σ))
+    (σ : MovesU.SplittingType n) :
+    MovesU.evalℝ S σ p = C.chain.Rval (MovesU.vmap C.T σ) (p : ℚ) := by
+  have hdet : MovesS.DetHyp C.T C.RB C.hK := hpin.detHyp hreg
+  have hpP : ((p : ℚ)) ∈ C.chain.PrimePools :=
+    (C.chain.prime_base _).mpr ⟨p, hp, rfl⟩
+  obtain ⟨hok, heval⟩ :=
+    C.chain.rsh_interp (MovesU.vmap C.T σ) (C.vmap_mem_Sigmas σ) (p : ℚ) hpP hdet
+  have hkey : MovesU.evalℝ S σ p
+      = ((MovesS.evalAt (p : ℚ)
+          ⟨MovesS.Rsh C.T C.MS C.RB C.hdc C.hK hdet C.Fam C.chain.WshP
+            (MovesU.vmap C.T σ), hok⟩ : ℚ) : ℝ) := by
+    unfold MovesU.evalℝ
+    rw [hsolve hdet σ]
+    rfl
+  rw [hkey]
+  exact heval
+
+/-- **S4c2** (M04 Lemma 3.3 + O11 K2; BP_IV §2 S-table row S4c, the
+    SolveSeam-agreement leg): agreement with the RatFunc solve value at
+    q₀ = p under RegP.  Any real affine solution `x` of the margin system
+    that reads off the evaluated solve at the σ-state (`hread`) prices the
+    Neumann value as BOTH the literal solve evaluation `evalℝ S σ p` (the
+    solve output pinned to `MovesS.Rsh` by the `r_is_solve`-shaped binder
+    `hsolve`) AND the chain's measured value `Rval` — the K2 leg S5b
+    consumes. -/
+theorem neumann_eq_solveValue_of_margin {n p m : ℕ} {C : MovesU.UCarriers n}
+    {S : MovesU.SolveData n} {D : MovesU.RegData p}
+    (hpin : MovesU.RegPin C D) (hreg : MovesU.RegP D) (hp : p.Prime)
+    (hsolve : ∀ (hdet : MovesS.DetHyp C.T C.RB C.hK)
+      (σ : MovesU.SplittingType n),
+      S.R σ = MovesS.Rsh C.T C.MS C.RB C.hdc C.hK hdet C.Fam C.chain.WshP
+        (MovesU.vmap C.T σ))
+    (A : Matrix (Fin m) (Fin m) ℝ≥0∞) (b : Fin m → ℝ≥0∞)
+    (hfiniteA : ∀ i j, A i j ≠ ⊤) (hfiniteb : ∀ i, b i ≠ ⊤)
+    (ρ : ℝ) (hρ0 : 0 ≤ ρ) (hρ1 : ρ < 1)
+    (hmargin : ∀ i, ∑ j, (A i j).toReal ≤ ρ)
+    (stateOf : MovesU.SplittingType n → Fin m)
+    (x : Fin m → ℝ)
+    (hx : x = vectorToReal b + (matrixToReal A).mulVec x)
+    (hread : ∀ σ : MovesU.SplittingType n,
+      x (stateOf σ) = MovesU.evalℝ S σ p) :
+    ∀ σ : MovesU.SplittingType n,
+      (neumannSum A b (stateOf σ)).toReal = MovesU.evalℝ S σ p
+        ∧ (neumannSum A b (stateOf σ)).toReal
+            = C.chain.Rval (MovesU.vmap C.T σ) (p : ℚ) := by
+  intro σ
+  have h1 : (neumannSum A b (stateOf σ)).toReal = MovesU.evalℝ S σ p :=
+    (neumann_eq_solve_of_margin A b hfiniteA hfiniteb ρ hρ0 hρ1 hmargin x hx
+      (stateOf σ)).trans (hread σ)
+  exact ⟨h1, h1.trans (evalℝ_eq_Rval_of_solvePin hpin hreg hp hsolve σ)⟩
 
 end LeanUrat.Scaffold

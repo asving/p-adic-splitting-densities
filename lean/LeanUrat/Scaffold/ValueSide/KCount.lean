@@ -36,9 +36,23 @@ genuine product of factor cells), K9 (`SmithStable`, the exported named
 hypothesis row per §2 — structure only, constructor proof HARD wave 4), K10
 partial (`sib_product_law_of_imageCount`, the K10b+K10c combine step with the
 missing K10b image law displayed as the binder `himg`; the verbatim
-`sib_product_law` display itself is BLOCKED — see below).
-Pending (later waves, per BP_IV §4): K5, K7c (monic-lift parametrization),
-K8b, and the (SIB) product law.
+`sib_product_law` display itself is BLOCKED — see below), K10b (the
+constant-fiber image theorem, final section: Finset core
+`constFiber_image_card` + clauses `constFiber_fiber_nonempty` /
+`constFiber_image_eq` / `constFiber_image_card_eq` (the charged O5CountingB
+`card_eq_of_injOn_checksum` consumption — image/counting step only, per
+REV-2 finding 20) + type level `constFiber_surjective` /
+`constFiber_nat_card` + the K10a-keyed `adaptedCell_constFiber_image_card`,
+whose count leg is verbatim the `himg` binder of
+`sib_product_law_of_imageCount`; K5's exact fiber cardinality enters as the
+NAMED binder `hfib` at value `p^(A.sM)` — K5 unlanded at this wave), K8b
+(`SmithData`, the U/D/V adapter carrier for the particular Φ matrix over
+`ℤ_[p]` — concrete `U`/`V` with two-sided inverse laws, `Fin n` exponent
+indexing `exp`, factorization `Φ = U·diag(p^exp)·V` + solved-form
+`SmithData.diagonal_eq`; `smithData_exists` instantiates the K8a-pinned
+`Submodule.smithNormalForm` at any injective Φ, `smithDataOfInjective`
+packages the choice).
+Pending (later waves, per BP_IV §4): K5, K7e, and the (SIB) product law.
 
 -- BLOCKED(K10): the §1.3 `sib_product_law` display is REFUTABLE over the
 -- §1.3 `AdaptedCell` (K10a) — no field constrains `cellCount`/`sM`, so
@@ -1332,11 +1346,13 @@ theorem constFiber_surjective {γ δ : Type*} (μ : γ → δ)
 /-- K10b at type level (the shape K10a's `AdaptedCell` `Nat.card` fields
     consume): a map of finite types with every fiber of exact cardinality
     `φcard` has `Nat.card δ * φcard = Nat.card γ`. -/
-theorem constFiber_nat_card {γ δ : Type*} [Fintype γ] [Fintype δ]
+theorem constFiber_nat_card {γ δ : Type*} [Finite γ] [Finite δ]
     (μ : γ → δ) (φcard : ℕ)
     (hfib : ∀ d : δ, Nat.card {c : γ // μ c = d} = φcard) :
     Nat.card δ * φcard = Nat.card γ := by
   classical
+  haveI := Fintype.ofFinite γ
+  haveI := Fintype.ofFinite δ
   have key : (Finset.univ : Finset δ).card * φcard
       = (Finset.univ : Finset γ).card :=
     constFiber_image_card Finset.univ Finset.univ μ φcard
@@ -1356,7 +1372,7 @@ theorem constFiber_nat_card {γ δ : Type*} [Fintype γ] [Fintype δ]
     binder that `sib_product_law_of_imageCount` chains with K10c's
     `adaptedCell_domainProduct_card` (see the BLOCKED(K10) note above). -/
 theorem adaptedCell_constFiber_image_card {p n N : ℕ} [Fact p.Prime]
-    (A : AdaptedCell p n N) {Cell : Type*} [Fintype Cell]
+    (A : AdaptedCell p n N) {Cell : Type*} [Finite Cell]
     (μ : A.Factor → Cell)
     (hcell : A.cellCount = Nat.card Cell)
     (hfib : ∀ c : Cell, Nat.card {x : A.Factor // μ x = c} = p ^ A.sM) :
@@ -1366,5 +1382,197 @@ theorem adaptedCell_constFiber_image_card {p n N : ℕ} [Fact p.Prime]
     by rw [hcell]; exact constFiber_nat_card μ _ hfib⟩
 
 end K10b
+
+/-! ### K8b (BP_IV §2 K-table; O-10 §2 Lemma 2 half 1 + §3 Step 2): the
+`SmithData` adapter for the particular Φ matrix
+
+K8b instantiates the K8a-checked PID theorem (`Submodule.smithNormalForm`,
+signature pinned in the K8a section above) at the matrix of Φ over `ℤ_[p]`
+and exposes the concrete data the K-chain consumes: the matrices `U`, `V`
+with their explicit two-sided inverses (the inverse laws), the diagonal
+equality `Φ = U · diag(p^{e₁}, …, p^{e_n}) · V` (O-10 §3 Step 2:
+`Φ_h = U D V`, `U, V ∈ GL_n(ℤ_p)`, `D = diag(p^{e_i})`), and the `Fin n`
+exponent indexing `exp : Fin n → ℕ` in the shape `MulFiberData.smithExp`
+consumes (BP_IV §1.3).  Generic existence alone does not discharge K8: the
+carrier below is the problem-specific U/D/V adapter charged by the §2
+K-table row (deps K8a, K7d).  (BP_IV §1.3 displays no Lean block for K8b —
+the statements below transcribe the §2 K-table row, the same convention as
+the K2/K3a/K4/K7a/K7b units above.)
+
+Construction (`smithData_exists`): with `b` the standard basis of
+`Fin n → ℤ_[p]` and `φ := toLin b b Φ` injective, apply
+`Submodule.smithNormalForm b (range φ)` to get `bM`, `bN`, `f`, `a`, `snf`;
+the rank count forces the Smith index count to `n` and `f` to a bijection
+`σ`; pulling `bN` back through `range φ ≃ₗ (Fin n → ℤ_[p])` gives a domain
+basis in which `φ` is the diagonal matrix `diag(a ∘ σ⁻¹)`; the two
+change-of-basis matrices then have explicit inverses
+(`Basis.toMatrix_mul_toMatrix_flip`), and the DVR factorization
+`a = u · p^e` (`eq_unit_mul_pow_irreducible` at the irreducible `p`)
+absorbs the units into `U`. -/
+
+section K8b
+
+/-- K8b (BP_IV §2 K-table): the Smith data of the particular matrix `Φ` over
+    `ℤ_[p]` — the concrete `U`/`V` with explicit two-sided inverse laws, and
+    the `Fin n`-indexed exponents `exp` with the diagonal equality
+    `Φ = U * diag(p^exp) * V` (O-10 §3 Step 2; `exp` is the shape
+    `MulFiberData.smithExp` consumes per BP_IV §1.3). -/
+structure SmithData (p : ℕ) [Fact p.Prime] {n : ℕ}
+    (Φ : Matrix (Fin n) (Fin n) ℤ_[p]) where
+  U : Matrix (Fin n) (Fin n) ℤ_[p]
+  Uinv : Matrix (Fin n) (Fin n) ℤ_[p]
+  V : Matrix (Fin n) (Fin n) ℤ_[p]
+  Vinv : Matrix (Fin n) (Fin n) ℤ_[p]
+  exp : Fin n → ℕ
+  U_mul_Uinv : U * Uinv = 1
+  Uinv_mul_U : Uinv * U = 1
+  V_mul_Vinv : V * Vinv = 1
+  Vinv_mul_V : Vinv * V = 1
+  factor : Φ = U * Matrix.diagonal (fun i => (p : ℤ_[p]) ^ exp i) * V
+
+namespace SmithData
+
+variable {p n : ℕ} [Fact p.Prime] {Φ : Matrix (Fin n) (Fin n) ℤ_[p]}
+
+/-- The diagonal matrix `D = diag(p^{e₁}, …, p^{e_n})` of the factorization. -/
+noncomputable def D (S : SmithData p Φ) : Matrix (Fin n) (Fin n) ℤ_[p] :=
+  Matrix.diagonal fun i => (p : ℤ_[p]) ^ S.exp i
+
+/-- `Φ = U * D * V`, restated through the `D` abbreviation. -/
+theorem factor_D (S : SmithData p Φ) : Φ = S.U * S.D * S.V := S.factor
+
+/-- The diagonal equality in solved form: `U⁻¹ * Φ * V⁻¹ = diag(p^exp)`. -/
+theorem diagonal_eq (S : SmithData p Φ) :
+    S.Uinv * Φ * S.Vinv = Matrix.diagonal fun i => (p : ℤ_[p]) ^ S.exp i := by
+  have hstep : S.Uinv * Φ * S.Vinv
+      = S.Uinv * (S.U * Matrix.diagonal (fun i => (p : ℤ_[p]) ^ S.exp i) * S.V)
+        * S.Vinv := by
+    rw [← S.factor]
+  rw [hstep, mul_assoc S.U, ← mul_assoc S.Uinv, S.Uinv_mul_U, one_mul,
+    mul_assoc, S.V_mul_Vinv, mul_one]
+
+end SmithData
+
+/-- K8b (BP_IV §2 K-table row, the adapter theorem): instantiating the
+    K8a-checked PID theorem `Submodule.smithNormalForm` at an injective
+    matrix `Φ` over `ℤ_[p]` yields its concrete Smith data — `U`/`V` with
+    inverse laws, the `Fin n` exponents, and the diagonal equality. -/
+theorem smithData_exists {p n : ℕ} [Fact p.Prime]
+    (Φ : Matrix (Fin n) (Fin n) ℤ_[p])
+    (hΦ : Function.Injective Φ.mulVecLin) : Nonempty (SmithData p Φ) := by
+  classical
+  set b : Module.Basis (Fin n) ℤ_[p] (Fin n → ℤ_[p]) :=
+    Pi.basisFun ℤ_[p] (Fin n) with hb
+  set φ : (Fin n → ℤ_[p]) →ₗ[ℤ_[p]] (Fin n → ℤ_[p]) := Matrix.toLin b b Φ
+    with hφdef
+  have hφ : Function.Injective φ := by
+    have hcoe : ⇑φ = ⇑Φ.mulVecLin := by
+      funext v
+      rw [hφdef, hb, Matrix.toLin_eq_toLin', Matrix.toLin'_apply,
+        Matrix.mulVecLin_apply]
+    rw [hcoe]; exact hΦ
+  obtain ⟨m, S⟩ := Submodule.smithNormalForm b (LinearMap.range φ)
+  set ε : (Fin n → ℤ_[p]) ≃ₗ[ℤ_[p]] LinearMap.range φ :=
+    LinearEquiv.ofInjective φ hφ with hε
+  have hm : n = m := by
+    have h1 : Module.finrank ℤ_[p] (LinearMap.range φ) = m :=
+      (Module.finrank_eq_card_basis S.bN).trans (Fintype.card_fin m)
+    have h2 : Module.finrank ℤ_[p] (LinearMap.range φ) = n :=
+      (Module.finrank_eq_card_basis (b.map ε)).trans (Fintype.card_fin n)
+    omega
+  subst hm
+  -- the index embedding is a bijection σ of `Fin n`
+  have hfbij : Function.Bijective S.f :=
+    Finite.injective_iff_bijective.mp S.f.injective
+  set σ : Fin n ≃ Fin n := Equiv.ofBijective S.f hfbij with hσ
+  -- the domain basis: bN pulled back through range φ ≃ₗ (Fin n → ℤ_[p])
+  set bDom : Module.Basis (Fin n) ℤ_[p] (Fin n → ℤ_[p]) :=
+    (S.bN.map ε.symm).reindex σ with hbDom
+  have hεφ : ∀ y : LinearMap.range φ, φ (ε.symm y) = (y : Fin n → ℤ_[p]) := by
+    intro y
+    conv_rhs => rw [← ε.apply_symm_apply y]
+    rw [hε, LinearEquiv.ofInjective_apply]
+  -- the columns of φ in the bases (bDom, bM): the diagonal a ∘ σ⁻¹
+  have hkey : ∀ j, φ (bDom j) = S.a (σ.symm j) • (S.bM j : Fin n → ℤ_[p]) := by
+    intro j
+    have h1 : bDom j = ε.symm (S.bN (σ.symm j)) := by
+      rw [hbDom, Module.Basis.reindex_apply, Module.Basis.map_apply]
+    have h2 : S.f (σ.symm j) = j := σ.apply_symm_apply j
+    rw [h1, hεφ, S.snf (σ.symm j), h2]
+  have hdiag : LinearMap.toMatrix bDom S.bM φ
+      = Matrix.diagonal (fun j => S.a (σ.symm j)) := by
+    ext i j
+    rw [LinearMap.toMatrix_apply, hkey j, map_smul]
+    rcases eq_or_ne i j with rfl | hij
+    · simp
+    · simp [Matrix.diagonal_apply_ne _ hij, Module.Basis.repr_self]
+      rw [Finsupp.single_apply, if_neg (Ne.symm hij)]
+  -- change of basis: Φ = U₀ · diag(a ∘ σ⁻¹) · V
+  have hcomp1 := LinearMap.toMatrix_comp b S.bM b LinearMap.id φ
+  rw [LinearMap.id_comp] at hcomp1
+  have hcomp2 := LinearMap.toMatrix_comp b bDom S.bM φ LinearMap.id
+  rw [LinearMap.comp_id] at hcomp2
+  have hfact : Φ = b.toMatrix ⇑S.bM
+      * Matrix.diagonal (fun j => S.a (σ.symm j)) * bDom.toMatrix ⇑b := by
+    have h0 : Φ = LinearMap.toMatrix b b φ := by
+      rw [hφdef, LinearMap.toMatrix_toLin]
+    rw [h0, hcomp1, hcomp2, hdiag, LinearMap.toMatrix_id_eq_basis_toMatrix,
+      LinearMap.toMatrix_id_eq_basis_toMatrix, mul_assoc]
+  -- the diagonal entries are nonzero, hence unit · p^e over the DVR ℤ_[p]
+  have ha : ∀ j : Fin n, S.a (σ.symm j) ≠ 0 := by
+    intro j ha0
+    refine S.bN.ne_zero (σ.symm j) ?_
+    have hz := S.snf (σ.symm j)
+    rw [ha0, zero_smul] at hz
+    exact ZeroMemClass.coe_eq_zero.mp hz
+  have hfac : ∀ j : Fin n, ∃ (e : ℕ) (v : ℤ_[p]ˣ),
+      S.a (σ.symm j) = ↑v * (p : ℤ_[p]) ^ e := fun j =>
+    IsDiscreteValuationRing.eq_unit_mul_pow_irreducible (ha j)
+      PadicInt.irreducible_p
+  choose e u hu using hfac
+  -- assemble: absorb the units into U
+  refine ⟨⟨b.toMatrix ⇑S.bM * Matrix.diagonal (fun j => (↑(u j) : ℤ_[p])),
+    Matrix.diagonal (fun j => (↑(u j)⁻¹ : ℤ_[p])) * S.bM.toMatrix ⇑b,
+    bDom.toMatrix ⇑b, b.toMatrix ⇑bDom, e, ?_, ?_, ?_, ?_, ?_⟩⟩
+  · -- U * Uinv = 1
+    have hd : Matrix.diagonal (fun j => (↑(u j) : ℤ_[p]))
+        * Matrix.diagonal (fun j => (↑(u j)⁻¹ : ℤ_[p])) = 1 := by
+      rw [Matrix.diagonal_mul_diagonal]
+      have h1 : (fun j => (↑(u j) : ℤ_[p]) * ↑(u j)⁻¹) = fun _ => (1 : ℤ_[p]) :=
+        funext fun j => Units.mul_inv (u j)
+      rw [h1, Matrix.diagonal_one]
+    rw [mul_assoc, ← mul_assoc (Matrix.diagonal fun j => (↑(u j) : ℤ_[p])),
+      hd, one_mul, Module.Basis.toMatrix_mul_toMatrix_flip]
+  · -- Uinv * U = 1
+    have hd : Matrix.diagonal (fun j => (↑(u j)⁻¹ : ℤ_[p]))
+        * Matrix.diagonal (fun j => (↑(u j) : ℤ_[p])) = 1 := by
+      rw [Matrix.diagonal_mul_diagonal]
+      have h1 : (fun j => (↑(u j)⁻¹ : ℤ_[p]) * ↑(u j)) = fun _ => (1 : ℤ_[p]) :=
+        funext fun j => Units.inv_mul (u j)
+      rw [h1, Matrix.diagonal_one]
+    rw [mul_assoc, ← mul_assoc (S.bM.toMatrix ⇑b),
+      Module.Basis.toMatrix_mul_toMatrix_flip, one_mul, hd]
+  · -- V * Vinv = 1
+    exact Module.Basis.toMatrix_mul_toMatrix_flip bDom b
+  · -- Vinv * V = 1
+    exact Module.Basis.toMatrix_mul_toMatrix_flip b bDom
+  · -- Φ = U * diag(p^e) * V
+    have hDD : Matrix.diagonal (fun j => S.a (σ.symm j))
+        = Matrix.diagonal (fun j => (↑(u j) : ℤ_[p]))
+          * Matrix.diagonal (fun j => (p : ℤ_[p]) ^ e j) := by
+      rw [Matrix.diagonal_mul_diagonal]
+      exact congrArg Matrix.diagonal (funext fun j => hu j)
+    rw [hfact, hDD, ← mul_assoc]
+
+/-- K8b, packaged: the concrete Smith adapter of an injective `Φ`, extracted
+    from `smithData_exists` (noncomputable choice; the structure fields expose
+    the U/D/V matrices, inverse laws, diagonal equality, and the `Fin n`
+    exponent indexing). -/
+noncomputable def smithDataOfInjective {p n : ℕ} [Fact p.Prime]
+    (Φ : Matrix (Fin n) (Fin n) ℤ_[p])
+    (hΦ : Function.Injective Φ.mulVecLin) : SmithData p Φ :=
+  (smithData_exists Φ hΦ).some
+
+end K8b
 
 end LeanUrat.Scaffold

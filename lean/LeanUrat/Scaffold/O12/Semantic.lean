@@ -584,4 +584,209 @@ theorem val_esymm_min_eq {n : ℕ}
     OrderDual.ofDual (v ((Finset.univ.val.map r).esymm k)).toAdd = k • μ :=
   addValuation_esymm_min_eq (AddValuation.ofValuation v) r μ k hk hmin hunique
 
+/-!
+## Unit II-M3 — `L1_root_coeff` (L1 (i)+(ii) + ℤ-snap; assembles II-M1/II-M2)
+
+Mathematical content (brief L1, `O12_phaseB_verifybrief_rev4.md` line 358: monic
+g = x^e + a₁x^{e−1} + ⋯ + a_e, top-down aᵢ): (i) all roots have additive valuation
+> 0 ⟺ v(aᵢ) ≥ 1 for i = 1..e; (ii) all roots have valuation ≥ 1 ⟺ v(aᵢ) ≥ i. The
+ℤ-snap is the §2 unit-table sketch "v(a) ∈ ℤ_{≥0} forces > 0 ⟹ ≥ 1": the value
+group is DISCRETE (additively `WithTop ℤ`), so a strict bound snaps to the next
+integer. Assembly: forward directions by II-M1 (`addValuation_esymm_ge`, every
+eᵢ-term is an i-fold product of roots); backward directions by II-M2
+(`addValuation_esymm_min_eq` at the minimal root valuation μ ≤ 0 — the attaining
+set is AUTOMATICALLY the unique k-subset attaining μ, since any such subset sits
+inside the attaining set with equal cardinality), giving a coefficient of
+valuation k • μ ≤ 0 that violates the right-hand side at index k.
+
+**Display adjustment (three documented token repairs; same convention and E-phase
+statement-fence sign-off flag as II-M1/II-M2/II-M5 above; BP_II §1 head:
+"Signatures are sketches"). The §1.9 display does NOT elaborate verbatim:**
+
+1. **`ℤₘ₀` codomain.** This Mathlib pin has no `ℤₘ₀` notation (it appears only in
+   comments referencing `Multiplicative.termℤₘ₀`, declared in later Mathlib as
+   `WithZero (Multiplicative ℤ)`); verbatim, `ℤₘ₀` auto-binds as an implicit type
+   and elaboration fails with *"failed to synthesize LinearOrderedCommMonoidWithZero
+   ℤₘ₀"*. Supplying the standard notation does not cure the display: the reads
+   `(v _).toAdd` then fail with *"Invalid field toAdd: The environment does not
+   contain Option.toAdd"* — no total additive read exists on `WithZero
+   (Multiplicative ℤ)` in any Mathlib. Repair: the II-M1/II-M2 additive-codomain
+   dictionary at Γ₀ := `WithTop ℤ`, i.e. `v : Valuation K (Multiplicative
+   (WithTop ℤ)ᵒᵈ)` (= `AddValuation K (WithTop ℤ)` definitionally). This codomain
+   is order-anti-isomorphic to `ℤₘ₀` via 0 ↦ ⊤, ofAdd m ↦ −m — exactly the `ᵒᵈ`
+   repair; the display's `.toAdd`-with-`0 ≤`-integrality semantics pin the
+   ADDITIVE order, which is what the repaired reads deliver.
+2. **Reads.** `(v _).toAdd` → `OrderDual.ofDual (v _).toAdd`, the identical repair
+   as II-M1/II-M2 (the specialization through `AddValuation.ofValuation` is
+   definitional: `AddValuation.ofValuation_apply` is `rfl`).
+3. **Coefficient index.** The display's `g.coeff i` in the two `Finset.Icc
+   1 g.natDegree`-guarded clauses → `g.coeff (g.natDegree - i)`: the blueprint's
+   aᵢ is the monic TOP-DOWN index (aᵢ = coeff of x^(e−i), brief L1 line 358),
+   while Lean's `coeff` is bottom-up — the II-M5 dictionary documented above.
+   The literal bottom-up reading is REFUTED, not merely unidiomatic: at i =
+   g.natDegree ≥ 1 it demands 1 ≤ w(leading coeff) = w(1) = 0 (and (ii) demands
+   g.natDegree ≤ 0), so both clauses' forward directions are false for every
+   monic g of positive degree with all root valuations positive.
+
+`hintegral` is carried verbatim from the display; the proof does not consume it
+(the equivalences hold without coefficient integrality, which is automatic here:
+every coefficient is ± a sum of products of roots of nonnegative valuation on the
+left-hand sides, and explicitly bounded on the right-hand sides).
+-/
+
+/-- ℤ-snap (a): a positive element of the discrete value group `WithTop ℤ` is ≥ 1
+(the blueprint's "v(a) ∈ ℤ_{≥0} forces > 0 ⟹ ≥ 1"). [II-M3 helper.] -/
+theorem intTop_one_le_of_pos {μ : WithTop ℤ} (h : 0 < μ) : 1 ≤ μ := by
+  induction μ using WithTop.recTopCoe with
+  | top => exact le_top
+  | coe a =>
+    have ha : (0 : ℤ) < a := by exact_mod_cast h
+    exact_mod_cast (by omega : (1 : ℤ) ≤ a)
+
+/-- ℤ-snap (b): an element of `WithTop ℤ` not ≥ 1 is ≤ 0. [II-M3 helper.] -/
+theorem intTop_le_zero_of_not_one_le {μ : WithTop ℤ} (h : ¬ 1 ≤ μ) : μ ≤ 0 := by
+  induction μ using WithTop.recTopCoe with
+  | top => exact absurd le_top h
+  | coe a =>
+    have ha : ¬ (1 : ℤ) ≤ a := fun hle => h (by exact_mod_cast hle)
+    exact_mod_cast (by omega : a ≤ (0 : ℤ))
+
+/-- k • 1 = k in `WithTop ℤ`. [II-M3 helper.] -/
+theorem intTop_nsmul_one (k : ℕ) : k • (1 : WithTop ℤ) = ((k : ℤ) : WithTop ℤ) := by
+  rw [← WithTop.coe_one, ← WithTop.coe_nsmul]
+  norm_num
+
+/-- The unit sign of Vieta is valuation-invisible: w((−1)^i) = 0. [II-M3 helper.] -/
+theorem addVal_neg_one_pow {K Γ₀ : Type*} [Field K]
+    [LinearOrderedAddCommGroupWithTop Γ₀] (w : AddValuation K Γ₀) (i : ℕ) :
+    w ((-1 : K) ^ i) = 0 := by
+  rw [w.map_pow, w.map_neg, w.map_one, nsmul_zero]
+
+/-- II-M3 in Mathlib's `AddValuation` language, discrete value group `WithTop ℤ`:
+for monic g = ∏(X − C rⱼ), (i) all roots have valuation > 0 ⟺ the top-down
+coefficients a₁..aₙ (= `g.coeff (n − i)`, i = 1..n) have valuation ≥ 1; (ii) all
+roots have valuation ≥ 1 ⟺ aᵢ has valuation ≥ i. Vieta ties a_i to ±eᵢ(roots);
+II-M1 floors the forward directions, II-M2 collapses the backward ones onto the
+minimal-valuation term, and the ℤ-snap converts strict to next-integer bounds. -/
+set_option linter.unusedVariables false in  -- `hintegral` is display-carried (§II-M3 note)
+theorem addValuation_L1_root_coeff {K : Type*} [Field K]
+    (w : AddValuation K (WithTop ℤ))
+    (g : Polynomial K) (roots : Fin g.natDegree → K)
+    (hroots : g = ∏ j, (Polynomial.X - Polynomial.C (roots j)))
+    (hintegral : ∀ i, 0 ≤ w (g.coeff i)) :
+    ((∀ j, 0 < w (roots j)) ↔
+      ∀ i ∈ Finset.Icc 1 g.natDegree, 1 ≤ w (g.coeff (g.natDegree - i))) ∧
+    ((∀ j, 1 ≤ w (roots j)) ↔
+      ∀ i ∈ Finset.Icc 1 g.natDegree,
+        (i : ℤ) ≤ w (g.coeff (g.natDegree - i))) := by
+  classical
+  -- the root multiset has cardinality n = g.natDegree
+  have hcard : Multiset.card (Finset.univ.val.map roots) = g.natDegree := by
+    rw [Multiset.card_map]
+    exact Finset.card_univ.trans (Fintype.card_fin _)
+  -- g as the product over the root multiset
+  have hg : g = ((Finset.univ.val.map roots).map
+      fun x => Polynomial.X - Polynomial.C x).prod := by
+    rw [Multiset.map_map]
+    exact hroots.trans (Finset.prod_eq_multiset_prod _ _)
+  -- Vieta bridge: w(g.coeff (n − i)) = w(eᵢ(roots)) for i ∈ [1, n]
+  have hbridge : ∀ i ∈ Finset.Icc 1 g.natDegree,
+      w (g.coeff (g.natDegree - i)) = w ((Finset.univ.val.map roots).esymm i) := by
+    intro i hi
+    rw [Finset.mem_Icc] at hi
+    have hin : g.natDegree - i ≤ Multiset.card (Finset.univ.val.map roots) := by
+      rw [hcard]; omega
+    have hcoeff := Multiset.prod_X_sub_C_coeff (Finset.univ.val.map roots) hin
+    rw [← hg] at hcoeff
+    have hidx : Multiset.card (Finset.univ.val.map roots) - (g.natDegree - i) = i := by
+      rw [hcard]; omega
+    rw [hidx] at hcoeff
+    rw [hcoeff, w.map_mul, addVal_neg_one_pow, zero_add]
+  -- II-M1 assembly: a common floor c on root valuations floors w(eᵢ) by i • c
+  have hup : ∀ c : WithTop ℤ, (∀ j, c ≤ w (roots j)) → ∀ i : ℕ,
+      i • c ≤ w ((Finset.univ.val.map roots).esymm i) := by
+    intro c hc i
+    exact le_trans (nsmul_le_nsmul_right (Finset.le_inf fun j _ => hc j) i)
+      (addValuation_esymm_ge w roots i)
+  -- II-M2 assembly: a root of valuation ≤ 0 yields k ∈ [1, n] with w(e_k) ≤ 0
+  have hdown : ∀ j₀ : Fin g.natDegree, w (roots j₀) ≤ 0 →
+      ∃ k ∈ Finset.Icc 1 g.natDegree,
+        w ((Finset.univ.val.map roots).esymm k) ≤ 0 := by
+    intro j₀ h₀
+    obtain ⟨j₁, -, hmin⟩ := Finset.exists_min_image Finset.univ
+      (fun j => w (roots j)) ⟨j₀, Finset.mem_univ j₀⟩
+    refine ⟨(Finset.univ.filter fun j => w (roots j) = w (roots j₁)).card, ?_, ?_⟩
+    · rw [Finset.mem_Icc]
+      refine ⟨Finset.card_pos.mpr
+        ⟨j₁, Finset.mem_filter.mpr ⟨Finset.mem_univ _, rfl⟩⟩, ?_⟩
+      exact le_trans (Finset.card_filter_le _ _)
+        (le_of_eq (Finset.card_univ.trans (Fintype.card_fin _)))
+    · have hval := addValuation_esymm_min_eq w roots (w (roots j₁)) _ rfl
+        (fun j => hmin j (Finset.mem_univ j))
+        (fun I hIcard hIval => Finset.eq_of_subset_of_card_le
+          (fun j hj => Finset.mem_filter.mpr ⟨Finset.mem_univ j, hIval j hj⟩)
+          (le_of_eq hIcard.symm))
+      rw [hval]
+      calc (Finset.univ.filter fun j => w (roots j) = w (roots j₁)).card
+              • w (roots j₁)
+          ≤ (Finset.univ.filter fun j => w (roots j) = w (roots j₁)).card
+              • (0 : WithTop ℤ) :=
+            nsmul_le_nsmul_right (le_trans (hmin j₀ (Finset.mem_univ j₀)) h₀) _
+        _ = 0 := nsmul_zero _
+  constructor
+  · -- (i): all roots > 0 ⟺ all a_i ≥ 1
+    constructor
+    · intro hpos i hi
+      rw [hbridge i hi]
+      have hle := hup 1 (fun j => intTop_one_le_of_pos (hpos j)) i
+      rw [intTop_nsmul_one] at hle
+      refine le_trans ?_ hle
+      rw [Finset.mem_Icc] at hi
+      exact_mod_cast (by omega : (1 : ℤ) ≤ (i : ℤ))
+    · intro hcoeffs j
+      by_contra hj
+      obtain ⟨k, hk, hek⟩ := hdown j (not_lt.mp hj)
+      have h1 := hcoeffs k hk
+      rw [hbridge k hk] at h1
+      have h10 : ((1 : ℤ) : WithTop ℤ) ≤ ((0 : ℤ) : WithTop ℤ) := by
+        rw [WithTop.coe_one, WithTop.coe_zero]; exact le_trans h1 hek
+      rw [WithTop.coe_le_coe] at h10
+      omega
+  · -- (ii): all roots ≥ 1 ⟺ all a_i ≥ i
+    constructor
+    · intro hge i hi
+      rw [hbridge i hi]
+      have hle := hup 1 hge i
+      rwa [intTop_nsmul_one] at hle
+    · intro hcoeffs j
+      by_contra hj
+      obtain ⟨k, hk, hek⟩ := hdown j (intTop_le_zero_of_not_one_le hj)
+      have h1 := hcoeffs k hk
+      rw [hbridge k hk] at h1
+      have hk0 : ((k : ℤ) : WithTop ℤ) ≤ ((0 : ℤ) : WithTop ℤ) := by
+        rw [WithTop.coe_zero]; exact le_trans h1 hek
+      rw [WithTop.coe_le_coe] at hk0
+      rw [Finset.mem_Icc] at hk
+      omega
+
+/-- **II-M3, L1 (i)+(ii) + ℤ-snap**: root-valuation dichotomies ⟺ coefficient-
+valuation bounds for a split monic polynomial over a discretely valued field —
+the blueprint §1.9 display under the three documented token repairs of the
+section header (`ℤₘ₀` → the additive codomain at Γ₀ := `WithTop ℤ`;
+`OrderDual.ofDual` reads; top-down coefficient index `g.coeff (g.natDegree - i)`).
+The `AddValuation.ofValuation` specialization of `addValuation_L1_root_coeff` is
+definitional. -/
+theorem L1_root_coeff
+    {K : Type*} [Field K] (v : Valuation K (Multiplicative (WithTop ℤ)ᵒᵈ))
+    (g : Polynomial K) (roots : Fin g.natDegree → K)
+    (hroots : g = ∏ j, (Polynomial.X - Polynomial.C (roots j)))
+    (hintegral : ∀ i, 0 ≤ OrderDual.ofDual (v (g.coeff i)).toAdd) :
+    ((∀ j, 0 < OrderDual.ofDual (v (roots j)).toAdd) ↔
+      ∀ i ∈ Finset.Icc 1 g.natDegree,
+        1 ≤ OrderDual.ofDual (v (g.coeff (g.natDegree - i))).toAdd) ∧
+    ((∀ j, 1 ≤ OrderDual.ofDual (v (roots j)).toAdd) ↔
+      ∀ i ∈ Finset.Icc 1 g.natDegree,
+        (i : ℤ) ≤ OrderDual.ofDual (v (g.coeff (g.natDegree - i))).toAdd) :=
+  addValuation_L1_root_coeff (AddValuation.ofValuation v) g roots hroots hintegral
+
 end LeanUrat.Scaffold
