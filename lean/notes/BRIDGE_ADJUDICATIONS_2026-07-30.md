@@ -1384,3 +1384,74 @@ or registry counter was edited; D-11/O-11 banking would additionally need
 their protocols' bars met even on a clean pass, and any P(O-14a' r3) row
 edit is reserved to r11. CUC P(O-2a r5)/P(O-1thr r4)/P(O5t r3) remain
 queued (not in this campaign's scope).
+
+## OWED-PASS IMPACT AUDIT (r11-prep)
+
+**Charge**: for each CRITICAL finding of the D-11/O-11 owed passes
+(`openmath/D11_owedpass_2026-08-03.md`, `openmath/O11_owedpass_2026-08-03.md`),
+determine whether the refuted content is consumed by a MANDATORY step of ROOT
+REVISION 9 (a2ad88a) as proved material, or insulated by (a) re-homing into the
+OPEN [M] rows ((H5) incl. PACK-i/ii/iii; (H6); (H7)), (b) leaf-internal
+apparatus no ROOT step references, or (c) narrower actual consumption scope.
+Method: every `D-11|O-11` reference in `docs/ROOT_ASSEMBLY_2026-08-02.md`
+grepped and read at its consumption site; audit run HOSTILE to insulation.
+
+### Per-finding table
+
+| Finding | Consumed where / INSULATED | Warrant (ROOT REVISION 9, quoted) |
+|---|---|---|
+| **D11-C1** — M1(a') contradicts M1's announced conditioning scope ("Theorem M1: falsified at the announced conditioning scope"; no coherent meaning of "mass") | **CONSUMED — Step 17 (mandatory, 17 ≺ 18 ≺ 18b ≺ 19), as proved material** | Step 17: "Statement: (M1, one-step) every solve entry of 𝔅_n at every prime power IS the Haar mass of its continuation event"; "Delivers: the pack-side mass laws + true row labels that Step 18's K1/K2 consume". Not re-homed: the §3.2 D-11 [V] row says "it prices the passes on D-11's ON-FILE proof layers (M1 families/M1'/M3/M2 at their displayed conditionality) ONLY" — M1's soundness rides the [V] pass-debt row, not any [M] hypothesis |
+| **D11-C2** — family-(v) mass identification refuted (factor-as-mass: q₀^{-N(P)} is a factor of the cell mass (1-q₀^{-1})^k q₀^{-N(P)}, no valuation-box event defined) | **CONSUMED — Step 17 → Step 18 K2, as proved material** | Step 17's "every solve entry ... IS the Haar mass" is unrescoped in ROOT's display; §3.4 row 13: "(J-RAT) → ... Step 17 (M1: entries ARE masses)". (H5)'s PACK-i/ii carry only Rsh→Rval interpolation and the row-value [0,1] bound at K2's glue — NOT the per-entry mass identification of the family-(v)/scaling entries; no [M] row re-homes it |
+| **D11-C3** — §5/§7 billing contradiction (scaling entries "NOT masses (they exceed 1)" yet billed "covered exactly at (a)/(a')/M1'") | **CONSUMED — Step 17's status line + the §3.4 mass-law routing** | Step 17 status quotes "THEOREM M1 PROVED UNCONDITIONALLY over the VERIFIED O-12 lemma base"; §3.4 rows 6(iii)–(ix)+7 route "mass laws → Step 17 (M1/M1'/M3 over O-12's L1–L6' base, Step 5)" — the refuted coverage claim is exactly the content those rows route to Step 17, and the residue list was declared "CLOSED under the table's own reading rule" |
+| **D11-C4** — M1(b) multi-step disjointness false without a prefix-free restriction | **CONSUMED — Step 17, via the row-sum/termination conclusions** | Step 17: "Σ = 1 across each row now a THEOREM; a.s. termination from the (r1) margins" — conclusions whose on-file proof rides M1(b). Partial (c) repair visible but NOT displayed: the verifier says the used E^(L)/loop-then-exit families "appear prefix-free" (unproved); ROOT displays no narrowed consumption |
+| **D11-C6** — Theorem M2 FALSE at its displayed universal scope (arbitrary allocation data α_e can leave [0,1] while (S1)/(S2) hold; proof mis-cites M1(a) for family-(iv) verdict rows) | **CONSUMED — Step 18b (mandatory; with Step 18 it delivers Step 19's α = R_τ), as proved material. THE DECISIVE HIT** | Step 18b: "Proof: the D-11 M2 argument (commit 0cae7d8) with its two seams now supplied by EARLIER steps ... The proof above therefore names (S1), (S2), (r1) and nothing else". Insulation (a) FAILS: the missing "semantic-allocation/correspondence hypothesis" is in NO (ROOT-C) row — (H5) carries clause 4 + rsh_interp/r_bdd/wsh_ok only; `rg -i allocation docs/ROOT_ASSEMBLY_2026-08-02.md` = 0 hits. Insulation (c) FAILS: the broken proof step ("With M1(a) (each P(F) is the abstract mass entry at q₀)" where the r3 M1(a) is rescoped to families (i)–(iii), excluding family-(iv) verdict rows) breaks at the intended 𝔅_n member too — the consumed instance has no valid on-file proof, and its repair premise has no [M] home (the VC4-3/VC5 blocker genre) |
+| **D11-C7** — M3(b) silently consumes open clause 4 (treats abstract identities as identities for the actual tables) | **INSULATED (a)** | Step 17 REVISION-4 note: "what Steps 18/18b consume of this step is the M1/M1'/M3 layers at their displayed conditionality PLUS that correspondence, and the correspondence has no proof on file — ... priced as hypothesis-grade open mathematics" (= (H5)); the §3.2 D-11 row: "clause 4 (the actual-pack correspondence) has NO proof on file and is NOT covered here". ROOT ASSUMES what the leaf sentence hid. (Caveat: M3(b)'s reliance on M1/M2 is impacted through C1/C6 — billed there, not here) |
+| **O11-C1** — Theorem O11 proves only the n ≥ 2 restriction of the advertised every-n target row (n = 0, 1 untreated) | **INSULATED (c)** | ROOT §1 opens "Fix n ≥ 2. A splitting type τ of degree n ..."; (ROOT-C): "Then for each n ≥ 2 and each splitting type τ of degree n there is a single R_τ ∈ ℛ ..." — every mandatory consumption of Step 18's (O-11) row sits inside the n ≥ 2 fence; no §2 step needs n ∈ {0,1}. Residue (non-blocking, leaf-side): the advertised every-n normative Lean row (BK.series_tie) must gain the n ≥ 2 guard at formalization |
+
+GAP findings (recorded, not verdict-driving): D11-G5 (M2.0 loop-history
+address induction) sits inside Step 18b's consumed M2 chain — same impact
+locus as C6; D11-G8 (M3(a) "EVERY polynomial" vs separable lifts) touches
+Step 17's "true row labels" delivery (a.e.-vs-everywhere repair owed at the
+leaf); D11-G9 (falsifier-criterion overbreadth) is numerics-display only
+(ROOT bills falsifiers "flags, never substitutes"). O11-G2 (CUT-WD): a
+premise of the M04 Lemma 3.3 regrouping inside Step 18's consumed walk,
+disclosed in-leaf but with NO ROOT display (`rg CUT-WD` on ROOT = 0 hits) —
+on a hostile reading an undisplayed consumed open premise of Step 18;
+flagged to the repair unit for an [M]-home adjudication (verifier graded it
+GAP, so it does not drive this verdict). O11-G3 (65/65 rederivation claim)
+is evidentiary only — ROOT already bills RESUM-n3 as "flags, not the
+general-n proof". O-14a': GAPS-ONLY with core Theorems 1–3 explicitly
+clean — noted at P(O-14a' r3) WITHOUT banking (row edit reserved to a
+future revision unit; not made here).
+
+### VERDICT
+
+**(B) IMPACT: Step 17 consumes D-11 Theorem M1 as proved material — and the
+owed pass falsifies M1 at its announced conditioning scope (C1), refutes the
+family-(v) mass identification it delivers to Step 18's K2 (C2/C3), and
+falsifies its M1(b) disjointness clause as stated (C4); Step 18b consumes
+D-11 Theorem M2 as proved material — and the owed pass shows M2 FALSE at its
+displayed universal scope with the repair premise (semantic verdict-row
+allocation at the consumed member) billed in NO (ROOT-C) hypothesis (C6).**
+
+The refuted content is NOT insulated: M1/M2 are exactly the "ON-FILE proof
+layers" the §3.2 D-11 [V] row prices as pass debts — i.e., material the
+composition consumes as proved, not assumed. (H5)/(H6)/(H7) carry clause 4,
+the three pack row-laws, item (vii), the terminal rows, and (I-τ)/K-LOC —
+none carries M1's mass coherence or M2's semantic-allocation premise. The
+prior campaign entry's line "the ROOT acceptance is untouched (these are
+leaf registry debts, not composition clauses)" is **SUPERSEDED** by this
+audit: for D-11 the debts sit on composition-consumed theorems whose on-file
+proofs are now refuted at the consumed scope, so the acceptance predicate
+"every step is a named leaf with an on-file proof" fails at Steps 17/18b.
+
+**STOP-THE-LINE.** No r11 status-display edit is executed; ROOT REVISION 9
+is byte-untouched by this audit. Before any further ROOT revision: a
+dedicated repair unit must either (i) land D-11 r4 repairing M1's
+conditioning scope/family-(v)/M1(b) and restating M2 with the
+semantic-allocation premise as an explicit displayed clause (which then
+needs an [M] home or a proof), or (ii) re-scope Steps 17/18b's consumption
+in ROOT with the corresponding hypothesis enlargement — either way a NEW
+composition adjudication (the acceptance's consecutive-clean counter cannot
+protect steps whose consumed proofs are refuted). The O-11 critical is
+absorbed by ROOT's n ≥ 2 fence and, alone, would have been verdict (A).
