@@ -2769,3 +2769,71 @@ this revision is its unit of record (unit ROOT r11).
 
 — REVISION 10 complete. The stop-the-line is CURED at composition level; the
 acceptance is NOT re-earned; the counter is ZERO of 2 toward the restated bar.
+
+---
+
+## 17. REVISION 11 (r12, VC11 ripple-sync) — disposition of VC11, the Phase C end-to-end pass 11
+
+**The pass.** VC11 (fresh context; `lean/notes/openmath/VC11_report.md`) ran on
+the REVISION-10 text and returned **COMPOSITION-GAPS**: FOUR blockers + ONE
+advisory, ALL of one genre — **r11 RIPPLE-SYNC defects** (displays the REVISION-10
+edits should have carried forward but did not). The TARGETED r11 repairs
+themselves were CONFIRMED: Step 17 matches the repaired M1's per-clause measures
+and distinguishes solved (ROW-Σ) totals from booking margins; Step 18b is scoped
+at (RE) = (PACK-iv); (PACK-iv) is a member (not a thirteenth row) with the closed
+two-edge consumption set; §3.1 has twelve rows ↔ (H1)–(H9); (NSF-KEY) is
+prominently KNOWN FALSE AT HEAD with gated retirement; (K1-CANON) has one home
+inside (NSF-INT); (0)/(SQ) remain unconditional; 17 ≺ 18 ≺ 18b, (H7), and the
+twelve-row bijection do not regress.
+
+**Disposition table.**
+
+| finding | grade | content | disposition | edit sites |
+|---|---|---|---|---|
+| VC11-1 | BLOCKER | Step 19 not updated to the REVISION-10 scope: its evaluation and (UB) summaries stopped at (H7), the final ∎ read "(H1)–(H7)" with (H5) at PACK-i/ii/iii only — the displayed closer silently upgraded (ROOT-C) past Step 18's new premises | ACCEPTED; Step 19's evaluation-chain attribution now carries (H8) = (K-CUT) (Step 18's K1 regrouping, Lemma 3.3's cut hypothesis) and (H9) = (NSF) (Step 18's K1/K4 label routing + Step 17's M3 leg) with PACK-iv at its closed edge set; the Σ_τ R_τ = 1 conditional set, the clause-(UB) scope display, and the final ∎ all read (H1)–(H9) with (H5) at PACK-i/ii/iii/iv — the closer proves the CURRENT (ROOT-C) quantifier-for-quantifier with no silent upgrade | Step 19 (four displays) |
+| VC11-2 | BLOCKER | Step 16's claimed exact (UB) scope was stale: (H1)–(H7) + pre-r11 PACK content while asserting "exactly as §1 now displays" — a false claim after r11 | ACCEPTED; Step 16's (UB) scope display now carries (H8) + (H9) via the transported K1/K4 chain at q ↦ q^δ and PACK-iv in the transported evaluation chain (Step 18b direct + Step 17's (ROW-Σ) delivery, riding to q^δ) — the "exactly as §1 now displays" claim is made TRUE, not deleted | Step 16 |
+| VC11-3 | BLOCKER | §3.4 Table A item 12 routed the shallow-cut content (routing + unique shallow cut + W_Ŝ regrouping) to the VERIFIED Step-2 layer while the (H8) row displays the same content as an OPEN T-6 kernel — two operative displays that cannot both be true; the table's "no new hypothesis surfaced" concluding claim likewise stale | ACCEPTED; item 12 RE-ADJUDICATED to hypothesis-grade: the cut content routes to **(H8) = (K-CUT)** (open T-6 kernel, M04 Lemma 3.3's hypothesis, consumed inside Step 18's K1 regrouping), Step 2 keeping only the SOLVE face (T-8/T-5, no cut-decomposition claim); the concluding claim corrected for (H8)/(H9) with the landing invariant restated | §3.4 Table A item 12 + verdict paragraph |
+| VC11-4 | BLOCKER | the 6(iii)–(ix)+7 residue list was not closed: the row itself routes M3 "with the (H9) routing price" yet its purported CLOSED residue list omitted (H9) — a regression of the previously confirmed T-U correspondence audit | ACCEPTED; **(H9)** added to the row's residue list (the M3 route through Step 17's M3 leg, via Steps 11/12, inherits (NSF)); the list is again CLOSED under the table's own reading rule | §3.4 Table A row 6(iii)–(ix)+7 |
+| VC11-5 | ADVISORY | Step 18b's Consumes: summary listed (GR-B)/(FRESH) while its own proof paragraph consumes seam (S1) at (GR-B)/(FRESH)/(ADM) — no hidden premise (the fuller local display governs) but an inconsistent consumer account | ACCEPTED; (ADM) restored to the summary line | Step 18b Consumes line |
+
+All five repairs are **pure display syncs**: no [M] member added or changed, no
+step proof content or member statement touched, no leaf pointer moved, historical
+§§7–16 untouched.
+
+**The completeness invariant, re-run.** §3.1 has **TWELVE rows ↔ (ROOT-C)'s
+(H1)–(H9)**, UNCHANGED from REVISION 10: (H1) the graded-dictionary family (four
+members) · (H2) = (FRESH) · (H3) = {(ADM), D-12r, (E-N)} · (H4a) = (R1)–(R4) ·
+(H4b) = (UB-X) · (H5) = (PACK) (correspondence clause + row-laws
+PACK-i/ii/iii/iv) · (H6) the terminal-seam group · (H7) = (I-τ)/K-LOC · (H8) =
+(K-CUT) · (H9) = (NSF) (two members). Per-clause attribution, now displayed at
+§1, Step 16, and Step 19 IDENTICALLY: clause (0) unconditional (Step 1 alone);
+clause (SQ) unconditional (consumes NO §3.1 row); clause (R) consumes (H1)–(H3)
++ (H4a) + the (K3-δ) fragment of (H4b) + (H5) + (H6) + (H7) + (H8) + (H9);
+clause (UB) consumes (H1)–(H3) + (H4a) + (H4b) + (H5) + (H6) + (H7) + (H8) +
+(H9). No display anywhere reads a narrower or wider set.
+
+**The counter and the bar.** VC11 was not clean, and REVISION 11 is a text
+change: **the CONSECUTIVE-CLEAN COUNTER stays ZERO of 2.** The bar is unchanged:
+two consecutive CLEAN end-to-end passes on the IDENTICAL REVISION-11 text,
+fresh-context verifiers, ≥ 2 models, verifiers who saw none of the per-leaf
+rounds (tree §4 Root criterion).
+
+**VC12 charge (the next end-to-end pass).** Verify (i) the FIVE syncs above —
+Step 19's closer against §1's current (ROOT-C) quantifier-for-quantifier; Step
+16's (UB) scope against §1 (the "exactly as §1 now displays" claim must be
+TRUE); §3.4 item 12's (H8) routing (no verified-layer contradiction remains);
+the 6(iii)–(ix)+7 residue list's closure incl. (H9); Step 18b's Consumes/proof
+consistency — and (ii) NO REGRESSION: the r11 targeted repairs (Step 17's
+per-clause measures, Step 18b at (RE)/(PACK-iv), the twelve-row bijection,
+(NSF-KEY)'s known-false-at-HEAD display, (0)/(SQ) unconditional, 17 ≺ 18 ≺ 18b)
+need NOT be re-litigated but must not regress. Standing charge riders: the (H9)
+display must nowhere read as covering the HEAD Lean wiring; no display may read
+"accepted" as current status.
+
+**Bookkeeping.** Historical §§7–16 untouched. NO status syncs: VERIFIED = 9
+stands; D-11 stays PROVED-UNVERIFIED at its two-pass record (confirming pass
+owed); the O-11 pass 3, Unit C ((NSF-KEY)), and the (K1-CANON) discharge remain
+owed. The commit closing this revision is its unit of record (unit ROOT r12).
+
+— REVISION 11 complete. Five ripple-syncs applied, pure display; the acceptance
+is NOT re-earned; the counter is ZERO of 2 toward the VC12 bar.
