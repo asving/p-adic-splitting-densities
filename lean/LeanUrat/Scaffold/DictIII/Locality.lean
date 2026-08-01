@@ -1076,4 +1076,335 @@ theorem sideReads_r5_transfer (ν : Node p F) (B B' : ℕ → Polynomial ℤ_[p]
 
 end R5Transfer
 
+/-! ## Unit III-T10 — Theorem 1 assembled: `read_locality` (O-1thr §4 Thm 1, D-14)
+
+Src: O1thr §4 Theorem 1 (`lean/notes/openmath/O1thr_phaseB_verifybrief_rev4.md`
+lines 868–927).  The §1.6 display for THIS unit is VERBATIM (blueprint lines
+505–512, no elision) — transcribed byte-for-byte as `read_locality` below.
+Unit row: "`read_locality` assembled ((R3)/(R4) record-only; symmetry)",
+proof sketch "combine T7–T9 per read; induct over `H.nodes`", deps III-T7..T9.
+
+Assembly ledger (the same completion-ledger convention as III-T4..T9 above):
+
+* Per read `i < H.nodes.length`, f's recorded witness `(B, Nd, Φnext)` is
+  transferred to the witness `(devCoeff Φᵢ f', NN, Φnext)` for `f'`,
+  `NN := max Nd (f'.natDegree) + 1`: the developments are first PADDED to the
+  common slot count `NN` (`sideReads_mono` — vanishing slots have vacuous
+  guards; the recomposition sums are equal by `Finset.sum_subset`), then the
+  clauses transfer per the T7/T8/T9 units:
+  - clause (i) = (R1): `sideClauseR1_transfer` under the (†) row, discharged
+    from III-T6 `dagger_sheared` + III-T3 `dev_congr_zp` (Fact-A
+    identification `B j = devCoeff Φᵢ f j`, `devCoeff_eq_of_isDevelopment`);
+  - clause (ii) = (R2): `sideClauseR2_transfer`, same (†) supply; the
+    `IsDevelopment` rows ride verbatim;
+  - clause (iii): OrdPsiPoly is record-only; the anchor transfers through
+    R-LOC (`rloc`) at `β := w_i(f)` — `w_i(f − f') ≥ L·E_i` (III-T4
+    `stage_pos`) `> w_i(f)` (the `fside` row below);
+  - clauses (iv)/(v) = (R3)/(R4): record-only — shared verbatim (the source's
+    "(R3), (R4): record-only / policy-pinned — shared");
+  - clause (vi) = (R5): `sideClauseR5_transfer`; (†′) is REDERIVED at the
+    landing key (`childDev_dag`), whose monicity/positive degree is DERIVED
+    from `LandingKey` + the Node laws (`landingKey_monic` — recentering:
+    `Φ − lift` with `deg lift < deg Φ`; otherwise the standard-lift shape
+    `Φ^{eg} + Σ tt_k Φ^{ek}` with `e·g ≥ 1`).
+  "Induct over `H.nodes`" is realized as the per-read `∀ i < H.nodes.length`
+  transfer under the ONE `readCeil H` congruence supply (the fold over
+  `H.nodes` lives inside `readCeil`; `readCeil_strict_middle` majorizes every
+  read's entry).  Symmetry (the source's "the converse is symmetric") is the
+  per-clause `_iff` units already landed (T7/T8/T9); the assembled statement
+  is the displayed one-directional form.
+
+* THE LAW-SUPPLY ROWS (`SiteLawRows` below) — the source proof consumes, at
+  every read, the machine's box-free laws through LAWFUL(H·ν): POS (i)/(ii)
+  (O1thr §2.2: `w_i ≥ 0` and the π-shift at the accumulated stretch `E_i`),
+  the side pin `w_i(f) ≤ I_i < L·E_i` (the (iii)-anchor leg), and law (N4) +
+  Lemma CEIL at the vertex slot (the (R5) rows `hvne`/`hvlt`; III-T9 header).
+  The corpus carrier `MovesC.HistoryCoherent` (MovesC/Defs.lean:717) records
+  root-degree/slope/γ-tie/transition clauses ONLY — none of these valuation
+  laws are among its conjuncts, nor among the `Stage` laws (Moves/Defs.lean;
+  the III-T4 header: "(i) is genuinely a row"), so they are NOT derivable
+  from the verbatim binder set (hcoh/hcong/hm'/hd'/h) and enter as the named
+  [M]-hypothesis-row structure `SiteLawRows` — the same discipline as
+  T7/T8/T9's `hdag`/`hvne`/`hvlt` rows, bundled.  `read_locality_rows` (the
+  assembly UNDER the rows) is PROVED sorry-free; the VERBATIM `read_locality`
+  fires it and carries its row supply as this unit's single honest sorry —
+  see the BLOCKED record at the sorry site. -/
+
+section ReadLocality
+
+open LeanUrat.MovesC LeanUrat.MovesJ
+
+variable {F : Type*} [Field F] [Finite F]
+
+/-- **III-T10 support (derived, not a row): the landing key is monic of
+positive degree.**  From `LandingKey` + the Node laws alone.  Recentering leg:
+`Φtop = Φ − lift` with `lift ∈ C` (`deg lift < deg Φ`), so monicity and the
+degree pass from the stage key (`hmonic`/`hdeg`).  Non-recentering leg:
+`Φtop = Φ^{e·g} + Σ_{k<g} tt_k·Φ^{e·k}` (`IsNodeLift`) with each present
+`tt_k ∈ C`; every summand has degree `< e·g·deg Φ` (from `k < g`, `1 ≤ e`),
+so the sum sits below the monic leading power (`Monic.add_of_left`), and
+`natDegree = e·g·deg Φ ≥ 1` (`he`/`hg`/`hdeg`). -/
+theorem landingKey_monic (ν : Node p F) (Φtop : Polynomial ℤ_[p])
+    (h : MovesC.LandingKey ν Φtop) : Φtop.Monic ∧ 1 ≤ Φtop.natDegree := by
+  by_cases hsp : ν.species = ReadSpecies.recentering
+  · obtain ⟨hlC, -, -, -, hΦ⟩ := h.1 hsp
+    have hlt : (ν.lift).degree < (ν.σ.Φ).degree := hlC
+    have hdeq : (ν.σ.Φ - ν.lift).degree = (ν.σ.Φ).degree :=
+      Polynomial.degree_sub_eq_left_of_degree_lt hlt
+    constructor
+    · rw [hΦ, sub_eq_add_neg]
+      exact ν.σ.hmonic.add_of_left (by rwa [Polynomial.degree_neg])
+    · rw [hΦ, Polynomial.natDegree_eq_of_degree_eq hdeq]
+      exact ν.σ.hdeg
+  · obtain ⟨tt, htt0, httk, hΦ⟩ := h.2 hsp
+    have hmon := ν.σ.hmonic
+    have hd := ν.σ.hdeg
+    have hm1 : 1 ≤ ν.e * ν.g := by
+      have := Nat.mul_le_mul ν.he ν.hg
+      omega
+    have hpowne : ν.σ.Φ ^ (ν.e * ν.g) ≠ 0 := (hmon.pow _).ne_zero
+    have hbot : (⊥ : WithBot ℕ) < (ν.σ.Φ ^ (ν.e * ν.g)).degree :=
+      bot_lt_iff_ne_bot.mpr fun hb => hpowne (Polynomial.degree_eq_bot.mp hb)
+    -- every summand sits strictly below the leading power
+    have hSlt : (∑ k ∈ Finset.range ν.g, tt k * ν.σ.Φ ^ (ν.e * k)).degree
+        < (ν.σ.Φ ^ (ν.e * ν.g)).degree := by
+      refine lt_of_le_of_lt (Polynomial.degree_sum_le _ _) ?_
+      rw [Finset.sup_lt_iff hbot]
+      intro k hk
+      by_cases h0 : tt k = 0
+      · simpa [h0] using hbot
+      · have hklt : k < ν.g := Finset.mem_range.mp hk
+        have hck : ν.ψ.coeff k ≠ 0 := fun hc => h0 (htt0 k hc)
+        obtain ⟨-, hinC, -, -⟩ := httk k hklt hck
+        refine Polynomial.degree_lt_degree ?_
+        have h1 : (tt k).natDegree < ν.σ.Φ.natDegree :=
+          Polynomial.natDegree_lt_natDegree h0 hinC
+        have h2 : (tt k * ν.σ.Φ ^ (ν.e * k)).natDegree
+            ≤ (tt k).natDegree + (ν.e * k) * ν.σ.Φ.natDegree := by
+          refine le_trans Polynomial.natDegree_mul_le ?_
+          rw [hmon.natDegree_pow]
+        have h3 : (ν.e * k) * ν.σ.Φ.natDegree + ν.σ.Φ.natDegree
+            ≤ (ν.e * ν.g) * ν.σ.Φ.natDegree := by
+          have hek : ν.e * k + 1 ≤ ν.e * ν.g := by
+            have h1 : ν.e * (k + 1) ≤ ν.e * ν.g := Nat.mul_le_mul le_rfl (by omega)
+            have h2 : ν.e * (k + 1) = ν.e * k + ν.e := by ring
+            have := ν.he
+            omega
+          calc (ν.e * k) * ν.σ.Φ.natDegree + ν.σ.Φ.natDegree
+              = (ν.e * k + 1) * ν.σ.Φ.natDegree := by ring
+            _ ≤ (ν.e * ν.g) * ν.σ.Φ.natDegree :=
+                Nat.mul_le_mul_right _ hek
+        rw [hmon.natDegree_pow]
+        omega
+    have hdeq : (ν.σ.Φ ^ (ν.e * ν.g)
+        + ∑ k ∈ Finset.range ν.g, tt k * ν.σ.Φ ^ (ν.e * k)).degree
+        = (ν.σ.Φ ^ (ν.e * ν.g)).degree :=
+      Polynomial.degree_add_eq_left_of_degree_lt hSlt
+    constructor
+    · rw [hΦ]
+      exact (hmon.pow _).add_of_left hSlt
+    · rw [hΦ, Polynomial.natDegree_eq_of_degree_eq hdeq, hmon.natDegree_pow]
+      simpa using Nat.mul_le_mul hm1 hd
+
+/-- **III-T10 support (derived, not a row): `SideReads` slot-count padding.**
+A `SideReads` bundle at slot count `Nd` holds at any `NN ≥ Nd` once the
+development vanishes from `Nd` on: the (i)-guards at the new slots are vacuous
+(`B j = 0`), clause (ii) is `Nd`-free, the (iii)/(vi) recomposition sums are
+unchanged (`Finset.sum_subset`), and (iv)/(v) are record-only. -/
+theorem sideReads_mono (ν : Node p F) (B : ℕ → Polynomial ℤ_[p]) {Nd NN : ℕ}
+    (Φnext : Polynomial ℤ_[p]) (hle : Nd ≤ NN)
+    (hvan : ∀ j, Nd ≤ j → B j = 0)
+    (h : SideReads ν B Nd Φnext) : SideReads ν B NN Φnext := by
+  obtain ⟨⟨h1a, h1b⟩, h2, h3, h4, h5, h6⟩ := h
+  have hsum : ∑ j ∈ Finset.range NN, B j * ν.σ.Φ ^ j
+      = ∑ j ∈ Finset.range Nd, B j * ν.σ.Φ ^ j :=
+    (Finset.sum_subset (Finset.range_subset_range.mpr hle)
+      (fun j _ hj => by
+        rw [hvan j (Nat.le_of_not_lt fun hlt => hj (Finset.mem_range.mpr hlt)),
+          zero_mul])).symm
+  refine ⟨⟨?_, ?_⟩, h2, ?_, h4, h5, ?_⟩
+  · intro j hj hB
+    rcases Nat.lt_or_ge j Nd with hlt | hge
+    · exact h1a j hlt hB
+    · exact absurd (hvan j hge) hB
+  · intro j hj hB heq
+    rcases Nat.lt_or_ge j Nd with hlt | hge
+    · exact h1b j hlt hB heq
+    · exact absurd (hvan j hge) hB
+  · rw [hsum]; exact h3
+  · intro Bh Nh hdev
+    rw [hsum] at hdev
+    exact h6 Bh Nh hdev
+
+/-- **The III-T10 law-supply rows** — the box-free machine laws the source
+proof consumes per read through LAWFUL(H·ν), NOT carried by the corpus
+`MovesC.HistoryCoherent` (see the section header ledger).  Named [M]-hypothesis
+rows (T7/T8/T9's `hdag`/`hvne`/`hvlt` discipline, bundled); nothing here is
+discharged by fiat:
+* `pos`/`shift` — Lemma POS (i)/(ii) at read `i` (O1thr §2.2): `w_i ≥ 0` on
+  nonzero polynomials, and the π-shift at the accumulated stretch
+  `E_i = H.strFrame i` (III-T4's first two law rows, per-read);
+* `fside` — the whole-`f` side pin `w_i(f) < L·E_i` (the source's
+  `w_i(f) ≤ I_i` + the strict middle inequality; consumed by the
+  clause-(iii) anchor transfer through R-LOC at `β = w_i(f)`);
+* `vtxNe`/`vtxHt` — law (N4) + Lemma CEIL at the vertex slot of `f`'s
+  development in the read's landing key (the (R5) rows; the σV-vertex-law
+  supply named by the III-T9 header, `HK11a.sigmaV_vertexLaw`, carries
+  `StageCoreL`/steepness/species hypotheses beyond this unit's binder set —
+  III-T11's leg, not this unit's). -/
+structure SiteLawRows (H : MovesC.History p F) (f : Polynomial ℤ_[p]) :
+    Prop where
+  pos : ∀ (i : ℕ) (hi : i < H.nodes.length), ∀ C : Polynomial ℤ_[p], C ≠ 0 →
+    0 ≤ (H.nodes[i]'hi).σ.w C
+  shift : ∀ (i : ℕ) (hi : i < H.nodes.length), ∀ C : Polynomial ℤ_[p],
+    C ≠ 0 → (H.nodes[i]'hi).σ.w (Polynomial.C (p : ℤ_[p]) * C)
+      = (H.strFrame i : ℤ) + (H.nodes[i]'hi).σ.w C
+  fside : ∀ (i : ℕ) (hi : i < H.nodes.length),
+    (H.nodes[i]'hi).σ.w f < (readCeil H : ℤ) * (H.strFrame i : ℤ)
+  vtxNe : ∀ (i : ℕ) (hi : i < H.nodes.length) (Φnext : Polynomial ℤ_[p]),
+    MovesC.LandingKey (H.nodes[i]'hi) Φnext →
+    devCoeff Φnext f (H.nodes[i]'hi).μ ≠ 0
+  vtxHt : ∀ (i : ℕ) (hi : i < H.nodes.length) (Φnext : Polynomial ℤ_[p]),
+    MovesC.LandingKey (H.nodes[i]'hi) Φnext →
+    (H.nodes[i]'hi).σ.w (devCoeff Φnext f (H.nodes[i]'hi).μ)
+      < (readCeil H : ℤ) * (H.strFrame i : ℤ)
+
+/-- **Unit III-T10, the assembly UNDER the law rows (PROVED).**  Theorem 1's
+transfer `READ(f, H·ν) ⟹ READ(f′, H·ν)` at every read of the site, given the
+`SiteLawRows` supply: per read, pad to a common slot count, identify the
+recorded development with the canonical `devCoeff` slots (Fact A), discharge
+the (†) row from III-T6 + III-T3, and fire the per-clause units III-T7/T8/T9;
+clauses (iii)-anchor via R-LOC at `w_i(f)`, (iv)/(v) record-only. -/
+theorem read_locality_rows {n : ℕ} {f f' : Polynomial ℤ_[p]}
+    {H : MovesC.History p F}
+    (hcoh : MovesC.HistoryCoherent H)
+    (hcong : ∀ k, (f - f').coeff k ∈
+      (Ideal.span {(p : ℤ_[p])}) ^ (readCeil H))
+    (hm' : f'.Monic) (hd' : f'.natDegree = n)
+    (h : MovesJ.ReadsOf p F n f H)
+    (rows : SiteLawRows H f) :
+    MovesJ.ReadsOf p F n f' H := by
+  classical
+  obtain ⟨hm, hd, hcohf, hreads⟩ := h
+  by_cases hff : f = f'
+  · exact hff ▸ ⟨hm, hd, hcohf, hreads⟩
+  refine ⟨hm', hd', hcoh, ?_⟩
+  intro i hi
+  obtain ⟨B, Nd, Φnext, hdev, hpin, hsr⟩ := hreads i hi
+  set ν := H.nodes[i]'hi with hνdef
+  have hν? : H.nodes[i]? = some ν := by
+    rw [hνdef]; exact List.getElem?_eq_getElem hi
+  have hmonΦ : (ν.σ.Φ).Monic := ν.σ.hmonic
+  have hdegΦ : 1 ≤ (ν.σ.Φ).natDegree := ν.σ.hdeg
+  have hNdNN : Nd ≤ max Nd f'.natDegree + 1 := by
+    have := le_max_left Nd f'.natDegree; omega
+  -- pad f's recorded development to the common slot count
+  have hfsum : f = ∑ j ∈ Finset.range (max Nd f'.natDegree + 1),
+      B j * ν.σ.Φ ^ j := by
+    rw [hdev.2.2]
+    exact Finset.sum_subset (Finset.range_subset_range.mpr hNdNN)
+      (fun j _ hj => by
+        rw [hdev.2.1 j (Nat.le_of_not_lt fun hlt => hj (Finset.mem_range.mpr hlt)),
+          zero_mul])
+  have hdevNN : Moves.IsDevelopment ν.σ.Φ f B (max Nd f'.natDegree + 1) :=
+    ⟨hdev.1, fun j hj => hdev.2.1 j (le_trans hNdNN hj), hfsum⟩
+  have hsrNN : SideReads ν B (max Nd f'.natDegree + 1) Φnext :=
+    sideReads_mono ν B Φnext hNdNN hdev.2.1 hsr
+  -- f''s canonical development at the same slot count
+  have hdev' : Moves.IsDevelopment ν.σ.Φ f' (devCoeff ν.σ.Φ f')
+      (max Nd f'.natDegree + 1) := by
+    refine ⟨fun j => degree_devCoeff_lt hmonΦ f' j, fun j hj =>
+      devCoeff_eq_zero_of_natDegree_lt hmonΦ hdegΦ j f'
+        (by have := le_max_right Nd f'.natDegree; omega), ?_⟩
+    exact sum_devCoeff_mul_pow hmonΦ hdegΦ (max Nd f'.natDegree) f'
+      (le_max_right _ _)
+  -- Fact-A identification + DEV: the (†) row (III-T6 supply, one per site)
+  have hB : ∀ j, B j = devCoeff ν.σ.Φ f j :=
+    devCoeff_eq_of_isDevelopment hmonΦ Nd f B hdev
+  have hdc := dev_congr_zp ν.σ.Φ hmonΦ hdegΦ (readCeil H) hcong
+  have hdag : ∀ j : ℕ, j < max Nd f'.natDegree + 1 →
+      B j ≠ devCoeff ν.σ.Φ f' j →
+      ν.gam < (ν.e : ℤ) * ν.σ.w (B j - devCoeff ν.σ.Φ f' j)
+        + (j : ℤ) * (ν.h : ℤ) := by
+    intro j _ hne
+    have hcj : ∀ k, (B j - devCoeff ν.σ.Φ f' j).coeff k ∈
+        (Ideal.span {(p : ℤ_[p])}) ^ (readCeil H) := by
+      intro k; rw [hB j]; exact hdc j k
+    exact dagger_sheared H hν? ν.σ (rows.pos i hi) (rows.shift i hi)
+      ν.σ.hwult hne hcj j
+  -- clause (iii) anchor leg: R-LOC at β = w_i(f)
+  have hRf'f : ν.σ.R f' = ν.σ.R f := by
+    have hgap : ν.σ.w f < ν.σ.w (f - f') :=
+      lt_of_lt_of_le (rows.fside i hi)
+        (stage_pos ν.σ (H.strFrame i : ℤ) (readCeil H) (rows.pos i hi)
+          (rows.shift i hi) ν.σ.hwult hff hcong)
+    exact (rloc ν.σ hm.ne_zero hm'.ne_zero rfl (fun _ => hgap)).symm
+  -- clause (vi) rows: landing-key monicity + (†′) at the vertex
+  have hLK : MovesC.LandingKey ν Φnext := hsrNN.2.2.2.1
+  obtain ⟨hmΦn, hdΦn⟩ := landingKey_monic ν Φnext hLK
+  have hvne : devCoeff Φnext (∑ j ∈ Finset.range (max Nd f'.natDegree + 1),
+      B j * ν.σ.Φ ^ j) ν.μ ≠ 0 := by
+    rw [← hfsum]; exact rows.vtxNe i hi Φnext hLK
+  have hvlt : devCoeff Φnext (∑ j ∈ Finset.range (max Nd f'.natDegree + 1),
+        B j * ν.σ.Φ ^ j) ν.μ
+      ≠ devCoeff Φnext (∑ j ∈ Finset.range (max Nd f'.natDegree + 1),
+        devCoeff ν.σ.Φ f' j * ν.σ.Φ ^ j) ν.μ →
+      ν.σ.w (devCoeff Φnext (∑ j ∈ Finset.range (max Nd f'.natDegree + 1),
+        B j * ν.σ.Φ ^ j) ν.μ)
+      < ν.σ.w (devCoeff Φnext (∑ j ∈ Finset.range (max Nd f'.natDegree + 1),
+          B j * ν.σ.Φ ^ j) ν.μ
+        - devCoeff Φnext (∑ j ∈ Finset.range (max Nd f'.natDegree + 1),
+          devCoeff ν.σ.Φ f' j * ν.σ.Φ ^ j) ν.μ) := by
+    rw [← hfsum, ← hdev'.2.2]
+    exact childDev_dag ν.σ hmΦn hdΦn (H.strFrame i : ℤ) (readCeil H)
+      (rows.pos i hi) (rows.shift i hi) ν.σ.hwult hcong ν.μ
+      (rows.vtxHt i hi Φnext hLK)
+  -- fire the per-clause units and assemble
+  refine ⟨devCoeff ν.σ.Φ f', max Nd f'.natDegree + 1, Φnext, hdev', hpin,
+    ?_, ?_, ⟨?_, hsrNN.2.2.1.2⟩, hsrNN.2.2.2.1, hsrNN.2.2.2.2.1, ?_⟩
+  · exact sideClauseR1_transfer ν B (devCoeff ν.σ.Φ f') _ hdag
+      (sideReads_r1 ν B _ Φnext hsrNN)
+  · exact sideClauseR2_transfer ν B (devCoeff ν.σ.Φ f') _ hdevNN.2.1
+      (fun j => hdevNN.1 j) (fun j => hdev'.1 j) hdag
+      (sideReads_r2 ν B _ Φnext hsrNN)
+  · have h3 := hsrNN.2.2.1.1
+    rw [← hfsum] at h3
+    rw [← hdev'.2.2, hRf'f]
+    exact h3
+  · exact sideClauseR5_transfer ν B (devCoeff ν.σ.Φ f') _ _ Φnext hmΦn hdΦn
+      hvne hvlt (sideReads_r5 ν B _ Φnext hsrNN)
+
+/-- THEOREM 1 (D-14, the noncircular quantifier form): reads transfer between
+    f ≡ f′ (mod p^{readCeil}) at EVERY lawful site — per-clause units III-T7..T9,
+    assembled here. The corpus rendering: ReadsOf-clause transfer at each i. -/
+theorem read_locality {n : ℕ} {f f' : Polynomial ℤ_[p]}
+    {H : MovesC.History p F}
+    (hcoh : MovesC.HistoryCoherent H)
+    (hcong : ∀ k, (f - f').coeff k ∈
+      (Ideal.span {(p : ℤ_[p])}) ^ (readCeil H))
+    (hm' : f'.Monic) (hd' : f'.natDegree = n)
+    (h : MovesJ.ReadsOf p F n f H) :
+    MovesJ.ReadsOf p F n f' H :=
+  read_locality_rows hcoh hcong hm' hd' h
+    (by
+      -- BLOCKED(III-T10): the `SiteLawRows` supply is not derivable from the
+      -- verbatim binder set.  The source proof consumes these laws through
+      -- "LAWFUL(H·ν)" (O1thr §4: POS (i)/(ii), the side pin w_i(f) ≤ I_i, and
+      -- law (N4)+CEIL at the vertex), but the corpus carrier
+      -- `MovesC.HistoryCoherent` (MovesC/Defs.lean:717) records
+      -- root-degree/slope/γ-tie/transition clauses ONLY — no clause ties
+      -- `σᵢ.w` to `p` (w ≥ 0, w(p·C) = strFrame i + w C) or supplies (N4);
+      -- the `Stage` laws don't either (III-T4 header: "(i) is genuinely a
+      -- row"), and the σV-vertex-law supply (HK11a.sigmaV_vertexLaw) carries
+      -- StageCoreL/steepness/species hypotheses beyond this signature.
+      -- The assembled transfer under the rows is PROVED above
+      -- (`read_locality_rows`, sorry-free); THIS sorry is exactly the row
+      -- supply.  Escalation: either `HistoryCoherent` grows the per-read
+      -- valuation-law clauses (architect ruling — statement-adjacent), or
+      -- CU-1-LVL consumes `read_locality_rows` with the rows discharged at
+      -- its concrete instance.
+      sorry)
+
+end ReadLocality
+
 end LeanUrat.Scaffold.DictIII
