@@ -1,8 +1,8 @@
 /-
 BP_IV §1.2 — the order-r census carrier root (`CensusCore.lean`).
-Units in this file: C0a (`CensusData`, this unit) · later waves add C0b
-(`d/period/J`), C0c (`wt/Gset/attainDim/s`), C0d (`onLineSlots`), and `ADMFull`
-(declared immediately after the derived definitions, per BP_IV §1.0).
+Units in this file: C0a (`CensusData`) · C0b (`d/period/J`) · C0c
+(`wt/Gset/attainDim/s`, this wave) · later waves add C0d (`onLineSlots`) and
+`ADMFull` (declared immediately after the derived definitions, per BP_IV §1.0).
 This module imports no value-side module (import graph: CensusCore → Hyps →
 Census, never a cycle).
 -/

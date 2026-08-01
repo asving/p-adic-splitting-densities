@@ -25,7 +25,7 @@ the wave-0c statement layer.
 
 namespace LeanUrat.Scaffold
 
-open LeanUrat.MovesU (detO1 detO2 detO3)
+open LeanUrat.MovesU (MemRcyc detO1 detO2 detO3)
 
 /-- The four kernel organizations (brief §2.4). `O2r` = (O2′). -/
 inductive Booking | O1 | O2 | O2r | O3
@@ -390,5 +390,40 @@ theorem solve_O2 {e : ℕ} (he : 2 ≤ e) (t x : Qq) (hbal : x = kappa0 e * x + 
   rw [eq_mul_inv_iff_mul_eq₀ hune]
   simp only [kappa0] at hbal
   linear_combination hbal
+
+/-! Unit II-B10: (SL≥2) unit half. Mechanism: rewrite the solve denominator via the
+II-B3 landed-det forms (`1 − q^{1−E} = detO1 (E−1)`, `1 − q^{−E} = detO2 E = detO1 E`),
+then invoke the corpus `unit_of_cycS_ratio` through `detO1_unit`. -/
+
+/-- (SL≥2), unit half: for 2 ≤ e the solve denominator is a nonzero ℛ-unit (L7(iii)).
+[BP_II unit II-B10] -/
+theorem solveU_unit (b : Booking) {e : ℕ} (he : 2 ≤ e) :
+    b.solveU e ≠ 0 ∧ MemRcyc (b.solveU e) ∧ MemRcyc (b.solveU e)⁻¹ := by
+  have hE3 : 3 ≤ blockE e := blockE_ge_three he
+  -- the re-entrant denominator is the landed det `detO1 (E − 1)` (II-B3, O1 form)
+  have hO1 : (1 : Qq) - qX * (qX ^ blockE e)⁻¹ = detO1 (blockE e - 1) := by
+    have hker : Booking.O1.kernel e = qX * (qX ^ blockE e)⁻¹ := by
+      unfold Booking.kernel
+      rw [if_neg (show ¬ e ≤ 1 by omega)]
+    rw [← Phi_O1_eq he, Booking.Phi, hker]
+  -- the (O2) denominator is the landed det `detO2 E = detO1 E` (II-B3, O2 form)
+  have hO2 : (1 : Qq) - (qX ^ blockE e)⁻¹ = detO2 (blockE e) := by
+    have hker : Booking.O2.kernel e = (qX ^ blockE e)⁻¹ := by
+      unfold Booking.kernel
+      rw [if_neg (show ¬ e ≤ 1 by omega)]
+    rw [← Phi_O2_eq he, Booking.Phi, hker]
+  cases b with
+  | O1 =>
+      have h : Booking.O1.solveU e = detO1 (blockE e - 1) := hO1
+      rw [h]; exact MovesU.detO1_unit (by omega)
+  | O2 =>
+      have h : Booking.O2.solveU e = detO2 (blockE e) := hO2
+      rw [h]; exact MovesU.detO1_unit (by omega)
+  | O2r =>
+      have h : Booking.O2r.solveU e = detO1 (blockE e - 1) := hO1
+      rw [h]; exact MovesU.detO1_unit (by omega)
+  | O3 =>
+      have h : Booking.O3.solveU e = detO1 (blockE e - 1) := hO1
+      rw [h]; exact MovesU.detO1_unit (by omega)
 
 end LeanUrat.Scaffold

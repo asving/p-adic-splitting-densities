@@ -131,6 +131,29 @@ def OL6 (f : Polynomial ℤ_[p]) (c : ChainData p F)
   ∀ i, i < c.slopes.length →
     ∃ S, R.side i = some S ∧ S ∈ D.principalSides i
 
+/-! ## Unit III-H3 — `CU1Pins` (BP_III §1.3): BLOCKED on a statement defect in row `frEQ`
+
+The verbatim blueprint statement is preserved in the commented block below; it is NOT
+weakened or partially landed (dropping a row would be a statement change).  Status at
+hand-off (2026-08-01):
+
+* `pROOT`/`pKEY` elaborate VERBATIM against the landed III-H6 carrier (checked in a
+  scratch module with primed names: with the coefficientwise-inclusion bridge in its
+  surviving `CoeTC` + `noncomputable` spelling, both rows compile exactly as displayed).
+* -- BLOCKED(III-H3): row `frEQ`'s conclusion `HC1.ReadFrame p F` cannot compile as
+  written.  BP_III §3's corpus map pins `HC1.ReadFrame` to `LeanUrat.HC1.ReadFrame`
+  (`HC1/DefsV.lean:115`), whose signature is
+  `ReadFrame {p : ℕ} [Fact p.Prime] {F : Type u} [Field F] [Finite F]
+    (σ : Moves.Stage p F) (estar hstar : ℕ) (sstar tstar : ℤ) : Type u`
+  — `p`,`F` are IMPLICIT, the explicit slots are (σ, e★, h★, s★, t★), and the result
+  is `Type u`, not `Prop`.  Exact compiler error at the displayed row:
+    `Application type mismatch: The argument p has type ℕ but is expected to have
+     type Moves.Stage ?m ?m in the application HC1.ReadFrame p`.
+  The row needs a blueprint-level repair — which frame indices (σ, e★, h★, s★, t★)
+  the pin quantifies over, and Prop-valued packaging (e.g. `Nonempty`) — which is
+  fenced above this unit's authority.
+
+```
 /-- CU-1's three declared pins (CU1 rev-5 §0′), as one row structure. -/
 structure CU1Pins (p : ℕ) [Fact p.Prime] (F : Type*) [Field F] [Finite F] : Prop where
   pROOT : ∀ (c : ChainData p F) (lift₁ lift₂ : LiftFn p F),
@@ -141,6 +164,8 @@ structure CU1Pins (p : ℕ) [Fact p.Prime] (F : Type*) [Field F] [Finite F] : Pr
   frEQ : ∀ {n : ℕ} {f : Polynomial ℤ_[p]} {M : MovesC.History p F},
     MovesC.HistoryCoherent M → MovesJ.ReadsOf p F n f M →
     ∀ i, i < M.nodes.length → HC1.ReadFrame p F
+```
+-/
 
 section
 -- BP_III §1 standing variables.
