@@ -1896,3 +1896,20 @@ unproved); Wave 2 = the §2.3 adjudication package PREPARED FOR ASVIN
 (sign-off request: the DictIII.FRESH placeholder restatement, with U7's
 compiled witness) — SIGN-OFF QUEUE; Wave 3 correctly GATED (U10 post-sign-
 off; U9 post-B2-FINAL). Queue -> H4.
+
+## ASVIN SIGN-OFF + STANDING AUTHORITY (2026-08-05, verbatim)
+"sign-off granted on the DictIII.FRESH restatement - in general, as long
+as the lean proof is on track without introducing fake axioms or
+contradictions etc, go for it."
+SCOPE AS ADJUDICATED: (1) the H2 §2.3 package (DictIII.FRESH placeholder
+-> honest restatement w/ U7's compiled witness) EXECUTES NOW (H2-U10
+ungated, dual Fable+Codex statement gate per the blueprint). (2) STANDING:
+Lean statement-level changes no longer need per-item sign-off PROVIDED
+(a) the axiom policy loop stands untouched (published citation +
+faithfulness entry + guardian audit for ANY new axiom — no fake axioms),
+(b) no vacuity/contradiction is introduced (compile gates + the negation-
+witness/falsifier discipline + Codex diff confirmation on definition
+changes), (c) the honest-pricing invariant stands (never weaken a
+statement to make a goal provable; hypothesis content stays hypothesis
+until proved). Consequential statement changes still get SURFACED in
+reports after the fact.
