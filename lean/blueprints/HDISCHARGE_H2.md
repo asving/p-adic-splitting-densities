@@ -349,25 +349,36 @@ stands. [This matches the wave-10 ledger's grading of the ≥ 2 layer for (GR-B)
 
 ## 4. The reduction spine and conditionality-neutrality
 
-**Target theorem (the discharge shape).**
+**Target theorem (the discharge shape).** [REVISED at review pass 1, findings
+1/5.]
 
-    (FRESH-RED)  (GR-B) [(H1)(a), clause-wise] + (VTX-DEEP) [§5]
+    (FRESH-RED)  (GR-B) [(H1)(a), clause-wise incl. (2′)] + (TRANS-DEEP) [§5]
                    ⟹  (FRESH)(a′) ∧ (b) ∧ (c)   [at every D, N, ρ; any O, any q]
 
-via §3.1 (steps 1–4, with (LEAK) ⊆ (VTX-DEEP)), §3.2 (b-RED), §3.3 ((c-GR) +
-(c-TR) = (VTX-DEEP)).
+via §3.1 (steps 1–4, with the floors + leak clauses = (TRANS-DEEP)(F)/(L)),
+§3.2 ((b)'s DISPLAYED clause from the transport structure; its CONSUMED
+counting charge additionally needs (ADM)-FULL — which is NOT a hypothesis of
+(FRESH-RED) and NOT part of the (FRESH) row: CEN-J carries (ADM) as its own
+displayed §3.1 row (H3), at every census consumer, and O-9 §6.4 step 3 cites it
+separately from (b); the Step-10/K1 classifier face consumes no (ADM)), §3.3
+((c-GR) + (c-TR) = (TRANS-DEEP)(J)).
 
-**Conditionality-neutrality (verified against ROOT §§2–3):** every consumer of
-(H2) already consumes (H1)(a) — Step 10's conditionality line names the (H1)
-group; Step 14's census is displayed "(GR-B) + (FRESH) + (ADM)"; Step 16 and
-Step 18's K1/K3 inherit through Steps 10/14. Therefore replacing the (FRESH)
-row by (FRESH-RED)'s hypotheses grows NO consumer's hypothesis set: (H2)
-retires into (H1)(a) + (VTX-DEEP), and (VTX-DEEP) itself is GD-2-at-≥ 2 content
-of the same campaign. **Net effect of a completed H2 discharge:** the §3.1
-ledger loses one row and gains at most one named kernel INSIDE the (H1) row's
-campaign perimeter — the honest mathematical distance shrinks to the GD order-≥ 2
-campaign alone, as the ROOT §5 outlook already predicts ("the last genuine
-mathematics… the GD order-≥ 2 campaign for (GR-B)/(FRESH)").
+**Conditionality-neutrality (verified against ROOT §§2–3), stated exactly:**
+every consumer of (H2) already consumes (H1)(a) — Step 10's conditionality line
+names the (H1) group; Step 14's census is displayed "(GR-B) + (FRESH) + (ADM)";
+Step 16 and Step 18's K1/K3 inherit through Steps 10/14. Therefore replacing
+the (FRESH) row by (FRESH-RED)'s hypotheses grows NO consumer's hypothesis SET.
+**What the trade is and is not (review finding 5 accepted):** (TRANS-DEEP) is a
+NEW open [M] kernel replacing (FRESH) — one open hypothesis for another, NOT a
+discharge and NOT zero open content; campaign co-ownership with (H1) is an
+ORGANIZATIONAL fact, not a logical implication ((GR-B) is a per-polynomial
+graded dictionary; (TRANS-DEEP) is finite-level and fiberwise — nothing on file
+derives it from (H1)(a), and it could prove STRONGER than what the GD-≥ 2
+campaign ultimately delivers). The trade is progress because the kernel is
+NARROWER (three displayed clauses at one seam vs a three-clause joint census
+row), SHARED (the same transport family the (H1) campaign must build through
+anyway), and INTERFACE-MINIMIZABLE at transcription time (§5(ii): transcribe
+the consumer-side minimal form, never the campaign's strongest form).
 
 **What this blueprint does NOT claim:** no clause is hereby discharged. (a′) at
 r ≥ 1, (c-TR), and the composed write-ups are OPEN until written and passed

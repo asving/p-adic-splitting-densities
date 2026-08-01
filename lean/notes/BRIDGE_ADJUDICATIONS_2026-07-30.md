@@ -1843,3 +1843,11 @@ Step 4 VERIFIED-LEAN faithfulness pointer; RESUM-n3 G-3 caveat rides its
 billings; (PACK-iv) edge-set wording + the q/t display nit) TOGETHER WITH
 the H9 lead's (NSF-KEY) discharge adjudication (Unit C artifacts).
 Reports: lean/notes/openmath/VC{14,15}_*report.md.
+
+## BP_III RESUME: 50/105 (2026-08-05)
+429 casualties recovered (+6 incl. T10 read_locality = CU-1-LVL's gate;
+wave 5 partially landed). The 55 remaining blocks concentrate in Wave 1
+(GD23 dictionary face, 14) and Wave 5 (terminal seam, 7) — EXACTLY the
+H1/H6 discharge leads' statement territory => BP_III mop-up DEFERRED to
+their blueprints (combined mop-up + HDischarge fan-out). Sequential fleet
+slot -> BP_IV architect mop-up relaunch (429-killed pre-plan last time).

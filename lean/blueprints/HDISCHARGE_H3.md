@@ -649,21 +649,25 @@ literally zero); (ii) a read at ceiling L > N is pinned by a development
 coefficient of w-height ≥ L−O(1) at its frame — for the decode this is an
 exact arithmetic coincidence between the truncated integer coefficients and
 the accumulated keys; (iii) THE OPEN KERNEL: bound the attainable
-coincidence depth of a decode — discriminant-arithmetic heuristics (this
-lead's scratch, recorded for the prover): disc(f_decode) is a NONZERO
-integer of size < p^{c·n·N}, so root-separation depths are ≤ c·n·N — a
-bound of the WRONG SHAPE for the claim at c·n > 1; the n = 2 case squeezes
-to separation ≤ N − 1/2 (disc < p^{2N+O(1)}, even valuation split off), so
-redundancy holds at n = 2 up to the ±1 boundary of the exact ceiling
-formula L = I + 1, BUT at n ≥ 3 the integer-size argument alone does NOT
-close (v_p(disc) up to ~3N is size-compatible; whether the DECODE constraint
-(all coefficients < p^N simultaneously) kills the deep-coincidence range is
-a lattice-counting question — heuristically yes, ~p^{2N} decodes against
-~p^{3N} congruence demands, but a heuristic is not a proof and SPECIAL
-families (e.g. b = 0 corners) evade counting arguments). VERDICT built into
-this blueprint: route (a) is plausibly TRUE-with-margin at n = 2 and
-genuinely open at n ≥ 3; it is scheduled ONLY as a falsifier-guided attempt,
-never as a scheduled dependency of the retirement.
+coincidence depth of a decode. HEURISTIC ONLY, all of it (Codex pass-1
+finding 15, ACCEPTED — nothing in this paragraph is a result, including at
+n = 2): this lead's scratch, recorded for the prover as ORIENTATION —
+disc(f_decode) is a nonzero integer (separable case) of size < p^{c·n·N},
+so pairwise root-separation depths obey an integer-size bound whose shape
+is ~c·n·N — WRONG SHAPE for the claim at c·n > 1. At n = 2 the same
+size count SUGGESTS separations ≲ N (disc < p^{2N+O(1)}), but turning that
+into redundancy needs (never displayed anywhere): the exact nonvanishing
+case split, the conversion from root separation to the read-ceiling
+formula L = I + 1, and the ±1 boundary — so even n = 2 is OPEN. At n ≥ 3
+the integer-size argument alone provably does NOT close (v_p(disc) up to
+~3N is size-compatible); whether the DECODE constraint (all coefficients
+< p^N simultaneously) kills the deep-coincidence range is a
+lattice-counting question — heuristically favorable (~p^{2N} decodes vs
+~p^{3N} congruence demands) but heuristics are not proofs and special
+families (e.g. b = 0 corners) evade counting. VERDICT built into this
+blueprint: route (a) is genuinely open at EVERY n; it is scheduled ONLY as
+a falsifier-guided attempt, never as a scheduled dependency of the
+retirement.
 
 **The adjudicating falsifier (unit EN-U2, numerics — G-EN-1).** Two-sided
 search, small (p, n, N) exhaustive: for every level-N box x (p^{nN} boxes;
@@ -696,8 +700,26 @@ commit the log to `verification/`.
   lemma tying it to the seam contract's `Tr.thr n ≤ N'` rows (Defs ~1646,
   1669: the threshold gate is the SEAM's declared contract shape — the
   carrier makes the (E-N) question a first-class Prop the seam can consume
-  or discharge). Difficulty: easy (def + 1–2 route lemmas). NOTE: no proof
-  of `ENRedundancyAt` is scheduled — it is the TYPED HOME for route (a) if
+  or discharge). Difficulty: easy (def + 2–3 route lemmas).
+  DECIDEDNESS ENCODING (Codex pass-1 finding 14, adjudicated MIXED):
+  the missing `Decided` premise is DERIVABLE, not missing — `VTree.fiberAt`
+  clause 2 (Defs ~518) forces every maximal chain to be halted
+  (`IrrHalts … ∨ NsHalts …` with the ns disjunct requiring `Tr.nsLeaf H`),
+  and `NsFree Tr` (∀ H ∈ chains, ¬ nsLeaf H) kills the ns disjunct — so
+  under the def's hypotheses every maximal chain is a (τ-irr) leaf, i.e.
+  the fibered tree IS decided ns-free. The prover MUST land this derivation
+  as the auxiliary lemma `fiberAt_nsFree_decided` (spec: NsFree Tr →
+  fiberAt … → every maximal chain IrrHalts) BEFORE any consumer cites
+  `ENRedundancyAt` as the (E-N) carrier; if the derivation fails to
+  compile, the def GAINS the explicit decidedness premise instead (a
+  statement fix at E-phase, recorded). DEGENERACY FENCE (same finding):
+  the def is per-model (fixed p, F, n, N, m, pol, T, χ); the GLOBAL (E-N)
+  carrier is the ∀-closure over presented models at the standing perimeter
+  (n ≥ 1, m per the model's chart — the degenerate m = 0 / empty-χ corner
+  is excluded by the presented-model constructors, note in the docstring);
+  consumers must quantify explicitly, never cite the fixed-parameter Prop
+  as the global claim (Codex pass-1 finding 16's genre). NOTE: no proof of
+  `ENRedundancyAt` is scheduled — it is the TYPED HOME for route (a) if
   G-EN-1 supports it, and the typed FALSIFIER TARGET if G-EN-1 hits
   (compiled counterexample lands as `¬ ENRedundancyAt …` at the instance).
 
