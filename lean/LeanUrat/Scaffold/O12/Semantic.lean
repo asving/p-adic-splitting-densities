@@ -1301,15 +1301,271 @@ theorem cell_heights_eq {w : ℕ → WithTop ℤ} {κ κ' : FaceKind e}
     ∀ c ≤ e, heights κ s c = heights κ' s' c := fun c hc =>
   le_antisymm (cell_heights_le h h' c hc) (cell_heights_le h' h c hc)
 
+/-- Equal positive fractions in lowest terms have equal numerators and
+denominators. [II-M9 helper.] -/
+theorem coprime_frac_eq {a b a' b' : ℕ} (hb : 0 < b) (hb' : 0 < b')
+    (hcop : Nat.Coprime a b) (hcop' : Nat.Coprime a' b')
+    (h : (a : ℚ) / (b : ℚ) = (a' : ℚ) / (b' : ℚ)) : a = a' ∧ b = b' := by
+  have hbq : ((b : ℕ) : ℚ) ≠ 0 := by positivity
+  have hb'q : ((b' : ℕ) : ℚ) ≠ 0 := by positivity
+  rw [div_eq_div_iff hbq hb'q] at h
+  have hcross : a * b' = a' * b := by exact_mod_cast h
+  have h1 : b ∣ b' := by
+    refine hcop.symm.dvd_of_dvd_mul_left ?_
+    exact ⟨a', by rw [hcross, Nat.mul_comm]⟩
+  have h2 : b' ∣ b := by
+    refine hcop'.symm.dvd_of_dvd_mul_left ?_
+    exact ⟨a, by rw [← hcross, Nat.mul_comm]⟩
+  have hbb : b = b' := Nat.dvd_antisymm h1 h2
+  subst hbb
+  exact ⟨Nat.eq_of_mul_eq_mul_right hb hcross, rfl⟩
+
+/-- `FaceKind` is determined by its face list (the remaining fields are
+propositional). [II-M9 helper.] -/
+theorem FaceKind.faces_ext {κ κ' : FaceKind e} (h : κ.faces = κ'.faces) :
+    κ = κ' := by
+  cases κ
+  cases κ'
+  simp only at h
+  subst h
+  rfl
+
+/-- `SlopeTuple` is determined by its numerator vector (the remaining fields
+are propositional). [II-M9 helper.] -/
+theorem SlopeTuple.a_ext {κ : FaceKind e} {s s' : SlopeTuple κ}
+    (h : s.a = s'.a) : s = s' := by
+  cases s
+  cases s'
+  simp only at h
+  subst h
+  rfl
+
+/-- At an interior vertex column `x_j` (`0 < j < k`) the unit drop strictly
+changes (`hdesc`). [II-M9 helper.] -/
+theorem drop_ne_at_vertex (κ : FaceKind e) (s : SlopeTuple κ) {j : ℕ}
+    (hj0 : 0 < j) (hj : j < κ.faces.length) :
+    heights κ s (κ.x j - 1) - heights κ s (κ.x j) ≠
+      heights κ s (κ.x j) - heights κ s (κ.x j + 1) := by
+  have hx0j : κ.x 0 < κ.x j := κ.x_lt_of_lt hj0 (le_of_lt hj)
+  have hx00 : κ.x 0 = 0 := κ.x_zero
+  have hc1 : 0 < κ.x j := by omega
+  have hxprev : κ.x (j - 1) < κ.x j := κ.x_lt_of_lt (by omega) (le_of_lt hj)
+  have hd1 := heights_drop κ s ⟨j - 1, by omega⟩ (i := κ.x j - 1)
+    (show κ.x (j - 1) ≤ κ.x j - 1 by omega)
+    (show κ.x j - 1 < κ.x ((j - 1) + 1) by
+      rw [(show j - 1 + 1 = j by omega)]; omega)
+  rw [(show κ.x j - 1 + 1 = κ.x j by omega)] at hd1
+  have hd2 := heights_drop κ s ⟨j, hj⟩ (i := κ.x j) le_rfl
+    (κ.x_lt_of_lt (Nat.lt_succ_self j) hj)
+  rw [hd1, hd2]
+  exact ne_of_gt (s.hdesc ⟨j - 1, by omega⟩ ⟨j, hj⟩
+    (Fin.lt_def.mpr (show j - 1 < j by omega)))
+
+/-- At a non-vertex column `0 < c < e` the unit drop does not change (both
+steps sit in the same face). [II-M9 helper.] -/
+theorem drop_eq_at_nonvertex (κ : FaceKind e) (s : SlopeTuple κ) {c : ℕ}
+    (hc0 : 0 < c) (hce : c < e)
+    (hnv : ∀ j < κ.faces.length, κ.x j ≠ c) :
+    heights κ s (c - 1) - heights κ s c =
+      heights κ s c - heights κ s (c + 1) := by
+  obtain ⟨j, hj1, hj2⟩ := exists_face κ hce
+  have hne : κ.x (j : ℕ) ≠ c := hnv _ j.isLt
+  have hd1 := heights_drop κ s j (i := c - 1)
+    (show κ.x (j : ℕ) ≤ c - 1 by omega)
+    (show c - 1 < κ.x ((j : ℕ) + 1) by omega)
+  rw [(show c - 1 + 1 = c by omega)] at hd1
+  have hd2 := heights_drop κ s j hj1 hj2
+  rw [hd1, hd2]
+
+/-- Vertex-column characterization: `c` is a vertex column of (κ, s) iff
+`c = 0` or the unit drop strictly changes at `c` (with `0 < c < e`). The
+right-hand side depends on the polygon only through `heights` — the key to
+reading the face structure off the height function. [II-M9 helper.] -/
+theorem mem_vertexSet_iff (κ : FaceKind e) (s : SlopeTuple κ) (he : 0 < e)
+    {c : ℕ} :
+    (∃ j < κ.faces.length, κ.x j = c) ↔
+      (c = 0 ∨ (0 < c ∧ c < e ∧
+        heights κ s (c - 1) - heights κ s c ≠
+          heights κ s c - heights κ s (c + 1))) := by
+  constructor
+  · rintro ⟨j, hj, rfl⟩
+    rcases Nat.eq_zero_or_pos j with rfl | hj0
+    · exact Or.inl κ.x_zero
+    · refine Or.inr ⟨?_, κ.x_lt_width hj, drop_ne_at_vertex κ s hj0 hj⟩
+      have := κ.x_lt_of_lt hj0 (le_of_lt hj)
+      simpa using this
+  · rintro (rfl | ⟨hc0, hce, hne⟩)
+    · have hnil : κ.faces ≠ [] := by
+        intro hnil
+        have hs := κ.hsum
+        rw [hnil] at hs
+        simp at hs
+        omega
+      exact ⟨0, List.length_pos_of_ne_nil hnil, κ.x_zero⟩
+    · by_contra hcon
+      push_neg at hcon
+      exact hne (drop_eq_at_nonvertex κ s hc0 hce hcon)
+
+/-- The parametrization (κ, s) ↦ heights is injective: equal height
+functions on all columns ≤ e force equal face kinds and slope tuples. The
+faces are read off the height function: vertex columns are where the unit
+drop changes (`mem_vertexSet_iff`), widths are vertex differences, slopes
+are the drops, and lowest-terms uniqueness recovers (a_j, b_j).
+[II-M9 helper — the uniqueness engine.] -/
+theorem heights_inj {κ κ' : FaceKind e} {s : SlopeTuple κ}
+    {s' : SlopeTuple κ'}
+    (hh : ∀ c ≤ e, heights κ s c = heights κ' s' c) :
+    (⟨κ, s⟩ : Σ κ : FaceKind e, SlopeTuple κ) = ⟨κ', s'⟩ := by
+  rcases Nat.eq_zero_or_pos e with rfl | he
+  · -- e = 0: both face lists are empty
+    have hnil : ∀ κ₀ : FaceKind 0, κ₀.faces = [] := by
+      intro κ₀
+      cases hfc : κ₀.faces with
+      | nil => rfl
+      | cons f rest =>
+        exfalso
+        have hs := κ₀.hsum
+        rw [hfc] at hs
+        simp only [List.map_cons, List.sum_cons] at hs
+        have := f.1.pos
+        omega
+    have hκ : κ = κ' := FaceKind.faces_ext ((hnil κ).trans (hnil κ').symm)
+    subst hκ
+    have hs : s = s' := SlopeTuple.a_ext (funext fun j => by
+      have hlen : κ.faces.length = 0 := by simp [hnil κ]
+      exact absurd j.isLt (by omega))
+    rw [hs]
+  -- e > 0: the vertex sets agree, hence faces and slopes agree
+  · have hmemV : ∀ c : ℕ, (∃ j < κ.faces.length, κ.x j = c) ↔
+        (∃ j < κ'.faces.length, κ'.x j = c) := by
+      intro c
+      rw [mem_vertexSet_iff κ s he, mem_vertexSet_iff κ' s' he]
+      constructor
+      · rintro (h0 | ⟨hc0, hce, hne⟩)
+        · exact Or.inl h0
+        · refine Or.inr ⟨hc0, hce, ?_⟩
+          rw [← hh (c - 1) (by omega), ← hh c (by omega),
+            ← hh (c + 1) (by omega)]
+          exact hne
+      · rintro (h0 | ⟨hc0, hce, hne⟩)
+        · exact Or.inl h0
+        · refine Or.inr ⟨hc0, hce, ?_⟩
+          rw [hh (c - 1) (by omega), hh c (by omega), hh (c + 1) (by omega)]
+          exact hne
+    have hVeq : (Finset.range κ.faces.length).image κ.x =
+        (Finset.range κ'.faces.length).image κ'.x := by
+      ext c
+      simp only [Finset.mem_image, Finset.mem_range]
+      constructor
+      · rintro ⟨j, hj, hjc⟩
+        obtain ⟨j', hj', hj'c⟩ := (hmemV c).mp ⟨j, hj, hjc⟩
+        exact ⟨j', hj', hj'c⟩
+      · rintro ⟨j, hj, hjc⟩
+        obtain ⟨j', hj', hj'c⟩ := (hmemV c).mpr ⟨j, hj, hjc⟩
+        exact ⟨j', hj', hj'c⟩
+    have hinjOn : Set.InjOn κ.x (Finset.range κ.faces.length) := by
+      intro a ha b hb hab
+      simp only [Finset.coe_range, Set.mem_Iio] at ha hb
+      rcases lt_trichotomy a b with hl | hl | hl
+      · exact absurd hab (Nat.ne_of_lt (κ.x_lt_of_lt hl (by omega)))
+      · exact hl
+      · exact absurd hab.symm (Nat.ne_of_lt (κ.x_lt_of_lt hl (by omega)))
+    have hinjOn' : Set.InjOn κ'.x (Finset.range κ'.faces.length) := by
+      intro a ha b hb hab
+      simp only [Finset.coe_range, Set.mem_Iio] at ha hb
+      rcases lt_trichotomy a b with hl | hl | hl
+      · exact absurd hab (Nat.ne_of_lt (κ'.x_lt_of_lt hl (by omega)))
+      · exact hl
+      · exact absurd hab.symm (Nat.ne_of_lt (κ'.x_lt_of_lt hl (by omega)))
+    have hcardV : ((Finset.range κ.faces.length).image κ.x).card =
+        κ.faces.length := by
+      rw [Finset.card_image_of_injOn hinjOn, Finset.card_range]
+    have hcardV' : ((Finset.range κ'.faces.length).image κ'.x).card =
+        κ'.faces.length := by
+      rw [Finset.card_image_of_injOn hinjOn', Finset.card_range]
+    have hkk : κ.faces.length = κ'.faces.length := by
+      rw [← hcardV, hVeq]
+      exact hcardV'
+    -- both abscissa enumerations are THE ordered enumeration of the same set
+    have hmono : StrictMono (fun j : Fin κ.faces.length => κ.x (j : ℕ)) :=
+      fun a b hab => κ.x_lt_of_lt hab (le_of_lt b.isLt)
+    have hmem : ∀ j : Fin κ.faces.length,
+        (fun j : Fin κ.faces.length => κ.x (j : ℕ)) j ∈
+          (Finset.range κ.faces.length).image κ.x := fun j =>
+      Finset.mem_image.mpr ⟨(j : ℕ), Finset.mem_range.mpr j.isLt, rfl⟩
+    have hmono' : StrictMono (fun j : Fin κ.faces.length => κ'.x (j : ℕ)) :=
+      fun a b hab => κ'.x_lt_of_lt hab (by have := b.isLt; omega)
+    have hmem' : ∀ j : Fin κ.faces.length,
+        (fun j : Fin κ.faces.length => κ'.x (j : ℕ)) j ∈
+          (Finset.range κ.faces.length).image κ.x := fun j => by
+      rw [hVeq]
+      exact Finset.mem_image.mpr
+        ⟨(j : ℕ), Finset.mem_range.mpr (by have := j.isLt; omega), rfl⟩
+    have hf := Finset.orderEmbOfFin_unique hcardV hmem hmono
+    have hf' := Finset.orderEmbOfFin_unique hcardV hmem' hmono'
+    have hxx : ∀ j : Fin κ.faces.length, κ.x (j : ℕ) = κ'.x (j : ℕ) := by
+      intro j
+      have h1 := congrFun hf j
+      have h2 := congrFun hf' j
+      rw [h1, ← h2]
+    have hxxle : ∀ j : ℕ, j ≤ κ.faces.length → κ.x j = κ'.x j := by
+      intro j hj
+      rcases Nat.eq_or_lt_of_le hj with rfl | hlt
+      · have h1 : κ'.x κ.faces.length = e := by rw [hkk, κ'.x_length]
+        rw [κ.x_length, h1]
+      · exact hxx ⟨j, hlt⟩
+    -- read the face data off the shared abscissas and drops
+    have hdropeq : ∀ i, i < e →
+        heights κ s i - heights κ s (i + 1) =
+          heights κ' s' i - heights κ' s' (i + 1) := by
+      intro i hi
+      rw [hh i (by omega), hh (i + 1) (by omega)]
+    have hdata : ∀ (j : ℕ) (hj : j < κ.faces.length)
+        (hj' : j < κ'.faces.length),
+        (s.a ⟨j, hj⟩ : ℕ) = (s'.a ⟨j, hj'⟩ : ℕ) ∧
+          κ.faces[j] = κ'.faces[j] := by
+      intro j hj hj'
+      have e1 := κ.x_succ_of_lt hj
+      have e2 := κ'.x_succ_of_lt hj'
+      have q1 := hxxle j (le_of_lt hj)
+      have q2 : κ.x (j + 1) = κ'.x (j + 1) := hxxle (j + 1) hj
+      have hL : (κ.faces[j].1 : ℕ) = (κ'.faces[j].1 : ℕ) := by omega
+      have hcv : κ.x j < e := κ.x_lt_width hj
+      have hxlt : κ.x j < κ.x (j + 1) :=
+        κ.x_lt_of_lt (Nat.lt_succ_self j) hj
+      have d1 := heights_drop κ s ⟨j, hj⟩ (i := κ.x j) le_rfl hxlt
+      have d2 := heights_drop κ' s' ⟨j, hj'⟩ (i := κ.x j)
+        (show κ'.x j ≤ κ.x j by omega)
+        (show κ.x j < κ'.x (j + 1) by omega)
+      have hdropc := hdropeq (κ.x j) hcv
+      rw [d1, d2] at hdropc
+      obtain ⟨ha, hb⟩ := coprime_frac_eq
+        (κ.faces.get ⟨j, hj⟩).2.pos (κ'.faces.get ⟨j, hj'⟩).2.pos
+        (s.hcop ⟨j, hj⟩) (s'.hcop ⟨j, hj'⟩) hdropc
+      refine ⟨ha, ?_⟩
+      have hgt1 : κ.faces.get ⟨j, hj⟩ = κ.faces[j] := rfl
+      have hgt2 : κ'.faces.get ⟨j, hj'⟩ = κ'.faces[j] := rfl
+      rw [hgt1] at hb
+      rw [hgt2] at hb
+      exact Prod.ext (PNat.coe_injective hL) (PNat.coe_injective hb)
+    have hfaces : κ.faces = κ'.faces :=
+      List.ext_getElem hkk fun j hj hj' => (hdata j hj hj').2
+    have hκ : κ = κ' := FaceKind.faces_ext hfaces
+    subst hκ
+    have hs : s = s' := SlopeTuple.a_ext (funext fun j =>
+      PNat.coe_injective (by simpa using (hdata (j : ℕ) j.isLt j.isLt).1))
+    rw [hs]
+
 /-- **II-M9 disjointness component**: distinct cells are disjoint — a common
 point forces the same face kind and slope tuple. Proof: mutual chord bounds
-give `heights κ s = heights κ' s'` on all columns ≤ e, and the face structure
-is read off the unit drops. -/
+give `heights κ s = heights κ' s'` on all columns ≤ e
+(`cell_heights_eq`), and the face structure is read off the unit drops
+(`heights_inj`). -/
 theorem L6e_disjoint {w : ℕ → WithTop ℤ} {κ κ' : FaceKind e}
     {s : SlopeTuple κ} {s' : SlopeTuple κ'}
     (h : CellMem κ s w) (h' : CellMem κ' s' w) :
-    (⟨κ, s⟩ : Σ κ : FaceKind e, SlopeTuple κ) = ⟨κ', s'⟩ := by
-  sorry
+    (⟨κ, s⟩ : Σ κ : FaceKind e, SlopeTuple κ) = ⟨κ', s'⟩ :=
+  heights_inj (cell_heights_eq h h')
 
 /-- **II-M9 coverage component**: every C_e\R_e point with `a_e ≠ 0`
 (`w 0 ≠ ⊤`) lies in some cell — the finite-hull argument: the lower convex
