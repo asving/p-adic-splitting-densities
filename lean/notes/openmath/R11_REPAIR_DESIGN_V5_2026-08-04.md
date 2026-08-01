@@ -75,9 +75,12 @@ display) and **(CH-COV)** (the M3-consumer closure audit, §2.5).
 - **MET on file:** N3, N6.
 - **MET AT PRICE:** N5, N7 — one NEW [M] member, (PACK-iv) (§3.5); N8 — the
   NEW row (H8) for Step 18's K1 CUT-WD leg (§5.1).
-- **BLOCKED-PENDING** (the operational line, verbatim wherever status is
-  displayed — round-4 finding 6: N1's line now carries (ROW-Σ); N2's carries
-  (CH-COV)):
+- **BLOCKED-PENDING** (the operational line; round-4 finding 6: N1's line
+  now carries (ROW-Σ); N2's carries (CH-COV). Display rule, exact (round-5
+  finding 8): the FULL line is displayed only here; every other status
+  display (§4.1's need table) carries the line's per-need clause VERBATIM —
+  "BLOCKED-PENDING (⟨that need's parenthetical from this line⟩)" — and
+  nothing else):
 
 > **BLOCKED-PENDING: N1 ((b-EX) + (ROW-Σ) proofs), N4 ((O-1)–(O-5) + (O-GLOB)
 > global proof), N2 ((NSF-KEY) execution — known false at HEAD until the gated
@@ -458,7 +461,8 @@ refuted (the chain imports exactly the two unquoted implications priced as
 > chain — (i) proved from the ns-mark/leaf-vocabulary definitions of O-1thr
 > §1.4 (ns-marks attach only at (τ-ns) halts, which are excluded by
 > all-leaves-(τ-irr)/(τ-hen) completeness) and (ii) proved site-by-site at
-> the consumed K1/K4 sites. [The former SECOND route — "the Lean interface
+> the consumed K1/K4 sites — with retirement semantics EXACTLY the artifact
+> list (NSF-INT-RET) below (round-5 finding 5). [The former SECOND route — "the Lean interface
 > materialization discharges (NSF-INT) too" — is WITHDRAWN per round-4
 > finding 4: retyping consumers to a guarded interface may BYPASS the
 > implications; it does not PROVE this member as stated. Riders unchanged in
@@ -511,7 +515,12 @@ refuted (the chain imports exactly the two unquoted implications priced as
   predicate, conjoined; plus the mechanical ripple through the carrier's
   projections and consumers, M02's own effects list: "canonical_pin,
   vtree_eq_of_fiberAt, Lemmas A/B are untouched (they never used the ns
-  clause)").
+  clause)"). **Ripple scope, CLOSED (round-5 finding 5):** the ripple is
+  exactly the declarations referencing `bridgeTree` (its projections and
+  direct consumers), enumerated at execution time by `lean_references`/grep
+  and RECORDED as a list inside the R-5 confirmation; R-5's "diff is exactly
+  R-1" check is adjudicated against that recorded enumeration — no
+  open-ended "and consumers" residue.
 * **R-2 (the three statements, verbatim as they will read).** The field/def
   TEXTS are byte-identical to HEAD — the re-typing is THROUGH the carrier
   (at the wired instance `F.Tree σ := bridgeTree n p σ`, now guarded):
@@ -551,6 +560,29 @@ the guarded carrier; N2's BLOCKED-PENDING clause drops "(NSF-KEY) execution";
 executed status. M02's one flagged step — the intended `ReadsOf` semantics,
 no compiled countermodel while `canPolicy` is designer-sorried — is inherited
 here verbatim.
+
+**(NSF-INT-RET) — retirement semantics, exact (round-5 finding 5; the
+NSF-KEY-RET genre applied to the other member).** (NSF-INT) is RETIRED when
+and only when ALL THREE artifacts exist on file:
+
+* **I-1 (the leaf-proof artifact, named).** The implication-chain write-out
+  inside the Unit-A L7 deliverable — the D-11 r4 leaf artifact, in a section
+  titled "(NSF-INT) leaf proof" — proving (i) from the O-1thr §1.4
+  ns-mark/leaf-vocabulary definitions and (ii) site-by-site over I-2's list.
+* **I-2 (the closed consumed-site list).** The K1/K4 sites at which (ii)'s
+  scope equivalence must hold are EXACTLY: the (†18) K1 row's invoked
+  statements (M04 §5.5 (K1) + Lemma 3.3) and K4 row's (M04 §5.5 (K4) +
+  D-15 = O-1thr Theorem 3(b)/(c)), PLUS any further M3(a)/corpus-consuming
+  site surfaced by the (CH-COV) closure walk (L11) — L11's closure-complete
+  trace is what CLOSES this list; I-1 must display the list it proved
+  against and its identity with L11's.
+* **I-3 (the validation gate).** The r4 hostile pass's ACCEPT of I-1 AS A
+  PROOF (the same Unit-A gate that adjudicates (b-EX)/(O-i)/(ROW-Σ)),
+  recorded with the pass artifact.
+
+No other route retires (NSF-INT) (round-4 finding 4 unchanged); until all
+three are on file it stands PRICED. Effect: (H9) loses its interface-side
+price; (NSF-KEY)'s standing is untouched.
 
 **The as-built keying FAILS the pin at HEAD — the on-file record behind
 (NSF-KEY)'s "KNOWN FALSE AT HEAD".** The M02 attempt (on file 2026-07-31,
@@ -945,7 +977,11 @@ these):**
     exited after finitely many steps). ∎-shape.
 
   (O-GLOB) consumes: (O-1)–(O-5), M1(c), the displayed finite-slot grammar
-  (O-12 §2.3(iv)), and countable additivity — NOTHING of M2.
+  (O-12 §2.3(iv)), countable additivity, AND the root-finiteness premise —
+  the top-layer read spawns FINITELY many top blocks with entrance laws
+  delivered at the root seam ((S1-m), Lemma M2.0's existing step 2) —
+  consumed at (G-b)'s base and at (G-d)'s final application (round-5
+  finding 6: previously used but uninventoried) — NOTHING of M2.
 
 **Billing.** (O-4)'s loop legs consume only the PROVED L2/L3; (O-1)/(O-3) are
 structural; (O-2)/(O-5) consume M1(c) + the ≪-induction; (O-GLOB) as
@@ -1169,8 +1205,10 @@ exhaustiveness note) and the only other row-sum object is Corollary D's
 SUB-stochastic kernel value. Because the trace is NOT closure-complete, the
 design claims NO universal non-consumption — the cover is (ROW-Σ), §4.2.
 
-**STATUS.** The tier list and the canonical BLOCKED-PENDING line are §0.3's,
-verbatim — restated nowhere else, so they cannot desynchronize.
+**STATUS.** The tier list and the canonical BLOCKED-PENDING line are §0.3's.
+The FULL line is displayed nowhere but §0.3; §4.1's need-table cells are its
+per-need clauses, verbatim (§0.3's display rule, round-5 finding 8) — sync
+is clause-by-clause against §0.3, so the displays cannot desynchronize.
 
 ---
 
@@ -1298,9 +1336,9 @@ table mapping pass-3 findings 1–9 → the §§2–3 repairs):
 * L7 M3(a) separable scope + the (H9) = (NSF) display per §2.5 (the target
   statement; (NSF-INT) with the two priced gaps and its SINGLE retirement
   route; (NSF-KEY) at its one-proposition v5 form with the M02 divergence
-  record and (NSF-KEY-RET); quotes as context, NO proof claim) — plus, IF
-  the r4 executor elects the (NSF-INT) retirement by leaf proof, the
-  implication-chain write-out as a separately adjudicated proof;
+  record and (NSF-KEY-RET); quotes as context, NO proof claim) — plus the
+  (NSF-INT) leaf-proof write-out per (NSF-INT-RET) (artifact I-1, against
+  the I-2 site list), separately adjudicated as a proof (gate I-3);
 * L8 M3(b) in-statement conditionality (§2.7);
 * L9 §6 falsifier-criterion display (§2.6);
 * L10 the (ROW-Σ) write-out at Step 17's layer, per §4.2's displayed
@@ -1474,4 +1512,41 @@ accepted disposition (chains: R1-3 → R2-1 → R3-1 → §2.5; R2-2 → R3-3 �
 R4-1/2 → §4.2; R3-4 → R4-5 → §3.4; R3-6 → R4-7 → §7) — walked in the table.
 No finding of any round is silently dropped; no withdrawn claim is
 load-bearing anywhere in §§0–7.
+
+---
+
+## 9. ROUND-5 DISPOSITION (orchestrator, 2026-08-04; ledger bb1370f)
+
+R5 = `R11D5_review_2026-08-04.md` (3 criticals, 5 advisories; verdict
+DESIGN-REVISE). Disposition, by orchestrator call:
+
+* **R5-5 (CRIT, (H9) retirement asymmetry): FIXED IN TEXT** —
+  (NSF-INT-RET) added (§2.5: artifact I-1 named, site list I-2 closed by
+  L11, gate I-3 = the r4 pass); L7 carries the write-out as a listed
+  deliverable; R-1's "mechanical ripple" given a CLOSED, recorded scope
+  adjudicated at R-5.
+* **R5-8 (ADV, verbatim-display rule): FIXED IN TEXT** — §0.3's display
+  rule restated to match reality (FULL line only at §0.3; §4.1 cells = the
+  per-need clauses, verbatim); §4.3's "restated nowhere else" claim
+  corrected accordingly.
+* **R5-6 (ADV, uninventoried root-finiteness premise): FIXED IN TEXT** —
+  (O-GLOB)'s consumption line now inventories the root-finiteness premise
+  ((S1-m)/Lemma M2.0 step 2), consumed at (G-b) base and (G-d) close.
+* **R5-2 (CRIT, (ROW-Σ) consumption-graph edge set) and R5-3 (CRIT,
+  (O-GLOB) finite-time Z_μ encounters): FOLDED AS NAMED DUTIES INTO UNIT
+  A'S CHARGE**, adjudicated by the r4 hostile pass — R5-2: the L10
+  write-out (with L11's closure walk) must enumerate the ACTUAL (ROW-Σ)
+  application sites/consuming proof lines, replacing "possibly within
+  17/18"; R5-3: the L6 (O-GLOB) write-out must add the per-address/per-time
+  null union covering finite-history entries into Z_μ (via (G-b)'s ≪
+  transport against M1(d)'s Z_μ nullity), so (G-d)'s pointwise exit claim
+  follows off the enlarged 𝒩. Neither is claimed disposed by this design's
+  text; both sit inside obligations already gated at the r4 pass.
+* **R5-1/4/7 (ADV): confirmations** — no text change.
+
+**Standing: the design is EXECUTION-READY at architecture level**
+(orchestrator call, ledger bb1370f): the remaining criticals live inside
+Unit A's proof obligations, not in the architecture, and the r4 hostile
+pass is their adjudicator. The Order clause is unchanged — no ROOT edit
+before the r4 pass accepts.
 
