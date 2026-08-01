@@ -1670,3 +1670,11 @@ All 5 VC11 dispositions landed (Steps 16/19 closers at (H1)-(H9) w/
 PACK-iv at its closed edge set; §3.4 item 12 re-adjudicated to (H8);
 6(iii)-(ix)+7 re-closed w/ (H9); 18b Consumes restored). §17 = REVISION 11
 record; counter ZERO of 2. VC12 = the fresh bar's pass-1 attempt.
+
+## VC12: COMPOSITION-SOUND — RESTARTED BAR AT ONE (2026-08-04)
+Codex end-to-end on REVISION 11: clean. Five syncs verified; twelve-row
+invariant + per-clause attribution consistent across §1/16/19; the walk
+proves the CURRENT (ROOT-C); acyclicity; ZERO regressions (D-11 repaired
+scopes, T-U, (H7), bijection, suspension/counter displays). COUNTER = ONE
+of 2. VC13 = fresh-context FABLE hostile pass (model diversity), same
+document. Report: lean/notes/openmath/VC12_report.md.

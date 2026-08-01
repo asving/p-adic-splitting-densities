@@ -5,6 +5,7 @@ Authors: Asvin G
 -/
 import Mathlib
 import LeanUrat.Scaffold.O12.PolygonData
+import LeanUrat.Scaffold.O12.Family
 import LeanUrat.L4
 
 /-!
@@ -1708,5 +1709,133 @@ theorem L6e_empty_two {w : ℕ → WithTop ℤ}
   · rw [h0]
     exact le_top
   · simpa using hCe 1 (by omega)
+
+/-!
+## Unit II-M11 — `massPoly_enum_display` (the L6′ tie)
+
+BP_II §1.9 displays this unit as `theorem massPoly_enum_display ...` — the
+signature is elided in the blueprint; the mathematical content is pinned by the
+displayed docstring ("each polygon stratum family's closed mass (the `massPoly`
+of §1.3) is the finite Enum sum of (g3)-volumes × (g4)-closures with the L6b
+exponents c_j ≥ 1 — the definitional tie massPoly ↔ (heights/Npg/cPrime data);
+the ANALYTIC depth-sum evaluation (Σ_w at a real q₀) is Movement V's side of the
+seam") and the §2 unit-table sketch ("definitional: massPoly's (cs, enum)
+instantiated from Npg/cPrime data; per-cell = II-M7"), same convention as units
+II-M4/II-M5/II-M7/II-M8/II-M9 above. Source of mathematical record:
+`lean/notes/openmath/O12_phaseB_verifybrief_rev4.md` §2.3(iii), L6b(ii), L6′.
+
+Realization, one declaration per instantiated argument:
+
+* `enumCs κ` instantiates `massPoly`'s (g4)-closure argument `cs` from the
+  cPrime data: entry j — one per NON-terminal face, so `k − 1` entries
+  (`enumCs_length`); "the vertex count k is w-independent" is carried
+  type-level, `enumCs` being a function of κ alone — is the L6b exponent
+  c_j = Σ_{j′≤j} c′_{j′} (`enumCs_getElem`, the cPrime tie), positive because
+  the j′ = j term alone is c′_j ≥ 1 (`one_le_gapStep_gain`) — whence the `ℕ+`
+  typing, which IS the display's "exponents c_j ≥ 1" clause (`one_le_enumCs`
+  makes it explicit). `enumCs_gapStep_Npg` certifies these entries are exactly
+  L6b(ii)'s affine N-gains: a unit gap step at face j advances the per-cell
+  exponent by entry j (unit II-P6's `gapStep_Npg`, consumed).
+* `enumOf κ idx cell` instantiates `massPoly`'s (g3)-volume argument `enum`
+  from the Npg data: each enumeration point ε of the FINITE L6b(ii) index set
+  `idx`, with nested-minima cell `cell ε`, is read as the pair
+  (ε, N_min(ε)), N_min(ε) := (Npg κ (cell ε)).toNat. Per-cell = II-M7: the
+  `Int.toNat` passage is faithful and lands exactly on the II-M7 dictionary
+  entry — N_min(ε) = `L4.newtonExponent` of the transported cell
+  (`Npg_toNat_newtonExponent`), the exponent whose (HAAR-COORD) cell volume is
+  `cell_volume`'s (1 − Q⁻¹)^k · Q^{−N(P)}.
+* `massPoly_enum_display` is then the definitional tie: `massPoly` at the
+  instantiated data equals the finite Enum sum, over ε ∈ idx, of the
+  (g3)-volume atom q^{−N_min(ε)} times the (g4)-closure product
+  ∏_j (1 − q^{−c_j})⁻¹ — times the family-constant (JC) shape factor, which
+  multiplies through the finite sum (brief L6′: "constant across the family,
+  it multiplies the closed cell sum"). The analytic evaluation of the depth
+  sum at a real q₀ is expressly NOT this unit (Movement V's side of the seam).
+-/
+
+/-- The L6b exponent list (unit II-M11): `massPoly`'s (g4) argument `cs`
+instantiated from the cPrime data — entry j (one per non-terminal face; `k − 1`
+entries, k w-independent) is c_j = Σ_{j′≤j} c′_{j′}, positive because the
+j′ = j term alone is c′_j ≥ 1 (`one_le_gapStep_gain`), hence `ℕ+`. -/
+noncomputable def enumCs (κ : FaceKind e) : List ℕ+ :=
+  List.ofFn fun j : Fin (κ.faces.length - 1) =>
+    ⟨∑ j' ∈ Finset.univ.filter
+        (fun j' : Fin κ.faces.length => (j' : ℕ) ≤ (j : ℕ)),
+      cPrime κ j',
+      one_le_gapStep_gain κ ⟨(j : ℕ), lt_of_lt_of_le j.isLt (Nat.sub_le _ _)⟩⟩
+
+/-- `enumCs` has one entry per non-terminal face: `k − 1` closures. -/
+@[simp] theorem enumCs_length (κ : FaceKind e) :
+    (enumCs κ).length = κ.faces.length - 1 := by
+  simp [enumCs]
+
+/-- The display's "exponents c_j ≥ 1" clause, explicit (carried by the `ℕ+`
+typing of `enumCs`). -/
+theorem one_le_enumCs (κ : FaceKind e) : ∀ c ∈ enumCs κ, 1 ≤ (c : ℕ) :=
+  fun c _ => c.pos
+
+/-- Definitional tie of the (g4) data to cPrime (unit II-M11): entry j of
+`enumCs` IS the L6b exponent c_j = Σ_{j′≤j} c′_{j′}. -/
+theorem enumCs_getElem (κ : FaceKind e) {j : ℕ}
+    (hj : j < κ.faces.length - 1) :
+    (((enumCs κ)[j]'(by simpa [enumCs_length] using hj)) : ℕ) =
+      ∑ j' ∈ Finset.univ.filter
+        (fun j' : Fin κ.faces.length => (j' : ℕ) ≤ j),
+      cPrime κ j' := by
+  simp [enumCs]
+
+/-- The (g4)-exponent law (unit II-P6 consumed): a unit gap step at
+non-terminal face j advances the per-cell (g3)-exponent `Npg` by exactly
+entry j of `enumCs` — the c_j of L6b(ii) are the affine N-gains along the
+free gap variables. -/
+theorem enumCs_gapStep_Npg (κ : FaceKind e) (s : SlopeTuple κ)
+    (j : Fin κ.faces.length) (hj : (j : ℕ) + 1 < κ.faces.length) :
+    Npg κ (s.gapStep j hj) =
+      Npg κ s +
+        ((((enumCs κ)[(j : ℕ)]'(by simp only [enumCs_length]; omega)) : ℕ) : ℤ) := by
+  rw [gapStep_Npg κ s j hj, enumCs_getElem κ (by omega)]
+
+/-- Per-cell = II-M7 (unit II-M11): the (g3)-exponent N_min(ε) read into
+`enumOf` is faithfully a natural, equal to the II-M7 dictionary entry
+`L4.newtonExponent` of the transported cell — the exponent whose (HAAR-COORD)
+volume is `cell_volume`'s (1 − Q⁻¹)^k · Q^{−N(P)}. -/
+theorem Npg_toNat_newtonExponent (κ : FaceKind e) (s : SlopeTuple κ) :
+    (Npg κ s).toNat = L4.newtonExponent (κ.toLatticePolygon s) := by
+  rw [← toLatticePolygon_newtonExponent κ s, Int.toNat_natCast]
+
+/-- The Enum instantiation (unit II-M11): `massPoly`'s (g3) argument `enum`
+instantiated from the Npg data — each point ε of L6b(ii)'s FINITE enumeration
+`idx`, with nested-minima cell `cell ε`, carries the per-cell exponent
+N_min(ε) = (Npg κ (cell ε)).toNat (faithful, and = the II-M7 dictionary entry,
+by `Npg_toNat_newtonExponent`). -/
+noncomputable def enumOf (κ : FaceKind e) (idx : Finset ℕ)
+    (cell : ℕ → SlopeTuple κ) : Finset (ℕ × ℕ) :=
+  idx.image fun ε => (ε, (Npg κ (cell ε)).toNat)
+
+/-- **L6′ display** (unit II-M11): each polygon stratum family's closed mass
+(the `massPoly` of §1.3) is the finite Enum sum of (g3)-volumes ×
+(g4)-closures with the L6b exponents c_j ≥ 1 — the definitional tie
+massPoly ↔ (heights/Npg/cPrime data): at `enum := enumOf κ idx cell` (the Npg
+instantiation; per-cell = II-M7 via `Npg_toNat_newtonExponent`) and
+`cs := enumCs κ` (the cPrime instantiation; c_j ≥ 1 by `ℕ+`), `massPoly`
+equals the sum over the enumeration points ε of the per-cell (g3)-volume atom
+q^{−N_min(ε)} times the (g4)-closure product ∏_j (1 − q^{−c_j})⁻¹, times the
+family-constant (JC) shape factor. The ANALYTIC depth-sum evaluation (Σ_w at a
+real q₀) is Movement V's side of the seam. -/
+theorem massPoly_enum_display (κ : FaceKind e) (idx : Finset ℕ)
+    (cell : ℕ → SlopeTuple κ) (shape : List (Polynomial ℚ × ℕ+)) :
+    massPoly e (enumOf κ idx cell) (enumCs κ) shape =
+      ∑ ε ∈ idx,
+        (qX ^ (Npg κ (cell ε)).toNat)⁻¹ *
+          ((((enumCs κ).map fun c => (1 - (qX ^ (c : ℕ))⁻¹)⁻¹)).prod *
+            ((shape.map fun z =>
+              algebraMap (Polynomial ℚ) Qq z.1 *
+                (qX ^ (z.2 : ℕ) - qX ^ ((z.2 : ℕ) - 1))⁻¹)).prod) := by
+  have hinj : ∀ a ∈ idx, ∀ b ∈ idx,
+      (fun ε => (ε, (Npg κ (cell ε)).toNat)) a =
+        (fun ε => (ε, (Npg κ (cell ε)).toNat)) b → a = b :=
+    fun a _ b _ h => congrArg Prod.fst h
+  rw [massPoly, enumOf, Finset.sum_image hinj, Finset.sum_mul, Finset.sum_mul]
+  exact Finset.sum_congr rfl fun ε _ => mul_assoc _ _ _
 
 end LeanUrat.Scaffold
