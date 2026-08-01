@@ -1881,3 +1881,11 @@ BP_IV division CLOSED. Fleet slot -> HDISCHARGE fan-out #1: H9.
 Scaffold/HDischarge/H9/NsfKeyProp.lean landed green — (NSF-KEY) retired
 END-TO-END (Unit C repair + ledger adjudication + compiled Lean carrier).
 The first (H)-member fully discharged. Queue -> H5.
+
+## H5 FAN-OUT: 16/19 (2026-08-05)
+(ROW-Sigma) symbolic skeleton COMPLETE (W2 3/3); (PACK-i) block form
+PROVED; W0 carriers passed their Codex statement-audit gate; blocks:
+1 (PACK-ii) bound + C4 (gated) + C5 (blocked) in conformance — mop-up
+queue. D1 ran during a classifier outage — commit trail verified: all H5
+commits touch only Scaffold/HDischarge/H5 paths, per-file gates green.
+Queue -> H2.
