@@ -1574,3 +1574,8 @@ revision layers, (O-GLOB) aggregation argument defective. Four patch
 layers deep => per the B2-FINAL precedent, round 5 = CONSOLIDATED bottom-up
 rewrite (fresh self-contained file), not a fifth patch. Report:
 lean/notes/openmath/R11D4_review_2026-08-04.md.
+
+## R11 DESIGN V5 ON FILE (2026-08-04, consolidated rewrite; supersedes the layered 2026-08-03 file)
+Fresh self-contained design; all round-1..4 accepted decisions carried; round-4 criticals fixed: (ROW-Sigma) = r4 theorem-obligation over (PACK-iv) members with ONE authoritative display (sec 4.2; per-booking row totals = the Corollary-D margins: (O1) 1-k0-k1, (O2') 1-k0 via the affine fixed point, (O3) (1-k0-k1)/(1-k0); solved totals = 1 in all three); (NSF-KEY) one proposition + exact six-artifact retirement list; (NSF-INT)/(NSF-KEY) retire SEPARATELY; (O-GLOB) redone (per-address null union + finite-slot branching bound + root-to-leaf transport); Unit C terminal = executed-only; (CH-COV) closure audit replaces the (NS-ALL) universal non-consumption claim.
+Rows ten -> TWELVE unchanged; canonical BLOCKED-PENDING line: N1 ((b-EX)+(ROW-Sigma) proofs), N4 ((O-1)..(O-5)+(O-GLOB)), N2 ((NSF-KEY) execution + (CH-COV) audit) — stated once at sec 0.3, all displays sync to it.
+File: lean/notes/openmath/R11_REPAIR_DESIGN_V5_2026-08-04.md (completeness map of all 34 round-1..4 findings at its sec 8). Next: Codex plan-review round 5.

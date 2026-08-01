@@ -1,5 +1,7 @@
 # R11 REPAIR DESIGN (2026-08-03) — restoring the composition after the D-11 owed-pass refutations
 
+**SUPERSEDED (2026-08-04): this layered document (REVISIONS 1–4) is replaced by the consolidated, self-contained `R11_REPAIR_DESIGN_V5_2026-08-04.md` — read that file; this one is retained only as the revision-history record (the round-4 review, `R11D4_review_2026-08-04.md`, found the layers internally unsynchronized).**
+
 **Status of this document: DESIGN ONLY — now at REVISION 4 (2026-08-04, the
 honest-pricing rewrite).** No edit to ROOT (`docs/ROOT_ASSEMBLY_2026-08-02.md`,
 REVISION 9, a2ad88a) and no edit to the D-11 leaf
