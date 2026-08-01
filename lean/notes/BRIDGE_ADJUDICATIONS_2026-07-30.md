@@ -1602,3 +1602,14 @@ vs-law adjudication with countermodels as warrants; ill-typed (M4, M7,
 K11 statement absent) => compile-gated authoring. Two-phase mop-up
 dispatched (wf_7bc082de-e1f: architect -> prover fan-out -> checkpoint).
 BP_V holds until BP_II/BP_III land (interface consumer).
+
+## UNIT A DELIVERED + THE r4 HOSTILE PASS LAUNCHED (2026-08-04)
+D11_rev4_2026-08-04.md on file (1800cbc; V5 patch 080be44 preceding): ALL
+obligations written as proofs — (b-EX)+(LOOP-inf), (O-1)..(O-5) (O-2 gains
+the per-word Z_mu clause), (O-GLOB) (G-a)-(G-d) with the enlarged null set,
+(ROW-Sigma) 3 per-booking totals + the duty-2 8-site edge walk (ONE display
+edge -> Unit B E1 rescope; (PACK-iv) consumption closed to {18b, E1}),
+(NSF-INT) leaf proof (ONE flagged vocabulary premise: marks record NsHalts
+events), (CH-COV) 7-site walk CLEAN ((NS-ALL) does not fire; I-2 = {K1,K4}).
+THE GATE: r4 hostile pass (Codex, fresh) launched on the full leaf. ACCEPT
+=> Unit B (ROOT r11, twelve rows) + Unit C queued behind the sign-off gate.
