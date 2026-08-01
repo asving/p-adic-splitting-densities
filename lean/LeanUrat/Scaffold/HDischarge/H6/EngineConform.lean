@@ -106,6 +106,187 @@ theorem engineEmissionSV_engineTied (n p : ℕ) [Fact p.Prime]
   reaches_engine := fun _ _ h => h
   emits_irr_verdict := fun _ _ _ _ h _ => h.2.2.2
 
+/-! ## Unit B2 — (T-VERD) dress commutation at the engine
+
+Blueprint spec (`lean/blueprints/HDISCHARGE_H6.md` §4 unit B2, MED-HARD —
+retagged at fold round 1, Codex finding 12): the dress commutation
+`eAccE (machineProj M hM).val.continuingPart = MovesT.accE M` (resp.
+eAccF/accF with the f₀ root-datum split — §3.4's flagged reconciliation),
+"statement finalized against `machineEHist`'s fieldwise lemmas at E-phase";
+then `tVERD` for `engineEmissionSV` on the irr leg.
+
+FINALIZATION RECORD (this unit's E-phase duty, executed 2026-08-01):
+* Per the B0 FOOTPRINT RULE the statements bind `machineEHist`
+  (= `machineProj_val`, certificate-free), NOT `machineProj` — binding the
+  latter would inherit CU1's W3 `sorryAx` through the bundled `EWF`
+  certificate. `hM`'s coherence content rides as the explicit
+  `MovesC.HistoryCoherent M` hypothesis where consumed.
+* **THE §3.4 FLAGGED RECONCILIATION IS CHECKED — the as-built `nodeToE` does
+  NOT refute the f₀ factorization.** The two factorizations reconcile
+  through the root-datum split exactly as the CUC prices it:
+  - accF (UNCONDITIONAL): the machine's `accF = ∏_{M.nodes} ν.g` opens as
+    `root.g · ∏_{tail} ν.g` (`accF_rootSplit`); the E-side's f₀-included
+    `eAccF = f₀ · ∏ (sel g's)` has f₀ = deg ψ̂₀ = deg root.ψ, and the node
+    carrier row `hψdeg : ψ.natDegree = g` pins `f₀ = root.g`
+    (`rootRead_g_eq_f0`) — root read = residue-factor choice, verbatim. The
+    tail selections transport by `nodeToE_sel` (`sel = some (g, μ)` ⇒
+    `sel.elim 1 Prod.fst = g`), so the products agree field by field.
+  - accE (CONDITIONAL — the honest boundary, displayed): the machine's
+    `accE = ∏_{M.nodes} ν.e` carries the ROOT read's e, which the E-side
+    `eAccE = ∏_{𝐇°} ν.e` does not. They agree because `root.e = 1` under
+    `HistoryCoherent` — the RG-2 recording-fence clause (`species ≠
+    recentering → e = 1` at every node WITH a successor) fired at node 0
+    via `root_iff` (`rootRead_e_eq_one`). At a ROOT-ONLY history (empty
+    seam, k′ = 0) the fence does not reach the root and `accE M = root.e`
+    is genuinely unconstrained — there the commutation is NOT claimed
+    (hypothesis `hne`); that boundary is exactly the CUC §9.2 hen channel
+    ((accE₀, accF₀) = (1, f₀), `tVERDhen`'s leg, A1's gate), never the irr
+    leg, where `DecIrrSeam` forces the seam nonempty.
+* `continuingPart` is the IDENTITY on projected histories
+  (`machineEHist_continuingPart_nodes`): every `nodeToE` record carries
+  `sel = some _`, so the takeWhile keeps the whole node list.
+* T-V8 `acc_pos` (quarried by the spec) was NOT needed: `engineEmissionSV`'s
+  emits channel books the bare pair `(accE M, accF M)` and `terminalDatumD`'s
+  verdict is guard-free, so no max-guards arise to kill. -/
+
+section UnitB2
+
+variable {p : ℕ} [Fact p.Prime] {F : Type*} [Field F] [Finite F]
+
+/-- B2 helper: the dressed continuing part of a projection keeps EVERY node —
+each emitted record is selection-carrying (`nodeToE_sel`), so the
+`takeWhile sel.isSome` is the identity on `machineEHist M`'s node list. -/
+theorem machineEHist_continuingPart_nodes (M : MovesC.History p F) :
+    (machineEHist M).continuingPart.nodes = M.nodes.tail.map nodeToE :=
+  List.takeWhile_eq_self_iff.mpr (fun ν hν => by
+    obtain ⟨m, -, rfl⟩ := List.mem_map.mp hν
+    rfl)
+
+/-- B2, the machine-side root-datum split (E-component): the machine
+accumulator `accE = ∏_{M.nodes} ν.e` opens as the ROOT read's e times the
+tail product. -/
+theorem accE_rootSplit (M : MovesC.History p F) :
+    MovesT.accE M
+      = (M.nodes.head M.nonempty).e * (M.nodes.tail.map fun m => m.e).prod := by
+  have hcons : M.nodes.head M.nonempty :: M.nodes.tail = M.nodes :=
+    List.cons_head_tail _
+  calc MovesT.accE M
+      = ((M.nodes.head M.nonempty :: M.nodes.tail).map fun ν => ν.e).prod := by
+        rw [hcons]; rfl
+    _ = _ := by rw [List.map_cons, List.prod_cons]
+
+/-- B2, the machine-side root-datum split (F-component): the machine
+accumulator `accF = ∏_{M.nodes} ν.g` opens as the ROOT read's g times the
+tail product — the root read IS a residue-factor choice, its g the factor
+the E-side books as f₀. -/
+theorem accF_rootSplit (M : MovesC.History p F) :
+    MovesT.accF M
+      = (M.nodes.head M.nonempty).g * (M.nodes.tail.map fun m => m.g).prod := by
+  have hcons : M.nodes.head M.nonempty :: M.nodes.tail = M.nodes :=
+    List.cons_head_tail _
+  calc MovesT.accF M
+      = ((M.nodes.head M.nonempty :: M.nodes.tail).map fun ν => ν.g).prod := by
+        rw [hcons]; rfl
+    _ = _ := by rw [List.map_cons, List.prod_cons]
+
+/-- B2, the root ramification unit: under `HistoryCoherent`, a root read WITH
+a successor has `e = 1` — the recording-fence clause (`species ≠ recentering
+→ e = 1`, HistoryCoherent step clause) fired at node 0 (species `root` by
+`root_iff`, and `root ≠ recentering`). NOT claimed at root-only histories
+(the fence only reaches nodes with successors) — hence `eAccE_dressCommute`'s
+seam-nonemptiness hypothesis. -/
+theorem rootRead_e_eq_one (M : MovesC.History p F)
+    (hcoh : MovesC.HistoryCoherent M) (hlen : 1 < M.nodes.length) :
+    (M.nodes.head M.nonempty).e = 1 := by
+  have hroot : (M.nodes[0]'(by omega)).species = MovesC.ReadSpecies.root :=
+    (M.root_iff 0 (by omega)).mpr rfl
+  have hsp : (M.nodes[0]'(by omega)).species ≠ MovesC.ReadSpecies.recentering := by
+    rw [hroot]; exact fun h => nomatch h
+  have he1 : (M.nodes[0]'(by omega)).e = 1 := ((hcoh.2.2.2 0 hlen).2.1 hsp).1
+  rw [List.head_eq_getElem]
+  exact he1
+
+/-- B2, the f₀ pin (the §3.4 reconciliation's crux, UNCONDITIONAL): the
+dressed seam's f₀ = deg ψ̂₀ IS the root read's residual degree g — the node
+carrier row `hψdeg` (ψ monic irreducible of degree g), no coherence
+consumed. -/
+theorem rootRead_g_eq_f0 (M : MovesC.History p F) :
+    (machineEHist M).continuingPart.psi0.natDegree
+      = (M.nodes.head M.nonempty).g :=
+  (M.nodes.head M.nonempty).hψdeg
+
+/-- **B2 dress commutation, F-component (UNCONDITIONAL)**: the E-side
+f₀-included accumulator through the dressed continuing part equals the
+machine's `accF` — `f₀ · ∏_{tail} (sel g) = root.g · ∏_{tail} g` via the
+f₀ pin (`rootRead_g_eq_f0`) and the `nodeToE` selection transport. The §3.4
+flagged reconciliation, resolved POSITIVELY at the as-built `nodeToE`. -/
+theorem eAccF_dressCommute (M : MovesC.History p F) :
+    eAccF (machineEHist M).continuingPart = MovesT.accF M := by
+  have hmapF : ((M.nodes.tail.map nodeToE).map fun ν => (ν.sel.elim 1 Prod.fst))
+      = M.nodes.tail.map fun m => m.g := by
+    rw [List.map_map]; rfl
+  unfold eAccF
+  rw [machineEHist_continuingPart_nodes M, hmapF, accF_rootSplit M,
+    rootRead_g_eq_f0 M]
+
+/-- **B2 dress commutation, E-component**: the E-side ramification
+accumulator through the dressed continuing part equals the machine's `accE`,
+under coherence at a NONEMPTY seam (the honest boundary — see the section
+header; `DecIrrSeam` supplies `hne` on the irr leg, and the empty-seam
+boundary is the hen channel's `(1, f₀)` booking, not this lemma's claim). -/
+theorem eAccE_dressCommute (M : MovesC.History p F)
+    (hcoh : MovesC.HistoryCoherent M)
+    (hne : (machineEHist M).continuingPart.nodes ≠ []) :
+    eAccE (machineEHist M).continuingPart = MovesT.accE M := by
+  have hnodes := machineEHist_continuingPart_nodes M
+  have hlen : 1 < M.nodes.length := by
+    rw [hnodes] at hne
+    have htail : M.nodes.tail ≠ [] := fun h => hne (by rw [h]; rfl)
+    have h1 : 0 < M.nodes.tail.length := List.length_pos_of_ne_nil htail
+    have h2 : M.nodes.tail.length = M.nodes.length - 1 := List.length_tail
+    omega
+  have hmapE : ((M.nodes.tail.map nodeToE).map fun ν => ν.e)
+      = M.nodes.tail.map fun m => m.e := by
+    rw [List.map_map]; rfl
+  unfold eAccE
+  rw [hnodes, hmapE, accE_rootSplit M, rootRead_e_eq_one M hcoh hlen, one_mul]
+
+/-- **B2 (T-VERD) dress commutation at the engine, packaged** (blueprint §4
+B2's displayed pair, finalized at `machineEHist` per the B0 footprint rule):
+`(eAccE, eAccF)` of the dressed continuing part IS the machine accumulator
+pair `(accE M, accF M)`, under coherence at a nonempty seam. -/
+theorem dress_commutation (M : MovesC.History p F)
+    (hcoh : MovesC.HistoryCoherent M)
+    (hne : (machineEHist M).continuingPart.nodes ≠ []) :
+    (eAccE (machineEHist M).continuingPart,
+      eAccF (machineEHist M).continuingPart)
+      = (MovesT.accE M, MovesT.accF M) := by
+  rw [eAccE_dressCommute M hcoh hne, eAccF_dressCommute M]
+
+end UnitB2
+
+/-- **B2, `tVERD` for `engineEmissionSV` on the irr leg** (the A7 row shape,
+VERBATIM at `E := engineEmissionSV n p F`): every emitted verdict pair is the
+A4-forced terminal datum's. The emits channel fires only at `DecIrrSeam`
+seams, so the forced verdict is the `(eAccE, eAccF)` booking, and the
+realizing machine run's pair `(accE M, accF M)` matches by the dress
+commutation — `DecIrrSeam`'s nonemptiness IS the E-component's boundary
+hypothesis. (`tVERDhen`, the hen channel, is not this unit's leg.) -/
+theorem engineEmissionSV_tVERD (n p : ℕ) [Fact p.Prime]
+    (F : Type*) [Field F] [Finite F] :
+    ∀ f H ν EF (D : GMNData f (Theta H)) (R : GMNReader f (Theta H) D),
+      ReadThroughIota f H D → ConsF f H D R →
+      (engineEmissionSV n p F).emits f H ν EF → DecSeam f H D →
+      EF = (terminalDatumD f H D).verdict := by
+  intro f H ν EF D R _ _ hemit _
+  obtain ⟨-, hdec, -, M, hcoh, -, hpart, -, rfl⟩ := hemit
+  have hv : (terminalDatumD f H D).verdict = (eAccE H, eAccF H) := by
+    unfold terminalDatumD
+    exact if_pos hdec
+  rw [hv]
+  subst hpart
+  rw [eAccE_dressCommute M hcoh hdec.1, eAccF_dressCommute M]
+
 /-! ## Gate G2 — the POSITIVE terminal-seam gate (blueprint §4 Gates, fold
 round 1 Codex finding 15's structural non-vacuity demand)
 
@@ -470,5 +651,182 @@ theorem gateReadsOf_allFalse_notCovering :
       ¬ (allFalseEmission 2 LeanUrat.MovesJ.F4).reaches f H := by
   obtain ⟨f, H, hM, -⟩ := gateReadsOf_engineCovers_pos
   exact ⟨f, H, hM, fun h => h⟩
+
+/-! ## Unit B3a — (T-DEC-dec) at the engine: the τ-irr dress theorem and
+`tDECdec`'s irr leg for `engineEmissionSV`
+
+Blueprint charge (`lean/blueprints/HDISCHARGE_H6.md` §4 unit B3a, prose —
+transcribed): "(T-DEC-dec) at the engine: via `MovesT.irr_iff_mu_one` (PROVED)
++ the nodeToE sel-transport — a lawful coherent M IrrHalts iff its dressed
+continuing part is `DecIrrSeam`; conclude `tDECdec`'s irr leg for
+`engineEmissionSV`. Hen leg (a₀ ≥ 2 booking from the root-datum split) may
+split off as B3a′. Deps: B1; quarry `irr_iff_mu_one`, `HistLawful`."
+
+STATEMENT DESIGN, ON RECORD (the blueprint displays no Lean block for B3a
+itself; every consumed shape is displayed elsewhere and bound VERBATIM —
+`DecIrrSeam` at A2, the `tDECdec` row at A7, the `engineEmissionSV` body at
+B1, `machineEHist`/`nodeToE` fieldwise at CU1):
+
+* **The dress theorem** (`irrHalts_iff_decIrrSeam`) renders the prose iff with
+  the NONEMPTY-TAIL hypothesis `M.nodes.tail ≠ []` — the root-datum corner
+  already on record at CU1's III-A5 footprint note ("lands at ... `a0` when
+  `M.nodes.length = 1` ... but at the last projected node's `sel` when
+  `2 ≤ M.nodes.length`"; "two inequivalent renderings ... two-case split vs. a
+  nonempty-tail hypothesis"): a machine history whose ONLY node is the root
+  read dresses to a k′ = 0 seam carrying `a0 = root.μ` — the HEN channel, not
+  a τ-irr seam — and B3a's prose splits that corner off to B3a′.  On the
+  DEC-consumption side the corner is invisible: `DecIrrSeam H` forces the seam
+  nonempty, hence the machine tail nonempty (`decIrrSeam` → `htail` below).
+* **Lawfulness rides as the explicit fenced hypothesis** `MovesT.HistLawful
+  p n M` — MovesT/Defs' fenced conditionality VERBATIM: "`HistoryCoherent`
+  alone does NOT imply this; discharge is QUEUED ON Q1 (§4) — until then
+  `hlaw : HistLawful p n H` is an explicit hypothesis."  Accordingly the
+  packaged `engineEmissionSV_tDECdec` is the A7 `tDECdec` row at
+  `E := engineEmissionSV n p F` with the row's reach antecedent strengthened
+  to a LAWFUL reach (the ∃-witness additionally `HistLawful`); the bare-row
+  form is NOT claimed — its irr leg would demand lawfulness of an arbitrary
+  coherent `ReadsOf` realizer, exactly the Q1 residue, and asserting it here
+  would discharge that fence by fiat.
+* The sel-transport (machine `Node.μ/g` ↦ E-side `ENodeData.sel`) is
+  `nodeToE_sel`, CU1's per-field lemma — cited, not re-proved (§3.1(b)).
+* FOOTPRINT: everything binds `machineEHist` (certificate-free), never
+  `machineProj` — B0's footprint rule; the W3 sorry is NOT inherited
+  (§3.1(a); verify at gate via `#print axioms`, all rows Lean-core).
+-/
+
+/-- Every node of a dressed machine history carries a selection (`nodeToE`
+always records `sel = some (g, μ)` — the sel-transport `nodeToE_sel`), so the
+dressed history IS its own continuing part: the `takeWhile` fence of
+`EHist.continuingPart` keeps everything. -/
+theorem machineEHist_continuingPart {p : ℕ} [Fact p.Prime] {F : Type*}
+    [Field F] [Finite F] (M : MovesC.History p F) :
+    (machineEHist M).continuingPart = machineEHist M := by
+  show { machineEHist M with
+    nodes := (machineEHist M).nodes.takeWhile fun ν => ν.sel.isSome }
+      = machineEHist M
+  rw [List.takeWhile_eq_self_iff.mpr ?_]
+  · intro ν hν
+    rw [machineEHist_nodes] at hν
+    rcases List.mem_map.mp hν with ⟨m, -, rfl⟩
+    rw [nodeToE_sel]
+    rfl
+
+/-- A list with a nonempty tail has the tail's last element as its own:
+`getLast?` sees through the head. -/
+private theorem getLast?_eq_tail_getLast? {α : Type*} {l : List α}
+    (h : l.tail ≠ []) : l.getLast? = l.tail.getLast? := by
+  match l, h with
+  | [], h => exact absurd rfl h
+  | [a], h => exact absurd rfl h
+  | a :: b :: t, _ => exact List.getLast?_cons_cons
+
+/-- **H6-B3a, THE τ-IRR DRESS THEOREM** (blueprint §4 unit B3a prose,
+transcribed: "a lawful coherent M IrrHalts iff its dressed continuing part is
+`DecIrrSeam`"): for a machine history with a continuing read on record
+(`M.nodes.tail ≠ []` — the root-datum corner split off to B3a′, see the
+section header), under lawfulness the τ-irr halt is EXACTLY seam decidedness
+of the dressed continuing part.  Machine face: `MovesT.irr_iff_mu_one`
+(IrrHalts ⟺ μ_last = 1, PROVED).  Transport: `machineEHist_nodes` +
+`nodeToE_sel` at the last node.  Coherence rides per the blueprint prose
+(binder `_hcoh`); the iff itself consumes only lawfulness — displayed, not
+hidden. -/
+theorem irrHalts_iff_decIrrSeam {p : ℕ} [Fact p.Prime] {F : Type*} [Field F]
+    [Finite F] (n : ℕ) (M : MovesC.History p F)
+    (_hcoh : MovesC.HistoryCoherent M) (hlaw : MovesT.HistLawful p n M)
+    (htail : M.nodes.tail ≠ []) :
+    MovesT.IrrHalts M ↔ DecIrrSeam (machineEHist M).continuingPart := by
+  have hne : M.nodes ≠ [] := M.nonempty
+  have hm : M.nodes.getLast? = some (M.nodes.getLast hne) :=
+    List.getLast?_eq_some_getLast hne
+  rw [MovesT.irr_iff_mu_one M n hlaw (M.nodes.getLast hne) hm,
+    machineEHist_continuingPart]
+  unfold DecIrrSeam
+  rw [machineEHist_nodes, List.getLast?_map, ← getLast?_eq_tail_getLast? htail,
+    hm]
+  simp only [Option.map_some, Option.elim_some, nodeToE_sel, ne_eq,
+    List.map_eq_nil_iff, htail, not_false_eq_true, true_and,
+    Option.some.injEq, Prod.mk.injEq]
+  constructor
+  · intro h
+    exact ⟨(M.nodes.getLast hne).g, rfl, h⟩
+  · rintro ⟨g, -, h⟩
+    exact h
+
+/-- **H6-B3a — `tDECdec`'s irr leg for `engineEmissionSV`** (the A7 row's irr
+conjunct at `E := engineEmissionSV n p F`, the reach ∃-witness unpacked and
+carrying the fenced `HistLawful` explicitly): a lawful coherent `ReadsOf`
+realizer of a decided τ-irr seam books there — the emission fires with the
+sel-none record `nuT1` and THE machine accumulator verdict
+`(accE M, accF M)`.  Route: `DecIrrSeam H` forces the machine tail nonempty,
+the dress theorem's ← direction yields `MovesT.IrrHalts M`, and B1's `emits`
+body is assembled witness-by-witness (the continuing clause is the interface
+law `reaches_continuing`, consumed, not re-proved). -/
+theorem engineEmissionSV_tDECdec_irr (n p : ℕ) [Fact p.Prime]
+    (F : Type*) [Field F] [Finite F] :
+    ∀ (f : Polynomial ℤ_[p]) (H : EHist p F) (D : GMNData f (Theta H))
+      (R : GMNReader f (Theta H) D),
+      ReadThroughIota f H D → ConsF f H D R →
+      ∀ M : MovesC.History p F,
+        MovesC.HistoryCoherent M →
+        LeanUrat.MovesJ.ReadsOf p F n f M →
+        MovesT.HistLawful p n M →
+        (machineEHist M).continuingPart = H →
+        DecIrrSeam H → ∃ ν EF, (engineEmissionSV n p F).emits f H ν EF := by
+  intro f H D R _ _ M hcoh hread hlaw hpart hdec
+  subst hpart
+  have htail : M.nodes.tail ≠ [] := by
+    have h1 := hdec.1
+    rw [machineEHist_continuingPart, machineEHist_nodes] at h1
+    intro h
+    rw [h] at h1
+    simp at h1
+  have hirr : MovesT.IrrHalts M :=
+    (irrHalts_iff_decIrrSeam n M hcoh hlaw htail).mpr hdec
+  refine ⟨nuT1, (MovesT.accE M, MovesT.accF M), rfl, hdec, ?_,
+    M, hcoh, hread, rfl, hirr, rfl⟩
+  exact (engineEmissionSV n p F).reaches_continuing f _ ⟨M, hcoh, hread, rfl⟩
+
+/-- **H6-B3a — `tDECdec`'s hen leg for `engineEmissionSV`** (the A7 row's hen
+conjunct at `E := engineEmissionSV n p F`): at the SV interface the
+machine-record booking channel fires DEFINITIONALLY at every reached
+`DecHenSeam` — `emitsHen`'s three conjuncts are the seam's `nodes = []`, the
+pinned pair `(1, f₀)`, and the reach witness.  No root-datum content is
+claimed here: the machine-side characterization of hen bookings (the a₀ ≥ 2
+split of the root datum) is B3a′ / the C0-upgrade territory, per the
+blueprint's split-off clause. -/
+theorem engineEmissionSV_tDECdec_hen (n p : ℕ) [Fact p.Prime]
+    (F : Type*) [Field F] [Finite F] :
+    ∀ (f : Polynomial ℤ_[p]) (H : EHist p F) (D : GMNData f (Theta H))
+      (R : GMNReader f (Theta H) D),
+      ReadThroughIota f H D → ConsF f H D R →
+      (engineEmissionSV n p F).reaches f H →
+      DecHenSeam f H D → ∃ EF, (engineEmissionSV n p F).emitsHen f H EF := by
+  intro f H D R _ _ hre hdec
+  exact ⟨(1, H.psi0.natDegree), hdec.1, rfl, hre⟩
+
+/-- **H6-B3a, PACKAGED: (T-DEC-dec) at the engine** — the A7 `tDECdec` row
+shape at `E := engineEmissionSV n p F`, both legs, with the row's reach
+antecedent `E.reaches f H` strengthened to a LAWFUL reach: the realizing
+history additionally satisfies `MovesT.HistLawful p n M` (the fenced Q1
+conditionality of MovesT/Defs, displayed as an explicit hypothesis — see the
+section header; the bare-row form is NOT claimed).  Consumers (B3b's leaf
+catalogue, D1a's witness assembly) thread the lawful reach. -/
+theorem engineEmissionSV_tDECdec (n p : ℕ) [Fact p.Prime]
+    (F : Type*) [Field F] [Finite F] :
+    ∀ (f : Polynomial ℤ_[p]) (H : EHist p F) (D : GMNData f (Theta H))
+      (R : GMNReader f (Theta H) D),
+      ReadThroughIota f H D → ConsF f H D R →
+      (∃ M : MovesC.History p F, MovesC.HistoryCoherent M ∧
+        LeanUrat.MovesJ.ReadsOf p F n f M ∧
+        MovesT.HistLawful p n M ∧
+        (machineEHist M).continuingPart = H) →
+      (DecIrrSeam H → ∃ ν EF, (engineEmissionSV n p F).emits f H ν EF) ∧
+      (DecHenSeam f H D → ∃ EF, (engineEmissionSV n p F).emitsHen f H EF) := by
+  intro f H D R hiota hcons hM
+  obtain ⟨M, hcoh, hread, hlaw, hpart⟩ := hM
+  exact ⟨engineEmissionSV_tDECdec_irr n p F f H D R hiota hcons
+      M hcoh hread hlaw hpart,
+    engineEmissionSV_tDECdec_hen n p F f H D R hiota hcons
+      ⟨M, hcoh, hread, hpart⟩⟩
 
 end LeanUrat.Scaffold.HDischarge.H6

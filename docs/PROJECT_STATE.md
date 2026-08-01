@@ -1500,3 +1500,13 @@ briefs adjudicated STILL-OWED (firing conditions unmet per H4M7 §1).
 EARNED on the REVISION-12 text and stands; REVISION 13 is a text change —
 a confirming end-to-end pass (VC16, charge at ROOT §19) is OWED to
 re-anchor the accepted text on the REVISION-13 wording.
+
+---
+## CHECKPOINT 2026-08-05: ELEVEN OPEN ROWS, DISCHARGE MACHINE IN STEADY STATE
+ROOT at REVISION 15 (VC18-confirmed). Discharge scoreboard: (NSF-KEY)
+RETIRED (Unit C + compiled carrier); D-12r MOVED to §4 literature (page-
+confirmed pins); (K-CUT) reduced to one hostile pass (H8 fleet 11/11);
+(E-N) witness-backed; (H7) Tier-S landed 6/6; H1 wave-0 + shared carriers
+(FirstEntrance, Tonelli) on disk; RootHyps synced to the full roster.
+Fleets remaining: H6 (running), H1, follow-up cycles (hostile passes,
+mop-ups, gated units). Verification trail: VC1-VC18.

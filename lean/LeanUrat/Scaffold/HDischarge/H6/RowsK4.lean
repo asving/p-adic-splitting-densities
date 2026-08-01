@@ -1,6 +1,7 @@
 /-
-HDISCHARGE_H6 §4 Wave D — `H6/RowsK4.lean`: unit D1a (EASY) — THE SEMANTIC (H6)
-CORE ROW. `EngineCovers` + `TerminalSeamCore` transcribed VERBATIM from
+HDISCHARGE_H6 §4 Wave D — `H6/RowsK4.lean`: units D1a (EASY) — THE SEMANTIC
+(H6) CORE ROW — and D1b (EASY, PROVISIONAL) — the K4-facing syntactic
+unblocker `TerminalSeamRows` (see its docstring for the label-tie register). `EngineCovers` + `TerminalSeamCore` transcribed VERBATIM from
 `lean/blueprints/HDISCHARGE_H6.md` §4 unit D1a (the ∃-WITH-COVERING form — fold
 round 1 restructure per Codex finding 7 + the D1-keying recommendation: the
 semantic row carries NO phantom keys; the K4 binder is a SEPARATE, explicitly
@@ -28,10 +29,12 @@ would inherit `sorryAx`), `MovesJ.ReadsOf` (HC2/Defs).
 -/
 import Mathlib
 import LeanUrat.Scaffold.HDischarge.H6.EngineConform
+import LeanUrat.MovesU.DefsLedger
 
 namespace LeanUrat.Scaffold.HDischarge.H6
 
 open LeanUrat.Scaffold.DictIII
+open LeanUrat.MovesU
 
 /-- H6-D1a (VERBATIM from `lean/blueprints/HDISCHARGE_H6.md` §4 unit D1a):
 the covering half of the semantic core row — every seam realized by a coherent,
@@ -77,5 +80,32 @@ theorem rc_of_rows {p : ℕ} [Fact p.Prime] {F : Type*} [Field F] [Finite F]
   ⟨E.emits_terminal f H ν EF hemit,
     hrows.tREAD f H ν EF D R hread hcons hemit hdec,
     hrows.tVERD f H ν EF D R hread hcons hemit hdec⟩
+
+/-- H6-D1b (VERBATIM from `lean/blueprints/HDISCHARGE_H6.md` §4 unit D1b;
+EASY, PROVISIONAL — labeled so per the Codex D1-keying recommendation
+(finding 7) adopted verbatim): the K4-facing syntactic unblocker. The (X, FF)
+keys are consumption-site keys ONLY — `ClassifierSpec` is abstract (no run
+structure), so the label tie ("X's leaf labels are the engine's announced
+verdicts") is NOT statable at HEAD; it is a REGISTERED FORTHCOMING FIELD:
+when Movement I/BP_VI exposes the classifier's run structure,
+`TerminalSeamRows` GAINS the label-tie field (a consumer-visible
+strengthening — the BP_IV seam is flagged NOW, in the blueprint and in this
+docstring, so S5b/D4 land against the binder knowing the field is coming;
+they consume the row opaquely, so re-landing is a re-elaboration, not a
+re-proof). Until that field exists, the ROOT-level conditionality display
+must keep naming the label tie as carried by the BP_VI instantiation seam,
+NOT by this row. -/
+structure TerminalSeamRows (n p : ℕ) [Fact p.Prime] (X : ClassifierSpec n p)
+    (FF : FiberSeries n p X) : Prop where
+  core : TerminalSeamCore n p
+
+/-- D1b probe (the S5b-shaped binder context displayed at the blueprint unit):
+the (X, FF)-keyed binder pair `(seam : TreeSeam n p X FF)
+(K4 : TerminalSeamRows n p X FF)` elaborates, and the row projects to the
+semantic core. -/
+example (n p : ℕ) [Fact p.Prime] (X : ClassifierSpec n p)
+    (FF : FiberSeries n p X) (_seam : TreeSeam n p X FF)
+    (K4 : TerminalSeamRows n p X FF) : TerminalSeamCore n p :=
+  K4.core
 
 end LeanUrat.Scaffold.HDischarge.H6

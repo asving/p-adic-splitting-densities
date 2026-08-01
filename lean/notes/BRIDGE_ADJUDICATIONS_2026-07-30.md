@@ -2079,3 +2079,10 @@ Step 12 locally re-pointed ("perimeter-conditional on the §4 D-12r pin (entry 1
 matching Steps 2/3/11/16/19; §20 r15-5 acknowledgment marked RESOLVED); Step 4 graded
 exactly PROVED-UNVERIFIED (§3.2 M17 audit row = upgrade; Lean-core/Step-5 as notes).
 ELEVEN rows unchanged; acceptance stands earned r12/re-anchored r13; VC18 OWED.
+
+## VC18: COMPOSITION-SOUND — ELEVEN ROWS ANCHORED (2026-08-05)
+REVISION 15 confirmed (1 advisory only). The post-acceptance discharge
+trail is fully verified: REVISION 12 (accepted, 2x model-diverse) ->
+13 ((NSF-KEY) retired) -> 14 (D-12r -> literature, eleven rows) -> 15
+(display fixes) — every step confirmed by its own end-to-end pass.
+Report: lean/notes/openmath/VC18_report.md.
