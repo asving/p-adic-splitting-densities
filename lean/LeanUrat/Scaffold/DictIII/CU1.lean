@@ -7,7 +7,6 @@ import Mathlib
 import LeanUrat.Scaffold.DictIII.Hyps
 import LeanUrat.Scaffold.DictIII.GMNReader
 import LeanUrat.Scaffold.DictIII.Locality
-import LeanUrat.Scaffold.DictIII.Window
 import LeanUrat.Scaffold.DictIII.O2aOrder1
 import LeanUrat.HC2.Defs
 import LeanUrat.MovesT.V9_irrSat
@@ -25,6 +24,24 @@ records below.  No declaration is landed; the verbatim blueprint statement is
 preserved in the commented block (transcribing it weakened, or with invented
 placeholder carriers for other units' owned definitions, would be a statement
 change).
+
+Status at hand-off (unit III-U1, 2026-08-01): PARTIAL — `machineProj` (the
+§1.8 signature + docstring, VERBATIM) LANDS with the CU1 §2 π field mapping:
+the Node → ENodeData re-key `nodeToE` with per-field lemmas, the root-datum
+split (machine root read → (ψ̂₀, a₀); forced by W2, note at the unit
+section), the σ.K/nextField dressing tower, and an `EWF` certificate proved
+in full EXCEPT the W3 row, which carries this unit's ONE honest sorry:
+W3 (interior μ ≥ 2 + a₀ ≥ 2) is NOT derivable from `HistoryCoherent` — the
+interior discipline is the machine's HALTING/decision layer (O-1thr §1.4,
+IrrHalts ⟺ μ_last = 1), not coherence, and a coherent countermodel shape is
+on record at the proof site (trivial recentering-shaped successor reads;
+cf. `HK25.H₂rec`).  REV2 finding 17 ("returns an EWF-certified subtype"
+from coherence alone) over-promises at exactly that row; cure = architect
+ruling (decision-layer hypothesis on `machineProj`, or W3 re-scoped).
+PROVED: W1a/W1b/W2/W5, W4-dress, all four tower rows — the two cardinal
+degree laws through a proved finite-field adjoin-root cardinality kernel
+(`card_adjoin_root`).  This cures the III-A5 statement-site blocker and the
+third of III-U5's four missing identifiers (census note at the U5 block).
 
 Status at hand-off (unit III-U2, 2026-08-01): LANDED — `InteriorChain` (the
 §1.8 signature, verbatim) with fieldwise access lemmas, + the CU-1 base case
@@ -112,8 +129,10 @@ Status at hand-off (unit III-U6, 2026-08-01): BLOCKED — record below (between
 the III-U5 and III-U7 blocks; the same elision class as III-U7, plus a
 statement defect inherited from the III-T14 seam).  One support lemma IS
 landed and PROVED (`nstarMaj_readCeil_le`, the (N\*-MAJ) consumption leg over
-the landed III-H4 row), Lean-core footprint — the `Locality`/`Window` imports
-pin its `readCeil` cite and the III-T14 census.
+the landed III-H4 row), Lean-core footprint — the `Locality` import pins its
+`readCeil` cite; the III-T14 census stands as prose (the `Window` import was
+DROPPED at the III-U3c hand-off: the cross-module `devCoeff` clash, compiled
+obstruction record at the III-U3c section).
 
 Status at hand-off (unit III-U8, 2026-08-01): BLOCKED, with the obstruction
 COMPILED — record at the end of the file.  Ground 1: dep III-U5 (`cu1`) is
@@ -130,6 +149,554 @@ mandatory before closure") therefore reads STOP-THE-LINE for Wave-4 closure.
 namespace LeanUrat.Scaffold.DictIII
 
 variable {p : ℕ} [Fact p.Prime] {F : Type*} [Field F] [Finite F]
+
+/-! ## Unit III-U1 — `machineProj` def + fieldwise lemmas (BP_III §1.8,
+signature VERBATIM; src CU1 §2 π; Node → ENodeData re-key)
+
+Unit row (BP_III §2 Wave 4, line 804): "`machineProj` def + fieldwise lemmas
+| Node → ENodeData re-key | III-C2a, corpus MovesC | EASY | CU1 §2 π";
+REV2 finding 17: "`machineProj` requires `HistoryCoherent` and returns an
+`EWF`-certified subtype".  The §1.8 display fixes the SIGNATURE and docstring
+verbatim (lines 556–559); the def BODY is this unit's rendering from the
+source of record — `CU1_phaseB_verifybrief_rev5.md` §0′ "Machine dressings
+and the projection π":
+
+> "π(M) is the dressed 𝔈-history whose i-th node is the [F.1]/[F.2] emitted
+> record of ν̂_i's harvest — explicitly: e := ê, h := ĥ, ℓ := ŵSide/ê (the
+> side degree: the number of e-strides, = deg of the residual polynomial),
+> (s, u) := the emitted initial-point pair, sel := (deg ψ̂, μ̂), inc := 1 iff
+> the species is increment (⟺ ê·deg ψ̂ ≥ 2, the §1.2 species law = W2's
+> value), dressing := ψ̂"
+
+Rendering notes (division-lead review requested, per the III-A1/III-U2/
+III-U3a convention):
+
+* **Display adjustment (the Carriers.lean III-C1 class):** the `machineProj`
+  def carries the `noncomputable` keyword (its value holds `Polynomial`/
+  `Subfield.closure` data); no other token differs from the §1.8 display,
+  docstring included.
+* **Root datum vs. node records.**  A corpus `MovesC.History` opens with THE
+  root read (`root_iff`: node 0 is species `root`, first and only first),
+  while the 𝔈-carrier separates the root datum (ψ̂₀, a₀) from the node list.
+  The re-key therefore maps machine node 0 to the root datum — base := its
+  frame field σ.K, ψ̂₀ := its harvested residual ψ (monic irreducible by the
+  node's own rows), a₀ := its multiplicity μ̂₀ — and machine nodes 1.. to
+  𝔈-nodes via `nodeToE`.  This split is FORCED by W2: a root read may have
+  e·g ≥ 2 with species `root` ≠ `increment`, so keying `inc` by the species
+  law on the root record would refute W2; on the tail, species ∈
+  {increment, recentering} (root_iff) and W1a/W1b/W2 are THEOREMS below.
+* **The (s, u) pair.**  `s := ŝ₀` (the side's initial slot).  For `u`, the
+  node records the RIGHT-endpoint height `ustar : ℚ` and the integer total
+  side weight `gam` (γ-tie, `HistoryCoherent` clause 3: e·(STR·u\*) =
+  γ − (s₀+wSide)·h).  The initial-point height on the STRETCHED integer
+  lattice is (γ − s₀·h)/e = STR·u\* + ℓ·h — an exact integer division under
+  the γ-tie — so `u := ((gam − s₀·h)/e).toNat`, the unique ℕ-valued
+  emitted-height candidate on the recorded data ((C1) REV 2 declares domains
+  ℤ≥0).  The def itself consumes NO coherence (π is defined for an ARBITRARY
+  machine history, rev-4 re-cite P2 F-7); off the coherent domain `toNat`
+  clips junk.
+* **Dressing tower.**  `fld i` := the frame field σ.K of machine node i+1
+  (= F_{i+1}, the field its dressing ψ̂_i lives over); beyond the recorded
+  reads it continues with the LAST read's created field
+  `σ.nextField zbar` (D.6), keeping every tower row honest at the seam.
+  `psihat i` := node (i+1)'s residual ψ in range; junk dressing X − C 1
+  off-range (monic, irreducible, ≠ X over any subfield).
+* **EWF certificate.**  W1a/W1b/W2/W5, the W4 dressing row, and ALL FOUR
+  tower rows are PROVED — the two cardinal degree laws via a finite-field
+  adjoin-root cardinality lemma (`card_adjoin_root` below: |K(z̄)| =
+  |K|^{deg ψ} for z̄ a unit root of the monic irreducible ψ, through
+  `IntermediateField.adjoin`/`minpoly`/`Module.natCard_eq_pow_finrank`),
+  fed by coherence's two transition legs (`TransitionCoreL.base.child_field`
+  + `RegradeOf.nextField_eq`; `IsRecenteringCore.base`'s K-equality).
+  **W3 is the unit's ONE honest sorry** — BLOCKED record at the proof site:
+  it is not derivable from `HistoryCoherent`, and REV2 finding 17
+  over-promises there.
+
+NOT claimed: W3 (sorried, see the record), any III-A5 re-key content (its
+own unit), the III-U5 assembly. -/
+
+section UnitIIIU1
+
+/-- III-U1 support (the tower cardinal degree laws' kernel): adjoining a root
+    `z` of a monic irreducible `ψ` over a subfield `K` of a finite field
+    grows cardinality by exactly `|K|^{deg ψ}` — `Subfield.closure`-face of
+    `IntermediateField.adjoin.finrank` + `Module.natCard_eq_pow_finrank`. -/
+private theorem card_adjoin_root {K : Subfield F} {ψ : Polynomial ↥K}
+    (hmon : ψ.Monic) (hirr : Irreducible ψ) {z : F}
+    (hz : Polynomial.eval₂ K.subtype z ψ = 0) :
+    Nat.card ↥(Subfield.closure (↑K ∪ {z})) = Nat.card ↥K ^ ψ.natDegree := by
+  have haev : (Polynomial.aeval z) ψ = 0 := by
+    rwa [Polynomial.aeval_def]
+  have hint : IsIntegral ↥K z := ⟨ψ, hmon, haev⟩
+  have hmin : minpoly ↥K z = ψ :=
+    (minpoly.eq_of_irreducible_of_monic hirr haev hmon).symm
+  have hfin : Module.finrank ↥K ↥(IntermediateField.adjoin ↥K {z})
+      = ψ.natDegree := by
+    rw [← hmin]
+    exact IntermediateField.adjoin.finrank hint
+  have hcard : Nat.card ↥(IntermediateField.adjoin ↥K {z})
+      = Nat.card ↥K ^ ψ.natDegree := by
+    rw [← hfin]
+    exact Module.natCard_eq_pow_finrank
+  have hrange : Set.range ⇑(algebraMap ↥K F) = (↑K : Set F) := Subtype.range_coe
+  rw [← hcard]
+  refine Nat.card_congr (Equiv.setCongr ?_)
+  rw [← IntermediateField.coe_toSubfield, IntermediateField.adjoin_toSubfield,
+    hrange]
+
+/-- Coefficients of the anchored residual, read off the recorded pattern
+    (`hRanch`): `Ranch.coeff N = pat N` inside the window, `0` beyond. -/
+private lemma node_ranch_coeff (m : MovesC.Node p F) (N : ℕ) :
+    m.Ranch.coeff N = if N < m.wSide / m.e + 1 then m.pat N else 0 := by
+  rw [m.hRanch]
+  simp_rw [Polynomial.C_mul_X_pow_eq_monomial]
+  rw [Polynomial.finsetSum_coeff]
+  simp_rw [Polynomial.coeff_monomial]
+  rw [Finset.sum_ite_eq' (Finset.range (m.wSide / m.e + 1)) N m.pat]
+  simp
+
+private lemma node_ranch_ne_zero (m : MovesC.Node p F) : m.Ranch ≠ 0 := by
+  intro h0
+  have hc := node_ranch_coeff m (m.wSide / m.e)
+  rw [h0, Polynomial.coeff_zero, if_pos (by omega)] at hc
+  exact m.hpatTop hc.symm
+
+private lemma node_ranch_natDegree_le (m : MovesC.Node p F) :
+    m.Ranch.natDegree ≤ m.wSide / m.e := by
+  rw [Polynomial.natDegree_le_iff_coeff_eq_zero]
+  intro N hN
+  rw [node_ranch_coeff, if_neg (by omega)]
+
+/-- III-U1 fieldwise support, the re-key degree law (`hsel`'s window bound):
+    `μ̂·deg ψ̂ ≤ ℓ = ŵSide/ê`, from `ψ^μ ∥ Ranch` (`hOrd`) and the pattern's
+    exact top digit (`hpatTop`). -/
+theorem node_mu_mul_g_le_ell (m : MovesC.Node p F) :
+    m.μ * m.g ≤ m.wSide / m.e := by
+  have hdeg := Polynomial.natDegree_le_of_dvd m.hOrd.1 (node_ranch_ne_zero m)
+  rw [Polynomial.natDegree_pow, m.hψdeg] at hdeg
+  exact hdeg.trans (node_ranch_natDegree_le m)
+
+/-- III-U1 fieldwise support, side-degree positivity (`hl`): `1 ≤ ℓ`. -/
+theorem node_one_le_ell (m : MovesC.Node p F) : 1 ≤ m.wSide / m.e :=
+  (Nat.mul_pos m.hμ m.hg).trans_le (node_mu_mul_g_le_ell m)
+
+/-- III-U1 fieldwise support, the dressing-fence law: a recorded residual is
+    never the bare variable `X` (its selected residue root `z̄` is a UNIT of
+    `F`, and `X`'s only root is 0). -/
+theorem node_psi_ne_X (m : MovesC.Node p F) : m.ψ ≠ Polynomial.X := by
+  intro hX
+  have h0 := m.hzbarRoot
+  rw [hX, Polynomial.eval₂_X] at h0
+  exact Units.ne_zero m.zbar h0
+
+/-- **Unit III-U1, the Node → ENodeData re-key** (CU1 §2 π, displayed field
+    by field in the section header): the [F.1]/[F.2] emitted record of one
+    machine read.  Law rows discharged from the node's own carrier rows +
+    the degree lemmas above; NO coherence consumed (π is total on machine
+    histories). -/
+def nodeToE (m : MovesC.Node p F) : ENodeData where
+  e := m.e
+  h := m.h
+  ℓ := m.wSide / m.e
+  s := m.s0
+  u := ((m.gam - (m.s0 : ℤ) * (m.h : ℤ)) / (m.e : ℤ)).toNat
+  sel := some (m.g, m.μ)
+  inc := decide (m.species = MovesC.ReadSpecies.increment)
+  he := m.he
+  hh := m.hh
+  hcop := m.hcop
+  hl := node_one_le_ell m
+  hsel := by
+    rintro gμ hgμ
+    rw [Option.mem_def, Option.some.injEq] at hgμ
+    subst hgμ
+    exact ⟨m.hg, m.hμ, node_mu_mul_g_le_ell m⟩
+
+/-! Fieldwise lemmas (the unit deliverable): each emitted 𝔈-field against its
+recorded machine source, definitional. -/
+
+@[simp] theorem nodeToE_e (m : MovesC.Node p F) : (nodeToE m).e = m.e := rfl
+@[simp] theorem nodeToE_h (m : MovesC.Node p F) : (nodeToE m).h = m.h := rfl
+@[simp] theorem nodeToE_ell (m : MovesC.Node p F) :
+    (nodeToE m).ℓ = m.wSide / m.e := rfl
+@[simp] theorem nodeToE_s (m : MovesC.Node p F) : (nodeToE m).s = m.s0 := rfl
+@[simp] theorem nodeToE_u (m : MovesC.Node p F) :
+    (nodeToE m).u = ((m.gam - (m.s0 : ℤ) * (m.h : ℤ)) / (m.e : ℤ)).toNat := rfl
+@[simp] theorem nodeToE_sel (m : MovesC.Node p F) :
+    (nodeToE m).sel = some (m.g, m.μ) := rfl
+@[simp] theorem nodeToE_inc (m : MovesC.Node p F) :
+    (nodeToE m).inc = decide (m.species = MovesC.ReadSpecies.increment) := rfl
+
+/-- III-U1 tower carrier: level field of the projected history — the frame
+    field of machine node i+1 in range; the LAST read's created D.6 field
+    `σ.nextField z̄` beyond (so the tower rows stay honest at the seam). -/
+def projFld (last : MovesC.Node p F) :
+    Option (MovesC.Node p F) → Subfield F
+  | some m => m.σ.K
+  | none => last.σ.nextField last.zbar
+
+/-- III-U1 tower dressing: node (i+1)'s residual ψ̂ in range ("dressing :=
+    ψ̂", CU1 §2 π); junk monic irreducible `X − C 1` off-range (the (C1)
+    convention "junk off-range"). -/
+noncomputable def projPsihat (last : MovesC.Node p F) :
+    (o : Option (MovesC.Node p F)) → Polynomial ↥(projFld last o)
+  | some m => m.ψ
+  | none => Polynomial.X - Polynomial.C 1
+
+theorem projPsihat_monic (last : MovesC.Node p F)
+    (o : Option (MovesC.Node p F)) : (projPsihat last o).Monic := by
+  cases o with
+  | some m => exact m.hψmonic
+  | none => exact Polynomial.monic_X_sub_C 1
+
+theorem projPsihat_irreducible (last : MovesC.Node p F)
+    (o : Option (MovesC.Node p F)) : Irreducible (projPsihat last o) := by
+  cases o with
+  | some m => exact m.hψirr
+  | none => exact Polynomial.irreducible_X_sub_C 1
+
+theorem projPsihat_ne_X (last : MovesC.Node p F)
+    (o : Option (MovesC.Node p F)) : projPsihat last o ≠ Polynomial.X := by
+  cases o with
+  | some m => exact node_psi_ne_X m
+  | none =>
+    show Polynomial.X - Polynomial.C 1 ≠ Polynomial.X
+    intro heq
+    have h0 := congrArg (fun q => Polynomial.coeff q 0) heq
+    simp at h0
+
+/-- W4-dress data at an in-range slot, in the generalized-scrutinee form the
+    dependent match consumes (`subst` on the option). -/
+private lemma projPsihat_dress (last m : MovesC.Node p F)
+    (o : Option (MovesC.Node p F)) (ho : o = some m) :
+    (projPsihat last o).Monic ∧ Irreducible (projPsihat last o) ∧
+      (projPsihat last o).natDegree = m.g ∧ projPsihat last o ≠ Polynomial.X := by
+  subst ho
+  exact ⟨m.hψmonic, m.hψirr, m.hψdeg, node_psi_ne_X m⟩
+
+/-- **Unit III-U1, the projected 𝔈-history** (the `machineProj` value): root
+    datum from the root read (machine node 0), 𝔈-nodes = the tail re-keyed by
+    `nodeToE`, tower = the recorded frame fields continued by the last read's
+    D.6 field.  Consumes NO coherence — every structure row is a node-carrier
+    fact (positivity, coprimality, dressing). -/
+noncomputable def machineEHist (M : MovesC.History p F) : EHist p F where
+  base := (M.nodes.head M.nonempty).σ.K
+  psi0 := (M.nodes.head M.nonempty).ψ
+  hpsi0 := ⟨(M.nodes.head M.nonempty).hψmonic, (M.nodes.head M.nonempty).hψirr⟩
+  a0 := (M.nodes.head M.nonempty).μ
+  ha0 := (M.nodes.head M.nonempty).hμ
+  nodes := M.nodes.tail.map nodeToE
+  fld := fun i => projFld (M.nodes.getLast M.nonempty) M.nodes[i + 1]?
+  psihat := fun i => projPsihat (M.nodes.getLast M.nonempty) M.nodes[i + 1]?
+  hpsihat := fun _ =>
+    ⟨projPsihat_monic _ _, projPsihat_irreducible _ _, projPsihat_ne_X _ _⟩
+
+/-! Fieldwise lemmas at the history level (root datum, node list, tower). -/
+
+theorem machineEHist_base (M : MovesC.History p F) :
+    (machineEHist M).base = (M.nodes.head M.nonempty).σ.K := rfl
+
+theorem machineEHist_psi0 (M : MovesC.History p F) :
+    (machineEHist M).psi0 = (M.nodes.head M.nonempty).ψ := rfl
+
+theorem machineEHist_a0 (M : MovesC.History p F) :
+    (machineEHist M).a0 = (M.nodes.head M.nonempty).μ := rfl
+
+theorem machineEHist_nodes (M : MovesC.History p F) :
+    (machineEHist M).nodes = M.nodes.tail.map nodeToE := rfl
+
+theorem machineEHist_nodes_length (M : MovesC.History p F) :
+    (machineEHist M).nodes.length = M.nodes.length - 1 := by
+  show (M.nodes.tail.map nodeToE).length = _
+  rw [List.length_map, List.length_tail]
+
+/-- Indexwise re-key: 𝔈-node i of the projection is machine node i+1's
+    emitted record (the `?`-total form). -/
+theorem machineEHist_nodes_getElem? (M : MovesC.History p F) (i : ℕ) :
+    (machineEHist M).nodes[i]? = Option.map nodeToE M.nodes[i + 1]? := by
+  show (M.nodes.tail.map nodeToE)[i]? = _
+  rw [List.getElem?_map, List.getElem?_tail]
+
+/-- Indexwise re-key, inverse direction: a projected node comes from a
+    machine node one slot up. -/
+theorem machineEHist_node_inv {M : MovesC.History p F} {i : ℕ}
+    {ν : ENodeData} (h : (machineEHist M).nodes[i]? = some ν) :
+    ∃ hi : i + 1 < M.nodes.length, nodeToE (M.nodes[i + 1]'hi) = ν := by
+  rw [machineEHist_nodes_getElem?] at h
+  cases hm : M.nodes[i + 1]? with
+  | none => rw [hm] at h; exact absurd h (by simp)
+  | some m =>
+    rw [hm, Option.map_some, Option.some.injEq] at h
+    obtain ⟨hi, hgm⟩ := List.getElem?_eq_some_iff.mp hm
+    exact ⟨hi, by rw [hgm]; exact h⟩
+
+theorem machineEHist_fld_of_lt (M : MovesC.History p F) {i : ℕ}
+    (hi : i + 1 < M.nodes.length) :
+    (machineEHist M).fld i = (M.nodes[i + 1]'hi).σ.K := by
+  show projFld (M.nodes.getLast M.nonempty) M.nodes[i + 1]? = _
+  rw [List.getElem?_eq_getElem hi]
+  rfl
+
+theorem machineEHist_fld_of_ge (M : MovesC.History p F) {i : ℕ}
+    (hi : M.nodes.length ≤ i + 1) :
+    (machineEHist M).fld i
+      = (M.nodes.getLast M.nonempty).σ.nextField
+          (M.nodes.getLast M.nonempty).zbar := by
+  show projFld (M.nodes.getLast M.nonempty) M.nodes[i + 1]? = _
+  rw [List.getElem?_eq_none hi]
+  rfl
+
+/-- Tail nodes are never root reads (`root_iff`), so their species is
+    increment or recentering — the split every W-row proof below cases on. -/
+private lemma tail_species (M : MovesC.History p F) {i : ℕ}
+    (hi : i + 1 < M.nodes.length) :
+    (M.nodes[i + 1]'hi).species = MovesC.ReadSpecies.increment ∨
+      (M.nodes[i + 1]'hi).species = MovesC.ReadSpecies.recentering := by
+  cases hsp : (M.nodes[i + 1]'hi).species with
+  | root => exact absurd ((M.root_iff (i + 1) hi).mp hsp) (by omega)
+  | increment => exact Or.inl rfl
+  | recentering => exact Or.inr rfl
+
+/-- The D.6 residue-growth cardinality law at one recorded read:
+    `|K(z̄)| = |K|^{deg ψ}` (the node's `hψmonic`/`hψirr`/`hzbarRoot` rows
+    feed `card_adjoin_root`). -/
+theorem node_card_nextField (m : MovesC.Node p F) :
+    Nat.card ↥(m.σ.nextField m.zbar) = Nat.card ↥m.σ.K ^ m.ψ.natDegree :=
+  card_adjoin_root m.hψmonic m.hψirr m.hzbarRoot
+
+/-- Coherence's field step, both transition legs folded: the child frame
+    field is the parent's D.6 created field (non-recentering leg:
+    `TransitionCoreL.base.child_field` + `RegradeOf.nextField_eq`), or is
+    UNCHANGED with `g = 1` (recentering leg: `IsRecenteringCore.base`'s
+    K-equality + `hspecRec`). -/
+private lemma coherent_step_K {M : MovesC.History p F}
+    (hM : MovesC.HistoryCoherent M) {i : ℕ} (hi : i + 1 < M.nodes.length) :
+    (M.nodes[i + 1]'hi).σ.K
+        = (M.nodes[i]'(by omega)).σ.nextField (M.nodes[i]'(by omega)).zbar ∨
+      ((M.nodes[i + 1]'hi).σ.K = (M.nodes[i]'(by omega)).σ.K ∧
+        (M.nodes[i]'(by omega)).g = 1) := by
+  obtain ⟨-, -, -, hstep⟩ := hM
+  obtain ⟨hrec, hnonrec, -, -, -, -, -⟩ := hstep i hi
+  by_cases hsp :
+      (M.nodes[i]'(by omega)).species = MovesC.ReadSpecies.recentering
+  · obtain ⟨-, -, -, -, -, -, -, -, -, -, hK, -, -, -⟩ := (hrec hsp).base
+    exact Or.inr ⟨hK, ((M.nodes[i]'(by omega)).hspecRec hsp).2⟩
+  · obtain ⟨-, σV, hreg, -, hcore⟩ := hnonrec hsp
+    exact Or.inl (hcore.base.child_field.trans (hreg.nextField_eq _))
+
+/-- **Unit III-U1, the EWF certificate** of the projection.  PROVED:
+    W1a/W1b/W2 (species laws, from `hspecInc`/`hspecRec` + `root_iff` +
+    the degree lemmas), W5 (every emitted record is continuing), the W4
+    dressing row, and all four tower rows (inclusions + both cardinal degree
+    laws, fed by `coherent_step_K` and `node_card_nextField`).  W3 is the
+    unit's ONE honest sorry — BLOCKED record at the proof site. -/
+theorem machineEWF (M : MovesC.History p F)
+    (hM : MovesC.HistoryCoherent M) : EWF (machineEHist M) := by
+  refine ⟨⟨?_, ?_, ?_, ?_, ?_⟩, ⟨?_⟩, ⟨?_, ?_, ?_, ?_⟩⟩
+  -- W1a: ℓ = 1, e ≥ 2 ⟹ inc (a steep one-stride read is an increment).
+  · intro i ν hν _ _ he2
+    obtain ⟨hi1, rfl⟩ := machineEHist_node_inv hν
+    rw [nodeToE_inc, decide_eq_true_eq]
+    rcases tail_species M hi1 with hsp | hsp
+    · exact hsp
+    · exfalso
+      rw [nodeToE_e] at he2
+      have he1 := ((M.nodes[i + 1]'hi1).hspecRec hsp).1
+      omega
+  -- W1b: ℓ = 1, e = 1 ⟹ ¬inc (an increment needs e·g ≥ 2, but μg ≤ ℓ).
+  · intro i ν hν _ hl he1
+    obtain ⟨hi1, rfl⟩ := machineEHist_node_inv hν
+    rw [nodeToE_inc, decide_eq_false_iff_not]
+    intro hsp
+    have hgrow := (M.nodes[i + 1]'hi1).hspecInc hsp
+    rw [nodeToE_e] at he1
+    rw [nodeToE_ell] at hl
+    rw [he1, one_mul] at hgrow
+    have hle : (M.nodes[i + 1]'hi1).g
+        ≤ (M.nodes[i + 1]'hi1).μ * (M.nodes[i + 1]'hi1).g :=
+      Nat.le_mul_of_pos_left _ (M.nodes[i + 1]'hi1).hμ
+    have hll := node_mu_mul_g_le_ell (M.nodes[i + 1]'hi1)
+    rw [hl] at hll
+    have hg1 : (M.nodes[i + 1]'hi1).g ≤ 1 := hle.trans hll
+    omega
+  -- W2: inc ⟺ e·g ≥ 2 (the §1.2 species law, both directions).
+  · intro i ν g μ hν hsel
+    obtain ⟨hi1, rfl⟩ := machineEHist_node_inv hν
+    rw [nodeToE_sel, Option.some.injEq, Prod.mk.injEq] at hsel
+    obtain ⟨hg, -⟩ := hsel
+    rw [nodeToE_inc, nodeToE_e]
+    constructor
+    · intro hinc
+      rw [decide_eq_true_eq] at hinc
+      have hgrow := (M.nodes[i + 1]'hi1).hspecInc hinc
+      rw [hg] at hgrow
+      exact hgrow
+    · intro hge
+      rw [decide_eq_true_eq]
+      rcases tail_species M hi1 with hsp | hsp
+      · exact hsp
+      · exfalso
+        obtain ⟨he1, hg1⟩ := (M.nodes[i + 1]'hi1).hspecRec hsp
+        rw [he1, one_mul, ← hg, hg1] at hge
+        omega
+  -- W3: NOT derivable from HistoryCoherent — the unit's one honest sorry.
+  --
+  -- BLOCKED(III-U1): W3 (interior μ ≥ 2; a₀ ≥ 2 at nonempty node lists)
+  -- cannot be proved from `hM : HistoryCoherent M`.  Coherence's only
+  -- μ-law is window containment (νᵢ₊₁.s0 + νᵢ₊₁.wSide ≤ νᵢ.μ), and a
+  -- successor read with (e, g, μ, s0, wSide) = (1, 1, 1, 0, 1) — the
+  -- recentering-shaped trivial read, IsRecenteringCore-transitionable —
+  -- bounds νᵢ.μ ≥ 1 only.  Countermodel shape: a root read with μ̂₀ = 1
+  -- followed by such trivial recenterings (cf. the compiled coherent
+  -- recentering-ended history `HK25.H₂rec`, HC2/HK25_recGate.lean, whose
+  -- ν₁rec already has μ = 1).  The interior discipline is the machine's
+  -- HALTING layer — O-1thr §1.4, IrrHalts ⟺ μ_last = 1 (CU1 rev-5 row 18)
+  -- — i.e. ReadsOf/decision content, NOT coherence; the 𝔈-side carries it
+  -- as `InteriorChain` (III-U2), a SEPARATE hypothesis in `cu1`.  REV2
+  -- finding 17 ("returns an EWF-certified subtype" from coherence alone)
+  -- over-promises at exactly this row.  Cure = architect ruling: add the
+  -- decision-layer hypothesis to `machineProj`'s displayed signature, or
+  -- re-scope W3 out of the certificate (statement change, fenced above
+  -- unit authority).  Honest sorry per the unit charge; every other EWF
+  -- row is proved.
+  · sorry
+  -- W5: every emitted record is continuing (sel := some (deg ψ̂, μ̂)).
+  · intro i ν _ hν
+    obtain ⟨hi1, rfl⟩ := machineEHist_node_inv hν
+    simp [nodeToE_sel]
+  -- W4-dress: the level-i dressing IS node (i+1)'s residual, with its rows.
+  · intro i ν g μ hν hsel
+    obtain ⟨hi1, hto⟩ := machineEHist_node_inv hν
+    have hg : g = (M.nodes[i + 1]'hi1).g := by
+      rw [← hto, nodeToE_sel, Option.some.injEq, Prod.mk.injEq] at hsel
+      exact hsel.1.symm
+    subst hg
+    exact projPsihat_dress (M.nodes.getLast M.nonempty) (M.nodes[i + 1]'hi1)
+      M.nodes[i + 1]? (List.getElem?_eq_getElem hi1)
+  -- towerBase: F_q = σ₀.K ≤ fld 0.
+  · rcases Nat.lt_or_ge 1 M.nodes.length with h2 | h2
+    · show (M.nodes.head M.nonempty).σ.K ≤ (machineEHist M).fld 0
+      rw [machineEHist_fld_of_lt M (i := 0) h2, List.head_eq_getElem]
+      rcases coherent_step_K hM (i := 0) h2 with hL | hR
+      · rw [hL]
+        exact Moves.Stage.le_nextField _ _
+      · rw [hR.1]
+    · have hpos : 0 < M.nodes.length := List.length_pos_of_ne_nil M.nonempty
+      show (M.nodes.head M.nonempty).σ.K ≤ (machineEHist M).fld 0
+      rw [machineEHist_fld_of_ge M (i := 0) (by omega)]
+      have hlh : M.nodes.getLast M.nonempty = M.nodes.head M.nonempty := by
+        rw [List.getLast_eq_getElem, List.head_eq_getElem]
+        congr 1
+        omega
+      rw [hlh]
+      exact Moves.Stage.le_nextField _ _
+  -- towerStep: fld i ≤ fld (i+1) (transition legs; nextField at the seam).
+  · intro i
+    rcases Nat.lt_or_ge (i + 1) M.nodes.length with hi | hi
+    · rcases Nat.lt_or_ge (i + 2) M.nodes.length with hi2 | hi2
+      · rw [machineEHist_fld_of_lt M hi,
+          machineEHist_fld_of_lt M (i := i + 1) hi2]
+        rcases coherent_step_K hM (i := i + 1) hi2 with hL | hR
+        · rw [hL]
+          exact Moves.Stage.le_nextField _ _
+        · rw [hR.1]
+      · rw [machineEHist_fld_of_lt M hi,
+          machineEHist_fld_of_ge M (i := i + 1) hi2]
+        have hlast : M.nodes.getLast M.nonempty = M.nodes[i + 1]'hi := by
+          rw [List.getLast_eq_getElem]
+          congr 1
+          omega
+        rw [hlast]
+        exact Moves.Stage.le_nextField _ _
+    · rw [machineEHist_fld_of_ge M hi,
+        machineEHist_fld_of_ge M (i := i + 1) (by omega)]
+  -- towerBaseDegree: |F₁| = |F_q|^{deg ψ̂₀} (D.6 at the root read).
+  · rcases Nat.lt_or_ge 1 M.nodes.length with h2 | h2
+    · have hψn : (machineEHist M).psi0.natDegree
+          = (M.nodes[0]'(by omega)).ψ.natDegree := by
+        show (M.nodes.head M.nonempty).ψ.natDegree = _
+        rw [List.head_eq_getElem]
+      have hbase : Nat.card ↥(machineEHist M).base
+          = Nat.card ↥(M.nodes[0]'(by omega)).σ.K := by
+        show Nat.card ↥(M.nodes.head M.nonempty).σ.K = _
+        rw [List.head_eq_getElem]
+      rw [machineEHist_fld_of_lt M (i := 0) h2, hψn, hbase]
+      rcases coherent_step_K hM (i := 0) h2 with hL | hR
+      · rw [hL]
+        exact node_card_nextField _
+      · rw [hR.1, (M.nodes[0]'(by omega)).hψdeg, hR.2, pow_one]
+    · have hpos : 0 < M.nodes.length := List.length_pos_of_ne_nil M.nonempty
+      rw [machineEHist_fld_of_ge M (i := 0) (by omega)]
+      have hlh : M.nodes.getLast M.nonempty = M.nodes.head M.nonempty := by
+        rw [List.getLast_eq_getElem, List.head_eq_getElem]
+        congr 1
+        omega
+      rw [hlh]
+      exact node_card_nextField _
+  -- towerStepDegree: |F_{i+2}| = |F_{i+1}|^{gᵢ₊₁} (D.6 at each read).
+  · intro i ν g μ hν hsel
+    obtain ⟨hi1, hto⟩ := machineEHist_node_inv hν
+    have hg : g = (M.nodes[i + 1]'hi1).g := by
+      rw [← hto, nodeToE_sel, Option.some.injEq, Prod.mk.injEq] at hsel
+      exact hsel.1.symm
+    subst hg
+    rw [machineEHist_fld_of_lt M hi1]
+    rcases Nat.lt_or_ge (i + 2) M.nodes.length with hi2 | hi2
+    · rw [machineEHist_fld_of_lt M (i := i + 1) hi2]
+      rcases coherent_step_K hM (i := i + 1) hi2 with hL | hR
+      · rw [hL, ← (M.nodes[i + 1]'hi1).hψdeg]
+        exact node_card_nextField _
+      · have hg1 : (M.nodes[i + 1]'hi1).g = 1 := hR.2
+        rw [hR.1, hg1, pow_one]
+    · rw [machineEHist_fld_of_ge M (i := i + 1) hi2]
+      have hlast : M.nodes.getLast M.nonempty = M.nodes[i + 1]'hi1 := by
+        rw [List.getLast_eq_getElem]
+        congr 1
+        omega
+      rw [hlast, ← (M.nodes[i + 1]'hi1).hψdeg]
+      exact node_card_nextField _
+
+/-- The projection requires exactly the corpus coherence evidence from which its
+    positivity, coprimality, and dressing proofs are obtained. -/
+noncomputable def machineProj (M : MovesC.History p F)
+    (hM : MovesC.HistoryCoherent M) : {H : EHist p F // EWF H} :=
+  ⟨machineEHist M, machineEWF M hM⟩
+
+/-! Fieldwise lemmas at the `machineProj` interface (what III-A5/III-U5
+consume): the value is `machineEHist M`, so every fieldwise lemma above
+transports along `machineProj_val`. -/
+
+@[simp] theorem machineProj_val (M : MovesC.History p F)
+    (hM : MovesC.HistoryCoherent M) :
+    (machineProj M hM).1 = machineEHist M := rfl
+
+theorem machineProj_base (M : MovesC.History p F)
+    (hM : MovesC.HistoryCoherent M) :
+    (machineProj M hM).1.base = (M.nodes.head M.nonempty).σ.K := rfl
+
+theorem machineProj_psi0 (M : MovesC.History p F)
+    (hM : MovesC.HistoryCoherent M) :
+    (machineProj M hM).1.psi0 = (M.nodes.head M.nonempty).ψ := rfl
+
+theorem machineProj_a0 (M : MovesC.History p F)
+    (hM : MovesC.HistoryCoherent M) :
+    (machineProj M hM).1.a0 = (M.nodes.head M.nonempty).μ := rfl
+
+theorem machineProj_nodes (M : MovesC.History p F)
+    (hM : MovesC.HistoryCoherent M) :
+    (machineProj M hM).1.nodes = M.nodes.tail.map nodeToE := rfl
+
+theorem machineProj_nodes_getElem? (M : MovesC.History p F)
+    (hM : MovesC.HistoryCoherent M) (i : ℕ) :
+    (machineProj M hM).1.nodes[i]? = Option.map nodeToE M.nodes[i + 1]? :=
+  machineEHist_nodes_getElem? M i
+
+theorem machineProj_nodes_length (M : MovesC.History p F)
+    (hM : MovesC.HistoryCoherent M) :
+    (machineProj M hM).1.nodes.length = M.nodes.length - 1 :=
+  machineEHist_nodes_length M
+
+end UnitIIIU1
 
 /-! ## Unit III-U2, def half — the interior scoping (BP_III §1.8, signature verbatim) -/
 
@@ -623,7 +1190,9 @@ grounds each verified at this pin (2026-08-01):
 4. Item 4's "(R1) beyond the window by (M6c)(i) at o_𝐇": the supply is
    III-T11a's `m6c_beyondWindow_e1` (LANDED, `Window.lean`, at the EXPLICIT
    `e′ = 1` perimeter with the carried trio hσL/hsteep/species displayed —
-   anchor below) with the general form III-T11b BLOCKED (elided display); the
+   prose pin; see the obstruction note below for why the compiled anchor
+   cannot live in THIS file) with the general form III-T11b BLOCKED (elided
+   display); the
    leg itself fires inside REALIZED — blocked with grounds 1–2.  Fence
    carried forward: the HK-52 e′-stretch seam (BP §3.3 line 882) must NOT be
    silently crossed — an adjudicated machine-side statement displays
@@ -637,11 +1206,33 @@ III-U4 → III-U5. -/
 
 section UnitIIIU3c
 
-/-! Compiled anchors for the III-U3c record: the (M6c)(i) supply at its landed
-`e′ = 1` perimeter (III-T11a) and the §3.1 R7 run-start/interior-node quarry
-(BP line 858) that the blocked machine-side legs will consume. -/
+/-! CROSS-MODULE OBSTRUCTION, surfaced by this unit's gate (2026-08-01;
+division-lead item, gate-blocking beyond this unit):
+`LeanUrat.Scaffold.DictIII.devCoeff` is DOUBLY DECLARED — `GDOrder1.lean:50`
+("Dependency def for unit III-G2") and `Devid.lean:72` ("Unit III-G1
+(forward-provided dependency)"), token-identical bodies modulo binder names,
+BOTH claiming unit-table row III-G1.  Consequence: any module importing both
+chains fails AT IMPORT TIME —
+    `import LeanUrat.Scaffold.DictIII.Devid failed, environment already
+     contains 'LeanUrat.Scaffold.DictIII.devCoeff.match_1' from
+     LeanUrat.Scaffold.DictIII.GDOrder1`
+— here via `Locality` (→ `GDOrder1`) + `Window` (→ `Devid`); the clash was
+masked until now by a stale pre-Devid `Window.olean` (rebuilt green this
+date).  This file NEEDS `Locality` (the landed III-U6 `readCeil` support), so
+the `Window` import is DROPPED and the (M6c)(i) supply is a prose pin:
+`m6c_beyondWindow_e1`, `Window.lean` (III-T11a), gated green by that file's
+own compile (`lake build LeanUrat.Scaffold.DictIII.Window`, this date).  The
+dedup (delete one copy, re-point its consumers — the "dedup rule" that
+Window.lean's §T13 header already cites for exactly this cluster) is G-track
+territory: an architect/division-lead ruling, not performed here.  NOTE for
+the wave plan: the future III-U5 assembly consumes BOTH chains (`readCeil`
+via III-U6, the M6/REAL≡ seams via III-T14), so this dedup gates Wave-4
+closure INDEPENDENTLY of the III-U8 verdict below. -/
 
-#check @LeanUrat.Scaffold.DictIII.m6c_beyondWindow_e1
+/-! Compiled anchors for the III-U3c record: the §3.1 R7 run-start/
+interior-node quarry (BP line 858) that the blocked machine-side legs will
+consume.  ((M6c)(i): prose pin above, per the obstruction note.) -/
+
 #check @LeanUrat.MovesD.interior_node_e_eq_one
 #check @LeanUrat.MovesD.exists_run_start
 
@@ -833,6 +1424,13 @@ end UnitIIIU3c
 
 The verbatim blueprint statement is preserved in the commented block below; it
 is NOT weakened or partially landed.  Status at hand-off (2026-08-01):
+
+[UPDATE (prover III-U1, 2026-08-01): `machineProj` now LANDS in this file
+(§III-U1 section above; its `EWF` certificate carries ONE honest sorry at
+the W3 row — record at the unit section), and III-U2/III-U3a have landed
+`InteriorChain`/`StateBinding` above, so the III-U5 blocker census shrinks
+to `CU1Pins` (III-H3) alone — plus the III-U8 hypothesis-stack verdict
+below for any non-vacuous run.]
 
 * -- BLOCKED(III-U5): four identifiers in the verbatim statement do not exist
   in the corpus, so the statement cannot compile as written.  Transcribed
@@ -1246,6 +1844,20 @@ theorem u8Gate_hypStack_unsat_p2 :
 end U8
 
 end LeanUrat.Scaffold.DictIII
+
+-- Footprint audit (unit III-U1, proved perimeter): expect Lean core only.
+#print axioms LeanUrat.Scaffold.DictIII.node_mu_mul_g_le_ell
+#print axioms LeanUrat.Scaffold.DictIII.node_psi_ne_X
+#print axioms LeanUrat.Scaffold.DictIII.node_card_nextField
+#print axioms LeanUrat.Scaffold.DictIII.machineEHist_node_inv
+-- Footprint audit (unit III-U1, certificate): expect sorryAx — the ONE
+-- honest W3 sorry (BLOCKED record at the proof site); everything else in
+-- the certificate is proved.  Statements MENTIONING `machineProj` (e.g.
+-- `machineProj_nodes_length`) inherit the sorryAx through the def until
+-- the W3 adjudication, even where their own proof terms are clean.
+#print axioms LeanUrat.Scaffold.DictIII.machineEWF
+#print axioms LeanUrat.Scaffold.DictIII.machineProj
+#print axioms LeanUrat.Scaffold.DictIII.machineProj_nodes_length
 
 -- Footprint audit (unit III-U2 gate): expect Lean core only.
 #print axioms LeanUrat.Scaffold.DictIII.cu1_base_rootTrack

@@ -1,28 +1,31 @@
 /-
 BP_IV §1.2 — Step 14, the (ADM)-FULL and level-1 census layers (`Census.lean`).
 Units in this file: SKEL (module skeleton) · C3 (the `Decidable (ADMFull D)`
-instance) · C2a (`r1Bound`) · C1 (`admFull_of_r_eq_zero` — statement landed
-verbatim, REFUTED over the landed C0 definitions: honest `sorry` + compiled
-negation witness `C1Refutation.not_admFull_cmC1` + the e₀ = 1 salvage; see the
-C1 provenance block) · C4a (`Stratum1`, the level-1 stratum carrier:
-Finset-of-boxes datum with per-coordinate windows c_i = Δ(i)+1, + `count`,
-`padExp`) · C4b (`vertexChain_telescope` + `vertexChain_telescope_units`, the
-M08 Lemma D vertex-chain telescope — the carrier-free counting engine; see its
-provenance block for the honest scope) · C4c (`censusW` + `canonicalStratum1`
-+ `census_r0_law` — the M08 Theorem 2 r = 0 census law AT THE CONSTRUCTED
-carrier, junction-pinned and type-aggregated; see the C4c provenance block).
-C2 (`admFull_r1_iff` — statement landed verbatim, REFUTED over the landed C0
-definitions in BOTH directions: honest `sorry` + compiled countermodels
-`C2Refutation.forward_refuted`/`reverse_refuted` + the e₀ = 1 salvage
-`admFull_r1_iff_of_e0_eq_one`; see the C2 provenance block) lands at the END
-of this file.  C5/C5′ (CEN-W r ≥ 1 / CEN-J): statements BLOCKED at compile —
-owner rows/carriers/hypothesis types absent (see the two BLOCKED blocks at
-the end of this file); the C5 digit-cost proof kernels
-(`digitCost_of_surjective_read` / `digitCost_of_surjective_linear_read`) ARE
-landed and proved.  Later waves add C6.
+instance) · C2a (`r1Bound`) · C1 (`admFull_of_r_eq_zero` — statement verbatim,
+PROVED over the REVISION-3 carrier; the pre-revision refutation artifacts are
+retired to git history, see the C1 provenance block) · C4a (`Stratum1`, the
+level-1 stratum carrier: Finset-of-boxes datum with per-coordinate windows
+c_i = Δ(i)+1, + `count`, `padExp`) · C4b (`vertexChain_telescope` +
+`vertexChain_telescope_units`, the M08 Lemma D vertex-chain telescope — the
+carrier-free counting engine; see its provenance block for the honest scope)
+· C4c (`censusW` + `canonicalStratum1` + `census_r0_law` — the M08 Theorem 2
+r = 0 census law AT THE CONSTRUCTED carrier, junction-pinned and
+type-aggregated; see the C4c provenance block) · C6 (`censusW_eval` +
+`censusW_eval_nonneg`, p-freeness by type) · C7 (adjudicated at REVISION 3:
+`Attained` + `attained_always` + the VACUOUS verbatim padding law — see the
+C7 provenance block for the honesty record) · C2 (`admFull_r1_iff` —
+statement verbatim, PROVED over the REVISION-3 carrier via the pointwise core
+`attainDim_eq_d_iff_r1Bound_le`; pre-revision countermodels retired to git
+history) · C5/C5′ statement layer (REVISION 3): the `StratumR` /
+`JunctionStratum` counting carriers + the named row `CensusValueRows` with
+the BP_III-owned (GR-B)/(FRESH) rows as OPAQUE PREDICATE PARAMETERS
+(K3DeltaRow precedent); the C5 digit-cost proof kernels
+(`digitCost_of_surjective_read` / `digitCost_of_surjective_linear_read`) are
+landed and proved; the wave-4 constructor (the anchored march) is re-chartered
+per REVISION 3.
 Import graph (BP_IV §1.0): `CensusCore → Hyps` and `{CensusCore, Hyps} →
-Census`, never a cycle — this module imports both and is imported by no
-value-side module.
+Census`, never a cycle — this module imports both and is imported by the
+repaired `SeriesTie.lean`/`DensityTie.lean` (REVISION 3).
 -/
 import Mathlib
 import LeanUrat.Scaffold.ValueSide.CensusCore
@@ -109,106 +112,32 @@ def r1Bound (D : CensusData) (β : ℕ) : ℕ :=
       + (D.f 1 - 1) * D.e 1)
 
 /-!
-**PROVENANCE (unit C1; BP_IV §1.2, unit table §2 row C1) — BLOCKED: statement
-REFUTED over the landed C0 definitions.**
+**PROVENANCE (unit C1; BP_IV §1.2, unit table §2 row C1; PROVED at
+REVISION 3).**
 
 * Blueprint: `lean/blueprints/BP_IV.md` §1.2 ("C1: r = 0 automaticity — the
   ONLY automatic case"; statement transcribed VERBATIM below, per the
-  statement fence).
+  statement fence — the statement is UNCHANGED by the revision).
 * Math source of record: `O9_phaseB_verifybrief_rev5.md` §1 + §2
   (automaticity, re-scoped to the FULL predicate): "r = 0: all ledger weights
-  are 0 and **e = 1**, so dim G_β = #{wt ≤ β} = **m = f₀ = d**".  Note the
-  scope: the O9 ledger has `e := e₁⋯e_r` (**e = 1 at r = 0** — no e₀ factor)
-  and m = f₀ ledger indices at r = 0.
-* **The refutation (machine-checked below, `C1Refutation`).**  The landed C0
-  carrier gives stage 0 a full `Fin (D.e 0) × Fin (D.f 0)` pair in `J` (and
-  an `e 0` factor in `period`), while `wphi 0 = 0`; so at r = 0 the whole
-  `J` (all `e₀·f₀` indices) sits at weight 0, `onLineSlots = {0}`,
-  `attainDim 0 = e₀·f₀`, but `d = f₀`.  Hence `ADMFull D ↔ e₀ = 1`, and the
-  unconditional statement fails at the datum `cmC1` (r = 0, e₀ = 2, h₀ = 1,
-  f₀ = 1, all structure fields satisfied): `attainDim 0 = 2 ≠ 1 = d`.
-* **Localization (salvage, proved below).**  Adding `∀ i, D.e i = 1` (at
-  r = 0 this is exactly the O9 convention e₀ = 1; stage 0's pair collapses to
-  `Fin 1 × Fin f₀ ≅ Fin f₀`, the f₀-element ledger) makes the statement true:
-  `admFull_of_r_eq_zero_of_e_eq_one`.  So the defect is EXACTLY the spurious
-  stage-0 `Fin (e 0)` factor of the landed `J`/`period` (C0's derived bodies,
-  flagged DERIVED in their own provenance) against the blueprint-verbatim
-  carrier that leaves `e 0` a free parameter ≥ 1.  Repair options for the
-  division lead: (i) constrain the carrier (`e 0 = 1` field — statement
-  change, escalation required), or (ii) re-derive `J`/`period` with stage 0
-  contributing `Fin (f 0)` only — a C0-body change, also adjudication-level.
-* Deps: C0 (`CensusCore.lean`), H1 (`ADMFull`).
+  are 0 and **e = 1**, so dim G_β = #{wt ≤ β} = **m = f₀ = d**".
+* **REVISION-3 adjudication record.**  Over the PRE-revision C0 carrier
+  (stage 0 a full `Fin (e 0) × Fin (f 0)` pair in `J`, an `e 0` factor in
+  `period`) this statement was REFUTED — compiled negation witness
+  `C1Refutation.not_admFull_cmC1` (datum r = 0, e₀ = 2, h₀ = 1, f₀ = 1:
+  `attainDim 0 = e₀·f₀ = 2 ≠ 1 = f₀ = d`), on file in git history (33656d2).
+  The mop-up architect ruled the CARRIER wrong and the LAW right (the O9
+  ledger has stage 0 at multiplicity f₀ and period e₁⋯e_r): `CensusCore.lean`
+  now derives `J`/`period`/`wt` through `ledgerE` (= 1 at stage 0), and the
+  statement is PROVED below — the blueprint's own sketch (all weights 0,
+  `onLineSlots = {0}`, `Gset 0 = univ`, `|J| = ∏ ledgerEᵢfᵢ = ∏ fᵢ = d`).
+  The retired countermodel datum satisfies the theorem on the repaired
+  carrier (attainDim 0 = f₀ = 1 = d).
+* Deps: C0 (`CensusCore.lean`, REVISION-3 form), H1 (`ADMFull`).
 -/
 
 /-- C1: r = 0 automaticity — the ONLY automatic case (ROOT (ADM) row, exact). -/
 theorem admFull_of_r_eq_zero {D : CensusData} (hr : D.r = 0) : ADMFull D := by
-  sorry
--- BLOCKED(C1): statement FALSE as written over the landed C0 definitions —
--- refuted by the compiled negation witness `C1Refutation.not_admFull_cmC1`
--- below (datum r = 0, e₀ = 2, h₀ = 1, f₀ = 1: attainDim 0 = e₀·f₀ = 2 but
--- d = f₀ = 1).  True exactly on the O9 scope e₀ = 1 (`e = 1 at r = 0`,
--- O9 rev5 §1) — see `admFull_of_r_eq_zero_of_e_eq_one`.  Statement fence:
--- not weakened here; escalated to the division lead.
-
-namespace C1Refutation
-
-/-- The C1 negation witness datum: r = 0, e₀ = 2, h₀ = 1, f₀ = 1 (every
-    `CensusData` field satisfied: `triangular` is vacuous at r = 0 and
-    gcd(1, 2) = 1).  NOT a blueprint unit — a C1 adjudication artifact. -/
-noncomputable def cmC1 : CensusData where
-  r := 0
-  e := fun _ => 2
-  h := fun _ => 1
-  f := fun _ => 1
-  he := fun _ => one_le_two
-  hf := fun _ => le_rfl
-  triangular := fun i hi => absurd (Fin.val_eq_zero i) hi
-  h_coprime := fun _ => Nat.coprime_one_left 2
-
-/-- All `cmC1` slot weights vanish (`wphi 0 = 0`: stage 0 rides at weight 0). -/
-lemma cm_wt (j : cmC1.J) : cmC1.wt j = 0 := by
-  unfold CensusData.wt
-  apply Finset.sum_eq_zero
-  intro i _
-  simp [CensusData.wphi]
-
-/-- Every index of `cmC1.J` is on-line at β = 0. -/
-lemma cm_gset : cmC1.Gset 0 = Finset.univ := by
-  unfold CensusData.Gset
-  rw [Finset.filter_true_of_mem]
-  intro j _
-  exact ⟨by rw [cm_wt], by rw [cm_wt]⟩
-
-/-- **The compiled C1 refutation**: `cmC1` has r = 0 but is NOT (ADM)-FULL —
-    `attainDim 0 = |J| = e₀·f₀ = 2` while `d = f₀ = 1`. -/
-theorem not_admFull_cmC1 : ¬ ADMFull cmC1 := by
-  intro h
-  have h0mem : (0 : ℕ) ∈ cmC1.onLineSlots := by
-    unfold CensusData.onLineSlots
-    exact Finset.mem_image.mpr
-      ⟨fun _ => (⟨0, two_pos⟩, ⟨0, one_pos⟩), Finset.mem_univ _, cm_wt _⟩
-  have heq := h.full_attained 0 h0mem
-  have hd : cmC1.d = 1 := by
-    unfold CensusData.d
-    simp [cmC1]
-  have hcard : cmC1.attainDim 0 = 2 := by
-    unfold CensusData.attainDim
-    rw [cm_gset, Finset.card_univ]
-    rw [show Fintype.card cmC1.J = 2 from rfl]
-  rw [hcard, hd] at heq
-  exact absurd heq (by norm_num)
-
-theorem cmC1_r_eq_zero : cmC1.r = 0 := rfl
-
-end C1Refutation
-
-/-- The C1 SALVAGE (NOT a blueprint unit — a C1 adjudication artifact): the
-    r = 0 automaticity IS true on the O9 scope `e = 1 at r = 0` (rev5 §1),
-    i.e. with the spurious stage-0 `Fin (e 0)` factor collapsed.  Proof =
-    the blueprint's sketch: all weights are 0, `onLineSlots = {0}`,
-    `Gset 0 = univ`, and `|J| = ∏ eᵢfᵢ = ∏ fᵢ = d` under `e ≡ 1`. -/
-theorem admFull_of_r_eq_zero_of_e_eq_one {D : CensusData} (hr : D.r = 0)
-    (he1 : ∀ i, D.e i = 1) : ADMFull D := by
   have hidx : ∀ i : Fin (D.r + 1), i.1 = 0 := by
     intro i
     have := i.2
@@ -232,15 +161,20 @@ theorem admFull_of_r_eq_zero_of_e_eq_one {D : CensusData} (hr : D.r = 0)
     rw [Finset.filter_true_of_mem]
     intro j _
     exact ⟨by rw [hwt], (hwt j).le⟩
-  have hcardJ : Fintype.card D.J = ∏ i, D.e i * D.f i := by
+  have hcardJ : Fintype.card D.J = ∏ i, D.ledgerE i * D.f i := by
     have h1 : Fintype.card D.J
-        = Fintype.card ((i : Fin (D.r + 1)) → Fin (D.e i) × Fin (D.f i)) :=
+        = Fintype.card
+            ((i : Fin (D.r + 1)) → Fin (D.ledgerE i) × Fin (D.f i)) :=
       Fintype.card_congr (Equiv.refl _)
     rw [h1]
     simp
+  have hle : ∀ i : Fin (D.r + 1), D.ledgerE i = 1 := by
+    intro i
+    unfold CensusData.ledgerE
+    simp [hidx i]
   unfold CensusData.attainDim CensusData.d
   rw [hgset, Finset.card_univ, hcardJ]
-  exact Finset.prod_congr rfl fun i _ => by rw [he1 i, one_mul]
+  exact Finset.prod_congr rfl fun i _ => by rw [hle i, one_mul]
 
 /-!
 **PROVENANCE (unit C4a; BP_IV §1.2 C4 annotation + §2 C-table row C4a).**
@@ -689,192 +623,122 @@ example : (canonicalStratum1 gateData).count 3 = (censusW gateData).eval 3 :=
 end C4cGate
 
 /-!
-**PROVENANCE (unit C7; BP_IV §1.2 + §2 C-table row C7).**
+**PROVENANCE (units C6 + C7; BP_IV §1.2 + §2 C-table rows C6/C7; ADJUDICATED
+at REVISION 3).**
 
-* Blueprint: `lean/blueprints/BP_IV.md` §1.2 — the C7 statement
-  `censusW_eq_zero_of_unattained {D : CensusData} (h : ¬ Attained D) :
-  censusW D = 0` is transcribed VERBATIM; §2 C-table row C7 ("padding value 0
-  by definition of censusW at unattained vertices | C4c | EASY | ROOT (ADM)
-  row, padding clause").
+* Blueprint: §2 C-table row C6 ("p-freeness by type: `censusW : Polynomial ℕ`
+  + eval nonneg | by construction; one `simp` lemma") — landed below
+  (`censusW_eval`, `censusW_eval_nonneg`).  C7's statement
+  `censusW_eq_zero_of_unattained` is transcribed VERBATIM; §2 C-table row C7
+  ("padding value 0 by definition of censusW at unattained vertices").
 * Math source of record: O9 rev5 §4 padding clause — "a value-UNATTAINED
   VERTEX β_k empties the graded piece → the §8 padding value" (census 0).
-* `Attained` is UNDEFINED corpus-wide (BP_IV names it only in this C7 row); as
-  C7's owner I supply the faithful named predicate below — the base vertex
-  β = 0 carries value (its graded piece is nonempty). NAMED, non-fiat, flagged
-  for division-lead/Codex ratification (trust boundary: statements/defs are
-  where errors hide).
-
-* **BLOCKED(C7) — the padding law is FALSE against the LANDED `censusW`.**
-  C4c landed `censusW D := Polynomial.X ^ (D.f 0 - 1)`, the UNGUARDED canonical
-  monomial (its own provenance, this file: "C7's owner must key `Attained` to
-  match or escalate a `censusW` re-key"). In ℕ[X] (a domain) `X ^ k ≠ 0` for
-  every k, so `censusW D = 0` is UNCONDITIONALLY FALSE — no faithful `Attained`
-  (one that can be false on some datum) makes it provable, and forcing it true
-  would need `Attained ≡ True` (discharge by fiat: forbidden; also vacuous).
-  The blueprint's "0 BY DEFINITION of censusW" presumes a GUARDED censusW
-  (`if Attained D then X^(f₀−1) else 0`); the landed C4c is unguarded. The fix
-  is a `censusW` re-key (C4c's declaration), which also ripples into the
-  just-landed `census_r0_law` (its closing `simp [censusW]` would then need
-  `Attained` at the r = 0 canonical datum, i.e. C1 `admFull_of_r_eq_zero`,
-  not yet landed) — an ESCALATION outside unit C7's EASY scope. Honest `sorry`
-  stands per the honesty invariant; statement kept verbatim, not weakened.
+* **REVISION-3 adjudication record (C7).**  Two compiled facts force the
+  ruling: (i) the landed `censusW D = X^(f₀−1)` is a monomial in ℕ[X], hence
+  NEVER 0 (`censusW_ne_zero` below); (ii) EVERY faithful per-datum `Attained`
+  key over this carrier is provably ALWAYS TRUE — the all-zero φ-monomial
+  index has weight 0, so the graded piece at the base slot β = 0 is nonempty
+  at every datum (`attained_always` below).  Consequently the verbatim C7
+  law holds VACUOUSLY (its hypothesis `¬ Attained D` is unsatisfiable), and
+  NO non-vacuous per-datum padding law is expressible over `CensusData`: the
+  carrier holds no polygon datum, so no expressible vertex can be unattained
+  (C0d's provenance already recorded this).  The verbatim statement is landed
+  below WITH ITS VACUITY ON DISPLAY (honesty invariant: `sorry`-free ≠
+  non-vacuous — this theorem is machine-checked AND empty); the OPERATIVE
+  padding clause re-keys to the r ≥ 1 stratum layer, where vertex data
+  exists — recorded in BP_IV REVISION 3 as part of the re-chartered C5
+  constructor design.  DO NOT cite `censusW_eq_zero_of_unattained` as
+  content; cite `attained_always` when the void hypothesis must be shown.
 -/
+
+/-- C6 (p-freeness by type, the one `simp` lemma): the census value at every
+    alphabet size is the pure power `q^(f₀−1)` — a ℕ-polynomial evaluation,
+    p-free BY TYPE. -/
+@[simp] theorem censusW_eval (D : CensusData) (q : ℕ) :
+    (censusW D).eval q = q ^ (D.f 0 - 1) := by
+  simp [censusW]
+
+/-- C6 (the nonneg clause — trivial over ℕ, displayed for the C-table row). -/
+theorem censusW_eval_nonneg (D : CensusData) (q : ℕ) :
+    0 ≤ (censusW D).eval q :=
+  Nat.zero_le _
+
+/-- C7 adjudication fact (i): the landed census polynomial is never zero. -/
+theorem censusW_ne_zero (D : CensusData) : censusW D ≠ 0 := by
+  unfold censusW
+  exact pow_ne_zero _ Polynomial.X_ne_zero
 
 /-- C7: value-attainment of the census datum's base vertex — the graded piece
     at β = 0 is nonempty (O9 rev5 §4: a value-attained vertex carries
     `0 < attainDim`; a value-UNATTAINED vertex empties the piece and takes the
     §8 padding value 0). NAMED per BP_IV §1.2 C7's `Attained`; supplied by C7's
-    owner (undefined upstream) and FLAGGED for ratification. -/
+    owner (undefined upstream). -/
 def Attained (D : CensusData) : Prop := 0 < D.attainDim 0
+
+/-- C7 adjudication fact (ii): over the `CensusData` carrier the base slot is
+    attained at EVERY datum — the all-zero φ-monomial index (every stage digit
+    0) has weight 0 and lies in `Gset 0`.  This is the compiled witness that
+    C7's hypothesis is void at this carrier (REVISION-3 record above). -/
+theorem attained_always (D : CensusData) : Attained D := by
+  have hj : ∀ i : Fin (D.r + 1),
+      Nonempty (Fin (D.ledgerE i) × Fin (D.f i)) := fun i =>
+    ⟨(⟨0, D.ledgerE_pos i⟩, ⟨0, D.hf i⟩)⟩
+  refine Finset.card_pos.mpr ⟨fun i => (⟨0, D.ledgerE_pos i⟩, ⟨0, D.hf i⟩), ?_⟩
+  have hwt0 : D.wt (fun i => (⟨0, D.ledgerE_pos i⟩, ⟨0, D.hf i⟩)) = 0 := by
+    unfold CensusData.wt
+    exact Finset.sum_eq_zero fun i _ => by simp
+  unfold CensusData.Gset
+  rw [Finset.mem_filter]
+  exact ⟨Finset.mem_univ _, by rw [hwt0], by rw [hwt0]⟩
 
 /-- C6+C7: the census value CEN-W as data: a ℕ-coefficient polynomial in q per
     stratum (p-freeness is BY TYPE), with the padding law census = 0 at
-    unattained vertices. -/
+    unattained vertices.
+
+    **VACUOUS at this carrier** (REVISION-3 adjudication, provenance block
+    above): the hypothesis `¬ Attained D` is unsatisfiable
+    (`attained_always`), so this theorem carries NO content — the operative
+    padding clause lives in the r ≥ 1 stratum layer (re-chartered C5).
+    Statement kept verbatim per the statement fence. -/
 theorem censusW_eq_zero_of_unattained {D : CensusData} (h : ¬ Attained D) :
-    censusW D = 0 := by
-  -- BLOCKED(C7): the landed `censusW D = Polynomial.X ^ (D.f 0 - 1)` is a
-  -- monic monomial in the domain ℕ[X], hence NEVER 0; the goal is false for
-  -- every D regardless of `h`. Requires a GUARDED `censusW` re-key (C4c
-  -- declaration + `census_r0_law` ripple via C1) — escalation, out of C7 scope.
-  sorry
+    censusW D = 0 :=
+  absurd (attained_always D) h
 
 /-!
-**PROVENANCE (unit C2; BP_IV §1.2, unit table §2 row C2) — BLOCKED: statement
-REFUTED over the landed C0 definitions in BOTH directions; compiled
-countermodels + the e₀ = 1 salvage below.**
+**PROVENANCE (unit C2; BP_IV §1.2, unit table §2 row C2; PROVED at
+REVISION 3).**
 
 * Blueprint: `lean/blueprints/BP_IV.md` §1.2 ("C2: the r = 1 displayed
   criterion (O-9 r4, collapsing to the r3 form at f₁ = 1)"; statement
-  transcribed VERBATIM below, per the statement fence).
+  transcribed VERBATIM below — UNCHANGED by the revision).
 * Math source of record: `O9_phaseB_verifybrief_rev5.md` §2, the rev-4 FULL
   form: "(ADM) at r = 1 ⟺ every on-line β_k ≥ h₁·((h₁⁻¹β_k mod e₁)
   + (f₁ − 1)·e₁)" (K7 verifies it numerically at seven (e₁, h₁, f₁, f₀)
-  tuples, β ≤ 40).  Note the scope: as at C1, the O9 r = 1 ledger has period
-  e = e₁ and class decomposition {j₁ = j₁* + t·e₁ : 0 ≤ t < f₁} — NO stage-0
-  e₀ factor (the O9 convention is e₀ = 1).
-* **The refutation (machine-checked below, `C2Refutation`).**  Over the landed
-  C0 carrier (stage 0 a full `Fin (e 0) × Fin (f 0)` pair in `J` at weight 0,
-  an `e 0` factor in `period`), BOTH directions fail at e₀ = 2 — C1's defect,
-  live at r = 1:
-  - ⟹ fails (`cmForward`: e = (2,1), h = (1,1), f = (1,2)): every on-line
-    slot IS fully attained (weights {0, 1}, each carried by the d = 2 stage-0
-    copies, and period e₀e₁ = 2 splits the two classes), yet at the on-line
-    slot β = 0 the bound reads r1Bound = h₁·(0 + (f₁−1)·e₁) = 1 > 0.
-  - ⟸ fails (`cmReverse`: e = (2,1), h = (1,1), f = (1,1)): the bound clears
-    every on-line slot (`onLineSlots = {0}`, r1Bound 0 = h₁·(0 + 0) = 0),
-    yet `attainDim 0 = e₀·f₀·f₁ = 2 ≠ 1 = f₀·f₁ = d`.
-* **Localization (salvage, proved below — NOT a blueprint unit, a C2
-  adjudication artifact).**  Adding `D.e 0 = 1` (the O9 stage-0 scope — the
-  SAME single hypothesis as C1's salvage, with e₁ left free) makes the
-  criterion TRUE: `admFull_r1_iff_of_e0_eq_one`, from the pointwise core
-  `attainDim_eq_d_iff_r1Bound_le` (which holds at EVERY β, not just on-line
-  slots).  So the C1 repair adjudication (pin `e 0 = 1` carrier-side or
-  hypothesis-side; division lead) cures C2 as well; nothing beyond the e₀
-  defect obstructs the r ≤ 1 layer.
-* Deps: C2a (`r1Bound`, this file), C0/H1 (`CensusCore.lean`).  C1 is listed
-  as a dep in the unit table but its theorem is not consumed by either
-  direction; its REFUTED status is shared (same defect, same salvage scope).
--/
-
-/-- C2: the r = 1 displayed criterion (O-9 r4, collapsing to the r3 form at
-    f₁ = 1): FULL attainment at β ⟺ β ≥ h₁·((h₁⁻¹β mod e₁) + (f₁ − 1)·e₁). -/
-theorem admFull_r1_iff {D : CensusData} (hr : D.r = 1) :
-    ADMFull D ↔ ∀ β ∈ D.onLineSlots,
-      r1Bound D β ≤ β := by
-  sorry
--- BLOCKED(C2): statement FALSE as written over the landed C0 definitions, in
--- BOTH directions — compiled countermodels `C2Refutation.forward_refuted` and
--- `C2Refutation.reverse_refuted` below (e₀ = 2 data: the stage-0 digits
--- multiply `attainDim` by e₀ while `d` and `r1Bound` are e₀-blind).  True
--- exactly on the O9 scope e₀ = 1 — proved as `admFull_r1_iff_of_e0_eq_one`.
--- Statement fence: not weakened here; escalated to the division lead (same
--- adjudication as C1).
-
-namespace C2Refutation
-
-/-- The ⟹-direction countermodel: r = 1, e = (2,1), h = (1,1), f = (1,2).
-    (ADM)-FULL HOLDS — the ledger weights are {0, 1} (j₁ = b₁, weight h₁·b₁),
-    each on-line slot catches its full d = 2 indices via the two weight-0
-    stage-0 digits, and period e₀e₁ = 2 separates the two classes — but the
-    displayed bound FAILS at the on-line slot β = 0:
-    r1Bound = h₁·((h₁⁻¹·0 mod e₁) + (f₁ − 1)·e₁) = 1·(0 + 1·1) = 1 > 0.
-    NOT a blueprint unit — a C2 adjudication artifact. -/
-def cmForward : CensusData where
-  r := 1
-  e := ![2, 1]
-  h := ![1, 1]
-  f := ![1, 2]
-  he := by decide
-  hf := by decide
-  triangular := by decide
-  h_coprime := by decide
-
-theorem cmForward_admFull : ADMFull cmForward := ⟨by decide⟩
-
-theorem cmForward_bound_fails :
-    ¬ ∀ β ∈ cmForward.onLineSlots, r1Bound cmForward β ≤ β := by decide
-
-/-- **The compiled C2 ⟹ refutation**: over the landed carrier, FULL
-    attainment does NOT imply the displayed r = 1 inequality. -/
-theorem forward_refuted :
-    ¬ ∀ (D : CensusData), D.r = 1 →
-      (ADMFull D → ∀ β ∈ D.onLineSlots, r1Bound D β ≤ β) :=
-  fun H => cmForward_bound_fails (H cmForward rfl cmForward_admFull)
-
-/-- The ⟸-direction countermodel: r = 1, e = (2,1), h = (1,1), f = (1,1).
-    The displayed bound clears every on-line slot (`onLineSlots = {0}` — all
-    weights vanish — and r1Bound 0 = h₁·(0 + 0·e₁) = 0 ≤ 0), but FULL
-    attainment FAILS: `attainDim 0 = e₀·f₀·e₁·f₁ = 2` while `d = f₀·f₁ = 1`.
-    NOT a blueprint unit — a C2 adjudication artifact. -/
-def cmReverse : CensusData where
-  r := 1
-  e := ![2, 1]
-  h := ![1, 1]
-  f := ![1, 1]
-  he := by decide
-  hf := by decide
-  triangular := by decide
-  h_coprime := by decide
-
-theorem cmReverse_bound_clears :
-    ∀ β ∈ cmReverse.onLineSlots, r1Bound cmReverse β ≤ β := by decide
-
-theorem cmReverse_not_admFull : ¬ ADMFull cmReverse :=
-  fun hFull => absurd hFull.full_attained (by decide)
-
-/-- **The compiled C2 ⟸ refutation**: over the landed carrier, clearing the
-    displayed r = 1 inequality does NOT imply FULL attainment. -/
-theorem reverse_refuted :
-    ¬ ∀ (D : CensusData), D.r = 1 →
-      ((∀ β ∈ D.onLineSlots, r1Bound D β ≤ β) → ADMFull D) :=
-  fun H => cmReverse_not_admFull (H cmReverse rfl cmReverse_bound_clears)
-
-/-- **The compiled refutation of the C2 statement itself** (via the ⟹ leg):
-    the ∀-closure of `admFull_r1_iff` is false. -/
-theorem admFull_r1_iff_refuted :
-    ¬ ∀ (D : CensusData), D.r = 1 →
-      (ADMFull D ↔ ∀ β ∈ D.onLineSlots, r1Bound D β ≤ β) :=
-  fun H => cmForward_bound_fails ((H cmForward rfl).mp cmForward_admFull)
-
-end C2Refutation
-
-/-!
-**The C2 SALVAGE (NOT a blueprint unit — a C2 adjudication artifact).**
-`C2R1Salvage` holds four generic counting/congruence helpers; the payoff pair
-is `attainDim_eq_d_iff_r1Bound_le` (the pointwise criterion, at every β) and
-`admFull_r1_iff_of_e0_eq_one` (the C2 statement under the O9 scope `e 0 = 1`,
-e₁ free).  Proof = O9 §2's class decomposition, formalized:
-(i) the stage-0 pair contributes a weight-0 multiplicative factor
-    e₀·f₀ = f₀ to every graded count (`card_filter_pi_two`);
-(ii) the mod-e₁ congruence pins the stage-1 class digit to
-    j₁* = (h₁⁻¹β) mod e₁ (`weight_mod_iff`, via `ZMod.unitOfCoprime` — h₁ a
-    unit mod e₁ by `h_coprime`, matching `r1Bound`'s inverse exactly), and
-    pinning the first coordinate costs nothing (`card_filter_prod_fst_eq`);
-(iii) the residual f₁-window {h₁·(j₁* + t·e₁) : t < f₁} is monotone in t, so
-    it is FULL iff its top member t = f₁ − 1 clears β (`card_filter_window`)
-    — and that top-member inequality IS `r1Bound D β ≤ β`;
-(iv) the h₁ = 0 corner: coprimality forces e₁ = 1, every slot weight is 0,
-    and both sides of the criterion hold trivially.
+  tuples, β ≤ 40).  The O9 r = 1 ledger has period e = e₁ and class
+  decomposition {j₁ = j₁* + t·e₁ : 0 ≤ t < f₁} — NO stage-0 e₀ factor.
+* **REVISION-3 adjudication record.**  Over the PRE-revision C0 carrier this
+  statement was REFUTED in BOTH directions (compiled countermodels
+  `C2Refutation.forward_refuted`/`reverse_refuted` at e₀ = 2 data — C1's
+  carrier defect, live at r = 1; on file in git history at 33656d2).  The
+  REVISION-3 carrier fix (`ledgerE` in `J`/`period`/`wt` — see
+  `CensusCore.lean`) makes the stage-0 contribution the weight-0 factor f₀
+  and the period e₁, exactly the O9 ledger; the statement is PROVED below
+  from the pointwise core `attainDim_eq_d_iff_r1Bound_le`, which now holds
+  at EVERY β with NO extra hypothesis (the pre-revision salvage's `e 0 = 1`
+  hypothesis is structural on the repaired carrier).
+* Deps: C2a (`r1Bound`, this file), C0/H1 (`CensusCore.lean`, REVISION-3
+  form).  Proof = O9 §2's class decomposition, formalized:
+  (i) the stage-0 pair contributes a weight-0 multiplicative factor
+      1·f₀ = f₀ to every graded count (`card_filter_pi_two`);
+  (ii) the mod-e₁ congruence pins the stage-1 class digit to
+      j₁* = (h₁⁻¹β) mod e₁ (`weight_mod_iff`, via `ZMod.unitOfCoprime` — h₁ a
+      unit mod e₁ by `h_coprime`, matching `r1Bound`'s inverse exactly), and
+      pinning the first coordinate costs nothing (`card_filter_prod_fst_eq`);
+  (iii) the residual f₁-window {h₁·(j₁* + t·e₁) : t < f₁} is monotone in t, so
+      it is FULL iff its top member t = f₁ − 1 clears β (`card_filter_window`)
+      — and that top-member inequality IS `r1Bound D β ≤ β`;
+  (iv) the h₁ = 0 corner: coprimality forces e₁ = 1, every slot weight is 0,
+      and both sides of the criterion hold trivially.
 -/
 
 namespace C2R1Salvage
@@ -978,15 +842,15 @@ theorem weight_mod_iff {E1 H1 : ℕ} [NeZero E1] (hcop : Nat.Coprime H1 E1)
 
 end C2R1Salvage
 
-/-- The C2 SALVAGE core (pointwise form; NOT a blueprint unit — a C2
-    adjudication artifact): at r = 1 with the O9 stage-0 scope e₀ = 1 (e₁
-    free), a slot β is FULLY attained iff it clears `r1Bound` — at EVERY
-    β : ℕ, not only the on-line slots. -/
+/-- The C2 pointwise core (REVISION 3 — the pre-revision salvage's `e 0 = 1`
+    hypothesis is now STRUCTURAL on the repaired carrier): at r = 1, a slot β
+    is FULLY attained iff it clears `r1Bound` — at EVERY β : ℕ, not only the
+    on-line slots. -/
 theorem attainDim_eq_d_iff_r1Bound_le {D : CensusData} (hr : D.r = 1)
-    (he0 : D.e 0 = 1) (β : ℕ) :
+    (β : ℕ) :
     D.attainDim β = D.d ↔ r1Bound D β ≤ β := by
   obtain ⟨r, e, h, f, he, hf, htri, hcop⟩ := D
-  dsimp only at hr he0
+  dsimp only at hr
   subst hr
   set Dm : CensusData := ⟨1, e, h, f, he, hf, htri, hcop⟩ with hDm
   haveI : NeZero (e 1) := ⟨by have := he 1; omega⟩
@@ -996,21 +860,22 @@ theorem attainDim_eq_d_iff_r1Bound_le {D : CensusData} (hr : D.r = 1)
   have hrb : r1Bound Dm β = h 1 * (A + (f 1 - 1) * e 1) := by
     simp only [hA]
     rfl
-  -- the degree and the period
+  -- the degree and the LEDGER period (`ledgerE 0 = 1`, `ledgerE 1 = e 1`,
+  -- both definitional at the concrete stages)
   have hd : Dm.d = f 0 * f 1 := Fin.prod_univ_two f
-  have hperiod : Dm.period = e 1 := by
-    have h2 : Dm.period = e 0 * e 1 := Fin.prod_univ_two e
-    rw [h2, he0, one_mul]
+  have hperiod : Dm.period = e 1 :=
+    (Fin.prod_univ_two Dm.ledgerE).trans (one_mul _)
   -- the stage weights: wphi 0 = 0, wphi 1 = e₁·V₁ + h₁ = h₁ (V₁ = 0)
   have hwphi0 : Dm.wphi 0 = 0 := rfl
   have hwphi1 : Dm.wphi 1 = h 1 := by
     have h2 : Dm.wphi 1 = e 1 * 0 + h 1 := rfl
     omega
-  -- the slot weight at r = 1: wt 𝐣 = (a₁ + e₁·b₁)·h₁
+  -- the slot weight at r = 1: wt 𝐣 = (a₁ + e₁·b₁)·h₁ (the stage-1 ledger
+  -- radix is e₁; the stage-0 term rides at weight 0)
   have hwt : ∀ j : Dm.J, Dm.wt j = ((j 1).1.1 + e 1 * (j 1).2.1) * h 1 := by
     intro j
     have h2 : Dm.wt j
-        = ((j 0).1.1 + e 0 * (j 0).2.1) * Dm.wphi 0
+        = ((j 0).1.1 + Dm.ledgerE 0 * (j 0).2.1) * Dm.wphi 0
           + ((j 1).1.1 + e 1 * (j 1).2.1) * Dm.wphi 1 :=
       Fin.sum_univ_two _
     rw [h2, hwphi0, hwphi1, mul_zero, zero_add]
@@ -1027,15 +892,16 @@ theorem attainDim_eq_d_iff_r1Bound_le {D : CensusData} (hr : D.r = 1)
   have hstep : (Finset.univ.filter (fun j : Dm.J =>
         (((j 1).1.1 + e 1 * (j 1).2.1) * h 1) % e 1 = β % e 1
           ∧ ((j 1).1.1 + e 1 * (j 1).2.1) * h 1 ≤ β)).card
-      = Fintype.card (Fin (e 0) × Fin (f 0))
+      = Fintype.card (Fin 1 × Fin (f 0))
         * (Finset.univ.filter (fun y : Fin (e 1) × Fin (f 1) =>
             ((y.1.1 + e 1 * y.2.1) * h 1) % e 1 = β % e 1
               ∧ (y.1.1 + e 1 * y.2.1) * h 1 ≤ β)).card :=
-    C2R1Salvage.card_filter_pi_two (G := fun i => Fin (e i) × Fin (f i))
+    C2R1Salvage.card_filter_pi_two
+      (G := fun i => Fin (Dm.ledgerE i) × Fin (f i))
       (fun y => ((y.1.1 + e 1 * y.2.1) * h 1) % e 1 = β % e 1
         ∧ (y.1.1 + e 1 * y.2.1) * h 1 ≤ β)
   rw [hattain, hstep, hd, hrb, Fintype.card_prod, Fintype.card_fin,
-    Fintype.card_fin, he0, one_mul]
+    Fintype.card_fin, one_mul]
   by_cases hzero : h 1 = 0
   · -- the h₁ = 0 corner: coprimality forces e₁ = 1; both sides hold
     have he1 : e 1 = 1 := by
@@ -1110,60 +976,59 @@ theorem attainDim_eq_d_iff_r1Bound_le {D : CensusData} (hr : D.r = 1)
           rw [show (A + e 1 * (f 1 - 1)) * h 1
               = h 1 * (A + (f 1 - 1) * e 1) from by ring]
 
-/-- The C2 SALVAGE (NOT a blueprint unit — a C2 adjudication artifact): the
-    r = 1 displayed criterion IS true on the O9 stage-0 scope `e 0 = 1`
-    (e₁ free) — the exact scope of C1's salvage
-    `admFull_of_r_eq_zero_of_e_eq_one`, restricted to stage 0. -/
-theorem admFull_r1_iff_of_e0_eq_one {D : CensusData} (hr : D.r = 1)
-    (he0 : D.e 0 = 1) :
-    ADMFull D ↔ ∀ β ∈ D.onLineSlots, r1Bound D β ≤ β :=
-  ⟨fun hFull β hβ => (attainDim_eq_d_iff_r1Bound_le hr he0 β).mp
+/-- C2: the r = 1 displayed criterion (O-9 r4, collapsing to the r3 form at
+    f₁ = 1): FULL attainment at β ⟺ β ≥ h₁·((h₁⁻¹β mod e₁) + (f₁ − 1)·e₁). -/
+theorem admFull_r1_iff {D : CensusData} (hr : D.r = 1) :
+    ADMFull D ↔ ∀ β ∈ D.onLineSlots,
+      r1Bound D β ≤ β :=
+  ⟨fun hFull β hβ => (attainDim_eq_d_iff_r1Bound_le hr β).mp
       (hFull.full_attained β hβ),
-   fun hB => ⟨fun β hβ => (attainDim_eq_d_iff_r1Bound_le hr he0 β).mpr (hB β hβ)⟩⟩
+   fun hB => ⟨fun β hβ => (attainDim_eq_d_iff_r1Bound_le hr β).mpr (hB β hβ)⟩⟩
 
 /-!
-## Unit C5 — `censusValueRows_of_anchoredMarch` (CEN-W r ≥ 1): BLOCKED
-(statement-level; owner rows, stratum carriers, AND the hypothesis type absent)
+## Units C5/C5′ — the CEN-W/CEN-J statement layer (LANDED at REVISION 3)
 
-**BLOCKED(C5)** (checked at compile, 2026-08-01; probe = the BP_IV
-§1.2-VERBATIM `CensusValueRows` structure PLUS this unit's constructor
-theorem `censusValueRows_of_anchoredMarch (D : CensusData)
-(hproof : AnchoredMarchProof D) : CensusValueRows D` with `sorry` body, over
-the import set `Census + ValueSide.CensusCore + ValueSide.Hyps +
-DictIII.Hyps`).  FIVE of the statement's types are declared NOWHERE in the
-corpus; each fails as a hard "unknown identifier" elaboration error (NOT a
-`sorry`-able goal), verbatim shape: "error: Function expected at\n  GRBRow\n
-but this term has type\n  ?m.1 … The identifier `GRBRow` is unknown":
- · `GRBRow D` (probe 15:19) / `FreshRow D` (18:30) — owner BP_III (§1.0
-   owner table; dep H4).  The LANDED `DictIII.GRB p F` / `DictIII.FRESH p F`
-   rows carry a DIFFERENT signature (prime + finite field, NOT
-   `CensusData`-indexed); per BP_IV §1.0 ("blocked rather than compiled
-   against a weaker signature") + §5 ("BP_IV defines no aliases") no
-   prover-side bridge is declared.
- · `StratumR D` (16:11) / `JunctionStratum D` (19:11) — the r ≥ 1 stratum
-   carriers appear ONLY inside the §1.2 display itself; no unit-table row
-   owns them and no blueprint defines them.
- · `AnchoredMarchProof D` (23:14) — the constructor's OWN hypothesis type:
-   its single corpus-wide occurrence is the §1.2 display line; the wave-4
-   unit cannot even bind its hypothesis.  Signature fix must come from the
-   blueprint owner (BP_IV §4 failure protocol) — escalated to the division
-   lead with this compiled obstruction.
-Same blockage as the S5b (`SeriesTie.lean`), D4 (`DensityTie.lean`), and C5′
-(block below) probes.  Deps at check time: C0/C4c/H1 landed; H4 landed only
-under the BP_III `(p, F)` key.  Verifier charge honored: neither the REFUTED
-r2-class nor the r3-value (ADM) form appears anywhere in this unit's text.
-Nothing weakened, no alias, no `sorry`.
+**PROVENANCE (units C5/C5′ statement layer; BP_IV §1.2 + REVISION 3
+adjudication).**  The pre-revision §1.2 display was BLOCKED at compile: FIVE
+of its types (`GRBRow D`, `FreshRow D`, `StratumR D`, `JunctionStratum D`,
+`AnchoredMarchProof D`) were declared nowhere in the corpus, and BP_III/BP_V
+never chartered the owner rows at any signature (grep of `blueprints/BP_III.md`
+and `BP_V.md`, 2026-08-01: zero hits) — a cross-blueprint seam failure, full
+record in the pre-revision BLOCKED blocks (git history 33656d2) and BP_IV
+REVISION 3.  The mop-up adjudication:
 
-**What IS landed (C5 PROOF KERNEL — statement-fence-safe NEW lemmas, not the
-unit):** the counting engine of the §2 C5 proof-sketch clause "(GR-B) digit
-read = surjective F_q-linear map on graded piece ⇒ each digit costs q^d"
+* **`GRBRow`/`FreshRow` become OPAQUE PREDICATE PARAMETERS** of
+  `CensusValueRows` — the sanctioned `K3DeltaRow` pattern ("consumed as an
+  opaque predicate parameter so this row compiles before Movement V lands").
+  BP_IV declares NO alias and invents NO foreign content (§5 rule preserved);
+  when BP_III lands its census-keyed (GR-B)/(FRESH) rows, they instantiate
+  the parameters with NO re-key of this structure.
+* **`StratumR`/`JunctionStratum` are BP_IV-OWNED counting carriers** (they
+  appear only in BP_IV's display, so BP_IV owns them): landed below as
+  order-guarded counting skeletons (`count : ℕ → ℕ` in the alphabet size q,
+  the same N-free convention as `Stratum1.count`).  The geometric fields
+  (polygon, vertex, march data) enter with the re-chartered wave-4
+  constructor design — DERIVED, flagged for ratification.
+* **The strata enter as PARAMETERS `SW`/`SJ`, not as an internal ∀** — over
+  skeletal carriers an internal `∀ S : StratumR D` would make the row
+  UNSATISFIABLE (an arbitrary `count` falsifies any value law), killing every
+  consumer vacuously; the parametric form asserts the law AT the engine's
+  constructed strata (the `canonicalStratum1` precedent, REV-2 finding 11).
+* **`censusValueRows_of_anchoredMarch` is RE-CHARTERED** (REVISION 3): its
+  hypothesis type `AnchoredMarchProof` had no spec anywhere; the wave-4 HARD
+  unit now includes designing that carrier (the anchored-march digit-read
+  ladder, O9 rev-5 §5.1) + proving the constructor, and ALSO re-keys
+  `censusW` beyond the stage-0 shadow (C4c provenance note (c)) and carries
+  the O9 §4 padding clause (C7's re-key, this file's C7 block).
+
+**What IS landed and proved (C5 PROOF KERNEL — statement-fence-safe):** the
+counting engine of the §2 C5 proof-sketch clause "(GR-B) digit read =
+surjective F_q-linear map on graded piece ⇒ each digit costs q^d"
 (O9 rev-5 §5.1: the read is fiber-uniform onto its image; onto F_{q^d} ⟺
 FULL attainment).  Counting form: a surjective additive read has all fibers
 of one size, card(fiber) · card(target) = card(source) — so at target
 F_{q^d} each digit costs exactly q^d.  The wave-4 constructor applies this
-once per march step, once the carriers exist.  The E′ strict-left-tail
-(floor(line)+1) leg cannot even be STATED faithfully without the `StratumR`
-carrier — queued with the unit.
+once per march step.
 -/
 
 /-- C5 proof kernel (a): the digit-cost law, additive form.  A surjective
@@ -1201,40 +1066,42 @@ theorem digitCost_of_surjective_linear_read {F V W : Type*} [Field F]
     Nat.card {v : V // φ v = w} * Nat.card W = Nat.card V :=
   digitCost_of_surjective_read φ.toAddMonoidHom hφ w
 
-/-!
-## Unit C5′ — `CensusValueRows.cenJ` (CEN-J): BLOCKED (owner rows absent)
+/-- C5 carrier (REVISION 3, BP_IV-owned): the order-r (r ≥ 1) stratum
+    counting skeleton — the CEN-W quantifier type of `CensusValueRows.cenW`.
+    `count q` is the stratum's digit census at alphabet size q (the N-free
+    convention of `Stratum1.count`).  Geometric fields (polygon, vertices,
+    march ladder) enter with the re-chartered wave-4 constructor design;
+    DERIVED, flagged for division-lead/Codex ratification. -/
+structure StratumR (D : CensusData) where
+  hr : 1 ≤ D.r
+  count : ℕ → ℕ
 
-**BLOCKED(C5′)** (checked at compile, 2026-08-01; probe = the §1.2-VERBATIM
-`CensusValueRows` structure — the C5 `cenW` shell + this unit's `cenJ` field
-— over the import set `Census + ValueSide.CensusCore + ValueSide.Hyps +
-DictIII.Hyps`).  The C5′ statement is a STRUCTURE FIELD, so it cannot exist
-without the C5-owned shell; the probe elaborated the full §1.2 display and
-FOUR of its row/carrier types are declared NOWHERE in the corpus, each an
-"unknown identifier" hard error (not a `sorry`-able goal), e.g. verbatim:
-"error: Function expected at\n  GRBRow\nbut this term has type\n  ?m.1 …
-The identifier `GRBRow` is unknown" — likewise `FreshRow` (probe line for
-`cenJ`), `StratumR`, `JunctionStratum`.  Per BP_IV §1.0 ("if an owner has
-not landed, that consuming unit is blocked rather than compiled against a
-weaker signature") no local alias or placeholder is declared:
- · `GRBRow D` / `FreshRow D` — owner BP_III (§1.0 owner table; FRESH = dep
-   H4).  The LANDED `DictIII.GRB p F` / `DictIII.FRESH p F` rows carry a
-   DIFFERENT signature (prime + finite field, not `CensusData`); the cenJ
-   binder `hFresh : FreshRow D` needs the CensusData-indexed form, which
-   does not exist anywhere.
- · `StratumR D` / `JunctionStratum D` — the r ≥ 1 stratum carriers: they
-   appear ONLY inside the §1.2 display itself (BP_IV defines them nowhere
-   and no unit table row owns them); `JunctionStratum` is the quantifier
-   type of `cenJ` itself.
-Everything ELSE in the §1.2 display elaborates (probe-verified):
-`CensusData`, `ADMFull D`, `censusW D : Polynomial ℕ` with `.eval q`, and
-the `{p N : ℕ}, Fact p.Prime → ∀ q : ℕ, q = p ^ N` prime-power binder
-block.  Deps ledger at check time: C5 (the shell + `cenW`) NOT landed —
-identical blockage; H4 (FRESH) landed BP_III-side under the wrong key.
-The S5/D4 consumers already record the same blockage (`SeriesTie.lean`,
-unit S5b block).  §3's E-phase note (re-key `CensusValueRows` over the
-SlotsG15 `SiteData` carriers) is a STATEMENT change — escalates to the
-division lead per the statement fence; nothing is declared here this
-campaign, and no `sorry` is added.
--/
+/-- C5′ carrier (REVISION 3, BP_IV-owned): the junction-stratum counting
+    skeleton — the CEN-J quantifier type of `CensusValueRows.cenJ` (O9 CEN-J:
+    the junction pin kills the (q^d−1)^ε factor).  Same skeletal discipline
+    and ratification flag as `StratumR`. -/
+structure JunctionStratum (D : CensusData) where
+  hr : 1 ≤ D.r
+  count : ℕ → ℕ
+
+/-- C5/C5′: the queued r ≥ 1 mathematics as a named hypothesis row
+    (REVISION-3 form; pre-revision display in git history).  The lower scope
+    `1 ≤ D.r` and both conclusions are visible fields.  `GRBRow`/`FreshRow`
+    are the BP_III-owned (GR-B)/(FRESH) rows, consumed as OPAQUE PREDICATE
+    PARAMETERS (`K3DeltaRow` precedent) until the owner lands census-keyed
+    forms; `SW`/`SJ` are the engine's constructed strata (see the provenance
+    block: an internal ∀ over the skeletal carriers would be unsatisfiable).
+    NOTE (C4c seam, recorded): at r ≥ 1 the landed `censusW` reads the
+    stage-0 shadow only — the wave-4 constructor's charge includes the
+    `censusW` re-key, so this row's RHS re-keys with it, shape unchanged. -/
+structure CensusValueRows (D : CensusData)
+    (GRBRow FreshRow : CensusData → Prop)
+    (SW : StratumR D) (SJ : JunctionStratum D) : Prop where
+  cenW : 1 ≤ D.r → GRBRow D → ADMFull D →
+    ∀ {p N : ℕ}, Fact p.Prime → ∀ q : ℕ, q = p ^ N →
+      SW.count q = (censusW D).eval q
+  cenJ : 1 ≤ D.r → GRBRow D → FreshRow D → ADMFull D →
+    ∀ {p N : ℕ}, Fact p.Prime → ∀ q : ℕ, q = p ^ N →
+      SJ.count q = (censusW D).eval q
 
 end LeanUrat.Scaffold

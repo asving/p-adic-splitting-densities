@@ -57,40 +57,19 @@ indexing `exp`, factorization `Φ = U·diag(p^exp)·V` + solved-form
 `SmithData.diagonal_eq`; `smithData_exists` instantiates the K8a-pinned
 `Submodule.smithNormalForm` at any injective Φ, `smithDataOfInjective`
 packages the choice).
-Pending (later waves, per BP_IV §4): K5, K7e, and the (SIB) product law.
-
--- BLOCKED(K10): the §1.3 `sib_product_law` display is REFUTABLE over the
--- §1.3 `AdaptedCell` (K10a) — no field constrains `cellCount`/`sM`, so
--- `cellCount := 0` satisfies every clause and falsifies the conclusion;
--- compiled countermodel `K10Probe.sib_product_law_as_displayed_refuted`.
--- The missing row is exactly K10b's conclusion
--- `imageCount_eq : cellCount * p ^ sM = Nat.card Factor`; with it the unit
--- is the one-line chain compiled at `sib_product_law_of_imageCount`.  The
--- verbatim theorem is NOT declared (statement changes forbidden; a sorried
--- refuted statement violates the §2 zero-`sorry` wave rule).  Escalated to
--- the blueprint owner per the §4 failure protocol (K10a field addition or a
--- K10 binder addition required; both recorded at the BLOCKED(K10) section).
-
--- BLOCKED(K7e): `fiber_equiv_solutions` (the chart bijection over the
--- `MulFiberData` carrier) is NOT declared — the §1.3 display is refutable
--- over the verbatim abstract carrier (`Fiber`/`SolutionSet`/`FiberNonempty`
--- are opaque, mutually unrelated fields); see the BLOCKED(K7e) section
--- below the carrier + the compiled countermodel
--- `fiber_equiv_solutions_display_refuted`.  Escalated to the blueprint
--- owner per the §4 failure protocol (signature fix required; candidate
--- fixes recorded at the section).
-
--- BLOCKED(K11): the `EngineSIBRow` unit (BP_IV §2 K-table + §1.3 K10
--- application note) cannot be declared at HEAD.  Its binders must be the
--- ACTUAL K-LOC = M07 OL-3 and (I-τ) datum-indexed rows, OWNED by BP_III
--- (BP_IV §1.0 owner table), and no such rows exist anywhere in the corpus
--- (`DictIII/Hyps.lean` carries only GRB/FRESH; `OL3min` is the GD-3 minimal
--- form, not the K-LOC/(I-τ) pair — per the H4 ledger in
--- `ValueSide/Hyps.lean`, which already records "Consumer blocked: K11").
--- BP_IV §1.0: "if an owner has not landed, that consuming unit is blocked
--- rather than compiled against a weaker signature" — so no placeholder
--- structure is declared here.  Dep K10 (`AdaptedCell`/`sib_product_law`)
--- has also not landed in this file.  Escalated per the §4 failure protocol.
+REVISION 3 (mop-up adjudications, 2026-08-01 — full record in
+`blueprints/BP_IV.md` REVISION 3; pre-revision BLOCKED notes in git history
+at 33656d2): K7e LANDED (`fiber_equiv_solutions`, verbatim, over the
+repaired carrier — `MulFiberData` gains the `chart` law field; the
+pre-revision countermodel `mulFiberDataCounter` is retired, its content
+quoted in the REVISION-3 table; the concrete instance builder is NEW queued
+unit K7f); K5 LANDED (`kcount_fiber_card`, re-scoped with the named
+solution-count binder `hsol` — see its section); K10 LANDED
+(`sib_product_law`, re-scoped with the named K10b image-law binder `himg`;
+the `K10Probe` countermodel of the binder-free display STANDS as warrant);
+K11 LANDED (`EngineSIBRow` authored with the BP_III-owned K-LOC/(I-τ) rows
+as opaque Prop parameters, `K3DeltaRow` pattern — see the K11 section at the
+end of this file).
 
 * Blueprint: `lean/blueprints/BP_IV.md` §1.3 (statement transcribed VERBATIM).
 * Math source of record: `lean/notes/openmath/O10_phaseB_attempt_rev2.md` §3
@@ -946,24 +925,34 @@ theorem starstar_iff_smithMem {n : ℕ} {τ : ℕ}
 
 end K4
 
-/-! ### K7 carrier (BP_IV §1.3; owner unit K7c — LANDED, single copy kept here)
+/-! ### K7 carrier (BP_IV §1.3; owner unit K7c — LANDED; REPAIRED at REVISION 3)
 
 K10a's `toMulFiberData` field consumes the `MulFiberData` carrier.  The
-carrier STRUCTURE is transcribed VERBATIM from the §1.3 display — data fields
-only.  DEDUP(K7c) resolved: unit K7c (first split of the parent glue chain,
-the monic-lift parametrization section above) landed and adopts THIS single
-copy as its charged transcription (character-identical to the §1.3 display);
-the chart bijection `fiber_equiv_solutions` remains unit K7e's charge per §4
-wave 3 and is NOT declared here. -/
+carrier structure below is the §1.3 display PLUS the REVISION-3 `chart` law
+field.  **REVISION-3 adjudication record (K7e):** the pre-revision display
+(data fields only) made `fiber_equiv_solutions` REFUTABLE — `Fiber`,
+`SolutionSet`, `FiberNonempty` were opaque, mutually unrelated fields, and
+the compiled countermodel `mulFiberDataCounter` (+
+`fiber_equiv_solutions_display_refuted`: `|Fiber| = 1 ≠ 2 = |SolutionSet|`,
+`FiberNonempty := True`) is on file in git history (33656d2).  The §1.3 doc
+comment PROMISES Φ, its Smith data, and Q on the carrier; the display
+dropped every law.  The mop-up architect ruled the CARRIER wrong and enacted
+the escalation's candidate fix (a): the chart row
+`chart : FiberNonempty → Fiber ≃ SolutionSet` — K7e becomes the projection
+theorem below, and the O-10 §3 Steps 1–2 content moves to the concrete
+instance builder (NEW queued unit K7f, BP_IV REVISION 3), where the landed
+K7a/K7b/K7c/K7d lemmas supply the (⋆)-assembly ingredients.  DEDUP(K7c)
+re-pinned to THIS revised text. -/
 
 /-- K7: the fiber chart (O-10 §3 Step 1 + Step 2 packaged): a bijection between a
     nonempty fiber of the level-N multiplication map and the solution set of the
     Smith-diagonalized congruence (⋆⋆).  `MulFiberData` carries: the factor
     polydisc (monic factor degrees d_j, base point, separation level τ with
-    (SEP): τ ≥ ρ + 1), the Jacobian-type map Φ, its Smith data (U, D, V — from
-    K8), and the quadratic remainder Q with its p^{2τ} factor (K7b).
-    K7a = the subset product expansion (`Finset.prod_add`);
-    K7c = the chart bijection itself. -/
+    (SEP): τ ≥ ρ + 1), the abstract fiber/solution carriers with the
+    REVISION-3 `chart` law (the O-10 Steps 1–2 bijection, supplied by the
+    concrete instance builder K7f), and the Smith profile `smithExp` (from
+    K8).  K7a = the subset product expansion (`Finset.prod_add`);
+    K7c = the monic-lift parametrization layer above. -/
 structure MulFiberData (p : ℕ) [Fact p.Prime] (n N : ℕ) where
   τ : ℕ
   ρ : ℕ
@@ -978,75 +967,24 @@ structure MulFiberData (p : ℕ) [Fact p.Prime] (n N : ℕ) where
   SolutionSet : Type
   instSolutionSet : Fintype SolutionSet
   smithExp : FactorPoint → Fin n → ℕ
+  /-- REVISION 3 (the K7e repair): the chart bijection of a nonempty fiber
+      onto the (⋆⋆) solution set — O-10 §3 Steps 1–2, discharged by the
+      concrete instance builder (queued unit K7f). -/
+  chart : FiberNonempty → Fiber ≃ SolutionSet
 
 attribute [instance] MulFiberData.instFactorPoint
 attribute [instance] MulFiberData.instFiber
 attribute [instance] MulFiberData.instSolutionSet
 
-/-! ### K7e (BP_IV §4 wave 3): `fiber_equiv_solutions` — BLOCKED, statement-level refutation
+/-! ### K7e (BP_IV §4 wave 3; PROVED at REVISION 3 over the repaired carrier) -/
 
-The §1.3 display charged to unit K7e is, VERBATIM:
-
-    theorem fiber_equiv_solutions {p n N : ℕ} [Fact p.Prime]
-        (F : MulFiberData p n N) (hne : F.FiberNonempty) :
-        Nonempty (F.Fiber ≃ F.SolutionSet)
-
-BLOCKED(K7e): the displayed statement is REFUTABLE over the verbatim §1.3
-carrier.  `Fiber`, `SolutionSet`, and `FiberNonempty` are opaque carrier
-fields with no relating law (the §1.3 doc comment promises Φ, its Smith
-data, and Q on the carrier, but the displayed structure omits them), so the
-carrier admits instances with `|Fiber| = 1 ≠ 2 = |SolutionSet|` and
-`FiberNonempty := True` — compiled countermodel below
-(`mulFiberDataCounter` + `fiber_equiv_solutions_display_refuted`).  No
-`sorry`'d declaration of the refuted statement is landed (K11 precedent in
-this file's header: nothing is compiled against a refuted signature — and a
-`sorry`'d false theorem would be consumable by the parallel K8b/K5 units).
-The obstruction is intrinsic to the display: no K7c/K7d lemma layer can
-prove a false ∀-statement, and the DEDUP(K7c) character-identity pin forbids
-adding the chart field the theorem would need.  Escalated to the blueprint
-owner per the §4 failure protocol; candidate signature fixes (owner's
-choice, NOT enacted here): (a) a chart row on the carrier (e.g.
-`chart : FiberNonempty → Fiber ≃ SolutionSet`, making K7e a projection and
-moving the O-10 §3 Steps 1–2 content into the concrete instance builder,
-where K7a/K7b/K7d already supply the (⋆)-assembly ingredients), or (b)
-concrete `Fiber`/`SolutionSet` fields (the O-10 fiber of the level-N
-multiplication map and the (⋆⋆) solution set), the bijection then provable
-but no longer over an abstract carrier. -/
-
-section K7e
-
-/-- BLOCKED(K7e) countermodel carrier: the verbatim §1.3 structure admits an
-    instance with a one-point `Fiber`, a two-point `SolutionSet`, and
-    `FiberNonempty := True` — no field relates them. -/
-def mulFiberDataCounter : MulFiberData 2 1 1 where
-  τ := 1
-  ρ := 0
-  τ_sep := by omega
-  FactorPoint := Unit
-  instFactorPoint := inferInstance
-  base := ()
-  polydisc := ∅
-  Fiber := Fin 1
-  instFiber := inferInstance
-  FiberNonempty := True
-  SolutionSet := Fin 2
-  instSolutionSet := inferInstance
-  smithExp := fun _ _ => 0
-
-/-- BLOCKED(K7e), the compiled statement-level refutation: the §1.3 display
-    of `fiber_equiv_solutions`, quantified as displayed over every carrier,
-    is FALSE — the countermodel's fiber has 1 element, its solution set 2. -/
-theorem fiber_equiv_solutions_display_refuted :
-    ¬ ∀ {p n N : ℕ} [Fact p.Prime] (F : MulFiberData p n N),
-        F.FiberNonempty → Nonempty (F.Fiber ≃ F.SolutionSet) := by
-  intro hall
-  obtain ⟨e⟩ := hall mulFiberDataCounter trivial
-  have e' : Fin 1 ≃ Fin 2 := e
-  have hcard : Fintype.card (Fin 1) = Fintype.card (Fin 2) :=
-    Fintype.card_congr e'
-  simp at hcard
-
-end K7e
+/-- K7e (§1.3 statement VERBATIM, now the `chart` projection — see the
+    REVISION-3 record in the carrier section header): a nonempty fiber is in
+    bijection with the Smith-diagonalized solution set. -/
+theorem fiber_equiv_solutions {p n N : ℕ} [Fact p.Prime]
+    (F : MulFiberData p n N) (hne : F.FiberNonempty) :
+    Nonempty (F.Fiber ≃ F.SolutionSet) :=
+  ⟨F.chart hne⟩
 
 /-! ### K10a (BP_IV §2 K-table; O-10 §4.1): the adapted-cell carrier
 
@@ -1137,38 +1075,57 @@ display.] -/
 structure SmithStable {p n N : ℕ} [Fact p.Prime] (F : MulFiberData p n N) : Prop where
   exponents_const : ∀ h ∈ F.polydisc, F.smithExp h = F.smithExp F.base
 
-/-! ### K10 — BLOCKED(K10): the §1.3 display is REFUTABLE over the §1.3 `AdaptedCell`
+/-! ### K5 (BP_IV §1.3 + §2 K-table; RE-SCOPED and PROVED at REVISION 3)
 
-The blueprint's verbatim K10 statement is
+**REVISION-3 adjudication record (K5).**  The §1.3 display
+(`kcount_fiber_card (F) (hS : SmithStable F) (hne : F.FiberNonempty) :
+Nat.card F.Fiber = p ^ (∑ i, min (F.smithExp F.base i) (N − F.τ))`) was
+REFUTABLE over the abstract carrier for the same root cause as K7e/K10: the
+carrier's `SolutionSet` and `smithExp` are unrelated fields, so instances
+with `|SolutionSet| ≠ p^Σmin` exist even after the `chart` repair.  The
+mop-up re-scope adds the ONE missing named binder `hsol` — the solution-set
+count, i.e. EXACTLY the K1/K2 ∘ K4 ∘ K3 conclusion at the concrete (⋆⋆)
+solution set, which the landed engine of this file proves at concrete data
+and the K7f instance builder supplies alongside `chart` (BP_IV REVISION 3;
+countermodel warrant recorded there).  `hS` is kept to mirror the displayed
+binder list (the `sib_product_law_of_imageCount` precedent): Smith stability
+enters when the builder derives `hsol` at non-base polydisc points. -/
+
+/-- K5 (THE K-COUNT, O-10 Theorem 1(i); REVISION-3 scope): every nonempty
+    fiber has size exactly p^(s M), M = N − τ — from the chart (K7e) and the
+    solution-set count `hsol` (the K1/K2/K3/K4 leg, supplied by the concrete
+    instance builder K7f). -/
+theorem kcount_fiber_card {p n N : ℕ} [Fact p.Prime] (F : MulFiberData p n N)
+    (_hS : SmithStable F) (hne : F.FiberNonempty)
+    (hsol : Nat.card F.SolutionSet
+      = p ^ (∑ i, min (F.smithExp F.base i) (N - F.τ))) :
+    Nat.card F.Fiber = p ^ (∑ i, min (F.smithExp F.base i) (N - F.τ)) :=
+  (Nat.card_congr (F.chart hne)).trans hsol
+
+/-! ### K10 — RE-SCOPED and PROVED at REVISION 3 (countermodel kept below as warrant)
+
+**REVISION-3 adjudication record (K10).**  The §1.3 display
 
     theorem sib_product_law {p n N : ℕ} [Fact p.Prime] (A : AdaptedCell p n N)
         (hS : SmithStable A.toMulFiberData) :
         A.cellCount * p ^ A.sM = ∏ j, A.factorCount j
 
-Over the §1.3 `AdaptedCell` display (transcribed verbatim above, unit K10a)
-this is FALSE, not merely open: the display's only law fields are
-`domainCount_eq` (K10c's clause, O-10 §4.2 "μ_N^{−1}(Σ) = Π_j C_j") and
-`fiber_nonempty`; NOTHING constrains `cellCount` or `sM`, so `cellCount := 0`,
-`sM := 0`, `factorCount ≡ 1` satisfies every field and gives `0 = 1`.  The
-compiled countermodel is `K10Probe.sib_product_law_as_displayed_refuted`
-below.  The missing ingredient is exactly unit K10b's conclusion (O-10 §4.2
-"all four sets are unions of entire fibers, and preimage counts are φ times
-image counts", φ = p^{s(M)} the constant fiber size of Theorem 1(i)):
+is FALSE over the §1.3 `AdaptedCell` (unit K10a, verbatim above): the
+display's only law fields are `domainCount_eq` and `fiber_nonempty`; NOTHING
+constrains `cellCount` or `sM`, so `cellCount := 0`, `sM := 0`,
+`factorCount ≡ 1` satisfies every field and gives `0 = 1` — the compiled
+countermodel `K10Probe.sib_product_law_as_displayed_refuted` STANDS below as
+the warrant (the carrier is unchanged by this adjudication).  The missing
+ingredient is exactly unit K10b's conclusion (O-10 §4.2 "preimage counts are
+φ times image counts", φ = p^{s(M)} the constant fiber size of Theorem 1(i)):
 
     imageCount_eq : cellCount * p ^ sM = Nat.card Factor
 
-— the K10b constant-fiber image law relating the cell count to the domain
-count.  The §1.3 docstring itself promises "(A1)–(A3) clauses ... as fields",
-and this is the clause the display dropped.  With it (as an `AdaptedCell`
-field per K10a's charge, or as K10b's proved theorem at concrete cells), K10
-is the one-line combine `imageCount_eq.trans domainCount_eq` —
-`sib_product_law_of_imageCount` below compiles exactly that combine step, so
-the "K10 = K10b + K10c" assembly is on record and the REV is purely a K10a
-field addition (or a K10b binder on K10).  Statement changes are forbidden at
-this unit, so the verbatim theorem is NOT declared with a `sorry` (a sorried
-REFUTED ∀-statement is a live foot-gun, and the §2 wave rule is
-zero-`sorry`); it awaits the blueprint REV ruling.  Escalated per the §4
-failure protocol. -/
+The mop-up ruling: K10 gains that ONE named binder (`himg`) — the minimal
+re-scope, K10b's theorem at concrete cells being its discharge
+(`adaptedCell_constFiber_image_card` below concludes verbatim `himg`).  The
+verbatim-named `sib_product_law` is landed in that scope; the combine step
+`sib_product_law_of_imageCount` (landed pre-revision) is kept as its body. -/
 
 /-- K10 combine step (the honest form of "K10 = K10b + K10c"): GIVEN the K10b
     constant-fiber image law `cellCount * p^sM = Nat.card Factor` as a binder
@@ -1185,14 +1142,28 @@ theorem sib_product_law_of_imageCount {p n N : ℕ} [Fact p.Prime]
     A.cellCount * p ^ A.sM = ∏ j, A.factorCount j :=
   himg.trans A.domainCount_eq
 
+/-- K10 (Theorem 2, the adapted-cell (SIB) product law, O-10 §4.2;
+    REVISION-3 scope — the K10b image law is the named binder `himg`, see
+    the adjudication record above): at an `AdaptedCell`, the level-N count of
+    the assembled cell times the K5 fiber size is the product of the
+    per-factor counts — multiplicative form (REV-2 finding 13), verbatim-
+    named per the §1.3 display. -/
+theorem sib_product_law {p n N : ℕ} [Fact p.Prime]
+    (A : AdaptedCell p n N) (hS : SmithStable A.toMulFiberData)
+    (himg : A.cellCount * p ^ A.sM = Nat.card A.Factor) :
+    A.cellCount * p ^ A.sM = ∏ j, A.factorCount j :=
+  sib_product_law_of_imageCount A hS himg
+
 namespace K10Probe
 
 /-! Probe artifacts ONLY (not blueprint units): the compiled countermodel
 justifying BLOCKED(K10).  Corpus precedent for compiled negation witnesses:
 `MovesU/SibJcRouteA.lean` (`sib_diag_break`), `HC1` `U1_negWitness`. -/
 
-/-- Probe carrier: every `MulFiberData` field filled with free/trivial data —
-    legal because the §1.3 display carries no laws beyond `τ_sep`. -/
+/-- Probe carrier: every `MulFiberData` field filled with free/trivial data
+    (the REVISION-3 `chart` field holds at the identity — Fiber and
+    SolutionSet are both `Unit` here, so the probe stays legal on the
+    repaired carrier). -/
 def freeMFD (p n N : ℕ) [Fact p.Prime] : MulFiberData p n N where
   τ := 1
   ρ := 0
@@ -1207,6 +1178,7 @@ def freeMFD (p n N : ℕ) [Fact p.Prime] : MulFiberData p n N where
   SolutionSet := Unit
   instSolutionSet := inferInstance
   smithExp := fun _ _ => 0
+  chart := fun _ => Equiv.refl _
 
 /-- Probe cell: `cellCount := 0`, `sM := 0` satisfy EVERY field of the §1.3
     `AdaptedCell` display (`domainCount_eq` reads `Nat.card Unit = ∏ _, 1`),
@@ -1775,6 +1747,7 @@ def gateMFD : MulFiberData 2 1 1 where
   SolutionSet := Fin 1
   instSolutionSet := inferInstance
   smithExp := fun _ _ => 0
+  chart := fun _ => Equiv.refl _
 
 /-- Every k×k minor of the 1×1 identity over `ℤ_[p]` (k ≤ 1) is 1: the k = 0
     minor is the empty determinant, the k = 1 minor is the (0,0) entry — so
@@ -1813,5 +1786,35 @@ theorem gate_smithStable : SmithStable gateMFD := by
   · simp [gateMFD]
 
 end K9Gate
+
+/-! ### K11 (BP_IV §2 K-table + §1.3 application note; AUTHORED at REVISION 3)
+
+**REVISION-3 adjudication record (K11).**  The §2 K-table charges an
+`EngineSIBRow` "named structure consuming actual K-LOC and (I-τ) rows", but
+BP_IV displays NO verbatim statement, and the K-LOC/(I-τ) rows are BP_III-
+owned with NO landed (or even chartered) declaration anywhere in the corpus
+(the pre-revision BLOCKED(K11) header, git history 33656d2; BP_III.md never
+names them).  The mop-up authors the row from the §2 description + the §1.3
+application note ("consuming the named rows K-LOC and (I-τ) ... displayed as
+binders"), with the two foreign rows as OPAQUE Prop PARAMETERS — the
+sanctioned `K3DeltaRow` pattern; BP_III's actual rows instantiate them with
+no re-key.  Content: the engine stratum's level-N count is realized by an
+adapted cell carrying Smith stability and the K10b image law — exactly what
+K10 (`sib_product_law`) consumes; a wave-4/owner constructor supplies
+instances, never an unproved theorem declaration (§2 charge honored). -/
+
+/-- K11 (`EngineSIBRow`, REVISION-3 authored form): under the BP_III-owned
+    K-LOC and (I-τ) rows (opaque Prop parameters until the owner lands), the
+    engine stratum's level-N count `stratumCount` is computed by an adapted
+    cell that carries Smith stability and the K10b constant-fiber image law
+    — the (SIB) application package.  Named [M] row: no proof exists at this
+    campaign; constructors are owner-side. -/
+structure EngineSIBRow (p n N : ℕ) [Fact p.Prime]
+    (KLoc ITau : Prop) (stratumCount : ℕ) : Prop where
+  kloc : KLoc
+  itau : ITau
+  cell : ∃ A : AdaptedCell p n N, SmithStable A.toMulFiberData ∧
+    A.cellCount * p ^ A.sM = Nat.card A.Factor ∧
+    A.cellCount = stratumCount
 
 end LeanUrat.Scaffold

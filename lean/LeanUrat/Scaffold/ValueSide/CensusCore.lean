@@ -39,27 +39,68 @@ structure CensusData where
   h_coprime : ∀ i, Nat.Coprime (h i) (e i)
 
 /-!
-**PROVENANCE (unit C0b; BP_IV §1.2, wave IV-0b).**  Derived defs, verbatim from
-the blueprint: `d` = ∏ f_i (the census field degree, O-9's DELTA-3 index fix:
-d = f₀⋯f_r, NOT f₀⋯f_{r−1}), `period` = ∏ e_i, and the mixed-radix φ-monomial
-index set `J` (a Fintype — instance supplied immediately after the def).
+**PROVENANCE (unit C0b; BP_IV §1.2, wave IV-0b; REVISED at BP_IV REVISION 3,
+mop-up adjudication).**  Derived defs: `d` = ∏ f_i (the census field degree,
+O-9's DELTA-3 index fix: d = f₀⋯f_r, NOT f₀⋯f_{r−1}), the LEDGER period, and
+the mixed-radix φ-monomial index set `J` (a Fintype — instance supplied
+immediately after the def).
+
+**THE REVISION-3 CARRIER FIX (the C1/C2 adjudication; warrant: the compiled
+countermodels `C1Refutation.not_admFull_cmC1` / `C2Refutation.*` of the
+pre-revision `Census.lean`, retired with this fix — see git history at
+33656d2 and BP_IV REVISION 3).**  The §1.2 display gave stage 0 a full
+`Fin (e 0) × Fin (f 0)` pair in `J` and an `e 0` factor in `period`; the O9
+ledger (rev5 §§1–2, the math source of record) has stage 0 contributing the
+`f₀` monomials `x^{j₀}` ONLY (φ₀ = x, weight 0 — "m = f₀ = d at r = 0") and
+the period `e = e₁⋯e_r` (NO e₀ factor; "the O9 convention is e₀ = 1").
+Against the display, the O9-scoped laws C1 (r = 0 automaticity — a ROOT (ADM)
+row clause) and C2 (the r = 1 criterion) are FALSE (countermodels at e₀ = 2);
+the carrier transcription, not the laws, was wrong.  The fix: the LEDGER
+stage multiplicity `ledgerE` (:= 1 at stage 0, e_i at stages i ≥ 1) replaces
+`e i` in the DERIVED defs `J`/`period`/`wt`-radix.  The stage-0 FIELDS
+`e 0`/`h 0` remain carrier data (consumed by C4c's canonical level-1 polygon,
+which is untouched by this fix).
 -/
 
 namespace CensusData
 
 def d (D : CensusData) : ℕ := ∏ i, D.f i
 
-def period (D : CensusData) : ℕ := ∏ i, D.e i
+/-- The LEDGER stage multiplicity (REVISION 3): stage 0 rides at multiplicity
+    1 (φ₀ = x contributes the `f₀` monomials only — O9 rev5 §2), stages i ≥ 1
+    at their ramification `e i`. -/
+def ledgerE (D : CensusData) (i : Fin (D.r + 1)) : ℕ :=
+  if i.1 = 0 then 1 else D.e i
 
-def J (D : CensusData) : Type := (i : Fin (D.r + 1)) → Fin (D.e i) × Fin (D.f i)
+@[simp] theorem ledgerE_zero (D : CensusData) : D.ledgerE 0 = 1 := by
+  simp [ledgerE]
+
+theorem ledgerE_of_ne_zero (D : CensusData) {i : Fin (D.r + 1)} (hi : i.1 ≠ 0) :
+    D.ledgerE i = D.e i := by
+  simp [ledgerE, hi]
+
+theorem ledgerE_pos (D : CensusData) (i : Fin (D.r + 1)) : 1 ≤ D.ledgerE i := by
+  unfold ledgerE
+  split_ifs
+  · exact le_rfl
+  · exact D.he i
+
+/-- The LEDGER period `e = e₁⋯e_r` (REVISION 3: no `e 0` factor — O9 rev5 §1,
+    "e = 1 at r = 0"). -/
+def period (D : CensusData) : ℕ := ∏ i, D.ledgerE i
+
+def J (D : CensusData) : Type :=
+  (i : Fin (D.r + 1)) → Fin (D.ledgerE i) × Fin (D.f i)
 
 /-- `J` is a Fintype (the blueprint carrier docstring: "the mixed-radix
     φ-monomial index set J (a Fintype)"). -/
 instance instFintypeJ (D : CensusData) : Fintype D.J :=
-  inferInstanceAs (Fintype ((i : Fin (D.r + 1)) → Fin (D.e i) × Fin (D.f i)))
+  inferInstanceAs
+    (Fintype ((i : Fin (D.r + 1)) → Fin (D.ledgerE i) × Fin (D.f i)))
 
 instance instDecidableEqJ (D : CensusData) : DecidableEq D.J :=
-  inferInstanceAs (DecidableEq ((i : Fin (D.r + 1)) → Fin (D.e i) × Fin (D.f i)))
+  inferInstanceAs
+    (DecidableEq ((i : Fin (D.r + 1)) → Fin (D.ledgerE i) × Fin (D.f i)))
 
 /-!
 **PROVENANCE (unit C0c; BP_IV §1.2, wave IV-0c).**  The derived slot-weight
@@ -104,9 +145,12 @@ def wphi (D : CensusData) (i : Fin (D.r + 1)) : ℕ :=
 
 /-- unit C0c — the mixed-radix φ-monomial slot weight (O9 ledger LED):
     `wt 𝐣 = Σ_i j_i · w(φ_i)` with the per-stage digit `j_i = a_i + e_i·b_i`
-    read off the `Fin (e i) × Fin (f i)` pair and `w(φ_i) = wphi i`. -/
+    read off the `Fin (ledgerE i) × Fin (f i)` pair (REVISION 3: the ledger
+    radix — at stage 0 the class digit collapses, `j₀ = b₀ < f₀`; at stages
+    i ≥ 1 `ledgerE i = e i` and the digit is unchanged) and
+    `w(φ_i) = wphi i`. -/
 noncomputable def wt (D : CensusData) : D.J → ℕ :=
-  fun j => ∑ i, ((j i).1.1 + D.e i * (j i).2.1) * D.wphi i
+  fun j => ∑ i, ((j i).1.1 + D.ledgerE i * (j i).2.1) * D.wphi i
 
 noncomputable def Gset (D : CensusData) (β : ℕ) : Finset D.J :=
   Finset.univ.filter
