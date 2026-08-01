@@ -1678,3 +1678,10 @@ proves the CURRENT (ROOT-C); acyclicity; ZERO regressions (D-11 repaired
 scopes, T-U, (H7), bijection, suspension/counter displays). COUNTER = ONE
 of 2. VC13 = fresh-context FABLE hostile pass (model diversity), same
 document. Report: lean/notes/openmath/VC12_report.md.
+
+## BP_II RESUME COMPLETE: 60/74 (2026-08-04)
+Resume recovered the 429-killed tail incl. BOTH checkpoints (Theorems 2-4
++ Corollary D; full Movement II w/ lake build + AxChk). Named blocks for
+the mop-up queue: II-G5, II-F7/F8/F9, II-T5, II-M6/G6/G7 (+ 3 silent
+empty-result units in 3c/3h/3i). BP_III resume launched (sequential
+fleet #2); BP_IV architect queued.
