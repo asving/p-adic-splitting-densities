@@ -60,6 +60,36 @@ and DIVERGE by exactly the character at e0 >= 2.
 
 RUN 2 (v2 predictions, preregistered below BEFORE run 2): test BOTH key
 conventions with MATCHED label pairs, plus the divergence meter.
+
+[REVISION 1 NOTE on the paragraph above: "the two ... DIVERGE by exactly the
+character at e0 >= 2" is OVERBROAD — pass-1 CRITICAL. The correct criterion
+(implemented by the (c-iii) meter all along): the key classes diverge IFF the
+state is TWIST-VISIBLE (some k < g1 has psi1_k != 0 and
+z1^(theta*e1*(g1-k)) != 1); 20 of 52 towers, the other 16 e0 >= 2 instances
+COINCIDE. The historical text is left as run-1 record; the note is rescoped.]
+
+=============================================================================
+REVISION 1 ADDENDUM (2026-08-02; preregistered BEFORE run 3; hostile pass 1
+= lean/notes/openmath/TR3S2_pass1_report.md returned 1 critical + 2 gaps).
+
+Changes for run 3:
+  * TS2c meter RELABELED to match the rescoped claim (twist-visibility meter:
+    keys diverge IFF the character is visible on psi1's support). Semantics
+    unchanged (obs == pred, > 0).
+  * NEW family TS2f (pass-1 gap 3 / the note's Lemma WIT): on EVERY tested
+    tower with c := z1^(theta*e1) != 1, CONSTRUCT the witness
+    f = a0 + a1*Phi1^e1 of Lemma WIT at x0 = x1 = 1 (W = (e0*g0-1)*h0,
+    beta0 = gamma2 + W, beta1 = W, digits via realize1 with the
+    z1^(-t(beta,u)) pre-twist) and verify:
+      (f-i)   two-slot property: component exactly {0, e1} (s0 = 0, d = 1),
+              c^G_0 == c^G_{e1} == 1 (equal, nonzero, the TARGET value);
+      (f-ii)  side read: length 2, j0 = 0;
+      (f-iii) the REFUTATION INEQUALITY: the FGMN consecutive-coefficient
+              ratio differs from the GMN ratio (cross-multiplied), and the
+              mismatch factor is EXACTLY c.
+    PREREGISTERED: 0 violations, 0 construction failures, on ALL towers with
+    c != 1 (count reported; must be > 0 and include every twist-visible
+    tower — twist-visible implies c != 1).
 =============================================================================
 
 ================ PREREGISTERED PREDICTIONS v2 (exact arithmetic) ============
@@ -125,6 +155,7 @@ VIOL = []
 COUNTS = {}
 ORD_HIST = {}
 DIV = {"obs": 0, "pred": 0, "towers": 0}
+TS2F = {"ran": 0, "skipped_c1": 0, "vis_ran": 0, "confail": 0}
 def note(fam, n=1): COUNTS[fam] = COUNTS.get(fam, 0) + n
 def viol(fam, tag, detail): VIOL.append((fam, tag, detail))
 
@@ -322,9 +353,75 @@ def label_ties(T):
                             f"pred={pred}")
     return psitilde, rlam2m
 
+def ts2f_witness(T):
+    """TS2f (REVISION 1, preregistered before run 3): the note's S5 Lemma WIT
+    witness at x0 = x1 = 1, per tower with c = z1^(theta*e1) != 1: construct
+    f = a0 + a1*Phi1^e1 with exactly two consecutive on-line slots (0 and e1)
+    and EQUAL nonzero GMN coefficients (both == 1), then check the refutation
+    inequality: the FGMN/GMN consecutive-coefficient ratios differ by exactly
+    c != 1 (so no per-argument unit and no relabeling can equate the reads)."""
+    K1, th = T.K1, T.l0*T.g0*T.h0
+    c = K1["pow"](T.z1, th*T.e1)
+    vis = any((not K1["isz"](T.psi1[k]))
+              and K1["pow"](T.z1, th*T.e1*(T.g1 - k)) != K1["one"]
+              for k in range(T.g1))
+    if c == K1["one"]:
+        TS2F["skipped_c1"] += 1
+        if vis:                       # impossible: visible forces c != 1
+            viol("TS2f", T.tag, "twist-visible tower with c == 1 (?!)")
+        return
+    note("TS2f")
+    TS2F["ran"] += 1
+    if vis: TS2F["vis_ran"] += 1
+    W = (T.e0*T.g0 - 1)*T.h0
+    beta0, beta1 = T.gamma2 + W, W               # slot 0 / slot e1 weights
+    u0 = beta0                                   # ordinate of slot 0
+    u1 = beta1 + T.e1*T.w1Phi1                   # ordinate of slot e1
+    s0b, _ = eq12(beta0, T.e0, T.h0)
+    s1b, _ = eq12(beta1, T.e0, T.h0)
+    if (s0b - T.l0*u0) % T.e0 or (s1b - T.l0*u1) % T.e0:
+        TS2F["confail"] += 1
+        viol("TS2f", T.tag, "witness twist exponent t(beta,u) not integral")
+        return
+    t0 = (s0b - T.l0*u0)//T.e0
+    t1v = (s1b - T.l0*u1)//T.e0
+    w = K1["one"]                                # target common value
+    try:
+        a0 = T.realize1(K1["mul"](K1["pow"](T.z1, -t0), w), beta0)
+        a1 = T.realize1(K1["mul"](K1["pow"](T.z1, -t1v), w), beta1)
+    except AssertionError as e:
+        TS2F["confail"] += 1
+        viol("TS2f", T.tag, f"witness construction failure: {e}")
+        return
+    f = padd(T.R, a0, pmul(T.R, a1, ppow(T.R, T.Phi1, T.e1)))
+    s, d, gco, on, _, _ = gmn2(T, f)
+    # (f-i) two-slot property: component exactly {0, e1}, equal coeffs == w
+    if not (s == 0 and d == 1 and on == {0, T.e1}):
+        TS2F["confail"] += 1
+        viol("TS2f", T.tag, f"witness component wrong: s={s}, d={d}, on={on}")
+        return
+    if K1["isz"](gco[0]) or gco[0] != gco[1] or gco[0] != w:
+        TS2F["confail"] += 1
+        viol("TS2f", T.tag, "witness coefficients not equal-nonzero == 1")
+        return
+    # (f-ii) side read shape
+    side, j0, _ = T.R2s(f)
+    if len(side) != 2 or j0 != 0:
+        viol("TS2f", T.tag, f"witness side read: len={len(side)}, j0={j0}")
+        return
+    # (f-iii) refutation inequality, cross-multiplied ratios + exact factor c
+    lhs = K1["mul"](side[1], gco[0])
+    rhs = K1["mul"](side[0], gco[1])
+    if lhs == rhs:
+        viol("TS2f", T.tag, "REFUTATION INEQUALITY FAILS: ratios agree")
+        return
+    if lhs != K1["mul"](c, rhs):
+        viol("TS2f", T.tag, "side/GMN ratio mismatch factor != c")
+
 def run_tower(T, nf=24):
     R = T.R
     labels = label_ties(T)
+    ts2f_witness(T)
     def go(f, shape): ts2_compare(T, f, shape, labels)
     for _ in range(nf):
         f = T.rand_opoly(random.randrange(0, int(2.2*T.degPhi2) + 1), pimax=5)
@@ -362,12 +459,14 @@ def main():
             run_tower(T, nf=24)
         print(f"ring ({kind}, p={p}) done: cumulative violations = {len(VIOL)}")
     print("=" * 74)
-    print("TR3-S2 PREREGISTERED v2 vs OBSERVED (violations; samples in parens)")
+    print("TR3-S2 PREREGISTERED v2+REV1 vs OBSERVED (violations; samples in "
+          "parens)")
     fams = [("TS2a", "per-slot compose chain (support,k1,k2,k3)",    0),
             ("TS2b", "assembled two-form on side reads + j0",        0),
             ("TS2c", "label ties BOTH key conventions + meter",      0),
             ("TS2d", "MATCHED-label ord transport (d-i)+(d-ii)",     0),
-            ("TS2e", "e0=1 controls: TR3-S1 identity",               0)]
+            ("TS2e", "e0=1 controls: TR3-S1 identity",               0),
+            ("TS2f", "Lemma-WIT witness + refutation inequality",    0)]
     ok = True
     for fam, desc, pred in fams:
         obs = sum(1 for v in VIOL if v[0] == fam)
@@ -378,9 +477,17 @@ def main():
     dmeter = "MATCH" if (DIV["obs"] == DIV["pred"] and DIV["obs"] > 0) \
              else "MISMATCH"
     if dmeter == "MISMATCH": ok = False
-    print(f"TS2c key-divergence meter: obs {DIV['obs']} == pred "
+    print(f"TS2c twist-visibility meter (keys diverge IFF the character is "
+          f"visible on psi1's support): obs {DIV['obs']} == pred "
           f"{DIV['pred']} of {DIV['towers']} towers (pred: equal, > 0)  "
           f"{dmeter}")
+    fmeter = "MATCH" if (TS2F["ran"] > 0 and TS2F["confail"] == 0
+                         and TS2F["vis_ran"] == DIV["pred"]) else "MISMATCH"
+    if fmeter == "MISMATCH": ok = False
+    print(f"TS2f witness meter: constructed on {TS2F['ran']} towers with "
+          f"c != 1 (c == 1 skipped: {TS2F['skipped_c1']}); construction "
+          f"failures {TS2F['confail']} (pred 0); twist-visible towers "
+          f"covered {TS2F['vis_ran']} == {DIV['pred']}  {fmeter}")
     hist = " ".join(f"{k}:{v}" for k, v in sorted(ORD_HIST.items()))
     meter = "MATCH" if any(k >= 1 and v > 0 for k, v in ORD_HIST.items()) \
             else "MISMATCH"
