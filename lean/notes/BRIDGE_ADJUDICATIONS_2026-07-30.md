@@ -4529,3 +4529,50 @@ graded_read clauses hold with NO wiring hypotheses beyond coherence. B-M2 §S4
 the three standing sorries' statements byte-unchanged, all other changes = proof
 bodies, new supplier decls, docstring records. Remaining B2D sorries: **3**
 (GR-3 ×2 + GR-4 ×1, adjudicated frozen forms; TD front already closed at 9a10109).
+
+## 2026-08-08 (wallclock 2026-08-02): B-M2 REVISION 15 — POST-ACCEPTANCE ANNOTATION FOLD: the accepted opens list re-priced against three compiled campaigns (acceptance NOT reset)
+
+**Unit:** B-M2 re-pricing (`lean/notes/openmath/H1_BM2_2026-08-06.md`, ACCEPTED
+at passes 13+14 on REVISION 14). Fold class: ACCEPTED-NOTE ANNOTATION per the
+GRB REVISION-11 precedent — no acceptance history rewritten, all REV-15 text
+additive (headline pointer bracket + §S0 post-acceptance bracket + §S4
+list-re-pricing bracket + the tail POST-ACCEPTANCE STATUS section + REVISION 15
+record). Clean counter STAYS 2/2 ACCEPTED: unlike GRB REV 11 (which corrected
+accepted content and reset), this fold corrects nothing — it displays forward
+discharges that landed AFTER acceptance at their own campaigns' gates.
+
+**The four opens of record, re-priced (decl-cited; ground truth = the
+f36ab72/db47e35/a5911fd ledger entries + files):**
+
+1. **GRADED-READ — DISCHARGED at interior coherent [NR] reads, M-PARAMETRIC**
+   (`LeanUrat.B2D.graded_read_of_history`, `B2D/GR4_gradedRead.lean`, a5911fd:
+   all three (i-b) clauses from `HistoryCoherent` + parent model `Mpar` only);
+   VACUOUS at steep recorded reads by the compiled scoping
+   `GR0b.readHyps_e_eq_one` (`ReadHyps` forces ν.e = 1 — `kp_step`'s face);
+   abstract σ.e ≥ 2 frame residue OPEN-OBSTRUCTED (GR-3 ×2 + GR-4 ×1 frozen
+   sorries + the displayed ψ = φ(z^σ.e) gap countermodel).
+2. **REC-SL proper — UNCHANGED OPEN** (the `IsReadLift`-at-(1,1)/(SL-top)/
+   (SL-dev) digit legs; no campaign touched them).
+3. **SITE-EXH — DISCHARGED AT THE ENGINE FACE, two-layer as-built form +
+   f-tied coverage** (`siteExh_elimination'` unconditional over the closed
+   `FiredLift`, `H1/TruncatedRun.lean` f36ab72; `TowerMoveClosureL` layer
+   re-ratification pending; `FTiedTruncLanding`/`gate_ftie_chain`,
+   `H1/GlueRun.lean` db47e35). Named residuals: `junc_bundle` at choice-built
+   stages (D-1 wall), `DIterJunctionSupplier` (displayed named open, ITER-LAW
+   two-constant fence), the box face, the S-1 [T] transcription rider.
+4. **The `readsOf_landing_K0` recentering-branch witness debt — STANDS,
+   NARROWED (this unit's code-read finding):** `gate_ftie_chain` chains the
+   recentering continuation via `ν₁rcRoot` (ν₁rc ROOT-respecied) inside the
+   `TruncRunFrom` H₂rc — the landing content is f-tied-witnessed at the
+   `ReadsOfFrom` face (`landingKey_ν₁rcRoot`'s clause is `IsNodeLift ν₁rc
+   σ₂rc.Φ`) — but no compiled `ReadsOf` run contains a recentering-SPECIES
+   read, so the branch antecedent is still not compiled-instantiable.
+   Remaining exactly: a direct recentering-species `ReadsOf` witness, or the
+   glue route past `junc_bundle` + a From→ReadsOf admission converse (only
+   the one-way `truncRunFrom_of_readsOf` is on file).
+
+**Census upkeep:** 12 new head-level rows C272–C283 (6 §S0 bracket + 6 §S4
+bracket, all [TAGGED]); 214 → **226 active rows, zero untagged known**; no
+existing row superseded; C237 (RCWitness debt sentence) re-verified accurate.
+**Lean edits: NONE** (no file touched; capstone footprints unaffected). The
+§S0 accepted cells and the §S4 acceptance-time list stand byte-unchanged.
