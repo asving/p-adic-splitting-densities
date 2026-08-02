@@ -3280,3 +3280,18 @@ anywhere (§6 fence (v) honored at the import graph). Open at HEAD after this wa
 15 E-phase sorries in B2D (8 GR + 7 TD) + CL5 (= HC1 `C6_alphabetCard.lean:129`,
 untouched). Next per §5: wave 1 = TD-0 + TD-3 + CL5 (two fronts), with N-TD1 built
 BEFORE TD-3/CL5 proofs and N-GR1 before GR-2/GR-3.
+
+## 2026-08-08: H4 owed-pass batch harvested (orchestrator; the batch agent exited pre-harvest)
+
+M1 hostile #1 (H4M1_pass1_2026-08-08.md): CRITICAL — the (S1)-(S6) walk's
+claimed perimeter includes recentered stages while §7 admits the recentering
+frame bookkeeping is [SKEL]-classified, not derivation-walked (D.10's v=v′ /
+recentered-K1 / localization-preservation content). M2 hostile #1
+(H4M2_pass1_2026-08-08.md): CRITICAL — the matched-position definition
+presupposes the key-level coincidence (reconstructed O_δ-keys never shown
+equal to transported ℤ_p-keys before "same prefix keys" enters the
+definition). M4 pass-2 (H4M4_pass2_2026-08-08.md): GAPS — the three prior
+folds ([C1]/[C2]/[G3]) all CURED; new gap = the imported Lean faces are
+cited opaquely, blocking the Route-A exactness audit. F-(i) status: M1 needs
+fold+2 cleans, M2 fold+1 clean owed... per blueprint counts; M4 nearly
+clean; M5 second clean + N-K3 still owed. Fold rounds dispatched.
