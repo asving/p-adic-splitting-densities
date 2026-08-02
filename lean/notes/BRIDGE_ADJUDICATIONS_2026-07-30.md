@@ -3105,3 +3105,33 @@ fibering (F1)–(F6) is what "realizable/fibers" supplies and fiber ⟹ F1–F4,
 so the D_σ(N) landing is sound as written. **The D-11 row's owed pass is
 DISCHARGED; I-3 stands; the H9-C3 re-open trigger is SPENT; the (NSF-INT)
 retirement STANDS.**
+
+## 2026-08-08: TR3-S1 COMPOSED + pass 1 folded — the order-2 e₀ = 1 assembled coefficient agreement PROVED (both GRB open lemmas' restrictions served)
+
+`lean/notes/openmath/TR3S1_2026-08-08.md` (REVISION 2). The F1-chartered unit:
+at state order 2 on the unramified-below stratum (e₀ = 1), with the residue
+identifications σ₀/σ₁ constructed explicitly, σ₁-coefficientwise
+R^F_{2,γ}(f) = y^{j₀}·R_λ(f) and σ₁(R^F₂(f)) = R_λ(f) EXACTLY, per-argument
+units ≡ 1, total in nonzero f ∈ O[x] — FGMN Defs 3.16/3.18 (corrected 3.15)
+vs the GMN-convention Defs 2.19–2.21 under the NORMALIZED Bézout hypothesis
+(0 ≤ ℓ < e, displayed in S0). Non-textual pins redone (layout re-extraction
+byte-columns for Def 3.15; GMN t-formula page checked clean). Consequences:
+TR-3′-GEN(i)|order-2 = THEOREM ((GR-B-STR)-ladder inputs only) serving
+GD3-FULL/OL-B there; TR-3-ORD-X|order-2,e₀=1 = PROVED conditional on
+(KP_i) + [T]-properness (inherited) serving GD3-MIN Route B + all clause-(4)
+ord-consumers there, and discharging the TR-3-ORD-X seam of B-M2 OL-1(b)'s
+GMN-verbatim face on the stratum (its GRADED-READ/REC-SL seams untouched).
+Scope box: order ≥ 3 (even all-e_j = 1), e₀ ≥ 2, and the general σ_j family
+remain OPEN — neither GRB lemma closes stratum-wide. Falsifiers: fresh N-1
+re-run ALL GREEN (33,547 samples; T9 0/500, T2 0/1,200, T0 0/23,111, P12 2/2)
++ NEW preregistered family `verification/openmath/tr3s1_check.py` (arbitrary-f
+FGMN-vs-independent-GMN comparison, e₀ = 1 towers × 4 rings): TS1a/b/c/d all
+0 violations (6,260 samples), re-green after the REV-2 strengthening. Hostile
+pass 1 (Codex, /tmp/openmath/TR3S1_pass1.jsonl): **0 critical / 4 gaps**
+(core algebra + all transcriptions + no-circularity CONFIRMED); all four
+folded at REVISION 2 (ℓ-normalization made an S0 hypothesis; the wrong
+"per-argument-unit absorption" sentence struck and replaced by the exact
+scalar×rescaling law; the Φ₂ monicity computation displayed; the TS1
+independence perimeter stated exactly + TS1b strengthened). GRB leaf NOT
+edited — its residue re-pricing waits for the orchestrator's next fold; the
+2-clean bar continues there.
