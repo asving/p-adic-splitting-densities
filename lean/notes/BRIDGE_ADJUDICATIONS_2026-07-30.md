@@ -3525,3 +3525,14 @@ elaborates), zero sorry, Lean-core footprint unchanged. COUNTER: pass 1
 CRITICAL (REV 1); pass 2 CRITICAL (REV 2); pass 3 GAPS-ONLY (REV 3);
 pass 4 GAPS-ONLY, mechanical (REV 4); clean 0/1 — the final clean hostile
 pass (pass 5) runs on REVISION 4, launched by the orchestrator.
+
+## 2026-08-08: H4-M5 TEXTUAL BAR MET (passes 6+7 CLEAN, model-diverse) — waits only on N-K3
+
+Pass 7 (Fable decider, H4M5_pass7_2026-08-08.md): the Route-B core re-derived
+(Def SYM totality, Lemma S/B, the Theorem induction with the verified (R4)
+deletion, the P4 composition walked, the F₉ contrast re-derived from
+scratch); the N-K3 seal verified intact and preregistered; sibling currency
+adjudicated (M2's REV-3/4 display-only drift covered by the seam note's
+dated-read rule); the compile gate run. Second consecutive clean (Codex
+pass 6 + Fable pass 7). M5 waits ONLY on the N-K3 sealed run (in flight).
+F-(i) residue: M2 pass 5 (final clean, on REVISION 4) + N-K3.
