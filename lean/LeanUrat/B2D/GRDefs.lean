@@ -15,11 +15,16 @@ Blueprint: `lean/blueprints/B2DEF_LEAN_2026-08-08.md` §4 + §5 (unit E1).
 moves_ref: §B2-DEF D.0 (P1)–(P4), D.5 (MOVES :2266–2277). deps: none (wave E).
 difficulty: easy (definitions + compile probe).
 
-**E-PHASE NOTE (the sanctioned exception to the no-sorry rule).** This module and
-its `GR1..GR4`/`TD*` fan-out are the B2DEF_LEAN campaign's E-phase skeleton: the
-definitional layer plus theorem statements whose `sorry` bodies are the campaign's
-OPEN-GOALS LEDGER, tracked unit-by-unit by the blueprint (each `sorry` carries its
-unit ID). No consumer may cite a sorry-bodied statement as evidence.
+**E-PHASE NOTE (historical; status corrected 2026-08-08, F6 hygiene pass).**
+At E-phase landing this module and its `GR1..GR4`/`TD*` fan-out were the
+B2DEF_LEAN campaign's E-phase skeleton: the definitional layer plus theorem
+statements whose `sorry` bodies were the campaign's OPEN-GOALS LEDGER, tracked
+unit-by-unit by the blueprint (each `sorry` carried its unit ID). AS OF
+2026-08-08 the TD front is SORRY-FREE end-to-end (TD-1..TD-6 proved on
+`LedgerLawfulV3`); GR-1/GR-2 are PROVED at the frozen statements; the only open
+B2D sorries are 3 GR entries (GR-3 ×2 + GR-4 ×1), open-obstructed by the
+ψ = φ(z^σ.e) gap at abstract σ.e ≥ 2 (GR wave-2a record). No consumer may cite
+a sorry-bodied statement as evidence.
 
 ## What this file carries
 

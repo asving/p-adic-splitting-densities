@@ -31,11 +31,16 @@ Blueprint: `lean/blueprints/B2DEF_LEAN_2026-08-08.md` §3 + §5 (unit E2).
 moves_ref: §B2-DEF D.3(e)(ii), D.8, D.11. deps: none (wave E).
 difficulty: easy-medium (definitions; two proved support lemmas).
 
-**E-PHASE NOTE (the sanctioned exception to the no-sorry rule).** This module and
-the `TD1..TD6` fan-out are E-phase skeleton: the definitional layer plus theorem
-statements whose `sorry` bodies are the campaign's OPEN-GOALS LEDGER, tracked by
-the blueprint (each `sorry` carries its unit ID). No consumer may cite a
-sorry-bodied statement as evidence. THIS file has NO sorry.
+**E-PHASE NOTE (historical; status corrected 2026-08-08, F6 hygiene pass).**
+At E-phase landing this module and the `TD1..TD6` fan-out were skeleton: the
+definitional layer plus theorem statements whose `sorry` bodies were the
+campaign's OPEN-GOALS LEDGER, tracked by the blueprint (each `sorry` carried
+its unit ID). AS OF 2026-08-08 the TD front is SORRY-FREE end-to-end: TD-1..TD-6
+are PROVED on `LedgerLawfulV3` (`transDeep_of_ledger` fills
+`fresh_of_transDeep`, machine-checked). The only open B2D sorries are the 3 GR
+entries (GR-3 ×2 + GR-4 ×1), open-obstructed by the ψ = φ(z^σ.e) gap at
+abstract σ.e ≥ 2 (GR wave-2a record). No consumer may cite a sorry-bodied
+statement as evidence. THIS file has NO sorry.
 
 ## The two-layer design [R1-G1 fold], as landed
 

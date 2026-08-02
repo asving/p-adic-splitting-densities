@@ -245,8 +245,8 @@
   },
   {
    "id": "CL5",
-   "file": "../HC1/C6_alphabetCard.lean:129 (in place, HC1 property)",
-   "status": "wave 1 (hardest hole, front 2) — untouched at E-phase"
+   "file": "../HC1/C6_alphabetCard.lean (in place, HC1 property)",
+   "status": "PROVED (CL-05 CLOSED 2026-08-02): the fullness identity (cleanThreshold -> fullness) discharged in HC1/C6_alphabetCard.lean (C6_alphabetCard, Lean-core, no sorry); was wave 1 (hardest hole, front 2), untouched at E-phase"
   },
   {
    "id": "TD-3-v2-GATE",

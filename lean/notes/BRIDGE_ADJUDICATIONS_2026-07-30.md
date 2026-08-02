@@ -4616,3 +4616,7 @@ VC25+hygiene → Asvin zero-cost batch (TowerMoveClosureL re-ratification,
 Route-B re-scope, review queue) → TR3-S2 → GR-3/4 disposition → REC-SL
 suppliers → readsOf walk → countermodel batch → small units → D-ITER
 restatement → forge → DIterJunctionSupplier; (H6) C2 stays blocked.
+
+## 2026-08-08 — F6 hygiene batch (synthesis pass 5, doc-only)
+
+Measured ground truth (`grep -rn sorry lean/LeanUrat/B2D/ --include='*.lean'`): 3 open B2D sorries — GR3_keyResidual.lean ×2 (GR-3) + GR4_gradedRead.lean ×1 (GR-4), open-obstructed by the ψ = φ(z^σ.e) gap at abstract σ.e ≥ 2; TD front sorry-free end-to-end. Corrected: stale E-phase open-goals-ledger headers in B2D/TDDefs.lean + B2D/GRDefs.lean (historical note retained, current status appended); B2D/MANIFEST.json CL5 entry updated from "untouched at E-phase" to PROVED (fullness identity closed in HC1/C6_alphabetCard.lean, 2026-08-02). TDDefsV2/V3 headers checked — no stale block. docs/ROOT_ASSEMBLY_2026-08-02.md r22 pointer deliberately NOT touched (deferred to r24 after VC25). Comments/JSON only; zero Lean code changes.
