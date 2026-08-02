@@ -3774,3 +3774,38 @@ SITE-EXH itself stays OPEN — this probe adjudicates its closure ROUTE; the
 H1_BM2 §S2 display, LIFT-CONF's scope, and all consumer rows are unchanged.
 Per the Tier-1 standing rule, this RED (needs-extension) verdict PAUSES
 lower-tier dispatching until the TruncatedRun extension is adjudicated.
+
+## 2026-08-08: STRATA PROBE (Tier-3 falsifiers, hardest-first item 5) — e0>=2 twist law CONFIRMED; D-ITER cyclic presentation REFUTED at the canonical alphabet
+
+`verification/openmath/strata_probe.py` (preregistered header; seed 20260815;
+exact; PARI on the 4 new tower rows; exit 0 — every preregistered row at its
+predicted count, 43,992 samples, 52 towers over all four base rings; full
+record `lean/notes/openmath/STRATA_PROBE_2026-08-08.md`):
+
+* **FAMILY A GREEN — TR-3'-GEN(ii) operationalized and instance-confirmed.**
+  Corrected-eps FGMN (Def 3.16/3.18 + corrected 3.15) vs an INDEPENDENT
+  GMN Defs 2.19-2.21 implementation (normalized l0, t1 nontrivial), e0 >= 2:
+  the per-slot discrepancy is the pure z1-character
+  **C^F_j = z1^(l0*g0*h0*s_j) * c^G_{s_j}** (TWIST-LAW; derived pre-run,
+  0/3,640; support+Lemma-A-general 0; TR3-S1 controls 0). Naive identity
+  refuted at ALL 1,023 twist-visible slots; retired S3.2-shape increment
+  refuted 293/293. Consumers of the (2') R_lambda leg at e0 >= 2 must
+  thread the slot-keyed character, not a per-argument constant.
+* **FAMILY B ADJUDICATED — the re-route the tier priced.** The order-2
+  composite digit algebra at E2 = e0*e1 > 1 on canonical anchors obeys the
+  measured ITER-LAW c = zbar^(d2) * z1^((s1-defect + l0*gamma2*d2)/e0)
+  (two structure constants + fibration term; 0/804 pairs; degenerates to
+  D-REAL at e0 = 1 and to z1^(d1) at e1 = 1). The SINGLE-zeta' CYCLIC
+  presentation (GRB S5.3's open D-ITER claim / the MOVES SF.2 display) is
+  **FALSE at the canonical (dig-consumed) alphabet**: NOT-CYCLIC at 22/28
+  mixed (e0,e1 >= 2) towers — designed row N (K2 a genuine deg-2 extension,
+  zbar not in <z1>) is the kill-shot genre; the 6 cyclic exceptions are
+  twist-blind small-field collapses. Bug detectors (cocycle identity,
+  rep-independence, shape laws, CERT/PARI) all green; abstract crossed-
+  product cyclicity displayed as automatic/not-tested. D-ITER must be
+  RESTATED to the iterated twisted form; no Lean kernel may bake in
+  F'[u]/(u^(e_b') - zeta') for composite stages. MOVES pass-8 critical 3
+  answered at order 2 by measurement.
+* Build-phase note: one adjudicator bug (rep/label misalignment) was caught
+  by the preregistered sealed B3 control row on the first full run and
+  fixed (amendment displayed in the script header); predictions untouched.

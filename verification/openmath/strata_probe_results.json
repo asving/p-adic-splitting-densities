@@ -1,0 +1,756 @@
+{
+ "violations": [],
+ "counts": {
+  "A3": 3640,
+  "A0": 20828,
+  "A1": 7255,
+  "A2": 4297,
+  "A5": 1252,
+  "B1": 1984,
+  "B2": 804,
+  "B0c": 804,
+  "B0a": 2732,
+  "B3": 52
+ },
+ "cert_violations": 0,
+ "a6": {
+  "naive_refuted": 1023,
+  "visible": 1023
+ },
+ "a7": {
+  "retired_refuted": 293,
+  "pairs": 293
+ },
+ "b_adjudication": [
+  {
+   "tower": "Zp,p=2,A",
+   "E2": 2,
+   "e0": 1,
+   "e1": 2,
+   "cyc_verdict": "CYCLIC (c == 1 identically, zeta' = 1)",
+   "cyclic": true,
+   "predicted_cyclic_sealed": true,
+   "nontrivial_values": [],
+   "zeta_weight1": "1",
+   "zeta_key": "1"
+  },
+  {
+   "tower": "Zp,p=2,B",
+   "E2": 3,
+   "e0": 1,
+   "e1": 3,
+   "cyc_verdict": "CYCLIC (c == 1 identically, zeta' = 1)",
+   "cyclic": true,
+   "predicted_cyclic_sealed": true,
+   "nontrivial_values": [],
+   "zeta_weight1": "1",
+   "zeta_key": "1"
+  },
+  {
+   "tower": "Zp,p=2,C",
+   "E2": 4,
+   "e0": 2,
+   "e1": 2,
+   "cyc_verdict": "CYCLIC (c == 1 identically, zeta' = 1)",
+   "cyclic": true,
+   "predicted_cyclic_sealed": null,
+   "nontrivial_values": [],
+   "zeta_weight1": "1",
+   "zeta_key": "1"
+  },
+  {
+   "tower": "Zp,p=2,D",
+   "E2": 2,
+   "e0": 2,
+   "e1": 1,
+   "cyc_verdict": "CYCLIC (c == 1 identically, zeta' = 1)",
+   "cyclic": true,
+   "predicted_cyclic_sealed": null,
+   "nontrivial_values": [],
+   "zeta_weight1": "1",
+   "zeta_key": "zbar^2*z1^0"
+  },
+  {
+   "tower": "Zp,p=2,E",
+   "E2": 6,
+   "e0": 3,
+   "e1": 2,
+   "cyc_verdict": "CYCLIC (c == 1 identically, zeta' = 1)",
+   "cyclic": true,
+   "predicted_cyclic_sealed": null,
+   "nontrivial_values": [],
+   "zeta_weight1": "1",
+   "zeta_key": "1"
+  },
+  {
+   "tower": "Zp,p=2,G",
+   "E2": 2,
+   "e0": 1,
+   "e1": 2,
+   "cyc_verdict": "CYCLIC zeta' = zbar^0*z1^1, relabeling sigma = (0, 1)",
+   "cyclic": true,
+   "predicted_cyclic_sealed": true,
+   "nontrivial_values": [
+    "zbar^0*z1^1"
+   ],
+   "zeta_weight1": "zbar^0*z1^1",
+   "zeta_key": "zbar^0*z1^1"
+  },
+  {
+   "tower": "Zp,p=2,H",
+   "E2": 2,
+   "e0": 2,
+   "e1": 1,
+   "cyc_verdict": "CYCLIC zeta' = zbar^0*z1^1, relabeling sigma = (0, 1)",
+   "cyclic": true,
+   "predicted_cyclic_sealed": null,
+   "nontrivial_values": [
+    "zbar^0*z1^1"
+   ],
+   "zeta_weight1": "zbar^0*z1^1",
+   "zeta_key": "zbar^0*z1^2"
+  },
+  {
+   "tower": "Zp,p=2,I",
+   "E2": 2,
+   "e0": 1,
+   "e1": 2,
+   "cyc_verdict": "CYCLIC zeta' = zbar^1*z1^0, relabeling sigma = (0, 1)",
+   "cyclic": true,
+   "predicted_cyclic_sealed": true,
+   "nontrivial_values": [
+    "zbar^1*z1^0"
+   ],
+   "zeta_weight1": "zbar^1*z1^0",
+   "zeta_key": "zbar^1*z1^0"
+  },
+  {
+   "tower": "Zp,p=2,J",
+   "E2": 4,
+   "e0": 2,
+   "e1": 2,
+   "cyc_verdict": "NOT-CYCLIC (>= 2 distinct non-1 cocycle values: zbar^0*z1^1, zbar^1*z1^0, zbar^1*z1^4)",
+   "cyclic": false,
+   "predicted_cyclic_sealed": null,
+   "nontrivial_values": [
+    "zbar^0*z1^1",
+    "zbar^1*z1^0",
+    "zbar^1*z1^4"
+   ],
+   "zeta_weight1": "zbar^2*z1^4",
+   "zeta_key": "zbar^2*z1^4"
+  },
+  {
+   "tower": "Zp,p=2,K",
+   "E2": 4,
+   "e0": 2,
+   "e1": 2,
+   "cyc_verdict": "CYCLIC zeta' = zbar^0*z1^1, relabeling sigma = (0, 1, 2, 3)",
+   "cyclic": true,
+   "predicted_cyclic_sealed": null,
+   "nontrivial_values": [
+    "zbar^0*z1^1"
+   ],
+   "zeta_weight1": "zbar^0*z1^1",
+   "zeta_key": "zbar^0*z1^1"
+  },
+  {
+   "tower": "Zp,p=2,L",
+   "E2": 6,
+   "e0": 3,
+   "e1": 2,
+   "cyc_verdict": "NOT-CYCLIC (>= 2 distinct non-1 cocycle values: zbar^0*z1^1, zbar^0*z1^2)",
+   "cyclic": false,
+   "predicted_cyclic_sealed": null,
+   "nontrivial_values": [
+    "zbar^0*z1^1",
+    "zbar^0*z1^2"
+   ],
+   "zeta_weight1": "zbar^0*z1^2",
+   "zeta_key": "zbar^0*z1^2"
+  },
+  {
+   "tower": "Zp,p=2,M",
+   "E2": 6,
+   "e0": 2,
+   "e1": 3,
+   "cyc_verdict": "NOT-CYCLIC (>= 2 distinct non-1 cocycle values: zbar^0*z1^1, zbar^1*z1^1, zbar^1*z1^2)",
+   "cyclic": false,
+   "predicted_cyclic_sealed": null,
+   "nontrivial_values": [
+    "zbar^0*z1^1",
+    "zbar^1*z1^1",
+    "zbar^1*z1^2"
+   ],
+   "zeta_weight1": "zbar^2*z1^3",
+   "zeta_key": "zbar^2*z1^3"
+  },
+  {
+   "tower": "Zp,p=2,N",
+   "E2": 4,
+   "e0": 2,
+   "e1": 2,
+   "cyc_verdict": "NOT-CYCLIC (>= 2 distinct non-1 cocycle values: zbar^0*z1^1, zbar^1*z1^0, zbar^1*z1^2)",
+   "cyclic": false,
+   "predicted_cyclic_sealed": null,
+   "nontrivial_values": [
+    "zbar^0*z1^1",
+    "zbar^1*z1^0",
+    "zbar^1*z1^2"
+   ],
+   "zeta_weight1": "zbar^2*z1^2",
+   "zeta_key": "zbar^2*z1^2"
+  },
+  {
+   "tower": "Zp,p=3,A",
+   "E2": 2,
+   "e0": 1,
+   "e1": 2,
+   "cyc_verdict": "CYCLIC zeta' = zbar^0*z1^1, relabeling sigma = (0, 1)",
+   "cyclic": true,
+   "predicted_cyclic_sealed": true,
+   "nontrivial_values": [
+    "zbar^0*z1^1"
+   ],
+   "zeta_weight1": "zbar^0*z1^1",
+   "zeta_key": "zbar^0*z1^1"
+  },
+  {
+   "tower": "Zp,p=3,B",
+   "E2": 3,
+   "e0": 1,
+   "e1": 3,
+   "cyc_verdict": "CYCLIC (c == 1 identically, zeta' = 1)",
+   "cyclic": true,
+   "predicted_cyclic_sealed": true,
+   "nontrivial_values": [],
+   "zeta_weight1": "1",
+   "zeta_key": "1"
+  },
+  {
+   "tower": "Zp,p=3,C",
+   "E2": 4,
+   "e0": 2,
+   "e1": 2,
+   "cyc_verdict": "NOT-CYCLIC (single value zbar^0*z1^1 but carry pattern not realizable by any relabeling)",
+   "cyclic": false,
+   "predicted_cyclic_sealed": null,
+   "nontrivial_values": [
+    "zbar^0*z1^1"
+   ],
+   "zeta_weight1": "zbar^0*z1^1",
+   "zeta_key": "zbar^0*z1^1"
+  },
+  {
+   "tower": "Zp,p=3,D",
+   "E2": 2,
+   "e0": 2,
+   "e1": 1,
+   "cyc_verdict": "CYCLIC zeta' = zbar^0*z1^1, relabeling sigma = (0, 1)",
+   "cyclic": true,
+   "predicted_cyclic_sealed": null,
+   "nontrivial_values": [
+    "zbar^0*z1^1"
+   ],
+   "zeta_weight1": "zbar^0*z1^1",
+   "zeta_key": "zbar^2*z1^1"
+  },
+  {
+   "tower": "Zp,p=3,E",
+   "E2": 6,
+   "e0": 3,
+   "e1": 2,
+   "cyc_verdict": "NOT-CYCLIC (single value zbar^0*z1^1 but carry pattern not realizable by any relabeling)",
+   "cyclic": false,
+   "predicted_cyclic_sealed": null,
+   "nontrivial_values": [
+    "zbar^0*z1^1"
+   ],
+   "zeta_weight1": "1",
+   "zeta_key": "1"
+  },
+  {
+   "tower": "Zp,p=3,G",
+   "E2": 2,
+   "e0": 1,
+   "e1": 2,
+   "cyc_verdict": "CYCLIC zeta' = zbar^0*z1^1, relabeling sigma = (0, 1)",
+   "cyclic": true,
+   "predicted_cyclic_sealed": true,
+   "nontrivial_values": [
+    "zbar^0*z1^1"
+   ],
+   "zeta_weight1": "zbar^0*z1^1",
+   "zeta_key": "zbar^0*z1^1"
+  },
+  {
+   "tower": "Zp,p=3,H",
+   "E2": 2,
+   "e0": 2,
+   "e1": 1,
+   "cyc_verdict": "CYCLIC zeta' = zbar^0*z1^1, relabeling sigma = (0, 1)",
+   "cyclic": true,
+   "predicted_cyclic_sealed": null,
+   "nontrivial_values": [
+    "zbar^0*z1^1"
+   ],
+   "zeta_weight1": "zbar^0*z1^1",
+   "zeta_key": "zbar^0*z1^1"
+  },
+  {
+   "tower": "Zp,p=3,I",
+   "E2": 2,
+   "e0": 1,
+   "e1": 2,
+   "cyc_verdict": "CYCLIC zeta' = zbar^1*z1^0, relabeling sigma = (0, 1)",
+   "cyclic": true,
+   "predicted_cyclic_sealed": true,
+   "nontrivial_values": [
+    "zbar^1*z1^0"
+   ],
+   "zeta_weight1": "zbar^1*z1^0",
+   "zeta_key": "zbar^1*z1^0"
+  },
+  {
+   "tower": "Zp,p=3,J",
+   "E2": 4,
+   "e0": 2,
+   "e1": 2,
+   "cyc_verdict": "NOT-CYCLIC (>= 2 distinct non-1 cocycle values: zbar^0*z1^1, zbar^1*z1^0, zbar^1*z1^4)",
+   "cyclic": false,
+   "predicted_cyclic_sealed": null,
+   "nontrivial_values": [
+    "zbar^0*z1^1",
+    "zbar^1*z1^0",
+    "zbar^1*z1^4"
+   ],
+   "zeta_weight1": "zbar^0*z1^4",
+   "zeta_key": "zbar^0*z1^4"
+  },
+  {
+   "tower": "Zp,p=3,K",
+   "E2": 4,
+   "e0": 2,
+   "e1": 2,
+   "cyc_verdict": "NOT-CYCLIC (single value zbar^0*z1^1 but carry pattern not realizable by any relabeling)",
+   "cyclic": false,
+   "predicted_cyclic_sealed": null,
+   "nontrivial_values": [
+    "zbar^0*z1^1"
+   ],
+   "zeta_weight1": "zbar^0*z1^1",
+   "zeta_key": "zbar^0*z1^1"
+  },
+  {
+   "tower": "Zp,p=3,L",
+   "E2": 6,
+   "e0": 3,
+   "e1": 2,
+   "cyc_verdict": "NOT-CYCLIC (single value zbar^0*z1^1 but carry pattern not realizable by any relabeling)",
+   "cyclic": false,
+   "predicted_cyclic_sealed": null,
+   "nontrivial_values": [
+    "zbar^0*z1^1"
+   ],
+   "zeta_weight1": "1",
+   "zeta_key": "1"
+  },
+  {
+   "tower": "Zp,p=3,M",
+   "E2": 6,
+   "e0": 2,
+   "e1": 3,
+   "cyc_verdict": "NOT-CYCLIC (>= 2 distinct non-1 cocycle values: zbar^0*z1^1, zbar^1*z1^1, zbar^1*z1^2)",
+   "cyclic": false,
+   "predicted_cyclic_sealed": null,
+   "nontrivial_values": [
+    "zbar^0*z1^1",
+    "zbar^1*z1^1",
+    "zbar^1*z1^2"
+   ],
+   "zeta_weight1": "zbar^0*z1^3",
+   "zeta_key": "zbar^0*z1^3"
+  },
+  {
+   "tower": "Zp,p=3,N",
+   "E2": 4,
+   "e0": 2,
+   "e1": 2,
+   "cyc_verdict": "NOT-CYCLIC (>= 2 distinct non-1 cocycle values: zbar^0*z1^1, zbar^1*z1^0, zbar^1*z1^1)",
+   "cyclic": false,
+   "predicted_cyclic_sealed": null,
+   "nontrivial_values": [
+    "zbar^0*z1^1",
+    "zbar^1*z1^0",
+    "zbar^1*z1^1"
+   ],
+   "zeta_weight1": "zbar^2*z1^1",
+   "zeta_key": "zbar^2*z1^1"
+  },
+  {
+   "tower": "Fpt,p=2,A",
+   "E2": 2,
+   "e0": 1,
+   "e1": 2,
+   "cyc_verdict": "CYCLIC (c == 1 identically, zeta' = 1)",
+   "cyclic": true,
+   "predicted_cyclic_sealed": true,
+   "nontrivial_values": [],
+   "zeta_weight1": "1",
+   "zeta_key": "1"
+  },
+  {
+   "tower": "Fpt,p=2,B",
+   "E2": 3,
+   "e0": 1,
+   "e1": 3,
+   "cyc_verdict": "CYCLIC (c == 1 identically, zeta' = 1)",
+   "cyclic": true,
+   "predicted_cyclic_sealed": true,
+   "nontrivial_values": [],
+   "zeta_weight1": "1",
+   "zeta_key": "1"
+  },
+  {
+   "tower": "Fpt,p=2,C",
+   "E2": 4,
+   "e0": 2,
+   "e1": 2,
+   "cyc_verdict": "CYCLIC (c == 1 identically, zeta' = 1)",
+   "cyclic": true,
+   "predicted_cyclic_sealed": null,
+   "nontrivial_values": [],
+   "zeta_weight1": "1",
+   "zeta_key": "1"
+  },
+  {
+   "tower": "Fpt,p=2,D",
+   "E2": 2,
+   "e0": 2,
+   "e1": 1,
+   "cyc_verdict": "CYCLIC (c == 1 identically, zeta' = 1)",
+   "cyclic": true,
+   "predicted_cyclic_sealed": null,
+   "nontrivial_values": [],
+   "zeta_weight1": "1",
+   "zeta_key": "zbar^2*z1^0"
+  },
+  {
+   "tower": "Fpt,p=2,E",
+   "E2": 6,
+   "e0": 3,
+   "e1": 2,
+   "cyc_verdict": "CYCLIC (c == 1 identically, zeta' = 1)",
+   "cyclic": true,
+   "predicted_cyclic_sealed": null,
+   "nontrivial_values": [],
+   "zeta_weight1": "1",
+   "zeta_key": "1"
+  },
+  {
+   "tower": "Fpt,p=2,G",
+   "E2": 2,
+   "e0": 1,
+   "e1": 2,
+   "cyc_verdict": "CYCLIC zeta' = zbar^0*z1^1, relabeling sigma = (0, 1)",
+   "cyclic": true,
+   "predicted_cyclic_sealed": true,
+   "nontrivial_values": [
+    "zbar^0*z1^1"
+   ],
+   "zeta_weight1": "zbar^0*z1^1",
+   "zeta_key": "zbar^0*z1^1"
+  },
+  {
+   "tower": "Fpt,p=2,H",
+   "E2": 2,
+   "e0": 2,
+   "e1": 1,
+   "cyc_verdict": "CYCLIC zeta' = zbar^0*z1^1, relabeling sigma = (0, 1)",
+   "cyclic": true,
+   "predicted_cyclic_sealed": null,
+   "nontrivial_values": [
+    "zbar^0*z1^1"
+   ],
+   "zeta_weight1": "zbar^0*z1^1",
+   "zeta_key": "zbar^0*z1^2"
+  },
+  {
+   "tower": "Fpt,p=2,I",
+   "E2": 2,
+   "e0": 1,
+   "e1": 2,
+   "cyc_verdict": "CYCLIC zeta' = zbar^1*z1^0, relabeling sigma = (0, 1)",
+   "cyclic": true,
+   "predicted_cyclic_sealed": true,
+   "nontrivial_values": [
+    "zbar^1*z1^0"
+   ],
+   "zeta_weight1": "zbar^1*z1^0",
+   "zeta_key": "zbar^1*z1^0"
+  },
+  {
+   "tower": "Fpt,p=2,J",
+   "E2": 4,
+   "e0": 2,
+   "e1": 2,
+   "cyc_verdict": "NOT-CYCLIC (>= 2 distinct non-1 cocycle values: zbar^0*z1^1, zbar^1*z1^0, zbar^1*z1^4)",
+   "cyclic": false,
+   "predicted_cyclic_sealed": null,
+   "nontrivial_values": [
+    "zbar^0*z1^1",
+    "zbar^1*z1^0",
+    "zbar^1*z1^4"
+   ],
+   "zeta_weight1": "zbar^2*z1^4",
+   "zeta_key": "zbar^2*z1^4"
+  },
+  {
+   "tower": "Fpt,p=2,K",
+   "E2": 4,
+   "e0": 2,
+   "e1": 2,
+   "cyc_verdict": "CYCLIC zeta' = zbar^0*z1^1, relabeling sigma = (0, 1, 2, 3)",
+   "cyclic": true,
+   "predicted_cyclic_sealed": null,
+   "nontrivial_values": [
+    "zbar^0*z1^1"
+   ],
+   "zeta_weight1": "zbar^0*z1^1",
+   "zeta_key": "zbar^0*z1^1"
+  },
+  {
+   "tower": "Fpt,p=2,L",
+   "E2": 6,
+   "e0": 3,
+   "e1": 2,
+   "cyc_verdict": "NOT-CYCLIC (>= 2 distinct non-1 cocycle values: zbar^0*z1^1, zbar^0*z1^2)",
+   "cyclic": false,
+   "predicted_cyclic_sealed": null,
+   "nontrivial_values": [
+    "zbar^0*z1^1",
+    "zbar^0*z1^2"
+   ],
+   "zeta_weight1": "zbar^0*z1^2",
+   "zeta_key": "zbar^0*z1^2"
+  },
+  {
+   "tower": "Fpt,p=2,M",
+   "E2": 6,
+   "e0": 2,
+   "e1": 3,
+   "cyc_verdict": "NOT-CYCLIC (>= 2 distinct non-1 cocycle values: zbar^0*z1^1, zbar^1*z1^1, zbar^1*z1^2)",
+   "cyclic": false,
+   "predicted_cyclic_sealed": null,
+   "nontrivial_values": [
+    "zbar^0*z1^1",
+    "zbar^1*z1^1",
+    "zbar^1*z1^2"
+   ],
+   "zeta_weight1": "zbar^2*z1^3",
+   "zeta_key": "zbar^2*z1^3"
+  },
+  {
+   "tower": "Fpt,p=2,N",
+   "E2": 4,
+   "e0": 2,
+   "e1": 2,
+   "cyc_verdict": "NOT-CYCLIC (>= 2 distinct non-1 cocycle values: zbar^0*z1^1, zbar^1*z1^0, zbar^1*z1^2)",
+   "cyclic": false,
+   "predicted_cyclic_sealed": null,
+   "nontrivial_values": [
+    "zbar^0*z1^1",
+    "zbar^1*z1^0",
+    "zbar^1*z1^2"
+   ],
+   "zeta_weight1": "zbar^2*z1^2",
+   "zeta_key": "zbar^2*z1^2"
+  },
+  {
+   "tower": "Fpt,p=3,A",
+   "E2": 2,
+   "e0": 1,
+   "e1": 2,
+   "cyc_verdict": "CYCLIC zeta' = zbar^0*z1^1, relabeling sigma = (0, 1)",
+   "cyclic": true,
+   "predicted_cyclic_sealed": true,
+   "nontrivial_values": [
+    "zbar^0*z1^1"
+   ],
+   "zeta_weight1": "zbar^0*z1^1",
+   "zeta_key": "zbar^0*z1^1"
+  },
+  {
+   "tower": "Fpt,p=3,B",
+   "E2": 3,
+   "e0": 1,
+   "e1": 3,
+   "cyc_verdict": "CYCLIC (c == 1 identically, zeta' = 1)",
+   "cyclic": true,
+   "predicted_cyclic_sealed": true,
+   "nontrivial_values": [],
+   "zeta_weight1": "1",
+   "zeta_key": "1"
+  },
+  {
+   "tower": "Fpt,p=3,C",
+   "E2": 4,
+   "e0": 2,
+   "e1": 2,
+   "cyc_verdict": "NOT-CYCLIC (single value zbar^0*z1^1 but carry pattern not realizable by any relabeling)",
+   "cyclic": false,
+   "predicted_cyclic_sealed": null,
+   "nontrivial_values": [
+    "zbar^0*z1^1"
+   ],
+   "zeta_weight1": "zbar^0*z1^1",
+   "zeta_key": "zbar^0*z1^1"
+  },
+  {
+   "tower": "Fpt,p=3,D",
+   "E2": 2,
+   "e0": 2,
+   "e1": 1,
+   "cyc_verdict": "CYCLIC zeta' = zbar^0*z1^1, relabeling sigma = (0, 1)",
+   "cyclic": true,
+   "predicted_cyclic_sealed": null,
+   "nontrivial_values": [
+    "zbar^0*z1^1"
+   ],
+   "zeta_weight1": "zbar^0*z1^1",
+   "zeta_key": "zbar^2*z1^1"
+  },
+  {
+   "tower": "Fpt,p=3,E",
+   "E2": 6,
+   "e0": 3,
+   "e1": 2,
+   "cyc_verdict": "NOT-CYCLIC (single value zbar^0*z1^1 but carry pattern not realizable by any relabeling)",
+   "cyclic": false,
+   "predicted_cyclic_sealed": null,
+   "nontrivial_values": [
+    "zbar^0*z1^1"
+   ],
+   "zeta_weight1": "1",
+   "zeta_key": "1"
+  },
+  {
+   "tower": "Fpt,p=3,G",
+   "E2": 2,
+   "e0": 1,
+   "e1": 2,
+   "cyc_verdict": "CYCLIC zeta' = zbar^0*z1^1, relabeling sigma = (0, 1)",
+   "cyclic": true,
+   "predicted_cyclic_sealed": true,
+   "nontrivial_values": [
+    "zbar^0*z1^1"
+   ],
+   "zeta_weight1": "zbar^0*z1^1",
+   "zeta_key": "zbar^0*z1^1"
+  },
+  {
+   "tower": "Fpt,p=3,H",
+   "E2": 2,
+   "e0": 2,
+   "e1": 1,
+   "cyc_verdict": "CYCLIC zeta' = zbar^0*z1^1, relabeling sigma = (0, 1)",
+   "cyclic": true,
+   "predicted_cyclic_sealed": null,
+   "nontrivial_values": [
+    "zbar^0*z1^1"
+   ],
+   "zeta_weight1": "zbar^0*z1^1",
+   "zeta_key": "zbar^0*z1^1"
+  },
+  {
+   "tower": "Fpt,p=3,I",
+   "E2": 2,
+   "e0": 1,
+   "e1": 2,
+   "cyc_verdict": "CYCLIC zeta' = zbar^1*z1^0, relabeling sigma = (0, 1)",
+   "cyclic": true,
+   "predicted_cyclic_sealed": true,
+   "nontrivial_values": [
+    "zbar^1*z1^0"
+   ],
+   "zeta_weight1": "zbar^1*z1^0",
+   "zeta_key": "zbar^1*z1^0"
+  },
+  {
+   "tower": "Fpt,p=3,J",
+   "E2": 4,
+   "e0": 2,
+   "e1": 2,
+   "cyc_verdict": "NOT-CYCLIC (>= 2 distinct non-1 cocycle values: zbar^0*z1^1, zbar^1*z1^0, zbar^1*z1^4)",
+   "cyclic": false,
+   "predicted_cyclic_sealed": null,
+   "nontrivial_values": [
+    "zbar^0*z1^1",
+    "zbar^1*z1^0",
+    "zbar^1*z1^4"
+   ],
+   "zeta_weight1": "zbar^0*z1^4",
+   "zeta_key": "zbar^0*z1^4"
+  },
+  {
+   "tower": "Fpt,p=3,K",
+   "E2": 4,
+   "e0": 2,
+   "e1": 2,
+   "cyc_verdict": "NOT-CYCLIC (single value zbar^0*z1^1 but carry pattern not realizable by any relabeling)",
+   "cyclic": false,
+   "predicted_cyclic_sealed": null,
+   "nontrivial_values": [
+    "zbar^0*z1^1"
+   ],
+   "zeta_weight1": "zbar^0*z1^1",
+   "zeta_key": "zbar^0*z1^1"
+  },
+  {
+   "tower": "Fpt,p=3,L",
+   "E2": 6,
+   "e0": 3,
+   "e1": 2,
+   "cyc_verdict": "NOT-CYCLIC (single value zbar^0*z1^1 but carry pattern not realizable by any relabeling)",
+   "cyclic": false,
+   "predicted_cyclic_sealed": null,
+   "nontrivial_values": [
+    "zbar^0*z1^1"
+   ],
+   "zeta_weight1": "1",
+   "zeta_key": "1"
+  },
+  {
+   "tower": "Fpt,p=3,M",
+   "E2": 6,
+   "e0": 2,
+   "e1": 3,
+   "cyc_verdict": "NOT-CYCLIC (>= 2 distinct non-1 cocycle values: zbar^0*z1^1, zbar^1*z1^1, zbar^1*z1^2)",
+   "cyclic": false,
+   "predicted_cyclic_sealed": null,
+   "nontrivial_values": [
+    "zbar^0*z1^1",
+    "zbar^1*z1^1",
+    "zbar^1*z1^2"
+   ],
+   "zeta_weight1": "zbar^0*z1^3",
+   "zeta_key": "zbar^0*z1^3"
+  },
+  {
+   "tower": "Fpt,p=3,N",
+   "E2": 4,
+   "e0": 2,
+   "e1": 2,
+   "cyc_verdict": "NOT-CYCLIC (>= 2 distinct non-1 cocycle values: zbar^0*z1^1, zbar^1*z1^0, zbar^1*z1^1)",
+   "cyclic": false,
+   "predicted_cyclic_sealed": null,
+   "nontrivial_values": [
+    "zbar^0*z1^1",
+    "zbar^1*z1^0",
+    "zbar^1*z1^1"
+   ],
+   "zeta_weight1": "zbar^2*z1^1",
+   "zeta_key": "zbar^2*z1^1"
+  }
+ ]
+}

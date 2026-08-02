@@ -1,0 +1,142 @@
+[   0.6s] CERT done: 0 violations (344 samples) on designed rows K/L/M/N
+[   1.0s] FAMILY A ring (Zp,p=2) done: cumulative violations = 0
+[   1.5s] FAMILY A ring (Zp,p=3) done: cumulative violations = 0
+[   4.1s] FAMILY A ring (Fpt,p=2) done: cumulative violations = 0
+[   7.3s] FAMILY A ring (Fpt,p=3) done: cumulative violations = 0
+[   7.9s] FAMILY B ring (Zp,p=2) done: cumulative violations = 0
+[   8.6s] FAMILY B ring (Zp,p=3) done: cumulative violations = 0
+[  10.5s] FAMILY B ring (Fpt,p=2) done: cumulative violations = 0
+[  12.7s] FAMILY B ring (Fpt,p=3) done: cumulative violations = 0
+
+==============================================================================
+PREDICTED vs OBSERVED (violation counts; samples in parentheses)
+==============================================================================
+A0  GMN-side integrity (t1 int, comp shape, c!=0) [SEALED]    pred 0  obs     0 ( 20828)  GREEN
+A1  support agreement FGMN vs GMN            [CONJ comp.]     pred 0  obs     0 (  7255)  GREEN
+A2  Lemma-A-general inner z-shift            [CONJ comp.]     pred 0  obs     0 (  4297)  GREEN
+A3  (TWIST-LAW) C^F = z1^(l0 g0 h0 s_j) c^G  [THE CONJ]       pred 0  obs     0 (  3640)  GREEN
+A5  e0=1 controls: identity (TR3-S1)         [SEALED]         pred 0  obs     0 (  1252)  GREEN
+B0a cocycle identity (associativity)        [BUG-DET]         pred 0  obs     0 (  2732)  GREEN
+B0c representative independence             [SEALED]          pred 0  obs     0 (   804)  GREEN
+B1  alphabet/shape laws (letters, pairs)     [SEALED]         pred 0  obs     0 (  1984)  GREEN
+B2  (ITER-LAW) composite structure constants [DERIVED]        pred 0  obs     0 (   804)  GREEN
+B3  e0=1 CYC controls (D-REAL)               [SEALED]         pred 0  obs     0 (    52)  GREEN
+CERT designed-row certification (T1/T2/T5/T11+PARI)       pred 0  obs     0 (   344)  GREEN
+A6 naive-identity refuted at twist-visible slots: 1023/1023 (pred: equal, >0)  MATCH
+A7 retired-S3.2-shape increment refuted on discriminating pairs: 293/293 (pred: equal)  MATCH
+------------------------------------------------------------------------------
+B3/B4 COMPOSITE ADJUDICATION (per tower):
+  Zp,p=2,A       E2=2 (e0=1,e1=2): CYCLIC (c == 1 identically, zeta' = 1)
+      values=[]  zeta_w1=1  zeta_key=1
+  Zp,p=2,B       E2=3 (e0=1,e1=3): CYCLIC (c == 1 identically, zeta' = 1)
+      values=[]  zeta_w1=1  zeta_key=1
+  Zp,p=2,C       E2=4 (e0=2,e1=2): CYCLIC (c == 1 identically, zeta' = 1)
+      values=[]  zeta_w1=1  zeta_key=1
+  Zp,p=2,D       E2=2 (e0=2,e1=1): CYCLIC (c == 1 identically, zeta' = 1)
+      values=[]  zeta_w1=1  zeta_key=zbar^2*z1^0
+  Zp,p=2,E       E2=6 (e0=3,e1=2): CYCLIC (c == 1 identically, zeta' = 1)
+      values=[]  zeta_w1=1  zeta_key=1
+  Zp,p=2,G       E2=2 (e0=1,e1=2): CYCLIC zeta' = zbar^0*z1^1, relabeling sigma = (0, 1)
+      values=['zbar^0*z1^1']  zeta_w1=zbar^0*z1^1  zeta_key=zbar^0*z1^1
+  Zp,p=2,H       E2=2 (e0=2,e1=1): CYCLIC zeta' = zbar^0*z1^1, relabeling sigma = (0, 1)
+      values=['zbar^0*z1^1']  zeta_w1=zbar^0*z1^1  zeta_key=zbar^0*z1^2
+  Zp,p=2,I       E2=2 (e0=1,e1=2): CYCLIC zeta' = zbar^1*z1^0, relabeling sigma = (0, 1)
+      values=['zbar^1*z1^0']  zeta_w1=zbar^1*z1^0  zeta_key=zbar^1*z1^0
+  Zp,p=2,J       E2=4 (e0=2,e1=2): NOT-CYCLIC (>= 2 distinct non-1 cocycle values: zbar^0*z1^1, zbar^1*z1^0, zbar^1*z1^4)
+      values=['zbar^0*z1^1', 'zbar^1*z1^0', 'zbar^1*z1^4']  zeta_w1=zbar^2*z1^4  zeta_key=zbar^2*z1^4
+  Zp,p=2,K       E2=4 (e0=2,e1=2): CYCLIC zeta' = zbar^0*z1^1, relabeling sigma = (0, 1, 2, 3)
+      values=['zbar^0*z1^1']  zeta_w1=zbar^0*z1^1  zeta_key=zbar^0*z1^1
+  Zp,p=2,L       E2=6 (e0=3,e1=2): NOT-CYCLIC (>= 2 distinct non-1 cocycle values: zbar^0*z1^1, zbar^0*z1^2)
+      values=['zbar^0*z1^1', 'zbar^0*z1^2']  zeta_w1=zbar^0*z1^2  zeta_key=zbar^0*z1^2
+  Zp,p=2,M       E2=6 (e0=2,e1=3): NOT-CYCLIC (>= 2 distinct non-1 cocycle values: zbar^0*z1^1, zbar^1*z1^1, zbar^1*z1^2)
+      values=['zbar^0*z1^1', 'zbar^1*z1^1', 'zbar^1*z1^2']  zeta_w1=zbar^2*z1^3  zeta_key=zbar^2*z1^3
+  Zp,p=2,N       E2=4 (e0=2,e1=2): NOT-CYCLIC (>= 2 distinct non-1 cocycle values: zbar^0*z1^1, zbar^1*z1^0, zbar^1*z1^2)
+      values=['zbar^0*z1^1', 'zbar^1*z1^0', 'zbar^1*z1^2']  zeta_w1=zbar^2*z1^2  zeta_key=zbar^2*z1^2
+  Zp,p=3,A       E2=2 (e0=1,e1=2): CYCLIC zeta' = zbar^0*z1^1, relabeling sigma = (0, 1)
+      values=['zbar^0*z1^1']  zeta_w1=zbar^0*z1^1  zeta_key=zbar^0*z1^1
+  Zp,p=3,B       E2=3 (e0=1,e1=3): CYCLIC (c == 1 identically, zeta' = 1)
+      values=[]  zeta_w1=1  zeta_key=1
+  Zp,p=3,C       E2=4 (e0=2,e1=2): NOT-CYCLIC (single value zbar^0*z1^1 but carry pattern not realizable by any relabeling)
+      values=['zbar^0*z1^1']  zeta_w1=zbar^0*z1^1  zeta_key=zbar^0*z1^1
+  Zp,p=3,D       E2=2 (e0=2,e1=1): CYCLIC zeta' = zbar^0*z1^1, relabeling sigma = (0, 1)
+      values=['zbar^0*z1^1']  zeta_w1=zbar^0*z1^1  zeta_key=zbar^2*z1^1
+  Zp,p=3,E       E2=6 (e0=3,e1=2): NOT-CYCLIC (single value zbar^0*z1^1 but carry pattern not realizable by any relabeling)
+      values=['zbar^0*z1^1']  zeta_w1=1  zeta_key=1
+  Zp,p=3,G       E2=2 (e0=1,e1=2): CYCLIC zeta' = zbar^0*z1^1, relabeling sigma = (0, 1)
+      values=['zbar^0*z1^1']  zeta_w1=zbar^0*z1^1  zeta_key=zbar^0*z1^1
+  Zp,p=3,H       E2=2 (e0=2,e1=1): CYCLIC zeta' = zbar^0*z1^1, relabeling sigma = (0, 1)
+      values=['zbar^0*z1^1']  zeta_w1=zbar^0*z1^1  zeta_key=zbar^0*z1^1
+  Zp,p=3,I       E2=2 (e0=1,e1=2): CYCLIC zeta' = zbar^1*z1^0, relabeling sigma = (0, 1)
+      values=['zbar^1*z1^0']  zeta_w1=zbar^1*z1^0  zeta_key=zbar^1*z1^0
+  Zp,p=3,J       E2=4 (e0=2,e1=2): NOT-CYCLIC (>= 2 distinct non-1 cocycle values: zbar^0*z1^1, zbar^1*z1^0, zbar^1*z1^4)
+      values=['zbar^0*z1^1', 'zbar^1*z1^0', 'zbar^1*z1^4']  zeta_w1=zbar^0*z1^4  zeta_key=zbar^0*z1^4
+  Zp,p=3,K       E2=4 (e0=2,e1=2): NOT-CYCLIC (single value zbar^0*z1^1 but carry pattern not realizable by any relabeling)
+      values=['zbar^0*z1^1']  zeta_w1=zbar^0*z1^1  zeta_key=zbar^0*z1^1
+  Zp,p=3,L       E2=6 (e0=3,e1=2): NOT-CYCLIC (single value zbar^0*z1^1 but carry pattern not realizable by any relabeling)
+      values=['zbar^0*z1^1']  zeta_w1=1  zeta_key=1
+  Zp,p=3,M       E2=6 (e0=2,e1=3): NOT-CYCLIC (>= 2 distinct non-1 cocycle values: zbar^0*z1^1, zbar^1*z1^1, zbar^1*z1^2)
+      values=['zbar^0*z1^1', 'zbar^1*z1^1', 'zbar^1*z1^2']  zeta_w1=zbar^0*z1^3  zeta_key=zbar^0*z1^3
+  Zp,p=3,N       E2=4 (e0=2,e1=2): NOT-CYCLIC (>= 2 distinct non-1 cocycle values: zbar^0*z1^1, zbar^1*z1^0, zbar^1*z1^1)
+      values=['zbar^0*z1^1', 'zbar^1*z1^0', 'zbar^1*z1^1']  zeta_w1=zbar^2*z1^1  zeta_key=zbar^2*z1^1
+  Fpt,p=2,A      E2=2 (e0=1,e1=2): CYCLIC (c == 1 identically, zeta' = 1)
+      values=[]  zeta_w1=1  zeta_key=1
+  Fpt,p=2,B      E2=3 (e0=1,e1=3): CYCLIC (c == 1 identically, zeta' = 1)
+      values=[]  zeta_w1=1  zeta_key=1
+  Fpt,p=2,C      E2=4 (e0=2,e1=2): CYCLIC (c == 1 identically, zeta' = 1)
+      values=[]  zeta_w1=1  zeta_key=1
+  Fpt,p=2,D      E2=2 (e0=2,e1=1): CYCLIC (c == 1 identically, zeta' = 1)
+      values=[]  zeta_w1=1  zeta_key=zbar^2*z1^0
+  Fpt,p=2,E      E2=6 (e0=3,e1=2): CYCLIC (c == 1 identically, zeta' = 1)
+      values=[]  zeta_w1=1  zeta_key=1
+  Fpt,p=2,G      E2=2 (e0=1,e1=2): CYCLIC zeta' = zbar^0*z1^1, relabeling sigma = (0, 1)
+      values=['zbar^0*z1^1']  zeta_w1=zbar^0*z1^1  zeta_key=zbar^0*z1^1
+  Fpt,p=2,H      E2=2 (e0=2,e1=1): CYCLIC zeta' = zbar^0*z1^1, relabeling sigma = (0, 1)
+      values=['zbar^0*z1^1']  zeta_w1=zbar^0*z1^1  zeta_key=zbar^0*z1^2
+  Fpt,p=2,I      E2=2 (e0=1,e1=2): CYCLIC zeta' = zbar^1*z1^0, relabeling sigma = (0, 1)
+      values=['zbar^1*z1^0']  zeta_w1=zbar^1*z1^0  zeta_key=zbar^1*z1^0
+  Fpt,p=2,J      E2=4 (e0=2,e1=2): NOT-CYCLIC (>= 2 distinct non-1 cocycle values: zbar^0*z1^1, zbar^1*z1^0, zbar^1*z1^4)
+      values=['zbar^0*z1^1', 'zbar^1*z1^0', 'zbar^1*z1^4']  zeta_w1=zbar^2*z1^4  zeta_key=zbar^2*z1^4
+  Fpt,p=2,K      E2=4 (e0=2,e1=2): CYCLIC zeta' = zbar^0*z1^1, relabeling sigma = (0, 1, 2, 3)
+      values=['zbar^0*z1^1']  zeta_w1=zbar^0*z1^1  zeta_key=zbar^0*z1^1
+  Fpt,p=2,L      E2=6 (e0=3,e1=2): NOT-CYCLIC (>= 2 distinct non-1 cocycle values: zbar^0*z1^1, zbar^0*z1^2)
+      values=['zbar^0*z1^1', 'zbar^0*z1^2']  zeta_w1=zbar^0*z1^2  zeta_key=zbar^0*z1^2
+  Fpt,p=2,M      E2=6 (e0=2,e1=3): NOT-CYCLIC (>= 2 distinct non-1 cocycle values: zbar^0*z1^1, zbar^1*z1^1, zbar^1*z1^2)
+      values=['zbar^0*z1^1', 'zbar^1*z1^1', 'zbar^1*z1^2']  zeta_w1=zbar^2*z1^3  zeta_key=zbar^2*z1^3
+  Fpt,p=2,N      E2=4 (e0=2,e1=2): NOT-CYCLIC (>= 2 distinct non-1 cocycle values: zbar^0*z1^1, zbar^1*z1^0, zbar^1*z1^2)
+      values=['zbar^0*z1^1', 'zbar^1*z1^0', 'zbar^1*z1^2']  zeta_w1=zbar^2*z1^2  zeta_key=zbar^2*z1^2
+  Fpt,p=3,A      E2=2 (e0=1,e1=2): CYCLIC zeta' = zbar^0*z1^1, relabeling sigma = (0, 1)
+      values=['zbar^0*z1^1']  zeta_w1=zbar^0*z1^1  zeta_key=zbar^0*z1^1
+  Fpt,p=3,B      E2=3 (e0=1,e1=3): CYCLIC (c == 1 identically, zeta' = 1)
+      values=[]  zeta_w1=1  zeta_key=1
+  Fpt,p=3,C      E2=4 (e0=2,e1=2): NOT-CYCLIC (single value zbar^0*z1^1 but carry pattern not realizable by any relabeling)
+      values=['zbar^0*z1^1']  zeta_w1=zbar^0*z1^1  zeta_key=zbar^0*z1^1
+  Fpt,p=3,D      E2=2 (e0=2,e1=1): CYCLIC zeta' = zbar^0*z1^1, relabeling sigma = (0, 1)
+      values=['zbar^0*z1^1']  zeta_w1=zbar^0*z1^1  zeta_key=zbar^2*z1^1
+  Fpt,p=3,E      E2=6 (e0=3,e1=2): NOT-CYCLIC (single value zbar^0*z1^1 but carry pattern not realizable by any relabeling)
+      values=['zbar^0*z1^1']  zeta_w1=1  zeta_key=1
+  Fpt,p=3,G      E2=2 (e0=1,e1=2): CYCLIC zeta' = zbar^0*z1^1, relabeling sigma = (0, 1)
+      values=['zbar^0*z1^1']  zeta_w1=zbar^0*z1^1  zeta_key=zbar^0*z1^1
+  Fpt,p=3,H      E2=2 (e0=2,e1=1): CYCLIC zeta' = zbar^0*z1^1, relabeling sigma = (0, 1)
+      values=['zbar^0*z1^1']  zeta_w1=zbar^0*z1^1  zeta_key=zbar^0*z1^1
+  Fpt,p=3,I      E2=2 (e0=1,e1=2): CYCLIC zeta' = zbar^1*z1^0, relabeling sigma = (0, 1)
+      values=['zbar^1*z1^0']  zeta_w1=zbar^1*z1^0  zeta_key=zbar^1*z1^0
+  Fpt,p=3,J      E2=4 (e0=2,e1=2): NOT-CYCLIC (>= 2 distinct non-1 cocycle values: zbar^0*z1^1, zbar^1*z1^0, zbar^1*z1^4)
+      values=['zbar^0*z1^1', 'zbar^1*z1^0', 'zbar^1*z1^4']  zeta_w1=zbar^0*z1^4  zeta_key=zbar^0*z1^4
+  Fpt,p=3,K      E2=4 (e0=2,e1=2): NOT-CYCLIC (single value zbar^0*z1^1 but carry pattern not realizable by any relabeling)
+      values=['zbar^0*z1^1']  zeta_w1=zbar^0*z1^1  zeta_key=zbar^0*z1^1
+  Fpt,p=3,L      E2=6 (e0=3,e1=2): NOT-CYCLIC (single value zbar^0*z1^1 but carry pattern not realizable by any relabeling)
+      values=['zbar^0*z1^1']  zeta_w1=1  zeta_key=1
+  Fpt,p=3,M      E2=6 (e0=2,e1=3): NOT-CYCLIC (>= 2 distinct non-1 cocycle values: zbar^0*z1^1, zbar^1*z1^1, zbar^1*z1^2)
+      values=['zbar^0*z1^1', 'zbar^1*z1^1', 'zbar^1*z1^2']  zeta_w1=zbar^0*z1^3  zeta_key=zbar^0*z1^3
+  Fpt,p=3,N      E2=4 (e0=2,e1=2): NOT-CYCLIC (>= 2 distinct non-1 cocycle values: zbar^0*z1^1, zbar^1*z1^0, zbar^1*z1^1)
+      values=['zbar^0*z1^1', 'zbar^1*z1^0', 'zbar^1*z1^1']  zeta_w1=zbar^2*z1^1  zeta_key=zbar^2*z1^1
+------------------------------------------------------------------------------
+MIXED (e0>=2, e1>=2) towers: CYCLIC on 6, NOT-CYCLIC on 22
+  NOT-CYCLIC witnesses: Zp,p=2,J, Zp,p=2,L, Zp,p=2,M, Zp,p=2,N, Zp,p=3,C, Zp,p=3,E, Zp,p=3,J, Zp,p=3,K, Zp,p=3,L, Zp,p=3,M, Zp,p=3,N, Fpt,p=2,J, Fpt,p=2,L, Fpt,p=2,M, Fpt,p=2,N, Fpt,p=3,C, Fpt,p=3,E, Fpt,p=3,J, Fpt,p=3,K, Fpt,p=3,L, Fpt,p=3,M, Fpt,p=3,N
+  => the single-zeta' CYCLIC presentation of the D-ITER
+     composite FAILS at the canonical (dig-consumed) alphabet;
+     classification: conjecture-adjudicating instances (bug
+     detectors B0a/B0c/B1/CERT green required — see rows), the
+     true structure = (ITER-LAW) [B2].
+TOTAL samples: 43992   elapsed 12.7s
+VERDICT (preregistered rows): ALL GREEN
