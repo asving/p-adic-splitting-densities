@@ -2520,3 +2520,21 @@ recentering exists in nature (Φ₁ = x²+9 sketch in the note), so the fence
 excludes SOME real towers, not all. No fourth carrier found. Net: the
 recentering claims as written are TRUE where they are claims about
 mathematics; the open B-M2 residue (REC-PARAM/REC-SL) is wiring-side.
+
+**2026-08-08 — N-1 EXECUTED (the GRB order-2 falsifier harness; wave-0 debt cleared).**
+`verification/openmath/grb_order2_check.py` + output: exact order-2 towers over
+ℤ₂/ℤ₃/F₂[[t]]/F₃[[t]], d₀ ∈ {1,2}, 40 towers, 33,547 samples, 15 families, ALL
+GREEN under the preregistered (amended pre-full-run) predictions; PARI
+idealprimedec confirms (e,f) on all 20 ℤ_p towers. U14's gate DECIDES POSITIVE
+(total-form tie 0/2,400 incl. s(f)>0 corners and e·g = 1 towers) — H1-U14 may
+be stated. HEADLINE FINDING: the leaf's Def-3.15 twist quote is a pdftotext
+floating-prime artifact — true exponent ǫᵢ(α) = zᵢ^{ℓ′ᵢs(α) − ℓᵢu(α)}; pinned by
+(1) FGMN's own i = 0 remark, (2) Lemma 4.3's algebra (23,111 symbolic checks),
+(3) Cor 4.7(3) failing under the misreading on real towers (145 violations) +
+a PARI kill-shot (two instances where the misreading's canonical lift FACTORS
+over ℚ₂ while the corrected lift of the same ψ₁ is irreducible). Consequence:
+S3.2's geometric-discrepancy law and its collapse-refutation are artifacts (at
+e₀ = 1 the corrected ǫ ≡ 1 and FGMN = GMN on the nose); a REVISION-11 display
+fold on GRB S3.1/S3.2/S3.4/S0-G2-row is OWED (queued). (GR-B)'s clauses are
+untouched and all harness-green. Record: GRB_ORDER2_2026-08-05.md §"N-1
+EXECUTED (2026-08-08)".

@@ -593,6 +593,13 @@ through H1-U14's falsifier gate first. [REV 2: `faithful_at` + link fields re-pr
   (U14's gate). Predictions, preregistered: 0 violations on every clause EXCEPT
   possibly the total form (unknown — that is what the gate decides); any march-clause
   violation refutes (GR-B)(2′) as stated and stops §1.3 S5/S6.
+  **[EXECUTED 2026-08-08: ALL GREEN — 40 towers, 33,547 samples, 15 families incl.
+  PARI (e,f) oracle; TOTAL FORM 0/2,400 ⟹ U14's gate DECIDES POSITIVE (U14 may be
+  stated). Headline side-finding: the GRB leaf's Def-3.15 ǫ quote is an extraction
+  artifact (true exponent ǫᵢ(α) = zᵢ^{ℓ′ᵢs−ℓᵢu}, triple-pinned incl. a PARI
+  kill-shot); S3.2's geometric-discrepancy law refuted against the true operator
+  (at e₀ = 1, FGMN = GMN on the nose) — GRB display fold owed. Record: GRB note
+  §N-1 EXECUTED.]**
 * **N-2 (`gemit_conformance_check.py`)** — the G-EMIT/U6 gate (O-2a rev 4 §4's named
   falsifier home): instrument depth-≥ 2 runs; emitted record == stage read recomputed
   over Θ(emitted prefix), per level; 0 violations predicted; any violation refutes the

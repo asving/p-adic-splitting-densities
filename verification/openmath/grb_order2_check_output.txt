@@ -1,0 +1,44 @@
+[    0.0s] T0 (Lemma-4.3 symbolic pin) done: 0 violations / 23111
+[    0.9s] ring (Zp, p=2) done: cumulative violations = 0
+[    1.8s] ring (Zp, p=3) done: cumulative violations = 0
+[    7.9s] ring (Fpt, p=2) done: cumulative violations = 0
+[   15.2s] ring (Fpt, p=3) done: cumulative violations = 0
+
+==============================================================================
+PREDICTED vs OBSERVED  (violation counts; samples in parentheses)
+==============================================================================
+T0   Lemma-4.3 exponent algebra (pins reading C)     pred             0  obs     0 (23111)  GREEN
+T1   A-LAW-2 + TR-1-corr slope + (12-int) + VAL-2    pred             0  obs     0 ( 2000)  GREEN
+T2   (2') two-form/support (Cor 4.4(2)(3)(4))        pred             0  obs     0 ( 1200)  GREEN
+T3   law (1) total mult (Cor 4.7(3), theta=1)        pred             0  obs     0 (  800)  GREEN
+T4   (W-MULT) carry law, delta in {0,1}              pred             0  obs     0 (  800)  GREEN
+T5   key lift + clause (3) R2(Phi2)=psi1             pred             0  obs     0 (   40)  GREEN
+T6   (d2) low-degree block                           pred             0  obs     0 ( 1000)  GREEN
+T7   guarded (4)/(d3) ord tie + DEVID-2              pred             0  obs     0 (  800)  GREEN
+T8   TOTAL-form faithfulness (U14 gate)              pred UNKNOWN(gate)  obs     0 ( 2400)  GREEN(U14-stateable)
+T9   TR-3 e0=1: pre-eps agree + ratio==1 (amended)   pred             0  obs     0 (  500)  GREEN
+T10  D-REAL/eq(14) s-walk (single wrap)              pred             0  obs     0 (  224)  GREEN
+T11  PARI oracle (e,f) tie, Zp towers                pred             0  obs     0 (   20)  GREEN
+P9   S3.2 law internal to reading P (G2 repro)       pred             0  obs     0 (  240)  GREEN
+P11  reading-P lift vs PARI (discriminator)          pred             0  obs     0 (   10)  GREEN
+P12  PARI kill-shot: P-lift reducible, C-lift irr    pred             0  obs     0 (    2)  GREEN
+------------------------------------------------------------------------------
+T9(iii-C) S3.2-law-vs-true-operator refutations: 300/300 predicted MATCH  [each = one sample where the leaf's displayed geometric law fails against the proof-derived operator]
+P3 reading-P Cor 4.7(3) violations: total 145 (pred > 0), on (Z_3,C): 13 (pred >= 1), on z1==1 towers: 0 (pred 0)  -> MATCH
+P11 per-tower (harness-irreducible?, PARI-irreducible?):
+    Zp,p=2,C: (True, True)
+    Zp,p=2,D: (True, True)
+    Zp,p=2,E: (True, True)
+    Zp,p=2,H: (True, True)
+    Zp,p=2,J: (True, True)
+    Zp,p=3,C: (True, True)
+    Zp,p=3,D: (True, True)
+    Zp,p=3,E: (True, True)
+    Zp,p=3,H: (True, True)
+    Zp,p=3,J: (True, True)
+P12 kill-shot instances (p, d0, r0, r1, [PARI-irr P-lift, PARI-irr C-lift]; predicted [False, True]):
+    (2, 1, (2, 1, 2), (1, 1, 2), [False, True])  <- reading-P canonical lift FACTORS over Q_p (external refutation of reading P)
+    (2, 2, (2, 1, 1), (1, 1, 2), [False, True])  <- reading-P canonical lift FACTORS over Q_p (external refutation of reading P)
+------------------------------------------------------------------------------
+TOTAL samples: 33547   elapsed 15.2s
+VERDICT: ALL GREEN
