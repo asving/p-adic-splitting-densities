@@ -255,12 +255,22 @@ verdict tuple and factor (Tonelli in [0,∞]). ∎
 
 ### 5.5 Theorem 4 — the reduction (glue proved; kernels named)
 
+*Scope pin [(K1-CANON) discharge, ed-1(c), 2026-08-02]:* throughout this
+subsection "canonical tree" and the type-σ tree corpus denote (q-4)'s pinned
+notion — complete finite realizable, ALL leaves (τ-irr)/(τ-hen), the
+(q-3)/TREE-N scope (provenance of the pin: D-11 r4 pass-1 gap 5 / pass-2 gap 3;
+discharge record `K1CANON_discharge_2026-08-02.md`; HDISCHARGE_H9 §3).
+
 **Theorem 4.** Fix a prime p and the intended instantiation. `series_tie`
 holds at every σ provided:
 
 * **(K1) per-tree product + cut** [= TREE-EXP + (SIB) + (JC-multi) + CUT-WD;
   MOVES note §T.4/§S.2; ledger rows `sibjc` and the [3t] kernels]: each
-  complete finite realizable canonical tree's fiber mass factors as the
+  complete finite realizable canonical tree's (canonical tree := (q-4)'s
+  pinned notion — complete finite realizable, ALL leaves (τ-irr)/(τ-hen), the
+  (q-3)/TREE-N scope; at the wired instance the `bridgeTree` carrier, whose
+  `MovesT.NsFree` clause equals this guard's MARK COMPONENT at realized trees
+  [H9-U3/U5]) fiber mass factors as the
   grammar weight of its derivation, with outcome weights the MEASURED one-step
   conditional masses (`M.rowVal`, J, ι/W) at the composed pools, and the
   type-σ corpus decomposes along shallow shapes as in Lemma 3.3 with W(Ŝ)(p)
@@ -279,7 +289,8 @@ holds at every σ provided:
   cylinder reading; plus (ns-null) excluding infinite trees (closed at [3t]
   §T.2 per the note, not re-proved here).
 
-*Proof.* K4 turns the LHS into Σ_{T type σ} μ(fiber T). K1 + Lemma 3.3 turn it
+*Proof.* K4 turns the LHS into Σ_{T type σ} μ(fiber T) (the sum over the SAME
+pinned corpus — the carrier's type-σ trees). K1 + Lemma 3.3 turn it
 into the shallow convolution of the numeric B's. Lemma 3.1 + Bekić + Lemma 3.2
 with K2, by induction on the block size e (smaller blocks' consumed pools are
 pool powers, covered by K2), give B_{e,·}(σ′)(q₀) = (I − A(q₀))^{−1} c(σ′)

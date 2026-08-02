@@ -2369,3 +2369,58 @@ executed; corrected dictionary λ^GMN = −E_i·λ^FGMN; (H-CHAIN) range
 the next unit. Open residue unchanged: TR-3′-GEN, TR-3-ORD-X, D-ITER
 (E_i > 1), N-1, TR-3-ORD's FGMN-internal scope, (KP_i)/(H-CHAIN)/[T]
 externals. Second verified (H1) leaf after KP-STEP (B-M1).
+
+## (K1-CANON) DISCHARGED + H9-C3: (NSF-INT) RETIREMENT ADJUDICATION (2026-08-02 machine clock)
+THE DISCHARGE (per HDISCHARGE_H9 §3, the Codex-restructured
+guard-in-statement route): (ed-1) EXECUTED on `M04-series-tie_fable.md`
+§5.5 — (a) K1's quantifier gains the scope parenthetical pinning
+"canonical tree" to (q-4)'s pinned notion (all leaves (τ-irr)/(τ-hen),
+the (q-3)/TREE-N scope; carrier instance cited at the U3/U5 mark-component
+billing); (b) Theorem 4's post-K4 sum display pinned to the SAME corpus;
+(c) a §5.5 preamble line records the pin + provenance. Exact diffs
+displayed verbatim in the warrant note
+`lean/notes/openmath/K1CANON_discharge_2026-08-02.md` §D. Lemma 3.3
+untouched (H8-coordination checked: the H8 fleet never edited M04; no
+collision). AUTHORITY (g-B): rides Asvin's STANDING statement-change
+authority (the "ASVIN SIGN-OFF + STANDING AUTHORITY" entry above, which
+precedes this unit in this ledger's append-only order) — honest-pricing
+check passed (scope RESTRICTION of an OPEN kernel's displayed quantifier
+to its always-consumed range; no new axiom, no vacuity, no proved claim
+weakened; both consumers verified supplied at the note's C1-2) — and is
+**SURFACED FOR ASVIN'S REVIEW** per the authority's own rider: the exact
+statement diffs are at the warrant note §D; if rejected on review, (ed-1)
+reverts and (K1-CANON) re-opens. GATES: g-A round 1 (Codex, fresh)
+REJECT-WITH-FINDINGS — substance PASS on all six charged checks (site
+list exact; stipulation never billed as derivation; layer discipline;
+U3/U5 billing; pin matches (q-4); Lemma 3.3/consumers unbroken), 2
+CRITICAL bookkeeping findings (dating convention; placeholder gate
+record), both folded; round 2 (Codex, fresh) on the folded text:
+F1 (dating) PASS; F2 re-flagged against the snapshot's necessarily unfilled round-2 slot + a g-D tense slip — adjudicated and folded (record-after-run, append-after-record; the slot is now filled, g-D conditioned on it); 1 GAP (truncated authority quote) folded (complete sentence quoted). Substance: zero findings against the diff/sites/pricing/layers/billing/consumers across BOTH rounds. g-C executed (Theorem-4 coherence re-read; compile companion
+`lake env lean Scaffold/HDischarge/H9/NsfKeyProp.lean` EXIT=0 — H9-U3/U5
+stand at HEAD). (K1-CANON) is DISCHARGED: K1's "canonical tree" now
+denotes the pinned notion BY DISPLAY AT THE SOURCE at both consumed
+Step-18 sites (ROOT's K1 line cites the Theorem-4 walk; the in-proof
+consumption is the pinned sum itself).
+H9-C3 — (NSF-INT) RETIREMENT: per (NSF-INT-RET) (design V5 §2.5 as
+corrected at ROOT r11) the member retires on I-1 + I-2 + I-3 + a separate
+(K1-CANON) discharge. ALL FOUR NOW ON FILE: I-1 the D-11 r4 §4B leaf
+proof; I-2 the closed site list {K1, K4} ((CH-RES)-relative); I-3 the r4
+pass-2 ACCEPT of §4B as a conditional proof; + this discharge.
+**(NSF-INT) RETIRES.** (H9) = (NSF): open-member count ONE → ZERO — both
+members retired ((NSF-KEY) at REVISION 13/r14; (NSF-INT) here); the row
+moves to a retirement record at the next ROOT unit (spec handed to the
+orchestrator; row counts re-derived by the ROOT editor per the r13
+enumeration-audit rule, NOT pre-computed here). HONESTY BOUNDS carried
+forward, homes unchanged: (i) RE-OPEN TRIGGER — the D-11 leaf's own
+acceptance bar still owes one confirming clean pass (§3.2 [V]-row item);
+if a future pass finds §4B defective, I-3 re-opens and this retirement
+SUSPENDS; (ii) the I-2 closure is (CH-RES)-relative; (iii) the
+marks-vocabulary premise stays CARRIED (grounded in (q-1)'s display;
+compiled conformance face H9-U4; not separately owed per (NSF-INT-RET));
+(iv) no carrier non-vacuity claim (realization seam; H9-U1/U5 are
+conformance witnesses, not existence claims); (v) the
+BridgeD16/TreePin.vt_surj completeness residue stands (Phase-B); (vi) the
+(E-N) rider rides (H3), the decided/D_σ count tie rides its own row.
+Files this unit: M04 §5.5 (ed-1), the warrant note, this entry. ROOT and
+PROJECT_STATE NOT touched (orchestrator executes the handed-back spec).
+Scratch: /tmp/openmath/K1CANON/.
