@@ -2831,3 +2831,16 @@ Gates: `lake env lean` green on both new files; `#print axioms` =
 {propext, Classical.choice, Quot.sound} on `recParam_e_of_transition`,
 `recCore`, `landingKey_ν₁rc`, `rc_landingKey_gate`, `coherent_H₃rc`,
 `rc_historyCoherent_gate`. No shared file touched.
+
+## 2026-08-08: (GR-B) RE-ACCEPTED at REVISION 14 — the full incident arc closed
+
+The extraction-artifact incident is closed end-to-end: N-1 caught it (the
+only defect to survive two clean passes, and it survived BECAUSE both had
+pin-checked the same corrupted extraction); REVISIONS 11-14 corrected and
+re-scoped under passes 15-19's supervision (each pass's findings strictly
+smaller); passes 20 (Codex) + 21 (Fable max-effort, independent PDF
+re-extraction + to-the-digit harness reconciliation + from-scratch
+re-derivations) both CLEAN. 21-pass total arc. The leaf stands RE-ACCEPTED
+with the N-1 bar met. Methodology legacy (memory + standing constraint in
+every subsequent pass charge): every load-bearing formula pin needs a
+non-textual verification leg.
