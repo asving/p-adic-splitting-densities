@@ -337,6 +337,24 @@
    ],
    "status": "LANDED (no sorry; all Lean-core). All three huni-v2 acceptance tests PASS: (a) countermodel fails against huni-v2; (b) tdL/td2 remain v3-lawful byte-unchanged; (c) chain re-proves with H2 signatures intact. Repair record: notes/openmath/HUNI_PROBE_2026-08-08.md REPAIR RECORD section.",
    "wave": "8 (huni re-key)"
+  },
+  {
+   "id": "LEAKFREE-TYPED",
+   "file": "LeakFaceV4.lean",
+   "decls": [
+    "LeakFreeCarrierV4 (the typed (L) law at the v4 d-leaf-read carrier: TD-5's (ii.3)/(ii.4) pair + interior read leaves avoid the parent block)",
+    "LeakFreeCarrierV4.read_parentBlind (display face: parent-block-confined rewrites cannot move interior read codes)",
+    "ledger_leakFreeV4 (general-instance supplier: every v4-lawful datum satisfies it)",
+    "transDeep_of_lawful_v4_leakFree_holds / transDeep_of_lawful_leakFree_holds (the plugged leakFree Prop is TRUE at presenting data — upgrade of the rfl inspection gates)",
+    "leakFreeCarrierV4_plug (typed law subsumes the plugged value)",
+    "TransDeep.leakFree_of_heq + transDeep_of_ledger_leakFree_holds / transDeep_of_ledger_v4_leakFree_holds (family rows' leakFree discharged through the Exists.choose transport)",
+    "ledgerStrataV4_leakFreeV4 (family existential form)",
+    "tdL_leakFree / td2_leakFree / td2V4_leakFreeV4 (instance gates)",
+    "td_transDeep_leakFree_holds / td2_transDeep_leakFree_holds / td2V4_transDeep_leakFree_holds (fired compiled rows carry a PROVED (L) field)",
+    "td2V4bad + td2V4bad_not_leakFreeV4 (de-vacuity fence: the typed law is refutable at raw data)"
+   ],
+   "status": "LANDED (no sorry; all Lean-core). Synthesis pass 5 queue item 8 (F6 small-units dispatch): the leakFree general-instance face. NEW declarations only; every existing statement byte-unchanged (H2 TransDeep.leakFree stays a bare Prop FIELD per the U9 fold of record — the typed content lives at the ledger carrier and is now DISCHARGED there, v3 + v4 chains + all compiled instances). Honesty: all compiled instances have parentBlock = empty (trivial route); content = the general supplier + the de-vacuity fence; Step-10/K1 classifier face (the leakFree CONSUMER) still owed. Unit note: notes/openmath/LEAKFREE_2026-08-08.md.",
+   "wave": "pass-5 F6 small-units dispatch"
   }
  ],
  "fences": "blueprint §6 (i)-(viii); consumer signatures (§3 TransDeep / §4 carriers) untouched",

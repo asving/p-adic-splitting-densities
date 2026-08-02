@@ -4897,3 +4897,36 @@ additive only): R11.5 OPEN-LEMMAS bullet, R13.4 taxonomy bullet, final
 residue-of-record display. Record note:
 `lean/notes/openmath/TR4_HARNESS_2026-08-08.md`. All other GRB residue rows
 untouched (TR-3′-GEN ≥ 3, TR-3-ORD-X, D-ITER/ITER-LAW, externals).
+
+## 2026-08-08 (wallclock 2026-08-02): LEAKFREE TYPED — the general-instance face LANDED (pass-5 F6 unit)
+
+Synthesis pass 5 queue item 8 ("leakFree general-instance face") executed at
+the AS-BUILT v4 (d-leaf `slotRead`) landscape. NEW file
+`lean/LeanUrat/B2D/LeakFaceV4.lean` (14 decls, zero sorry, ALL footprints
+Lean-core; every existing statement byte-unchanged). THE TYPED LAW:
+`LeakFreeCarrierV4 L = LeakFreeCarrier L.toLedgerStratumData ∧ (∀ interior
+on-line k, ∀ t < D.d, L.slotCoords k t ∉ L.parentBlock)` — clause (L)'s §5
+referent at the d-leaf read (the height-β_k digit IS the read code; the
+parent's realized conditions read only the parent block), a
+consequence-of-clauses carrier (TD-5 species: `parent_interior_disjoint` +
+`slot_coords_mem`), NO counting law — the H2-U9 R2-C1 bar respected. Display
+face `read_parentBlind` (parent-confined rewrites cannot move interior read
+codes). Supplier `ledger_leakFreeV4` at every v4-lawful datum. WIRING — the
+chain's displayed `leakFree` upgraded from rfl-INSPECTED to DISCHARGED:
+`transDeep_of_lawful{,_v4}_leakFree_holds` (presenting-datum builders),
+`transDeep_of_ledger{,_v4}_leakFree_holds` (family suppliers, proved through
+the Exists.choose transport via `TransDeep.leakFree_of_heq` +
+`eq_mpr_eq_cast`/`cast_heq`), `leakFreeCarrierV4_plug`,
+`ledgerStrataV4_leakFreeV4`. INSTANCES: `tdL_leakFree`/`td2_leakFree`
+(v1-carrier law; V4 law inapplicable — no slotCoords), `td2V4_leakFreeV4`,
+and the fired rows `td_transDeep`/`td2_transDeep`/`td2V4_transDeep` all carry
+a PROVED (L) field. DE-VACUITY: `td2V4bad_not_leakFreeV4` refutes the law at
+a raw datum (parent block moved onto a read leaf) — falsifiable, lawfulness
+load-bearing. HONESTY: all compiled instances have `parentBlock = ∅`
+(trivial route there; content = supplier + fence; nonempty-parent lawful
+instance = F5 forge material); H2 `TransDeep.leakFree` FIELD stays bare (U9
+fold of record stands at the skeletal carrier); the Step-10/K1 classifier
+face (the leakFree CONSUMER) remains owed. The ROOT (FRESH) residue's
+"general-instance supplier" is retired ONLY in its leakFree typed-face
+component. Unit note: `lean/notes/openmath/LEAKFREE_2026-08-08.md`; MANIFEST
+unit `LEAKFREE-TYPED`.
