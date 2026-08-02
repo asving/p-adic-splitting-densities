@@ -4576,3 +4576,15 @@ bracket, all [TAGGED]); 214 → **226 active rows, zero untagged known**; no
 existing row superseded; C237 (RCWitness debt sentence) re-verified accurate.
 **Lean edits: NONE** (no file touched; capstone footprints unaffected). The
 §S0 accepted cells and the §S4 acceptance-time list stand byte-unchanged.
+
+## 2026-08-08 (wallclock 2026-08-02): P(O-8b/M14) COMPOSITE ACCEPTED — the (H4a) F-chain COMPLETE
+
+Passes 3 (Codex, 0C/0G on M14 REVISION 1) + 4 (Fable decider,
+PO8bM14_pass4_2026-08-02.md: nothing classifiable; the synced Lemma-1(b)
+display walked verbatim against M1 §5.3; Lemma 2 re-derived end-to-end;
+both F₉/δ contrasts re-derived by hand; numerics grep-verified as
+empirical-cover-only; four sub-bar observations recorded) = two consecutive
+CLEAN composite passes, model-diverse — ACCEPT per H4M7 §2. The full
+F-chain: F-(i) five records ✔ · F-(iii) pass 2 folded + passes 3+4 clean ✔
+· **F-(iv) MAY FIRE at the next ROOT revision (r23)**: the (R1)-(R4) row
+retires mod (K3-δ) (the audit note moves to (UB-X) per the r22 display).
