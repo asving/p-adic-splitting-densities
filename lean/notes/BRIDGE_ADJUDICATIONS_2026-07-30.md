@@ -4643,3 +4643,43 @@ believed-false-and-unconsumed; B-M2's consumed face (`graded_read_of_history`,
 history-keyed, commit-cited a5911fd) is signature-UNCHANGED. The F5 stage-forge GR leg
 is DECLINED (its only GR payoff was refuting statements this change deletes from the
 interface); ROOT r24 owes the one-bracket (H1)/`GRADED-READ` display restatement.
+
+## 2026-08-08 — ROOT r24 EXECUTED (REVISION 23): VC25 DISPOSED + the GR ROUTE (a) / TR3-S2 folds
+
+ROOT REVISION 23 landed (unit r24; record ROOT §29). **VC25 (on REVISION 22)
+returned NOT-CONFIRMED — 1 critical + 3 gaps** (`lean/notes/openmath/
+VC25_report.md`, archived ea9f615; census/roster/clause recounts all
+REPRODUCED). All four findings disposed:
+(1) CRITICAL — the (H4a) retirement propagated into the last three
+OPERATIVE displays: §3.4 Table A item 6(iii)–(ix)+7 (the residue list's
+"(H4a) + (K3-δ)" entry rewritten — (K3-δ) alone is the live input, housed
+at the (UB-X) row, with an (H4a) retirement bracket), item 9 (the dangling
+"= (H4a) + (K3-δ) (§3.1)" route pointer cured the same way), and Step 16
+honest-scope clause (ii) ("conditional on (R1)–(R4)" → "formerly
+conditional…" with the discharge routed through the §3.2 retirement row's
+F-chain; the δ-stable scope and (K3-δ) conditionality explicitly
+untouched — the upgrade stays scoped to the (R1)–(R4) leg ONLY).
+(2) GAP — the F-(i) count corrected five → SIX records (H4-M1, H4-M2,
+H4-M4, H4-M5, N-T4, N-K3); the "five" was the ledger-summary under-count
+folding the two numerics records into one entry.
+(3) GAP — the granular F-chain pointers unresolvable from the pasted
+ledger tail RE-VERIFIED IN-REPO (all 4 attempt files exist at
+lean/notes/openmath/; commits 80635f0/c152602/fb59459/5a10256 all
+resolve) — an AUDIT-INPUT artifact, not a document defect; future VC
+prompts should carry file listings + commit resolutions.
+(4) GAP — the stale "ROOT ASSEMBLY complete, 2026-08-02 @ d730669" close
+marked HISTORICAL; plus the F6-flagged r22-era "wave 1 next" pointer
+marked superseded.
+FOLDS: **GR ROUTE (a)** (5b7f1ee) displayed at the (H1) row — the
+abstract-frame GRADED-READ residue RETIRED as a fence-(vii) statement
+change (ReadHyps frame pins; standing authority 2026-08-05; zero
+consumers + believed-false at the bound scope; B2D 3 → 0 sorries; the F5
+stage-forge GR leg DECLINED) with the **Asvin ratification flag visible
+at ROOT §29**; **TR3-S2** attempt on record (330cc6b; hostile pass 1
+CRITICAL 1C/2G at 1bd75de — core compose chain verifies; REVISION 1
+dispatched) — NO status upgrade; F6 hygiene 112b9ac. Census re-run at the
+declared occurrence unit (12 patterns incl. the new VC26/ROUTE-(a)
+markers; every delta explained — the revision's own retirement brackets
+account for the (H4a)/(R1)–(R4)/K3-δ growth). Roster NINE rows,
+unchanged. **The acceptance citation STAYS at REVISION 20 (VC22); VC26 is
+OWED on the REVISION-23 wording.** PROJECT_STATE synced (r24 checkpoint).

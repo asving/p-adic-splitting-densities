@@ -1,8 +1,13 @@
 # Project state — Lean formalization of uniform rationality of *p*-adic factorization densities
 
-*Snapshot: 2026-07-19; last refreshed 2026-08-08++ (ROOT REVISION 22, unit r23 — see the
-CHECKPOINT "THE (H4a) RETIREMENT EXECUTED" section at the tail, which is the current
-resumability anchor: **NINE honest §3.1 rows** — the (H4a) = (R1)–(R4) row RETIRED at the
+*Snapshot: 2026-07-19; last refreshed 2026-08-08+++ (ROOT REVISION 23, unit r24 — see the
+CHECKPOINT "VC25 DISPOSED" section at the tail, which is the current
+resumability anchor: **r24 LANDED** — VC25 ran NOT-CONFIRMED (1C/3G) and all four findings
+are disposed at ROOT REVISION 23 (the (H4a) retirement propagated into the last operative
+displays; SIX F-(i) records; provenance re-verified in-repo; stale close marked historical);
+GR ROUTE (a) executed (fence-(vii) statement change, flagged for Asvin) — **B2D at 0
+sorries**; TR3-S2 attempt on record, hostile passes pending; **VC26 owed** on REVISION 23;
+the superseded r23 anchor: **NINE honest §3.1 rows** — the (H4a) = (R1)–(R4) row RETIRED at the
 P(O-8b/M14) composite ACCEPT (passes 3+4 clean, model-diverse; F-(iv) fired; the (K3-δ) audit
 note survives on the (UB-X) row, still clause-(R)-consumed); acceptance still anchored on
 REVISION 20 (VC22), **VC25 owed** on the REVISION-22 wording (VC23/VC24 named-but-unrun); the
@@ -1672,3 +1677,48 @@ GR-3/GR-4 obstruction disposition; the SITE-EXH residuals; the D-ITER
 restatement; then the REVISION-20 frontier list otherwise unchanged.
 Verification: VC1–VC22 done (VC22 = the REVISION-20 anchor); VC25 pending
 on REVISION 22.
+
+## CHECKPOINT 2026-08-08+++ (wallclock 2026-08-02): VC25 DISPOSED — r24 LANDED, B2D 0 SORRIES (ROOT REVISION 23)
+ROOT at REVISION 23 (unit r24; record ROOT §29). **VC25 RAN on REVISION 22
+and returned NOT-CONFIRMED — 1 critical + 3 gaps** (report
+`lean/notes/openmath/VC25_report.md`, archived ea9f615; the census, the
+NINE-row recount, and the clause recounts all REPRODUCED). All four
+findings DISPOSED at this revision: (1) CRITICAL — the (H4a) retirement
+propagated into the last three OPERATIVE displays (§3.4 Table A items
+6(iii)–(ix)+7 and 9, Step 16 honest-scope clause (ii)): (K3-δ) stays the
+LIVE input housed at the (UB-X) row, (H4a) appears only under retirement
+brackets pointing at the §3.2 retirement row (item 9's dangling "(§3.1)"
+pointer cured; the Step-16 upgrade stays scoped to the (R1)–(R4) leg
+ONLY); (2) the F-(i) count corrected five → **SIX records** (H4-M1, H4-M2,
+H4-M4, H4-M5, N-T4, N-K3 — the "five" folded the two numerics records into
+one); (3) the granular F-chain pointers VC25 could not resolve from its
+pasted ledger tail were RE-VERIFIED IN-REPO (4 attempt files exist;
+commits 80635f0/c152602/fb59459/5a10256 resolve) — an audit-input
+artifact, recorded, no document defect; (4) the stale "complete,
+2026-08-02 @ d730669" close marked HISTORICAL (+ the r22-era "wave 1 next"
+pointer marked superseded, synthesis-pass-5 F6). FOLDED from the window:
+**GR ROUTE (a) EXECUTED** (5b7f1ee per `GR34_DISPOSITION_2026-08-08.md` @
+205e3f8): `ReadHyps` gained the frame-pin fields `hσs`/`hσt` — a
+fence-(vii) STATEMENT CHANGE under Asvin's standing authority
+(2026-08-05), warranted by ZERO consumers + believed-FALSE at the bound
+scope (ψ = φ(z^σ.e) countermodel); the 3 frozen GR-3/GR-4 sorries
+discharged as one-liners, **B2D census 3 → 0 sorries** (all Lean-core;
+`graded_read_of_history` signature-UNCHANGED; the F5 stage-forge GR leg
+DECLINED) — **FLAGGED FOR ASVIN** (ROOT §29): ratify the
+pin-into-ReadHyps reading or reopen route (b). **TR3-S2 attempt ON
+RECORD** (330cc6b, `TR3S2_2026-08-08.md`): TR-3′-GEN(ii) at order 2
+proved-informal in the §3.4-REV-11 form; units-only phrasing REFUTED on
+(ii); the ORD-INV state-key bifurcation finding; hostile pass 1 (1bd75de)
+CRITICAL 1C/2G (core compose chain verifies; the critical = the universal
+key-divergence scope claim), REVISION 1 dispatched — NO status upgrade.
+F6 hygiene batch 112b9ac. Roster: **NINE rows, unchanged**.
+FRONTIER NOW: **VC26** (the confirming end-to-end pass on REVISION 23;
+acceptance still anchored on REVISION 20/VC22); the TR3-S2 REVISION-1
+fold + its hostile-pass arc; the Asvin batch (TowerMoveClosureL
+re-ratification, Route-B re-scope, the GR ROUTE-(a) ratification, review
+queue); then the synthesis-pass-5 queue tail (REC-SL suppliers, the
+readsOf consumer walk, countermodel-first batch, small-units dispatch,
+D-ITER restatement, the deep-instance forge re-priced against
+junc_bundle/readsOf only).
+Verification: VC1–VC22 done (VC22 = the REVISION-20 anchor); VC25 ran
+NOT-CONFIRMED and is disposed at REVISION 23; VC26 pending on REVISION 23.
