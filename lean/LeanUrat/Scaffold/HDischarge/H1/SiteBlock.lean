@@ -206,8 +206,114 @@ theorem key1SiteBlock_consume (ν : Node p F) (σ' : Stage p F)
 
 end U10
 
+/-!
+## H1-U14 (`FaithfulTotal` + consumers) — the TOTAL (FGMN Cor 5.15) faithfulness
+row, GATED (blueprint §5.3, W3)
+
+GATE DECISION (the unit's stating precondition). U14 exists because REV 2
+finding 8 demoted the rev-1 `GrBKeyLaws.faithful` field: it over-quantified
+(≈ the total Cor 5.15 law, with no ν↔σ' compatibility) for a hypothesis row,
+so the row kept only the RECORDED-SITE law `faithful_at` and the ∀-anchor
+total form became this SEPARATE unit, gated on the N-1 falsifier's TOTAL-form
+verdict.  The gate DECIDED POSITIVE: `verification/openmath/grb_order2_check.py`
+family T8 (TOTAL-form faithfulness, preregistered UNKNOWN — the one family
+whose 0-violation was NOT predicted), **0 violations / 2,400 samples**,
+including the s(f) > 0 improper-adjacent corners and the e·g = 1 towers
+(EXECUTED 2026-08-08; record: `lean/notes/openmath/GRB_ORDER2_2026-08-05.md`
+§"N-1 EXECUTED" table row T8 — "GREEN — U14 may be stated"; blueprint §5.4
+bracket "TOTAL FORM 0/2,400 ⟹ U14's gate DECIDES POSITIVE").
+
+ǫ-FREENESS DETERMINATION (the REVISION-11 caveat, checked before stating).
+The GRB leaf's REVISION 11 corrected the FGMN Def 3.15 twist exponent
+(true form ǫ_i(α) = z_i^{ℓ'_i s(α) − ℓ_i u(α)}; the shared extraction
+/tmp/litunit/fgmn.txt is CORRUPTED at that display — an orphaned pdftotext
+prime).  Cor 5.15 as printed (fgmn.txt:1972-1974, verified against the
+corrected reading): "Let φ be a proper key polynomial for µ and denote
+ψ = Rr(φ). Then, ordψ(Rr(g)) = ordµ,φ(g) for any non-zero g ∈ K[x]" — an
+IDEAL-ORDER statement in which the ǫ exponent appears NOWHERE; the twist
+units enter only through the residual operator's definition, upstream of the
+ord read-off.  The Lean statement below consumes only the corpus σ.R
+rendering (`HasAnchorK`/`OrdPsiPoly`) and the graded ψ̂hom-order — no ǫ, no
+transcription against the corrupted display.  T8 itself ran under the
+corrected operator (the same harness's T0 pins the corrected ǫ, 0/23,111).
+
+STATUS (honesty ledger, the U9/finding-12 discipline).  The blueprint prices
+U14 "as a THEOREM from the row + the math leaf"; the math leaf (GRB, Cor-5.15
+retarget) is OPEN (REVISION 11 fold in progress), so no proof of the row can
+land — a sorry-backed instance would carry `sorryAx` and satisfy consumers as
+if proved.  `FaithfulTotal` is therefore an [M]-row: DISPLAYED + CONSUMED,
+never proved; its supplier is the GRB leaf's future Lean formalization.  What
+IS proved (Lean-core): the two consumers below — the total row RECOVERS the
+recorded-site law (`faithful_at_of_total`, via `ν.hOrd`), and the
+SideReads-keyed total consumption lemma (`faithful_total_consume`, the U10
+wiring shape at ∀ μf).  Never cite this section as evidence for (H1) or for
+Cor 5.15's retarget: a numerics gate licenses STATING, not asserting.
+-/
+
+section U14
+open LeanUrat.MovesJ
+
+/-- **H1-U14 (`FaithfulTotal`) — the TOTAL (FGMN Cor 5.15) faithfulness row**,
+the gated extension of `GrBKeyLaws.faithful_at` (blueprint §5.3): the ∀f
+per-anchor-witness law — the RETIRED rev-1 `faithful` field [REV 2, finding 8]
+restated verbatim as its own [M]-row now that N-1's total-form gate decided
+positive (T8: 0/2,400, preregistered UNKNOWN, executed 2026-08-08; see the
+section header for the full gate + ǫ-freeness record).  For every nonzero-
+anchored f (any anchor witness `(a, Rf)`, not just the recorded `(ν.a,
+ν.Ranch)`) and EVERY candidate order `μf`, the residual-side ψ-adic order ties
+biconditionally to the graded ψ̂hom-order of `in(f)`.  DISPLAYED + CONSUMED,
+never proved (supplier: the open GRB math leaf); never a `GrBKeyLaws` field. -/
+structure FaithfulTotal (ν : Node p F) (σ' : Stage p F) (M : GenuineStageModel σ')
+    (KB : KPBlock σ' M) : Prop where
+  faithful_total : letI := M.Rg.ring; ∀ (f : Polynomial ℤ_[p]) (a : ℤ)
+      (Rf : Polynomial ↥ν.σ.K), HasAnchorK (ν.σ.R f) a Rf → ∀ μf : ℕ,
+    OrdPsiPoly ν.ψ Rf μf ↔
+      (KB.ψhom ^ μf ∣ M.S.initialForm f ∧ ¬ KB.ψhom ^ (μf + 1) ∣ M.S.initialForm f)
+
+/-- **The total row recovers the recorded-site law**: `FaithfulTotal` implies
+the exact content of `GrBKeyLaws.faithful_at` — specialize the ∀-anchor ∀-order
+biconditional at the recorded site `(ν.a, ν.Ranch, ν.μ)` and fire its forward
+direction with the node's own `ν.hOrd : OrdPsiPoly ν.ψ ν.Ranch ν.μ`.  PROVED
+(Lean-core): this is the demotion arrow made explicit — U14 genuinely extends
+the REV-2 row, and consuming `FaithfulTotal` never loses `faithful_at`. -/
+theorem faithful_at_of_total (ν : Node p F) (σ' : Stage p F)
+    (M : GenuineStageModel σ') (KB : KPBlock σ' M) (T : FaithfulTotal ν σ' M KB) :
+    letI := M.Rg.ring; ∀ f : Polynomial ℤ_[p], f ≠ 0 →
+      HasAnchorK (ν.σ.R f) ν.a ν.Ranch →
+      (KB.ψhom ^ ν.μ ∣ M.S.initialForm f ∧ ¬ KB.ψhom ^ (ν.μ + 1) ∣ M.S.initialForm f) :=
+  fun f _ hanch => (T.faithful_total f ν.a ν.Ranch hanch ν.μ).mp ν.hOrd
+
+set_option linter.unusedVariables false in
+/-- **H1-U14 consumption lemma (`faithful_total_consume`)** — the U10-shaped
+SideReads-keyed wiring for the TOTAL row (blueprint §5.3: U14's consumers live
+at the U10 consumption region): from `FaithfulTotal` and a `SideReads`-realized
+run of `f` at `ν` (clause (iii) supplies the `HasAnchorK (ν.σ.R f) ν.a ν.Ranch`
+witness, exactly as in `key1SiteBlock_consume`), conclude the per-order
+biconditional at the realized anchor — `OrdPsiPoly ν.ψ ν.Ranch μf ↔ ψ̂hom-order
+μf of in(f)` for EVERY `μf`, strengthening `key1SiteBlock_consume`'s (d3)
+(which delivers only the recorded `ν.μ`, via `ν.hOrd` one-way).  PROVED
+(Lean-core) — pure packaging; the mathematics is the open GRB leaf behind the
+`T` binder.  `Φnext` rides only through `SideReads`'s descent clauses. -/
+theorem faithful_total_consume (ν : Node p F) (σ' : Stage p F)
+    (M : GenuineStageModel σ') (KB : KPBlock σ' M) (T : FaithfulTotal ν σ' M KB)
+    (f : Polynomial ℤ_[p]) (B : ℕ → Polynomial ℤ_[p]) (Nd : ℕ)
+    (Φnext : Polynomial ℤ_[p])
+    (hdev : IsDevelopment ν.σ.Φ f B Nd) (hreads : SideReads ν B Nd Φnext) :
+    letI := M.Rg.ring
+    ∀ μf : ℕ, OrdPsiPoly ν.ψ ν.Ranch μf ↔
+      (KB.ψhom ^ μf ∣ M.S.initialForm f ∧ ¬ KB.ψhom ^ (μf + 1) ∣ M.S.initialForm f) := by
+  letI := M.Rg.ring
+  have hanch : HasAnchorK (ν.σ.R f) ν.a ν.Ranch := by
+    have h3 := hreads.2.2.1.1
+    rwa [← hdev.2.2] at h3
+  exact fun μf => T.faithful_total f ν.a ν.Ranch hanch μf
+
+end U14
+
 end LeanUrat.Scaffold.HDischarge.H1
 
 #print axioms LeanUrat.Scaffold.HDischarge.H1.key1_along_history
 #print axioms LeanUrat.Scaffold.HDischarge.H1.key1SiteBlock_step
 #print axioms LeanUrat.Scaffold.HDischarge.H1.key1SiteBlock_consume
+#print axioms LeanUrat.Scaffold.HDischarge.H1.faithful_at_of_total
+#print axioms LeanUrat.Scaffold.HDischarge.H1.faithful_total_consume

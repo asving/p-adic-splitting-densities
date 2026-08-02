@@ -580,6 +580,14 @@ through H1-U14's falsifier gate first. [REV 2: `faithful_at` + link fields re-pr
   row + the math leaf: stated only if N-1's total-form check runs 0-violation at
   order-2 samples (including improper/e·g = 1 corners); otherwise the recorded-site
   form stands alone and this unit is CLOSED-NEGATIVE with the harness citation.
+  **[STATED 2026-08-02 (gate positive: T8 0/2,400, preregistered, executed
+  2026-08-08): `FaithfulTotal` [M]-row (displayed + consumed, never proved —
+  supplier = the open GRB leaf, finding-12 discipline; no theorem can land until
+  the leaf does) + PROVED Lean-core consumers `faithful_at_of_total` (the row
+  recovers `faithful_at` via `ν.hOrd`) and `faithful_total_consume` (the U10
+  SideReads-keyed total consumption, ∀ μf), in `H1/SiteBlock.lean` §U14; Cor 5.15
+  verified ǫ-free (ideal-order statement — the REV-11 Def-3.15 twist correction
+  enters nowhere), so no corrupted-extraction exposure.]**
 
 ### 5.4 Numerics/falsifier gates (run before their math units; `verification/openmath/`)
 

@@ -2651,3 +2651,40 @@ RESIDUE (honest): the row is an OPEN HYPOTHESIS — nothing here discharges
 (TRANS-DEEP); its supplier is the §B2-DEF campaign's future Lean
 formalization. `leakFree`'s typed carrier + the Step-10/K1 classifier face
 remain owed (U10 chain-keyed twins, §1.3 scope repair).
+
+## H1-U14 LANDED (2026-08-02): the TOTAL (FGMN Cor 5.15) faithfulness row, gate-positive
+The gated W3 unit of HDISCHARGE_H1 is STATED. Appended §U14 to
+`lean/LeanUrat/Scaffold/HDischarge/H1/SiteBlock.lean` (the U10 consumption
+region, per the blueprint's consumer wiring): `FaithfulTotal` (the REV-2
+finding-8 demoted rev-1 `GrBKeyLaws.faithful` field restated verbatim as its
+own [M]-row keyed to `(ν, σ', M, KB)`: ∀ f a Rf, HasAnchorK (ν.σ.R f) a Rf →
+∀ μf, OrdPsiPoly ν.ψ Rf μf ↔ ψ̂hom-order μf of in(f); displayed + consumed,
+NEVER proved — the blueprint prices it "as a THEOREM from the row + the math
+leaf" and the GRB leaf is OPEN in its REVISION-11 fold, so per finding 12 no
+sorry-backed instance may land; supplier = the leaf's future Lean face),
+`faithful_at_of_total` (PROVED — the total row recovers the recorded-site
+`faithful_at` content by specializing at (ν.a, ν.Ranch, ν.μ) and firing
+`ν.hOrd`), `faithful_total_consume` (PROVED — the SideReads-keyed total
+consumption at the realized anchor, strengthening `key1SiteBlock_consume`'s
+(d3) from the recorded ν.μ to every μf).
+GATE SATISFACTION: N-1 falsifier `verification/openmath/grb_order2_check.py`
+family T8 (TOTAL-form faithfulness, the ONE preregistered-UNKNOWN family),
+0 violations / 2,400 samples incl. s(f) > 0 improper-adjacent corners and
+e·g = 1 towers (EXECUTED 2026-08-08; `lean/notes/openmath/
+GRB_ORDER2_2026-08-05.md` §N-1 table: "GREEN — U14 may be stated"; blueprint
+§5.4 bracket concurs). Gate licenses STATING, not asserting.
+ǫ CAVEAT DISCHARGED: before stating, Cor 5.15 (fgmn.txt:1972-1974) checked
+against the REVISION-11 corrected Def-3.15 reading (true twist ǫ_i(α) =
+z_i^{ℓ′_i s − ℓ_i u}; the shared extraction corrupted at that display): the
+corollary is an IDEAL-ORDER statement — ordψ(Rr(g)) = ordµ,φ(g) — with the ǫ
+exponent appearing NOWHERE; the Lean row consumes only the corpus σ.R
+rendering (HasAnchorK/OrdPsiPoly). No transcription against the corrupted
+display occurred; determination recorded in the section header + docstring.
+GATES: `lake env lean` GREEN first compile; zero sorry; `#print axioms` on
+both proved consumers = [propext, Classical.choice, Quot.sound] (Lean-core);
+statement fence PASS (additive only — no existing decl touched; U10/U11
+region byte-identical above the new section).
+RESIDUE (honest): `FaithfulTotal` is an OPEN HYPOTHESIS row — nothing here
+discharges the Cor-5.15 retarget; the theorem form (`GrBKeyLaws` +
+math leaf ⟹ `FaithfulTotal`) lands only when the GRB leaf's Lean
+formalization exists. Blueprint U14 row annotated STATED.
