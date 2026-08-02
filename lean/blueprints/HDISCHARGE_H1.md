@@ -197,7 +197,15 @@ with its own §3.1-row consequence, never silently dropped]; (OP-A3) FGMN state 
 operators for a MacLane chain of µ — our tower reaches w_{i+1} through the policy's
 chain; that the policy's chain IS a MacLane chain of w_{i+1} is (KP)-territory
 (member (b)), consumed as the induction state, and the write-up must display this
-dependence rather than silently assuming it; (OP-A4 = TR-7) [REV 2, finding 4] the
+dependence rather than silently assuming it **[REV 3, GRB-leaf R5.2 sync
+(2026-08-02): the MacLane-chain condition here is the GRB leaf's (H-CHAIN), whose
+(b)-part — the chain conditions Φ_{j+1} ≁_{w_{j+1}/E_{j+1}} Φ_j — runs over the
+FULL range 0 ≤ j ≤ i−1 per FGMN Def 3.1 (φ_{k+1} ≁_{µ_k} φ_k for EVERY 1 ≤ k < r,
+under the index dictionary r = i+1, φ_k ↔ Φ_{k−1}), NOT the "internal steps only"
+range 1 ≤ j ≤ i−1, which is EMPTY at order 2 (i = 1) and omits the required
+Φ₁ ≁_{w₁/E₁} Φ₀. Member (b)'s KP-STEP supplies the (a)-part level-by-level;
+the (b)-part is automatic at degree-increasing steps and stays [T]-pinned at
+degree-preserving (e·g = 1) refinement steps — NOW INCLUDING j = 0]**; (OP-A4 = TR-7) [REV 2, finding 4] the
 clause-(1) TOTAL multiplicativity carry-wrap derivation (§1.2's (1)-row): the printed
 supply covers it only up to the δ-wrap, and the wrap absorption is the same eq
 (12)/(16) computation as OP-A2 — one section (S6a) proves both or both stand open.
@@ -666,6 +674,12 @@ edit is tagged `[REV 2, finding N]` at its site. Dispositions:
 | 13 | GAP | `keys_exist_of_run` cannot be "inverted" | ACCEPTED; route deleted; U13 = direct induction on the wired builder with named probe duties |
 | 14 | GAP | primeness-after-localization needs an avoidance invariant | ACCEPTED; (s4) split into (s4a) localization avoidance + (s4b) UFD argument; U8a carries it |
 | 15 | GAP | OL-1's monicity/degree/V-recursion not derivable from the block alone | ACCEPTED; §2.2(s7)/B-M2 expanded to a displayed induction statement with per-clause inputs |
+
+**REV 3 (2026-08-02, single-site sync):** the GRB leaf's REV-5 (H-CHAIN) range
+correction (GRB_ORDER2 §R5.2, pass-4 gap 2, verifier-confirmed at pass 5) is
+synchronized into §1.3's (OP-A3) — member (b)'s consumed chain condition now
+displays the full range 0 ≤ j ≤ i−1 (nonempty at order 2), retiring the owed
+blueprint sync recorded at the leaf's R5.2. No other content touched.
 
 **Standing after the fold:** REV 2 carries all repairs in place; the two REBUT-class
 items (3, partially) are display-only. The blueprint's next gate is a FRESH Codex

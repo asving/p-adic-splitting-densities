@@ -2236,3 +2236,6 @@ class (padding counterexample displayed in-statement); (SL-top) companion
 proved. ALIGNMENT: the ROOT (H1)(d) consumes the STANDARD lift; corpus D8
 IsReadLift HARD-WIRES the conformant shape; (K0)-discharge = B-M2(a),
 already priced — ZERO new obligations. B-M1 pass 2 + GRB pass 5 launched.
+
+## GRB REV 6 (pass-5 fold): (H-CHAIN) range fix CONFIRMED; owed H1-blueprint sync EXECUTED (2026-08-02)
+Pass 5 GAPS-ONLY: verifier re-derived 0 ≤ j ≤ i−1 from FGMN Def 3.1; sole residue = R5.2's owed sync, now done — HDISCHARGE_H1 REV 3 (OP-A3 paragraph + fold record) displays the full range; leaf's three OWED flags annotated EXECUTED. 0/2.
