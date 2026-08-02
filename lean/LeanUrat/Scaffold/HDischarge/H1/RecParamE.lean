@@ -34,8 +34,9 @@ WHAT IS COMPILED HERE (sorry-free; no new axioms; no existing statement touched)
   type, so the species fiat is unusable BY TYPE) and the WIRING COROLLARY (coherent
   history + interior recentering read ⟹ `νᵢ.e = 1 ∧ νᵢ.g = 1`, via the kernel + the
   coherence width law `Dwidthᵢ₊₁ = νᵢ.e·νᵢ.g·Dwidthᵢ` + both `Node.hDwidth` links +
-  `Stage.hdeg`: `e·g·d = d`, `d ≥ 1` ⟹ `e·g = 1`). Every hypothesis comes from
-  `HistoryCoherent`; `Node.hspecRec` is nowhere invoked.
+  `Stage.hdeg`: `e·g·d = d`, `d ≥ 1` ⟹ `e·g = 1`). `hi1` and `hrec` are explicit
+  hypotheses; the substantive width/recentering laws come from `HistoryCoherent`;
+  `Node.hspecRec` is unused.
 
 WHAT IS NOT CLAIMED (REV-12 scope note — residuals after REC-WIRE-G):
 * [REV 12 — the pass-10 CRITICAL-2 correction; supersedes the REV-10 "tied NOWHERE"
@@ -81,7 +82,9 @@ node's actual (e_i, g_i) with (1, 1)"), supplied. It rides the species structure
 field (the fiat layer): the stage/wiring-level provenance obligation
 REC-WIRE-G (which SUBSUMES the e-half's transition-hypothesis removal) is not
 claimed by THIS lemma, but is DISCHARGED [REV 12] by the companion
-`recParam_eg_of_recentering` below (from `HistoryCoherent` alone). -/
+`recParam_eg_of_recentering` below (`hi1` and `hrec` are explicit hypotheses; the
+substantive width/recentering laws come from `HistoryCoherent`; `Node.hspecRec` is
+unused). -/
 theorem k0_actual_of_recentering (ν : Node p F) (Φhat : Polynomial ℤ_[p])
     (hspec : ν.species = ReadSpecies.recentering)
     (hK : K0Conformant ν.σ 1 1 Φhat) :
@@ -137,8 +140,8 @@ theorem recentering_natDegree_eq {σ σ' : Stage p F} {cc : ↥σ.K}
 /-- **REC-WIRE-G, DISCHARGED — the wiring corollary** [REV 12]: in a coherent history,
 at an INTERIOR recentering read (the read's own transition fires: `i + 1 < len`), the
 node's ACTUAL read pair is `νᵢ.e = 1 ∧ νᵢ.g = 1` — derived from the WIRING, not the
-species fiat.  The route (every hypothesis supplied by `HistoryCoherent` itself, none
-by `Node.hspecRec`):
+species fiat.  The route (`hi1` and `hrec` are explicit hypotheses; the substantive
+width/recentering laws come from `HistoryCoherent`; `Node.hspecRec` is unused):
 (1) the recentering coherence leg fires `IsRecenteringCore νᵢ.σ νᵢ₊₁.σ` at the
     recorded center/lift; its `base` feeds the stage kernel
     `recentering_natDegree_eq`, giving `deg Φᵢ₊₁ = deg Φᵢ`;

@@ -8,8 +8,9 @@ RECENTERING carriers — monicity + the SYNTHETIC `K0Conformant σ 1 1` IN THIS 
 (the actual pair there follows by the sibling unit's compiled transport
 `k0_actual_of_recentering`, `H1/RecParamE.lean` [REV 10] — `Node.hspecRec` forces
 the pair (1, 1); the WIRING provenance REC-WIRE-G is DISCHARGED [REV 12] by
-`recentering_natDegree_eq` + `recParam_eg_of_recentering` (`H1/RecParamE.lean`,
-the pair derived from `HistoryCoherent` alone), which SUBSUMES the e-half
+`recentering_natDegree_eq` + `recParam_eg_of_recentering` (`H1/RecParamE.lean`;
+`hi1` and `hrec` are explicit hypotheses, the substantive width/recentering laws
+come from `HistoryCoherent`, and `Node.hspecRec` is unused), which SUBSUMES the e-half
 transition-hypothesis removal — see the unit note §S2 case (b)),
 NOT KP-STEP class membership in either case; KP-STEP's
 class is (K0)+(K1)+(K2), and (K1)+(K2) for the fired lifts ride, on [NR], the

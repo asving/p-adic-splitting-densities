@@ -3014,3 +3014,33 @@ scope = pass 12's §S6-item-7 charge. Lean edits at this revision:
 `RecParamE.lean` COMMENT-ONLY (`k0_actual_of_recentering` docstring);
 `RCWitness.lean` untouched; no existing statement changed. Clean counter
 stays 0/2; pass 12 next.
+
+## B-M2 REVISION 14 — the pass-12 fold: the full extended census published + the provenance-wording propagation (2026-08-02)
+
+Pass 12 (Codex, hostile, `BM2_pass12_2026-08-06.md`): CRITICAL, inverse
+profile again — three POSITIVE verifications (the three REV-13 discharge
+syncs correct and supported by the compiled declarations; the consolidated
+current-opens list exact at all three display sites; the compiled-state
+sweep found no mathematical contradiction — the third model-diverse
+math-clean read of the REC-WIRE-G pair) and two MECHANICAL defect classes,
+both folded. (1, CRITICAL — census) the extended-scope re-grep gave 212
+active hits vs the provisional 151; only C205–C208 covered the newly
+scoped doc comments — FOLDED: the full enumeration published as rows
+C209–C271 (63 rows: 12 `Conformance.lean` declaration docstrings, 16
+`RecParamE.lean` module/declaration docs, 35 `RCWitness.lean`
+module/section/declaration docs; 37 [TAGGED/self] + 11 [TAGGED] + 15
+[STATUS-FREE]); active total 151 + 63 = 214; the +2 vs pass 12's 212 is
+RCWitness segmenter granularity only (superset published, no hit
+dropped); the self-citation [TAGGED] convention made explicit in the
+census key. (2/3, CRITICAL — wording) all five surviving "from
+`HistoryCoherent` alone"/"every hypothesis comes from `HistoryCoherent`"
+sentences replaced by the §S2-adopted hypothesis-precise form (`hi1` and
+`hrec` are explicit hypotheses; the substantive width/recentering laws
+come from `HistoryCoherent`; `Node.hspecRec` is unused): the
+`Conformance.lean` header, the `k0_actual_of_recentering` docstring, the
+`RecParamE.lean` module header, the `recParam_eg_of_recentering` docstring
+(census rows C225/C235 FIXED), and the note's §SC sentence (within C006).
+Lean edits COMMENT-ONLY, both files re-run `lake env lean` clean, zero
+`sorry`, `#print axioms` Lean-core on all four RecParamE declarations;
+`RCWitness.lean` untouched; no statement changed. Clean counter stays
+0/2; pass 13 next.
