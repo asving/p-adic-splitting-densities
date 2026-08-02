@@ -3857,3 +3857,49 @@ record `lean/notes/openmath/STRATA_PROBE_2026-08-08.md`):
   TD-3's E-phase sorry stands refuted-open with a docstring notice); consumer
   signatures (§3/§4) untouched; no V9 import; zero new sorries (B2D E-phase
   ledger stays at 15).
+
+## 2026-08-08 (wallclock 2026-08-02): B2D HARD HOLE CL5 — VERDICT: PROVED — C6:129 fullness sorry CLOSED, Lean-core
+
+**Unit CL5** (B2DEF_LEAN blueprint §5 wave 1, front 2: "the CL-05 counting
+identity, the one place genuinely new mathematics enters"). The honest sorry at
+`HC1/C6_alphabetCard.lean:129` — conjunct 2 ⟸, fullness `card 𝔸(b,γ) =
+card F_{K+1}` from `cleanThreshold` on a nonempty level set — is PROVED in
+place. `C6_alphabetCard` is now sorry-free; gate `lake env lean` exit 0;
+`#print axioms` = `[propext, Classical.choice, Quot.sound]` (Lean-core) for
+both `C6_cardK_bridge` and `C6_alphabetCard`.
+
+* **Numerics first** (`verification/cl05_fullness_probe.py`, sealed header,
+  exit 0): P1 the fiber-count kernel exact at 2000 on-lattice targets incl.
+  recentering rows and gcd-defect strata; P2 152 deep assemblies
+  (`N = ∏g ∧ |FQ|^N = card K_top`); P3 163 shallow hclean-failure instances
+  (the guard is non-vacuous — the D¹¹c regime is really excluded by it).
+* **The CI-1 kernel is NEW math, now compiled** (`cl05_walk_inj` +
+  `cl05_walk_fiber`, private in C6's file): the unit walk
+  `u ↦ Σ u_r·h_r·∏_{j>r}e_j` over `∏[0,e_r)` is a COMPLETE residue system mod
+  `D₀ = ∏e_r` (triangular peel, consuming ONLY `gcd(e_r,h_r) = 1`), so every
+  fiber of the slot-box walk is a free `v`-shift: `#fiber = ∏ G_r`
+  UNCONDITIONALLY over targets in `(1/D₀)ℤ` — no achieved-class case split.
+* **A load-bearing legality discovery**: a recentering whose PARENT has
+  `e ≥ 2` would kill a live slot and BREAK the count (compiled-countermodel
+  candidate constructed during the probe); it is ILLEGAL — `IsRecentering`'s
+  first clause `σ.e = 1` — and `cl05_slotBound_eq` consumes exactly that
+  clause. The identity is TRUE precisely because of the D.10 `e_read = 1`
+  precondition.
+* **CI-2+CI-3 were NOT new**: the joint-independence leg is the LANDED
+  `CL13_lvlDet` (LVL-DET) — the composite `(levelSet → FQ) →+ grQ γ` is
+  injective by CL-13 + additive by C2, surjective onto `𝔸` by T11, giving
+  `card 𝔸 = |FQ|^N` in one stroke (no per-line CI-2 needed). CI-4 =
+  `child_field` + replication of CU1's private `card_adjoin_root`
+  (`cl05_card_adjoin_root`, verbatim adaptation, cited in-file).
+* **Assembly**: `levelSet ≃ aligned addresses` (hclean discharges
+  attainability; the p-adic level is the alignment defect), then
+  `card 𝔸 = |FQ|^N = |FQ|^{∏G} = |K₀|^{∏G} = card K_top` (base pin `K₀ = FQ`).
+* **Fences respected**: statement UNTOUCHED (the item-18 repaired form,
+  hypothesis-guarded conjunct 2); no new axioms; no V9 import; all helpers
+  private `cl05_*` in C6's own file (blueprint: "in place — HC1 property");
+  CL04's banked probe slot `CL04_dichotomy_probe` UNTOUCHED (its constructive
+  refutation via this proof is CL-02's disposition call, per the fence).
+* **Consumers unblocked**: TD-1's full-alphabet q-power count (blueprint §5)
+  now has its supplier; HC1's sorry inventory drops to
+  `CL04_addrDichotomy.lean:190` (the banked probe slot) + the V9 ×4
+  adjudicated legs.
