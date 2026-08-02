@@ -2239,3 +2239,11 @@ already priced — ZERO new obligations. B-M1 pass 2 + GRB pass 5 launched.
 
 ## GRB REV 6 (pass-5 fold): (H-CHAIN) range fix CONFIRMED; owed H1-blueprint sync EXECUTED (2026-08-02)
 Pass 5 GAPS-ONLY: verifier re-derived 0 ≤ j ≤ i−1 from FGMN Def 3.1; sole residue = R5.2's owed sync, now done — HDISCHARGE_H1 REV 3 (OP-A3 paragraph + fold record) displays the full range; leaf's three OWED flags annotated EXECUTED. 0/2.
+
+## FRONTIER FOLD ROUND (409ebec, bdfe1d2, 2026-08-06)
+B-M1 rev 3: PAR-MON lemma displayed w/ corpus pins (Stage.hmonic
+Moves/Defs.lean:124, base monic_X, IsReadLift verbatim HC2/Defs.lean:
+181-191); Cor 4.12 quote corrected. GRB rev 6: the owed blueprint sync
+EXECUTED (HDISCHARGE_H1 REV 3 at the full (H-CHAIN) range); residue
+restated. BOTH leaves zero-critical, all gaps folded. Clean-bar passes
+launched: B-M1 pass 3 + GRB pass 6 (each needs its first CLEAN).
