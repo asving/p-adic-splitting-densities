@@ -605,7 +605,7 @@ through H1-U14's falsifier gate first. [REV 2: `faithful_at` + link fields re-pr
 | W0 | A-M1 faithfulness-brief consolidation (§1.2 → the GRB leaf's §S0); N-1; N-2; Lean U1–U4 (Defs) | — |
 | W1 | Lean U5, U6, U7; A-M2 = GRB_order2 attempt+brief (§1.3) | U1–U4; A-M2 also N-1 green |
 | W2 | B-M1 = KPSTEP attempt+brief (§2.2); Lean U8a–c, U9; C-M1 (abstract OL-2a-6, §3.3(i)) | A-M2 (structure clause consumed). [REV 2, finding 11:] U8b runs AGAINST the displayed `DevBound` hypothesis row as STAGING; this discharges NOTHING — member (b)'s retirement requires OP-B1 PROVED (the row derived), §6 |
-| W3 | D-M1 = KEY1SITE note (§4.2); B-M2 = the OL-1 family clause (§2.2 s7); Lean U10, U11, U12; U14 (gated) | B-M1; U14 gated on N-1's total-form verdict |
+| W3 | D-M1 = KEY1SITE note (§4.2); B-M2 = the OL-1 family clause (§2.2 s7) **[EXECUTED 2026-08-06 as the engine-lift conformance unit — REV 4 record below]**; Lean U10, U11, U12; U14 (gated) | B-M1 **[VERIFIED 2026-08-06, 2-clean]**; U14 gated on N-1's total-form verdict |
 | W4 | Lean U13 (wired conformance); hostile passes on A-M2/B-M1/D-M1/C-M1 (Codex, fresh context, 2-clean bar each, sequential per the fleet throttle) | W2/W3; U13 also N-2 green |
 
 Unit count: 4 math leaves (A-M2, B-M1(+B-M2), C-M1, D-M1) + 14 Lean units (U1–U14)
@@ -686,3 +686,32 @@ items (3, partially) are display-only. The blueprint's next gate is a FRESH Code
 pass on the REV-2 text (the fold is my own edit — same-context self-review does not
 advance the bar); that pass rides the wave-0 dispatch. Codex budget at review time:
 2% of the 7-day window.
+
+**REV 4 (2026-08-06, unit records — additive only, no spec text changed):**
+* **B-M1 VERIFIED (2-clean, model-diverse):** `lean/notes/openmath/H1_BM1_2026-08-06.md`
+  REVISION 3 — pass 3 (Codex) CLEAN + pass 4 (Fable) CLEAN. Theorem KP-STEP holds at
+  the degree-conformant class (K0)+(K1)+(K2) (the REV-2 restriction; consumer
+  alignment displayed at its §S8); OP-B1 PROVED there (fixed bound; minimality
+  (K0)-gated). Deviations from this blueprint's §2.2 sketch (all recorded in the
+  leaf): (s4a) localization-avoidance VOID (FGMN Thm 4.13 presents Gr(µ) itself);
+  FGMN Prop 5.7 REJECTED as the (s5) pin (key-equivalence, not the low-degree
+  block) — the direct fallback route executed; DEVID parent-level consumption
+  evaporates (development-form weights definitional).
+* **B-M2 EXECUTED (wave 3, the engine-lift conformance unit):**
+  `lean/notes/openmath/H1_BM2_2026-08-06.md` (Theorem LIFT-CONF — every lift the
+  wired engine fires is (SL-top)-shaped with marched (SL-dev) DATA [definitional,
+  D8 `IsReadLift`] and (K0)-conformant [theorem: shape + `Stage.hmonic`]; OL-1
+  per-clause assembly: (a) DISCHARGED, (c) supplied by B-M1 §S3.2 on the class,
+  (b) conditional on the graded-reading seam + TR-3-ORD-X) + compiled corpus face
+  `lean/LeanUrat/Scaffold/HDischarge/H1/Conformance.lean` (sorry-free, per-file
+  gate clean: `K0Conformant`, `isReadLift_K0` [PAR-MON's step, the read-pair
+  transport of `Moves/L3_liftMonic`], site corollaries at `IsNodeLift` /
+  `LandingKey` / `HistoryCoherent` both legs / `ReadsOf`). NOTE: this lands a
+  `Scaffold/HDischarge/H1/*.lean` file — the §0 rule (ii) blueprint-only fence
+  bound the BLUEPRINT unit itself and expired with the prover fan-outs (Defs/
+  Order1/TowerStep/SiteBlock/RunBinding already landed at waves 0–2). Residue
+  per the unit's §S4: its own 0/2 bar; the graded (SL-dev) reading (model seam,
+  A-M2); S-1 [T]; TR-3-ORD-X; GRB inheritance; the `DevBound` row STANDS (its
+  Lean derivation still needs the graded reading — finding-11/12 discipline
+  unchanged). Member (b) retirement now waits on: B-M2's bar + the GRB leaf's
+  bar (counter 0/2 at record time — pass-8 gaps folded at its rev 7).

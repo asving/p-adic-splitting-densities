@@ -1,0 +1,208 @@
+/-
+HDISCHARGE_H1 — `H1/Conformance.lean`: B-M2's Lean face (wave 3) — the ENGINE-LIFT
+CONFORMANCE chain.  Unit note: `lean/notes/openmath/H1_BM2_2026-08-06.md` (Theorem
+LIFT-CONF); governing spec: blueprint §2.2 (s7) [REV 2, finding 15] + the VERIFIED
+KP-STEP note `H1_BM1_2026-08-06.md` §S7/§S8 (2-clean bar met; corpus pins verified
+at pass 4).
+
+WHAT IS COMPILED HERE (all sorry-free; no new axioms; no statement of any landed
+unit touched):
+* `K0Conformant` — the (K0) clause at a read: monic of the conformant degree
+  e'·g·deg σ.Φ (KP-STEP §S1.3's degree-conformance hypothesis, the class every
+  consumer consumes per the §S8 alignment).
+* `isReadLift_K0` — THE core: every D8-shaped read lift at a monic parent is
+  (K0)-conformant.  This is Lemma PAR-MON's induction STEP (KP-STEP §S3.2,
+  verified) compiled: the read-pair transport of the on-file `L3_liftMonic`
+  (`Moves/L3_liftMonic.lean`, frame-pair stride σ.e) to the free read stride e'
+  — same count, stride freed, `σ.he` replaced by the explicit `1 ≤ e'` binder
+  (supplied by `Node.he` at every node).
+* `isNodeLift_K0` / `landingKey_K0` / `landingKey_recentering_K0` /
+  `historyCoherent_key_K0` / `historyCoherent_recentering_K0` /
+  `readsOf_landing_K0` — the conformance read off at EVERY carrier on which the
+  wired engine fires a key: coherent interior increments (`HistoryCoherent`'s
+  non-recentering leg asserts `IsNodeLift νᵢ σᵢ₊₁.Φ`), interior recenterings
+  (`IsRecenteringCore.base`: Φ' = Φ − lift, the e·g = 1 degree-preserving face),
+  and the designated landing key of EVERY read of a `ReadsOf` run (SideReads
+  clause (iv) — final read included, where e ≥ 2 strides are recordable).
+
+WHAT IS NOT CLAIMED (the unit note's §S4 residue — displayed, never consumed):
+the graded (SL-dev) READING (stage-law digit data → the initial-form identity in
+gr(w'); rides the GenuineStageModel seam, A-M2's non-vacuity chain); the
+ABSTRACT-ENGINE identification (O-2a's pinned Lift_i vs this corpus = the S-1
+transcription audit, [T]); OL-1(b)'s verbatim GMN face (TR-3-ORD-X, open).  The
+(SL-top) stride shape and the marched (SL-dev) DATA (window/weight/twist-residual
+laws) are DEFINITIONAL fields of `IsReadLift` (`HC2/Defs.lean:181–191`,
+pass-4-verified verbatim) — no theorem restates them here; `isNodeLift_iff`
+(`Iff.rfl`) is the on-file definitional tie.  Parent-key monicity is the carried
+invariant `Stage.hmonic` (`Moves/Defs.lean:124`; base `Polynomial.monic_X` at
+`HC1/T1_baseStage.lean:1547`; re-supplied per transition, e.g.
+`MovesD/R7_ramifiedForge.lean:118`) — PAR-MON's corpus carrier.
+
+RG-2 fence display (honesty): recorded interior non-recentering transitions carry
+`νᵢ.e = 1` (the HK-06 recording fence, a DISCLOSED wiring-scope restriction with
+its own ledger home) — so `historyCoherent_key_K0`'s recorded instances have
+stride 1; e ≥ 2 lifts are fired (and covered) at `LandingKey`/`ReadsOf` final
+reads.  Conformance quantifies over FIRED lifts; the fence restricts what fires,
+not the conformance.
+-/
+import LeanUrat.Scaffold.HDischarge.H1.Defs
+
+set_option linter.style.longLine false
+set_option linter.style.header false
+set_option linter.unusedSectionVars false
+
+namespace LeanUrat.Scaffold.HDischarge.H1
+
+open Polynomial LeanUrat.Moves LeanUrat.MovesC LeanUrat.MovesJ
+
+universe u
+variable {p : ℕ} [Fact p.Prime] {F : Type u} [Field F] [Finite F]
+
+/-- **(K0) at a read** (KP-STEP §S1.3, the REV-2 degree-conformance hypothesis):
+`Φhat` is monic of the conformant degree `e'·g·deg σ.Φ` — the class the VERIFIED
+Theorem KP-STEP quantifies over, and OL-1(a)'s normalization
+`m_{i+1} = e_i·f_i·m_i` (with `f_i = g` via `Node.hψdeg`) at the site. -/
+def K0Conformant (σ : Stage p F) (g e' : ℕ) (Φhat : Polynomial ℤ_[p]) : Prop :=
+  Φhat.Monic ∧ Φhat.natDegree = e' * g * σ.Φ.natDegree
+
+/-- **B-M2 core (Lemma PAR-MON's step, compiled)**: every D8-shaped read lift at a
+monic parent key is (K0)-conformant.  The read-pair transport of `L3_liftMonic`
+(same stride count; frame stride `σ.e` freed to the read's `e'`, `σ.he` replaced
+by the explicit `1 ≤ e'`): the top stride `σ.Φ^{e'·g}` is monic of degree
+`e'·g·deg σ.Φ` (parent invariant `Stage.hmonic`), and every present lower stride
+`t_k·σ.Φ^{e'·k}` (`k < g`, digit in the coefficient window `deg t_k < deg σ.Φ`)
+has strictly smaller degree.  No ψ-data beyond the window is consumed: the digit
+weight/residual laws ride along untouched. -/
+theorem isReadLift_K0 (σ : Stage p F) (ψ : Polynomial ↥σ.K) (g e' h' : ℕ)
+    (he' : 1 ≤ e') (Φhat : Polynomial ℤ_[p])
+    (hL : IsReadLift σ ψ g e' h' Φhat) :
+    K0Conformant σ g e' Φhat := by
+  obtain ⟨tt, htt0, httne, hΦhat⟩ := hL
+  -- the leading stride is monic and nonzero
+  have hpowg_mon : (σ.Φ ^ (e' * g)).Monic := σ.hmonic.pow _
+  have hpowg_ne : σ.Φ ^ (e' * g) ≠ 0 := hpowg_mon.ne_zero
+  have hbpos : (⊥ : WithBot ℕ) < (σ.Φ ^ (e' * g)).degree :=
+    bot_lt_iff_ne_bot.mpr (fun h => hpowg_ne (Polynomial.degree_eq_bot.mp h))
+  -- each present stride has strictly smaller degree than the leading stride
+  have hterm : ∀ k ∈ Finset.range g,
+      (tt k * σ.Φ ^ (e' * k)).degree < (σ.Φ ^ (e' * g)).degree := by
+    intro k hk
+    rw [Finset.mem_range] at hk
+    by_cases htk : tt k = 0
+    · rw [htk, zero_mul, Polynomial.degree_zero]; exact hbpos
+    · have hcoeff : ψ.coeff k ≠ 0 := fun h => htk (htt0 k h)
+      have hlt : (tt k).degree < σ.Φ.degree := (httne k hk hcoeff).2.1
+      have hpowk_ne : σ.Φ ^ (e' * k) ≠ 0 := (σ.hmonic.pow _).ne_zero
+      have hprod_ne : tt k * σ.Φ ^ (e' * k) ≠ 0 := mul_ne_zero htk hpowk_ne
+      have hA : (tt k).natDegree < σ.Φ.natDegree :=
+        Polynomial.natDegree_lt_natDegree htk hlt
+      have hmn : e' * k + 1 ≤ e' * g := by
+        have h1 : e' * (k + 1) ≤ e' * g := Nat.mul_le_mul (le_refl e') (by omega)
+        have h2 : e' * (k + 1) = e' * k + e' := by ring
+        omega
+      rw [Polynomial.degree_eq_natDegree hprod_ne, Polynomial.degree_eq_natDegree hpowg_ne,
+        Polynomial.natDegree_mul htk hpowk_ne, Polynomial.natDegree_pow,
+        Polynomial.natDegree_pow, Nat.cast_lt]
+      have h1 : (e' * k + 1) * σ.Φ.natDegree ≤ e' * g * σ.Φ.natDegree :=
+        Nat.mul_le_mul hmn (le_refl _)
+      have h2 : (e' * k + 1) * σ.Φ.natDegree
+          = e' * k * σ.Φ.natDegree + σ.Φ.natDegree := by ring
+      omega
+  -- the tail has strictly smaller degree than the leading stride
+  have hSdeg : (∑ k ∈ Finset.range g, tt k * σ.Φ ^ (e' * k)).degree
+      < (σ.Φ ^ (e' * g)).degree := by
+    refine lt_of_le_of_lt (Polynomial.degree_sum_le _ _) ?_
+    rw [Finset.sup_lt_iff hbpos]
+    exact hterm
+  refine ⟨?_, ?_⟩
+  · rw [hΦhat]; exact hpowg_mon.add_of_left hSdeg
+  · rw [hΦhat, Polynomial.natDegree_eq_of_degree_eq
+      (Polynomial.degree_add_eq_left_of_degree_lt hSdeg), Polynomial.natDegree_pow]
+
+/-- (K0) at the node's own read pair: `IsNodeLift` is definitionally `IsReadLift`
+at `(ν.ψ, ν.g, ν.e, ν.h)` (`isNodeLift_iff`, `Iff.rfl`), and the read stride is a
+genuine polygon side (`ν.he : 1 ≤ ν.e`). -/
+theorem isNodeLift_K0 (ν : Node p F) (Φhat : Polynomial ℤ_[p])
+    (hL : IsNodeLift ν Φhat) : K0Conformant ν.σ ν.g ν.e Φhat :=
+  isReadLift_K0 ν.σ ν.ψ ν.g ν.e ν.h ν.he Φhat ((isNodeLift_iff ν Φhat).mp hL)
+
+/-- **The e·g = 1 refinement face**: subtracting a coefficient-window element from
+the monic frame key is degree-preserving monic — (K0) at `e = g = 1` (recenterings;
+`1 * 1 * deg σ.Φ = deg σ.Φ`). -/
+theorem sub_inC_K0 (σ : Stage p F) (tL : Polynomial ℤ_[p]) (hin : inC σ.Φ tL) :
+    K0Conformant σ 1 1 (σ.Φ - tL) := by
+  have hlt : (-tL).degree < σ.Φ.degree := by
+    rw [Polynomial.degree_neg]; exact hin
+  refine ⟨?_, ?_⟩
+  · rw [sub_eq_add_neg]; exact σ.hmonic.add_of_left hlt
+  · rw [sub_eq_add_neg, Polynomial.natDegree_eq_of_degree_eq
+      (Polynomial.degree_add_eq_left_of_degree_lt hlt), one_mul, one_mul]
+
+/-- The landing key fired by a NON-recentering read is (K0)-conformant at the
+read's own `(e, g)` (`LandingKey`'s non-recentering leg is `IsNodeLift`). -/
+theorem landingKey_K0 (ν : Node p F) (Φtop : Polynomial ℤ_[p])
+    (hL : LandingKey ν Φtop) (hspec : ν.species ≠ ReadSpecies.recentering) :
+    K0Conformant ν.σ ν.g ν.e Φtop :=
+  isNodeLift_K0 ν Φtop (hL.2 hspec)
+
+/-- The landing key fired by a RECENTERING read is (K0)-conformant at `e = g = 1`
+(the recorded lift is a coefficient-window center realizer; `Φtop = σ.Φ − lift`). -/
+theorem landingKey_recentering_K0 (ν : Node p F) (Φtop : Polynomial ℤ_[p])
+    (hL : LandingKey ν Φtop) (hspec : ν.species = ReadSpecies.recentering) :
+    K0Conformant ν.σ 1 1 Φtop := by
+  obtain ⟨hin, -, -, -, hΦtop⟩ := hL.1 hspec
+  rw [hΦtop]
+  exact sub_inC_K0 ν.σ ν.lift hin
+
+/-- **Wired interior increments are conformant**: along any coherent recorded
+history, at every interior non-recentering transition `i → i+1` the CHILD frame
+key is (K0)-conformant at node `i`'s read — monic of degree `νᵢ.e·νᵢ.g·deg σᵢ.Φ`,
+OL-1(a)'s degree recursion at the wired sites.  (The child stage's own
+`Stage.hmonic` is thereby CONSISTENT with, not independent of, the fired shape —
+the re-supply is conformant.)  RG-2 fence: the same coherence leg records
+`νᵢ.e = 1` at these sites (disclosed wiring scope; see the file header). -/
+theorem historyCoherent_key_K0 (H : History p F) (hH : HistoryCoherent H)
+    (i : ℕ) (hi1 : i + 1 < H.nodes.length)
+    (hspec : (H.nodes[i]'(by omega)).species ≠ ReadSpecies.recentering) :
+    K0Conformant (H.nodes[i]'(by omega)).σ (H.nodes[i]'(by omega)).g
+      (H.nodes[i]'(by omega)).e ((H.nodes[i+1]'hi1).σ.Φ) := by
+  obtain ⟨-, -, -, hstep⟩ := hH
+  obtain ⟨-, hnonrec, -, -, -, -, -⟩ := hstep i hi1
+  obtain ⟨-, _σV, -, hlift, -⟩ := hnonrec hspec
+  exact isNodeLift_K0 _ _ hlift
+
+/-- **Wired interior recenterings are conformant**: at every interior recentering
+transition the child frame key is the degree-preserving monic recentering of the
+parent key — (K0) at `e = g = 1` (via `IsRecenteringCore.base`). -/
+theorem historyCoherent_recentering_K0 (H : History p F) (hH : HistoryCoherent H)
+    (i : ℕ) (hi1 : i + 1 < H.nodes.length)
+    (hspec : (H.nodes[i]'(by omega)).species = ReadSpecies.recentering) :
+    K0Conformant (H.nodes[i]'(by omega)).σ 1 1 ((H.nodes[i+1]'hi1).σ.Φ) := by
+  obtain ⟨-, -, -, hstep⟩ := hH
+  obtain ⟨hrec, -, -, -, -, -, -⟩ := hstep i hi1
+  obtain ⟨-, -, -, hin, -, -, -, hΦ', -⟩ := (hrec hspec).base
+  rw [hΦ']
+  exact sub_inC_K0 _ _ hin
+
+/-- **Every lift a classifier run fires is conformant** (`ReadsOf`, the f-explicit
+run predicate): at EVERY read `i` of a run of `f` — the FINAL read included — the
+designated landing key `Φnext` (SideReads clause (iv); pinned to the child frame
+key at interior reads) is (K0)-conformant: at the read's own `(e, g)` when the
+read is not a recentering, at `e = g = 1` when it is.  This is the "every lift
+the engine fires" quantifier of Theorem LIFT-CONF at the wired instance. -/
+theorem readsOf_landing_K0 (n : ℕ) (f : Polynomial ℤ_[p]) (H : History p F)
+    (hRO : ReadsOf p F n f H) (i : ℕ) (hi : i < H.nodes.length) :
+    ∃ Φnext : Polynomial ℤ_[p],
+      (∀ hi1 : i + 1 < H.nodes.length, Φnext = (H.nodes[i+1]'hi1).σ.Φ) ∧
+      ((H.nodes[i]'hi).species ≠ ReadSpecies.recentering →
+        K0Conformant (H.nodes[i]'hi).σ (H.nodes[i]'hi).g (H.nodes[i]'hi).e Φnext) ∧
+      ((H.nodes[i]'hi).species = ReadSpecies.recentering →
+        K0Conformant (H.nodes[i]'hi).σ 1 1 Φnext) := by
+  obtain ⟨-, -, -, hreads⟩ := hRO
+  obtain ⟨B, Nd, Φnext, -, hpin, hside⟩ := hreads i hi
+  obtain ⟨-, -, -, hland, -, -⟩ := hside
+  exact ⟨Φnext, hpin,
+    fun hs => landingKey_K0 _ _ hland hs,
+    fun hs => landingKey_recentering_K0 _ _ hland hs⟩
+
+end LeanUrat.Scaffold.HDischarge.H1

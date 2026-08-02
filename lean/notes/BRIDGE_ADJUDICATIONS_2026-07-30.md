@@ -2277,3 +2277,13 @@ H6: both shortfall blockers re-checked and STAND — A4b blocked on external III
 
 ## GRB PASS 8 (FABLE, DECIDING): GAPS-ONLY — counter RESET 0/2; rev 7 folded (2026-08-06)
 Two justification gaps, both repaired in-body as REVISION 7: (0')'s "invertible" anchor pair was FALSE (x_r is associate to the PRIME H_mu(phi_r), fgmn.txt:1147/:1701 — replaced by unit-iff-s(gamma)=0 + domain-cancellation in (W-MULT)); S5.2/S5.3's phi_{h_i}=x / u_1=[x] identifications silently presupposed e_i>=2 (qualified; e_i=1 rank-1 trivial case displayed). All discharged chains, TR-1, (H-CHAIN), the D-REAL/D-ITER boundary CONFIRMED by independent re-derivation; residue unchanged. Pass-7 CLEAN consumed; next: hostile pass 9. Report archived from the workflow journal: lean/notes/openmath/GRB_pass8_2026-08-06.md.
+
+## B-M2 EXECUTED: ENGINE-LIFT CONFORMANCE (2026-08-06)
+Theorem LIFT-CONF (H1_BM2_2026-08-06.md): every lift the wired engine fires
+(coherent interior increments + recenterings + every ReadsOf landing, final
+read incl.) is D8-shaped with marched (SL-dev) data [definitional] and
+(K0)-conformant [THEOREM — PAR-MON's step compiled: isReadLift_K0 + 6 site
+corollaries, Scaffold/HDischarge/H1/Conformance.lean, sorry-free, gate clean].
+OL-1: (a) DISCHARGED; (c) = B-M1 S3.2 (verified) on the class; (b) rides the
+graded-reading seam + TR-3-ORD-X. Residue: B-M2 bar 0/2; model seam (A-M2);
+S-1 [T]; GRB inheritance. KP-STEP S8 + blueprint REV 4 annotated.
