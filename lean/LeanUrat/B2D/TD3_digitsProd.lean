@@ -25,6 +25,19 @@ dichotomy, discharged inside TD-0's `slotDigits_sem` counts) — NEVER full
 alphabets (D¹¹c: the uniform field-alphabet display is FALSE at shallow heights).
 Falsifier N-TD1 (shallow-height harness) gates this statement BEFORE proof
 effort. E-phase file: statement only.
+
+**REFUTATION NOTICE (2026-08-02, unit TD-0/TD-3 run; statement UNTOUCHED).**
+The N-TD1 gate FAILED at the Lean statement level
+(`verification/openmath/ntd1_td3_ledger_semantics_trace.py`: intended MOVES
+D.11 finite-box counts match the product 3/3, the landed statement fails 3/3)
+and `TD3_countermodel.lean` compiles the refutation:
+`ledger_digitsProd_refuted` is the ¬∀ of THIS theorem's closure, and
+`not_digitsProd_of_lawful` shows EVERY lawful instance with `1 ≤ rho0`
+violates the law — the defect is E2's `LedgerSemantics` (`Nat.card` over all
+of `Coord → ℕ` is empty-or-infinite ⟹ ≡ 0, against the positive
+`slot_count_val` product). The sorry below stands REFUTED-OPEN pending the
+E2 semantics re-architecture; do NOT attempt this proof against the current
+TDDefs.
 -/
 
 set_option linter.style.longLine false

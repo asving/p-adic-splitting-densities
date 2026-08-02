@@ -3809,3 +3809,51 @@ record `lean/notes/openmath/STRATA_PROBE_2026-08-08.md`):
 * Build-phase note: one adjudicator bug (rep/label misalignment) was caught
   by the preregistered sealed B3 control row on the first full run and
   fixed (amendment displayed in the script header); predictions untouched.
+
+## 2026-08-08 (wallclock 2026-08-02): B2D HARD HOLE TD-0/TD-3 — VERDICT: REFUTED AS STATED (the E2 semantics seam, not the math) — compiled countermodel, Lean-core
+
+* **The unit** (B2DEF_LEAN §5 wave 1, front 1 — "the one unit whose STATEMENT
+  might fail at the skeletal carrier"): prove `DigitsProdLaw` at the ledger
+  instance (`ledger_digitsProd`, TD3_digitsProd.lean) after building TD-0's
+  lawful instance. Outcome: **the statement is FALSE for EVERY admissible
+  instance** — the failure the blueprint feared, but at the E2 transcription
+  seam, NOT at shallow heights and NOT in the accepted §B2-DEF mathematics.
+* **N-TD1 trace first (the standing discipline), which gated the proof
+  attempt**: `verification/openmath/ntd1_td3_ledger_semantics_trace.py` —
+  at 3 shallow concrete instances the intended MOVES D.11 finite-box counts
+  match the per-slot product EXACTLY (3/3: math sound; e.g. i2 junction-pinned
+  32 = 32), while the landed Lean statement fails 3/3 (LHS = Nat.card of an
+  infinite set = 0 against positive products 2, 32, 2). STOPPED; built the
+  countermodel instead.
+* **The defect, one sentence**: `LedgerSemantics` (TDDefs.lean, unit E2)
+  counts members over ALL of `Coord → ℕ` (infinite index set, unbounded
+  digits), but `LedgerLawful.member_split` + `parent_support` + `slot_support`
+  force membership to read only the finite block union — so every stratum set
+  is empty-or-infinite and `Nat.card` is 0, while `slot_count_val` forces the
+  product side positive (`q0^(mN−s(·)) ≥ 1`) and `hpin_ne`/`hpin_lt` force
+  `d ≥ 1`, making an in-range all-factors-positive digit vector constructible
+  at every instance. TDDefs design flag 1's demanded box-supported member
+  predicate is CONTRADICTORY with lawfulness on nonempty strata.
+* **Compiled artifacts** (`lean/LeanUrat/B2D/TD3_countermodel.lean`, NO sorry,
+  gate `lake env lean` exit 0, all Lean-core `[propext, Classical.choice,
+  Quot.sound]`): `not_digitsProd_of_lawful` (EVERY lawful L with 1 ≤ rho0
+  violates the law — no TD-0 instance choice can rescue TD-3);
+  `lawful_cylFiber_eq_zero`/`lawful_cylFiberDigits_eq_zero` (the semantics
+  degeneracy isolated); `lawful_fiber_devacuify_impossible` (TD-0's
+  R0Instance-sense de-vacuity duty (c) is impossible); `cmL_lawful` (concrete
+  lawful witness, rho0 = 1, LedgerScope + LedgerClean satisfied — refutation
+  NOT by vacuous lawfulness); `ledger_digitsProd_refuted` (the ¬∀ of TD-3's
+  exact statement).
+* **Blast radius, displayed**: with `cylFiberDigits ≡ 0` forced, TD-2's
+  `FiberSumLaw` (0 = 0) and TD-4's `JunctionPinLaw` (all fibers vanish) become
+  vacuously satisfiable — the E2 semantics layer degenerates ALL counting
+  content. RE-ARCHITECTURE REQUIRED (a FRESH E2 statement round) before ANY of
+  TD-0..TD-6 is staffed: `LedgerSemantics` must count BOX-RESTRICTED
+  assignments (the file's own `blockCount` pattern, `Nat.card {x : ↥box →
+  Fin q0 // …}` at a level-N box Finset, per MOVES D.11's `#{f mod p^N}`), or
+  adopt the R0Instance formula-field pattern. GR wave 2a and CL5 (front 2)
+  are UNTOUCHED by this finding.
+* **Fences respected**: no landed statement changed (TDDefs/TD1..TD6 stand;
+  TD-3's E-phase sorry stands refuted-open with a docstring notice); consumer
+  signatures (§3/§4) untouched; no V9 import; zero new sorries (B2D E-phase
+  ledger stays at 15).
