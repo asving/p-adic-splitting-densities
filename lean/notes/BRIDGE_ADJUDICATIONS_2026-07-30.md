@@ -2168,3 +2168,10 @@ Pass-3 GAPS-ONLY items folded at REV-4 flags: S2.2 residual carrier-identificati
 VC18 recorded (SOUND on REVISION 15 — acceptance re-anchored; its advisory repaired). (H8)=(K-CUT) row RETIRED from §3.1 per the round-3 DISCHARGES gate: package (repaired adjudication + KCutMassFactor + KCutK1Tie, Lean-core, 3-round arc) at the NEW §3.2 K-CUT retirement row; residues MOVED — graft -> D-14+CU-3+REL.2; measured mass -> (H7)/TREE-EXP+[2r]/CL-8+O-1/O-3; tau/delta dictionary -> [2r]/CL-8, W-leg at CL-17(ii)/W17ii.
 Roster: TEN rows = (H1)-(H9) minus retired (H8); (R)/(UB) lose (H8); charge-(vi) FAIL stands displayed (retirement rides the proved package, not that route); nothing semantic discharged.
 Text change: VC19 OWED as the confirming anchor on the REVISION-16 wording. Record: ROOT_ASSEMBLY §22.
+
+## r17 EXECUTED: TEN ROWS (e3a3c52) + GRB rev 4 (4251c14) — VC19 LAUNCHED (2026-08-06)
+(K-CUT) retired into §3.2 (package + 3-round arc + residues at named
+owners: graft->D-14/CU-3/REL.2, measured-mass->(H7)/TREE-EXP+CL-8,
+tau/delta->CL-8+W-leg); §3.1 = TEN rows grep-verified; 21 operative
+sites synced; §22 = REVISION 16. GRB at zero-critical, wording complete.
+VC19 = the ten-row anchor pass.
