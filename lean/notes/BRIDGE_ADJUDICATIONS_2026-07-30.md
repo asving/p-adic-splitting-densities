@@ -2148,3 +2148,15 @@ Residue unchanged (TR-3'-GEN + TR-3-ORD-X + D-ITER(order >= 2) + N-1); clean-pas
 ## K-CUT DISPLAY SYNC POST-C2/C3 (2026-08-02)
 Round-2 re-pass (KCUT_pass2_2026-08-05.md) CRITICAL on display staleness only — both content theorems confirmed PROVED, drift audit clean; R2RootSync §D/§G + blueprint re-synced: C2/C3 = LANDED+PROVED unpinned interfaces, ELEVEN Lean units + 2 documentary.
 Standing status: discharge awaits ONLY the clean re-pass (GAPs 3/4/6 = displayed owner-row instantiation residue, unchanged owners).
+
+## KCUT ROUND 3: DISCHARGES — SECOND ROW RETIREMENT (2026-08-06)
+The (K-CUT) discharge gate PASSED: round-2 staleness cured; the package
+(honest display + KCutMassFactor + KCutK1Tie, machine-proved Lean-core)
+proves the row's decomposition/ownership/product/K1 statement at the
+consumption site; graft/measured-mass/tau-delta interfaces displayed as
+RESIDUE at their owning leaves, not consumed. Per the row's named route:
+retires into the consuming leaves' [V] debts. r17 dispatched: eleven ->
+TEN [M] rows. Report: lean/notes/openmath/KCUT_pass3_2026-08-06.md.
+GRB PASS 3: GAPS-ONLY (leakage cured, 0 criticals; 2 wording completions
+owed -> rev 4 polish; clean-pass counter 0/2 continues).
+Report: lean/notes/openmath/GRB_pass3_2026-08-06.md.
