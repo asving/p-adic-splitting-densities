@@ -1,8 +1,12 @@
 /-
 HDISCHARGE_H1 — `H1/Conformance.lean`: B-M2's Lean face (wave 3) — the engine-lift
 D8-DATA/(K0)-CONFORMANCE chain.  Unit note: `lean/notes/openmath/H1_BM2_2026-08-06.md`
-(Theorem LIFT-CONF, REVISION 2 — the pass-1 fold re-headline: what is compiled is
-(K0)-CONFORMANCE at the recorded carriers, NOT KP-STEP class membership; KP-STEP's
+(Theorem LIFT-CONF, REVISION 2 re-headline; scope split per the note's §S0 table
+[REVISION 6 — the pass-4 CRITICAL-1 fold]: what is compiled is — at the
+NON-RECENTERING carriers — (K0) at the recorded node's ACTUAL pair, and — at the
+RECENTERING carriers — monicity + the SYNTHETIC `K0Conformant σ 1 1` ONLY (the
+actual pair there awaits the open REC-PARAM obligation displayed in the unit
+note), NOT KP-STEP class membership in either case; KP-STEP's
 class is (K0)+(K1)+(K2), and (K1)+(K2) for the fired lifts ride the OPEN graded
 (SL-dev) reading GRADED-READ); governing spec: blueprint §2.2 (s7) [REV 2, finding
 15] + the VERIFIED KP-STEP note `H1_BM1_2026-08-06.md` §S7/§S8 (2-clean bar met;
@@ -60,8 +64,11 @@ reads of an ASSUMED `ReadsOf` run, final read included, where e ≥ 2 strides ar
 recordable; locating ALL fired e ≥ 2 lifts at final reads is the unit note's
 open SITE-EXH, and no compiled e ≥ 2 `ReadsOf` existence lemma is on file), and
 an e ≥ 2 RECENTERING read would receive only the SYNTHETIC (1, 1) conclusion.
-Conformance quantifies over FIRED lifts; the fence restricts what fires,
-not the conformance.
+The compiled declarations quantify over their carrier PREDICATES
+(`IsNodeLift`/`IsRecenteringCore`/`LandingKey`/`HistoryCoherent`/`ReadsOf`
+antecedents); whether every engine firing satisfies one of those predicates is
+exactly the open obligation SITE-EXH [REVISION 6 — the pass-4 CRITICAL-2 fold:
+the former "conformance quantifies over FIRED lifts" universal is retired].
 -/
 import LeanUrat.Scaffold.HDischarge.H1.Defs
 

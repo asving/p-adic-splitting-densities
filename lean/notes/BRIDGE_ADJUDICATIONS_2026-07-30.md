@@ -1986,6 +1986,9 @@ guard DID, with a mandatory compiled interior witness (actual slope, ∃!
 realized) + guard-excludes-F-4 lemma + honest pricing (row = citation
 structure; (FRESH) content stays at (TRANS-DEEP)/U9). Full build + AxChk
 green; Codex diff CONFIRMED 7/7. H2 wave-3: U10 DONE; U9 waits on B2-FINAL.
+[As-executed 2026-08-02: the U9 wait RESOLVED — B2-FINAL's definitive
+successor §B2-DEF ACCEPTED + dual-accepted; U9 LANDED, see §"H2-U9 LANDED
+(2026-08-02)" below. H2 wave-3 is now fully done.]
 
 ## H4 FAN-OUT: 7/11 (2026-08-05)
 Wave 0 Lean statement layer COMPLETE (4/4); waves 1-4 landed M-notes
@@ -2551,3 +2554,25 @@ truncated-run firing must be handled), + †/‡ marks under the §S0 table.
 NO status changes, NO new obligations — instance evidence never discharges
 a general claim (the GRB pass-2 lesson). Clean counter unchanged 0/2;
 hostile pass 4 runs on the REVISION 5 text.
+
+## B-M2 REVISION 6 — the pass-4 fold (2026-08-02)
+Hostile pass 4 (Codex, BM2_pass4_2026-08-06.md) returned CRITICAL: 2
+critical + 2 gaps; the compiled statements were re-confirmed unchallenged
+and evidence/status separation CLEAN. Both criticals were surviving
+untagged scope sentences in the LEAN MODULE HEADER (the REV-4 sweep
+covered the note only): the re-headline "(K0)-CONFORMANCE at the recorded
+carriers" (scope includes [RC], where only synthetic (1,1) is compiled)
+and the "Conformance quantifies over FIRED lifts" closed-world universal
+(present in both files — exactly what SITE-EXH leaves open). Folded:
+Lean header rewritten to the [NR]-actual/[RC]-synthetic split (actual
+pair at [RC] awaits REC-PARAM); the FIRED-lifts universal RETIRED in both
+files, replaced by the per-predicate form (declarations quantify over
+their carrier predicates; coverage of every engine firing = SITE-EXH,
+open). Gaps folded: OL-1(a)-on-[RC] disambiguated everywhere to "awaits
+REC-PARAM ONLY" (REC-SL's other legs not needed for that clause — the
+pass-3 finding-9 adjudication), with the parent-namespace convention
+stated at REC-SL's definition; the abstract-engine universal reading
+("every Lift_i(c)", S-1 [T] + SITE-EXH) added to SITE-EXH's consumer
+list. Lean edits COMMENT-ONLY, gate re-run green, diff verified
+comment-only; no status change, no new obligation. Clean counter stays
+0/2; hostile pass 5 runs on the REVISION 6 text.
