@@ -1,12 +1,16 @@
 # Project state — Lean formalization of uniform rationality of *p*-adic factorization densities
 
-*Snapshot: 2026-07-19; last refreshed 2026-08-08+ (ROOT REVISION 21, unit r22 — see the
-CHECKPOINT "VC22 CONFIRMED + THE H4 F-CHAIN" section at the tail, which is the current
-resumability anchor: TEN honest §3.1 rows unchanged, VC22 CONFIRMED (acceptance re-anchored on
-REVISION 20, VC23 owed), the (H4a) retirement fired at P(O-8b/M14) pass 2 and honestly NOT
-executed (GAPS-ONLY; one clean composite pass owed); the FINAL UPDATE section
-holds the standing loops and the four-document resume protocol; the live Lean census is
-`lean/notes/REMAINING_CENSUS_2026-08-01.md`). This document lays out (1) the bigger picture, (2) what
+*Snapshot: 2026-07-19; last refreshed 2026-08-08++ (ROOT REVISION 22, unit r23 — see the
+CHECKPOINT "THE (H4a) RETIREMENT EXECUTED" section at the tail, which is the current
+resumability anchor: **NINE honest §3.1 rows** — the (H4a) = (R1)–(R4) row RETIRED at the
+P(O-8b/M14) composite ACCEPT (passes 3+4 clean, model-diverse; F-(iv) fired; the (K3-δ) audit
+note survives on the (UB-X) row, still clause-(R)-consumed); acceptance still anchored on
+REVISION 20 (VC22), **VC25 owed** on the REVISION-22 wording (VC23/VC24 named-but-unrun); the
+2026-08-08 campaign batch folded (SITE-EXH engine-face discharge two-layer + E-3 glue,
+GRADED-READ interior-[NR] discharge, B2D TD front sorry-free with the compiled TransDeep
+supplier, CL5 proved, V9 e′ ≥ 2 vacuity-rescope, strata probe, B-M2 REVISION 15); the FINAL
+UPDATE section holds the standing loops and the four-document resume protocol; the live Lean
+census is `lean/notes/REMAINING_CENSUS_2026-08-01.md`). This document lays out (1) the bigger picture, (2) what
 is proved and on what it rests, (3) the Lean blueprint and its correspondence to the math-language
 proof, and (4) what is in progress. It is meant to be sufficient, together with the code, for a
 reader to reconstruct the full state of the project.*
@@ -1619,3 +1623,52 @@ archive. FRONTIER NOW: VC23; the M14 display fold + composite pass 3; the
 Route-B re-scope sign-off queue; then the REVISION-20 frontier list
 unchanged. Verification: VC1–VC22 done (VC22 = the REVISION-20 anchor);
 VC23 pending on REVISION 21.
+
+## CHECKPOINT 2026-08-08++ (wallclock 2026-08-02): THE (H4a) RETIREMENT EXECUTED — NINE ROWS (ROOT REVISION 22)
+ROOT at REVISION 22 (unit r23; record ROOT §28). The ledger's 2026-08-08
+batch (355c1eb → 5a10256) synced in one revision. **THE HEADLINE — F-(iv)
+FIRED:** after the M14 REVISION-1 Lemma-1(b) fold, the P(O-8b/M14) composite
+ran passes 3 (Codex, 0C/0G) + 4 (Fable decider, nothing classifiable) —
+two consecutive CLEAN, model-diverse = **ACCEPT per H4M7 §2** (ledger
+5a10256). Per H4M7 §3 + the r22 display, **the (H4a) = (R1)–(R4) row LEAVES
+the §3.1 roster** (the fourth post-acceptance retirement, after D-12r/H8/H9)
+to the new §3.2 (H4a) retirement row + §3.1 tombstone; the **(K3-δ) audit
+note SURVIVES, MOVED to the (UB-X) row** — clause (R) still consumes (K3-δ)
+until the H4M7 §4 Route-B re-scope fires (Asvin sign-off gate, untouched);
+Steps 16/18's K3-c (R1)–(R4) leg upgrades to PROVED-VERIFIED at the ACCEPT
+record; clauses (R)/(UB) each LOSE (H4a). **The §3.1 roster RECOUNTED: NINE
+[M] rows** — (H1) · (FRESH) · (ADM) · (UB-X) · (PACK) · (H6) · (H7) · (H8′)
+· (E-N). Also folded (all rows stay [M]):
+(1) **SITE-EXH** (the (H1)(b)/B-M2 open): probe NEEDS-EXTENSION (355c1eb) →
+Asvin sign-off (49b778e) → E-1/E-2/E-4 LANDED (f36ab72: `siteExh_elimination'`
+UNCONDITIONAL at the engine face, two-layer as-built; **TowerMoveClosureL
+layering re-ratification PENDING ASVIN**) → E-3 glue PROVED (db47e35:
+`gate_ftie_chain` fires end-to-end — the first f-tied deep landing on file);
+residuals: `junc_bundle` (D-1 wall), `DIterJunctionSupplier` (named open,
+ITER-LAW fence), the box face.
+(2) **GRADED-READ DISCHARGED at interior coherent [NR] reads** (a5911fd:
+`graded_read_of_history`, M-parametric; vacuous-at-steep by
+`readHyps_e_eq_one`; abstract σ.e ≥ 2 residue OPEN-OBSTRUCTED = the 3
+remaining B2D sorries GR-3 ×2 + GR-4 ×1). REC-SL unchanged open; the
+readsOf_landing_K0 debt NARROWED (B-M2 REVISION 15, 38d98f6 — acceptance
+NOT reset, census 226 rows).
+(3) **B2D campaign**: TD front SORRY-FREE end-to-end (TD-3 proved on v3
+after the v1/v2 countermodel arc; TD-6's `transDeep_of_ledger`
+MACHINE-CHECKED filling `fresh_of_transDeep` — the (FRESH) row's
+(TRANS-DEEP) member has a COMPILED ledger-instance supplier, `huni` still
+displayed, general-instance + Step-10/K1 face still owed); CL5 PROVED
+(942becd); GR wave 2a 5/8 proved.
+(4) **V9 e′ ≥ 2 RULING** (d632305): VACUITY-RESCOPE — FALSE-SUSPECT mapping
+retired, `readsOf_e2_s0_zero_empty` compiled, V9 sorries stand behind ONE
+pinned open lemma (conspiracy exclusion); strFrame(i+2) display compiled.
+(5) **Strata probe** (8db1b00): TR-3′-GEN(ii)'s closed-form twist law ON
+RECORD (0/3,640); D-ITER's cyclic presentation FALSE (22/28) — ITER-LAW
+measured (0/804), D-ITER restatement owed, no Lean kernel may bake the
+cyclic form.
+FRONTIER NOW: **VC25** (the confirming end-to-end pass on REVISION 22;
+VC23/VC24 named-but-unrun, superseded; VC26 next); the TowerMoveClosureL
+re-ratification + the Route-B re-scope + the review queue (Asvin); the B2D
+GR-3/GR-4 obstruction disposition; the SITE-EXH residuals; the D-ITER
+restatement; then the REVISION-20 frontier list otherwise unchanged.
+Verification: VC1–VC22 done (VC22 = the REVISION-20 anchor); VC25 pending
+on REVISION 22.
