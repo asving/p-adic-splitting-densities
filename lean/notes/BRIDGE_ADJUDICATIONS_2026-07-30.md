@@ -3058,3 +3058,22 @@ witness; the hspecRec transport; the REC-WIRE-G width-law derivation with
 the fiat unusable by type) → acceptance with the artifact proving MORE than
 rev 0 claimed, priced exactly. Third (H1) leaf accepted (KP-STEP, GR-B,
 B-M2). ROOT r21 batch sync next (with enumeration audit + VC23).
+
+## 2026-08-08: SYNTHESIS PASS 4 — the post-window pattern hunt (map only, no dispatch)
+
+`docs/SYNTHESIS_PASS4_2026-08-08.md`. Headline findings: **F1** the order-2
+unramified-below stratum COLLAPSE — on {order 2, all relevant preceding
+e_j = 1} both GRB open lemmas reduce to ONE provable-now unit (**TR3-S1**,
+the assembled pre-ǫ coefficient agreement; twist triviality + the t = 1
+rescaling + the TR-3-ORD-X-from-(i) implication all already proved at that
+stratum; closes NEITHER lemma stratum-wide). **F4** GRADED-READ vs
+TRANS-DEEP adjudicated SIMILAR-NOT-SAME with ONE shared supplier kernel:
+charter the §B2-DEF carry-algebra Lean formalization ONCE with both consumer
+interfaces displayed (H2 TransDeep supplier + H1 GenuineStageModel
+instantiation). **F2/F3** the REC-WIRE-G derive-from-wiring and hspecRec
+transport genres: next targets POOL-DICT ((H8')(iii)), TerminalPolySem
+k' = 0, readsOf_landing_K0 witness; NON-candidates V9/HK-11 (compiled
+obstruction stands) and leakFree (no typed shadow — opposite verdict).
+**F5** pass-3 audit: F8 TestChains / F9 BP_III ID map / P(O-8b/M14) NOT
+executed — re-flagged as dispatch-template duties + queue item 5. Revised
+12-item queue in the doc (VC22 and the D-11 confirming pass first).
