@@ -5070,3 +5070,38 @@ hardest-first) → BasePolygonLengthLaw (M) → G-ADM-2 scan → classifier
 consumer face → depth-3 probe → (H7) probe → (UB-X) walk →
 DIterJunctionSupplier (gates blocked on #2) → ITER-LAW attempt → Asvin
 batch → optional S batch → background/blocked.
+
+## K1 CONSUMER FACE STATED + FIRED (2026-08-08, wallclock 2026-08-02; pass-6 queue #5, F3(a))
+
+**The Step-10/K1 classifier consumer face — the H2-U10 twin owed since
+LEAKFREE-TYPED — is STATED, SUPPLIED, and FIRED at the compiled `td2V4`
+instance** (`lean/LeanUrat/B2D/K1ConsumerFace.lean`, all NEW decls, zero
+statements touched, `lake env lean` green, all Lean-core; unit note
+`lean/notes/openmath/K1FACE_2026-08-08.md`). THE FACE (the demand, per the
+HDISCHARGE_H2 §1/§2.2 consumption map — Step 10's CU leaf labels inherit
+(FRESH), clause (R) consumes them through Step 18's K1 regrouping):
+`K1ConsumerFace L` := at every INTERIOR on-line slot k ≠ k_s there EXISTS a
+label function on the off-parent coordinates through which `slotRead`
+factors — the CU leaf label is a STRATUM functional, never a
+realization functional (k_s excluded by design: its read is clause (c)'s
+parent charge). Exact-strength pin `k1ConsumerFace_iff_parentBlind`: the
+demand ⟺ parent-blind descent — Step-10/K1 asks exactly the (L) content,
+nothing more (R2-C1 counting bar respected consumer-side); display
+`labelFiber_parentBlind` = the K1 regrouping cells are invariant under
+parent-block rewrites. SUPPLY: `k1ConsumerFace_of_leakFreeV4` (the typed
+carrier's `read_parentBlind` IS the descent) → `k1ConsumerFace_of_lawful_v4`
+(via `ledger_leakFreeV4`) → family `ledgerStrataV4_k1ConsumerFace`. OUTCOME
+= **FIRED, not obstructed**: `td2V4_k1ConsumerFace`. Mandatory de-vacuity
+fence `td2V4bad_not_k1ConsumerFace`: at the parent-on-read-leaf raw datum NO
+label exists (all-zero vs (1,0)-indicator: identical off-parent restrictions,
+reads 0 ≠ 1). HONESTY: td2V4's parentBlock = ∅ (trivial route there; content
+= suppliers + fence); the nonempty-parent DECLINED row's revisit trigger did
+NOT fire (non-vacuity carried by the compiled fence); NO tie claimed to the
+Step-18 K1 exact form at the K-CUT/pool carrier (KCutK1Tie — owners
+[2r]/CL-8 + (K-CUT-g)); `DictIII.FRESH`/`TransDeep`/LeakFaceV4 byte-untouched.
+ROOT residue retired: the (FRESH) row's "Step-10/K1 classifier face (the
+leakFree CONSUMER, still owed)" component — rides the next ROOT touch (r27
+in flight this window). F6 RIDER DISPOSITION: the StageCore docstring sync
+stays with queue #2 (its assigned first home, same neighborhood, in flight
+at this landing — the "forge stalls" fallback condition is not this unit's
+to adjudicate; collision-safe reading of the sweep-scope rule).

@@ -355,6 +355,21 @@
    ],
    "status": "LANDED (no sorry; all Lean-core). Synthesis pass 5 queue item 8 (F6 small-units dispatch): the leakFree general-instance face. NEW declarations only; every existing statement byte-unchanged (H2 TransDeep.leakFree stays a bare Prop FIELD per the U9 fold of record — the typed content lives at the ledger carrier and is now DISCHARGED there, v3 + v4 chains + all compiled instances). Honesty: all compiled instances have parentBlock = empty (trivial route); content = the general supplier + the de-vacuity fence; Step-10/K1 classifier face (the leakFree CONSUMER) still owed. Unit note: notes/openmath/LEAKFREE_2026-08-08.md.",
    "wave": "pass-5 F6 small-units dispatch"
+  },
+  {
+   "id": "K1-CONSUMER-FACE",
+   "file": "K1ConsumerFace.lean",
+   "decls": [
+    "K1ConsumerFace (the Step-10/K1 demand, typed: at every interior on-line slot the CU leaf label read factors through the off-parent coordinates — the exists-label factorization; junction slot excluded by design, its read is clause (c)'s parent charge)",
+    "k1ConsumerFace_iff_parentBlind (exact-strength pin: the demand is EQUIVALENT to parent-blind descent of interior reads — nothing beyond (L); the R2-C1 counting-shadow bar respected consumer-side)",
+    "K1ConsumerFace.labelFiber_parentBlind (the K1 regrouping display: label-fiber membership invariant under parent-block rewrites — the regrouping is well-defined across parent realizations)",
+    "k1ConsumerFace_of_leakFreeV4 / k1ConsumerFace_of_lawful_v4 (the supply: typed (L) carrier -> face; v4-lawful pack -> face via ledger_leakFreeV4)",
+    "ledgerStrataV4_k1ConsumerFace (family form over LedgerStrataV4)",
+    "td2V4_k1ConsumerFace (CONSUMER FIRED at the compiled td2V4 instance)",
+    "td2V4bad_slotRead_eq + td2V4bad_not_k1ConsumerFace (de-vacuity fence: at the parent-on-read-leaf raw datum NO label function can exist — 0 != 1 at identical off-parent restrictions)"
+   ],
+   "status": "LANDED (no sorry; all Lean-core). Synthesis pass 6 queue item 5 (F3a): the Step-10/K1 classifier CONSUMER face — the H2-U10 twin owed since LEAKFREE-TYPED. Outcome = FIRED (not obstructed). NEW declarations only; DictIII.FRESH + H2 TransDeep + all LeakFaceV4 statements byte-untouched. Honesty: td2V4 parentBlock = empty (trivial route; content = suppliers + fence, per the charter's own pricing — the nonempty-parent DECLINED row's revisit trigger did NOT fire); NO tie to H8/KCutK1Tie (Step-18 K1 exact form, K-CUT/pool carrier) claimed. Unit note: notes/openmath/K1FACE_2026-08-08.md.",
+   "wave": "pass-6 queue 5 (F3a)"
   }
  ],
  "fences": "blueprint §6 (i)-(viii); consumer signatures (§3 TransDeep / §4 carriers) untouched",
