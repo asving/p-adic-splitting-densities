@@ -134,12 +134,18 @@ the **(H6) terminal-seam engine-conformance group** ((T-DEC)/(T-READ)/(T-VERD) +
 D-11 item (vii)), — added at REVISION 6, finding F-1 — **(H7)**, the (I-τ)/K-LOC
 sibling-interface conformance pair, and — added at REVISION 10, r11 — **(H8)** =
 (K-CUT), the shallow-cut decomposition kernel [RETIRED at REVISION 16, r17 — the
-round-3 discharge gate: the package machine-proved Lean-core, the residues at
-their owners; the §3.2 K-CUT retirement row], and **(H9)** = (NSF), the
+round-3 discharge gate: the package machine-proved Lean-core; its three residual
+semantic interfaces RE-PRICED at REVISION 17 (r18) as the NEW row (H8′) — the
+§3.2 K-CUT retirement row], — added at REVISION 17, r18, executing VC19 —
+**(H8′)**, the K-CUT residual-interface row (three members: **GRAFT** the graft
+completeness/bijectivity interface, **MASS-ID** the shMass/blkMass measured-mass
+identification, **POOL-DICT** the node-level τ/δ pool dictionary +
+blockTotal_tie instantiation), and **(H9)** = (NSF), the
 ns-routing interface row [this headline enumeration run to the twelve-row scope
 at REVISION 12 — the global enumeration audit; to the ELEVEN-row scope at
 REVISION 14 (r15) — the D-12r move; to the TEN-row scope at REVISION 16 (r17) —
-the (H8) retirement]). **THE THEOREM AS
+the (H8) retirement; to the ELEVEN-row scope at REVISION 17 (r18) — the (H8′)
+residue re-pricing]). **THE THEOREM AS
 PRESENTLY PROVED is the conditional form (ROOT-C) displayed in §1**; the unconditional
 (ROOT) is the TARGET, quantifier-for-quantifier NOT yet what the steps prove. §3 is the
 complete list of everything the root currently rests on beyond literature; §4 is the
@@ -284,7 +290,8 @@ EARNED on the REVISION-12 text, RE-ANCHORED on REVISION 13 by VC16; REVISION 15
 is a two-sentence display repair but IS a text change — the confirming
 end-to-end pass (**VC18**) is OWED on the REVISION-15 wording (charge at §21).
 
-**VC18 + REVISION 16 applied (r17, appendix §22) — the CURRENT standing.** VC18
+**VC18 + REVISION 16 applied (r17, appendix §22) — superseded as CURRENT
+standing by the REVISION 17 paragraph below.** VC18
 (the confirming end-to-end pass, fresh context;
 `lean/notes/openmath/VC18_report.md`) RAN on the REVISION-15 text and returned
 **COMPOSITION-SOUND** — zero blockers, ONE advisory (the §3.2 end-to-end-passes
