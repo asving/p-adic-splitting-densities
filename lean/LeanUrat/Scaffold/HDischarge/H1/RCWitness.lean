@@ -45,11 +45,16 @@ positive gates — the corollaries FIRE on a concrete instance):
   `k0_actual_of_recentering` (`H1/RecParamE.lean` — the pass-8 finding-1 transport:
   `Node.hspecRec` makes the actual pair (1, 1)).
 
-WHAT IS NOT CLAIMED: nothing beyond inhabitation and the hspecRec-transport — the
-open REC-SL legs, REC-WIRE-G (the wiring g-half tie), GRADED-READ, and SITE-EXH
+* **THE WIRING GATE [REV 12]** — `rc_wireG_gate`: the REC-WIRE-G corollary
+  `recParam_eg_of_recentering` (`H1/RecParamE.lean`, where REC-WIRE-G is now
+  DISCHARGED) fires at H₃rc's interior recentering node 1, non-vacuously.
+
+WHAT IS NOT CLAIMED: nothing beyond inhabitation, the hspecRec-transport, and the
+[REV 12] wiring-corollary firing — the open REC-SL legs, GRADED-READ, and SITE-EXH
 residues, and the RG-2 fence display of `H1/Conformance.lean` are all unchanged
-(REC-PARAM's compiled e-half at its transition scope, and the [REV 10] transport
-lemma, are the sibling unit `H1/RecParamE.lean`).
+(REC-PARAM's compiled e-half at its transition scope, the [REV 10] transport
+lemma, and the [REV 12] REC-WIRE-G kernel + corollary pair are the sibling unit
+`H1/RecParamE.lean`).
 -/
 import LeanUrat.HC2.HK25_recGate
 import LeanUrat.HC1.S10_recStage
@@ -528,6 +533,17 @@ theorem rc_historyCoherent_gate_actual :
     K0Conformant ν₁rc.σ ν₁rc.g ν₁rc.e σ₂rc.Φ :=
   k0_actual_of_recentering ν₁rc σ₂rc.Φ rfl rc_historyCoherent_gate
 
+/-- **GATE C [REV 12]: REC-WIRE-G FIRES at the interior recentering** — the non-fiat
+wiring corollary `recParam_eg_of_recentering` (`H1/RecParamE.lean`) instantiates at
+H₃rc's node 1 (the interior recentering read ν₁rc), deriving `ν₁rc.e = 1 ∧
+ν₁rc.g = 1` from the coherence wiring (kernel degree preservation + the width chain
+D₂ = 2 = 1·1·2), NOT from `Node.hspecRec`.  The conclusion is of course also
+definitional for this concrete node — the gate's content is that the corollary's
+antecedents are inhabited on file. -/
+theorem rc_wireG_gate : ν₁rc.e = 1 ∧ ν₁rc.g = 1 := by
+  have hlen : H₃rc.nodes.length = 3 := rfl
+  exact recParam_eg_of_recentering H₃rc coherent_H₃rc 1 (by omega) rfl
+
 end RCW
 
 end LeanUrat.Scaffold.HDischarge.H1
@@ -537,5 +553,6 @@ end LeanUrat.Scaffold.HDischarge.H1
 #print axioms LeanUrat.Scaffold.HDischarge.H1.RCW.rc_landingKey_gate
 #print axioms LeanUrat.Scaffold.HDischarge.H1.RCW.coherent_H₃rc
 #print axioms LeanUrat.Scaffold.HDischarge.H1.RCW.rc_historyCoherent_gate
+#print axioms LeanUrat.Scaffold.HDischarge.H1.RCW.rc_wireG_gate
 #print axioms LeanUrat.Scaffold.HDischarge.H1.RCW.rc_landingKey_gate_actual
 #print axioms LeanUrat.Scaffold.HDischarge.H1.RCW.rc_historyCoherent_gate_actual

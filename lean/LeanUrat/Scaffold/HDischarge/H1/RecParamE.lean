@@ -25,20 +25,31 @@ WHAT IS COMPILED HERE (sorry-free; no new axioms; no existing statement touched)
       `TransitionCoreL` at the child node's pair);
   (c) hence the node's read stride is 1: `νᵢ₊₁.e = 1`.
   Clause (b) is the tie the trace named missing ("the corpus never TIES νᵢ.e at
-  recentering legs"); (a)+(b) together derive (c) from the TRANSITION LAWS, with no
-  appeal to the species predicate.
+  recentering legs" — REV 12: that trace verdict was itself too broad; see the
+  REC-WIRE-G bullet below); (a)+(b) together derive (c) from the TRANSITION LAWS,
+  with no appeal to the species predicate.
+* `recentering_natDegree_eq` + `recParam_eg_of_recentering` [REV 12 — **REC-WIRE-G
+  DISCHARGED**, the pass-10 GAP-1 route compiled]: the STAGE KERNEL
+  (`IsRecentering σ σ' cc tt → σ'.Φ.natDegree = σ.Φ.natDegree`; no `Node` in the
+  type, so the species fiat is unusable BY TYPE) and the WIRING COROLLARY (coherent
+  history + interior recentering read ⟹ `νᵢ.e = 1 ∧ νᵢ.g = 1`, via the kernel + the
+  coherence width law `Dwidthᵢ₊₁ = νᵢ.e·νᵢ.g·Dwidthᵢ` + both `Node.hDwidth` links +
+  `Stage.hdeg`: `e·g·d = d`, `d ≥ 1` ⟹ `e·g = 1`). Every hypothesis comes from
+  `HistoryCoherent`; `Node.hspecRec` is nowhere invoked.
 
-WHAT IS NOT CLAIMED (REV-10 scope note — the transport lemma vs the wiring residuals):
-* The STAGE/WIRING-level g-half tie (non-fiat provenance of g = 1) — named
-  **REC-WIRE-G** in the unit note's REVISION 10 — is NOT proved here: no Stage field
-  records a `g`, so the σ-level route used for the e-half has no g-analogue — the
-  trace's "tied NOWHERE" verdict stands AT THE STAGE/WIRING LEVEL. The transport
-  lemma rides `Node.hspecRec` (the fiat layer: the predicate BUILDS the pair in);
-  whether engine recentering firings HAVE the species shape is S-1/SITE-EXH-side and
-  stays open.
-* The e-half's came-from-a-non-recentering-transition hypothesis removal:
-  `recParam_e_of_transition` covers exactly the transition case (both hypotheses
-  displayed).
+WHAT IS NOT CLAIMED (REV-12 scope note — residuals after REC-WIRE-G):
+* [REV 12 — the pass-10 CRITICAL-2 correction; supersedes the REV-10 "tied NOWHERE"
+  wording here] The accurate narrow form of the trace's g-half finding: no `Stage`
+  FIELD directly records a `g`, and the e-half's `child_e` route has no direct
+  g-analogue — but the tie was NOT "nowhere at the stage/wiring level": it runs
+  through the coherence width law (`Node.childWidth` + `HistoryCoherent`'s `Dwidth`
+  chain + `Node.hDwidth`), compiled above as `recParam_eg_of_recentering`. What
+  stays open on this flank is S-1/SITE-EXH-side only: whether engine recentering
+  FIRINGS have the recorded shape at all.
+* The e-half's came-from-a-non-recentering-transition hypothesis removal: DISCHARGED
+  for the read-stride conclusion by `recParam_eg_of_recentering` (clause (c) with no
+  `hprev`); `recParam_e_of_transition`'s clause (b) stage-node tie remains
+  transition-case-scoped as displayed.
 * Node-level context (the [REV 9] finding, now consumed by the transport lemma): at
   the NODE level the trace's "a Lean history could record νᵢ.g = 7 at a recentering
   node and stay coherent" is FALSE — `Node.hspecRec` (`MovesC/Defs.lean`, the §C.0
@@ -107,7 +118,69 @@ theorem recParam_e_of_transition (H : History p F) (hH : HistoryCoherent H)
   have hσe : (H.nodes[i+1]'(by omega)).σ.e = 1 := (hrecleg hrec).base.1
   exact ⟨hσe, htie, by rw [← htie]; exact hσe⟩
 
+/-- **THE REC-WIRE-G STAGE KERNEL** [REV 12 — the pass-10 GAP-1 fold]: a recentering
+does not move the key degree — `IsRecentering`'s own conjuncts `σ'.Φ = σ.Φ − tt` and
+`inC σ.Φ tt` (i.e. `deg tt < deg σ.Φ`, `Moves/Defs.lean:67`) force
+`σ'.Φ.natDegree = σ.Φ.natDegree` by lower-degree subtraction.  NO `Node` occurs in
+this statement: the non-fiat routing is enforced BY THE TYPE — the species fiat
+`Node.hspecRec` is not even expressible here, which is exactly the provenance
+constraint pass 10 found the REVISION-11 top-level proposition unable to encode. -/
+theorem recentering_natDegree_eq {σ σ' : Stage p F} {cc : ↥σ.K}
+    {tt : Polynomial ℤ_[p]} (h : IsRecentering σ σ' cc tt) :
+    σ'.Φ.natDegree = σ.Φ.natDegree := by
+  obtain ⟨-, -, -, hin, -, -, -, hΦ', -⟩ := h
+  rw [hΦ']
+  exact Polynomial.natDegree_eq_of_degree_eq
+    (Polynomial.degree_sub_eq_left_of_degree_lt hin)
+
+/-- **REC-WIRE-G, DISCHARGED — the wiring corollary** [REV 12]: in a coherent history,
+at an INTERIOR recentering read (the read's own transition fires: `i + 1 < len`), the
+node's ACTUAL read pair is `νᵢ.e = 1 ∧ νᵢ.g = 1` — derived from the WIRING, not the
+species fiat.  The route (every hypothesis supplied by `HistoryCoherent` itself, none
+by `Node.hspecRec`):
+(1) the recentering coherence leg fires `IsRecenteringCore νᵢ.σ νᵢ₊₁.σ` at the
+    recorded center/lift; its `base` feeds the stage kernel
+    `recentering_natDegree_eq`, giving `deg Φᵢ₊₁ = deg Φᵢ`;
+(2) the coherence width law (`MovesC/Defs.lean:743`) gives
+    `νᵢ₊₁.Dwidth = νᵢ.childWidth = νᵢ.e · νᵢ.g · νᵢ.Dwidth`;
+(3) both `Node.hDwidth` frame links (`MovesC/Defs.lean:418`) convert (1)+(2) into
+    `νᵢ.e · νᵢ.g · d = d` at `d = νᵢ.σ.Φ.natDegree`, and `Stage.hdeg` gives `d ≥ 1`,
+    so `νᵢ.e · νᵢ.g = 1`, forcing both factors to 1.
+Consequence: the e-half conclusion `νᵢ.e = 1` now holds WITHOUT
+`recParam_e_of_transition`'s came-from-a-non-recentering-transition hypothesis
+`hprev` — this corollary subsumes that lemma's clause (c) (its clause (b) stage-node
+tie `σ.e = ν.e` remains transition-case content). -/
+theorem recParam_eg_of_recentering (H : History p F) (hH : HistoryCoherent H)
+    (i : ℕ) (hi1 : i + 1 < H.nodes.length)
+    (hrec : (H.nodes[i]'(by omega)).species = ReadSpecies.recentering) :
+    (H.nodes[i]'(by omega)).e = 1 ∧ (H.nodes[i]'(by omega)).g = 1 := by
+  obtain ⟨-, -, -, hstep⟩ := hH
+  obtain ⟨hrecleg, -, -, -, -, hwidth, -⟩ := hstep i hi1
+  -- (1) the stage kernel at the history-fired recentering transition
+  have hker : (H.nodes[i+1]'hi1).σ.Φ.natDegree
+      = (H.nodes[i]'(by omega)).σ.Φ.natDegree :=
+    recentering_natDegree_eq (hrecleg hrec).base
+  -- (2)+(3) the width chain closes into e·g·d = d
+  have hchain : (H.nodes[i]'(by omega)).e * (H.nodes[i]'(by omega)).g *
+      (H.nodes[i]'(by omega)).Dwidth = (H.nodes[i]'(by omega)).Dwidth := by
+    calc (H.nodes[i]'(by omega)).e * (H.nodes[i]'(by omega)).g *
+        (H.nodes[i]'(by omega)).Dwidth
+        = (H.nodes[i]'(by omega)).childWidth := rfl
+      _ = (H.nodes[i+1]'hi1).Dwidth := hwidth.symm
+      _ = (H.nodes[i+1]'hi1).σ.Φ.natDegree := (H.nodes[i+1]'hi1).hDwidth
+      _ = (H.nodes[i]'(by omega)).σ.Φ.natDegree := hker
+      _ = (H.nodes[i]'(by omega)).Dwidth := ((H.nodes[i]'(by omega)).hDwidth).symm
+  have hDpos : 0 < (H.nodes[i]'(by omega)).Dwidth := by
+    rw [(H.nodes[i]'(by omega)).hDwidth]
+    exact (H.nodes[i]'(by omega)).σ.hdeg
+  have heg : (H.nodes[i]'(by omega)).e * (H.nodes[i]'(by omega)).g = 1 :=
+    Nat.eq_of_mul_eq_mul_right hDpos (by rw [one_mul]; exact hchain)
+  exact (mul_eq_one_iff_of_one_le (H.nodes[i]'(by omega)).he
+    (H.nodes[i]'(by omega)).hg).mp heg
+
 end LeanUrat.Scaffold.HDischarge.H1
 
 #print axioms LeanUrat.Scaffold.HDischarge.H1.recParam_e_of_transition
 #print axioms LeanUrat.Scaffold.HDischarge.H1.k0_actual_of_recentering
+#print axioms LeanUrat.Scaffold.HDischarge.H1.recentering_natDegree_eq
+#print axioms LeanUrat.Scaffold.HDischarge.H1.recParam_eg_of_recentering

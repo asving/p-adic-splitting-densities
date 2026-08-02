@@ -2939,3 +2939,43 @@ REV-11 delta −2 (C065, C122) + 11 (rows C174–C184); CURRENT totals
 130 NOTE + 15 LEAN = 145 hits, active rows 95 + 50 = 145 EXACT, ZERO
 untagged, 46 [TAGGED] + 4 [STATUS-FREE] over the 50 new rows. Clean
 counter stays 0/2; pass 10 next (ledger + totals paragraph = authority).
+
+## B-M2 REVISION 12 — the pass-10 fold: REC-WIRE-G COMPILED (2026-08-02)
+
+Pass 10 (Codex, hostile, `BM2_pass10_2026-08-06.md`): CRITICAL —
+2 criticals (both surviving stale sentences: the §S2 theorem header's
+"synthetic pair (1, 1), not at (νᵢ.e, νᵢ.g)" clause = the old census row
+C030, and the "never TIES"/"tied NOWHERE" wiring note = C041 + its
+`RecParamE.lean` header echo), 2 gaps (the REVISION-11 REC-WIRE-G
+top-level proposition not provenance-sensitive — fiat-provable from
+`hspecRec`; the REVISION-11 profile summary "all five defects are STALE
+TEXT UNDER-CLAIMING" inexact), 2 CLEAN verdicts (the REV-11
+uninhabitability replacement, layer-sensitive reading confirmed; the
+census arithmetic exact — with the recorded sting that [TAGGED] ≠
+semantically current, C030 being the proof). Fold, four parts:
+(1) **THE WIRING PAIR COMPILED — REC-WIRE-G DISCHARGED**
+(`Scaffold/HDischarge/H1/RecParamE.lean`, Lean-core, sorry-free, no
+existing statement touched): `recentering_natDegree_eq` — the stage
+kernel `IsRecentering σ σ' cc tt → σ'.Φ.natDegree = σ.Φ.natDegree` (no
+`Node` in the type, `hspecRec` unusable BY TYPE — the pass-10 routing
+gap answered at the type level) — and `recParam_eg_of_recentering` —
+coherent history + interior recentering read ⟹ νᵢ.e = 1 ∧ νᵢ.g = 1,
+from `IsRecenteringCore.base` → kernel + the coherence width clause
+(`Dwidthᵢ₊₁ = νᵢ.e·νᵢ.g·νᵢ.Dwidth`) + both `Node.hDwidth` links +
+`Stage.hdeg` (e·g·d = d, d ≥ 1 ⟹ e·g = 1); gate `rc_wireG_gate` fires
+at H₃rc's interior recentering node 1 (`H1/RCWitness.lean`). The e-half
+transition-hypothesis removal is DISCHARGED BY SUBSUMPTION (νᵢ.e = 1
+with no `hprev`; `recParam_e_of_transition` clause (b)'s stage-node tie
+stays transition-case content). §S4 (i-c) shrinks to REC-SL proper.
+(2) CRITICAL 1/2 folded: header clause synced (successor C185); wiring
+note rewritten to the accurate narrow form — no `Stage` FIELD records g,
+but the tie runs through the coherence width law, now compiled — in the
+note AND the `RecParamE.lean` header (successor C186). (3) GAP 2 folded:
+the REV-11 profile summary bracket-corrected in the headline AND the
+record (GAP 6 was under-specification; CRITICAL 7 a missing audit
+trail). (4) Census upkeep: 17 rows superseded (C030, C041, C136, C138,
+C139, C140, C149, C154, C159, C162, C165, C169, C171, C174, C176, C177,
+C178 — each annotated at its table), 20 successors C185–C204 published;
+provisional head-level total 148; the implementation re-run + the C030
+semantic-currency lesson = pass 11's §S6-item-7 charge. Clean counter
+stays 0/2; pass 11 next.
