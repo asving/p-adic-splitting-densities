@@ -15,16 +15,20 @@ Blueprint: `lean/blueprints/B2DEF_LEAN_2026-08-08.md` §4 + §5 (unit E1).
 moves_ref: §B2-DEF D.0 (P1)–(P4), D.5 (MOVES :2266–2277). deps: none (wave E).
 difficulty: easy (definitions + compile probe).
 
-**E-PHASE NOTE (historical; status corrected 2026-08-08, F6 hygiene pass).**
+**E-PHASE NOTE (historical; status corrected 2026-08-08, F6 hygiene pass;
+route (a) executed 2026-08-08, GR34_DISPOSITION).**
 At E-phase landing this module and its `GR1..GR4`/`TD*` fan-out were the
 B2DEF_LEAN campaign's E-phase skeleton: the definitional layer plus theorem
 statements whose `sorry` bodies were the campaign's OPEN-GOALS LEDGER, tracked
-unit-by-unit by the blueprint (each `sorry` carried its unit ID). AS OF
-2026-08-08 the TD front is SORRY-FREE end-to-end (TD-1..TD-6 proved on
-`LedgerLawfulV3`); GR-1/GR-2 are PROVED at the frozen statements; the only open
-B2D sorries are 3 GR entries (GR-3 ×2 + GR-4 ×1), open-obstructed by the
-ψ = φ(z^σ.e) gap at abstract σ.e ≥ 2 (GR wave-2a record). No consumer may cite
-a sorry-bodied statement as evidence.
+unit-by-unit by the blueprint (each `sorry` carried its unit ID). AS OF the
+route-(a) execution B2D is **0 sorries**: the TD front SORRY-FREE end-to-end
+(TD-1..TD-6 proved on `LedgerLawfulV3`); GR-1/GR-2 PROVED at the frozen
+statements; GR-3 ×2 + GR-4 ×1 DISCHARGED at the ReadHyps-pinned face —
+`ReadHyps` gained the frame pins `hσs`/`hσt` (fence-(vii) statement change,
+campaign-owner adjudication under standing authority; ROOT display rides r24),
+retiring the abstract-frame (σ.e ≥ 2) scope as believed-false-and-unconsumed
+(the ψ = φ(z^σ.e) gap countermodel, GR wave-2a record; zero consumers, all
+live consumption on the history-keyed face where the pins are supplied).
 
 ## What this file carries
 
@@ -109,6 +113,12 @@ structure ReadHyps (ν : Node p F) : Prop where
     ν.σ.w f = ν.σ.w g → ν.σ.w (f + g) = ν.σ.w f → ν.σ.R (f + g) = ν.σ.R f + ν.σ.R g
   /-- the pinned parent key residual `R Φ = T^{σ.s}`. SUPPLIED-BY `Stage.hRΦ` at `ν.σ`. -/
   hRΦ : ν.σ.R ν.σ.Φ = LaurentPolynomial.T ν.σ.s
+  /-- the frame level pin σ.s = 1 (GR-3/GR-4's exact residue; supplied at interior
+      coherent reads by `GR0b.frame_level_of_history`). DISPLAYED-HYPOTHESIS at a
+      bare node. -/
+  hσs : ν.σ.s = 1
+  /-- the frame level pin σ.t = 0 (ditto). -/
+  hσt : ν.σ.t = 0
 
 /-- **The slot position functional pos(κ) of GR-2's per-κ (SL-dev) display**, in
 the parent-stage normalization the corpus laws force: `σ.R (t_κ)` sits at position

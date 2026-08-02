@@ -3,18 +3,18 @@
  "blueprint": "lean/blueprints/B2DEF_LEAN_2026-08-08.md (commit 90b4072; Codex design-frozen, rounds 1+2 folded)",
  "math_source": "ACCEPTED §B2-DEF (lean/notes/MOVES_2026-07-24.md :1849-2745; dual-accepted rev D11d)",
  "namespace": "LeanUrat.B2D",
- "phase": "E-phase LANDED (wave E, 2026-08-02) + TD STATEMENT ROUND 2 (v2, 2026-08-02): v1 ledger semantics refuted at the wave-1 hard hole and re-architected to the finite-box TDDefsV2 layer + TD WAVE-2 RUN (2026-08-02): TD-0 LANDED (designated r >= 1 instance, all duties, Lean-core) and TD-3 round 2 REFUTED (TD3v2_countermodel: lawfulness-pack seams A/B — the v2 semantics repair was sound, the PACK is still too weak) + TD STATEMENT ROUND 3 (v3, 2026-08-08 wallclock 2026-08-02): TDDefsV3 pack = v2 + member_exists + parent_box_disjoint (exactly the two seam clauses), TD-3 PROVED on it (Lean-core), TD-1 PROVED at its v2 statement, tdL v3-lawful, both round-2 witnesses compiled-FAIL v3, TD-6 re-keyed to LedgerStrataV3 behind a compiled v2-unfillability adjudication + TD MOP-UP WAVE (2026-08-08 wallclock 2026-08-02): TD-2/TD-4/TD-5 v3-seam-AUDITED (not implicated — partition/pin/projection read no parent factorization or member existence) then PROVED at their v2 statements byte-unchanged (TD-1 precedent), TD-6 PROVED in full (transDeep_of_lawful builder + transDeep_of_ledger + ledger_freshRowOn + the td_transDeep r=1 firing gate + the rfl leakFree-plug gate) — THE TD FRONT IS SORRY-FREE; every remaining sorry (GR wave 2a) is an E-phase open-goals-ledger entry tagged with its unit ID and round + GR WAVE 2a (2026-08-02): THE SUPPLIER VERDICT compiled (GR0b_suppliers.lean: hpsi0 node-supplied — E-gate verdict corrected; hscale history-supplied at interior reads and FORCES nu.e = 1 = the compiled recording perimeter; frame pins named + history-supplied), N-GR1 falsifier family built + run GREEN BEFORE the GR-2/GR-3 landing (verification/openmath/ngr1_slotpos_trace.py; N5 = the sigma.e-compression obstruction demo), GR-1 (2 sorries) + GR-2 (3 sorries) PROVED at the frozen statements Lean-core, GR-3 (2) + GR-4 (1) frozen sorries STAND OPEN-OBSTRUCTED (genuine frame-side residue, math countermodel ambient-blocked from compilation) with supplier-level forms GR3_keyResidual_level(+exists)/graded_read_level/graded_read_of_history PROVED Lean-core. Remaining B2D sorries: 3 (GR-3 x2 + GR-4 x1, adjudicated frozen forms).",
+ "phase": "E-phase LANDED (wave E, 2026-08-02) + TD STATEMENT ROUND 2 (v2, 2026-08-02): v1 ledger semantics refuted at the wave-1 hard hole and re-architected to the finite-box TDDefsV2 layer + TD WAVE-2 RUN (2026-08-02): TD-0 LANDED (designated r >= 1 instance, all duties, Lean-core) and TD-3 round 2 REFUTED (TD3v2_countermodel: lawfulness-pack seams A/B — the v2 semantics repair was sound, the PACK is still too weak) + TD STATEMENT ROUND 3 (v3, 2026-08-08 wallclock 2026-08-02): TDDefsV3 pack = v2 + member_exists + parent_box_disjoint (exactly the two seam clauses), TD-3 PROVED on it (Lean-core), TD-1 PROVED at its v2 statement, tdL v3-lawful, both round-2 witnesses compiled-FAIL v3, TD-6 re-keyed to LedgerStrataV3 behind a compiled v2-unfillability adjudication + TD MOP-UP WAVE (2026-08-08 wallclock 2026-08-02): TD-2/TD-4/TD-5 v3-seam-AUDITED (not implicated — partition/pin/projection read no parent factorization or member existence) then PROVED at their v2 statements byte-unchanged (TD-1 precedent), TD-6 PROVED in full (transDeep_of_lawful builder + transDeep_of_ledger + ledger_freshRowOn + the td_transDeep r=1 firing gate + the rfl leakFree-plug gate) — THE TD FRONT IS SORRY-FREE; every remaining sorry (GR wave 2a) is an E-phase open-goals-ledger entry tagged with its unit ID and round + GR WAVE 2a (2026-08-02): THE SUPPLIER VERDICT compiled (GR0b_suppliers.lean: hpsi0 node-supplied — E-gate verdict corrected; hscale history-supplied at interior reads and FORCES nu.e = 1 = the compiled recording perimeter; frame pins named + history-supplied), N-GR1 falsifier family built + run GREEN BEFORE the GR-2/GR-3 landing (verification/openmath/ngr1_slotpos_trace.py; N5 = the sigma.e-compression obstruction demo), GR-1 (2 sorries) + GR-2 (3 sorries) PROVED at the frozen statements Lean-core, GR-3 (2) + GR-4 (1) frozen sorries stood OPEN-OBSTRUCTED through wave 2a with supplier-level forms GR3_keyResidual_level(+exists)/graded_read_level/graded_read_of_history PROVED Lean-core + GR ROUTE (a) EXECUTED (2026-08-08, GR34_DISPOSITION, orchestrator adjudication under Asvin's standing statement-change authority 2026-08-05): ReadHyps gained the frame-pin FIELDS hsigma_s/hsigma_t (fence-(vii) statement change; decisive fact = ZERO consumers of the abstract-frame face + believed FALSE there by the sigma.e-compression countermodel, so the sigma.e >= 2 abstract-frame scope is RETIRED as believed-false-and-unconsumed; ROOT display rides r24); suppliers readHyps_of_node/_node_level/_node' gained pass-through pin binders, readHyps_of_history supplies the pins via frame_level_of_history (signature unchanged); the 3 sorries DISCHARGED as one-liners from the _level forms, all Lean-core. B-M2's consumed face (graded_read_of_history, history-keyed) signature-unchanged. Remaining B2D sorries: 0.",
  "units": [
   {
    "id": "E1",
    "file": "GRDefs.lean",
    "decls": [
-    "ReadHyps",
+    "ReadHyps (route (a) 2026-08-08: + frame-pin fields hsigma_s/hsigma_t)",
     "readPos",
     "mhat (abbrev -> MovesC.Node.mhat, cite-not-rebuild)"
    ],
    "status": "LANDED (no sorry)",
-   "notes": "§4 groups flattened to per-fact fields (flagged); (S6b)/(I-aug) range fields probe: no field added (flagged in docstring)"
+   "notes": "§4 groups flattened to per-fact fields (flagged); (S6b)/(I-aug) range fields probe: no field added (flagged in docstring); ROUTE (a) 2026-08-08: ReadHyps gained hsigma_s (sigma.s = 1) + hsigma_t (sigma.t = 0) — fence-(vii) statement change per GR34_DISPOSITION (displayed at a bare node; history-supplied at interior coherent reads)"
   },
   {
    "id": "GR-0",
@@ -23,7 +23,7 @@
     "readHyps_of_node",
     "readHyps_of_node_level"
    ],
-   "status": "E-GATE PASS-WITH-DISPLAYED-RESIDUE (no sorry, Lean-core); WAVE-2a ADDENDUM 2026-08-02: both displayed residues DISCHARGED by GR0b_suppliers.lean (hpsi0 row CORRECTED to node-supplied; hscale supplied at interior coherent reads; docstring table addendum in place)",
+   "status": "E-GATE PASS-WITH-DISPLAYED-RESIDUE (no sorry, Lean-core); WAVE-2a ADDENDUM 2026-08-02: both displayed residues DISCHARGED by GR0b_suppliers.lean (hpsi0 row CORRECTED to node-supplied; hscale supplied at interior coherent reads; docstring table addendum in place); ROUTE (a) 2026-08-08: readHyps_of_node/_node_level gained the two frame-pin pass-through binders (constructor site diffs 2-3 of GR34_DISPOSITION)",
    "notes": "supplier map in module docstring: 9/11 fields SUPPLIED by Node/Stage wiring; hscale + hψ0 DISPLAYED-HYPOTHESES (kp_step displayed-binder precedent); hscale discharged at the level/inert configuration (non-vacuity leg)"
   },
   {
@@ -31,14 +31,14 @@
    "file": "GR0b_suppliers.lean",
    "decls": [
     "node_hpsi0 (PROVED: hpsi0 supplied at EVERY node via hOrd+hmu+hpat0+hRanch)",
-    "readHyps_of_node' (upgraded 10/11 supplier map)",
+    "readHyps_of_node' (upgraded 10/13 supplier map; route (a): + frame-pin binders)",
     "readHyps_e_eq_one / readHyps_h_eq / readHyps_t_eq_zero / readHyps_mhat_eq_zero (the compiled e=1 scoping forcing)",
     "frame_pair_of_coherent (child_e/child_h extraction)",
     "node_e_one_of_interior (RG-2 extraction)",
     "readHyps_of_history + _interior + _rec (THE hscale SUPPLIER at interior coherent reads)",
     "frame_level_of_history (the GR-3/GR-4 frame pins (sigma.s, sigma.t) = (1, 0))"
    ],
-   "status": "LANDED wave 2a 2026-08-02 (NO sorry, all Lean-core) — THE SUPPLIER VERDICT: hpsi0 = single-node SUPPLIED (E-gate verdict corrected); hscale = history-supplied at interior reads AND forces nu.e = 1 (the compiled e=1/[NR] recording perimeter); NEW named residue for GR-3/GR-4 = the frame pins, supplied by frame_level_of_history",
+   "status": "LANDED wave 2a 2026-08-02 (NO sorry, all Lean-core) — THE SUPPLIER VERDICT: hpsi0 = single-node SUPPLIED (E-gate verdict corrected); hscale = history-supplied at interior reads AND forces nu.e = 1 (the compiled e=1/[NR] recording perimeter); NEW named residue for GR-3/GR-4 = the frame pins, supplied by frame_level_of_history; ROUTE (a) 2026-08-08: readHyps_of_node' gained the pin binders, readHyps_of_history body supplies them from frame_level_of_history (signature unchanged; frame_level_of_history moved above it in-file)",
    "wave": "2a"
   },
   {
@@ -132,12 +132,12 @@
    "id": "GR-3",
    "file": "GR3_keyResidual.lean",
    "decls": [
-    "GR3_keyResidual_pinned (frozen, sorry STANDS)",
-    "GR3_keyResidual (frozen, sorry STANDS)",
+    "GR3_keyResidual_pinned (PROVED route (a): one-liner from _level at R.hsigma_s/R.hsigma_t)",
+    "GR3_keyResidual (PROVED route (a): exists-intro over _pinned)",
     "GR3_keyResidual_level (PROVED: + frame pins sigma.s=1, sigma.t=0)",
     "GR3_keyResidual_level' (PROVED, exists-form)"
    ],
-   "status": "WAVE-2a ADJUDICATED 2026-08-02: the 2 frozen sorries STAND OPEN-OBSTRUCTED byte-unchanged (the frame-side residue is GENUINE: sigma.e >= 2 abstract frames compress the position lattice, psi = phi(z^sigma.e) gap countermodel at p=3 — mathematical, not compiled: ambient F4 char-2 blocks gap-psi irreducibility, so all compiled corpus instances are safe; unrecordable via child_e). Supplier-level forms PROVED Lean-core (the nodeLift_key_res recomposition, sharp c=1/T^mhat assembly).",
+   "status": "ROUTE (a) DISCHARGED 2026-08-08 (GR34_DISPOSITION; supersedes the wave-2a STOP): both former frozen sorries PROVED Lean-core at the ReadHyps-pinned face — ReadHyps now carries the frame pins, so the sigma.e-compression configuration is excluded by the pack itself. The abstract-frame (sigma.e >= 2) scope RETIRED as believed-false-and-unconsumed (the wave-2a countermodel record stands as the reason; zero consumers ever bound that face; fence-(vii) statement change, campaign-owner adjudication under standing authority). Supplier-level _level forms untouched (their explicit pins now redundant, harmless).",
    "wave": "2a",
    "notes": "pinned form N-GR1-gated; ∃-form is §4's frozen clause"
   },
@@ -145,11 +145,11 @@
    "id": "GR-4",
    "file": "GR4_gradedRead.lean",
    "decls": [
-    "graded_read (frozen, sorry STANDS)",
+    "graded_read (PROVED route (a): one-liner from graded_read_level at R.hsigma_s/R.hsigma_t)",
     "graded_read_level (PROVED: + frame pins; clause 3 via Mpar.discharge + Stage.grRes)",
     "graded_read_of_history (PROVED: THE CONSUMER-READY (i-b) DISCHARGER at interior coherent reads — all wiring supplied by HistoryCoherent through GR0b)"
    ],
-   "status": "WAVE-2a ADJUDICATED 2026-08-02: the frozen sorry STANDS OPEN-OBSTRUCTED byte-unchanged (inherits GR-3 clause-2 residue; STOP per the frozen-interface discipline). graded_read_level + graded_read_of_history PROVED Lean-core; B-M2 (i-b) row dischargeable on the interior-[NR] carrier via graded_read_of_history (ROOT-owner move, sec 8 (B)).",
+   "status": "ROUTE (a) DISCHARGED 2026-08-08 (GR34_DISPOSITION; supersedes the wave-2a STOP): the former frozen sorry PROVED Lean-core at the ReadHyps-pinned face (inherited GR-3 residue cured by the pack pins). graded_read_level + graded_read_of_history untouched; B-M2's (i-b) consumption (graded_read_of_history, the history-keyed face, commit-cited a5911fd) signature-UNCHANGED.",
    "wave": "2a",
    "notes": "three-clause §4 conclusion; third-clause exact form fixed by E-phase probe (docstring record); GR-4b kpblock_of_read DELETED per R1-C5, fence (viii)"
   },

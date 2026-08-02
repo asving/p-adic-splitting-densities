@@ -4620,3 +4620,26 @@ restatement → forge → DIterJunctionSupplier; (H6) C2 stays blocked.
 ## 2026-08-08 — F6 hygiene batch (synthesis pass 5, doc-only)
 
 Measured ground truth (`grep -rn sorry lean/LeanUrat/B2D/ --include='*.lean'`): 3 open B2D sorries — GR3_keyResidual.lean ×2 (GR-3) + GR4_gradedRead.lean ×1 (GR-4), open-obstructed by the ψ = φ(z^σ.e) gap at abstract σ.e ≥ 2; TD front sorry-free end-to-end. Corrected: stale E-phase open-goals-ledger headers in B2D/TDDefs.lean + B2D/GRDefs.lean (historical note retained, current status appended); B2D/MANIFEST.json CL5 entry updated from "untouched at E-phase" to PROVED (fullness identity closed in HC1/C6_alphabetCard.lean, 2026-08-02). TDDefsV2/V3 headers checked — no stale block. docs/ROOT_ASSEMBLY_2026-08-02.md r22 pointer deliberately NOT touched (deferred to r24 after VC25). Comments/JSON only; zero Lean code changes.
+
+## 2026-08-08 — GR ROUTE (a) EXECUTED (synthesis pass 5 queue item 4, the GR-3/4 disposition)
+
+Route (a) of `lean/notes/openmath/GR34_DISPOSITION_2026-08-08.md` (commit 205e3f8)
+executed per the orchestrator's adjudication under Asvin's standing statement-change
+authority (2026-08-05). The decisive fact (re-verified at execution before any edit):
+the three frozen sorry statements (`GR3_keyResidual_pinned`, `GR3_keyResidual`,
+`graded_read`) had ZERO Lean use sites (docstring mentions only), no module imports
+their two home files, and no OM/capstone module imports ANY B2D module — and the
+statements are believed FALSE at the abstract σ.e ≥ 2 carrier (the ψ = φ(z^σ.e)
+gap countermodel, wave-2a record). Executed: `ReadHyps` gained the frame-pin FIELDS
+`hσs : ν.σ.s = 1` / `hσt : ν.σ.t = 0` (fence-(vii) statement change; precedent =
+`readHyps_e_eq_one`); suppliers `readHyps_of_node` / `readHyps_of_node_level` /
+`readHyps_of_node'` gained pass-through pin binders (4 signature diffs total, exactly
+as priced); `readHyps_of_history` supplies the pins from `frame_level_of_history`
+(body-only; the supplier moved above it in-file). The 3 sorries DISCHARGED as
+one-liners from the `_level` forms at `R.hσs`/`R.hσt` — all Lean-core
+(`propext, Classical.choice, Quot.sound`). B2D census 3 → **0 sorries** (grep-verified;
+the TDDefs/GRDefs F6 headers re-synced). The abstract-frame scope is RETIRED as
+believed-false-and-unconsumed; B-M2's consumed face (`graded_read_of_history`,
+history-keyed, commit-cited a5911fd) is signature-UNCHANGED. The F5 stage-forge GR leg
+is DECLINED (its only GR payoff was refuting statements this change deletes from the
+interface); ROOT r24 owes the one-bracket (H1)/`GRADED-READ` display restatement.

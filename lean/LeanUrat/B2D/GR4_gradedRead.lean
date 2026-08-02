@@ -16,6 +16,13 @@ Blueprint §4 (the discharger target, RESTRUCTURED per R1-C1/C2/C3/C4) + §5 GR-
 moves_ref: §B2-DEF D.5; H1_BM2 §S4 (i-b); B-M1 §S1.3/§S3.2. deps: GR-3.
 difficulty: medium. REUSE: `GenuineStageModel.discharge`, `Stage.grRes`.
 
+## ROUTE-(a) EXECUTION (2026-08-08, GR34_DISPOSITION; supersedes the wave-2a STOP
+## for the STATEMENT): `ReadHyps` gained the frame pins `hσs`/`hσt` (fence-(vii)
+## statement change), so `graded_read` is PROVED — a one-liner from
+## `graded_read_level` at `R.hσs`/`R.hσt`. The abstract-frame (σ.e ≥ 2) scope is
+## RETIRED as believed-false-and-unconsumed; B-M2's (i-b) consumption
+## (`graded_read_of_history`, the history-keyed face) is signature-unchanged.
+
 ## WAVE-2a ADJUDICATION (2026-08-02)
 
 The frozen `graded_read` inherits GR-3's frame-side residue THROUGH ITS CLAUSE 2
@@ -73,30 +80,6 @@ open Polynomial LeanUrat.Moves LeanUrat.MovesC LeanUrat.MovesGr
 universe u
 variable {p : ℕ} [Fact p.Prime] {F : Type u} [Field F] [Finite F]
 
-/-- **GR-4 `graded_read` — the (i-b) seam theorem** (blueprint §4, the three-clause
-conclusion): at any fired lift `Φ′` of the node ν (the `IsNodeLift` hard-wired
-stage-law data), given the parent model and the displayed wiring pack,
-(K1) the parent weight, (K2) the Laurent face (fills `GrBKeyLaws.key_res` with
-c = 1, k = m̂), and (K2)'s GRADED face through the parent model's Θ/discharge —
-the (i-b) identity at the parent read. **WAVE-2a STATUS: OPEN-OBSTRUCTED at the
-frozen signature** (clause 2 = GR-3's ∃-form, whose frame-side residue is genuine —
-module docstring); the PROVED forms are `graded_read_level` /
-`graded_read_of_history` below. -/
-theorem graded_read (ν : Node p F) (Mpar : GenuineStageModel ν.σ)
-    (Φ' : Polynomial ℤ_[p]) (hlift : IsNodeLift ν Φ') (R : ReadHyps ν) :
-    -- (K1), parent weight:
-    (ν.σ.w Φ' = (ν.e : ℤ) * (ν.g : ℤ) * ν.σ.w ν.σ.Φ)
-    -- (K2), Laurent face:
-    ∧ (∃ mh : ℤ, ν.σ.R Φ' = LaurentPolynomial.T mh * Polynomial.toLaurent ν.ψ)
-    -- (K2), GRADED face — the (i-b) identity through the parent model
-    -- (via Mpar.discharge: Θ(ι in(Φ')) = σ.grRes Φ' = C(σ.R Φ')·T^{w Φ'}):
-    ∧ (letI := Mpar.Rg.ring; letI := Mpar.Loring; letI := Mpar.alg;
-        ∃ mh : ℤ,
-          Mpar.Θ (algebraMap Mpar.S.Gr Mpar.Lo (Mpar.S.initialForm Φ'))
-            = LaurentPolynomial.C (LaurentPolynomial.T mh * Polynomial.toLaurent ν.ψ)
-              * LaurentPolynomial.T (ν.σ.w Φ')) := by
-  sorry -- B2DEF_LEAN E-phase sorry [unit GR-4]
-
 /-- **GR-4, SUPPLIER-LEVEL, PROVED**: the frozen three-clause conclusion under the
 two frame pins (GR-3's exact residue). Clause 1 = `GR1_equalWeights` (general, no
 pins); clause 2 = `GR3_keyResidual_level` at `mh = ν.mhat = 0`; clause 3 = clause 2
@@ -114,6 +97,30 @@ theorem graded_read_level (ν : Node p F) (Mpar : GenuineStageModel ν.σ)
   have h2 := GR3_keyResidual_level ν Φ' hlift R hσs hσt
   refine ⟨GR1_equalWeights ν Φ' hlift R, ⟨ν.mhat, h2⟩, ⟨ν.mhat, ?_⟩⟩
   rw [Mpar.discharge Φ' (nodeLift_ne_zero ν Φ' hlift), Stage.grRes, h2]
+
+/-- **GR-4 `graded_read` — the (i-b) seam theorem** (blueprint §4, the three-clause
+conclusion): at any fired lift `Φ′` of the node ν (the `IsNodeLift` hard-wired
+stage-law data), given the parent model and the displayed wiring pack,
+(K1) the parent weight, (K2) the Laurent face (fills `GrBKeyLaws.key_res` with
+c = 1, k = m̂), and (K2)'s GRADED face through the parent model's Θ/discharge —
+the (i-b) identity at the parent read. **ROUTE-(a) STATUS (2026-08-08): PROVED at
+the ReadHyps-pinned face** — the frame pins are now `ReadHyps` fields
+(`R.hσs`/`R.hσt`; GR34_DISPOSITION route (a)), so this is `graded_read_level`
+fired at the pack's own pins. -/
+theorem graded_read (ν : Node p F) (Mpar : GenuineStageModel ν.σ)
+    (Φ' : Polynomial ℤ_[p]) (hlift : IsNodeLift ν Φ') (R : ReadHyps ν) :
+    -- (K1), parent weight:
+    (ν.σ.w Φ' = (ν.e : ℤ) * (ν.g : ℤ) * ν.σ.w ν.σ.Φ)
+    -- (K2), Laurent face:
+    ∧ (∃ mh : ℤ, ν.σ.R Φ' = LaurentPolynomial.T mh * Polynomial.toLaurent ν.ψ)
+    -- (K2), GRADED face — the (i-b) identity through the parent model
+    -- (via Mpar.discharge: Θ(ι in(Φ')) = σ.grRes Φ' = C(σ.R Φ')·T^{w Φ'}):
+    ∧ (letI := Mpar.Rg.ring; letI := Mpar.Loring; letI := Mpar.alg;
+        ∃ mh : ℤ,
+          Mpar.Θ (algebraMap Mpar.S.Gr Mpar.Lo (Mpar.S.initialForm Φ'))
+            = LaurentPolynomial.C (LaurentPolynomial.T mh * Polynomial.toLaurent ν.ψ)
+              * LaurentPolynomial.T (ν.σ.w Φ')) :=
+  graded_read_level ν Mpar Φ' hlift R R.hσs R.hσt
 
 /-- **GR-4, THE HISTORY-LEVEL (i-b) DISCHARGER, PROVED** (the consumer-ready form):
 at an interior read of a coherent history — non-root (`ν = H.nodes[i+1]`), frame
@@ -147,5 +154,6 @@ theorem graded_read_of_history {H : History p F} (hcoh : HistoryCoherent H)
 
 end LeanUrat.B2D
 
+#print axioms LeanUrat.B2D.graded_read
 #print axioms LeanUrat.B2D.graded_read_level
 #print axioms LeanUrat.B2D.graded_read_of_history

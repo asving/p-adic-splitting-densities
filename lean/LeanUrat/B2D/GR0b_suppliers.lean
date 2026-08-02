@@ -89,11 +89,13 @@ theorem node_hψ0 (ν : Node p F) : ν.ψ.coeff 0 ≠ 0 := by
   rwa [hc] at hR0
 
 /-- The upgraded GR-0 supplier map: `readHyps_of_node` with `hψ0` discharged —
-10/11 fields corpus-supplied at a bare node; `hscale` is the sole residue. -/
+10/13 fields corpus-supplied at a bare node; the residue is `hscale` + the two
+frame pins `hσs`/`hσt` (route (a), GR34_DISPOSITION 2026-08-08). -/
 theorem readHyps_of_node' (ν : Node p F)
-    (hscale : (ν.h : ℤ) = (ν.e : ℤ) * ν.σ.w ν.σ.Φ) :
+    (hscale : (ν.h : ℤ) = (ν.e : ℤ) * ν.σ.w ν.σ.Φ)
+    (hσs : ν.σ.s = 1) (hσt : ν.σ.t = 0) :
     ReadHyps ν :=
-  readHyps_of_node ν hscale (node_hψ0 ν)
+  readHyps_of_node ν hscale (node_hψ0 ν) hσs hσt
 
 /-! ## 2. The scoping forcing — what `ReadHyps` already pins -/
 
@@ -160,17 +162,43 @@ theorem node_e_one_of_interior {H : History p F} (hcoh : HistoryCoherent H)
   obtain ⟨-, hnonrec, -⟩ := htrans i hi
   exact (hnonrec hspec).1
 
+/-! ## 3b. The frame-side supplier — the GR-3/GR-4 pins, now `ReadHyps` fields
+(route (a), GR34_DISPOSITION 2026-08-08) -/
+
+/-- **The frame level pins at the same interior configuration**: `child_e` + the
+read's `e = 1` give `ν.σ.e = 1`, whence `ν.σ.t = 0` (`Stage.he1t`) and `ν.σ.s = 1`
+(`Stage.hbez`). These two pins are the EXACT residue of the GR-3/GR-4 statements
+(their sum arithmetic reads the slot positions `−σ.t·wPrev(t_κ) + eκ·σ.s` against
+the node's `m̂` — see the GR-3 obstruction record). Since route (a) they are
+`ReadHyps` FIELDS (`hσs`/`hσt`), SUPPLIED here at history level; at a bare node
+they ride as displayed hypotheses on `readHyps_of_node`. -/
+theorem frame_level_of_history {H : History p F} (hcoh : HistoryCoherent H)
+    {i : ℕ} (hi : i + 1 < H.nodes.length)
+    (hprev : (H.nodes[i]'(by omega)).species ≠ ReadSpecies.recentering)
+    (he1 : (H.nodes[i+1]'hi).e = 1) :
+    (H.nodes[i+1]'hi).σ.s = 1 ∧ (H.nodes[i+1]'hi).σ.t = 0 := by
+  have hσe : (H.nodes[i+1]'hi).σ.e = 1 :=
+    (frame_pair_of_coherent hcoh hi hprev).1.trans he1
+  have hσt : (H.nodes[i+1]'hi).σ.t = 0 := (H.nodes[i+1]'hi).σ.he1t hσe
+  refine ⟨?_, hσt⟩
+  have hbez := (H.nodes[i+1]'hi).σ.hbez
+  rw [hσe, hσt] at hbez
+  push_cast at hbez
+  omega
+
 /-- **THE `hscale` SUPPLIER** (blueprint §5 GR-0's wave-2 candidate, PROVED): at a
 non-root node of a coherent history whose frame-creating transition is
 non-recentering, and whose own read is level (`e = 1` — see the two dischargers
-below), the full `ReadHyps` pack holds. `hscale` comes from `child_h` + `Stage.hwΦ`;
+below), the full `ReadHyps` pack holds (incl. the route-(a) frame pins, via
+`frame_level_of_history`). `hscale` comes from `child_h` + `Stage.hwΦ`;
 `hψ0` from `node_hψ0`; the other nine fields from GR-0's supplier map. -/
 theorem readHyps_of_history {H : History p F} (hcoh : HistoryCoherent H)
     {i : ℕ} (hi : i + 1 < H.nodes.length)
     (hprev : (H.nodes[i]'(by omega)).species ≠ ReadSpecies.recentering)
     (he1 : (H.nodes[i+1]'hi).e = 1) :
     ReadHyps (H.nodes[i+1]'hi) := by
-  refine readHyps_of_node' _ ?_
+  have hlv := frame_level_of_history hcoh hi hprev he1
+  refine readHyps_of_node' _ ?_ hlv.1 hlv.2
   rw [he1, (H.nodes[i+1]'hi).σ.hwΦ, (frame_pair_of_coherent hcoh hi hprev).2]
   push_cast
   ring
@@ -194,28 +222,6 @@ theorem readHyps_of_history_rec {H : History p F} (hcoh : HistoryCoherent H)
     (hspec : (H.nodes[i+1]'hi).species = ReadSpecies.recentering) :
     ReadHyps (H.nodes[i+1]'hi) :=
   readHyps_of_history hcoh hi hprev ((H.nodes[i+1]'hi).hspecRec hspec).1
-
-/-! ## 4. The frame-side supplier — what GR-3/GR-4 need BEYOND `ReadHyps` -/
-
-/-- **The frame level pins at the same interior configuration**: `child_e` + the
-read's `e = 1` give `ν.σ.e = 1`, whence `ν.σ.t = 0` (`Stage.he1t`) and `ν.σ.s = 1`
-(`Stage.hbez`). These two pins are the EXACT residue of the GR-3/GR-4 frozen
-statements (their sum arithmetic reads the slot positions `−σ.t·wPrev(t_κ) + eκ·σ.s`
-against the node's `m̂` — see the GR-3 obstruction record): NOT `ReadHyps` fields,
-NOT derivable from them at the abstract carrier, SUPPLIED here at history level. -/
-theorem frame_level_of_history {H : History p F} (hcoh : HistoryCoherent H)
-    {i : ℕ} (hi : i + 1 < H.nodes.length)
-    (hprev : (H.nodes[i]'(by omega)).species ≠ ReadSpecies.recentering)
-    (he1 : (H.nodes[i+1]'hi).e = 1) :
-    (H.nodes[i+1]'hi).σ.s = 1 ∧ (H.nodes[i+1]'hi).σ.t = 0 := by
-  have hσe : (H.nodes[i+1]'hi).σ.e = 1 :=
-    (frame_pair_of_coherent hcoh hi hprev).1.trans he1
-  have hσt : (H.nodes[i+1]'hi).σ.t = 0 := (H.nodes[i+1]'hi).σ.he1t hσe
-  refine ⟨?_, hσt⟩
-  have hbez := (H.nodes[i+1]'hi).σ.hbez
-  rw [hσe, hσt] at hbez
-  push_cast at hbez
-  omega
 
 end LeanUrat.B2D
 

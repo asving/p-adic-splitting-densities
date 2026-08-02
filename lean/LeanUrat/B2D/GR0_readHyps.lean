@@ -36,6 +36,7 @@ clause / `hDwidth`, `Node.hψdeg`, Stage T-vector laws, V34/S9w parent instances
 | `hRlt`      | SUPPLIED | `Stage.hRlt` at the parent |
 | `hRadd`     | SUPPLIED | `Stage.hRadd` at the parent |
 | `hRΦ`       | SUPPLIED | `Stage.hRΦ` at the parent |
+| `hσs`/`hσt` | **DISPLAYED-HYPOTHESIS** (route (a), 2026-08-08) | none at a bare node; `GR0b.frame_level_of_history` at interior coherent reads |
 
 **The `hscale` finding (the blueprint's NAMED RISK, probed).** `hscale` says
 `(ν.h : ℤ) = ν.e · σ.w(σ.Φ)` — with `Stage.hwΦ` this is `ν.h = ν.e · ν.σ.h`, a tie
@@ -66,17 +67,21 @@ recorded corpus configuration.
   probe missed the anchored-residual provenance pin — `hOrd` (`ψ^μ ∣ Ranch`, μ ≥ 1)
   + `hpat0`/`hRanch` (`Ranch.coeff 0 = pat 0 ≠ 0`) force `ψ.coeff 0 ≠ 0`; at a
   recentering this IS the pin `c̃ ≠ 0` the probe declared missing. Upgraded map:
-  10/11 fields node-supplied (`GR0b.readHyps_of_node'`), `hscale` the sole residue.
+  10/13 fields node-supplied (`GR0b.readHyps_of_node'`); residue = `hscale` + the
+  route-(a) frame pins `hσs`/`hσt`.
 * `hscale` row: the wave-2 candidate PROVED — `GR0b.readHyps_of_history` supplies
   the full pack at interior coherent reads (via `TransitionCoreL.child_e/child_h`,
   NOT the rational slope law: the direct stage-pair ties suffice). Moreover
   `GR0b.readHyps_e_eq_one`: `ReadHyps` alone forces `ν.e = 1` (`hcop` + `hscale`),
   so the level configuration of `readHyps_of_node_level` is not a special case but
   the GENERAL one — `hscale` IS the compiled e = 1/[NR] recording perimeter (RG-2).
-* NEW residue named for GR-3/GR-4 (not a `ReadHyps` field): the FRAME pins
-  `(σ.s, σ.t) = (1, 0)` — supplied at the same interior configuration
-  (`GR0b.frame_level_of_history`); genuine at the abstract carrier (the GR-3
-  obstruction record).
+* NEW residue named for GR-3/GR-4: the FRAME pins `(σ.s, σ.t) = (1, 0)` —
+  supplied at the same interior configuration (`GR0b.frame_level_of_history`);
+  genuine at the abstract carrier (the GR-3 obstruction record). ROUTE (a)
+  (GR34_DISPOSITION, executed 2026-08-08): these pins are now `ReadHyps` FIELDS
+  (`hσs`/`hσt`, displayed at a bare node — the table row above), discharging
+  GR-3/GR-4 at the pack face and retiring the believed-false abstract-frame
+  scope (fence-(vii) statement change).
 -/
 
 set_option linter.style.longLine false
@@ -96,7 +101,8 @@ residues, which ride as hypotheses (the kp_step displayed-binder precedent; see
 the module docstring's table). -/
 theorem readHyps_of_node (ν : Node p F)
     (hscale : (ν.h : ℤ) = (ν.e : ℤ) * ν.σ.w ν.σ.Φ)
-    (hψ0 : ν.ψ.coeff 0 ≠ 0) :
+    (hψ0 : ν.ψ.coeff 0 ≠ 0)
+    (hσs : ν.σ.s = 1) (hσt : ν.σ.t = 0) :
     ReadHyps ν where
   hscale := hscale
   hbez := ν.hbez
@@ -109,6 +115,8 @@ theorem readHyps_of_node (ν : Node p F)
   hRlt := ν.σ.hRlt
   hRadd := ν.σ.hRadd
   hRΦ := ν.σ.hRΦ
+  hσs := hσs
+  hσt := hσt
 
 /-- **GR-0 non-vacuity leg**: at the level/inert read configuration (`ν.e = 1`,
 `ν.h = ν.σ.h` — exactly `nodeLift_key_res`'s order-1 configuration), the `hscale`
@@ -116,11 +124,12 @@ residue IS supplied by the corpus wiring (`Stage.hwΦ`), so the displayed pack i
 inhabited on recorded configurations with only `hψ0` riding. -/
 theorem readHyps_of_node_level (ν : Node p F)
     (hνe : ν.e = 1) (hlevel : ν.h = ν.σ.h)
-    (hψ0 : ν.ψ.coeff 0 ≠ 0) :
+    (hψ0 : ν.ψ.coeff 0 ≠ 0)
+    (hσs : ν.σ.s = 1) (hσt : ν.σ.t = 0) :
     ReadHyps ν :=
   readHyps_of_node ν
     (by rw [hνe, ν.σ.hwΦ, hlevel]; push_cast; ring)
-    hψ0
+    hψ0 hσs hσt
 
 end LeanUrat.B2D
 

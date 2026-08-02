@@ -17,6 +17,14 @@ REUSE: `Node.mhat` (the existing m̂ — cite, don't rebuild), the LANDED
 `H1.nodeLift_key_res` proof architecture (its `hRadd` recomposition induction,
 adapted with the sharp scalar-1 assembly).
 
+## ROUTE-(a) EXECUTION (2026-08-08, GR34_DISPOSITION; supersedes the wave-2a STOP
+## below for the STATEMENTS): `ReadHyps` gained the frame pins `hσs`/`hσt`
+## (fence-(vii) statement change, campaign-owner adjudication under standing
+## authority), so `GR3_keyResidual_pinned`/`GR3_keyResidual` are now PROVED —
+## one-liners from `GR3_keyResidual_level` at `R.hσs`/`R.hσt`. The abstract-frame
+## (σ.e ≥ 2) scope is RETIRED as believed-false-and-unconsumed (the countermodel
+## record below stands as the reason; zero consumers ever bound that face).
+
 ## WAVE-2a ADJUDICATION (2026-08-02): the frozen forms STOP — THE FRAME-SIDE PINS
 ## ARE A GENUINE RESIDUE; the supplier-level forms are PROVED below
 
@@ -74,28 +82,6 @@ open Polynomial LeanUrat.Moves LeanUrat.MovesC LeanUrat.Scaffold.HDischarge.H1
 
 universe u
 variable {p : ℕ} [Fact p.Prime] {F : Type u} [Field F] [Finite F]
-
-/-- **GR-3, pinned form**: distinct slot positions (GR-2's strictly monotone
-`readPos`) mean no cancellation (D.1(b)), and the slot sum recomposes to
-`σ.R Φ′ = T^{m̂}·toLaurent ψ` at the D.8 normalization `m̂ = Node.mhat = −t·h·g`.
-N-GR1-gated display (module docstring). **WAVE-2a STATUS: OPEN-OBSTRUCTED** — the
-frame pins `(σ.s, σ.t) = (1, 0)` are a genuine residue at the abstract carrier
-(module docstring, the σ.e-compression countermodel); the PROVED supplier-level
-form is `GR3_keyResidual_level` below. -/
-theorem GR3_keyResidual_pinned (ν : Node p F) (Φ' : Polynomial ℤ_[p])
-    (hlift : IsNodeLift ν Φ') (R : ReadHyps ν) :
-    ν.σ.R Φ' = LaurentPolynomial.T ν.mhat * Polynomial.toLaurent ν.ψ := by
-  sorry -- B2DEF_LEAN E-phase sorry [unit GR-3]
-
-/-- **GR-3, the ∃-form** (§4's frozen `graded_read` clause 2; fills
-`GrBKeyLaws.key_res` with `c = 1`). **WAVE-2a STATUS: OPEN-OBSTRUCTED** (same
-residue as the pinned form — the ∃-form fails at the same countermodel since
-`T`-shifts preserve the support gap; module docstring). PROVED supplier-level
-form: `GR3_keyResidual_level'`. -/
-theorem GR3_keyResidual (ν : Node p F) (Φ' : Polynomial ℤ_[p])
-    (hlift : IsNodeLift ν Φ') (R : ReadHyps ν) :
-    ∃ mh : ℤ, ν.σ.R Φ' = LaurentPolynomial.T mh * Polynomial.toLaurent ν.ψ := by
-  sorry -- B2DEF_LEAN E-phase sorry [unit GR-3]
 
 /-- **GR-3, SUPPLIER-LEVEL, PROVED**: the pinned conclusion under the two frame
 pins `ν.σ.s = 1`, `ν.σ.t = 0` (supplied at interior coherent reads by
@@ -322,7 +308,29 @@ theorem GR3_keyResidual_level' (ν : Node p F) (Φhat : Polynomial ℤ_[p])
     ∃ mh : ℤ, ν.σ.R Φhat = LaurentPolynomial.T mh * Polynomial.toLaurent ν.ψ :=
   ⟨ν.mhat, GR3_keyResidual_level ν Φhat hlift R hσs hσt⟩
 
+/-- **GR-3, pinned form**: distinct slot positions (GR-2's strictly monotone
+`readPos`) mean no cancellation (D.1(b)), and the slot sum recomposes to
+`σ.R Φ′ = T^{m̂}·toLaurent ψ` at the D.8 normalization `m̂ = Node.mhat = −t·h·g`.
+N-GR1-gated display (module docstring). **ROUTE-(a) STATUS (2026-08-08): PROVED
+at the ReadHyps-pinned face** — the frame pins `(σ.s, σ.t) = (1, 0)` are now
+`ReadHyps` fields (`R.hσs`/`R.hσt`; GR34_DISPOSITION route (a)), so this is the
+supplier-level `GR3_keyResidual_level` fired at the pack's own pins. -/
+theorem GR3_keyResidual_pinned (ν : Node p F) (Φ' : Polynomial ℤ_[p])
+    (hlift : IsNodeLift ν Φ') (R : ReadHyps ν) :
+    ν.σ.R Φ' = LaurentPolynomial.T ν.mhat * Polynomial.toLaurent ν.ψ :=
+  GR3_keyResidual_level ν Φ' hlift R R.hσs R.hσt
+
+/-- **GR-3, the ∃-form** (§4's frozen `graded_read` clause 2; fills
+`GrBKeyLaws.key_res` with `c = 1`). **ROUTE-(a) STATUS (2026-08-08): PROVED at
+the ReadHyps-pinned face** (frame pins now pack fields; GR34_DISPOSITION). -/
+theorem GR3_keyResidual (ν : Node p F) (Φ' : Polynomial ℤ_[p])
+    (hlift : IsNodeLift ν Φ') (R : ReadHyps ν) :
+    ∃ mh : ℤ, ν.σ.R Φ' = LaurentPolynomial.T mh * Polynomial.toLaurent ν.ψ :=
+  ⟨ν.mhat, GR3_keyResidual_pinned ν Φ' hlift R⟩
+
 end LeanUrat.B2D
 
+#print axioms LeanUrat.B2D.GR3_keyResidual_pinned
+#print axioms LeanUrat.B2D.GR3_keyResidual
 #print axioms LeanUrat.B2D.GR3_keyResidual_level
 #print axioms LeanUrat.B2D.GR3_keyResidual_level'
