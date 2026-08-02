@@ -12,7 +12,29 @@ Is SITE-EXH — "every lift the engine fires factors through the recorded carrie
 LandingKey / historyCoherent key+recentering / readsOf-landing" — closable in the
 CURRENT run architecture, or does closure require extending it?
 
-## VERDICT: NEEDS-EXTENSION (TruncatedRun carrier; disjoint box-face bridge)
+## VERDICT: NEEDS-EXTENSION → **EXTENSION LANDED** (TruncatedRun carrier; disjoint box-face bridge)
+
+[EXTENSION LANDED 2026-08-08 — ASVIN SIGN-OFF ledger 49b778e ("yeah go ahead" on
+E-1..E-4 as displayed).  `H1/TruncatedRun.lean` compiles E-1 (`TruncRunFrom` +
+`ReadsOfFrom`), E-2 (`moveWitness_standardLift`/`moveWitness_hosts`/
+`moveWitness_hosts_readsOfFrom`), and E-4's fences (this file and
+`ReadsOf`/`HistoryCoherent` byte-unchanged; no RG-2 lift).  The §3 residue row is
+discharged there IN WIDENED FORM, at two displayed layers (layering per the
+pre-commit Codex adversarial pass): `TowerMoveClosure'` — the row at the AS-BUILT
+core-free widened target `OnRecordedCarrier ∨ OnTruncatedCarrier` — is a THEOREM,
+and `siteExh_elimination' : ∀ fl : FiredLift p F, fl.Lands'` fires UNCONDITIONALLY
+over this enumeration (junk-hostable towerMoves included); `TowerMoveClosureL` —
+the row at the SIGNED core-binding carrier `OnTruncatedCarrierL`, hypothesis =
+S9/S10's own `StageCoreL σ` calling convention — is ALSO a theorem.  The ORIGINAL
+narrow-target row `TowerMoveClosure` and the conditional `siteExh_elimination`
+stand below, byte-unchanged and still open/conditional, as the recorded-carrier
+display.  E-3 (the D-ITER composition glue) is the follow-up unit; the box face
+(§6) is untouched.  The deviations of the as-built E-1 from the display below —
+base-read bundle = dev + (LandingKey ∨ IsStandardLift) with forcing compiled for
+clauses (iv)/(v) only, clauses (i)-(iii)/(vi) not-retained-with-reason; the
+core-free kernel under the tagged `ReadsOfFrom` — are recorded with the full Codex
+fold in `TruncatedRun.lean`'s header, with a STANDING RE-RATIFICATION ITEM for
+Asvin on the layering.]
 
 The closed `FiredLift` datatype COMPILES (§1 below — the honest constructor-level
 enumeration, census under "THE CENSUS"), and the elimination CLOSES DEFINITIONALLY
@@ -123,7 +145,9 @@ constructors + `gate_flTower_lands` (the residue row fires at the RCW instance) 
 
 WHAT IS NOT CLAIMED: no engine-wide firing status beyond the recorded carriers
 (SITE-EXH stays OPEN — this probe adjudicates its closure ROUTE); no truncated-run
-carrier exists yet (E-1..E-4 are a design display); the C-e refutation-at-nature is
+carrier exists yet (E-1..E-4 are a design display) [SUPERSEDED 2026-08-08: the
+carrier now exists — `H1/TruncatedRun.lean`, see the verdict block above; THIS
+file's own claims are unchanged]; the C-e refutation-at-nature is
 numerics-backed (BM2_TRACE §C-e), not compiled — compiling it needs the real quartic
 tower formalized, out of probe scope by charter.
 -/

@@ -4104,3 +4104,118 @@ already satisfies both anticipated clauses. TD-1/TD-2 chaining not opened
 scope caveat (incl. the i2 slot-1 exponent transcription caveat: declared
 3 ≠ formula 2, so trace i2 as data is not v2-lawful); MANIFEST rows TD-0 /
 TD-3 / TD-3-v2-GATE.
+
+## 2026-08-08 (wallclock 2026-08-02): SITE-EXH TruncatedRun extension LANDED — the widened row DISCHARGED, the engine-face elimination UNCONDITIONAL
+
+Executes the 49b778e sign-off (E-1 + E-2 + E-4 now; E-3 deferred to its own
+unit). NEW FILE `lean/LeanUrat/Scaffold/HDischarge/H1/TruncatedRun.lean`
+(compiles green standalone via `lake env lean`, zero sorry, all ten
+`#print axioms` = Lean-core {propext, Classical.choice, Quot.sound}):
+
+* E-1: `TruncRunFrom σ₀ f₀ H` (kernel) + `ReadsOfFrom σ₀ hσ₀ f₀ H` (the
+  displayed carrier, frozen signature verbatim): node-0 frame pin REPLACES
+  the deg-1 base pin; slope law + γ-tie verbatim at all nodes; interior
+  transition legs VERBATIM (RG-2 fence included) above the base read;
+  pair-free frame-chain clauses at the base transition; per-read
+  development of the LOCAL f₀ with interior-pinned designated landing;
+  FULL SideReads at every read above the base.
+* E-2: `moveWitness_standardLift` (every MoveWitness exhibits σ'.Φ as
+  `IsStandardLift σ ψ₀ g₀ σ'.Φ` of an irreducible rooted residual — inc
+  face via its own TransHyp.hlift + child_key; recentering face via the
+  realizer −tt as the standard lift of ψ₀ := X + C c, c the (S5) digit
+  unit of −tt, using σ.e = 1/σ.t = 0 at recentering parents; bare Stage
+  fields only) → `standardLift_hosts` (the ONE-NODE host: root-species
+  read, pair (1,1), side (0,g₀), pattern = ψ₀'s coefficients, f₀ := σ.Φ
+  self-development) → `moveWitness_hosts` (kernel, unconditional) and
+  `moveWitness_hosts_readsOfFrom` (the DISPLAYED at-StageCoreL form).
+* THE DISCHARGE: `OnTruncatedCarrier` (truncated-run base landing;
+  landing pair displayed as LandingKey ∨ IsStandardLift — both compiled
+  census firing forms), `OnRecordedCarrier' := OnRecordedCarrier ∨
+  OnTruncatedCarrier`, `TowerMoveClosure'` (the §3 residue row at the
+  widened target) is a THEOREM (`towerMoveClosure'_discharged`), and
+  `siteExh_elimination' : ∀ fl : FiredLift p F, fl.Lands'` fires
+  UNCONDITIONALLY — the engine-face SITE-EXH closed. The ORIGINAL
+  narrow-target row `TowerMoveClosure` + conditional `siteExh_elimination`
+  stand byte-unchanged as the recorded-carrier display.
+* AGREEMENT (no-fork certificate): `truncRunFrom_of_readsOf` — every full
+  ReadsOf run IS a truncated run from its root frame (verbatim
+  projections; HistoryCoherent does not factor into named clause
+  predicates, so the truncated clauses are verbatim instances certified by
+  this lemma).
+* GATES (positive): `gate_mwRC_hosts` (the RCW recentering MoveWitness
+  hosts in a truncated run — E-1's non-vacuity witness, re-firing the
+  RCW/H₃rc instance through the NEW path), `gate_mwRC_readsOfFrom` (E-2
+  verbatim fires at StageCoreL σ₁rec, re-derived via gateChildStage_exists),
+  `gate_flTower_lands'` (the probe's towerMove gate instance now lands
+  unconditionally).
+
+TWO FORCED DEVIATIONS from the E-1/E-2 display, compiled-argument-backed,
+recorded in the file header (D-1: base read carries dev + designated
+landing, NOT full SideReads — clause (v)'s polOM choice-pin makes the
+designated key provably-never the move's own fired key, and clause (iv)'s
+root-species IsNodeLift reads the stage-w scale, forcing the node pair
+(σ.e, σ.e·σ.h) against hcop at every σ.e ≥ 2 parent — the C-e-shaped
+frames themselves; D-2: the kernel/carrier are core-free with hσ₀ riding
+as the displayed tag — MoveWitness carries no parent core and the
+signed-off elimination is unconditional over the junk-hostable ∀-form;
+D-3 minor: the base transition's species-keyed stage-record legs at the
+free pair are E-3's to wire on the measured ITER-LAW).
+
+CODEX ADVERSARIAL PASS (pre-commit, fresh context, quote-and-classify):
+verdict on the draft = REJECT-as-described — the Lean theorems are sound
+for the as-built predicates (explicit ACCEPTs: no circularity — the
+discharge consumes only MoveWitness/TransHyp data, never the row or an
+equivalent; `OnTruncatedCarrier` NOT trivially true — the landing
+disjunction forces monic/degree/stride/weight (K0)-grade shape data; the
+agreement lemma meaningful one-way), but the DESCRIPTIONS over-claimed.
+Findings + folds, all executed before commit:
+* CRITICAL (D-2): the core-free kernel carrier is a material WIDENING of
+  the signed E-1 (junk parents admitted where the signature excluded
+  them). FOLD: the signed core-BINDING carrier layer compiled alongside —
+  `OnTruncatedCarrierL` + `TowerMoveClosureL` (row at StageCoreL parents,
+  = S9/S10's own calling convention, hence the engine-reachable
+  perimeter) DISCHARGED (`towerMoveClosureL_discharged`), monotonicity
+  `onTruncated_of_lawful`; every "discharge" claim now names its layer.
+* CRITICAL (description): "the signed SITE-EXH discharge" conflated
+  targets. FOLD: all claims re-worded to "the elimination at the AS-BUILT
+  widened carrier, unconditional" + "the row at the signed carrier,
+  discharged at cored parents"; the ORIGINAL row `TowerMoveClosure`
+  restated as open and untouched everywhere.
+* GAP (D-1(a)): "provably never" overstated — softened to
+  interface-unprovability (the two-realizer separation instance is not
+  compiled; RecenterLiftSpec realizers are non-unique at nature via
+  w_strict/hRlt perturbations).
+* GAP (D-1 scope): forcing was supplied only for SideReads clauses
+  (iv)/(v); clauses (i)-(iii)/(vi) are recorded as
+  NOT-RETAINED-WITH-REASON (not key-asserting per the probe census; no
+  arbitrary-move discharge known — hS6a/hS6b threshold+coset walls,
+  clause-(vi) carry wall), their base-read retention an OPEN ADDITIVE
+  refinement. Codex candid note recorded: at increment moves the
+  truncated landing ~ re-displays the move's own TransHyp.hlift — the
+  carrier's value there is uniformity + the E-3 seam, not new per-move
+  information.
+
+STANDING RE-RATIFICATION ITEM (Asvin): the 49b778e sign-off jointly
+demanded the E-1 core-binding signature AND an elimination "unconditional
+at the engine face" over the existing junk-admitting FiredLift — jointly
+unsatisfiable by ONE carrier (MoveWitness carries no parent core). Both
+layers are compiled and ordered; confirm the layering (or direct a
+FiredLift re-enumeration carrying parent cores, matching S9/S10's
+signatures — a statement-change event, not taken unilaterally).
+
+FENCES (E-4, verified): `ReadsOf`/`HistoryCoherent`/`SideReads` files
+UNTOUCHED (git diff: only SiteExhProbe.lean, 23+/2−, all comment lines —
+zero changed lines containing def/theorem/lemma/inductive/structure/
+instance/import/set_option); no RG-2 lift (the fence is verbatim inside
+[T-3]); consumers (ReadsOf: 50 files, HistoryCoherent: 80 files) need
+zero recompiles. SiteExhProbe.lean rebuilt green post-edit (8662 jobs);
+TruncatedRun.lean green against it.
+
+NOT DONE HERE (scoped out): E-3 (the D-ITER composition glue — the
+extension's one genuinely new obligation, next dedicated unit on the
+measured ITER-LAW); the box face (FiredLiftBox/BoxKeyBridge, SiteExhProbe
+§6) stays the disjoint M1-track display, restated unchanged in the new
+file's header; the B-M2 note's §S2 SITE-EXH display + §S0 dependency
+table are NOT edited by this unit — their re-pricing (SITE-EXH consumers
+now ride the widened engine-face discharge + the open E-3 glue + the open
+box face) rides the next B-M2 fold round.
