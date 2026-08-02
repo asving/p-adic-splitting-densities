@@ -3295,3 +3295,25 @@ folds ([C1]/[C2]/[G3]) all CURED; new gap = the imported Lean faces are
 cited opaquely, blocking the Route-A exactness audit. F-(i) status: M1 needs
 fold+2 cleans, M2 fold+1 clean owed... per blueprint counts; M4 nearly
 clean; M5 second clean + N-K3 still owed. Fold rounds dispatched.
+
+## 2026-08-08: H4-M4 fold 2 (pass-2 findings folded; rev 3)
+
+M4 pass 2 (`H4M4_pass2_2026-08-08.md`, verdict GAPS; fold-1 items [C1]/[C2]/
+[G3] confirmed CURED) folded into `H4M4_k3delta_adjudication.md` (rev 3):
+[P2-1] opaque Lean-face imports → NEW §2.1b displays all five imported faces
+VERBATIM with file:line (`AlphabetData.Stable` MovesRBase/Defs.lean:113,
+`RealizedLedger` H4/Defs.lean:119, `UBXbStmt` Kernel.lean:75, `K3deltaStmt`
+Kernel.lean:80, `k3delta_of_ubxb` Kernel.lean:86) + a six-item exactness
+audit — claims 1–3 MATCH (claim 1 downgraded from unqualified "EXACTLY" to
+interface-altitude match: K3-c/β-leg semantics are the H4-F2-fenced
+instance's burden, Defs faithfulness note (iii) quoted); two flags recorded
+(δ-ABSOLUTE `poolIdx` convention-bound not type-enforced; `mdeg` a free
+parameter pinned only via `DictSlice`). [P2-2] all-(n,p) burden of §5.2
+reason 2 now displayed as an ASSEMBLY-frame assumption (no quoted row and no
+Lean face carries it — the faces fix one p, no n); verdict survives on
+reasons 1+3 even without it. [P2-3] "branch-robust" honesty fix at
+§0.3/§5.3/§5.5: robust across N-K3's non-escalating branches (i)/(ii) ONLY;
+branch (iii) cancels the call (adjudication re-opens). No route text, Lean
+declaration, or recommendation changed. Gate re-run GREEN (`lake env lean
+notes/openmath/H4M4_k3delta_adjudication.md`, zero sorry). Owed: pass 3 on
+the folded text (near-clean per the harvest note); M5 second clean; N-K3.

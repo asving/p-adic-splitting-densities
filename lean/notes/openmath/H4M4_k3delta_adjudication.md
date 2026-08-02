@@ -22,7 +22,10 @@ route texts are transcribed verbatim in §§2–3 below, and every Lean
 declaration here is adjudication-layer vocabulary of this unit (fresh
 namespace `LeanUrat.Scaffold.HDischarge.H4.Adjud`). The corpus faces
 `UBXbStmt`/`K3deltaStmt`/`RealizedLedger`/`AlphabetData.Stable` are consumed
-by IMPORT, verbatim, never re-transcribed or weakened. H4-M2's dictionary
+by IMPORT, verbatim, never re-transcribed or weakened — and, since pass-2
+finding 1 (fold 2), each imported face's full statement is QUOTED in a
+display block at §2.1b with file:line, as citation-for-audit (the compiled
+faces remain the imports; nothing is re-declared). H4-M2's dictionary
 theorems live in a literate note OUTSIDE the import graph, so their
 CONCLUSION is consumed here as the displayed interface `DictSlice` (§2.2) —
 an interface citation, not a new assumption and not a duplicate declaration.
@@ -42,8 +45,12 @@ an interface citation, not a new assumption and not a duplicate declaration.
    its own hostile-pass gate rides Wave 1 and is NOT asserted here) does
    NOT land a cheap Route A — it reduces A's per-pool obligation to realized
    coprimality (`k3delta_iff_pool_coprime`), a REALIZATION property the
-   dictionary does not control, quantified over every consumed (n, p, δ).
-   **RECOMMENDATION: ROUTE B**, branch-robust in N-K3's pending verdict
+   dictionary does not control, quantified over every consumed (n, p, δ)
+   (that all-(n, p) quantification is an ASSEMBLY-frame input, displayed and
+   scoped honestly at §5.2 reason 2 — fold 2).
+   **RECOMMENDATION: ROUTE B**, robust across N-K3's NON-ESCALATING branches
+   (i)/(ii) only; the dominating branch (iii) would refute Route B as stated
+   and RE-OPEN the adjudication, so the call is NOT robust across that branch
    (branch table §5.3; N-K3 verdict NOT on file at composition time).
 4. ROOT-SYNC NOTE (§6): Route-B adoption is a LEDGER STATEMENT CHANGE
    ((UB-X)(b) member text + (K3-δ) fragment content replaced by the intrinsic
@@ -133,9 +140,131 @@ variable (p : ℕ) [Fact p.Prime]
 > outcome). Member (b) at FULL scope stays open.
 
 Typed face (already on file, consumed by import — H4-L8, Kernel.lean):
-Route A's target is EXACTLY `K3deltaStmt p RL` (per-pool `Stable`), and the
+Route A's target is `K3deltaStmt p RL` (per-pool `Stable`), and the
 naive-(b) reading it restricts is `UBXbStmt p RL`; the restriction law is
-`k3delta_of_ubxb`. Nothing is re-declared here.
+`k3delta_of_ubxb`. Nothing is re-declared here. The word "EXACTLY" is
+adjudicated at §2.1b against the displayed statements.
+
+### §2.1b The imported faces, displayed VERBATIM, with the exactness audit (fold 2, pass-2 finding 1)
+
+Pass 2 found the imported faces cited OPAQUELY (names without statements),
+blocking the exactness audit. Here is every imported declaration this note
+consumes, quoted verbatim from the corpus with file:line (quotation-for-audit
+in a display block; the COMPILED faces remain the imports — nothing below is
+re-declared in this note's namespace).
+
+**(F1) `AlphabetData.Stable`** — `LeanUrat/MovesRBase/Defs.lean:110-114`
+(docstring + statement verbatim):
+
+```
+/-- δ-STABLE-SPECIES position (rev-4 comparison-domain pin), DEFINED: the species
+letter persists under re-basing. Split positions fail this and are OUT-OF-DOMAIN. -/
+def AlphabetData.Stable {Sp} (AD : AlphabetData p Sp) (δ : ℕ+) (x : AD.Pos) : Prop :=
+  AD.posLetter δ x = AD.posLetter 1 x
+```
+
+**(F2) `RealizedLedger`** — `LeanUrat/Scaffold/HDischarge/H4/Defs.lean:115-125`
+(docstring + statement verbatim):
+
+```
+/-- **H4-L7 (`RealizedLedger`)** — the realized-ledger carrier: `realized δ` is
+the set of position classes the re-based classifier realizes over `O_δ`;
+`Pool` indexes Step-18 K3-c's realized δ > 1 pools (the base-changed β-legs),
+each riding a realized position (`pool_realized`) at pool index > 1. -/
+structure RealizedLedger {Sp : SpeciesSyntax} (AD : AlphabetData p Sp) where
+  realized : ℕ+ → Set AD.Pos
+  Pool : Type
+  poolIdx : Pool → ℕ+
+  poolPos : Pool → AD.Pos
+  pool_gt_one : ∀ P : Pool, 1 < (poolIdx P : ℕ)
+  pool_realized : ∀ P : Pool, poolPos P ∈ realized (poolIdx P)
+```
+
+**(F3) `UBXbStmt`** — `LeanUrat/Scaffold/HDischarge/H4/Kernel.lean:73-77`
+(docstring + statement verbatim):
+
+```
+/-- (UB-X)(b) typed: δ-stable position classes exhaust the realized ledger at
+every δ. -/
+def UBXbStmt {Sp : SpeciesSyntax} {AD : AlphabetData p Sp}
+    (RL : RealizedLedger p AD) : Prop :=
+  ∀ (δ : ℕ+) (x : AD.Pos), x ∈ RL.realized δ → AlphabetData.Stable p AD δ x
+```
+
+**(F4) `K3deltaStmt`** — `LeanUrat/Scaffold/HDischarge/H4/Kernel.lean:79-82`
+(docstring + statement verbatim):
+
+```
+/-- (K3-δ) typed: (UB-X)(b) RESTRICTED to K3-c's realized δ > 1 pools. -/
+def K3deltaStmt {Sp : SpeciesSyntax} {AD : AlphabetData p Sp}
+    (RL : RealizedLedger p AD) : Prop :=
+  ∀ P : RL.Pool, AlphabetData.Stable p AD (RL.poolIdx P) (RL.poolPos P)
+```
+
+**(F5) `k3delta_of_ubxb`** — `LeanUrat/Scaffold/HDischarge/H4/Kernel.lean:84-88`
+(docstring + statement verbatim; proof term included, it is the whole content):
+
+```
+/-- **H4-L8** — the fragment law at the typed faces (ROOT's
+`stable_implies_k3delta`, carrier form): full (UB-X)(b) implies (K3-δ). -/
+theorem k3delta_of_ubxb {Sp : SpeciesSyntax} {AD : AlphabetData p Sp}
+    (RL : RealizedLedger p AD) (h : UBXbStmt p RL) : K3deltaStmt p RL :=
+  fun P => h (RL.poolIdx P) (RL.poolPos P) (RL.pool_realized P)
+```
+
+**THE EXACTNESS AUDIT** (this note's prose claims vs the displayed statements,
+each flagged honestly):
+
+1. **"Route A's target is EXACTLY `K3deltaStmt p RL` (per-pool `Stable`)":
+   MATCHES AT INTERFACE ALTITUDE, with a displayed semantic gap.** (F4) says:
+   for every `P : RL.Pool`, the position `RL.poolPos P` is `Stable` at index
+   `RL.poolIdx P` — i.e. per-pool δ-stability, exactly the fragment shape.
+   The two quantifier facts the audit needs are TYPED: `pool_gt_one` gives
+   δ > 1 per pool, `pool_realized` gives realizedness per pool. What is NOT
+   typed: that `Pool` really enumerates K3-c's pools (the family-(vi)
+   base-changed β-legs) and that `realized δ` really is the O_δ classifier's
+   ledger — (F2) is an INTERFACE SHAPE only. The Defs faithfulness note
+   (H4/Defs.lean header, verbatim) says exactly this: "(iii) `RealizedLedger`
+   types the INTERFACE SHAPE only (positions, indices, membership) — no
+   β-leg, residue-degree, or clause-(R) semantics; value-side fields land at
+   fenced H4-F2." So "EXACTLY" is true of the STATEMENT SHAPE (quantifiers,
+   guards, conclusion) and conditional on the H4-F2-fenced instance for the
+   β-leg/K3-c semantics. This is a SCOPE PIN, not a mismatch — but the
+   unqualified "EXACTLY" in §2.1's original wording overstated it; qualified
+   above (fold 2).
+2. **"the naive-(b) reading … is `UBXbStmt p RL`": MATCHES.** The
+   authoritative row text (§1): "δ-stable position classes exhaust the
+   realized ledger at every δ". (F3) says: for every δ : ℕ+ and every
+   position x, if x ∈ realized δ then x is δ-stable — membership-implies-
+   stability at every δ, which IS "stable classes exhaust the realized
+   ledger". Quantifier check: "at every δ" = the leading `∀ (δ : ℕ+)`
+   (base-index convention δ ABSOLUTE, per the Defs header); "realized
+   ledger" = `RL.realized δ` (interface-shape caveat of item 1 applies);
+   "δ-stable" = (F1), letter persistence `posLetter δ x = posLetter 1 x`.
+   No hidden quantifier; no realization-side existential.
+3. **"the restriction law is `k3delta_of_ubxb`": MATCHES.** (F5) is
+   literally the specialization of (F3)'s ∀ to the pool's own
+   (index, position) pair, discharging the membership hypothesis by
+   `pool_realized` — the elementary restriction, nothing more.
+4. **"`poolIdx` carries the intended absolute δ": CONVENTION, NOT TYPE-
+   ENFORCED — flagged.** (F2)'s `poolIdx : Pool → ℕ+` is a bare index; the
+   δ-ABSOLUTE reading (matching REL.2(e2), §1's adjacency fence) is carried
+   by the Defs header convention and the docstrings, and binds the eventual
+   H4-F2 instance. Nothing in the displayed types rules out an instance
+   feeding relative indices; the audit records this as an instance
+   obligation, not a theorem of the interface.
+5. **`mdeg` (this note's §2.2) is a FREE PARAMETER — flagged.** The
+   "accumulated residue degree m = d·g₁···g_k" reading of `mdeg` is pinned
+   only through the `DictSlice` hypothesis matching H4-M2's
+   `mdeg x = G.dDeg x * (G.gDegs x).prod`; the Lean faces themselves do not
+   constrain `mdeg`. Every §2.2–§2.3 theorem is exactly as strong as the
+   `DictSlice` hypothesis supplied to it — which is the design (the
+   [M]-content stays in hypothesis position), now displayed.
+6. **Ambient quantification: the displayed faces fix ONE prime p (the
+   section `variable (p : ℕ) [Fact p.Prime]`) and contain NO degree n.**
+   This corroborates pass-2 finding 2: the "every (n, p, δ)" burden of §5.2
+   reason 2 is NOT in the Lean faces (only the ∀ δ is); see §5.2 reason 2's
+   scope display (fold 2).
 
 ### §2.2 The dictionary interface (H4-M2's conclusion, consumed as displayed)
 -/
@@ -300,7 +429,19 @@ degree m is coprime to its pool index δ. Three reasons this is NOT cheap:
    nothing here settles it." The dictionary sharpened A's obligation; it
    cannot discharge it.
 2. **The quantifier is theorem-strength.** (K3-δ) is consumed by clause (R)
-   at EVERY degree n and every (p, δ) the assembled theorem touches. N-K3
+   at EVERY degree n and every (p, δ) the assembled theorem touches.
+   SCOPE OF THAT CLAIM, displayed (fold 2, pass-2 finding 2): the quoted
+   (UB-X) row text itself quantifies only "at every δ"; the all-n, all-p
+   quantification is the ASSEMBLY FRAME's — clause (R) is a clause of the
+   assembled theorem, which runs over every degree n and prime p, so each
+   (n, p) instance consumes its own (K3-δ). No quoted row displays that
+   ambient quantification, and the Lean faces do not carry it (they fix one
+   p and contain no n — §2.1b item 6). It enters here as an ASSUMPTION read
+   off the assembly structure (ROOT's clause-(R) architecture), not a
+   verified display of this note. If it somehow failed — if clause (R)
+   consumed (K3-δ) at only finitely many (n, p) — Route A's price would
+   drop from theorem-strength to a finite check-list, but the cheap-A
+   verdict would still stand on reasons 1 and 3 alone. N-K3
    (n = 3) is a falsifier gate: a violation kills A, but a pass proves
    nothing beyond n = 3. A cheap A would need a STRUCTURAL coprimality
    mechanism (e.g. "continuation reads at accumulated degree D only realize
@@ -315,7 +456,7 @@ degree m is coprime to its pool index δ. Three reasons this is NOT cheap:
    fenced at H4-F6) PLUS the realization residue. Route B consumes none of
    the cross-base chain.
 
-### §5.3 N-K3's verdict feeds the call — branch table (the call is robust)
+### §5.3 N-K3's verdict feeds the call — branch table (robust across the non-escalating branches only)
 
 N-K3 (blueprint §N): enumerate the n = 3 pack's verdict-row β-legs' δ > 1
 pools; check each realized pool against Lemma 4's gcd criterion AND against
@@ -325,7 +466,13 @@ falsifier discipline; M2 §4's decide-checked tables are the seed.
 ON-FILE STATUS at composition time (repo search, 2026-08-01): NO N-K3 run
 artifact exists (`verification/openmath/` has no N-K3 script/results; the
 only N-K3 material is M2's seed tables). The route call is therefore issued
-in BRANCH-ROBUST form. The branches are NOT mutually exclusive (one run can
+against the branch table below, with its robustness scoped honestly (fold 2,
+pass-2 finding 3): the recommendation SURVIVES the two non-escalating
+branches (i) and (ii) unchanged, and does NOT survive the dominating branch
+(iii) — there Route B is refuted as stated and the adjudication re-opens.
+"Robust in N-K3's pending verdict" without that qualification (the previous
+revision's wording) was an overstatement; no on-file evidence weighs for or
+against branch (iii). The branches are NOT mutually exclusive (one run can
 trigger several; Codex read, finding 2) — they are ordered by PRECEDENCE:
 check (iii) first, then (i), then (ii); folding the verdict means applying
 the FIRST branch that fires, with re-adjudication needed only on (iii):
@@ -384,8 +531,11 @@ stability hypothesis to supply) — IF the M7 walk confirms the reading above.
 ### §5.5 RECOMMENDATION
 
 **ROUTE B.** Per §5.2 the dictionary does not land a cheap A — this alone
-settles the blueprint's criterion; per §5.3 the call is robust in N-K3's
-pending verdict (modulo the dominating escalation branch); §5.4's consumer
+settles the blueprint's criterion. On N-K3's pending verdict the call's
+standing is exactly §5.3's: it survives the non-escalating branches (i)/(ii)
+unchanged and is CANCELLED (adjudication re-opens) on the dominating branch
+(iii) — it is NOT robust across that branch, and no stronger robustness is
+claimed (fold 2). §5.4's consumer
 evidence corroborates without being load-bearing. Route A is retained
 on the record as the fallback ONLY if the ROOT owner declines the re-scope
 (in which case its obligation is the displayed realization lemma of §5.2
@@ -450,7 +600,32 @@ and §5.5 re-weighted so the recommendation rests on §5.2 alone. Codex pass
 1 also confirmed: both route statements transcribed accurately; no
 countermodel or discharge claimed; the Lean declarations match the prose;
 [M]-content stays hypothetical; H4-F5 not landed; ROOT-sync authorization
-fence correct. PASS 2 (on the folded text): verdict recorded below. N-K3
+fence correct. PASS 2 RAN (2026-08-08, `H4M4_pass2_2026-08-08.md`, on the
+fold-1 text): verdict GAPS — the three fold-1 items ([C1]/[C2]/[G3]) all
+confirmed CURED; three new findings, all ACCEPTED and FOLDED (fold 2, this
+revision): [P2-1, GAP] the imported Lean faces cited opaquely (names
+without statements), blocking the exactness audit → §2.1b added: all five
+imported faces (`AlphabetData.Stable`, `RealizedLedger`, `UBXbStmt`,
+`K3deltaStmt`, `k3delta_of_ubxb`) quoted VERBATIM with file:line, plus the
+six-item exactness audit — outcome: claims 1–3 MATCH (claim 1 at interface
+altitude only, with the Defs faithfulness note (iii) quoted and the
+unqualified "EXACTLY" of the prior revision downgraded to a scope-pinned
+match; K3-c/β-leg semantics remain the H4-F2-fenced instance's burden);
+two honest flags added (δ-ABSOLUTE on `poolIdx` is convention-bound, not
+type-enforced; `mdeg` is a free parameter pinned only through `DictSlice`);
+[P2-2, GAP] the all-(n, p) realization burden asserted but not displayed →
+§5.2 reason 2 now displays its source (the assembly frame's clause-(R)
+architecture, NOT any quoted row or the Lean faces, which fix one p and
+carry no n — §2.1b item 6) and marks it as an assumption whose failure
+would weaken reason 2 without overturning the verdict (reasons 1 + 3
+suffice); [P2-3, GAP] "branch-robust" overstated → §0.3, §5.3, §5.5
+re-worded: the recommendation is robust across the non-escalating branches
+(i)/(ii) ONLY and is cancelled (adjudication re-opens) on the dominating
+branch (iii). REVISION RECORD: rev 1 = composition; rev 2 = fold 1 (Codex
+pass 1: [C1]/[C2]/[G3]); rev 3 = fold 2 (pass 2: [P2-1]/[P2-2]/[P2-3],
+2026-08-08) — no route text, Lean declaration, or recommendation changed
+at fold 2; only citations displayed and robustness/quantifier scope made
+honest. PASS 3 (on this folded text): verdict to be recorded here. N-K3
 is NOT this unit's gate (it seals M4/M5 jointly); its on-file status and
 branch handling are §5.3.
 
