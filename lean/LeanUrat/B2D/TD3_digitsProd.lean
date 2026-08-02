@@ -46,6 +46,23 @@ the v2 control instance whose shape refuted v1) and
 The N-TD1 trace's [LHS-V2] column is 3/3 MATCH against this statement's
 semantics (incl. the on-line digit instances i2/i3). The sorry below is
 therefore an honest OPEN goal again, not a refuted one.
+
+**ROUND 2 REFUTED (2026-08-02, wave-2 prover run).** The v2 statement below
+is ALSO false as stated: `TD3v2_countermodel.lean` compiles
+`ledger_digitsProd_v2_refuted` — the ¬∀ of this exact statement — via two
+v2-LAWFUL witnesses on the control geometry: `cmL3` (Seam B: `parentBlock`
+overlapping an OFF-LINE box slot's block, which `parent_interior_disjoint`
+does not fence — NONEMPTY stratum, `pinned_forced` substantive, joint count
+1 vs product 2) and `cmL4` (Seam A: unsatisfiable parent condition — no
+clause asserts per-realization member existence — count 0 vs positive
+product). The pack supplies D.11's injectivity half (`pinned_forced`) but
+not the surjectivity half (member existence) nor full parent/box-slot
+disjointness; the N-TD1 instances never probed either seam (`parentBlock =
+[]` throughout). Positive controls on that subfamily STAND: `cm2_digitsProd`
+and TD-0's `td_digitsProd` (r = 1, genuine on-line digit content, landed
+2026-08-02). The sorry below STANDS refuted-open pending an E2 v3 statement
+round (the two missing clauses named in the countermodel docstring);
+statement fence respected — nothing here is weakened or restated.
 -/
 
 set_option linter.style.longLine false

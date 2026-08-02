@@ -4052,3 +4052,55 @@ dispatched: E-1 + E-2 + E-4 now (discharges TowerMoveClosure → the
 FiredLift elimination fires unconditionally at the engine face); E-3 (the
 truncated-run composition glue) follows as its own unit on the D-ITER
 ITER-LAW shape the strata probe measured.
+
+## 2026-08-08 (wallclock 2026-08-02): B2D TD WAVE 2 — TD-0 LANDED (r ≥ 1, Lean-core); TD-3 ROUND 2 REFUTED (lawfulness-pack seams A/B)
+
+Wave-2 prover run on the v2 carrier (base eaa1a5f), per blueprint §5 TD-0 +
+TD-3 (round-2 annotations).
+
+**TD-0 LANDED** — `LeanUrat/B2D/TD0_ledgerInstance.lean`, NO sorry, all
+`#print axioms` Lean-core, `lake env lean` exit 0. The designated instance
+is N-TD1 trace i2 lifted to census depth r = 1: `tdD` (r = 1, e = h ≡ 1,
+f = ![2,1] ⟹ d = 2, period 1, wt ≡ 0, s ≡ 2), `tdW` (ℓ = 1, n = 3 ⟹
+monicTop = FALSE, junction ks = 0 ON-LINE), `tdL` (N = 2, q₀ = 2, junction
+slotCond pins the read leaf (0,0) to the pin code 1; parentBlock = ∅ as in
+every trace instance). Duties: (a) `td_lawfulV2` — the FULL v2 pack, with
+junction/digit_range/slotDigits_sem NON-vacuous (all vacuous at the r = 0
+control `cmL2`); (b) `td_semanticsV2` — finite-box counts computed (fiber
+16 = 2⁴ on the 5-leaf `supportUnion`, per-slot 4 = 2^(mN−s) exact incl. the
+`slot_count_val` FORMULA); (c) `td_devacuify` + `td_scope`/`td_clean` +
+`td_mem_ledgerStrataV2` — the demanded r ≥ 1 de-vacuifier (R0Instance
+precedent was r = 0). BONUS: `td_digitsProd` — DigitsProdLaw PROVED at the
+instance (junction factor 4·[z₀=1] × off-line 4 = fiber 16·[z₀=1]) — the
+strongest compiled positive control (genuine on-line digit content). NEW
+helper decls (blueprint's add-if-needed provision): `blockCount_pin` +
+`pinnedRestrictEquiv` (pinned-leaf block count q^(|B|−1)).
+
+**TD-3 ROUND 2 REFUTED** — `LeanUrat/B2D/TD3v2_countermodel.lean`, NO
+sorry, all Lean-core: `ledger_digitsProd_v2_refuted` = the compiled ¬∀ of
+TD-3's exact round-2 statement (`LedgerLawfulV2` hypotheses). TWO seams,
+both NEW relative to the v1 refutation (the v2 finite-box SEMANTICS repair
+is sound — the [LHS-V2] 3/3 gate stands; the lawfulness PACK is what is too
+weak for MOVES D.11's product argument): **Seam A** (`cmL4`) — no clause
+asserts per-realization member existence, so `inStratum ≡ False` is lawful
+against the positive `slot_count_val` product (0 ≠ 2); **Seam B** (`cmL3`)
+— `parent_interior_disjoint` = (ii.3) fences the parent block off INTERIOR
+ON-LINE slot blocks only, so a parent condition may cut inside an OFF-LINE
+slot's block: NONEMPTY stratum, `pinned_forced` substantive
+(`cmL3_fiber_pos` on record), joint count 1 ≠ product 2 — NOT an emptiness
+pathology. The pack supplies exactly D.11's injectivity half
+(`pinned_forced`); missing: the surjectivity half (member existence) and
+full parent/box-slot disjointness. WHY THE ROUND-2 GATES MISSED IT: all
+N-TD1 instances have parentBlock = [] (both seams silently closed; the law
+IS true there — `cm2_digitsProd`, `td_digitsProd`), and
+`v2_mechanism_inapplicable` certified only the ¬∀ of the v1 MECHANISM.
+STATEMENT FENCE RESPECTED: `ledger_digitsProd` + its E-phase sorry stand
+byte-unchanged (docstring round-2 record only); the v3 statement round
+(add (i) per-realization member existence, (ii) parent-block/box-slot
+disjointness — trace-faithful, junction pin rides the junction slotCond) is
+OWED to a fresh E-phase unit, not executed at this run. TD-0's `tdL`
+already satisfies both anticipated clauses. TD-1/TD-2 chaining not opened
+(gated on TD-3 landing). Records: blueprint §5 TD-0/TD-3 rows + §7 N-TD1
+scope caveat (incl. the i2 slot-1 exponent transcription caveat: declared
+3 ≠ formula 2, so trace i2 as data is not v2-lawful); MANIFEST rows TD-0 /
+TD-3 / TD-3-v2-GATE.
