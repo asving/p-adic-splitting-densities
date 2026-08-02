@@ -1,9 +1,17 @@
 # Project state — Lean formalization of uniform rationality of *p*-adic factorization densities
 
-*Snapshot: 2026-07-19; last refreshed 2026-08-08++++ (ROOT REVISION 24, unit r25 — see the
-CHECKPOINT "r25 LANDED" section at the tail, which is the current resumability anchor:
-**r25 LANDED** — VC26 + VC26b CONFIRMED, the acceptance RE-ANCHORS at REVISION 23
-(pending VC27 on REVISION 24); **TR-3′-GEN closed at ORDER 2** as a two-stratum theorem
+*Snapshot: 2026-07-19; last refreshed 2026-08-08+++++ (ROOT REVISION 25, unit r26 — see the
+CHECKPOINT "r26 LANDED" section at the tail, which is the current resumability anchor:
+**r26 LANDED** — VC27 + VC27b CONFIRMED, the acceptance RE-ANCHORS at REVISION 24
+(pending VC28 on REVISION 25); the wave-9 countermodel-first folds — POOL-DICT decided
+(derive-from-wiring REFUTED compiled, (H8′)(iii) blocked-on-owners with the blocker
+compiled), the TR-4 empirical debt discharged (19,226/0, paper-secured status unchanged),
+CU2t k′=0 split-decided (3 refutation gates + terminalPolySem_kp0 PROVED; NEW named open
+row BasePolygonLengthLaw p, displayed not rostered), leakFree typed (LeakFreeCarrierV4 +
+general supplier + de-vacuity fence), D-ITER restated (ITER-LAW the statement of record);
+the forge consolidated to THREE named targets pending the synthesis-pass-6 chartering;
+the superseded r25 anchor: VC26 + VC26b CONFIRMED, the acceptance re-anchored at
+REVISION 23; **TR-3′-GEN closed at ORDER 2** as a two-stratum theorem
 (TR3-S1 + TR3-S2 both accepted; deeper orders open); B-M2's REC-SL open NARROWED to the
 hsc provenance row + the GR0b chain fence, closed at every compiled site; the readsOf
 debt restated at the ReadsOfFrom face (species form = no-consumer fence display);
@@ -1784,3 +1792,70 @@ forge, DIterJunctionSupplier.
 Verification: VC1–VC22 done; VC25 NOT-CONFIRMED (disposed at REVISION 23);
 VC26 + VC26b CONFIRMED (= the REVISION-23 anchor); VC27 pending on
 REVISION 24.
+
+## CHECKPOINT 2026-08-08+++++ (wallclock 2026-08-02): r26 LANDED — RE-ANCHOR AT REVISION 24 + THE WAVE-9 COUNTERMODEL-FIRST FOLDS (ROOT REVISION 25)
+ROOT at REVISION 25 (unit r26; record ROOT §31). **VC27 + VC27b CONFIRMED —
+the acceptance RE-ANCHORS on the REVISION-24 text** (VC27: 0C/2G, ALL
+substantive checks passed — 3/3 re-anchor sites, the 17-pattern census
+arithmetically exact, NINE rows, clauses 8/8, falsifier 0; both gaps
+AUDIT-INPUT appendix defects, the third first-pass lost to appendix
+generation — now a saved orchestrator checklist (memory:
+vc-audit-appendix-checklist); VC27b on the verbatim slices CONFIRMED 0C/0G;
+reports 5e8dc97 + 6aa3b20; the anchor moves REVISION 23/VC26+VC26b →
+REVISION 24/VC27+VC27b, citation text updated at r26 per the VC22
+precedent). REVISION 25 folds the wave-9 batch (the five 2026-08-08 ledger
+entries after the VC27+VC27b entry): (1) **POOL-DICT DECIDED,
+countermodel-first** (d7f7f58, `PoolDictProbe.lean` Lean-core zero-sorry):
+the pass-4 F2a derive-from-wiring route REFUTED by compiled
+underdetermination — two full `KCutK1Tie` instances over ONE shared pack
+(the real n2 carriers) differing ONLY in `δOf`, tie non-vacuous via the new
+`pd_blockSolve1_zero`; the (H8′)(iii) row wording STANDS, now
+blocked-on-owners ([2r]/CL-8 REL.2 + (K-CUT-g)) WITH THE BLOCKER COMPILED;
+τ-leg not compiled (two-equal-state table = forge-class); (2) **the GRB
+TR-4 EMPIRICAL debt DISCHARGED** (4761cdd: preregistered family TR4a–f,
+19,226 samples, 0 violations, ALL GREEN; TR-4 stays PAPER-SECURED on
+printed Cor 4.4(1)/4.5/4.11 — no proof-status change; GRB brackets
+additive at R11.5/R13.4/residue-of-record); (3) **CU2t k′=0 SPLIT-decided**
+(9cb30d1, `CU2tKp0.lean`): the literal derivability charter REFUTED at 3
+compiled gates (saturation; −∞ leg; terminal-blind CU2t index) + the honest
+𝐇°-keyed reduction **`terminalPolySem_kp0` PROVED** (first
+ReadThroughIota-certified `TerminalPolySem` witness at HEAD, real
+`gmnDataOrder1` read of X+2); NEW NAMED OPEN ROW **`BasePolygonLengthLaw p`**
+([M]-discipline; the OM base length law, pure polygon geometry, the
+OL5-adjacent convexity gap; proof route in its docstring) — displayed at
+the ROOT (H6) residuals as a DictIII-side open lemma, NOT a §3.1 roster
+row; (4) **leakFree TYPED** (d237149, `B2D/LeakFaceV4.lean`, 14 decls
+Lean-core): `LeakFreeCarrierV4` + the general supplier `ledger_leakFreeV4`
+(every `LedgerLawfulV4` datum) + the compiled de-vacuity fence
+`td2V4bad_not_leakFreeV4`; the TransDeep rows carry a PROVED (L) field;
+the H2 `TransDeep.leakFree` field stays bare per the U9 fold; still owed:
+the Step-10/K1 classifier consumer face + a nonempty-parent lawful
+instance (forge-class); (5) **D-ITER RESTATED** (3bcae68,
+`DITER_RESTATE_2026-08-08.md`): the **ITER-LAW is the STATEMENT OF RECORD**
+(open lemma, instance-true 0/804 over 52 towers; the single-ζ′ cyclic form
+REFUTED 22/28 and bracketed at all display sites); the
+`DIterJunctionSupplier` consumable spec on record (three mandatory
+features, cyclic kernels fenced); queue #11 unblocked on #9. FORGE
+CONSOLIDATION: the forge-class list now has THREE named targets —
+`junc_bundle` (the surviving F5 justification), the nonempty-parent lawful
+leakFree instance, the two-equal-state table (POOL-DICT τ-leg) — the
+chartering decision = synthesis pass 6 (OWED, the /goal cadence). The
+§29/§30 fence-(vii) ASVIN FLAG lineage stays (no wave-9 unit consumes the
+pinned fields). Roster: **NINE rows, unchanged** (`BasePolygonLengthLaw`
+displayed, not rostered); census re-run at the declared occurrence unit
+(the 17 §30 patterns + the new POOL-DICT/TR-4/BasePolygonLengthLaw/
+ITER-LAW/leakFree-pair/VC27b/VC28 markers, every delta explained, fixed
+point re-grepped after the last edit).
+FRONTIER NOW: **VC28** (the confirming end-to-end pass on REVISION 25;
+acceptance anchored on REVISION 24/VC27+VC27b until it lands); **synthesis
+pass 6** (the /goal cadence — re-map this window's collapses + the
+consolidated forge chartering decision); the Asvin batch
+(TowerMoveClosureL re-ratification, Route-B re-scope, the GR ROUTE-(a)
+ratification incl. its RECSL rider); then the standing tail:
+`BasePolygonLengthLaw p` (the named next unit per the CU2t note), the
+Step-10/K1 classifier consumer face, `DIterJunctionSupplier` (priced with
+the forge), the StageCore docstring doc-debt (rides a future Lean-touching
+unit).
+Verification: VC1–VC22 done; VC25 NOT-CONFIRMED (disposed at REVISION 23);
+VC26 + VC26b CONFIRMED; VC27 + VC27b CONFIRMED (= the REVISION-24 anchor);
+VC28 pending on REVISION 25.

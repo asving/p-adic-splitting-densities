@@ -4979,3 +4979,38 @@ tables carry `State ≡ Unit`; a two-equal-state table = forge-class, pass-5 F5)
 blocked-on-owners ([2r]/CL-8 + (K-CUT-g)) with the blocker compiled; nothing
 discharged, no statement touched. Unit note:
 `lean/notes/openmath/POOLDICT_2026-08-08.md`.
+
+## 2026-08-08: r26 EXECUTED — ROOT REVISION 25 (the VC27+VC27b re-anchor citation update + the wave-9 folds); VC28 OWED
+
+The r26 cadence event (record: ROOT §31). The acceptance anchor's citation
+text updated at every operative site: **REVISION 23/VC26+VC26b →
+REVISION 24/VC27+VC27b** (per the VC22 precedent; old citations under dated
+supersession brackets; historical §§7–30 otherwise untouched). The five
+wave-9 ledger entries folded, each at exactly its ledger grade: POOL-DICT
+(d7f7f58 — (H8′) r26 bracket: derivation route REFUTED compiled, row
+blocked-on-owners WITH THE BLOCKER COMPILED, τ-leg forge-class); TR-4
+(4761cdd — (H1) r26 bracket: empirical debt DISCHARGED 19,226/0,
+paper-secured status unchanged); CU2t k′=0 (9cb30d1 — (H6) r26 bracket:
+literal charter refuted at 3 gates, `terminalPolySem_kp0` PROVED, NEW named
+open row `BasePolygonLengthLaw p` DISPLAYED at the (H6) residuals — a
+DictIII-side open lemma, NOT a §3.1 roster row); leakFree (d237149 —
+(FRESH) r26 bracket: typed carrier + general supplier + de-vacuity fence;
+H2 field bare per the U9 fold; classifier consumer face + nonempty-parent
+instance still owed); D-ITER (3bcae68 — (H1) r26 bracket: ITER-LAW the
+statement of record, open lemma 0/804; the two ROOT "restatement owed"
+flags carry dated EXECUTED brackets). FORGE CONSOLIDATION displayed: THREE
+named targets (junc_bundle; the nonempty-parent lawful leakFree instance;
+the two-equal-state table) — chartering decision = synthesis pass 6, OWED.
+Roster recounted NINE (BasePolygonLengthLaw displayed, not rostered);
+census re-run at the declared exact-occurrence unit (the 17 §30 patterns +
+POOL-DICT/TR-4/BasePolygonLengthLaw/ITER-LAW/leakFree+LeakFreeCarrierV4/
+VC27b/VC28; every delta reasoned; fixed point re-grepped after the last
+edit — VC27 81 incl. the 32 VC27b substring hits, the displayed
+subtlety). The §29/§30 fence-(vii) ASVIN FLAG lineage stays displayed,
+nothing added (no wave-9 unit consumes the pinned fields). Synced:
+`docs/PROJECT_STATE.md` r26 checkpoint. **VC28 is OWED on the REVISION-25
+wording** (charge at ROOT §31; model diversity per the tree §4 bar; the
+provenance appendix per the saved checklist — verbatim slices, embedded
+records with host-file line ranges); until it lands, the acceptance
+citation points at the REVISION-24 text. Never self-confirmed: this unit
+is the revision, not its audit.
