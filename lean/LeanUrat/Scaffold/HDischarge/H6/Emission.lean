@@ -509,6 +509,28 @@ theorem readThroughIota_lawless_fails :
     List.filter_nil, principalData_X_add_two] at h0
   exact List.cons_ne_nil _ _ h0.symm
 
+/-- H6-A4b (the displayed obligation, landed verbatim — status block and
+consumption fence at the unit-A4b section ABOVE; declared here because the
+`hread` binder consumes unit A6b's `ReadThroughIota`; supply = the repaired
+III-S4 singleton forcing `cu2t_readForcing_sem`, `DictIII/CU2t.lean`): under
+`ReadThroughIota` + the singleton forcing, the A4 `head?`-read slope IS the
+unique side's datum (clause 1), and `RCConsistentD`'s ∀-SIDES read clause pins
+any RC-consistent node's datum to the SAME side (clause 2). -/
+theorem terminalDatumD_slope_spec (f : Polynomial ℤ_[p]) (H : EHist p F)
+    (D : GMNData f (Theta H)) (S : SideDatum)
+    (hread : ReadThroughIota f H D)
+    (hforce : D.principalSides H.nodes.length = [S]) :
+    (terminalDatumD f H D).slope
+        = (if S.isNegInfty then none else some (S.e, S.h)) ∧
+    ∀ ν : ENodeData,
+      (∀ T ∈ D.principalSides H.nodes.length,
+        (ν.e, ν.h, ν.ℓ, ν.s, ν.u) = (T.e, T.h, T.ℓ, T.s, T.u)) →
+      (ν.e, ν.h, ν.ℓ, ν.s, ν.u) = (S.e, S.h, S.ℓ, S.s, S.u) := by
+  constructor
+  · simp [terminalDatumD, hforce]
+  · intro ν hall
+    exact hall S (by rw [hforce]; exact List.mem_singleton_self S)
+
 /-! ## Unit A7 — THE repaired (H6) trio + tVERDhen (statement-only)
 
 Statement transcribed VERBATIM from `lean/blueprints/HDISCHARGE_H6.md` §4 unit
