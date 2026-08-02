@@ -3077,3 +3077,31 @@ obstruction stands) and leakFree (no typed shadow — opposite verdict).
 **F5** pass-3 audit: F8 TestChains / F9 BP_III ID map / P(O-8b/M14) NOT
 executed — re-flagged as dispatch-template duties + queue item 5. Revised
 12-item queue in the doc (VC22 and the D-11 confirming pass first).
+
+## 2026-08-02 (machine clock): D-11 LEAF BAR MET — the H9-C3 re-open trigger SPENT (§4B confirming pass CLEAN)
+
+The owed confirming pass on D11_rev4 §4B (the (NSF-INT) leaf proof I-1) ran
+hostile, fresh-context, quote-and-classify: **ZERO critical, ZERO blocking
+gaps — VERDICT: CONFIRMED.** Checks executed against the corpus at HEAD:
+claim (i)'s four load-bearing displays re-verified verbatim in
+`O1thr_phaseB_verifybrief_rev4.md` §1.4 (the (τ-ns)/NsHalts generation rule;
+candidate-children = (principal face, ψ) pairs; IrrHalts ⟺ μ_{k−1}=1 =
+saturation via the key-degree identity, no children at saturated states;
+payload = (1,g) verdicts, not states; (F1)–(F6) incl. the F4 backup route);
+the three-way state walk sound, the marks-vocabulary premise consumed AS a
+displayed premise only (bound (iii) intact). Claim (ii): K1/K4 statements
+re-read verbatim at `M04-series-tie_fable.md` §5.5 — including the (ed-1)
+(K1-CANON) scope pin NOW IN THE FILE (preamble ed-1(c) lines 258–262, K1
+parenthetical ed-1(a), Theorem-4 pinned-sum display ed-1(b)) — so the K1
+leg's displayed premise is discharged at the source; D-15's "Throughout: T
+decided ns-free" + Theorem 3(b)/(c) re-verified at O-1thr rev4; the K4 leg's
+HEAD failure correctly fenced to (NSF-KEY). Consumption scope matches the
+retirement's pricing exactly: I-2 closure claimed only (CH-RES)-relative
+(bound (ii)); the does/does-not paragraph claims no carrier non-vacuity
+(bound (iv)); (E-N) displayed OPEN with the RESTRICTED count consumed
+(bound (vi)). One wording note, NOT a finding: the pin corollary's
+"(F1)–(F4)" parenthetical names the clauses the proof consumes — full §1.4
+fibering (F1)–(F6) is what "realizable/fibers" supplies and fiber ⟹ F1–F4,
+so the D_σ(N) landing is sound as written. **The D-11 row's owed pass is
+DISCHARGED; I-3 stands; the H9-C3 re-open trigger is SPENT; the (NSF-INT)
+retirement STANDS.**
