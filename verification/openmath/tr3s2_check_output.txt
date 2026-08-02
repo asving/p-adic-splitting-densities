@@ -1,0 +1,15 @@
+ring (Zp, p=2) done: cumulative violations = 0
+ring (Zp, p=3) done: cumulative violations = 0
+ring (Fpt, p=2) done: cumulative violations = 0
+ring (Fpt, p=3) done: cumulative violations = 0
+==========================================================================
+TR3-S2 PREREGISTERED v2 vs OBSERVED (violations; samples in parens)
+TS2a  per-slot compose chain (support,k1,k2,k3)       pred 0  obs    0 ( 3536)  GREEN
+TS2b  assembled two-form on side reads + j0           pred 0  obs    0 ( 3536)  GREEN
+TS2c  label ties BOTH key conventions + meter         pred 0  obs    0 (   52)  GREEN
+TS2d  MATCHED-label ord transport (d-i)+(d-ii)        pred 0  obs    0 ( 3536)  GREEN
+TS2e  e0=1 controls: TR3-S1 identity                  pred 0  obs    0 ( 1088)  GREEN
+TS2c key-divergence meter: obs 20 == pred 20 of 52 towers (pred: equal, > 0)  MATCH
+TS2d ord histogram (ord: count): 0:3192 1:182 2:162   (pred: some ord >= 1)  MATCH
+TOTAL samples: 11748
+VERDICT: ALL GREEN
