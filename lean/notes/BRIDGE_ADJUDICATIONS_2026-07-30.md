@@ -3205,3 +3205,28 @@ Re-pricing displays owed at: GRB leaf (TR-3′-GEN/TR-3-ORD-X rows), B-M2
 counter-line update. Decider highlight: the verifier's own from-scratch
 checker initially DISAGREED — its bug, at the S9.7 trap — the strongest
 decorrelation datum yet for the falsifier-harness discipline.
+
+---
+
+## §B2-DEF LEAN CHARTER (SYNTH4 queue item 4 / finding F4, 2026-08-08)
+
+Blueprint `lean/blueprints/B2DEF_LEAN_2026-08-08.md`: the ACCEPTED §B2-DEF carry-algebra
+apparatus (𝒟 = F[u]/(u^e−z̄), aligned DIG, anchor-monomial transport; MOVES :1849–2745)
+chartered ONCE as the shared Lean supplier for BOTH open consumers — H2's `TransDeep`
+(F)/(L)/(J) row (`Scaffold/HDischarge/H2/TransDeep.lean`, [M]-row awaiting the supplier)
+and H1/B-M2's GRADED-READ (i-b) seam (`H1_BM2` §S4; blocks `kp_step` application, the
+DevBound row). KEY FINDING: §B2-DEF is ALREADY substantially formalized in HC1 (D1–D8
+carry layer, S1–S17 spine/ledger, T1–T12 + C/CL digit-block layer, V-kernel — all
+sorry-free at HEAD except V9's e′≥2 legs, C6:129=CL-05, CL04:190) + MovesGr
+`GenuineStageModel`; the charter builds NO new tower theory, only TWO projection layers
+— (GR) the fired-lift graded reading through the PARENT model's Θ/discharge, and (TD)
+the census counting shadow as a ledger-stratum instance of the H2 skeletal carriers.
+15 units in `lean/LeanUrat/B2D/` (namespace `LeanUrat.B2D`), 5 waves (E-gate first),
+hardest hole = TD-0/TD-3 fiberwise product count + CL5 (two fronts). Reuse census,
+verbatim consumer interfaces, fences (A-M2/REC-SL/SITE-EXH/V9-e′≥2/§C-composition all
+OUT), 3 new numeric families (N-GR1/N-TD1/N-TD2). Codex design review: R1 REJECT
+(6 crit/4 gap) → all folded; R2 REJECT (2 crit/2 gap, both LOCAL — rhoCount support at
+q∈{0,1}; a deleted-decl acceptance typo) → all folded; max-2-rounds, design FROZEN.
+Transcripts `lean/notes/openmath/B2DEF_LEAN_codex_design_r{1,2}_2026-08-08.txt`.
+NOT executed here (blueprint only): no B2D units written; no consumer row status
+changed (both updates are ROOT-owner moves on acceptance).
