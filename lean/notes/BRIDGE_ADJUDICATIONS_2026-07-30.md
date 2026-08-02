@@ -2355,3 +2355,17 @@ shape+monicity, (SL-dev) data excluded from the claim. Declaration census
 fixed by enumeration: 9 decls = 1 def + core isReadLift_K0 + 2 bridges + 5
 carrier-site corollaries. Clean counter 0/2; next: fresh hostile pass on the
 REVISION 2 text.
+
+## 2026-08-06 (session cont.): (GR-B) LEAF ACCEPTED — the 2-clean model-diverse bar met at REVISION 10
+
+Fourteen-pass arc closed: passes 13 (Codex) + 14 (Fable max-effort decider)
+both CLEAN on REVISION 10. Pass 14 re-ran G1/G2/G3 live (counts to the
+digit), re-read ~25 FGMN/GMN pins verbatim, swept all revision brackets for
+inter-revision contradictions, audited all six residue members for silent
+consumption — explicit no-finding statement. `GRB_ORDER2_2026-08-05.md` is
+the (H1)(a) faithfulness execution OF RECORD (the FGMN retarget: TR-1..TR-7
+executed; corrected dictionary λ^GMN = −E_i·λ^FGMN; (H-CHAIN) range
+0 ≤ j ≤ i−1). Displayed debt: the §1.4 N-1 harness (wave-0) — dispatched as
+the next unit. Open residue unchanged: TR-3′-GEN, TR-3-ORD-X, D-ITER
+(E_i > 1), N-1, TR-3-ORD's FGMN-internal scope, (KP_i)/(H-CHAIN)/[T]
+externals. Second verified (H1) leaf after KP-STEP (B-M1).
