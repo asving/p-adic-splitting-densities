@@ -3681,3 +3681,33 @@ shape and closed the row WITHOUT authoring Lean:
   `probe_restated_childDetermined_refuted`; zero new sorry (no Lean file
   touched). Records: HDISCHARGE_H2.md §6 U10 section → CLOSED block, wave
   table row, coverage-honesty paragraph.
+
+## 2026-08-02: M14 REVISION 1 — the Lemma 1(b) scale-display sync fold (the composite's owed move)
+
+The P(O-8b/M14) composite pass 2 (`lean/notes/openmath/PO8bM14_pass2_2026-08-02.md`,
+GAPS-ONLY 0C/1G) had ONE gap: M14 Lemma 1(b)'s proof
+(`M14-eq2-alphabet_attempt.md`) still displayed the OLD one-case scale form
+"γ* = γ/e_{j+1} (γ at the top)" while M1's ACCEPTED §5.3
+(`H4M1_rpack_attempt.md`, the pass-1-F2 fold, rev-2 text) is TWO-CASE:
+γ* := γ/e_{k+1} for k+1 ≤ K; γ* := γ at the TOP SPACE (no read K+1, no
+e_{K+1}, no stretch) — M1's own fold was never synced into M14, leaving
+M14's top-space application of Lemma 1 pointing at a nonexistent final
+stretch.
+
+* **FOLD APPLIED (M14 REVISION 1):** Lemma 1(b) statement + proof now carry
+  the two-case display verbatim-in-content with a dated fold bracket citing
+  M1 §5.3 and the pass-2 finding; the top-space I(γ) instance routes through
+  Lemma 1(a)'s already stretch-free top-space clause. Nothing else changed —
+  the Theorem's top-space step consumed exactly what the two-case display
+  supplies.
+* **ECHO AUDIT:** the fixed proof line was the only stale display. The brief
+  was already two-case; `H4M5_k3delta_attempt.md` ~line 345 quotes the old
+  proof line abridged in a coefficient-stage context (its Def SYM is already
+  two-case per its pass 7) — content unaffected, quotation no longer
+  verbatim, FLAGGED in M14's REVISION 1 record, not edited (outside this
+  fold's scope). No other consumer read the one-case form.
+* **OWED STATE (the (H4a) retirement chain, H4M7 §3 / ROOT §3.1 r22 row):**
+  this fold discharges the composite's owed move → NEXT: one clean composite
+  pass (pass 3, on the folded M14 + accepted M1 + M2 REVISION 4) → on CLEAN,
+  F-(iv) fires per H4M7 §3 (the §3.1 (R1)–(R4) row retires to a §3.2
+  retirement record; the (K3-δ) audit note SURVIVES onto the (UB-X) row).

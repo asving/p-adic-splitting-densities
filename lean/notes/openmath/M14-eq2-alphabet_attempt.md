@@ -88,7 +88,9 @@ of REL.1's counting layer — Theorem C(a)/(b), PIN-WELLDEF, (ZC) — is used).
 **Lemma 1.** Suppose two towers (any two bases) satisfy the D.9(a) recursion
 of (R3) with the same numerical data d, (e_j, h_j, g_j)_{j≤k}. Then:
 (a) 𝒲^{(δ)}_j = 𝒲_j for all j ≤ k, and the top-space weight sets agree;
-(b) for every height γ at stage j+1 ≤ k+1: the stretch γ*, the anchor slot
+(b) for every height γ at stage j+1 ≤ k+1 — including the top space, where
+the scale conversion is the stretch-free case of the two-case display in the
+proof: the scale conversion γ*, the anchor slot
 j₀ ≡ t_j·γ* (mod e_j), the slot heights γ_i = γ* − (j₀ + i·e_j)·h_j
 (0 ≤ i < g_j), and the attainable index set I(γ) = {i < g_j : γ_i ∈ 𝒲_j}
 coincide on the two sides.
@@ -97,9 +99,24 @@ coincide on the two sides.
 𝒲_{j+1} = e_{j+1}·⋃_{0≤i<e_j g_j}(𝒲_j + i·h_j) with the same base
 𝒲₁ = e₁·ℤ≥0 — a purely arithmetic recursion in the shared data — so they are
 equal by induction on j; the top-space set is the j = k instance without the
-final stretch, likewise equal. (b) γ* = γ/e_{j+1} (γ at the top) uses only
-e_{j+1}; t_j is the mod-e_j inverse of h_j, shared; j₀ and each γ_i are
-arithmetic in (γ*, t_j, e_j, h_j), shared; I(γ) then agrees by (a). ∎
+final stretch, likewise equal. (b) The scale conversion is the TWO-CASE
+display [FOLD 2026-08-02 — synced to M1's ACCEPTED §5.3 two-case stretch
+display (`H4M1_rpack_attempt.md` §5.3, the rev-2 text cured at M1's pass-1
+finding 2), per composite pass-2 finding 1 (`PO8bM14_pass2_2026-08-02.md`);
+the previous one-case form "γ* = γ/e_{j+1} (γ at the top)" left the
+top-space conclusion unjustified — at the top no final read exists, so no
+e to divide by]:
+
+  γ* := γ/e_{j+1}  at a coefficient stage j+1 ≤ k (the D.0 stretch
+  w_{j+1} = e_{j+1}·w_j; exact, and uses only e_{j+1});
+  γ* := γ  at the TOP SPACE (the stage-(k+1) position over stage k): the
+  top space carries the current scale itself — no read beyond the top
+  exists, hence no stretch, matching (a)'s stretch-free top-space set.
+
+In both cases γ* is determined by γ and the shared data; t_j is the
+mod-e_j inverse of h_j, shared; j₀ and each γ_i are arithmetic in
+(γ*, t_j, e_j, h_j), shared; I(γ) then agrees by (a) — the top-space
+instance via (a)'s top-space clause. ∎
 
 *Status: (c) claimed new (project-specific bookkeeping); the proof is
 complete and unconditional given that both towers satisfy (R3)'s recursion —
@@ -367,3 +384,36 @@ skeleton matching, on an in-domain instance (gcd(m, δ) = gcd(2, 3) = 1).
 Caveat: with d = 1 the per-slot alphabets are full fields, so the run does
 not yet exercise a NESTED proper sub-alphabet — that is T4's job (two-stage
 tower), still to be run.
+
+## REVISION 1 (2026-08-02) — Lemma 1(b) scale display synced to M1 §5.3 (two-case)
+
+Composite pass 2 (`PO8bM14_pass2_2026-08-02.md`, Codex hostile verify, 0
+CRITICAL / 1 GAP) found the ONE gap: Lemma 1(b)'s displayed proof read the
+OLD one-case scale form "γ* = γ/e_{j+1} (γ at the top)", while M1's ACCEPTED
+§5.3 (`H4M1_rpack_attempt.md`, the F2-fold rev-2 text verified by M1's own
+decider) displays TWO cases — γ* := γ/e_{k+1} for k+1 ≤ K; γ* := γ at the
+TOP SPACE (no read K+1 exists, hence no e_{K+1} and no stretch). M1's fold
+had never been synced here, so M14's application of Lemma 1 "including x
+itself at the top space" referred to a nonexistent final stretch/index.
+
+FOLD APPLIED: (1) Lemma 1(b)'s statement now names the two-case scale
+conversion; (2) the proof of (b) displays both cases with the dated fold
+bracket citing M1 §5.3 + the pass-2 finding; the top-space instance of I(γ)
+routes through (a)'s (already stretch-free) top-space clause. NO other
+change; the Lemma's conclusion, the Theorem, and all downstream text are
+untouched — the Theorem's top-space step consumed exactly what the two-case
+display now supplies.
+
+ECHO AUDIT (γ*/stretch, whole note + consumers): the only stale display was
+the Lemma 1(b) proof line fixed above. In-note: §2 (R1)'s w_{k+1} =
+e_{k+1}·w_k is the coefficient-stage D.0 stretch (correct as stated); Lemma
+1(a)'s top-space clause was already stretch-free; Lemma 2's uses are
+coefficient-stage only. Consumers: `M14-eq2-alphabet_brief.md` §displays
+already carries the two-case parenthetical ("γ* = γ at the top space") —
+clean; `H4M5_k3delta_attempt.md` (~line 345) quotes Lemma 1(b)'s proof in
+abridged form ("γ* uses only e_{j+1}; …") in a coefficient-stage,
+two-realization context — its own Def SYM is already two-case (top-node
+γ* = γ, per its pass 7), so the content is unaffected, but the quotation is
+no longer verbatim against this REVISION 1 text; flagged here rather than
+edited (out of this fold's commit scope). No other consumer read the
+one-case form.
