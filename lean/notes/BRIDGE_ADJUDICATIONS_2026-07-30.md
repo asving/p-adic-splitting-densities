@@ -2247,3 +2247,7 @@ Moves/Defs.lean:124, base monic_X, IsReadLift verbatim HC2/Defs.lean:
 EXECUTED (HDISCHARGE_H1 REV 3 at the full (H-CHAIN) range); residue
 restated. BOTH leaves zero-critical, all gaps folded. Clean-bar passes
 launched: B-M1 pass 3 + GRB pass 6 (each needs its first CLEAN).
+
+## B-M1 PASS 3: CLEAN — THE FIRST CLEAN ON KP-STEP (2026-08-06)
+Counter 1/2; pass 4 = FABLE (model diversity) decides. GRB pass 6 =
+GAPS-ONLY (gaps to fold at rev 7). Codex window RESET (20% used).
