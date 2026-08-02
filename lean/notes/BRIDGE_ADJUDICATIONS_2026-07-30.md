@@ -2222,3 +2222,9 @@ checked and REJECTED); new pins FGMN Cor 4.12/Thm 4.13/Cor 4.14; gate
 kpstep_gate.py PASS (336 inst; naked-lift (KPirr) REFUTED at 50 — twist
 clause load-bearing). Open: lift conformance (B-M2), GMN-face (KPb)
 (TR-3-ORD-X), 0/2 passes.
+
+## GRB REV 5 (pass-4 fold): 3 gaps fixed, incl. REAL (H-CHAIN) range fix (2026-08-06)
+(H-CHAIN)(b) corrected to 0 ≤ j ≤ i−1 per FGMN Def 3.1 (old range EMPTY at
+order 2, omitted φ₂ ≁ φ₁) + propagated to all in-leaf consumers; H1-blueprint
+member-(b) sync OWED. S8.2/S8.3 R4.3-class overclaims reworded to one-instance
+truth; S3.1 restated to assembled-coefficients (GMN's z₁^k external). 0/2.
