@@ -320,7 +320,8 @@ confirming end-to-end pass (**VC19**) is OWED on the REVISION-16 wording
 (charge at §22); until it lands, the acceptance citation points at the
 REVISION-15 text.
 
-**VC19 + REVISION 17 applied (r18, appendix §23) — the CURRENT standing.** VC19
+**VC19 + REVISION 17 applied (r18, appendix §23) — superseded as CURRENT
+standing by the REVISION 18 paragraph below.** VC19
 (the confirming end-to-end pass, fresh context;
 `lean/notes/openmath/VC19_report.md`) RAN on the REVISION-16 text and returned
 **COMPOSITION-GAPS** — TWO blockers, ONE defect: **the r17 retirement
@@ -350,6 +351,32 @@ VC18; VC19's blockers re-opened the composition question on the REVISION-16
 wording, and REVISION 17 repairs it — the confirming end-to-end pass
 (**VC20**) is OWED on the REVISION-17 wording (charge at §23); until it lands,
 the acceptance citation points at the REVISION-15 text.
+
+**VC20 + REVISION 18 applied (r19, appendix §24) — the CURRENT standing.**
+VC20 (the confirming end-to-end pass, fresh context;
+`lean/notes/openmath/VC20_report.md`) RAN on the REVISION-17 text and returned
+**COMPOSITION-GAPS** — TWO blockers, BOTH leftover SENTENCES, the (H8′)
+substance CONFIRMED: VC20 verified that (H8′)'s three members exactly cover
+VC19's missing K1 premises (GRAFT, MASS-ID, POOL-DICT incl. `blockTotal_tie`;
+no fourth residue, none weakened, no silent reinstatement of the retired
+kernel), that the live attributions agree ((R)/(UB) gain exactly (H8′); (0)/
+(SQ) unconditional), that the displayed-scope walk closes at (ROOT-C), that
+acyclicity stands (incl. 17 ≺ 18 ≺ 18b), and that no independent regression
+exists. The two blockers: (1) §1's retired-(H8) bracket still counted TEN
+live rows; (2) the §3.2 K-CUT retirement row still carried the pre-r18
+"owner-displayed interfaces" / "priced at its owners" clauses alongside the
+r18 correction. REVISION 18 (§24, unit ROOT r19) repairs both in place:
+§1's bracket now reads ELEVEN with the (H8′) pointer, and the retirement
+row's WHAT-RETIRED sentence is REWRITTEN to one voice — the package is
+proved conditional on the three interfaces, PRICED AT (H8′), the owner arcs
+retirement ROUTES only. The §3.1 roster stays **ELEVEN rows — (H1)–(H9)
+minus the retired (H8), plus (H8′)**. HONEST COUNTER STATEMENT: the
+acceptance was EARNED on the REVISION-12 text, RE-ANCHORED on REVISION 13 by
+VC16 and on REVISION 15 by VC18; VC19 re-opened the composition question,
+REVISION 17 re-priced, VC20 confirmed the substance but blocked on the two
+leftover sentences, and REVISION 18 fixes them — the confirming end-to-end
+pass (**VC21**) is OWED on the REVISION-18 wording (charge at §24); until it
+lands, the acceptance citation points at the REVISION-15 text.
 
 **Status vocabulary** (tree §0, compressed): **VERIFIED** = survived ≥ 2 consecutive
 clean adversarial passes in fresh contexts, at least two models (VERIFIED-DUAL), or
@@ -485,7 +512,9 @@ exists anywhere in the document.)
 > row and §12];
 > **(H8)** (K-CUT), the shallow-cut decomposition kernel — **RETIRED at
 > REVISION 16, r17** [the historical letter is KEPT; the live roster is
-> (H1)–(H9) MINUS the retired (H8): TEN §3.1 rows. NEW row at REVISION 10,
+> (H1)–(H9) MINUS the retired (H8) PLUS the (H8′) row below: ELEVEN §3.1
+> rows — count corrected at REVISION 18, r19, executing VC20 blocker 1 (this
+> bracket had lagged at the r17 TEN). NEW row at REVISION 10,
 > r11, from finding G-2 of the UN-BANKED O-11 hostile pass of 2026-08-03
 > (`O11_owedpass_2026-08-03.md` — recorded at the §3.2 O-11 row); the content
 > was: exactly-one shallow decomposition with exhaustive-exclusive read
@@ -1813,7 +1842,7 @@ inherited-[V] row it is; general-n drainage stays conditional until those passes
 | **P(O-14a′ r3)** [NEW row at REVISION 9, VC10 advisory 1 — grade-display conformance, post-acceptance] | the O-14a′ (RunRealizerExists) verification record, displayed in the §0 vocabulary. ON RECORD, exactly: core Theorems 1–3 STABLE across the V11 and V15 passes (rev 3 on file); the consumed instance RRE(p, ZMod p) FORMALIZED Lean-core (`MovesD/R7_runRealizer.lean`, `runRealizerExists_zmod`); the CUC §0 "VERIFIED homes (no pass condition)" registry line as provenance. OWED: the in-document display of the V11/V15 arc's models and pass-cleanliness (or one fresh named hostile pass) — until then the leaf is graded **PROVED-UNVERIFIED with this named pass row**, NOT VERIFIED: the §0 bar (≥ 2 consecutive clean passes, ≥ 2 models) is not checkable from this document's four corners. This resolves the VC10-noted asymmetry precedent (O-2a's core is thrice confirmed yet carries P(O-2a r5)): every consumed PROVED-UNVERIFIED leaf now carries a named §3.2 pass row, O-14a′ included — the §§13/14 invariant is checkable in-document | O-14a′ (Step 9) |
 | **D-11 verification cycle (at r4 REVISION 3)** [synced at REVISIONS 1/3; clause 4 carved out at REVISION 4, finding VC4-3; the pass-3-owed disposition RETIRED at REVISION 10, r11 — replaced by the two-pass r4 record] | pass 1 NOT ACCEPTED as billed (2587c70) → r2 (566b967) → pass 2: 2 criticals, both CONTAINED at r3 (8a0786c) → **pass 3 RAN: CRITICAL** (`D11_owedpass_2026-08-03.md`, 6 crit/3 gap — the STOP-THE-LINE event, ledger 44ce0a7) → the five-round repair design (`R11_REPAIR_DESIGN_V5_2026-08-04.md`) → **r4** (`D11_rev4_2026-08-04.md`: true-scope repairs + the obligations (b-EX)/(O-1)–(O-5)/(O-GLOB)/(ROW-Σ) written out + the (CH-COV)/§2A.4 audits + the §4B (NSF-INT) leaf proof) → **r4 pass 1: CRITICAL** (`D11r4_pass1_2026-08-04.md`, 3 crit/3 gap; folded at the leaf's REVISION 2) → **r4 pass 2: GAPS-ONLY** (`D11r4_pass2_2026-08-04.md`: NO critical remains; all six pass-1 repairs adjudicated VALID; the design-§7 obligations adjudicated AS PROOFS; 3 bookkeeping gaps folded at the leaf's REVISION 3). OWED NOW: one confirming clean pass on the REVISION-3 text toward the leaf's own two-consecutive-clean bar (pass 2's gaps were folded AFTER it, so the leaf bar is not yet met). **Scope of this [V] row, exact:** it prices the passes on D-11's ON-FILE proof layers (M1 families/M1′/M3/M2-at-(RE)/M2.0/(ROW-Σ)/(b-EX)/(O-GLOB) at their displayed conditionality) ONLY — clause 4 (the actual-pack correspondence) and the (RE) profile of the consumed member ((PACK-iv)) have NO proof on file and are NOT covered here: they are the §3.1 [M] row (PACK) = (ROOT-C)(H5); the (H9) members likewise sit in §3.1, never here | D-11 (Steps 17/18b) |
 | **O-11 verification cycle (at r3)** [synced at REVISIONS 1/3; the 2026-08-03 un-banked run RECORDED at REVISION 12, finding VC13-4] | pass 1 NOT ACCEPTED AS STATED (a7ede72) → r2 (1bd8bd1, D-a/D-b/D-c declared + oracle-pin supplement) → pass 2 (V32): billing precision → **r3** (7aef1b9: tier 2 split into hypothesis-grade rows H-1..H-4; walk/cores byte-stable) → **an O-11 hostile pass RAN (2026-08-03, the owed-pass campaign; `lean/notes/openmath/O11_owedpass_2026-08-03.md`): verdict CRITICAL — adjudicated NOT BANKED at the report itself ("O-11's r3 counter does NOT advance toward its bar on this pass")**; its three findings: **G-1** (CRITICAL — Theorem O11 as displayed proves only the n ≥ 2 restriction of the advertised for-every-n target row; n = 0, 1 untreated), **G-2** (GAP — the CUT-WD serving map ← D-14 + CU-3 is a correspondence claim, not a demonstrated implication: overlapping ownership, an unowned read, or two different shallow decompositions are unexcluded — THE finding priced as the §3.1 **(H8) = (K-CUT)** row at REVISION 10, r11 — that row RETIRED at REVISION 16, r17, into the §3.2 K-CUT retirement row; its residual interfaces re-priced as §3.1 (H8′) at REVISION 17, r18), **G-3** (GAP — the "RESUM-n3 65/65 end-to-end" rederivation claim unsupported beyond the five displayed identities). This row's former "pass 3 owed" tail did not record that run, leaving the (H8) row's "owed-pass G-2" provenance irreconcilable in-document (finding VC13-4); the BANKED pass 3 — one advancing the r3 counter, on text repaired for G-1/G-2/G-3 — stays owed | O-11 (Step 18) |
-| **K-CUT RETIREMENT ROW — the retired (H8) package + the moved residues** [NEW row at REVISION 16, r17 — the SECOND post-acceptance row retirement (D-12r at REVISION 14 the first); the former §3.1 (H8) row retires HERE on the round-3 discharge gate] | **THE PACKAGE** (all sorry-free, Lean-core axiom footprints; `lean/LeanUrat/Scaffold/HDischarge/H8/`, blueprint `lean/blueprints/HDISCHARGE_H8.md`; ELEVEN Lean units + 2 documentary units): the ownership partition (`firstEntAbove_unique`, `read_cut_exhaustive`, `shallow_block_disjoint`, `block_block_disjoint`, `bdy_display` — exhaustive-exclusive ownership PROVED outright at the ownership-partition level), the level-(1b) forward extraction (`cutOf`, `cut_injective` + conformance + countability transport), the count/series regroups incl. M04 Lemma 3.3 (`seriesSum_cut`/`seriesSum_cut_conv`, `siteExp_cut`, `fiber_count_cut`), the conditional consumer bridge `kcut_reduce`, the factorwise mass law **`KCutMassFactor`** (`massFactor_mass_eq` PROVES factorwise ⇒ the aggregate `mass_eq`), the exact-form K1 tie **`KCutK1Tie`** (`kcut_k1_form` PROVES Step 18 K1's displayed transported-pool convolution from `kcut_reduce` + tie/support/injectivity; `kcut_k1_form_of_massFactor` wires C2 into C3), and **THE REPAIRED ADJUDICATION DISPLAY** (`Scaffold/HDischarge/H8/R2RootSync.lean` §§C–G, the display of record; `R1Adjudication.lean` the charge-(vi) record). **THE 3-ROUND PASS ARC**: round 1 CRITICAL — 7 crit + 5 gap, ALL display-layer, the Lean declarations audited FAITHFUL (`lean/notes/openmath/KCUT_pass_2026-08-05.md`) → displays repaired + the two missing content units C2/C3 specced, landed, proved (commit bfe0a85) → round 2 CRITICAL on display STALENESS only, content confirmed proved + drift-free (`KCUT_pass2_2026-08-05.md`) → displays re-synced → **round 3 DISCHARGES** (`KCUT_pass3_2026-08-06.md`; its scope line VERBATIM: "This discharges the Round-3 review gate—not the remaining semantic owner rows and not the unconditional ROOT theorem"). **WHAT RETIRED**: the separate §3.1 [M] pricing — the row's consumed statement is proved at the consumption site CONDITIONAL on typed, owner-displayed interfaces, so a standing (H8) row would double-price content that is either machine-proved or priced at its owners. **THE RESIDUES — NOTHING DISCHARGED; PRICED at the §3.1 row (H8′) since REVISION 17, r18** [executing VC19: the owner labels below are retirement ROUTES, not housing statements — VC19 found no cited owner statement states these interfaces, so the r17 "MOVED to their owners" framing OVERSHOT; the residues' priced home is now (H8′)] (C2/C3 are "UNPINNED assumption packages, not semantic discharges" — the round-3 adjudication's own classification; no display may cite this row as discharging any of them): **(i) graft completeness = (H8′)(i) GRAFT** (`graft`/`graft_cut`/`cut_graft` — full decomposition bijectivity/realizability; continuation memorylessness is its semantic core) → retirement ROUTE: a future completeness theorem on the **D-14 + CU-3 + REL.2 arc** (Steps 6/11 homes and their debts; the H8-R1 charge-(vi) record STANDS — (vi-a) FAIL, (vi-b-1)/(vi-b-2) NO: the O-11 r3 serving map "CUT-WD ← D-14 + CU-3" is NOT re-pointed as demonstrated; the package retirement rode the proved package, not that route — and (vi-a) FAIL stands as the (H8′)(i) member's status); **(ii) measured-mass identification = (H8′)(ii) MASS-ID** (the MEASURED semantics of C2's `shMass`/`blkMass` — factorization forbids only slot-dependent compensation, not mis-identified block weights) → retirement ROUTE: the **(H7)/sibjc TREE-EXP + [2r]/CL-8 development + the O-1/O-3 count-tie** (§3.1 (H7) + the §3.4 item-9/10 homes); **(iii) the τ/δ pool dictionary = (H8′)(iii) POOL-DICT** (C3's pool rows have NO typed node-level read-off beyond the pinned `e_key`; `vBridge` constrained only by keying/injectivity/support; `blockTotal_tie`'s instantiation) → retirement ROUTE: the **REL.2 pool dictionary ([2r]/CL-8, open)** + the graft route's continuation memorylessness; the deliberately-absent W-resummation leg → **CL-17(ii)/W17ii** (§3.4 item 12, `w17ii_pin` proved). Standing at their prior homes (not moved by this row): the entrance-predicate cell-data supply, wholly with **CTS-M(i)/(iii)/CL-13**, the (H1)-adjacent census rows (`supplyDec` classically vacuous, consumed by no proof); the `real`/`vOf`/`verdict_key` realization/keying rows, **TREE-N/[3t] seam territory** (§3.4 item 10 / Table B `series_tie`). Step 18's K1 (clause (R)) and the transported chain (clause (UB), q ↦ q^δ) now consume the package + the §3.1 (H8′) row [synced at REVISION 17, r18] | the retired H8 arc (record only); the residues: the §3.1 (H8′) row (their retirement routes displayed here) |
+| **K-CUT RETIREMENT ROW — the retired (H8) package + the moved residues** [NEW row at REVISION 16, r17 — the SECOND post-acceptance row retirement (D-12r at REVISION 14 the first); the former §3.1 (H8) row retires HERE on the round-3 discharge gate] | **THE PACKAGE** (all sorry-free, Lean-core axiom footprints; `lean/LeanUrat/Scaffold/HDischarge/H8/`, blueprint `lean/blueprints/HDISCHARGE_H8.md`; ELEVEN Lean units + 2 documentary units): the ownership partition (`firstEntAbove_unique`, `read_cut_exhaustive`, `shallow_block_disjoint`, `block_block_disjoint`, `bdy_display` — exhaustive-exclusive ownership PROVED outright at the ownership-partition level), the level-(1b) forward extraction (`cutOf`, `cut_injective` + conformance + countability transport), the count/series regroups incl. M04 Lemma 3.3 (`seriesSum_cut`/`seriesSum_cut_conv`, `siteExp_cut`, `fiber_count_cut`), the conditional consumer bridge `kcut_reduce`, the factorwise mass law **`KCutMassFactor`** (`massFactor_mass_eq` PROVES factorwise ⇒ the aggregate `mass_eq`), the exact-form K1 tie **`KCutK1Tie`** (`kcut_k1_form` PROVES Step 18 K1's displayed transported-pool convolution from `kcut_reduce` + tie/support/injectivity; `kcut_k1_form_of_massFactor` wires C2 into C3), and **THE REPAIRED ADJUDICATION DISPLAY** (`Scaffold/HDischarge/H8/R2RootSync.lean` §§C–G, the display of record; `R1Adjudication.lean` the charge-(vi) record). **THE 3-ROUND PASS ARC**: round 1 CRITICAL — 7 crit + 5 gap, ALL display-layer, the Lean declarations audited FAITHFUL (`lean/notes/openmath/KCUT_pass_2026-08-05.md`) → displays repaired + the two missing content units C2/C3 specced, landed, proved (commit bfe0a85) → round 2 CRITICAL on display STALENESS only, content confirmed proved + drift-free (`KCUT_pass2_2026-08-05.md`) → displays re-synced → **round 3 DISCHARGES** (`KCUT_pass3_2026-08-06.md`; its scope line VERBATIM: "This discharges the Round-3 review gate—not the remaining semantic owner rows and not the unconditional ROOT theorem"). **WHAT RETIRED**: the separate §3.1 [M] pricing of the WHOLE cut decomposition — the row's consumed statement is proved at the consumption site CONDITIONAL on the three typed residual interfaces (GRAFT / MASS-ID / POOL-DICT), which are PRICED AT the §3.1 row **(H8′)**; the owner arcs are retirement ROUTES only, NOT homes, and a standing full-strength (H8) row would double-price content that is either machine-proved or priced at (H8′) [REWRITTEN at REVISION 18, r19, executing VC20 blocker 2 — the r17 clauses "owner-displayed interfaces" / "priced at its owners" are STRUCK as incompatible with the VC19 adjudication]. **THE RESIDUES — NOTHING DISCHARGED; PRICED at the §3.1 row (H8′) since REVISION 17, r18** [executing VC19: the owner labels below are retirement ROUTES, not housing statements — VC19 found no cited owner statement states these interfaces, so the r17 "MOVED to their owners" framing OVERSHOT; the residues' priced home is now (H8′)] (C2/C3 are "UNPINNED assumption packages, not semantic discharges" — the round-3 adjudication's own classification; no display may cite this row as discharging any of them): **(i) graft completeness = (H8′)(i) GRAFT** (`graft`/`graft_cut`/`cut_graft` — full decomposition bijectivity/realizability; continuation memorylessness is its semantic core) → retirement ROUTE: a future completeness theorem on the **D-14 + CU-3 + REL.2 arc** (Steps 6/11 homes and their debts; the H8-R1 charge-(vi) record STANDS — (vi-a) FAIL, (vi-b-1)/(vi-b-2) NO: the O-11 r3 serving map "CUT-WD ← D-14 + CU-3" is NOT re-pointed as demonstrated; the package retirement rode the proved package, not that route — and (vi-a) FAIL stands as the (H8′)(i) member's status); **(ii) measured-mass identification = (H8′)(ii) MASS-ID** (the MEASURED semantics of C2's `shMass`/`blkMass` — factorization forbids only slot-dependent compensation, not mis-identified block weights) → retirement ROUTE: the **(H7)/sibjc TREE-EXP + [2r]/CL-8 development + the O-1/O-3 count-tie** (§3.1 (H7) + the §3.4 item-9/10 homes); **(iii) the τ/δ pool dictionary = (H8′)(iii) POOL-DICT** (C3's pool rows have NO typed node-level read-off beyond the pinned `e_key`; `vBridge` constrained only by keying/injectivity/support; `blockTotal_tie`'s instantiation) → retirement ROUTE: the **REL.2 pool dictionary ([2r]/CL-8, open)** + the graft route's continuation memorylessness; the deliberately-absent W-resummation leg → **CL-17(ii)/W17ii** (§3.4 item 12, `w17ii_pin` proved). Standing at their prior homes (not moved by this row): the entrance-predicate cell-data supply, wholly with **CTS-M(i)/(iii)/CL-13**, the (H1)-adjacent census rows (`supplyDec` classically vacuous, consumed by no proof); the `real`/`vOf`/`verdict_key` realization/keying rows, **TREE-N/[3t] seam territory** (§3.4 item 10 / Table B `series_tie`). Step 18's K1 (clause (R)) and the transported chain (clause (UB), q ↦ q^δ) now consume the package + the §3.1 (H8′) row [synced at REVISION 17, r18] | the retired H8 arc (record only); the residues: the §3.1 (H8′) row (their retirement routes displayed here) |
 | **(AGR) inherited [V]** [relocated from §3.1 at REVISION 1, finding 10; residue sentence widened at REVISION 12, finding VC13-5] | the drainage agreement seam, ASSEMBLED from CU-2 + CU-4 + GMN Cor 4.19 (all on file); its residue = the pass debts of CU-2/CU-4 (this table) + the Cor 4.19 literature row (§4) + the [M] conditionalities CU-4's own consumption displays — the **D-12r** TB-CAP (τ-irr) perimeter (Step 11 grades CU-4 "TB-CAP (τ-irr) perimeter-conditional"; since REVISION 14, r15, priced at the §4 D-12r literature pin — no longer [M]) and **(E-N)**'s CU-4 touch through Thm 3(c) (the (E-N) row's displayed entry, a §3.1 (H3) member riding its own row) — both already priced at their own named homes, so nothing is hidden — and nothing else [the former "exactly the pass debts + the literature row — nothing else" elided CU-4's displayed §3.1 conditionality; membership home synced at REVISION 14] | O-4/O4T TR-OM (Step 13) |
 | **Dfloor 3 minor gaps** | ID reduced-rep, ADD induction coprimality, TRANSFER sum-regularity — ride the next doc touch | Dfloor (Step 1) |
 | **O-10 2 minor gaps** [added at REVISION 3 status sync] | the D-8 value-vs-law framing (collapses definitionally) + the box-count transport cite — found at the VERIFYING pass 2; **repaired at O-10 r2, landed at revision close** (3956500: the D-8 separation dropped as definitional with the existence range displayed; the (BOX) transport display + M07 §2.1 cite row; cores byte-stable). Per the wave-14 ledger: VERIFIED (leaf #6) STANDS, framing fixed; the r2 diff-confirmation rides the next harvest | O-10 (Step 15) |
@@ -2422,6 +2451,20 @@ BEYOND VC20: unchanged from the REVISION-16 list, with the former
 moved-residue riders now reading as (H8′) discharge ROUTES (the
 D-14/CU-3/REL.2 arc, the (H7) unit, [2r]/CL-8, the O-1/O-3 count-tie,
 CL-17(ii)/W17ii).]
+[Updated at REVISION 18 (r19): VC20 RAN on the REVISION-17 text —
+COMPOSITION-GAPS, 2 blockers, BOTH leftover sentences (the (H8′) substance,
+the ELEVEN-row attributions, the walk, acyclicity, and no-regression all
+CONFIRMED): §1's retired-(H8) bracket still counted TEN live rows, and the
+§3.2 K-CUT retirement row still carried the pre-r18 "owner-displayed
+interfaces" / "priced at its owners" clauses alongside the r18 correction.
+REVISION 18 (§24) repairs both in place — §1's bracket now reads ELEVEN with
+the (H8′) pointer; the retirement row's WHAT-RETIRED sentence REWRITTEN to
+one voice (proved conditional on the three interfaces, PRICED AT (H8′),
+owner arcs retirement ROUTES only). Pure display syncs — no [M] member, step
+proof content, leaf pointer, or clause attribution changed. Dispatch now:
+**VC21 — the confirming end-to-end pass on this REVISION-18 text** (charge
+at §24). In flight/owed BEYOND VC21: unchanged from the REVISION-17 list
+above.]
 
 — ROOT ASSEMBLY complete, 2026-08-02. Composed at HEAD d730669 + the recorded
 in-flight events (O4T pass 2, untracked). Every §2 grade traces to a named commit or
@@ -2565,7 +2608,20 @@ retired (H8), plus (H8′)**. Net progress: the former (H8) row assumed the
 WHOLE cut decomposition; (H8′) assumes only the three interfaces, the core
 machine-proved. No step proof content and no leaf pointer changed. REVISION
 17 is a text change: **the confirming end-to-end pass (VC20) is OWED on the
-REVISION-17 wording** (charge at §23).
+REVISION-17 wording** (charge at §23). VC20 RAN on the REVISION-17 text —
+**COMPOSITION-GAPS, 2 blockers, both leftover sentences**
+(`lean/notes/openmath/VC20_report.md`): the (H8′) substance CONFIRMED (three
+members exactly VC19's missing K1 premises; (R)/(UB) gain exactly (H8′); the
+walk closes; acyclicity stands; no independent regression), but §1's
+retired-(H8) bracket still counted TEN live rows and the §3.2 K-CUT
+retirement row still carried the pre-r18 owner-housing clauses. REVISION 18
+(§24, unit ROOT r19) applied: both leftover sentences repaired in place —
+§1's bracket at ELEVEN with the (H8′) pointer; the retirement row's
+WHAT-RETIRED sentence rewritten to one voice (the package proved conditional
+on the three interfaces, PRICED AT (H8′); owner arcs retirement ROUTES
+only). Pure display syncs; the acceptance was EARNED on the REVISION-12
+text; **the confirming end-to-end pass (VC21) is OWED on the REVISION-18
+wording** (charge at §24).
 
 ---
 
@@ -4007,3 +4063,69 @@ unit of record (unit ROOT r18).
 caught); the three K-CUT residual interfaces re-priced as the NEW slimmed
 §3.1 row (H8′) — GRAFT / MASS-ID / POOL-DICT, owner labels as routes; ELEVEN
 honest rows; VC20 is owed as the confirming anchor on this text.
+
+---
+
+## 24. REVISION 18 (r19, VC20 leftover fixes) — disposition of VC20
+
+**The pass.** VC20 (the confirming end-to-end pass, fresh context;
+`lean/notes/openmath/VC20_report.md`) RAN on the REVISION-17 text and
+returned **COMPOSITION-GAPS** — TWO blockers, BOTH leftover SENTENCES from
+the r17→r18 arc; **the (H8′) substance is CONFIRMED**. VC20's own pass-list:
+(H8′)'s three members exactly cover VC19's missing K1 premises (GRAFT,
+MASS-ID, POOL-DICT including `blockTotal_tie`; no fourth VC19 residue
+apparent; stated at the consumed interface strength without silently
+reinstating the full retired cut kernel); the live clause attributions at
+§1, Step 16, Step 18, and Step 19 agree ((R)/(UB) gain exactly (H8′);
+(0)/(SQ) unconditional); the displayed-scope walk closes at (ROOT-C);
+acyclicity intact (incl. 17 ≺ 18 ≺ 18b; (H8′) a hypothesis row, no backward
+edge); no independent regression in D-12r, NSF-KEY, PACK, (SL≥2), the
+Σ_τ R_τ identity, or the K-CUT machine-proved core.
+
+**Disposition table.**
+
+| item | source | grade | disposition | edit sites |
+|---|---|---|---|---|
+| r19-1 | VC20 blocker 1 (§1's retired-(H8) bracket still said "the live roster is (H1)–(H9) MINUS the retired (H8): TEN §3.1 rows" — contradicting §1's own (H8′) member, Step 16, Step 19, §3.1, and §23) | BLOCKER — ACCEPTED, repaired in place | the bracket now reads: the live roster is (H1)–(H9) MINUS the retired (H8) PLUS the (H8′) row below: **ELEVEN §3.1 rows** — with the correction dated (REVISION 18, r19, executing VC20 blocker 1; the bracket had lagged at the r17 TEN) | §1, the (H8) retired-member bracket |
+| r19-2 | VC20 blocker 2 (the §3.2 K-CUT retirement row's WHAT-RETIRED sentence still carried the pre-r18 clauses "proved ... CONDITIONAL on typed, owner-displayed interfaces" and "priced at its owners" alongside the r18 correction later in the same row — the precise owner-housing claim VC19 rejected) | BLOCKER — ACCEPTED, repaired by REWRITE to one voice | the WHAT-RETIRED sentence now reads: the row's consumed statement is proved at the consumption site CONDITIONAL on the three typed residual interfaces (GRAFT / MASS-ID / POOL-DICT), **which are PRICED AT the §3.1 row (H8′)**; the owner arcs are retirement ROUTES only, NOT homes; a standing full-strength (H8) row would double-price content that is either machine-proved or priced at (H8′) — the incompatible r17 clauses STRUCK with a dated strike bracket | §3.2, the K-CUT retirement row |
+| r19-3 | THE ENUMERATION AUDIT (the standing VC13 lesson, re-run at this fix round) | RIPPLE SYNC | every operative roster/row-count display re-checked against §1's (ROOT-C): the r19-1 site was the ONLY operative stale count. AUDIT COUNT: 24 sites checked, 2 EDITED (the two blocker sites), 22 CONFIRMED conformant — §0's headline enumeration bracket + scope-history tail; §1's (H8′) member display, clause-(R) attribution, clause-(UB) attribution, (ROOT)-discharge-distance sentence; Step 16's (UB) scope display + scope-history tail; Step 18's K1 line + its δ-stable "— §1" quote; Step 19's evaluation-chain closer, Σ_τ conditional set, clause-(UB) scope, final ∎; §3.1 (the (H8′) row + the tombstone at ELEVEN); §3.2 (the retirement row's residue/owner sentences beyond the rewritten one, the O-11 provenance bracket, the end-to-end row); §3.4 item 12 + the verdict paragraph; §6's dispatch bracket (NEW at this revision); the footer (NEW closing record). Dated historical displays (§0's REVISION-10..17 standing-paragraph interiors, §6's dated brackets, §§7–23) untouched by design | §§0/1, §3.2, §6, footer |
+
+**The completeness invariant, re-stated (unchanged in substance from §23).**
+§3.1 has **ELEVEN rows — (ROOT-C)'s (H1)–(H9) minus the retired (H8), plus
+(H8′)** (historical letters kept). Per-clause attribution, displayed
+IDENTICALLY at §1, Step 16, Step 18's δ-stable note, and Step 19: (0)
+unconditional; (SQ) unconditional; clause (R) consumes (H1)–(H3) + (H4a) +
+the (K3-δ) fragment of (H4b) + (H5) + (H6) + (H7) + (H8′) + (H9); clause
+(UB) consumes (H1)–(H3) + (H4a) + (H4b) + (H5) + (H6) + (H7) + (H8′) + (H9).
+The retired (K-CUT) package enters both clauses at Step 18's K1 as
+machine-proved content; its residues enter as (H8′) — nothing rides an owner
+label, and no display any longer SAYS otherwise.
+
+**The honest acceptance statement (the counter).** The acceptance was EARNED
+on the REVISION-12 text (VC14 + VC15), RE-ANCHORED on REVISION 13 by VC16
+and on REVISION 15 by VC18. VC19 re-opened the composition question on the
+REVISION-16 wording; REVISION 17 re-priced the residues; VC20 CONFIRMED the
+re-pricing's substance and blocked only on the two leftover sentences;
+REVISION 18 fixes them. **The confirming end-to-end pass (VC21) is OWED as
+the anchor on the REVISION-18 wording.** Until VC21 lands clean, the
+acceptance citation points at the REVISION-15 text; a VC21 blocker would
+re-open the composition question in full (the standing suspension
+discipline).
+
+**VC21 charge (the confirming pass).** Verify (i) the two r19 repairs: §1's
+retired-(H8) bracket reads ELEVEN with the (H8′) pointer, and the §3.2
+retirement row speaks with one voice — proved conditional on the three
+interfaces, priced at (H8′), owner arcs routes only, no surviving
+owner-housing clause; (ii) the r19-3 audit claim — no operative display
+anywhere counts TEN or prices the residues at owners; (iii) NO REGRESSION on
+the VC20-confirmed items ((H8′) faithfulness, the per-clause attributions,
+Step 18's K1 consumption, the walk, acyclicity, the honesty riders, the
+K-CUT package + retirement record).
+
+**Bookkeeping.** Historical §§7–23 untouched. `docs/PROJECT_STATE.md` sync
+owed at the next state-file touch. The commit closing this revision is its
+unit of record (unit ROOT r19).
+
+— REVISION 18 complete. VC20 recorded (COMPOSITION-GAPS, two leftover
+sentences; the (H8′) substance CONFIRMED); both sentences repaired in place;
+ELEVEN honest rows; VC21 is owed as the confirming anchor on this text.

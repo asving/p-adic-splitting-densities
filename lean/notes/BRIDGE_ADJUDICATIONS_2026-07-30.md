@@ -2194,3 +2194,8 @@ The three members exactly cover VC19's missing K1 premises; attributions
 agree; walk closes; acyclicity intact; no regressions. Blockers: §1's
 retired-bracket "TEN rows" phrase + the §3.2 pre-r18 owner-housing
 sentences. r19 (two-sentence fix) dispatched; VC21 after.
+
+## ROOT r19 / REVISION 18: both VC20 leftover sentences FIXED (2026-08-06)
+§1 bracket now ELEVEN with the (H8') pointer; §3.2 WHAT-RETIRED rewritten to
+one voice (priced at (H8'); owner arcs ROUTES only). Audit: 24 sites, 2
+edited. §24 appended; header/§6/footer synced; VC21 owed on REVISION 18.
