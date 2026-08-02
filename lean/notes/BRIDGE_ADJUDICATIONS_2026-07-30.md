@@ -3373,3 +3373,38 @@ rev-4 text; quoted-face modules `lake env lean
 LeanUrat/Scaffold/HDischarge/H4/Defs.lean` GREEN and `.../H4/Kernel.lean`
 GREEN (exit 0, no diagnostics). Owed: a further pass on the rev-4 text
 toward the clean bar; M5 second clean; N-K3.
+
+## 2026-08-08: H4-M2 REVISION 2 — pass-2 fold (both criticals cured: factor-correspondence match + [IN-C] at exact consumer strength)
+
+H4M2_dict_attempt.md REVISION 2 folds hostile pass 2 (H4M2_pass2_2026-08-08.md,
+CRITICAL, 2 crit + 1 gap + 1 confirmation) in full. HEADLINE (finding 1): the
+REVISION-1 key-free match (numerical prefix ledger: stage tuples + base
+degree) was NOT WELL-DEFINED — distinct branches can share identical ledgers,
+so ledger-equality-as-match presupposes DICT-1(1)'s numerical coincidence and
+ledger-as-name determines no counterpart. RETIRED; the matched position is now
+defined by the FACTOR CORRESPONDENCE (§1): matched = routing a common
+irreducible factor of the input f itself — f's factorizations are
+classifier-independent data, each O_δ-irreducible factor lies over a unique
+ℤ_p-irreducible factor, and each run's factor-routing is its own data — a
+well-defined RELATION presupposing no coincidence, honestly one-to-many (the
+F₉ instance's two branches realize the shape, §4), with uniqueness at
+split-free prefixes extracted as the OPEN clause DICT-0(d) (the canonicity
+pass 2 found hidden behind "position class"); Lean carriers are factor-blind
+(Pos unconstrained) — displayed, folded into the H4-F1/H4-F6 instance
+obligation. SECOND CRITICAL (finding 2): [IN-C]'s bare Okutsu-equivalence form
+was WEAKER than what the (1) ⇒ (2) leg used ("sees the same residual ψ_{j₀}"
+— supplied by NO named input). DICT-0/[IN-C] restated at EXACTLY consumer
+strength, four clauses — (a) valuation coincidence, (b) embedded fields
+F_j^(δ) = F_j·F_q for ALL j ≤ k+1 (range fixed = pass-2 gap, finding 3),
+(c) next-read divisibility (the exact fragment (1) ⇒ (2) consumes),
+(d) split-free uniqueness — with a two-directional consumer audit displayed
+(no consumer uses literal transported-key equality, so it is asserted
+nowhere: the pre-REVISION-1 clause overshot, REVISION 1's undershot); both
+DICT-1 proof legs re-cited clause-by-clause; pass-1 finding 2's "not fully
+folded" disposition thereby CLOSED. Finding 4 = pass-2 CONFIRMATION of the
+[IN-U] circularity adjudication (no change; the factor correspondence now
+supplies the GMN route's common-factor identification non-circularly). Lean
+delta comment/docstring/prose-only; gate re-run GREEN (exit 0, no
+diagnostics), zero sorry, Lean-core footprint unchanged. COUNTER: pass 1
+CRITICAL (folded, REV 1); pass 2 CRITICAL (folded, REV 2); clean 0/1 — one
+clean hostile pass owed on REVISION 2.
