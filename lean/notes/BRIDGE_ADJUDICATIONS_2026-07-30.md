@@ -3903,3 +3903,75 @@ both `C6_cardK_bridge` and `C6_alphabetCard`.
   now has its supplier; HC1's sorry inventory drops to
   `CL04_addrDichotomy.lean:190` (the banked probe slot) + the V9 ×4
   adjudicated legs.
+
+## 2026-08-08 (wallclock 2026-08-02): V9 e′≥2 RULING (hardest-first Tier-1 item 2) — VERDICT: VACUITY-RESCOPE — the FALSE-SUSPECT mapping is RETIRED; e′ ≥ 2 legs are VACUITY-SUSPECT behind a compiled fence; corrected strFrame(i+2) display compiled
+
+THE PARKED QUESTION (HK-12 F4 / QUEUE_EXECUTION item-3 post-wave 1, task-log 111/115):
+V9's four reopened sorries (`HC1/V9_K1nonrec.lean`, steep + corner legs) stood TRUE at
+ν_{i+1}.e = 1 (HK11a suppliers) / FALSE-SUSPECT at ν_{i+1}.e ≥ 2 (the HK52 stretch),
+ruling menu (i) e′=1 guard / (ii) terminal recording fence / (iii) commission the
+ReadsOf countermodel.  ADJUDICATED THIS UNIT — none of the three: the traced numerics
+show the countermodel plan (iii) is IMPOSSIBLE and the guard (i) unnecessary, because
+the e′ ≥ 2 sub-perimeter self-fences INSIDE `ReadsOf` before the vertex question is
+reached.
+
+ARTIFACTS (all green):
+* `lean/LeanUrat/HC2/HK53_e2Ruling.lean` — the ruling leaf: 8 theorems, 0 sorry, ALL
+  Lean-core {propext, Classical.choice, Quot.sound} (in-file #print axioms); leaf
+  imports HK11a only; statements elsewhere BYTE-UNTOUCHED.
+* `verification/hk53_e2_ruling_trace.py` — the mandated numerics-first trace, five
+  asserted findings F1–F5, exit 0 (uv run --with sympy).
+
+THE COMPILED FINDINGS:
+1. STRIDE FENCE (`digit_stride_dvd`, `width_sq_dvd`): at any node whose frame carries
+   the (S-a) child stretch (σ.e = ν.e = e′ ≥ 2, via `child_e`; hStretch σ.w = e′·wPrev
+   on coefficients), SideReads(i)+(ii) force every nonzero pattern digit to k ≡ 0
+   (mod e′) and e′² ∣ wSide.  Numerics F1: HK23's recorded ν₁ram side (width 2, pair
+   (2,5)) admits NO f — 4·bw(B₀) = 4·bw(B₂) + 10 is a mod-4 contradiction; lawful
+   (2,5) sides have width 4 with the middle digit zero.
+2. BELOW-WINDOW CONSPIRACY FENCE (`sideReads_belowWindow_tie` — the core): at e′ ≥ 2
+   the σ-frame values strictly ASCEND along the read side, so SideReads forces a
+   nonzero development slot STRICTLY BELOW the window (j < s0) tying the frame min —
+   else σ.R f is a single (S5) monomial against clause (iii)'s ≥ 2-term anchored
+   pattern (hpat0 + hOrd·hμ·hg).  Kill corollaries: `sideReads_unsat_e2_s0_zero`
+   (s0 = 0 ⇒ False) and **`readsOf_e2_s0_zero_empty`: every coherent ReadsOf record
+   with a non-recentering-parented child read at e ≥ 2 ∧ s0 = 0 is CONTRADICTORY** —
+   the entire HK23 carrier family (s0₁ = 0) carries no f.  HK-12 F4's "residual to a
+   full refutation" (ReadsOf inhabitation on the H₂ram shape) is IMPOSSIBLE, not
+   merely gate-scale-expensive.
+3. ANCHOR-SPACING OBSTRUCTION (numerics F3, algebraic identity): on a width-4 (2,h′)
+   tie the two (S5) positions of σ.R f are spaced 2sˢ+1 (ODD, every stage Bézout
+   pair) vs HasAnchorK's demanded +2 — the on-side route to clause (iii) is dead
+   independently; the ONLY escape is a below-window conspiracy (slots j < s0,
+   j ≡ s0 mod e′, wPrev-pinned) — arithmetically conceivable, construction OPEN.
+4. THE VERTEX RESIDUE (`displayed_iff_lineZero`): on whatever e′ ≥ 2 records survive
+   (conspiracy-only), V9's DISPLAYED ℚ-form holds IFF lineᵢ.at(μ·cwᵢ) = 0.  So the
+   displayed statements are false exactly on {e′ ≥ 2} ∩ {conspiracy inhabited} ∩
+   {line value ≠ 0} — plausibly EMPTY.
+5. THE CORRECTED DISPLAY — the re-key design, compiled (`readVertex_stretch`,
+   `readBox_stretch`, all e′, same hσL/hsteep hypotheses as HK11a's e′=1 shapes,
+   he'1 DROPPED): the honest all-e′ law is
+   `σ_{i+1}.w (B μᵢ) = strFrame(i+2)·lineᵢ.at(μᵢ·cwᵢ)` — V9's strFrame(i+1) is the
+   PRE-WAVE keying's scale; under the ratified (S-a) keying the child weight is
+   ν_{i+1}.e-stretched and strFrame(i+2) = strFrame(i+1)·ν_{i+1}.e is the correct
+   scale.  At e′ = 1 it IS the current display.  Numerics F5 checks it exactly
+   (σ₁.w(B μ₀) = 2 = 2·σV.w = strF(2)·line₀.at(10) at the traced μ₀ = 5 instance).
+
+CONSEQUENCE (display, per the charter — V9 statements and consumers UNTOUCHED):
+* The four V9 sorries STAND byte-unchanged.  Fill routes: e′ = 1 legs — HK11a
+  suppliers behind the hsteep/hσL rulings (unchanged); e′ ≥ 2 legs — VACUITY, with
+  s0 = 0 already compiled-closed and ONE residual open lemma, the CONSPIRACY
+  EXCLUSION: no coherent ReadsOf record has a below-window frame-min tie reproducing
+  the anchored pattern at an e′ ≥ 2 read (exact shape pinned by
+  `sideReads_belowWindow_tie`; the conspirators sit at j < s0, j ≡ s0 (mod e′),
+  wPrev(B_j) = wPrev(B_{s0}) + (s0−j)h′/e′).  NO statement re-key is needed for
+  truth; ruling options (i)/(ii) are NOT adopted.
+* K1 vertex-pin consumers (K1_readVertexPin*, U20a/b/c, U22-E2): unchanged, still
+  waiting on the V9 fills.
+* If the corpus ever repopulates the e′ ≥ 2 perimeter (e.g. a SideReads(iii)
+  weakening), the statements must move to the compiled strFrame(i+2) scale.
+* HK-11b/c: unblocked at e′ = 1 exactly as HK-12 planned; their e′ ≥ 2 face follows
+  the vacuity route above.
+
+FENCES RESPECTED: no landed statement changed; no V9 edit; leaf + numerics + ledger
+only; zero new sorries; zero new axioms.
