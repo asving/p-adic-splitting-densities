@@ -2269,3 +2269,8 @@ Report: lean/notes/openmath/BM1_pass4_fable_2026-08-06.md.
 The evidentiary gap closed (blueprint section pasted); fresh sweep clean.
 Pass 8 = FABLE fresh-context, the deciding pass. B-M2 + mop-up batch
 running in parallel.
+
+## MOP-UP BATCH COMPLETE: H5/H3/H6 blocked-unit re-adjudications (2026-08-02)
+H5: the "1 unproved (PACK-ii) bound" is in fact PROVED at HEAD (B1 `beta_eval_nonneg` + B2 `beta_eval_mem_Icc`, W3 commit 5525c6c, per-file gates re-run green — the fan-out tally 16/19 was stale, true count 17/19); C4 gate re-checked NOT CLEARED (no `BnMember 2` at HEAD) and C5 still BLOCKED/DATA (no n=3 tables) — both re-check records landed in `H5/Conform.lean`.
+H3: wave-1 stragglers NONE (all five W1 units landed sorry-free, per-file gates green); EN-U3 RETIRED — REFUTED BY FALSIFIER: G-EN-1 = HIT (19/19 configs, 1354 counterexample boxes, log 2026-08-01) permanently fences route (a) per the blueprint's own criterion — adjudication note `notes/openmath/H3_enu3_adjudication_2026-08-02.md`; (E-N) burden now rides route (b) alone (EN-U1→EN-U5, doc-target, revision workflows).
+H6: both shortfall blockers re-checked and STAND — A4b blocked on external III-S4 (`cu2t_readForcing` still FALSE AS DISPLAYED, repaired form unlanded; BP_III-owned) and the C2 k'=1 polygon face blocked on GDOrder1 `w1`/`gaussW` (III-G3a/G4/G6 still typeclass-stuck); dated re-check lines landed in `H6/Emission.lean` + `H6/TerminalRead.lean`. No sorry added anywhere; statements untouched.

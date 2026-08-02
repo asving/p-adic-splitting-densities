@@ -158,7 +158,13 @@ STATUS AT HEAD (2026-08-01): NOT LANDED — the external dep III-S4
 (`cu2t_readForcing`, BP_III's unit, NOT re-owned here) is BLOCKED — FALSE AS
 DISPLAYED (`DictIII/CU2t.lean` §III-S4; compiled countermodel
 `S4Refute.cu2t_readForcing_false`, Lean-core), and its repaired form is
-unlanded. Per the blueprint ruling the coherence is therefore DISPLAYED here
+unlanded.
+
+MOP-UP RE-CHECK (2026-08-02, HEAD `baa5332`): gate re-checked — the III-S4
+refutation still stands in `DictIII/CU2t.lean` (BLOCKED — FALSE AS DISPLAYED;
+`S4Refute.cu2t_readForcing_false`) and no repaired forcing has landed, so A4b
+remains a DISPLAYED OBLIGATION, assumed nowhere. BLOCKED stands (external,
+BP_III-owned). Per the blueprint ruling the coherence is therefore DISPLAYED here
 and assumed NOWHERE — no declaration, no axiom, no sorry rides this unit.
 
 THE DISPLAYED OBLIGATION (elaboration + provability probed at this pin,

@@ -363,7 +363,12 @@ vocabulary; every interpretive choice displayed):
   deep-truncated (`principalSides (i+1) = []`), so clause (i) is FALSE at the
   canonical datum at any k′ ≥ 1 — the k′ = 1 instance stays with the row
   (this group's priced residue), consumed hypothetically only.  NOT papered
-  over; no sorry rides this unit. -/
+  over; no sorry rides this unit.
+* **MOP-UP RE-CHECK (2026-08-02, HEAD `baa5332`)**: the upstream block
+  re-checked — `DictIII/GDOrder1.lean` units III-G3a/G4/G6 (`gaussW`/`w1`)
+  remain BLOCKED (typeclass-stuck, per their standing records), and
+  `gmnDataOrder1` remains deep-truncated; the k′ = 1 polygon-face residue
+  therefore STANDS unchanged, with the row. -/
 
 /-- **H6-C2a — the terminal-binding clause at the engine** (blueprint §3.3(b),
 definitional once C0 lands): every record emitted by `engineEmission` IS the
