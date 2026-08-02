@@ -1519,3 +1519,26 @@ machine-proved + retired with its 3 interfaces priced at the slimmed
 (H8') row. GRB (H1(a)) at zero-critical, clean bar 0/2. Scaffold: ~290
 units landed across 9 HDischarge fleets + 5 divisions + shared carriers;
 5 true code sorries corpus-wide. Verification: VC1-VC21.
+
+---
+## CHECKPOINT 2026-08-06b: (H9) = (NSF) RETIRED — TEN HONEST ROWS (ROOT REVISION 19)
+ROOT at REVISION 19 (unit r20), executing the H9-C3 handback (commit
+9abc3ab): (K1-CANON) DISCHARGED — the (ed-1) M04 §5.5 scope pin (K1's
+quantifier + the post-K4 sum pinned to (q-4)'s notion; Lemma 3.3
+untouched), executed under the standing statement-change authority and
+SURFACED for review (warrant note
+lean/notes/openmath/K1CANON_discharge_2026-08-02.md; 2-round hostile pass,
+substance PASS both rounds) — so (NSF-INT) retired on (NSF-INT-RET)'s four
+grounds (I-1 + I-2 + I-3 + the discharge) and the (H9) = (NSF) row LEFT
+§3.1 for the §3.2 H9 retirement record (the THIRD post-acceptance row
+retirement). The §3.1 roster, RECOUNTED at the r20 audit: **TEN [M] rows ↔
+(H1)-(H9) minus the retired (H8) and (H9), plus (H8')** — (H1) GD orders
+>= 2 · (H2) = (FRESH) · (H3) = {(ADM), (E-N)} · (H4a) = (R1)-(R4) · (H4b)
+= (UB-X) · (H5) = (PACK) · (H6) terminal-seam · (H7) = (I-tau)/K-LOC ·
+(H8') the K-CUT residual interfaces; clauses (R)/(UB) each lose (H9).
+RE-OPEN TRIGGER, displayed: the D-11 leaf bar still owes one confirming
+clean pass — a §4B-defective finding re-opens I-3 and SUSPENDS the
+(NSF-INT) retirement. VC21 ran COMPOSITION-SOUND on REVISION 18 (the
+acceptance re-anchored there); REVISION 19 is a text change: **VC22 owed**
+as the confirming anchor (ROOT §25 charge). Verification: VC1-VC21 + VC22
+pending.
