@@ -3420,3 +3420,32 @@ Nothing classifiable. Second consecutive clean (Codex pass 2 + Fable pass
 3). F-(i) status: M1 ✔ ACCEPTED · M2 REVISION 2 folded (5ffbe84), one clean
 owed · M4 rev 4 (4b919bd, M2-seam re-read caveat displayed) · M5 second
 clean owed · N-K3 unrun.
+
+## 2026-08-08: H4-M2 REVISION 3 — pass-3 fold (GAPS-ONLY; audit tally corrected, factor correspondence CONFIRMED well-defined)
+
+H4M2_dict_attempt.md REVISION 3 folds hostile pass 3 (H4M2_pass3_2026-08-08.md,
+GAPS-ONLY, 1 gap + 4 confirmations) in full. HEADLINE (finding 1,
+display-only — NO strength change): the REVISION-2 DICT-0 consumer audit
+MISCLASSIFIED clause (b) — it said the (1) ⇒ (2) leg "consumes (c) ONLY",
+but clause (c)'s divisibility comparison is meaningful only under (b)'s
+residue-field identification (reconstructed field = F_{j₀}·F_q), so that leg
+consumes (b) AND (c) — exactly as the proof leg itself already cited ("under
+[IN-C](b)'s identification"); the four-clause [IN-C] hypothesis already
+supplies both, so nothing weakens or strengthens. Audit corrected at its §1
+statement, the (1) ⇒ (2) proof-leg tag, §5 item 3, and the §6 REVISION-2
+record (bracketed). CONFIRMATIONS folded: (2) the REVISION-2
+factor-correspondence match is WELL-DEFINED — O_δ a DVR ⇒ O_δ[x] a UFD
+(irreducibles prime) [Stacks 0BC1] + relative primality preserved over
+Frac(O_δ) [Stacks 09GY], each O_δ-irreducible factor lies over exactly one
+ℤ_p-factor; coprimality qualified to the gcd sense (not comaximality) —
+argument + references now in §1; (3) no audited consumer needs a functional
+branch selection outside the split-free locus (posLetterD collapses to
+offLetter there) — displayed in §1; (4) full proof-leg replay confirmed
+modulo finding 1 ((2) ⇒ (3): (a)/(b)/(d) + [IN-R1] + [IN-U]; (3) ⇒ (1):
+none; (1) ⇒ (2): (b)/(c) + [IN-F1]; l4_persist: none; literal key equality
+unused); (5) disposition audit clean (both predecessor matches correctly
+retired, pass-2 gaps supplied, carriers honestly fenced). Lean delta
+comment/docstring/prose-only; gate re-run GREEN (exit 0, no diagnostics),
+zero sorry, Lean-core footprint unchanged. COUNTER: pass 1 CRITICAL (REV 1);
+pass 2 CRITICAL (REV 2); pass 3 GAPS-ONLY (REV 3); clean 0/1 — the final
+clean hostile pass runs on REVISION 3.

@@ -76,7 +76,22 @@ displayed (no gap in either direction: literal transported-key equality is
 consumed by nothing and asserted nowhere). Clean counter stays 0/1; one
 clean hostile pass owed on THIS revision.
 
-VERDICT (summary, at the REVISION-2 honest strengths): the four charge items
+REVISION 3 (2026-08-08, pass-3 fold): hostile pass 3
+(`H4M2_pass3_2026-08-08.md`, verdict GAPS-ONLY — 1 gap + 4 confirmations,
+including CONFIRMATION of the REVISION-2 factor-correspondence
+well-definedness with references now folded into §1) folded in full; the
+finding-by-finding record is §6. Headline cure (display-only, NO strength
+change — the four-clause DICT-0 already supplies everything consumed): the
+REVISION-2 consumer audit MISCLASSIFIED clause (b) — it said the (1) ⇒ (2)
+leg "consumes (c) ONLY", but that leg consumes (b) AND (c): clause (c)'s
+divisibility comparison is meaningful only under (b)'s residue-field
+identification, exactly as the proof leg itself already cited ("under
+[IN-C](b)'s identification"). The audit display is corrected at its §1
+statement and at its §5/§6 repetitions. Counter stays 0/1; the final clean
+pass runs on THIS revision.
+
+VERDICT (summary, at the REVISION-3 honest strengths — identical in
+strength to REVISION 2; the REVISION-3 fold is display-only): the four charge items
 are delivered as follows. (i) the two objects are defined and kept apart;
 the matched position is defined by the FACTOR CORRESPONDENCE (key-free AND
 ledger-free: matching through the irreducible factors of f itself, §1), the
@@ -193,11 +208,26 @@ it is built from x's base prefix, hence canonically attached to x.
 WELL-DEFINEDNESS, displayed: the definition consumes only f's two
 factorizations (classifier-independent) and each run's own factor-routing.
 NO numerical coincidence, NO ledger comparison, and NO key clause enters.
+The "lies over" clause is well-defined (CONFIRMED at pass 3, references
+folded here): O_δ is a DVR, so O_δ[x] is a UFD and its irreducibles are
+prime [Stacks 0BC1] — hence any O_δ[x]-irreducible factor G of f divides
+SOME ℤ_p[x]-irreducible factor h; distinct ℤ_p[x]-irreducible factors are
+relatively prime over ℚ_p and STAY relatively prime over
+K_δ = Frac(O_δ) (relative primality of polynomials is preserved under
+field extension [Stacks 09GY]), so G divides exactly ONE.
+QUALIFICATION, displayed (pass-3 finding 2): "coprime in O_δ[x]" throughout
+means the gcd sense — no common non-unit factor — NOT comaximality of
+ideals; the gcd sense is exactly what the uniqueness argument uses.
 The match is a RELATION, in general one-to-many — §4's F₉ instance realizes
 exactly this shape: both branch positions are matched to the one base
 position. Uniqueness of the matched position at a split-free prefix is NOT
 definitional; it is DICT-0's clause (d) below, displayed open (the
-canonicity content pass 2 found hidden behind "position class").
+canonicity content pass 2 found hidden behind "position class"). And NO
+audited consumer silently needs a functional branch selection OUTSIDE the
+split-free locus (CONFIRMED at pass 3): DICT-0(d) supplies the single
+reconstructed position exactly where DICT-1(3), `pdata`, and the (2) ⇒ (3)
+leg need it, and off the split-free locus `posLetterD` collapses the branch
+ambiguity to `offLetter` — no consumer selects a particular branch there.
 
 RETIREMENTS of record, both readings of both predecessors: (pre-REVISION 1,
 pass-1 finding 1) "same prefix keys (via the inclusion ℤ_p[x] ⊆ O_δ[x])"
@@ -237,14 +267,23 @@ transported next residual ψ_{k+1} read over F_{k+1}·F_q.
 (d) [uniqueness] exactly one reconstructed position is matched to x at the
 split-free prefix.
 
-CONSUMER AUDIT (the pass-2 charge: no strength gap in EITHER direction).
+CONSUMER AUDIT (the pass-2 charge: no strength gap in EITHER direction;
+CORRECTED at REVISION 3 — pass-3 finding 1: the REVISION-2 display said the
+(1) ⇒ (2) leg "consumes (c) ONLY", misclassifying clause (b); the full
+proof-leg replay was re-confirmed at pass 3 modulo exactly this fix).
 The (2) ⇒ (3) leg of DICT-1 consumes (a) (feeding [IN-U]), (b) (clause
 (3)'s embedded-field identity), and (d) (clause (3)'s single-position
-reading — which the model layer's single-valued `pdata` also presupposes);
-the (1) ⇒ (2) leg consumes (c) ONLY, applied at the first failing stage
-(its pre-REVISION-2 wording asserted the reconstructed read "sees the same
-residual ψ_{j₀}" — a step supplied by NO named input, pass-2 critical 2;
-(c) is the exact fragment that leg uses); the `l4_persist` row is
+reading — which the model layer's single-valued `pdata` also presupposes),
+plus [IN-R1] and [IN-U]; the (3) ⇒ (1) leg consumes no additional DICT-0
+clause; the (1) ⇒ (2) leg consumes (b) AND (c), plus [IN-F1], applied at
+the first failing stage — clause (c)'s divisibility comparison is
+meaningful ONLY under (b)'s residue-field identification (range through
+k+1), exactly as the proof leg below has cited since REVISION 2 ("under
+[IN-C](b)'s identification"); the audit's "(c) ONLY" wording contradicted
+its own proof leg and is retired (its pre-REVISION-2 ancestor asserted the
+reconstructed read "sees the same residual ψ_{j₀}" — a step supplied by NO
+named input, pass-2 critical 2; (b)+(c) is the exact fragment that leg
+uses); the `l4_persist` row is
 device-side only and consumes no clause of DICT-0. NO consumer uses literal
 equality of the reconstructed keys with the transported ℤ_p-keys, so
 DICT-0 does not assert it: the pre-REVISION-1 same-keys clause OVERSHOT
@@ -321,7 +360,9 @@ position at split-free prefixes. [IN-F1] = (F1), Lidl–Niederreiter 3.46
 (§3, pinned): the gcd factor count, consumed by the (1) ⇒ (2) leg.
 
 *Proof (conditional on the four named inputs; legs re-cited at REVISION 2
-to the exact [IN-C] clause each consumes).* (2) ⇒ (3): under (2) every
+to the exact [IN-C] clause each consumes; audit tally corrected at
+REVISION 3 — the (1) ⇒ (2) leg's citations below were already right, the
+§1 audit's "(c) ONLY" tally was not).* (2) ⇒ (3): under (2) every
 augmentation step of the device uses a monic key whose residual is
 irreducible over the current residue field, so C^{(δ)} is a LEGAL OM chain
 over O_δ (key axioms are valuation-numeric and transport verbatim with the
@@ -348,7 +389,9 @@ split-free, so DICT-0 applies to it with k = j₀ − 1; by [IN-C](c) every
 irreducible stage-j₀ residual the reconstructed run realizes at the matched
 position divides — up to a unit, under [IN-C](b)'s identification, whose
 range through (j₀ − 1) + 1 = j₀ is exactly what is consumed here (pass-2
-finding 3) — the transported ψ_{j₀} read over F_{j₀}·F_q. By [IN-F1] that
+finding 3; so this leg consumes (b) AND (c) — the REVISION-3 audit
+correction, pass-3 finding 1) — the transported ψ_{j₀} read over
+F_{j₀}·F_q. By [IN-F1] that
 read factors into gcd > 1 conjugate irreducible factors of equal degree
 g_{j₀}/gcd, so EVERY realized stage-j₀ residual, being an irreducible
 divisor, has degree g_{j₀}/gcd < g_{j₀}: every matched position's realized
@@ -887,10 +930,13 @@ HONEST RESIDUE (what this note does NOT prove; expanded at REVISION 1):
    coincidence at every matched position; (b) embedded fields
    F_j^{(δ)} = F_j·F_q for ALL j ≤ k+1 (range fixed, pass-2 finding 3);
    (c) next-read divisibility of the realized residuals into the
-   transported one (the exact fragment the (1) ⇒ (2) leg consumes —
-   pass-2 critical 2: REVISION 1's bare Okutsu-equivalence form was WEAKER
-   than this consumer, while the pre-REVISION-1 literal-keys clause was
-   STRONGER than any consumer); (d) uniqueness of the matched position at
+   transported one (consumed by the (1) ⇒ (2) leg TOGETHER WITH (b) —
+   the divisibility comparison is meaningful only under (b)'s
+   residue-field identification; audit corrected at REVISION 3, pass-3
+   finding 1 — pass-2 critical 2: REVISION 1's bare Okutsu-equivalence
+   form was WEAKER than this consumer, while the pre-REVISION-1
+   literal-keys clause was STRONGER than any consumer); (d) uniqueness of
+   the matched position at
    split-free prefixes (the canonicity content pass 2 found hidden behind
    "position class"). DISPLAYED OPEN; pre-REVISION-1 it was hidden inside
    the matched-position definition (circular), now a named lemma every
@@ -948,8 +994,8 @@ zero sorry): `DictModel`, `letter_unique_of_triple`,
 AXIOM FOOTPRINT (checked 2026-08-01, external `#print axioms` run over all
 key theorems): Lean-core only — {propext, Classical.choice, Quot.sound};
 the arithmetic core (`lemma4_arith`, `f9_out_of_domain`, the tables, the
-grammar lemmas) is even choice-free: {propext, Quot.sound}. REVISIONS 1 and
-2 are both comment/docstring-and-prose-only folds — no Lean statement or
+grammar lemmas) is even choice-free: {propext, Quot.sound}. REVISIONS 1–3
+are all comment/docstring-and-prose-only folds — no Lean statement or
 proof term changed; gate re-run green after each (see §6).
 
 STATEMENT-FENCE RECORD: the blueprint has NO §L Lean spec for H4-M2 (it is a
@@ -1048,7 +1094,10 @@ confirmation, ALL findings folded):
    divisibility, (d) split-free uniqueness — with the two-directional
    CONSUMER AUDIT displayed in §1: (a)/(b)/(d) serve (2) ⇒ (3), (c) serves
    (1) ⇒ (2) (its exact consumed fragment; "sees the same residual"
-   retired for the divisibility step), `l4_persist` consumes none, and NO
+   retired for the divisibility step) [AUDIT TALLY CORRECTED at REVISION 3,
+   pass-3 finding 1: the (1) ⇒ (2) leg consumes (b) AND (c) — (c)'s
+   divisibility comparison is meaningful only under (b)'s identification],
+   `l4_persist` consumes none, and NO
    consumer uses literal transported-key equality (so it is asserted
    nowhere: the old clause OVERSHOT, REVISION 1's UNDERSHOT — both
    mismatches closed). Both DICT-1 proof legs re-cited clause-by-clause;
@@ -1069,9 +1118,51 @@ LEAN DELTA (REVISION 2): comment/docstring/prose-only; no statement or
 proof term changed. Gate `lake env lean notes/openmath/H4M2_dict_attempt.md`
 re-run GREEN at REVISION 2, zero sorry, footprint unchanged (Lean-core).
 
+REVISION 3 (2026-08-08; fold of hostile pass 3,
+`H4M2_pass3_2026-08-08.md`, verdict GAPS-ONLY — 1 gap + 4 confirmations,
+ALL findings folded):
+
+1. GAP — the DICT-0 CONSUMER AUDIT misclassified clause (b): the display
+   said the (1) ⇒ (2) leg "consumes (c) ONLY", but clause (c)'s
+   divisibility comparison is meaningful only after (b)'s identification
+   of the reconstructed residue field with F_{j₀}·F_q — the leg consumes
+   (b) AND (c), exactly as the proof leg itself already cited ("under
+   [IN-C](b)'s identification"). FOLDED (display-only, NO strength change
+   — the four-clause DICT-0/[IN-C] hypothesis already supplies both):
+   audit corrected at its §1 statement, at the (1) ⇒ (2) proof-leg tag,
+   at §5 item 3, and at the §6 REVISION-2 record (bracketed correction).
+   DICT-1 is NOT invalidated.
+2. CONFIRMED — the factor correspondence's "lies over" is WELL-DEFINED:
+   O_δ a DVR ⇒ O_δ[x] a UFD (irreducibles prime) [Stacks 0BC1], so each
+   O_δ[x]-irreducible factor of f divides some ℤ_p-factor; distinct
+   ℤ_p-factors stay relatively prime over Frac(O_δ) [Stacks 09GY], so
+   exactly one. FOLDED: argument + references + the coprimality
+   qualification (gcd sense, NOT comaximality) into §1's WELL-DEFINEDNESS
+   display.
+3. CONFIRMED — no audited consumer silently requires a functional branch
+   selection outside the split-free locus (DICT-0(d) supplies the single
+   position exactly where DICT-1(3)/`pdata`/(2) ⇒ (3) need it;
+   `posLetterD` collapses off-locus ambiguity to `offLetter`). FOLDED
+   into §1's WELL-DEFINEDNESS display.
+4. CONFIRMED — full proof-leg replay, modulo finding 1: (2) ⇒ (3)
+   consumes (a)/(b)/(d) + [IN-R1] + [IN-U]; (3) ⇒ (1) no additional
+   clause; (1) ⇒ (2) consumes (b)/(c) + [IN-F1]; `l4_persist` none;
+   literal transported-key equality unused. FOLDED: the §1 audit now
+   displays this exact tally.
+5. CONFIRMED — disposition audit: both predecessor matching definitions
+   correctly retired; pass-2's gaps (next-read compatibility = clause (c),
+   field range j ≤ k+1, split-free uniqueness = clause (d)) supplied;
+   factor-blind Lean carriers honestly fenced (H4-F1/H4-F6). No fresh
+   circularity or missing premise. No action owed.
+
+LEAN DELTA (REVISION 3): comment/docstring/prose-only; no statement or
+proof term changed. Gate `lake env lean notes/openmath/H4M2_dict_attempt.md`
+re-run GREEN at REVISION 3, zero sorry, footprint unchanged (Lean-core).
+
 COUNTER (gate: hostile pass ×1): pass 1 = CRITICAL (folded at REVISION 1);
-pass 2 = CRITICAL (folded here). Clean counter 0/1 — one clean hostile
-pass owed on THIS revision.
+pass 2 = CRITICAL (folded at REVISION 2); pass 3 = GAPS-ONLY (folded
+here). Clean counter 0/1 — the final clean hostile pass runs on THIS
+revision.
 -/
 
 end LeanUrat.Scaffold.HDischarge.H4.Dict
