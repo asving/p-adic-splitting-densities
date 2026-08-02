@@ -4930,3 +4930,29 @@ face (the leakFree CONSUMER) remains owed. The ROOT (FRESH) residue's
 "general-instance supplier" is retired ONLY in its leakFree typed-face
 component. Unit note: `lean/notes/openmath/LEAKFREE_2026-08-08.md`; MANIFEST
 unit `LEAKFREE-TYPED`.
+
+## 2026-08-08 — TERMINALPOLYSEM k′=0 (pass-4 F2(b) / pass-5 F6 item 8, owed)
+
+Charter attempt-grade verdict: SPLIT, both halves compiled
+(`Scaffold/DictIII/CU2tKp0.lean`, NEW file/decls only, green, all six audited
+footprints Lean-core). The literal charter ("TerminalPolySem's k′=0 face
+derivable from the landed emission specs") is REFUTED at THREE compiled
+gates: (A) saturation necessary — f = X+1 undecided seam, `ReadThroughIota`
+holds on the empty datum, `TerminalPolySem` fails; (B) the −∞ leg unsupplied
+— f = X (coeff₀ = 0), a junk e = 0 slope-−∞ side passes A6b certification and
+kills nondegeneracy; (C) the CU2t consumption keying (DecHen terminal-first,
+terminal index 1) is TERMINAL-BLIND — `(Theta H).slopes = []` grants no OL1
+constraint at index 1, and the REAL ι-certified read of X+2 on the
+DEC-decided `S4Refute.H0` fails the row (the III-A3 seam family). The honest
+salvage is PROVED: on 𝐇°-keyed k′=0 seams (`H.nodes = []` — the terminal
+index IS the corpus-real level 0) with the `f(0) ≠ 0` + `p ∣ f(0)` perimeter,
+`terminalPolySem_kp0` reduces the face to the NEW named open row
+`BasePolygonLengthLaw p` ([M]-discipline): the OM base length law
+ℓ(N⁻(f)) = ord_X(f̄) + side nondegeneracy — H-free, D-free pure polygon
+geometry, NOT provable at HEAD (only flat-hull machinery exists; the
+OL5-adjacent convexity gap), proof route displayed. Positive gate
+`Kp0Gate.terminalPolySem_kp0_gate_pos`: the face FIRES at f = X+2 with the
+REAL `gmnDataOrder1` read — the first ReadThroughIota-certified
+`TerminalPolySem` witness at HEAD. `terminalDatumD_slope_spec` not consumed
+(slope reads, not side-list mass). Unit note:
+`lean/notes/openmath/CU2T_KP0_2026-08-08.md`.
