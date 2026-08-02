@@ -2228,3 +2228,11 @@ clause load-bearing). Open: lift conformance (B-M2), GMN-face (KPb)
 order 2, omitted φ₂ ≁ φ₁) + propagated to all in-leaf consumers; H1-blueprint
 member-(b) sync OWED. S8.2/S8.3 R4.3-class overclaims reworded to one-instance
 truth; S3.1 restated to assembled-coefficients (GMN's z₁^k external). 0/2.
+
+## B-M1 REV 2: ALIGNED AT ZERO COST (16ffbc8, 2026-08-06)
+KP-STEP restated at the degree-conformant class (K0: monic, deg e·g·deg
+Phi_i = FGMN Cor 4.12's normalization); minimality FALSE on the bare
+class (padding counterexample displayed in-statement); (SL-top) companion
+proved. ALIGNMENT: the ROOT (H1)(d) consumes the STANDARD lift; corpus D8
+IsReadLift HARD-WIRES the conformant shape; (K0)-discharge = B-M2(a),
+already priced — ZERO new obligations. B-M1 pass 2 + GRB pass 5 launched.
