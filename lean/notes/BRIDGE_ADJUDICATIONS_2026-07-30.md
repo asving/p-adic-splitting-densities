@@ -2782,3 +2782,52 @@ unit); C057 reclassified [STATUS-FREE] (external cited fact). Census
 rows updated; REVISION 8 record in `H1_BM2_2026-08-06.md`. Statuses
 never strengthened; no compiled claim touched. Clean counter stays 0/2;
 pass 7 next.
+
+## B-M2 [RC]-witness unit — the REVISION-8 debt discharged in Lean (2026-08-02)
+The two displayed wiring debts of the B-M2 arc landed as ONE compiled unit
+(new files only; no existing statement touched; the note
+`H1_BM2_2026-08-06.md` NOT edited — a hostile pass runs on its current
+text; it folds these results at its NEXT revision):
+* **TARGET 1 — the compiled [RC] witness**
+  (`lean/LeanUrat/Scaffold/HDischarge/H1/RCWitness.lean`, all Lean-core,
+  in-file `#print axioms`): the REVISION-8 UNWITNESSED-ON-FILE finding is
+  DISCHARGED POSITIVELY — no fence obstruction; `S10_recStage` builds the
+  interior recentering at a 3-node toy. Construction: at HK25's unramified
+  gate child `σ₁rec` (p = 2, F4, key fq, pair (1,3)), the realizer C 8 has
+  weight 3 = w(Φ̂) (transition record's slot-min law) and a position-0
+  monomial-unit residual (`child_dig_frame` at t = 0); `S10_recStage`
+  constructs the recentered stage `σ₂rc` + `recCore : IsRecenteringCore
+  σ₁rec σ₂rc rcCenter rcLift`. Node `ν₁rc` carries the CONSTRUCTED lift
+  (unlike HK25's junk-0 lift), giving `landingKey_ν₁rc : LandingKey ν₁rc
+  σ₂rc.Φ` — the first compiled recentering-species `LandingKey`; history
+  `H₃rc = [HK23.ν₀ram, ν₁rc, ν₂rc]` is coherent (`coherent_H₃rc`) with
+  node 1 an INTERIOR recentering. BOTH [RC] corollaries of
+  `H1/Conformance.lean` FIRE on it: `rc_landingKey_gate` and
+  `rc_historyCoherent_gate` (each `K0Conformant σ₁rec 1 1 σ₂rc.Φ`) — the
+  [RC] legs of Theorem LIFT-CONF's compiled perimeter are NON-VACUOUS.
+  Scope unchanged: synthetic-(1,1) conclusions only; REC-SL/REC-PARAM/
+  GRADED-READ/SITE-EXH and the RG-2 fence display stand as before.
+* **TARGET 2 — the REC-PARAM e-half at its derivable scope**
+  (`lean/LeanUrat/Scaffold/HDischarge/H1/RecParamE.lean`, Lean-core):
+  `recParam_e_of_transition` — in a coherent history, at an INTERIOR
+  recentering read whose stage came from a NON-RECENTERING transition
+  (both hypotheses displayed), σᵢ₊₁.e = 1 (`IsRecentering` via the
+  recentering leg) ∧ σᵢ₊₁.e = νᵢ₊₁.e (`TransitionData.child_e` via the
+  (S-a) leg) ∧ νᵢ₊₁.e = 1 — the BM2_TRACE §3 (C-a) wiring derivation,
+  compiled. The g-half is NOT claimed (no stage field records g).
+* **FINDING for the note's next revision** (recorded here + in the
+  RecParamE docstring, not folded into the note by this unit): the trace's
+  "a Lean history could record νᵢ.g = 7 at a recentering node and stay
+  coherent" is FALSE at the NODE level — `Node.hspecRec` (MovesC/Defs,
+  the §C.0 species law) is a STRUCTURE FIELD giving `species = recentering
+  → e = 1 ∧ g = 1`, so such a node is unconstructible. That field is
+  exactly the "priced at (1,1) by fiat" layer REC-PARAM's display
+  distinguishes from a tower derivation (the predicate builds the pair
+  in); the compiled lemma is the non-fiat wiring derivation for the
+  e-half, and whether engine recentering firings HAVE the species shape
+  stays S-1/SITE-EXH-side. The trace's "tied NOWHERE" verdict for the
+  g-half stands at the STAGE/WIRING level only.
+Gates: `lake env lean` green on both new files; `#print axioms` =
+{propext, Classical.choice, Quot.sound} on `recParam_e_of_transition`,
+`recCore`, `landingKey_ν₁rc`, `rc_landingKey_gate`, `coherent_H₃rc`,
+`rc_historyCoherent_gate`. No shared file touched.
