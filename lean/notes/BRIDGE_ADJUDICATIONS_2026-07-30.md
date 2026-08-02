@@ -2760,3 +2760,25 @@ D-REAL iff E_i = 1) / EXTERNAL CONSUMED HYPOTHESES ((KP_i)/(H-CHAIN)/[T])
 bracket-annotated only. Nothing strengthened; membership unchanged.
 Clean counter stays 0/2; pass 17 runs on the REVISION 13 text. Record:
 GRB leaf §REVISION 13.
+
+## B-M2 REVISION 8 — the pass-6 fold (2026-08-02)
+Hostile pass 6 (Codex, `BM2_pass6_2026-08-06.md`, checking the REVISION 7
+census table per §S6 attack item 7) returned CRITICAL: 2 census
+misclassifications + 1 bookkeeping reclass (the pass verified all seven
+REVISION-7 repairs SOUND, independently RE-DERIVED the REC-PARAM-only
+adjudication, and confirmed the three consumer lists aligned; no keyword
+hit absent from the table). Folds: C112 (Lean header, the recurring
+genre) — "(K1)+(K2) for the fired lifts" split per class ([NR]:
+GRADED-READ; [RC]: GRADED-READ + REC-SL), COMMENT-ONLY, gate green;
+C060/C061 (non-vacuity, marked [TAGGED] but untagged) — substantive grep
+FIRST: the cited witnesses (`gate_readsOf_inert2`, `HK23_twoNodeGatePos`)
+are [NR]-only, and NO compiled [RC] antecedent witness exists on file
+(`HK25.H₂rec`'s recentering node is TERMINAL; all compiled `LandingKey`
+witnesses non-recentering; no recentering `ReadsOf` read; `S10_recStage`
+conditional) — the §S3 paragraph re-scoped to [NR]-witnessed with the
+[RC] inhabitation displayed UNWITNESSED-ON-FILE (BM2_TRACE = mathematical
+evidence only; compiled [RC] witness = candidate one-lemma follow-up
+unit); C057 reclassified [STATUS-FREE] (external cited fact). Census
+rows updated; REVISION 8 record in `H1_BM2_2026-08-06.md`. Statuses
+never strengthened; no compiled claim touched. Clean counter stays 0/2;
+pass 7 next.

@@ -7,8 +7,11 @@ NON-RECENTERING carriers — (K0) at the recorded node's ACTUAL pair, and — at
 RECENTERING carriers — monicity + the SYNTHETIC `K0Conformant σ 1 1` ONLY (the
 actual pair there awaits the open REC-PARAM obligation displayed in the unit
 note), NOT KP-STEP class membership in either case; KP-STEP's
-class is (K0)+(K1)+(K2), and (K1)+(K2) for the fired lifts ride the OPEN graded
-(SL-dev) reading GRADED-READ); governing spec: blueprint §2.2 (s7) [REV 2, finding
+class is (K0)+(K1)+(K2), and (K1)+(K2) for the fired lifts ride, on [NR], the
+OPEN graded (SL-dev) reading GRADED-READ, and on [RC] additionally the open
+recentering legs REC-SL [REVISION 8 — the pass-6 finding-1 fold: the former
+single-tag form left "the fired lifts" spanning both classes with only
+GRADED-READ attached]); governing spec: blueprint §2.2 (s7) [REV 2, finding
 15] + the VERIFIED KP-STEP note `H1_BM1_2026-08-06.md` §S7/§S8 (2-clean bar met;
 corpus pins verified at pass 4).
 
