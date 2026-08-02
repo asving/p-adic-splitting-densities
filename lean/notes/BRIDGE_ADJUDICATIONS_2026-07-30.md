@@ -4041,3 +4041,14 @@ helpers, all five control theorems, countermodel replay). Blueprint §5
 E2/TD-0/TD-3 rows + §7 N-TD1 row updated; MANIFEST rows E2/E2-v2/
 E2-v2-CONTROL/TD-0..TD-6 updated. FENCES: consumer signatures (§3
 TransDeep, H2 FreshLaws) untouched; no countermodel theorem edited.
+
+## 2026-08-08 (wallclock 2026-08-02): ASVIN SIGN-OFF — the SITE-EXH TruncatedRun extension
+
+Verbatim: "yeah go ahead" (on the E-1..E-4 extension as explained: the
+additive ReadsOfFrom σ₀ truncated-run carrier; ReadsOf/HistoryCoherent
+byte-unchanged; the D-ITER glue as the one new obligation). The Tier-1
+pause on SITE-EXH-dependent dispatching LIFTS. Implementation unit
+dispatched: E-1 + E-2 + E-4 now (discharges TowerMoveClosure → the
+FiredLift elimination fires unconditionally at the engine face); E-3 (the
+truncated-run composition glue) follows as its own unit on the D-ITER
+ITER-LAW shape the strata probe measured.
