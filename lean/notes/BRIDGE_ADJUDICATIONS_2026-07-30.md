@@ -4846,3 +4846,27 @@ cadence. Confirmed-in-anchor as of this entry: the (H4a) retirement fully propag
 GR route (a) (B2D 0 sorries); TR-3'-GEN order-2 two-stratum theorem; REC-SL narrowed to
 {hsc, hfence} closed at compiled sites; readsOf at the ReadsOfFrom face; huni-v2 v4
 carrier; forge = junc_bundle only.
+
+## 2026-08-08: D-ITER RESTATED (SYNTHESIS_PASS5 queue #9 — hygiene preceding DIterJunctionSupplier)
+
+Countermodel-pinned restatement under the standing authority; pin = the strata
+probe's B3-adj adjudication (single-ζ′ cyclic presentation NOT-CYCLIC at 22/28
+mixed towers at the canonical dig-consumed alphabet; kill-shot row N). The
+statement of record is now the measured two-constant iterated form:
+(ITER-LAW) c(γ,γ′) = z̄^{δ₂}·z₁^{(s₁(γ)+s₁(γ′)−s₁(γ+γ′) + ℓ₀γ₂δ₂)/e₀},
+δ₂ = ⌊(s₂(γ)+s₂(γ′))/e₁⌋ — an instance-confirmed (0/804, 52 towers) OPEN
+LEMMA with the CARRY-1/W-MULT fibred-index proof route displayed; γ₂ :=
+e₁·w₁(Φ₁) + h₁ (the level-2 abscissa-step weight, harness datum). Note:
+`lean/notes/openmath/DITER_RESTATE_2026-08-08.md` (standalone statement §S2,
+the DIterJunctionSupplier consumable spec §S3, full display-site census §S4).
+Brackets applied (additive only; no acceptance counter reset): MOVES §F.2
+"new stage" bullet (STRATA-PROBE BRACKET — cyclic 𝒟′ display fenced, hedge
+confirmed-with-relation-measured, §F.0 stage-datum ripple displayed, pass-8
+critical 3 answered at order 2); GRB S5.3 D-ITER bullet (POST-ACCEPTANCE
+BRACKET) + S8 roster item 2 (pointer bracket). Already-compliant, untouched:
+GlueRun.lean DIterJunctionSupplier docstring (ITER-LAW operative), STRATA
+PROBE record, adverse-context pass-8 quote, append-only ledger history,
+orchestrator-owned r-fold docs ("restatement owed" flags retire at r26).
+F4 fence honored: no TR3-S2/TWIST-LAW material touched. Queue #11
+(DIterJunctionSupplier formalization) is hereby UNBLOCKED on its #9
+prerequisite; it remains priced with the deep-instance forge (#10).
