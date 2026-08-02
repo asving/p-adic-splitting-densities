@@ -2900,3 +2900,42 @@ upgrades carry compiled citations; scopings carry none. Lean gates: all
 three H1 files `lake env lean` green, zero sorry, in-file `#print
 axioms` Lean-core; `Conformance.lean` comment-only. Clean counter stays
 0/2; pass 9 next.
+
+## B-M2 REVISION 11 — the pass-9 fold: the inverse-genre sync + the census row ledger (2026-08-02)
+`H1_BM2_2026-08-06.md` REVISION 11 folds hostile pass 9 (Codex,
+`BM2_pass9_2026-08-06.md`, CRITICAL with an INVERTED profile: findings
+1–2 VALIDATE the REVISION-10 mathematics in full — transport argument
+order and every [RC] upgrade derivation re-derived exact; all five
+defects are stale text UNDER-claiming relative to the compiled
+transport). (1) CRITICAL 3 folded: the opening headline SYNCED —
+actual-pair (K0) PROVED on BOTH classes ([RC] via
+`k0_actual_of_recentering`), class split retained for the claims that
+still differ (REC-SL legs; wiring residuals). (2) CRITICAL 4 folded in
+BOTH files: the two stale RG-2 "e ≥ 2 recentering gets synthetic only"
+sentences replaced by the sharpened VACUITY fact — `Node.hspecRec`
+(`MovesC/Defs.lean:454`) makes an e ≥ 2 species-recentering node
+UNCONSTRUCTIBLE; e ≥ 2 lives at non-recentering reads (the C-e exhibit
+stands, cross-checked); `Conformance.lean` COMMENT-ONLY, gate green,
+diff verified comment-only. (3) GAP 5 folded: the live [REV 5] evidence
+sentence [REV 11]-fenced — its obligation was the retired node-level
+REC-PARAM (supplied); evidence re-attached to REC-WIRE-G + the e-half
+removal. (4) GAP 6 folded: REC-WIRE-G STATED THEOREM-PRECISELY (charge
+option (a)) — corpus determination: NO Stage field, NO TransitionData
+clause carries g (`Moves/Defs.lean:106–166`, `Moves/DefsT.lean:147–156`,
+grep evidence in the record), BUT the coherence WIDTH LAW
+(`Dwidthᵢ₊₁ = νᵢ.e·νᵢ.g·νᵢ.Dwidth`) + `Node.hDwidth : Dwidth =
+σ.Φ.natDegree` carry g at the wiring layer; statement: coherent history
++ interior species-recentering read ⟹ νᵢ.e·νᵢ.g = 1 DERIVED FROM
+TRANSITION DATA, non-fiat expressed by ROUTING through a stage-layer
+kernel (`IsRecentering σ σ' cc tt → σ'.Φ.natDegree = σ.Φ.natDegree`,
+where `hspecRec` is unavailable by type); candidate route displayed
+(IsRecenteringCore degree preservation + width law + `Stage.hdeg`), NOT
+compiled, obligation OPEN, no status row moved. (5) CRITICAL 7 folded:
+THE CENSUS ROW LEDGER PUBLISHED — implementation validated (reproduces
+the published 132 and 136 exactly on the REV-9/REV-10 texts); the
+REV-10 delta resolved at sentence level as 35 retired + 39 successors
+(rows C135–C173; 14 additional standing rows marked superseded); the
+REV-11 delta −2 (C065, C122) + 11 (rows C174–C184); CURRENT totals
+130 NOTE + 15 LEAN = 145 hits, active rows 95 + 50 = 145 EXACT, ZERO
+untagged, 46 [TAGGED] + 4 [STATUS-FREE] over the 50 new rows. Clean
+counter stays 0/2; pass 10 next (ledger + totals paragraph = authority).

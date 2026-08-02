@@ -73,8 +73,15 @@ stride 1.  No existence or LOCATION claim is made for e ≥ 2 lifts: the compile
 coverage is per-declaration and conditional (`readsOf_landing_K0` covers the
 reads of an ASSUMED `ReadsOf` run, final read included, where e ≥ 2 strides are
 recordable; locating ALL fired e ≥ 2 lifts at final reads is the unit note's
-open SITE-EXH, and no compiled e ≥ 2 `ReadsOf` existence lemma is on file), and
-an e ≥ 2 RECENTERING read would receive only the SYNTHETIC (1, 1) conclusion.
+open SITE-EXH, and no compiled e ≥ 2 `ReadsOf` existence lemma is on file).
+An e ≥ 2 RECENTERING read is VACUOUS at the node level [REV 11 sync — the
+pass-9 CRITICAL-4 fold]: `Node.hspecRec` (`MovesC/Defs.lean`, a structure field)
+forces e = 1 ∧ g = 1 at every species-recentering node, so an e ≥ 2
+species-recentering node cannot be constructed — and the compiled [RC]
+conclusion transports to the actual (1, 1) pair anyway (the sibling
+`k0_actual_of_recentering`, `H1/RecParamE.lean` [REV 10]).  e ≥ 2 lives only at
+NON-RECENTERING reads: interior ones are fenced as above; final `ReadsOf` reads
+are recordable.
 The compiled declarations quantify over their carrier PREDICATES
 (`IsNodeLift`/`IsRecenteringCore`/`LandingKey`/`HistoryCoherent`/`ReadsOf`
 antecedents); whether every engine firing satisfies one of those predicates is
