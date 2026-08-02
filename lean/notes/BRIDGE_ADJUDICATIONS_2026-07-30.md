@@ -2180,3 +2180,11 @@ VC19 = the ten-row anchor pass.
 VC19 on REVISION 16: COMPOSITION-GAPS (2 blockers, one defect — the r17 retirement OVERSHOT: the three residues' cited owners do not house them; (R)/(UB) silently consumed unpriced content at Step 18 K1; the proved package + §3.2 retirement record CONFIRMED standing). REVISION 17 executes the honest re-pricing: NEW slimmed §3.1 row (H8') = GRAFT (graft completeness/bijectivity; charge-(vi-a) FAIL stands) + MASS-ID (shMass/blkMass measured-mass identification) + POOL-DICT (node-level tau/delta pool dictionary + blockTotal_tie), stated from the package's own displays; r17 owner labels demoted to retirement ROUTES.
 Roster: ELEVEN rows = (H1)-(H9) minus retired (H8) plus (H8'); (R)/(UB) gain exactly (H8'); net progress honest — (H8) assumed the whole decomposition, (H8') only the three interfaces (core machine-proved). 22 operative sites synced (enumeration audit re-run — the twice-learned lesson).
 Text change: acceptance still earned on REVISION 12 (anchored at REVISION 15); VC20 OWED as the confirming anchor on the REVISION-17 wording. Record: ROOT_ASSEMBLY §23.
+
+## r18 EXECUTED: (H8') PRICED, ELEVEN HONEST ROWS (fefca25) — VC20 LAUNCHED (2026-08-06)
+The K-CUT overshoot cured: proved core stays retired; the three residual
+interfaces return as (H8') with precise members (GRAFT bijection w/
+charge-(vi-a) FAIL standing; MASS-ID Haar identification; POOL-DICT typed
+read-off + blockTotal_tie) and ROUTES-not-homes retirement lines. 22
+sites synced, 11 rows grep-verified. NET vs pre-campaign: the former
+(H8) assumed the WHOLE decomposition; (H8') assumes only the interfaces.
