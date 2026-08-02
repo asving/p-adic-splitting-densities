@@ -1,0 +1,26 @@
+{
+  "campaign": "B2DEF_LEAN — the §B2-DEF carry-algebra apparatus as the ONE shared Lean supplier (GR + TD projection layers)",
+  "blueprint": "lean/blueprints/B2DEF_LEAN_2026-08-08.md (commit 90b4072; Codex design-frozen, rounds 1+2 folded)",
+  "math_source": "ACCEPTED §B2-DEF (lean/notes/MOVES_2026-07-24.md :1849-2745; dual-accepted rev D11d)",
+  "namespace": "LeanUrat.B2D",
+  "phase": "E-phase LANDED (wave E, 2026-08-02): definitional layer + statement fan-out compiling; every sorry is an E-phase open-goals-ledger entry tagged with its unit ID",
+  "units": [
+    {"id": "E1", "file": "GRDefs.lean", "decls": ["ReadHyps", "readPos", "mhat (abbrev -> MovesC.Node.mhat, cite-not-rebuild)"], "status": "LANDED (no sorry)", "notes": "§4 groups flattened to per-fact fields (flagged); (S6b)/(I-aug) range fields probe: no field added (flagged in docstring)"},
+    {"id": "GR-0", "file": "GR0_readHyps.lean", "decls": ["readHyps_of_node", "readHyps_of_node_level"], "status": "E-GATE PASS-WITH-DISPLAYED-RESIDUE (no sorry; Lean-core)", "notes": "supplier map in module docstring: 9/11 fields SUPPLIED by Node/Stage wiring; hscale + hψ0 DISPLAYED-HYPOTHESES (kp_step displayed-binder precedent); hscale discharged at the level/inert configuration (non-vacuity leg)"},
+    {"id": "E2", "file": "TDDefs.lean", "decls": ["LedgerStratumData", "LedgerStratumData.ledgerJoint", "ledger_rhoCount_off_support (PROVED)", "ledger_rhoCount_lt_two (PROVED)", "blockCount", "LedgerSemantics", "LedgerLawful", "LedgerStrata", "LedgerScope", "LedgerClean"], "status": "LANDED (no sorry; support-constraint lemmas proved)", "notes": "[R2-C1] support constraint proved; [R1-G1] two-layer design; design flags 1-3 in docstring incl. the TD-1 pricing relocation finding"},
+    {"id": "GR-1", "file": "GR1_equalWeights.lean", "decls": ["GR1_slotWeights", "GR1_equalWeights"], "status": "statements compiling, 2 E-phase sorries", "wave": "2a"},
+    {"id": "GR-2", "file": "GR2_slotResidual.lean", "decls": ["GR2_slotResidual", "GR2_posStep", "GR2_slotResidual_graded"], "status": "statements compiling, 3 E-phase sorries", "wave": "2a", "notes": "GR2_posStep N-GR1-gated (statement flag in docstring)"},
+    {"id": "GR-3", "file": "GR3_keyResidual.lean", "decls": ["GR3_keyResidual_pinned", "GR3_keyResidual"], "status": "statements compiling, 2 E-phase sorries", "wave": "2a", "notes": "pinned form N-GR1-gated; ∃-form is §4's frozen clause"},
+    {"id": "GR-4", "file": "GR4_gradedRead.lean", "decls": ["graded_read"], "status": "statement compiling, 1 E-phase sorry", "wave": "2a", "notes": "three-clause §4 conclusion; third-clause exact form fixed by E-phase probe (docstring record); GR-4b kpblock_of_read DELETED per R1-C5, fence (viii)"},
+    {"id": "TD-0", "file": "TD0_ledgerInstance.lean (NOT YET CREATED)", "status": "wave 1 — the designated-instance construction + LedgerLawful discharge + non-vacuity witness", "notes": "duties (a)/(b)/(c) per [R1-G3]; lawfulness clauses to discharge are enumerated in TDDefs.LedgerLawful"},
+    {"id": "TD-1", "file": "TD1_floorsCharge.lean", "decls": ["ledger_floorsCharge"], "status": "statement compiling, 1 E-phase sorry", "wave": "2b"},
+    {"id": "TD-2", "file": "TD2_fiberSum.lean", "decls": ["ledger_fiberSum"], "status": "statement compiling, 1 E-phase sorry", "wave": "2b"},
+    {"id": "TD-3", "file": "TD3_digitsProd.lean", "decls": ["ledger_digitsProd"], "status": "statement compiling, 1 E-phase sorry", "wave": "1 (hardest hole, front 1)", "notes": "N-TD1 falsifier gates the statement before proof effort"},
+    {"id": "TD-4", "file": "TD4_junctionPin.lean", "decls": ["ledger_junctionPin"], "status": "statement compiling, 1 E-phase sorry", "wave": "2b", "notes": "V9 import PROHIBITED (§6 fence (v))"},
+    {"id": "TD-5", "file": "TD5_leakCarrier.lean", "decls": ["LeakFreeCarrier (typed (L) carrier, no sorry)", "ledger_leakFree"], "status": "carrier LANDED + supplier statement, 1 E-phase sorry", "wave": "2b", "notes": "charter-demanded [R2-G1]"},
+    {"id": "TD-6", "file": "TD6_assembly.lean", "decls": ["transDeep_of_ledger (noncomputable def — respelling FLAGGED: TransDeep is Type-valued via its bare-Prop leakFree field)", "ledger_freshRowOn"], "status": "statements compiling, 2 E-phase sorries", "wave": "3"},
+    {"id": "CL5", "file": "../HC1/C6_alphabetCard.lean:129 (in place, HC1 property)", "status": "wave 1 (hardest hole, front 2) — untouched at E-phase"}
+  ],
+  "fences": "blueprint §6 (i)-(viii); consumer signatures (§3 TransDeep / §4 carriers) untouched",
+  "falsifiers": "N-GR1, N-TD1, N-TD2 to be built BEFORE the units they gate (blueprint §7)"
+}

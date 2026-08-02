@@ -3230,3 +3230,53 @@ q∈{0,1}; a deleted-decl acceptance typo) → all folded; max-2-rounds, design 
 Transcripts `lean/notes/openmath/B2DEF_LEAN_codex_design_r{1,2}_2026-08-08.txt`.
 NOT executed here (blueprint only): no B2D units written; no consumer row status
 changed (both updates are ROOT-owner moves on acceptance).
+
+---
+
+## §B2DEF_LEAN WAVE E LANDED (E-phase skeleton + the GR-0 E-gate, 2026-08-02)
+
+Executed per the frozen blueprint (`lean/blueprints/B2DEF_LEAN_2026-08-08.md`, commit
+90b4072). New directory `lean/LeanUrat/B2D/` (namespace `LeanUrat.B2D`), 12 files +
+`MANIFEST.json`; every `sorry` is an E-phase open-goals-ledger entry tagged with its
+blueprint unit ID (the sanctioned exception, stated in the module docstrings).
+
+* **E1 LANDED** — `GRDefs.lean` (`ReadHyps` flattened to per-fact fields, FLAGGED;
+  `readPos`; m̂ = the EXISTING `MovesC.Node.mhat`, cited not rebuilt; the E1
+  "(S6b)/(I-aug) range fields" probe added NO field, flagged in the docstring) +
+  fan-out `GR1_equalWeights` / `GR2_slotResidual` (`GR2_posStep` N-GR1-gated,
+  statement flag) / `GR3_keyResidual` (pinned + ∃-forms) / `GR4_gradedRead` (the §4
+  three-clause seam theorem; third-clause exact form probed and recorded:
+  `Θ(ι in Φ′) = C(T^m̂·toLaurent ψ)·T^{w Φ′}` via `Stage.grRes` + `discharge`).
+  8 E-phase sorries, all statements compiling.
+* **GR-0 E-GATE: PASS-WITH-DISPLAYED-RESIDUE** — `GR0_readHyps.lean`, NO sorry,
+  Lean-core. Supplier map (module docstring table): 9/11 `ReadHyps` fields SUPPLIED
+  by recorded wiring (`Node.hbez/hbezCanon/hψmonic/hψirr/hψdeg`,
+  `Stage.hRmul/hRlt/hRadd/hRΦ` at the parent); **`hscale` and `hψ0` =
+  DISPLAYED-HYPOTHESES** (no single-node supplier; `HistoryCoherent`'s slope law
+  named as the history-level wave-2 candidate for `hscale`; the kp_step
+  displayed-binder precedent). Non-vacuity leg `readHyps_of_node_level` discharges
+  `hscale` at the level/inert configuration via `Stage.hwΦ`. No elaboration
+  obstruction fired ⟹ the §5 hardest-hole ranking STANDS (conditionality clause
+  consulted); wave 2a runs in residue-displayed mode.
+* **E2 LANDED** — `TDDefs.lean`: `LedgerStratumData`, `ledgerJoint` with the
+  [R2-C1] SUPPORT CONSTRAINT **PROVED** Lean-core (`ledger_rhoCount_off_support`,
+  `ledger_rhoCount_lt_two`), `blockCount`, `LedgerSemantics`, `LedgerLawful` (the
+  TD-0 discharge pack: cylinder split / block supports / (ii.3) disjointness /
+  (ii.4) forcing / D.8 (VERTEX) junction / count-value clauses), `LedgerStrata`,
+  `LedgerScope`, `LedgerClean`; NO sorry. Fan-out `TD1..TD6` (7 E-phase sorries)
+  incl. TD-5's typed `LeakFreeCarrier` DEF landed and TD-6's `transDeep_of_ledger`
+  + `ledger_freshRowOn` statements elaborating against the UNTOUCHED §3 consumer
+  signatures. ONE RESPELLING, FLAGGED (TD-6 docstring): `transDeep_of_ledger` is a
+  `noncomputable def`, not the §3 display's `theorem` — the landed `TransDeep`
+  lives in `Type` (its bare-Prop `leakFree` field, the carrier's own TYPE NOTE);
+  a `Nonempty` wrapper was rejected because it would erase WHICH carrier fills
+  `leakFree` ([R2-G1]). Statement content unchanged. E-PHASE FINDING, FLAGGED (TDDefs docstring flag 2): the count-VALUE
+  content priced at TD-1 necessarily rides `LedgerLawful.slot_count_val` (an
+  abstract datum has no ℤ_p content), relocating the LED/CL5 substance into TD-0's
+  clause discharge — wave-1 staffing re-adjudicates pricing; no statement deviates.
+
+Consumer signatures (§3 `TransDeep`, §4 carriers) byte-untouched; V9 not imported
+anywhere (§6 fence (v) honored at the import graph). Open at HEAD after this wave:
+15 E-phase sorries in B2D (8 GR + 7 TD) + CL5 (= HC1 `C6_alphabetCard.lean:129`,
+untouched). Next per §5: wave 1 = TD-0 + TD-3 + CL5 (two fronts), with N-TD1 built
+BEFORE TD-3/CL5 proofs and N-GR1 before GR-2/GR-3.
