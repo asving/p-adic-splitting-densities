@@ -84,17 +84,30 @@ named fragment (K3-δ), consumed by clause (R)". The CONSUMER being served
 δ > 1): the re-based classifier obeys the same digit/alphabet laws with
 a_δ = δ·a₁ — O-8b (M14), PROVED-UNVERIFIED conditional on (R1)–(R4)".
 
-STATUS UPDATE SINCE THE BLUEPRINT WAS WRITTEN (Wave 1 landed, on file):
-H4-M2's dictionary makes the same-keys-transport matching PRECISE at this
-group's slice and PROVES Stable ⟺ (R4) ⟺ gcd(m, δ) = 1 there (its own
-named rows [IN-R1]/[IN-U]/`GcdSlice` displayed, not absorbed). H4-M1's
-(R1)–(R3) pass is PROVED over W(F_q) at its §0.4 perimeter. So the two
-undefined terms of naive (b) now have exactly ONE recorded candidate
-precisification each: "matching" = H4-M2's same-keys device at the M2 slice;
+STATUS UPDATE SINCE THE BLUEPRINT WAS WRITTEN (Wave 1 landed, on file;
+M2-seam description refreshed at fold 3, pass-3 finding 1, against M2's
+state AT THIS FOLD'S READ — M2 REVISION 1; M2 is under concurrent re-fold,
+so any later M2 revision supersedes this description and must be re-read at
+the next M4 touch): H4-M2's dictionary makes the matching PRECISE at this
+group's slice, and since M2 REVISION 1 the matched-position definition is
+KEY-FREE — matching by the INVARIANT data the two classifiers independently
+compute (stage tuples (e_j, h_j, g_j), base degree d), with NO key clause:
+the key/valuation coincidence the retired "same-keys" wording presupposed
+is extracted as M2's displayed OPEN lemma DICT-0, consumed everywhere as
+the named hypothesis [IN-C] (every consumer of "matched", this note
+included, carries it — M2 §5). At that matching M2 states Stable ⟺ (R4) ⟺
+gcd(m, δ) = 1, MATH-conditional on FOUR named inputs
+[IN-R1]/[IN-U]/[IN-C]/[IN-F1] plus the `GcdSlice` [M]-rows (displayed, not
+absorbed). H4-M1's (R1)–(R3) pass is PROVED over W(F_q) at its §0.4
+perimeter. So the two undefined terms of naive (b) now have exactly ONE
+recorded candidate precisification each: "matching" = H4-M2's KEY-FREE
+invariant-data matching at the M2 slice (with its [IN-C] price displayed);
 "realized ledger" = the interface shape typed at H4-L7's `RealizedLedger`
 (realization SEMANTICS still fenced at H4-F2). (b) remains unposed at FULL
 scope — the full (a6) dictionary is still an owed REL.1 artifact — which is
 exactly why the two routes below are the only precise statements on offer.
+Where blueprint/route quotes below say "same-keys", that VERBATIM wording
+predates M2 REVISION 1 and is read through this update.
 
 ADJACENCY FENCE (blueprint §1, verbatim): "Adjacent, NOT this group:
 REL.2(e) β-IDENTIFICATION (the [2r]-side typing of the same D-c seam —
@@ -138,6 +151,12 @@ variable (p : ℕ) [Fact p.Prime]
 > Route A, which N-K3 hunts). Deliverable: (K3-δ) retires from clause (R);
 > clause (R) returns to (H4a)-only at this interface (ROOT's anticipated
 > outcome). Member (b) at FULL scope stays open.
+
+STALENESS NOTE on the quote (fold 3): the quoted "under the same-keys
+matching" clause is the blueprint's pre-M2-REVISION-1 wording, kept
+VERBATIM per the statement fence. Under M2's CURRENT (REVISION 1) KEY-FREE
+matching the gcd criterion (Lemma 4) is unchanged in content, but its
+reading is priced through DICT-0/[IN-C] — see §1's status update.
 
 Typed face (already on file, consumed by import — H4-L8, Kernel.lean):
 Route A's target is `K3deltaStmt p RL` (per-pool `Stable`), and the
@@ -257,9 +276,14 @@ each flagged honestly):
    "accumulated residue degree m = d·g₁···g_k" reading of `mdeg` is pinned
    only through the `DictSlice` hypothesis matching H4-M2's
    `mdeg x = G.dDeg x * (G.gDegs x).prod`; the Lean faces themselves do not
-   constrain `mdeg`. Every §2.2–§2.3 theorem is exactly as strong as the
-   `DictSlice` hypothesis supplied to it — which is the design (the
-   [M]-content stays in hypothesis position), now displayed.
+   constrain `mdeg`. PROVENANCE OF THE PIN, current (fold 3, pass-3 finding
+   1): the pin's M2 source is the KEY-FREE matching hypothesis (REVISION 1)
+   — the prefix degree data (d; g₁, …, g_k) are the matching's INVARIANT
+   data, and reading them as x's data at the matched position carries M2's
+   [IN-C] price (DICT-0, displayed open) along with the `GcdSlice` rows.
+   Every §2.2–§2.3 theorem is exactly as strong as the `DictSlice`
+   hypothesis supplied to it — which is the design (the [M]-content stays
+   in hypothesis position), now displayed with its full price.
 6. **Ambient quantification: the displayed faces fix ONE prime p (the
    section `variable (p : ℕ) [Fact p.Prime]`) and contain NO degree n.**
    This corroborates pass-2 finding 2: the "every (n, p, δ)" burden of §5.2
@@ -270,12 +294,15 @@ each flagged honestly):
 -/
 
 /-- The (a6)/(EQ-1) dictionary's conclusion at this group's slice, as an
-INTERFACE: `Stable` ⟺ gcd(m, δ) = 1 at the same-keys matching, where
-`mdeg x` is x's accumulated residue degree m = d·g₁···g_k. This is EXACTLY
-the conclusion of H4-M2's `alphabetData_stable_iff_coprime` (proved there at
-any §7.2-conforming instance carrying the `GcdSlice` rows, with
-`mdeg x = G.dDeg x * (G.gDegs x).prod`; conditional on M2's named rows
-[IN-R1]/[IN-U] + `GcdSlice.l4_persist`/`coincide` — see M2 §5). It enters
+INTERFACE: `Stable` ⟺ gcd(m, δ) = 1 at M2's KEY-FREE matching (REVISION 1
+— invariant-data matching; the key/valuation coincidence is M2's displayed
+open lemma DICT-0, consumed as [IN-C]), where `mdeg x` is x's accumulated
+residue degree m = d·g₁···g_k. This is EXACTLY the conclusion of H4-M2's
+`alphabetData_stable_iff_coprime` (proved there at any §7.2-conforming
+instance carrying the `GcdSlice` rows, with
+`mdeg x = G.dDeg x * (G.gDegs x).prod`; MATH-conditional on M2's named
+inputs [IN-R1]/[IN-U]/[IN-C]/[IN-F1] + `GcdSlice.l4_persist`/`coincide` —
+see M2 §5). It enters
 here as a hypothesis ONLY because M2 is a literate note outside the import
 graph; every consumer below displays it. It is NOT a new assumption of this
 unit. -/
@@ -311,9 +338,10 @@ theorem ubxb_iff_realized_coprime {Sp : SpeciesSyntax} {AD : AlphabetData p Sp}
 /-!
 ### §2.3 The split-countermodel PRESSURE on naive (b), displayed — no countermodel claimed
 
-The pressure, exactly: under the same-keys reading, M14 Lemma 4 (now H4-M2's
-proved `stable_iff_coprime`) makes ANY realized matched position with
-gcd(m, δ) > 1 an outright refuter. The two Lean faces below display the
+The pressure, exactly: under M2's matching (KEY-FREE at REVISION 1, priced
+by [IN-C] — the `DictSlice` hypothesis carries that price), M14 Lemma 4
+(H4-M2's `stable_iff_coprime`, conditional on the `GcdSlice` rows) makes
+ANY realized matched position with gcd(m, δ) > 1 an outright refuter. The two Lean faces below display the
 refutation MECHANISM at both scopes; they fire only on a WITNESS (a realized
 non-coprime pool/position), and no such witness is on file. What IS on file:
 the F₉-shape seed (m, δ) = (2, 2) is out-of-domain as abstract species data
@@ -323,8 +351,9 @@ open; N-K3 probes it empirically (§5.3).
 -/
 
 /-- Pressure at (K3-δ) scope: ONE realized pool violating Lemma 4's gcd
-criterion refutes (K3-δ) under the same-keys reading — the refuter shape
-N-K3 hunts. Fires only on a witness `P`; none is claimed. -/
+criterion refutes (K3-δ) under M2's key-free matching reading (the
+`DictSlice` hypothesis, [IN-C]-priced) — the refuter shape N-K3 hunts.
+Fires only on a witness `P`; none is claimed. -/
 theorem not_k3delta_of_noncoprime_pool {Sp : SpeciesSyntax}
     {AD : AlphabetData p Sp} (RL : RealizedLedger p AD) {mdeg : AD.Pos → ℕ}
     (hdict : DictSlice p AD mdeg) (P : RL.Pool)
@@ -333,7 +362,8 @@ theorem not_k3delta_of_noncoprime_pool {Sp : SpeciesSyntax}
   fun h => hP ((hdict (RL.poolIdx P) (RL.poolPos P)).mp (h P))
 
 /-- Pressure at full-(b) scope: one realized non-coprime position at any δ
-refutes naive (b) under the same-keys reading. -/
+refutes naive (b) under M2's key-free matching reading (the `DictSlice`
+hypothesis, [IN-C]-priced). -/
 theorem not_ubxb_of_noncoprime_realized {Sp : SpeciesSyntax}
     {AD : AlphabetData p Sp} (RL : RealizedLedger p AD) {mdeg : AD.Pos → ℕ}
     (hdict : DictSlice p AD mdeg) {δ : ℕ+} {x : AD.Pos}
@@ -404,7 +434,7 @@ typed rows.
 | statement | `K3deltaStmt` (per-pool δ-stability), (K3-δ)-only | intrinsic exponent law at realized positions, all δ (H4-F5 shape) |
 | discharges as stated? | YES for the (K3-δ) row (fragment retires from clause (R)); (b) at FULL scope stays open | NO — REPLACEMENT obligation; retires (UB-X)(b)+(K3-δ) only through the ROOT re-scope |
 | post-dictionary residue | realized per-pool coprimality (`k3delta_iff_pool_coprime`) at EVERY consumed (n, p, δ) — an open realization property; no structural mechanism on file forces it | (R1)–(R3) over W(F_q) (H4-M1, PROVED at its §0.4 perimeter) + M14's Theorem vs the symbolic skeleton (H4-M5 work, mechanism displayed in M14) |
-| cross-base dictionary consumed? | YES (H4-M2 + its [IN-R1]/[IN-U]/`GcdSlice` conditionality) | NO |
+| cross-base dictionary consumed? | YES (H4-M2 at REVISION 1: key-free matching + its full price [IN-R1]/[IN-U]/[IN-C]/[IN-F1] + the `GcdSlice` rows) | NO |
 | refutable by N-K3? | YES — one non-coprime realized pool kills it | only via an intrinsic-law violation (which escalates to (EQ-2) itself) |
 | ROOT touch needed | none for the fragment (anticipated outcome) | YES — ledger statement change, ROOT owner's touch |
 
@@ -452,9 +482,12 @@ degree m is coprime to its pool index δ. Three reasons this is NOT cheap:
    it is (UB-X)(b)-realization content — the very thing §3.2 found unposed.
 3. **Route A inherits the dictionary's full conditionality** ([IN-R1] —
    M1's perimeter row; [IN-U] MacLane-uniqueness, literature-pinned, pin
-   precision still a LITUNIT duty; the `GcdSlice` rows' Lean discharge
-   fenced at H4-F6) PLUS the realization residue. Route B consumes none of
-   the cross-base chain.
+   precision still a LITUNIT duty; [IN-C] = M2's DICT-0 key/valuation
+   coincidence, DISPLAYED OPEN — the price of the key-free matching, which
+   every consumer of "matched" carries (M2 REVISION 1, pass-3 finding 1
+   fold); [IN-F1] the Lidl–Niederreiter gcd count; the `GcdSlice` rows'
+   Lean discharge fenced at H4-F6) PLUS the realization residue. Route B
+   consumes none of the cross-base chain.
 
 ### §5.3 N-K3's verdict feeds the call — branch table (robust across the non-escalating branches only)
 
@@ -576,13 +609,31 @@ standing rule (§M row, verbatim). Exactly what changes and in what order:
 
 ## §7. Consumption map, gate record, declaration list
 
-CONSUMED: H4-M2 (`H4M2_dict_attempt.md`: DICT-1, `stable_iff_coprime`
-chain, §4 F₉ instance, §5 residue list) — via the `DictSlice` interface,
+CONSUMED: H4-M2 (`H4M2_dict_attempt.md`, READ AT ITS REVISION 1 STATE —
+key-free matching, DICT-0/[IN-C] displayed open, four named inputs; M2 is
+under concurrent re-fold, so this description must be re-read at any later
+M4 touch: DICT-1, `stable_iff_coprime` chain, §4 F₉ instance, §5 residue
+list) — via the `DictSlice` interface,
 each use displayed; O-11 §3.4 (K3-c) row text; ROOT (UB-X)/(R1)–(R4) row
 texts; blueprint §3.2 route texts (verbatim above); H4-L7/L8 typed faces
 (by import); H4-M1's resolution (status input to §5.2 only). NOT consumed:
 REL.2(e) internals; the n = 3 pack's realization data (N-K3's business); any
 Route-B proof step (H4-M5's business).
+
+DATING CONVENTION (stated explicitly at fold 3, pass-3 finding 2): this
+record dates events by CAMPAIGN-DATE LABEL — the date assigned by the
+dispatching batch/fleet and carried in the artifact FILENAMES (the repo's
+standing convention for pass artifacts) — not by wallclock. The two can
+differ: the H4 owed-pass batch that produced passes 1'–3 of this arc was
+labeled `2026-08-08` (filenames `H4M4_pass{2,3}_2026-08-08.md`,
+`H4M2_pass1_2026-08-08.md`, …) while the work landed at WALLCLOCK
+2026-08-02 (git ledger: the harvest and fold commits are author-dated
+2026-08-02). The adjudication's own dates (composition 2026-08-01; ROOT
+frame `ROOT_ASSEMBLY_2026-08-02.md`) are wallclock dates that coincide
+with their campaign labels. Under this convention the record is
+internally consistent: "PASS 2 RAN (2026-08-08)" below names the batch's
+campaign label, wallclock 2026-08-02 — pass 2 does NOT postdate this
+note's folds, and no future-dated provenance is claimed.
 
 GATES: (1) `lake env lean notes/openmath/H4M4_k3delta_adjudication.md` —
 GREEN, zero sorry (this file, re-run after every fold edit). (2) Codex
@@ -600,7 +651,8 @@ and §5.5 re-weighted so the recommendation rests on §5.2 alone. Codex pass
 1 also confirmed: both route statements transcribed accurately; no
 countermodel or discharge claimed; the Lean declarations match the prose;
 [M]-content stays hypothetical; H4-F5 not landed; ROOT-sync authorization
-fence correct. PASS 2 RAN (2026-08-08, `H4M4_pass2_2026-08-08.md`, on the
+fence correct. PASS 2 RAN (campaign label 2026-08-08, wallclock
+2026-08-02; `H4M4_pass2_2026-08-08.md`, on the
 fold-1 text): verdict GAPS — the three fold-1 items ([C1]/[C2]/[G3]) all
 confirmed CURED; three new findings, all ACCEPTED and FOLDED (fold 2, this
 revision): [P2-1, GAP] the imported Lean faces cited opaquely (names
@@ -621,11 +673,43 @@ would weaken reason 2 without overturning the verdict (reasons 1 + 3
 suffice); [P2-3, GAP] "branch-robust" overstated → §0.3, §5.3, §5.5
 re-worded: the recommendation is robust across the non-escalating branches
 (i)/(ii) ONLY and is cancelled (adjudication re-opens) on the dominating
-branch (iii). REVISION RECORD: rev 1 = composition; rev 2 = fold 1 (Codex
-pass 1: [C1]/[C2]/[G3]); rev 3 = fold 2 (pass 2: [P2-1]/[P2-2]/[P2-3],
-2026-08-08) — no route text, Lean declaration, or recommendation changed
-at fold 2; only citations displayed and robustness/quantifier scope made
-honest. PASS 3 (on this folded text): verdict to be recorded here. N-K3
+branch (iii). PASS 3 RAN (campaign label 2026-08-08, wallclock 2026-08-02;
+`H4M4_pass3_2026-08-08.md`, on the fold-2 text): verdict GAPS-ONLY — no
+critical defect; F1–F5 and the pass-2 folds all confirmed (faces MATCH,
+`RealizedLedger` an honest downgrade, `poolIdx` caveat honest,
+assembly-frame provenance and branch scoping correct); two findings, both
+ACCEPTED and FOLDED (fold 3, this revision): [P3-1, GAP] the M2-seam
+description was STALE — the note still called M2's matching "same-keys"
+and priced the dictionary through [IN-R1]/[IN-U]/`GcdSlice` only, while
+M2's REVISION 1 made the matching KEY-FREE with the coincidence extracted
+as DICT-0, displayed open, consumed as [IN-C] → every non-verbatim
+occurrence updated (§1 status update rewritten against M2's
+state-at-read; §2.1 staleness note on the verbatim quote; §2.1b item 5's
+mdeg-pin provenance re-attributed to the key-free matching hypothesis +
+its [IN-C] price; §2.2 `DictSlice` docstring; §2.3 prose + docstrings; §4
+table row; §5.2 reason 3 now lists the full price
+[IN-R1]/[IN-U]/[IN-C]/[IN-F1]); this only STRENGTHENS §5.2 reason 3
+against cheap Route A — no route text, Lean declaration, or
+recommendation changed; [P3-2, GAP] the gate record dated pass 2
+"2026-08-08" against the 2026-08-02 adjudication frame, reading as
+future-dated provenance → the DATING CONVENTION paragraph above added
+(campaign-date labels vs wallclock, git-ledger evidence) and the pass
+records restated under it. Pass 3 could not re-run the Lean gates (its
+launcher lacked `bubblewrap`); re-run at fold 3 instead — see gate (1)
+and the fold-3 line below. REVISION RECORD: rev 1 = composition; rev 2 =
+fold 1 (Codex pass 1: [C1]/[C2]/[G3]); rev 3 = fold 2 (pass 2:
+[P2-1]/[P2-2]/[P2-3], campaign label 2026-08-08 = wallclock 2026-08-02) —
+no route text, Lean declaration, or recommendation changed at fold 2;
+only citations displayed and robustness/quantifier scope made honest;
+rev 4 = fold 3 (pass 3: [P3-1]/[P3-2], wallclock 2026-08-02) — M2-seam
+description refreshed to M2's REVISION-1 state + dating convention
+displayed; prose/docstring-only delta, no statement change. FOLD-3 GATE
+RE-RUN (wallclock 2026-08-02): `lake env lean
+notes/openmath/H4M4_k3delta_adjudication.md` GREEN, zero sorry, on this
+rev-4 text; the quoted faces' modules re-checked independently —
+`lake env lean LeanUrat/Scaffold/HDischarge/H4/Defs.lean` GREEN and
+`lake env lean LeanUrat/Scaffold/HDischarge/H4/Kernel.lean` GREEN (exit 0,
+no diagnostics). N-K3
 is NOT this unit's gate (it seals M4/M5 jointly); its on-file status and
 branch handling are §5.3.
 

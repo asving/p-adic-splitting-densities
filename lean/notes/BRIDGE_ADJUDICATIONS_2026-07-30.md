@@ -3344,3 +3344,32 @@ witnesses scoped to split + persistsFrom failure only (finding 8). Lean delta
 comment/docstring-only; gate re-run GREEN, zero sorry, Lean-core footprint
 unchanged. COUNTER: clean 0/1 — one clean hostile pass owed on REVISION 1
 (harvest: "M2 fold + 1 clean owed").
+
+## 2026-08-08 (campaign label; wallclock 2026-08-02): H4-M4 fold 3 (pass-3 GAPS-ONLY folded; rev 4)
+
+M4 pass 3 (`H4M4_pass3_2026-08-08.md`, verdict GAPS-ONLY — no critical
+defect; F1–F5 + all fold-2 items confirmed) folded into
+`H4M4_k3delta_adjudication.md` (rev 4): [P3-1] the M2-seam description was
+STALE ("same-keys" matching; dictionary priced through [IN-R1]/[IN-U]/
+`GcdSlice` only, omitting [IN-C]) → refreshed against M2's state AT THE
+FOLD'S READ = REVISION 1 (key-free invariant-data matching; the presupposed
+key/valuation coincidence = DICT-0, DISPLAYED OPEN, consumed as [IN-C];
+full price [IN-R1]/[IN-U]/[IN-C]/[IN-F1] + `GcdSlice` rows): §1 status
+update rewritten, §2.1 verbatim-quote staleness note, §2.1b item-5 mdeg-pin
+provenance re-attributed to the key-free matching hypothesis + its [IN-C]
+price, §2.2 `DictSlice` docstring, §2.3 prose/docstrings, §4 table, §5.2
+reason 3 — strengthens the anti-cheap-A case; no route text, Lean
+declaration, or recommendation changed. M2 is under CONCURRENT re-fold: the
+description is pinned to REVISION 1 with an explicit re-read-at-next-touch
+note. [P3-2] the pass-2 date read as future-dated provenance → the note's
+§7 now states the DATING CONVENTION explicitly (pass artifacts carry the
+dispatching batch's CAMPAIGN-DATE label, here 2026-08-08, vs wallclock
+2026-08-02 — git ledger: harvest/fold commits author-dated 2026-08-02) and
+restates the pass records under it; record internally consistent, no
+future-dated claim. Pass 3 could not run the Lean gates (no `bubblewrap` in
+its launcher); RE-RUN AT FOLD 3 (wallclock 2026-08-02): note gate `lake env
+lean notes/openmath/H4M4_k3delta_adjudication.md` GREEN zero sorry on the
+rev-4 text; quoted-face modules `lake env lean
+LeanUrat/Scaffold/HDischarge/H4/Defs.lean` GREEN and `.../H4/Kernel.lean`
+GREEN (exit 0, no diagnostics). Owed: a further pass on the rev-4 text
+toward the clean bar; M5 second clean; N-K3.
