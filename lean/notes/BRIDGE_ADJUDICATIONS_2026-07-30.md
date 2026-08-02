@@ -4683,3 +4683,20 @@ markers; every delta explained — the revision's own retirement brackets
 account for the (H4a)/(R1)–(R4)/K3-δ growth). Roster NINE rows,
 unchanged. **The acceptance citation STAYS at REVISION 20 (VC22); VC26 is
 OWED on the REVISION-23 wording.** PROJECT_STATE synced (r24 checkpoint).
+
+## 2026-08-08: VC26 + VC26b CONFIRMED — the ROOT acceptance RE-ANCHORS at REVISION 23
+
+VC26 (full audit of REVISION 23, the r24 text): 0 critical, 1 gap — all four VC25
+dispositions PASS at their sites; the whole-operative sweep found zero surviving
+unbracketed (H4a)/(R1)-(R4) live uses; the full 12-pattern occurrence census reproduced
+EXACTLY with every delta's recorded reason; NINE rows; clause (R)/(UB) recounts 8/8;
+line-anchored falsifier 0 hits; all fold commits + the §29 ASVIN FLAG verified displayed.
+The single gap was an AUDIT-INPUT artifact: the orchestrator's provenance appendix omitted
+N-T4 (not a separate file — the §N NUMERIC-GATE RECORD embedded at
+H4M1_rpack_attempt.md:1091-1186). VC26b (narrow confirming pass, completed appendix with
+the §N slice verbatim): CONFIRMED 0C/0G — the auditor additionally re-executed the
+embedded N-T4 script independently in-process, all 13 assertions PASS. Reports:
+lean/notes/openmath/VC26_report.md (565aa28), VC26b_report.md (this commit).
+CONSEQUENCE: the acceptance anchor moves REVISION 20/VC22 → REVISION 23/VC26+VC26b.
+The ROOT anchor-citation text update rides the next revision fold (r25), per the VC22
+precedent. VC27 next in cadence.
