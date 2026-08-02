@@ -50,11 +50,17 @@ invariant `Stage.hmonic` (`Moves/Defs.lean:124`; base `Polynomial.monic_X` at
 `HC1/T1_baseStage.lean:1547`; re-supplied per transition, e.g.
 `MovesD/R7_ramifiedForge.lean:118`) — PAR-MON's corpus carrier.
 
-RG-2 fence display (honesty): recorded interior non-recentering transitions carry
+RG-2 fence display (honesty; REV 4 — the retired location claim removed):
+recorded interior non-recentering transitions carry
 `νᵢ.e = 1` (the HK-06 recording fence, a DISCLOSED wiring-scope restriction with
 its own ledger home) — so `historyCoherent_key_K0`'s recorded instances have
-stride 1; e ≥ 2 lifts are fired (and covered) at `LandingKey`/`ReadsOf` final
-reads.  Conformance quantifies over FIRED lifts; the fence restricts what fires,
+stride 1.  No existence or LOCATION claim is made for e ≥ 2 lifts: the compiled
+coverage is per-declaration and conditional (`readsOf_landing_K0` covers the
+reads of an ASSUMED `ReadsOf` run, final read included, where e ≥ 2 strides are
+recordable; locating ALL fired e ≥ 2 lifts at final reads is the unit note's
+open SITE-EXH, and no compiled e ≥ 2 `ReadsOf` existence lemma is on file), and
+an e ≥ 2 RECENTERING read would receive only the SYNTHETIC (1, 1) conclusion.
+Conformance quantifies over FIRED lifts; the fence restricts what fires,
 not the conformance.
 -/
 import LeanUrat.Scaffold.HDischarge.H1.Defs
@@ -73,9 +79,13 @@ variable {p : ℕ} [Fact p.Prime] {F : Type u} [Field F] [Finite F]
 /-- **(K0) at a read** (KP-STEP §S1.3, the REV-2 degree-conformance hypothesis):
 `Φhat` is monic of the conformant degree `e'·g·deg σ.Φ` — ONE clause of the class
 the VERIFIED Theorem KP-STEP quantifies over (that class is (K0)+(K1)+(K2);
-(K1)+(K2) ride the open GRADED-READ seam and are not expressed here), and
-OL-1(a)'s normalization `m_{i+1} = e_i·f_i·m_i` (with `f_i = g` via `Node.hψdeg`)
-at the site. -/
+(K1)+(K2) ride the open GRADED-READ seam and are not expressed here), and — at
+NON-RECENTERING sites, where the carrier corollaries conclude at the node's
+actual `(e, g)` — OL-1(a)'s normalization `m_{i+1} = e_i·f_i·m_i` (with
+`f_i = g` via `Node.hψdeg`) at the site.  At RECENTERING sites the compiled
+conclusion is the SYNTHETIC pair `K0Conformant σ 1 1`, and OL-1(a) at the
+site's actual `(e_i, f_i)` additionally needs the open REC-PARAM
+identification (unit note §S2 case (b)/§S4 (i-c)). -/
 def K0Conformant (σ : Stage p F) (g e' : ℕ) (Φhat : Polynomial ℤ_[p]) : Prop :=
   Φhat.Monic ∧ Φhat.natDegree = e' * g * σ.Φ.natDegree
 

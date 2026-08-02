@@ -2449,3 +2449,43 @@ gate_readsOf_inert2 is inert, e = 1); (5) whole-note sweep killed two more
 leaks (header re-headline; S4 (vi) DevBound "degree identification at wired
 sites"). The note emerges strictly more conditional; no compiled claim
 weakened. Clean counter stays 0/2; next: fresh hostile pass on REVISION 3.
+
+## B-M2 PASS 3 CRITICAL — FOLDED AS REVISION 4, THE STRUCTURAL REWRITE (2026-08-02)
+
+Pass 3 (Codex, BM2_pass3_2026-08-06.md): 5 critical + 3 gaps, ALL the same
+genre passes 1-2 hit (grammatical scope including recentering carriers in
+claims the compiled Lean gives only for non-recentering carriers) — S0's
+"(K0) is proved" row, S1's "discharges exactly one", the order-<=1
+conclusion, RG-2's LOCATION claim ("e>=2 lifts, WHEN fired, fire AT final
+reads" — SITE-EXH territory), and the Lean module comment still carrying the
+RETIRED pass-2 existence claim. Two piecemeal folds failed on the genre, so
+per the bounded-repair rule REVISION 4 (H1_BM2) is STRUCTURAL, not a patch:
+(1) two claim classes defined ONCE (new SC section) — [NR] = the
+non-recentering recorded carriers (landingKey_K0 / historyCoherent_key_K0 /
+readsOf_landing_K0 legs; actual-pair (K0) PROVED at the node's real (e,g))
+vs [RC] = the recentering carriers (*_recentering_K0; proved = monicity +
+SYNTHETIC K0Conformant sigma 1 1 ONLY; actual-pair (K0) awaits REC-PARAM;
+IsReadLift/(SL-top)/(SL-dev) await REC-SL); (2) S0 rebuilt as THE
+status-by-claim-class table (every claim x {[NR],[RC]}), the single source
+of status truth; (3) whole-note sweep — every status sentence tagged
+[NR]/[RC] or deferred to the table; historical revision records carry
+supersession bracket notes; no untagged universal survives (new attack item
+S6(iii).6 makes the genre mechanically checkable). Also folded: RG-2's
+location claim DROPPED entirely (compiled coverage stated per-declaration
+and conditional; e>=2-recentering caveat added: synthetic (1,1) only);
+SITE-EXH consumer list EXTENDED (+= universal OL-1(b)/(c) readings, the S0
+class row, S4(i-a)'s universal naked-data claim, the retired RG-2 location
+claim); REC-SL consumer list += DevBound (S4(i-c) now agrees with S4(vi)).
+POSITIVES recorded: (finding 9) REC-PARAM (nu_i.e = 1 and nu_i.g = 1)
+ADJUDICATED SUFFICIENT for corpus OL-1(a) at [RC] sites given
+*_recentering_K0 + Node.hpsideg, NO IsReadLift needed for that clause
+(IsReadLift stays a separate REC-SL leg for the KP-STEP route; abstract
+"every Lift_i(c)" still needs S-1 + SITE-EXH) — displayed at REC-PARAM's
+statement; (finding 10) all nine compiled declarations re-confirmed sound,
+census exact — three hostile passes, compiled face untouched. Lean edits
+this fold: COMMENT-ONLY on H1/Conformance.lean (retired RG-2 module-comment
+line replaced by the conditional per-declaration wording; K0Conformant
+docstring's OL-1(a) sentence [NR]-scoped with the REC-PARAM caveat); diff
+verified comment-only; gate lake env lean GREEN, zero warnings, zero sorry.
+Strictly more conditional a third time; no compiled claim weakened. Clean
+counter stays 0/2; next: fresh hostile pass on REVISION 4.
