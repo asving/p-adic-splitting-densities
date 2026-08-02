@@ -2287,3 +2287,12 @@ corollaries, Scaffold/HDischarge/H1/Conformance.lean, sorry-free, gate clean].
 OL-1: (a) DISCHARGED; (c) = B-M1 S3.2 (verified) on the class; (b) rides the
 graded-reading seam + TR-3-ORD-X. Residue: B-M2 bar 0/2; model seam (A-M2);
 S-1 [T]; GRB inheritance. KP-STEP S8 + blueprint REV 4 annotated.
+
+## B-M2 COMPLETE + MOP-UP TRUTH-UP (7d29ab6 etc., 2026-08-06)
+LIFT-CONF PROVED (definitional chain + PAR-MON stride count) w/ compiled
+sorry-free Lean face (Conformance.lean: K0Conformant, isReadLift_K0, 6
+site corollaries, gate green) — the verified KP-STEP class now provably
+contains every engine-fired lift. Mop-up: H5 truly 17/19 ((PACK-ii) was
+already proved); C4/C5 BLOCKED/DATA honest; EN-U3 RETIRED refuted-by-
+falsifier (adjudication note); H6-A4b blocked on BP_III-owned III-S4
+statement repair (queued). B-M2 hostile pass 1 launched.
