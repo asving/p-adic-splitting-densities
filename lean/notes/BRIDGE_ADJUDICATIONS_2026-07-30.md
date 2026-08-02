@@ -2844,3 +2844,27 @@ re-derivations) both CLEAN. 21-pass total arc. The leaf stands RE-ACCEPTED
 with the N-1 bar met. Methodology legacy (memory + standing constraint in
 every subsequent pass charge): every load-bearing formula pin needs a
 non-textual verification leg.
+
+## B-M2 REVISION 9 — the pass-7 + witness-unit fold (2026-08-02)
+`H1_BM2_2026-08-06.md` REVISION 9 folds three streams: (1) hostile pass 7
+(Codex, `BM2_pass7_2026-08-06.md`, GAPS-ONLY — the arc's first
+non-CRITICAL pass; both gaps accepted); (2) the [RC]-witness unit (commit
+3fd9caf): the REV-8 UNWITNESSED-ON-FILE debt DISCHARGED — pass 7's
+enumerated decls cited per name, `landingKey_recentering_K0` and
+`historyCoherent_recentering_K0` now FIRE on the compiled
+interior-recentering history H₃rc (`rc_landingKey_gate` /
+`rc_historyCoherent_gate`, Lean-core), the `readsOf_landing_K0`
+recentering branch's antecedent gap (no compiled recentering `ReadsOf`
+run) displayed as residual; §S0/§S2/§S5 synthetic-(1,1) rows annotated
+NON-VACUOUS/witnessed; REC-PARAM stratified — e-half compiled at its
+came-from-a-non-recentering-transition scope (`recParam_e_of_transition`),
+residual = the stage/wiring g-half tie + removing that hypothesis;
+(3) the hspecRec finding folded as bracket-corrections at both "g-half
+tied NOWHERE" quotes (overstated: wiring-level only; `Node.hspecRec` ties
+the node-level pair (1,1) by structure field — the fiat layer;
+BM2_TRACE_2026-08-02.md NOT edited, dated record). Census refreshed over
+the current text: 134 hits (121 NOTE + 13 LEAN), rows C124–C134 appended,
+zero [UNTAGGED-STATUS] (method + reconciliation in the REVISION 9
+record). Statuses moved in the honest-upgrade direction only (discharge
+WITH compiled citation); all remaining conditionality displayed. No Lean
+file edited at this revision. Clean counter stays 0/2; pass 8 next.
