@@ -7,8 +7,10 @@ NON-RECENTERING carriers — (K0) at the recorded node's ACTUAL pair, and — at
 RECENTERING carriers — monicity + the SYNTHETIC `K0Conformant σ 1 1` IN THIS FILE
 (the actual pair there follows by the sibling unit's compiled transport
 `k0_actual_of_recentering`, `H1/RecParamE.lean` [REV 10] — `Node.hspecRec` forces
-the pair (1, 1); the WIRING provenance REC-WIRE-G + the e-half
-transition-hypothesis removal stay open per the unit note §S2 case (b)),
+the pair (1, 1); the WIRING provenance REC-WIRE-G is DISCHARGED [REV 12] by
+`recentering_natDegree_eq` + `recParam_eg_of_recentering` (`H1/RecParamE.lean`,
+the pair derived from `HistoryCoherent` alone), which SUBSUMES the e-half
+transition-hypothesis removal — see the unit note §S2 case (b)),
 NOT KP-STEP class membership in either case; KP-STEP's
 class is (K0)+(K1)+(K2), and (K1)+(K2) for the fired lifts ride, on [NR], the
 OPEN graded (SL-dev) reading GRADED-READ, and on [RC] additionally the open
@@ -110,8 +112,10 @@ actual `(e, g)` — OL-1(a)'s normalization `m_{i+1} = e_i·f_i·m_i` (with
 `f_i = g` via `Node.hψdeg`) at the site.  At RECENTERING sites this file's
 compiled conclusion is the SYNTHETIC pair `K0Conformant σ 1 1`; OL-1(a) at the
 site's actual `(e_i, f_i)` follows [REV 10] by the sibling transport
-`k0_actual_of_recentering` (`H1/RecParamE.lean`, via `Node.hspecRec`) — the
-wiring-provenance residuals stay open (unit note §S2 case (b)/§S4 (i-c)). -/
+`k0_actual_of_recentering` (`H1/RecParamE.lean`, via `Node.hspecRec`), and the
+wiring provenance REC-WIRE-G is DISCHARGED [REV 12] via
+`recParam_eg_of_recentering` (subsuming the e-half removal); REC-SL proper
+alone stays open (unit note §S2 case (b)/§S4 (i-c)). -/
 def K0Conformant (σ : Stage p F) (g e' : ℕ) (Φhat : Polynomial ℤ_[p]) : Prop :=
   Φhat.Monic ∧ Φhat.natDegree = e' * g * σ.Φ.natDegree
 

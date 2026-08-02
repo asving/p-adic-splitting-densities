@@ -2979,3 +2979,38 @@ C178 — each annotated at its table), 20 successors C185–C204 published;
 provisional head-level total 148; the implementation re-run + the C030
 semantic-currency lesson = pass 11's §S6-item-7 charge. Clean counter
 stays 0/2; pass 11 next.
+
+## B-M2 REVISION 13 — the pass-11 fold: the stale-doc sweep + consolidated opens + census scope-hole (2026-08-02)
+
+Pass 11 (Codex, hostile, `BM2_pass11_2026-08-06.md`): CRITICAL with the
+same INVERSE profile as passes 9–10 — the REV-12 mathematics VALIDATED,
+every defect DOCUMENTATION-CURRENCY. Finding 1 re-confirmed BOTH new
+theorems CLEAN mathematically (`recentering_natDegree_eq`'s route + safe
+constant edge cases; `recParam_eg_of_recentering`'s correct indices, no
+off-by-one/vacuity; the clause-(c)-only subsumption) — the second
+model-diverse math-clean read of the REC-WIRE-G pair. Finding 5
+re-confirmed the two REV-12 stale-sentence replacements CLEAN locally.
+The five DEFECTS, all folded: (2, CRITICAL) three live Lean doc sentences
+still called REC-WIRE-G/the e-half removal "stay open"/"remain open" — the
+`Conformance.lean` module header, the `K0Conformant` docstring, and the
+`k0_actual_of_recentering` docstring in `RecParamE.lean` — all SYNCED to
+DISCHARGED (citing `recentering_natDegree_eq` + `recParam_eg_of_recentering`;
+e-half SUBSUMED); both files re-run `lake env lean` clean, diffs
+COMMENT-ONLY, zero `sorry`, `#print axioms` Lean-core. (3, GAP) §S2's
+"no species field" → "no use of `Node.hspecRec` (the species-pair fiat); it
+does take `hrec : species = recentering`", and "Every hypothesis comes from
+`HistoryCoherent`" → the accurate form (`hi1`/`hrec` explicit; the
+substantive width/recentering laws from coherence). (4, GAP) ONE canonical
+CONSOLIDATED CURRENT-OPENS LIST added at §S4 (GRADED-READ; REC-SL proper;
+SITE-EXH; the `readsOf_landing_K0` recentering-branch witness debt),
+matching §S0, cited verbatim from the headline. (6, census) C172
+SUPERSEDED (successor C205, the header sentence the REV-12 census missed);
+census scope EXTENDED to ALL doc comments of the three H1 face files
+(`Conformance.lean`/`RecParamE.lean`/`RCWitness.lean`), closing the
+docstring scope hole permanently; rows C205–C208 added; provisional
+head-level total 151; the full grep re-implementation over the extended
+scope = pass 12's §S6-item-7 charge. Lean edits at this revision:
+`Conformance.lean` COMMENT-ONLY (header + `K0Conformant` docstring),
+`RecParamE.lean` COMMENT-ONLY (`k0_actual_of_recentering` docstring);
+`RCWitness.lean` untouched; no existing statement changed. Clean counter
+stays 0/2; pass 12 next.

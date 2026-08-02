@@ -78,9 +78,10 @@ transports to the node's ACTUAL read pair — `Node.hspecRec` (a structure field
 the §C.0 species law) gives `ν.e = 1 ∧ ν.g = 1`, so the actual pair IS (1, 1).
 This IS the original node-level REC-PARAM proposition ("the identification of the
 node's actual (e_i, g_i) with (1, 1)"), supplied. It rides the species structure
-field (the fiat layer): the stage/wiring-level provenance obligations
-(REC-WIRE-G; the e-half's transition-hypothesis removal) remain open and are NOT
-claimed by this lemma. -/
+field (the fiat layer): the stage/wiring-level provenance obligation
+REC-WIRE-G (which SUBSUMES the e-half's transition-hypothesis removal) is not
+claimed by THIS lemma, but is DISCHARGED [REV 12] by the companion
+`recParam_eg_of_recentering` below (from `HistoryCoherent` alone). -/
 theorem k0_actual_of_recentering (ν : Node p F) (Φhat : Polynomial ℤ_[p])
     (hspec : ν.species = ReadSpecies.recentering)
     (hK : K0Conformant ν.σ 1 1 Φhat) :
