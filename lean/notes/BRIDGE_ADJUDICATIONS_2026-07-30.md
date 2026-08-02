@@ -3135,3 +3135,15 @@ scalar×rescaling law; the Φ₂ monicity computation displayed; the TS1
 independence perimeter stated exactly + TS1b strengthened). GRB leaf NOT
 edited — its residue re-pricing waits for the orchestrator's next fold; the
 2-clean bar continues there.
+
+## 2026-08-08: VC22 CONFIRMED — the ROOT acceptance RE-ANCHORS at REVISION 20
+
+Full-document pass (fresh context): Step 1-19 spine composes end-to-end
+post-r19/r20/r21; TEN rows recounted; 8 honesty spot-checks (5 touched + 3
+controls) all FAITHFUL against artifacts and commits; the §26 audit table
+reproduced (one ADVISORY: the (GR-B) row's 55/2-NEW counts are 54/3 under
+the line-site unit — metadata only, zero stale operative displays). The
+acceptance anchor moves REVISION 18 → REVISION 20; the §0/§6 counter lines
+update at the next ROOT revision (r22) per the doc-unit discipline.
+Same date: the D-11 leaf-bar pass CONFIRMED (936ad76) — the (H9) re-open
+trigger is SPENT; and TR3-S1 composed+proved (549e8a6), pass 1 zero-critical.
