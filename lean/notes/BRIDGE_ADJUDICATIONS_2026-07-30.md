@@ -5029,3 +5029,44 @@ lean/notes/openmath/VC28_report.md (this commit).
 CONSEQUENCE: the acceptance anchor moves REVISION 24/VC27+VC27b → REVISION 25/VC28.
 The whole wave-9 harvest is now inside the certified anchor. ROOT citation text rides
 r27. VC29 next in cadence. Synthesis pass 6 running (its queue = the next wave).
+
+## 2026-08-08: SYNTHESIS PASS 6 — the forge chartered (junc_bundle ALONE); clean pass-5 audit; queue re-ranked
+
+`docs/SYNTHESIS_PASS6_2026-08-08.md`. THE FORGE DECISION (the r26-7 owed
+chartering): the three named targets are three SPECIES (OM tower runs / B2D
+ledger data / K-CUT tables — no shared infrastructure beyond discipline).
+**F1**: CHARTER `junc_bundle` alone (price L; the only target with a live
+consumer chain — last SITE-EXH residual, the DIterJunctionSupplier
+substrate, B-M2's last non-hypothesis-shaped wall; staged: deep run
+preregistered-from-numerics → gate un-hypothesized → supplier gates);
+DECLINE the nonempty-parent leakFree instance (revisit only if the
+classifier consumer face demands it for non-vacuity) and the
+two-equal-state table (a second leg of a compiled blocker is not
+progress); GR stage-forge stays DECLINED, readsOf run-forge stays DEAD.
+**F2**: BasePolygonLengthLaw = genuine self-contained polygon unit,
+CHARTERED HIGH (M) — it IS the convexity gap, honestly priced; route
+quarried from PROVED kernels (npHeight_convexOn etc.), new machinery = the
+negative-prefix telescoping; unlocks terminalPolySem_kp0_of_law
+stratum-wide. **F3** collapses: (a) the v4/LeakFaceV4 pattern makes the
+Step-10/K1 classifier consumer face attempt-grade (queued M); (b) hsc is
+PERMANENTLY hypothesis-shaped (records bundle no StageCore; round-2 fields
+give only σ.R(−1)² = 1) — optional S two-instance witness only; (c) deeper
+strata NOT yet finite-algebra (ǫ-recurrence can revive at order 3 even on
+e₀ = 1) — next candidate = order-3 all-e_j = 1, entry = preregistered
+depth-3 probe; (d) the [RC] wiring makes junc_bundle B-M2's ONLY
+non-hypothesis-shaped wall (concentrates the F1 charter). **F4** row
+review: (ADM) NOT blocked — G-ADM-2 (the track-A/B adjudicating attainment
+scan) NEVER RAN, queued as the row's countermodel-first entry; (H6) C2
+STAYS BLOCKED (no new mechanism at k′ ≥ 1; design note only); (H7)
+never-probed — first instance probe queued; (H8′)(i)/(ii) blocked on
+owners (optional n2 graft bijectivity check); (UB-X) consumer-need walk =
+our half of the Route-B gate, queued; (PACK)/(E-N) background. **F5**
+pass-5 audit: dropped-again count ZERO (first clean audit; 2 = Asvin-gated,
+10/11 = deliberately deferred to this pass). **F6** dead weight: StageCore
+docstring sync ASSIGNED to the first landing Lean unit (#2 stage 1, else
+#5); the r27 fold DUE (VC28 confirmed first-pass post-r26; census refresh
+36 sorry sites/B2D 0 rides it). QUEUE: r27 fold → junc_bundle stage 1 (L,
+hardest-first) → BasePolygonLengthLaw (M) → G-ADM-2 scan → classifier
+consumer face → depth-3 probe → (H7) probe → (UB-X) walk →
+DIterJunctionSupplier (gates blocked on #2) → ITER-LAW attempt → Asvin
+batch → optional S batch → background/blocked.
