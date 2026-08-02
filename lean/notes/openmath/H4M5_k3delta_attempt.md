@@ -5,19 +5,27 @@ Unit H4-M5 of `lean/blueprints/HDISCHARGE_H4.md` (§M table + §3.2). This file
 is a LITERATE LEAN MARKDOWN NOTE (the H4-M2/M4 format): prose in comment
 blocks, every Lean declaration compiles. Gate command (from `lean/`):
 `lake env lean notes/openmath/H4M5_k3delta_attempt.md` — green, zero sorry.
-The unit's OTHER gates: hostile pass ×2 (LEDGER AT THE END — THREE passes
-ran: pass 1 REJECT 2C/8G, pass 2 REJECT 1C/4G, pass 3 REVISE 0C/4G, every
-finding accepted and FOLDED IN PLACE; the ledger is the authoritative
-gate record, per its own closing status line) and the N-K3 SEALED
-PREDICTIONS (§6 — sealed here pre-run; no N-K3 artifact exists on file at
-composition, re-verified this session).
+The unit's OTHER gates: hostile pass ×2 (LEDGER AT THE END, the
+authoritative gate record per its own closing status line — FIVE passes
+run: REJECT 2C/8G → REJECT 1C/4G → REVISE 0C/4G → ACCEPT → GAPS-ONLY
+0C/6G, every finding accepted and FOLDED IN PLACE; this header
+deliberately carries only the count and defers to the ledger — the pass-5
+fold cured this very header's stale three-pass summary, finding 1) and
+the N-K3 SEALED PREDICTIONS (§6 — sealed pre-run; N-K3 currency re-checked
+at the pass-5 fold, wallclock 2026-08-02: STILL no N-K3 run artifact on
+file and NO N-K3 results section appended to this note; the seal stands).
 
 DATING NOTE (pass-1 finding 10, accepted): swarm artifacts carry
 inconsistent session labels (H4-M1 is labeled 2026-08-06, H4-M4 2026-08-01,
 the blueprint 2026-08-05). These are labels, not a chronology. ON-FILE at
 this unit's composition means: the file exists in the repo and was read —
 true of H4-M1, H4-M4, M14, and the blueprint, label mismatches
-notwithstanding.
+notwithstanding. PASS-COUNT CONVENTION (pass-5 fold): hostile-pass
+artifacts carry the dispatching BATCH's numbering under its campaign-date
+label (M4 §7's convention) — so the report `H4M5_pass2_2026-08-08.md`
+("pass 2" of the 2026-08-08 batch, wallclock 2026-08-02) is THIS NOTE's
+ledger pass 5; the ledger's sequential numbering is authoritative for the
+gate count.
 
 CHARGE (blueprint §M row, verbatim): "`lean/notes/openmath/
 H4M5_k3delta_attempt.md` — the selected route PROVED | Route A: the match
@@ -28,8 +36,13 @@ display at K3-c's pools; Route B: the intrinsic per-letter law over W(F_q)
 ROUTE SELECTION INPUT (H4-M4 §5.5, on file): **ROUTE B** — "Per §5.2 the
 dictionary does not land a cheap A … Route A is retained on the record as
 the fallback ONLY if the ROOT owner declines the re-scope." This unit
-therefore proves ROUTE B; no Route-A artifact is attempted, and H4-M2's
-dictionary is NOT a dependency of anything below.
+therefore proves ROUTE B; no Route-A artifact is attempted. SCOPE OF THE
+M2 NON-DEPENDENCY (pass-5 fold, finding 3): H4-M2's dictionary is NOT a
+dependency of the THEOREM-GRADE CHAIN (§§2–4) — nothing there consumes it.
+§6's operational text DOES name M2/Route-A material (P3's gcd-criterion
+attribution, P4's carrier-bridge attribution) as UNIT ATTRIBUTION of where
+a run outcome would land, consuming none of it as a premise; §6's
+M2-SEAM CURRENCY note pins M2's state at this fold and the re-read rule.
 
 STATEMENT-FENCE RECORD: the blueprint has NO §L Lean spec for H4-M5 (it is
 a §M math-note unit); the charge text is transcribed verbatim above and the
@@ -76,8 +89,10 @@ weakened.
    pass-1 finding 2's row), [LET-DATA] (the realized letter determines the
    integer slot-tree datum), [SYM-ID] (Def SYM computes the catalogue's
    per-letter exponent slot — pass-1 finding 3's row). Plus H4-M1 consumed
-   at its ON-FILE status (its own hostile passes ride Wave 1's gate and
-   are NOT asserted here).
+   at its ON-FILE status — which is now ACCEPTED (pass-5 fold, finding 2:
+   passes 2+3 consecutive clean, model-diverse; commit 88eef30), its
+   (S1)–(S6) R-pack including the walked D.10 recentered stage package
+   (M1 §3.5, TRANS-RS).
 3. **NOTHING IS DISCHARGED by this proof as the rows stand** (blueprint
    finding 3, quoted §5.3): the intrinsic law does not imply that realized
    positions are δ-stable, and the authoritative (UB-X)(b)/(K3-δ) texts
@@ -188,16 +203,24 @@ The unconditional (RB) is not claimed anywhere in this note.
   §B2-DEF recipe tower over W(F_q) with rebuilt residue data and (I-aug)
   reads (H4-M1 §0.3's presentation). This is the run-production layer
   D.4 + D.8 + D.10 over W(F_q) — REL.1's wider walk, explicitly OUTSIDE
-  H4-M1's proven perimeter (§0.4 fence; D.4's three-bullet argument is
-  itself walked base-free at M1 §3.4, so the residue of this row is
-  D.8/D.10 bookkeeping only). At q = p the row is the ACCEPTED base
-  theory's own run-production. Named, never absorbed.
+  H4-M1's proven perimeter (§0.4 fence). RESIDUE, refreshed to M1's
+  ACCEPTED state (pass-5 fold, finding 2): D.4's three-bullet argument is
+  walked base-free at M1 §3.4 AND D.10's recentered STAGE package
+  (TRANS-RS: realizer, v = v′, K1(Φ′/v) at g = 1, coefficient-localization
+  preservation, (S1)–(S6)′) is walked at M1 §3.5 — so the residue of this
+  row is D.8's landing bookkeeping plus D.10's RS-landing /
+  lift-independence legs ONLY (M1's own §0.4/§8 fence, current text; NOT
+  the pre-fold "D.8/D.10 bookkeeping" blanket, which over-assigned the
+  walked stage package to the residue). At q = p the row is the ACCEPTED
+  base theory's own run-production. Named, never absorbed.
 - **[LEDGER-READ]** (added at the pass-1 fold, finding 2) — the ledger's
   per-position exponent a_δ(y) IS the D.3(e) alphabet exponent of the
   ridden tower at y (log_p of the tower's alphabet cardinality at y's
   stage/height). [RUN-PROD] supplies the tower; THIS row supplies that the
-  ledger's NUMBER is the tower's number. It is D.8/D.10-side ledger
-  bookkeeping (same slice as [RUN-PROD]'s residue), and at q = p it is the
+  ledger's NUMBER is the tower's number. It is ledger bookkeeping in
+  [RUN-PROD]'s residue slice — D.8-landing / D.10-RS-landing-side, per
+  M1's current fence; D.10's stage package itself is walked at M1 §3.5
+  (pass-5 fold, finding 2) — and at q = p it is the
   accepted base ledger's own reading. Named, never absorbed.
 - **[LET-DATA]** — the realized letter of a realized position determines
   its integer slot-tree datum data(ℓ) = (d; (e_j, h_j, g_j)_{j≤k}; stage
@@ -217,10 +240,15 @@ The unconditional (RB) is not claimed anywhere in this note.
   is NAMED, never absorbed. Independent check: Corollary ROOT (§4) forces
   agreement at every q = p realized letter GIVEN the accepted q = p
   conformance. H4-M7's brief must carry this row explicitly.
-- **[M1-STATUS]** — H4-M1 is consumed at its on-file status: (R1)–(R3)
-  PROVED over W(F_q) at its §0.4 perimeter, gate N-T4 run and passed; its
-  hostile passes (×2) ride Wave 1's gate and are NOT asserted here (the
-  M4 precedent for M2, applied to M1).
+- **[M1-STATUS]** — H4-M1 is consumed at its on-file status, REFRESHED at
+  the pass-5 fold (finding 2): **ACCEPTED** — (R1)–(R3) PROVED over W(F_q)
+  at its §0.4 perimeter over increment AND recentered stages (§3.5 walked,
+  rev 2), gate N-T4 run and passed (re-run PASS at its pass 3); hostile
+  record REJECT(10 folded) → pass 2 CLEAN (Codex) → pass 3 CLEAN (Fable
+  decider) — two consecutive cleans, model-diverse (commits 6205ecf,
+  88eef30). The pre-fold caveat ("its hostile passes ride Wave 1's gate
+  and are NOT asserted here") is RETIRED: the acceptance is now on the
+  division ledger and is consumed as recorded there.
 
 SCOPE OF THE CONDITIONAL (pass-2 finding 5 folded; count corrected at
 pass 3 finding 4): §§2–4's MATHEMATICAL content — Def SYM, Lemma S,
@@ -576,8 +604,28 @@ against Lemma 4's gcd criterion and against Route B's intrinsic exponent
 law (a_δ = δ·a_sym at the realized letter)." ON-FILE STATUS re-verified at
 composition (2026-08-01): NO N-K3 run artifact exists
 (`verification/openmath/` has no N-K3 script or results; M4 §5.3 found the
-same). Per the standing falsifier discipline the predictions are SEALED
-here, before any run:
+same). RE-CHECKED at the pass-5 fold (wallclock 2026-08-02): still no run
+artifact, and no N-K3 results section has been appended to this note. Per
+the standing falsifier discipline the predictions are SEALED here, before
+any run:
+
+M2-SEAM CURRENCY (pass-5 fold, finding 3; read at fold, wallclock
+2026-08-02): H4-M2 stands at REVISION 2 (commit 5ffbe84) — the match is
+the FACTOR CORRESPONDENCE (matched = routing a common irreducible factor
+of f itself; the REVISION-1 numerical-ledger match RETIRED as not
+well-defined), with DICT-0/[IN-C] displayed OPEN as four clauses ((a)
+valuation coincidence, (b) embedded fields F_j^(δ) = F_j·F_q for j ≤ k+1,
+(c) next-read divisibility, (d) split-free uniqueness); its counter is
+0/1 with a pass-3 GAPS-ONLY report on file (clause-(b) audit correction
+owed, unfolded at this writing) — M2 may advance to REVISION 3
+concurrently; RE-READ M2 AT N-K3 FOLD TIME. Consumption status here,
+exact: NONE of the four open DICT-0 clauses — and no other M2 content —
+is a premise of anything in this note. P3's "dictionary-side, H4-M2/
+Route-A material" and P4's "H4-F5/H4-M2-side design" are UNIT ATTRIBUTION
+(naming where a run outcome or a design duty lands), read against M2's
+current revision as described above; whether M2's Lemma-4/branch material
+itself survives its open clauses is M2/M4-side standing, consumed at
+on-file status, never re-derived or warranted here.
 
 - **P1 (the law — the falsifier of this note).** At EVERY realized δ > 1
   pool: a_δ(pool position) = δ·a_sym(realized letter) EXACTLY, δ = the
@@ -592,38 +640,85 @@ here, before any run:
 - **P3 (agnostic clause, displayed).** This note makes NO prediction on
   Lemma 4's gcd(m, δ) criterion at the realized pools: BOTH outcomes are
   consistent with everything proved here (the gcd criterion is
-  dictionary-side, H4-M2/Route-A material; a non-coprime realized pool
-  would kill Route A — M4 §5.3 branch (i) — and touch nothing in §§2–4).
+  dictionary-side, H4-M2/Route-A material — unit attribution per the
+  M2-SEAM CURRENCY note above; a non-coprime realized pool would kill
+  Route A — M4 §5.3 branch (i), rev 4 — and touch nothing in §§2–4).
+  EXACT EVENT LANGUAGE (pass-5 fold, finding 5): P3's agnosticism cannot
+  itself be "violated"; the Boolean event the handling below keys on is
+  the GCD-ONLY ANOMALY — some realized δ > 1 pool of the run FAILS
+  Lemma 4's gcd criterion (a non-coprime realized pool, M4 branch (i)'s
+  own firing condition), while P1 and P2 hold at every realized pool of
+  the run.
 - **P4 (letter-persistent-pool consistency; carrier-bridge conditional —
   pass-1 finding 7 folded).** At any pool position additionally certified
   letter-persistent IN THE SAME CARRIER the intrinsic law reads (the
   classifier's own realized letter, §1.2) AND realized at δ = 1:
-  a_δ = δ·a₁ (the two instances of P1 composed at the matched letter).
+  a_δ = δ·a₁. DERIVATION, exact (pass-5 fold, finding 6): P1 quantifies
+  over realized δ > 1 pools ONLY, so the δ = 1 leg is NOT an instance of
+  P1 — it is the Theorem's own δ = 1 instance under the §1.3 rows (where
+  at q = p they are the accepted base theory's own reading; Corollary
+  ROOT's shape under Def SYM), giving a₁ = a_sym(ℓ); composed with P1 at
+  the δ > 1 pool (a_δ = δ·a_sym(ℓ_δ)) and the persistence certificate
+  ℓ_δ = ℓ = ℓ₁ in the SAME carrier, this yields a_δ = δ·a₁.
   Reading this as the corpus (EQ-2)/`Stable` specialization additionally
   needs the bridge between that carrier and `AlphabetData.posLetter`
   (M14 §7.2's encoding — H4-F5/H4-M2-side design, NOT supplied here); M4
   branch (iii) records the specialization claim at stable positions, and
   P4 defers to M4's recorded scope rather than deriving it.
 
-VIOLATION HANDLING, pre-committed (M4 §5.3's precedence order, quoted:
-check (iii) first, then (i), then (ii)): a P1/P2 violation fires M4's
-branch (iii) — "Route B is REFUTED AS STATED, and the adjudication
-RE-OPENS — with NO automatic fallback to Route A", escalation scoped by
-the violating position's stability exactly as recorded there. DIAGNOSIS
-LIST, widened (pass-1 finding 8, accepted) — the fault could sit in ANY
-of: the §1.3 rows ([RUN-PROD], [LEDGER-READ], [LET-DATA], [SYM-ID] — in
-particular a_sym ≠ the catalogue exponent, or a wrong classifier-letter
-interpretation); THIS note's own §2–§4 content (Lemma S, the induction,
-the normalization step); or M1's walk itself — none is pre-exonerated;
-stop-the-line, re-adjudicate, nothing absorbed. A gcd-only violation
-(P3's non-prediction) fires branch (i): Route A dead, this note
-untouched. A clean pass is n = 3 empirical support only — the Theorem's
+VIOLATION HANDLING, pre-committed. SOURCE CURRENCY (pass-5 fold, finding
+4): the branch table is consumed from M4 AT REV 4 (fold 3, commit
+4b919bd) — its current §5.3 head text: branches ordered by PRECEDENCE
+("check (iii) first, then (i), then (ii); folding the verdict means
+applying the FIRST branch that fires, with re-adjudication needed only on
+(iii)"), robustness honestly scoped: M4's recommendation "SURVIVES the
+two non-escalating branches (i) and (ii) unchanged, and does NOT survive
+the dominating branch (iii)". Handling:
+
+- A P1/P2 violation fires M4 rev 4's branch (iii), verbatim condition
+  "N-K3 finds an INTRINSIC-law violation (a_δ ≠ δ·a_sym at a realized
+  letter, at any position, stable or not)": "Route B is REFUTED AS
+  STATED, and the adjudication RE-OPENS — with NO automatic fallback to
+  Route A", escalation scoped by the violating position's stability
+  exactly as recorded there (stable-position violation impeaches (EQ-2)
+  itself; unstable-position violation refutes only the intrinsic
+  extension). DIAGNOSIS LIST, widened (pass-1 finding 8, accepted) — the
+  fault could sit in ANY of: the §1.3 rows ([RUN-PROD], [LEDGER-READ],
+  [LET-DATA], [SYM-ID] — in particular a_sym ≠ the catalogue exponent, or
+  a wrong classifier-letter interpretation); THIS note's own §2–§4
+  content (Lemma S, the induction, the normalization step); or M1's walk
+  itself — none is pre-exonerated; stop-the-line, re-adjudicate, nothing
+  absorbed.
+- A GCD-ONLY ANOMALY (the exact event named at P3) fires branch (i), rev
+  4's verbatim condition "N-K3 finds a realized pool violating the gcd
+  criterion (and no intrinsic violation in the run)": "Route A is REFUTED
+  outright (`not_k3delta_of_noncoprime_pool` fires at the witness)".
+  "This note untouched" — TRACED, not inherited (pass-5 fold, finding 4):
+  §§2–4 consume no gcd condition, no dictionary, and none of M2's open
+  DICT-0 clauses (§7's map; the M2-SEAM CURRENCY note), so branch (i)
+  cannot reach them; whether the refutation mechanism itself stands under
+  M2's current KEY-FREE/DICT-0 state is M2/M4-side standing, consumed at
+  on-file status with the re-read rule above.
+- A P4-ONLY failure (pass-5 fold, finding 6): P1/P2 exact at every
+  realized pool, no gcd anomaly, but some pool certified letter-persistent
+  (same carrier) AND realized at δ = 1 fails a_δ = δ·a₁. Since P4 is the
+  displayed composition, the fault localizes to its NON-P1 premises: the
+  δ = 1 root read (the §1.3 rows at q = p), the persistence certificate,
+  or the carrier bridge between the certifying run's letter and the one
+  the law reads. Disposition: stop-the-line, re-adjudicate under M4
+  branch (iii)'s stable-case scope reading (a certified-persistent
+  δ=1-realized pool is exactly its (EQ-2)-facing leg); no branch fires
+  automatically, nothing pre-exonerated.
+
+A clean pass is n = 3 empirical support only — the Theorem's
 warrant remains §§2–4's derivation, not the run.
 
 ## §7. Consumption map, gate record, declaration list
 
-CONSUMED (each at its displayed site): H4-M1 at its ON-FILE status
-([M1-STATUS], §1.3) — §0.2/0.3 (presentation, Lemma ONTO), §5.3–5.5
+CONSUMED (each at its displayed site): H4-M1 at its ON-FILE status —
+ACCEPTED, per [M1-STATUS] §1.3 as refreshed at the pass-5 fold
+(§3.4 D.4 base-free walk + §3.5 TRANS-RS now inside its perimeter) —
+§0.2/0.3 (presentation, Lemma ONTO), §5.3–5.5
 ((R2): (ii.2)^(q), product display + injectivity mechanism, base clause),
 §5.4 (Lemma STAB, F_p/F_q normalization), §6 ((R3)), §8.2 (δ-instances +
 Lemma-1 leverage), §8.3 ((EQ-1) slice verdict), §0.4 (perimeter fence);
@@ -631,14 +726,20 @@ M14 attempt (on file) — Lemma 1 (unconditional; its (b) arithmetic),
 Lemma 3 + Theorem (the induction pattern, re-run intrinsically §4; the
 (R4) sites deleted per §5.1), Corollary (δ | a_δ consistency), §6 + T3
 (the F₉ worked instance's recorded numbers), §7.2 (carrier constraint,
-honored via the abstract `letter`); H4-M4 — §5.5 (ROUTE B selected), §5.3
-(branch table, quoted §6), §3.2 (carrier caution, quoted §1.2), §1 (K3-c
+honored via the abstract `letter`); H4-M4 AT REV 4 (pass-5 fold, finding
+4) — §5.5 (ROUTE B selected), §5.3 (precedence-ordered branch table,
+quoted §6 with rev-4 conditions and honest robustness scope), §3.2
+(carrier caution, quoted §1.2), §1 (K3-c
 row text); blueprint §3.2 Route-B text (verbatim §1.1) + §N (N-K3 spec);
 Lean corpus BY IMPORT — `MovesRBase.Defs` carriers,
 `Scaffold/HDischarge/H4/Defs+Kernel` (`SlotTree`, `dimOf`, `dimOf_scale`,
-`RealizedLedger`; H4-L1/L3/L7). NOT CONSUMED: H4-M2 (no dictionary, no
-(R4), no gcd anywhere in §§2–4; Lemma 4 named only inside §6's P3
-non-prediction); `AlphabetData.Stable` (appears in NO hypothesis or proof
+`RealizedLedger`; H4-L1/L3/L7). NOT CONSUMED BY THE THEOREM-GRADE CHAIN:
+H4-M2 (no dictionary, no
+(R4), no gcd anywhere in §§2–4; Lemma-4/carrier-bridge material is NAMED
+inside §6's P3/P4 and violation handling as UNIT ATTRIBUTION at M2's
+current revision — the M2-SEAM CURRENCY note displays the state read and
+the re-read rule; none of DICT-0's four open clauses is a premise
+anywhere in this note); `AlphabetData.Stable` (appears in NO hypothesis or proof
 — only in §5's non-implication discussion); the counting layer (Theorem
 C(a)/(b), PIN-WELLDEF, (ZC)) BY THE THEOREM-GRADE CHAIN — the note's sole
 counting-layer touch is the displayed hypothesis of Corollary ROOT's
@@ -747,15 +848,63 @@ designer: its five theorems each checked at Lean-core
   unconditional claim, covert dependency, ledger inconsistency, or landed
   H4-F5 face remains." No fold needed; the text above is the accepted
   text.
+- **Pass 5 (Codex, fresh context/session; batch artifact
+  `H4M5_pass2_2026-08-08.md` — "pass 2" of the 2026-08-08 campaign batch,
+  wallclock 2026-08-02, per the header's pass-count convention; charge =
+  the attempted second consecutive clean incl. sibling-seam currency; its
+  own repo grep could not run — bubblewrap unavailable in its launcher —
+  so currency was checked against the charge's supplied states):** verdict
+  as returned **GAPS-ONLY — 0 CRITICAL + 6 GAP**, with the core re-certified
+  in the verifier's words: "The core mathematical conditional remains
+  sound on its displayed perimeter … it does not covertly use stability,
+  (R4), a cross-base dictionary, or M2 matching in the dimension
+  induction"; "The (K3-delta) non-discharge fence also remains intact."
+  NOT a clean pass. All six findings ACCEPTED and FOLDED at this fold
+  (wallclock 2026-08-02); dispositions:
+  [G1] header gate summary stale (THREE passes) vs the authoritative
+  four-pass ledger → header rewritten to carry only the count and defer
+  to this ledger; pass-count convention displayed in the DATING NOTE.
+  [G2] M1 seam stale after M1's ACCEPTANCE and expanded walk → [M1-STATUS]
+  refreshed to ACCEPTED (passes 2+3 clean, model-diverse); [RUN-PROD]/
+  [LEDGER-READ] residue decomposition refined per M1's current fence
+  (D.10's stage package walked at M1 §3.5; residue = D.8 landing + D.10
+  RS-landing/lift-independence legs only); §0 item 2 + §7 map updated.
+  The rows REMAIN hypotheses — the refresh is currency, not discharge.
+  [G3] blanket "M2 not a dependency of anything below" vs §6's operational
+  use → non-dependency scoped to the theorem-grade chain (§§2–4) in the
+  header; new M2-SEAM CURRENCY note in §6 (M2 = REVISION 2,
+  factor-correspondence match, DICT-0 four open clauses, counter 0/1,
+  pass-3 GAPS-ONLY report on file unfolded; RE-READ AT N-K3 FOLD TIME);
+  P3/P4 references displayed as unit attribution consuming no DICT-0
+  clause; §7's NOT-CONSUMED entry qualified accordingly.
+  [G4] M4 branch currency asserted, not demonstrated against rev 4 →
+  violation handling now cites M4 AT REV 4 (commit 4b919bd) with the
+  rev-4 verbatim branch conditions and the honest robustness scope
+  (survives (i)/(ii), cancelled on (iii)); "this note untouched" TRACED
+  through the current KEY-FREE/DICT-0 state rather than inherited.
+  [G5] "a gcd-only violation (P3's non-prediction)" ill-typed → exact
+  Boolean event named at P3 (GCD-ONLY ANOMALY: a realized δ > 1 pool
+  failing Lemma 4's gcd criterion while P1/P2 hold run-wide — M4 branch
+  (i)'s own firing condition); handling keys on that event.
+  [G6] P4's "two instances of P1" mis-derivation + missing P4-only
+  disposition → derivation corrected (P1 at the δ > 1 pool composed with
+  the Theorem's δ = 1 instance — NOT a P1 instance, P1 quantifies over
+  δ > 1 pools only — plus the same-carrier persistence certificate);
+  explicit P4-ONLY failure disposition added (fault localizes to the
+  non-P1 premises; stop-the-line under branch (iii)'s stable-case scope,
+  no automatic branch). Gate command re-run GREEN after the fold.
 
 GATE STATUS AT CLOSE (authoritative): the §M "hostile pass ×2" gate was
-executed FOUR times (fresh contexts, all Codex), with monotone verdicts
-REJECT(2C/8G) → REJECT(1C/4G) → REVISE(0C/4G) → **ACCEPT (clean)**, every
-finding accepted and folded in place. Per the standing discipline
-("accept only after consecutive clean passes"), ONE clean pass is on
-record; a second consecutive clean pass at the division's next touch
-would seal it fully. The N-K3 seal (§6) and the compile gate are on
-record above.
+executed FIVE times (fresh contexts, all Codex), verdicts
+REJECT(2C/8G) → REJECT(1C/4G) → REVISE(0C/4G) → **ACCEPT (clean)** →
+GAPS-ONLY(0C/6G, folded), every finding accepted and folded in place.
+COUNTER, honest: per the standing discipline ("accept only after
+consecutive clean passes"), pass 5's gaps BREAK the clean run that pass 4
+started — ZERO consecutive clean passes currently stand on the
+pass-5-folded text; clean passes on this text (two consecutive, the M1
+precedent) are owed toward the bar. The N-K3 seal (§6) stands — sealed,
+run NOT yet executed, no results section appended (re-checked at this
+fold) — and the compile gate is on record above.
 -/
 
 end LeanUrat.Scaffold.HDischarge.H4.RouteB

@@ -3449,3 +3449,44 @@ comment/docstring/prose-only; gate re-run GREEN (exit 0, no diagnostics),
 zero sorry, Lean-core footprint unchanged. COUNTER: pass 1 CRITICAL (REV 1);
 pass 2 CRITICAL (REV 2); pass 3 GAPS-ONLY (REV 3); clean 0/1 — the final
 clean hostile pass runs on REVISION 3.
+
+## 2026-08-08: H4-M5 pass-5 fold (batch pass 2, GAPS-ONLY 0C/6G) — sibling seams refreshed to current states; clean run broken, restarts on folded text
+
+H4M5_k3delta_attempt.md folds hostile pass 5 (batch artifact
+H4M5_pass2_2026-08-08.md, wallclock 2026-08-02; the note's ledger pass 5
+per its displayed pass-count convention) in full: 0 CRITICAL + 6 GAP, with
+the core re-certified by the verifier ("the core mathematical conditional
+remains sound on its displayed perimeter … no covert use of stability,
+(R4), a cross-base dictionary, or M2 matching in the dimension induction";
+"(K3-delta) non-discharge fence intact"). Folds: [G1] stale three-pass
+header summary reconciled to the authoritative in-note ledger (header now
+carries only the count; pass-count convention displayed in the DATING
+NOTE). [G2] M1 seam refreshed to ACCEPTED (passes 2+3 clean,
+model-diverse, 88eef30): [M1-STATUS] updated, [RUN-PROD]/[LEDGER-READ]
+residue refined per M1's current fence (D.10 stage package walked at M1
+§3.5; residue = D.8 landing + D.10 RS-landing/lift-independence legs
+only) — rows remain hypotheses, refresh is currency not discharge.
+[G3] blanket M2 non-dependency scoped to the theorem-grade chain §§2–4;
+new M2-SEAM CURRENCY note (M2 read at fold = REVISION 2, 5ffbe84:
+factor-correspondence match, DICT-0 four open clauses (a)–(d), counter
+0/1, pass-3 GAPS-ONLY report on file UNFOLDED — M2 may reach REVISION 3
+concurrently, RE-READ AT N-K3 FOLD TIME); P3/P4's M2 references displayed
+as unit attribution consuming no DICT-0 clause. [G4] N-K3 violation
+handling re-anchored to M4 AT REV 4 (4b919bd): rev-4 verbatim branch
+conditions + precedence order + honest robustness scope (survives
+(i)/(ii), cancelled on (iii)); "Route A dead, this note untouched" traced
+through the current KEY-FREE/DICT-0 state, not inherited. [G5] P3's
+ill-typed "non-prediction violation" replaced by the exact Boolean
+trigger (GCD-ONLY ANOMALY = non-coprime realized δ>1 pool with P1/P2
+holding run-wide — M4 branch (i)'s own condition). [G6] P4's derivation
+corrected (P1 at the δ>1 pool composed with the THEOREM's δ=1 instance —
+not a second P1 instance — plus the same-carrier persistence certificate)
+and an explicit P4-ONLY failure disposition added (fault localizes to the
+non-P1 premises; stop-the-line under branch (iii)'s stable-case scope).
+N-K3 currency re-checked at fold: NO run artifact, NO results section
+appended to the note — seal stands, run owed. Gate re-run GREEN (exit 0,
+zero sorry). COUNTER, honest: five passes REJECT(2C/8G) → REJECT(1C/4G) →
+REVISE(0C/4G) → ACCEPT → GAPS-ONLY(0C/6G, folded); pass 5 breaks pass 4's
+clean run — ZERO consecutive cleans stand on the folded text; owed toward
+the §M bar: consecutive cleans on this text (M1 precedent: two) + the
+N-K3 run.
