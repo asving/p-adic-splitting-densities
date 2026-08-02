@@ -2538,3 +2538,16 @@ e₀ = 1 the corrected ǫ ≡ 1 and FGMN = GMN on the nose); a REVISION-11 displ
 fold on GRB S3.1/S3.2/S3.4/S0-G2-row is OWED (queued). (GR-B)'s clauses are
 untouched and all harness-green. Record: GRB_ORDER2_2026-08-05.md §"N-1
 EXECUTED (2026-08-08)".
+
+## B-M2 REVISION 5 — the trace evidence fold (2026-08-02)
+H1_BM2_2026-08-06.md advanced to REVISION 5: [REV 5] at-instance evidence
+lines folded from the concrete-trace unit (BM2_TRACE_2026-08-02.md, commit
+de7f706) at REC-PARAM's statement (actual (e,g) = (1,1) three ways +
+wiring note: e-half derivable from IsRecentering's σ.e = 1 +
+TransitionData.child_e, Moves/DefsT.lean:150; g-half tied nowhere), the
+REC-SL owed list (every owed field TRUE at the instance), GRADED-READ
+((K1)+(K2) exact, shared U₀ = 1), and SITE-EXH (the C-e fence exhibit:
+truncated-run firing must be handled), + †/‡ marks under the §S0 table.
+NO status changes, NO new obligations — instance evidence never discharges
+a general claim (the GRB pass-2 lesson). Clean counter unchanged 0/2;
+hostile pass 4 runs on the REVISION 5 text.
