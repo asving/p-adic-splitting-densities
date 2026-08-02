@@ -2251,3 +2251,16 @@ launched: B-M1 pass 3 + GRB pass 6 (each needs its first CLEAN).
 ## B-M1 PASS 3: CLEAN — THE FIRST CLEAN ON KP-STEP (2026-08-06)
 Counter 1/2; pass 4 = FABLE (model diversity) decides. GRB pass 6 =
 GAPS-ONLY (gaps to fold at rev 7). Codex window RESET (20% used).
+
+## B-M1 VERIFIED — THE TENTH LEAF (2026-08-06)
+KP-STEP (the order->=2 key-polynomial compliance block at the degree-
+conformant class) meets the 2-clean model-diverse bar: pass 3 (Codex)
+CLEAN + pass 4 (Fable, fresh, max) CLEAN on identical REVISION-3 text.
+Pass 4 re-derived (KPa), audited OP-B1 quantifier-complete at (K0),
+verified PAR-MON's corpus pins by reading the Lean files, confirmed all
+FGMN quotes verbatim vs the source, RE-RAN the gate (exact reproduction),
+and confirmed zero leakage onto open lemmas. (H1)(d)'s mathematical core
+is now a VERIFIED THEOREM at the consumed class. Remaining in (H1)(b)/
+(d): B-M2 engine-lift conformance, the GMN-face label tie (TR-3-ORD-X,
+shared with GRB), and the GRB leaf's own bar.
+Report: lean/notes/openmath/BM1_pass4_fable_2026-08-06.md.
