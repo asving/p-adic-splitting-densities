@@ -1510,3 +1510,12 @@ confirmed pins); (K-CUT) reduced to one hostile pass (H8 fleet 11/11);
 (FirstEntrance, Tonelli) on disk; RootHyps synced to the full roster.
 Fleets remaining: H6 (running), H1, follow-up cycles (hostile passes,
 mop-ups, gated units). Verification trail: VC1-VC18.
+
+---
+## CHECKPOINT 2026-08-06: (K-CUT) ARC CLOSED — ELEVEN HONEST ROWS (VC21)
+ROOT at REVISION 18, VC21-anchored. The discharge ledger since the swarm:
+(NSF-KEY) retired; D-12r -> §4 literature (page-confirmed); (K-CUT) core
+machine-proved + retired with its 3 interfaces priced at the slimmed
+(H8') row. GRB (H1(a)) at zero-critical, clean bar 0/2. Scaffold: ~290
+units landed across 9 HDischarge fleets + 5 divisions + shared carriers;
+5 true code sorries corpus-wide. Verification: VC1-VC21.

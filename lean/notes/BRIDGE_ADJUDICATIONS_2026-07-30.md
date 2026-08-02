@@ -2204,3 +2204,12 @@ edited. §24 appended; header/§6/footer synced; VC21 owed on REVISION 18.
 Both VC20 blockers cured (the §1 bracket at ELEVEN; the §3.2 record
 one-voice: interfaces PRICED AT (H8'), owner arcs = routes only). 24-site
 audit: 2 edited, 22 conformant. VC21 = the eleven-row anchor attempt #2.
+
+## VC21: COMPOSITION-SOUND — ELEVEN HONEST ROWS ANCHORED (2026-08-06)
+The (K-CUT) arc CLOSED end-to-end: core machine-proved + retired,
+interfaces priced at (H8'), record one-voice, zero regressions across
+the full post-acceptance chain (VC12..VC21). Verification trail now 21
+end-to-end passes. Report: lean/notes/openmath/VC21_report.md.
+CLOSURE QUEUE NEXT: GRB pass 4 (clean-bar attempt) + H1 B-M1 (KP-STEP
+core note); then H4 M-notes, mop-up batch, (NSF-INT)/(K1-CANON), H2-U9
+(post-B2-FINAL), synthesis pass 4.
