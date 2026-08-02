@@ -543,6 +543,200 @@ theorem cu2t_readForcing_false :
 
 end S4Refute
 
+/-! ## Unit III-S4 REPAIRED — `cu2t_readForcing_sem` (option (b) of the record
+above; sanctioned statement repair)
+
+SANCTIONED STATEMENT REPAIR under Asvin's standing statement-change authority
+(2026-08-05 ruling; ledger entry 2026-08-02 in
+`notes/BRIDGE_ADJUDICATIONS_2026-07-30.md`), executing option (b) of the
+BLOCKED(III-S4) record's bullet (3): a NAMED semantic hypothesis row
+(`TerminalPolySem`) ties `D.principalSides H.nodes.length` to the terminal
+level polygon of `f` (the OL-1 shape), and the forcing conclusion lands in the
+SINGLETON form the H6-A4b consumer's interface slot displays
+(`hforce : D.principalSides H.nodes.length = [S]` with `S.ℓ = 1`) — derived
+HERE from total-length-1, per the A4b probe record's re-key note (the display's
+`∃!`-membership shape would put the singleton derivation on the consumer;
+`R.side_unique` cannot supply it, being vacuous at the terminal index — the
+record's bullet (3) note).
+
+The old display name `cu2t_readForcing` stays RETIRED with its refutation
+(namespace `S4Refute` above, untouched — the permanent record).  Codex
+adversarial design review 2026-08-02: round 1 REJECT (the tie must be to the
+EXACT multiplicity, not a slack dividing exponent; horizontal length is e·ℓ
+per the A6b abscissa-span convention, not ℓ) — both folded; round 2 verdict
+recorded in the ledger entry.
+
+NEW declarations of this unit: `TerminalPolySem`,
+`eq_singleton_of_measures_sum_one`, `cu2t_readForcing_sem`,
+`S4SemGate.S1`, `S4SemGate.D1`, `S4SemGate.R1`, `S4SemGate.hcons1`,
+`S4SemGate.sem1`, `S4SemGate.readForcing_sem_gate_pos`,
+`S4SemGate.d0_fails_terminalPolySem`. -/
+
+/-- III-S4 repair row (option (b) of the S4Refute record): the terminal-level
+side list of `D` realizes the terminal polygon N⁻_{k′+1}(f) read through ι —
+priced as the CORPUS-STATABLE NUMERICAL FACE (the H6-A6b pricing precedent):
+(i) NONDEGENERACY — every listed side has positive ramification denominator
+and positive residual length (`1 ≤ e`, `1 ≤ ℓ`; a side's abscissa span is
+`[s, s + e·ℓ]`, the A6b convention);
+(ii) the LENGTH TIE — the total horizontal length `Σ e·ℓ` of the list equals
+the EXACT multiplicity `j₀` of some irreducible `φ` in the mod-p reduction of
+`f` (`φ^j₀ ∣ f̄`, `φ^(j₀+1) ∤ f̄` — the OM length law ℓ(N⁻) = ord_φ̄(f̄));
+(iii) SATURATION — `1 ≤ j₀` (decided seams read a nonempty polygon: the key
+genuinely divides the reduction).
+HONESTY (priced residue, per the A6b precedent): the identification of `φ`
+with THE terminal residual key obtained through ι is the OL-1/ι ordinate face,
+NOT statable at this corpus point (the tower key lives over `F`; comparing it
+to `Polynomial (ZMod p)` needs the ι dressing, H6-owned — this file must not
+import H6) — `φ` is deliberately existential; consumers get the full "real
+read" strength only together with the OL rows, as the CUC prices it.  No
+theorem at HEAD discharges this row (a named hypothesis row per the [M]-row
+discipline, like `Lit3Hensel`/`OL1`); the `S4SemGate` positive gate proves
+satisfiability, not supply.
+NON-CIRCULARITY: the row does NOT assume total length 1 or the singleton —
+with f̄ = φ² it is satisfied by a two-side list (j₀ = 2 exact); only the
+consuming theorem's `hsq` row caps j₀ at 1.  The old countermodel
+`S4Refute.D0` FAILS this row (`S4SemGate.d0_fails_terminalPolySem` below). -/
+def TerminalPolySem (f : Polynomial ℤ_[p]) (H : EHist p F)
+    (D : GMNData f (Theta H)) : Prop :=
+  (∀ S ∈ D.principalSides H.nodes.length, 1 ≤ S.e ∧ 1 ≤ S.ℓ) ∧
+  ∃ φ : Polynomial (ZMod p), Irreducible φ ∧
+    ∃ j₀ : ℕ, 1 ≤ j₀ ∧
+      φ ^ j₀ ∣ Polynomial.map PadicInt.toZMod f ∧
+      ¬φ ^ (j₀ + 1) ∣ Polynomial.map PadicInt.toZMod f ∧
+      ((D.principalSides H.nodes.length).map fun S => S.e * S.ℓ).sum = j₀
+
+/-- Arithmetic helper for the singleton step: a list each of whose g-measures
+    is ≥ 1, with total measure 1, is a singleton of measure 1. -/
+theorem eq_singleton_of_measures_sum_one {α : Type*} (g : α → ℕ) :
+    ∀ L : List α, (∀ x ∈ L, 1 ≤ g x) → (L.map g).sum = 1 →
+      ∃ a, L = [a] ∧ g a = 1
+  | [], _, hsum => by simp at hsum
+  | [a], _, hsum => ⟨a, rfl, by simpa using hsum⟩
+  | a :: b :: t, h1, hsum => by
+      have ha := h1 a (by simp)
+      have hb := h1 b (by simp)
+      simp only [List.map_cons, List.sum_cons] at hsum
+      omega
+
+/-- Unit III-S4, REPAIRED (option (b); src CUC §9.3 (i)): read forcing at the
+terminal index, in the consumer-keyed SINGLETON form.  On a decided seam whose
+prefix is Cons_f, if the terminal-level side list realizes the terminal
+polygon of `f` (`hsem`, the named OL-1-shape row) and no irreducible square
+divides the reduction (`hsq`, supplied by III-S1b's discriminant-unit premise),
+then the list is EXACTLY ONE side of residual length 1: the D3 engine
+`j0_le_one` caps the row's exact multiplicity `j₀ ≤ 1`, saturation gives
+`j₀ = 1`, so the total horizontal length `Σ e·ℓ = 1` and nondegeneracy forces
+the singleton with `e·ℓ = 1`, hence `ℓ = 1`.  Deltas vs the retired display,
+each priced (section header): `hsem` NEW (the option-(b) row), `hf` NEW
+(`j0_le_one`'s D3 engine carries it; the CUC's `f` is monic), `hsq` at the
+header's sanctioned `PadicInt.toZMod` spelling, conclusion in the H6-A4b
+singleton shape.  `R`/`hdec`/`hcons` retained from the display (unused by this
+proof; they keep the CUC decided-seam perimeter). -/
+theorem cu2t_readForcing_sem (f : Polynomial ℤ_[p]) (H : EHist p F)
+    (D : GMNData f (Theta H)) (R : GMNReader f (Theta H) D)
+    (hf : f.Monic)
+    (hdec : DecIrr H ∨ DecHen f H)
+    (hcons : ConsF f H D R)
+    (hsem : TerminalPolySem f H D)
+    (hsq : ∀ φ : Polynomial (ZMod p), Irreducible φ →
+      ¬φ ^ 2 ∣ Polynomial.map PadicInt.toZMod f) :
+    ∃ S, D.principalSides H.nodes.length = [S] ∧ S.ℓ = 1 := by
+  obtain ⟨hnd, φ, hφ, j₀, hj₀, hdvd, -, hsum⟩ := hsem
+  have hle : j₀ ≤ 1 := j0_le_one f hf φ hφ (hsq φ hφ) j₀ hdvd
+  have hone : ((D.principalSides H.nodes.length).map fun S => S.e * S.ℓ).sum
+      = 1 := by omega
+  obtain ⟨S, hS, hSel⟩ := eq_singleton_of_measures_sum_one
+    (fun S => S.e * S.ℓ) (D.principalSides H.nodes.length)
+    (fun S hS => Nat.one_le_iff_ne_zero.mpr fun h0 => by
+      rcases Nat.mul_eq_zero.mp h0 with he | hl
+      · exact absurd (hnd S hS).1 (by omega)
+      · exact absurd (hnd S hS).2 (by omega)) hone
+  exact ⟨S, hS, (Nat.mul_eq_one.mp hSel).2⟩
+
+namespace S4SemGate
+
+open Polynomial
+
+/-- Positive-gate side: the minimal nondegenerate side, `e·ℓ = 1`. -/
+def S1 : SideDatum :=
+  { e := 1, h := 1, ℓ := 1, s := 0, u := 0, isNegInfty := false }
+
+/-- Positive-gate data: the S4Refute world with a NONEMPTY terminal side list
+    (`[S1]` at every index) — everything else as `S4Refute.D0`. -/
+noncomputable def D1 : GMNData (X : Polynomial ℤ_[2]) (Theta S4Refute.H0) :=
+  { principalSides := fun _ => [S1]
+    residualOrder := fun _ => 0
+    residualDegree := fun _ => 0
+    rootOrder := 1 }
+
+/-- `H0`'s single node is terminal, so its chain has no slopes — every
+    requested slope is `none`. -/
+theorem theta_H0_slopes : (Theta S4Refute.H0).slopes = [] := by
+  simp [Theta, EHist.continuingPart, S4Refute.H0, S4Refute.nu0]
+
+/-- Positive-gate reader: constant-`none` is LAWFUL over the nonempty lists —
+    `(Theta H0).slopes = []` makes every requested slope `none`, so
+    `side_spec`'s right side is false everywhere and the remaining laws are
+    vacuous or definitional. -/
+noncomputable def R1 : GMNReader (X : Polynomial ℤ_[2]) (Theta S4Refute.H0) D1 :=
+  { side := fun _ => none
+    side_spec := by
+      intro i S
+      constructor
+      · intro h; exact absurd h (by simp)
+      · rintro ⟨-, hslope⟩
+        rw [HasRequestedSlope,
+          requestedSlope_eq_none (by rw [theta_H0_slopes]; exact Nat.zero_le i)]
+          at hslope
+        exact absurd hslope (by simp)
+    side_unique := by
+      intro i S T hS hT _ _
+      have hS' : S = S1 := by simpa [D1] using hS
+      have hT' : T = S1 := by simpa [D1] using hT
+      rw [hS', hT']
+    resOrd := fun _ => 0
+    resOrd_spec := fun _ => rfl
+    rootOrd := 1
+    rootOrd_spec := rfl
+    resDeg_eq_sideDeg := by intro i S h; exact absurd h (by simp) }
+
+/-- Positive gate, `hcons` row: the single node is terminal, so the continuing
+    part is empty and `ConsF` reduces to `R1.rootOrd = H0.a0` (both 1). -/
+theorem hcons1 : ConsF (X : Polynomial ℤ_[2]) S4Refute.H0 D1 R1 := by
+  refine ⟨rfl, ?_⟩
+  intro i ν h
+  simp [EHist.continuingPart, S4Refute.H0, S4Refute.nu0] at h
+
+/-- Positive gate, `hsem` row: `D1`'s terminal list `[S1]` realizes the
+    terminal polygon of `X` — witness key `φ = X` (irreducible over `ZMod 2`)
+    at EXACT multiplicity `j₀ = 1` (`X¹ ∣ X̄ = X`; `X² ∤ X` is the compiled
+    `S4Refute.hsq0` at `φ = X`), total horizontal length `1·1 = 1`. -/
+theorem sem1 : TerminalPolySem (X : Polynomial ℤ_[2]) S4Refute.H0 D1 := by
+  refine ⟨by intro S hS; simp [D1, S1] at hS; simp [hS, S1], X,
+    Polynomial.irreducible_X, 1, le_refl 1, ?_, ?_, by simp [D1, S1]⟩
+  · rw [pow_one, Polynomial.map_X]
+  · exact S4Refute.hsq0 X Polynomial.irreducible_X
+
+/-- **III-S4 POSITIVE GATE** (non-vacuity of the repaired unit): every
+    hypothesis row of `cu2t_readForcing_sem` — including the NEW `hsem` row —
+    is jointly instantiated at the compiled witness world, and the theorem
+    fires. -/
+theorem readForcing_sem_gate_pos :
+    ∃ S, D1.principalSides S4Refute.H0.nodes.length = [S] ∧ S.ℓ = 1 :=
+  cu2t_readForcing_sem X S4Refute.H0 D1 R1 Polynomial.monic_X
+    S4Refute.hdec0 hcons1 sem1 S4Refute.hsq0
+
+/-- **III-S4 NEGATIVE GATE** (the repair is not armed by the old
+    countermodel): `S4Refute.D0` — principal sides EMPTY everywhere — FAILS
+    the new row: the total horizontal length is 0, below saturation. -/
+theorem d0_fails_terminalPolySem :
+    ¬ TerminalPolySem (X : Polynomial ℤ_[2]) S4Refute.H0 S4Refute.D0 := by
+  rintro ⟨-, φ, -, j₀, hj₀, -, -, hsum⟩
+  simp [S4Refute.D0] at hsum
+  omega
+
+end S4SemGate
+
 /- BLOCKED(III-S5b): the τ-irr verdict from `GMNCor120_38` ("instantiate the
 displayed local literature row"; deps III-S4, III-H9, III-A7; src CUC §9.3
 (ii)) can NOT land — statement fence.  Machine-checked 2026-08-01 by a probe
