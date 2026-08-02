@@ -2489,3 +2489,34 @@ docstring's OL-1(a) sentence [NR]-scoped with the REC-PARAM caveat); diff
 verified comment-only; gate lake env lean GREEN, zero warnings, zero sorry.
 Strictly more conditional a third time; no compiled claim weakened. Clean
 counter stays 0/2; next: fresh hostile pass on REVISION 4.
+
+## B-M2 RECENTERING SEAM SETTLED NUMERICALLY — the concrete-trace unit (2026-08-02)
+
+Per Asvin's standing instruction (proof attempts kept failing on ONE seam →
+work the math on a thorough concrete example), the B-M2 concrete-trace unit
+built and traced a genuine order-≥1 tower with a real recentering:
+p = 3, f = x⁴ − 12x³ + 51x² − 90x + 198 = (x²−6x+3)² + 9(x²−6x+3) + 162 —
+irreducible /ℚ₃, (e,f) = (2,2), PARI-confirmed; tower x →(2,1)→ x²+3
+→RECENTER (slope 3/2, R₁ = (z−2)², lift 6x)→ x²−6x+3 →(1,4), R₂ = z²+z+2→
+terminate. Script `verification/openmath/bm2_recentering_trace.py` (exact,
+deterministic, preregistered; ALL CHECKS PASS); full mathematics in
+`lean/notes/openmath/BM2_TRACE_2026-08-02.md`. VERDICTS: (C-a) REC-PARAM
+TRUE-AT-INSTANCE — the recentering read's actual (e,g) = (1,1), forced three
+independent ways (degree arithmetic; e = 1 by window-lattice, 459 hunt
+checks; g = 1 by residue-root, 80 hunt checks; 387 eligible events all at
+(1,1), zero counterexamples); corpus face: e-half derivable via
+TransitionData.child_e + IsRecentering's σ.e = 1, g-half tied NOWHERE — a
+wiring gap, not a math gap. (C-b) TRUE: deg Φ′ = 2 = e·g·m at the ACTUAL
+pair. (C-c) TRUE: the digit −lift satisfies EVERY owed REC-SL field
+(window, weight 3/2 = h, digit 1 = ψ.coeff 0, twist position 0, (SL-top),
+graded identity U₀ = 1) — REC-SL is transcription debt, not risk. (C-d)
+GRADED-READ identity TRUE at both non-recentering reads (e = 2 mixed-anchor
+and g = 2 two-present-digits shapes), ONE shared U₀ = 1, (K1)+(K2) exact.
+(C-e) NOT-EXERCISED + fence exhibit: this real tower's recentering is
+UNRECORDABLE in any lawful full ReadsOf run (deg-1 node-0 pin + RG-2
+interior-e=1 fence exclude the e₀ = 2 step; recentering sits behind it) —
+sharpest concrete SITE-EXH/RG-2 data point on record; a recordable order-1
+recentering exists in nature (Φ₁ = x²+9 sketch in the note), so the fence
+excludes SOME real towers, not all. No fourth carrier found. Net: the
+recentering claims as written are TRUE where they are claims about
+mathematics; the open B-M2 residue (REC-PARAM/REC-SL) is wiring-side.
