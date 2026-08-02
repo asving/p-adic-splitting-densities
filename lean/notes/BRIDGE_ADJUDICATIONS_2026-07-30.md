@@ -3586,3 +3586,18 @@ arithmetic (LN 3.46 + [IN-F1] + (c)-base closing the contradiction), the
 no-(b)-consumption claim, and the indexing coherence. Report:
 H4M2_pass5_2026-08-08.md. **F-(i) residue: N-K3 ONLY** (M1 accepted, M2
 done, M4 adjudicated, M5 textual bar met).
+
+## 2026-08-08 (wallclock 2026-08-02): ASVIN SIGN-OFF — the review batch + §2.3
+
+Verbatim: "sign-off granted on the review batch (hf Monic, ed-1 pin) + §2.3".
+
+RATIFIED: (1) the `hf : f.Monic` hypothesis on `cu2t_readForcing_sem`
+(III-S4 repair, commit f56a536) — the statement stands as landed; (2) the
+(ed-1) three-part scope-pin diff on `M04-series-tie_fable.md` (the
+(K1-CANON) discharge, commit 9abc3ab, warrant note §D) — the retirement's
+if-rejected-reverts contingency is CLEARED; (NSF-INT)/(H9) retirement now
+unconditional on the sign-off axis (the D-11 trigger was already spent).
+GATE OPENED: §2.3 sign-off received ⇒ H2-U10 (classifier-face twins) is
+dispatchable per the HDISCHARGE_H2 wave table (§2.3 sign-off + III-U3b
+coordination; the latter checked at dispatch). TerminalPolySem's
+no-supplier display is unchanged (Phase-B work, not a sign-off item).
