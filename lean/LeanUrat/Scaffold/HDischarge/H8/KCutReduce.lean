@@ -54,8 +54,9 @@ K1 (the exact instantiated form is open unit H8-C3; KCUT pass finding 7).
 * (K-CUT-m) = `mass_eq` (+ the `W`/`weight` data rows): the AGGREGATE product
   identity ONLY — `W`/`weight` are otherwise arbitrary functions, and
   compensating factors can satisfy the aggregate equation [KCUT pass finding
-  4].  The FACTORWISE measured law is OPEN unit H8-C2 (K-CUT-m-factor),
-  blueprint §4 Wave 7.
+  4].  The FACTORWISE law is typed + derivation-proved at unit H8-C2
+  (K-CUT-m-factor, `KCutMassFactor.lean` — landed; itself an unpinned
+  owner-row interface), blueprint §4 Wave 7.
 * The realization row `real`, the verdict map `vOf`, and the keying
   `verdict_key` are UNCONDITIONED assumptions — no realizability,
   completeness, canonicity, faithfulness, or injectivity condition is imposed
@@ -67,7 +68,9 @@ K1 (the exact instantiated form is open unit H8-C3; KCUT pass finding 7).
   instance — the ABSTRACT CONVOLUTION FORM of Step 18's K1, NOT its exact
   instantiated form [KCUT pass finding 7]: no (e_i, τ_i, δ_i) entrance lists,
   no transported pool q^δ, no grammar block totals appear; that exact-form
-  tie is OPEN unit H8-C3 (K-CUT-K1-tie), blueprint §4 Wave 7.  The onward tie
+  tie is typed + derivation-proved at unit H8-C3 (K-CUT-K1-tie,
+  `KCutK1Tie.lean` — landed; itself an unpinned owner-row interface),
+  blueprint §4 Wave 7.  The onward tie
   to `SolveSeam.series_tie`'s `Rval` (the solve-side value) is BP_V/M04-side
   work, NOT landed here.  The one-line `RootHyps` `h8_kcut` extension is
   ORCHESTRATOR-owned (shared edit across the nine leads) — flagged, not

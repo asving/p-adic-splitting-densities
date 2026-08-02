@@ -769,22 +769,31 @@ H8 unit.
 | H8-B3 | `CutExtract.lean` | the extraction layer: Ŝ(Tr)/D_ε(Tr) carriers + cut map + injectivity + conformance + countability [NEW at C-1/C-2/C-5] | A1, A2; own E-phase design gate (a)/(b) | HARD |
 | H8-G1 | `ToyGate.lean` | 3-chain positive gate + (BDY) check | D0, A2 | MED |
 | H8-C1 | `KCutReduce.lean` | B3-extraction + typed seam re-keys → CutData → the K1 regroup (ABSTRACT convolution form) | B1, B2, B3, BP_V | MED-HARD (E-phase later) |
-| H8-C2 | (wave 7, OPEN) | (K-CUT-m-factor): the FACTORWISE mass law (statement probed; §Wave 7) | C1, B3; instantiation = owner rows | MED (derivation) / HARD (instantiation, semantic) |
-| H8-C3 | (wave 7, OPEN) | (K-CUT-K1-tie): the exact-form Step-18 K1 tie with the (e,τ,δ) pool structure (statement probed; §Wave 7) | C1, C2, BP_V carriers, [2r]/CL-8, M04 K3 | HARD |
+| H8-C2 | `KCutMassFactor.lean` | (K-CUT-m-factor): the FACTORWISE mass law — LANDED, `massFactor_mass_eq` PROVED sorry-free Lean-core (commit bfe0a85; round-2 pass confirmed); the structure = unpinned owner-row interface | C1, B3; instantiation = owner rows | MED (derivation, DONE) / HARD (instantiation, semantic — OPEN at owners) |
+| H8-C3 | `KCutK1Tie.lean` | (K-CUT-K1-tie): the exact-form Step-18 K1 tie with the (e,τ,δ) pool structure — LANDED, `kcut_k1_form` PROVED sorry-free Lean-core (commit bfe0a85; round-2 pass confirmed); the structure = unpinned owner-row interface (only the e-leg pinned, `e_key`) | C1, C2, BP_V carriers, [2r]/CL-8, M04 K3 | HARD (instantiation — OPEN at owners) |
 | H8-R1 | (documentary) | O-11 §8 charge (vi) adjudication | — | Codex run |
 | H8-R2 | (documentary) | ROOT (H8)-row re-scope spec | R1 + waves | orchestrator |
 
 Parallelism: A1/A2/A3 run concurrently after D0 (A2 may consume A1's theorems —
 if scheduled truly parallel, A2's prover re-proves locally or waits; preferred:
-D0 → {A1, A3} → {A2} → {B1, B2, G1} → B3 → C1). NINE Lean units (D0, A1, A2,
-A3, B1, B2, B3, G1, C1) + 2 documentary [count corrected at KCUT pass finding
-12; an earlier "8 Lean units" line here undercounted C1] + the two OPEN wave-7
-content units below (specced, not landed).
+D0 → {A1, A3} → {A2} → {B1, B2, G1} → B3 → C1 → {C2, C3}). ELEVEN Lean units
+(D0, A1, A2, A3, B1, B2, B3, G1, C1, C2, C3) + 2 documentary [count history:
+"8" corrected to NINE at KCUT pass finding 12; NINE corrected to ELEVEN at the
+round-2 re-pass finding 2, after the wave-7 units C2/C3 LANDED (commit
+bfe0a85)].
 
-### Wave 7 — the two MISSING-CONTENT units (specced 2026-08-05 at the KCUT
+### Wave 7 — the two content units (specced 2026-08-05 at the KCUT
 pass; statements compile-probed green against the built corpus,
 `/tmp/openmath/H8_wave7_probe.lean`, `lake env lean` — sorry-warnings only,
-zero errors; proofs NOT attempted, per the pass disposition)
+zero errors). **STATUS: LANDED + PROVED** (commit bfe0a85,
+`KCutMassFactor.lean`/`KCutK1Tie.lean`; statements VERBATIM from the probe;
+derivation theorems `massFactor_mass_eq`/`kcut_k1_form` sorry-free,
+Lean-core; round-2 re-pass confirmed both proved and drift-free —
+`lean/notes/openmath/KCUT_pass2_2026-08-05.md`). Both structures remain
+UNPINNED owner-row interfaces: the round-2 GAPs (findings 3/4 — C2's
+measured `shMass`/`blkMass` identification; C3's τ/δ read-off pins beyond
+`e_key`) are the instantiation obligations displayed in the HONESTY blocks
+below, owned by the named owner rows, never these units.
 
 These are the pass's isolated genuinely-missing mathematical content
 (findings 4 and 7 + the closing residue statement): everything `kcut_reduce`
@@ -824,14 +833,17 @@ theorem massFactor_mass_eq {n : ℕ} {X : LeanUrat.MovesU.ClassifierSpec n p}
       = R.W (R.shIdx σ T) * ∏ i, R.weight (R.shIdx σ T) i (R.cutBlk σ T i)
 ```
 
-HONESTY: `KCutMassFactor` is STRICTLY STRONGER than `mass_eq` (it kills
-per-index compensation by routing every factor through the concrete cut
-data), but the identification of `shMass`/`blkMass` with the MEASURED
-semantics (shallow mass; grammar weight at the transported pool) remains
-owner-row content ((H7)/sibjc TREE-EXP rows + [2r]/CL-8 + O-1/O-3) — H8-C2's
-INSTANTIATION is that owners' work, and its block-side measured reading is
-H8-C3. The derivation theorem is MED (`cutBlk_car` + `shIdx_eq` + a
-multiplicative `sum_ent` analogue).
+HONESTY: `KCutMassFactor` is STRICTLY STRONGER than `mass_eq` — it kills
+SLOT-dependent compensation by routing every factor through the concrete cut
+data (weights cannot depend on the abstract slot separately from `dcar`;
+compensation across distinct `BlockDeriv` values remains possible until
+`blkMass` is pinned — round-2 finding 3) — but the identification of
+`shMass`/`blkMass` with the MEASURED semantics (shallow mass; grammar weight
+at the transported pool) remains owner-row content ((H7)/sibjc TREE-EXP rows
++ [2r]/CL-8 + O-1/O-3) — H8-C2's INSTANTIATION is that owners' work, and its
+block-side measured reading is typed at H8-C3. The derivation theorem
+(`cutBlk_car` + `shIdx_eq` + a multiplicative `sum_ent` analogue,
+`KCutReKeys.prod_ent`) is PROVED (`massFactor_mass_eq`, landed).
 
 **H8-C3 (K-CUT-K1-tie) [HARD; deps C1, C2, BP_V (`UCarriers`/`blockSolve`/
 `powSubst`/`OKat`/`evalAt`), [2r]/CL-8 REL.2 dictionary, M04 K3] — the
@@ -963,10 +975,13 @@ persists at the reduced scope above. Either way the ROOT edit is a ledgered
 revision with its own VC pass — the standing acceptance-counter discipline
 applies (a text change resets the counter; this blueprint does not touch ROOT).
 
-**POST-PASS STATUS LINE (2026-08-05, binding on every (H8) display — see §8):
-(K-CUT) = Lean development faithful at declaration level (the KCUT pass's
-declaration audit); discharge awaits the two wave-7 content units (H8-C2
-(K-CUT-m-factor), H8-C3 (K-CUT-K1-tie)) + a clean re-pass.** The repaired
+**POST-PASS STATUS LINE (updated after the round-2 re-pass, binding on every
+(H8) display — see §8): (K-CUT) = Lean development faithful at declaration
+level (KCUT pass declaration audits, rounds 1 + 2); all ELEVEN Lean units +
+2 documentary units LANDED, incl. the wave-7 content units H8-C2
+(K-CUT-m-factor) and H8-C3 (K-CUT-K1-tie) with their derivation theorems
+PROVED sorry-free Lean-core (the structures = unpinned owner-row
+interfaces); discharge awaits ONLY the clean re-pass.** The repaired
 composed row draft (the OWED ROOT status-sync line, recorded as a SPEC for
 the r-workflow — never executed from here) is
 `Scaffold/HDischarge/H8/R2RootSync.lean` §D.
@@ -1042,10 +1057,11 @@ statement changes):
 | 12 | "8 Lean units" vs nine | CORRECTED to NINE + 2 documentary (§4) |
 
 **The two missing-content units**: specced at §4 Wave 7 (statements
-compile-probed green, `/tmp/openmath/H8_wave7_probe.lean`; proofs NOT
-attempted, per the dispatch). They isolate the pass's genuinely-missing
-mathematics: H8-C2 the factorwise mass law, H8-C3 the exact-form Step-18 K1
-tie with the (e,τ,δ) pool structure and the grammar-total identification.
+compile-probed green, `/tmp/openmath/H8_wave7_probe.lean`); since LANDED +
+PROVED (commit bfe0a85; round-2 re-pass confirmed — see §9). They isolate
+the pass's genuinely-missing mathematics: H8-C2 the factorwise mass law,
+H8-C3 the exact-form Step-18 K1 tie with the (e,τ,δ) pool structure and the
+grammar-total identification.
 
 **Owed ROOT status-sync (SPEC, r-workflow-owned)**: replace the
 `docs/ROOT_ASSEMBLY_2026-08-02.md` §3.1 (H8) Status text with the repaired
@@ -1053,5 +1069,36 @@ tie with the (e,τ,δ) pool structure and the grammar-total identification.
 revision with its own VC pass; acceptance-counter discipline applies). No
 ROOT edit is made by this unit.
 
+**Standing status**: superseded by §9's — H8-C2 + H8-C3 have landed with
+proofs; discharge awaits ONLY the clean re-pass.
+
+---
+
+## 9. Round-2 re-pass record + display re-sync
+
+**The re-pass** (`lean/notes/openmath/KCUT_pass2_2026-08-05.md`; fresh-context
+Codex over the full package after the wave-7 landings, commit bfe0a85).
+**VERDICT: CRITICAL** — but BOTH content theorems were confirmed PROVED
+(`massFactor_mass_eq`, `kcut_k1_form` — sorry-free under the machine
+attestation) and the new-declaration drift audit was clean (finding 7: all
+statements verbatim from the Wave-7 spec; `KCutReKeys.prod_ent`/
+`blockTotal_eq_tsum`/`kcut_k1_form_of_massFactor` conservative). The two
+criticals (findings 1/2) were DISPLAY STALENESS only: R2RootSync §D + this
+blueprint still showed C2/C3 OPEN and counted NINE Lean units. Re-synced this
+session (R2RootSync §G is the unit-of-record fold; this file's §4 table/count,
+Wave-7 header, C2 honesty gloss, and §6 status line updated in-place):
+
+| # | class | finding (compressed) | disposition |
+|---|---|---|---|
+| 1 | CRITICAL | §D still says C2/C3 OPEN after both landed + proved | RE-SYNCED (§D replacement row now states landed/proved + the unpinned-interface residue) |
+| 2 | CRITICAL | "NINE Lean units" stale; blueprint labels C2/C3 OPEN | CORRECTED to ELEVEN + 2 documentary, everywhere; §4 table rows updated |
+| 3 | GAP | C2 "per-index compensation killed" gloss broader than the typed theorem; measured `shMass`/`blkMass` identification = owner-row | GLOSS NARROWED (slot-dependence only) in `KCutMassFactor.lean` + §4; residue displayed |
+| 4 | GAP | C3 τ/δ/`vBridge` unpinned beyond `e_key`; possession of an instance ≠ faithful instantiation | DISPLAYED in §D + §4 Wave-7 header (owner-row instantiation obligation) |
+| 5 | ADVISORY | derivation vs semantics honestly separated in both files | recorded (confirmation) |
+| 6 | GAP | graft inverse laws still assumed; decomposition bijectivity open | already displayed (unchanged; owner: D-14 + CU-3 + REL.2 arc) |
+| 7 | ADVISORY | no statement drift; auxiliaries conservative | recorded (confirmation) |
+
 **Standing status**: (K-CUT) = Lean development faithful at declaration
-level; discharge awaits H8-C2 + H8-C3 + a clean re-pass.
+level (rounds 1 + 2 audits); all ELEVEN Lean units + 2 documentary landed;
+the C2/C3 structures remain unpinned owner-row assumption packages (semantics
+NOT discharged); discharge awaits ONLY the clean re-pass.

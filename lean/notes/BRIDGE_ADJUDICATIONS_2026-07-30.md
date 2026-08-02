@@ -2144,3 +2144,7 @@ running detached (KCUT_pass2.jsonl); orchestrator watcher set.
 ## GRB LEAF REV 3: PASS-2 FOLD (2026-08-02)
 Pass 2 held C1/C2 repairs GENUINE but found the ord-service leakage PERSISTING at two operative sentences (S6.2 + S8.1) — both now STRUCK to open TR-3-ORD-X (R2.3/R2.5 routing); plus 3 gaps fixed: S2.2 converse DELETED, "holds at G2 instance" -> "gate supports on tested developments", "strictly <=" -> data-wise weaker.
 Residue unchanged (TR-3'-GEN + TR-3-ORD-X + D-ITER(order >= 2) + N-1); clean-pass counter stays 0/2; next = hostile pass 3.
+
+## K-CUT DISPLAY SYNC POST-C2/C3 (2026-08-02)
+Round-2 re-pass (KCUT_pass2_2026-08-05.md) CRITICAL on display staleness only — both content theorems confirmed PROVED, drift audit clean; R2RootSync §D/§G + blueprint re-synced: C2/C3 = LANDED+PROVED unpinned interfaces, ELEVEN Lean units + 2 documentary.
+Standing status: discharge awaits ONLY the clean re-pass (GAPs 3/4/6 = displayed owner-row instantiation residue, unchanged owners).

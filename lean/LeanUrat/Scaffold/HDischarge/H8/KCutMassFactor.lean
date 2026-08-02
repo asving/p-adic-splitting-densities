@@ -22,13 +22,16 @@ probe; this unit lands them and proves the derivation theorem.
   rows factor through the CONCRETE H8-B3 carriers (`ShallowData`/`BlockDeriv`)
   by SLOT-INDEPENDENT functions `shMass`/`blkMass`, and the tree mass
   factorizes along the concrete extraction (`shallowDataOf`/`blockDerivOf`
-  over `minEnts`) — per-index compensation is killed by routing every factor
-  through the cut data.
+  over `minEnts`) — SLOT-dependent compensation is killed (weights cannot
+  depend on the abstract slot separately from `dcar`); compensation across
+  distinct `BlockDeriv` values remains possible until `blkMass` is identified
+  with the measured semantics [round-2 pass finding 3].
 * The structure is an UNPINNED assumption package: supplying an instance —
   identifying `shMass`/`blkMass` with the MEASURED semantics (shallow mass;
   grammar weight at the transported pool) — is OWNER-ROW work ((H7)/sibjc
   TREE-EXP rows + [2r]/CL-8 + O-1/O-3), never this unit's.  The block-side
-  measured reading is open unit H8-C3 (K-CUT-K1-tie).  NOTHING here
+  measured reading is typed at unit H8-C3 (K-CUT-K1-tie, `KCutK1Tie.lean` —
+  landed; itself an unpinned interface).  NOTHING here
   discharges a seam field.
 * `massFactor_mass_eq` IS proved (sorry-free): factorwise ⇒ the aggregate
   `mass_eq` row, i.e. any `KCutMassFactor` instance supplies `kcut_reduce`/
