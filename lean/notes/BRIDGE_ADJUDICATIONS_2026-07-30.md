@@ -5014,3 +5014,18 @@ provenance appendix per the saved checklist — verbatim slices, embedded
 records with host-file line ranges); until it lands, the acceptance
 citation points at the REVISION-24 text. Never self-confirmed: this unit
 is the revision, not its audit.
+
+## 2026-08-08: VC28 CONFIRMED FIRST-PASS (0C/0G) — the ROOT acceptance RE-ANCHORS at REVISION 25
+
+VC28 (full audit of REVISION 25, the r26 text): CONFIRMED with zero findings — the first
+first-pass confirmation of the cadence. All folds verified at their sites (anchor
+citations; POOL-DICT displayed as derivation-route-dead with the row intact;
+TR-4 empirical-only; BasePolygonLengthLaw displayed NOT rostered, roster NINE;
+leakFree honesty display; D-ITER open-lemma discipline; the three-target forge display);
+the 26-pattern census reproduced exactly (incl. the VC27/VC27b substring relationship);
+provenance fully resolved (the appendix built per the vc-audit-appendix-checklist memory
+— every bracket sliced verbatim, wording verified pre-slice). Report:
+lean/notes/openmath/VC28_report.md (this commit).
+CONSEQUENCE: the acceptance anchor moves REVISION 24/VC27+VC27b → REVISION 25/VC28.
+The whole wave-9 harvest is now inside the certified anchor. ROOT citation text rides
+r27. VC29 next in cadence. Synthesis pass 6 running (its queue = the next wave).
