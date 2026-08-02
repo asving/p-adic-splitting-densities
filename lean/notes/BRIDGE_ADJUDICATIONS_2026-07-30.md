@@ -4294,3 +4294,86 @@ data byte-verbatim — i2 kept as the record, not silently fixed). Result:
 10 TD3 incl. helpers + TD-1 + the TD-6 control); v2 statements
 byte-unchanged (verified below at commit). Open in B2D after this wave:
 TD-2/TD-4/TD-5 (v2 sorries), TD-6's two v3 sorries, GR wave 2a, CL5.
+
+## 2026-08-08 (wallclock 2026-08-02): B2D TD MOP-UP — THE TD FRONT CLOSED (TD-2/TD-4/TD-5 proved at v2; TD-6 proved in full; the TransDeep supplier tie non-vacuous)
+
+Base a1e14ef. The five remaining TD sorries filled; zero statement changes
+(every statement byte-unchanged at its standing round — v2 for TD-2/4/5,
+round-3 v3 for TD-6's pair).
+
+**THE v3-SEAM AUDIT, EXECUTED FIRST (the a1e14ef protocol: audit before
+proving).** Each v2-statement unit re-checked against the TD-3 round-2
+seams (Seam A member existence, Seam B parent/box-slot overlap):
+
+* **TD-2 (`FiberSumLaw`)** — NOT IMPLICATED. The partition argument reads
+  `semantics` + `digit_range` ONLY: an empty stratum sums 0 = 0 (no
+  member-existence draw), and the count is fibered over read vectors,
+  never factorized over blocks (no disjointness draw). Both round-2
+  witnesses `cmL3`/`cmL4` SATISFY the v2 statement.
+* **TD-4 (`JunctionPinLaw`)** — NOT IMPLICATED. The ∃ c clause asserts a
+  VANISHING (off-c count 0), never a nonempty c-fiber ("the c-fiber is
+  NOT asserted nonempty" — the law's own docstring); reads `semantics` +
+  `junction` + `hpin_ne`/`hpin_lt` only.
+* **TD-5 (`LeakFreeCarrier` supplier)** — NOT IMPLICATED. The carrier IS
+  the (`parent_interior_disjoint`, `pinned_forced`) pair, clauses
+  untouched by all three statement rounds; the INTERIOR (ii.3) form is
+  the carrier's designed content (§5's verbatim referent) — v3's
+  `parent_box_disjoint` implies it but is not needed.
+
+Verdict: all three HONEST AT v2 → proved there, deliberately NOT re-keyed
+(the TD-1 precedent: weaker hypothesis = stronger theorem, non-vacuous by
+`td_lawfulV2`); v3-lawful instances consume them through `extends`.
+
+**PROOFS LANDED (all Lean-core, no sorry):**
+
+* **TD-2** `ledger_fiberSum` + NEW general helper
+  `blockCount_read_partition` (TD2_fiberSum.lean): both sides through
+  `LedgerSemanticsV2` to `supportUnion` blockCounts; the helper fibers
+  the member count over the TOTAL read map into the `Fin (q₀^d)` box
+  (`Finset.card_eq_sum_card_fiberwise` on the finite box-vector carrier;
+  `digit_range` keeps members' reads in the box so the dite default
+  branch is never hit — no member dropped, none double-counted); off q₀
+  vacuous by [R2-C1]. Import widened TDDefsV2 → TD3_digitsProd for
+  `boxExt` (plumbing only; the statement stays v2).
+* **TD-4** `ledger_junctionPin` (TD4_junctionPin.lean): c := `L.pin ρ`
+  at q = q₀ (`hpin_ne`/`hpin_lt`); an off-c prescribed-digit member
+  would read the pin at the junction (`junction`) AND z ≠ c through
+  `slotCoord` — unsatisfiable, `blockCount_of_not` gives 0; off q₀
+  [R2-C1], q ∈ {0,1} included; the `monicTop` guard never drawn on; the
+  §6 fence (v) V9 prohibition respected (imports TDDefsV2 only).
+* **TD-5** `ledger_leakFree` (TD5_leakCarrier.lean): the pack projection
+  `⟨hL.parent_interior_disjoint, hL.pinned_forced⟩`.
+* **TD-6** (TD6_assembly.lean), statements byte-unchanged from the
+  round-3 re-key: NEW builder `transDeep_of_lawful` — the (TRANS-DEEP)
+  row AT the presenting datum with field suppliers TD-1 (floorsCharge,
+  v2) / TD-3 (digitsProd, v3) / TD-2 (fiberSum, v2) / TD-4 (junctionPin,
+  v2) and `leakFree := LeakFreeCarrier L`, the [R2-G1] plug verified
+  DEFINITIONALLY by the NEW gate `transDeep_of_lawful_leakFree` (= `rfl`;
+  never `True`); `transDeep_of_ledger` = `Exists.choose` transport of
+  the builder along the membership's `J = L.ledgerJoint` (the
+  `noncomputable` warrant); `ledger_freshRowOn` =
+  `freshRowOn_of_transDeep` at this supplier with `huni` passed through
+  as the DISPLAYED (ADM) hypothesis — §3 fences intact (SlotUniformLaw
+  never supplied; junction VALUE never identified). NEW firing gate
+  `td_transDeep`: the row datum AT the designated r = 1 instance
+  (`td_mem_ledgerStrataV3` + `td_scope`/`td_clean`) — the supplier is
+  non-vacuous at the same instance whose fiber counts are positive
+  (`td_devacuify`).
+
+**THE SUPPLIER TIE**: `transDeep_of_ledger` produces exactly the
+`TransDeep W P J` datum that the LANDED H2 row consumes
+(`fresh_of_transDeep`'s `hTD` binder, H2/TransDeep.lean §3 signatures
+verbatim — no consumer signature touched, fence (vii) intact);
+`ledger_freshRowOn` compiles THROUGH `freshRowOn_of_transDeep`, so the
+interface fill is machine-checked, not asserted.
+
+**Gates**: full `lake build` green (exit 0; targeted TD chain 8612 jobs);
+`#print axioms` Lean-core on all 8 proved/filled decls of this wave
+(TD-2 ×2, TD-4, TD-5, TD-6 ×4); statements byte-unchanged (the only
+signature-line diffs are the two sanctioned NEW decls
+`transDeep_of_lawful`/`td_transDeep`/`transDeep_of_lawful_leakFree` and
+TD-2's import line). Open in B2D after this wave: GR wave 2a ONLY
+(8 sorry sites across GR-1..GR-4, census 2+3+2+1 — the a1e14ef
+message's "GR x7" was a miscount; the files are unchanged since wave E). The TD projection layer —
+E2/E2-v2/E2-v3, TD-0..TD-6, all gates and countermodel records — is
+sorry-free end to end.

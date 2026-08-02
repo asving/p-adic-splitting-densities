@@ -24,7 +24,18 @@ E-phase file: the typed carrier DEF (no sorry) + the supplier statement (sorry).
 STATEMENT ROUND 2 (v2, 2026-08-02): the supplier's lawfulness hypothesis is
 now `LedgerLawfulV2` (TDDefsV2's finite-box semantics). The carrier DEF
 itself is UNCHANGED — it reads only the (ii.3)/(ii.4) geometry clauses,
-which the v1→v2 diff never touched. -/
+which the v1→v2 diff never touched.
+
+PROVED (TD mop-up wave, 2026-08-08 wallclock 2026-08-02) — AT THE v2
+STATEMENT, byte-unchanged. **v3-seam audit (the a1e14ef re-key protocol,
+applied before proving)**: the TD-3 round-2 seams do NOT implicate this
+supplier — the carrier is EXACTLY the pair (`parent_interior_disjoint`,
+`pinned_forced`), two clauses the v1→v2→v3 diffs never touched, so the proof
+is the projection of the pack onto them. Note the carrier's first conjunct is
+the INTERIOR (ii.3) form by design (§5's verbatim referent) — v3's stronger
+`parent_box_disjoint` implies it but is NOT needed; re-keying to v3 would
+weaken the theorem for no content. Deliberately NOT re-keyed (the TD-1
+precedent); v3-lawful instances consume it through `extends`. -/
 
 set_option linter.style.longLine false
 set_option linter.style.header false
@@ -50,9 +61,13 @@ def LeakFreeCarrier (L : LedgerStratumData D W P) : Prop :=
     (∀ c' : Coord, CoordPrec c' c → x c' = y c') → x c = y c)
 
 /-- **TD-5 supplier**: the typed (L) carrier holds at every lawful ledger datum
-(the (ii.3)/(ii.4) clauses land at TD-0 via T9/T12). -/
+(the (ii.3)/(ii.4) clauses land at TD-0 via T9/T12). PROVED at the v2
+statement: the carrier IS the (`parent_interior_disjoint`, `pinned_forced`)
+pair of the pack, verbatim (v3-seam audit in the module docstring). -/
 theorem ledger_leakFree (L : LedgerStratumData D W P) (hL : L.LedgerLawfulV2) :
-    LeakFreeCarrier L := by
-  sorry -- B2DEF_LEAN E-phase sorry [unit TD-5, statement round 2 (v2)]
+    LeakFreeCarrier L :=
+  ⟨hL.parent_interior_disjoint, hL.pinned_forced⟩
 
 end LeanUrat.B2D
+
+#print axioms LeanUrat.B2D.ledger_leakFree

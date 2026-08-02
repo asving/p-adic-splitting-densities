@@ -39,7 +39,19 @@ in the scope/clean regime, yet its carrier violates `DigitsProdLaw`, so no
 `TransDeep` row datum exists over it; `transDeep_of_ledger_v2_unfillable`
 below is the compiled adjudication of the re-key (the v1-round precedent,
 one level up). On v3 the `digitsProd` field is SUPPLIED by the proved TD-3
-(`ledger_digitsProd`, round 3). -/
+(`ledger_digitsProd`, round 3).
+
+PROVED (TD mop-up wave, 2026-08-08 wallclock 2026-08-02), statements
+byte-unchanged from the round-3 re-key: with TD-1..TD-5 all proved
+(TD-1/TD-2/TD-4/TD-5 at v2, consumed through the v3 pack's `extends`; TD-3
+at v3) the assembly is the glue the blueprint priced. The helper
+`transDeep_of_lawful` builds the row AT the presenting datum — making the
+plugged `leakFree := LeakFreeCarrier L` value inspectable per [R2-G1] — and
+`transDeep_of_ledger` transports it along the family membership's
+`J = L.ledgerJoint` equation (`Exists.choose`, the `noncomputable` warrant).
+`ledger_freshRowOn` = `freshRowOn_of_transDeep` at this supplier, `huni`
+passed through as the displayed hypothesis, exactly the H2 §3 interface
+(`fresh_of_transDeep`'s `hTD` binder is fed by this def). -/
 
 set_option linter.style.longLine false
 set_option linter.style.header false
@@ -65,6 +77,23 @@ theorem transDeep_of_ledger_v2_unfillable :
     cm_scope cm_clean
   exact cm4_not_digitsProd td.digitsProd
 
+/-- **The row at the presenting datum** (TD-6's builder): a v3-lawful ledger
+datum's own q-generic carrier satisfies the (TRANS-DEEP) row, with
+`leakFree := LeakFreeCarrier L` — the TD-5 typed carrier OF THIS DATUM, the
+[R2-G1]-demanded plugged value, inspectable here by `rfl`. Field suppliers:
+TD-1 (`ledger_floorsCharge`, v2) + TD-3 (`ledger_digitsProd`, v3) + TD-2
+(`ledger_fiberSum`, v2) + TD-4 (`ledger_junctionPin`, v2); the v2-statement
+units consume the v3 pack through `extends`. -/
+noncomputable def transDeep_of_lawful (L : LedgerStratumData D W P)
+    (hL : L.LedgerLawfulV3) (hscope : LedgerScope W P)
+    (hclean : LedgerClean D W P L.N) :
+    TransDeep W P L.ledgerJoint where
+  floorsCharge := ledger_floorsCharge L hL.toLedgerLawfulV2 hscope hclean
+  digitsProd := ledger_digitsProd L hL hscope hclean
+  fiberSum := ledger_fiberSum L hL.toLedgerLawfulV2 hscope hclean
+  leakFree := LeakFreeCarrier L
+  junctionPin := ledger_junctionPin L hL.toLedgerLawfulV2 hscope hclean
+
 /-- **TD-6, the row supplier** (blueprint §3's `transDeep_of_ledger`): every
 member of the designated family, in the scope/clean regime, satisfies the
 (TRANS-DEEP) row — with `leakFree := LeakFreeCarrier` of the presenting datum
@@ -82,11 +111,21 @@ noncomputable def transDeep_of_ledger (J : JointStratum D W P)
     (hJ : J ∈ LedgerStrataV3 D W P) (hscope : LedgerScope W P)
     (hclean : LedgerClean D W P J.N) :
     TransDeep W P J := by
-  sorry -- B2DEF_LEAN E-phase sorry [unit TD-6, statement round 3 (v3)]
+  have hJ' : ∃ L : LedgerStratumData D W P, L.LedgerLawfulV3 ∧ J = L.ledgerJoint := hJ
+  have hclean' : LedgerClean D W P hJ'.choose.N := by
+    have h := hJ'.choose_spec.2
+    rw [h] at hclean
+    exact hclean
+  have key : TransDeep W P hJ'.choose.ledgerJoint :=
+    transDeep_of_lawful hJ'.choose hJ'.choose_spec.1 hscope hclean'
+  rw [hJ'.choose_spec.2]
+  exact key
 
 /-- **TD-6 demonstration corollary** at the designated family: the ledger strata
 deliver BP_IV C5′'s `FreshRowOn` binder, with `huni` as the DISPLAYED (ADM) +
-(GR-B)-line hypothesis (never supplied — §3 fence (i)). -/
+(GR-B)-line hypothesis (never supplied — §3 fence (i)). PROVED:
+`freshRowOn_of_transDeep` (the landed H2 §3 interface) fed by
+`transDeep_of_ledger`. -/
 theorem ledger_freshRowOn (D : CensusData)
     (hscope : ∀ (W : WindowDatum D) (P : ParentShape D W),
       LedgerScope W P)
@@ -94,9 +133,33 @@ theorem ledger_freshRowOn (D : CensusData)
       ∀ J ∈ LedgerStrataV3 D W P, LedgerClean D W P J.N)
     (huni : ∀ (W : WindowDatum D) (P : ParentShape D W),
       ∀ J ∈ LedgerStrataV3 D W P, SlotUniformLaw W P J) :
-    FreshRowOn D (fun W P => LedgerStrataV3 D W P) := by
-  sorry -- B2DEF_LEAN E-phase sorry [unit TD-6, statement round 3 (v3)]
+    FreshRowOn D (fun W P => LedgerStrataV3 D W P) :=
+  freshRowOn_of_transDeep D (fun W P => LedgerStrataV3 D W P)
+    (fun W P J hJ => transDeep_of_ledger J hJ (hscope W P) (hclean W P J hJ))
+    huni
+
+/-! ## Non-vacuity gates: the supplier FIRES at the designated r = 1 instance,
+and the [R2-G1] plug is definitional -/
+
+/-- **The supplier fired**: the (TRANS-DEEP) row datum at TD-0's designated
+r = 1 instance (in the v3 family by `td_mem_ledgerStrataV3`; scope/clean by
+`td_scope`/`td_clean`) — the supplier is non-vacuous, the same instance whose
+fiber counts are positive (`td_devacuify`). -/
+noncomputable def td_transDeep : TransDeep tdW tdP tdL.ledgerJoint :=
+  transDeep_of_ledger tdL.ledgerJoint td_mem_ledgerStrataV3 td_scope td_clean
+
+/-- **The [R2-G1] plug, verified definitionally**: at the presenting datum the
+row's `leakFree` field IS TD-5's typed carrier — `rfl`, never `True`. -/
+theorem transDeep_of_lawful_leakFree (L : LedgerStratumData D W P)
+    (hL : L.LedgerLawfulV3) (hscope : LedgerScope W P)
+    (hclean : LedgerClean D W P L.N) :
+    (transDeep_of_lawful L hL hscope hclean).leakFree = LeakFreeCarrier L := rfl
 
 end LeanUrat.B2D
 
 #print axioms LeanUrat.B2D.transDeep_of_ledger_v2_unfillable
+#print axioms LeanUrat.B2D.transDeep_of_lawful
+#print axioms LeanUrat.B2D.transDeep_of_ledger
+#print axioms LeanUrat.B2D.ledger_freshRowOn
+#print axioms LeanUrat.B2D.td_transDeep
+#print axioms LeanUrat.B2D.transDeep_of_lawful_leakFree
