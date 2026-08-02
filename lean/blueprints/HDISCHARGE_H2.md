@@ -187,7 +187,9 @@ separation (candidate-pair identification). Lean home: `Scaffold/DictIII/` —
   `Option` takes at most one `some` value), so the field reduces to existence,
   which `ConsF`'s own clause supplies at continuing nodes — near-redundant.
 * **Consequence.** The landed row is a placeholder-grade shadow, NOT (FRESH). It
-  is currently consumed by NO landed theorem (III-U3b not yet landed), so no
+  is currently consumed by NO landed theorem (III-U3b not yet landed —
+  STALE at 2026-08-02: III-U3b HAS landed, `cu1_stepPair_ge2` fires
+  `childDetermined`; see the H2-U10 gate note), so no
   soundness damage exists at HEAD; but the (H2) discharge CANNOT target it.
   **Requested adjudication (SIGN-OFF-GATED, statement fence):** restate III-H2's
   `DictIII.FRESH` to the faithful form — either re-point it at the census-face
@@ -795,6 +797,24 @@ shape fixes the field list; authoring the twins before it exists risks a
 second placeholder-grade row, the §2.3 failure repeated). Charge display, not
 verbatim Lean, by design.
 
+**GATE (ii) CLEARED (2026-08-02, unit III-U3b records sync): III-U3b is
+LANDED — U10 is dispatchable.** The step is on file and PROVED
+(`Scaffold/DictIII/CU1.lean`: `CandidatePairAt`, `cu1_stepPair_le1`/`_ge2`,
+`cu1_stepPair`, GD-2 instance, `ol6Gate` positive gate; Lean-core), and its
+consumption shape — THE fixed field list for this unit's twins — is displayed
+in the `cu1_stepPair_ge2` docstring: from (H2) exactly ONE field fires, in
+exactly the H2-U10b guarded shape (`childDetermined : InteriorChain H →
+ConsF f H D R → H.nodes[i]? = some ν → ∃! S, R.side i = some S ∧
+S ∈ D.principalSides i ∧ HasRequestedSlope (Theta H) i S`, implicit
+`{f H D R i ν}` over the DictIII carriers); from (H1) exactly
+`residualNormalForm` (at `2 ≤ i`, reader tied by `laws_pin_fields`).
+Chain-keyed (a′)/(b) twins have NO III-U3b consumer — that content is
+census-face (`FreshClauses`/`FreshRowOn`), and any twin field quantifying raw
+`EHist` unguarded rejoins the refuted F-2/F-4 class. Standing constraint from
+the U10/U10b record: the whole-row §1.3 scope repair (`parentSeparated`
+duplicate-history refutation) is still the twins' open design burden; gate =
+the dual statement gate as displayed.
+
 ### H2-U9 — LANDED (2026-08-02; wave 3 gate satisfied)
 
 The (TRANS-DEEP) Lean hypothesis row ((F)/(L)/(J) clauses) + the consumption
@@ -821,7 +841,7 @@ leg PASS, 2026-08-02); Lean-core axioms, zero sorry. Ledger:
 | 0 | U1 → U2 | sequential (U2 needs U1), minutes-scale | compile green |
 | 1 | U4, U5, U6, U7, U8, P1, P2 | ALL parallel (U5 waits U4 only for its proof, statement independent) | per-unit: compile + falsifier; P1/P2: hostile pass |
 | 2 | fold: §2.3 adjudication package to Asvin (sign-off request with U7's compiled witness); update ROOT (FRESH) row notes | lead-only | sign-off |
-| 3 | U10 (classifier-face twins) | after §2.3 sign-off + III-U3b coordination | dual statement gate |
+| 3 | U10 (classifier-face twins) | after §2.3 sign-off + III-U3b coordination — **both satisfied 2026-08-02 (III-U3b LANDED, consumption shape on record at `cu1_stepPair_ge2`); U10 dispatchable** | dual statement gate |
 | 3 | U9 + the (FRESH-RED) assembly theorem | after B2-FINAL acceptance | dual statement gate — **PASSED + LANDED 2026-08-02** (gate satisfied by accepted §B2-DEF, B2-FINAL's successor; Codex ACCEPT 0/0 + Fable PASS) |
 | any | H2-L1 literature session | non-blocking | LITUNIT charge |
 

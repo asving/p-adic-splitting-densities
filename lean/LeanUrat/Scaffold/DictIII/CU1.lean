@@ -1073,7 +1073,32 @@ theorem InteriorChain.continuingPart_nodes {H : EHist p F}
     (H1) row `GRB.residualNormalForm` supplies the GD-3 residual-degree law
     (its granted reader tied to `R` by `laws_pin_fields`).  The rows stay
     NAMED hypothesis rows — consumed, never discharged.  HONESTY: currently
-    vacuous at every (p, F) by the III-U8 verdict (section-header note). -/
+    vacuous at every (p, F) by the III-U8 verdict (section-header note).
+
+    **U10 CONSUMPTION SHAPE** (HDISCHARGE_H2 gated unit U10: this theorem
+    is the corpus's ONLY firing site of the (H1)/(H2) rows at orders ≥ 2,
+    so it FIXES the field list U10's chain-keyed (a′)/(b)/(c) twins must
+    carry).  From (H2) exactly ONE field fires, in exactly the landed
+    H2-U10b guarded shape —
+    `childDetermined : ∀ {f H D R i ν}, InteriorChain H → ConsF f H D R →
+    H.nodes[i]? = some ν → ∃! S, R.side i = some S ∧
+    S ∈ D.principalSides i ∧ HasRequestedSlope (Theta H) i S`
+    (keyed to `EHist`/`GMNData`/`GMNReader`/`ConsF`; `getElem?` node
+    lookups; the `InteriorChain` guard is the row's own, NOT re-supplied by
+    the twin).  From (H1) exactly `residualNormalForm` fires (at `2 ≤ i`;
+    granted reader tied to `R` by `laws_pin_fields`).  Chain-keyed (a′)/(b)
+    twins have NO consumer in this step: their content is census-face
+    (`FreshClauses`/`FreshRowOn`, HDischarge/H2), and any twin field
+    quantifying raw `EHist` UNGUARDED rejoins the refuted F-2/F-4 class
+    (`U8.fresh_uninhabited` here; PROBE F-4, DictIIIProbes.lean).
+
+    CURRENT-ROW BINDING of the hooks (citation only — no new hypothesis
+    content): the (H1) side's honest corpus carriers are `GrBKeyLaws`
+    (HDischarge/H1/Defs.lean) and its gated total form `FaithfulTotal`
+    (HDischarge/H1/SiteBlock.lean); the (H2) side's genuine freshness
+    content is priced at `TransDeep`/`fresh_of_transDeep`
+    (HDischarge/H2/TransDeep.lean, H2-U9) — this step consumes the DictIII
+    rows as named arguments and re-prices NEITHER. -/
 theorem cu1_stepPair_ge2 {f : Polynomial ℤ_[p]} {H : EHist p F}
     {D : GMNData f (Theta H)} {R : GMNReader f (Theta H) D}
     (hGRB : GRB p F) (hFRESH : FRESH p F)
