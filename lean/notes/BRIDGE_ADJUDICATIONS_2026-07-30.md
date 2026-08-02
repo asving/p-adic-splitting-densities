@@ -4780,3 +4780,50 @@ byte-unchanged as records; tdL/td2 remain v3-lawful; B2D 0 sorries; footprints
 Lean-core. huni status: refuted-as-stated (v3 family) → displayed-and-satisfiable
 (v4 family; still (ADM) + (GR-B)-line content, never supplied by the TD chain).
 Full repair record: `openmath/HUNI_PROBE_2026-08-08.md` §REPAIR RECORD.
+
+## 2026-08-08 (wallclock 2026-08-02) — ROOT r25 EXECUTED (REVISION 24): the acceptance RE-ANCHORS at REVISION 23 + the wave-8 acceptance folds
+
+ROOT REVISION 24 landed (unit r25; record ROOT §30). THE RE-ANCHOR: per the
+"VC26 + VC26b CONFIRMED" entry above, the acceptance anchor moves
+REVISION 20/VC22 → REVISION 23/VC26+VC26b, and r25 executes the
+citation-text update at every operative anchor site (§0 standing
+paragraph, §3.2 end-to-end row sync tail, §6 bracket; the old
+REVISION-20 citations bracketed with dated supersessions — the VC22
+precedent). THE FOLDS, enumerated (ROOT §30 disposition table r25-1..9):
+(1) re-anchor as above; (2) **TR3-S2 ACCEPTED** (6663aa4) folded — with
+accepted TR3-S1, TR-3′-GEN CLOSES AT ORDER 2 as a two-stratum theorem
+(S3.4 REV-11 form; units-only phrasing permanently refuted via Lemma WIT;
+ORD-INV on record; deeper orders open; TR-3-ORD-X-on-(ii) displayed
+conditional on (KP_i)+[T]); the GRB note's post-acceptance bracket
+APPLIED (`GRB_ORDER2_2026-08-05.md` §S3.4 — open lemma #1 closed at
+order 2; counters NOT reset); (3) **REC-SL re-priced** per RECSL_WIRE:
+NARROWED-TO {the hsc StageCore-provenance row at successor-having
+recentering frames on abstract carriers (the RECSL-SIGN carrier;
+discharged on all engine-built towers); the GR0b recentering-chain
+fence}, CLOSED at every compiled site — displayed at the (H1) row and at
+B-M2 REVISION 17 (`H1_BM2_2026-08-06.md`, REV-15/16 mechanics, additive,
+counter stays 2/2; kp_step hΦ compiled-fed at [RC] via RecSLWire);
+(4) the **readsOf debt** displayed RESTATED at the ReadsOfFrom face
+(per the F3 walk + B-M2 REVISION 16 entries above; species form = fence
+display of the dead From→ReadsOf converse); (5) **HUNI-V2** folded at the
+(FRESH) row: v3 face refuted at td2 (375487c) → v4 carrier repair landed
+(058aaf3); huni displayed-and-satisfiable at `ledger_freshRowOnV4`, v3
+binder recorded dead; B2D 0 sorries incl. v4; (6) the **F5 forge
+re-priced against junc_bundle ALONE** (GR leg DECLINED at route (a);
+readsOf leg DEAD at no-consumer); (7) the synthesis-pass-5 F1(ii) ADM-U0
+queue line adjudicated STALE (repair executed at H3 Wave 0, e1cf117,
+2026-08-01; not quoted in ROOT operative text — disposition at §30 only);
+(8) the **StageCore docstring doc-debt** DISPLAYED (the docstring's
+suppliers L1.baseStage_exists/L4.TRANSstage/L5.recTRANSRS are the retired
+FAITHLESS MovesGr held units; the live chain is HC1
+T1_baseStage/S9_transStage/S10_recStage, per the RECSL_WIRE §1 trace;
+the Lean docstring deliberately NOT edited at this doc-only unit);
+(9) the §29 fence-(vii) ASVIN FLAG kept displayed, §30 adding the wave-8
+consequence under the same lineage: the RECSL suppliers consume the
+route-(a) `hσt` pin, so a route-(a) reversal re-opens the REC-SL
+supplier chain. Census re-run on the FINAL text at the declared
+occurrence unit — 17 patterns (the §29 twelve + TR3-S2/REC-SL/RECSL/
+HUNI-V2/VC27), every delta explained, fixed point re-grepped after the
+last edit. Roster NINE rows, unchanged. PROJECT_STATE synced (r25
+checkpoint). **VC27 is OWED on the REVISION-24 wording** (charge ROOT
+§30); until it lands, the acceptance citation points at REVISION 23.

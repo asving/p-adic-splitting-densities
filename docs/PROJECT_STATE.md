@@ -1,8 +1,15 @@
 # Project state — Lean formalization of uniform rationality of *p*-adic factorization densities
 
-*Snapshot: 2026-07-19; last refreshed 2026-08-08+++ (ROOT REVISION 23, unit r24 — see the
-CHECKPOINT "VC25 DISPOSED" section at the tail, which is the current
-resumability anchor: **r24 LANDED** — VC25 ran NOT-CONFIRMED (1C/3G) and all four findings
+*Snapshot: 2026-07-19; last refreshed 2026-08-08++++ (ROOT REVISION 24, unit r25 — see the
+CHECKPOINT "r25 LANDED" section at the tail, which is the current resumability anchor:
+**r25 LANDED** — VC26 + VC26b CONFIRMED, the acceptance RE-ANCHORS at REVISION 23
+(pending VC27 on REVISION 24); **TR-3′-GEN closed at ORDER 2** as a two-stratum theorem
+(TR3-S1 + TR3-S2 both accepted; deeper orders open); B-M2's REC-SL open NARROWED to the
+hsc provenance row + the GR0b chain fence, closed at every compiled site; the readsOf
+debt restated at the ReadsOfFrom face (species form = no-consumer fence display);
+huni refuted at v3 → HUNI-V2 v4 carrier repair landed, **B2D 0 sorries incl. v4**;
+the F5 deep-instance forge priced against junc_bundle ALONE;
+the superseded r24 anchor: VC25 ran NOT-CONFIRMED (1C/3G) and all four findings
 are disposed at ROOT REVISION 23 (the (H4a) retirement propagated into the last operative
 displays; SIX F-(i) records; provenance re-verified in-repo; stale close marked historical);
 GR ROUTE (a) executed (fence-(vii) statement change, flagged for Asvin) — **B2D at 0
@@ -1722,3 +1729,58 @@ D-ITER restatement, the deep-instance forge re-priced against
 junc_bundle/readsOf only).
 Verification: VC1–VC22 done (VC22 = the REVISION-20 anchor); VC25 ran
 NOT-CONFIRMED and is disposed at REVISION 23; VC26 pending on REVISION 23.
+
+## CHECKPOINT 2026-08-08++++ (wallclock 2026-08-02): r25 LANDED — RE-ANCHOR AT REVISION 23 + THE WAVE-8 ACCEPTANCE FOLDS (ROOT REVISION 24)
+ROOT at REVISION 24 (unit r25; record ROOT §30). **VC26 + VC26b CONFIRMED —
+the acceptance RE-ANCHORS on the REVISION-23 text** (VC26: 0C/1G, everything
+countable reproduced — the gap an audit-input artifact, the N-T4 pointer
+resolving to the §N gate record embedded at
+`H4M1_rpack_attempt.md:1091–1186`; VC26b on the completed appendix:
+CONFIRMED 0C/0G, the embedded N-T4 script independently re-executed 13/13;
+reports 565aa28 + b6121a5; the anchor moves REVISION 20/VC22 →
+REVISION 23/VC26+VC26b, citation text updated at r25 per the VC22
+precedent). REVISION 24 folds the wave-8 batch: (1) **TR3-S2 ACCEPTED**
+(6663aa4; passes 2+3 consecutive CLEAN, model-diverse) — with accepted
+TR3-S1, **TR-3′-GEN CLOSES AT ORDER 2 as a two-stratum THEOREM** (S3.4
+REV-11 form; GRB open lemma #1 closed at order 2, the GRB note's
+post-acceptance bracket applied; units-only phrasing PERMANENTLY REFUTED
+via unconditional Lemma WIT; ORD-INV on record; deeper orders ≥ 3 OPEN;
+TR-3-ORD-X-on-(ii) displayed conditional on (KP_i)+[T]); (2) **REC-SL
+NARROWED** (suppliers 1adac62 + RecSLWire 85e11a4): B-M2's REC-SL open is
+NARROWED-TO {the `hsc` StageCore-provenance row at successor-having
+recentering frames on abstract carriers (the RECSL-SIGN carrier;
+discharged on all engine-built towers); the `hfence` GR0b
+recentering-chain fence} and CLOSED at every compiled site (gates positive
+on H₃rc; kp_step's hΦ compiled-fed at [RC]); B-M2 REVISION 17 applied
+(additive, counter stays 2/2); (3) the **readsOf debt RESTATED at the
+`ReadsOfFrom` face** (F3 walk (a)/NO-CONSUMER 878ac17; B-M2 REVISION 16
+applied e7a673a) — the species form is a fence display of the dead
+From→ReadsOf converse, no obligation; (4) **HUNI-V2** — huni/SlotUniformLaw
+REFUTED at the compiled td2 countermodel (375487c, the alphabet seam) →
+the d-leaf-read v4 carrier repair LANDED (058aaf3: TDDefsV4/LedgerLawfulV4/
+TDV4_chain; SlotUniformLaw HOLDS at td2V4; FreshReadsLaw DELIVERED; ALL H2
+statements byte-unchanged; **B2D 0 sorries incl. the v4 layer**); the huni
+face is displayed-and-satisfiable at v4 (`ledger_freshRowOnV4`), the v3
+binder recorded dead; (5) the **F5 deep-instance forge re-priced against
+`junc_bundle` ALONE** (GR leg DECLINED at ROUTE (a); readsOf leg DEAD at
+no-consumer); (6) hygiene: the synthesis-pass-5 F1(ii) ADM-U0 queue line
+adjudicated STALE (executed at H3 Wave 0, e1cf117, 2026-08-01) + the
+StageCore docstring doc-debt displayed (retired-FAITHLESS MovesGr cites;
+live chain HC1 T1_baseStage/S9_transStage/S10_recStage; NOT edited at
+r25). The §29 fence-(vii) GR ROUTE (a) ASVIN FLAG stays; §30 records the
+wave-8 consequence under the same lineage (the RECSL suppliers consume the
+`hσt` pin — a route-(a) reversal re-opens the supplier chain). Roster:
+**NINE rows, unchanged**; census re-run at the declared occurrence unit
+(17 patterns incl. the new TR3-S2/REC-SL/RECSL/HUNI-V2/VC27 markers, every
+delta explained, fixed point re-grepped).
+FRONTIER NOW: **VC27** (the confirming end-to-end pass on REVISION 24;
+acceptance anchored on REVISION 23/VC26+VC26b until it lands); the Asvin
+batch (TowerMoveClosureL re-ratification, Route-B re-scope, the GR
+ROUTE-(a) ratification incl. its RECSL rider, review queue); then the
+re-ranked tail: POOL-DICT (the countermodel-first batch's live remainder),
+the small-units dispatch (TR-4 harness family, TerminalPolySem k′ = 0,
+leakFree general-instance face), the D-ITER restatement, the junc_bundle
+forge, DIterJunctionSupplier.
+Verification: VC1–VC22 done; VC25 NOT-CONFIRMED (disposed at REVISION 23);
+VC26 + VC26b CONFIRMED (= the REVISION-23 anchor); VC27 pending on
+REVISION 24.
