@@ -3317,3 +3317,30 @@ branch (iii) cancels the call (adjudication re-opens). No route text, Lean
 declaration, or recommendation changed. Gate re-run GREEN (`lake env lean
 notes/openmath/H4M4_k3delta_adjudication.md`, zero sorry). Owed: pass 3 on
 the folded text (near-clean per the harvest note); M5 second clean; N-K3.
+
+## 2026-08-08: H4-M2 REVISION 1 — pass-1 fold (all 8 findings; headline circularity CURED)
+
+H4M2_dict_attempt.md REVISION 1 folds hostile pass 1 (H4M2_pass1_2026-08-08.md,
+CRITICAL, 5 crit + 3 gap) in full. HEADLINE (finding 1): the matched-position
+definition is now KEY-FREE (matching by the invariant data both classifiers
+independently compute) — the "same prefix keys" clause presupposed exactly the
+key-level coincidence the dictionary must prove; that coincidence is now the
+displayed lemma DICT-0, OPEN, consumed everywhere as named hypothesis [IN-C]
+(NOT derivable from on-file [IN-U], which presupposes same-valuation —
+circular; route named: GMN Okutsu-canonicity of per-factor OM data + [IN-R1],
+LITUNIT pin owed); all consumers of "matched" (H4-M4, H4-M5 Route A) GAIN the
+displayed hypothesis. Other folds: DICT-1 re-inputted to FOUR named inputs
+([IN-R1]/[IN-U]/[IN-C]/[IN-F1]; isomorphism-vs-embedded-equality mismatch
+displayed) and re-labeled MATH-conditional — NOT a Lean theorem, its Lean face
+= the hypothesis rows coincide/l4_persist of GcdSlice (findings 2-3);
+trivializable-carrier caveat displayed on DictModel (singleton Data voids
+coincide; faithful carriers = H4-F1/H4-F6 instance obligation, finding 4);
+stable_iff_R4 honestly re-documented as consuming THREE rows (splitFree_one
+load-bearing; "exactly two" retired; Encodes + undischarged henc/hoff
+displayed, finding 5); "Lemma 4 PROVED" re-scoped to arithmetic-core-
+unconditional + field content in named rows (finding 6); literature
+under-supply displayed ((F1)/(F2) texts not on file, finding 7); F9 Lean
+witnesses scoped to split + persistsFrom failure only (finding 8). Lean delta
+comment/docstring-only; gate re-run GREEN, zero sorry, Lean-core footprint
+unchanged. COUNTER: clean 0/1 — one clean hostile pass owed on REVISION 1
+(harvest: "M2 fold + 1 clean owed").

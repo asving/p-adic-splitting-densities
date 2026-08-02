@@ -48,20 +48,37 @@ in `posLetter` …)" whose content is exactly §7.2's constraint plus the F₉
 evidence that letter-only stability is insufficient. Both constraints are
 hard-coded below (§2); the dangling pointer is reported, not papered over.
 
-VERDICT (summary): all four charge items delivered. (i) the two objects are
-defined and kept apart, with the coincidence-at-stable-prefixes display
-proved as DICT-1 (math lemma, two NAMED inputs: the H4-M1/REL.1 (R1)-slice
-at the device, and (U) MacLane-chain essential uniqueness — pinned
-literature, flagged for pin precision). (ii) `posLetter` per §7.2 +
-`Stable ⟺ (R4)` PROVED, in Lean, from exactly finding 12's two hypotheses
-(grammar injectivity + off-domain letter outside the range) — theorem
-`DictModel.stable_iff_R4` below, wired to the corpus `AlphabetData.Stable`
-verbatim by `alphabetData_stable_iff_R4`. (iii) Lemma 4 PROVED as a lemma of
-the dictionary: the arithmetic core `lemma4_arith` is UNCONDITIONAL Lean; the
-field-theoretic inputs (F1)/(F2) are named structure rows (`GcdSlice`), and
-`GcdSlice.stable_iff_coprime` chains everything: Stable ⟺ gcd(m, δ) = 1.
-(iv) the F₉ instance re-derived: math + a compiled split witness over the
-concrete F₉ = F₃[i] and the decide-checked gcd table (N-K3 seed).
+REVISION 1 (2026-08-08, pass-1 fold): hostile pass 1
+(`H4M2_pass1_2026-08-08.md`, verdict CRITICAL — 5 critical + 3 gap) folded
+in full; the finding-by-finding record is §6. Headline cure: the
+matched-position definition is now KEY-FREE and the key/valuation
+coincidence is the DISPLAYED OPEN lemma DICT-0, consumed everywhere as the
+named hypothesis [IN-C]. Clean counter 0/1; one clean hostile pass owed on
+THIS revision.
+
+VERDICT (summary, at the REVISION-1 honest strengths): the four charge items
+are delivered as follows. (i) the two objects are defined and kept apart;
+the matched position is defined KEY-FREE (invariant-data matching, §1), the
+key-level coincidence is the DISPLAYED OPEN lemma DICT-0 ([IN-C]), and the
+coincidence-at-stable-prefixes display DICT-1 is a MATH lemma conditional on
+FOUR named inputs ([IN-R1], [IN-U], [IN-C], [IN-F1]) — NOT a Lean theorem:
+its Lean face is the hypothesis rows of `GcdSlice`, supplied by instances,
+not proved here. (ii) `posLetter` per §7.2 + `Stable ⟺ (R4)` PROVED, in
+Lean, from THREE `DictModel` rows — finding 12's two (grammar injectivity
+`henc` + off-domain letter `hoff`, both themselves assumed rows here, with
+grammar-level derivation lemmas supplied) PLUS the load-bearing base-side
+tautology `splitFree_one` (§2) — theorem `DictModel.stable_iff_R4` below,
+wired to the corpus `AlphabetData.Stable` verbatim by
+`alphabetData_stable_iff_R4` (which additionally assumes `Encodes`).
+(iii) Lemma 4: the arithmetic core `lemma4_arith` is UNCONDITIONAL Lean; the
+field-theoretic inputs (F1)/(F2) and DICT-1's transport identity are NAMED
+HYPOTHESIS ROWS of `GcdSlice` (assumed by every instance, their MATH
+arguments in §3/§1 conditional as displayed), and
+`GcdSlice.stable_iff_coprime` chains Stable ⟺ gcd(m, δ) = 1 GIVEN those
+rows. (iv) the F₉ instance re-derived: math + a compiled split witness over
+the concrete F₉ = F₃[i] and the decide-checked gcd table (N-K3 seed); the
+dictionary-level realization of the example (instances, branch letters,
+alphabet dimensions) stays prose, scoped in §4.
 
 RISK, displayed (per the blueprint): this dictionary is ALSO consumed by the
 (UB-X)(b) adjudication (H4-M4) and by Route A of H4-M5 — it is the shared
@@ -132,16 +149,47 @@ tower of the theory. That is exactly why (i-a) and (i-b) must be kept apart:
 the device is a COMPARISON instrument whose agreement with (i-a) is a THEOREM
 with a domain, not an identification.
 
-### The matching, at this slice
+### The matching, at this slice — KEY-FREE (REVISION 1, pass-1 finding 1)
 
-Matched position: same input f, same prefix keys (via the inclusion
-ℤ_p[x] ⊆ O_δ[x]), same height γ. `posLetter δ x` (§2) reads the letter the
-device realizes at the matched position, with the §7.2 off-domain clause.
-This is the (a6)/(EQ-1) dictionary AT THE SLICE THIS GROUP NEEDS; the full
-(a6) artifact (all read fields, plus the (a1)–(a5) frame data) remains an
-owed REL.1 artifact and is NOT claimed here.
+Matched position: same input f, same height γ, and the same base-side
+position class — the class x is identified by the INVARIANT data the two
+classifiers independently compute: the base-side prefix ledger through stage
+k (stage tuples (e_j, h_j, g_j)_{j≤k}, base degree d) read against the
+device's realized reads. NO key clause enters this definition. The pass-1
+fold of record: the earlier wording included "same prefix keys (via the
+inclusion ℤ_p[x] ⊆ O_δ[x])" — but the reconstructed classifier chooses its
+OWN keys in O_δ[x], and whether those agree with (or are equivalent to) the
+transported ℤ_p[x]-keys is exactly the key-level coincidence this dictionary
+exists to PROVE. Putting it in the definition made the coincidence argument
+circular. It is now its own displayed lemma:
 
-### DICT-1 — the coincidence display (the central lemma, proved, with named inputs)
+**DICT-0 (key/valuation coincidence) — DISPLAYED OPEN.** At a matched
+split-free prefix through stage k, the reconstructed tower's stage-j
+inductive valuation on O_δ[x] equals the device's w_j^{comp} for j ≤ k
+(equivalently, the reconstructed keys are Okutsu-equivalent to the
+transported ℤ_p-keys, stagewise), and the reconstructed residue fields are
+the composita as EMBEDDED subfields of F̄_p: F_j^{(δ)} = F_j·F_q.
+
+STATUS of DICT-0, displayed: OPEN — consumed below as the named hypothesis
+[IN-C]. It is NOT derivable from the uniqueness material on file: [IN-U]
+(essential uniqueness, below) applies only to two chains ALREADY realizing
+the same inductive valuation, which is DICT-0's content — invoking it here
+would be circular. ROUTE (named, owed): per-factor canonicity of OM data —
+GMN's Okutsu-equivalence framework attaches canonical invariants/valuations
+to each irreducible factor of f over O_δ, and both the reconstructed run and
+the (legal, split-free) device chain approximate the same factors of the
+same f; the discharge runs through H4-M1's (R1)-slice ([IN-R1]) plus a GMN
+canonicity pin (a LITUNIT-roster duty). HONESTY DIRECTION: every downstream
+consumer of "matched" GAINS [IN-C] as a displayed hypothesis (§5 item 3) —
+nothing downstream gets stronger by this fold.
+
+`posLetter δ x` (§2) reads the letter the device realizes at the matched
+position, with the §7.2 off-domain clause. This is the (a6)/(EQ-1)
+dictionary AT THE SLICE THIS GROUP NEEDS; the full (a6) artifact (all read
+fields, plus the (a1)–(a5) frame data) remains an owed REL.1 artifact and is
+NOT claimed here.
+
+### DICT-1 — the coincidence display (the central lemma, MATH-conditional, with named inputs)
 
 **Lemma DICT-1.** At the matched prefix through stage k, the following are
 equivalent:
@@ -158,26 +206,38 @@ irreducible;
 the device's: same stage tuples, w_j^{recon} = w_j^{comp} as valuations on
 O_δ[x], and F_j^{(δ)} = F_j·F_q for all j ≤ k+1.
 
-NAMED INPUTS (never silently absorbed): [IN-R1] the device's stages satisfy
-the (S1)–(S6)/D.0 package over O_δ where (2) holds — this is a face of the
-(R1)-slice, H4-M1's re-scoping charge (REL.1; open, consumed as a
-hypothesis); [IN-U] essential uniqueness of MacLane/OM augmentation chains:
-two chains realizing the same inductive valuation on the same base have equal
-numerical invariants (e_j, h_j, g_j) and isomorphic residue towers, stagewise
-(MacLane 1936, "A construction for absolute values in polynomial rings",
-TAMS 40; modern forms: Vaquié 2007; GMN's Okutsu-equivalence framework —
-PIN-PRECISION FLAGGED: the exact printed theorem number is a LITUNIT-roster
-duty, not asserted here).
+NAMED INPUTS (never silently absorbed; FOUR of them — the pre-REVISION-1
+"two named inputs" claim was wrong and is retired, pass-1 finding 2):
+[IN-R1] the device's stages satisfy the (S1)–(S6)/D.0 package over O_δ where
+(2) holds — this is a face of the (R1)-slice, H4-M1's re-scoping charge
+(REL.1; open, consumed as a hypothesis); [IN-U] essential uniqueness of
+MacLane/OM augmentation chains: two chains realizing the same inductive
+valuation on the same base have equal numerical invariants (e_j, h_j, g_j)
+and ISOMORPHIC residue towers, stagewise (MacLane 1936, "A construction for
+absolute values in polynomial rings", TAMS 40; modern forms: Vaquié 2007;
+GMN's Okutsu-equivalence framework — PIN-PRECISION FLAGGED: the exact
+printed theorem number is a LITUNIT-roster duty, not asserted here). NOTE,
+displayed (finding 2): as quoted, [IN-U] yields abstract isomorphisms of
+residue towers only, NOT literal equality of embedded subfields of F̄_p —
+and it applies only to chains ALREADY realizing the same valuation. Both
+missing pieces live in: [IN-C] = DICT-0 (above; DISPLAYED OPEN): at the
+matched split-free prefix the reconstructed chain and the device realize the
+same inductive valuation, with the embedded residue-field identification
+F_j^{(δ)} = F_j·F_q. [IN-F1] = (F1), Lidl–Niederreiter 3.46 (§3, pinned):
+the gcd factor count, consumed by the (1) ⇒ (2) leg.
 
-*Proof.* (2) ⇒ (3): under (2) every augmentation step of the device uses a
-monic key whose residual is irreducible over the current residue field, so
-C^{(δ)} is a LEGAL OM chain over O_δ (key axioms are valuation-numeric and
-transport verbatim with the numerical data; the graded/stage bookkeeping is
-[IN-R1]). The reconstructed tower (i-a) at the matched position is an OM
-chain realizing the same inductive valuation (same input, same position, and
-the classifier's read is determined by the valuation data). By [IN-U] the two
-chains have equal stage tuples and residue towers; the device's residue
-fields are F_j·F_q by construction, so F_j^{(δ)} = F_j·F_q.
+*Proof (conditional on the four named inputs).* (2) ⇒ (3): under (2) every
+augmentation step of the device uses a monic key whose residual is
+irreducible over the current residue field, so C^{(δ)} is a LEGAL OM chain
+over O_δ (key axioms are valuation-numeric and transport verbatim with the
+numerical data; the graded/stage bookkeeping is [IN-R1]). That the
+reconstructed tower (i-a) at the matched position realizes the SAME
+inductive valuation is exactly [IN-C] — the pre-REVISION-1 text asserted it
+from "same input, same position", which does not imply it (pass-1 finding
+2). Given [IN-C], [IN-U] applies: the two chains have equal stage tuples and
+isomorphic residue towers; the EMBEDDED identification F_j^{(δ)} = F_j·F_q
+is [IN-C]'s field clause (the device's fields are the composita by
+construction).
 
 (3) ⇒ (1): the reconstructed residuals are irreducible by construction;
 under (3) their degrees are the matched g_j and the stage tuples equal the
@@ -188,15 +248,23 @@ failing stage (base stage included, with residual of degree d over F_q). The
 sub-prefix through j₀ − 1 is split-free, so (2) ⇒ (3) applies to it and the
 reconstructed stage-j₀ read sees the same residual ψ_{j₀} over
 F_{j₀}^{(δ)} = F_{j₀}·F_q, where it factors into gcd > 1 conjugate factors of
-equal smaller degree ((F1), §3). The classifier's stage-j₀ key must carry an
-irreducible factor, of degree g_{j₀}/gcd < g_{j₀}: the realized letter's g
-drops, so the stage tuples do NOT match — contradicting (1). ∎
+equal smaller degree ([IN-F1], §3 — a THIRD-plus input, named above; the
+pre-REVISION-1 text used it while advertising two inputs). The classifier's
+stage-j₀ key must carry an irreducible factor, of degree g_{j₀}/gcd < g_{j₀}:
+the realized letter's g drops, so the stage tuples do NOT match —
+contradicting (1). ∎
 
 The equivalence (1) ⟺ (2) is the "coincide exactly at prefix-stable
-positions" display the blueprint demanded as a lemma. Its Lean shadow at the
-model layer: the (2) ⇒ (3) leg appears as the NAMED row `coincide` of
-`GcdSlice` below (pdata level), and the (1) ⇐ (2) packaging is what licenses
-row `l4_persist` reading stability through the device.
+positions" display the blueprint demanded as a lemma — delivered as a MATH
+lemma CONDITIONAL on the four named inputs, one of which ([IN-C]) is
+displayed open. LEAN STATUS, displayed (pass-1 finding 3): DICT-1 is NOT a
+Lean theorem — no Lean definition of its three clauses and no Lean proof of
+their equivalence exists in this note. Its Lean face at the model layer is
+HYPOTHESIS SHAPE only: the (2) ⇒ (3) leg appears as the NAMED row `coincide`
+of `GcdSlice` below (pdata level, supplied — never proved — by each
+instance), and the (1) ⇐ (2) packaging is what licenses row `l4_persist`
+reading stability through the device. Neither direction of the biconditional
+is established in Lean; the Lean discharge is fenced at the H4-F6 carriers.
 -/
 
 /-!
@@ -223,11 +291,24 @@ transported; every residual is irreducible by the accepted base theory).
 
 Finding 12's two hypotheses are the rows `henc` (the letter grammar is
 injective on encoded prefix data) and `hoff` (the designated off-domain
-letter is outside the grammar's range on encoded data). They are NOT decreed:
-lemmas `enc_injective_of_faithful` and `off_not_mem_range_of_reserved` below
-DERIVE them from the grammar level (`SpeciesSyntax.shape`/`side`/`poly`
-fields), and `letter_unique_of_triple` displays the `letter_det` typing (the
-grammar triple determines the letter — no collisions).
+letter is outside the grammar's range on encoded data). Lemmas
+`enc_injective_of_faithful` and `off_not_mem_range_of_reserved` below show
+how to DERIVE them from the grammar level (`SpeciesSyntax.shape`/`side`/
+`poly` fields), and `letter_unique_of_triple` displays the `letter_det`
+typing (the grammar triple determines the letter — no collisions). HONESTY,
+displayed (pass-1 finding 5): at THIS note's altitude `henc` and `hoff`
+remain ASSUMED rows of `DictModel` — the derivation lemmas are generic
+recipes, and no instance discharges them here (an H4-F1/H4-F6 duty).
+
+THREE rows, not two (REVISION 1, pass-1 finding 5): the `Stable ⟺ (R4)`
+proof below consumes a THIRD substantive row, `splitFree_one` (via
+`posLetterD_one`), and this dependency is logically ESSENTIAL — if both the
+δ-prefix and the base prefix were non-split-free, both letters would equal
+`offLetter`, so `Stable` would hold while (R4) fails. The pre-REVISION-1
+"from exactly finding 12's two hypotheses" claim is retired. Also displayed:
+the corpus wiring (`alphabetData_stable_iff_R4`) additionally assumes
+`Encodes`, and it connects corpus stability to THIS note's `DictModel.R4` —
+whose semantic reach is bounded by the carrier caveat on `DictModel` below.
 -/
 
 /-- The (a6)/(EQ-1) matching-dictionary MODEL at this group's slice.
@@ -235,7 +316,17 @@ grammar triple determines the letter — no collisions).
 at the matched prefix of x over O_δ; `pdata` = the prefix data the device
 realizes; `splitFree_one` = the base-side tautology. Grammar rows: `henc`,
 `hoff` per finding 12 (derivable via `enc_injective_of_faithful` /
-`off_not_mem_range_of_reserved`). -/
+`off_not_mem_range_of_reserved`; assumed here, no instance on file).
+TRIVIALIZABLE-CARRIER CAVEAT (REVISION 1, pass-1 finding 4): `Data` is an
+unconstrained `Type` and `pdata` an unconstrained function — a singleton
+`Data` with constant `pdata` satisfies EVERY row (with `henc` trivially
+injective and any second letter as `offLetter`), making `coincide` and
+(R4)'s data clause vacuous. The names in these docstrings impose NOTHING in
+Lean: this structure carries the SHAPE of DICT-1(3) at pdata level only —
+none of its stage-tuple/valuation/residue-field content. The semantic
+content is an INSTANCE OBLIGATION (fenced H4-F1/H4-F6): `Data` must be the
+encoded stage-tuple/degree/side data with `pdata` the device's realized
+read. Recorded as honest-residue item 6 (§5). -/
 structure DictModel (Sp : SpeciesSyntax) (Pos : Type) where
   /-- encoded matched-prefix data: stage tuples, base degree, side/polygon data -/
   Data : Type
@@ -308,10 +399,13 @@ theorem DictModel.posLetterD_one {Sp : SpeciesSyntax} {Pos : Type}
   if_pos (M.splitFree_one x)
 
 /-- **Item (ii), PROVED (finding 12): Lean `Stable` ⟺ (R4)** at the §7.2
-`posLetter`. The proof consumes EXACTLY the two finding-12 hypotheses:
-`henc` (injectivity on encoded prefix data) kills collisions in the stable
-direction, and `hoff` (off-domain letter outside the range) makes a split
-prefix visibly unstable. -/
+`posLetter`. The proof consumes THREE `DictModel` rows (REVISION 1, pass-1
+finding 5 — the earlier "exactly two" claim was wrong): `henc` (injectivity
+on encoded prefix data) kills collisions in the stable direction, `hoff`
+(off-domain letter outside the range) makes a split prefix visibly unstable,
+and `splitFree_one` (via `posLetterD_one`) anchors the δ = 1 side — a
+LOAD-BEARING dependency: without it both sides could read `offLetter`, and
+`Stable` would hold while (R4) fails. -/
 theorem DictModel.stable_iff_R4 {Sp : SpeciesSyntax} {Pos : Type}
     (M : DictModel Sp Pos) (δ : ℕ+) (x : Pos) :
     M.posLetterD δ x = M.posLetterD 1 x ↔ M.R4 δ x := by
@@ -356,7 +450,7 @@ theorem alphabetData_stable_iff_R4 (p : ℕ) [Fact p.Prime] {Sp : SpeciesSyntax}
   exact M.stable_iff_R4 δ x
 
 /-!
-## §3. Item (iii) — Lemma 4's gcd(m, δ) = 1 characterization, PROVED
+## §3. Item (iii) — Lemma 4's gcd(m, δ) = 1 characterization: arithmetic core PROVED, field inputs as named rows
 
 M14 Lemma 4 (verbatim statement): "Same-keys transport setting: the re-based
 read is of the same input data with the ℤ_p-tower keys viewed in O_δ[x] (the
@@ -366,13 +460,18 @@ m := d·g₁···g_k be the accumulated residue degree through x's letter. Then
 is δ-stable iff gcd(m, δ) = 1, and in that case F_j^{(δ)} = F_j·F_q for all
 j ≤ k+1."
 
-UPGRADE EXECUTED HERE (charge item (iii)): M14 recorded Lemma 4 as
-"CONDITIONAL on the same-keys transport identity … a REL.1/(a6)-dictionary
-fact, flagged, not proved". This note IS that dictionary at the needed slice:
-§1 DEFINES the same-keys matching ((i-b)) and PROVES the transport identity
+UPGRADE EXECUTED HERE (charge item (iii); scope corrected at REVISION 1,
+pass-1 findings 2/6): M14 recorded Lemma 4 as "CONDITIONAL on the same-keys
+transport identity … a REL.1/(a6)-dictionary fact, flagged, not proved".
+This note IS that dictionary at the needed slice: §1 DEFINES the comparison
+device ((i-b)) with a KEY-FREE matching, and STATES the transport identity
 as DICT-1 ((2) ⇒ (3): at split-free prefixes the reconstructed run realizes
-the verbatim-transported residuals, given [IN-R1]/[IN-U]). With the setting
-supplied, Lemma 4's own induction is field arithmetic from two pinned inputs:
+the verbatim-transported residuals) — a MATH lemma conditional on
+[IN-R1]/[IN-U]/[IN-C], with [IN-C] (DICT-0, the key/valuation coincidence)
+itself DISPLAYED OPEN. The upgrade is therefore from "flagged, not proved"
+to "stated with named inputs and a displayed open core" — NOT to "proved
+outright". With the setting so supplied, Lemma 4's own induction is field
+arithmetic from two pinned inputs:
 
 (F1) Lidl–Niederreiter, *Finite Fields* (2nd ed., CUP 1997), Theorem 3.46:
 an irreducible ψ of degree g over a finite field E stays irreducible over the
@@ -383,8 +482,9 @@ gcd(g, δ′) conjugate irreducible factors of degree g/gcd(g, δ′). [PINNED]
 [E·F_q : E] = δ / gcd(δ, [E : F_p]). [standard; e.g. Lidl–Niederreiter §2.1
 subfield lattice]
 
-MATH PROOF (M14's, re-run here now unconditional relative to (F1)/(F2) +
-DICT-1): induct up the prefix, writing m_1 := d, m_{j+1} := m_j·g_j (so the
+MATH PROOF (M14's, re-run here — CONDITIONAL on (F1)/(F2) + DICT-1, which
+is itself conditional on its four named inputs including the open [IN-C]):
+induct up the prefix, writing m_1 := d, m_{j+1} := m_j·g_j (so the
 base stage is the j = 0 step with current degree m_0 := 1 and "residual
 degree" d over F_p). At each step the current field F_j has
 [F_j : F_p] = m_j; by (F2) the compositum extension F_j·F_q/F_j has degree
@@ -400,13 +500,21 @@ factor count gcd > 1), the species letter changes (g drops), x is out of
 domain. Hence: δ-stable ⟺ gcd(m, δ) = 1, and along the way
 F_j^{(δ)} = F_j·F_q with relative degree δ. ∎
 
-LEAN FACE. The induction's entire arithmetic skeleton is proved
-UNCONDITIONALLY below (`persistsFrom_iff`, `lemma4_arith` — no hypotheses at
-all, not even positivity). The two field-theoretic inputs enter as the NAMED
-row `l4_persist` of `GcdSlice` (reading `splitFree` through the
-(F1)/(F2)-criterion chain), and DICT-1's transport identity as the NAMED row
-`coincide`. The chained theorems `splitFree_iff_coprime`,
-`stable_iff_coprime`, `alphabetData_stable_iff_coprime` are then PROVED.
+LEAN FACE (honesty display sharpened at REVISION 1, pass-1 finding 6). The
+induction's entire arithmetic skeleton is proved UNCONDITIONALLY below
+(`persistsFrom_iff`, `lemma4_arith` — no hypotheses at all, not even
+positivity). But `lemma4_arith` is a statement about the recursively defined
+predicate `persistsFrom` ONLY — it does NOT prove that actual residual
+polynomials persist exactly when `persistsFrom` holds. That hard
+field-theoretic identification enters as the NAMED HYPOTHESIS row
+`l4_persist` of `GcdSlice` (reading `splitFree` through the
+(F1)/(F2)-criterion chain), and DICT-1's transport identity as the NAMED
+HYPOTHESIS row `coincide` — both ASSUMED, supplied by every instance, never
+proved in this note. The chained theorems `splitFree_iff_coprime`,
+`stable_iff_coprime`, `alphabetData_stable_iff_coprime` are then PROVED
+CONDITIONALLY on those rows: the missing mathematical content sits inside
+the hypotheses, displayed, and the earlier summary phrase "Lemma 4 PROVED as
+a lemma of the dictionary" is retired for this conditional form.
 -/
 
 /-- (F2) as bookkeeping: the relative degree of the compositum,
@@ -460,8 +568,13 @@ theorem lemma4_arith (δ d : ℕ) (gs : List ℕ) :
 /-- The gcd slice of the dictionary: per position, the prefix degree data
 (d; g₁, …, g_k) the device transports, plus the two [M]-rows. `l4_persist`
 is (F1)+(F2) read stagewise at the slice (Lidl–Niederreiter 3.46 + compositum
-degrees, PINNED literature); `coincide` is DICT-1's (2) ⇒ (3) leg at pdata
-level (proved in §1 relative to [IN-R1]/[IN-U]). Both stay NAMED rows. -/
+degrees, PINNED literature — texts not on file, §5 item 7); `coincide` is
+the pdata-level SHAPE of DICT-1's (2) ⇒ (3) leg (argued in §1 as a math
+lemma conditional on [IN-R1]/[IN-U]/[IN-C], the last displayed open). Both
+are NAMED HYPOTHESIS rows: ASSUMED by every `GcdSlice`, proved nowhere in
+this note (pass-1 findings 3/6); the carrier caveat on `DictModel` (`Data`
+unconstrained) bounds what `coincide` can mean until H4-F6 supplies faithful
+carriers. -/
 structure GcdSlice {Sp : SpeciesSyntax} {Pos : Type} (M : DictModel Sp Pos) where
   /-- base residual degree d = [F₁ : F_p] at x's prefix -/
   dDeg : Pos → ℕ
@@ -474,8 +587,9 @@ structure GcdSlice {Sp : SpeciesSyntax} {Pos : Type} (M : DictModel Sp Pos) wher
   transported (= base-side) prefix data -/
   coincide : ∀ (δ : ℕ+) (x : Pos), M.splitFree δ x → M.pdata δ x = M.pdata 1 x
 
-/-- **Lemma 4 at the dictionary (item (iii) PROVED)**: x's prefix is
-split-free iff gcd(m, δ) = 1 with m = d·g₁···g_k. -/
+/-- **Lemma 4 at the dictionary (item (iii), CONDITIONAL on this
+`GcdSlice`'s [M]-rows)**: x's prefix is split-free iff gcd(m, δ) = 1 with
+m = d·g₁···g_k. -/
 theorem GcdSlice.splitFree_iff_coprime {Sp : SpeciesSyntax} {Pos : Type}
     {M : DictModel Sp Pos} (G : GcdSlice M) (δ : ℕ+) (x : Pos) :
     M.splitFree δ x ↔ Nat.Coprime (G.dDeg x * (G.gDegs x).prod) (δ : ℕ) := by
@@ -531,6 +645,18 @@ F9 := F₃[z]/(z² + 1) (the root i and the factorization are theorems; that
 z² + 1 is irreducible over F₃ — so that F9 IS the field F₉ — is classical
 and stays prose). The Lemma-4/gcd reads and the N-K3 table seed are
 decide-checked.
+
+SCOPE OF THE LEAN WITNESSES (REVISION 1, pass-1 finding 8): the compiled
+content of this section is EXACTLY `f9_residual_splits` (the factorization
+over the concrete F9) and `f9_out_of_domain` (¬ `persistsFrom 2 1 [1, 2]`),
+plus the decide-checked tables. NO `DictModel`, `GcdSlice`, reconstructed
+classifier tower, or `AlphabetData` instance is constructed for this
+example: ¬ `splitFree`, failure of corpus `Stable`, the realized branch
+letters, `posLetterD` returning the off-domain letter, and the
+alphabet-dimension redistribution (a_branch = 2 ≠ δ·a₁ = 4) are PROSE
+predictions, conditional on the (R) package and the instance rows — not
+Lean theorems. The "dictionary/out-of-domain realization" of the example is
+therefore NOT formalized here; it waits on the H4-F1/H4-F6 instances.
 -/
 
 /-- F₉ modeled concretely: F₃[i] = F₃[z]/(z² + 1). -/
@@ -601,39 +727,74 @@ theorem nt4_two_stage_stable : persistsFrom 5 1 [1, 2, 3] := by
 /-!
 ## §5. Consumption map, risk, and the honest residue
 
-WHAT DOWNSTREAM UNITS READ FROM HERE. H4-M4 (the (UB-X)(b)/(K3-δ) precision
-step) reads: the matching definition (§1), `stable_iff_coprime` (the
-refutation-pressure quantifier: a realized pool whose accumulated residue
-degrees share a factor with δ is UNSTABLE under this matching), and the risk
-note below. H4-M5 Route A reads: DICT-1 + `GcdSlice` (the per-pool
-matched-prefix letter-equality obligation is exactly `stable_iff_coprime`'s
-left-to-right reading at the pool's data). H4-M1 reads nothing from here
-(this unit is downstream of M1's (R1)-slice via [IN-R1] only). The eventual
-Lean instance (fenced H4-F1/H4-F6) must supply `Encodes` (§7.2 conformance)
-and the `GcdSlice` rows — per M14 §7.2, an instance with a coarser
-`posLetter` is NOT covered and is expected to admit countermodels.
+WHAT DOWNSTREAM UNITS READ FROM HERE — every consumer of "matched" now
+carries the displayed hypothesis [IN-C] (REVISION 1; honesty direction:
+consumers GAIN a hypothesis, nothing strengthens). H4-M4 (the
+(UB-X)(b)/(K3-δ) precision step) reads: the KEY-FREE matching definition +
+DICT-0/[IN-C] (§1), `stable_iff_coprime` (the refutation-pressure
+quantifier: a realized pool whose accumulated residue degrees share a factor
+with δ is UNSTABLE under this matching — a reading now conditional on the
+`GcdSlice` rows and [IN-C]), and the risk note below. H4-M5 Route A reads:
+DICT-1 (MATH-conditional, four named inputs, [IN-C] open) + `GcdSlice` (the
+per-pool matched-prefix letter-equality obligation is exactly
+`stable_iff_coprime`'s left-to-right reading at the pool's data, under the
+same rows). H4-M1 reads nothing from here (this unit is downstream of M1's
+(R1)-slice via [IN-R1] only; [IN-C]'s discharge route also runs through it).
+The eventual Lean instance (fenced H4-F1/H4-F6) must supply `Encodes` (§7.2
+conformance), the `henc`/`hoff` rows, NON-TRIVIAL carriers (`Data`/`pdata`
+per the `DictModel` caveat), and the `GcdSlice` rows — per M14 §7.2, an
+instance with a coarser `posLetter` is NOT covered and is expected to admit
+countermodels.
 
 RISK (blueprint §2, displayed): H4-M2 is the SHARED GATE unit — both the
 (H4a) retirement chain and the §3.2 adjudication consume this dictionary. A
 hostile pass overturning DICT-1's named inputs or the §7.2 encoding ripples
 into both.
 
-HONEST RESIDUE (what this note does NOT prove):
+HONEST RESIDUE (what this note does NOT prove; expanded at REVISION 1):
 1. [IN-R1] — the device's (S1)–(S6)/D.0 package over O_δ at split-free
    prefixes: a face of REL.1's tower slice, H4-M1's charge. NAMED, open.
 2. [IN-U] — MacLane-chain essential uniqueness: pinned to MacLane 1936 /
    Vaquié / GMN's Okutsu framework, exact printed theorem number FLAGGED for
-   the LITUNIT roster. NAMED, literature.
-3. The rows `l4_persist` ((F1) LN 3.46 + (F2) compositum degrees, read at
-   the slice) and `coincide` (DICT-1 (2) ⇒ (3) at pdata) are [M]-rows of
-   `GcdSlice`: their MATH proofs are §3 and §1 above (modulo 1–2), their
-   Lean discharge waits on the H4-F6 carriers.
-4. The FULL (a6) dictionary (all read fields, (a1)–(a5) frames, measure
+   the LITUNIT roster. NAMED, literature. As quoted it yields ISOMORPHIC
+   residue towers only and applies only to chains already realizing the same
+   valuation — it does NOT supply valuation-equality or embedded-field
+   equality (those are item 3's content; pass-1 findings 2/7).
+3. [IN-C] = DICT-0 (§1) — THE pass-1 headline residue: the key/valuation
+   coincidence (reconstructed chain and device realize the same inductive
+   valuation at matched split-free prefixes, with the EMBEDDED
+   identification F_j^{(δ)} = F_j·F_q). DISPLAYED OPEN; previously hidden
+   inside the matched-position definition (circular), now a named lemma
+   every consumer of "matched" carries as a hypothesis. ROUTE: GMN
+   Okutsu-canonicity of per-factor OM data + [IN-R1]; pin = LITUNIT duty.
+4. The rows `l4_persist` ((F1) LN 3.46 + (F2) compositum degrees, read at
+   the slice) and `coincide` (the pdata SHAPE of DICT-1 (2) ⇒ (3)) are
+   [M]-rows of `GcdSlice`: ASSUMED by every instance, proved nowhere in
+   Lean here; their MATH arguments are §3 and §1 above (themselves
+   conditional per items 1–3), their Lean discharge waits on the H4-F6
+   carriers.
+5. NEITHER direction of DICT-1 is a Lean theorem (pass-1 finding 3): the
+   three clauses have no Lean definition and the biconditional no Lean
+   proof; §1's argument is MATH, conditional on the four named inputs.
+6. Trivializable carriers (pass-1 finding 4): `DictModel.Data`/`pdata` are
+   unconstrained — a singleton carrier satisfies every row and voids
+   `coincide`/(R4)'s data clause. Faithful carriers (encoded stage
+   tuples/degrees/side data; the device's realized read) are an
+   H4-F1/H4-F6 INSTANCE OBLIGATION, as is discharging `henc`/`hoff`.
+7. Literature texts NOT on file (pass-1 finding 7): the printed statements
+   of (F1) LN 3.46 and the (F2) compositum-degree source are not supplied
+   here, so their attribution and printed generality are unchecked —
+   LITUNIT-roster duty; the statements AS QUOTED suffice for §3's
+   standalone arithmetic if assumed.
+8. The FULL (a6) dictionary (all read fields, (a1)–(a5) frames, measure
    transport) is NOT built here — only the slice this group needs. (EQ-1)
    itself ("no species definition consumes q") stays H4-M1 step 8's walk.
-5. Whether the O_δ classifier's REALIZED ledger contains a matched position
+9. Whether the O_δ classifier's REALIZED ledger contains a matched position
    with gcd(m, δ) > 1 at a given (n, p, δ) is the OPEN realization question
    of blueprint §3.2 — N-K3's empirical probe, nothing here settles it.
+10. The F₉ example's dictionary-level realization is NOT formalized (pass-1
+   finding 8): compiled = the split witness + the `persistsFrom` failure
+   only; no instance, no `¬ splitFree`, no corpus `Stable` failure in Lean.
 
 DECLARATION LIST (all in `LeanUrat.Scaffold.HDischarge.H4.Dict`, this file,
 zero sorry): `DictModel`, `letter_unique_of_triple`,
@@ -651,7 +812,9 @@ zero sorry): `DictModel`, `letter_unique_of_triple`,
 AXIOM FOOTPRINT (checked 2026-08-01, external `#print axioms` run over all
 key theorems): Lean-core only — {propext, Classical.choice, Quot.sound};
 the arithmetic core (`lemma4_arith`, `f9_out_of_domain`, the tables, the
-grammar lemmas) is even choice-free: {propext, Quot.sound}.
+grammar lemmas) is even choice-free: {propext, Quot.sound}. REVISION 1 is a
+comment/docstring-and-prose-only fold — no Lean statement or proof term
+changed; gate re-run green (see §6).
 
 STATEMENT-FENCE RECORD: the blueprint has NO §L Lean spec for H4-M2 (it is a
 §M math-note unit); the charge text is transcribed verbatim in the header
@@ -660,6 +823,63 @@ above and each item is fulfilled at its stated strength. The corpus carriers
 IMPORT, verbatim, never re-transcribed or weakened; every new declaration
 here is dictionary-layer vocabulary of this unit, colliding with nothing
 (fresh namespace `LeanUrat.Scaffold.HDischarge.H4.Dict`).
+-/
+
+/-!
+## §6. REVISION record
+
+REVISION 1 (2026-08-08; fold of hostile pass 1,
+`H4M2_pass1_2026-08-08.md`, verdict CRITICAL — 5 critical + 3 gap, ALL 8
+findings folded):
+
+1. CRIT — the matched-position definition included "same prefix keys",
+   presupposing the key-level coincidence the dictionary must prove
+   (circular). FOLDED (the headline): the definition is now KEY-FREE
+   (matching by the invariant data both classifiers independently compute,
+   §1); the coincidence is the new lemma DICT-0, DISPLAYED OPEN as [IN-C].
+   Checked against the material on file: NOT provable from [IN-U] (which
+   presupposes same-valuation — circular); route named (GMN
+   Okutsu-canonicity of per-factor OM data + [IN-R1], LITUNIT pin owed).
+   Every downstream consumer of "matched" re-scoped to GAIN the displayed
+   hypothesis (§5).
+2. CRIT — DICT-1's main implication did not follow from its two advertised
+   inputs (same-valuation premise assumed; [IN-U] gives isomorphisms, not
+   embedded equalities; (F1) silently used). FOLDED: FOUR named inputs
+   ([IN-R1], [IN-U], [IN-C], [IN-F1]); the same-valuation premise and the
+   embedded-field upgrade both live in [IN-C], displayed; (F1) named as
+   [IN-F1] at the (1) ⇒ (2) leg; "two named inputs" retired.
+3. CRIT — DICT-1 was called proved though it is no Lean lemma. FOLDED:
+   re-labeled MATH-conditional everywhere (header, §1, §3); the Lean face
+   displayed as HYPOTHESIS SHAPE (`coincide`/`l4_persist` rows supplied by
+   instances, neither biconditional direction established in Lean).
+4. CRIT — the Lean `coincide` row is trivializable (`Data` an unconstrained
+   `Type`, singleton + constant `pdata` satisfies every row). FOLDED:
+   trivializable-carrier caveat displayed on `DictModel`; faithful carriers
+   re-classified as an H4-F1/H4-F6 instance obligation (§5 item 6).
+5. CRIT — `stable_iff_R4` consumes a third substantive row
+   (`splitFree_one`, logically essential), contradicting "exactly two
+   hypotheses". FOLDED: "exactly two" retired in header/§2/docstring; the
+   dependency displayed load-bearing with the both-off-domain
+   counterexample; `henc`/`hoff` noted as still-assumed rows and the corpus
+   wiring's extra `Encodes` assumption displayed.
+6. GAP — "Lemma 4 PROVED as a lemma of the dictionary" overclaimed (the
+   finite-field content is assumed via `l4_persist`). FOLDED: §3
+   header/LEAN FACE/VERDICT re-scoped — arithmetic core (`lemma4_arith`)
+   unconditional, field content in named hypothesis rows.
+7. GAP — cited literature cannot support the load-bearing uses from the
+   supplied material alone. FOLDED: §5 items 2/7 — (F1)/(F2) texts not on
+   file, pins = LITUNIT duty; [IN-U]'s quoted strength bounded honestly.
+8. GAP — the F₉ dictionary/out-of-domain realization is not formalized.
+   FOLDED: §4 SCOPE display — compiled content = split witness +
+   `persistsFrom` failure ONLY; instance-level claims marked prose.
+
+LEAN DELTA: comment/docstring/prose-only; no statement or proof term
+changed. Gate `lake env lean notes/openmath/H4M2_dict_attempt.md` re-run
+GREEN at REVISION 1, zero sorry, footprint unchanged (Lean-core).
+
+COUNTER (gate: hostile pass ×1): pass 1 = CRITICAL (not clean, folded
+here). Clean counter 0/1 — one clean hostile pass owed on THIS revision
+(per the 2026-08-08 harvest: "M2 fold + 1 clean owed").
 -/
 
 end LeanUrat.Scaffold.HDischarge.H4.Dict
