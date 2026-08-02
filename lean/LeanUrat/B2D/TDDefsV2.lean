@@ -11,6 +11,18 @@ import LeanUrat.B2D.TD3_countermodel
   [B2DEF_LEAN unit E2, STATEMENT ROUND 2; supersedes TDDefs' `LedgerSemantics`
    / `LedgerLawful` / `LedgerStrata` per the TD-0/TD-3 refutation]
 
+**PACK LAYER SUPERSEDED (2026-08-08 wallclock 2026-08-02, statement round
+3).** The `LedgerLawfulV2` / `LedgerStrataV2` PACK of this file was refuted
+as TD-3's hypothesis base at the wave-2 run (`TD3v2_countermodel.lean`:
+Seam A member existence, Seam B parent/box-slot overlap) and is superseded by
+`TDDefsV3.LedgerLawfulV3` / `LedgerStrataV3` (= this pack + exactly the two
+seam clauses, via `extends`). These decls STAY byte-unchanged as the
+refutation record's carrier; the SEMANTICS (`LedgerSemanticsV2`,
+`supportUnion`, the `blockCount` lemmas) is NOT superseded — v3 consumes it
+verbatim, and the N-TD1 [LHS-V2] gate result stands. TD-1 (proved) consumes
+`LedgerLawfulV2` deliberately (weaker hypothesis = stronger theorem); no
+OPEN unit may take v2 as its pack hypothesis.
+
 Blueprint: `lean/blueprints/B2DEF_LEAN_2026-08-08.md` §3 + §5 (unit E2, v2
 round). moves_ref: §B2-DEF D.3(e)(ii), D.8, D.11 (`#{f mod p^N}` — the FINITE
 level-N box count). Statement authority: standing statement-change rule (an

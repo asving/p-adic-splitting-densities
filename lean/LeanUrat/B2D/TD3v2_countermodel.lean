@@ -68,6 +68,15 @@ bijection), and (ii) parent-block disjointness from EVERY box slot's block
 so full disjointness is faithful to the intended instances). The TD-0
 designated instance `tdL` satisfies both already (`parentBlock = ∅`), so it
 survives a v3 round unchanged.
+
+**[RESOLUTION, v3 round 2026-08-08 wallclock 2026-08-02.]** The round was
+EXECUTED exactly as specified: `TDDefsV3.LedgerLawfulV3` adds the two
+clauses (`member_exists`, `parent_box_disjoint`); both witnesses below FAIL
+v3 at the clause built for them (`cmL4_not_lawfulV3` / `cmL3_not_lawfulV3`),
+`tdL` satisfies v3 (`td_lawfulV3`), and TD-3 is PROVED on the v3 pack
+(`TD3_digitsProd.ledger_digitsProd`). This file stays byte-unchanged as the
+round-2 refutation record; `ledger_digitsProd_v2_refuted` preserves the
+superseded round-2 statement verbatim inside its ¬∀.
 -/
 
 set_option linter.style.longLine false

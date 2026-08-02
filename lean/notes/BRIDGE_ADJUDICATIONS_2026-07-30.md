@@ -4219,3 +4219,78 @@ file's header; the B-M2 note's §S2 SITE-EXH display + §S0 dependency
 table are NOT edited by this unit — their re-pricing (SITE-EXH consumers
 now ride the widened engine-face discharge + the open E-3 glue + the open
 box face) rides the next B-M2 fold round.
+
+## 2026-08-08 (wallclock 2026-08-02): B2D TD v3 STATEMENT ROUND — TD-3 PROVED (the hardest hole CLOSED, Lean-core); TD-1 PROVED; v2 pack superseded
+
+The statement-hardening loop closed: the round-2 refutation
+(`TD3v2_countermodel.lean`, commit d770cf3) had pinned TD-3's exact missing
+hypotheses; this run adds them, proves TD-3, and compiles every control.
+Base d770cf3.
+
+**THE v2 → v3 DIFF (unit E2 round 3, `TDDefsV3.lean`, all Lean-core, no
+sorry).** `LedgerLawfulV3` = the FULL v2 pack (verbatim, via `extends`) +
+EXACTLY the two D.11 seam clauses the countermodels identified, verbatim
+seam clauses on record:
+
+* `member_exists : ∀ ρ, ρ < L.rho0 → ∃ v : ↥L.supportUnion → Fin L.q0,
+  L.inStratum ρ (fun c => if h : c ∈ L.supportUnion then (v ⟨c, h⟩ : ℕ)
+  else 0)` — D.11's EXISTENCE half (Seam A): each counted realization's
+  stratum is realized by ≥ 1 finite-box digit vector on the support union,
+  extension-by-zero — the same carrier `LedgerSemanticsV2` counts (the
+  trace's `members_on_window(U, q0)` reading).
+* `parent_box_disjoint : ∀ k ∈ W.boxSlots, Disjoint L.parentBlock
+  (L.slotBlock k)` — FULL parent/box-slot disjointness (Seam B): junction
+  and off-line slots included, not interior-on-line-only; the erased
+  monic-top slot (outside `member_split` and `supportUnion`) deliberately
+  unconstrained.
+
+Plus `LedgerStrataV3`. The v2 SEMANTICS layer is untouched (v3 consumes it
+verbatim); the v2 PACK decls stay byte-unchanged, superseded-marked
+(docstring-only touches to TDDefsV2/TD3v2_countermodel/TD0, per the
+refutation-record discipline).
+
+**TD-3 PROVED (round 3)** — `TD3_digitsProd.ledger_digitsProd`, restated on
+`LedgerLawfulV3`, no sorry, Lean-core: the MOVES D.11 product argument in
+full. LHS = `supportUnion` blockCount (`semantics`); `member_split` +
+`slot_coord_mem` fold the on-line reads per slot; NEW general lemmas
+`blockCount_union_split` (disjoint binary split via `unionSplitEquiv`) and
+`blockCount_biUnion_prod` (finset induction) + `blockCount_supportUnion_prod`
+factor the count over `parentBlock ⊔ ⨆_{k ∈ boxSlots} slotBlock k`
+(`parent_box_disjoint` + `slots_disjoint`; `parent_support`/`slot_support`
+localize); `parent_blockCount_one` is D.11's pinned-block step — existence
+from `member_exists` (restrict the member), uniqueness from `pinned_forced`
+by strong induction along the `CoordPrec` rank on the finite parent block
+(`coordPrec_trans`/`coordPrec_irrefl`, omega; the member's slot restrictions
+glue any two parent realizations into full members, so `pinned_forced`
+applies); `slot_sem`/`slotDigits_sem` convert the factors; `prod_sdiff`
+splits on-line digit × off-line height. `hscope`/`hclean` retained as the
+family's standing guards, never drawn on.
+
+**CONTROLS, all compiled Lean-core**: `td_lawfulV3` +
+`td_mem_ledgerStrataV3` (the designated r = 1 instance satisfies v3, as the
+round-2 record predicted — constant-1 member, `parentBlock = ∅`);
+`cmL4_not_lawfulV3` / `cmL3_not_lawfulV3` (NEGATIVE: each round-2 witness
+fails v3 at exactly the clause built to kill it — the refutation does not
+port); `transDeep_of_ledger_v2_unfillable` (the TD-6 re-key adjudication:
+cmL4 is v2-lawful + scope/clean yet violates the `digitsProd` field, so the
+v2-family supplier was unfillable).
+
+**FAN-OUT**: TD-6's two statements re-keyed to `LedgerStrataV3` (sorries
+stand, round-3 tags). TD-1 PROVED at its v2 statement byte-unchanged
+(`ledger_floorsCharge` = `slot_count_val` at q₀ + [R2-C1] off it — the
+TDDefs-flag-2 re-pricing cashed out; deliberately NOT re-keyed: weaker
+hypothesis, stronger theorem). TD-2/TD-4/TD-5 statements STAND at v2 (laws
+not implicated by the seams; adjudicate at their proof waves).
+
+**N-TD1 v3 EXTENSION (run BEFORE the proof)**: parent-pinned instances
+i4-v3/i5-v3 added (i5-v3 = the i2 shape RESIZED to the `slot_count_val`
+formula = `tdL` geometry + parent pin), per-instance [V3-A]/[V3-B] clause
+checks, and the i2 transcription caveat now DISPLAYED at run time (i1–i3
+data byte-verbatim — i2 kept as the record, not silently fixed). Result:
+[GATE-V2] 5/5 MATCH, [V3-A]/[V3-B] green everywhere.
+
+**Gates**: `lake build` green on the full B2D TD chain (8612 jobs);
+`#print axioms` Lean-core on all 16 proved decls of this wave (4 TDDefsV3 +
+10 TD3 incl. helpers + TD-1 + the TD-6 control); v2 statements
+byte-unchanged (verified below at commit). Open in B2D after this wave:
+TD-2/TD-4/TD-5 (v2 sorries), TD-6's two v3 sorries, GR wave 2a, CL5.

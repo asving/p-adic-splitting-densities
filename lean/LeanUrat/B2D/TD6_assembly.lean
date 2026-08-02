@@ -29,7 +29,17 @@ STATEMENT ROUND 2 (v2, 2026-08-02): the designated family is now
 `LedgerStrataV2` (TDDefsV2's finite-box lawfulness) — v1's `LedgerStrata`
 carried only refuted-law members (`TD3_countermodel.not_digitsProd_of_lawful`),
 so THIS supplier was unfillable as stated. The v1 family stays on file in
-TDDefs as the refutation record. -/
+TDDefs as the refutation record.
+
+STATEMENT ROUND 3 (v3, 2026-08-08 wallclock 2026-08-02): the designated
+family is now `LedgerStrataV3` (TDDefsV3's pack: v2 + member existence +
+full parent/box-slot disjointness). The round-2 family was AGAIN unfillable
+for this supplier — the TD-3 round-2 Seam-A witness `cmL4` is v2-lawful and
+in the scope/clean regime, yet its carrier violates `DigitsProdLaw`, so no
+`TransDeep` row datum exists over it; `transDeep_of_ledger_v2_unfillable`
+below is the compiled adjudication of the re-key (the v1-round precedent,
+one level up). On v3 the `digitsProd` field is SUPPLIED by the proved TD-3
+(`ledger_digitsProd`, round 3). -/
 
 set_option linter.style.longLine false
 set_option linter.style.header false
@@ -40,6 +50,20 @@ namespace LeanUrat.B2D
 open LeanUrat.Scaffold LeanUrat.Scaffold.HDischarge.H2 LedgerStratumData
 
 variable {D : CensusData} {W : WindowDatum D} {P : ParentShape D W}
+
+/-- **The round-2 (v2) family was UNFILLABLE for this supplier** — the
+compiled adjudication of the v2 → v3 re-key: the TD-3 Seam-A witness `cmL4`
+is v2-lawful (`cmL4_lawfulV2`) and in the scope/clean regime, but its
+q-generic carrier violates `DigitsProdLaw` (`cm4_not_digitsProd`), which is
+the `digitsProd` FIELD of any `TransDeep` row over it. -/
+theorem transDeep_of_ledger_v2_unfillable :
+    ¬ ∀ (D : CensusData) (W : WindowDatum D) (P : ParentShape D W)
+        (J : JointStratum D W P), J ∈ LedgerStrataV2 D W P → LedgerScope W P →
+        LedgerClean D W P J.N → Nonempty (TransDeep W P J) := by
+  intro h
+  obtain ⟨td⟩ := h cmD cmW cmP cmL4.ledgerJoint ⟨cmL4, cmL4_lawfulV2, rfl⟩
+    cm_scope cm_clean
+  exact cm4_not_digitsProd td.digitsProd
 
 /-- **TD-6, the row supplier** (blueprint §3's `transDeep_of_ledger`): every
 member of the designated family, in the scope/clean regime, satisfies the
@@ -55,10 +79,10 @@ would erase WHICH carrier fills `leakFree`, defeating the [R2-G1] requirement
 that TD-5's `LeakFreeCarrier` is the plugged value). Statement content
 unchanged. -/
 noncomputable def transDeep_of_ledger (J : JointStratum D W P)
-    (hJ : J ∈ LedgerStrataV2 D W P) (hscope : LedgerScope W P)
+    (hJ : J ∈ LedgerStrataV3 D W P) (hscope : LedgerScope W P)
     (hclean : LedgerClean D W P J.N) :
     TransDeep W P J := by
-  sorry -- B2DEF_LEAN E-phase sorry [unit TD-6, statement round 2 (v2)]
+  sorry -- B2DEF_LEAN E-phase sorry [unit TD-6, statement round 3 (v3)]
 
 /-- **TD-6 demonstration corollary** at the designated family: the ledger strata
 deliver BP_IV C5′'s `FreshRowOn` binder, with `huni` as the DISPLAYED (ADM) +
@@ -67,10 +91,12 @@ theorem ledger_freshRowOn (D : CensusData)
     (hscope : ∀ (W : WindowDatum D) (P : ParentShape D W),
       LedgerScope W P)
     (hclean : ∀ (W : WindowDatum D) (P : ParentShape D W),
-      ∀ J ∈ LedgerStrataV2 D W P, LedgerClean D W P J.N)
+      ∀ J ∈ LedgerStrataV3 D W P, LedgerClean D W P J.N)
     (huni : ∀ (W : WindowDatum D) (P : ParentShape D W),
-      ∀ J ∈ LedgerStrataV2 D W P, SlotUniformLaw W P J) :
-    FreshRowOn D (fun W P => LedgerStrataV2 D W P) := by
-  sorry -- B2DEF_LEAN E-phase sorry [unit TD-6, statement round 2 (v2)]
+      ∀ J ∈ LedgerStrataV3 D W P, SlotUniformLaw W P J) :
+    FreshRowOn D (fun W P => LedgerStrataV3 D W P) := by
+  sorry -- B2DEF_LEAN E-phase sorry [unit TD-6, statement round 3 (v3)]
 
 end LeanUrat.B2D
+
+#print axioms LeanUrat.B2D.transDeep_of_ledger_v2_unfillable

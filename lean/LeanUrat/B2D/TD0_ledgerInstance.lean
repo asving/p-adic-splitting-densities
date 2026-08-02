@@ -61,7 +61,8 @@ Counts: per-slot 4 = 2^(m·N − s) each (`slot_count_val` exact), fiber
   By the same token the instance satisfies the two constraints the TD-3
   round-2 refutation shows the v2 pack is MISSING (per-realization parent
   satisfiability; parent-block/box-slot disjointness) — so `tdL` survives any
-  v3 statement round that adds them.
+  v3 statement round that adds them. [Executed: `TDDefsV3.td_lawfulV3`
+  compiles this prediction; TD-3 is proved on the v3 pack.]
 * `hexact := True` (the E2 bare-`Prop` `RootHyps` device, TDDefs flag 3).
 * No claim beyond the compiled instance: this de-vacuifies the FAMILY; it does
   not prove any ∀-law over it (TD-3's ∀-form is refuted — see the

@@ -42,6 +42,33 @@ V2 EXTENSION (2026-08-02, the E2 statement round 2 — run against TDDefsV2):
            perimeter only, which is what DigitsProdLaw's product prices.)
 The v1 verdict lines are kept unchanged as the refutation record; the Lean
 positive control mirroring i1 is TD3v2_control.lean (cmL2 / cm2_digitsProd).
+
+V3 EXTENSION (2026-08-08, wallclock 2026-08-02 — the E2 statement round 3,
+run against TDDefsV3).  The round-2 REFUTATION (TD3v2_countermodel.lean)
+showed the v2 LAWFULNESS PACK too weak for the D.11 product: no member
+existence (Seam A, cmL4) and parent blocks unfenced from OFF-LINE slot
+blocks (Seam B, cmL3).  Both seams were invisible here because EVERY base
+instance has parentBlock = [] — the round-2 postmortem demands parent-pinned
+instances of any v3 gate run.  This extension adds:
+  [V3-A]/[V3-B] per-instance checks of the two NEW v3 pack clauses
+           (LedgerLawfulV3.member_exists — at least one member vector on U;
+           LedgerLawfulV3.parent_box_disjoint — parent block disjoint from
+           EVERY box slot's block), plus the i2 transcription caveat display
+           (i2's declared slot-1 exponent 3 != mN - s = 2, so i2-as-data is
+           NOT v2/v3-lawful; the Lean designated instance tdL resizes slot 1
+           to 2 leaves — TD0_ledgerInstance.lean);
+  i4-v3    a PARENT-PINNED instance (parentBlock = [(5,0)] off all slot
+           blocks, parentCond satisfiable): the seam-closing geometry at its
+           smallest;
+  i5-v3    the i2-RESIZED shape (= tdL's geometry, slot-1 block 2 leaves,
+           slot_count_val formula exact) + the same parent pin — junction
+           digit content AND a nonempty parent block together.
+Prediction (the v3 statement gate): [GATE-V2] MATCH at i4-v3/i5-v3 too (the
+v2 SEMANTICS is unchanged in round 3 — only the pack grew; on v3-lawful
+data the D.11 product argument closes, and TD-3 round 3 is PROVED in
+TD3_digitsProd.lean).  The Lean negative controls (cmL3/cmL4 FAIL v3:
+cmL3_not_lawfulV3 / cmL4_not_lawfulV3, TDDefsV3.lean) are compiled, not
+traced — their data is v3-UNLAWFUL by construction.  i1-i3 data unchanged.
 """
 
 from itertools import product
@@ -71,6 +98,30 @@ def members_on_window(inst, rho, z, window, vmax):
         if inst["inStratum"](rho, x) and all(x(inst["slotCoord"][k]) == z[k] for k in inst["onLine"]):
             out.append(vals)
     return out
+
+def member_exists_over_U(inst, rho):
+    """[V3-A] LedgerLawfulV3.member_exists at the instance: is inStratum(rho)
+    realized by at least one digit vector on the support union U (values < q0,
+    extension-by-zero)?  Mirrors the Lean clause exactly."""
+    U = sorted(set(inst["parentBlock"]) | {c for k in inst["slotBlock"] for c in inst["slotBlock"][k]})
+    for vals in product(range(inst["q0"]), repeat=len(U)):
+        v = dict(zip(U, vals))
+        x = lambda c, v=v: v.get(c, 0)
+        if inst["inStratum"](rho, x):
+            return True
+    return False
+
+def v3_spotchecks(inst):
+    """The two NEW v3 pack clauses (TDDefsV3.LedgerLawfulV3), checked exactly."""
+    msgs = []
+    for rho in range(inst["rho0"]):
+        assert member_exists_over_U(inst, rho), "[V3-A] member_exists FAILS"
+    msgs.append("[V3-A] member_exists OK (>= 1 member vector on U per rho)")
+    for k in inst["boxSlots"]:
+        assert not (set(inst["parentBlock"]) & set(inst["slotBlock"][k])), \
+            "[V3-B] parent_box_disjoint FAILS"
+    msgs.append("[V3-B] parent_box_disjoint OK (parent block off EVERY box slot block)")
+    return msgs
 
 def rhs_product(inst, rho, z):
     q0 = inst["q0"]
@@ -114,6 +165,10 @@ def run(inst):
           f"onLine={inst['onLine']}, rho0={inst['rho0']})")
     for m in lawfulness_spotchecks(inst):
         print("   lawful:", m)
+    for m in v3_spotchecks(inst):
+        print("   v3    :", m)
+    if "caveat" in inst:
+        print("   [CAVEAT]", inst["caveat"])
     rho = 0
     z = inst["z"]                    # the probed in-range digit vector
     assert all(z[k] < q0 ** d for k in inst["onLine"])
@@ -186,7 +241,14 @@ INSTANCES = [
          slotCond=lambda rho, k, x: (x((0, 0)) == 1) if k == 0 else True,
          inStratum=lambda rho, x: x((0, 0)) == 1,
          pin=lambda rho: 1, slot_val_exp={0: 2, 1: 3},
-         z={0: 1}, box=[(0, 0), (0, 1), (0, 2), (1, 0), (1, 1), (1, 2)]),
+         z={0: 1}, box=[(0, 0), (0, 1), (0, 2), (1, 0), (1, 1), (1, 2)],
+         caveat="TRANSCRIPTION (found at the TD-0 wave-2 run): the declared "
+                "slot-1 exponent 3 != slot_count_val's formula mN - s = 2*2 - 2 = 2 "
+                "— i2-as-data is NOT v2/v3-LAWFUL (the enumeration 2^3 = 8 is "
+                "internally consistent; the FORMULA clause is what fails). The Lean "
+                "designated instance tdL (TD0_ledgerInstance.lean) resizes slot 1 "
+                "to 2 leaves so the formula holds exactly; i5-v3 below is that "
+                "resized shape + a parent pin. Data kept verbatim as the record."),
 
     # i3 — SHALLOW-HEIGHT flavor (the D11c regime TD-3's call names): slot 0's
     # condition is a height floor "digit at (0,0) vanishes" (w >= gamma), so the
@@ -200,6 +262,39 @@ INSTANCES = [
          inStratum=lambda rho, x: x((0, 0)) == 0,
          pin=lambda rho: 1, slot_val_exp={0: 1, 1: 1},
          z={0: 1}, box=[(0, 0), (0, 1), (1, 0), (1, 1)]),
+
+    # ---- V3 EXTENSION (round 3): the parent-pinned subfamily the round-2
+    # postmortem demanded (all base instances had parentBlock = []).
+
+    # i4-v3 — MINIMAL PARENT-PINNED: i1's census/window (r=0, d=1, m=1, s==1,
+    # N=2; monicTop=true, onLine={}) with parentBlock = {(5,0)} OFF all slot
+    # blocks (v3 clause B) and a SATISFIABLE parent pin x(5,0)=1 (v3 clause A;
+    # member_split: inStratum = parentCond /\ slotCond).  D.11 prediction: the
+    # parent factor is 1 (pinned leaf), so [LHS-V2] = product = 2 — the seam
+    # geometry cmL3/cmL4 exploited, now lawfully closed.
+    dict(name="i4-v3: parent-pinned leaf (off-block), onLine empty",
+         q0=2, d=1, rho0=1, boxSlots=[0], onLine=[], ks=1,
+         parentBlock=[(5, 0)], slotBlock={0: [(0, 0)]}, slotCoord={},
+         slotCond=lambda rho, k, x: True,
+         inStratum=lambda rho, x: x((5, 0)) == 1,
+         pin=lambda rho: 1, slot_val_exp={0: 1},
+         z={}, box=[(0, 0), (0, 1), (5, 0)]),
+
+    # i5-v3 — THE RESIZED i2 (= tdL's geometry: slot-1 block 2 leaves so
+    # slot_count_val's formula mN - s = 2 is EXACT) + the same parent pin:
+    # junction digit content AND a nonempty parent block together.  Counts:
+    # slot 0 digit factor 4 = 2^(3-1) (read leaf pinned to the pin code 1),
+    # slot 1 height factor 4 = 2^2, parent factor 1 (pinned leaf (5,0)) =>
+    # [LHS-V2] = 16 = [RHS] predicted.
+    dict(name="i5-v3: junction on-line + parent pin (tdL shape + parent block)",
+         q0=2, d=2, rho0=1, boxSlots=[0, 1], onLine=[0], ks=0,
+         parentBlock=[(5, 0)],
+         slotBlock={0: [(0, 0), (0, 1), (0, 2)], 1: [(1, 0), (1, 1)]},
+         slotCoord={0: (0, 0)},
+         slotCond=lambda rho, k, x: (x((0, 0)) == 1) if k == 0 else True,
+         inStratum=lambda rho, x: x((0, 0)) == 1 and x((5, 0)) == 1,
+         pin=lambda rho: 1, slot_val_exp={0: 2, 1: 2},
+         z={0: 1}, box=[(0, 0), (0, 1), (0, 2), (1, 0), (1, 1), (5, 0)]),
 ]
 
 if __name__ == "__main__":
@@ -222,6 +317,15 @@ if __name__ == "__main__":
               "STOP: build the Lean countermodel; do NOT attempt the TD-3 proof.  [SUPERSEDED: countermodel landed 5371139]")
     if v2_fail == 0 and math_fail == 0:
         print("VERDICT v2: statement gate GREEN — the v2 semantics counts what the "
-              "product prices; TD-3 (round 2) is an honest open goal.")
+              "product prices; TD-3 (round 2) is an honest open goal.  [SUPERSEDED at "
+              "the PACK level: round 2 refuted (Seams A/B, TD3v2_countermodel.lean); "
+              "the SEMANTICS verdict stands and round 3 reuses it.]")
     else:
         print("VERDICT v2: GATE FAILURE — do NOT prove TD-3 round 2; re-architect again.")
+    print("VERDICT v3 (round 3, parent-pinned extension i4-v3/i5-v3 included): "
+          + ("statement gate GREEN — [V3-A]/[V3-B] hold at every traced instance, "
+             "and the v2-semantics law matches the product on the seam-closing "
+             "parent-pinned subfamily; TD-3 round 3 (LedgerLawfulV3) is PROVED "
+             "(TD3_digitsProd.lean). i2 carries the displayed transcription caveat."
+             if v2_fail == 0 and math_fail == 0 else
+             "GATE FAILURE — re-architect; do NOT trust the round-3 proof target."))
