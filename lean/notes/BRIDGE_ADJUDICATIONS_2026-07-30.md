@@ -3490,3 +3490,38 @@ REVISE(0C/4G) → ACCEPT → GAPS-ONLY(0C/6G, folded); pass 5 breaks pass 4's
 clean run — ZERO consecutive cleans stand on the folded text; owed toward
 the §M bar: consecutive cleans on this text (M1 precedent: two) + the
 N-K3 run.
+
+## 2026-08-08: H4-M2 REVISION 4 — pass-4 fold (GAPS-ONLY; both gaps mechanical: base-stage indexing written out, "transport identity" weakened to data coincidence)
+
+H4M2_dict_attempt.md folds hostile pass 4 (H4M2_pass4_2026-08-08.md,
+verdict GAPS-ONLY — 2 gaps + 4 confirmations; the pass certified all
+substance: the REV-3 fold complete, the four-leg dependency tally, the
+factor-correspondence well-definedness with the Stacks cites [0BC1]/[09GY],
+the honesty fences intact). Both cures mechanical (the pass: "no new
+mathematical input appears necessary"). GAP 4 (base-stage indexing in the
+(1) ⇒ (2) leg): DICT-0 now DECLARES its indexing — "prefix through stage k"
+= base read + stages 1..k accepted (k + 1 reads, fields F₁..F_{k+1},
+matching §3's persistsFrom list convention with head entry d); the EMPTY
+prefix is a separately displayed BASE CASE, not "k = 0" (the old header
+line contradicted the fields-through-F_{k+1} reading; clause (c) named
+ψ_{k+1} = ψ₁ of degree g₁ against the base residual's degree d). Clause (c)
+gains the explicit degree-d base case (both reads over F_p·F_q = F_q BY
+CONSTRUCTION — no (b)-identification consumed there), and the (1) ⇒ (2)
+leg is written out in two cases: BASE (transported base residual splits;
+[IN-F1] gives gcd(d, δ) > 1 factors of degree d/gcd < d — (1)'s
+base-degree clause fails) and STAGE (j₀ ≥ 1 first failing stage; DICT-0 at
+k = j₀ − 1 exactly as before, (b) AND (c) consumed). Four-leg tally
+UNCHANGED; the audit records the refinement (base case = (c)-base +
+[IN-F1] only). GAP 5 (§3's stale "transport identity"): DICT-1(3) states
+ledger/DATA coincidence (stage tuples, w_j^{recon} = w_j^{comp}, embedded
+fields F_j·F_q) — NOT literal residual-polynomial equality (that lives
+ONLY in the l4_persist row; the Lean coincide row is pdata equality).
+Phrase weakened at §3's UPGRADE display, the §3 LEAN FACE, the header
+VERDICT (iii), and the R4_iff_splitFree docstring; M14's own recorded
+status kept verbatim as a quote. Tally NOT changed ((2) ⇒ (3) still
+consumes no clause (c)). Lean delta comment/docstring/prose-only; gate
+re-run GREEN (exit 0, no diagnostics; negative control confirmed the gate
+elaborates), zero sorry, Lean-core footprint unchanged. COUNTER: pass 1
+CRITICAL (REV 1); pass 2 CRITICAL (REV 2); pass 3 GAPS-ONLY (REV 3);
+pass 4 GAPS-ONLY, mechanical (REV 4); clean 0/1 — the final clean hostile
+pass (pass 5) runs on REVISION 4, launched by the orchestrator.

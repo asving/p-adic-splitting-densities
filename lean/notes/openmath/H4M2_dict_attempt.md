@@ -90,8 +90,27 @@ identification, exactly as the proof leg itself already cited ("under
 statement and at its §5/§6 repetitions. Counter stays 0/1; the final clean
 pass runs on THIS revision.
 
-VERDICT (summary, at the REVISION-3 honest strengths — identical in
-strength to REVISION 2; the REVISION-3 fold is display-only): the four charge items
+REVISION 4 (2026-08-08, pass-4 fold): hostile pass 4
+(`H4M2_pass4_2026-08-08.md`, verdict GAPS-ONLY — 2 gaps + 4 confirmations,
+including CONFIRMATION of the REVISION-3 fold, the four-leg dependency
+tally, the factor-correspondence well-definedness with its Stacks cites,
+and the honesty fences) folded in full; the finding-by-finding record is
+§6. Both cures are mechanical (the pass: "no new mathematical input
+appears necessary"): (1) the (1) ⇒ (2) base-stage indexing made coherent —
+DICT-0 now DECLARES its indexing ("through stage k" = base read + stages
+1..k accepted, k + 1 reads, fields F₁..F_{k+1}; the EMPTY prefix is a
+separately displayed BASE CASE, not "k = 0"), clause (c) carries the
+explicit degree-d base case (no (b)-identification consumed there — the
+base read fields coincide by construction), and the (1) ⇒ (2) leg is
+written out in two cases (base failure / first failing stage j₀ ≥ 1 with
+DICT-0 at k = j₀ − 1); tally unchanged. (2) §3's stale "transport
+identity" label weakened everywhere to DICT-1's actual (2) ⇒ (3) content —
+ledger/DATA coincidence (stage tuples, valuations, embedded fields), NOT
+literal residual-polynomial equality (which lives ONLY in the `l4_persist`
+row). Counter stays 0/1; the final clean pass runs on THIS revision.
+
+VERDICT (summary, at the REVISION-4 honest strengths — identical in
+strength to REVISION 2; the REVISION-3/4 folds are display-only): the four charge items
 are delivered as follows. (i) the two objects are defined and kept apart;
 the matched position is defined by the FACTOR CORRESPONDENCE (key-free AND
 ledger-free: matching through the irreducible factors of f itself, §1), the
@@ -108,7 +127,7 @@ tautology `splitFree_one` (§2) — theorem `DictModel.stable_iff_R4` below,
 wired to the corpus `AlphabetData.Stable` verbatim by
 `alphabetData_stable_iff_R4` (which additionally assumes `Encodes`).
 (iii) Lemma 4: the arithmetic core `lemma4_arith` is UNCONDITIONAL Lean; the
-field-theoretic inputs (F1)/(F2) and DICT-1's transport identity are NAMED
+field-theoretic inputs (F1)/(F2) and DICT-1's data coincidence are NAMED
 HYPOTHESIS ROWS of `GcdSlice` (assumed by every instance, their MATH
 arguments in §3/§1 conditional as displayed), and
 `GcdSlice.stable_iff_coprime` chains Stable ⟺ gcd(m, δ) = 1 GIVEN those
@@ -243,9 +262,21 @@ counterpart. Retired at REVISION 2; the factor correspondence needs neither
 reading. The key/valuation coincidence remains its own displayed lemma:
 
 **DICT-0 (key/valuation coincidence) — DISPLAYED OPEN; restated at
-REVISION 2 at EXACTLY the strength its consumers use (pass-2 finding 2).**
-At a matched split-free prefix through stage k (k = 0 allowed: the empty
-prefix with only the base read pending):
+REVISION 2 at EXACTLY the strength its consumers use (pass-2 finding 2);
+indexing declared at REVISION 4 (pass-4 finding 4).**
+
+INDEXING, DECLARED (REVISION 4): "prefix through stage k" (k ≥ 0) means the
+BASE READ plus stages 1, …, k are all accepted — k + 1 reads in total,
+fields F₁ ⊆ … ⊆ F_{k+1} realized ([F₁ : F_p] = d; exactly §3's list
+convention, whose HEAD entry d is the base read and whose tail entries are
+g₁, …, g_k) — so k = 0 means the base read accepted and nothing else (F₁
+realized, ψ₁ pending). The EMPTY prefix (nothing accepted, the base read
+itself pending) is NOT a k-value; it is the separately displayed BASE CASE
+of clause (c) below, and it is the only place a clause needs it. (The
+pre-REVISION-4 header called the empty prefix "k = 0", which contradicted
+the fields-through-F_{k+1} reading of "through stage k"; retired.)
+
+At a matched split-free prefix through stage k:
 
 (a) [valuations] every reconstructed position matched to x realizes the
 device's inductive valuations: w_j^{recon} = w_j^{comp} on O_δ[x] for
@@ -260,9 +291,17 @@ load-bearing at the next residual read, exactly clause (c)'s field).
 
 (c) [next-read divisibility] every irreducible stage-(k+1) residual the
 reconstructed run realizes at the matched position (one per branch of its
-next read; the base residual, of degree d over F_q, is the k = 0 case)
-divides — up to a unit multiple, under (b)'s identification — the
-transported next residual ψ_{k+1} read over F_{k+1}·F_q.
+next read) divides — up to a unit multiple, under (b)'s identification —
+the transported next residual ψ_{k+1} read over F_{k+1}·F_q. BASE CASE
+(the empty prefix, per the declared indexing — REVISION 4): every
+irreducible base residual the reconstructed run realizes at the matched
+position divides — up to a unit multiple — the transported base residual,
+of degree d, read over F_p·F_q = F_q; here NO (b)-identification is
+consumed: the reconstructed run's base read lives over F_q, the residue
+field of O_δ, BY CONSTRUCTION, the same field the transported base
+residual is read over. (The pre-REVISION-4 parenthetical called this "the
+k = 0 case" while naming the pending residual ψ_{k+1} = ψ₁ of degree g₁ —
+mis-indexed against the base residual's degree d; pass-4 finding 4.)
 
 (d) [uniqueness] exactly one reconstructed position is matched to x at the
 split-free prefix.
@@ -276,7 +315,11 @@ The (2) ⇒ (3) leg of DICT-1 consumes (a) (feeding [IN-U]), (b) (clause
 reading — which the model layer's single-valued `pdata` also presupposes),
 plus [IN-R1] and [IN-U]; the (3) ⇒ (1) leg consumes no additional DICT-0
 clause; the (1) ⇒ (2) leg consumes (b) AND (c), plus [IN-F1], applied at
-the first failing stage — clause (c)'s divisibility comparison is
+the first failing READ (REVISION 4 refinement, tally unchanged: when the
+first failure is the BASE residual the leg consumes clause (c)'s base case
+and [IN-F1] only — no (b)-identification, the base read fields coincide by
+construction; the stage case consumes (b) AND (c)) — clause (c)'s
+divisibility comparison at a stage read is
 meaningful ONLY under (b)'s residue-field identification (range through
 k+1), exactly as the proof leg below has cited since REVISION 2 ("under
 [IN-C](b)'s identification"); the audit's "(c) ONLY" wording contradicted
@@ -382,14 +425,31 @@ under (3) their degrees are the matched g_j and the stage tuples equal the
 transported (= base-side) integers, which is (1) verbatim (the single
 matched position of (3) is in particular "every matched position").
 
-(1) ⇒ (2): suppose some transported residual fails; let j₀ be the FIRST
-failing stage (base stage included, with residual of degree d over F_q; the
-base failure is the k = 0 case below). The sub-prefix through j₀ − 1 is
-split-free, so DICT-0 applies to it with k = j₀ − 1; by [IN-C](c) every
+(1) ⇒ (2): suppose some transported residual fails; two cases on the FIRST
+failing read, indexed per DICT-0's declared convention (REVISION 4, pass-4
+finding 4: the base read, then stages 1, 2, … — the pre-REVISION-4 text
+merged both cases under "k = j₀ − 1, base stage included", mis-indexing
+the base failure as clause (c)'s "k = 0 case"; the split is a write-out,
+no new mathematical input).
+
+BASE CASE: the transported base residual (degree d, read over F_q) splits.
+DICT-0 applies at the EMPTY prefix (clause (c)'s separately displayed base
+case): every irreducible base residual the reconstructed run realizes at
+the matched position divides the transported base residual — no
+(b)-identification consumed; both reads live over F_q by construction. By
+[IN-F1] the transported base residual factors into gcd(d, δ) > 1 conjugate
+irreducible factors of equal degree d/gcd < d, so every realized base
+residual, being an irreducible divisor, has degree d/gcd < d: the realized
+base degree drops, contradicting (1)'s "base degree d" clause.
+
+STAGE CASE: the base residual persists and j₀ ≥ 1 is the first failing
+stage. The sub-prefix through stage j₀ − 1 (the base read included — it
+persists, by the case split) is split-free, so DICT-0 applies to it with
+k = j₀ − 1; by [IN-C](c) every
 irreducible stage-j₀ residual the reconstructed run realizes at the matched
 position divides — up to a unit, under [IN-C](b)'s identification, whose
 range through (j₀ − 1) + 1 = j₀ is exactly what is consumed here (pass-2
-finding 3; so this leg consumes (b) AND (c) — the REVISION-3 audit
+finding 3; so this case consumes (b) AND (c) — the REVISION-3 audit
 correction, pass-3 finding 1) — the transported ψ_{j₀} read over
 F_{j₀}·F_q. By [IN-F1] that
 read factors into gcd > 1 conjugate irreducible factors of equal degree
@@ -618,9 +678,14 @@ pass-1 findings 2/6): M14 recorded Lemma 4 as "CONDITIONAL on the same-keys
 transport identity … a REL.1/(a6)-dictionary fact, flagged, not proved".
 This note IS that dictionary at the needed slice: §1 DEFINES the comparison
 device ((i-b)) with the factor-correspondence matching (REVISION 2 —
-key-free AND ledger-free), and STATES the transport identity as DICT-1
-((2) ⇒ (3): at split-free prefixes the reconstructed run realizes the
-verbatim-transported residuals) — a MATH lemma conditional on
+key-free AND ledger-free), and STATES the setting's coincidence content as
+DICT-1 ((2) ⇒ (3): at split-free prefixes the single matched reconstructed
+position realizes the device's LEDGER — same stage tuples, same inductive
+valuations, same embedded residue fields F_j·F_q; DATA coincidence, NOT
+literal residual-polynomial equality, which no leg of DICT-1 asserts —
+REVISION 4, pass-4 finding 5: the former "transport identity" label
+overstated DICT-1(3); actual residual persistence enters this note ONLY
+through the `l4_persist` row below) — a MATH lemma conditional on
 [IN-R1]/[IN-U]/[IN-C], with [IN-C] (DICT-0, the key/valuation coincidence,
 four clauses) itself DISPLAYED OPEN. The upgrade is therefore from "flagged, not proved"
 to "stated with named inputs and a displayed open core" — NOT to "proved
@@ -662,7 +727,8 @@ predicate `persistsFrom` ONLY — it does NOT prove that actual residual
 polynomials persist exactly when `persistsFrom` holds. That hard
 field-theoretic identification enters as the NAMED HYPOTHESIS row
 `l4_persist` of `GcdSlice` (reading `splitFree` through the
-(F1)/(F2)-criterion chain), and DICT-1's transport identity as the NAMED
+(F1)/(F2)-criterion chain), and DICT-1's data coincidence ((2) ⇒ (3) at
+pdata level) as the NAMED
 HYPOTHESIS row `coincide` — both ASSUMED, supplied by every instance, never
 proved in this note. The chained theorems `splitFree_iff_coprime`,
 `stable_iff_coprime`, `alphabetData_stable_iff_coprime` are then PROVED
@@ -749,7 +815,8 @@ theorem GcdSlice.splitFree_iff_coprime {Sp : SpeciesSyntax} {Pos : Type}
     M.splitFree δ x ↔ Nat.Coprime (G.dDeg x * (G.gDegs x).prod) (δ : ℕ) := by
   rw [G.l4_persist δ x, lemma4_arith]
 
-/-- With the transport identity, (R4) collapses to split-freeness (the data
+/-- With the `coincide` row (DICT-1's data coincidence at pdata level), (R4)
+collapses to split-freeness (the data
 clause comes for free at split-free prefixes — DICT-1's content). -/
 theorem GcdSlice.R4_iff_splitFree {Sp : SpeciesSyntax} {Pos : Type}
     {M : DictModel Sp Pos} (G : GcdSlice M) (δ : ℕ+) (x : Pos) :
@@ -930,9 +997,12 @@ HONEST RESIDUE (what this note does NOT prove; expanded at REVISION 1):
    coincidence at every matched position; (b) embedded fields
    F_j^{(δ)} = F_j·F_q for ALL j ≤ k+1 (range fixed, pass-2 finding 3);
    (c) next-read divisibility of the realized residuals into the
-   transported one (consumed by the (1) ⇒ (2) leg TOGETHER WITH (b) —
+   transported one, with the separately displayed degree-d BASE CASE at
+   the empty prefix (indexing declared at REVISION 4, pass-4 finding 4)
+   (consumed by the (1) ⇒ (2) leg TOGETHER WITH (b) at its stage case —
    the divisibility comparison is meaningful only under (b)'s
-   residue-field identification; audit corrected at REVISION 3, pass-3
+   residue-field identification; the base case consumes no (b), its read
+   fields coincide by construction; audit corrected at REVISION 3, pass-3
    finding 1 — pass-2 critical 2: REVISION 1's bare Okutsu-equivalence
    form was WEAKER than this consumer, while the pre-REVISION-1
    literal-keys clause was STRONGER than any consumer); (d) uniqueness of
@@ -994,7 +1064,7 @@ zero sorry): `DictModel`, `letter_unique_of_triple`,
 AXIOM FOOTPRINT (checked 2026-08-01, external `#print axioms` run over all
 key theorems): Lean-core only — {propext, Classical.choice, Quot.sound};
 the arithmetic core (`lemma4_arith`, `f9_out_of_domain`, the tables, the
-grammar lemmas) is even choice-free: {propext, Quot.sound}. REVISIONS 1–3
+grammar lemmas) is even choice-free: {propext, Quot.sound}. REVISIONS 1–4
 are all comment/docstring-and-prose-only folds — no Lean statement or
 proof term changed; gate re-run green after each (see §6).
 
@@ -1159,9 +1229,58 @@ LEAN DELTA (REVISION 3): comment/docstring/prose-only; no statement or
 proof term changed. Gate `lake env lean notes/openmath/H4M2_dict_attempt.md`
 re-run GREEN at REVISION 3, zero sorry, footprint unchanged (Lean-core).
 
+REVISION 4 (2026-08-08; fold of hostile pass 4,
+`H4M2_pass4_2026-08-08.md`, verdict GAPS-ONLY — 2 gaps + 4 confirmations,
+ALL findings folded; the pass itself certified both gaps mechanical — "no
+new mathematical input appears necessary"):
+
+1. GAP — the (1) ⇒ (2) base-stage indexing was incoherent: the proof leg
+   merged the base failure into "first failing stage j₀, base stage
+   included" and DICT-0 called the empty prefix "k = 0", while "prefix
+   through stage k" realizes fields F₁..F_{k+1} and clause (c) named the
+   pending residual ψ_{k+1} = ψ₁ (degree g₁) against the base residual's
+   degree d. FOLDED (a write-out, tally unchanged): DICT-0 now carries a
+   DECLARED INDEXING display ("through stage k" = base read + stages
+   1..k accepted, k + 1 reads, matching §3's list convention with head
+   entry d; the EMPTY prefix is not a k-value); clause (c) gains the
+   separately displayed degree-d BASE CASE (read over F_p·F_q = F_q on
+   both sides BY CONSTRUCTION — no (b)-identification consumed there);
+   the (1) ⇒ (2) leg is written out in two cases (BASE CASE: [IN-F1]
+   gives gcd(d, δ) > 1 factors of degree d/gcd < d, the base-degree
+   clause of (1) fails; STAGE CASE: j₀ ≥ 1, DICT-0 at k = j₀ − 1 exactly
+   as before); the §1 consumer audit records the refinement (base case
+   consumes (c)-base + [IN-F1] only; stage case consumes (b) AND (c) —
+   the four-leg tally itself unchanged).
+2. GAP — §3 (and its header/docstring echoes) called DICT-1's (2) ⇒ (3)
+   content the "transport identity" and glossed it as "realizes the
+   verbatim-transported residuals", overstating DICT-1(3), which asserts
+   ledger/DATA coincidence (stage tuples, valuations as w_j^{recon} =
+   w_j^{comp}, embedded fields F_j·F_q) — NOT literal residual-polynomial
+   equality; the Lean row `coincide` is pdata equality only, and actual
+   residual persistence enters solely through `l4_persist`. FOLDED: the
+   phrase weakened to data/ledger coincidence at §3's UPGRADE display,
+   the §3 LEAN FACE, the header VERDICT (iii), and the
+   `R4_iff_splitFree` docstring; M14's own recorded status ("same-keys
+   transport identity … flagged, not proved") kept verbatim as a QUOTE of
+   M14. Tally NOT changed: the (2) ⇒ (3) leg still consumes no clause
+   (c), and residual association is not re-derived.
+3. CONFIRMED (pass 4) — the REV-3 fold complete ("(c) ONLY" retired at
+   all live sites); the four-leg dependency tally ((2) ⇒ (3):
+   (a)/(b)/(d) + [IN-R1] + [IN-U]; (3) ⇒ (1): none; (1) ⇒ (2):
+   (b)/(c) + [IN-F1]; `l4_persist`: none; literal key equality unused);
+   the factor-correspondence well-definedness with the Stacks cites
+   [0BC1]/[09GY] + the gcd-sense qualification; the honesty fences
+   (DICT-0's four clauses OPEN, hypothesis-row-only Lean face, no
+   faithful instance). No action beyond the two gaps.
+
+LEAN DELTA (REVISION 4): comment/docstring/prose-only; no statement or
+proof term changed. Gate `lake env lean notes/openmath/H4M2_dict_attempt.md`
+re-run GREEN at REVISION 4, zero sorry, footprint unchanged (Lean-core).
+
 COUNTER (gate: hostile pass ×1): pass 1 = CRITICAL (folded at REVISION 1);
-pass 2 = CRITICAL (folded at REVISION 2); pass 3 = GAPS-ONLY (folded
-here). Clean counter 0/1 — the final clean hostile pass runs on THIS
+pass 2 = CRITICAL (folded at REVISION 2); pass 3 = GAPS-ONLY (folded at
+REVISION 3); pass 4 = GAPS-ONLY, both gaps mechanical (folded here).
+Clean counter 0/1 — the final clean hostile pass (pass 5) runs on THIS
 revision.
 -/
 
