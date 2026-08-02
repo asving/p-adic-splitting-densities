@@ -3711,3 +3711,66 @@ stretch.
   pass (pass 3, on the folded M14 + accepted M1 + M2 REVISION 4) → on CLEAN,
   F-(iv) fires per H4M7 §3 (the §3.1 (R1)–(R4) row retires to a §3.2
   retirement record; the (K3-δ) audit note SURVIVES onto the (UB-X) row).
+
+## 2026-08-08 (wallclock 2026-08-02): SITE-EXH ADJUDICATION PROBE — VERDICT: NEEDS-EXTENSION (TruncatedRun carrier; disjoint box-face bridge)
+
+Hardest-first Tier 1 item 1 (docs/HARDEST_FIRST_ORDER_2026-08-08.md) EXECUTED.
+Artifact: `lean/LeanUrat/Scaffold/HDischarge/H1/SiteExhProbe.lean` — compiled
+GREEN (`lake env lean` exit 0), SORRY-FREE, all `#print axioms` Lean-core
+`[propext, Classical.choice, Quot.sound]` (in-file footer). No existing
+statement touched; no new axiom; imports RCWitness + HC1.DefsTower +
+U31_gateReadsOf + OM.Classifier + OM.LiftKeyExt.
+
+THE QUESTION (H1_BM2_2026-08-06.md §S2 open obligation SITE-EXH): is "every
+lift the engine fires factors through the recorded carriers (LandingKey /
+historyCoherent key+recentering / readsOf-landing)" closable in the CURRENT
+run architecture?
+
+VERDICT: **NOT closable as-is; the minimal extension is the ADDITIVE
+TruncatedRun carrier** (+ the disjoint box-face M1 bridge). Compiled findings:
+
+1. **The closed enumeration COMPILES** — `FiredLift` (engine face, 4
+   constructors: histNonrec / histRec / runLanding / towerMove-carrying-
+   `HC1.MoveWitness`) + `FiredLiftBox` (box face, 2 constructors: liftKey /
+   liftKeyExt). Census grep-complete in the file header (route (2) of §S2's
+   two honest routes, feeding route (1)); non-firing installations excluded
+   with compiled reasons (`regrade_key_preserving`; base seeds pinned by
+   `base_deg_pin`; `polOM.liftOf` produces lift-realizer data, not keys).
+   NO FOURTH ENGINE-FACE SHAPE FOUND — the §S6(iii) attack stays un-cashed,
+   now with a compiled datatype any new site must visibly extend.
+2. **The elimination closes DEFINITIONALLY for the three run-borne shapes**
+   (`histNonrec_lands` / `histRec_lands` / `readsOf_landing_lands` — they ARE
+   the carriers) and is assembled as `siteExh_elimination`, proved sorry-free
+   CONDITIONAL on exactly one displayed residue ROW.
+3. **The residue = `TowerMoveClosure`** (every `MoveWitness` firing lands on a
+   recorded carrier): NOT provable in the current architecture (no general
+   run-supplier exists — only per-instance gates U31/HK23/HK25/RCW), NOT
+   vacuously false (`gate_flTower_lands`: the RCW S10-fired recentering move
+   DOES land, on carrier (b) via H₃rc), and its f-TIED refinement is REFUTED
+   AT NATURE by the C-e exhibit (BM2_TRACE_2026-08-02.md §C-e: the real p = 3
+   quartic's recentering behind an interior e = 2 read hosts NOWHERE on its
+   own f). The compiled exclusion mechanism: `rg2_fence` (interior
+   non-recentering reads have e = 1) + `base_deg_pin` (node-0 frames are
+   degree 1) — both extracted sorry-free from `HistoryCoherent`.
+4. **The box face SPLITS at type level** — liftKey/liftKeyExt produce keys
+   over `ZMod (p^N)`/`Oring p N g`, so a `Lands` predicate against the
+   ℤ_[p]/Stage carrier vocabulary is UNSTATEABLE; recorded as the separate
+   `FiredLiftBox` + the displayed (never asserted) `BoxKeyBridge` obligation.
+   DISJOINT from the run-architecture question (M1 projective-bridge track).
+5. **Extension design (DISPLAY ONLY, file header E-1..E-4 — Asvin's
+   architecture decision, NOT implemented)**: E-1 `ReadsOfFrom σ₀` truncated
+   runs (node-0 frame := given `StageCoreL` stage, deg-1 pin replaced,
+   interior clauses + RG-2 fence retained above the base read, base pair
+   free); E-2 every `MoveWitness` = the base read of a 1-node truncated run
+   ⇒ `towerMove` lands on the widened disjunction; E-3 the f-tie composes
+   truncated runs along D-ITER (Tier-3 item 5(b)) — the glue theorem is the
+   one genuinely new obligation; E-4 fences: no global RG-2 lift (the
+   R7_runRealizer FENCE-LIFT FLAG / (CR2) prerequisite stands), ReadsOf/
+   HistoryCoherent byte-unchanged (carrier is ADDITIVE).
+
+Non-vacuity: all four engine-face constructors inhabited on compiled gate
+instances (flNR/flRC/flRun/flTower), each with its landing gate proved.
+SITE-EXH itself stays OPEN — this probe adjudicates its closure ROUTE; the
+H1_BM2 §S2 display, LIFT-CONF's scope, and all consumer rows are unchanged.
+Per the Tier-1 standing rule, this RED (needs-extension) verdict PAUSES
+lower-tier dispatching until the TruncatedRun extension is adjudicated.
