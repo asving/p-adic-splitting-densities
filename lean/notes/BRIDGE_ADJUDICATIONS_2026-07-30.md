@@ -2188,3 +2188,9 @@ charge-(vi-a) FAIL standing; MASS-ID Haar identification; POOL-DICT typed
 read-off + blockTotal_tie) and ROUTES-not-homes retirement lines. 22
 sites synced, 11 rows grep-verified. NET vs pre-campaign: the former
 (H8) assumed the WHOLE decomposition; (H8') assumes only the interfaces.
+
+## VC20: (H8') SUBSTANCE CONFIRMED, 2 leftover-sentence blockers (2026-08-06)
+The three members exactly cover VC19's missing K1 premises; attributions
+agree; walk closes; acyclicity intact; no regressions. Blockers: §1's
+retired-bracket "TEN rows" phrase + the §3.2 pre-r18 owner-housing
+sentences. r19 (two-sentence fix) dispatched; VC21 after.
