@@ -3147,3 +3147,47 @@ acceptance anchor moves REVISION 18 → REVISION 20; the §0/§6 counter lines
 update at the next ROOT revision (r22) per the doc-unit discipline.
 Same date: the D-11 leaf-bar pass CONFIRMED (936ad76) — the (H9) re-open
 trigger is SPENT; and TR3-S1 composed+proved (549e8a6), pass 1 zero-critical.
+
+## 2026-08-02 (machine clock): P(O-8b/M14) FIRED — composite pass 1 CLEAN; (H4a) retirement NOT executed (blueprint clause F-(i)/F-(iv) unmet)
+
+Synthesis-pass-4 queue item 5. The owed §3.2 pass (ROOT REVISION 3 finding B2;
+`docs/ROOT_ASSEMBLY_2026-08-02.md` §3.2 row ~1977) ran hostile, fresh-context,
+quote-and-classify, per the drafted firing charge `H4M7_rootsync_brief.md` §2
+step (iii). Composite audited: `M14-eq2-alphabet_attempt.md` (the O-8b alphabet
+law, conditional on (R1)–(R4)) + `H4M1_rpack_attempt.md` ((R1)–(R3) over W(F_q),
+one theory, δ absolute) + `H4M2_dict_attempt.md` ((R4)/dictionary slice,
+`DictModel.stable_iff_R4` + `alphabetData_stable_iff_R4`).
+
+**ZERO critical.** All six attack targets walked: (a) itemization exact — M14 §2's
+(R1)/(R2)/(R3) verbatim heads = M1 §8.2's instance table row-for-row (incl. D.1(e)
+R_γ L₀-linearity §4, the (ii.2) digit recursion §5.3, product display + basis
+mechanism §5.4, base clause §5.5, D.9(a) + base clause §6.1–6.2); (R4) supplied by
+M2 §2 with M14 §7.2 hard-coded; (b) the q = p^δ instantiation displayed at M1
+§8.1–8.2, `relExt m δ' = O (m·δ')` grep-verified at `MovesRBase/Defs.lean:59`;
+(c) mutatis-mutandis obeyed — [SKEL]/[REBUILT] audit M1 §7, no cardinality
+substitution (M2 (i-a)); (d) M14 Lemma 2's hypothesis list = M1 §1.3's table,
+composition displayed; (e) counting layer NOT consumed (M1 §7 NOT-CONSUMED check:
+no C.0/C.1/(ZC)/PIN-WELLDEF/Thm C cites); (f) base-clause realizer = the
+x-dependent family (M1 Lemma ONTO + §5.5 negative half), not unit lifts. Corpus
+carriers grep-verified: `AlphabetData.Stable` (Defs.lean:113), `cl8_eq2`
+(MovesU/DefsLedger.lean:162), `RootHyps.h4a_r1r4`/`h4b_k3delta`
+(Scaffold/Hypotheses.lean:162/170), §B2-DEF at MOVES:1849, REL.1 rule ~9380.
+
+DISPLAYED CONDITIONALITY CARRIED (not silently consumed): (1) M1's perimeter
+fence (§0.4) — recipe-presented towers with (I-aug) reads; the run-production
+layer D.8/D.10 stays REL.1's wider walk (M14 consumes a presented matched
+prefix, shape-consistent); (2) M2's DictModel grammar rows + `GcdSlice` [M]-rows
+await the H4-F6 carriers; [IN-U] MacLane pin-precision = LITUNIT duty; (3)
+**(K3-δ) is NOT consumed and NOT retired by this composite** — clause (R) keeps
+consuming (K3-δ) until the H4M7 §4 Route-B re-scope fires (5 conditions, incl.
+N-K3 run + Asvin statement-change sign-off). "Retires (H4a) mod (K3-δ)" reads
+per H4M7 §3 item 1: the (H4a) row retires with its (K3-δ) audit-note SURVIVING.
+
+RETIREMENT NOT EXECUTED — the blueprint's clause read exactly: F-(iii) required
+F-(i) on record first, and F-(i) is UNMET at HEAD (M1 hostile ×2 UNRUN — ledger
+placeholders only; M2 ×1 NO RECORD; M4 pass-2 verdict absent from its file; M5
+second consecutive clean owed; N-K3 unrun). This pass is therefore the
+composite's CLEAN PASS 1; F-(iv) ((H4a) §3.1 row retire + Step 16/18 sync) is a
+ROOT-owner move that fires only on ACCEPT per the standing consecutive-clean
+discipline. OWED NEXT: the F-(i) leg gates, then a second clean composite pass,
+then the ROOT owner executes H4M7 §3's drafted deltas.
