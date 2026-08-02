@@ -5132,3 +5132,36 @@ branchCellOf) on a sorry-free TreeModel; near-term decision point = the
 N-H7-1 numerics harness (h7_kloc_probe.py, the F4 charter artifact).
 Fences: new decls only; no Tier-S Prop shells; SibJcRows/items 22–29
 untouched.
+
+## 2026-08-08: ROOT r27 EXECUTED (REVISION 26) — the anchor citation moves to REVISION 25/VC28; synthesis pass 6 ADOPTED as the dispatch of record
+
+ROOT REVISION 26 (appendix §32) + PROJECT_STATE r27 checkpoint, this
+commit. (1) ANCHOR: per the VC28 CONFIRMED FIRST-PASS entry (d66bef2),
+the citation text at every operative ROOT site (§0 / the §3.2 end-to-end
+row / §6) now cites **REVISION 25/VC28**; the old REVISION-24/VC27+VC27b
+citations survive only in dated records and under dated supersession
+brackets (VC22 precedent). **VC29 is OWED on the REVISION-26 wording**
+(charge at §32; never self-confirmed — this unit ran no audit). (2)
+PASS-6 ADOPTION (976484d): the FORGE DECISION folded — `junc_bundle`
+CHARTERED ALONE (staged numerics-first; displayed at the (H1) r27
+bracket), the nonempty-parent leakFree instance DECLINED (disposition at
+the (FRESH) row: revisit only if the classifier consumer face demands it
+for non-vacuity) and the two-equal-state table DECLINED (disposition at
+the (H8′) row: a second leg of a compiled blocker is not progress);
+BasePolygonLengthLaw CHARTERED HIGH (the (H6) r27 bracket; STAYS an open
+lemma, not rostered); the F3 collapse map folded (classifier consumer
+face ATTEMPT-GRADE; hsc PERMANENTLY hypothesis-shaped — terminal honest
+state at the (H1) bracket; depth-3 probe-first; junc_bundle = B-M2's only
+non-hypothesis-shaped wall); **the (ADM) row corrected NOT BLOCKED** —
+G-ADM-2 never ran, now dispatched preregistration-sealed (4d7dba1), no
+outcome claimed. (3) CENSUS REFRESH: 36 sorry sites repo-wide of record
+(B2D 0; pass-6 F6), independently re-verified at r27 (35 in `LeanUrat/`
++ 1 tracked scratch probe under the strict non-comment unit; leaders and
+the banked classifier sorry reproduced exactly). (4) HOUSEKEEPING: wave
+10 dispatched (queue #2–#6 running; results ride r28); Asvin items
+re-displayed (TowerMoveClosureL; fence-(vii) ROUTE (a) incl. the RECSL
+hσt rider; Route-B re-scope). ROSTER: NINE rows, recounted. The 29-pattern
+occurrence census re-run on the final text (junc_bundle PROMOTED,
+G-ADM-2/VC29 NEW; every delta reasoned; fixed point re-grepped after the
+last edit). Doc-only unit: ROOT + PROJECT_STATE + this ledger; no Lean
+file touched.

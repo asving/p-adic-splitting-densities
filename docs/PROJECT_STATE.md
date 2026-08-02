@@ -1859,3 +1859,66 @@ unit).
 Verification: VC1–VC22 done; VC25 NOT-CONFIRMED (disposed at REVISION 23);
 VC26 + VC26b CONFIRMED; VC27 + VC27b CONFIRMED (= the REVISION-24 anchor);
 VC28 pending on REVISION 25.
+
+## CHECKPOINT 2026-08-08++++++ (wallclock 2026-08-02): r27 LANDED — RE-ANCHOR AT REVISION 25 + THE PASS-6 ADOPTION (ROOT REVISION 26)
+
+ROOT REVISION 26 (unit ROOT r27, appendix §32) is the r27 cadence event.
+**VC28 CONFIRMED FIRST-PASS (0C/0G)** on the REVISION-25 text (report
+`lean/notes/openmath/VC28_report.md`, d66bef2) — the FIRST first-pass
+confirmation of the cadence (all folds verified at their sites; the
+26-pattern census reproduced exactly; provenance resolved with the
+appendix built per the saved vc-audit-appendix-checklist, its first
+validation): **the acceptance anchor moves REVISION 24/VC27+VC27b →
+REVISION 25/VC28**, citation text updated at every operative ROOT site
+(§0 / §3.2 / §6; old citations supersession-bracketed per the VC22
+precedent). REVISION 26 then ADOPTS SYNTHESIS PASS 6
+(`docs/SYNTHESIS_PASS6_2026-08-08.md`, 976484d) as the dispatch of
+record: (1) THE FORGE DECISION (F1) — **`junc_bundle` CHARTERED ALONE**
+(price L, staged numerics-first: deep compiled deg f > deg Φ₁ run
+preregistered from strata-probe/BM2_TRACE numerics with the clause-(iii)
+residual traced BEFORE the Lean build → `gate_glue_junction`
+un-hypothesized → the `DIterJunctionSupplier` gates; the only target with
+a live consumer chain — last SITE-EXH residual, queue-#11 substrate,
+B-M2's last non-hypothesis-shaped wall); the nonempty-parent leakFree
+instance DECLINED (revisit only if the classifier consumer face demands
+it for non-vacuity — displayed at the ROOT (FRESH) row) and the
+two-equal-state table DECLINED (a second leg of a compiled blocker is not
+progress — displayed at the (H8′) row); GR stage-forge stays DECLINED,
+readsOf run-forge stays DEAD; (2) **`BasePolygonLengthLaw p` CHARTERED
+HIGH** (F2, price M — it IS the convexity gap; route quarried from proved
+kernels; STAYS an open lemma, displayed not rostered); (3) the F3
+collapse map — the Step-10/K1 classifier consumer face ATTEMPT-GRADE
+(statement-design unit at `td2V4`, fence mandatory); `hsc` PERMANENTLY
+hypothesis-shaped (records bundle no StageCore; round-2 fields give only
+σ.R(−1)² = 1; optional S witness only); deeper strata NOT yet
+finite-algebra (ǫ-recurrence can revive at order 3 on e₀ = 1; entry = a
+preregistered ORDER-3 all-e_j = 1 probe); (4) **the (ADM) row corrected:
+NOT BLOCKED** — the adjudicating G-ADM-2 scan (HDISCHARGE_H3 §1.4) NEVER
+RAN; it routes track A (ADM-REAL) vs track B (U6a/U6b CEN-W, statement-
+change-gated) and is dispatched at wave 10 with the preregistration
+SEALED pre-run (4d7dba1) — no outcome claimed; (5) the sorry census
+refreshed: **36 sites repo-wide of record, B2D 0** (pass-6 F6),
+independently re-verified at r27 as 35 in `LeanUrat/` + 1 tracked scratch
+probe under the strict non-comment unit, leaders (V9_K1nonrec ×4,
+SlotsG2_relFamily ×4, TV_G3 ×2, G1_toyGate ×2) and the banked classifier
+sorry reproduced; (6) **wave 10 IS DISPATCHED** (pass-6 queue #2–#6
+running concurrently; results ride r28). Pass-5 execution audit CLEAN
+(dropped-again ZERO). Roster: **NINE rows, unchanged** — charters change
+dispatch status only, never proof status. Census re-run at the declared
+occurrence unit (the 26 §31 patterns + junc_bundle promoted + G-ADM-2/
+VC29 new; every delta explained; fixed point re-grepped). The §29/§30
+fence-(vii) ASVIN FLAG lineage stays (r27 doc-only; nothing consumes the
+pinned fields). Asvin queue re-displayed: TowerMoveClosureL two-layer
+re-ratification; fence-(vii) ROUTE (a) ratify-or-reopen (incl. the RECSL
+hσt-pin rider); H4M7 §4 Route-B re-scope (teed up by the queued (UB-X)
+consumer-need walk).
+FRONTIER NOW: **VC29** (the confirming end-to-end pass on REVISION 26;
+acceptance anchored on REVISION 25/VC28 until it lands); the wave-10
+harvest (junc_bundle stage 1, BasePolygonLengthLaw, G-ADM-2, the
+classifier consumer face, the depth-3 probe — folds ride r28); then the
+pass-6 queue tail ((H7) first probe, the (UB-X) walk note,
+DIterJunctionSupplier, the ITER-LAW attempt, the Asvin batch, the
+optional S batch).
+Verification: VC1–VC22 done; VC25 NOT-CONFIRMED (disposed at REVISION
+23); VC26 + VC26b CONFIRMED; VC27 + VC27b CONFIRMED; VC28 CONFIRMED
+FIRST-PASS (= the REVISION-25 anchor); VC29 pending on REVISION 26.
