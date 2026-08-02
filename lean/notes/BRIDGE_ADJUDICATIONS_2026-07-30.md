@@ -2688,3 +2688,28 @@ RESIDUE (honest): `FaithfulTotal` is an OPEN HYPOTHESIS row — nothing here
 discharges the Cor-5.15 retarget; the theorem form (`GrBKeyLaws` +
 math leaf ⟹ `FaithfulTotal`) lands only when the GRB leaf's Lean
 formalization exists. Blueprint U14 row annotated STATED.
+
+## GRB REVISION 12 — the pass-15 fold (2026-08-02)
+Hostile pass 15 (Codex, GRB_pass15_2026-08-06.md, on REVISION 11):
+GAPS-ONLY, no critical. POSITIVE: the corrected exponent
+ǫ_i(α) = z_i^{ℓ′_is − ℓ_iu} verified through BOTH semantic legs (the
+i = 0 vanishing forcing the new attachment; Lemma 4.3's exponent threaded
+through eqs (17)/(19)) against the primary arXiv PDF — a fresh extraction
+independent of the corrupted fgmn.txt; old-reading sweep found NO
+surviving operative consumption; residue audit clean. TWO GAPS FOLDED:
+(1) the [REV 11 ANNOTATION]'s obligation split misclassified TR-4 and
+TR-7 as ǫ-free — R^{gr}'s recursion contains ǫ_{r−1}, and the old reading
+FAILED TR-7 outright (P3: 145 Cor-4.7(3) violations); reclassified: the
+carried ǫ-free set SHRINKS to TR-1, TR-2, TR-5, TR-6 (narrowly,
+properness one-home), OP-A2's proved CARRY-1/D-REAL portion,
+OP-A3/(H-CHAIN); TR-4/TR-7 are RE-EARNED post-correction (Cor 4.5/4.11
+paper-secured — no harness family visibly tests them; Cor 4.7(3) + T3
+green), and the family-coverage sentence is narrowed to the exact ledger
+mapping. THIS SUPERSEDES the previous ledger entry's "TR-1 … TR-7 …
+remain ACCEPTED" sentence. (2) S3.4's proof-simplification note
+overgeneralized: ǫ₁ ≡ 1 is forced only at order 2 / all e_j = 1; at
+higher order e₀ = 1 does not force later e_j = 1 (e.g. e₀ = 1, e₁ > 1
+revives a nontrivial factor) — narrowed at S3.4 + its R11.3 echo; the
+two-stratum conjecture display unchanged, both strata OPEN. Clean
+counter stays 0/2; pass 16 runs on the REVISION 12 text. Record: GRB
+leaf §REVISION 12.
