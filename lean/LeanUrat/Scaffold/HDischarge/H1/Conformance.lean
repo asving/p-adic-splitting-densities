@@ -1,15 +1,19 @@
 /-
-HDISCHARGE_H1 — `H1/Conformance.lean`: B-M2's Lean face (wave 3) — the ENGINE-LIFT
-CONFORMANCE chain.  Unit note: `lean/notes/openmath/H1_BM2_2026-08-06.md` (Theorem
-LIFT-CONF); governing spec: blueprint §2.2 (s7) [REV 2, finding 15] + the VERIFIED
-KP-STEP note `H1_BM1_2026-08-06.md` §S7/§S8 (2-clean bar met; corpus pins verified
-at pass 4).
+HDISCHARGE_H1 — `H1/Conformance.lean`: B-M2's Lean face (wave 3) — the engine-lift
+D8-DATA/(K0)-CONFORMANCE chain.  Unit note: `lean/notes/openmath/H1_BM2_2026-08-06.md`
+(Theorem LIFT-CONF, REVISION 2 — the pass-1 fold re-headline: what is compiled is
+(K0)-CONFORMANCE at the recorded carriers, NOT KP-STEP class membership; KP-STEP's
+class is (K0)+(K1)+(K2), and (K1)+(K2) for the fired lifts ride the OPEN graded
+(SL-dev) reading GRADED-READ); governing spec: blueprint §2.2 (s7) [REV 2, finding
+15] + the VERIFIED KP-STEP note `H1_BM1_2026-08-06.md` §S7/§S8 (2-clean bar met;
+corpus pins verified at pass 4).
 
 WHAT IS COMPILED HERE (all sorry-free; no new axioms; no statement of any landed
 unit touched):
-* `K0Conformant` — the (K0) clause at a read: monic of the conformant degree
-  e'·g·deg σ.Φ (KP-STEP §S1.3's degree-conformance hypothesis, the class every
-  consumer consumes per the §S8 alignment).
+* `K0Conformant` — the (K0) CLAUSE at a read: monic of the conformant degree
+  e'·g·deg σ.Φ (KP-STEP §S1.3's degree-conformance hypothesis — ONE of the three
+  clauses (K0)+(K1)+(K2) of the class KP-STEP quantifies over; (K1)+(K2) are not
+  expressed in this file).
 * `isReadLift_K0` — THE core: every D8-shaped read lift at a monic parent is
   (K0)-conformant.  This is Lemma PAR-MON's induction STEP (KP-STEP §S3.2,
   verified) compiled: the read-pair transport of the on-file `L3_liftMonic`
@@ -18,18 +22,26 @@ unit touched):
   (supplied by `Node.he` at every node).
 * `isNodeLift_K0` / `landingKey_K0` / `landingKey_recentering_K0` /
   `historyCoherent_key_K0` / `historyCoherent_recentering_K0` /
-  `readsOf_landing_K0` — the conformance read off at EVERY carrier on which the
-  wired engine fires a key: coherent interior increments (`HistoryCoherent`'s
-  non-recentering leg asserts `IsNodeLift νᵢ σᵢ₊₁.Φ`), interior recenterings
-  (`IsRecenteringCore.base`: Φ' = Φ − lift, the e·g = 1 degree-preserving face),
-  and the designated landing key of EVERY read of a `ReadsOf` run (SideReads
-  clause (iv) — final read included, where e ≥ 2 strides are recordable).
+  `readsOf_landing_K0` — the (K0)-conformance read off at each of the three
+  RECORDED carriers on which the wiring asserts a key: coherent interior
+  increments (`HistoryCoherent`'s non-recentering leg asserts
+  `IsNodeLift νᵢ σᵢ₊₁.Φ`), interior recenterings (`IsRecenteringCore.base`:
+  Φ' = Φ − lift, the e·g = 1 degree-preserving face), and the designated landing
+  key of EVERY read of a `ReadsOf` run (SideReads clause (iv) — final read
+  included, where e ≥ 2 strides are recordable).  That these three carriers
+  exhaust the engine's key-firing sites is NOT proved — the unit note's open
+  obligation SITE-EXH; these lemmas prove per-carrier implications, not the
+  closed-world premise.
 
 WHAT IS NOT CLAIMED (the unit note's §S4 residue — displayed, never consumed):
-the graded (SL-dev) READING (stage-law digit data → the initial-form identity in
-gr(w'); rides the GenuineStageModel seam, A-M2's non-vacuity chain); the
-ABSTRACT-ENGINE identification (O-2a's pinned Lift_i vs this corpus = the S-1
-transcription audit, [T]); OL-1(b)'s verbatim GMN face (TR-3-ORD-X, open).  The
+KP-STEP class membership of any fired lift (the (K1)+(K2) clauses ride the open
+graded (SL-dev) READING, GRADED-READ: stage-law digit data → the initial-form
+identity in gr(w'); rides the GenuineStageModel seam, A-M2's non-vacuity chain);
+at recenterings additionally the (SL-top)/(SL-dev) legs (REC-SL, open — the
+`*_recentering_K0` lemmas prove monic-degree-m ONLY); firing-site completeness
+(SITE-EXH, open); the ABSTRACT-ENGINE identification (O-2a's pinned Lift_i vs
+this corpus = the S-1 transcription audit, [T]); OL-1(b)'s verbatim GMN face
+(TR-3-ORD-X, open).  The
 (SL-top) stride shape and the marched (SL-dev) DATA (window/weight/twist-residual
 laws) are DEFINITIONAL fields of `IsReadLift` (`HC2/Defs.lean:181–191`,
 pass-4-verified verbatim) — no theorem restates them here; `isNodeLift_iff`
@@ -59,9 +71,11 @@ universe u
 variable {p : ℕ} [Fact p.Prime] {F : Type u} [Field F] [Finite F]
 
 /-- **(K0) at a read** (KP-STEP §S1.3, the REV-2 degree-conformance hypothesis):
-`Φhat` is monic of the conformant degree `e'·g·deg σ.Φ` — the class the VERIFIED
-Theorem KP-STEP quantifies over, and OL-1(a)'s normalization
-`m_{i+1} = e_i·f_i·m_i` (with `f_i = g` via `Node.hψdeg`) at the site. -/
+`Φhat` is monic of the conformant degree `e'·g·deg σ.Φ` — ONE clause of the class
+the VERIFIED Theorem KP-STEP quantifies over (that class is (K0)+(K1)+(K2);
+(K1)+(K2) ride the open GRADED-READ seam and are not expressed here), and
+OL-1(a)'s normalization `m_{i+1} = e_i·f_i·m_i` (with `f_i = g` via `Node.hψdeg`)
+at the site. -/
 def K0Conformant (σ : Stage p F) (g e' : ℕ) (Φhat : Polynomial ℤ_[p]) : Prop :=
   Φhat.Monic ∧ Φhat.natDegree = e' * g * σ.Φ.natDegree
 
@@ -184,12 +198,14 @@ theorem historyCoherent_recentering_K0 (H : History p F) (hH : HistoryCoherent H
   rw [hΦ']
   exact sub_inC_K0 _ _ hin
 
-/-- **Every lift a classifier run fires is conformant** (`ReadsOf`, the f-explicit
-run predicate): at EVERY read `i` of a run of `f` — the FINAL read included — the
-designated landing key `Φnext` (SideReads clause (iv); pinned to the child frame
-key at interior reads) is (K0)-conformant: at the read's own `(e, g)` when the
-read is not a recentering, at `e = g = 1` when it is.  This is the "every lift
-the engine fires" quantifier of Theorem LIFT-CONF at the wired instance. -/
+/-- **Every read of a `ReadsOf` run lands a (K0)-conformant key** (`ReadsOf`, the
+f-explicit run predicate): at EVERY read `i` of a run of `f` — the FINAL read
+included — the designated landing key `Φnext` (SideReads clause (iv); pinned to
+the child frame key at interior reads) is (K0)-conformant: at the read's own
+`(e, g)` when the read is not a recentering, at `e = g = 1` when it is.  The
+"every" quantifier is INTERNAL to `ReadsOf`: this is the widest compiled carrier
+corollary of Theorem LIFT-CONF, and that every engine firing factors through a
+recorded carrier is the unit note's open obligation SITE-EXH, not this lemma. -/
 theorem readsOf_landing_K0 (n : ℕ) (f : Polynomial ℤ_[p]) (H : History p F)
     (hRO : ReadsOf p F n f H) (i : ℕ) (hi : i < H.nodes.length) :
     ∃ Φnext : Polynomial ℤ_[p],

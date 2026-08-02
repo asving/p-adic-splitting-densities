@@ -2336,3 +2336,22 @@ EngineConform, Reconcile. Blueprint rows annotated (BP_III §2 III-S4;
 HDISCHARGE_H6 §4 A4b). NOTE: concurrent WIP sweeps (bef0d98/83b54c4/abc0dd5)
 committed intermediate states of these two files mid-repair; the tip state is
 the confirmed one.
+
+## B-M2 PASS 1 CRITICAL — FOLDED AS REVISION 2 (honest re-pricing, 2026-08-02)
+Pass 1 (Codex, BM2_pass1_2026-08-06.md): CRITICAL against the NOTE's claim
+structure (3 critical, 3 gaps, 2 wording); the compiled face was NOT
+challenged and stands untouched (Conformance.lean: statements unchanged,
+docstrings/header re-worded to K0-conformance language only; per-file gate
+re-run GREEN, zero sorry). The fold (H1_BM2 REVISION 2): re-headlined as a
+D8-data/(K0)-CONFORMANCE theorem at the recorded carriers — KP-STEP class
+membership ((K0)+(K1)+(K2)) and hence KP-STEP's application to fired lifts
+now displayed CONDITIONAL. New NAMED opens with consumer lists: GRADED-READ
+(the graded (SL-dev) reading = (K1)+(K2), the pre-existing (i-b) seam now
+named), REC-SL (recentering (SL-top)/(SL-dev) legs; *_recentering_K0 proves
+monic-degree-m only), SITE-EXH (firing-site completeness; prose definition
+replaced by the two honest routes; hmonic supply census added — 13
+constructor sites, closure owned by SITE-EXH). liftKey/liftKeyExt scoped to
+shape+monicity, (SL-dev) data excluded from the claim. Declaration census
+fixed by enumeration: 9 decls = 1 def + core isReadLift_K0 + 2 bridges + 5
+carrier-site corollaries. Clean counter 0/2; next: fresh hostile pass on the
+REVISION 2 text.
