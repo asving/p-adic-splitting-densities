@@ -5105,3 +5105,30 @@ in flight this window). F6 RIDER DISPOSITION: the StageCore docstring sync
 stays with queue #2 (its assigned first home, same neighborhood, in flight
 at this landing — the "forge stalls" fallback condition is not this unit's
 to adjudicate; collision-safe reading of the sweep-scope rule).
+
+## H7 FIRST PROBE: (I-τ)/K-LOC DECIDED AT THE INSTANCE BIN (2026-08-08, synthesis-6 queue #7)
+
+Countermodel-first [M]-row entry executed; record
+`lean/notes/openmath/H7PROBE_2026-08-08.md`; artifact
+`Scaffold/HDischarge/H7/H7Probe.lean` (12 thms, lake env lean green, ALL
+Lean-core). VERDICTS: (I-τ) and full K-LOC **VACUOUS-BY-TYPE at all four
+bin instances** (toyStage3/bStageP = `Stage`, one read, no roster; H₃rc =
+`History`, one chain; td2V4 = digit-window carrier, no factorization) — no
+countermodel obtainable, REV-2 statements STAND unrepaired (P-1: pass-6 F4
+"no decision point of its own" confirmed at compile level). WALK FIND
+(P-2): the corpus's ONLY compiled m ≥ 2 sibling object = toyTreeA's tA1
+site — card-2 roster + sibling pair now CERTIFIED Lean-core
+(toy_roster_card, toy_sibling_pair/parent) — but it is TRIPLY DEGENERATE
+as an (H7) decision point: diagonal branchCellOf (G1_toyGate:723, sibling
+reads definitionally equal), sides ≡ 1 (:1496, split legs omega-vacuous),
+and the toyModel/toyCA/toyLedgerA chain carries sorryAx (mem_realizable
+×2; measured, kept OUT of the probe's compiled perimeter). P-3: the ONE
+compiled-decidable fragment — KL-1a's order-1 count face (H7-C2) — HOLDS
+at every bin field (ℤ/3, F4, ℤ/2; kl1a_decided_*). P-4 ROUTE: no cheap
+Lean extension exists; gate_order0_semantic stays the named cheapest,
+blocked on OL-2 — SHARPENED: an OL-2 inhabitant must break BOTH P-2
+rfl-degeneracies (sides ≥ 2 at a branching site AND non-diagonal
+branchCellOf) on a sorry-free TreeModel; near-term decision point = the
+N-H7-1 numerics harness (h7_kloc_probe.py, the F4 charter artifact).
+Fences: new decls only; no Tier-S Prop shells; SibJcRows/items 22–29
+untouched.
