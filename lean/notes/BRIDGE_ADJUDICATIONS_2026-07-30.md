@@ -2424,3 +2424,28 @@ BridgeD16/TreePin.vt_surj completeness residue stands (Phase-B); (vi) the
 Files this unit: M04 §5.5 (ed-1), the warrant note, this entry. ROOT and
 PROJECT_STATE NOT touched (orchestrator executes the handed-back spec).
 Scratch: /tmp/openmath/K1CANON/.
+
+## B-M2 PASS 2 CRITICAL — FOLDED AS REVISION 3 (recentering scope sealed, 2026-08-02)
+
+Pass 2 (Codex, BM2_pass2_2026-08-06.md): 6/8 pass-1 findings CONFIRMED cured,
+the 9-declaration authority list confirmed exact, the compiled Lean face
+audited accurate — CRITICAL on one surviving seam: recentering scope leaking
+back into universal claims. The fold (H1_BM2 REVISION 3, [REV 3] tags in
+place; ZERO Lean-file edits): (1) the S0 headline row, the §S2 heading/
+theorem header/conclusion, the S1 supplies-split, and S4 (i-a)'s
+naked-data-impossibility claim all re-scoped to the NON-RECENTERING recorded
+carriers (at recenterings the compiled decls give shape+monicity only);
+(2) OL-1(a)'s PROVED verdict re-scoped to non-recentering sites — at a
+recentering the compiled conclusion is `K0Conformant σ 1 1 Φ'` (the
+SYNTHETIC pair (1,1)) and nothing identifies the node's actual (e_i, g_i)
+with 1 (`Node.hψdeg` gives f_i = g only); (3) REC-SL EXTENDED with the new
+displayed sub-obligation **REC-PARAM** (the (e_i, g_i) ↔ (1,1)
+identification at recentering reads, stated in full at §S2 case (b));
+OL-1(a)-at-recentering-sites added to REC-SL's consumer list; (4) RG-2's
+"e ≥ 2 lifts are fired — and covered — at final reads" reworded to
+CONDITIONAL coverage (readsOf_landing_K0 covers an ASSUMED run's reads; no
+compiled e ≥ 2 ReadsOf existence lemma found — the anchor
+gate_readsOf_inert2 is inert, e = 1); (5) whole-note sweep killed two more
+leaks (header re-headline; S4 (vi) DevBound "degree identification at wired
+sites"). The note emerges strictly more conditional; no compiled claim
+weakened. Clean counter stays 0/2; next: fresh hostile pass on REVISION 3.
