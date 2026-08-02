@@ -2199,3 +2199,8 @@ sentences. r19 (two-sentence fix) dispatched; VC21 after.
 §1 bracket now ELEVEN with the (H8') pointer; §3.2 WHAT-RETIRED rewritten to
 one voice (priced at (H8'); owner arcs ROUTES only). Audit: 24 sites, 2
 edited. §24 appended; header/§6/footer synced; VC21 owed on REVISION 18.
+
+## r19 EXECUTED (1096104): REVISION 18 — VC21 LAUNCHED (2026-08-06)
+Both VC20 blockers cured (the §1 bracket at ELEVEN; the §3.2 record
+one-voice: interfaces PRICED AT (H8'), owner arcs = routes only). 24-site
+audit: 2 edited, 22 conformant. VC21 = the eleven-row anchor attempt #2.
