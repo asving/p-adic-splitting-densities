@@ -2175,3 +2175,8 @@ owners: graft->D-14/CU-3/REL.2, measured-mass->(H7)/TREE-EXP+CL-8,
 tau/delta->CL-8+W-leg); §3.1 = TEN rows grep-verified; 21 operative
 sites synced; §22 = REVISION 16. GRB at zero-critical, wording complete.
 VC19 = the ten-row anchor pass.
+
+## ROOT r18/REVISION 17: K-CUT RESIDUE RE-PRICING — (H8') ROW, ELEVEN ROWS (2026-08-02)
+VC19 on REVISION 16: COMPOSITION-GAPS (2 blockers, one defect — the r17 retirement OVERSHOT: the three residues' cited owners do not house them; (R)/(UB) silently consumed unpriced content at Step 18 K1; the proved package + §3.2 retirement record CONFIRMED standing). REVISION 17 executes the honest re-pricing: NEW slimmed §3.1 row (H8') = GRAFT (graft completeness/bijectivity; charge-(vi-a) FAIL stands) + MASS-ID (shMass/blkMass measured-mass identification) + POOL-DICT (node-level tau/delta pool dictionary + blockTotal_tie), stated from the package's own displays; r17 owner labels demoted to retirement ROUTES.
+Roster: ELEVEN rows = (H1)-(H9) minus retired (H8) plus (H8'); (R)/(UB) gain exactly (H8'); net progress honest — (H8) assumed the whole decomposition, (H8') only the three interfaces (core machine-proved). 22 operative sites synced (enumeration audit re-run — the twice-learned lesson).
+Text change: acceptance still earned on REVISION 12 (anchored at REVISION 15); VC20 OWED as the confirming anchor on the REVISION-17 wording. Record: ROOT_ASSEMBLY §23.
