@@ -4827,3 +4827,22 @@ HUNI-V2/VC27), every delta explained, fixed point re-grepped after the
 last edit. Roster NINE rows, unchanged. PROJECT_STATE synced (r25
 checkpoint). **VC27 is OWED on the REVISION-24 wording** (charge ROOT
 §30); until it lands, the acceptance citation points at REVISION 23.
+
+## 2026-08-08: VC27 + VC27b CONFIRMED — the ROOT acceptance RE-ANCHORS at REVISION 24
+
+VC27 (full audit of REVISION 24, the r25 text): 0 critical, 2 gaps — ALL substantive
+checks passed (3/3 re-anchor sites; no self-confirmation; TR3-S2 scope discipline;
+REC-SL's exact two-row display; the readsOf fence + no-consumer disposition; huni v3
+refutation + v4 repair both recorded; forge = junc_bundle alone with reasons; the §29
+ASVIN FLAG standing; the full 17-pattern census arithmetically exact incl. VC26's +58;
+NINE rows; clauses 8/8; falsifier 0). Both gaps were AUDIT-INPUT appendix defects
+(N-T4 §N slice not pasted; GRB bracket slice empty from a wrong grep pattern) — the
+recurring failure mode is now a saved orchestrator checklist (memory:
+vc-audit-appendix-checklist). VC27b (narrow pass, verbatim slices): CONFIRMED 0C/0G.
+Reports: VC27_report.md (5e8dc97), VC27b_report.md (this commit).
+CONSEQUENCE: the acceptance anchor moves REVISION 23/VC26+VC26b → REVISION 24/VC27+VC27b.
+The ROOT anchor-citation text update rides the next revision fold (r26). VC28 next in
+cadence. Confirmed-in-anchor as of this entry: the (H4a) retirement fully propagated;
+GR route (a) (B2D 0 sorries); TR-3'-GEN order-2 two-stratum theorem; REC-SL narrowed to
+{hsc, hfence} closed at compiled sites; readsOf at the ReadsOfFrom face; huni-v2 v4
+carrier; forge = junc_bundle only.
