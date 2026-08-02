@@ -4700,3 +4700,19 @@ lean/notes/openmath/VC26_report.md (565aa28), VC26b_report.md (this commit).
 CONSEQUENCE: the acceptance anchor moves REVISION 20/VC22 → REVISION 23/VC26+VC26b.
 The ROOT anchor-citation text update rides the next revision fold (r25), per the VC22
 precedent. VC27 next in cadence.
+
+## 2026-08-08 — B-M2 REVISION 16: the F3 restatement APPLIED (adjudication)
+
+ADJUDICATION: the F3 consumer walk (`READSOF_F3_WALK_2026-08-08.md`, commit 878ac17)
+returned verdict (a)/NO-CONSUMER on the narrowed `readsOf_landing_K0`
+recentering-branch debt; the orchestrator adjudicated ACCEPT under Asvin's standing
+statement-change authority and applied the walk's draft VERBATIM to
+`H1_BM2_2026-08-06.md` as REVISION 16 — ADDITIVE only (REV-15 mechanics: the §S4
+REV-16 bracket after the REV-15 bracket; the "Disposition 4 (re-priced by the F3
+walk)" paragraph after the REV-15 disposition 4; a REVISION 16 fold record).
+Acceptance history untouched; clean counter NOT reset (stays 2/2 ACCEPTED). The debt
+of record is RESTATED at the `ReadsOfFrom` face (witnessed by `gate_ftie_chain`);
+the ReadsOf-SPECIES form leaves the opens list as an obligation and re-enters as a
+FENCE DISPLAY of the dead From→ReadsOf converse. No Lean file touched; census row
+C237 (`RCWitness.lean` debt sentence) re-verified true as written. The F5 run-forge
+is NOT chartered by this consumer.
