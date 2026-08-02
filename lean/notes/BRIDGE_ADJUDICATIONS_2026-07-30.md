@@ -2736,3 +2736,27 @@ lists extended with the abstract-engine readings). The full census table
 is IN the note so pass 6 checks the census instead of re-hunting (§S6
 attack item 7: absent-or-misclassified = automatic finding). Statuses
 never strengthened; no compiled claim touched. Clean counter stays 0/2.
+
+## GRB REVISION 13 — the pass-16 fold (2026-08-02)
+Hostile pass 16 (Codex, GRB_pass16_2026-08-06.md, on REVISION 12):
+GAPS-ONLY — both REVISION-12 folds PASS (the carried/re-earned obligation
+split verified member-by-member; the S3.4 order-2/all-e_j=1 narrowing
+verified arithmetically), four gaps folded at [REV 13] flags. GAP 3: stale
+stratum-wide e₀=1 twist-triviality/collapse claims evidence-scoped to
+what is proved — order 2, equivalently all relevant preceding e_j = 1 —
+via a whole-leaf CENSUS (grep-defined keywords; table in the REVISION 13
+record: 12 sites fixed, 3 bracket-annotated, rest classified standing).
+GAP 4: the N-1 "EXECUTED and GREEN for every (GR-B) clause" verdict
+narrowed to the exact family-ledger scope, with TR-4's Cor-4.5/4.11
+content stated PAPER-SECURED only (no family) in the same sentence.
+GAP 5: the N-1 deferral "D-ITER (orders ≥ 3) out of the order-2
+perimeter" STRUCK — it contradicted R2.2 (D-ITER fires at E_i > 1 incl.
+order 2 with e₀ > 1); T10 covers the last-read D-REAL/s-walk layer only;
+D-ITER OPEN incl. order 2. GAP 6: the standing-residue displays split
+into three taxa — OPEN LEMMAS (TR-3′-GEN both strata; TR-3-ORD-X;
+D-ITER; TR-4 empirical debt) / PROVED-BUT-SCOPED (TR-3-ORD FGMN-internal;
+D-REAL iff E_i = 1) / EXTERNAL CONSUMED HYPOTHESES ((KP_i)/(H-CHAIN)/[T])
+— applied at R11.5 (controlling), S0, S8.2; historical lines
+bracket-annotated only. Nothing strengthened; membership unchanged.
+Clean counter stays 0/2; pass 17 runs on the REVISION 13 text. Record:
+GRB leaf §REVISION 13.
