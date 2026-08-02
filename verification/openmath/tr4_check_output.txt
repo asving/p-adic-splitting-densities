@@ -1,0 +1,16 @@
+[   0.6s] ring (Zp, p=2) done: cumulative violations = 0
+[   1.0s] ring (Zp, p=3) done: cumulative violations = 0
+[   6.2s] ring (Fpt, p=2) done: cumulative violations = 0
+[   8.1s] ring (Fpt, p=3) done: cumulative violations = 0
+============================================================================
+TR-4 PREREGISTERED vs OBSERVED (violation counts; samples in parens)
+TR4a  fixed-gamma tie + nonvanishing at own weight   pred 0  obs     0 (   560)  GREEN
+TR4b  coset vanishing on P_gamma^+ (Cor 4.4(1))      pred 0  obs     0 (   940)  GREEN
+TR4c  factorization through H_mu (Cor 4.5 =>)        pred 0  obs     0 (   560)  GREEN
+TR4d  Cor 4.5 equivalence, both branches             pred 0  obs     0 (   800)  GREEN
+TR4e  surjectivity via realize_target (Cor 4.11)     pred 0  obs     0 (   480)  GREEN
+TR4f  exhaustive window bijectivity (Cor 4.11)       pred 0  obs     0 ( 15886)  GREEN
+TR4d branch counts: R-equal 403 (incl. constructed same-class), R-unequal 397
+TR4f windows: 26 towers with |K1| <= 4; N per window: [7, 26, 63]
+TOTAL samples: 19226
+VERDICT: ALL GREEN

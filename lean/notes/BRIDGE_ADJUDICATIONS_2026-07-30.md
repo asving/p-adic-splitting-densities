@@ -4870,3 +4870,30 @@ orchestrator-owned r-fold docs ("restatement owed" flags retire at r26).
 F4 fence honored: no TR3-S2/TWIST-LAW material touched. Queue #11
 (DIterJunctionSupplier formalization) is hereby UNBLOCKED on its #9
 prerequisite; it remains priced with the deep-instance forge (#10).
+
+## 2026-08-08: TR-4 HARNESS EXECUTED — ALL GREEN; the GRB empirical debt discharged (SYNTHESIS_PASS4 item 8 / PASS5 F6, the owed dropped-list unit)
+
+The TR-4 harness family (the leaf's displayed evidence gap: "TR-4's
+Cor-4.5/4.11 factorization/bijectivity content ↔ NO listed family,
+paper-secured only" — GRB REV-12 GAP 1 / REV-13 GAP 4) is now ON RECORD:
+`verification/openmath/tr4_check.py` (+ `tr4_check_output.txt`), the
+TR3-S1/S2 genre — seed 20260817 and all violation-count predictions (0 on
+six families) committed in the header BEFORE running. Statement tested
+(GRB S4, matched-key/convention-internal — ORD-INV not engaged, displayed):
+Cor 4.4(1) coset-vanishing both halves, Cor 4.5 factorization-through-H_µ
+both directions, Cor 4.11 bijectivity (surjectivity via an arbitrary-target
+anchor realizer; injectivity via w₂-only pairwise-difference legs — no
+operator reuse, non-circular). Perimeter: FULL N-1 roster A–J × 4 base
+rings (40 towers), reading C. RESULT: TR4a 0/560, TR4b 0/940, TR4c 0/560,
+TR4d 0/800 (eq-branch 403 incl. 163 genuine random collisions; uneq 397),
+TR4e 0/480, TR4f 0/15,886 (26 exhaustive windows, N ∈ {7,26,63}; sample
+total ties the combinatorial formula exactly) — **19,226 samples, 0
+violations, ALL GREEN**, exit 0. STATUS CHANGE: the GRB residue's TR-4
+EMPIRICAL debt is DISCHARGED (family now listed: TR-4 ↔ TR4a–f); TR-4's
+mathematical status UNCHANGED — paper-secured on printed Cor 4.4(1)/4.5/
+4.11 (a GREEN run is instance evidence, not proof). Brackets applied to
+GRB_ORDER2_2026-08-05.md (post-acceptance annotation, counters NOT reset,
+additive only): R11.5 OPEN-LEMMAS bullet, R13.4 taxonomy bullet, final
+residue-of-record display. Record note:
+`lean/notes/openmath/TR4_HARNESS_2026-08-08.md`. All other GRB residue rows
+untouched (TR-3′-GEN ≥ 3, TR-3-ORD-X, D-ITER/ITER-LAW, externals).
