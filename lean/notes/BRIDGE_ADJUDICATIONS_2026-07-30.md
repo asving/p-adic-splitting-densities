@@ -2296,3 +2296,43 @@ contains every engine-fired lift. Mop-up: H5 truly 17/19 ((PACK-ii) was
 already proved); C4/C5 BLOCKED/DATA honest; EN-U3 RETIRED refuted-by-
 falsifier (adjudication note); H6-A4b blocked on BP_III-owned III-S4
 statement repair (queued). B-M2 hostile pass 1 launched.
+
+## III-S4 REPAIRED: option-(b) semantic row + singleton forcing; H6-A4b LANDED (2026-08-02)
+The refuted `cu2t_readForcing` display (S4Refute countermodel, permanent record,
+untouched) is repaired at the record's bullet-(3) OPTION (b), a sanctioned
+statement repair under Asvin's standing statement-change authority: NEW named
+semantic hypothesis row `TerminalPolySem f H D` (`DictIII/CU2t.lean`) ties
+`D.principalSides H.nodes.length` to the terminal-level polygon of f as the
+CORPUS-STATABLE numerical face of the OL-1/ι tie — (i) nondegeneracy (each
+listed side `1 ≤ e ∧ 1 ≤ ℓ`), (ii) total horizontal length `Σ e·ℓ` = the EXACT
+multiplicity j₀ of some irreducible φ in f̄ (`φ^j₀ ∣ f̄ ∧ φ^(j₀+1) ∤ f̄`, the OM
+length law ℓ(N⁻) = ord_φ̄(f̄); e·ℓ per the A6b abscissa-span convention), (iii)
+saturation `1 ≤ j₀`; the φ-through-ι key identity is the documented OL-1
+residue, deliberately existential (A6b pricing precedent), so the row is a
+named hypothesis row per the [M]-row discipline (no supplier at HEAD).
+NEW theorem `cu2t_readForcing_sem`: display rows + `hf : f.Monic` (priced;
+`j0_le_one`'s engine) + `hsem` ⇒ `∃ S, D.principalSides H.nodes.length = [S] ∧
+S.ℓ = 1` — the H6-A4b consumer-keyed SINGLETON shape, derived from
+total-length-1 via `j0_le_one` + helper `eq_singleton_of_measures_sum_one`.
+GATES (both compiled, Lean-core footprints, per-file `lake env lean` green,
+zero sorry): POSITIVE `S4SemGate.readForcing_sem_gate_pos` (all hypothesis rows
+jointly instantiated at p=2, f=X, `S4Refute.H0`, nonempty-list data `D1`,
+lawful constant-none reader `R1`) and NEGATIVE
+`S4SemGate.d0_fails_terminalPolySem` (`S4Refute.D0`, sides ≡ [], FAILS the
+row — the old countermodel does not arm the repair).
+NEW decls: `TerminalPolySem`, `eq_singleton_of_measures_sum_one`,
+`cu2t_readForcing_sem`, `S4SemGate.{S1, D1, theta_H0_slopes, R1, hcons1, sem1,
+readForcing_sem_gate_pos, d0_fails_terminalPolySem}`.
+CODEX: design round 1 REJECT-WITH-FINDINGS (2 crit: slack dividing exponent →
+exact multiplicity; ℓ → e·ℓ horizontal length — both folded; 3 gaps documented
+as priced residue), round 2 ACCEPT (zero findings); applied-diff pass
+CONFIRMED (statements match the accepted design; S4Refute textually intact; no
+out-of-scope statement touched). Scratch: /tmp/openmath/S4repair/.
+DOWNSTREAM UNLOCKED — H6-A4b LANDED: `terminalDatumD_slope_spec`
+(`H6/Emission.lean`, verbatim as displayed; declared after unit A6b, whose
+`ReadThroughIota` its `hread` binder consumes; consumption fence updated to
+through-this-lemma-only). Per-file gates green: CU2t, Emission, TerminalRead,
+EngineConform, Reconcile. Blueprint rows annotated (BP_III §2 III-S4;
+HDISCHARGE_H6 §4 A4b). NOTE: concurrent WIP sweeps (bef0d98/83b54c4/abc0dd5)
+committed intermediate states of these two files mid-repair; the tip state is
+the confirmed one.

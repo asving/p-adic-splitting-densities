@@ -833,7 +833,7 @@ first, per the E-phase discipline.
 | III-S1c | `j0_le_one` | derive from the explicit `¬φ² ∣ f̄` premise; no bare characteristic-zero discriminant claim | III-S1b | EASY | CUC §9.2 |
 | III-S2 | `terminalDatum` def | case split on DEC branch | III-S1 | EASY | CUC §9.2 |
 | III-S3 | `RCConsistent` def ((RC-read)/(RC-verd)) | transcribe Definition RC | III-S2, III-C8 | EASY | CUC §9.2a |
-| III-S4 | `cu2t_readForcing` ((i)) | total length 1 from j₀ ≤ 1 + saturation; unique side | III-S1, III-A6 | MED | CUC §9.3 (i) |
+| III-S4 | `cu2t_readForcing` ((i)) — display REFUTED (`S4Refute`, CU2t.lean); REPAIRED 2026-08-02 at record option (b): `TerminalPolySem` row + `cu2t_readForcing_sem` (singleton conclusion), gates `S4SemGate` | total length 1 from j₀ ≤ 1 + saturation; unique side | III-S1, III-A6 | MED | CUC §9.3 (i) |
 | III-S5a | probe the exact installed Mathlib Hensel declaration; record its fully qualified name and type, without assuming `Polynomial.hensels_lemma` exists | `#check`/`#print` in a scratch scaffold file | Mathlib | MECH | CUC §9.3 (ii) |
 | III-S5b | τ-irr verdict from `GMNCor120_38` | instantiate the displayed local literature row | III-S4, III-H9, III-A7 | MED | CUC §9.3 (ii) |
 | III-S5c | τ-hen verdict from `Lit3Hensel` plus D3 | instantiate ring, ideal, polynomial, factorization and coprimality binders | III-S1c, III-S4, III-H9, III-S5a | MED | CUC §9.3 (ii) |

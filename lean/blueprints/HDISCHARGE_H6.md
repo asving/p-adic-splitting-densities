@@ -394,6 +394,8 @@ forcing, the side list at level k′+1 is a singleton, so the `head?`-read slope
 IS the unique side's datum and `RCConsistentD`'s ∀-form clause pins the SAME
 side. Lands as a lemma once III-S4 lands; until then the coherence is a
 DISPLAYED obligation, not assumed anywhere.
+STATUS: LANDED 2026-08-02 (`Emission.lean`, verbatim as displayed) — consuming
+the REPAIRED III-S4 singleton supply (`cu2t_readForcing_sem`, CU2t.lean).
 
 **A5 (EASY).** Definition RC, repaired (cures D-5's downstream; CUC §9.2a at
 the corrected keying):
