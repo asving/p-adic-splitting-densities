@@ -49,6 +49,10 @@ RETIREMENT on completion: (PACK-iv) + clause 4 retire AT THIS INSTANCE
 profile into the canonical row-form clause BY the §2.3(iv) definition.
 Numeric precursor on record: RESUM-n3 65/65 (above). Blocking dependency:
 the n = 3 tables themselves (owner: OL-O12-2/O-14d data campaign, not H5).
+
+MOP-UP RE-CHECK (2026-08-02, HEAD `baa5332`): grep audit repeated — still no
+`BnMember 3` instance or N3 table anywhere under `LeanUrat/` (`MovesS/`
+carries the N2* family only). BLOCKED/DATA stands; spec unchanged.
 -/
 import Mathlib
 import LeanUrat.Scaffold.HDischarge.H5.Defs
@@ -190,6 +194,13 @@ the gate clears"), no prover ran; unit C4 declares NOTHING at HEAD.
 EXECUTABLE FORM once T2 lands: `packOfMember_corr C T2` (rfl-fields) +
 `decide`/`rfl` on T2's finite roster — the pattern unit C5's duty (b)
 cites at n = 3, WITH the F1 carrier ruling above binding the n = 2 choice.
+
+**MOP-UP RE-CHECK (2026-08-02, HEAD `baa5332`):** gate re-adjudicated — STILL
+NOT CLEARED — BLOCKED/DATA. Grep audit repeated: no `T2 : BnMember 2` (nor any
+concrete `BnMember` instance at any n) exists under `LeanUrat/`; the only
+n = 2 chain-side instances remain the fenced device `n2Chain` and the
+countermodel `UCarriers 2` witnesses. Owner unchanged (OL-O12-2/O-14d data
+campaign). Unit C4 continues to declare nothing.
 -/
 
 namespace LeanUrat.Scaffold.HDischarge.H5
