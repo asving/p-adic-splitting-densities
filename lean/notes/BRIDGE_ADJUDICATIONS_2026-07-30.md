@@ -2264,3 +2264,8 @@ is now a VERIFIED THEOREM at the consumed class. Remaining in (H1)(b)/
 (d): B-M2 engine-lift conformance, the GMN-face label tie (TR-3-ORD-X,
 shared with GRB), and the GRB leaf's own bar.
 Report: lean/notes/openmath/BM1_pass4_fable_2026-08-06.md.
+
+## GRB PASS 7: CLEAN — counter 1/2 (2026-08-06)
+The evidentiary gap closed (blueprint section pasted); fresh sweep clean.
+Pass 8 = FABLE fresh-context, the deciding pass. B-M2 + mop-up batch
+running in parallel.
