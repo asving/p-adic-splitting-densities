@@ -3536,3 +3536,53 @@ adjudicated (M2's REV-3/4 display-only drift covered by the seam note's
 dated-read rule); the compile gate run. Second consecutive clean (Codex
 pass 6 + Fable pass 7). M5 waits ONLY on the N-K3 sealed run (in flight).
 F-(i) residue: M2 pass 5 (final clean, on REVISION 4) + N-K3.
+
+## 2026-08-08: N-K3 RUN — ALL GREEN (376/376, 0 violations) — H4-M5's last gate item DISCHARGED; F-(i)'s numerics leg done
+
+The H4 §N falsifier gate N-K3 executed (`verification/openmath/nk3_check.py`
++ `nk3_check_output.txt` + `nk3_check_results.json`; predictions
+preregistered in the script header before the run; M5 §6's SEALED P1–P4
+transcribed verbatim and tested as-sealed; exact arithmetic; PARI/GP 2.17.4
+oracle; 24 s). CONCURRENCY: the M5 note was under a concurrent pass cycle —
+the results section (§8) was appended at the END of the file only, nothing
+above it touched; compile gate re-run GREEN after the append. Outcomes:
+(1) the ENUMERATION: exhaustive n = 3 boxes at p = 3 (mod 3⁴, 531,441) and
+p = 2 (mod 2⁵, 32,768), stage-1 pattern counts EXACT vs preregistration;
+δ > 1 pool roster realized and counted exactly (p = 3: s1-f2 177,147,
+s1-f3 157,464, deep-g2 13,608, deep-g3 648; p = 2: 8,192/8,192/1,472/256);
+PARI zero type-mismatches on 54,766 decided boxes (completeness asserted —
+one harness bug found and fixed mid-build: gp aborts a file read on stack
+auto-grow; pre-allocation + completeness check added). (2) P1/P2 GREEN:
+the intrinsic law a_δ = δ·a_sym EXACT at every probed pool position
+(7 census instances × δ-legs × heights 0–3; stable pools with span SET
+equality; split pools per-branch = full F_{q₀}, a_δ = δ); δ | a_δ
+everywhere. (3) P4 GREEN at every letter-persistent pool (a_δ = δ·a₁
+against the measured δ = 1 censuses). (4) P3 facts: M2's gcd seed table
+verified EXHAUSTIVELY over the realized residual families — non-coprime
+rows (2,2),(2,4),(3,3) all split with the exact L–N degree multisets, zero
+anomalies. (5) REFUTER ADJUDICATION, both recorded readings displayed (the
+blueprint fold finding 1's precision point): under R-BIRTH (pool δ = the
+β-leg's accumulated D) the Route-A refuter is STRUCTURALLY ABSENT at n = 3
+(μ·f ≤ 3; verified 0 realized child species with gcd(m_rel, δ) > 1; first
+possible at n ≥ 4) — no refuter found; under R-FREE (the M2-table free
+re-base) non-coprime realized pairs exist and split — refutation PRESSURE
+on Route A, realization/carrier-conditional (H4-F2), M4 branch (i) NOT
+fired by this run. (6) The F₉-shape contrast MEASURED (T3's re-based run
+executed at last): per-branch a = 2 = δ·a_sym(branch) vs naive δ·a₁ = 4 —
+the M5 §5.2 witness numbers reproduced. M4 branch (iii) does NOT fire;
+Route B's recommendation stands untouched; a clean pass is n = 3 empirical
+support only (the Theorem's warrant remains M5 §§2–4). With M5's textual
+bar met (passes 6+7 CLEAN, model-diverse, prior entry), the §M row
+"hostile pass ×2; N-K3 sealed predictions" is now FULLY discharged —
+the (H4a) retirement chain F-(i)'s numerics leg is done.
+
+## 2026-08-08: H4-M2 DONE — pass 5 CLEAN on REVISION 4 (the owed final clean)
+
+The five-pass arc closed: the same-prefix-keys circularity (pass 1) →
+key-free ledger (rejected: under-determined) → the FACTOR-CORRESPONDENCE
+match with DICT-0's four displayed-open clauses at consumer strength →
+the audit-tally and base-case refinements — pass 5 confirmed the base-case
+arithmetic (LN 3.46 + [IN-F1] + (c)-base closing the contradiction), the
+no-(b)-consumption claim, and the indexing coherence. Report:
+H4M2_pass5_2026-08-08.md. **F-(i) residue: N-K3 ONLY** (M1 accepted, M2
+done, M4 adjudicated, M5 textual bar met).
