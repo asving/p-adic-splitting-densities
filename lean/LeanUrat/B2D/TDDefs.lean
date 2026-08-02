@@ -10,6 +10,23 @@ import LeanUrat.MovesC.Defs
 /-!
 # B2D/TDDefs — the TransDeep-supplier definitional layer  [B2DEF_LEAN unit E2; wave E]
 
+**V1 SEMANTICS SUPERSEDED (2026-08-02, statement round 2).** The semantic
+layer of this file — `LedgerSemantics`, `LedgerLawful`, `LedgerStrata` — was
+REFUTED as the reading of the accepted §B2-DEF mathematics at the TD-0/TD-3
+hard-hole run (commit 5371139): `Nat.card` over ALL of `Coord → ℕ` is
+empty-or-infinite under box-supported membership, forcing every fiber count
+to 0 against the positive `slot_count_val` product (`TD3_countermodel.lean`,
+the compiled refutation; design flag 1 below turned out CONTRADICTORY with
+lawfulness, exactly as the countermodel isolates). These decls STAY, byte
+unchanged, as the refutation record's carrier — but NO unit may consume them.
+The live semantic layer is `TDDefsV2.lean` (`LedgerSemanticsV2`,
+`LedgerLawfulV2`, `LedgerStrataV2`: finite-box counts over `supportUnion`
+with `Fin q₀` values, MOVES D.11's `#{f mod p^N}` reading — the N-TD1-matched
+spec), with the mechanism-inapplicability control in `TD3v2_control.lean`.
+The datum `LedgerStratumData`, `ledgerJoint` + its proved support-constraint
+lemmas, `blockCount`, `LedgerScope`, `LedgerClean` are NOT superseded — v2
+consumes them unchanged.
+
 Blueprint: `lean/blueprints/B2DEF_LEAN_2026-08-08.md` §3 + §5 (unit E2).
 moves_ref: §B2-DEF D.3(e)(ii), D.8, D.11. deps: none (wave E).
 difficulty: easy-medium (definitions; two proved support lemmas).

@@ -29,6 +29,19 @@ THE TRACE: at each instance below we compute, in exact integer arithmetic,
 VERDICT expected if the E2 transcription seam is real: [LHS-M] == [RHS] > 0 at
 every instance (the MATH holds) but [LHS-L] = 0 != [RHS] (the LEAN STATEMENT
 fails) => per the discipline: STOP, build the countermodel, do not prove TD-3.
+
+V2 EXTENSION (2026-08-02, the E2 statement round 2 — run against TDDefsV2):
+  [LHS-V2] the v2 Lean statement semantics (TDDefsV2.LedgerSemanticsV2):
+           members counted as digit assignments on the FINITE support union
+           U = parentBlock  |_|  Union_{k in boxSlots} slotBlock(k)
+           with values in Fin q0, extended by zero off U (the blockCount
+           pattern) — i.e. EXACTLY members_on_window(U, q0).  Predicted:
+           [LHS-V2] == [RHS] at every instance (3/3 MATCH), re-opening TD-3
+           as an honest goal.  ([LHS-M] keeps the free-coordinate q0^free
+           factor of the FULL level-N box; v2 counts the constrained
+           perimeter only, which is what DigitsProdLaw's product prices.)
+The v1 verdict lines are kept unchanged as the refutation record; the Lean
+positive control mirroring i1 is TD3v2_control.lean (cmL2 / cm2_digitsProd).
 """
 
 from itertools import product
@@ -135,7 +148,15 @@ def run(inst):
     verdict = (lhs_lean == rhs)
     print(f"   [GATE]  DigitsProdLaw at the LEAN semantics: {lhs_lean} == {rhs} ? "
           f"{'holds' if verdict else 'FAILS'}")
-    return verdict, ok_math
+
+    # [LHS-V2] the v2 statement semantics (TDDefsV2): count over the support
+    # union U exactly, digit values < q0 — members_on_window(U, q0) == base.
+    lhs_v2 = len(base)
+    verdict_v2 = (lhs_v2 == rhs)
+    print(f"   [LHS-V2] v2 finite-box count (supportUnion, digits < q0):        {lhs_v2}")
+    print(f"   [GATE-V2] DigitsProdLaw at the v2 semantics: {lhs_v2} == {rhs} ? "
+          f"{'MATCH' if verdict_v2 else 'FAILS'}")
+    return verdict, ok_math, verdict_v2
 
 # ----- the three shallow instances ------------------------------------------
 # Coordinates are pairs (slot, height).  All instances mirror compilable
@@ -182,17 +203,25 @@ INSTANCES = [
 ]
 
 if __name__ == "__main__":
-    lean_fail = math_fail = 0
+    lean_fail = math_fail = v2_fail = 0
     for inst in INSTANCES:
-        verdict, ok_math = run(inst)
+        verdict, ok_math, verdict_v2 = run(inst)
         lean_fail += (not verdict)
         math_fail += (not ok_math)
+        v2_fail += (not verdict_v2)
     print("\n================ SUMMARY ================")
     print(f"instances: {len(INSTANCES)}")
     print(f"intended MOVES D.11 finite-box product law: "
           f"{'ALL MATCH (math sound)' if math_fail == 0 else f'{math_fail} MISMATCH'}")
-    print(f"landed Lean-statement DigitsProdLaw at ledgerJoint: "
+    print(f"v1 Lean-statement DigitsProdLaw at ledgerJoint (refutation record): "
           f"{f'{lean_fail}/{len(INSTANCES)} FAIL' if lean_fail else 'all hold'}")
+    print(f"v2 Lean-statement (TDDefsV2 LedgerSemanticsV2) DigitsProdLaw: "
+          f"{f'{v2_fail}/{len(INSTANCES)} FAIL' if v2_fail else f'{len(INSTANCES)}/{len(INSTANCES)} MATCH'}")
     if lean_fail and math_fail == 0:
-        print("VERDICT: STATEMENT-LEVEL FAILURE (transcription seam, not math). "
-              "STOP: build the Lean countermodel; do NOT attempt the TD-3 proof.")
+        print("VERDICT v1: STATEMENT-LEVEL FAILURE (transcription seam, not math). "
+              "STOP: build the Lean countermodel; do NOT attempt the TD-3 proof.  [SUPERSEDED: countermodel landed 5371139]")
+    if v2_fail == 0 and math_fail == 0:
+        print("VERDICT v2: statement gate GREEN — the v2 semantics counts what the "
+              "product prices; TD-3 (round 2) is an honest open goal.")
+    else:
+        print("VERDICT v2: GATE FAILURE — do NOT prove TD-3 round 2; re-architect again.")

@@ -24,7 +24,12 @@ content — it enters the demonstration corollary as the displayed `huni`
 hypothesis, never proved here); the junction VALUE is not identified.
 The H2 row's [M]-status update on acceptance is a ROOT-owner move, never this
 campaign's (§8).
--/
+
+STATEMENT ROUND 2 (v2, 2026-08-02): the designated family is now
+`LedgerStrataV2` (TDDefsV2's finite-box lawfulness) — v1's `LedgerStrata`
+carried only refuted-law members (`TD3_countermodel.not_digitsProd_of_lawful`),
+so THIS supplier was unfillable as stated. The v1 family stays on file in
+TDDefs as the refutation record. -/
 
 set_option linter.style.longLine false
 set_option linter.style.header false
@@ -50,10 +55,10 @@ would erase WHICH carrier fills `leakFree`, defeating the [R2-G1] requirement
 that TD-5's `LeakFreeCarrier` is the plugged value). Statement content
 unchanged. -/
 noncomputable def transDeep_of_ledger (J : JointStratum D W P)
-    (hJ : J ∈ LedgerStrata D W P) (hscope : LedgerScope W P)
+    (hJ : J ∈ LedgerStrataV2 D W P) (hscope : LedgerScope W P)
     (hclean : LedgerClean D W P J.N) :
     TransDeep W P J := by
-  sorry -- B2DEF_LEAN E-phase sorry [unit TD-6]
+  sorry -- B2DEF_LEAN E-phase sorry [unit TD-6, statement round 2 (v2)]
 
 /-- **TD-6 demonstration corollary** at the designated family: the ledger strata
 deliver BP_IV C5′'s `FreshRowOn` binder, with `huni` as the DISPLAYED (ADM) +
@@ -62,10 +67,10 @@ theorem ledger_freshRowOn (D : CensusData)
     (hscope : ∀ (W : WindowDatum D) (P : ParentShape D W),
       LedgerScope W P)
     (hclean : ∀ (W : WindowDatum D) (P : ParentShape D W),
-      ∀ J ∈ LedgerStrata D W P, LedgerClean D W P J.N)
+      ∀ J ∈ LedgerStrataV2 D W P, LedgerClean D W P J.N)
     (huni : ∀ (W : WindowDatum D) (P : ParentShape D W),
-      ∀ J ∈ LedgerStrata D W P, SlotUniformLaw W P J) :
-    FreshRowOn D (fun W P => LedgerStrata D W P) := by
-  sorry -- B2DEF_LEAN E-phase sorry [unit TD-6]
+      ∀ J ∈ LedgerStrataV2 D W P, SlotUniformLaw W P J) :
+    FreshRowOn D (fun W P => LedgerStrataV2 D W P) := by
+  sorry -- B2DEF_LEAN E-phase sorry [unit TD-6, statement round 2 (v2)]
 
 end LeanUrat.B2D

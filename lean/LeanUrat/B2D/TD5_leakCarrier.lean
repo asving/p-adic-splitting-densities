@@ -4,7 +4,7 @@ Released under Apache 2.0 license as described in the file LICENSE.
 Authors: Asvin G
 -/
 import Mathlib
-import LeanUrat.B2D.TDDefs
+import LeanUrat.B2D.TDDefsV2
 
 /-!
 # B2D/TD5_leakCarrier — the TYPED (L) carrier  [B2DEF_LEAN unit TD-5; wave 2b]
@@ -20,7 +20,11 @@ today (`fresh_of_transDeep` ignores it); this unit is CHARTER-DEMANDED
 gated H2-U10 classifier face, which CONSUMES, never builds, this carrier when
 un-gated. TD-6 plugs it into `TransDeep.leakFree` (NOT the `True` fallback).
 E-phase file: the typed carrier DEF (no sorry) + the supplier statement (sorry).
--/
+
+STATEMENT ROUND 2 (v2, 2026-08-02): the supplier's lawfulness hypothesis is
+now `LedgerLawfulV2` (TDDefsV2's finite-box semantics). The carrier DEF
+itself is UNCHANGED — it reads only the (ii.3)/(ii.4) geometry clauses,
+which the v1→v2 diff never touched. -/
 
 set_option linter.style.longLine false
 set_option linter.style.header false
@@ -47,8 +51,8 @@ def LeakFreeCarrier (L : LedgerStratumData D W P) : Prop :=
 
 /-- **TD-5 supplier**: the typed (L) carrier holds at every lawful ledger datum
 (the (ii.3)/(ii.4) clauses land at TD-0 via T9/T12). -/
-theorem ledger_leakFree (L : LedgerStratumData D W P) (hL : L.LedgerLawful) :
+theorem ledger_leakFree (L : LedgerStratumData D W P) (hL : L.LedgerLawfulV2) :
     LeakFreeCarrier L := by
-  sorry -- B2DEF_LEAN E-phase sorry [unit TD-5]
+  sorry -- B2DEF_LEAN E-phase sorry [unit TD-5, statement round 2 (v2)]
 
 end LeanUrat.B2D

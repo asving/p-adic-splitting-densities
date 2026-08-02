@@ -3975,3 +3975,69 @@ CONSEQUENCE (display, per the charter — V9 statements and consumers UNTOUCHED)
 
 FENCES RESPECTED: no landed statement changed; no V9 edit; leaf + numerics + ledger
 only; zero new sorries; zero new axioms.
+
+## 2026-08-08 (wallclock 2026-08-02): B2D E2 RE-ARCHITECTURE — TD STATEMENT ROUND 2 (v2, finite-box semantics) LANDED; countermodel check compiled; N-TD1 v2 gate 3/3 MATCH
+
+MANDATE: the TD hard-hole probe (commit 5371139) refuted `DigitsProdLaw` AS
+STATED and pinned the defect to E2's TRANSCRIPTION (not the math): v1
+`LedgerSemantics` counted members over ALL of `Coord → ℕ` (infinite chart,
+unbounded digits), so box-supported membership made every stratum set
+empty-or-infinite ⟹ `Nat.card ≡ 0` against the positive `slot_count_val`
+product, while the intended MOVES D.11 finite-box counts matched the product
+3/3. This unit restates the E2 semantic layer to the finite-box form the
+accepted mathematics computes.
+
+THE v1 → v2 DIFF (statement authority: the standing rule — an honest
+restatement of a REFUTED transcription, refutation compiled on file):
+* NEW `TDDefsV2.lean`: `supportUnion L := L.parentBlock ∪
+  W.boxSlots.biUnion L.slotBlock` (box slots ONLY — the erased monic-top
+  block must contribute no free factor); `LedgerSemanticsV2` re-ties
+  `cylFiber`/`cylFiberDigits` to `blockCount L.q0 L.supportUnion ·` — digit
+  assignments `v : ↥U → Fin q₀`, zero-extended, satisfying `inStratum` (+
+  the prescribed `slotCoord` reads) — i.e. the SAME `Nat.card {v : ↥box →
+  Fin q₀ // …}` pattern the per-slot clauses and the product side already
+  used, and EXACTLY the trace's `members_on_window(U, q0)` count (the
+  3/3-matching spec). `LedgerLawfulV2` = v1's pack with ONLY the `semantics`
+  clause swapped (all eleven other clauses byte-verbatim); `LedgerStrataV2`
+  the designated family. Off-alphabet z now counts 0 by carrier (T11
+  dichotomy built in). Helper lemmas `blockCount_congr`/`blockCount_of_not`
+  PROVED Lean-core.
+* TD-1..TD-6 fan-out RESTATED on the v2 carrier (same names/H2 law
+  conclusions; hypotheses `LedgerLawfulV2`, TD-6 on `LedgerStrataV2`);
+  7 E-phase sorries re-tagged "statement round 2 (v2)". TD-2/TD-4 are
+  thereby DE-VACUIFIED (v1 forced `cylFiberDigits ≡ 0`, making them
+  vacuously satisfiable); TD-6's v1 family was unfillable (every member
+  carried a refuted law).
+* v1 layer + countermodel KEPT ON FILE byte-unchanged as the refutation
+  record (TDDefs docstring marked SUPERSEDED — no consumer may cite the v1
+  semantics; TD3_countermodel gains a resolution-record docstring note; the
+  v1 ∀-closure survives verbatim inside `ledger_digitsProd_refuted`).
+
+THE COUNTERMODEL CHECK (mandatory; NEW `TD3v2_control.lean`, no sorry, all
+Lean-core): the v1 mechanism provably does NOT apply to v2 —
+* `cmL2` = the countermodel witness `cmL`'s exact shape (N-TD1 instance i1)
+  with the counting fields at their v2 finite-box values;
+  `cmL2_supportUnion : supportUnion = {(0,0)}` (by decide) and
+  `cmL2_semanticsV2` COMPUTES `Nat.card = 2¹ = 2`.
+* `cm2_digitsProd : DigitsProdLaw cmW cmP cmL2.ledgerJoint` — **PROVED
+  positive control**: the very shape that refuted v1 (`cm_not_digitsProd`,
+  0 ≠ 2) SATISFIES v2 (2 = 2 = the product).
+* `v2_mechanism_inapplicable` — the ¬∀ of `not_digitsProd_of_lawful`'s
+  exact v2 transposition (v1's total refutation is FALSE at v2).
+* `v2_devacuify_possible` — TD-0 duty (c) restored (contrast
+  `lawful_fiber_devacuify_impossible`); TD-0 is OPEN and staffable again.
+* `cmL_not_lawfulV2` — the refutation witness does not port to v2.
+
+N-TD1 RE-RUN (`verification/openmath/ntd1_td3_ledger_semantics_trace.py`,
+extended with the [LHS-V2] column = count over U with digits < q₀): 3/3
+MATCH against the v2 statement semantics (i1: 2=2; i2 junction-on-line:
+32=32; i3 shallow height floor: 2=2), alongside the preserved v1 3/3-FAIL
+record. VERDICT v2 printed: statement gate GREEN.
+
+GATES: `lake build` green through TD6_assembly + TD3v2_control (8609 jobs);
+zero sorries beyond the 7 tagged round-2 E-phase entries (+8 GR-side,
+untouched); `#print axioms` Lean-core on every proved decl (TDDefsV2
+helpers, all five control theorems, countermodel replay). Blueprint §5
+E2/TD-0/TD-3 rows + §7 N-TD1 row updated; MANIFEST rows E2/E2-v2/
+E2-v2-CONTROL/TD-0..TD-6 updated. FENCES: consumer signatures (§3
+TransDeep, H2 FreshLaws) untouched; no countermodel theorem edited.

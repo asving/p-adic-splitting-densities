@@ -53,6 +53,19 @@ BOX-RESTRICTED assignments, i.e. the `blockCount` pattern `Nat.card
 `#{f mod p^N}`) must precede ALL of TD-0..TD-6, not just TD-3. Statement
 fence respected: no landed file is touched; TD-3's E-phase sorry STANDS as
 refuted-open pending the E2 revision.
+
+**RESOLUTION RECORD (2026-08-02, the E2 v2 round — this file is now the
+CLOSED refutation record).** The demanded re-architecture LANDED:
+`TDDefsV2.lean` restates the semantics as finite-box `blockCount`s over
+`supportUnion` (parent block ∪ box-slot blocks, `Fin q0` values), and
+`TD3v2_control.lean` compiles the check that THIS file's mechanism does not
+apply there — `cm2_digitsProd` (the law HOLDS, proved, at the v2 control
+`cmL2`, same shape as `cmL` below), `v2_mechanism_inapplicable` (the ¬∀ of
+`not_digitsProd_of_lawful`'s v2 transposition), `v2_devacuify_possible`
+(duty (c) restored), `cmL_not_lawfulV2` (this file's witness does not port).
+TD-1..TD-6 are restated on `LedgerLawfulV2`/`LedgerStrataV2`. Every theorem
+below stands byte-unchanged; nothing here may be cited as evidence about the
+v2 statements beyond the control file's compiled bridges.
 -/
 
 set_option linter.style.longLine false
