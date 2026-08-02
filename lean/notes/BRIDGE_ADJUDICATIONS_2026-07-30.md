@@ -2140,3 +2140,7 @@ from order 2); TR-3 leakage closed via the weaker TR-3-ORD-X lemma;
 residue GROWN honestly (TR-3'-GEN + TR-3-ORD-X + D-ITER + N-1 + bar).
 GRB pass 2 launched. K-CUT re-pass: the manager exited early; job
 running detached (KCUT_pass2.jsonl); orchestrator watcher set.
+
+## GRB LEAF REV 3: PASS-2 FOLD (2026-08-02)
+Pass 2 held C1/C2 repairs GENUINE but found the ord-service leakage PERSISTING at two operative sentences (S6.2 + S8.1) — both now STRUCK to open TR-3-ORD-X (R2.3/R2.5 routing); plus 3 gaps fixed: S2.2 converse DELETED, "holds at G2 instance" -> "gate supports on tested developments", "strictly <=" -> data-wise weaker.
+Residue unchanged (TR-3'-GEN + TR-3-ORD-X + D-ITER(order >= 2) + N-1); clean-pass counter stays 0/2; next = hostile pass 3.
