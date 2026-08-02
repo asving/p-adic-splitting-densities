@@ -2213,3 +2213,12 @@ end-to-end passes. Report: lean/notes/openmath/VC21_report.md.
 CLOSURE QUEUE NEXT: GRB pass 4 (clean-bar attempt) + H1 B-M1 (KP-STEP
 core note); then H4 M-notes, mop-up batch, (NSF-INT)/(K1-CANON), H2-U9
 (post-B2-FINAL), synthesis pass 4.
+
+## H1 B-M1 LANDED: KP-STEP core note, OP-B1 PROVED (2026-08-06)
+lean/notes/openmath/H1_BM1_2026-08-06.md: KP-STEP proved from (GR-B-STR)
+rev 4 for residual-conformant lifts ((KPa)+(KPirr)+(KPb-F), incl. eg = 1);
+OP-B1 (degree block) PROVED (LOW-CONST + IN-FORM; blueprint's Prop-5.7 pin
+checked and REJECTED); new pins FGMN Cor 4.12/Thm 4.13/Cor 4.14; gate
+kpstep_gate.py PASS (336 inst; naked-lift (KPirr) REFUTED at 50 — twist
+clause load-bearing). Open: lift conformance (B-M2), GMN-face (KPb)
+(TR-3-ORD-X), 0/2 passes.
