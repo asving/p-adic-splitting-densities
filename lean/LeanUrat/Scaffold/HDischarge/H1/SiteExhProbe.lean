@@ -28,8 +28,10 @@ the row at the SIGNED core-binding carrier `OnTruncatedCarrierL`, hypothesis =
 S9/S10's own `StageCoreL σ` calling convention — is ALSO a theorem.  The ORIGINAL
 narrow-target row `TowerMoveClosure` and the conditional `siteExh_elimination`
 stand below, byte-unchanged and still open/conditional, as the recorded-carrier
-display.  E-3 (the D-ITER composition glue) is the follow-up unit; the box face
-(§6) is untouched.  The deviations of the as-built E-1 from the display below —
+display.  E-3 (the D-ITER composition glue) is the follow-up unit [LANDED
+2026-08-08 — `H1/GlueRun.lean`: structural glue + f-tie proved; the D-ITER carry
+law enters only the displayed junction-bundle supplier, named open
+`DIterJunctionSupplier`]; the box face (§6) is untouched.  The deviations of the as-built E-1 from the display below —
 base-read bundle = dev + (LandingKey ∨ IsStandardLift) with forcing compiled for
 clauses (iv)/(v) only, clauses (i)-(iii)/(vi) not-retained-with-reason; the
 core-free kernel under the tagged `ReadsOfFrom` — are recorded with the full Codex

@@ -4377,3 +4377,84 @@ TD-2's import line). Open in B2D after this wave: GR wave 2a ONLY
 message's "GR x7" was a miscount; the files are unchanged since wave E). The TD projection layer —
 E2/E2-v2/E2-v3, TD-0..TD-6, all gates and countermodel records — is
 sorry-free end to end.
+
+## 2026-08-08 (wallclock 2026-08-02): SITE-EXH E-3 — THE COMPOSITION GLUE PROVED (structural; the D-ITER carry law confined to the displayed junction-bundle supplier)
+
+**Unit:** E-3 glue (the SITE-EXH extension's "one genuinely new obligation",
+`TruncatedRun.lean` header / deviation D-3; sign-off 49b778e).  **File:**
+`LeanUrat/Scaffold/HDischarge/H1/GlueRun.lean` (new; TruncatedRun/SiteExhProbe
+touched comment-only — the E-3 landed cross-references).  ZERO sorry; all 9
+`#print axioms` targets Lean-core; `lake build` root green + targeted chain
+`GlueRun`+`AxChk_baseline` green (8782 jobs, capstone footprints unchanged).
+
+**THE THEOREM (task 1)** — `truncRunFrom_glue`: `TruncRunFrom σ₀ f₀ H₁` +
+`TruncRunFrom σ₁ f₀ H₂` + `GlueJunction f₀ H₁ H₂ sp'` ⟹ `TruncRunFrom σ₀ f₀
+(glueHistory H₁ H₂ sp' …)`, where `glueHistory = H₁.nodes ++ H₂-shifted` and the
+SHIFT is forced two ways, worked out from the definition: (α) the STRETCH shift —
+[T-1]/[T-2] read `strFrame` from the run's own base, so H₂'s nodes re-enter at
+`S·strFrame` (S = `H₁.strTotal` = ∏e); their line/ustar rescale by 1/S
+(`Node.stretch`; `gam` is stage-scale and does not move); (β) the RE-SPECIES shift
+— `History.root_iff` forces H₂'s base node off root at glued index L₁
+(`Node.respec`, species laws = packet obligations).  `readsOfFrom_glue` = the
+displayed StageCoreL-tagged form (base tag rides; junction tag definitionally
+inert, D-2).  **The junction packet `GlueJunction`** carries EXACTLY the forced
+clauses: the five pair-free seam clauses (ties/window/width/steepening-on-the-
+glued-scale, the 1/S divisor visible in `seam_steep`); the species-keyed seam legs
+(only at L₁ ≥ 2 — `seam_nonrec` re-displays THE RG-2 FENCE verbatim: an e ≥ 2
+non-recentering ending read admits NO interior seam, so e ≥ 2 junction reads glue
+only at the glued BASE, L₁ = 1 — E-4 honored, no fence lift); `ends_at` (H₁'s
+ending read re-designated at σ₁'s key); `junc_bundle` — the promoted base read's
+FULL [T-5] SideReads bundle, forced unconditionally at interior index L₁ > 0,
+which H₂'s own runhood does NOT carry (deviation D-1 resurfacing as THE junction
+obligation; its LandingKey re-species via packed recentering-lift clauses /
+root-face IsNodeLift); `junc_rec`/`junc_nonrec` (promoted transition legs at
+L₂ ≥ 2, fence again).
+
+**THE CARRY-CONSTANT ADJUDICATION (the charge's honest call):** the glue is
+PURELY STRUCTURAL — no composite carry constant enters any packet clause or the
+proof (index bookkeeping + 1/S rescaling only).  The D-ITER/ITER-LAW content
+lives exactly in any general SUPPLIER of `junc_bundle` at a deep frame: displayed
+as the NAMED OPEN `DIterJunctionSupplier` (stated, never asserted), whose
+docstring carries the measured two-constant ITER-LAW verbatim (strata probe row
+B2, 0/804) and FENCES OUT the single-ζ′ cyclic form (row B3-adj: FALSE at 22/28
+mixed towers; kill-shot row N).  No cyclic-form obligation exists anywhere in the
+unit.
+
+**THE F-TIE (task 2), at honest strength:** (a) MERGED form `readsOf_glue` — a
+full ReadsOf run + a truncated run from a reached stage merge into ONE truncated
+run from the full run's own root frame, packet-conditional (a full run ending at
+an e ≥ 2 read does NOT merge — the fence, disclosed; the e ≥ 2 shape hosts at the
+glued base instead); (b) CHAIN form `FTiedTruncLanding` + `ftie_extends`,
+UNCONDITIONAL — what f-tied coverage now reads: recorded carriers ∪ f-tied
+truncated landings (full run on f REACHES σ₁ at its ending read's recorded
+SideReads landing + truncated run from σ₁ READING THE SAME f lands Φ' at its
+base) ∪ packet-conditional merged runs.  Pre-E-3, the truncated leg was f-UNTIED
+(OnTruncatedCarrier's f₀ existential).
+
+**GATES (all zero-sorry, honest scopes):** `gate_readsOf_fq` (U31's full fq-run
+re-assembled from public pieces); `gate_truncRun_H₂rc` — a compiled truncated run
+from HK25's σ₁rec READING fq (= σ₁rec's own key), base read = RCW's ν₁rc
+root-respecied, designated landing σ₂rc.Φ via a compiled `IsNodeLift` (realizer
+−rcLift; digit via `StageCore.R_neg` off `rcLift_R`); **`gate_ftie_chain` — the
+f-tie chain FIRES END-TO-END**: `FTiedTruncLanding 2 fq σ₁rec σ₂rc.Φ` — the RCW
+recentering's S10-fired key recorded on the f-TIED truncated carrier along fq,
+the first f-tied deep landing on file; `gate_glue_junction`/`gate_glue_conditional`
+— at the same seam every packet field EXCEPT `junc_bundle` is discharged
+concretely and the glue fires conditionally on that one leg.  HONEST SCOPE: the
+compiled instance is the RCW tower (junction read e = 1), NOT the BM2_TRACE §C-e
+p = 3 quartic (numerics-only, not formalized); the C-e e = 2 escapee is hosted in
+the THEOREM-SCHEMA sense (any e ≥ 2 junction read at the glued base, given its
+packet) — no compiled e ≥ 2 instance exists to feed it.  The undischarged
+`junc_bundle` leg at σ₁rec is exactly the D-1 wall (clause (iii) reads `σ.R f` at
+`deg f = deg Φ`, out-of-carrier, opaque at the choice-built stage; neither
+provable nor refutable from the interface): a fully discharged merged gate needs
+a genuinely deep compiled run (deg f > deg Φ₁) — a U31-scale follow-up unit,
+priced with the named open.
+
+**Perimeter:** `TruncRunFrom`/`ReadsOfFrom`/`ReadsOf`/`HistoryCoherent`/
+`SideReads` and all E-1/E-2 declarations byte-unchanged; new decls are additive
+(`Node.stretch`/`Node.respec` + 4 rfl-simp lemmas and `History.hlen0`/`headNode`/
+`lastNode`/`strTotal`/`strFrame_pos`/`strTotal_pos` in the MovesC namespace,
+glue carrier + index lemmas, `GlueJunction`, the 4 theorems, `FTiedTruncLanding`,
+`DIterJunctionSupplier`, 5 gates + 3 private helpers).  The glued object is a
+TRUNCATED run — never claimed coherent/full.

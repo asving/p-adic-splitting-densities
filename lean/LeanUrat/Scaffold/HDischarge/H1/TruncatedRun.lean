@@ -133,7 +133,15 @@ elimination `siteExh_elimination'` says NOTHING about box-face firings.
 
 E-3 (the composition glue: full run on f = truncated runs glued along the D-ITER
 iterated development at interior e ≥ 2 reads) is its own follow-up unit on the
-measured ITER-LAW — the extension's one genuinely new obligation, still open.  The
+measured ITER-LAW — the extension's one genuinely new obligation, still open.
+[E-3 LANDED 2026-08-08 — `H1/GlueRun.lean`: the STRUCTURAL glue is PROVED
+(`truncRunFrom_glue`/`readsOfFrom_glue` + the f-tie `readsOf_glue`/`ftie_extends`,
+junction packet `GlueJunction` = exactly the clauses this definition forces; the
+RG-2 fence survives verbatim in its seam/promotion legs).  The composite carry
+constants do NOT enter the glue itself; they live in the displayed junction-bundle
+supplier, the named open `DIterJunctionSupplier` (ITER-LAW-shaped per the strata
+probe; cyclic form fenced out) — which is deviation D-1's open additive refinement
+resurfacing at the junction, as priced above.]  The
 truncated carrier asserts landings of the pair (site stage, designated key) only; no
 f-tied consumer strength is claimed.  `ReadsOf`/`HistoryCoherent`/`SideReads` and all
 of `SiteExhProbe.lean`'s declarations are BYTE-UNCHANGED (E-4).
