@@ -3601,3 +3601,40 @@ GATE OPENED: §2.3 sign-off received ⇒ H2-U10 (classifier-face twins) is
 dispatchable per the HDISCHARGE_H2 wave table (§2.3 sign-off + III-U3b
 coordination; the latter checked at dispatch). TerminalPolySem's
 no-supplier display is unchanged (Phase-B work, not a sign-off item).
+
+## III-U3b RECORDS SYNC (2026-08-02, unit III-U3b): landed state VERIFIED, U10 gate (ii) CLEARED
+
+The BP_III unit III-U3b (CU-1 induction step, candidate-pair identification)
+was found ALREADY LANDED at HEAD (CU1.lean hand-off record 2026-08-01, commit
+4801ee7) — this unit VERIFIED it against the spec and landed the missing
+coordination records the H2 blueprint gates on. VERIFIED (fresh `lake env
+lean` gate, exit 0): `CandidatePairAt`, `cu1_stepPair_le1` (≤ 1 leg, A6
+reader-law interface only), `cu1_stepPair_ge2` (≥ 2 leg — fires ONLY
+`FRESH.childDetermined` (H2-U10b guarded form, via `InteriorChain.
+continuingPart_nodes`) + `GRB.residualNormalForm` (at `2 ≤ i`, reader tied by
+`laws_pin_fields`)), assembly `cu1_stepPair`, GD-2 instance, `ol6Gate`
+positive gate — ALL Lean-core `[propext, Classical.choice, Quot.sound]`; the
+file's only sorry warning is the documented III-U1 W3 honest sorry (off this
+unit). HONESTY unchanged: the ≥ 2 leg stays vacuous at every (p, F) until the
+§1.3 scope repair (`U8.grb_uninhabited`/`U8.fresh_uninhabited`). LANDED THIS
+SYNC (docstring/records only, zero statement changes): (1) the **U10
+CONSUMPTION SHAPE display** in the `cu1_stepPair_ge2` docstring — the fixed
+field list for H2-U10's chain-keyed twins: (c)-twin = `childDetermined`
+verbatim in the guarded ∃!-side shape keyed to `EHist`/`GMNData`/`GMNReader`/
+`ConsF`; (a′)/(b) twins have NO III-U3b consumer (census-face content,
+`FreshClauses`/`FreshRowOn`); unguarded raw-`EHist` fields rejoin the refuted
+F-2/F-4 class; (2) the hook binding citations (no new hypothesis content):
+(H1) honest carriers = `GrBKeyLaws` (H1/Defs.lean) + `FaithfulTotal`
+(H1/SiteBlock.lean); (H2) genuine freshness content = `TransDeep`/
+`fresh_of_transDeep` (H2/TransDeep.lean, H2-U9); (3) BP_III row 819 LANDED
+marker; (4) HDISCHARGE_H2 U10 gate note — **gate (ii) cleared, U10
+dispatchable** (dual statement gate + the standing `parentSeparated` §1.3
+design burden as displayed).
+
+## 2026-08-08: ASVIN DIRECTIVE — hardest-first ordering (docs/HARDEST_FIRST_ORDER_2026-08-08.md)
+
+Verbatim: "structure the order of filling in the lean proof so that you do
+the hardest things first, the ones that might cause the deepest changes to
+the architecture of the proof." Order of record written; Tier 1 (SITE-EXH
+probe; V9 e′≥2 ruling) + Tier 2 (B2D hard holes TD-0/TD-3 + CL5) + Tier 3
+(e₀≥2 twist + D-ITER falsifiers) dispatched immediately.
