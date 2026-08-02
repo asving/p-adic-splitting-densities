@@ -2555,6 +2555,41 @@ NO status changes, NO new obligations — instance evidence never discharges
 a general claim (the GRB pass-2 lesson). Clean counter unchanged 0/2;
 hostile pass 4 runs on the REVISION 5 text.
 
+## GRB REVISION 11 — the extraction-artifact correction fold (2026-08-08)
+The N-1 headline finding is FOLDED into the ACCEPTED (GR-B) leaf
+(GRB_ORDER2_2026-08-05.md, REVISION 11) — a post-acceptance correction of an
+accepted leaf, this ledger's first. THE EVENT: S3.1's FGMN Def-3.15 quote
+carried a pdftotext EXTRACTION ARTIFACT — the ′ orphaned onto its own line in
+/tmp/litunit/fgmn.txt (~:1236) and re-attached by the leaf to the wrong ℓ; the
+display is corrected to ǫᵢ(α) = zᵢ^{ℓ′ᵢs(α) − ℓᵢu(α)} with the acceptance-era
+misreading preserved inside the bracket. FOLDED CONSEQUENCES: S3.2's
+geometric-discrepancy law + its 500/500 collapse-refutation RETIRED as
+artifacts (gate G2 tested a SHAPE both readings satisfy — the misreading is a
+character twist of the truth, structurally invisible to internal-consistency
+gates); at e₀ = 1 the marched twist is provably ǫ₁ ≡ 1 and FGMN = GMN on the
+nose (harness T9 0/500, T2 0/1,200; artifact law fails vs the true operator
+300/300); TR-3′-GEN re-priced as a two-stratum conjecture (plausibly IDENTITY
+at e₀ = 1; corrected-ǫ twist law at e₀ ≥ 2 — BOTH OPEN, the e₀ ≥ 2 side
+untested vs GMN), which SIMPLIFIES its expected proof (ǫ-threading collapses
+on unramified-below strata); TR-3-ORD-X's shape reduction survives re-based.
+ACCEPTANCE ANNOTATED, NOT REWRITTEN: passes 13 (Codex) + 14 (Fable) verified
+the pin "verbatim" against the SAME corrupted extraction — the model-diversity
+decorrelation failed AT THE SOURCE, not at the models; the N-1 harness's
+NON-TEXTUAL legs caught it (semantic: FGMN's own i = 0 remark + Lemma 4.3's
+Bézout algebra 0/23,111 + Cor 4.7(3) violations under the misreading; external:
+the P12 PARI kill-shot — the misreading's canonical lift FACTORS over ℚ₂).
+METHODOLOGY LESSON (standing): verbatim pins verified against a shared
+extraction INHERIT its corruption; acceptance bars for quote-bearing leaves
+should include at least one non-textual (semantic-algebra or external-oracle)
+leg per load-bearing quote. STANDING OF THE ACCEPTANCE: the ǫ-free executed
+obligations — TR-1, TR-2 (= OP-A1), TR-4, TR-5, TR-6, TR-7 (= OP-A4), OP-A2
+(CARRY-1 + D-REAL), OP-A3/(H-CHAIN) — remain ACCEPTED; the N-1 run's 15 GREEN
+families (33,547 samples) cover them under the TRUE operator, and no clause of
+(GR-B-STR)/(GR-B-KEY) consumed the misread twist. Clean counter RESET to 0/2
+on the REVISION 11 text; re-verification passes queued. Record: GRB leaf
+§REVISION 11 (incl. the full sweep table R11.4) + the [REV 11 ANNOTATION]
+under PASS 14.
+
 ## B-M2 REVISION 6 — the pass-4 fold (2026-08-02)
 Hostile pass 4 (Codex, BM2_pass4_2026-08-06.md) returned CRITICAL: 2
 critical + 2 gaps; the compiled statements were re-confirmed unchallenged
@@ -2576,3 +2611,43 @@ stated at REC-SL's definition; the abstract-engine universal reading
 list. Lean edits COMMENT-ONLY, gate re-run green, diff verified
 comment-only; no status change, no new obligation. Clean counter stays
 0/2; hostile pass 5 runs on the REVISION 6 text.
+
+## H2-U9 LANDED (2026-08-02): the (TRANS-DEEP) row + the (FRESH-RED) assembly
+The last gated H2 unit is DOWN — wave 3 complete. NEW FILE
+`lean/LeanUrat/Scaffold/HDischarge/H2/TransDeep.lean`: `TransDeep` (the
+blueprint-§5 (F)/(L)/(J) hypothesis row at one census-keyed (W, P, J);
+[M]-row: displayed + consumed, not proved), `fresh_of_transDeep` (PROVED —
+the (FRESH-RED) assembly at the census counting shadow: (F)/(J) fields pass
+through, clause (b)'s counting face fires U5's `freshReads_of_digitsProd`),
+`freshRowOn_of_transDeep` (PROVED — the D-keyed BP_IV C5′ `FreshRowOn`
+binder at U8's packaging).
+GATE SATISFACTION: unit was gated on B2-FINAL acceptance (blueprint §6
+H2-U9); per blueprint §1 (~line 47) the B2-FINAL tie is "organizational,
+not logical", so the condition transfers to the campaign's definitive
+successor **§B2-DEF** (MOVES_2026-07-24.md) — ACCEPTED :3231 (2026-07-26,
+passes 20+21 consecutive CLEAN) + DUAL-ACCEPTED :5606 (Codex + fresh Fable
+on rev D¹¹d). Pins re-verified by reading at land time.
+MINIMIZATION (per §4's instruction): (F) = the three U2 counting shadows
+(floorsCharge/digitsProd/fiberSum; §B2-DEF D.8 (BOX) + D.3(e)(ii) + D.11
+measure-exact ledger); (L) = BARE-Prop UNPINNED field (RootHyps E-phase
+device — Codex fold of record: NO faithful typed counting shadow exists at
+the skeletal carrier; R1 cross-realization form source-free, R2 digit-sum
+form admits mass-preserving digit exclusions; typed carrier owed at the
+engine seam/H2-U10 face); (J) = existing `JunctionPinLaw` (D.8 (VERTEX) +
+D.6 + D.10; value identification dropped — CEN-J consumes only
+nonvanishing + fixedness). `huni : SlotUniformLaw` rides the CONSUMING
+theorem, never the row — its suppliers are (ADM)-FULL + (GR-B)-line
+(§3.2 (b-RED)); (ADM) displayed, not smuggled.
+DUAL STATEMENT GATE (this unit's text): Codex leg R1 REJECT (2 CRIT) → fold
+→ R2 REJECT (1 CRIT/1 GAP) → fold (LeakFreeLaw DELETED, (L) re-typed bare
+Prop) → R3 **ACCEPT 0 CRITICAL / 0 GAP**; Fable leg (fresh context, sources
+re-read on disk) **PASS** — all six open questions ratified, statement
+fence PASS (zero prior corpus hits on the three new names). Transcripts
+archived: `lean/notes/openmath/H2U9_codex_statement_gate_2026-08-02.md`.
+GATES: `lake env lean` GREEN, zero sorry; `#print axioms` on both theorems
+= [propext, Classical.choice, Quot.sound] (Lean-core); no existing decl
+touched (new file only; grep confirms no prior consumers to recompile).
+RESIDUE (honest): the row is an OPEN HYPOTHESIS — nothing here discharges
+(TRANS-DEEP); its supplier is the §B2-DEF campaign's future Lean
+formalization. `leakFree`'s typed carrier + the Step-10/K1 classifier face
+remain owed (U10 chain-keyed twins, §1.3 scope repair).

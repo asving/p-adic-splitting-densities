@@ -795,13 +795,24 @@ shape fixes the field list; authoring the twins before it exists risks a
 second placeholder-grade row, the §2.3 failure repeated). Charge display, not
 verbatim Lean, by design.
 
-### H2-U9 — GATED (wave 3; DO NOT DISPATCH)
+### H2-U9 — LANDED (2026-08-02; wave 3 gate satisfied)
 
 The (TRANS-DEEP) Lean hypothesis row ((F)/(L)/(J) clauses) + the consumption
 theorems (`fresh_of_transDeep` — the (FRESH-RED) assembly). GATE: B2-FINAL
 (the GD-≥ 2 carry-algebra write-up) ACCEPTED, then transcribe the accepted
 statement — MINIMIZED to §5's consumer-side clauses — through the dual
 statement gate. Transcribing now would freeze an unaccepted spec (§5(ii)).
+
+**LANDED 2026-08-02:** `Scaffold/HDischarge/H2/TransDeep.lean` — `TransDeep`
+row (leakFree = bare-Prop UNPINNED per the RootHyps E-phase device; Codex
+fold of record) + `fresh_of_transDeep` PROVED (counting-shadow (FRESH-RED),
+fires U5's `freshReads_of_digitsProd`; `huni` displays the (ADM)-FULL +
+(GR-B)-line suppliers per §3.2 (b-RED)) + `freshRowOn_of_transDeep` (U8's
+BP_IV C5′ binder); gate = the accepted **§B2-DEF** (B2-FINAL's definitive
+successor — the campaign naming is organizational, not logical, §1 above);
+dual statement gate PASSED (Codex R3 ACCEPT 0/0 after 2 fold rounds + Fable
+leg PASS, 2026-08-02); Lean-core axioms, zero sorry. Ledger:
+`lean/notes/BRIDGE_ADJUDICATIONS_2026-07-30.md` §"H2-U9 LANDED".
 
 ### Wave order
 
@@ -811,7 +822,7 @@ statement gate. Transcribing now would freeze an unaccepted spec (§5(ii)).
 | 1 | U4, U5, U6, U7, U8, P1, P2 | ALL parallel (U5 waits U4 only for its proof, statement independent) | per-unit: compile + falsifier; P1/P2: hostile pass |
 | 2 | fold: §2.3 adjudication package to Asvin (sign-off request with U7's compiled witness); update ROOT (FRESH) row notes | lead-only | sign-off |
 | 3 | U10 (classifier-face twins) | after §2.3 sign-off + III-U3b coordination | dual statement gate |
-| 3 | U9 + the (FRESH-RED) assembly theorem | after B2-FINAL acceptance | dual statement gate |
+| 3 | U9 + the (FRESH-RED) assembly theorem | after B2-FINAL acceptance | dual statement gate — **PASSED + LANDED 2026-08-02** (gate satisfied by accepted §B2-DEF, B2-FINAL's successor; Codex ACCEPT 0/0 + Fable PASS) |
 | any | H2-L1 literature session | non-blocking | LITUNIT charge |
 
 **Coverage honesty (review faces-list accepted):** waves 0–2 cover the census
