@@ -4956,3 +4956,26 @@ REAL `gmnDataOrder1` read — the first ReadThroughIota-certified
 `TerminalPolySem` witness at HEAD. `terminalDatumD_slope_spec` not consumed
 (slope reads, not side-list mass). Unit note:
 `lean/notes/openmath/CU2T_KP0_2026-08-08.md`.
+
+## 2026-08-08 — POOL-DICT ATTEMPT (pass-5 F1(iii) / pass-4 F2a, twice dropped)
+
+(H8′)(iii) DECIDED, countermodel-first: the pass-4 F2a derive-from-wiring route
+(τ/δ pool read-off from the compiled K-CUT laws) is REFUTED with a compiled
+underdetermination witness — `Scaffold/HDischarge/H8/PoolDictProbe.lean` (NEW
+file/decls only, green, Lean-core, zero sorry). Over ONE fixed compiled carrier
+pack (the REAL n2 ledger instance packed as `pdC : UCarriers 2`, the proved
+`n2hdet`, one shared `KCutReKeys` pack `pdR` with a real `BlockDeriv` — `e_key`
+non-vacuous), TWO full `KCutK1Tie` instances `pdTIE 1`/`pdTIE 2` agree on
+`eOf`/`τOf`/`vBridge` and differ in `δOf` (1 vs 2), the grammar-total tie
+holding NON-vacuously at all three chain-Sigmas members — mechanism: NEW lemma
+`pd_blockSolve1_zero` (the n2 e=1 solve vanishes at every σ′ ≠ {(1,1)}; every
+Sigmas member is degree-2 via `sig_exact`) + `powSubst δ 0 = 0` ∀δ. Since the
+instances share every ambient object, NO law over (C, R, hdet) — `kcut_reduce`
+rows, `massFactor`, future wiring — can pin `δOf`: the pool dictionary is
+genuinely NEW interface content. Display: `pooldict_delta_underdetermined`.
+Honest scope: δ-leg compiled; τ-leg same-genre but NOT compiled (all compiled
+tables carry `State ≡ Unit`; a two-equal-state table = forge-class, pass-5 F5).
+(H8′)(iii)'s ROOT §3.1 wording CONFIRMED as the honest form, now legitimately
+blocked-on-owners ([2r]/CL-8 + (K-CUT-g)) with the blocker compiled; nothing
+discharged, no statement touched. Unit note:
+`lean/notes/openmath/POOLDICT_2026-08-08.md`.
