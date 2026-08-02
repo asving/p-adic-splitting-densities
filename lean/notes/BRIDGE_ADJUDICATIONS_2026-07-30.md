@@ -3191,3 +3191,17 @@ composite's CLEAN PASS 1; F-(iv) ((H4a) §3.1 row retire + Step 16/18 sync) is a
 ROOT-owner move that fires only on ACCEPT per the standing consecutive-clean
 discipline. OWED NEXT: the F-(i) leg gates, then a second clean composite pass,
 then the ROOT owner executes H4M7 §3's drafted deltas.
+
+## 2026-08-08: TR3-S1 ACCEPTED (passes 2+3 CLEAN, model-diverse) — the F1 collapse cashed
+
+The synthesis-4 F1 unit is accepted three days... hours after being
+identified: on the order-2/e₀=1 stratum, σ₁(R^F₂(f)) = R_λ(f) EXACTLY —
+TR-3′-GEN(i) restricted there is a THEOREM and TR-3-ORD-X there is PROVED
+mod the inherited (KP_i)+[T]. Three consumer families served on the stratum
+(GD3-FULL/OL-B's R_λ leg; Route B + clause-(4) ord-consumers; B-M2's
+OL-1(b) TR-3-ORD-X seam). NOT proved: orders ≥ 3, e₀ ≥ 2, general σ_j.
+Re-pricing displays owed at: GRB leaf (TR-3′-GEN/TR-3-ORD-X rows), B-M2
+(OL-1(b) seam note), ROOT (H1) row — batched to r22 with the VC22
+counter-line update. Decider highlight: the verifier's own from-scratch
+checker initially DISAGREED — its bug, at the S9.7 trap — the strongest
+decorrelation datum yet for the falsifier-harness discipline.
