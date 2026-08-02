@@ -4738,3 +4738,25 @@ TR-3'-GEN is the S3.4 REV-11 form, permanently. (iii) The state-key bifurcation 
 convention-independence law for deeper-order work. (iv) Deeper orders (>= 3) remain
 OPEN — no scope creep. (v) TR-3-ORD-X-on-(ii) stands proved conditional on (KP_i) +
 [T]-properness (displayed, not promoted).
+
+## 2026-08-08 — KP-STEP [RC] WIRING (RecSLWire): B-M2's REC-SL open NARROWED to the provenance row + chain fence; closed at every compiled site
+
+Unit: `lean/LeanUrat/Scaffold/HDischarge/H1/RecSLWire.lean` (6 thms, Lean-core, 0 sorry;
+note `lean/notes/openmath/RECSL_WIRE_2026-08-08.md`). (i) PROVENANCE TRACE:
+`HistoryCoherent`'s records (`IsRecenteringCore`/`TransitionCoreL`) bundle NO `StageCore`
+— on the abstract carrier the RECSL-SIGN pin's provenance is hypothesis content; at every
+COMPILED recentering consumption site (the one on-file family, `RCW.H₃rc`) it is engine-
+supplied (bStageP_stageCoreL' → S9_transStage/`score_σ₁rec` → S10_recStage; the docstring's
+MovesGr trio is the retired FAITHLESS chain — the live one is HC1 T1/S9/S10). (ii) WIRING:
+`hlink_nodeLift_of_history` supplies `key1_along_history`'s hlink 4th conjunct
+(`IsNodeLift`) at EVERY leg — [NR] from coherence, [RC] via
+`recsl_isNodeLift_of_history_stageCore` — under two displayed rows: `hfence` (recentering-
+chain fence, GR0b-inherited) + `hsc` (StageCore at successor-having recentering frames);
+`kp_step_of_recentering`/`key1SiteBlock_step_of_recentering` fire the consumers at [RC]
+legs; `key1_along_history_recsl` re-keys the fold (hlink loses IsNodeLift entirely).
+(iii) GATES positive on H₃rc: `rc_recSL_hPhi_gate : IsNodeLift ν₁rc σ₂rc.Φ` through the
+general route (matches GlueRun's hand-rolled instance) + `rc_hlink_gate` (all legs, both
+rows discharged). (iv) VERDICT on B-M2 REC-SL: NARROWED-TO {the `hsc` provenance row on
+abstract carriers; the recentering-chain fence} — the IsReadLift-at-(1,1)/(SL-top)/(SL-dev)
+KP-STEP obligations are compiled-fed; parity ties and (K1)+(K2)/GRADED-READ untouched, as
+priced. B-M2 note re-pricing rides the next revision, not this unit.
