@@ -1,0 +1,45 @@
+[   0.3s] ring (Zp,p=2) done: cumulative violations = 0
+[   0.6s] ring (Zp,p=3) done: cumulative violations = 0
+[   1.2s] ring (Fpt,p=2) done: cumulative violations = 0
+[   1.9s] ring (Fpt,p=3) done: cumulative violations = 0
+
+==============================================================================
+PREREGISTERED vs OBSERVED (violations; samples in parens)
+==============================================================================
+P0  CERT (T1/T2/T5/T11+PARI) on used instances  [SEALED]      pred 0  obs    0 (    0)  GREEN
+P1  MacLane/K1 commutation at the terminal key  [SEALED]      pred 0  obs    0 (  392)  GREEN
+P4n pooled run classes nonzero (val, kappa)    [SEALED]       pred 0  obs    0 (  784)  GREEN
+P2  terminal case census (D0 KEY-ONLY; D1/D2/DA TIE-AUG)      pred 0  obs    0 (  336)  GREEN
+P3a side-endpoint support == on-line set                      pred 0  obs    0 (  336)  GREEN
+P3b stage-scale support == {top vertex} (FLAT and MID)        pred 0  obs    0 (  336)  GREEN
+P5  node-1 pattern tie (psi1 exact; D3 mu=2,width=2g1)        pred 0  obs    0 (  336)  GREEN
+P6  seam legs: width / window / steep                         pred 0  obs    0 (  700)  GREEN
+P4  ITER-LAW on run-realized classes (S3 carrier)             pred 0  obs    0 (  840)  GREEN
+P7  DA terminal digit == anchor coordinate (u0 class)         pred 0  obs    0 (   56)  GREEN
+P3c AS-WRITTEN METER: S(FLAT) != S(side) at 336/336 deep node-1 sites (pred: ALL)  MATCH
+------------------------------------------------------------------------------
+P2 TERMINAL CASE CENSUS: {('D0', 'KEY-ONLY'): 28, ('D1', 'TIE-AUG'): 84, ('D2', 'TIE-AUG'): 112, ('D3', 'MULTI'): 56, ('D4', 'REFINE'): 56, ('DA', 'TIE-AUG'): 56}
+  TIE-AUG terminal digit coordinates measured: 211 distinct (tower,fam,kappa0,gB mod E2) rows
+    ('Fpt,p=2,A', 'D1', '1', 0)
+    ('Fpt,p=2,A', 'D2', '1', 0)
+    ('Fpt,p=2,A', 'D2', '1', 1)
+    ('Fpt,p=2,A', 'DA', '1', 1)
+    ('Fpt,p=2,B', 'D1', '1', 0)
+    ('Fpt,p=2,B', 'D2', '1', 0)
+    ('Fpt,p=2,B', 'D2', 'zbar^0*z1^1', 0)
+    ('Fpt,p=2,B', 'D2', 'zbar^0*z1^1', 2)
+    ('Fpt,p=2,B', 'DA', '1', 0)
+    ('Fpt,p=2,B', 'DA', '1', 1)
+    ('Fpt,p=2,C', 'D1', '1', 0)
+    ('Fpt,p=2,C', 'D2', '1', 0)
+------------------------------------------------------------------------------
+P4 ITER-LAW METERS (nontrivial-c pairs / sampled pairs / pool):
+   row A: 2/120 pairs with c != 1
+   row B: 0/120 pairs with c != 1
+   row C: 25/120 pairs with c != 1
+   row K: 50/120 pairs with c != 1
+   row L: 64/120 pairs with c != 1
+   row M: 49/120 pairs with c != 1
+   row N: 5/120 pairs with c != 1
+TOTAL samples 4116  elapsed 1.9s
+VERDICT (preregistered rows): ALL GREEN

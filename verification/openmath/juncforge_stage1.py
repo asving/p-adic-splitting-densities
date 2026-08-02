@@ -380,7 +380,7 @@ def build_families(T, C):
             m = (C.Gamma0 - g0d + T.E2 - 1)//T.E2
         gD = g0d + m*T.E2
         u0 = T.rand_K0(nonzero=True)
-        D = pscal(R, T.liftK0(u0), C.anchor(gD))
+        D = pmul(R, T.liftK0(u0), C.anchor(gD))
         fams.append(("DA", padd(R, T.Phi2, D)))
         das.append((gD, u0))
     m4 = max(1, T.w2Phi2 // (2*T.E2))

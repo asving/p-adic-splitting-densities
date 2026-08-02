@@ -177,8 +177,10 @@ def Stage.slotImages (σ : Stage p F) (γ : ℤ) : Set (LaurentPolynomial ↥σ.
 
 /-- **The stage core** — the round-4 well-formedness package. Replaces `StageWF` (whose
 `reps_pinned` was refuted and whose `K_gen` was not a localization theorem). The base stage
-CONSTRUCTS it (`L1.baseStage_exists`); every transition TRANSPORTS it (`L4.TRANSstage`,
-`L5.recTRANSRS`); every unit needing tower provenance CONSUMES it. Fields:
+CONSTRUCTS it (HC1 `T1_baseStage`, via `StageCoreL`); every transition TRANSPORTS it (HC1
+`S9_transStage`, `S10_recStage`) — the retired FAITHLESS `L1.baseStage_exists`/
+`L4.TRANSstage`/`L5.recTRANSRS` trio is superseded by that live chain (pass-6 F6 sync,
+2026-08-08); every unit needing tower provenance CONSUMES it. Fields:
 * `wPrev_mul`/`wPrev_ult` — the parent valuation is a valuation;
 * `reps_nonempty`/`p_is_rep` — the representative list is genuine (`p` is always on it);
 * `tvec` — the T exponent-vector PRODUCT law (§2), tying `R` to the representatives exactly;
@@ -218,8 +220,10 @@ growth, reps growth) PLUS the two construction records the audits demanded:
 * `child_dig` — the child residual map is BUILT from the parent's ψ-digits: on `Ĉ`, the child
   digit scalar is `dig'(B)·z̄^m` (the parent D.6 digit times an explicit frame unit — cf. the
   D.8 vertex unit `z̄^{−μm̂}`) at the forced position `−t'·(parent weight)`.
-`L4.TRANSstage` CONSTRUCTS this bundle together with `StageCore σ'`; `TRANSvi`/`TRANSvii`
-verify S4'/S5' against these records (post-construction verification, per audit gap G5′). -/
+HC1 `S9_transStage` CONSTRUCTS this bundle (as `TransitionCoreL`) together with
+`StageCoreL σ'` (the retired `L4.TRANSstage` is superseded — pass-6 F6 sync);
+`TRANSvi`/`TRANSvii` verify S4'/S5' against these records (post-construction
+verification, per audit gap G5′). -/
 structure TransitionCore (σ σ' : Stage p F) (Φhat : Polynomial ℤ_[p]) (e' h' : ℕ)
     (zbar : Fˣ) : Prop where
   base : TransitionData σ σ' Φhat e' h' zbar

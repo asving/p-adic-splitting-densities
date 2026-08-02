@@ -5165,3 +5165,68 @@ occurrence census re-run on the final text (junc_bundle PROMOTED,
 G-ADM-2/VC29 NEW; every delta reasoned; fixed point re-grepped after the
 last edit). Doc-only unit: ROOT + PROJECT_STATE + this ledger; no Lean
 file touched.
+
+---
+
+## 2026-08-02 (wallclock; campaign 2026-08-08) — FORGE junc_bundle STAGE 1:
+## the FIRST DEEP RUNS (numerics), ALL 10 preregistered rows GREEN first-pass
+## (4,116 samples), the clause-(iii) residual PINNED, stage-2 spec fixed
+
+**Charge** (SYNTHESIS_PASS6 queue #2 = the F1 charter, hardest-first):
+numerics-first deep runs (deg f > deg Φ₁, real digit data), the clause-(iii)
+OUT-OF-CARRIER residual traced at deg f = deg Φ sites, the
+`gate_glue_junction` hypothesis shape tested, ITER-LAW located per
+DITER_RESTATE §S3; carries the pass-6 F6 StageCore docstring sync.
+
+**EXECUTED.** `verification/openmath/juncforge_stage1.py` (preregistration
+header SEALED pre-run, commit 023a9d7; seed 20260816, exact arithmetic;
+grb_order2_check Towers + strata_probe Composite; CERT re-run per instance):
+7 rows (e₀ ∈ {1,2,3}, e₁ ∈ {2,3}, g₁ = 2 row N) × 4 rings = 28 instances,
+families D0 (f = Φ₂) / D1,D2,DA (Φ₂ + controlled perturbations) / D3 (Φ₂²+D)
+/ D4 (refinement, report-only). **ALL GREEN, exit 0**: P0/P1/P4n bug rows 0;
+P2 census EXACT (D0 28/28 KEY-ONLY; D1+D2+DA 252/252 TIE-AUG, λ₃ > 0); P3a/
+P3b 0/336; P3c meter 336/336 MATCH; P5 pattern==ψ₁ 0/336; P6 seam legs 0/700;
+P4 ITER-LAW on RUN-REALIZED classes 0/840 (c ≠ 1 realized: A 2, B 0
+[carry-free pool, honest], C 25, K 50, L 64, M 49, N 5 of 120 pairs); P7
+anchor-coordinate digit law 56/56. Record:
+`lean/notes/openmath/JUNCFORGE_S1_2026-08-08.md`.
+
+**THE MEASURED CLAUSE-(iii) SHAPE** (the D-1 wall at nature): (a) TWO-SCALE
+LAW — at every deep read site the recorded (a, Ranch, μ) live EXACTLY at the
+read-pair scale (S(λ_side) = pattern support, 336/336); at every strictly
+coarser stage scale σ.R f is the top-vertex key-power MONOMIAL (zero pattern
+content, 336/336) — the clause-(iii) E-PHASE FLAG confirmed AND cured: at a
+read-pair-graded stage (the corpus's own compiled convention, HK25/U31) the
+clause is interface-DERIVABLE from clauses (i)+(ii) (consecutive distinct
+positions, no cancellation). (b) TERMINAL deg f = deg Φ sites: the residual
+is the RANK-2 BINOMIAL R(B₀) + T^s; the digit coordinate κ₀ =
+val(B₀)/val(φ) is the 𝒟₂-ANCHOR coordinate (measured: 105× 1, 95× z̄-powers,
+52× general K2-units; pinned = u₀'s class verbatim on designed anchors,
+56/56) — the §S3 consumable confirmed at the supplier's own computation
+site. (c) THE D0 STRATUM: f = key ⟹ KEY-ONLY residual; a recentering-shaped
+bundle (pat₀ ≠ 0, Ranch = z − c, μ = 1) is UNSATISFIABLE at the unique
+development — and `gate_glue_junction`'s hbundle (U31/RCW seam, f = fq =
+σ₁rec.Φ, ν₁rcRoot.hpat0) instantiates EXACTLY this stratum: the hypothesis
+appears INSTANCE-FALSE (gate conditional vacuous), pending one Lean check
+(monic-key development uniqueness). FLAGGED for stage-2 probe + orchestrator
+adjudication of the gate display — the honest RED-shaped finding: the wall
+is not opacity, it is the degenerate stratum; the dischargeable junction
+lives at deg σ₁.Φ < deg f (= DIterJunctionSupplier's own antecedent).
+
+**STAGE-2 SPEC FIXED** (JUNCFORGE_S1 §S5): row A over ℤ₂ — Φ₀ = X, Φ₁ =
+X + 2, Φ₂ = X² + 4X + 12, f = X² + 4X + 28; junction stage BUILT AT THE READ
+PAIR (e′,h′) = (2,3) (the central pin); junc_bundle discharged clause-by-
+clause; the deep seam = the first compiled e ≥ 2 junction (glued base,
+RG-2-conformant); development-uniqueness kernel (price S); ITER-LAW-free at
+this instance (e₀ = 1 D-REAL leg) — honest scope display. No blocker found.
+
+**ALSO EXECUTED** (pass-6 F6 assignment): StageCore docstring sync,
+`Moves/DefsCore.lean` — retired FAITHLESS `L1.baseStage_exists`/
+`L4.TRANSstage`/`L5.recTRANSRS` cites replaced by the live chain HC1
+`T1_baseStage`/`S9_transStage`/`S10_recStage`; git diff verified
+COMMENT-ONLY (two docstring hunks).
+
+**Perimeter:** no Lean statement touched; no sealed strata-probe/GRB row
+touched; ITER-LAW stays the open lemma (falsifier record extended 0/840 on a
+new class family); numerics are falsifiers, never proofs. Files: the harness
++ output + JSON, the S1 note, the DefsCore docstring sync, this entry.
