@@ -1,8 +1,9 @@
 # Project state — Lean formalization of uniform rationality of *p*-adic factorization densities
 
-*Snapshot: 2026-07-19; last refreshed 2026-07-31 evening (root-assembly stage of the MATH-FIRST
-campaign — see the FINAL UPDATE section, which is the resumability anchor: current truth, standing
-loops, and the four-document resume protocol; the live Lean census is
+*Snapshot: 2026-07-19; last refreshed 2026-08-08 (ROOT REVISION 20, unit r21 — see the
+CHECKPOINT 2026-08-08 section at the tail, which is the current resumability anchor: TEN honest
+§3.1 rows unchanged, the H1/H2/H6 leaf window folded, VC22 pending; the FINAL UPDATE section
+holds the standing loops and the four-document resume protocol; the live Lean census is
 `lean/notes/REMAINING_CENSUS_2026-08-01.md`). This document lays out (1) the bigger picture, (2) what
 is proved and on what it rests, (3) the Lean blueprint and its correspondence to the math-language
 proof, and (4) what is in progress. It is meant to be sufficient, together with the code, for a
@@ -1542,3 +1543,40 @@ clean pass — a §4B-defective finding re-opens I-3 and SUSPENDS the
 acceptance re-anchored there); REVISION 19 is a text change: **VC22 owed**
 as the confirming anchor (ROOT §25 charge). Verification: VC1-VC21 + VC22
 pending.
+
+---
+## CHECKPOINT 2026-08-08: THE H1/H2/H6 LEAF WINDOW FOLDED — TEN ROWS UNCHANGED (ROOT REVISION 20)
+ROOT at REVISION 20 (unit r21) — a leaf-status sync batch, NO roster or
+attribution change; the §3.1 roster RECOUNTED at the r21 audit: **TEN [M]
+rows, unchanged** (same bijection as REVISION 19). The window's five
+ledger discharges, folded as dated brackets inside the standing rows
+(every row STAYS [M]; nothing discharged):
+(1) **(GR-B) RE-ACCEPTED** at its leaf REVISION 14 (58534d4; 21-pass arc)
+— the (H1)(a) execution of record; the Def-3.15 extraction-artifact
+incident closed (N-1 harness caught the corrupted shared extraction, true
+twist z^(l's − lu); corrected under passes 15–19; passes 20+21 CLEAN; N-1
+bar MET 15/15 GREEN); leaf residue: TR-3'-GEN (two strata) / TR-3-ORD-X /
+D-ITER / TR-4 empirical debt; ROOT never quoted the retired S3.2
+discrepancy law (r21 grep audit: zero displays).
+(2) **B-M2 (LIFT-CONF) ACCEPTED** at its REVISION 14 (416c213; 14-pass
+arc) — the (H1)(b) engine-lift conformance face: actual-pair (K0) on both
+carrier classes (hspecRec transport + REC-WIRE-G width-law derivation +
+H3rc witness, Lean-core); opens STAND: GRADED-READ / REC-SL / SITE-EXH /
+the readsOf recentering-branch debt. Third (H1) leaf (KP-STEP, GR-B, B-M2).
+(3) **H1-U14 STATED** behind its T8-decided N-1 gate (6df3eae):
+FaithfulTotal [M]-row + two proved consumers; never proved.
+(4) **H2-U9 LANDED** (23d2c03): the (TRANS-DEEP) [M]-row +
+fresh_of_transDeep / freshRowOn_of_transDeep PROVED; gate satisfied by the
+accepted §B2-DEF supersession; leakFree bare-Prop placeholder owed at U10.
+H2 wave 3 complete.
+(5) **III-S4 REPAIRED + H6-A4b LANDED** (f56a536): TerminalPolySem
+(hypothesis row, no supplier at HEAD) + cu2t_readForcing_sem with pos/neg
+gates; terminalDatumD_slope_spec landed — the A4b external blocker CLEARED.
+Review surface for Asvin (ledger + standing queue): the hf Monic pricing
+(III-S4), the (ed-1) M04 §5.5 pin (K1-CANON), the TerminalPolySem
+supplier. FRONTIER NOW: **VC22** (rolled forward, owed on the REVISION-20
+wording — ROOT §26 charge); the D-11 confirming pass (doubles as the (H9)
+re-open trigger); the H1 campaign's remaining distance (GRADED-READ/
+REC-SL/SITE-EXH + members (b)/(c)/(d) proper + the GR-B leaf residue); the
+H2 U10 twins; the H6 semantic suppliers (incl. TerminalPolySem's) + item
+(vii). Verification: VC1–VC21 + VC22 pending on REVISION 20.
