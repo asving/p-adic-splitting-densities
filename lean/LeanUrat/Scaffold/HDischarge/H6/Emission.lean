@@ -144,7 +144,7 @@ def RCConsistentD (f : Polynomial ℤ_[p]) (H : EHist p F)
       (ν.e, ν.h, ν.ℓ, ν.s, ν.u) = (S.e, S.h, S.ℓ, S.s, S.u)) ∧
   EF = (terminalDatumD f H D).verdict
 
-/-! ## Unit A4b — `terminalDatumD_slope_spec`: DISPLAYED OBLIGATION (not landed)
+/-! ## Unit A4b — `terminalDatumD_slope_spec`: LANDED (2026-08-02)
 
 Blueprint spec (`lean/blueprints/HDISCHARGE_H6.md` §4 A4b, added at fold
 round 1 — Codex finding 4), transcribed verbatim: "the two read notions
@@ -154,57 +154,35 @@ III-S4 forcing, the side list at level k′+1 is a singleton, so the
 clause pins the SAME side. Lands as a lemma once III-S4 lands; until then the
 coherence is a DISPLAYED obligation, not assumed anywhere."
 
-STATUS AT HEAD (2026-08-01): NOT LANDED — the external dep III-S4
-(`cu2t_readForcing`, BP_III's unit, NOT re-owned here) is BLOCKED — FALSE AS
-DISPLAYED (`DictIII/CU2t.lean` §III-S4; compiled countermodel
-`S4Refute.cu2t_readForcing_false`, Lean-core), and its repaired form is
-unlanded.
-
-MOP-UP RE-CHECK (2026-08-02, HEAD `baa5332`): gate re-checked — the III-S4
-refutation still stands in `DictIII/CU2t.lean` (BLOCKED — FALSE AS DISPLAYED;
-`S4Refute.cu2t_readForcing_false`) and no repaired forcing has landed, so A4b
-remains a DISPLAYED OBLIGATION, assumed nowhere. BLOCKED stands (external,
-BP_III-owned). Per the blueprint ruling the coherence is therefore DISPLAYED here
-and assumed NOWHERE — no declaration, no axiom, no sorry rides this unit.
-
-THE DISPLAYED OBLIGATION (elaboration + provability probed at this pin,
-Lean 4.31, 2026-08-01 — probe scratch since deleted; `hforce` is the
-interface slot for the repaired III-S4's forcing output, in the singleton
-form the CUC §9.3 (i) semantic read supplies: "total horizontal length 1,
-hence consists of EXACTLY ONE side"):
-
-  theorem terminalDatumD_slope_spec (f : Polynomial ℤ_[p]) (H : EHist p F)
-      (D : GMNData f (Theta H)) (S : SideDatum)
-      (hread : ReadThroughIota f H D)
-      (hforce : D.principalSides H.nodes.length = [S]) :
-      (terminalDatumD f H D).slope
-          = (if S.isNegInfty then none else some (S.e, S.h)) ∧
-      ∀ ν : ENodeData,
-        (∀ T ∈ D.principalSides H.nodes.length,
-          (ν.e, ν.h, ν.ℓ, ν.s, ν.u) = (T.e, T.h, T.ℓ, T.s, T.u)) →
-        (ν.e, ν.h, ν.ℓ, ν.s, ν.u) = (S.e, S.h, S.ℓ, S.s, S.u)
+STATUS: LANDED (2026-08-02) — the external dep III-S4 is REPAIRED at BP_III
+(`DictIII/CU2t.lean` unit "III-S4 REPAIRED": named semantic row
+`TerminalPolySem` + `cu2t_readForcing_sem`, the option-(b) sanctioned
+statement repair; the old display stays retired with its `S4Refute`
+countermodel).  The repaired forcing lands its conclusion in EXACTLY this
+unit's interface slot — the SINGLETON form
+`∃ S, D.principalSides H.nodes.length = [S] ∧ S.ℓ = 1` (the singleton derived
+THERE from total-length-1, per this unit's probe record's re-key note) — so
+the statement below is the displayed obligation VERBATIM, `hforce` unchanged.
 
 Reading: clause 1 — the A4 `head?`-read slope IS the unique side's datum (the
 slope-−∞ side mapped to `none`, A4's convention). Clause 2 — the ∀-SIDES
 antecedent is VERBATIM `RCConsistentD`'s read clause (unit A5, above), so any
 RC-consistent node's datum is pinned to the SAME side S. `hread` is the
 standing antecedent (the sides are the real read's; the repaired III-S4
-consumes it); level convention: index `H.nodes.length` = paper level k′+1
-(the A3 display).
+consumes the same perimeter); level convention: index `H.nodes.length` =
+paper level k′+1 (the A3 display).
 
-Probe record (this pin): with `hforce` in the singleton form the display
-elaborates AND is provable (`simp [terminalDatumD, hforce]` closes clause 1;
-clause 2 instantiates its ∀ at `S ∈ [S]`) — the WHOLE content of A4b is thus
-exactly the forcing supply, which is why it cannot land before III-S4 does.
-If BP_III's repaired III-S4 instead lands its forcing in the §1.9
-`∃!`-(ℓ = 1) shape, the singleton must be derived THERE from the polygon
-(total length 1 — the CU2t §III-S4 repair bullet: `R.side_unique` is vacuous
-at the terminal index), and `hforce`'s shape re-keys at landing time.
+CONSUMPTION FENCE (updated at landing): the coherence may now be consumed —
+through THIS lemma only, at its full hypothesis row (`hread` + the singleton
+`hforce`, supplied on decided seams by `cu2t_readForcing_sem` under its
+`TerminalPolySem` + squarefree-reduction rows); `terminalDatumD`'s
+`head?`-read and the A5/A7 ∀-SIDES read clauses remain INDEPENDENT notions
+wherever that supply is not in scope (the Codex finding 4 disposition).
 
-CONSUMPTION FENCE: nothing in this file or its consumers may assume the
-coherence before the lemma lands — `terminalDatumD`'s `head?`-read and the
-A5/A7 ∀-SIDES read clauses travel as INDEPENDENT notions until then (the
-Codex finding 4 disposition). -/
+PLACEMENT: the lemma's `hread` binder consumes `ReadThroughIota`, declared at
+unit A6b BELOW (this file's unit order follows the blueprint's, and A4b's
+spec predates A6b's) — so the DECLARATION lands directly after A6b's gates;
+statement verbatim as displayed here. -/
 
 /-- H6-A6 (VERBATIM from `lean/blueprints/HDISCHARGE_H6.md` §4 unit A6): the
 terminal-emission interface — the quantifier domain the CUC §9.4 rows need and

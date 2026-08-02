@@ -36,10 +36,13 @@ III-S2 — record at the end of this file, with validated provability notes for
 the eventual re-land), unit III-S5c PARTIAL (the τ-hen engine
 `cu2t_tauHen_lift` landed — `Lit3Hensel` with every binder instantiated at the
 corpus carrier, per the row's sketch; the verdict-shaped half is BLOCKED
-downstream of III-S2/III-S3 — record mid-file), unit III-S4 (BLOCKED —
-FALSE AS DISPLAYED: the `cu2t_readForcing` conclusion constrains the laws-free
-data field `D.principalSides` at an index no hypothesis reaches; COMPILED
-countermodel in namespace `S4Refute` mid-file, record there), and unit
+downstream of III-S2/III-S3 — record mid-file), unit III-S4 (the display
+BLOCKED — FALSE AS DISPLAYED: the `cu2t_readForcing` conclusion constrains the
+laws-free data field `D.principalSides` at an index no hypothesis reaches;
+COMPILED countermodel in namespace `S4Refute` mid-file, record there — and
+REPAIRED 2026-08-02 at the record's option (b): the named semantic row
+`TerminalPolySem` + `cu2t_readForcing_sem` with the consumer-keyed singleton
+conclusion, gates in namespace `S4SemGate`; record after `S4Refute`), and unit
 III-S7 (BLOCKED — `ThetaTau` unlanded — AND FALSE AS DISPLAYED for EVERY
 cure of the accE/accF seam: the record forgets the terminal node's
 `ℓ`/`s`/`u`/`inc` fields, the compiled III-A3 terminal-blindness seam;
@@ -651,7 +654,7 @@ theorem cu2t_readForcing_sem (f : Polynomial ℤ_[p]) (H : EHist p F)
       rcases Nat.mul_eq_zero.mp h0 with he | hl
       · exact absurd (hnd S hS).1 (by omega)
       · exact absurd (hnd S hS).2 (by omega)) hone
-  exact ⟨S, hS, (Nat.mul_eq_one.mp hSel).2⟩
+  exact ⟨S, hS, Nat.dvd_one.mp ⟨S.e, by rw [← hSel]; ring⟩⟩
 
 namespace S4SemGate
 
@@ -712,7 +715,7 @@ theorem hcons1 : ConsF (X : Polynomial ℤ_[2]) S4Refute.H0 D1 R1 := by
     at EXACT multiplicity `j₀ = 1` (`X¹ ∣ X̄ = X`; `X² ∤ X` is the compiled
     `S4Refute.hsq0` at `φ = X`), total horizontal length `1·1 = 1`. -/
 theorem sem1 : TerminalPolySem (X : Polynomial ℤ_[2]) S4Refute.H0 D1 := by
-  refine ⟨by intro S hS; simp [D1, S1] at hS; simp [hS, S1], X,
+  refine ⟨by intro S hS; simp [D1, S1] at hS; simp [hS], X,
     Polynomial.irreducible_X, 1, le_refl 1, ?_, ?_, by simp [D1, S1]⟩
   · rw [pow_one, Polynomial.map_X]
   · exact S4Refute.hsq0 X Polynomial.irreducible_X
@@ -1195,6 +1198,12 @@ end LeanUrat.Scaffold.DictIII
 
 -- Footprint audit (unit III-S4 refutation gate): expect Lean core only.
 #print axioms LeanUrat.Scaffold.DictIII.S4Refute.cu2t_readForcing_false
+
+-- Footprint audit (unit III-S4 REPAIRED: theorem + both gates): expect Lean
+-- core only (Classical.choice enters through the noncomputable gate carriers).
+#print axioms LeanUrat.Scaffold.DictIII.cu2t_readForcing_sem
+#print axioms LeanUrat.Scaffold.DictIII.S4SemGate.readForcing_sem_gate_pos
+#print axioms LeanUrat.Scaffold.DictIII.S4SemGate.d0_fails_terminalPolySem
 
 -- Footprint audit (unit III-S7 refutation gate): expect Lean core only
 -- (Classical.choice enters through the stub's classical `if` + the
