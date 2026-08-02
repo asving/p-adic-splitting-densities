@@ -2163,3 +2163,8 @@ Report: lean/notes/openmath/GRB_pass3_2026-08-06.md.
 
 ## GRB LEAF REV 4: PASS-3 POLISH (2026-08-02)
 Pass-3 GAPS-ONLY items folded at REV-4 flags: S2.2 residual carrier-identification wording struck (only x_r, p_r^{±1}, y_r availability claimed), R2.5's "holds at the G2 instance" -> "supported on the G2-tested developments", "order-2 law computed" -> "one depth-2 instance computed and tested" (both live occurrences). Zero criticals stand; leaf awaits its FIRST clean hostile pass (counter 0/2). Doc: GRB_ORDER2_2026-08-05.md §REVISION 4.
+
+## ROOT r17/REVISION 16: K-CUT RETIRED, TEN ROWS (2026-08-02)
+VC18 recorded (SOUND on REVISION 15 — acceptance re-anchored; its advisory repaired). (H8)=(K-CUT) row RETIRED from §3.1 per the round-3 DISCHARGES gate: package (repaired adjudication + KCutMassFactor + KCutK1Tie, Lean-core, 3-round arc) at the NEW §3.2 K-CUT retirement row; residues MOVED — graft -> D-14+CU-3+REL.2; measured mass -> (H7)/TREE-EXP+[2r]/CL-8+O-1/O-3; tau/delta dictionary -> [2r]/CL-8, W-leg at CL-17(ii)/W17ii.
+Roster: TEN rows = (H1)-(H9) minus retired (H8); (R)/(UB) lose (H8); charge-(vi) FAIL stands displayed (retirement rides the proved package, not that route); nothing semantic discharged.
+Text change: VC19 OWED as the confirming anchor on the REVISION-16 wording. Record: ROOT_ASSEMBLY §22.
