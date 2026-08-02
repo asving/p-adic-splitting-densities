@@ -3044,3 +3044,17 @@ Lean edits COMMENT-ONLY, both files re-run `lake env lean` clean, zero
 `sorry`, `#print axioms` Lean-core on all four RecParamE declarations;
 `RCWitness.lean` untouched; no statement changed. Clean counter stays
 0/2; pass 13 next.
+
+## 2026-08-08: B-M2 (LIFT-CONF) ACCEPTED — the 14-pass arc closed
+
+Passes 13 (Codex, census certification) + 14 (Fable max-effort decider:
+gates re-run, corpus fields source-verified, three core steps re-derived,
+S0 walked row-by-row) both CLEAN on REVISION 14. The arc's shape is the
+project's verification thesis in miniature: rev 0's overclaim demolished
+(passes 1-5) → the [NR]/[RC] claim-class architecture + mechanical census
+(the audit instrument) → Asvin's trace-the-numerics directive settling the
+mathematics at a worked instance → three compiled UPGRADE rounds (the [RC]
+witness; the hspecRec transport; the REC-WIRE-G width-law derivation with
+the fiat unusable by type) → acceptance with the artifact proving MORE than
+rev 0 claimed, priced exactly. Third (H1) leaf accepted (KP-STEP, GR-B,
+B-M2). ROOT r21 batch sync next (with enumeration audit + VC23).
