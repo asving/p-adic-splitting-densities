@@ -1,8 +1,10 @@
 # Project state — Lean formalization of uniform rationality of *p*-adic factorization densities
 
-*Snapshot: 2026-07-19; last refreshed 2026-08-08 (ROOT REVISION 20, unit r21 — see the
-CHECKPOINT 2026-08-08 section at the tail, which is the current resumability anchor: TEN honest
-§3.1 rows unchanged, the H1/H2/H6 leaf window folded, VC22 pending; the FINAL UPDATE section
+*Snapshot: 2026-07-19; last refreshed 2026-08-08+ (ROOT REVISION 21, unit r22 — see the
+CHECKPOINT "VC22 CONFIRMED + THE H4 F-CHAIN" section at the tail, which is the current
+resumability anchor: TEN honest §3.1 rows unchanged, VC22 CONFIRMED (acceptance re-anchored on
+REVISION 20, VC23 owed), the (H4a) retirement fired at P(O-8b/M14) pass 2 and honestly NOT
+executed (GAPS-ONLY; one clean composite pass owed); the FINAL UPDATE section
 holds the standing loops and the four-document resume protocol; the live Lean census is
 `lean/notes/REMAINING_CENSUS_2026-08-01.md`). This document lays out (1) the bigger picture, (2) what
 is proved and on what it rests, (3) the Lean blueprint and its correspondence to the math-language
@@ -1580,3 +1582,40 @@ re-open trigger); the H1 campaign's remaining distance (GRADED-READ/
 REC-SL/SITE-EXH + members (b)/(c)/(d) proper + the GR-B leaf residue); the
 H2 U10 twins; the H6 semantic suppliers (incl. TerminalPolySem's) + item
 (vii). Verification: VC1–VC21 + VC22 pending on REVISION 20.
+
+## CHECKPOINT 2026-08-08+ (wallclock 2026-08-02): VC22 CONFIRMED + THE H4 F-CHAIN — RETIREMENT FIRED, NOT EXECUTED (ROOT REVISION 21)
+ROOT at REVISION 21 (unit r22; record ROOT §27). **VC22 CONFIRMED**: the
+confirming end-to-end pass RAN on the REVISION-20 text — COMPOSITION-SOUND,
+zero blockers (TEN rows recounted; 8 honesty spot-checks faithful; one
+metadata-only advisory) — **the acceptance RE-ANCHORS on REVISION 20**;
+REVISION 21 is the counter-line sync + a status-record batch, itself a text
+change: **VC23 owed on the REVISION-21 wording** (VC24 next in the cadence).
+The batch:
+(1) **The (H4a) = (R1)–(R4) F-chain** (blueprint HDISCHARGE_H4 §1): F-(i)
+COMPLETE per the ledger's 2026-08-08 entries — H4-M1 ACCEPTED (passes 2+3
+model-diverse), H4-M2 DONE (5-pass arc, pass 5 CLEAN on REVISION 4), H4-M4
+rev 4 (Route-B adjudication), H4-M5 textual bar MET (passes 6+7) + N-K3
+ALL GREEN (376/376, commit 5fdf350). F-(iii) EXECUTED at this unit:
+P(O-8b/M14) composite pass 2 (Codex, fresh context, current texts; report
+`lean/notes/openmath/PO8bM14_pass2_2026-08-02.md`, uncommitted — rides the
+next notes commit) returned **GAPS-ONLY (0 critical / 1 gap: M14 Lemma
+1(b)'s top-space scale display stale against M1's accepted two-case γ*
+display; targets (b)–(g) otherwise clean)**. F-(iv) NOT EXECUTED — the
+consecutive-clean ACCEPT bar is unmet: **the §3.1 roster STAYS TEN [M]
+rows** (recounted at the r22 audit; the (H4a) row displays
+RETIREMENT-READY-PENDING-CLEAN-PASS). Owed: the M14 Lemma-1(b) sync fold
+(O-8b note owner) → one clean composite pass → F-(iv) per H4M7 §3 (the row
+then retires with its (K3-δ) audit note surviving on the (UB-X) row).
+(2) **TR3-S1 stratum service annotated** on the (H1) row (TR3-S1 ACCEPTED,
+passes 2+3 model-diverse: order-2/e₀ = 1 stratum — TR-3′-GEN(i) a THEOREM,
+TR-3-ORD-X PROVED mod (KP_i)+[T] there; row stays [M]).
+(3) **(UB-X) Route-B status displayed**: M4/M5/N-K3 legs green; NOTHING
+discharged — the re-scope waits on H4M7 §4's five conditions incl. Asvin
+statement-change sign-off + the consumer-need walk.
+(4) **§6 campaign pointers**: the B2D Lean campaign (blueprint frozen
+90b4072; wave E landed 1c10fe6 — 15 E-phase sorries, GR-0 E-gate
+pass-with-residue; wave 1 = TD-0/TD-3/CL5 next) + the H4 pass-report
+archive. FRONTIER NOW: VC23; the M14 display fold + composite pass 3; the
+Route-B re-scope sign-off queue; then the REVISION-20 frontier list
+unchanged. Verification: VC1–VC22 done (VC22 = the REVISION-20 anchor);
+VC23 pending on REVISION 21.
