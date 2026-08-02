@@ -4588,3 +4588,31 @@ CLEAN composite passes, model-diverse — ACCEPT per H4M7 §2. The full
 F-chain: F-(i) five records ✔ · F-(iii) pass 2 folded + passes 3+4 clean ✔
 · **F-(iv) MAY FIRE at the next ROOT revision (r23)**: the (R1)-(R4) row
 retires mod (K3-δ) (the audit note moves to (UB-X) per the r22 display).
+
+## 2026-08-08: SYNTHESIS PASS 5 — the post-hardest-first synthesis (map only, no dispatch)
+
+`docs/SYNTHESIS_PASS5_2026-08-08.md`. Verified: hardest-first Tiers 1–3 ALL
+EXECUTED; the architecture HELD (no re-architecture fired at any of the five
+probed risks). Findings: **F1** countermodel-first = the window's proven
+engine, promoted to the [M]-row campaign ENTRY protocol (first targets:
+huni/SlotUniformLaw decided at the compiled tdL instance; ADM-U0 repair;
+POOL-DICT attempt); **F2** the GRADED-READ supplier+scoping discharge shape
+transfers to REC-SL as an attempt-grade supplier question on the compiled
+GR0b layer (IsRecentering σ.e = 1 + node_hψ0 c̃≠0 + child_e/child_h ties;
+similar ≠ same — only the supplier layer is shared); **F3** the narrowed
+readsOf debt re-read as a consumer-need/restatement question (landing
+content already f-tied-witnessed at ReadsOfFrom; general same-f From→ReadsOf
+converse dead by C-e; live route = junc_bundle + a root-frame-restricted
+converse) — one B-M2 consumer-need walk licensed; **F4** TR3-S2 chartered
+shape: ONE compose unit threading the measured TWIST-LAW closes TR-3′-GEN
+outright (D-ITER restatement = separate hygiene, precedes any
+DIterJunctionSupplier work); **F5** three opens (junc_bundle gate, readsOf
+witness, GR-3/4 p≠2 countermodel) funnel into ONE deep-instance forge
+campaign (run forge vs stage forge — two species); **F6** pass-4 audit:
+queue 1–5 executed; POOL-DICT/TerminalPolySem/TR-4/(ADM)-B dropped again →
+one named small-units dispatch; dead-weight list (stale E-phase headers,
+r22 "wave 1 next", B2D MANIFEST sync) rides VC25. Queue re-ranked:
+VC25+hygiene → Asvin zero-cost batch (TowerMoveClosureL re-ratification,
+Route-B re-scope, review queue) → TR3-S2 → GR-3/4 disposition → REC-SL
+suppliers → readsOf walk → countermodel batch → small units → D-ITER
+restatement → forge → DIterJunctionSupplier; (H6) C2 stays blocked.
