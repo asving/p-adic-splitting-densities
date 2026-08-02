@@ -2160,3 +2160,6 @@ TEN [M] rows. Report: lean/notes/openmath/KCUT_pass3_2026-08-06.md.
 GRB PASS 3: GAPS-ONLY (leakage cured, 0 criticals; 2 wording completions
 owed -> rev 4 polish; clean-pass counter 0/2 continues).
 Report: lean/notes/openmath/GRB_pass3_2026-08-06.md.
+
+## GRB LEAF REV 4: PASS-3 POLISH (2026-08-02)
+Pass-3 GAPS-ONLY items folded at REV-4 flags: S2.2 residual carrier-identification wording struck (only x_r, p_r^{±1}, y_r availability claimed), R2.5's "holds at the G2 instance" -> "supported on the G2-tested developments", "order-2 law computed" -> "one depth-2 instance computed and tested" (both live occurrences). Zero criticals stand; leaf awaits its FIRST clean hostile pass (counter 0/2). Doc: GRB_ORDER2_2026-08-05.md §REVISION 4.
