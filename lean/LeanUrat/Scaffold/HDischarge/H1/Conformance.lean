@@ -26,8 +26,11 @@ unit touched):
   (supplied by `Node.he` at every node).
 * `isNodeLift_K0` / `landingKey_K0` / `landingKey_recentering_K0` /
   `historyCoherent_key_K0` / `historyCoherent_recentering_K0` /
-  `readsOf_landing_K0` — the (K0)-conformance read off at each of the three
-  RECORDED carriers on which the wiring asserts a key: coherent interior
+  `readsOf_landing_K0` — the per-carrier (K0) read-offs at the three RECORDED
+  carriers on which the wiring asserts a key, per class [REVISION 7 — the
+  pass-5 CRITICAL-3 fold]: at the NON-RECENTERING ([NR]) carriers (K0) at the
+  node's ACTUAL pair; at the RECENTERING ([RC]) carriers the SYNTHETIC
+  `K0Conformant σ 1 1` ONLY (the unit note's §S0 table): coherent interior
   increments (`HistoryCoherent`'s non-recentering leg asserts
   `IsNodeLift νᵢ σᵢ₊₁.Φ`), interior recenterings (`IsRecenteringCore.base`:
   Φ' = Φ − lift, the e·g = 1 degree-preserving face), and the designated landing
