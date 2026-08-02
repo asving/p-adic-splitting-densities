@@ -3408,3 +3408,15 @@ delta comment/docstring/prose-only; gate re-run GREEN (exit 0, no
 diagnostics), zero sorry, Lean-core footprint unchanged. COUNTER: pass 1
 CRITICAL (folded, REV 1); pass 2 CRITICAL (folded, REV 2); clean 0/1 — one
 clean hostile pass owed on REVISION 2.
+
+## 2026-08-08: H4-M1 ACCEPTED (passes 2+3 CLEAN, model-diverse) — the F-(i) chain's M1 leg DONE
+
+Pass 3 (Fable decider, H4M1_pass3_2026-08-08.md): re-derived the §3.5(d)
+K1-at-g=1 instantiation, the (g)-S4 coefficient-localization preservation,
+and the (S6b)/offset-P-lift arithmetic against MOVES:1946-2670; the (EQ-1)
+separation verified honest (non-certification stated 3×, undone nowhere);
+all run-production fences verified consumed-by-nothing; N-T4 re-run PASS.
+Nothing classifiable. Second consecutive clean (Codex pass 2 + Fable pass
+3). F-(i) status: M1 ✔ ACCEPTED · M2 REVISION 2 folded (5ffbe84), one clean
+owed · M4 rev 4 (4b919bd, M2-seam re-read caveat displayed) · M5 second
+clean owed · N-K3 unrun.
