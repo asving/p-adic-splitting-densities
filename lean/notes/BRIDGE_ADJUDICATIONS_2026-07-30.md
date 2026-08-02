@@ -2713,3 +2713,26 @@ revives a nontrivial factor) — narrowed at S3.4 + its R11.3 echo; the
 two-stratum conjecture display unchanged, both strata OPEN. Clean
 counter stays 0/2; pass 16 runs on the REVISION 12 text. Record: GRB
 leaf §REVISION 12.
+
+## B-M2 REVISION 7 — the pass-5 fold, folded by CENSUS (2026-08-02)
+Hostile pass 5 (Codex, `BM2_pass5_2026-08-06.md`) returned CRITICAL: 3
+criticals + 3 gaps, ALL the same untagged-universal genre passes 1–4 hit
+(the pass verified all four REVISION-6 folds and re-confirmed the nine
+compiled declarations sound). Five folds of quoted-site fixes + judgment
+sweeps failed to kill the genre, so REVISION 7 replaces judgment with
+ENUMERATION: a mechanical sentence CENSUS of §SC–§S6 + the Lean module doc
+block (grep-defined keywords, segmentation rule, and line bounds recorded
+in the REVISION 7 record of `H1_BM2_2026-08-06.md`) — 123 hits on the
+folded text = 81 [TAGGED] standing + 33 [STATUS-FREE] + 9 rows FIXED (7
+defect sites: CRIT-1 §S1 "any engine lift" universal → per-class +
+SITE-EXH form; CRIT-2 §S2 "any fired lift" application → recorded-carrier
+per-class + engine-wide rides SITE-EXH; CRIT-3 Lean header carrier bullet
+→ [NR]-actual/[RC]-synthetic split, COMMENT-ONLY, gate green; GAP-1
+DevBound [RC] dependency → REC-PARAM ONLY at the §S0 cell + §S4(vi) +
+the (i-c) entry, all agreeing per the §S2 adjudication arithmetic; GAP-2
+S0 abstract-engine row SPLIT into OL-1(a) / OL-1(b),(c) rows with
+GRADED-READ + TR-3-ORD-X displayed; GAP-3 GRADED-READ + REC-SL consumer
+lists extended with the abstract-engine readings). The full census table
+is IN the note so pass 6 checks the census instead of re-hunting (§S6
+attack item 7: absent-or-misclassified = automatic finding). Statuses
+never strengthened; no compiled claim touched. Clean counter stays 0/2.
