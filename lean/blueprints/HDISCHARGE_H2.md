@@ -777,15 +777,33 @@ The §3.6 door-2 search: a LITUNIT-charge session over Okutsu/Montes +
 local-mass-formula literature for a fibered finite-level freshness/counting
 statement; MATCH/NO-MATCH verdicts with quoted statements. Output feeds §3.6.
 
-### H2-U10 — GATED (classifier-face twins; DO NOT DISPATCH before sign-off)
+### H2-U10 — CLOSED (2026-08-02: (c) SUPPLIED; (a′)/(b) RETIRED-NO-CONSUMER)
+
+**CLOSURE (2026-08-02, H2-U10 closure unit; gates = §2.3 sign-off ledger
+3eda6d4 + III-U3b landed 0b04771):** the row closes with NO new Lean — the
+twins' spec reduces to III-U3b's landed consumption shape, verified matched
+binder-by-binder: **(c) is SUPPLIED** by the H2-U10b guarded
+`FRESH.childDetermined` (Hyps.lean), probe-checked VERBATIM against the
+`cu1_stepPair_ge2` docstring display (the landed field inhabits the retyped
+display with no adjustment; (H1)'s `residualNormalForm` tie at `2 ≤ i` via
+`laws_pin_fields` re-compiled as displayed; all consumption-path decls
+Lean-core). **(a′)/(b) are RETIRED-NO-CONSUMER — NOT proved**: retired
+because III-U3b's landed shape consumes nothing of them and their content is
+census-face (`FreshClauses`/`FreshRowOn`, waves 0–2); any chain-keyed twin
+over raw unguarded `EHist` rejoins the refuted F-2/F-4 class.
+`parentSeparated`/`junctionPin` stand as transcribed with the F-1/F-2
+findings LIVE; the §1.3 whole-row scope repair (duplicate-history refutation)
+remains open as a ROW-level burden, no longer a U10 deliverable. No
+consumption corollary was owed: `interior_childDetermined_instance`
+(DictIIIProbes.lean) already unit-tests the field against its consumer shape.
 
 **STATUS (2026-08-01): U10 ran and BLOCKED (F-4; ledger ## H2-U10 EXECUTED);
 the follow-up H2-U10b adjudication EXECUTED the interior-scope repair** —
 `childDetermined` guarded by `InteriorChain` (unique-side form, non-vacuity
 witness compiled at an interior instance; terminal face routed to
-(T-READ)/(H6) in the row docstring). The full chain-keyed twins of
-(a′)/(b)/(c) described below remain OPEN (they need the §1.3 whole-row scope
-repair: `parentSeparated` is still refuted at duplicate histories).
+(T-READ)/(H6) in the row docstring). ~~The full chain-keyed twins of
+(a′)/(b)/(c) described below remain OPEN~~ — superseded by the CLOSURE block
+above ((c) supplied, (a′)/(b) retired-no-consumer).
 
 The faithful CHAIN-KEYED twins of (a′)/(b)/(c) for the Step-10/K1 face (the
 CU-leaf-label content the review's faces-list flagged as uncovered): fields
@@ -810,10 +828,11 @@ S ∈ D.principalSides i ∧ HasRequestedSlope (Theta H) i S`, implicit
 `residualNormalForm` (at `2 ≤ i`, reader tied by `laws_pin_fields`).
 Chain-keyed (a′)/(b) twins have NO III-U3b consumer — that content is
 census-face (`FreshClauses`/`FreshRowOn`), and any twin field quantifying raw
-`EHist` unguarded rejoins the refuted F-2/F-4 class. Standing constraint from
-the U10/U10b record: the whole-row §1.3 scope repair (`parentSeparated`
-duplicate-history refutation) is still the twins' open design burden; gate =
-the dual statement gate as displayed.
+`EHist` unguarded rejoins the refuted F-2/F-4 class. ~~Standing constraint
+from the U10/U10b record: the whole-row §1.3 scope repair (`parentSeparated`
+duplicate-history refutation) is still the twins' open design burden~~ — at
+closure the scope repair transfers to the §1.3 ROW (see CLOSURE block); the
+dual statement gate was not consumed (no new statement authored).
 
 ### H2-U9 — LANDED (2026-08-02; wave 3 gate satisfied)
 
@@ -841,14 +860,18 @@ leg PASS, 2026-08-02); Lean-core axioms, zero sorry. Ledger:
 | 0 | U1 → U2 | sequential (U2 needs U1), minutes-scale | compile green |
 | 1 | U4, U5, U6, U7, U8, P1, P2 | ALL parallel (U5 waits U4 only for its proof, statement independent) | per-unit: compile + falsifier; P1/P2: hostile pass |
 | 2 | fold: §2.3 adjudication package to Asvin (sign-off request with U7's compiled witness); update ROOT (FRESH) row notes | lead-only | sign-off |
-| 3 | U10 (classifier-face twins) | after §2.3 sign-off + III-U3b coordination — **both satisfied 2026-08-02 (III-U3b LANDED, consumption shape on record at `cu1_stepPair_ge2`); U10 dispatchable** | dual statement gate |
+| 3 | U10 (classifier-face twins) | after §2.3 sign-off + III-U3b coordination — **CLOSED 2026-08-02**: (c) SUPPLIED (guarded `childDetermined`, verified = the `cu1_stepPair_ge2` display), (a′)/(b) RETIRED-NO-CONSUMER (census-face); no new Lean | dual statement gate — not consumed (no new statement) |
 | 3 | U9 + the (FRESH-RED) assembly theorem | after B2-FINAL acceptance | dual statement gate — **PASSED + LANDED 2026-08-02** (gate satisfied by accepted §B2-DEF, B2-FINAL's successor; Codex ACCEPT 0/0 + Fable PASS) |
 | any | H2-L1 literature session | non-blocking | LITUNIT charge |
 
-**Coverage honesty (review faces-list accepted):** waves 0–2 cover the census
-face (Step 14/K3) at counting-shadow fidelity and the diagnostics; the
-classifier face (Step 10 → K1 CU leaf labels) is covered ONLY at gated U10 —
-until it lands, that face's honest carrier remains the O-9 §5.4 prose row; the
+**Coverage honesty (review faces-list accepted; U10 CLOSED 2026-08-02):**
+waves 0–2 cover the census face (Step 14/K3) at counting-shadow fidelity and
+the diagnostics; the classifier face (Step 10 → K1 CU leaf labels) is carried,
+per the U10 closure, by the guarded `childDetermined` at its sole consumer
+`cu1_stepPair_ge2` for the (c) clause — which prices CITATION STRUCTURE only
+(the row docstring's honest pricing) — with (a′)/(b) content census-face;
+(FRESH)'s genuine freshness content stays priced at (TRANS-DEEP)/(VTX-DEEP)
+(U9, landed) and the O-9 §5.4 prose row remains the full-content carrier; the
 clause-(UB) q = p^δ semantics ride the engine seam (carriers are field-free by
 the skeletal design), so UB conformance is an ENGINE-SEAM duty displayed at
 U1's design notes, not a wave-0–2 deliverable.

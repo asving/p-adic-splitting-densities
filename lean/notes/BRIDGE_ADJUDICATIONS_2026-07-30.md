@@ -3638,3 +3638,46 @@ the hardest things first, the ones that might cause the deepest changes to
 the architecture of the proof." Order of record written; Tier 1 (SITE-EXH
 probe; V9 e′≥2 ruling) + Tier 2 (B2D hard holes TD-0/TD-3 + CL5) + Tier 3
 (e₀≥2 twist + D-ITER falsifiers) dispatched immediately.
+
+## H2-U10 CLOSED (2026-08-02): (c) SUPPLIED, (a′)/(b) RETIRED-NO-CONSUMER — no new Lean
+
+Gates in hand (§2.3 sign-off, ledger entry above / commit 3eda6d4; III-U3b
+LANDED with the U10 CONSUMPTION SHAPE displayed, commit 0b04771), the U10
+closure unit adjudicated the chain-keyed twins against the fixed consumption
+shape and closed the row WITHOUT authoring Lean:
+
+* **(c) SUPPLIED.** The landed guarded `FRESH.childDetermined`
+  (Scaffold/DictIII/Hyps.lean, H2-U10b form) was verified to match the
+  `cu1_stepPair_ge2` docstring's U10 CONSUMPTION SHAPE **binder-by-binder**:
+  a fresh probe (`lake env lean`, exit 0, 2026-08-02) retyped the display
+  VERBATIM — implicit `{f H D R i ν}`, guard `InteriorChain H`,
+  `ConsF f H D R`, `getElem?` lookup `H.nodes[i]? = some ν`, ∃!-side with
+  the three conjuncts in display order — and the landed field inhabits it
+  with no coercion or adjustment. ZERO mismatch findings; statement fence
+  untouched (no statement changed anywhere in this unit).
+* **(H1) tie re-verified.** The shape's (H1) claim — exactly
+  `residualNormalForm` fires, at `2 ≤ i`, granted reader tied to `R` by
+  `GMNReader.laws_pin_fields` — re-compiled standalone in the same probe,
+  exactly as `cu1_stepPair_ge2` consumes it. No U10-side consumption
+  corollary was owed: `interior_childDetermined_instance`
+  (HDischarge/H2/DictIIIProbes.lean) already unit-tests the field against
+  the consumer shape, and `cu1_stepPair_ge2` IS the (H1) consumption.
+* **(a′)/(b) RETIRED-NO-CONSUMER — NOT proved.** Retired solely because
+  III-U3b's landed shape consumes nothing of them and the census face
+  (`FreshClauses`/`FreshRowOn`, waves 0–2) covers their content; any
+  chain-keyed twin quantifying raw unguarded `EHist` rejoins the refuted
+  F-2/F-4 class. This is a no-consumer retirement, never a discharge.
+* **Standing honesty unchanged:** `parentSeparated`/`junctionPin` stand as
+  transcribed with findings F-1 (junctionPin trivially true) and F-2
+  (parentSeparated refuted at duplicate histories, `U8.fresh_uninhabited`)
+  LIVE; the §1.3 whole-row scope repair transfers to the ROW as an open
+  burden. The guarded (c) row prices CITATION STRUCTURE (ConsF-derivable
+  under the guard); genuine (FRESH) freshness stays at (TRANS-DEEP)/
+  (VTX-DEEP) (H2-U9, landed).
+* **Gates:** probe green (exit 0); axioms Lean-core
+  `[propext, Classical.choice, Quot.sound]` on `cu1_stepPair_ge2`,
+  `cu1_stepPair`, `laws_pin_fields`, `interior_childDetermined_gate`,
+  `interior_childDetermined_instance`,
+  `probe_restated_childDetermined_refuted`; zero new sorry (no Lean file
+  touched). Records: HDISCHARGE_H2.md §6 U10 section → CLOSED block, wave
+  table row, coverage-honesty paragraph.
