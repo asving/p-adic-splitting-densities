@@ -619,12 +619,24 @@ wildcard), per the AxChk_baseline discipline. Expected footprint: Lean-core only
   REFUTES (R2)/(R3) drafting if any a^{(δ)}(γ) ≠ 5·a(γ) — the first gate that
   exercises a NESTED proper sub-alphabet (the executed T1 mini-run had d = 1, full
   per-slot fields; M14's own caveat).
-- **N-K3 (NEW; seals H4-M4/M5):** enumerate the n = 3 pack's verdict-row β-legs'
-  δ > 1 pools; per pool, check the realized species against Lemma 4's gcd criterion
-  and against Route B's intrinsic exponent law (a_δ = δ·a_sym at the realized
-  letter). Predictions sealed pre-run per the standing falsifier discipline. A
-  violation of the INTRINSIC law refutes Route B (and (EQ-2) itself — escalate);
-  a gcd-criterion violation at a realized pool kills Route A's cheap match.
+- **N-K3 (RUN 2026-08-08 — ALL GREEN; seals H4-M4/M5):** enumerate the n = 3
+  pack's verdict-row β-legs' δ > 1 pools; per pool, check the realized species
+  against Lemma 4's gcd criterion and against Route B's intrinsic exponent law
+  (a_δ = δ·a_sym at the realized letter). Predictions sealed pre-run per the
+  standing falsifier discipline. A violation of the INTRINSIC law refutes Route B
+  (and (EQ-2) itself — escalate); a gcd-criterion violation at a realized pool
+  kills Route A's cheap match. **EXECUTED:** `verification/openmath/nk3_check.py`
+  (+ output/JSON; M5 §6's P1–P4 tested as-sealed; PARI oracle) — 376/376 checks,
+  0 violations: exhaustive pool roster at p ∈ {2,3} (531,441 + 32,768 boxes,
+  pattern counts exact; pools (s1-f2/2) 177,147·8,192, (s1-f3/3) 157,464·8,192,
+  (deep-g2/2) 13,608·1,472, (deep-g3/3) 648·256); intrinsic law EXACT at every
+  probed pool incl. per-branch at split pools (the F₉-shape contrast a_branch =
+  2 ≠ δ·a₁ = 4 MEASURED — T3's re-based run executed); M2 gcd table verified
+  exhaustively; NO intrinsic violation (branch (iii) does not fire); NO Route-A
+  refuter under the β-leg-born reading (structurally absent at n = 3, verified —
+  first possible at n ≥ 4); free-re-base non-coprime rows split per L–N
+  (pressure displayed, carrier-conditional, no branch fired). Full record: M5
+  note §8.
 - **N-REL-n4 (outlined in the M14 brief, still unspecced):** p = 2, n = 4, δ = 2
   conditioning on an irreducible quadratic root read — spec sheet rides H4-M1.
 

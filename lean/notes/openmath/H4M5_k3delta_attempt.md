@@ -908,3 +908,81 @@ fold) — and the compile gate is on record above.
 -/
 
 end LeanUrat.Scaffold.HDischarge.H4.RouteB
+
+/-!
+## §8. N-K3 RESULTS (appended by the N-K3 unit, 2026-08-08; run executed
+AFTER the §6 seal, script written against the seal as-sealed)
+
+CONCURRENCY NOTE: this section was appended at the END of the file while
+the M5 pass cycle ran concurrently on the body; nothing above this line
+was touched by the N-K3 unit. Artifacts: `verification/openmath/
+nk3_check.py` (predictions preregistered in the header BEFORE the run;
+§6's P1–P4 transcribed verbatim there), full log
+`verification/openmath/nk3_check_output.txt`, JSON
+`verification/openmath/nk3_check_results.json`. Exact integer arithmetic
+throughout, deterministic, runtime 24 s. Oracle: PARI/GP 2.17.4
+(factorpadic + idealprimedec), cross-checking the pack classifier.
+
+**VERDICT: ALL GREEN — 376/376 checks, zero violations. Every §6 sealed
+prediction holds as sealed. NO intrinsic-law violation (M4 branch (iii)
+does NOT fire). NO Route-A refuter under the β-leg-born pool reading
+(structural absence at n = 3, verified); under the free-re-base reading
+the non-coprime rows behave exactly as Lemma 4/Lidl–Niederreiter predicts
+(refutation pressure displayed, realization/carrier-conditional — M4
+branch (i)'s adjudication untouched, no branch fired).**
+
+- **The pack enumeration (the "enumerate" charge).** Exhaustive monic
+  cubics: p = 3 box mod 3⁴ (531,441; stage-1 pattern counts EXACT vs the
+  preregistered F₃-pattern × 3⁹ values, e.g. lin×irred-quad 177,147, irred
+  cubic 157,464); p = 2 box mod 2⁵ (32,768; all four families 8,192).
+  δ > 1 pool roster (birth family, D → realized count): p = 3:
+  (s1-f2, 2) 177,147 · (s1-f3, 3) 157,464 · (deep-g2, 2) 13,608 ·
+  (deep-g3, 3) 648; p = 2: 8,192 · 8,192 · (deep-g2, 2) 1,472 ·
+  (deep-g3, 3) 256. Undecided-at-depth boxes reported honestly (9,801
+  resp. 1,632). Oracle: 0 (e,f)-type mismatches on 18,630 (p=3 mod 3³
+  full) + 5,000 (p=3 mod 3⁴ seeded sample) + 31,136 (p=2 full) decided
+  boxes, completeness asserted (a gp stack-growth file-abort was caught
+  and fixed by pre-allocation — harness-bug class, logged).
+- **P1/P2 (the intrinsic law) — GREEN, zero violations.** Seven census
+  instances (C1–C7: the realized deep letters (1,1,2), (1,1,3), (2,1,1)
+  at both primes, the stage-1 pool children, and M14 T3's (2,1,2) witness
+  tower), each at δ ∈ {1,2,3} legs, heights γ = 0..3, alphabets measured
+  by exhaustive digit census over GR(p^M, δ) (reduced enumeration proved
+  equal to raw-box brute force at the δ = 1 controls): at EVERY stable
+  pool a_δ(γ) = δ·a_sym(letter) with SET-equality of the value set
+  against the predicted span (e.g. C2 δ=2: |𝔸| = 9, 81, 729, 729 =
+  3^{2·(1,2,3,3)}); at EVERY split-realized pool the per-branch value
+  sets are full F_{q₀} — a_δ = δ·a_sym(per-branch letter) = δ exactly
+  as P1's per-branch clause seals. δ | a_δ everywhere (P2).
+- **P4 — GREEN** at every letter-persistent pool: a_δ(γ) = δ·a₁(γ)
+  against the same letter's measured δ = 1 census, all instances.
+- **P3 (gcd criterion, no prediction) — facts:** the M2 seed table
+  verified EXHAUSTIVELY over the pack's realized residual families (all
+  3 + 8 irreducible quadratics/cubics at p = 3, 1 + 2 at p = 2): (2,2),
+  (2,4), (3,3) split with the exact Lidl–Niederreiter degree multisets
+  {1,1}/{1,1}/{1,1,1}; (2,3), (2,5), (3,2) stay irreducible. Zero
+  persistence anomalies. Refuter adjudication, both recorded readings:
+  (R-BIRTH — pool index = the β-leg's accumulated D): every realized
+  δ > 1 pool at n = 3 has the size-1 child (μ·f ≤ 3 structural bound,
+  verified: 0 realized child species with gcd(m_rel, δ) > 1) — NO
+  refuter, and none was structurally possible at n = 3 (first possible
+  at n ≥ 4: μ = 2, f = 2); (R-FREE — δ free re-base, the M2 table's
+  reading): non-coprime realized (letter, δ) pairs exist and all split —
+  the blueprint's recorded refutation PRESSURE, whose promotion to a
+  branch-(i) firing is the H4-F2 realization/carrier decision, not this
+  run's.
+- **The F₉-shape contrast EXECUTED** (T3's re-based run, §5.2's owed
+  witness): C7 (2,1,2)/ψ = z²+1/δ = 2 over GR(3^4, 2): residual splits,
+  per-branch alphabets = F₉ (a_branch = 2 = δ·a_sym(branch)) at every
+  height, while the naive stability read δ·a₁ = 4 at γ ≥ 2 — the
+  recorded a_branch = 2 ≠ 4 numbers reproduced by measurement; same
+  contrast at C1/C2/C3/C6's split legs. The intrinsic law reads
+  split-realized positions exactly where the stability law goes silent —
+  measured, no longer only recorded.
+
+Per §6's VIOLATION HANDLING: no violation, so no branch fires; the clean
+pass is n = 3 empirical support only — the Theorem's warrant remains
+§§2–4's derivation, not the run. With the textual bar met (passes 6+7
+CLEAN, model-diverse) and this run GREEN, the §M gate row "hostile pass
+×2; N-K3 sealed predictions" is fully discharged.
+-/
