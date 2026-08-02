@@ -4716,3 +4716,25 @@ the ReadsOf-SPECIES form leaves the opens list as an obligation and re-enters as
 FENCE DISPLAY of the dead From→ReadsOf converse. No Lean file touched; census row
 C237 (`RCWitness.lean` debt sentence) re-verified true as written. The F5 run-forge
 is NOT chartered by this consumer.
+
+## 2026-08-08: TR3-S2 ACCEPTED — TR-3'-GEN CLOSES AT ORDER 2 (two-stratum theorem)
+
+The 2-clean model-diverse bar is MET on TR3S2_2026-08-08.md REVISION 1: pass 2 (Codex,
+96d3d9b) CLEAN 0C/0G + pass 3 (fresh Fable, independence-fenced, max effort; report
+400f000) CLEAN 0C/0G, consecutive. The arc: attempt 330cc6b → pass 1 CRITICAL 1C/2G
+(1bd75de; core compose chain verified, defects were scope-only) → REVISION 1 5844572
+(9 divergence sites rescoped to the twist-visible criterion; Lemma KEY0 PROVED; Lemma
+WIT PROVED — units-only refutation made unconditional; falsifier run 3 ALL GREEN 11,768
+incl. TS2f 0/20) → passes 2+3 clean. Pass 3 additionally re-ran the falsifier
+byte-identically and hand-walked a twist-visible F4 instance; pass 2 independently
+checked the load-bearing GMN t_1/(18) transcription against the original arXiv paper
+(the non-textual leg for the one flagged pin).
+CONSEQUENCES: (i) with accepted TR3-S1, TR-3'-GEN at ORDER 2 = a two-stratum THEOREM in
+the S3.4 REV-11 form — GRB open lemma #1 (GRB_ORDER2_2026-08-05.md) closes at order 2;
+the GRB note's post-acceptance bracket rides r25. (ii) The units-only phrasing of the
+record statement is REFUTED on (ii) (unconditional via Lemma WIT) — the record form of
+TR-3'-GEN is the S3.4 REV-11 form, permanently. (iii) The state-key bifurcation finding
+(ORD-INV; divergence exactly on the twist-visible set) enters the record as the
+convention-independence law for deeper-order work. (iv) Deeper orders (>= 3) remain
+OPEN — no scope creep. (v) TR-3-ORD-X-on-(ii) stands proved conditional on (KP_i) +
+[T]-properness (displayed, not promoted).
