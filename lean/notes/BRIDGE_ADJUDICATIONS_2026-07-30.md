@@ -4760,3 +4760,23 @@ rows discharged). (iv) VERDICT on B-M2 REC-SL: NARROWED-TO {the `hsc` provenance
 abstract carriers; the recentering-chain fence} — the IsReadLift-at-(1,1)/(SL-top)/(SL-dev)
 KP-STEP obligations are compiled-fed; parity ties and (K1)+(K2)/GRADED-READ untouched, as
 priced. B-M2 note re-pricing rides the next revision, not this unit.
+
+## 2026-08-02 (wallclock) — HUNI-V2 RESTATEMENT: the d-leaf-read (v4) ledger re-key [countermodel-pinned; standing statement-change authority]
+
+ADJUDICATED from the compiled HUNI refutation (HuniProbe.lean, 375487c;
+note `openmath/HUNI_PROBE_2026-08-08.md`): the alphabet seam — `SlotUniformLaw`
+quantifies codes `z < q^D.d` while the v2/v3 ledger reads ONE `Fin q₀` leaf, forcing
+`slotDigits = 0` on `[q₀, q₀^d)`; `FreshReadsLaw` (the consumer conclusion) fails too,
+so the CHAIN was re-keyed, not the law re-guarded. EXECUTED: statement round 4 —
+`TDDefsV4.lean` (`LedgerStratumDataV4` + `slotRead`, the [R1-G2] field-element-to-code
+bijection as the base-q₀ code of the d leaves; `LedgerLawfulV4` = 15 v3 clauses with
+exactly 5 re-keyed to `slotRead`; `LedgerStrataV4`), `TDV4_chain.lean` (TD-1..TD-6 v4
+twins incl. `ledger_freshRowOnV4`, the live huni face), `HuniV4Probe.lean` (acceptance:
+`slotUniform_td2V4` — huni-v2 HOLDS at the transported countermodel `td2V4`;
+`td2V4_oldPair_uniform` — the exact z=0/z=2 refutation pair now counts 1=1;
+`td2V4_freshReads` — `FreshReadsLaw` DELIVERED where `freshReads_td2_false` refuted it).
+NO in-place signature change: all H2 statements byte-unchanged; v1–v3 files
+byte-unchanged as records; tdL/td2 remain v3-lawful; B2D 0 sorries; footprints
+Lean-core. huni status: refuted-as-stated (v3 family) → displayed-and-satisfiable
+(v4 family; still (ADM) + (GR-B)-line content, never supplied by the TD chain).
+Full repair record: `openmath/HUNI_PROBE_2026-08-08.md` §REPAIR RECORD.

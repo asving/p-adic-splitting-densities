@@ -3,7 +3,7 @@
  "blueprint": "lean/blueprints/B2DEF_LEAN_2026-08-08.md (commit 90b4072; Codex design-frozen, rounds 1+2 folded)",
  "math_source": "ACCEPTED §B2-DEF (lean/notes/MOVES_2026-07-24.md :1849-2745; dual-accepted rev D11d)",
  "namespace": "LeanUrat.B2D",
- "phase": "E-phase LANDED (wave E, 2026-08-02) + TD STATEMENT ROUND 2 (v2, 2026-08-02): v1 ledger semantics refuted at the wave-1 hard hole and re-architected to the finite-box TDDefsV2 layer + TD WAVE-2 RUN (2026-08-02): TD-0 LANDED (designated r >= 1 instance, all duties, Lean-core) and TD-3 round 2 REFUTED (TD3v2_countermodel: lawfulness-pack seams A/B — the v2 semantics repair was sound, the PACK is still too weak) + TD STATEMENT ROUND 3 (v3, 2026-08-08 wallclock 2026-08-02): TDDefsV3 pack = v2 + member_exists + parent_box_disjoint (exactly the two seam clauses), TD-3 PROVED on it (Lean-core), TD-1 PROVED at its v2 statement, tdL v3-lawful, both round-2 witnesses compiled-FAIL v3, TD-6 re-keyed to LedgerStrataV3 behind a compiled v2-unfillability adjudication + TD MOP-UP WAVE (2026-08-08 wallclock 2026-08-02): TD-2/TD-4/TD-5 v3-seam-AUDITED (not implicated — partition/pin/projection read no parent factorization or member existence) then PROVED at their v2 statements byte-unchanged (TD-1 precedent), TD-6 PROVED in full (transDeep_of_lawful builder + transDeep_of_ledger + ledger_freshRowOn + the td_transDeep r=1 firing gate + the rfl leakFree-plug gate) — THE TD FRONT IS SORRY-FREE; every remaining sorry (GR wave 2a) is an E-phase open-goals-ledger entry tagged with its unit ID and round + GR WAVE 2a (2026-08-02): THE SUPPLIER VERDICT compiled (GR0b_suppliers.lean: hpsi0 node-supplied — E-gate verdict corrected; hscale history-supplied at interior reads and FORCES nu.e = 1 = the compiled recording perimeter; frame pins named + history-supplied), N-GR1 falsifier family built + run GREEN BEFORE the GR-2/GR-3 landing (verification/openmath/ngr1_slotpos_trace.py; N5 = the sigma.e-compression obstruction demo), GR-1 (2 sorries) + GR-2 (3 sorries) PROVED at the frozen statements Lean-core, GR-3 (2) + GR-4 (1) frozen sorries stood OPEN-OBSTRUCTED through wave 2a with supplier-level forms GR3_keyResidual_level(+exists)/graded_read_level/graded_read_of_history PROVED Lean-core + GR ROUTE (a) EXECUTED (2026-08-08, GR34_DISPOSITION, orchestrator adjudication under Asvin's standing statement-change authority 2026-08-05): ReadHyps gained the frame-pin FIELDS hsigma_s/hsigma_t (fence-(vii) statement change; decisive fact = ZERO consumers of the abstract-frame face + believed FALSE there by the sigma.e-compression countermodel, so the sigma.e >= 2 abstract-frame scope is RETIRED as believed-false-and-unconsumed; ROOT display rides r24); suppliers readHyps_of_node/_node_level/_node' gained pass-through pin binders, readHyps_of_history supplies the pins via frame_level_of_history (signature unchanged); the 3 sorries DISCHARGED as one-liners from the _level forms, all Lean-core. B-M2's consumed face (graded_read_of_history, history-keyed) signature-unchanged. Remaining B2D sorries: 0.",
+ "phase": "E-phase LANDED (wave E, 2026-08-02) + TD STATEMENT ROUND 2 (v2, 2026-08-02): v1 ledger semantics refuted at the wave-1 hard hole and re-architected to the finite-box TDDefsV2 layer + TD WAVE-2 RUN (2026-08-02): TD-0 LANDED (designated r >= 1 instance, all duties, Lean-core) and TD-3 round 2 REFUTED (TD3v2_countermodel: lawfulness-pack seams A/B — the v2 semantics repair was sound, the PACK is still too weak) + TD STATEMENT ROUND 3 (v3, 2026-08-08 wallclock 2026-08-02): TDDefsV3 pack = v2 + member_exists + parent_box_disjoint (exactly the two seam clauses), TD-3 PROVED on it (Lean-core), TD-1 PROVED at its v2 statement, tdL v3-lawful, both round-2 witnesses compiled-FAIL v3, TD-6 re-keyed to LedgerStrataV3 behind a compiled v2-unfillability adjudication + TD MOP-UP WAVE (2026-08-08 wallclock 2026-08-02): TD-2/TD-4/TD-5 v3-seam-AUDITED (not implicated — partition/pin/projection read no parent factorization or member existence) then PROVED at their v2 statements byte-unchanged (TD-1 precedent), TD-6 PROVED in full (transDeep_of_lawful builder + transDeep_of_ledger + ledger_freshRowOn + the td_transDeep r=1 firing gate + the rfl leakFree-plug gate) — THE TD FRONT IS SORRY-FREE; every remaining sorry (GR wave 2a) is an E-phase open-goals-ledger entry tagged with its unit ID and round + GR WAVE 2a (2026-08-02): THE SUPPLIER VERDICT compiled (GR0b_suppliers.lean: hpsi0 node-supplied — E-gate verdict corrected; hscale history-supplied at interior reads and FORCES nu.e = 1 = the compiled recording perimeter; frame pins named + history-supplied), N-GR1 falsifier family built + run GREEN BEFORE the GR-2/GR-3 landing (verification/openmath/ngr1_slotpos_trace.py; N5 = the sigma.e-compression obstruction demo), GR-1 (2 sorries) + GR-2 (3 sorries) PROVED at the frozen statements Lean-core, GR-3 (2) + GR-4 (1) frozen sorries stood OPEN-OBSTRUCTED through wave 2a with supplier-level forms GR3_keyResidual_level(+exists)/graded_read_level/graded_read_of_history PROVED Lean-core + GR ROUTE (a) EXECUTED (2026-08-08, GR34_DISPOSITION, orchestrator adjudication under Asvin's standing statement-change authority 2026-08-05): ReadHyps gained the frame-pin FIELDS hsigma_s/hsigma_t (fence-(vii) statement change; decisive fact = ZERO consumers of the abstract-frame face + believed FALSE there by the sigma.e-compression countermodel, so the sigma.e >= 2 abstract-frame scope is RETIRED as believed-false-and-unconsumed; ROOT display rides r24); suppliers readHyps_of_node/_node_level/_node' gained pass-through pin binders, readHyps_of_history supplies the pins via frame_level_of_history (signature unchanged); the 3 sorries DISCHARGED as one-liners from the _level forms, all Lean-core. B-M2's consumed face (graded_read_of_history, history-keyed) signature-unchanged. Remaining B2D sorries: 0. + HUNI-V2 RE-KEY (wave 8, 2026-08-02 wallclock): statement round 4 -- TDDefsV4 d-leaf digit-code read (LedgerStratumDataV4/slotRead/LedgerLawfulV4/LedgerStrataV4, the [R1-G2] field-element-to-code bijection on the box carrier), TD chain re-proved on it (TDV4_chain), all three acceptance tests compiled at the transported countermodel td2V4 (HuniV4Probe: SlotUniformLaw HOLDS, old failing pair uniform, FreshReadsLaw delivered); H2 statements byte-unchanged; v1-v3 records byte-unchanged; B2D still 0 sorries.",
  "units": [
   {
    "id": "E1",
@@ -289,6 +289,54 @@
    ],
    "status": "LANDED 2026-08-02 (no sorry; all Lean-core; lake env lean exit 0); now the CLOSED refutation record (resolution note in docstring) — refutes v1 ONLY, does not port to v2 (TD3v2_control.cmL_not_lawfulV2)",
    "notes": "the wave-1 hardest-hole FAILURE artifact: DigitsProdLaw refuted at EVERY v1-lawful ledger instance with rho0 >= 1; gate trace verification/openmath/ntd1_td3_ledger_semantics_trace.py (extended 2026-08-02 with the [LHS-V2] round-2 column, 3/3 MATCH)"
+  },
+  {
+   "id": "E2-V4",
+   "file": "TDDefsV4.lean",
+   "decls": [
+    "LedgerStratumDataV4 (extends LedgerStratumData; + slotCoords, the d read leaves)",
+    "LedgerStratumDataV4.slotRead (the [R1-G2] d-leaf base-q0 digit CODE)",
+    "slotRead_congr",
+    "LedgerSemanticsV4",
+    "LedgerLawfulV4 (15 v3 clauses; EXACTLY 5 re-keyed to slotRead: semantics z-clause, slot_coords_mem, junction, digit_range, slotDigits_sem)",
+    "LedgerStrataV4"
+   ],
+   "status": "LANDED (huni-v2 repair round, 2026-08-02 wallclock; no sorry; Lean-core). Statement round 4 under standing statement-change authority, pinned by the compiled HUNI countermodel (HuniProbe.lean 375487c): the v2/v3 single-leaf slotCoord read caps digits at q0 < q0^d, refuting SlotUniformLaw AND FreshReadsLaw at every v3-lawful non-degenerate d>=2 instance. v1-v3 layers stay byte-unchanged as records; tdL/td2 remain v3-lawful.",
+   "wave": "8 (huni re-key)"
+  },
+  {
+   "id": "TD-V4",
+   "file": "TDV4_chain.lean",
+   "decls": [
+    "blockCount_read_partition_fn (TD-2 core generalized to functional reads)",
+    "ledger_floorsCharge_v4 / ledger_fiberSum_v4 / ledger_junctionPin_v4",
+    "parent_blockCount_one_v4 (TD-3 parent factor, verbatim copy on the v4 pack -- reads only read-free clauses)",
+    "ledger_digitsProd_v4",
+    "ledger_leakFree_v4",
+    "transDeep_of_lawful_v4 / transDeep_of_ledger_v4 / ledger_freshRowOnV4 / transDeep_of_lawful_v4_leakFree (rfl plug gate)"
+   ],
+   "status": "LANDED (no sorry; all Lean-core). The TD chain re-proved on LedgerLawfulV4; ALL H2 statements (SlotUniformLaw, FreshReadsLaw, FreshClauses, TransDeep, fresh_of_transDeep, freshRowOn_of_transDeep, freshReads_of_digitsProd) byte-UNCHANGED; ledger_freshRowOn (v3) stands as the round-3 record with its dead huni binder; the live face is ledger_freshRowOnV4.",
+   "wave": "8 (huni re-key)"
+  },
+  {
+   "id": "HUNI-V2-GATE",
+   "file": "HuniV4Probe.lean",
+   "decls": [
+    "tdB0v4",
+    "td2V4 (td2 transported to the d-leaf carrier; deltas named in docstring)",
+    "td2V4_slotRead_eval/_K0/_K1",
+    "td2V4_slotCond_junction/_free",
+    "td2V4wit / td2V4wit_mem",
+    "td2V4_semantics",
+    "td2V4_lawfulV4",
+    "td2V4_mem_ledgerStrataV4",
+    "td2V4_transDeep (supplier fires)",
+    "slotUniform_td2V4 (ACCEPTANCE a: huni-v2 HOLDS at the transported countermodel)",
+    "td2V4_oldPair_uniform (the exact z=0/z=2 refutation pair now uniform, 1=1)",
+    "td2V4_freshClauses / td2V4_freshReads (ACCEPTANCE c: FreshReadsLaw DELIVERED where freshReads_td2_false refuted it)"
+   ],
+   "status": "LANDED (no sorry; all Lean-core). All three huni-v2 acceptance tests PASS: (a) countermodel fails against huni-v2; (b) tdL/td2 remain v3-lawful byte-unchanged; (c) chain re-proves with H2 signatures intact. Repair record: notes/openmath/HUNI_PROBE_2026-08-08.md REPAIR RECORD section.",
+   "wave": "8 (huni re-key)"
   }
  ],
  "fences": "blueprint §6 (i)-(viii); consumer signatures (§3 TransDeep / §4 carriers) untouched",
