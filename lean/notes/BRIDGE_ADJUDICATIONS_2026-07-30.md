@@ -4458,3 +4458,74 @@ priced with the named open.
 glue carrier + index lemmas, `GlueJunction`, the 4 theorems, `FTiedTruncLanding`,
 `DIterJunctionSupplier`, 5 gates + 3 private helpers).  The glued object is a
 TRUNCATED run — never claimed coherent/full.
+
+---
+
+## 2026-08-02 (wallclock) — B2D GR WAVE 2a: THE SUPPLIER VERDICT + 5/8 GR sorries
+## PROVED + the frame-side obstruction adjudicated (GR front)
+
+**Charge** (blueprint §5 wave 2a + the GR-0 docstring's wave-2 pointer): the
+supplier question FIRST — supply `hscale`/`hψ0` from `HistoryCoherent` at interior
+reads or compile the exact obstruction — then the GR-1→GR-2→GR-3→GR-4 chain, N-GR1
+before GR-2/GR-3, frozen §4 interface untouchable.
+
+**THE SUPPLIER VERDICT (`B2D/GR0b_suppliers.lean`, NO sorry, all Lean-core)**:
+
+* `hψ0` — the E-gate verdict was WRONG; **SUPPLIED at every single node**
+  (`node_hψ0`): `hOrd` (ψ^μ ∣ Ranch, μ ≥ 1) + `hpat0`/`hRanch` (Ranch(0) = pat 0
+  ≠ 0) force ψ(0) ≠ 0; at a recentering this IS the "missing" pin c̃ ≠ 0.
+  Upgraded single-node map: 10/11 (`readHyps_of_node'`).
+* `hscale` — **history-level supplier PROVED at interior reads**
+  (`readHyps_of_history` + `_interior`/`_rec`): at a non-root node after a
+  non-recentering transition, `TransitionCoreL.child_e/child_h` tie the frame
+  pair to the read pair, so `hscale ⟺ ν.e = 1`, and `ν.e = 1` is RG-2's fence
+  (interior non-recentering) or `hspecRec` (recenterings). The slope-law
+  candidate was not needed — the stage-pair ties suffice.
+* THE COMPILED SCOPING (`readHyps_e_eq_one` + corollaries): `ReadHyps` alone
+  forces `ν.e = 1, ν.t = 0, ν.s = 1, ν.h = ν.σ.h, m̂ = 0` (`Node.hcop`:
+  gcd(e, e·σ.h) = e). The displayed pack IS the e = 1/[NR] recording perimeter;
+  at steep recorded reads `hscale` is FALSE by the same ties (GR vacuous there —
+  the steep graded identity is kp_step's child-model face, fence (viii)).
+* NEW named residue for GR-3/GR-4: the FRAME pins `(σ.s, σ.t) = (1, 0)` — not
+  `ReadHyps` fields, supplied at the same interior configuration
+  (`frame_level_of_history` via `child_e` + `he1t` + `hbez`).
+
+**N-GR1 (§7) BUILT + RUN GREEN before the GR-2/GR-3 landing**
+(`verification/openmath/ngr1_slotpos_trace.py`; BM2 quartic + `x⁴+3x²+18` = the
+joint e′=2 ∧ g=2 ∧ t≠0 case): stride/m̂ predictions exact everywhere; the scale-law
+prediction REFINED (holds iff e_read = 1 — matching the compiled forcing); N5 = the
+σ.e-compression obstruction demo fires.
+
+**PROVED at the frozen statements (5 of 8 sorries closed, Lean-core)**: GR-1 both
+(`GR1_slotWeights`, `GR1_equalWeights` — general ν.e via the stride-lattice
+development + `hK1`; NEW helper `nodeLift_ne_zero`); GR-2 all three
+(`GR2_slotResidual`, `GR2_posStep` — the integrality route σ.e·step = ν.e = 1,
+`GR2_slotResidual_graded` via `discharge`).
+
+**ADJUDICATED OPEN-OBSTRUCTED (3 frozen sorries STAND byte-unchanged)**: GR-3 ×2 +
+GR-4 ×1. The obstruction, exact: the sum positions consume the FRAME pins; at an
+abstract frame with σ.e ≥ 2 the position lattice compresses (present slots ≡ g mod
+σ.e ⟹ ψ = φ(z^{σ.e}), gap-irreducible whenever p ∤ σ.e), and R Φ′ = T^c·toLaurent φ
+with deg φ = g/σ.e — both GR-3 forms and graded_read clause 2 FAIL. Designed
+genuine-stage countermodel at p = 3 (frame [v₃; w(X)=1/2], node (1,1), ψ = z²+1,
+Φ′ = X²+3: R = C(1)T⁻¹ + 1). MATHEMATICAL, not compiled: over the corpus ambient F4
+(char 2) gap-ψ is a Frobenius power, never irreducible — all compiled instances
+safe; a compiled countermodel is priced at a p ≠ 2 stage forge. Unrecordable
+(child_e). Interface re-adjudication (frame pins into `ReadHyps` / history-keyed
+`graded_read`) = a §4 statement-change decision for the campaign owner, not this
+unit (fence (vii)).
+
+**PROVED supplier-level forms (new decls, sanctioned)**: `GR3_keyResidual_level`
+(+ ∃-form; the nodeLift_key_res recomposition, sharp c = 1/T^{m̂} assembly),
+`graded_read_level`, and **`graded_read_of_history` — the consumer-ready (i-b)
+discharger**: at an interior coherent read with a parent model, all three
+graded_read clauses hold with NO wiring hypotheses beyond coherence. B-M2 §S4
+(i-b) row consequence: dischargeable on the interior-[NR] carrier via
+`graded_read_of_history` (ROOT-owner move, §8 (B), frozen-signature caveat noted).
+
+**Gates**: per-file `lake env lean` green on all seven GR files + full targeted
+`lake build` green; `#print axioms` Lean-core on every proved decl (17 new);
+`AxChk_baseline` zero sorryAx (no capstone regression); statement fence verified —
+the three standing sorries' statements byte-unchanged, all other changes = proof
+bodies, new supplier decls, docstring records. Remaining B2D sorries: **3**
+(GR-3 ×2 + GR-4 ×1, adjudicated frozen forms; TD front already closed at 9a10109).

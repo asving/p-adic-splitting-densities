@@ -58,6 +58,25 @@ no interface obstruction fired, so no re-adjudication is triggered).
 level/inert configuration (`e = 1`, `h = σ.h` — the order-1 `nodeLift_key_res`
 configuration), so the displayed residue is non-trivially dischargeable on a
 recorded corpus configuration.
+
+## WAVE-2a ADDENDUM (2026-08-02, `GR0b_suppliers.lean`) — the table above is the
+## E-gate RECORD; both displayed rows are now DISCHARGED:
+
+* `hψ0` row **CORRECTED — SUPPLIED at every single node** (`GR0b.node_hψ0`): the
+  probe missed the anchored-residual provenance pin — `hOrd` (`ψ^μ ∣ Ranch`, μ ≥ 1)
+  + `hpat0`/`hRanch` (`Ranch.coeff 0 = pat 0 ≠ 0`) force `ψ.coeff 0 ≠ 0`; at a
+  recentering this IS the pin `c̃ ≠ 0` the probe declared missing. Upgraded map:
+  10/11 fields node-supplied (`GR0b.readHyps_of_node'`), `hscale` the sole residue.
+* `hscale` row: the wave-2 candidate PROVED — `GR0b.readHyps_of_history` supplies
+  the full pack at interior coherent reads (via `TransitionCoreL.child_e/child_h`,
+  NOT the rational slope law: the direct stage-pair ties suffice). Moreover
+  `GR0b.readHyps_e_eq_one`: `ReadHyps` alone forces `ν.e = 1` (`hcop` + `hscale`),
+  so the level configuration of `readHyps_of_node_level` is not a special case but
+  the GENERAL one — `hscale` IS the compiled e = 1/[NR] recording perimeter (RG-2).
+* NEW residue named for GR-3/GR-4 (not a `ReadHyps` field): the FRAME pins
+  `(σ.s, σ.t) = (1, 0)` — supplied at the same interior configuration
+  (`GR0b.frame_level_of_history`); genuine at the abstract carrier (the GR-3
+  obstruction record).
 -/
 
 set_option linter.style.longLine false

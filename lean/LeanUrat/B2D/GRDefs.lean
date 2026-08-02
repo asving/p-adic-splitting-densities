@@ -70,7 +70,11 @@ structure ReadHyps (ν : Node p F) : Prop where
       the read's slope numerator is the stride times the parent key weight.
       GR-0 probe verdict: DISPLAYED-HYPOTHESIS (no single-node wiring decl
       supplies it; the history-level slope law of `HistoryCoherent` is the
-      wave-2 supplier candidate — see GR-0's docstring). -/
+      wave-2 supplier candidate — see GR-0's docstring). WAVE-2a (2026-08-02):
+      supplier PROVED at interior coherent reads (`GR0b.readHyps_of_history`,
+      via `child_e`/`child_h`); moreover with `Node.hcop` this field FORCES
+      `ν.e = 1` (`GR0b.readHyps_e_eq_one`) — it is the compiled e = 1/[NR]
+      recording perimeter, false at steep recorded reads by design. -/
   hscale : (ν.h : ℤ) = (ν.e : ℤ) * ν.σ.w ν.σ.Φ
   /-- the read's own Bézout pin `e·s + h·t = 1` (behind m̂ = −t·h·g, D.8).
       SUPPLIED-BY `Node.hbez`. -/
@@ -84,7 +88,11 @@ structure ReadHyps (ν : Node p F) : Prop where
   /-- ν.g = deg ψ. SUPPLIED-BY `Node.hψdeg`. -/
   hψdeg : ν.ψ.natDegree = ν.g
   /-- `ψ.coeff 0 ≠ 0`. GR-0 probe verdict: DISPLAYED-HYPOTHESIS (recentering
-      nodes have ψ = z − c̃ with no corpus pin `c̃ ≠ 0`). -/
+      nodes have ψ = z − c̃ with no corpus pin `c̃ ≠ 0`). WAVE-2a CORRECTION
+      (2026-08-02): SUPPLIED at every node — `GR0b.node_hψ0` derives it from
+      `hOrd` + `hμ` + `hpat0` + `hRanch` (the anchored-residual provenance);
+      the field stays displayed for interface stability (§4 frozen), with the
+      supplier discharging it at every use site. -/
   hψ0 : ν.ψ.coeff 0 ≠ 0
   /-- parent residual multiplicativity. SUPPLIED-BY `Stage.hRmul` at `ν.σ`. -/
   hRmul : ∀ f g : Polynomial ℤ_[p], f ≠ 0 → g ≠ 0 → ν.σ.R (f * g) = ν.σ.R f * ν.σ.R g

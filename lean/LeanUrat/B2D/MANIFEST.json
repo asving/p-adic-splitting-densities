@@ -1,31 +1,296 @@
 {
-  "campaign": "B2DEF_LEAN — the §B2-DEF carry-algebra apparatus as the ONE shared Lean supplier (GR + TD projection layers)",
-  "blueprint": "lean/blueprints/B2DEF_LEAN_2026-08-08.md (commit 90b4072; Codex design-frozen, rounds 1+2 folded)",
-  "math_source": "ACCEPTED §B2-DEF (lean/notes/MOVES_2026-07-24.md :1849-2745; dual-accepted rev D11d)",
-  "namespace": "LeanUrat.B2D",
-  "phase": "E-phase LANDED (wave E, 2026-08-02) + TD STATEMENT ROUND 2 (v2, 2026-08-02): v1 ledger semantics refuted at the wave-1 hard hole and re-architected to the finite-box TDDefsV2 layer + TD WAVE-2 RUN (2026-08-02): TD-0 LANDED (designated r >= 1 instance, all duties, Lean-core) and TD-3 round 2 REFUTED (TD3v2_countermodel: lawfulness-pack seams A/B — the v2 semantics repair was sound, the PACK is still too weak) + TD STATEMENT ROUND 3 (v3, 2026-08-08 wallclock 2026-08-02): TDDefsV3 pack = v2 + member_exists + parent_box_disjoint (exactly the two seam clauses), TD-3 PROVED on it (Lean-core), TD-1 PROVED at its v2 statement, tdL v3-lawful, both round-2 witnesses compiled-FAIL v3, TD-6 re-keyed to LedgerStrataV3 behind a compiled v2-unfillability adjudication + TD MOP-UP WAVE (2026-08-08 wallclock 2026-08-02): TD-2/TD-4/TD-5 v3-seam-AUDITED (not implicated — partition/pin/projection read no parent factorization or member existence) then PROVED at their v2 statements byte-unchanged (TD-1 precedent), TD-6 PROVED in full (transDeep_of_lawful builder + transDeep_of_ledger + ledger_freshRowOn + the td_transDeep r=1 firing gate + the rfl leakFree-plug gate) — THE TD FRONT IS SORRY-FREE; every remaining sorry (GR wave 2a) is an E-phase open-goals-ledger entry tagged with its unit ID and round",
-  "units": [
-    {"id": "E1", "file": "GRDefs.lean", "decls": ["ReadHyps", "readPos", "mhat (abbrev -> MovesC.Node.mhat, cite-not-rebuild)"], "status": "LANDED (no sorry)", "notes": "§4 groups flattened to per-fact fields (flagged); (S6b)/(I-aug) range fields probe: no field added (flagged in docstring)"},
-    {"id": "GR-0", "file": "GR0_readHyps.lean", "decls": ["readHyps_of_node", "readHyps_of_node_level"], "status": "E-GATE PASS-WITH-DISPLAYED-RESIDUE (no sorry; Lean-core)", "notes": "supplier map in module docstring: 9/11 fields SUPPLIED by Node/Stage wiring; hscale + hψ0 DISPLAYED-HYPOTHESES (kp_step displayed-binder precedent); hscale discharged at the level/inert configuration (non-vacuity leg)"},
-    {"id": "E2", "file": "TDDefs.lean", "decls": ["LedgerStratumData", "LedgerStratumData.ledgerJoint", "ledger_rhoCount_off_support (PROVED)", "ledger_rhoCount_lt_two (PROVED)", "blockCount", "LedgerSemantics (V1 SUPERSEDED)", "LedgerLawful (V1 SUPERSEDED)", "LedgerStrata (V1 SUPERSEDED)", "LedgerScope", "LedgerClean"], "status": "LANDED (no sorry); SEMANTIC LAYER SUPERSEDED 2026-08-02 (statement round 2) — v1 LedgerSemantics/LedgerLawful/LedgerStrata refuted (TD3_countermodel, commit 5371139), kept byte-unchanged as the refutation record, NO consumer may cite them; datum/ledgerJoint/blockCount/Scope/Clean stay live (v2 consumes them)", "notes": "[R2-C1] support constraint proved; [R1-G1] two-layer design; design flag 1 (box-supported member predicate on Coord -> NAT) was the refuted transcription"},
-    {"id": "E2-v2", "file": "TDDefsV2.lean", "decls": ["LedgerStratumData.supportUnion", "blockCount_congr (PROVED)", "blockCount_of_not (PROVED)", "LedgerSemanticsV2", "LedgerLawfulV2 (PACK SUPERSEDED by v3)", "LedgerStrataV2 (PACK SUPERSEDED by v3)"], "status": "LANDED 2026-08-02 (statement round 2; no sorry; Lean-core); PACK LAYER SUPERSEDED 2026-08-08 (statement round 3) — LedgerLawfulV2/LedgerStrataV2 refuted as TD-3's hypothesis base (TD3v2_countermodel Seams A/B), kept byte-unchanged as the refutation record; the SEMANTICS layer (supportUnion/LedgerSemanticsV2/blockCount lemmas) stays live — v3 consumes it verbatim", "notes": "the finite-box repair of the refuted v1 seam: fiber counts = blockCounts over supportUnion (parentBlock + boxSlots.biUnion slotBlock, Fin q0 values) = MOVES D.11 #{f mod p^N} at the constrained coordinates; the N-TD1 trace count members_on_window(U, q0) IS the spec ([LHS-V2] 3/3 product-match); all non-semantics LedgerLawful clauses byte-verbatim v1; no OPEN unit may take LedgerLawfulV2 as its pack hypothesis (TD-1, PROVED, consumes it deliberately: weaker hypothesis = stronger theorem)"},
-    {"id": "E2-v3", "file": "TDDefsV3.lean", "decls": ["LedgerLawfulV3 (extends LedgerLawfulV2 + member_exists + parent_box_disjoint)", "LedgerStrataV3", "td_lawfulV3 (PROVED — tdL satisfies v3)", "td_mem_ledgerStrataV3 (PROVED)", "cmL4_not_lawfulV3 (PROVED — Seam-A witness fails v3 at member_exists)", "cmL3_not_lawfulV3 (PROVED — Seam-B witness fails v3 at parent_box_disjoint)"], "status": "LANDED 2026-08-08 wallclock 2026-08-02 (statement round 3; no sorry; all Lean-core)", "notes": "the pack repair of the round-2 seams: EXACTLY the two clauses the countermodels identified — member_exists = D.11's existence half (the trace's members_on_window(U, q0) reading, same carrier the v2 semantics counts), parent_box_disjoint = full parent/box-slot disjointness (junction + off-line included; the erased monic-top slot deliberately unconstrained); everything else verbatim v2 via extends; negative controls compiled, designated instance survives as predicted"},
-    {"id": "E2-v2-CONTROL", "file": "TD3v2_control.lean", "decls": ["cmL2", "cmL2_supportUnion", "cmL2_semanticsV2", "cmL2_lawfulV2", "cm2_digitsProd (DigitsProdLaw PROVED at the v2 control)", "v2_mechanism_inapplicable", "v2_devacuify_possible", "cmL_not_lawfulV2"], "status": "LANDED 2026-08-02 (no sorry; all Lean-core)", "notes": "the MANDATORY countermodel check: the v1 refutation mechanism (card_zero_of_finite_support over the infinite Coord -> NAT carrier) provably does NOT apply to v2 — the same instance shape that refuted v1 (cm_not_digitsProd: 0 != 2) SATISFIES the v2 law (2 = 2, Nat.card computed); duty (c) de-vacuity restored; the countermodel witness cmL does not port (cmL_not_lawfulV2)"},
-    {"id": "GR-1", "file": "GR1_equalWeights.lean", "decls": ["GR1_slotWeights", "GR1_equalWeights"], "status": "statements compiling, 2 E-phase sorries", "wave": "2a"},
-    {"id": "GR-2", "file": "GR2_slotResidual.lean", "decls": ["GR2_slotResidual", "GR2_posStep", "GR2_slotResidual_graded"], "status": "statements compiling, 3 E-phase sorries", "wave": "2a", "notes": "GR2_posStep N-GR1-gated (statement flag in docstring)"},
-    {"id": "GR-3", "file": "GR3_keyResidual.lean", "decls": ["GR3_keyResidual_pinned", "GR3_keyResidual"], "status": "statements compiling, 2 E-phase sorries", "wave": "2a", "notes": "pinned form N-GR1-gated; ∃-form is §4's frozen clause"},
-    {"id": "GR-4", "file": "GR4_gradedRead.lean", "decls": ["graded_read"], "status": "statement compiling, 1 E-phase sorry", "wave": "2a", "notes": "three-clause §4 conclusion; third-clause exact form fixed by E-phase probe (docstring record); GR-4b kpblock_of_read DELETED per R1-C5, fence (viii)"},
-    {"id": "TD-0", "file": "TD0_ledgerInstance.lean", "decls": ["pinnedRestrictEquiv + blockCount_pin (NEW helper: pinned-leaf block count q^(|B|-1), PROVED)", "tdD (r = 1 census, d = 2, s == 2) + census lemmas", "tdW (monicTop = false, junction ON-LINE) / tdP / tdL", "td_semanticsV2 (duty (b), PROVED)", "td_lawfulV2 (duty (a), PROVED — junction/digit_range/slotDigits_sem NON-vacuous)", "td_scope/td_clean/td_devacuify (duty (c) at r >= 1, PROVED)", "td_mem_ledgerStrataV2", "td_digitsProd (DigitsProdLaw PROVED at the instance — positive control with on-line digit content)"], "status": "LANDED 2026-08-02 (wave 2 run; no sorry; all Lean-core; lake env lean exit 0)", "wave": "1", "notes": "the designated r >= 1 instance = N-TD1 trace i2 lifted to census depth 1 (f = ![2,1]) with slot-1 block resized to 2 leaves so slot_count_val's FORMULA holds (trace i2's declared slot-1 exponent 3 violates m*N - s = 2 — i2 as data is NOT v2-lawful; recorded); parentBlock = empty => satisfies both clauses the round-2 TD-3 refutation shows missing, so tdL survives a v3 statement round"},
-    {"id": "TD-1", "file": "TD1_floorsCharge.lean", "decls": ["ledger_floorsCharge (PROVED)"], "status": "PROVED 2026-08-08 wallclock 2026-08-02 (v3 wave, opportunistic) AT THE v2 STATEMENT byte-unchanged — Lean-core, no sorry", "wave": "2b", "notes": "the law = slot_count_val at q = q0 + the [R2-C1] support constraint off it, exactly as the E-phase re-pricing finding predicted (TDDefs flag 2); deliberately NOT re-keyed to v3 (weaker hypothesis = stronger theorem; v3 consumes via extends)"},
-    {"id": "TD-2", "file": "TD2_fiberSum.lean", "decls": ["blockCount_read_partition (NEW general helper: read-fiber partition over the Fin m box, PROVED)", "ledger_fiberSum (PROVED)"], "status": "PROVED 2026-08-08 wallclock 2026-08-02 (TD mop-up wave) AT THE v2 STATEMENT byte-unchanged — Lean-core, no sorry", "wave": "2b", "notes": "v3-seam AUDIT (pre-proof, per the a1e14ef protocol): not implicated — the partition argument reads semantics + digit_range only (no member existence: empty strata sum 0 = 0; no block factorization); NOT re-keyed (TD-1 precedent). Proof: both sides through LedgerSemanticsV2 to supportUnion blockCounts; blockCount_read_partition fibers the member count over the total read map (card_eq_sum_card_fiberwise; digit_range keeps reads in the box so the dite default is never hit); off q0 vacuous by [R2-C1]. Import widened to TD3_digitsProd for boxExt (plumbing only; statement v2)"},
-    {"id": "TD-3", "file": "TD3_digitsProd.lean", "decls": ["coordPrec_trans/coordPrec_irrefl (PROVED)", "boxExt/boxRestrict/parentGlue + eq_on/eq_off lemmas (PROVED)", "unionSplitEquiv + blockCount_union_split (PROVED)", "blockCount_biUnion_prod (PROVED)", "blockCount_supportUnion_prod (PROVED)", "parent_blockCount_one (PROVED)", "ledger_digitsProd (PROVED, round 3)"], "status": "ROUND 3 (v3) PROVED 2026-08-08 wallclock 2026-08-02 — statement restated on LedgerLawfulV3 and the MOVES D.11 product argument closed in full; no sorry, all Lean-core. History: round 1 (v1) refuted (TD3_countermodel.ledger_digitsProd_refuted, preserved); round 2 (v2) refuted (TD3v2_countermodel.ledger_digitsProd_v2_refuted, the round-2 statement preserved verbatim inside the not-forall)", "wave": "1 (hardest hole, front 1) — round 1 FAILURE folded, round 2 FAILURE folded, round 3 LANDED", "notes": "proof: semantics reads the LHS as the supportUnion blockCount; member_split + slot_coord_mem fold the digit reads per slot; blockCount_union_split/blockCount_biUnion_prod factor over the disjoint decomposition (parent_box_disjoint + slots_disjoint; parent_support/slot_support localize); parent factor = 1 via member_exists (existence) x pinned_forced (uniqueness, strong induction along the CoordPrec rank on the finite parent block — CoordPrec is a strict order, transitive + irreflexive by omega); slot_sem/slotDigits_sem convert the factors; prod_sdiff splits on-line digit x off-line height; hscope/hclean never drawn on (standing guards of the statement family). Round-3 gates BEFORE proof: N-TD1 extended with parent-pinned i4-v3/i5-v3 (GATE-V2 5/5 MATCH) + compiled negative controls (cmL3/cmL4 fail v3)"},
-    {"id": "TD-4", "file": "TD4_junctionPin.lean", "decls": ["ledger_junctionPin (PROVED)"], "status": "PROVED 2026-08-08 wallclock 2026-08-02 (TD mop-up wave) AT THE v2 STATEMENT byte-unchanged — Lean-core, no sorry", "wave": "2b", "notes": "V9 import PROHIBITED (§6 fence (v)) — respected (imports TDDefsV2 only). v3-seam AUDIT: not implicated — the pin argument reads semantics + junction + hpin_ne/hpin_lt only (the ∃ c clause asserts a VANISHING, not a nonempty c-fiber); NOT re-keyed. Proof: c := L.pin ρ at q = q0; off-c cylinders unsatisfiable by the junction clause (blockCount_of_not); off q0 vacuous by [R2-C1], q ∈ {0,1} included; the monicTop guard never drawn on"},
-    {"id": "TD-5", "file": "TD5_leakCarrier.lean", "decls": ["LeakFreeCarrier (typed (L) carrier — UNCHANGED)", "ledger_leakFree (PROVED)"], "status": "PROVED 2026-08-08 wallclock 2026-08-02 (TD mop-up wave) AT THE v2 STATEMENT byte-unchanged — Lean-core, no sorry", "wave": "2b", "notes": "charter-demanded [R2-G1]. v3-seam AUDIT: not implicated — the carrier IS the (parent_interior_disjoint, pinned_forced) pair, clauses untouched by all three rounds; the proof is the pack projection ⟨hL.parent_interior_disjoint, hL.pinned_forced⟩; the INTERIOR (ii.3) form is the carrier's designed content (§5 verbatim referent) — v3's parent_box_disjoint implies it but is not needed; NOT re-keyed"},
-    {"id": "TD-6", "file": "TD6_assembly.lean", "decls": ["transDeep_of_ledger_v2_unfillable (PROVED — the compiled v2->v3 re-key adjudication)", "transDeep_of_lawful (NEW builder: the row AT the presenting datum, leakFree := LeakFreeCarrier L inspectable, PROVED/filled)", "transDeep_of_ledger (PROVED/filled — noncomputable def, respelling FLAGGED: TransDeep is Type-valued via its bare-Prop leakFree field; Exists.choose transport along J = L.ledgerJoint)", "ledger_freshRowOn (PROVED — freshRowOn_of_transDeep fed by this supplier, huni displayed)", "td_transDeep (NEW gate: the supplier FIRED at the designated r=1 instance)", "transDeep_of_lawful_leakFree (NEW gate: the [R2-G1] plug = LeakFreeCarrier L by rfl)"], "status": "PROVED 2026-08-08 wallclock 2026-08-02 (TD mop-up wave), statements byte-unchanged from the round-3 re-key — Lean-core, no sorry; the TransDeep supplier tie to the LANDED H2 row (fresh_of_transDeep/freshRowOn_of_transDeep hTD binders) is CLOSED", "wave": "3", "notes": "field suppliers: TD-1 floorsCharge (v2) + TD-3 digitsProd (v3) + TD-2 fiberSum (v2) + TD-4 junctionPin (v2) + TD-5 LeakFreeCarrier as the leakFree plug (never True); v2-statement units consumed through the v3 pack's extends; pricing fences intact (SlotUniformLaw NOT supplied — huni displayed hypothesis; junction VALUE not identified)"},
-    {"id": "CL5", "file": "../HC1/C6_alphabetCard.lean:129 (in place, HC1 property)", "status": "wave 1 (hardest hole, front 2) — untouched at E-phase"},
-    {"id": "TD-3-v2-GATE", "file": "TD3v2_countermodel.lean", "decls": ["cmL3", "cmL3_supportUnion", "cmL3_semanticsV2", "cmL3_lawfulV2", "cm3_not_digitsProd", "cmL3_fiber_pos", "cmL4", "cmL4_semanticsV2", "cmL4_lawfulV2", "cm4_not_digitsProd", "ledger_digitsProd_v2_refuted"], "status": "LANDED 2026-08-02 (wave-2 run; no sorry; all Lean-core; lake env lean exit 0); statements byte-unchanged at the v3 round (docstring RESOLUTION note only)", "notes": "the ROUND-2 refutation record: TD-3's v2 statement refuted at BOTH missing seams (A: parent satisfiability; B: parent/off-line-slot overlap — nonempty stratum, pinned_forced substantive, so NOT an emptiness pathology); v2_mechanism_inapplicable certified only the not-forall of the V1 MECHANISM, never the forall-law; v3 clause list recorded in the module docstring — EXECUTED as specified at the v3 round (TDDefsV3; both witnesses compiled-fail v3)"},
-    {"id": "TD-0/TD-3-GATE", "file": "TD3_countermodel.lean", "decls": ["blockUnion", "card_zero_of_finite_support", "lawful_inStratum_congr", "lawful_cylFiber_eq_zero", "lawful_cylFiberDigits_eq_zero", "lawful_fiber_devacuify_impossible", "lawful_exists_digit_witness", "not_digitsProd_of_lawful", "blockCount_of_forall", "cmD/cmW/cmP/cmL", "cmL_lawful", "cm_scope", "cm_clean", "cm_not_digitsProd", "ledger_digitsProd_refuted"], "status": "LANDED 2026-08-02 (no sorry; all Lean-core; lake env lean exit 0); now the CLOSED refutation record (resolution note in docstring) — refutes v1 ONLY, does not port to v2 (TD3v2_control.cmL_not_lawfulV2)", "notes": "the wave-1 hardest-hole FAILURE artifact: DigitsProdLaw refuted at EVERY v1-lawful ledger instance with rho0 >= 1; gate trace verification/openmath/ntd1_td3_ledger_semantics_trace.py (extended 2026-08-02 with the [LHS-V2] round-2 column, 3/3 MATCH)"}
-  ],
-  "fences": "blueprint §6 (i)-(viii); consumer signatures (§3 TransDeep / §4 carriers) untouched",
-  "falsifiers": "N-GR1, N-TD1, N-TD2 to be built BEFORE the units they gate (blueprint §7); N-TD1 v3 extension (2026-08-08): parent-pinned instances i4-v3/i5-v3 + per-instance [V3-A]/[V3-B] clause checks + the i2 transcription caveat DISPLAYED (i1-i3 data verbatim) — GATE-V2 5/5 MATCH, run before the TD-3 round-3 proof landed"
+ "campaign": "B2DEF_LEAN — the §B2-DEF carry-algebra apparatus as the ONE shared Lean supplier (GR + TD projection layers)",
+ "blueprint": "lean/blueprints/B2DEF_LEAN_2026-08-08.md (commit 90b4072; Codex design-frozen, rounds 1+2 folded)",
+ "math_source": "ACCEPTED §B2-DEF (lean/notes/MOVES_2026-07-24.md :1849-2745; dual-accepted rev D11d)",
+ "namespace": "LeanUrat.B2D",
+ "phase": "E-phase LANDED (wave E, 2026-08-02) + TD STATEMENT ROUND 2 (v2, 2026-08-02): v1 ledger semantics refuted at the wave-1 hard hole and re-architected to the finite-box TDDefsV2 layer + TD WAVE-2 RUN (2026-08-02): TD-0 LANDED (designated r >= 1 instance, all duties, Lean-core) and TD-3 round 2 REFUTED (TD3v2_countermodel: lawfulness-pack seams A/B — the v2 semantics repair was sound, the PACK is still too weak) + TD STATEMENT ROUND 3 (v3, 2026-08-08 wallclock 2026-08-02): TDDefsV3 pack = v2 + member_exists + parent_box_disjoint (exactly the two seam clauses), TD-3 PROVED on it (Lean-core), TD-1 PROVED at its v2 statement, tdL v3-lawful, both round-2 witnesses compiled-FAIL v3, TD-6 re-keyed to LedgerStrataV3 behind a compiled v2-unfillability adjudication + TD MOP-UP WAVE (2026-08-08 wallclock 2026-08-02): TD-2/TD-4/TD-5 v3-seam-AUDITED (not implicated — partition/pin/projection read no parent factorization or member existence) then PROVED at their v2 statements byte-unchanged (TD-1 precedent), TD-6 PROVED in full (transDeep_of_lawful builder + transDeep_of_ledger + ledger_freshRowOn + the td_transDeep r=1 firing gate + the rfl leakFree-plug gate) — THE TD FRONT IS SORRY-FREE; every remaining sorry (GR wave 2a) is an E-phase open-goals-ledger entry tagged with its unit ID and round + GR WAVE 2a (2026-08-02): THE SUPPLIER VERDICT compiled (GR0b_suppliers.lean: hpsi0 node-supplied — E-gate verdict corrected; hscale history-supplied at interior reads and FORCES nu.e = 1 = the compiled recording perimeter; frame pins named + history-supplied), N-GR1 falsifier family built + run GREEN BEFORE the GR-2/GR-3 landing (verification/openmath/ngr1_slotpos_trace.py; N5 = the sigma.e-compression obstruction demo), GR-1 (2 sorries) + GR-2 (3 sorries) PROVED at the frozen statements Lean-core, GR-3 (2) + GR-4 (1) frozen sorries STAND OPEN-OBSTRUCTED (genuine frame-side residue, math countermodel ambient-blocked from compilation) with supplier-level forms GR3_keyResidual_level(+exists)/graded_read_level/graded_read_of_history PROVED Lean-core. Remaining B2D sorries: 3 (GR-3 x2 + GR-4 x1, adjudicated frozen forms).",
+ "units": [
+  {
+   "id": "E1",
+   "file": "GRDefs.lean",
+   "decls": [
+    "ReadHyps",
+    "readPos",
+    "mhat (abbrev -> MovesC.Node.mhat, cite-not-rebuild)"
+   ],
+   "status": "LANDED (no sorry)",
+   "notes": "§4 groups flattened to per-fact fields (flagged); (S6b)/(I-aug) range fields probe: no field added (flagged in docstring)"
+  },
+  {
+   "id": "GR-0",
+   "file": "GR0_readHyps.lean",
+   "decls": [
+    "readHyps_of_node",
+    "readHyps_of_node_level"
+   ],
+   "status": "E-GATE PASS-WITH-DISPLAYED-RESIDUE (no sorry, Lean-core); WAVE-2a ADDENDUM 2026-08-02: both displayed residues DISCHARGED by GR0b_suppliers.lean (hpsi0 row CORRECTED to node-supplied; hscale supplied at interior coherent reads; docstring table addendum in place)",
+   "notes": "supplier map in module docstring: 9/11 fields SUPPLIED by Node/Stage wiring; hscale + hψ0 DISPLAYED-HYPOTHESES (kp_step displayed-binder precedent); hscale discharged at the level/inert configuration (non-vacuity leg)"
+  },
+  {
+   "id": "GR-0b",
+   "file": "GR0b_suppliers.lean",
+   "decls": [
+    "node_hpsi0 (PROVED: hpsi0 supplied at EVERY node via hOrd+hmu+hpat0+hRanch)",
+    "readHyps_of_node' (upgraded 10/11 supplier map)",
+    "readHyps_e_eq_one / readHyps_h_eq / readHyps_t_eq_zero / readHyps_mhat_eq_zero (the compiled e=1 scoping forcing)",
+    "frame_pair_of_coherent (child_e/child_h extraction)",
+    "node_e_one_of_interior (RG-2 extraction)",
+    "readHyps_of_history + _interior + _rec (THE hscale SUPPLIER at interior coherent reads)",
+    "frame_level_of_history (the GR-3/GR-4 frame pins (sigma.s, sigma.t) = (1, 0))"
+   ],
+   "status": "LANDED wave 2a 2026-08-02 (NO sorry, all Lean-core) — THE SUPPLIER VERDICT: hpsi0 = single-node SUPPLIED (E-gate verdict corrected); hscale = history-supplied at interior reads AND forces nu.e = 1 (the compiled e=1/[NR] recording perimeter); NEW named residue for GR-3/GR-4 = the frame pins, supplied by frame_level_of_history",
+   "wave": "2a"
+  },
+  {
+   "id": "E2",
+   "file": "TDDefs.lean",
+   "decls": [
+    "LedgerStratumData",
+    "LedgerStratumData.ledgerJoint",
+    "ledger_rhoCount_off_support (PROVED)",
+    "ledger_rhoCount_lt_two (PROVED)",
+    "blockCount",
+    "LedgerSemantics (V1 SUPERSEDED)",
+    "LedgerLawful (V1 SUPERSEDED)",
+    "LedgerStrata (V1 SUPERSEDED)",
+    "LedgerScope",
+    "LedgerClean"
+   ],
+   "status": "LANDED (no sorry); SEMANTIC LAYER SUPERSEDED 2026-08-02 (statement round 2) — v1 LedgerSemantics/LedgerLawful/LedgerStrata refuted (TD3_countermodel, commit 5371139), kept byte-unchanged as the refutation record, NO consumer may cite them; datum/ledgerJoint/blockCount/Scope/Clean stay live (v2 consumes them)",
+   "notes": "[R2-C1] support constraint proved; [R1-G1] two-layer design; design flag 1 (box-supported member predicate on Coord -> NAT) was the refuted transcription"
+  },
+  {
+   "id": "E2-v2",
+   "file": "TDDefsV2.lean",
+   "decls": [
+    "LedgerStratumData.supportUnion",
+    "blockCount_congr (PROVED)",
+    "blockCount_of_not (PROVED)",
+    "LedgerSemanticsV2",
+    "LedgerLawfulV2 (PACK SUPERSEDED by v3)",
+    "LedgerStrataV2 (PACK SUPERSEDED by v3)"
+   ],
+   "status": "LANDED 2026-08-02 (statement round 2; no sorry; Lean-core); PACK LAYER SUPERSEDED 2026-08-08 (statement round 3) — LedgerLawfulV2/LedgerStrataV2 refuted as TD-3's hypothesis base (TD3v2_countermodel Seams A/B), kept byte-unchanged as the refutation record; the SEMANTICS layer (supportUnion/LedgerSemanticsV2/blockCount lemmas) stays live — v3 consumes it verbatim",
+   "notes": "the finite-box repair of the refuted v1 seam: fiber counts = blockCounts over supportUnion (parentBlock + boxSlots.biUnion slotBlock, Fin q0 values) = MOVES D.11 #{f mod p^N} at the constrained coordinates; the N-TD1 trace count members_on_window(U, q0) IS the spec ([LHS-V2] 3/3 product-match); all non-semantics LedgerLawful clauses byte-verbatim v1; no OPEN unit may take LedgerLawfulV2 as its pack hypothesis (TD-1, PROVED, consumes it deliberately: weaker hypothesis = stronger theorem)"
+  },
+  {
+   "id": "E2-v3",
+   "file": "TDDefsV3.lean",
+   "decls": [
+    "LedgerLawfulV3 (extends LedgerLawfulV2 + member_exists + parent_box_disjoint)",
+    "LedgerStrataV3",
+    "td_lawfulV3 (PROVED — tdL satisfies v3)",
+    "td_mem_ledgerStrataV3 (PROVED)",
+    "cmL4_not_lawfulV3 (PROVED — Seam-A witness fails v3 at member_exists)",
+    "cmL3_not_lawfulV3 (PROVED — Seam-B witness fails v3 at parent_box_disjoint)"
+   ],
+   "status": "LANDED 2026-08-08 wallclock 2026-08-02 (statement round 3; no sorry; all Lean-core)",
+   "notes": "the pack repair of the round-2 seams: EXACTLY the two clauses the countermodels identified — member_exists = D.11's existence half (the trace's members_on_window(U, q0) reading, same carrier the v2 semantics counts), parent_box_disjoint = full parent/box-slot disjointness (junction + off-line included; the erased monic-top slot deliberately unconstrained); everything else verbatim v2 via extends; negative controls compiled, designated instance survives as predicted"
+  },
+  {
+   "id": "E2-v2-CONTROL",
+   "file": "TD3v2_control.lean",
+   "decls": [
+    "cmL2",
+    "cmL2_supportUnion",
+    "cmL2_semanticsV2",
+    "cmL2_lawfulV2",
+    "cm2_digitsProd (DigitsProdLaw PROVED at the v2 control)",
+    "v2_mechanism_inapplicable",
+    "v2_devacuify_possible",
+    "cmL_not_lawfulV2"
+   ],
+   "status": "LANDED 2026-08-02 (no sorry; all Lean-core)",
+   "notes": "the MANDATORY countermodel check: the v1 refutation mechanism (card_zero_of_finite_support over the infinite Coord -> NAT carrier) provably does NOT apply to v2 — the same instance shape that refuted v1 (cm_not_digitsProd: 0 != 2) SATISFIES the v2 law (2 = 2, Nat.card computed); duty (c) de-vacuity restored; the countermodel witness cmL does not port (cmL_not_lawfulV2)"
+  },
+  {
+   "id": "GR-1",
+   "file": "GR1_equalWeights.lean",
+   "decls": [
+    "liftBB (private stride-lattice development)",
+    "liftBB_isDev (private)",
+    "nodeLift_ne_zero (NEW helper, PROVED)",
+    "GR1_slotWeights (PROVED)",
+    "GR1_equalWeights (PROVED)"
+   ],
+   "status": "PROVED wave 2a 2026-08-02, BOTH sorries closed at the frozen statements, GENERAL nu.e (hK1 attained slot-min over the stride-lattice development; k-freeness = hscale). Lean-core.",
+   "wave": "2a"
+  },
+  {
+   "id": "GR-2",
+   "file": "GR2_slotResidual.lean",
+   "decls": [
+    "GR2_slotResidual",
+    "GR2_posStep",
+    "GR2_slotResidual_graded"
+   ],
+   "status": "PROVED wave 2a 2026-08-02, ALL THREE sorries closed at the frozen statements, AFTER the N-GR1 gate ran GREEN. posStep via the integrality route (sigma.e * step = nu.e = 1 over Z; hStretch + hscale + frame hbez + readHyps_e_eq_one). Lean-core.",
+   "wave": "2a",
+   "notes": "GR2_posStep N-GR1-gated (statement flag in docstring)"
+  },
+  {
+   "id": "GR-3",
+   "file": "GR3_keyResidual.lean",
+   "decls": [
+    "GR3_keyResidual_pinned (frozen, sorry STANDS)",
+    "GR3_keyResidual (frozen, sorry STANDS)",
+    "GR3_keyResidual_level (PROVED: + frame pins sigma.s=1, sigma.t=0)",
+    "GR3_keyResidual_level' (PROVED, exists-form)"
+   ],
+   "status": "WAVE-2a ADJUDICATED 2026-08-02: the 2 frozen sorries STAND OPEN-OBSTRUCTED byte-unchanged (the frame-side residue is GENUINE: sigma.e >= 2 abstract frames compress the position lattice, psi = phi(z^sigma.e) gap countermodel at p=3 — mathematical, not compiled: ambient F4 char-2 blocks gap-psi irreducibility, so all compiled corpus instances are safe; unrecordable via child_e). Supplier-level forms PROVED Lean-core (the nodeLift_key_res recomposition, sharp c=1/T^mhat assembly).",
+   "wave": "2a",
+   "notes": "pinned form N-GR1-gated; ∃-form is §4's frozen clause"
+  },
+  {
+   "id": "GR-4",
+   "file": "GR4_gradedRead.lean",
+   "decls": [
+    "graded_read (frozen, sorry STANDS)",
+    "graded_read_level (PROVED: + frame pins; clause 3 via Mpar.discharge + Stage.grRes)",
+    "graded_read_of_history (PROVED: THE CONSUMER-READY (i-b) DISCHARGER at interior coherent reads — all wiring supplied by HistoryCoherent through GR0b)"
+   ],
+   "status": "WAVE-2a ADJUDICATED 2026-08-02: the frozen sorry STANDS OPEN-OBSTRUCTED byte-unchanged (inherits GR-3 clause-2 residue; STOP per the frozen-interface discipline). graded_read_level + graded_read_of_history PROVED Lean-core; B-M2 (i-b) row dischargeable on the interior-[NR] carrier via graded_read_of_history (ROOT-owner move, sec 8 (B)).",
+   "wave": "2a",
+   "notes": "three-clause §4 conclusion; third-clause exact form fixed by E-phase probe (docstring record); GR-4b kpblock_of_read DELETED per R1-C5, fence (viii)"
+  },
+  {
+   "id": "TD-0",
+   "file": "TD0_ledgerInstance.lean",
+   "decls": [
+    "pinnedRestrictEquiv + blockCount_pin (NEW helper: pinned-leaf block count q^(|B|-1), PROVED)",
+    "tdD (r = 1 census, d = 2, s == 2) + census lemmas",
+    "tdW (monicTop = false, junction ON-LINE) / tdP / tdL",
+    "td_semanticsV2 (duty (b), PROVED)",
+    "td_lawfulV2 (duty (a), PROVED — junction/digit_range/slotDigits_sem NON-vacuous)",
+    "td_scope/td_clean/td_devacuify (duty (c) at r >= 1, PROVED)",
+    "td_mem_ledgerStrataV2",
+    "td_digitsProd (DigitsProdLaw PROVED at the instance — positive control with on-line digit content)"
+   ],
+   "status": "LANDED 2026-08-02 (wave 2 run; no sorry; all Lean-core; lake env lean exit 0)",
+   "wave": "1",
+   "notes": "the designated r >= 1 instance = N-TD1 trace i2 lifted to census depth 1 (f = ![2,1]) with slot-1 block resized to 2 leaves so slot_count_val's FORMULA holds (trace i2's declared slot-1 exponent 3 violates m*N - s = 2 — i2 as data is NOT v2-lawful; recorded); parentBlock = empty => satisfies both clauses the round-2 TD-3 refutation shows missing, so tdL survives a v3 statement round"
+  },
+  {
+   "id": "TD-1",
+   "file": "TD1_floorsCharge.lean",
+   "decls": [
+    "ledger_floorsCharge (PROVED)"
+   ],
+   "status": "PROVED 2026-08-08 wallclock 2026-08-02 (v3 wave, opportunistic) AT THE v2 STATEMENT byte-unchanged — Lean-core, no sorry",
+   "wave": "2b",
+   "notes": "the law = slot_count_val at q = q0 + the [R2-C1] support constraint off it, exactly as the E-phase re-pricing finding predicted (TDDefs flag 2); deliberately NOT re-keyed to v3 (weaker hypothesis = stronger theorem; v3 consumes via extends)"
+  },
+  {
+   "id": "TD-2",
+   "file": "TD2_fiberSum.lean",
+   "decls": [
+    "blockCount_read_partition (NEW general helper: read-fiber partition over the Fin m box, PROVED)",
+    "ledger_fiberSum (PROVED)"
+   ],
+   "status": "PROVED 2026-08-08 wallclock 2026-08-02 (TD mop-up wave) AT THE v2 STATEMENT byte-unchanged — Lean-core, no sorry",
+   "wave": "2b",
+   "notes": "v3-seam AUDIT (pre-proof, per the a1e14ef protocol): not implicated — the partition argument reads semantics + digit_range only (no member existence: empty strata sum 0 = 0; no block factorization); NOT re-keyed (TD-1 precedent). Proof: both sides through LedgerSemanticsV2 to supportUnion blockCounts; blockCount_read_partition fibers the member count over the total read map (card_eq_sum_card_fiberwise; digit_range keeps reads in the box so the dite default is never hit); off q0 vacuous by [R2-C1]. Import widened to TD3_digitsProd for boxExt (plumbing only; statement v2)"
+  },
+  {
+   "id": "TD-3",
+   "file": "TD3_digitsProd.lean",
+   "decls": [
+    "coordPrec_trans/coordPrec_irrefl (PROVED)",
+    "boxExt/boxRestrict/parentGlue + eq_on/eq_off lemmas (PROVED)",
+    "unionSplitEquiv + blockCount_union_split (PROVED)",
+    "blockCount_biUnion_prod (PROVED)",
+    "blockCount_supportUnion_prod (PROVED)",
+    "parent_blockCount_one (PROVED)",
+    "ledger_digitsProd (PROVED, round 3)"
+   ],
+   "status": "ROUND 3 (v3) PROVED 2026-08-08 wallclock 2026-08-02 — statement restated on LedgerLawfulV3 and the MOVES D.11 product argument closed in full; no sorry, all Lean-core. History: round 1 (v1) refuted (TD3_countermodel.ledger_digitsProd_refuted, preserved); round 2 (v2) refuted (TD3v2_countermodel.ledger_digitsProd_v2_refuted, the round-2 statement preserved verbatim inside the not-forall)",
+   "wave": "1 (hardest hole, front 1) — round 1 FAILURE folded, round 2 FAILURE folded, round 3 LANDED",
+   "notes": "proof: semantics reads the LHS as the supportUnion blockCount; member_split + slot_coord_mem fold the digit reads per slot; blockCount_union_split/blockCount_biUnion_prod factor over the disjoint decomposition (parent_box_disjoint + slots_disjoint; parent_support/slot_support localize); parent factor = 1 via member_exists (existence) x pinned_forced (uniqueness, strong induction along the CoordPrec rank on the finite parent block — CoordPrec is a strict order, transitive + irreflexive by omega); slot_sem/slotDigits_sem convert the factors; prod_sdiff splits on-line digit x off-line height; hscope/hclean never drawn on (standing guards of the statement family). Round-3 gates BEFORE proof: N-TD1 extended with parent-pinned i4-v3/i5-v3 (GATE-V2 5/5 MATCH) + compiled negative controls (cmL3/cmL4 fail v3)"
+  },
+  {
+   "id": "TD-4",
+   "file": "TD4_junctionPin.lean",
+   "decls": [
+    "ledger_junctionPin (PROVED)"
+   ],
+   "status": "PROVED 2026-08-08 wallclock 2026-08-02 (TD mop-up wave) AT THE v2 STATEMENT byte-unchanged — Lean-core, no sorry",
+   "wave": "2b",
+   "notes": "V9 import PROHIBITED (§6 fence (v)) — respected (imports TDDefsV2 only). v3-seam AUDIT: not implicated — the pin argument reads semantics + junction + hpin_ne/hpin_lt only (the ∃ c clause asserts a VANISHING, not a nonempty c-fiber); NOT re-keyed. Proof: c := L.pin ρ at q = q0; off-c cylinders unsatisfiable by the junction clause (blockCount_of_not); off q0 vacuous by [R2-C1], q ∈ {0,1} included; the monicTop guard never drawn on"
+  },
+  {
+   "id": "TD-5",
+   "file": "TD5_leakCarrier.lean",
+   "decls": [
+    "LeakFreeCarrier (typed (L) carrier — UNCHANGED)",
+    "ledger_leakFree (PROVED)"
+   ],
+   "status": "PROVED 2026-08-08 wallclock 2026-08-02 (TD mop-up wave) AT THE v2 STATEMENT byte-unchanged — Lean-core, no sorry",
+   "wave": "2b",
+   "notes": "charter-demanded [R2-G1]. v3-seam AUDIT: not implicated — the carrier IS the (parent_interior_disjoint, pinned_forced) pair, clauses untouched by all three rounds; the proof is the pack projection ⟨hL.parent_interior_disjoint, hL.pinned_forced⟩; the INTERIOR (ii.3) form is the carrier's designed content (§5 verbatim referent) — v3's parent_box_disjoint implies it but is not needed; NOT re-keyed"
+  },
+  {
+   "id": "TD-6",
+   "file": "TD6_assembly.lean",
+   "decls": [
+    "transDeep_of_ledger_v2_unfillable (PROVED — the compiled v2->v3 re-key adjudication)",
+    "transDeep_of_lawful (NEW builder: the row AT the presenting datum, leakFree := LeakFreeCarrier L inspectable, PROVED/filled)",
+    "transDeep_of_ledger (PROVED/filled — noncomputable def, respelling FLAGGED: TransDeep is Type-valued via its bare-Prop leakFree field; Exists.choose transport along J = L.ledgerJoint)",
+    "ledger_freshRowOn (PROVED — freshRowOn_of_transDeep fed by this supplier, huni displayed)",
+    "td_transDeep (NEW gate: the supplier FIRED at the designated r=1 instance)",
+    "transDeep_of_lawful_leakFree (NEW gate: the [R2-G1] plug = LeakFreeCarrier L by rfl)"
+   ],
+   "status": "PROVED 2026-08-08 wallclock 2026-08-02 (TD mop-up wave), statements byte-unchanged from the round-3 re-key — Lean-core, no sorry; the TransDeep supplier tie to the LANDED H2 row (fresh_of_transDeep/freshRowOn_of_transDeep hTD binders) is CLOSED",
+   "wave": "3",
+   "notes": "field suppliers: TD-1 floorsCharge (v2) + TD-3 digitsProd (v3) + TD-2 fiberSum (v2) + TD-4 junctionPin (v2) + TD-5 LeakFreeCarrier as the leakFree plug (never True); v2-statement units consumed through the v3 pack's extends; pricing fences intact (SlotUniformLaw NOT supplied — huni displayed hypothesis; junction VALUE not identified)"
+  },
+  {
+   "id": "CL5",
+   "file": "../HC1/C6_alphabetCard.lean:129 (in place, HC1 property)",
+   "status": "wave 1 (hardest hole, front 2) — untouched at E-phase"
+  },
+  {
+   "id": "TD-3-v2-GATE",
+   "file": "TD3v2_countermodel.lean",
+   "decls": [
+    "cmL3",
+    "cmL3_supportUnion",
+    "cmL3_semanticsV2",
+    "cmL3_lawfulV2",
+    "cm3_not_digitsProd",
+    "cmL3_fiber_pos",
+    "cmL4",
+    "cmL4_semanticsV2",
+    "cmL4_lawfulV2",
+    "cm4_not_digitsProd",
+    "ledger_digitsProd_v2_refuted"
+   ],
+   "status": "LANDED 2026-08-02 (wave-2 run; no sorry; all Lean-core; lake env lean exit 0); statements byte-unchanged at the v3 round (docstring RESOLUTION note only)",
+   "notes": "the ROUND-2 refutation record: TD-3's v2 statement refuted at BOTH missing seams (A: parent satisfiability; B: parent/off-line-slot overlap — nonempty stratum, pinned_forced substantive, so NOT an emptiness pathology); v2_mechanism_inapplicable certified only the not-forall of the V1 MECHANISM, never the forall-law; v3 clause list recorded in the module docstring — EXECUTED as specified at the v3 round (TDDefsV3; both witnesses compiled-fail v3)"
+  },
+  {
+   "id": "TD-0/TD-3-GATE",
+   "file": "TD3_countermodel.lean",
+   "decls": [
+    "blockUnion",
+    "card_zero_of_finite_support",
+    "lawful_inStratum_congr",
+    "lawful_cylFiber_eq_zero",
+    "lawful_cylFiberDigits_eq_zero",
+    "lawful_fiber_devacuify_impossible",
+    "lawful_exists_digit_witness",
+    "not_digitsProd_of_lawful",
+    "blockCount_of_forall",
+    "cmD/cmW/cmP/cmL",
+    "cmL_lawful",
+    "cm_scope",
+    "cm_clean",
+    "cm_not_digitsProd",
+    "ledger_digitsProd_refuted"
+   ],
+   "status": "LANDED 2026-08-02 (no sorry; all Lean-core; lake env lean exit 0); now the CLOSED refutation record (resolution note in docstring) — refutes v1 ONLY, does not port to v2 (TD3v2_control.cmL_not_lawfulV2)",
+   "notes": "the wave-1 hardest-hole FAILURE artifact: DigitsProdLaw refuted at EVERY v1-lawful ledger instance with rho0 >= 1; gate trace verification/openmath/ntd1_td3_ledger_semantics_trace.py (extended 2026-08-02 with the [LHS-V2] round-2 column, 3/3 MATCH)"
+  }
+ ],
+ "fences": "blueprint §6 (i)-(viii); consumer signatures (§3 TransDeep / §4 carriers) untouched",
+ "falsifiers": "N-GR1, N-TD1, N-TD2 to be built BEFORE the units they gate (blueprint §7); N-TD1 v3 extension (2026-08-08): parent-pinned instances i4-v3/i5-v3 + per-instance [V3-A]/[V3-B] clause checks + the i2 transcription caveat DISPLAYED (i1-i3 data verbatim) — GATE-V2 5/5 MATCH, run before the TD-3 round-3 proof landed; N-GR1 BUILT + RUN 2026-08-02 BEFORE the GR-2/GR-3 proofs landed (verification/openmath/ngr1_slotpos_trace.py, extends the BM2 driver; instances: BM2 quartic + x^4+3x^2+18 = the joint e'=2 AND g=2 AND t!=0 case): N1/N2 stride+mhat GREEN at every probed read, N3 scale law REFINED (holds iff e_read = 1 — the compiled readHyps_e_eq_one forcing), N4 frame-face readPos GREEN at e=1, N5 = the sigma.e-compression obstruction demo FIRES (the GR-3/GR-4 adjudication's numeric shadow)"
 }
