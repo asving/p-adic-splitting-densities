@@ -4,9 +4,12 @@ D8-DATA/(K0)-CONFORMANCE chain.  Unit note: `lean/notes/openmath/H1_BM2_2026-08-
 (Theorem LIFT-CONF, REVISION 2 re-headline; scope split per the note's §S0 table
 [REVISION 6 — the pass-4 CRITICAL-1 fold]: what is compiled is — at the
 NON-RECENTERING carriers — (K0) at the recorded node's ACTUAL pair, and — at the
-RECENTERING carriers — monicity + the SYNTHETIC `K0Conformant σ 1 1` ONLY (the
-actual pair there awaits the open REC-PARAM obligation displayed in the unit
-note), NOT KP-STEP class membership in either case; KP-STEP's
+RECENTERING carriers — monicity + the SYNTHETIC `K0Conformant σ 1 1` IN THIS FILE
+(the actual pair there follows by the sibling unit's compiled transport
+`k0_actual_of_recentering`, `H1/RecParamE.lean` [REV 10] — `Node.hspecRec` forces
+the pair (1, 1); the WIRING provenance REC-WIRE-G + the e-half
+transition-hypothesis removal stay open per the unit note §S2 case (b)),
+NOT KP-STEP class membership in either case; KP-STEP's
 class is (K0)+(K1)+(K2), and (K1)+(K2) for the fired lifts ride, on [NR], the
 OPEN graded (SL-dev) reading GRADED-READ, and on [RC] additionally the open
 recentering legs REC-SL [REVISION 8 — the pass-6 finding-1 fold: the former
@@ -33,7 +36,9 @@ unit touched):
   carriers on which the wiring asserts a key, per class [REVISION 7 — the
   pass-5 CRITICAL-3 fold]: at the NON-RECENTERING ([NR]) carriers (K0) at the
   node's ACTUAL pair; at the RECENTERING ([RC]) carriers the SYNTHETIC
-  `K0Conformant σ 1 1` ONLY (the unit note's §S0 table): coherent interior
+  `K0Conformant σ 1 1` IN THIS FILE ([REV 10]: transported to the node's actual
+  pair by the sibling `k0_actual_of_recentering`, `H1/RecParamE.lean`; the unit
+  note's §S0 table): coherent interior
   increments (`HistoryCoherent`'s non-recentering leg asserts
   `IsNodeLift νᵢ σᵢ₊₁.Φ`), interior recenterings (`IsRecenteringCore.base`:
   Φ' = Φ − lift, the e·g = 1 degree-preserving face), and the designated landing
@@ -95,10 +100,11 @@ the VERIFIED Theorem KP-STEP quantifies over (that class is (K0)+(K1)+(K2);
 (K1)+(K2) ride the open GRADED-READ seam and are not expressed here), and — at
 NON-RECENTERING sites, where the carrier corollaries conclude at the node's
 actual `(e, g)` — OL-1(a)'s normalization `m_{i+1} = e_i·f_i·m_i` (with
-`f_i = g` via `Node.hψdeg`) at the site.  At RECENTERING sites the compiled
-conclusion is the SYNTHETIC pair `K0Conformant σ 1 1`, and OL-1(a) at the
-site's actual `(e_i, f_i)` additionally needs the open REC-PARAM
-identification (unit note §S2 case (b)/§S4 (i-c)). -/
+`f_i = g` via `Node.hψdeg`) at the site.  At RECENTERING sites this file's
+compiled conclusion is the SYNTHETIC pair `K0Conformant σ 1 1`; OL-1(a) at the
+site's actual `(e_i, f_i)` follows [REV 10] by the sibling transport
+`k0_actual_of_recentering` (`H1/RecParamE.lean`, via `Node.hspecRec`) — the
+wiring-provenance residuals stay open (unit note §S2 case (b)/§S4 (i-c)). -/
 def K0Conformant (σ : Stage p F) (g e' : ℕ) (Φhat : Polynomial ℤ_[p]) : Prop :=
   Φhat.Monic ∧ Φhat.natDegree = e' * g * σ.Φ.natDegree
 

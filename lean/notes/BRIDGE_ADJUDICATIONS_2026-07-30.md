@@ -2868,3 +2868,35 @@ zero [UNTAGGED-STATUS] (method + reconciliation in the REVISION 9
 record). Statuses moved in the honest-upgrade direction only (discharge
 WITH compiled citation); all remaining conditionality displayed. No Lean
 file edited at this revision. Clean counter stays 0/2; pass 8 next.
+
+## B-M2 REVISION 10 — the pass-8 fold: the transport lemma (2026-08-02)
+`H1_BM2_2026-08-06.md` REVISION 10 folds hostile pass 8 (Codex,
+`BM2_pass8_2026-08-06.md`, CRITICAL — the arc's first finding in the
+CONSERVATIVE direction). (1) Finding 1 ACCEPTED as a compiled upgrade:
+THE TRANSPORT LEMMA `k0_actual_of_recentering` (`H1/RecParamE.lean`,
+Lean-core, sorry-free) — at a species-recentering node the synthetic
+`K0Conformant σ 1 1 Φ` transports to the ACTUAL pair
+`K0Conformant ν.σ ν.g ν.e Φ` by rewriting along `Node.hspecRec`'s two
+equalities — instantiated at `rc_landingKey_gate_actual` /
+`rc_historyCoherent_gate_actual` (`H1/RCWitness.lean`, Lean-core). §S0
+actual-pair [RC] row upgraded NOT-proved → PROVED-VIA-TRANSPORT; OL-1(a)
+on [RC] PROVED outright (transport + `Node.hψdeg` — the pass-3/6
+sufficiency adjudication cashed); DevBound [RC] degree identification
+SUPPLIED; REC-PARAM RESTRUCTURED — the original node-level proposition
+supplied, the stronger residuals renamed REC-WIRE-G (wiring g-half tie)
++ the e-half transition-hypothesis removal + REC-SL proper (KP-STEP
+route only). (2) Finding 2 ACCEPTED as a scoping: the "debt DISCHARGED"
+/ "[RC] legs NON-VACUOUS" umbrellas re-scoped to the TWO dedicated
+recentering corollaries (note + `RCWitness.lean` header comment-only);
+the `readsOf_landing_K0` recentering branch stays displayed
+UNWITNESSED-ON-FILE. (3) Finding 3 (automatic census) ACCEPTED — the
+TABLE was right, the total wrong: a fixed fresh implementation gives 132
+on the REV-9 text (= 123−2+11) vs the published 134 (+2 overcount); the
+REV-10 text totals 136 (123 NOTE + 13 LEAN), zero untagged, rows
+C135–C159 appended over 21 superseded. (4) Finding 4 positive audit
+recorded; its precision note (rc_landingKey_gate fires on ν₁rc directly,
+not on H₃rc) folded at all display sites. Asymmetry rule honored:
+upgrades carry compiled citations; scopings carry none. Lean gates: all
+three H1 files `lake env lean` green, zero sorry, in-file `#print
+axioms` Lean-core; `Conformance.lean` comment-only. Clean counter stays
+0/2; pass 9 next.

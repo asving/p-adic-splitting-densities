@@ -31,17 +31,30 @@ positive gates — the corollaries FIRE on a concrete instance):
   at σ₂rc.e = 1).
 * **THE GATES** — `rc_landingKey_gate` and `rc_historyCoherent_gate`: both [RC]
   corollaries of `H1/Conformance.lean` fire, concluding
-  `K0Conformant σ₁rec 1 1 σ₂rc.Φ`. The [RC] legs of Theorem LIFT-CONF's compiled
-  perimeter are hereby NON-VACUOUS.
+  `K0Conformant σ₁rec 1 1 σ₂rc.Φ`. The TWO DEDICATED recentering corollaries
+  (`landingKey_recentering_K0`, `historyCoherent_recentering_K0`) are hereby
+  NON-VACUOUS [REV 10 scope fix, the pass-8 finding-2 fold: the recentering branch
+  of `readsOf_landing_K0` remains UNWITNESSED — no compiled `ReadsOf` run contains
+  a recentering read — so the non-vacuity claim scopes to the two corollaries, not
+  the whole [RC] perimeter]. Precision: `rc_landingKey_gate` fires on `ν₁rc` /
+  `landingKey_ν₁rc` DIRECTLY (ν₁rc is also H₃rc's node 1); `rc_historyCoherent_gate`
+  fires on `H₃rc`/`coherent_H₃rc`.
+* **THE ACTUAL-PAIR GATES [REV 10]** — `rc_landingKey_gate_actual` and
+  `rc_historyCoherent_gate_actual`: the synthetic conclusions transported to
+  ν₁rc's ACTUAL pair `K0Conformant ν₁rc.σ ν₁rc.g ν₁rc.e σ₂rc.Φ` via
+  `k0_actual_of_recentering` (`H1/RecParamE.lean` — the pass-8 finding-1 transport:
+  `Node.hspecRec` makes the actual pair (1, 1)).
 
-WHAT IS NOT CLAIMED: nothing beyond inhabitation — the corollaries' synthetic-(1, 1)
-scope, the open REC-SL/REC-PARAM/GRADED-READ/SITE-EXH residues, and the RG-2 fence
-display of `H1/Conformance.lean` are all unchanged (REC-PARAM's e-half at its
-derivable scope is the sibling unit `H1/RecParamE.lean`).
+WHAT IS NOT CLAIMED: nothing beyond inhabitation and the hspecRec-transport — the
+open REC-SL legs, REC-WIRE-G (the wiring g-half tie), GRADED-READ, and SITE-EXH
+residues, and the RG-2 fence display of `H1/Conformance.lean` are all unchanged
+(REC-PARAM's compiled e-half at its transition scope, and the [REV 10] transport
+lemma, are the sibling unit `H1/RecParamE.lean`).
 -/
 import LeanUrat.HC2.HK25_recGate
 import LeanUrat.HC1.S10_recStage
 import LeanUrat.Scaffold.HDischarge.H1.Conformance
+import LeanUrat.Scaffold.HDischarge.H1.RecParamE
 
 set_option linter.style.longLine false
 set_option linter.style.header false
@@ -280,6 +293,13 @@ perimeter is non-vacuous. -/
 theorem rc_landingKey_gate : K0Conformant HK25.σ₁rec 1 1 σ₂rc.Φ :=
   landingKey_recentering_K0 ν₁rc σ₂rc.Φ landingKey_ν₁rc rfl
 
+/-- **GATE A at the ACTUAL pair [REV 10]**: the synthetic conclusion transported to
+ν₁rc's actual read pair via `k0_actual_of_recentering` (`Node.hspecRec` makes the
+actual pair (1, 1)) — the landing-carrier [RC] conclusion at (ν.e, ν.g) itself. -/
+theorem rc_landingKey_gate_actual :
+    K0Conformant ν₁rc.σ ν₁rc.g ν₁rc.e σ₂rc.Φ :=
+  k0_actual_of_recentering ν₁rc σ₂rc.Φ rfl rc_landingKey_gate
+
 /-! ### §5 — the terminal read ν₂rc on the recentered stage -/
 
 /-- **The terminal read** ν₂rc on σ₂rc — HK25's ν₁rec recipe re-keyed to the
@@ -501,6 +521,13 @@ theorem rc_historyCoherent_gate : K0Conformant HK25.σ₁rec 1 1 σ₂rc.Φ := b
   have hlen : H₃rc.nodes.length = 3 := rfl
   exact historyCoherent_recentering_K0 H₃rc coherent_H₃rc 1 (by omega) rfl
 
+/-- **GATE B at the ACTUAL pair [REV 10]**: the synthetic conclusion transported to
+ν₁rc's actual read pair via `k0_actual_of_recentering` (ν₁rc = H₃rc's interior
+recentering node; `Node.hspecRec` makes the actual pair (1, 1)). -/
+theorem rc_historyCoherent_gate_actual :
+    K0Conformant ν₁rc.σ ν₁rc.g ν₁rc.e σ₂rc.Φ :=
+  k0_actual_of_recentering ν₁rc σ₂rc.Φ rfl rc_historyCoherent_gate
+
 end RCW
 
 end LeanUrat.Scaffold.HDischarge.H1
@@ -510,3 +537,5 @@ end LeanUrat.Scaffold.HDischarge.H1
 #print axioms LeanUrat.Scaffold.HDischarge.H1.RCW.rc_landingKey_gate
 #print axioms LeanUrat.Scaffold.HDischarge.H1.RCW.coherent_H₃rc
 #print axioms LeanUrat.Scaffold.HDischarge.H1.RCW.rc_historyCoherent_gate
+#print axioms LeanUrat.Scaffold.HDischarge.H1.RCW.rc_landingKey_gate_actual
+#print axioms LeanUrat.Scaffold.HDischarge.H1.RCW.rc_historyCoherent_gate_actual

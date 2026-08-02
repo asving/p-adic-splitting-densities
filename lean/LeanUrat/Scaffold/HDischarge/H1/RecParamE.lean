@@ -5,6 +5,14 @@ SCOPE (the BM2_TRACE_2026-08-02.md §3 (C-a) wiring finding, executed; unit note
 REC-PARAM).
 
 WHAT IS COMPILED HERE (sorry-free; no new axioms; no existing statement touched):
+* `k0_actual_of_recentering` [REV 10, the pass-8 finding-1 fold] — THE TRANSPORT
+  LEMMA: at any species-recentering node, the synthetic conclusion
+  `K0Conformant σ 1 1 Φ` TRANSPORTS to the node's ACTUAL pair
+  `K0Conformant ν.σ ν.g ν.e Φ` — because `Node.hspecRec` (the §C.0 species law,
+  a STRUCTURE FIELD) gives `ν.e = 1 ∧ ν.g = 1`, so the actual pair IS (1, 1).
+  This supplies the ORIGINAL node-level REC-PARAM proposition ("the identification
+  of the node's actual (e_i, g_i) with (1, 1)") outright; what it does NOT supply
+  is the stronger wiring-provenance obligations (see the REV-10 scope note below).
 * `recParam_e_of_transition` — the e-half of REC-PARAM as a WIRING derivation, at the
   exact scope the trace found derivable: in a coherent history, when the recentering
   node's stage WAS FORGED BY A NON-RECENTERING TRANSITION (the displayed hypothesis
@@ -20,26 +28,27 @@ WHAT IS COMPILED HERE (sorry-free; no new axioms; no existing statement touched)
   recentering legs"); (a)+(b) together derive (c) from the TRANSITION LAWS, with no
   appeal to the species predicate.
 
-WHAT IS NOT CLAIMED:
-* The g-half of REC-PARAM (νᵢ₊₁.g = 1 derived from wiring) is NOT this unit's target
-  and is NOT proved here: no Stage field records a `g`, so the σ-level route used for
-  the e-half has no g-analogue — the trace's "tied NOWHERE" verdict stands AT THE
-  STAGE/WIRING LEVEL.
-* SCOPE CORRECTION FOR THE NOTE'S NEXT REVISION (a finding, recorded here and in the
-  ledger, NOT folded into the note by this unit): at the NODE level the trace's
-  "a Lean history could record νᵢ.g = 7 at a recentering node and stay coherent" is
-  FALSE — `Node.hspecRec` (`MovesC/Defs.lean`, the §C.0 species law) is a STRUCTURE
-  FIELD giving `species = recentering → e = 1 ∧ g = 1`, so no species-recentering
-  node with g ≠ 1 is even constructible. That field is, however, exactly the "priced
-  at (1, 1) by fiat" layer REC-PARAM's display distinguishes from a genuine tower
-  derivation (the predicate BUILDS the pair in; whether engine recentering firings
-  HAVE this shape is S-1/SITE-EXH-side and stays open). THIS file's lemma is the
-  non-fiat derivation for the e-half; consumers wanting the node-level pair
-  unconditionally at species-recentering nodes should cite `Node.hspecRec` directly.
+WHAT IS NOT CLAIMED (REV-10 scope note — the transport lemma vs the wiring residuals):
+* The STAGE/WIRING-level g-half tie (non-fiat provenance of g = 1) — named
+  **REC-WIRE-G** in the unit note's REVISION 10 — is NOT proved here: no Stage field
+  records a `g`, so the σ-level route used for the e-half has no g-analogue — the
+  trace's "tied NOWHERE" verdict stands AT THE STAGE/WIRING LEVEL. The transport
+  lemma rides `Node.hspecRec` (the fiat layer: the predicate BUILDS the pair in);
+  whether engine recentering firings HAVE the species shape is S-1/SITE-EXH-side and
+  stays open.
+* The e-half's came-from-a-non-recentering-transition hypothesis removal:
+  `recParam_e_of_transition` covers exactly the transition case (both hypotheses
+  displayed).
+* Node-level context (the [REV 9] finding, now consumed by the transport lemma): at
+  the NODE level the trace's "a Lean history could record νᵢ.g = 7 at a recentering
+  node and stay coherent" is FALSE — `Node.hspecRec` (`MovesC/Defs.lean`, the §C.0
+  species law) is a STRUCTURE FIELD giving `species = recentering → e = 1 ∧ g = 1`,
+  so no species-recentering node with g ≠ 1 is even constructible.
 * Nothing here touches (K1)+(K2)/REC-SL's stage-law legs, GRADED-READ, or SITE-EXH
   (all open; see `H1/Conformance.lean`'s residue display).
 -/
 import LeanUrat.MovesC.Defs
+import LeanUrat.Scaffold.HDischarge.H1.Conformance
 
 set_option linter.style.longLine false
 set_option linter.style.header false
@@ -51,6 +60,23 @@ open LeanUrat.Moves LeanUrat.MovesC
 
 universe u
 variable {p : ℕ} [Fact p.Prime] {F : Type u} [Field F] [Finite F]
+
+/-- **THE TRANSPORT LEMMA** (REV 10, the pass-8 finding-1 fold): at a
+species-recentering node the compiled SYNTHETIC conclusion `K0Conformant σ 1 1 Φ`
+transports to the node's ACTUAL read pair — `Node.hspecRec` (a structure field,
+the §C.0 species law) gives `ν.e = 1 ∧ ν.g = 1`, so the actual pair IS (1, 1).
+This IS the original node-level REC-PARAM proposition ("the identification of the
+node's actual (e_i, g_i) with (1, 1)"), supplied. It rides the species structure
+field (the fiat layer): the stage/wiring-level provenance obligations
+(REC-WIRE-G; the e-half's transition-hypothesis removal) remain open and are NOT
+claimed by this lemma. -/
+theorem k0_actual_of_recentering (ν : Node p F) (Φhat : Polynomial ℤ_[p])
+    (hspec : ν.species = ReadSpecies.recentering)
+    (hK : K0Conformant ν.σ 1 1 Φhat) :
+    K0Conformant ν.σ ν.g ν.e Φhat := by
+  obtain ⟨he, hg⟩ := ν.hspecRec hspec
+  rw [he, hg]
+  exact hK
 
 /-- **REC-PARAM, e-half, at its derivable scope** (BM2_TRACE §3 (C-a); unit note §S2
 case (b)): in a coherent history, at an INTERIOR recentering read whose frame stage
@@ -84,3 +110,4 @@ theorem recParam_e_of_transition (H : History p F) (hH : HistoryCoherent H)
 end LeanUrat.Scaffold.HDischarge.H1
 
 #print axioms LeanUrat.Scaffold.HDischarge.H1.recParam_e_of_transition
+#print axioms LeanUrat.Scaffold.HDischarge.H1.k0_actual_of_recentering
