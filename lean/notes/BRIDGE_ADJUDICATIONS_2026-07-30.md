@@ -6568,3 +6568,40 @@ S9-owed ADDITIVE status bracket in DITER_RESTATE §S2 while this pass ran — th
 after the status line; diff vs 242ba1e inspected: insertion only, 72a73,93);
 this pass's statement-of-record verification stands on the 242ba1e text exactly
 as chartered.
+
+---
+
+## 2026-08-03 — ITER-LAW errata round 1 APPLIED (both pass-PC remedies; counter stays 0)
+
+UNIT: ITER-LAW ERRATA (post round 1: Codex pass PC NOT-CLEAN, 1 critical + 1 gap,
+report `lean/notes/openmath/ITERLAW_passPC_report.md`; Fable pass PE CLEAN). Both
+remedies applied, bracket-additive only — NO proof-section edit (S2–S5 untouched),
+sealed falsifier BYTE-UNTOUCHED (md5 bfd5ef71257a79aee827b516fccfc03d == seal
+ab7c31c), DITER_RESTATE untouched (fenced).
+REMEDY 1 (the CRITICAL — scope-claim erratum): S0 ERRATUM bracket at the note's
+"display verbatim, on the class its setting pins" sentence (original struck
+bracket-style, not deleted): the note's harness class takes e₀,e₁ ≥ 1 with NO
+E₂ > 1 constraint — a STRICT SUPERSET of DITER_RESTATE §S2's pinned setting
+(E₂ := e₀e₁ > 1, DITER_RESTATE:33). Corrected claim of record: RESTRICTED to
+E₂ > 1 the proved display coincides with §S2's (ITER-LAW) display on the nose;
+the E₂ = 1 leg (e₀ = e₁ = 1) is a harmless COR-3-covered extension, NOT part of
+the statement of record; the instance-base clause stands (all 0/804 + 0/840
+instances have E₂ > 1). Sweep: the only other in-note repeat is the S9 owed-
+display bullet ("THEOREM on the harness tower class") — ERRATUM CROSS-REF
+bracket added there. FOUND OUT-OF-FENCE: the r35-applied status bracket inside
+DITER_RESTATE §S2 repeats "exactly the class this section's setting pins" —
+its one-line correction is OWED at the next r-fold (that file is not this
+unit's to edit).
+REMEDY 2 (the GAP — COR-4 mixed blocks): NEW supplement
+`verification/openmath/iterlaw_cor4_mixed.py` (harness-faithful by design, rows/
+windows/closed_form transcribed from the seal WITH attribution — a supplement,
+not an F2c leg): all four mixed blocks W2×W1, W1×W2, W3×W1, W1×W3 vs the base
+table per family, + fresh random-offset window W4 = W1+m·E₂ mixed both ways, +
+two fresh rows Y (1;4,1,1;2,1,1, E₂=8) and Z (1;2,1,1;5,2,1, E₂=10), 40 families
+over all four rings. RESULT: **ALL GREEN, exit 0 — 18,396 samples / 0
+violations, seed 20260808** (M1–M4 1,524/0 each · M5 3,048/0 · CF closed-form-
+at-mixed-args 9,144/0 · CERT fresh rows 108/0 with PARI T11 fired). Note-side
+brackets recording the gap + actuals at §S6.4 and after the S8 verdict block.
+COUNTER: stays 0 (errata rounds do not count toward the 2-clean bar). NEXT: a
+FRESH hostile pair (PC2 Codex + PE2 Fable) on the bracketed note toward the
+2-clean model-diverse bar.

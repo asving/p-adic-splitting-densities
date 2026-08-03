@@ -1,0 +1,19 @@
+[   0.1s] CERT (fresh rows Y/Z only) done: 0 violations (108 samples)
+[   0.8s] ring (Zp,p=2) done: cumulative violations = 0
+[   1.7s] ring (Zp,p=3) done: cumulative violations = 0
+[   3.7s] ring (Fpt,p=2) done: cumulative violations = 0
+[   6.2s] ring (Fpt,p=3) done: cumulative violations = 0
+
+==============================================================================
+PREDICTED vs OBSERVED (violation counts; samples in parentheses)
+==============================================================================
+M1  mixed block W2xW1 == base W1xW1               pred 0  obs     0 (  1524)  GREEN
+M2  mixed block W1xW2 == base W1xW1               pred 0  obs     0 (  1524)  GREEN
+M3  mixed block W3xW1 == base W1xW1               pred 0  obs     0 (  1524)  GREEN
+M4  mixed block W1xW3 == base W1xW1               pred 0  obs     0 (  1524)  GREEN
+M5  fresh-window mixed W4xW1 & W1xW4 == base      pred 0  obs     0 (  3048)  GREEN
+CF  closed form at actual mixed arguments         pred 0  obs     0 (  9144)  GREEN
+CERT fresh rows Y/Z (T1/T2/T5/T11+PARI)              pred 0  obs     0 (   108)  GREEN
+W4 offsets drawn (family -> m): [3, 4, 5, 11, 13, 16, 17, 18, 21, 22, 23, 25, 26, 27, 28, 29, 31, 32, 33, 34, 35, 37, 39, 40, 42, 43, 45, 46, 49, 50] (per-family in JSON)
+TOTAL samples: 18396   elapsed 6.2s
+VERDICT: ALL GREEN
