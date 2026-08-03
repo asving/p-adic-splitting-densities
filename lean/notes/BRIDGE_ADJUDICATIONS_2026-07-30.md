@@ -7141,3 +7141,37 @@ application unit's deliverable (REVISION-9 scope cut), adjudicated on the
 actual scratch-worktree diff at the ASVIN GATE with a post-application
 hostile pass".  Sealed/byte-frozen records untouched; no existing Lean
 statement touched (new-statement sites flagged for the hostile pass).
+
+---
+
+## DITERSUP P1 + JS1/JS2 LANDED (wave-18 U7, recovery unit) — the 𝒟₂ carrier interface compiled Lean-core; JS1 gains an honest hTrack hypothesis (compiled countermodel for the bare display); P1-FLAG-1 folded as the disposition of record — 2026-08-03
+
+`Scaffold/HDischarge/H1/DIterCarrier.lean` (checkpointed unverified at d0e2b74,
+completed idempotently): the DITERSUP §S5 P1 layer (`DIterCarrier` + `δ₂` +
+`InnerIntegral` + `IterLaw` + design-owed `RowNPattern`/`CyclicPresentation`)
+and the two application-free sanity gates — **GATE JS1 PROVED** (with the honest
+added hypothesis `hTrack : D.OuterTrackAdd`; the display's (hLaw, hInt)-only
+statement is FALSE on the free-field interface, compiled countermodel
+`gateJS1_freeTracks_false`) and **GATE JS2 PROVED** exactly as displayed.
+AUDIT VERDICT on the orphan: structurally complete but NEVER COMPILED — the
+DITERSUP §S3 display's shared-type field groups (`s₁ s₂ : ℤ → ℕ` etc.) are not
+two-fields sugar on Lean 4.31 (they parse as field-with-binder); repaired by
+per-line field split (spelling only) + three proof-level repairs (JS1 rw chain
+self-undid; `dsimp only` no-progress at six field proofs; two lints) — repairs
+recorded in the file and the unit note. GRW2 flags folded (docstrings only):
+P1-FLAG-1 disposition = recommendation (b) — `IterLaw` byte-stable with the
+DITERSUP display, ALL semantic consumption routed through grTie/GRT-3, never
+bare (hcarrier, hIter); all `iterCocycle`-based witnesses explicitly labeled
+cooked/interface-only (no (H7)/gr(w₂) evidence); J3B-FLAG-1 noted as riding to
+the J3b unit. GATES: `lake env lean` EXIT 0, zero warnings; in-file census 15/15
+Lean-core, ZERO sorryAx; no application import (carrier layer application-free;
+P0's DefsPrime deliberately not consumed). ITER-LAW acceptance citation consumed
+by this unit, PASTED from the ITER-LAW ACCEPTED block above: "Scope as accepted:
+the harness tower class (superset of DITER_RESTATE §S2's E₂ > 1 pin; on-the-nose
+coincidence restricted to E₂ > 1); residuals: (ITER-LAW-LIFT) open exactly at
+g₀ = 1 ∧ δ₁ = 1; gr(w₂) wrapper rides the accepted GRB retarget; orders ≥ 3
+untouched." — the acceptance discharges NO hypothesis in this file; nothing here
+machine-checks (ITER-LAW) or touches the gr(w₂) tie. JS3 NOT this unit (its two
+statement sites land design-owed, consumed by nothing, review-owed against the
+22-table JSON record). Full record
+`lean/notes/openmath/DITERCARRIER_STMT_2026-08-08.md`.

@@ -73,6 +73,34 @@ to the ACTUAL degree-0 composite digit algebra of gr(w₂) (anchor monomials, cl
 values) requires the order ≥ 2 graded-carrier layer the corpus does not have
 (PROJECT_STATE standing obligation 2) — OUT OF SCOPE here; this file is the
 INTERFACE layer only, and no gate below pretends to the gr(w₂) semantics.
+
+GRW2 INTERFACE FLAGS (raised concurrently with this file's first draft — the
+gr(w₂) tie design note `lean/notes/openmath/GRW2_TIE_DESIGN_2026-08-08.md` §S3.1,
+commit 3baf3cb; folded in at the recovery pass, DOCSTRINGS ONLY — no statement
+body changed):
+* P1-FLAG-1 (bare-IterLaw vacuity): `IterLaw D c` is bare equality with a closed
+  form in D's free fields, so (hcarrier, hIter)-style data is inhabitable by
+  defining c := the closed form on ANY typed fields — consuming no ITER-LAW, no
+  anchors, no values, no gr(w₂).  Every `iterCocycle`-based construction below
+  (the two witnesses, `carrier_interface_nonvacuous`) is EXACTLY such cooked
+  data: it evidences that the interface TYPES are inhabitable and that the JS
+  gates fire on concrete instances — NOTHING about (H7), the gr(w₂) semantics,
+  or any actual tower.  DISPOSITION OF RECORD (the note's recommendation (b),
+  taken here): `IterLaw` stays byte-stable with the DITERSUP §S3 display, and
+  ALL semantic consumption must route through the grTie/GRT-3 canonical-carrier
+  bundle (canonical D(T) per GRT-1a + totalized value cocycle c_T per GRT-1c +
+  the GRT-2 semantic clause), NEVER through bare (hcarrier, hIter) data.
+* GRT-1 ALIGNMENT: this structure IS the GRT-1a target shape (the design note
+  keys its canonical-fields display to `DIterCarrier.hE₂` by name; field-for-
+  field: e₀/e₁/z₁/z̄/ℓ₀/γ₂/s₁/s₂ + hs₁/hs₂/hper).  The canonical derivation
+  D(T) — fields FROM eq-(12-int) data — is GRT-1a, priced with P1's E-phase
+  and NOT built here; on this interface layer the tracks remain free fields,
+  which is exactly what P1-FLAG-1 fences (and what `gateJS1_freeTracks_false`
+  compiles).
+* J3B-FLAG-1 rides to the J3b unit (its E-phase hypothesis bundle should be
+  grTie (GRT-3), not the bare (hcarrier, hIter) pair — the GlueRun fence
+  demands computation IN 𝒟₂, which the bare pair does not force); recorded
+  here only because J3b is this layer's downstream consumption site.
 -/
 import Mathlib.Tactic
 
@@ -93,17 +121,31 @@ the s₁/s₂ tracks must be DERIVED from eq12 data, not free fields, when the g
 tie lands — they are FREE FIELDS here (interface layer), which is exactly why the
 JS1 gate needs the `OuterTrackAdd` hypothesis (see `gateJS1_freeTracks_false`).]
 Statement-review owed at E-phase against the probe harness's exact conventions
-(trust boundary: definitions are where errors hide). -/
+(trust boundary: definitions are where errors hide).
+
+TRANSCRIPTION REPAIR (recovery pass, 2026-08-03; spelling only, zero semantic
+change): the DITERSUP §S3 display writes the shared-type field groups
+`e₀ e₁ : ℕ`, `z₁ zbar : K₂ˣ`, `s₁ s₂ : ℤ → ℕ` — which on this toolchain
+(Lean 4.31.0) is NOT two-fields sugar inside `structure ... where`: it parses
+as ONE field with a BINDER (`s₁ (s₂ : _) : ℤ → ℕ`), so the second name never
+becomes a field and the display as written does not elaborate (compile log:
+"Failed to infer type of binder"/"unknown identifier s₂" on a minimal repro).
+Each group is split into per-line fields — same names, same types, same order;
+the display's intent is unambiguous (its own comments gloss both names as
+separate data). -/
 structure DIterCarrier (K₂ : Type u) [Field K₂] where
-  e₀ e₁ : ℕ
+  e₀ : ℕ
+  e₁ : ℕ
   he₀ : 0 < e₀
   he₁ : 0 < e₁
   hE₂ : 1 < e₀ * e₁                 -- composite stage: E₂ > 1
-  z₁ zbar : K₂ˣ                     -- INNER constant (frame letter) / OUTER constant (last-read wrap)
+  z₁ : K₂ˣ                          -- INNER constant (frame letter)
+  zbar : K₂ˣ                        -- OUTER constant (last-read wrap)
   ℓ₀ : ℕ                            -- normalized Bézout inverse (0 ≤ ℓ₀ < e₀, ℓ₀h₀ ≡ 1 [e₀]; the congruence is APPLICATION data — h₀ is not carrier data, so only the range law is carried here)
   hℓ₀ : ℓ₀ < e₀
   γ₂ : ℕ                            -- level-2 abscissa-step generator weight e₁·w₁(Φ₁) + h₁ (application datum, free here)
-  s₁ s₂ : ℤ → ℕ                     -- the fibred digit tracks (iterated eq-(12-int) split)
+  s₁ : ℤ → ℕ                        -- the INNER fibred digit track (iterated eq-(12-int) split)
+  s₂ : ℤ → ℕ                        -- the OUTER fibred digit track
   hs₁ : ∀ γ, s₁ γ < e₀
   hs₂ : ∀ γ, s₂ γ < e₁
   hper : ∀ γ, s₁ (γ + (e₀ * e₁ : ℤ)) = s₁ γ ∧ s₂ (γ + (e₀ * e₁ : ℤ)) = s₂ γ
@@ -132,7 +174,13 @@ coincidence restricted to E₂ > 1); residuals: (ITER-LAW-LIFT) open exactly at
 g₀ = 1 ∧ δ₁ = 1; gr(w₂) wrapper rides the accepted GRB retarget; orders ≥ 3
 untouched."  The e₀ = 1 leg is theorem-backed by Lemma D-REAL (GRB S5.3).  In
 Lean this Prop is a HYPOTHESIS carrier: no theorem below asserts it of the real
-gr(w₂) data (the tie layer is the displayed missing piece). -/
+gr(w₂) data (the tie layer is the displayed missing piece).
+
+P1-FLAG-1 FENCE (GRW2_TIE_DESIGN §S3.1; see the header flag block): this Prop is
+bare closed-form equality in D's free fields — inhabitable by cooked data
+(`iterCocycle` below IS that inhabitation) — so it cannot tell the semantic
+cocycle from freely cooked data.  ALL semantic consumption routes through the
+grTie/GRT-3 canonical-carrier bundle, never through bare (hcarrier, hIter). -/
 def IterLaw (D : DIterCarrier K₂) (c : ℤ → ℤ → K₂ˣ) : Prop :=
   ∀ γ γ', c γ γ' = D.zbar ^ (D.δ₂ γ γ') *
     D.z₁ ^ (((D.s₁ γ : ℤ) + D.s₁ γ' - D.s₁ (γ + γ') + D.ℓ₀ * D.γ₂ * D.δ₂ γ γ') / D.e₀)
@@ -147,15 +195,20 @@ def DIterCarrier.OuterTrackAdd (D : DIterCarrier K₂) : Prop :=
   ∀ γ γ' : ℤ, D.s₂ (γ + γ') = (D.s₂ γ + D.s₂ γ') % D.e₁
 
 /-- The formula cocycle: every carrier hosts the (ITER-LAW)-shaped cocycle by
-construction.  This is the interface's canonical non-vacuity device — it says the
-INTERFACE is inhabited, NOT that the gr(w₂) cocycle of any tower satisfies the
-law (that is the accepted math-level result + the missing tie layer). -/
+construction.  P1-FLAG-1 MADE CONCRETE (see the header flag block): this is
+exactly the "cooked closed-form data" inhabitation the flag fences — it shows
+the interface TYPES are inhabitable (and drives the countermodel + the gate-fire
+instances below); it is NOT (H7)-meaningful, NOT a canonical/totalized c_T
+(GRT-1c), and consumes no ITER-LAW content.  Nothing downstream may cite it as
+evidence about the gr(w₂) cocycle of any tower. -/
 def DIterCarrier.iterCocycle (D : DIterCarrier K₂) : ℤ → ℤ → K₂ˣ := fun γ γ' =>
   D.zbar ^ (D.δ₂ γ γ') *
     D.z₁ ^ (((D.s₁ γ : ℤ) + D.s₁ γ' - D.s₁ (γ + γ') + D.ℓ₀ * D.γ₂ * D.δ₂ γ γ') / D.e₀)
 
-/-- `IterLaw` is non-vacuous at every carrier: the formula cocycle satisfies it
-definitionally. -/
+/-- `IterLaw` is inhabited at every carrier: the formula cocycle satisfies it
+definitionally.  TYPE-INHABITATION ONLY (P1-FLAG-1): zero semantic content —
+this is the vacuity-risk construction itself, kept because the countermodel and
+gate-fire instances below need it, fenced by the header flag block. -/
 theorem DIterCarrier.iterLaw_iterCocycle (D : DIterCarrier K₂) :
     IterLaw D D.iterCocycle := fun _ _ => rfl
 
@@ -215,11 +268,14 @@ theorem gateJS1_cocycle_assoc (D : DIterCarrier K₂) (c : ℤ → ℤ → K₂�
       (D.δ₂ γ' γ'' : ℤ) + (D.δ₂ γ (γ' + γ'') : ℤ) := by exact_mod_cast hδ
   have hNsum : (D.e₀ : ℤ) * (k₁ + k₂) = (D.e₀ : ℤ) * (k₃ + k₄) := by
     rw [mul_add, mul_add, ← hk₁, ← hk₂, ← hk₃, ← hk₄, ← add_assoc γ γ' γ'']
-    push_cast
     linear_combination ((D.ℓ₀ : ℤ) * (D.γ₂ : ℤ)) * hδz
   have hk : k₁ + k₂ = k₃ + k₄ := mul_left_cancel₀ he0 hNsum
-  rw [mul_mul_mul_comm, mul_mul_mul_comm, ← pow_add, ← pow_add, ← zpow_add,
-    ← zpow_add, hδ, hk]
+  have hzbar : D.zbar ^ (D.δ₂ γ γ') * D.zbar ^ (D.δ₂ (γ + γ') γ'') =
+      D.zbar ^ (D.δ₂ γ' γ'') * D.zbar ^ (D.δ₂ γ (γ' + γ'')) := by
+    rw [← pow_add, ← pow_add, hδ]
+  have hzone : D.z₁ ^ k₁ * D.z₁ ^ k₂ = D.z₁ ^ k₃ * D.z₁ ^ k₄ := by
+    rw [← zpow_add, ← zpow_add, hk]
+  rw [mul_mul_mul_comm, hzbar, hzone, mul_mul_mul_comm]
 
 /-- GATE JS2: the D-REAL degeneration at e₀ = 1 (the theorem-backed leg; ℓ₀ < e₀
 = 1 forces ℓ₀ = 0 and s₁ ≡ 0, so the inner factor is trivial).  PROVED exactly as
@@ -232,7 +288,7 @@ theorem gateJS2_dreal_degeneration (D : DIterCarrier K₂) (c : ℤ → ℤ → 
   have hs₁ : ∀ δ : ℤ, D.s₁ δ = 0 := fun δ => by have := D.hs₁ δ; omega
   have hℓ₀ : D.ℓ₀ = 0 := by have := D.hℓ₀; omega
   rw [hLaw γ γ']
-  simp only [hs₁, hℓ₀, Nat.cast_zero, zero_mul, add_zero, sub_zero, zero_add,
+  simp only [hs₁, hℓ₀, Nat.cast_zero, zero_mul, add_zero, sub_zero,
     Int.zero_ediv, zpow_zero, mul_one]
 
 /-! ## The compiled countermodel (why JS1 needs the track law) -/
@@ -255,8 +311,8 @@ def badTracksCarrier : DIterCarrier ℚ where
   s₁ := fun _ => 0
   s₂ := fun γ => 1 - (γ % 2).toNat
   hs₁ := fun _ => one_pos
-  hs₂ := fun γ => by dsimp only; omega
-  hper := fun γ => ⟨rfl, by dsimp only; omega⟩
+  hs₂ := fun γ => by omega
+  hper := fun γ => ⟨rfl, by omega⟩
 
 theorem badTracksCarrier_innerIntegral : badTracksCarrier.InnerIntegral := by
   intro γ γ'
@@ -285,13 +341,19 @@ theorem gateJS1_freeTracks_false :
   rw [Units.ext_iff] at h001
   norm_num at h001
 
-/-! ## Concrete witnesses (interface non-vacuity; both §S2 degeneration legs) -/
+/-! ## Concrete witnesses (interface inhabitation; both §S2 degeneration legs;
+P1-FLAG-1-FENCED — see the header flag block: these are cooked-formula-cocycle
+instances, evidence about the INTERFACE only, never about (H7)/gr(w₂)) -/
 
 /-- OUTER witness — the D-REAL e₀ = 1 degeneration leg (per DITERSUP gate J3a's
 pricing, this leg is ITER-LAW-FREE: the cocycle collapses to z̄^{δ₂}, the
 theorem-backed Lemma D-REAL shape).  Honest scope: this is an ABSTRACT interface
 instance (e₀ = 1, e₁ = 2, honest mod-2 outer digit track, z̄ = 2 ∈ ℚˣ), NOT the
-row-A application data — no `SideReads`/stage content is touched. -/
+row-A application data — no `SideReads`/stage content is touched.  WHAT IT DOES
+EVIDENCE (P1-FLAG-1): the D-REAL degeneration SHAPE is expressible on the
+interface and JS2 fires on a concrete instance with a genuinely firing outer
+carry.  WHAT IT DOES NOT EVIDENCE: anything about (H7), gr(w₂), or any tower —
+its cocycle is the cooked `iterCocycle`, not a value cocycle. -/
 def witnessOuterDReal : DIterCarrier ℚ where
   e₀ := 1
   e₁ := 2
@@ -306,8 +368,8 @@ def witnessOuterDReal : DIterCarrier ℚ where
   s₁ := fun _ => 0
   s₂ := fun γ => (γ % 2).toNat
   hs₁ := fun _ => one_pos
-  hs₂ := fun γ => by dsimp only; omega
-  hper := fun γ => ⟨rfl, by dsimp only; omega⟩
+  hs₂ := fun γ => by omega
+  hper := fun γ => ⟨rfl, by omega⟩
 
 theorem witnessOuterDReal_innerIntegral : witnessOuterDReal.InnerIntegral := by
   intro γ γ'
@@ -334,7 +396,9 @@ theorem witnessOuterDReal_c11_ne_one : witnessOuterDReal.iterCocycle 1 1 ≠ 1 :
 /-- INNER witness — the e₁ = 1 degeneration leg (c = z₁^{δ₁}): e₀ = 2, e₁ = 1,
 honest mod-2 inner digit track, z₁ = 3 ∈ ℚˣ, ℓ₀ = 1.  The fibration term is 0
 (δ₂ ≡ 0 at e₁ = 1), so `InnerIntegral` is the pure inner-carry integrality —
-satisfied by the honest digit track. -/
+satisfied by the honest digit track.  Same P1-FLAG-1 scope as the outer witness:
+interface-level evidence only (JS1 fires with all hypotheses concretely
+discharged); no (H7)/gr(w₂) content. -/
 def witnessInnerE1 : DIterCarrier ℚ where
   e₀ := 2
   e₁ := 1
@@ -348,9 +412,9 @@ def witnessInnerE1 : DIterCarrier ℚ where
   γ₂ := 1
   s₁ := fun γ => (γ % 2).toNat
   s₂ := fun _ => 0
-  hs₁ := fun γ => by dsimp only; omega
+  hs₁ := fun γ => by omega
   hs₂ := fun _ => one_pos
-  hper := fun γ => ⟨by dsimp only; omega, rfl⟩
+  hper := fun γ => ⟨by omega, rfl⟩
 
 theorem witnessInnerE1_innerIntegral : witnessInnerE1.InnerIntegral := by
   intro γ γ'
@@ -375,8 +439,11 @@ theorem witnessInnerE1_c11_ne_one : witnessInnerE1.iterCocycle 1 1 ≠ 1 := by
   rw [hval, Ne, Units.ext_iff]
   norm_num
 
-/-- The bundled interface non-vacuity: a carrier with a lawful cocycle satisfying
-ALL the hypothesis-style laws, with genuinely non-trivial cocycle values. -/
+/-- The bundled interface INHABITATION: a carrier with a lawful cocycle satisfying
+ALL the hypothesis-style laws, with genuinely non-trivial cocycle values.
+P1-FLAG-1-FENCED: cooked-data level — this certifies the hypothesis bundle is
+consistent (not mutually contradictory), NOT that any semantic instance exists;
+(H7)-meaningful existence is the grTie/GRT-1 canonical-carrier layer's job. -/
 theorem carrier_interface_nonvacuous :
     ∃ (D : DIterCarrier ℚ) (c : ℤ → ℤ → ℚˣ),
       IterLaw D c ∧ D.InnerIntegral ∧ D.OuterTrackAdd ∧ ∃ γ γ' : ℤ, c γ γ' ≠ 1 :=
