@@ -1,0 +1,93 @@
+{
+ "violations": [],
+ "counts": {
+  "F1": 468,
+  "F2": 2604,
+  "F6": 2604,
+  "F3": 2604,
+  "F4": 516,
+  "F5": 4108,
+  "F8": 1736,
+  "F7": 156,
+  "F10": 4,
+  "F9": 20000
+ },
+ "cert_violations": 0,
+ "cert_samples": 432,
+ "caseII_coverage": {
+  "Zp,p=2,P": 36,
+  "Zp,p=2,Q": 72,
+  "Zp,p=2,R": 0,
+  "Zp,p=2,S": 0,
+  "Zp,p=2,U": 0,
+  "Zp,p=2,V": 0,
+  "Zp,p=2,W": 9,
+  "Zp,p=2,X": 12,
+  "Zp,p=3,P": 36,
+  "Zp,p=3,Q": 72,
+  "Zp,p=3,R": 0,
+  "Zp,p=3,S": 0,
+  "Zp,p=3,U": 0,
+  "Zp,p=3,V": 0,
+  "Zp,p=3,W": 9,
+  "Zp,p=3,X": 12,
+  "Fpt,p=2,P": 36,
+  "Fpt,p=2,Q": 72,
+  "Fpt,p=2,R": 0,
+  "Fpt,p=2,S": 0,
+  "Fpt,p=2,U": 0,
+  "Fpt,p=2,V": 0,
+  "Fpt,p=2,W": 9,
+  "Fpt,p=2,X": 12,
+  "Fpt,p=3,P": 36,
+  "Fpt,p=3,Q": 72,
+  "Fpt,p=3,R": 0,
+  "Fpt,p=3,S": 0,
+  "Fpt,p=3,U": 0,
+  "Fpt,p=3,V": 0,
+  "Fpt,p=3,W": 9,
+  "Fpt,p=3,X": 12
+ },
+ "gate": [
+  {
+   "tower": "Zp,p=2,X",
+   "verdict": "NOT-CYCLIC (>= 2 distinct non-1 cocycle values: zbar^0*z1^1, zbar^1*z1^0, zbar^1*z1^2)",
+   "cyclic": false,
+   "values": [
+    "zbar^0*z1^1",
+    "zbar^1*z1^0",
+    "zbar^1*z1^2"
+   ]
+  },
+  {
+   "tower": "Zp,p=3,X",
+   "verdict": "NOT-CYCLIC (>= 2 distinct non-1 cocycle values: zbar^0*z1^1, zbar^1*z1^0, zbar^1*z1^1)",
+   "cyclic": false,
+   "values": [
+    "zbar^0*z1^1",
+    "zbar^1*z1^0",
+    "zbar^1*z1^1"
+   ]
+  },
+  {
+   "tower": "Fpt,p=2,X",
+   "verdict": "NOT-CYCLIC (>= 2 distinct non-1 cocycle values: zbar^0*z1^1, zbar^1*z1^0, zbar^1*z1^2)",
+   "cyclic": false,
+   "values": [
+    "zbar^0*z1^1",
+    "zbar^1*z1^0",
+    "zbar^1*z1^2"
+   ]
+  },
+  {
+   "tower": "Fpt,p=3,X",
+   "verdict": "NOT-CYCLIC (>= 2 distinct non-1 cocycle values: zbar^0*z1^1, zbar^1*z1^0, zbar^1*z1^1)",
+   "cyclic": false,
+   "values": [
+    "zbar^0*z1^1",
+    "zbar^1*z1^0",
+    "zbar^1*z1^1"
+   ]
+  }
+ ]
+}

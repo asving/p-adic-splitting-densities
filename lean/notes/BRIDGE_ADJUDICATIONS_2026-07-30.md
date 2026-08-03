@@ -6370,3 +6370,33 @@ primed-mirror set (consistent with the REVISION-9 rule: adjudicated on the actua
 diff). Corrected during composition: none of the displayed gates asserts
 satisfiability — J1's full-bundle Lean construction is exactly the owed FGMN §S9
 item. NEXT per the wave-16 queue.
+
+## ITER-LAW ATTEMPT (queue #6, 2026-08-08 wallclock 2026-08-03) — PROVED at attempt grade on the harness tower class; falsifier ALL GREEN first run; hostile passes owed
+
+Note: `lean/notes/openmath/ITERLAW_2026-08-08.md`. THE RESULT: D-ITER's statement
+of record (DITER_RESTATE §S2, previously OPEN LEMMA at 0/804 + 0/840) is PROVED as
+a finite-algebra identity on the harness tower class (standard-lift towers — the
+class the statement of record pins and the ENTIRE instance base inhabits): for all
+window pairs, c(γ,γ′) = z̄^{δ₂}·z₁^{(s₁(γ)+s₁(γ′)−s₁(γ+γ′)+ℓ₀γ₂δ₂)/e₀}. Route =
+the chartered CARRY-1/W-MULT bookkeeping run fibred: EQ12-ADD both levels +
+INNER-SHIFT (γ₁(γ+γ′) = γ₁+γ₁′+δ₂γ₂) + EPS-CLOSED (ε₁(β) = z₁^{(s(β)−ℓ₀β)/e₀}) +
+ANCHOR-VAL + PAIR-VAL (Case I single-digit inner-slot shift z₁^{δ₁}; Case II the
+g₀ = 1 standard-lift reduction with residue −ψ₀(0) = z₁ — the two mechanisms give
+the SAME constant) + a two-line Bézout Lemma EXP (TR3-S2 genre). NO printed
+formula, extraction, or GMN semantics consumed — every object a harness-calculus
+definition; anchor-pair (W-MULT) RECOVERED as a corollary, not consumed. B0a
+associativity, B1 integrality, the D-REAL e₀ = 1 and the e₁ = 1 degenerations,
+B0c/ℤ-E₂ descent: displayed corollaries (all three DITER §S3 sanity gates). Two-
+commit seal: runner sealed pre-run at ab7c31c; run ALL GREEN FIRST PASS exit 0 —
+35,232 samples, 0 violations (F1–F10 + CERT; fresh rows P/Q/R/S/U/V/W/X incl.
+E₂ = 8 beyond every probed roster row; fresh seed 20260825; window Γ₀+7E₂; Case-II
+coverage MET; row-X gate NOT-CYCLIC 4/4 with EXACT value-set match to the row-N
+tables). HONEST RESIDUALS: (ITER-LAW-LIFT) general lawful (non-standard) lifts
+OPEN exactly at g₀ = 1 ∧ δ₁ = 1 (the one lift-form-consuming step); the gr(w₂)
+semantics wrapper rides the accepted GRB retarget (consumed by IFACE(c) consumers,
+not by the theorem); orders ≥ 3 NOT TOUCHED; acceptance counter 0 — hostile-pass
+arc owed (F2c verifier-owned implementation expected there). Consumer touch-point:
+DITERSUP's J3b blocked-on-ITER-LAW leg may now cite proved-on-class (standard-lift
+instances — all compiled ones are); status-upgrade brackets at DITER_RESTATE §S2 /
+GRB S5.3 / PROJECT_STATE (H1)(iii) ride the next r-fold, NOT applied by this unit.
+NEXT per the wave-16 queue.

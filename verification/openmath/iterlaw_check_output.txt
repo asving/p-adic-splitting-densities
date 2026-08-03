@@ -1,0 +1,29 @@
+[   0.6s] CERT done: 0 violations (432 samples) on rows P/Q/R/S/U/V/W/X
+[   2.7s] ring (Zp,p=2) done: cumulative violations = 0
+[   5.0s] ring (Zp,p=3) done: cumulative violations = 0
+[  10.1s] ring (Fpt,p=2) done: cumulative violations = 0
+[  15.8s] ring (Fpt,p=3) done: cumulative violations = 0
+[  16.4s] F9 symbolic done
+
+==============================================================================
+PREDICTED vs OBSERVED (violation counts; samples in parentheses)
+==============================================================================
+F1  L6 ANCHOR-VAL letters, 3 windows             pred 0  obs     0 (   468)  GREEN
+F2  L7 PAIR-VAL both forms + single-slot shape   pred 0  obs     0 (  2604)  GREEN
+F3  THEOREM (ITER-LAW) closed form               pred 0  obs     0 (  2604)  GREEN
+F4  Case-II development identity (bug-det+proof) pred 0  obs     0 (   516)  GREEN
+F5  COR-2 B0a associativity, measured + closed   pred 0  obs     0 (  4108)  GREEN
+F6  COR-1 exponent integrality                   pred 0  obs     0 (  2604)  GREEN
+F7  COR-3 degenerations (rows V, W)              pred 0  obs     0 (   156)  GREEN
+F8  COR-4 representative independence W2/W3==W1  pred 0  obs     0 (  1736)  GREEN
+F9  integer layer L1/L4/L2/EXP, symbolic         pred 0  obs     0 ( 20000)  GREEN
+F10 S6.6 NOT-CYCLIC gate at row X               pred 0  obs     0 (     4)  GREEN
+CERT tower-data certification (T1/T2/T5/T11+PARI)          pred 0  obs     0 (   432)  GREEN
+F4 Case-II coverage on rows P/Q (pred > 0 each): [36, 36, 36, 36, 72, 72, 72, 72]  MET
+F10 gate: NOT-CYCLIC 4/4 (pred 4/4)
+    Zp,p=2,X     NOT-CYCLIC (>= 2 distinct non-1 cocycle values: zbar^0*z1^1, zbar^1*z1^0, zbar^1*z1^2)  values=['zbar^0*z1^1', 'zbar^1*z1^0', 'zbar^1*z1^2']
+    Zp,p=3,X     NOT-CYCLIC (>= 2 distinct non-1 cocycle values: zbar^0*z1^1, zbar^1*z1^0, zbar^1*z1^1)  values=['zbar^0*z1^1', 'zbar^1*z1^0', 'zbar^1*z1^1']
+    Fpt,p=2,X    NOT-CYCLIC (>= 2 distinct non-1 cocycle values: zbar^0*z1^1, zbar^1*z1^0, zbar^1*z1^2)  values=['zbar^0*z1^1', 'zbar^1*z1^0', 'zbar^1*z1^2']
+    Fpt,p=3,X    NOT-CYCLIC (>= 2 distinct non-1 cocycle values: zbar^0*z1^1, zbar^1*z1^0, zbar^1*z1^1)  values=['zbar^0*z1^1', 'zbar^1*z1^0', 'zbar^1*z1^1']
+TOTAL samples: 35232   elapsed 16.4s
+VERDICT (preregistered rows): ALL GREEN
