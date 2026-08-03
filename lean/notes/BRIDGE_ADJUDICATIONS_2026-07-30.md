@@ -6639,3 +6639,25 @@ development bookkeeping); S7 residuals honest; corrected §S2 relationship
 the next r-fold; cosmetic unused `pmul` import in the supplement. COUNTER:
 this Fable leg CLEAN — acceptance still requires the concurrent Codex PC2
 also CLEAN (both legs of the fresh pair must pass).
+
+## ITER-LAW ACCEPTED — 2026-08-03 (orchestrator adjudication; 2-clean model-diverse bar met)
+
+The hostile-pass arc on `ITERLAW_2026-08-08.md` closed at the acceptance bar on
+the amended text (post-errata 7566ccd): **PC2 (Codex content) CLEAN 0C/0G**
+(`ITERLAW_passPC2_report.md`, 804b88a) + **PE2 (Fable execution+content) CLEAN
+0C/0G** (`ITERLAW_passPE2_report.md`, c40a1da). Arc of record: PC1 NOT-CLEAN
+1C/1G (acc955a; E₂-scope verbatim-match critical + F8 mixed-block gap, both
+orchestrator-confirmed against sources) → PE1 CLEAN (64ac340; F2c discharged
+verifier-owned, 89,056/0, 4/4 mutation controls) → errata round 1 (7566ccd; S0
+scope erratum + `iterlaw_cor4_mixed.py` supplement 18,396/0, sealed falsifier
+md5-verified untouched) → PC2 CLEAN + PE2 CLEAN. Scope as accepted: the harness
+tower class (superset of DITER_RESTATE §S2's E₂ > 1 pin; on-the-nose coincidence
+restricted to E₂ > 1); residuals: (ITER-LAW-LIFT) open exactly at g₀ = 1 ∧ δ₁ = 1;
+gr(w₂) wrapper rides the accepted GRB retarget; orders ≥ 3 untouched. Acceptance
+brackets applied in the note (S0 + the S9 counter bullet); the sealed falsifier,
+prereg text, and proof sections untouched. OWED AT r36: display-site upgrades
+(DITER_RESTATE §S2 bracket attempt-grade → ACCEPTED + its one-line class-phrasing
+correction already on this ledger; GRB S5.3/S8; PROJECT_STATE; ROOT §40.(i)
+counter + class-qualifier phrasing; DITERSUP J3b may cite ACCEPTED-on-class).
+This is the FOURTH accepted member of the wave-15/16 lineage families and closes
+synthesis-7 queue #6 end-to-end.
