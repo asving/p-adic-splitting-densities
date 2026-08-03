@@ -7981,3 +7981,39 @@ frozen-history trim MANDATORY; charge at ROOT §43), then the ITERLAWN
 hostile arc, then the (RM-m)/(W-MULT-DCX-m) closure program. Unit files:
 ROOT + PROJECT_STATE + the three swept notes + this append ONLY (scoped
 `git commit --only`).
+
+---
+
+## ITERLAWN pass PE (round 1, Fable, execution+content) — NOT-CLEAN 0C/2G; counter stays 0/2 — 2026-08-03
+
+Target: `ITERLAWN_PROOF_2026-08-08.md` @ 4df7fdb (incl. the r38 S7 bracket).
+Report: `lean/notes/openmath/ITERLAWN_passPE_report.md`. **Verdict:
+NOT-CLEAN, 0 critical / 2 gaps (+2 nits), both gaps narrow display-grade:
+G1 = the DCX outer-bound rows say "PROVED, generic" without the "(given IH
+package)" qualifier their displayed proof consumes ((P-DS)'s E₁ ⟹ CII
+clause; three sites: S0.3 table row, S0.3 excluded-locus bullet, S4.7
+head); G2 = rule-8 per-mention discipline: 7 of 59 [IL3] mentions carry no
+grade token at site (substantive only at S4.1's REALIZE m = 1 base; ledger
+rows carry the conditionality, so no grade misstatement).** EXECUTION:
+diag re-run BYTE-EXACT (exit 0, 2.5 s, md5s match S8; counts re-verified
+against every S8 display, 5,311/0). F2c: from-note reimpl
+`verification/openmath/iterlawn_pe_reimpl.py` + frozen output (md5s in the
+report), written before re-opening the diag — 9 FRESH instances (3× 4-read,
+3× 5-read incl. DCX₂-live / level-3 middle-cascade chain / e₀=1∧d₀=2
+corner, + the FIRST 6-READ SMOKE, ℤ₂/ℤ₃/F₂[[t]]/F₃[[t]]), 940 pairs,
+**22,369 family-checks / 0 violations**; law exact incl. all 9 fresh
+detector-DCX₂ pairs; DCX detector ≡ [IL3] sharp form 940/940; outer bound
+9/9; (RM-m) box instance-probed at 534 engine calls incl. RM-2 158 + RM-3
+52 (first m ≥ 2 box data) + 16 RM-1 calls INSIDE the fenced DEV-1 corner —
+all clauses hold; (I_m) 94/0; mutations 7/7 visible+caught. CONTENT: full
+hand re-derivation of the generic step (S2 interleave, (★), WINDOW, L6
+telescope, all three II-leg line tables incl. e ∈ {1,2} collisions and the
+ε′-cancellation, package closure audit — no silent IH over-consumption, no
+silent (RM-m) in any proved-generic leg). CONSUMPTIONS: all LEGAL —
+[IL]/[IL3] pastes byte-identical to this ledger's blocks (mechanical
+check); the (RM-1)↔[IL3] dictionary EXACT (S4.5/S4.6 read displays = the
+box clause on the nose, scope inheritance verbatim); L3CONVERGENCE
+Candidate-2 verbatim; ITERLAW4 verdict quoted exactly, held at MEASURED;
+e_{m−2} ≥ 3 properly CONJECTURED (fresh data consistent, no refutation).
+Errata owed: G1 qualifier token ×3 sites (or the short engine-free-support
+lemma), G2 token sweep; then round 2. Pass files only (scoped commit).

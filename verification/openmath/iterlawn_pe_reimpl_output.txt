@@ -1,0 +1,94 @@
+iterlawn_pe_reimpl -- ITERLAWN-PE round-1 FROM-NOTE reimplementation
+(hostile execution leg on ITERLAWN_PROOF_2026-08-08.md @4df7fdb; instance evidence only)
+
+== FRESH-INSTANCE BATTERY (baseline, no mutations) ==
+-- Zp,p=2,I4A: 4 reads (rung 3), E=12, d0=1, |W1|=12, pairs=144, 0.1s
+   censuses: {'census_case_II-1_m2': 27, 'census_case_II-2_m2': 9, 'census_case_II-3_m2': 18, 'census_case_I_m2': 90, 'census_case_I_m3': 144, 'census_outer_m2': 9}
+   checks:   {'K10_sharp2': 144, 'K11_rm1': 63, 'K11_rm1_q': 18, 'K12_constdesc': 12, 'K12_pi': 12, 'K12_rho': 12, 'K13_pass': 144, 'K1_shift': 432, 'K2_dint': 144, 'K3_star': 432, 'K4_window': 144, 'K5_l6': 144, 'K6_wmult': 144, 'K7_law': 144, 'K8_e1': 90, 'K8_e1_weq': 72, 'K8_pds': 432, 'K9_case': 288, 'K9b_subst': 54}
+-- Zp,p=3,I4B: 4 reads (rung 3), E=12, d0=1, |W1|=12, pairs=144, 0.1s
+   censuses: {'census_case_II-1_m2': 24, 'census_case_II-2_m2': 12, 'census_case_II-3_m2': 24, 'census_case_I_m2': 84, 'census_case_I_m3': 144, 'census_dcx_m2': 4, 'census_outer_m2': 12, 'census_sharp2': 4}
+   checks:   {'K10_outer': 4, 'K10_sharp2': 144, 'K11_rm1': 72, 'K11_rm1_q': 36, 'K12_constdesc': 12, 'K12_pi': 12, 'K12_rho': 12, 'K13_pass': 144, 'K1_shift': 432, 'K2_dint': 144, 'K3_star': 432, 'K4_window': 144, 'K5_l6': 144, 'K6_wmult': 144, 'K7_law': 144, 'K8_e1': 104, 'K8_e1_weq': 80, 'K8_pds': 424, 'K8_skipped_dcx': 8, 'K9_case': 284, 'K9b_subst': 56}
+-- Fpt,p=2,I4C: 4 reads (rung 3), E=8, d0=2, |W1|=8, pairs=64, 0.3s
+   censuses: {'census_case_II-1_m3': 16, 'census_case_I_m2': 64, 'census_case_I_m3': 48}
+   checks:   {'K10_sharp2': 64, 'K11_rm2': 16, 'K11_rm2_q': 4, 'K12_constdesc': 8, 'K12_pi': 8, 'K12_rho': 8, 'K13_pass': 64, 'K1_shift': 192, 'K2_dint': 64, 'K3_star': 192, 'K4_window': 64, 'K5_l6': 64, 'K6_wmult': 64, 'K7_law': 64, 'K8_e1': 32, 'K8_e1_weq': 32, 'K8_pds': 192, 'K9_case': 128, 'K9b_subst': 16}
+-- Zp,p=3,I5A: 5 reads (rung 4), E=12, d0=1, |W1|=12, pairs=144, 0.5s
+   censuses: {'census_case_II-1_m2': 24, 'census_case_II-1_m4': 36, 'census_case_II-2_m2': 12, 'census_case_II-3_m2': 24, 'census_case_I_m2': 84, 'census_case_I_m3': 144, 'census_case_I_m4': 108, 'census_dcx_m2': 4, 'census_outer_m2': 12, 'census_sharp2': 4}
+   checks:   {'K10_outer': 4, 'K10_sharp2': 144, 'K11_rm1': 72, 'K11_rm1_q': 36, 'K11_rm3': 36, 'K11_rm3_q': 21, 'K12_constdesc': 12, 'K12_pi': 12, 'K12_rho': 12, 'K13_pass': 144, 'K15_tie': 144, 'K15_valtie': 144, 'K1_shift': 576, 'K2_dint': 144, 'K3_star': 576, 'K4_window': 144, 'K5_l6': 144, 'K6_wmult': 144, 'K7_law': 144, 'K8_e1': 139, 'K8_e1_weq': 115, 'K8_pds': 564, 'K8_skipped_dcx': 12, 'K9_case': 424, 'K9b_subst': 91}
+-- Fpt,p=3,I5A: 5 reads (rung 4), E=12, d0=1, |W1|=10, pairs=100, 0.4s
+   censuses: {'census_case_II-1_m2': 13, 'census_case_II-1_m4': 16, 'census_case_II-2_m2': 3, 'census_case_II-3_m2': 12, 'census_case_I_m2': 72, 'census_case_I_m3': 100, 'census_case_I_m4': 84, 'census_dcx_m2': 1, 'census_outer_m2': 3, 'census_sharp2': 1}
+   checks:   {'K10_outer': 1, 'K10_sharp2': 100, 'K11_rm1': 31, 'K11_rm1_q': 15, 'K11_rm3': 16, 'K11_rm3_q': 3, 'K12_constdesc': 10, 'K12_pi': 10, 'K12_rho': 10, 'K13_pass': 100, 'K15_tie': 100, 'K15_valtie': 100, 'K1_shift': 400, 'K2_dint': 100, 'K3_star': 400, 'K4_window': 100, 'K5_l6': 100, 'K6_wmult': 100, 'K7_law': 100, 'K8_e1': 70, 'K8_e1_weq': 58, 'K8_pds': 397, 'K8_skipped_dcx': 3, 'K9_case': 298, 'K9b_subst': 43}
+-- Zp,p=3,I5B: 5 reads (rung 4), E=12, d0=1, |W1|=12, pairs=144, 0.2s
+   censuses: {'census_case_II-1_m3': 36, 'census_case_II-2_m3': 12, 'census_case_II-3_m2': 36, 'census_case_II-3_m3': 12, 'census_case_I_m2': 108, 'census_case_I_m3': 84, 'census_case_I_m4': 144, 'census_outer_m2': 36, 'census_outer_m3': 4}
+   checks:   {'K10_sharp2': 144, 'K11_rm1': 36, 'K11_rm2': 72, 'K12_constdesc': 12, 'K12_pi': 12, 'K12_rho': 12, 'K13_pass': 288, 'K1_shift': 576, 'K2_dint': 144, 'K3_star': 576, 'K4_window': 144, 'K5_l6': 144, 'K6_wmult': 144, 'K7_law': 144, 'K8_e1': 132, 'K8_e1_weq': 84, 'K8_pds': 576, 'K9_case': 432, 'K9b_subst': 96}
+-- Fpt,p=3,I5B: 5 reads (rung 4), E=12, d0=1, |W1|=10, pairs=100, 0.3s
+   censuses: {'census_case_II-1_m3': 15, 'census_case_II-2_m3': 5, 'census_case_II-3_m2': 25, 'census_case_II-3_m3': 8, 'census_case_I_m2': 75, 'census_case_I_m3': 72, 'census_case_I_m4': 100, 'census_outer_m2': 25, 'census_outer_m3': 1}
+   checks:   {'K10_sharp2': 100, 'K11_rm1': 25, 'K11_rm2': 33, 'K12_constdesc': 10, 'K12_pi': 10, 'K12_rho': 10, 'K13_pass': 200, 'K1_shift': 400, 'K2_dint': 100, 'K3_star': 400, 'K4_window': 100, 'K5_l6': 100, 'K6_wmult': 100, 'K7_law': 100, 'K8_e1': 78, 'K8_e1_weq': 45, 'K8_pds': 400, 'K9_case': 300, 'K9b_subst': 53}
+-- Fpt,p=2,I5C: 5 reads (rung 4), E=8, d0=2, |W1|=8, pairs=64, 2.0s
+   censuses: {'census_case_II-1_m2': 16, 'census_case_II-1_m3': 12, 'census_case_II-2_m3': 4, 'census_case_II-3_m3': 8, 'census_case_I_m2': 48, 'census_case_I_m3': 40, 'census_case_I_m4': 64, 'census_outer_m3': 4}
+   checks:   {'K10_sharp2': 64, 'K11_rm1_corner': 16, 'K11_rm2': 28, 'K11_rm2_q': 12, 'K12_constdesc': 8, 'K12_pi': 8, 'K12_rho': 8, 'K13_pass': 128, 'K1_shift': 256, 'K2_dint': 64, 'K3_star': 256, 'K4_window': 64, 'K5_l6': 64, 'K6_wmult': 64, 'K7_law': 64, 'K8_e1': 40, 'K8_e1_weq': 32, 'K8_pds': 256, 'K9_case': 192, 'K9b_subst': 40}
+-- Zp,p=3,I6S: 6 reads (rung 5), E=8, d0=1, |W1|=6, pairs=36, 0.1s
+   censuses: {'census_case_II-1_m3': 3, 'census_case_II-2_m3': 1, 'census_case_II-3_m2': 9, 'census_case_II-3_m3': 4, 'census_case_I_m2': 27, 'census_case_I_m3': 28, 'census_case_I_m4': 36, 'census_case_I_m5': 36, 'census_outer_m2': 9, 'census_outer_m3': 1}
+   checks:   {'K10_sharp2': 36, 'K11_rm1': 9, 'K11_rm2': 9, 'K11_rm2_q': 3, 'K12_constdesc': 6, 'K12_pi': 6, 'K12_rho': 6, 'K13_pass': 108, 'K1_shift': 180, 'K2_dint': 36, 'K3_star': 180, 'K4_window': 36, 'K5_l6': 36, 'K6_wmult': 36, 'K7_law': 36, 'K8_e1': 26, 'K8_e1_weq': 13, 'K8_pds': 180, 'K9_case': 144, 'K9b_subst': 17}
+
+== TOTALS ==
+  Im_asserts             94
+  K10_outer              9
+  K10_sharp2             940
+  K11_eps_vis            95
+  K11_rm1                308
+  K11_rm1_corner         16
+  K11_rm1_q              105
+  K11_rm2                158
+  K11_rm2_q              19
+  K11_rm3                52
+  K11_rm3_q              24
+  K12_constdesc          90
+  K12_pi                 90
+  K12_rho                90
+  K13_pass               1320
+  K15_tie                244
+  K15_valtie             244
+  K1_shift               3444
+  K2_dint                940
+  K3_star                3444
+  K4_window              940
+  K5_l6                  940
+  K6_wmult               940
+  K7_law                 940
+  K8_e1                  711
+  K8_e1_weq              531
+  K8_pds                 3421
+  K8_skipped_dcx         23
+  K9_case                2490
+  K9b_subst              466
+  ONDCX_law_ok           9
+  R123                   38
+  census_case_II-1_m2    104
+  census_case_II-1_m3    82
+  census_case_II-1_m4    52
+  census_case_II-2_m2    36
+  census_case_II-2_m3    22
+  census_case_II-3_m2    148
+  census_case_II-3_m3    32
+  census_case_I_m2       652
+  census_case_I_m3       804
+  census_case_I_m4       536
+  census_case_I_m5       36
+  census_dcx_m2          9
+  census_outer_m2        106
+  census_outer_m3        10
+  census_sharp2          9
+  pairs                  940
+== BASELINE VIOLATIONS: 0 ==
+
+== MUTATION CONTROLS (subset: I4B@Zp, I4C@Fpt; catch = violations>0) ==
+  M1  vis=41    viol=181   CAUGHT  D_j drops the l_{j-1} S_j term (S0.3 recursion)
+  M2  vis=41    viol=93    CAUGHT  SHIFT check drops S_j (beta'' = B_j)
+  M3  vis=20    viol=36    CAUGHT  composed shift sign flip: l'+l*wPhi for l'-l*wPhi
+  M4  vis=128   viol=127   CAUGHT  law top exponent delta -> 1-delta
+  M5  vis=9     viol=9     CAUGHT  (RM-m) read clause drops the z^{eps'} carry factor
+  M6  vis=8     viol=8     CAUGHT  rho monodromy exponent sign flip
+  M7  vis=56    viol=56    CAUGHT  (P-DS) E1 weight bound tightened by +1
+
+== VERDICT: baseline violations = 0; mutations caught+visible = 7/7; elapsed 7.0s ==
+REIMPL VERDICT: CLEAN
