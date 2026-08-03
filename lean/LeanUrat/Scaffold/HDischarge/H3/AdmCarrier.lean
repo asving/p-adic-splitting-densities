@@ -24,17 +24,25 @@ import LeanUrat.Scaffold.ValueSide.Census
   verbatim; the two non-vacuity lemmas named in ADM-U2's duties (v1)/(v2),
   Codex pass-1 finding 11, landed here so U2's proof consumes them).
 * Math source of record: O-9 rev5 §2 (the class ledger; (CLASS-d)) — see
-  HDISCHARGE_H3 §1.3.  NOTE (F-ADM-2): (CLASS-d) itself is NOT a carrier
-  theorem at r ≥ 2; nothing here claims it.
-* Carrier: `LeanUrat.Scaffold.CensusData` (BP_IV §1.2, `CensusCore.lean`).
+  HDISCHARGE_H3 §1.3.  F-ADM-2/F-ADM-3 RECORD: on the PRE-re-key carrier
+  (birth weights, no `E_i`) (CLASS-d) was genuinely FALSE at r ≥ 2 (88 grid
+  countermodels) and entered as ADM-U2's `hclass` hypothesis; after the
+  F-ADM-3 re-key of `wphi` to the O-9 §4 top-normalized ledger
+  (`CensusCore.lean`, ADMREAL_2026-08-08.md §5b + §8) it is the PROVED
+  `classCount_eq_d` below (= ADMREAL Lemma CLASS-LAT), and `hclass` is
+  RETIRED (unit note `lean/notes/openmath/FADM3_REKEY_2026-08-08.md`).
+* Carrier: `LeanUrat.Scaffold.CensusData` (BP_IV §1.2, `CensusCore.lean`),
+  at the post-F-ADM-3 head.
 -/
 
 namespace LeanUrat.Scaffold.HD3
 
 /-- unit ADM-U1 (blueprint-verbatim) — the per-class ledger count: the number
     of φ-monomial slots `j ∈ J` whose weight lies in the residue class
-    `c (mod e)` (O-9 §2's `#{𝐣 : wt(𝐣) ≡ c}`; (CLASS-d) asserts this `= d`,
-    supplied as a HYPOTHESIS at general order per F-ADM-2). -/
+    `c (mod e)` (O-9 §2's `#{𝐣 : wt(𝐣) ≡ c}`; (CLASS-d) asserts this `= d` —
+    a PROVED law at every order on the F-ADM-3 re-keyed carrier, see
+    `classCount_eq_d` below; pre-re-key it was hypothesis-supplied per
+    F-ADM-2). -/
 noncomputable def classCount (D : CensusData) (c : ℕ) : ℕ :=
   (Finset.univ.filter (fun j : D.J => D.wt j % D.period = c % D.period)).card
 
@@ -83,22 +91,35 @@ theorem classFilter_nonempty_of_mem_onLineSlots (D : CensusData) {β : ℕ}
 theorem d_pos (D : CensusData) : 0 < D.d :=
   Finset.prod_pos fun i _ => D.hf i
 
-/-- unit ADM-U2 (blueprint-verbatim statement) — the deep-stratum reading of
-    (ADM)-FULL, with (CLASS-d) as the NAMED hypothesis `hclass` (F-ADM-2: at
-    r ≥ 2 (CLASS-d) is NOT a carrier theorem — r = 2 countermodels on file —
-    so it enters as a hypothesis, never hypothesis-free).  Route (LED(iii)
+/-- **CLASS-LAT (the (CLASS-d) law at EVERY order — ADMREAL_2026-08-08.md
+    §5), on the F-ADM-3 re-keyed carrier:** every residue class mod the
+    period carries exactly `d` slots, unconditionally.  REPLACES ADM-U2's
+    `hclass` HYPOTHESIS (the F-ADM-2-era conditionality was real: on the
+    pre-re-key birth-weight lattice (CLASS-d) is FALSE at r ≥ 2 — 88 grid
+    countermodels — so pre-re-key it could only be hypothesis-supplied).
+    Kernel: `CensusData.classCard_eq_d` (`CensusCore.lean`); falsifier legs
+    `admreal_check.py` R3″/R7. -/
+theorem classCount_eq_d (D : CensusData) (c : ℕ) : classCount D c = D.d :=
+  D.classCard_eq_d c
+
+/-- unit ADM-U2 — the deep-stratum reading of (ADM)-FULL.
+    **F-ADM-3 STATEMENT CHANGE OF RECORD (standing definition-change
+    authority; the pre-re-key form carried the hypothesis
+    `(hclass : ∀ c, classCount D c = D.d)`, F-ADM-2's conditionality —
+    RETIRED: `hclass` is now the PROVED `classCount_eq_d` above, so the
+    theorem strengthens to hypothesis-free.)**  Route (LED(iii)
     monotonicity, Finset counting): `attainDim β` counts the residue class of
-    `β` truncated at `wt ≤ β`; under `hclass` the full class has exactly `d`
-    members, so full attainment at `β` ⟺ the truncation is the whole class
-    ⟺ every class weight is ≤ β ⟺ `maxClassWeight β ≤ β`.  Non-vacuity
-    duties (v1)/(v2) are the ADM-U1 records
+    `β` truncated at `wt ≤ β`; by `classCount_eq_d` the full class has
+    exactly `d` members, so full attainment at `β` ⟺ the truncation is the
+    whole class ⟺ every class weight is ≤ β ⟺ `maxClassWeight β ≤ β`.
+    Non-vacuity duties (v1)/(v2) are the ADM-U1 records
     (`classFilter_nonempty_of_mem_onLineSlots`, `d_pos`): on every on-line
     slot the class is nonempty, so the `Finset.sup` in `maxClassWeight` is a
     genuinely attained max; the counting proof below is additionally immune
     to the empty-sup default. -/
-theorem admFull_iff_maxClassWeight (D : CensusData)
-    (hclass : ∀ c, classCount D c = D.d) :
+theorem admFull_iff_maxClassWeight (D : CensusData) :
     ADMFull D ↔ ∀ β ∈ D.onLineSlots, maxClassWeight D β ≤ β := by
+  have hclass : ∀ c, classCount D c = D.d := classCount_eq_d D
   constructor
   · rintro ⟨hfull⟩ β hβ
     -- the truncated class `Gset β` fills the WHOLE class, by cardinality:
@@ -149,9 +170,11 @@ theorem admFull_iff_maxClassWeight (D : CensusData)
   `h_coprime`), the `t`-window contributes `f₁`, and the weight-0 stage-0
   digit contributes `f₀`; per-class total `f₀·f₁ = d`.  At r = 0 the period
   is 1: the single class carries all `f₀ = d` monomials.
-* NOTE (F-ADM-2): r ≤ 1 is exactly the UNCONDITIONAL range; at r ≥ 2
-  (CLASS-d) is NOT a carrier theorem (compiled countermodels on the probe
-  grid — it is (GR-B)-supplied and consumed as ADM-U2's `hclass` hypothesis).
+* NOTE (F-ADM-2, superseded by F-ADM-3): on the PRE-re-key carrier r ≤ 1 was
+  exactly the unconditional range (compiled r ≥ 2 countermodels on the
+  birth-weight probe grid).  Post-re-key, (CLASS-d) holds at EVERY order
+  (`classCount_eq_d` above); this unit's r ≤ 1 statement is kept verbatim
+  (its enumeration proof survives with the E₁ = 1 top-stage evaluation).
 * Non-vacuity (the ADM-U0 record, `CensusCore.lean`): with `triangular`
   dropped, ramified r = 1 data (e₁ > 1) are expressible, so the theorem
   genuinely quantifies over the full coprime (e₁, h₁) range.
@@ -201,8 +224,11 @@ theorem classCount_eq_d_of_r_le_one (D : CensusData) (hr : D.r ≤ 1) (c : ℕ) 
     have hperiod : Dm.period = e 1 :=
       (Fin.prod_univ_two Dm.ledgerE).trans (one_mul _)
     have hwphi0 : Dm.wphi 0 = 0 := rfl
+    -- F-ADM-3 re-key: wphi 1 = E₁·(e₁·V₁ + h₁), E₁ = 1 at the top stage
     have hwphi1 : Dm.wphi 1 = h 1 := by
-      have h2 : Dm.wphi 1 = e 1 * 0 + h 1 := rfl
+      have hE : Dm.Emul 1 = 1 := Dm.Emul_last
+      have h2 : Dm.wphi 1 = Dm.Emul 1 * (e 1 * 0 + h 1) := rfl
+      rw [h2, hE, one_mul]
       omega
     have hwt : ∀ j : Dm.J, Dm.wt j = ((j 1).1.1 + e 1 * (j 1).2.1) * h 1 := by
       intro j

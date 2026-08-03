@@ -161,6 +161,34 @@ included; secondary degree route covers exactly the ledger-live levels.
   R3(a), R3(b)-STATE, R4, R5, R3' (== 88), R3'', R6 ALL pass.  Exit 2
   unchanged (theorem-grade: R2(c) hit or R4 off-end partial).
 ================================================================================
+REVISION 2 ADDENDUM — F-ADM-3 RE-KEY TWIN LEG R7 (unit F-ADM-3 CARRIER
+RE-KEY, SYNTHESIS_PASS7 queue #4; unit note
+lean/notes/openmath/FADM3_REKEY_2026-08-08.md).  This block is sealed in the
+unit's PREREGISTRATION COMMIT before its first execution (the e05e660/90e1ecb
+two-commit protocol).  The Lean carrier's `wphi` has been re-keyed to the
+O-9 section-4 top-normalized ledger: wphi_i = E_i*(e_i*V_i + h_i),
+E_i = e_{i+1}...e_r (CensusCore.lean; old body = the birth value, kept as
+`wbirth`).  `rekey_type_data` below transcribes the RE-KEYED Lean
+definitions (Vrec/wbirth/Emul/wphi/ledgerE digit ranges) independently of
+`type_data`'s O-9-note-side generators.
+
+  R7(a) (carrier == O-9 ledger, pointwise): on the FULL r <= 3 grid (12,348
+      types) the re-keyed carrier weight multiset equals type_data's
+      top-normalized multiset ELEMENTWISE (same digit enumeration order).
+      Prediction: 0 mismatches.
+  R7(b) (THE ACCEPTANCE TEST — the F-ADM-2 grid under re-keyed carrier
+      semantics): the r = 2 grid class-count scan that fails at exactly 88
+      types under the PRE-re-key coded weights (leg R3', contract kept)
+      has ZERO failing types under the re-keyed carrier.  Prediction: 0.
+  R7(c) (the F-ADM-2 quoted type): (2,1,1),(2,1,1), f0=1 under the re-keyed
+      carrier gives weights {0,2,5,7}, every class mod 4 hit exactly once.
+      Prediction: both hold.
+
+  REVISION 2 exit contract (supersedes REVISION 1, transparently): exit 0
+  iff R1, R2, R3(a), R3(b)-STATE, R4, R5, R3' (== 88 — the HISTORICAL
+  pre-re-key reproduction, unchanged), R3'', R6, R7 ALL pass.  Exit 2
+  unchanged.
+================================================================================
 """
 import itertools
 import json
@@ -393,8 +421,10 @@ def run_R3():
 
 # ------------------------------- ADDENDUM legs: R3' (diagnosis) + R3'' (r=3)
 def coded_type_data(f0, stages):
-    """The CARRIER's coded lattice (CensusCore.lean wphi/Vrec transcription):
-    wphi_i = e_i*V_i + h_i, NO E_i rescale.  Same (P3) Vrec."""
+    """The PRE-F-ADM-3 coded lattice (the CensusCore.lean wphi/Vrec
+    transcription BEFORE the re-key; at the re-keyed HEAD this is the
+    `wbirth` lattice): wphi_i = e_i*V_i + h_i, NO E_i rescale.  Same (P3)
+    Vrec.  Kept as the HISTORICAL reproduction leg (R3' contract == 88)."""
     r = len(stages)
     V = 0
     Vs = [None, 0]
@@ -443,6 +473,74 @@ def run_R3prime():
              sorted(Tt['wts']), top_ok))
     # REVISION 1 (gap 8): the exact F-ADM-2 count is the contract
     return dict(ok=(coded_fail == 88 and coded_ok and top_ok))
+
+
+def rekey_type_data(f0, stages):
+    """The RE-KEYED carrier lattice (transcribes the post-F-ADM-3
+    CensusCore.lean): Vrec by (P3); wbirth_i = e_i*V_i + h_i (0 at stage 0);
+    Emul_i = prod_{j>i} ledgerE_j = e_{i+1}*...*e_r; wphi_i =
+    Emul_i * wbirth_i; digit j_i ranges over ledgerE_i*f_i (stage 0: f0);
+    wt = sum j_i * wphi_i.  Written from the Lean defs, NOT from
+    type_data."""
+    r = len(stages)
+    V = 0
+    Vs = [None, 0]                       # Vs[i] = V_i, 1-indexed
+    for (e, h, f) in stages:
+        V = e * f * (e * V + h)
+        Vs.append(V)
+    wbirth = [0] * (r + 1)               # stage 0 rides at 0
+    for i in range(1, r + 1):
+        e, h, _f = stages[i - 1]
+        wbirth[i] = e * Vs[i] + h
+    emul = [1] * (r + 1)                 # Emul_i = prod_{j>i} e_j
+    for i in range(r - 1, -1, -1):
+        emul[i] = emul[i + 1] * stages[i][0]   # stages[i] = stage i+1
+    wphi = [emul[i] * wbirth[i] for i in range(r + 1)]
+    etot = 1
+    d = f0
+    for (e, _h, f) in stages:
+        etot *= e
+        d *= f
+    ranges = [range(f0)] + [range(e * f) for (e, _h, f) in stages]
+    wts = [sum(j[i] * wphi[i] for i in range(r + 1))
+           for j in itertools.product(*ranges)]
+    return dict(e=etot, d=d, wts=wts)
+
+
+def run_R7():
+    # (a) pointwise carrier == O-9 ledger on the full r <= 3 grid
+    mismatch = 0
+    n = 0
+    for r in range(1, 4):
+        for f0 in (1, 2):
+            for stages in itertools.product(STAGE, repeat=r):
+                n += 1
+                Tt = type_data(f0, list(stages))
+                Tr = rekey_type_data(f0, list(stages))
+                if Tt['wts'] != Tr['wts'] or Tt['e'] != Tr['e'] \
+                        or Tt['d'] != Tr['d']:
+                    mismatch += 1
+    # (b) the acceptance test: the F-ADM-2 r = 2 grid under re-key semantics
+    rekey_fail = 0
+    for f0 in (1, 2):
+        for s1 in STAGE:
+            for s2 in STAGE:
+                T = rekey_type_data(f0, [s1, s2])
+                if any(sum(1 for w in T['wts'] if w % T['e'] == c) != T['d']
+                       for c in range(T['e'])):
+                    rekey_fail += 1
+    # (c) the F-ADM-2 quoted type under the re-keyed carrier
+    Tq = rekey_type_data(1, [(2, 1, 1), (2, 1, 1)])
+    quoted_ok = (sorted(Tq['wts']) == [0, 2, 5, 7]
+                 and all(sum(1 for w in Tq['wts'] if w % 4 == c) == 1
+                         for c in range(4)))
+    print("R7 RE-KEY twin: (a) grid types=%d carrier-vs-ledger "
+          "mismatches=%d (prediction 0) | (b) re-keyed r2 class-count "
+          "failing types=%d (ACCEPTANCE: prediction 0; coded twin R3' "
+          "stays == 88) | (c) quoted type wts=%s uniform=%s (prediction "
+          "[0,2,5,7]/True)" % (n, mismatch, rekey_fail,
+                               sorted(Tq['wts']), quoted_ok))
+    return dict(ok=(mismatch == 0 and rekey_fail == 0 and quoted_ok))
 
 
 def run_R3doubleprime():
@@ -610,6 +708,7 @@ def main():
     r3, r4, r5 = run_R3(), run_R4(), run_R5()
     r3p, r3pp = run_R3prime(), run_R3doubleprime()
     r6 = run_R6()
+    r7 = run_R7()
     preds = {
         'R1 (W-CAP identity/top-index/cap)': r1['ok'],
         'R2 (STEP+NON-END abstract; (c) theorem-grade; REV-1 (a)/(d)/(e))':
@@ -623,6 +722,8 @@ def main():
         "R3'' ADDENDUM (CLASS-LAT clean on full r=3 grid)": r3pp['ok'],
         'R6 REVISION-1 (stationary leg: closed form + W-CAP/CLASS-LAT + '
         'premise control)': r6['ok'],
+        'R7 REVISION-2 (F-ADM-3 re-key twin: carrier==ledger pointwise; '
+        '88-grid ACCEPTANCE clean; quoted type)': r7['ok'],
     }
     print('\n== PREDICTIONS (sealed header + sealed addenda incl. REV-1) ==')
     for k, v in preds.items():
@@ -635,7 +736,7 @@ def main():
     if theorem_hit:
         print('\nTHEOREM-GRADE HIT: NON-END/STEP refuted — stop the line.')
         return 2
-    print('\nVERDICT:', 'ALL LIVE PREDICTIONS PASS (REVISION 1 contract)'
+    print('\nVERDICT:', 'ALL LIVE PREDICTIONS PASS (REVISION 2 contract)'
           if all(preds.values()) else 'DRIFT (see FAIL rows)')
     return 0 if all(preds.values()) else 1
 

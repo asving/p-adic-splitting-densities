@@ -915,10 +915,14 @@ theorem attainDim_eq_d_iff_r1Bound_le {D : CensusData} (hr : D.r = 1)
   have hd : Dm.d = f 0 * f 1 := Fin.prod_univ_two f
   have hperiod : Dm.period = e 1 :=
     (Fin.prod_univ_two Dm.ledgerE).trans (one_mul _)
-  -- the stage weights: wphi 0 = 0, wphi 1 = e₁·V₁ + h₁ = h₁ (V₁ = 0)
+  -- the stage weights: wphi 0 = 0, wphi 1 = E₁·(e₁·V₁ + h₁) = h₁ (V₁ = 0,
+  -- E₁ = 1 at the top stage — F-ADM-3 re-key: at r = 1 the top-normalized
+  -- and birth weights agree)
   have hwphi0 : Dm.wphi 0 = 0 := rfl
   have hwphi1 : Dm.wphi 1 = h 1 := by
-    have h2 : Dm.wphi 1 = e 1 * 0 + h 1 := rfl
+    have hE : Dm.Emul 1 = 1 := Dm.Emul_last
+    have h2 : Dm.wphi 1 = Dm.Emul 1 * (e 1 * 0 + h 1) := rfl
+    rw [h2, hE, one_mul]
     omega
   -- the slot weight at r = 1: wt 𝐣 = (a₁ + e₁·b₁)·h₁ (the stage-1 ledger
   -- radix is e₁; the stage-0 term rides at weight 0)
