@@ -1,4 +1,4 @@
-# FORGE junc_bundle STAGE 2 — the first compiled e ≥ 2 junction attempt ADJUDICATES THE COMPILED CHAR-2, Φ₂-LANDING BUNDLE INSTANCE-FALSE AT ROW A: the parity wall (no e = 2 recording exists at the row-A read — the one char-free/Φnext-free wall), the Φ₂-landing wall (char-2, Φ₂-landing, all species/degree faces), the D0 flag CONFIRMED in Lean (gate hbundle unsatisfiable — definitional-equality certified at REV1, per-clause vacuity via gluePacket_false), clause (iii) POSITIVELY derivable at the read-pair pins — **REVISION 1 + REVISION 2 APPLIED (§R1–R4: row-A rescope, negation shape, D0 tie compiled, disposition + charter; REV2 = per-theorem scope + certification wording)**
+# FORGE junc_bundle STAGE 2 — the first compiled e ≥ 2 junction attempt ADJUDICATES THE COMPILED CHAR-2, Φ₂-LANDING, INTERIOR-Φ₂A-PINNED BUNDLE INSTANCE-FALSE AT ROW A: the parity wall (no e = 2 recording exists at the row-A read — the one char-free/Φnext-free wall), the Φ₂-landing wall (char-2, Φ₂-landing, all species/degree faces), the D0 flag CONFIRMED in Lean (gate hbundle unsatisfiable — definitional-equality certified at REV1, per-clause vacuity via gluePacket_false), clause (iii) POSITIVELY derivable at the read-pair pins — **REVISION 1 + REVISION 2 APPLIED (§R1–R4: row-A rescope, negation shape, D0 tie compiled, disposition + charter; REV2 = per-theorem scope + certification wording)**
 
 **Unit:** FORGE junc_bundle stage 2 (wave 11; charter = stage 1's §S5 spec,
 `JUNCFORGE_S1_2026-08-08.md`).  **Artifact:**
@@ -9,7 +9,7 @@ not edited); `lake env lean` green; every theorem `#print axioms` = Lean core
 **Row-A data compiled:** f = X² + 4X + 28, Φ₁ = X + 2, Φ₂ = X² + 4X + 12 over ℤ₂;
 the deep development f = 24 + Φ₁² (slots (24, 0, 1)) as `fA_eq`/`BA_dev`.
 
-## S1. VERDICT — the §S5 discharge is IMPOSSIBLE: the compiled CHAR-2, Φ₂-LANDING `junc_bundle` at row A is instance-false
+## S1. VERDICT — the §S5 discharge is IMPOSSIBLE: the compiled CHAR-2, Φ₂-LANDING, INTERIOR-Φ₂A-PINNED `junc_bundle` at row A is instance-false
 
 Executing the stage-1 spec against the Lean `SideReads` transcription did not
 produce the chartered first compiled e ≥ 2 junction — it PROVED no such instance
@@ -103,7 +103,7 @@ re-instancing at a non-degenerate seam) is an orchestrator/ROOT matter.
 * At row A \[REV1: the original parenthetical "(and by the parity mechanism, at
   any genuinely ramified deep read with odd in-carrier parent weight)" is
   bracketed as an overclaim — a mechanism-level expectation, NOT proved; the
-  theorems bind row A\]: **the compiled CHAR-2, Φ₂-LANDING `junc_bundle` is
+  theorems bind row A\]: **the compiled CHAR-2, Φ₂-LANDING, INTERIOR-Φ₂A-PINNED `junc_bundle` is
   INSTANCE-FALSE as transcribed** \[REV2: the refutation binds (2:F)=0, the Φ₂
   landing, and the interior Φ₂A pin — not "junc_bundle simply false at row A"\]
   — the E-PHASE FLAG (HC2/Defs clause (iii) "may over-strengthen") lands as a
@@ -155,7 +155,7 @@ theorems stand unedited; REVISION 1 adds two declarations and corrects the recor
   `juncforge_junc_bundle_false` additionally requires the interior Φ₂A pin —
   see the §S1 scope table.\]  The honest headline: **no e ≥ 2 `SideReads`
   recording can exist AT THE ROW-A READ (fA, Φ1A fiber, any F, any Φnext —
-  this e = 2 wall alone is char-free), and the compiled CHAR-2, Φ₂-LANDING
+  this e = 2 wall alone is char-free), and the compiled CHAR-2, Φ₂-LANDING, INTERIOR-Φ₂A-PINNED
   bundle at row A is instance-false**.  The unqualified forms ("at any stage, for any
   recorded node data"; "none CAN exist as the definition stands") are bracketed
   inline above as overclaims (\[REV1\] markers).  Outside the fiber — other
@@ -217,7 +217,7 @@ exactly right at the graded scale.  On this reading, a `SideReads` repair
 rather than alter its mathematics.  Deciding between "source glue step refuted at
 row A" and "transcription mis-scaled" requires re-deriving the glue step from the
 source — chartered in §R3.  Until that lands, this unit's result is: the compiled
-char-2, Φ₂-landing transcription is inconsistent at row A; the source-level
+char-2, Φ₂-landing, interior-Φ₂A-pinned transcription is inconsistent at row A; the source-level
 question is OPEN.
 
 ## R3. CHARTER — the transcription-scale re-derivation design unit
@@ -291,3 +291,14 @@ DEFINITIONAL EQUALITY with the accurate certification account; §S5 and both §R
 carry the restrictions inside the verdict text itself. The verified perimeter (Lean
 theorems, §S1 scope table, §R1 negation-shape display, §R3 charter) untouched.
 Acceptance counter stays 0/2; re-audit round 3 decides.
+
+## R6. REVISION 4 (orchestrator-applied, per re-audit-3)
+
+Re-audit-3: 1 critical residual — the interior-Φ₂A-pin qualifier missing from the
+headline-tier sites (document headline, §S1 heading, §S5 bullet + verdict line, §R1(C1)
+area, §R2 closing) while present in the §R2 main verdict and the scope table. Fixed
+mechanically: every headline-tier verdict site now reads "the compiled CHAR-2,
+Φ₂-LANDING, INTERIOR-Φ₂A-PINNED bundle/junc_bundle ... at row A" (grep-verified: no
+unqualified verdict-tier occurrence remains; the per-wall mentions of individual
+restrictions in §S2's mechanism prose are descriptions of single walls, not bundle
+verdicts). Perimeter untouched. Counter 0/2; re-audit round 4 decides.
