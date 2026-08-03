@@ -5761,3 +5761,15 @@ H-v3 / PIN-GEN-i / TWIST-3 join; every delta reasoned incl. the erratum's +1).
 **VC31 OWED on the REVISION-29 wording** (charge at §35; model-diverse) — this unit
 ran no audit and never self-confirms. PROJECT_STATE r30 checkpoint of even date.
 Files: ROOT + PROJECT_STATE + GRB note + this ledger. Commit: this one.
+
+## 2026-08-08: VC31 — 0 critical, 2 gaps; r30-ERRATUM applied; VC31b owed
+
+VC31 on REVISION 29: 0 critical. Gap 1 = audit-input (the appendix's GRB slice truncated
+mid-sentence by a head cap — the checklist's verify-slices rule extended: check slice
+COMPLETENESS, not just presence). Gap 2 = display: the (H1) fence named "e_j >= 2 at
+orders >= 3" but not the orders->=4 all-e_j=1 complement — r30-ERRATUM applied at
+ROOT:2491 naming the ENTIRE complement of the proved union explicitly (the union itself
+was always exact; GRB's bracket is scope-exact and needed no fix). Census: all 43
+patterns reproduced exactly (the report's table); roster NINE; no promotion or scope
+leak found. VC31b (narrow: the complete GRB slice + the erratum) decides. Report:
+VC31_report.md (this commit).
