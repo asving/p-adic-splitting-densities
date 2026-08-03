@@ -8607,3 +8607,67 @@ SCOPE for VC39. This unit ran NO audit and never self-confirms — **VC39
 is OWED on the REVISION-38 text**; until it lands, the acceptance
 citation points at REVISION 37 + r38b. Unit files: ROOT + PROJECT_STATE
 + L3CONVERGENCE + this append ONLY (scoped `git commit --only`).
+
+## RM2_PROBE EXECUTED (wave-21 Q1 opening move) — 2026-08-08: the (RM-2) engine's displayed obligations instance-TRUE on all 405 calls; the DCX sharp-locus transport REFUTED (DCX₃ live at e₁ = 2) with the measured two-level carry-chain locus on record
+
+[Anchor: appended after "ROOT r39 (REVISION 38)" (tail "…scoped
+`git commit --only`)."). Unit (RM-2) ENGINE PROBE, THE CLOSURE
+PROGRAM's opening move per ROOT §44.(ii) Q1; probe-first discipline.]
+
+**Two-commit seal honored:** prereg
+`lean/notes/openmath/RM2_PROBE_2026-08-08.md` + runner
+`verification/openmath/rm2_probe.py` sealed at **0b42885** (verdict
+PENDING; design censuses disclosed, incl. the pre-seal h₂ retune that
+made the predicted locus non-empty); battery run AFTER the seal
+(deterministic, full W₁×W₁ blocks, 9 tower-runs, 7 shapes × {Zp3,
+Fpt2-partial}); verdict **d860a5a** from the artifacts
+(`rm2_probe_output.txt`, `rm2_probe_results.json`). The statement
+under test = the [ILN]† S4.6 (RM-m) box at m = 2 (the first unproved
+level; canonicity reduction: the existence claim ⟺ the canonical
+division satisfies the displayed clauses). Firing predicate on record:
+CII₃ = g₂ = 1 ∧ [T₃ ≥ e₂ ∨ (E₁ᴵᴴ ≠ 0 ∧ T₃ = e₂−1)], inputs
+E₀ᴵᴴ/E₁ᴵᴴ = rem/quo(ââ′, Φ₂) + a breadth class. **(i) LAW GREEN
+0/405:** all four box clauses — decomposition, both weight clauses,
+AND the R-read = z₂^{ε′}·v·τ₂ — hold on every call, INCLUDING the
+E1-extra (95) and breadth (163) classes the note never consumes: the
+m = 1 mechanism's displayed obligations generalize as displayed.
+**(ii) TERMINATION GREEN:** the probe's candidate two-identity
+reduction tree (E1-priority) with the linear measure μ =
+e₀g₀(e₁+1)j₁ + 2e₁j₀ descends STRICTLY on every in-tree edge on the
+main scope e₀ ≥ 2 ∧ e₁ ≥ 2 — the exact m = 1-analogue scope — with
+zero caps battery-wide and tree ≡ division (CONS 0/405); bends exactly
+as the box prices: e₁ = 1 → 8 flat promotion edges (RM2E); the
+e₀ = 1 ∧ d₀ ≥ 2 corner UNTESTED (RM2F census empty — inputs dodge it),
+not passed. **(iii) THE FINDING — LOCUS RED, PROBE SUCCESS (42
+violations, every one measured ⊋ predicted):** the [IL3]† sharp DCX₂
+predicate transported one level up is TOO SMALL. Headline tuple:
+**(RM2A/Zp,p=3, γ = γ′ = 51)** — the all-(e = 2, g = 1) stack,
+s₃ = s₃′ = s₂ = s₂′ = s₁ = s₁′ = 1 — is DCX₃-LIVE (Q¹ =
+quo(E₁ᴵᴴĈ₂, Φ₂) ≠ 0 at slot e₂), cross-ring confirmed at Fpt,p=2;
+also live at RM2C. So the S4.7 CONJECTURED family instance at m = 3
+("DCX_m = ∅ unless e_{m−2} ≥ 3") is **REFUTED at instance grade**, and
+the S4.7 Consequences clause "full-class emptiness for n ≥ 3 at
+e_j ≤ 2" is settled NEGATIVELY: [ILN]'s off-DCX-(n) perimeter is
+genuinely load-bearing at rung 3 even on all-e ≤ 2 towers ([ILN]'s
+theorem itself UNAFFECTED — it excludes DCX-(n) by construction;
+[IL3]'s proved rung-2 emptiness at e₀ ≤ 2 untouched). L4a outer bound:
+0/73 violations (holds). **(iv) THE MEASURED LOCUS (post-run
+separation, display-only, `rm2_postrun_separation.py`): the TWO-LEVEL
+CARRY CHAIN** — on all 102 track-eligible rows of the three live
+towers, exactly (0 misfits): DCX₃ = TRACK ∧ [T₂ + s₂(γ₃) ≥ 2e₁ ∨
+(T₂ + s₂(γ₃) = 2e₁−1 ∧ s₁ + s₁′ + s₁(u₀) ≥ e₀)], u₀ :=
+(γ₃ − s₂(γ₃)γ₂)/e₁ the level-1 weight of Ĉ₂'s Φ₁-digit: at the
+level-2 boundary the missing Φ₁-exponent is supplied by a level-1
+overflow promoting into the Φ₁ slots — the tree's E1-PROMOTION edge,
+the same edge that carries the termination measure. Conjecture-grade,
+roster evidence only. **(v) Controls MET 5/5** (MC-A 208 / B 405 /
+C 295 / D 42 / E 182; the z₃-sign mutation replaced the ε²-mutation
+after the design pass showed ε₂(γ₃)² = 1 on all towers — disclosed
+pre-seal). **CONSEQUENCE FOR Q1 (the generic-engine compose, next):**
+the engine's four displayed clauses need no repair at m = 2; the
+second-round clause is the real content and must thread the promotion
+edge TOGETHER with the termination measure; the measured chain is the
+candidate second-round display. No reseal cycle used; this unit is a
+MEASUREMENT — nothing is accepted, nothing self-confirmed. Unit files:
+prereg + runner + artifacts + separation script + this append ONLY
+(scoped `git commit --only`).
