@@ -5386,3 +5386,36 @@ candidate (TWIST-3) C^F3_j = z₂^{θ₂s_j}·c^G3, θ₂ = ℓ₁g₁γ₂. Ins
 proofs; (H-v3) v₃ = w₂ displayed. Note:
 `lean/notes/openmath/STRATA3_2026-08-08.md`; harness
 `verification/openmath/strata3_probe.py` (+output/JSON).
+
+## 2026-08-08 — FORGE junc_bundle S2 (wave 11): the chartered first compiled e ≥ 2 junction ADJUDICATES junc_bundle INSTANCE-FALSE at row A; D0 flag CONFIRMED in Lean
+
+Executing the S1 §S5 spec (row A/ℤ₂: f = X²+4X+28, Φ₁ = X+2, Φ₂ = X²+4X+12,
+junction at read pair (2,3)) against the Lean `SideReads` transcription PROVED
+the bundle unsatisfiable instead of discharging it —
+`Scaffold/HDischarge/H1/JuncForge.lean`, 6 theorems, all Lean-core, zero
+sorries, NEW declarations only (gates displayed, not edited).
+**(1) PARITY WALL** `juncforge_no_e2_junction` (char-free, Φnext-free): every
+`SideReads` of f at a Φ₁-keyed frame has ν.e = 1 — clause (ii)'s stride
+equalities force σ.w(24) = ν.h odd (hcop) vs σ.w(Φ₁²) = 2σ.h even, no tie,
+hRlt → monomial residual, clause (iii)'s two-digit Ranch impossible; the
+e₁ = 2 ramification parity itself. The C-e escapee is EXPLAINED: no compiled
+e ≥ 2 junction CAN exist as SideReads stands.  **(2) LANDING WALL**
+`juncforge_deep_wall`(+`_F4`, char-2 ambient): the Φ₂-landing dies at e = 1
+in all faces (recentering + g=1 lift by degree; g=2 lift by pat₁ = 0 →
+ψ = z²+c₀ = Frobenius square vs hψirr); packaged as
+`juncforge_junc_bundle_false` — the junc_bundle core ∃ is FALSE at every
+Φ₁-based, Φ₂-pinned continuation history.  **(3) D0 DECIDED**
+`juncforge_D0_instanceFalse`: `gate_glue_junction`'s hbundle negated VERBATIM
+(f = fq = σ₁rec.Φ: Fact-B unique dev has B₀ = 0 vs clause (ii) hpat0 B₀ ≠ 0)
+— `gate_glue_conditional` VACUOUS at its compiled instance; disposition =
+ROOT matter, display only.  **(4) POSITIVE FRAGMENT**
+`juncforge_clauseIII_derivable`: clause (iii) alone IS interface-derivable at
+the (2,3)-graded pins (σ.R f = C(c)T⁻³ + T⁻² = T⁻³(c+z), anchor −3, μ = 1 —
+the S1 two-scale law survives in Lean); the contradiction is strictly
+(ii)⊥(iii) co-habitation at e = 2 / (ii)+(iv) at e = 1.  Support kernel
+(development uniqueness): consumed as the PRE-EXISTING `Moves.L0_FactB_unique`
+— no new hypothesis.  E-PHASE FLAG upgraded: over-strengthening → proved
+inter-clause contradiction at ramified deep reads. `DIterJunctionSupplier`
+NOT refuted (Φnext existential; e = 1 refinement recordings unaffected).
+Any SideReads repair = statement change, ROOT authority. Note:
+`lean/notes/openmath/JUNCFORGE_S2_2026-08-08.md`.
