@@ -6048,3 +6048,25 @@ passes 8+9 decide the bar; (2) apply VC33's two gaps as the r32-ERRATUM, then VC
 top with the reference-closure change-set; RB-DELTA/Route-B; TowerMoveClosureL; the
 fence-(vii) lineage). Everything committed; all state resumable from this ledger + ROOT
 §37 + PROJECT_STATE + task #151.
+
+## FGMN REVISION 6 (per pass 7 0C/2G): prover-side execution record + the recursive closure rule
+
+Both pass-7 gaps applied to FGMN_REDERIVATION_2026-08-08.md as REVISION 6; the
+multi-pass-confirmed perimeter (diagnosis, row-A, R2 branch, meters, rescopes,
+JuncForge honesty) untouched. (1) VERIFIER-EXECUTION gap (sandbox bubblewrap failure):
+the demanded artifacts executed PROVER-SIDE and placed on record — the all-tree
+`SideReads` census (260 lines: 246 across 36 .lean files + 14 MANIFEST), the named
+sites re-read at their recorded lines (Defs.lean:280/:285/:287/:292; Locality.lean
+:272/:280/:735/:738/:744; Window.lean:506; GlueRun.lean:875), both sha256 pins
+byte-identical, the 1,093-check battery ALL GREEN with byte-identical results JSON;
+honesty rider: prover-side is NOT verifier-independent — the F2c verifier-owned
+battery stays the acceptance obligation. (2) CLOSURE-RULE gap: REVISION 5's
+one-command "identifier-reference closure" superseded by a genuinely RECURSIVE
+closure with an explicit expansion rule (seed {SideReads}; per-round all-tree grep on
+every set member; hit-containing declarations join BY NAME; iterate to fixpoint;
+union the semantic ring), the pinned term set EXTENDED with the four named omissions
+(ReadsOf, junc_bundle, GlueRun, DIterJunctionSupplier), and the recursion's necessity
+DEMONSTRATED on record: 15 .lean files reference the intermediaries but never
+SideReads directly — a single grep returns none of them. The fixpoint computation
+itself joins §S3's application-time obligation (b). Counter stays 0/2; passes 8+9
+decide. Commit of even date = the unit of record.

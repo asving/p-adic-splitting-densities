@@ -492,3 +492,77 @@ REVISION-4 list reconciled EXACTLY on every named site): GAPS-ONLY 0C/2G. Fixes:
    reference-closure rule above (its provenance: pass-6's finding that the discipline's
    terms were not pinned and could not self-repair).
 Counter stays 0/2; passes 7+8 decide.
+
+## REVISION 6 (orchestrator-applied, per pass 7)
+
+Pass 7 (`FGMN_pass7_report.md`, 5cdc12a): GAPS-ONLY 0C/2G — the seventh consecutive
+substance-clean round; the diagnosis/row-A/branch/meter/rescopes/JuncForge-honesty
+perimeter untouched again.  The two gaps, quoted and fixed:
+
+1. **Gap (pass-7 finding 1) — verifier execution blocked.**  Quote: "Both normal and
+   non-login-shell attempts failed before execution because the sandbox launcher could
+   not find `bubblewrap`.  Consequently, I cannot independently certify the actual
+   all-tree reference census, named-site line locations, artifact hashes, or
+   1,093-check rerun."  FIX (as far as this unit can — the REVISION-1 finding-8
+   pattern): the demanded artifacts executed prover-side THIS revision and placed on
+   record so a sandbox-blocked verifier can reconcile textually:
+   - **All-tree census on record**: `grep -rn 'SideReads' lean/LeanUrat/` = 260
+     reference lines — 246 in `.lean` files across 36 distinct files + 14 in the two
+     `MANIFEST.json`.  Top files: HC1/V9_K1nonrec.lean 27, DictIII/Locality.lean 23,
+     H1/GlueRun.lean 19, H1/JuncForge.lean 18, H1/SiteBlock.lean 14,
+     H6/TerminalRead.lean 13, HK20 13, HK57 11, HK53_e2Ruling 10, HK19 9,
+     DictIII/Window.lean 9.
+   - **Named-site line verification**: `def SideReads` at HC2/Defs.lean:280 with the
+     three σ.w tokens at :285/:287/:292; `SideClauseR1` Locality.lean:272 /
+     `sideReads_r1` :280 / `SideClauseR2` :735 (σ.w functional at :738) /
+     `sideReads_r2` :744; `lastRead_of_readsOf_snoc` Window.lean:506;
+     `DIterJunctionSupplier` GlueRun.lean:875 — all re-read at their recorded lines
+     this session.
+   - **Hashes + battery**: both sha256 pins re-verified byte-identical (PDF
+     651b0cef…f615f35; layout 8d30f15e…76e848b); the 1,093-check battery re-executed
+     ALL GREEN, meters identical (misread-ε {A:24,B:48,C:24,K:28,L:24,M:48,N:48}; R2
+     support {2:264,3:68,5:4}), and `fgmn_rederivation_results.json` reproduced
+     BYTE-IDENTICAL (git-clean after the rerun).
+   Honesty rider: this is PROVER-SIDE re-execution, not verifier-independent
+   execution — the gap's demand can only be discharged by a verifier pass with a
+   working sandbox (passes 3/5/6 each carried independent execution legs; the pass-7
+   blockage is environmental, not evidential), and the pass-7 F2c verifier-owned
+   from-note battery stays the acceptance obligation.
+
+2. **Gap (pass-7 finding 2) — the closure rule under-specified.**  Quote: "A single
+   grep computes direct references, not a transitive identifier-reference closure.
+   Downstream consumers that mention only an intermediary such as `ReadsOf` are not
+   necessarily returned.  The pinned semantic set also omits `ReadsOf`, `junc_bundle`,
+   `GlueRun`, and `DIterJunctionSupplier`."  FIX — the REVISION-5 rule is superseded
+   by the report's second offered form, a genuinely RECURSIVE closure with an explicit
+   expansion rule:
+   - **THE EXPANSION RULE**: SEED = {`SideReads`}.  ROUND: for every identifier t in
+     the set, `grep -rn '<t>' lean/LeanUrat/` (all-tree, case-sensitive); every
+     declaration (def/theorem/structure/abbrev/instance) whose statement or body
+     contains a hit joins the set BY NAME.  ITERATE until a round adds no identifier
+     (fixpoint).  The application perimeter = this fixpoint UNION the pinned semantic
+     ring.
+   - **The pinned term set is EXTENDED** with the four named omissions: {`ReadsOf`,
+     `junc_bundle`, `GlueRun`, `DIterJunctionSupplier`} join {`SideReads`,
+     `SideClause`, `sideReads_`, `σ.w`, `readCeil`, `read_locality`,
+     `lastRead_of_readsOf`}.
+   - **Scope repair on the pass-6 sentence**: "a reference closure cannot miss a
+     by-name binder" is TRUE of the recursive fixpoint and was NOT established by
+     REVISION 5's displayed one-command procedure, which computes round 1 only; that
+     display is superseded.
+   - **Round-2 evidence on record** (why the recursion is load-bearing): 15 `.lean`
+     files reference the four intermediaries yet never mention `SideReads` directly —
+     HK52_stretchGate, U19_runCoherent, U1_negWitness, U23_runRealizable, U25_polTotal,
+     U27_gateInert, UE_vtxUpper, MovesT/Defs, MovesT/G1_toyGate, DictIII/CU1,
+     DictIII/Hyps, H1/RCWitness, H1/RunBinding, H6/EngineConform, H6/RowsK4.  A single
+     direct grep returns none of them.
+   - The full fixpoint COMPUTATION (per-declaration membership + per-consumer
+     disposition) is an application-time obligation and joins §S3's obligation (b);
+     this revision pins the RULE and the rounds-1/2 evidence, not the completed set.
+
+Nothing else changed: the §S3 proposal (three tokens, REVISION-2 recommended
+new-definition mode), THE ROW-A SOURCE VERDICT, the §S7 extraction record, and every
+confirmed-perimeter section are byte-identical.  **Acceptance counter: 0/2** (a
+revision does not advance it); passes 8+9 decide.
+
+— FGMN re-derivation REVISION 6, 2026-08-08 (wallclock 2026-08-03).
