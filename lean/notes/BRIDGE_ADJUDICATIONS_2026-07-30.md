@@ -7538,3 +7538,50 @@ on-the-nose coincidence restricted to E₂ > 1); residuals: (ITER-LAW-LIFT)
 open exactly at g₀ = 1 ∧ δ₁ = 1; gr(w₂) wrapper rides the accepted GRB
 retarget; orders ≥ 3 untouched." Unit files: ROOT + PROJECT_STATE + this
 append ONLY (scoped `git commit --only`).
+
+---
+
+## (ITER-LAW-3) PROOF COMPOSED — 2026-08-08 (wave-19 unit 2; attempt grade; hostile arc OWED)
+
+The gauge-route proof note `lean/notes/openmath/ITERLAW3_PROOF_2026-08-08.md`
+is on disk: the sealed (ITER-LAW-3) display (ITERLAWR S1 primary,
+0/123,564 sealed) PROVED on the 3-read standard-lift harness class — via
+L6-(3) (anchor value = ε-chain) + W-MULT-(3) (single inflated top carry),
+one EXP-KIT Bézout kernel per level, the ACCEPTED order-2 L1/L6/L7 consumed
+verbatim on the inner digit (acceptance citation PASTED from the ITER-LAW
+ACCEPTED block above: "Scope as accepted: the harness tower class (superset
+of DITER_RESTATE §S2's E₂ > 1 pin; on-the-nose coincidence restricted to
+E₂ > 1); residuals: (ITER-LAW-LIFT) open exactly at g₀ = 1 ∧ δ₁ = 1; gr(w₂)
+wrapper rides the accepted GRB retarget; orders ≥ 3 untouched.").
+**PROVED-vs-OPEN split, exact:** integer layer (L2-(3a)/(3b) composed shift,
+D₂/D₁ integrality, WINDOW) + character layer + L6-(3) UNCONDITIONAL on the
+whole class; W-MULT-(3) and hence the THEOREM proved for every pair OUTSIDE
+
+    DCX = {g₀ = g₁ = 1, δ₁ = 1, s₂(γ) = s₂(γ′) = e₁−1, S₁ + s(γ₂) ≥ 2e₀}
+
+(EMPTY at e₀ ≤ 2; the double-cascade secondary-overflow corner), which is
+boxed as the displayed OPEN lemma **(W-MULT-3-DCX)** with mechanism (the
+DEV-1 carry re-overflowing Φ₂), price (a DEV-2 level-2 reduction engine, one
+dedicated unit), and instance evidence (sealed row B realizes DCX; G2/G3
+printed 0 there). Corollaries DERIVED, not guessed: COR-1 integrality
+(unconditional), COR-2 cocycle identity (closed-form unconditional), COR-3
+degenerations — **e₂ = 1 reproduces the ACCEPTED order-2 law verbatim** —
+COR-4 ℤ/E₃ descent + monodromy ρ = z₂^{−ℓ₁e₀}z₁^{−ℓ₀}, COR-5 gauge form
+c₃ = z̄^{δ₃}·∂F with F = ε-chain closed monomial, COR-6 the (ITER-LAW-n)
+recursion at n = 3 verbatim, COR-7 W-MULT product form. The structural
+by-product: the S4.5 ε′-cancellation shows exactly where the canonical
+ε₁-corrected Φ₂ is spent (the LIFT-DEV-3 mechanism, display only). NO sealed
+record touched; NO new prereg; one labeled POST-SEAL DIAGNOSTIC
+(`verification/openmath/iterlaw3_proof_diag.py`, 1,424 pairs, case census
+I 912 / II-1 368 / II-2 40 / II-3 88 / DCX 16, ZERO violations first run)
+cross-checks the note's NEW intermediate digit identities. **Standing:
+attempt grade, acceptance counter 0/2 — the 2-clean model-diverse hostile
+arc is the next wave's charge (S8 of the note carries the claim DAG, the
+per-claim falsifier map into the sealed artifacts, and the suggested
+content + from-note-execution pass charges incl. the DCX-locus meter).**
+Display upgrades (L3CONVERGENCE S2 Candidate-1 brackets, ITERLAWR S5
+standing line, PROJECT_STATE/ROOT rows) are OWED AT ACCEPTANCE, not now;
+(W-MULT-3-DCX) enters the wave-20 queue. CONCURRENCY: composed parallel to
+the ITERLAW4 probe unit per the L3CONVERGENCE S4 decision default; neither
+unit consumes the other. Unit files: the proof note + the diagnostic pair +
+this append ONLY (scoped commit).

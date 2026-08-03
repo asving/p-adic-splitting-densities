@@ -1,0 +1,13 @@
+Zp,p=3,DGA: cases [('I', 48), ('II-1', 16)] bad=0
+Zp,p=3,DGB: cases [('DCX', 4), ('I', 84), ('II-1', 24), ('II-2', 8), ('II-3', 24)] bad=0
+Zp,p=3,DGC: cases [('I', 84), ('II-1', 36), ('II-2', 12), ('II-3', 12)] bad=0
+Zp,p=3,DGD: cases [('DCX', 4), ('I', 24), ('II-3', 8)] bad=0
+Zp,p=3,DGE: cases [('I', 216), ('II-1', 108)] bad=0
+Fp[[t]],p=2,DGA: cases [('I', 48), ('II-1', 16)] bad=0
+Fp[[t]],p=2,DGB: cases [('DCX', 4), ('I', 84), ('II-1', 24), ('II-2', 8), ('II-3', 24)] bad=0
+Fp[[t]],p=2,DGC: cases [('I', 84), ('II-1', 36), ('II-2', 12), ('II-3', 12)] bad=0
+Fp[[t]],p=2,DGD: cases [('DCX', 4), ('I', 24), ('II-3', 8)] bad=0
+Fp[[t]],p=2,DGE: cases [('I', 216), ('II-1', 108)] bad=0
+AGGREGATE case census: [('DCX', 16), ('I', 912), ('II-1', 368), ('II-2', 40), ('II-3', 88)]
+TOTAL identity violations: 0
+DIAG VERDICT: GREEN
