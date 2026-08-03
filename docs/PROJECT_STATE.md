@@ -1922,3 +1922,57 @@ optional S batch).
 Verification: VC1–VC22 done; VC25 NOT-CONFIRMED (disposed at REVISION
 23); VC26 + VC26b CONFIRMED; VC27 + VC27b CONFIRMED; VC28 CONFIRMED
 FIRST-PASS (= the REVISION-25 anchor); VC29 pending on REVISION 26.
+
+## CHECKPOINT 2026-08-08+++++++ (wallclock 2026-08-03): r28 LANDED — WAVE-10 FOLDS; BasePolygonLengthLaw PROVED (ROOT REVISION 27)
+
+ROOT REVISION 27 (unit ROOT r28, appendix §33) is the wave-10 fold batch.
+**NO pass ran at this unit**: VC29 had NOT yet run, so it ROLLS FORWARD
+onto the REVISION-27 wording (charge at §33) — **the acceptance stays
+anchored on the REVISION-25 text (VC28)**, no anchor-citation change.
+The five wave-10 units folded, all ledger-recorded:
+(1) **`BasePolygonLengthLaw p` PROVED for EVERY prime** (a6fcc4d;
+`Scaffold/DictIII/BasePolyLength.lean`, sorry-free, Lean-core, statement
+verbatim; the OL5-adjacent convexity gap NEVER HIT; gates hensel +
+eisenstein green; **consumer FIRED: `terminalPolySem_kp0_unconditional`**
+— the first unconditional TerminalPolySem at an 𝐇°-keyed k′ = 0 seam;
+the (H6) (T-READ) k′ = 0 numerical input now THEOREM-BACKED; the open-row
+display at the (H6) residuals RETIRED TO PROVED; the −∞ corner stays
+open; C2/k′ ≥ 1 untouched; the (H6) row stays [M]).
+(2) **FORGE junc_bundle STAGE 1 ALL GREEN** (023a9d7 sealed pre-run +
+53f5d03; 10/10 preregistered rows, 4,116 samples, 28 tower instances):
+the clause-(iii) residual pinned — the TWO-SCALE LAW displayed as a
+**MEASURED reduction, NOT proved** (interface-derivable from (i)+(ii) at
+read-pair-graded stages; Lean discharge = stage 2); ITER-LAW extended
+0/840, still open; **the D0 stratum flag** — `gate_glue_junction`'s
+hbundle instantiates the degenerate f = key stratum, an INSTANCE-FALSE
+FLAG **pending the orchestrator adjudication at forge stage 2** (not
+asserted; no gate display changed); stage-2 spec fixed (row A/ℤ₂,
+junction at read pair (2,3)); StageCore docstring debt CLEARED.
+(3) **G-ADM-2 EXECUTED** (38ac01e; 198 rows, P1–P7 ALL PASS): sealed
+disposition — RIGHT-END-ONLY PARTIAL, no track-B fire, **track A live as
+(ADM-REAL′)** per ADM_U7_TRACKA_ATTEMPT.md; the scan ADJUDICATES ROUTING
+ONLY, proves nothing; the (ADM) row stays [M].
+(4) **Step-10/K1 classifier consumer face FIRED** (380cc37;
+`B2D/K1ConsumerFace.lean`): `K1ConsumerFace` + exact-strength
+parent-blind pin, supplied via the v4 chain, fired at td2V4, de-vacuity
+fence compiled — the (FRESH) residual DISCHARGED; parentBlock = ∅
+honesty displayed; nonempty-parent stays DECLINED; no Step-18 tie.
+(5) **(H7) first probe DECIDED** (2c72c5f; H7Probe.lean, 12 thms):
+(I-τ)/K-LOC **VACUOUS-BY-TYPE at every compiled instance**, statements
+STAND unrepaired; KL-1a holds at ℤ/3, F4, ℤ/2; OL-2 sharpened to the
+exact inhabitant spec; **route of record = N-H7-1 numerics first**.
+Roster: **NINE rows, unchanged** (BasePolygonLengthLaw was never a roster
+row). Census re-run at the declared unit (the §32 patterns + BPLL /
+K1ConsumerFace / N-H7-1 / VACUOUS-BY-TYPE new, ADM-REAL promoted; every
+delta reasoned; fixed point re-grepped). The §29/§30 fence-(vii) ASVIN
+FLAG lineage stays. **Wave 11 IS DISPATCHED** (forge stage 2 + D0
+adjudication; the (ADM-REAL′) attempt; the depth-3 probe — in flight
+from wave 10, no result yet; N-H7-1 — results ride r29, nothing claimed).
+FRONTIER NOW: **VC29** (the confirming end-to-end pass, now on
+REVISION 27; acceptance anchored on REVISION 25/VC28 until it lands);
+the wave-11 harvest (folds ride r29); then the pass-6 queue tail (the
+(UB-X) walk note, DIterJunctionSupplier — gates now waiting on forge
+stage 2, the ITER-LAW attempt, the Asvin batch, the optional S batch).
+Verification: VC1–VC22 done; VC25 NOT-CONFIRMED (disposed at REVISION
+23); VC26 + VC26b CONFIRMED; VC27 + VC27b CONFIRMED; VC28 CONFIRMED
+FIRST-PASS (= the REVISION-25 anchor); VC29 pending, now on REVISION 27.

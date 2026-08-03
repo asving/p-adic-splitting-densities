@@ -5285,3 +5285,50 @@ the orchestrator completed the write-up from the unit's own sealed artifacts
 (GADM2_DISPOSITION.md + jsonl) — no content beyond them. Note:
 lean/notes/openmath/GADM2_2026-08-08.md. Scan proves nothing (no-hit discipline);
 it adjudicates routing only.
+
+---
+
+## 2026-08-08 (wallclock 2026-08-03): ROOT r28 EXECUTED (REVISION 27) — the wave-10 folds; BasePolygonLengthLaw PROVED folded; NO anchor move (VC29 rolls forward onto REVISION 27)
+
+ROOT REVISION 27 (appendix §33) + PROJECT_STATE r28 checkpoint, this
+commit. **No verification pass ran at this unit** — VC29 had NOT yet run,
+so per the REVISION-20/r21 precedent the owed confirming pass ROLLS
+FORWARD onto the REVISION-27 wording (charge at §33; never
+self-confirmed); **the acceptance stays anchored on the REVISION-25 text
+(VC28)** at every operative site, no citation change. The five wave-10
+folds: (1) **BasePolygonLengthLaw p PROVED for EVERY prime** (a6fcc4d) —
+folded at the (H6) row's r28 bracket: sorry-free Lean-core, statement
+verbatim, the OL5-adjacent convexity gap never hit, gates green;
+**consumer FIRED `terminalPolySem_kp0_unconditional`** — the (H6)
+(T-READ) k′ = 0 numerical input is now THEOREM-BACKED and the open-row
+display at the (H6) residuals is RETIRED TO PROVED status (never a
+roster row; −∞ corner stays open; C2 untouched; row stays [M]). (2)
+**FORGE junc_bundle STAGE 1 ALL GREEN folded at the (H1) r28 bracket**
+(023a9d7 + 53f5d03): 10/10 preregistered rows, 4,116 samples; the
+clause-(iii) two-scale law displayed as a **MEASURED reduction, NOT
+proved** (interface-derivable from (i)+(ii) at read-pair-graded stages;
+the Lean discharge is stage 2's); ITER-LAW 0/840 extended, still the
+open lemma; **the D0 gate_glue_junction hbundle INSTANCE-FALSE FLAG
+displayed as PENDING the orchestrator adjudication riding forge stage 2**
+— not asserted, no gate display changed; stage-2 spec on record (row
+A/ℤ₂, junction at read pair (2,3)); StageCore docstring debt CLEARED.
+(3) **G-ADM-2 folded at the (ADM) r28 bracket** (38ac01e): routes to
+TRACK A — next unit (ADM-REAL′) per ADM_U7_TRACKA_ATTEMPT.md; the no-hit
+discipline displayed (the scan adjudicates routing only, proves
+nothing); row stays [M]. (4) **K1 consumer face folded at the (FRESH)
+r28 bracket** (380cc37): the residual "Step-10/K1 classifier consumer
+face" DISCHARGED at the v4 supplier chain + fence (K1ConsumerFace +
+exact-strength parent-blind pin, fired at td2V4); honesty displayed —
+parentBlock = ∅ at all compiled instances, the nonempty-parent instance
+stays DECLINED, no Step-18 tie claimed. (5) **H7 probe folded at the
+(I-τ)/K-LOC r28 bracket** (2c72c5f): the pair VACUOUS-BY-TYPE at every
+compiled instance, statements STAND unrepaired; KL-1a decided at ℤ/3,
+F4, ℤ/2; OL-2 sharpened to the exact inhabitant spec; **the (H7) route
+of record = N-H7-1 numerics first**. HOUSEKEEPING: **wave 11 dispatched**
+(forge stage 2 + the D0 adjudication; the (ADM-REAL′) attempt; the
+depth-3 probe — in flight from wave 10, NO result folded; N-H7-1 —
+results ride r29, nothing claimed). ROSTER: NINE rows, recounted. The
+census re-run on the final text (the §32 patterns + BPLL/K1ConsumerFace/
+N-H7-1/VACUOUS-BY-TYPE NEW, ADM-REAL PROMOTED; every delta reasoned;
+fixed point re-grepped after the last edit). Doc-only unit: ROOT +
+PROJECT_STATE + this ledger; no Lean file touched.
