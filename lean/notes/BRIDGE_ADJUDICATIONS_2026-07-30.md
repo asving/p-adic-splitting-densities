@@ -7771,3 +7771,80 @@ display bracket + one citation-index token + nit wording) is the next arc
 step, then round 3 (PC3 + PE3).** Unit files: the PE2 report + the three
 mini-check files + this append ONLY (scoped `git commit --only`); the note
 and all sealed artifacts byte-untouched.
+
+---
+
+## GENERAL-n COMPOSE EXECUTED — 2026-08-03 (wallclock; campaign 2026-08-08): (ITER-LAW-n) composed for ALL n ≥ 1 at attempt grade with the level-generic inductive step — integer layer + L6 chain UNCONDITIONAL at every order; the ONE resisting leg boxed as the open engine family (RM-m); first 5-read data 0-violation
+
+The chartered general-n unit (13b026b) is EXECUTED:
+`lean/notes/openmath/ITERLAWN_PROOF_2026-08-08.md` — the (ITER-LAW-n)
+recursion (S_n = δγ_{n+1}; D_j = (s_j-defect + ℓ_{j−1}S_j)/e_{j−1};
+S_{j−1} = D_jγ_j + S_j(ℓ_{j−1}′ − ℓ_{j−1}w_{j−1}Φ_{j−1}); c_{n+1} =
+z̄^δ·∏_j z_j^{D_j}) stated verbatim for every (n+1)-read standard-lift tower
+of the class (all e_j ≥ 1, no joint floor; canonical ε-corrected lifts at
+every level) and proved BY INDUCTION ON THE RUNG on the honest perimeter,
+via the induction package (ITER-PKG-r) = (P-L6 anchor = ε-chain) + (P-WM
+pair value + single top slot) + (P-DS digit shapes, read-certified for the
+next level's correction products). PROVED-vs-OPEN split, exact: (1)
+UNCONDITIONAL at all n and ALL pairs — the integer layer: SHIFT-(n)
+(β_j″ = B_j + S_j every level, the realized-shift = closed-form identity),
+D_j-INT, the NEW (★)-positivity display (S_j = 0 ∨ e_jS_j ≥ γ_{j+1},
+downward induction), WINDOW-(n), slotwise cocycle identity, ℤ/E_{n+1}
+descent of all constants; EXP-KIT re-displayed self-contained; REALIZE-(m)/
+WELL-DEF-(n) proved generically via the NEW descent invariant
+(I_m): β ≥ e_{m−1}g_{m−1}γ_m (three-line telescope); READ-ADD-(m). (2)
+PROVED GIVEN THE BASE ONLY: the L6-(n) ε-chain at every rung (degree
+telescope + truncation dictionary TRUNC; never consumes W-MULT/RM/DCX). (3)
+PROVED GENERIC GIVEN THE IH PACKAGE: CASE-SPLIT-(n) and W-MULT-(n) Case I.
+(4) PROVED GENERIC MODULO THE ENGINE: Cases II-1/II-2/II-3 off DCX-(n) —
+the ε′-carry/canonical-lift cancellation, all slot/line tables, and the
+(P-DS) export propagation are level-generic; the single consumed black box
+is (RM-m) [READ-MULT with the canonical correction at level m: fĈ_m =
+R + QΦ_m with weight clauses and R-read = z_m^{ε′}·v·τ_m], PROVED at m = 1
+([IL3]'s DIGIT-SPLIT/DEV-1 + the double-sum ε′-factoring; e₀ ≥ 2 scope +
+the inherited e₀ = 1 ∧ d₀ ≥ 2 fenced corner), **OPEN for m ≥ 2 — THE
+resisting leg, boxed with price** (termination across levels with the
+DEV-1-erratum failure mode recurring per level; Ĉ-insertion
+read-transparency; input-class closure — one dedicated unit; the wave-20
+DEV-2/(W-MULT-3-DCX) item is its m = 2 instance). (5) DCX-(n) =
+∪_{m=2..n} DCX_m characterized per level: outer bound PROVED generically
+(DCX_m ⊆ {g_{m−2} = g_{m−1} = 1, s_m-track extreme, CII_{m−1}}; only the
+E₁-product's Q can re-overflow — the Q⁰ route is arithmetically
+impossible); sharp form + e₀ ≤ 2 emptiness proved at m = 2 (= [IL3]);
+m ≥ 3 sharp form engine-internal, e_{m−2} ≥ 3 requirement CONJECTURED;
+(W-MULT-DCX-m) open, instance-true everywhere probed. CONDITIONALITY
+LEDGER (note S7, the per-rung table): rung 1 = [IL] ACCEPTED (package per
+rule 8, pasted at every mention in the note and here: "Scope as accepted:
+the harness tower class (superset of DITER_RESTATE §S2's E₂ > 1 pin;
+on-the-nose coincidence restricted to E₂ > 1); residuals: (ITER-LAW-LIFT)
+open exactly at g₀ = 1 ∧ δ₁ = 1; gr(w₂) wrapper rides the accepted GRB
+retarget; orders ≥ 3 untouched" — standard-lift, strict superset of the
+pinned E₂ = e₀e₁ > 1 setting); rung 2 = [IL3] attempt grade 0/2 — round 2
+NOT-CLEAN on narrow findings (PC2 cf013a4 + PE2 467b523), errata round 2 →
+round 3 owed, and the compose CONSUMES the f9daca0 amended text (its
+generic e_n = 1 branch derives the read-0 conclusion by the corrected
+inequality, not the PC2-F1/PE2-F1 defective link); rung n ≥ 3 off DCX-(n)
+= conditional on [IL3] + (RM-m, 2 ≤ m ≤ n−1). Failure propagation
+displayed (an [IL3] structural failure re-opens rungs ≥ 2 value-side;
+integer layer/EXP-KIT/REALIZE/L6 unaffected). POST-SEAL-LABELED DIAGNOSTIC
+(own file, read-only reuse of sealed machinery):
+`verification/openmath/iterlawn_diag.py` + output (md5s in note S8) —
+LEG A 4-read sealed rows A4/B4/C3 @ ℤ₃: cascade 464/0, (★) 464/0, the NEW
+generic monodromy ρ = ∏z_j^{−ℓ_{j−1}e₀⋯e_{j−2}} 36/0, e₁ = 1 passthrough
+144/0, DCX outer census 28+7 pairs with the measured law exact ON all 35
+(sharp-DCX₂ = 0 on e₀ = 2 rows — the proved emptiness); LEG B **the first
+5-read data in the campaign** (Tower5/Composite5 mirror; T5A/T5B/T5C ×
+2 rings, E₅ ≤ 12, 544 pairs): L6-(5) 56/0, W-MULT-(5) both forms +
+top-slot shape 544/0 each, **(ITER-LAW-5) exact 544/0**, integer cascade +
+(★) + integrality 544/0, descent/π-shift/ρ 224+24+56/0, e₄ = 1 two-way tie
+128/0, passthroughs 960/0, T5B DCX₂-live BY DESIGN (16 sharp pairs per
+instance, law exact on all — 5-read instance evidence for the open
+corner); ~5,300 checks, ZERO violations, first run, exit 0. Grade: attempt
+(counter 0); hostile charges suggested in note S10 (content pass on the
+generic index arithmetic; F2c-genre 5-read reimplementation + DCX-locus
+meter; rule-8 audit). Consumers: NOTHING upgraded anywhere (L3CONVERGENCE
+Candidate-2 display upgrade owed only AT ACCEPTANCE); the wave-20 engine
+unit re-priced as the (RM-m) family instance; [IL3] arc untouched, on its
+own text. Unit files: the note + iterlawn_diag.py + iterlawn_diag_output.txt
++ this append ONLY (scoped `git commit --only`); every sealed/accepted
+artifact byte-untouched.

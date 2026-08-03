@@ -1,0 +1,41 @@
+iterlawn_diag — POST-SEAL-LABELED diagnostic for ITERLAWN_PROOF_2026-08-08.md (not a proof step; not a seal)
+== LEG A: 4-read (RUNG n = 3) sealed-harness REUSE (read-only; A4, B4, C3 @ Zp,3) ==
+-- Zp,p=3,A4: E4=16; censuses {'dcx2s': 0, 'dcx_outer': 28}
+-- Zp,p=3,B4: E4=12; censuses {'dcx2s': 0, 'dcx_outer': 0}
+-- Zp,p=3,C3: E4=8; censuses {'dcx2s': 0, 'dcx_outer': 7}
+== LEG B: 5-read (RUNG n = 4) FRESH — first 5-read data ==
+-- Zp,p=3,T5A: E5=8, G0=152, degPhi4=16, psi4 deg=1
+   censuses: {'dcx2s': 0, 'dcx_outer': 0, 'e1pass': 0, 'e2pass': 0, 'e3pass': 0}; elapsed 0.3s
+-- Fpt,p=2,T5A: E5=8, G0=152, degPhi4=16, psi4 deg=1
+   censuses: {'dcx2s': 0, 'dcx_outer': 0, 'e1pass': 0, 'e2pass': 0, 'e3pass': 0}; elapsed 0.5s
+-- Zp,p=3,T5B: E5=12, G0=216, degPhi4=12, psi4 deg=1
+   censuses: {'dcx2s': 16, 'dcx_outer': 48, 'e1pass': 0, 'e2pass': 0, 'e3pass': 0}; elapsed 0.3s
+-- Fpt,p=3,T5B: E5=12, G0=216, degPhi4=12, psi4 deg=1
+   censuses: {'dcx2s': 16, 'dcx_outer': 48, 'e1pass': 0, 'e2pass': 0, 'e3pass': 0}; elapsed 0.6s
+-- Zp,p=3,T5C: E5=8, G0=72, degPhi4=16, psi4 deg=2
+   censuses: {'dcx2s': 0, 'dcx_outer': 4, 'e1pass': 0, 'e2pass': 0, 'e3pass': 0}; elapsed 0.3s
+-- Fpt,p=2,T5C: E5=8, G0=72, degPhi4=16, psi4 deg=2
+   censuses: {'dcx2s': 0, 'dcx_outer': 4, 'e1pass': 0, 'e2pass': 0, 'e3pass': 0}; elapsed 0.4s
+
+== COUNTS ==
+  A1_casc: 464
+  A2_star: 464
+  A3_rho: 36
+  A4_dcx_law: 35
+  A5_e1pass: 144
+  B1_L6: 56
+  B2_wmult: 544
+  B2p_l7: 544
+  B3_law: 544
+  B4_casc: 544
+  B4_star: 544
+  B5_descent: 224
+  B5_pi: 24
+  B5_rho: 56
+  B6_e1pass: 416
+  B6_e2pass: 128
+  B6_e3pass: 416
+  B6_topcontrol: 128
+== VIOLATIONS: 0 ==
+total elapsed 2.5s
+DIAG VERDICT: CLEAN
