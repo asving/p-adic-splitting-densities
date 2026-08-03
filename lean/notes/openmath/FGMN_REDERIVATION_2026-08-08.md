@@ -481,7 +481,7 @@ REVISION-4 list reconciled EXACTLY on every named site): GAPS-ONLY 0C/2G. Fixes:
    -reference closure of `SideReads` (grep -rn 'SideReads' over ALL of lean/LeanUrat/,
    not DictIII alone) UNION the σ.w/readCeil/read_locality semantic ring, with the term
    set now PINNED on record: {SideReads, SideClause, sideReads_, σ.w, readCeil,
-   read_locality, lastRead_of_readsOf}. A term-list can miss what its terms cannot see;
+   read_locality, lastRead_of_readsOf_snoc} [REV8: the un-suffixed form struck — dead under the matcher]. A term-list can miss what its terms cannot see;
    a reference closure cannot miss a by-name binder. Under the upgraded rule the two
    pass-6 sites join the perimeter:
    - `lastRead_of_readsOf_snoc` (Window.lean:506–521 — binds `SideReads` by name).
@@ -585,3 +585,28 @@ Pass 8 (FGMN_pass8_report.md): GAPS-ONLY 0C/2G. Fixes:
    verifier-owned execution (pass-8 gap 2 = the standing infrastructure item; pass 9
    is a Fable pass WITH execution — it discharges this by construction).
 Counter stays 0/2; passes 9+10 decide.
+
+## REVISION 8 (orchestrator-applied, per pass 9 — the closure question SETTLED by delegation to the compiler)
+
+Pass 9 (FGMN_pass9_report.md, f1863d7; the execution leg again EXACT on every pinned
+artifact): CRITICAL 1C/2G — the verifier EXECUTED the REVISION-7 closure and proved it
+BIMODAL: the FQN-literal reading expands nothing (fixpoint = the 466 round-1 decls);
+the base-name reading saturates to 12,199 decls across ~97% of the tree (docstring
+[doc] hits admit English prose tokens into the expansion). No textual rule survived
+execution. RESOLUTION — the perimeter specification is REPLACED, not patched:
+1. **The NORMATIVE perimeter is the Lean elaborator's own dependency closure**,
+   computed AT APPLICATION TIME on a scratch worktree: introduce `SideReads'` (the
+   new-definition route), re-point the glue-route statements, `lake build`, and follow
+   compiler errors to fixpoint. The kernel's reference graph is the exact closure no
+   grep can approximate; the application unit's change-set = precisely the files the
+   rebuild forces, each dispositioned (primed twin / mode-conditional bracket /
+   untouched) in its diff. This is checkable, implementer-independent, and total.
+2. **Every grep census in this note (REVISIONS 4-7) is DEMOTED to INFORMATIVE
+   PREVIEW** — retained as the reviewer's map of the expected blast radius (the R1+R2
+   mirrors, the (†)-transfer sites, Window/CU1, the named binders), no longer claimed
+   normative or complete. The pass-9 findings against the REVISION-7 rule (the dead
+   ring term `lastRead_of_readsOf`; the 15-vs-14 file count — `U27_gateInert` was a
+   substring artifact) stand as recorded defects OF THE PREVIEW and are corrected in
+   place: the ring term is struck (its only occurrences are `lastRead_of_readsOf_snoc`,
+   which stays); the round-2 list is 14 files.
+Counter stays 0/2; passes 10+11 decide on THIS specification.
