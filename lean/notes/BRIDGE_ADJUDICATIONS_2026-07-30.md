@@ -6479,6 +6479,51 @@ residual); node literals synthetic-but-lawful (S2 genre); engine-tied
 non-vacuous decision point. Fences: no existing statement touched; sorried toy decls
 not consumed; parked items 22–29 untouched.
 
+## ROOT r35 EXECUTED (REVISION 34) — the anchor moves to REVISION 33/VC35+VC35b; THE WAVE-16 FOLD (ITER-LAW attempt-grade on the harness class; the banked sorry retired; the first (H7) decision point; DITERSUP priced)
+
+REVISION 34 applied (ROOT §40; unit ROOT r35). (1) RE-ANCHOR: VC35 0C/2G → the dated
+r34-ERRATUM (d79f295) → VC35b CONFIRMED 0C/0G (345b432) → **the acceptance anchor
+moves REVISION 32/VC34 → REVISION 33/VC35+VC35b** (the SIXTEENTH audited
+re-anchoring), the citation-text updated at every operative site (§0 standing
+paragraph; the §3.2 end-to-end row's VC35+VC35b sync tail; the §6 supersession +
+r35 brackets); now inside the certified anchor: the strata family's THREE-component
+union ({all order-2} ∪ {order-3 all-e_j = 1 PRINT-UNCONDITIONAL} ∪ {order-3 e₀ = 1,
+e₁ ≥ 2, e₂ = 1, conditional on (H-ℓ) + (KP_i)+[T]-at-S6.2 + PIN-GEN-i, with Lemma
+HV3-E2 derived from the pinned print}), the F2c in-pipeline discharge, the TWIST3
+hygiene; **VC36 OWED on the REVISION-34 wording**, never self-confirmed. (2) THE
+WAVE-16 BATCH FOLDED (ROOT §40.(i)–(iv)): **ITER-LAW PROVED AT ATTEMPT GRADE on the
+harness tower class** (standard-lift towers — the class DITER_RESTATE §S2 pins; the
+entire 0/804 + 0/840 instance base inside it; seal ab7c31c / run 242ba1e ALL GREEN
+FIRST PASS 35,232/0; ACCEPTANCE COUNTER 0 — hostile passes IN FLIGHT; residuals
+(ITER-LAW-LIFT) at g₀ = 1 ∧ δ₁ = 1 + gr(w₂)-wrapper-rides-GRB-retarget + orders ≥ 3
+displayed; the class qualifier carried at every mention) — the owed status brackets
+APPLIED, all additive: DITER_RESTATE §S2, GRB S5.3 (second bracket) + S8 item 2,
+PROJECT_STATE displays; the ITERLAW note itself NOT touched (in-flight passes read
+it as committed; its acceptance counter moves only on accepted passes). **The
+banked sorry RETIRED folded** (15372d1): the stale "exactly one banked sorry"
+operative lines updated to ZERO with dated retirement brackets (repo CLAUDE.md
+axiom-policy line; PROJECT_STATE banked-sorry section + heading tag;
+AXIOM_FAITHFULNESS swept — no banked-sorry mention, no edit); statement
+byte-unchanged + AxChk record displayed at every fold site. **The H7 forge folded**
+as the FIRST compiled non-vacuous (H7) decision point (the §3.1 (I-τ)/K-LOC row's
+r35 bracket; NOTHING discharged, the row stays [M]). **DITERSUP folded
+priced/gated** (every gate BLOCKED-ON-APPLICATION; the old-clause records
+byte-frozen; the J3b cross-reference bracket applied BOTH in the DITERSUP note §S4
+and at ROOT §40.(iv): J3b may now cite ITER-LAW proved-on-class — attempt grade,
+acceptance pending, standard-lift instances only). (3) Housekeeping: **SYNTHESIS
+PASS 8 OWED at the wave-16 close**; the 4-item Asvin batch restated, TOP = the
+verified FGMN proposal; roster NINE re-derived; the r27 sorry-census display marked
+stale-by-one (no repo-wide re-sweep this fold). Census: 70 patterns (61 +
+VC35b/VC36/ITERLAW/H7FORGE/DITERSUP/BANKED_SORRY/HullStability/H7Forge/
+ITER-LAW-LIFT new), re-grepped at fixed point, every delta reasoned at §40; TWO
+honest baseline corrections vs the §39 recording called out (PIN-GEN-i +1, VC35 +1
+— the post-census r34-ERRATUM, the only ROOT edit in the gap). PROJECT_STATE r35
+checkpoint + dated tags at the r34 checkpoint's stale displays. Doc-only unit
+(ROOT + PROJECT_STATE + CLAUDE.md + the three note-side brackets + this ledger);
+NO Lean file touched; no sealed falsifier or byte-frozen record touched. NEXT:
+VC36 (fresh context, charge at ROOT §40) → the ITER-LAW hostile-pass harvest →
+SYNTHESIS PASS 8.
+
 ---
 
 ## 2026-08-08 — ITER-LAW hostile pass PE (Fable execution leg + F2c): CLEAN (0 crit / 0 gap)
@@ -6511,5 +6556,11 @@ retarget; orders ≥ 3 untouched); statement-of-record display VERBATIM (note pr
 e₀,e₁ ≥ 1 ⊇ the restatement's E₂ > 1 setting); sealed rows verified fresh vs the
 13-row strata roster (X = row-N shape as declared); harness line-cites exact.
 FILES: the report + `iterlaw_f2c_reimpl.py` + its output/JSON artifacts. Fences:
-note and sealed falsifier byte-untouched; DITER_RESTATE untouched (verified ==
-242ba1e at pass start and end).
+note and sealed falsifier byte-untouched; DITER_RESTATE verified == 242ba1e at
+pass start (the text this pass verified against, per charge). POSTSCRIPT
+(same-unit correction, minutes later): the concurrent ROOT r35 fold landed the
+S9-owed ADDITIVE status bracket in DITER_RESTATE §S2 while this pass ran — the
+§S2 display and setting text verified above are byte-unchanged (bracket additive
+after the status line; diff vs 242ba1e inspected: insertion only, 72a73,93);
+this pass's statement-of-record verification stands on the 242ba1e text exactly
+as chartered.
