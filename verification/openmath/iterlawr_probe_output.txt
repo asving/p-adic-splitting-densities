@@ -1,0 +1,43 @@
+[   0.6s] CERT done: level-2 0 viol (702 samples); level-3 internal+PARI in families
+[   4.0s] ring (Zp,p=2) done: cumulative violations = 0
+[   8.2s] ring (Zp,p=3) done: cumulative violations = 0
+[  16.3s] ring (Fpt,p=2) done: cumulative violations = 0
+[  26.0s] ring (Fpt,p=3) done: cumulative violations = 0
+[  26.5s] G8 symbolic done (MSEPi = 7278)
+[  27.1s] mutation controls done: {'m1': 176, 'm2': 84, 'm3': 216, 'm4': 0, 'm5': 22, 'm6': 119}
+
+==============================================================================
+PREREGISTERED vs OBSERVED (violations; samples in parentheses)
+==============================================================================
+F0a    LEVEL-2 FIDELITY: accepted law on subtower   pred 0  obs     0 (   896)  GREEN
+F0b    CX embed tie level-3 == level-2              pred 0  obs     0 (    64)  GREEN
+G1     L6-3 ANCHOR-VAL eps-chain, 3 windows         pred 0  obs     0 (  1344)  GREEN
+G2     L7-3 PAIR-VAL both forms + top-slot shape    pred 0  obs     0 ( 13440)  GREEN
+G3     THE CANDIDATE (ITER-LAW-3) closed form       pred 0  obs     0 ( 13440)  GREEN
+G4     D2/D1 integrality                            pred 0  obs     0 ( 13440)  GREEN
+G5     cocycle identity, 216 triples/tower          pred 0  obs     0 (  9408)  GREEN
+G6     degenerations CV/CW/CX                       pred 0  obs     0 (   576)  GREEN
+G7     Z/E3 descent: simultaneous + 4 MIXED blocks  pred 0  obs     0 ( 26880)  GREEN
+G8     integer layer symbolic (20k draws)           pred 0  obs     0 ( 20000)  GREEN
+CERT3  level-3 data cert (psi2/Phi3/R3s key)      pred 0  obs     0 (    52)  GREEN
+CERT3P PARI level-3 (Phi3 irred, (e,f)=(E3,f))   pred 0  obs     0 (    26)  GREEN
+CERT2  level-2 subtower (T1/T2/T5/T11+PARI)        pred 0  obs     0 (   702)  GREEN
+METER MC-inner > 0 on A,B                MET
+METER MC-mid   > 0 on A,B,D,F,L          MET
+METER MC-dbl   > 0 on A,B                MET
+METER MV       > 0 on C,E,G              MET
+METER MD3      > 0 on all e2>=2 rows     MET
+METER MSEPi (symbolic naive/composed separation) = 7278 (pred > 0)  MET
+METER MSEPf (field-level separation, report) = 1752; naive-form violations vs measured = 1752 / 13440 pairs
+MUTATION m1: detected 176 (pred >= 1)  MET
+MUTATION m2: detected 84 (pred >= 1)  MET
+MUTATION m3: detected 216 (pred >= 1)  MET
+MUTATION m4: detected 0 (pred >= 1)  NOT DETECTED — battery lacks teeth
+MUTATION m5: detected 22 (pred >= 1)  MET
+MUTATION m6: detected 119 (pred >= 1)  MET
+row-G value set Zp,p=2,G: ['zbar^1*z2^0*z1^0']
+row-G value set Zp,p=3,G: ['zbar^0*z2^0*z1^1', 'zbar^1*z2^0*z1^0', 'zbar^1*z2^0*z1^1']
+row-G value set Fpt,p=2,G: ['zbar^1*z2^0*z1^0']
+row-G value set Fpt,p=3,G: ['zbar^0*z2^0*z1^1', 'zbar^1*z2^0*z1^0', 'zbar^1*z2^0*z1^1']
+TOTAL samples: 103772   elapsed 27.1s
+VERDICT (preregistered rows): RED — see above
