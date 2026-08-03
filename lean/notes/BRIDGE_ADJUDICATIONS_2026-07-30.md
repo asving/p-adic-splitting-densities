@@ -8154,3 +8154,46 @@ two-family priced distance, and the incorporation convention as the standing
 citation discipline. Post-pin arcs continue on their own bars: the ITERLAWN
 acceptance arc (round 1 adjudicated, errata ac03cb1 applied, PE2 in flight,
 PC2 sequenced on PE2) and the public-exposition update (site 72de730, live).
+
+## ITERLAWN-PE2 (Fable round 2) — NOT-CLEAN 0C/1G (+2 nits) — 2026-08-03
+
+Round-2 hostile pass on `ITERLAWN_PROOF_2026-08-08.md` @ ac03cb1 (errata
+round 1); report `lean/notes/openmath/ITERLAWN_passPE2_report.md`. Fresh
+verifier discipline honored (full amended-text read before round-1
+reports). **ERRATA FIDELITY VERIFIED**: bracket-additive (216+/1−; the one
+"deletion" is the S0.3 table row re-emitted with the dated PE-G1 qualifier
+appended in-row), proved-core claims unchanged, 19 dated brackets + 1
+in-row qualifier, EACH cures its finding. **E1 DEEP-CHECK CLEAN**: 59/59
+capital-S body tokens in S4.3–S4.7 machine-censused and classified — ALL
+raw-sum/T-renamed, 0 MISSED, 0 composed-shift occurrences (the head
+erratum's "NEVER appear" claim verified); the four load-bearing
+T-identities (slot-line e_{n−1}B_{n−1}+T_nγ_n=B_n; T_n ≤ 2e_{n−1}−2 with
+k ∈ [0,e_{n−1}−2]; s_n(B_n) = T_n−δ_n^{pl}e_{n−1}; Γ″ = e_nB_n+T_{n+1}γ_{n+1}
+with s_{n+1}(Γ″) = T_{n+1}−δe_n) independently re-derived TRUE under the
+raw reading, false/ill-typed under the composed one — NO EQUIVOCATION
+confirmed; S5/S7/S6 composed-shift sites correctly retained. E2 re-derived
+RIGHT (parents ≤ 2e₀g₀−2, Φ₀Y child ≤ 2e₀g₀−1 < 2e₀g₀; conclusion
+unchanged). E3 re-derived RIGHT (Q¹ line − B_n = 2h_{n−1} > 0, exact).
+E5 present at all 3 sites. E6 FAITHFUL (all three [IL3]† pastes + the
+[IL]† scope sentence byte-match this ledger's blocks, machine diff;
+convention correctly stated per 9f9910c; S4.1 operative paste present and
+correctly scoped). **EXECUTION: both re-runs BYTE-EXACT** (reimpl
+cfad7943…, diag 7c72c4c6… — md5-identical to frozen outputs; 22,369/0 and
+5,311/0); no new battery needed (E1 renames — referee mapping confirms no
+testable semantics changed). **THE ONE GAP (PE2-F1, errata-introduced,
+narrow)**: the E4/PC-G5 [IL]†-failure-branch bracket's row-2 clause
+("EXP-KIT keeps its self-contained S3 proof (only the rung-1 instance
+citation rides [IL])") is FALSE — EXP-KIT (b)/(c)'s S3 proofs each consume
+L1 = [IL S2 L1] (the note's own S3 parenthetical says "self-contained
+modulo the ACCEPTED [IL] alone"); under the hypothetical, row 2 falls back
+to "open at L1" exactly like row 1; one-clause cure (mirror in this
+ledger's errata record "rows 2/3 keep self-contained/generic proofs").
+NITS: N1 the PE-N2 bracket's "3,444 diag" (★)-count is wrong (diag star
+coverage = 464+544 = 1,008 counter rows / 3,568 pair-levels; 3,444 is the
+reimpl's K3; equality-unattainable mechanism itself re-derived as a
+theorem, stands); N2 the "S4.3 head + 10 site brackets" description
+(commit + this ledger's errata record) — actual is head + 9, matching the
+record's own nine-item enumeration. Rows 1/4/5/6/8/10 of the E4 branch
+verified RIGHT; everything else swept clean. Counter stays 0/2; errata
+round 2 = one clause + one number; PC2 (Codex) next, charge to include an
+independent re-check of the E4 row-2 clause.
