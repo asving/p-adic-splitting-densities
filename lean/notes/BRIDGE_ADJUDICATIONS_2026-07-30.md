@@ -6941,3 +6941,45 @@ to E₂ > 1); residuals: (ITER-LAW-LIFT) open exactly at g₀ = 1 ∧ δ₁ = 1;
 wrapper rides the accepted GRB retarget; orders ≥ 3 untouched." Doc-only unit:
 the note + the archived plan review + this append; sealed/accepted records
 byte-frozen; no Lean statement touched.
+
+---
+
+## ITER-LAW-r LEVEL-3 PROBE VERDICT — 2026-08-08 (wallclock 2026-08-03; wave-18 unit 2, completed by the VERDICT-HARVEST recovery unit)
+
+The sealed level-3 cocycle probe (seal 911431c, prereg
+`lean/notes/openmath/ITERLAWR_PROBE_2026-08-08.md`; run outputs checkpointed
+AS-IS at d0e2b74 after the executing unit died on API 529s) is adjudicated
+FROM THE ARTIFACTS. **Headline: the sealed PRIMARY candidate (ITER-LAW-3) —
+c₃ = z̄^{δ₃}·z₂^{D₂}·z₁^{D₁} with the COMPOSED inner shift Σ = D₂γ₂ +
+δ₃γ₃(ℓ₁′−ℓ₁w₁Φ₁) — survived the ENTIRE battery: 0 violations on every
+preregistered predicted-0 family (F0a/F0b/G1–G8/CERT2/CERT3/CERT3P, 103,772
+samples, 52 towers, seed 20260903), all coverage meters MET, JSON violations
+array EMPTY.** The runner's strict exit line printed RED on exactly one leg —
+mutation control m4 (δ₃ modulus e₂→e₁) 0/992 undetected, an S3-classified
+PARTIAL (teeth failure: all m4-teeth rows of the reduced battery have g₂ = 1,
+z̄ = 1, wrong z̄-exponent field-invisible) — NOT a candidate failure; the
+d0e2b74 checkpoint message's "verdict RED on preregistered rows" quotes that
+exit line only. F0 fidelity GREEN (harness reproduces the accepted level-2
+law, 0/896 + 0/64 — the level-3 verdict is about the law, not the calculus).
+The m4 teeth SUPPLEMENT (own seal at d0e2b74 pre-run, seed 20260904, rows
+M4A/M4B with g₂ = 2 ∧ e₁ ≠ e₂) ran ALL GREEN exit 0: sealed battery 0/19,792
+on the new rows, m4 detected 8/8 towers on every divergence pair — the
+mutation battery now has teeth for all six constants. Separation: the
+DISTINGUISHED NAIVE per-level template is REFUTED (MSEPi 7,278; field-level
+1,752/13,440 pairs, on all of which the naive form ≠ the measured cocycle
+while the primary agrees; post-hoc census `iterlawr_separation_analysis.py`:
+584 W1×W1 separation pairs = 520 naive-NONINTEGRAL + 64 field-diff, ALL at
+δ₃ = 1, every field discrepancy factor EXACTLY z₁^{D₁−D₁ⁿᵃⁱᵛᵉ} — pure
+top-carry leakage into the inner shift, no z̄/z₂ component). Standing:
+(ITER-LAW-3) is a MEASURED LAW (instance-confirmed conjecture; no proof
+claim; orders ≥ 4 untouched; (ITER-LAW-LIFT) propagates). The prereg's S6
+displays the uniform (ITER-LAW-n) recursion as the next-cycle candidate (NOT
+asserted) + the roster lesson (mutation controls on letter exponents need
+letter ≠ 1 rows by design). Acceptance citation consumed by this unit, PASTED
+from the ITER-LAW ACCEPTED block above: "Scope as accepted: the harness tower
+class (superset of DITER_RESTATE §S2's E₂ > 1 pin; on-the-nose coincidence
+restricted to E₂ > 1); residuals: (ITER-LAW-LIFT) open exactly at g₀ = 1 ∧
+δ₁ = 1; gr(w₂) wrapper rides the accepted GRB retarget; orders ≥ 3
+untouched." Seal 911431c byte-untouched outside the sanctioned S5 verdict
+block; S6 + the supplement outputs + the analysis script are additive; no
+Lean statement touched; no record edits beyond this append.

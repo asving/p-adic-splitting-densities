@@ -1,0 +1,50 @@
+PASS 1 (all 52 towers, W1xW1): naive/composed separation census
+  NONINTEGRAL (naive D1n not in Z): 520
+  FIELD-DIFF  (integral, values differ): 64
+  (L1) all separation pairs have d3 = 1: CONFIRMED
+  (L2) every FIELD-DIFF factor == z1^(D1-D1n): CONFIRMED
+
+--- Zp,p=3,CW  (e,h,g) = (2, 1, 1) (1, 1, 2) (2, 1, 1)   E3=4  gamma2=3 gamma3=13 (l0,l0')=(1,0) (l1,l1')=(0,1)
+  pair (25,25)  [NONINTEGRAL]  d3=1 d2=0 D2=0  Sig=13 vs naive gamma2*d2=0  D1=6 vs D1naive=None
+    measured c3 = 1
+    naive: NO VALUE — e0=2 does not divide s1-defect+l0*gamma2*d2 = -1+1*0 = -1
+  pair (25,27)  [NONINTEGRAL]  d3=1 d2=0 D2=0  Sig=13 vs naive gamma2*d2=0  D1=7 vs D1naive=None
+    measured c3 = zbar^0*z2^0*z1^1
+    naive: NO VALUE — e0=2 does not divide s1-defect+l0*gamma2*d2 = 1+1*0 = 1
+  pair (27,25)  [NONINTEGRAL]  d3=1 d2=0 D2=0  Sig=13 vs naive gamma2*d2=0  D1=7 vs D1naive=None
+    measured c3 = zbar^0*z2^0*z1^1
+    naive: NO VALUE — e0=2 does not divide s1-defect+l0*gamma2*d2 = 1+1*0 = 1
+
+--- Zp,p=2,A  (e,h,g) = (2, 1, 1) (2, 1, 1) (2, 1, 1)   E3=8  gamma2=5 gamma3=21 (l0,l0')=(1,0) (l1,l1')=(1,0)
+  pair (49,51)  [NONINTEGRAL]  d3=1 d2=0 D2=11  Sig=13 vs naive gamma2*d2=0  D1=7 vs D1naive=None
+    measured c3 = 1
+    naive: NO VALUE — e0=2 does not divide s1-defect+l0*gamma2*d2 = 1+1*0 = 1
+  pair (49,55)  [NONINTEGRAL]  d3=1 d2=0 D2=11  Sig=13 vs naive gamma2*d2=0  D1=7 vs D1naive=None
+    measured c3 = 1
+    naive: NO VALUE — e0=2 does not divide s1-defect+l0*gamma2*d2 = 1+1*0 = 1
+  pair (51,49)  [NONINTEGRAL]  d3=1 d2=0 D2=11  Sig=13 vs naive gamma2*d2=0  D1=7 vs D1naive=None
+    measured c3 = 1
+    naive: NO VALUE — e0=2 does not divide s1-defect+l0*gamma2*d2 = 1+1*0 = 1
+
+--- Zp,p=3,G  (e,h,g) = (2, 1, 1) (2, 1, 1) (2, 1, 2)   E3=8  gamma2=5 gamma3=21 (l0,l0')=(1,0) (l1,l1')=(1,0)
+  pair (49,51)  [NONINTEGRAL]  d3=1 d2=0 D2=11  Sig=13 vs naive gamma2*d2=0  D1=7 vs D1naive=None
+    measured c3 = zbar^1*z2^0*z1^0
+    naive: NO VALUE — e0=2 does not divide s1-defect+l0*gamma2*d2 = 1+1*0 = 1
+  pair (49,55)  [NONINTEGRAL]  d3=1 d2=0 D2=11  Sig=13 vs naive gamma2*d2=0  D1=7 vs D1naive=None
+    measured c3 = zbar^1*z2^0*z1^0
+    naive: NO VALUE — e0=2 does not divide s1-defect+l0*gamma2*d2 = 1+1*0 = 1
+  pair (51,49)  [NONINTEGRAL]  d3=1 d2=0 D2=11  Sig=13 vs naive gamma2*d2=0  D1=7 vs D1naive=None
+    measured c3 = zbar^1*z2^0*z1^0
+    naive: NO VALUE — e0=2 does not divide s1-defect+l0*gamma2*d2 = 1+1*0 = 1
+
+--- Zp,p=3,C  (e,h,g) = (2, 1, 2) (2, 1, 1) (2, 1, 1)   E3=8  gamma2=9 gamma3=37 (l0,l0')=(1,0) (l1,l1')=(1,0)
+  pair (73,73)  [FIELD-DIFF]  d3=1 d2=0 D2=18  Sig=14 vs naive gamma2*d2=0  D1=8 vs D1naive=1
+    measured c3 = 1
+    naive pred  = zbar^0*z2^0*z1^1   discrepancy factor measured/naive = zbar^0*z2^0*z1^7 = z1^7
+  pair (73,75)  [NONINTEGRAL]  d3=1 d2=0 D2=19  Sig=23 vs naive gamma2*d2=0  D1=12 vs D1naive=None
+    measured c3 = 1
+    naive: NO VALUE — e0=2 does not divide s1-defect+l0*gamma2*d2 = 1+1*0 = 1
+  pair (73,77)  [FIELD-DIFF]  d3=1 d2=0 D2=18  Sig=14 vs naive gamma2*d2=0  D1=7 vs D1naive=0
+    measured c3 = zbar^0*z2^0*z1^7
+    naive pred  = 1   discrepancy factor measured/naive = zbar^0*z2^0*z1^7 = z1^7
+

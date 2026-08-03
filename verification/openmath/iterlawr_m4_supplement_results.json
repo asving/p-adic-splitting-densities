@@ -1,0 +1,125 @@
+{
+ "violations": [],
+ "counts": {
+  "F0a": 208,
+  "G1": 288,
+  "G2": 3456,
+  "G4": 3456,
+  "G3": 3456,
+  "NAIVEDIFF": 144,
+  "NAIVEVIOL": 144,
+  "G5": 1728,
+  "G7": 6912
+ },
+ "m4": {
+  "Zp,p=2,M4A": {
+   "detected": 36,
+   "divergent": 36
+  },
+  "Zp,p=2,M4B": {
+   "detected": 64,
+   "divergent": 64
+  },
+  "Zp,p=3,M4A": {
+   "detected": 36,
+   "divergent": 36
+  },
+  "Zp,p=3,M4B": {
+   "detected": 64,
+   "divergent": 64
+  },
+  "Fpt,p=2,M4A": {
+   "detected": 36,
+   "divergent": 36
+  },
+  "Fpt,p=2,M4B": {
+   "detected": 64,
+   "divergent": 64
+  },
+  "Fpt,p=3,M4A": {
+   "detected": 36,
+   "divergent": 36
+  },
+  "Fpt,p=3,M4B": {
+   "detected": 64,
+   "divergent": 64
+  }
+ },
+ "meters": {
+  "Zp,p=2,M4A": {
+   "inner": 108,
+   "mid": 144,
+   "dbl": 36,
+   "mv": 108,
+   "md3": 108,
+   "msepf": 36
+  },
+  "Zp,p=2,M4B": {
+   "inner": 108,
+   "mid": 108,
+   "dbl": 27,
+   "mv": 144,
+   "md3": 144,
+   "msepf": 0
+  },
+  "Zp,p=3,M4A": {
+   "inner": 108,
+   "mid": 144,
+   "dbl": 36,
+   "mv": 243,
+   "md3": 108,
+   "msepf": 36
+  },
+  "Zp,p=3,M4B": {
+   "inner": 108,
+   "mid": 108,
+   "dbl": 27,
+   "mv": 216,
+   "md3": 144,
+   "msepf": 0
+  },
+  "Fpt,p=2,M4A": {
+   "inner": 108,
+   "mid": 144,
+   "dbl": 36,
+   "mv": 108,
+   "md3": 108,
+   "msepf": 36
+  },
+  "Fpt,p=2,M4B": {
+   "inner": 108,
+   "mid": 108,
+   "dbl": 27,
+   "mv": 144,
+   "md3": 144,
+   "msepf": 0
+  },
+  "Fpt,p=3,M4A": {
+   "inner": 108,
+   "mid": 144,
+   "dbl": 36,
+   "mv": 243,
+   "md3": 108,
+   "msepf": 36
+  },
+  "Fpt,p=3,M4B": {
+   "inner": 108,
+   "mid": 108,
+   "dbl": 27,
+   "mv": 216,
+   "md3": 144,
+   "msepf": 0
+  }
+ },
+ "Gamma0": {
+  "Zp,p=2,M4A": 96,
+  "Zp,p=2,M4B": 108,
+  "Zp,p=3,M4A": 96,
+  "Zp,p=3,M4B": 108,
+  "Fpt,p=2,M4A": 96,
+  "Fpt,p=2,M4B": 108,
+  "Fpt,p=3,M4A": 96,
+  "Fpt,p=3,M4B": 108
+ },
+ "harness_events": []
+}

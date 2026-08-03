@@ -250,5 +250,135 @@ random.seed(20260903), exact arithmetic only. JSON: iterlawr_probe_results.json.
 
 ## S5. VERDICT (post-run; commit 2 fills this block — PENDING at the seal)
 
-**PENDING.** Nothing below this line is written before the sealed battery has run.
+**FILLED FROM THE ARTIFACTS by the recovery unit (wallclock 2026-08-03).** The
+executing unit died on API 529s between the run and this block; the outputs were
+sweep-checkpointed AS-IS at d0e2b74 and are byte-unchanged by the recovery.
+Artifacts of record: `verification/openmath/iterlawr_probe_output.txt` +
+`iterlawr_probe_results.json` (single run, seed 20260903, 103,772 samples,
+27.1 s, exit 1).
+
+**VERDICT: GREEN on every preregistered predicted-0 family — the sealed PRIMARY
+candidate (ITER-LAW-3) survived the entire battery.** The runner's strict
+exit-0 line printed "RED — see above" on exactly ONE leg: mutation control m4
+undetected (0 of 992), which S3's own sealed wording classifies as **PARTIAL
+(battery lacks teeth for the δ₃-modulus constant)** — since cured by the
+post-seal supplement below. Record-keeping caution: the d0e2b74 checkpoint
+message's phrase "verdict RED on preregistered rows" quotes that strict exit
+line; the JSON `violations` array is EMPTY — no predicted-0 row was violated.
+
+Per-family observed violations (predicted 0 everywhere): F0a 0/896 · F0b 0/64
+· G1 0/1344 · G2 0/13440 · G3 0/13440 · G4 0/13440 · G5 0/9408 · G6 0/576 ·
+G7 0/26880 · G8 0/20000 · CERT2 0/702 · CERT3 0/52 · CERT3P 0/26. Harness
+events: none.
+
+* **F0 fidelity (the harness-suspicion gate): GREEN.** F0a — the accepted
+  level-2 ITER-LAW reproduced on the level-2 subtower of all 52 towers
+  (0/896); F0b — the CX (e₂ = 1) level-3 cocycle equals the K₃-embed of the
+  measured level-2 cocycle (0/64). The harness is NOT suspect; the level-3
+  verdict is about the law, not the calculus.
+* **Coverage meters: ALL MET** (MC-inner, MC-mid, MC-dbl, MV, MD3 per the S3
+  spec; per-row counts in the JSON `meters` block).
+* **Separation meters:** MSEPi = 7,278 of 20,000 symbolic draws separate the
+  composed from the naive shift at the integer level; MSEPf = 1,752 of 13,440
+  block pairs separate them AS FIELD VALUES — and on every one of those 1,752
+  pairs the NAIVE form disagrees with the MEASURED cocycle (NAIVEVIOL = 1,752)
+  while the primary agrees. The battery separates the two sealed forms and the
+  COMPOSED form wins outright; the naive per-level template is REFUTED as a
+  level-3 law (analysis in S6).
+* **Mutation controls:** m1 176, m2 84, m3 216, m5 22, m6 119 detected (MET);
+  **m4 (δ₃ modulus e₂ → e₁): 0/992 NOT DETECTED — teeth failure.** Cause
+  (diagnosed post-run): every m4-teeth row of the reduced mutation battery
+  (B/D/E/F) has g₂ = 1, where pick_irr3 yields ψ₂ = y − 1 over K₂ = F_p, so
+  z̄ = 1 and a wrong z̄-EXPONENT is field-invisible. The δ₃ modulus was
+  nevertheless pinned STRUCTURALLY by the sealed G2 top-slot shape clause
+  (nz == [δ₃], 0/13,440 incl. the e₁ ≠ e₂ rows D/F/L).
+* **m4 TEETH SUPPLEMENT (post-seal; the S1 bracket's one allowed new sealed
+  cycle, own file, labeled non-prereg of THIS seal):**
+  `verification/openmath/iterlawr_m4_supplement.py`, committed pre-run at
+  d0e2b74 (its own seal), seed 20260904, rows M4A (1; 2,1,1; 3,1,1; 2,1,2) and
+  M4B (1; 2,1,1; 2,1,1; 3,2,2) — e₁ ≠ e₂ AND g₂ = 2, so z̄ ≠ 1 always — over
+  all 4 rings. Run 2026-08-03 by the recovery unit: **ALL GREEN, exit 0** —
+  S1 (the full sealed battery verbatim on the new rows) 0 violations / 19,792
+  samples; S2/S3 m4 detected on 8/8 towers, on EVERY divergence pair (36 or
+  64 per tower). Output: `iterlawr_m4_supplement_output.txt` +
+  `iterlawr_m4_supplement_results.json`. With the supplement the mutation
+  battery has teeth for all six constants.
+
+**Standing of the law:** (ITER-LAW-3), the composed three-constant form of S1,
+is a MEASURED LAW on the probed class — instance-confirmed conjecture per the
+S4 fence: no proof claim, orders ≥ 4 untouched, (ITER-LAW-LIFT) propagates.
+Total evidence: 103,772 + 19,792 samples, zero violations of the primary
+anywhere, the naive alternative refuted on 1,752 instances.
+
+## S6. POST-RUN SEPARATION ANALYSIS (additive; NOT part of the seal; display only)
+
+The probe's product beyond the verdict is the small-case evidence separating
+the COMPOSED inner shift from the naive per-level template — the only form
+that failed anywhere. Extraction (post-hoc, labeled non-prereg):
+`verification/openmath/iterlawr_separation_analysis.py`, output
+`iterlawr_separation_analysis_output.txt`.
+
+**Census (all 52 towers, W1×W1 blocks = 584 separation pairs):**
+
+* **520/584 NONINTEGRAL**: the naive form has NO value — e₀ ∤ (s₁-defect +
+  ℓ₀γ₂δ₂). The naive template fails its own integrality precondition on the
+  very pairs where the composed D₁ is exactly integral (G4 = 0 there). The
+  dominant failure mode is arithmetic, before any field evaluation.
+* **64/584 FIELD-DIFF**: both integral, values differ.
+* **(L1) CONFIRMED on all 584**: every separation pair has δ₃ = 1. The two
+  forms coincide identically at δ₃ = 0 (as the seal noted: there Σ = γ₂δ₂),
+  so the entire discrepancy is TOP-CARRY LEAKAGE into the inner shift.
+* **(L2) CONFIRMED on all 64 FIELD-DIFF pairs**: the discrepancy factor
+  measured/naive equals z₁^{D₁−D₁ⁿᵃⁱᵛᵉ} EXACTLY — a pure z₁-power, never a
+  z̄- or z₂-component. Of the S1 falsifier taxonomy: NOT a missing twist unit
+  (θ-like), NOT a wrong denominator in the composed form, NOT level-2-carry
+  leakage into the z₂ exponent. The whole discrepancy is the composed-shift
+  correction in the z₁ exponent:
+  D₁ − D₁ⁿᵃⁱᵛᵉ = ℓ₀(Σ − γ₂δ₂)/e₀ = ℓ₀((D₂−δ₂)γ₂ + δ₃γ₃(ℓ₁′−ℓ₁w₁Φ₁))/e₀.
+
+**Displayed sample tuples (smallest rows first; full transcript in the
+analysis output file):**
+
+* `Zp,p=3,CW` (E₃ = 4, γ₃ = 13, (ℓ₁,ℓ₁′) = (0,1)) pair (25,27): δ₃ = 1,
+  Σ = δ₃γ₃ = 13 vs naive γ₂δ₂ = 0; measured c₃ = z₁, naive D₁ⁿᵃⁱᵛᵉ
+  NONINTEGRAL (e₀ = 2 ∤ 1 + 1·0). The composed D₁ = 7 reproduces the value.
+* `Zp,p=2,A` (E₃ = 8, γ₂ = 5, γ₃ = 21, w₁Φ₁ = 2) pair (49,51): δ₃ = 1,
+  D₂ = 11, Σ = 11·5 + 21·(0−2) = 13 vs naive 0; measured c₃ = 1 (all letters
+  trivial at p = 2), naive NONINTEGRAL — the naive form fails even where the
+  field cannot see exponents.
+* `Zp,p=3,C` (E₃ = 8, γ₂ = 9, γ₃ = 37; g₀ = 2 so z₁ has genuine order) pair
+  (73,77): δ₃ = 1, D₂ = 18, Σ = 14 vs naive 0; **measured c₃ = z₁⁷, naive
+  prediction 1 — discrepancy factor z₁⁷ = z₁^{D₁−D₁ⁿᵃⁱᵛᵉ}** with D₁ = 7,
+  D₁ⁿᵃᵛᵉ = 0. Same row, pair (73,73): measured 1, naive z₁, factor z₁⁷
+  (z₁ has order 8 here).
+
+**Corrected-candidate obligation (the S1 bracket): VACUOUSLY DISCHARGED.**
+The sealed primary needed no correction — it IS the measured law, and the
+recovery briefing's characterization "the sealed candidate FAILS at level 3"
+is contradicted by the artifacts. The next-cycle displays, ranked by
+evidence, are therefore forward candidates, NOT corrections — marked for the
+next sealed prereg cycle, nothing asserted:
+
+1. **(ITER-LAW-n) [next sealed cycle, strongest evidence — the uniform
+   recursion behind S1's constants, confirmed at n = 2 (accepted) and n = 3
+   (this probe):** for an (n+1)-read standard-lift tower, with the iterated
+   eq-(12-int) splits s_{n+1}, …, s₁ and top carry δ := ⌊(s_{n+1}+s_{n+1}′)/e_n⌋,
+
+       S_n := δ·γ_{n+1};   for j = n, …, 1:
+       D_j := (s_j-defect + ℓ_{j−1}·S_j)/e_{j−1},
+       S_{j−1} := D_j·γ_j + S_j·(ℓ_{j−1}′ − ℓ_{j−1}·w_{j−1}Φ_{j−1});
+       c_{n+1}(γ,γ′) = z̄^{δ} · z_n^{D_n} · … · z₁^{D_1}.
+
+   (At n = 3 this reproduces S1's δ₃, D₂, Σ, D₁ verbatim.) First target:
+   n = 4 probe, fresh seed, mixed blocks in the first battery, and — the m4
+   lesson — g_top = 2 rows in the mutation battery from the start.
+2. **Roster institutionalization [supplement evidence]:** M4A/M4B (g₂ = 2 ∧
+   e₁ ≠ e₂) join any future level-3+ roster; a mutation control on a letter
+   exponent has teeth only where that letter ≠ 1 — check letter nontriviality
+   per mutation at design time.
+
+Fed by this analysis: the 2026-08-03 uniformity directive's small-case ledger
+(the δ₃ = 1 localization + the pure-z₁ discrepancy factor are the transportable
+facts); the wave-19 compose charter decides whether to spend a proof unit on
+(ITER-LAW-3) now or after an n = 4 instance probe.
 
