@@ -10,6 +10,36 @@ the INDUCTION SCHEMA — the exact generic lemma statements whose proof would
 close all orders). Acceptance counter 0 — no hostile pass has run on THIS
 note. Author: Fable, campaign date 2026-08-08 (wallclock 2026-08-03).
 
+**[ACCEPTED 2026-08-03 — the hostile-pass arc closed at the 2-clean
+model-diverse bar on THIS (61dc2e0) text: PC6 (Codex) CLEAN 0C/0G
+(`ITERLAWN_passPC6_report.md`, 3a281e7) + PE7 (Fable) CLEAN 0C/0G
+(`ITERLAWN_passPE7_report.md`, 2ece60c — incl. the independent machine
+re-run of the census: 194 vs 194 exact, empty symmetric difference, own
+scanner committed). Arc of record: compose 5fe901e → SEVEN rounds
+(PC1 2C/1G + PE1 0C/2G convergent → r1 ac03cb1 → PE2 0C/1G → r2 ea125e3 →
+PC2 CLEAN + PE3 0C/1G → r3 4e8f027 → PC3 CLEAN + PE4 0C/1G → r4 0672082
+incl. the dependency-claim sweep → PC4 CLEAN + PE5 0C/1G → r5 362d118
+regress-proofed → PC5 0C/1G + PE6 0C/1G dual-confirmed → r6 61dc2e0 the
+MACHINE CENSUS of record → PC6 CLEAN + PE7 CLEAN). ZERO mathematical
+findings in all seven rounds; every finding after round 1 was
+completeness bookkeeping in the honesty apparatus, each cured and each
+cure verified; both executables byte-stable throughout; zero false
+dependency claims confirmed FOUR times independently (the last by
+program). SCOPE AS ACCEPTED: the (ITER-LAW-n) recursion for ALL n ≥ 1 on
+the (n+1)-read standard-lift harness class, PROVED with the following
+structure — the integer/positivity/window/cocycle/descent layers and
+REALIZE/WELL-DEF unconditional-generic; L6-(n) at every rung from the
+accepted [IL]† base (+ S4.1 at rungs ≥ 2 per the r38b attribution);
+W-MULT-(n) Case I generic given the IH package; Cases II-1/2/3 generic
+MODULO the displayed open family (RM-m, m ≥ 2) (m = 1 PROVED inside
+[IL3]†), all off DCX-(n) = ∪DCX_m (outer bound proved given the IH
+package; DCX₂ = the [IL3] corner, empty at e₀ ≤ 2). RESIDUALS = the
+displayed open families: (RM-m, m ≥ 2) + (W-MULT-DCX-m) + the fenced
+corners; the consumed [IL]†/[IL3]† packages ride through per the head
+declaration. The counter lines above/below reading "0" are the pre-arc
+recording, superseded by this bracket. Orchestrator adjudication;
+display upgrades ride the r39 fold.]**
+
 **The base of the induction (rung 1), cited per CHECKLIST RULE 8 with the
 package of record PASTED (ledger block "ITER-LAW ACCEPTED — 2026-08-03",
 `lean/notes/BRIDGE_ADJUDICATIONS_2026-07-30.md`):** [IL] =

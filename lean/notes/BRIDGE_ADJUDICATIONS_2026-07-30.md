@@ -8514,3 +8514,34 @@ PC6 CLEAN 0C/0G (3a281e7, content pass; executions sandbox-blocked there,
 supplied by this leg) + PE7 CLEAN — **both round-7 legs CLEAN: the 2-clean
 model-diverse bar for the general-n note is MET on the 61dc2e0 text**; the
 acceptance fold is the orchestrator's.
+
+## [ILN] ACCEPTED — 2026-08-03 (orchestrator adjudication; the 2-clean model-diverse bar met at round 7)
+
+**THE DEFINED-TERM BLOCK (paste or dagger-cite [ILN]† per the 9f9910c convention):**
+[ILN] = the (ITER-LAW-n) theorem note, ACCEPTED 2026-08-03: the uniform
+recursion c_{n+1}(γ,γ′) = z̄^δ·∏ⱼ z_j^{D_j} (S_n = δγ_{n+1}; D_j = (s_j-defect +
+ℓ_{j−1}S_j)/e_{j−1}; S_{j−1} = D_jγ_j + S_j(ℓ_{j−1}′ − ℓ_{j−1}w_{j−1}Φ_{j−1}))
+for ALL n ≥ 1 on the (n+1)-read standard-lift harness class, PROVED with the
+structure: integer/positivity/window/cocycle/descent + REALIZE/WELL-DEF
+unconditional-generic; L6-(n) every rung from [IL]† (+ S4.1 at rungs ≥ 2);
+W-MULT-(n) Case I generic given the IH package; Cases II generic MODULO
+(RM-m, m ≥ 2) (m = 1 proved inside [IL3]†), off DCX-(n) (outer bound proved
+given the IH package). RESIDUALS: (RM-m, m ≥ 2); (W-MULT-DCX-m); the fenced
+corners; the consumed [IL]†/[IL3]† packages ride through. Rung ledger: n = 1
+[IL] ACCEPTED · n = 2 [IL3] ACCEPTED-OFF-DCX · n = 3 MEASURED GREEN (13b026b)
+· n = 4/5 measured (5fe901e diag) — instance evidence only.
+
+ARC OF RECORD: compose 5fe901e → seven rounds → double-clean at 61dc2e0
+(PC6 3a281e7 + PE7 2ece60c; the census question closed BY MACHINE — PE7's
+independent scanner matched PE6's 194/194 exactly). Zero mathematical findings
+across all seven rounds; the entire post-round-1 surface was completeness
+bookkeeping in the honesty apparatus, terminated by the incorporation
+convention + the machine census. PE7's two no-cure nits recorded: the r6
+ledger clause's "both executables byte-identical" compresses PE6's
+reimpl-leg wall-clock digits; the r6 bracket's "each re-derived" compresses
+PE6's mixed in-pass/standing-record basis — both accurate in the incorporated
+authoritative records. CONSEQUENCE: the campaign's remaining mathematical
+distance ON THE MODEL CLASS = (RM-m, m ≥ 2) + (W-MULT-DCX-m) + the fenced
+corners + (TAIL-STAB); the semantic weld (GRT-2 ladder) remains the bridge to
+the OM objects. Display upgrades (L3CONVERGENCE, PROJECT_STATE, ROOT, the
+public map) ride the r39 fold. THE CLOSURE PROGRAM IS OPEN.
