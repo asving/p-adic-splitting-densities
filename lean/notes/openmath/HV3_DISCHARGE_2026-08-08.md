@@ -286,3 +286,19 @@ Fixes: (1) the TeX 906–907 location label corrected (§2.1, not "§2.2 preambl
 exact); (2) the D4 scope remark's e₁ = 1 tally completed — e₁ enters at step 2 (twice),
 step 3 (γ₂ = e₁w₁(Φ₁)+h₁), AND step 4 (the E₁ = E₂ = 1 site); the stated scope itself
 was and is correct. Counter stays 0/2; passes 4+5 decide.
+
+---
+
+## ACCEPTANCE RECORD (orchestrator)
+
+ACCEPTED at REVISION 3: pass 4 (Codex) CLEAN 0C/0G + pass 5 (fresh Fable,
+independence-fenced; HV3_pass5_report.md, b2e5b20) CLEAN 0C/0G — the 2-clean
+model-diverse bar met, counter 2/2. The pass-5 verifier re-fetched the arXiv source
+independently (byte-identical to the pin), ran a fresh 1,655-check two-way falsifier at
+off-roster p ∈ {7,17}, and ran an ADVERSARIAL CONTROL (type-hood deleted → exactly the
+step-5 leg breaks — the condition closure is load-bearing where displayed).
+CONSEQUENCE: (H-v3) is DISCHARGED — with accepted TR3-S1/S2/S3, TR-3'-GEN on
+{all order-2} ∪ {order-3 all-e_j = 1} is UNCONDITIONAL ON PRINT (conditions (i)-(iv) =
+the standing print-attribution baseline + accepted TR3-S1 + (H-CHAIN)+RESCALE + the
+projective dictionary — all standing rows, no bespoke hypothesis). The 47 (H-v3)
+bracket sites discharge at the r32 fold. Ledger entry of even date.

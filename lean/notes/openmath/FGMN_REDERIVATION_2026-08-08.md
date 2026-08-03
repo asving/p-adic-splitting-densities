@@ -287,7 +287,7 @@ script header (predictions sealed pre-run) + the REVISION 1 ADDENDUM (the R2
 branch repair, preregistered in the header BEFORE the revision rerun);
 deterministic seed 20260816; same ROWS × CONFIGS roster and family builders as
 the sealed stage-1 harness (imported, not edited; site structure identical,
-random digits regenerated).  REVISION 1 rerun output [REV3: the block below is an EDITED RENDER of the raw file `fgmn_rederivation_rerun_r1.txt` — numbers identical to the raw record; the raw file is the record] (console saved at
+random digits regenerated).  REVISION 1 rerun output [REV3: the block below is an EDITED RENDER of the raw file `fgmn_rederivation_rerun_r1.txt` — numbers identical to the raw record MODULO ORDER — the raw file prints the sorted set [6,12]; this render lists per-slot [12,6] at slots [0,2]; both carry the same two values and the same UNSAT conclusion [REV4: the order divergence disclosed at the header, per pass-5 gap]; the raw file is the record] (console saved at
 `fgmn_rederivation_rerun_r1.txt`; supersedes the first-pass block, which had the
 R2 false-negative branch):
 
@@ -452,3 +452,22 @@ semantics, and all rescopes survived again. Fixes:
 3. The §S8 slot-order render corrected to [12,6] at slots [0,2] (pass-4 gap 3; §S2's
    computation was and is correct; the UNSAT conclusion unchanged).
 Counter stays 0/2; passes 5+6 decide.
+
+## REVISION 4 (orchestrator-applied, per pass 5 — the verifier's complete DictIII sweep adopted)
+
+Pass 5 (FGMN_pass5_report.md, af88f12; the execution leg again EXACT): CRITICAL 1C/1G —
+REVISION 3's "enumerated exactly" was FALSE. The COMPLETE application perimeter, per the
+verifier's own DictIII grep, now of record:
+- **SideClauseR2** (Locality.lean:735 — the VERBATIM clause-(ii) mirror with the
+  re-keyed σ.w functional at :738) + its tie **sideReads_r2** (:744) — the R2 pair
+  joins the R1 pair in the primed-mirror set.
+- **The (†)/hdag transfer layer**: Locality.lean :322/:381/:398/:658/:794/:828/:847/
+  :1327 — at e ≥ 2 the corrected-scale row is STRICTLY STRONGER than the dagger
+  supplies, so the primed twins need RE-DERIVED readCeil arithmetic, not renames. The
+  application change-set includes those derivations (priced into the Asvin decision).
+- **Window.lean :554/:557** endpoint functionals (in addition to :177/:258/:260/:266/:544).
+- **The R5 tie family / read_locality assembly** — restated against the primed set.
+The REVISION-3 claim "enumerated exactly" is superseded by THIS list, which carries the
+verifier's grep as its provenance (af88f12); any residual site found later joins the
+change-set under the same rule (the perimeter is defined by the grep discipline, not by
+this list's completeness claim). Counter stays 0/2; passes 6+7 decide.

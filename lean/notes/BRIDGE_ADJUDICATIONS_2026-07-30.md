@@ -5987,3 +5987,15 @@ the source-fires verdict, the HV3-THM discharge-pending display, the APPLIED F-A
 re-key, the TWIST-3 law + TR3-S4 charter, the UBX walk verdict, the four-item Asvin
 batch. Reports: VC32_report.md (e3425b1), VC32b_report.md (this commit). VC33 next;
 citation rides r32. In flight: FGMN p3 + HV3 p3 (Fable, the model-diverse deciders).
+
+## HV3 ACCEPTED (passes 4+5 consecutive CLEAN, model-diverse) — the strata trilogy is PRINT-UNCONDITIONAL at order 3
+
+Arc: discharge f90d68a → p1 0C/2G → REV1 (bc34acf) → p2 0C/2G → REV2/errata (e3425b1)
+→ p3 (Fable) 0C/2G + fresh 615/615 falsifier → REV3 (0170d68) → p4 (Codex) CLEAN + p5
+(Fable, b2e5b20) CLEAN with the independent arXiv re-fetch, the 1,655-check falsifier,
+and the adversarial type-hood control. (H-v3) DISCHARGED; the 47 bracket sites ride
+r32. FGMN pass 5: CRITICAL — the REVISION-3 mirror enumeration incomplete
+(SideClauseR2/sideReads_r2 + the (†)-transfer layer needing re-derived readCeil
+arithmetic at e≥2 + Window :554/:557 + the R5 tie family) → REVISION 4 (orchestrator,
+the verifier's complete site list adopted); §S8 raw-order disclosure moved to the
+header. FGMN counter 0/2; pass 6 next.
