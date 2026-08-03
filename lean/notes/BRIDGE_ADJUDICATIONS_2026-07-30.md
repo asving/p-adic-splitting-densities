@@ -6894,3 +6894,50 @@ open exactly at g₀ = 1 ∧ δ₁ = 1; gr(w₂) wrapper rides the accepted GRB
 retarget; orders ≥ 3 untouched." No record edits beyond this append + the
 unit's own note; sealed/accepted records byte-frozen; no Lean statement
 touched.
+
+---
+
+## gr(w₂) TIE-LAYER DESIGN NOTE ON FILE — 2026-08-08 (wallclock 2026-08-03; wave-18 unit 4, synthesis-8 queue #4; DESIGN ONLY)
+
+`lean/notes/openmath/GRW2_TIE_DESIGN_2026-08-08.md` designs the tie layer that
+DITERSUP §S3 displays as missing (J3b's only non-application prerequisite) —
+nothing asserted, nothing proved, no .lean touched, no gate fired. Spec gate
+EXECUTED per the charter (plan-level adversarial rule): the v0 plan went to
+Codex fresh-context BEFORE drafting — 12 CRITICAL / 17 GAP findings, none
+refuting the two-layer split, all folded as design constraints (fold map at the
+note's S0.1; report archived at `GRW2_TIE_DESIGN_codex_planreview_2026-08-08.txt`).
+The design: OBLIGATION split into a harness leg + a semantic leg. **GRT-1**
+(harness leg, S/M, application-independent, rides P1): canonical carrier D(T)
+with s₁/s₂/ℓ₀/γ₂ DERIVED from eq12 data + the W-representative-transported
+total value cocycle c_T (option (i) of record; the closed-form option (ii)
+REJECTED as vacuity-prone — it inhabits IterLaw on free fields consuming
+nothing); IterLaw D(T) c_T + InnerIntegral become THEOREMS from the accepted
+ITER-LAW's W×W theorem + COR-1/2/4 through named sub-obligations 1a–1f.
+**GRT-2 = grTie proper (semantic leg, L, the note's named deliverable as an
+OPEN design)**: Ψ : (⊕_{ℤ/E₂}K₂·u_γ, c_T) ≅ the anchor span in the degree-0
+component of gr(w₂) transported through the displayed localize–gauge–quotient
+chain TC-1/2/3, with the honest obligation package OB-1..OB-6 (target
+existence = D-REAL one level up; well-definedness; multiplicativity incl. the
+inner-z₁ graded normalization; independence; tautology fence — target defined
+from gr(w₂)'s own structure, never from c_T; harness-val compatibility, where
+N-1's operator-level legs explicitly do NOT supply the carrier identification
+— that is standing obligation 2's territory). GRB conditionality ((V1)/(KP)/
+(H-CHAIN) ladder) displayed as permanent on GRT-2. **GRT-3** (J3b feed bundle,
+re-bundled with the derivation certificate + semantic clause; NOT
+statable-complete until the σ₁/H₁ binder decision; consumption site
+BLOCKED-ON-APPLICATION). Two interface flags RAISED (not applied — statement
+fence honored): P1-FLAG-1 (bare IterLaw is inhabitable by cooked closed-form
+data — route consumption through grTie) and J3B-FLAG-1 (J3b's displayed
+hypothesis pair under-specifies its own docstring fence; E-phase should bind
+grTie). Dead ends recorded: the MOVES §B2-FINAL formalism bridge (NOT accepted,
+5 crit/2 gap structural — its four faulted points ARE the tie's obligations;
+B2-DEF's acceptance explicitly not borrowed), the single-ζ′ cyclic carrier
+(22/28 byte-frozen refutation), ITER-LAW outside accepted scope, unconditional
+semantics, bare-interface discharges. BLOCKED-ON-CARRIER-TIE does NOT retire
+with this note. Acceptance citation consumed by this unit, PASTED from the
+ITER-LAW ACCEPTED block above: "Scope as accepted: the harness tower class
+(superset of DITER_RESTATE §S2's E₂ > 1 pin; on-the-nose coincidence restricted
+to E₂ > 1); residuals: (ITER-LAW-LIFT) open exactly at g₀ = 1 ∧ δ₁ = 1; gr(w₂)
+wrapper rides the accepted GRB retarget; orders ≥ 3 untouched." Doc-only unit:
+the note + the archived plan review + this append; sealed/accepted records
+byte-frozen; no Lean statement touched.

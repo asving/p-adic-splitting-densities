@@ -1,0 +1,375 @@
+Reading additional input from stdin...
+OpenAI Codex v0.145.0
+--------
+workdir: /data/users/asvin/math-and-lean/p-adic-splitting-densities
+model: gpt-5.6-sol
+provider: openai
+approval: never
+sandbox: workspace-write [workdir, /tmp, $TMPDIR]
+reasoning effort: none
+reasoning summaries: none
+session id: 019fc7e7-f0a3-7e10-8db0-2edf13c0367f
+--------
+user
+# PLAN under review: the gr(w2) TIE-LAYER DESIGN NOTE (design only; nothing asserted/proved; no Lean committed)
+
+## Background objects (verbatim from the project's accepted records; trust these as given for this review)
+
+1. **DIterCarrier interface (DITERSUP §S3, display-only Lean):**
+
+```lean
+structure DIterCarrier (K2 : Type u) [Field K2] where
+  e0 e1 : Nat
+  he0 : 0 < e0
+  he1 : 0 < e1
+  hE2 : 1 < e0 * e1                 -- composite stage: E2 > 1
+  z1 zbar : K2ˣ                     -- INNER constant / OUTER constant
+  l0 : Nat                          -- normalized Bezout inverse (l0*h0 = 1 mod e0)
+  hl0 : l0 < e0
+  gam2 : Nat                        -- level-2 abscissa-step generator weight e1*w1(Phi1) + h1
+  s1 s2 : Int -> Nat                -- the fibred digit tracks (iterated eq-(12-int) split)
+  hs1 : forall g, s1 g < e0
+  hs2 : forall g, s2 g < e1
+  hper : forall g, s1 (g + e0*e1) = s1 g AND s2 (g + e0*e1) = s2 g
+
+def DIterCarrier.d2 (D) (g g' : Int) : Nat := (D.s2 g + D.s2 g') / D.e1
+def DIterCarrier.InnerIntegral (D) : Prop :=
+  forall g g', (D.e0 : Int) | (s1 g + s1 g' - s1 (g+g') + l0*gam2*d2 g g')
+def IterLaw (D) (c : Int -> Int -> K2ˣ) : Prop :=
+  forall g g', c g g' = zbar ^ (d2 g g') * z1 ^ ((s1 g + s1 g' - s1 (g+g') + l0*gam2*d2 g g') / e0)
+```
+
+Note: the carrier has NO h0/h1 fields; s1/s2/l0/gam2 are free data with the listed constraints. DITERSUP's E-phase flag: "the s1/s2 tracks must be DERIVED from eq12 data, not free fields, when the gr(w2) tie lands."
+
+2. **ITER-LAW, ACCEPTED** (2-clean model-diverse hostile-pass bar). Ledger citation (pasted): "Scope as accepted: the harness tower class (superset of DITER_RESTATE §S2's E2 > 1 pin; on-the-nose coincidence restricted to E2 > 1); residuals: (ITER-LAW-LIFT) open exactly at g0 = 1 AND delta1 = 1; gr(w2) wrapper rides the accepted GRB retarget; orders >= 3 untouched." Harness class = standard-lift 2-read towers over a DVR, e0,e1 >= 1.
+   Content of the accepted note: the harness calculus (eq12 at both levels, eps1(beta) = z1^{l0' s - l0 u}, R1/R2 reads, val(f) in K2, canonical anchors phi_g = pi^{u1} Phi0^{s1} Phi1^{s2} for g in the WINDOW W := {u1(g) >= 0}), and:
+   - L6 ANCHOR-VAL: val(phi_g) = eps1(gamma1(g)) != 0, for g in W.
+   - L7 PAIR-VAL: val(phi_g phi_g') = zbar^{delta2} * eps1(gamma1(g)) * eps1(gamma1(g')), for g,g' in W (Cases I/II; Case II is the only lift-form-consuming step).
+   - THEOREM (ITER-LAW): c(g,g') := val(phi_g phi_g')/val(phi_{g+g'}) = zbar^{delta2} * z1^{(s1(g)+s1(g')-s1(g+g')+l0*gam2*delta2)/e0} for g,g' in W.
+   - COR-1 integrality; COR-2 cocycle identity; COR-3 degenerations (e0=1 => c=zbar^{delta2}, e1=1 => c=z1^{delta1}); COR-4 Z/E2 descent + representative independence (phi_{g+E2} = pi*phi_g exactly; the ratio descends, individual letters do not); COR-5 (W-MULT) recovered on anchor pairs.
+
+3. **The accepted GRB retarget** (order->=2 graded dictionary onto FGMN print; accepted with hostile-pass arc): clause (0) Thm 4.8/Cor 4.9 (Delta = K_i[ybar], polynomial ring on a degree-0 generator; K_{i+1} = K_i[zbar]/(psi)); clause (0') Lemma 4.1 anchors phi_g = x^{s(g)} p^{u(g)} + Lemma CARRY-1 (phi_g phi_g' = phi_{g+g'} ybar^delta in the LOCALIZED gr(w_{i+1})); Lemma D-REAL (the gauged p|->1 anchor system at the last-read layer IS the twisted group algebra K_{i+1}[u]/(u^{e_i} - zbar), abscissa-coset indexed); S6a (W-MULT): R^gr_{g+g'}(ab) = y^{delta} R^gr_g(a) R^gr_{g'}(b). All conditional on the GRB §0 ladder inputs ((V1)_{<=i+1}, (KP)_{<=i-1}, (H-CHAIN)) — displayed conditionality of the retarget. N-1 = the accepted harness-faithfulness legs (harness operators = FGMN print operators, order-2, family ledger scope).
+
+4. **J3b (DITERSUP §S2/S4)**: the general supplier discharge shape
+   `theorem dIterJunctionSupplier'_of_iterLaw (hcarrier : <each order-2 junction fiber carries canonical D2 data D per §S3>) (hIter : <IterLaw holds on each such D>) : DIterJunctionSupplier' p F`.
+   J3b is BLOCKED-ON-APPLICATION (Asvin P0 gate) + BLOCKED-ON-CARRIER-TIE; the tie is its only non-application prerequisite. DITERSUP §S3 also displays: the corpus has NO order-2 graded-carrier layer (R2/w2 at composite stages) — that Lean layer is the deep-wild order>=2 classifier obligation (standing obligation 2), out of scope.
+
+5. **Charter constraint (synthesis pass 8, S3(ii) + S4 #4)**: the tie note may consume ONLY the accepted ITER-LAW (with class + all three residuals displayed at every use) + the accepted GRB retarget. "No new mechanism admitted." The rejected alternative: a single transport lemma bridging the MOVES carry-algebra/(z+c)^a anchor formalism — REFUTED as stated because that formalism's home (MOVES §B2-FINAL) was NOT accepted (pass 8: 5 crit/2 gap, structural).
+
+## The plan to be reviewed
+
+**(a) THE OBLIGATION, stated exactly.** For J3b's hIter to be dischargeable from accepted results, the note must design a two-layer tie:
+- (T-HARNESS) every standard-lift order-2 tower instance T with E2 > 1 yields CANONICAL carrier data D(T) (fields derived from tower data: s1(g) := s(gamma1(g)), s2(g) := s2-of-eq12, l0 := Bezout, gam2 := e1*w1Phi1 + h1, z1/zbar := the frame/read letters) and a TOTAL cocycle c_T : Int -> Int -> K2ˣ agreeing on W x W with the value cocycle val(phi_g phi_g')/val(phi_{g+g'}), with IterLaw D(T) c_T and InnerIntegral D(T) holding.
+- (T-SEM) the identification of (⊕_{Z/E2} K2·u_g, c_T) with the degree-0 anchor subalgebra of the ACTUAL graded ring gr(w2) at the composite stage, gauged p|->1, ybar|->zbar — i.e. "the graded piece of the level-2 weight filtration is the carry algebra's graded piece" — riding the accepted GRB retarget consumer-side (its conditionality displayed).
+
+**(b) Candidates** (each display-shaped, statement-review-flagged, with inputs / price / cheap falsifier):
+
+- **GRT-1 (carrier instantiation; harness-only; price S).** Statement: canonical D(T) as above; c_T defined by W-representatives (each g has g + m*E2 in W; COR-4 gives representative independence); then IterLaw D(T) c_T and InnerIntegral D(T). Inputs: ITER-LAW ACCEPTED only (its L1/COR-1/COR-4 are part of the accepted note). DESIGN DECISION FLAGGED: define c_T by (i) W-representative transport, or (ii) the closed form itself (total by construction, then ITER-LAW = the statement that c_T agrees with the value cocycle on W x W). Option (ii) makes IterLaw trivially true and moves ALL content into the agreement clause — the display must then rename the content clause so nothing is vacuously "discharged". Falsifier design: numeric check on the iterlaw_check rows — sample g,g' OUTSIDE W, compare W-representative-transported value ratios against the closed form; predicted 0 violations (COR-4 content).
+- **GRT-2 (the semantics tie = DIterCarrier.grTie proper; price M).** Statement: for T as above satisfying the GRB ladder inputs, the gauged anchor-class map Psi : u_g |-> [phi_g]_{p|->1, ybar|->zbar} is a K2-algebra isomorphism from the abstract carrier algebra (⊕_{Z/E2} K2·u_g, mult per IterLaw's closed form) onto the degree-0 anchor subalgebra of the localized gr(w2) — the D-REAL presentation one level up, with the single constant zbar replaced by the two-constant law. Inputs: ITER-LAW ACCEPTED + the accepted GRB retarget clauses (0)/(0')/CARRY-1/W-MULT/D-REAL + N-1 legs; conditionality: GRB's §0 ladder displayed. Falsifier design: a symbolic model of gr(w2)'s degree-0 layer built from the Thm 4.8 presentation (K2[ybar]-module on anchors, CARRY-1 as rewrite rule), check Psi-multiplicativity == closed form on sampled pairs, few towers, exact arithmetic.
+- **GRT-3 (the J3b feed; statement S, discharge L, blocked).** def grTie (D, c) : Prop := (c is the gr(w2) anchor cocycle of the fiber) AND IterLaw D c; plus the feeding lemma "every order-2 junction fiber of a ReadsOf' history carries canonical (D, c) with grTie" = GRT-1 + GRT-2 specialized at junction stages + the binder-discipline decision (how D attaches to sigma1/H1 — DITERSUP's flagged E-phase design decision). BLOCKED-ON-APPLICATION (consumption site) + the Lean home blocked on the missing order-2 graded-carrier layer.
+
+Recommendation to be argued in the note: land GRT-1 first (S, only-ITER-LAW input, makes hIter dischargeable at interface level and discharges DITERSUP's eq12-derivation flag); GRT-2 is the actual grTie and the note's named deliverable; GRT-3 fences the consumption shape.
+
+**(c) Consumption map:** GRT-1 -> J3b hIter + P1's s1/s2-derived-from-eq12 flag + JS1 (general identity via accepted COR-2) + JS3 (row-N value tables via the closed form). GRT-2 -> J3b hcarrier semantics; retires BLOCKED-ON-CARRIER-TIE at the MATH level only (Lean level stays blocked on standing obligation 2's graded-carrier layer). GRT-3 -> makes J3b "statable-complete" per DITERSUP §S4.
+
+**(d) Dead ends (what the tie CANNOT be built from):** (1) the MOVES §B2-FINAL anchor-monomial/carry-algebra transport bridge (NOT accepted, 5 crit/2 gap structural: coset-progression typing not invariant; single-anchor-unit normalization false in general; general new-stage digit algebra undefined; aligned quotient/remainder identity unproved) — different formalism, importing unaccepted risk; note honestly that §B2-DEF (accepted 2026-07-26) superseded B2-FINAL for the bottom-up tower induction but is NOT the anchor-monomial DIG-leg transport home S3(ii) refutes. (2) The retired single-zeta' cyclic carrier (NOT-CYCLIC 22/28, byte-frozen). (3) ITER-LAW outside its accepted scope: non-standard lifts at g0=1 AND delta1=1; orders >= 3; E2=1 outside the statement of record. (4) Any route claiming unconditional gr(w2) semantics (skipping GRB's ladder conditionality) or pretending the Lean graded-carrier layer exists.
+
+## Your charge
+
+You are a hostile plan-reviewer with fresh eyes. Diagnose every unclear, wrong, circular, vacuity-prone, or scope-violating point of THIS PLAN as a numbered list; classify each finding CRITICAL (breaks the design's logic or violates the stated charter constraints) vs GAP (needs justification/detail). Specific questions you must rule on, plus anything else you find:
+1. Is the W-to-Z totalization of c_T (GRT-1) derivable from the accepted note's COR-4 alone, or is it a NEW mechanism (charter forbids new mechanisms)? Which of options (i)/(ii) is honest, and what must the display say to avoid a vacuous IterLaw discharge?
+2. Is GRT-2 as stated actually PAIR-VAL/W-MULT "read functorially", or does it smuggle in an unproved identification (e.g. that the harness val IS the graded-ring read at composite stages — is that N-1's content or the missing R2/w2 layer)?
+3. Does the carrier's lack of h0/h1 fields break the canonical instantiation (e.g. is hper satisfiable, is gam2's Nat-ness right, does hE2 exclude legitimate instances)?
+4. Any circularity: does GRT-2 consume anything only provable via the tie itself?
+5. Price sanity (S/M/L) and falsifier-design sanity.
+Do NOT rewrite the plan. Findings only, quoting the offending passage.
+warning: Codex could not find bubblewrap on PATH. Install bubblewrap with your OS package manager. See the sandbox prerequisites: https://developers.openai.com/codex/concepts/sandboxing#prerequisites. Codex will use the bundled bubblewrap in the meantime.
+codex
+1. **CRITICAL — The candidate displays do not satisfy the charter’s “all residuals at every use” rule.**  
+   Offending passages: “**Inputs: ITER-LAW ACCEPTED only**” and “**Inputs: ITER-LAW ACCEPTED + the accepted GRB retarget clauses...**”  
+   Neither proposed statement itself displays the accepted class together with all three residuals: the unresolved lift locus `g0 = 1 AND delta1 = 1`, dependence on the GRB retarget, and exclusion of orders `≥ 3`. Collecting these later under “Dead ends” is not “at every use.” GRT-1/2/3 must each carry the scope visibly.
+
+2. **GAP — COR-4 supports quotient descent, but COR-4 alone does not prove all of the proposed W-to-Z totalization.**  
+   Offending passage: “**c_T defined by W-representatives (each g has g + m*E2 in W; COR-4 gives representative independence); then IterLaw... and InnerIntegral**.”  
+   COR-4, as recorded, gives descent and representative independence of the ratio. That is enough to define a function on `Z/E2`, then pull it back to `Int`; this is ordinary descent, not a new charter-forbidden mechanism. But the display also needs:
+
+   - that every residue class has a representative in `W`;
+   - closure sufficient to form the denominator anchor `φ_(r+r')`;
+   - periodicity of the closed-form right side from `hper`;
+   - ITER-LAW on `W × W` to identify the descended ratio with that closed form;
+   - COR-1 plus periodicity to extend integrality outside `W`.
+
+   Those conclusions are not consequences of COR-4 alone.
+
+3. **GAP — “Each g has g + m·E2 in W” is currently asserted without an accepted citation.**  
+   Offending passage: “**each g has g + m*E2 in W**.”  
+   This normally needs the formula `u1(g+E2)=u1(g)+1` or an equivalent cofinality statement. The equality `φ_(g+E2)=πφ_g` does not, merely as a logical matter, prove that every congruence class meets `W`. If that cofinality is part of COR-4, the display must say so; otherwise it is an additional lemma.
+
+4. **CRITICAL — Option (ii) makes `IterLaw` vacuous as evidence for the tie.**  
+   Offending passage: “**the closed form itself (total by construction... Option (ii) makes IterLaw trivially true)**.”  
+   Because `IterLaw D c` is exactly equality with that closed form, defining `c` by the right-hand side proves `hIter` for any carrier with sufficiently typed fields, without using ITER-LAW, anchors, values, or `gr(w2)`. Thus “GRT-1 makes hIter dischargeable” would expose a weakness of the interface rather than discharge the intended mathematics.
+
+   Option (ii) is honest only if the substantive theorem is prominently named something like “value-cocycle agreement on `W × W` plus COR-4-compatible descent,” and no claim is made that the reflexive `IterLaw` proof itself consumes or validates ITER-LAW. That agreement must remain attached to the datum eventually fed to J3b; otherwise it can be discarded before consumption.
+
+5. **GAP — Option (i) is the more honest construction, but its proof obligations are understated.**  
+   Offending passage: “**W-representative transport... then IterLaw D(T) c_T**.”  
+   This option makes `IterLaw` an actual theorem about a semantically defined `c_T`. It is preferable. It is not a new mechanism if it is explicitly just COR-4 descent. Nevertheless, well-definedness must cover independent changes of both representatives and the induced change of the sum representative, not merely simultaneous translation of the pair.
+
+6. **GAP — “Total cocycle” requires more than defining a total two-variable function.**  
+   Offending passage: “**a TOTAL cocycle c_T : Int -> Int -> K2ˣ**.”  
+   The display must distinguish “total cochain” from “normalized 2-cocycle.” COR-2 supplies associativity/cocycle identity on the accepted domain, but the note must extend it through the quotient construction. A unital `K2`-algebra also needs normalization, or an explicit proof identifying the unit if `c_T(0,g)` is not definitionally `1`.
+
+7. **GAP — The canonical carrier construction has several unproved field obligations.**  
+   Offending passage: “**canonical D(T) as above**.”  
+   In particular, the plan has not cited accepted results proving:
+
+   - `s1(g) < e0` and `s2(g) < e1`;
+   - `s1(g+E2)=s1(g)` and `s2(g+E2)=s2(g)`;
+   - existence and uniqueness of the normalized Bézout inverse;
+   - `gam2 : Nat`, rather than merely an integer or rational weight expression;
+   - that `z1,zbar` are units in precisely the same `K2`.
+
+   These may be routine consequences of eq12 and the framed tower, but they are part of GRT-1, not consequences of ITER-LAW’s displayed equation.
+
+8. **GAP — The absence of `h0/h1` fields does not itself break instantiation, but it weakens the meaning of “canonical.”**  
+   Offending passage: “**fields derived from tower data... l0 := Bezout, gam2 := e1*w1Phi1 + h1**.”  
+   A constructor may compute `l0` and `gam2` from tower data and store only the results, so no `h0/h1` carrier fields are required. However, after construction the carrier contains no certificate tying those stored values to `h0/h1`. “Canonical” must therefore mean canonical relative to the chosen framed standard-lift tower, with the derivation proved at construction time. It cannot mean intrinsically recoverable from an arbitrary `DIterCarrier`.
+
+9. **GAP — `hper` is not supplied merely by COR-4.**  
+   Offending passage: “**discharges DITERSUP’s eq12-derivation flag**.”  
+   COR-4 concerns anchors and the ratio, whereas `hper` is an equality of digit tracks. The note must derive it directly from the two eq12 decompositions. Inferring digit periodicity from anchor descent would reverse the intended dependency and risk circularity.
+
+10. **GAP — `gam2`’s natural-number type needs an explicit normalization lemma.**  
+    Offending passage: “**gam2 := e1*w1Phi1 + h1**.”  
+    Weight values are not automatically natural numbers in a valuation-theoretic presentation. The accepted records supplied here do not state the required integrality and nonnegativity. If `w1Phi1` and `h1` are already normalized naturals in the harness, cite that exact typing; otherwise the proposed constructor does not type-check even at design level.
+
+11. **GAP — `hE2` is not a defect, but the plan must not describe the resulting carrier as covering the whole harness class.**  
+    Offending passage: “**every standard-lift order-2 tower instance T with E2 > 1**.”  
+    With that restriction, `hE2` is satisfied and legitimate `E2=1` towers are intentionally excluded. The cases `e0=1<e1` and `e1=1<e0` remain allowed. This is consistent, but every downstream “every order-2 junction fiber” statement must repeat `E2>1`; otherwise GRT-3 silently broadens the scope.
+
+12. **CRITICAL — GRT-2 changes between the actual, localized, and gauged graded rings without defining the intervening operations.**  
+    Offending passages: “**ACTUAL graded ring gr(w2)**” and “**onto the degree-0 anchor subalgebra of the localized gr(w2)**.”  
+    These are not the same target. CARRY-1 is recorded only in the localized graded ring. Moreover, `φ_(g+E2)=πφ_g` prevents a `Z/E2`-indexed anchor map in the actual ring unless the gauge really identifies multiplication by `π` with `1`. The note needs an exact target object and maps:
+    actual gr → localization → gauge/base change/quotient. Without descent or injectivity statements, the asserted isomorphism to a subalgebra of the actual ring is unsupported.
+
+13. **CRITICAL — “`p ↦ 1, ybar ↦ zbar`” is not yet a mathematically defined ring operation.**  
+    Offending passage: “**gauged p|->1, ybar|->zbar**.”  
+    Sending a positive-degree homogeneous parameter to `1` generally does not define a graded-ring homomorphism. Likewise, evaluating the polynomial generator `ybar` at an algebraic residue letter `zbar` introduces a kernel and is a quotient/base-change construction, not a harmless relabeling. The accepted D-REAL “gauged anchor system” may authorize a normalization of anchors, but the plan must cite its precise construction rather than write these substitutions as if they were literal evaluation maps.
+
+14. **CRITICAL — PAIR-VAL and W-MULT do not by themselves imply the GRT-2 algebra isomorphism.**  
+    Offending passage: “**the semantics tie... is a K2-algebra isomorphism**.”  
+    Those results control products/read values. An algebra isomorphism additionally needs:
+
+    - a well-defined map independent of `W` representatives;
+    - compatibility of the harness `val` with the actual graded-ring read;
+    - linear independence of the anchor classes;
+    - spanning of the claimed target;
+    - injectivity/faithfulness of the relevant read;
+    - unitality and scalar compatibility.
+
+    Thus GRT-2 is not merely PAIR-VAL/W-MULT “read functorially” unless an accepted theorem supplies this entire faithfulness/basis package.
+
+15. **CRITICAL — N-1, as quoted, is insufficient to bridge harness values to the composite graded carrier.**  
+    Offending passage: “**+ N-1 legs**.”  
+    The accepted description says only that harness operators equal FGMN print operators at order 2. That may establish a commuting computation/read diagram. It does not, as stated, construct the missing `R2/w2` carrier, prove injectivity of the read, or identify the image as the proposed anchor subalgebra. At the mathematical level D-REAL may supply some faithfulness; at the Lean level the missing order-2 graded-carrier layer plainly prevents expressing this identification. The plan must separate those two facts instead of treating “N-1 legs” as a blanket bridge.
+
+16. **CRITICAL — “D-REAL one level up, with the single constant replaced by the two-constant law” is an unaccepted extrapolation.**  
+    Offending passage: “**the D-REAL presentation one level up, with the single constant zbar replaced by the two-constant law**.”  
+    The accepted D-REAL clause is a one-layer presentation `K_{i+1}[u]/(u^{e_i}-zbar)`. No accepted clause quoted here says it can be iterated by replacing its defining constant with an arbitrary two-level cocycle. That replacement is exactly the new semantic theorem GRT-2 needs to prove. Treating it as an input either assumes the tie or introduces a new mechanism forbidden by the charter.
+
+17. **CRITICAL — The source of the inner `z1` factor in the graded multiplication is not established.**  
+    Offending passage: “**CARRY-1 as rewrite rule... check Psi-multiplicativity == closed form**.”  
+    CARRY-1 contributes the displayed `ybar^δ` carry. After `ybar ↦ zbar`, that directly explains only the outer `zbar` factor. The inner power of `z1` comes from the relationship between anchor normalizations and the harness `eps1` reads. The plan needs a proved normalization identity inside the target graded algebra, not merely equality of scalar value ratios.
+
+18. **CRITICAL — The proposed GRT-2 target risks being defined so that surjectivity and multiplicativity are tautological.**  
+    Offending passage: “**onto the degree-0 anchor subalgebra**.”  
+    If “anchor subalgebra” means the subalgebra generated by the images of `φ_g`, surjectivity is true by definition. If its multiplication is then modeled using CARRY-1 plus the desired substitutions, multiplicativity is also built in. The nontrivial claims are injectivity and identification with an independently defined graded piece. Those must be stated independently or GRT-2 becomes another vacuous discharge.
+
+19. **GAP — The phrase “degree-0 anchor subalgebra” is insufficiently typed.**  
+    Offending passage: “**(⊕_{Z/E2} K2·u_g, c_T) ... degree-0 anchor subalgebra**.”  
+    The source is `Z/E2`-graded or at least residue-coset indexed, while the target is called a single degree-zero subalgebra. The note must specify which grading is zero, how the abscissa-coset indexing survives the gauge, and why all mapped anchor classes lie in that degree. Otherwise source and target gradings may not match.
+
+20. **CRITICAL — GRT-3’s proposed `grTie` is weaker than GRT-2 and does not encode the claimed semantic tie.**  
+    Offending passage: “**def grTie (D, c) : Prop := (c is the gr(w2) anchor cocycle of the fiber) AND IterLaw D c**.”  
+    This omits canonical derivation of `D`, `InnerIntegral`, the quotient/gauge construction, and the algebra isomorphism asserted by GRT-2. The phrase “is the anchor cocycle” could conceal all of those obligations, but then it is not a usable definition. GRT-3 therefore does not presently fence the consumption shape.
+
+21. **CRITICAL — The consumption map assigns the J3b hypotheses inconsistently with their stated types.**  
+    Offending passages: “**GRT-1 -> J3b hIter**” and “**GRT-2 -> J3b hcarrier semantics**.”  
+    J3b’s `hcarrier` is stated as existence of canonical D2 carrier data; that is supplied by GRT-1, not GRT-2. J3b’s `hIter` asks only for `IterLaw`; under option (ii) it ignores semantics entirely. Unless J3b is strengthened or its carrier hypothesis really includes an unstated semantic tie, GRT-2 is not consumed by the displayed J3b theorem at all.
+
+22. **CRITICAL — There is a circularity risk if the target multiplication is introduced through `c_T`.**  
+    Offending passage: “**abstract carrier algebra... mult per IterLaw’s closed form**” followed by “**symbolic model... CARRY-1 as rewrite rule**.”  
+    To prove the tie, the graded-ring target must be defined independently from `c_T`; then its existing multiplication is computed and compared with `c_T`. If the “anchor subalgebra” or symbolic model is presented using the desired closed form, the purported isomorphism assumes the conclusion. No accepted-result circularity is forced by GRB itself, but the current construction does not fence this off.
+
+23. **CRITICAL — The GRT-2 falsifier is circular and cannot test the central semantic claim.**  
+    Offending passage: “**a symbolic model... CARRY-1 as rewrite rule), check Psi-multiplicativity == closed form**.”  
+    A model constructed from the very rewrite rules and substitutions used to define `Psi` can only test arithmetic implementation. It cannot falsify the missing facts: whether harness `val` is the actual composite graded read, whether localization/gauging is legitimate, whether the anchors are independent, or whether the map is injective.
+
+24. **GAP — The GRT-1 numeric falsifier is weaker than advertised.**  
+    Offending passage: “**sample g,g' OUTSIDE W, compare W-representative-transported value ratios against the closed form**.”  
+    Since anchors and the accepted ratio are only available on `W`, the “outside W value ratio” is already defined by representative transport. The test mainly checks periodic arithmetic and implementation of representatives. It does not test COR-4 itself unless the underlying model computes both distinct `W` representatives independently before quotienting.
+
+25. **GAP — The falsifiers omit the accepted exceptional boundaries.**  
+    Offending passage: “**few towers, exact arithmetic**.”  
+    Tests should deliberately include `e0=1`, `e1=1`, representatives near the `W` boundary, independent shifts of both arguments, and the unresolved `g0=1 ∧ δ1=1` lift configuration marked as outside scope. Random or generic “few towers” can easily miss every structural failure.
+
+26. **GAP — GRT-1 is plausibly small only after several prerequisite lemmas are explicitly accepted.**  
+    Offending passage: “**GRT-1... price S**.”  
+    The descent itself is small. Canonical eq12 track construction, periodicity, Bézout typing, `gam2 : Nat`, total integrality, and normalized cocycle extension make the aggregate closer to M unless those are already named lemmas in ITER-LAW.
+
+27. **CRITICAL — GRT-2 is not price M on the supplied record.**  
+    Offending passage: “**GRT-2... price M**.”  
+    It includes the missing composite read-to-graded identification, a localization/gauge construction, a two-layer extension of D-REAL, and injectivity/spanning. Those are precisely the deep semantic obligations the records warn are absent at the Lean level. At minimum it is L mathematically; formally it is blocked until the graded-carrier layer exists.
+
+28. **GAP — GRT-3 cannot be “statable-complete” until the binder attachment is decided.**  
+    Offending passage: “**+ the binder-discipline decision... flagged E-phase design decision**” and “**makes J3b ‘statable-complete’**.”  
+    A still-open decision about how `D` attaches to `sigma1/H1` changes the theorem’s binders and dependence structure. GRT-3 can document the intended consumption shape, but it is not statable-complete until that decision is fixed.
+
+29. **CRITICAL — The claimed retirement of `BLOCKED-ON-CARRIER-TIE` is premature.**  
+    Offending passage: “**retires BLOCKED-ON-CARRIER-TIE at the MATH level only**.”  
+    That retirement is justified only after the independent composite graded target, gauge, read compatibility, two-constant multiplication, and faithfulness/isomorphism claims are proved from the accepted GRB clauses. As currently written, GRT-2 names those missing steps rather than deriving them.
+tokens used
+15,001
+1. **CRITICAL — The candidate displays do not satisfy the charter’s “all residuals at every use” rule.**  
+   Offending passages: “**Inputs: ITER-LAW ACCEPTED only**” and “**Inputs: ITER-LAW ACCEPTED + the accepted GRB retarget clauses...**”  
+   Neither proposed statement itself displays the accepted class together with all three residuals: the unresolved lift locus `g0 = 1 AND delta1 = 1`, dependence on the GRB retarget, and exclusion of orders `≥ 3`. Collecting these later under “Dead ends” is not “at every use.” GRT-1/2/3 must each carry the scope visibly.
+
+2. **GAP — COR-4 supports quotient descent, but COR-4 alone does not prove all of the proposed W-to-Z totalization.**  
+   Offending passage: “**c_T defined by W-representatives (each g has g + m*E2 in W; COR-4 gives representative independence); then IterLaw... and InnerIntegral**.”  
+   COR-4, as recorded, gives descent and representative independence of the ratio. That is enough to define a function on `Z/E2`, then pull it back to `Int`; this is ordinary descent, not a new charter-forbidden mechanism. But the display also needs:
+
+   - that every residue class has a representative in `W`;
+   - closure sufficient to form the denominator anchor `φ_(r+r')`;
+   - periodicity of the closed-form right side from `hper`;
+   - ITER-LAW on `W × W` to identify the descended ratio with that closed form;
+   - COR-1 plus periodicity to extend integrality outside `W`.
+
+   Those conclusions are not consequences of COR-4 alone.
+
+3. **GAP — “Each g has g + m·E2 in W” is currently asserted without an accepted citation.**  
+   Offending passage: “**each g has g + m*E2 in W**.”  
+   This normally needs the formula `u1(g+E2)=u1(g)+1` or an equivalent cofinality statement. The equality `φ_(g+E2)=πφ_g` does not, merely as a logical matter, prove that every congruence class meets `W`. If that cofinality is part of COR-4, the display must say so; otherwise it is an additional lemma.
+
+4. **CRITICAL — Option (ii) makes `IterLaw` vacuous as evidence for the tie.**  
+   Offending passage: “**the closed form itself (total by construction... Option (ii) makes IterLaw trivially true)**.”  
+   Because `IterLaw D c` is exactly equality with that closed form, defining `c` by the right-hand side proves `hIter` for any carrier with sufficiently typed fields, without using ITER-LAW, anchors, values, or `gr(w2)`. Thus “GRT-1 makes hIter dischargeable” would expose a weakness of the interface rather than discharge the intended mathematics.
+
+   Option (ii) is honest only if the substantive theorem is prominently named something like “value-cocycle agreement on `W × W` plus COR-4-compatible descent,” and no claim is made that the reflexive `IterLaw` proof itself consumes or validates ITER-LAW. That agreement must remain attached to the datum eventually fed to J3b; otherwise it can be discarded before consumption.
+
+5. **GAP — Option (i) is the more honest construction, but its proof obligations are understated.**  
+   Offending passage: “**W-representative transport... then IterLaw D(T) c_T**.”  
+   This option makes `IterLaw` an actual theorem about a semantically defined `c_T`. It is preferable. It is not a new mechanism if it is explicitly just COR-4 descent. Nevertheless, well-definedness must cover independent changes of both representatives and the induced change of the sum representative, not merely simultaneous translation of the pair.
+
+6. **GAP — “Total cocycle” requires more than defining a total two-variable function.**  
+   Offending passage: “**a TOTAL cocycle c_T : Int -> Int -> K2ˣ**.”  
+   The display must distinguish “total cochain” from “normalized 2-cocycle.” COR-2 supplies associativity/cocycle identity on the accepted domain, but the note must extend it through the quotient construction. A unital `K2`-algebra also needs normalization, or an explicit proof identifying the unit if `c_T(0,g)` is not definitionally `1`.
+
+7. **GAP — The canonical carrier construction has several unproved field obligations.**  
+   Offending passage: “**canonical D(T) as above**.”  
+   In particular, the plan has not cited accepted results proving:
+
+   - `s1(g) < e0` and `s2(g) < e1`;
+   - `s1(g+E2)=s1(g)` and `s2(g+E2)=s2(g)`;
+   - existence and uniqueness of the normalized Bézout inverse;
+   - `gam2 : Nat`, rather than merely an integer or rational weight expression;
+   - that `z1,zbar` are units in precisely the same `K2`.
+
+   These may be routine consequences of eq12 and the framed tower, but they are part of GRT-1, not consequences of ITER-LAW’s displayed equation.
+
+8. **GAP — The absence of `h0/h1` fields does not itself break instantiation, but it weakens the meaning of “canonical.”**  
+   Offending passage: “**fields derived from tower data... l0 := Bezout, gam2 := e1*w1Phi1 + h1**.”  
+   A constructor may compute `l0` and `gam2` from tower data and store only the results, so no `h0/h1` carrier fields are required. However, after construction the carrier contains no certificate tying those stored values to `h0/h1`. “Canonical” must therefore mean canonical relative to the chosen framed standard-lift tower, with the derivation proved at construction time. It cannot mean intrinsically recoverable from an arbitrary `DIterCarrier`.
+
+9. **GAP — `hper` is not supplied merely by COR-4.**  
+   Offending passage: “**discharges DITERSUP’s eq12-derivation flag**.”  
+   COR-4 concerns anchors and the ratio, whereas `hper` is an equality of digit tracks. The note must derive it directly from the two eq12 decompositions. Inferring digit periodicity from anchor descent would reverse the intended dependency and risk circularity.
+
+10. **GAP — `gam2`’s natural-number type needs an explicit normalization lemma.**  
+    Offending passage: “**gam2 := e1*w1Phi1 + h1**.”  
+    Weight values are not automatically natural numbers in a valuation-theoretic presentation. The accepted records supplied here do not state the required integrality and nonnegativity. If `w1Phi1` and `h1` are already normalized naturals in the harness, cite that exact typing; otherwise the proposed constructor does not type-check even at design level.
+
+11. **GAP — `hE2` is not a defect, but the plan must not describe the resulting carrier as covering the whole harness class.**  
+    Offending passage: “**every standard-lift order-2 tower instance T with E2 > 1**.”  
+    With that restriction, `hE2` is satisfied and legitimate `E2=1` towers are intentionally excluded. The cases `e0=1<e1` and `e1=1<e0` remain allowed. This is consistent, but every downstream “every order-2 junction fiber” statement must repeat `E2>1`; otherwise GRT-3 silently broadens the scope.
+
+12. **CRITICAL — GRT-2 changes between the actual, localized, and gauged graded rings without defining the intervening operations.**  
+    Offending passages: “**ACTUAL graded ring gr(w2)**” and “**onto the degree-0 anchor subalgebra of the localized gr(w2)**.”  
+    These are not the same target. CARRY-1 is recorded only in the localized graded ring. Moreover, `φ_(g+E2)=πφ_g` prevents a `Z/E2`-indexed anchor map in the actual ring unless the gauge really identifies multiplication by `π` with `1`. The note needs an exact target object and maps:
+    actual gr → localization → gauge/base change/quotient. Without descent or injectivity statements, the asserted isomorphism to a subalgebra of the actual ring is unsupported.
+
+13. **CRITICAL — “`p ↦ 1, ybar ↦ zbar`” is not yet a mathematically defined ring operation.**  
+    Offending passage: “**gauged p|->1, ybar|->zbar**.”  
+    Sending a positive-degree homogeneous parameter to `1` generally does not define a graded-ring homomorphism. Likewise, evaluating the polynomial generator `ybar` at an algebraic residue letter `zbar` introduces a kernel and is a quotient/base-change construction, not a harmless relabeling. The accepted D-REAL “gauged anchor system” may authorize a normalization of anchors, but the plan must cite its precise construction rather than write these substitutions as if they were literal evaluation maps.
+
+14. **CRITICAL — PAIR-VAL and W-MULT do not by themselves imply the GRT-2 algebra isomorphism.**  
+    Offending passage: “**the semantics tie... is a K2-algebra isomorphism**.”  
+    Those results control products/read values. An algebra isomorphism additionally needs:
+
+    - a well-defined map independent of `W` representatives;
+    - compatibility of the harness `val` with the actual graded-ring read;
+    - linear independence of the anchor classes;
+    - spanning of the claimed target;
+    - injectivity/faithfulness of the relevant read;
+    - unitality and scalar compatibility.
+
+    Thus GRT-2 is not merely PAIR-VAL/W-MULT “read functorially” unless an accepted theorem supplies this entire faithfulness/basis package.
+
+15. **CRITICAL — N-1, as quoted, is insufficient to bridge harness values to the composite graded carrier.**  
+    Offending passage: “**+ N-1 legs**.”  
+    The accepted description says only that harness operators equal FGMN print operators at order 2. That may establish a commuting computation/read diagram. It does not, as stated, construct the missing `R2/w2` carrier, prove injectivity of the read, or identify the image as the proposed anchor subalgebra. At the mathematical level D-REAL may supply some faithfulness; at the Lean level the missing order-2 graded-carrier layer plainly prevents expressing this identification. The plan must separate those two facts instead of treating “N-1 legs” as a blanket bridge.
+
+16. **CRITICAL — “D-REAL one level up, with the single constant replaced by the two-constant law” is an unaccepted extrapolation.**  
+    Offending passage: “**the D-REAL presentation one level up, with the single constant zbar replaced by the two-constant law**.”  
+    The accepted D-REAL clause is a one-layer presentation `K_{i+1}[u]/(u^{e_i}-zbar)`. No accepted clause quoted here says it can be iterated by replacing its defining constant with an arbitrary two-level cocycle. That replacement is exactly the new semantic theorem GRT-2 needs to prove. Treating it as an input either assumes the tie or introduces a new mechanism forbidden by the charter.
+
+17. **CRITICAL — The source of the inner `z1` factor in the graded multiplication is not established.**  
+    Offending passage: “**CARRY-1 as rewrite rule... check Psi-multiplicativity == closed form**.”  
+    CARRY-1 contributes the displayed `ybar^δ` carry. After `ybar ↦ zbar`, that directly explains only the outer `zbar` factor. The inner power of `z1` comes from the relationship between anchor normalizations and the harness `eps1` reads. The plan needs a proved normalization identity inside the target graded algebra, not merely equality of scalar value ratios.
+
+18. **CRITICAL — The proposed GRT-2 target risks being defined so that surjectivity and multiplicativity are tautological.**  
+    Offending passage: “**onto the degree-0 anchor subalgebra**.”  
+    If “anchor subalgebra” means the subalgebra generated by the images of `φ_g`, surjectivity is true by definition. If its multiplication is then modeled using CARRY-1 plus the desired substitutions, multiplicativity is also built in. The nontrivial claims are injectivity and identification with an independently defined graded piece. Those must be stated independently or GRT-2 becomes another vacuous discharge.
+
+19. **GAP — The phrase “degree-0 anchor subalgebra” is insufficiently typed.**  
+    Offending passage: “**(⊕_{Z/E2} K2·u_g, c_T) ... degree-0 anchor subalgebra**.”  
+    The source is `Z/E2`-graded or at least residue-coset indexed, while the target is called a single degree-zero subalgebra. The note must specify which grading is zero, how the abscissa-coset indexing survives the gauge, and why all mapped anchor classes lie in that degree. Otherwise source and target gradings may not match.
+
+20. **CRITICAL — GRT-3’s proposed `grTie` is weaker than GRT-2 and does not encode the claimed semantic tie.**  
+    Offending passage: “**def grTie (D, c) : Prop := (c is the gr(w2) anchor cocycle of the fiber) AND IterLaw D c**.”  
+    This omits canonical derivation of `D`, `InnerIntegral`, the quotient/gauge construction, and the algebra isomorphism asserted by GRT-2. The phrase “is the anchor cocycle” could conceal all of those obligations, but then it is not a usable definition. GRT-3 therefore does not presently fence the consumption shape.
+
+21. **CRITICAL — The consumption map assigns the J3b hypotheses inconsistently with their stated types.**  
+    Offending passages: “**GRT-1 -> J3b hIter**” and “**GRT-2 -> J3b hcarrier semantics**.”  
+    J3b’s `hcarrier` is stated as existence of canonical D2 carrier data; that is supplied by GRT-1, not GRT-2. J3b’s `hIter` asks only for `IterLaw`; under option (ii) it ignores semantics entirely. Unless J3b is strengthened or its carrier hypothesis really includes an unstated semantic tie, GRT-2 is not consumed by the displayed J3b theorem at all.
+
+22. **CRITICAL — There is a circularity risk if the target multiplication is introduced through `c_T`.**  
+    Offending passage: “**abstract carrier algebra... mult per IterLaw’s closed form**” followed by “**symbolic model... CARRY-1 as rewrite rule**.”  
+    To prove the tie, the graded-ring target must be defined independently from `c_T`; then its existing multiplication is computed and compared with `c_T`. If the “anchor subalgebra” or symbolic model is presented using the desired closed form, the purported isomorphism assumes the conclusion. No accepted-result circularity is forced by GRB itself, but the current construction does not fence this off.
+
+23. **CRITICAL — The GRT-2 falsifier is circular and cannot test the central semantic claim.**  
+    Offending passage: “**a symbolic model... CARRY-1 as rewrite rule), check Psi-multiplicativity == closed form**.”  
+    A model constructed from the very rewrite rules and substitutions used to define `Psi` can only test arithmetic implementation. It cannot falsify the missing facts: whether harness `val` is the actual composite graded read, whether localization/gauging is legitimate, whether the anchors are independent, or whether the map is injective.
+
+24. **GAP — The GRT-1 numeric falsifier is weaker than advertised.**  
+    Offending passage: “**sample g,g' OUTSIDE W, compare W-representative-transported value ratios against the closed form**.”  
+    Since anchors and the accepted ratio are only available on `W`, the “outside W value ratio” is already defined by representative transport. The test mainly checks periodic arithmetic and implementation of representatives. It does not test COR-4 itself unless the underlying model computes both distinct `W` representatives independently before quotienting.
+
+25. **GAP — The falsifiers omit the accepted exceptional boundaries.**  
+    Offending passage: “**few towers, exact arithmetic**.”  
+    Tests should deliberately include `e0=1`, `e1=1`, representatives near the `W` boundary, independent shifts of both arguments, and the unresolved `g0=1 ∧ δ1=1` lift configuration marked as outside scope. Random or generic “few towers” can easily miss every structural failure.
+
+26. **GAP — GRT-1 is plausibly small only after several prerequisite lemmas are explicitly accepted.**  
+    Offending passage: “**GRT-1... price S**.”  
+    The descent itself is small. Canonical eq12 track construction, periodicity, Bézout typing, `gam2 : Nat`, total integrality, and normalized cocycle extension make the aggregate closer to M unless those are already named lemmas in ITER-LAW.
+
+27. **CRITICAL — GRT-2 is not price M on the supplied record.**  
+    Offending passage: “**GRT-2... price M**.”  
+    It includes the missing composite read-to-graded identification, a localization/gauge construction, a two-layer extension of D-REAL, and injectivity/spanning. Those are precisely the deep semantic obligations the records warn are absent at the Lean level. At minimum it is L mathematically; formally it is blocked until the graded-carrier layer exists.
+
+28. **GAP — GRT-3 cannot be “statable-complete” until the binder attachment is decided.**  
+    Offending passage: “**+ the binder-discipline decision... flagged E-phase design decision**” and “**makes J3b ‘statable-complete’**.”  
+    A still-open decision about how `D` attaches to `sigma1/H1` changes the theorem’s binders and dependence structure. GRT-3 can document the intended consumption shape, but it is not statable-complete until that decision is fixed.
+
+29. **CRITICAL — The claimed retirement of `BLOCKED-ON-CARRIER-TIE` is premature.**  
+    Offending passage: “**retires BLOCKED-ON-CARRIER-TIE at the MATH level only**.”  
+    That retirement is justified only after the independent composite graded target, gauge, read compatibility, two-constant multiplication, and faithfulness/isomorphism claims are proved from the accepted GRB clauses. As currently written, GRT-2 names those missing steps rather than deriving them.
