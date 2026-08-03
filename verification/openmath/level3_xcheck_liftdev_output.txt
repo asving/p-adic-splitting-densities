@@ -1,0 +1,40 @@
+Zp,p=2,C g1= 1 deviations (factor, d3,d2,d1,D2): 
+    ('zbar^0*z2^0*z1^2', 0, 1, 0, 1) x 9
+    ('zbar^0*z2^0*z1^2', 0, 1, 1, 1) x 3
+    ('zbar^0*z2^0*z1^2', 1, 1, 0, 19) x 3
+    ('zbar^0*z2^0*z1^2', 1, 1, 1, 19) x 1
+Zp,p=3,C g1= 1 deviations (factor, d3,d2,d1,D2): 
+    ('zbar^0*z2^0*z1^4', 0, 1, 0, 1) x 9
+    ('zbar^0*z2^0*z1^4', 0, 1, 1, 1) x 3
+    ('zbar^0*z2^0*z1^4', 1, 1, 0, 19) x 3
+    ('zbar^0*z2^0*z1^4', 1, 1, 1, 19) x 1
+Zp,p=3,D g1= 1 deviations (factor, d3,d2,d1,D2): 
+    ('zbar^0*z2^0*z1^1', 0, 1, 0, 1) x 27
+    ('zbar^0*z2^0*z1^1', 0, 1, 1, 1) x 9
+    ('zbar^0*z2^0*z1^1', 1, 1, 0, 15) x 9
+    ('zbar^0*z2^0*z1^1', 1, 1, 1, 15) x 3
+Zp,p=3,K g1= 1 deviations (factor, d3,d2,d1,D2): 
+    ('zbar^0*z2^0*z1^1', 0, 1, 0, 1) x 9
+    ('zbar^0*z2^0*z1^1', 0, 1, 1, 1) x 3
+    ('zbar^0*z2^0*z1^1', 1, 1, 0, 32) x 3
+    ('zbar^0*z2^0*z1^1', 1, 1, 1, 32) x 1
+Fpt,p=2,C g1= 1 deviations (factor, d3,d2,d1,D2): 
+    ('zbar^0*z2^0*z1^2', 0, 1, 0, 1) x 9
+    ('zbar^0*z2^0*z1^2', 0, 1, 1, 1) x 3
+    ('zbar^0*z2^0*z1^2', 1, 1, 0, 19) x 3
+    ('zbar^0*z2^0*z1^2', 1, 1, 1, 19) x 1
+Fpt,p=3,C g1= 1 deviations (factor, d3,d2,d1,D2): 
+    ('zbar^0*z2^0*z1^4', 0, 1, 0, 1) x 9
+    ('zbar^0*z2^0*z1^4', 0, 1, 1, 1) x 3
+    ('zbar^0*z2^0*z1^4', 1, 1, 0, 19) x 3
+    ('zbar^0*z2^0*z1^4', 1, 1, 1, 19) x 1
+Fpt,p=3,D g1= 1 deviations (factor, d3,d2,d1,D2): 
+    ('zbar^0*z2^0*z1^1', 0, 1, 0, 1) x 27
+    ('zbar^0*z2^0*z1^1', 0, 1, 1, 1) x 9
+    ('zbar^0*z2^0*z1^1', 1, 1, 0, 15) x 9
+    ('zbar^0*z2^0*z1^1', 1, 1, 1, 15) x 3
+Fpt,p=3,K g1= 1 deviations (factor, d3,d2,d1,D2): 
+    ('zbar^0*z2^0*z1^1', 0, 1, 0, 1) x 9
+    ('zbar^0*z2^0*z1^1', 0, 1, 1, 1) x 3
+    ('zbar^0*z2^0*z1^1', 1, 1, 0, 32) x 3
+    ('zbar^0*z2^0*z1^1', 1, 1, 1, 32) x 1

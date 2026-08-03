@@ -1,0 +1,56 @@
+level3_xcheck_compare.py -- matched-instance cross-implementation comparison
+Zp,p=2,A         E3= 8 W1=[48..55] Phi1== Phi2== | divergences: plain=0 transplant=0 anchors=0
+Zp,p=2,B         E3=12 W1=[144..155] Phi1== Phi2== | divergences: plain=0 transplant=0 anchors=0
+Zp,p=2,C         E3= 8 W1=[72..79] Phi1== Phi2!= | divergences: plain=16 transplant=0 anchors=0
+Zp,p=2,D         E3=12 W1=[96..107] Phi1== Phi2== | divergences: plain=0 transplant=0 anchors=0
+Zp,p=2,E         E3= 8 W1=[72..79] Phi1== Phi2== | divergences: plain=0 transplant=0 anchors=0
+Zp,p=2,F         E3=12 W1=[108..119] Phi1== Phi2== | divergences: plain=0 transplant=0 anchors=0
+Zp,p=2,G         E3= 8 W1=[48..55] Phi1== Phi2== | divergences: plain=0 transplant=0 anchors=0
+Zp,p=2,K         E3= 8 W1=[128..135] Phi1== Phi2== | divergences: plain=0 transplant=0 anchors=0
+Zp,p=2,L         E3=16 W1=[192..207] Phi1== Phi2== | divergences: plain=0 transplant=0 anchors=0
+Zp,p=2,CV        E3= 4 W1=[36..39] Phi1== Phi2== | divergences: plain=0 transplant=0 anchors=0
+Zp,p=2,CW        E3= 4 W1=[24..27] Phi1== Phi2== | divergences: plain=0 transplant=0 anchors=0
+Zp,p=2,CX        E3= 4 W1=[16..19] Phi1== Phi2== | divergences: plain=0 transplant=0 anchors=0
+Zp,p=3,A         E3= 8 W1=[48..55] Phi1== Phi2== | divergences: plain=0 transplant=0 anchors=0
+Zp,p=3,B         E3=12 W1=[144..155] Phi1== Phi2== | divergences: plain=0 transplant=0 anchors=0
+Zp,p=3,C         E3= 8 W1=[72..79] Phi1== Phi2!= | divergences: plain=16 transplant=0 anchors=0
+Zp,p=3,D         E3=12 W1=[96..107] Phi1== Phi2!= | divergences: plain=48 transplant=0 anchors=0
+Zp,p=3,E         E3= 8 W1=[72..79] Phi1== Phi2!= | divergences: plain=0 transplant=0 anchors=0
+Zp,p=3,F         E3=12 W1=[108..119] Phi1== Phi2== | divergences: plain=0 transplant=0 anchors=0
+Zp,p=3,G         E3= 8 W1=[48..55] Phi1== Phi2== | divergences: plain=0 transplant=0 anchors=0
+Zp,p=3,K         E3= 8 W1=[128..135] Phi1== Phi2!= | divergences: plain=16 transplant=0 anchors=0
+Zp,p=3,L         E3=16 W1=[192..207] Phi1== Phi2== | divergences: plain=0 transplant=0 anchors=0
+Zp,p=3,CV        E3= 4 W1=[36..39] Phi1== Phi2== | divergences: plain=0 transplant=0 anchors=0
+Zp,p=3,CW        E3= 4 W1=[24..27] Phi1== Phi2!= | divergences: plain=0 transplant=0 anchors=0
+Zp,p=3,CX        E3= 4 W1=[16..19] Phi1== Phi2== | divergences: plain=0 transplant=0 anchors=0
+Fpt,p=2,A        E3= 8 W1=[48..55] Phi1== Phi2== | divergences: plain=0 transplant=0 anchors=0
+Fpt,p=2,B        E3=12 W1=[144..155] Phi1== Phi2== | divergences: plain=0 transplant=0 anchors=0
+Fpt,p=2,C        E3= 8 W1=[72..79] Phi1== Phi2!= | divergences: plain=16 transplant=0 anchors=0
+Fpt,p=2,D        E3=12 W1=[96..107] Phi1== Phi2== | divergences: plain=0 transplant=0 anchors=0
+Fpt,p=2,E        E3= 8 W1=[72..79] Phi1== Phi2== | divergences: plain=0 transplant=0 anchors=0
+Fpt,p=2,F        E3=12 W1=[108..119] Phi1== Phi2== | divergences: plain=0 transplant=0 anchors=0
+Fpt,p=2,G        E3= 8 W1=[48..55] Phi1== Phi2== | divergences: plain=0 transplant=0 anchors=0
+Fpt,p=2,K        E3= 8 W1=[128..135] Phi1== Phi2== | divergences: plain=0 transplant=0 anchors=0
+Fpt,p=2,L        E3=16 W1=[192..207] Phi1== Phi2== | divergences: plain=0 transplant=0 anchors=0
+Fpt,p=2,CV       E3= 4 W1=[36..39] Phi1== Phi2== | divergences: plain=0 transplant=0 anchors=0
+Fpt,p=2,CW       E3= 4 W1=[24..27] Phi1== Phi2== | divergences: plain=0 transplant=0 anchors=0
+Fpt,p=2,CX       E3= 4 W1=[16..19] Phi1== Phi2== | divergences: plain=0 transplant=0 anchors=0
+Fpt,p=3,A        E3= 8 W1=[48..55] Phi1== Phi2== | divergences: plain=0 transplant=0 anchors=0
+Fpt,p=3,B        E3=12 W1=[144..155] Phi1== Phi2== | divergences: plain=0 transplant=0 anchors=0
+Fpt,p=3,C        E3= 8 W1=[72..79] Phi1== Phi2!= | divergences: plain=16 transplant=0 anchors=0
+Fpt,p=3,D        E3=12 W1=[96..107] Phi1== Phi2!= | divergences: plain=48 transplant=0 anchors=0
+Fpt,p=3,E        E3= 8 W1=[72..79] Phi1== Phi2!= | divergences: plain=0 transplant=0 anchors=0
+Fpt,p=3,F        E3=12 W1=[108..119] Phi1== Phi2== | divergences: plain=0 transplant=0 anchors=0
+Fpt,p=3,G        E3= 8 W1=[48..55] Phi1== Phi2== | divergences: plain=0 transplant=0 anchors=0
+Fpt,p=3,K        E3= 8 W1=[128..135] Phi1== Phi2!= | divergences: plain=16 transplant=0 anchors=0
+Fpt,p=3,L        E3=16 W1=[192..207] Phi1== Phi2== | divergences: plain=0 transplant=0 anchors=0
+Fpt,p=3,CV       E3= 4 W1=[36..39] Phi1== Phi2== | divergences: plain=0 transplant=0 anchors=0
+Fpt,p=3,CW       E3= 4 W1=[24..27] Phi1== Phi2!= | divergences: plain=0 transplant=0 anchors=0
+Fpt,p=3,CX       E3= 4 W1=[16..19] Phi1== Phi2== | divergences: plain=0 transplant=0 anchors=0
+
+Phi1 construction identical: 48/48 towers; Phi2 identical (plain vs their corrected): 36/48
+LEG-A anchors : 416 matched, 0 divergent
+LEG-P plain   : 4224 matched pairs, 192 divergent
+LEG-T transplant: 4224 matched pairs, 0 divergent
+FIRST DIVERGING TUPLE: ('LEG-P', 'Zp,p=2,C', 74, 74, (((0, 1),),), ((((1,), (1,)),),))
+VERDICT: HARNESS-CONFIRMED (both implementations measure the same cocycle)

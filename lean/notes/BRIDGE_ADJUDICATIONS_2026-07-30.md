@@ -7175,3 +7175,27 @@ machine-checks (ITER-LAW) or touches the gr(w₂) tie. JS3 NOT this unit (its tw
 statement sites land design-owed, consumed by nothing, review-owed against the
 22-table JSON record). Full record
 `lean/notes/openmath/DITERCARRIER_STMT_2026-08-08.md`.
+
+**M5 CROSS-IMPLEMENTATION CONTROL — 2026-08-08 (wallclock 2026-08-03): the
+level-3 harness is NOT suspect (HARNESS-CONFIRMED) and the ITER-LAW-r "RED"
+is definitively the m4-teeth artifact.** Post-seal diagnostic, non-prereg;
+record `lean/notes/openmath/L3XCHECK_2026-08-08.md`. An independent from-the-
+notes-alone harness (`verification/openmath/level3_xcheck.py`; ITERLAW S0/S5 +
+DITER_RESTATE §S2 consumed, sealed runner unopened until after F0 + measurement
++ own conjecture were on disk): F0 fidelity 117/117 exhaustive 2-level pairs
+GREEN (accepted law = ground truth, both rings, p ∈ {2,3}, Case-II/degeneration
+rows); 7 fresh tiny 3-level towers (E₃ ∈ {4,6,8}), 248/248 exhaustive pairs —
+the sealed (ITER-LAW-3) GREEN by exact field value, and M5's PRE-derived
+composed-shift conjecture (realized-shift form) is the SAME law (sealed
+Σ == realized β₁″−β₁−β₁′ on every pair). Matched-instance legs on the sealed
+roster (48 d₀ = 1 towers, sealed ψ's + sealed Φ₀/Φ₁/Φ₂ transplanted so only the
+read calculus differs): 4,224/4,224 cocycle pairs + 416/416 anchor values EXACT
+— both implementations measure the same cocycle. RED autopsy concurs with the
+recovery adjudication: JSON violations EMPTY, exit-1 traces solely to mutation
+m4 0/992 (g₂ = 1 ⇒ z̄ = 1 teeth failure; cured by the sealed M4A/M4B
+supplement). NEW small-case fact (CONJECTURE, census-consistent 192/192):
+plain vs canonical-ε₁-corrected Φ₂ deviate by c₃^plain = c₃^canon·ε₁(γ₂)^{δ₂}
+exactly on the g₁ = 1 middle-cascade stratum (g₁ ≥ 2 invariant on all probed
+pairs) — (LIFT-DEV-3), the (ITER-LAW-LIFT) residual made measurable at level 3;
+feeds the wave-19 compose charter. Seal 911431c byte-untouched; no proof
+claims; orders ≥ 4 untouched.
