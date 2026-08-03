@@ -471,3 +471,24 @@ The REVISION-3 claim "enumerated exactly" is superseded by THIS list, which carr
 verifier's grep as its provenance (af88f12); any residual site found later joins the
 change-set under the same rule (the perimeter is defined by the grep discipline, not by
 this list's completeness claim). Counter stays 0/2; passes 6+7 decide.
+
+## REVISION 5 (orchestrator-applied, per pass 6)
+
+Pass 6 (FGMN_pass6_report.md, c7df512; execution leg again fully independent, the
+REVISION-4 list reconciled EXACTLY on every named site): GAPS-ONLY 0C/2G. Fixes:
+1. **The perimeter DEFINITION upgraded (pass-6 gap 1)**: the grep-discipline rule is
+   replaced by the REFERENCE-CLOSURE rule — the application perimeter is the identifier
+   -reference closure of `SideReads` (grep -rn 'SideReads' over ALL of lean/LeanUrat/,
+   not DictIII alone) UNION the σ.w/readCeil/read_locality semantic ring, with the term
+   set now PINNED on record: {SideReads, SideClause, sideReads_, σ.w, readCeil,
+   read_locality, lastRead_of_readsOf}. A term-list can miss what its terms cannot see;
+   a reference closure cannot miss a by-name binder. Under the upgraded rule the two
+   pass-6 sites join the perimeter:
+   - `lastRead_of_readsOf_snoc` (Window.lean:506–521 — binds `SideReads` by name).
+   - CU1.lean's read_locality/readCeil III-U6 consumer ring (the in-place variant
+     silently diverges through it; the new-definition route restates it against the
+     primed set).
+2. The REVISION-4 "defined by the grep discipline" sentence is superseded by the
+   reference-closure rule above (its provenance: pass-6's finding that the discipline's
+   terms were not pinned and could not self-repair).
+Counter stays 0/2; passes 7+8 decide.
