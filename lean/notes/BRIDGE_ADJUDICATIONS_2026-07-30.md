@@ -5555,3 +5555,25 @@ in full — preregistration e05e660 + verdict 90e1ecb + log
 `verification/logs/admreal_rev1_20260803T014602Z.log` cited verbatim.
 Verified perimeter byte-identical otherwise; counter stays 0/2; pass 3
 next.
+
+**TR3-S3 REVISION 1 (2026-08-08, this unit).** Pass 1 verdict: GAPS-ONLY —
+0 critical / 4 gaps (`TR3S3_pass1_report.md`); the finite identity, both
+lemma routes, the σ₂ construction, and all count reconciliations verified
+clean. All four gaps fixed in `TR3S3_2026-08-08.md`: (1) every consumer
+display for TR-3′-GEN at order 3 now reads proved/served CONDITIONAL ON
+(H-v3) — the identity itself stands; (H-v3) carries its attribution to the
+GMN order-3 operator (table rows, S6.1 heading/blockquote/consumer clause,
+S6.2 now (H-v3)+(KP_i)+[T], S6.3); (2) the generic-index source-
+transcription gap displayed as the named OPEN ATTRIBUTION PIN (PIN-GEN-i)
+(S1) — owed non-textual leg = fresh `pdftotext -layout` re-extraction of
+the FGMN PDF at Defs 3.15/3.16, displayed as OWED, not attempted (no
+provenance-pinned PDF in the repo's reference set); (3) falsifier: the RI
+l0 + level-1 eq-(12) split legs added to `tr3s3_check.py` (preregistered
+REVISION 1 ADDENDUM header block BEFORE the rerun); rerun ALL GREEN exit 0
+— RI 0/21,741 (was 0/14,797; +6,944 = the nonzero level-1 digit reads),
+TOTAL 30,813 (+6,944, same delta); diff vs run 1 deviates ONLY at timing/
+RI count/TOTAL, exactly the preregistered perimeter (output
+`tr3s3_check_run2_output.txt`, note S8.3); (4) seal commits cited in S8.2:
+preregistration b4a142b + first-run record 482150b + the rerun output
+filename. Verified algebraic perimeter untouched; counter stays 0/2; pass
+2 next.

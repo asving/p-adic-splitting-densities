@@ -108,6 +108,23 @@ METERS (teeth; all must fire):
      ordhi: ord histogram contains ord >= 1           — pred yes
 EXIT: 0 iff every row at its predicted count and all meters fire.
 Output: tee to tr3s3_check_output.txt; JSON tr3s3_check_results.json.
+
+============ REVISION 1 ADDENDUM (preregistered BEFORE the rerun) ============
+Pass-1 gap 3 (TR3S3_pass1_report.md): the RI preregistration above claims
+"l0 == l1 == l2 == 0" and eq-(12) splits at every level, but the run-1
+implementation checked only the level-2 split + l1 (R2w_at), the level-3
+split + l2 (fresh_R3), and the eps1/eps2 values — never l0, never the
+level-1 eq-(12) split.  ADDED at REVISION 1 (sealed in this header BEFORE
+the rerun): inside R2w_at's digit loop, for every nonzero digit, the
+level-1 eq-(12) split of the slot weight beta_m at (e0, h0) — PREDICTED
+s == 0 — and the l0 == 0 check (normalized bezout(e0, h0); e0 = 1 on the
+stratum).  One new RI sample per nonzero level-1 digit read; NO randomness
+consumed by the addition.  PREDICTED: 0 new violations; vs the run-1
+record (tr3s3_check_output.txt; pre-run seal commit b4a142b, first-run
+record commit 482150b) ONLY the RI sample count and the TOTAL may change
+(both strictly up by the same amount), every other row/meter/histogram
+value byte-identical mod timings.  ANY other deviation = STOP and report,
+do not accept.  Rerun output: tr3s3_check_run2_output.txt.
 """
 import random, sys, os, time, json
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
@@ -147,6 +164,12 @@ def R2w_at(T, A, beta):
         bm = beta - m*T.gamma2
         if not a:
             out.append(K1["zero"]); continue
+        # REVISION 1 leg (preregistered in the header): level-1 eq-(12)
+        # split of the slot weight + the l0 check.
+        s1v, _u1v = eq12(bm, T.e0, T.h0)
+        note("RI")
+        if s1v != 0 or T.l0 != 0:
+            viol("RI", T.tag, f"level-1 kernel: s({bm})={s1v}, l0={T.l0}")
         e1v = T.eps1(bm)
         note("RI")
         if e1v != K1["one"]:
