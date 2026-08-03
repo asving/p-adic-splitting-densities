@@ -119,7 +119,7 @@ valuation of r-th order", TeX 977; the object (H-v3) was waiting on):
     Note that $v_r$ depends only on the reduced type $\ty^0$.
     \end{definition}
 
-  Supporting notation, TeX 906–907 (§2.2 preamble): S_i(P) is the
+  Supporting notation, TeX 906–907 (§2.1, immediately before the §2.2 heading at TeX 977 [REV3: the label said "§2.2 preamble", pass-3 gap 1 — lines/content exact]): S_i(P) is the
   λ_i-component of N_i^-(P); s_i(P) its initial abscissa. The λ-component
   operator S_λ is Def(sla), TeX 361–367: L_λ(N) = the first-contact line of
   slope λ shifted up from below, S_λ(N) := N ∩ L_λ(N).
@@ -192,7 +192,7 @@ sides read the SAME development).
    by step 5 applied at φ₃ ↔ Φ₂. So u_i = w₂(A_i) + i·w₂(Φ₂). ∎
 
 Scope remark (honesty, not consumed): the derivation used e₀ = 1 (step 3's
-accepted input) and e₁ = 1 (step 2 twice: dropping e₂^{GMN} and |λ₂| = h₁),
+accepted input) and e₁ = 1 (steps 2 (twice), 3 (the γ₂ substitution), and 4 (the E₁=E₂=1 site) [REV3]: dropping e₂^{GMN} and |λ₂| = h₁),
 but NOT e₂ = 1 — v₃ reads only level-≤ 2 data. (HV3-THM) is therefore stated
 at e₀ = e₁ = 1 with e₂ free; TR3-S3 consumes it strictly inside that scope.
 No claim is made at e₀ ≥ 2 or e₁ ≥ 2 (there even the r = 2 tie v₂ = w₁ is
@@ -275,3 +275,14 @@ REVISION 1 fixes, and the scope discipline all CLEAN. Fixes: (1) the D2 subsecti
 §2.3 → §2.2 (the pinned paper's own numbering; TeX lines unchanged); (2) D7's stale
 "(i)–(iii)" cross-reference → "(i)–(iv)". Counter 0/2; passes 3+4 decide (pass 3 routed
 to Fable for the model-diverse leg).
+
+## REVISION 3 (orchestrator-applied, per pass 3 — Fable)
+
+Pass 3 (HV3_pass3_report.md, 94415bf): GAPS-ONLY 0C/2G — the pin, all TeX cites, the
+derivation, the four-condition closure, and the D3 specialization all verified
+independently, PLUS a fresh two-way v₃ falsifier (615/615 at off-roster primes 5/11/13,
+incl. 90 step-5 ordinate checks) — recorded here as the note's third external leg.
+Fixes: (1) the TeX 906–907 location label corrected (§2.1, not "§2.2 preamble"; lines
+exact); (2) the D4 scope remark's e₁ = 1 tally completed — e₁ enters at step 2 (twice),
+step 3 (γ₂ = e₁w₁(Φ₁)+h₁), AND step 4 (the E₁ = E₂ = 1 site); the stated scope itself
+was and is correct. Counter stays 0/2; passes 4+5 decide.

@@ -402,3 +402,33 @@ Nothing else changed: the §S3 proposal text, THE ROW-A SOURCE VERDICT definitio
 advance it); pass 2 verifies this note + the repaired script from scratch.
 
 — FGMN re-derivation REVISION 1, 2026-08-08 (wallclock 2026-08-03).
+
+## REVISION 2 (orchestrator-applied, per pass 3 — Fable, with the independent execution leg)
+
+Pass 3 (FGMN_pass3_report.md, 07c39b4): GAPS-ONLY 0C/4G — the execution leg was EXACT
+(battery re-run byte-identical incl. timings; JSON byte-identical; both sha256 pins
+verified; the layout extraction independently REGENERATED from the pinned PDF,
+byte-identical; Def 3.15's prime col-52 arithmetic recomputed; the §S3 OLD block
+verbatim-unique in HC2/Defs.lean and the diff appliable). Fixes:
+1. **BLAST RADIUS COMPLETED (pass-3 gap 1)**: the proposal's application perimeter must
+   include the DictIII MIRROR LAYER — `SideClauseR1`
+   (Scaffold/DictIII/Locality.lean:272, a VERBATIM copy of clause (i)) with its
+   definitional tie `sideReads_r1` (:280), plus the Window.lean/Locality.lean σ.w
+   restatements — these BREAK (or silently diverge) if the re-key is applied to
+   SideReads alone. Any application diff must carry the mirror sites in the same
+   change-set.
+2. **APPLICATION-MODE ACCOUNT CORRECTED (pass-3 gap 2)**: the prior "statements
+   unedited, meanings unchanged" claim is IMPOSSIBLE under an in-place re-key —
+   JuncForge's refutation theorems bind `SideReads` BY NAME, so an in-place edit
+   re-keys what those theorems assert. The proposal's RECOMMENDED application mode is
+   therefore a NEW definition (`SideReads'` at the parent-valuation keying) with the
+   glue route re-stated against it, leaving `SideReads` and the JuncForge theorems
+   byte-frozen as the historical record of the old transcription; the in-place variant
+   is displayed as the alternative WITH its re-keying consequence stated. The choice is
+   part of the Asvin-gated decision.
+3. Token count corrected: the diff is THREE tokens (Defs.lean 285/287/292), not four
+   (pass-3 gap 3); every "four-token" occurrence in this note and the ledger record is
+   superseded by this line.
+4. §S8's "re-quoted" block relabeled as an EDITED RENDER of the output (numbers
+   identical to the raw file; the raw file is the record) (pass-3 gap 4).
+Counter stays 0/2; passes 4+5 decide.
