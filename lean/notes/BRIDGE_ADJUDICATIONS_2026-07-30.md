@@ -6070,3 +6070,27 @@ DEMONSTRATED on record: 15 .lean files reference the intermediaries but never
 SideReads directly — a single grep returns none of them. The fixpoint computation
 itself joins §S3's application-time obligation (b). Counter stays 0/2; passes 8+9
 decide. Commit of even date = the unit of record.
+
+## r32-ERRATUM APPLIED (VC33 0C/2G, both gaps cured on the REVISION-31 text) — VC33b OWED
+
+Per the archived `lean/notes/openmath/VC33_report.md` (VC33 on REVISION 31: 0
+critical / 2 gaps, NOT-CONFIRMED; all substantive checks PASSED incl. the
+discharge-sweep reconciliation arithmetic, the 55-pattern census structure, the
+NINE-row roster, and the provenance ordering). Pre-confirmation errata on
+`docs/ROOT_ASSEMBLY_2026-08-02.md`; no other claim altered; verified perimeters
+byte-identical. GAP 1 (the p6-concurrency disclosure lived in commit/provenance and
+ledger material but NOT in the operative §0/§37 status displays): dated
+[r32-ERRATUM, VC33 gap 1] brackets added at the §0 REVISION-31 paragraph's FGMN
+status-sync and housekeeping lines and at §37's flag paragraph, r32-3 row, r32-4
+row, and close — each disclosing: FGMN pass 6 (c7df512, 0C/2G GAPS-ONLY) landed
+CONCURRENTLY with the r32 fold's assembly (c7df512 precedes ef062ed), NOT folded,
+rides the next fold; the displays stand (counter 0/2, proposal ASVIN-GATED). GAP 2
+(VC33's read-only sandbox could not launch — missing bubblewrap — so the charge's
+grep-based checks were not independently executed): AUDIT-INPUT ARTIFACT, not a
+text defect — the disposition recorded in the dated [r32-ERRATUM, VC33 gap 2]
+bracket at the §37 VC33 charge, NO content edited under it (the displayed counts
+stand as authored); the execution duty transfers to VC33b (working checkout or
+pinned raw grep transcripts; hostile verification requires execution, not
+acceptance). **VC33b (narrow) OWED on the corrected passages** — it decides the
+REVISION-31 confirmation and the anchor move. Files: ROOT + this ledger ONLY.
+Commit of even date = the unit of record (r32-ERRATUM; scoped add).

@@ -1116,9 +1116,14 @@ application change-set is PRICED UP accordingly in the Asvin-batch
 display (no longer four tokens + mirrors: the complete grep-disciplined
 DictIII perimeter); §S8's raw-order disclosure moved to the header;
 counter 0/2, passes 6+7 decide — **the proposal stays ASVIN-GATED,
-nothing applied**. NO roster change (**NINE rows** recounted); no clause
+nothing applied** [r32-ERRATUM, VC33 gap 1: FGMN pass 6 (c7df512,
+0C/2G GAPS-ONLY) landed CONCURRENTLY with this fold's assembly —
+c7df512 precedes this revision's commit in the authoritative
+chronology — and is NOT folded here; it rides the next fold. The
+displays stand: counter 0/2, the proposal ASVIN-GATED]. NO roster change (**NINE rows** recounted); no clause
 attribution moved. Housekeeping: **SYNTHESIS PASS 8 NOT YET OWED** (the
-FGMN arc still executing); wave-15 candidates displayed (**TR3-S4 the
+FGMN arc still executing [r32-ERRATUM, VC33 gap 1: pass 6 landed
+concurrently, rides the next fold]); wave-15 candidates displayed (**TR3-S4 the
 lead** — the compose unit on the measured TWIST-3 law; the held pass-7
 items — the ITER-LAW attempt, the (H7) restatement forge, the
 `DIterJunctionSupplier` statement, the banked-sorry attempt); the Asvin
@@ -7266,7 +7271,8 @@ mirror set incl. the `SideClauseR2`/`sideReads_r2` pair + the
 (†)-transfer twins with RE-DERIVED readCeil arithmetic at e ≥ 2 +
 `Window.lean` :554/:557 + the R5 tie family; RECOMMENDED mode = the NEW
 definition `SideReads'` (JuncForge theorems byte-frozen); PROPOSAL ONLY,
-counter 0/2, passes 6+7 decide — the adjudication is Asvin's
+counter 0/2, passes 6+7 decide [r32-ERRATUM, VC33 gap 1: pass 6
+(c7df512) landed concurrently, rides the next fold] — the adjudication is Asvin's
 statement-change decision point; (4) the Route-B **RB-DELTA decision,
 DECISION-READY** (the (UB-X) walk = condition (5)'s substance; the
 note's §6 is the one-paragraph decision).
@@ -7277,8 +7283,8 @@ note's §6 is the one-paragraph decision).
 |---|---|---|---|---|
 | r32-1 | ledger e32ebef "VC32b CONFIRMED" (VC32 0C/3G e3425b1 → r31-ERRATUM e3425b1 → VC32b 0C/0G e32ebef) | ACCEPTANCE RE-ANCHOR — the citation-text update rides this revision per the VC22 precedent; the VC32 arc lineage displayed at every operative site | every operative anchor site updated: the §0 REVISION-30 paragraph header superseded and the NEW REVISION-31 standing paragraph states the anchor (REVISION 30/VC32+VC32b) with the full arc lineage; the §3.2 end-to-end row gains the VC32+VC32b sync tail (RE-ANCHORS on the errata-corrected REVISION 30; VC33 owed on THIS text); the §6 r31 bracket's anchor sentence carries a dated supersession bracket and the new r32 bracket is current. Historical records (§§7–36) untouched beyond the named dated brackets | §0, §3.2 end-to-end row, §6 |
 | r32-2 | ledger fa2180e "HV3 ACCEPTED" (note `HV3_DISCHARGE_2026-08-08.md` ACCEPTANCE RECORD: passes 4 Codex + 5 Fable b2e5b20 consecutive CLEAN 0C/0G, model-diverse; the pass-5 independent arXiv re-fetch byte-identical to the pin; the fresh 1,655-check two-way falsifier at off-roster p ∈ {7,17}; the ADVERSARIAL CONTROL — type-hood deleted → exactly the step-5 leg breaks) | ACCEPTANCE + DISCHARGE SWEEP EXECUTED — **(H-v3) is DISCHARGED**; **HV3-THM** stands (v₃ = w₂ at e₀ = e₁ = 1, e₂ FREE) on its FOUR standing conditions (the pinned-print attribution baseline; accepted TR3-S1; the standing (H-CHAIN)+RESCALE consumptions; the standing projective-dictionary consumptions — all standing rows, no bespoke hypothesis); **TR-3′-GEN is PRINT-UNCONDITIONAL at {all order-2} ∪ {order-3 all-e_j = 1}** — nothing becomes machine-checked or attribution-free that wasn't | the additive dated bracket "DISCHARGED at HV3 acceptance fa2180e — the scope is UNCONDITIONAL ON PRINT per HV3-THM's four standing conditions" applied at every OPERATIVE conditionality bracket: `TR3S3_2026-08-08.md` 11 discharge sites (the S0 hypothesis display; the three summary-table rows; the S1 sketch bullet; the S6.1 blockquote bracket + the S6.1 consumer clause; S6.2; S6.3; the S7 (H-v3) scope item; S9 item 1) + 2 PIN-GEN-i pointer sites (S7 transcription bullet, S9 item 6) + the new POST-ACCEPTANCE BRACKET (counters NOT reset); `GRB_ORDER2_2026-08-05.md` 2 discharge sites (the second bracket's CONDITIONALITY display; the Open-Lemma status line) + the new THIRD POST-ACCEPTANCE BRACKET (counters NOT reset); THIS DOCUMENT: the (H1) r30 bracket consequence display, the (H1) r31 bracket item (2) superseded-in-place, the §6 r30/r31 bracket tags, the §0/§3.2/§6-r32/§37 standing displays. **PIN-GEN-i stays DISPLAYED** (its owed leg discharged SEPARATELY at 303b11e — the FGMN §S7 rider; cited at every touched PIN-GEN-i site). The e₁ ≥ 2 (TWIST-3)/TR3-S4 regime is NOT reached (HV3-THM requires e₁ = 1) — the r32 NOTE at the (H1) TR3-S4 display says exactly that; the hypothesis displays there STAND. Reconciliation vs the D7 census below | §0, §3.1 (H1) row, §6, TR3S3 note, GRB note |
-| r32-3 | ledger fa2180e (FGMN REVISION 4) + af88f12 (pass 5) | STATUS SYNC — nothing accepted, nothing applied; the proposal stays ASVIN-GATED | the (H1) r31 bracket item (1) gains the r32 STATUS SYNC bracket: the arc p1 0C/4G → REV1 (236d85c) → p3 Fable 0C/4G (EXACT execution leg) → REV2 (0170d68: THREE tokens of record; the NEW-definition mode RECOMMENDED) → p4 Codex 0C/3G → REV3 (f64307e) → **p5 Fable CRITICAL** (af88f12: the REVISION-3 mirror enumeration INCOMPLETE) → **REVISION 4** (fa2180e: the verifier's complete DictIII site list ADOPTED — the perimeter defined by the GREP DISCIPLINE); the application change-set PRICED UP in the Asvin-batch displays (§0, the §6 r32 bracket, the flag paragraph above); counter 0/2, passes 6+7 decide | §0, §3.1 (H1) row, §6, the flag paragraph |
-| r32-4 | housekeeping (the /goal cadence) + cadence (the VC22 precedent on the re-anchored text) | TRACKING DISPLAY + CADENCE — VC33 OWED; never self-confirm | **SYNTHESIS PASS 8 is NOT YET OWED** (the FGMN arc still executing). **WAVE-15 CANDIDATES displayed** (nothing dispatched here): **TR3-S4 the lead** (the compose unit on the measured TWIST-3 law; verifier-owned implementation required at acceptance) + the held pass-7 items (the ITER-LAW attempt, the (H7) restatement forge, the `DIterJunctionSupplier` statement, the banked-sorry attempt). The Asvin batch RESTATED IN FULL (the flag paragraph above). The sorry census of record stays the r27 display (36 repo-wide / B2D 0 — this fold is doc-only). REVISION 31 is a text change on the newly re-anchored text: the confirming pass **VC33 is OWED on the REVISION-31 wording** (charge below; model diversity per the tree §4 bar); until it lands, the acceptance citation points at the REVISION-30 text; VC33 is a fresh-context pass, not this unit | §0, §3.2 end-to-end row, §6, this record |
+| r32-3 | ledger fa2180e (FGMN REVISION 4) + af88f12 (pass 5) | STATUS SYNC — nothing accepted, nothing applied; the proposal stays ASVIN-GATED | the (H1) r31 bracket item (1) gains the r32 STATUS SYNC bracket: the arc p1 0C/4G → REV1 (236d85c) → p3 Fable 0C/4G (EXACT execution leg) → REV2 (0170d68: THREE tokens of record; the NEW-definition mode RECOMMENDED) → p4 Codex 0C/3G → REV3 (f64307e) → **p5 Fable CRITICAL** (af88f12: the REVISION-3 mirror enumeration INCOMPLETE) → **REVISION 4** (fa2180e: the verifier's complete DictIII site list ADOPTED — the perimeter defined by the GREP DISCIPLINE); the application change-set PRICED UP in the Asvin-batch displays (§0, the §6 r32 bracket, the flag paragraph above); counter 0/2, passes 6+7 decide [r32-ERRATUM, VC33 gap 1: FGMN pass 6 (c7df512, 0C/2G GAPS-ONLY) landed CONCURRENTLY with this fold's assembly and is NOT folded — it rides the next fold; the counter display stands] | §0, §3.1 (H1) row, §6, the flag paragraph |
+| r32-4 | housekeeping (the /goal cadence) + cadence (the VC22 precedent on the re-anchored text) | TRACKING DISPLAY + CADENCE — VC33 OWED; never self-confirm | **SYNTHESIS PASS 8 is NOT YET OWED** (the FGMN arc still executing [r32-ERRATUM, VC33 gap 1: pass 6 landed concurrently, rides the next fold]). **WAVE-15 CANDIDATES displayed** (nothing dispatched here): **TR3-S4 the lead** (the compose unit on the measured TWIST-3 law; verifier-owned implementation required at acceptance) + the held pass-7 items (the ITER-LAW attempt, the (H7) restatement forge, the `DIterJunctionSupplier` statement, the banked-sorry attempt). The Asvin batch RESTATED IN FULL (the flag paragraph above). The sorry census of record stays the r27 display (36 repo-wide / B2D 0 — this fold is doc-only). REVISION 31 is a text change on the newly re-anchored text: the confirming pass **VC33 is OWED on the REVISION-31 wording** (charge below; model diversity per the tree §4 bar); until it lands, the acceptance citation points at the REVISION-30 text; VC33 is a fresh-context pass, not this unit | §0, §3.2 end-to-end row, §6, this record |
 
 **THE DISCHARGE-SITE RECONCILIATION (counted, not copied — the D7
 census vs this unit's own sweep).** The HV3 note's D7 census, taken at
@@ -7430,6 +7436,18 @@ unit with the stated delta-reasons. VC33 should receive the in-repo
 file listing + commit resolutions + the COMPLETE provenance appendix
 with VERBATIM slices per the saved checklist (memory:
 vc-audit-appendix-checklist — validated at VC28, VC29, and VC32).
+[r32-ERRATUM, VC33 gap 2: AUDIT-INPUT ARTIFACT, not a text defect —
+VC33's read-only repository sandbox failed to launch (missing
+bubblewrap), so the charge's grep-based checks (the 12/3/6 core-string
+count, the 55-pattern census, the NINE-row recount, the line-anchored
+falsifier, the verbatim file-to-appendix comparison) were NOT
+independently executed; VC33 verified the displayed arithmetic as
+internally consistent only. NO content is edited under this bracket —
+the displayed counts stand as authored. DISPOSITION: the execution
+duty transfers to the narrow confirming pass (VC33b), which must
+either run in an environment that can execute the greps or receive
+pinned raw grep transcripts as audit inputs — hostile verification
+requires execution, not acceptance.]
 
 **Bookkeeping.** Historical §§7–36 untouched except the dated additions
 named in the disposition table (the §0 REVISION-30 paragraph header
@@ -7460,7 +7478,8 @@ EXECUTED additively across TR3S3/ROOT/GRB with the reconciliation on
 record, PIN-GEN-i displayed with its separate 303b11e discharge, the
 e₁ ≥ 2 regime untouched; the FGMN status synced (pass 5 CRITICAL →
 REVISION 4; the complete DictIII perimeter; the change-set priced UP;
-passes 6+7 decide; Asvin-gated); NINE rows recounted; the census re-run
+passes 6+7 decide; Asvin-gated; [r32-ERRATUM, VC33 gap 1] pass 6
+landed concurrently, rides the next fold); NINE rows recounted; the census re-run
 at the declared unit with every delta explained; **VC33 owed on this
 REVISION-31 text** — until it lands, the acceptance citation points at
 the REVISION-30 text.
