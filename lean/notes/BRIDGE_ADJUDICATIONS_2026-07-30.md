@@ -5740,3 +5740,24 @@ discharge (S/M) → F-ADM-3 re-key + classCount_eq_d → TWIST-3 probe →
 ITER-LAW attempt → (UB-X) walk (NAMED) → (H7) forge →
 DIterJunctionSupplier statement (junction gates blocked on #2) →
 banked-sorry attempt → Asvin batch → optional S batch → background.
+
+## 2026-08-08: ROOT r30 EXECUTED (REVISION 29) — the anchor citation lands at REVISION 28/VC30+VC30b; TR3-S3 folded
+
+REVISION 29 (appendix §35) executes the VC30+VC30b re-anchor citation update at every
+operative site (§0 standing paragraph; §3.1 (H1) r30 bracket; §3.2 end-to-end sync
+tail; §6 supersession bracket + r30 bracket — the r29-ERRATUM lineage displayed at
+each: VC30 1C/0G → the dated pre-confirmation erratum 573bd1b → VC30b 0C/0G narrow;
+old citations supersession-bracketed) and folds TR3-S3 ACCEPTED (96b7f54): the (H1)
+member-(a) display + the GRB S3.4 scope line now carry **TR-3'-GEN proved on
+{all order-2} ∪ {order-3 all-e_j=1}, CONDITIONAL ON (H-v3)** (attribution only — the
+finite identity unconditional; PIN-GEN-i displayed with the pdftotext leg owed at
+Defs 3.15/3.16/3.18); the GRB SECOND post-acceptance bracket applied ADDITIVE
+(acceptance counters NOT reset; first bracket byte-unchanged); deeper strata stay
+OPEN probe-first (any e_j >= 2 at orders >= 3 fenced; the sealed (TWIST-3) candidate
+displayed). Synthesis pass 7 displayed RUNNING/in-flight — NOTHING folded from it at
+this unit (its report is the next dispatch of record; folds ride the next ROOT unit).
+NINE rows recounted; the 43-pattern census at fixed point first-try (VC30b / VC31 /
+H-v3 / PIN-GEN-i / TWIST-3 join; every delta reasoned incl. the erratum's +1).
+**VC31 OWED on the REVISION-29 wording** (charge at §35; model-diverse) — this unit
+ran no audit and never self-confirms. PROJECT_STATE r30 checkpoint of even date.
+Files: ROOT + PROJECT_STATE + GRB note + this ledger. Commit: this one.

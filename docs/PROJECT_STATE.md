@@ -2033,3 +2033,45 @@ Lean forge on the two pins).
 Verification: VC1–VC22 done; VC25 NOT-CONFIRMED (disposed); VC26+VC26b,
 VC27+VC27b CONFIRMED; VC28 CONFIRMED FIRST-PASS; **VC29 CONFIRMED
 FIRST-PASS (= the REVISION-27 anchor)**; VC30 pending on REVISION 28.
+
+## CHECKPOINT 2026-08-08+++++++++ (wallclock 2026-08-03): r30 LANDED — VC30+VC30b CONFIRMED, ANCHOR MOVES TO REVISION 28; TR3-S3 ACCEPTED (ROOT REVISION 29)
+
+ROOT REVISION 29 (unit ROOT r30, appendix §35) is the VC30+VC30b
+re-anchor + the TR3-S3 acceptance fold.
+**VC30 + VC30b CONFIRMED** on the REVISION-28 text (ledger 6984d5d): VC30
+returned 1C/0G — the single critical: the §34 closing line's UNQUALIFIED
+junc_bundle restatement (the qualifier-propagation defect class's last
+appearance) — CURED by the dated pre-confirmation r29-ERRATUM bracket
+(573bd1b); the narrow pass VC30b CONFIRMED 0C/0G (the VC26b/VC27b
+narrow-companion genre) — **the acceptance anchor moves REVISION 27/VC29
+→ REVISION 28/VC30+VC30b** (now inside the certified anchor: the
+junc_bundle verdict + FGMN charter, the ADM-REAL′ acceptance/CLASS-LAT,
+the N-H7-1 pins, the JFS2 arc, the strata3 measurement).
+**TR3-S3 ACCEPTED** (96b7f54; note REVISION 4; passes 7 Codex + 8 Fable
+consecutive CLEAN 0C/0G, model-diverse, counter 2/2; eight-pass arc with
+four orchestrator revisions; THREE independent from-note implementations
+— 93 + 1,564 + 821 checks, 0 failures — the strongest external-leg
+record of any accepted note): with accepted TR3-S1 + TR3-S2, **TR-3′-GEN
+is PROVED on {all order-2} ∪ {order-3 all-e_j = 1}, CONDITIONAL ON
+(H-v3)** (attribution only — the finite identity σ₂(R^F₃(f)) = R_λ₃(f),
+discrepancy ≡ 1, is unconditional; PIN-GEN-i the displayed attribution
+pin, the fresh-pdftotext leg owed at Defs 3.15/3.16/3.18). The GRB S3.4
+scope line carries the ADDITIVE second post-acceptance bracket (that
+leaf's counters NOT reset). Deeper strata (any e_j ≥ 2 at orders ≥ 3)
+stay OPEN, probe-first (the sealed (TWIST-3) candidate stays sealed).
+Roster: **NINE rows, unchanged**; no clause attribution moved. Census
+re-run at the declared unit (the §34 patterns + VC30b / VC31 / H-v3 /
+PIN-GEN-i / TWIST-3 new; every delta reasoned; fixed point re-grepped
+first-try). **SYNTHESIS PASS 7 is RUNNING** (in flight; its report = the
+next dispatch of record when it lands — nothing claimed from it). The
+Asvin queue unchanged (the FGMN charter; TowerMoveClosureL; fence-(vii)
+ROUTE (a) + RECSL hσt rider; the Route-B re-scope).
+FRONTIER NOW: **VC31** (the confirming end-to-end pass on REVISION 29;
+acceptance anchored on REVISION 28/VC30+VC30b until it lands); synthesis
+pass 7 (in flight); then the standing queue (the FGMN design unit, the
+(ADM) opens, the (H7) Lean forge on the two pins, the (UB-X) walk note,
+DIterJunctionSupplier, the ITER-LAW attempt).
+Verification: VC1–VC22 done; VC25 NOT-CONFIRMED (disposed); VC26+VC26b,
+VC27+VC27b CONFIRMED; VC28, VC29 CONFIRMED FIRST-PASS; **VC30 (1C, cured
+by the r29-ERRATUM) + VC30b CONFIRMED (= the REVISION-28 anchor)**; VC31
+pending on REVISION 29.
