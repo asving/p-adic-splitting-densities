@@ -8241,3 +8241,22 @@ PE2-F1. Nit N1: S4.4's "the union of Cases II-* is CII_n" is ⊆, not = (only
 ⊆ is consumed). Consequence: acceptance does NOT land at this round;
 counter unchanged; owed = errata round 3 (one clause + optional N1 word)
 then a fresh dual round on the amended text.
+
+## ITERLAWN errata round 3 APPLIED — 2026-08-03 (orchestrator-direct; PE3 adjudicated)
+
+PE3 (cb1a66d): NOT-CLEAN 0C/1G (+1 nit) on ea125e3 — the entire generic step
+re-derived by hand CLEAN (integer layer, EXP-KIT, REALIZE/(I_m), L6-(n), all
+four W-MULT cases incl. every slot line and both collision legs), both re-runs
+byte-exact, the errata-r2 brackets verified right. The one gap (PE3-F1) is the
+TWIN of PE2-F1 on the other branch: the S7 [IL3]-failure branch wrongly
+exempted REALIZE (#3), whose m = 1 base legs consume [IL3]† WELL-DEF(i)/(ii)
+per the note's own S4.1 operative bracket — original-composition text missed
+by all four prior passes. Cured by a one-clause round-3 erratum (row 3 falls
+to open-at-the-WELL-DEF-m=1-displays under the hypothetical; historical-frame
+note added since the [IL3] arc has in fact closed clean). PE3-N1 cured (the
+II-* union is ⊆ CII_n, only containment consumed). Round scoreboard: PC2
+CLEAN (ea125e3) + PE3 0C/1G ⟹ bar not met; ROUND 4 = PC3 + PE4, both on the
+round-3 text, both must be CLEAN. The finding surface across four rounds:
+2C/3G → 0C/2G → 0C/1G → 0C/1G, every math-layer re-derivation clean since
+round 1 — the residue is confined to the S7 completeness-display branches,
+both of which are now clause-by-clause verified.

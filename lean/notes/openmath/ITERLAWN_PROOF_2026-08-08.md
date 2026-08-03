@@ -683,7 +683,11 @@ of:
 e_{n−1}g_{n−1}, possible only at g_{n−1} = 1 with S_n ≥ e_{n−1} ⟺
 δ_n^{pl} = 1; E₁ᴵᴴ ≠ 0: overflow ⟺ S_n+1 ≥ e_{n−1}, i.e. δ_n^{pl} = 1 or
 S_n = e_{n−1}−1). ∎ (At n = 2 this is [IL3] CASE-SPLIT verbatim with "inner
-Case II" = CII₁; the union of Cases II-* is CII_n — the (P-DS) predicate
+Case II" = CII₁; the union of Cases II-* is CII_n **[Precision note
+(errata round 3, 2026-08-03; PE3-N1): ⊆, not = — the union of the II-*
+case predicates is CONTAINED in CII_n, and only the containment is ever
+consumed downstream; equality is neither claimed elsewhere nor needed]** —
+the (P-DS) predicate
 propagates by construction.)
 
 Weights consumed below (IH (P-DS)): w_n(A) = B_n attained at slot S_n; the
@@ -1132,7 +1136,17 @@ round 3 owed; proved off DCX-(2); errata r1 at f9daca0.
 NOT close clean, the rung-2 link re-opens and every rung ≥ 2 row of #5/#6/#8
 falls back to "open at the rung-2 link" — the integer layer (#1), EXP-KIT
 (#2), REALIZE (#3), and the L6 chain (#4) are NOT affected (they consume only
-[IL] and this note's generic proofs). If (RM-m) is proved for all m, rows
+[IL] and this note's generic proofs). **[ERRATUM (errata round 3, 2026-08-03,
+orchestrator-direct; PE3-F1, original-composition text, the twin of PE2-F1 on
+the other branch): the row-3 exemption in the clause above is FALSE — REALIZE's
+m = 1 base legs consume [IL3]† WELL-DEF(i)/(ii) (this note's own S4.1 operative
+bracket and ledger row 3), so under the [IL3]-failure hypothetical row 3 falls
+back to "open at the [IL3] WELL-DEF m = 1 displays" (elementary, independently
+re-derivable, the same recovery genre as rows 1/2 under the [IL]†-failure
+branch below). Rows 1/2/4 of THIS branch stand as written; note the historical
+frame of this paragraph — the [IL3] arc has in fact CLOSED clean (the S7 r38
+bracket carries the acceptance) — so the branch is structural-completeness
+display only.]** If (RM-m) is proved for all m, rows
 #5/#6/#8 become unconditional-off-DCX at every rung (given [IL3]); if
 additionally the second-round clause closes (W-MULT-DCX), the perimeter
 becomes the whole class. **The INDUCTION SCHEMA reading (the charter's
