@@ -5902,6 +5902,42 @@ Handed on: (ADM) row display at the next ROOT fold; (C-JCT) fan-out audit
 now proceeds on the honest carrier.  Commit: this one (verdict companion
 to ba02d60).
 
+## r31 EXECUTED (ROOT REVISION 30) — the VC31+VC31b+VC31c re-anchor citation + the wave-14 folds; VC32 OWED
+
+ROOT REVISION 30 applied (appendix §36).  The acceptance citation now
+reads **REVISION 29/VC31+VC31b+VC31c** at every operative site (§0, the
+§3.2 end-to-end row's sync tail, §6, §36), with the VC31 arc lineage
+displayed (VC31 0C/2G → r30-ERRATUM f9aa7ef → VC31b + the dating
+disclosure a63b9ef → VC31c 0C/0G, ledger entry above).  FOLDED: (1) the
+FGMN re-derivation PROPOSAL displayed at the (H1) row — proposal-only,
+hostile pass 1 RUNNING, application Asvin-gated (flag lineage TOP); THE
+ROW-A SOURCE VERDICT + the four-token σ.w → σ.wPrev diff displayed; the
+JuncForge refutation theorems displayed as REMAINING TRUE of the old
+clause; PIN-GEN-i DISCHARGED displays updated ((H1) r31 bracket + the
+dated pointer in the r30 bracket; TR3S3/GRB note brackets ride their own
+next revisions).  (2) the (H-v3) discharge displayed
+PENDING-VERIFICATION at the (H1) row (HV3-THM with its three conditions;
+hostile pass 1 RUNNING; the 47 (H-v3) bracket sites NOT edited — they
+ride the acceptance).  (3) the (ADM) row updated: F-ADM-3 RE-KEY APPLIED
+(CLASS-LAT machine-checked every order; hclass retired; R7 acceptance
+test 88 → 0; F-ADM-3 leaves the open list; row stays [M] on
+(B-PIN)/(C-JCT)); the executed edit recorded in the Asvin flag lineage
+for ratify-or-reopen.  (4) the (H1) strata display updated: TWIST-3
+MEASURED EXACT (θ₂ = ℓ₁g₁γ₂, 0/1,656; honest P4′ RED disclosed, exit 1
+stands; TR3-S4 CHARTERED; next stratum probe-first, no candidate
+sealed).  (5) the (UB-X) row updated: the walk on file, RB-DELTA
+CONSUMER-VISIBLE, condition (5) = Asvin the only open gate — the
+Route-B decision paragraph joins the ASVIN BATCH decision-ready.
+Housekeeping: NINE rows recounted; census = 51 patterns (43 + 8 new:
+VC31b/VC31c/VC32/HV3-THM/TR3-S4/RB-DELTA/wPrev/classCount_eq_d), fixed
+point re-grepped, every delta reasoned; SYNTHESIS PASS 8 not yet owed
+(pass 7's queue still executing); wave-15 candidates displayed (the
+TR3-S4 compose + the held pass-7 items).  PROJECT_STATE r31 checkpoint
+written.  **VC32 is OWED on the REVISION-30 wording** (charge at §36;
+model diversity per the tree §4 bar); until it lands, the acceptance
+citation points at the REVISION-29 text.  This unit ran no audit and
+self-confirms nothing.  Commit: this one (unit ROOT r31).
+
 ## 2026-08-08 — FGMN REVISION 1: pass-1 gaps (0C/4G) fixed — R2 any-gam′ branch REPAIRED + rerun 0/336 (count unchanged, now with the support meter on record); "336/336 SAT" rescoped to the window/support check; R4 rescoped to differential falsifier; pins re-verified
 
 Response to `FGMN_pass1_report.md` (0 critical / 4 gaps, GAPS-ONLY; the

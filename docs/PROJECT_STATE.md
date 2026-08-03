@@ -2127,3 +2127,60 @@ read the honest lattice.  Handed on (owners unchanged): the (ADM) row
 display at the next ROOT fold; the (C-JCT) fan-out audit (now on the
 honest carrier); realized r ≥ 2 numeric coverage still nonexistent
 (R7 is lattice-level — the TRI + (P1) pin remains the discrimination).
+
+## CHECKPOINT 2026-08-08++++++++++ (wallclock 2026-08-03): r31 LANDED — VC31+VC31b+VC31c CONFIRMED, ANCHOR MOVES TO REVISION 29; WAVE-14 FOLDS (ROOT REVISION 30)
+
+ROOT REVISION 30 (unit ROOT r31, appendix §36) is the VC31+VC31b+VC31c
+re-anchor + the wave-14 fold batch.
+**VC31 + VC31b + VC31c CONFIRMED** (ledger 620417b): VC31 0C/2G on the
+REVISION-29 text (census 43/43 EXACT; gap 1 = truncated appendix slice,
+audit-input — checklist extended; gap 2 = the (H1) fence display) →
+the dated r30-ERRATUM (f9aa7ef: the fence names the ENTIRE complement,
+orders ≥ 4 incl. all-e_j = 1 explicit) → VC31b both substance checks
+PASSED + the dating observation → the standing DATING CONVENTION
+disclosure (a63b9ef: window-label dating; git commit order = the
+authoritative chronology) → VC31c CONFIRMED 0C/0G — **the acceptance
+anchor moves REVISION 28/VC30+VC30b → REVISION 29/VC31+VC31b+VC31c**
+(now inside the certified anchor: the TR3-S3 acceptance/strata trilogy,
+the erratum-corrected fence, the dating disclosure).
+THE WAVE-14 FOLDS: (1) **FGMN re-derivation PROPOSAL ON RECORD, NOT
+applied** (303b11e) — SideReads clauses (i)/(ii) double-scale the stride
+weight vs the print's parent-valuation keying (the JuncForge parity wall
+= the artifact's arithmetic shadow); THE ROW-A SOURCE VERDICT: the
+source glue step FIRES at row A; four-token σ.w → σ.wPrev re-key
+displayed; hostile pass 1 RUNNING; application Asvin-gated (flag
+lineage TOP item); the JuncForge theorems REMAIN TRUE of the old
+clause; **PIN-GEN-i DISCHARGED** as the rider (fresh column-verified
+-layout extraction; PDF sha256-pinned). (2) **(H-v3) discharge ON
+RECORD, pending verification** (f90d68a) — HV3-THM: v₃ = w₂ at
+e₀ = e₁ = 1 (e₂ free) on three displayed conditions; hostile pass 1
+RUNNING; if it survives, TR-3′-GEN order-3 goes UNCONDITIONAL ON PRINT;
+the 47 bracket sites ride the acceptance. (3) **F-ADM-3 RE-KEY
+APPLIED** (ba02d60+8648d99, standing authority + Codex CONFIRM) —
+CLASS-LAT machine-checked at every order; hclass retired; R7 acceptance
+test 88 → 0; capstone fence EMPTY. (4) **TWIST-3 law MEASURED EXACT**
+(76513f8+48c07b4) — the ǫ-recurrence revives at order-3 e₁ ≥ 2 with
+θ₂ = ℓ₁g₁γ₂ exactly (0/1,656); first PARI-certified RAMIFIED order-3
+keys; honest P4′ secondary RED disclosed (exit 1 stands); **TR3-S4
+CHARTERED** (verifier-owned implementation required at acceptance).
+(5) **(UB-X) walk ON FILE** (4924dcb) — RB-DELTA CONSUMER-VISIBLE at
+all three site families; condition (5) = Asvin the only open gate; the
+Route-B decision paragraph DECISION-READY, joins the Asvin batch.
+Roster: **NINE rows, unchanged**; no clause attribution moved. Census:
+the §35 43 patterns + 8 new (VC31b/VC31c/VC32/HV3-THM/TR3-S4/RB-DELTA/
+wPrev/classCount_eq_d) = 51 patterns, fixed point re-grepped, every
+delta reasoned. **SYNTHESIS PASS 8 NOT YET OWED** (pass 7's queue still
+executing); wave-15 candidates displayed (the TR3-S4 compose + the held
+pass-7 items: ITER-LAW, the (H7) forge, DIterJunctionSupplier, the
+banked sorry). The Asvin batch restated in full (TowerMoveClosureL;
+fence-(vii) ROUTE (a) lineage incl. the RECSL hσt rider + the EXECUTED
+F-ADM-3 re-key for ratify-or-reopen; the FGMN four-token proposal AT
+TOP; the Route-B RB-DELTA decision).
+FRONTIER NOW: **VC32** (the confirming end-to-end pass on REVISION 30;
+acceptance anchored on REVISION 29/VC31+VC31b+VC31c until it lands);
+the FGMN + (H-v3) hostile passes (running); then the held pass-7 queue.
+Verification: VC1–VC22 done; VC25 NOT-CONFIRMED (disposed); VC26+VC26b,
+VC27+VC27b CONFIRMED; VC28, VC29 CONFIRMED FIRST-PASS; VC30 (1C, cured
+by the r29-ERRATUM) + VC30b CONFIRMED; **VC31 (0C/2G, cured by the
+r30-ERRATUM + the dating disclosure) + VC31b + VC31c CONFIRMED (= the
+REVISION-29 anchor)**; VC32 pending on REVISION 30.
