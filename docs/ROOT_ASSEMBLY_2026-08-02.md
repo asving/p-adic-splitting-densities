@@ -1431,7 +1431,19 @@ FOLD-LAG on the then-in-flight ITER-LAW arc, cured by the acceptance
 by the dated r36 errata at the §40 close. The acceptance citation
 STAYS at the REVISION-33 text (VC35+VC35b); **VC36b** — the NARROW
 confirming pass on the r36 remedies only — is OWED (charge at §41);
-never self-confirm.]**
+never self-confirm.]** **[r36b ERRATUM (VC36b gap 1, 2026-08-03,
+orchestrator-direct): the acceptance citation in the bracket above rode
+BARE — it carries the full qualifier package: ITER-LAW is ACCEPTED on the
+harness tower class (standard-lift; a STRICT SUPERSET of DITER_RESTATE
+§S2's pinned E₂ = e₀e₁ > 1 setting; on-the-nose coincidence restricted to
+E₂ > 1; the E₂ = 1 leg a harmless COR-3-covered extension outside the
+statement of record), with ALL THREE residuals: (ITER-LAW-LIFT) open
+exactly at g₀ = 1 ∧ δ₁ = 1; the gr(w₂) semantics wrapper rides the
+accepted GRB retarget consumer-side; orders ≥ 3 untouched. This restores
+§41.(ii)'s categorical no-bare-citation claim. Census note (the d79f295
+precedent): this dated erratum postdates the §41 census re-run; its
+pattern hits are honest baseline corrections at the next census re-run —
+VC36c verifies the erratum brackets, not a re-run fixed point.]**
 
 **Status vocabulary** (tree §0, compressed): **VERIFIED** = survived ≥ 2 consecutive
 clean adversarial passes in fresh contexts, at least two models (VERIFIED-DUAL), or

@@ -384,6 +384,14 @@ this note's §S3 "missing tie" — still MISSING. The BLOCKED-ON-APPLICATION
 and BLOCKED-ON-CARRIER-TIE legs are UNCHANGED; the gate still does not
 fire; the Asvin application gate (P0) stands.]**
 
+**[r36b ERRATUM (VC36b gap 2, 2026-08-03, orchestrator-direct): the bracket
+above mislabels gr(w₂) as "the third residual" and omits the actual third.
+The three-item residual list of record is: (i) (ITER-LAW-LIFT), open exactly
+at g₀ = 1 ∧ δ₁ = 1 — clause (c) above; (ii) the gr(w₂) semantics wrapper
+rides the accepted GRB retarget consumer-side — this note's §S3 "missing
+tie", still MISSING; (iii) orders ≥ 3 untouched. J3b's acceptance citation
+carries all three. Everything else in the bracket above stands.]**
+
 ### GATES JS1–JS3 — the three DITER §S3 sanity gates (any discharge instance must reproduce them)
 
 ```lean
