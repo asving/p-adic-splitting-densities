@@ -1,0 +1,174 @@
+[PASS] S1 | integrity rho | computed=0 sealed=0
+[PASS] S1 | integrity Smith es | measured=[0, 0, 0, 0] sealed=[0, 0, 0, 0]
+[INFO] S1 | sweep | mode=axis+rand(11400) members=11400 N=3
+[PASS] S1 | P-A K-JAC v(detPhi)=rho on cell | sampled=300 bad=0 rho=0
+[PASS] S1 | P-B (i) branch0(RAMS) delta cell-constant | d1set=[0] d0set=[0] sealed=0 skip0=1275 noroot=0
+[PASS] S1 | P-C (ii) branch0(RAMS) unit-scalar cell-constant | u1set=[1] u0set=[1] sealed=1
+[PASS] S1 | P-D d1 branch0(RAMS) cofactor-independence | gj-classes=625 violations=0
+[PASS] S1 | P-D d2 branch0(RAMS) word-graph bijection | gwords=5 Fwords=5 maxfwd=1 maxbwd=1
+[PASS] S1 | P-D d3 branch0(RAMS) measured K <= tau+rho+1 | K_measured=2 ceiling=2
+[INFO] S1 | P-D INFO branch0(RAMS) raw depth-2 digit leak (expected) | violating gj-classes=500/625 (leak EXPECTED: not an order-1 OM read; order-2 refinement required)
+[PASS] S1 | P-B (i) branch1(RAMS) delta cell-constant | d1set=[0] d0set=[0] sealed=0 skip0=1893 noroot=0
+[PASS] S1 | P-C (ii) branch1(RAMS) unit-scalar cell-constant | u1set=[1] u0set=[1] sealed=1
+[PASS] S1 | P-D d1 branch1(RAMS) cofactor-independence | gj-classes=625 violations=0
+[PASS] S1 | P-D d2 branch1(RAMS) word-graph bijection | gwords=5 Fwords=5 maxfwd=1 maxbwd=1
+[PASS] S1 | P-D d3 branch1(RAMS) measured K <= tau+rho+1 | K_measured=2 ceiling=2
+[INFO] S1 | P-D INFO branch1(RAMS) raw depth-2 digit leak (expected) | violating gj-classes=500/625 (leak EXPECTED: not an order-1 OM read; order-2 refinement required)
+[PASS] S1 | P-E counts N=2 | survivors=625(sealed 625) image=625(sealed 625; smith-pred 625)
+[PASS] S1 | P-E fiber constancy N=2 | fiber sizes=[1] pred=1
+[PASS] S1 | P-E (e3) product law N=2 | #Sigma*p^sM=625 prod#C_j=625 (sM=0)
+[PASS] S1 | P-E (e1) extraction accepts image N=2 | false-negatives=0/625
+[PASS] S1 | P-E (e2) accepted == image N=2 | accepted=625 image=625 false-pos=0
+[INFO] S1 | P-E guard diagnosis N=2 | D-8 guard tau+2rho=1 (scan in-guard); blind zone N-emax=2 vs tau=1 => pins covered (extraction round-trip promised only when covered)
+[INFO] S1 | site wall-time | 0.4s
+[PASS] S2 | integrity rho | computed=3 sealed=3
+[PASS] S2 | integrity Smith es | measured=[0, 0, 1, 2] sealed=[0, 0, 1, 2]
+[INFO] S2 | sweep | mode=full(65536) members=65536 N=8
+[PASS] S2 | P-A K-JAC v(detPhi)=rho on cell | sampled=300 bad=0 rho=3
+[PASS] S2 | P-B (i) branch0(RAMQ) delta cell-constant | d1set=[3] d0set=[3] sealed=3 skip0=4096 noroot=0
+[PASS] S2 | P-C (ii) branch0(RAMQ) unit-scalar cell-constant | u1set=[1] u0set=[1] sealed=1
+[PASS] S2 | P-C (ii') branch0(RAMQ) per-slope-parity unit constancy [SUPPLEMENTARY] | u0 even-w=[1] odd-w=[1]
+[PASS] S2 | P-D d1 branch0(RAMQ) cofactor-independence | gj-classes=256 violations=0
+[PASS] S2 | P-D d2 branch0(RAMQ) word-graph bijection | gwords=16 Fwords=16 maxfwd=1 maxbwd=1
+[PASS] S2 | P-D d3 branch0(RAMQ) measured K <= tau+rho+1 | K_measured=6 ceiling=8
+[PASS] S2 | P-B (i) branch1(RAMQ) delta cell-constant | d1set=[3] d0set=[3] sealed=3 skip0=4096 noroot=0
+[PASS] S2 | P-C (ii) branch1(RAMQ) unit-scalar cell-constant | u1set=[1] u0set=[1] sealed=1
+[PASS] S2 | P-C (ii') branch1(RAMQ) per-slope-parity unit constancy [SUPPLEMENTARY] | u0 even-w=[1] odd-w=[1]
+[PASS] S2 | P-D d1 branch1(RAMQ) cofactor-independence | gj-classes=256 violations=0
+[PASS] S2 | P-D d2 branch1(RAMQ) word-graph bijection | gwords=16 Fwords=16 maxfwd=1 maxbwd=1
+[PASS] S2 | P-D d3 branch1(RAMQ) measured K <= tau+rho+1 | K_measured=6 ceiling=8
+[PASS] S2 | P-E counts N=5 | survivors=16(sealed 16) image=4(sealed 4; smith-pred 4)
+[PASS] S2 | P-E fiber constancy N=5 | fiber sizes=[4] pred=4
+[PASS] S2 | P-E (e3) product law N=5 | #Sigma*p^sM=16 prod#C_j=16 (sM=2)
+[FAIL] S2 | P-E (e1) extraction accepts image N=5 | false-negatives=2/4
+[FAIL] S2 | P-E (e2) accepted == image N=5 | accepted=2 image=4 false-pos=0
+[INFO] S2 | P-E guard diagnosis N=5 | D-8 guard tau+2rho=10 (scan BELOW-guard); blind zone N-emax=3 vs tau=4 => pins NOT covered (extraction round-trip promised only when covered)
+[PASS] S2 | P-E counts N=6 | survivors=256(sealed 256) image=32(sealed 32; smith-pred 32)
+[PASS] S2 | P-E fiber constancy N=6 | fiber sizes=[8] pred=8
+[PASS] S2 | P-E (e3) product law N=6 | #Sigma*p^sM=256 prod#C_j=256 (sM=3)
+[PASS] S2 | P-E (e1) extraction accepts image N=6 | false-negatives=0/32
+[PASS] S2 | P-E (e2) accepted == image N=6 | accepted=32 image=32 false-pos=0
+[INFO] S2 | P-E guard diagnosis N=6 | D-8 guard tau+2rho=10 (scan BELOW-guard); blind zone N-emax=4 vs tau=4 => pins covered (extraction round-trip promised only when covered)
+[PASS] S2 | P-E (e1g) IN-GUARD extraction sample N=10 | random image members=200 false-negatives=0
+[PASS] S2 | P-F f1 sub-cell read-fiber constancy (raw) | subcells=16 nonuniform=0
+[PASS] S2 | P-F f2 alphabet stability (raw) | distinct alphabets=1 sizes=[16]
+[INFO] S2 | P-F species read-fiber constancy [measured data] | subcells=16 nonuniform=0 distinct-alphabets=9
+[INFO] S2 | P-F species joint table sample [measured data] | total=65536 entries=9 sample=[((('deep',), ('deep',)), 4096), ((('deep',), (0, 1)), 8192), ((('deep',), (1, 1)), 4096), (((0, 1), ('deep',)), 8192), (((0, 1), (0, 1)), 16384), (((0, 1), (1, 1)), 8192)]
+[PASS] S2 | P-G g1 aggregate uniformity (C1a instance) | aggregate counts=[4096]
+[PASS] S2 | P-G g2 (SIB) product identity raw words | joint words=16 violations=0
+[PASS] S2 | P-G g2 (SIB) product identity species words | joint species=9 violations=0
+[INFO] S2 | site wall-time | 5.5s
+[PASS] S3 | integrity rho | computed=3 sealed=3
+[PASS] S3 | integrity Smith es | measured=[0, 1, 2] sealed=[0, 1, 2]
+[INFO] S3 | sweep | mode=axis+rand(2947) members=2947 N=8
+[PASS] S3 | P-A K-JAC v(detPhi)=rho on cell | sampled=300 bad=0 rho=3
+[PASS] S3 | P-B (i) branch0(HEN) delta cell-constant | d1set=[2] d0set=[2] sealed=2 skip0=987 noroot=0
+[PASS] S3 | P-C (ii) branch0(HEN) unit-scalar cell-constant | u1set=[2] u0set=[2] sealed=2
+[PASS] S3 | P-D d1 branch0(HEN) cofactor-independence | gj-classes=81 violations=0
+[PASS] S3 | P-D d2 branch0(HEN) word-graph bijection | gwords=9 Fwords=9 maxfwd=1 maxbwd=1
+[PASS] S3 | P-D d3 branch0(HEN) measured K <= tau+rho+1 | K_measured=6 ceiling=8
+[PASS] S3 | P-B (i) branch1(HEN) delta cell-constant | d1set=[2] d0set=[2] sealed=2 skip0=1394 noroot=0
+[PASS] S3 | P-C (ii) branch1(HEN) unit-scalar cell-constant | u1set=[2] u0set=[2] sealed=2
+[PASS] S3 | P-D d1 branch1(HEN) cofactor-independence | gj-classes=81 violations=0
+[PASS] S3 | P-D d2 branch1(HEN) word-graph bijection | gwords=9 Fwords=9 maxfwd=1 maxbwd=1
+[PASS] S3 | P-D d3 branch1(HEN) measured K <= tau+rho+1 | K_measured=6 ceiling=8
+[PASS] S3 | P-B (i) branch2(HEN) delta cell-constant | d1set=[2] d0set=[2] sealed=2 skip0=1069 noroot=0
+[PASS] S3 | P-C (ii) branch2(HEN) unit-scalar cell-constant | u1set=[2] u0set=[2] sealed=2
+[PASS] S3 | P-D d1 branch2(HEN) cofactor-independence | gj-classes=81 violations=0
+[PASS] S3 | P-D d2 branch2(HEN) word-graph bijection | gwords=9 Fwords=9 maxfwd=1 maxbwd=1
+[PASS] S3 | P-D d3 branch2(HEN) measured K <= tau+rho+1 | K_measured=6 ceiling=8
+[PASS] S3 | P-E counts N=6 | survivors=729(sealed 729) image=27(sealed 27; smith-pred 27)
+[PASS] S3 | P-E fiber constancy N=6 | fiber sizes=[27] pred=27
+[PASS] S3 | P-E (e3) product law N=6 | #Sigma*p^sM=729 prod#C_j=729 (sM=3)
+[PASS] S3 | P-E (e1) extraction accepts image N=6 | false-negatives=0/27
+[PASS] S3 | P-E (e2) accepted == image N=6 | accepted=27 image=27 false-pos=0
+[INFO] S3 | P-E guard diagnosis N=6 | D-8 guard tau+2rho=10 (scan BELOW-guard); blind zone N-emax=4 vs tau=4 => pins covered (extraction round-trip promised only when covered)
+[PASS] S3 | P-E (e1g) IN-GUARD extraction sample N=10 | random image members=200 false-negatives=0
+[PASS] S3 | P-F f1 sub-cell read-fiber constancy (raw) | subcells=27 nonuniform=0
+[PASS] S3 | P-F f2 alphabet stability (raw) | distinct alphabets=1 sizes=[27]
+[INFO] S3 | P-F species read-fiber constancy [measured data] | subcells=27 nonuniform=0 distinct-alphabets=27
+[INFO] S3 | P-F species joint table sample [measured data] | total=531441 entries=125 sample=[((('deep',), ('deep',), ('deep',)), 729), ((('deep',), ('deep',), (0, 1)), 2187), ((('deep',), ('deep',), (0, 2)), 2187), ((('deep',), ('deep',), (1, 1)), 729), ((('deep',), ('deep',), (1, 2)), 729), ((('deep',), (0, 1), ('deep',)), 2187)]
+[PASS] S3 | P-G g1 aggregate uniformity (C1a instance) | aggregate counts=[19683]
+[PASS] S3 | P-G g2 (SIB) product identity raw words | joint words=27 violations=0
+[PASS] S3 | P-G g2 (SIB) product identity species words | joint species=125 violations=0
+[INFO] S3 | site wall-time | 4.1s
+[PASS] S3b | integrity rho | computed=3 sealed=3
+[PASS] S3b | integrity Smith es (sum sealed) | measured=[0, 0, 0, 1, 2] sealed_sum=3
+[INFO] S3b | sweep | mode=axis+rand(42821) members=42821 N=8
+[PASS] S3b | P-A K-JAC v(detPhi)=rho on cell | sampled=300 bad=0 rho=3
+[PASS] S3b | P-B (i) branch0(HEN) delta cell-constant | d1set=[2] d0set=[2] sealed=2 skip0=14243 noroot=0
+[PASS] S3b | P-C (ii) branch0(HEN) unit-scalar cell-constant | u1set=[1] u0set=[1] sealed=1
+[PASS] S3b | P-D d1 branch0(HEN) cofactor-independence | gj-classes=81 violations=0
+[PASS] S3b | P-D d2 branch0(HEN) word-graph bijection | gwords=9 Fwords=9 maxfwd=1 maxbwd=1
+[PASS] S3b | P-D d3 branch0(HEN) measured K <= tau+rho+1 | K_measured=6 ceiling=8
+[PASS] S3b | P-B (i) branch1(HEN) delta cell-constant | d1set=[2] d0set=[2] sealed=2 skip0=21194 noroot=0
+[PASS] S3b | P-C (ii) branch1(HEN) unit-scalar cell-constant | u1set=[1] u0set=[1] sealed=1
+[PASS] S3b | P-D d1 branch1(HEN) cofactor-independence | gj-classes=81 violations=0
+[PASS] S3b | P-D d2 branch1(HEN) word-graph bijection | gwords=9 Fwords=9 maxfwd=1 maxbwd=1
+[PASS] S3b | P-D d3 branch1(HEN) measured K <= tau+rho+1 | K_measured=6 ceiling=8
+[PASS] S3b | P-B (i) branch2(HEN) delta cell-constant | d1set=[2] d0set=[2] sealed=2 skip0=7808 noroot=0
+[PASS] S3b | P-C (ii) branch2(HEN) unit-scalar cell-constant | u1set=[1] u0set=[1] sealed=1
+[PASS] S3b | P-D d1 branch2(HEN) cofactor-independence | gj-classes=81 violations=0
+[PASS] S3b | P-D d2 branch2(HEN) word-graph bijection | gwords=9 Fwords=9 maxfwd=1 maxbwd=1
+[PASS] S3b | P-D d3 branch2(HEN) measured K <= tau+rho+1 | K_measured=6 ceiling=8
+[PASS] S3b | P-E counts N=5 | survivors=243(sealed 243) image=27(sealed None; smith-pred 27)
+[PASS] S3b | P-E fiber constancy N=5 | fiber sizes=[9] pred=9
+[PASS] S3b | P-E (e3) product law N=5 | #Sigma*p^sM=243 prod#C_j=243 (sM=2)
+[FAIL] S3b | P-E (e1) extraction accepts image N=5 | false-negatives=10/27
+[FAIL] S3b | P-E (e2) accepted == image N=5 | accepted=17 image=27 false-pos=0
+[INFO] S3b | P-E guard diagnosis N=5 | D-8 guard tau+2rho=10 (scan BELOW-guard); blind zone N-emax=3 vs tau=4 => pins NOT covered (extraction round-trip promised only when covered)
+[PASS] S3b | P-E (e1g) IN-GUARD extraction sample N=10 | random image members=200 false-negatives=0
+[INFO] S3b | site wall-time | 3.6s
+[PASS] S5 | integrity rho | computed=3 sealed=3
+[PASS] S5 | integrity Smith es | measured=[0, 0, 1, 2] sealed=[0, 0, 1, 2]
+[INFO] S5 | sweep | mode=axis+rand(80694) members=80694 N=8
+[PASS] S5 | P-A K-JAC v(detPhi)=rho on cell | sampled=300 bad=0 rho=3
+[PASS] S5 | P-B (i) branch0(RAMQ) delta cell-constant | d1set=[3] d0set=[3] sealed=3 skip0=7062 noroot=0
+[FAIL] S5 | P-C (ii) branch0(RAMQ) unit-scalar cell-constant | u1set=[1] u0set=[1, 2] sealed=1
+[PASS] S5 | P-C (ii') branch0(RAMQ) per-slope-parity unit constancy [SUPPLEMENTARY] | u0 even-w=[1] odd-w=[2]
+[PASS] S5 | P-D d1 branch0(RAMQ) cofactor-independence | gj-classes=6561 violations=0
+[PASS] S5 | P-D d2 branch0(RAMQ) word-graph bijection | gwords=81 Fwords=81 maxfwd=1 maxbwd=1
+[PASS] S5 | P-D d3 branch0(RAMQ) measured K <= tau+rho+1 | K_measured=6 ceiling=8
+[PASS] S5 | P-B (i) branch1(RAMQ) delta cell-constant | d1set=[3] d0set=[3] sealed=3 skip0=7073 noroot=0
+[FAIL] S5 | P-C (ii) branch1(RAMQ) unit-scalar cell-constant | u1set=[2] u0set=[1, 2] sealed=2
+[PASS] S5 | P-C (ii') branch1(RAMQ) per-slope-parity unit constancy [SUPPLEMENTARY] | u0 even-w=[2] odd-w=[1]
+[PASS] S5 | P-D d1 branch1(RAMQ) cofactor-independence | gj-classes=6561 violations=0
+[PASS] S5 | P-D d2 branch1(RAMQ) word-graph bijection | gwords=81 Fwords=81 maxfwd=1 maxbwd=1
+[PASS] S5 | P-D d3 branch1(RAMQ) measured K <= tau+rho+1 | K_measured=6 ceiling=8
+[PASS] S5 | P-E counts N=5 | survivors=81(sealed 81) image=9(sealed 9; smith-pred 9)
+[PASS] S5 | P-E fiber constancy N=5 | fiber sizes=[9] pred=9
+[PASS] S5 | P-E (e3) product law N=5 | #Sigma*p^sM=81 prod#C_j=81 (sM=2)
+[FAIL] S5 | P-E (e1) extraction accepts image N=5 | false-negatives=6/9
+[FAIL] S5 | P-E (e2) accepted == image N=5 | accepted=3 image=9 false-pos=0
+[INFO] S5 | P-E guard diagnosis N=5 | D-8 guard tau+2rho=10 (scan BELOW-guard); blind zone N-emax=3 vs tau=4 => pins NOT covered (extraction round-trip promised only when covered)
+[PASS] S5 | P-E counts N=6 | survivors=6561(sealed 6561) image=243(sealed 243; smith-pred 243)
+[PASS] S5 | P-E fiber constancy N=6 | fiber sizes=[27] pred=27
+[PASS] S5 | P-E (e3) product law N=6 | #Sigma*p^sM=6561 prod#C_j=6561 (sM=3)
+[PASS] S5 | P-E (e1) extraction accepts image N=6 | false-negatives=0/243
+[PASS] S5 | P-E (e2) accepted == image N=6 | accepted=243 image=243 false-pos=0
+[INFO] S5 | P-E guard diagnosis N=6 | D-8 guard tau+2rho=10 (scan BELOW-guard); blind zone N-emax=4 vs tau=4 => pins covered (extraction round-trip promised only when covered)
+[PASS] S5 | P-E (e1g) IN-GUARD extraction sample N=10 | random image members=200 false-negatives=0
+[INFO] S5 | site wall-time | 7.4s
+[PASS] S6 | integrity rho | computed=1 sealed=1
+[PASS] S6 | integrity Smith es | measured=[0, 0, 1] sealed=[0, 0, 1]
+[INFO] S6 | sweep | mode=axis+rand(41207) members=41207 N=6
+[PASS] S6 | P-A K-JAC v(detPhi)=rho on cell | sampled=300 bad=0 rho=1
+[PASS] S6 | P-B (i) branch0(HEN) delta cell-constant | d1set=[1] d0set=[1] sealed=1 skip0=13303 noroot=0
+[PASS] S6 | P-C (ii) branch0(HEN) unit-scalar cell-constant | u1set=[2] u0set=[2] sealed=2
+[PASS] S6 | P-D d1 branch0(HEN) cofactor-independence | gj-classes=81 violations=0
+[PASS] S6 | P-D d2 branch0(HEN) word-graph bijection | gwords=9 Fwords=9 maxfwd=1 maxbwd=1
+[PASS] S6 | P-D d3 branch0(HEN) measured K <= tau+rho+1 | K_measured=4 ceiling=4
+[PASS] S6 | P-B (i) branch1(RAMQ) delta cell-constant | d1set=[1] d0set=[1] sealed=1 skip0=578 noroot=0
+[PASS] S6 | P-C (ii) branch1(RAMQ) unit-scalar cell-constant | u1set=[1] u0set=[1] sealed=1
+[PASS] S6 | P-C (ii') branch1(RAMQ) per-slope-parity unit constancy [SUPPLEMENTARY] | u0 even-w=[1] odd-w=[1]
+[PASS] S6 | P-D d1 branch1(RAMQ) cofactor-independence | gj-classes=6561 violations=0
+[PASS] S6 | P-D d2 branch1(RAMQ) word-graph bijection | gwords=27 Fwords=27 maxfwd=1 maxbwd=1
+[PASS] S6 | P-D d3 branch1(RAMQ) measured K <= tau+rho+1 | K_measured=4 ceiling=4
+[PASS] S6 | P-E counts N=4 | survivors=729(sealed 729) image=243(sealed 243; smith-pred 243)
+[PASS] S6 | P-E fiber constancy N=4 | fiber sizes=[3] pred=3
+[PASS] S6 | P-E (e3) product law N=4 | #Sigma*p^sM=729 prod#C_j=729 (sM=1)
+[PASS] S6 | P-E (e1) extraction accepts image N=4 | false-negatives=0/243
+[PASS] S6 | P-E (e2) accepted == image N=4 | accepted=243 image=243 false-pos=0
+[INFO] S6 | P-E guard diagnosis N=4 | D-8 guard tau+2rho=4 (scan in-guard); blind zone N-emax=3 vs tau=2 => pins covered (extraction round-trip promised only when covered)
+[INFO] S6 | site wall-time | 2.3s
+SUMMARY: 139 PASS, 8 FAIL, 26 INFO (23.3s total)

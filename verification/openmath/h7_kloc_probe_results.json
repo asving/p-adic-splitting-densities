@@ -1,0 +1,1046 @@
+{
+ "results": [
+  {
+   "site": "S1",
+   "test": "integrity rho",
+   "status": "PASS",
+   "detail": "computed=0 sealed=0"
+  },
+  {
+   "site": "S1",
+   "test": "integrity Smith es",
+   "status": "PASS",
+   "detail": "measured=[0, 0, 0, 0] sealed=[0, 0, 0, 0]"
+  },
+  {
+   "site": "S1",
+   "test": "sweep",
+   "status": "INFO",
+   "detail": "mode=axis+rand(11400) members=11400 N=3"
+  },
+  {
+   "site": "S1",
+   "test": "P-A K-JAC v(detPhi)=rho on cell",
+   "status": "PASS",
+   "detail": "sampled=300 bad=0 rho=0"
+  },
+  {
+   "site": "S1",
+   "test": "P-B (i) branch0(RAMS) delta cell-constant",
+   "status": "PASS",
+   "detail": "d1set=[0] d0set=[0] sealed=0 skip0=1275 noroot=0"
+  },
+  {
+   "site": "S1",
+   "test": "P-C (ii) branch0(RAMS) unit-scalar cell-constant",
+   "status": "PASS",
+   "detail": "u1set=[1] u0set=[1] sealed=1"
+  },
+  {
+   "site": "S1",
+   "test": "P-D d1 branch0(RAMS) cofactor-independence",
+   "status": "PASS",
+   "detail": "gj-classes=625 violations=0"
+  },
+  {
+   "site": "S1",
+   "test": "P-D d2 branch0(RAMS) word-graph bijection",
+   "status": "PASS",
+   "detail": "gwords=5 Fwords=5 maxfwd=1 maxbwd=1"
+  },
+  {
+   "site": "S1",
+   "test": "P-D d3 branch0(RAMS) measured K <= tau+rho+1",
+   "status": "PASS",
+   "detail": "K_measured=2 ceiling=2"
+  },
+  {
+   "site": "S1",
+   "test": "P-D INFO branch0(RAMS) raw depth-2 digit leak (expected)",
+   "status": "INFO",
+   "detail": "violating gj-classes=500/625 (leak EXPECTED: not an order-1 OM read; order-2 refinement required)"
+  },
+  {
+   "site": "S1",
+   "test": "P-B (i) branch1(RAMS) delta cell-constant",
+   "status": "PASS",
+   "detail": "d1set=[0] d0set=[0] sealed=0 skip0=1893 noroot=0"
+  },
+  {
+   "site": "S1",
+   "test": "P-C (ii) branch1(RAMS) unit-scalar cell-constant",
+   "status": "PASS",
+   "detail": "u1set=[1] u0set=[1] sealed=1"
+  },
+  {
+   "site": "S1",
+   "test": "P-D d1 branch1(RAMS) cofactor-independence",
+   "status": "PASS",
+   "detail": "gj-classes=625 violations=0"
+  },
+  {
+   "site": "S1",
+   "test": "P-D d2 branch1(RAMS) word-graph bijection",
+   "status": "PASS",
+   "detail": "gwords=5 Fwords=5 maxfwd=1 maxbwd=1"
+  },
+  {
+   "site": "S1",
+   "test": "P-D d3 branch1(RAMS) measured K <= tau+rho+1",
+   "status": "PASS",
+   "detail": "K_measured=2 ceiling=2"
+  },
+  {
+   "site": "S1",
+   "test": "P-D INFO branch1(RAMS) raw depth-2 digit leak (expected)",
+   "status": "INFO",
+   "detail": "violating gj-classes=500/625 (leak EXPECTED: not an order-1 OM read; order-2 refinement required)"
+  },
+  {
+   "site": "S1",
+   "test": "P-E counts N=2",
+   "status": "PASS",
+   "detail": "survivors=625(sealed 625) image=625(sealed 625; smith-pred 625)"
+  },
+  {
+   "site": "S1",
+   "test": "P-E fiber constancy N=2",
+   "status": "PASS",
+   "detail": "fiber sizes=[1] pred=1"
+  },
+  {
+   "site": "S1",
+   "test": "P-E (e3) product law N=2",
+   "status": "PASS",
+   "detail": "#Sigma*p^sM=625 prod#C_j=625 (sM=0)"
+  },
+  {
+   "site": "S1",
+   "test": "P-E (e1) extraction accepts image N=2",
+   "status": "PASS",
+   "detail": "false-negatives=0/625"
+  },
+  {
+   "site": "S1",
+   "test": "P-E (e2) accepted == image N=2",
+   "status": "PASS",
+   "detail": "accepted=625 image=625 false-pos=0"
+  },
+  {
+   "site": "S1",
+   "test": "P-E guard diagnosis N=2",
+   "status": "INFO",
+   "detail": "D-8 guard tau+2rho=1 (scan in-guard); blind zone N-emax=2 vs tau=1 => pins covered (extraction round-trip promised only when covered)"
+  },
+  {
+   "site": "S1",
+   "test": "site wall-time",
+   "status": "INFO",
+   "detail": "0.4s"
+  },
+  {
+   "site": "S2",
+   "test": "integrity rho",
+   "status": "PASS",
+   "detail": "computed=3 sealed=3"
+  },
+  {
+   "site": "S2",
+   "test": "integrity Smith es",
+   "status": "PASS",
+   "detail": "measured=[0, 0, 1, 2] sealed=[0, 0, 1, 2]"
+  },
+  {
+   "site": "S2",
+   "test": "sweep",
+   "status": "INFO",
+   "detail": "mode=full(65536) members=65536 N=8"
+  },
+  {
+   "site": "S2",
+   "test": "P-A K-JAC v(detPhi)=rho on cell",
+   "status": "PASS",
+   "detail": "sampled=300 bad=0 rho=3"
+  },
+  {
+   "site": "S2",
+   "test": "P-B (i) branch0(RAMQ) delta cell-constant",
+   "status": "PASS",
+   "detail": "d1set=[3] d0set=[3] sealed=3 skip0=4096 noroot=0"
+  },
+  {
+   "site": "S2",
+   "test": "P-C (ii) branch0(RAMQ) unit-scalar cell-constant",
+   "status": "PASS",
+   "detail": "u1set=[1] u0set=[1] sealed=1"
+  },
+  {
+   "site": "S2",
+   "test": "P-C (ii') branch0(RAMQ) per-slope-parity unit constancy [SUPPLEMENTARY]",
+   "status": "PASS",
+   "detail": "u0 even-w=[1] odd-w=[1]"
+  },
+  {
+   "site": "S2",
+   "test": "P-D d1 branch0(RAMQ) cofactor-independence",
+   "status": "PASS",
+   "detail": "gj-classes=256 violations=0"
+  },
+  {
+   "site": "S2",
+   "test": "P-D d2 branch0(RAMQ) word-graph bijection",
+   "status": "PASS",
+   "detail": "gwords=16 Fwords=16 maxfwd=1 maxbwd=1"
+  },
+  {
+   "site": "S2",
+   "test": "P-D d3 branch0(RAMQ) measured K <= tau+rho+1",
+   "status": "PASS",
+   "detail": "K_measured=6 ceiling=8"
+  },
+  {
+   "site": "S2",
+   "test": "P-B (i) branch1(RAMQ) delta cell-constant",
+   "status": "PASS",
+   "detail": "d1set=[3] d0set=[3] sealed=3 skip0=4096 noroot=0"
+  },
+  {
+   "site": "S2",
+   "test": "P-C (ii) branch1(RAMQ) unit-scalar cell-constant",
+   "status": "PASS",
+   "detail": "u1set=[1] u0set=[1] sealed=1"
+  },
+  {
+   "site": "S2",
+   "test": "P-C (ii') branch1(RAMQ) per-slope-parity unit constancy [SUPPLEMENTARY]",
+   "status": "PASS",
+   "detail": "u0 even-w=[1] odd-w=[1]"
+  },
+  {
+   "site": "S2",
+   "test": "P-D d1 branch1(RAMQ) cofactor-independence",
+   "status": "PASS",
+   "detail": "gj-classes=256 violations=0"
+  },
+  {
+   "site": "S2",
+   "test": "P-D d2 branch1(RAMQ) word-graph bijection",
+   "status": "PASS",
+   "detail": "gwords=16 Fwords=16 maxfwd=1 maxbwd=1"
+  },
+  {
+   "site": "S2",
+   "test": "P-D d3 branch1(RAMQ) measured K <= tau+rho+1",
+   "status": "PASS",
+   "detail": "K_measured=6 ceiling=8"
+  },
+  {
+   "site": "S2",
+   "test": "P-E counts N=5",
+   "status": "PASS",
+   "detail": "survivors=16(sealed 16) image=4(sealed 4; smith-pred 4)"
+  },
+  {
+   "site": "S2",
+   "test": "P-E fiber constancy N=5",
+   "status": "PASS",
+   "detail": "fiber sizes=[4] pred=4"
+  },
+  {
+   "site": "S2",
+   "test": "P-E (e3) product law N=5",
+   "status": "PASS",
+   "detail": "#Sigma*p^sM=16 prod#C_j=16 (sM=2)"
+  },
+  {
+   "site": "S2",
+   "test": "P-E (e1) extraction accepts image N=5",
+   "status": "FAIL",
+   "detail": "false-negatives=2/4"
+  },
+  {
+   "site": "S2",
+   "test": "P-E (e2) accepted == image N=5",
+   "status": "FAIL",
+   "detail": "accepted=2 image=4 false-pos=0"
+  },
+  {
+   "site": "S2",
+   "test": "P-E guard diagnosis N=5",
+   "status": "INFO",
+   "detail": "D-8 guard tau+2rho=10 (scan BELOW-guard); blind zone N-emax=3 vs tau=4 => pins NOT covered (extraction round-trip promised only when covered)"
+  },
+  {
+   "site": "S2",
+   "test": "P-E counts N=6",
+   "status": "PASS",
+   "detail": "survivors=256(sealed 256) image=32(sealed 32; smith-pred 32)"
+  },
+  {
+   "site": "S2",
+   "test": "P-E fiber constancy N=6",
+   "status": "PASS",
+   "detail": "fiber sizes=[8] pred=8"
+  },
+  {
+   "site": "S2",
+   "test": "P-E (e3) product law N=6",
+   "status": "PASS",
+   "detail": "#Sigma*p^sM=256 prod#C_j=256 (sM=3)"
+  },
+  {
+   "site": "S2",
+   "test": "P-E (e1) extraction accepts image N=6",
+   "status": "PASS",
+   "detail": "false-negatives=0/32"
+  },
+  {
+   "site": "S2",
+   "test": "P-E (e2) accepted == image N=6",
+   "status": "PASS",
+   "detail": "accepted=32 image=32 false-pos=0"
+  },
+  {
+   "site": "S2",
+   "test": "P-E guard diagnosis N=6",
+   "status": "INFO",
+   "detail": "D-8 guard tau+2rho=10 (scan BELOW-guard); blind zone N-emax=4 vs tau=4 => pins covered (extraction round-trip promised only when covered)"
+  },
+  {
+   "site": "S2",
+   "test": "P-E (e1g) IN-GUARD extraction sample N=10",
+   "status": "PASS",
+   "detail": "random image members=200 false-negatives=0"
+  },
+  {
+   "site": "S2",
+   "test": "P-F f1 sub-cell read-fiber constancy (raw)",
+   "status": "PASS",
+   "detail": "subcells=16 nonuniform=0"
+  },
+  {
+   "site": "S2",
+   "test": "P-F f2 alphabet stability (raw)",
+   "status": "PASS",
+   "detail": "distinct alphabets=1 sizes=[16]"
+  },
+  {
+   "site": "S2",
+   "test": "P-F species read-fiber constancy [measured data]",
+   "status": "INFO",
+   "detail": "subcells=16 nonuniform=0 distinct-alphabets=9"
+  },
+  {
+   "site": "S2",
+   "test": "P-F species joint table sample [measured data]",
+   "status": "INFO",
+   "detail": "total=65536 entries=9 sample=[((('deep',), ('deep',)), 4096), ((('deep',), (0, 1)), 8192), ((('deep',), (1, 1)), 4096), (((0, 1), ('deep',)), 8192), (((0, 1), (0, 1)), 16384), (((0, 1), (1, 1)), 8192)]"
+  },
+  {
+   "site": "S2",
+   "test": "P-G g1 aggregate uniformity (C1a instance)",
+   "status": "PASS",
+   "detail": "aggregate counts=[4096]"
+  },
+  {
+   "site": "S2",
+   "test": "P-G g2 (SIB) product identity raw words",
+   "status": "PASS",
+   "detail": "joint words=16 violations=0"
+  },
+  {
+   "site": "S2",
+   "test": "P-G g2 (SIB) product identity species words",
+   "status": "PASS",
+   "detail": "joint species=9 violations=0"
+  },
+  {
+   "site": "S2",
+   "test": "site wall-time",
+   "status": "INFO",
+   "detail": "5.5s"
+  },
+  {
+   "site": "S3",
+   "test": "integrity rho",
+   "status": "PASS",
+   "detail": "computed=3 sealed=3"
+  },
+  {
+   "site": "S3",
+   "test": "integrity Smith es",
+   "status": "PASS",
+   "detail": "measured=[0, 1, 2] sealed=[0, 1, 2]"
+  },
+  {
+   "site": "S3",
+   "test": "sweep",
+   "status": "INFO",
+   "detail": "mode=axis+rand(2947) members=2947 N=8"
+  },
+  {
+   "site": "S3",
+   "test": "P-A K-JAC v(detPhi)=rho on cell",
+   "status": "PASS",
+   "detail": "sampled=300 bad=0 rho=3"
+  },
+  {
+   "site": "S3",
+   "test": "P-B (i) branch0(HEN) delta cell-constant",
+   "status": "PASS",
+   "detail": "d1set=[2] d0set=[2] sealed=2 skip0=987 noroot=0"
+  },
+  {
+   "site": "S3",
+   "test": "P-C (ii) branch0(HEN) unit-scalar cell-constant",
+   "status": "PASS",
+   "detail": "u1set=[2] u0set=[2] sealed=2"
+  },
+  {
+   "site": "S3",
+   "test": "P-D d1 branch0(HEN) cofactor-independence",
+   "status": "PASS",
+   "detail": "gj-classes=81 violations=0"
+  },
+  {
+   "site": "S3",
+   "test": "P-D d2 branch0(HEN) word-graph bijection",
+   "status": "PASS",
+   "detail": "gwords=9 Fwords=9 maxfwd=1 maxbwd=1"
+  },
+  {
+   "site": "S3",
+   "test": "P-D d3 branch0(HEN) measured K <= tau+rho+1",
+   "status": "PASS",
+   "detail": "K_measured=6 ceiling=8"
+  },
+  {
+   "site": "S3",
+   "test": "P-B (i) branch1(HEN) delta cell-constant",
+   "status": "PASS",
+   "detail": "d1set=[2] d0set=[2] sealed=2 skip0=1394 noroot=0"
+  },
+  {
+   "site": "S3",
+   "test": "P-C (ii) branch1(HEN) unit-scalar cell-constant",
+   "status": "PASS",
+   "detail": "u1set=[2] u0set=[2] sealed=2"
+  },
+  {
+   "site": "S3",
+   "test": "P-D d1 branch1(HEN) cofactor-independence",
+   "status": "PASS",
+   "detail": "gj-classes=81 violations=0"
+  },
+  {
+   "site": "S3",
+   "test": "P-D d2 branch1(HEN) word-graph bijection",
+   "status": "PASS",
+   "detail": "gwords=9 Fwords=9 maxfwd=1 maxbwd=1"
+  },
+  {
+   "site": "S3",
+   "test": "P-D d3 branch1(HEN) measured K <= tau+rho+1",
+   "status": "PASS",
+   "detail": "K_measured=6 ceiling=8"
+  },
+  {
+   "site": "S3",
+   "test": "P-B (i) branch2(HEN) delta cell-constant",
+   "status": "PASS",
+   "detail": "d1set=[2] d0set=[2] sealed=2 skip0=1069 noroot=0"
+  },
+  {
+   "site": "S3",
+   "test": "P-C (ii) branch2(HEN) unit-scalar cell-constant",
+   "status": "PASS",
+   "detail": "u1set=[2] u0set=[2] sealed=2"
+  },
+  {
+   "site": "S3",
+   "test": "P-D d1 branch2(HEN) cofactor-independence",
+   "status": "PASS",
+   "detail": "gj-classes=81 violations=0"
+  },
+  {
+   "site": "S3",
+   "test": "P-D d2 branch2(HEN) word-graph bijection",
+   "status": "PASS",
+   "detail": "gwords=9 Fwords=9 maxfwd=1 maxbwd=1"
+  },
+  {
+   "site": "S3",
+   "test": "P-D d3 branch2(HEN) measured K <= tau+rho+1",
+   "status": "PASS",
+   "detail": "K_measured=6 ceiling=8"
+  },
+  {
+   "site": "S3",
+   "test": "P-E counts N=6",
+   "status": "PASS",
+   "detail": "survivors=729(sealed 729) image=27(sealed 27; smith-pred 27)"
+  },
+  {
+   "site": "S3",
+   "test": "P-E fiber constancy N=6",
+   "status": "PASS",
+   "detail": "fiber sizes=[27] pred=27"
+  },
+  {
+   "site": "S3",
+   "test": "P-E (e3) product law N=6",
+   "status": "PASS",
+   "detail": "#Sigma*p^sM=729 prod#C_j=729 (sM=3)"
+  },
+  {
+   "site": "S3",
+   "test": "P-E (e1) extraction accepts image N=6",
+   "status": "PASS",
+   "detail": "false-negatives=0/27"
+  },
+  {
+   "site": "S3",
+   "test": "P-E (e2) accepted == image N=6",
+   "status": "PASS",
+   "detail": "accepted=27 image=27 false-pos=0"
+  },
+  {
+   "site": "S3",
+   "test": "P-E guard diagnosis N=6",
+   "status": "INFO",
+   "detail": "D-8 guard tau+2rho=10 (scan BELOW-guard); blind zone N-emax=4 vs tau=4 => pins covered (extraction round-trip promised only when covered)"
+  },
+  {
+   "site": "S3",
+   "test": "P-E (e1g) IN-GUARD extraction sample N=10",
+   "status": "PASS",
+   "detail": "random image members=200 false-negatives=0"
+  },
+  {
+   "site": "S3",
+   "test": "P-F f1 sub-cell read-fiber constancy (raw)",
+   "status": "PASS",
+   "detail": "subcells=27 nonuniform=0"
+  },
+  {
+   "site": "S3",
+   "test": "P-F f2 alphabet stability (raw)",
+   "status": "PASS",
+   "detail": "distinct alphabets=1 sizes=[27]"
+  },
+  {
+   "site": "S3",
+   "test": "P-F species read-fiber constancy [measured data]",
+   "status": "INFO",
+   "detail": "subcells=27 nonuniform=0 distinct-alphabets=27"
+  },
+  {
+   "site": "S3",
+   "test": "P-F species joint table sample [measured data]",
+   "status": "INFO",
+   "detail": "total=531441 entries=125 sample=[((('deep',), ('deep',), ('deep',)), 729), ((('deep',), ('deep',), (0, 1)), 2187), ((('deep',), ('deep',), (0, 2)), 2187), ((('deep',), ('deep',), (1, 1)), 729), ((('deep',), ('deep',), (1, 2)), 729), ((('deep',), (0, 1), ('deep',)), 2187)]"
+  },
+  {
+   "site": "S3",
+   "test": "P-G g1 aggregate uniformity (C1a instance)",
+   "status": "PASS",
+   "detail": "aggregate counts=[19683]"
+  },
+  {
+   "site": "S3",
+   "test": "P-G g2 (SIB) product identity raw words",
+   "status": "PASS",
+   "detail": "joint words=27 violations=0"
+  },
+  {
+   "site": "S3",
+   "test": "P-G g2 (SIB) product identity species words",
+   "status": "PASS",
+   "detail": "joint species=125 violations=0"
+  },
+  {
+   "site": "S3",
+   "test": "site wall-time",
+   "status": "INFO",
+   "detail": "4.1s"
+  },
+  {
+   "site": "S3b",
+   "test": "integrity rho",
+   "status": "PASS",
+   "detail": "computed=3 sealed=3"
+  },
+  {
+   "site": "S3b",
+   "test": "integrity Smith es (sum sealed)",
+   "status": "PASS",
+   "detail": "measured=[0, 0, 0, 1, 2] sealed_sum=3"
+  },
+  {
+   "site": "S3b",
+   "test": "sweep",
+   "status": "INFO",
+   "detail": "mode=axis+rand(42821) members=42821 N=8"
+  },
+  {
+   "site": "S3b",
+   "test": "P-A K-JAC v(detPhi)=rho on cell",
+   "status": "PASS",
+   "detail": "sampled=300 bad=0 rho=3"
+  },
+  {
+   "site": "S3b",
+   "test": "P-B (i) branch0(HEN) delta cell-constant",
+   "status": "PASS",
+   "detail": "d1set=[2] d0set=[2] sealed=2 skip0=14243 noroot=0"
+  },
+  {
+   "site": "S3b",
+   "test": "P-C (ii) branch0(HEN) unit-scalar cell-constant",
+   "status": "PASS",
+   "detail": "u1set=[1] u0set=[1] sealed=1"
+  },
+  {
+   "site": "S3b",
+   "test": "P-D d1 branch0(HEN) cofactor-independence",
+   "status": "PASS",
+   "detail": "gj-classes=81 violations=0"
+  },
+  {
+   "site": "S3b",
+   "test": "P-D d2 branch0(HEN) word-graph bijection",
+   "status": "PASS",
+   "detail": "gwords=9 Fwords=9 maxfwd=1 maxbwd=1"
+  },
+  {
+   "site": "S3b",
+   "test": "P-D d3 branch0(HEN) measured K <= tau+rho+1",
+   "status": "PASS",
+   "detail": "K_measured=6 ceiling=8"
+  },
+  {
+   "site": "S3b",
+   "test": "P-B (i) branch1(HEN) delta cell-constant",
+   "status": "PASS",
+   "detail": "d1set=[2] d0set=[2] sealed=2 skip0=21194 noroot=0"
+  },
+  {
+   "site": "S3b",
+   "test": "P-C (ii) branch1(HEN) unit-scalar cell-constant",
+   "status": "PASS",
+   "detail": "u1set=[1] u0set=[1] sealed=1"
+  },
+  {
+   "site": "S3b",
+   "test": "P-D d1 branch1(HEN) cofactor-independence",
+   "status": "PASS",
+   "detail": "gj-classes=81 violations=0"
+  },
+  {
+   "site": "S3b",
+   "test": "P-D d2 branch1(HEN) word-graph bijection",
+   "status": "PASS",
+   "detail": "gwords=9 Fwords=9 maxfwd=1 maxbwd=1"
+  },
+  {
+   "site": "S3b",
+   "test": "P-D d3 branch1(HEN) measured K <= tau+rho+1",
+   "status": "PASS",
+   "detail": "K_measured=6 ceiling=8"
+  },
+  {
+   "site": "S3b",
+   "test": "P-B (i) branch2(HEN) delta cell-constant",
+   "status": "PASS",
+   "detail": "d1set=[2] d0set=[2] sealed=2 skip0=7808 noroot=0"
+  },
+  {
+   "site": "S3b",
+   "test": "P-C (ii) branch2(HEN) unit-scalar cell-constant",
+   "status": "PASS",
+   "detail": "u1set=[1] u0set=[1] sealed=1"
+  },
+  {
+   "site": "S3b",
+   "test": "P-D d1 branch2(HEN) cofactor-independence",
+   "status": "PASS",
+   "detail": "gj-classes=81 violations=0"
+  },
+  {
+   "site": "S3b",
+   "test": "P-D d2 branch2(HEN) word-graph bijection",
+   "status": "PASS",
+   "detail": "gwords=9 Fwords=9 maxfwd=1 maxbwd=1"
+  },
+  {
+   "site": "S3b",
+   "test": "P-D d3 branch2(HEN) measured K <= tau+rho+1",
+   "status": "PASS",
+   "detail": "K_measured=6 ceiling=8"
+  },
+  {
+   "site": "S3b",
+   "test": "P-E counts N=5",
+   "status": "PASS",
+   "detail": "survivors=243(sealed 243) image=27(sealed None; smith-pred 27)"
+  },
+  {
+   "site": "S3b",
+   "test": "P-E fiber constancy N=5",
+   "status": "PASS",
+   "detail": "fiber sizes=[9] pred=9"
+  },
+  {
+   "site": "S3b",
+   "test": "P-E (e3) product law N=5",
+   "status": "PASS",
+   "detail": "#Sigma*p^sM=243 prod#C_j=243 (sM=2)"
+  },
+  {
+   "site": "S3b",
+   "test": "P-E (e1) extraction accepts image N=5",
+   "status": "FAIL",
+   "detail": "false-negatives=10/27"
+  },
+  {
+   "site": "S3b",
+   "test": "P-E (e2) accepted == image N=5",
+   "status": "FAIL",
+   "detail": "accepted=17 image=27 false-pos=0"
+  },
+  {
+   "site": "S3b",
+   "test": "P-E guard diagnosis N=5",
+   "status": "INFO",
+   "detail": "D-8 guard tau+2rho=10 (scan BELOW-guard); blind zone N-emax=3 vs tau=4 => pins NOT covered (extraction round-trip promised only when covered)"
+  },
+  {
+   "site": "S3b",
+   "test": "P-E (e1g) IN-GUARD extraction sample N=10",
+   "status": "PASS",
+   "detail": "random image members=200 false-negatives=0"
+  },
+  {
+   "site": "S3b",
+   "test": "site wall-time",
+   "status": "INFO",
+   "detail": "3.6s"
+  },
+  {
+   "site": "S5",
+   "test": "integrity rho",
+   "status": "PASS",
+   "detail": "computed=3 sealed=3"
+  },
+  {
+   "site": "S5",
+   "test": "integrity Smith es",
+   "status": "PASS",
+   "detail": "measured=[0, 0, 1, 2] sealed=[0, 0, 1, 2]"
+  },
+  {
+   "site": "S5",
+   "test": "sweep",
+   "status": "INFO",
+   "detail": "mode=axis+rand(80694) members=80694 N=8"
+  },
+  {
+   "site": "S5",
+   "test": "P-A K-JAC v(detPhi)=rho on cell",
+   "status": "PASS",
+   "detail": "sampled=300 bad=0 rho=3"
+  },
+  {
+   "site": "S5",
+   "test": "P-B (i) branch0(RAMQ) delta cell-constant",
+   "status": "PASS",
+   "detail": "d1set=[3] d0set=[3] sealed=3 skip0=7062 noroot=0"
+  },
+  {
+   "site": "S5",
+   "test": "P-C (ii) branch0(RAMQ) unit-scalar cell-constant",
+   "status": "FAIL",
+   "detail": "u1set=[1] u0set=[1, 2] sealed=1"
+  },
+  {
+   "site": "S5",
+   "test": "P-C (ii') branch0(RAMQ) per-slope-parity unit constancy [SUPPLEMENTARY]",
+   "status": "PASS",
+   "detail": "u0 even-w=[1] odd-w=[2]"
+  },
+  {
+   "site": "S5",
+   "test": "P-D d1 branch0(RAMQ) cofactor-independence",
+   "status": "PASS",
+   "detail": "gj-classes=6561 violations=0"
+  },
+  {
+   "site": "S5",
+   "test": "P-D d2 branch0(RAMQ) word-graph bijection",
+   "status": "PASS",
+   "detail": "gwords=81 Fwords=81 maxfwd=1 maxbwd=1"
+  },
+  {
+   "site": "S5",
+   "test": "P-D d3 branch0(RAMQ) measured K <= tau+rho+1",
+   "status": "PASS",
+   "detail": "K_measured=6 ceiling=8"
+  },
+  {
+   "site": "S5",
+   "test": "P-B (i) branch1(RAMQ) delta cell-constant",
+   "status": "PASS",
+   "detail": "d1set=[3] d0set=[3] sealed=3 skip0=7073 noroot=0"
+  },
+  {
+   "site": "S5",
+   "test": "P-C (ii) branch1(RAMQ) unit-scalar cell-constant",
+   "status": "FAIL",
+   "detail": "u1set=[2] u0set=[1, 2] sealed=2"
+  },
+  {
+   "site": "S5",
+   "test": "P-C (ii') branch1(RAMQ) per-slope-parity unit constancy [SUPPLEMENTARY]",
+   "status": "PASS",
+   "detail": "u0 even-w=[2] odd-w=[1]"
+  },
+  {
+   "site": "S5",
+   "test": "P-D d1 branch1(RAMQ) cofactor-independence",
+   "status": "PASS",
+   "detail": "gj-classes=6561 violations=0"
+  },
+  {
+   "site": "S5",
+   "test": "P-D d2 branch1(RAMQ) word-graph bijection",
+   "status": "PASS",
+   "detail": "gwords=81 Fwords=81 maxfwd=1 maxbwd=1"
+  },
+  {
+   "site": "S5",
+   "test": "P-D d3 branch1(RAMQ) measured K <= tau+rho+1",
+   "status": "PASS",
+   "detail": "K_measured=6 ceiling=8"
+  },
+  {
+   "site": "S5",
+   "test": "P-E counts N=5",
+   "status": "PASS",
+   "detail": "survivors=81(sealed 81) image=9(sealed 9; smith-pred 9)"
+  },
+  {
+   "site": "S5",
+   "test": "P-E fiber constancy N=5",
+   "status": "PASS",
+   "detail": "fiber sizes=[9] pred=9"
+  },
+  {
+   "site": "S5",
+   "test": "P-E (e3) product law N=5",
+   "status": "PASS",
+   "detail": "#Sigma*p^sM=81 prod#C_j=81 (sM=2)"
+  },
+  {
+   "site": "S5",
+   "test": "P-E (e1) extraction accepts image N=5",
+   "status": "FAIL",
+   "detail": "false-negatives=6/9"
+  },
+  {
+   "site": "S5",
+   "test": "P-E (e2) accepted == image N=5",
+   "status": "FAIL",
+   "detail": "accepted=3 image=9 false-pos=0"
+  },
+  {
+   "site": "S5",
+   "test": "P-E guard diagnosis N=5",
+   "status": "INFO",
+   "detail": "D-8 guard tau+2rho=10 (scan BELOW-guard); blind zone N-emax=3 vs tau=4 => pins NOT covered (extraction round-trip promised only when covered)"
+  },
+  {
+   "site": "S5",
+   "test": "P-E counts N=6",
+   "status": "PASS",
+   "detail": "survivors=6561(sealed 6561) image=243(sealed 243; smith-pred 243)"
+  },
+  {
+   "site": "S5",
+   "test": "P-E fiber constancy N=6",
+   "status": "PASS",
+   "detail": "fiber sizes=[27] pred=27"
+  },
+  {
+   "site": "S5",
+   "test": "P-E (e3) product law N=6",
+   "status": "PASS",
+   "detail": "#Sigma*p^sM=6561 prod#C_j=6561 (sM=3)"
+  },
+  {
+   "site": "S5",
+   "test": "P-E (e1) extraction accepts image N=6",
+   "status": "PASS",
+   "detail": "false-negatives=0/243"
+  },
+  {
+   "site": "S5",
+   "test": "P-E (e2) accepted == image N=6",
+   "status": "PASS",
+   "detail": "accepted=243 image=243 false-pos=0"
+  },
+  {
+   "site": "S5",
+   "test": "P-E guard diagnosis N=6",
+   "status": "INFO",
+   "detail": "D-8 guard tau+2rho=10 (scan BELOW-guard); blind zone N-emax=4 vs tau=4 => pins covered (extraction round-trip promised only when covered)"
+  },
+  {
+   "site": "S5",
+   "test": "P-E (e1g) IN-GUARD extraction sample N=10",
+   "status": "PASS",
+   "detail": "random image members=200 false-negatives=0"
+  },
+  {
+   "site": "S5",
+   "test": "site wall-time",
+   "status": "INFO",
+   "detail": "7.4s"
+  },
+  {
+   "site": "S6",
+   "test": "integrity rho",
+   "status": "PASS",
+   "detail": "computed=1 sealed=1"
+  },
+  {
+   "site": "S6",
+   "test": "integrity Smith es",
+   "status": "PASS",
+   "detail": "measured=[0, 0, 1] sealed=[0, 0, 1]"
+  },
+  {
+   "site": "S6",
+   "test": "sweep",
+   "status": "INFO",
+   "detail": "mode=axis+rand(41207) members=41207 N=6"
+  },
+  {
+   "site": "S6",
+   "test": "P-A K-JAC v(detPhi)=rho on cell",
+   "status": "PASS",
+   "detail": "sampled=300 bad=0 rho=1"
+  },
+  {
+   "site": "S6",
+   "test": "P-B (i) branch0(HEN) delta cell-constant",
+   "status": "PASS",
+   "detail": "d1set=[1] d0set=[1] sealed=1 skip0=13303 noroot=0"
+  },
+  {
+   "site": "S6",
+   "test": "P-C (ii) branch0(HEN) unit-scalar cell-constant",
+   "status": "PASS",
+   "detail": "u1set=[2] u0set=[2] sealed=2"
+  },
+  {
+   "site": "S6",
+   "test": "P-D d1 branch0(HEN) cofactor-independence",
+   "status": "PASS",
+   "detail": "gj-classes=81 violations=0"
+  },
+  {
+   "site": "S6",
+   "test": "P-D d2 branch0(HEN) word-graph bijection",
+   "status": "PASS",
+   "detail": "gwords=9 Fwords=9 maxfwd=1 maxbwd=1"
+  },
+  {
+   "site": "S6",
+   "test": "P-D d3 branch0(HEN) measured K <= tau+rho+1",
+   "status": "PASS",
+   "detail": "K_measured=4 ceiling=4"
+  },
+  {
+   "site": "S6",
+   "test": "P-B (i) branch1(RAMQ) delta cell-constant",
+   "status": "PASS",
+   "detail": "d1set=[1] d0set=[1] sealed=1 skip0=578 noroot=0"
+  },
+  {
+   "site": "S6",
+   "test": "P-C (ii) branch1(RAMQ) unit-scalar cell-constant",
+   "status": "PASS",
+   "detail": "u1set=[1] u0set=[1] sealed=1"
+  },
+  {
+   "site": "S6",
+   "test": "P-C (ii') branch1(RAMQ) per-slope-parity unit constancy [SUPPLEMENTARY]",
+   "status": "PASS",
+   "detail": "u0 even-w=[1] odd-w=[1]"
+  },
+  {
+   "site": "S6",
+   "test": "P-D d1 branch1(RAMQ) cofactor-independence",
+   "status": "PASS",
+   "detail": "gj-classes=6561 violations=0"
+  },
+  {
+   "site": "S6",
+   "test": "P-D d2 branch1(RAMQ) word-graph bijection",
+   "status": "PASS",
+   "detail": "gwords=27 Fwords=27 maxfwd=1 maxbwd=1"
+  },
+  {
+   "site": "S6",
+   "test": "P-D d3 branch1(RAMQ) measured K <= tau+rho+1",
+   "status": "PASS",
+   "detail": "K_measured=4 ceiling=4"
+  },
+  {
+   "site": "S6",
+   "test": "P-E counts N=4",
+   "status": "PASS",
+   "detail": "survivors=729(sealed 729) image=243(sealed 243; smith-pred 243)"
+  },
+  {
+   "site": "S6",
+   "test": "P-E fiber constancy N=4",
+   "status": "PASS",
+   "detail": "fiber sizes=[3] pred=3"
+  },
+  {
+   "site": "S6",
+   "test": "P-E (e3) product law N=4",
+   "status": "PASS",
+   "detail": "#Sigma*p^sM=729 prod#C_j=729 (sM=1)"
+  },
+  {
+   "site": "S6",
+   "test": "P-E (e1) extraction accepts image N=4",
+   "status": "PASS",
+   "detail": "false-negatives=0/243"
+  },
+  {
+   "site": "S6",
+   "test": "P-E (e2) accepted == image N=4",
+   "status": "PASS",
+   "detail": "accepted=243 image=243 false-pos=0"
+  },
+  {
+   "site": "S6",
+   "test": "P-E guard diagnosis N=4",
+   "status": "INFO",
+   "detail": "D-8 guard tau+2rho=4 (scan in-guard); blind zone N-emax=3 vs tau=2 => pins covered (extraction round-trip promised only when covered)"
+  },
+  {
+   "site": "S6",
+   "test": "site wall-time",
+   "status": "INFO",
+   "detail": "2.3s"
+  }
+ ],
+ "npass": 139,
+ "nfail": 8,
+ "ninfo": 26,
+ "seconds": 23.3
+}

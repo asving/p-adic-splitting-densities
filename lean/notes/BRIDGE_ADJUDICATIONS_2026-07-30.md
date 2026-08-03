@@ -5419,3 +5419,30 @@ inter-clause contradiction at ramified deep reads. `DIterJunctionSupplier`
 NOT refuted (Φnext existential; e = 1 refinement recordings unaffected).
 Any SideReads repair = statement change, ROOT authority. Note:
 `lean/notes/openmath/JUNCFORGE_S2_2026-08-08.md`.
+
+## N-H7-1 EXECUTED (numerics unit, 2026-08-08): the (H7) pair SURVIVES first contact at REAL m ≥ 2 sites — with two measured boundary pins
+
+`verification/openmath/h7_kloc_probe.py` (sealed-before-run, pure Python exact
+integers) built the corpus's first non-degenerate (I-τ)/K-LOC decision points:
+six sites, (p,n) ∈ {(5,4),(2,4),(3,3),(3,5),(3,4),(3,3)} — F1-shape RAM pair,
+the blueprint-named wild pair (x²+2)(x²+2x+2), m = 3 HEN roster, genuine-f₀/C₀
+variant, F₃^×-unit wild pair, side-separation mixed-degree (KL-1b face).
+**139 PASS / 8 FAIL / 26 INFO**, every FAIL classified.  GREEN faces: K-JAC
+constancy; K-LOC (i) λ-side translation (sealed δ_j singleton-observed
+everywhere); (ii) at the fixed-λ vertex incl. nontrivial u = 2 predictions;
+(iii′)-core (cofactor-independence + word bijection + K ≤ τ+ρ+1, tight at two
+sites); (I-τ) counts/fibers/product law exact at ALL scans incl. #C₀; IT-4b
+raw-word read-fiber constancy + alphabet stability on full 65,536/531,441
+tables (species merging words: within-sub-cell constancy ALSO held); route-B
+C1a/C1b arithmetic zero-violation (m = 2 and 3).  **PIN 1 (clause (ii)):**
+slope-POOLED unit transport REFUTED at S5 both branches (u0 ∈ {1,2}); flip =
+unit of the frame's x²-reduction constant, fires exactly on x-dominated
+deviations; per-slope-parity sets are singletons — §1.1(ii)'s per-slope form
+(risk-(c) ℓ-shift covariance) survives; any `KLocSemantic` ε-field must key by
+realized slope.  **PIN 2 (IT-2 extraction):** constructive Lemma-A round-trip
+fails EXACTLY where the blind zone stops covering the pins (N−e_max < τ: 2/4,
+10/27, 6/9 false-negatives at N = 5; zero false-positives anywhere; all
+pins-covered scans + 4×200 in-guard samples at N = τ+2ρ clean) — the D-8
+guard measured as the extraction boundary; decide-small semantic gates must
+sit in-guard.  Open kernels untouched (KL-0, KL-3, IT-2 ⊇, order ≥ 2).
+Note: `lean/notes/openmath/NH71_2026-08-08.md`.
