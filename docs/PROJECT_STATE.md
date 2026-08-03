@@ -2075,3 +2075,26 @@ Verification: VC1–VC22 done; VC25 NOT-CONFIRMED (disposed); VC26+VC26b,
 VC27+VC27b CONFIRMED; VC28, VC29 CONFIRMED FIRST-PASS; **VC30 (1C, cured
 by the r29-ERRATUM) + VC30b CONFIRMED (= the REVISION-28 anchor)**; VC31
 pending on REVISION 29.
+
+## LEDGER 2026-08-08 (UB-X) WALK ON FILE (synthesis-7 queue #7, named dispatch — the twice-dropped item executed)
+
+The (UB-X) consumer-need walk note is ON FILE:
+`lean/notes/openmath/UBX_WALK_2026-08-08.md` — the doc walk that is
+condition (5)'s substance for the Route-B re-scope (H4M7 §4's F-B).
+Consumption-site map complete under ROOT's exhaustive-attribution warrant
+(three site families: clause (R)/Step-18 K3-c via (K3-δ); clause
+(UB)/Step 16; the Scaffold typed faces). VERDICT: the drafted re-scope
+(the note's defined term RB-DELTA = the H4M7 §4 delta, exactly) is
+**CONSUMER-VISIBLE, not display-only** — need-exact and strictly
+improving at clause (R); a supply NARROWING at Step 16 (exponent + letter
+supplied at realized positions, F_{p^δ}-linearity at
+realized-not-Stable positions no longer promised) whose dropped conjunct
+has NO on-file consumer, prose or compiled (H4M7's fallback trigger
+unfired on the written corpus; honest limit displayed — the clause-(UB)
+composition is unwritten); a Prop-content statement change with preserved
+derivation shape at the Lean faces. F-B conditions (1)–(4) read SATISFIED
+on the record; **condition (5) — Asvin sign-off + the ROOT owner's
+acceptance pass on the walk — is the only open gate**; the note's §6 is
+the one-paragraph decision (full-scope RB-DELTA vs the clause-(R)-only
+narrow fallback). NOTHING adopted, nothing discharged, no Lean edits —
+the Asvin-queue item "Route-B re-scope (after #7)" is now fully teed up.
