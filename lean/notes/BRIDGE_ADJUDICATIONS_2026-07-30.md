@@ -8138,3 +8138,19 @@ brackets.
 0/2, hostile arc continues); round 2 (PC2+PE2 under the amended rule-8
 standard) is the arc's next step, on this errata text. Unit files: the note
 + this append ONLY (scoped `git commit --only`).
+
+## ACCEPTANCE RE-ANCHORED at REVISION 37 + r38b / VC38+VC38b — 2026-08-03 (the NINETEENTH re-anchoring)
+
+The VC38 arc closes: VC38 (end-to-end on REVISION 37 @4df7fdb, frozen-history
+trim, census 101/101 + sorry census 34 reproduced; NOT-CONFIRMED 0C/9G — eight
+rule-8-literalism gaps + one miscount) → THE INCORPORATION CONVENTION adjudicated
+(9f9910c) → r38b (6e57b1b: the §0 declaration with both blocks pasted once,
+dagger sweep, miscount fix) → VC38b CONFIRMED 0C/0G under the amended standard
+(report this commit; the operative-site test passed at all eight sites). The
+certified perimeter now includes REVISION 37's fold: the [IL3] acceptance (the
+rung-2 law, accepted-off-DCX), the rung ledger (n = 1 ACCEPTED · n = 2
+ACCEPTED-OFF-DCX · n = 3 MEASURED GREEN), the general-n note's landing with its
+two-family priced distance, and the incorporation convention as the standing
+citation discipline. Post-pin arcs continue on their own bars: the ITERLAWN
+acceptance arc (round 1 adjudicated, errata ac03cb1 applied, PE2 in flight,
+PC2 sequenced on PE2) and the public-exposition update (site 72de730, live).
