@@ -1,0 +1,29 @@
+[   0.5s] ring (Zp,p=2) done: viol=0 G=0 S3P=0
+[  10.3s] ring (Zp,p=3) done: viol=0 G=0 S3P=0
+[  12.4s] ring (Fpt,p=2) done: viol=0 G=0 S3P=0
+[  23.6s] ring (Fpt,p=3) done: viol=0 G=0 S3P=0
+
+==============================================================================
+TR3-S3 FALSIFIER — PREDICTED vs OBSERVED (violations; samples in parens)
+==============================================================================
+E2A  per-abscissa composed identity + support       pred 0  obs     0 (  2241)  GREEN
+E2B  side-read two-form as lists + j0 law           pred 0  obs     0 (   816)  GREEN
+RI   kernel: s==0, l==0, eps1==eps2==1              pred 0  obs     0 ( 14797)  GREEN
+RII  inner TR3-S1 on the digit + m0 = s2(A)         pred 0  obs     0 (  1141)  GREEN
+RIII t2 absorption t2 == s2(A) integral             pred 0  obs     0 (  1141)  GREEN
+RIV  recomposition from level-2 GMN data            pred 0  obs     0 (  1141)  GREEN
+Z2   off-line vanishing + own-weight cross-val      pred 0  obs     0 (   768)  GREEN
+XV   fresh vs probe FGMN pipeline                   pred 0  obs     0 (   816)  GREEN
+W    prescribed-value end-to-end (noise/holes)      pred 0  obs     0 (   144)  GREEN
+K    label ties at Phi3 (both pipelines = psi2)     pred 0  obs     0 (    24)  GREEN
+O    matched-label ord transport                    pred 0  obs     0 (   816)  GREEN
+CERT external/integrity legs (G + S3P + local)     pred 0  obs     0 (    24)  GREEN
+METER m0pos: on-line slots with m0 = s2(A) > 0: 85  MATCH
+METER j0pos: samples with j0 > 0: 173  MATCH
+METER noff: off-line nonzero-digit slots computed: 902  MATCH
+METER noisy: W draws noise-dressed: 72  MATCH
+METER holes: W draws with holes: 64  MATCH
+METER wfail: W construction failures == 0: 0  MATCH
+METER ord histogram: 0:744 1:38 2:34 (pred: some ord >= 1)  MATCH
+TOTAL samples: 23869   elapsed 23.6s
+VERDICT (preregistered rows): ALL GREEN

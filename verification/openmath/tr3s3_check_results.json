@@ -1,0 +1,33 @@
+{
+ "seed": 20260818,
+ "violations": [],
+ "g_violations": [],
+ "s3p_violations": [],
+ "counts": {
+  "CERT": 24,
+  "K": 24,
+  "RI": 14797,
+  "Z2": 768,
+  "W": 144,
+  "E2A": 2241,
+  "RII": 1141,
+  "RIII": 1141,
+  "RIV": 1141,
+  "E2B": 816,
+  "XV": 816,
+  "O": 816
+ },
+ "meters": {
+  "m0pos": 85,
+  "j0pos": 173,
+  "noff": 902,
+  "noisy": 72,
+  "holes": 64,
+  "wfail": 0
+ },
+ "ord_hist": {
+  "0": 744,
+  "1": 38,
+  "2": 34
+ }
+}
