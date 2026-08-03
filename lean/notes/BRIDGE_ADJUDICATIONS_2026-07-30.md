@@ -6777,3 +6777,43 @@ untouched); the banked sorry RETIRED (corpus at zero banked; capstone
 footprints unchanged); the H7 forge first compiled decision point (nothing
 discharges (H7)); DITERSUP priced with every gate BLOCKED-ON-APPLICATION.
 SYNTHESIS PASS 8 in flight; its queue = wave 18.
+
+---
+
+## SYNTHESIS PASS 8 ON FILE — 2026-08-08 (wallclock 2026-08-03; the wave-16/17 close; the wave-18 dispatch map)
+
+`docs/SYNTHESIS_PASS8_2026-08-08.md` is the dispatch of record for wave 18
+(successor to pass 7; anchored on the freshly-re-read ledger tail through the
+VC36c re-anchoring entry, f89e60c). Nothing in it changes any proof status,
+roster row, or clause attribution — a synthesis unit maps, it does not
+discharge. Headlines: (S1) the window ledger — TR3-S4 + ITER-LAW ACCEPTED
+(ITER-LAW on the harness tower class, standard-lift, with all three residuals
+displayed: (ITER-LAW-LIFT) at g₀ = 1 ∧ δ₁ = 1; the gr(w₂) wrapper riding the
+accepted GRB retarget consumer-side; orders ≥ 3 untouched), the banked sorry
+RETIRED (corpus at zero banked), the H7 forge first compiled decision point
+(nothing discharges (H7)), DITERSUP priced with every gate
+BLOCKED-ON-APPLICATION, the VC36→VC36b→VC36c cascade closing at the
+seventeenth re-anchoring. (S3) verdicts — (i) ITER-LAW-r level-3 cocycle
+ACCEPTED as the deeper-strata probe-first candidate (probe-first fences
+honored; retires the per-stratum arc treadmill on success); (ii) the single
+anchor/PAIR-VAL transport lemma REFUTED as stated (formalism bridge over the
+unaccepted §B2-FINAL), the narrower gr(w₂)-tie-as-PAIR-VAL-consumer design
+ACCEPTED; (iii) D-REAL degeneration ACCEPTED narrowly at the (ITER-LAW-LIFT)
+g₀ = 1 ∧ δ₁ = 1 corner + JS2, refuted elsewhere; (iv) HullStability reuse
+ACCEPTED for the Scaffold `L6e_covers` hull blocker, REFUTED for order-≥ 2
+faithfulness; (v) literature PARTIAL — (H1)'s print side already
+citation-carried, the conformance rows ((FRESH)/(ADM)/(PACK)/(H6)/(H7)/(H8′))
+proved-or-restructured only, stop hunting cites; (vi) NEW check-at-application
+rider — the FGMN double-scale defect and the V10/V9 steep-read inconsistency
+plausibly share one root cause (not asserted; auditable only on the actual
+application diff); (vii) the FGMN application gate (P0, Asvin) is the
+schedule's articulation point. (S4) the wave-18 queue: 1 Asvin batch (P0 at
+top, + the S3-vi rider) · 2 ITER-LAW-r level-3 probe (sealed prereg, mixed
+blocks in battery 1) · 3 HK23/HK25 depth-2 transplant onto the H7 forge ·
+4 gr(w₂) tie design note · 5 (ITER-LAW-LIFT) corner attempt · 6 L6e_covers
+hull re-point audit · 7 P1 + JS1/JS2 statements (application-independent) ·
+8 r37 fold + VC37 · 9 optional-batch forced dispositions · 10 background/
+blocked unchanged. Pass-7 execution audit: 10/10 executed, dropped-again ZERO.
+Doc-only unit: this note + the pass document; no .lean touched, no sealed or
+byte-frozen record touched; roster NINE unchanged; the Asvin batch unchanged
+at four items.
