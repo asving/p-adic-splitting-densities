@@ -566,3 +566,22 @@ confirmed-perimeter section are byte-identical.  **Acceptance counter: 0/2** (a
 revision does not advance it); passes 8+9 decide.
 
 — FGMN re-derivation REVISION 6, 2026-08-08 (wallclock 2026-08-03).
+
+## REVISION 7 (orchestrator-applied, per pass 8)
+
+Pass 8 (FGMN_pass8_report.md): GAPS-ONLY 0C/2G. Fixes:
+1. **The closure rule made OPERATIONAL (pass-8 gap 1)** — the REVISION-6 procedure is
+   pinned to an implementer-independent form: (a) matching is by LEAN IDENTIFIER
+   boundary — `grep -rnE '(^|[^A-Za-z0-9_'\''])<t>($|[^A-Za-z0-9_'\''!?])'` (not
+   substring); comments/docstrings count as references (they carry display obligations)
+   but are tagged [doc] in the census; (b) declaration kinds = {def, theorem, lemma,
+   abbrev, structure, class, inductive, instance, opaque, example-with-name}; a hit
+   inside a declaration's source span joins BY the declaration's fully-qualified name;
+   (c) ring entries ARE recursively expanded (same rule); the two prefix entries
+   (`SideClause`, `sideReads_`) are declared PREFIX-PATTERNS — they match any identifier
+   extending them, and each match joins as itself; (d) the fixpoint is over the union
+   (seed ∪ ring) from round 1. Two faithful implementers now compute the same set.
+2. The census/computational artifacts remain prover-side pending the F2c
+   verifier-owned execution (pass-8 gap 2 = the standing infrastructure item; pass 9
+   is a Fable pass WITH execution — it discharges this by construction).
+Counter stays 0/2; passes 9+10 decide.
