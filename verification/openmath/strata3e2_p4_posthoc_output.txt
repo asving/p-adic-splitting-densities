@@ -1,0 +1,25 @@
+OK  Zp,p=2,R2A: observed=True corrected-literal=True class-div=True sealed-pred=True
+OK  Zp,p=2,R2B: observed=True corrected-literal=True class-div=True sealed-pred=True
+OK  Zp,p=2,R2C: observed=False corrected-literal=False class-div=False sealed-pred=False
+OK  Zp,p=2,R2D: observed=True corrected-literal=True class-div=True sealed-pred=False
+OK  Zp,p=2,R2E: observed=True corrected-literal=True class-div=True sealed-pred=True
+OK  Zp,p=2,R2F: observed=True corrected-literal=True class-div=True sealed-pred=False
+OK  Zp,p=3,R2A: observed=True corrected-literal=True class-div=True sealed-pred=True
+OK  Zp,p=3,R2B: observed=True corrected-literal=True class-div=True sealed-pred=False
+OK  Zp,p=3,R2C: observed=True corrected-literal=True class-div=True sealed-pred=True
+OK  Zp,p=3,R2D: observed=True corrected-literal=True class-div=True sealed-pred=False
+OK  Zp,p=3,R2E: observed=True corrected-literal=True class-div=True sealed-pred=True
+OK  Zp,p=3,R2F: observed=True corrected-literal=True class-div=True sealed-pred=False
+OK  Fpt,p=2,R2A: observed=True corrected-literal=True class-div=True sealed-pred=True
+OK  Fpt,p=2,R2B: observed=True corrected-literal=True class-div=True sealed-pred=True
+OK  Fpt,p=2,R2C: observed=False corrected-literal=False class-div=False sealed-pred=False
+OK  Fpt,p=2,R2D: observed=True corrected-literal=True class-div=True sealed-pred=False
+OK  Fpt,p=2,R2E: observed=True corrected-literal=True class-div=True sealed-pred=True
+OK  Fpt,p=2,R2F: observed=True corrected-literal=True class-div=True sealed-pred=False
+OK  Fpt,p=3,R2A: observed=True corrected-literal=True class-div=True sealed-pred=True
+OK  Fpt,p=3,R2B: observed=True corrected-literal=True class-div=True sealed-pred=False
+OK  Fpt,p=3,R2C: observed=True corrected-literal=True class-div=True sealed-pred=True
+OK  Fpt,p=3,R2D: observed=True corrected-literal=True class-div=True sealed-pred=False
+OK  Fpt,p=3,R2E: observed=True corrected-literal=True class-div=True sealed-pred=True
+OK  Fpt,p=3,R2F: observed=True corrected-literal=True class-div=True sealed-pred=False
+corrected literal formula matches observed: 24/24 CONFIRMED; literal-divergent 22/24, CLASS-divergent 22/24

@@ -1,0 +1,47 @@
+[   1.3s] ring (Zp,p=2) done: cumulative violations = 2 (+CERT2 0, G-side 0)
+[   2.9s] ring (Zp,p=3) done: cumulative violations = 5 (+CERT2 0, G-side 0)
+[   8.4s] ring (Fpt,p=2) done: cumulative violations = 7 (+CERT2 0, G-side 0)
+[  14.9s] ring (Fpt,p=3) done: cumulative violations = 10 (+CERT2 0, G-side 0)
+
+==============================================================================
+TWIST-3 PROBE (order-3, e0=1, e1>=2, e2=1) — PREDICTED vs OBSERVED
+==============================================================================
+C1  (TWIST-3) CF = z2^(th2*sj)*cG        [THE LAW]            pred 0  obs     0 (  1656)  GREEN
+P0  GMN-3 integrity (t2 int, comp, c!=0) [SEALED]             pred 0  obs     0 (  6356)  GREEN
+P1  support agreement level 3            [CONJ comp.]         pred 0  obs     0 (  4363)  GREEN
+P2  level-3 A-GEN z-shift (m0 in Z>=0)   [CONJ comp.]         pred 0  obs     0 (  2274)  GREEN
+P3  digit-level order-2 identity         [TR3-S1]             pred 0  obs     0 (  2274)  GREEN
+P4  key class = theta2-twisted psi2      [KEY0 lift]          pred 0  obs    10 (    24)  RED
+P5  matched-LABEL ord transport (kG)     [ORD-INV]            pred 0  obs     0 (  1656)  GREEN
+V1  VAL-3 multiplicativity               [BUG-DET]            pred 0  obs     0 (   240)  GREEN
+V2  R3 total multiplicativity            [BUG-DET]            pred 0  obs     0 (   240)  GREEN
+V3  W-MULT-3, delta == 0 (no-carry ctrl) [BUG-DET]            pred 0  obs     0 (   240)  GREEN
+V4  key lift R3(Phi3)=psi2 exact         [BUG-DET]            pred 0  obs     0 (    24)  GREEN
+V5  two-form/support shape + j0          [BUG-DET]            pred 0  obs     0 (  1656)  GREEN
+M0  design-table tripwire                [BUG-DET]            pred 0  obs     0 (    24)  GREEN
+    (C1 on-line slot comparisons: 2274)
+CERT3 PARI order-3 external leg (Zp rows, e=e1 ramified)   pred 0  obs     0 (    12)  GREEN
+CERT2 order-2 tower certification (G.T1/T2/T5/T11)         pred 0  obs     0 (   420)  GREEN
+M1 reading-P refuted at P-visible slots: 1277/1277 (pred: equal, > 0)  MATCH
+M2 inner z-shift m0 > 0 exercised: 206 slots (pred > 0)  MATCH
+M3 t2 != 0 exercised: 2139 slots (pred > 0)  MATCH
+M4 twist-visible towers: 22/24 (pred 22 per design table)  MATCH
+M5 twist-visible on-line slots: 710 (pred > 0)  MATCH
+M6 naive IDENT-3 refuted at visible slots: 710/710 (pred: equal, > 0)  MATCH
+M7 marched increment == z2^(theta2*e2): 0 bad of 504 consecutive pairs (pred 0 bad, pairs > 0)  MATCH
+M8 naive shared-psi2 ord pairing mismatches (REPORT ONLY): 142
+P4' key-class divergent towers: 22/24 (pred > 0; criterion checked per tower)  MATCH
+P5 ord histogram (ord: count): 0:1507 1:84 2:64 3:1   (pred: some ord >= 1)  MATCH
+10 VIOLATIONS (first 30):
+   ('P4', 'Zp,p=2,R2D', 'key-divergence criterion mismatch: observed True, predicted False')
+   ('P4', 'Zp,p=2,R2F', 'key-divergence criterion mismatch: observed True, predicted False')
+   ('P4', 'Zp,p=3,R2B', 'key-divergence criterion mismatch: observed True, predicted False')
+   ('P4', 'Zp,p=3,R2D', 'key-divergence criterion mismatch: observed True, predicted False')
+   ('P4', 'Zp,p=3,R2F', 'key-divergence criterion mismatch: observed True, predicted False')
+   ('P4', 'Fpt,p=2,R2D', 'key-divergence criterion mismatch: observed True, predicted False')
+   ('P4', 'Fpt,p=2,R2F', 'key-divergence criterion mismatch: observed True, predicted False')
+   ('P4', 'Fpt,p=3,R2B', 'key-divergence criterion mismatch: observed True, predicted False')
+   ('P4', 'Fpt,p=3,R2D', 'key-divergence criterion mismatch: observed True, predicted False')
+   ('P4', 'Fpt,p=3,R2F', 'key-divergence criterion mismatch: observed True, predicted False')
+TOTAL samples: 23733   elapsed 14.9s
+VERDICT (preregistered rows): RED — see above

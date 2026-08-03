@@ -5807,3 +5807,33 @@ complement, and the dating-convention disclosure itself. Reports: VC31_report.md
 (f9aa7ef), VC31b_report.md (a63b9ef), VC31c_report.md (this commit). ROOT citation
 rides r31. VC32 next in cadence. In flight: wave 14 (FGMN re-derivation, (H-v3)
 discharge, F-ADM-3 re-key, TWIST-3 probe, (UB-X) walk).
+
+## 2026-08-08 — TWIST-3 PROBE (synthesis-7 queue #5, F2b): the ǫ-recurrence REVIVES at order-3 e₁ ≥ 2 with EXACTLY the sealed character — (TWIST-3) EXACT, TR3-S4 CHARTERED
+
+The sealed UNTESTED candidate (preregistered at STRATA3 d8ef8d8 §S3)
+measured on the e₁-isolated stratum (order 3, e₀ = 1, e₁ ∈ {2,3}, e₂ = 1;
+6 designed rows × 4 rings = 24 towers, 22/24 twist-visible by design,
+deg Φ₃ ≤ 12; seal 76513f8 pre-run, seed 20260818, 23,733 samples, rerun
+JSON-identical).  **THE MEASURED LAW = (TWIST-3): C^F3_j =
+z₂^{θ₂s_j}·c^G3_{s_j}, θ₂ = ℓ₁g₁γ₂, EXACT (0/1,656)** — the precise level
+shift of TR3-S2's order-2 θ = ℓ₀g₀γ₁; the degenerate/identity alternative
+(IDENT-3-persists) refuted at ALL 710 twist-visible slots (M6); marched
+increment z₂^{θ₂e₂} exact 504/504; marched-ǫ residue ≡ 1.  KEY0/ORD-INV
+lift confirmed: GMN-lawful key class = the θ₂-twisted ψ₂ class (24/24),
+divergent exactly on the 22 twist-visible towers; matched-label ord
+transport exact (0/1,656), naive shared-ψ₂ pairing fails 142× (report
+row).  Reading-P ǫ₂ refuted 1,277/1,277 with both readings nontrivial.
+CERT3: the genre's first PARI-certified RAMIFIED order-3 keys, (e,f) =
+(e₁, d₀g₀g₁g₂) 12/12.  HONESTY: exit 1 — ONE sealed row went RED, the P4′
+SECONDARY divergence-criterion display (10/24; root cause = unmonicized
+comparison + bottom-weighted formula; post-hoc script confirms corrected
+formula 24/24; the coefficient law itself green 24/24; zero harness
+amendments, red stands as committed).  Instances, not proofs; (H-v3)
+displayed.  **TR3-S4 CHARTERED** (exact law per the F2b protocol): the
+finite-algebra proof note for the θ₂-character at order-3 e₀ = 1/e₁ ≥ 2/
+e₂ = 1 states, route = ǫ₂-Bezout cancellation + A-GEN lift + TR3-S1 digits
++ t₂-absorption + KEY0/ORD-INV display lemmas; verifier-owned from-note
+implementation required at acceptance (pass-7 F2c).  Next stratum (e₀ ≥ 2
+stacked / e₂ ≥ 2 carry) probe-first, NO candidate sealed.  Note:
+`lean/notes/openmath/TWIST3_PROBE_2026-08-08.md`; harness
+`verification/openmath/strata3e2_probe.py` (+design/posthoc/output/JSON).

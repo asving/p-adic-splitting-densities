@@ -1,0 +1,1031 @@
+{
+ "seed": 20260818,
+ "violations": [
+  [
+   "P4",
+   "Zp,p=2,R2D",
+   "key-divergence criterion mismatch: observed True, predicted False"
+  ],
+  [
+   "P4",
+   "Zp,p=2,R2F",
+   "key-divergence criterion mismatch: observed True, predicted False"
+  ],
+  [
+   "P4",
+   "Zp,p=3,R2B",
+   "key-divergence criterion mismatch: observed True, predicted False"
+  ],
+  [
+   "P4",
+   "Zp,p=3,R2D",
+   "key-divergence criterion mismatch: observed True, predicted False"
+  ],
+  [
+   "P4",
+   "Zp,p=3,R2F",
+   "key-divergence criterion mismatch: observed True, predicted False"
+  ],
+  [
+   "P4",
+   "Fpt,p=2,R2D",
+   "key-divergence criterion mismatch: observed True, predicted False"
+  ],
+  [
+   "P4",
+   "Fpt,p=2,R2F",
+   "key-divergence criterion mismatch: observed True, predicted False"
+  ],
+  [
+   "P4",
+   "Fpt,p=3,R2B",
+   "key-divergence criterion mismatch: observed True, predicted False"
+  ],
+  [
+   "P4",
+   "Fpt,p=3,R2D",
+   "key-divergence criterion mismatch: observed True, predicted False"
+  ],
+  [
+   "P4",
+   "Fpt,p=3,R2F",
+   "key-divergence criterion mismatch: observed True, predicted False"
+  ]
+ ],
+ "cert2_violations": [],
+ "counts": {
+  "M0": 24,
+  "CERT3": 12,
+  "V4": 24,
+  "P4": 24,
+  "P0": 6356,
+  "C1": 1656,
+  "P1": 4363,
+  "C1x": 2274,
+  "P2": 2274,
+  "P3": 2274,
+  "V5": 1656,
+  "P5": 1656,
+  "V1": 240,
+  "V2": 240,
+  "V3": 240
+ },
+ "cert2_n": 420,
+ "meters": {
+  "p_visible": 1277,
+  "p_refuted": 1277,
+  "m0pos": 206,
+  "t2nz": 2139,
+  "vis_slots": 710,
+  "ident_refuted": 710,
+  "m7_pairs": 504,
+  "m7_bad": 0,
+  "m8_naive_ord_mismatch": 142
+ },
+ "ord_hist": {
+  "0": 1507,
+  "1": 84,
+  "2": 64,
+  "3": 1
+ },
+ "towers": [
+  {
+   "tower": "Zp,p=2,R2A",
+   "d0": 1,
+   "r0": [
+    1,
+    1,
+    2
+   ],
+   "r1": [
+    2,
+    1,
+    1
+   ],
+   "r2": [
+    1,
+    1,
+    2
+   ],
+   "gamma2": 5,
+   "gamma3": 11,
+   "theta2": 5,
+   "ord_z2": 3,
+   "twist_visible": true,
+   "degPhi3": 8,
+   "key_diverges": true
+  },
+  {
+   "tower": "Zp,p=2,R2B",
+   "d0": 1,
+   "r0": [
+    1,
+    1,
+    2
+   ],
+   "r1": [
+    2,
+    3,
+    1
+   ],
+   "r2": [
+    1,
+    3,
+    3
+   ],
+   "gamma2": 7,
+   "gamma3": 17,
+   "theta2": 7,
+   "ord_z2": 3,
+   "twist_visible": true,
+   "degPhi3": 12,
+   "key_diverges": true
+  },
+  {
+   "tower": "Zp,p=2,R2C",
+   "d0": 1,
+   "r0": [
+    1,
+    1,
+    1
+   ],
+   "r1": [
+    2,
+    1,
+    2
+   ],
+   "r2": [
+    1,
+    1,
+    2
+   ],
+   "gamma2": 3,
+   "gamma3": 13,
+   "theta2": 6,
+   "ord_z2": 3,
+   "twist_visible": false,
+   "degPhi3": 8,
+   "key_diverges": false
+  },
+  {
+   "tower": "Zp,p=2,R2D",
+   "d0": 2,
+   "r0": [
+    1,
+    1,
+    1
+   ],
+   "r1": [
+    2,
+    1,
+    2
+   ],
+   "r2": [
+    1,
+    1,
+    1
+   ],
+   "gamma2": 3,
+   "gamma3": 13,
+   "theta2": 6,
+   "ord_z2": 5,
+   "twist_visible": true,
+   "degPhi3": 8,
+   "key_diverges": true
+  },
+  {
+   "tower": "Zp,p=2,R2E",
+   "d0": 1,
+   "r0": [
+    1,
+    1,
+    2
+   ],
+   "r1": [
+    3,
+    1,
+    1
+   ],
+   "r2": [
+    1,
+    1,
+    2
+   ],
+   "gamma2": 7,
+   "gamma3": 22,
+   "theta2": 7,
+   "ord_z2": 3,
+   "twist_visible": true,
+   "degPhi3": 12,
+   "key_diverges": true
+  },
+  {
+   "tower": "Zp,p=2,R2F",
+   "d0": 1,
+   "r0": [
+    1,
+    1,
+    1
+   ],
+   "r1": [
+    3,
+    2,
+    2
+   ],
+   "r2": [
+    1,
+    1,
+    1
+   ],
+   "gamma2": 5,
+   "gamma3": 31,
+   "theta2": 20,
+   "ord_z2": 3,
+   "twist_visible": true,
+   "degPhi3": 6,
+   "key_diverges": true
+  },
+  {
+   "tower": "Zp,p=3,R2A",
+   "d0": 1,
+   "r0": [
+    1,
+    1,
+    2
+   ],
+   "r1": [
+    2,
+    1,
+    1
+   ],
+   "r2": [
+    1,
+    1,
+    2
+   ],
+   "gamma2": 5,
+   "gamma3": 11,
+   "theta2": 5,
+   "ord_z2": 2,
+   "twist_visible": true,
+   "degPhi3": 8,
+   "key_diverges": true
+  },
+  {
+   "tower": "Zp,p=3,R2B",
+   "d0": 1,
+   "r0": [
+    1,
+    1,
+    2
+   ],
+   "r1": [
+    2,
+    3,
+    1
+   ],
+   "r2": [
+    1,
+    3,
+    3
+   ],
+   "gamma2": 7,
+   "gamma3": 17,
+   "theta2": 7,
+   "ord_z2": 2,
+   "twist_visible": true,
+   "degPhi3": 12,
+   "key_diverges": true
+  },
+  {
+   "tower": "Zp,p=3,R2C",
+   "d0": 1,
+   "r0": [
+    1,
+    1,
+    1
+   ],
+   "r1": [
+    2,
+    1,
+    2
+   ],
+   "r2": [
+    1,
+    1,
+    2
+   ],
+   "gamma2": 3,
+   "gamma3": 13,
+   "theta2": 6,
+   "ord_z2": 8,
+   "twist_visible": true,
+   "degPhi3": 8,
+   "key_diverges": true
+  },
+  {
+   "tower": "Zp,p=3,R2D",
+   "d0": 2,
+   "r0": [
+    1,
+    1,
+    1
+   ],
+   "r1": [
+    2,
+    1,
+    2
+   ],
+   "r2": [
+    1,
+    1,
+    1
+   ],
+   "gamma2": 3,
+   "gamma3": 13,
+   "theta2": 6,
+   "ord_z2": 5,
+   "twist_visible": true,
+   "degPhi3": 8,
+   "key_diverges": true
+  },
+  {
+   "tower": "Zp,p=3,R2E",
+   "d0": 1,
+   "r0": [
+    1,
+    1,
+    2
+   ],
+   "r1": [
+    3,
+    1,
+    1
+   ],
+   "r2": [
+    1,
+    1,
+    2
+   ],
+   "gamma2": 7,
+   "gamma3": 22,
+   "theta2": 7,
+   "ord_z2": 2,
+   "twist_visible": true,
+   "degPhi3": 12,
+   "key_diverges": true
+  },
+  {
+   "tower": "Zp,p=3,R2F",
+   "d0": 1,
+   "r0": [
+    1,
+    1,
+    1
+   ],
+   "r1": [
+    3,
+    2,
+    2
+   ],
+   "r2": [
+    1,
+    1,
+    1
+   ],
+   "gamma2": 5,
+   "gamma3": 31,
+   "theta2": 20,
+   "ord_z2": 8,
+   "twist_visible": true,
+   "degPhi3": 6,
+   "key_diverges": true
+  },
+  {
+   "tower": "Fpt,p=2,R2A",
+   "d0": 1,
+   "r0": [
+    1,
+    1,
+    2
+   ],
+   "r1": [
+    2,
+    1,
+    1
+   ],
+   "r2": [
+    1,
+    1,
+    2
+   ],
+   "gamma2": 5,
+   "gamma3": 11,
+   "theta2": 5,
+   "ord_z2": 3,
+   "twist_visible": true,
+   "degPhi3": 8,
+   "key_diverges": true
+  },
+  {
+   "tower": "Fpt,p=2,R2B",
+   "d0": 1,
+   "r0": [
+    1,
+    1,
+    2
+   ],
+   "r1": [
+    2,
+    3,
+    1
+   ],
+   "r2": [
+    1,
+    3,
+    3
+   ],
+   "gamma2": 7,
+   "gamma3": 17,
+   "theta2": 7,
+   "ord_z2": 3,
+   "twist_visible": true,
+   "degPhi3": 12,
+   "key_diverges": true
+  },
+  {
+   "tower": "Fpt,p=2,R2C",
+   "d0": 1,
+   "r0": [
+    1,
+    1,
+    1
+   ],
+   "r1": [
+    2,
+    1,
+    2
+   ],
+   "r2": [
+    1,
+    1,
+    2
+   ],
+   "gamma2": 3,
+   "gamma3": 13,
+   "theta2": 6,
+   "ord_z2": 3,
+   "twist_visible": false,
+   "degPhi3": 8,
+   "key_diverges": false
+  },
+  {
+   "tower": "Fpt,p=2,R2D",
+   "d0": 2,
+   "r0": [
+    1,
+    1,
+    1
+   ],
+   "r1": [
+    2,
+    1,
+    2
+   ],
+   "r2": [
+    1,
+    1,
+    1
+   ],
+   "gamma2": 3,
+   "gamma3": 13,
+   "theta2": 6,
+   "ord_z2": 5,
+   "twist_visible": true,
+   "degPhi3": 8,
+   "key_diverges": true
+  },
+  {
+   "tower": "Fpt,p=2,R2E",
+   "d0": 1,
+   "r0": [
+    1,
+    1,
+    2
+   ],
+   "r1": [
+    3,
+    1,
+    1
+   ],
+   "r2": [
+    1,
+    1,
+    2
+   ],
+   "gamma2": 7,
+   "gamma3": 22,
+   "theta2": 7,
+   "ord_z2": 3,
+   "twist_visible": true,
+   "degPhi3": 12,
+   "key_diverges": true
+  },
+  {
+   "tower": "Fpt,p=2,R2F",
+   "d0": 1,
+   "r0": [
+    1,
+    1,
+    1
+   ],
+   "r1": [
+    3,
+    2,
+    2
+   ],
+   "r2": [
+    1,
+    1,
+    1
+   ],
+   "gamma2": 5,
+   "gamma3": 31,
+   "theta2": 20,
+   "ord_z2": 3,
+   "twist_visible": true,
+   "degPhi3": 6,
+   "key_diverges": true
+  },
+  {
+   "tower": "Fpt,p=3,R2A",
+   "d0": 1,
+   "r0": [
+    1,
+    1,
+    2
+   ],
+   "r1": [
+    2,
+    1,
+    1
+   ],
+   "r2": [
+    1,
+    1,
+    2
+   ],
+   "gamma2": 5,
+   "gamma3": 11,
+   "theta2": 5,
+   "ord_z2": 2,
+   "twist_visible": true,
+   "degPhi3": 8,
+   "key_diverges": true
+  },
+  {
+   "tower": "Fpt,p=3,R2B",
+   "d0": 1,
+   "r0": [
+    1,
+    1,
+    2
+   ],
+   "r1": [
+    2,
+    3,
+    1
+   ],
+   "r2": [
+    1,
+    3,
+    3
+   ],
+   "gamma2": 7,
+   "gamma3": 17,
+   "theta2": 7,
+   "ord_z2": 2,
+   "twist_visible": true,
+   "degPhi3": 12,
+   "key_diverges": true
+  },
+  {
+   "tower": "Fpt,p=3,R2C",
+   "d0": 1,
+   "r0": [
+    1,
+    1,
+    1
+   ],
+   "r1": [
+    2,
+    1,
+    2
+   ],
+   "r2": [
+    1,
+    1,
+    2
+   ],
+   "gamma2": 3,
+   "gamma3": 13,
+   "theta2": 6,
+   "ord_z2": 8,
+   "twist_visible": true,
+   "degPhi3": 8,
+   "key_diverges": true
+  },
+  {
+   "tower": "Fpt,p=3,R2D",
+   "d0": 2,
+   "r0": [
+    1,
+    1,
+    1
+   ],
+   "r1": [
+    2,
+    1,
+    2
+   ],
+   "r2": [
+    1,
+    1,
+    1
+   ],
+   "gamma2": 3,
+   "gamma3": 13,
+   "theta2": 6,
+   "ord_z2": 5,
+   "twist_visible": true,
+   "degPhi3": 8,
+   "key_diverges": true
+  },
+  {
+   "tower": "Fpt,p=3,R2E",
+   "d0": 1,
+   "r0": [
+    1,
+    1,
+    2
+   ],
+   "r1": [
+    3,
+    1,
+    1
+   ],
+   "r2": [
+    1,
+    1,
+    2
+   ],
+   "gamma2": 7,
+   "gamma3": 22,
+   "theta2": 7,
+   "ord_z2": 2,
+   "twist_visible": true,
+   "degPhi3": 12,
+   "key_diverges": true
+  },
+  {
+   "tower": "Fpt,p=3,R2F",
+   "d0": 1,
+   "r0": [
+    1,
+    1,
+    1
+   ],
+   "r1": [
+    3,
+    2,
+    2
+   ],
+   "r2": [
+    1,
+    1,
+    1
+   ],
+   "gamma2": 5,
+   "gamma3": 31,
+   "theta2": 20,
+   "ord_z2": 8,
+   "twist_visible": true,
+   "degPhi3": 6,
+   "key_diverges": true
+  }
+ ],
+ "residue_tables": [
+  {
+   "tower": "Zp,p=2,R2A",
+   "shape": "rand",
+   "theta2": 5,
+   "red": false,
+   "table": [
+    [
+     0,
+     "1",
+     "1"
+    ]
+   ]
+  },
+  {
+   "tower": "Zp,p=2,R2B",
+   "shape": "rand",
+   "theta2": 7,
+   "red": false,
+   "table": [
+    [
+     0,
+     "1",
+     "1"
+    ]
+   ]
+  },
+  {
+   "tower": "Zp,p=2,R2C",
+   "shape": "rand",
+   "theta2": 6,
+   "red": false,
+   "table": [
+    [
+     0,
+     "1",
+     "1"
+    ]
+   ]
+  },
+  {
+   "tower": "Zp,p=2,R2D",
+   "shape": "rand",
+   "theta2": 6,
+   "red": false,
+   "table": [
+    [
+     0,
+     "1",
+     "1"
+    ]
+   ]
+  },
+  {
+   "tower": "Zp,p=2,R2E",
+   "shape": "rand",
+   "theta2": 7,
+   "red": false,
+   "table": [
+    [
+     0,
+     "1",
+     "1"
+    ]
+   ]
+  },
+  {
+   "tower": "Zp,p=2,R2F",
+   "shape": "rand",
+   "theta2": 20,
+   "red": false,
+   "table": [
+    [
+     0,
+     "1",
+     "1"
+    ]
+   ]
+  },
+  {
+   "tower": "Zp,p=3,R2A",
+   "shape": "rand",
+   "theta2": 5,
+   "red": false,
+   "table": [
+    [
+     0,
+     "1",
+     "1"
+    ]
+   ]
+  },
+  {
+   "tower": "Zp,p=3,R2B",
+   "shape": "rand",
+   "theta2": 7,
+   "red": false,
+   "table": [
+    [
+     0,
+     "1",
+     "1"
+    ]
+   ]
+  },
+  {
+   "tower": "Zp,p=3,R2C",
+   "shape": "rand",
+   "theta2": 6,
+   "red": false,
+   "table": [
+    [
+     0,
+     "1",
+     "1"
+    ]
+   ]
+  },
+  {
+   "tower": "Zp,p=3,R2D",
+   "shape": "rand",
+   "theta2": 6,
+   "red": false,
+   "table": [
+    [
+     0,
+     "1",
+     "1"
+    ]
+   ]
+  },
+  {
+   "tower": "Zp,p=3,R2E",
+   "shape": "rand",
+   "theta2": 7,
+   "red": false,
+   "table": [
+    [
+     0,
+     "1",
+     "1"
+    ]
+   ]
+  },
+  {
+   "tower": "Zp,p=3,R2F",
+   "shape": "rand",
+   "theta2": 20,
+   "red": false,
+   "table": [
+    [
+     0,
+     "1",
+     "1"
+    ]
+   ]
+  },
+  {
+   "tower": "Fpt,p=2,R2A",
+   "shape": "rand",
+   "theta2": 5,
+   "red": false,
+   "table": [
+    [
+     0,
+     "1",
+     "1"
+    ]
+   ]
+  },
+  {
+   "tower": "Fpt,p=2,R2B",
+   "shape": "rand",
+   "theta2": 7,
+   "red": false,
+   "table": [
+    [
+     0,
+     "1",
+     "1"
+    ]
+   ]
+  },
+  {
+   "tower": "Fpt,p=2,R2C",
+   "shape": "rand",
+   "theta2": 6,
+   "red": false,
+   "table": [
+    [
+     0,
+     "1",
+     "1"
+    ]
+   ]
+  },
+  {
+   "tower": "Fpt,p=2,R2D",
+   "shape": "rand",
+   "theta2": 6,
+   "red": false,
+   "table": [
+    [
+     0,
+     "1",
+     "1"
+    ]
+   ]
+  },
+  {
+   "tower": "Fpt,p=2,R2E",
+   "shape": "rand",
+   "theta2": 7,
+   "red": false,
+   "table": [
+    [
+     0,
+     "1",
+     "1"
+    ]
+   ]
+  },
+  {
+   "tower": "Fpt,p=2,R2F",
+   "shape": "rand",
+   "theta2": 20,
+   "red": false,
+   "table": [
+    [
+     0,
+     "1",
+     "1"
+    ]
+   ]
+  },
+  {
+   "tower": "Fpt,p=3,R2A",
+   "shape": "rand",
+   "theta2": 5,
+   "red": false,
+   "table": [
+    [
+     0,
+     "1",
+     "1"
+    ]
+   ]
+  },
+  {
+   "tower": "Fpt,p=3,R2B",
+   "shape": "rand",
+   "theta2": 7,
+   "red": false,
+   "table": [
+    [
+     0,
+     "1",
+     "1"
+    ]
+   ]
+  },
+  {
+   "tower": "Fpt,p=3,R2C",
+   "shape": "rand",
+   "theta2": 6,
+   "red": false,
+   "table": [
+    [
+     0,
+     "1",
+     "1"
+    ]
+   ]
+  },
+  {
+   "tower": "Fpt,p=3,R2D",
+   "shape": "rand",
+   "theta2": 6,
+   "red": false,
+   "table": [
+    [
+     0,
+     "1",
+     "1"
+    ]
+   ]
+  },
+  {
+   "tower": "Fpt,p=3,R2E",
+   "shape": "rand",
+   "theta2": 7,
+   "red": false,
+   "table": [
+    [
+     0,
+     "1",
+     "1"
+    ]
+   ]
+  },
+  {
+   "tower": "Fpt,p=3,R2F",
+   "shape": "rand",
+   "theta2": 20,
+   "red": false,
+   "table": [
+    [
+     0,
+     "1",
+     "1"
+    ]
+   ]
+  }
+ ]
+}
