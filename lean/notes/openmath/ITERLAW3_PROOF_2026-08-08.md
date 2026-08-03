@@ -10,6 +10,25 @@ NEXT wave's; this note is composed verification-ready: explicit claim DAG in
 S8, every citation pinned to note-section or ledger-block). Author: Fable,
 wave-19 unit 2, campaign date 2026-08-08 (wallclock 2026-08-03).
 
+**[ACCEPTED 2026-08-03 — the hostile-pass arc closed at the 2-clean
+model-diverse bar on THIS (a687b80) text: PC3 (Codex) CLEAN 0C/0G
+(`ITERLAW3_passPC3_report.md`, 5bdca01) + PE3 (Fable) CLEAN 0C/0G/0-nits
+(`ITERLAW3_passPE3_report.md`, f288b73). Arc of record: R1 PC1 2C/1G + PE1
+1C/1G (convergent) → errata r1 f9daca0 (COR-3 off-DCX; DEV-1 scope; rung
+relabel) → R2 PC2 1C/1G + PE2 0C/2G (convergent, both new-narrow) → errata
+r2 a687b80 (the S4.5 display-line link; the S6.6 dictionary rung tokens) →
+R3 double-clean. SCOPE AS ACCEPTED: the (ITER-LAW-3) display
+c₃ = z̄^{δ₃}·z₂^{D₂}·z₁^{D₁} PROVED on the 3-read standard-lift harness
+class OFF the DCX corner {g₀ = g₁ = 1, δ₁ = 1, s₂(γ) = s₂(γ′) = e₁−1,
+S₁+s(γ₂) ≥ 2e₀} (EMPTY at e₀ ≤ 2) — RUNG n = 2 of (ITER-LAW-n). RESIDUALS:
+(W-MULT-3-DCX) OPEN (instance-true 132/132 across the PE/PE2 witness
+batteries); the fenced non-consumed DEV-1 corner {e₀=1 ∧ d₀≥2 ∧ j≥g₀}; the
+consumed [IL] base's own package rides through wherever this note is cited.
+The counter line above reading "0" is the pre-arc recording, superseded by
+this bracket. Orchestrator adjudication; display upgrades (ITERLAWN
+conditionality ledger, L3CONVERGENCE, PROJECT_STATE, ROOT) ride the r38
+fold.]**
+
 **Statement of record being proved:** the sealed PRIMARY candidate
 (ITER-LAW-3) of `ITERLAWR_PROBE_2026-08-08.md` S1 — measured law at
 0 violations / 123,564 sealed samples (103,772 run + 19,792 m4 supplement,

@@ -7898,3 +7898,27 @@ defined-term block per rule 8) is the orchestrator's next action — not
 executed by this pass; until then the note's own attempt-grade standing
 language governs. Unit files: the PE3 report + this append ONLY (scoped
 `git commit --only`); the note and all sealed artifacts byte-untouched.
+
+## [IL3] ACCEPTED — 2026-08-03 (orchestrator adjudication; the 2-clean model-diverse bar met at round 3)
+
+**THE DEFINED-TERM BLOCK (paste this at every citation — checklist rule 8):**
+[IL3] = the (ITER-LAW-3) theorem, ACCEPTED 2026-08-03: the display
+c₃ = z̄^{δ₃}·z₂^{D₂}·z₁^{D₁} (δ₃ = ⌊(s₃+s₃′)/e₂⌋; D₂ = (s₂-defect +
+ℓ₁γ₃δ₃)/e₁; Σ = D₂γ₂ + δ₃γ₃(ℓ₁′−ℓ₁w₁Φ₁); D₁ = (s₁-defect + ℓ₀Σ)/e₀)
+PROVED on the 3-read standard-lift harness class OFF the DCX corner
+{g₀ = g₁ = 1, δ₁ = 1, s₂(γ) = s₂(γ′) = e₁−1, S₁+s(γ₂) ≥ 2e₀} (EMPTY at
+e₀ ≤ 2) — RUNG n = 2 of (ITER-LAW-n). RESIDUALS: (W-MULT-3-DCX) OPEN
+(instance-true 132/132); the fenced non-consumed DEV-1 corner
+{e₀=1 ∧ d₀≥2 ∧ j≥g₀}; the consumed [IL] base's package rides through.
+
+ARC OF RECORD: compose 8ba1820 → R1 (PC1 NOT-CLEAN 2C/1G 997c467 + PE1
+NOT-CLEAN 1C/1G be9a77b, convergent) → errata r1 f9daca0 → R2 (PC2 NOT-CLEAN
+1C/1G cf013a4 + PE2 NOT-CLEAN 0C/2G 467b523, convergent, new-narrow) → errata
+r2 a687b80 (orchestrator-direct) → R3 (PC3 CLEAN 5bdca01 + PE3 CLEAN 0C/0G/0n
+f288b73) — DOUBLE-CLEAN on the a687b80 text. Acceptance bracket applied at the
+note's S0. CONSEQUENCE OF RECORD: ITERLAWN_PROOF's "conditional on [IL3]" legs
+upgrade to conditional on (RM-m, m ≥ 2) alone — the display upgrade rides the
+r38 fold (ITERLAWN S7, L3CONVERGENCE, PROJECT_STATE, ROOT). The rung ledger:
+n = 1 ACCEPTED [IL] · n = 2 ACCEPTED-OFF-DCX [IL3] (this entry) · n = 3
+MEASURED GREEN (13b026b). The remaining distance to all orders on the harness
+class: (RM-m, m ≥ 2) + (W-MULT-DCX-m) + the two fenced corners.
