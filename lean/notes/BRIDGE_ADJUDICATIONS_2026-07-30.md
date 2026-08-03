@@ -5577,3 +5577,14 @@ RI count/TOTAL, exactly the preregistered perimeter (output
 preregistration b4a142b + first-run record 482150b + the rerun output
 filename. Verified algebraic perimeter untouched; counter stays 0/2; pass
 2 next.
+
+## 2026-08-08 — JUNCFORGE S2 REVISION 3 (orchestrator-applied): the residual scope wording fixed at the four quoted sites
+
+Re-audit-2: still CRITICAL (1C/1G) after two delegated rounds — §R2/§S5 verdict wording
+recreated the unrestricted row-A scope; §S3 kept "VERBATIM"/"COMPILED". Per the
+two-failed-corrections discipline the orchestrator applied the quoted fixes directly:
+verdict text now carries char-2/Φ₂-landing/interior-pin inside itself; the D0 tie is
+stated at DEFINITIONAL EQUALITY (elaboration; no source-byte comparison; gluePacket_false
+= the independent vacuity leg). Perimeter untouched; counter 0/2; re-audit round 3 next.
+Also this round: ADM-REAL' pass 3 CLEAN (clean #1, Codex; report archived) and TR3-S3
+pass 2 CLEAN (clean #1, Codex; report archived) — Fable twin passes decide both bars.

@@ -68,11 +68,13 @@ displayed as such.  No claim at towers other than row A/ℤ₂.
 ## S3. THE D0 ADJUDICATION (the stage-1 §S2(c) flag) — DECIDED: INSTANCE-FALSE
 
 `juncforge_D0_instanceFalse` negates the `hbundle` hypothesis of
-`gate_glue_junction` VERBATIM \[REV1: this identity claim is now COMPILED, not
-prose — `juncforge_gate_hbundle_false` (the gate binder text negated, proof term =
-`juncforge_D0_instanceFalse` applied directly) and `juncforge_gluePacket_false`
-(the non-textual leg: ∀ H₁, ¬ GlueJunction U31.fq H₁ H₂rc recentering, via the
-structure's own `junc_bundle` field); see §R1-G2\]: at the compiled seam the junction frame's key IS the
+`gate_glue_junction` at DEFINITIONAL EQUALITY \[REV3, superseding the REV1
+"VERBATIM"/"COMPILED" wording per re-audit-2: the certification is elaboration of
+the direct application — `juncforge_gate_hbundle_false` (statement matching the
+gate binder, proof term = `juncforge_D0_instanceFalse` applied directly; Lean does
+NOT compare source bytes, and the three-way source diff is editorial/unverified)
+plus `juncforge_gluePacket_false` (the independent structure-field vacuity leg:
+∀ H₁, ¬ GlueJunction U31.fq H₁ H₂rc recentering); see §R1-G2/§R4\]: at the compiled seam the junction frame's key IS the
 classificand (f = fq = σ₁rec.Φ — the degenerate f-equals-key stratum), the unique
 fq-adic development of fq has B₀ = 0 (`L0_FactB_unique` against the self-development
 `BselfJ`), and clause (ii) at the recorded `hpat0` (pat 0 = −rcCenter ≠ 0,
@@ -106,8 +108,10 @@ re-instancing at a non-degenerate seam) is an orchestrator/ROOT matter.
   landing, and the interior Φ₂A pin — not "junc_bundle simply false at row A"\]
   — the E-PHASE FLAG (HC2/Defs clause (iii) "may over-strengthen") lands as a
   proved INTER-CLAUSE CONTRADICTION ((ii) ⊥ (iii) at e = 2; (ii)+(iv) ⊥ at e = 1),
-  not an over-strengthening of one clause.  Verdict of record (§R2): INCONSISTENT
-  AS TRANSCRIBED, COMPILED AT ROW A.
+  not an over-strengthening of one clause.  Verdict of record (§R2): the CHAR-2,
+  Φ₂-LANDING, interior-Φ₂A-pinned bundle INCONSISTENT AS TRANSCRIBED, COMPILED AT
+  ROW A \[REV3: the restrictions repeated here per re-audit-2 — no unrestricted
+  row-A refutation is claimed\].
 * The C-e escapee is EXPLAINED AT ROW A: GlueRun's "no compiled e ≥ 2 instance
   exists on file to feed it" is now "none CAN exist AT THE ROW-A READ — fA against
   a Φ1A-keyed frame, any Φnext" (`juncforge_no_e2_junction` — the one theorem
@@ -194,9 +198,14 @@ theorems stand unedited; REVISION 1 adds two declarations and corrects the recor
 
 ## R2. THE DISPOSITION (the audit's key finding)
 
-**Verdict of record: `junc_bundle` is INCONSISTENT AS TRANSCRIBED, COMPILED AT
-ROW A.**  What is proved is a fact about the LEAN TRANSCRIPTION of the [T-5]
-side-read bundle: its clauses cannot cohabit one recorded node at the row-A read.
+**Verdict of record: the compiled CHAR-2, Φ₂-LANDING `junc_bundle` (with the
+interior Φ₂A pin) is INCONSISTENT AS TRANSCRIBED AT ROW A.** \[REV3: the
+restrictions stated in the verdict itself per re-audit-2 — the e = 2 parity leg
+(`juncforge_no_e2_junction`) is char-free/any-Φnext, but the e = 1 landing leg
+binds (2:F) = 0 + the Φ₂A landing, so the BUNDLE verdict carries those
+restrictions.\]  What is proved is a fact about the LEAN TRANSCRIPTION of the
+[T-5] side-read bundle: the clauses of THAT restricted bundle cannot cohabit one
+recorded node at the row-A read.
 It is NOT established that the FGMN source mathematics is false.  The
 contradiction admits the INCOMPATIBLE-TRANSCRIPTION-SCALES reading: clause (ii)'s
 window functional may be transcribed at the PARENT scale while clause (iii)'s
@@ -208,7 +217,8 @@ exactly right at the graded scale.  On this reading, a `SideReads` repair
 rather than alter its mathematics.  Deciding between "source glue step refuted at
 row A" and "transcription mis-scaled" requires re-deriving the glue step from the
 source — chartered in §R3.  Until that lands, this unit's result is: the compiled
-transcription is inconsistent at row A; the source-level question is OPEN.
+char-2, Φ₂-landing transcription is inconsistent at row A; the source-level
+question is OPEN.
 
 ## R3. CHARTER — the transcription-scale re-derivation design unit
 
@@ -268,3 +278,16 @@ Lean edit; the eight declarations of record stand unedited.  Counter stays 0/2
   Headline, §S1 table, and §R1(G2) reworded accordingly.
 
 — JUNCFORGE S2 REVISION 2, 2026-08-08 (wallclock 2026-08-03).
+
+## R5. REVISION 3 (orchestrator-applied, per re-audit-2)
+
+Re-audit-2 (JUNCFORGE_S2_reaudit_report.md follow-up round) found 1 critical + 1 gap
+surviving REVISION 2: (C) §R2's verdict paragraphs and §S5's verdict-of-record line
+recreated the unrestricted "inconsistent at row A" scope (omitting char-2 / Φ₂-landing /
+interior-Φ₂A-pin); (G) §S3 still said "VERBATIM"/"now COMPILED" for the D0 identity tie.
+After two delegated correction rounds on the same wording class, the orchestrator applied
+the quoted fixes directly (the two-failed-corrections discipline): §S3 recast at
+DEFINITIONAL EQUALITY with the accurate certification account; §S5 and both §R2 sites now
+carry the restrictions inside the verdict text itself. The verified perimeter (Lean
+theorems, §S1 scope table, §R1 negation-shape display, §R3 charter) untouched.
+Acceptance counter stays 0/2; re-audit round 3 decides.
