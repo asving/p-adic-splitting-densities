@@ -808,3 +808,30 @@ sign-off) rather than behind this document's assertions. A confirming
 Codex pass on the post-fold text is OWED before the prover fan-out
 dispatches (swarm-lead discretion whether to spend it now or fold it into
 the fan-out's own review).
+
+---
+
+## EXECUTION RECORD — F-ADM-3 CARRIER RE-KEY (2026-08-08 window; unit note `lean/notes/openmath/FADM3_REKEY_2026-08-08.md`)
+
+Executed under the standing definition-change authority (Codex diff
+confirmation CONFIRM on preregistration commit ba02d60; sealed falsifier run
+exit 0).  Supersessions against this blueprint's rows:
+
+* **§1.3(b) (F-ADM-2):** the finding's data stand, its MEANING is relocated
+  per ADMREAL §5b — the failing lattice was the CARRIER's coded (birth)
+  lattice, not O-9's; the "re-run duty" RESOLVES into the executed `wt`
+  re-key (`CensusCore.lean`: `wphi = E_i·(e_iV_i + h_i)` via `Emul`; old
+  body kept as `wbirth` + displayed in the docstring).  The R3′ leg keeps
+  the 88-type reproduction as the historical contract; new leg R7 verifies
+  carrier == O-9 ledger pointwise (12,348 types) and the 88-grid clean
+  under the re-keyed semantics.
+* **§1.4 ADM-U2 (`admFull_iff_maxClassWeight`):** the `hclass` hypothesis is
+  RETIRED — (CLASS-d) is the PROVED, Lean-core `HD3.classCount_eq_d` (via
+  `CensusData.classCard_eq_d` = ADMREAL Lemma CLASS-LAT, every order); the
+  theorem is restated hypothesis-free (strengthening; old form displayed at
+  the site).  The §1.4 display quoted above (with `hclass`) is SUPERSEDED.
+* **§1.4 ADM-U3:** statement verbatim; proof carries the one-line
+  `Emul_last` top-stage evaluation (E₁ = 1).
+* **ADM-U4 gates:** zero edits (r = 1: re-key value-invariant); rebuilt
+  green.  Footprints Lean-core across the census; capstone path disjoint
+  (fence check in the unit note §1).

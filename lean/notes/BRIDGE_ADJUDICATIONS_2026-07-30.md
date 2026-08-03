@@ -5874,3 +5874,30 @@ against the corrected clause AFTER adjudication (note §S6).  D0 NOT resurrected
 `lean/notes/openmath/FGMN_REDERIVATION_2026-08-08.md`; harness
 `verification/openmath/fgmn_rederivation_check.py` (+JSON).  ASVIN-FLAG QUEUED:
 the §S3 proposal joins the standing Asvin batch (pass-7 queue #11).
+
+## 2026-08-08: F-ADM-3 CARRIER RE-KEY EXECUTED — CLASS-LAT machine-checked at every order; `hclass` retired
+
+Synthesis-7 queue #4 (pass-7 F2a), the edit-gated item, executed under the
+standing definition-change authority.  `CensusData.wphi` re-keyed at
+`Scaffold/ValueSide/CensusCore.lean` to the O-9 §4 top-normalized ledger
+`E_i·(e_iV_i + h_i)` (new `Emul`/`wbirth`; old body displayed at the def
+site with the F-ADM-3 cite).  NEW Lean-core theorems: the abstract
+`ClassLat` triangular kernel (`digitSum_inj`/`card_digitBox_class`, pure
+Nat.ModEq head-peeling induction) + `CensusData.classCard_eq_d` (= ADMREAL
+Lemma CLASS-LAT, EVERY order) + `HD3.classCount_eq_d`;
+`admFull_iff_maxClassWeight` restated hypothesis-free (strengthening; the
+retired `hclass` form displayed; zero downstream call sites existed).
+Ripple: two one-line r = 1 proof repairs (AdmCarrier/Census via
+`Emul_last`); AdmGates and BOTH B2D audit files zero edits; 33-module cone
+green; AxChk census unchanged; capstone closure verified disjoint (fence).
+Falsifier: sealed leg R7 (preregistration commit ba02d60, run 1 exit 0,
+log `verification/logs/fadm3_rekey_run1_20260803T042912Z.log`) — carrier ==
+O-9 ledger POINTWISE on 12,348 grid types; the F-ADM-2 88-type r = 2 grid
+CLEAN under re-keyed semantics (ACCEPTANCE); historical coded twin stays
+== 88 exactly.  Codex diff confirmation: CONFIRM (all four charge points;
+diff-based, sandbox-disclosed).  Note:
+`lean/notes/openmath/FADM3_REKEY_2026-08-08.md`; blueprint execution record
+appended to `lean/blueprints/HDISCHARGE_H3.md`; PROJECT_STATE updated.
+Handed on: (ADM) row display at the next ROOT fold; (C-JCT) fan-out audit
+now proceeds on the honest carrier.  Commit: this one (verdict companion
+to ba02d60).

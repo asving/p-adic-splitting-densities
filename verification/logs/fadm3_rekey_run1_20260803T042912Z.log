@@ -1,0 +1,24 @@
+R1 W-CAP: types=12348  identity-fails=0 top-index-fails=0 cap-fails=0
+R2 STEP/NON-END: trials=20000  (a)step-fails=0 cov-fails=0 shared-bad=0 (b)monotone-fails=0 (c)THEOREM-GRADE clearance fails@beta_end>=0=0 (d)bound-fails=0 (e)neg-pool failures(b<=cm)=243
+R3 CLASS-d: r1 types=36 fails=0 | r2 types=648 class-count failing types=0 (SEALED prediction was > 0)
+R4 realized: rows=198 full=113 partial@end=85 OFF-END=0 empty=0 flag-mismatch=0 pin(n_att!=1 @end)=0 tallies-ok=True
+R5 carve-out necessity (adm_u7_check.py rerun): exit=0 pass=True
+R3' diagnosis: coded-weight r2 failing types=88 (REVISION 1 contract: == 88 exactly) | F-ADM-2 type coded wts=[0, 1, 5, 6] (empty class: True) top wts=[0, 2, 5, 7] (uniform: True)
+R3'' CLASS-LAT at r=3: types=11664 class-count failing types=0 (prediction 0)
+R6 stationary leg: types=31164 (stationary=25256 spot-r4=18816)  (a)closed-form fails=0  (b)W-CAP/CLASS-LAT fails=0  (c)premise-control: stationary-pair m_i<m_j failures=43536 (pred >= 1), live-pair failures=0 (pred 0)
+R7 RE-KEY twin: (a) grid types=12348 carrier-vs-ledger mismatches=0 (prediction 0) | (b) re-keyed r2 class-count failing types=0 (ACCEPTANCE: prediction 0; coded twin R3' stays == 88) | (c) quoted type wts=[0, 2, 5, 7] uniform=True (prediction [0,2,5,7]/True)
+
+== PREDICTIONS (sealed header + sealed addenda incl. REV-1) ==
+  [PASS] R1 (W-CAP identity/top-index/cap)
+  [PASS] R2 (STEP+NON-END abstract; (c) theorem-grade; REV-1 (a)/(d)/(e))
+  [PASS] R3(a) (CLASS-d r1 clean)
+  [PASS] R3(b)-STATE REV-1 (top-weight r2 grid stays clean; refutation state enforced)
+  [PASS] R4 (realized: no off-end partial; pin shape)
+  [PASS] R5 (k_s carve-out necessary; A/B/C stand)
+  [PASS] R3' ADDENDUM (coded twin == 88 exactly; REV-1 contract)
+  [PASS] R3'' ADDENDUM (CLASS-LAT clean on full r=3 grid)
+  [PASS] R6 REVISION-1 (stationary leg: closed form + W-CAP/CLASS-LAT + premise control)
+  [PASS] R7 REVISION-2 (F-ADM-3 re-key twin: carrier==ledger pointwise; 88-grid ACCEPTANCE clean; quoted type)
+  [SEALED-PREDICTION-REFUTED] R3(b) (r2 fails exist under top weights) — RETIRED: its failure IS finding F-ADM-3
+
+VERDICT: ALL LIVE PREDICTIONS PASS (REVISION 2 contract)

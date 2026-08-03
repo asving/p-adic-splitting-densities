@@ -2098,3 +2098,32 @@ acceptance pass on the walk — is the only open gate**; the note's §6 is
 the one-paragraph decision (full-scope RB-DELTA vs the clause-(R)-only
 narrow fallback). NOTHING adopted, nothing discharged, no Lean edits —
 the Asvin-queue item "Route-B re-scope (after #7)" is now fully teed up.
+
+## UPDATE (2026-08-08 window, F-ADM-3 CARRIER RE-KEY EXECUTED — CLASS-LAT machine-checked; ADM-U2 unconditional)
+
+Synthesis-7 queue #4 (pass-7 F2a) DONE; unit note
+`lean/notes/openmath/FADM3_REKEY_2026-08-08.md`; seal pair =
+preregistration ba02d60 + the verdict commit carrying this update.
+The census carrier's `wphi` (`Scaffold/ValueSide/CensusCore.lean`) is
+RE-KEYED from the birth values `e_i·V_i + h_i` to the O-9 §4
+top-normalized ledger `E_i·(e_i·V_i + h_i)` (new `Emul`/`wbirth`; old body
+displayed at the def site; standing definition-change authority; Codex
+diff confirmation CONFIRM).  CONSEQUENCES: (1) **CLASS-LAT is now
+Lean-core machine-checked at EVERY order** (`CensusData.classCard_eq_d`
+via the new abstract `ClassLat` Nat.ModEq triangular kernel — the first
+compiled r-generic theorem on the weight lattice); (2) **ADM-U2's
+`hclass` hypothesis is RETIRED**: `HD3.classCount_eq_d` proved,
+`admFull_iff_maxClassWeight` restated hypothesis-free (strengthening;
+zero downstream consumers had passed `hclass`); (3) the F-ADM-2 88-type
+r = 2 grid is CLEAN under the re-keyed carrier (sealed falsifier leg R7,
+run exit 0: carrier == O-9 ledger POINTWISE on all 12,348 grid types;
+the historical coded twin R3′ stays == 88 exactly); (4) ripple: 2
+one-line r = 1 proof repairs (AdmCarrier/Census), AdmGates + both B2D
+audit files needed ZERO edits, full 33-module cone `lake build` green,
+AxChk census unchanged (capstone Lean-core; capstone import closure
+verified DISJOINT from the CensusCore cone).  The prospective-corruption
+window is CLOSED: r ≥ 2 instantiations of `ADMFull`/`maxClassWeight` now
+read the honest lattice.  Handed on (owners unchanged): the (ADM) row
+display at the next ROOT fold; the (C-JCT) fan-out audit (now on the
+honest carrier); realized r ≥ 2 numeric coverage still nonexistent
+(R7 is lattice-level — the TRI + (P1) pin remains the discrimination).
