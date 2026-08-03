@@ -2225,10 +2225,12 @@ REVISION 4 (fa2180e) — the complete grep-disciplined DictIII perimeter
 readCeil arithmetic at e ≥ 2; Window :554/:557; the R5 tie family;
 THREE-token diff of record; NEW-definition mode recommended); the
 change-set PRICED UP in the Asvin batch; counter 0/2, passes 6+7
-decide; the proposal stays ASVIN-GATED. Roster: **NINE rows,
+decide; the proposal stays ASVIN-GATED [r33: the arc ran to 14 passes
+and was ACCEPTED at ec64503 — see the r33 checkpoint below]. Roster: **NINE rows,
 unchanged**; no clause attribution moved. Census: 51 + 4 new
 (VC32b/VC33/SideClauseR2/readCeil) = 55 patterns, fixed point
-re-grepped, every delta reasoned. **SYNTHESIS PASS 8 NOT YET OWED**;
+re-grepped, every delta reasoned. **SYNTHESIS PASS 8 NOT YET OWED**
+[r33: now OWED at the wave-15 close];
 wave-15 candidates displayed (**TR3-S4 the lead** + the held pass-7
 items: ITER-LAW, the (H7) forge, DIterJunctionSupplier, the banked
 sorry). The Asvin batch restated in full (TowerMoveClosureL;
@@ -2238,9 +2240,76 @@ RE-PRICED at the complete DictIII change-set; the Route-B RB-DELTA
 decision).
 FRONTIER NOW: **VC33** (the confirming end-to-end pass on REVISION 31;
 acceptance anchored on REVISION 30/VC32+VC32b until it lands); the
-FGMN passes 6+7 (the deciders); then the held pass-7 queue.
+FGMN passes 6+7 (the deciders); then the held pass-7 queue. [r33:
+VC33 + VC33b + VC33c have since CONFIRMED and the FGMN arc closed
+ACCEPTED — the r33 checkpoint below is current.]
 Verification: VC1–VC22 done; VC25 NOT-CONFIRMED (disposed); VC26+VC26b,
 VC27+VC27b CONFIRMED; VC28, VC29 CONFIRMED FIRST-PASS; VC30 (1C, cured)
 + VC30b CONFIRMED; VC31 (0C/2G, cured) + VC31b + VC31c CONFIRMED;
 **VC32 (0C/3G, cured by the r31-ERRATUM) + VC32b CONFIRMED (= the
-REVISION-30 anchor)**; VC33 pending on REVISION 31.
+REVISION-30 anchor)**; VC33 pending on REVISION 31 [r33: landed — see
+below].
+
+CHECKPOINT (ROOT r33 = REVISION 32, 2026-08-08 window): the
+VC33+VC33b+VC33c re-anchor + the FGMN acceptance fold. **VC33 + VC33b
++ VC33c CONFIRMED** on the REVISION-31 text (ledger 1de8ec2): VC33
+0C/2G (the p6-concurrency displays; the sandbox audit-input artifact)
+→ the dated r32-ERRATUM (e7ff234: the six disclosure brackets; the
+grep-execution duty transferred) → VC33b 0C/1G WITH execution (the
+12/3/6 discharge-core transcripts confirmed; three multi-line brackets
+missing from the extraction, audit-input) → VC33c CONFIRMED 0C/0G (all
+six brackets verified in full context) — **the acceptance anchor moves
+REVISION 30/VC32+VC32b → REVISION 31/VC33+VC33b+VC33c** (now inside
+the certified anchor: the HV3 acceptance + the complete (H-v3)
+discharge sweep — TR-3′-GEN PRINT-UNCONDITIONAL on {all order-2} ∪
+{order-3 all-e_j = 1} — the FGMN REVISION-4-through-7 perimeter
+displays, the re-stated Asvin batch). **FGMN RE-DERIVATION ACCEPTED**
+(ec64503; the 14-pass/10-revision arc: p12 Fable CLEAN 0C/0G WITH the
+full execution leg + p14 Codex content-CLEAN 0C/0G, model-diverse;
+three independent executed legs, passes 3/9/12): the glue route's
+SOURCE-LEVEL QUESTION is ANSWERED — the print's glue step FIRES at row
+A, the compiled parity/landing walls TRANSCRIPTION ARTIFACTS of the
+double-scaled clause; ACCEPTED = the two-scale diagnosis + the ROW-A
+SOURCE-FIRES verdict + the THREE-token diff (Defs.lean:285/287/292,
+σ.w → σ.wPrev) with its fixed points incl. the JuncForge/D0 retained
+semantics + the PIN-GEN-i discharge + the pinned sources/battery
+record; THE APPLICATION = the Asvin-gated application unit's
+deliverable (the REVISION-9 scope cut: adjudicated on the actual
+scratch-worktree diff at the gate + a post-application hostile pass;
+the REVISION 4-8 censuses the reviewer's informative map) — the Asvin
+batch's TOP item is now FULLY VERIFIED. **DIVISION-OF-LABOR
+adjudication of record** (3875c49): Fable executes / Codex adjudicates
+content; an infra-only inability-to-execute finding on a Codex pass =
+a NOTE given a Fable-executed clean on the same revision (a
+specification of existing practice; no content finding ever
+downgraded). **TR3-S4**: composed + sealed falsifier ALL GREEN (seal
+7fa8825 → first run 13,679 samples / 0 violations at 79eaee6, rerun
+JSON-identical, zero amendments); Lemma HV3-E2 DERIVED from the pinned
+print (v₃ = w₂ at e₀ = 1/e₁ ≥ 2 — no bespoke hypothesis; HV3-THM's
+acceptance does NOT transfer, the new instantiation the note's own
+hostile-pass obligation); pass 1 Codex 0C/2G archived — REVISION 1
+owed next cycle; counter 0/2; NO status upgrade; the F2c
+verifier-owned from-note implementation stays the acceptance
+obligation (note S8.4). Roster: **NINE rows, unchanged**; no clause
+attribution moved. Census: 55 + 4 new (VC33b/VC33c/VC34/HV3-E2) = 59
+patterns, fixed point re-grepped, every delta reasoned. **SYNTHESIS
+PASS 8 OWED at the wave-15 close.** The wave-15 remainder: the TR3-S4
+pipeline (REVISION 1 → hostile passes → the F2c obligation); the
+synthesis-7 tail (the ITER-LAW attempt, the (H7) forge on the two
+N-H7-1 pins, the DIterJunctionSupplier statement — its junction gates
+re-price against the ACCEPTED FGMN diagnosis, the banked-sorry
+attempt); the optional S batch. The Asvin batch restated in full
+(TowerMoveClosureL; the fence-(vii) ROUTE (a) lineage incl. the RECSL
+hσt rider + the EXECUTED F-ADM-3 re-key for ratify-or-reopen; the FGMN
+proposal AT TOP, FULLY VERIFIED — the application the gated unit's
+deliverable per the scope cut; the Route-B RB-DELTA decision).
+FRONTIER NOW: **VC34** (the confirming end-to-end pass on REVISION 32;
+acceptance anchored on REVISION 31/VC33+VC33b+VC33c until it lands);
+the TR3-S4 REVISION 1 + hostile passes; then the synthesis-7 tail and
+synthesis pass 8 at the wave-15 close.
+Verification: VC1–VC22 done; VC25 NOT-CONFIRMED (disposed); VC26+VC26b,
+VC27+VC27b CONFIRMED; VC28, VC29 CONFIRMED FIRST-PASS; VC30 (1C, cured)
++ VC30b CONFIRMED; VC31 (0C/2G, cured) + VC31b + VC31c CONFIRMED;
+VC32 (0C/3G, cured) + VC32b CONFIRMED; **VC33 (0C/2G, cured by the
+r32-ERRATUM) + VC33b (0C/1G, WITH execution) + VC33c CONFIRMED (= the
+REVISION-31 anchor)**; VC34 pending on REVISION 32.

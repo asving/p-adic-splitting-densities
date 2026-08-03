@@ -6208,3 +6208,37 @@ a fully verified proposal. CONSEQUENCE for (H1): the glue route's source-level q
 is ANSWERED (the source fires; the compiled walls were transcription artifacts); the
 route's revival awaits only the gated application. r33 fold + VC34 next; then TR3-S4
 REVISION 1 (its p1 0C/2G archived) and the synthesis-7 tail.
+
+## ROOT r33 EXECUTED (REVISION 32): the FGMN acceptance folded + the anchor re-anchored at REVISION 31 — VC34 OWED
+
+ROOT REVISION 32 applied (`docs/ROOT_ASSEMBLY_2026-08-02.md` §38 + the §0 standing
+paragraph + the §3.2 sync tail + the (H1) r33 bracket + the §6 supersession/r33
+brackets). (1) RE-ANCHOR: the acceptance citation updated at every operative site —
+**the anchor moves REVISION 30/VC32+VC32b → REVISION 31/VC33+VC33b+VC33c** (ledger
+1de8ec2; the arc VC33 0C/2G → r32-ERRATUM e7ff234 → VC33b 0C/1G WITH execution →
+VC33c 0C/0G displayed at every site; the VC22 precedent). (2) FGMN ACCEPTED folded
+(ec64503, the 14-pass/10-revision arc): the (H1) glue-route display now states the
+SOURCE-LEVEL QUESTION ANSWERED — the print's glue step FIRES at row A, the compiled
+parity/landing walls TRANSCRIPTION ARTIFACTS of the double-scaled clause; the ACCEPTED
+content enumerated per the REVISION-10 list (diagnosis; source-fires verdict; the
+three-token diff + fixed points incl. the JuncForge/D0 retained semantics; PIN-GEN-i
+discharge; pinned sources/battery); THE APPLICATION = the Asvin-gated application
+unit's deliverable per the REVISION-9 scope cut (the scratch-worktree diff + the
+post-application hostile pass; the REVISION 4-8 censuses the informative map); the
+Asvin batch restated with its TOP item FULLY VERIFIED. (3) The division-of-labor
+adjudication (3875c49) recorded as STANDING CAMPAIGN DISCIPLINE at §38/r33-3.
+(4) TR3-S4 status synced: composed + sealed falsifier 13,679/0 (7fa8825/79eaee6);
+Lemma HV3-E2 DERIVED from the pinned print (not hypothesis; HV3-THM's acceptance does
+NOT transfer); pass 1 Codex 0C/2G archived — REVISION 1 owed next cycle; counter 0/2;
+NO status upgrade; the F2c verifier-owned implementation stays the acceptance
+obligation. (5) Housekeeping: the wave-15 remainder displayed (the TR3-S4 pipeline;
+the synthesis-7 tail with the DIterJunctionSupplier junction gates RE-PRICED against
+the accepted FGMN diagnosis; the banked-sorry attempt; the optional S batch);
+**SYNTHESIS PASS 8 OWED at the wave-15 close**. Census re-run on the final text at
+the declared occurrence unit: 55 + 4 new markers (VC33b/VC33c/VC34/HV3-E2) = 59
+patterns, fixed point confirmed by re-grep after the last edit, every delta reasoned
+at §38. NINE rows recounted; no clause attribution moved; DOC-ONLY (no Lean file
+touched; the sorry census stays the r27 display). PROJECT_STATE r33 checkpoint +
+dated tags at the r32 checkpoint's stale displays. This unit ran no audit and never
+self-confirms: **VC34 is OWED on the REVISION-32 wording** (charge at §38) — until it
+lands, the acceptance citation points at the REVISION-31 text.
