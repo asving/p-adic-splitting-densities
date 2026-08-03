@@ -1,0 +1,2058 @@
+                                                         RESIDUAL IDEALS OF MACLANE VALUATIONS
+
+                                                    JULIO FERNÁNDEZ, JORDI GUÀRDIA, JESÚS MONTES, AND ENRIC NART
+
+
+                                                  Abstract. Let K be a field equipped with a discrete valuation v. In a pioneering work,
+                                                  MacLane determined all valuations on K(x) extending v. His work was recently reviewed
+arXiv:1305.0775v3 [math.NT] 26 Jul 2013
+
+
+
+
+                                                  and generalized by M. Vaquié, by using the graded algebra of a valuation. We extend
+                                                  Vaquié’s approach by studying residual ideals of the graded algebra as an abstract coun-
+                                                  terpart of certain residual polynomials which play a key role in the computational appli-
+                                                  cations of the theory. As a consequence, we determine the structure of the graded algebra
+                                                  of the discrete valuations on K(x) and we show how these valuations may be used to
+                                                  parameterize irreducible polynomials over local fields up to Okutsu equivalence.
+
+
+
+
+                                                                                              Introduction
+                                             In a pioneering work, MacLane linked in 1936 the theory of discrete valuations on a field
+                                          of rational functions in one variable with the study of irreducible polynomials over local
+                                          fields. Several authors have proposed since then different approaches to either of these
+                                          questions. In this paper, we show that MacLane’s original approach, combined with some
+                                          ideas of Montes and Vaquié, provides a unified insight for the main developments of these
+                                          topics. Before describing the contents of the paper in more detail, let us briefly recall some
+                                          milestones in these developments.
+                                          MacLane’s solution to a problem raised by Ore. In the 1920’s, Ore developed a
+                                          method to construct the prime ideals of a number field, dividing a given prime number p, in
+                                          terms of a defining polynomial f ∈ Z[x] satisfying a certain p-regularity condition [15, 16].
+                                          The idea was to detect a p-adic factorization of f according to the different irreducible
+                                          factors of certain residual polynomials over finite fields, attached to the sides of a Newton
+                                          polygon of f . He raised then the question of the existence of a procedure to compute the
+                                          prime ideals in the p-irregular case, based on the consideration of similar Newton polygons
+                                          and residual polynomials of higher order.
+                                             MacLane solved this problem in 1936 in a more general context [10, 11]. For any discrete
+                                          valuation v on an arbitrary field K, he described all discrete valuations extending v to
+                                          the rational function field K(x). Then, given an irreducible polynomial f ∈ K[x], he
+                                          characterized all extensions of v to the field L := K[x]/(f ) as limits of infinite families of
+                                          valuations on K(x) whose value at f grows to infinity. Finally, he gave a criterion to decide
+                                          when a valuation on K(x) is sufficiently close to a valuation on L to uniquely represent it.
+                                             There is a natural extension µ0 of v to K(x) satisfying µ0 (x) = 0. Starting from µ0 ,
+                                          MacLane constructed inductive valuations µ on K(x) extending v, by the concatenation of
+                                          augmentation steps
+                                                                 (φ1 ,λ1 )        (φ2 ,λ2 )         (φr−1 ,λr−1 )          (φr ,λr )
+                                                            µ0    −→         µ1    −→         ···       −→          µr−1    −→         µr = µ,
+
+                                             2010 Mathematics Subject Classification. Primary 13A18; Secondary 13J10, 12J10, 11S05.
+                                             Key words and phrases. key polynomial, MacLane chain, MacLane invariants, Newton polygon, Okutsu
+                                          invariants, residual ideal, residual polynomial, valuation.
+                                             Partially supported by MTM2012-34611 and MTM2009-10359 from the Spanish MEC.
+                                                                                                       1
+2                         FERNÁNDEZ, GUÀRDIA, MONTES, AND NART
+
+based on the choice of certain key polynomials φi ∈ K[x] and arbitrary positive rational
+numbers λi . In the case K = Q, Ore’s p-regularity condition is satisfied when all valuations
+on L extending the p-adic valuation are sufficiently close to valuations on K(x) that may
+be obtained from µ0 by a single augmentation step.
+   After MacLane’s work, inductive valuations were rediscovered and extensively studied as
+residually transcendental extensions of v to K(x) [1, 17, 19]. In this approach, the valuations
+are first analyzed for algebraically closed fields, where they may be obtained as a simple
+augmentation of µ0 with respect to a key polynomial of degree one. The general case is
+then deduced by descent.
+   Let Kv be the completion of K at v, and let Ov ⊂ Kv be the valuation ring of Kv . We
+denote by P the set of all monic irreducible polynomials in Ov [x]. An F ∈ P is called a
+prime polynomial with respect to v.
+Okutsu equivalence of prime polynomials. For v a discrete valuation on a global field
+K and F a prime polynomial, Okutsu constructed in 1982 an explicit integral basis of the
+local field KF = Kv [x]/(F ), in terms of a finite sequence of prime polynomials φ1 , . . . , φr
+which are a kind of optimal approximations to F with respect to their degree [14]. Such
+a family [φ1 , . . . , φr ] is called an Okutsu frame of F . The polynomials φi support certain
+numerical data, the so-called Okutsu invariants of F , containing considerable information
+about F and the field KF .
+   An equivalence relation ≈ on the set P is defined as follows: two prime polynomials
+F, G ∈ P of the same degree are said to be Okutsu equivalent if
+                        v(Res(G, F ))/ deg G > v(Res(φr , F ))/ deg φr .
+In this case, F and G have the same Okutsu invariants, and the fields KF , KG have
+isomorphic maximal tamely ramified subextensions [3].
+   In 1999, Montes carried out Ore’s program in its original formulation [12, 5]. Given a
+finite extension L/K of number fields determined by an irreducible polynomial f ∈ K[x],
+and given a prime ideal p of K, Montes constructed the prime ideals of L lying over p
+by finding polynomials in K[x] which are Okutsu equivalent to the irreducible factors of
+f in Kv [x], where v = vp is the p-adic valuation. The method computes as well Okutsu
+frames and the Okutsu invariants of each prime factor. In this setting, the use of MacLane’s
+valuations and Newton polygon operators is complemented with the introduction of residual
+polynomial operators Ri : K[x] −→ Fi [y], where i ≥ 0 is the “order” of a valuation, Fi is
+a certain finite field, and x, y are indeterminates. These operators make the whole theory
+constructive and well-suited to computational applications. These ideas led to the design
+of several fast algorithms to perform arithmetic tasks in global fields [2, 4, 6, 7, 9, 13].
+Contents of this paper. In 2007, Vaquié reviewed and generalized MacLane’s work. For
+an arbitrary field K, he determined all valuations on K(x) extending an arbitrary valuation
+v on K [20]. The use of the graded algebra Gr(µ) of a valuation µ, restricted to the
+polynomial ring K[x], led Vaquié to a more elegant presentation of the theory.
+   In this paper, restricted to the discrete case, we have a double aim. On one hand, we
+extend Vaquié’s approach by including a treatment of the residual polynomial operators at-
+ached to a discrete valuation µ over an arbitrary field K. The residual polynomials are inter-
+preted as generators of residual ideals in the degree-zero subring ∆(µ) of the graded algebra
+Gr(µ). The residual ideal of a polynomial g ∈ K[x] is defined as Rµ (g) = Hµ (g)Gr(µ)∩∆(µ),
+where Hµ (g) is the natural image of g in the piece of degree µ(g) of the algebra. In sections
+1-5, we review the properties of MacLane’s inductive valuations, while making apparent the
+key role of the residual ideals in the whole theory. As an application of this point of view,
+we determine the structure of Gr(µ) as a graded algebra (Theorem 4.13).
+                         RESIDUAL IDEALS OF MACLANE VALUATIONS                                3
+
+   Our second aim is to show that this approach leads to a natural generalization of the
+results of Okutsu and Montes to arbitrary discrete valued fields. A prime polynomial F ∈ P
+induces a pseudo-valuation µ∞,F on K[x] via the composition
+                                                    v
+                             µ∞,F : K[x] −→ KF −→ Q ∪ {∞},
+where we denote again by v the unique extension of v to KF . According to MacLane’s
+insight, approximating F by polynomials in K[x] is equivalent to approximating µ∞,F by
+valuations on K(x). In section 6, we introduce a canonical inductive valuation µF which is
+a threshold valuation in this approximation process, and we reproduce most of the funda-
+mental results of [3, 5, 12, 14, 18] with much shorter proofs. An Okutsu frame of F is seen
+to be just a family of key polynomials of an optimal chain of inductive valuations linking µ0
+with µF (Theorems 6.9, 6.11), and the Okutsu invariants of F are essentially the MacLane
+invariants of these valuations, introduced in section 3.
+   Finally, in section 7 we briefly recall MacLane’s results on limits of inductive valuations.
+We analyze in detail the interval [µ0 , µ∞,F ) of all valuations µ on K(x) such that µ(g) ≤
+µ∞,F (g) for all g ∈ K[x]. In Theorem 7.7 we prove that this interval is totally ordered and
+give an explicit description of all the valuations therein.
+   The main result of the paper is Theorem 6.19, where we establish a canonical bijection
+between the set P/ ≈ of Okutsu equivalence classes of prime polynomials and the MacLane
+space M of (K, v), defined as the set of all pairs (µ, L), where µ is an inductive valuation
+on K(x) and L is a strong maximal ideal of ∆(µ). The bijection sends the class of F to the
+pair (µF , RµF (F )). This result reveals that MacLane’s original approach is best-suited for
+computational applications, because the elements in the set M may be described in terms
+of discrete parameters which are easily manipulated by a computer. As a consequence,
+all algorithmic developments based on the Montes algorithm [4, 6, 7, 9, 13] admit a more
+elegant description and a natural extension to arbitrary discrete valued fields. However, we
+postpone the discussion of these computational aspects to a forthcoming paper [8].
+
+                            1. Augmentation of valuations
+   Let K be a field equipped with a discrete valuation v : K ∗ −→ Z, normalized so that
+v(K ∗ ) = Z. Let O be the valuation ring of K, m the maximal ideal, π ∈ m a generator of
+m and F = O/m the residue class field.
+   Let Kv be the completion of K and denote again by v : K v → Q ∪ {∞} the canonical
+extension of v to a fixed algebraic closure of Kv . Let Ov be the valuation ring of Kv , mv
+its maximal ideal and Fv = Ov /mv the residue class field. The canonical inclusion K ⊂ Kv
+restricts to inclusions O ⊂ Ov , m ⊂ mv , which determine a canonical isomorphism F ≃ Fv .
+We shall consider this isomorphism as an identity, F = Fv , and we indicate simply with a
+bar, — : Ov [x] −→ F[x], the canonical homomorphism of reduction of polynomials modulo
+mv .
+   Our aim is to describe all extensions of v to discrete valuations on the field K(x), where
+x is an indeterminate.
+Definition 1.1. Let V be the set of discrete valuations, µ : K(x)∗ −→ Q, such that µ|K = v
+and µ(x) ≥ 0. For any µ ∈ V, denote
+     • Γ(µ) = µ (K(x)∗ ) ⊂ Q, the cyclic group of finite values of µ. The ramification index
+       of µ is the positive integer e(µ) such that e(µ)Γ(µ) = Z.
+     • κ(µ), the residue class field of µ.
+     • κ(µ)alg ⊂ κ(µ), the algebraic closure of F inside κ(µ).
+  From now on, the elements of V will be simply called valuations.
+4                         FERNÁNDEZ, GUÀRDIA, MONTES, AND NART
+
+   Since we are only interested in (rank one) discrete valuations, we may assume that our
+valuations are Q-valued. On the other hand, the assumption µ(x) ≥ 0 is not essential; it
+gives a more compact form to the presentation of the results. For the determination of the
+discrete valuations with µ(x) < 0 one may simply replace x by 1/x as a generator of the
+field K(x) over K.
+   In the set V there is a natural partial ordering:
+                           µ ≤ µ′     if     µ(g) ≤ µ′ (g), ∀ g ∈ K[x].
+    We denote by µ0 ∈ V the valuation which acts on polynomials as
+                                X          
+                             µ0        as xs = min {v(as )} .
+                                       0≤s            0≤s
+
+Clearly, µ0 ≤ µ for all µ ∈ V; in other words, µ0 is the minimum element in V.
+1.1. Graded algebra of a valuation. Let µ ∈ V be a valuation. For any α ∈ Γ(µ) we
+consider the following O-submodules in K[x]:
+       Pα = Pα (µ) = {g ∈ K[x] | µ(g) ≥ α} ⊃ Pα+ = Pα+ (µ) = {g ∈ K[x] | µ(g) > α}.
+Clearly, P0 is a subring of K[x], and Pα , Pα+ are P0 -submodules of K[x] for all α.
+  The graded algebra of µ is the integral domain:
+                                                 M
+                           Gr(µ) := grµ K[x] :=           Pα /Pα+ .
+                                                        α∈Γ(µ)
+
+  Let ∆(µ) = P0 /P0+ be the subring determined by the piece of degree zero of this algebra.
+Clearly, O ⊂ P0 and m = P0+ ∩ O; thus, there is a canonical homomorphism F −→ ∆(µ),
+equipping ∆(µ) (and Gr(µ)) with a canonical structure of F-algebra.
+  Let A ⊂ K(x) be the valuation ring of µ and mA its maximal ideal. Since P0 = K[x] ∩ A
+and P0+ = K[x] ∩ mA , we have an embedding ∆(µ) ֒→ κ(µ). We shall see along the paper
+that this embedding identifies κ(µ) with the field of fractions of ∆(µ).
+  There is a natural map Hµ : K[x] −→ Gr(µ), given by Hµ (0) = 0, and
+                                             +              +
+                               Hµ (g) = g + Pµ(g) ∈ Pµ(g) /Pµ(g) ,
+for g 6= 0. Note that Hµ (g) = 0 if and only if g = 0. For all g, h ∈ K[x] we have:
+                  Hµ (gh) = Hµ (g)Hµ (h),
+(1)
+                  Hµ (g + h) = Hµ (g) + Hµ (h), if µ(g) = µ(h) = µ(g + h).
+   If µ ≤ µ′ , a canonical homomorphism of graded algebras Gr(µ) → Gr(µ′ ) is determined
+by g + Pα+ (µ) 7→ g + Pα+ (µ′ ) for all g, α. The image of Hµ (g) is Hµ′ (g) if µ(g) = µ′ (g), and
+zero otherwise.
+Definition 1.2.
+• We say that g, h ∈ K[x] are µ-equivalent, and we write g ∼µ h, if Hµ (g) = Hµ (h). Thus,
+g ∼µ h if and only if µ(g − h) > µ(g) = µ(h) or g = h = 0.
+• We say that g is µ-divisible by h, and we write h |µ g, if Hµ (g) is divisible by Hµ (h) in
+Gr(µ). Thus, h |µ g if and only if g ∼µ hf for some f ∈ K[x].
+• We say that φ ∈ K[x] is µ-irreducible if Hµ (φ)Gr(µ) is a non-zero prime ideal in Gr(µ).
+• We say that φ ∈ K[x] is µ-minimal if deg φ > 0 and φ ∤µ g for any non-zero g ∈ K[x]
+with deg g < deg φ.
+
+    P 1.3. Let φ ∈ K[x] be a polynomial of positive degree. For any g ∈ K[x], let
+Lemma
+g = 0≤s gs φs , deg gs < deg φ, be its canonical φ-expansion. The following conditions are
+equivalent:
+                          RESIDUAL IDEALS OF MACLANE VALUATIONS                                5
+
+      (1) φ is µ-minimal
+      (2) For any g ∈ K[x], µ(g) = min{µ(g0 ), µ(g − g0 )}.
+      (3) For any g ∈ K[x], µ(g) = min0≤s {µ(gs φs )}.
+      (4) For any nonzero g ∈ K[x], φ ∤µ g if and only if µ(g) = µ(g0 ).
+Proof. Let g − g0 = φq. If µ(g) > µ(g0 ), or µ(g) > µ(φq), then g0 ∼µ −φq, and φ |µ g0 .
+Hence, (1) implies (2).
+   Clearly, (2) implies (3). Let us show that (3) implies
+                                                        P (4). For a non-zero polynomial g,
+(3) implies µ(g) ≤ µ(g0 ). If µ(g) < µ(g0 ), then g ∼µ 0<s gs φs , and φ |µ g. Conversely, if
+g ∼µ φq for some q ∈ K[x], then g0 is the 0-th coefficient of the φ-expansion of g − φq, and
+(3) implies that µ(g) < µ(g − φq) ≤ µ(g0 ).
+   Finally, (4) implies (1) because g = g0 if deg g < deg φ, and (4) implies φ ∤µ g.       
+  The property of µ-minimality is not stable under µ-equivalence. For instance, if g is
+µ-minimal and µ(g) > 0, then g + g 2 ∼µ g, but g + g2 is not µ-minimal, since g + g2 |µ g
+and deg(g + g 2 ) > deg g. Nevertheless, for µ-equivalent polynomials of the same degree,
+µ-minimality is obviously preserved.
+1.2. Key polynomials and augmented valuations.
+Definition 1.4. A key polynomial for the valuation µ is a monic polynomial φ ∈ K[x]
+which is µ-minimal and µ-irreducible.
+  We denote by KP(µ) the set of all key polynomials for µ.
+   For instance, KP(µ0 ) is the set of all monic polynomials g ∈ O[x] such that g is irreducible
+in F[x].
+   Since µ-minimality is not stable under µ-equivalence, the property of being a key poly-
+nomial is not stable under µ-equivalence. However, for polynomials of the same degree this
+stability is clear.
+Lemma 1.5. Let φ be a key polynomial for µ, and g ∈ K[x] a monic polynomial such that
+φ |µ g and deg g = deg φ. Then, φ ∼µ g and g is a key polynomial for µ.
+Proof. The φ-expansion of g is g = a + φ, with deg a < deg φ. By item 4 of Lemma 1.3,
+we have µ(g) < µ(a), so that φ ∼µ g. Hence, Hµ (g) = Hµ (φ), and g is µ-irreducible. Since
+deg g = deg φ, g is µ-minimal too.                                                      
+Definition 1.6. For φ ∈ KP(µ) and g ∈ K[x], we denote by ordµ,φ (g) the largest integer s
+such that φs |µ g. We convene that ordµ,φ (0) = ∞.
+  Since φ is µ-irreducible, for all g, h ∈ K[x] we have
+(2)                           ordµ,φ (gh) = ordµ,φ (g) + ordµ,φ (h).
+   The map ordµ,φ induces a group homomorphism K(x)∗ → Z, but it is not a valuation. For
+instance, if n > µ(φ), then ordµ,φ (φ) = 1 = ordµ,φ (φ + π n ), but ordµ,φ (π n ) = 0. However,
+as a consequence of (1), it has the following property.
+Lemma 1.7. If g, h ∈ K[x] satisfy µ(g) = µ(h) = µ(g + h), then ordµ,φ (g + h) ≥
+min{ordµ,φ (g), ordµ,φ (h)}, and equality holds if ordµ,φ (g) 6= ordµ,φ (h).  
+Definition 1.8. Take φ ∈ KP(µ) and λ ∈ Q>0 . The augmented valuation of µ with respect
+to these data is the valuation µ′ determined by the following action on K[x]:
+      • µ′ (a) = µ(a), if deg a < deg φ.
+      • µ′ (φ) =Pµ(φ) + λ.
+      • If g = 0≤s gs φs is the φ-expansion of g, then µ′ (g) = min0≤s {µ′ (gs φs )}.
+   Or equivalently, µ′ (g) = min0≤s {µ(gs φs ) + sλ}. We denote µ′ = [µ; (φ, λ)].
+6                          FERNÁNDEZ, GUÀRDIA, MONTES, AND NART
+
+Proposition 1.9. [10, Thms. 4.2, 5.1], [20, Thm. 1.2, Prop. 1.3]
+   (1) The natural extension of µ′ to K(x) is a valuation on this field and µ ≤ µ′ .
+   (2) For a non-zero g ∈ K[x], µ(g) = µ′ (g) if and only if φ ∤µ g. Hence, Hµ (φ) Gr(µ) =
+       Ker(Gr(µ) → Gr(µ′ )).
+   (3) The group Γ(µ′ ) is the subgroup of Q generated by µ′ (φ) and the subset
+         Γφ (µ) := {µ(g) | g ∈ K[x], g 6= 0, deg g < deg φ} ⊂ Γ(µ).                      
+    The group Γ(µ′ ) does not necessarily contain Γ(µ). For instance, for the valuations
+                     µ = [µ0 ; (x, 1/2)],     µ′ = [µ; (x, 1/2)] = [µ0 ; (x, 1)],
+we have Γ(µ) = (1/2)Z, which is larger than Γ(µ′ ) = Z.
+Lemma 1.10. Let µ′ = [µ; (φ, λ)] be an augmented valuation. Then, φ is a key polynomial
+for µ′ .
+Proof. By Lemma 1.3, φ is µ′ -minimal; thus, Hµ′ (φ) is not a unit in Gr(µ′ ). Suppose that
+φ |µ′ gh for non-zero g, h ∈ K[x]. The 0-th coefficient of the φ-expansion of gh is the
+remainder c0 of the division of g0 h0 by φ. Since φ is µ-irreducible, we have φ ∤µ g0 h0 and
+Lemma 1.3 shows that µ(g0 h0 ) = µ(c0 ). By Lemma 1.3, from φ |µ′ gh we deduce µ′ (gh) <
+µ′ (c0 ) = µ(c0 ) = µ(g0 h0 ) = µ′ (g0 h0 ). Hence, either µ′ (g) < µ′ (g0 ) or µ′ (h) < µ′ (h0 ). By
+Lemma 1.3, either φ |µ′ g, or φ |µ′ h. Thus, φ is µ′ -irreducible.                                  
+Lemma 1.11. Every φ ∈ KP(µ) is irreducible in Kv [x].
+Proof. Suppose φ = gh for two monic polynomials g, h ∈ Kv [x]. Then, for any positive
+integer n, there exist polynomials gn , hn ∈ K[x] such that φ ≡ gn hn (mod mn ) and deg gn =
+deg g, deg hn = deg h. By taking n large enough, we get φ ∼µ gn hn ; by the µ-irreducibility,
+φ divides one of the factors in Gr(µ), say φ |µ hn . By the µ-minimality of φ, this implies
+deg φ ≤ deg hn . Thus, necessarily φ = h and g = 1.                                        
+   Let φ be a key polynomial for µ. Choose a root θ ∈ K v of φ and denote Kφ = Kv (θ) the
+finite extension of Kv generated by θ. Also, let Oφ ⊂ Kφ be the valuation ring of Kφ , mφ
+the maximal ideal and Fφ = Oφ /mφ the residue class field.
+   We denote by e(φ) and f (φ) the ramification index and residual degree of Kφ /Kv , re-
+spectively. Hence, deg φ = e(φ)f (φ).
+   Let µ∞,φ be the pseudo-valuation on K[x] obtained as the composition:
+                                                         v
+                              µ∞,φ : K[x] −→ Kv (θ) −→ Q ∪ {∞},
+the first mapping being determined by x 7→ θ. By the uniqueness of the extension of v to
+K v , this pseudo-valuation does not depend on the choice of θ as a root of φ.
+   We recall that a pseudo-valuation has the same properties than a valuation, except for
+the fact that the pre-image of ∞ is a prime ideal which is not necessarily zero. For µφ,∞
+this prime ideal is the ideal of K[x] generated by φ.
+   Consider now the map µ′ : K[x] → Q ∪ {∞}, where µ′ := [µ; (φ, ∞)] is defined as in
+Definition 1.8, but taking λ = ∞. The arguments in the proof of Proposition 1.9 are
+equally valid in this case, and they show that µ′ is a pseudo-valuation on K[x] such that
+µ ≤ µ′ , and for a non-zero g ∈ K[x], µ(g) = µ′ (g) if and only if φ ∤µ g.
+   Since (µ′ )−1 (∞) = φ K[x], the pseudo-valuations µ′ and µ∞,φ induce two valuations on
+the field K[x]/(φ). These valuations coincide because φ is irreducible in Kv [x] and the field
+K[x]/(φ) admits a unique valuation extending v on K. This implies that µ′ = µ∞,φ . Hence,
+we obtain the following results by mimicking Proposition 1.9.
+Proposition 1.12. If φ is a key polynomial for µ, then
+   (1) µ ≤ µ∞,φ , and for a non-zero g ∈ K[x], µ(g) = µ∞,φ (g) if and only if φ ∤µ g.
+                          RESIDUAL IDEALS OF MACLANE VALUATIONS                            7
+
+      (2) v(Kφ∗ ) = Γφ (µ) := {µ(g) | g ∈ K[x], g 6= 0, deg g < deg φ} ⊂ Γ(µ).
+            In particular, Γφ (µ) is a subgroup of Γ(µ).                                  
+
+  In principle, a strict translation of Proposition 1.9 would only state that v(Kφ∗ ) is the
+subgroup of Γ(µ) generated by the subset Γφ (µ). However, every element in Kφ∗ can be
+expressed as g̃(θ) for some non-zero g̃ ∈ Kv [x] with deg g̃ < deg φ; hence, if g ∈ K[x] has
+deg g = deg g̃ and it is sufficiently close to g̃ in the v-adic topology, we have v(g̃(θ)) =
+v(g(θ)) = µ(g) ∈ Γφ (µ). This shows that v(Kφ∗ ) = Γφ (µ).
+
+Corollary 1.13. KP(µ) ⊂ O[x].
+
+Proof. Suppose φ ∈ KP(µ) and let θ ∈ K v be a root of φ. Since 0 ≤ µ(x) ≤ µ∞,φ (x) = v(θ),
+the root θ belongs to Oφ and its minimal polynomial φ over Kv must have coefficients in
+Ov ∩ K = O.                                                                             
+
+  The next result is a kind of partial converse to Propositions 1.9 and 1.12.
+
+Lemma 1.14. [20, Thm. 1.15] Let µ be a valuation and µ′ a pseudo-valuation on K[x]
+such that µ < µ′ . Let φ ∈ K[x] be a monic polynomial with minimal degree satisfying
+µ(φ) < µ′ (φ). Then, φ is a key polynomial for µ and for any non-zero g ∈ K[x], µ(g) =
+µ′ (g) is equivalent to φ ∤µ g. Moreover, for λ = µ′ (φ) − µ(φ) ∈ Q>0 ∪ {∞}, we have
+µ < [µ; (φ, λ)] ≤ µ′ .                                                               
+1.3. Residual ideals of polynomials. Let µ be a valuation on K(x). Denote ∆ = ∆(µ),
+and let I(∆) be the set of ideals in ∆. Consider the residual ideal operator :
+                      R = Rµ : K[x] −→ I(∆),         g 7→ ∆ ∩ Hµ (g)Gr(µ).
+The following basic properties of R are immediate.
+                                       g |µ h   =⇒    R(g) ⊃ R(h),
+(3)                                   g ∼µ h    =⇒    R(g) = R(h),
+                             Hµ (g) ∈ Gr(µ)∗    ⇐⇒    R(g) = ∆,
+where Gr(µ)∗ is the group of units of Gr(µ). In sections 4 and 5 we shall derive more
+properties of this operator R, which translates questions about K[x] and µ into ideal-
+theoretic considerations in the ring ∆. Let us now see that R attaches a maximal ideal of
+∆ to any key polynomial for µ.
+
+Proposition 1.15. If φ is a key polynomial for µ, then
+      (1) R(φ) is the kernel of the onto ring homomorphism ∆ ։ Fφ determined by g(x) +
+          P0+ 7→ g(θ) + mφ . In particular, R(φ) is a maximal ideal of ∆.
+      (2) For any augmented valuation µ′ = [µ; (φ, λ)], R(φ) = Ker(∆ → ∆(µ′ )). Thus, the
+          image of ∆ → ∆(µ′ ) is a field, canonically isomorphic to Fφ .
+
+Proof. If g ∈ P0 , we have v(g(θ)) ≥ µ(g) ≥ 0, and g(θ) ∈ Oφ . Thus, we get a well-defined
+ring homomorphism P0 → Fφ . This mapping is onto, because every element in Fφ may
+be represented as g(θ) + mφ for some g ∈ K[x], with deg g < deg φ = [Kφ : Kv ], satisfying
+v(g(θ)) ≥ 0. Proposition 1.12 shows that µ(g) = v(g(θ)) ≥ 0, so that g belongs to P0 .
+Finally, if g ∈ P0+ , then v(g(θ)) ≥ µ(g) > 0; thus, the above homomorphism vanishes on
+P0+ and it determines the onto map ∆ ։ Fφ . The kernel of this homomorphism is R(φ) by
+Proposition 1.12.
+   The second item is a consequence of Proposition 1.9 and the first item.               
+8                              FERNÁNDEZ, GUÀRDIA, MONTES, AND NART
+
+
+
+                               Figure 1. Newton polygon of g ∈ K[x]
+
+                                      •
+                                       ❆
+                                        ❆           Nµ,φ (g)
+                                            ❆•
+                                             ❆
+                                                 ❆
+                                                  ❆• •                         •
+                                                    ◗
+                                                    ◗
+                                                      ◗    •
+                                                       ◗
+                    µ(g)                                ◗•              •
+
+
+                           0        ordφ (g)           ordµ,φ (g)           ℓ(Nµ,φ (g))
+
+
+                                       2. Newton polygons
+    The choice of a key polynomial φ for a valuation µ determines a Newton polygon operator
+                                                                    2
+                                            Nµ,φ : K[x] −→ 2R ,
+          2
+where 2R is the set of subsets of theP euclidean plane R2 . The Newton polygon of the zero
+polynomial is the empty set. If g = 0≤s as φs is the canonical φ-expansion of a non-zero
+polynomial g ∈ K[x], then Nµ,φ (g) is the lower convex hull of the cloud of points (s, µ(as φs ))
+for all 0 ≤ s.
+Definition 2.1. The length of a Newton polygon N is the abscissa of its right end point.
+It will be denoted by ℓ(N ).
+     Since µ(g) = min0≤s {µ(as φs )}, the rational number µ(g) is the ordinate of the point of
+intersection of the vertical axis with the line of slope zero which first touches the polygon
+from below. Figure 1 shows the typical shape of Nµ,φ (g).
+     If the Newton polygon N = Nµ,φ (g) is not a single point, we formally write N = S1 +
+· · · + Sk , where Si are the sides of N , ordered by their increasing slopes. The left and right
+end points of N and the points joining two sides of different slopes are called vertices of N .
+                                                                                −
+     Usually, we shall be interested only in the principal Newton polygon Nµ,φ    (g) formed by
+                                                                                −
+the sides of negative slope. If there are no sides of negative slope, then Nµ,φ (g) is the left
+end point of Nµ,φ (g)
+                                                             −
+Lemma 2.2. For every non-zero polynomial g ∈ K[x], ℓ(Nµ,φ       (g)) = ordµ,φ (g).
+                           s
+                 P
+Proof. Let g =     0≤s as φ be the φ-expansion of g. If as 6= 0, then φ ∤µ as , because
+deg as < deg φ and φ is µ-minimal. Hence, ordµ,φ (as φs ) = s for P
+                                                                  all s such that as 6= 0.
+  Let I = {s ∈ Z≥0 | µ(as φs ) = µ(g)} and consider h =                     s
+                                                                    s∈I as φ . Clearly, s0 :=
+    −
+ℓ(Nµ,φ (g)) = min(I). Since g ∼µ h, we have ordµ,φ (g) = ordµ,φ (h) = s0 , by Lemma 1.7. 
+    From now on, we fix µ′ = [µ; (φ, λ)], an augmented valuation of µ with respect to the
+key polynomial φ and a positive rational number λ. Let us first show how to read the value
+µ′ (g) in the Newton polygon Nµ,φ (g) (see Figure 3).
+Lemma 2.3. For any non-zero g ∈ K[x], the line of slope −λ which first touches the
+polygon Nµ,φ (g) from below cuts the vertical axis at the point (0, µ′ (g)).
+Proof. For any point P = (s, µ(as φs )), the value µ′ (as φs ) = µ(as φs ) + sλ is the ordinate
+of the point of intersection of the vertical axis with the line of slope −λ passing through P
+(Figure 2). The lemma follows from µ′ (g) = min0≤s {µ′ (as φs )}.                            
+                           RESIDUAL IDEALS OF MACLANE VALUATIONS                                  9
+
+
+
+                         Figure 2. Newton polygon of a monomial as φs
+
+                                      ◗
+                              µ′ (as φs )) ◗
+                                               ◗
+                                                ◗
+                                                 ◗
+                                                  ◗ P
+                              µ(as φs ))           ◗•
+                                                    ◗
+                                                      ◗ −λ
+                                                       ◗
+                                                        ◗◗
+                                           0        s
+
+
+
+                     Figure 3. λ-component of a polynomial g ∈ K[x].
+
+                             ❆❆           Nµ,φ (g)
+                       ❍
+                    µ (g) ❍
+                     ′         ❆
+                           ❍
+                            ❍❍❆
+               u(g)/e(µ)          ❆•❍
+                                  ❍ ❍❍
+                                      ❍❍
+                                       ❍❍Sλ (g)
+                                         ❍❍
+                                          ❍❍
+                                              ❍❍❍
+                                                ❍•❳❳
+                                                    ❍❍❳❳
+                                                       ❍❍❳❳
+                                                         ❍❍L−λ
+                                                            ❍❍
+                         0       s(g)           s′ (g)       ❍
+
+
+  By Lemma 1.10, φ is a key polynomial for µ′ and it makes sense to consider the Newton
+polygon Nµ′ ,φ (g), which is related to Nµ,φ (g) in an obvius way.
+Lemma 2.4. Let H : R2 −→ R2 be the affine transformation H(x, y) = (x, y + λx). Then,
+Nµ′ ,φ (g) = H(Nµ,φ (g)).                                                          
+   The affinity H acts as a translation on every vertical line, and the vertical axis is pointwise
+invariant. If S is a side of Nµ,φ (g) of slope ρ, then H(S) is a side of Nµ′ ,φ (g) of slope ρ + λ;
+also, the end points of S and H(S) have the same abscissas.
+Definition 2.5. Let g ∈ K[x] be a non-zero polynomial and denote N = Nµ,φ (g). We
+define the λ-component of g as the segment
+              Sλ (g) := Sµ′ (g) := {(x, y) ∈ N | y + λx is minimal} = N ∩ L−λ ,
+where L−λ is the line of slope −λ which first touches the polygon N from below.
+   We denote by s(g) = sµ′ (g) ≤ s′ (g) = s′µ′ (g) the abscissas of the end points of Sλ (g). We
+denote by u(g) = uµ′ (g) the integer such that (s(g), u(g)/e(µ)) is the left end point of Sλ (g)
+(see Figure 3).
+    If N has a side S of slope −λ, then Sλ (g) = S; otherwise, Sλ (g) is a vertex of N and
+s(g) = s′ (g).
+    If g = 0≤s as φs is the φ-expansion of g, consider I = {s ∈ Z≥0 | µ′ (as φs ) = µ′ (g)}. By
+           P
+
+Lemma 2.3, I coincides with the set of all s ∈ Z≥0 such that the point (s, µ(as φs )) lies on
+Sλ (g); in particular, s(g) = min(I), s′ (g) = max(I). According to MacLane’s terminology,
+s′ (g) is the effective degree of g and s′ (g) − s(g) is the projection of g with respect to the
+augmented valuation µ′ [11, Secs. 3,4].
+10                          FERNÁNDEZ, GUÀRDIA, MONTES, AND NART
+
+
+
+                              Figure 4. Addition of two segments
+
+                                                         •
+                                                      ✒✂✂✍❇
+                                                       ✂ ❇
+                                                      ✂ ❇
+                                                              ❇❇ S + S
+                                                                       ′
+                                                   •✂          •❍
+                                                  ✒❇              ❍❍
+                                            •❍ S      ❇              •
+                                          ✂✂✍ ❍❍•
+                                                            ′
+                                                         S
+                                                       ❇
+                                        ✂                ❇❇
+                                      ✂                   •
+                                     ✂
+                                 0
+
+
+Lemma 2.6. Let g, h ∈ K[x] be two non-zero polynomials.
+  (1) If g ∼µ′ h, then Sλ (g) = Sλ (h).
+  (2) s(g) = ordµ′ ,φ (g).
+  (3) s′ (g) = ordµ′′ ,φ (g), where µ′′ = [µ; (φ, λ − ǫ)] for a sufficiently small ǫ ∈ Q>0 .
+Proof. The first item is a consequence of the remarks preceeding the lemma.
+  By Lemma 2.4, the image of Sλ (g) under the affinity H is the side of slope zero of Nµ′ ,φ (g).
+Thus, s(g) = ordµ′ ,φ (g), by Lemma 2.2.
+  Finally, if ǫ ∈ Q>0 is sufficiently small, the right end point of Sλ (g) is equal to the left
+end point of Sλ−ǫ (g) and item 3 is a consequence of item 2.                                   
+   There is a natural addition of segments in the plane. We admit that a point in the
+plane is a segment whose left and right end points coincide. Given two segments S, S ′ , the
+addition S + S ′ is the ordinary vector sum if at least one of the segments is a single point.
+Otherwise, N = S + S ′ is the Newton polygon whose left end point is the vector sum of the
+two left end points of S and S ′ , and whose sides are the join of S and S ′ , considered with
+increasing slopes from left to right (see Figure 4).
+Corollary 2.7. For non-zero g, h ∈ K[x], we have Sλ (gh) = Sλ (g) + Sλ (h).
+Proof. For sides of the same slope (or of length zero), this additivity is equivalent to
+         s(gh) = s(g) + s(h),        s′ (gh) = s′ (g) + s′ (h),            and   u(gh) = u(g) + u(h).
+The two first equalitiesP  are a consequenceP of equation (2) and Lemma 2.6. In order to
+prove the third, let g = 0≤s as φs , h = 0≤t bt φt be the φ-expansions of g, h, respectively.
+Let s0 = s(g), t0 = s(h), and consider G = s0 ≤s as φs , H = t0 ≤t bt φt . Since G ∼µ g,
+                                                  P                P
+
+H ∼µ h, GH ∼µ gh, we may suppose g = G, h = H. Now, the left end point of Sλ (gh) has
+abscissa s0 + t0 and the (s0 + t0 )-th term of the φ-expansion of gh is the remainder c of the
+division as0 bt0 = φq + c. Since φ ∤µ as0 bt0, Lemma 1.3 shows that µ(as0 bt0 ) = µ(c). Hence,
+u(g) + u(h) = e(µ) µ(as0 φs0 ) + µ(bt0 φt0 ) = e(µ)µ(cφs0 +t0 ) = u(gh).                     
+   The addition of segments may be extended to an addition law for Newton polygons.
+Given two polygons N = S1 + · · · + Sk , N ′ = S1′ + · · · + Sk′ ′ , the left end point of the sum
+N + N ′ is the vector sum of the left end points                 ′
+                                               of N and N ′ , whereas           the sides of N + N ′ are
+                                                                              ′
+obtained by joining all sides in the multiset S1 , . . . , Sk , S1 , . . . , Sk′ , ordered by increasing
+slopes [5, Sec. 1]. As an immediate consequence of Corollary 2.7, we get the Theorem of
+the product for Newton polygons.
+                                                                       −
+Theorem 2.8. Let µ be a valuation and φ a key polynomial for µ. Then, Nµ,φ (gh) =
+ −          −
+Nµ,φ (g) + Nµ,φ (h) for any non-zero g, h ∈ K[x].                               
+                         RESIDUAL IDEALS OF MACLANE VALUATIONS                               11
+
+   The analogous statement for entire Newton polygons is false. For instance, consider
+g, h ∈ K[x] such that deg g, deg h < deg φ and deg gh ≥ deg φ; then, Nµ,φ (g) and Nµ,φ (h)
+are a single point, while Nµ,φ (gh) has a side of length one.
+   We now apply these Newton polygon techniques to obtain a characterization of the units
+in Gr(µ′ ) and a criterion for µ′ -minimality in terms of φ-expansions.
+Lemma 2.9. For any non-zero g ∈ K[x], Hµ′ (g) is a unit in Gr(µ′ ) if and only if g ∼µ′ a
+for some a ∈ K[x] such that deg a < deg φ. This condition holds if φ ∤µ g.
+Proof. Suppose g ∼µ′ a for some a ∈ K[x] such that deg a < deg φ. Since a is coprime to φ,
+we have a Bézout identity ah + φf = 1, with h, f ∈ K[x] and deg h < deg φ. By Proposition
+1.9, µ(ah) = µ′ (ah); hence,
+              µ′ (ah − 1) = µ′ (φf ) > µ(φf ) ≥ min{µ(ah), 0} = min{µ′ (ah), 0}.
+Therefore, ah ∼µ′ 1 and Hµ′ (g) = Hµ′ (a) is a unit inPGr(µ′ ).
+   Suppose gh ∼µ′ 1 for some h ∈ K[x], and let g = 0≤s as φs be the φ-expansion of g. By
+Lemma 2.6 and Corollary 2.7, Sλ (g) + Sλ (h) = Sλ (gh) = Sλ (1) = {(0, 0)}. Hence, Sλ (g) is
+a single point of abscissa zero. This implies that g ∼µ′ a0 .
+   Finally, suppose φ ∤µ g, and let g = φq + a be the divison with remainder of g by φ. By
+Lemma 1.3 and Proposition 1.9, µ′ (g − a) = µ′ (φq) > µ(φq) ≥ µ(g) = µ′ (g). Therefore,
+g ∼µ′ a.                                                                                  
+                           Pℓ
+Lemma 2.10. Let g = s=0 as φs be the φ-expansion of a non-zero polynomial g ∈ K[x].
+The following conditions are equivalent:
+    (1) g is µ′ -minimal.
+    (2) deg aℓ = 0 and µ′ (g) = µ′ aℓ φℓ .
+                                        
+
+    (3) deg g = s′ (g) deg φ.
+Proof. Clearly, conditions (2) and (3) are equivalent.
+   Let us show that (1) implies (2). Suppose that g is µ′ -minimal; write g = G + H,
+where G is the sum of all monomials as φs with µ′ (as φs ) = µ′ (g) and H is the sum of all
+monomials with µ′ (as φs ) > µ′ (g). Since µ′ (g − G) = µ′ (H) > µ′ (g), we have g ∼µ′ G. Since
+g is µ′ -minimal, we get deg g ≤ deg G, and the leading monomial of g must be one of the
+monomials of G.
+   On the other hand, by Lemma 2.9, Hµ′ (aℓ ) is a unit in Gr(µ′ ) and caℓ ∼µ′ 1 for some
+c ∈ K[x] with deg c < deg φ. For each 0 ≤ s < ℓ, since φ ∤µ cas , Lemma 2.9 shows
+that cas ∼µ′ cs for some cs ∈ K[x] with deg cs < deg φ. Hence, cg ∼µ′ f , where f :=
+      Pℓ−1
+φℓ + s=0    cs φs . Since g is µ′ -minimal, we get deg aℓ + ℓ deg φ = deg g ≤ deg f = ℓ deg φ;
+hence, deg aℓ = 0.
+   Conversely, suppose that (3) holds. Consider f ∈ K[x] such that g |µ′ f ; that is, f ∼µ′ gh
+for a certain h ∈ K[x]. By Lemma 2.6 and Corollary 2.7, s′ (f ) = s′ (gh) = s′ (g) + s′ (h), so
+that deg g = s′ (g) deg φ ≤ s′ (f ) deg φ ≤ deg f .                                          
+  As a consequence of the criterion of Lemma 2.10, we may introduce an important nu-
+merical invariant of an augmented valuation.
+Lemma 2.11. Let g ∈ K[x] be a monic µ′ -minimal polynomial. Then, the positive rational
+number C(µ′ ) := µ′ (g)/ deg g does not depend on g.
+Proof. Lemma 2.10 shows that the φ-expansion of g is of the form:
+                        X
+               g = φℓ +          as φs , with µ′ (g) = µ′ (φℓ ) = ℓµ′ (φ).
+                               0≤s<ℓ
+Since deg g = ℓ deg φ, we get µ′ (g)/ deg g = µ′ (φ)/ deg φ. This proves the lemma.          
+12                             FERNÁNDEZ, GUÀRDIA, MONTES, AND NART
+
+   This holds for the minimal valuation µ0 too. In fact, a monic polynomial g is µ0 -minimal
+if and only if it has coefficients in O; hence C(µ0 ) := µ0 (g)/ deg g = 0 is independent of g.
+
+                               3. MacLane’s inductive valuations
+3.1. MacLane chains of valuations.
+Definition 3.1. A valuation µ ∈ V is called inductive if µ is attained after a finite number
+of augmentation steps starting with µ0 .
+                        (φ1 ,λ1 )         (φ2 ,λ2 )         (φr−1 ,λr−1 )          (φr ,λr )
+(4)               µ0     −→          µ1    −→         ···       −→          µr−1    −→         µr = µ.
+We denote by Vind ⊂ V the subset of all inductive valuations.
+  A chain of augmented valuations as in (4) is called a MacLane chain of length r of µ if
+φi+1 6∼µi φi for all 1 ≤ i < r.
+  We say that (4) is an optimal MacLane chain of µ if deg φ1 < · · · < deg φr .
+     By Lemma 2.10, in every chain of augmented valuations we have
+                                    deg φ1 | deg φ2 | · · · | deg φr−1 | deg φr .
+The condition φi+1 6∼µi φi characterizing a MacLane chain is equivalent to φi+1 ∤µi φi . In
+fact, if φi+1 |µi φi , then deg φi+1 = deg φi because deg φi | deg φi+1 and deg φi ≥ deg φi+1
+by the µi -minimality of φi+1 ; hence, φi+1 ∼µi φi by Lemma 1.5.
+   This shows that an optimal MacLane chain is in particular a MacLane chain.
+   In every chain of augmented valuations, the constants C(µi ) introduced in Lemma 2.11
+grow strictly with i:
+                              0 = C(µ0 ) < C(µ1 ) < · · · < C(µr ) = C(µ).
+In fact, by Lemma 1.10, φi+1 ∈ KP(µi ) ∩ KP(µi+1 ) for any 0 ≤ i < r. Hence,
+                         µi+1 (φi+1 )   µi (φi+1 ) + λi+1              λi+1
+            C(µi+1 ) =                =                   = C(µi ) +          > C(µi ).
+                          deg φi+1          deg φi+1                 deg φi+1
+Lemma 3.2. In a MacLane chain, the group Γ(µi ) is the subgroup of Q generated by
+Γ(µi−1 ) and λi , for all 1 ≤ i ≤ r. In particular,
+                       Z = Γ(µ0 ) ⊂ Γ(µ1 ) ⊂ · · · ⊂ Γ(µr−1 ) ⊂ Γ(µr ) = Γ(µ).
+Moreover, if e(µi−1 )λi = hi /ei , with hi , ei positive coprime integers, then e(µi ) = ei e(µi−1 )
+and e(φi ) = e(µi−1 ) = e1 · · · ei−1 .
+Proof. By Propositions 1.9 and 1.12, Γ(µi ) is generated by µi−1 (φi ) + λi and the subgroup
+                Γφi := {µi−1 (g) | g ∈ K[x], g 6= 0, deg g < deg φi } ⊂ Γ(µi−1 ).
+Thus, it suffices to show that Γφi = Γ(µi−1 ). Let h = 0≤s as (φi−1 )s be the φi−1 -expansion
+                                                        P
+
+of an arbitrary non-zero polynomial. Since φi−1 ∈ KP(µi−1 ), we have
+                       µi−1 (h) = µi−1 (as (φi−1 )s ) = µi−1 (as ) + sµi−1 (φi−1 ),
+for a certain s ≥ 0. Since deg as < deg φi−1 ≤ deg φi , the value µi−1 (as ) belongs to Γφi .
+Hence, it suffices to check that µi−1 (φi−1 ) ∈ Γφi . If deg φi−1 < deg φi , this is obvious.
+Suppose deg φi−1 = deg φi , so that φi−1 = φi + a, with deg a < deg φi . In a MacLane chain,
+φi ∤µi−1 φi−1 , so that µi−1 (φi−1 ) = µi−1 (a) ∈ Γφi by Lemma 1.3.
+   Clearly, ei Γ(µi ) = Γ(µi−1 ); thus, e(µi ) = ei e(µi−1 ) = ei ei−1 · · · e1 , since e(µ0 ) = 1.
+Finally, by Proposition 1.12, v(Kφ∗i ) = Γφi = Γ(µi−1 ), so that e(φi ) = e(µi−1 ).              
+Corollary 3.3. Let 1 ≤ i ≤ r. For any (s, β) ∈ Z≥0 × Γ(µi−1 ), there exists a ∈ K[x] such
+that deg a < deg φi and Nµi−1 ,φi (aφsi ) = {(s, β)}.
+                            RESIDUAL IDEALS OF MACLANE VALUATIONS                               13
+
+Proof. We get β = µi−1 (aφsi ), by choosing a with µi−1 (a) = β − sµi−1 (φi ) ∈ Γ(µi−1 ). This
+is possible because Γ(µi−1 ) = Γφi , as shown in the proof of Lemma 3.2.                    
+  Let us emphasize a stability property of the values of µi along a MacLane chain.
+Lemma 3.4. For 1 ≤ i ≤ r and g ∈ K[x], suppose that φi ∤µi−1 g. Then, µi−1 (g) = µi (g) =
+· · · = µ(g).
+Proof. By Proposition 1.9, µi−1 (g) = µi (g). If i = r, we are done. If i < r, Lemma 2.9
+shows that g ∼µi a for some a ∈ K[x] with deg a < deg φi ≤ deg φi+1 . This implies that
+φi+1 ∤µi g, and the argument may be iterated.                                         
+Lemma 3.5. Consider a chain of augmented valuations:
+                                           (φ,λ)      (φ′ ,λ′ )
+                                        µ −→ µ′ −→ µ′′ .
+If deg φ = deg φ′ , then µ′′ = [µ; (φ′ , λ + λ′ )].
+Proof. Write φ′ = φ + a, with deg a < deg φ. By the definition of µ′ and Lemma 1.3:
+                                    µ(a) = µ′ (a) ≥ µ′ (φ) > µ(φ).
+Thus, φ ∼µ φ′ , and φ′ is a key polynomial for µ, by Lemma 1.5. In order to show that
+µ′′ = [µ′ ; (φ′ , λ′ )] = [µ; (φ′ , λ + λ′ )], it suffices to check that both augmented valuations
+coincide on φ′ and on all polynomials of degree less than deg φ′ . For any b ∈ K[x] with
+deg b < deg φ′ = deg φ, we have µ′′ (b) = µ′ (b) = µ(b), by the definition of the augmented
+valuations. Finally,
+              µ′′ (φ′ ) = µ′ (φ′ ) + λ′ = µ′ (φ) + λ′ = µ(φ) + λ + λ′ = µ(φ′ ) + λ + λ′ ,
+where the equality µ′ (φ′ ) = µ′ (φ) is deduced from Lemma 2.11 (because φ, φ′ are key
+polynomials for µ′ ), and the equality µ(φ′ ) = µ(φ) is a consequence of φ ∼µ φ′ .  
+  Lemma 3.5 shows that every inductive valuation admits optimal MacLane chains. Let
+us now discuss their unicity.
+Lemma 3.6. Let ν be an inductive valuation and let µ = [ν; (φ, λ)], µ′ = [ν; (φ′ , λ′ )] be two
+augmented valuations of ν. Then, µ = µ′ if and only if deg φ = deg φ′ , µ(φ) = µ(φ′ ) and
+λ = λ′ . In this case, we also have φ ∼ν φ′ .
+Proof. Suppose µ = µ′ . By the definition of an augmented valuation,
+                           deg φ = min{deg g | g ∈ K[x], ν(g) < µ(g)},
+so that deg φ = deg φ′ . By Lemma 1.10, φ, φ′ ∈ KP(ν) ∩ KP(µ); hence, Lemma 2.11 shows
+that ν(φ) = ν(φ′ ) and µ(φ) = µ(φ′ ). This implies λ = λ′ too. Also, since deg(φ−φ′ ) < deg φ,
+Proposition 1.9 shows that ν(φ − φ′ ) = µ(φ − φ′ ) ≥ µ(φ) > ν(φ), so that φ ∼ν φ′ .
+  Conversely, suppose deg φ = deg φ′ , µ(φ) = µ(φ′ ) and λ = λ′ . We claim that:
+(5)                             δ := µ(φ) = µ(φ′ ) = µ′ (φ′ ) = µ′ (φ).
+In fact, Lemma 2.11 shows that ν(φ) = ν(φ′ ), leading to µ(φ) = ν(φ) + λ = ν(φ′ ) + λ′ =
+µ′ (φ′ ). Also, if φ′ = φ + a, then,
+                  µ′ (φ) = min{µ′ (φ′ ), ν(a)} = min{µ(φ), ν(a)} = µ(φ′ ).
+This ends the proof of (5). Now, for any φ-expansion g = 0≤s as φs , we have
+                                                            P
+
+                       µ′ (g) ≥ min{µ′ (as φs )} = min{ν(as ) + sδ} = µ(g).
+                                 0≤s                  0≤s
+
+By the symmetry of the argument, we deduce that µ = µ′ .                                        
+14                                   FERNÁNDEZ, GUÀRDIA, MONTES, AND NART
+
+Proposition 3.7. Suppose the inductive valuation µ admits an optimal MacLane chain as
+in (4). Consider another optimal MacLane chain
+                       (φ′1 ,λ′1 )         (φ′2 ,λ′2 )         (φ′r ′ −1 ,λr ′ −1 )             (φ′r ′ ,λ′r ′ )
+                 µ0     −→           µ′1    −→           ···         −→               µ′r′ −1      −→             µ′r′ = µ′ .
+Then, µ = µ′ if and only if r = r ′ and:
+               deg φi = deg φ′i ,             µi (φi ) = µi (φ′i ),            λi = λ′i ,         for all 1 ≤ i ≤ r.
+In this case, we also have µi = µ′i and φi ∼µi−1 φ′i for all 1 ≤ i ≤ r.
+Proof. The sufficiency of the conditions is a consequence of Lemma 3.6.
+  Suppose µ = µ′ and (for instance) r ≤ r ′ . Let us show that:
+          µi−1 = µ′i−1 =⇒ deg φi = deg φ′i , µi (φi ) = µi (φ′i ), λi = λ′i , and µi = µ′i ,
+for all 1 ≤ i ≤ r. In fact, by Lemma 3.4,
+                      deg φi = min{deg g | g ∈ K[x], µi−1 (g) < µ(g)} = deg φ′i .
+Write φ′i = φi + a, with deg a < deg φi = deg φ′i . By the optimality of both Maclane chains
+, φi+1 ∤µi φ′i and φ′i+1 ∤µ′i φi ; hence, Lemma 3.4 shows that
+                             µi (φi ) = µ(φi ) = µ′i (φi ) = min{µ′i (φ′i ), µi−1 (a)},
+                             µ′i (φ′i ) = µ(φ′i ) = µi (φ′i ) = min{µi (φi ), µi−1 (a)}.
+Hence, µi (φi ) = µ′i (φ′i ). Also, µi−1 (φi ) = µi−1 (φ′i ), by Lemma 2.11, so that λi = µi (φi ) −
+µi−1 (φi ) = µ′i (φ′i ) − µi−1 (φ′i ) = λ′i . By Lemma 3.6, µi = µ′i .
+   Since both chains start with µ0 , the iteration of this argument leads to µ = µr = µ′r . The
+inequality r < r ′ implies µ = µ′r < µ′ , against our assumption. Thus, r = r ′ .                  
+   Hence, in an optimal MacLane chain of µ, the intermediate valuations µ1 , . . . , µr−1 , the
+positive rational numbers λ1 , . . . , λr and the integers deg φ1 , . . . , deg φr are intrinsic data of
+µ, whereas the key polynomials φ1 , . . . , φr admit different choices. More precisely, φ′1 , . . . , φ′r
+is the family of key polynomials of another optimal MacLane chain of µ if and only if
+             φ′i = φi + ai ,          deg ai < deg φi ,               µi (ai ) ≥ µi (φi ),             for all 1 ≤ i ≤ r.
+We also have φi ∼µi−1 φ′i for all i. Nevertheless, φi 6∼µi φ′i when µi (ai ) = µi (φi ).
+Definition 3.8. The MacLane depth of an inductive valuation µ is the length r of any
+optimal MacLane chain of µ.
+     We end this section with several applications of the existence of MacLane chains.
+Proposition 3.9. Let µ be an inductive valuation on Kv (x). The restriction of µ to K(x) is
+an inductive valuation with graded algebra isomorphic to Gr(µ). The mapping Vind (Kv ) →
+Vind (K) obtained in this way is bijective.
+Proof. Clearly, the restriction of the minimal valuation µ0 on Kv (x) is the minimal valuation
+on K(x). On the other hand, Proposition 3.7 shows that every µ ∈ Vind (Kv ) admits an
+optimal MacLane chain whose key polynomials have coefficients in K; clearly, the inductive
+valuation on K(x) determined by this optimal MacLane chain is the restriction µ|K(x).
+Thus, the restriction of valuations induces a well-defined mapping Vind (Kv ) → Vind (K).
+The statement about the graded algebras is obvious.
+   Conversely, an optimal MacLane chain of any µ ∈ Vind (K) may be considered as an
+optimal MacLane chain of an inductive valuation µ̃ on Kv (x). By Proposition 3.7 applied
+to both valuations µ and µ̃, all optimal MacLane chains of µ determine the same valuation
+on Kv (x). Therefore, we get a mapping Vind (K) → Vind (Kv ), which is the inverse of the
+restriction map.                                                                             
+                         RESIDUAL IDEALS OF MACLANE VALUATIONS                               15
+
+Proposition 3.10. For any inductive valuation µ, the canonical embedding ∆(µ) ֒→ κ(µ)
+induces an isomorphism between the field of fractions of ∆(µ) and κ(µ).
+Proof. We must show that the natural morphism Frac(∆(µ)) → κ(µ) is onto. An element in
+κ(µ)∗ is the class, modulo the maximal ideal of the valuation, of a fraction g/h of polynomials
+with µ(g/h) = 0. Denote α = µ(g) = µ(h) ∈ Γ(µ). If there exists a polynomial f such that
+µ(f ) = −α, then Hµ (f g), Hµ (f h) belong to ∆(µ) and the fraction Hµ (f g)/Hµ (f h) is sent
+to the class of g/h by the above morphism.
+   If µ = µ0 , then α ∈ Z and there exists f ∈ K with µ0 (f ) = −α. If µ > µ0 , consider
+a MacLane chain of length r > 0 of µ, and let −α = m/e(µ) for some m ∈ Z. Since
+gcd(hr , er ) = 1, there exists an integer s ≥ 0 such that m ≡ shr (mod er ). Let u =
+(m − shr )/er and take β = u/e(µr−1 ) ∈ Γ(µr−1 ). By Corollary 3.3, µr−1 (aφsr ) = β for some
+a ∈ K[x] with deg a < deg φr . Hence, µ(aφsr ) = β + sλr = −α.                               
+Theorem 3.11. Let µ be an inductive valuation. For every monic g ∈ K[x], we have
+µ(g)/ deg g ≤ C(µ). Equality holds if and only if g is µ-minimal.
+Proof. By induction on the length r of a MacLane chain of µ. For r = 0, the statement is
+obvious because a monic polynomial g has µ0 (g) ≤ 0, and g is µ0 -minimal if and only if it
+has coefficients in O.
+  Let r > 0 and suppose that µr−1 (g)/ deg g ≤ C(µr−1 ) for all monic polynomials g ∈ K[x].
+Let g = ℓs=0 as φsr be the φr -expansion of a monic polynomial g. If we denote mr = deg φr ,
+         P
+
+we have deg g = deg aℓ + ℓmr and µ(g) ≤ µ(aℓ φℓr ) = µr−1 (aℓ ) + ℓmr C(µ).
+  If deg aℓ = 0, we have aℓ = 1, because g is monic. Hence, µ(g) ≤ ℓmr C(µ) = (deg g)C(µ).
+In this case, equality holds if and only if µ(g) = µ(φℓr ), which is equivalent to g being µ-
+minimal, by Lemma 2.10.
+  If deg aℓ > 0, then aℓ is monic and µr−1 (aℓ )/ deg aℓ ≤ C(µr−1 ) < C(µ), by the induction
+hypothesis. Therefore,
+                µ(g)    µr−1 (aℓ ) + ℓmr C(µ)     C(µ) (deg aℓ + ℓmr )
+(6)                   ≤                        <                       = C(µ).
+                deg g       deg aℓ + ℓmr              deg aℓ + ℓmr
+  In this case, the inequality is strict and g is not µ-minimal by Lemma 2.10.               
+3.2. Numerical data of a MacLane chain. Let us fix an inductive valuation µ equipped
+with a Maclane chain of length r as in (4). In this section and in sections 3.3, 3.4, we attach
+to this chain several data and operators.
+   Take φ0 := x, λ0 := 0 and µ−1 := µ0 . We denote
+                    Γi = Γ(µi ) = e(µi )−1 Z,     ∆i = ∆(µi ),       0 ≤ i ≤ r.
+              F−1 := F0 := Im(F → ∆0 ); Fi := Im(∆i−1 → ∆i ), 1 ≤ i ≤ r.
+   By Proposition 1.15, Fi is a field which may be identified with the residue class field Fφi
+of the extension of Kv determined by φi ; in particular, Fi is a finite extension of F. We
+abuse of language and we identify F with F0 and each field Fi ⊂ ∆i with its image under the
+canonical map ∆i → ∆j for j ≥ i. In other words, we consider as inclusions the canonical
+embeddings
+(7)                                 F = F0 ⊂ F1 ⊂ · · · ⊂ Fr .
+  To these objects we attach several numerical data. For all 0 ≤ i ≤ r, we define:
+                 ei := e(µi )/e(µi−1 ),         mi := deg φi ,
+                 fi−1 := [Fi : Fi−1 ],          wi := µi−1 (φi ), Vi := e(µi−1 )wi ,
+                 hi := e(µi )λi ,               Ci := C(µi ) = µi (φi )/ deg φi ,
+16                                FERNÁNDEZ, GUÀRDIA, MONTES, AND NART
+
+Note that e0 = 1, f0 = m1 , h0 = 0. Lemma 3.2 shows that gcd(hi , ei ) = 1. All these data
+may be expressed in terms of the positive integers
+(8)                                 e0 , . . . , er , f0 , . . . , fr−1 , h1 , . . . , hr .
+In fact, the reader may easily check that for all 1 ≤ i ≤ r:
+
+                    e(φi ) = e(µi−1 ) = e0 · · · ei−1 ,
+                    f (φi ) = [Fi : F0 ] = f0 · · · fi−1 ,
+                    λi = hi /(e0 · · · ei ),
+(9)
+                    mi = ei−1 fi−1 mi−1 = (e0 · · · ei−1 )(f0 · · · fi−1 ),
+                                                           P
+                    wi = ei−1 fi−1 (wi−1 + λi−1 ) = 1≤j<i (ej fj · · · ei−1 fi−1 )λj ,
+                    Ci = (wi + λi )/mi .
+
+The recurrence on wi is deduced from equation (6).
+   If the MacLane chain is optimal, Proposition 3.7 shows that all these rational numbers
+are intrinsic data of µ. In this case, we refer to them as ei (µ), fi (µ), hi (µ), λi (µ), mi (µ),
+wi (µ), Vi (µ), Ci (µ), respectively. The positive integers in (8) are then called the basic
+MacLane invariants of µ. Also, the chain of F-algebra homomorphisms ∆0 → · · · → ∆r
+and the induced chain (7) of finite extensions of F are intrinsic objects attached to µ.
+   Clearly, the bijection Vind (Kv ) → Vind (K) described in Proposition 3.9 preserves all these
+invariants.
+
+3.3. Rational functions attached to a MacLane chain. For every 0 ≤ i ≤ r, we
+consider integers ℓi , ℓ′i uniquely determined by
+                                       ℓi hi + ℓ′i ei = 1,            0 ≤ ℓi < ei .
+We consider several rational functions in K(x) defined in a recursive way.
+
+Definition 3.12. We take π0 = π1 = π, Φ0 = φ0 = γ0 = x and
+                                                                                              ′
+             Φi = φi (πi )−Vi ,      γi = (Φi )ei (πi )−hi ,         πi+1 = (Φi )ℓi (πi )ℓi ,       1 ≤ i ≤ r.
+
+  By construction, these rational functions may be expressed as π n0 (φ1 )n1 · · · (φr )nr for
+adequate integers nj . For i ≥ 1, it is easy to deduce from the definition that:
+
+                              Φi = π n0 (φ1 )n1 · · · (φi−1 )ni−1 φi ,
+                                      ′       ′               ′
+(10)                          πi = π n0 (φ1 )n1 · · · (φi−2 )ni−2 (φi−1 )ℓi−1 ,
+                                      ′′      ′′               ′′
+                              γi = π n0 (φ1 )n1 · · · (φi−1 )ni−1 (φi )ei .
+
+     By Lemma 3.4, µi (φi ) = µj (φi ) for all 1 ≤ i ≤ j ≤ r. Hence, (10) shows that
+(11)       µi (Φi ) = µj (Φi ),     µi (γi ) = µj (γi ),       µi (πi+1 ) = µj (πi+1 ),           1 ≤ i ≤ j ≤ r.
+     Let us compute these stable values.
+
+Lemma 3.13. For every index 0 ≤ i ≤ r, we have
+      (1) µi (πi ) = 1/e(µi−1 ), µi (πi+1 ) = 1/e(µi ).
+      (2) µi−1 (Φi ) = 0, µi (Φi ) = λi .
+      (3) µi (γi ) = 0.
+Note that πi+1 ∈ K(x)∗ is a uniformizer of µi .
+                           RESIDUAL IDEALS OF MACLANE VALUATIONS                                     17
+
+Proof. We prove items 1, 2 by induction on i. For i = 0 the statements are obvious. Suppose
+that i > 0 and (1), (2) hold for a lower index. The identity µi (πi ) = µi−1 (πi ) = 1/e(µi−1 )
+is a consequence of (11).
+                       µi−1 (Φi ) = µi−1 (φi ) − Vi /e(µi−1 ) = wi − wi = 0.
+                       µi (Φi ) = µi (φi ) − Vi /e(µi−1 ) = wi + λi − wi = λi .
+                       µi (πi+1 ) = ℓi λi + ℓ′i /e(µi−1 ) = 1/e(µi ).
+The third item follows from the first two items.                                                     
+
+  By Lemma 2.9, the element Hµi (φk ) is a unit in Gr(µi ) for all k < i ≤ r. Hence, by using
+(10), it makes sense to define, for all 0 ≤ i ≤ r:
+       xi := Hµi (Φi ) := Hµi (π)n0 Hµi (φ1 )n1 · · · Hµi (φi−1 )ni−1 Hµi (φi ) ∈ Gr(µi ),
+                                      ′          ′                ′
+       pi := Hµi (πi ) := Hµi (π)n0 Hµi (φ1 )n1 · · · Hµi (φi−2 )ni−2 Hµi (φi−1 )ℓi−1 ∈ Gr(µi )∗ ,
+       yi := Hµi (γi ) := (xi )ei (pi )−hi ∈ ∆i .
+  All factors of xi except for Hµ (φi ) are units in Gr(µi ). Hence, these two elements generate
+the same ideal in Gr(µi ). Let us emphasize this observation.
+Lemma 3.14. For 0 ≤ i ≤ r, the elements xi and Hµi (φi ) are associate in Gr(µi ).                   
+  Also, for 0 ≤ i < r we define:
+                         zi ∈ Fi+1 , the image of yi under ∆i −→ ∆i+1 ,
+                         ψi ∈ Fi [y], minimal polynomial of zi over Fi .
+   By Proposition 1.15, Ker(∆i → ∆i+1 ) = Rµi (φi+1 ) = Hµi (φi+1 )Gr(µi ) ∩ ∆i . For i > 0,
+φi+1 ∤µi φi implies that Hµi (φi ) has non-zero image in Gr(µi+1 ). Therefore, zi 6= 0 for i > 0,
+by Lemma 3.14. In particular, ψi 6= y for all i > 0. For i = 0 we have z0 = 0 (and ψ0 = y)
+if and only if φ1 ∼µ0 x, or equivalently, φ1 = x in F[x]. We shall see in Corollary 4.9 that
+                         Fi+1 = Fi [zi ] = F0 [z0 , . . . , zi ],          deg ψi = fi .
+
+3.4. Operators attached to a MacLane chain. We consider Newton polygon operators
+                                                                    2
+                           Ni := Nµi−1 ,φi : K[x] −→ 2R ,                  0 ≤ i ≤ r,
+and residual polynomial operators:
+
+                       Ri,α :    Pα (µi ) −→ Fi [y],           0 ≤ i ≤ r,         α ∈ Γi ,
+                         Ri :    K[x] −→ Fi [y],               0 ≤ i ≤ r.
+The residual polynomial operators are defined by a recurrent formula involving certain
+constants ǫi (α) ∈ F∗i+1 . Let us first define these constants.
+  Given 0 ≤ i ≤ r and α ∈ Γi , consider integers s(α), u(α) uniquely determined by
+                        (u(α)/e(µi−1 )) + s(α)λi = α,                    0 ≤ s(α) < ei ,
+or equivalently,
+(12)                      u(α)ei + s(α)hi = e(µi )α,                    0 ≤ s(α) < ei .
+These integers s(α), u(α) depend on i, or more precisely on the group Γi . Note that
+s(1/e(µi )) = ℓi , u(1/e(µi )) = ℓ′i , are the integers satisfying the Bézout identity ℓi hi + ℓ′i ei =
+1, considered in section 3.3.
+18                          FERNÁNDEZ, GUÀRDIA, MONTES, AND NART
+
+
+                                                                              s
+                                Figure 5. Newton polygon Ni (asj φi j )
+
+                          ❍
+                          α ❍ P0
+               u(α)/e(µi−1 ) ❍
+                             ×❍
+                                         ❍×❍       Qsj
+                                            ❍×     •
+                                             ❍
+                                               ❍×
+                                                ❍
+                 uj /e(µi−1 )
+                                                  ❍×
+                                                   ❍Pj
+                                                     ❍❍
+                                                       ×❍
+                                                         ❍×❍ Lα
+
+                                0 s(α)                    sj
+
+
+Definition 3.15. For 0 ≤ i < r and α ∈ Γi , we define
+                                                   ′
+                                    ǫi (α) = (zi )ℓi s(α)−ℓi u(α) ∈ F∗i+1 ,
+where s(α), u(α) are the integers uniquely determined by (12).
+  Note that ǫi (0) = 1 for all 0 < i ≤ r. For i = 0, we get ǫ0 (α) = (z0 )0 for all α ∈ Z. We
+convene that ǫ0 (α) = 1, even in the case z0 = 0.
+Definition 3.16. For 0 ≤ i ≤ r, α ∈ Γi , and g = 0≤s as φsi the φi -expansion of g ∈ Pα (µi ),
+                                                       P
+we define:
+                      (
+                        g(y)/π α ∈ F0 [y],                                  if i = 0,
+           Ri,α (g) = P                                          j
+                           0≤j ǫi−1 (αj ) Ri−1,αj (asj )(zi−1 ) y ∈ Fi [y], if i > 0,
+where sj := s(α) + jei and αj := α − sj (wi + λi ) ∈ Γi−1 .
+  Let us explain the meaning of the data sj , αj involved in the computation of the j-th
+coefficient of Ri,α (g) (see Figure 5).
+  For 1 ≤ i ≤ r, let Ci = (Z≥0 ) × Γi−1 ⊂ R2 be the set of points of the plane that may be
+vertexs of Ni (g) for some g ∈ K[x].
+  Let Lα be the line of slope −λi cutting the vertical axis at the point (0, α). The point
+P0 = (s(α), u(α)/e(µi−1 )) lies on Ci ∩ Lα and it is the point with least abscissa in this set.
+Actually, the points on Ci ∩ Lα may be parameterized as:
+                      Pj = (s(α) + jei , (u(α) − jhi )/e(µi−1 )),             j ∈ Z≥0 .
+We may write Pj = (sj , uj /e(µi−1 )), with sj = s(α) + jei , uj = u(α) − jhi ∈ Z.
+ Also, since uj /e(µi−1 ) and wi (by definition) belong to Γi−1 , we may consider
+                      αj = uj /e(µi−1 ) − sj wi = α − sj (λi + wi ) ∈ Γi−1 .
+                            s
+            P
+   Let g =          0≤s as φi be the φi -expansion of a polynomial g ∈ Pα (µi ). Denote Qs :=
+(s, µi−1 (as φsi )) ∈ Ci , so that {Qs | 0 ≤ s} is the cloud of points whose lower convex hull is
+Ni (g). By Lemma 2.3, all Qs lie on or above the line Lα , and Qs lies on Lα if and only if
+µi (as φsi ) = α. Hence,
+              (
+                 s 6∈ {sj | 0 ≤ j} =⇒ µi (as φsi ) > α,
+(13)
+                       s = sj       =⇒ µi (as φsi ) = α if and only if µi−1 (as ) = αj .
+   The monomials of Ri,α (g) are in 1-1 correspondence with the points of Ci ∩ Lα . We shall
+see in Corollary 4.4 that the j-th coefficient of Ri,α (g) is non-zero if and only if Qsj = Pj .
+Let us now check that the j-th coefficient vanishes if Qsj lies above Lα .
+                          RESIDUAL IDEALS OF MACLANE VALUATIONS                                 19
+
+
+
+                  Figure 6. Newton polygon of g ∈ K[x] with µi (g) = α
+
+                                   ❆
+                                    ❆              Ni (g)
+                       ❍
+                       α ❍ P0 ❆
+            u(α)/e(µi−1 ) ❍
+                          ×❍ ❆
+                             ❍×❍ ❆         Qsj
+                                ❍ ❆ Pj0    •
+            u(g)/e(µi−1 )           ❍
+                                   •❍
+                                      ❍×
+                                      ❍ ❍
+                                        ❍
+                                         ❍❍×
+                                           ❍Pj P
+                                           ❍
+                                             ❍
+                                             ❍ ❍
+                                               ❍•❳❍
+                                                  j0 +d
+                                                   ❳❳❳
+                                                     ❍×❍ ❳❳
+                                                         L         α
+
+
+                        0 s(α)           s(g)      sj   s′ (g)
+
+
+Lemma 3.17. For all 0 ≤ i ≤ r, α ∈ Γi , the operator Ri,α vanishes on Pα+ (µi ).
+Proof. We proceed by induction onPi. For i = 0 the statement is clear. Assume i > 0
+and consider the φi -expansion g = 0≤s as φsi of a polynomial g with µi (g) > α. By (13),
+µi−1 (asj ) > αj for all j ≥ 0; hence, by the induction hypothesis, all Ri−1,αj (asj ) vanish (as
+polynomials in Fi−1 [y]) and all coefficients of Ri,α (g) vanish too.                          
+   Take g as above with µi (g) = α, and let s(g) = sµi (g) ≤ s′ (g) = s′µi (g) be the abscissas
+of the end points of the λi -component of g (Definition 2.5). These end points belong to
+Ci ∩ Lα , so that s(g) = sj0 for j0 = (s(g) − s(α))/ei = ⌊s(g)/ei ⌋, and s′ (g) = sj0 +d , where
+d = (s′ (g) − s(g))/ei is called the degree of the segment Sλi .
+   By Lemma 3.17, the non-zero coefficients of Ri,α (g) correspond to abscissas sj with
+j0 ≤ j ≤ j0 + d (see Figure 6). Hence, we may define the residual polynomial operator
+Ri : K[x] −→ Fi [y] as follows.
+Definition 3.18. For g ∈ K[x], g 6= 0, let α = µi (g). We define R0 (g) = R0,α (g) =
+g(y)/π α ∈ F0 [y]. For 1 ≤ i ≤ r, we define
+                                X
+      Ri (g) := Ri,α (g)/y j0 =         ǫi−1 (αj0 +k ) Ri−1,αj0 +k (asj0 +k )(zi−1 ) y k ∈ Fi [y],
+                                        0≤k≤d
+
+where j0 = ⌊s(g)/ei ⌋. We convene that Ri (0) = 0 for all 0 ≤ i ≤ r.
+  For any 1 ≤ i ≤ r and any abscissa s ≥ 0, Ni (φsi ) is the point (s, swi ) and α := µi (φsi ) =
+s(wi + λi ). Let j = ⌊s/ei ⌋ = (s − s(α))/ei . With the above notation, s = sj and αj = 0.
+Since ǫi−1 (0) = 1 = Ri−1,0 (1), we have
+(14)                  Ri,α (φsi ) = y ⌊s/ei ⌋ ,   Ri (φsi ) = 1,   1 ≤ i ≤ r.
+  Corollary 4.4 below shows that Ri (g) has always degree d and Ri (g)(0) 6= 0. Also,
+Corollary 5.6 shows that Ri (φi+1 ) = ψi for all 0 ≤ i < r.
+
+        4. Structure of the graded algebra of an inductive valuation
+   In this section, we fix an inductive valuation µ equipped with a MacLane chain of length
+r, and we denote ∆ = ∆(µ). We shall freely use all data and operators of the MacLane
+chain described in section 3.
+   The main property of the residual polynomial operators is reflected in Theorem 4.2. We
+shall derive from this result some more properties of the residual polynomials, their link
+with the residual ideals, and the structure of the graded algebra of µ.
+20                           FERNÁNDEZ, GUÀRDIA, MONTES, AND NART
+
+Lemma 4.1. For 0 ≤ i ≤ r, α ∈ Γi and a non-zero g ∈ K[x], consider
+                                            s(α) u(α)                  s(g) u(g)
+                            ϕi (α) := xi        pi ,       ϕi (g) := xi    pi ,
+where s(α), u(α) are defined in (12), (s(g), u(g)/e(µi−1 )) is the left end point of Sλi (g), if
+i > 0 (see Figure 6), and s(g) = 0, u(g) = µ0 (g), if i = 0. These homogeneous elements
+in Gr(µi ) have degree deg ϕi (α) = α, deg ϕi (g) = µi (g). Moreover, ϕi (gh) = ϕi (g)ϕi (h) for
+any pair of non-zero polynomials g, h ∈ K[x].
+                                                            
+                             s(α) u(α)               s(g) u(g)
+Proof. The equalities µi Φi πi           = α, µi Φi πi           = µi (g) are a consequence of
+Lemma 3.13. Corollary 2.7 shows that ϕi (gh) = ϕi (g)ϕi (h).                                  
+Theorem 4.2. Let g ∈ K[x] be a non-zero polynomial and let α = µ(g). Then,
+                           Hµ (g) = ϕr (α)Rr,α (g)(yr ) = ϕr (g)Rr (g)(yr ).
+In particular, Pα (µ)/Pα+ (µ) = ϕr (α)∆ is a free ∆-module of rank one.
+Proof. Let g = 0≤s as φsr be the φr -expansion of g, and consider the set of indices I = {s ≥
+                   P
+
+0 | µ (as φsr ) = α}. Since g ∼µ s∈I as φsr , we have Hµ (g) = s∈I Hµ (as φsr ) by equation (1).
+                                P                             P
+   Let us prove by induction on r the identity
+(15)                                      Hµ (g) = ϕr (α)Rr,α (g)(yr ).
+   If r = 0, we have φ0 = x, e0 = 1, s(α) = 0 and ϕ0 (α) = Hµ0 (π)α . For all s ∈ I, we have
+µ0 (as ) = µ0 (as xs ) = α; thus, bs := as π −α has µ0 (bs ) = 0, and
+                            Hµ0 (as xs ) = ϕ0 (α)Hµ0 (bs ) y0s = ϕ0 (α)bs y0s ,
+the last equality by the identification of F with the subfield F0 ⊂ ∆0 . This proves (15) in
+this case.
+   Let now i > 0 and suppose that (15) is true for all inductive valuations equipped with a
+MacLane chain of length less than r. By (13), s ∈ I if and only if s = sj and µr−1 (asj ) = αj
+for some j ≥ 0. Thus, (15) is equivalent to
+                                  s
+                        Hµ (asj φrj ) = ϕr (α)ǫr−1 (αj )Rr−1,αj (asj )(zr−1 ) yrj ,
+for all j ≥ 0 such that µr−1 (asj ) = αj . Since
+                                                                                 s   u
+(16)                  ϕr (α) yrj = xs(α)
+                                    r    pru(α) yrj = xrs(α)+jei pru(α)−jhi = xrj pr j ,
+our aim is equivalent to showing that µr−1 (asj ) = αj implies:
+                                      s        s   u
+(17)                     Hµ (asj φrj ) = xrj pr j ǫr−1 (αj )Rr−1,αj (asj )(zr−1 ).
+     By the induction hypothesis, if µr−1 (asj ) = αj we have
+(18)                         Hµr−1 (asj ) = ϕr−1 (αj )Rr−1,αj (asj )(yr−1 ).
+  Since deg asj < deg φr , we have µ(asj ) = µr−1 (asj ). Also, (11) implies that µ(Φr−1 ) =
+µr−1 (Φr−1 ), µ(πr−1 ) = µr−1 (πr−1 ). Hence, if we apply the canonical homomorphism
+Gr(µr−1 ) → Gr(µ) to the identity (18), we get
+(19)               Hµ (asj ) = Hµ (Φr−1 )s(αj ) Hµ (πr−1 )u(αj ) Rr−1,αj (asj )(zr−1 ).
+     Therefore, (17) is equivalent to
+                                                     
+                                                    s        s u 
+                    Hµ (Φr−1 )s(αj ) (πr−1 )u(αj ) φrj = Hµ Φrj πr j ǫr−1 (αj ),
+and this is a consequence of an identity between the involved rational functions which is
+proved in Lemma 4.3 below.
+   Finally, equality (16) applied to j = j0 = (s(g) − s(α))/er = ⌊s(g)/er ⌋ yields ϕr (α) yrj0 =
+ϕr (g). Hence, ϕr (α)Rr,α (g)(yr ) = ϕr (g)Rr (g)(yr ).                                        
+                             RESIDUAL IDEALS OF MACLANE VALUATIONS                                       21
+
+Lemma 4.3. With the above notation, take i ≥ 1, j ≥ 0. Then,
+                                                 s        s   u          ′
+                   (Φi−1 )s(αj ) (πi−1 )u(αj ) φi j = Φi j πi j (γi−1 )ℓi−1 s(αj )−ℓi−1 u(αj ) ,
+where αj is considered as an element in Γi−1 .
+Proof. Denote for simplicity s = sj , u = uj , s̄ = s(αj ), ū = u(αj ), ℓ = ℓi−1 , ℓ′ = ℓ′i−1 ,
+e = ei−1 , f = fi−1 . The following identities are derived from the definitions of γi−1 , πi , Φi
+and the Bézout identity ℓh + ℓ′ e = 1.
+                                       ′                          ′                   ′
+       (Φi−1 )s̄ (πi−1 )ū (γi−1 )ℓū−ℓ s̄ = (Φi−1 )s̄+e(ℓū−ℓ s̄) (πi−1 )ū−h(ℓū−ℓ s̄)
+                                                      ′
+                       = (Φi−1 )ℓ(hs̄+eū) (πi−1 )ℓ (hs̄+eū) = πihs̄+eū = πiu−sVi = (Φi /φi )s πiu .
+In the last but one equality we used the identity u − sVi = ūe + s̄h, which is derived from
+u/e(µi−1 ) − swi = αj = ū/e(µi−2 ) + s̄λi−1 by multiplying by e(µi−1 ).                   
+Corollary 4.4. Let 1 ≤ i ≤ r and consider g ∈ Pα (µi ), g 6= 0.
+  (1) Ri,α (g)(yi ) = 0 if and only if Ri,α (g) = 0 if and only if g ∈ Pα+ (µi ).
+  (2) The j-th coefficient of Ri,α (g) is non-zero if and only if µi−1 (asj ) = αj , or equiva-
+      lently, the point Qsj lies on Lα (see Figure 6).
+  (3) deg Ri,α (g) = ⌊s′ (g)/ei ⌋ and ordy (Ri,α (g)) = ⌊s(g)/ei ⌋.
+  (4) deg Ri (g) = (s′ (g) − s(g))/ei and Ri (g)(0) 6= 0.
+Proof. By Lemma 3.17, Ri,α (g) = 0 if g ∈ Pα+ (µi ). If µi (g) = α, Theorem 4.2 shows that
+Ri,α (g)(yi ) 6= 0 as an element in Gr(µi ); thus, Ri,α (g) 6= 0. This proves item 1.
+   By Lemma 3.17, the j-th coefficient of Ri,α (g) vanishes if µi−1 (asj ) > αj . On the other
+hand, Ri−1,αj (asj )(zi−1 ) 6= 0 if µi−1 (asj ) = αj , by equation (19). This proves item 2. Items
+3 and 4 are a consequence of item 2.                                                             
+Corollary 4.5. For non-zero g, h ∈ K[x], the following conditions are equivalent:
+  (1) g ∼µ h.
+  (2) µ(g) = µ(h) and Rr,α (g) = Rr,α (h) for α = µ(g).
+  (3) Sλr (g) = Sλr (h) and Rr (g) = Rr (h).
+Proof. Conditions (1) and (2) are equivalent by Theorem 4.2 and Corollary 4.4. Conditions
+(2) and (3) are equivalent by Corollary 4.4.                                           
+Corollary 4.6. For any non-zero g ∈ K[x], let α = µ(g). Then,
+                      R(g) = yr⌈s(α)/er ⌉ Rr,α (g)(yr )∆ = yr⌈s(g)/er ⌉ Rr (g)(yr )∆.
+For r = 0 we agree that s(g) = 0.
+                                            s(α) u(α)
+Proof. By Theorem 4.2, Hµ (g) = xr pr Rr,α (g)(yr ). If s(α) = 0, then since pr is a unit,
+we have R(g) = Hµ (g)Gr(µ) ∩ ∆ = Rr,α (g)(yr )∆. If s(α) > 0, then ⌈s(α)/er ⌉ = 1 and
+equation (12) shows that
+                           s(−α) = er − s(α),              u(−α) = −hr − u(α).
+A polynomial h ∈ K[x] satisfies Hµ (gh) ∈ ∆ if and only if µ(h) = −α; in this case,
+          e −s(α) −hr −u(α)
+Hµ (h) = xrr     pr         Rr,−α (h)(yr ), by Theorem 4.2. Hence,
+             R(g) = {yr Rr,α (g)(yr )Rr,−α (h)(yr ) | µ(h) = −α} ⊂ yr Rr,α (g)(yr )∆.
+                                  e −s(α)
+On the other hand, Hµ (g)xrr            p−h
+                                          r
+                                             r
+                                               = yr Rr,α (g)(yr ), so that yr Rr,α (g)(yr ) belongs to
+R(g), and R(g) = yr Rr,α (g)(yr )∆.
+            ⌈s(α)/er ⌉                  ⌈s(g)/er ⌉
+  Finally, yr          Rr,α (g)(yr ) = yr          Rr (g)(yr ), by (3) of Corollary 4.4.            
+Corollary 4.7. Let 0 ≤ i ≤ r and α ∈ Γi .
+22                           FERNÁNDEZ, GUÀRDIA, MONTES, AND NART
+
+      (1) Ri,α (g + h) = Ri,α (g) + Ri,α (h) for all g, h ∈ Pα (µi ).
+      (2) If β ∈ Γi−1 , then Ri,α+β (gh) = Ri,α (g)Ri,β (h) for all g ∈ Pα (µi ), h ∈ Pβ (µi ).
+      (3) Ri (gh) = Ri (g)Ri (h) for all g, h ∈ K[x].
+Proof. For i = 0 the identities are easy to check. If i > 0, equation (1), Theorem 4.2, and
+item 1 of Corollary 4.4 show that:
+       ϕi (α)Ri,α (g + h) = ϕi (α)Ri,α (g) + ϕi (α)Ri,α (h),     for g, h ∈ Pα (µi ).
+       ϕi (α + β)Ri,α+β (gh) = ϕi (α)Ri,α (g)ϕi (β)Ri,β (h),     for g ∈ Pα (µi ), h ∈ Pβ (µi ).
+       ϕi (gh)Ri (gh) = ϕi (g)Ri (g)ϕi (h)Ri (h),                for g, h ∈ K[x].
+The first equality proves item 1. The second equality proves item 2 because s(β) = 0, and
+this leads to s(α + β) = s(α), u(α + β) = u(α) + u(β). By Lemma 4.1, the third equality
+proves item 3.                                                                          
+     By Corollary 4.4, Rr,α induces an injective mapping Rr,α : Pα (µ)/Pα+ (µ) −→ Fr [y].
+Theorem 4.8. The mapping Rr,0 : ∆ −→ Fr [y] is an isomorphism of Fr -algebras and
+(Rr,0 )−1 : Fr [y] −→ ∆ is the Fr -map determined by y 7→ yr . In particular, the element
+yr ∈ ∆ is transcendental over Fr and ∆ = Fr [yr ].
+Proof. By Corollaries 4.4 and 4.7, Rr,0 is an injective ring homomorphism. Let us check
+that its restriction to Fr ⊂ ∆ is the identity.
+  For r = 0, an element ξ ∈ F∗0 is of the form ξ = Hµ0 (a) for some a ∈ O∗ . By definition,
+R0,0 (ξ) = R0,0 (a) = a = Hµ0 (a) = ξ, modulo the identification F = F0 .
+  For r > 0, Proposition 1.9 and Lemma 2.9 show that an element ξ ∈ F∗r is of the form
+ξ = Hµ (a) for some a ∈ K[x] such that deg a < deg φr and µr−1 (a) = µ(a) = 0. The Newton
+polygon Nr (a) is the single point (0, 0) and Rr,0 (a) ∈ F∗r is a degree zero polynomial. By
+Theorem 4.2, ξ = Hµ (a) = Rr,0 (a) = Rr,0 (ξ).
+  By Corollary 3.3, there exists a ∈ K[x] such that g = aφerr has Newton polygon Nr (g) =
+{(er , −er λr )}. Hence, µ(g) = 0 and Rr,0 (g) = ǫy for some ǫ ∈ F∗r (by Corollary 4.4).
+Therefore, Rr,0 is an onto map.
+  The statement about (Rr,0 )−1 is a consequence of Theorem 4.2 and ϕr (0) = 1.            
+Corollary 4.9. For all 0 ≤ i < r, Fi+1 = Fi [zi ] = F0 [z0 , . . . , zi ] and deg ψi = fi .        
+  By Proposition 3.10 and Theorem 4.8, we get an isomorphism κ(µ) ≃ Fr (y). In particular,
+κ(µ)alg ≃ Fr and the next result follows.
+Corollary 4.10. For an inductive valuation µ, the field κ(µ)alg is a finite extension of F
+and κ(µ) ≃ κ(µ)alg (y), where y is an indeterminate.                                     
+Corollary 4.11. The mapping Rr,α : Pα (µ)/Pα+ (µ) −→ Fr [y] is bijective.
+Proof. By Corollary 4.4, Rr,α is injective. Let us show that it is onto. For any non-
+zero polynomial ψ ∈ Fr [y], the element ψ(yr ) ∈ ∆ is non-zero by Theorem 4.8; hence,
+ϕr (α)ψ(yr ) = Hµ (g) for some g ∈ K[x] with µ(g) = α. By Theorem 4.2, Rr,α (g)(yr ) =
+ψ(yr ), and this implies Rr,α (g) = ψ, by Theorem 4.8.                               
+Corollary 4.12. Let ψ ∈ Fr [y] be a monic polynomial of degre f such that ψ(0) 6= 0. Then,
+for any α ∈ Γ(µ) there exists g ∈ K[x] monic such that deg g = er f mr , µ(g) = er f (wr + λr )
+and Rr (g) = ψ.
+Proof. Denote α := er f (wr + λr ). By Corollary 4.11, there exists g0 ∈ K[x] with µ(g0 ) = α
+and Rr,α (g0 ) = ψ − y f . By dropping all terms with abscissa s ≥ er f from the φr -expansion
+of g0 , we may assume that deg g0 < er f mr . Then, g = φerr f + g0 satisfies what we want.
+                         RESIDUAL IDEALS OF MACLANE VALUATIONS                                 23
+
+
+In fact, deg(g), µ(g) are the right ones, and Rr,α (g) = Rr,α (φerr f ) + Rr,α (g0 ) = ψ, by
+the first item of Corollary 4.7 and equation (14). Since Rr,α (g)(0) = ψ(0) 6= 0, we have
+Rr,α (g) = Rr (g).                                                                         
+   Corollary 4.12 is crucial for the computational applications of inductive valuations. It
+yields a routine for the construction of key polynomials with prescribed residual ideal.
+Theorem 4.13. We get an isomorphism of graded Fr -algebras
+                           M
+                  Gr(µ) =           ϕr (α)∆ ≃ Fr [y, p, p−1 ][x],
+                                      α∈Γ(µ)
+
+where y, p are indeterminates and x is an algebraic element satisfying xer = phr y. As
+elements in the graded algebra, these elements are homogeneous of degree deg y = 0, deg p =
+1/e(µr−1 ), deg x = λr .
+Proof. By sending y 7→ yr , p 7→ pr , x 7→ xr , we get an onto Fr -homomorphism of graded
+algebras: Fr [y, p, p−1 ][x] ։ Gr(µ). In order to show that it is an isomorphism we need only
+to check that yr , pr are algebraically independent over Fr , and the algebraic equation of xr
+over Fr [y, p, p−1 ] has minimal degree.
+   Let us prove that the family Σ := {yrm pnr | m ∈ Z≥0 , n ∈ Z} is linearly independent over
+Fr . We may group these elements by its degree:
+                           [
+                      Σ=           Σα ,     Σα = {yrm pre(µr−1 )α | m ∈ Z≥0 }.
+                           α∈Γ(µ)
+
+The families Σα are all Fr -linearly independent because yr is transcendental over Fr . There-
+fore, Σ is also Fr -linearly independent because a linear combination of its elements vanishes
+if and only if each homogeneous component vanishes.
+   The minimality of the equation xerr = phr r yr is a consequence of gcd(hr , er ) = 1.    
+Corollary 4.14. Let ψ ∈ Fr [y] such that ψ(0) 6= 0. Then, ψ(yr ) ∈ ∆ is a prime element
+in Gr(µ) if and only if ψ is irreducible in Fr [y].
+Proof. If ψ(yr ) is a prime element in Gr(µ), then it is a prime element in ∆ and Theorem
+4.8 shows that ψ is irreducible.
+   Conversely, if ψ is irreducible, consider F′ = Fr [y]/(ψ) and denote by z ∈ F′ the class of
+y. By Theorem 4.13, Gr(µ)/ψ(yr )Gr(µ) ≃ F′ [p, p−1 ][x], where p is an indeterminate and x
+satisfies xer = phr z. Since ψ(0) 6= 0, we have z 6= 0 and F′ [p, p−1 ][x] is an integral domain.
+Hence, ψ(yr )Gr(µ) is a prime ideal.                                                           
+
+           5. Canonical decomposition of the set of key polynomials
+  Let µ be an inductive valuation and denote ∆ = ∆(µ). In this section we want to study
+the fibers of the mapping:
+                  R : KP(µ) −→ Max(∆),           φ 7→ R(φ) = Ker(∆ → Fφ ).
+That is, we want to describe the partition:
+                  [
+         KP(µ) =              KP(µ)L ,      KP(µ)L := {φ ∈ KP(µ) | R(φ) = L} .
+                       L∈Max(∆)
+
+It is hard to analyze these subsets from a purely abstract perspective. Thus, we suppose
+that µ is equipped with a fixed MacLane chain of length r. We shall freely use all data and
+operators of the MacLane chain described in section 3.
+   Also, for a non-zero g ∈ K[x] we denote by s(g) = sµ (g) ≤ s′ (g) = s′µ (g) the abscissas of
+the end points of the λr -component of g (cf. Definition 2.5).
+24                            FERNÁNDEZ, GUÀRDIA, MONTES, AND NART
+
+5.1. Further properties of key polynomials. Let us first obtain criterions for µ-irreduci-
+bility and for being a key polynomial, in terms of φr -expansions.
+Lemma 5.1. A polynomial g ∈ K[x] is µ-irreducible if and only if either:
+     • Hµ (g) and Hµ (φr ) are associate elements in Gr(µ), or
+     • s(g) = 0 and Rr (g) is irreducible in Fr [y].
+The first condition is equivalent to s(g) = s′ (g) = 1.
+Proof. By Lemma 3.14, xr is associate in Gr(µ) to the prime element Hµ (φr ). On the other
+                   s(g) u(g)
+hand, Hµ (g) = xr pr Rr (g)(yr ), by Theorem 4.2. Since pr is a unit, Hµ (g) is a prime
+element if and only if either:
+      • s(g) = 1 and Rr (g)(yr ) is a unit, or
+      • s(g) = 0 and Rr (g)(yr ) is a prime element.
+By Theorem 4.8, the first condition is equivalent to s(g) = 1 and deg Rr (g) = 0, which is
+equivalent to s(g) = s′ (g) = 1, by Corollary 4.4. Also, this holds if and only if Hµ (g) and
+Hµ (φr ) are associate. By Corollary 4.14, the second condition is equivalent to s(g) = 0 and
+Rr (g) irreducible in Fr [y].                                                               
+Definition 5.2. For a non-zero g ∈ K[x], we say that Nµ,φ (g) is one-sided of slope −λ if
+Nµ,φ (g) = Sλ (g), s(g) = 0 and s′ (g) > 0.
+Lemma 5.3. A monic polynomial g ∈ K[x] belongs to KP(µ) if and only if either:
+    (1) deg g = mr and g ∼µ φr , or
+    (2) s(g) = 0, deg g = s′ (g)mr and Rr (g) is irreducible in Fr [y].
+In the last case, deg g = er (deg Rr (g))mr , Nr (g) is one-sided of slope −λr , and Rr (g) ∈ Fr [y]
+is monic.
+Proof. A polynomial g satisfying (1) is a key polynomial by Lemma 1.5. A polynomial g
+satisfying (2) is a key polynomial by the criteria of Lemmas 2.10 and 5.1.
+   Conversely, suppose g is a key polynomial. By Lemma 2.10, deg g = s′ (g)mr . By Lemma
+5.1, either s(g) = s′ (g) = 1, or s(g) = 0 and Rr (g) is irreducible.
+   In the first case, we have deg g = mr and the component Sλr (g) is a single point with
+abscissa s = 1. This implies that g = φr + a with deg a < mr and µ(a) > µ(φr ), by Lemma
+2.3. Thus, g satisfies (1).
+   In the second case, g satisfies (2), which clearly implies Nr (g) = Sλr (g). By Corollary
+4.4, s′ (g) = er deg Rr (g). Hence, Nr (g) is one-sided of slope −λr . The polynomial Rr (g) is
+monic by equation (14) and item 1 of Corollary 4.7.                                          
+     The next result is a consequence of Theorem 4.2, Corollary 4.6 and Lemma 5.3.
+Corollary 5.4. For any φ ∈ KP(µ), we have:
+          Hµ (φ) = Hµ (φr ) = xr pVr r ,                R(φ) = yr ∆,           if φ ∼µ φr ,
+                    (e V +h ) deg Rr (φ)
+          Hµ (φ) = pr r r r              Rr (φ)(yr ),   R(φ) = Rr (φ)(yr )∆,   if φ 6∼µ φr .   
+Corollary 5.5. For φ ∈ KP(µ), take ψ = Rr (φ), if φ 6∼µ φr , and ψ = y, if φ ∼µ φr . Then,
+under the isomorphism ∆ ≃ Fr [y] determined by Rr,0 , the maximal ideal R(φ) is mapped to
+ψFr [y]. Thus, Fφ ≃ Fr [y]/(ψ) and f (φ) = f0 · · · fr−1 deg ψ.                         
+Corollary 5.6. For all 0 ≤ i < r,
+  (1) Ni (φi+1 ) is one-sided of slope −λi .
+  (2) Ri (φi+1 ) = ψi , the minimal polynomial of zi over Fi .
+                          RESIDUAL IDEALS OF MACLANE VALUATIONS                                  25
+
+Proof. The polynomial φi+1 is a key polynomial for µi and φi+1 6∼µi φi . Hence, it satifies
+(2) of Lemma 5.3. This proves item 1.
+   By Corollary 5.4, Hµi (φi+1 ) is associate to Ri (φi+1 )(yi ) in Gr(µi ); hence, its image under
+the canonical homomorphism Gr(µi ) → Gr(µi+1 ) is associate to Ri (φi+1 )(zi ) in Gr(µi+1 ).
+This implies that Ri (φi+1 )(zi ) = 0 because Hµi (φi+1 ) belongs to the kernel of Gr(µi ) →
+Gr(µi+1 ), by Proposition 1.9. Since Ri (φi+1 ) is monic and irreducible (Lemma 5.3), we have
+Ri (φi+1 ) = ψi .                                                                                
+5.2. Analysis of the mapping KP(µ) → Max(∆).
+Proposition 5.7. Let φ, φ′ ∈ KP(µ). The following conditions are equivalent:
+   (1) R(φ) = R(φ′ ).
+   (2) Rr (φ) = Rr (φ′ ).
+   (3) φ ∼µ φ′ .
+   (4) Hµ (φ) and Hµ (φ′ ) are associate in Gr(µ).
+   (5) φ |µ φ′ .
+Proof. By equation (14) and Lemma 5.3, Rr (φ) = 1 if φ ∼µ φr , and Rr (φ) is monic,
+irreducible, and different from y (because Rr (φ)(0) 6= 0)) otherwise. Therefore, Corollary
+5.4 and Theorem 4.8 show that (1), (2) and (3) are equivalent. Clearly, (3) implies (4), and
+(4) implies (5). Finally, (5) implies R(φ′ ) ⊂ R(φ), and this implies (1), because R(φ′ ) is a
+maximal ideal.                                                                              
+   The analysis of the key polynomials provided by the use of a MacLane chain yields an
+intrinsic description of the mapping R : KP(µ) → Max(∆).
+Theorem 5.8. Let µ be an inductive valuation. The mapping R : KP(µ) → Max(∆)
+induces a bijection between KP(µ)/ ∼µ and Max(∆).
+Proof. By Proposition 5.7, for any L ∈ Max(∆), the fiber KP(µ)L is either empty or it is
+one of the classes of the equivalence relation ∼µ on the set KP(µ). Thus, R induces an
+injective mapping KP(µ)/ ∼µ −→ Max(∆).
+   Let us show that the residual ideal mapping R is onto. A maximal ideal L in ∆ corre-
+sponds to a monic irreducible polynomial ψ ∈ Fr [y], under the isomorphism ∆ ≃ Fr [y] of
+Theorem 4.8. If ψ = y, then L = R(φr ), by Corollary 5.4. If ψ 6= y, then there exists a
+monic polynomial φ ∈ K[x] of degree deg φ = er (deg ψ)mr such that Rr (φ) = ψ, by item 2 of
+Corollary 4.12. As a general fact, deg φ ≥ s′ (φ)mr . By Corollary 4.4, s′ (φ)−s(φ) = er deg ψ;
+thus:
+                deg φ ≥ s′ (φ)mr ≥ (s′ (φ) − s(φ))mr = er (deg ψ)mr = deg φ.
+Hence, s(φ) = 0 and deg φ = s′ (φ)mr . Therefore, φ satisfies condition (2) of Lemma 5.3,
+and it is a key polynomial for µ. By Corollary 5.4, R(φ) = ψ(yr )∆ = L.                      
+Corollary 5.9. Let P ⊂ KP(µ) be a set of representatives of key polynomials under µ-
+equivalence. Then, the set HP = {Hµ (φ) | φ ∈ P} is a system of representatives of homo-
+geneous prime elements of Gr(µ) up to associates in the algebra. Moreover, up to units in
+Gr(µ), for any non-zero g ∈ K[x], there is a unique factorization:
+                                 Y
+(20)                        g ∼µ        φaφ , aφ = ordµ,φ (g).
+                                       φ∈P
+
+Proof. All elements in HP are homogeneous prime elements by the definition of µ-irreducibi-
+lity, and they are pairwise non-associate by Proposition 5.7. By Lemma 5.1, every homoge-
+neous prime element is associate either to Hµ (φr ) or to ψ(yr ) for some irreducible polynomial
+ψ ∈ Fr [y]. The proof of Theorem 5.8 and Corollary 5.4 show that ψ(yr ) is associate to an
+element in HP. Finally, every homogeneous element in Gr(µ) is a product of homogeneous
+26                          FERNÁNDEZ, GUÀRDIA, MONTES, AND NART
+
+prime elements, by Theorem 4.2 and Corollary 4.14. This implies the unique factorization
+(20).                                                                                  
+
+5.3. Proper and strong key polynomials. Theorems 5.8 and 4.8 yield bijections
+                                KP(µ)/∼µ −→ Max(∆) −→ P(Fr ),
+where P(Fr ) denotes the set of monic irreducible polynomials with coefficients in Fr . The
+first bijection is canonical, but the second one depends, in principle, on the choice of a
+MacLane chain of µ.
+   The class of φr is mapped to y ∈ P(Fr ) under the composition of the above bijections,
+and it has special properties when the prime ideal xr Gr(µ) is ramified over the subalgebra
+∆[pr , p−1
+        r ]. In this section we analyze to what extent the bijection KP(µ)/∼µ −→ P(Fr )
+depends on the chosen MacLane chain for µ, and the distinguished “bad” class is intrinsic.
+   Recall that the numerical data attached to any optimal MacLane chain of µ are intrinsic
+data of µ, denoted ei (µ), fi (µ), hi (µ), mi (µ), wi (µ), λi (µ), Ci (µ) (cf. section 3.2). We may
+formulate two different intrinsic distinctions between key polynomials, according to their
+degree.
+Definition 5.10. Let µ be an inductive valuation of depth r, and let φ ∈ KP(µ).
+   We say that φ is a proper key polynomial for µ if deg φ is a multiple of er (µ)mr (µ).
+   We say that g ∈ K[x] is µ-proper if φ ∤µ g for all improper key polynomials φ.
+   We say that φ is a strong key polynomial for µ if r = 0 or deg φ > mr (µ).
+   We denote KP(µ)pr , KP(µ)str the sets of proper and strong key polynomials for µ, re-
+spectively.
+  By Lemma 5.3, KP(µ)str ⊂ KP(µ)pr ⊂ KP(µ). If er (µ) = 1, all key polynomials are
+proper and all polynomials are µ-proper. If er (µ) > 1, there is a single improper µ-
+equivalence class of key polynomials, distinguished by the property deg φ = mr (µ); all
+other key polynomials are proper and strong. Note that KP(µ0 )str = KP(µ0 ).
+  In every MacLane chain, all φi are proper key polynomials for µi−1 , by Lemma 5.3.
+Lemma 5.11. Suppose that in the given MacLane chain of µ, we replace φr by φ′r = φr + a
+for some a ∈ K[x] such that deg a < mr and µ(a) ≥ µ(φr ). For some α ∈ Γ(µ), denote by
+  ′
+Rr,α the residual polynomial operator attached to the new MacLane chain of µ obtained in
+this way.
+    (1) If φ′r ∼µ φr , then Rr,α
+                             ′   = Rr,α .
+    (2) We may choose a such that φ′r 6∼µ φr if and only if er = 1. For such a choice,
+          ′ (g)(y) = R (g)(y − η) for all g ∈ P (µ), where η = R (a) ∈ F∗ .
+        Rr,α             r,α                        α               r            r
+
+Proof. For any g = 0≤s as φsr ∈ Pα (µ), each term as φsr belongs to Pα (µ) and
+                      P
+                             X                                X
+                 Rr,α (g) =        Rr,α (as φsr ), Rr,α
+                                                    ′
+                                                        (g) =     ′
+                                                                Rr,α  (as φsr ),
+                                 0≤s                                   0≤s
+
+by Corollary 4.7. Hence, it is sufficient to compare the action of both operators on poly-
+nomials of the form g = bφsr with deg b < deg φr and µ(g) = α. On the other hand, if
+β = µ(b) = µr−1 (b) and γ = α − β = µ(φsr ), Corollary 4.7 shows that
+                 Rr,α (bφsr ) = Rr,β (b)Rr,γ (φsr ),    ′
+                                                       Rr,α (bφsr ) = Rr,β
+                                                                       ′       ′
+                                                                           (b)Rr,γ (φsr ).
+                                              ′ (b) ∈ F∗ , we need only to compare R (φs )
+Since Rr,β (b) = ǫr−1 (β)Rr−1,β (b)(zr−1 ) = Rr,β      r                             r,γ r
+with Rr,γ ′ (φs ).
+              r
+    If φ′r ∼µ φr , then Corollary 4.5 and equation (14) show that Rr,γ
+                                                                     ′ (φs ) = R′ ((φ′ )s ) =
+                                                                         r      r,γ  r
+y ⌊s/er ⌋ = Rr,γ (φsr ). This proves item 1.
+                          RESIDUAL IDEALS OF MACLANE VALUATIONS                              27
+
+  If er > 1, then λr 6∈ Γr−1 and µ(φr ) = µr−1 (φr ) + λr 6∈ Γr−1 . Hence, µ(φr ) 6= µ(a) =
+µr−1 (a) for any a ∈ K[x] with deg a < deg φr ; thus, φr ∼µ φ′r . If er = 1, then Γ(µ) = Γr−1 ,
+and the proof of Lemma 3.2 shows that µ(φr ) = µ(a) for some a ∈ K[x] with deg a < deg φr .
+                                                                     ′ (φs ) = R′ (φ )s , where
+  Finally, suppose that er = 1 and φ′r 6∼µ φr . By Corollary 4.7, Rr,γ   r      r,δ r
+δ = µ(φr ). Since Rr,γ (φsr ) = y s , we need only to show that Rr,δ
+                                                                 ′ (φ ) = y − R (a). In fact,
+                                                                      r         r
+               ′            ′
+              Rr,δ (φr ) = Rr,δ (−a + φ′r ) = −Rr,δ
+                                                ′          ′
+                                                    (a) + Rr,δ (φ′r ) = −Rr,δ (a) + y.
+Since µ(a) = µ(φr ) = δ, Corollary 4.4 shows that Rr,δ (a) = Rr (a) ∈ F∗r .                  
+   Therefore, in the case er (µ) > 1, the improper class of key polynomials always corresponds
+to y ∈ P(Fr ). In the case er (µ) = 1, we have φr ↔ y, but an adequate choice of the MacLane
+chain changes the 1-1 correspondence via ψ(y) ↔ ψ(y − η) in P(Fr ), for a certain η ∈ F∗r .
+Thus, in this case, for any given φ ∈ KP(µ), we may always find a MacLane chain for µ
+such that φ 6∼µ φr .
+Corollary 5.12. A key polynomial φ for µ is proper if and only if there exists a MacLane
+chain of µ such that φ 6∼µ φr , where r is the length of the chain.                   
+Lemma 5.13. For non-zero g, h ∈ K[x] with g µ-proper, we have R(gh) = R(g)R(h).
+Proof. Denote e = er (µ). By Corollary 4.6 and Theorem 4.8, R(gh) = R(g)R(h) is equiv-
+alent to the following equality, up to factors in F∗r :
+                       y ⌈s(gh)/e⌉ Rr (gh) = y ⌈s(g)/e⌉ Rr (g)y ⌈s(h)/e⌉ Rr (h).
+By Lemma 2.6, s(gh) = s(g) + s(h), and by Corollary 4.7, Rr (gh) = Rr (g)Rr (h). Thus, we
+want to show that
+(21)                       ⌈(s(g) + s(h))/e⌉ = ⌈s(g)/e⌉ + ⌈s(h)/e⌉.
+If e = 1 this equality is obvious. If e > 1, we have xr ∤ Hµ (g), because g is µ-proper. By
+                s(g)
+Theorem 4.2, xr | Hµ (g), so that s(g) = 0 and (21) is obvious too.                       
+Proposition 5.14. Let φ ∈ KP(µ) and L = R(φ). For any non-zero g ∈ K[x]:
+                              (
+                               ordµ,φ (g),          if φ is proper,
+                ordL (R(g)) =
+                               ⌈ordµ,φ (g)/er (µ)⌉, if φ is improper.
+where ordL (R(g)) is the largest non-negative integer n such that Ln | R(g).
+Proof. Denote aφ = ordµ,φ (g): If we apply R to both terms of the factorization (20), Lemma
+5.13 shows that:                   Y           Y
+                       R(g) = R             φaφ =         R(φaφ ).
+                                     φ∈P         φ∈P
+                                a        a
+For all proper φ ∈ P we have R(φ ) = R(φ) , by Lemma 5.13. For the improper φ ∈ P (if
+                                 φ        φ
+
+er (µ) > 1), we have R(φaφ ) = R(φ)⌈aφ /er (µ)⌉ by Corollary 4.6, equation (14) and Corollary
+5.4.                                                                                       
+  The next result follows from Proposition 5.14 and Corollary 5.4.
+Corollary 5.15. Let φ be a proper key polynomial for µ and denote ψ = Rr (φ). Then,
+ordψ (Rr (g)) = ordµ,φ (g) for any non-zero g ∈ K[x].                            
+
+               6. MacLane-Okutsu invariants of prime polynomials
+  In this section, we apply inductive valuations µ on K(x) to polynomials in Kv [x], without
+any explicit mention to the natural extension of µ to Kv (x) described in Proposition 3.9.
+28                        FERNÁNDEZ, GUÀRDIA, MONTES, AND NART
+
+6.1. Prime polynomials and inductive valuations.
+Definition 6.1. Let P = P(Ov ) ⊂ Ov [x] be the set of all monic irreducible polynomials in
+Ov [x]. We say that an element in P is a prime polynomial with respect to v.
+   Let F ∈ P be a prime polynomial and fix θ ∈ K v a root of F . Let KF = Kv (θ) be
+the finite extension of Kv generated by θ, OF the ring of integers of KF , mF the maximal
+ideal and FF the residue class field. We have deg F = e(F )f (F ), where e(F ), f (F ) are the
+ramification index and residual degree of KF /Kv , respectively.
+   In coherence with section 1.3, we denote by µ∞,F the pseudo-valuation on K[x] defined
+by µ∞,F (g) = v(g(θ)) for any g ∈ K[x].
+Lemma 6.2. Let F, F ′ ∈ P be two prime polynomials, and let θ, θ ′ ∈ K v be roots of F, F ′ ,
+respectively. Then, v(F (θ ′ ))/ deg(F ) = v(F ′ (θ))/ deg(F ′ ).
+Proof. The value v(F (θ ′ )) does not depend on the choice of the root θ ′ ; hence,
+                     deg(F ′ )v(F (θ ′ )) = v(Res(F, F ′ )) = deg(F )v(F ′ (θ)),
+because Res(F, F ′ ) = θ∈Z(F ) F ′ (θ) = ± θ′ ∈Z(F ′ ) F (θ ′ ), where Z(F ) is the multiset of
+                        Q                       Q
+
+roots of F in K v , with due count of multiplicities if F is inseparable.                    
+  We are interested in finding properties of prime polynomials leading to a certain compre-
+hension of the structure of the set P. An inductive valuation µ admitting a key polynomial
+φ such that φ |µ F reveals many properties of F .
+Theorem 6.3. Let F ∈ P be a prime polynomial and θ ∈ K v a root of F . Let µ be an
+inductive valuation and φ a key polynomial for µ. Then, φ |µ F if and only if v(φ(θ)) > µ(φ).
+Moreover, if this condition holds, then:
+   (1) Either F = φ, or the Newton polygon Nµ,φ (F ) is one-sided of slope −λ, where
+        λ = v(φ(θ)) − µ(φ) ∈ Q>0 .
+   (2) Let ℓ = ℓ(Nµ,φ (F )). Then, deg F = ℓ deg φ and F is µ-minimal.
+   (3) F ∼µ φℓ , so that R(F ) is a power of the maximal ideal R(φ).
+Proof. If F = φ, then both conditions φ |µ F and v(φ(θ)) > µ(φ) hold.
+  If F 6= φ, consider the minimal polynomial g(x) = kj=0 bj xj ∈ Ov [x] of φ(θ) over Kv .
+                                                        P
+
+All roots of g(x) in K v have v-value equal to δ := v(φ(θ)) ≥ 0; hence,
+                   v(b0 ) = kδ,     v(bj ) ≥ (k − j)δ, 1 ≤ j < k,    v(bk ) = 0.
+Let us denote N := Nµ,φ . These conditions imply that the Newton polygon N (G) of
+the polynomial G(x) = g(φ(x)) = kj=0 bj φj is one-sided of slope µ(φ) − δ = −λ. Since
+                                   P
+
+G(θ) = 0, the polynomial F is a factor of G and Theorem 2.8 shows that
+(22)                              N − (G) = N − (F ) + N − (G/F ).
+  Now, if φ |µ F , then Lemma 2.2 shows that ℓ(N − (F )) = ordµ,φ (F ) > 0; hence, N − (G)
+has positive length too, and λ must be a positive rational number. Conversely, if λ > 0,
+then N (G) = N − (G) and we have
+       ℓ(N (F )) + ℓ(N (G/F )) ≤ ℓ(N (G)) = ℓ(N − (G)) = ℓ(N − (F )) + ℓ(N − (G/F )).
+This implies N (F ) = N − (F ) and since N − (G) is one-sided of slope −λ, (22) shows that
+N (F ) is one-sided of slope −λ too. This proves that φ |µ F if and only if λ > 0, and also
+that item 1P holds in this case.
+  Let F = ℓs=0 as φs be the φ-expansion of F . Let θφ ∈ K v be a root of φ; by Lemma 6.2,
+v(φ(θ))/ deg φ = v(F (θφ ))/ deg F = v(a0 (θφ ))/ deg F . On the other hand, since deg a0 <
+                             RESIDUAL IDEALS OF MACLANE VALUATIONS                                         29
+
+
+
+                                 Figure 7. Newton polygon Nµ,φ (F )
+
+
+                 µ(a0 ) = µ(aℓ φℓ ) + ℓλ          •PP
+                                                        PP
+                                                          PP −λ
+                                                            PP
+                                                                PP
+                                                                  PP
+                        µ(F ) = µ(aℓ φℓ )                           P•
+
+
+                                              0                                        ℓ
+
+
+
+deg φ, Proposition 1.12 shows that µ(a0 ) = v(a0 (θφ )). Therefore, item 1 and a look at
+Figure 7 show that
+                                                     deg F            deg F
+       µ(aℓ ) + ℓ(µ(φ) + λ) = µ(a0 ) = v(a0 (θφ )) =       v(φ(θ)) =        (µ(φ) + λ)
+                                                     deg φ            deg φ
+                                                                         
+                              deg aℓ + ℓ deg φ                 deg aℓ
+                            =                  (µ(φ) + λ) =           + ℓ (µ(φ) + λ).
+                                    deg φ                      deg φ
+If deg aℓ > 0, then aℓ would be a monic polynomial satisfying an inequality that contradicts
+Theorem 3.11:
+                                 µ(aℓ )   µ(φ) + λ       µ(φ)
+                                        =            >         .
+                                 deg aℓ    deg φ         deg φ
+Therefore, aℓ = 1 and deg F = ℓ deg φ. Also, µ(F )/ deg F = µ(φℓ )/ deg F = µ(φ)/ deg φ;
+thus, F is µ-minimal by Theorem 3.11. This proves item 2.
+   Item 3 follows from µ(F ) = µ(φℓ ) < µ(as φs ) for all s < ℓ.                          
+Corollary 6.4. With the above notation, suppose that φ |µ F and µ admits a MacLane
+chain of length r as in (4) such that φ 6∼µ φr . Then, for any 1 ≤ i ≤ r, the Newton polygon
+Ni (F ) is one-sided of slope −λi , we have µ(φi ) = v(φi (θ)) and
+(23)             F ∼µi−1 φℓi i ,           deg F = ℓi deg φi ,               Ri−1 (F ) = (ψi−1 )ℓi ,
+where ℓi := ℓ(Ni (F )). In particular, ℓi = ei fi ℓi+1 for all 1 ≤ i < r.
+Proof. Since φ 6∼µ φr , Corollary 5.4 shows that deg Rr (φ) > 0. Since F ∼µ φℓ , we have
+Rr (F ) = Rr (φ)ℓ by Corollaries 4.5 and 4.7; hence, ℓ(Nr− (F )) ≥ er deg Rr (F ) > 0, and this
+implies that φr |µr−1 F by Lemma 2.2. Therefore, φi |µi−1 F for all 1 ≤ i ≤ r, and (23) is a
+consequence of Theorem 6.3 and Corollaries 4.5, 4.7 and 5.6.
+   We have F 6= φi and the slope of Ni (F ) is −λi , because otherwise Ri (F ) would be a
+constant, leading by Corollary 5.15 to φi+1 ∤µi F for i < r, or to φ ∤µ F for i = r. Finally,
+µi (φi ) − µi−1 (φi ) = λi = v(φi (θ)) − µi−1 (φi ) by Theorem 6.3. Hence, µ(φi ) = µi (φi ) =
+v(φi (θ)) by Lemma 3.4.                                                                      
+  If F 6= φ, we may extend the given MacLane chain to a MacLane chain of length r + 1 of
+the valuation µ′ = [µ; (φ, λ)] just by taking φr+1 = φ, λr+1 = λ.
+                     (φ1 ,λ1 )        (φ2 ,λ2 )         (φr ,λr )            (φr+1 ,λr+1 )
+                µ0    −→         µ1    −→         ···    −→         µr = µ      −→           µr+1 = µ′ .
+Since sµ′ (F ) = 0 and s′µ′ (F ) = ℓ, Corollary 4.4 shows that deg Rr+1 (F ) = ℓ/er+1 > 0. Let
+ψ be an irreducible factor of Rr+1 (F ) in Fr+1 [y]. By Theorem 5.8, there exists φ′ ∈ KP(µ′ )
+such that Rr+1 (φ′ ) = ψ. Since Rr+1 (F )(0) 6= 0, we have ψ 6= y and φ′ 6∼µ′ φ. Also,
+deg φ′ = er+1 deg ψ deg φ by Lemma 5.3, and φ′ |µ′ F by Corollary 5.15. By Theorem 6.3,
+30                        FERNÁNDEZ, GUÀRDIA, MONTES, AND NART
+
+           ′                                                                       ′
+F ∼µ′ (φ′ )ℓ for ℓ′ = ℓ/(er+1 deg ψ). By Corollary 4.5, Rr+1 (F ) = ψ ℓ . This procedure may
+be iterated as long as F 6= φ′ .
+   These ideas of MacLane are the germ of an algorithm to compute approximations to F
+by prime polynomials with coefficients in O, with prescribed precision. We shall discuss the
+relevant computational aspects of this algorithm in [8].
+   We now deduce from Theorem 6.3 the fundamental result concerning factorization of
+polynomials over Kv . It has to be considered as a generalization of Hensel’s lemma.
+Definition 6.5. We define the degree of L ∈ Max(∆) as deg L = dimFr (∆/L).
+  Equivalently, deg L = deg ψ for the unique monic irreducible polynomial ψ ∈ Fr [y] such
+that L = ψ(yr )∆.
+Theorem 6.6. Let µ be an inductive valuation and let φ be a proper key polynomial for µ.
+Then, every monic polynomial g ∈ Ov [x] factorizes into a product of monic polynomials in
+Ov [x]:
+                                               Y
+                              g = g0 φordφ (g)       gλ,L ,
+                                                           (λ,L)
+                                −
+where −λ runs on the slopes of Nµ,φ (g). For each λ, if µλ = [µ; (φ, λ)], then L runs on the
+maximal ideals of ∆(µλ ) dividing Rµλ (g). If e(µ)λ = hλ /eλ , with hλ , eλ positive coprime
+integers, then
+                            −
+        deg g0 = deg g − ℓ(Nµ,φ (g)) deg φ,          deg gλ,L = eλ ordL (Rµλ (g)) deg L deg φ.
+
+Moreover, if ordL (Rµλ (g)) = 1, then gλ,L is irreducible in Ov [x].
+Proof. Let g = F1 · · · Ft be the factorization
+                                              of g into a product of monic irreducible poly-
+                                        −
+nomials in Ov [x]. Denote ℓj := ℓ Nµ,φ (Fj ) = ordµ,φ (Fj ) (Lemma 2.2). The factor g0 is
+                                                 P −Fj with φ |µ Fj have deg Fj = ℓj deg φ,
+the product of all Fj satisfying φ ∤µ Fj . The factors
+                                        −
+by Theorem 6.3. By Theorem 2.8, Nµ,φ (g) = j Nµ,φ (Fj ); hence,
+                          X              X              X                       
+                                                                          −
+      deg g − deg g0 =        deg Fj =       ℓj deg φ =     ℓj deg φ = ℓ Nµ,φ (g) deg φ.
+                        φ|µ Fj             φ|µ Fj                  j
+
+   The factor φordφ (g) is the product of all Fj equal to φ. By Theorem 6.3, for the factors
+Fj 6= φ such that φ |µ Fj , the Newton polygon Nµ,φ (Fj ) is one-sided of slope −λ, and
+                                                        −
+Theorem 2.8 shows that −λ is one of the slopes of Nµ,φ     (g). Along the discussion previous
+to Theorem 6.6, we saw that these Fj are µλ -proper and
+                                       ′
+                        Rµλ (Fj ) = Lℓj ,           deg Fj = eλ ℓ′j deg L deg φ,
+where L is a certain maximal ideal in ∆(µλ ) and ℓ′j = ℓj /(eλ deg L). Also, since sµλ (Fj ) = 0,
+Lemma 2.6 shows that φ ∤µλ Fj , so that L 6= Rµλ (φ), by Proposition 5.14. Now, for a given
+pair (λ, L) we take gλ,L to be the product of all Fj such that Nµ,φ (Fj ) is one-sided of slope
+−λ and Rµλ (Fj ) is a power of L. Let Jλ,L be the set of all indices j of the irreducible factors
+Fj of gλ,L .
+   We claim that L ∤ Rµλ (Fj ) for all j 6∈ Jλ,L . In fact, since L 6= Rµλ (φ), the statement
+is clear for the factors Fj equal to φ. If φ ∤µ Fj , or Nµ,φ (Fj ) is one-sided of a slope lower
+than −λ, then Fj ∼µλ a0 , where a0 is the 0-th term of the φ-expansion of Fj (see Figure 8);
+hence, Hµλ (Fj ) is a unit and Rµλ (Fj ) = 1. If Nµ,φ (Fj ) is one-sided of a slope larger than
+−λ, then Fj ∼µλ φℓj (see Figure 8); by Proposition 5.14, Rµλ (Fj ) is a power of Rµλ (φ) and
+it is not divided by L.
+                         RESIDUAL IDEALS OF MACLANE VALUATIONS                               31
+
+
+
+                   Figure 8. λ-component of the irreducible factor Fj .
+
+                                                   •◗
+           ❍
+           ❍•❳                                   ❍ ◗◗ Nµ,φ (Fj )
+                                                 ❍
+              ❳❳ Nµ,φ (Fj )
+             ❍❍                                     ❍❍ ◗
+                ❳❳❳
+               ❍❍                                     ❍❍◗
+                        ❳
+                  ❍❍ ❳❳•                                  ◗
+                                                       −λ❍❍◗
+                −λ      ❍❍                                  ❍◗  ❍◗
+                            ❍❍                                   ❍•❍
+             0                   ℓj                0                     ℓj
+                                          Q
+  Therefore, from the equality Rµλ (g) = j Rµλ (Fj ) of Lemma 5.13, we deduce
+                      X                     X
+      ordL Rµλ (g) =       ordL Rµλ (Fj ) =           ordL Rµλ (Fj )
+                         j                     j∈Jλ,L
+                      X
+                   =           deg Fj /(eλ deg L deg φ) = deg gλ,L /(eλ deg L deg φ).
+                            j∈Jλ,L
+
+Finally, if ordL Rµλ (g) = 1, there is only one irreducible factor Fj dividing gλ,L .        
+
+Theorem 6.7. Let F ∈ P be a prime polynomial. An inductive valuation µ satisfies µ ≤
+µ∞,F if and only if there exists φ ∈ KP(µ) such that φ |µ F . In this case, for a non-zero
+polynomial g ∈ K[x], we have
+(24)                       µ(g) = µ∞,F (g)    if and only if   φ ∤µ g.
+Proof. If µ ≤ µ∞,F , we may consider φ ∈ K[x] monic with minimal degree among all
+polynomials satisfying µ(φ) < µ∞,F (φ). By Lemma 1.14, φ is a key polynomial for µ, and
+condition (24) is satisfied. In particular, φ |µ F .
+   Conversely, suppose that φ |µ F for some φ ∈ KP(µ). If F = φ, the statement of the
+theorem is proved in Proposition 1.12; thus, we may assume F 6= φ. If we show that
+µ ≤ µ∞,F , then there exists φ′ ∈ KP(µ) such that φ′ |µ F and (24) is satisfied for φ′ .
+By Theorem 6.3, F ∼µ φℓ for some ℓ > 0, so that φ′ |µ φ, and this implies φ ∼µ φ′ by
+Proposition 5.7. Hence, φ satisfies (24) as well.
+   Let us prove the inequality µ ≤ µ∞,F by induction on the depth r of µ. If r = 0, then
+clearly µ = µ0 ≤ µ∞,F . Suppose r > 0 and the statement true for all valuations with lower
+depth. Consider an optimal MacLane chain    P of µ. s
+   Let g ∈ K[x] with φr -expansion g =         0≤s as φr . Since φr ∤µr−1 as , we have µ(as ) =
+µr−1 (as ) = µ∞,F (as ) by Proposition 1.9 and the induction hypothesis. Thus, we need only
+to show that µ(φr ) ≤ µ∞,F (φr ), because then
+                   µ∞,F (g) ≥ min {µ∞,F (as φsr )} ≥ min {µ(as φsr )} = µ(g).
+                               0≤s                     0≤s
+
+  If φ ∼µ φr , then φr |µ F and Theorem 6.3 shows that v(φr (θ)) > µ(φr ). If φ 6∼µ φr , then
+v(φr (θ)) = µ(φr ) by Corollary 6.4.                                                        
+   Theorem 6.7 may be applied as a device for the computation of µ∞,F . Given g ∈ K[x],
+we find a pair (µ, φ) such that φ |µ F and φ ∤µ g, leading to v(g(θ)) = µ(g). From a
+computational perspective, the condition φ ∤µ g is checked as Rr (φ) ∤ Rr (F ), with respect
+to a MacLane chain for µ. This yields a very efficient routine for the computation of the
+p-adic valuations vp : K ∗ → Z, with respect to prime ideals p in a number field K [6].
+Corollary 6.8. With the above notation, let θφ ∈ K v be a root of φ.
+  (1) For any polynomial g ∈ K[x] with deg g < deg φ, we have v(g(θφ )) = v(g(θ)). In
+      particular, e(φ) | e(F ).
+32                          FERNÁNDEZ, GUÀRDIA, MONTES, AND NART
+
+     (2) There is a canonical embedding Fφ → FF , given by g(θφ ) + mφ 7→ g(θ) + mF for any
+         polynomial g ∈ K[x] with deg g < deg φ such that v(g(θφ )) ≥ 0.
+Proof. If a polynomial g ∈ K[x] has deg g < deg φ, then φ ∤µ g and v(g(θφ )) = µ(g) =
+v(g(θ)), by Proposition 1.12 and Theorem 6.7, respectively. This proves item 1.
+  Let LF be the kernel of the canonical ring homomorphism
+                           ∆(µ) −→ FF ,                  g + P0+ (µ) 7→ g(θ) + mF .
+Since LF is a non-zero prime ideal of the PID ∆(µ), it is a maximal ideal. By Theorem
+6.3 and (24), R(φ)a = R(F ) ⊂ LF for a certain positive integer a. Since R(φ) and LF are
+maximal ideals, they coincide. By Proposition 1.15, the homomorphism ∆(µ) → Fφ given
+by g + P0+ (µ) 7→ g(θ) + mφ is onto and it has the same kernel. This proves item 2.   
+6.2. Okutsu invariants of prime polynomials. We keep dealing with a prime polyno-
+mial F ∈ P and a fixed root θ ∈ K v of F .
+   Let F1 , . . . , Fr ∈ O[x] be monic polynomials of strictly increasing degree:
+                                  1 ≤ deg F1 < · · · < deg Fr < deg F.
+Denote Fr+1 := F and consider the following sequence of constants:
+                                           v(Fi (θ))
+                            C0 := 0;         Ci :=     , 1 ≤ i ≤ r + 1.
+                                             deg Fi
+Note that Cr+1 = ∞. We say that [F1 , . . . , Fr ] is an Okutsu frame of F if
+                                                v(g(θ))
+(25)                      deg g < deg Fi+1 =⇒           ≤ Ci < Ci+1 ,
+                                                 deg g
+for any monic polynomial g(x) ∈ O[x] and any 0 ≤ i ≤ r.
+   Since v is discrete, every prime polynomial admits a finite Okutsu frame. The length r of
+the frame is called the Okutsu depth of F . Clearly, the depth r, the degrees deg Fi and the
+constants Ci attached to any Okutsu frame are intrinsic data of F . We denote Ci (F ) := Ci
+for all 0 ≤ i ≤ r + 1. It is easy to deduce from (25) that all polynomials F1 , . . . , Fr are
+prime polynomials.
+Theorem 6.9. Consider an optimal MacLane chain of an inductive valuation µ.
+                      (φ1 ,λ1 )        (φ2 ,λ2 )         (φr−1 ,λr−1 )          (φr ,λr )
+                 µ0    −→         µ1    −→         ···       −→          µr−1    −→         µr = µ
+   Then, [φ1 , . . . , φr ] is an Okutsu frame of every strong key polynomial F for µ, and
+Ci (F ) = Ci (µ) for all 1 ≤ i ≤ r.
+Proof. Let F ∈ KP(µ)str , and let θ ∈ K v be a root of F . By the optimality of the MacLane
+chain, m1 < · · · < mr < mr+1 := deg F . Fix an index 0 ≤ i ≤ r. For every monic
+polynomial g with deg g < mi+1 , Proposition 1.12 and Lemma 3.4 show that
+                             µi (g) = µi+1 (g) = · · · = µ(g) = µ∞,F (g).
+These equalities hold in particular for φi . Hence, by Theorem 3.11:
+             v(g(θ))/ deg g = µi (g)/ deg g ≤ C(µi ) = µi (φi )/mi = v(φi (θ))/mi .
+The inequality Ci (µ) < Ci+1 (µ) was proved at the beginning of section 3.1.                         
+Definition 6.10. The Okutsu discriminant bound of a prime polynomial F ∈ P of Okutsu
+depth r is defined as
+         δ0 (F ) := deg(F )Cr (F ) = v(Res(φr , F ))/ deg φr
+                = deg(F ) max {v(g(θ)/ deg g | g ∈ O[x], g monic, deg g < deg F } .
+                             RESIDUAL IDEALS OF MACLANE VALUATIONS                                                       33
+
+  We may attach to F a valuation µF : Kv (x)∗ → Q, determined by the following action
+on polynomials:
+     • µF (a) = µ∞,F (a), if a ∈ K[x] has deg a < deg F .
+     • µF (F ) P
+               = δ0 (F ).
+     • If g = 0≤s as F s is the F -expansion of g, then µF (g) = min0≤s {µF (as F s )}.
+  We denote by the same symbol µF the valuation on K(x) obtained by restriction.
+   The next theorem, which is a kind of converse of Theorem 6.9, shows that µF is indeed
+a valuation.
+Theorem 6.11. Let [F1 , . . . , Fr ] be an Okutsu frame of a prime polynomial F ∈ P. Then,
+µF is an inductive valuation on K(x) admitting an optimal MacLane chain
+                     (F1 ,λ1 )                   (F2 ,λ2 )           (Fr−1 ,λr−1 )                    (Fr ,λr )
+         µ0 = µF 1    −→          µ1 = µF 2       −→          ···         −→          µr−1 = µFr       −→         µF ,
+with λi = v(Fi (θ)) − δ0 (Fi ) for 1 ≤ i ≤ r, being θ ∈ K v a root of F . Moreover, F is a
+strong key polynomial for µF as a valuation on Kv (x).
+Proof. Denote Fr+1 := F . Since F1 is a monic polynomial with minimal degree among all
+polynomials g satisfying µ0 (g) < µ∞,F (g), Lemma 1.14 shows that F1 is a (strong) key
+polynomial for µ0 and F1 |µ0 F . As a key polynomial for µ0 , F 1 ∈ F[y] is irreducible, and
+this implies that F1 has Okutsu depth zero. An Okutsu frame of F1 is the empty set, so
+that δ0 (F1 ) = deg(F1 )C0 (F1 ) = 0. Thus, µF1 = µ0 is a valuation and F1 is a strong key
+polynomial for this valuation. This proves the theorem in the case r = 0. If r > 0, we have
+proved the following conditions for the index i = 1:
+  (a) µFi is a valuation admitting an optimal MacLane chain
+                                 (F1 ,λ1 )                   (F2 ,λ2 )         (Fi−1 ,λi−1 )
+                µ0 = µF 1         −→         µ1 = µF 2        −→         ···      −→           µi−1 = µFi ,
+with λj = v(Fj (θ)) − δ0 (Fj ) for 1 ≤ j < i.
+  (b) Fi is a strong key polynomial for µFi and Fi |µFi F .
+   We need only to show that if these conditions are satisfied for an index 1 ≤ i ≤ r, then
+they are satisfied for the index i + 1.
+   [F1 , . . . , Fi−1 ] is an Okutsu frame of Fi . Hence,
+   Since Fi |µFi F , Theorem 6.3 shows that µFi (Fi ) < v(Fi (θ)). Therefore, by the definition
+of µFi , the monic polynomial Fi has minimal degree among all polynomials g satisfying
+µFi (g) < µ∞,F (g). By Lemma 1.14, [µFi ; (Fi , λi )] ≤ µ∞,F , where λi = µ∞,F (Fi ) − µFi (Fi ) =
+v(Fi (θ)) − δ0 (Fi ). Denote µ := [µFi ; (Fi , λi )].
+   Let φ be a monic polynomial with minimal degree among all polynomials g satisfying
+µ(g) < µ∞,F (g). By Lemma 1.14, φ is a key polynomial for µ and µ(g) < µ∞,F (g) is
+equivalent to φ |µ g; in particular, φ |µ F . By Lemma 1.10, Fi is a key polynomial for µ;
+hence, Lemma 2.11 shows that
+          v(φ(θ))   µ(φ)           µ(Fi )  µF (Fi ) + λi   v(Fi (θ))
+(26)              >       = C(µ) =        = i            =           = Ci (F ).
+           deg φ    deg φ          deg Fi     deg Fi        deg Fi
+By (25), we have necessarily deg φ ≥ deg Fi+1 . On the other hand, by (25), (26) and
+Theorem 3.11, we have
+                                 v(Fi+1 (θ))                    µ(Fi+1 )
+                                             > Ci (F ) = C(µ) ≥          .
+                                  deg Fi+1                      deg Fi+1
+Hence, v(Fi+1 (θ)) > µ(Fi+1 ), which is equivalent to φ |µ Fi+1 by Theorem 6.3. By the µ-
+minimality of φ, we have deg φ ≤ deg Fi+1 . Thus, deg φ = deg Fi+1 and we get φ ∼µ Fi+1 by
+34                              FERNÁNDEZ, GUÀRDIA, MONTES, AND NART
+
+Lemma 1.5. Therefore, Fi+1 is a key polynomial for µ and Fi+1 |µ F . Also, the inequality
+deg Fi+1 > deg Fi between two key polynomials for µ shows that Fi+1 is a strong key
+polynomial for µ.
+  Let θi+1 ∈ K v be a root of Fi+1 . Since Fi+1 |µ F , Corollary 6.8 shows that v(a(θi+1 )) =
+v(a(θ)) for any a ∈ K[x] with deg a < deg Fi+1 . In particular, Cj (Fi+1 ) = Cj (F ) for all
+j ≤ i, and [F1 , . . . , Fi ] is an Okutsu frame of Fi+1 . By (26) we have:
+(27)           δ0 (Fi+1 ) = deg Fi+1 Ci (Fi+1 ) = deg Fi+1 Ci (F ) = deg Fi+1 C(µ).
+  Finally, let us show that µ = µFi+1 . Let g = 0≤s as (Fi+1 )s be the Fi+1 -expansion of a
+                                                    P
+
+polynomial g ∈ K[x]. Since Fi+1 ∈ KP(µ), we have:
+     • µ(as ) = µ∞,Fi+1 (as ) = µFi+1 (as ), by Proposition 1.12.
+     • µ(Fi+1 ) = deg Fi+1 C(µ) = δ0 (Fi+1 ) = µFi+1 (Fi+1 ), by Lemma 2.11 and (27).
+     • µ(g) = min0≤s {µ(as (Fi+1 )s )} = min0≤s {µFi+1 (as (Fi+1 )s )} = µFi+1 (g).                            
+     Let us emphasize a fact that was seen along the proof of Theorem 6.11.
+Corollary 6.12. Let [F1 , . . . , Fr ] be an Okutsu frame of F ∈ P. For any 1 ≤ i ≤ r,
+let θi ∈ K v be a root of Fi . Then, v(g(θi )) = v(g(θ)) for any polynomial g ∈ K[x] with
+deg g < deg Fi . In particular, [F1 , . . . , Fi−1 ] is an Okutsu frame of Fi .        
+Corollary 6.13. The MacLane depth of an inductive valuation µ is equal to the Okutsu
+depth of any strong key polynomial for µ. The Okutsu depth of a prime polynomial F is
+equal to the MacLane depth of the canonical valuation µF .                         
+Corollary 6.14. Let µ be an inductive valuation and F a prime polynomial. Then, µ = µF
+if and only if F is a strong polynomial for µ.
+Proof. If µ = µF , then F ∈ KP(µ)str by Theorem 6.11. Conversely, suppose that F ∈
+KP(µ)str and consider an optimal MacLane chain of µ.
+                          (φ1 ,λ1 )        (φ2 ,λ2 )         (φr−1 ,λr−1 )          (φr ,λr )
+                     µ0    −→         µ1    −→         ···       −→          µr−1    −→         µr = µ
+By Theorem 6.3 and Corollary 6.4, φi |µi−1 F and λi = v(φi (θ)) − µi−1 (φi ), for all 1 ≤ i ≤ r.
+By Theorem 6.11, µi = µφi+1 for all 1 ≤ i ≤ r and µ = µF .                                    
+Definition 6.15. Let F be a prime polynomial of Okutsu depth r. Let fr := deg RµF (F ) =
+deg Rr (F ) with respect to any optimal MacLane chain of µF . An Okutsu invariant of F is
+a rational number that depends only on e0 , . . . , er , f0 , . . . , fr , h1 , . . . , hr ; that is, on the basic
+MacLane invariants of µF and the number fr .
+   Note that fr = deg Rr (F ) with respect to any optimal MacLane chain of µF .
+  The ramification index, residual degree, and the Okutsu discriminant bound of F are
+Okutsu invariants:
+                e(F ) = e0 · · · er ,         f (F ) = f0 · · · fr ,         δ0 (F ) = er fr (wr + λr ),
+as shown in Proposition 1.12, Corollary 5.5, and equation (9), respectively. The index, the
+exponent and the conductor of a prime polynomial are also Okutsu invariants admitting
+explicit formulas in terms of the basic invariants ei , fi , hi [13].
+Definition 6.16. Let F, G ∈ P be two prime polynomials of the same degree, and let
+θ ∈ K v be a root of F . We say that F and G are Okutsu equivalent, and we write F ≈ G,
+if v(G(θ)) > δ0 (F ).
+   The idea behind this concept is that F and G are close enough to share the same Okutsu
+invariants, as the next result shows.
+                             RESIDUAL IDEALS OF MACLANE VALUATIONS                                     35
+
+Proposition 6.17. Let F, G ∈ P be two prime polynomials of degree n. The following
+conditions are equivalent:
+   (1) F ≈ G.
+   (2) F ∼µF G.
+   (3) v(Res(F, G)) > nδ0 (F ).
+   (4) µF = µG and R(F ) = R(G), where R := RµF = RµG .
+Proof. If µ = µF , then F ∈ KP(µ)str by Theorem 6.11. Conversely, suppose that F ∈
+KP(µ)str and consider an optimal MacLane chain of µ.
+                        (φ1 ,λ1 )        (φ2 ,λ2 )         (φr−1 ,λr−1 )          (φr ,λr )
+                   µ0    −→         µ1    −→         ···       −→          µr−1    −→         µr = µ
+By Corollary 6.4, λi = v(φi (θ)) − µi−1 (φi ) for all 1 ≤ i ≤ r. By Theorem 6.9, [φ1 , . . . , φr ] is
+an Okutsu frame of F , and by Theorem 6.11, we get recursively µi−1 = µφi for all 1 ≤ i ≤ r
+and µ = µF .                                                                                        
+   The symmetry of condition (4) shows that ≈ is an equivalence relation on the set P of
+prime polynomials. These conditions determine a parameterization of the quotient set P/ ≈
+by an adequate space.
+Definition 6.18. Let µ be an inductive valuation. We say that a maximal ideal L ∈
+Max(∆(µ)) is strong if L = R(φ) for a strong key polynomial φ.
+ The MacLane space of the valued field (K, v) is defined to be the set
+                       n                                            o
+                 M = (µ, L) | µ ∈ Vind , L ∈ Max(∆(µ)), L strong .
+
+  The next result is a consequence of Corollary 6.14 and Proposition 6.17.
+Theorem 6.19. The following mapping is bijective:
+                                    M −→ P/≈,                (µ, L) 7→ KP(µ)L .
+The inverse map is determined by F 7→ (µF , RµF (F )).                                                 
+   The bijection M → P/≈ has applications to the computational representation of irre-
+ducible polynomials over complete fields, because the elements in the MacLane space may
+be described by discrete parameters. This provides an efficient manipulation of approxima-
+tions to the irreducible factors in Kv [x] of a polynomial with coefficients in a global field
+K.
+
+                                             7. Limit valuations
+7.1. Tree structure on Vind .
+Definition 7.1. For µ, µ′ ∈ Vind , we say that µ is the previous node of µ′ , and we write
+µ ≺ µ′ , if µ′ = [µ; (φ, λ)] for some strong key polynomial φ for µ and some positive rational
+number λ.
+  We denote by (Vind , ≺) the oriented graph whose set of vertices is Vind , and there is an
+edge from µ to µ′ if and only if µ ≺ µ′
+   Proposition 3.7 shows that (Vind , ≺) is a connected tree with root node µ0 , and any
+optimal MacLane chain for µ ∈ Vind yields the unique path joining µ with the root node.
+In particular, the length of this path is the MacLane depth of µ.
+   Also, Lemma 3.6 provides a description of the infinite set E(µ) of branches of any node
+µ ∈ Vind . In fact, there is a bijection:
+                    KP(µ)str × Q>0 / ∼ −→ E(µ),
+                                      
+                                                       (φ, λ) 7→ [µ; (φ, λ)],
+36                            FERNÁNDEZ, GUÀRDIA, MONTES, AND NART
+
+where ∼ is the equivalence relation:
+           (φ, λ) ∼ (φ′ , λ′ )      if      deg φ = deg φ′ , λ = λ′ , µ(φ − φ′ ) ≥ µ(φ) + λ.
+   Since the tree structure is determined by the optimal MacLane chains, the bijective
+mapping Vind (K) → Vind (Kv ) established in Proposition 3.9 is a tree isomorphism.
+   MacLane showed that there are two kinds of valuations that may be obtained as limits
+of inductive valuations: those of finite and infinite depth. In the next sections we review
+them.
+
+7.2. Limits with infinite depth.
+Definition 7.2. A leaf of (Vind , ≺) is an infinite path
+                                           µ0 ≺ µ1 ≺ · · · ≺ µn ≺ · · ·
+  We say that the leaf is discrete if the group values of the valuations are stable; that is,
+Γ(µn ) = Γ(µn0 ) for all n ≥ n0 , for a certain n0 .
+   A leaf has attached an infinite number of MacLane invariants ei , fi , hi , mi , which depend
+only on the sequence of valuations and not on the choice of the strong key polynomials
+φi used to construct µi from µi−1 . Since the degrees mi of these strong polynomials grow
+strictly and mi+1 = ei fi mi , we have ei fi > 1 for all i ≥ 1. Also, for any g ∈ K[x], we shall
+have deg g < mi+1 for a sufficiently advanced index i. Thus, Lemma 3.4 shows that
+                                         µi (g) = µj (g), for all j ≥ i.
+Thus, any leaf determines a limit valuation µ∞ = lim µn , defined by µ∞ (g) = µi (g) for a
+sufficiently advanced index i such that the value µi (g) stabilizes. Note that µ∞ (g) takes
+finite values for all non-zero g ∈ K[x].
+   Since the products ei fi are always greater than one, either lim e(µn ) = ∞, or lim f (µn ) =
+∞ (not exclusively). If lim e(µn ) = ∞, then the group of values of µ∞ has accumulation
+points at all the integers, and the valuation is not discrete. If lim e(µn ) 6= ∞, then there
+exists an index n0 such that en = 1 for all n > n0 , or equivalently, e(µn ) = e(µn0 ) for all
+n ≥ n0 ; thus, the leaf is discrete. In this case, e(µ∞ ) = e(µn0 ) and the valuation µ∞ is
+discrete.
+   In this discrete case, we must have lim Sf (µn ) = ∞, so that the inductive limit (union
+after the standard identifications) F∞ = n Fn is an infinite algebraic extension of F. It is
+easy to check that
+           KP(µ∞ ) = ∅,             κ(µ∞ ) ≃ ∆(µ∞ ) = F∞ ,                   Gr(µ∞ ) ≃ F∞ [p, p−1 ],
+where p is an indeterminate.
+   Since the tree isomorphism (Vind (K), ≺) ≃ (Vind (Kv ), ≺) preserves the invariants ei , fi
+attached to each node, it induces a 1-1 correspondence between the valuations with infinite
+depth on K(x) and the valuations with infinite depth on Kv (x).
+
+7.3. Limits with finite depth. An infinite MacLane chain is an infinite sequence of
+augmented valuations:
+                      (φ1 ,λ1 )          (φn−1 ,λn−1 )          (φn ,λn )        (φn+1 ,λn+1 )
+                 µ0    −→         ···        −→          µn−1    −→         µn       −→          ···
+such that φn+1 ∤µn φn for all n. By Lemmas 2.10 and 3.2, mn | mn+1 and Γ(µn ) ⊂ Γ(µn+1 )
+for all n.
+   If the degrees mn of the key polynomials φn are not bounded, there exists a limit valuation
+of this sequence, which is one of the valuations with infinite depth already described in the
+previous section.
+                          RESIDUAL IDEALS OF MACLANE VALUATIONS                                  37
+
+  If the degrees mn are bounded, there exists an index t such that mn = mt for all n ≥ t.
+Hence, en = 1 = fn for all n ≥ t, and this implies
+                        Γ(µn ) = Γ(µt−1 ),       Fn = Ft , for all n ≥ t.
+Theorem 7.3. [10, Thm 7.1] Every infinite MacLane chain with stable degrees determines
+a limit pseudo-valuation on K[x], given by g 7→ limn µn (g). This pseudo-valuation coincides
+with µ∞,F for some prime polynomial F ∈ P. Let θ ∈ K v be a root of F . If θ is algebraic
+over K, then µ∞,F is infinite on the ideal of K[x] generated by the minimal polynomial of
+θ over K. If θ is transcendental over K, then µ∞,F determines a valuation on K(x) with:
+                e(F ) = e(µ∞,F ) = e(µt−1 ),    FF = κ(µ∞,F ) ≃ ∆(µ∞,F ) = Ft ,
+where mn = mt for all n ≥ t. Also, Gr(µ∞,F ) ≃ FF [p, p−1 ], where p is an indeterminate,
+and KP(µ∞,F ) = ∅.                                                                     
+   Consider an infinite MacLane chain with stable degrees and limit µ∞,F for some F ∈ P.
+Let t be the least index such that mn = mt for all n ≥ t. Clearly, deg F = e(F )f (F ) =
+e(φt )f (φt ) = mt . For all i, the key polynomial φi is µi−1 -proper and φi |µi−1 F , by Corollary
+6.4. By Lemma 1.5, F is a key polynomial for µt−1 . By Lemma 1.10, φt−1 is a key polynomial
+for µt−1 too. Hence, deg φt−1 < deg F implies that F is a strong key polynomial for µt−1 .
+Thus, µt−1 = µF by Corollary 6.14.
+   Let us emphasize the role of µF as a threshold valuation in the process of constructing
+approximations to µ∞,F .
+Proposition 7.4. Consider an infinite MacLane chain with limit µ∞,F and let t be the first
+index such that deg φn = deg φt for all n ≥ t. Then, µt−1 = µF .                        
+   By Lemma 3.5, all valuations µn with n ≥ t have the same depth, and by Theorem 6.9,
+this depth coincides with the Okutsu depth of F . Thus, it makes sense to say that these
+pseudo-valuations are limits with finite depth.
+Theorem 7.5. [10, Thm. 8.1] The set V is the union of Vind , the limit valuations given by
+the discrete leaves of (Vind , ≺), and the valuations µ∞,F determined by all prime polynomials
+in P which do not divide any polynomial in O[x].                                            
+   Note that limit valuations µ∞,F ∈ V of finite depth do not occur if K = Kv . A posteriori,
+it is easy to distinguish the inductive valuations among all valuations.
+Corollary 7.6. For any µ ∈ V, the following conditions are equivalent:
+  (1) µ is an inductive valuation.
+  (2) µ is residually transcendental; that is, κ(µ)/κ(v) is a transcendental extension.
+  (3) KP(µ) 6= ∅.
+  (4) µ(g)/ deg g is bounded on all monic polynomials g ∈ K[x].
+  (5) there exists a pseudo-valuation µ′ on K[x] such that µ < µ′ .                              
+7.4. Intervals of valuations. For arbitrary µ, µ′ ∈ V, recall that the interval [µ, µ′ ] is
+defined as:
+                            [µ, µ′ ] = {ν ∈ V | µ ≤ ν ≤ µ′ }.
+Theorem 7.7. For any pseudo-valuation µ on K[x], the interval [µ0 , µ) ⊂ Vind is totally
+ordered.
+Proof. Let ν, ν ′ be two valuations such that ν < µ and ν ′ < µ. Consider a monic polynomial
+φ ∈ K[x] of minimal degree satisfying ν(φ) < µ(φ); by Lemma 1.14, φ ∈ KP(ν) and for any
+non-zero g ∈ K[x], ν(g) = µ(g) is equivalent to φ ∤ν g. Let φ′ ∈ K[x] be a monic polynomial
+with analogous properties with respect to ν ′ . Suppose deg φ ≤ deg φ′ .
+38                             FERNÁNDEZ, GUÀRDIA, MONTES, AND NART
+
+   By the minimality of deg φ and deg φ′ , for all a ∈ K[x] with deg a < deg φ, we have
+ν(a) = µ(a) = ν ′ (a). If deg φ < deg φ′ , then ν ′ (φ)                        ′
+                                                      P= µ(φ) s> ν(φ). Hence, ν ≥ ν, because
+for any non-zero g ∈ K[x] with φ-expansion g = 0≤s as φ , we have:
+(28)                      ν ′ (g) ≥ min{ν ′ (as φs )} ≥ min{ν(as φs )} = ν(g).
+                                         0≤s                       0≤s
+
+     If deg φ = deg φ′ , then φ′= φ + a for some a ∈ K[x] with deg a < deg φ. By the
+ν-minimality of φ and the ν ′ -minimality of φ′ , we have
+(29)                 ν(φ′ ) = min{ν(φ), ν(a)},                     ν ′ (φ) = min{ν ′ (φ′ ), ν(a)}.
+Suppose ν(φ) ≤ ν ′ (φ′ ). Then,
+                         ν(φ′ ) = min{ν(φ), ν(a)} ≤ ν(φ) ≤ ν ′ (φ′ ) < µ(φ′ ).
+Hence, φ |ν φ′ . By Lemma 1.5, φ ∼ν φ′ , so that ν(φ) = ν(φ′ ) ≤ ν ′ (φ), by (29). Therefore,
+(28) holds and ν ′ ≥ ν.                                                                    
+   Our aim is to find an explicit description of the valuations in such a totally ordered
+interval. Let us start with the interval determined by an augmented valuation.
+   For any key polynomial φ for µ, the pseudo-valuation µ∞,φ can be regarded as µ∞,φ =
+[µ; (φ, ∞)] (cf. section 1.3). Also, it makes sense to regard µ as a trivial ayugmentation of
+itself, namely µ = [µ; (φ, 0)].
+Lemma 7.8. Let φ be a key polynomial for an inductive valuation µ, and consider the
+augmented valuation µ′ = [µ; (φ, λ)] for some λ ∈ Q>0 ∪ {∞}. Then,
+                               [µ, µ′ ) = {[µ; (φ, ρ)] | ρ ∈ Q, 0 ≤ ρ < λ} .
+Proof. For every ρ ∈ Q ∩ [0, λ], denote µρ := [µ; (φ, ρ)]. Consider a valuation ν ∈ V such
+that µ ≤ ν < µ′ . For all a ∈ K[x] with deg a < deg φ, we have µ(a) ≤ ν(a) ≤ µ′ (a) = µ(a),
+leading to µ(a) = P ν(a). sTake ρ = ν(φ) − µ(φ) ∈ Q ∩ [0, λ]. For any g ∈ K[x], with
+φ-expansion g = 0≤s as φ , we have
+                       ν(g) ≥ min{ν(as φs )} = min{µ(as φs ) + sρ} = µρ (g),
+                                   0≤s                       0≤s
+
+so that µρ ≤ ν.     If ρ = λ, then µ′ = µ ρ ≤ ν, against our assumption; thus, ρ < λ. We
+claim that µρ = ν. In fact, let us show that µρ < ν < µ′ leads to a contradiction. Let
+g ∈ K[x] be any polynomial such that µρ (g) < ν(g). By the very definition of the augmented
+valuations, there exists a sufficiently small rational number ǫ > 0 such that ρ + ǫ < λ and
+µρ+ǫ (g) < ν(g). On the other hand, µρ+ǫ (φ) = ρ + ǫ > ρ = ν(φ). Therefore, ν 6≤ µρ+ǫ and
+ν 6≥ µρ+ǫ , in contradiction with Theorem 7.7.                                            
+   Let F ∈ P be a prime polynomial with respect to v. By Theorem 6.11, F is a key
+polynomial for the inductive valuation µF ∈ Vind (Kv ). Consider an optimal MacLane chain
+of its restriction µF ∈ Vind (K):
+                       (φ1 ,λ1 )         (φ2 ,λ2 )         (φr−1 ,λr−1 )          (φr ,λr )
+                  µ0    −→         µ1     −→         ···       −→          µr−1    −→         µr = µF .
+By Theorem 7.7,
+                 [µ0 , µ∞,F ) = [µ0 , µ1 ) ∪ [µ1 , µ2 ) ∪ · · · ∪ [µr−1 , µF ) ∪ [µF , µ∞,F ),
+and Lemma 7.8 gives an explicit description of each of these subintervals. If we consider
+valuations over Kv (x), the subinterval [µF , µ∞,F ) is equal to
+                        [µF , µ∞,F ) = {[µF ; (F, λ)] | λ ∈ Q≥0 } ⊂ Vind (Kv ),
+By Proposition 3.9, the restriction of these valuations to K(x) yields a completely analogous
+description of [µF , µ∞,F ) ⊂ Vind (K). By Lemma 3.6, the restriction of [µF ; (F, λ)] to K(x)
+                             RESIDUAL IDEALS OF MACLANE VALUATIONS                                        39
+
+coincides with [µF ; (φ, λ)] for any φ ∈ K[x] such that deg φ = deg F and µF (F − φ) ≥
+µF (F ) + λ.
+
+                                              References
+[1] V. Alexandru, N. Popescu, A. Zaharescu, All valuations on K(x), Journal of Mathematics of Kyoto
+ University 30 (1990), 281–296.
+[2] J.-D. Bauch, Genus computation of global function fields, arXiv: 1209.0309v3 [math.NT]
+[3] J. Guàrdia, J. Montes, E. Nart, Okutsu invariants and Newton polygons, Acta Arithmetica 145 (2010),
+ 83–108.
+[4] J. Guàrdia, J. Montes, E. Nart, Higher Newton polygons in the computation of discriminants and prime
+ ideal decomposition in number fields, Journal de Théorie des Nombres de Bordeaux 23 (2011), no. 3, 667–
+ 696.
+[5] J. Guàrdia, J. Montes, E. Nart, Newton polygons of higher order in algebraic number theory, Transactions
+ of the American Mathematical Society 364 (2012), no. 1, 361–416.
+[6] J. Guàrdia, J. Montes, E. Nart, A new computational approach to ideal theory in number fields, Founda-
+ tions of Computational Mathematics, DOI 10.1007/s10208-012-9137-5.
+[7] J. Guàrdia, J. Montes, E. Nart, Higher Newton polygons and integral bases, arXiv: 0902.3428v2
+ [math.NT].
+[8] J. Guàrdia, E. Nart, Genetics of polynomials over local fields, in preparation.
+[9] J. Guàrdia, E. Nart, S. Pauli, Single-factor lifting and factorization of polynomials over local fields,
+ Journal of Symbolic Computation 47 (2012), 1318–1346.
+[10] S. MacLane, A construction for absolute values in polynomial rings, Transactions of the American
+ Mathematical Society, 40 (1936), pp. 363–395.
+[11] S. MacLane, A construction for prime ideals as absolute values of an algebraic field, Duke Mathematical
+ Journal 2 (1936), pp. 492–510.
+[12] J. Montes, Polı́gonos de Newton de orden superior y aplicaciones aritméticas, PhD Thesis, Universitat
+ de Barcelona, 1999.
+[13] E. Nart, Local computation of differents and discriminants, arXiv: 1205.1340v1 [math.NT], to appear
+ in Mathematics of Computation.
+[14] K. Okutsu, Construction of integral basis, I, II, Proceedings of the Japan Academy, Ser. A 58 (1982),
+ 47–49, 87–89.
+[15] Ø. Ore, Zur Theorie der algebraischen Körper, Acta Mathematica 44 (1923), pp. 219–314.
+[16] Ø. Ore, Newtonsche Polygone in der Theorie der algebraischen Körper, Mathematische Annalen 99
+ (1928), pp. 84–117.
+[17] L. Popescu, N. Popescu, On the residual transcendental extensions of a valuation. Key polynomials and
+ augmented valuation, Tsukuba Journal of Mathematics 15 (1991), 57–78.
+[18] N. Popescu, A. Zaharescu, On the structure of the irreducible polynomials over local fields, Journal of
+ Number Theory 52 (1995), 98–118.
+[19] N. Popescu, C. Vraciu, On the extension of valuations on a field K to K(x), I, II, Rendiconti del
+ Seminario Matematico della Università di Padova 87 (1992), 151–168, 96 (1996), 1–14.
+[20] M. Vaquié, Extension d’une valuation, Transactions of the American Mathematical Society 359 (2007),
+ no. 7, 3439–3481.
+
+  Departament de Matemàtica Aplicada IV, Escola Politècnica Superior d’Enginyeria de
+Vilanova i la Geltrú, Av. Vı́ctor Balaguer s/n. E-08800 Vilanova i la Geltrú, Catalonia,
+Spain
+  E-mail address: julio@ma4.upc.edu, guardia@ma4.upc.edu
+
+   Departament de Ciències Econòmiques i Empresarials, Facultat de Ciències Socials, Univer-
+sitat Abat Oliba CEU, Bellesguard 30, E-08022 Barcelona, Catalonia, Spain, Departament de
+Matemàtica Econòmica, Financera i Actuarial, Facultat d’Economia i Empresa, Universitat
+de Barcelona, Av. Diagonal 690, E-08034 Barcelona, Catalonia, Spain
+   E-mail address: montes3@uao.es, jesus.montes@ub.edu
+
+  Departament de Matemàtiques, Universitat Autònoma de Barcelona, Edifici C, E-08193
+Bellaterra, Barcelona, Catalonia, Spain
+  E-mail address: nart@mat.uab.cat
+

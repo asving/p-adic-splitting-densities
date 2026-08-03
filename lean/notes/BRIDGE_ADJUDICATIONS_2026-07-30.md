@@ -5837,3 +5837,40 @@ implementation required at acceptance (pass-7 F2c).  Next stratum (e₀ ≥ 2
 stacked / e₂ ≥ 2 carry) probe-first, NO candidate sealed.  Note:
 `lean/notes/openmath/TWIST3_PROBE_2026-08-08.md`; harness
 `verification/openmath/strata3e2_probe.py` (+design/posthoc/output/JSON).
+
+## 2026-08-08 — FGMN RE-DERIVATION (PROPOSAL ONLY): the [T-5] glue step re-derived from the pinned print; the SideReads window functional belongs at the PARENT scale (σ.wPrev); THE ROW-A SOURCE VERDICT: source FIRES; PIN-GEN-i discharged
+
+FGMN transcription-scale re-derivation (synthesis-7 queue #2; JUNCFORGE_S2 §R3
+charter + the four pass-7 F1 riders) EXECUTED — **product is a PROPOSAL, nothing
+applied**: `SideReads` stands as compiled; every JuncForge theorem keeps its exact
+current meaning pending ROOT adjudication + the Asvin statement-change flag.
+Findings of record: (1) the print (FGMN, *Residual ideals of MacLane valuations*,
+arXiv:1305.0775v3 — NOW PINNED: `docs/references/fgmn_residual_ideals_1305.0775v3.pdf`,
+sha256 651b0cef…f615f35, + the fresh `-layout` extraction, sha256 8d30f15e…76e848b)
+keys the level-i polygon/window/digits at the PARENT valuation (Nᵢ := N_{µᵢ₋₁,φᵢ};
+eq (13); Cor 4.4(2)) and the residual at the CURRENT graded algebra (Thm 4.2 =
+the glue-step display) — the stage-1 two-scale law verbatim in the source; (2) the
+corrected transcription is a FOUR-TOKEN re-key of `SideReads` clauses (i)/(ii):
+`ν.σ.w (B j)` → `ν.σ.wPrev (B j)` (verbatim Lean-ready diff displayed in the note
+§S3; clause (iii) and all digit-algebra content untouched); (3) **THE ROW-A SOURCE
+VERDICT** (defined term, note §S4): the source glue step FIRES at the row-A fiber —
+the parity wall and the C-e escapee are transcription artifacts (double-scaled
+stride weight at graded e ≥ 2 frames), invisible at every compiled instance (all
+e = 1/identity-regrade, w = wPrev pointwise); (4) numerics ALL GREEN first pass
+(1,093 checks: corrected battery 336/336 SAT, compiled scale 0/336 SAT, row-A
+Lean-shape record (2,3,6,0,2,pat=(1,1),μ=1,vtx=1) exact, from-print
+Defs 3.15/3.16/3.18 operator == certified R2s 336/336, eq-(14) D0 source shape
+56/56); (5) **PIN-GEN-i DISCHARGED** (TR3-S3's owed leg): fresh decorrelated
+`pdftotext -layout` at Defs 3.15/3.16/3.18 under the pinned PDF — Def 3.15's prime
+placement COLUMN-VERIFIED (ǫᵢ(α) = zᵢ^{ℓ′ᵢs(α)−ℓᵢu(α)}, the mode-C reading; the
+shared fgmn.txt orphans the prime with no column data = the GRB REVISION-11
+artifact), genericity hand-verified at the instantiated indices, misread exponent
+discriminated at nature on every tower row (24–48 sites/row); residual: single
+extractor pass, displayed.  DITER §S3 supplier obligations carried as fixed points
+(carrier/cocycle/gates untouched); queue #9's junction gates should be stated
+against the corrected clause AFTER adjudication (note §S6).  D0 NOT resurrected
+(eq (14): the pure-key residual holds no pattern data in the source too;
+`gate_glue_conditional` stays vacuous at its compiled instance).  Note:
+`lean/notes/openmath/FGMN_REDERIVATION_2026-08-08.md`; harness
+`verification/openmath/fgmn_rederivation_check.py` (+JSON).  ASVIN-FLAG QUEUED:
+the §S3 proposal joins the standing Asvin batch (pass-7 queue #11).
