@@ -5360,3 +5360,29 @@ Lean tree untouched). Displayed opens: (B-PIN)/(C-JCT) audit, (FRESH)(a′)(c),
 (GR-B) at its own sites, the O-9 rev-6 (ADM′) re-scope (sign-off gated).
 Hostile pass owed on the note (charges listed §9; top attack = the §2 scope
 pin "TRI forces top-normalized wt" + W-LAD's ω_j(φ_i) = 0 reading).
+
+## 2026-08-08 — DEPTH-3 STRATA PROBE (synthesis-6 queue #6, F3c): IDENT-3 EXACT, no ǫ-revival on all-e_j=1, compose unit CHARTERED
+
+The order-3 all-e_j = 1 stratum measured (preregistration sealed d8ef8d8
+pre-run; 6 designed rows × 4 rings = 24 towers, deg Φ₃ ≤ 12, 21,950 samples,
+seed 20260817, exit 0, zero amendments, rerun-identical). **THE MEASURED LAW
+= (IDENT-3): C^F3_j = c^G3_{s_j} identically** (0/1,656) — the TR3-S1
+σ-compose shape composes through both levels with no surviving twist; the
+ǫ-recurrence does NOT revive on the all-unramified stratum (GRB REV-12's
+revival mechanism confined, at probe scope, to strata with some e_j > 1).
+All support rows green: level-3 A-GEN z-shift m₀ = s₂(A_j) (0/2,326), GMN t₂
+absorption, digit-level TR3-S1 (0/2,326), key tie gmn3(Φ₃) = ψ₂ (key classes
+coincide, θ₂ = ℓ₁g₁γ₂ = 0 — ORD-INV display), matched-label ord transport,
+V1–V5 bug detectors, CERT2 + CERT3 PARI (order-3 keys certified, (e,f) =
+(1, d₀g₀g₁g₂) 12/12). **Bonus discrimination: the level-2 Def-3.15 reading
+fixed externally for the first time** — reading-P's z₂^{−γ_j} character
+refuted at all 1,641 P-visible slots on PARI-certified towers (meter M1;
+N-1's pins covered level 1 only). **COMPOSE UNIT CHARTERED (law returned
+exact per the F3c protocol): TR3-S3** — TR-3′-GEN at order 3 on all-e_j = 1
+as a finite-algebra proof note (route: ǫ-triviality kernel + level-3 A-GEN +
+TR3-S1 on digits + t₂-absorption; falsifiers 21,950/0 on file). NEXT stratum
+(queued behind it, NOT chartered): order-3 e₁ ≥ 2 with the sealed UNTESTED
+candidate (TWIST-3) C^F3_j = z₂^{θ₂s_j}·c^G3, θ₂ = ℓ₁g₁γ₂. Instances, not
+proofs; (H-v3) v₃ = w₂ displayed. Note:
+`lean/notes/openmath/STRATA3_2026-08-08.md`; harness
+`verification/openmath/strata3_probe.py` (+output/JSON).

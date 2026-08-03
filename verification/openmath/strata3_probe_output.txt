@@ -1,0 +1,29 @@
+[   1.7s] ring (Zp,p=2) done: cumulative violations = 0 (+CERT2 0, G-side 0)
+[  13.7s] ring (Zp,p=3) done: cumulative violations = 0 (+CERT2 0, G-side 0)
+[  20.3s] ring (Fpt,p=2) done: cumulative violations = 0 (+CERT2 0, G-side 0)
+[  37.9s] ring (Fpt,p=3) done: cumulative violations = 0 (+CERT2 0, G-side 0)
+
+==============================================================================
+DEPTH-3 STRATA PROBE — PREDICTED vs OBSERVED (violations; samples in parens)
+==============================================================================
+C1  (IDENT-3) C^F3_j == c^G3_{s_j}       [THE LAW]            pred 0  obs     0 (  1656)  GREEN
+P0  GMN-3 integrity (t2 int, comp, c!=0) [SEALED]             pred 0  obs     0 (  6468)  GREEN
+P1  support agreement level 3            [CONJ comp.]         pred 0  obs     0 (  4662)  GREEN
+P2  level-3 A-GEN z-shift (m0 in Z>=0)   [CONJ comp.]         pred 0  obs     0 (  2326)  GREEN
+P3  digit-level order-2 identity         [TR3-S1]             pred 0  obs     0 (  2326)  GREEN
+P4  key tie gmn3(Phi3)=psi2 (ORD-INV)    [SEALED]             pred 0  obs     0 (    24)  GREEN
+P5  matched-label ord transport          [derived]            pred 0  obs     0 (  1656)  GREEN
+V1  VAL-3 multiplicativity               [BUG-DET]            pred 0  obs     0 (   240)  GREEN
+V2  R3 total multiplicativity            [BUG-DET]            pred 0  obs     0 (   240)  GREEN
+V3  W-MULT-3, delta == 0 (no-carry ctrl) [BUG-DET]            pred 0  obs     0 (   240)  GREEN
+V4  key lift R3(Phi3)=psi2 exact         [BUG-DET]            pred 0  obs     0 (    24)  GREEN
+V5  two-form/support shape + j0          [BUG-DET]            pred 0  obs     0 (  1656)  GREEN
+CERT3 PARI order-3 external leg (Zp rows)                  pred 0  obs     0 (    12)  GREEN
+CERT2 order-2 tower certification (G.T1/T2/T5/T11)         pred 0  obs     0 (   420)  GREEN
+M1 reading-P refuted at P-visible slots: 1641/1641 (pred: equal, > 0)  MATCH
+M2 inner z-shift m0 > 0 exercised: 229 slots (pred > 0)  MATCH
+M3 t2 != 0 exercised: 229 slots (pred > 0)  MATCH
+M4 towers with z2^gamma3 != 1: 22/24 (pred > 0)  MATCH
+P5 ord histogram (ord: count): 0:1512 1:85 2:59   (pred: some ord >= 1)  MATCH
+TOTAL samples: 21950   elapsed 37.9s
+VERDICT (preregistered rows): ALL GREEN
