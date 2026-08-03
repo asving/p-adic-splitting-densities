@@ -5792,3 +5792,18 @@ sequencing claims ("pass 7 then pass 8", "prereg sealed BEFORE run") are all
 git-commit-order claims and remain verifiable as such. This note is the standing
 disclosure; window labels stay as-is (a mass re-dating of accepted artifacts would
 corrupt the acceptance records it re-dated).
+
+## VC31 + VC31b + VC31c CONFIRMED — the ROOT acceptance RE-ANCHORS at REVISION 29
+
+VC31 (0C/2G: truncated appendix slice; the fence display gap → r30-ERRATUM f9aa7ef) →
+VC31b (substance PASSED both checks; raised the dating observation) → the standing
+DATING CONVENTION disclosure (a63b9ef: window-label dating; git commit order = the
+authoritative chronology) → VC31c CONFIRMED 0C/0G (the sequencing claims verifiable
+from the machine-recorded commit chain regardless of label dates; no claim found that
+depends on a wall-clock date). CONSEQUENCE: the acceptance anchor moves REVISION
+28/VC30+VC30b → REVISION 29/VC31+VC31b+VC31c. Now inside the certified anchor: the
+TR3-S3 acceptance (the strata trilogy), the erratum-corrected fence naming the entire
+complement, and the dating-convention disclosure itself. Reports: VC31_report.md
+(f9aa7ef), VC31b_report.md (a63b9ef), VC31c_report.md (this commit). ROOT citation
+rides r31. VC32 next in cadence. In flight: wave 14 (FGMN re-derivation, (H-v3)
+discharge, F-ADM-3 re-key, TWIST-3 probe, (UB-X) walk).
