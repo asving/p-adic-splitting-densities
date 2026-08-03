@@ -5501,3 +5501,44 @@ fgmn.txt BAD at Def 3.15; fresh pdftotext -layout legs + numeric falsifiers);
 product = corrected SideReads/junc_bundle transcription as PROPOSAL (statement
 change, Asvin-flag genre — no application without ROOT adjudication). Note §R1–R3:
 `lean/notes/openmath/JUNCFORGE_S2_2026-08-08.md`.
+
+---
+
+## 2026-08-03 — ADM-REAL′ REVISION 1: pass-1 CRITICAL repaired AT SOURCE, unconditional claim STANDS at full scope (counter 0/2)
+
+**(CRITICAL, W-LAD scope):** the strictness claim ("e_jf_j ≥ 2 at every
+stage — the pinned data sheet's type notion") was FALSE — and the repair is
+STRONGER than the finding demanded. Option (a) searched and refuted: no
+optimality pin exists (O-9 rev5 §1 pins "GMN's §2.1 sense"; arXiv-v2's type
+definition admits stationary levels — "positive length" only; the word
+"optimal" does not occur in arXiv:0807.2620v2). Option (b) landed strong:
+the needed ω_j(φ_i) = 0 is GMN's OWN Lemma 2.14 (`omji`), printed for ANY
+§2-scope type and proved with NO degree comparison (slope-−∞ point + the
+Lemma 2.2(1) ω-chain) — new pin (P-OMJI); GMN Prop 2.15(1) (`vrphii`) is
+W-LAD's closed form verbatim at paper-r := r+1 (REC-unroll tie displayed) —
+pin (P-VRPHII). W-LAD reproved at ALL levels; secondary degree route kept,
+valid at exactly the ledger-live levels (stationary digits are forced 0).
+W-CAP/CLASS-LAT/NON-END ride unchanged. **Source discipline:** fresh arXiv
+e-print TeX (sha256-pinned), decorrelated from the shared gmn.txt
+extraction; environment-count audit reproduces all seven previously pinned
+labels. **Gap 2 settled the same way:** the equality criterion IS Prop
+2.7(1) at the arXiv-v2 source (Prop 2.8 = the pseudo-valuation prop); the
+pass-1 alternative refuted there; TAMS numbering stays pending-lookup.
+**Gap 3:** the `CensusData.wt` call-path audit RUN — 6 consumer files, ZERO
+rescale sites; all compiled value-level instances r ≤ 1/degenerate, so the
+F-ADM-3 inheritance is PROSPECTIVE on the r-generic decls (`maxClassWeight`/
+`Gset`/`attainDim`/`ADMFull`/ADM-U1/U2); re-key duty unchanged. **Gaps 4/5:**
+B-PIN's ε = 1-exclusion equivalence downgraded to a displayed open audit
+item inside (C-JCT); the consumption corollary re-scoped to the
+FULL-at-the-L′-slots CONJUNCT of (ADM′) — value-attainment at vertices
+displayed OPEN. **Gaps 6–10 (falsifier):** R2(a) shared-vertex skip fixed
+(face-membership sets, full-coverage counter), R2(d)/(e) predicate corrected
+to β ≤ classmax, R3′ tightened to == 88 exact, R3(b) refutation state
+ENFORCED live, original-seal chronology honestly downgraded (prose-attested)
+and CURED for the new legs by the two-commit protocol (preregistration
+commit e05e660 = the pre-run artifact). **Verdict (first sealed run): ALL
+LIVE PREDICTIONS PASS, exit 0** — incl. NEW leg R6: 31,164 types, closed-
+form tie 0 fails, stationary W-CAP/CLASS-LAT 0 fails, premise control
+43,536 stationary m_i<m_j failures (the critical was REAL at scale) vs 0
+live-pair failures. Note: `lean/notes/openmath/ADMREAL_2026-08-08.md`
+(REVISION 1 block + §§2,3,5b,7 rewrites). Next: verify pass 2 (0/2).
