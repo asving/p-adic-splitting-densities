@@ -2638,6 +2638,9 @@ rider acknowledged (the reversal branch is dead — REC-SL suppliers and the
 KP-STEP [RC] wiring stand unconditionally on this gate); the executed F-ADM-3
 carrier re-key ACCEPTED. The ROOT §29/§30/§33 flag-lineage ratification
 brackets ride the next ROOT fold (r37); ROOT text untouched by this unit.
+[r37: EXECUTED — the RESOLVED-BY-DELEGATION brackets landed at ROOT
+§29/§30/§33 + the §40 flag paragraph; full record at ROOT §42.(i); see the
+r37 checkpoint below.]
 (4) **RB-DELTA — ADOPTED at full scope as drafted** (UBX walk §6, the on-file
 supported branch): (UB-X) member (b) + its (K3-δ) fragment rewrite to the
 intrinsic law (RB); the stability form to be displayed WITHDRAWN; members
@@ -2647,3 +2650,114 @@ pass rides that unit — the adoption here is the decision only.
 Full record with verbatim memo quotes: the ledger's "DECISIONS 2–4 EXECUTED
 (the b70a452 delegation)" entry (2026-08-03). Doc-only: no Lean file touched,
 no sealed record touched, ROOT untouched, roster/census untouched.
+
+## CHECKPOINT (ROOT r37 = REVISION 36, 2026-08-08 window, wallclock 2026-08-03): THE LARGEST FOLD — SEVENTEENTH RE-ANCHORING; THE DELEGATION FOLD (ASVIN BATCH RESOLVED); (ITER-LAW-3) = MEASURED LAW; THE STRATEGY OF RECORD; SORRY CENSUS 35 → 34
+
+ROOT REVISION 36 (unit ROOT r37, appendix §42; WAVE-19 UNIT 3) folds the
+whole wave-18/19 window.
+
+**THE RE-ANCHORING (seventeenth).** VC36b on the r36 remedies (8d913ec:
+NOT-CONFIRMED 0C/2G but ALL FOUR REMEDIES CONFIRMED CURED + census 70/70
++ sorry-census 35 reproduced; gaps = two bare acceptance-citation
+qualifier sites) → the r36b errata (two qualifier-propagation brackets:
+ROOT §0 + DITERSUP §S4) → VC36c CONFIRMED 0C/0G — **the acceptance
+anchor moves REVISION 33/VC35+VC35b → REVISION 35 + r36b
+(VC36+VC36b+VC36c)** (ledger f89e60c).
+
+**THE DELEGATION + UNIFORMITY DIRECTIVE (the standing frame for all new
+work).** Asvin 2026-08-03 (ledger b70a452, verbatim at ROOT §42.(i)):
+the entire point is a proof for ALL orders and ALL primes AT ONCE;
+small cases in math, not Lean; the more uniform the better. The four
+gated Asvin-batch items became Claude's decisions and are ALL EXECUTED
+— **the Asvin batch stands at ZERO open gated items**: (1) FGMN P0
+APPLIED (cecba9d; `HC2/DefsPrime.lean`, six primed decls) + hostile
+pass **P0HP CLEAN 0C/0G** (84b8154) — **the FGMN arc is CLOSED
+end-to-end**; `SideReads'` (primed route) = the faithful-to-print
+functional of record for all NEW work; J1–J3b UNBLOCKED, NOTHING
+discharged; J1 (primed e′ ≥ 2 satisfiability) = the first live junction
+question; (2) TowerMoveClosureL two-layer RE-RATIFIED; (3) fence-(vii)
+ROUTE (a) lineage RATIFIED (reversal dead; F-ADM-3 re-key accepted);
+(4) RB-DELTA ADOPTED at full scope, DECISION-ONLY (delta text + F-B
+condition-(5) ride the next O-11/O-8b touch). Reprioritization stands:
+PROMOTED the all-orders program; DEMOTED Lean small-case backlogs.
+
+**THE H1 GROUP STATE (the campaign's live mathematical ladder).**
+- **Order 2: PROVED + ACCEPTED** — the ITER-LAW on the harness tower
+  class (2-clean model-diverse bar; adjudicated 33373cb). The ONLY
+  proved rung. Scope as accepted (pasted defined-term): the harness
+  tower class (superset of DITER_RESTATE §S2's E₂ > 1 pin; on-the-nose
+  coincidence restricted to E₂ > 1); residuals: (ITER-LAW-LIFT) open
+  exactly at g₀ = 1 ∧ δ₁ = 1; gr(w₂) wrapper rides the accepted GRB
+  retarget; orders ≥ 3 untouched.
+- **Level 3: MEASURED LAW (instance-confirmed CONJECTURE — never
+  proved/accepted)** — (ITER-LAW-3): c₃ = z̄^{δ₃}·z₂^{D₂}·z₁^{D₁},
+  composed inner shift Σ = D₂γ₂ + δ₃γ₃(ℓ₁′−ℓ₁w₁Φ₁); gauge form
+  c₃ = z̄^{δ₃}·∂F, F = the ε-chain. Sealed probe 911431c: 0 violations
+  / 103,772 preregistered samples (the runner's RED exit line = the m4
+  mutation-teeth artifact — JSON violations EMPTY; supplement 0/19,792
+  with m4 detected 8/8; verdict fb8e3d3, concurred by SIX decorrelated
+  artifact reads); five decorrelated methods (L3XCHECK/L3FIT_M1/
+  L3COHOM_M2/L3RAMPS_M3/L3FINGER_M4) + the convergence judgment
+  (L3CONVERGENCE, 7622ecb): 15-claim × 6-method matrix, ZERO SPLITS,
+  ≈ 133k field-exact samples. Naive per-level template REFUTED beyond
+  appeal (fails associativity wherever it separates). Pinned to
+  canonical ε₁-corrected lifts (LIFT-DEV-3, measured conjecture:
+  plain-lift deviation ε₁(γ₂)^{δ₂} exactly at g₁ = 1 ∧ δ₂ = 1).
+- **All orders: CANDIDATE (n-recursion) + STRATEGY OF RECORD** — the
+  (ITER-LAW-n) uniform recursion + gauge form c_{n+1} = z̄^δ·∂F_n +
+  invariant class (INV-n), confirmed instances exactly n = 1 (accepted)
+  and n = 2 (measured); NOT asserted beyond. THE STRATEGY OF RECORD
+  (the b70a452 directive's deliverable; a strategy, NOT a result):
+  per-level GAUGE NORMALIZATION of anchor lifts — induction carrier
+  the ε-chain; lemma families L6-(n) + W-MULT-(n) per level ("L7
+  stacked on L7"); exponent recursion a DERIVED corollary; per-level
+  EXP/Bézout bank, no cross-level denominators; interfaces keyed to
+  class + gauge (K[u]/(u^E − σ)); lift normalization part of the
+  statement.
+- **Lift residual: ONE LEMMA FROM CLOSED at the corner** — the
+  (ITER-LAW-LIFT) corner probe (g₀ = 1 ∧ δ₁ = 1) ALL GREEN 104,404/0
+  first run; earned sketch; single open step = the displayed
+  (TAIL-STAB) double induction, priced S/M. The residual itself stays
+  OPEN.
+
+**WAVE-18 REMAINDER FOLDED:** gr(w₂) tie design (GRT-1 harness leg
+rides P1, application-independent; GRT-2 = grTie proper OPEN, L;
+P1-FLAG-1 disposition: IterLaw byte-stable, consumption via grTie
+only); H7 depth-2 transplant REFUTED-AT-BOX (prime-field ambient
+forces g = 1; (S-a) leg pinned; F4 relocation = the named successor;
+(H7) stays [M]); **L6e_covers DISCHARGED** Lean-core, statement
+byte-unchanged (L6e_partition now a full unconditional theorem;
+II-M6 no longer gated); DIterCarrier P1 compiled (JS1 proved with
+honest hTrack + compiled countermodel for the bare display; JS2
+proved). STORM RECORD: two 529 storms, WIP checkpoints
+d0e2b74/7598491, all recovered zero-loss; lesson: `git commit --only`
+in concurrently-committing repos; sequential-fleet throttle.
+
+**CENSUS.** Sorry census of record: **34 repo-wide — 33 in `LeanUrat/`
+(strict non-comment unit) + 1 tracked scratch probe; B2D 0; OM tree
+0**; −1 vs r36 = the discharged L6e_covers (Scaffold 6 → 5); breakdown
+MovesV 10 · MovesU 7 · Scaffold 5 · HC1 5 · MovesT 4 · HC2 2; banked
+0. ROOT pattern census: 70 + 22 new = 92 patterns re-grepped to fixed
+point, every delta named (ROOT §42). Roster: NINE rows, unchanged.
+
+**NEW OPENS IN FLIGHT (wave 19, concurrent units — nothing claimed):**
+the ITERLAW4 sealed n = 4 probe (F-SUB subwindow gate first; INV-4 +
+J-window legs; mutation battery with design-time letter-nontriviality
++ warrant-level detection; LIFT-DEV secondary leg with the new
+ε₂(γ₃)^{δ₃} prediction) and the (ITER-LAW-3) proof-compose unit
+(L6-(3)+W-MULT-(3), gauge route). Their notes are the concurrent
+units' property; this checkpoint does not audit them.
+
+FRONTIER NOW: **VC37** (the confirming end-to-end pass on REVISION 36;
+FROZEN-HISTORY TRIM MANDATORY per checklist rule 7; acceptance
+anchored on REVISION 35 + r36b until it lands); the two concurrent
+wave-19 units' verdicts; then the (TAIL-STAB) compose and the J1
+adjudication.
+Verification: VC1–VC22 done; VC25 NOT-CONFIRMED (disposed); VC26+VC26b,
+VC27+VC27b CONFIRMED; VC28, VC29 CONFIRMED FIRST-PASS; VC30 (1C, cured)
++ VC30b CONFIRMED; VC31 (0C/2G, cured) + VC31b + VC31c CONFIRMED;
+VC32 (0C/3G, cured) + VC32b CONFIRMED; VC33 (0C/2G, cured) + VC33b +
+VC33c CONFIRMED; VC34 CONFIRMED FIRST-PASS; VC35 (0C/2G, cured) +
+VC35b CONFIRMED; VC36 NOT-CONFIRMED 1C/3G (disposed at r36) + **VC36b
+(0C/2G, remedies confirmed) + r36b errata + VC36c CONFIRMED (= the
+STANDING anchor, REVISION 35 + r36b)**; VC37 pending on REVISION 36.

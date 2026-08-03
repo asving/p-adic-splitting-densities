@@ -7474,3 +7474,67 @@ repaired WITH teeth incl. structural top-slot leg), LIFT-DEV secondary leg
 (new prediction ε₂(γ₃)^{δ₃} at g₂ = 1); compose/proof unit may run in
 parallel. Honest grade: everything conjecture until the sealed cycle + a
 proof unit; no record edits; seal 911431c byte-untouched.
+
+---
+
+## ROOT r37 EXECUTED — REVISION 36 (the largest fold of the campaign): the SEVENTEENTH re-anchoring recorded in ROOT; the delegation fold (Asvin batch RESOLVED at zero gated items); (ITER-LAW-3) folded as MEASURED LAW with the gauge strategy as STRATEGY OF RECORD; the wave-18 remainder + the storm record; sorry census 35 → 34; VC37 owed — 2026-08-08 (wallclock 2026-08-03; WAVE-19 UNIT 3)
+
+`docs/ROOT_ASSEMBLY_2026-08-02.md` REVISION 36 (new §42; the §0
+REVISION-36 standing paragraph; the §3.1 (H1) row r37 bracket; the §3.2
+end-to-end row sync tail; the §6 r37 bracket; the RESOLVED-BY-DELEGATION
+brackets at §29/§30/§33 + the §40 flag paragraph — the 8e31e0a-deferred
+item-3 obligation EXECUTED). Contents, each with full qualifiers at every
+site: (0) the re-anchoring — the anchor moves REVISION 33/VC35+VC35b →
+**REVISION 35 + r36b (VC36+VC36b+VC36c)** per this ledger's f89e60c entry
+(VC36b's grade displayed honestly: 0C/2G with all four remedies CONFIRMED
+cured). (i) the b70a452 delegation QUOTED VERBATIM + the four decisions'
+execution/closure state: P0 APPLIED (cecba9d) + P0HP CLEAN (84b8154) —
+the FGMN arc CLOSED end-to-end, SideReads′ the faithful functional of
+record for NEW work, J1–J3b unblocked/nothing discharged, J1 the first
+live junction question; decisions 2–4 executed (8e31e0a); RB-DELTA
+displayed DECISION-ONLY (delta text + F-B cond-(5) ride the next
+O-11/O-8b touch). (ii) the ITER-LAW-r arc told honestly (seal 911431c →
+storm → recovery adjudication fb8e3d3 with violations EMPTY and RED =
+m4-teeth artifact → six decorrelated confirmations → convergence 7622ecb
+zero-split matrix): **(ITER-LAW-3) = MEASURED LAW, instance-confirmed
+conjecture, never proved/accepted**; (ITER-LAW-n) recursion + (INV-n)
+displayed as candidates NOT asserted; the ε-chain gauge-normalization
+reading folded as the all-orders proof STRATEGY OF RECORD (a strategy,
+not a result); the only proved rung = the accepted order-2 ITER-LAW,
+cited with the pasted defined-term scope + all three residuals. (iii)
+the wave-18 remainder: U5 corner ALL GREEN 104,404/0 with (TAIL-STAB)
+priced S/M and the residual OPEN + LIFT-DEV-3 (conjecture); U4 GRW2 tie
+design (design only; P1-FLAG-1 disposition of record folded); U3 H7
+depth-2 REFUTED-AT-BOX ((H7) stays [M]; F4 relocation the named
+successor); U6 L6e_covers DISCHARGED (statement byte-unchanged; Scaffold
+6 → 5; L6e_partition unconditional); U7 DIterCarrier P1 + hTrack-honest
+JS1 + JS2. (iv) the storm record (d0e2b74/7598491; zero losses; the
+`git commit --only` lesson — this unit commits that way; the
+sequential-fleet throttle). (v) the censuses: the ROOT pattern census
+re-grepped to fixed point at the declared occurrence unit — 70 inherited
++ 22 new markers = 92 rows, every delta named, the four r36b-bracket
+baseline corrections called out as that bracket predicted; the sorry
+census RE-DERIVED (block-comment-aware scan): **34 repo-wide = 33
+`LeanUrat/` + 1 tracked scratch probe; B2D 0; OM tree 0; banked 0**
+(−1 = L6e_covers). (vi) PROJECT_STATE fully synced (the r37 checkpoint:
+directive, strategy of record, the H1 ladder state — accepted order-2 /
+measured level-3 / n-recursion candidate / lift residual
+one-lemma-from-closed at the corner — FGMN closure, new opens).
+ROSTER: NINE rows recounted; no clause attribution moved; NO Lean file
+touched; no sealed/byte-frozen record touched (seals 911431c/7537b40/
+ab7c31c untouched). CONCURRENCY DISCLOSURE: the wave-19 ITERLAW4 probe
+and ITERLAW3 proof-compose units run CONCURRENT with this fold; their
+notes were NOT on disk at this unit's read, are NOT edited, and NOTHING
+from them is claimed — their post-pin commits are out of VC37's scope
+(the §40.(i) precedent). **VC37 is OWED on the REVISION-36 text**
+(charge at ROOT §42: end-to-end, model-diverse, FROZEN-HISTORY TRIM
+MANDATORY per checklist rule 7, with the trim disclosure to the auditor;
+new items include the measured-law discipline greps — every (ITER-LAW-3)
+mention MEASURED/instance-confirmed, the strategy quoted as STRATEGY —
+and the batch-resolved sweep). Acceptance citation consumed by this
+unit, PASTED from the ITER-LAW ACCEPTED block above: "Scope as accepted:
+the harness tower class (superset of DITER_RESTATE §S2's E₂ > 1 pin;
+on-the-nose coincidence restricted to E₂ > 1); residuals: (ITER-LAW-LIFT)
+open exactly at g₀ = 1 ∧ δ₁ = 1; gr(w₂) wrapper rides the accepted GRB
+retarget; orders ≥ 3 untouched." Unit files: ROOT + PROJECT_STATE + this
+append ONLY (scoped `git commit --only`).
