@@ -6242,3 +6242,22 @@ touched; the sorry census stays the r27 display). PROJECT_STATE r33 checkpoint +
 dated tags at the r32 checkpoint's stale displays. This unit ran no audit and never
 self-confirms: **VC34 is OWED on the REVISION-32 wording** (charge at §38) — until it
 lands, the acceptance citation points at the REVISION-31 text.
+
+## VC34 CONFIRMED FIRST-PASS (0C/0G) — the ROOT acceptance RE-ANCHORS at REVISION 32; the FGMN mega-arc fully certified
+
+VC34 (REVISION 32, the r33 text): CONFIRMED with zero findings — the third first-pass
+confirmation of the window. All folds verified (the FGMN acceptance display exactly the
+REVISION-10 list, no application leak, the wall theorems byte-frozen; TR3-S4
+un-upgraded with the F2c obligation displayed; the division-of-labor discipline; the
+Asvin batch with its verified top item; the 59-pattern census exact incl. the honestly
+displayed §37 baseline corrections; roster NINE). CONSEQUENCE: the anchor moves
+REVISION 31/VC33-arc → REVISION 32/VC34. THE WAVE-14/FGMN MEGA-ARC IS CLOSED AND
+CERTIFIED END-TO-END: the glue route's source-level question answered inside the
+anchor; the three-token proposal fully verified at the Asvin gate. Report:
+VC34_report.md (this commit). VC35 next; citation rides r34.
+FORWARD QUEUE (all new work): TR3-S4 REVISION 1 (p1 report archived) → pipeline + the
+F2c verifier-implementation; the synthesis-7 tail (ITER-LAW attempt; (H7) forge;
+DIterJunctionSupplier statement RE-PRICED against the accepted diagnosis; banked-sorry
+attempt; optional S batch); SYNTHESIS PASS 8 at the wave-15 close; the 4-item ASVIN
+BATCH (the verified FGMN proposal; RB-DELTA/Route-B; TowerMoveClosureL; the fence-(vii)
+lineage + F-ADM-3 ratify-or-reopen).
