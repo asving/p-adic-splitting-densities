@@ -6094,3 +6094,16 @@ pinned raw grep transcripts; hostile verification requires execution, not
 acceptance). **VC33b (narrow) OWED on the corrected passages** — it decides the
 REVISION-31 confirmation and the anchor move. Files: ROOT + this ledger ONLY.
 Commit of even date = the unit of record (r32-ERRATUM; scoped add).
+
+## VC33 + VC33b + VC33c CONFIRMED — the ROOT acceptance RE-ANCHORS at REVISION 31
+
+The arc: VC33 0C/2G (p6-concurrency displays; sandbox execution) → r32-ERRATUM e7ff234
+(six disclosure brackets; the execution duty transferred) → VC33b 0C/1G (the 12/3/6
+discharge-core transcripts CONFIRMED; three multi-line brackets missing from the
+extraction) → VC33c CONFIRMED 0C/0G (all six brackets verified in full context).
+CONSEQUENCE: the anchor moves REVISION 30/VC32+VC32b → REVISION 31/VC33+VC33b+VC33c.
+Now certified: the HV3 acceptance + the complete (H-v3) discharge sweep (TR-3'-GEN
+PRINT-UNCONDITIONAL on {all order-2} ∪ {order-3 all-e_j=1}), the FGMN
+REVISION-4-through-7 perimeter hardening displays, the re-stated Asvin batch. Reports:
+VC33_report.md, VC33b_report.md, VC33c_report.md. VC34 next; citation rides r33.
+Remaining decider: FGMN passes 9+10 (p9 = Fable with execution, launching now).
