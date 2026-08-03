@@ -7686,3 +7686,51 @@ storm record, sorry census 34, pattern census 92. Checklist rule 8 standing
 (the package at EVERY mention). Post-pin arcs continue on their own bars: the
 ITERLAW3 acceptance arc (round-1 convergent findings, errata in flight) and the
 rung-3 verdict (13b026b) fold at r38.
+
+**ITERLAW3 ERRATA ROUND 1 APPLIED — 2026-08-03: all round-1 findings
+bracketed into the proof note; counter stays 0/2; round 2 (PC2 + PE2) is the
+next arc step.** Unit: ITERLAW3 ERRATA r1. Findings were DECORRELATED
+CONVERGENT across both legs — Codex PC (NOT-CLEAN 2C/1G, report
+`ITERLAW3_passPC_report.md`, adjudicated 997c467) and Fable PE (NOT-CLEAN
+1C/1G+3 nits, report `ITERLAW3_passPE_report.md`, be9a77b): PC-F2 = PE-F1
+(COR-3 CX/CW overreach), PC-F1 = PE-F2 (DEV-1 e₀ = 1 measure), PC-F3 = PE-N2
+(rung indexing). Applied BRACKET-ADDITIVE per house convention (original
+text struck bracket-style, nothing deleted; the sealed diag
+`iterlaw3_proof_diag.py`/output and ALL sealed batteries byte-untouched; the
+proof's PROVED core S2/S3/S4.2–S4.6/S5 untouched):
+**E1 (CRITICAL)** — S6.3 ERRATUM bracket: the header clause "all
+unconditional — DCX needs δ₁ = 1 ∧ g₀ = 1 ∧ e₀ ≥ 3, none of which survives
+the respective degeneration" STRUCK (DCX has no e₂-condition; the s₂-track
+is automatic at e₁ = 1 — PE's executed witnesses cited: 4 DCX pairs on the
+e₂ = 1 tower (3,2,1)(2,1,1)(1,1,1)/ℤ₅, 48 on the e₁ = 1 tower TW2);
+corrected claim of record: CX/CW field-level clauses hold OFF-DCX
+(unconditional exactly at e₀ ≤ 2, in full once (W-MULT-3-DCX) closes); the
+integer-level reductions + the CV bullet stay genuinely unconditional
+(PE-verified). Sweep brackets at S0.1 (class-coincidence coverage line),
+the S0.4 COR status row, and S9 (the ITERLAW4 cite corrected to "e₂ = 1
+embedding proved OFF-DCX").
+**E2 (GAP)** — S4.1 DEV-1 ERRATUM bracket: the induction-measure display
+"j − e₀ + 1 ≤ j − 1 < j (e₀ ≥ 1)" STRUCK — the decrease needs e₀ ≥ 2;
+corrected scope: inductive step proved at e₀ ≥ 2, base range j < e₀g₀ only
+at e₀ = 1; every use in the note base-range-only there (PE-verified: S4.5's
+J = 0 at e₀ = 1, S4.6 forces e₀ ≥ 2, d₀ = 1 kills the Y-child); the
+genuinely unproved corner {e₀ = 1 ∧ d₀ ≥ 2 ∧ j ≥ g₀} displayed as a FENCED
+NON-CONSUMED corner with the unreached reason, not as a proved case. S0.4
+DEV-1 row bracketed to match.
+**E3 (nominal)** — S6.6 RUNG bracket aligned with the ITERLAW4_PROBE dated
+bracket: this 3-read theorem = RUNG n = 2 of (ITER-LAW-n) (an (n+1)-read
+tower = rung n); the "n = 3" in the title/displays counts READS; the 4-read
+battery (13b026b) = rung n = 3; inline relabel brackets at S1, the S0.4 COR
+row, and S7. **Nits:** the S2 case-(i) "= S₂ wait —" composition artifact
+struck-by-bracket (PE-N1); the S4.6 vacuous e₁ = 2 parenthetical flagged as
+defensive text (PE-N3).
+**Out-of-fence sweep result: NOTHING OWED** — no note outside the fence
+consumes S6.3/COR-3 unconditionally: ITERLAW4_PROBE's F0b/F-SUB legs cite
+the sealed MEASURED (ITER-LAW-3), not the proof note's corollary;
+L3CONVERGENCE does not cite the proof note; ITERLAWLIFT_CORNER's "COR-3"
+reference is the ACCEPTED order-2 note's COR-3 (e₀ = 1 leg, theorem-backed
+there, unaffected); ROOT/PROJECT_STATE carry only the honest in-flight
+disclosure. The general-n compose (chartered after this errata round)
+consumes the CORRECTED note — this errata state, not the 8ba1820 original.
+Unit files: the errata-bracketed proof note + this append ONLY (scoped
+`git commit --only`).

@@ -81,7 +81,10 @@ class proved here IS the sealed statement's class on the nose; the sealed
 ROSTER additionally has E₃ ≥ 4 throughout, so all instance evidence sits in
 the E₃ ≥ 4 part; the fully-degenerate legs (some eⱼ = 1, down to E₃ = 1,
 where the corresponding carries are identically trivial) are covered by this
-proof as honest degenerations (COR-3), not as extrapolated instance claims.
+proof as honest degenerations (COR-3), not as extrapolated instance claims
+**[errata r1: coverage is on the proved perimeter — the e₂ = 1 / e₁ = 1
+degenerations do NOT evacuate DCX (S6.3 erratum); it is unconditional
+exactly where DCX is empty, e₀ ≤ 2]**.
 The (ITER-LAW-LIFT) residual propagates verbatim: Φ₁ standard, Φ₂ canonical
 ε₁-corrected — nothing is claimed for any other lawful lift at any level
 (S7; the measured lift-sensitivity is exactly LIFT-DEV-3, L3XCHECK S7).
@@ -172,7 +175,7 @@ class.
 | L3-(3) WINDOW: W₃ closed under + | PROVED | S2 |
 | EXP-KIT (a) EPS-CLOSED / (b) EPS-MULT / (c) EXP-SHIFT, generic in the level | PROVED | S3 |
 | WELL-DEF: canonical Φ₂ exists on the class; exact 2-term form at g₁ = 1 | PROVED | S4.0 |
-| DIGIT-SPLIT + DEV-1 (the bounded reduction engine, level 1) | PROVED | S4.1 |
+| DIGIT-SPLIT + DEV-1 (the bounded reduction engine, level 1) | PROVED **[errata r1: inductive step at e₀ ≥ 2; at e₀ = 1 base range only — the corner e₀ = 1 ∧ d₀ ≥ 2 ∧ j ≥ g₀ is a fenced non-consumed gap (S4.1 erratum); every use in this note unaffected]** | S4.1 |
 | L6-(3) ANCHOR-VAL: val₃(φ_γ) = ε₂(β₂)·ε₁(β₁) ≠ 0 | PROVED | S4.2 |
 | CASE-SPLIT (the exact partition of pairs) | PROVED | S4.3 |
 | W-MULT-(3), Case I (single top digit; all g₁ ≥ 2 + no-overflow g₁ = 1) | PROVED | S4.4 |
@@ -181,7 +184,7 @@ class.
 | W-MULT-(3) on DCX | **OPEN** (W-MULT-3-DCX), instance-true | S4.7 |
 | THEOREM off DCX | **PROVED (the unit's content)** | S5 |
 | THEOREM on DCX | conditional on (W-MULT-3-DCX) | S5 |
-| COR-1 integrality · COR-2 cocycle identity · COR-3 degenerations (e₂=1 ⟹ the ACCEPTED law verbatim) · COR-4 ℤ/E₃ descent + monodromy · COR-5 gauge form c₃ = z̄^{δ₃}·∂F · COR-6 the (ITER-LAW-n) recursion at n = 3 · COR-7 W-MULT product form | PROVED (conditionalities displayed per-item) | S6 |
+| COR-1 integrality · COR-2 cocycle identity · COR-3 degenerations (e₂=1 ⟹ the ACCEPTED law verbatim **[errata r1: on the proved perimeter — off DCX; S6.3 erratum]**) · COR-4 ℤ/E₃ descent + monodromy · COR-5 gauge form c₃ = z̄^{δ₃}·∂F · COR-6 the (ITER-LAW-n) recursion at n = 3 **[errata r1: reads; = RUNG n = 2 — S6.6 rung bracket]** · COR-7 W-MULT product form | PROVED (conditionalities displayed per-item) | S6 |
 | general lawful lifts · orders ≥ 4 · gr(w₃) wrapper · GMN transport | NOT TOUCHED (fences) | S7 |
 
 ## S1. What the proof is (the converged gauge route, executed)
@@ -217,7 +220,8 @@ kernel per level (EXP-KIT(c) at (e₁,h₁,ℓ₁,z₂) with shift T = δ₃γ�
 (e₀,h₀,ℓ₀,z₁) with T = Σ) — no cross-level denominators, per the converged
 integrality reading (L3CONVERGENCE S3 item 2 / L3FINGER S8). The cocycle
 identity, integrality, degenerations, descent, the gauge form and the
-(ITER-LAW-n) recursion at n = 3 are then DERIVED corollaries (S6) — never
+(ITER-LAW-n) recursion at n = 3 **[errata r1: reads; = RUNG n = 2, see the
+S6.6 rung bracket]** are then DERIVED corollaries (S6) — never
 guessed constant-by-constant.
 
 **Consumption manifest (everything non-self-contained, with pins):**
@@ -279,7 +283,10 @@ confirmed instance-side.)
 **Lemma L3-(3) (WINDOW).** γ, γ′ ∈ W₃ ⟹ γ+γ′ ∈ W₃.
 *Proof.* e₀u(β₁″) = β₁″ − s₁″h₀ = e₀U + (S₁−s₁″)h₀ + Σ ≥ −(e₀−1)h₀ + Σ + e₀U
 and U ≥ 0. Three cases.
-(i) δ₃ = 0, δ₂ = 0: then s₂″ = S₂−δ₂e₁ = S₂ wait — at δ₃ = 0, β₂″ = B₂ and
+(i) δ₃ = 0, δ₂ = 0: then s₂″ = S₂−δ₂e₁ = S₂ wait — **[errata r1 (PE-N1):
+the fragment "= S₂ wait —" is a struck composition artifact (mid-sentence
+false start); the sentence of record reads "then s₂″ = S₂−δ₂e₁:"]**
+at δ₃ = 0, β₂″ = B₂ and
 L1 at (e₁,h₁) gives s₂″ = S₂ − δ₂e₁ directly, so D₂ = δ₂ and Σ = γ₂δ₂. At
 δ₂ = 0: Σ = 0 and u(β₁″) = u(β₁)+u(β₁′)+δ₁h₀ ≥ 0 by L1 at (e₀,h₀).
 (ii) δ₃ = 0, δ₂ = 1: Σ = γ₂ = e₀e₁g₀h₀ + h₁ ≥ e₀h₀ + h₁ > (e₀−1)h₀, so
@@ -423,6 +430,36 @@ When λ > β*: every child has line > β*, all reads 0 by induction. The
 intermediate exponent (j−e₀g₀−s*)/e₀ is an integer of either sign; z₁ is a
 unit, and the FINAL abscissas of all tracked terms are ≥ 0 and ≡ s*
 (mod e₀), hence ≥ s*: only non-negative powers appear in the actual read. ∎
+
+**[ERRATUM (errata round 1, 2026-08-03; convergent findings PC-F1 [GAP] =
+PE-F2 [GAP]; reports `ITERLAW3_passPC_report.md` (997c467) /
+`ITERLAW3_passPE_report.md` (be9a77b)): the induction-measure display in the
+step above — "j − e₀ + 1 ≤ j − 1 < j (e₀ ≥ 1)" — is STRUCK as written: the
+decrease requires **e₀ ≥ 2**, not e₀ ≥ 1. At e₀ = 1 the junkΦ⁽ⁱ⁾ child at
+i = g₀−1 has Φ₀-exponent exactly j, and the strong induction on j does not
+close as stated (that child's line rises by h₀ each round; no j-descent
+occurs). CORRECTED SCOPE OF RECORD: the inductive step of DEV-1 is proved
+for e₀ ≥ 2; at e₀ = 1, DEV-1 is proved on the base range j < e₀g₀ only.
+Every use of DEV-1 in this note survives verbatim (PE-verified): S4.5's
+inputs G_m at e₀ = 1 have Φ₀-exponent J + me₀ with J = S₁ + s(γ₂) = 0 (all
+eq-(12-int) s-values vanish at e₀ = 1), i.e. exponent m ≤ g₀−1 < e₀g₀ —
+base range only; S4.6 requires g₀ = 1 ∧ δ₁ = 1, forcing e₀ ≥ 2; and at
+d₀ = 1 the DIGIT-SPLIT cofactor Y vanishes identically (deg αβ ≤ 2d₀−2 =
+0 < d₀ = 1 forces Y = 0), so junkΦ ≡ 0 and the non-descending child is
+absent.
+
+    ┌─ FENCED NON-CONSUMED CORNER (open; a displayed gap, NOT a proved ─┐
+    │  case):  DEV-1 as originally quantified is UNPROVED exactly on    │
+    │      { e₀ = 1  ∧  d₀ ≥ 2  ∧  j ≥ g₀ }.                            │
+    │  WHY IT IS UNREACHED by this note: every DEV-1 call at e₀ = 1     │
+    │  has base-range Φ₀-exponent (S4.5's J = 0 computation above), and │
+    │  S4.6's hypotheses force e₀ ≥ 2 — so no consumer enters the       │
+    │  corner. A repair route exists (at e₀ = 1 the only non-descending │
+    │  child is the junkΦ chain, whose coefficient π-depth strictly     │
+    │  grows; a secondary induction on target-relative depth closes     │
+    │  it) but that argument is NOT in this note.                       │
+    └───────────────────────────────────────────────────────────────────┘
+]**
 
 ### S4.2 Lemma L6-(3) (ANCHOR-VAL): val₃(φ_γ) = ε₂(β₂(γ))·ε₁(β₁(γ)) ∈ K₃^×
 
@@ -600,6 +637,9 @@ e₁(B₁−e₀h₀)+(k+1)γ₂ = B₂−e₁γ₂+h₁, using γ₂−e₁e₀
   ≥ e₁(β*−w₁Φ₁)+(k+1)γ₂ = B₂+h₁ (w₁Φ₁ = e₀h₀ at g₀ = 1) — both > B₂;
 * slot k+2 (only if Q¹ ≠ 0): line ≥ e₁(β*−2e₀h₀)+(k+2)γ₂ = B₂+2h₁ > B₂
   (off-grid at e₁ ≥ 3; on-grid-above-line at e₁ = 2 — read 0 either way).
+  **[errata r1 (PE-N3): the e₁ = 2 branch of this parenthetical is vacuous
+  in the proved region — Q¹ ≠ 0 with k+2 ≤ e₁−1 forces e₁ ≥ 3 (at e₁ = 2 a
+  Q¹ ≠ 0 pair lands in DCX); harmless defensive text, kept as such.]**
 
 So w₂(E₀) = B₂; grid s₂(B₂) = k (L1, δ₂ = 1); the j = 0 read coefficient is
 C₀ = ε₁(β*)·c₀τ·z₁^{ε′} = c₀c₁·ε₁(B₁) = (−z₁)(−z₂)·ε₁(B₁)
@@ -711,6 +751,28 @@ symmetric; D₁-slot likewise with ℓ₀[Σ-total]. So the DISPLAYED law is a
 the measured c₃ satisfies the identity as soon as the display holds there. ∎
 
 ### S6.3 COR-3: degenerations (sealed G6; all unconditional — DCX needs δ₁ = 1 ∧ g₀ = 1 ∧ e₀ ≥ 3, none of which survives the respective degeneration)
+
+**[ERRATUM (errata round 1, 2026-08-03; convergent findings PC-F2 [CRITICAL]
+= PE-F1 [CRITICAL]; reports `ITERLAW3_passPC_report.md` (997c467) /
+`ITERLAW3_passPE_report.md` (be9a77b)): the header clause "all unconditional
+— DCX needs δ₁ = 1 ∧ g₀ = 1 ∧ e₀ ≥ 3, none of which survives the respective
+degeneration" is STRUCK. The DCX predicate (S0.4/S4.7) has NO e₂-condition,
+and at e₁ = 1 the track condition s₂(γ) = s₂(γ′) = e₁−1 = 0 is automatic
+(ENLARGING the locus — S4.7 itself displays the e₁ = 1 DCX flavor: "slot
+1 = e₁ (Case II-3 at e₁ = 1)"). Executed witnesses (PE pass): the e₂ = 1
+tower (3,2,1)(2,1,1)(1,1,1)/ℤ₅ realizes 4 DCX pairs per W₁×W₁-equivalent
+block; the e₁ = 1 battery tower TW2 = (4,1,1)(1,3,1)(2,1,1)/F₃[[t]]
+realizes 48. CORRECTED CLAIM OF RECORD: the e₂ = 1 (CX) and e₁ = 1 (CW)
+FIELD-LEVEL clauses below hold on the proved perimeter (off DCX, the S6
+preamble convention) — unconditional exactly where DCX is empty, i.e.
+e₀ ≤ 2, and unconditional in full once (W-MULT-3-DCX) closes. Genuinely
+unconditional NOW (PE-verified, machine-checked): every INTEGER-LEVEL
+reduction displayed below (e₂ = 1: δ₃ = 0, β₂(γ) = γ, D₂ = δ₂, Σ = γ₂δ₂,
+D₁ = the accepted exponent; e₁ = 1: D₂ = 0, Σ = δ₃γ₃; e₀ = 1: D₁ = 0), and
+the CV bullet in FULL (e₀ = 1 contradicts DCX's e₀ ≥ 3, and DCX needs
+S₁ ≥ e₀+1 ≥ 2 > 0 = S₁|_{e₀=1}). With this re-scope the S0.4 status-row
+note "(conditionalities displayed per-item)" is accurate.]**
+
 * **e₂ = 1** (control CX): s₃ ≡ 0, δ₃ = 0, β₂(γ) = γ; D₂ = δ₂, Σ = γ₂δ₂
   (L1), D₁ = (s₁-defect + ℓ₀γ₂δ₂)/e₀ — **the ACCEPTED order-2 law verbatim
   in the letters (z₂, z₁)** [IL S0 THEOREM under the S0.3 dictionary]; the
@@ -753,6 +815,22 @@ note; flagged for the n = 4 prereg (F-CLASS), not consumed by anything
 below.
 
 ### S6.6 COR-6: the exponent recursion — (ITER-LAW-n) at n = 3, derived
+
+**[ERRATUM (errata round 1, 2026-08-03; convergent findings PC-F3
+[CRITICAL, nominal] = PE-N2; rung relabel per the 997c467 adjudication,
+aligned with the dated RUNG-INDEXING bracket at the head of
+`ITERLAW4_PROBE_2026-08-08.md`): naming only, no math content changes. Per
+the L3CONVERGENCE convention (an (n+1)-read tower = rung n), this 3-READ
+theorem is **RUNG n = 2** of (ITER-LAW-n); the "at n = 3" in this section's
+title, in the display sentence below, in the S1 close, and in the S0.4
+status row counts READS (3 reads, matching the note NAME "ITERLAW3"), not
+the rung index. The 4-read battery (ITERLAW4_PROBE, verdict 13b026b) is
+RUNG n = 3. The confirmed-rungs sentence below already uses the RUNG
+convention and stands as written; the rung ledger of record: n = 1 PROVED +
+ACCEPTED (2-read, the accepted order-2 law), n = 2 PROVED-OFF-DCX at
+attempt grade + MEASURED (3-read, this note), n = 3 MEASURED GREEN (4-read
+battery).]**
+
 With S₂ᵗᵒᵖ := δ₃γ₃ and S₁ᶜᵒᵐᵖ := Σ, the proved display is EXACTLY the
 uniform recursion of L3CONVERGENCE S2 Candidate 2 at n = 3:
 
@@ -787,7 +865,9 @@ already accepted.
   conjecture-grade, sealed cycle owed — consistent with, and now explained
   by, the S4.5 mechanism, but NOT proved here).
 * **Orders ≥ 4.** Untouched; COR-6's recursion display at n ≥ 3 is
-  conjecture pending the parallel n = 4 probe unit.
+  conjecture pending the parallel n = 4 probe unit **[errata r1: the
+  "n ≥ 3" here is already RUNG-indexed (= orders ≥ 4); the "n = 4 probe"
+  counts READS — its battery is RUNG n = 3, see the S6.6 rung bracket]**.
 * **The gr(w₃) semantics wrapper and the H²-class.** The theorem is about
   the harness calculus objects (S0.2), exactly as the accepted note's scope;
   the graded-algebra identification and the class invariant stay
@@ -856,7 +936,16 @@ open).]**
   (measured law → proved-on-class, DCX residual displayed).
 * The ITERLAW4 probe unit (parallel): its F0/F-SUB legs may cite this note's
   S6.3 (e₂ = 1 embedding proved) once accepted; until then instance-grade
-  wording stands.
+  wording stands. **[errata r1 (PC-F2 = PE-F1): the parenthetical is
+  corrected to "e₂ = 1 embedding proved OFF-DCX" — any future cite must
+  carry the DCX conditionality on DCX-live e₂ = 1 towers (witness:
+  (3,2,1)(2,1,1)(1,1,1)/ℤ₅ realizes 4 DCX pairs per block), per the S6.3
+  erratum. Out-of-fence sweep at errata r1: NO existing consumer cites
+  S6.3 unconditionally — ITERLAW4_PROBE's F0b/F-SUB legs cite the sealed
+  MEASURED (ITER-LAW-3), not this note's corollary; L3CONVERGENCE does not
+  cite this note; ITERLAWLIFT_CORNER's "COR-3" reference is the accepted
+  order-2 note's COR-3 (e₀ = 1 leg, theorem-backed there, unaffected).
+  Nothing owed beyond this bracket.]**
 * HARDEST_FIRST / PROJECT_STATE / ROOT: (ITER-LAW-3) row gains "proof
   composed, attempt grade, DCX corner open, hostile arc owed" — at the
   r37 fold.
