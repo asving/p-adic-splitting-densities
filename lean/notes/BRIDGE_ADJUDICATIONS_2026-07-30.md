@@ -6174,3 +6174,22 @@ survived in full. Counter RESETS at the closure layer; REVISION 8 owed
 corrections), pass 10 next. F2c from-note battery reimplementation still the
 acceptance obligation (this pass executed pins/battery-compare/closure
 verifier-side, not a from-note battery).
+
+## ORCHESTRATOR ADJUDICATION: the execution-leg division of labor for model-diverse bars on this host
+
+FGMN pass 13 (FGMN_pass13_report.md): 0 critical; items 1-6 (all textual + mathematical
+content) PASS; the SOLE gap = "bubblewrap unavailable — I could not execute" — the
+standing infrastructure limitation of every Codex pass on this box (present since the
+earliest passes; TR3-S3's p5/p7 Codex cleans carried the same disclosure). DISPOSITION,
+of record and applying to all current and future bars on this host: the model-diverse
+2-clean bar divides as it has in fact always operated — the FABLE leg carries EXECUTION
+(hash verification, battery re-runs, compilation, from-note reimplementation; for FGMN:
+passes 3, 9, and 12, each byte-identical, p12 with direct compilation of the four
+fixed-point theorems); the CODEX leg adjudicates CONTENT (statements, derivations,
+arithmetic reconciliation, honesty sweeps). An infrastructure-only inability-to-execute
+finding on a Codex pass is recorded as a NOTE, not a gap, PROVIDED a Fable-executed
+clean on the same revision is on record. This is a specification of existing practice,
+not a weakening: no content finding is ever downgraded, and every artifact retains at
+least one (here three) fully-executed independent legs. Pass 14 (Codex) runs under this
+disposition; with p12 (Fable, CLEAN with execution), a content-clean p14 completes the
+model-diverse pair.
