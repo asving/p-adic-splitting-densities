@@ -1,0 +1,425 @@
+{
+ "seed": 20260819,
+ "violations": [],
+ "g_violations": [],
+ "s3p_violations": [],
+ "counts": {
+  "CERT": 16,
+  "K": 64,
+  "RI": 9267,
+  "Z2": 384,
+  "W": 80,
+  "HV": 160,
+  "E2A": 900,
+  "RII": 536,
+  "RIII": 536,
+  "RIV": 536,
+  "E2B": 400,
+  "XV": 400,
+  "O": 400
+ },
+ "meters": {
+  "m0pos": 87,
+  "t2nz": 481,
+  "epsnz": 340,
+  "vis": 130,
+  "identkill": 130,
+  "j0pos": 72,
+  "noff": 269,
+  "noisy": 48,
+  "holes": 34,
+  "wfail": 0,
+  "naive": 27
+ },
+ "ord_hist": {
+  "0": 366,
+  "1": 19,
+  "2": 15
+ },
+ "towers": [
+  {
+   "tower": "Zp,p=2,S4A",
+   "d0": 1,
+   "r0": [
+    1,
+    1,
+    2
+   ],
+   "r1": [
+    2,
+    1,
+    2
+   ],
+   "r2": [
+    1,
+    1,
+    1
+   ],
+   "theta2": 10,
+   "gamma2": 5,
+   "gamma3": 21,
+   "degPhi3": 8,
+   "visible": false
+  },
+  {
+   "tower": "Zp,p=2,S4B",
+   "d0": 1,
+   "r0": [
+    1,
+    2,
+    1
+   ],
+   "r1": [
+    2,
+    1,
+    2
+   ],
+   "r2": [
+    1,
+    1,
+    2
+   ],
+   "theta2": 10,
+   "gamma2": 5,
+   "gamma3": 21,
+   "degPhi3": 8,
+   "visible": true
+  },
+  {
+   "tower": "Zp,p=2,S4C",
+   "d0": 2,
+   "r0": [
+    1,
+    1,
+    1
+   ],
+   "r1": [
+    3,
+    1,
+    2
+   ],
+   "r2": [
+    1,
+    2,
+    1
+   ],
+   "theta2": 8,
+   "gamma2": 4,
+   "gamma3": 26,
+   "degPhi3": 12,
+   "visible": true
+  },
+  {
+   "tower": "Zp,p=2,S4D",
+   "d0": 1,
+   "r0": [
+    1,
+    1,
+    1
+   ],
+   "r1": [
+    3,
+    2,
+    2
+   ],
+   "r2": [
+    1,
+    1,
+    2
+   ],
+   "theta2": 20,
+   "gamma2": 5,
+   "gamma3": 31,
+   "degPhi3": 12,
+   "visible": true
+  },
+  {
+   "tower": "Zp,p=3,S4A",
+   "d0": 1,
+   "r0": [
+    1,
+    1,
+    2
+   ],
+   "r1": [
+    2,
+    1,
+    2
+   ],
+   "r2": [
+    1,
+    1,
+    1
+   ],
+   "theta2": 10,
+   "gamma2": 5,
+   "gamma3": 21,
+   "degPhi3": 8,
+   "visible": false
+  },
+  {
+   "tower": "Zp,p=3,S4B",
+   "d0": 1,
+   "r0": [
+    1,
+    2,
+    1
+   ],
+   "r1": [
+    2,
+    1,
+    2
+   ],
+   "r2": [
+    1,
+    1,
+    2
+   ],
+   "theta2": 10,
+   "gamma2": 5,
+   "gamma3": 21,
+   "degPhi3": 8,
+   "visible": true
+  },
+  {
+   "tower": "Zp,p=3,S4C",
+   "d0": 2,
+   "r0": [
+    1,
+    1,
+    1
+   ],
+   "r1": [
+    3,
+    1,
+    2
+   ],
+   "r2": [
+    1,
+    2,
+    1
+   ],
+   "theta2": 8,
+   "gamma2": 4,
+   "gamma3": 26,
+   "degPhi3": 12,
+   "visible": true
+  },
+  {
+   "tower": "Zp,p=3,S4D",
+   "d0": 1,
+   "r0": [
+    1,
+    1,
+    1
+   ],
+   "r1": [
+    3,
+    2,
+    2
+   ],
+   "r2": [
+    1,
+    1,
+    2
+   ],
+   "theta2": 20,
+   "gamma2": 5,
+   "gamma3": 31,
+   "degPhi3": 12,
+   "visible": true
+  },
+  {
+   "tower": "Fpt,p=2,S4A",
+   "d0": 1,
+   "r0": [
+    1,
+    1,
+    2
+   ],
+   "r1": [
+    2,
+    1,
+    2
+   ],
+   "r2": [
+    1,
+    1,
+    1
+   ],
+   "theta2": 10,
+   "gamma2": 5,
+   "gamma3": 21,
+   "degPhi3": 8,
+   "visible": false
+  },
+  {
+   "tower": "Fpt,p=2,S4B",
+   "d0": 1,
+   "r0": [
+    1,
+    2,
+    1
+   ],
+   "r1": [
+    2,
+    1,
+    2
+   ],
+   "r2": [
+    1,
+    1,
+    2
+   ],
+   "theta2": 10,
+   "gamma2": 5,
+   "gamma3": 21,
+   "degPhi3": 8,
+   "visible": true
+  },
+  {
+   "tower": "Fpt,p=2,S4C",
+   "d0": 2,
+   "r0": [
+    1,
+    1,
+    1
+   ],
+   "r1": [
+    3,
+    1,
+    2
+   ],
+   "r2": [
+    1,
+    2,
+    1
+   ],
+   "theta2": 8,
+   "gamma2": 4,
+   "gamma3": 26,
+   "degPhi3": 12,
+   "visible": true
+  },
+  {
+   "tower": "Fpt,p=2,S4D",
+   "d0": 1,
+   "r0": [
+    1,
+    1,
+    1
+   ],
+   "r1": [
+    3,
+    2,
+    2
+   ],
+   "r2": [
+    1,
+    1,
+    2
+   ],
+   "theta2": 20,
+   "gamma2": 5,
+   "gamma3": 31,
+   "degPhi3": 12,
+   "visible": true
+  },
+  {
+   "tower": "Fpt,p=3,S4A",
+   "d0": 1,
+   "r0": [
+    1,
+    1,
+    2
+   ],
+   "r1": [
+    2,
+    1,
+    2
+   ],
+   "r2": [
+    1,
+    1,
+    1
+   ],
+   "theta2": 10,
+   "gamma2": 5,
+   "gamma3": 21,
+   "degPhi3": 8,
+   "visible": false
+  },
+  {
+   "tower": "Fpt,p=3,S4B",
+   "d0": 1,
+   "r0": [
+    1,
+    2,
+    1
+   ],
+   "r1": [
+    2,
+    1,
+    2
+   ],
+   "r2": [
+    1,
+    1,
+    2
+   ],
+   "theta2": 10,
+   "gamma2": 5,
+   "gamma3": 21,
+   "degPhi3": 8,
+   "visible": true
+  },
+  {
+   "tower": "Fpt,p=3,S4C",
+   "d0": 2,
+   "r0": [
+    1,
+    1,
+    1
+   ],
+   "r1": [
+    3,
+    1,
+    2
+   ],
+   "r2": [
+    1,
+    2,
+    1
+   ],
+   "theta2": 8,
+   "gamma2": 4,
+   "gamma3": 26,
+   "degPhi3": 12,
+   "visible": true
+  },
+  {
+   "tower": "Fpt,p=3,S4D",
+   "d0": 1,
+   "r0": [
+    1,
+    1,
+    1
+   ],
+   "r1": [
+    3,
+    2,
+    2
+   ],
+   "r2": [
+    1,
+    1,
+    2
+   ],
+   "theta2": 20,
+   "gamma2": 5,
+   "gamma3": 31,
+   "degPhi3": 12,
+   "visible": true
+  }
+ ]
+}

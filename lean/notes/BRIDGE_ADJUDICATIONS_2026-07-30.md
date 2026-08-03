@@ -6107,3 +6107,34 @@ PRINT-UNCONDITIONAL on {all order-2} ∪ {order-3 all-e_j=1}), the FGMN
 REVISION-4-through-7 perimeter hardening displays, the re-stated Asvin batch. Reports:
 VC33_report.md, VC33b_report.md, VC33c_report.md. VC34 next; citation rides r33.
 Remaining decider: FGMN passes 9+10 (p9 = Fable with execution, launching now).
+
+## TR3-S4 ATTEMPT (wave-15 lead): the order-3 e₁ ≥ 2 compose note + falsifier ALL GREEN — awaiting hostile passes
+
+`lean/notes/openmath/TR3S4_2026-08-08.md` composed per the TWIST-3 charter
+(exact law 0/1,656 → compose): **Theorem TR3-S4 (attempt grade)** — on order-3
+e₀ = 1, e₁ ≥ 2, e₂ = 1 states, under {σ₀, σ₁, σ₂} + (H-ℓ),
+σ₂(R^F₃(f)) = z̄₂^{θ₂s₀(f)}·R_λ₃(f)(z̄₂^{θ₂}y), θ₂ = ℓ₁g₁γ₂ — the measured
+(TWIST-3) as an identity; with accepted TR3-S3 (θ₂ = 0 stratum), TR-3′-GEN
+now has the display on {all order-2} ∪ {order-3, e₀ = 1, e₂ = 1, ALL e₁}
+(attempt grade on the new stratum). Route as recorded: KER-13 + live ǫ₂;
+**Lemma HV3-E2** — the charter's attempted derivation WENT THROUGH: v₃ = w₂
+DERIVED at e₀ = 1, e₁ ≥ 2 from the same sha256-pinned HigherNewton.tex
+generic displays at |λ₂| = h₁/e₁ (no bespoke (H-v3-e2) hypothesis remains;
+the new instantiation is the note's own top hostile-pass obligation — HV3-THM's
+acceptance does NOT transfer); A-GEN-3 (accepted TR3-S1 on the digit, stride
+e₁); Z2-e2; the two-line EXP-3 Bézout kernel; KEY0-LIFT/ORD-INV-LIFT display
+lemmas with BOTH divergence-criterion forms (the probe's P4′-secondary lesson
+sealed as predictions). Falsifier `tr3s4_check.py`: two-commit protocol
+honored — seal **7fa8825** pre-run, first run **exit 0 ALL GREEN, 13,679
+samples, 0 violations** (E2A 0/900 the law; RI 0/9,267; RII/RIII/RIV 0/536
+each; Z2 0/384; HV two-way v₃ 0/160 — the geometric-Fraction leg decorrelated
+from gmn3's ordinate; K 0/64; O 0/400; CERT+PARI 0/16; meters: epsnz 340
+revival-live, identkill 130/130 == vis, naive-pairing 27 reported), fresh
+off-roster 4×4 roster (12/16 visible per the disclosed design table, exact),
+rerun JSON-identical, zero amendments. Fences held hard: e₀ ≥ 2 stacked /
+e₂ ≥ 2 carry / orders ≥ 4 / D-ITER untouched, probe-first, no candidate
+sealed. **Acceptance bar: 2-clean model-diverse + the F2c VERIFIER-OWNED
+from-note implementation on off-roster instances (note S8.4, displayed as the
+gate — the prover-side harness does not satisfy it).** Counter 0/2; hostile
+passes next. Commits: seal 7fa8825 + run commit of even date (note S8.3 +
+outputs + this entry).

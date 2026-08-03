@@ -1,0 +1,36 @@
+[   0.4s] ring (Zp,p=2) done: viol=0 G=0 S3P=0
+[   0.9s] ring (Zp,p=3) done: viol=0 G=0 S3P=0
+[   2.6s] ring (Fpt,p=2) done: viol=0 G=0 S3P=0
+[   4.3s] ring (Fpt,p=3) done: viol=0 G=0 S3P=0
+
+==============================================================================
+TR3-S4 FALSIFIER — PREDICTED vs OBSERVED (violations; samples in parens)
+==============================================================================
+E2A  per-abscissa TWISTED identity + support        pred 0  obs     0 (   900)  GREEN
+E2B  two-form as lists (twisted tie) + j0 law       pred 0  obs     0 (   400)  GREEN
+RI   kernels: lvl-1/3 dead, (SLOT-2') integral      pred 0  obs     0 (  9267)  GREEN
+RII  A-GEN-3: inner TR3-S1 + m0 law                 pred 0  obs     0 (   536)  GREEN
+RIII EXP-3 integer identity + t2 + field form       pred 0  obs     0 (   536)  GREEN
+RIV  recomposition from level-2 GMN data            pred 0  obs     0 (   536)  GREEN
+Z2   off-line vanishing + own-weight cross-val      pred 0  obs     0 (   384)  GREEN
+HV   two-way v3 (geo Fractions vs w2) + ordinates   pred 0  obs     0 (   160)  GREEN
+XV   fresh vs probe FGMN pipeline                   pred 0  obs     0 (   400)  GREEN
+W    prescribed two-sided values (noise/holes)      pred 0  obs     0 (    80)  GREEN
+K    key rows: V4 + P4' + both divergence forms     pred 0  obs     0 (    64)  GREEN
+O    matched-label ord transport (kG vs psi2)       pred 0  obs     0 (   400)  GREEN
+CERT external/integrity legs (G + S3P + local)     pred 0  obs     0 (    16)  GREEN
+METER m0pos: on-line slots with m0 > 0: 87  MATCH
+METER t2nz: on-line slots with t2 != 0: 481  MATCH
+METER epsnz: slots with eps2 != 1 (revival live): 340  MATCH
+METER vis: twist-visible slots: 130  MATCH
+METER identkill == vis (naive IDENT-3 refuted): 130  MATCH
+METER j0pos: samples with j0 > 0: 72  MATCH
+METER noff: off-line nonzero-digit slots computed: 269  MATCH
+METER noisy: W draws noise-dressed: 48  MATCH
+METER holes: W draws with holes: 34  MATCH
+METER wfail: W construction failures == 0: 0  MATCH
+METER ord histogram: 0:366 1:19 2:15 (pred: some ord >= 1)  MATCH
+METER naive shared-psi2 ord mismatches (REPORT ONLY): 27
+DESIGN check: twist-visible towers 12/16 (disclosed table: 12/16)  MATCH
+TOTAL samples: 13679   elapsed 4.3s
+VERDICT (preregistered rows): ALL GREEN
