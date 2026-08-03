@@ -6320,3 +6320,15 @@ every delta reasoned at §39; roster NINE re-derived. PROJECT_STATE r34 checkpoi
 dated tags at the r33 checkpoint's stale displays. Doc-only unit (ROOT + PROJECT_STATE
 + the one probe-note bracket + this ledger); no Lean file touched. NEXT: VC35 (fresh
 context, charge at ROOT §39) → the synthesis-7 tail → SYNTHESIS PASS 8.
+
+## VC35 — 0 critical, 2 gaps; r34-ERRATUM applied; VC35b owed
+
+VC35 on REVISION 33: 0 critical; every fold passed (the three-component union with no
+conditionality leak between components; member (a) undischarged, (H1) stays [M]; the
+hygiene bracket additive; the census; roster NINE). Gap 1 = the §39 closing summary
+abbreviated the third component's conditions → r34-ERRATUM spells out (H-ℓ) +
+(KP_i)+[T]-at-S6.2 + PIN-GEN-i at the closing site. Gap 2 = AUDIT-INPUT: the appendix's
+TWIST3-bracket slice was EMPTY (the grep pattern used "REVISION-1" where the bracket
+says "SUPERSEDED 2026-08-03 ... r34 fold" — checklist rule 5 violated again; the N-T4
+block was read in its place). VC35b (narrow: the corrected closing passage + the ACTUAL
+bracket slice at TWIST3_PROBE:83) decides. Report: VC35_report.md (this commit).

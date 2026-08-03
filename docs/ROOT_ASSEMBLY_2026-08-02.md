@@ -8173,8 +8173,11 @@ CLOSED AND CERTIFIED END-TO-END inside the anchor); the TR3-S4
 ACCEPTANCE folded: the 4-pass/2-revision arc closed at cd611af — with
 accepted TR3-S1/S2/S3, **TR-3′-GEN is PROVED on the THREE-component
 union {all order-2} ∪ {order-3 all-e_j = 1, PRINT-UNCONDITIONAL} ∪
-{order-3 e₀ = 1, e₁ ≥ 2, e₂ = 1, conditional on the displayed standing
-rows, with Lemma HV3-E2 derived from the pinned print}** — the strata
+{order-3 e₀ = 1, e₁ ≥ 2, e₂ = 1, conditional on (H-ℓ) + (KP_i)+[T] at
+S6.2 + the PIN-GEN-i attribution display [r34-ERRATUM, VC35 gap 1: the
+three conditions spelled out at this closing site too — the prior
+"displayed standing rows" abbreviation met the charge nowhere else],
+with Lemma HV3-E2 derived from the pinned print}** — the strata
 family at FOUR accepted members, the F2c verifier-owned implementation
 discharged IN-PIPELINE for the first time (1,108 checks with
 mutation-control teeth), deeper strata OPEN probe-first with NO
