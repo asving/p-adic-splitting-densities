@@ -1145,6 +1145,26 @@ claim in the note is either verified against its consumption sites or
 carries a dated correction bracket — zero unverified dependency claims
 remain.]**
 
+**[ERRATUM + REGRESS-PROOFING (errata round 5, 2026-08-03,
+orchestrator-direct; PE5-F1): the exhaustiveness sentences just above were
+falsified by exactly ONE in-scope, unenumerated claim-site — the S0.3
+convention gloss "S₀ = D₁h₀ + S₁ℓ₀′ — computed by the recursion but
+consumed by nothing" (a "consumed" -pattern site the r4 grep missed). Its
+CONTENT is TRUE (PE5 verified independently: S₀ appears nowhere else in
+the note; every consumer instantiates j ≥ 1) — a content-true census leak,
+zero grade or mathematical impact. The table gains ROW 23: | 23 | S0.3
+convention gloss | "S₀ … consumed by nothing" | verified: no other S₀
+occurrence; all consumers at j ≥ 1 (PE5 §sweep + this round) | V |. The
+census corrects 22 → 23. REGRESS-PROOFING — the exhaustiveness claim is
+hereby RESTATED in closed, dated form so it cannot leak forward: "the 23
+sites enumerated by the stated grep patterns over the note text AS OF
+commit 0672082, each verified or corrected as tabulated." Claims about
+texts, not about all possible claims; brackets added after that commit
+(including this one) make no dependency assertions beyond their own
+quoted content. PE5's full independent sweep POSITIVELY CONFIRMED the r4
+substantive result: zero FALSE dependency claims exist anywhere in the
+note.]**
+
 Base citations, once more per rule 8: [IL] = ACCEPTED 2026-08-03 ("Scope as
 accepted: the harness tower class (superset of DITER_RESTATE §S2's E₂ > 1
 pin; on-the-nose coincidence restricted to E₂ > 1); residuals:

@@ -8410,3 +8410,23 @@ layer clean in every pass; the residue has now moved from the S7
 failure-display branches into the audit bracket's own census sentence.
 Owed: errata round 5 (the one-row cure), then a fresh dual round 6
 (PC5 + PE6) on the r5 text.
+
+## ITERLAWN errata round 5 APPLIED — 2026-08-03 (orchestrator-direct; PE5 adjudicated)
+
+PC4 CLEAN (b71f170, incl. adversarial re-derivation of the sweep's VERIFIED
+rows) + PE5 NOT-CLEAN 0C/1G (e4a8e8a) on 0672082 — bar not met. PE5-F1: the r4
+sweep bracket's exhaustiveness sentence missed ONE in-scope site (the S0.3
+"S₀ ... consumed by nothing" gloss), whose content PE5 verified TRUE — a
+content-true census leak in the bracket written to close the genre; PE5's own
+full independent sweep POSITIVELY CONFIRMED zero false dependency claims exist
+anywhere in the note. Cure applied: sweep row 23 + census 22 → 23 + the
+REGRESS-PROOFING restatement (the exhaustiveness claim now a closed, dated
+census of the pinned 0672082 text — claims about a text, not about all
+possible claims; post-commit brackets assert nothing beyond their quoted
+content — so the meta-claim cannot leak forward by construction). Also of
+record from PE5: errata-r4 fidelity verified at char-level (insert-only), the
+row-4 correction re-derived right on both legs incl. the e_j = 1 corner, all
+12 VERIFIED sweep rows re-derived un-falsified, both re-runs BYTE-IDENTICAL.
+Trajectory: 2C/3G → 0C/2G → 0C/1G → 0C/1G → 0C/1G → 0C/1G(content-true);
+zero mathematical findings since composition. ROUND 6 (PC5 + PE6, both on
+this text) = the acceptance attempt.
