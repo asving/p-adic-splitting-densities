@@ -7656,3 +7656,17 @@ passes agree): re-scope COR-3 CX/CW to the proved perimeter, restrict/repair
 DEV-1's stated range, fix the rung labels; the S2 "wait —" artifact rides
 along. Unit files: the reimpl runner + output + results.json + the PE report
 + this append ONLY (scoped `git commit --only`).
+
+## VC37 NOT-CONFIRMED (0C/4G) + the four r37b errata — 2026-08-03
+
+VC37 (end-to-end on REVISION 36 @3980471; frozen-history-trim charge, census
+92/92 pre-verified by the builder and reproduced by the auditor): zero critical;
+four gaps, all the SAME defect class — bare order-2 acceptance citations
+(§0 standing, the (ITER-LAW-n) rung line, the U5 and U4 fold summaries) missing
+the scope-as-accepted package + three residuals. Third recurrence (VC36b 2G).
+Remedies: four dated r37b ERRATUM brackets, orchestrator-direct, flawed text
+preserved (report VC37_report.md). Standing rule hardened (checklist rule 8):
+EVERY mention of an accepted result carries the PASTED package — fold and
+compose units are audited on every mention, not just the primary display.
+VC37b = micro confirming pass on the four brackets; the anchor citation stays
+at REVISION 35 + r36b until the VC37 arc closes.

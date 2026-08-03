@@ -1501,7 +1501,14 @@ uniform recursion + gauge form c_{n+1} = z̄^δ·∂F_n + invariant class
 GAUGE-NORMALIZATION strategy reading is the campaign's all-orders
 proof STRATEGY OF RECORD** (per the directive — a strategy, not a
 result; quoted at §42.(ii)); the ACCEPTED order-2 ITER-LAW remains
-the ONLY proved rung. (3) **THE WAVE-18 REMAINDER** (§42.(iii)): the
+the ONLY proved rung **[r37b ERRATUM (VC37 gap 1, 2026-08-03,
+orchestrator-direct): with the full package of record — accepted on
+the harness tower class (standard-lift; strict superset of
+DITER_RESTATE §S2's pinned E₂ = e₀e₁ > 1 setting; on-the-nose
+coincidence restricted to E₂ > 1), with all three residuals:
+(ITER-LAW-LIFT) open exactly at g₀ = 1 ∧ δ₁ = 1; the gr(w₂) semantics
+wrapper rides the accepted GRB retarget consumer-side; orders ≥ 3
+untouched]**. (3) **THE WAVE-18 REMAINDER** (§42.(iii)): the
 (ITER-LAW-LIFT) corner probe ALL GREEN (104,404/0 first run; the
 residual stays OPEN — one displayed open lemma **(TAIL-STAB)**,
 priced S/M) + **LIFT-DEV-3** (measured lift-deviation law at level 3,
@@ -9660,7 +9667,14 @@ S_j(ℓ_{j−1}′ − ℓ_{j−1}w_{j−1}Φ_{j−1}); c_{n+1} = z̄^δ·z_n^{D
 z₁^{D_1} = z̄^δ·∂F_n) and the invariant class (INV-n) are the
 NEXT-CYCLE CANDIDATES, NOT asserted — confirmed instances are exactly
 n = 1 (the ACCEPTED order-2 theorem — the ONLY proved rung) and n = 2
-(this hunt). The naive per-level template is EXPLICITLY NOT a
+(this hunt) **[r37b ERRATUM (VC37 gap 2, 2026-08-03,
+orchestrator-direct): the n = 1 acceptance citation carries the full
+package of record — accepted on the harness tower class (standard-lift;
+strict superset of DITER_RESTATE §S2's pinned E₂ = e₀e₁ > 1 setting;
+on-the-nose coincidence restricted to E₂ > 1), with all three
+residuals: (ITER-LAW-LIFT) open exactly at g₀ = 1 ∧ δ₁ = 1; the
+gr(w₂) semantics wrapper rides the accepted GRB retarget
+consumer-side; orders ≥ 3 untouched]**. The naive per-level template is EXPLICITLY NOT a
 candidate (refuted beyond appeal; the S2-at-p=3 trap on record:
 instance agreement ≠ law agreement). ROSTER LESSON institutionalized:
 mutation controls on letter exponents need letter ≠ 1 rows BY DESIGN,
@@ -9713,7 +9727,15 @@ non-decreasing / Φ₀-power strictly descending double induction),
 priced S/M. **The residual (ITER-LAW-LIFT) remains OPEN** — measured
 at level 3 as **LIFT-DEV-3** (conjecture; confirmed off-roster by M1
 on a fresh g₁ = 1 tower). Acceptance citation consumed by that unit
-PASTED in its ledger entry per the discipline.
+PASTED in its ledger entry per the discipline. **[r37b ERRATUM (VC37
+gap 3, 2026-08-03, orchestrator-direct): the "ACCEPTED ITER-LAW
+display" citation above carries the full package of record — accepted
+on the harness tower class (standard-lift; strict superset of
+DITER_RESTATE §S2's pinned E₂ = e₀e₁ > 1 setting; on-the-nose
+coincidence restricted to E₂ > 1), with all three residuals:
+(ITER-LAW-LIFT) open exactly at g₀ = 1 ∧ δ₁ = 1 (exactly the residual
+this probe measures); the gr(w₂) semantics wrapper rides the accepted
+GRB retarget consumer-side; orders ≥ 3 untouched]**
 
 **U4 — the gr(w₂) tie design note (DESIGN ONLY; nothing asserted,
 nothing proved, no .lean touched).** `GRW2_TIE_DESIGN_2026-08-08.md`
@@ -9722,6 +9744,13 @@ application-independent, rides the compiled P1 carrier layer):
 canonical carrier D(T) with constants DERIVED from eq12 data + the
 W-representative-transported total value cocycle — IterLaw/
 InnerIntegral become THEOREMS from the accepted order-2 ITER-LAW
+**[r37b ERRATUM (VC37 gap 4, 2026-08-03, orchestrator-direct): that
+input citation carries the full package of record — accepted on the
+harness tower class (standard-lift; strict superset of DITER_RESTATE
+§S2's pinned E₂ = e₀e₁ > 1 setting; on-the-nose coincidence restricted
+to E₂ > 1), with all three residuals: (ITER-LAW-LIFT) open exactly at
+g₀ = 1 ∧ δ₁ = 1; the gr(w₂) semantics wrapper rides the accepted GRB
+retarget consumer-side (= GRT-2's own subject); orders ≥ 3 untouched]**
 through named sub-obligations (option (i) of record; the closed-form
 option (ii) REJECTED as vacuity-prone); **GRT-2 = grTie proper**
 (semantic leg, L, OPEN: the localize–gauge–quotient chain TC-1/2/3 +
