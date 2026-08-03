@@ -262,7 +262,8 @@ Lean edit; the eight declarations of record stand unedited.  Counter stays 0/2
   `juncforge_deep_wall` is stated with its (2 : F) = 0 hypothesis and Φ₂A
   landing; `juncforge_junc_bundle_false` with the additional interior Φ₂A pin.
   The instance-false headline of record reads: **the compiled CHAR-2,
-  Φ₂-LANDING bundle at row A is instance-false**.
+  Φ₂-LANDING, INTERIOR-Φ₂A-PINNED bundle at row A is instance-false** \[REV4:
+  the pin added here too — this §R4 quotation is a verdict-tier site\].
 
 * **(G1 — "byte-identity kernel-certified" inaccurate.)**  Finding quoted:
   "Lean's kernel does not compare that copied source text with the binder's
