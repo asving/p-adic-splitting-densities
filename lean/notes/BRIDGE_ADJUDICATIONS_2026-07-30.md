@@ -6942,6 +6942,119 @@ wrapper rides the accepted GRB retarget; orders ≥ 3 untouched." Doc-only unit:
 the note + the archived plan review + this append; sealed/accepted records
 byte-frozen; no Lean statement touched.
 
+## DECISIONS 2–4 EXECUTED (the b70a452 delegation) — recovery unit, 2026-08-03
+
+RECOVERY PROVENANCE: the first decisions-batch unit died in its READ phase in
+the second 529 storm; the orphan sweep d0e2b74 was audited before execution —
+ZERO decisions-batch files among the orphans (all seven are other units':
+ITER-LAW-r run outputs + DefsPrime/H7ForgeDepth2/DIterCarrier/hull scratch), so
+nothing to repair, clean idempotent start. Item 1 (FGMN P0) is a SEPARATE
+chartered unit and is NOT executed here. Per the delegation's own protocol,
+each on-file memo was RE-READ and checked against the b70a452 one-line reading
+before execution; all three MATCH (compressions noted per item), so all three
+EXECUTE.
+
+**ITEM 2 — TowerMoveClosureL two-layer re-ratification: CONFIRMED (the
+layering stands as ordered).**
+MEMO LOCATED: the SITE-EXH TruncatedRun extension record (this ledger,
+"2026-08-08 (wallclock 2026-08-02): SITE-EXH TruncatedRun extension LANDED"),
+its STANDING RE-RATIFICATION ITEM paragraph — VERBATIM: "STANDING
+RE-RATIFICATION ITEM (Asvin): the 49b778e sign-off jointly demanded the E-1
+core-binding signature AND an elimination \"unconditional at the engine face\"
+over the existing junk-admitting FiredLift — jointly unsatisfiable by ONE
+carrier (MoveWitness carries no parent core). Both layers are compiled and
+ordered; confirm the layering (or direct a FiredLift re-enumeration carrying
+parent cores, matching S9/S10's signatures — a statement-change event, not
+taken unilaterally)."
+READING CHECK: b70a452 reads "re-ratify the widened statement proved under the
+approved SITE-EXH extension". MATCH, with one noted compression: the memo's
+recommended branch confirms the LAYERING — BOTH ordered layers (the widened
+engine-face elimination `siteExh_elimination'`/`TowerMoveClosure'` over the
+junk-admitting `FiredLift`, AND the core-binding
+`OnTruncatedCarrierL`/`TowerMoveClosureL` layer discharged at cored parents,
+the S9/S10 calling convention) — which subsumes the reading's named widened
+layer.
+EXECUTED: the CONFIRM-THE-LAYERING branch. The two-layer as-built form is
+RE-RATIFIED as ordered; the FiredLift re-enumeration alternative is DECLINED
+(no statement-change event fires). NO .lean change (as chartered); brackets:
+PROJECT_STATE dated tag at the r23-checkpoint PENDING-ASVIN display + the
+2026-08-03 PROJECT_STATE tail update. Rationale of record (b70a452): feeds the
+capstone's exhaustiveness (hExhaust) route. UNMOVED by this decision: the
+SITE-EXH named residuals (`junc_bundle` at choice-built stages,
+`DIterJunctionSupplier`, the box face, the S-1 [T] transcription rider) and
+the B-M2-side display re-pricing (still rides the next B-M2 fold round).
+
+**ITEM 3 — the fence-(vii) lineage: RATIFIED (ratify-or-reopen closes on the
+RATIFY branch).**
+MEMO A LOCATED (route (a)): `lean/notes/openmath/GR34_DISPOSITION_2026-08-08.md`
+§4 — VERBATIM: "**Recommendation: route (a).** The ONE decisive fact: the
+three frozen statements have ZERO consumers and are believed FALSE at the
+abstract carrier — so route (b) preserves nothing anyone uses and nothing that
+is true, at the price of 3 permanent census entries and an L-class forge as
+the only path to closure; route (a) replaces refuted dead generality with the
+scope every live consumer already operates at, for 4 signature diffs and three
+one-line proofs."
+MEMO B LOCATED (the rider): the ROOT r25 fold record (this ledger) — VERBATIM:
+"the RECSL suppliers consume the route-(a) `hσt` pin, so a route-(a) reversal
+re-opens the REC-SL supplier chain."
+MEMO C LOCATED (F-ADM-3): `lean/notes/openmath/FADM3_REKEY_2026-08-08.md`
+(executed under the standing definition-change authority; carried in every
+Asvin-batch display as "the EXECUTED F-ADM-3 re-key for ratify-or-reopen").
+READING CHECK: b70a452 reads "ratify: GR route (a) answered in-anchor + RECSL
+hσt + F-ADM-3 re-key". MATCH: route (a) IS the on-file recommendation, was
+executed at 5b7f1ee, and its §29/§30 flag lineage has been carried and
+confirmed standing inside the VC-certified ROOT acceptance-anchor text at
+every re-anchoring since (VC26 explicitly checked "the §29 ASVIN FLAG
+standing") — the honest content of the delegation's "answered in-anchor"
+gloss; the ratify branch keeps the RECSL hσt suppliers standing; F-ADM-3
+acceptance closes its ratify-or-reopen tag.
+EXECUTED: RATIFY across the lineage. The route-(a) statement change (the
+`ReadHyps` frame-pin fields hσs/hσt, 4 signature diffs, B2D census 3 → 0,
+5b7f1ee) is RATIFIED; the reversal branch is DEAD — the REC-SL supplier chain
+and the KP-STEP [RC] wiring no longer carry a conditional on this gate; the
+F-ADM-3 carrier re-key is ACCEPTED. Dated brackets: GR34_DISPOSITION §4 +
+FADM3_REKEY header. The ROOT §29/§30/§33 flag-lineage ratification brackets
+are DEFERRED to the next ROOT fold (r37): ROOT is the VC-anchored text
+(REVISION 35 + r36b errata, VC36/36b/36c-certified) and this unit does not
+touch it — its wording stands byte-unchanged.
+
+**ITEM 4 — RB-DELTA / Route B: ADOPTED AT FULL SCOPE AS DRAFTED.**
+MEMO LOCATED: `lean/notes/openmath/UBX_WALK_2026-08-08.md` §6 — VERBATIM:
+"**The question: adopt RB-DELTA at full scope on the strength of this census
+(the walk found H4M7's fallback trigger unfired), or decline/narrow — firing
+the re-scope at the clause-(R)/(K3-δ) interface only and leaving member (b) at
+Step 16 in its current stability form as OPEN (H4M7 §4's displayed fallback
+branch)?** The walk's finding supports the full scope as drafted; the fallback
+remains available at zero additional proof cost."
+READING CHECK: b70a452 reads "fold the UBX walk paragraph". MATCH: the walk
+paragraph's supported branch = full scope as drafted; folding the paragraph =
+adopting that branch.
+EXECUTED: RB-DELTA ADOPTED at full scope — per walk §1.3 this is EXACTLY the
+H4M7 §4 drafted delta: (UB-X) member (b) and its (K3-δ) fragment rewritten
+from the stability/exhaustion form to the intrinsic law (RB), the stability
+form displayed WITHDRAWN, members (a)/(c) untouched. The decline/narrow
+fallback branch is NOT taken. HONEST CONDITIONALITY: the adoption is the
+DECISION only — the delta text is executed by the ROOT owner at the next
+O-11/O-8b touch per walk §6, and the F-B condition-(5) second leg (the ROOT
+owner's acceptance pass on the walk) rides that unit, NOT discharged here.
+The walk's absence-of-need census for the dropped F_{p^δ}-linearity conjunct
+rests on written text while the clause-(UB) composition remains unwritten
+(walk §4.3) — the mandatory WITHDRAWN display is the guard: any future need
+re-enters as new displayed open content. What adoption buys (walk §6): clause
+(R)'s last (H4)-family obligation converts to PROVED-conditional at the M5
+record (residue: M5's five perimeter rows). Dated bracket: UBX_WALK §6.
+
+GATE PROVENANCE (all three items): Asvin's sign-off authority was exercised BY
+DELEGATION — ASVIN (verbatim, from the b70a452 entry above): "I will leave you
+to make the decisions for the items you listed keeping the big picture in
+mind." The decisions are Claude's, criterion = does it make the GENERAL proof
+work (all orders + all primes at once).
+Doc-only unit: this ledger append + three dated note brackets (UBX_WALK §6,
+GR34_DISPOSITION §4, FADM3_REKEY header) + the PROJECT_STATE dated tag and
+tail update. No .lean file touched; no sealed or byte-frozen record touched;
+ROOT untouched (its brackets ride r37); roster and census untouched; the
+capstone footprints unaffected.
+
 ---
 
 ## ITER-LAW-r LEVEL-3 PROBE VERDICT — 2026-08-08 (wallclock 2026-08-03; wave-18 unit 2, completed by the VERDICT-HARVEST recovery unit)

@@ -1695,7 +1695,9 @@ record; clauses (R)/(UB) each LOSE (H4a). **The §3.1 roster RECOUNTED: NINE
 (1) **SITE-EXH** (the (H1)(b)/B-M2 open): probe NEEDS-EXTENSION (355c1eb) →
 Asvin sign-off (49b778e) → E-1/E-2/E-4 LANDED (f36ab72: `siteExh_elimination'`
 UNCONDITIONAL at the engine face, two-layer as-built; **TowerMoveClosureL
-layering re-ratification PENDING ASVIN**) → E-3 glue PROVED (db47e35:
+layering re-ratification PENDING ASVIN** [RE-RATIFIED 2026-08-03 per the
+b70a452 delegation — layering CONFIRMED as ordered; see the 2026-08-03
+update at the tail]) → E-3 glue PROVED (db47e35:
 `gate_ftie_chain` fires end-to-end — the first f-tied deep landing on file);
 residuals: `junc_bundle` (D-1 wall), `DIterJunctionSupplier` (named open,
 ITER-LAW fence), the box face.
@@ -2577,3 +2579,40 @@ VC33c CONFIRMED; VC34 CONFIRMED FIRST-PASS; VC35 (0C/2G, cured) +
 VC35b CONFIRMED (= the STANDING anchor); **VC36 NOT-CONFIRMED 1C/3G,
 all four findings remedied at r36 (this checkpoint); VC36b pending on
 the r36 remedies.**
+
+## UPDATE 2026-08-03: DELEGATION DECISIONS 2–4 EXECUTED (b70a452; recovery unit after the 529 storm)
+
+Asvin (2026-08-03) delegated the four gated Asvin-batch items to Claude under
+the uniformity directive (the entire point: a proof for ALL orders and ALL
+primes at once; small cases in math, not Lean); the four decisions are
+recorded at ledger entry b70a452. This unit executed items 2–4 (item 1, the
+FGMN P0 application, is its own chartered unit); each on-file memo was re-read
+against the recorded one-line reading before execution — all three MATCHED.
+(2) **TowerMoveClosureL two-layer re-ratification — CONFIRMED.** The SITE-EXH
+extension's standing item (the "STANDING RE-RATIFICATION ITEM (Asvin)"
+paragraph of the TruncatedRun ledger record) closes on the
+confirm-the-layering branch: the widened engine-face elimination
+(`siteExh_elimination'` over the junk-admitting `FiredLift`, unconditional;
+`TowerMoveClosure'` discharged) AND the core-binding
+`OnTruncatedCarrierL`/`TowerMoveClosureL` layer (discharged at cored parents,
+the S9/S10 calling convention) stand AS ORDERED; the FiredLift re-enumeration
+alternative is DECLINED. No .lean change. Rationale of record: feeds the
+capstone's exhaustiveness (hExhaust) route. SITE-EXH residuals unmoved
+(`junc_bundle`, `DIterJunctionSupplier`, the box face, the S-1 [T] rider);
+the B-M2-side display re-pricing still rides the next B-M2 fold round.
+(3) **The fence-(vii) lineage — RATIFIED.** The executed GR ROUTE (a)
+statement change (5b7f1ee: `ReadHyps` hσs/hσt frame pins; B2D census 3 → 0)
+is RATIFIED per the on-file GR34_DISPOSITION §4 recommendation; the RECSL hσt
+rider acknowledged (the reversal branch is dead — REC-SL suppliers and the
+KP-STEP [RC] wiring stand unconditionally on this gate); the executed F-ADM-3
+carrier re-key ACCEPTED. The ROOT §29/§30/§33 flag-lineage ratification
+brackets ride the next ROOT fold (r37); ROOT text untouched by this unit.
+(4) **RB-DELTA — ADOPTED at full scope as drafted** (UBX walk §6, the on-file
+supported branch): (UB-X) member (b) + its (K3-δ) fragment rewrite to the
+intrinsic law (RB); the stability form to be displayed WITHDRAWN; members
+(a)/(c) untouched. The delta is EXECUTED BY THE ROOT OWNER at the next
+O-11/O-8b touch per the walk; the F-B condition-(5) ROOT-owner acceptance
+pass rides that unit — the adoption here is the decision only.
+Full record with verbatim memo quotes: the ledger's "DECISIONS 2–4 EXECUTED
+(the b70a452 delegation)" entry (2026-08-03). Doc-only: no Lean file touched,
+no sealed record touched, ROOT untouched, roster/census untouched.

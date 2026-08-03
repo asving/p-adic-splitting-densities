@@ -298,3 +298,14 @@ then be DECLINED for GR purposes (its only GR payoff is refuting statements rout
 deletes from the interface); re-price it solely against junc_bundle/readsOf need.
 
 — analysis unit, GR-3x2/GR-4 disposition pricing, 2026-08-08
+
+**[RATIFIED 2026-08-03 (per the b70a452 delegation: Asvin 2026-08-03
+delegated the four gated batch items; decision by Claude under the uniformity
+directive): the EXECUTED route (a) (commit 5b7f1ee — the `ReadHyps` frame-pin
+fields hσs/hσt, the fence-(vii) statement change) is RATIFIED — the ROOT
+§29/§30 flag lineage's ratify-or-reopen question closes on the RATIFY branch,
+incl. the RECSL hσt rider (the RECSL suppliers consume the route-(a) hσt pin;
+the reversal branch is dead with this ratification) and the executed F-ADM-3
+carrier re-key (FADM3_REKEY_2026-08-08.md) ACCEPTED. ROOT flag-lineage
+brackets ride the next ROOT fold. Full record: the ledger's "DECISIONS 2–4
+EXECUTED (the b70a452 delegation)" entry, 2026-08-03.]**
