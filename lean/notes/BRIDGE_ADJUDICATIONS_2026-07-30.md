@@ -8213,3 +8213,31 @@ the actual head + 9) recorded here as the corrigendum of record — the ledger
 r1 entry's own 9-item enumeration was already correct. Counter 0/2. PC2
 (Codex, the gated big charge) now launches on the re-amended text with the E4
 row-2 clause in its charge.
+
+## ITERLAWN-PE3 (Fable round 3, ea125e3 text) — 2026-08-03: NOT-CLEAN 0C/1G (+1 nit); the 2-clean bar NOT met (PC2 clean + PE3 not-clean)
+
+Report `lean/notes/openmath/ITERLAWN_passPE3_report.md`. Errata-r2 fidelity
+VERIFIED (exactly the two additive brackets; the E4 row-2 correction
+independently re-derived RIGHT — EXP-KIT (b)/(c) each cite L1 = [IL S2 L1],
+row 2 recovers exactly as row 1 by re-deriving EQ12-ADD; the (★) count
+correction re-derived RIGHT from the artifacts' own note()-semantics: 1,008
+counter rows / 3,568 pair-levels diag-side, 3,444 = the reimpl's K3_star).
+Re-runs BYTE-EXACT both legs (md5-identical, exit 0: reimpl 940 pairs / 0
+violations / mutations 7/7; diag 5,311 family-checks / 0). Full fresh
+content sweep: the generic step's mathematics survived a complete hand
+re-derivation again (integer layer, EXP-KIT, REALIZE/(I_m), L6-(n), all
+three II-legs incl. every slot-line and both collision legs, DCX outer
+bound, corollaries, T-notation 11-token spot-check, RM boxing, rule-8 under
+the convention — all clean). THE ONE GAP (PE3-F1, NOT errata-introduced,
+original composition, unexamined by all four prior passes): the S7
+failure-propagation display's [IL3]-failure branch lists REALIZE (#3) among
+the rows "NOT affected ... (they consume only [IL] and this note's generic
+proofs)" — FALSE by the note's own S4.1 operative consumption bracket ("the
+m = 1 base legs ... consume [IL3] WELL-DEF(i)/(ii)"), its own ledger row 3
+("[IL3] + S4.1"), and its own E4-bracket row-3 sentence; under the
+hypothetical, row 3 falls back to "open at the [IL3] WELL-DEF(i)/(ii) m = 1
+displays" (elementary, re-derivable). Same genre/severity/cure-shape as
+PE2-F1. Nit N1: S4.4's "the union of Cases II-* is CII_n" is ⊆, not = (only
+⊆ is consumed). Consequence: acceptance does NOT land at this round;
+counter unchanged; owed = errata round 3 (one clause + optional N1 word)
+then a fresh dual round on the amended text.
