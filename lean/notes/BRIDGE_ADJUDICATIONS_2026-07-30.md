@@ -5230,3 +5230,45 @@ COMMENT-ONLY (two docstring hunks).
 touched; ITER-LAW stays the open lemma (falsifier record extended 0/840 on a
 new class family); numerics are falsifiers, never proofs. Files: the harness
 + output + JSON, the S1 note, the DefsCore docstring sync, this entry.
+
+---
+
+## 2026-08-08 — BASEPOLYGONLENGTHLAW PROVED (synthesis-6 queue #3, pass-6 F2)
+
+**VERDICT: PROVED, sorry-free, Lean-core; consumer FIRED.**
+`Scaffold/DictIII/BasePolyLength.lean` (new decls only) supplies the named
+open row `BasePolygonLengthLaw p` of `CU2tKp0.lean` for EVERY prime
+(`basePolygonLengthLaw_proved`), statement verbatim — the OM base length law
+ℓ(N⁻(f)) = ord_X(f̄) + nondegeneracy on the monic / f(0) ≠ 0 / p ∣ f(0)
+perimeter.  The F2-priced "genuinely new machinery" landed as the reusable
+abstract core `BPLL.npSides_neg_length_sum` (bare support `Finset`):
+height sign law (NEW valid-line constructions: flattest chord into `(j₀,0)`,
+steepest chord out of `(0,v₀)`), the `dropCollinear` merge invariant
+`dropCollinear_between` ("survivor pairs are collinear with everything they
+swallowed" — the straddle killer) + keeps-last, and the negative-prefix
+`telescope_sum`.  The recorded OL5-adjacent convexity gap did NOT bite:
+chord-attainment on sides was never needed (convexity enters only via
+`slope_mono_adjacent` at on-hull points).  Per-side arithmetic:
+`e ∣ length` via `Rat.den_dvd`, so `Σ e·ℓ` telescopes to `j₀ =
+natTrailingDegree f̄`.
+
+**Test-before-proving:** 20 000-hull numeric falsifier (0 fails) + the
+collinearity-transitivity ℤ-identity verified at 100 000 points BEFORE
+proving; compiled gates `gate_hensel` (checks the law against the
+independently landed `principalData_hensel_a0_one`) and
+`gate_eisenstein_sum` (X² + 2 over ℤ₂: the ramified e = 2 stratum, j₀ = 2
+pinned by the exact-multiplicity clauses).  Perimeter necessity stays
+countermodel-forced by the pre-existing Kp0GateA/Kp0GateB.
+
+**CONSUMER FIRED:** `terminalPolySem_kp0_unconditional` —
+`terminalPolySem_kp0_of_law` + the law at p = 2 gives `TerminalPolySem fkp0
+Hkp0 Dkp0` from the seam perimeter alone: the (H6) (T-READ) k′ = 0 face's
+numerical input is now theorem-backed (first unconditional TerminalPolySem
+supplier at a 𝐇°-keyed k′ = 0 seam).
+
+**Build/footprints:** module green (`lake build` 8740 jobs OK);
+`#print axioms` on the law, the abstract core, both gates, the consumer, and
+all five NEW hull kernels = `[propext, Classical.choice, Quot.sound]`.
+**Perimeter:** additive only — no existing statement touched; the −∞ corner
+stays the separately-priced open leg; Kp0GateC (CU2t keying refuted) stands.
+Record: `lean/notes/openmath/BPLL_2026-08-08.md`.
