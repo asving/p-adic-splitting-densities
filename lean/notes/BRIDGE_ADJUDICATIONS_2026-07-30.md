@@ -8486,3 +8486,31 @@ byte-stable round); zero mathematical findings since composition. ROUND 7
 in the round-7 charges is BOUND to the machine artifact (is it faithfully
 incorporated?) — not to fresh eye-enumeration, which the machine fact
 supersedes.
+
+## ITERLAWN-PE7 VERDICT — 2026-08-03 (Fable round-7 pass on 61dc2e0): CLEAN 0C/0G (+2 nits) — the machine census independently re-run, EXACT
+
+Round-7 Fable leg (report `lean/notes/openmath/ITERLAWN_passPE7_report.md`).
+THE MACHINE RE-RUN (the charge's designated duty): an independent
+reimplementation of the 8-pattern scan (own code,
+`verification/openmath/iterlawn_pe7_census.py`) over the pinned 0672082
+text reproduces PE6's census EXACTLY on every axis — 194 raw hits vs 194,
+147 lines vs 147, per-pattern counts identical, ZERO symmetric difference
+vs the Appendix A line map, class sums 88/21/53/8/18/6 recomputed
+identically, rows 13/18 sites confirmed pattern-free. The mismatch the
+charge defines as the finding does not exist. Errata-r6 fidelity VERIFIED
+(diff additive 42+0; both reconstructions byte-exact; all bracket numbers
+checked against the re-run, not just the text; supersession +
+four-confirmation claims accurate). Executions: diag byte-identical
+(md5 7c72c4c6...); reimpl 940/0 + 7/7, one benign wall-clock digit. Fresh
+content sweep: thirteen independent spot re-derivations (integer layer,
+REALIZE descent, L6 telescope, all three II-legs incl. the PC-G4 2h_{n-1}
+line, DCX outer bound, S5 assembly, rho) — ZERO mathematical findings,
+the seventh consecutive pass with none. Nits (no cure owed): N1 the r6
+ledger clause "both executables byte-identical" misreads PE6 §4's reimpl
+leg (two wall-clock digits there; authoritative record correct and
+incorporated); N2 the bracket's "each re-derived" compresses PE6's mixed
+adjudication basis (F1/F2 in-pass, F3–F7 standing record). ROUND-7 STATE:
+PC6 CLEAN 0C/0G (3a281e7, content pass; executions sandbox-blocked there,
+supplied by this leg) + PE7 CLEAN — **both round-7 legs CLEAN: the 2-clean
+model-diverse bar for the general-n note is MET on the 61dc2e0 text**; the
+acceptance fold is the orchestrator's.
