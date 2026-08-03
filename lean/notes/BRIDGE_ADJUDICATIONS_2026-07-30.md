@@ -8197,3 +8197,19 @@ record's own nine-item enumeration. Rows 1/4/5/6/8/10 of the E4 branch
 verified RIGHT; everything else swept clean. Counter stays 0/2; errata
 round 2 = one clause + one number; PC2 (Codex) next, charge to include an
 independent re-check of the E4 row-2 clause.
+
+## ITERLAWN errata round 2 APPLIED — 2026-08-03 (orchestrator-direct; PE2 adjudicated)
+
+PE2 (5cd9b18): NOT-CLEAN 0C/1G (+2 nits) — everything round 1 set out to cure
+VERIFIED CURED (the E1 token table 59/59 raw-sum with zero composed leaks and
+zero MISSED; E2/E3 re-derived right; E6 byte-faithful; both re-runs
+md5-identical). The one gap was ERRATA-INTRODUCED: the round-1 E4 bracket's
+row-2 clause wrongly exempted EXP-KIT from the [IL]†-failure hypothetical (its
+(b)/(c) legs cite [IL S2 L1]); cured by a one-clause round-2 erratum (row 2
+falls to "open at L1" with row 1; row 3 stands). PE2-N1 count mislabel cured
+(the diag's (★) coverage is 1,008 rows/3,568 pair-levels; 3,444 is the
+reimpl's count); PE2-N2 (the round-1 commit message's "10 site brackets" vs
+the actual head + 9) recorded here as the corrigendum of record — the ledger
+r1 entry's own 9-item enumeration was already correct. Counter 0/2. PC2
+(Codex, the gated big charge) now launches on the re-amended text with the E4
+row-2 clause in its charge.

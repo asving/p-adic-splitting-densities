@@ -384,7 +384,12 @@ chain is active it stays active). ∎
 bound e_jS_j ≥ γ_{j+1} is never TIGHT on any probed data (equality attained
 0 times in 3,444 diag + 3,444 PE-reimpl checks; equality would force
 e_j = 1 with carry 1, which the e = 1 grid kills) — correct as displayed
-(≥ holds); a sharper display is available if ever needed.]**
+(≥ holds); a sharper display is available if ever needed.]** **[Count
+correction (errata r2, 2026-08-03; PE2-N1): the diag-side figure above is
+mislabeled — the diag's (★) coverage is 1,008 counter rows / 3,568
+pair-levels (3,444 is the PE-reimpl's own check count, correct as stated
+for that leg); the never-tight observation and the mechanism derivation
+stand unchanged on both legs.]**
 
 **Lemma WINDOW-(n).** γ, γ′ ∈ W_{n+1} ⟹ γ+γ′ ∈ W_{n+1}.
 *Proof.* e₀u(β₁″) = β₁″ − s₁″h₀ = e₀(u₁+u₁′) + (s₁-defect)h₀ + S₁ (by SHIFT
@@ -1148,7 +1153,14 @@ the whole value layer, not merely "open at the rung-2 link"). Row 1 (the
 integer layer) falls back to "open at L1": its sole [IL] consumption is
 EQ12-ADD ([IL S2 L1], a two-line elementary lemma, independently
 re-derivable). Row 2 (EXP-KIT) keeps its self-contained S3 proof (only the
-rung-1 instance citation rides [IL]). Row 3 (REALIZE/WELL-DEF/READ-ADD)
+rung-1 instance citation rides [IL]). **[ERRATUM (errata round 2,
+2026-08-03, orchestrator-direct; PE2-F1, errata-introduced in the round-1
+E4 bracket): the row-2 clause just above is FALSE — EXP-KIT's (b)/(c) S3
+proofs each cite L1 = [IL S2 L1] (this note's own S3 says "self-contained
+modulo the ACCEPTED [IL]† alone"), so under the branch's hypothetical
+row 2 falls to "open at L1" exactly like row 1 (both recover by
+independently re-deriving the two-line elementary EQ12-ADD lemma). Row 3's
+status stands as written.]** Row 3 (REALIZE/WELL-DEF/READ-ADD)
 rides only the S0.2 elementary base facts and [IL3]†'s m = 1 displays. No
 such failure signal exists — [IL] is ACCEPTED at the 2-clean model-diverse
 bar; the branch is displayed for the structural completeness of this
