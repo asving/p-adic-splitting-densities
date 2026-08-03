@@ -1165,6 +1165,29 @@ quoted content. PE5's full independent sweep POSITIVELY CONFIRMED the r4
 substantive result: zero FALSE dependency claims exist anywhere in the
 note.]**
 
+**[THE MACHINE CENSUS OF RECORD (errata round 6, 2026-08-03,
+orchestrator-direct; PC5-g1 = PE6-G1, dual-confirmed from decorrelated
+contexts): the r5 closed sentence above mis-censused the pinned text in
+both directions — the hand enumeration missed ≈15 content-true in-scope
+sites (seven adjudicated site-families, incl. PC5's two: the II-3 "WEIGHT
+clauses only" engine sites and the S1/S8 "instance evidence only, never
+proof steps" family) and included two judgment-added rows (13/18) that
+match no pattern. The hand census is hereby SUPERSEDED as the enumeration
+of record by the MACHINE CENSUS (PE6 report `ITERLAWN_passPE6_report.md`
+§3 + Appendix A, commit 08a52e9, incorporated by reference per the
+9f9910c convention): 8 widened patterns run programmatically over the
+pinned 0672082 text — 194 raw hits on 147 lines, 194/194 mapped, ZERO
+unadjudicated (88 at table-row sites/duplicates/cure-brackets; 21 at the
+seven site-families F1–F7, ALL content-true, each re-derived; 53
+verification-apparatus; 8 quoted external record; 18 non-genre; 6
+positive displays). Rows 13/18 remain in the table as judgment-added
+(their content verified in r4/PE5), disclosed as beyond the patterns.
+SUBSTANTIVE RESULT, now confirmed FOUR times independently (r4's sweep,
+PE5's sweep, PC5's re-derivations, PE6's machine pass — the last by
+program, not by eye): zero FALSE dependency claims exist anywhere in this
+note. Enumeration completeness for the pinned text is now a MACHINE fact
+(194/194 mapped), not a reader claim.]**
+
 Base citations, once more per rule 8: [IL] = ACCEPTED 2026-08-03 ("Scope as
 accepted: the harness tower class (superset of DITER_RESTATE §S2's E₂ > 1
 pin; on-the-nose coincidence restricted to E₂ > 1); residuals:

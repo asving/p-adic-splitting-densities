@@ -8467,3 +8467,22 @@ restatement cites the census, not a hand count. Trajectory: 2C/3G → 0C/2G
 → 0C/1G ×5 — zero mathematical findings since composition; three straight
 rounds of census-meta-sentence residue; hand-census is the demonstrated
 failure mode, now retired.
+
+## ITERLAWN errata round 6 APPLIED — 2026-08-03 (orchestrator-direct; the MACHINE CENSUS installed)
+
+Round 6 verdicts: PC5 GAPS-ONLY 0C/1G (c2992a0) + PE6 NOT-CLEAN 0C/1G+2n
+(08a52e9) — the SAME gap, dual-confirmed from decorrelated contexts: the r5
+hand census mis-enumerated the pinned text (≈15 content-true sites missed
+across seven families; 2 judgment-added rows beyond the patterns). PE6
+delivered the cure: the MACHINE CENSUS — 8 widened patterns, programmatic,
+194 hits / 194 mapped / zero unadjudicated. Erratum applied: the machine
+census (PE6 §3 + Appendix A, 08a52e9) is the enumeration of record,
+incorporated by reference; the substantive result — ZERO false dependency
+claims anywhere in the note — now stands on FOUR independent confirmations,
+the last by program. Also of record: errata-r5 fidelity verified byte-exact;
+row 23 true on 3 legs; both executables byte-identical (7th consecutive
+byte-stable round); zero mathematical findings since composition. ROUND 7
+(PC6 + PE7, both on this text) = the acceptance attempt; the census question
+in the round-7 charges is BOUND to the machine artifact (is it faithfully
+incorporated?) — not to fresh eye-enumeration, which the machine fact
+supersedes.
