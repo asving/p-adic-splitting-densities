@@ -5604,3 +5604,20 @@ the source-level question is OPEN pending the chartered FGMN re-derivation (prop
 Asvin-flag). Reports archived: reaudit3 + reaudit4 (this commit; rounds 1-2 archived
 earlier). Ops note: three exit-144 self-kills during rounds 4-5 -> memory
 pkill-self-match-trap saved.
+
+## 2026-08-08: ADM-REAL' ACCEPTED (passes 3+4 consecutive CLEAN, model-diverse) + TR3-S3 REVISION 2
+
+ADM-REAL' ACCEPTED at REVISION 2: pass 3 (Codex) CLEAN + pass 4 (Fable, 24a595c) CLEAN
+0C/0G consecutive — the Fable pass re-derived the whole chain, recounted the 27
+shared-counter TeX environments, re-proved CLASS-LAT's truncation with an r=3 hand
+instance, verified the seal chain e05e660->log->90e1ecb, and hand-recomputed the
+falsifier arithmetic (31,164 = 12,348+18,816). CONSEQUENCES: (CLASS-d) is a lattice
+THEOREM at every order (Lemma CLASS-LAT, unconditional — the (GR-B) conditionality
+REMOVED from the track-A chain); NON-END + LOC + W-CAP stand at full any-type scope
+(GMN Lemma 2.14 route); (B-PIN) stays the displayed boundary hypothesis of the
+consumption corollary (FULL-at-L'-slots only); F-ADM-3 (the CensusCore wphi missing-
+rescale finding, verified at CensusCore.lean:155) enters the record as EDIT-GATED design
+input for the carrier re-key. The (ADM) row's track-A attempt is DISCHARGED to these
+displayed opens. TR3-S3: pass 3 (Fable) GAPS-ONLY 0C/2G -> REVISION 2
+(orchestrator-applied: Def 3.18 added to PIN-GEN-i; row-O attribution corrected;
+the verifier's independent 93-sample external leg recorded); passes 4+5 decide.
