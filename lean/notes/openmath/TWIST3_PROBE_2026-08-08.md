@@ -79,7 +79,21 @@ RED-catcher) is identically 1 — recorded per tower in the JSON.
 **KEY0/ORD-INV one level up (the TR3S2 pattern reproduced exactly).**  The
 GMN-lawful level-3 key class is the θ₂-TWISTED ψ₂ class (P4′ primary,
 24/24): key classes diverge on exactly the 22 twist-visible towers,
-coincide on the 2 blind ones.  Ord transport is exact under MATCHED LABELS
+coincide on the 2 blind ones.
+**[SUPERSEDED 2026-08-03, the ROOT r34 fold (TR3-S4 pass-3 observation,
+`TR3S4_pass3_report.md` §6 item 1): the orientation LABEL in the
+preceding sentence — and its echo at the S3 charter's KEY0-lift
+display-lemma line — is the pre-correction reading; TR3-S4 REVISION 1
+corrected it. The GMN-LAWFUL level-3 key class is the UNTWISTED ψ₂
+class: R_λ₃(Φ₃) = z̄₂^{−θ₂g₂}·ψ₂ (a scalar times ψ₂, from lawfulness +
+the verified pin t₂(g₂) = −θ₂g₂); the θ₂-TWISTED T_{c⁻¹}ψ₂ class
+belongs to the FGMN-NORMALIZED lift. This probe's Φ₃ — like the sealed
+harness's — IS the FGMN-normalized lift, so every measured number in
+this note stands unchanged: the P4′/P5′/M8 divergence data compare the
+same two objects throughout; only the "GMN-lawful" ATTRIBUTION label
+was wrong. Additive bracket; the sealed harness and the committed
+run record are byte-untouched per the seal discipline.]**
+Ord transport is exact under MATCHED LABELS
 (P5′, 0/1,656) and the naive shared-ψ₂ pairing fails 142 times (M8, report
 row) — consumers must key each side by its OWN key read, as TR3S2's
 ORD-INV prescribes at order 2.

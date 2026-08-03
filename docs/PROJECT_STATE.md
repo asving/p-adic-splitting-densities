@@ -2290,7 +2290,9 @@ acceptance does NOT transfer, the new instantiation the note's own
 hostile-pass obligation); pass 1 Codex 0C/2G archived — REVISION 1
 owed next cycle; counter 0/2; NO status upgrade; the F2c
 verifier-owned from-note implementation stays the acceptance
-obligation (note S8.4). Roster: **NINE rows, unchanged**; no clause
+obligation (note S8.4) [r34: the arc ran to 4 passes / 2 revisions and
+was ACCEPTED at cd611af — the F2c obligation discharged IN-PIPELINE at
+pass 3; see the r34 checkpoint below]. Roster: **NINE rows, unchanged**; no clause
 attribution moved. Census: 55 + 4 new (VC33b/VC33c/VC34/HV3-E2) = 59
 patterns, fixed point re-grepped, every delta reasoned. **SYNTHESIS
 PASS 8 OWED at the wave-15 close.** The wave-15 remainder: the TR3-S4
@@ -2306,10 +2308,67 @@ deliverable per the scope cut; the Route-B RB-DELTA decision).
 FRONTIER NOW: **VC34** (the confirming end-to-end pass on REVISION 32;
 acceptance anchored on REVISION 31/VC33+VC33b+VC33c until it lands);
 the TR3-S4 REVISION 1 + hostile passes; then the synthesis-7 tail and
-synthesis pass 8 at the wave-15 close.
+synthesis pass 8 at the wave-15 close. [r34: VC34 has since CONFIRMED
+FIRST-PASS and TR3-S4 was ACCEPTED — the r34 checkpoint below is
+current.]
 Verification: VC1–VC22 done; VC25 NOT-CONFIRMED (disposed); VC26+VC26b,
 VC27+VC27b CONFIRMED; VC28, VC29 CONFIRMED FIRST-PASS; VC30 (1C, cured)
 + VC30b CONFIRMED; VC31 (0C/2G, cured) + VC31b + VC31c CONFIRMED;
 VC32 (0C/3G, cured) + VC32b CONFIRMED; **VC33 (0C/2G, cured by the
 r32-ERRATUM) + VC33b (0C/1G, WITH execution) + VC33c CONFIRMED (= the
-REVISION-31 anchor)**; VC34 pending on REVISION 32.
+REVISION-31 anchor)**; VC34 pending on REVISION 32 [r34: landed
+first-pass — see below].
+
+CHECKPOINT (ROOT r34 = REVISION 33, 2026-08-08 window): the VC34
+re-anchor + the TR3-S4 acceptance fold. **VC34 CONFIRMED FIRST-PASS
+0C/0G** on the REVISION-32 text (ledger f3b1ff8; report
+VC34_report.md) — the third first-pass confirmation of the window: ALL
+folds verified (the FGMN acceptance display exactly the REVISION-10
+list, no application leak, the wall theorems byte-frozen; the TR3-S4
+un-upgraded status with the F2c obligation displayed; the
+division-of-labor discipline; the Asvin batch with its verified top
+item; the 59-pattern census exact; roster NINE) — **the acceptance
+anchor moves REVISION 31/VC33+VC33b+VC33c → REVISION 32/VC34**: THE
+WAVE-14/FGMN MEGA-ARC IS CLOSED AND CERTIFIED END-TO-END inside the
+anchor (the glue route's source-level question answered; the
+three-token proposal fully verified at the Asvin gate). **TR3-S4
+ACCEPTED** (cd611af; the 4-pass/2-revision arc: p1 Codex 0C/2G →
+REVISION 1 → p2 Codex 0C/1G → REVISION 2 → p3 Fable CLEAN 0C/0G WITH
+BOTH execution legs — the sealed battery byte-identical 13,679/0 AND
+**the F2c VERIFIER-OWNED from-note implementation DISCHARGED
+IN-PIPELINE for the first time** (1,108 checks / 0 failures at
+off-roster p ∈ {5,7}, the decorrelated geometric ordinate leg, 3
+mutation controls each RED) — + p4 Codex content-CLEAN 0C/0G,
+model-diverse under the division-of-labor discipline): with accepted
+TR3-S1/S2/S3, **TR-3′-GEN is PROVED on the THREE-component union {all
+order-2} ∪ {order-3 all-e_j = 1, PRINT-UNCONDITIONAL} ∪ {order-3
+e₀ = 1, e₁ ≥ 2, e₂ = 1, conditional on (H-ℓ) + the (KP_i)+[T]
+consumptions at S6.2 + the PIN-GEN-i attribution display, Lemma HV3-E2
+DERIVED from the pinned print}** — the strata family at FOUR accepted
+members; deeper strata (e₀ ≥ 2 stacked; e₂ ≥ 2; orders ≥ 4) OPEN,
+probe-first, NO candidate sealed. HYGIENE: ONE dated supersession
+bracket in TWIST3_PROBE_2026-08-08.md at the pre-correction KEY0-LIFT
+orientation label (the GMN-lawful class is the UNTWISTED ψ₂; the
+twisted class = the FGMN-normalized lift) — additive, the probe's
+measured data untouched. Roster: **NINE rows, unchanged**; no clause
+attribution moved. Census: 59 + 2 new (VC35/KEY0-LIFT) = 61 patterns,
+fixed point re-grepped, every delta reasoned (ROOT §39). **SYNTHESIS
+PASS 8 OWED at the wave-15 close.** The wave-15 remainder = THE queue:
+the synthesis-7 tail (the ITER-LAW attempt; the (H7) forge on the two
+N-H7-1 pins; the DIterJunctionSupplier statement — re-priced against
+the accepted FGMN diagnosis; the banked-sorry attempt); the optional S
+batch. The Asvin batch restated in full (TowerMoveClosureL; the
+fence-(vii) ROUTE (a) lineage incl. the RECSL hσt rider + the EXECUTED
+F-ADM-3 re-key for ratify-or-reopen; the FGMN proposal AT TOP, FULLY
+VERIFIED — the application the gated unit's deliverable per the scope
+cut; the Route-B RB-DELTA decision).
+FRONTIER NOW: **VC35** (the confirming end-to-end pass on REVISION 33;
+acceptance anchored on REVISION 32/VC34 until it lands); then the
+synthesis-7 tail and SYNTHESIS PASS 8 at the wave-15 close.
+Verification: VC1–VC22 done; VC25 NOT-CONFIRMED (disposed); VC26+VC26b,
+VC27+VC27b CONFIRMED; VC28, VC29 CONFIRMED FIRST-PASS; VC30 (1C, cured)
++ VC30b CONFIRMED; VC31 (0C/2G, cured) + VC31b + VC31c CONFIRMED;
+VC32 (0C/3G, cured) + VC32b CONFIRMED; VC33 (0C/2G, cured by the
+r32-ERRATUM) + VC33b (0C/1G, WITH execution) + VC33c CONFIRMED;
+**VC34 CONFIRMED FIRST-PASS (= the REVISION-32 anchor)**; VC35 pending
+on REVISION 33.

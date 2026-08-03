@@ -6291,3 +6291,32 @@ controls). HYGIENE for r34: the upstream TWIST3_PROBE prose carries the pre-corr
 KEY0-LIFT orientation label (pass-3 observation) — a dated supersession bracket rides
 the r34 fold. Next: r34 fold (this acceptance + anchor citation + the hygiene bracket)
 → VC35 → the synthesis-7 tail → SYNTHESIS PASS 8.
+
+## ROOT r34 EXECUTED (REVISION 33) — the anchor moves to REVISION 32/VC34; TR3-S4 folded ACCEPTED; the strata family at FOUR members inside ROOT
+
+REVISION 33 applied (ROOT §39; unit ROOT r34). (1) RE-ANCHOR: VC34 CONFIRMED FIRST-PASS
+(f3b1ff8) → **the acceptance anchor moves REVISION 31/VC33+VC33b+VC33c → REVISION
+32/VC34**, the citation-text updated at every operative site (§0 standing paragraph;
+the §3.2 end-to-end row's VC34 sync tail; the §6 supersession + r34 brackets) — the
+wave-14/FGMN mega-arc now CLOSED AND CERTIFIED inside the anchor; VC35 OWED on the
+REVISION-33 wording, never self-confirmed. (2) TR3-S4 ACCEPTANCE FOLDED (cd611af): the
+(H1) deeper-strata display upgrades — TR-3′-GEN PROVED on the THREE-component union
+{all order-2} ∪ {order-3 all-e_j = 1, PRINT-UNCONDITIONAL} ∪ {order-3 e₀ = 1, e₁ ≥ 2,
+e₂ = 1, conditional on (H-ℓ) + (KP_i)+[T] at S6.2 + PIN-GEN-i; Lemma HV3-E2 derived
+from the pinned print}; the F2c verifier-owned implementation recorded as DISCHARGED
+IN-PIPELINE (pass 3, 1,108 checks with mutation controls); deeper strata (e₀ ≥ 2
+stacked; e₂ ≥ 2; orders ≥ 4) OPEN probe-first, NO candidate sealed; member (a) NOT
+discharged, the row stays [M]. (3) HYGIENE EXECUTED: the ONE dated supersession bracket
+applied in TWIST3_PROBE_2026-08-08.md at its KEY0-LIFT orientation prose (the
+pre-correction "GMN-lawful = θ₂-twisted ψ₂" label superseded by the TR3-S4 REVISION-1
+corrected orientation — the GMN-lawful class is the UNTWISTED ψ₂; the twisted class =
+the FGMN-normalized lift); additive, the measured data and the sealed harness
+byte-untouched. (4) Housekeeping: the wave-15 remainder displayed as THE queue
+(synthesis-7 tail: ITER-LAW; the (H7) forge; DIterJunctionSupplier re-priced against
+the accepted FGMN diagnosis; the banked-sorry attempt; the optional S batch); SYNTHESIS
+PASS 8 OWED at its close; the 4-item Asvin batch restated, TOP = the verified FGMN
+proposal. Census: 61 patterns (59 + VC35/KEY0-LIFT new), re-grepped at fixed point,
+every delta reasoned at §39; roster NINE re-derived. PROJECT_STATE r34 checkpoint +
+dated tags at the r33 checkpoint's stale displays. Doc-only unit (ROOT + PROJECT_STATE
++ the one probe-note bracket + this ledger); no Lean file touched. NEXT: VC35 (fresh
+context, charge at ROOT §39) → the synthesis-7 tail → SYNTHESIS PASS 8.
