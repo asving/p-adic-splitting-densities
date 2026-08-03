@@ -6445,3 +6445,36 @@ BPLL untouched. RESIDUALS: none mathematical; the CLAUDE.md/PROJECT_STATE
 applied by this unit). Verifier pass (fresh-context, per informal-math discipline)
 OWED at the next acceptance arc if the ROOT wants one beyond the kernel check —
 the kernel IS this unit's verification leg (pure Lean unit).
+
+## 2026-08-08 — H7 FORGE: the first NON-VACUOUS compiled (H7) instance (synthesis-7 queue #8)
+
+UNIT: the (H7) restatement forge (pass-7 F4; charter SYNTHESIS_PASS7 queue #8; specs:
+H7PROBE P-4's sharpened OL-2 inhabitant spec + N-H7-1's two measured pins). ARTIFACT:
+`lean/LeanUrat/Scaffold/HDischarge/H7/H7Forge.lean` (new decls only; green exit 0;
+in-file census: 15 declarations ALL Lean-core `[propext, Classical.choice,
+Quot.sound]`, zero `sorryAx`); note `lean/notes/openmath/H7FORGE_2026-08-08.md`.
+DELIVERED: a sorry-free five-site depth-1 `TreeModel`+`CellData`+`VTree`+`SiteLedger`
+(`forgeModel`/`forgeCA`/`forgeTree`/`forgeLedger`) at (p,n,N,m) = (2,2,2,4), the S6
+shape (m = 2 roster, side-separated recorded slopes 1 vs 2) — BOTH P-2
+rfl-degeneracies broken: (a) non-diagonal `branchCellOf` (per-branch coordinate
+projections; certified by `forge_read_nondiagonal`, the cross-cutting sibling state
+events `forge_states_crosscut`, and the STRUCTURAL breaker `forge_no_diagonal_read`:
+no single-map read over ANY cell type presents both sibling states); (b) sides = 2 at
+the joint site with the REAL `SideSplit` (2 clauses over disjoint spans, hull slopes
+1 < 2 tied to the roster nodes' recorded slopes; `splitAt`/`hsplit_k`/`hsplit_exp`
+discharged, (JC-multi) DECIDED TRUE: `forge_jcmulti`, 1·2² = 4). PIN-CORRECTED FACES
+DECIDED AT THE INSTANCE: pin 1 — `forge_kloc_slope_keyed` PROVED (ε keyed by
+`ν.line.slope`) + `forge_kloc_pooled_refuted` COMPILED COUNTERMODEL to the
+slope-pooled form (the S5 pooled-u refutation's compiled twin); pin 2 —
+`forge_guard : InGuard forgeDatum` + the decide-small gates stated ONLY in-guard
+((N,τ,e_max) = (2,1,0)): `forge_klocCounts` = the FIRST contentful `KLocCounts`
+instantiation (Events := the four realized joint read words, counts := box
+cardinalities; 1·4 = 2·2 exact at every word) + `forge_stratum_count`/
+`forge_branch_counts` tying the datum integers to the actual cardinalities. The G1
+`mem_realizable` wall avoided structurally (all chains one-node). HONESTY: depth-1
+(the sides-2 site's own continuations unrealized — HK23/HK25 transplant = named
+residual); node literals synthetic-but-lawful (S2 genre); engine-tied
+`ITauSemantic`/`KLocSemantic` (H7-W3a) and `ITauShadow` at the forge integers
+(H7-D1b genre) remain open; NOTHING here discharges (H7) — it is its first compiled
+non-vacuous decision point. Fences: no existing statement touched; sorried toy decls
+not consumed; parked items 22–29 untouched.
