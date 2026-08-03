@@ -8352,3 +8352,61 @@ r4) — are each one DAG edge deeper than the last; with both branches now
 row-by-row adjudicated (PE4 §4) AND the sweep table in place, the genre
 has no remaining unverified surface. **ROUND 5 = PC4 + PE5, both on THIS
 round-4 text, both must be CLEAN = the acceptance attempt.**
+
+## ITERLAWN-PE5 (Fable, round 5) — 2026-08-03 (campaign 2026-08-08)
+
+[Anchor: appended after "ITERLAWN errata round 4 APPLIED + DEPENDENCY-CLAIM
+SWEEP" (tail "…both must be CLEAN = the acceptance attempt."); verified text
+0672082, note md5 5811db126d1ed0824e4870b20e0fd774; report
+`lean/notes/openmath/ITERLAWN_passPE5_report.md`.]
+
+**VERDICT: NOT-CLEAN — 0C/1G (PE5-F1), 0 nits.** The round-5 2-clean bar is
+NOT met regardless of PC4.
+
+Clean legs, all verified: **(1) errata-r4 fidelity** — character-level
+opcode check: insertion-only (8 insert spans, zero delete/replace; all 5
+diff-touched lines resume verbatim; base md5 c088101c re-confirmed); the
+row-4 correction independently re-derived RIGHT on BOTH legs (telescope
+input deg Φ_{j+1} = e_jg_j·deg Φ_j = an S4.1 export via (R1) + WELL-DEF(i)
+existence, incl. the e_j = 1 corner; the class-pin certification leg with
+realize recursion to realize₁; rung-1 exemption exact — empty construction
+range at n = 1, the j = 0 telescope leg is the standard lift, [IL]-covered);
+all six expression sites mutually coherent. **(2) Re-runs BYTE-IDENTICAL
+both** (stronger than PE4: no wall-clock digit diff this time) — reimpl 940
+pairs/0 baseline violations, 7/7 mutations, output md5 cfad7943 = committed;
+diag 5,311/0, md5 7c72c4c6 = committed; every S8 number matches. **(3) THE
+SWEEP TABLE ADVERSARIALLY: all 12 purely-VERIFIED rows independently
+re-derived — 12/12 CONFIRMED, none falsified** — plus the V legs of mixed
+rows 6/12/15/20/21. **(4) Fresh content sweep clean** (S2/S3/S4.1–S4.7/S5
+re-derivations exact, incl. the II-1 ε′-cancellation and the PC-G4 Q¹ bound;
+both S7 branches as amended r4 consistent). **ZERO false dependency claims
+found — the r4 sweep's substantive result is positively confirmed.**
+
+**PE5-F1 [GAP — the r4 sweep's exhaustiveness sentence]:** the genre-closing
+bracket's universal claims ("EVERY dependency/exemption claim … each
+verified"; "zero unverified dependency claims remain") are falsified by ONE
+in-scope, unenumerated claim-site: the S0.3 statement-convention gloss
+"S₀ = D₁h₀ + S₁ℓ₀′ — computed by the recursion but consumed by nothing"
+(note lines 207–208; display tag "[composed shift; S₀ unused]", line 201).
+In-scope by the sweep's own standards: row 1 (Φ_{n+1} non-consumption) is
+the identical species at a definitional-apparatus site, and rows 3/15 show
+the "consume(s)" pattern covering the participle "consumed". Never
+adjudicated by any pass (the arc's only S₀ mention is a PE2 token-census
+line). **The missed claim's content is TRUE** (verified: S₀ occurs nowhere
+else in the note; every downstream consumer instantiates j ≥ 1) — a
+content-true census leak: no false claim, no grade/math impact; but the same
+leak MECHANISM as rounds 2–4 (one site per round escaping a completeness
+display), in the very bracket written to certify the genre closed. This
+block's own r4 sentence "the genre has no remaining unverified surface"
+carries the same defect. **Cure: sweep row #23** (S0.3 convention site,
+adjudication as above, status V) + census sentences 22 → 23 + one clause
+here. Severity note for the adjudicator: weakest finding of the arc; a
+purposive scope reading (claims whose falsity could mis-grade a leg) would
+grade it a nit — graded GAP because the bracket defines its scope by grep
+patterns and round-5 acceptance rides on that sentence.
+
+Round scoreboard: 2C/3G → 0C/2G → 0C/1G → 0C/1G → 0C/1G → **0C/1G**, math
+layer clean in every pass; the residue has now moved from the S7
+failure-display branches into the audit bracket's own census sentence.
+Owed: errata round 5 (the one-row cure), then a fresh dual round 6
+(PC5 + PE6) on the r5 text.
