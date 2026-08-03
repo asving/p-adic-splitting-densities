@@ -5272,3 +5272,16 @@ all five NEW hull kernels = `[propext, Classical.choice, Quot.sound]`.
 **Perimeter:** additive only — no existing statement touched; the −∞ corner
 stays the separately-priced open leg; Kp0GateC (CU2t keying refuted) stands.
 Record: `lean/notes/openmath/BPLL_2026-08-08.md`.
+
+## 2026-08-08 — G-ADM-2 EXECUTED (orchestrator harvest): track A live, no track-B fire
+
+The never-run (ADM) adjudicating gate ran at wave 10 (preregistration sealed 4d7dba1;
+198 rows, 13 configs, P1-P7 ALL PASS). VERDICT (sealed disposition, verbatim):
+RIGHT-END-ONLY PARTIAL — no track-B fire; track A live as (ADM-REAL'); ADM-U7 dichotomy
+CONFIRMED at scan scope. All 85 partials at the one right-end slot CEN-J never charges
+(rho-pinned, L' subtraction); off-end partials ZERO. Next (ADM) unit = the (ADM-REAL')
+attempt per ADM_U7_TRACKA_ATTEMPT.md. Harvest note: the wave-10 unit ended mid-battery;
+the orchestrator completed the write-up from the unit's own sealed artifacts
+(GADM2_DISPOSITION.md + jsonl) — no content beyond them. Note:
+lean/notes/openmath/GADM2_2026-08-08.md. Scan proves nothing (no-hit discipline);
+it adjudicates routing only.
