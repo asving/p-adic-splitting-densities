@@ -6858,3 +6858,39 @@ probes as the small-case laboratory). DEMOTED — Lean small-case exploration
 (toy-forge extensions, E-phase statement backlogs: the TV clusters stay
 parked). Lean work retained: discharge dividends, fidelity repairs (P0),
 formalization of ACCEPTED general results.
+
+---
+
+## (ITER-LAW-LIFT) CORNER PROBE ALL GREEN — 2026-08-03 (wave-18 unit 5, synthesis-8 queue #5; two-commit seal honored; residual stays OPEN, sketch earned)
+
+The degeneration-shaped corner attempt at g₀ = 1 ∧ δ₁ = 1 (per S3-iii of
+SYNTHESIS_PASS8) ran PROBE-FIRST and measured EXACT: general lawful monic
+lifts (the FULL TR3-S2-S0 class, specialized at the corner: b₀ residue pinned
+to ψ₀(0) by lawfulness, b₀-tail + all mid-digit freedom swept incl. the
+all-digits-minimal extreme) SATISFY THE ACCEPTED ITER-LAW DISPLAY UNCHANGED.
+Record `lean/notes/openmath/ITERLAWLIFT_CORNER_2026-08-08.md`; sealed runner
+`verification/openmath/iterlawlift_corner.py` (seal commit 7537b40 pre-run,
+byte-untouched through the run, md5 2ec3a152181d30933c6758e1ff133285).
+**ALL GREEN FIRST RUN exit 0: 104,404 samples / 0 violations** — LAW (the
+candidate) 25,056/0 · PAIR-VAL+shape 25,056/0 · ANCHOR-VAL 3,552/0 ·
+integrality + transcription 25,056/0 each · LAWCERT 288/288 variant towers
+lawful · coverage MET (288/288 blocks δ₁=1-probative; E₂ = 8, 10 rows) ·
+CERT 324/0 (T11 PARI fired) · mutation controls 4/4 families × 4/4 rings
+with the DETERMINISTIC predicted counts on the nose (M1 12s, M3 9s, M4 16s,
+M2 gate-flag). Seed 20260903; 6 fresh g₀ = 1 rows × 4 rings × 12 lift
+variants; mixed pair block in the first battery. HONEST STATUS: the residual
+(ITER-LAW-LIFT) remains OPEN — this is instance evidence (the FIRST outside
+the standard-lift class: 264 general-lawful-lift towers) plus an earned S7
+PROOF SKETCH, not a proof. The sketch's single open step is the displayed
+lemma **(TAIL-STAB)** (nominal-weight ω non-decreasing / Φ₀-power strictly
+descending double induction: the correction tail of the development-reduction
+never reaches the line; the on-line thread is the lift-covariant residue
+−ψ₀(0) = z₁, pinned by lawfulness). Priced S/M for a wave-19 compose; the
+falsifier already exists (this runner at fresh seeds). Acceptance citation
+consumed by this unit, PASTED from the ITER-LAW ACCEPTED block above: "Scope
+as accepted: the harness tower class (superset of DITER_RESTATE §S2's E₂ > 1
+pin; on-the-nose coincidence restricted to E₂ > 1); residuals: (ITER-LAW-LIFT)
+open exactly at g₀ = 1 ∧ δ₁ = 1; gr(w₂) wrapper rides the accepted GRB
+retarget; orders ≥ 3 untouched." No record edits beyond this append + the
+unit's own note; sealed/accepted records byte-frozen; no Lean statement
+touched.

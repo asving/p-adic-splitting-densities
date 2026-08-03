@@ -116,10 +116,11 @@ every family 0 violations, coverage met, controls fire 4/4 rings each.
 
 ## S4. Verdict
 
-**PENDING — sealed pre-run.** (Commit 2 replaces this line with the verdict
-block S6 and, if and only if the law measures 0-violation, the S7 proof
-sketch. On violations: the violating tuple and the breaking lift parameter
-become the headline, prominently, and NO sketch is appended.)
+**ALL GREEN, FIRST RUN, exit 0** — full block at S6 (commit 2; the sealed
+runner byte-untouched, md5 `2ec3a152181d30933c6758e1ff133285` == seal 7537b40).
+The candidate measured EXACT: the accepted display holds unchanged on all
+104,404 samples across 288 lawful-lift variant towers, 0 violations in every
+family; the 0-violation condition for the S7 proof sketch is MET.
 
 ## S5. What this unit does NOT do
 
@@ -131,5 +132,89 @@ Lean work, no consumer re-pointing. The e₀ = 1 leg is not probed (no Case II
 exists there — COR-3's degeneration, already theorem-backed); the E₂ = 1 leg
 is outside the statement of record per the S0-erratum scope.
 
+## S6. VERDICT (post-run; commit 2; seal commit 7537b40, runner byte-untouched)
+
+**ALL GREEN, FIRST RUN, exit 0** — 104,404 total samples, **0 violations in
+every family**, seed 20260903:
+
+* P1 LAWCERT 288/288 variant towers pass the lawfulness gate (0 rejects — the
+  generator hit the lawful class exactly, incl. every all-digits-minimal V3);
+* P2 AV 3,552/0 (ANCHOR-VAL, lift-free leg confirmed on every variant);
+* **P3 LAW 25,056/0 — THE CANDIDATE: the accepted display holds UNCHANGED on
+  every lawful lift at the corner**, both pair blocks (W1×W1 and the mixed
+  W1×W3) on all 288 variants;
+* P4 PV 25,056/0 (both L7 forms + the single-slot y^{δ₂} shape clause survive
+  general lifts — the correction tail never reaches the read);
+* P5 INT 25,056/0; TRS transcription control 25,056/0; P6 LOC 0 (no δ₁=0
+  anomaly anywhere); P7 coverage MET — 288/288 blocks with δ₁=1 pairs (min 6,
+  max 80; E₂ = 8 and E₂ = 10 rows on roster);
+* P8 controls 4/4 rings EACH: M1 unlawful-residue swap fires 12/12/12/12 (every
+  δ₁=1 pair of the CB block, as predicted); M2 below-line gate flag 1/1/1/1;
+  M3 fibration-term drop fires 9/9/9/9 (every δ₂=1 pair); M4 outer-carry drop
+  fires 16/16/16/16 (exactly the 4×4 s₂=1×s₂=1 pairs of the CC window —
+  the predicted deterministic counts on the nose);
+* CERT 324/0 on the base towers (T1/T2/T5 + T11 PARI factorpadic fired on the
+  ℤ_p instances); harness bug-detector counters 0.
+
+Of record: `iterlawlift_corner_output.txt`, `iterlawlift_corner_results.json`
+(these govern on any transcription discrepancy). Lift-parameter coverage: the
+b₀ tail (V1, incl. ĉ→ĉ+πr), single mid digits at minimal lawful valuation
+(V2), ALL digits minimal simultaneously (V3), deep random tails (V4),
+top-adjacent k = e₀−1 (V5) — over d₀ ∈ {1,2}, e₀ ∈ {2,3,4,5}, all four rings.
+STATUS EFFECT (honest): (ITER-LAW-LIFT) remains OPEN; the corner is now
+MEASURED-LAWFUL-EXACT (first instance evidence outside the standard-lift
+class: 264 general-lawful-lift towers, 0 violations), and the S7 sketch is
+earned per the seal's own condition.
+
+## S7. PROOF SKETCH (earned by the 0-violation verdict — NOT a claimed proof)
+
+The degeneration argument written out; ONE honest open step, named and priced.
+
+**Perimeter already proved (accepted, lift-form-free).** ITERLAW S7 first
+bullet: L1–L6, Lemma EXP, PAIR-VAL Case I, the S5 assembly and S6 corollaries
+consume only "Φ₁ monic of degree e₀g₀d₀". So (ITER-LAW-LIFT) reduces to:
+PAIR-VAL Case II (g₀ = 1, δ₁ = 1) for a general lawful Φ₁.
+
+**Step 1 (the generalized two-term decomposition).** By S1, a lawful lift is
+Φ₁ = Φ₀^{e₀} + b₀ + Σ_{k=1}^{e₀−1} b_k Φ₀^k with b₀ = ĉ′π^{h₀} + t₀
+(res(ĉ′) = c₀, w₀(t₀) ≥ h₀+1) and every mid digit strictly above the line.
+Substituting Φ₀^{e₀} = Φ₁ − b₀ − Σ b_kΦ₀^k into P = π^U Φ₀^{e₀+S₁″} Φ₁^{S₂}:
+
+    P = π^UΦ₀^{S₁″}Φ₁^{S₂+1} − ĉ′π^{U+h₀}Φ₀^{S₁″}Φ₁^{S₂}
+        − t₀π^UΦ₀^{S₁″}Φ₁^{S₂} − Σ_{k≥1} b_k π^U Φ₀^{S₁″+k}Φ₁^{S₂}.
+
+Term 2 is the standard-lift on-line digit UP TO the lift of the residue: its
+γ″-read residue is −res(ĉ′) = −c₀ = z₁ — lift-covariant, the SAME constant as
+the accepted Case II. Terms 1, 3, 4 have nominal weight > γ″ (term 1: +h₁;
+term 3: ≥ +e₀e₁; term 4: ≥ +1, by the strict mid-digit bound of S1).
+
+**Step 2 (THE ONE OPEN STEP — displayed lemma (TAIL-STAB)).** For a monomial
+X = π^aρΦ₀^mΦ₁^j (ρ a unit-residue digit, m possibly ≥ e₀) define the nominal
+weight ω(X) := e₁(e₀a + m h₀) + jγ₂. **(TAIL-STAB):** if ω(X) > γ″ then every
+digit of the Φ₁-development of X reads 0 at the weight-γ″ read. Route: double
+induction — m strictly descends under one reduction pass (Φ₀^{e₀} ↦ Φ₁ − b₀ −
+Σb_kΦ₀^k sends m ↦ m−e₀, m−e₀, m−e₀+k), while ω is non-decreasing along every
+branch (the Φ₁ branch gains γ₂ − e₀e₁h₀ = h₁ > 0; the b₀-tail branch gains
+≥ e₀e₁; the mid-digit branches gain ≥ 1; the b₀-main branch preserves ω
+exactly but strictly drops m). At terminal m < e₀ the term is a literal digit;
+ω > γ″ there means strictly above the line, and dev-linearity + "res at the
+exact ordinate kills higher-valuation summands" transfers this through sums
+(cancellation only raises valuations — min-weight bounds survive). Term 2's
+descendant is the unique ω = γ″ thread and terminates at the on-line digit of
+residue z₁ in ONE pass (m = S₁″ < e₀). This is exactly the
+"development-reduction induction" the accepted note's scope box priced.
+
+**Honesty box.** (TAIL-STAB) is UNPROVED — it is the entire distance between
+this sketch and a proof note. Everything else above is either accepted content
+(the lift-free perimeter) or the one-line lawfulness pin of S1. The sketch
+consumes NO print, NO extraction — pure harness-calculus bookkeeping, the
+TR3-S2 Lemma-EXP genre.
+
+**Price for the wave-19 compose.** S/M: one displayed lemma (TAIL-STAB, double
+induction, elementary), one substitution display (Step 1), then Case II′ =
+verbatim Case II with ĉ′ for ĉ; falsifier ALREADY EXISTS (this sealed runner
+re-runnable at fresh seeds/rows for the note's own battery), measured cover
+104,404/0 on file. Acceptance bar as usual (hostile passes, model-diverse).
+
 — (ITER-LAW-LIFT) corner probe unit, campaign date 2026-08-08 (wallclock
-2026-08-03). SEAL COMMIT: this file + the runner, pre-run.
+2026-08-03). SEAL COMMIT 7537b40 (pre-run); verdict + sketch at commit 2.

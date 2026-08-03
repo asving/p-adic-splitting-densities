@@ -1,0 +1,27 @@
+[   0.3s] CERT done: 0 violations (324 samples) on base rows CA/CB/CC/CD/CE/CF
+[   2.5s] ring (Zp,p=2) done: cumulative violations = 0
+[   5.0s] ring (Zp,p=3) done: cumulative violations = 0
+[   9.9s] ring (Fpt,p=2) done: cumulative violations = 0
+[  15.3s] ring (Fpt,p=3) done: cumulative violations = 0
+[  15.6s] controls done
+
+==============================================================================
+PREDICTED vs OBSERVED (violation counts; samples in parentheses)
+==============================================================================
+LAWCERT  P1 lawfulness gate on every variant        pred 0  obs     0 (   288)  GREEN
+AV       P2 L6 ANCHOR-VAL letters W1+W3 (lift-free) pred 0  obs     0 (  3552)  GREEN
+LAW      P3 THE CANDIDATE: accepted display, pairs  pred 0  obs     0 ( 25056)  GREEN
+PV       P4 L7 PAIR-VAL both forms + shape          pred 0  obs     0 ( 25056)  GREEN
+INT      P5 COR-1 exponent integrality              pred 0  obs     0 ( 25056)  GREEN
+TRS      closed-form transcription vs C.iter_law    pred 0  obs     0 ( 25056)  GREEN
+LOC      P6 delta1=0 localization (bug detector)    pred 0  obs     0 (     0)  GREEN
+COV      P7 coverage: delta1=1 pairs per block      pred 0  obs     0 (     0)  GREEN
+CERT     base-tower certification (T1/T2/T5/T11+PARI)      pred 0  obs     0 (   324)  GREEN
+M1       control fires (pred 4/4 rings): 4/4 counts=[12, 12, 12, 12]  GREEN
+M2       control fires (pred 4/4 rings): 4/4 counts=[1, 1, 1, 1]  GREEN
+M3       control fires (pred 4/4 rings): 4/4 counts=[9, 9, 9, 9]  GREEN
+M4       control fires (pred 4/4 rings): 4/4 counts=[16, 16, 16, 16]  GREEN
+P7 coverage: 288 blocks, min delta1=1 pairs 6, zero-coverage blocks 0  MET
+variant towers accepted by the gate: 288 (of 288 generated)
+TOTAL samples: 104404   elapsed 15.6s
+VERDICT (preregistered rows): ALL GREEN
