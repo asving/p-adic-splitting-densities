@@ -6347,3 +6347,26 @@ FORWARD QUEUE: WAVE 16 (the synthesis-7 tail — ITER-LAW attempt; (H7) forge on
 N-H7-1 pins; DIterJunctionSupplier statement RE-PRICED vs the accepted FGMN diagnosis;
 banked-sorry attempt) → SYNTHESIS PASS 8 at its close → the 4-item ASVIN BATCH
 standing (top = the verified FGMN proposal).
+
+## DITERSUP STATEMENT (queue #9, 2026-08-08 wallclock 2026-08-03) — the supplier's corrected interface displayed; every gate BLOCKED-ON-APPLICATION; priced
+
+Note: `lean/notes/openmath/DITERSUP_STMT_2026-08-08.md`. STATEMENT-ONLY (no `.lean`
+touched, no proofs, nothing asserted). Displays, verbatim-typed against the ACCEPTED
+FGMN diagnosis in its RECOMMENDED new-definition mode: `SideReads'` (the three
+σ.wPrev tokens marked; clauses (iii)–(vi) byte-identical), `ReadsOf'`,
+`DIterJunctionSupplier'` (three name substitutions, shape verbatim), the §S3 𝒟₂
+carrier interface (`DIterCarrier`/`δ₂`/`InnerIntegral`/`IterLaw` + the honest
+"missing gr(w₂) tie" display), and the junction gates: J1 row-A e≥2 recording (M),
+J2 first non-vacuous glue at the row-A seam (L), J3a supplier first instance,
+ITER-LAW-FREE by D-REAL degeneration at e₀=1 (M), J3b general discharge (L, blocked
+on tie layer + queue-#6 ITER-LAW), JS1/JS2/JS3 sanity gates (S/S/M), carrier layer
+P1 (M). Every gate carries the honest banner: fires only after the Asvin-gated
+three-token application + the primed-mirror change-set; the old-clause record stays
+byte-frozen (juncforge_no_e2_junction/deep_wall = the e≥2 walls,
+juncforge_junc_bundle_false = the core refutation, D0 gate pair vacuous under EITHER
+scale — not resurrected). Perimeter finding of record: `TruncRunFrom` binds
+`SideReads` at [T-5] (TruncatedRun.lean:230), so `TruncRunFrom'` joins the
+primed-mirror set (consistent with the REVISION-9 rule: adjudicated on the actual
+diff). Corrected during composition: none of the displayed gates asserts
+satisfiability — J1's full-bundle Lean construction is exactly the owed FGMN §S9
+item. NEXT per the wave-16 queue.
