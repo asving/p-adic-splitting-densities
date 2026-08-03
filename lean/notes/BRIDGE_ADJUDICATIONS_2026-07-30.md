@@ -8260,3 +8260,43 @@ round-3 text, both must be CLEAN. The finding surface across four rounds:
 2C/3G → 0C/2G → 0C/1G → 0C/1G, every math-layer re-derivation clean since
 round 1 — the residue is confined to the S7 completeness-display branches,
 both of which are now clause-by-clause verified.
+
+## ITERLAWN-PE4 (Fable, round 4) — 2026-08-03: NOT-CLEAN 0C/1G on 4e8f027
+
+[Anchor: appended after "ITERLAWN errata round 3 APPLIED" (tail
+"…both of which are now clause-by-clause verified."); text of record
+= the note @ 4e8f027, md5 c088101c9676118566a54ad3bb18dfdf; report
+`lean/notes/openmath/ITERLAWN_passPE4_report.md`.]
+
+Erratum-r3 fidelity VERIFIED (both brackets additive; the row-3 REALIZE
+correction independently re-derived RIGHT — m = 1 base legs consume [IL3]
+WELL-DEF(i)/(ii) per S4.1's own operative bracket; the II-* union ⊆-note
+re-derived RIGHT, no conflict with the r = 2 "on the nose" dictionary line).
+Re-runs: reimpl 940 pairs / 0 violations, mutations 7/7, 22,916
+family-checks — content-identical, one wall-clock digit differs (0.1s→0.2s
+in a progress line); diag 5,311 / 0, md5-identical. Both S7 failure branches
+audited row-by-row against actual consumption sites (S2/S3/S4.1): branch-B
+rows all verified (row-3 exemption HOLDS via the lemma-vs-textbook-fact
+asymmetry: L1 is [IL]'s own proved lemma, the S0.2 base facts are textbook
+facts merely listed in [IL S1]); branch-A rows 1/2 exemptions HOLD, rows
+5/6/8 + table-covered 7/9/10/11 correct, row-3 correction right — but
+**PE4-F1 [GAP, display-grade]: the branch-A row-4 exemption is FALSE** (and
+with it the r3 erratum's "Rows 1/2/4 … stand as written" at row 4): L6-(n)
+at every rung ≥ 2 consumes S4.1 — the canonical lifts' certification
+(S0.1: "well-definedness on the class: Lemma WELL-DEF-(n), S4.1") and the
+S4.2 degree telescope's uncited input deg Φ_{j+1} = e_jg_j·deg Φ_j, which
+needs REALIZE's (R1) + lift existence — and S4.1's m = 1 base is
+[IL3]-consumed; so under the hypothetical row 4 (rungs ≥ 2) falls WITH row 3
+to "open at the [IL3] WELL-DEF m = 1 displays" (same elementary recovery;
+rung 1 exempt). The third finding of the PE2-F1/PE3-F1 genre, one DAG edge
+deeper; the S10 DAG lacks the S4.1 → L6-(n) edge (silent consumption); the
+"given [IL] only" attributions (S0.3 clause table, S4.2 close, S7 row 4)
+carry the same incompleteness. No live claim breaks ([IL3] is ACCEPTED; the
+branch is structural display only). Prior-pass provenance: PE r1 took the
+telescope as free-standing arithmetic; PE3 asserted "#4: [IL] base only"
+without tracing the telescope input — never adjudicated. Consequence: the
+round-4 2-clean bar is NOT met regardless of PC3; owed = errata round 4
+(one clause + attribution brackets + DAG edge) then a fresh dual round.
+Finding surface across five rounds: 2C/3G → 0C/2G → 0C/1G → 0C/1G → 0C/1G,
+math layer clean throughout — the residue remains confined to the S7
+completeness-display branches.
