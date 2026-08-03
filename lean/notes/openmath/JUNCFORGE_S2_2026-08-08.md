@@ -1,4 +1,4 @@
-# FORGE junc_bundle STAGE 2 — the first compiled e ≥ 2 junction attempt ADJUDICATES THE BUNDLE INSTANCE-FALSE AT THE ROW-A READ: the parity wall (no e = 2 recording exists at the row-A read), the Φ₂-landing wall (char-2, all species/degree faces), the D0 flag CONFIRMED in Lean (gate hbundle unsatisfiable — byte-identity kernel-certified at REV1), clause (iii) POSITIVELY derivable at the read-pair pins — **REVISION 1 APPLIED (§R1–R3: row-A rescope, negation shape, D0 tie compiled, disposition + re-derivation charter)**
+# FORGE junc_bundle STAGE 2 — the first compiled e ≥ 2 junction attempt ADJUDICATES THE COMPILED CHAR-2, Φ₂-LANDING BUNDLE INSTANCE-FALSE AT ROW A: the parity wall (no e = 2 recording exists at the row-A read — the one char-free/Φnext-free wall), the Φ₂-landing wall (char-2, Φ₂-landing, all species/degree faces), the D0 flag CONFIRMED in Lean (gate hbundle unsatisfiable — definitional-equality certified at REV1, per-clause vacuity via gluePacket_false), clause (iii) POSITIVELY derivable at the read-pair pins — **REVISION 1 + REVISION 2 APPLIED (§R1–R4: row-A rescope, negation shape, D0 tie compiled, disposition + charter; REV2 = per-theorem scope + certification wording)**
 
 **Unit:** FORGE junc_bundle stage 2 (wave 11; charter = stage 1's §S5 spec,
 `JUNCFORGE_S1_2026-08-08.md`).  **Artifact:**
@@ -9,13 +9,18 @@ not edited); `lake env lean` green; every theorem `#print axioms` = Lean core
 **Row-A data compiled:** f = X² + 4X + 28, Φ₁ = X + 2, Φ₂ = X² + 4X + 12 over ℤ₂;
 the deep development f = 24 + Φ₁² (slots (24, 0, 1)) as `fA_eq`/`BA_dev`.
 
-## S1. VERDICT — the §S5 discharge is IMPOSSIBLE: `junc_bundle` at row A is instance-false
+## S1. VERDICT — the §S5 discharge is IMPOSSIBLE: the compiled CHAR-2, Φ₂-LANDING `junc_bundle` at row A is instance-false
 
 Executing the stage-1 spec against the Lean `SideReads` transcription did not
 produce the chartered first compiled e ≥ 2 junction — it PROVED no such instance
 can exist AT THE ROW-A READ: at any stage whose frame is keyed at Φ₁A (`hσΦ`),
-reading the row-A classificand fA under a development at that frame (`hdev`), for
-any finite residue field, any recorded node data, and any designated Φnext.
+reading the row-A classificand fA under a development at that frame (`hdev`).
+The theorem scopes are NOT uniform \[REV2\]: only the e = 2 parity wall
+(`juncforge_no_e2_junction`) holds for any finite residue field and any
+designated Φnext; the landing wall (`juncforge_deep_wall`) additionally requires
+(2 : F) = 0 and refutes the Φ₂ landing specifically; the packaged refutation
+(`juncforge_junc_bundle_false`) further requires the interior Φ₂A pin — see the
+scope column below.
 \[REV1: the original sentence here ended "at any stage, for any recorded node
 data" unqualified — bracketed as an overclaim; every wall binds the row-A fiber
 (fA, Φ1A) through the `hσΦ` + `hdev` hypotheses. Outside that fiber (other
@@ -25,9 +30,9 @@ classificands, other keys) existence is OPEN.\]
 |---|---|---|
 | `juncforge_no_e2_junction` | any `SideReads` of f = fA at a Φ₁A-keyed frame has ν.e = 1 | the row-A fiber (fA, Φ1A): any finite F, any Φnext — char-free |
 | `juncforge_deep_wall` (+ `_F4`) | no `SideReads` of f = fA at a Φ₁A-keyed frame lands Φ₂ | row-A fiber; any finite F with (2 : F) = 0; instantiated at F4 |
-| `juncforge_junc_bundle_false` | the `junc_bundle` 3-conjunct CORE ∃ (dev + interior pin + SideReads) is FALSE at every continuation H₂ with base key Φ₁ and node-1 key Φ₂ | packaged form — negates the WEAKER core, which any fuller bundle implies, so refutes every fuller bundle AT ROW A; not a verbatim general ¬junc_bundle \[REV1\] |
+| `juncforge_junc_bundle_false` | the `junc_bundle` 3-conjunct CORE ∃ (dev + interior pin + SideReads) is FALSE at every continuation H₂ with base key Φ₁ and node-1 key Φ₂ | packaged form — row-A fiber, char-2 ((2:F)=0), interior Φ₂A pin \[REV2\]; negates the WEAKER core, which any fuller bundle implies, so refutes every fuller bundle under those restrictions; not a verbatim general ¬junc_bundle \[REV1\] |
 | `juncforge_clauseIII_derivable` | clause (iii) alone IS derivable at the (2,3)-graded pins — the harness shape exact | positive fragment, conditional on the pins |
-| `juncforge_D0_instanceFalse` | `gate_glue_junction`'s `hbundle` is unsatisfiable | the flagged D0 adjudication; byte-identity KERNEL-CERTIFIED at REV1 (`juncforge_gate_hbundle_false` + `juncforge_gluePacket_false`, §R1-G2) |
+| `juncforge_D0_instanceFalse` | `gate_glue_junction`'s `hbundle` is unsatisfiable | the flagged D0 adjudication; DEFINITIONAL-EQUALITY certified at REV1 \[REV2 wording\] (`juncforge_gate_hbundle_false` + `juncforge_gluePacket_false`, §R1-G2/§R4) |
 
 ## S2. THE MECHANISM — the two-scale law becomes a PARITY contradiction inside one node
 
@@ -96,14 +101,17 @@ re-instancing at a non-degenerate seam) is an orchestrator/ROOT matter.
 * At row A \[REV1: the original parenthetical "(and by the parity mechanism, at
   any genuinely ramified deep read with odd in-carrier parent weight)" is
   bracketed as an overclaim — a mechanism-level expectation, NOT proved; the
-  theorems bind row A\]: **`junc_bundle` is INSTANCE-FALSE as transcribed**
+  theorems bind row A\]: **the compiled CHAR-2, Φ₂-LANDING `junc_bundle` is
+  INSTANCE-FALSE as transcribed** \[REV2: the refutation binds (2:F)=0, the Φ₂
+  landing, and the interior Φ₂A pin — not "junc_bundle simply false at row A"\]
   — the E-PHASE FLAG (HC2/Defs clause (iii) "may over-strengthen") lands as a
   proved INTER-CLAUSE CONTRADICTION ((ii) ⊥ (iii) at e = 2; (ii)+(iv) ⊥ at e = 1),
   not an over-strengthening of one clause.  Verdict of record (§R2): INCONSISTENT
   AS TRANSCRIBED, COMPILED AT ROW A.
 * The C-e escapee is EXPLAINED AT ROW A: GlueRun's "no compiled e ≥ 2 instance
   exists on file to feed it" is now "none CAN exist AT THE ROW-A READ — fA against
-  a Φ1A-keyed frame, any Φnext" (`juncforge_no_e2_junction`).  \[REV1: the
+  a Φ1A-keyed frame, any Φnext" (`juncforge_no_e2_junction` — the one theorem
+  whose scope IS any-F/any-Φnext \[REV2\]).  \[REV1: the
   unqualified "none CAN exist (as the definition stands)" — including the same
   gloss in the JuncForge.lean file header and the 2026-08-08 ledger entry — is
   bracketed as an overclaim; other classificands/keys are OPEN.\]
@@ -137,9 +145,14 @@ theorems stand unedited; REVISION 1 adds two declarations and corrects the recor
   RESCOPED to the proved row-A fiber: the walls hold AT THE ROW-A READ —
   classificand fA = X² + 4X + 28 read against a Φ1A = X + 2-keyed frame (the
   `hσΦ : ν.σ.Φ = Φ1A` hypothesis) under a development of fA at that frame
-  (`hdev`), for ANY finite residue field and ANY designated Φnext.  The honest
-  headline: **no e ≥ 2 `SideReads` recording can exist AT THE ROW-A READ (fA,
-  Φ1A fiber, any Φnext)**.  The unqualified forms ("at any stage, for any
+  (`hdev`).  \[REV2: the trailing "for ANY finite residue field and ANY
+  designated Φnext" that stood here applied only to `juncforge_no_e2_junction`;
+  `juncforge_deep_wall` requires (2 : F) = 0 and lands Φ₂A specifically, and
+  `juncforge_junc_bundle_false` additionally requires the interior Φ₂A pin —
+  see the §S1 scope table.\]  The honest headline: **no e ≥ 2 `SideReads`
+  recording can exist AT THE ROW-A READ (fA, Φ1A fiber, any F, any Φnext —
+  this e = 2 wall alone is char-free), and the compiled CHAR-2, Φ₂-LANDING
+  bundle at row A is instance-false**.  The unqualified forms ("at any stage, for any
   recorded node data"; "none CAN exist as the definition stands") are bracketed
   inline above as overclaims (\[REV1\] markers).  Outside the fiber — other
   classificands, other keys — existence is OPEN.  The `JuncForge.lean` file-header
@@ -157,16 +170,18 @@ theorems stand unedited; REVISION 1 adds two declarations and corrects the recor
   recentering-lift conjunct only strengthens the ∃-body), so its negation refutes
   every fuller bundle there.  Nothing more is claimed.
 
-* **(G2 — D0 byte-identity, now COMPILED.)**  The §S3 "byte-identical" claim is
+* **(G2 — D0 tie, now COMPILED.)**  \[REV2 wording: the certification here is
+  DEFINITIONAL EQUALITY, not byte identity — see §R4.\]  The §S3 tie claim is
   no longer prose.  Two new Lean-core declarations (`JuncForge.lean` §8, new
   decls only; `lake env lean` green; `#print axioms` = {propext, Classical.choice,
   Quot.sound} for both):
   - `juncforge_gate_hbundle_false` — its statement is `gate_glue_junction`'s
     `hbundle` binder copied verbatim and negated (mechanical three-way diff of the
     GlueRun binder slice, the D0 statement body, and the tie copy: IDENTICAL
-    modulo leading indentation); its proof term is `juncforge_D0_instanceFalse`
-    applied DIRECTLY, no massaging — elaboration itself certifies the two
-    propositions coincide.
+    modulo leading indentation — an UNVERIFIED editorial diff, see §R4); its
+    proof term is `juncforge_D0_instanceFalse` applied DIRECTLY, no massaging —
+    elaboration certifies the two propositions are DEFINITIONALLY EQUAL (Lean
+    does not compare source bytes).
   - `juncforge_gluePacket_false` — the NON-TEXTUAL leg (per the
     extraction-decorrelation discipline): for EVERY base history H₁,
     `¬ GlueJunction U31.fq H₁ H₂rc ReadSpecies.recentering`, proved by projecting
@@ -215,3 +230,41 @@ Spec for the next dedicated unit (design genre):
   as-is and every JuncForge theorem keeps its exact current meaning.
 
 — JUNCFORGE S2 REVISION 1 + DISPOSITION, 2026-08-08 (wallclock 2026-08-03).
+
+---
+
+## R4. REVISION 2 (2026-08-08) — the JFS2-REAUDIT corrections of record
+
+Reaudit: `JUNCFORGE_S2_reaudit_report.md` (Codex, fresh context; verdict
+CRITICAL, 1C/1G).  Both findings are PROSE defects in REVISION 1 itself — no
+Lean edit; the eight declarations of record stand unedited.  Counter stays 0/2
+(no clean pass yet).
+
+* **(C1, CRITICAL — residual any-F/any-Φnext scope.)**  Finding quoted: "§R1(C1)
+  says 'the walls hold … for ANY finite residue field and ANY designated Φnext.'
+  Only `juncforge_no_e2_junction` has that scope. `juncforge_deep_wall` requires
+  `(2 : F) = 0` and specifically lands `Φ2A`; `juncforge_junc_bundle_false`
+  additionally requires the interior `Φ2A` pin. Consequently, the headline/S1/S5
+  assertion that `junc_bundle` is simply 'instance-false at row A' remains too
+  broad."  FIXED: the headline, §S1 (verdict sentence + per-theorem scope
+  table), §S5, and §R1(C1) now carry the per-theorem scopes — the any-F/
+  any-Φnext (char-free) scope is attributed to `juncforge_no_e2_junction` ONLY;
+  `juncforge_deep_wall` is stated with its (2 : F) = 0 hypothesis and Φ₂A
+  landing; `juncforge_junc_bundle_false` with the additional interior Φ₂A pin.
+  The instance-false headline of record reads: **the compiled CHAR-2,
+  Φ₂-LANDING bundle at row A is instance-false**.
+
+* **(G1 — "byte-identity kernel-certified" inaccurate.)**  Finding quoted:
+  "Lean's kernel does not compare that copied source text with the binder's
+  source bytes; the declaration never references `gate_glue_junction`'s
+  parameter type."  FIXED: the certification claim of record is
+  **DEFINITIONAL-EQUALITY certified** — `juncforge_gate_hbundle_false`'s
+  statement elaborates and accepts `juncforge_D0_instanceFalse` applied
+  directly, which certifies the two propositions are definitionally equal;
+  byte-level agreement with the gate binder is only an unverified editorial
+  three-way diff.  The structure-field vacuity is carried INDEPENDENTLY by
+  `juncforge_gluePacket_false` (the gate's compiled `junc_bundle` field type
+  itself, no copy), which is what makes the §S3 vacuity verdict a theorem.
+  Headline, §S1 table, and §R1(G2) reworded accordingly.
+
+— JUNCFORGE S2 REVISION 2, 2026-08-08 (wallclock 2026-08-03).
