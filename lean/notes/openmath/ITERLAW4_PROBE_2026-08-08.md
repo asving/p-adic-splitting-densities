@@ -1,5 +1,19 @@
 # ITERLAW4_PROBE — sealed preregistration: the (ITER-LAW-n) recursion at n = 4 — c₄(γ,γ′) = z̄₄^{δ₄}·z₃^{D₃}·z₂^{D₂}·z₁^{D₁} on standard-lift 4-read towers, with the subwindow-restriction gate F-SUB run FIRST and the level-3 single-source legs (inflation-defect, INV-4 class, J-windows) promoted to sealed predictions
 
+> **[DATED BRACKET 2026-08-03 (wallclock; campaign 2026-08-08) — RUNG
+> INDEXING, naming only; per the ITERLAW3-PC adjudication (finding F3,
+> commit 997c467).** Per the L3CONVERGENCE convention (Appendix C of the
+> proof note: an (n+1)-read tower = rung n), this 4-READ probe confirms
+> the (ITER-LAW-n) recursion at **RUNG n = 3**. The NAME "ITERLAW4" —
+> file, battery, and this note's sealed "n = 4" throughout — counts
+> READS (4 reads), not the rung index. The rung ledger as of this
+> bracket: **n = 1 PROVED + ACCEPTED** (2-read; the accepted order-2
+> law), **n = 2 PROVED-OFF-DCX at attempt grade + MEASURED** (3-read;
+> ITERLAW3_PROOF gauge route + the sealed measured (ITER-LAW-3)),
+> **n = 3 MEASURED GREEN** (this battery, 4-read). No sealed content is
+> changed by this bracket; the sealed body's read-count indexing stands
+> as written.]**
+
 **Unit: WAVE-19 UNIT 1 = the convergence judge's S4 spec, executed exactly**
 (charter = `lean/notes/openmath/L3CONVERGENCE_2026-08-08.md` S4: "ITERLAW4_PROBE —
 the n = 4 confirmation of (ITER-LAW-n), Candidate 2 at its first unconfirmed
@@ -402,4 +416,130 @@ iterlaw4_probe_results.json; transcript: iterlaw4_probe_output.txt.
 
 ## S5. VERDICT (post-run; commit 2 fills this block — PENDING at the seal)
 
-PENDING.
+**FILLED 2026-08-03 (wallclock; campaign 2026-08-08), commit 2 of 2, FROM THE
+ARTIFACTS ONLY** (`verification/openmath/iterlaw4_probe_output.txt` +
+`verification/openmath/iterlaw4_probe_results.json`).
+
+**Relaunch provenance (recorded honestly).** The sealing unit died mid-compute
+— its battery died with its shell before any output landed. The orchestrator
+relaunched the SEALED runner BYTE-UNCHANGED and the battery completed.
+Verified at harvest: md5 of the working-tree `iterlaw4_probe.py` = md5 of the
+sealed blob `git show a680a3d:verification/openmath/iterlaw4_probe.py` =
+`80b4c26587b22eb1892be978aeaf2160`. The runner is deterministic (seed
+20260905, exact arithmetic, no wallclock dependence), so the completed run IS
+the seal's run; nothing crossed the seal between commit 1 and this harvest.
+
+**THE THREE VERDICT LINES (transcript tail, verbatim):**
+
+    LAW VERDICT (ITER-LAW-4 primary, predicted-0 families): GREEN
+    CONTROL VERDICT (meters + mutation teeth, SEPARATE from the law): MET
+    SECONDARY VERDICT (LIFT-DEV-4, conjecture-grade prediction): GREEN
+
+TOTAL samples 362,624; elapsed 1615.3 s. JSON flags: `violations` = [] (the
+per-violation list is EMPTY), `harness_events` = [] (zero harness events),
+`control_bad` = [], `law_green` = true, `secondary_red` = 0 — the exit-0
+criterion (all three lines clean) holds.
+
+**LAW families — every predicted-0 family, observed violations / samples
+(all 72 towers unless the leg's own scope says otherwise):**
+
+| leg | what | samples | violations |
+|---|---|---|---|
+| FSUB | subwindow gate: c₄ on (e₃ℤ)² == embed(MEASURED c₃) | 2,896 | **0** |
+| F0a | LEVEL-2 FIDELITY: accepted order-2 law on subtower | 840 | **0** |
+| F0b | LEVEL-3 FIDELITY: measured (ITER-LAW-3) on subtower | 2,896 | **0** |
+| G1 | L6-4 anchor value = ε₃·ε₂·ε₁ chain | 2,336 | **0** |
+| G2 | L7-4 pair value, both forms + top-slot shape | 30,944 | **0** |
+| G3 | THE CANDIDATE (ITER-LAW-4) closed form | 30,944 | **0** |
+| G4 | D₃/D₂/D₁ per-level integrality warrants | 30,944 | **0** |
+| G5 | cocycle identity, window AND quotient | 26,784 | **0** |
+| GSWAP | swap symmetry | 9,064 | **0** |
+| G6 | degenerations (e_j = 1 collapses; C3 two-way tie) | 14,304 | **0** |
+| G7 | ℤ/E₄ descent, simultaneous + 4 MIXED blocks | 54,384 | **0** |
+| G8 | integer layer, symbolic draws | 20,000 | **0** |
+| MSEP0 | master-switch fence: separation off δ₄ = 1 | 0 events | **0** |
+| FINF | inflation-defect identity vs measured shadow | 30,944 | **0** |
+| FINF0 | shadow deviation at δ₄ = 0 | 0 events | **0** |
+| FINFMISS | shadow window misses | 0 events | **0** |
+| FJ3 | J-window rung 3 | 30,944 | **0** |
+| FJ2 | J-window rung 2 | 30,944 | **0** |
+| FJ1 | J-window rung 1 | 30,944 | **0** |
+| FCLASSK | κ_ℤ(δ₄-table) == (E₄/e₃)·ℓ₃ | 72 | **0** |
+| FCLASSS | class(c₄) == INV-4 monomial mod M^{E₄} | 72 | **0** |
+| FROZEN | g_top-invariance (A4 vs P integer tables, per ring) | 4 | **0** |
+| CERT2 | level-2 subtower cert (T1/T2/T5/T11 + PARI) | 972 | **0** |
+| CERT3 | level-3 data cert (ψ₂/Φ₃/R3s key) | 72 | **0** |
+| CERT4 | level-4 data cert (ψ₃/Φ₄/R4s key) | 72 | **0** |
+| CERT4P | PARI level-4 (Φ₄ irred; (e,f) = (E₄, d₀g₀g₁g₂g₃)) | 30 | **0** |
+
+CERT4P deferrals: **6**, exactly the preregistered degree-cap set (Q/MUA/MUB
+on the two ℤ_p rings); their internal CERT4 keys ran and passed.
+
+**The F0 fidelity legs (the harness tie, displayed as CRITICAL):** level 2 —
+the ACCEPTED order-2 closed form reproduced on the level-2 subtower, 840
+samples, 0 violations (F0a); level 3 — the sealed MEASURED (ITER-LAW-3)
+reproduced on the level-3 subtower via the sealed Composite3, 2,896 samples,
+0 violations (F0b). The new level-4 layer is tied to the exact apparatus of
+record at both inherited levels. **F-SUB (run FIRST per the seal): 2,896
+subwindow pairs, 0 violations** — c₄ restricted to (e₃ℤ)² is the embedded
+measured c₃ on the nose.
+
+**Single-source promoted legs (the M4/M2/M3 cells at 4 reads) — all GREEN:**
+inflation-defect identity FINF 30,944/0 with FINF0 = 0 (no deviation at
+δ₄ = 0) and FINFMISS = 0 (no shadow window miss); INV-4 class FCLASSK 72/0 +
+FCLASSS 72/0 (field-blind towers counted per JSON `cls`; no top-carry
+M^{E₄}-escape flagged on any row, including Q); J-windows FJ3/FJ2/FJ1 each
+30,944/0. Per the S4 fence these confirm the n = 4 (4-read) instances only —
+the level-3 single-source status is NOT upgraded.
+
+**ALT honesty display (recorded, never primary):** MSEP4i = 7,450 symbolic
+separation draws (pred > 0, MET); MSEP4f = 5,216 field-level separation pairs,
+and ALT violated the measured cocycle on ALL 5,216 of them (ALTVIOL = ALTDIFF
+= 5,216 of 30,944 pairs) while the primary held everywhere; ALT symbolic
+non-integrality = 5,734; cross-denominator phantoms = 0; MSEP0 = 0 (every
+separation pair has δ₄ = 1 — separation is pure top-carry leakage, as
+predicted). Wherever the two candidates separate, ALT fails and the primary
+stands.
+
+**Meters (CONTROL verdict MET, no PARTIAL):** MD4 > 0 on all e₃ ≥ 2 rows;
+MC-3, MC-2, MC-1 > 0 on A4/P/S/T; MC-TRP (triple cascade) > 0 on A4 (12 per
+ring); MV > 0 on P/Q/R/MUA/MUB; MSEP4i = 7,450 > 0; LDVIS = 96 > 0. All
+sealed MATCH conditions met.
+
+**Mutation teeth (battery MUA/MUB × {ℤ₃, F₂[[t]]}; detection = field AND
+warrant, m4 also structural; `tested` per JSON):**
+
+| mutation | field | warrant | structural | tested | verdict |
+|---|---|---|---|---|---|
+| m1 drop ℓ₂γ₄δ₄ from D₃ | 288 | 288 | — | 936 | detected |
+| m2 S₂ → γ₃δ₃ᶜ (ALT as mutation) | 288 | 288 | — | 936 | detected |
+| m3 D₃ denominator e₂ → e₁ | 468 | 468 | — | 936 | detected |
+| m4 δ₄ → ⌊(s₄+s₄′)/e₂⌋ | 360 | 360 | 360 | 936 | detected |
+| m5 drop ε₃ from anchor | 55 | 55 | — | 60 | detected |
+| m6 letter swap z₃ ↔ z₂ | 612 | 612 | — | 936 | detected |
+
+Every mutation detected at BOTH warrant and field level (m4 additionally at
+the structural top-slot leg) — the m4-S10 lesson held in force.
+
+**SECONDARY (LIFT-DEV-4) — GREEN, the gauge mechanism's new quantitative
+prediction confirmed at first measurement:** LDDEV 512 samples / 0 violations
+(plain-Φ₃ cocycle == canonical · ε₂(γ₃)^{δ₃ᶜ} on the g₂ = 1 rows), LDINV
+256/0 (identity at g₂ = 2, mirroring LIFT-DEV-3's invariance), LDCERT 12/0.
+LDVIS = 96 deviating pairs: 16 per LD block on LD2 (all four rings) and on
+LD1 at p = 3 (both rings); LD1 at p = 2 has Φ₃^plain ≡ Φ₃^canon
+(`phi3_differs` = false), exactly the sealed design pin (ε₂(γ₃) = 1 there ⟹
+plain ≡ canonical, confirmed).
+
+**Value sets (report only, g₃ = 2 letter rows):** P and R take top-letter
+values {z̄₄} at p = 2 and {z₁, z̄₄, z̄₄z₁} at p = 3, identically on ℤ_p and
+F_p[[t]] — the integer-data ring-blindness pattern again.
+
+**Consequence (exactly the sealed S0/S4 fences, nothing more):**
+(ITER-LAW-4) — the (ITER-LAW-n) recursion unrolled at 4 reads — is now a
+MEASURED LAW (instance-confirmed conjecture, 0 violations on 362,624 samples,
+72 fresh towers, 4 rings). (ITER-LAW-n) gains its third confirmed instance;
+in rung indexing (see the dated bracket at the title): rung n = 1 PROVED +
+ACCEPTED, rung n = 2 PROVED-OFF-DCX (attempt grade) + MEASURED, rung n = 3
+MEASURED GREEN (this battery). No proof claim; no orders ≥ 5 claim; the
+general-n compose (L6-(n) + W-MULT-(n)) is the chartered next unit, after the
+rung-2 errata round (ITERLAW3-PC findings, 997c467).

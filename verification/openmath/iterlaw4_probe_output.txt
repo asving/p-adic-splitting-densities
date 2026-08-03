@@ -1,0 +1,138 @@
+[   2.9s] CERT ring (Zp,p=2) done
+[ 116.5s] CERT ring (Zp,p=3) done
+[ 125.2s] CERT ring (Fpt,p=2) done
+[ 245.5s] CERT ring (Fpt,p=3) done
+[ 245.5s] CERT done: level-2 0 viol (972 samples)
+[  246.6s]   Zp,p=2,A4 done (cum viol = 0)
+[  248.4s]   Zp,p=2,P done (cum viol = 0)
+[  299.6s]   Zp,p=2,Q done (cum viol = 0)
+[  301.6s]   Zp,p=2,R done (cum viol = 0)
+[  303.4s]   Zp,p=2,S done (cum viol = 0)
+[  304.7s]   Zp,p=2,B4 done (cum viol = 0)
+[  305.9s]   Zp,p=2,D1 done (cum viol = 0)
+[  307.0s]   Zp,p=2,D2 done (cum viol = 0)
+[  307.6s]   Zp,p=2,C0 done (cum viol = 0)
+[  308.2s]   Zp,p=2,C1 done (cum viol = 0)
+[  308.8s]   Zp,p=2,C2 done (cum viol = 0)
+[  309.3s]   Zp,p=2,C3 done (cum viol = 0)
+[  309.8s]   Zp,p=2,T done (cum viol = 0)
+[  340.1s]   Zp,p=2,MUA done (cum viol = 0)
+[  409.8s]   Zp,p=2,MUB done (cum viol = 0)
+[  410.5s]   Zp,p=2,LD1 done (cum viol = 0)
+[  411.1s]   Zp,p=2,LD2 done (cum viol = 0)
+[  413.3s]   Zp,p=2,LD3 done (cum viol = 0)
+[  414.6s]   Zp,p=3,A4 done (cum viol = 0)
+[  417.0s]   Zp,p=3,P done (cum viol = 0)
+[  526.1s]   Zp,p=3,Q done (cum viol = 0)
+[  528.5s]   Zp,p=3,R done (cum viol = 0)
+[  530.4s]   Zp,p=3,S done (cum viol = 0)
+[  531.7s]   Zp,p=3,B4 done (cum viol = 0)
+[  533.1s]   Zp,p=3,D1 done (cum viol = 0)
+[  534.4s]   Zp,p=3,D2 done (cum viol = 0)
+[  535.1s]   Zp,p=3,C0 done (cum viol = 0)
+[  535.8s]   Zp,p=3,C1 done (cum viol = 0)
+[  536.5s]   Zp,p=3,C2 done (cum viol = 0)
+[  537.2s]   Zp,p=3,C3 done (cum viol = 0)
+[  537.8s]   Zp,p=3,T done (cum viol = 0)
+[  616.6s]   Zp,p=3,MUA done (cum viol = 0)
+[  758.8s]   Zp,p=3,MUB done (cum viol = 0)
+[  759.7s]   Zp,p=3,LD1 done (cum viol = 0)
+[  760.5s]   Zp,p=3,LD2 done (cum viol = 0)
+[  763.4s]   Zp,p=3,LD3 done (cum viol = 0)
+[  766.0s]   Fpt,p=2,A4 done (cum viol = 0)
+[  769.4s]   Fpt,p=2,P done (cum viol = 0)
+[  789.1s]   Fpt,p=2,Q done (cum viol = 0)
+[  793.8s]   Fpt,p=2,R done (cum viol = 0)
+[  807.1s]   Fpt,p=2,S done (cum viol = 0)
+[  810.7s]   Fpt,p=2,B4 done (cum viol = 0)
+[  815.0s]   Fpt,p=2,D1 done (cum viol = 0)
+[  817.4s]   Fpt,p=2,D2 done (cum viol = 0)
+[  819.1s]   Fpt,p=2,C0 done (cum viol = 0)
+[  820.1s]   Fpt,p=2,C1 done (cum viol = 0)
+[  821.1s]   Fpt,p=2,C2 done (cum viol = 0)
+[  821.9s]   Fpt,p=2,C3 done (cum viol = 0)
+[  823.1s]   Fpt,p=2,T done (cum viol = 0)
+[  839.7s]   Fpt,p=2,MUA done (cum viol = 0)
+[  971.3s]   Fpt,p=2,MUB done (cum viol = 0)
+[  972.9s]   Fpt,p=2,LD1 done (cum viol = 0)
+[  974.6s]   Fpt,p=2,LD2 done (cum viol = 0)
+[  979.4s]   Fpt,p=2,LD3 done (cum viol = 0)
+[  983.0s]   Fpt,p=3,A4 done (cum viol = 0)
+[  987.7s]   Fpt,p=3,P done (cum viol = 0)
+[ 1051.5s]   Fpt,p=3,Q done (cum viol = 0)
+[ 1058.1s]   Fpt,p=3,R done (cum viol = 0)
+[ 1076.6s]   Fpt,p=3,S done (cum viol = 0)
+[ 1079.8s]   Fpt,p=3,B4 done (cum viol = 0)
+[ 1084.7s]   Fpt,p=3,D1 done (cum viol = 0)
+[ 1087.5s]   Fpt,p=3,D2 done (cum viol = 0)
+[ 1089.5s]   Fpt,p=3,C0 done (cum viol = 0)
+[ 1090.9s]   Fpt,p=3,C1 done (cum viol = 0)
+[ 1092.0s]   Fpt,p=3,C2 done (cum viol = 0)
+[ 1092.9s]   Fpt,p=3,C3 done (cum viol = 0)
+[ 1094.9s]   Fpt,p=3,T done (cum viol = 0)
+[ 1146.7s]   Fpt,p=3,MUA done (cum viol = 0)
+[ 1356.2s]   Fpt,p=3,MUB done (cum viol = 0)
+[ 1358.4s]   Fpt,p=3,LD1 done (cum viol = 0)
+[ 1360.7s]   Fpt,p=3,LD2 done (cum viol = 0)
+[ 1367.5s]   Fpt,p=3,LD3 done (cum viol = 0)
+[1368.3s] G8 symbolic done (MSEP4i = 7450, ALT-nonintegral = 5734, cross-denominator phantoms = 0)
+[1611.2s] mutation controls done: field={'m1': 288, 'm2': 288, 'm3': 468, 'm4': 360, 'm5': 55, 'm6': 612} warrant={'m1': 288, 'm2': 288, 'm3': 468, 'm4': 360, 'm5': 55, 'm6': 612} structural={'m4': 360}
+[1615.3s] LIFT-DEV leg done (LDVIS = 96)
+
+==============================================================================
+PREREGISTERED vs OBSERVED (violations; samples in parentheses)
+==============================================================================
+FSUB     F-SUB gate: c4|_(e3Z)^2 == embed(measured c3)  pred 0  obs     0 (  2896)  GREEN
+F0a      LEVEL-2 FIDELITY: accepted law on subtower     pred 0  obs     0 (   840)  GREEN
+F0b      LEVEL-3 FIDELITY: measured (ITER-LAW-3)        pred 0  obs     0 (  2896)  GREEN
+G1       L6-4 ANCHOR-VAL eps-chain                      pred 0  obs     0 (  2336)  GREEN
+G2       L7-4 PAIR-VAL both forms + top-slot shape      pred 0  obs     0 ( 30944)  GREEN
+G3       THE CANDIDATE (ITER-LAW-4) closed form         pred 0  obs     0 ( 30944)  GREEN
+G4       D3/D2/D1 per-level integrality                 pred 0  obs     0 ( 30944)  GREEN
+G5       cocycle identity, window AND quotient          pred 0  obs     0 ( 26784)  GREEN
+GSWAP    swap symmetry                                  pred 0  obs     0 (  9064)  GREEN
+G6       degenerations (e_j = 1 collapses, C3 two-way)  pred 0  obs     0 ( 14304)  GREEN
+G7       Z/E4 descent: simultaneous + 4 MIXED blocks    pred 0  obs     0 ( 54384)  GREEN
+G8       integer layer symbolic (20k draws)             pred 0  obs     0 ( 20000)  GREEN
+MSEP0    ALT separation off d4=1 (master-switch fence)  pred 0  obs     0 (     0)  GREEN
+FINF     inflation-defect identity vs measured shadow   pred 0  obs     0 ( 30944)  GREEN
+FINF0    shadow deviation at d4=0                       pred 0  obs     0 (     0)  GREEN
+FINFMISS F-INF shadow window misses                 pred 0  obs     0 (     0)  GREEN
+FJ3      J-window rung 3                                pred 0  obs     0 ( 30944)  GREEN
+FJ2      J-window rung 2                                pred 0  obs     0 ( 30944)  GREEN
+FJ1      J-window rung 1                                pred 0  obs     0 ( 30944)  GREEN
+FCLASSK  kappa_Z(d4-table) == (E4/e3)*l3             pred 0  obs     0 (    72)  GREEN
+FCLASSS  class(c4) == INV-4 monomial mod M^{E4}      pred 0  obs     0 (    72)  GREEN
+FROZEN   g_top-invariance (A4 vs P integer tables)    pred 0  obs     0 (     4)  GREEN
+CERT3    level-3 data cert (psi2/Phi3/R3s key)         pred 0  obs     0 (    72)  GREEN
+CERT4    level-4 data cert (psi3/Phi4/R4s key)         pred 0  obs     0 (    72)  GREEN
+CERT4P   PARI level-4 (Phi4 irred, (e,f))             pred 0  obs     0 (    30)  GREEN
+CERT2    level-2 subtower (T1/T2/T5/T11+PARI)        pred 0  obs     0 (   972)  GREEN
+CERT4P deferrals (degPhi4 > cap, preregistered): 6
+METER MD4    > 0 on all e3>=2 rows               MET
+METER MC-3   (g2=1 & d3c=1) on A4,P,S,T          MET
+METER MC-2   (g1=1 & d2c=1) on A4,P,S,T          MET
+METER MC-1   (g0=1 & d1c=1) on A4,P,S,T          MET
+METER MC-TRP (triple cascade) on A4              MET
+METER MV     (visible c4 != 1) on P,Q,R,MUA,MUB  MET
+METER MSEP4i (symbolic ALT/composed separation) = 7450 (pred > 0)  MET
+METER MSEP4f (field-level separation, report) = 5216; ALT violations vs measured = 5216 / 30944 pairs; ALT symbolic nonintegral = 5734
+METER LDVIS (LIFT-DEV factor visible) = 96 (pred > 0)  MET
+MUTATION m1: field 288, warrant 288 (pred >= 1 each)  MET
+MUTATION m2: field 288, warrant 288 (pred >= 1 each)  MET
+MUTATION m3: field 468, warrant 468 (pred >= 1 each)  MET
+MUTATION m4: field 360, warrant 360  structural 360 (pred >= 1 each)  MET
+MUTATION m5: field 55, warrant 55 (pred >= 1 each)  MET
+MUTATION m6: field 612, warrant 612 (pred >= 1 each)  MET
+value set Zp,p=2,P: ['zb4^1*z3^0*z2^0*z1^0']
+value set Zp,p=2,R: ['zb4^1*z3^0*z2^0*z1^0']
+value set Zp,p=3,P: ['zb4^0*z3^0*z2^0*z1^1', 'zb4^1*z3^0*z2^0*z1^0', 'zb4^1*z3^0*z2^0*z1^1']
+value set Zp,p=3,R: ['zb4^0*z3^0*z2^0*z1^1', 'zb4^1*z3^0*z2^0*z1^0', 'zb4^1*z3^0*z2^0*z1^1']
+value set Fpt,p=2,P: ['zb4^1*z3^0*z2^0*z1^0']
+value set Fpt,p=2,R: ['zb4^1*z3^0*z2^0*z1^0']
+value set Fpt,p=3,P: ['zb4^0*z3^0*z2^0*z1^1', 'zb4^1*z3^0*z2^0*z1^0', 'zb4^1*z3^0*z2^0*z1^1']
+value set Fpt,p=3,R: ['zb4^0*z3^0*z2^0*z1^1', 'zb4^1*z3^0*z2^0*z1^0', 'zb4^1*z3^0*z2^0*z1^1']
+TOTAL samples: 362624   elapsed 1615.3s
+LAW VERDICT (ITER-LAW-4 primary, predicted-0 families): GREEN
+CONTROL VERDICT (meters + mutation teeth, SEPARATE from the law): MET
+SECONDARY VERDICT (LIFT-DEV-4, conjecture-grade prediction): GREEN

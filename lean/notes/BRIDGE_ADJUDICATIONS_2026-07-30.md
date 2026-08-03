@@ -7585,3 +7585,44 @@ standing line, PROJECT_STATE/ROOT rows) are OWED AT ACCEPTANCE, not now;
 the ITERLAW4 probe unit per the L3CONVERGENCE S4 decision default; neither
 unit consumes the other. Unit files: the proof note + the diagnostic pair +
 this append ONLY (scoped commit).
+
+---
+
+## ITERLAW4_PROBE VERDICT: GREEN/MET/GREEN — 2026-08-08 (wave-19 unit 1, commit 2 of 2, verdict FROM ARTIFACTS)
+
+The sealed n = 4-READ battery (prereg + runner sealed PRE-RUN at a680a3d)
+completed: **LAW VERDICT (ITER-LAW-4 primary, predicted-0 families): GREEN —
+0 violations on 362,624 samples, 72 fresh towers, 4 rings** (elapsed
+1615.3 s; JSON `violations` EMPTY, zero harness events). CONTROL VERDICT
+(meters + mutation teeth): MET — m1–m6 each detected at BOTH field and
+warrant level (m4 also structural: 360/360/360), no PARTIAL. SECONDARY
+(LIFT-DEV-4): GREEN — the gauge mechanism's new quantitative prediction
+ε₂(γ₃)^{δ₃ᶜ} confirmed at first measurement (LDDEV 512/0, LDINV 256/0,
+LDVIS 96; the p = 2 LD1 ε₂(γ₃) = 1 design pin confirmed as plain ≡
+canonical). Fidelity ties: F-SUB gate 2,896/0 (c₄ on (e₃ℤ)² = embedded
+measured c₃ on the nose); F0a 840/0 (accepted order-2 law on the level-2
+subtower); F0b 2,896/0 (measured (ITER-LAW-3) on the level-3 subtower).
+Single-source promoted legs all GREEN at 4 reads (FINF 30,944/0 + FINF0/
+FINFMISS 0; FCLASSK/FCLASSS 72/0 each; FJ3/FJ2/FJ1 30,944/0 each) — n = 3
+single-source status NOT upgraded (S4 fence). ALT (level-3-naive) REFUTED
+wherever it separates: 5,216/5,216 field separation pairs violate ALT, all
+at δ₄ = 1 (MSEP0 = 0), primary holds on all. CERT4P deferrals = 6, exactly
+the preregistered cap set. **Relaunch provenance (honest):** the sealing
+unit died mid-compute (battery died with its shell); the orchestrator
+relaunched the SEALED runner BYTE-UNCHANGED — md5(working tree) =
+md5(a680a3d blob) = 80b4c26587b22eb1892be978aeaf2160, verified at harvest;
+deterministic runner (seed 20260905, exact arithmetic) ⟹ the run IS the
+seal's run. **Rung ledger (per the ITERLAW3-PC F3 adjudication, 997c467;
+dated bracket added at the note's naming site — an (n+1)-read tower = rung
+n, the NAME "ITERLAW4" counts READS):** rung n = 1 PROVED + ACCEPTED
+(2-read); rung n = 2 PROVED-OFF-DCX at attempt grade + MEASURED (3-read);
+rung n = 3 MEASURED GREEN (this battery, 4-read). **Three rungs now
+confirmed from ONE closed-form recursion — (ITER-LAW-n), one Bézout kernel
+per level, each denominator cured by its own level's composed correction,
+no cross-level denominators. The general-n compose (L6-(n) + W-MULT-(n),
+L3CONVERGENCE S3 route) is CHARTERED as the next dedicated unit, after the
+rung-2 errata round (ITERLAW3-PC findings F1/F2/F3).** Status ceiling
+unchanged: (ITER-LAW-4) = MEASURED LAW (instance-confirmed conjecture),
+nothing proved by numerics. Unit files: the filled prereg note +
+iterlaw4_probe_output.txt + iterlaw4_probe_results.json + this append ONLY
+(scoped `git commit --only`).
