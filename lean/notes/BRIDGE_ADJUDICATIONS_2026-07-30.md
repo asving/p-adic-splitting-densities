@@ -7626,3 +7626,33 @@ unchanged: (ITER-LAW-4) = MEASURED LAW (instance-confirmed conjecture),
 nothing proved by numerics. Unit files: the filled prereg note +
 iterlaw4_probe_output.txt + iterlaw4_probe_results.json + this append ONLY
 (scoped `git commit --only`).
+
+**ITERLAW3 PASS PE (Fable execution + content) — 2026-08-03: NOT-CLEAN, 1C/1G
+(+3 nits); acceptance counter stays 0/2.** Report
+`lean/notes/openmath/ITERLAW3_passPE_report.md`. Findings frozen BEFORE any
+concurrent-pass artifact was consulted; decorrelated CONVERGENCE with the
+landed PC pass: PE-F1 (CRITICAL — the S6.3 COR-3 "all unconditional"
+justification is false for CX/CW: DCX has no e₂-condition and its s₂-track
+trivializes at e₁ = 1; executed witnesses: (3,2,1)(2,1,1)(1,1,1)/ℤ₅ at
+e₂ = 1 realizes 4 DCX pairs, TW2 = (4,1,1)(1,3,1)(2,1,1)/F₃[[t]] at e₁ = 1
+realizes 48; S9's ITERLAW4 "S6.3 proved" cite at risk) = PC-F2; PE-F2
+(GAP — DEV-1's induction measure "j−e₀+1 ≤ j−1 (e₀ ≥ 1)" needs e₀ ≥ 2;
+corner e₀ = 1 ∧ d₀ ≥ 2 ∧ j ≥ g₀ unproved, no downstream use reaches it) =
+PC-F1; PE-N2 (rung indexing S6.6) = PC-F3. EXECUTION LEG ALL GREEN — the
+proof's charged surface SURVIVED: F2c from-note reimplementation
+`verification/openmath/iterlaw3_pe_reimpl.py` (NO harness import; own
+fields/DVR/reads; fresh rings ℤ₅+F₅[[t]]; π-perturbed Φ₀ in-class; seed
+20260803) = 3,344 pairs / 55,186 checks / 0 violations on 10 fresh towers;
+DCX locus meter exact (live only at e₀ ≥ 3 ∧ g₀ = g₁ = 1 + track: 16/576,
+16/576, 48/256; empty on all e₀ ≤ 2 and on g₀ = 2 controls); DCX instance
+data 80 pairs: display holds 80/80, Q¹ ≠ 0 + naive-E₀ re-overflow 80/80
+(S4.7's breakdown mechanism real; lemma stays open); e₂ = 1 degeneration
+reproduces the ACCEPTED law via an own level-2 cocycle (64/0 + witness
+144/0); 6/6 mutation controls field-visible and fired (incl. the ITERLAWR
+naive-Σ alternative, 720/720); symbolic integer layer 20,000/0; diag re-run
+byte-exact; case census reconciled exactly (my predicates reproduce
+I 912/II-1 368/II-2 40/II-3 88/DCX 16 per-row). Errata round-1 charge (both
+passes agree): re-scope COR-3 CX/CW to the proved perimeter, restrict/repair
+DEV-1's stated range, fix the rung labels; the S2 "wait —" artifact rides
+along. Unit files: the reimpl runner + output + results.json + the PE report
++ this append ONLY (scoped `git commit --only`).

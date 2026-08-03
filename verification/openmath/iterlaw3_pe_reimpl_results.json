@@ -1,0 +1,1863 @@
+{
+ "seed": 20260803,
+ "pairs": 3344,
+ "checks": 55186,
+ "violations": 0,
+ "families": {
+  "ANCHOR-IN-W3": [
+   638,
+   0
+  ],
+  "CASESPLIT-DEG": [
+   3344,
+   0
+  ],
+  "CV-D1is0": [
+   64,
+   0
+  ],
+  "CV-S1is0": [
+   64,
+   0
+  ],
+  "CW-D2is0": [
+   400,
+   0
+  ],
+  "CW-Sig": [
+   400,
+   0
+  ],
+  "CX-D1-accepted": [
+   64,
+   0
+  ],
+  "CX-D1-accepted-int": [
+   64,
+   0
+  ],
+  "CX-D2isdelta2": [
+   64,
+   0
+  ],
+  "CX-Sig": [
+   64,
+   0
+  ],
+  "CX-accepted-law-c2": [
+   64,
+   0
+  ],
+  "CX-b2isgamma": [
+   64,
+   0
+  ],
+  "CX-c3-equals-c2": [
+   64,
+   0
+  ],
+  "CX-d3is0": [
+   64,
+   0
+  ],
+  "D1-INT": [
+   3344,
+   0
+  ],
+  "D2-INT": [
+   3344,
+   0
+  ],
+  "DCX-e0ge3": [
+   80,
+   0
+  ],
+  "DCX-subcase": [
+   80,
+   0
+  ],
+  "I-R2vA": [
+   2328,
+   0
+  ],
+  "I-dev": [
+   2328,
+   0
+  ],
+  "I-w2A": [
+   2328,
+   0
+  ],
+  "II1-DEV1-Qw": [
+   476,
+   0
+  ],
+  "II1-DEV1-readRem": [
+   476,
+   0
+  ],
+  "II1-DEV1-w1Rem": [
+   476,
+   0
+  ],
+  "II1-R2vE0": [
+   476,
+   0
+  ],
+  "II1-dev": [
+   476,
+   0
+  ],
+  "II1-w2E0": [
+   476,
+   0
+  ],
+  "II1-w2E1": [
+   476,
+   0
+  ],
+  "II2-E0-is-digit": [
+   132,
+   0
+  ],
+  "II2-R2vE0": [
+   132,
+   0
+  ],
+  "II2-dev": [
+   132,
+   0
+  ],
+  "II2-w2E0": [
+   132,
+   0
+  ],
+  "II2-w2E1": [
+   132,
+   0
+  ],
+  "II23-DEV1-Q0w": [
+   460,
+   0
+  ],
+  "II23-DEV1-R1pw": [
+   460,
+   0
+  ],
+  "II23-DEV1-readRem0": [
+   460,
+   0
+  ],
+  "II23-DEV1-w1Rem0": [
+   460,
+   0
+  ],
+  "II23-Q1-e0ge3": [
+   460,
+   0
+  ],
+  "II23-Q1-only-if": [
+   460,
+   0
+  ],
+  "II23-Q1w": [
+   460,
+   0
+  ],
+  "II3-E0-is-digit": [
+   328,
+   0
+  ],
+  "II3-R2vE0": [
+   328,
+   0
+  ],
+  "II3-d2is0": [
+   328,
+   0
+  ],
+  "II3-dev": [
+   328,
+   0
+  ],
+  "II3-w2E0": [
+   328,
+   0
+  ],
+  "INNER-DICHOT": [
+   3344,
+   0
+  ],
+  "L2-3a": [
+   3344,
+   0
+  ],
+  "L2-3b": [
+   3344,
+   0
+  ],
+  "L6-3": [
+   638,
+   0
+  ],
+  "SINGLE-READ-SHAPE": [
+   3264,
+   0
+  ],
+  "THEOREM": [
+   3264,
+   0
+  ],
+  "WELL-DEF": [
+   10,
+   0
+  ],
+  "WINDOW": [
+   3344,
+   0
+  ],
+  "WMULT-eps-form": [
+   3264,
+   0
+  ],
+  "WMULT-prod-form": [
+   3264,
+   0
+  ]
+ },
+ "towers": [
+  {
+   "tower": "TW1-Z5-DCX",
+   "G0": 84,
+   "M": 7,
+   "block": 576,
+   "census": {
+    "I": 336,
+    "II-3": 96,
+    "II-1": 96,
+    "II-2": 32,
+    "DCX": 16
+   },
+   "dcx": 16,
+   "dcx_measure": 0.027777777777777776,
+   "dcx_expected": true
+  },
+  {
+   "tower": "TW1b-F5t-DCX",
+   "G0": 84,
+   "M": 3,
+   "block": 576,
+   "census": {
+    "I": 336,
+    "II-3": 96,
+    "II-1": 96,
+    "II-2": 32,
+    "DCX": 16
+   },
+   "dcx": 16,
+   "dcx_measure": 0.027777777777777776,
+   "dcx_expected": true
+  },
+  {
+   "tower": "TW2-F3t-DCX-e1is1",
+   "G0": 16,
+   "M": 6,
+   "block": 256,
+   "census": {
+    "I": 160,
+    "II-3": 48,
+    "DCX": 48
+   },
+   "dcx": 48,
+   "dcx_measure": 0.1875,
+   "dcx_expected": true
+  },
+  {
+   "tower": "TW3-Z3-g1is2",
+   "G0": 132,
+   "M": 7,
+   "block": 576,
+   "census": {
+    "I": 576
+   },
+   "dcx": 0,
+   "dcx_measure": 0.0,
+   "dcx_expected": false
+  },
+  {
+   "tower": "TW4-F2t-g0is2",
+   "G0": 56,
+   "M": 7,
+   "block": 256,
+   "census": {
+    "I": 192,
+    "II-1": 64
+   },
+   "dcx": 0,
+   "dcx_measure": 0.0,
+   "dcx_expected": false
+  },
+  {
+   "tower": "TW5-Z3-e2is1",
+   "G0": 4,
+   "M": 6,
+   "block": 64,
+   "census": {
+    "I": 40,
+    "II-1": 12,
+    "II-3": 8,
+    "II-2": 4
+   },
+   "dcx": 0,
+   "dcx_measure": 0.0,
+   "dcx_expected": false
+  },
+  {
+   "tower": "TW6-Z5-e0is1",
+   "G0": 28,
+   "M": 4,
+   "block": 64,
+   "census": {
+    "I": 48,
+    "II-1": 16
+   },
+   "dcx": 0,
+   "dcx_measure": 0.0,
+   "dcx_expected": false
+  },
+  {
+   "tower": "TW7-Z2-d0is2",
+   "G0": 32,
+   "M": 3,
+   "block": 256,
+   "census": {
+    "I": 160,
+    "II-3": 32,
+    "II-1": 48,
+    "II-2": 16
+   },
+   "dcx": 0,
+   "dcx_measure": 0.0,
+   "dcx_expected": false
+  },
+  {
+   "tower": "TW8-F2t-g2is2",
+   "G0": 30,
+   "M": 4,
+   "block": 144,
+   "census": {
+    "I": 144
+   },
+   "dcx": 0,
+   "dcx_measure": 0.0,
+   "dcx_expected": false
+  },
+  {
+   "tower": "TW9-Z5-e1is3",
+   "G0": 72,
+   "M": 5,
+   "block": 576,
+   "census": {
+    "I": 336,
+    "II-3": 48,
+    "II-1": 144,
+    "II-2": 48
+   },
+   "dcx": 0,
+   "dcx_measure": 0.0,
+   "dcx_expected": false
+  }
+ ],
+ "dcx_instance": [
+  {
+   "tower": "TW1-Z5-DCX",
+   "pair": [
+    90,
+    90
+   ],
+   "case": "II-2",
+   "thm": true,
+   "wmult": true,
+   "prod": true,
+   "shape": true,
+   "q1_nonzero": true,
+   "naive_E0_overflows": true,
+   "slot_support": [
+    0,
+    1
+   ]
+  },
+  {
+   "tower": "TW1-Z5-DCX",
+   "pair": [
+    90,
+    95
+   ],
+   "case": "II-2",
+   "thm": true,
+   "wmult": true,
+   "prod": true,
+   "shape": true,
+   "q1_nonzero": true,
+   "naive_E0_overflows": true,
+   "slot_support": [
+    1,
+    2
+   ]
+  },
+  {
+   "tower": "TW1-Z5-DCX",
+   "pair": [
+    90,
+    174
+   ],
+   "case": "II-2",
+   "thm": true,
+   "wmult": true,
+   "prod": true,
+   "shape": true,
+   "q1_nonzero": true,
+   "naive_E0_overflows": true,
+   "slot_support": [
+    0,
+    1
+   ]
+  },
+  {
+   "tower": "TW1-Z5-DCX",
+   "pair": [
+    90,
+    179
+   ],
+   "case": "II-2",
+   "thm": true,
+   "wmult": true,
+   "prod": true,
+   "shape": true,
+   "q1_nonzero": true,
+   "naive_E0_overflows": true,
+   "slot_support": [
+    1,
+    2
+   ]
+  },
+  {
+   "tower": "TW1-Z5-DCX",
+   "pair": [
+    95,
+    90
+   ],
+   "case": "II-2",
+   "thm": true,
+   "wmult": true,
+   "prod": true,
+   "shape": true,
+   "q1_nonzero": true,
+   "naive_E0_overflows": true,
+   "slot_support": [
+    1,
+    2
+   ]
+  },
+  {
+   "tower": "TW1-Z5-DCX",
+   "pair": [
+    95,
+    95
+   ],
+   "case": "II-2",
+   "thm": true,
+   "wmult": true,
+   "prod": true,
+   "shape": true,
+   "q1_nonzero": true,
+   "naive_E0_overflows": true,
+   "slot_support": [
+    2,
+    3
+   ]
+  },
+  {
+   "tower": "TW1-Z5-DCX",
+   "pair": [
+    95,
+    174
+   ],
+   "case": "II-2",
+   "thm": true,
+   "wmult": true,
+   "prod": true,
+   "shape": true,
+   "q1_nonzero": true,
+   "naive_E0_overflows": true,
+   "slot_support": [
+    1,
+    2
+   ]
+  },
+  {
+   "tower": "TW1-Z5-DCX",
+   "pair": [
+    95,
+    179
+   ],
+   "case": "II-2",
+   "thm": true,
+   "wmult": true,
+   "prod": true,
+   "shape": true,
+   "q1_nonzero": true,
+   "naive_E0_overflows": true,
+   "slot_support": [
+    2,
+    3
+   ]
+  },
+  {
+   "tower": "TW1-Z5-DCX",
+   "pair": [
+    174,
+    90
+   ],
+   "case": "II-2",
+   "thm": true,
+   "wmult": true,
+   "prod": true,
+   "shape": true,
+   "q1_nonzero": true,
+   "naive_E0_overflows": true,
+   "slot_support": [
+    0,
+    1
+   ]
+  },
+  {
+   "tower": "TW1-Z5-DCX",
+   "pair": [
+    174,
+    95
+   ],
+   "case": "II-2",
+   "thm": true,
+   "wmult": true,
+   "prod": true,
+   "shape": true,
+   "q1_nonzero": true,
+   "naive_E0_overflows": true,
+   "slot_support": [
+    1,
+    2
+   ]
+  },
+  {
+   "tower": "TW1-Z5-DCX",
+   "pair": [
+    174,
+    174
+   ],
+   "case": "II-2",
+   "thm": true,
+   "wmult": true,
+   "prod": true,
+   "shape": true,
+   "q1_nonzero": true,
+   "naive_E0_overflows": true,
+   "slot_support": [
+    0,
+    1
+   ]
+  },
+  {
+   "tower": "TW1-Z5-DCX",
+   "pair": [
+    174,
+    179
+   ],
+   "case": "II-2",
+   "thm": true,
+   "wmult": true,
+   "prod": true,
+   "shape": true,
+   "q1_nonzero": true,
+   "naive_E0_overflows": true,
+   "slot_support": [
+    1,
+    2
+   ]
+  },
+  {
+   "tower": "TW1-Z5-DCX",
+   "pair": [
+    179,
+    90
+   ],
+   "case": "II-2",
+   "thm": true,
+   "wmult": true,
+   "prod": true,
+   "shape": true,
+   "q1_nonzero": true,
+   "naive_E0_overflows": true,
+   "slot_support": [
+    1,
+    2
+   ]
+  },
+  {
+   "tower": "TW1-Z5-DCX",
+   "pair": [
+    179,
+    95
+   ],
+   "case": "II-2",
+   "thm": true,
+   "wmult": true,
+   "prod": true,
+   "shape": true,
+   "q1_nonzero": true,
+   "naive_E0_overflows": true,
+   "slot_support": [
+    2,
+    3
+   ]
+  },
+  {
+   "tower": "TW1-Z5-DCX",
+   "pair": [
+    179,
+    174
+   ],
+   "case": "II-2",
+   "thm": true,
+   "wmult": true,
+   "prod": true,
+   "shape": true,
+   "q1_nonzero": true,
+   "naive_E0_overflows": true,
+   "slot_support": [
+    1,
+    2
+   ]
+  },
+  {
+   "tower": "TW1-Z5-DCX",
+   "pair": [
+    179,
+    179
+   ],
+   "case": "II-2",
+   "thm": true,
+   "wmult": true,
+   "prod": true,
+   "shape": true,
+   "q1_nonzero": true,
+   "naive_E0_overflows": true,
+   "slot_support": [
+    2,
+    3
+   ]
+  },
+  {
+   "tower": "TW1b-F5t-DCX",
+   "pair": [
+    90,
+    90
+   ],
+   "case": "II-2",
+   "thm": true,
+   "wmult": true,
+   "prod": true,
+   "shape": true,
+   "q1_nonzero": true,
+   "naive_E0_overflows": true,
+   "slot_support": [
+    0,
+    1
+   ]
+  },
+  {
+   "tower": "TW1b-F5t-DCX",
+   "pair": [
+    90,
+    95
+   ],
+   "case": "II-2",
+   "thm": true,
+   "wmult": true,
+   "prod": true,
+   "shape": true,
+   "q1_nonzero": true,
+   "naive_E0_overflows": true,
+   "slot_support": [
+    1,
+    2
+   ]
+  },
+  {
+   "tower": "TW1b-F5t-DCX",
+   "pair": [
+    90,
+    126
+   ],
+   "case": "II-2",
+   "thm": true,
+   "wmult": true,
+   "prod": true,
+   "shape": true,
+   "q1_nonzero": true,
+   "naive_E0_overflows": true,
+   "slot_support": [
+    0,
+    1
+   ]
+  },
+  {
+   "tower": "TW1b-F5t-DCX",
+   "pair": [
+    90,
+    131
+   ],
+   "case": "II-2",
+   "thm": true,
+   "wmult": true,
+   "prod": true,
+   "shape": true,
+   "q1_nonzero": true,
+   "naive_E0_overflows": true,
+   "slot_support": [
+    1,
+    2
+   ]
+  },
+  {
+   "tower": "TW1b-F5t-DCX",
+   "pair": [
+    95,
+    90
+   ],
+   "case": "II-2",
+   "thm": true,
+   "wmult": true,
+   "prod": true,
+   "shape": true,
+   "q1_nonzero": true,
+   "naive_E0_overflows": true,
+   "slot_support": [
+    1,
+    2
+   ]
+  },
+  {
+   "tower": "TW1b-F5t-DCX",
+   "pair": [
+    95,
+    95
+   ],
+   "case": "II-2",
+   "thm": true,
+   "wmult": true,
+   "prod": true,
+   "shape": true,
+   "q1_nonzero": true,
+   "naive_E0_overflows": true,
+   "slot_support": [
+    2,
+    3
+   ]
+  },
+  {
+   "tower": "TW1b-F5t-DCX",
+   "pair": [
+    95,
+    126
+   ],
+   "case": "II-2",
+   "thm": true,
+   "wmult": true,
+   "prod": true,
+   "shape": true,
+   "q1_nonzero": true,
+   "naive_E0_overflows": true,
+   "slot_support": [
+    1,
+    2
+   ]
+  },
+  {
+   "tower": "TW1b-F5t-DCX",
+   "pair": [
+    95,
+    131
+   ],
+   "case": "II-2",
+   "thm": true,
+   "wmult": true,
+   "prod": true,
+   "shape": true,
+   "q1_nonzero": true,
+   "naive_E0_overflows": true,
+   "slot_support": [
+    2,
+    3
+   ]
+  },
+  {
+   "tower": "TW1b-F5t-DCX",
+   "pair": [
+    126,
+    90
+   ],
+   "case": "II-2",
+   "thm": true,
+   "wmult": true,
+   "prod": true,
+   "shape": true,
+   "q1_nonzero": true,
+   "naive_E0_overflows": true,
+   "slot_support": [
+    0,
+    1
+   ]
+  },
+  {
+   "tower": "TW1b-F5t-DCX",
+   "pair": [
+    126,
+    95
+   ],
+   "case": "II-2",
+   "thm": true,
+   "wmult": true,
+   "prod": true,
+   "shape": true,
+   "q1_nonzero": true,
+   "naive_E0_overflows": true,
+   "slot_support": [
+    1,
+    2
+   ]
+  },
+  {
+   "tower": "TW1b-F5t-DCX",
+   "pair": [
+    126,
+    126
+   ],
+   "case": "II-2",
+   "thm": true,
+   "wmult": true,
+   "prod": true,
+   "shape": true,
+   "q1_nonzero": true,
+   "naive_E0_overflows": true,
+   "slot_support": [
+    0,
+    1
+   ]
+  },
+  {
+   "tower": "TW1b-F5t-DCX",
+   "pair": [
+    126,
+    131
+   ],
+   "case": "II-2",
+   "thm": true,
+   "wmult": true,
+   "prod": true,
+   "shape": true,
+   "q1_nonzero": true,
+   "naive_E0_overflows": true,
+   "slot_support": [
+    1,
+    2
+   ]
+  },
+  {
+   "tower": "TW1b-F5t-DCX",
+   "pair": [
+    131,
+    90
+   ],
+   "case": "II-2",
+   "thm": true,
+   "wmult": true,
+   "prod": true,
+   "shape": true,
+   "q1_nonzero": true,
+   "naive_E0_overflows": true,
+   "slot_support": [
+    1,
+    2
+   ]
+  },
+  {
+   "tower": "TW1b-F5t-DCX",
+   "pair": [
+    131,
+    95
+   ],
+   "case": "II-2",
+   "thm": true,
+   "wmult": true,
+   "prod": true,
+   "shape": true,
+   "q1_nonzero": true,
+   "naive_E0_overflows": true,
+   "slot_support": [
+    2,
+    3
+   ]
+  },
+  {
+   "tower": "TW1b-F5t-DCX",
+   "pair": [
+    131,
+    126
+   ],
+   "case": "II-2",
+   "thm": true,
+   "wmult": true,
+   "prod": true,
+   "shape": true,
+   "q1_nonzero": true,
+   "naive_E0_overflows": true,
+   "slot_support": [
+    1,
+    2
+   ]
+  },
+  {
+   "tower": "TW1b-F5t-DCX",
+   "pair": [
+    131,
+    131
+   ],
+   "case": "II-2",
+   "thm": true,
+   "wmult": true,
+   "prod": true,
+   "shape": true,
+   "q1_nonzero": true,
+   "naive_E0_overflows": true,
+   "slot_support": [
+    2,
+    3
+   ]
+  },
+  {
+   "tower": "TW2-F3t-DCX-e1is1",
+   "pair": [
+    19,
+    21
+   ],
+   "case": "II-3",
+   "thm": true,
+   "wmult": true,
+   "prod": true,
+   "shape": true,
+   "q1_nonzero": true,
+   "naive_E0_overflows": true,
+   "slot_support": [
+    2,
+    3
+   ]
+  },
+  {
+   "tower": "TW2-F3t-DCX-e1is1",
+   "pair": [
+    19,
+    22
+   ],
+   "case": "II-3",
+   "thm": true,
+   "wmult": true,
+   "prod": true,
+   "shape": true,
+   "q1_nonzero": true,
+   "naive_E0_overflows": true,
+   "slot_support": [
+    1,
+    2
+   ]
+  },
+  {
+   "tower": "TW2-F3t-DCX-e1is1",
+   "pair": [
+    19,
+    69
+   ],
+   "case": "II-3",
+   "thm": true,
+   "wmult": true,
+   "prod": true,
+   "shape": true,
+   "q1_nonzero": true,
+   "naive_E0_overflows": true,
+   "slot_support": [
+    2,
+    3
+   ]
+  },
+  {
+   "tower": "TW2-F3t-DCX-e1is1",
+   "pair": [
+    19,
+    70
+   ],
+   "case": "II-3",
+   "thm": true,
+   "wmult": true,
+   "prod": true,
+   "shape": true,
+   "q1_nonzero": true,
+   "naive_E0_overflows": true,
+   "slot_support": [
+    1,
+    2
+   ]
+  },
+  {
+   "tower": "TW2-F3t-DCX-e1is1",
+   "pair": [
+    20,
+    21
+   ],
+   "case": "II-3",
+   "thm": true,
+   "wmult": true,
+   "prod": true,
+   "shape": true,
+   "q1_nonzero": true,
+   "naive_E0_overflows": true,
+   "slot_support": [
+    1,
+    2
+   ]
+  },
+  {
+   "tower": "TW2-F3t-DCX-e1is1",
+   "pair": [
+    20,
+    22
+   ],
+   "case": "II-3",
+   "thm": true,
+   "wmult": true,
+   "prod": true,
+   "shape": true,
+   "q1_nonzero": true,
+   "naive_E0_overflows": true,
+   "slot_support": [
+    0,
+    1
+   ]
+  },
+  {
+   "tower": "TW2-F3t-DCX-e1is1",
+   "pair": [
+    20,
+    69
+   ],
+   "case": "II-3",
+   "thm": true,
+   "wmult": true,
+   "prod": true,
+   "shape": true,
+   "q1_nonzero": true,
+   "naive_E0_overflows": true,
+   "slot_support": [
+    1,
+    2
+   ]
+  },
+  {
+   "tower": "TW2-F3t-DCX-e1is1",
+   "pair": [
+    20,
+    70
+   ],
+   "case": "II-3",
+   "thm": true,
+   "wmult": true,
+   "prod": true,
+   "shape": true,
+   "q1_nonzero": true,
+   "naive_E0_overflows": true,
+   "slot_support": [
+    0,
+    1
+   ]
+  },
+  {
+   "tower": "TW2-F3t-DCX-e1is1",
+   "pair": [
+    21,
+    19
+   ],
+   "case": "II-3",
+   "thm": true,
+   "wmult": true,
+   "prod": true,
+   "shape": true,
+   "q1_nonzero": true,
+   "naive_E0_overflows": true,
+   "slot_support": [
+    2,
+    3
+   ]
+  },
+  {
+   "tower": "TW2-F3t-DCX-e1is1",
+   "pair": [
+    21,
+    20
+   ],
+   "case": "II-3",
+   "thm": true,
+   "wmult": true,
+   "prod": true,
+   "shape": true,
+   "q1_nonzero": true,
+   "naive_E0_overflows": true,
+   "slot_support": [
+    1,
+    2
+   ]
+  },
+  {
+   "tower": "TW2-F3t-DCX-e1is1",
+   "pair": [
+    21,
+    21
+   ],
+   "case": "II-3",
+   "thm": true,
+   "wmult": true,
+   "prod": true,
+   "shape": true,
+   "q1_nonzero": true,
+   "naive_E0_overflows": true,
+   "slot_support": [
+    2,
+    3
+   ]
+  },
+  {
+   "tower": "TW2-F3t-DCX-e1is1",
+   "pair": [
+    21,
+    22
+   ],
+   "case": "II-3",
+   "thm": true,
+   "wmult": true,
+   "prod": true,
+   "shape": true,
+   "q1_nonzero": true,
+   "naive_E0_overflows": true,
+   "slot_support": [
+    1,
+    2
+   ]
+  },
+  {
+   "tower": "TW2-F3t-DCX-e1is1",
+   "pair": [
+    21,
+    67
+   ],
+   "case": "II-3",
+   "thm": true,
+   "wmult": true,
+   "prod": true,
+   "shape": true,
+   "q1_nonzero": true,
+   "naive_E0_overflows": true,
+   "slot_support": [
+    2,
+    3
+   ]
+  },
+  {
+   "tower": "TW2-F3t-DCX-e1is1",
+   "pair": [
+    21,
+    68
+   ],
+   "case": "II-3",
+   "thm": true,
+   "wmult": true,
+   "prod": true,
+   "shape": true,
+   "q1_nonzero": true,
+   "naive_E0_overflows": true,
+   "slot_support": [
+    1,
+    2
+   ]
+  },
+  {
+   "tower": "TW2-F3t-DCX-e1is1",
+   "pair": [
+    21,
+    69
+   ],
+   "case": "II-3",
+   "thm": true,
+   "wmult": true,
+   "prod": true,
+   "shape": true,
+   "q1_nonzero": true,
+   "naive_E0_overflows": true,
+   "slot_support": [
+    2,
+    3
+   ]
+  },
+  {
+   "tower": "TW2-F3t-DCX-e1is1",
+   "pair": [
+    21,
+    70
+   ],
+   "case": "II-3",
+   "thm": true,
+   "wmult": true,
+   "prod": true,
+   "shape": true,
+   "q1_nonzero": true,
+   "naive_E0_overflows": true,
+   "slot_support": [
+    1,
+    2
+   ]
+  },
+  {
+   "tower": "TW2-F3t-DCX-e1is1",
+   "pair": [
+    22,
+    19
+   ],
+   "case": "II-3",
+   "thm": true,
+   "wmult": true,
+   "prod": true,
+   "shape": true,
+   "q1_nonzero": true,
+   "naive_E0_overflows": true,
+   "slot_support": [
+    1,
+    2
+   ]
+  },
+  {
+   "tower": "TW2-F3t-DCX-e1is1",
+   "pair": [
+    22,
+    20
+   ],
+   "case": "II-3",
+   "thm": true,
+   "wmult": true,
+   "prod": true,
+   "shape": true,
+   "q1_nonzero": true,
+   "naive_E0_overflows": true,
+   "slot_support": [
+    0,
+    1
+   ]
+  },
+  {
+   "tower": "TW2-F3t-DCX-e1is1",
+   "pair": [
+    22,
+    21
+   ],
+   "case": "II-3",
+   "thm": true,
+   "wmult": true,
+   "prod": true,
+   "shape": true,
+   "q1_nonzero": true,
+   "naive_E0_overflows": true,
+   "slot_support": [
+    1,
+    2
+   ]
+  },
+  {
+   "tower": "TW2-F3t-DCX-e1is1",
+   "pair": [
+    22,
+    22
+   ],
+   "case": "II-3",
+   "thm": true,
+   "wmult": true,
+   "prod": true,
+   "shape": true,
+   "q1_nonzero": true,
+   "naive_E0_overflows": true,
+   "slot_support": [
+    0,
+    1
+   ]
+  },
+  {
+   "tower": "TW2-F3t-DCX-e1is1",
+   "pair": [
+    22,
+    67
+   ],
+   "case": "II-3",
+   "thm": true,
+   "wmult": true,
+   "prod": true,
+   "shape": true,
+   "q1_nonzero": true,
+   "naive_E0_overflows": true,
+   "slot_support": [
+    1,
+    2
+   ]
+  },
+  {
+   "tower": "TW2-F3t-DCX-e1is1",
+   "pair": [
+    22,
+    68
+   ],
+   "case": "II-3",
+   "thm": true,
+   "wmult": true,
+   "prod": true,
+   "shape": true,
+   "q1_nonzero": true,
+   "naive_E0_overflows": true,
+   "slot_support": [
+    0,
+    1
+   ]
+  },
+  {
+   "tower": "TW2-F3t-DCX-e1is1",
+   "pair": [
+    22,
+    69
+   ],
+   "case": "II-3",
+   "thm": true,
+   "wmult": true,
+   "prod": true,
+   "shape": true,
+   "q1_nonzero": true,
+   "naive_E0_overflows": true,
+   "slot_support": [
+    1,
+    2
+   ]
+  },
+  {
+   "tower": "TW2-F3t-DCX-e1is1",
+   "pair": [
+    22,
+    70
+   ],
+   "case": "II-3",
+   "thm": true,
+   "wmult": true,
+   "prod": true,
+   "shape": true,
+   "q1_nonzero": true,
+   "naive_E0_overflows": true,
+   "slot_support": [
+    0,
+    1
+   ]
+  },
+  {
+   "tower": "TW2-F3t-DCX-e1is1",
+   "pair": [
+    67,
+    21
+   ],
+   "case": "II-3",
+   "thm": true,
+   "wmult": true,
+   "prod": true,
+   "shape": true,
+   "q1_nonzero": true,
+   "naive_E0_overflows": true,
+   "slot_support": [
+    2,
+    3
+   ]
+  },
+  {
+   "tower": "TW2-F3t-DCX-e1is1",
+   "pair": [
+    67,
+    22
+   ],
+   "case": "II-3",
+   "thm": true,
+   "wmult": true,
+   "prod": true,
+   "shape": true,
+   "q1_nonzero": true,
+   "naive_E0_overflows": true,
+   "slot_support": [
+    1,
+    2
+   ]
+  },
+  {
+   "tower": "TW2-F3t-DCX-e1is1",
+   "pair": [
+    67,
+    69
+   ],
+   "case": "II-3",
+   "thm": true,
+   "wmult": true,
+   "prod": true,
+   "shape": true,
+   "q1_nonzero": true,
+   "naive_E0_overflows": true,
+   "slot_support": [
+    2,
+    3
+   ]
+  },
+  {
+   "tower": "TW2-F3t-DCX-e1is1",
+   "pair": [
+    67,
+    70
+   ],
+   "case": "II-3",
+   "thm": true,
+   "wmult": true,
+   "prod": true,
+   "shape": true,
+   "q1_nonzero": true,
+   "naive_E0_overflows": true,
+   "slot_support": [
+    1,
+    2
+   ]
+  },
+  {
+   "tower": "TW2-F3t-DCX-e1is1",
+   "pair": [
+    68,
+    21
+   ],
+   "case": "II-3",
+   "thm": true,
+   "wmult": true,
+   "prod": true,
+   "shape": true,
+   "q1_nonzero": true,
+   "naive_E0_overflows": true,
+   "slot_support": [
+    1,
+    2
+   ]
+  },
+  {
+   "tower": "TW2-F3t-DCX-e1is1",
+   "pair": [
+    68,
+    22
+   ],
+   "case": "II-3",
+   "thm": true,
+   "wmult": true,
+   "prod": true,
+   "shape": true,
+   "q1_nonzero": true,
+   "naive_E0_overflows": true,
+   "slot_support": [
+    0,
+    1
+   ]
+  },
+  {
+   "tower": "TW2-F3t-DCX-e1is1",
+   "pair": [
+    68,
+    69
+   ],
+   "case": "II-3",
+   "thm": true,
+   "wmult": true,
+   "prod": true,
+   "shape": true,
+   "q1_nonzero": true,
+   "naive_E0_overflows": true,
+   "slot_support": [
+    1,
+    2
+   ]
+  },
+  {
+   "tower": "TW2-F3t-DCX-e1is1",
+   "pair": [
+    68,
+    70
+   ],
+   "case": "II-3",
+   "thm": true,
+   "wmult": true,
+   "prod": true,
+   "shape": true,
+   "q1_nonzero": true,
+   "naive_E0_overflows": true,
+   "slot_support": [
+    0,
+    1
+   ]
+  },
+  {
+   "tower": "TW2-F3t-DCX-e1is1",
+   "pair": [
+    69,
+    19
+   ],
+   "case": "II-3",
+   "thm": true,
+   "wmult": true,
+   "prod": true,
+   "shape": true,
+   "q1_nonzero": true,
+   "naive_E0_overflows": true,
+   "slot_support": [
+    2,
+    3
+   ]
+  },
+  {
+   "tower": "TW2-F3t-DCX-e1is1",
+   "pair": [
+    69,
+    20
+   ],
+   "case": "II-3",
+   "thm": true,
+   "wmult": true,
+   "prod": true,
+   "shape": true,
+   "q1_nonzero": true,
+   "naive_E0_overflows": true,
+   "slot_support": [
+    1,
+    2
+   ]
+  },
+  {
+   "tower": "TW2-F3t-DCX-e1is1",
+   "pair": [
+    69,
+    21
+   ],
+   "case": "II-3",
+   "thm": true,
+   "wmult": true,
+   "prod": true,
+   "shape": true,
+   "q1_nonzero": true,
+   "naive_E0_overflows": true,
+   "slot_support": [
+    2,
+    3
+   ]
+  },
+  {
+   "tower": "TW2-F3t-DCX-e1is1",
+   "pair": [
+    69,
+    22
+   ],
+   "case": "II-3",
+   "thm": true,
+   "wmult": true,
+   "prod": true,
+   "shape": true,
+   "q1_nonzero": true,
+   "naive_E0_overflows": true,
+   "slot_support": [
+    1,
+    2
+   ]
+  },
+  {
+   "tower": "TW2-F3t-DCX-e1is1",
+   "pair": [
+    69,
+    67
+   ],
+   "case": "II-3",
+   "thm": true,
+   "wmult": true,
+   "prod": true,
+   "shape": true,
+   "q1_nonzero": true,
+   "naive_E0_overflows": true,
+   "slot_support": [
+    2,
+    3
+   ]
+  },
+  {
+   "tower": "TW2-F3t-DCX-e1is1",
+   "pair": [
+    69,
+    68
+   ],
+   "case": "II-3",
+   "thm": true,
+   "wmult": true,
+   "prod": true,
+   "shape": true,
+   "q1_nonzero": true,
+   "naive_E0_overflows": true,
+   "slot_support": [
+    1,
+    2
+   ]
+  },
+  {
+   "tower": "TW2-F3t-DCX-e1is1",
+   "pair": [
+    69,
+    69
+   ],
+   "case": "II-3",
+   "thm": true,
+   "wmult": true,
+   "prod": true,
+   "shape": true,
+   "q1_nonzero": true,
+   "naive_E0_overflows": true,
+   "slot_support": [
+    2,
+    3
+   ]
+  },
+  {
+   "tower": "TW2-F3t-DCX-e1is1",
+   "pair": [
+    69,
+    70
+   ],
+   "case": "II-3",
+   "thm": true,
+   "wmult": true,
+   "prod": true,
+   "shape": true,
+   "q1_nonzero": true,
+   "naive_E0_overflows": true,
+   "slot_support": [
+    1,
+    2
+   ]
+  },
+  {
+   "tower": "TW2-F3t-DCX-e1is1",
+   "pair": [
+    70,
+    19
+   ],
+   "case": "II-3",
+   "thm": true,
+   "wmult": true,
+   "prod": true,
+   "shape": true,
+   "q1_nonzero": true,
+   "naive_E0_overflows": true,
+   "slot_support": [
+    1,
+    2
+   ]
+  },
+  {
+   "tower": "TW2-F3t-DCX-e1is1",
+   "pair": [
+    70,
+    20
+   ],
+   "case": "II-3",
+   "thm": true,
+   "wmult": true,
+   "prod": true,
+   "shape": true,
+   "q1_nonzero": true,
+   "naive_E0_overflows": true,
+   "slot_support": [
+    0,
+    1
+   ]
+  },
+  {
+   "tower": "TW2-F3t-DCX-e1is1",
+   "pair": [
+    70,
+    21
+   ],
+   "case": "II-3",
+   "thm": true,
+   "wmult": true,
+   "prod": true,
+   "shape": true,
+   "q1_nonzero": true,
+   "naive_E0_overflows": true,
+   "slot_support": [
+    1,
+    2
+   ]
+  },
+  {
+   "tower": "TW2-F3t-DCX-e1is1",
+   "pair": [
+    70,
+    22
+   ],
+   "case": "II-3",
+   "thm": true,
+   "wmult": true,
+   "prod": true,
+   "shape": true,
+   "q1_nonzero": true,
+   "naive_E0_overflows": true,
+   "slot_support": [
+    0,
+    1
+   ]
+  },
+  {
+   "tower": "TW2-F3t-DCX-e1is1",
+   "pair": [
+    70,
+    67
+   ],
+   "case": "II-3",
+   "thm": true,
+   "wmult": true,
+   "prod": true,
+   "shape": true,
+   "q1_nonzero": true,
+   "naive_E0_overflows": true,
+   "slot_support": [
+    1,
+    2
+   ]
+  },
+  {
+   "tower": "TW2-F3t-DCX-e1is1",
+   "pair": [
+    70,
+    68
+   ],
+   "case": "II-3",
+   "thm": true,
+   "wmult": true,
+   "prod": true,
+   "shape": true,
+   "q1_nonzero": true,
+   "naive_E0_overflows": true,
+   "slot_support": [
+    0,
+    1
+   ]
+  },
+  {
+   "tower": "TW2-F3t-DCX-e1is1",
+   "pair": [
+    70,
+    69
+   ],
+   "case": "II-3",
+   "thm": true,
+   "wmult": true,
+   "prod": true,
+   "shape": true,
+   "q1_nonzero": true,
+   "naive_E0_overflows": true,
+   "slot_support": [
+    1,
+    2
+   ]
+  },
+  {
+   "tower": "TW2-F3t-DCX-e1is1",
+   "pair": [
+    70,
+    70
+   ],
+   "case": "II-3",
+   "thm": true,
+   "wmult": true,
+   "prod": true,
+   "shape": true,
+   "q1_nonzero": true,
+   "naive_E0_overflows": true,
+   "slot_support": [
+    0,
+    1
+   ]
+  }
+ ],
+ "dcx_summary": {
+  "pairs": 80,
+  "thm": 80,
+  "wmult": 80,
+  "q1": 80,
+  "overflow": 80
+ },
+ "mutations": [
+  {
+   "name": "M1-drop-top-carry(zbar^d3->1)",
+   "visible": 868,
+   "violations": 868,
+   "nonintegral": 0
+  },
+  {
+   "name": "M2-gamma3+1-inside-D2",
+   "visible": 768,
+   "violations": 768,
+   "nonintegral": 768
+  },
+  {
+   "name": "M3-Sigma-drops-delta3-term",
+   "visible": 464,
+   "violations": 464,
+   "nonintegral": 64
+  },
+  {
+   "name": "M4-naive-Sigma=gamma2*delta2",
+   "visible": 720,
+   "violations": 720,
+   "nonintegral": 416
+  },
+  {
+   "name": "M5-D2-plus-delta2-leak",
+   "visible": 784,
+   "violations": 784,
+   "nonintegral": 0
+  },
+  {
+   "name": "M6-l0->l0p-in-D1",
+   "visible": 1288,
+   "violations": 1288,
+   "nonintegral": 752
+  }
+ ],
+ "symbolic": {
+  "draws": 20000,
+  "bad": 0
+ },
+ "verdict": "ALL GREEN"
+}
