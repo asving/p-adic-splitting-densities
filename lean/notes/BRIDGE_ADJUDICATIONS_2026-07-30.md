@@ -6755,3 +6755,25 @@ unit's only textual additions) and committed the revision. The r36-executed
 entry above is accurate as written and stands as the entry of record; VC36b
 remains owed exactly as charged at ROOT §41 (these process facts ride its
 standing disclosures, not its findings scope).
+
+## ACCEPTANCE RE-ANCHORED at REVISION 35 + r36b / VC36+VC36b+VC36c — 2026-08-03 (the SEVENTEENTH re-anchoring)
+
+The confirming cascade on the wave-16/17 folds is closed: VC36 (full end-to-end
+on REVISION 34 @23282f5; NOT-CONFIRMED 1C/3G; report 3cf25ca; charge = the
+frozen-history-trim v2 after the v1 input-cap launch failure, checklist rule 7)
+→ r36 fold = REVISION 35 (first unit died on API 529s, 687-line mid-work
+sweep-checkpointed at 7598491; recovery audit completed it at db298d3 — all four
+findings remedied: F1/F2 fold-lag cured by the ITER-LAW acceptance now folded,
+F3/F4 closing-site qualifier errata) → VC36b (narrow pass @db298d3;
+NOT-CONFIRMED 0C/2G but all four remedies CONFIRMED cured + census 70/70 +
+sorry-census 35 reproduced; report 8d913ec) → r36b errata (two
+qualifier-propagation brackets, orchestrator-direct, flawed brackets preserved)
+→ VC36c (micro pass @8d913ec; CONFIRMED 0C/0G; report this commit). The
+certified perimeter now includes: ITER-LAW ACCEPTED on the harness tower class
+(superset of DITER_RESTATE §S2's E₂ > 1 pin; on-the-nose restricted to E₂ > 1)
+with all three residuals displayed ((ITER-LAW-LIFT) at g₀ = 1 ∧ δ₁ = 1; the
+gr(w₂) wrapper riding the accepted GRB retarget consumer-side; orders ≥ 3
+untouched); the banked sorry RETIRED (corpus at zero banked; capstone
+footprints unchanged); the H7 forge first compiled decision point (nothing
+discharges (H7)); DITERSUP priced with every gate BLOCKED-ON-APPLICATION.
+SYNTHESIS PASS 8 in flight; its queue = wave 18.
