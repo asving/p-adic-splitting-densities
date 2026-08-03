@@ -63,6 +63,52 @@ unit's own diagnostic `verification/openmath/iterlawn_diag.py`, all built by
 the SAME one-level-up mirror discipline). Print faithfulness lives upstream in
 the accepted GRB/TR3 arcs and is not consumed.
 
+**[HEAD DECLARATION — THE INCORPORATION CONVENTION + ERRATA ROUND 1
+(2026-08-03 wallclock; campaign 2026-08-08; adjudication ledger 9f9910c;
+findings ITERLAWN-PC r1 2C/3G @ 9f9910c + ITERLAWN-PE r1 0C/2G @ e7e9151).**
+This note consumes exactly two accepted defined-term blocks, DECLARED HERE
+ONCE with full pastes. Per the incorporation convention of record (ledger
+9f9910c, refining checklist rule 8), the dagger forms **[IL]†** and
+**[IL3]†** incorporate these blocks by reference at every other mention;
+the full paste recurs ONLY at operative consumption sites (here; the S4.3
+base paragraph, already pasted; the S4.1 REALIZE m = 1 base, paste added at
+this round; the S7 r38 bracket, already pasted). Every bare or compressed
+[IL]/[IL3] token elsewhere in this note — including the seven naked sites
+of PE-G2 (the S0.1/S0.2 method glosses, the S4.7 price gloss, the S4.1 base
+cites, the S4.7 roster-B evidence line, the S6.3 lesson-glosses, the S8/S10
+procedural name-drops) and the body tokens censused by PC-C2 — is
+henceforth read as the dagger form. This cures the rule-8 literalism class
+structurally.
+
+**[IL]† = the ledger block "ITER-LAW ACCEPTED — 2026-08-03"
+(`lean/notes/BRIDGE_ADJUDICATIONS_2026-07-30.md`):** [IL] =
+`ITERLAW_2026-08-08.md`, ACCEPTED 2026-08-03 at the 2-clean model-diverse
+bar — "Scope as accepted: the harness tower class (superset of
+DITER_RESTATE §S2's E₂ > 1 pin; on-the-nose coincidence restricted to
+E₂ > 1); residuals: (ITER-LAW-LIFT) open exactly at g₀ = 1 ∧ δ₁ = 1; gr(w₂)
+wrapper rides the accepted GRB retarget; orders ≥ 3 untouched."
+
+**[IL3]† = the ledger block "[IL3] ACCEPTED — 2026-08-03" (same ledger;
+acceptance f726b36; arc PC3 5bdca01 + PE3 f288b73 on a687b80):** "[IL3] =
+the (ITER-LAW-3) theorem, ACCEPTED 2026-08-03: the display c₃ =
+z̄^{δ₃}·z₂^{D₂}·z₁^{D₁} (δ₃ = ⌊(s₃+s₃′)/e₂⌋; D₂ = (s₂-defect + ℓ₁γ₃δ₃)/e₁;
+Σ = D₂γ₂ + δ₃γ₃(ℓ₁′−ℓ₁w₁Φ₁); D₁ = (s₁-defect + ℓ₀Σ)/e₀) PROVED on the
+3-read standard-lift harness class OFF the DCX corner {g₀ = g₁ = 1, δ₁ = 1,
+s₂(γ) = s₂(γ′) = e₁−1, S₁+s(γ₂) ≥ 2e₀} (EMPTY at e₀ ≤ 2) — RUNG n = 2 of
+(ITER-LAW-n). RESIDUALS: (W-MULT-3-DCX) OPEN (instance-true 132/132); the
+fenced non-consumed DEV-1 corner {e₀=1 ∧ d₀≥2 ∧ j≥g₀}; the consumed [IL]
+base's package rides through." (Inside this quoted block, S₁ is [IL3]'s own
+notation = the raw slot sum s₁+s₁′ = this note's T₁ after the S4.3 notation
+erratum; quoted ledger pastes are byte-frozen and are not renamed.)
+
+**Composition-time citations are correct-as-dated:** every "attempt grade
+0/2 / round 2 not-clean / errata owed" description of [IL3] in the body
+below (the header link paragraph, S0.1, S0.3, S1, S4.3, S4.6, S7 head, S9,
+S10, the DAG gloss) was frozen before the f726b36 acceptance and stands as
+dated composition-time history; the S7 r38 bracket and THIS declaration
+carry the upgrade of record ([IL3] ACCEPTED-OFF-DCX). This declaration
+resolves PC-C2 and PE-G2 without altering any frozen body text.]**
+
 ## S0. Setting, statement, status
 
 ### S0.1 The (n+1)-read standard-lift harness class (the class pin)
@@ -169,6 +215,9 @@ step of S4, on the following honest perimeter:
   double-cascade corners (S4.7: outer bound proved generically; sharp form
   proved at m = 2 = the [IL3] corner; DCX-(1) = ∅). On DCX-(n) the theorem is
   conjectural (instance-true at every probed instance, all rungs).
+  **[Errata r1, 2026-08-03, PE-G1: "outer bound proved generically" reads
+  "proved generically (given IH package)" — the S4.7 proof consumes the IH
+  (P-DS) clause; see the S4.7 erratum bracket.]**
 * **Conditionality off DCX-(n):** rung 1 UNCONDITIONAL (= [IL], ACCEPTED
   2026-08-03 on the harness tower class — standard-lift, strict superset of
   DITER_RESTATE §S2's E₂ = e₀e₁ > 1 pin, on-the-nose at E₂ > 1; residuals
@@ -203,7 +252,7 @@ step of S4, on the following honest perimeter:
 | (RM-m) engine: m = 1 | PROVED via [IL3] (e₀ ≥ 2; + e₀ = 1 ∧ d₀ = 1; corner inherited) | S4.6 |
 | (RM-m) engine: 2 ≤ m ≤ n−1 | **OPEN, priced** (THE resisting leg) | S4.6 |
 | W-MULT-(n) Cases II-1/II-2/II-3, off DCX | PROVED generic MODULO (RM-(n−1)) | S4.6 |
-| DCX-(n): outer bound per level | PROVED, generic | S4.7 |
+| DCX-(n): outer bound per level | PROVED, generic **(given IH package — errata r1, PE-G1)** | S4.7 |
 | DCX-(n): sharp form + emptiness | m = 2 proved ([IL3]); m ≥ 3 engine-dependent, conjectured e_{m−2} ≥ 3 | S4.7 |
 | W-MULT on DCX-(n) | **OPEN** ((W-MULT-DCX-m) family), instance-true | S4.7 |
 | THE THEOREM, off DCX | proved modulo the S7 ledger (per-rung conditionality above) | S5 |
@@ -331,6 +380,11 @@ For j = n, …, 1: S_j ≥ 0, and
 So S_{j−1} > 0 and e_{j−1}S_{j−1} > γ_j ≥ γ_j: (★_{j−1}) holds (and once the
 chain is active it stays active). ∎
 (Diagnostic: (★_j) verified at every pair, 4 reads and 5 reads — S8.)
+**[Note (errata r1, 2026-08-03; PE-N2, no grade impact): the nonzero-branch
+bound e_jS_j ≥ γ_{j+1} is never TIGHT on any probed data (equality attained
+0 times in 3,444 diag + 3,444 PE-reimpl checks; equality would force
+e_j = 1 with carry 1, which the e = 1 grid kills) — correct as displayed
+(≥ holds); a sharper display is available if ever needed.]**
 
 **Lemma WINDOW-(n).** γ, γ′ ∈ W_{n+1} ⟹ γ+γ′ ∈ W_{n+1}.
 *Proof.* e₀u(β₁″) = β₁″ − s₁″h₀ = e₀(u₁+u₁′) + (s₁-defect)h₀ + S₁ (by SHIFT
@@ -451,6 +505,22 @@ with (Ĉ1) deg Ĉ_m < deg Φ_m — a single Φ_m-slot-0 digit; (Ĉ2)
 w_m(Ĉ_m) = γ_{m+1}; (Ĉ3) R_{m,γ_{m+1}}(Ĉ_m) = τ_m. All three from
 REALIZE-(m). ∎ (At m = 1 this is [IL3] WELL-DEF(ii) verbatim.)
 
+**[OPERATIVE CONSUMPTION SITE (errata round 1, 2026-08-03; PE-G2's one
+substantive flagged site) — full paste per the incorporation convention:
+the m = 1 base legs of REALIZE-(m)/WELL-DEF-(n) above consume [IL3]
+WELL-DEF(i)/(ii), where [IL3]† = "[IL3] = the (ITER-LAW-3) theorem,
+ACCEPTED 2026-08-03: the display c₃ = z̄^{δ₃}·z₂^{D₂}·z₁^{D₁} (δ₃ =
+⌊(s₃+s₃′)/e₂⌋; D₂ = (s₂-defect + ℓ₁γ₃δ₃)/e₁; Σ = D₂γ₂ +
+δ₃γ₃(ℓ₁′−ℓ₁w₁Φ₁); D₁ = (s₁-defect + ℓ₀Σ)/e₀) PROVED on the 3-read
+standard-lift harness class OFF the DCX corner {g₀ = g₁ = 1, δ₁ = 1,
+s₂(γ) = s₂(γ′) = e₁−1, S₁+s(γ₂) ≥ 2e₀} (EMPTY at e₀ ≤ 2) — RUNG n = 2 of
+(ITER-LAW-n). RESIDUALS: (W-MULT-3-DCX) OPEN (instance-true 132/132); the
+fenced non-consumed DEV-1 corner {e₀=1 ∧ d₀≥2 ∧ j≥g₀}; the consumed [IL]
+base's package rides through." The WELL-DEF(i)/(ii) displays consumed here
+sit in that accepted note's proved body (realize-constructions,
+DCX-independent and engine-free — the fenced DEV-1 corner residual does
+not touch them).]**
+
 **Lemma READ-ADD-(m) (read additivity with strict-above kill; generic).** For
 f, g ∈ O[x] with w_m(f) ≥ λ, w_m(g) > λ: R_{m,λ}(f+g) = R_{m,λ}(f) (reads at
 a prescribed line λ ≤ w: digits develop additively; a digit strictly above
@@ -491,6 +561,42 @@ of §S2's E₂ > 1 pin, three residuals in force — and never consumes W-MULT,
 
 ### S4.3 The induction package (ITER-PKG-r)
 
+**[NOTATION ERRATUM (errata round 1, 2026-08-03 wallclock; campaign
+2026-08-08; PC-C1 [CRITICAL — notation collision; NO mathematical error
+found]): the letter S is overloaded in this note — the S0.3/S2/S3/S5
+COMPOSED SHIFT S_j (the theorem recursion's object: S_n = δγ_{n+1},
+S_{j−1} = D_jγ_j + S_j(ℓ_{j−1}′ − ℓ_{j−1}w_{j−1}Φ_{j−1})) versus the RAW
+SLOT SUMS of the (P-DS)/case-analysis layer (S4.3–S4.7). The raw sums are
+hereby RENAMED:
+
+    T_j := s_j(β) + s_j(β′)    [the raw level-j slot sum of the pair;
+                                in (P-DS): T_{r+1} = s_{r+1}(β)+s_{r+1}(β′)]
+
+and EVERY capital-S pair-sum occurrence in S4.3–S4.7 is to be read as T:
+the (P-DS) slot support {T_{r+1}, T_{r+1}+1}, the CII predicate's
+"T_r = e_{r−1}−1", the base/link paragraphs' T₁/T₂, the S4.4–S4.6 uses
+(T_n ≤ 2e_{n−1}−2, k := T_n − e_{n−1}, T_n = e_{n−1}−1, the Φ_n-exponents
+T_{n+1}, s_{n+1}(Γ″) = T_{n+1} − δe_n), and S4.7's T_m/T₁ — dated brackets
+sit at each affected display below. The composed shifts S_j NEVER appear in
+S4.3–S4.7 (the two layers meet only through B_j and δ_j^{pl}); quoted
+ledger pastes ([IL]†/[IL3]† blocks) are byte-frozen and retain [IL3]'s own
+S₁ (= the raw sum = T₁). VERIFICATION THAT THIS IS NOTATION, NOT
+MATHEMATICS: (a) the PE from-note reimplementation
+(`verification/openmath/iterlawn_pe_reimpl.py` @ e7e9151, the semantics
+referee) implemented BOTH objects separately — `ssum[j] = s_j + s_j′` for
+every S4.3–S4.7 predicate (P-DS support/weight/read clauses, the CII chain,
+CASE-SPLIT, k = ssum − e, the II-leg substitution identities, the DCX
+outer/sharp predicates) and the composed `S` only in the S0.3 constants
+recursion — and returned 22,369 family-checks / 0 violations on nine fresh
+instances: the raw-sum reading is the consistent, law-producing semantics
+of every renamed site; (b) an orchestrator site-by-site re-check (this
+erratum) confirmed each renamed display is TRUE under the raw reading and
+false or ill-typed under the composed one (e.g. the slot-T_n line
+e_{n−1}B_{n−1} + T_nγ_n = B_n, from β_n = e_{n−1}β_{n−1} + s_nγ_n summed
+over the pair), and that NO site consumes one reading while asserting the
+other — no equivocation anywhere. The WRITTEN step was ambiguous; the
+mathematics is not.]**
+
 **(ITER-PKG-r)** — the exports of rung r, for (r+1)-read towers of the class
 and pairs (β, β′) in the window, OFF DCX-(r); P := φ⁽ʳ⁺¹⁾_β·φ⁽ʳ⁺¹⁾_{β′};
 plain carries δ_j^{pl} of the pair at each level; B_j the split sums:
@@ -523,6 +629,9 @@ DITER_RESTATE §S2's E₂ > 1 pin; on-the-nose coincidence restricted to
 E₂ > 1); residuals: (ITER-LAW-LIFT) open exactly at g₀ = 1 ∧ δ₁ = 1; gr(w₂)
 wrapper rides the accepted GRB retarget; orders ≥ 3 untouched" —
 standard-lift, strict superset of the pinned E₂ = e₀e₁ > 1 setting.
+**[Notation r1 (PC-C1): the S₁/S₂ of the base paragraph above are raw sums
+— T₁ = s₁+s₁′ (Φ₀-exponents), T₂ = s₂+s₂′ (Φ₁-slots) — per the S4.3 head
+erratum.]**
 
 **Link r = 2 ([IL3], ATTEMPT GRADE 0/2; round 2 completed not-clean on
 narrow display/naming findings, errata round 2 → round 3 owed).** (P-L6) = its
@@ -533,12 +642,23 @@ displayed), E₁ = aΦ₁^k with w₂(E₁) = B₂ − e₁γ₂; II-2/II-3 like
 line tables give exactly the (P-DS) weight clauses — checked term by term in
 S4.6 below at general level). CII₂ = (g₁ = 1) ∧ (δ₂^{pl} = 1 ∨ (CII₁ ∧
 S₂ = e₁−1)) = its CASE-SPLIT Cases II-1∪II-2∪II-3 predicate on the nose.
+**[Notation r1 (PC-C1): the CII₂ display's "S₂ = e₁−1" reads T₂ = e₁−1
+(raw sum) — per the S4.3 head erratum.]**
 
 **The inductive step (S4.4–S4.6): (ITER-PKG-r) off DCX-(r), plus (RM-r) ⟹
 (ITER-PKG-(r+1)) off DCX-(r+1).** [DCX-(r+1) := DCX-(r)-pullback ∪ the new
 top corner DCX_{r+1}; S4.7.]
 
 ### S4.4 CASE-SPLIT-(n) (the exact partition at the top of rung n)
+
+**[Notation r1 (PC-C1): every S_n/S_{n+1} in this subsection is the raw
+slot sum — T_n = s_n(β_n)+s_n(β_n′) = s_n(γ)+s_n(γ′) (TRUNC shares the
+split data below the top), T_{n+1} = s_{n+1}(γ)+s_{n+1}(γ′). So: the slot
+support {T_n, T_n+1}, the Φ_n-exponent T_{n+1}, "T_n+1 ≤ 2e_{n−1}−1"
+(two s-values each ≤ e_{n−1}−1), "T_n ≤ e_{n−1}−2", II-3's
+"T_n = e_{n−1}−1", the proof's overflow equivalences (T_n ≥ e_{n−1} ⟺
+δ_n^{pl} = 1 given T_n ≤ 2e_{n−1}−2), and the weights display's slot
+lines. The composed S0.3 shifts do not occur here — S4.3 head erratum.]**
 
 Fix rung n = r+1 and γ, γ′ ∈ W_{n+1} with the inner pair (β_n, β_n′) off
 DCX-(n−1) (else the pair is in DCX-(n) and excluded). By TRUNC, P :=
@@ -567,6 +687,11 @@ E₁ᴵᴴ-slot line at level n is ≥ e_{n−1}(B_{n−1}−e_{n−2}γ_{n−1}
 holds (g_{n−2} = 1, so w_{n−1}Φ_{n−1} = e_{n−2}γ_{n−1}) — strictly above.
 
 ### S4.5 W-MULT-(n), Case I (single top digit) — PROVED, generic
+
+**[Notation r1 (PC-C1): S_{n+1} throughout this leg = T_{n+1} =
+s_{n+1}(γ)+s_{n+1}(γ′) (raw sum): the digit slot, w_{n+1}(P) = e_nB_n +
+T_{n+1}γ_{n+1} = Γ″, and s_{n+1}(Γ″) = T_{n+1} − δe_n (L1) — S4.3 head
+erratum.]**
 
 The Φ_n-development of P is the single digit A at slot S_{n+1}. w_{n+1}(P) =
 e_nw_n(A) + S_{n+1}γ_{n+1} = e_nB_n + S_{n+1}γ_{n+1} = Γ″ (sum γ = e_nβ_n +
@@ -633,6 +758,26 @@ E₁ⁿᵉʷ = 0. ∎
 │ 2, 3, 4 (S8) is consistent with (RM-m) — cited as evidence only.      │
 └────────────────────────────────────────────────────────────────────────┘
 
+**[ERRATUM (errata round 1, 2026-08-03; PC-G3 [GAP — display arithmetic]):
+the box's m = 1 STATUS parenthesis "children have Φ₀-exponent ≤ 2e₀g₀−2 <
+2e₀g₀" understates the DIGIT-SPLIT range by one. Corrected chain:
+deg f < deg Φ₁ and deg Ĉ₁ < deg Φ₁ give i ≤ e₀g₀−1 and k_j ≤ e₀g₀−1, so
+each parent product b_ic_jΦ₀^{i+k_j} has Φ₀-exponent i+k_j ≤ 2e₀g₀−2;
+DIGIT-SPLIT on the coefficient product b_ic_j (= lift + πX + Φ₀Y) leaves
+the lift- and πX-children at exponent i+k_j ≤ 2e₀g₀−2 but raises the Φ₀Y
+child to i+k_j+1 ≤ 2e₀g₀−1. Every child therefore has Φ₀-exponent
+≤ 2e₀g₀−1 < 2e₀g₀ — still strictly inside DEV-1's quantifier range
+0 ≤ j < 2e₀g₀, so DEV-1 applies to every child and the factored read
+z₁^{ε′}·v·τ₁ is unchanged. Conclusion and scope of (RM-1) unaffected; the
+displayed bound alone was off by one.]**
+
+**[Notation r1 (PC-C1), Cases II-1/II-2/II-3 below: every S_n is the raw
+sum T_n = s_n+s_n′ and every S_{n+1} is T_{n+1} = s_{n+1}+s_{n+1}′ — the
+Φ_{n−1}-exponents T_n, k := T_n − e_{n−1}, II-3's "T_n = e_{n−1}−1", the
+line identity e_{n−1}B_{n−1} + T_nγ_n = B_n, the L1 grid reads s_n(B_n) =
+T_n − δ_n^{pl}e_{n−1}, and all Φ_n-slot indices T_{n+1}/T_{n+1}+1 — S4.3
+head erratum; per-leg brackets mark the load-bearing instances.]**
+
 **Case II-1 (g_{n−1} = 1, E₁ᴵᴴ = 0, δ_n^{pl} = 1) — proved modulo
 (RM-(n−1)).** A = E₀ᴵᴴ·Φ_{n−1}^{S_n}, k := S_n − e_{n−1} ∈ [0, e_{n−1}−2].
 One substitution Φ_{n−1}^{e_{n−1}} = Φ_n − Ĉ_{n−1} (WELL-DEF-(n)(ii)):
@@ -670,6 +815,10 @@ s_{n+1}(Γ″) = S_{n+1} − δe_n, E₀ⁿᵉʷ at slot δ, on-line. Hence
 
     val(P) = z̄^{δ}·ε_n(B_n)·R_nv(E₀ⁿᵉʷ) = z̄^{δ}·val(φ_γ)·val(φ_{γ′}). ∎
 
+**[Notation r1: in II-1 above, "A = E₀ᴵᴴ·Φ_{n−1}^{S_n}", "k := S_n −
+e_{n−1}", "S_nγ_n = B_n − e_{n−1}B_{n−1}", "s_n(B_n) = S_n − e_{n−1}" all
+carry T_n (raw sum); the Φ_n-slots carry T_{n+1} — S4.3 head erratum.]**
+
 **Case II-2 (E₁ᴵᴴ ≠ 0, δ_n^{pl} = 1) — proved modulo (RM-(n−1)), off
 DCX_n.** A = E₁ᴵᴴΦ_{n−1}^{S_n+1} + E₀ᴵᴴΦ_{n−1}^{S_n}; substitute on both
 overflowing slots (k := S_n − e_{n−1}):
@@ -696,6 +845,10 @@ grid slots zero/above-line (READ-ADD-(n−1) where components share a slot).
 Top level verbatim as II-1 (E₁ⁿᵉʷ's weight bound gives slot-(S_{n+1}+1)
 line ≥ Γ″ + h_n). val(P) = z̄^δ·val·val ∎, and (P-DS) exports as displayed.
 
+**[Notation r1: in II-2 above, "Φ_{n−1}^{S_n+1}", "Φ_{n−1}^{S_n}",
+"k := S_n − e_{n−1}" carry T_n (raw sum); the Φ_n-slots carry T_{n+1} —
+S4.3 head erratum.]**
+
 **Case II-3 (E₁ᴵᴴ ≠ 0, S_n = e_{n−1}−1, δ_n^{pl} = 0) — proved modulo
 (RM-(n−1)), off DCX_n.** Only slot S_n+1 = e_{n−1} overflows:
 
@@ -717,6 +870,31 @@ kills it. Grid s_n(B_n) = S_n = e_{n−1}−1 (δ_n^{pl} = 0): the j = 0
 coefficient is C₀ = ε_{n−1}(B_{n−1})·v⁰ = z_n^0·v⁰·ε_{n−1}(B_{n−1}),
 matching δ_n^{pl} = 0. Top level as before. val(P) = z̄^δ·val·val ∎.
 
+**[Notation r1: in II-3 above, "S_n = e_{n−1}−1", "slot S_n+1 = e_{n−1}",
+"s_n(B_n) = S_n" carry T_n (raw sum; s_n(B_n) = T_n by L1 at
+δ_n^{pl} = 0); the Φ_n-slots carry T_{n+1} — S4.3 head erratum.]**
+
+**[ERRATUM (errata round 1, 2026-08-03; PC-G4 [GAP — ellipses at a
+load-bearing bound]): the Case II-3 Q¹ line bound, written out with no
+ellipses (the R¹ bracket style). Engine weight clause on E₁ᴵᴴĈ:
+w_{n−1}(Q¹) ≥ w_{n−1}(E₁ᴵᴴ) + γ_n − w_{n−1}Φ_{n−1}, with w_{n−1}(E₁ᴵᴴ) ≥
+B_{n−1} − e_{n−2}γ_{n−1} (IH (P-DS)) and w_{n−1}Φ_{n−1} = e_{n−2}γ_{n−1}
+(g_{n−2} = 1, forced by CII_{n−1}). Hence Q¹ at slot 1:
+
+    line ≥ e_{n−1}(B_{n−1} − 2e_{n−2}γ_{n−1} + γ_n) + γ_n
+    [direct: line − B_n = e_{n−1}(γ_n − 2e_{n−2}γ_{n−1}) + γ_n − (e_{n−1}−1)γ_n
+                        = 2γ_n − 2e_{n−1}e_{n−2}γ_{n−1} = 2h_{n−1} > 0,
+     using B_n = e_{n−1}B_{n−1} + T_nγ_n with T_n = e_{n−1}−1]
+
+so the Q¹ line ≥ B_n + 2h_{n−1} > B_n exactly as asserted — "similarly" is
+discharged; the collision legs and the READ-ADD kill stand as displayed.]**
+
+**[Display supplement (errata round 1; PE-N1, one line): the II-3 (P-DS)
+E₁-export weight clause, displayed: E₁ⁿᵉʷ = E₁ᴵᴴ has w_n(E₁ⁿᵉʷ) =
+e_{n−1}w_{n−1}(E₁ᴵᴴ) ≥ e_{n−1}(B_{n−1} − e_{n−2}γ_{n−1}) = B_n −
+(e_{n−1}−1)γ_n − e_{n−1}e_{n−2}γ_{n−1} = B_n − e_{n−1}γ_n + h_{n−1} ≥
+B_n − e_{n−1}γ_n — the clause propagates, with h_{n−1} to spare.]**
+
 (At n = 2 the three legs specialize clause-for-clause to [IL3] S4.5/S4.6
 with (γ_n, e_{n−1}, z_n, ε_{n−1}, c_{n−1}, v) = (γ₂, e₁, z₂, ε₁, c₁,
 z₁^{δ₁}) — a consistency display, not a second proof; [IL3]'s own grade
@@ -734,6 +912,17 @@ not close. **DCX-(n) := ∪_{m=2}^{n} DCX_m.**
 
 **Outer bound (PROVED, generic — from the S4.6 slot arithmetic alone):**
 
+**[ERRATUM (errata round 1, 2026-08-03; PE-G1 [GAP — grade qualifier]):
+read "PROVED, generic (given IH package)". The proof below consumes the IH
+(P-DS) clause (E₁ᴵᴴ ≠ 0 ⟹ CII_{m−1} ⟹ g_{m−2} = 1), and (P-DS) at rungs
+≥ 3 sits inside the (RM)-conditional package chain — so the outer bound
+(and the emptiness leg "DCX_m = ∅ whenever g_{m−2} ≥ 2 or g_{m−1} ≥ 2"
+riding it) is conditional exactly as S7 rows 5/6, unless the short
+engine-free-support lemma (that the (P-DS) support/E₁/CII sub-clauses never
+call the engine) is proved — plausible, NOT claimed here. "From the S4.6
+slot arithmetic alone" scopes the NEW ingredients, not the IH. The same
+qualifier is bracketed at the two S0.3 display sites.]**
+
     DCX_m ⊆ DCX_m^out := { g_{m−1} = 1,  s_m(γ) = s_m(γ′) = e_{m−1}−1,
                             CII_{m−1} holds for the pair }
            ⊆ { g_{m−2} = g_{m−1} = 1, s_m-track extreme }.
@@ -743,6 +932,13 @@ slot k+1: k+1 ≥ e_{m−1} ⟺ S_m ≥ 2e_{m−1}−1, impossible (S_m ≤ 2e_{
 so only the E₁-product's Q¹, needing E₁ᴵᴴ ≠ 0 (⟹ CII_{m−1}, ⟹ g_{m−2} = 1
 by (P-DS)) and slot k+2 ≥ e_{m−1} (II-2: S_m = 2e_{m−1}−2 ⟺ both s_m-values
 = e_{m−1}−1) or e_{m−1} = 1 (II-3: s_m ≡ 0 = e_{m−1}−1 automatically). ∎
+
+**[Notation r1 (PC-C1): S_m in the outer-bound proof above = T_m =
+s_m(γ)+s_m(γ′) (raw sum: "T_m ≤ 2e_{m−1}−2", "T_m ≥ 2e_{m−1}−1
+impossible", "T_m = 2e_{m−1}−2 ⟺ both s_m-values = e_{m−1}−1", k = T_m −
+e_{m−1}); in the m = 2 sharp form below, S₁ = T₁ = s₁+s₁′ ([IL3]'s own
+notation, retained verbatim inside quoted byte-frozen ledger pastes such
+as the S7 r38 block) — S4.3 head erratum.]**
 
 **Sharp form and emptiness:**
 * m = 2 (PROVED = [IL3] S4.7, attempt grade 0/2): DCX_2 = {g₀ = g₁ = 1,
@@ -939,6 +1135,24 @@ fallback grade, achieved-plus):** the exact statements whose proofs would
 close ALL orders are: (RM-m) [S4.6 box] and (W-MULT-DCX-m) [S4.7] — two
 displayed families, each priced; everything else needed for every n is proved
 in this note.
+
+**[ERRATUM (errata round 1, 2026-08-03; PC-G5 [GAP — missing failure
+branch]): the [IL]†-failure branch of the display above, spelled out. If
+the ACCEPTED base [IL]† itself failed STRUCTURALLY (acceptance withdrawn
+on a content defect), the loss would NOT stop at the rung-2 link:
+(ITER-PKG-1) — the induction base, (P-L6) = [IL S4 L6], (P-WM) = [IL S4
+L7 + COR-5], (P-DS) = [IL L7]'s displayed developments — is invalidated,
+hence L6-(n) loses its base (row 4, every rung), hence EVERY value-level
+clause at every rung falls (rows 5/6/8 and the field clauses of row 10 —
+the whole value layer, not merely "open at the rung-2 link"). Row 1 (the
+integer layer) falls back to "open at L1": its sole [IL] consumption is
+EQ12-ADD ([IL S2 L1], a two-line elementary lemma, independently
+re-derivable). Row 2 (EXP-KIT) keeps its self-contained S3 proof (only the
+rung-1 instance citation rides [IL]). Row 3 (REALIZE/WELL-DEF/READ-ADD)
+rides only the S0.2 elementary base facts and [IL3]†'s m = 1 displays. No
+such failure signal exists — [IL] is ACCEPTED at the 2-clean model-diverse
+bar; the branch is displayed for the structural completeness of this
+ledger.]**
 
 ## S8. POST-SEAL-LABELED DIAGNOSTIC (run at composition; NOT a proof step,
 NOT a seal; the [IL3]/iterlaw3_proof_diag precedent)

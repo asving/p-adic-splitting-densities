@@ -8083,3 +8083,58 @@ operative sites, dagger elsewhere; the rule-8 grep becomes: every bare
 [IL]/[IL3] token sits at a full-paste site or reads †). Unit files:
 ROOT + PROJECT_STATE (one-line tag) + this append ONLY (scoped
 `git commit --only`).
+
+## ITERLAWN ERRATA ROUND 1 APPLIED (bracket-additive) — 2026-08-03
+
+**Unit ITERLAWN-ERRATA r1** on `lean/notes/openmath/ITERLAWN_PROOF_2026-08-08.md`
+(target of the round-1 findings: ITERLAWN-PC 2C/3G @ 9f9910c + ITERLAWN-PE
+0C/2G @ e7e9151; remedies dispatched at 9f9910c). ALL brackets additive; no
+frozen prose deleted; no claim changed; sealed artifacts untouched. Applied:
+
+**E1 (PC-C1, the S_j collision — NOTATION ERRATUM, S4.3 head + 10 site
+brackets).** The raw slot sums of the (P-DS)/case-analysis layer are RENAMED
+T_j := s_j(β)+s_j(β′) (T_{r+1} in (P-DS), T_r in the CII predicate, T_n in
+S4.4–S4.6, T_m/T₁ in S4.7); the S0.3 composed shifts keep the letter S; dated
+brackets at each affected display (P-DS+CII via the S4.3 head erratum; base
+r=1; link r=2 CII₂; S4.4; S4.5; S4.6 pre-legs + II-1 + II-2 + II-3; S4.7
+outer proof + sharp form; ledger pastes byte-frozen, [IL3]'s own S₁ = T₁
+noted). **EQUIVOCATION CHECK EXECUTED — VERDICT: NO EQUIVOCATION, notation
+only.** (a) The PE reimplementation (`iterlawn_pe_reimpl.py`, the semantics
+referee) implements BOTH objects separately — `ssum` for every S4.3–S4.7
+predicate (P-DS support/weight/read, CII chain, CASE-SPLIT, k = ssum−e,
+II-leg substitution identities, DCX outer/sharp) and composed `S` only in
+the S0.3 constants — 22,369/0 on nine fresh instances. (b) Orchestrator
+site-by-site re-check: every renamed site is genuinely the raw sum, each
+display TRUE under the raw reading (e.g. slot-T_n line e_{n−1}B_{n−1} +
+T_nγ_n = B_n), false/ill-typed under the composed one; no site consumes one
+reading while asserting the other. The written step was ambiguous; the
+mathematics is not — PC-C1 confirmed a display defect, NOT a math error.
+
+**E2 (PC-G3).** RM-1 box bracket: corrected exponent chain — parents
+i+k_j ≤ 2e₀g₀−2, DIGIT-SPLIT's Φ₀Y child ≤ 2e₀g₀−1 (not −2), still
+< 2e₀g₀, DEV-1 applies to every child; conclusion/scope unchanged.
+**E3 (PC-G4).** Case II-3 Q¹ line bound written out, no ellipses (R¹
+bracket style): line − B_n = 2γ_n − 2e_{n−1}e_{n−2}γ_{n−1} = 2h_{n−1} > 0.
+**E4 (PC-G5).** S7 failure-propagation gains the [IL]†-failure branch:
+structural base failure invalidates (ITER-PKG-1), the L6 base, every
+value-level rung (rows 4/5/6/8/10); row 1 falls back to "open at L1"
+(two-line elementary lemma); rows 2/3 keep self-contained/generic proofs.
+**E5 (PE-G1).** "(given IH package)" qualifier at the 3 DCX outer-bound
+sites (S0.3 row + S0.3 bullet + S4.7 head, with the engine-free-support
+lemma displayed as the cure path, not claimed).
+**E6 (PC-C2 + PE-G2, via the 9f9910c convention).** HEAD DECLARATION
+bracket before S0: [IL]/[IL3] defined-term blocks pasted ONCE (byte-matching
+this ledger's "ITER-LAW ACCEPTED — 2026-08-03" scope sentence + the f726b36
+"[IL3] ACCEPTED — 2026-08-03" block), dagger forms [IL]†/[IL3]† declared to
+incorporate by reference (all bare/compressed body tokens now read
+daggered), composition-time citations declared correct-as-dated; the ONE
+substantive naked site PE flagged (S4.1 REALIZE m = 1 base) given its full
+at-site [IL3]† paste as an operative consumption site. PE nits N1 (II-3
+E₁-export weight clause displayed: w_n(E₁ⁿᵉʷ) ≥ B_n − e_{n−1}γ_n + h_{n−1})
++ N2 ((★_j) never tight; 0 equality in 3,444+3,444 checks) as one-line
+brackets.
+
+19 brackets total. THE NOTE'S GRADE IS UNCHANGED (attempt-grade, counter
+0/2, hostile arc continues); round 2 (PC2+PE2 under the amended rule-8
+standard) is the arc's next step, on this errata text. Unit files: the note
++ this append ONLY (scoped `git commit --only`).
