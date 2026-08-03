@@ -3414,5 +3414,131 @@
     "note": "For everything censused here (the five measure-route axioms in PadicMeasure.lean, the two cited OM axioms, and one unproved goal in the classic tree), the printed axiom lists agree with the stated claims; the newer development directories carry roughly 40 further unproved goals not censused here."
    }
   ]
+ },
+ {
+  "corpus": "CocycleLadder",
+  "role": "Everything in this stage is dated 2026-08-03 and lives in the project's proof-note pipeline, not (yet) in Lean: mathematical proof notes accepted under the campaign's adversarial-verification bar, and sealed, preregistered numeric batteries. An 'accepted' note has survived that bar: consecutive clean hostile passes by verifiers reading in fresh contexts, at least two different model families among them, with every failed pass, every erratum, and every acceptance recorded and dated in the repository. The object of study is the carry cocycle: at each depth of the wild classifier tower, every eligible index carries an anchor monomial, and the leading value of a product of anchors differs from the anchor of the sum by an explicit correction. The laws below say this correction is one monomial with exponents given by one integer recursion, at every depth probed, and that modulo a single honest top carry the whole correction is a gauge artifact of the epsilon-chain normalization. All of it lives on a pinned model class (the standard-lift harness towers); the weld to the classifier's actual Okutsu–Montes objects is one of the displayed open items.",
+  "oneLiner": "One carry law at every depth of the wild tower — proved at depths 2–3, measured through depth 6, composed for all orders, with the exact remaining distance displayed.",
+  "corpusDeps": [
+   "HC1",
+   "Moves",
+   "MovesGr"
+  ],
+  "nodes": [
+   {
+    "id": "cc-def",
+    "title": "The carry cocycle: what fails to multiply, exactly",
+    "status": "definition",
+    "math": "Fix a tower of $n{+}1$ Newton-polygon reads $(e_j, h_j, \\psi_j)$, $j = 0,\\dots,n$, with $\\gcd(e_j,h_j)=1$, over a residue field — the model of one depth-$(n{+}1)$ branch of the classifier, with each stage lifted to the next by the canonical $\\varepsilon$-corrected lift (the 'standard-lift harness tower class'). Each eligible index $\\gamma$ carries an anchor monomial $\\varphi_\\gamma$ with a leading value $\\mathrm{val}(\\varphi_\\gamma)$. The carry cocycle is $c_{n+1}(\\gamma,\\gamma') = \\mathrm{val}(\\varphi_\\gamma\\varphi_{\\gamma'})/\\mathrm{val}(\\varphi_{\\gamma+\\gamma'})$ — the exact correction by which anchor values fail to be multiplicative in the index. It satisfies the 2-cocycle (associativity) identity and descends to $\\mathbb{Z}/E_{n+1}$, $E_{n+1} = e_0\\cdots e_n$; the deeper transport laws of the tower factor through it. The class is a model: a pinned calculus, consumed as a definition (code of record, not prose), faithful to the classifier's shape — reads, growing residue fields, digit carries.",
+    "note": "This is the object the whole stage is about. Wildness lives here: at a tame prime the tower has one read and the cocycle is trivial; at a wild prime the tower is deep and the cocycle records how digit overflow at one level feeds every level below it.",
+    "lean": "# The pinned model calculus (consumed as a definition — the code of record):\n#   verification/openmath/grb_order2_check.py   (levels 0–2)\n#   verification/openmath/strata3_probe.py       (level 3)\n#   verification/openmath/iterlawn_diag.py       (all levels; the mirror recursion)\n# No printed formula and no text extraction is consumed; every object enters\n# as a definition with verbatim code semantics.",
+    "srcLabel": "The definition of record (pinned code, not Lean)",
+    "file": "verification/openmath/iterlawn_diag.py",
+    "kind": "definition (model class)"
+   },
+   {
+    "id": "cc-iterlaw2",
+    "title": "The depth-2 law (ITER-LAW): proved, accepted 2026-08-03",
+    "status": "proved-note",
+    "math": "On the standard-lift harness tower class with two reads: $c(\\gamma,\\gamma') = \\bar z^{\\,\\delta_2}\\, z_1^{D}$ with the top carry $\\delta_2 = \\lfloor (s_2(\\gamma)+s_2(\\gamma'))/e_1 \\rfloor \\in \\{0,1\\}$ and $D = \\big(s_1(\\gamma)+s_1(\\gamma')-s_1(\\gamma+\\gamma') + \\ell_0\\,\\gamma_2\\,\\delta_2\\big)/e_0 \\in \\mathbb{Z}$, where $(\\ell_0,\\ell_0')$ is the normalized Bézout pair of the inner read and $\\gamma_2 = e_1 w_1\\Phi_1 + h_1$. Proved as a finite-algebra identity — carry-1 bookkeeping at both levels plus a two-line Bézout kernel; integrality of $D$, the 2-cocycle identity, the $\\mathbb{Z}/E_2$ descent, and both one-level degenerations are displayed corollaries of the same computation.",
+    "note": "Accepted 2026-08-03 at the two-clean model-diverse bar. Scope as accepted: the harness tower class, standard-lift. Residuals, in force at every use: the lift-normalization law (ITER-LAW-LIFT) is open exactly at $g_0 = 1 \\wedge \\delta_1 = 1$; a semantics wrapper rides a separately accepted retarget; depths ≥ 3 are untouched by this note. The sealed falsifier battery was re-run byte-exact at acceptance: 35,232 checks, zero violations.",
+    "gate": "Not machine-checked: a mathematical proof note, adversarially verified (accepted). Rests on the pinned model class; transporting it to the classifier's actual objects is the open weld below.",
+    "lean": "ITER-LAW (accepted 2026-08-03; ledger block \"ITER-LAW ACCEPTED — 2026-08-03\"):\n\n  c(γ,γ′) = z̄^{δ₂} · z₁^{(s₁(γ)+s₁(γ′)−s₁(γ+γ′)+ℓ₀γ₂δ₂)/e₀}\n\n  δ₂ = ⌊(s₂(γ)+s₂(γ′))/e₁⌋;  exponent ∈ ℤ (Lemma EXP).\n\nScope as accepted: the harness tower class (standard-lift; strict superset of\nthe pinned E₂ = e₀e₁ > 1 setting, on-the-nose at E₂ > 1).\nResiduals: (ITER-LAW-LIFT) open at g₀ = 1 ∧ δ₁ = 1; orders ≥ 3 untouched.",
+    "srcLabel": "The exact statement (from the accepted note)",
+    "file": "lean/notes/openmath/ITERLAW_2026-08-08.md",
+    "kind": "accepted proof note (adversarially verified)"
+   },
+   {
+    "id": "cc-iterlaw3",
+    "title": "The depth-3 law: proved, accepted 2026-08-03 off one displayed corner",
+    "status": "proved-note",
+    "math": "On 3-read standard-lift towers: $c_3(\\gamma,\\gamma') = \\bar z^{\\,\\delta_3}\\, z_2^{D_2}\\, z_1^{D_1}$ with $\\delta_3 = \\lfloor (s_3(\\gamma)+s_3(\\gamma'))/e_2 \\rfloor$, $D_2 = \\big(s_2\\text{-defect} + \\ell_1\\gamma_3\\delta_3\\big)/e_1$, composed inner shift $\\Sigma = D_2\\gamma_2 + \\delta_3\\gamma_3(\\ell_1' - \\ell_1 w_1\\Phi_1)$, and $D_1 = \\big(s_1\\text{-defect} + \\ell_0\\Sigma\\big)/e_0$ — each 'defect' being $s_j(\\gamma)+s_j(\\gamma')-s_j(\\gamma+\\gamma')$. Proved on the class OFF the corner DCX $= \\{g_0 = g_1 = 1,\\ \\delta_1 = 1,\\ s_2(\\gamma) = s_2(\\gamma') = e_1{-}1,\\ S_1 + s(\\gamma_2) \\ge 2e_0\\}$, which is empty whenever $e_0 \\le 2$. On the corner the display remains a named open lemma, (W-MULT-3-DCX), instance-true in all 132 probed cases. Before the proof, the law was found and pinned by five decorrelated numeric methods (an independent reimplementation, a from-data symbolic fit, a cohomological probe, a degeneration ladder, a fingerprint census — each reading and extending the sealed battery's artifacts) with zero splits — roughly 133,000 field-exact samples, zero violations; the naive per-level template was refuted beyond appeal (it fails associativity wherever it separates).",
+    "note": "Accepted 2026-08-03 after a three-round hostile arc: two convergent not-clean rounds with dated errata, then a double-clean round (both verifiers, different model families, zero critical findings and zero gaps). Second residual: a fenced non-consumed corner $\\{e_0 = 1 \\wedge d_0 \\ge 2 \\wedge j \\ge g_0\\}$ is displayed; the consumed depth-2 base carries its own package through.",
+    "gate": "Not machine-checked: accepted proof note. Open on the DCX corner ((W-MULT-3-DCX), instance-true 132/132); pinned to the canonical ε-corrected lift (the plain lift measurably deviates — the lift residual below).",
+    "lean": "(ITER-LAW-3), accepted 2026-08-03 (ledger defined-term block [IL3]):\n\n  c₃ = z̄^{δ₃} · z₂^{D₂} · z₁^{D₁}\n  δ₃ = ⌊(s₃+s₃′)/e₂⌋;  D₂ = (s₂-defect + ℓ₁γ₃δ₃)/e₁;\n  Σ = D₂γ₂ + δ₃γ₃(ℓ₁′ − ℓ₁w₁Φ₁);  D₁ = (s₁-defect + ℓ₀Σ)/e₀\n\nPROVED on the 3-read standard-lift harness class OFF the DCX corner\n{g₀ = g₁ = 1, δ₁ = 1, s₂(γ) = s₂(γ′) = e₁−1, S₁+s(γ₂) ≥ 2e₀} (EMPTY at e₀ ≤ 2).\nRESIDUALS: (W-MULT-3-DCX) OPEN (instance-true 132/132); the fenced\nnon-consumed corner {e₀=1 ∧ d₀≥2 ∧ j≥g₀}; the depth-2 base's package rides through.",
+    "srcLabel": "The exact statement (from the accepted note)",
+    "file": "lean/notes/openmath/ITERLAW3_PROOF_2026-08-08.md",
+    "kind": "accepted proof note (adversarially verified)"
+   },
+   {
+    "id": "cc-gauge",
+    "title": "The ε-chain gauge: one normalization, one honest carry",
+    "status": "definition",
+    "math": "The mechanism behind the laws is simpler than the laws. Modulo the single top carry, the entire cocycle is an explicit coboundary: $c_{n+1} = \\bar z^{\\,\\delta}\\cdot\\partial F_n$ with $F_n(\\gamma) = \\prod_{j=1}^n \\varepsilon_j(\\beta_j(\\gamma))$ — one explicitly computable unit per level, the $\\varepsilon$-chain. Normalize every anchor by its $\\varepsilon$-chain and multiplication becomes exact except for one carry at the top of the tower, inflated from $\\mathbb{Z}/e_n$; all the recursion's constants ($D_j$, the composed shifts) are the exponent bookkeeping of $\\partial F_n$. The only gauge-independent content is the top carry and one invariant class, $\\mathrm{class}(c_{n+1}) = \\big[\\prod_j z_{j+1}^{(e_0\\cdots e_{j-1})\\ell_j}\\big]$. The all-orders strategy of record follows: per level, prove L6-$(n)$ (anchor value $=$ $\\varepsilon$-chain — routine) and W-MULT-$(n)$ (products develop with exactly the top carry — the one hard step); the closed form, integrality, cocycle identity, and the recursion are then derived corollaries, never guessed constant-by-constant again.",
+    "note": "At depths 2 and 3 this reading is part of the accepted proofs. As an all-orders mechanism it is the strategy of record, converged on by five decorrelated numeric methods with zero splits (convergence judgment dated 2026-08-03); its per-level presentation $K[u]/(u^{E} - \\sigma)$ visibly echoes the formalized carry algebra $F[u]/(u^e - \\bar z)$ of the previous stage — that identification is conjecture-grade and is part of the open weld below.",
+    "lean": "The gauge form (equivalent, proven-equal-on-instance, to the closed form):\n\n  c_{n+1}(γ,γ′) = z̄^{δ} · ∂F_n,   F_n(γ) = ∏_{j=1}^{n} ε_j(β_j(γ))\n\n  invariant class:  class(c_{n+1}) = [∏_{j=0}^{n} z_{j+1}^{(e₀⋯e_{j−1})·ℓ_j}]  in  M/M^{E_{n+1}}\n\nStrategy of record: two lemma families per level —\n  L6-(n):     val_n(φ_γ) = ∏_j ε_j(β_j(γ))            [routine]\n  W-MULT-(n): val_n(φ_γφ_{γ′}) = z̄^{δ} · val_n(φ_γ) · val_n(φ_{γ′})   [the hard step]",
+    "srcLabel": "The mechanism, displayed (from the convergence note)",
+    "file": "lean/notes/openmath/L3CONVERGENCE_2026-08-08.md",
+    "kind": "mechanism / strategy of record"
+   },
+   {
+    "id": "cc-measured456",
+    "title": "Depths 4, 5, 6: measured — zero violations in 390,000+ exact checks",
+    "status": "measured",
+    "math": "The uniform recursion, evaluated at depths no proof covers, against sealed or verifier-owned exact computation. Depth 4 (sealed, preregistered battery): zero violations in 362,624 exact checks on 72 fresh towers over 4 coefficient rings, plus a subwindow-restriction gate (depth-4 law restricted to the top sublattice must reproduce the measured depth-3 law on the nose): 2,896 checks, zero violations. Depth 5 (post-seal diagnostic): roughly 5,300 checks, zero violations, including the five-read law exact in all 544 probed cases and law-exact pairs on live excluded-corner strata. Depth 6 (the verifier's own from-note reimplementation, disjoint code path): 22,369 checks on 9 fresh instances, zero violations.",
+    "note": "Measured means measured: sealed batteries are instance evidence and are never consumed as a proof step anywhere in the development. At these depths the law is conjecture-grade.",
+    "gate": "No proof exists at depths ≥ 4; the general statement is a conjecture with the displayed measured support.",
+    "lean": "ITERLAW4_PROBE verdict (sealed prereg; law-keyed):\n  0 violations / 362,624 exact checks — 72 fresh towers × 4 rings\n  F-SUB subwindow-restriction gate: 2,896 / 0\nFirst 5-read data (post-seal diagnostic iterlawn_diag.py):\n  ≈ 5,300 checks / 0 violations; (ITER-LAW-5) exact 544/544\nFirst 6-read data (verifier-owned from-note reimplementation):\n  22,369 checks / 0 violations on 9 fresh instances",
+    "srcLabel": "The verdict lines (from the sealed records)",
+    "file": "lean/notes/openmath/ITERLAW4_PROBE_2026-08-08.md",
+    "kind": "sealed numeric battery (instance evidence)"
+   },
+   {
+    "id": "cc-iterlawn",
+    "title": "The all-orders theorem (ITER-LAW-n): composed, generic layers proved, NOT yet accepted",
+    "status": "open",
+    "math": "One recursion for every depth: top carry $\\delta = \\lfloor(s_{n+1}(\\gamma)+s_{n+1}(\\gamma'))/e_n\\rfloor$, then $S_n = \\delta\\gamma_{n+1}$ and, for $j = n,\\dots,1$: $D_j = (s_j\\text{-defect} + \\ell_{j-1}S_j)/e_{j-1} \\in \\mathbb{Z}$, $S_{j-1} = D_j\\gamma_j + S_j(\\ell_{j-1}' - \\ell_{j-1}w_{j-1}\\Phi_{j-1})$; then $c_{n+1} = \\bar z^{\\,\\delta}\\, z_n^{D_n}\\cdots z_1^{D_1}$. Stated at every rung $n \\ge 1$ and proved by induction on the rung, on an honest perimeter: proved level-generic are the integer cascade (integrality, positivity, window, slotwise cocycle, descent), the exponent kit, the anchor-equals-ε-chain family L6-$(n)$ from the accepted base alone, and the multiplication law's main case; the remaining cases close modulo the engine family (RM-$(n{-}1)$), off the per-level excluded corners DCX-$(n)$ (outer bound proved, sharp at the first level).",
+    "note": "Honesty first: this note is composed with displayed opens and has NOT passed its own hostile arc — nothing in it is accepted, and this page counts the all-orders theorem as open. With the depth-3 acceptance, its conditionality ledger reduces to the (RM-m) family alone plus the corner family — the next node. Depth 2 = the accepted base; depth 3 = the accepted-off-corner rung; every deeper rung is conditional.",
+    "gate": "Conditional on: the (RM-m) engine family for 2 ≤ m ≤ n−1 (open, priced); (W-MULT-DCX-m) on the excluded corners (open); the depth-3 note's own residuals riding through; and the note's pending acceptance arc.",
+    "lean": "(ITER-LAW-n), stated for all n ≥ 1 on (n+1)-read standard-lift towers:\n\n  δ = ⌊(s_{n+1}(γ)+s_{n+1}(γ′))/e_n⌋;   S_n = δ·γ_{n+1}\n  for j = n, …, 1:\n    D_j     = (s_j(γ)+s_j(γ′)−s_j(γ+γ′) + ℓ_{j−1}·S_j)/e_{j−1}  ∈ ℤ\n    S_{j−1} = D_j·γ_j + S_j·(ℓ_{j−1}′ − ℓ_{j−1}·w_{j−1}Φ_{j−1})\n  c_{n+1}(γ,γ′) = z̄^{δ} · z_n^{D_n} ⋯ z₁^{D_1}  =  z̄^{δ} · ∂F_n\n\nStatus: composed 2026-08-03 by induction on the rung; generic layers proved;\nCases II closed MODULO (RM-(n−1)), off DCX-(n); hostile arc OWED — not accepted.",
+    "srcLabel": "The exact statement (from the composed note — under review)",
+    "file": "lean/notes/openmath/ITERLAWN_PROOF_2026-08-08.md",
+    "kind": "composed theorem note (acceptance pending)"
+   },
+   {
+    "id": "cc-twofamilies",
+    "title": "The exact remaining distance: two named lemma families, plus a lift residual",
+    "status": "open",
+    "math": "Family one — (RM-m), the read-multiplication engine at level $m$: the product-with-correction re-development inside the level-$m$ read. The case $m = 1$ is proved (via the accepted depth-3 note's digit-split analysis and an $\\varepsilon'$-factoring); every $m \\ge 2$ is open, with a written price. Family two — (W-MULT-DCX-m): the multiplication law on the excluded corner at each level; open at every $m$, instance-true everywhere probed (132/132 at depth 3; corner-live pairs law-exact in the depth-5 data). A proof of these two families closes the recursion at every depth on the model class. The lift residual is a third, smaller account: the accepted laws are pinned to the canonical $\\varepsilon$-corrected lift; (ITER-LAW-LIFT) — the law's behavior under change of lift — is open exactly at $g_0 = 1 \\wedge \\delta_1 = 1$, with two measured companion conjectures (the plain lift deviates by an explicit measured factor, consistent with the note's cancellation mechanism).",
+    "note": "This is the honest frontier of the mathematics as of 2026-08-03, and it is short: two families and a residual, each named, each priced, none hidden inside a 'routine' step.",
+    "lean": "(RM-m)  [READ-MULT with the canonical correction, level m], m ≥ 1:\n   m = 1: PROVED (via [IL3]'s DIGIT-SPLIT/DEV-1 + the ε′-factoring)\n   m ≥ 2: OPEN, priced — THE resisting leg of the all-orders induction\n\n(W-MULT-DCX-m): the W-MULT display on DCX-(m):\n   OPEN at every m; instance-true everywhere probed (132/132 at m = 2)\n\n(ITER-LAW-LIFT): OPEN exactly at g₀ = 1 ∧ δ₁ = 1;\n   LIFT-DEV-3 / LIFT-DEV-4: measured conjectures (sealed cycles owed)",
+    "srcLabel": "The named open families (from the conditionality ledger)",
+    "file": "lean/notes/openmath/ITERLAWN_PROOF_2026-08-08.md",
+    "kind": "named open lemma families (priced)"
+   },
+   {
+    "id": "cc-weld",
+    "title": "The semantic weld: from the model class to the actual classifier — open",
+    "status": "open",
+    "math": "Every accepted law in this stage lives on the standard-lift harness tower class — a pinned model calculus with the classifier's shape. The weld is the missing theorem identifying harness towers, their anchors, and their carry data with the actual Okutsu–Montes types of the formalized classifier, so that the accepted laws transport to the Lean OM tree and ultimately to the density campaign's transition expressions. Its Lean-facing counterpart is the standing order-$\\ge 2$ classifier-faithfulness obligation of the formal development. The suspected dictionary — the gauge-invariant class presented as $K[u]/(u^{E}-\\sigma)$ matching the formalized carry algebra $F[u]/(u^e - \\bar z)$ — is recorded at conjecture grade.",
+    "note": "Until this weld is proved, 'proved on the model class' is the precise strength of every accepted law above — no more is claimed anywhere on this page.",
+    "lean": "OPEN. Two formalisms to be welded:\n  the MOVES/HC1 carry-algebra language:  D = F[u]/(u^e − z̄)  (Lean, previous stage)\n  the harness calculus:                  eq-(12-int) splits s_j, ε-chain, anchors\nSuspected identification (conjecture-grade): consumer interfaces should key to\nthe invariant class + the gauge, presented as K[u]/(u^E − σ), σ = the class monomial.",
+    "srcLabel": "The open obligation, displayed",
+    "file": "lean/notes/openmath/L3CONVERGENCE_2026-08-08.md",
+    "kind": "open bridge obligation"
+   },
+   {
+    "id": "cc-fgmn",
+    "title": "The read functional corrected at source (the FGMN re-derivation) — accepted",
+    "status": "proved-note",
+    "math": "A standing question about the engine's read functional was answered at the source. Two compiled obstruction walls (a parity wall and a landing wall) had blocked the glue step of the paper-derived read functional inside the formalization. A from-source re-derivation at transcription scale — re-deriving the functional clause by clause from the cited print rather than from the project's own earlier transcription — delivered the verdict: the glue step does fire at the source; both walls were transcription artifacts of one doubly-scaled clause. The repair is three tokens (a weight field read one stage too late, at three sites of the definitions layer), applied under a separately gated unit with its own post-application hostile pass; the fixed points of the diff — the sites whose semantics the repair must not change — are part of the accepted record.",
+    "note": "Accepted in the first days of August 2026 after a fourteen-pass, ten-revision adversarial arc with three independently executed computational legs (passes 3, 9, and 12) and a model-diverse double-clean finish. This closed, end-to-end, the campaign's longest-running repair account.",
+    "gate": "Not machine-checked as a whole: the acceptance covers the two-scale diagnosis, the source-fires verdict, the exact three-token diff, and the pinned battery record; the applied diff itself compiles green in the Lean corpus.",
+    "lean": "The accepted deliverable, exactly:\n  (1) the two-scale diagnosis: the compiled parity/landing walls are\n      transcription artifacts of the doubly-scaled clause;\n  (2) the ROW-A SOURCE-FIRES verdict: the print's glue step fires;\n  (3) the three-token diff: Moves definitions layer, three sites,\n      σ.w → σ.wPrev — with the retained-semantics fixed points recorded;\n  (4) the pinned sources + battery record.",
+    "srcLabel": "The accepted verdict (from the note)",
+    "file": "lean/notes/openmath/FGMN_REDERIVATION_2026-08-08.md",
+    "kind": "accepted re-derivation note (adversarially verified)"
+   },
+   {
+    "id": "cc-banked-zero",
+    "title": "The last banked unproved statement, proved outright — the corpus at zero banked",
+    "status": "proved",
+    "math": "Since July 2026 the Lean corpus carried exactly one banked unproved statement: a Newton-polygon hull-stability bound in the classifier, off the capstone path. The statement: for finite point sets $S, S'$, if every genuine vertex of $S'$ is a point of $S$, every point of $S$ lies weakly above the $S'$-hull, and every $S$-abscissa occurs among the $S'$-abscissas, then the genuine vertex lists coincide. (The two-hypothesis version is false — the development keeps a machine-checked counterexample; the third hypothesis is the repair, available for free at the sole use site.) It is now proved outright, with the statement byte-unchanged, in a dedicated 1,700-line module; the falsifier battery ran clean before the proof (8,000 randomized cases), the full build is green, and the axiom-census printout confirms every capstone footprint unchanged. The corpus carries zero banked statements.",
+    "note": "This is the one item in this stage that IS machine-checked: Lean-core footprint, statement fence respected (only ':= by sorry' became a term-mode application of the new core theorem).",
+    "lean": "theorem npVertices_stable_of_hull_preserved (S S' : Finset (ℕ × ℕ))\n    (hS : S.Nonempty) (hS' : S'.Nonempty)\n    (hpres : ∀ P ∈ NewtonPolygon.npVertices S' hS', P ∈ S)\n    (habove : ∀ P ∈ S, NewtonPolygon.npHeight S' hS' (P.1 : ℚ) ≤ (P.2 : ℚ))\n    (habs : ∀ P ∈ S, ∃ Q ∈ S', Q.1 = P.1) :\n    NewtonPolygon.npVertices S hS = NewtonPolygon.npVertices S' hS' :=\n  NewtonPolygon.npVertices_stable_of_hull_preserved_core S S' hS hS' hpres habove habs",
+    "file": "lean/LeanUrat/OM/HullStability.lean",
+    "kind": "theorem (machine-checked, Lean core axioms only)"
+   }
+  ]
  }
 ]

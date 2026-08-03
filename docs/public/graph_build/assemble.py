@@ -9,7 +9,7 @@ maps = json.load(open(BASE / 'maps.json'))
 # Normalize corpus keys in maps to short names
 def short(name):
     n = name.strip()
-    for k in ['OM', 'capstone-chain', 'root-engine', 'MovesRBase', 'MovesGr', 'MovesSp',
+    for k in ['OM', 'capstone-chain', 'root-engine', 'CocycleLadder', 'MovesRBase', 'MovesGr', 'MovesSp',
               'MovesC', 'MovesS', 'MovesX', 'MovesD', 'MovesT', 'MovesV', 'MovesU',
               'HC1', 'HC2', 'Moves']:
         if n == k or n.startswith(k + ' ') or n.startswith(k + '('):
@@ -21,6 +21,7 @@ byc = {short(m['corpus']): m for m in maps}
 STAGE_CORPORA = {
     'classifier-tree': ['OM', 'capstone-chain'],
     'carry-algebra': ['Moves', 'MovesC', 'MovesRBase', 'MovesGr', 'HC1', 'HC2'],
+    'carry-cocycle-ladder': ['CocycleLadder'],
     'species-alphabet': ['MovesSp'],
     'branch-mass-laws': ['MovesD'],
     'transfer-assembly': ['MovesT'],
@@ -47,6 +48,7 @@ CORPUS_LABEL = {
     'MovesX': 'The exhaustion bounds (MovesX)',
     'MovesU': 'Theorem U: the capstone (MovesU)',
     'root-engine': 'The measure route and the trusted base (root modules)',
+    'CocycleLadder': 'The carry-cocycle ladder (accepted proof notes and sealed numeric batteries, 2026-08-03)',
 }
 
 extra_stage = {
@@ -67,6 +69,8 @@ BADGE = {
     'open': ('open', 'st-open', 'an explicitly fenced unproved goal'),
     'definition': ('definition', 'st-def', 'a definition or interface (nothing to prove)'),
     'cited-axiom': ('cited axiom', 'st-axiom', 'a literature result imported as a named, audited axiom'),
+    'proved-note': ('proved (note)', 'st-note', 'proved in a mathematical proof note ACCEPTED under the campaign’s adversarial-verification bar (consecutive clean hostile passes by verifiers in fresh contexts, at least two model families) — not machine-checked'),
+    'measured': ('measured', 'st-meas', 'a precisely stated law confirmed by large-scale exact numerics under sealed, preregistered batteries — instance evidence, never a proof step'),
 }
 
 def esc(s):
@@ -84,7 +88,7 @@ def node_html(nd):
     parts.append('<p class="math">%s</p>' % esc(nd['math']))
     if gate:
         parts.append('<p class="gate"><strong>Hypotheses this rests on:</strong> %s</p>' % esc(gate))
-    parts.append('<details class="leansrc"><summary>The Lean statement</summary>')
+    parts.append('<details class="leansrc"><summary>%s</summary>' % esc(nd.get('srcLabel', 'The Lean statement')))
     parts.append('<pre><code>%s</code></pre>' % html.escape(nd['lean']))
     parts.append('<p class="file">%s &mdash; %s</p></details>' % (esc(nd['file']), esc(nd.get('kind', ''))))
     parts.append('</div></details>')
@@ -171,6 +175,8 @@ details.leansrc pre { background: #f4f4f4; border: 1px solid #e0e0e0; border-rad
 .st-open { background: #fde2e2; color: #a12727; }
 .st-def { background: #e8e8e8; color: #444; }
 .st-axiom { background: #e6e0f5; color: #4b3a8a; }
+.st-note { background: #d9e9f5; color: #14527d; }
+.st-meas { background: #d9f2ee; color: #0e6b5c; }
 .highlight { background: #eef4fb; border-radius: 6px; padding: 0.5rem 0.8rem; margin: 0.6rem 0; overflow-x: auto; }
 .capstone { border: 2px solid #345; border-radius: 8px; padding: 0.6rem 1rem; background: #f4f7fa; margin: 1rem 0; }
 .opensurface { border: 1px solid #d9a400; border-radius: 8px; background: #fffdf2; padding: 0.6rem 1rem; margin: 1.2rem 0; }
@@ -198,7 +204,7 @@ details.leansrc pre { background: #f4f4f4; border: 1px solid #e0e0e0; border-rad
 </header>
 <main class="gwrap">
 <h1>The Uniformity Theorem for p-adic Splitting Densities, Mapped</h1>
-<p class="post-date">The Lean 4 formalization as an expandable graph &mdash; every node carries the formal statement and its mathematical translation. Companion to <a href="paper.html">the expository account</a>. Built July 2026.</p>
+<p class="post-date">The Lean 4 formalization as an expandable graph &mdash; every node carries the formal statement and its mathematical translation. Companion to <a href="paper.html">the expository account</a>. Built July 2026; stage 3 (the carry-cocycle ladder) and the refreshed honest boundary added August 3, 2026.</p>
 
 <div class="howto"><strong>How to read this page.</strong> The page has four levels. The <em>story</em> below reads on its own. Each numbered <em>stage</em> expands to a summary of one step of the proof. Inside a stage, each <em>module group</em> expands to its role and its main results. Each <em>result</em> expands to a plain-mathematics translation, and one further click shows the exact Lean statement. Status badges say what kind of certificate each node carries; the legend is at the bottom, and the honest boundary of the whole development is in the amber panel.</div>
 
@@ -232,7 +238,7 @@ details.leansrc pre { background: #f4f4f4; border: 1px solid #e0e0e0; border-rad
 
 <h3>Legend</h3>
 <p>%(legend)s</p>
-<p class="file">This map shows %(total)d selected declarations out of roughly 970 public theorems and definitions in the development: %(ptot)d proved, %(ctot)d conditional, %(otot)d open, %(dtot)d definitions, %(atot)d cited axioms among the selection. Selection favors load-bearing results, interfaces, and honest negative results (compiled countermodels).</p>
+<p class="file">This map shows %(total)s selected results: %(ptot)s proved (machine-checked), %(ctot)s conditional (machine-checked implications), %(ntot)s proved in accepted proof notes (adversarially verified, not machine-checked), %(mtot)s measured (sealed exact numerics), %(otot)s open, %(dtot)s definitions, %(atot)s cited axioms. The Lean-backed nodes are a selection from roughly 970 public theorems and definitions in the development; selection favors load-bearing results, interfaces, and honest negative results (compiled countermodels).</p>
 
 <p class="file">Provenance: the mathematics extends <a href="https://arxiv.org/abs/2212.00294">A Chebotarev Density Theorem over Local Fields</a> (Asvin G, Yifan Wei, John Yin). The formalization was carried out in Lean 4 with Mathlib by Claude (Anthropic) orchestrating fleets of proving and adversarially verifying agents, with independent statement audits by a second model family (OpenAI Codex), under the direction of Asvin G. Page generated from the formal development; translations audited for faithfulness to the Lean statements.</p>
 </main>
@@ -273,6 +279,8 @@ subs = {
     'otot': str(status_totals.get('open', 0)),
     'dtot': str(status_totals.get('definition', 0)),
     'atot': str(status_totals.get('cited-axiom', 0)),
+    'ntot': str(status_totals.get('proved-note', 0)),
+    'mtot': str(status_totals.get('measured', 0)),
 }
 out = page
 for k, v in subs.items():
