@@ -6494,7 +6494,11 @@ hygiene; **VC36 OWED on the REVISION-34 wording**, never self-confirmed. (2) THE
 WAVE-16 BATCH FOLDED (ROOT §40.(i)–(iv)): **ITER-LAW PROVED AT ATTEMPT GRADE on the
 harness tower class** (standard-lift towers — the class DITER_RESTATE §S2 pins; the
 entire 0/804 + 0/840 instance base inside it; seal ab7c31c / run 242ba1e ALL GREEN
-FIRST PASS 35,232/0; ACCEPTANCE COUNTER 0 — hostile passes IN FLIGHT; residuals
+FIRST PASS 35,232/0; ACCEPTANCE COUNTER 0 — hostile passes IN FLIGHT, and AT THE
+FOLD'S CLOSE both landed: Fable/F2c CLEAN 0C/0G (64ac340) + Codex content
+NOT-CLEAN 1C/1G (acc955a, the E₂ > 1 scope-mismatch critical; errata round owed
+to the next unit; counter stays 0 — the ROOT §40.(i) concurrency disclosure
+governs); residuals
 (ITER-LAW-LIFT) at g₀ = 1 ∧ δ₁ = 1 + gr(w₂)-wrapper-rides-GRB-retarget + orders ≥ 3
 displayed; the class qualifier carried at every mention) — the owed status brackets
 APPLIED, all additive: DITER_RESTATE §S2, GRB S5.3 (second bracket) + S8 item 2,

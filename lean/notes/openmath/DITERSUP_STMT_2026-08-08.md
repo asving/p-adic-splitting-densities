@@ -351,6 +351,19 @@ it is NOT part of the S/M/L queue below beyond its prerequisite line.
 **Price: L, AFTER the M-priced tie layer AND the ITER-LAW unit (queue #6) — no
 agent should be assigned this gate without both.**
 
+**[CROSS-REFERENCE BRACKET (2026-08-08, wallclock 2026-08-03; applied at ROOT
+r35; ADDITIVE): the ITER-LAW unit (queue #6) has since EXECUTED — (ITER-LAW)
+is PROVED AT ATTEMPT GRADE on the harness tower class (standard-lift towers,
+the class DITER_RESTATE §S2 pins; note `ITERLAW_2026-08-08.md`; seal ab7c31c,
+run 242ba1e ALL GREEN FIRST PASS). J3b's CONDITIONAL-ON-ITER-LAW leg MAY now
+cite ITER-LAW proved-on-class instead of a bare displayed hypothesis,
+PROVIDED (a) the instance is standard-lift (all compiled ones are), (b) the
+citation says ATTEMPT GRADE — acceptance counter 0, hostile passes in
+flight, NOT accepted — and (c) the (ITER-LAW-LIFT) residual (general lawful
+lifts, open exactly at g₀ = 1 ∧ δ₁ = 1) is displayed wherever a non-standard
+lift could enter. The BLOCKED-ON-APPLICATION and BLOCKED-ON-CARRIER-TIE legs
+are UNCHANGED — the gate still does not fire.]**
+
 ### GATES JS1–JS3 — the three DITER §S3 sanity gates (any discharge instance must reproduce them)
 
 ```lean

@@ -70,6 +70,27 @@ probe header's derivation from W-MULT + val(φ_γ) = ǫ₁(γ₁) is essentially
 computation).  Orders ≥ 3: the iterated form is the conjectured TEMPLATE (the
 fibration composes stage-over-stage); unmeasured, OPEN — no claim.
 
+**[STATUS BRACKET (2026-08-08, wallclock 2026-08-03; applied at ROOT r35 per the
+ITER-LAW unit's S9 owed list; ADDITIVE — the record text above stands): the
+status line above UPGRADES. (ITER-LAW) is now PROVED AT ATTEMPT GRADE ON THE
+HARNESS TOWER CLASS — standard-lift towers, exactly the class this section's
+setting pins, and the class the ENTIRE instance base (0/804 strata-probe +
+0/840 JUNCFORGE) inhabits — as a finite-algebra identity by the recorded
+CARRY-1/W-MULT fibred route; proof note `lean/notes/openmath/
+ITERLAW_2026-08-08.md`; two-commit seal honored (runner sealed pre-run at
+ab7c31c; run ALL GREEN FIRST PASS exit 0 at 242ba1e — 35,232 samples / 0
+violations, F1–F10 + CERT, Case-II coverage MET, row-X NOT-CYCLIC 4/4 with
+exact value-set match). HONEST RESIDUALS: (ITER-LAW-LIFT) — general lawful
+(non-standard) lifts remain OPEN exactly at g₀ = 1 ∧ δ₁ = 1 (the one
+lift-form-consuming step, PAIR-VAL Case II); the gr(w₂) semantics wrapper
+rides the accepted GRB retarget (consumer-side, not consumed by the theorem);
+orders ≥ 3 stay OPEN as displayed above. ACCEPTANCE COUNTER 0 — the
+hostile-pass arc is the acceptance bar and is IN FLIGHT; until it closes,
+consumers cite "proved-on-class at attempt grade", never "accepted". §S3's
+consumable spec is unchanged in content; its conditionality display may cite
+ITER-LAW as proved-on-class instead of displayed hypothesis PROVIDED the
+instance is standard-lift (all compiled ones are).]**
+
 **The retired form (fenced).**  "𝒟′ = F′[u′]/(u′^{e_b′} − ζ′) with a single ζ′" at
 the canonical alphabet: REFUTED per S1.  It survives ONLY as: (a) the e_b = 1 /
 E_i = 1 stratum (D-REAL's proved scope — MOVES "ζ′ = z̄ when e_b = 1" stands there);

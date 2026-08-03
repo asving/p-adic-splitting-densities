@@ -55,8 +55,11 @@ not be faithfully retargeted to the corrected density and is now the capstone's 
 faithfulness entry in `docs/AXIOM_FAITHFULNESS.md`. Adding any new axiom requires a
 published-source citation, a faithfulness entry, and a semantic-guardian audit pass;
 this process has caught **two false axioms** already, so it is not a formality.
-Exactly **one banked `sorry`** (`OM/Classifier.npVertices_stable_of_hull_preserved`,
-off the capstone path). Do not add more; do not touch statements to make goals provable
+**Zero banked `sorry`s** (updated 2026-08-08: the former sole banked `sorry`,
+`OM/Classifier.npVertices_stable_of_hull_preserved`, was PROVED with its statement
+byte-unchanged via the new `OM/HullStability.lean` — commit 15372d1, AxChk clean,
+capstone footprints unchanged; record `lean/notes/openmath/BANKED_SORRY_2026-08-08.md`).
+Do not add any; do not touch statements to make goals provable
 (parent CLAUDE.md statement-fence applies).
 
 ## Standing obligations (priority order, per PROJECT_STATE.md)

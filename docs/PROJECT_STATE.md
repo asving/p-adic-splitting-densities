@@ -172,13 +172,26 @@ this way and removed (a false *uniform* `omReadValuation`, refuted by `g = xⁿ 
 descent citation, refuted by `g = X² + X + pᴺ`), which is why the surviving citations are narrowly
 scoped (read-set-restricted, arising-key-only).
 
-### The one banked `sorry` (scope corrected 2026-07-30, verify-2 fold-in)
+### The one banked `sorry` (scope corrected 2026-07-30, verify-2 fold-in) — **[RETIRED 2026-08-08: DISCHARGED, see bracket below]**
 
 `Classifier.npVertices_stable_of_hull_preserved` — a Newton-polygon hull-invariance helper. It is the
 **sole** `sorry` on the OM/root capstone corpus (the `AxChk_baseline` import graph: the root modules +
 `OM/`) and is **off the capstone path**: it is consumed only by
 `boxValSupport_reduce_stable_R` (an off-capstone reduce-stability lemma), never by any capstone. Retained
 as an honest banked contract rather than deleted.
+
+**[DISCHARGED 2026-08-08 (wallclock 2026-08-03), commit 15372d1 — the banked-sorry
+count is now ZERO. `npVertices_stable_of_hull_preserved` is PROVED, Lean-core,
+STATEMENT BYTE-UNCHANGED (only `:= by sorry` → a term-mode `exact` of the new core
+theorem), via the new module `lean/LeanUrat/OM/HullStability.lean` (~1740 lines;
+imports Mathlib + `OM/NewtonPolygon` only; BPLL §0 kernels copied verbatim with
+attribution to keep the Scaffold closure off the capstone path). AxChk clean: full
+`lake build` green (8698 jobs), `AxChk_baseline` exit 0, ZERO `sorryAx` in the
+1099-line census, all capstone footprints unchanged; `certLevel_stabilizes` now
+carries only the declared NAMED CITE axiom
+(`omReadValuation_lt_of_certLevel_fkeyed`). Falsifier 0/4000 + 0/4000 pre-proof.
+Record: `lean/notes/openmath/BANKED_SORRY_2026-08-08.md`; folded at ROOT §40
+(REVISION 34, r35).]**
 
 It is NOT the sole `sorry` in the repository: the campaign corpora (Moves\*/HC\*) carry their own
 disclosed open items. **The live corpus-wide census is `lean/notes/REMAINING_CENSUS_2026-08-01.md`**
@@ -1284,6 +1297,17 @@ instance + G13′ + a short list of named open mathematics.
 6. **Phase B of the density capstones** (unchanged, parked behind the bridge campaign): omMenu
    growth beyond order 0 at general n, drainage/exhaustiveness, order ≥ 2 tower faithfulness.
 
+**[WAVE-16 STATUS TAGS on this block (2026-08-08, wallclock 2026-08-03, ROOT r35;
+the block above is the parked Lean-era list — the CURRENT frontier is the r35
+checkpoint at the tail):** ITER-LAW is now PROVED AT ATTEMPT GRADE on the harness
+tower class (standard-lift towers — the class DITER_RESTATE §S2 pins; acceptance
+counter 0, hostile passes in flight; (ITER-LAW-LIFT) open exactly at g₀ = 1 ∧
+δ₁ = 1); the corpus's ONE banked `sorry` is RETIRED (15372d1, statement
+byte-unchanged, `OM/HullStability.lean`, AxChk clean — the banked-sorry count is
+ZERO); (H7) has its FIRST compiled non-vacuous decision point (037ac6f, nothing
+discharged); the `DIterJunctionSupplier′` program is PRICED with every gate
+BLOCKED-ON-APPLICATION (2a25ed9).]**
+
 ## UPDATE (2026-07-31 evening — THE MATH-FIRST CAMPAIGN AT THE ROOT-ASSEMBLY STAGE)
 
 *(THIS SECTION IS THE RESUMABILITY ANCHOR. A fresh session resumes from this file alone via the
@@ -1833,7 +1857,11 @@ the Step-10/K1 classifier consumer face + a nonempty-parent lawful
 instance (forge-class); (5) **D-ITER RESTATED** (3bcae68,
 `DITER_RESTATE_2026-08-08.md`): the **ITER-LAW is the STATEMENT OF RECORD**
 (open lemma, instance-true 0/804 over 52 towers; the single-ζ′ cyclic form
-REFUTED 22/28 and bracketed at all display sites); the
+REFUTED 22/28 and bracketed at all display sites) **[r35 2026-08-08: ITER-LAW
+now PROVED AT ATTEMPT GRADE on the harness tower class (standard-lift towers,
+the class DITER_RESTATE §S2 pins) — seal ab7c31c, run 242ba1e ALL GREEN;
+hostile passes pending (counter 0); (ITER-LAW-LIFT) residual open at
+g₀ = 1 ∧ δ₁ = 1; see the r35 checkpoint]**; the
 `DIterJunctionSupplier` consumable spec on record (three mandatory
 features, cyclic kernels fenced); queue #11 unblocked on #9. FORGE
 CONSOLIDATION: the forge-class list now has THREE named targets —
@@ -2364,11 +2392,98 @@ VERIFIED — the application the gated unit's deliverable per the scope
 cut; the Route-B RB-DELTA decision).
 FRONTIER NOW: **VC35** (the confirming end-to-end pass on REVISION 33;
 acceptance anchored on REVISION 32/VC34 until it lands); then the
-synthesis-7 tail and SYNTHESIS PASS 8 at the wave-15 close.
+synthesis-7 tail and SYNTHESIS PASS 8 at the wave-15 close. [r35:
+VC35+VC35b have since CONFIRMED and WAVE 16 EXECUTED — the r35
+checkpoint below is current.]
 Verification: VC1–VC22 done; VC25 NOT-CONFIRMED (disposed); VC26+VC26b,
 VC27+VC27b CONFIRMED; VC28, VC29 CONFIRMED FIRST-PASS; VC30 (1C, cured)
 + VC30b CONFIRMED; VC31 (0C/2G, cured) + VC31b + VC31c CONFIRMED;
 VC32 (0C/3G, cured) + VC32b CONFIRMED; VC33 (0C/2G, cured by the
 r32-ERRATUM) + VC33b (0C/1G, WITH execution) + VC33c CONFIRMED;
 **VC34 CONFIRMED FIRST-PASS (= the REVISION-32 anchor)**; VC35 pending
-on REVISION 33.
+on REVISION 33 [r35: landed 0C/2G → r34-ERRATUM → VC35b CONFIRMED —
+see below].
+
+CHECKPOINT (ROOT r35 = REVISION 34, 2026-08-08 window, wallclock
+2026-08-03): the VC35+VC35b re-anchor + the WAVE-16 fold. **VC35 +
+VC35b CONFIRMED** on the REVISION-33 text (ledger 345b432; VC35 0C/2G
+— gap 1 the §39 closing abbreviation, cured by the dated r34-ERRATUM
+d79f295 spelling out the third strata component's conditions at the
+closing site too; gap 2 audit-input, the empty TWIST3-bracket appendix
+slice; VC35b the narrow companion CONFIRMED 0C/0G) — **the acceptance
+anchor moves REVISION 32/VC34 → REVISION 33/VC35+VC35b** (the
+SIXTEENTH audited re-anchoring): the TR3-S4 arc is now certified
+end-to-end inside the anchor — the strata family's THREE-component
+union {all order-2} ∪ {order-3 all-e_j = 1, PRINT-UNCONDITIONAL} ∪
+{order-3 e₀ = 1, e₁ ≥ 2, e₂ = 1, conditional on (H-ℓ) + the (KP_i)+[T]
+consumptions at S6.2 + the PIN-GEN-i attribution display, with Lemma
+HV3-E2 DERIVED from the pinned print}, the F2c in-pipeline discharge,
+the TWIST3 hygiene. THE WAVE-16 BATCH FOLDED (ROOT §40, REVISION 34):
+(1) **ITER-LAW PROVED AT ATTEMPT GRADE on the harness tower class**
+(standard-lift towers — the class DITER_RESTATE §S2 pins; the entire
+0/804 + 0/840 instance base sits inside it; note
+ITERLAW_2026-08-08.md): the CARRY-1/W-MULT fibred route (EQ12-ADD both
+levels, INNER-SHIFT, WINDOW, EPS-CLOSED/EPS-MULT, two-line Bézout
+Lemma EXP, ANCHOR-VAL, PAIR-VAL Cases I/II); two-commit seal (seal
+ab7c31c, run 242ba1e); falsifier ALL GREEN FIRST PASS exit 0 — 35,232
+samples / 0 violations, F1–F10+CERT, Case-II coverage MET, row-X
+NOT-CYCLIC 4/4 exact value-set match; (W-MULT) recovered as corollary,
+not consumed. HONEST RESIDUALS: (ITER-LAW-LIFT) general lawful lifts
+OPEN exactly at g₀ = 1 ∧ δ₁ = 1; gr(w₂) wrapper rides the accepted GRB
+retarget (consumer-side); orders ≥ 3 untouched; **ACCEPTANCE COUNTER
+0 — hostile passes IN FLIGHT** (Codex content + Fable execution/F2c)
+[at the fold's close BOTH landed: Fable/F2c CLEAN 0C/0G (64ac340 —
+from-note reimpl ALL GREEN 89,056/0 + sealed re-run byte-exact); Codex
+content NOT-CLEAN 1C/1G (acc955a — the E₂ > 1 scope-mismatch critical
+vs DITER_RESTATE §S2's pinned composite-stage setting,
+orchestrator-confirmed; F8 mixed-block gap); counter STAYS 0, the
+errata round owed to the next unit — ROOT §40.(i) concurrency
+disclosure governs]. Status brackets applied: DITER_RESTATE §S2, GRB
+S5.3 + S8 item 2, this file. (2) **THE BANKED SORRY RETIRED** (15372d1):
+npVertices_stable_of_hull_preserved PROVED Lean-core, statement
+byte-unchanged, via the new OM/HullStability.lean (~1740 lines,
+Mathlib + OM/NewtonPolygon only; BPLL §0 kernels copied verbatim with
+attribution); falsifier 0/4000+0/4000 pre-proof; full lake build green
+(8698 jobs), AxChk_baseline exit 0, ZERO sorryAx in the 1099-line
+census, capstone footprints unchanged; certLevel_stabilizes now
+carries only the declared NAMED CITE axiom. **The corpus's
+banked-sorry count: 1 → 0** (the "one banked sorry" sections above and
+in CLAUDE.md carry dated retirement brackets). (3) **H7 FORGE**
+(037ac6f): the FIRST compiled non-vacuous (H7) decision point —
+sorry-free 5-site depth-1 instance at (p,n,N,m) = (2,2,2,4), S6 shape,
+15 decls Lean-core; non-diagonal branchCellOf certified 3 ways (incl.
+the structural no-single-read breaker); sides = 2 with the real
+SideSplit, (JC-multi) DECIDED TRUE (1·2² = 4); PIN-1 slope-keyed ε
+PROVED + pooled form COMPILED-REFUTED; PIN-2 in-guard gates incl. the
+FIRST contentful KLocCounts instantiation (1·4 = 2·2). HONESTY:
+depth-1 (HK23/HK25 transplant = named residual); synthetic-but-lawful
+nodes; NOTHING discharges (H7). (4) **DITERSUP STATEMENT** (2a25ed9;
+display-only, no .lean touched): SideReads′/ReadsOf′/
+DIterJunctionSupplier′ displays (three σ.wPrev tokens; clauses
+(iii)–(vi) byte-identical); the D2 carrier interface with the gr(w₂)
+tie displayed as MISSING; gates J1(M)/J2(L)/J3a(M, ITER-LAW-FREE via
+D-REAL at e₀ = 1)/J3b(L)/JS1–JS3(S/S/M)/P1(M)/P0(L, Asvin-gated) —
+EVERY gate BLOCKED-ON-APPLICATION (three-token repair NOT applied;
+old-clause records byte-frozen); TruncRunFrom′ joins the primed-mirror
+set ([T-5], TruncatedRun.lean:230); J3b may cite ITER-LAW
+proved-on-class (attempt grade, standard-lift only). Roster: **NINE
+rows, unchanged**; no clause attribution moved. Census: 61 + 9 new
+(VC35b/VC36/ITERLAW/H7FORGE/DITERSUP/BANKED_SORRY/HullStability/
+H7Forge/ITER-LAW-LIFT) = 70 patterns, fixed point re-grepped, every
+delta reasoned (ROOT §40). **SYNTHESIS PASS 8 OWED at the wave-16
+close.** The Asvin batch restated in full (TowerMoveClosureL; the
+fence-(vii) ROUTE (a) lineage incl. the RECSL hσt rider + the EXECUTED
+F-ADM-3 re-key for ratify-or-reopen; the FGMN proposal AT TOP, FULLY
+VERIFIED — the application the gated unit's deliverable per the scope
+cut; the Route-B RB-DELTA decision).
+FRONTIER NOW: **VC36** (the confirming end-to-end pass on REVISION 34;
+acceptance anchored on REVISION 33/VC35+VC35b until it lands); the
+ITER-LAW hostile-pass arc (IN FLIGHT); then SYNTHESIS PASS 8 at the
+wave-16 close.
+Verification: VC1–VC22 done; VC25 NOT-CONFIRMED (disposed); VC26+VC26b,
+VC27+VC27b CONFIRMED; VC28, VC29 CONFIRMED FIRST-PASS; VC30 (1C, cured)
++ VC30b CONFIRMED; VC31 (0C/2G, cured) + VC31b + VC31c CONFIRMED;
+VC32 (0C/3G, cured) + VC32b CONFIRMED; VC33 (0C/2G, cured by the
+r32-ERRATUM) + VC33b (0C/1G, WITH execution) + VC33c CONFIRMED; VC34
+CONFIRMED FIRST-PASS; **VC35 (0C/2G, cured by the r34-ERRATUM) + VC35b
+CONFIRMED (= the REVISION-33 anchor)**; VC36 pending on REVISION 34.
