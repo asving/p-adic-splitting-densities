@@ -8017,3 +8017,39 @@ Candidate-2 verbatim; ITERLAW4 verdict quoted exactly, held at MEASURED;
 e_{m−2} ≥ 3 properly CONJECTURED (fresh data consistent, no refutation).
 Errata owed: G1 qualifier token ×3 sites (or the short engine-free-support
 lemma), G2 token sweep; then round 2. Pass files only (scoped commit).
+
+## VC38 (0C/9G) + ITERLAWN-PC (2C/3G) adjudicated + THE INCORPORATION CONVENTION — 2026-08-03
+
+VERDICTS: VC38 NOT-CONFIRMED, zero critical, nine gaps — eight are rule-8
+literalism (bare [IL]/[IL3] tokens in disposition cells, recounts, and sweep
+descriptions that POINT to the pasted block instead of carrying it) + one real
+miscount ("four note files" for three). ITERLAWN-PC round 1 NOT-CLEAN 2C/3G:
+C1 = a NOTATION COLLISION (S_j = the composed shift in S0.3 vs the raw slot
+sum in P-DS/S4.4-S4.6; the PE from-note reimplementation already verified the
+intended raw-sum semantics is consistent at 22,369 checks/0 violations — the
+WRITTEN step is ambiguous, the mathematics is not); C2 = rule-8 literalism in
+the composed body (64 of 92 [IL]/[IL3] tokens "defective" under
+paste-everywhere); G3 = an off-by-one in the displayed RM-1 exponent bound
+(2e₀g₀−1 not −2, still strictly inside DEV-1's bound — repairable arithmetic);
+G4 = the Case II-3 Q¹ line bound left as ellipses; G5 = the failure-propagation
+ledger missing an [IL]-failure branch. PE round 1 (e7e9151): 0C/2G display-grade,
+convergent in kind.
+
+**ORCHESTRATOR ADJUDICATION — THE INCORPORATION CONVENTION (refines checklist
+rule 8; effective immediately; charges test THIS from now on):** every document
+consuming an accepted result DECLARES ONCE (head or §0) the defined-term
+block(s) it consumes, pasted in full, and designates the dagger form ([IL]†,
+[IL3]†) as incorporating that block by reference. The FULL paste is required at
+(a) the declaration site and (b) every OPERATIVE consumption site (where the
+acceptance licenses an inference or status upgrade). Table cells, roster
+recounts, history lines, claim-DAG tokens, and sweep descriptions may carry the
+dagger. Composition-time citations inside bodies frozen before an acceptance
+are correct-as-dated; the head declaration carries the upgrade. RATIONALE:
+paste-at-every-token failed structurally twice today (disposition cells cannot
+carry 15-line blocks; 64/92 body tokens flagged in a note whose S7 bracket is
+complete and correct) and unreadable records are their own honesty defect.
+REMEDIES DISPATCHED: the ITERLAWN errata unit (C1 notation split + G3/G4/G5 +
+PE-G1 qualifiers + the head declaration curing C2/PE-G2) and the r38b ROOT unit
+(the §0 convention declaration with both blocks pasted once + dagger sweep of
+the eight gap sites + the four→three miscount fix). VC38b + ITERLAWN round 2
+follow under the amended standard.
