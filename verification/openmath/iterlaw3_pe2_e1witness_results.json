@@ -1,0 +1,988 @@
+{
+ "pass_": "ITERLAW3-PE2",
+ "label": "post-seal diagnostic",
+ "m_shift": 5,
+ "towers": [
+  {
+   "tower": "CXW-Z5-e2is1",
+   "pairs": 144,
+   "dcx": 4,
+   "expected": 4,
+   "sub_counts": {
+    "(0, 0)": 1,
+    "(0, 1)": 1,
+    "(1, 0)": 1,
+    "(1, 1)": 1
+   },
+   "thm": 4,
+   "wmult": 4,
+   "prod": 4,
+   "shape": 4,
+   "q1": 4,
+   "overflow": 4,
+   "cx_c2": 4,
+   "int_bad": 0,
+   "records": [
+    {
+     "tower": "CXW-Z5-e2is1",
+     "pair": [
+      21,
+      21
+     ],
+     "case": "II-2",
+     "thm": true,
+     "wmult": true,
+     "prod": true,
+     "shape": true,
+     "q1_nonzero": true,
+     "naive_E0_overflows": true,
+     "slot_support": [
+      0,
+      1
+     ]
+    },
+    {
+     "tower": "CXW-Z5-e2is1",
+     "pair": [
+      21,
+      51
+     ],
+     "case": "II-2",
+     "thm": true,
+     "wmult": true,
+     "prod": true,
+     "shape": true,
+     "q1_nonzero": true,
+     "naive_E0_overflows": true,
+     "slot_support": [
+      0,
+      1
+     ]
+    },
+    {
+     "tower": "CXW-Z5-e2is1",
+     "pair": [
+      51,
+      21
+     ],
+     "case": "II-2",
+     "thm": true,
+     "wmult": true,
+     "prod": true,
+     "shape": true,
+     "q1_nonzero": true,
+     "naive_E0_overflows": true,
+     "slot_support": [
+      0,
+      1
+     ]
+    },
+    {
+     "tower": "CXW-Z5-e2is1",
+     "pair": [
+      51,
+      51
+     ],
+     "case": "II-2",
+     "thm": true,
+     "wmult": true,
+     "prod": true,
+     "shape": true,
+     "q1_nonzero": true,
+     "naive_E0_overflows": true,
+     "slot_support": [
+      0,
+      1
+     ]
+    }
+   ]
+  },
+  {
+   "tower": "TW2-F3t-DCX-e1is1",
+   "pairs": 256,
+   "dcx": 48,
+   "expected": 48,
+   "sub_counts": {
+    "(0, 0)": 12,
+    "(0, 1)": 12,
+    "(1, 0)": 12,
+    "(1, 1)": 12
+   },
+   "thm": 48,
+   "wmult": 48,
+   "prod": 48,
+   "shape": 48,
+   "q1": 48,
+   "overflow": 48,
+   "cx_c2": null,
+   "int_bad": 0,
+   "records": [
+    {
+     "tower": "TW2-F3t-DCX-e1is1",
+     "pair": [
+      19,
+      21
+     ],
+     "case": "II-3",
+     "thm": true,
+     "wmult": true,
+     "prod": true,
+     "shape": true,
+     "q1_nonzero": true,
+     "naive_E0_overflows": true,
+     "slot_support": [
+      2,
+      3
+     ]
+    },
+    {
+     "tower": "TW2-F3t-DCX-e1is1",
+     "pair": [
+      19,
+      22
+     ],
+     "case": "II-3",
+     "thm": true,
+     "wmult": true,
+     "prod": true,
+     "shape": true,
+     "q1_nonzero": true,
+     "naive_E0_overflows": true,
+     "slot_support": [
+      1,
+      2
+     ]
+    },
+    {
+     "tower": "TW2-F3t-DCX-e1is1",
+     "pair": [
+      19,
+      61
+     ],
+     "case": "II-3",
+     "thm": true,
+     "wmult": true,
+     "prod": true,
+     "shape": true,
+     "q1_nonzero": true,
+     "naive_E0_overflows": true,
+     "slot_support": [
+      2,
+      3
+     ]
+    },
+    {
+     "tower": "TW2-F3t-DCX-e1is1",
+     "pair": [
+      19,
+      62
+     ],
+     "case": "II-3",
+     "thm": true,
+     "wmult": true,
+     "prod": true,
+     "shape": true,
+     "q1_nonzero": true,
+     "naive_E0_overflows": true,
+     "slot_support": [
+      1,
+      2
+     ]
+    },
+    {
+     "tower": "TW2-F3t-DCX-e1is1",
+     "pair": [
+      20,
+      21
+     ],
+     "case": "II-3",
+     "thm": true,
+     "wmult": true,
+     "prod": true,
+     "shape": true,
+     "q1_nonzero": true,
+     "naive_E0_overflows": true,
+     "slot_support": [
+      1,
+      2
+     ]
+    },
+    {
+     "tower": "TW2-F3t-DCX-e1is1",
+     "pair": [
+      20,
+      22
+     ],
+     "case": "II-3",
+     "thm": true,
+     "wmult": true,
+     "prod": true,
+     "shape": true,
+     "q1_nonzero": true,
+     "naive_E0_overflows": true,
+     "slot_support": [
+      0,
+      1
+     ]
+    },
+    {
+     "tower": "TW2-F3t-DCX-e1is1",
+     "pair": [
+      20,
+      61
+     ],
+     "case": "II-3",
+     "thm": true,
+     "wmult": true,
+     "prod": true,
+     "shape": true,
+     "q1_nonzero": true,
+     "naive_E0_overflows": true,
+     "slot_support": [
+      1,
+      2
+     ]
+    },
+    {
+     "tower": "TW2-F3t-DCX-e1is1",
+     "pair": [
+      20,
+      62
+     ],
+     "case": "II-3",
+     "thm": true,
+     "wmult": true,
+     "prod": true,
+     "shape": true,
+     "q1_nonzero": true,
+     "naive_E0_overflows": true,
+     "slot_support": [
+      0,
+      1
+     ]
+    },
+    {
+     "tower": "TW2-F3t-DCX-e1is1",
+     "pair": [
+      21,
+      19
+     ],
+     "case": "II-3",
+     "thm": true,
+     "wmult": true,
+     "prod": true,
+     "shape": true,
+     "q1_nonzero": true,
+     "naive_E0_overflows": true,
+     "slot_support": [
+      2,
+      3
+     ]
+    },
+    {
+     "tower": "TW2-F3t-DCX-e1is1",
+     "pair": [
+      21,
+      20
+     ],
+     "case": "II-3",
+     "thm": true,
+     "wmult": true,
+     "prod": true,
+     "shape": true,
+     "q1_nonzero": true,
+     "naive_E0_overflows": true,
+     "slot_support": [
+      1,
+      2
+     ]
+    },
+    {
+     "tower": "TW2-F3t-DCX-e1is1",
+     "pair": [
+      21,
+      21
+     ],
+     "case": "II-3",
+     "thm": true,
+     "wmult": true,
+     "prod": true,
+     "shape": true,
+     "q1_nonzero": true,
+     "naive_E0_overflows": true,
+     "slot_support": [
+      2,
+      3
+     ]
+    },
+    {
+     "tower": "TW2-F3t-DCX-e1is1",
+     "pair": [
+      21,
+      22
+     ],
+     "case": "II-3",
+     "thm": true,
+     "wmult": true,
+     "prod": true,
+     "shape": true,
+     "q1_nonzero": true,
+     "naive_E0_overflows": true,
+     "slot_support": [
+      1,
+      2
+     ]
+    },
+    {
+     "tower": "TW2-F3t-DCX-e1is1",
+     "pair": [
+      21,
+      59
+     ],
+     "case": "II-3",
+     "thm": true,
+     "wmult": true,
+     "prod": true,
+     "shape": true,
+     "q1_nonzero": true,
+     "naive_E0_overflows": true,
+     "slot_support": [
+      2,
+      3
+     ]
+    },
+    {
+     "tower": "TW2-F3t-DCX-e1is1",
+     "pair": [
+      21,
+      60
+     ],
+     "case": "II-3",
+     "thm": true,
+     "wmult": true,
+     "prod": true,
+     "shape": true,
+     "q1_nonzero": true,
+     "naive_E0_overflows": true,
+     "slot_support": [
+      1,
+      2
+     ]
+    },
+    {
+     "tower": "TW2-F3t-DCX-e1is1",
+     "pair": [
+      21,
+      61
+     ],
+     "case": "II-3",
+     "thm": true,
+     "wmult": true,
+     "prod": true,
+     "shape": true,
+     "q1_nonzero": true,
+     "naive_E0_overflows": true,
+     "slot_support": [
+      2,
+      3
+     ]
+    },
+    {
+     "tower": "TW2-F3t-DCX-e1is1",
+     "pair": [
+      21,
+      62
+     ],
+     "case": "II-3",
+     "thm": true,
+     "wmult": true,
+     "prod": true,
+     "shape": true,
+     "q1_nonzero": true,
+     "naive_E0_overflows": true,
+     "slot_support": [
+      1,
+      2
+     ]
+    },
+    {
+     "tower": "TW2-F3t-DCX-e1is1",
+     "pair": [
+      22,
+      19
+     ],
+     "case": "II-3",
+     "thm": true,
+     "wmult": true,
+     "prod": true,
+     "shape": true,
+     "q1_nonzero": true,
+     "naive_E0_overflows": true,
+     "slot_support": [
+      1,
+      2
+     ]
+    },
+    {
+     "tower": "TW2-F3t-DCX-e1is1",
+     "pair": [
+      22,
+      20
+     ],
+     "case": "II-3",
+     "thm": true,
+     "wmult": true,
+     "prod": true,
+     "shape": true,
+     "q1_nonzero": true,
+     "naive_E0_overflows": true,
+     "slot_support": [
+      0,
+      1
+     ]
+    },
+    {
+     "tower": "TW2-F3t-DCX-e1is1",
+     "pair": [
+      22,
+      21
+     ],
+     "case": "II-3",
+     "thm": true,
+     "wmult": true,
+     "prod": true,
+     "shape": true,
+     "q1_nonzero": true,
+     "naive_E0_overflows": true,
+     "slot_support": [
+      1,
+      2
+     ]
+    },
+    {
+     "tower": "TW2-F3t-DCX-e1is1",
+     "pair": [
+      22,
+      22
+     ],
+     "case": "II-3",
+     "thm": true,
+     "wmult": true,
+     "prod": true,
+     "shape": true,
+     "q1_nonzero": true,
+     "naive_E0_overflows": true,
+     "slot_support": [
+      0,
+      1
+     ]
+    },
+    {
+     "tower": "TW2-F3t-DCX-e1is1",
+     "pair": [
+      22,
+      59
+     ],
+     "case": "II-3",
+     "thm": true,
+     "wmult": true,
+     "prod": true,
+     "shape": true,
+     "q1_nonzero": true,
+     "naive_E0_overflows": true,
+     "slot_support": [
+      1,
+      2
+     ]
+    },
+    {
+     "tower": "TW2-F3t-DCX-e1is1",
+     "pair": [
+      22,
+      60
+     ],
+     "case": "II-3",
+     "thm": true,
+     "wmult": true,
+     "prod": true,
+     "shape": true,
+     "q1_nonzero": true,
+     "naive_E0_overflows": true,
+     "slot_support": [
+      0,
+      1
+     ]
+    },
+    {
+     "tower": "TW2-F3t-DCX-e1is1",
+     "pair": [
+      22,
+      61
+     ],
+     "case": "II-3",
+     "thm": true,
+     "wmult": true,
+     "prod": true,
+     "shape": true,
+     "q1_nonzero": true,
+     "naive_E0_overflows": true,
+     "slot_support": [
+      1,
+      2
+     ]
+    },
+    {
+     "tower": "TW2-F3t-DCX-e1is1",
+     "pair": [
+      22,
+      62
+     ],
+     "case": "II-3",
+     "thm": true,
+     "wmult": true,
+     "prod": true,
+     "shape": true,
+     "q1_nonzero": true,
+     "naive_E0_overflows": true,
+     "slot_support": [
+      0,
+      1
+     ]
+    },
+    {
+     "tower": "TW2-F3t-DCX-e1is1",
+     "pair": [
+      59,
+      21
+     ],
+     "case": "II-3",
+     "thm": true,
+     "wmult": true,
+     "prod": true,
+     "shape": true,
+     "q1_nonzero": true,
+     "naive_E0_overflows": true,
+     "slot_support": [
+      2,
+      3
+     ]
+    },
+    {
+     "tower": "TW2-F3t-DCX-e1is1",
+     "pair": [
+      59,
+      22
+     ],
+     "case": "II-3",
+     "thm": true,
+     "wmult": true,
+     "prod": true,
+     "shape": true,
+     "q1_nonzero": true,
+     "naive_E0_overflows": true,
+     "slot_support": [
+      1,
+      2
+     ]
+    },
+    {
+     "tower": "TW2-F3t-DCX-e1is1",
+     "pair": [
+      59,
+      61
+     ],
+     "case": "II-3",
+     "thm": true,
+     "wmult": true,
+     "prod": true,
+     "shape": true,
+     "q1_nonzero": true,
+     "naive_E0_overflows": true,
+     "slot_support": [
+      2,
+      3
+     ]
+    },
+    {
+     "tower": "TW2-F3t-DCX-e1is1",
+     "pair": [
+      59,
+      62
+     ],
+     "case": "II-3",
+     "thm": true,
+     "wmult": true,
+     "prod": true,
+     "shape": true,
+     "q1_nonzero": true,
+     "naive_E0_overflows": true,
+     "slot_support": [
+      1,
+      2
+     ]
+    },
+    {
+     "tower": "TW2-F3t-DCX-e1is1",
+     "pair": [
+      60,
+      21
+     ],
+     "case": "II-3",
+     "thm": true,
+     "wmult": true,
+     "prod": true,
+     "shape": true,
+     "q1_nonzero": true,
+     "naive_E0_overflows": true,
+     "slot_support": [
+      1,
+      2
+     ]
+    },
+    {
+     "tower": "TW2-F3t-DCX-e1is1",
+     "pair": [
+      60,
+      22
+     ],
+     "case": "II-3",
+     "thm": true,
+     "wmult": true,
+     "prod": true,
+     "shape": true,
+     "q1_nonzero": true,
+     "naive_E0_overflows": true,
+     "slot_support": [
+      0,
+      1
+     ]
+    },
+    {
+     "tower": "TW2-F3t-DCX-e1is1",
+     "pair": [
+      60,
+      61
+     ],
+     "case": "II-3",
+     "thm": true,
+     "wmult": true,
+     "prod": true,
+     "shape": true,
+     "q1_nonzero": true,
+     "naive_E0_overflows": true,
+     "slot_support": [
+      1,
+      2
+     ]
+    },
+    {
+     "tower": "TW2-F3t-DCX-e1is1",
+     "pair": [
+      60,
+      62
+     ],
+     "case": "II-3",
+     "thm": true,
+     "wmult": true,
+     "prod": true,
+     "shape": true,
+     "q1_nonzero": true,
+     "naive_E0_overflows": true,
+     "slot_support": [
+      0,
+      1
+     ]
+    },
+    {
+     "tower": "TW2-F3t-DCX-e1is1",
+     "pair": [
+      61,
+      19
+     ],
+     "case": "II-3",
+     "thm": true,
+     "wmult": true,
+     "prod": true,
+     "shape": true,
+     "q1_nonzero": true,
+     "naive_E0_overflows": true,
+     "slot_support": [
+      2,
+      3
+     ]
+    },
+    {
+     "tower": "TW2-F3t-DCX-e1is1",
+     "pair": [
+      61,
+      20
+     ],
+     "case": "II-3",
+     "thm": true,
+     "wmult": true,
+     "prod": true,
+     "shape": true,
+     "q1_nonzero": true,
+     "naive_E0_overflows": true,
+     "slot_support": [
+      1,
+      2
+     ]
+    },
+    {
+     "tower": "TW2-F3t-DCX-e1is1",
+     "pair": [
+      61,
+      21
+     ],
+     "case": "II-3",
+     "thm": true,
+     "wmult": true,
+     "prod": true,
+     "shape": true,
+     "q1_nonzero": true,
+     "naive_E0_overflows": true,
+     "slot_support": [
+      2,
+      3
+     ]
+    },
+    {
+     "tower": "TW2-F3t-DCX-e1is1",
+     "pair": [
+      61,
+      22
+     ],
+     "case": "II-3",
+     "thm": true,
+     "wmult": true,
+     "prod": true,
+     "shape": true,
+     "q1_nonzero": true,
+     "naive_E0_overflows": true,
+     "slot_support": [
+      1,
+      2
+     ]
+    },
+    {
+     "tower": "TW2-F3t-DCX-e1is1",
+     "pair": [
+      61,
+      59
+     ],
+     "case": "II-3",
+     "thm": true,
+     "wmult": true,
+     "prod": true,
+     "shape": true,
+     "q1_nonzero": true,
+     "naive_E0_overflows": true,
+     "slot_support": [
+      2,
+      3
+     ]
+    },
+    {
+     "tower": "TW2-F3t-DCX-e1is1",
+     "pair": [
+      61,
+      60
+     ],
+     "case": "II-3",
+     "thm": true,
+     "wmult": true,
+     "prod": true,
+     "shape": true,
+     "q1_nonzero": true,
+     "naive_E0_overflows": true,
+     "slot_support": [
+      1,
+      2
+     ]
+    },
+    {
+     "tower": "TW2-F3t-DCX-e1is1",
+     "pair": [
+      61,
+      61
+     ],
+     "case": "II-3",
+     "thm": true,
+     "wmult": true,
+     "prod": true,
+     "shape": true,
+     "q1_nonzero": true,
+     "naive_E0_overflows": true,
+     "slot_support": [
+      2,
+      3
+     ]
+    },
+    {
+     "tower": "TW2-F3t-DCX-e1is1",
+     "pair": [
+      61,
+      62
+     ],
+     "case": "II-3",
+     "thm": true,
+     "wmult": true,
+     "prod": true,
+     "shape": true,
+     "q1_nonzero": true,
+     "naive_E0_overflows": true,
+     "slot_support": [
+      1,
+      2
+     ]
+    },
+    {
+     "tower": "TW2-F3t-DCX-e1is1",
+     "pair": [
+      62,
+      19
+     ],
+     "case": "II-3",
+     "thm": true,
+     "wmult": true,
+     "prod": true,
+     "shape": true,
+     "q1_nonzero": true,
+     "naive_E0_overflows": true,
+     "slot_support": [
+      1,
+      2
+     ]
+    },
+    {
+     "tower": "TW2-F3t-DCX-e1is1",
+     "pair": [
+      62,
+      20
+     ],
+     "case": "II-3",
+     "thm": true,
+     "wmult": true,
+     "prod": true,
+     "shape": true,
+     "q1_nonzero": true,
+     "naive_E0_overflows": true,
+     "slot_support": [
+      0,
+      1
+     ]
+    },
+    {
+     "tower": "TW2-F3t-DCX-e1is1",
+     "pair": [
+      62,
+      21
+     ],
+     "case": "II-3",
+     "thm": true,
+     "wmult": true,
+     "prod": true,
+     "shape": true,
+     "q1_nonzero": true,
+     "naive_E0_overflows": true,
+     "slot_support": [
+      1,
+      2
+     ]
+    },
+    {
+     "tower": "TW2-F3t-DCX-e1is1",
+     "pair": [
+      62,
+      22
+     ],
+     "case": "II-3",
+     "thm": true,
+     "wmult": true,
+     "prod": true,
+     "shape": true,
+     "q1_nonzero": true,
+     "naive_E0_overflows": true,
+     "slot_support": [
+      0,
+      1
+     ]
+    },
+    {
+     "tower": "TW2-F3t-DCX-e1is1",
+     "pair": [
+      62,
+      59
+     ],
+     "case": "II-3",
+     "thm": true,
+     "wmult": true,
+     "prod": true,
+     "shape": true,
+     "q1_nonzero": true,
+     "naive_E0_overflows": true,
+     "slot_support": [
+      1,
+      2
+     ]
+    },
+    {
+     "tower": "TW2-F3t-DCX-e1is1",
+     "pair": [
+      62,
+      60
+     ],
+     "case": "II-3",
+     "thm": true,
+     "wmult": true,
+     "prod": true,
+     "shape": true,
+     "q1_nonzero": true,
+     "naive_E0_overflows": true,
+     "slot_support": [
+      0,
+      1
+     ]
+    },
+    {
+     "tower": "TW2-F3t-DCX-e1is1",
+     "pair": [
+      62,
+      61
+     ],
+     "case": "II-3",
+     "thm": true,
+     "wmult": true,
+     "prod": true,
+     "shape": true,
+     "q1_nonzero": true,
+     "naive_E0_overflows": true,
+     "slot_support": [
+      1,
+      2
+     ]
+    },
+    {
+     "tower": "TW2-F3t-DCX-e1is1",
+     "pair": [
+      62,
+      62
+     ],
+     "case": "II-3",
+     "thm": true,
+     "wmult": true,
+     "prod": true,
+     "shape": true,
+     "q1_nonzero": true,
+     "naive_E0_overflows": true,
+     "slot_support": [
+      0,
+      1
+     ]
+    }
+   ]
+  }
+ ],
+ "verdict": "GREEN"
+}

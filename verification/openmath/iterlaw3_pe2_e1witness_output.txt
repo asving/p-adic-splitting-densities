@@ -1,0 +1,18 @@
+==============================================================================
+ITERLAW3-PE2 mini-check: the S6.3-erratum (E1) DCX witnesses (post-seal diagnostic)
+==============================================================================
+CXW-Z5-e2is1: E3=6 gamma2=13 s(gamma2)=2 (expected 2) OK
+  battery block 144 pairs (2 windows, M=5): DCX = 4 (expected 4) OK
+  per E3xE3 sub-block: [((0, 0), 1), ((0, 1), 1), ((1, 0), 1), ((1, 1), 1)] (expected 1 each) OK
+  DCX split-classes: [((2, 1, 0), (2, 1, 0))]
+  ON the DCX pairs (instance data for (W-MULT-3-DCX), open): thm 4/4 wmult 4/4 prod 4/4 shape 4/4 Q1!=0 4/4 naive-E0-overflow 4/4 OK
+  CX c3 == embed(c2) == accepted display on DCX pairs: 4/4 OK
+  integer-level reductions (erratum "unconditional NOW") bad: 0 OK
+TW2-F3t-DCX-e1is1: E3=8 gamma2=7 s(gamma2)=3 (expected 3) OK
+  battery block 256 pairs (2 windows, M=5): DCX = 48 (expected 48) OK
+  per E3xE3 sub-block: [((0, 0), 12), ((0, 1), 12), ((1, 0), 12), ((1, 1), 12)] (expected 12 each) OK
+  DCX split-classes: [((2, 0, 0), (3, 0, 0)), ((2, 0, 0), (3, 0, 1)), ((2, 0, 1), (3, 0, 0)), ((2, 0, 1), (3, 0, 1)), ((3, 0, 0), (2, 0, 0)), ((3, 0, 0), (2, 0, 1)), ((3, 0, 0), (3, 0, 0)), ((3, 0, 0), (3, 0, 1)), ((3, 0, 1), (2, 0, 0)), ((3, 0, 1), (2, 0, 1)), ((3, 0, 1), (3, 0, 0)), ((3, 0, 1), (3, 0, 1))]
+  ON the DCX pairs (instance data for (W-MULT-3-DCX), open): thm 48/48 wmult 48/48 prod 48/48 shape 48/48 Q1!=0 48/48 naive-E0-overflow 48/48 OK
+  integer-level reductions (erratum "unconditional NOW") bad: 0 OK
+==============================================================================
+PE2 E1-WITNESS VERDICT: GREEN

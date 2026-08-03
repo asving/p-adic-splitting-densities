@@ -7734,3 +7734,40 @@ disclosure. The general-n compose (chartered after this errata round)
 consumes the CORRECTED note — this errata state, not the 8ba1820 original.
 Unit files: the errata-bracketed proof note + this append ONLY (scoped
 `git commit --only`).
+
+**ITERLAW3 PASS PE2 (Fable round 2 on the AMENDED note, f9daca0) —
+2026-08-03: NOT-CLEAN, 0C/2G (+2 nits), both gaps NEW + narrow, neither
+introduced by the errata; ALL THREE round-1 errata VERIFIED CURED; errata
+fidelity VERIFIED (bracket-additive on the nose, 7/7 removed lines pure
+reflows, PROVED core S2–S5 math text byte-stable); execution byte-exact
+(reimpl 3,344 pairs / 55,186 checks / 0 violations ALL GREEN, stdout + JSON
+diff-empty vs the frozen artifacts; diag byte-exact); NEW post-seal
+mini-check `iterlaw3_pe2_e1witness.py` GREEN first run — the S6.3-erratum
+witnesses exact (e₂ = 1 ℤ₅ tower: 4 DCX pairs at the predicted class
+((2,1,0),(2,1,0)), 1 per E₃×E₃ sub-block; TW2 e₁ = 1: 48 at the predicted
+{S₁ ≥ 5}×{s₂≡0}×{s₃ free} classes, 12 per sub-block; theorem display +
+W-MULT + Q¹ ≠ 0 + naive-E₀ re-overflow 52/52 as INSTANCE data for the open
+(W-MULT-3-DCX); CX c₃ = embed(c₂) 4/4; integer-level CX/CW reductions 0 bad
+on all 400 pairs).** Report `ITERLAW3_passPE2_report.md`. Findings: **PE2-F1
+[GAP]** S4.5 e₂ = 1 grid check (pre-existing at 8ba1820, missed round 1):
+the displayed link "B₂ − e₁γ₂ + h₂ = w₂(E₁) + 0" is false (equals
+w₂(E₁) + h₂); the true conclusion (slot-S₃+1 read 0) is derived correctly
+by the same sentence's final clause "w₂(E₁) = B₂ − γ₃ + h₂ > slot weight"
+and is machine-true on every e₂ = 1 pair — one-bracket cure, S4.6 II-2
+rides by reference. **PE2-F2 [GAP, naming]** one residual rung token the E3
+bracket blesses rather than cures: "L3CONVERGENCE S2 Candidate 2 at n = 3"
+cites a rung-indexed source (its Candidate 2 pins "(n+1)-read tower"), so
+the citation of record should read "at (rung) n = 2" — equations below it
+already ARE the rung-2 instantiation. Nits: "per W₁×W₁-equivalent block" =
+the 2-window battery block (per-sub-block counts are 1/12); "i.e. e₀ ≤ 2"
+is the class-level quantification. DECORRELATION disclosed in-report: the
+concurrent PC2 (cf013a4, NOT-CLEAN 1C/1G) landed mid-pass and its commit
+HEADLINE was seen before the PE2-F1 derivation (report NOT opened; the
+math is own-derived; headline-level convergence on both findings).
+**ARC STATE: round 2 NOT clean on either leg (PC2 1C/1G + PE2 0C/2G) —
+counter stays 0/2, the rung-2 proof note stays ATTEMPT GRADE, (ITER-LAW-3)
+stays sealed-MEASURED + proof-attempt; errata round 2 (narrow: one S4.5
+display bracket + one citation-index token + nit wording) is the next arc
+step, then round 3 (PC3 + PE3).** Unit files: the PE2 report + the three
+mini-check files + this append ONLY (scoped `git commit --only`); the note
+and all sealed artifacts byte-untouched.
