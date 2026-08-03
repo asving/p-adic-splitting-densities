@@ -28,7 +28,8 @@ P ∈ O[x],
 and consequently, for f = Σ_i A_iΦ₂^i the Φ₂-development, the GMN order-3
 ordinates satisfy u_i := v₃(A_iφ₃^i) = w₂(A_i) + i·w₂(Φ₂) — exactly the form
 (H-v3) is consumed in at TR3-S3 §S1. Conditionality of (HV3-THM): it is a
-theorem given ONLY
+theorem given ONLY [REV1, pass-1 gap 1: "(iv)" added — the D0 dictionary
+consumptions were disclosed in D0 but omitted from this list]
 (i) the **standing print-attribution baseline** for the sha256-pinned
     `HigherNewton.tex` (arXiv:0807.2620v2) generic displays extracted in §D2
     — Def 2.5, the H_{r−1} mapping display, Prop 2.6, Prop 2.7(3)(4) — read at
@@ -42,6 +43,12 @@ theorem given ONLY
     (GRB S2.1: the project w_{j+1} is the MacLane-augmentation min over the
     Φ_j-development; trivial dilation at E₁ = E₂ = 1, which e₀ = e₁ = 1
     forces regardless of e₂).
+
+(iv) the standing GD23-row/TR-5 projective dictionary and the r = 3 type-hood
+    identifications it supplies (φ₂^GMN ↔ Φ₁, φ₃^GMN ↔ Φ₂,
+    (e₂,h₂)^GMN = (e₁,h₁)^proj) — consumed at D0/D4 [REV1: made explicit in
+    this list per pass-1 gap 1].
+
 
 **VERDICT: (HV3-THM) HOLDS — the derivation is §D4, no gap was hit.** The
 hypothesis (H-v3) of TR3-S3 is thereby DISCHARGED to the standing
@@ -145,9 +152,12 @@ GMN rows): on the stratum e₁^{GMN} = e₀^{proj} = 1, |λ₁| = h₀,
 
     v₂(P) = min_m { w₀(b_m) + m·h₀ }   (φ₁-development P = Σ b_mφ₁^m)
 
-— VERBATIM the accepted TR3-S1 §S1 pin ("v₂(P) = min_m(w₀(b_m) + m·h₀) =
-w₁(P) verbatim, and v₂(φ₂) = w₁(Φ₁)"; TR3S1_2026-08-08.md, GMN Defs 2.19–2.21
-bullet). The generic displays specialize to EXACTLY what the trilogy consumed
+— the accepted TR3-S1 §S1 pin's FIRST equality ("v₂(P) = min_m(w₀(b_m) + m·h₀) =
+w₁(P)"); the pin's SECOND equality v₂(φ₂) = w₁(Φ₁) follows by applying the
+all-P identity at P = φ₂ with the dictionary φ₂^GMN ↔ Φ₁ [REV1, pass-1 gap 2:
+the substitution made explicit — the prior "VERBATIM the ... pin" claimed
+both equalities reproduced when only the first was displayed]
+(TR3S1_2026-08-08.md, GMN Defs 2.19–2.21 bullet). The generic displays specialize to EXACTLY what the trilogy consumed
 evaluated at r = 2. Check PASSED; extraction-corruption discipline satisfied
 (the generic formula now has its own decorrelated source leg, independent of
 how the r = 2 instance entered).
@@ -248,3 +258,12 @@ Acceptance criterion met in the F3 charter's own terms: "TR-3′-GEN order-3
 conditionality reduces to standing print attributions" — that reduction is
 (HV3-THM)'s clause list (D0 (i)–(iii)), on record above with verbatim
 displays and line cites.
+
+## REVISION 1 (orchestrator-applied, per pass 1)
+
+Pass 1 (Codex; HV3_pass1_report.md): GAPS-ONLY 0C/2G — priorities A/B/scope all PASS
+(the generic display genuinely r-generic; all five steps valid; e₂ never used). Fixes:
+(1) condition (iv) added — the D0 dictionary/type-hood consumptions made explicit in
+the conditionality list; (2) the D3 "verbatim" claim rescoped — the pin's second
+equality now derived explicitly (one-line substitution at P = φ₂). Counter 0/2;
+passes 2+3 decide.
