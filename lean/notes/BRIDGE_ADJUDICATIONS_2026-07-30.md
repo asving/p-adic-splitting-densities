@@ -5974,3 +5974,16 @@ pass 2: derivation + REVISION 1 fixes clean; two cite/xref typos → REVISION 2
 (orchestrator). VC32: all folds pass except three fold-lag/wording syncs (the r31 text
 predated the two REVISION 1s; the UB-X gate wording) → r31-ERRATUM applied at the three
 sites. VC32b + FGMN p3 (Fable) + HV3 p3 (Fable) decide. Reports archived.
+
+## VC32 + VC32b CONFIRMED — the ROOT acceptance RE-ANCHORS at REVISION 30
+
+VC32 (REVISION 30, the r31 text): 0 critical, 3 gaps — all folds passed (the FGMN
+proposal-only discipline; no HV3 scope leak; the F-ADM-3 flag-lineage record; the
+TWIST-3 honest RED; the UBX gate; roster NINE; the 51-pattern census exact); the gaps
+were fold-lag/wording syncs, fixed by the r31-ERRATUM (e3425b1). VC32b (narrow, the
+corrected passages verbatim): CONFIRMED 0C/0G. CONSEQUENCE: the anchor moves REVISION
+29/VC31-arc → REVISION 30/VC32+VC32b. Now certified: the FGMN proposal-on-record with
+the source-fires verdict, the HV3-THM discharge-pending display, the APPLIED F-ADM-3
+re-key, the TWIST-3 law + TR3-S4 charter, the UBX walk verdict, the four-item Asvin
+batch. Reports: VC32_report.md (e3425b1), VC32b_report.md (this commit). VC33 next;
+citation rides r32. In flight: FGMN p3 + HV3 p3 (Fable, the model-diverse deciders).
