@@ -5773,3 +5773,22 @@ was always exact; GRB's bracket is scope-exact and needed no fix). Census: all 4
 patterns reproduced exactly (the report's table); roster NINE; no promotion or scope
 leak found. VC31b (narrow: the complete GRB slice + the erratum) decides. Report:
 VC31_report.md (this commit).
+
+## DATING CONVENTION NOTE (standing disclosure, appended at the VC31b finding)
+
+VC31b (report VC31b_report.md) passed BOTH substance checks (the complete GRB slice
+resolves the truncation; the erratum fence covers the full complement) and raised one
+finding: artifact/entry dates ("2026-08-05", "2026-08-08") post-date the machine
+wall-clock at audit time. DISCLOSURE OF RECORD: the campaign uses WINDOW-LABEL dating —
+note filenames and ledger entry headers carry the campaign-window label (the
+"2026-08-08" window, opened with docs/HARDEST_FIRST_ORDER_2026-08-08.md and used
+consistently across all of this window's artifacts and their acceptance records,
+including artifacts accepted in prior sessions), NOT wall-clock timestamps. The
+authoritative CHRONOLOGY is the git commit history: every acceptance, revision, and
+audit in this window is a commit whose timestamp and parent order are machine-recorded
+and immutable. The machine clock on this shared box has additionally been observed
+non-monotonic within the session. No artifact's date label asserts a wall-clock claim;
+sequencing claims ("pass 7 then pass 8", "prereg sealed BEFORE run") are all
+git-commit-order claims and remain verifiable as such. This note is the standing
+disclosure; window labels stay as-is (a mass re-dating of accepted artifacts would
+corrupt the acceptance records it re-dated).
