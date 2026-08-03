@@ -610,3 +610,29 @@ execution. RESOLUTION — the perimeter specification is REPLACED, not patched:
    place: the ring term is struck (its only occurrences are `lastRead_of_readsOf_snoc`,
    which stays); the round-2 list is 14 files.
 Counter stays 0/2; passes 10+11 decide on THIS specification.
+
+## REVISION 9 (orchestrator-applied, per pass 10 — the APPLICATION-SCOPE CUT)
+
+Pass 10 (FGMN_pass10_report.md): CRITICAL — compiler-error chasing does NOT compute the
+closure under the new-definition route (old consumers keep compiling; no errors fire at
+migration targets); the seed was unenumerated; rebuild-forced ≠ change-forced. This is
+the FIFTH perimeter specification refuted by execution (REVISIONS 4/5/6/7/8), while the
+mathematical content has survived all ten passes untouched. The refutations ARE the
+result: **no pre-application textual or build-error procedure can totally and checkably
+specify this change-set.** SCOPE CUT, of record:
+1. **This note's acceptance binds ONLY**: (a) the two-scale DIAGNOSIS (the compiled
+   SideReads double-scales the stride weight vs the print's parent-valuation keying);
+   (b) the ROW-A SOURCE-FIRES verdict; (c) the three-token proposal diff at
+   HC2/Defs.lean:285/287/292 + the fixed points (the S1 two-scale law;
+   juncforge_clauseIII_derivable; the DITER §S3 supplier obligations); (d) the
+   PIN-GEN-i discharge; (e) the pinned sources and the battery record.
+2. **The application change-set is EXPLICITLY OUT OF ACCEPTANCE SCOPE** — it is the
+   APPLICATION UNIT's deliverable: a scratch-worktree diff (the new-definition route:
+   SideReads' + primed mirrors + restated glue route), whose COMPLETENESS is
+   adjudicated at the Asvin gate ON THE DIFF ITSELF, with this note's REVISION 4-8
+   censuses as the reviewer's informative map, and a dedicated POST-APPLICATION
+   verification pass as the completeness test (the only total oracle: review of the
+   actual diff + the rebuilt tree + a hostile pass over the applied state).
+3. Every REVISION 4-8 perimeter formulation is retained as the honest record of why
+   the cut is necessary; none is normative.
+Counter stays 0/2; passes 11+12 decide THE RE-SCOPED NOTE.
