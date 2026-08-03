@@ -5469,3 +5469,35 @@ INCONSISTENT AS TRANSCRIBED, COMPILED AT ROW A; global claims rescoped; the repa
 question = a transcription-scale re-derivation from the FGMN source (design unit
 chartered; non-textual-leg discipline; Asvin flag rides r29). Reports archived:
 VC29_report.md, ADMREAL_pass1_report.md, JUNCFORGE_S2_audit_report.md.
+
+## 2026-08-08 — JUNCFORGE S2 REVISION 1 + DISPOSITION EXECUTED: row-A rescope of record, D0 byte-identity COMPILED (2 new Lean-core thms), re-derivation design unit CHARTERED
+
+The JFS2-AUDIT (1C/3G) fixes applied; the six original JuncForge theorems stand
+unedited. **(C1 correction of record, superseding the S2 entry's summary above):**
+the walls bind the ROW-A FIBER — no e ≥ 2 `SideReads` recording can exist AT THE
+ROW-A READ (fA = X²+4X+28 against a Φ1A = X+2-keyed frame via hσΦ + hdev, any
+finite F, any Φnext); the S2 entry's "no compiled e ≥ 2 junction CAN exist as
+SideReads stands" is CORRECTED OF RECORD to this fiber-scoped form (prior entry
+not edited); other classificands/keys OPEN. **(G1):** `juncforge_junc_bundle_false`
+negates the weaker 3-conjunct core under row-A restrictions — sufficient to refute
+any fuller bundle AT ROW A; not a verbatim general ¬junc_bundle. **(G2, compiled):**
+`JuncForge.lean` §8 adds `juncforge_gate_hbundle_false` (statement =
+`gate_glue_junction`'s hbundle binder verbatim-negated, proof term =
+`juncforge_D0_instanceFalse` applied directly — elaboration certifies identity;
+3-way source diff clean modulo indentation) + `juncforge_gluePacket_false` (the
+non-textual leg: ∀ H₁, ¬ GlueJunction U31.fq H₁ H₂rc recentering via the
+structure's own junc_bundle field) — `gate_glue_conditional` VACUOUS at its
+compiled instance is now a THEOREM; `lake env lean` green, both Lean-core, new
+decls only. **(DISPOSITION, verdict of record):** `junc_bundle` is INCONSISTENT AS
+TRANSCRIBED, COMPILED AT ROW A — a transcription fact, NOT established falsity of
+the FGMN source: the incompatible-transcription-scales reading (clause (ii) at the
+parent scale vs clause (iii) at the graded/read-pair scale — the two scales the S1
+law separates, with clause (iii) proved exactly right at the graded scale) means a
+SideReads repair could RESTORE the paper-source glue step. **(CHARTER):** the
+transcription-scale re-derivation design unit — re-derive the glue step from the
+FGMN source at the read-pair scale S1 measured (fixed points: the S1 two-scale law
++ `juncforge_clauseIII_derivable`); non-textual-leg discipline (/tmp/litunit/
+fgmn.txt BAD at Def 3.15; fresh pdftotext -layout legs + numeric falsifiers);
+product = corrected SideReads/junc_bundle transcription as PROPOSAL (statement
+change, Asvin-flag genre — no application without ROOT adjudication). Note §R1–R3:
+`lean/notes/openmath/JUNCFORGE_S2_2026-08-08.md`.

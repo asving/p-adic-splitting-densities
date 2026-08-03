@@ -711,6 +711,56 @@ theorem juncforge_D0_instanceFalse :
   rw [Nat.mul_zero, Nat.add_zero]
   exact hB0
 
+/-! ### §8 — REVISION 1 (2026-08-08, JFS2-AUDIT fix): the D0 ↔ gate binder tie, kernel-checked
+
+The faithfulness audit (`lean/notes/openmath/JUNCFORGE_S2_audit_report.md`) found the
+"BYTE-IDENTICAL to hbundle" claim of §7 uncertifiable from its packet, and found the
+§S1/§S5 prose overrunning the proved scope (the walls bind the row-A fiber
+`(fA, Φ1A)` via `hσΦ`/`hdev`; the file-header glosses "at every stage, for every
+recorded node" and "none CAN exist as the definition stands" are rescoped by
+`JUNCFORGE_S2_2026-08-08.md` REVISION 1 — read them as row-A-fiber claims).  The two
+declarations below discharge the byte-identity gap INSIDE the kernel, by two
+decorrelated legs (one textual, one structural — no shared extraction):
+
+* `juncforge_gate_hbundle_false` — the statement is `gate_glue_junction`'s `hbundle`
+  binder copied verbatim (modulo leading indentation) and negated; the proof term is
+  `juncforge_D0_instanceFalse` applied DIRECTLY, no massaging.  If the copy drifted
+  from the D0 proposition, elaboration would fail.
+* `juncforge_gluePacket_false` — the NON-TEXTUAL leg: for EVERY base history H₁, the
+  full `GlueJunction U31.fq H₁ H₂rc ReadSpecies.recentering` packet is uninhabited,
+  proved by projecting the structure's own `junc_bundle` FIELD (the gate's compiled
+  binder type, not a copy) into `juncforge_D0_instanceFalse`.  This certifies in the
+  kernel that the proposition the D0 verdict negates IS the gate's bundle clause, and
+  makes "`gate_glue_conditional` is vacuous at its compiled instance" a theorem: its
+  conclusion route can never be fed. -/
+
+/-- **REVISION 1 TIE, textual leg (JFS2-AUDIT gap 3).**  `gate_glue_junction`'s
+`hbundle` binder (`H1/GlueRun.lean`), verbatim modulo indentation, negated; proof =
+`juncforge_D0_instanceFalse` unchanged.  Kernel-certified identity of the two texts. -/
+theorem juncforge_gate_hbundle_false :
+    ¬ ∃ (B : ℕ → Polynomial ℤ_[2]) (Nd : ℕ) (Φnext : Polynomial ℤ_[2]),
+      IsDevelopment H₂rc.headNode.σ.Φ U31.fq B Nd ∧
+      (∀ h1 : 1 < H₂rc.nodes.length, Φnext = (H₂rc.nodes[1]'h1).σ.Φ) ∧
+      SideReads H₂rc.headNode B Nd Φnext ∧
+      (ReadSpecies.recentering = ReadSpecies.recentering →
+        inC H₂rc.headNode.σ.Φ H₂rc.headNode.lift ∧ H₂rc.headNode.lift ≠ 0 ∧
+        H₂rc.headNode.σ.w H₂rc.headNode.lift = H₂rc.headNode.σ.w H₂rc.headNode.σ.Φ ∧
+        H₂rc.headNode.σ.R H₂rc.headNode.lift
+          = LaurentPolynomial.C H₂rc.headNode.center * LaurentPolynomial.T 0 ∧
+        Φnext = H₂rc.headNode.σ.Φ - H₂rc.headNode.lift) :=
+  juncforge_D0_instanceFalse
+
+/-- **REVISION 1 TIE, structural leg (the non-textual check).**  The full
+`GlueJunction` packet at the compiled seam data — U31's classificand fq, the RCW
+continuation H₂rc, the recentering species, ANY base history H₁ — is uninhabited:
+its own `junc_bundle` field is exactly the proposition `juncforge_D0_instanceFalse`
+negates (`sp' := ReadSpecies.recentering` substituted).  Hence
+`gate_glue_conditional` is VACUOUS at its compiled instance as a THEOREM, not a
+prose gloss.  The gates themselves remain unedited (display only). -/
+theorem juncforge_gluePacket_false (H₁ : History 2 F4) :
+    ¬ GlueJunction U31.fq H₁ H₂rc ReadSpecies.recentering :=
+  fun J => juncforge_D0_instanceFalse J.junc_bundle
+
 end JuncForge
 
 end LeanUrat.Scaffold.HDischarge.H1
@@ -721,3 +771,5 @@ end LeanUrat.Scaffold.HDischarge.H1
 #print axioms LeanUrat.Scaffold.HDischarge.H1.JuncForge.juncforge_junc_bundle_false
 #print axioms LeanUrat.Scaffold.HDischarge.H1.JuncForge.juncforge_clauseIII_derivable
 #print axioms LeanUrat.Scaffold.HDischarge.H1.JuncForge.juncforge_D0_instanceFalse
+#print axioms LeanUrat.Scaffold.HDischarge.H1.JuncForge.juncforge_gate_hbundle_false
+#print axioms LeanUrat.Scaffold.HDischarge.H1.JuncForge.juncforge_gluePacket_false
