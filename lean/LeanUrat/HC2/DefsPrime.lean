@@ -131,3 +131,140 @@ def ReadsOf' (p : ℕ) [Fact p.Prime] (F : Type*) [Field F] [Finite F] (n : ℕ)
       SideReads' (H.nodes[i]'hi) B Nd Φnext
 
 end LeanUrat.MovesJ
+
+/-! ## The glue-route primed mirrors (DITERSUP §S1 informative map + §S2 display)
+
+The compiled originals live in `Scaffold/HDischarge/H1` (`TruncatedRun.lean`,
+`GlueRun.lean`); the primed mirrors are declared in the SAME namespace with the same
+opens, so every unsubstituted token resolves identically.  `JuncForge.lean` is
+READ-ONLY for this unit: the byte-frozen records stay on the OLD definitions. -/
+
+namespace LeanUrat.Scaffold.HDischarge.H1
+
+open Polynomial LeanUrat.Moves LeanUrat.MovesC LeanUrat.MovesD LeanUrat.MovesJ
+
+variable {p : ℕ} [Fact p.Prime] {F : Type u} [Field F] [Finite F]
+
+/-- **`TruncRunFrom'` — the σ.wPrev-keyed truncated-run kernel**: the compiled
+`TruncRunFrom` (TruncatedRun.lean:186–233) with the SINGLE substitution
+`SideReads` → `SideReads'` at the [T-5] interior-read clause (TruncatedRun.lean:230 —
+the kernel's only `SideReads` binding, verified by the DITERSUP §S1 map and by grep
+this unit); clauses [T-0]–[T-4] and the rest of [T-5] are code-identical.
+STATEMENT-REVIEW FLAG (trust boundary): new-statement site; review owed at the
+post-application hostile pass.  `TruncRunFrom` itself is byte-untouched; every
+compiled consumer (GlueRun, SiteExhProbe, the E-gates) still binds the OLD kernel. -/
+def TruncRunFrom' (σ₀ : Stage p F) (f₀ : Polynomial ℤ_[p]) (H : History p F) : Prop :=
+  -- [T-0]
+  (∀ hj : 0 < H.nodes.length, (H.nodes[0]'hj).σ = σ₀) ∧
+  -- [T-1]
+  (∀ (i : ℕ) (hi : i < H.nodes.length),
+    (H.nodes[i]'hi).line.slope *
+        (((H.nodes[i]'hi).e : ℚ) * (H.strFrame i : ℚ) * ((H.nodes[i]'hi).Dwidth : ℚ))
+      = ((H.nodes[i]'hi).h : ℚ)) ∧
+  -- [T-2]
+  (∀ (i : ℕ) (hi : i < H.nodes.length),
+    (((H.nodes[i]'hi).gam : ℤ) : ℚ)
+      = ((H.nodes[i]'hi).e : ℚ) * ((H.strFrame i : ℚ) * (H.nodes[i]'hi).ustar)
+        + ((((H.nodes[i]'hi).s0 + (H.nodes[i]'hi).wSide) : ℕ) : ℚ) * ((H.nodes[i]'hi).h : ℚ)) ∧
+  -- [T-3]
+  (∀ (i : ℕ) (hi0 : 0 < i) (hi : i + 1 < H.nodes.length),
+    ((H.nodes[i]'(by omega)).species = ReadSpecies.recentering →
+      IsRecenteringCore (H.nodes[i]'(by omega)).σ (H.nodes[i+1]'hi).σ
+        (H.nodes[i]'(by omega)).center (H.nodes[i]'(by omega)).lift) ∧
+    ((H.nodes[i]'(by omega)).species ≠ ReadSpecies.recentering →
+      (H.nodes[i]'(by omega)).e = 1 ∧
+      ∃ σV : Stage p F,
+        RegradeOf (H.nodes[i]'(by omega)).σ (H.nodes[i]'(by omega)).e
+            (H.nodes[i]'(by omega)).h σV ∧
+        IsNodeLift (H.nodes[i]'(by omega)) (H.nodes[i+1]'hi).σ.Φ ∧
+        TransitionCoreL σV (H.nodes[i+1]'hi).σ
+          (H.nodes[i+1]'hi).σ.Φ (H.nodes[i+1]'hi).e (H.nodes[i+1]'hi).h
+          (H.nodes[i]'(by omega)).zbar) ∧
+    ((H.nodes[i+1]'hi).σ.e = 1 → (H.nodes[i+1]'hi).σ.s = (H.nodes[i+1]'hi).s) ∧
+    ((H.nodes[i+1]'hi).σ.e = 1 → (H.nodes[i+1]'hi).σ.t = (H.nodes[i+1]'hi).t) ∧
+    ((H.nodes[i+1]'hi).s0 + (H.nodes[i+1]'hi).wSide ≤ (H.nodes[i]'(by omega)).μ) ∧
+    ((H.nodes[i+1]'hi).Dwidth = (H.nodes[i]'(by omega)).childWidth) ∧
+    ((H.nodes[i]'(by omega)).line.slope < (H.nodes[i+1]'hi).line.slope)) ∧
+  -- [T-4]
+  (∀ hi : 1 < H.nodes.length,
+    ((H.nodes[1]'hi).σ.e = 1 → (H.nodes[1]'hi).σ.s = (H.nodes[1]'hi).s) ∧
+    ((H.nodes[1]'hi).σ.e = 1 → (H.nodes[1]'hi).σ.t = (H.nodes[1]'hi).t) ∧
+    ((H.nodes[1]'hi).s0 + (H.nodes[1]'hi).wSide ≤ (H.nodes[0]'(by omega)).μ) ∧
+    ((H.nodes[1]'hi).Dwidth = (H.nodes[0]'(by omega)).childWidth) ∧
+    ((H.nodes[0]'(by omega)).line.slope < (H.nodes[1]'hi).line.slope)) ∧
+  -- [T-5]  (the ONE substituted token: SideReads → SideReads')
+  (∀ (i : ℕ) (hi : i < H.nodes.length),
+    ∃ (B : ℕ → Polynomial ℤ_[p]) (Nd : ℕ) (Φnext : Polynomial ℤ_[p]),
+      IsDevelopment (H.nodes[i]'hi).σ.Φ f₀ B Nd ∧
+      (∀ hi1 : i + 1 < H.nodes.length, Φnext = (H.nodes[i+1]'hi1).σ.Φ) ∧
+      (0 < i → SideReads' (H.nodes[i]'hi) B Nd Φnext) ∧
+      (LandingKey (H.nodes[i]'hi) Φnext ∨
+        IsStandardLift (H.nodes[i]'hi).σ (H.nodes[i]'hi).ψ (H.nodes[i]'hi).g Φnext))
+
+/-- **`FTiedTruncLanding'` — the σ.wPrev-keyed f-tied truncated landing** (chain form):
+the compiled `FTiedTruncLanding` (GlueRun.lean:820–833) with exactly three name
+substitutions — `ReadsOf` → `ReadsOf'`, `SideReads` → `SideReads'`,
+`TruncRunFrom` → `TruncRunFrom'` — nothing else.  STATEMENT-REVIEW FLAG (trust
+boundary): new-statement site; review owed at the post-application hostile pass. -/
+def FTiedTruncLanding' (n : ℕ) (f : Polynomial ℤ_[p]) (σ₁ : Stage p F)
+    (Φ' : Polynomial ℤ_[p]) : Prop :=
+  (∃ H₁ : History p F, ReadsOf' p F n f H₁ ∧
+    ∃ (B : ℕ → Polynomial ℤ_[p]) (Nd : ℕ),
+      IsDevelopment H₁.lastNode.σ.Φ f B Nd ∧ SideReads' H₁.lastNode B Nd σ₁.Φ) ∧
+  (∃ H₂ : History p F, TruncRunFrom' σ₁ f H₂ ∧
+    ∃ (B : ℕ → Polynomial ℤ_[p]) (Nd : ℕ),
+      IsDevelopment H₂.headNode.σ.Φ f B Nd ∧
+      (∀ h1 : 1 < H₂.nodes.length, Φ' = (H₂.nodes[1]'h1).σ.Φ) ∧
+      (LandingKey H₂.headNode Φ' ∨
+        IsStandardLift H₂.headNode.σ H₂.headNode.ψ H₂.headNode.g Φ'))
+
+/-- **`ftie_extends'` — the chain constructor on the primed route** (the unit's one
+theorem, transcription-trivial): the compiled `ftie_extends` (GlueRun.lean:835–849)
+with the same three name substitutions in the hypotheses and conclusion; the proof
+term is the identical anonymous-constructor pair. -/
+theorem ftie_extends' (n : ℕ) (f : Polynomial ℤ_[p]) (σ₁ : Stage p F)
+    (Φ' : Polynomial ℤ_[p]) (H₁ H₂ : History p F)
+    (hRO : ReadsOf' p F n f H₁)
+    (B₁ : ℕ → Polynomial ℤ_[p]) (Nd₁ : ℕ)
+    (hdev₁ : IsDevelopment H₁.lastNode.σ.Φ f B₁ Nd₁)
+    (hreach : SideReads' H₁.lastNode B₁ Nd₁ σ₁.Φ)
+    (hrun₂ : TruncRunFrom' σ₁ f H₂)
+    (B₂ : ℕ → Polynomial ℤ_[p]) (Nd₂ : ℕ)
+    (hdev₂ : IsDevelopment H₂.headNode.σ.Φ f B₂ Nd₂)
+    (hpin : ∀ h1 : 1 < H₂.nodes.length, Φ' = (H₂.nodes[1]'h1).σ.Φ)
+    (hland : LandingKey H₂.headNode Φ' ∨
+      IsStandardLift H₂.headNode.σ H₂.headNode.ψ H₂.headNode.g Φ') :
+    FTiedTruncLanding' n f σ₁ Φ' :=
+  ⟨⟨H₁, hRO, B₁, Nd₁, hdev₁, hreach⟩, ⟨H₂, hrun₂, B₂, Nd₂, hdev₂, hpin, hland⟩⟩
+
+/-- **`DIterJunctionSupplier'` — THE RE-KEYED NAMED OPEN (displayed, NEVER asserted)**:
+the compiled `DIterJunctionSupplier` (GlueRun.lean:875–884) with exactly three name
+substitutions (`ReadsOf` → `ReadsOf'`, `SideReads` → `SideReads'` twice); antecedent
+shape, the `σ₁.Φ.natDegree < n` depth guard, and the conclusion's ∃-shape verbatim
+(DITERSUP §S2's display, transcribed).
+
+THE ITER-LAW FENCE carries over verbatim from the compiled supplier's docstring
+(GlueRun.lean:852–874), re-pointed at this name: any discharge computes f's deep
+digits through the iterated development — a computation in the order-2 COMPOSITE
+digit algebra of gr(w₂), whose measured structure at the canonical (dig-consumed)
+alphabet is the TWO-CONSTANT iterated law with the outer-wrap-feeds-inner-track
+fibration term (ITER-LAW; strata probe row B2: 0/804 exact, 52 towers).  The
+single-constant CYCLIC presentation `F′[u′]/(u′^{e_b′} − ζ′)` is ADJUDICATED FALSE
+(row B3-adj 22/28; kill-shot row N) and fenced OUT: ANY Lean discharge of this
+supplier MUST carry the two constants and the fibration term.  The corrected clause
+changes the supplier's DISCHARGE LANDSCAPE (FGMN §S6, accepted content), not its
+obligations.  STATEMENT-REVIEW FLAG (trust boundary): new-statement site; review owed
+at the post-application hostile pass.  The OLD supplier and every byte-frozen
+JuncForge/D0 theorem about it keep their exact compiled meanings. -/
+def DIterJunctionSupplier' (p : ℕ) [Fact p.Prime] (F : Type u) [Field F] [Finite F] :
+    Prop :=
+  ∀ (n : ℕ) (f : Polynomial ℤ_[p]) (σ₁ : Stage p F) (H₁ : History p F),
+    ReadsOf' p F n f H₁ →
+    (∃ (B : ℕ → Polynomial ℤ_[p]) (Nd : ℕ),
+      IsDevelopment H₁.lastNode.σ.Φ f B Nd ∧ SideReads' H₁.lastNode B Nd σ₁.Φ) →
+    σ₁.Φ.natDegree < n →
+    ∃ (ν : Node p F), ν.σ = σ₁ ∧ ν.species = ReadSpecies.root ∧
+      ∃ (B : ℕ → Polynomial ℤ_[p]) (Nd : ℕ) (Φnext : Polynomial ℤ_[p]),
+        IsDevelopment σ₁.Φ f B Nd ∧ SideReads' ν B Nd Φnext
+
+end LeanUrat.Scaffold.HDischarge.H1

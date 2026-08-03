@@ -7096,3 +7096,48 @@ restricted to E₂ > 1); residuals: (ITER-LAW-LIFT) open exactly at g₀ = 1 ∧
 untouched." Seal 911431c byte-untouched outside the sanctioned S5 verdict
 block; S6 + the supplement outputs + the analysis script are additive; no
 Lean statement touched; no record edits beyond this append.
+
+## P0 APPLICATION EXECUTED — 2026-08-08 (wallclock 2026-08-03; delegation decision 1, recovery unit; the FGMN primed-mirror change-set LANDED)
+
+The σ.wPrev repair is APPLIED on the additive new-definition route:
+`lean/LeanUrat/HC2/DefsPrime.lean` now carries all SIX primed decls of
+decision 1's list — `SideReads'` (the three token substitutions at the
+Defs.lean:285/287/292 analogues, clauses (iii)–(vi) code-identical),
+`ReadsOf'`, `TruncRunFrom'` (single [T-5] substitution, TruncatedRun.lean:230
+the kernel's only SideReads binding), `FTiedTruncLanding'`/`ftie_extends'`
+(three name substitutions; the one transcription-trivial theorem), and
+`DIterJunctionSupplier'` (the §S2 display verbatim; ITER-LAW fence carried,
+stated NEVER asserted).  Recovery audit of the 529-orphaned d0e2b74 fragment:
+the predecessor's SideReads'/ReadsOf' were EXACTLY RIGHT (tokens, wPrev
+identification via Stage.wPrev DEF-4, residual-leg T-exponent untouched); the
+four glue-route decls were missing and were completed additively — no
+half-written block, no repair needed, nothing double-applied.  GATES:
+`lake env lean` on the module EXIT 0; `lake build` green (8579 jobs, additive
+— only new module changed); AxChk_baseline EXIT 0, zero sorryAx, capstone
+footprints unchanged (montes_unconditional at Lean-core exactly).  S3-vi
+RIDER VERDICT: **SAME-DEFECT at the root cause, DIFFERENT sites, nothing
+discharged** — both the FGMN double-scale and the V9/HK52 ν_{i+1}.e stretch
+ride Stage.hStretch (Moves/Defs.lean:144, w = e·wPrev on inC), exact by e′,
+invisible at e′ = 1; FGMN is hypothesis-side (window functional too big by
+e′), V9's display was conclusion-side (RHS scale too small by e′, cured
+separately at HK53's readVertex_stretch); the coupling is compiled — HK53's
+e′ ≥ 2 vacuity fences (the e′²∣wSide fingerprint) derive FROM the old
+SideReads ties, so they do NOT transfer to the primed route and J1 adjudicates
+primed satisfiability afresh.  HONEST STATUS: J1–J3b UNBLOCKED (statable
+against compiled names), NOTHING discharged; the byte-frozen JuncForge/D0 +
+V9 statements untouched (retained-semantics fixed points); the
+POST-APPLICATION HOSTILE PASS is OWED (REVISION-9 cut) — the informative-map
+mirrors beyond the six (SideClauseR1'/R2/Window twins, GlueJunction'/
+readsOf_glue') are explicitly NOT landed, hostile-pass adjudicable.  Full
+record `lean/notes/openmath/P0_APPLICATION_2026-08-08.md`.  Acceptance
+citation consumed by this unit, PASTED from the FGMN acceptance block above:
+"the transcription-scale diagnosis (the compiled SideReads double-scales the
+stride weight vs the print's parent-valuation keying), the ROW-A SOURCE-FIRES
+verdict, the three-token proposal (HC2/Defs.lean:285/287/292, sigma.w ->
+sigma.wPrev), the fixed points (S1 two-scale law; clauseIII_derivable; the
+DITER §S3 supplier obligations; the JuncForge/D0 retained semantics), and the
+PIN-GEN-i discharge are ACCEPTED. The application change-set is the
+application unit's deliverable (REVISION-9 scope cut), adjudicated on the
+actual scratch-worktree diff at the ASVIN GATE with a post-application
+hostile pass".  Sealed/byte-frozen records untouched; no existing Lean
+statement touched (new-statement sites flagged for the hostile pass).
