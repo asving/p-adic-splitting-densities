@@ -8430,3 +8430,40 @@ row-4 correction re-derived right on both legs incl. the e_j = 1 corner, all
 Trajectory: 2C/3G → 0C/2G → 0C/1G → 0C/1G → 0C/1G → 0C/1G(content-true);
 zero mathematical findings since composition. ROUND 6 (PC5 + PE6, both on
 this text) = the acceptance attempt.
+
+## ITERLAWN-PE6 (Fable round-6) — 2026-08-03, on 362d118: NOT-CLEAN 0C/1G — the PC5-shared census gap, machine-confirmed and machine-closed
+
+Anchors: text @362d118 md5 3e83feae4d95020c8239c6e41154e1f4; pinned base
+@0672082 md5 5811db126d1ed0824e4870b20e0fd774; PC5 @ c2992a0 (0C/1G,
+concurrent); report `lean/notes/openmath/ITERLAWN_passPE6_report.md`.
+
+Errata-r5 fidelity VERIFIED (insertion-only 20+20, byte-exact
+reconstruction; row 23 content independently re-verified TRUE on three legs
+incl. the new COR-3 bullet-split corroboration; arithmetic right; ledger
+block faithful). Re-runs: diag byte-identical (7c72c4c6..., 5,311/0,
+CLEAN); reimpl 940 pairs/0 violations, 7/7 mutations, sole diff two benign
+wall-clock digits. THE MACHINE CENSUS (the charge's completeness check,
+run programmatically): 194 hits / 147 lines over the 8 widened patterns on
+the pinned text — ALL mapped: 88 at row sites/duplicates/cures (21 of 23
+rows; rows 13/18 are pattern-free judgment rows), 21 in SEVEN adjudicated
+site-families F1–F7 beyond the table (⊇ PC5's two sites: F1 evidence-only
+= 5 sites, F2 engine WEIGHT-clauses-only = 2 sites, both re-verified TRUE
+this pass; F3–F7 with on-record adjudications incl. the r38 ALONE-clauses
+per PE5 §adjacent), 53 apparatus, 8 quoted record, 18 non-genre, 6 positive
+displays. Zero unadjudicated hits; ZERO false dependency claims anywhere —
+the r4 substantive result confirmed a fourth time, first time by machine.
+
+PE6-G1 (= PC5's gap, dual-confirmed decorrelated): the r5 closed sentence
+("the 23 sites enumerated by the stated grep patterns over the 0672082
+text") remains a false census of the pinned text — under-enumerated by
+F1–F7 (all content-true) and over-attributed on rows 13/18. The
+regress-proofing itself WORKS (forward leakage impossible by construction;
+both passes concur). Nits: N1 rows-13/18 attribution; N2 the "S₀ nowhere
+else" compression (exact only under PE5's site definition incl. the L201
+display tag). Round-6 bar NOT met (PC5 0C/1G + PE6 0C/1G, one shared
+defect). Cure pre-designated at PC5 adjudication: errata round 6 = the PE6
+§3 machine census as the enumeration of record; any future closed
+restatement cites the census, not a hand count. Trajectory: 2C/3G → 0C/2G
+→ 0C/1G ×5 — zero mathematical findings since composition; three straight
+rounds of census-meta-sentence residue; hand-census is the demonstrated
+failure mode, now retired.
