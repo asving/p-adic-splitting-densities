@@ -5679,3 +5679,15 @@ Now inside the certified anchor: the junc_bundle verdict of record + the FGMN ch
 (Asvin-flag), the ADM-REAL' acceptance (CLASS-LAT), the N-H7-1 pins, the JFS2 arc, the
 strata3 measurement. ROOT citation text rides r30. VC31 next in cadence. Outstanding
 decider: TR3-S3 pass 6 (Fable).
+
+## 2026-08-08: TR3-S3 ACCEPTED — the strata trilogy complete
+
+The 2-clean model-diverse bar MET on TR3S3_2026-08-08.md REVISION 4: pass 7 (Codex,
+dc40668) CLEAN + pass 8 (Fable, 83870a8) CLEAN, consecutive. Eight-pass arc with four
+orchestrator-applied precision revisions; THREE independent verifier implementations
+(93 + 1,564 + 821 checks, 0 failures) — the strongest external-leg record of any
+accepted note. CONSEQUENCES: with accepted TR3-S1 + TR3-S2, TR-3'-GEN is proved on
+{all order-2} ∪ {order-3 all-e_j=1}, CONDITIONAL ON (H-v3) (attribution only; the
+finite identity unconditional) + PIN-GEN-i displayed (the pdftotext leg owed at Defs
+3.15/3.16/3.18). Deeper strata (e_j >= 2 orders >= 3; the sealed TWIST-3 candidate)
+stay OPEN, probe-first. GRB's TR-3'-GEN scope union updates ride r30.
