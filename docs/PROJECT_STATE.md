@@ -2055,7 +2055,10 @@ record of any accepted note): with accepted TR3-S1 + TR3-S2, **TR-3′-GEN
 is PROVED on {all order-2} ∪ {order-3 all-e_j = 1}, CONDITIONAL ON
 (H-v3)** (attribution only — the finite identity σ₂(R^F₃(f)) = R_λ₃(f),
 discrepancy ≡ 1, is unconditional; PIN-GEN-i the displayed attribution
-pin, the fresh-pdftotext leg owed at Defs 3.15/3.16/3.18). The GRB S3.4
+pin, the fresh-pdftotext leg owed at Defs 3.15/3.16/3.18) [r32: the
+(H-v3) conditionality DISCHARGED at HV3 acceptance fa2180e — the scope
+is UNCONDITIONAL ON PRINT per HV3-THM's four standing conditions; see
+the r32 checkpoint below]. The GRB S3.4
 scope line carries the ADDITIVE second post-acceptance bracket (that
 leaf's counters NOT reset). Deeper strata (any e_j ≥ 2 at orders ≥ 3)
 stay OPEN, probe-first (the sealed (TWIST-3) candidate stays sealed).
@@ -2155,7 +2158,8 @@ clause; **PIN-GEN-i DISCHARGED** as the rider (fresh column-verified
 RECORD, pending verification** (f90d68a) — HV3-THM: v₃ = w₂ at
 e₀ = e₁ = 1 (e₂ free) on three displayed conditions; hostile pass 1
 RUNNING; if it survives, TR-3′-GEN order-3 goes UNCONDITIONAL ON PRINT;
-the 47 bracket sites ride the acceptance. (3) **F-ADM-3 RE-KEY
+the 47 bracket sites ride the acceptance [r32: it SURVIVED — HV3
+ACCEPTED at fa2180e, the sweep executed; see the r32 checkpoint below]. (3) **F-ADM-3 RE-KEY
 APPLIED** (ba02d60+8648d99, standing authority + Codex CONFIRM) —
 CLASS-LAT machine-checked at every order; hclass retired; R7 acceptance
 test 88 → 0; capstone fence EMPTY. (4) **TWIST-3 law MEASURED EXACT**
@@ -2178,9 +2182,65 @@ F-ADM-3 re-key for ratify-or-reopen; the FGMN four-token proposal AT
 TOP; the Route-B RB-DELTA decision).
 FRONTIER NOW: **VC32** (the confirming end-to-end pass on REVISION 30;
 acceptance anchored on REVISION 29/VC31+VC31b+VC31c until it lands);
-the FGMN + (H-v3) hostile passes (running); then the held pass-7 queue.
+the FGMN + (H-v3) hostile passes (running) [r32: both landed — HV3
+ACCEPTED fa2180e; FGMN p5 CRITICAL → REVISION 4, passes 6+7 decide];
+then the held pass-7 queue.
 Verification: VC1–VC22 done; VC25 NOT-CONFIRMED (disposed); VC26+VC26b,
 VC27+VC27b CONFIRMED; VC28, VC29 CONFIRMED FIRST-PASS; VC30 (1C, cured
 by the r29-ERRATUM) + VC30b CONFIRMED; **VC31 (0C/2G, cured by the
 r30-ERRATUM + the dating disclosure) + VC31b + VC31c CONFIRMED (= the
 REVISION-29 anchor)**; VC32 pending on REVISION 30.
+
+CHECKPOINT (ROOT r32 = REVISION 31, 2026-08-08 window): the VC32+VC32b
+re-anchor + the HV3 acceptance fold + the 47-site discharge sweep.
+**VC32 + VC32b CONFIRMED** on the REVISION-30 text (ledger e32ebef):
+VC32 returned 0C/3G — ALL folds passed (proposal-only discipline, no
+HV3 scope leak, the F-ADM-3 lineage, the TWIST-3 honest RED, the UBX
+gate, roster NINE, the 51-pattern census exact); the gaps ALL
+fold-lag/wording syncs, cured by the dated r31-ERRATUM (e3425b1); the
+narrow pass VC32b CONFIRMED 0C/0G on the corrected passages — **the
+acceptance anchor moves REVISION 29/VC31+VC31b+VC31c → REVISION
+30/VC32+VC32b** (now inside the certified anchor: the FGMN
+proposal-on-record + source-fires verdict, the HV3-THM
+discharge-pending display, the applied F-ADM-3 re-key, the TWIST-3 law
++ TR3-S4 charter, the UBX walk verdict, the four-item Asvin batch).
+**HV3 ACCEPTED — (H-v3) DISCHARGED** (fa2180e; passes 4 Codex + 5
+Fable consecutive CLEAN 0C/0G, model-diverse; the pass-5 independent
+arXiv re-fetch + fresh 1,655-check two-way falsifier at off-roster
+p ∈ {7,17} + the ADVERSARIAL CONTROL — type-hood deleted breaks exactly
+the step-5 leg): **HV3-THM** (v₃ = w₂ at e₀ = e₁ = 1, e₂ free) stands
+on its FOUR standing conditions (pinned-print baseline; accepted
+TR3-S1; (H-CHAIN)+RESCALE; the projective-dictionary consumptions) —
+**TR-3′-GEN is PRINT-UNCONDITIONAL at {all order-2} ∪ {order-3
+all-e_j = 1}**; the 47-site bracket DISCHARGE SWEEP EXECUTED at ROOT
+r32 (additive dated brackets across TR3S3/ROOT/GRB; old text stands;
+accepted-note counters NOT reset; reconciliation at ROOT §37 — D7's 47
+= TR3S3 30 + ROOT 14 + GRB 3 at authoring, re-counted 30/27/3 at HEAD
+with the ROOT growth all r31-fold displays); PIN-GEN-i stays DISPLAYED
+(its leg discharged separately at 303b11e); the e₁ ≥ 2
+(TWIST-3)/TR3-S4 regime NOT reached by HV3-THM — hypothesis displays
+stand there. **FGMN status sync**: pass 5 CRITICAL (af88f12) →
+REVISION 4 (fa2180e) — the complete grep-disciplined DictIII perimeter
+(SideClauseR2/sideReads_r2; the (†)-transfer twins needing RE-DERIVED
+readCeil arithmetic at e ≥ 2; Window :554/:557; the R5 tie family;
+THREE-token diff of record; NEW-definition mode recommended); the
+change-set PRICED UP in the Asvin batch; counter 0/2, passes 6+7
+decide; the proposal stays ASVIN-GATED. Roster: **NINE rows,
+unchanged**; no clause attribution moved. Census: 51 + 4 new
+(VC32b/VC33/SideClauseR2/readCeil) = 55 patterns, fixed point
+re-grepped, every delta reasoned. **SYNTHESIS PASS 8 NOT YET OWED**;
+wave-15 candidates displayed (**TR3-S4 the lead** + the held pass-7
+items: ITER-LAW, the (H7) forge, DIterJunctionSupplier, the banked
+sorry). The Asvin batch restated in full (TowerMoveClosureL;
+fence-(vii) ROUTE (a) lineage incl. the RECSL hσt rider + the EXECUTED
+F-ADM-3 re-key for ratify-or-reopen; the FGMN proposal AT TOP,
+RE-PRICED at the complete DictIII change-set; the Route-B RB-DELTA
+decision).
+FRONTIER NOW: **VC33** (the confirming end-to-end pass on REVISION 31;
+acceptance anchored on REVISION 30/VC32+VC32b until it lands); the
+FGMN passes 6+7 (the deciders); then the held pass-7 queue.
+Verification: VC1–VC22 done; VC25 NOT-CONFIRMED (disposed); VC26+VC26b,
+VC27+VC27b CONFIRMED; VC28, VC29 CONFIRMED FIRST-PASS; VC30 (1C, cured)
++ VC30b CONFIRMED; VC31 (0C/2G, cured) + VC31b + VC31c CONFIRMED;
+**VC32 (0C/3G, cured by the r31-ERRATUM) + VC32b CONFIRMED (= the
+REVISION-30 anchor)**; VC33 pending on REVISION 31.

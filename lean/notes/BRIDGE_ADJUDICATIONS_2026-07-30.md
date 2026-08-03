@@ -5999,3 +5999,39 @@ r32. FGMN pass 5: CRITICAL — the REVISION-3 mirror enumeration incomplete
 arithmetic at e≥2 + Window :554/:557 + the R5 tie family) → REVISION 4 (orchestrator,
 the verifier's complete site list adopted); §S8 raw-order disclosure moved to the
 header. FGMN counter 0/2; pass 6 next.
+
+## ROOT r32 EXECUTED (REVISION 31) — the VC32+VC32b re-anchor + the HV3 acceptance fold + the 47-site discharge sweep
+
+REVISION 31 of `docs/ROOT_ASSEMBLY_2026-08-02.md` (§37). (1) ANCHOR: the acceptance
+citation moves REVISION 29/VC31-arc → REVISION 30/VC32+VC32b (e32ebef) at every
+operative site (§0 standing paragraph, §3.2 sync tail, §6 supersession + r32 bracket);
+the r31-ERRATUM lineage displayed (VC32 0C/3G → e3425b1 → VC32b 0C/0G); **VC33 OWED on
+the REVISION-31 wording** (charge at §37) — no self-confirmation, this unit ran no
+audit. (2) HV3 ACCEPTANCE FOLD (fa2180e): (H-v3) DISCHARGED — **TR-3′-GEN is
+PRINT-UNCONDITIONAL at {all order-2} ∪ {order-3 all-e_j = 1}** per HV3-THM's four
+standing conditions; the bracket DISCHARGE SWEEP EXECUTED: additive dated brackets
+("DISCHARGED at HV3 acceptance fa2180e — the scope is UNCONDITIONAL ON PRINT per
+HV3-THM's four standing conditions") at every operative conditionality site — TR3S3
+12 core-string occurrences (11 site-level brackets + the new POST-ACCEPTANCE BRACKET),
+GRB 3 (2 site-level + the new THIRD POST-ACCEPTANCE BRACKET), ROOT 6 (both notes' acceptance counters NOT reset; old text stands byte-unchanged).
+RECONCILIATION vs the D7 census (47 = TR3S3 30 / ROOT 14 / GRB 3 at f90d68a): re-count
+at this unit's start = 30/27/3 mention-lines (TR3S3 + GRB match D7 EXACTLY; ROOT's +13
+= the r31 fold's own pending-verification displays + census cells + erratum tag, all
+post-authoring); full per-line disposition at ROOT §37. PIN-GEN-i STAYS DISPLAYED (its
+leg discharged separately at 303b11e — cited at every touched site); the e₁ ≥ 2
+(TWIST-3)/TR3-S4 regime NOT reached by HV3-THM (e₁ = 1 required) — hypothesis displays
+stand there, with an explicit out-of-scope note at the (H1) TR3-S4 display. (3) FGMN
+STATUS SYNC: pass 5 CRITICAL (af88f12) → REVISION 4 (fa2180e) displayed at the (H1)
+row, §0, §6; the change-set PRICED UP in all three Asvin-batch restatements (the
+complete grep-disciplined DictIII perimeter; THREE-token diff of record; the
+(†)-transfer twins' re-derived readCeil arithmetic); counter 0/2, passes 6+7 decide;
+ASVIN-GATED, nothing applied. [Concurrency note: FGMN pass 6 (c7df512, 0C/2G) landed
+while this fold was executing — NOT folded here, per the never-claim-in-flight rule;
+it rides the next fold. This entry's "passes 6+7 decide" display remains true of it.]
+(4) Housekeeping: TR-3′-GEN's (H1)-row displays now read PRINT-UNCONDITIONAL at the
+proved union; the Asvin batch restated in full (FGMN proposal AT TOP, re-priced);
+wave-15 candidates displayed, TR3-S4 the lead. CENSUS: 51 + 4 new patterns
+(VC32b/VC33/SideClauseR2/readCeil) = 55, re-grepped to fixed point on the final text,
+every delta reasoned; roster NINE re-derived. Files: ROOT + PROJECT_STATE (r32
+checkpoint + three dated tags) + TR3S3 note + GRB note + this ledger. Commit of even
+date = the unit of record (ROOT r32; scoped add).
