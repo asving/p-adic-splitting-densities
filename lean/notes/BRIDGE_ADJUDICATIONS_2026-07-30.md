@@ -5446,3 +5446,26 @@ pins-covered scans + 4×200 in-guard samples at N = τ+2ρ clean) — the D-8
 guard measured as the extraction boundary; decide-small semantic gates must
 sit in-guard.  Open kernels untouched (KL-0, KL-3, IT-2 ⊇, order ≥ 2).
 Note: `lean/notes/openmath/NH71_2026-08-08.md`.
+
+## 2026-08-08: VC29 CONFIRMED FIRST-PASS (0C/0G) — anchor RE-ANCHORS at REVISION 27; two content audits CRITICAL (dispositions gated)
+
+VC29 (REVISION 27, the r28 text): CONFIRMED first-pass, zero findings — second consecutive
+first-pass confirmation (the checklist holds). Anchor moves REVISION 25/VC28 → REVISION
+27/VC29 (REVISION 26 properly superseded mid-cadence). VC30 next; citation rides r29.
+ADM-REAL' pass 1 (Codex): CRITICAL 1C/9G — the W-LAD scope bug (GMN types admit
+stationary levels e_i f_i = 1; strictness holds for OPTIMAL types only; the note
+quantified over ANY type, its own grid includes (1,1)) breaks the unconditional chain;
+plus 9 gaps (Prop 2.7-vs-2.8 attribution; the §5b no-reading claim needs a call-path
+audit; the B-PIN equivalence unproved; the consumption corollary's value-attainment
+conjunct unsupplied; others per report). REVISION 1 dispatched; counter 0/2.
+JUNCFORGE S2 faithfulness audit (Codex): CRITICAL 1C/3G — the Lean theorems stand but
+the prose overran: the "no e>=2 SideReads recording CAN exist" claim is proved only
+inside the row-A fiber (fA, Phi1A); junc_bundle_false negates the (safe, weaker)
+3-conjunct core under row-A restrictions, not the general bundle; the D0 byte-identity
+claim was not certifiable from the audit packet; KEY disposition finding: the
+contradiction admits the incompatible-transcription-scales reading — a SideReads repair
+could RESTORE the paper-source glue step. Honest verdict of record: junc_bundle is
+INCONSISTENT AS TRANSCRIBED, COMPILED AT ROW A; global claims rescoped; the repair
+question = a transcription-scale re-derivation from the FGMN source (design unit
+chartered; non-textual-leg discipline; Asvin flag rides r29). Reports archived:
+VC29_report.md, ADMREAL_pass1_report.md, JUNCFORGE_S2_audit_report.md.
