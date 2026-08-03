@@ -6332,3 +6332,18 @@ TWIST3-bracket slice was EMPTY (the grep pattern used "REVISION-1" where the bra
 says "SUPERSEDED 2026-08-03 ... r34 fold" — checklist rule 5 violated again; the N-T4
 block was read in its place). VC35b (narrow: the corrected closing passage + the ACTUAL
 bracket slice at TWIST3_PROBE:83) decides. Report: VC35_report.md (this commit).
+
+## VC35 + VC35b CONFIRMED — the ROOT acceptance RE-ANCHORS at REVISION 33; the TR3-S4 arc fully certified
+
+VC35 (0C/2G: the closing abbreviation → r34-ERRATUM d79f295; the empty appendix slice →
+input artifact) → VC35b CONFIRMED 0C/0G on the corrected closing + the actual TWIST3
+bracket. CONSEQUENCE: the anchor moves REVISION 32/VC34 → REVISION 33/VC35+VC35b — the
+SIXTEENTH audited re-anchoring of the window. Now certified: the strata family's
+THREE-COMPONENT UNION ({all order-2} ∪ {order-3 all-e_j=1 PRINT-UNCONDITIONAL} ∪
+{order-3 e₀=1,e₁≥2,e₂=1 conditional on (H-ℓ)+(KP_i)+[T]-at-S6.2+PIN-GEN-i}), the F2c
+in-pipeline discharge, and the TWIST3 hygiene. Reports: VC35_report.md (d79f295),
+VC35b_report.md (this commit). VC36 next; citation rides r35.
+FORWARD QUEUE: WAVE 16 (the synthesis-7 tail — ITER-LAW attempt; (H7) forge on the
+N-H7-1 pins; DIterJunctionSupplier statement RE-PRICED vs the accepted FGMN diagnosis;
+banked-sorry attempt) → SYNTHESIS PASS 8 at its close → the 4-item ASVIN BATCH
+standing (top = the verified FGMN proposal).
