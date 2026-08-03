@@ -5964,3 +5964,13 @@ THE ROW-A SOURCE VERDICT definition byte-identical; still PROPOSAL-ONLY,
 Asvin-flag queued.  Acceptance counter: 0/2 consecutive clean passes; pass 2
 next.  REVISION 1 block appended to
 `lean/notes/openmath/FGMN_REDERIVATION_2026-08-08.md`.
+
+## Round: FGMN p2 0C/2G + HV3 p2 0C/2G + VC32 0C/3G — all wording/sync class; errata applied
+
+FGMN pass 2: the diagnosis/row-A/PIN-GEN-i perimeter clean again; both gaps =
+infrastructure (the Codex sandbox cannot execute the battery — pass 3 routed to FABLE,
+which executes, satisfying the independent-run leg + model diversity together). HV3
+pass 2: derivation + REVISION 1 fixes clean; two cite/xref typos → REVISION 2
+(orchestrator). VC32: all folds pass except three fold-lag/wording syncs (the r31 text
+predated the two REVISION 1s; the UB-X gate wording) → r31-ERRATUM applied at the three
+sites. VC32b + FGMN p3 (Fable) + HV3 p3 (Fable) decide. Reports archived.

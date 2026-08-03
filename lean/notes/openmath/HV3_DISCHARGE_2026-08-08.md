@@ -92,7 +92,7 @@ All quotes from `docs/references/HigherNewton.tex` (arXiv-v2 numbering per
 the §D1 count map). Standing §2 scope line, TeX 975: *"We fix a type $\ty$ of
 order $r-1$ for the rest of section \ref{secNPr}."*
 
-**(E1) The H_{r−1} generic display — TeX 979–983** (§2.3, "The p-adic
+**(E1) The H_{r−1} generic display — TeX 979–983** (§2.2 [REV2: was §2.3, pass-2 gap 1 — subsection cite corrected; formulas and TeX-line cites unchanged], "The p-adic
 valuation of r-th order", TeX 977; the object (H-v3) was waiting on):
 
     Consider the mapping
@@ -256,7 +256,7 @@ Live bracket sites, for the r31 fold (listed, DELIBERATELY NOT EDITED here):
 
 Acceptance criterion met in the F3 charter's own terms: "TR-3′-GEN order-3
 conditionality reduces to standing print attributions" — that reduction is
-(HV3-THM)'s clause list (D0 (i)–(iii)), on record above with verbatim
+(HV3-THM)'s clause list (D0 (i)–(iv)) [REV2: was (i)–(iii), pass-2 gap 2 — the stale cross-reference updated to include condition (iv)], on record above with verbatim
 displays and line cites.
 
 ## REVISION 1 (orchestrator-applied, per pass 1)
@@ -267,3 +267,11 @@ Pass 1 (Codex; HV3_pass1_report.md): GAPS-ONLY 0C/2G — priorities A/B/scope al
 the conditionality list; (2) the D3 "verbatim" claim rescoped — the pin's second
 equality now derived explicitly (one-line substitution at P = φ₂). Counter 0/2;
 passes 2+3 decide.
+
+## REVISION 2 (orchestrator-applied, per pass 2)
+
+Pass 2 (Codex; HV3_pass2_report.md): GAPS-ONLY 0C/2G — the five-step derivation, both
+REVISION 1 fixes, and the scope discipline all CLEAN. Fixes: (1) the D2 subsection cite
+§2.3 → §2.2 (the pinned paper's own numbering; TeX lines unchanged); (2) D7's stale
+"(i)–(iii)" cross-reference → "(i)–(iv)". Counter 0/2; passes 3+4 decide (pass 3 routed
+to Fable for the model-diverse leg).
