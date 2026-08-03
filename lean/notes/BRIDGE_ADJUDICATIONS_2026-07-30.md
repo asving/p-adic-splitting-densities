@@ -7346,3 +7346,19 @@ bytes changed: the L6e unit's own commit c88b541 carries its full record and
 message of record. Lesson folded: in a concurrently-committing repo, use
 `git commit --only <paths>` (immune to foreign staged content), never bare
 `commit` after `add`; this bracket is itself committed with `--only`.]**
+
+## P0 HOSTILE PASS CLEAN — the FGMN application arc CLOSES (2026-08-03)
+
+P0HP (Codex, post-application, the REVISION-9 scope-cut obligation): CLEAN
+0C/0G on the applied change-set (report `P0HP_report.md`; charge = the six
+primed decls @cecba9d against the accepted §S3 proposal, the DITERSUP displays,
+the compiled SideReads region, and the [T-5] binding). With the execution leg's
+gates already on record (module exit 0; lake build 8579 jobs; AxChk zero
+sorryAx, capstone footprints unchanged), the FGMN arc is now closed end-to-end:
+diagnosis ACCEPTED (REVISION 10) → application EXECUTED under the 2026-08-03
+delegation (b70a452, decision 1; commit cecba9d) → hostile pass CLEAN. The
+primed read-functional route (SideReads′ et al.) is the faithful-to-print
+functional of record for all NEW work; the old compiled clause remains solely
+as the byte-frozen records' retained semantics. Junction gates J1–J3b are
+UNBLOCKED (statable against compiled names); nothing is discharged by this
+closure; J1 (primed e′ ≥ 2 satisfiability) is the first live junction question.
