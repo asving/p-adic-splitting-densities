@@ -6035,3 +6035,16 @@ wave-15 candidates displayed, TR3-S4 the lead. CENSUS: 51 + 4 new patterns
 every delta reasoned; roster NINE re-derived. Files: ROOT + PROJECT_STATE (r32
 checkpoint + three dated tags) + TR3S3 note + GRB note + this ledger. Commit of even
 date = the unit of record (ROOT r32; scoped add).
+
+## CHECKPOINT: FGMN p7 0C/2G + VC33 0C/2G — both reports archived; fixes = next cycle's first items
+
+FGMN pass 7 (report FGMN_pass7_report.md) and VC33 (report VC33_report.md) both returned
+ZERO CRITICAL with two gaps each — the seventh consecutive substance-clean round on the
+FGMN diagnosis and the standard fold-lag/wording class on REVISION 31. OPEN STATE OF
+RECORD: (1) apply FGMN's two pass-7 gaps (per the archived report) as REVISION 6, then
+passes 8+9 decide the bar; (2) apply VC33's two gaps as the r32-ERRATUM, then VC33b
+(narrow) decides the REVISION-31 confirmation and the anchor move; (3) then wave 15
+(TR3-S4 lead + the held pass-7-synthesis items) and the Asvin batch (FGMN proposal at
+top with the reference-closure change-set; RB-DELTA/Route-B; TowerMoveClosureL; the
+fence-(vii) lineage). Everything committed; all state resumable from this ledger + ROOT
+§37 + PROJECT_STATE + task #151.
