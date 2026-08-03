@@ -6451,8 +6451,12 @@ record (unit ROOT r29; scoped add).
 — REVISION 28 complete. VC29 CONFIRMED FIRST-PASS and the acceptance
 RE-ANCHORED on the REVISION-27 text (the anchor moves REVISION 25/VC28 →
 REVISION 27/VC29; REVISION 26 superseded mid-cadence, never audited); the
-wave-11 batch folded: the compiled junc_bundle adjudicated INSTANCE-FALSE
-at row A with the source question OPEN and the FGMN re-derivation
+wave-11 batch folded: the compiled CHAR-2, Φ₂-LANDING, INTERIOR-Φ₂A-PINNED
+junc_bundle adjudicated INSTANCE-FALSE at row A **[r29-ERRATUM, VC30
+finding 1: the three restrictions were omitted from this one closing line
+while every other verdict-tier site carried them — added pre-confirmation;
+the census's "every new site is the SCOPED verdict" claim holds as of this
+erratum]** with the source question OPEN and the FGMN re-derivation
 chartered proposal-only (the new Asvin-flag item); ADM-REAL′ ACCEPTED with
 CLASS-LAT a lattice theorem at every order and the (ADM) opens displayed;
 the depth-3 law measured exact with TR3-S3 in verification at counter 0/2;

@@ -5655,3 +5655,13 @@ CADENCE: VC30 is OWED on the REVISION-28 wording (charge at §34; model diversit
 the tree §4 bar) — never self-confirmed; until it lands the acceptance citation points
 at the REVISION-27 text. Files: ROOT + docs/PROJECT_STATE.md (r29 checkpoint) + this
 ledger ONLY (doc-only unit; no Lean file touched, no statement changes).
+
+## 2026-08-08: VC30 — 1 critical (the §34 closing line), erratum applied, VC30b owed
+
+VC30 on REVISION 28: every fold PASSED at its sites (anchor lineage; the junc_bundle
+verdict scoped at all principal sites; parity wall; supplier/source; FGMN charter as the
+new Asvin-flag item; ADM-REAL' with no silent row promotion; TR3-S3 un-upgraded; N-H7-1
+pins; roster NINE) — EXCEPT the §34 closing-summary line, which restated the junc_bundle
+verdict without the three restrictions. Orchestrator applied the one-line r29-ERRATUM
+(dated bracket, pre-confirmation) directly; VC30b (narrow) decides. Report archived:
+VC30_report.md (this commit).
