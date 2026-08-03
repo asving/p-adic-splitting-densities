@@ -591,7 +591,17 @@ w₃(P) = Γ″, attained at slot S₃ only. Grid: s₃(Γ″) = S₃ − δ₃e
 sits at slot j = δ₃, slot weight B₂ = w₂(E₀): on-line. The digit at S₃+1 is
 off-grid when e₂ ≥ 2, and on-grid-but-strictly-above-the-line when e₂ = 1
 (slot weight Γ″ − (S₃+1)γ₃ = B₂ − γ₃ < B₂ − e₁γ₂ + h₂ = w₂(E₁) + 0 — i.e.
-w₂(E₁) = B₂ − γ₃ + h₂ > slot weight): read 0 either way. Hence
+w₂(E₁) = B₂ − γ₃ + h₂ > slot weight): read 0 either way. **[ERRATUM
+(errata round 2, 2026-08-03, orchestrator-direct; convergent findings
+PC2-g = PE2-F1, pre-existing at 8ba1820): the middle link of the
+parenthetical display is FALSE as written — since w₂(E₁) = B₂ − e₁γ₂,
+the tail "= w₂(E₁) + 0" should read "= w₂(E₁) + h₂". The CONCLUSION
+stands by the correct one-line derivation (already the sentence's final
+clause): γ₃ = e₁γ₂ + h₂ ⟹ B₂ − γ₃ = w₂(E₁) − h₂ < w₂(E₁), so the slot
+weight lies strictly below the E₁ line and the read is 0. Machine-true
+(the PE reimplementation's e₂ = 1 legs and the PE2 witness battery);
+S4.6's Case II-2 consumes this step by reference and rides the corrected
+derivation.]** Hence
 
     val₃(P) = z̄^{δ₃}·ε₂(B₂)·R2v(E₀) = z̄^{δ₃}·ε₂(B₂)·z₂^{δ₂}z₁^{δ₁}·ε₁(B₁). ∎
 
@@ -832,7 +842,15 @@ attempt grade + MEASURED (3-read, this note), n = 3 MEASURED GREEN (4-read
 battery).]**
 
 With S₂ᵗᵒᵖ := δ₃γ₃ and S₁ᶜᵒᵐᵖ := Σ, the proved display is EXACTLY the
-uniform recursion of L3CONVERGENCE S2 Candidate 2 at n = 3:
+uniform recursion of L3CONVERGENCE S2 Candidate 2 at n = 3 **[ERRATUM
+(errata round 2, 2026-08-03, orchestrator-direct; PC2-c [CRITICAL] =
+PE2-F2): STRUCK — inside this recursion dictionary, Candidate 2's n IS
+the rung index by L3CONVERGENCE's own convention ((n+1)-read tower =
+rung n), so the round-1 "counts READS" gloss does not cover this token
+or the section title's "at n = 3, derived": both are corrected to
+**(rung) n = 2**. The displayed equations below are, and always were,
+the rung-2 instantiation (top index 2, three reads); no math content
+changes.]**:
 
     S_2 = δ·γ₃ (δ = δ₃);  D_2 = (s₂-defect + ℓ₁S_2)/e₁;
     S_1 = D₂γ₂ + S_2·(ℓ₁′ − ℓ₁w₁Φ₁);  D_1 = (s₁-defect + ℓ₀S_1)/e₀;

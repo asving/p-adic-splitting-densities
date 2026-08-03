@@ -7848,3 +7848,23 @@ unit re-priced as the (RM-m) family instance; [IL3] arc untouched, on its
 own text. Unit files: the note + iterlawn_diag.py + iterlawn_diag_output.txt
 + this append ONLY (scoped `git commit --only`); every sealed/accepted
 artifact byte-untouched.
+
+## ITERLAW3 errata round 2 APPLIED — 2026-08-03 (orchestrator-direct; convergent PC2/PE2 findings)
+
+Round 2 verdicts: PC2 NOT-CLEAN 1C/1G (cf013a4) + PE2 NOT-CLEAN 0C/2G
+(467b523) — CONVERGENT on the same two narrow, pre-existing findings; both
+legs confirmed all round-1 errata cured and the reimplementation/diag re-runs
+byte-exact; PE2's witness battery added 52/52 DCX instance data. Remedies
+applied as two brackets in ITERLAW3_PROOF_2026-08-08.md: (1) the S4.5 e₂=1
+display-line correction ("= w₂(E₁) + 0" → the true "+ h₂" link, conclusion
+standing by the correct one-line derivation, machine-true); (2) the S6.6
+dictionary rung tokens STRUCK to (rung) n = 2 (the round-1 reads-gloss does
+not cover the dictionary, where n is the rung index by the source's own
+convention). Counter 0/2; ROUND 3 (PC3 + PE3, both must be CLEAN) next.
+Meanwhile the GENERAL-n note landed (ITERLAWN_PROOF, 5fe901e): all-orders
+statement with the generic layers proved, the ε-chain at every rung from the
+accepted base, the multiplicative step generic modulo the displayed (RM-m,
+m ≥ 2) + (W-MULT-DCX-m) open families — the priced two-family distance to all
+orders on the harness class — plus the first 5-read data (zero violations).
+Its own hostile arc is owed (its S10 charges); it consumes [IL3] with the
+honest attempt-grade conditionality displayed.
