@@ -657,3 +657,18 @@ was the in-scope list's own completeness. Fixes:
 3. Pass-11 gap 2 = the standing bubblewrap infrastructure item; pass 12 is a Fable
    pass WITH execution and certifies item (e) by construction.
 Counter stays 0/2; passes 12+13 decide.
+
+---
+
+## ACCEPTANCE RECORD (orchestrator)
+
+ACCEPTED at REVISION 10: pass 12 (Fable, CLEAN 0C/0G WITH the full execution leg —
+pins byte-identical, battery byte-identical, the four JuncForge/D0 fixed-point theorems
+compiled directly, a from-note 336-site reimplementation exact) + pass 14 (Codex,
+CLEAN 0C/0G on content under the ledger's division-of-labor disposition) — the
+model-diverse pair complete. Fourteen passes, ten revisions; the mathematical content
+(the two-scale diagnosis, the ROW-A SOURCE-FIRES verdict, the three-token proposal
+diff + its fixed points incl. the JuncForge/D0 retained semantics, the PIN-GEN-i
+discharge) survived every round; the application change-set is out of acceptance scope
+by the REVISION-9 cut and is the application unit's deliverable at the Asvin gate.
+Three independent executed legs on record (passes 3, 9, 12). Ledger entry of even date.

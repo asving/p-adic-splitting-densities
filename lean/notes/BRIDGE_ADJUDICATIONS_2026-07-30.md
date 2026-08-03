@@ -6193,3 +6193,18 @@ not a weakening: no content finding is ever downgraded, and every artifact retai
 least one (here three) fully-executed independent legs. Pass 14 (Codex) runs under this
 disposition; with p12 (Fable, CLEAN with execution), a content-clean p14 completes the
 model-diverse pair.
+
+## FGMN RE-DERIVATION ACCEPTED (p12 Fable-executed CLEAN + p14 Codex content-CLEAN, model-diverse)
+
+The 14-pass, 10-revision arc closes: the transcription-scale diagnosis (the compiled
+SideReads double-scales the stride weight vs the print's parent-valuation keying), the
+ROW-A SOURCE-FIRES verdict, the three-token proposal (HC2/Defs.lean:285/287/292,
+sigma.w -> sigma.wPrev), the fixed points (S1 two-scale law; clauseIII_derivable; the
+DITER §S3 supplier obligations; the JuncForge/D0 retained semantics), and the PIN-GEN-i
+discharge are ACCEPTED. The application change-set is the application unit's
+deliverable (REVISION-9 scope cut), adjudicated on the actual scratch-worktree diff at
+the ASVIN GATE with a post-application hostile pass — the Asvin batch's TOP item is now
+a fully verified proposal. CONSEQUENCE for (H1): the glue route's source-level question
+is ANSWERED (the source fires; the compiled walls were transcription artifacts); the
+route's revival awaits only the gated application. r33 fold + VC34 next; then TR3-S4
+REVISION 1 (its p1 0C/2G archived) and the synthesis-7 tail.
