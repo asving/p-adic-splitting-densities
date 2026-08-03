@@ -7433,3 +7433,44 @@ wraparound), ±1 plateau structure = the J-window. (4) M5 cross-harness ties
 E₃ = 20 shape). Feeds for the n = 4 prereg: master-switch δ_{n+1} fence,
 per-level eᵢ = 1 collapse fences, g_top-invariance fence, warrant-level
 mutation legs. Conjecture-grade throughout; seal 911431c byte-untouched.
+
+---
+
+## L3 CONVERGENCE JUDGMENT (post-seal, non-prereg): five decorrelated methods, ZERO SPLITS — the sealed (ITER-LAW-3) IS the measured level-3 law (no corrected candidate needed; the briefed "RED" contradicted by the artifacts on six independent reads); strategy = ε-chain gauge normalization, L6-(n)+W-MULT-(n) carrier; next sealed cycle = the n = 4 (ITER-LAW-n) probe — 2026-08-08 (wallclock 2026-08-03)
+
+Convergence-judge unit of the level-3 pattern-hunt fleet; record
+`lean/notes/openmath/L3CONVERGENCE_2026-08-08.md` (agreement matrix S1, laws
+S2, strategy reading S3, next-cycle spec S4). No new battery; adversarial
+cross-read of SEAL artifacts + M5/M1/M2/M3/M4 notes, own raw-artifact RED
+adjudication FIRST (JSON violations EMPTY, 13/13 predicted-0 families 0,
+exit-1 = m4 mutation-teeth only, cured by the all-green 19,792-sample
+supplement). AGREEMENT MATRIX (15 claims × 6 methods): NO SPLIT cells —
+CONVERGED 6/6 on harness validity, RED-adjudication, and (ITER-LAW-3) = the
+measured law (≈ 133k field-exact samples, zero violations across all
+methods); CONVERGED ≥ 4 on naive-template refutation (M2's associativity
+kill the strongest form), δ₃ = 1 deviation locus, pure-z₁ discrepancy
+factor, ε-chain gauge decomposition, correction factorization
+Δ = γ₂J + δ₃γ₃κ, per-level denominators (never e₀e₁); CONVERGED-2 on
+LIFT-DEV-3 and ring-blindness; SINGLE-SOURCE (flagged, not withheld):
+subwindow/inflation-defect identities (M4), full H²-class letter tail (M2,
+with its own M^{E₃}-happenstance caveat), J-window law (M3), multiplicity
+spectrum (M4). LAWS OF RECORD (conjecture grade): Candidate 1 =
+(ITER-LAW-3) verbatim as sealed (pinned to canonical ε-corrected lifts;
+(ITER-LAW-LIFT) open); Candidate 2 = the (ITER-LAW-n) recursion with gauge
+form c_{n+1} = z̄^δ·∂F_n and invariant class (INV-n); naive per-level
+template EXPLICITLY NOT a candidate (refuted beyond appeal). STRATEGY
+READING (the 2026-08-03 directive's deliverable): all-orders mechanism =
+per-level GAUGE NORMALIZATION of anchor lifts — induction carrier the
+ε-chain, two lemma families L6-(n) + W-MULT-(n) per level ("L7 stacked on
+L7"), exponent recursion a DERIVED corollary; per-level EXP/Bézout
+integrality bank; interfaces keyed to class + gauge (Eisenstein presentation
+K[u]/(u^E − σ)), not raw constants; lift normalization part of the
+statement. NEXT SEALED CYCLE SPEC'D (design only, run owed): ITERLAW4_PROBE
+— n = 4 recursion primary + level-3-naive alternative, E₄ ∈ {8,12,16}
+exhaustive + E₄ = 16 all-letters row + stretch, F-SUB subwindow gate FIRST,
+inflation-defect + INV-4 class + J-window legs, mutation battery with
+design-time letter-nontriviality + warrant-level detection (m4 genre
+repaired WITH teeth incl. structural top-slot leg), LIFT-DEV secondary leg
+(new prediction ε₂(γ₃)^{δ₃} at g₂ = 1); compose/proof unit may run in
+parallel. Honest grade: everything conjecture until the sealed cycle + a
+proof unit; no record edits; seal 911431c byte-untouched.
