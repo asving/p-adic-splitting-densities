@@ -636,3 +636,24 @@ specify this change-set.** SCOPE CUT, of record:
 3. Every REVISION 4-8 perimeter formulation is retained as the honest record of why
    the cut is necessary; none is normative.
 Counter stays 0/2; passes 11+12 decide THE RE-SCOPED NOTE.
+
+## REVISION 10 (orchestrator-applied, per pass 11)
+
+Pass 11 (FGMN_pass11_report.md): CRITICAL 1C/2G — the scope cut itself survived (the
+REVISION 4-8 demotions effective; the S3/S6 material correctly excluded); the critical
+was the in-scope list's own completeness. Fixes:
+1. **The acceptance list (c) is EXTENDED (pass-11 critical)**: the fixed points include
+   the JUNCFORGE/D0 SEMANTICS — `juncforge_no_e2_junction`, `juncforge_deep_wall`,
+   `juncforge_junc_bundle_false`, and `juncforge_D0_instanceFalse` RETAIN THEIR EXACT
+   COMPILED MEANINGS as theorems about the OLD clause (the new-definition route
+   byte-freezes them; this retention is a load-bearing fixed point of the proposal and
+   is INSIDE acceptance).
+2. **The impossibility claim is rescoped to what is proved (pass-11 gap 1)**: the five
+   attempted pre-application procedure classes (REVISIONS 4-8) each FAILED UNDER
+   EXECUTION; the note does not claim all conceivable procedures must fail — the
+   change-set adjudication is DELEGATED to the diff because that is the demonstrated
+   reliable path, and the post-application hostile pass is the STRONGEST AVAILABLE
+   adjudication (not a formal totality oracle).
+3. Pass-11 gap 2 = the standing bubblewrap infrastructure item; pass 12 is a Fable
+   pass WITH execution and certifies item (e) by construction.
+Counter stays 0/2; passes 12+13 decide.
