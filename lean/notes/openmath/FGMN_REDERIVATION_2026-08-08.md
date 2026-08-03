@@ -287,7 +287,7 @@ script header (predictions sealed pre-run) + the REVISION 1 ADDENDUM (the R2
 branch repair, preregistered in the header BEFORE the revision rerun);
 deterministic seed 20260816; same ROWS × CONFIGS roster and family builders as
 the sealed stage-1 harness (imported, not edited; site structure identical,
-random digits regenerated).  REVISION 1 rerun output (console saved at
+random digits regenerated).  REVISION 1 rerun output [REV3: the block below is an EDITED RENDER of the raw file `fgmn_rederivation_rerun_r1.txt` — numbers identical to the raw record; the raw file is the record] (console saved at
 `fgmn_rederivation_rerun_r1.txt`; supersedes the first-pass block, which had the
 R2 false-negative branch):
 
@@ -304,7 +304,7 @@ R2 false-negative branch):
 
     ROW-A record: Phi2=[12,4,1] fA=[28,4,1] (e,h,gam,s0,wSide,mu)=(2,3,6,0,2,1)
                   pat=[1,1] vtx_digit=1
-    ROW-A compiled-scale display: old functional at slots [0,2] = [6,12]
+    ROW-A compiled-scale display: old functional at slots [0,2] = [12,6] [REV3: render order corrected per pass-4 gap 3 — §S2 computes {2·6+0, 0+2·3} = {12,6} at slots 0,2 respectively; the UNSAT conclusion unchanged]
                   (needs a single gam; corrected = [6])
 
 Readings: R1+R3 = the rider-(i) acceptance leg — a SCALE-SENSITIVE WINDOW/SUPPORT
@@ -432,3 +432,23 @@ verbatim-unique in HC2/Defs.lean and the diff appliable). Fixes:
 4. §S8's "re-quoted" block relabeled as an EDITED RENDER of the output (numbers
    identical to the raw file; the raw file is the record) (pass-3 gap 4).
 Counter stays 0/2; passes 4+5 decide.
+
+## REVISION 3 (orchestrator-applied, per pass 4)
+
+Pass 4 (FGMN_pass4_report.md): GAPS-ONLY 0C/3G; the diagnosis, row-A record, branch
+semantics, and all rescopes survived again. Fixes:
+1. **Mirror-layer disposition SPECIFIED (pass-4 gap 1)** — under the RECOMMENDED
+   new-definition route: the historical mirrors are ALSO byte-frozen; the application
+   change-set introduces primed mirrors — `SideClauseR1'` (the verbatim clause-(i) copy
+   of `SideReads'`) with `sideReads_r1'` as its definitional tie — and restates the
+   supplier/glue route against `SideReads'` (the prior "inherits ... textually
+   unchanged" sentence is MODE-CONDITIONAL: it describes only the in-place variant).
+   The σ.w restatement sites enumerated exactly: Window.lean:177, :258, :260, :266,
+   :544 (the hwS binder) and Locality.lean:98 (comment), :121-:129
+   (`σ.w`-hypothesis cluster) — each gets a primed twin or a mode-conditional bracket
+   in the application change-set; none is edited before the Asvin gate.
+2. The §S8 block is now ACTUALLY labeled as an edited render in place (REVISION 2 had
+   described the relabel without performing it — pass-4 gap 2).
+3. The §S8 slot-order render corrected to [12,6] at slots [0,2] (pass-4 gap 3; §S2's
+   computation was and is correct; the UNSAT conclusion unchanged).
+Counter stays 0/2; passes 5+6 decide.
