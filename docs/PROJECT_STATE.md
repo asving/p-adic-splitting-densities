@@ -1306,7 +1306,16 @@ counter 0, hostile passes in flight; (ITER-LAW-LIFT) open exactly at g₀ = 1 �
 byte-unchanged, `OM/HullStability.lean`, AxChk clean — the banked-sorry count is
 ZERO); (H7) has its FIRST compiled non-vacuous decision point (037ac6f, nothing
 discharged); the `DIterJunctionSupplier′` program is PRICED with every gate
-BLOCKED-ON-APPLICATION (2a25ed9).]**
+BLOCKED-ON-APPLICATION (2a25ed9).]** **[r36 2026-08-03: ITER-LAW is now
+**ACCEPTED** — 2-clean model-diverse (PC1 NOT-CLEAN 1C/1G acc955a → PE1 CLEAN
+64ac340 → errata round 1 7566ccd → PC2 CLEAN 804b88a + PE2 CLEAN c40a1da;
+adjudicated 33373cb). SCOPE AS ACCEPTED: proved and ACCEPTED on the harness
+tower class (standard-lift; a STRICT SUPERSET of DITER_RESTATE §S2's pinned
+E₂ = e₀e₁ > 1 setting; coincides with the §S2 display on the nose restricted
+to E₂ > 1; the E₂ = 1 leg a harmless COR-3-covered extension outside the
+statement of record). RESIDUALS, ALL THREE: (ITER-LAW-LIFT) open exactly at
+g₀ = 1 ∧ δ₁ = 1; the gr(w₂) semantics wrapper rides the accepted GRB retarget
+consumer-side; orders ≥ 3 untouched. See the r36 checkpoint at the tail.]**
 
 ## UPDATE (2026-07-31 evening — THE MATH-FIRST CAMPAIGN AT THE ROOT-ASSEMBLY STAGE)
 
@@ -1861,7 +1870,14 @@ REFUTED 22/28 and bracketed at all display sites) **[r35 2026-08-08: ITER-LAW
 now PROVED AT ATTEMPT GRADE on the harness tower class (standard-lift towers,
 the class DITER_RESTATE §S2 pins) — seal ab7c31c, run 242ba1e ALL GREEN;
 hostile passes pending (counter 0); (ITER-LAW-LIFT) residual open at
-g₀ = 1 ∧ δ₁ = 1; see the r35 checkpoint]**; the
+g₀ = 1 ∧ δ₁ = 1; see the r35 checkpoint]** **[r36 2026-08-03: ACCEPTED,
+2-clean model-diverse, adjudicated 33373cb; scope as accepted = the harness
+tower class, a STRICT SUPERSET of DITER_RESTATE §S2's E₂ = e₀e₁ > 1 pin,
+coinciding with the §S2 display on the nose restricted to E₂ > 1 (the E₂ = 1
+leg a harmless COR-3-covered extension outside the statement of record);
+residuals ALL THREE: (ITER-LAW-LIFT) at g₀ = 1 ∧ δ₁ = 1, the gr(w₂) wrapper
+rides the accepted GRB retarget consumer-side, orders ≥ 3 untouched; see the
+r36 checkpoint]**; the
 `DIterJunctionSupplier` consumable spec on record (three mandatory
 features, cyclic kernels fenced); queue #11 unblocked on #9. FORGE
 CONSOLIDATION: the forge-class list now has THREE named targets —
@@ -1929,7 +1945,10 @@ refreshed: **36 sites repo-wide of record, B2D 0** (pass-6 F6),
 independently re-verified at r27 as 35 in `LeanUrat/` + 1 tracked scratch
 probe under the strict non-comment unit, leaders (V9_K1nonrec ×4,
 SlotsG2_relFamily ×4, TV_G3 ×2, G1_toyGate ×2) and the banked classifier
-sorry reproduced; (6) **wave 10 IS DISPATCHED** (pass-6 queue #2–#6
+sorry reproduced [r36 census re-sweep 2026-08-03: NOW **35 repo-wide** —
+34 in `LeanUrat/` + 1 tracked scratch probe, B2D 0, OM tree 0; the −1 is
+the r35-retired banked classifier sorry; census of record at the r36
+checkpoint / ROOT §41]; (6) **wave 10 IS DISPATCHED** (pass-6 queue #2–#6
 running concurrently; results ride r28). Pass-5 execution audit CLEAN
 (dropped-again ZERO). Roster: **NINE rows, unchanged** — charters change
 dispatch status only, never proof status. Census re-run at the declared
@@ -2487,3 +2506,67 @@ VC32 (0C/3G, cured) + VC32b CONFIRMED; VC33 (0C/2G, cured by the
 r32-ERRATUM) + VC33b (0C/1G, WITH execution) + VC33c CONFIRMED; VC34
 CONFIRMED FIRST-PASS; **VC35 (0C/2G, cured by the r34-ERRATUM) + VC35b
 CONFIRMED (= the REVISION-33 anchor)**; VC36 pending on REVISION 34.
+
+CHECKPOINT (ROOT r36 = REVISION 35, 2026-08-08 window, wallclock
+2026-08-03): the VC36 disposition + the ITER-LAW acceptance sweep + the
+census re-sweep; NO anchor move. **VC36 RAN on the REVISION-34 text
+(23282f5) and returned NOT-CONFIRMED 1C/3G** (report
+lean/notes/openmath/VC36_report.md, 3cf25ca; launch record: the v1
+charge died silently at the 1,048,576-char Codex input cap — the v2
+charge is the FROZEN-HISTORY TRIM per checklist rule 7, 839,009 bytes,
+with census transcripts 69/69). Adjudication: F1 (critical, the
+ITER-LAW E₂ > 1 scope mismatch) + F2 (gap, the F8 mixed-block
+under-test) = FOLD-LAG — the audited text honestly recorded the
+then-live PC1 critical; both cured by the errata arc + acceptance;
+F3 (the gr(w₂) residual missing from the REVISION-34 closing ITER-LAW
+summary) + F4 (depth-1 + synthetic-node qualifiers missing from the
+same close's H7 summary) = GENUINE closing-site qualifier omissions —
+cured by dated r36 errata brackets at the ROOT §40 close (full
+qualifier lists displayed). **ITER-LAW ACCEPTED** (orchestrator
+adjudication 33373cb; the 2-clean model-diverse bar met on the amended
+note 7566ccd): arc PC1 NOT-CLEAN 1C/1G (acc955a) → PE1 CLEAN (64ac340;
+F2c from-note reimplementation 89,056/0 + 4/4 mutation controls) →
+errata round 1 (7566ccd: S0 scope erratum + COR-4 mixed-block
+supplement iterlaw_cor4_mixed.py 18,396/0, sealed falsifier
+md5-untouched) → PC2 CLEAN (804b88a) + PE2 CLEAN (c40a1da; sealed
+re-run byte-exact 35,232/0). SCOPE AS ACCEPTED: proved and ACCEPTED on
+the harness tower class (standard-lift; a STRICT SUPERSET of
+DITER_RESTATE §S2's pinned E₂ = e₀e₁ > 1 setting; coincides with the
+§S2 display on the nose restricted to E₂ > 1; the E₂ = 1 leg a
+harmless COR-3-covered extension outside the statement of record).
+RESIDUALS, ALL THREE, wherever the result is stated: (ITER-LAW-LIFT)
+open exactly at g₀ = 1 ∧ δ₁ = 1; the gr(w₂) semantics wrapper rides
+the accepted GRB retarget consumer-side; orders ≥ 3 untouched.
+Display sites swept (all additive brackets): ROOT §0/§3.1 (H1)/
+§40.(i)/§40 close/§6 + NEW ROOT §41 (REVISION 35); DITER_RESTATE §S2
+(second status bracket incl. the ledger-owed class-phrasing
+correction); GRB S5.3 third bracket + S8 item-2 bracket; DITERSUP
+§S4/J3b (may now cite ACCEPTED-on-class; every gate still
+BLOCKED-ON-APPLICATION, the Asvin P0 gate stands); this file. THE
+SORRY CENSUS OF RECORD RE-SWEPT (the r35-6 owed re-sweep): **35
+repo-wide — 34 code-level sorry tokens in LeanUrat/ (strict
+non-comment unit) + 1 in the tracked scratch probe
+scratch_S7_escalation.lean; B2D 0; OM tree 0**; delta vs the r27
+display (36): exactly −1 = the r35-retired banked classifier sorry
+(npVertices_stable_of_hull_preserved, proved at 15372d1); breakdown:
+MovesV 10 · MovesU 7 · Scaffold 6 · HC1 5 (V9_K1nonrec ×4 +
+CL04_addrDichotomy) · MovesT 4 · HC2 2 — all Moves*/Scaffold/HC*
+E-phase opens, other units' tracked work, none banked, none on the
+capstone path. Roster: NINE rows, unchanged; ROOT census 70 rows / 71
+patterns (VC36b new) re-grepped to fixed point, every delta reasoned
+(ROOT §41). Doc-only unit: NO Lean file touched; no sealed record
+touched; ITERLAW_2026-08-08.md not touched (its acceptance brackets
+landed at 33373cb).
+FRONTIER NOW: **VC36b** — the NARROW confirming pass on the r36
+remedies ONLY (charge at ROOT §41; the four findings' sites + the
+acceptance-sweep sites + census spot rows; full end-to-end NOT
+re-owed); then SYNTHESIS PASS 8 (still owed at the wave-16 close).
+Acceptance stays anchored on REVISION 33/VC35+VC35b until VC36b lands.
+Verification: VC1–VC22 done; VC25 NOT-CONFIRMED (disposed); VC26+VC26b,
+VC27+VC27b CONFIRMED; VC28, VC29 CONFIRMED FIRST-PASS; VC30 (1C, cured)
++ VC30b CONFIRMED; VC31 (0C/2G, cured) + VC31b + VC31c CONFIRMED;
+VC32 (0C/3G, cured) + VC32b CONFIRMED; VC33 (0C/2G, cured) + VC33b +
+VC33c CONFIRMED; VC34 CONFIRMED FIRST-PASS; VC35 (0C/2G, cured) +
+VC35b CONFIRMED (= the STANDING anchor); **VC36 NOT-CONFIRMED 1C/3G,
+all four findings remedied at r36 (this checkpoint); VC36b pending on
+the r36 remedies.**

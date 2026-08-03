@@ -6661,3 +6661,71 @@ correction already on this ledger; GRB S5.3/S8; PROJECT_STATE; ROOT §40.(i)
 counter + class-qualifier phrasing; DITERSUP J3b may cite ACCEPTED-on-class).
 This is the FOURTH accepted member of the wave-15/16 lineage families and closes
 synthesis-7 queue #6 end-to-end.
+
+---
+
+## ROOT r36 EXECUTED (REVISION 35) — VC36 NOT-CONFIRMED 1C/3G disposed; the ITER-LAW acceptance sweep; the sorry census re-swept 36 → 35; VC36b owed; NO anchor move
+
+REVISION 35 applied (ROOT §41; unit ROOT r36). (1) **VC36 DISPOSED**: ran on
+the pinned REVISION-34 text (23282f5), verdict NOT-CONFIRMED 1 critical /
+3 gaps (report `lean/notes/openmath/VC36_report.md` @ 3cf25ca, orchestrator
+adjudication at its head; launch record disclosed — the v1 charge, 1,210,905
+bytes, died silently at the 1,048,576-char Codex input cap; the v2 charge =
+the FROZEN-HISTORY TRIM per checklist rule 7, 839,009 bytes, census
+transcripts 69/69). F1 (critical, the ITER-LAW E₂ > 1 scope mismatch) + F2
+(gap, the F8 mixed-block under-test) = FOLD-LAG, cured post-pin by the
+errata arc + acceptance — folded at the §40.(i) ACCEPTANCE-UPGRADE bracket
+(arc + counter 2/2 + supplement actuals + scope-as-accepted wording). F3
+(the gr(w₂) residual missing from the REVISION-34 closing ITER-LAW summary)
++ F4 (depth-1 + synthetic-node qualifiers missing from the same close's H7
+summary) = GENUINE closing-site qualifier omissions (the recurring
+qualifier-propagation defect class) — cured by dated r36 ERRATUM brackets at
+the §40 close, each carrying the FULL qualifier list (F3: all three
+residuals + ACCEPTED + corrected class scope, edited once; F4: depth-1 with
+the HK23/HK25 transplant the named residual + synthetic-but-lawful, S2
+center-distinction genre + NOTHING discharges (H7)). (2) **THE ITER-LAW
+ACCEPTANCE SWEEP** (the r36-owed display upgrades per the acceptance
+adjudication 33373cb): every attempt-grade display upgraded to
+ACCEPTED-on-class with the corrected scope wording — SCOPE AS ACCEPTED:
+proved and ACCEPTED on the harness tower class (standard-lift; a STRICT
+SUPERSET of DITER_RESTATE §S2's pinned E₂ = e₀e₁ > 1 setting; coincides
+with the §S2 display on the nose restricted to E₂ > 1; the E₂ = 1 leg a
+harmless COR-3-covered extension outside the statement of record);
+RESIDUALS ALL THREE at every site: (ITER-LAW-LIFT) open exactly at
+g₀ = 1 ∧ δ₁ = 1; the gr(w₂) semantics wrapper rides the accepted GRB
+retarget consumer-side; orders ≥ 3 untouched. Sites (ALL additive
+brackets): ROOT §0 standing paragraph (two r36 brackets) / §3.1 (H1) row /
+§40.(i) / §40 close (via the F3 erratum) / §6 (r36 bracket); note-side:
+DITER_RESTATE §S2 SECOND status bracket — ACCEPTED + the ledger-owed
+one-line class-phrasing correction EXECUTED (the r35 bracket's "exactly the
+class this section's setting pins" clause WITHDRAWN, the same defect the
+PC1 critical caught); GRB S5.3 THIRD bracket + S8 item-2 r36 bracket;
+DITERSUP §S4/J3b SECOND cross-reference bracket (J3b may now cite ITER-LAW
+ACCEPTED-on-class, standard-lift only; clause (b) of the first bracket
+superseded; BLOCKED-ON-APPLICATION + BLOCKED-ON-CARRIER-TIE unchanged, the
+Asvin P0 gate stands); PROJECT_STATE display brackets + the r36 checkpoint.
+The proof note `ITERLAW_2026-08-08.md` NOT touched (its acceptance brackets
+landed at 33373cb). (3) **THE SORRY-CENSUS RE-SWEEP** (the r35-6 owed
+re-sweep, EXECUTED): the census of record moves 36 → **35 repo-wide** — 34
+code-level `sorry` tokens in `LeanUrat/` (strict non-comment unit,
+block-comment-aware scan) + 1 in the tracked scratch probe
+`lean/scratch_S7_escalation.lean`; B2D 0; OM tree 0; the −1 is EXACTLY the
+r35-retired banked classifier sorry (`npVertices_stable_of_hull_preserved`,
+15372d1); breakdown MovesV 10 · MovesU 7 · Scaffold 6 · HC1 5 · MovesT 4 ·
+HC2 2 (all Moves*/Scaffold/HC* E-phase opens — other units' tracked work);
+dated brackets at the §6 r27 display + PROJECT_STATE's r27-checkpoint line;
+full display at ROOT §41.(iii). (4) Housekeeping: NO anchor move — the
+acceptance citation STAYS at REVISION 33/VC35+VC35b; roster NINE re-derived;
+ROOT census re-grepped to fixed point at the declared occurrence unit — 70
+rows / 71 patterns (`VC36b` NEW), every delta reasoned at §41; SYNTHESIS
+PASS 8 still OWED at the wave-16 close; the Asvin batch UNCHANGED at FOUR
+items. Doc-only unit (ROOT + PROJECT_STATE + DITER_RESTATE + GRB + DITERSUP
++ this ledger); NO Lean file touched; no sealed falsifier or byte-frozen
+record touched. NEXT: **VC36b — the NARROW confirming pass on THIS
+revision's remedies ONLY** (charge at ROOT §41: the four findings' sites
+re-checked against the r36 wording + the acceptance-sweep sites
+verbatim-checked + census spot rows; full end-to-end NOT re-owed — VC36's
+confirming scope; standing disclosures: execution-environment,
+division-of-labor, dating convention, frozen-history-trim note;
+verified-complete VERBATIM slices of every edited site required) → on
+CONFIRMED, the anchor re-anchors per cadence → SYNTHESIS PASS 8.

@@ -364,6 +364,26 @@ lifts, open exactly at g₀ = 1 ∧ δ₁ = 1) is displayed wherever a non-stand
 lift could enter. The BLOCKED-ON-APPLICATION and BLOCKED-ON-CARRIER-TIE legs
 are UNCHANGED — the gate still does not fire.]**
 
+**[SECOND CROSS-REFERENCE BRACKET (2026-08-03; applied at ROOT r36;
+ADDITIVE): (ITER-LAW) is now **ACCEPTED** — the hostile-pass arc closed at
+the 2-clean model-diverse bar (PC1 NOT-CLEAN 1C/1G acc955a → PE1 CLEAN
+64ac340 → errata round 1 7566ccd: S0 scope erratum + COR-4 mixed-block
+supplement 18,396/0, sealed falsifier md5-untouched → PC2 CLEAN 804b88a +
+PE2 CLEAN c40a1da; adjudicated 33373cb). J3b's CONDITIONAL-ON-ITER-LAW leg
+MAY now cite **ITER-LAW ACCEPTED-on-class** — superseding clause (b) of the
+bracket above (no longer attempt grade / counter 0). Clauses (a) and (c)
+STAND: (a) the instance must be standard-lift (all compiled ones are), and
+(c) the (ITER-LAW-LIFT) residual (open exactly at g₀ = 1 ∧ δ₁ = 1) is
+displayed wherever a non-standard lift could enter; SCOPE AS ACCEPTED: the
+harness tower class (standard-lift; a STRICT SUPERSET of DITER_RESTATE
+§S2's pinned E₂ = e₀e₁ > 1 setting; coincides with the §S2 display on the
+nose restricted to E₂ > 1; the E₂ = 1 leg a harmless COR-3-covered
+extension outside the statement of record); the third residual (the gr(w₂)
+semantics wrapper rides the accepted GRB retarget consumer-side) is exactly
+this note's §S3 "missing tie" — still MISSING. The BLOCKED-ON-APPLICATION
+and BLOCKED-ON-CARRIER-TIE legs are UNCHANGED; the gate still does not
+fire; the Asvin application gate (P0) stands.]**
+
 ### GATES JS1–JS3 — the three DITER §S3 sanity gates (any discharge instance must reproduce them)
 
 ```lean

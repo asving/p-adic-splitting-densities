@@ -91,6 +91,33 @@ consumable spec is unchanged in content; its conditionality display may cite
 ITER-LAW as proved-on-class instead of displayed hypothesis PROVIDED the
 instance is standard-lift (all compiled ones are).]**
 
+**[SECOND STATUS BRACKET (2026-08-03; applied at ROOT r36 per the acceptance
+adjudication 33373cb; ADDITIVE — the bracket above stands as the r35
+recording, with ONE clause of it corrected here): (ITER-LAW) is now
+**ACCEPTED** — the hostile-pass arc closed at the 2-clean model-diverse bar
+on the amended proof note (post-errata 7566ccd): PC1 (Codex content)
+NOT-CLEAN 1C/1G (acc955a) → PE1 (Fable execution/F2c) CLEAN 0C/0G (64ac340 —
+F2c from-note reimplementation 89,056 samples / 0 violations, 4/4 mutation
+controls) → errata round 1 (7566ccd: the S0 scope ERRATUM + the COR-4
+mixed-block supplement `iterlaw_cor4_mixed.py` 18,396/0; sealed falsifier
+md5-untouched) → PC2 CLEAN 0C/0G (804b88a) + PE2 CLEAN 0C/0G (c40a1da).
+CLASS-PHRASING CORRECTION (the errata-ledger owed line): the bracket above
+describes the harness tower class as "exactly the class this section's
+setting pins" — that clause is WITHDRAWN; it repeats the same defect the PC1
+critical caught in the note (this section's setting carries E₂ := e₀e₁ > 1;
+the note's harness class takes e₀, e₁ ≥ 1 with no E₂ > 1 constraint). SCOPE
+AS ACCEPTED: proved and ACCEPTED on the harness tower class (standard-lift;
+a STRICT SUPERSET of this section's pinned E₂ = e₀e₁ > 1 setting; coincides
+with the (ITER-LAW) display above on the nose restricted to E₂ > 1; the
+E₂ = 1 leg a harmless COR-3-covered extension outside the statement of
+record). RESIDUALS, ALL THREE, unchanged: (ITER-LAW-LIFT) open exactly at
+g₀ = 1 ∧ δ₁ = 1; the gr(w₂) semantics wrapper rides the accepted GRB
+retarget consumer-side; orders ≥ 3 stay OPEN as displayed above. Consumers
+may now cite "ITER-LAW ACCEPTED on the harness tower class" (never a
+general-lift or orders-≥ 3 scope); §S3's conditionality display may cite
+accepted-on-class PROVIDED the instance is standard-lift (all compiled ones
+are).]**
+
 **The retired form (fenced).**  "𝒟′ = F′[u′]/(u′^{e_b′} − ζ′) with a single ζ′" at
 the canonical alphabet: REFUTED per S1.  It survives ONLY as: (a) the e_b = 1 /
 E_i = 1 stratum (D-REAL's proved scope — MOVES "ζ′ = z̄ when e_b = 1" stands there);
