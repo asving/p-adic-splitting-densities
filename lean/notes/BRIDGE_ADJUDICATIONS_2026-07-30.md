@@ -7670,3 +7670,19 @@ EVERY mention of an accepted result carries the PASTED package — fold and
 compose units are audited on every mention, not just the primary display.
 VC37b = micro confirming pass on the four brackets; the anchor citation stays
 at REVISION 35 + r36b until the VC37 arc closes.
+
+## ACCEPTANCE RE-ANCHORED at REVISION 36 + r37b / VC37+VC37b — 2026-08-03 (the EIGHTEENTH re-anchoring)
+
+The VC37 arc closes: VC37 (end-to-end on REVISION 36 @3980471, frozen-history-
+trim charge, census 92/92; NOT-CONFIRMED 0C/4G — all four gaps the bare-
+acceptance-citation class; report 31bad80) → four r37b ERRATUM brackets
+(orchestrator-direct, flawed text preserved) → VC37b micro pass CONFIRMED 0C/0G
+(report this commit). The certified perimeter now includes REVISION 36's fold:
+the 2026-08-03 delegation + the four decisions closed (FGMN arc end-to-end;
+decisions 2-4 executed), the ITER-LAW-r arc + zero-split convergence + the
+ε-chain gauge strategy of record, the wave-18 remainder (lift-corner 104,404/0,
+GRW2 design, H7 depth-2 refuted-at-box, L6e discharged, DIterCarrier), the
+storm record, sorry census 34, pattern census 92. Checklist rule 8 standing
+(the package at EVERY mention). Post-pin arcs continue on their own bars: the
+ITERLAW3 acceptance arc (round-1 convergent findings, errata in flight) and the
+rung-3 verdict (13b026b) fold at r38.
