@@ -48,9 +48,9 @@ child node continuing the joint site's chain `fHj = [fNodeJ]`:
   (`canonpres_fHjC0/1`), and `InBox 2`.
 * `transition_leg_data_fHjC0/1` — every NON-(S-a) conjunct of the coherence
   transition leg holds at the instance (RG-2 e₀ = 1, window 0+1 ≤ 1 = μ₀, width chain
-  D₁ = 1 = childWidth₀, strict steepening); `sa_leg_fHjC0_false` pins the failure to
-  EXACTLY the (S-a) existential.  `coherent_fHjC0_false`, `fHj_snoc_never_coherent`
-  are the instance negations.
+  D₁ = 1 = childWidth₀, strict steepening); `sa_leg_fHjC0_false`/`sa_leg_fHjC1_false`
+  pin the failure to EXACTLY the (S-a) existential.  `coherent_fHjC0_false`/
+  `coherent_fHjC1_false`, `fHj_snoc_never_coherent` are the instance negations.
 
 # Honesty displays
 
@@ -411,5 +411,291 @@ theorem pernode_fHjC1 :
           + (((0 + 1 : ℕ)) : ℚ) * ((5 : ℕ) : ℚ)
       rw [fHjC1_str1]
       norm_num
+
+/-! ### §K — the hull keying of the two children (the sides-2 site's split, ridden).
+The split's hull (`forgeSplitJ`: hull slopes 1 < 2 on sides 0/1) keys the children's
+recorded slopes ABOVE the joint node's slope 3: the child of side j reads at slope
+slope(fNodeJ) + hullSlope j (4 = 3 + 1, 5 = 3 + 2); steepening is strict parent →
+child on both sides, and the children are hull-ordered (side 0 < side 1). -/
+
+/-- The children's slopes are KEYED to the split's hull sides: 4 = 3 + 1, 5 = 3 + 2.
+(Indices supplied at `Fin 2` — defeq to `Fin forgeSplitJ.k`, which has no OfNat
+numerals since `k` is not a syntactic literal; the `forge_jcmulti` idiom.) -/
+theorem child_slope_keyed :
+    fChildS0.line.slope = fNodeJ.line.slope + forgeSplitJ.hullSlope (0 : Fin 2) ∧
+    fChildS1.line.slope = fNodeJ.line.slope + forgeSplitJ.hullSlope (1 : Fin 2) := by
+  constructor
+  · show (4 : ℚ) = 3 + forgeSplitJ.hullSlope (0 : Fin 2)
+    rw [show forgeSplitJ.hullSlope (0 : Fin 2) = 1 from rfl]
+    norm_num
+  · show (5 : ℚ) = 3 + forgeSplitJ.hullSlope (1 : Fin 2)
+    rw [show forgeSplitJ.hullSlope (1 : Fin 2) = 2 from rfl]
+    norm_num
+
+/-- Strict steepening: parent below both children, children hull-ordered. -/
+theorem child_steepening :
+    fNodeJ.line.slope < fChildS0.line.slope ∧
+    fNodeJ.line.slope < fChildS1.line.slope ∧
+    fChildS0.line.slope < fChildS1.line.slope :=
+  ⟨by show (3 : ℚ) < 4; norm_num, by show (3 : ℚ) < 5; norm_num,
+    by show (4 : ℚ) < 5; norm_num⟩
+
+/-! ### §V — the transported vertex at the joint node, and FULL realizability of
+both candidate histories.  Both reads are ADJACENT (s0 + wSide = 1 = μ₀), so (NA) is
+vacuous, (HV) demands pattern-lead = vtx(fNodeJ), (SAE) demands strictness at the
+sole interior span slot and vertex equality at μ₀. -/
+
+/-- **The transported vertex value** `vtx(fNodeJ) = z̄^{a−μ·m̂}·((Ranch/ψ^μ) mod ψ)(z̄)
+= 1`: `m̂ = −t·h·g = 0` (t = 0) and the unit factor collapses by the trivial unit
+group (`zmod2_unit_val`); `Ranch = 1 + X = (X − C 1)¹ = ψ^μ` in char 2
+(`toyK_leaf_ord`), so the residual factor is the constant 1. -/
+theorem vtx_fNodeJ : fNodeJ.vtx = 1 := by
+  have hpoly : fNodeJ.vtxPoly = 1 := by
+    -- (repair note, recovery unit: a `show` at `↥toyStage.K` types leaves a
+    -- MIXED-INSTANCE target — show's unification fills the pow instance from the
+    -- `fNodeJ.σ.K` side of the original target instead of synthesizing it, and
+    -- `rw [pow_one]` then cannot match ("target not type-correct under instances
+    -- transparency").  The working pattern: elaborate the equality FRESH as a
+    -- standalone `have` (homogeneous instances), then `exact` across the defeq.)
+    have key : ((1 + X : Polynomial ↥toyStage.K) /ₘ
+        ((X - Polynomial.C 1 : Polynomial ↥toyStage.K) ^ 1)) %ₘ
+        (X - Polynomial.C 1 : Polynomial ↥toyStage.K) = 1 := by
+      rw [pow_one]
+      have hdm := Polynomial.div_modByMonic_unique
+        (f := (1 + X : Polynomial ↥toyStage.K)) (g := X - Polynomial.C 1) 1 0
+        (monic_X_sub_C (1 : ↥toyStage.K))
+        ⟨by rw [toyK_X_sub_C]; ring, by
+          rw [Polynomial.degree_zero, Polynomial.degree_X_sub_C]
+          exact WithBot.bot_lt_coe 1⟩
+      rw [hdm.1]
+      exact (Polynomial.modByMonic_eq_self_iff (monic_X_sub_C (1 : ↥toyStage.K))).mpr
+        (by rw [Polynomial.degree_one, Polynomial.degree_X_sub_C]
+            exact WithBot.coe_lt_coe.mpr Nat.zero_lt_one)
+    exact key
+  unfold Node.vtx
+  rw [zmod2_unit_val, hpoly, Polynomial.eval₂_one, one_mul]
+
+/-- Admissibility of the side-0 child against the standing joint node: (NA) vacuous
+(adjacent), (HV) exact (pattern lead 1 = vtx), (SAE) strict 6 < 7 at base index 0,
+vertex equality 3 = 3 at μ₀ (both lines pass through the standing vertex). -/
+theorem transAdm_fChildS0 : TransitionAdmissible fNodeJ fChildS0 := by
+  refine ⟨?_, ?_, ?_, ?_⟩
+  · intro h
+    exact absurd (show (1 : ℕ) < 1 from h) (lt_irrefl 1)
+  · intro _
+    rw [vtx_fNodeJ]
+    show ((1 : ↥toyStage.K) : ZMod 2) = 1
+    simp
+  · intro j _ hj1 hjμ
+    have hjμ' : j < 1 := hjμ
+    have hj0 : j = 0 := by omega
+    subst hj0
+    simp only [show fNodeJ.line = (⟨6, 3⟩ : Line) from rfl,
+      show fChildS0.line = (⟨7, 4⟩ : Line) from rfl]
+    norm_num [Line.at]
+  · intro _
+    simp only [show fNodeJ.line = (⟨6, 3⟩ : Line) from rfl,
+      show fChildS0.line = (⟨7, 4⟩ : Line) from rfl,
+      show fNodeJ.μ * fNodeJ.childWidth = 1 from rfl]
+    norm_num [Line.at]
+
+/-- Admissibility of the side-1 child: as `transAdm_fChildS0` with (SAE) strict
+6 < 8 and vertex equality 8 − 5 = 3. -/
+theorem transAdm_fChildS1 : TransitionAdmissible fNodeJ fChildS1 := by
+  refine ⟨?_, ?_, ?_, ?_⟩
+  · intro h
+    exact absurd (show (1 : ℕ) < 1 from h) (lt_irrefl 1)
+  · intro _
+    rw [vtx_fNodeJ]
+    show ((1 : ↥toyStage.K) : ZMod 2) = 1
+    simp
+  · intro j _ hj1 hjμ
+    have hjμ' : j < 1 := hjμ
+    have hj0 : j = 0 := by omega
+    subst hj0
+    simp only [show fNodeJ.line = (⟨6, 3⟩ : Line) from rfl,
+      show fChildS1.line = (⟨8, 5⟩ : Line) from rfl]
+    norm_num [Line.at]
+  · intro _
+    simp only [show fNodeJ.line = (⟨6, 3⟩ : Line) from rfl,
+      show fChildS1.line = (⟨8, 5⟩ : Line) from rfl,
+      show fNodeJ.μ * fNodeJ.childWidth = 1 from rfl]
+    norm_num [Line.at]
+
+/-- FULL realizability of the side-0 candidate history (the (NA)+(HV)+(SAE) class
+at its unique appended read). -/
+theorem realizable_fHjC0 : Realizable fHjC0 := by
+  intro i hi
+  have hi2 : i + 1 < 2 := hi
+  have h0 : i = 0 := by omega
+  subst h0
+  exact transAdm_fChildS0
+
+/-- FULL realizability of the side-1 candidate history. -/
+theorem realizable_fHjC1 : Realizable fHjC1 := by
+  intro i hi
+  have hi2 : i + 1 < 2 := hi
+  have h0 : i = 0 := by omega
+  subst h0
+  exact transAdm_fChildS1
+
+/-! ### §P — the canonical presentation and the degree-2 box. -/
+
+lemma canonRoot_fChildS0 :
+    canonRoot fChildS0 = ((fChildS0.zbar : (ZMod 2)ˣ) : ZMod 2) := by
+  have e1 : canonRoot fChildS0 = canonRoot toyHead := by unfold canonRoot ψImage; rfl
+  rw [e1]; exact canonRoot_toyHead
+
+lemma canonRoot_fChildS1 :
+    canonRoot fChildS1 = ((fChildS1.zbar : (ZMod 2)ˣ) : ZMod 2) := by
+  have e1 : canonRoot fChildS1 = canonRoot toyHead := by unfold canonRoot ψImage; rfl
+  rw [e1]; exact canonRoot_toyHead
+
+/-- Canonical presentation of the side-0 candidate: `polTriv` lifts (both lifts ARE
+X) + canonical residue roots at both reads. -/
+theorem canonpres_fHjC0 : polTriv.IsCanonPres fHjC0 := by
+  refine ⟨?_, ?_⟩
+  · intro r hr
+    have hr2 : r < 2 := hr
+    interval_cases r
+    · exact rfl
+    · exact rfl
+  · intro r hr
+    have hr2 : r < 2 := hr
+    interval_cases r
+    · exact canonRoot_fNodeJ.symm
+    · exact canonRoot_fChildS0.symm
+
+/-- Canonical presentation of the side-1 candidate. -/
+theorem canonpres_fHjC1 : polTriv.IsCanonPres fHjC1 := by
+  refine ⟨?_, ?_⟩
+  · intro r hr
+    have hr2 : r < 2 := hr
+    interval_cases r
+    · exact rfl
+    · exact rfl
+  · intro r hr
+    have hr2 : r < 2 := hr
+    interval_cases r
+    · exact canonRoot_fNodeJ.symm
+    · exact canonRoot_fChildS1.symm
+
+/-- The root read fits the degree-2 box: s₀ + wSide = 1 ≤ 2. -/
+theorem inBox_fHjC0 : InBox 2 fHjC0 := fun _ => by
+  show (0 : ℕ) + 1 ≤ 2
+  norm_num
+
+theorem inBox_fHjC1 : InBox 2 fHjC1 := fun _ => by
+  show (0 : ℕ) + 1 ≤ 2
+  norm_num
+
+/-! ### §X — the transition leg at the instance: every NON-(S-a) conjunct HOLDS,
+and the (S-a) existential is pinned as EXACTLY the failing clause.  The statements
+are at the node literals `fNodeJ`/`fChildS0`/`fChildS1`, definitionally equal to the
+`HistoryCoherent` transition-leg conjuncts of `fHjC0`/`fHjC1` at i = 0
+(`fHjC0.nodes[0] ≡ fNodeJ`, `fHjC0.nodes[1] ≡ fChildS0`, strFrame ≡ 1). -/
+
+/-- Every NON-(S-a) conjunct of the coherence transition leg at `fHjC0`: the
+recentering leg vacuous (root species), RG-2 `e₀ = 1`, both Bézout ties at the
+child's stage (`toyStage.e = 1`, s/t = 1/0 = the child's recorded pair), window
+containment 0 + 1 ≤ 1 = μ₀, width chain D₁ = 1 = childWidth₀, strict steepening
+3 < 4. -/
+theorem transition_leg_data_fHjC0 :
+    (fNodeJ.species = ReadSpecies.recentering →
+      IsRecenteringCore fNodeJ.σ fChildS0.σ fNodeJ.center fNodeJ.lift) ∧
+    fNodeJ.e = 1 ∧
+    (fChildS0.σ.e = 1 → fChildS0.σ.s = fChildS0.s) ∧
+    (fChildS0.σ.e = 1 → fChildS0.σ.t = fChildS0.t) ∧
+    fChildS0.s0 + fChildS0.wSide ≤ fNodeJ.μ ∧
+    fChildS0.Dwidth = fNodeJ.childWidth ∧
+    fNodeJ.line.slope < fChildS0.line.slope := by
+  refine ⟨fun h => ReadSpecies.noConfusion h, rfl, fun _ => rfl, fun _ => rfl,
+    le_refl 1, rfl, ?_⟩
+  show (3 : ℚ) < 4
+  norm_num
+
+/-- Every NON-(S-a) conjunct at `fHjC1` (steepening 3 < 5). -/
+theorem transition_leg_data_fHjC1 :
+    (fNodeJ.species = ReadSpecies.recentering →
+      IsRecenteringCore fNodeJ.σ fChildS1.σ fNodeJ.center fNodeJ.lift) ∧
+    fNodeJ.e = 1 ∧
+    (fChildS1.σ.e = 1 → fChildS1.σ.s = fChildS1.s) ∧
+    (fChildS1.σ.e = 1 → fChildS1.σ.t = fChildS1.t) ∧
+    fChildS1.s0 + fChildS1.wSide ≤ fNodeJ.μ ∧
+    fChildS1.Dwidth = fNodeJ.childWidth ∧
+    fNodeJ.line.slope < fChildS1.line.slope := by
+  refine ⟨fun h => ReadSpecies.noConfusion h, rfl, fun _ => rfl, fun _ => rfl,
+    le_refl 1, rfl, ?_⟩
+  show (3 : ℚ) < 5
+  norm_num
+
+/-- THE PINNED FAILURE at `fHjC0`: the (S-a) existential — and ONLY it — is false
+(`sa_leg_false` at the instance: g = 1 forces the lift to keep the key degree,
+`child_reps` + `hreps` force it to grow). -/
+theorem sa_leg_fHjC0_false :
+    ¬ ∃ σV : Stage 2 (ZMod 2),
+        RegradeOf fNodeJ.σ fNodeJ.e fNodeJ.h σV ∧
+        IsNodeLift fNodeJ fChildS0.σ.Φ ∧
+        TransitionCoreL σV fChildS0.σ fChildS0.σ.Φ fChildS0.e fChildS0.h fNodeJ.zbar :=
+  fun ⟨σV, hreg, hlift, htcl⟩ => sa_leg_false fNodeJ fChildS0 rfl σV hreg hlift htcl
+
+/-- THE PINNED FAILURE at `fHjC1`. -/
+theorem sa_leg_fHjC1_false :
+    ¬ ∃ σV : Stage 2 (ZMod 2),
+        RegradeOf fNodeJ.σ fNodeJ.e fNodeJ.h σV ∧
+        IsNodeLift fNodeJ fChildS1.σ.Φ ∧
+        TransitionCoreL σV fChildS1.σ fChildS1.σ.Φ fChildS1.e fChildS1.h fNodeJ.zbar :=
+  fun ⟨σV, hreg, hlift, htcl⟩ => sa_leg_false fNodeJ fChildS1 rfl σV hreg hlift htcl
+
+/-- Instance negation: the side-0 candidate is NOT coherent (the general depth-2
+wall, instantiated). -/
+theorem coherent_fHjC0_false : ¬ HistoryCoherent fHjC0 :=
+  twoNode_coherent_false fHjC0 (by rw [fHjC0_len]; norm_num)
+
+/-- Instance negation: the side-1 candidate is NOT coherent. -/
+theorem coherent_fHjC1_false : ¬ HistoryCoherent fHjC1 :=
+  twoNode_coherent_false fHjC1 (by rw [fHjC1_len]; norm_num)
+
+/-- NO continuation of the joint site's chain is coherent — any snoc extension of
+`fHj` whatsoever, not just the two lawful children. -/
+theorem fHj_snoc_never_coherent (ν : Node 2 (ZMod 2))
+    (hν : ν.species ≠ ReadSpecies.root) : ¬ HistoryCoherent (fHj.snoc ν hν) :=
+  twoNode_coherent_false _ (by
+    have h : (fHj.snoc ν hν).nodes.length = 2 := rfl
+    rw [h]
+    norm_num)
+
+/-! ### §E — census (in-file `#print axioms`; expected: Lean core only —
+`propext`, `Classical.choice`, `Quot.sound`; ZERO `sorryAx`). -/
+
+#print axioms node_g_eq_one
+#print axioms sa_leg_false
+#print axioms twoNode_coherent_false
+#print axioms no_depth2_member
+#print axioms fChildS0
+#print axioms fChildS1
+#print axioms fChildS0_ne_fChildS1
+#print axioms fHjC0
+#print axioms fHjC1
+#print axioms pernode_fHjC0
+#print axioms pernode_fHjC1
+#print axioms child_slope_keyed
+#print axioms child_steepening
+#print axioms vtx_fNodeJ
+#print axioms transAdm_fChildS0
+#print axioms transAdm_fChildS1
+#print axioms realizable_fHjC0
+#print axioms realizable_fHjC1
+#print axioms canonpres_fHjC0
+#print axioms canonpres_fHjC1
+#print axioms inBox_fHjC0
+#print axioms inBox_fHjC1
+#print axioms transition_leg_data_fHjC0
+#print axioms transition_leg_data_fHjC1
+#print axioms sa_leg_fHjC0_false
+#print axioms sa_leg_fHjC1_false
+#print axioms coherent_fHjC0_false
+#print axioms coherent_fHjC1_false
+#print axioms fHj_snoc_never_coherent
 
 end LeanUrat.Scaffold.HDischarge.H7

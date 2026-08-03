@@ -7199,3 +7199,41 @@ exactly on the g₁ = 1 middle-cascade stratum (g₁ ≥ 2 invariant on all prob
 pairs) — (LIFT-DEV-3), the (ITER-LAW-LIFT) residual made measurable at level 3;
 feeds the wave-19 compose charter. Seal 911431c byte-untouched; no proof
 claims; orders ≥ 4 untouched.
+
+---
+
+## H7 DEPTH-2 TRANSPLANT: REFUTED AT THE BOX (wave-18 U3, recovery unit) — the HK23/HK25 mechanism does not transplant to (2, ZMod 2); the compiled wall + the narrowed true layer landed Lean-core — 2026-08-03
+
+`Scaffold/HDischarge/H7/H7ForgeDepth2.lean` (checkpointed unverified at d0e2b74,
+completed idempotently: the 415 checkpointed lines audited PRESENT-AND-SOUND —
+§O obstruction chain, §C children, §H2 histories, §PN per-node layer all compiled
+clean on recompile; the header-promised §K/§V/§P/§X + census were MISSING and are
+landed additively; zero checkpointed bytes changed except the header's §X
+paragraph naming the added symmetric C1 negations). **THE HEADLINE (charter's
+FALSE-leg clause, honest obstruction, no statement weakened):** `no_depth2_member`
+— NO `TreeModel` over (2, ZMod 2), at ANY box parameters, realizes ANY 2-node
+chain. Chain: `node_g_eq_one` (prime-field ambient ⇒ g = 1 at every node: the
+only unit is 1, an irreducible ψ with a root is linear) → `sa_leg_false` (the
+(S-a) leg unsatisfiable at EVERY parent: RG-2 fence e = 1 + g = 1 keep the lifted
+key degree, `child_reps` + `hreps` demand strict growth) → `twoNode_coherent_false`
+(every coherent history has length 1). HK23/HK25's positive gates live over F4
+exactly because ψ₂ has its root IN F4 (g = 2); H7FORGE §6 residual 1 converts
+from "open transplant" to "REFUTED at (2, ZMod 2); F4 relocation required" (a NEW
+unit, out of additive scope). **THE NARROWED TRUE LAYER (everything short of the
+refuted leg):** per hull side of `forgeSplitJ`, a lawful recentering child
+(`fChildS0`/`fChildS1`, HK25 ν₁rec genre, slope-keyed 4 = 3+1 / 5 = 3+2 by
+`child_slope_keyed`); the snoc histories `fHjC0`/`fHjC1` carry the FULL depth-1
+law layer — `pernode_*` (three coherence families), `realizable_*` via
+`transAdm_*` against `vtx_fNodeJ : fNodeJ.vtx = 1` ((NA) vacuous, (HV) exact,
+(SAE) strict 6 < 7/8 + vertex equality 3 = 3), `canonpres_*`, `InBox 2`; §X pins
+the failure to EXACTLY the (S-a) existential (`transition_leg_data_*`: every
+non-(S-a) conjunct TRUE; `sa_leg_*_false`; `coherent_*_false`;
+`fHj_snoc_never_coherent` — no snoc extension whatsoever). GATES: `lake env lean`
+exit 0, zero warnings; in-file census 29/29 Lean-core, ZERO sorryAx. **(H7) STAYS
+[M]** — nothing discharged; H7-W3a unchanged; the depth-2 analogues of the three
+non-diagonality certificates are NOT stated (their site class is proven EMPTY at
+this box — obstructed, not dodged). `H7Forge.lean` consumed read-only. Repairs
+(2, proof-level, recorded in file + note): Fin-index OfNat dodge via `Fin 2`
+literals; the have-then-exact pattern for the cross-defeq vtxPoly goal (a `show`
+at clean types leaves a mixed-instance target — twice reproduced). Full record
+`lean/notes/openmath/H7DEPTH2_2026-08-08.md`.
