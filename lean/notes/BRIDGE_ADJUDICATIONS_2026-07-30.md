@@ -7922,3 +7922,62 @@ r38 fold (ITERLAWN S7, L3CONVERGENCE, PROJECT_STATE, ROOT). The rung ledger:
 n = 1 ACCEPTED [IL] · n = 2 ACCEPTED-OFF-DCX [IL3] (this entry) · n = 3
 MEASURED GREEN (13b026b). The remaining distance to all orders on the harness
 class: (RM-m, m ≥ 2) + (W-MULT-DCX-m) + the two fenced corners.
+
+## ROOT r38 EXECUTED (REVISION 37) — 2026-08-03: the EIGHTEENTH re-anchoring made operative + the [IL3] acceptance fold + the general-n landing folded; VC38 owed
+
+**Unit ROOT r38 (the WAVE-20 FOLD), doc-only.** ROOT gains §43 + the four
+operative-site updates; the display-upgrade sweep the [IL3] acceptance owed
+is EXECUTED. The five folds: **(0) THE EIGHTEENTH RE-ANCHORING made
+operative** — every operative anchor-citation site (the §0 standing
+paragraph, now the NEW REVISION-37 paragraph with the r37 header
+superseded; the §3.2 end-to-end row sync tail; the §6 r38 bracket) cites
+REVISION 36 + r37b / VC37+VC37b per ledger 8a1f309; the VC37 arc displayed
+with its honest NOT-CONFIRMED-0C/4G one-class grade everywhere. **(i) THE
+[IL3] ACCEPTANCE folded** (arc: compose 8ba1820 → R1 997c467+be9a77b →
+errata r1 f9daca0 → R2 cf013a4+467b523 → errata r2 a687b80 → R3
+double-clean 5bdca01+f288b73 → acceptance f726b36); the defined-term
+block, pasted per checklist rule 8 at this entry's own citation: "[IL3] =
+the (ITER-LAW-3) theorem, ACCEPTED 2026-08-03: the display c₃ =
+z̄^{δ₃}·z₂^{D₂}·z₁^{D₁} (δ₃ = ⌊(s₃+s₃′)/e₂⌋; D₂ = (s₂-defect +
+ℓ₁γ₃δ₃)/e₁; Σ = D₂γ₂ + δ₃γ₃(ℓ₁′−ℓ₁w₁Φ₁); D₁ = (s₁-defect + ℓ₀Σ)/e₀)
+PROVED on the 3-read standard-lift harness class OFF the DCX corner
+{g₀ = g₁ = 1, δ₁ = 1, s₂(γ) = s₂(γ′) = e₁−1, S₁+s(γ₂) ≥ 2e₀} (EMPTY at
+e₀ ≤ 2) — RUNG n = 2 of (ITER-LAW-n). RESIDUALS: (W-MULT-3-DCX) OPEN
+(instance-true 132/132); the fenced non-consumed DEV-1 corner
+{e₀=1 ∧ d₀≥2 ∧ j≥g₀}; the consumed [IL] base's package rides through."
+The (H1) row bracket upgraded; the rung ledger of record displayed at
+every operative site: n = 1 = [IL] ACCEPTED (package pasted at each site)
+· n = 2 = [IL3] ACCEPTED-OFF-DCX (block above) · n = 3 = MEASURED GREEN
+only (13b026b, 0/362,624; F-SUB 2,896/0). **(ii) THE GENERAL-n LANDING
+folded at its honest grade** — ITERLAWN_PROOF (5fe901e):
+composed-with-displayed-opens, hostile arc OWED (S10 charges); proved
+generic: integer cascade + (★)-positivity + WINDOW-(n) + cocycle +
+descent + EXP-KIT + REALIZE/WELL-DEF + L6-(n)-from-base + Case I; Cases
+II generic modulo (RM-(n−1)); **the two-family distance of record: (RM-m,
+m ≥ 2) (m = 1 proved inside the accepted rung-2 theorem) +
+(W-MULT-DCX-m)** + the two fenced corners; DCX-(n) outer bound proved;
+first 5-read data ~5,300 checks / 0 violations. **(iii) THE DISPLAY
+SWEEP executed** (all dated additive brackets): ITERLAWN S7 (the
+"conditional on [IL3]" legs now conditional on (RM-m) ALONE);
+L3CONVERGENCE S2 (Candidate 1 accepted-off-DCX; Candidate 2 STAYS a
+candidate); ROOT §3.1 (H1) row; PROJECT_STATE (Level-3 supersession
+bracket + the r38 checkpoint); ITERLAW3_PROOF S0.4 — the single
+sanctioned optional PE3 wording cure APPLIED (one dated note covering
+both twin r1 "reads" glosses; the acceptance bracket and all sealed
+batteries byte-untouched, diff-verified 1 line). **(iv) history folded**
+(43.(iv): the VC37 arc + the three ITERLAW3 rounds + the mid-arc compose
+landing). **(v) CENSUS**: sorry census **34 repo-wide UNCHANGED**
+(3980471..HEAD empty on *.lean, diff-verified); ROOT pattern census
+**92 + 9 = 101 patterns re-grepped to FIXED POINT after the last edit**
+(new rows: VC37b, VC38, IL3, ITERLAWN, the census-safe `(RM-`,
+W-MULT-DCX, DCX, PC3, PE3; the three baseline divergences vs the §42
+recorded column = exactly the four r37b brackets' own hits, the d79f295
+precedent; the displayed table cross-checked row-by-row against the
+final grep — 101/101 exact, deltas arithmetic-verified); rule-8 spot
+check run on the r38-added text (zero bare acceptance citations). NINE
+rows recounted; no clause attribution moved; no Lean file touched; no
+sealed record touched. **FRONTIER: VC38** (end-to-end on REVISION 37;
+frozen-history trim MANDATORY; charge at ROOT §43), then the ITERLAWN
+hostile arc, then the (RM-m)/(W-MULT-DCX-m) closure program. Unit files:
+ROOT + PROJECT_STATE + the three swept notes + this append ONLY (scoped
+`git commit --only`).

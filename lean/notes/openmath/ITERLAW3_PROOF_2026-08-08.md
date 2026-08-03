@@ -203,7 +203,7 @@ class.
 | W-MULT-(3) on DCX | **OPEN** (W-MULT-3-DCX), instance-true | S4.7 |
 | THEOREM off DCX | **PROVED (the unit's content)** | S5 |
 | THEOREM on DCX | conditional on (W-MULT-3-DCX) | S5 |
-| COR-1 integrality · COR-2 cocycle identity · COR-3 degenerations (e₂=1 ⟹ the ACCEPTED law verbatim **[errata r1: on the proved perimeter — off DCX; S6.3 erratum]**) · COR-4 ℤ/E₃ descent + monodromy · COR-5 gauge form c₃ = z̄^{δ₃}·∂F · COR-6 the (ITER-LAW-n) recursion at n = 3 **[errata r1: reads; = RUNG n = 2 — S6.6 rung bracket]** · COR-7 W-MULT product form | PROVED (conditionalities displayed per-item) | S6 |
+| COR-1 integrality · COR-2 cocycle identity · COR-3 degenerations (e₂=1 ⟹ the ACCEPTED law verbatim **[errata r1: on the proved perimeter — off DCX; S6.3 erratum]**) · COR-4 ℤ/E₃ descent + monodromy · COR-5 gauge form c₃ = z̄^{δ₃}·∂F · COR-6 the (ITER-LAW-n) recursion at n = 3 **[errata r1: reads; = RUNG n = 2 — S6.6 rung bracket]** **[r38 wording note 2026-08-03 (PE3 non-blocking observation, f288b73; the optional cure applied at the acceptance fold): here and in the S1 twin r1 bracket, the one-word gloss "reads" is superseded — a recursion-index n is not a reads count (the errata-r2 S6.6 ruling); the operative correction "= RUNG n = 2" displayed at both tokens stands unchanged]** · COR-7 W-MULT product form | PROVED (conditionalities displayed per-item) | S6 |
 | general lawful lifts · orders ≥ 4 · gr(w₃) wrapper · GMN transport | NOT TOUCHED (fences) | S7 |
 
 ## S1. What the proof is (the converged gauge route, executed)

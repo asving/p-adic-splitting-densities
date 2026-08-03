@@ -876,6 +876,43 @@ round 2 completed NOT-CLEAN (PC2 1C/1G @ cf013a4 + PE2 0C/2G @ 467b523, all
 narrow display/naming findings, S2–S5 math byte-stable); errata round 2 then
 round 3 owed; proved off DCX-(2); errata r1 at f9daca0.
 
+> **[DATED BRACKET r38, 2026-08-03 (wallclock; campaign 2026-08-08) — THE
+> RUNG-2 LINK IS ACCEPTED; every "conditional on [IL3]" leg of this ledger
+> upgrades to conditional on (RM-m) alone.** The [IL3] hostile arc CLOSED at
+> the 2-clean model-diverse bar (round 3: PC3 CLEAN 0C/0G @ 5bdca01 + PE3
+> CLEAN 0C/0G/0-nits @ f288b73, both on the a687b80 errata-r2 text;
+> orchestrator acceptance f726b36). The ledger defined-term block, pasted per
+> checklist rule 8: "[IL3] = the (ITER-LAW-3) theorem, ACCEPTED 2026-08-03:
+> the display c₃ = z̄^{δ₃}·z₂^{D₂}·z₁^{D₁} (δ₃ = ⌊(s₃+s₃′)/e₂⌋; D₂ =
+> (s₂-defect + ℓ₁γ₃δ₃)/e₁; Σ = D₂γ₂ + δ₃γ₃(ℓ₁′−ℓ₁w₁Φ₁); D₁ = (s₁-defect +
+> ℓ₀Σ)/e₀) PROVED on the 3-read standard-lift harness class OFF the DCX
+> corner {g₀ = g₁ = 1, δ₁ = 1, s₂(γ) = s₂(γ′) = e₁−1, S₁+s(γ₂) ≥ 2e₀} (EMPTY
+> at e₀ ≤ 2) — RUNG n = 2 of (ITER-LAW-n). RESIDUALS: (W-MULT-3-DCX) OPEN
+> (instance-true 132/132); the fenced non-consumed DEV-1 corner
+> {e₀=1 ∧ d₀≥2 ∧ j≥g₀}; the consumed [IL] base's package rides through."
+> CONSEQUENCE for the table below (the failure-propagation display fires in
+> the GOOD direction): rows 5/6/8 tighten at rung 2 — row 5 rung-2 =
+> ACCEPTED-OFF-DCX; row 6 rung-2 = ACCEPTED-OFF-DCX (its DEV-1 = the PROVED
+> RM-1); row 8 rung-2 = **ACCEPTED-OFF-DCX**, rung 3 = conditional on (RM-2)
+> ALONE, rung n ≥ 3 general = conditional on (RM-m, 2 ≤ m ≤ n−1) ALONE; row 3
+> rung-2 likewise reads accepted + S4.1. Every "attempt grade 0/2 / round 2
+> not-clean / errata owed" description of [IL3] elsewhere in this note (the
+> header link paragraph, S0.1, S4.6, S9, S10, the DAG gloss, and the
+> paragraph directly above this bracket) is SUPERSEDED as dated
+> composition-time history by this bracket — the latest-display cure; the
+> note body is otherwise byte-untouched. The rung ledger of record: n = 1 =
+> [IL] ACCEPTED ("Scope as accepted: the harness tower class (superset of
+> DITER_RESTATE §S2's E₂ > 1 pin; on-the-nose coincidence restricted to
+> E₂ > 1); residuals: (ITER-LAW-LIFT) open exactly at g₀ = 1 ∧ δ₁ = 1;
+> gr(w₂) wrapper rides the accepted GRB retarget; orders ≥ 3 untouched" —
+> standard-lift, strict superset of the pinned E₂ = e₀e₁ > 1 setting) ·
+> n = 2 = [IL3] ACCEPTED-OFF-DCX (block above) · n = 3 = MEASURED GREEN only
+> (13b026b: 0/362,624 on 72 fresh towers × 4 rings; F-SUB subwindow-
+> restriction gate 2,896/0). THIS NOTE'S OWN GRADE IS UNCHANGED by the
+> upgrade: composed with displayed opens, hostile arc OWED (the S10
+> charges) — and the remaining distance to all orders off DCX-(n) is the
+> two displayed families alone: (RM-m, m ≥ 2) + (W-MULT-DCX-m).]**
+
 | # | clause | rung 1 | rung 2 | rung 3 | rung n ≥ 3 (general) |
 |---|---|---|---|---|---|
 | 1 | integer layer (SHIFT, D-INT, (★), WINDOW, slotwise cocycle, descent of constants) | UNCONDITIONAL | UNCONDITIONAL | UNCONDITIONAL | UNCONDITIONAL (this note, S2) |

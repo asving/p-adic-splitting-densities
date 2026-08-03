@@ -2690,7 +2690,18 @@ PROMOTED the all-orders program; DEMOTED Lean small-case backlogs.
   exactly at g₀ = 1 ∧ δ₁ = 1; gr(w₂) wrapper rides the accepted GRB
   retarget; orders ≥ 3 untouched.
 - **Level 3: MEASURED LAW (instance-confirmed CONJECTURE — never
-  proved/accepted)** — (ITER-LAW-3): c₃ = z̄^{δ₃}·z₂^{D₂}·z₁^{D₁},
+  proved/accepted)** **[r38 2026-08-03: SUPERSEDED — the rung-2 law is now
+  ACCEPTED-OFF-DCX. Defined-term block pasted per checklist rule 8: "[IL3] =
+  the (ITER-LAW-3) theorem, ACCEPTED 2026-08-03: the display c₃ =
+  z̄^{δ₃}·z₂^{D₂}·z₁^{D₁} (δ₃ = ⌊(s₃+s₃′)/e₂⌋; D₂ = (s₂-defect + ℓ₁γ₃δ₃)/e₁;
+  Σ = D₂γ₂ + δ₃γ₃(ℓ₁′−ℓ₁w₁Φ₁); D₁ = (s₁-defect + ℓ₀Σ)/e₀) PROVED on the
+  3-read standard-lift harness class OFF the DCX corner {g₀ = g₁ = 1,
+  δ₁ = 1, s₂(γ) = s₂(γ′) = e₁−1, S₁+s(γ₂) ≥ 2e₀} (EMPTY at e₀ ≤ 2) — RUNG
+  n = 2 of (ITER-LAW-n). RESIDUALS: (W-MULT-3-DCX) OPEN (instance-true
+  132/132); the fenced non-consumed DEV-1 corner {e₀=1 ∧ d₀≥2 ∧ j≥g₀}; the
+  consumed [IL] base's package rides through." See the r38 checkpoint below
+  for the arc and the ladder of record; the measured-law data in this bullet
+  stands as the instance-evidence record.]** — (ITER-LAW-3): c₃ = z̄^{δ₃}·z₂^{D₂}·z₁^{D₁},
   composed inner shift Σ = D₂γ₂ + δ₃γ₃(ℓ₁′−ℓ₁w₁Φ₁); gauge form
   c₃ = z̄^{δ₃}·∂F, F = the ε-chain. Sealed probe 911431c: 0 violations
   / 103,772 preregistered samples (the runner's RED exit line = the m4
@@ -2761,3 +2772,99 @@ VC33c CONFIRMED; VC34 CONFIRMED FIRST-PASS; VC35 (0C/2G, cured) +
 VC35b CONFIRMED; VC36 NOT-CONFIRMED 1C/3G (disposed at r36) + **VC36b
 (0C/2G, remedies confirmed) + r36b errata + VC36c CONFIRMED (= the
 STANDING anchor, REVISION 35 + r36b)**; VC37 pending on REVISION 36.
+
+## CHECKPOINT (ROOT r38 = REVISION 37, 2026-08-08 window, wallclock 2026-08-03): EIGHTEENTH RE-ANCHORING; [IL3] ACCEPTED-OFF-DCX (RUNG 2); THE GENERAL-n LANDING — THE TWO-FAMILY DISTANCE (RM-m)/(W-MULT-DCX-m) ON RECORD
+
+ROOT REVISION 37 (unit ROOT r38, appendix §43; WAVE-20 FOLD) folds the
+[IL3] acceptance arc, the general-n compose, and the VC37 arc.
+
+**THE RE-ANCHORING (eighteenth).** VC37 on REVISION 36 (report
+`VC37_report.md`, 31bad80: NOT-CONFIRMED 0C/4G — zero critical; all four
+gaps ONE class, bare order-2 acceptance citations missing the
+scope-as-accepted package; third recurrence of the class) → the four dated
+r37b ERRATUM brackets (orchestrator-direct; ROOT §0 standing paragraph, the
+§3.1 (H1) rung line, the §42.(iii) U5 + U4 fold summaries; checklist rule 8
+HARDENED: every mention of an accepted result carries the PASTED package) →
+**VC37b CONFIRMED 0C/0G** (micro pass on the four brackets) — **the
+acceptance anchor moves REVISION 35 + r36b → REVISION 36 + r37b
+(VC37+VC37b)** (ledger 8a1f309).
+
+**THE H1 GROUP STATE (the ladder of record, updated).**
+- **Rung 1 (order 2): PROVED + ACCEPTED** — [IL], unchanged. Package,
+  pasted: "Scope as accepted: the harness tower class (superset of
+  DITER_RESTATE §S2's E₂ > 1 pin; on-the-nose coincidence restricted to
+  E₂ > 1); residuals: (ITER-LAW-LIFT) open exactly at g₀ = 1 ∧ δ₁ = 1;
+  gr(w₂) wrapper rides the accepted GRB retarget; orders ≥ 3 untouched" —
+  standard-lift, strict superset of the pinned E₂ = e₀e₁ > 1 setting.
+- **Rung 2 (level 3): ACCEPTED-OFF-DCX** — the arc closed at the 2-clean
+  model-diverse bar: compose 8ba1820 → R1 (PC1 2C/1G 997c467 + PE1 1C/1G
+  be9a77b, convergent) → errata r1 f9daca0 → R2 (PC2 1C/1G cf013a4 + PE2
+  0C/2G 467b523, convergent new-narrow) → errata r2 a687b80 → R3
+  DOUBLE-CLEAN (PC3 0C/0G 5bdca01 + PE3 0C/0G/0n f288b73); acceptance
+  f726b36. Defined-term block, pasted per checklist rule 8: "[IL3] = the
+  (ITER-LAW-3) theorem, ACCEPTED 2026-08-03: the display c₃ =
+  z̄^{δ₃}·z₂^{D₂}·z₁^{D₁} (δ₃ = ⌊(s₃+s₃′)/e₂⌋; D₂ = (s₂-defect +
+  ℓ₁γ₃δ₃)/e₁; Σ = D₂γ₂ + δ₃γ₃(ℓ₁′−ℓ₁w₁Φ₁); D₁ = (s₁-defect + ℓ₀Σ)/e₀)
+  PROVED on the 3-read standard-lift harness class OFF the DCX corner
+  {g₀ = g₁ = 1, δ₁ = 1, s₂(γ) = s₂(γ′) = e₁−1, S₁+s(γ₂) ≥ 2e₀} (EMPTY at
+  e₀ ≤ 2) — RUNG n = 2 of (ITER-LAW-n). RESIDUALS: (W-MULT-3-DCX) OPEN
+  (instance-true 132/132); the fenced non-consumed DEV-1 corner
+  {e₀=1 ∧ d₀≥2 ∧ j≥g₀}; the consumed [IL] base's package rides through."
+- **Rung 3 (4-read): MEASURED GREEN only** — ITERLAW4_PROBE verdict
+  13b026b: 0/362,624 on 72 fresh towers × 4 rings; F-SUB subwindow-
+  restriction gate 2,896/0; instance evidence, never a proof step.
+- **All orders: THE GENERAL-n COMPOSE LANDED (composed with displayed
+  opens; hostile arc OWED — NOT accepted)** — `ITERLAWN_PROOF_2026-08-08.md`
+  (5fe901e): (ITER-LAW-n) stated at every rung n ≥ 1 and proved BY
+  INDUCTION ON THE RUNG on the honest perimeter. Proved generic: the
+  integer cascade (SHIFT-(n), D_j-INT, the (★)-positivity display,
+  WINDOW-(n), slotwise cocycle, ℤ/E_{n+1} descent), EXP-KIT,
+  REALIZE-(m)/WELL-DEF-(n) via the (I_m) descent invariant, L6-(n) from
+  the accepted base only, CASE-SPLIT-(n) + W-MULT-(n) Case I given the
+  (ITER-PKG-r) package, Cases II-1/2/3 generic MODULO (RM-(n−1)) off
+  DCX-(n). THE TWO-FAMILY DISTANCE OF RECORD to all orders on the harness
+  class: **(RM-m, m ≥ 2)** (m = 1 PROVED via [IL3]'s DIGIT-SPLIT/DEV-1 +
+  the ε′-factoring — block above) + **(W-MULT-DCX-m)**, plus the two
+  fenced corners (the DEV-1 e₀ = 1 ∧ d₀ ≥ 2 corner; the (ITER-LAW-LIFT)
+  propagation). DCX-(n) = ∪DCX_m with the outer bound PROVED (sharp at
+  m = 2; e_{m−2} ≥ 3 conjectured at m ≥ 3). First 5-read data: the
+  post-seal diagnostic `iterlawn_diag.py`, ~5,300 checks, ZERO violations
+  first run (incl. (ITER-LAW-5) exact 544/544 and DCX₂-live law-exact
+  pairs). With the [IL3] acceptance, the S7 conditionality ledger's
+  "conditional on [IL3]" legs upgrade to conditional on (RM-m) ALONE
+  (dated bracket at ITERLAWN S7, this fold).
+- **Lift residual:** unchanged — (ITER-LAW-LIFT) OPEN; (TAIL-STAB) priced
+  S/M; LIFT-DEV-3/LIFT-DEV-4 measured conjectures consistent with the
+  S4.6 cancellation mechanism.
+
+**DISPLAY SWEEP EXECUTED (this fold):** ITERLAWN S7 dated bracket (the
+conditionality upgrade); L3CONVERGENCE S2 status bracket (Candidate 1
+accepted-off-DCX with the block; Candidate 2 STAYS a candidate — the
+ITERLAWN arc is owed); ROOT §0/§3.1 (H1)/§3.2/§6 + NEW §43; this file;
+the single optional PE3 wording cure at ITERLAW3_PROOF S0.4 (the r1
+brackets' "reads" gloss — one dated note covering both twin sites; the
+acceptance bracket itself FROZEN).
+
+**CENSUS.** Sorry census of record: **34 repo-wide, UNCHANGED** (33 in
+`LeanUrat/` + 1 tracked scratch probe; B2D 0; OM tree 0) — no .lean file
+touched since the r37 derivation (diff-verified 3980471..HEAD empty on
+`*.lean`); banked 0. ROOT pattern census: 92 + 9 new = 101 patterns
+re-grepped to fixed point, every delta named (ROOT §43). Roster: NINE
+rows, unchanged.
+
+FRONTIER NOW: **VC38** (the confirming end-to-end pass on REVISION 37;
+frozen-history trim MANDATORY; acceptance anchored on REVISION 36 + r37b
+until it lands); the ITERLAWN hostile arc (its S10 charges — content pass
+on the generic index arithmetic, F2c-genre 5-read reimplementation +
+DCX-locus meter, rule-8 audit); then the (RM-m)/(W-MULT-DCX-m) closure
+program (the generic-engine unit is the higher-value target — the wave-20
+DEV-2/(W-MULT-3-DCX) item is its m = 2 instance).
+Verification: VC1–VC22 done; VC25 NOT-CONFIRMED (disposed); VC26+VC26b,
+VC27+VC27b CONFIRMED; VC28, VC29 CONFIRMED FIRST-PASS; VC30 (1C, cured)
++ VC30b CONFIRMED; VC31 (0C/2G, cured) + VC31b + VC31c CONFIRMED;
+VC32 (0C/3G, cured) + VC32b CONFIRMED; VC33 (0C/2G, cured) + VC33b +
+VC33c CONFIRMED; VC34 CONFIRMED FIRST-PASS; VC35 (0C/2G, cured) +
+VC35b CONFIRMED; VC36 NOT-CONFIRMED 1C/3G (disposed) + VC36b (0C/2G,
+remedies confirmed) + r36b + VC36c CONFIRMED; **VC37 NOT-CONFIRMED 0C/4G
+(disposed) + r37b errata + VC37b CONFIRMED (= the STANDING anchor,
+REVISION 36 + r37b)**; VC38 pending on REVISION 37.

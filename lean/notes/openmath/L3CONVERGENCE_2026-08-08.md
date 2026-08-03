@@ -96,6 +96,38 @@ S0/row 2. The two displays below are therefore the CONFIRMED law and its
 FORWARD generalization — both conjecture-grade (measured law; no proof unit
 has run).
 
+> **[r38 STATUS BRACKET 2026-08-03 (the acceptance fold; the display upgrade
+> owed at acceptance, applied) — CANDIDATE 1 IS NOW ACCEPTED-OFF-DCX.** The
+> "(measured law; no proof unit has run)" gloss above and every
+> "conjecture-grade" status for Candidate 1 in this section are superseded as
+> dated composition-time history. The ledger defined-term block, pasted per
+> checklist rule 8: "[IL3] = the (ITER-LAW-3) theorem, ACCEPTED 2026-08-03:
+> the display c₃ = z̄^{δ₃}·z₂^{D₂}·z₁^{D₁} (δ₃ = ⌊(s₃+s₃′)/e₂⌋; D₂ =
+> (s₂-defect + ℓ₁γ₃δ₃)/e₁; Σ = D₂γ₂ + δ₃γ₃(ℓ₁′−ℓ₁w₁Φ₁); D₁ = (s₁-defect +
+> ℓ₀Σ)/e₀) PROVED on the 3-read standard-lift harness class OFF the DCX
+> corner {g₀ = g₁ = 1, δ₁ = 1, s₂(γ) = s₂(γ′) = e₁−1, S₁+s(γ₂) ≥ 2e₀} (EMPTY
+> at e₀ ≤ 2) — RUNG n = 2 of (ITER-LAW-n). RESIDUALS: (W-MULT-3-DCX) OPEN
+> (instance-true 132/132); the fenced non-consumed DEV-1 corner
+> {e₀=1 ∧ d₀≥2 ∧ j≥g₀}; the consumed [IL] base's package rides through."
+> Arc: proof compose `ITERLAW3_PROOF_2026-08-08.md` 8ba1820 → two convergent
+> NOT-CLEAN rounds → errata f9daca0/a687b80 → round 3 DOUBLE-CLEAN (PC3
+> 5bdca01 + PE3 f288b73); acceptance f726b36. CANDIDATE 2 ((ITER-LAW-n))
+> REMAINS A CANDIDATE — the general-n compose (`ITERLAWN_PROOF_2026-08-08.md`,
+> 5fe901e) is composed-with-displayed-opens with its own hostile arc OWED;
+> its owed Candidate-2 status upgrade fires only AT THAT NOTE'S ACCEPTANCE,
+> not here. Candidate 2's "Confirmed instances" line below upgrades to the
+> rung ledger of record: n = 1 = [IL] ACCEPTED ("Scope as accepted: the
+> harness tower class (superset of DITER_RESTATE §S2's E₂ > 1 pin;
+> on-the-nose coincidence restricted to E₂ > 1); residuals: (ITER-LAW-LIFT)
+> open exactly at g₀ = 1 ∧ δ₁ = 1; gr(w₂) wrapper rides the accepted GRB
+> retarget; orders ≥ 3 untouched" — standard-lift, strict superset of the
+> pinned E₂ = e₀e₁ > 1 setting) · n = 2 = [IL3] ACCEPTED-OFF-DCX (block
+> above) · n = 3 = MEASURED GREEN only (ITERLAW4_PROBE verdict 13b026b:
+> 0/362,624 on 72 fresh towers × 4 rings; F-SUB subwindow gate 2,896/0).
+> Candidate 1's known-conditionality paragraph stands, with the acceptance's
+> own scope note: on the DCX corner the display remains an OPEN lemma
+> ((W-MULT-3-DCX)), instance-true everywhere probed.]**
+
 ### Candidate 1 (the law of record at level 3) — (ITER-LAW-3), verbatim the sealed S1 primary
 
 For standard-lift 3-read towers (reads (e₀,h₀,ψ₀), (e₁,h₁,ψ₁), (e₂,h₂,ψ₂),
