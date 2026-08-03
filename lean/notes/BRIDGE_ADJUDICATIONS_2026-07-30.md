@@ -5588,3 +5588,19 @@ stated at DEFINITIONAL EQUALITY (elaboration; no source-byte comparison; gluePac
 = the independent vacuity leg). Perimeter untouched; counter 0/2; re-audit round 3 next.
 Also this round: ADM-REAL' pass 3 CLEAN (clean #1, Codex; report archived) and TR3-S3
 pass 2 CLEAN (clean #1, Codex; report archived) — Fable twin passes decide both bars.
+
+## 2026-08-08: JUNCFORGE S2 FAITHFULNESS ARC CLOSED — audit round 5 CLEAN (0C/0G)
+
+The statement-faithfulness audit arc on JUNCFORGE_S2_2026-08-08.md is complete: round 1
+CRITICAL (global-scope prose) -> REV1 -> round 2 CRITICAL (per-theorem scopes,
+certification wording) -> REV2 -> round 3 CRITICAL (verdict-paragraph restrictions;
+orchestrator-applied REV3 after the two-failed-corrections rule) -> round 4 CRITICAL
+(the interior-pin qualifier at headline-tier sites; orchestrator REV4+4b, incl. the
+line-break-variant §R4 quotation site caught by orchestrator grep pre-audit) -> round 5
+CLEAN 0C/0G. The note of record now states exactly what the Lean theorems prove: the
+compiled CHAR-2, PHI2-LANDING, INTERIOR-PHI2A-PINNED junc_bundle is INSTANCE-FALSE at
+row A; the parity wall alone is char-free/Phinext-free; DIterJunctionSupplier survives;
+the source-level question is OPEN pending the chartered FGMN re-derivation (proposal-only,
+Asvin-flag). Reports archived: reaudit3 + reaudit4 (this commit; rounds 1-2 archived
+earlier). Ops note: three exit-144 self-kills during rounds 4-5 -> memory
+pkill-self-match-trap saved.
