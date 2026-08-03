@@ -6138,3 +6138,39 @@ from-note implementation on off-roster instances (note S8.4, displayed as the
 gate — the prover-side harness does not satisfy it).** Counter 0/2; hostile
 passes next. Commits: seal 7fa8825 + run commit of even date (note S8.3 +
 outputs + this entry).
+
+## FGMN PASS 9 (Fable, fresh context, FULL execution leg): 1 critical / 2 gaps — CRITICAL; the REVISION-7 closure rule fails its own operationality claim under verifier execution
+
+`lean/notes/openmath/FGMN_pass9_report.md`. Execution leg EXACT again: both
+sha256 pins byte-identical; battery re-run 1,093 ALL GREEN with console
+byte-identical to `fgmn_rederivation_rerun_r1.txt` (incl. timings) and JSON
+byte-identical; round-1 census 260/246/36/14 + all 11 top-file counts exact;
+every named line re-verified (Defs.lean :280/:285/:287/:292, the R1/R2 mirror
+pairs, the full REVISION-4 dagger/endpoint list, GlueRun :875 antecedent
+verbatim); all §S1 displays re-read exact incl. Thm 4.2 l.1029 verbatim;
+Def-3.15 prime col 52 over first-ℓ cols 51–52 recomputed to the codepoint;
+row-A re-derived by hand; branch semantics + support-meter derivation
+re-derived; rescopes accurate to code; JuncForge binds the old shape by name;
+no `.lean` touched by any FGMN commit. **CRITICAL (finding 1)**: the
+verifier-owned execution of the REVISION-7 OPERATIONAL closure shows "two
+faithful implementers now compute the same set" is FALSE — the FQN-literal
+reading expands NOTHING (full FQNs occur 0 times in source: fixpoint = the
+round-1 466 declarations, recursion dead), while the base-name reading (the
+only live one) SATURATES at 12,199 declarations across 1,171/1,203 files
+(~97% of the tree, fixpoint round 6) via rule-licensed chains ([doc] σ.w hit
+in `Tower.side`'s docstring → identifier `side` → English prose → `of`/`is`/
+`at` by round 2) — the perimeter either scopes nothing or everything, and
+§S3(b)'s per-consumer disposition is undischargeable at 12k decls. **Gaps**:
+ring term `lastRead_of_readsOf` is DEAD under the pinned matcher (0 boundary
+matches; all 4 occurrences are `_snoc`-extended and it is not a declared
+prefix-pattern — the motivating site joins only via seed hits); the round-2
+evidence list is 14 files not 15 under the note's own regex (`U27_gateInert`
+qualifies only via the substring `ReadsOf` ⊂ `U31_gateReadsOf` in an import
+line; other 14 exact, no extras; those files also join at ROUND 1 under the
+current rule, so the "round-2" framing is stale). Mathematical perimeter
+(diagnosis/row-A/branch+meter/rescopes/three-token/PIN-GEN-i/JuncForge-D0-S8)
+survived in full. Counter RESETS at the closure layer; REVISION 8 owed
+(expansion-string tiebreak + prose/short-identifier stop + ring/evidence
+corrections), pass 10 next. F2c from-note battery reimplementation still the
+acceptance obligation (this pass executed pins/battery-compare/closure
+verifier-side, not a from-note battery).
