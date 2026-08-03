@@ -1976,3 +1976,60 @@ stage 2, the ITER-LAW attempt, the Asvin batch, the optional S batch).
 Verification: VC1–VC22 done; VC25 NOT-CONFIRMED (disposed at REVISION
 23); VC26 + VC26b CONFIRMED; VC27 + VC27b CONFIRMED; VC28 CONFIRMED
 FIRST-PASS (= the REVISION-25 anchor); VC29 pending, now on REVISION 27.
+
+## CHECKPOINT 2026-08-08++++++++ (wallclock 2026-08-03): r29 LANDED — VC29 CONFIRMED FIRST-PASS, ANCHOR MOVES TO REVISION 27; WAVE-11 FOLDS (ROOT REVISION 28)
+
+ROOT REVISION 28 (unit ROOT r29, appendix §34) is the VC29 re-anchor +
+the wave-11 acceptance/verdict fold batch.
+**VC29 CONFIRMED FIRST-PASS (0C/0G)** on the REVISION-27 text (3d457cc;
+the SECOND consecutive first-pass; the saved appendix checklist validated
+twice) — **the acceptance anchor moves REVISION 25/VC28 → REVISION
+27/VC29** (lineage: REVISION 26 superseded mid-cadence, never audited —
+the VC23/VC24 named-but-unrun genre). The wave-11 folds, all
+ledger-recorded:
+(1) **the junc_bundle VERDICT OF RECORD** (036ee8c six Lean-core theorems
++ REVISION 1–4b hardening + arc closure 09f93c1, faithfulness round 5
+CLEAN): the compiled CHAR-2, Φ₂-LANDING, INTERIOR-Φ₂A-PINNED bundle is
+**INSTANCE-FALSE at row A** (kernel-proved; the parity wall
+`juncforge_no_e2_junction` alone char-free/Φnext-free — explains the C-e
+escapee at the row-A read); `gate_glue_conditional` VACUOUS at its
+compiled instance is a THEOREM; `DIterJunctionSupplier` NOT refuted; the
+SOURCE-LEVEL question OPEN (incompatible-transcription-scales reading);
+**the FGMN transcription-scale re-derivation design unit CHARTERED**
+(proposal-only, statement-change genre — NEW ASVIN-FLAG item in the
+§29/§30/§33 lineage); junc_bundle leaves the (H1) open-wall list.
+(2) **ADM-REAL′ ACCEPTED** (24e51df; passes 3+4 consecutive CLEAN,
+model-diverse): **(CLASS-d) = lattice THEOREM at every order (CLASS-LAT,
+unconditional)** — the (GR-B) conditionality REMOVED from track A;
+NON-END/LOC/W-CAP at full any-type scope; (ADM) displayed opens =
+(B-PIN) + the (C-JCT) fan-out audit + F-ADM-3 (EDIT-GATED carrier re-key
+input, CensusCore.lean:155; NO edit made); the row stays [M].
+(3) **depth-3 probe MEASURED** (54c518d): (IDENT-3) EXACT 0/1,656, no
+ǫ-revival on all-e_j = 1; **TR3-S3 IN VERIFICATION** (composed 482150b;
+REVISION 3 f05df77; p2 Codex CLEAN pre-revision, p3 Fable GAPS-ONLY,
+p4 Codex GAPS-ONLY, p5 running; counter 0/2 — **NO status upgrade**;
+the pass-3 verifier's independent 93-sample external leg on record).
+(4) **N-H7-1 EXECUTED** (f8aec25): the (H7) (I-τ)/K-LOC pair SURVIVES
+first contact at six real m ≥ 2 sites (139 PASS); TWO measured
+restatement pins for the future Lean forge (slope-keyed ε — the
+slope-pooled strengthening REFUTED; the D-8 guard = the extraction
+boundary); statements still OPEN.
+(5) **JFS2 faithfulness arc CLOSED** (5 rounds); ops records: the
+vc-audit-appendix checklist validated at VC28+VC29; the pkill self-match
+trap saved.
+Roster: **NINE rows, unchanged**. Census re-run at the declared unit
+(the §33 patterns + CLASS-LAT / TR3-S3 / VC30 new, JUNCFORGE promoted;
+every delta reasoned; fixed point re-grepped). **SYNTHESIS PASS 7 is
+OWED** (the window's collapses — CLASS-LAT, the junc_bundle verdict, the
+BPLL theorem, the v4 chain — need the /goal re-map). The Asvin queue now
+carries the FGMN charter alongside TowerMoveClosureL, the fence-(vii)
+ROUTE (a) + RECSL hσt rider, and the Route-B re-scope.
+FRONTIER NOW: **VC30** (the confirming end-to-end pass on REVISION 28;
+acceptance anchored on REVISION 27/VC29 until it lands); TR3-S3 passes
+5+6 (the bar decides); synthesis pass 7; the FGMN re-derivation design
+unit (proposal product = Asvin decision input); then the queue tail (the
+(UB-X) walk note, DIterJunctionSupplier, the ITER-LAW attempt, the (H7)
+Lean forge on the two pins).
+Verification: VC1–VC22 done; VC25 NOT-CONFIRMED (disposed); VC26+VC26b,
+VC27+VC27b CONFIRMED; VC28 CONFIRMED FIRST-PASS; **VC29 CONFIRMED
+FIRST-PASS (= the REVISION-27 anchor)**; VC30 pending on REVISION 28.

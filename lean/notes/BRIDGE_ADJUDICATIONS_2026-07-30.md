@@ -5621,3 +5621,37 @@ input for the carrier re-key. The (ADM) row's track-A attempt is DISCHARGED to t
 displayed opens. TR3-S3: pass 3 (Fable) GAPS-ONLY 0C/2G -> REVISION 2
 (orchestrator-applied: Def 3.18 added to PIN-GEN-i; row-O attribution corrected;
 the verifier's independent 93-sample external leg recorded); passes 4+5 decide.
+
+## 2026-08-08: ROOT r29 EXECUTED — REVISION 28: the VC29 re-anchor (REVISION 25/VC28 → REVISION 27/VC29) + the wave-11 acceptance/verdict folds; VC30 OWED
+
+ROOT REVISION 28 (unit ROOT r29, appendix §34) applied to
+docs/ROOT_ASSEMBLY_2026-08-02.md. THE RE-ANCHOR: VC29 CONFIRMED FIRST-PASS (0C/0G,
+3d457cc — the second consecutive first-pass) fires the citation-text update at every
+operative site (§0 new REVISION-28 standing paragraph, §3.2 sync tail, §6 supersession
+brackets + r29 bracket) — the anchor moves REVISION 25/VC28 -> REVISION 27/VC29; the
+lineage displayed (REVISION 26 superseded mid-cadence, never audited — the VC23/VC24
+named-but-unrun genre). THE FOLDS (roster NINE, unchanged; no clause attribution moved):
+(1) the junc_bundle VERDICT OF RECORD at the (H1) row — the compiled CHAR-2,
+Φ₂-LANDING, INTERIOR-Φ₂A-PINNED bundle INSTANCE-FALSE at row A (kernel-proved; parity
+wall alone char-free/Φnext-free; gate_glue_conditional vacuity a THEOREM;
+DIterJunctionSupplier NOT refuted; source-level question OPEN); junc_bundle leaves the
+open-wall list; the FGMN transcription-scale re-derivation charter displayed as the NEW
+ASVIN-FLAG item in the §29/§30/§33 lineage (proposal-only, statement-change genre).
+(2) ADM-REAL' ACCEPTED folded at the (ADM) row — CLASS-LAT a lattice theorem at every
+order, unconditional ((GR-B) conditionality removed from track A); displayed opens =
+(B-PIN) + (C-JCT) audit + F-ADM-3 (EDIT-GATED, CensusCore.lean:155); row stays [M].
+(3) depth-3 probe + TR3-S3 displayed at the (H1) row — (IDENT-3) measured EXACT;
+TR3-S3 IN VERIFICATION at REVISION 3 (p2 Codex CLEAN pre-revision, p3 Fable GAPS-ONLY,
+p4 Codex GAPS-ONLY, p5 running; counter 0/2) — NO status upgrade.
+(4) N-H7-1 folded at the (I-τ)/K-LOC row — first-contact survival (139 PASS) + the two
+measured restatement pins (slope-keyed ε; D-8 guard boundary); slope-pooled REFUTED;
+statements still OPEN. (5) the JFS2 faithfulness-arc closure + the two ops one-liners
+(appendix checklist validated at VC28+VC29; pkill trap) recorded. HOUSEKEEPING:
+SYNTHESIS PASS 7 OWED (CLASS-LAT / junc_bundle verdict / BPLL / v4-chain collapses need
+the /goal re-map); the Asvin batch re-displayed incl. the FGMN charter. CENSUS: 38
+patterns at the declared occurrence unit (34 inherited + CLASS-LAT/TR3-S3/VC30 new,
+JUNCFORGE promoted), every delta reasoned, fixed point re-grepped after the last edit.
+CADENCE: VC30 is OWED on the REVISION-28 wording (charge at §34; model diversity per
+the tree §4 bar) — never self-confirmed; until it lands the acceptance citation points
+at the REVISION-27 text. Files: ROOT + docs/PROJECT_STATE.md (r29 checkpoint) + this
+ledger ONLY (doc-only unit; no Lean file touched, no statement changes).
