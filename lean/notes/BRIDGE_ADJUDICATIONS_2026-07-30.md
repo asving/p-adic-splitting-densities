@@ -5691,3 +5691,52 @@ accepted note. CONSEQUENCES: with accepted TR3-S1 + TR3-S2, TR-3'-GEN is proved 
 finite identity unconditional) + PIN-GEN-i displayed (the pdftotext leg owed at Defs
 3.15/3.16/3.18). Deeper strata (e_j >= 2 orders >= 3; the sealed TWIST-3 candidate)
 stay OPEN, probe-first. GRB's TR-3'-GEN scope union updates ride r30.
+
+## 2026-08-08: SYNTHESIS PASS 7 — the source-question window mapped; the (H-v3) collapse found; queue re-ranked
+
+`docs/SYNTHESIS_PASS7_2026-08-08.md` (the r29-8 owed re-map; window = waves
+10–13 + the cadence arc, all inside the REVISION-28/VC30+VC30b anchor).
+**F1**: the FGMN transcription-scale re-derivation is DISPATCH-READY with
+FOUR riders the §R3 charter does not pin (row-A satisfiability leg — a
+proposal that trips the parity wall is dead on arrival; the PIN-GEN-i
+discharge folded in as a rider, same source/same extraction discipline;
+fgmn.pdf provenance-pinned into docs/references; the DITER §S3 supplier
+obligations as fixed points) — queue #2, hardest-first, proposal-only
+(product Asvin-flagged, the unit itself not). **F2** collapses: (a)
+CLASS-LAT reaches NO other row ((PACK)/(E-N)/(UB-X) obligations are not
+wt-lattice-shaped) but names the concrete Lean target — the F-ADM-3 `wphi`
+re-key + `classCount_eq_d` replacing ADM-U2's `hclass` (ADMREAL §8),
+executable under the standing definition-change authority; (b) TWIST-3 is
+probe-ready (sealed candidate + strata3 harness + ORD-INV fence) — the
+next (H1)-strata leaf is the PROBE, TR3-S4 only on an exact law; (c) the
+window's 3/3 verifier-owned from-note implementations (93/1,564/821)
+PROMOTED to a standing acceptance expectation for numerics-backed proof
+notes (implementation-level decorrelation; pure-Lean units exempt); (d)
+BPLL's hull core makes the banked `npVertices_stable_of_hull_preserved`
+sorry ATTEMPT-GRADE (the corpus's one banked sorry). **F3 — the window's
+cheapest big lever**: (H-v3) is an S/M SOURCE UNIT, not open math — the
+TR3S3 §S1 sketch derives v₃ = w₂ from GMN Def 2.5 given only the H_{r−1}
+generic display, and ADM-REAL′ already produced the sha256-pinned
+HigherNewton.tex with Def 2.5 label-verified; extract the display, run the
+sketch at e₁ = 1; numeric cover already on file (P0/CERT3). Payoff: the
+trilogy's only non-print hypothesis gone. **F4** row review (NINE): (ADM)
+next unit = the re-key (#4) then the (C-JCT) audit; (H6) C2 STAYS BLOCKED
+(design note only); (H7) restatement forge now real (two pins as inputs);
+(H8′)/(PACK)/(E-N) unchanged. **F5** pass-6 audit: 7/13 executed incl. all
+five wave-10 dispatches; forge stage 3 BLOCKER-SUPERSEDED (now gates on the
+FGMN proposal); ITER-LAW's slot condition resolved at window end →
+re-queued unconditional; **dropped-again count ONE — the (UB-X)
+consumer-need walk (2nd consecutive), named-dispatch this pass**. **F6**:
+the r30 fold DUE (anchor citation still says REVISION 27/VC29; TR3-S3
+acceptance + GRB scope union + census re-measure ride it; VC31 owed on the
+r30 text); reference-set gap flagged (two load-bearing sources exist only
+as /tmp artifacts or hash-without-file); **the qualifier-propagation
+defect class (7 appearances: JFS2 r1–r4, VC30 f1, TR3-S3 p1g1, ADM-REAL′
+p1C) gets the template fix — DEFINED-TERM VERDICTS**: scoped verdicts
+restated ≥ 2× get a named term with the qualifiers inside the definition;
+all other sites use the term verbatim; verifiers check one definition site
++ mechanical grep. QUEUE: r30 fold → FGMN re-derivation (M/L) → (H-v3)
+discharge (S/M) → F-ADM-3 re-key + classCount_eq_d → TWIST-3 probe →
+ITER-LAW attempt → (UB-X) walk (NAMED) → (H7) forge →
+DIterJunctionSupplier statement (junction gates blocked on #2) →
+banked-sorry attempt → Asvin batch → optional S batch → background.
