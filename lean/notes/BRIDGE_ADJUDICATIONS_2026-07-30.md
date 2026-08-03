@@ -6280,3 +6280,14 @@ perimeter (KER-13, A-GEN-3, Z2-e2, EXP-3, the t₂-absorption chain, Lemma HV3-E
 S2–S5, the fences) is untouched. Counter 0/2; passes 2+3 decide under the standing
 division-of-labor discipline; the S8.4 F2c verifier-owned implementation REMAINS the
 acceptance obligation.
+
+## TR3-S4 ACCEPTED (p3 Fable-executed + F2c-discharged CLEAN + p4 Codex content-CLEAN) — the strata family at FOUR members
+
+The 4-pass/2-revision arc closes. TR-3'-GEN now proved on {all order-2} ∪ {order-3
+all-e_j=1 print-unconditional} ∪ {order-3 e₀=1,e₁≥2,e₂=1 conditional on standing rows;
+HV3-E2 derived from print}. The F2c verifier-owned-implementation requirement was
+discharged IN-PIPELINE for the first time (pass 3's 1,108-check build with mutation
+controls). HYGIENE for r34: the upstream TWIST3_PROBE prose carries the pre-correction
+KEY0-LIFT orientation label (pass-3 observation) — a dated supersession bracket rides
+the r34 fold. Next: r34 fold (this acceptance + anchor citation + the hygiene bracket)
+→ VC35 → the synthesis-7 tail → SYNTHESIS PASS 8.
