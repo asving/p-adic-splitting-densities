@@ -6478,3 +6478,38 @@ residual); node literals synthetic-but-lawful (S2 genre); engine-tied
 (H7-D1b genre) remain open; NOTHING here discharges (H7) — it is its first compiled
 non-vacuous decision point. Fences: no existing statement touched; sorried toy decls
 not consumed; parked items 22–29 untouched.
+
+---
+
+## 2026-08-08 — ITER-LAW hostile pass PE (Fable execution leg + F2c): CLEAN (0 crit / 0 gap)
+
+UNIT: hostile pass PE on `lean/notes/openmath/ITERLAW_2026-08-08.md` (acceptance bar
+2 consecutive CLEAN model-diverse; Codex content pass PC concurrent; this leg carries
+EXECUTION + full content read). VERDICT: **CLEAN — 0 critical, 0 gaps** (report:
+`lean/notes/openmath/ITERLAW_passPE_report.md`; acceptance-counter update is
+orchestrator-owned, not applied here). EXECUTION: (i) F2c verifier-owned FROM-NOTE
+reimplementation `verification/openmath/iterlaw_f2c_reimpl.py`, written and run to
+green BEFORE opening the sealed falsifier (seed 20260803, 6 fresh rows incl. E2 = 8,
+Case-II g0=1∧δ1=1 with 416-pair coverage, e0=1 and e1=1 controls, d0 ∈ {1,2}, all
+four rings, +5·E2 window): **89,056 samples / 0 violations** over 21 families (L2,
+L3, L4, L5, EXP, L6, L7 both forms + single-slot shape, THEOREM, COR-1/3, L1 both
+levels), and ALL FOUR mutation controls DETECTED (z̄-exponent 1584/1584, drop-
+ℓ₀γ₂δ₂ 424, /e₀→/1 536, δ₂-divisor e₁→e₁+1 344 detections); NO underspecification
+hit — the note text alone suffices to rebuild the whole calculus. (ii) SEALED RE-RUN
+byte-untouched (md5 = seal commit ab7c31c): exit 0, **35,232 samples / 0
+violations**, every family equal to the note's S8 verdict block (F1 468 · F2 2,604 ·
+F3 2,604 · F4 516 + coverage [36×4 P, 72×4 Q] MET · F5 4,108 · F6 2,604 · F7 156 ·
+F8 1,736 · F9 20,000 · F10 NOT-CYCLIC 4/4 exact value sets {z₁, z̄, z̄z₁^b},
+b ∈ {1,2} · CERT 432); committed results JSON reproduced byte-identically. (iii)
+Semantic diff reimpl-vs-sealed+harness: NO disagreement on what the note pins (3
+value-identical implementation variants recorded as observations O1–O3). CONTENT:
+every step re-derived (L1–L7, EXP's Bézout delivery, Case-II sign −ψ₀(0) = z₁ +
+exact two-digit development + case exhaustion, S5, COR-1..5, S6.6);
+recovered-not-consumed HOLDS (no W-MULT/Thm 4.2/4.8/GMN semantics in the chain);
+residuals honest (ITER-LAW-LIFT open exactly at g0=1∧δ1=1; gr(w₂) rides GRB
+retarget; orders ≥ 3 untouched); statement-of-record display VERBATIM (note proves
+e₀,e₁ ≥ 1 ⊇ the restatement's E₂ > 1 setting); sealed rows verified fresh vs the
+13-row strata roster (X = row-N shape as declared); harness line-cites exact.
+FILES: the report + `iterlaw_f2c_reimpl.py` + its output/JSON artifacts. Fences:
+note and sealed falsifier byte-untouched; DITER_RESTATE untouched (verified ==
+242ba1e at pass start and end).

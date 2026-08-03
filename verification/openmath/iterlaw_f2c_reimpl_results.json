@@ -1,0 +1,154 @@
+{
+ "seed": 20260803,
+ "checks": {
+  "I-L1-lvl1": [
+   12000,
+   0
+  ],
+  "I-L1-lvl2": [
+   12000,
+   0
+  ],
+  "I-L2-INNER-SHIFT": [
+   12000,
+   0
+  ],
+  "I-L4-EPS-CLOSED": [
+   12000,
+   0
+  ],
+  "I-L5-EPS-MULT": [
+   12000,
+   0
+  ],
+  "I-EXP": [
+   12000,
+   0
+  ],
+  "F-L4-eps-closed-field": [
+   1200,
+   0
+  ],
+  "F-L5-eps-mult-field": [
+   1200,
+   0
+  ],
+  "W-membership": [
+   128,
+   0
+  ],
+  "L6-ANCHOR-VAL": [
+   128,
+   0
+  ],
+  "L3-WINDOW": [
+   1584,
+   0
+  ],
+  "T-W2-ADDITIVE": [
+   1584,
+   0
+  ],
+  "T-DENOM-NONZERO": [
+   1584,
+   0
+  ],
+  "CASE-PARTITION": [
+   1584,
+   0
+  ],
+  "L7-PAIR-VAL-formA": [
+   1584,
+   0
+  ],
+  "L7-PAIR-VAL-formB": [
+   1584,
+   0
+  ],
+  "L7-SINGLE-SLOT": [
+   1584,
+   0
+  ],
+  "COR1-INTEGRALITY": [
+   1584,
+   0
+  ],
+  "THEOREM-ITER-LAW": [
+   1584,
+   0
+  ],
+  "COR3-e0=1": [
+   72,
+   0
+  ],
+  "COR3-e1=1": [
+   72,
+   0
+  ]
+ },
+ "mutations": {
+  "M-ZBAR": [
+   1584,
+   1584
+  ],
+  "M-FIB": [
+   1584,
+   424
+  ],
+  "M-DIV": [
+   1584,
+   536
+  ],
+  "M-FLOOR": [
+   1584,
+   344
+  ]
+ },
+ "coverage": {
+  "caseI_d0": 1112,
+  "caseI_d1": 56,
+  "caseII": 416
+ },
+ "coverage_by_row": {
+  "VA": {
+   "caseI_d0": 384,
+   "caseI_d1": 0,
+   "caseII": 128
+  },
+  "VB": {
+   "caseI_d0": 192,
+   "caseI_d1": 0,
+   "caseII": 96
+  },
+  "VC": {
+   "caseI_d0": 72,
+   "caseI_d1": 0,
+   "caseII": 0
+  },
+  "VD": {
+   "caseI_d0": 48,
+   "caseI_d1": 24,
+   "caseII": 0
+  },
+  "VE": {
+   "caseI_d0": 96,
+   "caseI_d1": 32,
+   "caseII": 0
+  },
+  "VF": {
+   "caseI_d0": 320,
+   "caseI_d1": 0,
+   "caseII": 192
+  }
+ },
+ "duties": {
+  "E2>=8 row present": true,
+  "Case-II coverage > 0": true,
+  "e0=1 row present": true,
+  "e1=1 row present": true,
+  "Case-I delta1=1 coverage > 0": true
+ },
+ "total_samples": 89056,
+ "total_violations": 0,
+ "verdict": "GREEN"
+}
