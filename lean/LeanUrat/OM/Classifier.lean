@@ -7,6 +7,7 @@ import Mathlib
 import LeanUrat.Interface
 import LeanUrat.MontesAxiom
 import LeanUrat.OM.NewtonPolygon
+import LeanUrat.OM.HullStability
 import LeanUrat.OM.ResidualPolynomial
 import LeanUrat.OM.OMType
 import LeanUrat.OM.Termination
@@ -21,8 +22,9 @@ import LeanUrat.OM.Development
 
 **AS-BUILT STATUS (corrected 2026-07-30 verify-2 fold-in).** The PRE-WAVE signature skeleton this
 header used to describe has been FILLED by the waves: the module is fully proved except for
-(i) the ONE banked `sorry`, `npVertices_stable_of_hull_preserved` (the repaired hull-invariance
-contract, off the capstone path — see its docstring), and (ii) the declared NAMED CITE axiom
+(i) the formerly banked `sorry`, `npVertices_stable_of_hull_preserved` (the repaired hull-invariance
+contract, off the capstone path — DISCHARGED 2026-08-08 via `OM/HullStability.lean`; see its
+docstring), and (ii) the declared NAMED CITE axiom
 `omReadValuation_lt_of_certLevel_fkeyed` (GMN `ind(f) ≤ v_p(disc f)`, read-set-restricted).
 Compiled evidence 2026-07-30: the only `sorry` token in the file is that banked lemma's body;
 `certLevel_stabilizes` footprint = `[propext, sorryAx, Classical.choice, Quot.sound,
@@ -1202,8 +1204,15 @@ structural lemma). If every genuine vertex of `S'` is also a dot of `S` (at the 
 hence `npVertices`, hence `npSides` — coincide. (Off-hull dots are free to move up or vanish; the lower
 hull is pinned by its breakpoints, which are preserved.)
 
-**HONEST STATUS — REPAIRED STATEMENT, single narrowed `sorry` over a true fact; NOT an axiom; OFF the
-capstone path.** UPDATE (HULL_BLUEPRINT round 2): the ORIGINAL two-hypothesis form of this lemma
+**HONEST STATUS — DISCHARGED 2026-08-08 (banked-sorry attempt unit, synthesis-7 queue #10):
+PROVED, `sorry`-free**, via `NewtonPolygon.npVertices_stable_of_hull_preserved_core`
+(`OM/HullStability.lean`: the survivor-corner law `dropCollinear_corner` — `dropCollinear` on a
+strictly-sorted list leaves no collinear consecutive triple — plus the flattest-chord validity of
+consecutive full-vertex chords, the `dropCollinear_between` glue induction lifting chord attainment
+to consecutive genuine vertices, and the two-hull agreement transfer on the common abscissa range;
+built on the BPLL §0 kernels of `Scaffold/DictIII/BasePolyLength.lean`, copied verbatim with
+attribution for import hygiene). Everything below is the HISTORICAL record of the banked contract
+as it stood before the discharge. UPDATE (HULL_BLUEPRINT round 2): the ORIGINAL two-hypothesis form of this lemma
 (`hpres` + `habove` alone) is **FALSE**, with a machine-checked counterexample now banked as
 `NewtonPolygon.npVertices_not_stable_of_hull_preserved`: `S' = {(0,0)}`, `S = {(0,0),(1,0)}` satisfy
 both hypotheses (`npHeight S'` is identically `0`), yet `npVertices S = [(0,0),(1,0)] ≠ [(0,0)]`.
@@ -1251,8 +1260,8 @@ theorem npVertices_stable_of_hull_preserved (S S' : Finset (ℕ × ℕ)) (hS : S
     (hpres : ∀ P ∈ NewtonPolygon.npVertices S' hS', P ∈ S)
     (habove : ∀ P ∈ S, NewtonPolygon.npHeight S' hS' (P.1 : ℚ) ≤ (P.2 : ℚ))
     (habs : ∀ P ∈ S, ∃ Q ∈ S', Q.1 = P.1) :
-    NewtonPolygon.npVertices S hS = NewtonPolygon.npVertices S' hS' := by
-  sorry
+    NewtonPolygon.npVertices S hS = NewtonPolygon.npVertices S' hS' :=
+  NewtonPolygon.npVertices_stable_of_hull_preserved_core S S' hS hS' hpres habove habs
 
 /-- **`npSides` from `npVertices`** (trivial helper). `npSides` is the consecutive-pairs map of
 `npVertices`, so equal vertex lists give equal side lists. -/
@@ -1271,8 +1280,9 @@ survives at the SAME reduced dot — A1 `zmodValuation_reduce_stable` keeps the 
 abscissa), `habove` (every REDUCED dot is on-or-above the original hull — `npHeight_le` on the
 original dot composed with S1 `zmodValuation_le_reduce`: reduced valuations only rise or vanish), and
 `habs` (every reduced support abscissa is an original support abscissa — reduction never creates
-support indices, `coeffReduce 0 = 0`). The ONLY residual `sorry` is the abstract `Finset`
-hull-invariance lemma (true in its repaired three-hypothesis form, NOT an axiom). -/
+support indices, `coeffReduce 0 = 0`). The ONLY residual `sorry` WAS the abstract `Finset`
+hull-invariance lemma (true in its repaired three-hypothesis form, NOT an axiom) — DISCHARGED
+2026-08-08 via `OM/HullStability.lean`, so this lemma is now fully proved. -/
 theorem boxValSupport_reduce_stable_R (p : ℕ) [Fact p.Prime] {n : ℕ} (N : ℕ) (hN : 0 < N)
     (f : QuotientBox.monicBox p (N + 1) n) (hg : GuardSuppR p N hN f) :
     NewtonPolygon.npSides (boxValSupport p N (boxReduce p N n hN f))
@@ -1732,6 +1742,9 @@ lemma's footprint only through `boxValSupport_reduce_stable_R`. Compiled footpri
 `certLevel_stabilizes` (2026-07-30): `[propext, sorryAx, Classical.choice, Quot.sound,
 omReadValuation_lt_of_certLevel_fkeyed]` — the `sorryAx` comes only from the banked hull lemma,
 off the capstone path.]
+[DISCHARGE UPDATE 2026-08-08: the banked hull lemma is now PROVED (`OM/HullStability.lean`), so
+the `sorryAx` leaves this footprint; expected `certLevel_stabilizes` footprint is
+`[propext, Classical.choice, Quot.sound, omReadValuation_lt_of_certLevel_fkeyed]`.]
 
   certLevel_stabilizes = oneDigit_to_LE_fkeyed                       -- D-tele telescoping (f-keyed)
     ⟸ oneDigitCylinder_fkeyed: classify(N+1) g = classify N (boxReduce g), for g in the BULK

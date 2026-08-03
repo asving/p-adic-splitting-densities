@@ -6400,3 +6400,48 @@ DITERSUP's J3b blocked-on-ITER-LAW leg may now cite proved-on-class (standard-li
 instances — all compiled ones are); status-upgrade brackets at DITER_RESTATE §S2 /
 GRB S5.3 / PROJECT_STATE (H1)(iii) ride the next r-fold, NOT applied by this unit.
 NEXT per the wave-16 queue.
+
+---
+
+## 2026-08-08 — BANKED SORRY DISCHARGED (synthesis-7 queue #10, pass-6 F2d): the
+## corpus's ONE banked `sorry` is RETIRED — `npVertices_stable_of_hull_preserved`
+## PROVED, Lean-core, statement byte-unchanged
+
+Unit: banked-sorry attempt (attempt-grade per F2d: the BPLL hull core reaches the
+banked Classifier contract). Note: `lean/notes/openmath/BANKED_SORRY_2026-08-08.md`.
+NEW MODULE `lean/LeanUrat/OM/HullStability.lean` (~1740 lines, imports Mathlib +
+`OM/NewtonPolygon` ONLY; the BPLL §0 kernels copied VERBATIM with attribution —
+no-cycle checked, but importing BPLL would drag the 183-module Scaffold closure
+under the capstone path). Architecture: (§D) the SURVIVOR-CORNER law
+`dropCollinear_corner` — `dropCollinear` on a strictly-sorted list leaves NO
+collinear consecutive triple (converse companion of `dropCollinear_between`;
+junction closed by the two-lines-through-two-points cross-product identity
+`collinear₃_trans'`, goaldiff·(c₁−a₁) = (c₁−z₁)·h₁ + (c₁−b₁)·h₂); (§E) extreme
+abscissae are hull abscissae (argmin flattest/steepest chord constructions, BPLL
+`npHeight_pos_left`/`npHeight_at_zero` genre), consecutive FULL-vertex chords are
+VALID (flattest-chord transfer through `valid_right_on_hull` + no-hull-abscissa-
+between), and the fuel induction `glue_aux` lifts chord attainment to consecutive
+GENUINE vertices via `dropCollinear_between`; (§F) the two hulls AGREE on the
+common abscissa range (S-valid lines dominated by S'-vertex chords via `hpres` +
+`affine_le_on_Icc`; S'-vertex chords S-valid via `habove`), then each side's
+vertex membership is forced by the OTHER side's survivor-corner law through slope
+transfer (`pairSlope_eq_of_eval₂` on bracket overlaps), and `sorted_eq_of_mem_iff`
+closes. Falsifier (test-before-prove, falsifiers only):
+`verification/openmath/banked_sorry_falsifier.py` — 0/4000 (repaired statement)
++ 0/4000 (survivor-corner), Lean-defs-exact mirror incl. junk-0 division.
+COMPILED EVIDENCE: full `lake build` green (8698 jobs);
+`lake env lean LeanUrat/AxChk_baseline.lean` exit 0 with ZERO `sorryAx` in the
+1099-line census, all capstone footprints UNCHANGED Lean-core; direct probes:
+`npVertices_stable_of_hull_preserved` + `boxValSupport_reduce_stable_R` now
+`[propext, Classical.choice, Quot.sound]`; `certLevel_stabilizes` drops `sorryAx`
+to `[propext, Classical.choice, Quot.sound, omReadValuation_lt_of_certLevel_fkeyed]`
+(the declared NAMED CITE axiom only). OM tree greps ZERO `sorry` statements.
+Classifier.lean touched ONLY at: one import line, the `sorry` body → term-mode
+`exact` of `NewtonPolygon.npVertices_stable_of_hull_preserved_core`, and the four
+honesty-comment sites (theorem docstring, file header, `boxValSupport_reduce_stable_R`
+docstring, `certLevel_stabilizes` census bracket) — STATEMENT BYTE-UNCHANGED.
+BPLL untouched. RESIDUALS: none mathematical; the CLAUDE.md/PROJECT_STATE
+"exactly one banked sorry" lines are now stale and ride the next r-fold (not
+applied by this unit). Verifier pass (fresh-context, per informal-math discipline)
+OWED at the next acceptance arc if the ROOT wants one beyond the kernel check —
+the kernel IS this unit's verification leg (pure Lean unit).
