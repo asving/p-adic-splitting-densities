@@ -8300,3 +8300,55 @@ round-4 2-clean bar is NOT met regardless of PC3; owed = errata round 4
 Finding surface across five rounds: 2C/3G → 0C/2G → 0C/1G → 0C/1G → 0C/1G,
 math layer clean throughout — the residue remains confined to the S7
 completeness-display branches.
+
+## ITERLAWN errata round 4 APPLIED + DEPENDENCY-CLAIM SWEEP — 2026-08-03 (orchestrator-direct; PE4 adjudicated)
+
+[Anchor: appended after "ITERLAWN-PE4 (Fable, round 4)" (tail "…the residue
+remains confined to the S7 completeness-display branches."); base text
+4e8f027 md5 c088101c9676118566a54ad3bb18dfdf; all edits bracket-additive
+(the 5 touched lines resume verbatim inside their extended forms; 0 lines
+deleted).]
+
+**E1 (PE4-F1 cured):** the S7 [IL3]-failure branch gains the round-4
+erratum bracket — the row-4 exemption is FALSE at rungs ≥ 2: L6-(n)
+consumes S4.1 via (a) the canonical-lift certification WELL-DEF-(n) (the
+S0.1 class pin; every rung ≥ 2 tower invokes realize₁) and (b) the S4.2
+degree-telescope input deg Φ_{j+1} = e_jg_j·deg Φ_j, which needs
+REALIZE-(m)'s (R1) + the C_k existence (WELL-DEF(i)); S4.1's m = 1 base
+rides [IL3]†. Under the hypothetical, row 4 (rungs ≥ 2) falls WITH row 3
+to "open at the [IL3] WELL-DEF m = 1 displays" (same elementary recovery);
+rung 1 exempt. The r3 erratum's "Rows 1/2/4 … stand as written" carries a
+nested r4 bracket: row-4 leg superseded, rows 1/2 verified standing (PE4
+§4.1). **E2 (the ripple, all five expression sites):** attribution
+brackets at the S0.3 clause-table L6 row, the S1 item-1 ingredient gloss,
+the S4.2 close (which also gains the explicit telescope-input citation:
+(R1) + C_k existence, Φ_{j+1} monic for the next-level division
+algorithm), the S7 table row 4 (all rung ≥ 2 cells), and the S10 DAG —
+which gains the missing edge REALIZE-(m)/WELL-DEF-(n) [S4.1] → L6-(n)
+(the silent consumption that abetted the PE r1/PE3 misses). **E3 (THE
+GENRE-CLOSING SWEEP):** a DEPENDENCY-CLAIM SWEEP TABLE now sits at S7's
+head — every dependency/exemption claim in the note (grep: only / alone /
+NOT affected / self-contained / free / independent / consume(s) / never)
+adjudicated against actual consumption sites. **Result: 22 claim-sites
+swept. 6 rows carry a corrected-this-round leg — ALL six are expressions
+of the single PE4-F1 defect (the S0.3 L6 row, the S1 positive gloss, the
+S4.2 "given only [IL]" clause, S7 table row 4, the branch-A row-4
+exemption, the missing S10 DAG edge). 3 rows carry a prior-round-corrected
+leg, each re-verified standing (PE-G1 r1 "given IH package"; PE2-F1 r2
+branch-B row 2; PE3-F1 r3 branch-A row 3). Every remaining leg VERIFIED
+(12 rows purely so — incl. the Φ_{n+1} non-consumption, the two-block
+consumption census, TRUNC's level-≤ m claim, the S3 "modulo [IL] alone",
+the RM-1 rung ≥ 3 non-consumption, and branch-B rows 1/3/4). ZERO false
+dependency claims found beyond PE4's list — no new finding; the genre is
+closed by enumeration: no unverified dependency claim remains in the
+note.**
+
+Round scoreboard and trajectory: finding surface 2C/3G → 0C/2G → 0C/1G →
+0C/1G → 0C/1G across rounds 1–4, ALL findings display-grade since r1
+(every math-layer re-derivation clean in every pass; both re-runs
+byte-exact/content-identical at PE4). The three genre findings — PE2-F1
+(branch B row 2, r2), PE3-F1 (branch A row 3, r3), PE4-F1 (branch A row 4,
+r4) — are each one DAG edge deeper than the last; with both branches now
+row-by-row adjudicated (PE4 §4) AND the sweep table in place, the genre
+has no remaining unverified surface. **ROUND 5 = PC4 + PE5, both on THIS
+round-4 text, both must be CLEAN = the acceptance attempt.**

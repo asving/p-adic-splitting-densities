@@ -245,7 +245,7 @@ step of S4, on the following honest perimeter:
 | TRUNC (the truncation dictionary) | PROVED, generic | S4.0 |
 | REALIZE-(m) + WELL-DEF-(n) (canonical lifts exist; Ĉ-clauses) | PROVED, generic (incl. the (I_m) descent invariant — NEW) | S4.1 |
 | READ-ADD-(m) (additivity + strict-above kill) | PROVED, generic | S4.1 |
-| L6-(n) ANCHOR-VAL = ε-chain, all n | PROVED given only the [IL] base (ACCEPTED on the harness tower class, standard-lift, superset of §S2's E₂ > 1 pin, three residuals; no RM, no DCX) | S4.2 |
+| L6-(n) ANCHOR-VAL = ε-chain, all n | PROVED given only the [IL] base (ACCEPTED on the harness tower class, standard-lift, superset of §S2's E₂ > 1 pin, three residuals; no RM, no DCX) **[attribution (errata r4, 2026-08-03; PE4-F1): + S4.1 at rungs ≥ 2 — the canonical-lift certification (WELL-DEF-(n)/(R1) + C_k existence) consumed via the S0.1 class pin and the S4.2 degree-telescope input; S4.1's m = 1 base rides [IL3]†; rung 1 given [IL] alone]** | S4.2 |
 | the induction package (ITER-PKG-r) | STATED; base r = 1 ACCEPTED, r = 2 = [IL3] 0/2 | S4.3 |
 | CASE-SPLIT-(n) | PROVED, generic (given IH package) | S4.4 |
 | W-MULT-(n) Case I | PROVED, generic (given IH package) | S4.5 |
@@ -271,7 +271,12 @@ next level's correction products. The step rung r → rung r+1:
 
 1. **L6-(r+1)**: the anchor's top digit IS the truncated tower's anchor
    (TRUNC); one degree telescope + the IH (P-L6). Fully generic; the L6 chain
-   never consumes W-MULT, RM, or any DCX exclusion.
+   never consumes W-MULT, RM, or any DCX exclusion. **[Attribution (errata
+   r4, 2026-08-03; PE4-F1): the telescope's input deg Φ_{j+1} =
+   e_jg_j·deg Φ_j is an S4.1 export (REALIZE-(m)'s (R1) degree bound + the
+   WELL-DEF(i) existence of the C_k), so the honest ingredient list is
+   TRUNC + S4.1 + telescope + IH (P-L6). The negative clause stands
+   literally true — S4.1 is none of W-MULT/RM/DCX.]**
 2. **W-MULT-(r+1)**: the pair product's top digit A IS the truncated tower's
    anchor-pair product, so the IH (P-WM)/(P-DS) computes it — "L7 stacked on
    L7", now as the literal induction mechanism. Case I (no Φ_{r+1}-overflow)
@@ -563,6 +568,23 @@ unit (unit powers in the field K_{n+1}). ∎
 base as ACCEPTED on the harness tower class, standard-lift, strict superset
 of §S2's E₂ > 1 pin, three residuals in force — and never consumes W-MULT,
 (RM-m), or any DCX exclusion. The 5-read instance: B1_L6 56/56 exact, S8.)
+
+**[ATTRIBUTION ERRATUM (errata round 4, 2026-08-03; PE4-F1): "given only
+[IL]" undercounts — the proof above also consumes S4.1, at every rung ≥ 2.
+The telescope input deg Φ_{j+1} = e_jg_j·deg Φ_j (with Φ_{j+1} monic, as
+the division algorithm at the next level requires) holds only given
+REALIZE-(m)'s (R1) degree bound deg C_k < deg Φ_m PLUS the existence of the
+C_k — WELL-DEF(i) — applied to the S0.1 lift construction Φ_{m+1} =
+Σ_{k ≤ g_m} C_kΦ_m^{e_mk}, C_{g_m} = 1 (the S0.1 class pin:
+"well-definedness on the class: Lemma WELL-DEF-(n), S4.1"); TRUNC's
+"identical … lifts" clause presupposes the same certification. And S4.1's
+m = 1 base legs consume [IL3]† WELL-DEF(i)/(ii) (the S4.1 operative
+bracket). Corrected attribution: unconditional at every rung given [IL] +
+S4.1 (rung 1 — whose tower has no canonical lift — given [IL] alone). The
+negative clause stands as written: no W-MULT, no (RM-m), no DCX exclusion.
+No live grade change ([IL3] is ACCEPTED, the S7 r38 bracket); the
+correction bites only in the S7 [IL3]-failure display branch, where row 4
+now falls WITH row 3 at rungs ≥ 2 — the S7 round-4 erratum.]**
 
 ### S4.3 The induction package (ITER-PKG-r)
 
@@ -1071,6 +1093,58 @@ structure likewise (M3; FJ1–FJ3 at 4 reads). No new derivation is claimed.
 
 ## S7. THE CONDITIONALITY LEDGER (the exact grade of every clause, per rung)
 
+**[DEPENDENCY-CLAIM SWEEP TABLE (errata round 4, 2026-08-03 wallclock,
+campaign 2026-08-08 — the genre-closing audit). Motivation: rounds 2/3/4
+each found ONE false exemption clause in the failure-display branches
+below (PE2-F1 → cured r2, PE3-F1 → cured r3, PE4-F1 → cured this round —
+row 2, then row 3, then row 4, each one DAG edge deeper). This bracket
+closes the genre by exhaustive enumeration: EVERY dependency/exemption
+claim in this note (grep patterns: "only / alone / NOT affected /
+self-contained / free / independent / consume(s) / never"), each verified
+against the ACTUAL consumption sites (the S2/S3/S4.0–S4.2 proof bodies,
+the bracket structure, the S10 DAG as amended this round). Statuses:
+V = VERIFIED this sweep; C-r4 = corrected THIS round (all expressions of
+the single PE4-F1 defect); prior(rN) = corrected in errata round N.
+Result: 22 claim-sites swept; ZERO false dependency claims found beyond
+the PE4-F1 sites cured this round — no new finding.**
+
+| # | site | claim | adjudication | status |
+|---|---|---|---|---|
+| 1 | S0.1 lifts bullet | "the cocycle never consumes Φ_{n+1}" | anchors/val use Φ₀…Φ_n only; the lift construction stops at Φ_n | V |
+| 2 | head declaration | "consumes exactly two accepted defined-term blocks" | proof-grade census = [IL]† + [IL3]† exactly; sealed artifacts evidence-only; harness consumed as definitions | V |
+| 3 | print-consumption display | "no printed formula and no text extraction is consumed" | definitions-only consumption; swept by the r1 PE pass | V |
+| 4 | S0.3 clause table, L6 row | "PROVED given only the [IL] base" | FALSE at rungs ≥ 2: + S4.1 (telescope input + class pin) | C-r4 |
+| 5 | S0.3 DCX row + S4.7 head | "outer bound … from the S4.6 slot arithmetic alone" | r1 PE-G1 "(given IH package)" qualifier bracketed at all three sites; standing | prior(r1) |
+| 6 | S1 item 1 | "the L6 chain never consumes W-MULT, RM, or any DCX exclusion" | negative clause TRUE (S4.1 is none of the three); the POSITIVE ingredient gloss omitted S4.1 | V + C-r4 |
+| 7 | S2 D_j-INT cross-ref | "whose proof needs only β_j″ = B_j + S_j" | proof = elementary eq-12 congruence + SHIFT at level j, nothing else | V |
+| 8 | S2 descent lemma | constants "depend only on (γ mod E_{n+1}, γ′ mod E_{n+1})" | proved in-display; PE4 re-derived | V |
+| 9 | S3 close | "self-contained modulo the ACCEPTED [IL] alone" | exact: (b)/(c) consume L1 and nothing else, (a) elementary | V |
+| 10 | S4.0 TRUNC | "the canonical lift construction at level m consumes only data of levels ≤ m" | C_k inputs = ψ_m, γ_{m+1}, ε_m, realize_m, Φ_m — all of level ≤ m | V |
+| 11 | S4.1 operative bracket | "m = 1 base legs consume [IL3] WELL-DEF(i)/(ii)"; "DCX-independent and engine-free" | PE3/PE4 re-derived (monomial-sum displays; no DEV-1/engine call) | V (r1-added) |
+| 12 | S4.2 close | "given only [IL]" / "never consumes W-MULT, (RM-m), or any DCX exclusion" | first clause FALSE at rungs ≥ 2 (+ S4.1); negative clause TRUE | C-r4 / V |
+| 13 | S4.3 (P-L6) clause | "[No DCX exclusion needed for this clause]" | L6-(n) and S4.1 both carry no DCX hypothesis | V |
+| 14 | S4.3 notation erratum | "the composed shifts S_j NEVER appear in S4.3–S4.7" | verified absent (PE4 §5 T-notation sweep) | V |
+| 15 | S4.4 precision note | "only the containment is ever consumed downstream" | PE4 §2 re-derived (⊆ + the per-case implications only) | V (r3-added) |
+| 16 | S4.6 (RM-1) box | "rung ≥ 3 steps never consume RM-1" | the step at rung r+1 calls (RM-r) with r ≥ 2; the rung-2 package is cited wholesale as [IL3]† | V |
+| 17 | S4.7 PE-G1 bracket | "engine-free-support lemma … plausible, NOT claimed here" | honest open fence — no claim to verify | V |
+| 18 | S6.1 | "no cross-level denominator ever forms" | S5 assembly: one EXP-KIT(c) kernel per level, each denominator cured inside its own kernel | V |
+| 19 | S7 table row 4 | "proved given [IL] (only)" | FALSE at rungs ≥ 2 (+ S4.1) | C-r4 |
+| 20 | S7 branch A ([IL3]-failure) | the row 1/2/3/4 exemptions | rows 1/2 VERIFIED (S2/S3 consume L1 = [IL] only — no [IL3] object anywhere); row 3 = PE3-F1; row 4 = PE4-F1 | V / prior(r3) / C-r4 |
+| 21 | S7 branch B ([IL]†-failure, the E4 bracket) | row 1 "sole [IL] consumption is EQ12-ADD"; row 2; row 3 "rides only the S0.2 elementary base facts and [IL3]†'s m = 1 displays"; row 4 "loses its base, every rung" | row 1 verified SOLE; row 2 = PE2-F1; row 3 dependency set verified COMPLETE (PE4 §4.2 — the S0.2 base facts are textbook facts LISTED in [IL S1], not [IL]-proved lemmas); row 4 TRUE (the S4.1 ride is dominated by the base loss) | V / prior(r2) / V / V |
+| 22 | S10 DAG | the displayed edge census, read as consumption claims | the S4.1 → L6-(n) edge was ABSENT (the silent consumption behind PE4-F1) — added this round; every other displayed edge is a real consumption site | C-r4 |
+
+**The three prior-round genre corrections, for the record: PE2-F1 (r2:
+branch B row 2 — EXP-KIT falls to "open at L1"; its (b)/(c) cite L1);
+PE3-F1 (r3: branch A row 3 — REALIZE falls to "open at the [IL3] WELL-DEF
+m = 1 displays"); PE4-F1 (this round: branch A row 4 — the L6 chain falls
+WITH row 3 at rungs ≥ 2). All three are display-grade findings in
+structural-completeness branches; no live claim was ever affected ([IL]
+and [IL3] are both ACCEPTED, and every math-layer re-derivation across the
+five passes has been clean). After this sweep, every dependency/exemption
+claim in the note is either verified against its consumption sites or
+carries a dated correction bracket — zero unverified dependency claims
+remain.]**
+
 Base citations, once more per rule 8: [IL] = ACCEPTED 2026-08-03 ("Scope as
 accepted: the harness tower class (superset of DITER_RESTATE §S2's E₂ > 1
 pin; on-the-nose coincidence restricted to E₂ > 1); residuals:
@@ -1123,7 +1197,7 @@ round 3 owed; proved off DCX-(2); errata r1 at f9daca0.
 | 1 | integer layer (SHIFT, D-INT, (★), WINDOW, slotwise cocycle, descent of constants) | UNCONDITIONAL | UNCONDITIONAL | UNCONDITIONAL | UNCONDITIONAL (this note, S2) |
 | 2 | EXP-KIT | ACCEPTED instance ([IL]) | proved ([IL3]/S3) | proved (S3) | proved (S3, self-contained) |
 | 3 | REALIZE/WELL-DEF/READ-ADD | — | [IL3] + S4.1 | S4.1 | proved generic (S4.1) |
-| 4 | L6 chain (anchor = ε-chain) | ACCEPTED | proved given [IL] | proved given [IL] | proved given [IL] only (S4.2) |
+| 4 | L6 chain (anchor = ε-chain) | ACCEPTED | proved given [IL] | proved given [IL] | proved given [IL] only (S4.2) **[r4 attribution (PE4-F1), all rung ≥ 2 cells: + S4.1 — the canonical-lift certification (WELL-DEF-(n)/(R1) + C_k existence) via the S4.2 telescope input; S4.1's m = 1 base rides [IL3]†]** |
 | 5 | W-MULT Case I | ACCEPTED ([IL] L7-I) | [IL3] 0/2 | given #6 at rung 2 | generic step proved; chain rides #6 |
 | 6 | W-MULT Cases II (off DCX) | ACCEPTED ([IL] L7-II) | [IL3] 0/2 (its DEV-1 = RM-1) | + OPEN (RM-2) | + OPEN (RM-m, 2 ≤ m ≤ n−1) |
 | 7 | W-MULT on DCX-(n) | vacuous (DCX-(1) = ∅) | OPEN (W-MULT-3-DCX) | OPEN | OPEN ((W-MULT-DCX-m) family) |
@@ -1143,10 +1217,34 @@ m = 1 base legs consume [IL3]† WELL-DEF(i)/(ii) (this note's own S4.1 operativ
 bracket and ledger row 3), so under the [IL3]-failure hypothetical row 3 falls
 back to "open at the [IL3] WELL-DEF m = 1 displays" (elementary, independently
 re-derivable, the same recovery genre as rows 1/2 under the [IL]†-failure
-branch below). Rows 1/2/4 of THIS branch stand as written; note the historical
+branch below). Rows 1/2/4 of THIS branch stand as written **[r4: the row-4
+leg of this re-affirmation is SUPERSEDED — row 4 falls at rungs ≥ 2, per the
+round-4 erratum bracket below; rows 1/2 VERIFIED standing (PE4 §4.1: both
+branches adjudicated row by row against actual consumption sites)]**; note the historical
 frame of this paragraph — the [IL3] arc has in fact CLOSED clean (the S7 r38
 bracket carries the acceptance) — so the branch is structural-completeness
-display only.]** If (RM-m) is proved for all m, rows
+display only.]** **[ERRATUM (errata round 4, 2026-08-03,
+orchestrator-direct; PE4-F1, the third finding of the PE2-F1/PE3-F1 genre,
+one DAG edge deeper): the row-4 exemption in the branch clause above ("the
+L6 chain (#4) … NOT affected") is FALSE at rungs ≥ 2 by this note's own
+dependency structure — L6-(n) consumes S4.1: (a) the class's canonical
+lifts Φ₂,…,Φ_n are certified by WELL-DEF-(n) (S0.1's own line:
+"well-definedness on the class: Lemma WELL-DEF-(n), S4.1"), and every
+rung ≥ 2 tower invokes realize₁ (for Φ₂), realize_m recursing down to it;
+(b) the S4.2 degree telescope consumes deg Φ_{j+1} = e_jg_j·deg Φ_j, which
+holds (with Φ_{j+1} monic) only given REALIZE-(m)'s (R1) degree bound plus
+the existence of the C_k (WELL-DEF(i)) — both S4.1 clauses; and S4.1's
+m = 1 base legs consume [IL3]† WELL-DEF(i)/(ii) (the S4.1 operative
+bracket; the r3-corrected row 3, recorded three lines above). So under the
+branch's hypothetical, row 4 at rungs ≥ 2 falls WITH row 3 to "open at the
+[IL3] WELL-DEF m = 1 displays" — the same elementary, independently
+re-derivable recovery; rung 1 (the 2-read tower, no canonical lift)
+remains exempt. Companion attribution brackets this round: the S0.3
+clause-table L6 row, the S1 item-1 gloss, the S4.2 close, the S7 table
+row 4, and the S10 DAG edge S4.1 → L6-(n); the genre-closing dependency
+SWEEP TABLE sits at the head of this section. Same historical frame as the
+r3 erratum: [IL3] is ACCEPTED (the r38 bracket), so this branch remains
+structural-completeness display only.]** If (RM-m) is proved for all m, rows
 #5/#6/#8 become unconditional-off-DCX at every rung (given [IL3]); if
 additionally the second-round clause closes (W-MULT-DCX), the perimeter
 becomes the whole class. **The INDUCTION SCHEMA reading (the charter's
@@ -1265,6 +1363,18 @@ DCX₂-live pairs. Nothing here upgrades any proof grade.
       → step (+RM-(n−1)) → (ITER-PKG-n)
     L6-(n) + W-MULT-(n) → S5 (THEOREM) → S6.2/6.3/6.4/6.5 field clauses
     (RM-m) [OPEN, m ≥ 2] → S4.6; (W-MULT-DCX-m) [OPEN] → S5 on DCX only
+
+**[DAG EDGE ADDED (errata round 4, 2026-08-03; PE4-F1):**
+
+    REALIZE-(m)/WELL-DEF-(n) [S4.1] → L6-(n)   [rungs ≥ 2]
+
+**— the canonical-lift certification (the S0.1 class pin) + the S4.2
+degree-telescope input ((R1) + C_k existence). The edge was absent above —
+a silent consumption in the sense of hostile charge (i) below, and its
+absence abetted the PE r1/PE3 row-4 misses (both passes treated the
+telescope as free-standing arithmetic). The TRUNC → L6-(n) edge carries
+the same certification implicitly (TRUNC's "identical … lifts"
+clause).]**
 
 (Rule-8 gloss for the DAG tokens: [IL] = ACCEPTED 2026-08-03 on the harness
 tower class, standard-lift, strict superset of DITER_RESTATE §S2's
