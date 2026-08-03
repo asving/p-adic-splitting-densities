@@ -5665,3 +5665,17 @@ pins; roster NINE) — EXCEPT the §34 closing-summary line, which restated the 
 verdict without the three restrictions. Orchestrator applied the one-line r29-ERRATUM
 (dated bracket, pre-confirmation) directly; VC30b (narrow) decides. Report archived:
 VC30_report.md (this commit).
+
+## 2026-08-08: VC30 + VC30b CONFIRMED — the ROOT acceptance RE-ANCHORS at REVISION 28
+
+VC30 (REVISION 28, the r29 text): 1 critical (the §34 closing line's unqualified
+junc_bundle restatement — the qualifier-propagation defect class's last appearance),
+0 gaps; every fold, the 38-pattern census, roster NINE, and all discipline checks
+passed. The r29-ERRATUM applied the three restrictions in a dated pre-confirmation
+bracket (573bd1b); VC30b (narrow): CONFIRMED 0C/0G. Reports: VC30_report.md (573bd1b),
+VC30b_report.md (this commit).
+CONSEQUENCE: the acceptance anchor moves REVISION 27/VC29 → REVISION 28/VC30+VC30b.
+Now inside the certified anchor: the junc_bundle verdict of record + the FGMN charter
+(Asvin-flag), the ADM-REAL' acceptance (CLASS-LAT), the N-H7-1 pins, the JFS2 arc, the
+strata3 measurement. ROOT citation text rides r30. VC31 next in cadence. Outstanding
+decider: TR3-S3 pass 6 (Fable).
