@@ -6817,3 +6817,44 @@ blocked unchanged. Pass-7 execution audit: 10/10 executed, dropped-again ZERO.
 Doc-only unit: this note + the pass document; no .lean touched, no sealed or
 byte-frozen record touched; roster NINE unchanged; the Asvin batch unchanged
 at four items.
+
+## DELEGATION + THE UNIFORMITY DIRECTIVE + THE FOUR DECISIONS — Asvin 2026-08-03, decisions by Claude
+
+ASVIN (verbatim): "I will leave you to make the decisions for the items you
+listed keeping the big picture in mind. The only guidance I will give is that
+the entire point is to find a proof for all orders, and all primes at once. So
+definitely pursue small cases and orders, but in math, not lean, and use the
+small examples to come up with a general strategy that will work in complete
+generality (the more uniform the better). Prioritize anything that leads to
+this."
+
+THE FOUR DECISIONS (criterion: does it make the GENERAL proof work):
+1. FGMN P0 — **APPLY NOW**, additive new-definition route (the primed mirrors
+   per the DITERSUP displays: SideReads′/ReadsOf′/DIterJunctionSupplier′ +
+   TruncRunFrom′/FTiedTruncLanding′/ftie_extends′, carrying the ACCEPTED
+   σ.wPrev semantics at the three token sites' analogues). Rationale: the
+   compiled clause is a VERIFIED misreading of the print (the double-scaled
+   stride weight) — any all-orders formalization must consume the faithful
+   functional; P0 is the schedule's articulation point (J1–J3b, SITE-EXH
+   residual, tie consumption behind it). Additive route ⇒ byte-frozen
+   JuncForge/D0 records stay retained-semantics fixed points, no existing
+   statement touched. Post-application hostile pass OWED. Rider executed with
+   it: the S3-vi same-defect audit (FGMN double-scale ≟ the V9/V10 steep-read
+   seam behind V9_K1nonrec's 4 sorries).
+2. TowerMoveClosureL — execute the ON-FILE recommendation (re-ratify the
+   widened statement proved under the approved SITE-EXH extension); it feeds
+   the exhaustiveness (hExhaust) route of the capstone.
+3. fence-(vii) lineage — execute the ON-FILE recommendation (ratify: GR route
+   (a) answered in-anchor + RECSL hσt + F-ADM-3 re-key).
+4. RB-DELTA / Route B — execute the ON-FILE recommendation (fold the UBX walk
+   paragraph).
+For 2–4 the executing unit re-reads the on-file memos first and flags any
+mismatch with these one-line readings instead of forcing.
+
+REPRIORITIZATION UNDER THE DIRECTIVE: PROMOTED — the all-orders program
+(ITER-LAW-r level-indexed cocycle → the graded carry-algebra structure theorem
+uniform in r and p; the gr(w₂) tie as its bridge to the OM objects; numerics
+probes as the small-case laboratory). DEMOTED — Lean small-case exploration
+(toy-forge extensions, E-phase statement backlogs: the TV clusters stay
+parked). Lean work retained: discharge dividends, fidelity repairs (P0),
+formalization of ACCEPTED general results.
