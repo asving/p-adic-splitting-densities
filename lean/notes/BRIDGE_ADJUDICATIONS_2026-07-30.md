@@ -8053,3 +8053,33 @@ PE-G1 qualifiers + the head declaration curing C2/PE-G2) and the r38b ROOT unit
 (the §0 convention declaration with both blocks pasted once + dagger sweep of
 the eight gap sites + the four→three miscount fix). VC38b + ITERLAWN round 2
 follow under the amended standard.
+
+## ROOT r38b EXECUTED — 2026-08-03: the VC38 cure batch under THE INCORPORATION CONVENTION; VC38b owed
+
+Unit r38b (the ROOT ERRATA unit; adjudication 9f9910c above). ROOT gains
+(1) **the §0 INCORPORATION-CONVENTION declaration bracket** (placed after
+the REVISION-37 standing paragraph, before the status vocabulary): the
+[IL] and [IL3] defined-term blocks pasted IN FULL from this ledger's
+blocks ("ITER-LAW ACCEPTED — 2026-08-03" scope-as-accepted package +
+three residuals; f726b36 "[IL3] ACCEPTED" block), the dagger forms
+[IL]†/[IL3]† designated as incorporating-by-reference; (2) **eight
+minimal dated r38b brackets at the VC38 gap-1..8 sites** — the §43
+opening summary (gap 1), the §3.2 end-to-end row's rides-through clause
+(gap 2), the §6 r38 bracket's rides-through clause (gap 3), 43.(ii)'s
+consuming citation (gap 4), the 43.(iii) sweep description (gap 5),
+disposition rows r38-2 (gap 6) and r38-4 (gap 7), the roster recount
+(gap 8) — each bare token converted to the dagger form citing the §0
+declaration, flawed text preserved, NO new full pastes at cells/recounts
+(the convention's point); the two superseded "pasted at every mention"
+parentheticals marked correct-as-dated in place; (3) **the gap-9
+miscount bracket** at r38-4 ("the four note files" → THREE:
+ITERLAWN_PROOF, L3CONVERGENCE, ITERLAW3_PROOF; the sweep's other two
+sites are ROOT's own §3.1 (H1) row and PROJECT_STATE); (4) **the r38b
+record** in §43's bookkeeping region (before the revision close). No
+sealed record touched; no Lean file touched; this unit ran no audit and
+never self-confirms — **VC38b is OWED under the amended standard**
+(checklist rule 8 as refined by 9f9910c: full paste at declaration +
+operative sites, dagger elsewhere; the rule-8 grep becomes: every bare
+[IL]/[IL3] token sits at a full-paste site or reads †). Unit files:
+ROOT + PROJECT_STATE (one-line tag) + this append ONLY (scoped
+`git commit --only`).

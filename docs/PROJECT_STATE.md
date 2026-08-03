@@ -2868,3 +2868,4 @@ VC35b CONFIRMED; VC36 NOT-CONFIRMED 1C/3G (disposed) + VC36b (0C/2G,
 remedies confirmed) + r36b + VC36c CONFIRMED; **VC37 NOT-CONFIRMED 0C/4G
 (disposed) + r37b errata + VC37b CONFIRMED (= the STANDING anchor,
 REVISION 36 + r37b)**; VC38 pending on REVISION 37.
+[r38b 2026-08-03: VC38 RAN — NOT-CONFIRMED 0C/9G (8 rule-8 literalism + 1 miscount; ledger 9f9910c); THE INCORPORATION CONVENTION adopted (declare-once + dagger [IL]†/[IL3]†); ROOT §0 declaration + nine cures applied; **VC38b owed under the amended standard**.]
