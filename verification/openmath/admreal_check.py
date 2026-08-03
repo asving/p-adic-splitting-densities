@@ -103,6 +103,64 @@ gated).
   still printed, marked SEALED-PREDICTION-REFUTED.  Exit 2 unchanged
   (theorem-grade).
 ================================================================================
+REVISION 1 ADDENDUM (2026-08-03 real clock; pass-1 report
+lean/notes/openmath/ADMREAL_pass1_report.md, verdict CRITICAL 1C/9G; this
+block sealed BEFORE the revised file's first execution — the pre-run
+immutable artifact is the preregistration commit that carries exactly this
+file, referenced from the note's REVISION 1 block).
+
+CONTRACT REPAIRS (pass-1 gaps 6-9):
+  R2(a) — shared-vertex coverage fix (gap 6): slots now carry face-membership
+      SETS (a shared vertex belongs to both adjacent faces); EVERY consecutive
+      pair is checked against the (unique) shared face's exact step law
+      b1 - b2 == e_F*V^ + h_F; a coverage counter asserts checked pairs ==
+      len(slots) - 1 on every datum.  Prediction: 0 step-law failures,
+      0 coverage misses, 0 non-singleton shared sets (20,000 data).
+  R2(d)/(e) — failure predicate corrected (gap 7): clearance is
+      b > classmax, so failure is b <= classmax (equality failures were
+      omitted by the old `b < cm`).  The pre-run derived bound covers
+      equality (failure at k != k_s forces b <= Wmax), so the predictions
+      are UNCHANGED under the corrected predicate: (d) every neg-pool
+      clearance failure has beta_end <= -2, 0 bound violations; (e) the pool
+      contains >= 1 failure.
+  R3' — exact-count contract (gap 8): coded_fail == 88 exactly (was > 0);
+      a drift to 1 or 89 now FAILS the leg.
+  R3(b)-STATE — refutation-state enforcement (gap 9): r2_fail == 0 under top
+      weights joins the LIVE exit contract (a reappearance of top-weight
+      r = 2 class failures => exit 1, not a silent PASS print).
+  R2 pool — stationary-interleaved 2-stage types join the datum pool
+      ([(1,h,1), s] and [s, (1,h,1)] for live s); prediction: R2(c) stays 0.
+
+NEW LEG R6 (the stationary-level leg; falsifier of the pass-1 CRITICAL
+repair).  Repair taken (note section 3 REVISION 1): option (b)-strong —
+W-LAD's vanishing omega_j(phi_i) = 0 is GMN's own Lemma 2.14 (arXiv-v2
+numbering; label `omji`), printed for ANY type of GMN's section-2 scope and
+proved WITHOUT degree comparison (slope minus-infinity point + the
+Lemma 2.2(1) omega-chain), so W-LAD holds at ALL levels, stationary
+included; secondary degree route covers exactly the ledger-live levels.
+  R6(a) closed-form tie: on the full r <= 3 grid (12,348 types, stationary
+      stages included) AND the r = 4 stationary spot grid, the note's ladder
+      w_i = E_i(e_i V_i + h_i) equals GMN Prop 2.15(1)'s closed form
+      sum_{j<=i} (e_{j+1}..e_r) (e_j f_j .. e_{i-1} f_{i-1}) h_j, every i.
+      Prediction: 0 failures.
+  R6(b) stationary W-CAP + CLASS-LAT: on the sub-grid with >= 1 stationary
+      stage (e_i f_i = 1) — count displayed, must be > 0 (leg non-vacuous) —
+      and the r = 4 spot grid: W-CAP identity + top-index attainment + cap,
+      and every residue class mod e has exactly d ledger indices.
+      Prediction: 0 failures.
+  R6(c) strictness-premise control (the pass-1 critical was REAL): on the
+      stationary sub-grid, m_i < m_j (i < j <= r; m_1 = f0,
+      m_{i+1} = e_i f_i m_i) FAILS for >= 1 pair — the retired degree
+      argument's premise is genuinely false there — and EVERY failing pair
+      has level i STATIONARY (live-level failures == 0: the secondary
+      route's exact coverage).  Predictions: >= 1 stationary-pair failure;
+      0 live-pair failures.
+
+  REVISION 1 exit contract (supersedes the addendum contract,
+  transparently): exit 0 iff R1, R2 (with the repaired (a)/(d)/(e)),
+  R3(a), R3(b)-STATE, R4, R5, R3' (== 88), R3'', R6 ALL pass.  Exit 2
+  unchanged (theorem-grade: R2(c) hit or R4 off-end partial).
+================================================================================
 """
 import itertools
 import json
@@ -225,20 +283,22 @@ def random_datum(rng, pool):
     for S in range(s, 0, -1):
         eS, hS = faces[S - 1]
         vbeta[S - 1] = vbeta[S] + lens[S - 1] * (hS + eS * Vhat)
+    # REVISION 1 (gap 6): slots carry face-membership SETS — a shared vertex
+    # belongs to BOTH adjacent faces, so every consecutive pair has a face in
+    # common and the per-face step law can be checked with NO skipped pairs.
+    smap = {}                     # k -> [beta, set(faces)]
     for S in range(1, s + 1):
         eS, hS = faces[S - 1]
         for j in range(0, lens[S - 1] + 1):
             k = vk[S - 1] + j * eS
             beta = vbeta[S - 1] - j * (hS + eS * Vhat)
-            slots.append((k, beta, S))
-    # dedupe shared vertices (identical (k, beta))
-    dedup = []
-    for x in slots:
-        if dedup and dedup[-1][0] == x[0]:
-            assert dedup[-1][1] == x[1], 'vertex mismatch'
-            continue
-        dedup.append(x)
-    return T, faces, dedup, beta_end
+            if k in smap:
+                assert smap[k][0] == beta, 'vertex mismatch'
+                smap[k][1].add(S)
+            else:
+                smap[k] = [beta, {S}]
+    slots = [(k, b, fs) for k, (b, fs) in sorted(smap.items())]
+    return T, faces, slots, beta_end
 
 
 def run_R2(trials=20000, seed=20260803):
@@ -246,39 +306,60 @@ def run_R2(trials=20000, seed=20260803):
     pool = [type_data(f0, [st]) for f0 in (1, 2) for st in STAGE]
     pool += [type_data(f0, [s1, s2]) for f0 in (1, 2)
              for s1 in STAGE[::3] for s2 in STAGE[::4]]
+    # REVISION 1: stationary-interleaved 2-stage types join the pool
+    SS = [(1, h, 1) for h in (1, 2, 3, 4)]
+    LIVE = [st for st in STAGE if st[0] * st[2] >= 2]
+    pool += [type_data(f0, [st, li]) for f0 in (1, 2)
+             for st in SS for li in LIVE[::3]]
+    pool += [type_data(f0, [li, st]) for f0 in (1, 2)
+             for st in SS for li in LIVE[::3]]
     fa = fb = fc = fd = 0
+    cov_fail = shared_bad = 0
     neg_failures = 0
     for _ in range(trials):
         T, faces, slots, beta_end = random_datum(rng, pool)
         Vhat, e, wts = T['Vhat'], T['e'], T['wts']
         Wmax = max(wts)
-        # (a) per-face step law (consecutive on-line slots of the SAME face)
-        for (k1, b1, S1), (k2, b2, S2) in zip(slots, slots[1:]):
-            if S1 == S2:
-                eS, hS = faces[S2 - 1]
-                if b1 - b2 != eS * Vhat + hS:
-                    fa += 1
+        # (a) REVISION 1: exact step law on EVERY consecutive pair, via the
+        # unique shared face (gap-6 repair; coverage counter enforced)
+        checked = 0
+        for (k1, b1, F1), (k2, b2, F2) in zip(slots, slots[1:]):
+            shared = F1 & F2
+            if len(shared) != 1:
+                shared_bad += 1
+                continue
+            S = next(iter(shared))
+            eS, hS = faces[S - 1]
+            if b1 - b2 != eS * Vhat + hS:
+                fa += 1
+            checked += 1
+        if checked != len(slots) - 1:
+            cov_fail += 1
         # (b) strict decrease across the whole ordered list
         for (k1, b1, _), (k2, b2, _) in zip(slots, slots[1:]):
             if not b1 > b2:
                 fb += 1
-        for (k, b, _S) in slots[:-1]:
+        for (k, b, _F) in slots[:-1]:
             cm = classmax(b, wts, e)
             fail = (b < Vhat + 1) or (cm is not None and not b > cm)
             if beta_end >= 0:
                 if fail:
                     fc += 1
             else:
-                if cm is not None and b < cm:
+                # REVISION 1 (gap 7): clearance FAILURE is b <= classmax
+                # (equality included; clearance itself is b > classmax)
+                if cm is not None and b <= cm:
                     neg_failures += 1
                     if beta_end > -2:
                         fd += 1
-    print('R2 STEP/NON-END: trials=%d  (a)step-fails=%d (b)monotone-fails=%d '
+    print('R2 STEP/NON-END: trials=%d  (a)step-fails=%d cov-fails=%d '
+          'shared-bad=%d (b)monotone-fails=%d '
           '(c)THEOREM-GRADE clearance fails@beta_end>=0=%d '
-          '(d)bound-fails=%d (e)neg-pool failures=%d'
-          % (trials, fa, fb, fc, fd, neg_failures))
+          '(d)bound-fails=%d (e)neg-pool failures(b<=cm)=%d'
+          % (trials, fa, cov_fail, shared_bad, fb, fc, fd, neg_failures))
     return dict(fa=fa, fb=fb, fc=fc, fd=fd, neg=neg_failures,
-                ok=(fa == 0 and fb == 0 and fc == 0 and fd == 0
+                ok=(fa == 0 and cov_fail == 0 and shared_bad == 0
+                    and fb == 0 and fc == 0 and fd == 0
                     and neg_failures >= 1))
 
 
@@ -355,11 +436,13 @@ def run_R3prime():
     top_ok = (sorted(Tt['wts']) == [0, 2, 5, 7]
               and all(sum(1 for w in Tt['wts'] if w % 4 == c) == 1
                       for c in range(4)))
-    print("R3' diagnosis: coded-weight r2 failing types=%d (expected > 0) | "
-          "F-ADM-2 type coded wts=%s (empty class: %s) top wts=%s "
-          "(uniform: %s)" % (coded_fail, sorted(Tc['wts']), coded_ok,
-                             sorted(Tt['wts']), top_ok))
-    return dict(ok=(coded_fail > 0 and coded_ok and top_ok))
+    print("R3' diagnosis: coded-weight r2 failing types=%d (REVISION 1 "
+          "contract: == 88 exactly) | F-ADM-2 type coded wts=%s (empty "
+          "class: %s) top wts=%s (uniform: %s)"
+          % (coded_fail, sorted(Tc['wts']), coded_ok,
+             sorted(Tt['wts']), top_ok))
+    # REVISION 1 (gap 8): the exact F-ADM-2 count is the contract
+    return dict(ok=(coded_fail == 88 and coded_ok and top_ok))
 
 
 def run_R3doubleprime():
@@ -375,6 +458,99 @@ def run_R3doubleprime():
     print("R3'' CLASS-LAT at r=3: types=%d class-count failing types=%d "
           "(prediction 0)" % (n, r3_fail))
     return dict(ok=(r3_fail == 0))
+
+
+# ------------------- R6 (REVISION 1): the stationary-level leg (pass-1 crit)
+def prop215_closed(T, i):
+    """GMN Prop 2.15(1) closed form (arXiv-v2; paper-r := r+1, our indexing):
+    sum_{j=1..i} (e_{j+1}..e_r) * (e_j f_j .. e_{i-1} f_{i-1}) * h_j."""
+    stages = T['stages']
+    r = T['r']
+    total = 0
+    for j in range(1, i + 1):
+        Ej = 1
+        for l in range(j + 1, r + 1):
+            Ej *= stages[l - 1][0]
+        mid = 1
+        for l in range(j, i):
+            mid *= stages[l - 1][0] * stages[l - 1][2]
+        total += Ej * mid * stages[j - 1][1]
+    return total
+
+
+def r4_spot_grid():
+    """r = 4 spot grid: stationary stages (1,h,1) interleaved among live."""
+    SS = [(1, h, 1) for h in (1, 2, 3, 4)]
+    LIVE = [st for st in STAGE if st[0] * st[2] >= 2]
+    for f0 in (1, 2):
+        for st in SS:
+            for li in LIVE:
+                for st2 in SS:
+                    for li2 in LIVE:
+                        yield type_data(f0, [st, li, st2, li2])
+                        yield type_data(f0, [li, st, li2, st2])
+                        yield type_data(f0, [li, st, st2, li2])
+
+
+def check_wcap_classlat(T):
+    """W-CAP identity + top attainment + cap, and class counts == d."""
+    r, Vhat, w, E = T['r'], T['Vhat'], T['w'], T['E']
+    brute = max(T['wts'])
+    closed = Vhat - w[1] - sum(E[i] * T['stages'][i - 1][1]
+                               for i in range(2, r + 1))
+    top = sum((T['stages'][i - 1][0] * T['stages'][i - 1][2] - 1) * w[i]
+              for i in range(1, r + 1))
+    if brute != closed or brute != top:
+        return False
+    if not (brute <= Vhat - w[1] <= Vhat - 1):
+        return False
+    return all(sum(1 for x in T['wts'] if x % T['e'] == c) == T['d']
+               for c in range(T['e']))
+
+
+def run_R6():
+    a_fail = b_fail = 0
+    n_all = n_stat = n_spot = 0
+    stat_pair_fail = live_pair_fail = 0
+    for T in list(all_types(rmax=3)) + list(r4_spot_grid()):
+        r = T['r']
+        spot = (r == 4)
+        n_all += 1
+        if spot:
+            n_spot += 1
+        # (a) closed-form tie on EVERY type (stationary included)
+        for i in range(1, r + 1):
+            if T['w'][i] != prop215_closed(T, i):
+                a_fail += 1
+        stationary = any(st[0] * st[2] == 1 for st in T['stages'])
+        if not (stationary or spot):
+            continue
+        if stationary:
+            n_stat += 1
+        # (b) W-CAP + CLASS-LAT on the stationary sub-grid + the spot grid
+        if not check_wcap_classlat(T):
+            b_fail += 1
+        # (c) strictness-premise control: m_i < m_j pairs
+        if stationary:
+            m = [None, T['f0']]
+            for st in T['stages']:
+                m.append(m[-1] * st[0] * st[2])
+            for i in range(1, r + 1):
+                live_i = T['stages'][i - 1][0] * T['stages'][i - 1][2] >= 2
+                for j in range(i + 1, r + 1):
+                    if not m[i] < m[j]:
+                        if live_i:
+                            live_pair_fail += 1
+                        else:
+                            stat_pair_fail += 1
+    print('R6 stationary leg: types=%d (stationary=%d spot-r4=%d)  '
+          '(a)closed-form fails=%d  (b)W-CAP/CLASS-LAT fails=%d  '
+          '(c)premise-control: stationary-pair m_i<m_j failures=%d '
+          '(pred >= 1), live-pair failures=%d (pred 0)'
+          % (n_all, n_stat, n_spot, a_fail, b_fail,
+             stat_pair_fail, live_pair_fail))
+    return dict(ok=(a_fail == 0 and b_fail == 0 and n_stat > 0
+                    and stat_pair_fail >= 1 and live_pair_fail == 0))
 
 
 # --------------------------------------------- R4: realized re-adjudication
@@ -433,27 +609,33 @@ def main():
     r1, r2 = run_R1(), run_R2()
     r3, r4, r5 = run_R3(), run_R4(), run_R5()
     r3p, r3pp = run_R3prime(), run_R3doubleprime()
+    r6 = run_R6()
     preds = {
         'R1 (W-CAP identity/top-index/cap)': r1['ok'],
-        'R2 (STEP+NON-END abstract; (c) theorem-grade)': r2['ok'],
+        'R2 (STEP+NON-END abstract; (c) theorem-grade; REV-1 (a)/(d)/(e))':
+            r2['ok'],
         'R3(a) (CLASS-d r1 clean)': r3['r1_fail'] == 0,
+        'R3(b)-STATE REV-1 (top-weight r2 grid stays clean; refutation '
+        'state enforced)': r3['r2_fail'] == 0,
         'R4 (realized: no off-end partial; pin shape)': r4['ok'],
         'R5 (k_s carve-out necessary; A/B/C stand)': r5['ok'],
-        "R3' ADDENDUM (coded-weight variance reproduces F-ADM-2)": r3p['ok'],
+        "R3' ADDENDUM (coded twin == 88 exactly; REV-1 contract)": r3p['ok'],
         "R3'' ADDENDUM (CLASS-LAT clean on full r=3 grid)": r3pp['ok'],
+        'R6 REVISION-1 (stationary leg: closed form + W-CAP/CLASS-LAT + '
+        'premise control)': r6['ok'],
     }
-    print('\n== PREDICTIONS (sealed header + sealed addendum) ==')
+    print('\n== PREDICTIONS (sealed header + sealed addenda incl. REV-1) ==')
     for k, v in preds.items():
         print('  [%s] %s' % ('PASS' if v else 'FAIL', k))
     print('  [%s] %s' % ('SEALED-PREDICTION-REFUTED' if r3['r2_fail'] == 0
-                         else 'PASS',
+                         else 'REAPPEARED-SEE-R3b-STATE',
                          'R3(b) (r2 fails exist under top weights) — '
                          'RETIRED: its failure IS finding F-ADM-3'))
     theorem_hit = (r2['fc'] > 0) or (r4['offend'] > 0)
     if theorem_hit:
         print('\nTHEOREM-GRADE HIT: NON-END/STEP refuted — stop the line.')
         return 2
-    print('\nVERDICT:', 'ALL LIVE PREDICTIONS PASS (addendum contract)'
+    print('\nVERDICT:', 'ALL LIVE PREDICTIONS PASS (REVISION 1 contract)'
           if all(preds.values()) else 'DRIFT (see FAIL rows)')
     return 0 if all(preds.values()) else 1
 
