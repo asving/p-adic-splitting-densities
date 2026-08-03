@@ -6729,3 +6729,29 @@ confirming scope; standing disclosures: execution-environment,
 division-of-labor, dating convention, frozen-history-trim note;
 verified-complete VERBATIM slices of every edited site required) → on
 CONFIRMED, the anchor re-anchors per cadence → SYNTHESIS PASS 8.
+
+---
+
+## r36 RECOVERY NOTE (wallclock 2026-08-03) — the r36 fold unit died mid-run on API 529s; mid-work preserved at 7598491; recovery unit audited, completed, and committed; the entry above stands verified
+
+The unit executing ROOT r36 (the entry above) DIED mid-run on repeated API 529
+errors (workflow wf_afbc2195-403, 68 tool calls in) after applying substantial
+but UNVERIFIED-complete mid-work; the sweep preserved it AS-IS at WIP checkpoint
+7598491 (687 inserted lines across ROOT / PROJECT_STATE / DITER_RESTATE / GRB /
+DITERSUP / this ledger). A fresh RECOVERY unit then: (1) audited every edit site
+against the full r36 task list — every owed bracket found applied EXACTLY ONCE
+(idempotency grep on each bracket's wording), none half-written, nothing
+double-applied, no in-place repair needed; (2) independently re-ran the sorry
+census (block-comment-aware scan, strict non-comment unit): **34 code-level
+tokens in `LeanUrat/` + 1 in the tracked scratch probe REPRODUCED EXACTLY**,
+per-file breakdown identical to the ROOT §41.(iii) display (MovesV 10 · MovesU 7
+· Scaffold 6 · HC1 5 · MovesT 4 · HC2 2; B2D 0; OM tree 0; leaders V9_K1nonrec
+×4 / SlotsG2_relFamily ×4 / TV_G3 ×2 / G1_toyGate ×2); (3) re-grepped the ROOT
+§41 enumeration table to fixed point on the final text — **70/70 rows matching
+at the declared occurrence unit, zero corrections** (the dead unit's recorded
+counts verified accurate); (4) added the three process records (ROOT §41
+bookkeeping + the PROJECT_STATE checkpoint sentence + this note — the recovery
+unit's only textual additions) and committed the revision. The r36-executed
+entry above is accurate as written and stands as the entry of record; VC36b
+remains owed exactly as charged at ROOT §41 (these process facts ride its
+standing disclosures, not its findings scope).

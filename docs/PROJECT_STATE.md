@@ -2556,7 +2556,14 @@ capstone path. Roster: NINE rows, unchanged; ROOT census 70 rows / 71
 patterns (VC36b new) re-grepped to fixed point, every delta reasoned
 (ROOT §41). Doc-only unit: NO Lean file touched; no sealed record
 touched; ITERLAW_2026-08-08.md not touched (its acceptance brackets
-landed at 33373cb).
+landed at 33373cb). RECOVERY NOTE: the unit executing this fold died
+mid-run on repeated API 529s (mid-work preserved at WIP checkpoint
+7598491); a fresh recovery unit audited every edit site (all applied
+exactly once, none half-written), re-ran the census independently
+(34 + 1 reproduced exactly, breakdown identical), re-grepped the ROOT
+§41 table to fixed point (70/70 rows, zero corrections), added the
+process records, and committed — full record at ROOT §41 bookkeeping
++ the ledger recovery note.
 FRONTIER NOW: **VC36b** — the NARROW confirming pass on the r36
 remedies ONLY (charge at ROOT §41; the four findings' sites + the
 acceptance-sweep sites + census spot rows; full end-to-end NOT

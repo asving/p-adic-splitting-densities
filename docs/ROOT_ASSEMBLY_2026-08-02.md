@@ -9234,7 +9234,24 @@ touches ROOT + `docs/PROJECT_STATE.md` (r36 checkpoint + the ITER-LAW
 display brackets + the r27-checkpoint census-line bracket) + the three
 notes above + the ledger (`lean/notes/BRIDGE_ADJUDICATIONS_2026-07-30.md`,
 r36-executed entry) ONLY. The commit closing this revision is its unit
-of record (unit ROOT r36; scoped add).
+of record (unit ROOT r36; scoped add). PROCESS RECORD (the recovery,
+wallclock 2026-08-03; disclosed per the honesty discipline): the unit
+first executing this revision DIED mid-run on repeated API 529 errors
+(workflow wf_afbc2195-403, 68 tool calls in) with its edits applied
+but UNVERIFIED-complete; the mid-work was preserved AS-IS at WIP
+checkpoint 7598491 (687 inserted lines across the six files of this
+unit), and a fresh RECOVERY unit completed the revision: a full
+idempotency audit of every edit site against the task list (every
+owed bracket found applied exactly once, none half-written, nothing
+double-applied, no repair needed), an independent re-run of the sorry
+census with a block-comment-aware scan (the 34 + 1 display at
+41.(iii) reproduced exactly, per-file breakdown identical), and the
+enumeration-audit re-grep to fixed point on the final text (all
+seventy table rows matching as displayed — the dead unit's recorded
+counts verified, zero corrections needed). The recovery unit's only
+textual additions are this process record, the matching checkpoint
+sentence in `docs/PROJECT_STATE.md`, and the ledger's recovery note;
+the commit closing this revision is the recovery unit's.
 
 — REVISION 35 complete. VC36 NOT-CONFIRMED (1C/3G) DISPOSED: F1/F2
 fold-lag, cured by the ITER-LAW acceptance — **ITER-LAW ACCEPTED on
