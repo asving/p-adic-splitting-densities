@@ -7333,3 +7333,16 @@ sorryAx. Residual: II-M6 (`hull_eq_iff_cell`) still open, no longer gating
 II-M9; `L6eHull` is the natural base for it. No ITER-LAW citation consumed
 (this unit is outside the (ITER-LAW) scope). Full record:
 `lean/notes/openmath/L6E_COVERS_DISCHARGE_2026-08-03.md`.
+
+**[PROCESS BRACKET (M1 unit, 2026-08-03): commit-attribution sweep at
+a30f5e0.** The M1 EXACT-FIT commit (a30f5e0) inadvertently carried two
+concurrent-unit files staged mid-flight in the shared index — the L6e unit's
+`Scaffold/O12/Semantic.lean` (+924 lines, the II-M9c hull layer) and its note
+`L6E_COVERS_DISCHARGE_2026-08-03.md` — despite M1's adds being scoped (the
+sweep entered via the shared index, not via M1's adds; an earlier variant
+9872329 that swept the staged `scratch_hullcovers.lean` deletion was caught
+and rewritten, and the rewrite raced into this one). No content lost, no
+bytes changed: the L6e unit's own commit c88b541 carries its full record and
+message of record. Lesson folded: in a concurrently-committing repo, use
+`git commit --only <paths>` (immune to foreign staged content), never bare
+`commit` after `add`; this bracket is itself committed with `--only`.]**
