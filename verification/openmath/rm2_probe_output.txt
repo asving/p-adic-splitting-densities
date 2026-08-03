@@ -1,0 +1,89 @@
+rm2_probe — (RM-2) ENGINE PROBE
+  VIOLATION [L4c-EMPTY] RM2A/Zp,p=3: (51,51) e1=2
+  VIOLATION [L4b-SHARP] RM2A/Zp,p=3: (51,51) meas=True pred=False T3=2 s3=(1,1) s2=(1,1) T2+s2g3=3 2e1=4
+-- RM2A/Zp,p=3: E4=8 fired=28 (II1/II2/II3=10/6/12) inputs=20 dcx meas/pred=1/0 mism=1; elapsed 0.0s
+  VIOLATION [L4c-EMPTY] RM2A/Fpt,p=2: (51,51) e1=2
+  VIOLATION [L4b-SHARP] RM2A/Fpt,p=2: (51,51) meas=True pred=False T3=2 s3=(1,1) s2=(1,1) T2+s2g3=3 2e1=4
+-- RM2A/Fpt,p=2: E4=8 fired=28 (II1/II2/II3=10/6/12) inputs=18 dcx meas/pred=1/0 mism=1; elapsed 0.0s
+  VIOLATION [L4b-SHARP] RM2B/Zp,p=3: (289,291) meas=True pred=False T3=2 s3=(1,1) s2=(1,2) T2+s2g3=5 2e1=6
+  VIOLATION [L4b-SHARP] RM2B/Zp,p=3: (289,297) meas=True pred=False T3=2 s3=(1,1) s2=(1,2) T2+s2g3=5 2e1=6
+  VIOLATION [L4b-SHARP] RM2B/Zp,p=3: (291,289) meas=True pred=False T3=2 s3=(1,1) s2=(2,1) T2+s2g3=5 2e1=6
+  VIOLATION [L4b-SHARP] RM2B/Zp,p=3: (291,295) meas=True pred=False T3=2 s3=(1,1) s2=(2,1) T2+s2g3=5 2e1=6
+  VIOLATION [L4b-SHARP] RM2B/Zp,p=3: (295,291) meas=True pred=False T3=2 s3=(1,1) s2=(1,2) T2+s2g3=5 2e1=6
+  VIOLATION [L4b-SHARP] RM2B/Zp,p=3: (297,289) meas=True pred=False T3=2 s3=(1,1) s2=(2,1) T2+s2g3=5 2e1=6
+-- RM2B/Zp,p=3: E4=18 fired=153 (II1/II2/II3=45/36/72) inputs=66 dcx meas/pred=15/9 mism=6; elapsed 0.0s
+-- RM2B/Fpt,p=2: E4=18 fired=153 (II1/II2/II3=45/36/72) inputs=60 dcx meas/pred=15/9 mism=6; elapsed 0.1s
+  VIOLATION [L4c-EMPTY] RM2C/Zp,p=3: (75,75) e1=2
+-- RM2C/Zp,p=3: E4=8 fired=24 (II1/II2/II3=12/4/8) inputs=18 dcx meas/pred=1/0 mism=1; elapsed 0.1s
+-- RM2D/Zp,p=3: E4=8 fired=16 (II1/II2/II3=16/0/0) inputs=9 dcx meas/pred=0/0 mism=0; elapsed 0.0s
+-- RM2E/Zp,p=3: E4=4 fired=4 (II1/II2/II3=4/0/0) inputs=3 dcx meas/pred=0/0 mism=0; elapsed 0.0s
+-- RM2F/Zp,p=3: E4=4 fired=6 (II1/II2/II3=3/1/2) inputs=6 dcx meas/pred=0/0 mism=0; elapsed 0.0s
+-- RM2G/Zp,p=3: E4=12 fired=60 (II1/II2/II3=0/0/60) inputs=42 dcx meas/pred=40/16 mism=24; elapsed 0.0s
+
+== COUNTS ==
+  CONS: 405
+  L1_BR-mono: 136
+  L1_BR-sum: 27
+  L1_E0: 147
+  L1_E1: 95
+  L2_BR-mono: 136
+  L2_BR-sum: 27
+  L2_E0: 147
+  L2_E1: 95
+  L4a: 73
+  L4b: 1080
+== CONTROLS (separate from the law) ==
+  MC-A: TRIPPED (count 208)
+  MC-B: TRIPPED (count 405)
+  MC-C: TRIPPED (count 295)
+  MC-D: TRIPPED (count 42)
+  MC-E: TRIPPED (count 182)
+== VIOLATIONS: 42 ==
+   ('L4c-EMPTY', 'RM2A/Zp,p=3', '(51,51) e1=2')
+   ('L4b-SHARP', 'RM2A/Zp,p=3', '(51,51) meas=True pred=False T3=2 s3=(1,1) s2=(1,1) T2+s2g3=3 2e1=4')
+   ('L4c-EMPTY', 'RM2A/Fpt,p=2', '(51,51) e1=2')
+   ('L4b-SHARP', 'RM2A/Fpt,p=2', '(51,51) meas=True pred=False T3=2 s3=(1,1) s2=(1,1) T2+s2g3=3 2e1=4')
+   ('L4b-SHARP', 'RM2B/Zp,p=3', '(289,291) meas=True pred=False T3=2 s3=(1,1) s2=(1,2) T2+s2g3=5 2e1=6')
+   ('L4b-SHARP', 'RM2B/Zp,p=3', '(289,297) meas=True pred=False T3=2 s3=(1,1) s2=(1,2) T2+s2g3=5 2e1=6')
+   ('L4b-SHARP', 'RM2B/Zp,p=3', '(291,289) meas=True pred=False T3=2 s3=(1,1) s2=(2,1) T2+s2g3=5 2e1=6')
+   ('L4b-SHARP', 'RM2B/Zp,p=3', '(291,295) meas=True pred=False T3=2 s3=(1,1) s2=(2,1) T2+s2g3=5 2e1=6')
+   ('L4b-SHARP', 'RM2B/Zp,p=3', '(295,291) meas=True pred=False T3=2 s3=(1,1) s2=(1,2) T2+s2g3=5 2e1=6')
+   ('L4b-SHARP', 'RM2B/Zp,p=3', '(297,289) meas=True pred=False T3=2 s3=(1,1) s2=(2,1) T2+s2g3=5 2e1=6')
+   ('L4b-SHARP', 'RM2B/Fpt,p=2', '(289,291) meas=True pred=False T3=2 s3=(1,1) s2=(1,2) T2+s2g3=5 2e1=6')
+   ('L4b-SHARP', 'RM2B/Fpt,p=2', '(289,297) meas=True pred=False T3=2 s3=(1,1) s2=(1,2) T2+s2g3=5 2e1=6')
+   ('L4b-SHARP', 'RM2B/Fpt,p=2', '(291,289) meas=True pred=False T3=2 s3=(1,1) s2=(2,1) T2+s2g3=5 2e1=6')
+   ('L4b-SHARP', 'RM2B/Fpt,p=2', '(291,295) meas=True pred=False T3=2 s3=(1,1) s2=(2,1) T2+s2g3=5 2e1=6')
+   ('L4b-SHARP', 'RM2B/Fpt,p=2', '(295,291) meas=True pred=False T3=2 s3=(1,1) s2=(1,2) T2+s2g3=5 2e1=6')
+   ('L4b-SHARP', 'RM2B/Fpt,p=2', '(297,289) meas=True pred=False T3=2 s3=(1,1) s2=(2,1) T2+s2g3=5 2e1=6')
+   ('L4c-EMPTY', 'RM2C/Zp,p=3', '(75,75) e1=2')
+   ('L4b-SHARP', 'RM2C/Zp,p=3', '(75,75) meas=True pred=False T3=2 s3=(1,1) s2=(1,1) T2+s2g3=3 2e1=4')
+   ('L4b-SHARP', 'RM2G/Zp,p=3', '(109,117) meas=True pred=False T3=0 s3=(0,0) s2=(1,2) T2+s2g3=5 2e1=6')
+   ('L4b-SHARP', 'RM2G/Zp,p=3', '(109,118) meas=True pred=False T3=0 s3=(0,0) s2=(1,2) T2+s2g3=5 2e1=6')
+   ('L4b-SHARP', 'RM2G/Zp,p=3', '(110,117) meas=True pred=False T3=0 s3=(0,0) s2=(1,2) T2+s2g3=5 2e1=6')
+   ('L4b-SHARP', 'RM2G/Zp,p=3', '(110,118) meas=True pred=False T3=0 s3=(0,0) s2=(1,2) T2+s2g3=5 2e1=6')
+   ('L4b-SHARP', 'RM2G/Zp,p=3', '(111,115) meas=True pred=False T3=0 s3=(0,0) s2=(2,1) T2+s2g3=5 2e1=6')
+   ('L4b-SHARP', 'RM2G/Zp,p=3', '(111,116) meas=True pred=False T3=0 s3=(0,0) s2=(2,1) T2+s2g3=5 2e1=6')
+   ('L4b-SHARP', 'RM2G/Zp,p=3', '(112,115) meas=True pred=False T3=0 s3=(0,0) s2=(2,1) T2+s2g3=5 2e1=6')
+   ('L4b-SHARP', 'RM2G/Zp,p=3', '(112,116) meas=True pred=False T3=0 s3=(0,0) s2=(2,1) T2+s2g3=5 2e1=6')
+   ('L4b-SHARP', 'RM2G/Zp,p=3', '(115,111) meas=True pred=False T3=0 s3=(0,0) s2=(1,2) T2+s2g3=5 2e1=6')
+   ('L4b-SHARP', 'RM2G/Zp,p=3', '(115,112) meas=True pred=False T3=0 s3=(0,0) s2=(1,2) T2+s2g3=5 2e1=6')
+   ('L4b-SHARP', 'RM2G/Zp,p=3', '(115,117) meas=True pred=False T3=0 s3=(0,0) s2=(1,2) T2+s2g3=5 2e1=6')
+   ('L4b-SHARP', 'RM2G/Zp,p=3', '(115,118) meas=True pred=False T3=0 s3=(0,0) s2=(1,2) T2+s2g3=5 2e1=6')
+   ('L4b-SHARP', 'RM2G/Zp,p=3', '(116,111) meas=True pred=False T3=0 s3=(0,0) s2=(1,2) T2+s2g3=5 2e1=6')
+   ('L4b-SHARP', 'RM2G/Zp,p=3', '(116,112) meas=True pred=False T3=0 s3=(0,0) s2=(1,2) T2+s2g3=5 2e1=6')
+   ('L4b-SHARP', 'RM2G/Zp,p=3', '(116,117) meas=True pred=False T3=0 s3=(0,0) s2=(1,2) T2+s2g3=5 2e1=6')
+   ('L4b-SHARP', 'RM2G/Zp,p=3', '(116,118) meas=True pred=False T3=0 s3=(0,0) s2=(1,2) T2+s2g3=5 2e1=6')
+   ('L4b-SHARP', 'RM2G/Zp,p=3', '(117,109) meas=True pred=False T3=0 s3=(0,0) s2=(2,1) T2+s2g3=5 2e1=6')
+   ('L4b-SHARP', 'RM2G/Zp,p=3', '(117,110) meas=True pred=False T3=0 s3=(0,0) s2=(2,1) T2+s2g3=5 2e1=6')
+   ('L4b-SHARP', 'RM2G/Zp,p=3', '(117,115) meas=True pred=False T3=0 s3=(0,0) s2=(2,1) T2+s2g3=5 2e1=6')
+   ('L4b-SHARP', 'RM2G/Zp,p=3', '(117,116) meas=True pred=False T3=0 s3=(0,0) s2=(2,1) T2+s2g3=5 2e1=6')
+   ('L4b-SHARP', 'RM2G/Zp,p=3', '(118,109) meas=True pred=False T3=0 s3=(0,0) s2=(2,1) T2+s2g3=5 2e1=6')
+   ('L4b-SHARP', 'RM2G/Zp,p=3', '(118,110) meas=True pred=False T3=0 s3=(0,0) s2=(2,1) T2+s2g3=5 2e1=6')
+   ('L4b-SHARP', 'RM2G/Zp,p=3', '(118,115) meas=True pred=False T3=0 s3=(0,0) s2=(2,1) T2+s2g3=5 2e1=6')
+   ('L4b-SHARP', 'RM2G/Zp,p=3', '(118,116) meas=True pred=False T3=0 s3=(0,0) s2=(2,1) T2+s2g3=5 2e1=6')
+== BEND CENSUS (out-of-scope shapes, separate) == {'RM2E/Zp,p=3': {'bend_bad_edges': 8}, 'RM2F/Zp,p=3': {}}
+results -> /data/users/asvin/math-and-lean/p-adic-splitting-densities/verification/openmath/rm2_probe_results.json; total elapsed 0.4s
+LAW VERDICT (RM-2 engine L1/L2/CONS/L4a, predicted-0): GREEN [0 violations]
+TERMINATION VERDICT (L3 main scope, predicted-0): GREEN [0 violations]
+LOCUS VERDICT (L4b sharp-transport + L4c emptiness, conjecture-grade predicted-0): RED (probe SUCCESS) [42 violations]
+CONTROL VERDICT (mutation teeth, SEPARATE): MET

@@ -1,0 +1,732 @@
+{
+ "design": false,
+ "roster": [
+  "RM2A",
+  "RM2B",
+  "RM2C",
+  "RM2D",
+  "RM2E",
+  "RM2F",
+  "RM2G"
+ ],
+ "counts": {
+  "L4b": 1080,
+  "L4a": 73,
+  "L1_E0": 147,
+  "L2_E0": 147,
+  "CONS": 405,
+  "L1_E1": 95,
+  "L2_E1": 95,
+  "L1_BR-mono": 136,
+  "L2_BR-mono": 136,
+  "L1_BR-sum": 27,
+  "L2_BR-sum": 27
+ },
+ "violations": [
+  [
+   "L4c-EMPTY",
+   "RM2A/Zp,p=3",
+   "(51,51) e1=2"
+  ],
+  [
+   "L4b-SHARP",
+   "RM2A/Zp,p=3",
+   "(51,51) meas=True pred=False T3=2 s3=(1,1) s2=(1,1) T2+s2g3=3 2e1=4"
+  ],
+  [
+   "L4c-EMPTY",
+   "RM2A/Fpt,p=2",
+   "(51,51) e1=2"
+  ],
+  [
+   "L4b-SHARP",
+   "RM2A/Fpt,p=2",
+   "(51,51) meas=True pred=False T3=2 s3=(1,1) s2=(1,1) T2+s2g3=3 2e1=4"
+  ],
+  [
+   "L4b-SHARP",
+   "RM2B/Zp,p=3",
+   "(289,291) meas=True pred=False T3=2 s3=(1,1) s2=(1,2) T2+s2g3=5 2e1=6"
+  ],
+  [
+   "L4b-SHARP",
+   "RM2B/Zp,p=3",
+   "(289,297) meas=True pred=False T3=2 s3=(1,1) s2=(1,2) T2+s2g3=5 2e1=6"
+  ],
+  [
+   "L4b-SHARP",
+   "RM2B/Zp,p=3",
+   "(291,289) meas=True pred=False T3=2 s3=(1,1) s2=(2,1) T2+s2g3=5 2e1=6"
+  ],
+  [
+   "L4b-SHARP",
+   "RM2B/Zp,p=3",
+   "(291,295) meas=True pred=False T3=2 s3=(1,1) s2=(2,1) T2+s2g3=5 2e1=6"
+  ],
+  [
+   "L4b-SHARP",
+   "RM2B/Zp,p=3",
+   "(295,291) meas=True pred=False T3=2 s3=(1,1) s2=(1,2) T2+s2g3=5 2e1=6"
+  ],
+  [
+   "L4b-SHARP",
+   "RM2B/Zp,p=3",
+   "(297,289) meas=True pred=False T3=2 s3=(1,1) s2=(2,1) T2+s2g3=5 2e1=6"
+  ],
+  [
+   "L4b-SHARP",
+   "RM2B/Fpt,p=2",
+   "(289,291) meas=True pred=False T3=2 s3=(1,1) s2=(1,2) T2+s2g3=5 2e1=6"
+  ],
+  [
+   "L4b-SHARP",
+   "RM2B/Fpt,p=2",
+   "(289,297) meas=True pred=False T3=2 s3=(1,1) s2=(1,2) T2+s2g3=5 2e1=6"
+  ],
+  [
+   "L4b-SHARP",
+   "RM2B/Fpt,p=2",
+   "(291,289) meas=True pred=False T3=2 s3=(1,1) s2=(2,1) T2+s2g3=5 2e1=6"
+  ],
+  [
+   "L4b-SHARP",
+   "RM2B/Fpt,p=2",
+   "(291,295) meas=True pred=False T3=2 s3=(1,1) s2=(2,1) T2+s2g3=5 2e1=6"
+  ],
+  [
+   "L4b-SHARP",
+   "RM2B/Fpt,p=2",
+   "(295,291) meas=True pred=False T3=2 s3=(1,1) s2=(1,2) T2+s2g3=5 2e1=6"
+  ],
+  [
+   "L4b-SHARP",
+   "RM2B/Fpt,p=2",
+   "(297,289) meas=True pred=False T3=2 s3=(1,1) s2=(2,1) T2+s2g3=5 2e1=6"
+  ],
+  [
+   "L4c-EMPTY",
+   "RM2C/Zp,p=3",
+   "(75,75) e1=2"
+  ],
+  [
+   "L4b-SHARP",
+   "RM2C/Zp,p=3",
+   "(75,75) meas=True pred=False T3=2 s3=(1,1) s2=(1,1) T2+s2g3=3 2e1=4"
+  ],
+  [
+   "L4b-SHARP",
+   "RM2G/Zp,p=3",
+   "(109,117) meas=True pred=False T3=0 s3=(0,0) s2=(1,2) T2+s2g3=5 2e1=6"
+  ],
+  [
+   "L4b-SHARP",
+   "RM2G/Zp,p=3",
+   "(109,118) meas=True pred=False T3=0 s3=(0,0) s2=(1,2) T2+s2g3=5 2e1=6"
+  ],
+  [
+   "L4b-SHARP",
+   "RM2G/Zp,p=3",
+   "(110,117) meas=True pred=False T3=0 s3=(0,0) s2=(1,2) T2+s2g3=5 2e1=6"
+  ],
+  [
+   "L4b-SHARP",
+   "RM2G/Zp,p=3",
+   "(110,118) meas=True pred=False T3=0 s3=(0,0) s2=(1,2) T2+s2g3=5 2e1=6"
+  ],
+  [
+   "L4b-SHARP",
+   "RM2G/Zp,p=3",
+   "(111,115) meas=True pred=False T3=0 s3=(0,0) s2=(2,1) T2+s2g3=5 2e1=6"
+  ],
+  [
+   "L4b-SHARP",
+   "RM2G/Zp,p=3",
+   "(111,116) meas=True pred=False T3=0 s3=(0,0) s2=(2,1) T2+s2g3=5 2e1=6"
+  ],
+  [
+   "L4b-SHARP",
+   "RM2G/Zp,p=3",
+   "(112,115) meas=True pred=False T3=0 s3=(0,0) s2=(2,1) T2+s2g3=5 2e1=6"
+  ],
+  [
+   "L4b-SHARP",
+   "RM2G/Zp,p=3",
+   "(112,116) meas=True pred=False T3=0 s3=(0,0) s2=(2,1) T2+s2g3=5 2e1=6"
+  ],
+  [
+   "L4b-SHARP",
+   "RM2G/Zp,p=3",
+   "(115,111) meas=True pred=False T3=0 s3=(0,0) s2=(1,2) T2+s2g3=5 2e1=6"
+  ],
+  [
+   "L4b-SHARP",
+   "RM2G/Zp,p=3",
+   "(115,112) meas=True pred=False T3=0 s3=(0,0) s2=(1,2) T2+s2g3=5 2e1=6"
+  ],
+  [
+   "L4b-SHARP",
+   "RM2G/Zp,p=3",
+   "(115,117) meas=True pred=False T3=0 s3=(0,0) s2=(1,2) T2+s2g3=5 2e1=6"
+  ],
+  [
+   "L4b-SHARP",
+   "RM2G/Zp,p=3",
+   "(115,118) meas=True pred=False T3=0 s3=(0,0) s2=(1,2) T2+s2g3=5 2e1=6"
+  ],
+  [
+   "L4b-SHARP",
+   "RM2G/Zp,p=3",
+   "(116,111) meas=True pred=False T3=0 s3=(0,0) s2=(1,2) T2+s2g3=5 2e1=6"
+  ],
+  [
+   "L4b-SHARP",
+   "RM2G/Zp,p=3",
+   "(116,112) meas=True pred=False T3=0 s3=(0,0) s2=(1,2) T2+s2g3=5 2e1=6"
+  ],
+  [
+   "L4b-SHARP",
+   "RM2G/Zp,p=3",
+   "(116,117) meas=True pred=False T3=0 s3=(0,0) s2=(1,2) T2+s2g3=5 2e1=6"
+  ],
+  [
+   "L4b-SHARP",
+   "RM2G/Zp,p=3",
+   "(116,118) meas=True pred=False T3=0 s3=(0,0) s2=(1,2) T2+s2g3=5 2e1=6"
+  ],
+  [
+   "L4b-SHARP",
+   "RM2G/Zp,p=3",
+   "(117,109) meas=True pred=False T3=0 s3=(0,0) s2=(2,1) T2+s2g3=5 2e1=6"
+  ],
+  [
+   "L4b-SHARP",
+   "RM2G/Zp,p=3",
+   "(117,110) meas=True pred=False T3=0 s3=(0,0) s2=(2,1) T2+s2g3=5 2e1=6"
+  ],
+  [
+   "L4b-SHARP",
+   "RM2G/Zp,p=3",
+   "(117,115) meas=True pred=False T3=0 s3=(0,0) s2=(2,1) T2+s2g3=5 2e1=6"
+  ],
+  [
+   "L4b-SHARP",
+   "RM2G/Zp,p=3",
+   "(117,116) meas=True pred=False T3=0 s3=(0,0) s2=(2,1) T2+s2g3=5 2e1=6"
+  ],
+  [
+   "L4b-SHARP",
+   "RM2G/Zp,p=3",
+   "(118,109) meas=True pred=False T3=0 s3=(0,0) s2=(2,1) T2+s2g3=5 2e1=6"
+  ],
+  [
+   "L4b-SHARP",
+   "RM2G/Zp,p=3",
+   "(118,110) meas=True pred=False T3=0 s3=(0,0) s2=(2,1) T2+s2g3=5 2e1=6"
+  ],
+  [
+   "L4b-SHARP",
+   "RM2G/Zp,p=3",
+   "(118,115) meas=True pred=False T3=0 s3=(0,0) s2=(2,1) T2+s2g3=5 2e1=6"
+  ],
+  [
+   "L4b-SHARP",
+   "RM2G/Zp,p=3",
+   "(118,116) meas=True pred=False T3=0 s3=(0,0) s2=(2,1) T2+s2g3=5 2e1=6"
+  ]
+ ],
+ "controls": {
+  "A": 208,
+  "B": 405,
+  "C": 295,
+  "D": 42,
+  "E": 182
+ },
+ "bend": {
+  "RM2E/Zp,p=3": {
+   "bend_bad_edges": 8
+  },
+  "RM2F/Zp,p=3": {}
+ },
+ "towers": [
+  {
+   "tower": "RM2A/Zp,p=3",
+   "E4": 8,
+   "Gamma0": 48,
+   "degPhi2": 4,
+   "gamma3": 21,
+   "s2gamma3": 1,
+   "main_scope": true,
+   "census": {
+    "pairs": 64,
+    "fired": 28,
+    "II1": 10,
+    "II2": 6,
+    "II3": 12,
+    "e1nz": 24,
+    "E0zero": 0,
+    "dcx_pred": 0,
+    "dcx_meas": 1,
+    "dcx_mismatch": 1,
+    "mcD_sep": 4,
+    "q1nz": 4
+   },
+   "tree_pops": 24,
+   "n_inputs": 20,
+   "mism_samples": [
+    [
+     51,
+     51,
+     true,
+     false
+    ]
+   ],
+   "vis": {
+    "g2_is_1": true,
+    "psi2_monic_deg1": true,
+    "Chat2_C1_deg": true,
+    "Chat2_C2_w2": true,
+    "Chat2_C3_read": true,
+    "lvl2_identity": true,
+    "lvl1_identity": true,
+    "z2_ne_1": true,
+    "eps2g3_sq_ne_1": false
+   }
+  },
+  {
+   "tower": "RM2A/Fpt,p=2",
+   "E4": 8,
+   "Gamma0": 48,
+   "degPhi2": 4,
+   "gamma3": 21,
+   "s2gamma3": 1,
+   "main_scope": true,
+   "census": {
+    "pairs": 64,
+    "fired": 28,
+    "II1": 10,
+    "II2": 6,
+    "II3": 12,
+    "e1nz": 24,
+    "E0zero": 0,
+    "dcx_pred": 0,
+    "dcx_meas": 1,
+    "dcx_mismatch": 1,
+    "mcD_sep": 4,
+    "q1nz": 4
+   },
+   "tree_pops": 23,
+   "n_inputs": 18,
+   "mism_samples": [
+    [
+     51,
+     51,
+     true,
+     false
+    ]
+   ],
+   "vis": {
+    "g2_is_1": true,
+    "psi2_monic_deg1": true,
+    "Chat2_C1_deg": true,
+    "Chat2_C2_w2": true,
+    "Chat2_C3_read": true,
+    "lvl2_identity": true,
+    "lvl1_identity": true,
+    "z2_ne_1": false,
+    "eps2g3_sq_ne_1": false
+   }
+  },
+  {
+   "tower": "RM2B/Zp,p=3",
+   "E4": 18,
+   "Gamma0": 288,
+   "degPhi2": 9,
+   "gamma3": 119,
+   "s2gamma3": 2,
+   "main_scope": true,
+   "census": {
+    "pairs": 324,
+    "fired": 153,
+    "II1": 45,
+    "II2": 36,
+    "II3": 72,
+    "e1nz": 144,
+    "E0zero": 0,
+    "dcx_pred": 9,
+    "dcx_meas": 15,
+    "dcx_mismatch": 6,
+    "mcD_sep": 18,
+    "q1nz": 60
+   },
+   "tree_pops": 137,
+   "n_inputs": 66,
+   "mism_samples": [
+    [
+     289,
+     291,
+     true,
+     false
+    ],
+    [
+     289,
+     297,
+     true,
+     false
+    ],
+    [
+     291,
+     289,
+     true,
+     false
+    ],
+    [
+     291,
+     295,
+     true,
+     false
+    ],
+    [
+     295,
+     291,
+     true,
+     false
+    ],
+    [
+     297,
+     289,
+     true,
+     false
+    ]
+   ],
+   "vis": {
+    "g2_is_1": true,
+    "psi2_monic_deg1": true,
+    "Chat2_C1_deg": true,
+    "Chat2_C2_w2": true,
+    "Chat2_C3_read": true,
+    "lvl2_identity": true,
+    "lvl1_identity": true,
+    "z2_ne_1": false,
+    "eps2g3_sq_ne_1": false
+   }
+  },
+  {
+   "tower": "RM2B/Fpt,p=2",
+   "E4": 18,
+   "Gamma0": 288,
+   "degPhi2": 9,
+   "gamma3": 119,
+   "s2gamma3": 2,
+   "main_scope": true,
+   "census": {
+    "pairs": 324,
+    "fired": 153,
+    "II1": 45,
+    "II2": 36,
+    "II3": 72,
+    "e1nz": 144,
+    "E0zero": 0,
+    "dcx_pred": 9,
+    "dcx_meas": 15,
+    "dcx_mismatch": 6,
+    "mcD_sep": 18,
+    "q1nz": 60
+   },
+   "tree_pops": 122,
+   "n_inputs": 60,
+   "mism_samples": [
+    [
+     289,
+     291,
+     true,
+     false
+    ],
+    [
+     289,
+     297,
+     true,
+     false
+    ],
+    [
+     291,
+     289,
+     true,
+     false
+    ],
+    [
+     291,
+     295,
+     true,
+     false
+    ],
+    [
+     295,
+     291,
+     true,
+     false
+    ],
+    [
+     297,
+     289,
+     true,
+     false
+    ]
+   ],
+   "vis": {
+    "g2_is_1": true,
+    "psi2_monic_deg1": true,
+    "Chat2_C1_deg": true,
+    "Chat2_C2_w2": true,
+    "Chat2_C3_read": true,
+    "lvl2_identity": true,
+    "lvl1_identity": true,
+    "z2_ne_1": false,
+    "eps2g3_sq_ne_1": false
+   }
+  },
+  {
+   "tower": "RM2C/Zp,p=3",
+   "E4": 8,
+   "Gamma0": 72,
+   "degPhi2": 16,
+   "gamma3": 37,
+   "s2gamma3": 1,
+   "main_scope": true,
+   "census": {
+    "pairs": 64,
+    "fired": 24,
+    "II1": 12,
+    "II2": 4,
+    "II3": 8,
+    "e1nz": 16,
+    "E0zero": 0,
+    "dcx_pred": 0,
+    "dcx_meas": 1,
+    "dcx_mismatch": 1,
+    "mcD_sep": 4,
+    "q1nz": 4
+   },
+   "tree_pops": 254,
+   "n_inputs": 18,
+   "mism_samples": [
+    [
+     75,
+     75,
+     true,
+     false
+    ]
+   ],
+   "vis": {
+    "g2_is_1": true,
+    "psi2_monic_deg1": true,
+    "Chat2_C1_deg": true,
+    "Chat2_C2_w2": true,
+    "Chat2_C3_read": true,
+    "lvl2_identity": true,
+    "lvl1_identity": true,
+    "z2_ne_1": true,
+    "eps2g3_sq_ne_1": false
+   }
+  },
+  {
+   "tower": "RM2D/Zp,p=3",
+   "E4": 8,
+   "Gamma0": 72,
+   "degPhi2": 8,
+   "gamma3": 41,
+   "s2gamma3": 1,
+   "main_scope": true,
+   "census": {
+    "pairs": 64,
+    "fired": 16,
+    "II1": 16,
+    "II2": 0,
+    "II3": 0,
+    "e1nz": 0,
+    "E0zero": 0,
+    "dcx_pred": 0,
+    "dcx_meas": 0,
+    "dcx_mismatch": 0,
+    "mcD_sep": 0,
+    "q1nz": 0
+   },
+   "tree_pops": 10,
+   "n_inputs": 9,
+   "mism_samples": [],
+   "vis": {
+    "g2_is_1": true,
+    "psi2_monic_deg1": true,
+    "Chat2_C1_deg": true,
+    "Chat2_C2_w2": true,
+    "Chat2_C3_read": true,
+    "lvl2_identity": true,
+    "lvl1_identity": true,
+    "z2_ne_1": true,
+    "eps2g3_sq_ne_1": false
+   }
+  },
+  {
+   "tower": "RM2E/Zp,p=3",
+   "E4": 4,
+   "Gamma0": 24,
+   "degPhi2": 4,
+   "gamma3": 13,
+   "s2gamma3": 0,
+   "main_scope": false,
+   "census": {
+    "pairs": 16,
+    "fired": 4,
+    "II1": 4,
+    "II2": 0,
+    "II3": 0,
+    "e1nz": 0,
+    "E0zero": 0,
+    "dcx_pred": 0,
+    "dcx_meas": 0,
+    "dcx_mismatch": 0,
+    "mcD_sep": 0,
+    "q1nz": 0
+   },
+   "tree_pops": 11,
+   "bend_bad_edges": 8,
+   "bend_samples": [
+    [
+     [
+      2,
+      0
+     ],
+     [
+      0,
+      1
+     ],
+     "E1promo"
+    ]
+   ],
+   "n_inputs": 3,
+   "mism_samples": [],
+   "vis": {
+    "g2_is_1": true,
+    "psi2_monic_deg1": true,
+    "Chat2_C1_deg": true,
+    "Chat2_C2_w2": true,
+    "Chat2_C3_read": true,
+    "lvl2_identity": true,
+    "lvl1_identity": true,
+    "z2_ne_1": true,
+    "eps2g3_sq_ne_1": false
+   }
+  },
+  {
+   "tower": "RM2F/Zp,p=3",
+   "E4": 4,
+   "Gamma0": 36,
+   "degPhi2": 8,
+   "gamma3": 21,
+   "s2gamma3": 1,
+   "main_scope": false,
+   "census": {
+    "pairs": 16,
+    "fired": 6,
+    "II1": 3,
+    "II2": 1,
+    "II3": 2,
+    "e1nz": 4,
+    "E0zero": 0,
+    "dcx_pred": 0,
+    "dcx_meas": 0,
+    "dcx_mismatch": 0,
+    "mcD_sep": 1,
+    "q1nz": 0
+   },
+   "tree_pops": 11,
+   "n_inputs": 6,
+   "mism_samples": [],
+   "vis": {
+    "g2_is_1": true,
+    "psi2_monic_deg1": true,
+    "Chat2_C1_deg": true,
+    "Chat2_C2_w2": true,
+    "Chat2_C3_read": true,
+    "lvl2_identity": true,
+    "lvl1_identity": true,
+    "z2_ne_1": true,
+    "eps2g3_sq_ne_1": false
+   }
+  },
+  {
+   "tower": "RM2G/Zp,p=3",
+   "E4": 12,
+   "Gamma0": 108,
+   "degPhi2": 6,
+   "gamma3": 23,
+   "s2gamma3": 2,
+   "main_scope": true,
+   "census": {
+    "pairs": 144,
+    "fired": 60,
+    "II1": 0,
+    "II2": 0,
+    "II3": 60,
+    "e1nz": 60,
+    "E0zero": 0,
+    "dcx_pred": 16,
+    "dcx_meas": 40,
+    "dcx_mismatch": 24,
+    "mcD_sep": 32,
+    "q1nz": 40
+   },
+   "tree_pops": 144,
+   "n_inputs": 42,
+   "mism_samples": [
+    [
+     109,
+     117,
+     true,
+     false
+    ],
+    [
+     109,
+     118,
+     true,
+     false
+    ],
+    [
+     110,
+     117,
+     true,
+     false
+    ],
+    [
+     110,
+     118,
+     true,
+     false
+    ],
+    [
+     111,
+     115,
+     true,
+     false
+    ],
+    [
+     111,
+     116,
+     true,
+     false
+    ]
+   ],
+   "vis": {
+    "g2_is_1": true,
+    "psi2_monic_deg1": true,
+    "Chat2_C1_deg": true,
+    "Chat2_C2_w2": true,
+    "Chat2_C3_read": true,
+    "lvl2_identity": true,
+    "lvl1_identity": true,
+    "z2_ne_1": true,
+    "eps2g3_sq_ne_1": false
+   }
+  }
+ ],
+ "elapsed": 0.4
+}
