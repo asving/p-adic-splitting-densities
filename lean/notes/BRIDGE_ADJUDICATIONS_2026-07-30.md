@@ -7237,3 +7237,37 @@ this box — obstructed, not dodged). `H7Forge.lean` consumed read-only. Repairs
 literals; the have-then-exact pattern for the cross-defeq vtxPoly goal (a `show`
 at clean types leaves a mixed-instance target — twice reproduced). Full record
 `lean/notes/openmath/H7DEPTH2_2026-08-08.md`.
+
+**M2 COHOMOLOGICAL COBOUNDARY TEST — 2026-08-08 (wallclock 2026-08-03): the
+level-3 law is z̄^{δ₃} × an EXPLICIT coboundary (the ε-chain gauge), its
+H²-class is closed-form, and the naive template fails ASSOCIATIVITY wherever
+it separates.** Post-seal diagnostic, non-prereg; record
+`lean/notes/openmath/L3COHOM_M2_2026-08-08.md`; runner
+`verification/openmath/l3cohom_m2.py` (exact, exhaustive; 44 tiny towers,
+E₃ ∈ {4,6,8}, incl. 4 FRESH E₃ = 6 shapes; seal 911431c byte-untouched).
+Decorrelated RED autopsy from raw artifacts CONCURS (violations EMPTY, exit-1
+= m4 teeth only). Findings: (1) measured c₃ is a genuine 2-cocycle — 0/all
+window + quotient triples; (2) the sealed composed candidate is EXACT on the
+fresh shapes (1,616/1,616; discrepancy ≡ 1); (3) GAUGE DECOMPOSITION measured
+0-violation on all 44 towers: c₃ = z̄^{δ₃}·∂F with F = ε₂(β₂)ε₁(β₁) =
+z₂^{(s₂−ℓ₁β₂)/e₁}z₁^{(s₁−ℓ₀β₁)/e₀}, constant monodromy ρ = z₂^{−ℓ₁e₀}z₁^{−ℓ₀}
+— the entire letter tail of the law is a gauge normalization of the anchor
+lifts; (4) the gauge-independent invariant: class(c₃) =
+[z̄^{(E₃/e₂)ℓ₂}·z₂^{e₀ℓ₁}·z₁^{ℓ₀}] ∈ M/M^{E₃}, confirmed 42/42 field-visible
+towers (κ_ℤ(δ₃) = (E₃/e₂)ℓ₂ exact 44/44); (INV-n) all-orders display =
+conjecture for the n = 4 probe; (5) NAIVE TEMPLATE DEAD BEYOND APPEAL: on
+every separating e₁ ≥ 2 tower its numerator FAILS the 2-cocycle identity
+(96/512 triples × 16 towers — not associative, hence not repairable by ANY
+gauge/coboundary correction); on e₁ = 1 towers it is a cocycle with genuine
+class ℓ₀γ₃(E₃/e₂)ℓ₂ mod E₃ (CW 2 ∈ ℤ/4, S2 2 ∈ ℤ/6, S3 0); trap on record:
+S2 at p = 3 has naive ≡ measured on ALL 36 pairs (ord z₁ swallows the gap)
+despite the wrong ℤ-class — instance agreement ≠ law agreement; (6) integer
+layer: δ₃/D₂/D₁ are themselves ℤ-valued 2-cocycles (0 defects, 44/44); (7) M5
+cross-implementation check 20/20 exact (transplanted Φ-chain). STRATEGY
+READING for wave-19: structure the compose proof as L6-(n) + W-MULT-(n) (the
+ε-chain gauge is the induction carrier; the (ITER-LAW-n) recursion becomes a
+DERIVED corollary of ∂F, never guessed again); pre-screen future candidate
+laws for the integer-level cocycle identity (a two-line symbolic check kills
+the naive form with no battery). Eyeballable full pair tables (4 towers,
+per-pair rows) in the note S5. No proof claims; no acceptance; orders ≥ 4
+untouched; no record edits.
