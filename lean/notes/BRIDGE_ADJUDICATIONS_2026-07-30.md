@@ -6261,3 +6261,22 @@ DIterJunctionSupplier statement RE-PRICED against the accepted diagnosis; banked
 attempt; optional S batch); SYNTHESIS PASS 8 at the wave-15 close; the 4-item ASVIN
 BATCH (the verified FGMN proposal; RB-DELTA/Route-B; TowerMoveClosureL; the fence-(vii)
 lineage + F-ADM-3 ratify-or-reopen).
+
+## TR3-S4 REVISION 1 APPLIED (2026-08-08 window) — both pass-1 gaps fixed textually; counter stays 0/2
+
+Per pass 1 (Codex, 0C/2G GAPS-ONLY; `TR3S4_pass1_report.md`): (1) the S6.2
+key-orientation conflation FIXED at five sites — step 1's display now reads the
+verifier's correct **R_λ₃(Φ₃) = z̄₂^{−θ₂g₂}·ψ₂** (the scalar times the UNTWISTED ψ₂,
+from lawfulness + the verified pin t₂(g₂) = −θ₂g₂; the erroneous "(monicized twisted
+class)" substitution would have contradicted lawfulness), and the T_{c⁻¹}ψ₂ class is
+now attributed throughout to the FGMN-NORMALIZED lift (step 0), never to the GMN-lawful
+key; the ORD-INV-LIFT chain, the σ₂(ψ₃^F) = z̄₂^{−θ₂g₂}·T_cψ₂ display, the divergence
+criteria, and harness rows K/O were already correct and stand byte-identical. (2) the
+S8.3 provenance now displays the first-run record commit **79eaee6** alongside seal
+**7fa8825** (the S8.2 "both cited below" promise discharged; hash verified against the
+git log). NO falsifier change → no ADDENDUM, no rerun: both gaps were note-text only;
+the falsifier record stays 13,679/0 at 7fa8825/79eaee6. The verified algebraic
+perimeter (KER-13, A-GEN-3, Z2-e2, EXP-3, the t₂-absorption chain, Lemma HV3-E2,
+S2–S5, the fences) is untouched. Counter 0/2; passes 2+3 decide under the standing
+division-of-labor discipline; the S8.4 F2c verifier-owned implementation REMAINS the
+acceptance obligation.
