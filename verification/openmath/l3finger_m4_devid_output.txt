@@ -1,0 +1,1 @@
+INFLATION-DEFECT IDENTITY: 0 violations / 1600 pairs (shadow nonintegral: 0; L2-window misses: 0)

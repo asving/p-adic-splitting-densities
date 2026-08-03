@@ -7362,3 +7362,39 @@ functional of record for all NEW work; the old compiled clause remains solely
 as the byte-frozen records' retained semantics. Junction gates J1–J3b are
 UNBLOCKED (statable against compiled names); nothing is discharged by this
 closure; J1 (primed e′ ≥ 2 satisfiability) is the first live junction question.
+
+---
+
+## M4 FINGERPRINTS (post-seal, non-prereg): the level-3 cocycle's SHAPE pinned fit-free — restricts to level 2 ON THE NOSE on the e₂-subwindow; first deviation exactly δ₃ = 1 and z̄-free; B0a genre + descent + swap exact; denominators {e₁ mid, e₀ inner}, never e₀e₁ — 2026-08-03
+
+M4 of the level-3 pattern-hunt fleet (decorrelated from M1/M2/M5: disjoint
+fresh roster of 44 tiny towers, E₃ ∈ {4,6,8} incl. fresh E₃ = 6 shapes, own
+seed 20260813, own analysis code over the sealed harness classes read-only).
+Artifacts: `verification/openmath/l3finger_m4.py` + `_devid.py` supplement +
+outputs/JSON; note `lean/notes/openmath/L3FINGER_M4_2026-08-08.md`. Own
+artifact read of the run-1 "RED": JSON violations EMPTY, exit-1 = m4
+mutation-teeth only — CONCURS with recovery S5/M1/M2/M5. ALL CLEAN first run
+(exit 0, 25 s): (1) **crossed-product restriction** — on the E₂-subwindow
+(e₂ | γ both args) measured c₃ == K₃-embed of the MEASURED level-2 cocycle at
+(γ/e₂, γ′/e₂), 0/516, and the INFLATION-DEFECT IDENTITY c₃ = z̄^{δ₃} ·
+embed(c₂(β₂,β₂′)) · z₂^{D₂−δ₂ˢ} · z₁^{D₁−Dˢ} holds 0/1600 (supplement run) —
+every deviating pair (224) has δ₃ = 1, deviation NEVER carries z̄ (0/224),
+δ₃ = 0 deviations ZERO; (2) **B0a genre at level 3**: c₃ = z̄^{j_meas} ·
+d(ε-chain), 0/1600, j_meas = ⌊(s₃+s₃′)/e₂⌋ always, j 2-cocycle + measured
+associativity 0/4384 triples; (3) **swap symmetry exact** (0/1600) and
+**ℤ/E₃ descent** separately-per-argument at shifts k ∈ {1,2,5} (0/6208) —
+COR-4 confirmed at level 3; (4) **e₂-quotient**: measured top slot factors
+through (γ mod e₂, γ′ mod e₂) exactly (0 multivalued/192 classes) and equals
+the ℤ/e₂ carry table of 0→ℤ/E₂→ℤ/E₃→ℤ/e₂→0 (h₂-twisted); (5) **denominators**:
+e₁ | (s₂-def+ℓ₁γ₃δ₃) and e₀ | (s₁-def+ℓ₀Σ) with NO e₀e₁ event, field 1600 +
+symbolic 20k; naive form nonintegral 164 field/5,653 symbolic — ALL at δ₃ = 1,
+failing residues mod e₀ full-support (no sub-denominator rescue); (6) NEW
+census facts: value-set multiplicity spectrum = PRODUCT of per-level carry
+counts (the iterated-extension structure visible fit-free), and ℤ_p vs
+F_p[[t]] fingerprints IDENTICAL 22/22 at fixed (p,row); (7) spot-checks:
+sealed row-G value sets recomputed 4/4 MATCH, M5 integer pair-records 248/248.
+Strategy feed for wave-19: subwindow restriction is a cheap FIRST gate for any
+ITER-LAW-n candidate; R2-style shadow identity belongs in the n = 4 prereg;
+EXP-(n) lemma bank per-level (no cross-level denominators); add integer-level
+(warrant) detection legs to mutation batteries. Conjecture-grade throughout;
+seal 911431c byte-untouched; no record edits.

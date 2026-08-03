@@ -1,0 +1,263 @@
+l3finger_m4.py — POST-SEAL DIAGNOSTIC (non-prereg); seal 911431c READ-ONLY; seed 20260813
+==============================================================================
+SPOT-CHECK A: sealed row-G value sets (committed JSON vs recompute)
+  Zp,p=2,G     recomputed ['zbar^1*z2^0*z1^0'] committed ['zbar^1*z2^0*z1^0'] MATCH
+  Zp,p=3,G     recomputed ['zbar^0*z2^0*z1^1', 'zbar^1*z2^0*z1^0', 'zbar^1*z2^0*z1^1'] committed ['zbar^0*z2^0*z1^1', 'zbar^1*z2^0*z1^0', 'zbar^1*z2^0*z1^1'] MATCH
+  Fpt,p=2,G    recomputed ['zbar^1*z2^0*z1^0'] committed ['zbar^1*z2^0*z1^0'] MATCH
+  Fpt,p=3,G    recomputed ['zbar^0*z2^0*z1^1', 'zbar^1*z2^0*z1^0', 'zbar^1*z2^0*z1^1'] committed ['zbar^0*z2^0*z1^1', 'zbar^1*z2^0*z1^0', 'zbar^1*z2^0*z1^1'] MATCH
+SPOT-CHECK B: M5 cross-harness integer data (splits + d3)
+  M5 integer spot check: 248/248 pair-records agree
+==============================================================================
+FRESH ROSTER BATTERY (44 towers)
+  Zp,p=2,Q4A     E3=4 G0=32 ords(zb,z2,z1)=(17,5,3) vset=4 law 16/16 swap0=True desc0=True b0a0=True sub 4/4 dev@d3=0:0 l2win=0
+  Zp,p=2,Q4B     E3=4 G0=56 ords(zb,z2,z1)=(1,5,3) vset=2 law 16/16 swap0=True desc0=True b0a0=True sub 4/4 dev@d3=0:0 l2win=0
+  Zp,p=2,Q4C     E3=4 G0=36 ords(zb,z2,z1)=(3,1,1) vset=2 law 16/16 swap0=True desc0=True b0a0=True sub 4/4 dev@d3=0:0 l2win=0
+  Zp,p=2,Q4D     E3=4 G0=20 ords(zb,z2,z1)=(17,5,3) vset=4 law 16/16 swap0=True desc0=True b0a0=True sub 16/16 dev@d3=0:0 l2win=0
+  Zp,p=2,Q6A     E3=6 G0=48 ords(zb,z2,z1)=(5,3,3) vset=4 law 36/36 swap0=True desc0=True b0a0=True sub 4/4 dev@d3=0:0 l2win=0
+  Zp,p=2,Q6B     E3=6 G0=60 ords(zb,z2,z1)=(5,3,1) vset=2 law 36/36 swap0=True desc0=True b0a0=True sub 9/9 dev@d3=0:0 l2win=0
+  Zp,p=2,Q6C     E3=6 G0=90 ords(zb,z2,z1)=(5,3,3) vset=4 law 36/36 swap0=True desc0=True b0a0=True sub 4/4 dev@d3=0:0 l2win=0
+  Zp,p=2,Q6D     E3=6 G0=42 ords(zb,z2,z1)=(5,3,3) vset=3 law 36/36 swap0=True desc0=True b0a0=True sub 36/36 dev@d3=0:0 l2win=0
+  Zp,p=2,Q8A     E3=8 G0=112 ords(zb,z2,z1)=(17,5,3) vset=8 law 64/64 swap0=True desc0=True b0a0=True sub 16/16 dev@d3=0:0 l2win=0
+  Zp,p=2,Q8B     E3=8 G0=64 ords(zb,z2,z1)=(3,1,1) vset=2 law 64/64 swap0=True desc0=True b0a0=True sub 16/16 dev@d3=0:0 l2win=0
+  Zp,p=2,Q8C     E3=8 G0=192 ords(zb,z2,z1)=(1,5,3) vset=7 law 64/64 swap0=True desc0=True b0a0=True sub 16/16 dev@d3=0:0 l2win=0
+  Zp,p=3,Q4A     E3=4 G0=32 ords(zb,z2,z1)=(41,5,8) vset=4 law 16/16 swap0=True desc0=True b0a0=True sub 4/4 dev@d3=0:0 l2win=0
+  Zp,p=3,Q4B     E3=4 G0=56 ords(zb,z2,z1)=(1,5,8) vset=2 law 16/16 swap0=True desc0=True b0a0=True sub 4/4 dev@d3=0:0 l2win=0
+  Zp,p=3,Q4C     E3=4 G0=36 ords(zb,z2,z1)=(4,2,2) vset=4 law 16/16 swap0=True desc0=True b0a0=True sub 4/4 dev@d3=0:0 l2win=0
+  Zp,p=3,Q4D     E3=4 G0=20 ords(zb,z2,z1)=(41,5,8) vset=4 law 16/16 swap0=True desc0=True b0a0=True sub 16/16 dev@d3=0:0 l2win=0
+  Zp,p=3,Q6A     E3=6 G0=48 ords(zb,z2,z1)=(10,2,8) vset=4 law 36/36 swap0=True desc0=True b0a0=True sub 4/4 dev@d3=0:0 l2win=0
+  Zp,p=3,Q6B     E3=6 G0=60 ords(zb,z2,z1)=(5,4,2) vset=4 law 36/36 swap0=True desc0=True b0a0=True sub 9/9 dev@d3=0:0 l2win=0
+  Zp,p=3,Q6C     E3=6 G0=90 ords(zb,z2,z1)=(10,2,8) vset=4 law 36/36 swap0=True desc0=True b0a0=True sub 4/4 dev@d3=0:0 l2win=0
+  Zp,p=3,Q6D     E3=6 G0=42 ords(zb,z2,z1)=(10,2,8) vset=4 law 36/36 swap0=True desc0=True b0a0=True sub 36/36 dev@d3=0:0 l2win=0
+  Zp,p=3,Q8A     E3=8 G0=112 ords(zb,z2,z1)=(41,5,8) vset=8 law 64/64 swap0=True desc0=True b0a0=True sub 16/16 dev@d3=0:0 l2win=0
+  Zp,p=3,Q8B     E3=8 G0=64 ords(zb,z2,z1)=(4,2,2) vset=4 law 64/64 swap0=True desc0=True b0a0=True sub 16/16 dev@d3=0:0 l2win=0
+  Zp,p=3,Q8C     E3=8 G0=192 ords(zb,z2,z1)=(1,5,2) vset=6 law 64/64 swap0=True desc0=True b0a0=True sub 16/16 dev@d3=0:0 l2win=0
+  Fpt,p=2,Q4A    E3=4 G0=32 ords(zb,z2,z1)=(17,5,3) vset=4 law 16/16 swap0=True desc0=True b0a0=True sub 4/4 dev@d3=0:0 l2win=0
+  Fpt,p=2,Q4B    E3=4 G0=56 ords(zb,z2,z1)=(1,5,3) vset=2 law 16/16 swap0=True desc0=True b0a0=True sub 4/4 dev@d3=0:0 l2win=0
+  Fpt,p=2,Q4C    E3=4 G0=36 ords(zb,z2,z1)=(3,1,1) vset=2 law 16/16 swap0=True desc0=True b0a0=True sub 4/4 dev@d3=0:0 l2win=0
+  Fpt,p=2,Q4D    E3=4 G0=20 ords(zb,z2,z1)=(17,5,3) vset=4 law 16/16 swap0=True desc0=True b0a0=True sub 16/16 dev@d3=0:0 l2win=0
+  Fpt,p=2,Q6A    E3=6 G0=48 ords(zb,z2,z1)=(5,3,3) vset=4 law 36/36 swap0=True desc0=True b0a0=True sub 4/4 dev@d3=0:0 l2win=0
+  Fpt,p=2,Q6B    E3=6 G0=60 ords(zb,z2,z1)=(5,3,1) vset=2 law 36/36 swap0=True desc0=True b0a0=True sub 9/9 dev@d3=0:0 l2win=0
+  Fpt,p=2,Q6C    E3=6 G0=90 ords(zb,z2,z1)=(5,3,3) vset=4 law 36/36 swap0=True desc0=True b0a0=True sub 4/4 dev@d3=0:0 l2win=0
+  Fpt,p=2,Q6D    E3=6 G0=42 ords(zb,z2,z1)=(5,3,3) vset=3 law 36/36 swap0=True desc0=True b0a0=True sub 36/36 dev@d3=0:0 l2win=0
+  Fpt,p=2,Q8A    E3=8 G0=112 ords(zb,z2,z1)=(17,5,3) vset=8 law 64/64 swap0=True desc0=True b0a0=True sub 16/16 dev@d3=0:0 l2win=0
+  Fpt,p=2,Q8B    E3=8 G0=64 ords(zb,z2,z1)=(3,1,1) vset=2 law 64/64 swap0=True desc0=True b0a0=True sub 16/16 dev@d3=0:0 l2win=0
+  Fpt,p=2,Q8C    E3=8 G0=192 ords(zb,z2,z1)=(1,5,3) vset=7 law 64/64 swap0=True desc0=True b0a0=True sub 16/16 dev@d3=0:0 l2win=0
+  Fpt,p=3,Q4A    E3=4 G0=32 ords(zb,z2,z1)=(41,5,8) vset=4 law 16/16 swap0=True desc0=True b0a0=True sub 4/4 dev@d3=0:0 l2win=0
+  Fpt,p=3,Q4B    E3=4 G0=56 ords(zb,z2,z1)=(1,5,8) vset=2 law 16/16 swap0=True desc0=True b0a0=True sub 4/4 dev@d3=0:0 l2win=0
+  Fpt,p=3,Q4C    E3=4 G0=36 ords(zb,z2,z1)=(4,2,2) vset=4 law 16/16 swap0=True desc0=True b0a0=True sub 4/4 dev@d3=0:0 l2win=0
+  Fpt,p=3,Q4D    E3=4 G0=20 ords(zb,z2,z1)=(41,5,8) vset=4 law 16/16 swap0=True desc0=True b0a0=True sub 16/16 dev@d3=0:0 l2win=0
+  Fpt,p=3,Q6A    E3=6 G0=48 ords(zb,z2,z1)=(10,2,8) vset=4 law 36/36 swap0=True desc0=True b0a0=True sub 4/4 dev@d3=0:0 l2win=0
+  Fpt,p=3,Q6B    E3=6 G0=60 ords(zb,z2,z1)=(5,4,2) vset=4 law 36/36 swap0=True desc0=True b0a0=True sub 9/9 dev@d3=0:0 l2win=0
+  Fpt,p=3,Q6C    E3=6 G0=90 ords(zb,z2,z1)=(10,2,8) vset=4 law 36/36 swap0=True desc0=True b0a0=True sub 4/4 dev@d3=0:0 l2win=0
+  Fpt,p=3,Q6D    E3=6 G0=42 ords(zb,z2,z1)=(10,2,8) vset=4 law 36/36 swap0=True desc0=True b0a0=True sub 36/36 dev@d3=0:0 l2win=0
+  Fpt,p=3,Q8A    E3=8 G0=112 ords(zb,z2,z1)=(41,5,8) vset=8 law 64/64 swap0=True desc0=True b0a0=True sub 16/16 dev@d3=0:0 l2win=0
+  Fpt,p=3,Q8B    E3=8 G0=64 ords(zb,z2,z1)=(4,2,2) vset=4 law 64/64 swap0=True desc0=True b0a0=True sub 16/16 dev@d3=0:0 l2win=0
+  Fpt,p=3,Q8C    E3=8 G0=192 ords(zb,z2,z1)=(1,5,2) vset=6 law 64/64 swap0=True desc0=True b0a0=True sub 16/16 dev@d3=0:0 l2win=0
+==============================================================================
+SYMBOLIC 20000 draws: mid warrant e1 viol=0 inner warrant e0 viol=0 | mid corr needed (e1 nmid n2)=6031 | naive nonintegral=5653 (of which at d3=0: 0)
+
+EYEBALL TABLE Zp,p=2,Q4C  (d0=1; e,h,g: L0=(2,3,1) L1=(1,1,1) L2=(2,3,2))  gamma2=7 gamma3=17 l0=1 l1=0 ords(zb,z2,z1)=(3,1,1)
+     ga    gb  s3,s3~ d3  j  measured c3              shadow-dev      
+     36    36   0,0    0  0  1                        1               
+     36    37   0,1    0  0  1                        1               
+     36    38   0,0    0  0  1                        1               
+     36    39   0,1    0  0  1                        1               
+     37    36   1,0    0  0  1                        1               
+     37    37   1,1    1  1  zbar^1*z2^0*z1^0         1               
+     37    38   1,0    0  0  1                        1               
+     37    39   1,1    1  1  zbar^1*z2^0*z1^0         1               
+     38    36   0,0    0  0  1                        1               
+     38    37   0,1    0  0  1                        1               
+     38    38   0,0    0  0  1                        1               
+     38    39   0,1    0  0  1                        1               
+     39    36   1,0    0  0  1                        1               
+     39    37   1,1    1  1  zbar^1*z2^0*z1^0         1               
+     39    38   1,0    0  0  1                        1               
+     39    39   1,1    1  1  zbar^1*z2^0*z1^0         1               
+
+EYEBALL TABLE Zp,p=3,Q4A  (d0=1; e,h,g: L0=(2,1,2) L1=(1,1,2) L2=(2,1,2))  gamma2=5 gamma3=21 l0=1 l1=0 ords(zb,z2,z1)=(41,5,8)
+     ga    gb  s3,s3~ d3  j  measured c3              shadow-dev      
+     32    32   0,0    0  0  1                        1               
+     32    33   0,1    0  0  1                        1               
+     32    34   0,0    0  0  1                        1               
+     32    35   0,1    0  0  1                        1               
+     33    32   1,0    0  0  1                        1               
+     33    33   1,1    1  1  zbar^1*z2^0*z1^2         zbar^0*z2^0*z1^2
+     33    34   1,0    0  0  1                        1               
+     33    35   1,1    1  1  zbar^1*z2^0*z1^3         zbar^0*z2^0*z1^3
+     34    32   0,0    0  0  1                        1               
+     34    33   0,1    0  0  1                        1               
+     34    34   0,0    0  0  zbar^0*z2^0*z1^1         1               
+     34    35   0,1    0  0  zbar^0*z2^0*z1^1         1               
+     35    32   1,0    0  0  1                        1               
+     35    33   1,1    1  1  zbar^1*z2^0*z1^3         zbar^0*z2^0*z1^3
+     35    34   1,0    0  0  zbar^0*z2^0*z1^1         1               
+     35    35   1,1    1  1  zbar^1*z2^0*z1^3         zbar^0*z2^0*z1^2
+
+EYEBALL TABLE Zp,p=3,Q6C  (d0=1; e,h,g: L0=(1,1,2) L1=(2,1,1) L2=(3,2,2))  gamma2=5 gamma3=32 l0=0 l1=1 ords(zb,z2,z1)=(10,2,8)
+     ga    gb  s3,s3~ d3  j  measured c3              shadow-dev      
+     90    90   0,0    0  0  1                        1               
+     90    91   0,2    0  0  1                        1               
+     90    92   0,1    0  0  1                        1               
+     90    93   0,0    0  0  1                        1               
+     90    94   0,2    0  0  1                        1               
+     90    95   0,1    0  0  1                        1               
+     91    90   2,0    0  0  1                        1               
+     91    91   2,2    1  1  zbar^1*z2^0*z1^4         1               
+     91    92   2,1    1  1  zbar^1*z2^0*z1^0         1               
+     91    93   2,0    0  0  zbar^0*z2^0*z1^4         1               
+     91    94   2,2    1  1  zbar^1*z2^0*z1^0         1               
+     91    95   2,1    1  1  zbar^1*z2^0*z1^4         1               
+     92    90   1,0    0  0  1                        1               
+     92    91   1,2    1  1  zbar^1*z2^0*z1^0         1               
+     92    92   1,1    0  0  1                        1               
+     92    93   1,0    0  0  1                        1               
+     92    94   1,2    1  1  zbar^1*z2^0*z1^0         1               
+     92    95   1,1    0  0  1                        1               
+     93    90   0,0    0  0  1                        1               
+     93    91   0,2    0  0  zbar^0*z2^0*z1^4         1               
+     93    92   0,1    0  0  1                        1               
+     93    93   0,0    0  0  zbar^0*z2^0*z1^4         1               
+     93    94   0,2    0  0  1                        1               
+     93    95   0,1    0  0  zbar^0*z2^0*z1^4         1               
+     94    90   2,0    0  0  1                        1               
+     94    91   2,2    1  1  zbar^1*z2^0*z1^0         1               
+     94    92   2,1    1  1  zbar^1*z2^0*z1^0         1               
+     94    93   2,0    0  0  1                        1               
+     94    94   2,2    1  1  zbar^1*z2^0*z1^0         1               
+     94    95   2,1    1  1  zbar^1*z2^0*z1^0         1               
+     95    90   1,0    0  0  1                        1               
+     95    91   1,2    1  1  zbar^1*z2^0*z1^4         1               
+     95    92   1,1    0  0  1                        1               
+     95    93   1,0    0  0  zbar^0*z2^0*z1^4         1               
+     95    94   1,2    1  1  zbar^1*z2^0*z1^0         1               
+     95    95   1,1    0  0  zbar^0*z2^0*z1^4         1               
+
+EYEBALL TABLE Zp,p=3,Q8A  (d0=1; e,h,g: L0=(2,1,2) L1=(2,1,2) L2=(2,1,2))  gamma2=9 gamma3=73 l0=1 l1=1 ords(zb,z2,z1)=(41,5,8)
+     ga    gb  s3,s3~ d3  j  measured c3              shadow-dev      
+    112   112   0,0    0  0  1                        1               
+    112   113   0,1    0  0  1                        1               
+    112   114   0,0    0  0  1                        1               
+    112   115   0,1    0  0  1                        1               
+    112   116   0,0    0  0  1                        1               
+    112   117   0,1    0  0  1                        1               
+    112   118   0,0    0  0  1                        1               
+    112   119   0,1    0  0  1                        1               
+    113   112   1,0    0  0  1                        1               
+    113   113   1,1    1  1  zbar^1*z2^1*z1^0         zbar^0*z2^1*z1^0
+    113   114   1,0    0  0  1                        1               
+    113   115   1,1    1  1  zbar^1*z2^2*z1^4         zbar^0*z2^2*z1^4
+    113   116   1,0    0  0  1                        1               
+    113   117   1,1    1  1  zbar^1*z2^1*z1^0         zbar^0*z2^1*z1^0
+    113   118   1,0    0  0  1                        1               
+    113   119   1,1    1  1  zbar^1*z2^2*z1^-3        zbar^0*z2^2*z1^-3
+    114   112   0,0    0  0  1                        1               
+    114   113   0,1    0  0  1                        1               
+    114   114   0,0    0  0  zbar^0*z2^1*z1^4         1               
+    114   115   0,1    0  0  zbar^0*z2^1*z1^4         1               
+    114   116   0,0    0  0  1                        1               
+    114   117   0,1    0  0  1                        1               
+    114   118   0,0    0  0  zbar^0*z2^1*z1^-3        1               
+    114   119   0,1    0  0  zbar^0*z2^1*z1^-3        1               
+    115   112   1,0    0  0  1                        1               
+    115   113   1,1    1  1  zbar^1*z2^2*z1^4         zbar^0*z2^2*z1^4
+    115   114   1,0    0  0  zbar^0*z2^1*z1^4         1               
+    115   115   1,1    1  1  zbar^1*z2^2*z1^4         zbar^0*z2^1*z1^0
+    115   116   1,0    0  0  1                        1               
+    115   117   1,1    1  1  zbar^1*z2^2*z1^-3        zbar^0*z2^2*z1^-3
+    115   118   1,0    0  0  zbar^0*z2^1*z1^-3        1               
+    115   119   1,1    1  1  zbar^1*z2^2*z1^-3        zbar^0*z2^1*z1^0
+    116   112   0,0    0  0  1                        1               
+    116   113   0,1    0  0  1                        1               
+    116   114   0,0    0  0  1                        1               
+    116   115   0,1    0  0  1                        1               
+    116   116   0,0    0  0  zbar^0*z2^0*z1^1         1               
+    116   117   0,1    0  0  zbar^0*z2^0*z1^1         1               
+    116   118   0,0    0  0  zbar^0*z2^0*z1^1         1               
+    116   119   0,1    0  0  zbar^0*z2^0*z1^1         1               
+    117   112   1,0    0  0  1                        1               
+    117   113   1,1    1  1  zbar^1*z2^1*z1^0         zbar^0*z2^1*z1^0
+    117   114   1,0    0  0  1                        1               
+    117   115   1,1    1  1  zbar^1*z2^2*z1^-3        zbar^0*z2^2*z1^-3
+    117   116   1,0    0  0  zbar^0*z2^0*z1^1         1               
+    117   117   1,1    1  1  zbar^1*z2^1*z1^1         zbar^0*z2^1*z1^0
+    117   118   1,0    0  0  zbar^0*z2^0*z1^1         1               
+    117   119   1,1    1  1  zbar^1*z2^2*z1^-3        zbar^0*z2^2*z1^4
+    118   112   0,0    0  0  1                        1               
+    118   113   0,1    0  0  1                        1               
+    118   114   0,0    0  0  zbar^0*z2^1*z1^-3        1               
+    118   115   0,1    0  0  zbar^0*z2^1*z1^-3        1               
+    118   116   0,0    0  0  zbar^0*z2^0*z1^1         1               
+    118   117   0,1    0  0  zbar^0*z2^0*z1^1         1               
+    118   118   0,0    0  0  zbar^0*z2^1*z1^-3        1               
+    118   119   0,1    0  0  zbar^0*z2^1*z1^-3        1               
+    119   112   1,0    0  0  1                        1               
+    119   113   1,1    1  1  zbar^1*z2^2*z1^-3        zbar^0*z2^2*z1^-3
+    119   114   1,0    0  0  zbar^0*z2^1*z1^-3        1               
+    119   115   1,1    1  1  zbar^1*z2^2*z1^-3        zbar^0*z2^1*z1^0
+    119   116   1,0    0  0  zbar^0*z2^0*z1^1         1               
+    119   117   1,1    1  1  zbar^1*z2^2*z1^-3        zbar^0*z2^2*z1^4
+    119   118   1,0    0  0  zbar^0*z2^1*z1^-3        1               
+    119   119   1,1    1  1  zbar^1*z2^2*z1^-3        zbar^0*z2^1*z1^0
+
+EYEBALL TABLE Fpt,p=3,Q6A  (d0=1; e,h,g: L0=(2,1,2) L1=(1,1,1) L2=(3,1,2))  gamma2=5 gamma3=16 l0=1 l1=0 ords(zb,z2,z1)=(10,2,8)
+     ga    gb  s3,s3~ d3  j  measured c3              shadow-dev      
+     48    48   0,0    0  0  1                        1               
+     48    49   0,1    0  0  1                        1               
+     48    50   0,2    0  0  1                        1               
+     48    51   0,0    0  0  1                        1               
+     48    52   0,1    0  0  1                        1               
+     48    53   0,2    0  0  1                        1               
+     49    48   1,0    0  0  1                        1               
+     49    49   1,1    0  0  zbar^0*z2^0*z1^1         1               
+     49    50   1,2    1  1  zbar^1*z2^0*z1^0         1               
+     49    51   1,0    0  0  zbar^0*z2^0*z1^1         1               
+     49    52   1,1    0  0  1                        1               
+     49    53   1,2    1  1  zbar^1*z2^0*z1^1         1               
+     50    48   2,0    0  0  1                        1               
+     50    49   2,1    1  1  zbar^1*z2^0*z1^0         1               
+     50    50   2,2    1  1  zbar^1*z2^0*z1^0         1               
+     50    51   2,0    0  0  1                        1               
+     50    52   2,1    1  1  zbar^1*z2^0*z1^0         1               
+     50    53   2,2    1  1  zbar^1*z2^0*z1^0         1               
+     51    48   0,0    0  0  1                        1               
+     51    49   0,1    0  0  zbar^0*z2^0*z1^1         1               
+     51    50   0,2    0  0  1                        1               
+     51    51   0,0    0  0  zbar^0*z2^0*z1^1         1               
+     51    52   0,1    0  0  1                        1               
+     51    53   0,2    0  0  zbar^0*z2^0*z1^1         1               
+     52    48   1,0    0  0  1                        1               
+     52    49   1,1    0  0  1                        1               
+     52    50   1,2    1  1  zbar^1*z2^0*z1^0         1               
+     52    51   1,0    0  0  1                        1               
+     52    52   1,1    0  0  1                        1               
+     52    53   1,2    1  1  zbar^1*z2^0*z1^0         1               
+     53    48   2,0    0  0  1                        1               
+     53    49   2,1    1  1  zbar^1*z2^0*z1^1         1               
+     53    50   2,2    1  1  zbar^1*z2^0*z1^0         1               
+     53    51   2,0    0  0  zbar^0*z2^0*z1^1         1               
+     53    52   2,1    1  1  zbar^1*z2^0*z1^0         1               
+     53    53   2,2    1  1  zbar^1*z2^0*z1^1         1               
+
+==============================================================================
+AGGREGATE (44 fresh towers):
+  FP0 anchor=eps-chain                                           0 viol /    512
+  FP0 top-slot shape                                             0 viol /   1600
+  FP0 ITER-LAW-3 closed form (decorrelated confirm)              0 viol /   1600
+  FP2 swap symmetry                                              0 viol /   1600
+  FP3 Z/E3 descent (single-arg + simult + k=2,5)                 0 viol /   6208
+  FP4 B0a genre c3 == zbar^j * d(eps-chain)                      0 viol /   1600
+  FP4 j == floor((s3+s3')/e2)                                    0 viol /   1600
+  FP4 measured associativity (triples)                           0 viol /   4384
+  FP4 j 2-cocycle identity (triples)                             0 viol /   4384
+  FP5 SUBWINDOW restriction == measured level-2                  0 viol /    516
+  FP5 shadow deviation at d3=0 (want 0)                          0 viol /   1600
+  FP5 deviation with zbar component (want 0)                     0 viol /    224
+  FP6 j fails to factor through mod-e2 residues                  0 viol /    192
+  FP7 middle e1-warrant                                          0 viol /   1600
+  FP7 inner e0-warrant (composed)                                0 viol /   1600
+  FP5 deviating pairs (all should be d3=1): 224; d3=1 pairs with NO deviation: 148; L2-window misses: 0
+  FP7 naive-template nonintegral: 164 (at d3=0: 0); middle correction load-bearing (e1 nmid n2): 208
+FINDINGS: 0
+ELAPSED 25.1s
+M4 FINGERPRINT VERDICT: ALL CLEAN
