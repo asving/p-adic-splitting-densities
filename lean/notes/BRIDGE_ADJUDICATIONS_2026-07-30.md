@@ -5332,3 +5332,31 @@ census re-run on the final text (the §32 patterns + BPLL/K1ConsumerFace/
 N-H7-1/VACUOUS-BY-TYPE NEW, ADM-REAL PROMOTED; every delta reasoned;
 fixed point re-grepped after the last edit). Doc-only unit: ROOT +
 PROJECT_STATE + this ledger; no Lean file touched.
+
+## 2026-08-08 — (ADM-REAL′) ATTEMPT (wave 11, track A per the G-ADM-2 routing): PROVED attempt-grade, UNCONDITIONAL off the right end — (CLASS-d) upgraded to a lattice THEOREM (CLASS-LAT); carrier weight variance found (F-ADM-3)
+
+**Unit:** the (ADM-REAL′) attempt (charter = GADM2_2026-08-08.md routing +
+ADM_U7_TRACKA_ATTEMPT.md §5/§6 + HDISCHARGE_H3.md §1.3(c)). Artifact:
+`lean/notes/openmath/ADMREAL_2026-08-08.md`; falsifier
+`verification/openmath/admreal_check.py` (preregistered, run: sealed legs
+R1/R2/R4/R5/R3(a) PASS; R3(b) SEALED-PREDICTION-REFUTED — that failure IS
+the finding; addendum legs R3′/R3″ PASS; theorem-grade legs 0 hits).
+**Verdict:** (ADM-REAL′) composed and PROVED at attempt grade with (B-PIN) —
+the ρ-pinned right-end slot, subtracted via L′ — carried as the DISPLAYED
+boundary hypothesis of the consumption corollary (not of the theorem).
+Upgrade over ADM-U7's display: **Lemma CLASS-LAT** proves (CLASS-d) at EVERY
+order from the lattice alone (induction on the tower; gcd(h_i,e_i) = 1 +
+the (P1)/(P3) top-normalized weight ladder W-LAD) — the "(CLASS-d) at
+r ≥ 2 = (GR-B)" conditionality is REMOVED from the (ADM-REAL′) chain;
+(GR-B) still prices CEN-J/CEN-W's own proofs, unchanged. **New finding
+F-ADM-3** (F-ADM-1's genus, machine-evidenced): `CensusCore.lean`'s coded
+`wphi = e_i·V_i + h_i` lacks the E_i = e_{i+1}⋯e_r rescale — diverges from
+O-9 §4's ledger (wt = w(B_𝐣), w = v_{r+1}; TRI forces it) at every r ≥ 2
+type with a ramified stage above i; F-ADM-2's "(CLASS-d) fails at r = 2"
+lives ENTIRELY on the coded lattice (falsifier reproduces its 88 failing
+types and quoted multiset {0,1,5,6} exactly; the O-9-weight twin grids are
+clean, r ≤ 3). Carrier `wt` re-key = EDIT-GATED design input (NOT landed;
+Lean tree untouched). Displayed opens: (B-PIN)/(C-JCT) audit, (FRESH)(a′)(c),
+(GR-B) at its own sites, the O-9 rev-6 (ADM′) re-scope (sign-off gated).
+Hostile pass owed on the note (charges listed §9; top attack = the §2 scope
+pin "TRI forces top-normalized wt" + W-LAD's ω_j(φ_i) = 0 reading).
