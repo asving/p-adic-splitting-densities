@@ -7271,3 +7271,65 @@ laws for the integer-level cocycle identity (a two-line symbolic check kills
 the naive form with no battery). Eyeballable full pair tables (4 towers,
 per-pair rows) in the note S5. No proof claims; no acceptance; orders ≥ 4
 untouched; no record edits.
+
+**M1 EXACT INTEGER EXPONENT FIT — 2026-08-08 (wallclock 2026-08-03): a
+from-data sparse ℤ-linear fit RE-DERIVES the sealed (ITER-LAW-3) as the unique
+minimal formula per exponent slot [POST-SEAL DIAGNOSTIC, not prereg; seal
+911431c read-only].** Note `lean/notes/openmath/L3FIT_M1_2026-08-08.md`;
+driver `verification/openmath/l3fit_m1_smallcases.py` (sealed harness imported
+byte-untouched) + full output + JSON. Method: NO candidate assumed — exponents
+of c₃ = z̄^a z₂^b z₁^c measured STRUCTURALLY (slot indices of the committed
+reads + definitional ε-exponents, every triple re-verified against the exact
+field value), then minimal-support exact solves over a 10/14/16-feature
+dictionary (splits + carries + realized shifts + carry×constant products +
+distractors). RESULTS: (1) unique minimal fits = the sealed constants on the
+nose — a = δ₃ [FORCED], b = (s₂-def + ℓ₁γ₃δ₃)/e₁ = D₂ [both classes FORCED],
+c = (s₁-def + ℓ₀·Sig1)/e₀ = D₁ with Sig1 the realized inner shift; banning the
+Sig1 shortcut, the unique size-3 refit is the sealed CLOSED composition
+Σ = D₂γ₂ + δ₃γ₃(ℓ₁′−ℓ₁w₁Φ₁); (2) field-exact everywhere: train 656/656
+(15 towers, E₃ ∈ {4,6,8}, p ∈ {2,3}), holdout 588/588 (10 fresh towers, seed
+20260810, incl. d₀ = 2, e₂ = 4, and an E₃ = 12 stretch row); (3) M1's own
+artifact read CONCURS with the recovery S5 + M5: the sealed run's JSON
+violations array is EMPTY — the "RED" was the m4-teeth artifact, no
+predicted-0 row was violated; (4) naive per-level template independently
+refuted: 186 nonintegral + 48 wrong-value of 1,244, ALL 234 at δ₃ = 1
+(929/929 clean at δ₃ = 0) — the seal's top-carry-leakage localization
+reproduced on a disjoint roster; distractor classes (ℓ₂δ₃, h₂δ₃, ℓ₀′-variants)
+never needed; (5) M5 cross-harness spot-check 20/20 with transplanted ψ-data,
+incl. two δ₂ = 1 pairs on a FRESH g₁ = 1 tower matching only WITH the
+LIFT-DEV-3 factor ε₁(γ₂)^{δ₂} = z₁^{−5δ₂} (M5's S0.6 display confirmed
+off-roster); (6) NEW measurement lesson: on cascade strata (g₀ = 1; g₁ = 1 ∧
+δ₂ = 1) the structural exponent triple is only a lattice-coset representative
+(run 1 of the driver: solves poisoned, no fit ≤ size 4; run 2 excludes those
+32 rows from solves, keeps them in field verification) — future exponent-level
+probes must fit on non-cascade rows or compare by field value. Convergence:
+THREE decorrelated methods (sealed verification, M5 reimplementation, from-data
+fit) now land on the same level-3 law. Conjecture-grade throughout; no
+acceptance, no proof claim, orders ≥ 4 untouched, no record edits.
+
+---
+
+## L6e_covers DISCHARGED (wave-18 U6, recovery unit) — the II-M9 coverage sorry proved Lean-core, statement byte-unchanged; Scaffold census 6 → 5 — 2026-08-03
+
+`Scaffold/O12/Semantic.lean`: the II-M9 coverage leg `L6e_covers` (the ONE
+open `sorry` of Movement II's O12 block) is PROVED — the missing finite
+lower-convex-hull layer landed as in-file unit II-M9c (`L6eHull`, ~830 lines,
+graduated from the d0e2b74-checkpointed scratch `scratch_hullcovers.lean`,
+now deleted; predecessor's §1 chord-pair helpers audited complete-and-kept
+verbatim, nothing double-applied). Route: diagram Finset → `OM/NewtonPolygon`
+genuine-vertex list (head/(e,0) pins) → FaceKind/SlopeTuple read off
+consecutive chords → `CellMem` via the `heights = npHeight` column induction.
+The `OM/HullStability` kernels (banked-sorry unit's layer) SUFFICED — no
+narrowed-gap residue, no new axiom, NO statement touched anywhere (L6e_covers
+docstring + signature diff-verified byte-identical; only the BLOCKED comment
++ `sorry` body replaced). One import added to Semantic.lean
+(`LeanUrat.OM.HullStability`; Scaffold→OM, cycle-free). CONSEQUENCE:
+`L6e_partition` (L6e(i)) is now a full unconditional theorem; II-M9 consumes
+no SemanticRows row. GATES: `lake env lean` EXIT 0; full `lake build` green
+(8570 jobs); in-file census (Semantic not in the capstone closure) —
+`L6e_covers`/`L6e_partition`/`L6e_disjoint`/`L6eHull.exists_cell`/`theKappa`/
+`theS`/`heights_eq` ALL `[propext, Classical.choice, Quot.sound]`, zero
+sorryAx. Residual: II-M6 (`hull_eq_iff_cell`) still open, no longer gating
+II-M9; `L6eHull` is the natural base for it. No ITER-LAW citation consumed
+(this unit is outside the (ITER-LAW) scope). Full record:
+`lean/notes/openmath/L6E_COVERS_DISCHARGE_2026-08-03.md`.

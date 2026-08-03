@@ -1510,7 +1510,9 @@ verification: full `lake build` green (8579 jobs);
 axioms unchanged. Scaffold/ code-`sorry` census: **6**, all documented
 honest-BLOCKED records at their proof sites —
 `O12/Semantic.lean` (`L6e_covers`, II-M9's coverage leg, blocked on the
-finite lower-convex-hull layer shared with un-landed II-M6);
+finite lower-convex-hull layer shared with un-landed II-M6)
+[DISCHARGED 2026-08-03, wave-18 U6 recovery unit — see the II-M9c
+milestone block below; Scaffold census is now **5**];
 `MeasureFloor/SumOne.lean` (I-F2 as-keyed, statement fenced);
 `DictIII/Window.lean` (III-T12 leg, awaits III-T11b/III-T13);
 `DictIII/Devid.lean` (III-G16 FALSE over landed III-G15a — compiled
@@ -1521,6 +1523,35 @@ artifacts in-file): II-F8/II-F9 refuted-as-stated (`O12/FactF.lean`),
 II-T3/II-T4 (JC) displays refuted + II-T5 blocked with classified
 artifacts (`O12/Torus.lean`), II-M6/II-G6/II-G7 BLOCKED (Wave 4a/4b
 records: hull layer + `regP_of_pin` seam).
+
+---
+## MILESTONE 2026-08-03 (wave-18 U6 recovery): `L6e_covers` DISCHARGED — II-M9 UNCONDITIONAL
+The II-M9 coverage leg `L6e_covers` (`lean/LeanUrat/Scaffold/O12/Semantic.lean`)
+is PROVED, statement byte-unchanged (docstring + signature verified identical
+against HEAD; only the BLOCKED comment + `sorry` body replaced). The missing
+finite lower-convex-hull layer landed as unit II-M9c, the in-file `L6eHull`
+section (~830 lines, graduated from the d0e2b74 checkpointed scratch
+`scratch_hullcovers.lean`, now deleted): the column-valuation diagram Finset
+{(c, w c)} ∪ {(e, 0)} → `OM/NewtonPolygon.npVertices` genuine-vertex list
+with head `(0, w 0)` / last `(e, 0)` pins → `FaceKind`/`SlopeTuple` read off
+consecutive vertex chords (widths, reduced drop fractions; strict `hdesc`
+from `hull_slope_mono` + the survivor-corner law `dropCollinear_corner`;
+`hlt1`/`hlast` fired by the R_e failure through terminal-chord validity) →
+`CellMem` via the column induction `heights κ s = npHeight` from the anchor
+(`vert_zip_attain` + `heights_drop`/`exists_face`). Kernels = the
+`OM/HullStability` layer of the banked-sorry unit (import added to
+`Semantic.lean`; direction Scaffold→OM, cycle-free, precedent AnchorN2 etc.).
+Consequences: `L6e_partition` (L6e(i)) is now a FULL theorem — every
+component Lean-core `{propext, Classical.choice, Quot.sound}` by in-file
+census (`L6e_covers`, `L6e_partition`, `L6e_disjoint`, `L6eHull.exists_cell`,
+`theKappa`, `theS`, `heights_eq` all checked); no `SemanticRows` row consumed
+(the old (NP-SLOPES) route stays unconsumed). Scaffold code-`sorry` census:
+**5** (SumOne, Window, Devid, CU1, Transfer). Gates: `lake env lean` on
+Semantic EXIT 0; full `lake build` green (8570 jobs); Semantic is NOT in the
+capstone closure (nothing imports it), so AxChk unaffected by construction.
+II-M6 (`hull_eq_iff_cell`) remains open but II-M9 no longer waits on it; the
+`L6eHull` layer is the natural base for a future II-M6 attempt.
+Unit note: `lean/notes/openmath/L6E_COVERS_DISCHARGE_2026-08-03.md`.
 
 ---
 ## MILESTONE 2026-08-05: RE-ACCEPTANCE AT TWELVE ROWS

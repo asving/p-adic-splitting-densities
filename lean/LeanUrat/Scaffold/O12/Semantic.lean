@@ -7,6 +7,7 @@ import Mathlib
 import LeanUrat.Scaffold.O12.PolygonData
 import LeanUrat.Scaffold.O12.Family
 import LeanUrat.L4
+import LeanUrat.OM.HullStability
 
 /-!
 # Scaffold/O12/Semantic — the semantic hypothesis rows [unit II-M0]
@@ -951,17 +952,18 @@ theorems are unconditional. The dependency II-M6 (`hull_eq_iff_cell`, Wave 4a)
 is likewise not consumed: uniqueness is proved directly (mutual chord bounds +
 reading the face structure off the unit drops).
 
-**As-built status (II-M9, this pass).** PROVED sorry-free: `CellMem` (the
-L6a cell, definition), `L6e_zero_notMem` + `cell_zero_ne_top` (the a_e = 0
-exclusion, both directions), `cell_subset_Ce` + `cell_not_Re` (the converse
-inclusion: every cell point lies in C_e\R_e with a_e ≠ 0), `L6e_disjoint`
-(uniqueness — every point lies in AT MOST one cell), and the assembly
-`L6e_partition` (conditional only on its own components). BLOCKED (one
-`sorry`): `L6e_covers`, the finite-hull existence leg — it needs the lower-
-convex-hull construction layer that the un-landed Wave-4a unit II-M6 also
-needs; the verified proof mechanism is recorded at the sorry site. Until
-`L6e_covers` lands, `L6e_partition`'s existence half is conditional on it;
-the uniqueness and exclusion halves are unconditional theorems.
+**As-built status (II-M9, updated 2026-08-03 — wave-18 U6 recovery unit).**
+PROVED sorry-free, ALL components: `CellMem` (the L6a cell, definition),
+`L6e_zero_notMem` + `cell_zero_ne_top` (the a_e = 0 exclusion, both
+directions), `cell_subset_Ce` + `cell_not_Re` (the converse inclusion: every
+cell point lies in C_e\R_e with a_e ≠ 0), `L6e_disjoint` (uniqueness — every
+point lies in AT MOST one cell), `L6e_covers` (the finite-hull existence leg,
+DISCHARGED by the `L6eHull` lower-convex-hull layer of unit II-M9c below —
+diagram Finset → `OM/NewtonPolygon.npVertices` → face read-off → `CellMem`,
+consuming the `OM/HullStability` kernels), and the assembly `L6e_partition`.
+II-M9 is UNCONDITIONAL: no `SemanticRows` row and no axiom beyond Lean core
+is consumed anywhere in the unit. (The un-landed Wave-4a unit II-M6
+`hull_eq_iff_cell` remains open, but II-M9 no longer waits on it.)
 -/
 
 /-- **The L6a cell** (membership form, over column-valuation data): (α) at
@@ -1580,6 +1582,881 @@ theorem L6e_disjoint {w : ℕ → WithTop ℤ} {κ κ' : FaceKind e}
     (⟨κ, s⟩ : Σ κ : FaceKind e, SlopeTuple κ) = ⟨κ', s'⟩ :=
   heights_inj (cell_heights_eq h h')
 
+/-!
+## Unit II-M9c — the finite lower-convex-hull layer (`L6eHull`)
+
+The construction that discharges `L6e_covers` (wave-18 U6 recovery unit,
+2026-08-03; the d0e2b74 scratch `scratch_hullcovers.lean` graduated here and
+deleted). A C_e\R_e column-valuation vector `w` with `a_e ≠ 0` plots as the
+finite diagram {(c, w c) : c < e, w c ≠ ⊤} ∪ {(e, 0)}; the genuine
+lower-hull vertex list of `OM/NewtonPolygon.npVertices` is pinned at
+`(0, w 0)` and `(e, 0)`, the face kind/slope tuple are read off consecutive
+vertices (widths, reduced slope fractions), and `CellMem` follows from the
+column-by-column match `heights κ s = npHeight` (downward induction from the
+anchor). Kernels consumed from `OM/HullStability` (the banked-sorry unit's
+layer): `hull_slope_mono` + `dropCollinear_corner` (strict slope increase =
+`hdesc`), `vert_zip_valid`/`pairLine_le_of_valid` (the terminal-drop `< 1`
+bound fired by the R_e failure), `vert_zip_attain` (chord attainment for the
+height match), `mem_hullAbscissae_min`/`max` + sorted-list kernels (the
+head/last pins). No `SemanticRows` row is consumed: the layer is
+unconditional over Mathlib + the proved NewtonPolygon/HullStability modules.
+-/
+
+section HullCovers
+
+open LeanUrat.OM.NewtonPolygon
+
+namespace L6eHull
+
+/-! ### §1 — chord-pair helpers (the d0e2b74 predecessor layer, kept as-is) -/
+
+/-- The (positive-oriented) drop fraction of a chord pair `(A, B)`:
+`(A.2 − B.2)/(B.1 − A.1)` — the magnitude of the descending slope. -/
+def dropQ (pr : (ℕ × ℕ) × (ℕ × ℕ)) : ℚ :=
+  ((pr.1.2 : ℚ) - (pr.2.2 : ℚ)) / ((pr.2.1 : ℚ) - (pr.1.1 : ℚ))
+
+lemma dropQ_eq_neg_pairSlope (pr : (ℕ × ℕ) × (ℕ × ℕ)) :
+    dropQ pr = -(pairSlope pr.1 pr.2) := by
+  rw [dropQ, pairSlope, ← neg_div, neg_sub]
+
+/-- Face datum of a chord pair: (width, reduced slope denominator). -/
+def faceOf (pr : (ℕ × ℕ) × (ℕ × ℕ)) : ℕ+ × ℕ+ :=
+  (⟨max 1 (pr.2.1 - pr.1.1), lt_of_lt_of_le one_pos (le_max_left _ _)⟩,
+   ⟨(dropQ pr).den, (dropQ pr).pos⟩)
+
+/-- Slope-numerator datum of a chord pair. -/
+def numOf (pr : (ℕ × ℕ) × (ℕ × ℕ)) : ℕ+ :=
+  ⟨max 1 (dropQ pr).num.toNat, lt_of_lt_of_le one_pos (le_max_left _ _)⟩
+
+lemma numOf_val {pr : (ℕ × ℕ) × (ℕ × ℕ)} (h : 0 < dropQ pr) :
+    ((numOf pr : ℕ) : ℤ) = (dropQ pr).num := by
+  have hnum : 0 < (dropQ pr).num := Rat.num_pos.mpr h
+  show ((max 1 (dropQ pr).num.toNat : ℕ) : ℤ) = (dropQ pr).num
+  omega
+
+lemma numOf_div_den {pr : (ℕ × ℕ) × (ℕ × ℕ)} (h : 0 < dropQ pr) :
+    ((numOf pr : ℕ) : ℚ) / (((faceOf pr).2 : ℕ) : ℚ) = dropQ pr := by
+  have h1 : ((numOf pr : ℕ) : ℚ) = ((dropQ pr).num : ℚ) := by
+    exact_mod_cast numOf_val h
+  have h2 : (((faceOf pr).2 : ℕ) : ℚ) = ((dropQ pr).den : ℚ) := rfl
+  rw [h1, h2, Rat.num_div_den]
+
+/-- A rational strictly between `0` and `1` has denominator `≥ 2`. -/
+lemma two_le_den {q : ℚ} (h0 : 0 < q) (h1 : q < 1) : 2 ≤ q.den := by
+  by_contra h
+  push Not at h
+  have hd1 : q.den = 1 := by have := q.pos; omega
+  have hq : q = ((q.num : ℤ) : ℚ) := by
+    conv_lhs => rw [← Rat.num_div_den q]
+    rw [hd1]
+    simp
+  rw [hq] at h0 h1
+  have h0' : 0 < q.num := by exact_mod_cast h0
+  have h1' : q.num < 1 := by exact_mod_cast h1
+  omega
+
+/-- Telescoping widths: over the consecutive pairs of a strictly-abscissa-sorted
+list, the widths sum to `last − head`. -/
+lemma zip_width_sum : ∀ (V : List (ℕ × ℕ)),
+    (V.map Prod.fst).Pairwise (· < ·) →
+    ∀ A, V.head? = some A → ∀ L, V.getLast? = some L →
+    ((V.zip V.tail).map (fun pr => pr.2.1 - pr.1.1)).sum + A.1 = L.1
+  | [], _, A, hA, L, hL => by simp at hA
+  | [P], _, A, hA, L, hL => by
+      simp only [List.head?_cons, Option.some.injEq] at hA
+      simp only [List.getLast?_singleton, Option.some.injEq] at hL
+      subst hA; subst hL
+      simp
+  | P :: Q :: T, hs, A, hA, L, hL => by
+      simp only [List.head?_cons, Option.some.injEq] at hA
+      subst hA
+      rw [List.getLast?_cons_cons] at hL
+      have hs' : ((Q :: T).map Prod.fst).Pairwise (· < ·) := by
+        rw [List.map_cons, List.pairwise_cons] at hs
+        exact hs.2
+      have hPQ : P.1 < Q.1 := by
+        rw [List.map_cons, List.pairwise_cons] at hs
+        exact hs.1 Q.1 (by simp)
+      have ih := zip_width_sum (Q :: T) hs' Q (by simp) L hL
+      rw [show (P :: Q :: T).tail = Q :: T from rfl, List.zip_cons_cons,
+        List.map_cons, List.sum_cons]
+      simp only [List.tail_cons] at ih ⊢
+      omega
+
+/-! ### §2 — the finite diagram of a column-valuation vector
+
+`w c` is the column valuation (II-M9 vocabulary, `w c = v(a_{e−c})`); columns
+`c < e` with finite valuation plot as dots `(c, htv w c)`, and the monic anchor
+plots as `(e, 0)`. Under the C_e hypothesis all finite valuations are ≥ 1, so
+the ℕ-valued height `htv` is faithful. -/
+
+variable (w : ℕ → WithTop ℤ) (e)
+
+/-- The ℕ-valued height of column `c` (junk `0` at `w c = ⊤`). -/
+def htv (c : ℕ) : ℕ := ((w c).untopD 0).toNat
+
+lemma htv_coe {c : ℕ} {n : ℤ} (hn : w c = (n : WithTop ℤ)) (hpos : 0 ≤ n) :
+    ((htv w c : ℕ) : ℤ) = n := by
+  unfold htv
+  rw [hn]
+  simp [Int.toNat_of_nonneg hpos]
+
+/-- Faithfulness of `htv` on C_e columns: `w c` IS the plotted height. -/
+lemma coe_htv {c : ℕ} (hne : w c ≠ ⊤) (h1 : (1 : WithTop ℤ) ≤ w c) :
+    w c = (((htv w c : ℕ) : ℤ) : WithTop ℤ) := by
+  obtain ⟨n, hn⟩ := WithTop.ne_top_iff_exists.mp hne
+  have hn' : w c = (n : WithTop ℤ) := hn.symm
+  have hpos : (1 : ℤ) ≤ n := by
+    rw [hn'] at h1
+    exact_mod_cast h1
+  rw [htv_coe w hn' (by omega), hn']
+
+lemma htv_pos {c : ℕ} (hne : w c ≠ ⊤) (h1 : (1 : WithTop ℤ) ≤ w c) :
+    1 ≤ htv w c := by
+  obtain ⟨n, hn⟩ := WithTop.ne_top_iff_exists.mp hne
+  have hn' : w c = (n : WithTop ℤ) := hn.symm
+  have hpos : (1 : ℤ) ≤ n := by
+    rw [hn'] at h1
+    exact_mod_cast h1
+  have := htv_coe w hn' (by omega)
+  omega
+
+/-- The support diagram: the finite-valuation dots below column `e`, plus the
+monic anchor `(e, 0)`. -/
+noncomputable def diagram : Finset (ℕ × ℕ) :=
+  ((Finset.range e).filter fun c => w c ≠ ⊤).image (fun c => (c, htv w c)) ∪ {(e, 0)}
+
+lemma anchor_mem : (e, 0) ∈ diagram e w := by
+  unfold diagram
+  exact Finset.mem_union_right _ (Finset.mem_singleton_self _)
+
+lemma diagram_nonempty : (diagram e w).Nonempty := ⟨(e, 0), anchor_mem e w⟩
+
+lemma mem_diagram {P : ℕ × ℕ} :
+    P ∈ diagram e w ↔ (P.1 < e ∧ w P.1 ≠ ⊤ ∧ P.2 = htv w P.1) ∨ P = (e, 0) := by
+  unfold diagram
+  rw [Finset.mem_union, Finset.mem_singleton, Finset.mem_image]
+  constructor
+  · rintro (⟨c, hc, rfl⟩ | h)
+    · rw [Finset.mem_filter, Finset.mem_range] at hc
+      exact Or.inl ⟨hc.1, hc.2, rfl⟩
+    · exact Or.inr h
+  · rintro (⟨h1, h2, h3⟩ | h)
+    · refine Or.inl ⟨P.1, ?_, ?_⟩
+      · rw [Finset.mem_filter, Finset.mem_range]
+        exact ⟨h1, h2⟩
+      · exact Prod.ext rfl h3.symm
+    · exact Or.inr h
+
+lemma diagram_fst_le {P : ℕ × ℕ} (hP : P ∈ diagram e w) : P.1 ≤ e := by
+  rcases (mem_diagram e w).mp hP with ⟨h, -, -⟩ | h
+  · omega
+  · rw [h]
+
+lemma diagram_snd_of_lt {P : ℕ × ℕ} (hP : P ∈ diagram e w) (hlt : P.1 < e) :
+    w P.1 ≠ ⊤ ∧ P.2 = htv w P.1 := by
+  rcases (mem_diagram e w).mp hP with ⟨-, h2, h3⟩ | h
+  · exact ⟨h2, h3⟩
+  · exfalso
+    rw [h] at hlt
+    omega
+
+lemma zero_mem (he : 0 < e) (h0 : w 0 ≠ ⊤) : ((0 : ℕ), htv w 0) ∈ diagram e w :=
+  (mem_diagram e w).mpr (Or.inl ⟨he, h0, rfl⟩)
+
+/-- Under C_e, every dot left of the anchor has height ≥ 1. -/
+lemma diagram_one_le_snd (hCe : ∀ c < e, 1 ≤ w c) {P : ℕ × ℕ}
+    (hP : P ∈ diagram e w) (hlt : P.1 < e) : 1 ≤ P.2 := by
+  obtain ⟨hne, hsnd⟩ := diagram_snd_of_lt e w hP hlt
+  rw [hsnd]
+  exact htv_pos w hne (hCe P.1 hlt)
+
+/-! ### §3 — the genuine vertex list and its head/last pins -/
+
+/-- The genuine lower-hull vertex list of the diagram. -/
+noncomputable def VL : List (ℕ × ℕ) :=
+  npVertices (diagram e w) (diagram_nonempty e w)
+
+lemma VL_sorted : ((VL e w).map Prod.fst).Pairwise (· < ·) :=
+  npVertices_sorted _ _
+
+lemma VL_mem {P : ℕ × ℕ} (hP : P ∈ VL e w) : P ∈ diagram e w :=
+  vert_mem _ _ hP
+
+lemma VL_hull {P : ℕ × ℕ} (hP : P ∈ VL e w) :
+    (P.2 : ℚ) = npHeight (diagram e w) (diagram_nonempty e w) (P.1 : ℚ) :=
+  npVertices_on_hull _ _ hP
+
+lemma hullAbscissae_sorted :
+    (hullAbscissae (diagram e w) (diagram_nonempty e w)).Pairwise (· < ·) := by
+  have h := npVerticesFull_sorted (diagram e w) (diagram_nonempty e w)
+  rwa [npVerticesFull_fst] at h
+
+lemma zero_hullAbs (he : 0 < e) (h0 : w 0 ≠ ⊤) :
+    0 ∈ hullAbscissae (diagram e w) (diagram_nonempty e w) :=
+  mem_hullAbscissae_min _ _ (fun _ _ => Nat.zero_le _)
+    ⟨htv w 0, zero_mem e w he h0⟩
+
+lemma e_hullAbs : e ∈ hullAbscissae (diagram e w) (diagram_nonempty e w) :=
+  mem_hullAbscissae_max _ _ (fun _ hP => diagram_fst_le e w hP)
+    ⟨0, anchor_mem e w⟩
+
+lemma hullDotAt_zero (he : 0 < e) (h0 : w 0 ≠ ⊤) :
+    hullDotAt (diagram e w) (diagram_nonempty e w) 0 = ((0 : ℕ), htv w 0) := by
+  obtain ⟨v, hv, hon⟩ := (mem_hullAbscissae_iff _ _).mp (zero_hullAbs e w he h0)
+  have hv' : v = htv w 0 := by
+    rcases (mem_diagram e w).mp hv with ⟨-, -, h⟩ | h
+    · exact h
+    · exfalso
+      have h1 : (0 : ℕ) = e := congrArg Prod.fst h
+      omega
+  unfold hullDotAt
+  rw [hullHeightAt_of_onHull _ _ hv hon, hv']
+
+lemma hullDotAt_e :
+    hullDotAt (diagram e w) (diagram_nonempty e w) e = (e, 0) := by
+  obtain ⟨v, hv, hon⟩ := (mem_hullAbscissae_iff _ _).mp (e_hullAbs e w)
+  have hv' : v = 0 := by
+    rcases (mem_diagram e w).mp hv with ⟨h, -, -⟩ | h
+    · omega
+    · exact (Prod.ext_iff.mp h).2
+  unfold hullDotAt
+  rw [hullHeightAt_of_onHull _ _ hv hon, hv']
+
+/-- Head pin: the vertex list starts at the column-0 dot. -/
+lemma VL_head (he : 0 < e) (h0 : w 0 ≠ ⊤) :
+    ∃ t, VL e w = ((0 : ℕ), htv w 0) :: t := by
+  obtain ⟨t0, ht0⟩ := sorted_head_min (hullAbscissae_sorted e w)
+    (zero_hullAbs e w he h0) (fun x _ => Nat.zero_le _)
+  have hfull : npVerticesFull (diagram e w) (diagram_nonempty e w) =
+      ((0 : ℕ), htv w 0) ::
+        t0.map (hullDotAt (diagram e w) (diagram_nonempty e w)) := by
+    unfold npVerticesFull
+    rw [ht0, List.map_cons, hullDotAt_zero e w he h0]
+  obtain ⟨u, hu, -⟩ := dropCollinear_cons_head ((0 : ℕ), htv w 0)
+    (t0.map (hullDotAt (diagram e w) (diagram_nonempty e w)))
+  refine ⟨u, ?_⟩
+  show dropCollinear (npVerticesFull (diagram e w) (diagram_nonempty e w)) = _
+  rw [hfull, hu]
+
+/-- Last pin: the vertex list ends at the monic anchor `(e, 0)`. -/
+lemma VL_last : (VL e w).getLast? = some (e, 0) := by
+  have hub : ∀ x ∈ hullAbscissae (diagram e w) (diagram_nonempty e w), x ≤ e := by
+    intro x hx
+    obtain ⟨v, hv, -⟩ := (mem_hullAbscissae_iff _ _).mp hx
+    exact diagram_fst_le e w hv
+  have hlast := sorted_getLast?_eq (hullAbscissae_sorted e w) (e_hullAbs e w) hub
+  show (dropCollinear (npVerticesFull (diagram e w) (diagram_nonempty e w))).getLast? = _
+  rw [dropCollinear_getLast?]
+  unfold npVerticesFull
+  rw [List.getLast?_map, hlast, Option.map_some, hullDotAt_e]
+
+lemma npHeight_e :
+    npHeight (diagram e w) (diagram_nonempty e w) ((e : ℕ) : ℚ) = 0 := by
+  have hmem : ((e, 0) : ℕ × ℕ) ∈ VL e w := mem_of_getLast?_eq (VL_last e w)
+  have h := VL_hull e w hmem
+  simp only [Nat.cast_zero] at h
+  exact h.symm
+
+lemma VL_two_le (he : 0 < e) (h0 : w 0 ≠ ⊤) : 2 ≤ (VL e w).length := by
+  obtain ⟨t, ht⟩ := VL_head e w he h0
+  rcases t with _ | ⟨b, t'⟩
+  · exfalso
+    have h := VL_last e w
+    rw [ht] at h
+    simp only [List.getLast?_singleton, Option.some.injEq] at h
+    have h1 : (0 : ℕ) = e := congrArg Prod.fst h
+    omega
+  · rw [ht]
+    simp
+
+/-! ### §4 — consecutive-pair access and the slope laws -/
+
+/-- The consecutive-vertex pair list. -/
+noncomputable def ZL : List ((ℕ × ℕ) × (ℕ × ℕ)) :=
+  (VL e w).zip (VL e w).tail
+
+lemma ZL_len : (ZL e w).length = (VL e w).length - 1 := by
+  show ((VL e w).zip (VL e w).tail).length = _
+  rw [List.length_zip, List.length_tail]
+  omega
+
+lemma ZL_get {i : ℕ} (hi : i + 1 < (VL e w).length) :
+    (ZL e w)[i]'(by rw [ZL_len]; omega) =
+      ((VL e w)[i]'(by omega), (VL e w)[i + 1]'hi) := by
+  show ((VL e w).zip (VL e w).tail)[i]'(by
+    rw [List.length_zip, List.length_tail]; omega) = _
+  rw [List.getElem_zip, List.getElem_tail]
+
+lemma mem_ZL {i : ℕ} (hi : i + 1 < (VL e w).length) :
+    (((VL e w)[i]'(by omega), (VL e w)[i + 1]'hi)) ∈ ZL e w := by
+  rw [← ZL_get e w hi]
+  exact List.getElem_mem _
+
+/-- Consecutive vertices strictly increase in abscissa. -/
+lemma VL_fst_lt {i : ℕ} (hi : i + 1 < (VL e w).length) :
+    ((VL e w)[i]'(by omega)).1 < ((VL e w)[i + 1]'hi).1 :=
+  zip_fst_lt _ (VL_sorted e w) _ (mem_ZL e w hi)
+
+/-- Element pin at the last index (index form `i + 1 = length`). -/
+lemma VL_getElem_last {i : ℕ}
+    (hidx : i + 1 = (VL e w).length) :
+    (VL e w)[i]'(by omega) = (e, 0) := by
+  have h := VL_last e w
+  rw [List.getLast?_eq_getElem?] at h
+  have h2 : (VL e w).length - 1 = i := by omega
+  rw [h2, List.getElem?_eq_getElem (by omega)] at h
+  exact Option.some.inj h
+
+/-- Element pin at index 0. -/
+lemma VL_getElem_zero (he : 0 < e) (h0 : w 0 ≠ ⊤) :
+    (VL e w)[0]'(by have := VL_two_le e w he h0; omega) = ((0 : ℕ), htv w 0) := by
+  obtain ⟨t, ht⟩ := VL_head e w he h0
+  have h : (VL e w)[0]? = some ((0 : ℕ), htv w 0) := by
+    rw [ht]
+    rfl
+  rw [List.getElem?_eq_getElem (by have := VL_two_le e w he h0; omega)] at h
+  exact Option.some.inj h
+
+/-- Adjacent chord slopes strictly increase (convexity + the survivor-corner law). -/
+lemma adj_slope_lt {i : ℕ} (hi : i + 2 < (VL e w).length) :
+    pairSlope ((VL e w)[i]'(by omega)) ((VL e w)[i + 1]'(by omega)) <
+      pairSlope ((VL e w)[i + 1]'(by omega)) ((VL e w)[i + 2]'hi) := by
+  have hm1 : (((VL e w)[i]'(by omega), (VL e w)[i + 1]'(by omega))) ∈ ZL e w :=
+    mem_ZL e w (by omega)
+  have hm2 : (((VL e w)[i + 1]'(by omega), (VL e w)[i + 2]'hi)) ∈ ZL e w := by
+    have := mem_ZL e w (i := i + 1) (by omega)
+    exact this
+  have h01 : ((VL e w)[i]'(by omega)).1 < ((VL e w)[i + 1]'(by omega)).1 :=
+    VL_fst_lt e w (by omega)
+  have h12 : ((VL e w)[i + 1]'(by omega)).1 < ((VL e w)[i + 2]'hi).1 :=
+    VL_fst_lt e w (i := i + 1) (by omega)
+  have hmono : pairSlope ((VL e w)[i]'(by omega)) ((VL e w)[i + 1]'(by omega)) ≤
+      pairSlope ((VL e w)[i + 1]'(by omega)) ((VL e w)[i + 2]'hi) :=
+    hull_slope_mono (diagram e w) (diagram_nonempty e w)
+      (VL_mem e w (List.getElem_mem (l := VL e w) (n := i) (by omega)))
+      (VL_mem e w (List.getElem_mem (l := VL e w) (n := i + 2) (by omega)))
+      (VL_hull e w (List.getElem_mem (l := VL e w) (n := i + 1) (by omega)))
+      h01 h12
+  rcases hmono.lt_or_eq with hlt | heq
+  · exact hlt
+  · exfalso
+    have hcol := collinear₃_of_pairSlope_eq h01 h12 heq
+    exact dropCollinear_corner
+      (npVerticesFull (diagram e w) (diagram_nonempty e w))
+      (npVerticesFull_sorted _ _) _ hm1 _ hm2 rfl hcol
+
+/-- Chord slopes strictly increase along the vertex list. -/
+lemma slope_lt_of_lt {i j : ℕ} (hij : i < j) (hj : j + 1 < (VL e w).length) :
+    pairSlope ((VL e w)[i]'(by omega)) ((VL e w)[i + 1]'(by omega)) <
+      pairSlope ((VL e w)[j]'(by omega)) ((VL e w)[j + 1]'hj) := by
+  induction j with
+  | zero => omega
+  | succ n ih =>
+      rcases Nat.lt_or_ge i n with h | h
+      · exact lt_trans (ih h (by omega)) (adj_slope_lt e w (by omega))
+      · have hin : i = n := by omega
+        subst hin
+        exact adj_slope_lt e w (by omega)
+
+/-- Every chord slope is negative: the hull descends all the way to `(e, 0)`. -/
+lemma slope_neg (he : 0 < e) (hCe : ∀ c < e, 1 ≤ w c) (h0 : w 0 ≠ ⊤)
+    {i : ℕ} (hi : i + 1 < (VL e w).length) :
+    pairSlope ((VL e w)[i]'(by omega)) ((VL e w)[i + 1]'hi) < 0 := by
+  have h2 := VL_two_le e w he h0
+  have hterm : ∀ j, ∀ hj : j + 2 = (VL e w).length,
+      pairSlope ((VL e w)[j]'(by omega)) ((VL e w)[j + 1]'(by omega)) < 0 := by
+    intro j hj
+    have hV1 : (VL e w)[j + 1]'(by omega) = (e, 0) :=
+      VL_getElem_last e w (by omega)
+    have hlt : ((VL e w)[j]'(by omega)).1 < ((VL e w)[j + 1]'(by omega)).1 :=
+      VL_fst_lt e w (by omega)
+    have hSm : (VL e w)[j]'(by omega) ∈ diagram e w :=
+      VL_mem e w (List.getElem_mem _)
+    have hlt' : ((VL e w)[j]'(by omega)).1 < e := by
+      rw [hV1] at hlt
+      exact hlt
+    have hsnd : 1 ≤ ((VL e w)[j]'(by omega)).2 :=
+      diagram_one_le_snd e w hCe hSm hlt'
+    rw [hV1]
+    unfold pairSlope
+    apply div_neg_of_neg_of_pos
+    · show (((0 : ℕ) : ℚ)) - ((((VL e w)[j]'(by omega)).2 : ℕ) : ℚ) < 0
+      have h1 : (1 : ℚ) ≤ ((((VL e w)[j]'(by omega)).2 : ℕ) : ℚ) := by
+        exact_mod_cast hsnd
+      simp only [Nat.cast_zero]
+      linarith
+    · show (0 : ℚ) < (((e : ℕ) : ℚ)) - ((((VL e w)[j]'(by omega)).1 : ℕ) : ℚ)
+      have h1 : ((((VL e w)[j]'(by omega)).1 : ℕ) : ℚ) < ((e : ℕ) : ℚ) := by
+        exact_mod_cast hlt'
+      linarith
+  rcases Nat.lt_or_ge (i + 2) (VL e w).length with hcase | hcase
+  · calc pairSlope ((VL e w)[i]'(by omega)) ((VL e w)[i + 1]'hi)
+        < pairSlope ((VL e w)[(VL e w).length - 2]'(by omega))
+            ((VL e w)[(VL e w).length - 2 + 1]'(by omega)) :=
+          slope_lt_of_lt e w (by omega) (by omega)
+      _ < 0 := hterm ((VL e w).length - 2) (by omega)
+  · have hii : i + 2 = (VL e w).length := by omega
+    exact hterm i hii
+
+/-- Drops are positive along the vertex list. -/
+lemma drop_pos (he : 0 < e) (hCe : ∀ c < e, 1 ≤ w c) (h0 : w 0 ≠ ⊤)
+    {i : ℕ} (hi : i + 1 < (VL e w).length) :
+    0 < dropQ ((VL e w)[i]'(by omega), (VL e w)[i + 1]'hi) := by
+  have h := slope_neg e w he hCe h0 hi
+  have hps : dropQ ((VL e w)[i]'(by omega), (VL e w)[i + 1]'hi) =
+      -(pairSlope ((VL e w)[i]'(by omega)) ((VL e w)[i + 1]'hi)) :=
+    dropQ_eq_neg_pairSlope _
+  rw [hps]
+  linarith
+
+/-- Drops strictly decrease along the vertex list. -/
+lemma drop_lt_of_lt {i j : ℕ} (hij : i < j) (hj : j + 1 < (VL e w).length) :
+    dropQ ((VL e w)[j]'(by omega), (VL e w)[j + 1]'hj) <
+      dropQ ((VL e w)[i]'(by omega), (VL e w)[i + 1]'(by omega)) := by
+  have h := slope_lt_of_lt e w hij hj
+  have hps1 : dropQ ((VL e w)[j]'(by omega), (VL e w)[j + 1]'hj) =
+      -(pairSlope ((VL e w)[j]'(by omega)) ((VL e w)[j + 1]'hj)) :=
+    dropQ_eq_neg_pairSlope _
+  have hps2 : dropQ ((VL e w)[i]'(by omega), (VL e w)[i + 1]'(by omega)) =
+      -(pairSlope ((VL e w)[i]'(by omega)) ((VL e w)[i + 1]'(by omega))) :=
+    dropQ_eq_neg_pairSlope _
+  rw [hps1, hps2]
+  linarith
+
+/-- The terminal drop is `< 1` (fired by the R_e failure hypothesis through
+validity of the terminal chord). -/
+lemma drop_last_lt_one (hCe : ∀ c < e, 1 ≤ w c)
+    (hRe : ¬ ∀ c < e, (((e - c : ℕ) : ℤ) : WithTop ℤ) ≤ w c)
+    {j : ℕ} (hj : j + 2 = (VL e w).length) :
+    dropQ ((VL e w)[j]'(by omega), (VL e w)[j + 1]'(by omega)) < 1 := by
+  push Not at hRe
+  obtain ⟨c, hce, hwc⟩ := hRe
+  have hwlt : w c < (((e - c : ℕ) : ℤ) : WithTop ℤ) := hwc
+  have hne : w c ≠ ⊤ := hwlt.ne_top
+  have hw1 : (1 : WithTop ℤ) ≤ w c := hCe c hce
+  have hcoe := coe_htv w hne hw1
+  have hhtv : (htv w c : ℤ) < ((e - c : ℕ) : ℤ) := by
+    rw [hcoe] at hwlt
+    exact_mod_cast hwlt
+  have hhtv' : htv w c < e - c := by exact_mod_cast hhtv
+  -- the dot at column c
+  have hdot : ((c, htv w c) : ℕ × ℕ) ∈ diagram e w :=
+    (mem_diagram e w).mpr (Or.inl ⟨hce, hne, rfl⟩)
+  -- the terminal chord is a valid line
+  have hval : (((VL e w)[j]'(by omega), (VL e w)[j + 1]'(by omega)))
+      ∈ validLines (diagram e w) :=
+    vert_zip_valid (diagram e w) (diagram_nonempty e w)
+      (mem_ZL e w (by omega))
+  have hV1 : (VL e w)[j + 1]'(by omega) = (e, 0) :=
+    VL_getElem_last e w (by omega)
+  have hlow := pairLine_le_of_valid (diagram e w) hval hdot
+  dsimp only at hlow
+  set A := (VL e w)[j]'(by omega) with hA
+  set B := (VL e w)[j + 1]'(by omega) with hB
+  have hAB : A.1 < B.1 := VL_fst_lt e w (by omega)
+  have hABQ : ((A.1 : ℕ) : ℚ) ≠ ((B.1 : ℕ) : ℚ) := by
+    exact_mod_cast Nat.ne_of_lt hAB
+  have hslope : pairSlope A B = -dropQ (A, B) := by
+    have h1 : dropQ (A, B) = -(pairSlope A B) := dropQ_eq_neg_pairSlope _
+    linarith
+  rw [pairLine_right_form A B hABQ, hslope] at hlow
+  have hB2 : ((B.2 : ℕ) : ℚ) = 0 := by rw [hV1]; norm_num
+  have hB1 : ((B.1 : ℕ) : ℚ) = ((e : ℕ) : ℚ) := by rw [hV1]
+  rw [hB2, hB1] at hlow
+  simp only [zero_add, neg_mul] at hlow
+  -- hlow : −(dropQ (A,B) * (c − e)) ≤ htv w c, i.e. dropQ·(e − c) ≤ htv c
+  have hec : (0 : ℚ) < ((e : ℕ) : ℚ) - ((c : ℕ) : ℚ) := by
+    have h1 : ((c : ℕ) : ℚ) < ((e : ℕ) : ℚ) := by exact_mod_cast hce
+    linarith
+  have hhtvQ : ((htv w c : ℕ) : ℚ) < ((e : ℕ) : ℚ) - ((c : ℕ) : ℚ) := by
+    have h1 : ((htv w c : ℕ) : ℚ) < ((e - c : ℕ) : ℚ) := by exact_mod_cast hhtv'
+    have h2 : ((e - c : ℕ) : ℚ) = ((e : ℕ) : ℚ) - ((c : ℕ) : ℚ) := by
+      have h3 : c ≤ e := by omega
+      push_cast [Nat.cast_sub h3]
+      ring
+    rw [h2] at h1
+    exact h1
+  -- dropQ (A,B) * (e − c) ≤ htv c < e − c ⟹ dropQ < 1
+  have h5 : dropQ (A, B) * (((e : ℕ) : ℚ) - ((c : ℕ) : ℚ)) ≤ ((htv w c : ℕ) : ℚ) := by
+    linarith [hlow]
+  have hprod : dropQ (A, B) * (((e : ℕ) : ℚ) - ((c : ℕ) : ℚ)) <
+      1 * (((e : ℕ) : ℚ) - ((c : ℕ) : ℚ)) := by
+    linarith [h5, hhtvQ]
+  exact lt_of_mul_lt_mul_right hprod (le_of_lt hec)
+
+/-- Reduced denominators divide widths (drops over integer endpoints). -/
+lemma den_dvd_width {i : ℕ} (hi : i + 1 < (VL e w).length) :
+    (dropQ ((VL e w)[i]'(by omega), (VL e w)[i + 1]'hi)).den ∣
+      (((VL e w)[i + 1]'hi).1 - ((VL e w)[i]'(by omega)).1) := by
+  set A := (VL e w)[i]'(by omega) with hA
+  set B := (VL e w)[i + 1]'hi with hB
+  have hAB : A.1 < B.1 := VL_fst_lt e w hi
+  have hcast : dropQ (A, B) =
+      Rat.divInt ((A.2 : ℤ) - (B.2 : ℤ)) ((B.1 : ℤ) - (A.1 : ℤ)) := by
+    rw [Rat.divInt_eq_div]
+    unfold dropQ
+    push_cast
+    ring
+  have hdvd := Rat.den_dvd ((A.2 : ℤ) - (B.2 : ℤ)) ((B.1 : ℤ) - (A.1 : ℤ))
+  rw [← hcast] at hdvd
+  have hsub : ((B.1 : ℤ) - (A.1 : ℤ)) = ((B.1 - A.1 : ℕ) : ℤ) := by
+    have : A.1 ≤ B.1 := le_of_lt hAB
+    omega
+  rw [hsub] at hdvd
+  exact_mod_cast hdvd
+
+/-! ### §5 — the face kind and slope tuple read off the vertex list -/
+
+noncomputable def facesL : List (ℕ+ × ℕ+) := (ZL e w).map faceOf
+
+lemma facesL_len : (facesL e w).length = (ZL e w).length := by
+  unfold facesL
+  simp
+
+lemma facesL_get {j : ℕ} (hj : j < (ZL e w).length) :
+    (facesL e w)[j]'(by rw [facesL_len]; omega) = faceOf ((ZL e w)[j]'hj) := by
+  unfold facesL
+  rw [List.getElem_map]
+
+lemma facesL_width {j : ℕ} (hj : j + 1 < (VL e w).length) :
+    (((facesL e w)[j]'(by rw [facesL_len, ZL_len]; omega)).1 : ℕ) =
+      ((VL e w)[j + 1]'hj).1 - ((VL e w)[j]'(by omega)).1 := by
+  rw [facesL_get e w (by rw [ZL_len]; omega), ZL_get e w hj]
+  show max 1 (((VL e w)[j + 1]'hj).1 - ((VL e w)[j]'(by omega)).1) = _
+  have := VL_fst_lt e w hj
+  omega
+
+lemma facesL_sum (he : 0 < e) (h0 : w 0 ≠ ⊤) :
+    ((facesL e w).map (·.1.val)).sum = e := by
+  obtain ⟨t, ht⟩ := VL_head e w he h0
+  have hzw := zip_width_sum (VL e w) (VL_sorted e w) ((0 : ℕ), htv w 0)
+    (by rw [ht]; rfl) (e, 0) (VL_last e w)
+  have hmapeq : (facesL e w).map (·.1.val) =
+      (ZL e w).map (fun pr => pr.2.1 - pr.1.1) := by
+    unfold facesL
+    rw [List.map_map]
+    refine List.map_congr_left ?_
+    intro pr hpr
+    have hlt : pr.1.1 < pr.2.1 := zip_fst_lt _ (VL_sorted e w) pr hpr
+    show max 1 (pr.2.1 - pr.1.1) = pr.2.1 - pr.1.1
+    omega
+  rw [hmapeq]
+  show (((VL e w).zip (VL e w).tail).map (fun pr => pr.2.1 - pr.1.1)).sum = e
+  simpa using hzw
+
+lemma facesL_dvd : ∀ f ∈ facesL e w, ((f.2 : ℕ) ∣ (f.1 : ℕ)) := by
+  intro f hf
+  unfold facesL at hf
+  rw [List.mem_map] at hf
+  obtain ⟨pr, hpr, rfl⟩ := hf
+  rw [List.mem_iff_getElem] at hpr
+  obtain ⟨i, hi, rfl⟩ := hpr
+  have hb : i + 1 < (VL e w).length := by
+    have := ZL_len e w
+    omega
+  rw [ZL_get e w hb]
+  show (dropQ ((VL e w)[i]'(by omega), (VL e w)[i + 1]'hb)).den ∣
+    max 1 (((VL e w)[i + 1]'hb).1 - ((VL e w)[i]'(by omega)).1)
+  have hw := VL_fst_lt e w hb
+  have hd := den_dvd_width e w hb
+  have hmax : max 1 (((VL e w)[i + 1]'hb).1 - ((VL e w)[i]'(by omega)).1) =
+      ((VL e w)[i + 1]'hb).1 - ((VL e w)[i]'(by omega)).1 := by omega
+  rw [hmax]
+  exact hd
+
+lemma facesL_last (he : 0 < e) (hCe : ∀ c < e, 1 ≤ w c)
+    (hRe : ¬ ∀ c < e, (((e - c : ℕ) : ℤ) : WithTop ℤ) ≤ w c) (h0 : w 0 ≠ ⊤) :
+    ∀ h : facesL e w ≠ [], 2 ≤ (((facesL e w).getLast h).2 : ℕ) := by
+  intro h
+  have hVlen := VL_two_le e w he h0
+  have hzl := ZL_len e w
+  have hfl := facesL_len e w
+  have hne : 0 < (facesL e w).length := List.length_pos_of_ne_nil h
+  have hidx : (facesL e w).length - 1 + 1 < (VL e w).length := by omega
+  rw [List.getLast_eq_getElem, facesL_get e w (by omega), ZL_get e w hidx]
+  show 2 ≤ (dropQ ((VL e w)[(facesL e w).length - 1]'(by omega),
+    (VL e w)[(facesL e w).length - 1 + 1]'hidx)).den
+  refine two_le_den ?_ ?_
+  · exact drop_pos e w he hCe h0 hidx
+  · exact drop_last_lt_one e w hCe hRe (by omega)
+
+/-- The face kind read off the diagram's genuine vertex list. -/
+noncomputable def theKappa (he : 0 < e) (hCe : ∀ c < e, 1 ≤ w c)
+    (hRe : ¬ ∀ c < e, (((e - c : ℕ) : ℤ) : WithTop ℤ) ≤ w c) (h0 : w 0 ≠ ⊤) :
+    FaceKind e where
+  faces := facesL e w
+  hsum := facesL_sum e w he h0
+  hdvd := facesL_dvd e w
+  hlast := facesL_last e w he hCe hRe h0
+
+lemma theKappa_len (he : 0 < e) (hCe : ∀ c < e, 1 ≤ w c)
+    (hRe : ¬ ∀ c < e, (((e - c : ℕ) : ℤ) : WithTop ℤ) ≤ w c) (h0 : w 0 ≠ ⊤) :
+    (theKappa e w he hCe hRe h0).faces.length = (ZL e w).length :=
+  facesL_len e w
+
+lemma theKappa_get (he : 0 < e) (hCe : ∀ c < e, 1 ≤ w c)
+    (hRe : ¬ ∀ c < e, (((e - c : ℕ) : ℤ) : WithTop ℤ) ≤ w c) (h0 : w 0 ≠ ⊤)
+    {j : ℕ} (hj : j < (ZL e w).length) :
+    (theKappa e w he hCe hRe h0).faces[j]'(by
+      rw [theKappa_len e w he hCe hRe h0]; omega) = faceOf ((ZL e w)[j]'hj) :=
+  facesL_get e w hj
+
+lemma theKappa_width (he : 0 < e) (hCe : ∀ c < e, 1 ≤ w c)
+    (hRe : ¬ ∀ c < e, (((e - c : ℕ) : ℤ) : WithTop ℤ) ≤ w c) (h0 : w 0 ≠ ⊤)
+    {j : ℕ} (hj : j + 1 < (VL e w).length) :
+    (((theKappa e w he hCe hRe h0).faces[j]'(by
+      rw [theKappa_len e w he hCe hRe h0, ZL_len]; omega)).1 : ℕ) =
+      ((VL e w)[j + 1]'hj).1 - ((VL e w)[j]'(by omega)).1 :=
+  facesL_width e w hj
+
+lemma numOf_coprime {pr : (ℕ × ℕ) × (ℕ × ℕ)} (hpos : 0 < dropQ pr) :
+    Nat.Coprime (numOf pr : ℕ) ((faceOf pr).2 : ℕ) := by
+  have h1 : ((numOf pr : ℕ) : ℤ) = (dropQ pr).num := numOf_val hpos
+  have h2 : (numOf pr : ℕ) = (dropQ pr).num.natAbs := by
+    have h3 := congrArg Int.natAbs h1
+    rwa [Int.natAbs_natCast] at h3
+  rw [h2]
+  show ((dropQ pr).num.natAbs).Coprime (dropQ pr).den
+  exact (dropQ pr).reduced
+
+/-- The slope tuple read off the diagram's genuine vertex list. -/
+noncomputable def theS (he : 0 < e) (hCe : ∀ c < e, 1 ≤ w c)
+    (hRe : ¬ ∀ c < e, (((e - c : ℕ) : ℤ) : WithTop ℤ) ≤ w c) (h0 : w 0 ≠ ⊤) :
+    SlopeTuple (theKappa e w he hCe hRe h0) where
+  a := fun j => numOf ((ZL e w)[(j : ℕ)]'(lt_of_lt_of_eq j.isLt
+    (theKappa_len e w he hCe hRe h0)))
+  hcop := by
+    intro j
+    have hjz : (j : ℕ) < (ZL e w).length :=
+      lt_of_lt_of_eq j.isLt (theKappa_len e w he hCe hRe h0)
+    have hb : (j : ℕ) + 1 < (VL e w).length := by
+      have := ZL_len e w
+      omega
+    show Nat.Coprime (numOf ((ZL e w)[(j : ℕ)]'hjz) : ℕ)
+      (((theKappa e w he hCe hRe h0).faces.get j).2 : ℕ)
+    rw [List.get_eq_getElem, theKappa_get e w he hCe hRe h0 hjz, ZL_get e w hb]
+    exact numOf_coprime (drop_pos e w he hCe h0 hb)
+  hdesc := by
+    intro j j' hlt
+    have hjz : (j : ℕ) < (ZL e w).length :=
+      lt_of_lt_of_eq j.isLt (theKappa_len e w he hCe hRe h0)
+    have hjz' : (j' : ℕ) < (ZL e w).length :=
+      lt_of_lt_of_eq j'.isLt (theKappa_len e w he hCe hRe h0)
+    have hb : (j : ℕ) + 1 < (VL e w).length := by
+      have := ZL_len e w
+      omega
+    have hb' : (j' : ℕ) + 1 < (VL e w).length := by
+      have := ZL_len e w
+      omega
+    show ((numOf ((ZL e w)[(j' : ℕ)]'hjz') : ℕ) : ℚ) /
+        ((((theKappa e w he hCe hRe h0).faces.get j').2 : ℕ) : ℚ) <
+      ((numOf ((ZL e w)[(j : ℕ)]'hjz) : ℕ) : ℚ) /
+        ((((theKappa e w he hCe hRe h0).faces.get j).2 : ℕ) : ℚ)
+    rw [List.get_eq_getElem, List.get_eq_getElem,
+      theKappa_get e w he hCe hRe h0 hjz, theKappa_get e w he hCe hRe h0 hjz',
+      ZL_get e w hb, ZL_get e w hb',
+      numOf_div_den (drop_pos e w he hCe h0 hb),
+      numOf_div_den (drop_pos e w he hCe h0 hb')]
+    exact drop_lt_of_lt e w (Fin.lt_def.mp hlt) hb'
+  hlt1 := by
+    intro h
+    have hVlen := VL_two_le e w he h0
+    have hzl := ZL_len e w
+    have hkl := theKappa_len e w he hCe hRe h0
+    have hne : 0 < (theKappa e w he hCe hRe h0).faces.length :=
+      List.length_pos_of_ne_nil h
+    have hjz : (theKappa e w he hCe hRe h0).faces.length - 1 < (ZL e w).length := by
+      omega
+    have hb : (theKappa e w he hCe hRe h0).faces.length - 1 + 1 < (VL e w).length := by
+      omega
+    rw [List.getLast_eq_getElem]
+    show ((numOf ((ZL e w)[((theKappa e w he hCe hRe h0).faces.length - 1 : ℕ)]'hjz) : ℕ) : ℚ) /
+        ((((theKappa e w he hCe hRe h0).faces[(theKappa e w he hCe hRe h0).faces.length - 1]'(by
+          omega)).2 : ℕ) : ℚ) < 1
+    rw [theKappa_get e w he hCe hRe h0 hjz, ZL_get e w hb,
+      numOf_div_den (drop_pos e w he hCe h0 hb)]
+    exact drop_last_lt_one e w hCe hRe (by omega)
+
+lemma theS_a (he : 0 < e) (hCe : ∀ c < e, 1 ≤ w c)
+    (hRe : ¬ ∀ c < e, (((e - c : ℕ) : ℤ) : WithTop ℤ) ≤ w c) (h0 : w 0 ≠ ⊤)
+    (j : Fin (theKappa e w he hCe hRe h0).faces.length)
+    (hjz : (j : ℕ) < (ZL e w).length) :
+    (theS e w he hCe hRe h0).a j = numOf ((ZL e w)[(j : ℕ)]'hjz) := rfl
+
+/-! ### §6 — abscissa pin and height matching -/
+
+lemma kappa_x (he : 0 < e) (hCe : ∀ c < e, 1 ≤ w c)
+    (hRe : ¬ ∀ c < e, (((e - c : ℕ) : ℤ) : WithTop ℤ) ≤ w c) (h0 : w 0 ≠ ⊤)
+    (j : ℕ) (hj : j ≤ (ZL e w).length) :
+    (theKappa e w he hCe hRe h0).x j =
+      ((VL e w)[j]'(by
+        have h2 := VL_two_le e w he h0
+        have := ZL_len e w
+        omega)).1 := by
+  induction j with
+  | zero =>
+      rw [FaceKind.x_zero, VL_getElem_zero e w he h0]
+  | succ n ih =>
+      have hnz : n < (ZL e w).length := by omega
+      have hnlt : n < (theKappa e w he hCe hRe h0).faces.length := by
+        rw [theKappa_len e w he hCe hRe h0]
+        omega
+      have hb : n + 1 < (VL e w).length := by
+        have h2 := VL_two_le e w he h0
+        have := ZL_len e w
+        omega
+      rw [FaceKind.x_succ_of_lt _ hnlt, ih (by omega)]
+      have hw : (((theKappa e w he hCe hRe h0).faces[n]'hnlt).1 : ℕ) =
+          ((VL e w)[n + 1]'hb).1 - ((VL e w)[n]'(by omega)).1 :=
+        theKappa_width e w he hCe hRe h0 hb
+      rw [hw]
+      have hlt := VL_fst_lt e w hb
+      omega
+
+lemma heights_eq (he : 0 < e) (hCe : ∀ c < e, 1 ≤ w c)
+    (hRe : ¬ ∀ c < e, (((e - c : ℕ) : ℤ) : WithTop ℤ) ≤ w c) (h0 : w 0 ≠ ⊤) :
+    ∀ d (c : ℕ), c + d = e →
+      heights (theKappa e w he hCe hRe h0) (theS e w he hCe hRe h0) c =
+        npHeight (diagram e w) (diagram_nonempty e w) (c : ℚ) := by
+  intro d
+  induction d with
+  | zero =>
+      intro c hc
+      have hce : c = e := by omega
+      subst hce
+      rw [heights_width, npHeight_e]
+  | succ d ih =>
+      intro c hc
+      have hclt : c < e := by omega
+      obtain ⟨j, hj1, hj2⟩ := exists_face (theKappa e w he hCe hRe h0) hclt
+      have hjz : (j : ℕ) < (ZL e w).length :=
+        lt_of_lt_of_eq j.isLt (theKappa_len e w he hCe hRe h0)
+      have hb : (j : ℕ) + 1 < (VL e w).length := by
+        have := ZL_len e w
+        omega
+      have hdropL := heights_drop (theKappa e w he hCe hRe h0)
+        (theS e w he hCe hRe h0) j hj1 hj2
+      have hab : (((theS e w he hCe hRe h0).a j : ℕ) : ℚ) /
+          ((((theKappa e w he hCe hRe h0).faces.get j).2 : ℕ) : ℚ) =
+          dropQ ((VL e w)[(j : ℕ)]'(by omega), (VL e w)[(j : ℕ) + 1]'hb) := by
+        rw [theS_a e w he hCe hRe h0 j hjz, List.get_eq_getElem,
+          theKappa_get e w he hCe hRe h0 hjz, ZL_get e w hb,
+          numOf_div_den (drop_pos e w he hCe h0 hb)]
+      have hx1 : (theKappa e w he hCe hRe h0).x (j : ℕ) =
+          ((VL e w)[(j : ℕ)]'(by omega)).1 :=
+        kappa_x e w he hCe hRe h0 (j : ℕ) (by omega)
+      have hx2 : (theKappa e w he hCe hRe h0).x ((j : ℕ) + 1) =
+          ((VL e w)[(j : ℕ) + 1]'hb).1 :=
+        kappa_x e w he hCe hRe h0 ((j : ℕ) + 1) (by omega)
+      have hpr : (((VL e w)[(j : ℕ)]'(by omega), (VL e w)[(j : ℕ) + 1]'hb)) ∈ ZL e w :=
+        mem_ZL e w hb
+      have hj1' : ((VL e w)[(j : ℕ)]'(by omega)).1 ≤ c := by
+        rw [← hx1]
+        exact hj1
+      have hj2' : c < ((VL e w)[(j : ℕ) + 1]'hb).1 := by
+        rw [← hx2]
+        exact hj2
+      have hAle : ((((VL e w)[(j : ℕ)]'(by omega)).1 : ℕ) : ℚ) ≤ (c : ℚ) := by
+        exact_mod_cast hj1'
+      have hBge : ((c : ℕ) : ℚ) ≤ ((((VL e w)[(j : ℕ) + 1]'hb).1 : ℕ) : ℚ) := by
+        exact_mod_cast le_of_lt hj2'
+      have hAle1 : ((((VL e w)[(j : ℕ)]'(by omega)).1 : ℕ) : ℚ) ≤ ((c + 1 : ℕ) : ℚ) := by
+        have h6 : (((VL e w)[(j : ℕ)]'(by omega)).1 : ℕ) ≤ c + 1 := by omega
+        exact_mod_cast h6
+      have hBge1 : ((c + 1 : ℕ) : ℚ) ≤ ((((VL e w)[(j : ℕ) + 1]'hb).1 : ℕ) : ℚ) := by
+        exact_mod_cast hj2'
+      have hatt1 := vert_zip_attain (diagram e w) (diagram_nonempty e w) hpr hAle hBge
+      have hatt2 := vert_zip_attain (diagram e w) (diagram_nonempty e w) hpr hAle1 hBge1
+      have hps : dropQ ((VL e w)[(j : ℕ)]'(by omega), (VL e w)[(j : ℕ) + 1]'hb) =
+          -(pairSlope ((VL e w)[(j : ℕ)]'(by omega)) ((VL e w)[(j : ℕ) + 1]'hb)) :=
+        dropQ_eq_neg_pairSlope _
+      have hline : pairLine ((VL e w)[(j : ℕ)]'(by omega)) ((VL e w)[(j : ℕ) + 1]'hb) (c : ℚ) -
+          pairLine ((VL e w)[(j : ℕ)]'(by omega)) ((VL e w)[(j : ℕ) + 1]'hb) ((c + 1 : ℕ) : ℚ) =
+          dropQ ((VL e w)[(j : ℕ)]'(by omega), (VL e w)[(j : ℕ) + 1]'hb) := by
+        have hcast : ((c + 1 : ℕ) : ℚ) = (c : ℚ) + 1 := by push_cast; ring
+        rw [hcast, hps]
+        simp only [pairLine]
+        ring
+      have ihc := ih (c + 1) (by omega)
+      linarith [hdropL, hab, hatt1, hatt2, hline, ihc]
+
+/-- Vertex abscissae below the terminal index are `< e`. -/
+lemma VL_fst_lt_e {i : ℕ}
+    (hi : i + 1 < (VL e w).length) :
+    ((VL e w)[i]'(by omega)).1 < e := by
+  have hs := VL_sorted e w
+  rw [List.pairwise_iff_getElem] at hs
+  have hlen : ((VL e w).map Prod.fst).length = (VL e w).length := by simp
+  have h := hs i ((VL e w).length - 1) (by rw [hlen]; omega) (by rw [hlen]; omega)
+    (by omega)
+  rw [List.getElem_map, List.getElem_map] at h
+  have hlast : (VL e w)[(VL e w).length - 1]'(by omega) = (e, 0) :=
+    VL_getElem_last e w (by omega)
+  rw [hlast] at h
+  exact h
+
+/-! ### §7 — assembly: the L6e coverage witness -/
+
+/-- **The finite-hull coverage construction** (the L6e_covers engine): a C_e\R_e
+column-valuation vector with `a_e ≠ 0` lies in the cell of the face kind and
+slope tuple read off the lower convex hull of its diagram. -/
+theorem exists_cell {e : ℕ} {w : ℕ → WithTop ℤ}
+    (hCe : ∀ c < e, 1 ≤ w c)
+    (hRe : ¬ ∀ c < e, (((e - c : ℕ) : ℤ) : WithTop ℤ) ≤ w c)
+    (h0 : w 0 ≠ ⊤) :
+    ∃ (κ : FaceKind e) (s : SlopeTuple κ), CellMem κ s w := by
+  have he : 0 < e := by
+    by_contra hc
+    exact hRe fun c hcc => absurd hcc (by omega)
+  refine ⟨theKappa e w he hCe hRe h0, theS e w he hCe hRe h0, ?_, ?_⟩
+  · -- (α): the ceiling bound at every column
+    intro c hc
+    by_cases hw : w c = ⊤
+    · rw [hw]
+      exact le_top
+    · have h1 := hCe c hc
+      have hwc := coe_htv w hw h1
+      have hdot : ((c, htv w c) : ℕ × ℕ) ∈ diagram e w :=
+        (mem_diagram e w).mpr (Or.inl ⟨hc, hw, rfl⟩)
+      have hnp := npHeight_le (diagram e w) (diagram_nonempty e w) hdot
+      have hh := heights_eq e w he hCe hRe h0 (e - c) c (by omega)
+      have hle : heights (theKappa e w he hCe hRe h0) (theS e w he hCe hRe h0) c ≤
+          ((htv w c : ℕ) : ℚ) := by
+        rw [hh]
+        exact hnp
+      have hceil : ⌈heights (theKappa e w he hCe hRe h0) (theS e w he hCe hRe h0) c⌉ ≤
+          ((htv w c : ℕ) : ℤ) := Int.ceil_le.mpr (by exact_mod_cast hle)
+      rw [hwc]
+      exact_mod_cast hceil
+  · -- (β): equality at the vertex columns
+    intro j hjlen
+    have hjz : j < (ZL e w).length := by
+      rwa [theKappa_len e w he hCe hRe h0] at hjlen
+    have hb : j + 1 < (VL e w).length := by
+      have := ZL_len e w
+      omega
+    have hx : (theKappa e w he hCe hRe h0).x j = ((VL e w)[j]'(by omega)).1 :=
+      kappa_x e w he hCe hRe h0 j (by omega)
+    have hclt : ((VL e w)[j]'(by omega)).1 < e := VL_fst_lt_e e w hb
+    have hmemS : (VL e w)[j]'(by omega) ∈ diagram e w :=
+      VL_mem e w (List.getElem_mem _)
+    obtain ⟨hne, hsnd⟩ := diagram_snd_of_lt e w hmemS hclt
+    have hhull := VL_hull e w (List.getElem_mem (l := VL e w) (n := j) (by omega))
+    have hh := heights_eq e w he hCe hRe h0 (e - ((VL e w)[j]'(by omega)).1)
+      ((VL e w)[j]'(by omega)).1 (by omega)
+    have hceil : ⌈heights (theKappa e w he hCe hRe h0) (theS e w he hCe hRe h0)
+        (((VL e w)[j]'(by omega)).1)⌉ = ((((VL e w)[j]'(by omega)).2 : ℕ) : ℤ) := by
+      rw [hh, ← hhull]
+      exact Int.ceil_natCast _
+    rw [hx, hceil]
+    have hcoe := coe_htv w hne (hCe _ hclt)
+    rw [hcoe, hsnd]
+
+end L6eHull
+
+end HullCovers
+
 /-- **II-M9 coverage component**: every C_e\R_e point with `a_e ≠ 0`
 (`w 0 ≠ ⊤`) lies in some cell — the finite-hull argument: the lower convex
 hull of the finite diagram points is the polygon of an admissible (κ, s). -/
@@ -1588,23 +2465,14 @@ theorem L6e_covers {w : ℕ → WithTop ℤ}
     (hRe : ¬ ∀ c < e, (((e - c : ℕ) : ℤ) : WithTop ℤ) ≤ w c)
     (h0 : w 0 ≠ ⊤) :
     ∃ (κ : FaceKind e) (s : SlopeTuple κ), CellMem κ s w := by
-  -- BLOCKED(II-M9): the finite lower-convex-hull layer is not yet in the
-  -- corpus — it is exactly the construction the un-landed Wave-4a dependency
-  -- II-M6 (`hull_eq_iff_cell`, hull existence/reading) also needs. Verified
-  -- mechanism for the eventual proof (math checked against the brief's L6e(i)
-  -- proof, coefficient-side): peel faces right-to-left from the anchor
-  -- (e, 0); at anchor column B take the minimal candidate slope
-  -- σ = min_{c < B, w c ≠ ⊤} (w c − v_B)/(B − c) and extend the face to the
-  -- LEFTMOST minimizer c* (so the next anchor's minimal slope is STRICTLY
-  -- larger — the leftmost-tie-break gives `hdesc`); b ∣ L is automatic
-  -- (integer drop w c* − v_B over width B − c* at coprime slope a/b);
-  -- s_k ∈ (0,1) i.e. `hlast`/`hlt1` for the FIRST peel from hCe (all columns
-  -- ≥ 1) + hRe (some column below the slope-1 line); (α) at every column is
-  -- the min property, (β) at each vertex is attainment at c*. The recursion
-  -- self-similarizes by shifting w by v_B (⊤ stays ⊤). No SemanticRows row
-  -- is needed. Estimated as a dedicated unit of its own size (the blueprint
-  -- lists II-M9 as a coordination milestone for precisely this reason).
-  sorry
+  -- DISCHARGED (wave-18 U6 recovery unit, 2026-08-03): the finite
+  -- lower-convex-hull layer is the `L6eHull` section above (unit II-M9c),
+  -- built on the `OM/NewtonPolygon` hull engine and the `OM/HullStability`
+  -- kernels. The former BLOCKED note's peel-recursion mechanism was replaced
+  -- by the equivalent hull read-off: the genuine vertex list of the diagram
+  -- IS the leftmost-minimizer peel (strict slope descent = the survivor-corner
+  -- law; `hlt1` fired by the R_e failure through terminal-chord validity).
+  exact L6eHull.exists_cell hCe hRe h0
 
 /-- **II-M9, L6e(i)** (assembly): off Z_e := (C_e\R_e) ∩ {a_e = 0} the cells
 partition C_e\R_e — every a_e ≠ 0 point lies in exactly ONE cell
