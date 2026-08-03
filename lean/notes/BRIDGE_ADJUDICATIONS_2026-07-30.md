@@ -8545,3 +8545,65 @@ distance ON THE MODEL CLASS = (RM-m, m ≥ 2) + (W-MULT-DCX-m) + the fenced
 corners + (TAIL-STAB); the semantic weld (GRT-2 ladder) remains the bridge to
 the OM objects. Display upgrades (L3CONVERGENCE, PROJECT_STATE, ROOT, the
 public map) ride the r39 fold. THE CLOSURE PROGRAM IS OPEN.
+
+## ROOT r39 EXECUTED (REVISION 38) — 2026-08-03: the NINETEENTH re-anchoring made operative + the [ILN] acceptance fold + THE CLOSURE PROGRAM section; VC39 owed
+
+[Anchor: appended after "[ILN] ACCEPTED" (tail "…THE CLOSURE PROGRAM IS
+OPEN."). Unit ROOT r39, the [ILN] acceptance fold chartered there.]
+
+ROOT gains REVISION 38 (new appendix §44 + the operative-site sweep).
+**(0) THE RE-ANCHORING OPERATIVE:** every ROOT operative anchor site now
+cites **REVISION 37 + r38b (VC38+VC38b)** per 6a87473 (the NINETEENTH) —
+the new §0 REVISION-38 standing paragraph (the r38 header superseded), the
+§3.2 end-to-end row's VC38→r38b→VC38b sync tail, the §6 r39 bracket; the
+same sweep genre as the r37/r38 folds. **(i) THE HEADLINE — [ILN] FOLDED
+PER THE 9f9910c CONVENTION:** the §0 declaration EXTENDED with the [ILN]
+block (r39 bracket; [ILN]† designated); full pastes at the operative
+sites (the §0 REVISION-38 paragraph, the §3.1 (H1) row r39 bracket,
+§44.(i)); daggers elsewhere. §44.(i) tells the seven-round arc honestly:
+zero mathematical findings in all seven rounds; the post-round-1 surface
+entirely completeness bookkeeping; the terminating instruments = the
+incorporation convention + THE MACHINE CENSUS (closed BY MACHINE — PE7's
+independent scanner matched PE6 194/194 exactly); the rung ledger
+subsumed under the uniform theorem (per-rung state unchanged: rung 2
+still off its corner, rung 3 still measured). The (H1) row's core
+restated: **ONE ACCEPTED UNIFORM THEOREM + THE PRICED OPEN FAMILIES**;
+member (a) NOT discharged; the row STAYS [M]. **(ii) THE CLOSURE PROGRAM
+(§44.(ii)) = the wave-21 queue of record:** Q1 (RM-m, m ≥ 2) — the
+correction-product engine, THE hard core (m = 1 proved inside [IL3]†;
+price = the ITERLAWN S4.6 box: one unit per level-family, the
+generic-engine unit subsumes; next-unit = the generic-engine compose,
+hostile-arc bar); Q2 (W-MULT-DCX-m) — instance-true 132/132 at m = 2
+(price = the S4.7 carry-over: an engine second-round clause closes both
+II-legs and DCX at once); Q3 the fenced corners — the DEV-1
+e₀ = 1 ∧ d₀ ≥ 2 corner (rides Q1's termination measure) + the lift
+corner's (TAIL-STAB) compose (priced S/M); Q4 the GRT semantic weld —
+GRT-1 harness leg first (rides P1), GRT-2 = grTie proper OPEN (priced
+L). Queue discipline: Q1 value-ordered head; the per-stratum arc
+treadmill RETIRED as a program. **(iii) DISPLAY-UPGRADE SWEEP EXECUTED:**
+L3CONVERGENCE S2 gains the r39 Candidate-2 bracket (the S10 owed upgrade
+fired: Candidate 2 = the accepted display, block pasted; the S3 gauge
+strategy vindicated as the executed architecture); PROJECT_STATE gains
+the r39 checkpoint (the ladder rewritten around the acceptance, block
+pasted at the ladder site) + the standing-obligations r39 tag (the
+closure program replaces the treadmill) + frontier/verification tails;
+the ITERLAW3/ITERLAW notes NOT touched (brackets frozen); ITERLAWN's own
+S0 bracket belongs to a46578e — untouched here. **(iv) CENSUS:** sorry
+census **34 repo-wide UNCHANGED** (diff-verified: 3980471..HEAD empty on
+`*.lean`); pattern census **101 + 13 = 114 re-grepped to MACHINE-VERIFIED
+fixed point** (the table-generation loop iterated until the displayed
+numbers equal the final text's own counts; all 114 rows recount-verified
+0 mismatches) — new markers ILN / VC38b / VC39 / PC4–PC6 / PE4–PE7 /
+MACHINE CENSUS / CLOSURE PROGRAM / GRT-2; honest deltas incl. the 12-row
+pre-edit baseline divergence = the r38b brackets' own hits (preamble
+callout, the d79f295 precedent); NINE rows recounted; no clause
+attribution moved. **(v) VC39 CHARGE ON RECORD** (§44): frozen-history
+trim MANDATORY (rule 7); headline items = every [IL]/[IL3]/[ILN] mention
+per the convention (declaration + operative pastes byte-matching the
+ledger blocks, daggers elsewhere) and the closure-program prices matching
+the owning notes; the standing disclosures (a)–(d) carried; no unit
+concurrent at close — wave 21 dispatches AFTER this fold and is OUT OF
+SCOPE for VC39. This unit ran NO audit and never self-confirms — **VC39
+is OWED on the REVISION-38 text**; until it lands, the acceptance
+citation points at REVISION 37 + r38b. Unit files: ROOT + PROJECT_STATE
++ L3CONVERGENCE + this append ONLY (scoped `git commit --only`).

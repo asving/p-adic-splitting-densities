@@ -1316,6 +1316,21 @@ to E₂ > 1; the E₂ = 1 leg a harmless COR-3-covered extension outside the
 statement of record). RESIDUALS, ALL THREE: (ITER-LAW-LIFT) open exactly at
 g₀ = 1 ∧ δ₁ = 1; the gr(w₂) semantics wrapper rides the accepted GRB retarget
 consumer-side; orders ≥ 3 untouched. See the r36 checkpoint at the tail.]**
+**[r39 2026-08-03: THE CLOSURE PROGRAM is now the standing mathematical
+frontier — the uniform all-orders (ITER-LAW-n) theorem is ACCEPTED ([ILN]†,
+ledger a46578e; block pasted at the r39 checkpoint at the tail, the
+operative ladder site; dagger per the 9f9910c incorporation convention),
+so the per-stratum arc treadmill (rung-by-rung proof notes, each with its
+own hostile arc) is RETIRED as a program — the rungs are corollaries. The
+standing queue of record is ROOT §44.(ii) (wave 21): Q1 the (RM-m, m ≥ 2)
+generic engine (THE hard core; m = 1 proved inside [IL3]†; one unit per
+level-family, the generic unit subsumes) · Q2 (W-MULT-DCX-m)
+(instance-true 132/132 at m = 2; expected to ride Q1's second-round
+clause) · Q3 the fenced corners (the DEV-1 e₀ = 1 ∧ d₀ ≥ 2 corner; the
+(TAIL-STAB) compose, priced S/M) · Q4 the GRT semantic weld (GRT-1
+harness leg rides P1; GRT-2 = grTie proper OPEN, priced L). The parked
+Lean-era list above is unchanged and stays parked per the b70a452
+directive; see the r39 checkpoint at the tail.]**
 
 ## UPDATE (2026-07-31 evening — THE MATH-FIRST CAMPAIGN AT THE ROOT-ASSEMBLY STAGE)
 
@@ -2869,3 +2884,115 @@ remedies confirmed) + r36b + VC36c CONFIRMED; **VC37 NOT-CONFIRMED 0C/4G
 (disposed) + r37b errata + VC37b CONFIRMED (= the STANDING anchor,
 REVISION 36 + r37b)**; VC38 pending on REVISION 37.
 [r38b 2026-08-03: VC38 RAN — NOT-CONFIRMED 0C/9G (8 rule-8 literalism + 1 miscount; ledger 9f9910c); THE INCORPORATION CONVENTION adopted (declare-once + dagger [IL]†/[IL3]†); ROOT §0 declaration + nine cures applied; **VC38b owed under the amended standard**.]
+
+## CHECKPOINT (ROOT r39 = REVISION 38, 2026-08-08 window, wallclock 2026-08-03): NINETEENTH RE-ANCHORING; [ILN] ACCEPTED — THE UNIFORM ALL-ORDERS (ITER-LAW-n) THEOREM; THE CLOSURE PROGRAM IS THE STANDING QUEUE
+
+ROOT REVISION 38 (unit ROOT r39, appendix §44; the ITERLAWN-ACCEPTANCE
+FOLD) folds the VC38 arc, the seven-round general-n hostile arc, and
+opens the closure program.
+
+**THE RE-ANCHORING (nineteenth).** VC38 on REVISION 37 (report
+`VC38_and_ITERLAWNPC_reports.md`: NOT-CONFIRMED 0C/9G — zero critical;
+gaps 1–8 ONE class, rule-8 literalism — bare tokens pointing at pasted
+blocks; + 1 miscount) → **THE INCORPORATION CONVENTION** adjudicated
+(ledger 9f9910c: declare once at §0/head with full pastes, dagger forms
+[IL]†/[IL3]†/[ILN]† incorporate by reference, full paste at declaration
++ operative sites) → the r38b cure batch (6e57b1b) → **VC38b CONFIRMED
+0C/0G under the amended standard** — **the acceptance anchor moves
+REVISION 36 + r37b → REVISION 37 + r38b (VC38+VC38b)** (ledger 6a87473).
+
+**THE H1 GROUP STATE (the ladder of record, rewritten around the
+acceptance — THE HEADLINE).**
+- **THE UNIFORM THEOREM, ALL ORDERS: ACCEPTED** — the general-n note's
+  hostile arc closed at the 2-clean model-diverse bar at ROUND 7
+  (compose 5fe901e → seven rounds, six errata, twelve pass reports →
+  PC6 (Codex) CLEAN 0C/0G 3a281e7 + PE7 (Fable) CLEAN 0C/0G 2ece60c on
+  the 61dc2e0 machine-census text; orchestrator acceptance a46578e).
+  ZERO mathematical findings across all seven rounds — the post-round-1
+  finding surface was entirely completeness bookkeeping in the honesty
+  apparatus, terminated by two structural instruments: the incorporation
+  convention (killed the rule-8 literalism class) and THE MACHINE CENSUS
+  (killed the hand-census class; the census question closed BY MACHINE —
+  PE7's independent scanner reproduced PE6's census 194/194 exactly,
+  empty symmetric difference). Defined-term block, pasted (this ladder
+  is the file's operative site; [ILN]† daggers elsewhere): "[ILN] = the
+  (ITER-LAW-n) theorem note, ACCEPTED 2026-08-03: the uniform recursion
+  c_{n+1}(γ,γ′) = z̄^δ·∏ⱼ z_j^{D_j} (S_n = δγ_{n+1}; D_j = (s_j-defect +
+  ℓ_{j−1}S_j)/e_{j−1}; S_{j−1} = D_jγ_j + S_j(ℓ_{j−1}′ −
+  ℓ_{j−1}w_{j−1}Φ_{j−1})) for ALL n ≥ 1 on the (n+1)-read standard-lift
+  harness class, PROVED with the structure:
+  integer/positivity/window/cocycle/descent + REALIZE/WELL-DEF
+  unconditional-generic; L6-(n) every rung from [IL]† (+ S4.1 at rungs
+  ≥ 2); W-MULT-(n) Case I generic given the IH package; Cases II generic
+  MODULO (RM-m, m ≥ 2) (m = 1 proved inside [IL3]†), off DCX-(n) (outer
+  bound proved given the IH package). RESIDUALS: (RM-m, m ≥ 2);
+  (W-MULT-DCX-m); the fenced corners; the consumed [IL]†/[IL3]† packages
+  ride through. Rung ledger: n = 1 [IL] ACCEPTED · n = 2 [IL3]
+  ACCEPTED-OFF-DCX · n = 3 MEASURED GREEN (13b026b) · n = 4/5 measured
+  (5fe901e diag) — instance evidence only."
+- **The rungs (now instance evidence + corollaries under the uniform
+  theorem; per-rung state unchanged):** rung 1 = [IL]† ACCEPTED · rung 2
+  = [IL3]† ACCEPTED-OFF-DCX (its DCX corner still open, (W-MULT-3-DCX)
+  instance-true 132/132) · rung 3 = MEASURED GREEN (13b026b) · rungs 4/5
+  = measured (the 5fe901e diagnostic). The r38 checkpoint's "hostile arc
+  OWED — NOT accepted" bullet for the general-n compose is SUPERSEDED:
+  the arc ran and closed.
+- **The lift residual:** unchanged — (ITER-LAW-LIFT) OPEN at
+  g₀ = 1 ∧ δ₁ = 1; (TAIL-STAB) priced S/M; LIFT-DEV-3/LIFT-DEV-4
+  measured conjectures.
+- **What the acceptance is NOT:** harness-calculus-internal (the weld to
+  the OM/GMN objects = the GRT ladder, open); not a proof of the residual
+  families; no probability/density-side claim; no Lean formalization of
+  the iteration law.
+
+**THE CLOSURE PROGRAM (ROOT §44.(ii) — the wave-21 standing queue of
+record; replaces the per-stratum arc treadmill).**
+- **Q1 (RM-m, m ≥ 2)** — the correction-product engine, THE HARD CORE.
+  m = 1 proved inside [IL3]†. Price (ITERLAWN S4.6 box): one dedicated
+  unit per level-family; the GENERIC-ENGINE unit subsumes the family —
+  the higher-value target. Displayed resistances: termination
+  (well-founded measure across levels), read-transparency across
+  Ĉ-insertions, input-class closure.
+- **Q2 (W-MULT-DCX-m)** — instance-true 132/132 at m = 2; expected to
+  ride Q1 (an (RM-m) proof with a second-round clause closes both
+  II-legs and DCX at once, ITERLAWN S4.7); m ≥ 3 sharp DCX form
+  engine-internal, e_{m−2} ≥ 3 emptiness CONJECTURED.
+- **Q3 the fenced corners** — the DEV-1 {e₀ = 1 ∧ d₀ ≥ 2 ∧ j ≥ g₀}
+  corner (rides Q1's termination measure, else one small unit); the
+  (TAIL-STAB) compose (S/M) at the lift corner.
+- **Q4 the GRT semantic weld** — GRT-1 harness leg (rides the compiled
+  P1/`DefsPrime` layer, the natural first unit); GRT-2 = grTie proper,
+  OPEN, priced L; GRT-3 consumer re-keys behind it.
+
+**DISPLAY SWEEP EXECUTED (this fold):** L3CONVERGENCE S2 r39 bracket
+(Candidate 2 = the accepted display; the S3 gauge strategy vindicated as
+the executed architecture); ROOT §0 (declaration extended with the [ILN]
+block + the REVISION-38 standing paragraph) / §3.1 (H1) r39 bracket
+(the group's core = ONE ACCEPTED UNIFORM THEOREM + THE PRICED OPEN
+FAMILIES) / §3.2 / §6 + NEW §44; this file (this checkpoint + the
+standing-obligations r39 tag). NOT touched by design: ITERLAW3_PROOF,
+ITERLAW, and ITERLAWN note bodies (acceptance brackets frozen;
+ITERLAWN's S0 bracket landed at a46578e itself); every sealed artifact.
+
+**CENSUS.** Sorry census of record: **34 repo-wide, UNCHANGED** (33 in
+`LeanUrat/` + 1 tracked scratch probe; B2D 0; OM tree 0; banked 0) — no
+.lean file touched since the r37 derivation (diff-verified
+3980471..HEAD empty on `*.lean`). ROOT pattern census: 101 + 13 new =
+114 patterns re-grepped to fixed point, every delta named (ROOT §44).
+Roster: NINE rows, unchanged.
+
+FRONTIER NOW: **VC39** (the confirming end-to-end pass on REVISION 38;
+frozen-history trim MANDATORY; acceptance anchored on REVISION 37 +
+r38b until it lands); then the wave-21 closure-program queue, Q1 (the
+generic engine) at the head.
+Verification: VC1–VC22 done; VC25 NOT-CONFIRMED (disposed); VC26+VC26b,
+VC27+VC27b CONFIRMED; VC28, VC29 CONFIRMED FIRST-PASS; VC30 (1C, cured)
++ VC30b CONFIRMED; VC31 (0C/2G, cured) + VC31b + VC31c CONFIRMED;
+VC32 (0C/3G, cured) + VC32b CONFIRMED; VC33 (0C/2G, cured) + VC33b +
+VC33c CONFIRMED; VC34 CONFIRMED FIRST-PASS; VC35 (0C/2G, cured) +
+VC35b CONFIRMED; VC36 NOT-CONFIRMED 1C/3G (disposed) + VC36b (0C/2G,
+remedies confirmed) + r36b + VC36c CONFIRMED; VC37 NOT-CONFIRMED 0C/4G
+(disposed) + r37b errata + VC37b CONFIRMED; **VC38 NOT-CONFIRMED 0C/9G
+(disposed at 9f9910c — the incorporation convention) + r38b + VC38b
+CONFIRMED (= the STANDING anchor, REVISION 37 + r38b)**; VC39 pending
+on REVISION 38.

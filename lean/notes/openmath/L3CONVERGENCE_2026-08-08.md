@@ -128,6 +128,47 @@ has run).
 > own scope note: on the DCX corner the display remains an OPEN lemma
 > ((W-MULT-3-DCX)), instance-true everywhere probed.]**
 
+> **[r39 STATUS BRACKET 2026-08-03 (the [ILN] acceptance fold; the owed
+> Candidate-2 upgrade of ITERLAWN S10, which fires exactly at that note's
+> acceptance — it fires NOW) — CANDIDATE 2 IS ACCEPTED.** The r38 bracket's
+> "CANDIDATE 2 ((ITER-LAW-n)) REMAINS A CANDIDATE — the general-n compose
+> ... is composed-with-displayed-opens with its own hostile arc OWED"
+> clause, and every "conjecture-grade / forward generalization / candidate"
+> status for Candidate 2 in this section (including the S2 head's "both
+> conjecture-grade" line and Candidate 2's own "Confirmed instances" close),
+> are superseded as dated composition-time history: the hostile arc RAN and
+> CLOSED at the 2-clean model-diverse bar at round 7 (compose 5fe901e →
+> seven rounds, six errata → PC6 (Codex) CLEAN 0C/0G 3a281e7 + PE7 (Fable)
+> CLEAN 0C/0G 2ece60c on the 61dc2e0 machine-census text; orchestrator
+> acceptance a46578e; zero mathematical findings across all seven rounds;
+> the census question closed BY MACHINE, PE7's independent scanner matching
+> PE6's 194/194 exactly). The ledger defined-term block, pasted per the
+> 9f9910c incorporation convention (this is the operative upgrade site;
+> [ILN]† incorporates it by reference elsewhere in this note): "[ILN] = the
+> (ITER-LAW-n) theorem note, ACCEPTED 2026-08-03: the uniform recursion
+> c_{n+1}(γ,γ′) = z̄^δ·∏ⱼ z_j^{D_j} (S_n = δγ_{n+1}; D_j = (s_j-defect +
+> ℓ_{j−1}S_j)/e_{j−1}; S_{j−1} = D_jγ_j + S_j(ℓ_{j−1}′ −
+> ℓ_{j−1}w_{j−1}Φ_{j−1})) for ALL n ≥ 1 on the (n+1)-read standard-lift
+> harness class, PROVED with the structure: integer/positivity/window/
+> cocycle/descent + REALIZE/WELL-DEF unconditional-generic; L6-(n) every
+> rung from [IL]† (+ S4.1 at rungs ≥ 2); W-MULT-(n) Case I generic given
+> the IH package; Cases II generic MODULO (RM-m, m ≥ 2) (m = 1 proved
+> inside [IL3]†), off DCX-(n) (outer bound proved given the IH package).
+> RESIDUALS: (RM-m, m ≥ 2); (W-MULT-DCX-m); the fenced corners; the
+> consumed [IL]†/[IL3]† packages ride through. Rung ledger: n = 1 [IL]
+> ACCEPTED · n = 2 [IL3] ACCEPTED-OFF-DCX · n = 3 MEASURED GREEN (13b026b)
+> · n = 4/5 measured (5fe901e diag) — instance evidence only." So the
+> Candidate-2 recursion displayed below IS the accepted theorem's display,
+> verbatim; its "What would refute it" battery stands as the standing
+> falsifier taxonomy; the S3 proof-strategy reading (the ε-chain gauge
+> route) is VINDICATED as the executed proof's architecture (L6-(n) ε-chain
+> carrier + per-level Bézout bank, exactly the S3 outline). What the
+> acceptance does NOT change here: Candidate 1's own bracket above stands
+> (rung 2 remains OFF-DCX); the (INV-n) class display remains
+> measured-instance evidence (the accepted note fences it, S9); the S4
+> next-cycle spec remains the executed-history record of the n = 4 probe.
+> Display upgrade applied at the r39 fold (ROOT §44.(iii) item 1).]**
+
 ### Candidate 1 (the law of record at level 3) — (ITER-LAW-3), verbatim the sealed S1 primary
 
 For standard-lift 3-read towers (reads (e₀,h₀,ψ₀), (e₁,h₁,ψ₁), (e₂,h₂,ψ₂),
