@@ -5542,3 +5542,16 @@ form tie 0 fails, stationary W-CAP/CLASS-LAT 0 fails, premise control
 43,536 stationary m_i<m_j failures (the critical was REAL at scale) vs 0
 live-pair failures. Note: `lean/notes/openmath/ADMREAL_2026-08-08.md`
 (REVISION 1 block + §§2,3,5b,7 rewrites). Next: verify pass 2 (0/2).
+
+**ADM-REAL′ REVISION 2 (2026-08-08, this unit).** Pass 2 verdict:
+GAPS-ONLY — 0 critical / 2 gaps (`ADMREAL_pass2_report.md`); the
+mathematical chain survived hostile re-derivation (Lemma 2.14, Prop
+2.15(1) term-for-term, STEP merged-list, CLASS-LAT split all checked
+clean). Both gaps documentation-level, both fixed: (1) the prospective-
+inheritance sentence rescoped — binds r ≥ 2 instantiations WHERE SOME
+RELEVANT E_i = e_{i+1}···e_r > 1 (all-later-e_j = 1 types already agree;
+six-file/zero-rescale conclusion unchanged); (2) the two-commit seal named
+in full — preregistration e05e660 + verdict 90e1ecb + log
+`verification/logs/admreal_rev1_20260803T014602Z.log` cited verbatim.
+Verified perimeter byte-identical otherwise; counter stays 0/2; pass 3
+next.
