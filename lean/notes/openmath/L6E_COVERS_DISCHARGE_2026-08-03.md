@@ -120,3 +120,15 @@ gap remains; no new axiom, no statement change anywhere.
   base for a future attempt.
 * Scaffold code-`sorry` census after this unit: **5** (`MeasureFloor/SumOne`,
   `DictIII/Window`, `DictIII/Devid`, `DictIII/CU1`, `ValueSide/Transfer`).
+
+## Commit provenance (concurrency note)
+
+This unit's content landed SPLIT across two commits by an index race with the
+concurrent level-3 M1 EXACT-FIT unit: the four content files
+(`Semantic.lean` +924, this note, the ledger entry, the PROJECT_STATE
+milestone) were staged by this unit but swept into the concurrent commit
+**a30f5e0** (whose message is the level-3 unit's); this unit's own commit
+**c88b541** (the full L6e_covers message of record) carries the
+`scratch_hullcovers.lean` deletion. Tree state after both is exactly this
+unit's intended perimeter + the level-3 unit's; nothing lost, no
+double-application. The provenance commit for this addendum follows.
