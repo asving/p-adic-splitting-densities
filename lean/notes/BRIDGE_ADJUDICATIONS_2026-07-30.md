@@ -7868,3 +7868,33 @@ m ≥ 2) + (W-MULT-DCX-m) open families — the priced two-family distance to al
 orders on the harness class — plus the first 5-read data (zero violations).
 Its own hostile arc is owed (its S10 charges); it consumes [IL3] with the
 honest attempt-grade conditionality displayed.
+
+## ITERLAW3 pass PE3 CLEAN — 2026-08-03 (Fable, round 3; anchored to the errata-round-2 block above)
+
+**PE3 (Fable exec+content, fresh verifier on the a687b80 text): CLEAN
+(0C/0G/0 new nits)** — report `lean/notes/openmath/ITERLAW3_passPE3_report.md`.
+Errata-r2 fidelity VERIFIED (a687b80 = exactly the two brackets + this
+ledger's 20-line append; both hunks insertion-only, proved core byte-stable;
+the wider 467b523..a687b80 range contains only the chartered GENERAL-n unit
+5fe901e besides, fully additive). The corrected S4.5 derivation
+independently re-derived and RIGHT (w₂(E₁) = B₂ − e₁γ₂; γ₃ = e₁γ₂ + h₂ at
+g₁ = 1, e₂ = 1 ⟹ B₂ − γ₃ = w₂(E₁) − h₂ < w₂(E₁), read 0); the old
+"= w₂(E₁) + 0" link confirmed false as diagnosed. Full n=3-token
+classification (12 hits): every rung-indexed occurrence correct-as-written
+(rung 3 = the 4-read battery) or bracket-covered with "(rung) n = 2"
+displayed at the token — NO residual mislabel (one non-blocking wording
+observation: the r1 brackets at S0.4/S1 retain the word "reads"; correction
+value displayed regardless; cure optional at the fold). Execution ALL GREEN
+byte-exact, all five artifacts (reimpl 3,344 pairs / 55,186 checks / 0
+violations; diag 1,424 pairs / census I 912, II-1 368, II-2 40, II-3 88,
+DCX 16 / 0 violations; e1witness 4+48 DCX witnesses, 52/52, GREEN). Fresh
+full content read (integer layer, EXP-KIT, WELL-DEF, DEV-1 + fenced corner,
+L6-(3), CASE-SPLIT/L7 consumption, S4.5/S4.6, DCX honesty, class pin,
+corollaries, open-lemma displays): every load-bearing step re-derived, no
+findings. **Round 3 = PC3 CLEAN (5bdca01) + PE3 CLEAN: the 2-clean
+model-diverse bar on the a687b80 text is MET.** The acceptance fold
+(counter 1→accepted wording, the S9 owed display upgrades, the ledger
+defined-term block per rule 8) is the orchestrator's next action — not
+executed by this pass; until then the note's own attempt-grade standing
+language governs. Unit files: the PE3 report + this append ONLY (scoped
+`git commit --only`); the note and all sealed artifacts byte-untouched.
