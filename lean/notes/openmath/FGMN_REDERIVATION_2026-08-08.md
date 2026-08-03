@@ -7,8 +7,10 @@ charter = `JUNCFORGE_S2_2026-08-08.md` §R3 + the four pass-7 F1 riders,
 adjudication + the standing flag, the compiled `SideReads` stands as-is and every
 JuncForge theorem keeps its exact current meaning.
 **Artifacts:** this note; `verification/openmath/fgmn_rederivation_check.py` (the
-non-textual leg; 1,093 checks, ALL GREEN first pass, output quoted in §S8) +
-`fgmn_rederivation_results.json`; the provenance pins in `docs/references/` (§S0).
+non-textual leg; 1,093 checks, ALL GREEN first pass; R2 branch REPAIRED at
+REVISION 1 and the full battery rerun ALL GREEN — output re-quoted in §S8, console
+at `fgmn_rederivation_rerun_r1.txt`) + `fgmn_rederivation_results.json`; the
+provenance pins in `docs/references/` (§S0).
 No `.lean` file touched.
 
 ## S0. Spec gate + provenance pins (rider iii)
@@ -189,9 +191,14 @@ Every restatement below uses the term verbatim.  Consequences:
   becomes buildable, per THE ROW-A SOURCE VERDICT.  It is NOT a source fact.
 * The parity-wall fixed point is honored in the decided direction: the source says
   the junction is satisfiable at row A, so a correct transcription MUST make it
-  satisfiable there — the corrected clause does (336/336 + row-A instantiation,
-  §S8), while the compiled clause remains unsatisfiable (R2: 0/336) exactly as
-  `juncforge_no_e2_junction` proved.
+  satisfiable there — the corrected clause's window/support legs are (R1: a
+  scale-sensitive window/support satisfiability check GREEN at all 336 sites, plus
+  the row-A record instantiation, §S8; NOT full corrected-bundle satisfiability —
+  the Lean-side construction stays owed, §S9), while the compiled clause-(ii)
+  equality system admits NO single gam′ at any of the same 336 sites (R2, repaired
+  any-gam′ branch, REVISION 1: 0/336 measured; every site has ≥ 2 distinct
+  compiled values at its supported slots) exactly as `juncforge_no_e2_junction`
+  proved.
 
 ## S5. Fixed points — all four reproduced, none repaired away
 
@@ -199,7 +206,7 @@ Every restatement below uses the term verbatim.  Consequences:
 |---|---|
 | stage-1 two-scale law (wPrev vs w at the (2,3) pins; wPrev(24)=3, w(24)=6) | REPRODUCED BY THE PRINT (§S1(A)/(E): window at µᵢ₋₁, residual in Gr(µᵢ)); the corrected clause (ii) sits at the wPrev leg, clause (iii) stays at the w leg |
 | `juncforge_clauseIII_derivable` (clause (iii) exact at the graded scale) | UNTOUCHED — the diff does not touch clause (iii); Thm 4.2 is its source warrant |
-| the parity wall (row-A e = 2 satisfiability must follow the SOURCE) | DECIDED FROM THE PRINT: source fires (THE ROW-A SOURCE VERDICT); corrected clause satisfiable at row A, compiled clause stays refuted — the JuncForge theorems keep their exact meaning |
+| the parity wall (row-A e = 2 satisfiability must follow the SOURCE) | DECIDED FROM THE PRINT: source fires (THE ROW-A SOURCE VERDICT); corrected clause's window/support legs satisfiable at row A (numeric check — the full-bundle Lean construction stays owed, §S9), compiled clause stays refuted — the JuncForge theorems keep their exact meaning |
 | DITER_RESTATE §S3 supplier obligations (𝒟₂ carrier on canonical anchors; ITER-LAW cocycle with both constants + fibration term; B0a/D-REAL/NOT-CYCLIC gates) | UNCHANGED AS STATED — the diff touches only the window functional's scale; no digit-algebra clause is altered; the corrected bundle remains statable in the supplier's hosting form (§S6) |
 | D0 stratum (compiled gate seam f = key) | NOT RESURRECTED: eq (14) (Rᵢ(φᵢˢ) = 1) is the source's own degeneracy — the pure-key residual holds no pattern data; clause (ii)'s B(s0) ≠ 0 demand fails at B₀ = 0 under either scale, so `gate_glue_conditional` stays vacuous at its compiled instance and `juncforge_D0_instanceFalse` keeps its exact meaning |
 
@@ -259,8 +266,11 @@ provenance-pinned PDF.  Discharged here:
   block in the fresh extraction (l.869–1006); no footnote or side condition
   restricts i.
 * **Numeric cross-check (falsifier, not proof)**: §S8 row R4 — a from-print
-  reimplementation of Defs 3.15/3.16/3.18 (transcribed from the fresh displays;
-  independent operator code sharing only ring primitives with the certified stack)
+  reimplementation of Defs 3.15/3.16/3.18 (transcribed from the fresh displays; a
+  DIFFERENTIAL falsifier sharing the certified `Tower` state — `w1`, `res_digit`,
+  `K1`, `z1`, the keys and chain parameters — with the certified stack, so
+  independent only in its recursion/exponent code, NOT an independently derived
+  operator)
   ties the certified reading-C operator at all 336 deep sites, 0 mismatches, and
   the misread exponent (ℓᵢs − ℓ′ᵢu) breaks the tie on EVERY tower row (24–48
   discriminating sites per row) — the prime placement is load-bearing and the
@@ -273,18 +283,23 @@ per-index hand-verification is of the pinned extraction, not of rendered PDF gly
 ## S8. The numerics record (falsifiers only)
 
 `verification/openmath/fgmn_rederivation_check.py` — preregistered rows in the
-script header (predictions sealed pre-run); deterministic seed 20260816; same
-ROWS × CONFIGS roster and family builders as the sealed stage-1 harness (imported,
-not edited; site structure identical, random digits regenerated).  Output:
+script header (predictions sealed pre-run) + the REVISION 1 ADDENDUM (the R2
+branch repair, preregistered in the header BEFORE the revision rerun);
+deterministic seed 20260816; same ROWS × CONFIGS roster and family builders as
+the sealed stage-1 harness (imported, not edited; site structure identical,
+random digits regenerated).  REVISION 1 rerun output (console saved at
+`fgmn_rederivation_rerun_r1.txt`; supersedes the first-pass block, which had the
+R2 false-negative branch):
 
     R0 bug detector: D0 pattern == psi1                     pred 0  obs 0 (  28)  GREEN
     R1 CORRECTED battery (wPrev scale) at deep sites        pred 0  obs 0 ( 336)  GREEN
-    R2 COMPILED scale UNSAT at the same sites               pred 0  obs 0 ( 336)  GREEN
+    R2 COMPILED (ii) any-gam' UNSAT at the same sites       pred 0  obs 0 ( 336)  GREEN
     R3 row-A Lean-shape record + compiled UNSAT display     pred 0  obs 0 (   1)  GREEN
     R4 from-print Defs 3.15/3.16/3.18 == certified R2s      pred 0  obs 0 ( 336)  GREEN
     R5 eq-(14) key-power law (D0 source shape)              pred 0  obs 0 (  56)  GREEN
     deep node-1 sites: 336
     MISREAD-EPSILON METER (mode P != certified), by row: {A:24, B:48, C:24, K:28, L:24, M:48, N:48}
+    R2 SUPPORT METER (distinct compiled values at supported slots), by count: {2:264, 3:68, 5:4}
     TOTAL checks 1093   VERDICT: ALL GREEN
 
     ROW-A record: Phi2=[12,4,1] fA=[28,4,1] (e,h,gam,s0,wSide,mu)=(2,3,6,0,2,1)
@@ -292,12 +307,18 @@ not edited; site structure identical, random digits regenerated).  Output:
     ROW-A compiled-scale display: old functional at slots [0,2] = [6,12]
                   (needs a single gam; corrected = [6])
 
-Readings: R1+R3 = the rider-(i) acceptance leg (corrected clauses instantiated at
-row A + the 336-site battery re-run under the corrected clause-(ii) scale — all
-satisfiable); R2 = the parity wall reproduced as universal at the compiled scale
-(0/336 — the wall is the transcription, not the mathematics); R4+R5 = the
-from-print operator tie and the source's own D0 degeneracy.  Numerics are
-falsifiers: a RED anywhere would have killed the proposal; GREEN does not prove it.
+Readings: R1+R3 = the rider-(i) acceptance leg — a SCALE-SENSITIVE WINDOW/SUPPORT
+satisfiability check (clauses (i-a)/(i-b)/(ii-support)/(iii-window-length),
+wPrev-scaled) GREEN at all 336 sites, plus the row-A record instantiation; NOT
+full corrected-bundle `SideReads` satisfiability (no σ.R residual-leg
+instantiation — the Lean-side construction stays owed, §S9); R2 = the parity wall
+reproduced as universal at the compiled scale under the repaired any-gam′ branch
+(0/336; the support meter records ≥ 2 distinct compiled values at every site, so
+no single gam′ exists anywhere — the wall is the transcription, not the
+mathematics); R4+R5 = the from-print operator differential tie (§S7 scope: shared
+certified Tower state, independent recursion code) and the source's own D0
+degeneracy.  Numerics are falsifiers: a RED anywhere would have killed the
+proposal; GREEN does not prove it.
 
 ## S9. What this unit does NOT do
 
@@ -316,3 +337,68 @@ open lemma of DITER_RESTATE §S2.  PIN-GEN-i's discharge carries the §S7 residu
 verifier-owned from-note implementation of §S8's battery.
 
 — FGMN transcription-scale re-derivation, 2026-08-08 (wallclock 2026-08-03).
+
+## REVISION 1 (response to pass 1; wallclock 2026-08-03)
+
+Pass 1 (`FGMN_pass1_report.md`): **0 critical / 4 gaps, VERDICT GAPS-ONLY.**
+CONFIRMED by the verifier: the parent-scale diagnosis + double scaling (finding 1),
+the row-A arithmetic and record (finding 5), the PIN-GEN-i source leg incl. the
+Def 3.15 prime placement and generic ranges (finding 6), and the D0/blast-radius
+wording (finding 7) — that perimeter is untouched in this revision.  The four
+gaps, quoted and fixed:
+
+* **Gap (finding 2) — R2 false-negative branch.**  Quote: "If `oldvals` is a
+  singleton different from recorded `gam`, an alternative single `gam'` exists,
+  yet the test reports no violation. … Thus 'compiled 0/336' as an **any-gam**
+  discriminator is not established by this script."  FIX: the branch in
+  `check_compiled_unsat` repaired to the semantics this note claims — a site is a
+  violation iff SOME single gam′ solves the compiled clause-(ii) equality system,
+  i.e. iff the compiled values at the supported stride slots collapse to ≤ 1
+  distinct value (ANY singleton counts, recorded-gam or not).  Repair + a derived
+  sealed prediction preregistered in the script's REVISION 1 ADDENDUM header block
+  BEFORE the rerun (derivation: at a supported slot the compiled value is
+  e·gam − j·h·(e−1); e = e1 ≥ 2 and h = gamma2 > 0 on every roster row, so
+  distinct supported slots give distinct values; every certified pattern has ≥ 2
+  nonzero digits via the Def 3.18 strip + nonzero leading digit).  RERUN: ALL
+  GREEN, **R2 = 0/336 measured under the repaired branch — the count did NOT
+  change** — and the new R2 SUPPORT METER now RECORDS the previously unasserted
+  fact: every one of the 336 sites has ≥ 2 distinct compiled values at its
+  supported slots ({2: 264, 3: 68, 5: 4}).  Output re-quoted in §S8; console at
+  `fgmn_rederivation_rerun_r1.txt`.
+* **Gap (finding 3) — "336/336 SAT" overstates R1.**  Quote: "this is a 336-site
+  **scale-sensitive window/support check**, not 336 full corrected-bundle
+  satisfiability proofs."  FIX: every such occurrence rescoped (§S4 parity-wall
+  bullet, §S5 parity-wall row, §S8 readings, artifacts header) to what R1
+  actually checks — a scale-sensitive window/support satisfiability check
+  (clauses (i-a)/(i-b)/(ii-support)/(iii-window-length)) at 336 sites, NOT full
+  corrected-bundle `SideReads` satisfiability; clause (iii)'s σ.R leg is never
+  instantiated numerically.  The owed Lean-side construction display (§S9,
+  queue #9) stands unchanged.  Rider on §S4's defined term: THE ROW-A SOURCE
+  VERDICT's "numerically satisfiable at this fiber" is to be read in the same
+  scope — R3's window/support + record numerics (the term's own "SOURCE-plus-
+  numerics verdict, not a Lean theorem" sentence already fences this; the
+  definition text is confirmed perimeter and is not edited).
+* **Gap (finding 4) — R4 independence overstated.**  Quote: "it consumes
+  certified `Tower` state and methods including `T.w1`, `T.res_digit`, `T.K1`,
+  `T.z1`, keys, and chain parameters … not an independently derived operator in
+  the advertised sense."  FIX: §S7's "sharing only ring primitives" rescoped to a
+  DIFFERENTIAL falsifier sharing the certified Tower state (w1/res_digit/K1/z1/
+  keys/chain parameters), independent only in its recursion/exponent code; same
+  supersession recorded in the script ADDENDUM (the sealed header row stays as
+  the historical record).
+* **Gap (finding 8) — local artifact verification not completed by the
+  verifier** (sandbox `bubblewrap` failure; the SHA pins, JSON, and the 1,093
+  checks were reconciled, not re-executed).  FIX (as far as this unit can): fresh
+  full re-execution this revision (ALL GREEN, counts above), console persisted,
+  JSON regenerated (now incl. `r2_support`), and both provenance pins
+  re-verified byte-identical this session (`sha256sum`: PDF 651b0cef…f615f35,
+  layout extraction 8d30f15e…76e848b).  This is prover-side re-execution, not
+  verifier-independent execution — the pass-7 F2c verifier-owned from-note
+  implementation stays the acceptance obligation.
+
+Nothing else changed: the §S3 proposal text, THE ROW-A SOURCE VERDICT definition,
+§S7's extraction record, and all confirmed-perimeter sections are byte-identical.
+**Acceptance counter: 0/2 consecutive clean passes** (a revision does not
+advance it); pass 2 verifies this note + the repaired script from scratch.
+
+— FGMN re-derivation REVISION 1, 2026-08-08 (wallclock 2026-08-03).

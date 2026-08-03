@@ -73,6 +73,52 @@ the battery is the same preregistered distribution, not a byte-replay).
 
 RED DISCIPLINE: R0/R4 are bug detectors first; a RED on R1/R2/R3/R5 with
 R0/R4 green is mathematics and kills the proposal as written.
+
+============ REVISION 1 ADDENDUM (sealed BEFORE the revision rerun) =========
+Pass-1 verification (FGMN_pass1_report.md, 0 critical / 4 gaps) found the
+R2 branch FALSE-NEGATIVE: the original test
+    len(oldvals) <= 1 and (not oldvals or oldvals == {gam})
+lets a singleton oldvals DIFFERENT from the recorded gam escape — "If
+`oldvals` is a singleton different from recorded `gam`, an alternative
+single `gam'` exists, yet the test reports no violation" — so the sealed
+R2's 0/336 was not established as an ANY-GAM discriminator.
+REPAIR (to the semantics the note claims — the compiled clause-(ii)
+equalities admit NO single gam value): a site is a violation iff the
+compiled equality system  e*(e*wPrev(B_j)) + j*h = gam'  over the
+supported stride slots is solvable by SOME single gam', i.e. iff
+len(oldvals) <= 1 (empty = vacuously solvable; ANY singleton = solvable
+by its element, recorded-gam or not).  GREEN now certifies: >= 2 distinct
+compiled values at every site, hence NO gam' exists (any-gam UNSAT).
+NEW METER (records the fact pass-1 noted was unrecorded): R2 SUPPORT —
+the per-site count of distinct compiled values at supported slots,
+tallied to stdout and to the JSON field `r2_support`.
+SEALED PREDICTION (derived, not tuned): at a supported slot j the
+corrected functional ties e*vals_j + j*h = gam, so the compiled value
+there is e*(e*vals_j) + j*h = e*(gam - j*h) + j*h = e*gam - j*h*(e-1);
+on THIS roster e = e1 >= 2 (rows A,C,K,L,N: e1 = 2; B,M: e1 = 3) and
+h = gamma2 = e1*w1Phi1 + h1 > 0, so compiled values at distinct supported
+slots are pairwise distinct; and every certified pattern has >= 2 nonzero
+digits (Def 3.18's y^{j0} strip forces a nonzero constant digit — psi1
+has psi1(0) != 0 by construction — plus the nonzero leading digit;
+D0/D1/D2/DA patterns == psi1 with deg g1 >= 1; D3 width 2*g1 >= 2).
+PREDICT: repaired R2 obs 0 (336 sites) AND r2_support = {m: 336 with
+m >= 2 pooled over sites, no site at m <= 1}.  If the rerun measures
+otherwise, the note's compiled-side claim is adjusted to the MEASURED
+number; no post-hoc branch edits.
+WORDING SUPERSESSIONS (note gaps 3/4; the sealed rows above stay
+unedited as the historical preregistration record): (a) R1 is a
+SCALE-SENSITIVE WINDOW/SUPPORT satisfiability check at 336 sites —
+clauses (i-a)/(i-b)/(ii-support)/(iii-window-length) — NOT full
+corrected-bundle SideReads satisfiability (no sigma.R residual-leg
+instantiation; the Lean construction stays owed to queue #9).  (b) the
+R4 line "shares only ring primitives dev/w0/eq12/field ops with the
+certified operator" is WRONG as written: the from-print operator
+(R0_print/R1_print/eps1_print/R2_print) consumes certified Tower STATE
+(T.w1, T.res_digit, T.K1, T.z1, the keys and chain parameters) and is a
+DIFFERENTIAL falsifier of the recursion/exponent shape against T.R2s —
+independent recursion code, shared certified state.
+Rerun protocol: full battery rerun, same seed 20260816; console tee'd to
+fgmn_rederivation_rerun_r1.txt; JSON overwritten (adds `r2_support`).
 """
 import os, sys, time, random, json
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
@@ -213,19 +259,25 @@ def check_corrected(T, rec, fam):
     if rec["wSide"] % e != 0 or (rec["wSide"]//e + 1) < len(rec["pat"]):
         viol("R1", T.tag, f"[{fam}] (iii): pattern exceeds window")
 
-def check_compiled_unsat(T, rec, fam):
-    """R2: the COMPILED clause-(ii) equalities e*(e*wPrev) + j*h = gam' have
-    no solution gam' (>= 2 stride slots with distinct old-functional
-    values), and fail at the recorded gam."""
+def check_compiled_unsat(T, rec, fam, r2sup):
+    """R2 (REVISION 1 repaired branch — see the ADDENDUM in the header):
+    violation iff the COMPILED clause-(ii) equality system
+    e*(e*wPrev(B_j)) + j*h = gam' over the supported stride slots is
+    solvable by SOME single gam' — i.e. iff the compiled values there
+    collapse to <= 1 distinct value (ANY singleton counts, recorded-gam
+    or not: the pass-1 false-negative case).  GREEN certifies >= 2
+    distinct values at the site, hence any-gam UNSAT."""
     e, h, s0, gam = rec["e"], rec["h"], rec["s0"], rec["gam"]
     vals = rec["vals"]
     note("R2")
     oldvals = {e*(e*vals[s0 + e*k]) + (s0 + e*k)*h
                for k in range(len(rec["pat"]))
                if not T.K1["isz"](rec["pat"][k])}
-    if len(oldvals) <= 1 and (not oldvals or oldvals == {gam}):
-        viol("R2", T.tag, f"[{fam}] compiled clause (ii) SATISFIABLE "
-                          f"(oldvals={sorted(oldvals)}, gam={gam})")
+    r2sup[len(oldvals)] = r2sup.get(len(oldvals), 0) + 1
+    if len(oldvals) <= 1:
+        viol("R2", T.tag, f"[{fam}] compiled clause-(ii) equalities solvable "
+                          f"by a single gam' (oldvals={sorted(oldvals)}, "
+                          f"recorded gam={gam})")
 
 # ---------------------------------------------------------------------------
 
@@ -234,6 +286,7 @@ def main():
     random.seed(20260816)
     sites = 0
     misread = {}
+    r2sup = {}
     for kind, p in J.CONFIGS:
         for tag, d0, r0, r1 in J.ROWS:
             T = Tower(kind, p, d0, r0, r1, f"{kind},p={p},{tag}")
@@ -250,7 +303,7 @@ def main():
                 sites += 1
                 rec = site_record(T, f)
                 check_corrected(T, rec, fam)
-                check_compiled_unsat(T, rec, fam)
+                check_compiled_unsat(T, rec, fam, r2sup)
                 # R4 from-print operator vs certified
                 note("R4")
                 pat_p, j0_p, _ = R2_print(T, f, "C")
@@ -299,7 +352,7 @@ def main():
     print("=" * 74)
     rows = [("R0", "bug detector: D0 pattern == psi1", 0),
             ("R1", "CORRECTED battery (wPrev scale) at deep sites", 0),
-            ("R2", "COMPILED scale UNSAT at the same sites", 0),
+            ("R2", "COMPILED (ii) any-gam' UNSAT at the same sites", 0),
             ("R3", "row-A Lean-shape record + compiled UNSAT display", 0),
             ("R4", "from-print Defs 3.15/3.16/3.18 == certified R2s", 0),
             ("R5", "eq-(14) key-power law (D0 source shape)", 0)]
@@ -314,13 +367,15 @@ def main():
     print(f"deep node-1 sites: {sites}")
     print(f"MISREAD-EPSILON METER (from-print mode P != certified), by row: "
           f"{dict(sorted(misread.items()))}")
+    print(f"R2 SUPPORT METER (distinct compiled values at supported slots), "
+          f"by count: {dict(sorted(r2sup.items()))}")
     if VIOL:
         print(f"{len(VIOL)} VIOLATIONS (first 20):")
         for v in VIOL[:20]:
             print("  ", v)
     print(f"TOTAL checks {sum(COUNTS.values())}  elapsed {time.time()-t0:.1f}s")
     out = dict(violations=[list(v) for v in VIOL], counts=COUNTS,
-               sites=sites, misread=misread)
+               sites=sites, misread=misread, r2_support=r2sup)
     with open(os.path.join(os.path.dirname(os.path.abspath(__file__)),
                            "fgmn_rederivation_results.json"), "w") as fh:
         json.dump(out, fh, indent=1, default=str)

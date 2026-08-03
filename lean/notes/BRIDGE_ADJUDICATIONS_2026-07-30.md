@@ -5901,3 +5901,30 @@ appended to `lean/blueprints/HDISCHARGE_H3.md`; PROJECT_STATE updated.
 Handed on: (ADM) row display at the next ROOT fold; (C-JCT) fan-out audit
 now proceeds on the honest carrier.  Commit: this one (verdict companion
 to ba02d60).
+
+## 2026-08-08 — FGMN REVISION 1: pass-1 gaps (0C/4G) fixed — R2 any-gam′ branch REPAIRED + rerun 0/336 (count unchanged, now with the support meter on record); "336/336 SAT" rescoped to the window/support check; R4 rescoped to differential falsifier; pins re-verified
+
+Response to `FGMN_pass1_report.md` (0 critical / 4 gaps, GAPS-ONLY; the
+parent-scale diagnosis, row-A arithmetic, PIN-GEN-i leg, and D0/blast-radius
+wording all CONFIRMED — that perimeter untouched).  (1) The R2 false-negative
+branch (a singleton `oldvals` ≠ recorded gam escaped) repaired in
+`verification/openmath/fgmn_rederivation_check.py` to true any-gam′ semantics
+(violation iff ≤ 1 distinct compiled value at the supported stride slots);
+repair + derived prediction preregistered in the script's REVISION 1 ADDENDUM
+header BEFORE the rerun; rerun ALL GREEN (1,093 checks) — **R2 = 0/336
+measured, count unchanged**, and the new R2 SUPPORT METER records ≥ 2 distinct
+compiled values at every site ({2: 264, 3: 68, 5: 4}), the fact pass 1 noted
+was unrecorded.  (2) Every "336/336 SAT" occurrence rescoped to what R1
+checks: a scale-sensitive WINDOW/SUPPORT satisfiability check at 336 sites
+(no σ.R residual-leg instantiation) — NOT full corrected-bundle `SideReads`
+satisfiability; the owed queue-#9 Lean construction display stands.  (3) R4
+rescoped from "shares only ring primitives" to a DIFFERENTIAL falsifier
+sharing the certified Tower state (w1/res_digit/K1/z1/keys/chain parameters),
+independent only in recursion/exponent code.  (4) Verifier's sandbox-blocked
+artifact leg answered prover-side: fresh re-execution (console persisted at
+`fgmn_rederivation_rerun_r1.txt`, JSON regenerated with `r2_support`) + both
+provenance pins re-verified byte-identical (sha256sum).  §S3 proposal text and
+THE ROW-A SOURCE VERDICT definition byte-identical; still PROPOSAL-ONLY,
+Asvin-flag queued.  Acceptance counter: 0/2 consecutive clean passes; pass 2
+next.  REVISION 1 block appended to
+`lean/notes/openmath/FGMN_REDERIVATION_2026-08-08.md`.

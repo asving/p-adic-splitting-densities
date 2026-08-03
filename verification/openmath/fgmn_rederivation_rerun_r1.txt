@@ -1,0 +1,18 @@
+[   0.1s] ring (Zp,p=2) done, viol=0
+[   0.1s] ring (Zp,p=3) done, viol=0
+[   0.3s] ring (Fpt,p=2) done, viol=0
+[   0.6s] ring (Fpt,p=3) done, viol=0
+ROW-A record: Phi2=[12, 4, 1] fA=[28, 4, 1] (e,h,gam,s0,wSide,mu)=(2, 3, 6, 0, 2, 1) pat=[((1,),), ((1,),)] vtx_digit=(1,)
+ROW-A compiled-scale display: old functional at slots [0, 2] = [6, 12] (needs a single gam; corrected = [6])
+==========================================================================
+R0 bug detector: D0 pattern == psi1                     pred 0  obs   0 (  28)  GREEN
+R1 CORRECTED battery (wPrev scale) at deep sites        pred 0  obs   0 ( 336)  GREEN
+R2 COMPILED (ii) any-gam' UNSAT at the same sites       pred 0  obs   0 ( 336)  GREEN
+R3 row-A Lean-shape record + compiled UNSAT display     pred 0  obs   0 (   1)  GREEN
+R4 from-print Defs 3.15/3.16/3.18 == certified R2s      pred 0  obs   0 ( 336)  GREEN
+R5 eq-(14) key-power law (D0 source shape)              pred 0  obs   0 (  56)  GREEN
+deep node-1 sites: 336
+MISREAD-EPSILON METER (from-print mode P != certified), by row: {'A': 24, 'B': 48, 'C': 24, 'K': 28, 'L': 24, 'M': 48, 'N': 48}
+R2 SUPPORT METER (distinct compiled values at supported slots), by count: {2: 264, 3: 68, 5: 4}
+TOTAL checks 1093  elapsed 0.6s
+VERDICT: ALL GREEN
