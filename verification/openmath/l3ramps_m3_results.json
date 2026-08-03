@@ -1,0 +1,5132 @@
+{
+ "ladder": [
+  {
+   "tag": "Zp,p=2,FULL8",
+   "name": "FULL8",
+   "kind": "Zp",
+   "p": 2,
+   "consts": {
+    "e0": 2,
+    "h0": 1,
+    "g0": 1,
+    "e1": 2,
+    "h1": 1,
+    "g1": 1,
+    "e2": 2,
+    "h2": 1,
+    "g2": 1,
+    "E3": 8,
+    "gamma2": 5,
+    "gamma3": 21,
+    "w1P": 2,
+    "w2P": 10,
+    "l0": 1,
+    "l0p": 0,
+    "l1": 1,
+    "l1p": 0,
+    "kappa": -2,
+    "TB": -42
+   },
+   "ords": {
+    "zb": 1,
+    "z2": 1,
+    "z1": 1
+   },
+   "Gamma0": 48,
+   "certbad": 0,
+   "f0bad": 0,
+   "npairs": 64,
+   "nd3": 16,
+   "comp_bad": 0,
+   "nonint": 8,
+   "intdiff": 8,
+   "fdiff": 0,
+   "sig2_bad": 0,
+   "resid_bad": 0,
+   "J0_bad": 0,
+   "fac_bad": 0,
+   "kset": [
+    -42
+   ],
+   "Jset": [
+    10,
+    11
+   ],
+   "Dset": [
+    0,
+    8,
+    13
+   ]
+  },
+  {
+   "tag": "Zp,p=2,FULLg0",
+   "name": "FULLg0",
+   "kind": "Zp",
+   "p": 2,
+   "consts": {
+    "e0": 2,
+    "h0": 1,
+    "g0": 2,
+    "e1": 2,
+    "h1": 1,
+    "g1": 1,
+    "e2": 2,
+    "h2": 1,
+    "g2": 1,
+    "E3": 8,
+    "gamma2": 9,
+    "gamma3": 37,
+    "w1P": 4,
+    "w2P": 18,
+    "l0": 1,
+    "l0p": 0,
+    "l1": 1,
+    "l1p": 0,
+    "kappa": -4,
+    "TB": -148
+   },
+   "ords": {
+    "zb": 1,
+    "z2": 3,
+    "z1": 3
+   },
+   "Gamma0": 72,
+   "certbad": 0,
+   "f0bad": 0,
+   "npairs": 64,
+   "nd3": 16,
+   "comp_bad": 0,
+   "nonint": 8,
+   "intdiff": 8,
+   "fdiff": 8,
+   "sig2_bad": 0,
+   "resid_bad": 0,
+   "J0_bad": 0,
+   "fac_bad": 0,
+   "kset": [
+    -148
+   ],
+   "Jset": [
+    18,
+    19
+   ],
+   "Dset": [
+    0,
+    14,
+    23
+   ]
+  },
+  {
+   "tag": "Zp,p=2,FULLg1",
+   "name": "FULLg1",
+   "kind": "Zp",
+   "p": 2,
+   "consts": {
+    "e0": 2,
+    "h0": 1,
+    "g0": 1,
+    "e1": 2,
+    "h1": 1,
+    "g1": 2,
+    "e2": 2,
+    "h2": 1,
+    "g2": 1,
+    "E3": 8,
+    "gamma2": 5,
+    "gamma3": 41,
+    "w1P": 2,
+    "w2P": 20,
+    "l0": 1,
+    "l0p": 0,
+    "l1": 1,
+    "l1p": 0,
+    "kappa": -2,
+    "TB": -82
+   },
+   "ords": {
+    "zb": 1,
+    "z2": 3,
+    "z1": 1
+   },
+   "Gamma0": 72,
+   "certbad": 0,
+   "f0bad": 0,
+   "npairs": 64,
+   "nd3": 16,
+   "comp_bad": 0,
+   "nonint": 8,
+   "intdiff": 8,
+   "fdiff": 0,
+   "sig2_bad": 0,
+   "resid_bad": 0,
+   "J0_bad": 0,
+   "fac_bad": 0,
+   "kset": [
+    -82
+   ],
+   "Jset": [
+    20,
+    21
+   ],
+   "Dset": [
+    0,
+    18,
+    23
+   ]
+  },
+  {
+   "tag": "Zp,p=2,FULLg2",
+   "name": "FULLg2",
+   "kind": "Zp",
+   "p": 2,
+   "consts": {
+    "e0": 2,
+    "h0": 1,
+    "g0": 1,
+    "e1": 2,
+    "h1": 1,
+    "g1": 1,
+    "e2": 2,
+    "h2": 1,
+    "g2": 2,
+    "E3": 8,
+    "gamma2": 5,
+    "gamma3": 21,
+    "w1P": 2,
+    "w2P": 10,
+    "l0": 1,
+    "l0p": 0,
+    "l1": 1,
+    "l1p": 0,
+    "kappa": -2,
+    "TB": -42
+   },
+   "ords": {
+    "zb": 3,
+    "z2": 1,
+    "z1": 1
+   },
+   "Gamma0": 48,
+   "certbad": 0,
+   "f0bad": 0,
+   "npairs": 64,
+   "nd3": 16,
+   "comp_bad": 0,
+   "nonint": 8,
+   "intdiff": 8,
+   "fdiff": 0,
+   "sig2_bad": 0,
+   "resid_bad": 0,
+   "J0_bad": 0,
+   "fac_bad": 0,
+   "kset": [
+    -42
+   ],
+   "Jset": [
+    10,
+    11
+   ],
+   "Dset": [
+    0,
+    8,
+    13
+   ]
+  },
+  {
+   "tag": "Zp,p=2,De2a",
+   "name": "De2a",
+   "kind": "Zp",
+   "p": 2,
+   "consts": {
+    "e0": 2,
+    "h0": 1,
+    "g0": 1,
+    "e1": 2,
+    "h1": 1,
+    "g1": 1,
+    "e2": 1,
+    "h2": 1,
+    "g2": 2,
+    "E3": 4,
+    "gamma2": 5,
+    "gamma3": 11,
+    "w1P": 2,
+    "w2P": 10,
+    "l0": 1,
+    "l0p": 0,
+    "l1": 1,
+    "l1p": 0,
+    "kappa": -2,
+    "TB": -22
+   },
+   "ords": {
+    "zb": 3,
+    "z2": 1,
+    "z1": 1
+   },
+   "Gamma0": 16,
+   "certbad": 0,
+   "f0bad": 0,
+   "npairs": 16,
+   "nd3": 0,
+   "comp_bad": 0,
+   "nonint": 0,
+   "intdiff": 0,
+   "fdiff": 0,
+   "sig2_bad": 0,
+   "resid_bad": 0,
+   "J0_bad": 0,
+   "fac_bad": 0,
+   "kset": [],
+   "Jset": [],
+   "Dset": [
+    0
+   ],
+   "recovery": {
+    "split_id_bad": 0,
+    "meas_tie_bad": 0,
+    "law_tie_bad": 0
+   }
+  },
+  {
+   "tag": "Zp,p=2,De2b",
+   "name": "De2b",
+   "kind": "Zp",
+   "p": 2,
+   "consts": {
+    "e0": 2,
+    "h0": 1,
+    "g0": 1,
+    "e1": 3,
+    "h1": 1,
+    "g1": 1,
+    "e2": 1,
+    "h2": 1,
+    "g2": 2,
+    "E3": 6,
+    "gamma2": 7,
+    "gamma3": 22,
+    "w1P": 2,
+    "w2P": 21,
+    "l0": 1,
+    "l0p": 0,
+    "l1": 1,
+    "l1p": 0,
+    "kappa": -2,
+    "TB": -44
+   },
+   "ords": {
+    "zb": 3,
+    "z2": 1,
+    "z1": 1
+   },
+   "Gamma0": 30,
+   "certbad": 0,
+   "f0bad": 0,
+   "npairs": 36,
+   "nd3": 0,
+   "comp_bad": 0,
+   "nonint": 0,
+   "intdiff": 0,
+   "fdiff": 0,
+   "sig2_bad": 0,
+   "resid_bad": 0,
+   "J0_bad": 0,
+   "fac_bad": 0,
+   "kset": [],
+   "Jset": [],
+   "Dset": [
+    0
+   ],
+   "recovery": {
+    "split_id_bad": 0,
+    "meas_tie_bad": 0,
+    "law_tie_bad": 0
+   }
+  },
+  {
+   "tag": "Zp,p=2,De2c",
+   "name": "De2c",
+   "kind": "Zp",
+   "p": 2,
+   "consts": {
+    "e0": 3,
+    "h0": 2,
+    "g0": 1,
+    "e1": 2,
+    "h1": 1,
+    "g1": 1,
+    "e2": 1,
+    "h2": 1,
+    "g2": 2,
+    "E3": 6,
+    "gamma2": 13,
+    "gamma3": 27,
+    "w1P": 6,
+    "w2P": 26,
+    "l0": 2,
+    "l0p": -1,
+    "l1": 1,
+    "l1p": 0,
+    "kappa": -6,
+    "TB": -162
+   },
+   "ords": {
+    "zb": 3,
+    "z2": 1,
+    "z1": 1
+   },
+   "Gamma0": 48,
+   "certbad": 0,
+   "f0bad": 0,
+   "npairs": 36,
+   "nd3": 0,
+   "comp_bad": 0,
+   "nonint": 0,
+   "intdiff": 0,
+   "fdiff": 0,
+   "sig2_bad": 0,
+   "resid_bad": 0,
+   "J0_bad": 0,
+   "fac_bad": 0,
+   "kset": [],
+   "Jset": [],
+   "Dset": [
+    0
+   ],
+   "recovery": {
+    "split_id_bad": 0,
+    "meas_tie_bad": 0,
+    "law_tie_bad": 0
+   }
+  },
+  {
+   "tag": "Zp,p=2,De2g0",
+   "name": "De2g0",
+   "kind": "Zp",
+   "p": 2,
+   "consts": {
+    "e0": 2,
+    "h0": 1,
+    "g0": 2,
+    "e1": 2,
+    "h1": 1,
+    "g1": 1,
+    "e2": 1,
+    "h2": 1,
+    "g2": 2,
+    "E3": 4,
+    "gamma2": 9,
+    "gamma3": 19,
+    "w1P": 4,
+    "w2P": 18,
+    "l0": 1,
+    "l0p": 0,
+    "l1": 1,
+    "l1p": 0,
+    "kappa": -4,
+    "TB": -76
+   },
+   "ords": {
+    "zb": 5,
+    "z2": 3,
+    "z1": 3
+   },
+   "Gamma0": 20,
+   "certbad": 0,
+   "f0bad": 0,
+   "npairs": 16,
+   "nd3": 0,
+   "comp_bad": 0,
+   "nonint": 0,
+   "intdiff": 0,
+   "fdiff": 0,
+   "sig2_bad": 0,
+   "resid_bad": 0,
+   "J0_bad": 0,
+   "fac_bad": 0,
+   "kset": [],
+   "Jset": [],
+   "Dset": [
+    0
+   ],
+   "recovery": {
+    "split_id_bad": 0,
+    "meas_tie_bad": 0,
+    "law_tie_bad": 0
+   }
+  },
+  {
+   "tag": "Zp,p=2,De1a",
+   "name": "De1a",
+   "kind": "Zp",
+   "p": 2,
+   "consts": {
+    "e0": 2,
+    "h0": 1,
+    "g0": 1,
+    "e1": 1,
+    "h1": 1,
+    "g1": 2,
+    "e2": 2,
+    "h2": 1,
+    "g2": 1,
+    "E3": 4,
+    "gamma2": 3,
+    "gamma3": 13,
+    "w1P": 2,
+    "w2P": 6,
+    "l0": 1,
+    "l0p": 0,
+    "l1": 0,
+    "l1p": 1,
+    "kappa": 1,
+    "TB": 13
+   },
+   "ords": {
+    "zb": 1,
+    "z2": 3,
+    "z1": 1
+   },
+   "Gamma0": 24,
+   "certbad": 0,
+   "f0bad": 0,
+   "npairs": 16,
+   "nd3": 4,
+   "comp_bad": 0,
+   "nonint": 4,
+   "intdiff": 0,
+   "fdiff": 0,
+   "sig2_bad": 0,
+   "resid_bad": 0,
+   "J0_bad": 0,
+   "fac_bad": 0,
+   "kset": [
+    13
+   ],
+   "Jset": [
+    0
+   ],
+   "Dset": [
+    0,
+    13
+   ]
+  },
+  {
+   "tag": "Zp,p=2,De1b",
+   "name": "De1b",
+   "kind": "Zp",
+   "p": 2,
+   "consts": {
+    "e0": 3,
+    "h0": 1,
+    "g0": 1,
+    "e1": 1,
+    "h1": 1,
+    "g1": 2,
+    "e2": 2,
+    "h2": 1,
+    "g2": 1,
+    "E3": 6,
+    "gamma2": 4,
+    "gamma3": 17,
+    "w1P": 3,
+    "w2P": 8,
+    "l0": 1,
+    "l0p": 0,
+    "l1": 0,
+    "l1p": 1,
+    "kappa": 1,
+    "TB": 17
+   },
+   "ords": {
+    "zb": 1,
+    "z2": 3,
+    "z1": 1
+   },
+   "Gamma0": 36,
+   "certbad": 0,
+   "f0bad": 0,
+   "npairs": 36,
+   "nd3": 9,
+   "comp_bad": 0,
+   "nonint": 9,
+   "intdiff": 0,
+   "fdiff": 0,
+   "sig2_bad": 0,
+   "resid_bad": 0,
+   "J0_bad": 0,
+   "fac_bad": 0,
+   "kset": [
+    17
+   ],
+   "Jset": [
+    0
+   ],
+   "Dset": [
+    0,
+    17
+   ]
+  },
+  {
+   "tag": "Zp,p=2,De1c",
+   "name": "De1c",
+   "kind": "Zp",
+   "p": 2,
+   "consts": {
+    "e0": 2,
+    "h0": 1,
+    "g0": 1,
+    "e1": 1,
+    "h1": 1,
+    "g1": 2,
+    "e2": 3,
+    "h2": 1,
+    "g2": 1,
+    "E3": 6,
+    "gamma2": 3,
+    "gamma3": 19,
+    "w1P": 2,
+    "w2P": 6,
+    "l0": 1,
+    "l0p": 0,
+    "l1": 0,
+    "l1p": 1,
+    "kappa": 1,
+    "TB": 19
+   },
+   "ords": {
+    "zb": 1,
+    "z2": 3,
+    "z1": 1
+   },
+   "Gamma0": 54,
+   "certbad": 0,
+   "f0bad": 0,
+   "npairs": 36,
+   "nd3": 12,
+   "comp_bad": 0,
+   "nonint": 12,
+   "intdiff": 0,
+   "fdiff": 0,
+   "sig2_bad": 0,
+   "resid_bad": 0,
+   "J0_bad": 0,
+   "fac_bad": 0,
+   "kset": [
+    19
+   ],
+   "Jset": [
+    0
+   ],
+   "Dset": [
+    0,
+    19
+   ]
+  },
+  {
+   "tag": "Zp,p=2,De0a",
+   "name": "De0a",
+   "kind": "Zp",
+   "p": 2,
+   "consts": {
+    "e0": 1,
+    "h0": 1,
+    "g0": 2,
+    "e1": 2,
+    "h1": 1,
+    "g1": 1,
+    "e2": 2,
+    "h2": 1,
+    "g2": 1,
+    "E3": 4,
+    "gamma2": 5,
+    "gamma3": 21,
+    "w1P": 2,
+    "w2P": 10,
+    "l0": 0,
+    "l0p": 1,
+    "l1": 1,
+    "l1p": 0,
+    "kappa": -2,
+    "TB": -42
+   },
+   "ords": {
+    "zb": 1,
+    "z2": 3,
+    "z1": 3
+   },
+   "Gamma0": 36,
+   "certbad": 0,
+   "f0bad": 0,
+   "npairs": 16,
+   "nd3": 4,
+   "comp_bad": 0,
+   "nonint": 0,
+   "intdiff": 0,
+   "fdiff": 0,
+   "sig2_bad": 0,
+   "resid_bad": 0,
+   "J0_bad": 0,
+   "fac_bad": 0,
+   "kset": [
+    -42
+   ],
+   "Jset": [
+    10,
+    11
+   ],
+   "Dset": [
+    0,
+    8,
+    13
+   ]
+  },
+  {
+   "tag": "Zp,p=2,De0b",
+   "name": "De0b",
+   "kind": "Zp",
+   "p": 2,
+   "consts": {
+    "e0": 1,
+    "h0": 1,
+    "g0": 2,
+    "e1": 2,
+    "h1": 1,
+    "g1": 1,
+    "e2": 3,
+    "h2": 1,
+    "g2": 1,
+    "E3": 6,
+    "gamma2": 5,
+    "gamma3": 31,
+    "w1P": 2,
+    "w2P": 10,
+    "l0": 0,
+    "l0p": 1,
+    "l1": 1,
+    "l1p": 0,
+    "kappa": -2,
+    "TB": -62
+   },
+   "ords": {
+    "zb": 1,
+    "z2": 3,
+    "z1": 3
+   },
+   "Gamma0": 84,
+   "certbad": 0,
+   "f0bad": 0,
+   "npairs": 36,
+   "nd3": 12,
+   "comp_bad": 0,
+   "nonint": 0,
+   "intdiff": 0,
+   "fdiff": 0,
+   "sig2_bad": 0,
+   "resid_bad": 0,
+   "J0_bad": 0,
+   "fac_bad": 0,
+   "kset": [
+    -62
+   ],
+   "Jset": [
+    15,
+    16
+   ],
+   "Dset": [
+    0,
+    13,
+    18
+   ]
+  },
+  {
+   "tag": "Zp,p=2,De0c",
+   "name": "De0c",
+   "kind": "Zp",
+   "p": 2,
+   "consts": {
+    "e0": 1,
+    "h0": 1,
+    "g0": 2,
+    "e1": 3,
+    "h1": 1,
+    "g1": 1,
+    "e2": 2,
+    "h2": 1,
+    "g2": 1,
+    "E3": 6,
+    "gamma2": 7,
+    "gamma3": 43,
+    "w1P": 2,
+    "w2P": 21,
+    "l0": 0,
+    "l0p": 1,
+    "l1": 1,
+    "l1p": 0,
+    "kappa": -2,
+    "TB": -86
+   },
+   "ords": {
+    "zb": 1,
+    "z2": 3,
+    "z1": 3
+   },
+   "Gamma0": 78,
+   "certbad": 0,
+   "f0bad": 0,
+   "npairs": 36,
+   "nd3": 9,
+   "comp_bad": 0,
+   "nonint": 0,
+   "intdiff": 0,
+   "fdiff": 0,
+   "sig2_bad": 0,
+   "resid_bad": 0,
+   "J0_bad": 0,
+   "fac_bad": 0,
+   "kset": [
+    -86
+   ],
+   "Jset": [
+    14,
+    15
+   ],
+   "Dset": [
+    0,
+    12,
+    19
+   ]
+  },
+  {
+   "tag": "Zp,p=2,De0e1",
+   "name": "De0e1",
+   "kind": "Zp",
+   "p": 2,
+   "consts": {
+    "e0": 1,
+    "h0": 1,
+    "g0": 2,
+    "e1": 1,
+    "h1": 1,
+    "g1": 2,
+    "e2": 4,
+    "h2": 3,
+    "g2": 1,
+    "E3": 4,
+    "gamma2": 3,
+    "gamma3": 27,
+    "w1P": 2,
+    "w2P": 6,
+    "l0": 0,
+    "l0p": 1,
+    "l1": 0,
+    "l1p": 1,
+    "kappa": 1,
+    "TB": 27
+   },
+   "ords": {
+    "zb": 1,
+    "z2": 5,
+    "z1": 3
+   },
+   "Gamma0": 88,
+   "certbad": 0,
+   "f0bad": 0,
+   "npairs": 16,
+   "nd3": 6,
+   "comp_bad": 0,
+   "nonint": 0,
+   "intdiff": 0,
+   "fdiff": 0,
+   "sig2_bad": 0,
+   "resid_bad": 0,
+   "J0_bad": 0,
+   "fac_bad": 0,
+   "kset": [
+    27
+   ],
+   "Jset": [
+    0
+   ],
+   "Dset": [
+    0,
+    27
+   ]
+  },
+  {
+   "tag": "Zp,p=2,De0e2",
+   "name": "De0e2",
+   "kind": "Zp",
+   "p": 2,
+   "consts": {
+    "e0": 1,
+    "h0": 1,
+    "g0": 2,
+    "e1": 4,
+    "h1": 3,
+    "g1": 1,
+    "e2": 1,
+    "h2": 1,
+    "g2": 2,
+    "E3": 4,
+    "gamma2": 11,
+    "gamma3": 45,
+    "w1P": 2,
+    "w2P": 44,
+    "l0": 0,
+    "l0p": 1,
+    "l1": 3,
+    "l1p": -2,
+    "kappa": -8,
+    "TB": -360
+   },
+   "ords": {
+    "zb": 5,
+    "z2": 3,
+    "z1": 3
+   },
+   "Gamma0": 40,
+   "certbad": 0,
+   "f0bad": 0,
+   "npairs": 16,
+   "nd3": 0,
+   "comp_bad": 0,
+   "nonint": 0,
+   "intdiff": 0,
+   "fdiff": 0,
+   "sig2_bad": 0,
+   "resid_bad": 0,
+   "J0_bad": 0,
+   "fac_bad": 0,
+   "kset": [],
+   "Jset": [],
+   "Dset": [
+    0
+   ],
+   "recovery": {
+    "split_id_bad": 0,
+    "meas_tie_bad": 0,
+    "law_tie_bad": 0
+   }
+  },
+  {
+   "tag": "Zp,p=2,De1e2",
+   "name": "De1e2",
+   "kind": "Zp",
+   "p": 2,
+   "consts": {
+    "e0": 4,
+    "h0": 3,
+    "g0": 1,
+    "e1": 1,
+    "h1": 1,
+    "g1": 2,
+    "e2": 1,
+    "h2": 1,
+    "g2": 2,
+    "E3": 4,
+    "gamma2": 13,
+    "gamma3": 27,
+    "w1P": 12,
+    "w2P": 26,
+    "l0": 3,
+    "l0p": -2,
+    "l1": 0,
+    "l1p": 1,
+    "kappa": 1,
+    "TB": 27
+   },
+   "ords": {
+    "zb": 5,
+    "z2": 3,
+    "z1": 1
+   },
+   "Gamma0": 40,
+   "certbad": 0,
+   "f0bad": 0,
+   "npairs": 16,
+   "nd3": 0,
+   "comp_bad": 0,
+   "nonint": 0,
+   "intdiff": 0,
+   "fdiff": 0,
+   "sig2_bad": 0,
+   "resid_bad": 0,
+   "J0_bad": 0,
+   "fac_bad": 0,
+   "kset": [],
+   "Jset": [],
+   "Dset": [
+    0
+   ],
+   "recovery": {
+    "split_id_bad": 0,
+    "meas_tie_bad": 0,
+    "law_tie_bad": 0
+   }
+  },
+  {
+   "tag": "Zp,p=3,FULL8",
+   "name": "FULL8",
+   "kind": "Zp",
+   "p": 3,
+   "consts": {
+    "e0": 2,
+    "h0": 1,
+    "g0": 1,
+    "e1": 2,
+    "h1": 1,
+    "g1": 1,
+    "e2": 2,
+    "h2": 1,
+    "g2": 1,
+    "E3": 8,
+    "gamma2": 5,
+    "gamma3": 21,
+    "w1P": 2,
+    "w2P": 10,
+    "l0": 1,
+    "l0p": 0,
+    "l1": 1,
+    "l1p": 0,
+    "kappa": -2,
+    "TB": -42
+   },
+   "ords": {
+    "zb": 1,
+    "z2": 2,
+    "z1": 2
+   },
+   "Gamma0": 48,
+   "certbad": 0,
+   "f0bad": 0,
+   "npairs": 64,
+   "nd3": 16,
+   "comp_bad": 0,
+   "nonint": 8,
+   "intdiff": 8,
+   "fdiff": 0,
+   "sig2_bad": 0,
+   "resid_bad": 0,
+   "J0_bad": 0,
+   "fac_bad": 0,
+   "kset": [
+    -42
+   ],
+   "Jset": [
+    10,
+    11
+   ],
+   "Dset": [
+    0,
+    8,
+    13
+   ]
+  },
+  {
+   "tag": "Zp,p=3,FULLg0",
+   "name": "FULLg0",
+   "kind": "Zp",
+   "p": 3,
+   "consts": {
+    "e0": 2,
+    "h0": 1,
+    "g0": 2,
+    "e1": 2,
+    "h1": 1,
+    "g1": 1,
+    "e2": 2,
+    "h2": 1,
+    "g2": 1,
+    "E3": 8,
+    "gamma2": 9,
+    "gamma3": 37,
+    "w1P": 4,
+    "w2P": 18,
+    "l0": 1,
+    "l0p": 0,
+    "l1": 1,
+    "l1p": 0,
+    "kappa": -4,
+    "TB": -148
+   },
+   "ords": {
+    "zb": 1,
+    "z2": 2,
+    "z1": 8
+   },
+   "Gamma0": 72,
+   "certbad": 0,
+   "f0bad": 0,
+   "npairs": 64,
+   "nd3": 16,
+   "comp_bad": 0,
+   "nonint": 8,
+   "intdiff": 8,
+   "fdiff": 8,
+   "sig2_bad": 0,
+   "resid_bad": 0,
+   "J0_bad": 0,
+   "fac_bad": 0,
+   "kset": [
+    -148
+   ],
+   "Jset": [
+    18,
+    19
+   ],
+   "Dset": [
+    0,
+    14,
+    23
+   ]
+  },
+  {
+   "tag": "Zp,p=3,FULLg1",
+   "name": "FULLg1",
+   "kind": "Zp",
+   "p": 3,
+   "consts": {
+    "e0": 2,
+    "h0": 1,
+    "g0": 1,
+    "e1": 2,
+    "h1": 1,
+    "g1": 2,
+    "e2": 2,
+    "h2": 1,
+    "g2": 1,
+    "E3": 8,
+    "gamma2": 5,
+    "gamma3": 41,
+    "w1P": 2,
+    "w2P": 20,
+    "l0": 1,
+    "l0p": 0,
+    "l1": 1,
+    "l1p": 0,
+    "kappa": -2,
+    "TB": -82
+   },
+   "ords": {
+    "zb": 1,
+    "z2": 8,
+    "z1": 2
+   },
+   "Gamma0": 72,
+   "certbad": 0,
+   "f0bad": 0,
+   "npairs": 64,
+   "nd3": 16,
+   "comp_bad": 0,
+   "nonint": 8,
+   "intdiff": 8,
+   "fdiff": 8,
+   "sig2_bad": 0,
+   "resid_bad": 0,
+   "J0_bad": 0,
+   "fac_bad": 0,
+   "kset": [
+    -82
+   ],
+   "Jset": [
+    20,
+    21
+   ],
+   "Dset": [
+    0,
+    18,
+    23
+   ]
+  },
+  {
+   "tag": "Zp,p=3,FULLg2",
+   "name": "FULLg2",
+   "kind": "Zp",
+   "p": 3,
+   "consts": {
+    "e0": 2,
+    "h0": 1,
+    "g0": 1,
+    "e1": 2,
+    "h1": 1,
+    "g1": 1,
+    "e2": 2,
+    "h2": 1,
+    "g2": 2,
+    "E3": 8,
+    "gamma2": 5,
+    "gamma3": 21,
+    "w1P": 2,
+    "w2P": 10,
+    "l0": 1,
+    "l0p": 0,
+    "l1": 1,
+    "l1p": 0,
+    "kappa": -2,
+    "TB": -42
+   },
+   "ords": {
+    "zb": 4,
+    "z2": 2,
+    "z1": 2
+   },
+   "Gamma0": 48,
+   "certbad": 0,
+   "f0bad": 0,
+   "npairs": 64,
+   "nd3": 16,
+   "comp_bad": 0,
+   "nonint": 8,
+   "intdiff": 8,
+   "fdiff": 0,
+   "sig2_bad": 0,
+   "resid_bad": 0,
+   "J0_bad": 0,
+   "fac_bad": 0,
+   "kset": [
+    -42
+   ],
+   "Jset": [
+    10,
+    11
+   ],
+   "Dset": [
+    0,
+    8,
+    13
+   ]
+  },
+  {
+   "tag": "Zp,p=3,De2a",
+   "name": "De2a",
+   "kind": "Zp",
+   "p": 3,
+   "consts": {
+    "e0": 2,
+    "h0": 1,
+    "g0": 1,
+    "e1": 2,
+    "h1": 1,
+    "g1": 1,
+    "e2": 1,
+    "h2": 1,
+    "g2": 2,
+    "E3": 4,
+    "gamma2": 5,
+    "gamma3": 11,
+    "w1P": 2,
+    "w2P": 10,
+    "l0": 1,
+    "l0p": 0,
+    "l1": 1,
+    "l1p": 0,
+    "kappa": -2,
+    "TB": -22
+   },
+   "ords": {
+    "zb": 4,
+    "z2": 2,
+    "z1": 2
+   },
+   "Gamma0": 16,
+   "certbad": 0,
+   "f0bad": 0,
+   "npairs": 16,
+   "nd3": 0,
+   "comp_bad": 0,
+   "nonint": 0,
+   "intdiff": 0,
+   "fdiff": 0,
+   "sig2_bad": 0,
+   "resid_bad": 0,
+   "J0_bad": 0,
+   "fac_bad": 0,
+   "kset": [],
+   "Jset": [],
+   "Dset": [
+    0
+   ],
+   "recovery": {
+    "split_id_bad": 0,
+    "meas_tie_bad": 0,
+    "law_tie_bad": 0
+   }
+  },
+  {
+   "tag": "Zp,p=3,De2b",
+   "name": "De2b",
+   "kind": "Zp",
+   "p": 3,
+   "consts": {
+    "e0": 2,
+    "h0": 1,
+    "g0": 1,
+    "e1": 3,
+    "h1": 1,
+    "g1": 1,
+    "e2": 1,
+    "h2": 1,
+    "g2": 2,
+    "E3": 6,
+    "gamma2": 7,
+    "gamma3": 22,
+    "w1P": 2,
+    "w2P": 21,
+    "l0": 1,
+    "l0p": 0,
+    "l1": 1,
+    "l1p": 0,
+    "kappa": -2,
+    "TB": -44
+   },
+   "ords": {
+    "zb": 4,
+    "z2": 2,
+    "z1": 2
+   },
+   "Gamma0": 30,
+   "certbad": 0,
+   "f0bad": 0,
+   "npairs": 36,
+   "nd3": 0,
+   "comp_bad": 0,
+   "nonint": 0,
+   "intdiff": 0,
+   "fdiff": 0,
+   "sig2_bad": 0,
+   "resid_bad": 0,
+   "J0_bad": 0,
+   "fac_bad": 0,
+   "kset": [],
+   "Jset": [],
+   "Dset": [
+    0
+   ],
+   "recovery": {
+    "split_id_bad": 0,
+    "meas_tie_bad": 0,
+    "law_tie_bad": 0
+   }
+  },
+  {
+   "tag": "Zp,p=3,De2c",
+   "name": "De2c",
+   "kind": "Zp",
+   "p": 3,
+   "consts": {
+    "e0": 3,
+    "h0": 2,
+    "g0": 1,
+    "e1": 2,
+    "h1": 1,
+    "g1": 1,
+    "e2": 1,
+    "h2": 1,
+    "g2": 2,
+    "E3": 6,
+    "gamma2": 13,
+    "gamma3": 27,
+    "w1P": 6,
+    "w2P": 26,
+    "l0": 2,
+    "l0p": -1,
+    "l1": 1,
+    "l1p": 0,
+    "kappa": -6,
+    "TB": -162
+   },
+   "ords": {
+    "zb": 8,
+    "z2": 1,
+    "z1": 2
+   },
+   "Gamma0": 48,
+   "certbad": 0,
+   "f0bad": 0,
+   "npairs": 36,
+   "nd3": 0,
+   "comp_bad": 0,
+   "nonint": 0,
+   "intdiff": 0,
+   "fdiff": 0,
+   "sig2_bad": 0,
+   "resid_bad": 0,
+   "J0_bad": 0,
+   "fac_bad": 0,
+   "kset": [],
+   "Jset": [],
+   "Dset": [
+    0
+   ],
+   "recovery": {
+    "split_id_bad": 0,
+    "meas_tie_bad": 0,
+    "law_tie_bad": 0
+   }
+  },
+  {
+   "tag": "Zp,p=3,De2g0",
+   "name": "De2g0",
+   "kind": "Zp",
+   "p": 3,
+   "consts": {
+    "e0": 2,
+    "h0": 1,
+    "g0": 2,
+    "e1": 2,
+    "h1": 1,
+    "g1": 1,
+    "e2": 1,
+    "h2": 1,
+    "g2": 2,
+    "E3": 4,
+    "gamma2": 9,
+    "gamma3": 19,
+    "w1P": 4,
+    "w2P": 18,
+    "l0": 1,
+    "l0p": 0,
+    "l1": 1,
+    "l1p": 0,
+    "kappa": -4,
+    "TB": -76
+   },
+   "ords": {
+    "zb": 10,
+    "z2": 2,
+    "z1": 8
+   },
+   "Gamma0": 20,
+   "certbad": 0,
+   "f0bad": 0,
+   "npairs": 16,
+   "nd3": 0,
+   "comp_bad": 0,
+   "nonint": 0,
+   "intdiff": 0,
+   "fdiff": 0,
+   "sig2_bad": 0,
+   "resid_bad": 0,
+   "J0_bad": 0,
+   "fac_bad": 0,
+   "kset": [],
+   "Jset": [],
+   "Dset": [
+    0
+   ],
+   "recovery": {
+    "split_id_bad": 0,
+    "meas_tie_bad": 0,
+    "law_tie_bad": 0
+   }
+  },
+  {
+   "tag": "Zp,p=3,De1a",
+   "name": "De1a",
+   "kind": "Zp",
+   "p": 3,
+   "consts": {
+    "e0": 2,
+    "h0": 1,
+    "g0": 1,
+    "e1": 1,
+    "h1": 1,
+    "g1": 2,
+    "e2": 2,
+    "h2": 1,
+    "g2": 1,
+    "E3": 4,
+    "gamma2": 3,
+    "gamma3": 13,
+    "w1P": 2,
+    "w2P": 6,
+    "l0": 1,
+    "l0p": 0,
+    "l1": 0,
+    "l1p": 1,
+    "kappa": 1,
+    "TB": 13
+   },
+   "ords": {
+    "zb": 1,
+    "z2": 8,
+    "z1": 2
+   },
+   "Gamma0": 24,
+   "certbad": 0,
+   "f0bad": 0,
+   "npairs": 16,
+   "nd3": 4,
+   "comp_bad": 0,
+   "nonint": 4,
+   "intdiff": 0,
+   "fdiff": 0,
+   "sig2_bad": 0,
+   "resid_bad": 0,
+   "J0_bad": 0,
+   "fac_bad": 0,
+   "kset": [
+    13
+   ],
+   "Jset": [
+    0
+   ],
+   "Dset": [
+    0,
+    13
+   ]
+  },
+  {
+   "tag": "Zp,p=3,De1b",
+   "name": "De1b",
+   "kind": "Zp",
+   "p": 3,
+   "consts": {
+    "e0": 3,
+    "h0": 1,
+    "g0": 1,
+    "e1": 1,
+    "h1": 1,
+    "g1": 2,
+    "e2": 2,
+    "h2": 1,
+    "g2": 1,
+    "E3": 6,
+    "gamma2": 4,
+    "gamma3": 17,
+    "w1P": 3,
+    "w2P": 8,
+    "l0": 1,
+    "l0p": 0,
+    "l1": 0,
+    "l1p": 1,
+    "kappa": 1,
+    "TB": 17
+   },
+   "ords": {
+    "zb": 1,
+    "z2": 8,
+    "z1": 2
+   },
+   "Gamma0": 36,
+   "certbad": 0,
+   "f0bad": 0,
+   "npairs": 36,
+   "nd3": 9,
+   "comp_bad": 0,
+   "nonint": 9,
+   "intdiff": 0,
+   "fdiff": 0,
+   "sig2_bad": 0,
+   "resid_bad": 0,
+   "J0_bad": 0,
+   "fac_bad": 0,
+   "kset": [
+    17
+   ],
+   "Jset": [
+    0
+   ],
+   "Dset": [
+    0,
+    17
+   ]
+  },
+  {
+   "tag": "Zp,p=3,De1c",
+   "name": "De1c",
+   "kind": "Zp",
+   "p": 3,
+   "consts": {
+    "e0": 2,
+    "h0": 1,
+    "g0": 1,
+    "e1": 1,
+    "h1": 1,
+    "g1": 2,
+    "e2": 3,
+    "h2": 1,
+    "g2": 1,
+    "E3": 6,
+    "gamma2": 3,
+    "gamma3": 19,
+    "w1P": 2,
+    "w2P": 6,
+    "l0": 1,
+    "l0p": 0,
+    "l1": 0,
+    "l1p": 1,
+    "kappa": 1,
+    "TB": 19
+   },
+   "ords": {
+    "zb": 1,
+    "z2": 8,
+    "z1": 2
+   },
+   "Gamma0": 54,
+   "certbad": 0,
+   "f0bad": 0,
+   "npairs": 36,
+   "nd3": 12,
+   "comp_bad": 0,
+   "nonint": 12,
+   "intdiff": 0,
+   "fdiff": 0,
+   "sig2_bad": 0,
+   "resid_bad": 0,
+   "J0_bad": 0,
+   "fac_bad": 0,
+   "kset": [
+    19
+   ],
+   "Jset": [
+    0
+   ],
+   "Dset": [
+    0,
+    19
+   ]
+  },
+  {
+   "tag": "Zp,p=3,De0a",
+   "name": "De0a",
+   "kind": "Zp",
+   "p": 3,
+   "consts": {
+    "e0": 1,
+    "h0": 1,
+    "g0": 2,
+    "e1": 2,
+    "h1": 1,
+    "g1": 1,
+    "e2": 2,
+    "h2": 1,
+    "g2": 1,
+    "E3": 4,
+    "gamma2": 5,
+    "gamma3": 21,
+    "w1P": 2,
+    "w2P": 10,
+    "l0": 0,
+    "l0p": 1,
+    "l1": 1,
+    "l1p": 0,
+    "kappa": -2,
+    "TB": -42
+   },
+   "ords": {
+    "zb": 1,
+    "z2": 2,
+    "z1": 8
+   },
+   "Gamma0": 36,
+   "certbad": 0,
+   "f0bad": 0,
+   "npairs": 16,
+   "nd3": 4,
+   "comp_bad": 0,
+   "nonint": 0,
+   "intdiff": 0,
+   "fdiff": 0,
+   "sig2_bad": 0,
+   "resid_bad": 0,
+   "J0_bad": 0,
+   "fac_bad": 0,
+   "kset": [
+    -42
+   ],
+   "Jset": [
+    10,
+    11
+   ],
+   "Dset": [
+    0,
+    8,
+    13
+   ]
+  },
+  {
+   "tag": "Zp,p=3,De0b",
+   "name": "De0b",
+   "kind": "Zp",
+   "p": 3,
+   "consts": {
+    "e0": 1,
+    "h0": 1,
+    "g0": 2,
+    "e1": 2,
+    "h1": 1,
+    "g1": 1,
+    "e2": 3,
+    "h2": 1,
+    "g2": 1,
+    "E3": 6,
+    "gamma2": 5,
+    "gamma3": 31,
+    "w1P": 2,
+    "w2P": 10,
+    "l0": 0,
+    "l0p": 1,
+    "l1": 1,
+    "l1p": 0,
+    "kappa": -2,
+    "TB": -62
+   },
+   "ords": {
+    "zb": 1,
+    "z2": 2,
+    "z1": 8
+   },
+   "Gamma0": 84,
+   "certbad": 0,
+   "f0bad": 0,
+   "npairs": 36,
+   "nd3": 12,
+   "comp_bad": 0,
+   "nonint": 0,
+   "intdiff": 0,
+   "fdiff": 0,
+   "sig2_bad": 0,
+   "resid_bad": 0,
+   "J0_bad": 0,
+   "fac_bad": 0,
+   "kset": [
+    -62
+   ],
+   "Jset": [
+    15,
+    16
+   ],
+   "Dset": [
+    0,
+    13,
+    18
+   ]
+  },
+  {
+   "tag": "Zp,p=3,De0c",
+   "name": "De0c",
+   "kind": "Zp",
+   "p": 3,
+   "consts": {
+    "e0": 1,
+    "h0": 1,
+    "g0": 2,
+    "e1": 3,
+    "h1": 1,
+    "g1": 1,
+    "e2": 2,
+    "h2": 1,
+    "g2": 1,
+    "E3": 6,
+    "gamma2": 7,
+    "gamma3": 43,
+    "w1P": 2,
+    "w2P": 21,
+    "l0": 0,
+    "l0p": 1,
+    "l1": 1,
+    "l1p": 0,
+    "kappa": -2,
+    "TB": -86
+   },
+   "ords": {
+    "zb": 1,
+    "z2": 2,
+    "z1": 8
+   },
+   "Gamma0": 78,
+   "certbad": 0,
+   "f0bad": 0,
+   "npairs": 36,
+   "nd3": 9,
+   "comp_bad": 0,
+   "nonint": 0,
+   "intdiff": 0,
+   "fdiff": 0,
+   "sig2_bad": 0,
+   "resid_bad": 0,
+   "J0_bad": 0,
+   "fac_bad": 0,
+   "kset": [
+    -86
+   ],
+   "Jset": [
+    14,
+    15
+   ],
+   "Dset": [
+    0,
+    12,
+    19
+   ]
+  },
+  {
+   "tag": "Zp,p=3,De0e1",
+   "name": "De0e1",
+   "kind": "Zp",
+   "p": 3,
+   "consts": {
+    "e0": 1,
+    "h0": 1,
+    "g0": 2,
+    "e1": 1,
+    "h1": 1,
+    "g1": 2,
+    "e2": 4,
+    "h2": 3,
+    "g2": 1,
+    "E3": 4,
+    "gamma2": 3,
+    "gamma3": 27,
+    "w1P": 2,
+    "w2P": 6,
+    "l0": 0,
+    "l0p": 1,
+    "l1": 0,
+    "l1p": 1,
+    "kappa": 1,
+    "TB": 27
+   },
+   "ords": {
+    "zb": 1,
+    "z2": 5,
+    "z1": 8
+   },
+   "Gamma0": 88,
+   "certbad": 0,
+   "f0bad": 0,
+   "npairs": 16,
+   "nd3": 6,
+   "comp_bad": 0,
+   "nonint": 0,
+   "intdiff": 0,
+   "fdiff": 0,
+   "sig2_bad": 0,
+   "resid_bad": 0,
+   "J0_bad": 0,
+   "fac_bad": 0,
+   "kset": [
+    27
+   ],
+   "Jset": [
+    0
+   ],
+   "Dset": [
+    0,
+    27
+   ]
+  },
+  {
+   "tag": "Zp,p=3,De0e2",
+   "name": "De0e2",
+   "kind": "Zp",
+   "p": 3,
+   "consts": {
+    "e0": 1,
+    "h0": 1,
+    "g0": 2,
+    "e1": 4,
+    "h1": 3,
+    "g1": 1,
+    "e2": 1,
+    "h2": 1,
+    "g2": 2,
+    "E3": 4,
+    "gamma2": 11,
+    "gamma3": 45,
+    "w1P": 2,
+    "w2P": 44,
+    "l0": 0,
+    "l0p": 1,
+    "l1": 3,
+    "l1p": -2,
+    "kappa": -8,
+    "TB": -360
+   },
+   "ords": {
+    "zb": 10,
+    "z2": 2,
+    "z1": 8
+   },
+   "Gamma0": 40,
+   "certbad": 0,
+   "f0bad": 0,
+   "npairs": 16,
+   "nd3": 0,
+   "comp_bad": 0,
+   "nonint": 0,
+   "intdiff": 0,
+   "fdiff": 0,
+   "sig2_bad": 0,
+   "resid_bad": 0,
+   "J0_bad": 0,
+   "fac_bad": 0,
+   "kset": [],
+   "Jset": [],
+   "Dset": [
+    0
+   ],
+   "recovery": {
+    "split_id_bad": 0,
+    "meas_tie_bad": 0,
+    "law_tie_bad": 0
+   }
+  },
+  {
+   "tag": "Zp,p=3,De1e2",
+   "name": "De1e2",
+   "kind": "Zp",
+   "p": 3,
+   "consts": {
+    "e0": 4,
+    "h0": 3,
+    "g0": 1,
+    "e1": 1,
+    "h1": 1,
+    "g1": 2,
+    "e2": 1,
+    "h2": 1,
+    "g2": 2,
+    "E3": 4,
+    "gamma2": 13,
+    "gamma3": 27,
+    "w1P": 12,
+    "w2P": 26,
+    "l0": 3,
+    "l0p": -2,
+    "l1": 0,
+    "l1p": 1,
+    "kappa": 1,
+    "TB": 27
+   },
+   "ords": {
+    "zb": 10,
+    "z2": 8,
+    "z1": 2
+   },
+   "Gamma0": 40,
+   "certbad": 0,
+   "f0bad": 0,
+   "npairs": 16,
+   "nd3": 0,
+   "comp_bad": 0,
+   "nonint": 0,
+   "intdiff": 0,
+   "fdiff": 0,
+   "sig2_bad": 0,
+   "resid_bad": 0,
+   "J0_bad": 0,
+   "fac_bad": 0,
+   "kset": [],
+   "Jset": [],
+   "Dset": [
+    0
+   ],
+   "recovery": {
+    "split_id_bad": 0,
+    "meas_tie_bad": 0,
+    "law_tie_bad": 0
+   }
+  },
+  {
+   "tag": "Fpt,p=2,FULL8",
+   "name": "FULL8",
+   "kind": "Fpt",
+   "p": 2,
+   "consts": {
+    "e0": 2,
+    "h0": 1,
+    "g0": 1,
+    "e1": 2,
+    "h1": 1,
+    "g1": 1,
+    "e2": 2,
+    "h2": 1,
+    "g2": 1,
+    "E3": 8,
+    "gamma2": 5,
+    "gamma3": 21,
+    "w1P": 2,
+    "w2P": 10,
+    "l0": 1,
+    "l0p": 0,
+    "l1": 1,
+    "l1p": 0,
+    "kappa": -2,
+    "TB": -42
+   },
+   "ords": {
+    "zb": 1,
+    "z2": 1,
+    "z1": 1
+   },
+   "Gamma0": 48,
+   "certbad": 0,
+   "f0bad": 0,
+   "npairs": 64,
+   "nd3": 16,
+   "comp_bad": 0,
+   "nonint": 8,
+   "intdiff": 8,
+   "fdiff": 0,
+   "sig2_bad": 0,
+   "resid_bad": 0,
+   "J0_bad": 0,
+   "fac_bad": 0,
+   "kset": [
+    -42
+   ],
+   "Jset": [
+    10,
+    11
+   ],
+   "Dset": [
+    0,
+    8,
+    13
+   ]
+  },
+  {
+   "tag": "Fpt,p=2,FULLg0",
+   "name": "FULLg0",
+   "kind": "Fpt",
+   "p": 2,
+   "consts": {
+    "e0": 2,
+    "h0": 1,
+    "g0": 2,
+    "e1": 2,
+    "h1": 1,
+    "g1": 1,
+    "e2": 2,
+    "h2": 1,
+    "g2": 1,
+    "E3": 8,
+    "gamma2": 9,
+    "gamma3": 37,
+    "w1P": 4,
+    "w2P": 18,
+    "l0": 1,
+    "l0p": 0,
+    "l1": 1,
+    "l1p": 0,
+    "kappa": -4,
+    "TB": -148
+   },
+   "ords": {
+    "zb": 1,
+    "z2": 3,
+    "z1": 3
+   },
+   "Gamma0": 72,
+   "certbad": 0,
+   "f0bad": 0,
+   "npairs": 64,
+   "nd3": 16,
+   "comp_bad": 0,
+   "nonint": 8,
+   "intdiff": 8,
+   "fdiff": 8,
+   "sig2_bad": 0,
+   "resid_bad": 0,
+   "J0_bad": 0,
+   "fac_bad": 0,
+   "kset": [
+    -148
+   ],
+   "Jset": [
+    18,
+    19
+   ],
+   "Dset": [
+    0,
+    14,
+    23
+   ]
+  },
+  {
+   "tag": "Fpt,p=2,FULLg1",
+   "name": "FULLg1",
+   "kind": "Fpt",
+   "p": 2,
+   "consts": {
+    "e0": 2,
+    "h0": 1,
+    "g0": 1,
+    "e1": 2,
+    "h1": 1,
+    "g1": 2,
+    "e2": 2,
+    "h2": 1,
+    "g2": 1,
+    "E3": 8,
+    "gamma2": 5,
+    "gamma3": 41,
+    "w1P": 2,
+    "w2P": 20,
+    "l0": 1,
+    "l0p": 0,
+    "l1": 1,
+    "l1p": 0,
+    "kappa": -2,
+    "TB": -82
+   },
+   "ords": {
+    "zb": 1,
+    "z2": 3,
+    "z1": 1
+   },
+   "Gamma0": 72,
+   "certbad": 0,
+   "f0bad": 0,
+   "npairs": 64,
+   "nd3": 16,
+   "comp_bad": 0,
+   "nonint": 8,
+   "intdiff": 8,
+   "fdiff": 0,
+   "sig2_bad": 0,
+   "resid_bad": 0,
+   "J0_bad": 0,
+   "fac_bad": 0,
+   "kset": [
+    -82
+   ],
+   "Jset": [
+    20,
+    21
+   ],
+   "Dset": [
+    0,
+    18,
+    23
+   ]
+  },
+  {
+   "tag": "Fpt,p=2,FULLg2",
+   "name": "FULLg2",
+   "kind": "Fpt",
+   "p": 2,
+   "consts": {
+    "e0": 2,
+    "h0": 1,
+    "g0": 1,
+    "e1": 2,
+    "h1": 1,
+    "g1": 1,
+    "e2": 2,
+    "h2": 1,
+    "g2": 2,
+    "E3": 8,
+    "gamma2": 5,
+    "gamma3": 21,
+    "w1P": 2,
+    "w2P": 10,
+    "l0": 1,
+    "l0p": 0,
+    "l1": 1,
+    "l1p": 0,
+    "kappa": -2,
+    "TB": -42
+   },
+   "ords": {
+    "zb": 3,
+    "z2": 1,
+    "z1": 1
+   },
+   "Gamma0": 48,
+   "certbad": 0,
+   "f0bad": 0,
+   "npairs": 64,
+   "nd3": 16,
+   "comp_bad": 0,
+   "nonint": 8,
+   "intdiff": 8,
+   "fdiff": 0,
+   "sig2_bad": 0,
+   "resid_bad": 0,
+   "J0_bad": 0,
+   "fac_bad": 0,
+   "kset": [
+    -42
+   ],
+   "Jset": [
+    10,
+    11
+   ],
+   "Dset": [
+    0,
+    8,
+    13
+   ]
+  },
+  {
+   "tag": "Fpt,p=2,De2a",
+   "name": "De2a",
+   "kind": "Fpt",
+   "p": 2,
+   "consts": {
+    "e0": 2,
+    "h0": 1,
+    "g0": 1,
+    "e1": 2,
+    "h1": 1,
+    "g1": 1,
+    "e2": 1,
+    "h2": 1,
+    "g2": 2,
+    "E3": 4,
+    "gamma2": 5,
+    "gamma3": 11,
+    "w1P": 2,
+    "w2P": 10,
+    "l0": 1,
+    "l0p": 0,
+    "l1": 1,
+    "l1p": 0,
+    "kappa": -2,
+    "TB": -22
+   },
+   "ords": {
+    "zb": 3,
+    "z2": 1,
+    "z1": 1
+   },
+   "Gamma0": 16,
+   "certbad": 0,
+   "f0bad": 0,
+   "npairs": 16,
+   "nd3": 0,
+   "comp_bad": 0,
+   "nonint": 0,
+   "intdiff": 0,
+   "fdiff": 0,
+   "sig2_bad": 0,
+   "resid_bad": 0,
+   "J0_bad": 0,
+   "fac_bad": 0,
+   "kset": [],
+   "Jset": [],
+   "Dset": [
+    0
+   ],
+   "recovery": {
+    "split_id_bad": 0,
+    "meas_tie_bad": 0,
+    "law_tie_bad": 0
+   }
+  },
+  {
+   "tag": "Fpt,p=2,De2b",
+   "name": "De2b",
+   "kind": "Fpt",
+   "p": 2,
+   "consts": {
+    "e0": 2,
+    "h0": 1,
+    "g0": 1,
+    "e1": 3,
+    "h1": 1,
+    "g1": 1,
+    "e2": 1,
+    "h2": 1,
+    "g2": 2,
+    "E3": 6,
+    "gamma2": 7,
+    "gamma3": 22,
+    "w1P": 2,
+    "w2P": 21,
+    "l0": 1,
+    "l0p": 0,
+    "l1": 1,
+    "l1p": 0,
+    "kappa": -2,
+    "TB": -44
+   },
+   "ords": {
+    "zb": 3,
+    "z2": 1,
+    "z1": 1
+   },
+   "Gamma0": 30,
+   "certbad": 0,
+   "f0bad": 0,
+   "npairs": 36,
+   "nd3": 0,
+   "comp_bad": 0,
+   "nonint": 0,
+   "intdiff": 0,
+   "fdiff": 0,
+   "sig2_bad": 0,
+   "resid_bad": 0,
+   "J0_bad": 0,
+   "fac_bad": 0,
+   "kset": [],
+   "Jset": [],
+   "Dset": [
+    0
+   ],
+   "recovery": {
+    "split_id_bad": 0,
+    "meas_tie_bad": 0,
+    "law_tie_bad": 0
+   }
+  },
+  {
+   "tag": "Fpt,p=2,De2c",
+   "name": "De2c",
+   "kind": "Fpt",
+   "p": 2,
+   "consts": {
+    "e0": 3,
+    "h0": 2,
+    "g0": 1,
+    "e1": 2,
+    "h1": 1,
+    "g1": 1,
+    "e2": 1,
+    "h2": 1,
+    "g2": 2,
+    "E3": 6,
+    "gamma2": 13,
+    "gamma3": 27,
+    "w1P": 6,
+    "w2P": 26,
+    "l0": 2,
+    "l0p": -1,
+    "l1": 1,
+    "l1p": 0,
+    "kappa": -6,
+    "TB": -162
+   },
+   "ords": {
+    "zb": 3,
+    "z2": 1,
+    "z1": 1
+   },
+   "Gamma0": 48,
+   "certbad": 0,
+   "f0bad": 0,
+   "npairs": 36,
+   "nd3": 0,
+   "comp_bad": 0,
+   "nonint": 0,
+   "intdiff": 0,
+   "fdiff": 0,
+   "sig2_bad": 0,
+   "resid_bad": 0,
+   "J0_bad": 0,
+   "fac_bad": 0,
+   "kset": [],
+   "Jset": [],
+   "Dset": [
+    0
+   ],
+   "recovery": {
+    "split_id_bad": 0,
+    "meas_tie_bad": 0,
+    "law_tie_bad": 0
+   }
+  },
+  {
+   "tag": "Fpt,p=2,De2g0",
+   "name": "De2g0",
+   "kind": "Fpt",
+   "p": 2,
+   "consts": {
+    "e0": 2,
+    "h0": 1,
+    "g0": 2,
+    "e1": 2,
+    "h1": 1,
+    "g1": 1,
+    "e2": 1,
+    "h2": 1,
+    "g2": 2,
+    "E3": 4,
+    "gamma2": 9,
+    "gamma3": 19,
+    "w1P": 4,
+    "w2P": 18,
+    "l0": 1,
+    "l0p": 0,
+    "l1": 1,
+    "l1p": 0,
+    "kappa": -4,
+    "TB": -76
+   },
+   "ords": {
+    "zb": 5,
+    "z2": 3,
+    "z1": 3
+   },
+   "Gamma0": 20,
+   "certbad": 0,
+   "f0bad": 0,
+   "npairs": 16,
+   "nd3": 0,
+   "comp_bad": 0,
+   "nonint": 0,
+   "intdiff": 0,
+   "fdiff": 0,
+   "sig2_bad": 0,
+   "resid_bad": 0,
+   "J0_bad": 0,
+   "fac_bad": 0,
+   "kset": [],
+   "Jset": [],
+   "Dset": [
+    0
+   ],
+   "recovery": {
+    "split_id_bad": 0,
+    "meas_tie_bad": 0,
+    "law_tie_bad": 0
+   }
+  },
+  {
+   "tag": "Fpt,p=2,De1a",
+   "name": "De1a",
+   "kind": "Fpt",
+   "p": 2,
+   "consts": {
+    "e0": 2,
+    "h0": 1,
+    "g0": 1,
+    "e1": 1,
+    "h1": 1,
+    "g1": 2,
+    "e2": 2,
+    "h2": 1,
+    "g2": 1,
+    "E3": 4,
+    "gamma2": 3,
+    "gamma3": 13,
+    "w1P": 2,
+    "w2P": 6,
+    "l0": 1,
+    "l0p": 0,
+    "l1": 0,
+    "l1p": 1,
+    "kappa": 1,
+    "TB": 13
+   },
+   "ords": {
+    "zb": 1,
+    "z2": 3,
+    "z1": 1
+   },
+   "Gamma0": 24,
+   "certbad": 0,
+   "f0bad": 0,
+   "npairs": 16,
+   "nd3": 4,
+   "comp_bad": 0,
+   "nonint": 4,
+   "intdiff": 0,
+   "fdiff": 0,
+   "sig2_bad": 0,
+   "resid_bad": 0,
+   "J0_bad": 0,
+   "fac_bad": 0,
+   "kset": [
+    13
+   ],
+   "Jset": [
+    0
+   ],
+   "Dset": [
+    0,
+    13
+   ]
+  },
+  {
+   "tag": "Fpt,p=2,De1b",
+   "name": "De1b",
+   "kind": "Fpt",
+   "p": 2,
+   "consts": {
+    "e0": 3,
+    "h0": 1,
+    "g0": 1,
+    "e1": 1,
+    "h1": 1,
+    "g1": 2,
+    "e2": 2,
+    "h2": 1,
+    "g2": 1,
+    "E3": 6,
+    "gamma2": 4,
+    "gamma3": 17,
+    "w1P": 3,
+    "w2P": 8,
+    "l0": 1,
+    "l0p": 0,
+    "l1": 0,
+    "l1p": 1,
+    "kappa": 1,
+    "TB": 17
+   },
+   "ords": {
+    "zb": 1,
+    "z2": 3,
+    "z1": 1
+   },
+   "Gamma0": 36,
+   "certbad": 0,
+   "f0bad": 0,
+   "npairs": 36,
+   "nd3": 9,
+   "comp_bad": 0,
+   "nonint": 9,
+   "intdiff": 0,
+   "fdiff": 0,
+   "sig2_bad": 0,
+   "resid_bad": 0,
+   "J0_bad": 0,
+   "fac_bad": 0,
+   "kset": [
+    17
+   ],
+   "Jset": [
+    0
+   ],
+   "Dset": [
+    0,
+    17
+   ]
+  },
+  {
+   "tag": "Fpt,p=2,De1c",
+   "name": "De1c",
+   "kind": "Fpt",
+   "p": 2,
+   "consts": {
+    "e0": 2,
+    "h0": 1,
+    "g0": 1,
+    "e1": 1,
+    "h1": 1,
+    "g1": 2,
+    "e2": 3,
+    "h2": 1,
+    "g2": 1,
+    "E3": 6,
+    "gamma2": 3,
+    "gamma3": 19,
+    "w1P": 2,
+    "w2P": 6,
+    "l0": 1,
+    "l0p": 0,
+    "l1": 0,
+    "l1p": 1,
+    "kappa": 1,
+    "TB": 19
+   },
+   "ords": {
+    "zb": 1,
+    "z2": 3,
+    "z1": 1
+   },
+   "Gamma0": 54,
+   "certbad": 0,
+   "f0bad": 0,
+   "npairs": 36,
+   "nd3": 12,
+   "comp_bad": 0,
+   "nonint": 12,
+   "intdiff": 0,
+   "fdiff": 0,
+   "sig2_bad": 0,
+   "resid_bad": 0,
+   "J0_bad": 0,
+   "fac_bad": 0,
+   "kset": [
+    19
+   ],
+   "Jset": [
+    0
+   ],
+   "Dset": [
+    0,
+    19
+   ]
+  },
+  {
+   "tag": "Fpt,p=2,De0a",
+   "name": "De0a",
+   "kind": "Fpt",
+   "p": 2,
+   "consts": {
+    "e0": 1,
+    "h0": 1,
+    "g0": 2,
+    "e1": 2,
+    "h1": 1,
+    "g1": 1,
+    "e2": 2,
+    "h2": 1,
+    "g2": 1,
+    "E3": 4,
+    "gamma2": 5,
+    "gamma3": 21,
+    "w1P": 2,
+    "w2P": 10,
+    "l0": 0,
+    "l0p": 1,
+    "l1": 1,
+    "l1p": 0,
+    "kappa": -2,
+    "TB": -42
+   },
+   "ords": {
+    "zb": 1,
+    "z2": 3,
+    "z1": 3
+   },
+   "Gamma0": 36,
+   "certbad": 0,
+   "f0bad": 0,
+   "npairs": 16,
+   "nd3": 4,
+   "comp_bad": 0,
+   "nonint": 0,
+   "intdiff": 0,
+   "fdiff": 0,
+   "sig2_bad": 0,
+   "resid_bad": 0,
+   "J0_bad": 0,
+   "fac_bad": 0,
+   "kset": [
+    -42
+   ],
+   "Jset": [
+    10,
+    11
+   ],
+   "Dset": [
+    0,
+    8,
+    13
+   ]
+  },
+  {
+   "tag": "Fpt,p=2,De0b",
+   "name": "De0b",
+   "kind": "Fpt",
+   "p": 2,
+   "consts": {
+    "e0": 1,
+    "h0": 1,
+    "g0": 2,
+    "e1": 2,
+    "h1": 1,
+    "g1": 1,
+    "e2": 3,
+    "h2": 1,
+    "g2": 1,
+    "E3": 6,
+    "gamma2": 5,
+    "gamma3": 31,
+    "w1P": 2,
+    "w2P": 10,
+    "l0": 0,
+    "l0p": 1,
+    "l1": 1,
+    "l1p": 0,
+    "kappa": -2,
+    "TB": -62
+   },
+   "ords": {
+    "zb": 1,
+    "z2": 3,
+    "z1": 3
+   },
+   "Gamma0": 84,
+   "certbad": 0,
+   "f0bad": 0,
+   "npairs": 36,
+   "nd3": 12,
+   "comp_bad": 0,
+   "nonint": 0,
+   "intdiff": 0,
+   "fdiff": 0,
+   "sig2_bad": 0,
+   "resid_bad": 0,
+   "J0_bad": 0,
+   "fac_bad": 0,
+   "kset": [
+    -62
+   ],
+   "Jset": [
+    15,
+    16
+   ],
+   "Dset": [
+    0,
+    13,
+    18
+   ]
+  },
+  {
+   "tag": "Fpt,p=2,De0c",
+   "name": "De0c",
+   "kind": "Fpt",
+   "p": 2,
+   "consts": {
+    "e0": 1,
+    "h0": 1,
+    "g0": 2,
+    "e1": 3,
+    "h1": 1,
+    "g1": 1,
+    "e2": 2,
+    "h2": 1,
+    "g2": 1,
+    "E3": 6,
+    "gamma2": 7,
+    "gamma3": 43,
+    "w1P": 2,
+    "w2P": 21,
+    "l0": 0,
+    "l0p": 1,
+    "l1": 1,
+    "l1p": 0,
+    "kappa": -2,
+    "TB": -86
+   },
+   "ords": {
+    "zb": 1,
+    "z2": 3,
+    "z1": 3
+   },
+   "Gamma0": 78,
+   "certbad": 0,
+   "f0bad": 0,
+   "npairs": 36,
+   "nd3": 9,
+   "comp_bad": 0,
+   "nonint": 0,
+   "intdiff": 0,
+   "fdiff": 0,
+   "sig2_bad": 0,
+   "resid_bad": 0,
+   "J0_bad": 0,
+   "fac_bad": 0,
+   "kset": [
+    -86
+   ],
+   "Jset": [
+    14,
+    15
+   ],
+   "Dset": [
+    0,
+    12,
+    19
+   ]
+  },
+  {
+   "tag": "Fpt,p=2,De0e1",
+   "name": "De0e1",
+   "kind": "Fpt",
+   "p": 2,
+   "consts": {
+    "e0": 1,
+    "h0": 1,
+    "g0": 2,
+    "e1": 1,
+    "h1": 1,
+    "g1": 2,
+    "e2": 4,
+    "h2": 3,
+    "g2": 1,
+    "E3": 4,
+    "gamma2": 3,
+    "gamma3": 27,
+    "w1P": 2,
+    "w2P": 6,
+    "l0": 0,
+    "l0p": 1,
+    "l1": 0,
+    "l1p": 1,
+    "kappa": 1,
+    "TB": 27
+   },
+   "ords": {
+    "zb": 1,
+    "z2": 5,
+    "z1": 3
+   },
+   "Gamma0": 88,
+   "certbad": 0,
+   "f0bad": 0,
+   "npairs": 16,
+   "nd3": 6,
+   "comp_bad": 0,
+   "nonint": 0,
+   "intdiff": 0,
+   "fdiff": 0,
+   "sig2_bad": 0,
+   "resid_bad": 0,
+   "J0_bad": 0,
+   "fac_bad": 0,
+   "kset": [
+    27
+   ],
+   "Jset": [
+    0
+   ],
+   "Dset": [
+    0,
+    27
+   ]
+  },
+  {
+   "tag": "Fpt,p=2,De0e2",
+   "name": "De0e2",
+   "kind": "Fpt",
+   "p": 2,
+   "consts": {
+    "e0": 1,
+    "h0": 1,
+    "g0": 2,
+    "e1": 4,
+    "h1": 3,
+    "g1": 1,
+    "e2": 1,
+    "h2": 1,
+    "g2": 2,
+    "E3": 4,
+    "gamma2": 11,
+    "gamma3": 45,
+    "w1P": 2,
+    "w2P": 44,
+    "l0": 0,
+    "l0p": 1,
+    "l1": 3,
+    "l1p": -2,
+    "kappa": -8,
+    "TB": -360
+   },
+   "ords": {
+    "zb": 5,
+    "z2": 3,
+    "z1": 3
+   },
+   "Gamma0": 40,
+   "certbad": 0,
+   "f0bad": 0,
+   "npairs": 16,
+   "nd3": 0,
+   "comp_bad": 0,
+   "nonint": 0,
+   "intdiff": 0,
+   "fdiff": 0,
+   "sig2_bad": 0,
+   "resid_bad": 0,
+   "J0_bad": 0,
+   "fac_bad": 0,
+   "kset": [],
+   "Jset": [],
+   "Dset": [
+    0
+   ],
+   "recovery": {
+    "split_id_bad": 0,
+    "meas_tie_bad": 0,
+    "law_tie_bad": 0
+   }
+  },
+  {
+   "tag": "Fpt,p=2,De1e2",
+   "name": "De1e2",
+   "kind": "Fpt",
+   "p": 2,
+   "consts": {
+    "e0": 4,
+    "h0": 3,
+    "g0": 1,
+    "e1": 1,
+    "h1": 1,
+    "g1": 2,
+    "e2": 1,
+    "h2": 1,
+    "g2": 2,
+    "E3": 4,
+    "gamma2": 13,
+    "gamma3": 27,
+    "w1P": 12,
+    "w2P": 26,
+    "l0": 3,
+    "l0p": -2,
+    "l1": 0,
+    "l1p": 1,
+    "kappa": 1,
+    "TB": 27
+   },
+   "ords": {
+    "zb": 5,
+    "z2": 3,
+    "z1": 1
+   },
+   "Gamma0": 40,
+   "certbad": 0,
+   "f0bad": 0,
+   "npairs": 16,
+   "nd3": 0,
+   "comp_bad": 0,
+   "nonint": 0,
+   "intdiff": 0,
+   "fdiff": 0,
+   "sig2_bad": 0,
+   "resid_bad": 0,
+   "J0_bad": 0,
+   "fac_bad": 0,
+   "kset": [],
+   "Jset": [],
+   "Dset": [
+    0
+   ],
+   "recovery": {
+    "split_id_bad": 0,
+    "meas_tie_bad": 0,
+    "law_tie_bad": 0
+   }
+  },
+  {
+   "tag": "Fpt,p=3,FULL8",
+   "name": "FULL8",
+   "kind": "Fpt",
+   "p": 3,
+   "consts": {
+    "e0": 2,
+    "h0": 1,
+    "g0": 1,
+    "e1": 2,
+    "h1": 1,
+    "g1": 1,
+    "e2": 2,
+    "h2": 1,
+    "g2": 1,
+    "E3": 8,
+    "gamma2": 5,
+    "gamma3": 21,
+    "w1P": 2,
+    "w2P": 10,
+    "l0": 1,
+    "l0p": 0,
+    "l1": 1,
+    "l1p": 0,
+    "kappa": -2,
+    "TB": -42
+   },
+   "ords": {
+    "zb": 1,
+    "z2": 2,
+    "z1": 2
+   },
+   "Gamma0": 48,
+   "certbad": 0,
+   "f0bad": 0,
+   "npairs": 64,
+   "nd3": 16,
+   "comp_bad": 0,
+   "nonint": 8,
+   "intdiff": 8,
+   "fdiff": 0,
+   "sig2_bad": 0,
+   "resid_bad": 0,
+   "J0_bad": 0,
+   "fac_bad": 0,
+   "kset": [
+    -42
+   ],
+   "Jset": [
+    10,
+    11
+   ],
+   "Dset": [
+    0,
+    8,
+    13
+   ]
+  },
+  {
+   "tag": "Fpt,p=3,FULLg0",
+   "name": "FULLg0",
+   "kind": "Fpt",
+   "p": 3,
+   "consts": {
+    "e0": 2,
+    "h0": 1,
+    "g0": 2,
+    "e1": 2,
+    "h1": 1,
+    "g1": 1,
+    "e2": 2,
+    "h2": 1,
+    "g2": 1,
+    "E3": 8,
+    "gamma2": 9,
+    "gamma3": 37,
+    "w1P": 4,
+    "w2P": 18,
+    "l0": 1,
+    "l0p": 0,
+    "l1": 1,
+    "l1p": 0,
+    "kappa": -4,
+    "TB": -148
+   },
+   "ords": {
+    "zb": 1,
+    "z2": 2,
+    "z1": 8
+   },
+   "Gamma0": 72,
+   "certbad": 0,
+   "f0bad": 0,
+   "npairs": 64,
+   "nd3": 16,
+   "comp_bad": 0,
+   "nonint": 8,
+   "intdiff": 8,
+   "fdiff": 8,
+   "sig2_bad": 0,
+   "resid_bad": 0,
+   "J0_bad": 0,
+   "fac_bad": 0,
+   "kset": [
+    -148
+   ],
+   "Jset": [
+    18,
+    19
+   ],
+   "Dset": [
+    0,
+    14,
+    23
+   ]
+  },
+  {
+   "tag": "Fpt,p=3,FULLg1",
+   "name": "FULLg1",
+   "kind": "Fpt",
+   "p": 3,
+   "consts": {
+    "e0": 2,
+    "h0": 1,
+    "g0": 1,
+    "e1": 2,
+    "h1": 1,
+    "g1": 2,
+    "e2": 2,
+    "h2": 1,
+    "g2": 1,
+    "E3": 8,
+    "gamma2": 5,
+    "gamma3": 41,
+    "w1P": 2,
+    "w2P": 20,
+    "l0": 1,
+    "l0p": 0,
+    "l1": 1,
+    "l1p": 0,
+    "kappa": -2,
+    "TB": -82
+   },
+   "ords": {
+    "zb": 1,
+    "z2": 8,
+    "z1": 2
+   },
+   "Gamma0": 72,
+   "certbad": 0,
+   "f0bad": 0,
+   "npairs": 64,
+   "nd3": 16,
+   "comp_bad": 0,
+   "nonint": 8,
+   "intdiff": 8,
+   "fdiff": 8,
+   "sig2_bad": 0,
+   "resid_bad": 0,
+   "J0_bad": 0,
+   "fac_bad": 0,
+   "kset": [
+    -82
+   ],
+   "Jset": [
+    20,
+    21
+   ],
+   "Dset": [
+    0,
+    18,
+    23
+   ]
+  },
+  {
+   "tag": "Fpt,p=3,FULLg2",
+   "name": "FULLg2",
+   "kind": "Fpt",
+   "p": 3,
+   "consts": {
+    "e0": 2,
+    "h0": 1,
+    "g0": 1,
+    "e1": 2,
+    "h1": 1,
+    "g1": 1,
+    "e2": 2,
+    "h2": 1,
+    "g2": 2,
+    "E3": 8,
+    "gamma2": 5,
+    "gamma3": 21,
+    "w1P": 2,
+    "w2P": 10,
+    "l0": 1,
+    "l0p": 0,
+    "l1": 1,
+    "l1p": 0,
+    "kappa": -2,
+    "TB": -42
+   },
+   "ords": {
+    "zb": 4,
+    "z2": 2,
+    "z1": 2
+   },
+   "Gamma0": 48,
+   "certbad": 0,
+   "f0bad": 0,
+   "npairs": 64,
+   "nd3": 16,
+   "comp_bad": 0,
+   "nonint": 8,
+   "intdiff": 8,
+   "fdiff": 0,
+   "sig2_bad": 0,
+   "resid_bad": 0,
+   "J0_bad": 0,
+   "fac_bad": 0,
+   "kset": [
+    -42
+   ],
+   "Jset": [
+    10,
+    11
+   ],
+   "Dset": [
+    0,
+    8,
+    13
+   ]
+  },
+  {
+   "tag": "Fpt,p=3,De2a",
+   "name": "De2a",
+   "kind": "Fpt",
+   "p": 3,
+   "consts": {
+    "e0": 2,
+    "h0": 1,
+    "g0": 1,
+    "e1": 2,
+    "h1": 1,
+    "g1": 1,
+    "e2": 1,
+    "h2": 1,
+    "g2": 2,
+    "E3": 4,
+    "gamma2": 5,
+    "gamma3": 11,
+    "w1P": 2,
+    "w2P": 10,
+    "l0": 1,
+    "l0p": 0,
+    "l1": 1,
+    "l1p": 0,
+    "kappa": -2,
+    "TB": -22
+   },
+   "ords": {
+    "zb": 4,
+    "z2": 2,
+    "z1": 2
+   },
+   "Gamma0": 16,
+   "certbad": 0,
+   "f0bad": 0,
+   "npairs": 16,
+   "nd3": 0,
+   "comp_bad": 0,
+   "nonint": 0,
+   "intdiff": 0,
+   "fdiff": 0,
+   "sig2_bad": 0,
+   "resid_bad": 0,
+   "J0_bad": 0,
+   "fac_bad": 0,
+   "kset": [],
+   "Jset": [],
+   "Dset": [
+    0
+   ],
+   "recovery": {
+    "split_id_bad": 0,
+    "meas_tie_bad": 0,
+    "law_tie_bad": 0
+   }
+  },
+  {
+   "tag": "Fpt,p=3,De2b",
+   "name": "De2b",
+   "kind": "Fpt",
+   "p": 3,
+   "consts": {
+    "e0": 2,
+    "h0": 1,
+    "g0": 1,
+    "e1": 3,
+    "h1": 1,
+    "g1": 1,
+    "e2": 1,
+    "h2": 1,
+    "g2": 2,
+    "E3": 6,
+    "gamma2": 7,
+    "gamma3": 22,
+    "w1P": 2,
+    "w2P": 21,
+    "l0": 1,
+    "l0p": 0,
+    "l1": 1,
+    "l1p": 0,
+    "kappa": -2,
+    "TB": -44
+   },
+   "ords": {
+    "zb": 4,
+    "z2": 2,
+    "z1": 2
+   },
+   "Gamma0": 30,
+   "certbad": 0,
+   "f0bad": 0,
+   "npairs": 36,
+   "nd3": 0,
+   "comp_bad": 0,
+   "nonint": 0,
+   "intdiff": 0,
+   "fdiff": 0,
+   "sig2_bad": 0,
+   "resid_bad": 0,
+   "J0_bad": 0,
+   "fac_bad": 0,
+   "kset": [],
+   "Jset": [],
+   "Dset": [
+    0
+   ],
+   "recovery": {
+    "split_id_bad": 0,
+    "meas_tie_bad": 0,
+    "law_tie_bad": 0
+   }
+  },
+  {
+   "tag": "Fpt,p=3,De2c",
+   "name": "De2c",
+   "kind": "Fpt",
+   "p": 3,
+   "consts": {
+    "e0": 3,
+    "h0": 2,
+    "g0": 1,
+    "e1": 2,
+    "h1": 1,
+    "g1": 1,
+    "e2": 1,
+    "h2": 1,
+    "g2": 2,
+    "E3": 6,
+    "gamma2": 13,
+    "gamma3": 27,
+    "w1P": 6,
+    "w2P": 26,
+    "l0": 2,
+    "l0p": -1,
+    "l1": 1,
+    "l1p": 0,
+    "kappa": -6,
+    "TB": -162
+   },
+   "ords": {
+    "zb": 8,
+    "z2": 1,
+    "z1": 2
+   },
+   "Gamma0": 48,
+   "certbad": 0,
+   "f0bad": 0,
+   "npairs": 36,
+   "nd3": 0,
+   "comp_bad": 0,
+   "nonint": 0,
+   "intdiff": 0,
+   "fdiff": 0,
+   "sig2_bad": 0,
+   "resid_bad": 0,
+   "J0_bad": 0,
+   "fac_bad": 0,
+   "kset": [],
+   "Jset": [],
+   "Dset": [
+    0
+   ],
+   "recovery": {
+    "split_id_bad": 0,
+    "meas_tie_bad": 0,
+    "law_tie_bad": 0
+   }
+  },
+  {
+   "tag": "Fpt,p=3,De2g0",
+   "name": "De2g0",
+   "kind": "Fpt",
+   "p": 3,
+   "consts": {
+    "e0": 2,
+    "h0": 1,
+    "g0": 2,
+    "e1": 2,
+    "h1": 1,
+    "g1": 1,
+    "e2": 1,
+    "h2": 1,
+    "g2": 2,
+    "E3": 4,
+    "gamma2": 9,
+    "gamma3": 19,
+    "w1P": 4,
+    "w2P": 18,
+    "l0": 1,
+    "l0p": 0,
+    "l1": 1,
+    "l1p": 0,
+    "kappa": -4,
+    "TB": -76
+   },
+   "ords": {
+    "zb": 10,
+    "z2": 2,
+    "z1": 8
+   },
+   "Gamma0": 20,
+   "certbad": 0,
+   "f0bad": 0,
+   "npairs": 16,
+   "nd3": 0,
+   "comp_bad": 0,
+   "nonint": 0,
+   "intdiff": 0,
+   "fdiff": 0,
+   "sig2_bad": 0,
+   "resid_bad": 0,
+   "J0_bad": 0,
+   "fac_bad": 0,
+   "kset": [],
+   "Jset": [],
+   "Dset": [
+    0
+   ],
+   "recovery": {
+    "split_id_bad": 0,
+    "meas_tie_bad": 0,
+    "law_tie_bad": 0
+   }
+  },
+  {
+   "tag": "Fpt,p=3,De1a",
+   "name": "De1a",
+   "kind": "Fpt",
+   "p": 3,
+   "consts": {
+    "e0": 2,
+    "h0": 1,
+    "g0": 1,
+    "e1": 1,
+    "h1": 1,
+    "g1": 2,
+    "e2": 2,
+    "h2": 1,
+    "g2": 1,
+    "E3": 4,
+    "gamma2": 3,
+    "gamma3": 13,
+    "w1P": 2,
+    "w2P": 6,
+    "l0": 1,
+    "l0p": 0,
+    "l1": 0,
+    "l1p": 1,
+    "kappa": 1,
+    "TB": 13
+   },
+   "ords": {
+    "zb": 1,
+    "z2": 8,
+    "z1": 2
+   },
+   "Gamma0": 24,
+   "certbad": 0,
+   "f0bad": 0,
+   "npairs": 16,
+   "nd3": 4,
+   "comp_bad": 0,
+   "nonint": 4,
+   "intdiff": 0,
+   "fdiff": 0,
+   "sig2_bad": 0,
+   "resid_bad": 0,
+   "J0_bad": 0,
+   "fac_bad": 0,
+   "kset": [
+    13
+   ],
+   "Jset": [
+    0
+   ],
+   "Dset": [
+    0,
+    13
+   ]
+  },
+  {
+   "tag": "Fpt,p=3,De1b",
+   "name": "De1b",
+   "kind": "Fpt",
+   "p": 3,
+   "consts": {
+    "e0": 3,
+    "h0": 1,
+    "g0": 1,
+    "e1": 1,
+    "h1": 1,
+    "g1": 2,
+    "e2": 2,
+    "h2": 1,
+    "g2": 1,
+    "E3": 6,
+    "gamma2": 4,
+    "gamma3": 17,
+    "w1P": 3,
+    "w2P": 8,
+    "l0": 1,
+    "l0p": 0,
+    "l1": 0,
+    "l1p": 1,
+    "kappa": 1,
+    "TB": 17
+   },
+   "ords": {
+    "zb": 1,
+    "z2": 8,
+    "z1": 2
+   },
+   "Gamma0": 36,
+   "certbad": 0,
+   "f0bad": 0,
+   "npairs": 36,
+   "nd3": 9,
+   "comp_bad": 0,
+   "nonint": 9,
+   "intdiff": 0,
+   "fdiff": 0,
+   "sig2_bad": 0,
+   "resid_bad": 0,
+   "J0_bad": 0,
+   "fac_bad": 0,
+   "kset": [
+    17
+   ],
+   "Jset": [
+    0
+   ],
+   "Dset": [
+    0,
+    17
+   ]
+  },
+  {
+   "tag": "Fpt,p=3,De1c",
+   "name": "De1c",
+   "kind": "Fpt",
+   "p": 3,
+   "consts": {
+    "e0": 2,
+    "h0": 1,
+    "g0": 1,
+    "e1": 1,
+    "h1": 1,
+    "g1": 2,
+    "e2": 3,
+    "h2": 1,
+    "g2": 1,
+    "E3": 6,
+    "gamma2": 3,
+    "gamma3": 19,
+    "w1P": 2,
+    "w2P": 6,
+    "l0": 1,
+    "l0p": 0,
+    "l1": 0,
+    "l1p": 1,
+    "kappa": 1,
+    "TB": 19
+   },
+   "ords": {
+    "zb": 1,
+    "z2": 8,
+    "z1": 2
+   },
+   "Gamma0": 54,
+   "certbad": 0,
+   "f0bad": 0,
+   "npairs": 36,
+   "nd3": 12,
+   "comp_bad": 0,
+   "nonint": 12,
+   "intdiff": 0,
+   "fdiff": 0,
+   "sig2_bad": 0,
+   "resid_bad": 0,
+   "J0_bad": 0,
+   "fac_bad": 0,
+   "kset": [
+    19
+   ],
+   "Jset": [
+    0
+   ],
+   "Dset": [
+    0,
+    19
+   ]
+  },
+  {
+   "tag": "Fpt,p=3,De0a",
+   "name": "De0a",
+   "kind": "Fpt",
+   "p": 3,
+   "consts": {
+    "e0": 1,
+    "h0": 1,
+    "g0": 2,
+    "e1": 2,
+    "h1": 1,
+    "g1": 1,
+    "e2": 2,
+    "h2": 1,
+    "g2": 1,
+    "E3": 4,
+    "gamma2": 5,
+    "gamma3": 21,
+    "w1P": 2,
+    "w2P": 10,
+    "l0": 0,
+    "l0p": 1,
+    "l1": 1,
+    "l1p": 0,
+    "kappa": -2,
+    "TB": -42
+   },
+   "ords": {
+    "zb": 1,
+    "z2": 2,
+    "z1": 8
+   },
+   "Gamma0": 36,
+   "certbad": 0,
+   "f0bad": 0,
+   "npairs": 16,
+   "nd3": 4,
+   "comp_bad": 0,
+   "nonint": 0,
+   "intdiff": 0,
+   "fdiff": 0,
+   "sig2_bad": 0,
+   "resid_bad": 0,
+   "J0_bad": 0,
+   "fac_bad": 0,
+   "kset": [
+    -42
+   ],
+   "Jset": [
+    10,
+    11
+   ],
+   "Dset": [
+    0,
+    8,
+    13
+   ]
+  },
+  {
+   "tag": "Fpt,p=3,De0b",
+   "name": "De0b",
+   "kind": "Fpt",
+   "p": 3,
+   "consts": {
+    "e0": 1,
+    "h0": 1,
+    "g0": 2,
+    "e1": 2,
+    "h1": 1,
+    "g1": 1,
+    "e2": 3,
+    "h2": 1,
+    "g2": 1,
+    "E3": 6,
+    "gamma2": 5,
+    "gamma3": 31,
+    "w1P": 2,
+    "w2P": 10,
+    "l0": 0,
+    "l0p": 1,
+    "l1": 1,
+    "l1p": 0,
+    "kappa": -2,
+    "TB": -62
+   },
+   "ords": {
+    "zb": 1,
+    "z2": 2,
+    "z1": 8
+   },
+   "Gamma0": 84,
+   "certbad": 0,
+   "f0bad": 0,
+   "npairs": 36,
+   "nd3": 12,
+   "comp_bad": 0,
+   "nonint": 0,
+   "intdiff": 0,
+   "fdiff": 0,
+   "sig2_bad": 0,
+   "resid_bad": 0,
+   "J0_bad": 0,
+   "fac_bad": 0,
+   "kset": [
+    -62
+   ],
+   "Jset": [
+    15,
+    16
+   ],
+   "Dset": [
+    0,
+    13,
+    18
+   ]
+  },
+  {
+   "tag": "Fpt,p=3,De0c",
+   "name": "De0c",
+   "kind": "Fpt",
+   "p": 3,
+   "consts": {
+    "e0": 1,
+    "h0": 1,
+    "g0": 2,
+    "e1": 3,
+    "h1": 1,
+    "g1": 1,
+    "e2": 2,
+    "h2": 1,
+    "g2": 1,
+    "E3": 6,
+    "gamma2": 7,
+    "gamma3": 43,
+    "w1P": 2,
+    "w2P": 21,
+    "l0": 0,
+    "l0p": 1,
+    "l1": 1,
+    "l1p": 0,
+    "kappa": -2,
+    "TB": -86
+   },
+   "ords": {
+    "zb": 1,
+    "z2": 2,
+    "z1": 8
+   },
+   "Gamma0": 78,
+   "certbad": 0,
+   "f0bad": 0,
+   "npairs": 36,
+   "nd3": 9,
+   "comp_bad": 0,
+   "nonint": 0,
+   "intdiff": 0,
+   "fdiff": 0,
+   "sig2_bad": 0,
+   "resid_bad": 0,
+   "J0_bad": 0,
+   "fac_bad": 0,
+   "kset": [
+    -86
+   ],
+   "Jset": [
+    14,
+    15
+   ],
+   "Dset": [
+    0,
+    12,
+    19
+   ]
+  },
+  {
+   "tag": "Fpt,p=3,De0e1",
+   "name": "De0e1",
+   "kind": "Fpt",
+   "p": 3,
+   "consts": {
+    "e0": 1,
+    "h0": 1,
+    "g0": 2,
+    "e1": 1,
+    "h1": 1,
+    "g1": 2,
+    "e2": 4,
+    "h2": 3,
+    "g2": 1,
+    "E3": 4,
+    "gamma2": 3,
+    "gamma3": 27,
+    "w1P": 2,
+    "w2P": 6,
+    "l0": 0,
+    "l0p": 1,
+    "l1": 0,
+    "l1p": 1,
+    "kappa": 1,
+    "TB": 27
+   },
+   "ords": {
+    "zb": 1,
+    "z2": 5,
+    "z1": 8
+   },
+   "Gamma0": 88,
+   "certbad": 0,
+   "f0bad": 0,
+   "npairs": 16,
+   "nd3": 6,
+   "comp_bad": 0,
+   "nonint": 0,
+   "intdiff": 0,
+   "fdiff": 0,
+   "sig2_bad": 0,
+   "resid_bad": 0,
+   "J0_bad": 0,
+   "fac_bad": 0,
+   "kset": [
+    27
+   ],
+   "Jset": [
+    0
+   ],
+   "Dset": [
+    0,
+    27
+   ]
+  },
+  {
+   "tag": "Fpt,p=3,De0e2",
+   "name": "De0e2",
+   "kind": "Fpt",
+   "p": 3,
+   "consts": {
+    "e0": 1,
+    "h0": 1,
+    "g0": 2,
+    "e1": 4,
+    "h1": 3,
+    "g1": 1,
+    "e2": 1,
+    "h2": 1,
+    "g2": 2,
+    "E3": 4,
+    "gamma2": 11,
+    "gamma3": 45,
+    "w1P": 2,
+    "w2P": 44,
+    "l0": 0,
+    "l0p": 1,
+    "l1": 3,
+    "l1p": -2,
+    "kappa": -8,
+    "TB": -360
+   },
+   "ords": {
+    "zb": 10,
+    "z2": 2,
+    "z1": 8
+   },
+   "Gamma0": 40,
+   "certbad": 0,
+   "f0bad": 0,
+   "npairs": 16,
+   "nd3": 0,
+   "comp_bad": 0,
+   "nonint": 0,
+   "intdiff": 0,
+   "fdiff": 0,
+   "sig2_bad": 0,
+   "resid_bad": 0,
+   "J0_bad": 0,
+   "fac_bad": 0,
+   "kset": [],
+   "Jset": [],
+   "Dset": [
+    0
+   ],
+   "recovery": {
+    "split_id_bad": 0,
+    "meas_tie_bad": 0,
+    "law_tie_bad": 0
+   }
+  },
+  {
+   "tag": "Fpt,p=3,De1e2",
+   "name": "De1e2",
+   "kind": "Fpt",
+   "p": 3,
+   "consts": {
+    "e0": 4,
+    "h0": 3,
+    "g0": 1,
+    "e1": 1,
+    "h1": 1,
+    "g1": 2,
+    "e2": 1,
+    "h2": 1,
+    "g2": 2,
+    "E3": 4,
+    "gamma2": 13,
+    "gamma3": 27,
+    "w1P": 12,
+    "w2P": 26,
+    "l0": 3,
+    "l0p": -2,
+    "l1": 0,
+    "l1p": 1,
+    "kappa": 1,
+    "TB": 27
+   },
+   "ords": {
+    "zb": 10,
+    "z2": 8,
+    "z1": 2
+   },
+   "Gamma0": 40,
+   "certbad": 0,
+   "f0bad": 0,
+   "npairs": 16,
+   "nd3": 0,
+   "comp_bad": 0,
+   "nonint": 0,
+   "intdiff": 0,
+   "fdiff": 0,
+   "sig2_bad": 0,
+   "resid_bad": 0,
+   "J0_bad": 0,
+   "fac_bad": 0,
+   "kset": [],
+   "Jset": [],
+   "Dset": [
+    0
+   ],
+   "recovery": {
+    "split_id_bad": 0,
+    "meas_tie_bad": 0,
+    "law_tie_bad": 0
+   }
+  }
+ ],
+ "ramps": {
+  "e2": [
+   {
+    "spec": [
+     [
+      2,
+      1,
+      1
+     ],
+     [
+      2,
+      1,
+      1
+     ],
+     [
+      1,
+      1,
+      1
+     ]
+    ],
+    "gamma2": 5,
+    "gamma3": 11,
+    "w1P": 2,
+    "w2P": 10,
+    "l0": 1,
+    "l1": 1,
+    "l1p": 0,
+    "kappa": -2,
+    "TB": -22,
+    "E3": 4,
+    "kmeas": [],
+    "Jset": [],
+    "nd3": 0,
+    "npairs": 16,
+    "NI": 0,
+    "ID": 0,
+    "FD": 0,
+    "comp_bad": 0
+   },
+   {
+    "spec": [
+     [
+      2,
+      1,
+      1
+     ],
+     [
+      2,
+      1,
+      1
+     ],
+     [
+      2,
+      1,
+      1
+     ]
+    ],
+    "gamma2": 5,
+    "gamma3": 21,
+    "w1P": 2,
+    "w2P": 10,
+    "l0": 1,
+    "l1": 1,
+    "l1p": 0,
+    "kappa": -2,
+    "TB": -42,
+    "E3": 8,
+    "kmeas": -42,
+    "Jset": [
+     10,
+     11
+    ],
+    "nd3": 16,
+    "npairs": 64,
+    "NI": 8,
+    "ID": 8,
+    "FD": 0,
+    "comp_bad": 0
+   },
+   {
+    "spec": [
+     [
+      2,
+      1,
+      1
+     ],
+     [
+      2,
+      1,
+      1
+     ],
+     [
+      3,
+      1,
+      1
+     ]
+    ],
+    "gamma2": 5,
+    "gamma3": 31,
+    "w1P": 2,
+    "w2P": 10,
+    "l0": 1,
+    "l1": 1,
+    "l1p": 0,
+    "kappa": -2,
+    "TB": -62,
+    "E3": 12,
+    "kmeas": -62,
+    "Jset": [
+     15,
+     16
+    ],
+    "nd3": 48,
+    "npairs": 144,
+    "NI": 24,
+    "ID": 24,
+    "FD": 24,
+    "comp_bad": 0
+   },
+   {
+    "spec": [
+     [
+      2,
+      1,
+      1
+     ],
+     [
+      2,
+      1,
+      1
+     ],
+     [
+      4,
+      1,
+      1
+     ]
+    ],
+    "gamma2": 5,
+    "gamma3": 41,
+    "w1P": 2,
+    "w2P": 10,
+    "l0": 1,
+    "l1": 1,
+    "l1p": 0,
+    "kappa": -2,
+    "TB": -82,
+    "E3": 16,
+    "kmeas": -82,
+    "Jset": [
+     20,
+     21
+    ],
+    "nd3": 96,
+    "npairs": 256,
+    "NI": 48,
+    "ID": 48,
+    "FD": 48,
+    "comp_bad": 0
+   }
+  ],
+  "h2": [
+   {
+    "spec": [
+     [
+      2,
+      1,
+      1
+     ],
+     [
+      2,
+      1,
+      1
+     ],
+     [
+      2,
+      1,
+      1
+     ]
+    ],
+    "gamma2": 5,
+    "gamma3": 21,
+    "w1P": 2,
+    "w2P": 10,
+    "l0": 1,
+    "l1": 1,
+    "l1p": 0,
+    "kappa": -2,
+    "TB": -42,
+    "E3": 8,
+    "kmeas": -42,
+    "Jset": [
+     10,
+     11
+    ],
+    "nd3": 16,
+    "npairs": 64,
+    "NI": 8,
+    "ID": 8,
+    "FD": 0,
+    "comp_bad": 0
+   },
+   {
+    "spec": [
+     [
+      2,
+      1,
+      1
+     ],
+     [
+      2,
+      1,
+      1
+     ],
+     [
+      2,
+      3,
+      1
+     ]
+    ],
+    "gamma2": 5,
+    "gamma3": 23,
+    "w1P": 2,
+    "w2P": 10,
+    "l0": 1,
+    "l1": 1,
+    "l1p": 0,
+    "kappa": -2,
+    "TB": -46,
+    "E3": 8,
+    "kmeas": -46,
+    "Jset": [
+     11,
+     12
+    ],
+    "nd3": 16,
+    "npairs": 64,
+    "NI": 8,
+    "ID": 8,
+    "FD": 8,
+    "comp_bad": 0
+   },
+   {
+    "spec": [
+     [
+      2,
+      1,
+      1
+     ],
+     [
+      2,
+      1,
+      1
+     ],
+     [
+      2,
+      5,
+      1
+     ]
+    ],
+    "gamma2": 5,
+    "gamma3": 25,
+    "w1P": 2,
+    "w2P": 10,
+    "l0": 1,
+    "l1": 1,
+    "l1p": 0,
+    "kappa": -2,
+    "TB": -50,
+    "E3": 8,
+    "kmeas": -50,
+    "Jset": [
+     12,
+     13
+    ],
+    "nd3": 16,
+    "npairs": 64,
+    "NI": 8,
+    "ID": 8,
+    "FD": 8,
+    "comp_bad": 0
+   },
+   {
+    "spec": [
+     [
+      2,
+      1,
+      1
+     ],
+     [
+      2,
+      1,
+      1
+     ],
+     [
+      2,
+      7,
+      1
+     ]
+    ],
+    "gamma2": 5,
+    "gamma3": 27,
+    "w1P": 2,
+    "w2P": 10,
+    "l0": 1,
+    "l1": 1,
+    "l1p": 0,
+    "kappa": -2,
+    "TB": -54,
+    "E3": 8,
+    "kmeas": -54,
+    "Jset": [
+     13,
+     14
+    ],
+    "nd3": 16,
+    "npairs": 64,
+    "NI": 8,
+    "ID": 8,
+    "FD": 0,
+    "comp_bad": 0
+   },
+   {
+    "spec": [
+     [
+      2,
+      1,
+      1
+     ],
+     [
+      2,
+      1,
+      1
+     ],
+     [
+      2,
+      9,
+      1
+     ]
+    ],
+    "gamma2": 5,
+    "gamma3": 29,
+    "w1P": 2,
+    "w2P": 10,
+    "l0": 1,
+    "l1": 1,
+    "l1p": 0,
+    "kappa": -2,
+    "TB": -58,
+    "E3": 8,
+    "kmeas": -58,
+    "Jset": [
+     14,
+     15
+    ],
+    "nd3": 16,
+    "npairs": 64,
+    "NI": 8,
+    "ID": 8,
+    "FD": 0,
+    "comp_bad": 0
+   }
+  ],
+  "l1": [
+   {
+    "spec": [
+     [
+      2,
+      1,
+      1
+     ],
+     [
+      5,
+      1,
+      1
+     ],
+     [
+      2,
+      1,
+      1
+     ]
+    ],
+    "gamma2": 11,
+    "gamma3": 111,
+    "w1P": 2,
+    "w2P": 55,
+    "l0": 1,
+    "l1": 1,
+    "l1p": 0,
+    "kappa": -2,
+    "TB": -222,
+    "E3": 20,
+    "kmeas": -222,
+    "Jset": [
+     22,
+     23
+    ],
+    "nd3": 100,
+    "npairs": 400,
+    "NI": 20,
+    "ID": 80,
+    "FD": 0,
+    "comp_bad": 0
+   },
+   {
+    "spec": [
+     [
+      2,
+      1,
+      1
+     ],
+     [
+      5,
+      2,
+      1
+     ],
+     [
+      2,
+      1,
+      1
+     ]
+    ],
+    "gamma2": 12,
+    "gamma3": 121,
+    "w1P": 2,
+    "w2P": 60,
+    "l0": 1,
+    "l1": 3,
+    "l1p": -1,
+    "kappa": -7,
+    "TB": -847,
+    "E3": 20,
+    "kmeas": -847,
+    "Jset": [
+     72,
+     73
+    ],
+    "nd3": 100,
+    "npairs": 400,
+    "NI": 100,
+    "ID": 0,
+    "FD": 0,
+    "comp_bad": 0
+   },
+   {
+    "spec": [
+     [
+      2,
+      1,
+      1
+     ],
+     [
+      5,
+      3,
+      1
+     ],
+     [
+      2,
+      1,
+      1
+     ]
+    ],
+    "gamma2": 13,
+    "gamma3": 131,
+    "w1P": 2,
+    "w2P": 65,
+    "l0": 1,
+    "l1": 2,
+    "l1p": -1,
+    "kappa": -5,
+    "TB": -655,
+    "E3": 20,
+    "kmeas": -655,
+    "Jset": [
+     52,
+     53
+    ],
+    "nd3": 100,
+    "npairs": 400,
+    "NI": 60,
+    "ID": 40,
+    "FD": 40,
+    "comp_bad": 0
+   },
+   {
+    "spec": [
+     [
+      2,
+      1,
+      1
+     ],
+     [
+      5,
+      4,
+      1
+     ],
+     [
+      2,
+      1,
+      1
+     ]
+    ],
+    "gamma2": 14,
+    "gamma3": 141,
+    "w1P": 2,
+    "w2P": 70,
+    "l0": 1,
+    "l1": 4,
+    "l1p": -3,
+    "kappa": -11,
+    "TB": -1551,
+    "E3": 20,
+    "kmeas": -1551,
+    "Jset": [
+     112,
+     113
+    ],
+    "nd3": 100,
+    "npairs": 400,
+    "NI": 100,
+    "ID": 0,
+    "FD": 0,
+    "comp_bad": 0
+   },
+   {
+    "spec": [
+     [
+      2,
+      1,
+      1
+     ],
+     [
+      5,
+      7,
+      1
+     ],
+     [
+      2,
+      1,
+      1
+     ]
+    ],
+    "gamma2": 17,
+    "gamma3": 171,
+    "w1P": 2,
+    "w2P": 85,
+    "l0": 1,
+    "l1": 3,
+    "l1p": -4,
+    "kappa": -10,
+    "TB": -1710,
+    "E3": 20,
+    "kmeas": -1710,
+    "Jset": [
+     102,
+     103
+    ],
+    "nd3": 100,
+    "npairs": 400,
+    "NI": 60,
+    "ID": 40,
+    "FD": 0,
+    "comp_bad": 0
+   }
+  ],
+  "h0": [
+   {
+    "spec": [
+     [
+      2,
+      1,
+      1
+     ],
+     [
+      2,
+      1,
+      1
+     ],
+     [
+      2,
+      1,
+      1
+     ]
+    ],
+    "gamma2": 5,
+    "gamma3": 21,
+    "w1P": 2,
+    "w2P": 10,
+    "l0": 1,
+    "l1": 1,
+    "l1p": 0,
+    "kappa": -2,
+    "TB": -42,
+    "E3": 8,
+    "kmeas": -42,
+    "Jset": [
+     10,
+     11
+    ],
+    "nd3": 16,
+    "npairs": 64,
+    "NI": 8,
+    "ID": 8,
+    "FD": 0,
+    "comp_bad": 0
+   },
+   {
+    "spec": [
+     [
+      2,
+      3,
+      1
+     ],
+     [
+      2,
+      1,
+      1
+     ],
+     [
+      2,
+      1,
+      1
+     ]
+    ],
+    "gamma2": 13,
+    "gamma3": 53,
+    "w1P": 6,
+    "w2P": 26,
+    "l0": 1,
+    "l1": 1,
+    "l1p": 0,
+    "kappa": -6,
+    "TB": -318,
+    "E3": 8,
+    "kmeas": -318,
+    "Jset": [
+     26,
+     27
+    ],
+    "nd3": 16,
+    "npairs": 64,
+    "NI": 8,
+    "ID": 8,
+    "FD": 0,
+    "comp_bad": 0
+   },
+   {
+    "spec": [
+     [
+      2,
+      5,
+      1
+     ],
+     [
+      2,
+      1,
+      1
+     ],
+     [
+      2,
+      1,
+      1
+     ]
+    ],
+    "gamma2": 21,
+    "gamma3": 85,
+    "w1P": 10,
+    "w2P": 42,
+    "l0": 1,
+    "l1": 1,
+    "l1p": 0,
+    "kappa": -10,
+    "TB": -850,
+    "E3": 8,
+    "kmeas": -850,
+    "Jset": [
+     42,
+     43
+    ],
+    "nd3": 16,
+    "npairs": 64,
+    "NI": 8,
+    "ID": 8,
+    "FD": 0,
+    "comp_bad": 0
+   },
+   {
+    "spec": [
+     [
+      2,
+      7,
+      1
+     ],
+     [
+      2,
+      1,
+      1
+     ],
+     [
+      2,
+      1,
+      1
+     ]
+    ],
+    "gamma2": 29,
+    "gamma3": 117,
+    "w1P": 14,
+    "w2P": 58,
+    "l0": 1,
+    "l1": 1,
+    "l1p": 0,
+    "kappa": -14,
+    "TB": -1638,
+    "E3": 8,
+    "kmeas": -1638,
+    "Jset": [
+     58,
+     59
+    ],
+    "nd3": 16,
+    "npairs": 64,
+    "NI": 8,
+    "ID": 8,
+    "FD": 0,
+    "comp_bad": 0
+   }
+  ],
+  "e1": [
+   {
+    "spec": [
+     [
+      2,
+      1,
+      1
+     ],
+     [
+      1,
+      1,
+      1
+     ],
+     [
+      2,
+      1,
+      1
+     ]
+    ],
+    "gamma2": 3,
+    "gamma3": 7,
+    "w1P": 2,
+    "w2P": 3,
+    "l0": 1,
+    "l1": 0,
+    "l1p": 1,
+    "kappa": 1,
+    "TB": 7,
+    "E3": 4,
+    "kmeas": 7,
+    "Jset": [
+     0
+    ],
+    "nd3": 4,
+    "npairs": 16,
+    "NI": 4,
+    "ID": 0,
+    "FD": 0,
+    "comp_bad": 0
+   },
+   {
+    "spec": [
+     [
+      2,
+      1,
+      1
+     ],
+     [
+      2,
+      1,
+      1
+     ],
+     [
+      2,
+      1,
+      1
+     ]
+    ],
+    "gamma2": 5,
+    "gamma3": 21,
+    "w1P": 2,
+    "w2P": 10,
+    "l0": 1,
+    "l1": 1,
+    "l1p": 0,
+    "kappa": -2,
+    "TB": -42,
+    "E3": 8,
+    "kmeas": -42,
+    "Jset": [
+     10,
+     11
+    ],
+    "nd3": 16,
+    "npairs": 64,
+    "NI": 8,
+    "ID": 8,
+    "FD": 0,
+    "comp_bad": 0
+   },
+   {
+    "spec": [
+     [
+      2,
+      1,
+      1
+     ],
+     [
+      3,
+      1,
+      1
+     ],
+     [
+      2,
+      1,
+      1
+     ]
+    ],
+    "gamma2": 7,
+    "gamma3": 43,
+    "w1P": 2,
+    "w2P": 21,
+    "l0": 1,
+    "l1": 1,
+    "l1p": 0,
+    "kappa": -2,
+    "TB": -86,
+    "E3": 12,
+    "kmeas": -86,
+    "Jset": [
+     14,
+     15
+    ],
+    "nd3": 36,
+    "npairs": 144,
+    "NI": 12,
+    "ID": 24,
+    "FD": 0,
+    "comp_bad": 0
+   },
+   {
+    "spec": [
+     [
+      2,
+      1,
+      1
+     ],
+     [
+      4,
+      1,
+      1
+     ],
+     [
+      2,
+      1,
+      1
+     ]
+    ],
+    "gamma2": 9,
+    "gamma3": 73,
+    "w1P": 2,
+    "w2P": 36,
+    "l0": 1,
+    "l1": 1,
+    "l1p": 0,
+    "kappa": -2,
+    "TB": -146,
+    "E3": 16,
+    "kmeas": -146,
+    "Jset": [
+     18,
+     19
+    ],
+    "nd3": 64,
+    "npairs": 256,
+    "NI": 16,
+    "ID": 48,
+    "FD": 0,
+    "comp_bad": 0
+   }
+  ],
+  "g0": [
+   {
+    "spec": [
+     [
+      2,
+      1,
+      1
+     ],
+     [
+      2,
+      1,
+      1
+     ],
+     [
+      2,
+      1,
+      1
+     ]
+    ],
+    "gamma2": 5,
+    "gamma3": 21,
+    "w1P": 2,
+    "w2P": 10,
+    "l0": 1,
+    "l1": 1,
+    "l1p": 0,
+    "kappa": -2,
+    "TB": -42,
+    "E3": 8,
+    "kmeas": -42,
+    "Jset": [
+     10,
+     11
+    ],
+    "nd3": 16,
+    "npairs": 64,
+    "NI": 8,
+    "ID": 8,
+    "FD": 0,
+    "comp_bad": 0
+   },
+   {
+    "spec": [
+     [
+      2,
+      1,
+      2
+     ],
+     [
+      2,
+      1,
+      1
+     ],
+     [
+      2,
+      1,
+      1
+     ]
+    ],
+    "gamma2": 9,
+    "gamma3": 37,
+    "w1P": 4,
+    "w2P": 18,
+    "l0": 1,
+    "l1": 1,
+    "l1p": 0,
+    "kappa": -4,
+    "TB": -148,
+    "E3": 8,
+    "kmeas": -148,
+    "Jset": [
+     18,
+     19
+    ],
+    "nd3": 16,
+    "npairs": 64,
+    "NI": 8,
+    "ID": 8,
+    "FD": 8,
+    "comp_bad": 0
+   }
+  ],
+  "g1": [
+   {
+    "spec": [
+     [
+      2,
+      1,
+      1
+     ],
+     [
+      2,
+      1,
+      1
+     ],
+     [
+      2,
+      1,
+      1
+     ]
+    ],
+    "gamma2": 5,
+    "gamma3": 21,
+    "w1P": 2,
+    "w2P": 10,
+    "l0": 1,
+    "l1": 1,
+    "l1p": 0,
+    "kappa": -2,
+    "TB": -42,
+    "E3": 8,
+    "kmeas": -42,
+    "Jset": [
+     10,
+     11
+    ],
+    "nd3": 16,
+    "npairs": 64,
+    "NI": 8,
+    "ID": 8,
+    "FD": 0,
+    "comp_bad": 0
+   },
+   {
+    "spec": [
+     [
+      2,
+      1,
+      1
+     ],
+     [
+      2,
+      1,
+      2
+     ],
+     [
+      2,
+      1,
+      1
+     ]
+    ],
+    "gamma2": 5,
+    "gamma3": 41,
+    "w1P": 2,
+    "w2P": 20,
+    "l0": 1,
+    "l1": 1,
+    "l1p": 0,
+    "kappa": -2,
+    "TB": -82,
+    "E3": 8,
+    "kmeas": -82,
+    "Jset": [
+     20,
+     21
+    ],
+    "nd3": 16,
+    "npairs": 64,
+    "NI": 8,
+    "ID": 8,
+    "FD": 8,
+    "comp_bad": 0
+   }
+  ],
+  "g2": [
+   {
+    "spec": [
+     [
+      2,
+      1,
+      1
+     ],
+     [
+      2,
+      1,
+      1
+     ],
+     [
+      2,
+      1,
+      1
+     ]
+    ],
+    "gamma2": 5,
+    "gamma3": 21,
+    "w1P": 2,
+    "w2P": 10,
+    "l0": 1,
+    "l1": 1,
+    "l1p": 0,
+    "kappa": -2,
+    "TB": -42,
+    "E3": 8,
+    "kmeas": -42,
+    "Jset": [
+     10,
+     11
+    ],
+    "nd3": 16,
+    "npairs": 64,
+    "NI": 8,
+    "ID": 8,
+    "FD": 0,
+    "comp_bad": 0
+   },
+   {
+    "spec": [
+     [
+      2,
+      1,
+      1
+     ],
+     [
+      2,
+      1,
+      1
+     ],
+     [
+      2,
+      1,
+      2
+     ]
+    ],
+    "gamma2": 5,
+    "gamma3": 21,
+    "w1P": 2,
+    "w2P": 10,
+    "l0": 1,
+    "l1": 1,
+    "l1p": 0,
+    "kappa": -2,
+    "TB": -42,
+    "E3": 8,
+    "kmeas": -42,
+    "Jset": [
+     10,
+     11
+    ],
+    "nd3": 16,
+    "npairs": 64,
+    "NI": 8,
+    "ID": 8,
+    "FD": 0,
+    "comp_bad": 0
+   },
+   {
+    "spec": [
+     [
+      2,
+      1,
+      1
+     ],
+     [
+      2,
+      1,
+      1
+     ],
+     [
+      2,
+      1,
+      3
+     ]
+    ],
+    "gamma2": 5,
+    "gamma3": 21,
+    "w1P": 2,
+    "w2P": 10,
+    "l0": 1,
+    "l1": 1,
+    "l1p": 0,
+    "kappa": -2,
+    "TB": -42,
+    "E3": 8,
+    "kmeas": -42,
+    "Jset": [
+     10,
+     11
+    ],
+    "nd3": 16,
+    "npairs": 64,
+    "NI": 8,
+    "ID": 8,
+    "FD": 0,
+    "comp_bad": 0
+   }
+  ]
+ },
+ "scans": {
+  "e2=3 ramp tower": [
+   1,
+   3,
+   4,
+   6,
+   7,
+   9,
+   10,
+   12,
+   13,
+   15,
+   16,
+   18,
+   19,
+   21,
+   22
+  ],
+  "l1 ramp h1=2": [
+   1,
+   2,
+   3,
+   4,
+   5,
+   6,
+   7,
+   8,
+   9,
+   10,
+   11,
+   12,
+   13,
+   14,
+   15,
+   16,
+   17,
+   18,
+   19,
+   20,
+   21,
+   22,
+   23,
+   24,
+   25,
+   26,
+   27,
+   28,
+   29,
+   30,
+   31,
+   32,
+   33,
+   34,
+   35,
+   36,
+   37,
+   38,
+   39
+  ],
+  "e1=3 ramp tower": [
+   1,
+   2,
+   3,
+   4,
+   5,
+   6,
+   7,
+   8,
+   9,
+   10,
+   11,
+   12,
+   13,
+   14,
+   15,
+   16,
+   17,
+   18,
+   19,
+   20,
+   21,
+   22,
+   23
+  ]
+ },
+ "m5": {
+  "bad": 0,
+  "ntow": 3
+ },
+ "struct_bad": []
+}

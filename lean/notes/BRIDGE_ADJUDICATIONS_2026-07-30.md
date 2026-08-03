@@ -7398,3 +7398,38 @@ ITER-LAW-n candidate; R2-style shadow identity belongs in the n = 4 prereg;
 EXP-(n) lemma bank per-level (no cross-level denominators); add integer-level
 (warrant) detection legs to mutation batteries. Conjecture-grade throughout;
 seal 911431c byte-untouched; no record edits.
+
+---
+
+## M3 DEGENERATION LADDER + RAMPS (post-seal, non-prereg): the correction term over the naive lift FACTORIZED by parameter — Δ = δ₃(γ₂J + γ₃κ), master switch δ₃, per-level kill-switches e₁=1 (kills γ₂J), e₀=1 (kills visibility, not the term), g₂ provably absent; NEW J-window law J ∈ {⌊ℓ₁γ₃/e₁⌋,⌈ℓ₁γ₃/e₁⌉} 72/72 towers — 2026-08-03
+
+M3 of the level-3 pattern-hunt fleet (decorrelated: own seed 20260803, own
+roster, own analysis; sealed harness consumed read-only; own RED autopsy from
+raw artifacts CONCURS: violations empty, exit-1 = m4-teeth-only). Artifacts:
+`verification/openmath/l3ramps_m3.py` + output + JSON; note
+`lean/notes/openmath/L3RAMPS_M3_2026-08-08.md` (vanishing table S2, slope
+tables S4, breakpoint loci S5, eyeball pair tables S7). STRUCT-GREEN exit 0:
+97 towers (17-rung ladder × 4 ring configs, E₃ ∈ {4,6,8} exhaustive + 29 ramp
+towers to E₃ = 20), 6,320 pairs, ZERO failures of composed-law field
+exactness, the law-free shift identities (Σ₂ᵐ = δ₃γ₃; Δ-decomposition
+residual), F0a, certs, and the pure-z₁ discrepancy factor. Headlines:
+(1) **vanishing table**: e₂ = 1 kills the whole correction (recovery of the
+accepted order-2 law verified TWO ways — split-chain identification verbatim
+AND measured-vs-measured value tie, 0/560 + 0/560); e₁ = 1 kills exactly the
+γ₂J piece and pins κ = +1 (measured correction = +γ₃ on the nose); e₀ = 1
+leaves the b₁-shift INTACT but erases its z₁-visibility (ℓ₀ = 0) — warrant
+beats value as detector; g₂-ramp = three IDENTICAL rows (top residue degree
+provably outside the parameter list); all integer columns ring- and
+characteristic-blind (17/17 rungs × 4 configs). (2) **ramps/slopes exact**:
+h₂-slope of γ₃κ = 2κ; e₂-slope = κw₂Φ₂; h₀-ramp exactly quadratic (2nd diff
+−256 = 2·dκ·dγ₃); e₁-ramp carries both breakpoints (T_A birth + κ sign flip
+at e₁ = 1→2, Bezout switch (0,1)→(1,0)); ℓ₁-ramp at e₁ = 5 tracks the mod-5
+inverse pair exactly incl. the ℓ₁′-dependence at equal ℓ₁. (3) **NEW
+fine-structure law (conjecture)**: on δ₃ = 1 pairs J = D₂−δ₂ lies in the
+two-value window {⌊ℓ₁γ₃/e₁⌋, ⌈ℓ₁γ₃/e₁⌉}, 72/72 towers, selection = the
+b₂-phase; γ′-scan breakpoint loci are exactly the δ₃-flip offsets (s₃
+wraparound), ±1 plateau structure = the J-window. (4) M5 cross-harness ties
+116/116 (my integer exponents driving M5's independent fields, incl. a fresh
+E₃ = 20 shape). Feeds for the n = 4 prereg: master-switch δ_{n+1} fence,
+per-level eᵢ = 1 collapse fences, g_top-invariance fence, warrant-level
+mutation legs. Conjecture-grade throughout; seal 911431c byte-untouched.
