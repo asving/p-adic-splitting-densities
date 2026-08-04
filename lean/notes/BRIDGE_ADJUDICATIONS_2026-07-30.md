@@ -10019,3 +10019,40 @@ transported-lift certificates.
 value layer) + the convention-analysis review item. Next per the
 blueprint's dependency order: J-A consumes W-2's clause 1; the W-2
 hostile arc + the blueprint plan-review join the Thursday Codex queue.
+
+---
+
+## (SD-YJ′) PROVED — the (SD-YJ) box CLOSED; SD-THM-A at EVERY d₀; (SURV-DISJ)'s open set = exactly (SURV-K2); the LAW-DCX pinned class drops d₀ = 1 — 2026-08-08 campaign (wallclock 2026-08-04)
+
+**The unit** (workflow w7ma52kiv; seal d9540e0, verdict a44cb70;
+`SDYJ_PROOF_2026-08-08.md` + `sdyj_checks.py`, 11 families, 0
+violations, a 980,646-chain engine-free sweep, the 41 committed rows +
+8 companions replicated exactly + 3 fresh companions with gains exactly
+the predicted floors). **PROVED at attempt grade, stronger than
+charged** (capped: the W arc 0/2 binds; own arc 0/2 fresh). The route
+(deviation from the charged mass-ledger route, disclosed): fixed-slot
+affinity reduces the lemma to w₀ ≥ ŵ+1; companion anatomy forces
+CE ≠ ∅ hence Φ₀Y-fed; **NEW Lemma SDY-L1** (the digit-valuation floor:
+at all-g = 1 every correction digit is a single on-line/on-grid cell
+with w₀(c_d) ≥ 1, integrality load-bearing) + **SDY-L2** (the
+MULTIPLICATIVE valuation ledger: promotions never touch b, so
+w₀(term) ≥ ŵ + Σ w₀(digits) + #π-junk — savings structurally cannot
+offset) give w₀(companion) ≥ ŵ + |CE| ≥ ŵ+1. ∎
+
+**Consequences (displayed at the capped grade):** SDY-THM = SD-THM-A at
+EVERY d₀; (SD-YJ) CLOSED; (SURV-DISJ) class-wide open set = exactly
+(SURV-K2) (the g₀ = 2 glued/placement/A = {0} boxes + g₀ ≥ 3);
+LAW-DCX-(m+1)'s pinned class drops the d₀ = 1 pin (E-THM is d₀-free).
+
+**Instrumentation findings:** a SECOND capability wall — the committed
+Tower constructor hardcodes QUADRATIC Φ₀-reduction for every d₀ ≥ 2
+(at d₀ = 3 it silently builds deg 2; the K2-ENG shape one slot over) —
+reproduced under seal, disclosed; the proof is d₀-blind so the gap is
+instance-coverage only. CROSS-NOTE ERRATA QUEUED: (1) the SURVK2
+instrument "cost wall" wording [already queued]; (2) the construct
+note's "[Y₂ = 1: rides its X-child]" bracket contradicted by its own
+artifacts (all 11 companions rode L/Y-children) — both at the next
+repair rounds of those notes. One post-seal repair disclosed (a
+constructor-name bug in the WALL probe; sealed families byte-unchanged).
+**PE-Y1 dispatched; the engine's d₀ ≥ 2 constructor fix + the g₀ ≥ 3
+double-kill (T1-RES coordinates) are the next construction unit.**
