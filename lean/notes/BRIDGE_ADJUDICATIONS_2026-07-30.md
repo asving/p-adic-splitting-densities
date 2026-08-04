@@ -9105,3 +9105,65 @@ the next acceptance attempt (bar: both CLEAN; notes do not block).**
 Unit files this entry: the note (r3), `RMENGINE_passPC3_report.md`,
 `RMENGINE_passPE3_report.md`, `rmengine_claims_census.py` + its
 committed closure output, this append. Scoped commit.
+
+---
+
+## Q2 (W-MULT-DCX) UNIT LANDED — the pool identification CORRECTED+PROVED at attempt grade; row 11c-literal REFUTED — 2026-08-08 campaign (wallclock 2026-08-04)
+
+**The unit** (workflow wspolhsgm, stress → compose; commits: seal d3950f2,
+stress verdict d774ecb, compose 9bec735).
+
+**Stress phase (countermodel-first), LAW-KEYED:** the composite law is
+UNTOUCHED — LAW-DCX-4 violations 0/5,044 pairs, LAW-DCX-5 violations
+0/4,608 (18 fresh adversarial towers: top-deficit-2 at m ≥ 3 — the v1
+killer stratum, never before realized there; double/triple nested
+carries incl. c₁ = 2; flat-interior carry-decided shapes; g₀ ≥ 2
+literal-e₀ divisor; first eq-char LAW-DCX-5 data). Control teeth MET:
+all six broken-law variants fired (CAP1 122, NOCARRY 578, EG 35,
+THRP1 519, THRM1 549, NOU 594). Replicas tie PE.law_leg + committed
+JSON exactly.
+
+**The unit's real finding:** RM-GEN S8 **row 11c AS LITERALLY WORDED
+("the maximal promotion count into level l is ⌊pool_l/e_{l−1}⌋") is
+REFUTED** — 72 instance-keyed divergences over 412 promotion-profiled
+traced rows (committed: wmultdcx_stress_results.json → pid_divergences):
+nonzero Q¹ promotion-profile parts carry pc_l = c_l + 1 (twice +2)
+across 17 towers, both characteristics, flats included; sharpest
+witnesses carry pc₂ = 3 > 2 = L-CAP, so **L-CAP bounds the pool
+VARIABLE, not physical tree paths**. The r1 honesty regrade (row 11 →
+11c HEURISTIC, per PC-G2) is thereby vindicated — the heuristic layer
+was not merely underived but false as stated; NOTHING proved consumed
+it (verified by four hostile passes).
+
+**Compose phase:** the CORRECTED identification **PID†** derived in
+full — lemmas W-D1..W-D7 (single-formal-cell instrument; the u-chain =
+the principal weight chain; the per-path per-level conservation ledger
+LED_l — the crossing law made quantitative; the cellwise depth
+threshold at the top, DCX3-C2 lifted m-uniformly; the weight floor; the
+dump-free floor cap with the excess channels DERIVING the sealed 72
+(112/112 beyond-floor cells ride dumps or non-principal d-cells); the
+principal greedy cascade with floor-additivity a_l + b_l = c_l, whose
+second Φ_m-exit fires iff D + c_{m−1} ≥ 2e_{m−1} — the pool recursion +
+law clause as one tree object's exact bookkeeping). **Grade:
+CORRECTED+PROVED at attempt grade (0/2 hostile passes owed).** The
+residual is boxed as the open lemma **(SURV-(m+1))**: residue-survival
+decidingness ((i) c_{m−1} ≥ k ⟹ Q¹ ≠ 0; (ii) c_{m−1} < k ⟹ Q¹ = 0),
+with the displayed argument that mass arguments cannot close it.
+Fences: F1 g_{m−1} = 1 explicit; F2/F3 g₀ ≥ 2 (P-divisor only;
+principal-cell existence certified not derived); F6 (STK) census-only.
+Machine legs: wmultdcx_derive_checks.py — 412 rows, 858 Q¹ cells, 11
+predicted-0 families ALL GREEN. **LAW-DCX-(m+1) grade UNCHANGED**
+(sealed conjecture; its proof now reduces to (SURV-(m+1))).
+
+**Adjudication:** accepted as a unit landing (artifacts verified:
+commits + files + 0-violation outputs spot-checked). Consequences
+queued: (1) **the row-11c erratum on the RM-GEN note** — POST-ROUND-4
+(the note is frozen under PC4/PE4, who verify row 11c's grade wording
+as of ab2e471; the erratum annotates 11c literal-REFUTED per d774ecb +
+PID† at the WMULTDCX note, heuristic layer superseded — apply with the
+acceptance bracket or the round-4 repair, whichever comes first). (2)
+The WMULTDCX note's own hostile arc — Fable leg dispatched now; Codex
+legs deferred to post-RM-GEN-arc budget (88% used, window resets
+Aug 08; RM-GEN PC passes have priority). (3) **(SURV-(m+1)) is the new
+hard core** of the closure program's Q2 line. (4) At the r40 fold: the
+stress + compose brackets into ROOT; row 11c's ledger row updated.
