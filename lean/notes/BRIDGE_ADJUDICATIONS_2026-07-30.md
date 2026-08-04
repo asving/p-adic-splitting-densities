@@ -9256,3 +9256,40 @@ runs on the repaired text.**
 - No other lemma's mathematics touched; every edit carries a dated
   [W-r1] bracket; head bracket + S11 REPAIR RECORD added.  Grade:
   W-D1–W-D7 + PID† stay PROVED at attempt grade, 0/2 CLEAN passes.
+
+---
+
+## RMENGINE ROUND 5 ADJUDICATED + r5 SUPERSESSION PASS — 2026-08-08 campaign (wallclock 2026-08-04)
+
+Verdicts on the r4 text (d63f8bb): **PC5** (Codex, archived
+`RMENGINE_passPC5_report.md`) GAPS-ONLY 0C/1G; **PE5** (Fable,
+`RMENGINE_passPE5_report.md`) GAPS-ONLY 0C/1G+4n. Seventh and eighth
+consecutive 0-critical passes; both spine sweeps clean; PE5 machine
+legs green (census + referee byte-identical; the r4 fence and change
+(7) verified against the actual diffs). Both gaps = record ripples of
+r4: three un-superseded complete-enumeration cells in prior-round
+records (PC5-g1); the round-3 record's census quote stale after r4's
+own surfaces moved the zone count 11 → 13 (PE5-G-1). **r5 applied by
+the orchestrator (record-layer only):** dated supersession brackets at
+the three cells; the census quote annotated as-of with the arbiter
+re-pointed to the committed output file; the two PE5 gloss notes fixed;
+round-5 head bracket + tail record with TWO STANDING RULES —
+supersede-at-refutation, and machine-output quotes carry their as-of
+commit (only the committed output file speaks for the current text).
+Census re-ran CLOSED (zones 15 — the r5 record surfaces auto-excluded;
+output re-committed). **Round 6 (PC6 + PE6) = the acceptance attempt on
+the r5 text.**
+
+Also landed this window: **W-r1 on the WMULTDCX note (commit 03635d0,
+by the repair unit):** the refuted obstruction paragraph withdrawn and
+rewritten to the artifact facts (126/126 dead rows carry zero Q¹
+cells); the positive lead displayed as the sharpened conjecture-grade
+target **(EMPTY-(m+1))** — on TRACK, (H1)–(H2), c_{m−1} < k ⟹ the
+two-stage tree has NO two-exit path (the composer-verified reduction:
+by W-D4 + W-D6c it suffices that the two excess channels cannot fund
+π_{m−1} ≥ k on any legal path — a counting statement, not a residue
+statement); W-D7(iii) gains the law-clause hypothesis pin; W-D2(0)
+re-proved via the (H3) any-d-cell argument (the F3 consumption
+removed); the (STK) denominator and LED terminal-only coverage
+disclosed. **WMULTDCX round 2 (PE-W2) queued** — after the RM-GEN
+round-6 dispatch, throttle permitting.
