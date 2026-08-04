@@ -1,0 +1,6628 @@
+{
+ "mode": "smoke",
+ "violations": [
+  [
+   "MAXPI-BREACH",
+   "XM3A(263, 263)/k=1,c=[1, 0]",
+   "dead row attains pi_top=1 >= k=1 (maxpi_s2=0) \u2014 the counting route must handle it"
+  ],
+  [
+   "MAXPI-BREACH",
+   "XM3A(257, 267)/k=2,c=[1, 1]",
+   "dead row attains pi_top=2 >= k=2 (maxpi_s2=1) \u2014 the counting route must handle it"
+  ],
+  [
+   "MAXPI-BREACH",
+   "XM3A(259, 271)/k=1,c=[0, 0]",
+   "dead row attains pi_top=1 >= k=1 (maxpi_s2=0) \u2014 the counting route must handle it"
+  ],
+  [
+   "MAXPI-BREACH",
+   "XM3A(267, 271)/k=1,c=[0, 0]",
+   "dead row attains pi_top=1 >= k=1 (maxpi_s2=0) \u2014 the counting route must handle it"
+  ],
+  [
+   "MAXPI-BREACH",
+   "XM3A(259, 263)/k=1,c=[0, 0]",
+   "dead row attains pi_top=1 >= k=1 (maxpi_s2=0) \u2014 the counting route must handle it"
+  ],
+  [
+   "MAXPI-BREACH",
+   "EQ3T3A(581, 587)/k=1,c=[0, 0]",
+   "dead row attains pi_top=1 >= k=1 (maxpi_s2=0) \u2014 the counting route must handle it"
+  ],
+  [
+   "MAXPI-BREACH",
+   "EQ3T3A(581, 599)/k=1,c=[0, 0]",
+   "dead row attains pi_top=1 >= k=1 (maxpi_s2=0) \u2014 the counting route must handle it"
+  ],
+  [
+   "MAXPI-BREACH",
+   "EQ3T3A(587, 587)/k=1,c=[1, 0]",
+   "dead row attains pi_top=1 >= k=1 (maxpi_s2=0) \u2014 the counting route must handle it"
+  ],
+  [
+   "MAXPI-BREACH",
+   "EQ3T3A(587, 599)/k=1,c=[0, 0]",
+   "dead row attains pi_top=1 >= k=1 (maxpi_s2=0) \u2014 the counting route must handle it"
+  ],
+  [
+   "MAXPI-BREACH",
+   "EQ3T3A(593, 599)/k=1,c=[0, 0]",
+   "dead row attains pi_top=1 >= k=1 (maxpi_s2=0) \u2014 the counting route must handle it"
+  ],
+  [
+   "MAXPI-BREACH",
+   "EQ3T3A(579, 581)/k=2,c=[0, 1]",
+   "dead row attains pi_top=2 >= k=2 (maxpi_s2=1) \u2014 the counting route must handle it"
+  ],
+  [
+   "MAXPI-BREACH",
+   "EQ3T3A(579, 593)/k=2,c=[1, 1]",
+   "dead row attains pi_top=2 >= k=2 (maxpi_s2=1) \u2014 the counting route must handle it"
+  ],
+  [
+   "MAXPI-BREACH",
+   "EQ3T3A(591, 593)/k=2,c=[0, 1]",
+   "dead row attains pi_top=2 >= k=2 (maxpi_s2=1) \u2014 the counting route must handle it"
+  ]
+ ],
+ "counters": {
+  "dead_rows": 40,
+  "exc_0": 16,
+  "maxpi_eq_ctop": 16,
+  "maxpi_eq_greedy": 16,
+  "exc_1": 24,
+  "MAXPI_BREACH": 13,
+  "INVC_viol": 24,
+  "BFT_rows": 29,
+  "INVB1_viol_rows": 4
+ },
+ "controls": {
+  "CTRL-A1": 418,
+  "CTRL-NODUMP": 108,
+  "CTRL-B1": 50,
+  "CTRL-C1": 46,
+  "CTRL-CAP1": 26,
+  "CTRL-CELL": 6,
+  "CTRL-DEPTH": 9
+ },
+ "control_examples": {
+  "CTRL-A1": "XM3A(267, 269)/k=2,c=[1, 1]: leaf1 pi_1=1=A",
+  "CTRL-C1": "XM3A(267, 269)/k=2,c=[1, 1]: maxpi=1 = greedy=1",
+  "CTRL-NODUMP": "XM3A(263, 263)/k=1,c=[1, 0]: leaf1 pi_2=1 > cP=0",
+  "CTRL-CAP1": "XM3A(263, 263)/k=1,c=[1, 0]: maxpi=1 > cap1=0",
+  "CTRL-B1": "XM3A(271, 271)/k=1,c=[0, 0]: leaf1 dumps=1 cons_sub=0",
+  "CTRL-DEPTH": "XM3A(263, 267)/k=1,c=[1, 1]: cell pi_top=1 >= k=1",
+  "CTRL-CELL": "XM3A(263, 267)/k=1,c=[1, 1]: 1 cells"
+ },
+ "sealed_dead_count": 12,
+ "strata": {
+  "(3, 'Zp', 1, 2, 1)": {
+   "n": 12,
+   "exc": [
+    0,
+    1
+   ],
+   "eqc": 8,
+   "eqg": 8,
+   "brc": 4,
+   "bft": 9,
+   "invc": 4
+  },
+  "(3, 'Zp', 1, 1, 0)": {
+   "n": 12,
+   "exc": [
+    0,
+    1
+   ],
+   "eqc": 3,
+   "eqg": 3,
+   "brc": 9,
+   "bft": 9,
+   "invc": 9
+  },
+  "(3, 'Zp', 1, 2, 0)": {
+   "n": 8,
+   "exc": [
+    0,
+    1
+   ],
+   "eqc": 1,
+   "eqg": 1,
+   "brc": 0,
+   "bft": 7,
+   "invc": 7
+  },
+  "(3, 'Zp', 1, 3, 1)": {
+   "n": 8,
+   "exc": [
+    0,
+    1
+   ],
+   "eqc": 4,
+   "eqg": 4,
+   "brc": 0,
+   "bft": 4,
+   "invc": 4
+  }
+ },
+ "towers": [
+  {
+   "tag": "XM3A",
+   "phase": "sealed",
+   "m": 3,
+   "kind": "Zp",
+   "p": 5,
+   "d0": 1,
+   "reads": [
+    [
+     2,
+     1,
+     1
+    ],
+    [
+     2,
+     1,
+     1
+    ],
+    [
+     2,
+     1,
+     1
+    ],
+    [
+     2,
+     1,
+     1
+    ]
+   ],
+   "n_dead": 12,
+   "n_live": 3,
+   "strat": null,
+   "elapsed": 0.01
+  },
+  {
+   "tag": "EQ3T3A",
+   "phase": "fresh",
+   "m": 3,
+   "kind": "Zp",
+   "p": 3,
+   "d0": 1,
+   "reads": [
+    [
+     2,
+     1,
+     1
+    ],
+    [
+     2,
+     1,
+     1
+    ],
+    [
+     3,
+     1,
+     1
+    ],
+    [
+     2,
+     1,
+     1
+    ]
+   ],
+   "n_dead": 28,
+   "n_live": 3,
+   "strat": {
+    "(1, 0)": 6,
+    "(2, 0)": 10,
+    "(2, 1)": 6,
+    "(3, 1)": 10
+   },
+   "elapsed": 0.02
+  }
+ ],
+ "rows": [
+  {
+   "tag": "XM3A",
+   "m": 3,
+   "kind": "Zp",
+   "g0": 1,
+   "d0": 1,
+   "key": [
+    267,
+    269
+   ],
+   "kdef": 2,
+   "c_top": 1,
+   "near": true,
+   "live": false,
+   "sig": [
+    2,
+    1,
+    1
+   ],
+   "su": {
+    "3": 1,
+    "2": 0,
+    "1": 0
+   },
+   "cs": [
+    1,
+    1
+   ],
+   "cP": [
+    1,
+    1
+   ],
+   "D": 2,
+   "stock1": 2,
+   "a_top": 1,
+   "b_top": 0,
+   "greedy_att": 1,
+   "cap1": 1,
+   "allg1": true,
+   "n_leaf1": 3,
+   "n_exit1": 1,
+   "n_leaf2": 1,
+   "n_cell": 0,
+   "maxpi_all": 1,
+   "maxpi_s2": 1,
+   "exc": 0,
+   "hist": {
+    "0": 2,
+    "1": 3
+   },
+   "invb1_terms": 0,
+   "invb2_terms": 0,
+   "inva_terms": 0,
+   "bft_terms": 0,
+   "invc_viol": false,
+   "dump_terms": 2,
+   "nonprin_terms": 0,
+   "max_dump_gap": null,
+   "argmax": {
+    "cls": "leaf2",
+    "pc": [
+     1,
+     1,
+     1
+    ],
+    "j": [
+     0,
+     0,
+     1
+    ],
+    "dmp": [
+     0,
+     0,
+     0
+    ],
+    "cons": [
+     2,
+     2,
+     2
+    ],
+    "ncorr": [
+     0,
+     0,
+     0
+    ],
+    "junk": 0,
+    "jD": [
+     0,
+     0,
+     1
+    ],
+    "principal": true,
+    "A_full": [
+     1,
+     1
+    ],
+    "A_nodump": [
+     1,
+     1
+    ],
+    "A_base": [
+     1,
+     1
+    ],
+    "chan": {
+     "principal": 1,
+     "nonprin": 0,
+     "dump": 0,
+     "slack": 0
+    },
+    "led": [
+     [
+      0,
+      0,
+      2,
+      0,
+      0,
+      0,
+      2
+     ],
+     [
+      1,
+      0,
+      1,
+      0,
+      1,
+      0,
+      2
+     ],
+     [
+      2,
+      1,
+      1,
+      1,
+      1,
+      0,
+      2
+     ]
+    ]
+   }
+  },
+  {
+   "tag": "XM3A",
+   "m": 3,
+   "kind": "Zp",
+   "g0": 1,
+   "d0": 1,
+   "key": [
+    263,
+    263
+   ],
+   "kdef": 1,
+   "c_top": 0,
+   "near": true,
+   "live": false,
+   "sig": [
+    2,
+    0,
+    2
+   ],
+   "su": {
+    "3": 1,
+    "2": 0,
+    "1": 0
+   },
+   "cs": [
+    1,
+    0
+   ],
+   "cP": [
+    1,
+    0
+   ],
+   "D": 3,
+   "stock1": 2,
+   "a_top": 0,
+   "b_top": 0,
+   "greedy_att": 0,
+   "cap1": 0,
+   "allg1": true,
+   "n_leaf1": 3,
+   "n_exit1": 2,
+   "n_leaf2": 3,
+   "n_cell": 0,
+   "maxpi_all": 1,
+   "maxpi_s2": 0,
+   "exc": 1,
+   "hist": {
+    "0": 7,
+    "1": 1
+   },
+   "invb1_terms": 0,
+   "invb2_terms": 0,
+   "inva_terms": 0,
+   "bft_terms": 1,
+   "invc_viol": true,
+   "dump_terms": 3,
+   "nonprin_terms": 0,
+   "max_dump_gap": null,
+   "argmax": {
+    "cls": "leaf1",
+    "pc": [
+     1,
+     1,
+     0
+    ],
+    "j": [
+     0,
+     0,
+     1
+    ],
+    "dmp": [
+     0,
+     1,
+     0
+    ],
+    "cons": [
+     2,
+     2,
+     2
+    ],
+    "ncorr": [
+     0,
+     0,
+     1
+    ],
+    "junk": 0,
+    "jD": null,
+    "principal": false,
+    "A_full": [
+     1,
+     1
+    ],
+    "A_nodump": [
+     1,
+     0
+    ],
+    "A_base": [
+     1,
+     0
+    ],
+    "chan": {
+     "principal": 0,
+     "nonprin": 0,
+     "dump": 1,
+     "slack": 0
+    },
+    "led": [
+     [
+      0,
+      0,
+      2,
+      0,
+      0,
+      0,
+      2
+     ],
+     [
+      1,
+      0,
+      0,
+      0,
+      1,
+      1,
+      2
+     ],
+     [
+      2,
+      1,
+      2,
+      0,
+      1,
+      0,
+      2
+     ]
+    ]
+   }
+  },
+  {
+   "tag": "XM3A",
+   "m": 3,
+   "kind": "Zp",
+   "g0": 1,
+   "d0": 1,
+   "key": [
+    257,
+    263
+   ],
+   "kdef": 2,
+   "c_top": 1,
+   "near": true,
+   "live": false,
+   "sig": [
+    2,
+    1,
+    1
+   ],
+   "su": {
+    "3": 1,
+    "2": 0,
+    "1": 0
+   },
+   "cs": [
+    1,
+    1
+   ],
+   "cP": [
+    1,
+    1
+   ],
+   "D": 2,
+   "stock1": 2,
+   "a_top": 1,
+   "b_top": 0,
+   "greedy_att": 1,
+   "cap1": 1,
+   "allg1": true,
+   "n_leaf1": 3,
+   "n_exit1": 1,
+   "n_leaf2": 1,
+   "n_cell": 0,
+   "maxpi_all": 1,
+   "maxpi_s2": 1,
+   "exc": 0,
+   "hist": {
+    "0": 2,
+    "1": 3
+   },
+   "invb1_terms": 0,
+   "invb2_terms": 0,
+   "inva_terms": 0,
+   "bft_terms": 0,
+   "invc_viol": false,
+   "dump_terms": 2,
+   "nonprin_terms": 0,
+   "max_dump_gap": null,
+   "argmax": {
+    "cls": "leaf2",
+    "pc": [
+     1,
+     1,
+     1
+    ],
+    "j": [
+     0,
+     0,
+     1
+    ],
+    "dmp": [
+     0,
+     0,
+     0
+    ],
+    "cons": [
+     2,
+     2,
+     2
+    ],
+    "ncorr": [
+     0,
+     0,
+     0
+    ],
+    "junk": 0,
+    "jD": [
+     0,
+     0,
+     1
+    ],
+    "principal": true,
+    "A_full": [
+     1,
+     1
+    ],
+    "A_nodump": [
+     1,
+     1
+    ],
+    "A_base": [
+     1,
+     1
+    ],
+    "chan": {
+     "principal": 1,
+     "nonprin": 0,
+     "dump": 0,
+     "slack": 0
+    },
+    "led": [
+     [
+      0,
+      0,
+      2,
+      0,
+      0,
+      0,
+      2
+     ],
+     [
+      1,
+      0,
+      1,
+      0,
+      1,
+      0,
+      2
+     ],
+     [
+      2,
+      1,
+      1,
+      1,
+      1,
+      0,
+      2
+     ]
+    ]
+   }
+  },
+  {
+   "tag": "XM3A",
+   "m": 3,
+   "kind": "Zp",
+   "g0": 1,
+   "d0": 1,
+   "key": [
+    257,
+    267
+   ],
+   "kdef": 2,
+   "c_top": 1,
+   "near": true,
+   "live": false,
+   "sig": [
+    2,
+    2,
+    1
+   ],
+   "su": {
+    "3": 1,
+    "2": 0,
+    "1": 0
+   },
+   "cs": [
+    1,
+    1
+   ],
+   "cP": [
+    1,
+    1
+   ],
+   "D": 2,
+   "stock1": 2,
+   "a_top": 1,
+   "b_top": 0,
+   "greedy_att": 1,
+   "cap1": 1,
+   "allg1": true,
+   "n_leaf1": 6,
+   "n_exit1": 2,
+   "n_leaf2": 3,
+   "n_cell": 0,
+   "maxpi_all": 2,
+   "maxpi_s2": 1,
+   "exc": 1,
+   "hist": {
+    "0": 3,
+    "1": 7,
+    "2": 1
+   },
+   "invb1_terms": 0,
+   "invb2_terms": 0,
+   "inva_terms": 0,
+   "bft_terms": 1,
+   "invc_viol": true,
+   "dump_terms": 6,
+   "nonprin_terms": 0,
+   "max_dump_gap": null,
+   "argmax": {
+    "cls": "leaf1",
+    "pc": [
+     1,
+     2,
+     0
+    ],
+    "j": [
+     0,
+     0,
+     1
+    ],
+    "dmp": [
+     0,
+     1,
+     0
+    ],
+    "cons": [
+     2,
+     4,
+     2
+    ],
+    "ncorr": [
+     0,
+     0,
+     1
+    ],
+    "junk": 0,
+    "jD": null,
+    "principal": false,
+    "A_full": [
+     1,
+     2
+    ],
+    "A_nodump": [
+     1,
+     1
+    ],
+    "A_base": [
+     1,
+     1
+    ],
+    "chan": {
+     "principal": 1,
+     "nonprin": 0,
+     "dump": 1,
+     "slack": 0
+    },
+    "led": [
+     [
+      0,
+      0,
+      2,
+      0,
+      0,
+      0,
+      2
+     ],
+     [
+      1,
+      0,
+      2,
+      0,
+      1,
+      1,
+      4
+     ],
+     [
+      2,
+      1,
+      1,
+      0,
+      2,
+      0,
+      2
+     ]
+    ]
+   }
+  },
+  {
+   "tag": "XM3A",
+   "m": 3,
+   "kind": "Zp",
+   "g0": 1,
+   "d0": 1,
+   "key": [
+    271,
+    271
+   ],
+   "kdef": 1,
+   "c_top": 0,
+   "near": true,
+   "live": false,
+   "sig": [
+    0,
+    0,
+    2
+   ],
+   "su": {
+    "3": 1,
+    "2": 0,
+    "1": 0
+   },
+   "cs": [
+    0,
+    0
+   ],
+   "cP": [
+    0,
+    0
+   ],
+   "D": 3,
+   "stock1": 2,
+   "a_top": 0,
+   "b_top": 0,
+   "greedy_att": 0,
+   "cap1": 0,
+   "allg1": true,
+   "n_leaf1": 1,
+   "n_exit1": 1,
+   "n_leaf2": 1,
+   "n_cell": 0,
+   "maxpi_all": 0,
+   "maxpi_s2": 0,
+   "exc": 0,
+   "hist": {
+    "0": 3
+   },
+   "invb1_terms": 1,
+   "invb2_terms": 0,
+   "inva_terms": 0,
+   "bft_terms": 0,
+   "invc_viol": false,
+   "dump_terms": 1,
+   "nonprin_terms": 0,
+   "max_dump_gap": 1,
+   "argmax": {
+    "cls": "leaf2",
+    "pc": [
+     0,
+     0,
+     1
+    ],
+    "j": [
+     0,
+     0,
+     1
+    ],
+    "dmp": [
+     0,
+     0,
+     0
+    ],
+    "cons": [
+     0,
+     0,
+     2
+    ],
+    "ncorr": [
+     0,
+     0,
+     0
+    ],
+    "junk": 0,
+    "jD": [
+     0,
+     0,
+     1
+    ],
+    "principal": true,
+    "A_full": [
+     0,
+     0
+    ],
+    "A_nodump": [
+     0,
+     0
+    ],
+    "A_base": [
+     0,
+     0
+    ],
+    "chan": {
+     "principal": 0,
+     "nonprin": 0,
+     "dump": 0,
+     "slack": 0
+    },
+    "led": [
+     [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+     ],
+     [
+      1,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+     ],
+     [
+      2,
+      1,
+      2,
+      1,
+      0,
+      0,
+      2
+     ]
+    ]
+   }
+  },
+  {
+   "tag": "XM3A",
+   "m": 3,
+   "kind": "Zp",
+   "g0": 1,
+   "d0": 1,
+   "key": [
+    259,
+    271
+   ],
+   "kdef": 1,
+   "c_top": 0,
+   "near": true,
+   "live": false,
+   "sig": [
+    0,
+    1,
+    2
+   ],
+   "su": {
+    "3": 1,
+    "2": 0,
+    "1": 0
+   },
+   "cs": [
+    0,
+    0
+   ],
+   "cP": [
+    0,
+    0
+   ],
+   "D": 3,
+   "stock1": 2,
+   "a_top": 0,
+   "b_top": 0,
+   "greedy_att": 0,
+   "cap1": 0,
+   "allg1": true,
+   "n_leaf1": 2,
+   "n_exit1": 1,
+   "n_leaf2": 1,
+   "n_cell": 0,
+   "maxpi_all": 1,
+   "maxpi_s2": 0,
+   "exc": 1,
+   "hist": {
+    "0": 3,
+    "1": 1
+   },
+   "invb1_terms": 0,
+   "invb2_terms": 0,
+   "inva_terms": 0,
+   "bft_terms": 1,
+   "invc_viol": true,
+   "dump_terms": 2,
+   "nonprin_terms": 0,
+   "max_dump_gap": null,
+   "argmax": {
+    "cls": "leaf1",
+    "pc": [
+     0,
+     1,
+     0
+    ],
+    "j": [
+     0,
+     0,
+     1
+    ],
+    "dmp": [
+     0,
+     1,
+     0
+    ],
+    "cons": [
+     0,
+     2,
+     2
+    ],
+    "ncorr": [
+     0,
+     0,
+     1
+    ],
+    "junk": 0,
+    "jD": null,
+    "principal": false,
+    "A_full": [
+     0,
+     1
+    ],
+    "A_nodump": [
+     0,
+     0
+    ],
+    "A_base": [
+     0,
+     0
+    ],
+    "chan": {
+     "principal": 0,
+     "nonprin": 0,
+     "dump": 1,
+     "slack": 0
+    },
+    "led": [
+     [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+     ],
+     [
+      1,
+      0,
+      1,
+      0,
+      0,
+      1,
+      2
+     ],
+     [
+      2,
+      1,
+      2,
+      0,
+      1,
+      0,
+      2
+     ]
+    ]
+   }
+  },
+  {
+   "tag": "XM3A",
+   "m": 3,
+   "kind": "Zp",
+   "g0": 1,
+   "d0": 1,
+   "key": [
+    263,
+    271
+   ],
+   "kdef": 1,
+   "c_top": 0,
+   "near": true,
+   "live": false,
+   "sig": [
+    1,
+    0,
+    2
+   ],
+   "su": {
+    "3": 1,
+    "2": 0,
+    "1": 0
+   },
+   "cs": [
+    0,
+    0
+   ],
+   "cP": [
+    0,
+    0
+   ],
+   "D": 3,
+   "stock1": 2,
+   "a_top": 0,
+   "b_top": 0,
+   "greedy_att": 0,
+   "cap1": 0,
+   "allg1": true,
+   "n_leaf1": 1,
+   "n_exit1": 1,
+   "n_leaf2": 1,
+   "n_cell": 0,
+   "maxpi_all": 0,
+   "maxpi_s2": 0,
+   "exc": 0,
+   "hist": {
+    "0": 3
+   },
+   "invb1_terms": 1,
+   "invb2_terms": 0,
+   "inva_terms": 0,
+   "bft_terms": 0,
+   "invc_viol": false,
+   "dump_terms": 1,
+   "nonprin_terms": 0,
+   "max_dump_gap": 1,
+   "argmax": {
+    "cls": "leaf2",
+    "pc": [
+     0,
+     0,
+     1
+    ],
+    "j": [
+     1,
+     0,
+     1
+    ],
+    "dmp": [
+     0,
+     0,
+     0
+    ],
+    "cons": [
+     0,
+     0,
+     2
+    ],
+    "ncorr": [
+     0,
+     0,
+     0
+    ],
+    "junk": 0,
+    "jD": [
+     0,
+     0,
+     1
+    ],
+    "principal": true,
+    "A_full": [
+     0,
+     0
+    ],
+    "A_nodump": [
+     0,
+     0
+    ],
+    "A_base": [
+     0,
+     0
+    ],
+    "chan": {
+     "principal": 0,
+     "nonprin": 0,
+     "dump": 0,
+     "slack": 0
+    },
+    "led": [
+     [
+      0,
+      1,
+      1,
+      0,
+      0,
+      0,
+      0
+     ],
+     [
+      1,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+     ],
+     [
+      2,
+      1,
+      2,
+      1,
+      0,
+      0,
+      2
+     ]
+    ]
+   }
+  },
+  {
+   "tag": "XM3A",
+   "m": 3,
+   "kind": "Zp",
+   "g0": 1,
+   "d0": 1,
+   "key": [
+    267,
+    271
+   ],
+   "kdef": 1,
+   "c_top": 0,
+   "near": true,
+   "live": false,
+   "sig": [
+    1,
+    1,
+    2
+   ],
+   "su": {
+    "3": 1,
+    "2": 0,
+    "1": 0
+   },
+   "cs": [
+    0,
+    0
+   ],
+   "cP": [
+    0,
+    0
+   ],
+   "D": 3,
+   "stock1": 2,
+   "a_top": 0,
+   "b_top": 0,
+   "greedy_att": 0,
+   "cap1": 0,
+   "allg1": true,
+   "n_leaf1": 4,
+   "n_exit1": 1,
+   "n_leaf2": 1,
+   "n_cell": 0,
+   "maxpi_all": 1,
+   "maxpi_s2": 0,
+   "exc": 1,
+   "hist": {
+    "0": 5,
+    "1": 1
+   },
+   "invb1_terms": 0,
+   "invb2_terms": 0,
+   "inva_terms": 0,
+   "bft_terms": 2,
+   "invc_viol": true,
+   "dump_terms": 4,
+   "nonprin_terms": 0,
+   "max_dump_gap": null,
+   "argmax": {
+    "cls": "leaf1",
+    "pc": [
+     0,
+     1,
+     0
+    ],
+    "j": [
+     1,
+     0,
+     1
+    ],
+    "dmp": [
+     0,
+     1,
+     0
+    ],
+    "cons": [
+     0,
+     2,
+     2
+    ],
+    "ncorr": [
+     0,
+     0,
+     1
+    ],
+    "junk": 0,
+    "jD": null,
+    "principal": false,
+    "A_full": [
+     0,
+     1
+    ],
+    "A_nodump": [
+     0,
+     0
+    ],
+    "A_base": [
+     0,
+     0
+    ],
+    "chan": {
+     "principal": 0,
+     "nonprin": 0,
+     "dump": 1,
+     "slack": 0
+    },
+    "led": [
+     [
+      0,
+      1,
+      1,
+      0,
+      0,
+      0,
+      0
+     ],
+     [
+      1,
+      0,
+      1,
+      0,
+      0,
+      1,
+      2
+     ],
+     [
+      2,
+      1,
+      2,
+      0,
+      1,
+      0,
+      2
+     ]
+    ]
+   }
+  },
+  {
+   "tag": "XM3A",
+   "m": 3,
+   "kind": "Zp",
+   "g0": 1,
+   "d0": 1,
+   "key": [
+    259,
+    265
+   ],
+   "kdef": 2,
+   "c_top": 1,
+   "near": true,
+   "live": false,
+   "sig": [
+    0,
+    2,
+    1
+   ],
+   "su": {
+    "3": 1,
+    "2": 0,
+    "1": 0
+   },
+   "cs": [
+    0,
+    1
+   ],
+   "cP": [
+    0,
+    1
+   ],
+   "D": 2,
+   "stock1": 2,
+   "a_top": 1,
+   "b_top": 0,
+   "greedy_att": 1,
+   "cap1": 1,
+   "allg1": true,
+   "n_leaf1": 2,
+   "n_exit1": 1,
+   "n_leaf2": 1,
+   "n_cell": 0,
+   "maxpi_all": 1,
+   "maxpi_s2": 1,
+   "exc": 0,
+   "hist": {
+    "0": 1,
+    "1": 3
+   },
+   "invb1_terms": 0,
+   "invb2_terms": 0,
+   "inva_terms": 0,
+   "bft_terms": 0,
+   "invc_viol": false,
+   "dump_terms": 2,
+   "nonprin_terms": 0,
+   "max_dump_gap": null,
+   "argmax": {
+    "cls": "leaf2",
+    "pc": [
+     0,
+     1,
+     1
+    ],
+    "j": [
+     0,
+     0,
+     1
+    ],
+    "dmp": [
+     0,
+     0,
+     0
+    ],
+    "cons": [
+     0,
+     2,
+     2
+    ],
+    "ncorr": [
+     0,
+     0,
+     0
+    ],
+    "junk": 0,
+    "jD": [
+     0,
+     0,
+     1
+    ],
+    "principal": true,
+    "A_full": [
+     0,
+     1
+    ],
+    "A_nodump": [
+     0,
+     1
+    ],
+    "A_base": [
+     0,
+     1
+    ],
+    "chan": {
+     "principal": 1,
+     "nonprin": 0,
+     "dump": 0,
+     "slack": 0
+    },
+    "led": [
+     [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+     ],
+     [
+      1,
+      0,
+      2,
+      0,
+      0,
+      0,
+      2
+     ],
+     [
+      2,
+      1,
+      1,
+      1,
+      1,
+      0,
+      2
+     ]
+    ]
+   }
+  },
+  {
+   "tag": "XM3A",
+   "m": 3,
+   "kind": "Zp",
+   "g0": 1,
+   "d0": 1,
+   "key": [
+    265,
+    267
+   ],
+   "kdef": 2,
+   "c_top": 1,
+   "near": true,
+   "live": false,
+   "sig": [
+    1,
+    2,
+    1
+   ],
+   "su": {
+    "3": 1,
+    "2": 0,
+    "1": 0
+   },
+   "cs": [
+    0,
+    1
+   ],
+   "cP": [
+    0,
+    1
+   ],
+   "D": 2,
+   "stock1": 2,
+   "a_top": 1,
+   "b_top": 0,
+   "greedy_att": 1,
+   "cap1": 1,
+   "allg1": true,
+   "n_leaf1": 4,
+   "n_exit1": 1,
+   "n_leaf2": 1,
+   "n_cell": 0,
+   "maxpi_all": 1,
+   "maxpi_s2": 1,
+   "exc": 0,
+   "hist": {
+    "0": 3,
+    "1": 3
+   },
+   "invb1_terms": 0,
+   "invb2_terms": 0,
+   "inva_terms": 0,
+   "bft_terms": 1,
+   "invc_viol": false,
+   "dump_terms": 4,
+   "nonprin_terms": 0,
+   "max_dump_gap": null,
+   "argmax": {
+    "cls": "leaf2",
+    "pc": [
+     0,
+     1,
+     1
+    ],
+    "j": [
+     1,
+     0,
+     1
+    ],
+    "dmp": [
+     0,
+     0,
+     0
+    ],
+    "cons": [
+     0,
+     2,
+     2
+    ],
+    "ncorr": [
+     0,
+     0,
+     0
+    ],
+    "junk": 0,
+    "jD": [
+     0,
+     0,
+     1
+    ],
+    "principal": true,
+    "A_full": [
+     0,
+     1
+    ],
+    "A_nodump": [
+     0,
+     1
+    ],
+    "A_base": [
+     0,
+     1
+    ],
+    "chan": {
+     "principal": 1,
+     "nonprin": 0,
+     "dump": 0,
+     "slack": 0
+    },
+    "led": [
+     [
+      0,
+      1,
+      1,
+      0,
+      0,
+      0,
+      0
+     ],
+     [
+      1,
+      0,
+      2,
+      0,
+      0,
+      0,
+      2
+     ],
+     [
+      2,
+      1,
+      1,
+      1,
+      1,
+      0,
+      2
+     ]
+    ]
+   }
+  },
+  {
+   "tag": "XM3A",
+   "m": 3,
+   "kind": "Zp",
+   "g0": 1,
+   "d0": 1,
+   "key": [
+    259,
+    263
+   ],
+   "kdef": 1,
+   "c_top": 0,
+   "near": true,
+   "live": false,
+   "sig": [
+    1,
+    1,
+    2
+   ],
+   "su": {
+    "3": 1,
+    "2": 0,
+    "1": 0
+   },
+   "cs": [
+    0,
+    0
+   ],
+   "cP": [
+    0,
+    0
+   ],
+   "D": 3,
+   "stock1": 2,
+   "a_top": 0,
+   "b_top": 0,
+   "greedy_att": 0,
+   "cap1": 0,
+   "allg1": true,
+   "n_leaf1": 4,
+   "n_exit1": 1,
+   "n_leaf2": 1,
+   "n_cell": 0,
+   "maxpi_all": 1,
+   "maxpi_s2": 0,
+   "exc": 1,
+   "hist": {
+    "0": 5,
+    "1": 1
+   },
+   "invb1_terms": 0,
+   "invb2_terms": 0,
+   "inva_terms": 0,
+   "bft_terms": 2,
+   "invc_viol": true,
+   "dump_terms": 4,
+   "nonprin_terms": 0,
+   "max_dump_gap": null,
+   "argmax": {
+    "cls": "leaf1",
+    "pc": [
+     0,
+     1,
+     0
+    ],
+    "j": [
+     1,
+     0,
+     1
+    ],
+    "dmp": [
+     0,
+     1,
+     0
+    ],
+    "cons": [
+     0,
+     2,
+     2
+    ],
+    "ncorr": [
+     0,
+     0,
+     1
+    ],
+    "junk": 0,
+    "jD": null,
+    "principal": false,
+    "A_full": [
+     0,
+     1
+    ],
+    "A_nodump": [
+     0,
+     0
+    ],
+    "A_base": [
+     0,
+     0
+    ],
+    "chan": {
+     "principal": 0,
+     "nonprin": 0,
+     "dump": 1,
+     "slack": 0
+    },
+    "led": [
+     [
+      0,
+      1,
+      1,
+      0,
+      0,
+      0,
+      0
+     ],
+     [
+      1,
+      0,
+      1,
+      0,
+      0,
+      1,
+      2
+     ],
+     [
+      2,
+      1,
+      2,
+      0,
+      1,
+      0,
+      2
+     ]
+    ]
+   }
+  },
+  {
+   "tag": "XM3A",
+   "m": 3,
+   "kind": "Zp",
+   "g0": 1,
+   "d0": 1,
+   "key": [
+    257,
+    259
+   ],
+   "kdef": 2,
+   "c_top": 1,
+   "near": true,
+   "live": false,
+   "sig": [
+    1,
+    2,
+    1
+   ],
+   "su": {
+    "3": 1,
+    "2": 0,
+    "1": 0
+   },
+   "cs": [
+    0,
+    1
+   ],
+   "cP": [
+    0,
+    1
+   ],
+   "D": 2,
+   "stock1": 2,
+   "a_top": 1,
+   "b_top": 0,
+   "greedy_att": 1,
+   "cap1": 1,
+   "allg1": true,
+   "n_leaf1": 4,
+   "n_exit1": 1,
+   "n_leaf2": 1,
+   "n_cell": 0,
+   "maxpi_all": 1,
+   "maxpi_s2": 1,
+   "exc": 0,
+   "hist": {
+    "0": 3,
+    "1": 3
+   },
+   "invb1_terms": 0,
+   "invb2_terms": 0,
+   "inva_terms": 0,
+   "bft_terms": 1,
+   "invc_viol": false,
+   "dump_terms": 4,
+   "nonprin_terms": 0,
+   "max_dump_gap": null,
+   "argmax": {
+    "cls": "leaf2",
+    "pc": [
+     0,
+     1,
+     1
+    ],
+    "j": [
+     1,
+     0,
+     1
+    ],
+    "dmp": [
+     0,
+     0,
+     0
+    ],
+    "cons": [
+     0,
+     2,
+     2
+    ],
+    "ncorr": [
+     0,
+     0,
+     0
+    ],
+    "junk": 0,
+    "jD": [
+     0,
+     0,
+     1
+    ],
+    "principal": true,
+    "A_full": [
+     0,
+     1
+    ],
+    "A_nodump": [
+     0,
+     1
+    ],
+    "A_base": [
+     0,
+     1
+    ],
+    "chan": {
+     "principal": 1,
+     "nonprin": 0,
+     "dump": 0,
+     "slack": 0
+    },
+    "led": [
+     [
+      0,
+      1,
+      1,
+      0,
+      0,
+      0,
+      0
+     ],
+     [
+      1,
+      0,
+      2,
+      0,
+      0,
+      0,
+      2
+     ],
+     [
+      2,
+      1,
+      1,
+      1,
+      1,
+      0,
+      2
+     ]
+    ]
+   }
+  },
+  {
+   "tag": "XM3A",
+   "m": 3,
+   "kind": "Zp",
+   "g0": 1,
+   "d0": 1,
+   "key": [
+    263,
+    267
+   ],
+   "kdef": 1,
+   "c_top": 1,
+   "near": false,
+   "live": true,
+   "sig": [
+    2,
+    1,
+    2
+   ],
+   "su": {
+    "3": 1,
+    "2": 0,
+    "1": 0
+   },
+   "cs": [
+    1,
+    1
+   ],
+   "cP": [
+    1,
+    1
+   ],
+   "D": 3,
+   "stock1": 3,
+   "a_top": 1,
+   "b_top": 0,
+   "greedy_att": 1,
+   "cap1": 1,
+   "allg1": true,
+   "n_leaf1": 5,
+   "n_exit1": 3,
+   "n_leaf2": 5,
+   "n_cell": 1,
+   "maxpi_all": 1,
+   "maxpi_s2": 1,
+   "exc": 0,
+   "hist": {
+    "0": 9,
+    "1": 5
+   },
+   "invb1_terms": 0,
+   "invb2_terms": 0,
+   "inva_terms": 0,
+   "bft_terms": 0,
+   "invc_viol": false,
+   "dump_terms": 9,
+   "nonprin_terms": 0,
+   "max_dump_gap": null,
+   "argmax": {
+    "cls": "cell",
+    "pc": [
+     1,
+     1,
+     2
+    ],
+    "j": [
+     0,
+     0,
+     0
+    ],
+    "dmp": [
+     0,
+     0,
+     0
+    ],
+    "cons": [
+     2,
+     2,
+     4
+    ],
+    "ncorr": [
+     0,
+     0,
+     0
+    ],
+    "junk": 0,
+    "jD": [
+     0,
+     0,
+     1
+    ],
+    "principal": true,
+    "A_full": [
+     1,
+     1
+    ],
+    "A_nodump": [
+     1,
+     1
+    ],
+    "A_base": [
+     1,
+     1
+    ],
+    "chan": {
+     "principal": 1,
+     "nonprin": 0,
+     "dump": 0,
+     "slack": 0
+    },
+    "led": [
+     [
+      0,
+      0,
+      2,
+      0,
+      0,
+      0,
+      2
+     ],
+     [
+      1,
+      0,
+      1,
+      0,
+      1,
+      0,
+      2
+     ],
+     [
+      2,
+      0,
+      2,
+      1,
+      1,
+      0,
+      4
+     ]
+    ]
+   }
+  },
+  {
+   "tag": "XM3A",
+   "m": 3,
+   "kind": "Zp",
+   "g0": 1,
+   "d0": 1,
+   "key": [
+    267,
+    267
+   ],
+   "kdef": 1,
+   "c_top": 1,
+   "near": false,
+   "live": true,
+   "sig": [
+    2,
+    2,
+    2
+   ],
+   "su": {
+    "3": 1,
+    "2": 0,
+    "1": 0
+   },
+   "cs": [
+    1,
+    1
+   ],
+   "cP": [
+    1,
+    1
+   ],
+   "D": 3,
+   "stock1": 3,
+   "a_top": 1,
+   "b_top": 0,
+   "greedy_att": 1,
+   "cap1": 1,
+   "allg1": true,
+   "n_leaf1": 9,
+   "n_exit1": 6,
+   "n_leaf2": 10,
+   "n_cell": 3,
+   "maxpi_all": 2,
+   "maxpi_s2": 2,
+   "exc": 1,
+   "hist": {
+    "0": 12,
+    "1": 12,
+    "2": 4
+   },
+   "invb1_terms": 0,
+   "invb2_terms": 0,
+   "inva_terms": 0,
+   "bft_terms": 0,
+   "invc_viol": true,
+   "dump_terms": 23,
+   "nonprin_terms": 0,
+   "max_dump_gap": null,
+   "argmax": {
+    "cls": "leaf2",
+    "pc": [
+     1,
+     2,
+     1
+    ],
+    "j": [
+     0,
+     0,
+     1
+    ],
+    "dmp": [
+     0,
+     1,
+     0
+    ],
+    "cons": [
+     2,
+     4,
+     4
+    ],
+    "ncorr": [
+     0,
+     0,
+     1
+    ],
+    "junk": 0,
+    "jD": [
+     0,
+     0,
+     1
+    ],
+    "principal": true,
+    "A_full": [
+     1,
+     2
+    ],
+    "A_nodump": [
+     1,
+     1
+    ],
+    "A_base": [
+     1,
+     1
+    ],
+    "chan": {
+     "principal": 1,
+     "nonprin": 0,
+     "dump": 1,
+     "slack": 0
+    },
+    "led": [
+     [
+      0,
+      0,
+      2,
+      0,
+      0,
+      0,
+      2
+     ],
+     [
+      1,
+      0,
+      2,
+      0,
+      1,
+      1,
+      4
+     ],
+     [
+      2,
+      1,
+      2,
+      1,
+      2,
+      0,
+      4
+     ]
+    ]
+   }
+  },
+  {
+   "tag": "XM3A",
+   "m": 3,
+   "kind": "Zp",
+   "g0": 1,
+   "d0": 1,
+   "key": [
+    259,
+    259
+   ],
+   "kdef": 1,
+   "c_top": 1,
+   "near": false,
+   "live": true,
+   "sig": [
+    0,
+    2,
+    2
+   ],
+   "su": {
+    "3": 1,
+    "2": 0,
+    "1": 0
+   },
+   "cs": [
+    0,
+    1
+   ],
+   "cP": [
+    0,
+    1
+   ],
+   "D": 3,
+   "stock1": 3,
+   "a_top": 1,
+   "b_top": 0,
+   "greedy_att": 1,
+   "cap1": 1,
+   "allg1": true,
+   "n_leaf1": 2,
+   "n_exit1": 2,
+   "n_leaf2": 3,
+   "n_cell": 1,
+   "maxpi_all": 1,
+   "maxpi_s2": 1,
+   "exc": 0,
+   "hist": {
+    "0": 4,
+    "1": 4
+   },
+   "invb1_terms": 0,
+   "invb2_terms": 0,
+   "inva_terms": 0,
+   "bft_terms": 0,
+   "invc_viol": false,
+   "dump_terms": 6,
+   "nonprin_terms": 0,
+   "max_dump_gap": null,
+   "argmax": {
+    "cls": "cell",
+    "pc": [
+     0,
+     1,
+     2
+    ],
+    "j": [
+     0,
+     0,
+     0
+    ],
+    "dmp": [
+     0,
+     0,
+     0
+    ],
+    "cons": [
+     0,
+     2,
+     4
+    ],
+    "ncorr": [
+     0,
+     0,
+     0
+    ],
+    "junk": 0,
+    "jD": [
+     0,
+     0,
+     1
+    ],
+    "principal": true,
+    "A_full": [
+     0,
+     1
+    ],
+    "A_nodump": [
+     0,
+     1
+    ],
+    "A_base": [
+     0,
+     1
+    ],
+    "chan": {
+     "principal": 1,
+     "nonprin": 0,
+     "dump": 0,
+     "slack": 0
+    },
+    "led": [
+     [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+     ],
+     [
+      1,
+      0,
+      2,
+      0,
+      0,
+      0,
+      2
+     ],
+     [
+      2,
+      0,
+      2,
+      1,
+      1,
+      0,
+      4
+     ]
+    ]
+   }
+  },
+  {
+   "tag": "EQ3T3A",
+   "m": 3,
+   "kind": "Zp",
+   "g0": 1,
+   "d0": 1,
+   "key": [
+    581,
+    587
+   ],
+   "kdef": 1,
+   "c_top": 0,
+   "near": true,
+   "live": false,
+   "sig": [
+    1,
+    1,
+    4
+   ],
+   "su": {
+    "3": 1,
+    "2": 0,
+    "1": 0
+   },
+   "cs": [
+    0,
+    0
+   ],
+   "cP": [
+    0,
+    0
+   ],
+   "D": 5,
+   "stock1": 4,
+   "a_top": 0,
+   "b_top": 0,
+   "greedy_att": 0,
+   "cap1": 0,
+   "allg1": true,
+   "n_leaf1": 4,
+   "n_exit1": 1,
+   "n_leaf2": 1,
+   "n_cell": 0,
+   "maxpi_all": 1,
+   "maxpi_s2": 0,
+   "exc": 1,
+   "hist": {
+    "0": 4,
+    "1": 2
+   },
+   "invb1_terms": 0,
+   "invb2_terms": 0,
+   "inva_terms": 0,
+   "bft_terms": 4,
+   "invc_viol": true,
+   "dump_terms": 4,
+   "nonprin_terms": 0,
+   "max_dump_gap": null,
+   "argmax": {
+    "cls": "leaf1",
+    "pc": [
+     0,
+     1,
+     0
+    ],
+    "j": [
+     0,
+     0,
+     2
+    ],
+    "dmp": [
+     1,
+     1,
+     0
+    ],
+    "cons": [
+     2,
+     2,
+     3
+    ],
+    "ncorr": [
+     1,
+     0,
+     1
+    ],
+    "junk": 0,
+    "jD": null,
+    "principal": false,
+    "A_full": [
+     1,
+     1
+    ],
+    "A_nodump": [
+     0,
+     0
+    ],
+    "A_base": [
+     0,
+     0
+    ],
+    "chan": {
+     "principal": 0,
+     "nonprin": 0,
+     "dump": 1,
+     "slack": 0
+    },
+    "led": [
+     [
+      0,
+      0,
+      1,
+      0,
+      0,
+      1,
+      2
+     ],
+     [
+      1,
+      0,
+      1,
+      0,
+      0,
+      1,
+      2
+     ],
+     [
+      2,
+      2,
+      4,
+      0,
+      1,
+      0,
+      3
+     ]
+    ]
+   }
+  },
+  {
+   "tag": "EQ3T3A",
+   "m": 3,
+   "kind": "Zp",
+   "g0": 1,
+   "d0": 1,
+   "key": [
+    581,
+    599
+   ],
+   "kdef": 1,
+   "c_top": 0,
+   "near": true,
+   "live": false,
+   "sig": [
+    0,
+    1,
+    4
+   ],
+   "su": {
+    "3": 1,
+    "2": 0,
+    "1": 0
+   },
+   "cs": [
+    0,
+    0
+   ],
+   "cP": [
+    0,
+    0
+   ],
+   "D": 5,
+   "stock1": 4,
+   "a_top": 0,
+   "b_top": 0,
+   "greedy_att": 0,
+   "cap1": 0,
+   "allg1": true,
+   "n_leaf1": 3,
+   "n_exit1": 1,
+   "n_leaf2": 1,
+   "n_cell": 0,
+   "maxpi_all": 1,
+   "maxpi_s2": 0,
+   "exc": 1,
+   "hist": {
+    "0": 4,
+    "1": 1
+   },
+   "invb1_terms": 0,
+   "invb2_terms": 0,
+   "inva_terms": 0,
+   "bft_terms": 2,
+   "invc_viol": true,
+   "dump_terms": 3,
+   "nonprin_terms": 0,
+   "max_dump_gap": null,
+   "argmax": {
+    "cls": "leaf1",
+    "pc": [
+     0,
+     1,
+     0
+    ],
+    "j": [
+     1,
+     0,
+     2
+    ],
+    "dmp": [
+     1,
+     1,
+     0
+    ],
+    "cons": [
+     0,
+     2,
+     3
+    ],
+    "ncorr": [
+     0,
+     0,
+     1
+    ],
+    "junk": 0,
+    "jD": null,
+    "principal": false,
+    "A_full": [
+     0,
+     1
+    ],
+    "A_nodump": [
+     0,
+     0
+    ],
+    "A_base": [
+     0,
+     0
+    ],
+    "chan": {
+     "principal": 0,
+     "nonprin": 0,
+     "dump": 1,
+     "slack": 0
+    },
+    "led": [
+     [
+      0,
+      1,
+      0,
+      0,
+      0,
+      1,
+      0
+     ],
+     [
+      1,
+      0,
+      1,
+      0,
+      0,
+      1,
+      2
+     ],
+     [
+      2,
+      2,
+      4,
+      0,
+      1,
+      0,
+      3
+     ]
+    ]
+   }
+  },
+  {
+   "tag": "EQ3T3A",
+   "m": 3,
+   "kind": "Zp",
+   "g0": 1,
+   "d0": 1,
+   "key": [
+    587,
+    587
+   ],
+   "kdef": 1,
+   "c_top": 0,
+   "near": true,
+   "live": false,
+   "sig": [
+    2,
+    0,
+    4
+   ],
+   "su": {
+    "3": 1,
+    "2": 0,
+    "1": 0
+   },
+   "cs": [
+    1,
+    0
+   ],
+   "cP": [
+    1,
+    0
+   ],
+   "D": 5,
+   "stock1": 4,
+   "a_top": 0,
+   "b_top": 0,
+   "greedy_att": 0,
+   "cap1": 0,
+   "allg1": true,
+   "n_leaf1": 4,
+   "n_exit1": 2,
+   "n_leaf2": 2,
+   "n_cell": 0,
+   "maxpi_all": 1,
+   "maxpi_s2": 0,
+   "exc": 1,
+   "hist": {
+    "0": 7,
+    "1": 1
+   },
+   "invb1_terms": 0,
+   "invb2_terms": 0,
+   "inva_terms": 0,
+   "bft_terms": 2,
+   "invc_viol": true,
+   "dump_terms": 4,
+   "nonprin_terms": 0,
+   "max_dump_gap": null,
+   "argmax": {
+    "cls": "leaf1",
+    "pc": [
+     1,
+     1,
+     0
+    ],
+    "j": [
+     1,
+     0,
+     2
+    ],
+    "dmp": [
+     1,
+     1,
+     0
+    ],
+    "cons": [
+     2,
+     2,
+     3
+    ],
+    "ncorr": [
+     0,
+     0,
+     1
+    ],
+    "junk": 0,
+    "jD": null,
+    "principal": false,
+    "A_full": [
+     1,
+     1
+    ],
+    "A_nodump": [
+     1,
+     0
+    ],
+    "A_base": [
+     1,
+     0
+    ],
+    "chan": {
+     "principal": 0,
+     "nonprin": 0,
+     "dump": 1,
+     "slack": 0
+    },
+    "led": [
+     [
+      0,
+      1,
+      2,
+      0,
+      0,
+      1,
+      2
+     ],
+     [
+      1,
+      0,
+      0,
+      0,
+      1,
+      1,
+      2
+     ],
+     [
+      2,
+      2,
+      4,
+      0,
+      1,
+      0,
+      3
+     ]
+    ]
+   }
+  },
+  {
+   "tag": "EQ3T3A",
+   "m": 3,
+   "kind": "Zp",
+   "g0": 1,
+   "d0": 1,
+   "key": [
+    587,
+    599
+   ],
+   "kdef": 1,
+   "c_top": 0,
+   "near": true,
+   "live": false,
+   "sig": [
+    1,
+    0,
+    4
+   ],
+   "su": {
+    "3": 1,
+    "2": 0,
+    "1": 0
+   },
+   "cs": [
+    0,
+    0
+   ],
+   "cP": [
+    0,
+    0
+   ],
+   "D": 5,
+   "stock1": 4,
+   "a_top": 0,
+   "b_top": 0,
+   "greedy_att": 0,
+   "cap1": 0,
+   "allg1": true,
+   "n_leaf1": 3,
+   "n_exit1": 1,
+   "n_leaf2": 1,
+   "n_cell": 0,
+   "maxpi_all": 1,
+   "maxpi_s2": 0,
+   "exc": 1,
+   "hist": {
+    "0": 4,
+    "1": 1
+   },
+   "invb1_terms": 0,
+   "invb2_terms": 0,
+   "inva_terms": 0,
+   "bft_terms": 3,
+   "invc_viol": true,
+   "dump_terms": 3,
+   "nonprin_terms": 0,
+   "max_dump_gap": null,
+   "argmax": {
+    "cls": "leaf1",
+    "pc": [
+     1,
+     1,
+     0
+    ],
+    "j": [
+     0,
+     0,
+     2
+    ],
+    "dmp": [
+     1,
+     1,
+     0
+    ],
+    "cons": [
+     2,
+     2,
+     3
+    ],
+    "ncorr": [
+     0,
+     0,
+     1
+    ],
+    "junk": 0,
+    "jD": null,
+    "principal": false,
+    "A_full": [
+     1,
+     1
+    ],
+    "A_nodump": [
+     0,
+     0
+    ],
+    "A_base": [
+     0,
+     0
+    ],
+    "chan": {
+     "principal": 0,
+     "nonprin": 0,
+     "dump": 1,
+     "slack": 0
+    },
+    "led": [
+     [
+      0,
+      0,
+      1,
+      0,
+      0,
+      1,
+      2
+     ],
+     [
+      1,
+      0,
+      0,
+      0,
+      1,
+      1,
+      2
+     ],
+     [
+      2,
+      2,
+      4,
+      0,
+      1,
+      0,
+      3
+     ]
+    ]
+   }
+  },
+  {
+   "tag": "EQ3T3A",
+   "m": 3,
+   "kind": "Zp",
+   "g0": 1,
+   "d0": 1,
+   "key": [
+    593,
+    599
+   ],
+   "kdef": 1,
+   "c_top": 0,
+   "near": true,
+   "live": false,
+   "sig": [
+    1,
+    1,
+    4
+   ],
+   "su": {
+    "3": 1,
+    "2": 0,
+    "1": 0
+   },
+   "cs": [
+    0,
+    0
+   ],
+   "cP": [
+    0,
+    0
+   ],
+   "D": 5,
+   "stock1": 4,
+   "a_top": 0,
+   "b_top": 0,
+   "greedy_att": 0,
+   "cap1": 0,
+   "allg1": true,
+   "n_leaf1": 4,
+   "n_exit1": 1,
+   "n_leaf2": 1,
+   "n_cell": 0,
+   "maxpi_all": 1,
+   "maxpi_s2": 0,
+   "exc": 1,
+   "hist": {
+    "0": 4,
+    "1": 2
+   },
+   "invb1_terms": 0,
+   "invb2_terms": 0,
+   "inva_terms": 0,
+   "bft_terms": 4,
+   "invc_viol": true,
+   "dump_terms": 4,
+   "nonprin_terms": 0,
+   "max_dump_gap": null,
+   "argmax": {
+    "cls": "leaf1",
+    "pc": [
+     0,
+     1,
+     0
+    ],
+    "j": [
+     0,
+     0,
+     2
+    ],
+    "dmp": [
+     1,
+     1,
+     0
+    ],
+    "cons": [
+     2,
+     2,
+     3
+    ],
+    "ncorr": [
+     1,
+     0,
+     1
+    ],
+    "junk": 0,
+    "jD": null,
+    "principal": false,
+    "A_full": [
+     1,
+     1
+    ],
+    "A_nodump": [
+     0,
+     0
+    ],
+    "A_base": [
+     0,
+     0
+    ],
+    "chan": {
+     "principal": 0,
+     "nonprin": 0,
+     "dump": 1,
+     "slack": 0
+    },
+    "led": [
+     [
+      0,
+      0,
+      1,
+      0,
+      0,
+      1,
+      2
+     ],
+     [
+      1,
+      0,
+      1,
+      0,
+      0,
+      1,
+      2
+     ],
+     [
+      2,
+      2,
+      4,
+      0,
+      1,
+      0,
+      3
+     ]
+    ]
+   }
+  },
+  {
+   "tag": "EQ3T3A",
+   "m": 3,
+   "kind": "Zp",
+   "g0": 1,
+   "d0": 1,
+   "key": [
+    599,
+    599
+   ],
+   "kdef": 1,
+   "c_top": 0,
+   "near": true,
+   "live": false,
+   "sig": [
+    0,
+    0,
+    4
+   ],
+   "su": {
+    "3": 1,
+    "2": 0,
+    "1": 0
+   },
+   "cs": [
+    0,
+    0
+   ],
+   "cP": [
+    0,
+    0
+   ],
+   "D": 5,
+   "stock1": 4,
+   "a_top": 0,
+   "b_top": 0,
+   "greedy_att": 0,
+   "cap1": 0,
+   "allg1": true,
+   "n_leaf1": 1,
+   "n_exit1": 1,
+   "n_leaf2": 1,
+   "n_cell": 0,
+   "maxpi_all": 0,
+   "maxpi_s2": 0,
+   "exc": 0,
+   "hist": {
+    "0": 3
+   },
+   "invb1_terms": 1,
+   "invb2_terms": 0,
+   "inva_terms": 0,
+   "bft_terms": 0,
+   "invc_viol": false,
+   "dump_terms": 1,
+   "nonprin_terms": 0,
+   "max_dump_gap": 2,
+   "argmax": {
+    "cls": "leaf2",
+    "pc": [
+     0,
+     0,
+     1
+    ],
+    "j": [
+     0,
+     0,
+     2
+    ],
+    "dmp": [
+     0,
+     0,
+     0
+    ],
+    "cons": [
+     0,
+     0,
+     3
+    ],
+    "ncorr": [
+     0,
+     0,
+     0
+    ],
+    "junk": 0,
+    "jD": [
+     0,
+     0,
+     1
+    ],
+    "principal": true,
+    "A_full": [
+     0,
+     0
+    ],
+    "A_nodump": [
+     0,
+     0
+    ],
+    "A_base": [
+     0,
+     0
+    ],
+    "chan": {
+     "principal": 0,
+     "nonprin": 0,
+     "dump": 0,
+     "slack": 0
+    },
+    "led": [
+     [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+     ],
+     [
+      1,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+     ],
+     [
+      2,
+      2,
+      4,
+      1,
+      0,
+      0,
+      3
+     ]
+    ]
+   }
+  },
+  {
+   "tag": "EQ3T3A",
+   "m": 3,
+   "kind": "Zp",
+   "g0": 1,
+   "d0": 1,
+   "key": [
+    579,
+    599
+   ],
+   "kdef": 2,
+   "c_top": 0,
+   "near": false,
+   "live": false,
+   "sig": [
+    1,
+    1,
+    3
+   ],
+   "su": {
+    "3": 1,
+    "2": 0,
+    "1": 0
+   },
+   "cs": [
+    0,
+    0
+   ],
+   "cP": [
+    0,
+    0
+   ],
+   "D": 4,
+   "stock1": 3,
+   "a_top": 0,
+   "b_top": 0,
+   "greedy_att": 0,
+   "cap1": 0,
+   "allg1": true,
+   "n_leaf1": 4,
+   "n_exit1": 1,
+   "n_leaf2": 1,
+   "n_cell": 0,
+   "maxpi_all": 1,
+   "maxpi_s2": 0,
+   "exc": 1,
+   "hist": {
+    "0": 4,
+    "1": 2
+   },
+   "invb1_terms": 0,
+   "invb2_terms": 0,
+   "inva_terms": 0,
+   "bft_terms": 4,
+   "invc_viol": true,
+   "dump_terms": 4,
+   "nonprin_terms": 0,
+   "max_dump_gap": null,
+   "argmax": {
+    "cls": "leaf1",
+    "pc": [
+     0,
+     1,
+     0
+    ],
+    "j": [
+     0,
+     0,
+     1
+    ],
+    "dmp": [
+     1,
+     1,
+     0
+    ],
+    "cons": [
+     2,
+     2,
+     3
+    ],
+    "ncorr": [
+     1,
+     0,
+     1
+    ],
+    "junk": 0,
+    "jD": null,
+    "principal": false,
+    "A_full": [
+     1,
+     1
+    ],
+    "A_nodump": [
+     0,
+     0
+    ],
+    "A_base": [
+     0,
+     0
+    ],
+    "chan": {
+     "principal": 0,
+     "nonprin": 0,
+     "dump": 1,
+     "slack": 0
+    },
+    "led": [
+     [
+      0,
+      0,
+      1,
+      0,
+      0,
+      1,
+      2
+     ],
+     [
+      1,
+      0,
+      1,
+      0,
+      0,
+      1,
+      2
+     ],
+     [
+      2,
+      1,
+      3,
+      0,
+      1,
+      0,
+      3
+     ]
+    ]
+   }
+  },
+  {
+   "tag": "EQ3T3A",
+   "m": 3,
+   "kind": "Zp",
+   "g0": 1,
+   "d0": 1,
+   "key": [
+    581,
+    585
+   ],
+   "kdef": 2,
+   "c_top": 0,
+   "near": false,
+   "live": false,
+   "sig": [
+    0,
+    1,
+    3
+   ],
+   "su": {
+    "3": 1,
+    "2": 0,
+    "1": 0
+   },
+   "cs": [
+    0,
+    0
+   ],
+   "cP": [
+    0,
+    0
+   ],
+   "D": 4,
+   "stock1": 3,
+   "a_top": 0,
+   "b_top": 0,
+   "greedy_att": 0,
+   "cap1": 0,
+   "allg1": true,
+   "n_leaf1": 3,
+   "n_exit1": 1,
+   "n_leaf2": 1,
+   "n_cell": 0,
+   "maxpi_all": 1,
+   "maxpi_s2": 0,
+   "exc": 1,
+   "hist": {
+    "0": 4,
+    "1": 1
+   },
+   "invb1_terms": 0,
+   "invb2_terms": 0,
+   "inva_terms": 0,
+   "bft_terms": 2,
+   "invc_viol": true,
+   "dump_terms": 3,
+   "nonprin_terms": 0,
+   "max_dump_gap": null,
+   "argmax": {
+    "cls": "leaf1",
+    "pc": [
+     0,
+     1,
+     0
+    ],
+    "j": [
+     1,
+     0,
+     1
+    ],
+    "dmp": [
+     1,
+     1,
+     0
+    ],
+    "cons": [
+     0,
+     2,
+     3
+    ],
+    "ncorr": [
+     0,
+     0,
+     1
+    ],
+    "junk": 0,
+    "jD": null,
+    "principal": false,
+    "A_full": [
+     0,
+     1
+    ],
+    "A_nodump": [
+     0,
+     0
+    ],
+    "A_base": [
+     0,
+     0
+    ],
+    "chan": {
+     "principal": 0,
+     "nonprin": 0,
+     "dump": 1,
+     "slack": 0
+    },
+    "led": [
+     [
+      0,
+      1,
+      0,
+      0,
+      0,
+      1,
+      0
+     ],
+     [
+      1,
+      0,
+      1,
+      0,
+      0,
+      1,
+      2
+     ],
+     [
+      2,
+      1,
+      3,
+      0,
+      1,
+      0,
+      3
+     ]
+    ]
+   }
+  },
+  {
+   "tag": "EQ3T3A",
+   "m": 3,
+   "kind": "Zp",
+   "g0": 1,
+   "d0": 1,
+   "key": [
+    581,
+    597
+   ],
+   "kdef": 2,
+   "c_top": 0,
+   "near": false,
+   "live": false,
+   "sig": [
+    1,
+    1,
+    3
+   ],
+   "su": {
+    "3": 1,
+    "2": 0,
+    "1": 0
+   },
+   "cs": [
+    0,
+    0
+   ],
+   "cP": [
+    0,
+    0
+   ],
+   "D": 4,
+   "stock1": 3,
+   "a_top": 0,
+   "b_top": 0,
+   "greedy_att": 0,
+   "cap1": 0,
+   "allg1": true,
+   "n_leaf1": 4,
+   "n_exit1": 1,
+   "n_leaf2": 1,
+   "n_cell": 0,
+   "maxpi_all": 1,
+   "maxpi_s2": 0,
+   "exc": 1,
+   "hist": {
+    "0": 4,
+    "1": 2
+   },
+   "invb1_terms": 0,
+   "invb2_terms": 0,
+   "inva_terms": 0,
+   "bft_terms": 4,
+   "invc_viol": true,
+   "dump_terms": 4,
+   "nonprin_terms": 0,
+   "max_dump_gap": null,
+   "argmax": {
+    "cls": "leaf1",
+    "pc": [
+     0,
+     1,
+     0
+    ],
+    "j": [
+     0,
+     0,
+     1
+    ],
+    "dmp": [
+     1,
+     1,
+     0
+    ],
+    "cons": [
+     2,
+     2,
+     3
+    ],
+    "ncorr": [
+     1,
+     0,
+     1
+    ],
+    "junk": 0,
+    "jD": null,
+    "principal": false,
+    "A_full": [
+     1,
+     1
+    ],
+    "A_nodump": [
+     0,
+     0
+    ],
+    "A_base": [
+     0,
+     0
+    ],
+    "chan": {
+     "principal": 0,
+     "nonprin": 0,
+     "dump": 1,
+     "slack": 0
+    },
+    "led": [
+     [
+      0,
+      0,
+      1,
+      0,
+      0,
+      1,
+      2
+     ],
+     [
+      1,
+      0,
+      1,
+      0,
+      0,
+      1,
+      2
+     ],
+     [
+      2,
+      1,
+      3,
+      0,
+      1,
+      0,
+      3
+     ]
+    ]
+   }
+  },
+  {
+   "tag": "EQ3T3A",
+   "m": 3,
+   "kind": "Zp",
+   "g0": 1,
+   "d0": 1,
+   "key": [
+    585,
+    587
+   ],
+   "kdef": 2,
+   "c_top": 0,
+   "near": false,
+   "live": false,
+   "sig": [
+    1,
+    0,
+    3
+   ],
+   "su": {
+    "3": 1,
+    "2": 0,
+    "1": 0
+   },
+   "cs": [
+    0,
+    0
+   ],
+   "cP": [
+    0,
+    0
+   ],
+   "D": 4,
+   "stock1": 3,
+   "a_top": 0,
+   "b_top": 0,
+   "greedy_att": 0,
+   "cap1": 0,
+   "allg1": true,
+   "n_leaf1": 3,
+   "n_exit1": 1,
+   "n_leaf2": 1,
+   "n_cell": 0,
+   "maxpi_all": 1,
+   "maxpi_s2": 0,
+   "exc": 1,
+   "hist": {
+    "0": 4,
+    "1": 1
+   },
+   "invb1_terms": 0,
+   "invb2_terms": 0,
+   "inva_terms": 0,
+   "bft_terms": 3,
+   "invc_viol": true,
+   "dump_terms": 3,
+   "nonprin_terms": 0,
+   "max_dump_gap": null,
+   "argmax": {
+    "cls": "leaf1",
+    "pc": [
+     1,
+     1,
+     0
+    ],
+    "j": [
+     0,
+     0,
+     1
+    ],
+    "dmp": [
+     1,
+     1,
+     0
+    ],
+    "cons": [
+     2,
+     2,
+     3
+    ],
+    "ncorr": [
+     0,
+     0,
+     1
+    ],
+    "junk": 0,
+    "jD": null,
+    "principal": false,
+    "A_full": [
+     1,
+     1
+    ],
+    "A_nodump": [
+     0,
+     0
+    ],
+    "A_base": [
+     0,
+     0
+    ],
+    "chan": {
+     "principal": 0,
+     "nonprin": 0,
+     "dump": 1,
+     "slack": 0
+    },
+    "led": [
+     [
+      0,
+      0,
+      1,
+      0,
+      0,
+      1,
+      2
+     ],
+     [
+      1,
+      0,
+      0,
+      0,
+      1,
+      1,
+      2
+     ],
+     [
+      2,
+      1,
+      3,
+      0,
+      1,
+      0,
+      3
+     ]
+    ]
+   }
+  },
+  {
+   "tag": "EQ3T3A",
+   "m": 3,
+   "kind": "Zp",
+   "g0": 1,
+   "d0": 1,
+   "key": [
+    585,
+    593
+   ],
+   "kdef": 2,
+   "c_top": 0,
+   "near": false,
+   "live": false,
+   "sig": [
+    1,
+    1,
+    3
+   ],
+   "su": {
+    "3": 1,
+    "2": 0,
+    "1": 0
+   },
+   "cs": [
+    0,
+    0
+   ],
+   "cP": [
+    0,
+    0
+   ],
+   "D": 4,
+   "stock1": 3,
+   "a_top": 0,
+   "b_top": 0,
+   "greedy_att": 0,
+   "cap1": 0,
+   "allg1": true,
+   "n_leaf1": 4,
+   "n_exit1": 1,
+   "n_leaf2": 1,
+   "n_cell": 0,
+   "maxpi_all": 1,
+   "maxpi_s2": 0,
+   "exc": 1,
+   "hist": {
+    "0": 4,
+    "1": 2
+   },
+   "invb1_terms": 0,
+   "invb2_terms": 0,
+   "inva_terms": 0,
+   "bft_terms": 4,
+   "invc_viol": true,
+   "dump_terms": 4,
+   "nonprin_terms": 0,
+   "max_dump_gap": null,
+   "argmax": {
+    "cls": "leaf1",
+    "pc": [
+     0,
+     1,
+     0
+    ],
+    "j": [
+     0,
+     0,
+     1
+    ],
+    "dmp": [
+     1,
+     1,
+     0
+    ],
+    "cons": [
+     2,
+     2,
+     3
+    ],
+    "ncorr": [
+     1,
+     0,
+     1
+    ],
+    "junk": 0,
+    "jD": null,
+    "principal": false,
+    "A_full": [
+     1,
+     1
+    ],
+    "A_nodump": [
+     0,
+     0
+    ],
+    "A_base": [
+     0,
+     0
+    ],
+    "chan": {
+     "principal": 0,
+     "nonprin": 0,
+     "dump": 1,
+     "slack": 0
+    },
+    "led": [
+     [
+      0,
+      0,
+      1,
+      0,
+      0,
+      1,
+      2
+     ],
+     [
+      1,
+      0,
+      1,
+      0,
+      0,
+      1,
+      2
+     ],
+     [
+      2,
+      1,
+      3,
+      0,
+      1,
+      0,
+      3
+     ]
+    ]
+   }
+  },
+  {
+   "tag": "EQ3T3A",
+   "m": 3,
+   "kind": "Zp",
+   "g0": 1,
+   "d0": 1,
+   "key": [
+    585,
+    599
+   ],
+   "kdef": 2,
+   "c_top": 0,
+   "near": false,
+   "live": false,
+   "sig": [
+    0,
+    0,
+    3
+   ],
+   "su": {
+    "3": 1,
+    "2": 0,
+    "1": 0
+   },
+   "cs": [
+    0,
+    0
+   ],
+   "cP": [
+    0,
+    0
+   ],
+   "D": 4,
+   "stock1": 3,
+   "a_top": 0,
+   "b_top": 0,
+   "greedy_att": 0,
+   "cap1": 0,
+   "allg1": true,
+   "n_leaf1": 1,
+   "n_exit1": 1,
+   "n_leaf2": 1,
+   "n_cell": 0,
+   "maxpi_all": 0,
+   "maxpi_s2": 0,
+   "exc": 0,
+   "hist": {
+    "0": 3
+   },
+   "invb1_terms": 1,
+   "invb2_terms": 0,
+   "inva_terms": 0,
+   "bft_terms": 0,
+   "invc_viol": false,
+   "dump_terms": 1,
+   "nonprin_terms": 0,
+   "max_dump_gap": 2,
+   "argmax": {
+    "cls": "leaf2",
+    "pc": [
+     0,
+     0,
+     1
+    ],
+    "j": [
+     0,
+     0,
+     1
+    ],
+    "dmp": [
+     0,
+     0,
+     0
+    ],
+    "cons": [
+     0,
+     0,
+     3
+    ],
+    "ncorr": [
+     0,
+     0,
+     0
+    ],
+    "junk": 0,
+    "jD": [
+     0,
+     0,
+     1
+    ],
+    "principal": true,
+    "A_full": [
+     0,
+     0
+    ],
+    "A_nodump": [
+     0,
+     0
+    ],
+    "A_base": [
+     0,
+     0
+    ],
+    "chan": {
+     "principal": 0,
+     "nonprin": 0,
+     "dump": 0,
+     "slack": 0
+    },
+    "led": [
+     [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+     ],
+     [
+      1,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+     ],
+     [
+      2,
+      1,
+      3,
+      1,
+      0,
+      0,
+      3
+     ]
+    ]
+   }
+  },
+  {
+   "tag": "EQ3T3A",
+   "m": 3,
+   "kind": "Zp",
+   "g0": 1,
+   "d0": 1,
+   "key": [
+    587,
+    591
+   ],
+   "kdef": 2,
+   "c_top": 0,
+   "near": false,
+   "live": false,
+   "sig": [
+    1,
+    1,
+    3
+   ],
+   "su": {
+    "3": 1,
+    "2": 0,
+    "1": 0
+   },
+   "cs": [
+    0,
+    0
+   ],
+   "cP": [
+    0,
+    0
+   ],
+   "D": 4,
+   "stock1": 3,
+   "a_top": 0,
+   "b_top": 0,
+   "greedy_att": 0,
+   "cap1": 0,
+   "allg1": true,
+   "n_leaf1": 4,
+   "n_exit1": 1,
+   "n_leaf2": 1,
+   "n_cell": 0,
+   "maxpi_all": 1,
+   "maxpi_s2": 0,
+   "exc": 1,
+   "hist": {
+    "0": 4,
+    "1": 2
+   },
+   "invb1_terms": 0,
+   "invb2_terms": 0,
+   "inva_terms": 0,
+   "bft_terms": 4,
+   "invc_viol": true,
+   "dump_terms": 4,
+   "nonprin_terms": 0,
+   "max_dump_gap": null,
+   "argmax": {
+    "cls": "leaf1",
+    "pc": [
+     0,
+     1,
+     0
+    ],
+    "j": [
+     0,
+     0,
+     1
+    ],
+    "dmp": [
+     1,
+     1,
+     0
+    ],
+    "cons": [
+     2,
+     2,
+     3
+    ],
+    "ncorr": [
+     1,
+     0,
+     1
+    ],
+    "junk": 0,
+    "jD": null,
+    "principal": false,
+    "A_full": [
+     1,
+     1
+    ],
+    "A_nodump": [
+     0,
+     0
+    ],
+    "A_base": [
+     0,
+     0
+    ],
+    "chan": {
+     "principal": 0,
+     "nonprin": 0,
+     "dump": 1,
+     "slack": 0
+    },
+    "led": [
+     [
+      0,
+      0,
+      1,
+      0,
+      0,
+      1,
+      2
+     ],
+     [
+      1,
+      0,
+      1,
+      0,
+      0,
+      1,
+      2
+     ],
+     [
+      2,
+      1,
+      3,
+      0,
+      1,
+      0,
+      3
+     ]
+    ]
+   }
+  },
+  {
+   "tag": "EQ3T3A",
+   "m": 3,
+   "kind": "Zp",
+   "g0": 1,
+   "d0": 1,
+   "key": [
+    587,
+    597
+   ],
+   "kdef": 2,
+   "c_top": 0,
+   "near": false,
+   "live": false,
+   "sig": [
+    2,
+    0,
+    3
+   ],
+   "su": {
+    "3": 1,
+    "2": 0,
+    "1": 0
+   },
+   "cs": [
+    1,
+    0
+   ],
+   "cP": [
+    1,
+    0
+   ],
+   "D": 4,
+   "stock1": 3,
+   "a_top": 0,
+   "b_top": 0,
+   "greedy_att": 0,
+   "cap1": 0,
+   "allg1": true,
+   "n_leaf1": 4,
+   "n_exit1": 2,
+   "n_leaf2": 2,
+   "n_cell": 0,
+   "maxpi_all": 1,
+   "maxpi_s2": 0,
+   "exc": 1,
+   "hist": {
+    "0": 7,
+    "1": 1
+   },
+   "invb1_terms": 0,
+   "invb2_terms": 0,
+   "inva_terms": 0,
+   "bft_terms": 2,
+   "invc_viol": true,
+   "dump_terms": 4,
+   "nonprin_terms": 0,
+   "max_dump_gap": null,
+   "argmax": {
+    "cls": "leaf1",
+    "pc": [
+     1,
+     1,
+     0
+    ],
+    "j": [
+     1,
+     0,
+     1
+    ],
+    "dmp": [
+     1,
+     1,
+     0
+    ],
+    "cons": [
+     2,
+     2,
+     3
+    ],
+    "ncorr": [
+     0,
+     0,
+     1
+    ],
+    "junk": 0,
+    "jD": null,
+    "principal": false,
+    "A_full": [
+     1,
+     1
+    ],
+    "A_nodump": [
+     1,
+     0
+    ],
+    "A_base": [
+     1,
+     0
+    ],
+    "chan": {
+     "principal": 0,
+     "nonprin": 0,
+     "dump": 1,
+     "slack": 0
+    },
+    "led": [
+     [
+      0,
+      1,
+      2,
+      0,
+      0,
+      1,
+      2
+     ],
+     [
+      1,
+      0,
+      0,
+      0,
+      1,
+      1,
+      2
+     ],
+     [
+      2,
+      1,
+      3,
+      0,
+      1,
+      0,
+      3
+     ]
+    ]
+   }
+  },
+  {
+   "tag": "EQ3T3A",
+   "m": 3,
+   "kind": "Zp",
+   "g0": 1,
+   "d0": 1,
+   "key": [
+    579,
+    581
+   ],
+   "kdef": 2,
+   "c_top": 1,
+   "near": true,
+   "live": false,
+   "sig": [
+    1,
+    2,
+    3
+   ],
+   "su": {
+    "3": 1,
+    "2": 0,
+    "1": 0
+   },
+   "cs": [
+    0,
+    1
+   ],
+   "cP": [
+    0,
+    1
+   ],
+   "D": 4,
+   "stock1": 4,
+   "a_top": 1,
+   "b_top": 0,
+   "greedy_att": 1,
+   "cap1": 1,
+   "allg1": true,
+   "n_leaf1": 7,
+   "n_exit1": 3,
+   "n_leaf2": 3,
+   "n_cell": 0,
+   "maxpi_all": 2,
+   "maxpi_s2": 1,
+   "exc": 1,
+   "hist": {
+    "0": 7,
+    "1": 5,
+    "2": 1
+   },
+   "invb1_terms": 0,
+   "invb2_terms": 0,
+   "inva_terms": 0,
+   "bft_terms": 8,
+   "invc_viol": true,
+   "dump_terms": 11,
+   "nonprin_terms": 0,
+   "max_dump_gap": null,
+   "argmax": {
+    "cls": "leaf1",
+    "pc": [
+     1,
+     2,
+     0
+    ],
+    "j": [
+     0,
+     0,
+     2
+    ],
+    "dmp": [
+     1,
+     1,
+     0
+    ],
+    "cons": [
+     2,
+     4,
+     3
+    ],
+    "ncorr": [
+     0,
+     0,
+     1
+    ],
+    "junk": 0,
+    "jD": null,
+    "principal": false,
+    "A_full": [
+     1,
+     2
+    ],
+    "A_nodump": [
+     0,
+     1
+    ],
+    "A_base": [
+     0,
+     1
+    ],
+    "chan": {
+     "principal": 1,
+     "nonprin": 0,
+     "dump": 1,
+     "slack": 0
+    },
+    "led": [
+     [
+      0,
+      0,
+      1,
+      0,
+      0,
+      1,
+      2
+     ],
+     [
+      1,
+      0,
+      2,
+      0,
+      1,
+      1,
+      4
+     ],
+     [
+      2,
+      2,
+      3,
+      0,
+      2,
+      0,
+      3
+     ]
+    ]
+   }
+  },
+  {
+   "tag": "EQ3T3A",
+   "m": 3,
+   "kind": "Zp",
+   "g0": 1,
+   "d0": 1,
+   "key": [
+    579,
+    587
+   ],
+   "kdef": 2,
+   "c_top": 1,
+   "near": true,
+   "live": false,
+   "sig": [
+    2,
+    1,
+    3
+   ],
+   "su": {
+    "3": 1,
+    "2": 0,
+    "1": 0
+   },
+   "cs": [
+    1,
+    1
+   ],
+   "cP": [
+    1,
+    1
+   ],
+   "D": 4,
+   "stock1": 4,
+   "a_top": 1,
+   "b_top": 0,
+   "greedy_att": 1,
+   "cap1": 1,
+   "allg1": true,
+   "n_leaf1": 7,
+   "n_exit1": 3,
+   "n_leaf2": 3,
+   "n_cell": 0,
+   "maxpi_all": 1,
+   "maxpi_s2": 1,
+   "exc": 0,
+   "hist": {
+    "0": 8,
+    "1": 5
+   },
+   "invb1_terms": 0,
+   "invb2_terms": 0,
+   "inva_terms": 0,
+   "bft_terms": 2,
+   "invc_viol": false,
+   "dump_terms": 9,
+   "nonprin_terms": 0,
+   "max_dump_gap": null,
+   "argmax": {
+    "cls": "leaf2",
+    "pc": [
+     1,
+     1,
+     1
+    ],
+    "j": [
+     0,
+     0,
+     2
+    ],
+    "dmp": [
+     0,
+     0,
+     0
+    ],
+    "cons": [
+     2,
+     2,
+     3
+    ],
+    "ncorr": [
+     0,
+     0,
+     0
+    ],
+    "junk": 0,
+    "jD": [
+     0,
+     0,
+     1
+    ],
+    "principal": true,
+    "A_full": [
+     1,
+     1
+    ],
+    "A_nodump": [
+     1,
+     1
+    ],
+    "A_base": [
+     1,
+     1
+    ],
+    "chan": {
+     "principal": 1,
+     "nonprin": 0,
+     "dump": 0,
+     "slack": 0
+    },
+    "led": [
+     [
+      0,
+      0,
+      2,
+      0,
+      0,
+      0,
+      2
+     ],
+     [
+      1,
+      0,
+      1,
+      0,
+      1,
+      0,
+      2
+     ],
+     [
+      2,
+      2,
+      3,
+      1,
+      1,
+      0,
+      3
+     ]
+    ]
+   }
+  },
+  {
+   "tag": "EQ3T3A",
+   "m": 3,
+   "kind": "Zp",
+   "g0": 1,
+   "d0": 1,
+   "key": [
+    579,
+    593
+   ],
+   "kdef": 2,
+   "c_top": 1,
+   "near": true,
+   "live": false,
+   "sig": [
+    2,
+    2,
+    3
+   ],
+   "su": {
+    "3": 1,
+    "2": 0,
+    "1": 0
+   },
+   "cs": [
+    1,
+    1
+   ],
+   "cP": [
+    1,
+    1
+   ],
+   "D": 4,
+   "stock1": 4,
+   "a_top": 1,
+   "b_top": 0,
+   "greedy_att": 1,
+   "cap1": 1,
+   "allg1": true,
+   "n_leaf1": 11,
+   "n_exit1": 4,
+   "n_leaf2": 4,
+   "n_cell": 0,
+   "maxpi_all": 2,
+   "maxpi_s2": 1,
+   "exc": 1,
+   "hist": {
+    "0": 8,
+    "1": 10,
+    "2": 1
+   },
+   "invb1_terms": 0,
+   "invb2_terms": 0,
+   "inva_terms": 0,
+   "bft_terms": 4,
+   "invc_viol": true,
+   "dump_terms": 15,
+   "nonprin_terms": 0,
+   "max_dump_gap": null,
+   "argmax": {
+    "cls": "leaf1",
+    "pc": [
+     1,
+     2,
+     0
+    ],
+    "j": [
+     1,
+     0,
+     2
+    ],
+    "dmp": [
+     1,
+     1,
+     0
+    ],
+    "cons": [
+     2,
+     4,
+     3
+    ],
+    "ncorr": [
+     0,
+     0,
+     1
+    ],
+    "junk": 0,
+    "jD": null,
+    "principal": false,
+    "A_full": [
+     1,
+     2
+    ],
+    "A_nodump": [
+     1,
+     1
+    ],
+    "A_base": [
+     1,
+     1
+    ],
+    "chan": {
+     "principal": 1,
+     "nonprin": 0,
+     "dump": 1,
+     "slack": 0
+    },
+    "led": [
+     [
+      0,
+      1,
+      2,
+      0,
+      0,
+      1,
+      2
+     ],
+     [
+      1,
+      0,
+      2,
+      0,
+      1,
+      1,
+      4
+     ],
+     [
+      2,
+      2,
+      3,
+      0,
+      2,
+      0,
+      3
+     ]
+    ]
+   }
+  },
+  {
+   "tag": "EQ3T3A",
+   "m": 3,
+   "kind": "Zp",
+   "g0": 1,
+   "d0": 1,
+   "key": [
+    581,
+    591
+   ],
+   "kdef": 2,
+   "c_top": 1,
+   "near": true,
+   "live": false,
+   "sig": [
+    0,
+    2,
+    3
+   ],
+   "su": {
+    "3": 1,
+    "2": 0,
+    "1": 0
+   },
+   "cs": [
+    0,
+    1
+   ],
+   "cP": [
+    0,
+    1
+   ],
+   "D": 4,
+   "stock1": 4,
+   "a_top": 1,
+   "b_top": 0,
+   "greedy_att": 1,
+   "cap1": 1,
+   "allg1": true,
+   "n_leaf1": 4,
+   "n_exit1": 2,
+   "n_leaf2": 2,
+   "n_cell": 0,
+   "maxpi_all": 1,
+   "maxpi_s2": 1,
+   "exc": 0,
+   "hist": {
+    "0": 4,
+    "1": 4
+   },
+   "invb1_terms": 0,
+   "invb2_terms": 0,
+   "inva_terms": 0,
+   "bft_terms": 2,
+   "invc_viol": false,
+   "dump_terms": 6,
+   "nonprin_terms": 0,
+   "max_dump_gap": null,
+   "argmax": {
+    "cls": "leaf2",
+    "pc": [
+     0,
+     1,
+     1
+    ],
+    "j": [
+     0,
+     0,
+     2
+    ],
+    "dmp": [
+     0,
+     0,
+     0
+    ],
+    "cons": [
+     0,
+     2,
+     3
+    ],
+    "ncorr": [
+     0,
+     0,
+     0
+    ],
+    "junk": 0,
+    "jD": [
+     0,
+     0,
+     1
+    ],
+    "principal": true,
+    "A_full": [
+     0,
+     1
+    ],
+    "A_nodump": [
+     0,
+     1
+    ],
+    "A_base": [
+     0,
+     1
+    ],
+    "chan": {
+     "principal": 1,
+     "nonprin": 0,
+     "dump": 0,
+     "slack": 0
+    },
+    "led": [
+     [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+     ],
+     [
+      1,
+      0,
+      2,
+      0,
+      0,
+      0,
+      2
+     ],
+     [
+      2,
+      2,
+      3,
+      1,
+      1,
+      0,
+      3
+     ]
+    ]
+   }
+  },
+  {
+   "tag": "EQ3T3A",
+   "m": 3,
+   "kind": "Zp",
+   "g0": 1,
+   "d0": 1,
+   "key": [
+    591,
+    593
+   ],
+   "kdef": 2,
+   "c_top": 1,
+   "near": true,
+   "live": false,
+   "sig": [
+    1,
+    2,
+    3
+   ],
+   "su": {
+    "3": 1,
+    "2": 0,
+    "1": 0
+   },
+   "cs": [
+    0,
+    1
+   ],
+   "cP": [
+    0,
+    1
+   ],
+   "D": 4,
+   "stock1": 4,
+   "a_top": 1,
+   "b_top": 0,
+   "greedy_att": 1,
+   "cap1": 1,
+   "allg1": true,
+   "n_leaf1": 7,
+   "n_exit1": 3,
+   "n_leaf2": 3,
+   "n_cell": 0,
+   "maxpi_all": 2,
+   "maxpi_s2": 1,
+   "exc": 1,
+   "hist": {
+    "0": 7,
+    "1": 5,
+    "2": 1
+   },
+   "invb1_terms": 0,
+   "invb2_terms": 0,
+   "inva_terms": 0,
+   "bft_terms": 8,
+   "invc_viol": true,
+   "dump_terms": 11,
+   "nonprin_terms": 0,
+   "max_dump_gap": null,
+   "argmax": {
+    "cls": "leaf1",
+    "pc": [
+     1,
+     2,
+     0
+    ],
+    "j": [
+     0,
+     0,
+     2
+    ],
+    "dmp": [
+     1,
+     1,
+     0
+    ],
+    "cons": [
+     2,
+     4,
+     3
+    ],
+    "ncorr": [
+     0,
+     0,
+     1
+    ],
+    "junk": 0,
+    "jD": null,
+    "principal": false,
+    "A_full": [
+     1,
+     2
+    ],
+    "A_nodump": [
+     0,
+     1
+    ],
+    "A_base": [
+     0,
+     1
+    ],
+    "chan": {
+     "principal": 1,
+     "nonprin": 0,
+     "dump": 1,
+     "slack": 0
+    },
+    "led": [
+     [
+      0,
+      0,
+      1,
+      0,
+      0,
+      1,
+      2
+     ],
+     [
+      1,
+      0,
+      2,
+      0,
+      1,
+      1,
+      4
+     ],
+     [
+      2,
+      2,
+      3,
+      0,
+      2,
+      0,
+      3
+     ]
+    ]
+   }
+  },
+  {
+   "tag": "EQ3T3A",
+   "m": 3,
+   "kind": "Zp",
+   "g0": 1,
+   "d0": 1,
+   "key": [
+    593,
+    597
+   ],
+   "kdef": 2,
+   "c_top": 1,
+   "near": true,
+   "live": false,
+   "sig": [
+    2,
+    1,
+    3
+   ],
+   "su": {
+    "3": 1,
+    "2": 0,
+    "1": 0
+   },
+   "cs": [
+    1,
+    1
+   ],
+   "cP": [
+    1,
+    1
+   ],
+   "D": 4,
+   "stock1": 4,
+   "a_top": 1,
+   "b_top": 0,
+   "greedy_att": 1,
+   "cap1": 1,
+   "allg1": true,
+   "n_leaf1": 7,
+   "n_exit1": 3,
+   "n_leaf2": 3,
+   "n_cell": 0,
+   "maxpi_all": 1,
+   "maxpi_s2": 1,
+   "exc": 0,
+   "hist": {
+    "0": 8,
+    "1": 5
+   },
+   "invb1_terms": 0,
+   "invb2_terms": 0,
+   "inva_terms": 0,
+   "bft_terms": 2,
+   "invc_viol": false,
+   "dump_terms": 9,
+   "nonprin_terms": 0,
+   "max_dump_gap": null,
+   "argmax": {
+    "cls": "leaf2",
+    "pc": [
+     1,
+     1,
+     1
+    ],
+    "j": [
+     0,
+     0,
+     2
+    ],
+    "dmp": [
+     0,
+     0,
+     0
+    ],
+    "cons": [
+     2,
+     2,
+     3
+    ],
+    "ncorr": [
+     0,
+     0,
+     0
+    ],
+    "junk": 0,
+    "jD": [
+     0,
+     0,
+     1
+    ],
+    "principal": true,
+    "A_full": [
+     1,
+     1
+    ],
+    "A_nodump": [
+     1,
+     1
+    ],
+    "A_base": [
+     1,
+     1
+    ],
+    "chan": {
+     "principal": 1,
+     "nonprin": 0,
+     "dump": 0,
+     "slack": 0
+    },
+    "led": [
+     [
+      0,
+      0,
+      2,
+      0,
+      0,
+      0,
+      2
+     ],
+     [
+      1,
+      0,
+      1,
+      0,
+      1,
+      0,
+      2
+     ],
+     [
+      2,
+      2,
+      3,
+      1,
+      1,
+      0,
+      3
+     ]
+    ]
+   }
+  },
+  {
+   "tag": "EQ3T3A",
+   "m": 3,
+   "kind": "Zp",
+   "g0": 1,
+   "d0": 1,
+   "key": [
+    577,
+    581
+   ],
+   "kdef": 3,
+   "c_top": 1,
+   "near": false,
+   "live": false,
+   "sig": [
+    0,
+    2,
+    2
+   ],
+   "su": {
+    "3": 1,
+    "2": 0,
+    "1": 0
+   },
+   "cs": [
+    0,
+    1
+   ],
+   "cP": [
+    0,
+    1
+   ],
+   "D": 3,
+   "stock1": 3,
+   "a_top": 1,
+   "b_top": 0,
+   "greedy_att": 1,
+   "cap1": 1,
+   "allg1": true,
+   "n_leaf1": 2,
+   "n_exit1": 1,
+   "n_leaf2": 1,
+   "n_cell": 0,
+   "maxpi_all": 1,
+   "maxpi_s2": 1,
+   "exc": 0,
+   "hist": {
+    "0": 1,
+    "1": 3
+   },
+   "invb1_terms": 0,
+   "invb2_terms": 0,
+   "inva_terms": 0,
+   "bft_terms": 0,
+   "invc_viol": false,
+   "dump_terms": 2,
+   "nonprin_terms": 0,
+   "max_dump_gap": null,
+   "argmax": {
+    "cls": "leaf2",
+    "pc": [
+     0,
+     1,
+     1
+    ],
+    "j": [
+     0,
+     0,
+     1
+    ],
+    "dmp": [
+     0,
+     0,
+     0
+    ],
+    "cons": [
+     0,
+     2,
+     3
+    ],
+    "ncorr": [
+     0,
+     0,
+     0
+    ],
+    "junk": 0,
+    "jD": [
+     0,
+     0,
+     1
+    ],
+    "principal": true,
+    "A_full": [
+     0,
+     1
+    ],
+    "A_nodump": [
+     0,
+     1
+    ],
+    "A_base": [
+     0,
+     1
+    ],
+    "chan": {
+     "principal": 1,
+     "nonprin": 0,
+     "dump": 0,
+     "slack": 0
+    },
+    "led": [
+     [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+     ],
+     [
+      1,
+      0,
+      2,
+      0,
+      0,
+      0,
+      2
+     ],
+     [
+      2,
+      1,
+      2,
+      1,
+      1,
+      0,
+      3
+     ]
+    ]
+   }
+  },
+  {
+   "tag": "EQ3T3A",
+   "m": 3,
+   "kind": "Zp",
+   "g0": 1,
+   "d0": 1,
+   "key": [
+    577,
+    593
+   ],
+   "kdef": 3,
+   "c_top": 1,
+   "near": false,
+   "live": false,
+   "sig": [
+    1,
+    2,
+    2
+   ],
+   "su": {
+    "3": 1,
+    "2": 0,
+    "1": 0
+   },
+   "cs": [
+    0,
+    1
+   ],
+   "cP": [
+    0,
+    1
+   ],
+   "D": 3,
+   "stock1": 3,
+   "a_top": 1,
+   "b_top": 0,
+   "greedy_att": 1,
+   "cap1": 1,
+   "allg1": true,
+   "n_leaf1": 5,
+   "n_exit1": 1,
+   "n_leaf2": 1,
+   "n_cell": 0,
+   "maxpi_all": 2,
+   "maxpi_s2": 1,
+   "exc": 1,
+   "hist": {
+    "0": 2,
+    "1": 4,
+    "2": 1
+   },
+   "invb1_terms": 0,
+   "invb2_terms": 0,
+   "inva_terms": 0,
+   "bft_terms": 4,
+   "invc_viol": true,
+   "dump_terms": 5,
+   "nonprin_terms": 0,
+   "max_dump_gap": null,
+   "argmax": {
+    "cls": "leaf1",
+    "pc": [
+     1,
+     2,
+     0
+    ],
+    "j": [
+     0,
+     0,
+     1
+    ],
+    "dmp": [
+     1,
+     1,
+     0
+    ],
+    "cons": [
+     2,
+     4,
+     3
+    ],
+    "ncorr": [
+     0,
+     0,
+     1
+    ],
+    "junk": 0,
+    "jD": null,
+    "principal": false,
+    "A_full": [
+     1,
+     2
+    ],
+    "A_nodump": [
+     0,
+     1
+    ],
+    "A_base": [
+     0,
+     1
+    ],
+    "chan": {
+     "principal": 1,
+     "nonprin": 0,
+     "dump": 1,
+     "slack": 0
+    },
+    "led": [
+     [
+      0,
+      0,
+      1,
+      0,
+      0,
+      1,
+      2
+     ],
+     [
+      1,
+      0,
+      2,
+      0,
+      1,
+      1,
+      4
+     ],
+     [
+      2,
+      1,
+      2,
+      0,
+      2,
+      0,
+      3
+     ]
+    ]
+   }
+  },
+  {
+   "tag": "EQ3T3A",
+   "m": 3,
+   "kind": "Zp",
+   "g0": 1,
+   "d0": 1,
+   "key": [
+    579,
+    579
+   ],
+   "kdef": 3,
+   "c_top": 1,
+   "near": false,
+   "live": false,
+   "sig": [
+    2,
+    2,
+    2
+   ],
+   "su": {
+    "3": 1,
+    "2": 0,
+    "1": 0
+   },
+   "cs": [
+    1,
+    1
+   ],
+   "cP": [
+    1,
+    1
+   ],
+   "D": 3,
+   "stock1": 3,
+   "a_top": 1,
+   "b_top": 0,
+   "greedy_att": 1,
+   "cap1": 1,
+   "allg1": true,
+   "n_leaf1": 6,
+   "n_exit1": 2,
+   "n_leaf2": 2,
+   "n_cell": 0,
+   "maxpi_all": 2,
+   "maxpi_s2": 1,
+   "exc": 1,
+   "hist": {
+    "0": 2,
+    "1": 7,
+    "2": 1
+   },
+   "invb1_terms": 0,
+   "invb2_terms": 0,
+   "inva_terms": 0,
+   "bft_terms": 2,
+   "invc_viol": true,
+   "dump_terms": 6,
+   "nonprin_terms": 0,
+   "max_dump_gap": null,
+   "argmax": {
+    "cls": "leaf1",
+    "pc": [
+     1,
+     2,
+     0
+    ],
+    "j": [
+     1,
+     0,
+     1
+    ],
+    "dmp": [
+     1,
+     1,
+     0
+    ],
+    "cons": [
+     2,
+     4,
+     3
+    ],
+    "ncorr": [
+     0,
+     0,
+     1
+    ],
+    "junk": 0,
+    "jD": null,
+    "principal": false,
+    "A_full": [
+     1,
+     2
+    ],
+    "A_nodump": [
+     1,
+     1
+    ],
+    "A_base": [
+     1,
+     1
+    ],
+    "chan": {
+     "principal": 1,
+     "nonprin": 0,
+     "dump": 1,
+     "slack": 0
+    },
+    "led": [
+     [
+      0,
+      1,
+      2,
+      0,
+      0,
+      1,
+      2
+     ],
+     [
+      1,
+      0,
+      2,
+      0,
+      1,
+      1,
+      4
+     ],
+     [
+      2,
+      1,
+      2,
+      0,
+      2,
+      0,
+      3
+     ]
+    ]
+   }
+  },
+  {
+   "tag": "EQ3T3A",
+   "m": 3,
+   "kind": "Zp",
+   "g0": 1,
+   "d0": 1,
+   "key": [
+    579,
+    591
+   ],
+   "kdef": 3,
+   "c_top": 1,
+   "near": false,
+   "live": false,
+   "sig": [
+    1,
+    2,
+    2
+   ],
+   "su": {
+    "3": 1,
+    "2": 0,
+    "1": 0
+   },
+   "cs": [
+    0,
+    1
+   ],
+   "cP": [
+    0,
+    1
+   ],
+   "D": 3,
+   "stock1": 3,
+   "a_top": 1,
+   "b_top": 0,
+   "greedy_att": 1,
+   "cap1": 1,
+   "allg1": true,
+   "n_leaf1": 5,
+   "n_exit1": 1,
+   "n_leaf2": 1,
+   "n_cell": 0,
+   "maxpi_all": 2,
+   "maxpi_s2": 1,
+   "exc": 1,
+   "hist": {
+    "0": 2,
+    "1": 4,
+    "2": 1
+   },
+   "invb1_terms": 0,
+   "invb2_terms": 0,
+   "inva_terms": 0,
+   "bft_terms": 4,
+   "invc_viol": true,
+   "dump_terms": 5,
+   "nonprin_terms": 0,
+   "max_dump_gap": null,
+   "argmax": {
+    "cls": "leaf1",
+    "pc": [
+     1,
+     2,
+     0
+    ],
+    "j": [
+     0,
+     0,
+     1
+    ],
+    "dmp": [
+     1,
+     1,
+     0
+    ],
+    "cons": [
+     2,
+     4,
+     3
+    ],
+    "ncorr": [
+     0,
+     0,
+     1
+    ],
+    "junk": 0,
+    "jD": null,
+    "principal": false,
+    "A_full": [
+     1,
+     2
+    ],
+    "A_nodump": [
+     0,
+     1
+    ],
+    "A_base": [
+     0,
+     1
+    ],
+    "chan": {
+     "principal": 1,
+     "nonprin": 0,
+     "dump": 1,
+     "slack": 0
+    },
+    "led": [
+     [
+      0,
+      0,
+      1,
+      0,
+      0,
+      1,
+      2
+     ],
+     [
+      1,
+      0,
+      2,
+      0,
+      1,
+      1,
+      4
+     ],
+     [
+      2,
+      1,
+      2,
+      0,
+      2,
+      0,
+      3
+     ]
+    ]
+   }
+  },
+  {
+   "tag": "EQ3T3A",
+   "m": 3,
+   "kind": "Zp",
+   "g0": 1,
+   "d0": 1,
+   "key": [
+    579,
+    597
+   ],
+   "kdef": 3,
+   "c_top": 1,
+   "near": false,
+   "live": false,
+   "sig": [
+    2,
+    1,
+    2
+   ],
+   "su": {
+    "3": 1,
+    "2": 0,
+    "1": 0
+   },
+   "cs": [
+    1,
+    1
+   ],
+   "cP": [
+    1,
+    1
+   ],
+   "D": 3,
+   "stock1": 3,
+   "a_top": 1,
+   "b_top": 0,
+   "greedy_att": 1,
+   "cap1": 1,
+   "allg1": true,
+   "n_leaf1": 3,
+   "n_exit1": 1,
+   "n_leaf2": 1,
+   "n_cell": 0,
+   "maxpi_all": 1,
+   "maxpi_s2": 1,
+   "exc": 0,
+   "hist": {
+    "0": 2,
+    "1": 3
+   },
+   "invb1_terms": 0,
+   "invb2_terms": 0,
+   "inva_terms": 0,
+   "bft_terms": 0,
+   "invc_viol": false,
+   "dump_terms": 2,
+   "nonprin_terms": 0,
+   "max_dump_gap": null,
+   "argmax": {
+    "cls": "leaf2",
+    "pc": [
+     1,
+     1,
+     1
+    ],
+    "j": [
+     0,
+     0,
+     1
+    ],
+    "dmp": [
+     0,
+     0,
+     0
+    ],
+    "cons": [
+     2,
+     2,
+     3
+    ],
+    "ncorr": [
+     0,
+     0,
+     0
+    ],
+    "junk": 0,
+    "jD": [
+     0,
+     0,
+     1
+    ],
+    "principal": true,
+    "A_full": [
+     1,
+     1
+    ],
+    "A_nodump": [
+     1,
+     1
+    ],
+    "A_base": [
+     1,
+     1
+    ],
+    "chan": {
+     "principal": 1,
+     "nonprin": 0,
+     "dump": 0,
+     "slack": 0
+    },
+    "led": [
+     [
+      0,
+      0,
+      2,
+      0,
+      0,
+      0,
+      2
+     ],
+     [
+      1,
+      0,
+      1,
+      0,
+      1,
+      0,
+      2
+     ],
+     [
+      2,
+      1,
+      2,
+      1,
+      1,
+      0,
+      3
+     ]
+    ]
+   }
+  },
+  {
+   "tag": "EQ3T3A",
+   "m": 3,
+   "kind": "Zp",
+   "g0": 1,
+   "d0": 1,
+   "key": [
+    581,
+    589
+   ],
+   "kdef": 3,
+   "c_top": 1,
+   "near": false,
+   "live": false,
+   "sig": [
+    1,
+    2,
+    2
+   ],
+   "su": {
+    "3": 1,
+    "2": 0,
+    "1": 0
+   },
+   "cs": [
+    0,
+    1
+   ],
+   "cP": [
+    0,
+    1
+   ],
+   "D": 3,
+   "stock1": 3,
+   "a_top": 1,
+   "b_top": 0,
+   "greedy_att": 1,
+   "cap1": 1,
+   "allg1": true,
+   "n_leaf1": 5,
+   "n_exit1": 1,
+   "n_leaf2": 1,
+   "n_cell": 0,
+   "maxpi_all": 2,
+   "maxpi_s2": 1,
+   "exc": 1,
+   "hist": {
+    "0": 2,
+    "1": 4,
+    "2": 1
+   },
+   "invb1_terms": 0,
+   "invb2_terms": 0,
+   "inva_terms": 0,
+   "bft_terms": 4,
+   "invc_viol": true,
+   "dump_terms": 5,
+   "nonprin_terms": 0,
+   "max_dump_gap": null,
+   "argmax": {
+    "cls": "leaf1",
+    "pc": [
+     1,
+     2,
+     0
+    ],
+    "j": [
+     0,
+     0,
+     1
+    ],
+    "dmp": [
+     1,
+     1,
+     0
+    ],
+    "cons": [
+     2,
+     4,
+     3
+    ],
+    "ncorr": [
+     0,
+     0,
+     1
+    ],
+    "junk": 0,
+    "jD": null,
+    "principal": false,
+    "A_full": [
+     1,
+     2
+    ],
+    "A_nodump": [
+     0,
+     1
+    ],
+    "A_base": [
+     0,
+     1
+    ],
+    "chan": {
+     "principal": 1,
+     "nonprin": 0,
+     "dump": 1,
+     "slack": 0
+    },
+    "led": [
+     [
+      0,
+      0,
+      1,
+      0,
+      0,
+      1,
+      2
+     ],
+     [
+      1,
+      0,
+      2,
+      0,
+      1,
+      1,
+      4
+     ],
+     [
+      2,
+      1,
+      2,
+      0,
+      2,
+      0,
+      3
+     ]
+    ]
+   }
+  },
+  {
+   "tag": "EQ3T3A",
+   "m": 3,
+   "kind": "Zp",
+   "g0": 1,
+   "d0": 1,
+   "key": [
+    583,
+    593
+   ],
+   "kdef": 3,
+   "c_top": 1,
+   "near": false,
+   "live": false,
+   "sig": [
+    2,
+    1,
+    2
+   ],
+   "su": {
+    "3": 1,
+    "2": 0,
+    "1": 0
+   },
+   "cs": [
+    1,
+    1
+   ],
+   "cP": [
+    1,
+    1
+   ],
+   "D": 3,
+   "stock1": 3,
+   "a_top": 1,
+   "b_top": 0,
+   "greedy_att": 1,
+   "cap1": 1,
+   "allg1": true,
+   "n_leaf1": 3,
+   "n_exit1": 1,
+   "n_leaf2": 1,
+   "n_cell": 0,
+   "maxpi_all": 1,
+   "maxpi_s2": 1,
+   "exc": 0,
+   "hist": {
+    "0": 2,
+    "1": 3
+   },
+   "invb1_terms": 0,
+   "invb2_terms": 0,
+   "inva_terms": 0,
+   "bft_terms": 0,
+   "invc_viol": false,
+   "dump_terms": 2,
+   "nonprin_terms": 0,
+   "max_dump_gap": null,
+   "argmax": {
+    "cls": "leaf2",
+    "pc": [
+     1,
+     1,
+     1
+    ],
+    "j": [
+     0,
+     0,
+     1
+    ],
+    "dmp": [
+     0,
+     0,
+     0
+    ],
+    "cons": [
+     2,
+     2,
+     3
+    ],
+    "ncorr": [
+     0,
+     0,
+     0
+    ],
+    "junk": 0,
+    "jD": [
+     0,
+     0,
+     1
+    ],
+    "principal": true,
+    "A_full": [
+     1,
+     1
+    ],
+    "A_nodump": [
+     1,
+     1
+    ],
+    "A_base": [
+     1,
+     1
+    ],
+    "chan": {
+     "principal": 1,
+     "nonprin": 0,
+     "dump": 0,
+     "slack": 0
+    },
+    "led": [
+     [
+      0,
+      0,
+      2,
+      0,
+      0,
+      0,
+      2
+     ],
+     [
+      1,
+      0,
+      1,
+      0,
+      1,
+      0,
+      2
+     ],
+     [
+      2,
+      1,
+      2,
+      1,
+      1,
+      0,
+      3
+     ]
+    ]
+   }
+  },
+  {
+   "tag": "EQ3T3A",
+   "m": 3,
+   "kind": "Zp",
+   "g0": 1,
+   "d0": 1,
+   "key": [
+    587,
+    589
+   ],
+   "kdef": 3,
+   "c_top": 1,
+   "near": false,
+   "live": false,
+   "sig": [
+    2,
+    1,
+    2
+   ],
+   "su": {
+    "3": 1,
+    "2": 0,
+    "1": 0
+   },
+   "cs": [
+    1,
+    1
+   ],
+   "cP": [
+    1,
+    1
+   ],
+   "D": 3,
+   "stock1": 3,
+   "a_top": 1,
+   "b_top": 0,
+   "greedy_att": 1,
+   "cap1": 1,
+   "allg1": true,
+   "n_leaf1": 3,
+   "n_exit1": 1,
+   "n_leaf2": 1,
+   "n_cell": 0,
+   "maxpi_all": 1,
+   "maxpi_s2": 1,
+   "exc": 0,
+   "hist": {
+    "0": 2,
+    "1": 3
+   },
+   "invb1_terms": 0,
+   "invb2_terms": 0,
+   "inva_terms": 0,
+   "bft_terms": 0,
+   "invc_viol": false,
+   "dump_terms": 2,
+   "nonprin_terms": 0,
+   "max_dump_gap": null,
+   "argmax": {
+    "cls": "leaf2",
+    "pc": [
+     1,
+     1,
+     1
+    ],
+    "j": [
+     0,
+     0,
+     1
+    ],
+    "dmp": [
+     0,
+     0,
+     0
+    ],
+    "cons": [
+     2,
+     2,
+     3
+    ],
+    "ncorr": [
+     0,
+     0,
+     0
+    ],
+    "junk": 0,
+    "jD": [
+     0,
+     0,
+     1
+    ],
+    "principal": true,
+    "A_full": [
+     1,
+     1
+    ],
+    "A_nodump": [
+     1,
+     1
+    ],
+    "A_base": [
+     1,
+     1
+    ],
+    "chan": {
+     "principal": 1,
+     "nonprin": 0,
+     "dump": 0,
+     "slack": 0
+    },
+    "led": [
+     [
+      0,
+      0,
+      2,
+      0,
+      0,
+      0,
+      2
+     ],
+     [
+      1,
+      0,
+      1,
+      0,
+      1,
+      0,
+      2
+     ],
+     [
+      2,
+      1,
+      2,
+      1,
+      1,
+      0,
+      3
+     ]
+    ]
+   }
+  },
+  {
+   "tag": "EQ3T3A",
+   "m": 3,
+   "kind": "Zp",
+   "g0": 1,
+   "d0": 1,
+   "key": [
+    587,
+    593
+   ],
+   "kdef": 1,
+   "c_top": 1,
+   "near": false,
+   "live": true,
+   "sig": [
+    2,
+    1,
+    4
+   ],
+   "su": {
+    "3": 1,
+    "2": 0,
+    "1": 0
+   },
+   "cs": [
+    1,
+    1
+   ],
+   "cP": [
+    1,
+    1
+   ],
+   "D": 5,
+   "stock1": 5,
+   "a_top": 1,
+   "b_top": 0,
+   "greedy_att": 1,
+   "cap1": 1,
+   "allg1": true,
+   "n_leaf1": 7,
+   "n_exit1": 3,
+   "n_leaf2": 3,
+   "n_cell": 1,
+   "maxpi_all": 1,
+   "maxpi_s2": 1,
+   "exc": 0,
+   "hist": {
+    "0": 8,
+    "1": 6
+   },
+   "invb1_terms": 0,
+   "invb2_terms": 0,
+   "inva_terms": 0,
+   "bft_terms": 0,
+   "invc_viol": false,
+   "dump_terms": 10,
+   "nonprin_terms": 0,
+   "max_dump_gap": null,
+   "argmax": {
+    "cls": "cell",
+    "pc": [
+     1,
+     1,
+     2
+    ],
+    "j": [
+     0,
+     0,
+     0
+    ],
+    "dmp": [
+     0,
+     0,
+     0
+    ],
+    "cons": [
+     2,
+     2,
+     6
+    ],
+    "ncorr": [
+     0,
+     0,
+     0
+    ],
+    "junk": 0,
+    "jD": [
+     0,
+     0,
+     1
+    ],
+    "principal": true,
+    "A_full": [
+     1,
+     1
+    ],
+    "A_nodump": [
+     1,
+     1
+    ],
+    "A_base": [
+     1,
+     1
+    ],
+    "chan": {
+     "principal": 1,
+     "nonprin": 0,
+     "dump": 0,
+     "slack": 0
+    },
+    "led": [
+     [
+      0,
+      0,
+      2,
+      0,
+      0,
+      0,
+      2
+     ],
+     [
+      1,
+      0,
+      1,
+      0,
+      1,
+      0,
+      2
+     ],
+     [
+      2,
+      0,
+      4,
+      1,
+      1,
+      0,
+      6
+     ]
+    ]
+   }
+  },
+  {
+   "tag": "EQ3T3A",
+   "m": 3,
+   "kind": "Zp",
+   "g0": 1,
+   "d0": 1,
+   "key": [
+    593,
+    593
+   ],
+   "kdef": 1,
+   "c_top": 1,
+   "near": false,
+   "live": true,
+   "sig": [
+    2,
+    2,
+    4
+   ],
+   "su": {
+    "3": 1,
+    "2": 0,
+    "1": 0
+   },
+   "cs": [
+    1,
+    1
+   ],
+   "cP": [
+    1,
+    1
+   ],
+   "D": 5,
+   "stock1": 5,
+   "a_top": 1,
+   "b_top": 0,
+   "greedy_att": 1,
+   "cap1": 1,
+   "allg1": true,
+   "n_leaf1": 13,
+   "n_exit1": 5,
+   "n_leaf2": 7,
+   "n_cell": 2,
+   "maxpi_all": 3,
+   "maxpi_s2": 2,
+   "exc": 2,
+   "hist": {
+    "0": 8,
+    "1": 13,
+    "2": 5,
+    "3": 1
+   },
+   "invb1_terms": 0,
+   "invb2_terms": 0,
+   "inva_terms": 0,
+   "bft_terms": 0,
+   "invc_viol": true,
+   "dump_terms": 23,
+   "nonprin_terms": 0,
+   "max_dump_gap": null,
+   "argmax": {
+    "cls": "leaf1",
+    "pc": [
+     2,
+     3,
+     0
+    ],
+    "j": [
+     0,
+     0,
+     1
+    ],
+    "dmp": [
+     2,
+     2,
+     0
+    ],
+    "cons": [
+     4,
+     6,
+     6
+    ],
+    "ncorr": [
+     0,
+     0,
+     2
+    ],
+    "junk": 0,
+    "jD": null,
+    "principal": false,
+    "A_full": [
+     2,
+     3
+    ],
+    "A_nodump": [
+     1,
+     1
+    ],
+    "A_base": [
+     1,
+     1
+    ],
+    "chan": {
+     "principal": 1,
+     "nonprin": 0,
+     "dump": 2,
+     "slack": 0
+    },
+    "led": [
+     [
+      0,
+      0,
+      2,
+      0,
+      0,
+      2,
+      4
+     ],
+     [
+      1,
+      0,
+      2,
+      0,
+      2,
+      2,
+      6
+     ],
+     [
+      2,
+      1,
+      4,
+      0,
+      3,
+      0,
+      6
+     ]
+    ]
+   }
+  },
+  {
+   "tag": "EQ3T3A",
+   "m": 3,
+   "kind": "Zp",
+   "g0": 1,
+   "d0": 1,
+   "key": [
+    581,
+    581
+   ],
+   "kdef": 1,
+   "c_top": 1,
+   "near": false,
+   "live": true,
+   "sig": [
+    0,
+    2,
+    4
+   ],
+   "su": {
+    "3": 1,
+    "2": 0,
+    "1": 0
+   },
+   "cs": [
+    0,
+    1
+   ],
+   "cP": [
+    0,
+    1
+   ],
+   "D": 5,
+   "stock1": 5,
+   "a_top": 1,
+   "b_top": 0,
+   "greedy_att": 1,
+   "cap1": 1,
+   "allg1": true,
+   "n_leaf1": 4,
+   "n_exit1": 2,
+   "n_leaf2": 2,
+   "n_cell": 1,
+   "maxpi_all": 1,
+   "maxpi_s2": 1,
+   "exc": 0,
+   "hist": {
+    "0": 4,
+    "1": 5
+   },
+   "invb1_terms": 0,
+   "invb2_terms": 0,
+   "inva_terms": 0,
+   "bft_terms": 0,
+   "invc_viol": false,
+   "dump_terms": 7,
+   "nonprin_terms": 0,
+   "max_dump_gap": null,
+   "argmax": {
+    "cls": "cell",
+    "pc": [
+     0,
+     1,
+     2
+    ],
+    "j": [
+     0,
+     0,
+     0
+    ],
+    "dmp": [
+     0,
+     0,
+     0
+    ],
+    "cons": [
+     0,
+     2,
+     6
+    ],
+    "ncorr": [
+     0,
+     0,
+     0
+    ],
+    "junk": 0,
+    "jD": [
+     0,
+     0,
+     1
+    ],
+    "principal": true,
+    "A_full": [
+     0,
+     1
+    ],
+    "A_nodump": [
+     0,
+     1
+    ],
+    "A_base": [
+     0,
+     1
+    ],
+    "chan": {
+     "principal": 1,
+     "nonprin": 0,
+     "dump": 0,
+     "slack": 0
+    },
+    "led": [
+     [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+     ],
+     [
+      1,
+      0,
+      2,
+      0,
+      0,
+      0,
+      2
+     ],
+     [
+      2,
+      0,
+      4,
+      1,
+      1,
+      0,
+      6
+     ]
+    ]
+   }
+  }
+ ],
+ "provenance": {
+  "empty_instrument.py": "abe2dafea2f4b891d3b4bc0c49bcdfeb",
+  "wmultdcx_stress.py": "15315cca59c87e6c2001ea744c50aab5",
+  "wmultdcx_derive_checks.py": "bea1a43d619a3c91a9a0b2f32c0920c0",
+  "rmengine_pe_reimpl.py": "103c1a9c99e2b4a3e8b63c93cbf87e25",
+  "grb_order2_check.py": "dab62713175363a7185211890019ae2f"
+ },
+ "elapsed": 0.022902965545654297
+}
