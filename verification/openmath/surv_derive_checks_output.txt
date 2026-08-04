@@ -1,0 +1,88 @@
+==============================================================================
+(SURV-(m+1))(i) derive checks — SEALED phase (the 412-row selection)
+==============================================================================
+-- SEALED W3DEEP m=3 Zp,p=3,d0=1 g0=1: traced=36 live=16 cells=35 (0.0s)
+-- SEALED W3DEEP4 m=3 Zp,p=3,d0=1 g0=1: traced=40 live=40 cells=137 (0.1s)
+-- SEALED W3NEST m=3 Zp,p=3,d0=1 g0=1: traced=16 live=12 cells=28 (0.0s)
+-- SEALED W3NESTF m=3 Fpt,p=2,d0=1 g0=1: traced=16 live=12 cells=28 (0.0s)
+-- SEALED W3FMID m=3 Zp,p=3,d0=1 g0=1: traced=4 live=2 cells=3 (0.0s)
+-- SEALED W3FTOP m=3 Zp,p=3,d0=1 g0=1: traced=4 live=2 cells=4 (0.0s)
+-- SEALED W3FDBL m=3 Zp,p=3,d0=1 g0=1: traced=2 live=1 cells=1 (0.0s)
+-- SEALED W3FMIDF m=3 Fpt,p=2,d0=1 g0=1: traced=4 live=2 cells=3 (0.0s)
+-- SEALED W3TRK1 m=3 Zp,p=3,d0=1 g0=1: traced=36 live=30 cells=90 (0.0s)
+-- SEALED W3DIR m=3 Zp,p=3,d0=1 g0=1: traced=36 live=30 cells=89 (0.0s)
+-- SEALED W3G2A m=3 Zp,p=3,d0=1 g0=2: traced=30 live=28 cells=134 (0.1s)
+-- SEALED W3G2B m=3 Zp,p=3,d0=2 g0=2: traced=33 live=20 cells=77 (0.1s)
+-- SEALED W3G2P5 m=3 Zp,p=5,d0=2 g0=2: traced=14 live=4 cells=10 (0.1s)
+  CANCGRADE [W3DEEPF[663, 667]]: bottom beta_min=456 netted to ZERO; surviving spectrum head=[(458, [0, 1, 0], 1)] w_m(Q1)=458 cascade_slot_min=True
+-- SEALED W3DEEPF m=3 Fpt,p=2,d0=1 g0=1: traced=36 live=16 cells=30 (0.1s)
+-- SEALED W4NEST m=4 Zp,p=3,d0=1 g0=1: traced=14 live=14 cells=30 (0.0s)
+-- SEALED W4DEEP m=4 Zp,p=3,d0=1 g0=1: traced=14 live=14 cells=52 (0.1s)
+-- SEALED W4FLAT m=4 Zp,p=3,d0=1 g0=1: traced=14 live=9 cells=21 (0.0s)
+-- SEALED W4NESTF m=4 Fpt,p=2,d0=1 g0=1: traced=14 live=14 cells=30 (0.4s)
+-- SEALED XM3A m=3 Zp,p=5,d0=1 g0=1: traced=16 live=4 cells=6 (0.0s)
+-- SEALED XM3B m=3 Zp,p=3,d0=2 g0=2: traced=33 live=16 cells=50 (0.2s)
+==============================================================================
+(SURV-(m+1))(i) derive checks — FRESH phase (EQ roster, LIVE rows)
+==============================================================================
+-- FRESH EQ3T3A m=3 Zp,p=3,d0=1 g0=1: live-strata=1 traced=4 cells=5 (0.0s)
+-- FRESH EQ3T3B m=3 Zp,p=3,d0=1 g0=1: live-strata=6 traced=30 cells=192 (0.1s)
+-- FRESH EQ3T3C m=3 Zp,p=5,d0=1 g0=1: live-strata=1 traced=6 cells=10 (0.0s)
+-- FRESH EQ3T4A m=3 Zp,p=3,d0=1 g0=1: live-strata=1 traced=4 cells=5 (0.0s)
+-- FRESH EQ3T4B m=3 Zp,p=3,d0=1 g0=1: live-strata=5 traced=30 cells=83 (0.1s)
+-- FRESH EQ3T4C m=3 Zp,p=3,d0=1 g0=1: live-strata=5 traced=28 cells=68 (0.0s)
+  CANCGRADE [EQ3T3F[831, 835]]: bottom beta_min=576 netted to ZERO; surviving spectrum head=[(579, [0, 1, 0], 1)] w_m(Q1)=579 cascade_slot_min=True
+-- FRESH EQ3T3F m=3 Fpt,p=2,d0=1 g0=1: live-strata=6 traced=31 cells=134 (0.2s)
+-- FRESH EQ3T4F m=3 Fpt,p=2,d0=1 g0=1: live-strata=1 traced=4 cells=5 (0.1s)
+-- FRESH EQ3G2A m=3 Zp,p=3,d0=2 g0=2: live-strata=3 traced=8 cells=37 (0.3s)
+-- FRESH EQ3G2B m=3 Zp,p=3,d0=1 g0=2: live-strata=6 traced=31 cells=323 (0.1s)
+-- FRESH EQ3FLT m=3 Zp,p=5,d0=1 g0=1: live-strata=3 traced=6 cells=13 (0.0s)
+-- FRESH EQ4T3A m=4 Zp,p=3,d0=1 g0=1: live-strata=1 traced=3 cells=3 (0.0s)
+-- FRESH EQ4T3F m=4 Fpt,p=2,d0=1 g0=1: live-strata=1 traced=3 cells=3 (0.6s)
+-- FRESH EQ4DEEP m=4 Zp,p=3,d0=1 g0=1: live-strata=1 traced=3 cells=3 (0.0s)
+-- FRESH EQ4NEST m=4 Zp,p=3,d0=1 g0=1: live-strata=3 traced=9 cells=64 (0.0s)
+==============================================================================
+SDK-PIN     : 0 violations
+SDK-CONS    : 0 violations
+SDK-EMPTY   : 0 violations
+SDK-DIGIT   : 0 violations
+SDK-LINE    : 0 violations
+SDK-CASC    : 0 violations
+SDK-GRID    : 0 violations
+SDK-SEP     : 0 violations
+HARNESS     : 0 violations
+------------------------------------------------------------------------------
+MINSTRAT netted-bottom-size histogram (strat, n):  {"above_n1": 56, "above_n2": 1, "direct_n1": 77, "thresh_n0": 2, "thresh_n1": 326, "thresh_n2": 24}
+live rows traced: 486; netted bottom UNIQUE: 459; unique AND = cascade cell: 183
+rows with w_m(Q1) == beta_min (bottom survives): 484/486
+READADD: match 484 / MISMATCH 0
+REDWIN: red_all=1806 red_topbreach=0
+CGRP ((SURV-CASC) lead): survived=405 KILLED=52 partnered=55
+  cgrp KILLED rows (the single-slot route refuted there): [('W3G2A', [683, 683]), ('W3G2A', [683, 687]), ('W3G2A', [673, 687]), ('W3G2A', [687, 687]), ('W3G2A', [679, 691]), ('W3G2A', [687, 691]), ('W3G2A', [675, 695]), ('W3G2A', [679, 695]), ('W3G2A', [683, 695]), ('W3G2A', [687, 695])]
+  cgrp partnered: W3G2A[683, 683] n=2 survives=False strat=thresh
+  cgrp partnered: W3G2A[683, 687] n=2 survives=False strat=above
+  cgrp partnered: W3G2A[673, 687] n=2 survives=False strat=thresh
+  cgrp partnered: W3G2A[687, 687] n=2 survives=False strat=above
+  cgrp partnered: W3G2A[679, 691] n=2 survives=False strat=thresh
+  cgrp partnered: W3G2A[687, 691] n=2 survives=False strat=thresh
+  cgrp partnered: W3G2A[675, 695] n=2 survives=False strat=thresh
+  cgrp partnered: W3G2A[679, 695] n=2 survives=False strat=above
+multi-cell netted bottoms: 25 rows; profiles/junk/r of the first 6:
+  W3G2A[691, 695] strat=thresh k=1 c=[0, 1] nmin=2 profiles=[(0, 1, 2)] junk=[0] r=[0] ncorr=[0]
+  W3G2A[695, 695] strat=thresh k=1 c=[0, 1] nmin=2 profiles=[(0, 1, 2)] junk=[0] r=[0] ncorr=[0]
+  W3G2B[1067, 1075] strat=thresh k=1 c=[0, 1] nmin=2 profiles=[(0, 1, 2)] junk=[0] r=[0] ncorr=[0]
+  W3G2B[1059, 1059] strat=thresh k=1 c=[0, 1] nmin=2 profiles=[(0, 1, 2)] junk=[0] r=[0] ncorr=[0]
+  W3G2B[1059, 1067] strat=thresh k=1 c=[0, 1] nmin=2 profiles=[(0, 1, 2)] junk=[0] r=[0] ncorr=[0]
+  W3G2B[1067, 1067] strat=thresh k=1 c=[0, 1] nmin=2 profiles=[(0, 1, 2)] junk=[0] r=[0] ncorr=[0]
+rows where the bottom is NOT at the cascade line: 239
+  W3DEEP[663, 667] strat=thresh k=1 c=[2, 1] beta_min=456 casc_line=458
+  W3DEEP[667, 667] strat=above k=1 c=[2, 2] beta_min=456 casc_line=461
+  W3DEEP[651, 659] strat=thresh k=1 c=[1, 1] beta_min=444 casc_line=446
+  W3DEEP[659, 667] strat=thresh k=1 c=[1, 1] beta_min=452 casc_line=454
+  W3DEEP[651, 651] strat=thresh k=1 c=[1, 1] beta_min=440 casc_line=442
+  W3DEEP[651, 667] strat=thresh k=1 c=[1, 1] beta_min=448 casc_line=450
+counters: {"bottom_cancelled": 2, "casc_offscope_present": 78, "casc_verified": 379, "cascuniq_direct": 7, "cascuniq_thresh": 176, "cgrp_KILLED": 52, "cgrp_partnered": 55, "cgrp_survived": 405, "dead_traced": 126, "live_traced": 486, "minstrat_above_n1": 56, "minstrat_above_n2": 1, "minstrat_direct_n1": 77, "minstrat_thresh_n0": 2, "minstrat_thresh_n1": 326, "minstrat_thresh_n2": 24, "read_match": 484, "red_all": 1806}
+controls: {"CTRL-ABOVE": 134, "CTRL-CANCEL": 2, "CTRL-MULTI": 25, "CTRL-NONCASC": 301}
+total violations: 0
+elapsed: 3.0s
+results -> surv_derive_checks_results.json
