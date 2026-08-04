@@ -9571,3 +9571,43 @@ adjacent to the byte-fenced E-L5(ii)). **E arc counter 1/2 CLEAN; round
 3 = the Codex leg post-reset — the acceptance attempt.** The Q2 line's
 remaining mathematics: (SURV)(i) survival; then the three Codex legs
 (VC40, W arc, E arc) close the wave-21 window.
+
+---
+
+## (SURV)(i) UNIT LANDED — the slot-survival reduction PROVED; (i) closed on a sub-locus; THE OBSTRUCTION IS RESIDUE ARITHMETIC (two committed cancellation instances) — 2026-08-08 campaign (wallclock 2026-08-04)
+
+**The unit** (workflow wc1gult8d; the instrument agent died mid-response
+AGAIN — second API casualty today — disclosed in-note: the composer's
+runner doubles as the instrument; NO sealed battery, composition-support
+class). **Commit 0b895d0**: `lean/notes/openmath/SURV_PROOF_2026-08-08.md`
++ runner (10 verdict families, 0 violations, 486 live rows / 1,806
+cells, all controls FIRED).
+
+**Proved at attempt grade (capped by WMULTDCX consumption):** the
+slot-netting kit S-L0–S-L4 and S-THM(a)(b)(c) — Q¹ netted by exponent
+vector; DISTINCT reduced slots can never cancel (L-CELL uniqueness), so
+the residue algebra is needed ONLY at same-slot equal-line collisions;
+at the pins ((H1)–(H3), g₀ = 1, (STK), c ≥ k) the W-D7 cascade
+terminates at an explicitly computed slot with residue a product of
+nonzero K₀-residues; unique-netted-bottom rows survive outright
+(459/486); **(SURV)(i) holds on the (NEP) ∧ (RW) sub-locus.**
+
+**The discovery:** (SURV)(i) class-wide is NOT a counting statement —
+two committed threshold rows in characteristic 2 (W3DEEPF, EQ3T3F)
+exhibit genuine same-slot pair-cancellation at the bottom (the survivor
+being exactly the cascade slot), while THE IDENTICAL TOWER AT p = 3
+NETS NONZERO. The obstruction is residue arithmetic. At g₀ ≥ 2 the
+single-slot route is dead (the cascade slot partnered 55×, killed 52×;
+(NEP) false there) — the bottom slot carries survival instead.
+
+**Boxed open:** (SURV-RES-(m+1)) "some slot survives" with sub-forms
+(NEP) (combinatorial; 379/379 at g₀ = 1, FALSE at g₀ ≥ 2) and
+**(SURV-DISJ)** (bottom-or-cascade survives; 486/486 instance-true —
+the sharpest reformulation, needs the DEV-at-depth carry algebra).
+LAW-DCX-(m+1) unchanged.
+
+**THE Q2 LINE'S HONEST FRONTIER after this unit:** (EMPTY) handles
+deadness (E arc 1/2 CLEAN); survival = (SURV-DISJ) via the carry
+algebra — the next composition hard core. Queued: the SURV hostile arc
+(PE-S1 dispatched now); the three Codex legs post-reset (VC40, W arc,
+E arc); then the (SURV-DISJ) composition.
