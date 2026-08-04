@@ -9383,3 +9383,54 @@ PID† and (EMPTY-(m+1)) + the S4.7 refutation bracket → REVISION 39 +
 census + VC40 under the frozen-history trim); the standing public-map
 refresh (major milestone); the W arc round 4 (Codex leg post-reset);
 (SURV)/(EMPTY) = the remaining Q2 hard core; Q3 corners; Q4 GRT weld.
+
+---
+
+## ROOT r40 EXECUTED (REVISION 39) — the TWENTIETH re-anchoring made operative + the [RMG] fold + THE WAVE-21 CLOSURE-PROGRAM HARVEST; VC40 owed — 2026-08-08 campaign (wallclock 2026-08-04)
+
+**The arc this fold harvests:** the VC39 cascade (VC39 0C/6G → r39b
+2d3080f + the whitespace-normalization amendment → VC39b CONFIRMED
+0C/0G, bbbd394 — the TWENTIETH re-anchoring, anchor now REVISION 38 +
+r39b) · the sealed RM-2 probe (0b42885/d860a5a/9e3ad2c, adjudicated
+ced7dbb) · the DCX3 v1→v2 cycle (1db30fa/9003821/a9dd275/2924ff6) ·
+the full RM-GEN arc (compose bf18bfe → 7 rounds → acceptance b3ddada
+on a0e266c = **[RMG], Q1 CLOSED**) with COR-A applied · the W-MULT-DCX
+arc state (stress d3950f2/d774ecb; PID† at attempt grade through W-r3;
+counter 0/2 CLEAN, NOT accepted, Codex leg post-reset; (SURV-(m+1))
+boxed, (EMPTY-(m+1)) conjecture-grade route).
+
+**What folded into `docs/ROOT_ASSEMBLY_2026-08-02.md` (REVISION 39,
+appendix §45):** (0) the §0 REVISION-39 standing paragraph (the r39
+header superseded; every operative anchor site → REVISION 38 + r39b);
+(1) the §0 declaration EXTENDED with THE [RMG] BLOCK (fourth
+defined-term block, dagger [RMG]†; all three ROOT pastes — §0
+declaration, §3.1 (H1) row, §45.(i) — verified CONTENT-TOKEN IDENTICAL
+to this ledger's defined-term span at 154/154 tokens, per the amended
+9f9910c standard); (2) COR-A carried as dated upgrade brackets at
+every (ITER-LAW-n)-conditionality display site (§0 declaration
+bracket, §3.1 (H1) row r40 bracket, §44.(ii) section-head + Q1/Q2/Q3
+brackets — no pasted [ILN] block edited, all four verified
+byte-unchanged); (3) the arc of record told in full at §45.(i)
+per-round ledger grades incl. round 1's two adjudicated criticals AND
+the 12-vs-14 pass-count surface flagged for VC40; (4) the W arc at
+§45.(iii), PID† displayed attempt-grade NOT-accepted at every mention;
+(5) the RM-2 probe + DCX3 cycle at §45.(iv) (first entry into ROOT —
+pre-edit marker counts zero, checked); (6) the four corpus-law rules
+declared at the §6 r40 bracket; (7) the frontier restated at §45.(vi):
+(SURV)/(EMPTY) the Q2 hard core · the W-arc acceptance debt · the
+corners ([RMG]† fence + (TAIL-STAB) S/M) · the GRT weld. CENSUS: sorry
+34 UNCHANGED (git diff 3980471..HEAD empty on `*.lean`,
+diff-verified); the FOURTEEN new r40 markers counted to fixed point at
+§45.(vii); **the r39 114-row census honestly NOT re-baselined at this
+fold** (hand-maintained; disclosed in-document; VC40's census item =
+≥ 8 old rows + all fourteen new markers). NINE rows recounted; no
+clause attribution moved; no Lean file, statement, sealed artifact, or
+accepted note body touched by this unit. PROJECT_STATE checked
+CONSISTENT with its standing 2026-08-04 Q1-closed bracket and NOT
+edited. **VC40 is OWED on the REVISION-39 text** (charge at ROOT §45;
+frozen-history trim MANDATORY); this unit never self-confirms — until
+VC40 lands, the acceptance citation points at the REVISION 38 + r39b
+text. Unit files: ROOT + this append ONLY (scoped `git commit
+--only`).
+
+**REVISION 39 = the [RMG] fold.**
