@@ -9322,3 +9322,64 @@ evidence for the counting/emptiness route; the (SURV) box's
 cancellation gloss fixed (absence-or-cancellation, 126/126 absence).
 Round 3 = PE-W3 (Fable) on the W-r2 text; the Codex leg deferred to the
 post-reset budget (window resets Aug 08 04:22).
+
+---
+
+## [RMG] — THEOREM RM-GEN ACCEPTED — 2026-08-08 campaign (wallclock 2026-08-04)
+
+**THE DEFINED TERM.** [RMG] := THEOREM RM-GEN as accepted: **the four
+(RM-m) box clauses of [ILN]† S4.6 — (C-W_R), (C-W_Q), (C-READ) with
+z_m^{ε′}vτ_m pinned and v ≠ 0 forced (L-VNZ), (C-EPS) — hold
+level-generically for EVERY m ≥ 1 on**
+
+    T-scope(m) := d₀ = 1  ∨  (e₀ ≥ 2 ∧ e_i ≥ 2 for all 1 ≤ i ≤ m−1),
+
+proved by the depth-calculus (the S2.2 cell tree with L-NORM-normalized
+children; L-GRID/L-ZMULT/L-LINE; the L-MU two-branch measure with the
+d₀ = 1 flat extension; DEV-(m); the telescopes), in
+`lean/notes/openmath/RMENGINE_2026-08-08.md`. **Accepted text: commit
+a0e266c** (post-acceptance annotations at the head/S7.1/S8-row-11c/tail
+only). Bar met at round 7: PC7 (Codex) CLEAN + PE7 (Fable) CLEAN, both
+on a0e266c — 2-clean model-diverse, same round. Arc: 7 rounds, 12
+hostile passes (6 Codex + 6 Fable), ZERO critical findings across the
+arc; S2–S7 mathematical content byte-stable from 8835d20 (r1) except
+one citation parenthetical. Grade: ACCEPTED (the corpus bar), attempt
+lineage recorded in the note.
+
+**Honest residuals (unchanged by acceptance):** the d₀ ≥ 2 ∧ (e₀ = 1 ∨
+∃ interior flat) corners FENCED (the S4.1 necessity display: the linear
+family is genuinely infeasible there — machine-confirmed); LAW-DCX-(m+1)
+a sealed conjecture at m ≥ 2 (row 11c's literal floor identification
+REFUTED per the W unit, superseded by PID† at attempt grade in
+`WMULTDCX_2026-08-08.md`; the erratum bracket applied at S8 row 11c);
+(H2)-class discharge via (P-DS) conditional at rungs ≥ 3 per the
+ITERLAWN S4.7 erratum where consumed downstream.
+
+**COR-A APPLIED (the at-acceptance ledger action, S7.1 bracket):** on
+
+    T-class(n) := d₀ = 1 ∨ (e₀ ≥ 2 ∧ e_i ≥ 2 for all 1 ≤ i ≤ n−2),
+
+the [ILN]† S7 rows 5/6/8 (RM-m) calls are DISCHARGED: **(ITER-LAW-n)
+holds on T-class(n) with the (RM-m) conditionality REMOVED** — its
+remaining conditionality there is exactly [ILN]†'s own non-(RM)
+residuals. Off T-class(n) the rows stay conditional. The accepted [ILN]
+note is not edited; this block is the ledger record of the upgrade
+(incorporation convention).
+
+**Arc artifacts:** reports RMENGINE_pass{PC,PE,PC2,PE2,PC3,PE3,PC4,PE4,
+PC5,PE5,PC6,PE6,PC7,PE7}_report.md (all committed); the tag-grammar
+machine census (`rmengine_claims_census.py` + committed CLOSED outputs,
+zones 11/13/15/17 at ab2e471/d63f8bb/cfb3648/a0e266c); referees
+`rmengine_pe_reimpl.py` (97/97) + `rmengine_pe2_ext.py` (67 calls, 8
+fresh flat towers, 1080-shape sweep) + the S9 diag D1–D7. Standing
+inventions minted in this arc, now corpus law: the TAG-GRAMMAR machine
+census; supersede-at-refutation; as-of machine quotes (the committed
+output file is the sole arbiter for current figures); enumerations
+claim no completeness.
+
+**Consequences queued:** the r40 ROOT fold (the RM-2 probe + DCX3 v2
+seal + the full RM-GEN arc + [RMG] + the W-MULT-DCX arc state incl.
+PID† and (EMPTY-(m+1)) + the S4.7 refutation bracket → REVISION 39 +
+census + VC40 under the frozen-history trim); the standing public-map
+refresh (major milestone); the W arc round 4 (Codex leg post-reset);
+(SURV)/(EMPTY) = the remaining Q2 hard core; Q3 corners; Q4 GRT weld.

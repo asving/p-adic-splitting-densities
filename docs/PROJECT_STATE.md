@@ -1331,6 +1331,26 @@ clause) · Q3 the fenced corners (the DEV-1 e₀ = 1 ∧ d₀ ≥ 2 corner; the
 harness leg rides P1; GRT-2 = grTie proper OPEN, priced L). The parked
 Lean-era list above is unchanged and stays parked per the b70a452
 directive; see the r39 checkpoint at the tail.]**
+**[2026-08-04 (campaign 2026-08-08): Q1 IS CLOSED — THEOREM RM-GEN
+ACCEPTED ([RMG], ledger block in BRIDGE_ADJUDICATIONS; accepted text
+a0e266c; bar met at round 7: PC7 + PE7 both CLEAN, 12-pass arc, zero
+critical findings ever). The four (RM-m) box clauses hold
+level-generically for every m ≥ 1 on T-scope(m) = d₀ = 1 ∨ (e₀ ≥ 2 ∧
+eᵢ ≥ 2) — including the d₀ = 1 flat corners (the r1 branch-(b)
+extension). COR-A APPLIED: (ITER-LAW-n) is now unconditional-on-(RM) on
+T-class(n) — its remaining conditionality there is [ILN]†'s own non-(RM)
+residuals. Q2 advanced decisively: LAW-DCX confirmed 0/10,484
+adversarial pairs, but RM-GEN row 11c's literal floor identification
+REFUTED (72 divergences, seal d3950f2/verdict d774ecb); the CORRECTED
+identification PID† PROVED at attempt grade (`WMULTDCX_2026-08-08.md`,
+3 rounds in, 0C at rounds 2-3, W-r3 applied); the law's proof is
+REDUCED to one boxed open lemma (SURV-(m+1)), with the conjecture-grade
+(EMPTY-(m+1)) route (deadness = cell-absence; reduction independently
+re-derived valid twice) as the design input. NEW STANDING FRONTIER:
+(SURV)/(EMPTY) — the last layer between the corpus and LAW-DCX-(m+1) —
+then Q3 corners, Q4 GRT weld. The d₀ ≥ 2 flat fence stands
+(machine-confirmed infeasibility). Next mechanical: the r40 ROOT fold +
+VC40; the public-map refresh; the W arc's Codex leg post-reset.]**
 
 ## UPDATE (2026-07-31 evening — THE MATH-FIRST CAMPAIGN AT THE ROOT-ASSEMBLY STAGE)
 

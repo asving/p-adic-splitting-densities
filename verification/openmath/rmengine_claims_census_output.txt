@@ -1,3 +1,7 @@
-MACHINE CENSUS (tag grammar): 67 keyword lines in body (55 row-tagged, 12 nc-tagged); 33 table rows (2 table-only); excluded zones: 17
+MACHINE CENSUS (tag grammar): 69 keyword lines in body (55 row-tagged, 12 nc-tagged); 33 table rows (2 table-only); excluded zones: 17
 
-CENSUS CLOSED — zero violations.
+UNTAGGED keyword lines (2):
+  line 14: bracket, and the tail ACCEPTANCE RECORD are the only post-acceptance
+  line 1088: [ILN]†'s own non-(RM) residuals (its head declaration; nothing new).
+
+CENSUS OPEN — violations above.
