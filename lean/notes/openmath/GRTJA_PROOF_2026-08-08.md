@@ -245,21 +245,24 @@ v_m(φ_m), JA-PIN clause 7):
         + ℓ_{m−2}β_i]/e_{m−2} = −ℓ_{m−2}·i·W_{m−1}/e_{m−2} = −i·A_{m−1}. ∎
 
 **COROLLARY JA-VDIND (the induction step and its exact boundary).** Under
-the per-slot law, (VD-m) holds for A IF AND ONLY IF the slot character is
-trivial on A's attained abscissas relative to the grid start, i.e.
-z_{m−1}^{(i − s₀(A))·A_{m−1}} = 1 for every attained i — equivalently
-ϑ_m^j = 1 on the attained grid slots, ϑ_m := z_{m−1}^{−e_{m−1}A_{m−1}}
-(sufficient: A_{m−1} = 0, i.e. e_{m−2} = 1; or single-slot support; or
-ord(z_{m−1}) | e_{m−1}A_{m−1}). *Proof.* Summing the per-slot law along the
-grid: R_m(A)(z_m) = z_{m−1}^{−s₀(A)·A_{m−1}}·z_m^{−ν}·Σ_j C_{i_j}(ϑ_m z_m)^j
-(ν = the vanishing-initial-slot shift, s₀ = s(β) + νe_{m−1}), while
-τ_m(A) − ν = the ε_m-exponent (W2-L2 at k = 0, as in W2-L3's proof); the
-two displays agree iff the character drops slotwise... and the s₀-prefactor
-is absorbed by the (i − s₀) normalization displayed. ∎ [The FULL general
-form, off the collapse: R_m(A)(y) = z^{−s₀A_{m−1}}·Q_A(ϑ_m·y) with
-Q_A(y)y^ν = the packed polynomial — the same-polynomial instance of W-2
-§3.2's conjugation; the dictionary at levels ≥ 3 is a CONJUGATION, scalar
-only on the collapse perimeter.]
+the per-slot law, (VD-m) holds for A IF the slot character is trivial
+ABSOLUTELY on A's attained abscissas: z_{m−1}^{i·A_{m−1}} = 1 for every
+attained i (sufficient: A_{m−1} = 0, i.e. e_{m−2} = 1; or
+ord(z_{m−1}) | A_{m−1} and the abscissa condition; NOT sufficient:
+single-slot support alone — the constant z^{−s₀A} survives). Conversely,
+when the absolute character is nontrivial on the attained set, the two
+sides of (VD-m) differ by z_{m−1}^{−s₀A}·(the ϑ-twisted packed sum vs the
+packed sum), which is generically nonzero — the converse is NOT sealed
+(cancellations and the zero-read escape R_m v(A) = 0 are possible).
+*Proof of the forward direction.* Summing the per-slot law along the grid,
+with s₀ = s(β) + ν·e_{m−1}: R_m(A)(z_m) = Σ_att z^{−iA_{m−1}}·C_i·
+z_m^{(i−s₀)/e_{m−1}} = z_m^{−ν}·Σ_att C_i z_m^{(i−s)/e_{m−1}} under the
+absolute triviality, = z_m^{−ν}·R_m v(A); and τ_m(A) − ν = the
+ε_m(β)-exponent (W2-L2 at k = 0, as in W2-L3's proof). ∎ [The FULL general
+form, off the collapse: R_m(A)(y) = z^{−s₀A_{m−1}}·Q_A(ϑ_m·y),
+ϑ_m := z_{m−1}^{−e_{m−1}A_{m−1}}, Q_A(y)·y^ν = the packed polynomial — the
+same-polynomial instance of W-2 §3.2's conjugation; the dictionary at
+levels ≥ 3 is a CONJUGATION, scalar only on the collapse perimeter.]
 
 **Definition (R-coll, the residual collapse perimeter at level m).** Every
 level-q instance of the proviso, 2 ≤ q ≤ m−1, collapses: at every recursion
@@ -299,13 +302,19 @@ order-m residual on a side with initial attained point (s₀, u₀) by
 h = the level-m grid height (u drops by h per grid slot). Against this
 action, clause by clause:
 
-* **(i) w = v: INVARIANT.** v never consumes ℓ (Prop `propertiesv`'s
-  recursion is ℓ-free); JA-VAL is orbit-blind. In the W-2 clause-3
-  TRANSPORTED CHAMBER the keys byte-differ (unit ratios persist) yet the
-  VALUES agree — the valuation is representative-independent across the
-  orbit; consumed at attempt grade from W2-C3(i) (same polygons, same
-  weights) plus the machine leg. [Machine: TW-VAL — vgen on the transported
-  chamber's keys vs committed wlev, every level, every tower.]
+* **(i) w = v: ℓ-ORBIT-INVARIANT, with the MacLane representative caveat
+  across chambers.** v never consumes ℓ (Prop `propertiesv`'s recursion is
+  ℓ-free); JA-VAL is orbit-blind. ACROSS the W-2 clause-3 transported
+  chamber, blanket operator equality on the OTHER chain's keys is FALSE:
+  two strict representatives φ, φ′ of the same type with different strict
+  units satisfy v_{r+1}(φ − φ′) = e_r·v_r(φ) < v_{r+1}(φ), so the two
+  augmented valuations already disagree AT the key class (A = φ genre) —
+  the standard MacLane representative-dependence, surfaced here rather
+  than hidden. The honest transport of (i) is (a) the CHAIN level: key
+  polygons and weights agree (W2-C3(i), machine 44/44 in the W-2 runner),
+  and (b) RE-INSTANTIATION (last bullet): inside the transported chamber
+  J-A holds verbatim with the chamber's own keys on both sides.
+  [Machine: TW-INST.]
 * **(ii) the residual dictionary: SHAPE-COVARIANT.** Under the κ-shift the
   per-slot law keeps its unit-times-character form with transported data:
   c_i ↦ z^{−κu_i}c_i and u_i = β_i + i·W_{m−1}, β_{i_j} = β₀ − j·γ_m along
@@ -330,11 +339,15 @@ action, clause by clause:
   standalone per-slot mechanism behind that tie ("the same HR-REC mechanics
   read backwards", W2-C1's proof), now displayed as a theorem about
   ARBITRARY on-line A, not only the lifts.
-* **Transported chamber:** the chamber is itself a class-pin instance
-  (W2-C3's induction), so §2/§3 apply VERBATIM inside it with the
-  transported ledger — the transport of J-A is re-instantiation, not a new
-  proof. The cross-chamber letter identification z_old = ξ·z_new is W-2
-  §5.1 step 2, consumed.
+* **Transported chamber (the transport of J-A is RE-INSTANTIATION, not
+  cross-key operator equality):** the transported ledger is itself a
+  class-pin instance (W2-C3's induction), so §2/§3 apply VERBATIM inside
+  it — harness tower REBUILT on the transported ψ-ledger against the
+  chamber's print chain, same theorems, new instance. The cross-chamber
+  letter identification z_old = ξ·z_new is W-2 §5.1 step 2, consumed.
+  [Machine: TW-INST — the full CK battery re-run on the transported
+  instance (SpecTower on the transported ledger + its own GmnLeg), every
+  roster tower with a nontrivial transport ledger.]
 
 ---
 
