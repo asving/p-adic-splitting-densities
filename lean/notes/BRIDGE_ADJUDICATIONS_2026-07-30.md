@@ -8691,3 +8691,42 @@ it; (c) the unification hint of record: the promotion edge carries BOTH the
 termination measure and the DCX boundary — the (RM-m) and (W-MULT-DCX-m)
 families may close by ONE chained-carry analysis. VC39 launching on the
 built charge (935,170 B, 114/114 pre-verified).
+
+## VC39 ADJUDICATED: NOT-CONFIRMED 0C/6G → r39b applied + THE WHITESPACE-NORMALIZATION CONVENTION AMENDMENT — VC39b micro pass owed (wallclock 2026-08-04)
+
+**VC39** (Codex, end-to-end on ROOT REVISION 38 @999f35c; report
+archived `lean/notes/openmath/VC39_report.md` with the adjudication
+header) returned **NOT-CONFIRMED 0C/6G** — zero critical, six gaps,
+zero mathematical findings. Adjudication: all six ACCEPTED; the
+**r39b** cure batch applied orchestrator-direct as dated brackets in
+`docs/ROOT_ASSEMBLY_2026-08-02.md`, flawed text preserved throughout.
+**Gaps 1–4, ONE class** (bare [ILN] tokens outside full-paste sites —
+the class's third recurrence across [IL]/[IL3]/[ILN]): four dagger
+brackets per the r37b/r38b precedent at the §44 heading (bracket below
+the heading line, heading untouched), the §44.(i) summary line, the
+44.(iii) sweep description, and the r39-2 disposition cell (inline,
+row single-line) — each reads [ILN]† per the §0 declaration (9f9910c).
+**Gap 5**: charge item (ii)'s "byte-match" claim FALSIFIED by line
+reflow → bracket correcting it to CONTENT-TOKEN MATCH, the check run
+programmatically BEFORE writing: the four pastes (§0 declaration, §0
+REVISION-38 standing paragraph, §3.1 (H1) row, 44.(i)) each split on
+whitespace to the SAME 137-token sequence as the a46578e ledger block
+(token-for-token; zero insertions/deletions/substitutions; the
+working-tree ledger block itself verified token-identical to the
+a46578e commit text). **THE CONVENTION AMENDMENT (amending 9f9910c,
+recorded here as the standard of record): the incorporation
+convention's paste-fidelity standard is CONTENT-TOKEN IDENTITY under
+whitespace normalization — reflow at house line width is PERMITTED;
+token insertions, deletions, or substitutions are NOT; verification
+charges test the normalized comparison from now on.** **Gap 6**: the
+arc census "twelve pass reports" → **THIRTEEN** (PC1 embedded in
+`VC38_and_ITERLAWNPC_reports.md` + the twelve standalone: PE1, PE2,
+PC2, PE3, PC3, PE4, PC4, PE5, PC5, PE6, PC6, PE7 — enumerated against
+the `ITERLAWN_pass*_report.md` ls, exactly 12 files, PE1 =
+`ITERLAWN_passPE_report.md`) → dated brackets at all six phrase sites
+(front-matter standing paragraph, §3.1 (H1) row, §44 summary (iv),
+the 44.(i) ARC OF RECORD line, the r39-5 cell, the charge item (iii)).
+**VC39b micro pass OWED on the six cures (eleven bracket sites)**; the
+acceptance citation stays at REVISION 37 + r38b until it lands; this
+unit never self-confirms. Scoped `git commit --only` (the two docs +
+report archive + this append + PROJECT_STATE tag ONLY).

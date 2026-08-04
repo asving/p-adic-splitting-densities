@@ -2994,5 +2994,6 @@ VC35b CONFIRMED; VC36 NOT-CONFIRMED 1C/3G (disposed) + VC36b (0C/2G,
 remedies confirmed) + r36b + VC36c CONFIRMED; VC37 NOT-CONFIRMED 0C/4G
 (disposed) + r37b errata + VC37b CONFIRMED; **VC38 NOT-CONFIRMED 0C/9G
 (disposed at 9f9910c — the incorporation convention) + r38b + VC38b
-CONFIRMED (= the STANDING anchor, REVISION 37 + r38b)**; VC39 pending
-on REVISION 38.
+CONFIRMED (= the STANDING anchor, REVISION 37 + r38b)**; VC39
+NOT-CONFIRMED 0C/6G (disposed 2026-08-04: r39b six cures + the
+whitespace-normalization convention amendment, ledger; VC39b owed).
