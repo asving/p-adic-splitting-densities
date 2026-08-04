@@ -1,0 +1,96 @@
+grt_weld_probe -- W-2 LIFT JUNCTION falsification runner (GRT_WELD_BLUEPRINT S3.2 T1/T2)
+harness leg: iterlawn_pe_reimpl.Tower._build_lift (committed, verbatim import)
+classifier leg: FRESH GMN HigherNewton Prop-construct/Thm-phir transcription
+
+  [   0.0s] Zp,p=2,T2A       done (0.0s)
+  [   0.1s] Zp,p=3,T2B       done (0.0s)
+  [   0.1s] Zp,p=3,T2C       done (0.0s)
+  [   0.1s] Fpt,p=2,T2D      done (0.0s)
+  [   0.1s] Zp,p=2,T2E       done (0.0s)
+  [   0.1s] Fpt,p=3,T2F      done (0.0s)
+  [   0.1s] Zp,p=3,T2G       done (0.0s)
+  [   0.2s] Zp,p=2,T3A       done (0.1s)
+  [   0.3s] Zp,p=3,T3B       done (0.1s)
+  [   0.4s] Zp,p=3,T3C       done (0.1s)
+  [   0.5s] Fpt,p=2,T3D      done (0.1s)
+  [   0.5s] Zp,p=2,T3E       done (0.0s)
+  [   0.6s] Zp,p=3,T3F       done (0.1s)
+  [   0.8s] Zp,p=2,I4A       done (0.2s)
+  [   1.0s] Zp,p=3,I4B       done (0.2s)
+  [   1.2s] Fpt,p=2,I4C      done (0.2s)
+  [   1.2s] QO shapes done
+  [   1.3s] mutation controls done
+
+==============================================================================
+PREDICTED vs OBSERVED (violation counts; samples in parentheses)
+==============================================================================
+F0   CHAIN-BASE r=2: cls == har byte                pred 0             obs     0 (   21)  GREEN
+F1   LIFT-BYTE r>=3 (W-2-as-stated)                 pred RED expected  obs    18 (   30)  RED(W-2 byte-equality falsified)
+F2   ADM-ORBIT: har lift is a Def-2.12 rep          pred 0             obs     6 (   51)  RED
+F2s  ADM-STRICT (pinned ell) -- recorded only       pred recorded      obs    18 (   51)  recorded(18 strict failures)
+F2b  CLS-SELF: R(cls) == c*psi exactly              pred 0             obs     0 (   51)  GREEN
+F3   COCYCLE TRANSPORT on cls lifts (K5/6/7/12)     pred 0             obs    96 (  576)  RED
+F3b  baseline control on har lifts                  pred 0             obs     0 (  576)  GREEN
+F4   PARI (e,f) tie, both lifts, Zp rows            pred 0             obs     0 (   24)  GREEN
+QO   concrete-shape extraction vs PARI              pred 0             obs     0 (    5)  GREEN
+MG   teeth: garbled cls leg caught by self-check    pred 0             obs     0 (    3)  GREEN
+MH   teeth: P-reading lifts rejected by ADM         pred 0             obs     0 (    3)  GREEN
+------------------------------------------------------------------------------
+F1 byte-inequality rows (18) -- unit-ratio tables in the JSON;
+   first divergences:
+   Zp,p=2,T2A: byte-inequality at r=3 (W-2-as-stated RED)
+   Zp,p=3,T2C: byte-inequality at r=3 (W-2-as-stated RED)
+   Fpt,p=2,T2D: byte-inequality at r=3 (W-2-as-stated RED)
+   Zp,p=3,T2G: byte-inequality at r=3 (W-2-as-stated RED)
+   Zp,p=2,T3A: byte-inequality at r=3 (W-2-as-stated RED)
+   Zp,p=2,T3A: byte-inequality at r=4 (W-2-as-stated RED)
+   Zp,p=3,T3B: byte-inequality at r=4 (W-2-as-stated RED)
+   Zp,p=3,T3C: byte-inequality at r=3 (W-2-as-stated RED)
+   Zp,p=3,T3C: byte-inequality at r=4 (W-2-as-stated RED)
+   Fpt,p=2,T3D: byte-inequality at r=3 (W-2-as-stated RED)
+   Fpt,p=2,T3D: byte-inequality at r=4 (W-2-as-stated RED)
+   Zp,p=2,T3E: byte-inequality at r=3 (W-2-as-stated RED)
+   Zp,p=2,T3E: byte-inequality at r=4 (W-2-as-stated RED)
+   Zp,p=3,T3F: byte-inequality at r=4 (W-2-as-stated RED)
+   Zp,p=3,I4B: byte-inequality at r=5 (W-2-as-stated RED)
+   Fpt,p=2,I4C: byte-inequality at r=3 (W-2-as-stated RED)
+   Fpt,p=2,I4C: byte-inequality at r=4 (W-2-as-stated RED)
+   Fpt,p=2,I4C: byte-inequality at r=5 (W-2-as-stated RED)
+120 NON-F1 VIOLATIONS (first 30):
+   ('F2s', 'Zp,p=2,T2A', 'strict (pinned-ell) unit fails at r=3 (recorded, not RED-scored)')
+   ('F2s', 'Zp,p=3,T2C', 'strict (pinned-ell) unit fails at r=3 (recorded, not RED-scored)')
+   ('F2s', 'Fpt,p=2,T2D', 'strict (pinned-ell) unit fails at r=3 (recorded, not RED-scored)')
+   ('F2s', 'Zp,p=3,T2G', 'strict (pinned-ell) unit fails at r=3 (recorded, not RED-scored)')
+   ('F2s', 'Zp,p=2,T3A', 'strict (pinned-ell) unit fails at r=3 (recorded, not RED-scored)')
+   ('F2', 'Zp,p=2,T3A', "harness lift fails the ORBIT Def-2.12 criterion at r=4: {'vok': False, 'onesided': False, 'unit_strict': 'None', 'orbit': None}")
+   ('F2s', 'Zp,p=2,T3A', 'strict (pinned-ell) unit fails at r=4 (recorded, not RED-scored)')
+   ('F3', 'Zp,p=2,T3A', 'Zp,p=2,T3A/cls K6 (10,10): W-MULT value fails')
+   ('F3', 'Zp,p=2,T3A', 'Zp,p=2,T3A/cls K7 (10,10): LAW fails')
+   ('F3', 'Zp,p=2,T3A', 'Zp,p=2,T3A/cls K6 (10,14): W-MULT value fails')
+   ('F3', 'Zp,p=2,T3A', 'Zp,p=2,T3A/cls K7 (10,14): LAW fails')
+   ('F3', 'Zp,p=2,T3A', 'Zp,p=2,T3A/cls K6 (10,31): W-MULT value fails')
+   ('F3', 'Zp,p=2,T3A', 'Zp,p=2,T3A/cls K7 (10,31): LAW fails')
+   ('F3', 'Zp,p=2,T3A', 'Zp,p=2,T3A/cls K6 (10,35): W-MULT value fails')
+   ('F3', 'Zp,p=2,T3A', 'Zp,p=2,T3A/cls K7 (10,35): LAW fails')
+   ('F3', 'Zp,p=2,T3A', 'Zp,p=2,T3A/cls K6 (14,10): W-MULT value fails')
+   ('F3', 'Zp,p=2,T3A', 'Zp,p=2,T3A/cls K7 (14,10): LAW fails')
+   ('F3', 'Zp,p=2,T3A', 'Zp,p=2,T3A/cls K6 (14,14): W-MULT value fails')
+   ('F3', 'Zp,p=2,T3A', 'Zp,p=2,T3A/cls K7 (14,14): LAW fails')
+   ('F3', 'Zp,p=2,T3A', 'Zp,p=2,T3A/cls K6 (14,31): W-MULT value fails')
+   ('F3', 'Zp,p=2,T3A', 'Zp,p=2,T3A/cls K7 (14,31): LAW fails')
+   ('F3', 'Zp,p=2,T3A', 'Zp,p=2,T3A/cls K6 (14,35): W-MULT value fails')
+   ('F3', 'Zp,p=2,T3A', 'Zp,p=2,T3A/cls K7 (14,35): LAW fails')
+   ('F3', 'Zp,p=2,T3A', 'Zp,p=2,T3A/cls K6 (31,10): W-MULT value fails')
+   ('F3', 'Zp,p=2,T3A', 'Zp,p=2,T3A/cls K7 (31,10): LAW fails')
+   ('F3', 'Zp,p=2,T3A', 'Zp,p=2,T3A/cls K6 (31,14): W-MULT value fails')
+   ('F3', 'Zp,p=2,T3A', 'Zp,p=2,T3A/cls K7 (31,14): LAW fails')
+   ('F3', 'Zp,p=2,T3A', 'Zp,p=2,T3A/cls K6 (31,31): W-MULT value fails')
+   ('F3', 'Zp,p=2,T3A', 'Zp,p=2,T3A/cls K7 (31,31): LAW fails')
+   ('F3', 'Zp,p=2,T3A', 'Zp,p=2,T3A/cls K6 (31,35): W-MULT value fails')
+TOTAL samples: 1391   elapsed 1.3s   JSON: /data/users/asvin/math-and-lean/p-adic-splitting-densities/verification/openmath/grt_weld_probe_results.json
+
+LAW-KEYED VERDICT:
+  W-2 BYTE-EQUALITY: FALSIFIED (18 F1 rows)
+  W-2 ADMISSIBILITY (covariance-law leg): FAILS
+  W-2 COCYCLE TRANSPORT ([ILN] law on cls lifts): FAILS
+  controls: CONTROL RED -- see above

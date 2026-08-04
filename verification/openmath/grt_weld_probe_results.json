@@ -1,0 +1,2677 @@
+{
+ "towers": {
+  "Zp,p=2,T2A": {
+   "tag": "Zp,p=2,T2A",
+   "t1": [
+    {
+     "level_r": 2,
+     "byte_equal": true,
+     "adm_har": {
+      "vok": true,
+      "onesided": true,
+      "unit_strict": "(1,)",
+      "orbit": [
+       "(1,)",
+       "(1,)"
+      ]
+     },
+     "self_cls": {
+      "vok": true,
+      "onesided": true,
+      "unit": "(1,)",
+      "c_thm": "(1,)"
+     }
+    },
+    {
+     "level_r": 3,
+     "byte_equal": false,
+     "ratio_table": [
+      [
+       0,
+       "z1^2"
+      ],
+      [
+       2,
+       "1"
+      ]
+     ],
+     "adm_har": {
+      "vok": true,
+      "onesided": true,
+      "unit_strict": "None",
+      "orbit": [
+       "((1,), (1,))",
+       "((1,), (0,))"
+      ]
+     },
+     "self_cls": {
+      "vok": true,
+      "onesided": true,
+      "unit": "((1,), (1,))",
+      "c_thm": "((1,), (1,))"
+     }
+    }
+   ],
+   "t2_baseline": {
+    "counts": {
+     "K12_pi": 4,
+     "K12_rho": 4,
+     "K1_shift": 16,
+     "K2_dint": 16,
+     "K3_star": 16,
+     "K4_window": 16,
+     "K5_l6": 16,
+     "K6_wmult": 16,
+     "K7_law": 16
+    },
+    "violations": 0
+   },
+   "t2_cls": {
+    "counts": {
+     "K12_pi": 4,
+     "K12_rho": 4,
+     "K1_shift": 16,
+     "K2_dint": 16,
+     "K3_star": 16,
+     "K4_window": 16,
+     "K5_l6": 16,
+     "K6_wmult": 16,
+     "K7_law": 16
+    },
+    "violations": 0
+   },
+   "pari": {
+    "har": true,
+    "cls": true,
+    "pred_ef": [
+     4,
+     2
+    ]
+   }
+  },
+  "Zp,p=3,T2B": {
+   "tag": "Zp,p=3,T2B",
+   "t1": [
+    {
+     "level_r": 2,
+     "byte_equal": true,
+     "adm_har": {
+      "vok": true,
+      "onesided": true,
+      "unit_strict": "(1,)",
+      "orbit": [
+       "(1,)",
+       "(1,)"
+      ]
+     },
+     "self_cls": {
+      "vok": true,
+      "onesided": true,
+      "unit": "(1,)",
+      "c_thm": "(1,)"
+     }
+    },
+    {
+     "level_r": 3,
+     "byte_equal": true,
+     "adm_har": {
+      "vok": true,
+      "onesided": true,
+      "unit_strict": "((1,),)",
+      "orbit": [
+       "((1,),)",
+       "((1,),)"
+      ]
+     },
+     "self_cls": {
+      "vok": true,
+      "onesided": true,
+      "unit": "((1,),)",
+      "c_thm": "((1,),)"
+     }
+    }
+   ],
+   "t2_baseline": {
+    "counts": {
+     "K12_pi": 6,
+     "K12_rho": 6,
+     "K1_shift": 36,
+     "K2_dint": 36,
+     "K3_star": 36,
+     "K4_window": 36,
+     "K5_l6": 36,
+     "K6_wmult": 36,
+     "K7_law": 36
+    },
+    "violations": 0
+   },
+   "t2_cls": {
+    "counts": {
+     "K12_pi": 6,
+     "K12_rho": 6,
+     "K1_shift": 36,
+     "K2_dint": 36,
+     "K3_star": 36,
+     "K4_window": 36,
+     "K5_l6": 36,
+     "K6_wmult": 36,
+     "K7_law": 36
+    },
+    "violations": 0
+   },
+   "pari": {
+    "har": true,
+    "cls": true,
+    "pred_ef": [
+     6,
+     1
+    ]
+   }
+  },
+  "Zp,p=3,T2C": {
+   "tag": "Zp,p=3,T2C",
+   "t1": [
+    {
+     "level_r": 2,
+     "byte_equal": true,
+     "adm_har": {
+      "vok": true,
+      "onesided": true,
+      "unit_strict": "(1,)",
+      "orbit": [
+       "(1,)",
+       "(1,)"
+      ]
+     },
+     "self_cls": {
+      "vok": true,
+      "onesided": true,
+      "unit": "(1,)",
+      "c_thm": "(1,)"
+     }
+    },
+    {
+     "level_r": 3,
+     "byte_equal": false,
+     "ratio_table": [
+      [
+       0,
+       "z1^1"
+      ],
+      [
+       3,
+       "1"
+      ]
+     ],
+     "adm_har": {
+      "vok": true,
+      "onesided": true,
+      "unit_strict": "None",
+      "orbit": [
+       "((2,),)",
+       "((1,),)"
+      ]
+     },
+     "self_cls": {
+      "vok": true,
+      "onesided": true,
+      "unit": "((2,),)",
+      "c_thm": "((2,),)"
+     }
+    }
+   ],
+   "t2_baseline": {
+    "counts": {
+     "K12_pi": 6,
+     "K12_rho": 6,
+     "K1_shift": 36,
+     "K2_dint": 36,
+     "K3_star": 36,
+     "K4_window": 36,
+     "K5_l6": 36,
+     "K6_wmult": 36,
+     "K7_law": 36
+    },
+    "violations": 0
+   },
+   "t2_cls": {
+    "counts": {
+     "K12_pi": 6,
+     "K12_rho": 6,
+     "K1_shift": 36,
+     "K2_dint": 36,
+     "K3_star": 36,
+     "K4_window": 36,
+     "K5_l6": 36,
+     "K6_wmult": 36,
+     "K7_law": 36
+    },
+    "violations": 0
+   },
+   "pari": {
+    "har": true,
+    "cls": true,
+    "pred_ef": [
+     6,
+     1
+    ]
+   }
+  },
+  "Fpt,p=2,T2D": {
+   "tag": "Fpt,p=2,T2D",
+   "t1": [
+    {
+     "level_r": 2,
+     "byte_equal": true,
+     "adm_har": {
+      "vok": true,
+      "onesided": true,
+      "unit_strict": "(1, 0)",
+      "orbit": [
+       "(1, 0)",
+       "(1, 0)"
+      ]
+     },
+     "self_cls": {
+      "vok": true,
+      "onesided": true,
+      "unit": "(1, 0)",
+      "c_thm": "(1, 0)"
+     }
+    },
+    {
+     "level_r": 3,
+     "byte_equal": false,
+     "ratio_table": [
+      [
+       0,
+       "z1^1"
+      ],
+      [
+       2,
+       "1"
+      ]
+     ],
+     "adm_har": {
+      "vok": true,
+      "onesided": true,
+      "unit_strict": "None",
+      "orbit": [
+       "((0, 1),)",
+       "((1, 0),)"
+      ]
+     },
+     "self_cls": {
+      "vok": true,
+      "onesided": true,
+      "unit": "((0, 1),)",
+      "c_thm": "((0, 1),)"
+     }
+    }
+   ],
+   "t2_baseline": {
+    "counts": {
+     "K12_pi": 4,
+     "K12_rho": 4,
+     "K1_shift": 16,
+     "K2_dint": 16,
+     "K3_star": 16,
+     "K4_window": 16,
+     "K5_l6": 16,
+     "K6_wmult": 16,
+     "K7_law": 16
+    },
+    "violations": 0
+   },
+   "t2_cls": {
+    "counts": {
+     "K12_pi": 4,
+     "K12_rho": 4,
+     "K1_shift": 16,
+     "K2_dint": 16,
+     "K3_star": 16,
+     "K4_window": 16,
+     "K5_l6": 16,
+     "K6_wmult": 16,
+     "K7_law": 16
+    },
+    "violations": 0
+   }
+  },
+  "Zp,p=2,T2E": {
+   "tag": "Zp,p=2,T2E",
+   "t1": [
+    {
+     "level_r": 2,
+     "byte_equal": true,
+     "adm_har": {
+      "vok": true,
+      "onesided": true,
+      "unit_strict": "(1,)",
+      "orbit": [
+       "(1,)",
+       "(1,)"
+      ]
+     },
+     "self_cls": {
+      "vok": true,
+      "onesided": true,
+      "unit": "(1,)",
+      "c_thm": "(1,)"
+     }
+    },
+    {
+     "level_r": 3,
+     "byte_equal": true,
+     "adm_har": {
+      "vok": true,
+      "onesided": true,
+      "unit_strict": "((1,), (0,))",
+      "orbit": [
+       "((1,), (0,))",
+       "((1,), (0,))"
+      ]
+     },
+     "self_cls": {
+      "vok": true,
+      "onesided": true,
+      "unit": "((1,), (0,))",
+      "c_thm": "((1,), (0,))"
+     }
+    }
+   ],
+   "t2_baseline": {
+    "counts": {
+     "K12_pi": 2,
+     "K12_rho": 2,
+     "K1_shift": 4,
+     "K2_dint": 4,
+     "K3_star": 4,
+     "K4_window": 4,
+     "K13_pass": 4,
+     "K5_l6": 4,
+     "K6_wmult": 4,
+     "K7_law": 4
+    },
+    "violations": 0
+   },
+   "t2_cls": {
+    "counts": {
+     "K12_pi": 2,
+     "K12_rho": 2,
+     "K1_shift": 4,
+     "K2_dint": 4,
+     "K3_star": 4,
+     "K4_window": 4,
+     "K13_pass": 4,
+     "K5_l6": 4,
+     "K6_wmult": 4,
+     "K7_law": 4
+    },
+    "violations": 0
+   },
+   "pari": {
+    "har": true,
+    "cls": true,
+    "pred_ef": [
+     2,
+     2
+    ]
+   }
+  },
+  "Fpt,p=3,T2F": {
+   "tag": "Fpt,p=3,T2F",
+   "t1": [
+    {
+     "level_r": 2,
+     "byte_equal": true,
+     "adm_har": {
+      "vok": true,
+      "onesided": true,
+      "unit_strict": "(1,)",
+      "orbit": [
+       "(1,)",
+       "(1,)"
+      ]
+     },
+     "self_cls": {
+      "vok": true,
+      "onesided": true,
+      "unit": "(1,)",
+      "c_thm": "(1,)"
+     }
+    },
+    {
+     "level_r": 3,
+     "byte_equal": true,
+     "adm_har": {
+      "vok": true,
+      "onesided": true,
+      "unit_strict": "((1,),)",
+      "orbit": [
+       "((1,),)",
+       "((1,),)"
+      ]
+     },
+     "self_cls": {
+      "vok": true,
+      "onesided": true,
+      "unit": "((1,),)",
+      "c_thm": "((1,),)"
+     }
+    }
+   ],
+   "t2_baseline": {
+    "counts": {
+     "K12_pi": 6,
+     "K12_rho": 6,
+     "K1_shift": 36,
+     "K2_dint": 36,
+     "K3_star": 36,
+     "K4_window": 36,
+     "K5_l6": 36,
+     "K6_wmult": 36,
+     "K7_law": 36
+    },
+    "violations": 0
+   },
+   "t2_cls": {
+    "counts": {
+     "K12_pi": 6,
+     "K12_rho": 6,
+     "K1_shift": 36,
+     "K2_dint": 36,
+     "K3_star": 36,
+     "K4_window": 36,
+     "K5_l6": 36,
+     "K6_wmult": 36,
+     "K7_law": 36
+    },
+    "violations": 0
+   }
+  },
+  "Zp,p=3,T2G": {
+   "tag": "Zp,p=3,T2G",
+   "t1": [
+    {
+     "level_r": 2,
+     "byte_equal": true,
+     "adm_har": {
+      "vok": true,
+      "onesided": true,
+      "unit_strict": "(1, 0)",
+      "orbit": [
+       "(1, 0)",
+       "(1, 0)"
+      ]
+     },
+     "self_cls": {
+      "vok": true,
+      "onesided": true,
+      "unit": "(1, 0)",
+      "c_thm": "(1, 0)"
+     }
+    },
+    {
+     "level_r": 3,
+     "byte_equal": false,
+     "ratio_table": [
+      [
+       0,
+       "z1^2"
+      ],
+      [
+       2,
+       "1"
+      ]
+     ],
+     "adm_har": {
+      "vok": true,
+      "onesided": true,
+      "unit_strict": "None",
+      "orbit": [
+       "((2, 0),)",
+       "((1, 0),)"
+      ]
+     },
+     "self_cls": {
+      "vok": true,
+      "onesided": true,
+      "unit": "((2, 0),)",
+      "c_thm": "((2, 0),)"
+     }
+    }
+   ],
+   "t2_baseline": {
+    "counts": {
+     "K12_pi": 4,
+     "K12_rho": 4,
+     "K1_shift": 16,
+     "K2_dint": 16,
+     "K3_star": 16,
+     "K4_window": 16,
+     "K5_l6": 16,
+     "K6_wmult": 16,
+     "K7_law": 16
+    },
+    "violations": 0
+   },
+   "t2_cls": {
+    "counts": {
+     "K12_pi": 4,
+     "K12_rho": 4,
+     "K1_shift": 16,
+     "K2_dint": 16,
+     "K3_star": 16,
+     "K4_window": 16,
+     "K5_l6": 16,
+     "K6_wmult": 16,
+     "K7_law": 16
+    },
+    "violations": 0
+   },
+   "pari": {
+    "har": true,
+    "cls": true,
+    "pred_ef": [
+     4,
+     2
+    ]
+   }
+  },
+  "Zp,p=2,T3A": {
+   "tag": "Zp,p=2,T3A",
+   "t1": [
+    {
+     "level_r": 2,
+     "byte_equal": true,
+     "adm_har": {
+      "vok": true,
+      "onesided": true,
+      "unit_strict": "(1, 0)",
+      "orbit": [
+       "(1, 0)",
+       "(1, 0)"
+      ]
+     },
+     "self_cls": {
+      "vok": true,
+      "onesided": true,
+      "unit": "(1, 0)",
+      "c_thm": "(1, 0)"
+     }
+    },
+    {
+     "level_r": 3,
+     "byte_equal": false,
+     "ratio_table": [
+      [
+       0,
+       "z1^1"
+      ],
+      [
+       2,
+       "1"
+      ]
+     ],
+     "adm_har": {
+      "vok": true,
+      "onesided": true,
+      "unit_strict": "None",
+      "orbit": [
+       "((0, 1),)",
+       "((1, 0),)"
+      ]
+     },
+     "self_cls": {
+      "vok": true,
+      "onesided": true,
+      "unit": "((0, 1),)",
+      "c_thm": "((0, 1),)"
+     }
+    },
+    {
+     "level_r": 4,
+     "byte_equal": false,
+     "ratio_table": [
+      [
+       0,
+       "WEIGHT 21 vs 20"
+      ],
+      [
+       1,
+       "SUPPORT-MISMATCH"
+      ],
+      [
+       2,
+       "1"
+      ]
+     ],
+     "adm_har": {
+      "vok": false,
+      "onesided": false,
+      "unit_strict": "None",
+      "orbit": null
+     },
+     "self_cls": {
+      "vok": true,
+      "onesided": true,
+      "unit": "(((1, 1),),)",
+      "c_thm": "(((1, 1),),)"
+     }
+    }
+   ],
+   "t2_baseline": {
+    "counts": {
+     "K12_pi": 8,
+     "K12_rho": 8,
+     "K1_shift": 128,
+     "K2_dint": 64,
+     "K3_star": 128,
+     "K4_window": 64,
+     "K5_l6": 64,
+     "K6_wmult": 64,
+     "K7_law": 64
+    },
+    "violations": 0
+   },
+   "t2_cls": {
+    "counts": {
+     "K12_pi": 8,
+     "K12_rho": 8,
+     "K1_shift": 128,
+     "K2_dint": 64,
+     "K3_star": 128,
+     "K4_window": 64,
+     "K5_l6": 64,
+     "K6_wmult": 64,
+     "K7_law": 64
+    },
+    "violations": 32
+   },
+   "pari": {
+    "har": true,
+    "cls": true,
+    "pred_ef": [
+     8,
+     2
+    ]
+   }
+  },
+  "Zp,p=3,T3B": {
+   "tag": "Zp,p=3,T3B",
+   "t1": [
+    {
+     "level_r": 2,
+     "byte_equal": true,
+     "adm_har": {
+      "vok": true,
+      "onesided": true,
+      "unit_strict": "(1,)",
+      "orbit": [
+       "(1,)",
+       "(1,)"
+      ]
+     },
+     "self_cls": {
+      "vok": true,
+      "onesided": true,
+      "unit": "(1,)",
+      "c_thm": "(1,)"
+     }
+    },
+    {
+     "level_r": 3,
+     "byte_equal": true,
+     "adm_har": {
+      "vok": true,
+      "onesided": true,
+      "unit_strict": "((1,),)",
+      "orbit": [
+       "((1,),)",
+       "((1,),)"
+      ]
+     },
+     "self_cls": {
+      "vok": true,
+      "onesided": true,
+      "unit": "((1,),)",
+      "c_thm": "((1,),)"
+     }
+    },
+    {
+     "level_r": 4,
+     "byte_equal": false,
+     "ratio_table": [
+      [
+       0,
+       "z1^1"
+      ],
+      [
+       2,
+       "1"
+      ]
+     ],
+     "adm_har": {
+      "vok": true,
+      "onesided": true,
+      "unit_strict": "None",
+      "orbit": [
+       "(((2,),),)",
+       "(((2,),),)"
+      ]
+     },
+     "self_cls": {
+      "vok": true,
+      "onesided": true,
+      "unit": "(((1,),),)",
+      "c_thm": "(((1,),),)"
+     }
+    }
+   ],
+   "t2_baseline": {
+    "counts": {
+     "K12_pi": 8,
+     "K12_rho": 8,
+     "K1_shift": 128,
+     "K2_dint": 64,
+     "K3_star": 128,
+     "K4_window": 64,
+     "K5_l6": 64,
+     "K6_wmult": 64,
+     "K7_law": 64
+    },
+    "violations": 0
+   },
+   "t2_cls": {
+    "counts": {
+     "K12_pi": 8,
+     "K12_rho": 8,
+     "K1_shift": 128,
+     "K2_dint": 64,
+     "K3_star": 128,
+     "K4_window": 64,
+     "K5_l6": 64,
+     "K6_wmult": 64,
+     "K7_law": 64
+    },
+    "violations": 0
+   },
+   "pari": {
+    "har": true,
+    "cls": true,
+    "pred_ef": [
+     12,
+     1
+    ]
+   }
+  },
+  "Zp,p=3,T3C": {
+   "tag": "Zp,p=3,T3C",
+   "t1": [
+    {
+     "level_r": 2,
+     "byte_equal": true,
+     "adm_har": {
+      "vok": true,
+      "onesided": true,
+      "unit_strict": "(1,)",
+      "orbit": [
+       "(1,)",
+       "(1,)"
+      ]
+     },
+     "self_cls": {
+      "vok": true,
+      "onesided": true,
+      "unit": "(1,)",
+      "c_thm": "(1,)"
+     }
+    },
+    {
+     "level_r": 3,
+     "byte_equal": false,
+     "ratio_table": [
+      [
+       0,
+       "z1^1"
+      ],
+      [
+       3,
+       "1"
+      ]
+     ],
+     "adm_har": {
+      "vok": true,
+      "onesided": true,
+      "unit_strict": "None",
+      "orbit": [
+       "((2,),)",
+       "((1,),)"
+      ]
+     },
+     "self_cls": {
+      "vok": true,
+      "onesided": true,
+      "unit": "((2,),)",
+      "c_thm": "((2,),)"
+     }
+    },
+    {
+     "level_r": 4,
+     "byte_equal": false,
+     "ratio_table": [
+      [
+       0,
+       "WEIGHT 49 vs 48"
+      ],
+      [
+       1,
+       "SUPPORT-MISMATCH"
+      ],
+      [
+       2,
+       "1"
+      ]
+     ],
+     "adm_har": {
+      "vok": false,
+      "onesided": false,
+      "unit_strict": "None",
+      "orbit": null
+     },
+     "self_cls": {
+      "vok": true,
+      "onesided": true,
+      "unit": "(((1,),),)",
+      "c_thm": "(((1,),),)"
+     }
+    }
+   ],
+   "t2_baseline": {
+    "counts": {
+     "K12_pi": 8,
+     "K12_rho": 8,
+     "K1_shift": 128,
+     "K2_dint": 64,
+     "K3_star": 128,
+     "K4_window": 64,
+     "K5_l6": 64,
+     "K6_wmult": 64,
+     "K7_law": 64
+    },
+    "violations": 0
+   },
+   "t2_cls": {
+    "counts": {
+     "K12_pi": 8,
+     "K12_rho": 8,
+     "K1_shift": 128,
+     "K2_dint": 64,
+     "K3_star": 128,
+     "K4_window": 64,
+     "K5_l6": 64,
+     "K6_wmult": 64,
+     "K7_law": 64
+    },
+    "violations": 24
+   },
+   "pari": {
+    "har": true,
+    "cls": true,
+    "pred_ef": [
+     12,
+     1
+    ]
+   }
+  },
+  "Fpt,p=2,T3D": {
+   "tag": "Fpt,p=2,T3D",
+   "t1": [
+    {
+     "level_r": 2,
+     "byte_equal": true,
+     "adm_har": {
+      "vok": true,
+      "onesided": true,
+      "unit_strict": "(1,)",
+      "orbit": [
+       "(1,)",
+       "(1,)"
+      ]
+     },
+     "self_cls": {
+      "vok": true,
+      "onesided": true,
+      "unit": "(1,)",
+      "c_thm": "(1,)"
+     }
+    },
+    {
+     "level_r": 3,
+     "byte_equal": false,
+     "ratio_table": [
+      [
+       0,
+       "z1^2"
+      ],
+      [
+       2,
+       "1"
+      ]
+     ],
+     "adm_har": {
+      "vok": true,
+      "onesided": true,
+      "unit_strict": "None",
+      "orbit": [
+       "((1,), (1,))",
+       "((1,), (0,))"
+      ]
+     },
+     "self_cls": {
+      "vok": true,
+      "onesided": true,
+      "unit": "((1,), (1,))",
+      "c_thm": "((1,), (1,))"
+     }
+    },
+    {
+     "level_r": 4,
+     "byte_equal": false,
+     "ratio_table": [
+      [
+       0,
+       "WEIGHT 37 vs 36"
+      ],
+      [
+       2,
+       "1"
+      ]
+     ],
+     "adm_har": {
+      "vok": false,
+      "onesided": false,
+      "unit_strict": "None",
+      "orbit": null
+     },
+     "self_cls": {
+      "vok": true,
+      "onesided": true,
+      "unit": "(((1,), (0,)),)",
+      "c_thm": "(((1,), (0,)),)"
+     }
+    }
+   ],
+   "t2_baseline": {
+    "counts": {
+     "K12_pi": 8,
+     "K12_rho": 8,
+     "K1_shift": 128,
+     "K2_dint": 64,
+     "K3_star": 128,
+     "K4_window": 64,
+     "K5_l6": 64,
+     "K6_wmult": 64,
+     "K7_law": 64
+    },
+    "violations": 0
+   },
+   "t2_cls": {
+    "counts": {
+     "K12_pi": 8,
+     "K12_rho": 8,
+     "K1_shift": 128,
+     "K2_dint": 64,
+     "K3_star": 128,
+     "K4_window": 64,
+     "K5_l6": 64,
+     "K6_wmult": 64,
+     "K7_law": 64
+    },
+    "violations": 32
+   }
+  },
+  "Zp,p=2,T3E": {
+   "tag": "Zp,p=2,T3E",
+   "t1": [
+    {
+     "level_r": 2,
+     "byte_equal": true,
+     "adm_har": {
+      "vok": true,
+      "onesided": true,
+      "unit_strict": "(1,)",
+      "orbit": [
+       "(1,)",
+       "(1,)"
+      ]
+     },
+     "self_cls": {
+      "vok": true,
+      "onesided": true,
+      "unit": "(1,)",
+      "c_thm": "(1,)"
+     }
+    },
+    {
+     "level_r": 3,
+     "byte_equal": false,
+     "ratio_table": [
+      [
+       0,
+       "z1^1"
+      ],
+      [
+       1,
+       "1"
+      ]
+     ],
+     "adm_har": {
+      "vok": true,
+      "onesided": true,
+      "unit_strict": "None",
+      "orbit": [
+       "((0,), (1,))",
+       "((1,), (0,))"
+      ]
+     },
+     "self_cls": {
+      "vok": true,
+      "onesided": true,
+      "unit": "((0,), (1,))",
+      "c_thm": "((0,), (1,))"
+     }
+    },
+    {
+     "level_r": 4,
+     "byte_equal": false,
+     "ratio_table": [
+      [
+       0,
+       "WEIGHT 13 vs 10"
+      ],
+      [
+       1,
+       "SUPPORT-MISMATCH"
+      ],
+      [
+       2,
+       "1"
+      ]
+     ],
+     "adm_har": {
+      "vok": false,
+      "onesided": false,
+      "unit_strict": "None",
+      "orbit": null
+     },
+     "self_cls": {
+      "vok": true,
+      "onesided": true,
+      "unit": "(((1,), (0,)),)",
+      "c_thm": "(((1,), (0,)),)"
+     }
+    }
+   ],
+   "t2_baseline": {
+    "counts": {
+     "K12_pi": 4,
+     "K12_rho": 4,
+     "K1_shift": 32,
+     "K2_dint": 16,
+     "K3_star": 32,
+     "K4_window": 16,
+     "K13_pass": 16,
+     "K5_l6": 16,
+     "K6_wmult": 16,
+     "K7_law": 16
+    },
+    "violations": 0
+   },
+   "t2_cls": {
+    "counts": {
+     "K12_pi": 4,
+     "K12_rho": 4,
+     "K1_shift": 32,
+     "K2_dint": 16,
+     "K3_star": 32,
+     "K4_window": 16,
+     "K13_pass": 16,
+     "K5_l6": 16,
+     "K6_wmult": 16,
+     "K7_law": 16
+    },
+    "violations": 0
+   },
+   "pari": {
+    "har": true,
+    "cls": true,
+    "pred_ef": [
+     4,
+     2
+    ]
+   }
+  },
+  "Zp,p=3,T3F": {
+   "tag": "Zp,p=3,T3F",
+   "t1": [
+    {
+     "level_r": 2,
+     "byte_equal": true,
+     "adm_har": {
+      "vok": true,
+      "onesided": true,
+      "unit_strict": "(1,)",
+      "orbit": [
+       "(1,)",
+       "(1,)"
+      ]
+     },
+     "self_cls": {
+      "vok": true,
+      "onesided": true,
+      "unit": "(1,)",
+      "c_thm": "(1,)"
+     }
+    },
+    {
+     "level_r": 3,
+     "byte_equal": true,
+     "adm_har": {
+      "vok": true,
+      "onesided": true,
+      "unit_strict": "((1,), (0,))",
+      "orbit": [
+       "((1,), (0,))",
+       "((1,), (0,))"
+      ]
+     },
+     "self_cls": {
+      "vok": true,
+      "onesided": true,
+      "unit": "((1,), (0,))",
+      "c_thm": "((1,), (0,))"
+     }
+    },
+    {
+     "level_r": 4,
+     "byte_equal": false,
+     "ratio_table": [
+      [
+       0,
+       "z1^2"
+      ],
+      [
+       2,
+       "1"
+      ]
+     ],
+     "adm_har": {
+      "vok": true,
+      "onesided": true,
+      "unit_strict": "None",
+      "orbit": [
+       "(((2,), (0,)),)",
+       "(((1,), (0,)),)"
+      ]
+     },
+     "self_cls": {
+      "vok": true,
+      "onesided": true,
+      "unit": "(((2,), (0,)),)",
+      "c_thm": "(((2,), (0,)),)"
+     }
+    }
+   ],
+   "t2_baseline": {
+    "counts": {
+     "K12_pi": 6,
+     "K12_rho": 6,
+     "K1_shift": 72,
+     "K2_dint": 36,
+     "K3_star": 72,
+     "K4_window": 36,
+     "K13_pass": 36,
+     "K5_l6": 36,
+     "K6_wmult": 36,
+     "K7_law": 36
+    },
+    "violations": 0
+   },
+   "t2_cls": {
+    "counts": {
+     "K12_pi": 6,
+     "K12_rho": 6,
+     "K1_shift": 72,
+     "K2_dint": 36,
+     "K3_star": 72,
+     "K4_window": 36,
+     "K13_pass": 36,
+     "K5_l6": 36,
+     "K6_wmult": 36,
+     "K7_law": 36
+    },
+    "violations": 0
+   },
+   "pari": {
+    "har": true,
+    "cls": true,
+    "pred_ef": [
+     6,
+     2
+    ]
+   }
+  },
+  "Zp,p=2,I4A": {
+   "tag": "Zp,p=2,I4A",
+   "t1": [
+    {
+     "level_r": 2,
+     "byte_equal": true,
+     "adm_har": {
+      "vok": true,
+      "onesided": true,
+      "unit_strict": "(1,)",
+      "orbit": [
+       "(1,)",
+       "(1,)"
+      ]
+     },
+     "self_cls": {
+      "vok": true,
+      "onesided": true,
+      "unit": "(1,)",
+      "c_thm": "(1,)"
+     }
+    },
+    {
+     "level_r": 3,
+     "byte_equal": true,
+     "adm_har": {
+      "vok": true,
+      "onesided": true,
+      "unit_strict": "((1,),)",
+      "orbit": [
+       "((1,),)",
+       "((1,),)"
+      ]
+     },
+     "self_cls": {
+      "vok": true,
+      "onesided": true,
+      "unit": "((1,),)",
+      "c_thm": "((1,),)"
+     }
+    },
+    {
+     "level_r": 4,
+     "byte_equal": true,
+     "adm_har": {
+      "vok": true,
+      "onesided": true,
+      "unit_strict": "(((1,),),)",
+      "orbit": [
+       "(((1,),),)",
+       "(((1,),),)"
+      ]
+     },
+     "self_cls": {
+      "vok": true,
+      "onesided": true,
+      "unit": "(((1,),),)",
+      "c_thm": "(((1,),),)"
+     }
+    },
+    {
+     "level_r": 5,
+     "byte_equal": true,
+     "adm_har": {
+      "vok": true,
+      "onesided": true,
+      "unit_strict": "((((1,),),), (((0,),),))",
+      "orbit": [
+       "((((1,),),), (((0,),),))",
+       "((((1,),),), (((0,),),))"
+      ]
+     },
+     "self_cls": {
+      "vok": true,
+      "onesided": true,
+      "unit": "((((1,),),), (((0,),),))",
+      "c_thm": "((((1,),),), (((0,),),))"
+     }
+    }
+   ],
+   "t2_baseline": {
+    "counts": {
+     "K12_pi": 6,
+     "K12_rho": 6,
+     "K1_shift": 108,
+     "K2_dint": 36,
+     "K3_star": 108,
+     "K4_window": 36,
+     "K13_pass": 36,
+     "K5_l6": 36,
+     "K6_wmult": 36,
+     "K7_law": 36
+    },
+    "violations": 0
+   },
+   "t2_cls": {
+    "counts": {
+     "K12_pi": 6,
+     "K12_rho": 6,
+     "K1_shift": 108,
+     "K2_dint": 36,
+     "K3_star": 108,
+     "K4_window": 36,
+     "K13_pass": 36,
+     "K5_l6": 36,
+     "K6_wmult": 36,
+     "K7_law": 36
+    },
+    "violations": 0
+   },
+   "pari": {
+    "har": true,
+    "cls": true,
+    "pred_ef": [
+     12,
+     2
+    ]
+   }
+  },
+  "Zp,p=3,I4B": {
+   "tag": "Zp,p=3,I4B",
+   "t1": [
+    {
+     "level_r": 2,
+     "byte_equal": true,
+     "adm_har": {
+      "vok": true,
+      "onesided": true,
+      "unit_strict": "(1,)",
+      "orbit": [
+       "(1,)",
+       "(1,)"
+      ]
+     },
+     "self_cls": {
+      "vok": true,
+      "onesided": true,
+      "unit": "(1,)",
+      "c_thm": "(1,)"
+     }
+    },
+    {
+     "level_r": 3,
+     "byte_equal": true,
+     "adm_har": {
+      "vok": true,
+      "onesided": true,
+      "unit_strict": "((1,),)",
+      "orbit": [
+       "((1,),)",
+       "((1,),)"
+      ]
+     },
+     "self_cls": {
+      "vok": true,
+      "onesided": true,
+      "unit": "((1,),)",
+      "c_thm": "((1,),)"
+     }
+    },
+    {
+     "level_r": 4,
+     "byte_equal": true,
+     "adm_har": {
+      "vok": true,
+      "onesided": true,
+      "unit_strict": "(((1,),),)",
+      "orbit": [
+       "(((1,),),)",
+       "(((1,),),)"
+      ]
+     },
+     "self_cls": {
+      "vok": true,
+      "onesided": true,
+      "unit": "(((1,),),)",
+      "c_thm": "(((1,),),)"
+     }
+    },
+    {
+     "level_r": 5,
+     "byte_equal": false,
+     "ratio_table": [
+      [
+       0,
+       "z1^1"
+      ],
+      [
+       2,
+       "1"
+      ]
+     ],
+     "adm_har": {
+      "vok": true,
+      "onesided": true,
+      "unit_strict": "None",
+      "orbit": [
+       "((((2,),),), (((0,),),))",
+       "((((2,),),), (((0,),),))"
+      ]
+     },
+     "self_cls": {
+      "vok": true,
+      "onesided": true,
+      "unit": "((((1,),),), (((0,),),))",
+      "c_thm": "((((1,),),), (((0,),),))"
+     }
+    }
+   ],
+   "t2_baseline": {
+    "counts": {
+     "K12_pi": 6,
+     "K12_rho": 6,
+     "K1_shift": 108,
+     "K2_dint": 36,
+     "K3_star": 108,
+     "K4_window": 36,
+     "K13_pass": 36,
+     "K5_l6": 36,
+     "K6_wmult": 36,
+     "K7_law": 36
+    },
+    "violations": 0
+   },
+   "t2_cls": {
+    "counts": {
+     "K12_pi": 6,
+     "K12_rho": 6,
+     "K1_shift": 108,
+     "K2_dint": 36,
+     "K3_star": 108,
+     "K4_window": 36,
+     "K13_pass": 36,
+     "K5_l6": 36,
+     "K6_wmult": 36,
+     "K7_law": 36
+    },
+    "violations": 0
+   },
+   "pari": {
+    "har": true,
+    "cls": true,
+    "pred_ef": [
+     12,
+     2
+    ]
+   }
+  },
+  "Fpt,p=2,I4C": {
+   "tag": "Fpt,p=2,I4C",
+   "t1": [
+    {
+     "level_r": 2,
+     "byte_equal": true,
+     "adm_har": {
+      "vok": true,
+      "onesided": true,
+      "unit_strict": "(1, 0)",
+      "orbit": [
+       "(1, 0)",
+       "(1, 0)"
+      ]
+     },
+     "self_cls": {
+      "vok": true,
+      "onesided": true,
+      "unit": "(1, 0)",
+      "c_thm": "(1, 0)"
+     }
+    },
+    {
+     "level_r": 3,
+     "byte_equal": false,
+     "ratio_table": [
+      [
+       0,
+       "z1^1"
+      ],
+      [
+       1,
+       "z1^2"
+      ],
+      [
+       2,
+       "1"
+      ]
+     ],
+     "adm_har": {
+      "vok": true,
+      "onesided": true,
+      "unit_strict": "None",
+      "orbit": [
+       "((1, 1),)",
+       "((1, 0),)"
+      ]
+     },
+     "self_cls": {
+      "vok": true,
+      "onesided": true,
+      "unit": "((0, 1),)",
+      "c_thm": "((0, 1),)"
+     }
+    },
+    {
+     "level_r": 4,
+     "byte_equal": false,
+     "ratio_table": [
+      [
+       0,
+       "WEIGHT 13 vs 12"
+      ],
+      [
+       1,
+       "SUPPORT-MISMATCH"
+      ],
+      [
+       2,
+       "1"
+      ]
+     ],
+     "adm_har": {
+      "vok": false,
+      "onesided": false,
+      "unit_strict": "None",
+      "orbit": null
+     },
+     "self_cls": {
+      "vok": true,
+      "onesided": true,
+      "unit": "(((1, 0),), ((0, 0),))",
+      "c_thm": "(((1, 0),), ((0, 0),))"
+     }
+    },
+    {
+     "level_r": 5,
+     "byte_equal": false,
+     "ratio_table": [
+      [
+       0,
+       "WEIGHT 53 vs 48"
+      ],
+      [
+       1,
+       "SUPPORT-MISMATCH"
+      ],
+      [
+       2,
+       "1"
+      ]
+     ],
+     "adm_har": {
+      "vok": false,
+      "onesided": false,
+      "unit_strict": "None",
+      "orbit": null
+     },
+     "self_cls": {
+      "vok": true,
+      "onesided": true,
+      "unit": "((((1, 0),), ((1, 0),)),)",
+      "c_thm": "((((1, 0),), ((1, 0),)),)"
+     }
+    }
+   ],
+   "t2_baseline": {
+    "counts": {
+     "K12_pi": 6,
+     "K12_rho": 6,
+     "K1_shift": 108,
+     "K2_dint": 36,
+     "K3_star": 108,
+     "K4_window": 36,
+     "K13_pass": 36,
+     "K5_l6": 36,
+     "K6_wmult": 36,
+     "K7_law": 36
+    },
+    "violations": 0
+   },
+   "t2_cls": {
+    "counts": {
+     "K12_pi": 6,
+     "K12_rho": 6,
+     "K1_shift": 108,
+     "K2_dint": 36,
+     "K3_star": 108,
+     "K4_window": 36,
+     "K13_pass": 36,
+     "K5_l6": 36,
+     "K6_wmult": 36,
+     "K7_law": 36
+    },
+    "violations": 8
+   }
+  }
+ },
+ "qo": {
+  "QO:x4-2/Q2": {
+   "status": "complete",
+   "levels": [
+    [
+     4,
+     1,
+     1
+    ]
+   ],
+   "pred_ef": [
+    4,
+    1
+   ],
+   "pari_full": "((4, 1),)",
+   "t1": [
+    {
+     "level_r": 2,
+     "byte_equal": true,
+     "adm_har": {
+      "vok": true,
+      "onesided": true,
+      "unit_strict": "(1,)",
+      "orbit": [
+       "(1,)",
+       "(1,)"
+      ]
+     },
+     "self_cls": {
+      "vok": true,
+      "onesided": true,
+      "unit": "(1,)",
+      "c_thm": "(1,)"
+     }
+    }
+   ]
+  },
+  "QO:x4+4x+4/Q2": {
+   "status": "complete",
+   "levels": [
+    [
+     2,
+     1,
+     1
+    ],
+    [
+     2,
+     1,
+     1
+    ]
+   ],
+   "pred_ef": [
+    4,
+    1
+   ],
+   "pari_full": "((4, 1),)",
+   "t1": [
+    {
+     "level_r": 2,
+     "byte_equal": true,
+     "adm_har": {
+      "vok": true,
+      "onesided": true,
+      "unit_strict": "(1,)",
+      "orbit": [
+       "(1,)",
+       "(1,)"
+      ]
+     },
+     "self_cls": {
+      "vok": true,
+      "onesided": true,
+      "unit": "(1,)",
+      "c_thm": "(1,)"
+     }
+    },
+    {
+     "level_r": 3,
+     "byte_equal": true,
+     "adm_har": {
+      "vok": true,
+      "onesided": true,
+      "unit_strict": "((1,),)",
+      "orbit": [
+       "((1,),)",
+       "((1,),)"
+      ]
+     },
+     "self_cls": {
+      "vok": true,
+      "onesided": true,
+      "unit": "((1,),)",
+      "c_thm": "((1,),)"
+     }
+    }
+   ]
+  },
+  "QO:x4+2x2+2/Q2": {
+   "status": "complete",
+   "levels": [
+    [
+     4,
+     1,
+     1
+    ]
+   ],
+   "pred_ef": [
+    4,
+    1
+   ],
+   "pari_full": "((4, 1),)",
+   "t1": [
+    {
+     "level_r": 2,
+     "byte_equal": true,
+     "adm_har": {
+      "vok": true,
+      "onesided": true,
+      "unit_strict": "(1,)",
+      "orbit": [
+       "(1,)",
+       "(1,)"
+      ]
+     },
+     "self_cls": {
+      "vok": true,
+      "onesided": true,
+      "unit": "(1,)",
+      "c_thm": "(1,)"
+     }
+    }
+   ]
+  },
+  "QO:x4+12/Q2": {
+   "status": "complete",
+   "levels": [
+    [
+     2,
+     1,
+     1
+    ],
+    [
+     1,
+     2,
+     2
+    ]
+   ],
+   "pred_ef": [
+    2,
+    2
+   ],
+   "pari_full": "((2, 2),)",
+   "t1": [
+    {
+     "level_r": 2,
+     "byte_equal": true,
+     "adm_har": {
+      "vok": true,
+      "onesided": true,
+      "unit_strict": "(1,)",
+      "orbit": [
+       "(1,)",
+       "(1,)"
+      ]
+     },
+     "self_cls": {
+      "vok": true,
+      "onesided": true,
+      "unit": "(1,)",
+      "c_thm": "(1,)"
+     }
+    },
+    {
+     "level_r": 3,
+     "byte_equal": true,
+     "adm_har": {
+      "vok": true,
+      "onesided": true,
+      "unit_strict": "((1,),)",
+      "orbit": [
+       "((1,),)",
+       "((1,),)"
+      ]
+     },
+     "self_cls": {
+      "vok": true,
+      "onesided": true,
+      "unit": "((1,),)",
+      "c_thm": "((1,),)"
+     }
+    }
+   ]
+  },
+  "QO:x3-3/Q3": {
+   "status": "complete",
+   "levels": [
+    [
+     3,
+     1,
+     1
+    ]
+   ],
+   "pred_ef": [
+    3,
+    1
+   ],
+   "pari_full": "((3, 1),)",
+   "t1": [
+    {
+     "level_r": 2,
+     "byte_equal": true,
+     "adm_har": {
+      "vok": true,
+      "onesided": true,
+      "unit_strict": "(1,)",
+      "orbit": [
+       "(1,)",
+       "(1,)"
+      ]
+     },
+     "self_cls": {
+      "vok": true,
+      "onesided": true,
+      "unit": "(1,)",
+      "c_thm": "(1,)"
+     }
+    }
+   ]
+  }
+ },
+ "mut": {
+  "Zp,p=3,T2C/MG": {
+   "selfcheck_failures": 1
+  },
+  "Zp,p=3,T3C/MG": {
+   "selfcheck_failures": 2
+  },
+  "Zp,p=2,T3A/MG": {
+   "selfcheck_failures": 1
+  },
+  "Zp,p=2,T2A/MH": {
+   "cocycle_violations": 12,
+   "first": [
+    "Zp,p=2,T2A/MH K12 (0): rho monodromy fails",
+    "Zp,p=2,T2A/MH K12 (2): rho monodromy fails",
+    "Zp,p=2,T2A/MH K6 (2,2): W-MULT value fails"
+   ]
+  },
+  "Zp,p=3,T2B/MH": {
+   "cocycle_violations": 15,
+   "first": [
+    "Zp,p=3,T2B/MH K12 (0): rho monodromy fails",
+    "Zp,p=3,T2B/MH K12 (2): rho monodromy fails",
+    "Zp,p=3,T2B/MH K12 (4): rho monodromy fails"
+   ]
+  },
+  "Fpt,p=2,T2D/MH": {
+   "cocycle_violations": 10,
+   "first": [
+    "Fpt,p=2,T2D/MH K12 (0): rho monodromy fails",
+    "Fpt,p=2,T2D/MH K12 (2): rho monodromy fails",
+    "Fpt,p=2,T2D/MH K6 (2,2): W-MULT value fails"
+   ]
+  }
+ },
+ "families": {
+  "F0": {
+   "pred": "0",
+   "obs": 0,
+   "samples": 21
+  },
+  "F1": {
+   "pred": "RED expected",
+   "obs": 18,
+   "samples": 30
+  },
+  "F2": {
+   "pred": "0",
+   "obs": 6,
+   "samples": 51
+  },
+  "F2s": {
+   "pred": "recorded",
+   "obs": 18,
+   "samples": 51
+  },
+  "F2b": {
+   "pred": "0",
+   "obs": 0,
+   "samples": 51
+  },
+  "F3": {
+   "pred": "0",
+   "obs": 96,
+   "samples": 576
+  },
+  "F3b": {
+   "pred": "0",
+   "obs": 0,
+   "samples": 576
+  },
+  "F4": {
+   "pred": "0",
+   "obs": 0,
+   "samples": 24
+  },
+  "QO": {
+   "pred": "0",
+   "obs": 0,
+   "samples": 5
+  },
+  "MG": {
+   "pred": "0",
+   "obs": 0,
+   "samples": 3
+  },
+  "MH": {
+   "pred": "0",
+   "obs": 0,
+   "samples": 3
+  }
+ },
+ "violations": [
+  [
+   "F1",
+   "Zp,p=2,T2A",
+   "byte-inequality at r=3 (W-2-as-stated RED)"
+  ],
+  [
+   "F2s",
+   "Zp,p=2,T2A",
+   "strict (pinned-ell) unit fails at r=3 (recorded, not RED-scored)"
+  ],
+  [
+   "F1",
+   "Zp,p=3,T2C",
+   "byte-inequality at r=3 (W-2-as-stated RED)"
+  ],
+  [
+   "F2s",
+   "Zp,p=3,T2C",
+   "strict (pinned-ell) unit fails at r=3 (recorded, not RED-scored)"
+  ],
+  [
+   "F1",
+   "Fpt,p=2,T2D",
+   "byte-inequality at r=3 (W-2-as-stated RED)"
+  ],
+  [
+   "F2s",
+   "Fpt,p=2,T2D",
+   "strict (pinned-ell) unit fails at r=3 (recorded, not RED-scored)"
+  ],
+  [
+   "F1",
+   "Zp,p=3,T2G",
+   "byte-inequality at r=3 (W-2-as-stated RED)"
+  ],
+  [
+   "F2s",
+   "Zp,p=3,T2G",
+   "strict (pinned-ell) unit fails at r=3 (recorded, not RED-scored)"
+  ],
+  [
+   "F1",
+   "Zp,p=2,T3A",
+   "byte-inequality at r=3 (W-2-as-stated RED)"
+  ],
+  [
+   "F2s",
+   "Zp,p=2,T3A",
+   "strict (pinned-ell) unit fails at r=3 (recorded, not RED-scored)"
+  ],
+  [
+   "F1",
+   "Zp,p=2,T3A",
+   "byte-inequality at r=4 (W-2-as-stated RED)"
+  ],
+  [
+   "F2",
+   "Zp,p=2,T3A",
+   "harness lift fails the ORBIT Def-2.12 criterion at r=4: {'vok': False, 'onesided': False, 'unit_strict': 'None', 'orbit': None}"
+  ],
+  [
+   "F2s",
+   "Zp,p=2,T3A",
+   "strict (pinned-ell) unit fails at r=4 (recorded, not RED-scored)"
+  ],
+  [
+   "F3",
+   "Zp,p=2,T3A",
+   "Zp,p=2,T3A/cls K6 (10,10): W-MULT value fails"
+  ],
+  [
+   "F3",
+   "Zp,p=2,T3A",
+   "Zp,p=2,T3A/cls K7 (10,10): LAW fails"
+  ],
+  [
+   "F3",
+   "Zp,p=2,T3A",
+   "Zp,p=2,T3A/cls K6 (10,14): W-MULT value fails"
+  ],
+  [
+   "F3",
+   "Zp,p=2,T3A",
+   "Zp,p=2,T3A/cls K7 (10,14): LAW fails"
+  ],
+  [
+   "F3",
+   "Zp,p=2,T3A",
+   "Zp,p=2,T3A/cls K6 (10,31): W-MULT value fails"
+  ],
+  [
+   "F3",
+   "Zp,p=2,T3A",
+   "Zp,p=2,T3A/cls K7 (10,31): LAW fails"
+  ],
+  [
+   "F3",
+   "Zp,p=2,T3A",
+   "Zp,p=2,T3A/cls K6 (10,35): W-MULT value fails"
+  ],
+  [
+   "F3",
+   "Zp,p=2,T3A",
+   "Zp,p=2,T3A/cls K7 (10,35): LAW fails"
+  ],
+  [
+   "F3",
+   "Zp,p=2,T3A",
+   "Zp,p=2,T3A/cls K6 (14,10): W-MULT value fails"
+  ],
+  [
+   "F3",
+   "Zp,p=2,T3A",
+   "Zp,p=2,T3A/cls K7 (14,10): LAW fails"
+  ],
+  [
+   "F3",
+   "Zp,p=2,T3A",
+   "Zp,p=2,T3A/cls K6 (14,14): W-MULT value fails"
+  ],
+  [
+   "F3",
+   "Zp,p=2,T3A",
+   "Zp,p=2,T3A/cls K7 (14,14): LAW fails"
+  ],
+  [
+   "F3",
+   "Zp,p=2,T3A",
+   "Zp,p=2,T3A/cls K6 (14,31): W-MULT value fails"
+  ],
+  [
+   "F3",
+   "Zp,p=2,T3A",
+   "Zp,p=2,T3A/cls K7 (14,31): LAW fails"
+  ],
+  [
+   "F3",
+   "Zp,p=2,T3A",
+   "Zp,p=2,T3A/cls K6 (14,35): W-MULT value fails"
+  ],
+  [
+   "F3",
+   "Zp,p=2,T3A",
+   "Zp,p=2,T3A/cls K7 (14,35): LAW fails"
+  ],
+  [
+   "F3",
+   "Zp,p=2,T3A",
+   "Zp,p=2,T3A/cls K6 (31,10): W-MULT value fails"
+  ],
+  [
+   "F3",
+   "Zp,p=2,T3A",
+   "Zp,p=2,T3A/cls K7 (31,10): LAW fails"
+  ],
+  [
+   "F3",
+   "Zp,p=2,T3A",
+   "Zp,p=2,T3A/cls K6 (31,14): W-MULT value fails"
+  ],
+  [
+   "F3",
+   "Zp,p=2,T3A",
+   "Zp,p=2,T3A/cls K7 (31,14): LAW fails"
+  ],
+  [
+   "F3",
+   "Zp,p=2,T3A",
+   "Zp,p=2,T3A/cls K6 (31,31): W-MULT value fails"
+  ],
+  [
+   "F3",
+   "Zp,p=2,T3A",
+   "Zp,p=2,T3A/cls K7 (31,31): LAW fails"
+  ],
+  [
+   "F3",
+   "Zp,p=2,T3A",
+   "Zp,p=2,T3A/cls K6 (31,35): W-MULT value fails"
+  ],
+  [
+   "F3",
+   "Zp,p=2,T3A",
+   "Zp,p=2,T3A/cls K7 (31,35): LAW fails"
+  ],
+  [
+   "F3",
+   "Zp,p=2,T3A",
+   "Zp,p=2,T3A/cls K6 (35,10): W-MULT value fails"
+  ],
+  [
+   "F3",
+   "Zp,p=2,T3A",
+   "Zp,p=2,T3A/cls K7 (35,10): LAW fails"
+  ],
+  [
+   "F3",
+   "Zp,p=2,T3A",
+   "Zp,p=2,T3A/cls K6 (35,14): W-MULT value fails"
+  ],
+  [
+   "F3",
+   "Zp,p=2,T3A",
+   "Zp,p=2,T3A/cls K7 (35,14): LAW fails"
+  ],
+  [
+   "F3",
+   "Zp,p=2,T3A",
+   "Zp,p=2,T3A/cls K6 (35,31): W-MULT value fails"
+  ],
+  [
+   "F3",
+   "Zp,p=2,T3A",
+   "Zp,p=2,T3A/cls K7 (35,31): LAW fails"
+  ],
+  [
+   "F3",
+   "Zp,p=2,T3A",
+   "Zp,p=2,T3A/cls K6 (35,35): W-MULT value fails"
+  ],
+  [
+   "F3",
+   "Zp,p=2,T3A",
+   "Zp,p=2,T3A/cls K7 (35,35): LAW fails"
+  ],
+  [
+   "F1",
+   "Zp,p=3,T3B",
+   "byte-inequality at r=4 (W-2-as-stated RED)"
+  ],
+  [
+   "F2s",
+   "Zp,p=3,T3B",
+   "strict (pinned-ell) unit fails at r=4 (recorded, not RED-scored)"
+  ],
+  [
+   "F1",
+   "Zp,p=3,T3C",
+   "byte-inequality at r=3 (W-2-as-stated RED)"
+  ],
+  [
+   "F2s",
+   "Zp,p=3,T3C",
+   "strict (pinned-ell) unit fails at r=3 (recorded, not RED-scored)"
+  ],
+  [
+   "F1",
+   "Zp,p=3,T3C",
+   "byte-inequality at r=4 (W-2-as-stated RED)"
+  ],
+  [
+   "F2",
+   "Zp,p=3,T3C",
+   "harness lift fails the ORBIT Def-2.12 criterion at r=4: {'vok': False, 'onesided': False, 'unit_strict': 'None', 'orbit': None}"
+  ],
+  [
+   "F2s",
+   "Zp,p=3,T3C",
+   "strict (pinned-ell) unit fails at r=4 (recorded, not RED-scored)"
+  ],
+  [
+   "F3",
+   "Zp,p=3,T3C",
+   "Zp,p=3,T3C/cls K6 (16,32): W-MULT value fails"
+  ],
+  [
+   "F3",
+   "Zp,p=3,T3C",
+   "Zp,p=3,T3C/cls K7 (16,32): LAW fails"
+  ],
+  [
+   "F3",
+   "Zp,p=3,T3C",
+   "Zp,p=3,T3C/cls K6 (16,38): W-MULT value fails"
+  ],
+  [
+   "F3",
+   "Zp,p=3,T3C",
+   "Zp,p=3,T3C/cls K7 (16,38): LAW fails"
+  ],
+  [
+   "F3",
+   "Zp,p=3,T3C",
+   "Zp,p=3,T3C/cls K6 (22,32): W-MULT value fails"
+  ],
+  [
+   "F3",
+   "Zp,p=3,T3C",
+   "Zp,p=3,T3C/cls K7 (22,32): LAW fails"
+  ],
+  [
+   "F3",
+   "Zp,p=3,T3C",
+   "Zp,p=3,T3C/cls K6 (22,38): W-MULT value fails"
+  ],
+  [
+   "F3",
+   "Zp,p=3,T3C",
+   "Zp,p=3,T3C/cls K7 (22,38): LAW fails"
+  ],
+  [
+   "F3",
+   "Zp,p=3,T3C",
+   "Zp,p=3,T3C/cls K6 (32,16): W-MULT value fails"
+  ],
+  [
+   "F3",
+   "Zp,p=3,T3C",
+   "Zp,p=3,T3C/cls K7 (32,16): LAW fails"
+  ],
+  [
+   "F3",
+   "Zp,p=3,T3C",
+   "Zp,p=3,T3C/cls K6 (32,22): W-MULT value fails"
+  ],
+  [
+   "F3",
+   "Zp,p=3,T3C",
+   "Zp,p=3,T3C/cls K7 (32,22): LAW fails"
+  ],
+  [
+   "F3",
+   "Zp,p=3,T3C",
+   "Zp,p=3,T3C/cls K6 (32,32): W-MULT value fails"
+  ],
+  [
+   "F3",
+   "Zp,p=3,T3C",
+   "Zp,p=3,T3C/cls K7 (32,32): LAW fails"
+  ],
+  [
+   "F3",
+   "Zp,p=3,T3C",
+   "Zp,p=3,T3C/cls K6 (32,38): W-MULT value fails"
+  ],
+  [
+   "F3",
+   "Zp,p=3,T3C",
+   "Zp,p=3,T3C/cls K7 (32,38): LAW fails"
+  ],
+  [
+   "F3",
+   "Zp,p=3,T3C",
+   "Zp,p=3,T3C/cls K6 (38,16): W-MULT value fails"
+  ],
+  [
+   "F3",
+   "Zp,p=3,T3C",
+   "Zp,p=3,T3C/cls K7 (38,16): LAW fails"
+  ],
+  [
+   "F3",
+   "Zp,p=3,T3C",
+   "Zp,p=3,T3C/cls K6 (38,22): W-MULT value fails"
+  ],
+  [
+   "F3",
+   "Zp,p=3,T3C",
+   "Zp,p=3,T3C/cls K7 (38,22): LAW fails"
+  ],
+  [
+   "F3",
+   "Zp,p=3,T3C",
+   "Zp,p=3,T3C/cls K6 (38,32): W-MULT value fails"
+  ],
+  [
+   "F3",
+   "Zp,p=3,T3C",
+   "Zp,p=3,T3C/cls K7 (38,32): LAW fails"
+  ],
+  [
+   "F3",
+   "Zp,p=3,T3C",
+   "Zp,p=3,T3C/cls K6 (38,38): W-MULT value fails"
+  ],
+  [
+   "F3",
+   "Zp,p=3,T3C",
+   "Zp,p=3,T3C/cls K7 (38,38): LAW fails"
+  ],
+  [
+   "F1",
+   "Fpt,p=2,T3D",
+   "byte-inequality at r=3 (W-2-as-stated RED)"
+  ],
+  [
+   "F2s",
+   "Fpt,p=2,T3D",
+   "strict (pinned-ell) unit fails at r=3 (recorded, not RED-scored)"
+  ],
+  [
+   "F1",
+   "Fpt,p=2,T3D",
+   "byte-inequality at r=4 (W-2-as-stated RED)"
+  ],
+  [
+   "F2",
+   "Fpt,p=2,T3D",
+   "harness lift fails the ORBIT Def-2.12 criterion at r=4: {'vok': False, 'onesided': False, 'unit_strict': 'None', 'orbit': None}"
+  ],
+  [
+   "F2s",
+   "Fpt,p=2,T3D",
+   "strict (pinned-ell) unit fails at r=4 (recorded, not RED-scored)"
+  ],
+  [
+   "F3",
+   "Fpt,p=2,T3D",
+   "Fpt,p=2,T3D/cls K6 (18,18): W-MULT value fails"
+  ],
+  [
+   "F3",
+   "Fpt,p=2,T3D",
+   "Fpt,p=2,T3D/cls K7 (18,18): LAW fails"
+  ],
+  [
+   "F3",
+   "Fpt,p=2,T3D",
+   "Fpt,p=2,T3D/cls K6 (18,22): W-MULT value fails"
+  ],
+  [
+   "F3",
+   "Fpt,p=2,T3D",
+   "Fpt,p=2,T3D/cls K7 (18,22): LAW fails"
+  ],
+  [
+   "F3",
+   "Fpt,p=2,T3D",
+   "Fpt,p=2,T3D/cls K6 (18,55): W-MULT value fails"
+  ],
+  [
+   "F3",
+   "Fpt,p=2,T3D",
+   "Fpt,p=2,T3D/cls K7 (18,55): LAW fails"
+  ],
+  [
+   "F3",
+   "Fpt,p=2,T3D",
+   "Fpt,p=2,T3D/cls K6 (18,59): W-MULT value fails"
+  ],
+  [
+   "F3",
+   "Fpt,p=2,T3D",
+   "Fpt,p=2,T3D/cls K7 (18,59): LAW fails"
+  ],
+  [
+   "F3",
+   "Fpt,p=2,T3D",
+   "Fpt,p=2,T3D/cls K6 (22,18): W-MULT value fails"
+  ],
+  [
+   "F3",
+   "Fpt,p=2,T3D",
+   "Fpt,p=2,T3D/cls K7 (22,18): LAW fails"
+  ],
+  [
+   "F3",
+   "Fpt,p=2,T3D",
+   "Fpt,p=2,T3D/cls K6 (22,22): W-MULT value fails"
+  ],
+  [
+   "F3",
+   "Fpt,p=2,T3D",
+   "Fpt,p=2,T3D/cls K7 (22,22): LAW fails"
+  ],
+  [
+   "F3",
+   "Fpt,p=2,T3D",
+   "Fpt,p=2,T3D/cls K6 (22,55): W-MULT value fails"
+  ],
+  [
+   "F3",
+   "Fpt,p=2,T3D",
+   "Fpt,p=2,T3D/cls K7 (22,55): LAW fails"
+  ],
+  [
+   "F3",
+   "Fpt,p=2,T3D",
+   "Fpt,p=2,T3D/cls K6 (22,59): W-MULT value fails"
+  ],
+  [
+   "F3",
+   "Fpt,p=2,T3D",
+   "Fpt,p=2,T3D/cls K7 (22,59): LAW fails"
+  ],
+  [
+   "F3",
+   "Fpt,p=2,T3D",
+   "Fpt,p=2,T3D/cls K6 (55,18): W-MULT value fails"
+  ],
+  [
+   "F3",
+   "Fpt,p=2,T3D",
+   "Fpt,p=2,T3D/cls K7 (55,18): LAW fails"
+  ],
+  [
+   "F3",
+   "Fpt,p=2,T3D",
+   "Fpt,p=2,T3D/cls K6 (55,22): W-MULT value fails"
+  ],
+  [
+   "F3",
+   "Fpt,p=2,T3D",
+   "Fpt,p=2,T3D/cls K7 (55,22): LAW fails"
+  ],
+  [
+   "F3",
+   "Fpt,p=2,T3D",
+   "Fpt,p=2,T3D/cls K6 (55,55): W-MULT value fails"
+  ],
+  [
+   "F3",
+   "Fpt,p=2,T3D",
+   "Fpt,p=2,T3D/cls K7 (55,55): LAW fails"
+  ],
+  [
+   "F3",
+   "Fpt,p=2,T3D",
+   "Fpt,p=2,T3D/cls K6 (55,59): W-MULT value fails"
+  ],
+  [
+   "F3",
+   "Fpt,p=2,T3D",
+   "Fpt,p=2,T3D/cls K7 (55,59): LAW fails"
+  ],
+  [
+   "F3",
+   "Fpt,p=2,T3D",
+   "Fpt,p=2,T3D/cls K6 (59,18): W-MULT value fails"
+  ],
+  [
+   "F3",
+   "Fpt,p=2,T3D",
+   "Fpt,p=2,T3D/cls K7 (59,18): LAW fails"
+  ],
+  [
+   "F3",
+   "Fpt,p=2,T3D",
+   "Fpt,p=2,T3D/cls K6 (59,22): W-MULT value fails"
+  ],
+  [
+   "F3",
+   "Fpt,p=2,T3D",
+   "Fpt,p=2,T3D/cls K7 (59,22): LAW fails"
+  ],
+  [
+   "F3",
+   "Fpt,p=2,T3D",
+   "Fpt,p=2,T3D/cls K6 (59,55): W-MULT value fails"
+  ],
+  [
+   "F3",
+   "Fpt,p=2,T3D",
+   "Fpt,p=2,T3D/cls K7 (59,55): LAW fails"
+  ],
+  [
+   "F3",
+   "Fpt,p=2,T3D",
+   "Fpt,p=2,T3D/cls K6 (59,59): W-MULT value fails"
+  ],
+  [
+   "F3",
+   "Fpt,p=2,T3D",
+   "Fpt,p=2,T3D/cls K7 (59,59): LAW fails"
+  ],
+  [
+   "F1",
+   "Zp,p=2,T3E",
+   "byte-inequality at r=3 (W-2-as-stated RED)"
+  ],
+  [
+   "F2s",
+   "Zp,p=2,T3E",
+   "strict (pinned-ell) unit fails at r=3 (recorded, not RED-scored)"
+  ],
+  [
+   "F1",
+   "Zp,p=2,T3E",
+   "byte-inequality at r=4 (W-2-as-stated RED)"
+  ],
+  [
+   "F2",
+   "Zp,p=2,T3E",
+   "harness lift fails the ORBIT Def-2.12 criterion at r=4: {'vok': False, 'onesided': False, 'unit_strict': 'None', 'orbit': None}"
+  ],
+  [
+   "F2s",
+   "Zp,p=2,T3E",
+   "strict (pinned-ell) unit fails at r=4 (recorded, not RED-scored)"
+  ],
+  [
+   "F1",
+   "Zp,p=3,T3F",
+   "byte-inequality at r=4 (W-2-as-stated RED)"
+  ],
+  [
+   "F2s",
+   "Zp,p=3,T3F",
+   "strict (pinned-ell) unit fails at r=4 (recorded, not RED-scored)"
+  ],
+  [
+   "F1",
+   "Zp,p=3,I4B",
+   "byte-inequality at r=5 (W-2-as-stated RED)"
+  ],
+  [
+   "F2s",
+   "Zp,p=3,I4B",
+   "strict (pinned-ell) unit fails at r=5 (recorded, not RED-scored)"
+  ],
+  [
+   "F1",
+   "Fpt,p=2,I4C",
+   "byte-inequality at r=3 (W-2-as-stated RED)"
+  ],
+  [
+   "F2s",
+   "Fpt,p=2,I4C",
+   "strict (pinned-ell) unit fails at r=3 (recorded, not RED-scored)"
+  ],
+  [
+   "F1",
+   "Fpt,p=2,I4C",
+   "byte-inequality at r=4 (W-2-as-stated RED)"
+  ],
+  [
+   "F2",
+   "Fpt,p=2,I4C",
+   "harness lift fails the ORBIT Def-2.12 criterion at r=4: {'vok': False, 'onesided': False, 'unit_strict': 'None', 'orbit': None}"
+  ],
+  [
+   "F2s",
+   "Fpt,p=2,I4C",
+   "strict (pinned-ell) unit fails at r=4 (recorded, not RED-scored)"
+  ],
+  [
+   "F1",
+   "Fpt,p=2,I4C",
+   "byte-inequality at r=5 (W-2-as-stated RED)"
+  ],
+  [
+   "F2",
+   "Fpt,p=2,I4C",
+   "harness lift fails the ORBIT Def-2.12 criterion at r=5: {'vok': False, 'onesided': False, 'unit_strict': 'None', 'orbit': None}"
+  ],
+  [
+   "F2s",
+   "Fpt,p=2,I4C",
+   "strict (pinned-ell) unit fails at r=5 (recorded, not RED-scored)"
+  ],
+  [
+   "F3",
+   "Fpt,p=2,I4C",
+   "Fpt,p=2,I4C/cls K6 (26,26): W-MULT value fails"
+  ],
+  [
+   "F3",
+   "Fpt,p=2,I4C",
+   "Fpt,p=2,I4C/cls K7 (26,26): LAW fails"
+  ],
+  [
+   "F3",
+   "Fpt,p=2,I4C",
+   "Fpt,p=2,I4C/cls K6 (26,30): W-MULT value fails"
+  ],
+  [
+   "F3",
+   "Fpt,p=2,I4C",
+   "Fpt,p=2,I4C/cls K7 (26,30): LAW fails"
+  ],
+  [
+   "F3",
+   "Fpt,p=2,I4C",
+   "Fpt,p=2,I4C/cls K6 (30,26): W-MULT value fails"
+  ],
+  [
+   "F3",
+   "Fpt,p=2,I4C",
+   "Fpt,p=2,I4C/cls K7 (30,26): LAW fails"
+  ],
+  [
+   "F3",
+   "Fpt,p=2,I4C",
+   "Fpt,p=2,I4C/cls K6 (30,30): W-MULT value fails"
+  ],
+  [
+   "F3",
+   "Fpt,p=2,I4C",
+   "Fpt,p=2,I4C/cls K7 (30,30): LAW fails"
+  ]
+ ],
+ "elapsed_s": 1.3
+}
