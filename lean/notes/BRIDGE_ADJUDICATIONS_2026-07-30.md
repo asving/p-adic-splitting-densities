@@ -9814,3 +9814,53 @@ until the weld lands and the arcs accept; then the fleet transcribes a
 stable corpus. The five-plus Codex legs stay on the post-reset budget
 (verification, unaffected by this ranking). Memory:
 math-first-formalize-when-stable.md.
+
+---
+
+## Q4 WELD OPENER LANDED — the blueprint + THE FIRST JUNCTION PROBE: W-2 byte-equality FALSIFIED but the failure LOCALIZED to a specified transport clause; THE CORPUS UNTOUCHED — 2026-08-08 campaign (wallclock 2026-08-04)
+
+**The blueprint** (`docs/in-progress/GRT_WELD_BLUEPRINT_2026-08-08.md`,
+00ce2b6, 467 lines): four junctions — **J-A DICTIONARY** (realized
+principal-read OM types ⟹ harness tower data inside the [ILN]† class
+pin, with the operator equalities w_m = v_m, R = c·R^GMN, ε_m = the
+print unit; partials N-1/GD-5 accepted), **J-B TREE** (harness
+Φ_m-developments = φ_m-adic expansions, polygon vertex-for-vertex; the
+[RMG]† S2.2 tree computes the classifier's own division steps; stated
+against SEMANTIC objects per the JuncForge parity-wall lesson), **J-C
+CARRY-ALGEBRA** (the fibred carrier ≅ 𝒜(T) via localize–gauge–quotient,
+generalizing GRW2_TIE OB-1..6; cyclic fence in force), **J-D DENSITY**
+(two legs incl. the faithfulness handoff). Highest risk identified:
+**W-2, the lift junction**.
+
+**The probe** (seal 55f7416 / verdict 00a9a51; 16 towers + 5 concrete
+wild polynomials, both rings, 8 wild p | e rows, 1,391 samples, PARI
+anchors; controls with teeth, both green):
+- **W-2 as byte-equality FALSIFIED** — 18/30 r ≥ 3 junctions unequal;
+  minimal witness T2A (ℤ₂, reads (2,1,2),(2,1,1), K₁ = F₄): a slot-0
+  unit ratio z₁² from the ε-exponent convention gap. The discrepancy is
+  SYSTEMATIC, never structural: pure z-monomial slot ratios (the
+  character pattern ξ^j); **ADM-ORBIT green 45/45** (every harness lift
+  IS a GMN Def-2.12 admissible representative up to the print's own
+  unpinned-ℓ orbit, (ξ, w) recorded per level); **24/24 PARI
+  certificates** that harness lifts are real classifier key
+  polynomials.
+- **The deep finding (machine-confirmed 5/5):** above an INTERIOR
+  diverged junction the naive same-ψ chains split as CONJUGATE type
+  chains (v₃(φ^cls − Φ^har) = the key weight exactly ⟹
+  MacLane-inequivalent keys); cocycle transport RED exactly there
+  (96/576, confined). **THE CORRECTED W-2 SHAPE: admissible
+  representative + unit covariance + a ψ-TRANSPORT clause threaded
+  through the tower** (conjugate each deeper ψ through the recorded
+  (ξ, w) before the next lift). One unexplained residue: T3E
+  flat-middle transports 0 — recorded.
+- **REVISION-SCOPE VERDICT (the directive's question): THE ACCEPTED
+  CORPUS IS UNTOUCHED** — it is proved on its own lifts (F3b 576/576
+  green); the transport clause lives in the WELD, not the corpus. First
+  live weld evidence: 480/480 value/cocycle pair-samples clean on
+  keying-coherent rows.
+
+**Queued: the W-2 composition in its corrected three-clause form (the
+probe has the mechanism + the per-level (ξ, w) data) — dispatched now;
+the blueprint's adversarial Codex plan-review at the reset (standing
+plan-level-passes rule); then J-B/J-C/J-D in the blueprint's dependency
+order. The T3E zero-transport residue goes into the composer's charge.**
