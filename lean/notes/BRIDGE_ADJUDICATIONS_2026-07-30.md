@@ -8730,3 +8730,23 @@ the 44.(i) ARC OF RECORD line, the r39-5 cell, the charge item (iii)).
 acceptance citation stays at REVISION 37 + r38b until it lands; this
 unit never self-confirms. Scoped `git commit --only` (the two docs +
 report archive + this append + PROJECT_STATE tag ONLY).
+
+## ACCEPTANCE RE-ANCHORED at REVISION 38 + r39b / VC39+VC39b — 2026-08-04 (the TWENTIETH re-anchoring)
+
+The VC39 arc closes: VC39 (end-to-end on REVISION 38 @999f35c, frozen-history
+trim, census 114/114 + sorry 34 reproduced; NOT-CONFIRMED 0C/6G — four bare
+[ILN] tokens, the byte-match/reflow item, the twelve-vs-thirteen miscount) →
+r39b (2d3080f: the four dagger brackets; the WHITESPACE-NORMALIZATION
+AMENDMENT to the incorporation convention — paste fidelity = content-token
+identity, verified programmatically at 137/137 tokens on all four pastes; the
+thirteen-report correction at all six phrase sites, enumeration verified
+against the filesystem) → VC39b CONFIRMED 0C/0G (report this commit; incl. its
+own token spot-check). The certified perimeter now includes REVISION 38's
+fold: THE [ILN] ACCEPTANCE — the uniform all-orders (ITER-LAW-n) theorem on
+the standard-lift harness class — the rung ledger, THE CLOSURE PROGRAM as the
+queue of record, and the amended citation discipline. Post-pin arcs continue:
+the RM-2 probe verdicts (adjudicated ced7dbb: the engine generalizes; the
+conjectured DCX-emptiness refuted at m = 3; the two-level carry chain the
+measured sharp locus) and the DCX3 sharp-locus sealed confirmation (in
+flight). Next: the generic (RM-m) ENGINE COMPOSE consuming whatever the seal
+confirms — the closure program's central unit.
