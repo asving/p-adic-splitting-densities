@@ -1,0 +1,681 @@
+{
+ "viol": [],
+ "census": [],
+ "counters": {
+  "engine_calls": 97,
+  "zmult_pairs": 133
+ },
+ "mutants": {
+  "MU1": 35,
+  "MU2": 13,
+  "MU3": 4243,
+  "MU4": 49,
+  "MU5": 166,
+  "MU6": 70,
+  "MU7": 1566
+ },
+ "towers": {
+  "M2A": {
+   "m": 2,
+   "kind": "Zp",
+   "p": 5,
+   "d0": 1,
+   "reads": [
+    [
+     2,
+     1,
+     1
+    ],
+    [
+     2,
+     1,
+     1
+    ],
+    [
+     2,
+     1,
+     1
+    ]
+   ],
+   "n_inputs": 12,
+   "stats": {
+    "maxj": [
+     2,
+     2
+    ],
+    "overwin": 0,
+    "promo": 5,
+    "exit": 9,
+    "corrL": 14,
+    "junkX": 5,
+    "junkY": 0,
+    "nodes": 45,
+    "mu_flat_up": 0,
+    "mut_mu": 9,
+    "mut_line": 5,
+    "corr_lvl": {
+     "2": 9,
+     "1": 5
+    },
+    "carries": 0
+   },
+   "weights": [
+    "1",
+    "5/4"
+   ],
+   "law": {
+    "pairs": 64,
+    "track": 6,
+    "live": 1,
+    "chainfed": 1,
+    "mism": 0,
+    "maxc": 1,
+    "mu5": 5,
+    "mu6": 1,
+    "deficits": {
+     "0": 1
+    }
+   }
+  },
+  "M2B": {
+   "m": 2,
+   "kind": "Zp",
+   "p": 3,
+   "d0": 2,
+   "reads": [
+    [
+     3,
+     1,
+     2
+    ],
+    [
+     2,
+     1,
+     1
+    ],
+    [
+     2,
+     3,
+     1
+    ]
+   ],
+   "n_inputs": 16,
+   "stats": {
+    "maxj": [
+     9,
+     3
+    ],
+    "overwin": 0,
+    "promo": 224,
+    "exit": 86,
+    "corrL": 620,
+    "junkX": 354,
+    "junkY": 174,
+    "nodes": 1419,
+    "mu_flat_up": 0,
+    "mut_mu": 149,
+    "mut_line": 224,
+    "corr_lvl": {
+     "1": 448,
+     "2": 86
+    },
+    "carries": 0
+   },
+   "weights": [
+    "1",
+    "9/2"
+   ],
+   "law": {
+    "pairs": 144,
+    "track": 9,
+    "live": 3,
+    "chainfed": 3,
+    "mism": 0,
+    "maxc": 1,
+    "mu5": 6,
+    "mu6": 3,
+    "deficits": {
+     "0": 3
+    }
+   }
+  },
+  "M2F": {
+   "m": 2,
+   "kind": "Fpt",
+   "p": 2,
+   "d0": 1,
+   "reads": [
+    [
+     2,
+     1,
+     1
+    ],
+    [
+     2,
+     1,
+     1
+    ],
+    [
+     2,
+     1,
+     1
+    ]
+   ],
+   "n_inputs": 12,
+   "stats": {
+    "maxj": [
+     2,
+     2
+    ],
+    "overwin": 0,
+    "promo": 5,
+    "exit": 9,
+    "corrL": 14,
+    "junkX": 0,
+    "junkY": 0,
+    "nodes": 34,
+    "mu_flat_up": 0,
+    "mut_mu": 9,
+    "mut_line": 5,
+    "corr_lvl": {
+     "2": 9,
+     "1": 5
+    },
+    "carries": 0
+   },
+   "weights": [
+    "1",
+    "5/4"
+   ],
+   "law": {
+    "pairs": 64,
+    "track": 6,
+    "live": 1,
+    "chainfed": 1,
+    "mism": 0,
+    "maxc": 1,
+    "mu5": 5,
+    "mu6": 1,
+    "deficits": {
+     "0": 1
+    }
+   }
+  },
+  "M3A": {
+   "m": 3,
+   "kind": "Zp",
+   "p": 5,
+   "d0": 1,
+   "reads": [
+    [
+     2,
+     1,
+     1
+    ],
+    [
+     2,
+     1,
+     1
+    ],
+    [
+     2,
+     1,
+     1
+    ],
+    [
+     2,
+     1,
+     1
+    ]
+   ],
+   "n_inputs": 16,
+   "stats": {
+    "maxj": [
+     2,
+     2,
+     2
+    ],
+    "overwin": 0,
+    "promo": 12,
+    "exit": 8,
+    "corrL": 20,
+    "junkX": 8,
+    "junkY": 0,
+    "nodes": 65,
+    "mu_flat_up": 0,
+    "mut_mu": 8,
+    "mut_line": 12,
+    "corr_lvl": {
+     "3": 8,
+     "2": 4,
+     "1": 8
+    },
+    "carries": 0
+   },
+   "weights": [
+    "1",
+    "5/4",
+    "29/16"
+   ],
+   "law": {
+    "pairs": 256,
+    "track": 28,
+    "live": 6,
+    "chainfed": 6,
+    "mism": 0,
+    "maxc": 1,
+    "mu5": 22,
+    "mu6": 6,
+    "deficits": {
+     "0": 6
+    }
+   }
+  },
+  "M3B": {
+   "m": 3,
+   "kind": "Zp",
+   "p": 3,
+   "d0": 2,
+   "reads": [
+    [
+     2,
+     1,
+     2
+    ],
+    [
+     3,
+     2,
+     1
+    ],
+    [
+     2,
+     1,
+     1
+    ],
+    [
+     2,
+     1,
+     1
+    ]
+   ],
+   "n_inputs": 16,
+   "stats": {
+    "maxj": [
+     6,
+     5,
+     3
+    ],
+    "overwin": 0,
+    "promo": 3973,
+    "exit": 355,
+    "corrL": 8656,
+    "junkX": 2849,
+    "junkY": 2249,
+    "nodes": 17772,
+    "mu_flat_up": 0,
+    "mut_mu": 1391,
+    "mut_line": 3973,
+    "corr_lvl": {
+     "1": 4956,
+     "2": 1495,
+     "3": 355
+    },
+    "carries": 6
+   },
+   "weights": [
+    "1",
+    "8/3",
+    "19/3"
+   ],
+   "law": {
+    "pairs": 576,
+    "track": 60,
+    "live": 28,
+    "chainfed": 28,
+    "mism": 0,
+    "maxc": 2,
+    "mu5": 32,
+    "mu6": 28,
+    "deficits": {
+     "0": 27,
+     "1": 1
+    }
+   }
+  },
+  "M4A": {
+   "m": 4,
+   "kind": "Zp",
+   "p": 3,
+   "d0": 1,
+   "reads": [
+    [
+     2,
+     1,
+     1
+    ],
+    [
+     2,
+     1,
+     1
+    ],
+    [
+     2,
+     1,
+     1
+    ],
+    [
+     2,
+     1,
+     1
+    ],
+    [
+     2,
+     1,
+     1
+    ]
+   ],
+   "n_inputs": 12,
+   "stats": {
+    "maxj": [
+     2,
+     2,
+     2,
+     2
+    ],
+    "overwin": 0,
+    "promo": 24,
+    "exit": 4,
+    "corrL": 28,
+    "junkX": 4,
+    "junkY": 0,
+    "nodes": 73,
+    "mu_flat_up": 0,
+    "mut_mu": 0,
+    "mut_line": 24,
+    "corr_lvl": {
+     "4": 4,
+     "3": 8,
+     "2": 8,
+     "1": 8
+    },
+    "carries": 0
+   },
+   "weights": [
+    "1",
+    "5/4",
+    "29/16",
+    "181/64"
+   ],
+   "law": {
+    "pairs": 1024,
+    "track": 120,
+    "live": 28,
+    "chainfed": 28,
+    "mism": 0,
+    "maxc": 1,
+    "mu5": 92,
+    "mu6": 28,
+    "deficits": {
+     "0": 28
+    }
+   }
+  },
+  "M2C": {
+   "m": 2,
+   "kind": "Zp",
+   "p": 3,
+   "d0": 1,
+   "reads": [
+    [
+     2,
+     1,
+     1
+    ],
+    [
+     1,
+     1,
+     1
+    ],
+    [
+     2,
+     1,
+     1
+    ]
+   ],
+   "fence_fired": true,
+   "probe": {
+    "noterule": true,
+    "grid": true,
+    "witness": [
+     "1",
+     "3/2"
+    ]
+   },
+   "stats": {
+    "maxj": [
+     2,
+     1
+    ],
+    "overwin": 0,
+    "promo": 3,
+    "exit": 3,
+    "corrL": 6,
+    "junkX": 0,
+    "junkY": 0,
+    "nodes": 15,
+    "mu_flat_up": 0,
+    "mut_mu": 0,
+    "mut_line": 3,
+    "corr_lvl": {
+     "1": 3,
+     "2": 3
+    },
+    "carries": 3
+   },
+   "law": {
+    "pairs": 16,
+    "track": 1,
+    "live": 0,
+    "chainfed": 0,
+    "mism": 0,
+    "maxc": 1,
+    "mu5": 1,
+    "mu6": 0,
+    "deficits": {}
+   }
+  },
+  "M3C": {
+   "m": 3,
+   "kind": "Zp",
+   "p": 3,
+   "d0": 1,
+   "reads": [
+    [
+     2,
+     1,
+     1
+    ],
+    [
+     2,
+     1,
+     1
+    ],
+    [
+     1,
+     1,
+     1
+    ],
+    [
+     2,
+     1,
+     1
+    ]
+   ],
+   "fence_fired": true,
+   "probe": {
+    "noterule": true,
+    "grid": true,
+    "witness": [
+     "1",
+     "5/4",
+     "19/8"
+    ]
+   },
+   "stats": {
+    "maxj": [
+     2,
+     3,
+     1
+    ],
+    "overwin": 0,
+    "promo": 30,
+    "exit": 16,
+    "corrL": 46,
+    "junkX": 4,
+    "junkY": 0,
+    "nodes": 88,
+    "mu_flat_up": 0,
+    "mut_mu": 0,
+    "mut_line": 30,
+    "corr_lvl": {
+     "1": 14,
+     "2": 16,
+     "3": 16
+    },
+    "carries": 6
+   },
+   "law": {
+    "pairs": 64,
+    "track": 6,
+    "live": 3,
+    "chainfed": 3,
+    "mism": 0,
+    "maxc": 2,
+    "mu5": 3,
+    "mu6": 3,
+    "deficits": {
+     "0": 3
+    }
+   }
+  }
+ },
+ "shapes": {
+  "T2-all2-d1": {
+   "noterule": true,
+   "grid": true,
+   "witness": [
+    "1",
+    "5/4"
+   ]
+  },
+  "T2-M2Bshape-d2": {
+   "noterule": true,
+   "grid": true,
+   "witness": [
+    "1",
+    "9/2"
+   ]
+  },
+  "T3-all2-d1": {
+   "noterule": true,
+   "grid": true,
+   "witness": [
+    "1",
+    "5/4",
+    "29/16"
+   ]
+  },
+  "T3-M3Bshape-d2": {
+   "noterule": true,
+   "grid": true,
+   "witness": [
+    "1",
+    "8/3",
+    "19/3"
+   ]
+  },
+  "T4-all2-d1": {
+   "noterule": true,
+   "grid": true,
+   "witness": [
+    "1",
+    "5/4",
+    "29/16",
+    "181/64"
+   ]
+  },
+  "F2-e1flat-d1": {
+   "noterule": true,
+   "grid": true,
+   "witness": [
+    "1",
+    "3/2"
+   ]
+  },
+  "F2-e1flat-d2": {
+   "noterule": false,
+   "grid": false,
+   "witness": null
+  },
+  "F3-e2flat-d1": {
+   "noterule": true,
+   "grid": true,
+   "witness": [
+    "1",
+    "5/4",
+    "19/8"
+   ]
+  },
+  "F3-e2flat-d2": {
+   "noterule": false,
+   "grid": false,
+   "witness": null
+  },
+  "F3-e1flat-mid-d1": {
+   "noterule": true,
+   "grid": true,
+   "witness": [
+    "1",
+    "3/2",
+    "1"
+   ]
+  },
+  "F3-doubleflat-d1": {
+   "noterule": true,
+   "grid": true,
+   "witness": [
+    "1",
+    "3/2",
+    "5/4"
+   ]
+  },
+  "F3-e1flat-g2-d1": {
+   "noterule": true,
+   "grid": true,
+   "witness": [
+    "1",
+    "3/2",
+    "17/8"
+   ]
+  },
+  "F4-e3flat-d1": {
+   "noterule": false,
+   "grid": true,
+   "witness": [
+    "1",
+    "5/4",
+    "149/64",
+    "591/128"
+   ]
+  }
+ },
+ "elapsed": 2.2138967514038086,
+ "provenance": {
+  "rmengine_pe_reimpl.py": "103c1a9c99e2b4a3e8b63c93cbf87e25",
+  "grb_order2_check.py": "dab62713175363a7185211890019ae2f",
+  "strata3_probe.py": "40ecf8c01425d7d221f471766f224834",
+  "iterlaw4_probe.py": "80b4c26587b22eb1892be978aeaf2160",
+  "iterlawn_diag.py": "cd7581b7fd9df555e517b69556199ef3",
+  "note": "bc4b9cdf964bffcadf12572fca36fc45"
+ }
+}

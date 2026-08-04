@@ -1,0 +1,59 @@
+== M2A: m=2 Zp p=5 d0=1 reads=[(2, 1, 1), (2, 1, 1), (2, 1, 1)]
+   inputs=12 nodes=45 promo=5 exit=9 corrL=14 junk=5/0 carries=0 maxj=[2, 2] overwin=0
+   weights=['1', '5/4']
+   LAW-DCX-3: pairs=64 track=6 live=1 chainfed=1 mism=0 maxc=1 deficits={0: 1}
+== M2B: m=2 Zp p=3 d0=2 reads=[(3, 1, 2), (2, 1, 1), (2, 3, 1)]
+   inputs=16 nodes=1419 promo=224 exit=86 corrL=620 junk=354/174 carries=0 maxj=[9, 3] overwin=0
+   weights=['1', '9/2']
+   LAW-DCX-3: pairs=144 track=9 live=3 chainfed=3 mism=0 maxc=1 deficits={0: 3}
+== M2F: m=2 Fpt p=2 d0=1 reads=[(2, 1, 1), (2, 1, 1), (2, 1, 1)]
+   inputs=12 nodes=34 promo=5 exit=9 corrL=14 junk=0/0 carries=0 maxj=[2, 2] overwin=0
+   weights=['1', '5/4']
+   LAW-DCX-3: pairs=64 track=6 live=1 chainfed=1 mism=0 maxc=1 deficits={0: 1}
+== M3A: m=3 Zp p=5 d0=1 reads=[(2, 1, 1), (2, 1, 1), (2, 1, 1), (2, 1, 1)]
+   inputs=16 nodes=65 promo=12 exit=8 corrL=20 junk=8/0 carries=0 maxj=[2, 2, 2] overwin=0
+   weights=['1', '5/4', '29/16']
+   LAW-DCX-4: pairs=256 track=28 live=6 chainfed=6 mism=0 maxc=1 deficits={0: 6}
+== M3B: m=3 Zp p=3 d0=2 reads=[(2, 1, 2), (3, 2, 1), (2, 1, 1), (2, 1, 1)]
+   inputs=16 nodes=17772 promo=3973 exit=355 corrL=8656 junk=2849/2249 carries=6 maxj=[6, 5, 3] overwin=0
+   weights=['1', '8/3', '19/3']
+   LAW-DCX-4: pairs=576 track=60 live=28 chainfed=28 mism=0 maxc=2 deficits={0: 27, 1: 1}
+== M4A: m=4 Zp p=3 d0=1 reads=[(2, 1, 1), (2, 1, 1), (2, 1, 1), (2, 1, 1), (2, 1, 1)]
+   inputs=12 nodes=73 promo=24 exit=4 corrL=28 junk=4/0 carries=0 maxj=[2, 2, 2, 2] overwin=0
+   weights=['1', '5/4', '29/16', '181/64']
+   LAW-DCX-5: pairs=1024 track=120 live=28 chainfed=28 mism=0 maxc=1 deficits={0: 28}
+== M2C (FLAT, off T-scope; fence fired=True): m=2 p=3 d0=1 reads=[(2, 1, 1), (1, 1, 1), (2, 1, 1)]
+   (A_i)/(B_i) probe: note-rule=True grid-feasible=True witness=['1', '3/2']
+   EXPLORATORY tree (witness weights): nodes=15 mu_non_descending=0 corr_lvl={1: 3, 2: 3} promo=3 exit=3
+   LAW-DCX-3 (flat-shape census): pairs=16 live=0 chainfed=0 mism=0
+== M3C (FLAT, off T-scope; fence fired=True): m=3 p=3 d0=1 reads=[(2, 1, 1), (2, 1, 1), (1, 1, 1), (2, 1, 1)]
+   (A_i)/(B_i) probe: note-rule=True grid-feasible=True witness=['1', '5/4', '19/8']
+   EXPLORATORY tree (witness weights): nodes=88 mu_non_descending=0 corr_lvl={1: 14, 2: 16, 3: 16} promo=30 exit=16
+   LAW-DCX-4 (flat-shape census): pairs=64 live=3 chainfed=3 mism=0
+== (A_i)/(B_i) feasibility table (shape-level, strict system):
+   T2-all2-d1           note-rule=True  grid=True  witness=['1', '5/4']
+   T2-M2Bshape-d2       note-rule=True  grid=True  witness=['1', '9/2']
+   T3-all2-d1           note-rule=True  grid=True  witness=['1', '5/4', '29/16']
+   T3-M3Bshape-d2       note-rule=True  grid=True  witness=['1', '8/3', '19/3']
+   T4-all2-d1           note-rule=True  grid=True  witness=['1', '5/4', '29/16', '181/64']
+   F2-e1flat-d1         note-rule=True  grid=True  witness=['1', '3/2']
+   F2-e1flat-d2         note-rule=False grid=False witness=None
+   F3-e2flat-d1         note-rule=True  grid=True  witness=['1', '5/4', '19/8']
+   F3-e2flat-d2         note-rule=False grid=False witness=None
+   F3-e1flat-mid-d1     note-rule=True  grid=True  witness=['1', '3/2', '1']
+   F3-doubleflat-d1     note-rule=True  grid=True  witness=['1', '3/2', '5/4']
+   F3-e1flat-g2-d1      note-rule=True  grid=True  witness=['1', '3/2', '17/8']
+   F4-e3flat-d1         note-rule=False grid=True  witness=['1', '5/4', '149/64', '591/128']
+
+R0 VERDICT (harness-eps tie + scope predicate, predicted-0): GREEN [0 violations]
+R1 VERDICT (four box clauses m=2/3/4 incl. FIRST level-4 engine data, predicted-0): GREEN [0 violations]
+R2 VERDICT (tree==division + strict mu (T-scope) + intervals + identities, predicted-0): GREEN [0 violations]
+R3 VERDICT (line calculus exact quanta, predicted-0): GREEN [0 violations]
+R4 VERDICT (zh kernel: B-READ / L-ZMULT / read triple, predicted-0): GREEN [0 violations]
+R6 VERDICT (LAW structure: u-chain in Z>=0 + L-CAP<=2, predicted-0): GREEN [0 violations]
+R5 CENSUS (LAW-DCX-(m+1) m=2/3/4 vs measured, census-grade): mismatches=0 over 2208 pairs
+counters: engine_calls=97 zmult_pairs=133 v_zero_inputs=0
+observation [v=0]: no legal input realized v = 0 (0/97); deg f < deg Phi_m caps the read at <= g_(l-1) slots per level, so the read value is a z_l-polynomial of sub-minimal degree with nonzero coefficients at every level -> v != 0 on the whole legal class; the note's scope remark (ii) v = 0 case appears UNREALIZABLE (vacuous-safe)
+R7 VERDICT (mutants MU1-MU7 all visible, predicted-visible): GREEN {'MU1': 35, 'MU2': 13, 'MU3': 4243, 'MU4': 49, 'MU5': 166, 'MU6': 70, 'MU7': 1566}
+
+TOTAL: ALL GREEN; census notes: 0; elapsed 2.2s

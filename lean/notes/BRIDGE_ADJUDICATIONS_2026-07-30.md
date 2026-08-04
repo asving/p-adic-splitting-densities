@@ -8841,3 +8841,62 @@ ITERLAWN S7/ROOT §44 Q1; the (W-MULT-DCX) second-round unit and the
 flat-corner termination unit inherit S6.2/S4.2 as design input. Unit
 files: the note, rmengine_diag.py + output + results JSON, this append
 ONLY (scoped `git commit --only`).
+
+---
+
+## RMENGINE PASS PE (Fable round 1, execution + content) — NOT-CLEAN 1C(display-local)/2G/3n; the PROVED perimeter CONFIRMED by blind reimplementation incl. the FIRST (RM-4) data; PC-C1 adjudicated TEXT-GAP; NEW critical: the S4.2 fence-box mechanism FALSE at d0 = 1
+
+**Anchor:** appended immediately after the RMENGINE-PC entry (2b29712); note
+under audit @ bf18bfe.  Report: `lean/notes/openmath/RMENGINE_passPE_report.md`.
+
+**Execution:** (1) `rmengine_diag.py` re-run BYTE-EXACT (runner md5 ==
+note pin; stdout == committed output; results JSON == committed modulo the
+volatile `elapsed`).  (2) F2c-genre from-note reimplementation
+`verification/openmath/rmengine_pe_reimpl.py` (+output+results JSON;
+written BEFORE opening the diag; sealed harness read-only): FRESH roster
+M2A/M2B/M2F/M3A/M3B + M4A (Zp5/Zp3/F2[[t]]; g0=2, d0=2, e0=3, e1=3
+breadth; all-e=2 T-boundary shapes) + FLAT fence towers M2C (e1=1), M3C
+(e2=1).  ALL GREEN, exit 0: four box clauses 97/97 engine calls incl.
+the FIRST level-4 engine data ever (12 calls, division by Phi_4, Chat_4 =
+Phi_5 - Phi_4^2 via a fresh realize4/build_Phi5 mirror); tree == canonical
+division 97/97; strict mu-descent on every T-scope edge (S4.1
+interval-rule weights, inhabitation checked); line quanta exact; zh-kernel
+== harness reads == box prediction (133 L-ZMULT pairs, internal carries
+firing, self-curing confirmed); LAW-DCX-(m+1) census 0 mismatches / 2,208
+fresh pairs incl. the FIRST LAW-DCX-5 data (1,024 pairs, 28 live, 28/28
+chain-fed); L-CAP held; mutants 7/7 visible; T-scope fence predicate FIRED
+on both flat towers (theorem not tested there).
+
+**Findings:** F1 [CRITICAL, display-local, NEW — off the proof chain]: the
+S4.2 fence box's "(A_i)/(B_i) jointly unsatisfiable" uses rho_{i-1} =
+P_{i-1} against the note's own rho = P - 1; correctly, satisfiability
+cascades to exactly d0 = 1 — machine witnesses: (1, 5/4, 19/8) strict on
+the box's own flat-i=2 case, M3C actual tree 16 level-3 corrections 0
+non-descending edges; every probed d0 = 1 flat shape feasible (incl.
+double-flat and m = 4 top-1 flat), every d0 >= 2 flat infeasible.  The
+fence OVER-fences: T-TERM (and plausibly RM-GEN) extends to the d0 = 1
+flat corners by the note's own arithmetic; L-LEX unnecessary even in its
+scoped case.  Conservative direction; no proved clause touched.
+F2 [GAP] = PC-C1 ADJUDICATED TEXT-GAP: the pi-normalization of DIGIT-SPLIT
+is forced in implementation and cures everything (0 violations with it;
+the diag's digit_split_norm agrees) — mechanism sound, display must show
+the step.  F3 [GAP]: scope remark (ii)'s v = 0 case UNREALIZABLE on the
+legal class (deg cap => <= g_{l-1} read slots/level => v != 0; measured
+0/97) — dead clause; also PC-G5's off-grid (D3) case proved EMPTY (census
+0 + two-line argument), dissolving its bite and simplifying (D3)/RM-GEN.
+Nits: C2 grep key line-wrapped (census otherwise 14/14); S7.1 inline
+at-acceptance qualifier absent (= PC-G4 surface); garbled intermediate
+displays in L-LINE(ii)/(iii)/S4.1/the fence box (end results verified
+right).  Head pastes 3/3 content-token faithful vs this ledger.
+
+**Convergence with PC (decorrelated):** PC-C1 confirmed-and-adjudicated;
+PC-G2 direction agreed (row 11 wording); PC-G3/G4 agreed as charter/
+presentational; PC-G5 largely dissolved (empty case).  F1 is NEW (PE-only).
+**Disposition:** ONE repair unit folds PC's 1C/4G + PE's F1-F3 + nits
+(math work: the S4.2 erratum + fence re-scope to d0 >= 2 + the optional
+d0 = 1 flat-corner strengthening; the DIGIT-SPLIT display step; the
+vacuity lemma; wording).  Acceptance counter stays 0/2 — round 2 runs on
+the repaired text.  Grades unmoved: RM-GEN stands PROVED on T-scope at
+attempt grade (now instance-confirmed through m = 4); LAW-DCX-(m+1) stays
+conjecture (m >= 2).  Unit files: the PE report, rmengine_pe_reimpl.py +
+output + results JSON, this append ONLY (scoped `git commit --only`).
