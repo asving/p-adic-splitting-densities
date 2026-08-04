@@ -1,0 +1,13 @@
+{
+ "final": true,
+ "violations": [],
+ "findings": [
+  "A2: 0 in A on EVERY built tower (psi0_0 != 0 always) \u2014 the A = {1} and A = {} corners never realized",
+  "A1: psi(0) = 0 => reducible on every K0 scanned (y | psi): IRREDUCIBILITY ALONE empties the A = {1} corner at g0 = 2; the [ILN] S0.1 class pin ALSO demands psi_j(0) != 0 outright (ITERLAWN_PROOF S0.1). The (K2-RES)(c) candidate is CLASS-VACUOUS, not machine-dark.",
+  "A1b: the A = {0} shape (psi0_1 = 0) is field-realizable at odd characteristic only (char 2: zero irreducibles of shape y^2 + c); never picked by the committed enumeration on the 16-tower roster (instrument a0tab: ks = [0,1] on all 16).",
+  "C2b: REALIZED (t,K,I,pc,sgn)-duplicate cells inside one fiber (glued stratum, SDW4G2F[2635,2635] slot (4, 0, 0, 0)): {(1, (0, 1), ((1, 0, (4,), 0),), (0, 0, 1, 2), -1): 2} \u2014 same-sign same-class pair distinguished only by event placement; the S8 'placement-pair fibers: 0' census counts only PROMOTION-placement pairs and misses this shape",
+  "D3: K2W4G2Z identities (not-I1, not-I3, I2) confirmed \u2014 the note's T1-corner derivation of the CROSS event matches the tower's residue data",
+  "E: duplicate-book fibers on the full traced roster: 1 (rows: ['SDW4G2F']) \u2014 every one on a glued (non-REGULAR) row"
+ ],
+ "elapsed": 21.191266536712646
+}

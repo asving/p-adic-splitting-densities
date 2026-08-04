@@ -1,5 +1,31 @@
 # (SURV-K2) — the level-0 window calculus: the exchange involution PROVED well-defined; (SURV-K2) PROVED at attempt grade at g₀ = 2 on the REGULAR locus (single-book bottom systems, both level-0 digits present); the residual boxed as (K2-RES) with exact failure candidates
 
+    [K2-r1 REPAIR BRACKET, 2026-08-08 campaign (wallclock 2026-08-04).
+    Hostile pass 1 (SURVK2-PE1, fresh-context Fable, on 53e0883; report
+    SURVK2_passPE1_report.md + the verifier's OWN probe
+    verification/openmath/survk2_pe1_ext.py, committed with this
+    revision) — verdict GAPS-ONLY: 0 critical, 4 gaps, 6 notes.  PE1
+    re-derived the spine EXACT: K2-L1(a)(b), K2-L2, the complete K2-L3
+    inventory (independently brute-forced at unit AND raw-j₀ level),
+    K2-L4/L5(b)(c)/L6, K2-L7(i)(iii), the four forms, the I₁/I₃
+    dichotomy, THM-A on (K2-REG), K2-COR, the g₀ ≥ 3 candidates; re-ran
+    both runners read-only (identical mod timings, all pins green);
+    hand-re-derived the T0 and exchange kills to the digit and the
+    CROSS event cell-exact.  The four gaps, repaired in place: G4 THE
+    FAVORABLE ONE — the (K2-RES)(c) A = {1} counterexample corner is
+    PROVABLY CLASS-EMPTY (now Lemma K2-L8 at S6; the (c) box superseded
+    at S7; (R2) reduced to ψ₀_1 ≠ 0); G1 — a REALIZED same-sign
+    duplicate-book fiber on the GLUED stratum refutes the "never
+    duplicated books" / "≥ 2-branch machine-absent" glosses (corrected
+    at K2-L3(i)/K2-L7(ii)/S8; THM-A insulated by (R3)); G2 — the
+    K2-L1(c)/(d) junk-free qualifier; G3 — K2-L5(a)'s any-d₀
+    π-exclusion pinned to (R0) at d₀ ≥ 2.  Six notes N1–N6 cured at
+    dated [K2-r1] brackets.  Statements of K2-THM-A and K2-L1..L7
+    otherwise byte-unchanged (the three queue-named moves only: the L7
+    gloss, the L1(c)/(d) qualifier, the L5(a) pin).  Full disposition:
+    the REPAIR RECORD at the tail.  Arc counter: 0/1 CLEAN (GAPS-ONLY
+    ≠ CLEAN).]
+
 Object: the (SURV-K2) box of `SURVDISJ_PROOF_2026-08-08.md` S6 (at
 553895d, box text unchanged through SD-r2):
 
@@ -39,9 +65,12 @@ interior books (the dump-swap realization (ii); 29 of the 332 traced
 rows, all instance-protected) — boxed in (K2-RES) with their identity
 algebra displayed; (ii) single-book forms outside the S/P1/P2/T1 list
 (combinatorially reachable at deep dump chains, instance-absent);
-(iii) the availability corner A ⊊ {0,1} — where the dichotomy loses its
-escape hatch and an EXPLICIT counterexample candidate to (SURV-K2)
-itself exists (S7, the sharpest known); (iv) g₀ ≥ 3 — machine-dark
+(iii) the availability corner — REDUCED at K2-r1: A = {1} (ψ₀_0 = 0)
+is PROVABLY CLASS-EMPTY (Lemma K2-L8, S6 — the former EXPLICIT
+counterexample candidate to (SURV-K2) is unrealizable), so the only
+realizable corner is A = {0} (ψ₀_1 = 0; odd residue characteristic
+only; instance-dark), displayed with its singleton-safety arithmetic
+at S6, outside (K2-REG); (iv) g₀ ≥ 3 — machine-dark
 program-wide (the instrument's engine cost wall), where the window
 budget reaches 5 and the fixed-book count law PROVABLY fails
 combinatorially (two displayed candidates: a −2 window and an
@@ -56,10 +85,14 @@ unit of the W-MULT-DCX arc, the (SURV-K2) leg, on the three-commit
 instrument record 10ec9f3/dbe0cb9/5e2b8e4).
 
 **Grade (header summary) and THE GRADE-CAP SENTENCE.**  K2-L1 through
-K2-L7 and K2-THM-A — PROVED at attempt grade (composed this unit; no
-hostile pass yet: 0/0 CLEAN).  **Grade cap carried from consumption
+K2-L8 and K2-THM-A — PROVED at attempt grade (hostile-pass record 0/1
+CLEAN [K2-r1]: round 1 = SURVK2-PE1, GAPS-ONLY — 0 critical, 4 gaps
+(all repaired in place), 6 notes (cured); GAPS-ONLY ≠ CLEAN).
+**Grade cap carried from consumption
 [dagger discipline]: this note consumes WMULTDCX_2026-08-08.md†
-(W-D2(iv) — the seed t-inventory j₀(D_t) = s₁(u₁) + t·e₀,
+(W-D1 — anchor reducedness, the stage-1 seed coefficient π^{u₁+u₁′}
+[K2-r1, PE1 N5: restored to this cap list; the S9 dependency line
+always had it] — W-D2(iv) — the seed t-inventory j₀(D_t) = s₁(u₁) + t·e₀,
 w₀ = u₀ − t·h₀, THE parameterization of everything here — and W-D3's
 assembled LED display, used as bookkeeping frame) at ATTEMPT grade —
 that arc stands at 0/2 CLEAN, not accepted — and
@@ -171,7 +204,7 @@ exponent as j₀ = n·e₀ + r with 0 ≤ r < e₀; the **budget** of a window
 is the unit count n at its opening; level-0 corrections consume
 g₀ − k ∈ {1, …, g₀} units, promotions consume g₀ units.
 
-## S2. K2-L1: the window normal form (the involution's substrate; any g₀)
+## S2. K2-L1: the window normal form (the involution's substrate; any g₀ ≥ 2)
 
 **Lemma K2-L1.**  On any root-to-terminal path of T² (either stage):
 (a) a level-0 event fires only at j₀ ≥ P₀ (equivalently n ≥ g₀), and
@@ -182,14 +215,15 @@ subsequent arrivals) depends on the window's drain only through its
 promotion count p_w — NOT through which corrections K_w were taken and
 not through the parked remainder f_w := n_close;
 (c) consequently, two drains of one window with equal (consumed units,
-p_w) are INTERCHANGEABLE: replacing one by the other yields a legal
+p_w) are INTERCHANGEABLE along JUNK-FREE continuations [the K2-r1
+qualifier — bracket below]: replacing one by the other yields a legal
 path with identical interior history, identical subsequent arrivals,
 identical slot and exponent vector except through the level-0 totals;
 (d) the full tree realizes EVERY legal choice: at each overflow all
 correction children with nonzero digits are present (S2.2), every
 stage-1 exit is seeded with every d-cell, and the correction-main
-(L-)coefficient is never absent (L-NORM(a)) — so every legal drain
-substitution is realized by an actual terminal cell.
+(L-)coefficient is never absent (L-NORM(a)) — so every legal JUNK-FREE
+drain substitution is realized by an actual terminal cell.
 
 *Proof.*  (a) The walk fires at the FIRST overflowing level (S2.2
 E1-priority); level 0 is first, so whenever j₀ ≥ P₀ the next event is
@@ -208,15 +242,29 @@ agrees with the committed walk EXACTLY, terminal-by-terminal, all 332
 rows, both stages); K2-WIN (every level-0 event fired at j₀ ≥ P₀ and
 every window closed below P₀; 0 violations).]
 
+    [K2-r1 qualifier repair (PE1 finding G2), 2026-08-08 campaign
+    (wallclock 2026-08-04): the junk-free qualifier on (c)/(d) is NEW.
+    As originally stated for ARBITRARY continuations the claims are
+    over-broad: junk-child AVAILABILITY is coefficient-dependent — the
+    π-junk child exists iff X̂ ≠ 0 for the CURRENT coefficient
+    (L-NORM(b) gives only "absent iff X̂ = 0") — and swapping drain
+    content changes the running coefficient, so a downstream JUNK edge
+    of the original path need not exist on the substituted path.  For
+    junk-free continuations (promotions/exits/L-children — L-NORM(a),
+    never absent) the claims are exact.  Every consumer in this note
+    is junk-free: K2-L7's fibers and THM-A's β_min population ride
+    K2-L5(a)/(R0).]
+
 Reading: K2-L1(c)+(d) is the WELL-DEFINEDNESS of the box's conjectured
 involution — the charge's proof obligation.  Exchanging level-0 drain
-content at fixed (units, promotions) always maps legal paths to legal
-paths, because legality is a per-window budget condition and the
-budget is blind to which corrections carried the mass.
+content at fixed (units, promotions) always maps legal junk-free paths
+to legal junk-free paths, because legality is a per-window budget
+condition and the budget is blind to which corrections carried the
+mass.
 
 ## S3. K2-L2 + K2-L3: the budget bound and the g₀ = 2 drain inventory
 
-**Lemma K2-L2 (window budget; any g₀, both stages, any d₀).**  Every
+**Lemma K2-L2 (window budget; any g₀ ≥ 2, both stages, any d₀).**  Every
 window has budget n ≤ 2g₀ − 1.
 *Proof.*  Each window opens at j₀ = (parked) + (arrival).  Parked
 < P₀ always: at the root, σ₁ = s₁ + s₁′ ≤ 2(e₀ − 1) < P₀ (anchors
@@ -226,15 +274,21 @@ K2-L1(a).  Arrivals: a dump contributes a_{c,0} + Y_c ≤ (P₀ − 1) + 1
 (P₀ − 1) + 1 (d-cells reduced, S2.1).  So j₀ < P₀ + P₀ = 2P₀ at every
 opening, i.e. n ≤ 2g₀ − 1.  Mid-window Y-returns (+1 per level-0
 Y-correction) never raise the running j₀ past its opening value: each
-such event still consumes e₀(g₀ − k) − 1 ≥ e₀ − 1 ≥ 1 net.  ∎
+such event consumes e₀(g₀ − k) − 1 ≥ 0 net [K2-r1, PE1 N1: the
+original "≥ e₀ − 1 ≥ 1" fails at e₀ = 1, k = g₀ − 1 (net 0); the
+bound needs only ≥ 0, never-negative, and window TERMINATION rides on
+[RMG] tree-finiteness, not on strict decrease].  ∎
 [Machine: K2-WIN — all windows on all 332 rows have n ≤ 3 (= 2g₀ − 1
 at g₀ = 2), all arrival bounds verified (root σ₁, s₁(u₁) ≤ e₀ − 1,
 dumps ≤ P₀ − 1); 0 violations.]
 
 **Lemma K2-L3 (the complete legal-drain inventory at g₀ = 2).**  At
-g₀ = 2 (events at n ≥ 2; C₁ consumes 1 unit, C₀ and promotions consume
-2; junk-free drains, so no Y-variants), the legal drains from budget n
-are EXACTLY:
+g₀ = 2, with BOTH level-0 digits available — A = {0,1}, the (R2) pin;
+by K2-L8 only ψ₀_1 ≠ 0 is substantive [K2-r1, PE1 N6: this
+availability hypothesis was presumed by the display, now stated in
+the header] — (events at n ≥ 2; C₁ consumes 1 unit, C₀ and promotions
+consume 2; junk-free drains, so no Y-variants), the legal drains from
+budget n are EXACTLY:
 
     n ≤ 1:  none (window closes immediately).
     n = 2:  [C₁] (→ f = 1)   |   [C₀] (→ 0)   |   [promo] (→ 0).
@@ -244,8 +298,16 @@ are EXACTLY:
 Consequences, each part of the display:
 (i) **no order-multiplicity**: each (K, p) multiset above is realized
 by exactly ONE legal order (e.g. [C₀,C₁] is illegal at n = 3: after C₀
-only 1 unit remains and C₁ needs 2) — distinct cells of a fiber have
-distinct (t, K, placement) content, never duplicated books;
+only 1 unit remains and C₁ needs 2) — a PER-WINDOW uniqueness
+[K2-r1 gloss correction (PE1 G1): this clause formerly added
+"distinct cells of a fiber have distinct (t, K, placement) content,
+never duplicated books" — REFUTED as a fiber-level claim: across a
+MULTI-WINDOW chain equal (t, K) totals can split as different
+per-window placements, and exactly ONE same-sign duplicate-(t,K,I)-
+book fiber IS realized in the traced set (SDW4G2F[2635,2635] slot
+(4,0,0,0): {C₀@dump-window, C₁@seed-window} vs {C₁@dump, C₀@seed} —
+PE1 probe C2b + probe E's full-roster census), on a GLUED row, i.e.
+inside the (K2-RES)(a) box; REGULAR-locus realizations: ZERO];
 (ii) **the unique in-window branch**: the only budget with two legal
 drains of EQUAL (units, promotions) is n = 3, units 2, p = 0:
 {C₁,C₁} (sign +) against {C₀} (sign −) — the instrument's realization
@@ -269,7 +331,7 @@ legal order of its (K, p) in its budget; 0 violations, all 332 rows.]
 
 ## S4. K2-L4 + K2-L5 + K2-L6: factorization, the line calculus, the ν-invariant
 
-**Lemma K2-L4 (book factorization; junk-free cells, any g₀).**  For a
+**Lemma K2-L4 (book factorization; junk-free cells, any g₀ ≥ 2).**  For a
 junk-free (junk = 0, Y₂ = 0) cell C with seed t, level-0 multiset K,
 interior book I:
 
@@ -293,9 +355,12 @@ seed coefficient is π^{u₁+u₁′} (W-D1†/S2.2).  ∎  [Machine: K2-FACT �
 all three displays cellwise on the 1,311 junk-free two-exit cells of
 the 332 rows, including the W-D2(iv) seed-w₀ leg; 0 violations.]
 
-**Lemma K2-L5 (the line calculus at the bottom; any g₀).**
-(a) [junk exclusion] No cell carrying a π-junk edge attains β_min
-(any d₀); at d₀ = 1 no cell carries a Φ₀Y-edge at all (L-NORM(c)),
+**Lemma K2-L5 (the line calculus at the bottom; any g₀ ≥ 2).**
+(a) [junk exclusion] No cell carrying a π-junk edge attains β_min —
+at d₀ = 1 unconditionally; at d₀ ≥ 2 for Y-EDGE-FREE β_min
+populations, i.e. under the (R0) pin exactly as consumed by THM-A
+[K2-r1 pin (PE1 G3) — see the proof bracket];
+at d₀ = 1 no cell carries a Φ₀Y-edge at all (L-NORM(c)),
 so EVERY β_min cell is junk-free there.  (At d₀ ≥ 2 the Y-exclusion
 is NOT proved — the Y-child changes the exponent trajectory, so the
 L-shadow replay below can be blocked — and enters the REGULAR locus
@@ -325,6 +390,18 @@ has identical promotion totals and one junk gain fewer, hence line
 smaller by ≥ E_m.  Iterating removes every π-junk edge: a cell
 strictly below C exists, so C is not β_min-minimal.  At d₀ = 1 there
 are no Y-edges at all (L-NORM(c), accepted), completing (a) there.
+[K2-r1 replay repair (PE1 G3): the verbatim replay is NOT automatic —
+the walk's FIRING depends only on exponents, but junk-child
+AVAILABILITY is coefficient-dependent (the G2 bracket at K2-L1), so a
+downstream π-junk choice of C can be ABSENT on the substituted path.
+Repair, as consumed: at any blocked downstream π-fork take the
+L-CHILD instead (never absent, same exponents — the line drops
+FURTHER, which only helps).  This closes (a) whenever the
+continuation meets no Y-fork: unconditionally at d₀ = 1 (no Y-edges,
+L-NORM(c)); at d₀ ≥ 2 for Y-edge-free cells — the β_min population
+under (R0), exactly what THM-A consumes.  The formerly unrestricted
+any-d₀ π-clause (paths mixing π-junk with later Y-edges) is WITHDRAWN
+to machine-true status (K2-JBOT 689/689, incl. both d₀ = 2 towers).]
 (b): equal π⃗ and zero junk make the difference vanish.
 (c) is the L-LINE(iii) level-0 identity verbatim.  ∎  [Machine:
 K2-JBOT (all 689 bottom-line cells junk-free and Y-free, including
@@ -358,7 +435,8 @@ box's involution is defined on all of F — nothing is missing);
 (ii) the per-seed signed count of F lies in {−1, 0, +1} (the
 fixed-book seedbound: per seed, the drain choices multiply per-window
 signed counts, each in {0, ±1} by K2-L3(iv), across at most one branch
-window in the realized class);
+window — the hypothesis class [K2-r1 gloss correction (PE1 G1): this
+formerly read "in the realized class"; see the proof bracket]);
 (iii) the residue classes of F are read off K2-L4: cells with equal
 (t, K) totals are identical in class and sign regardless of placement.
 *Proof.*  Containment ⊆ is K2-L1(a)+(b) (every cell's drains are
@@ -369,14 +447,35 @@ with F's (K2-L1(b)), whose slot and line coincide (equal totals; equal
 π⃗ + K2-L5(b)), and whose fiber key is (I, π⃗).  (ii): the per-window
 inventory count is 0 or ±1 (K2-L3(iv)); a product over windows along
 the parked-unit chain stays in {0, ±1} when at most one window
-branches — the realized class; the ≥ 2-branch shapes are exactly the
-S7 candidates, machine-absent.  ∎  [Machine: K2-FIB — every bottom
+branches.
+    [K2-r1 gloss correction (PE1 G1), 2026-08-08 campaign (wallclock
+    2026-08-04).  This step formerly closed "— the realized class; the
+    ≥ 2-branch shapes are exactly the S7 candidates, machine-absent."
+    REFUTED as stated: ONE ≥ 2-correction-window fiber IS realized —
+    SDW4G2F[2635,2635] slot (4,0,0,0), the same-sign duplicate-book
+    pair of the K2-L3(i) bracket — on a GLUED row, i.e. inside the
+    (K2-RES)(a) box; REGULAR-locus realizations ZERO (PE1 probe E,
+    full-roster census).  Two further disclosures (PE1, folded into
+    G1): the statement's arrival-sequence clause CONDITIONS the fiber
+    on a shared (a_1, …, a_W) — the proof does not show arrival
+    sequences are fiber-constant, and at the glued witness the
+    per-cell window BUDGETS in fact differ (seed window n = 2 vs
+    n = 3); and the "≤ 1 branch window" hypothesis does not by itself
+    exclude the S7(e) promotion-placement pair (zero exchange-branch
+    windows there; fenced at F-B).  THM-A IS INSULATED, confirmed and
+    stated: it consumes (ii) only through (R1) + (R3) — a duplicate
+    (t, K) book inside a single-book group would break (R3) (the
+    S7(b) box), and the witness row fails (R1).  The per-seed count
+    at the witness is still −1 (the {C₁,C₁,C₁} rider offsets), so the
+    |S_t| ≤ 1 verdict stands 332/332.]
+∎  [Machine: K2-FIB — every bottom
 fiber on all 332 rows EQUALS its chain enumeration (got = want, both
 directions: no cell outside the enumeration, no predicted mate
 missing), over available seeds with free promotion placement;
 K2-CHAIN — per-(fiber, seed) signed counts all in {−1, 0, +1}; branch
 census: 0 fibers with two n = 3 windows, 0 placement-pair fibers;
-0 violations.]
+0 violations — with the K2-r1 caveat at S8: both censuses are
+narrower than their names and do not see the glued witness.]
 
 Reading: K2-L7(i) IS the box's "sign-reversing pairing, well-defined
 from the tree structure", discharged: the pairing's domain (the fiber)
@@ -430,13 +529,64 @@ the (+2)-flip class is c's mirror under global sign, the cross
 relation is I₂, and the row survived through its P1 (¬I₁ there) — see
 the dichotomy below.)
 
+**Lemma K2-L8 (the availability floor: ψ₀_0 ≠ 0 class-wide — the
+A = {1} corner is EMPTY) [NEW at K2-r1, 2026-08-04, from PE1 finding
+G4].**  On the [ILN]† S0.1 class (this note's Scope pin), every tower
+has ψ₀_0 ≠ 0.  Hence at g₀ = 2 the availability set always contains
+0: the corners A = {1} (ψ₀_0 = 0, ψ₀_1 ≠ 0) and A = ∅ are
+CLASS-EMPTY, the only realizable proper corner is A = {0}
+(ψ₀_1 = 0), and (R2) reduces to the SINGLE substantive condition
+ψ₀_1 ≠ 0.
+*Proof.*  Twice over, independently.  (1) The class pin: [ILN] S0.1
+pins every read to ψ_j ∈ K_j[y] monic irreducible, deg ψ_j = g_j ≥ 1,
+**ψ_j(0) ≠ 0** (ITERLAWN_PROOF S0.1, the read-j bullet); at j = 0 the
+constant digit is ψ₀_0 = ψ₀(0) ≠ 0 literally — a tower with ψ₀_0 = 0
+lies OUTSIDE the class (SURV-K2) quantifies over.  (2) Irreducibility
+alone, at g₀ ≥ 2: ψ₀(0) = 0 gives y | ψ₀, contradicting
+irreducibility at degree ≥ 2 (and K₁ = K₀[y]/(ψ₀) would not be a
+field — the engine's mk_field_ext/pick_irreducible enforce exactly
+this).  ∎  [Machine (instance shadow, never a proof step): PE1 probe
+A, `survk2_pe1_ext.py` — 96-tower engine grid (kinds × p ∈ {2,3,5} ×
+d₀ ∈ {1,2} × four level-0 reads incl. e₀ = 1 × two idx parities):
+ψ₀_0 ≠ 0 on ALL 96 (A-census: A = {0,1} on 88, A = {0} on 8);
+field-level exhaustive scan of EVERY monic degree-2 polynomial over
+every K₀ in the grid (q = 2,3,4,5,9,25): irreducible with zero
+constant term — count 0 everywhere.]
+
+Reading — the counterexample threat retired, and the surviving
+corner.  (SURV-K2)'s sharpest previously-boxed threat — the bare-P1
+net-zero system of the former (K2-RES)(c) — is UNREALIZABLE: the
+explicit class-wide counterexample candidate is retired (the box
+superseded in place at S7), and the instrument's "all 16 traced
+towers have A = {0,1}" is a two-line theorem, not an instance
+accident.  The surviving corner A = {0} is realizable at ODD residue
+characteristic only (char 2: y² + c is never irreducible —
+Artin–Schreier/perfect-square; probe A1 counts 0 monic irreducibles
+of that shape at q ∈ {2,4} and 1/4/2/16 at q = 3/9/5/25) and is
+instance-dark (the committed enumeration never picked a ψ₀_1 = 0
+read on the 16-tower roster).  Its safety arithmetic, DISPLAYED
+(probe-verified independently, NOT composed as a lemma): with only
+C₀ every (units, p) drain class at n ≤ 3 is a SINGLETON (the
+in-window exchange needs both digits), and the cross-seed T0 toggle
+is impossible — every A = {0} move consumes an EVEN unit count, so
+the t and t + 1 slices park on remainders of opposite parity
+(disjoint slots); no cancellation move exists at all.  A = {0} stays
+OUTSIDE (K2-REG) — (R2) fails there — as a displayed, instance-dark
+residual.
+
 **Definition (the REGULAR locus, K2-REG; machine-decidable per row).**
 A live g₀ = 2 row is REGULAR iff
 (R0) the β_min population is Φ₀Y-free — AUTOMATIC at d₀ = 1
      (L-NORM(c) + K2-L5(a)); a genuine pin only at d₀ ≥ 2;
 (R1) every β_min group is single-book (one fiber key);
 (R2) both level-0 digits are present: ψ₀_0 ≠ 0 and ψ₀_1 ≠ 0
-     (A = {0, 1});
+     (A = {0, 1});  [K2-r1 coverage extension (PE1 G4): by K2-L8 the
+     first clause is AUTOMATIC class-wide, so (R2) ≡ ψ₀_1 ≠ 0 — the
+     only realizable (R2)-failure is A = {0}, odd characteristic
+     only, displayed safe (not composed) at K2-L8's Reading.  PE1 N4,
+     recorded: (R2) is not in fact consumed by THM-A's PROOF —
+     (R3) + (R4) suffice — harmless conservatism, kept as the
+     availability pin behind K2-L3's inventory hypothesis.]
 (R3) every β_min group's normalized form lies in {S, P1, P2, T1};
 (R4) the β_min system contains an S, or contains both a P1 and a T1.
 [Machine: 303 of the 332 traced rows are REGULAR; the 29 others all
@@ -512,16 +662,23 @@ T1's b/a-cell; its sign is its correction parity by K2-L4).  ∎
     │   a −2 class with its partner group also unprotected — the       │
     │   dichotomy does NOT extend for free.  Arithmetic headroom, not  │
     │   an instance (K2-SHAPE 0/332).                                  │
-    │ (c) THE AVAILABILITY CORNER A = {1} (ψ₀_0 = 0, ψ₀_1 ≠ 0) — the   │
-    │   sharpest known counterexample CANDIDATE to (SURV-K2) itself:   │
-    │   the P1 family's complement fiber {C₀} does not exist, so a     │
-    │   β_min system consisting of bare P1s alone under I₁ nets to     │
-    │   ZERO — bottom dead, no protected group.  Needs a tower with    │
-    │   ψ₀_0 = 0 and the P1-only line arithmetic; all 16 traced        │
-    │   g₀ = 2 towers have A = {0,1} (machine-dark corner).  (A = ∅   │
-    │   and A = {2} are safe: all bottom fibers are singletons —      │
-    │   cross-seed toggles need quantum 1 and exchanges need both     │
-    │   digits.)                                                       │
+    │ (c) [SUPERSEDED IN PLACE at K2-r1, 2026-08-04 (PE1 finding G4).  │
+    │   This stratum boxed "THE AVAILABILITY CORNER A = {1}            │
+    │   (ψ₀_0 = 0, ψ₀_1 ≠ 0) — the sharpest known counterexample      │
+    │   CANDIDATE to (SURV-K2) itself: ... a β_min system consisting   │
+    │   of bare P1s alone under I₁ nets to ZERO ... (machine-dark      │
+    │   corner)".  It is NOT machine-dark; it is CLASS-EMPTY: Lemma    │
+    │   K2-L8 (the [ILN] S0.1 pin ψ₀(0) ≠ 0, and independently        │
+    │   irreducibility at g₀ = 2) forces ψ₀_0 ≠ 0 on every tower —    │
+    │   the bare-P1 net-zero candidate is UNREALIZABLE, and "all 16    │
+    │   traced towers have A = {0,1}" is a two-line theorem, not an   │
+    │   instance accident.  The stratum is DELETED from the residual;  │
+    │   the surviving availability residual is only A = {0}            │
+    │   (ψ₀_1 = 0; odd characteristic only), displayed with its        │
+    │   singleton-safety arithmetic at K2-L8's Reading — outside       │
+    │   (K2-REG), instance-dark.  (The original parenthetical's        │
+    │   "A = {2}" was a notation slip for A = {0}, indices vs masses   │
+    │   — PE1 N3.)]                                                    │
     │ (d) g₀ ≥ 3 [machine-dark program-wide — the instrument's engine  │
     │   cost wall].  The budget bound (K2-L2) reaches n ≤ 5, where     │
     │   BOTH pillars of the g₀ = 2 inventory PROVABLY fail             │
@@ -540,12 +697,17 @@ T1's b/a-cell; its sign is its correction parity by K2-L4).  ∎
     │   2 paths).  Needs a promotion INSIDE a two-window chain at      │
     │   β_min; promotions cost line quanta (L-LINE(i)), which          │
     │   disfavors but does not exclude it (forced-carry rows).         │
-    │   0 realized (K2-CHAIN placement census).                        │
+    │   0 realized (K2-CHAIN placement census).  [K2-r1 (PE1, folded   │
+    │   into G1): that census counts the PROMO-placement shape only —  │
+    │   the CORRECTION-placement analogue IS realized, once, on the    │
+    │   glued stratum (the K2-L3(i)/K2-L7(ii) witness) and belongs to  │
+    │   (a), already boxed above — not to this stratum.]               │
     └────────────────────────────────────────────────────────────────────┘
 
 The (SURV-K2) box of SURVDISJ_PROOF S6 remains the authority for the
 g₀ ≥ 3 statement; THIS box refines its g₀ = 2 content: the open set at
-g₀ = 2 is exactly strata (a)/(b)/(c)/(e), and the proof target for (a)
+g₀ = 2 is exactly strata (a)/(b)/(e) plus the A = {0} corner [(c)
+retired CLASS-EMPTY at K2-r1 — K2-L8], and the proof target for (a)
 is the glued case table over the enlarged identity set (finite per
 glue shape — the natural next unit).
 
@@ -579,6 +741,17 @@ violations:**
                seeds) — K2-L7 completeness in vivo.
     K2-CHAIN   per-(fiber, seed) signed counts in {−1, 0, +1};
                placement-pair fibers: 0; two-branch fibers: 0.
+               [K2-r1 caveat (PE1 G1): both branch censuses are
+               NARROWER than their names — "placement-pair" counts
+               PROMOTION-placement vectors only, and "two-branch"
+               evaluates window budgets on ONE representative cell
+               per fiber (fc[0]) although budgets differ cellwise at
+               the glued witness.  Neither sees the realized
+               correction-placement duplicate-book fiber
+               (SDW4G2F[2635,2635] slot (4,0,0,0), glued — PE1 probe
+               C2b/E: exactly ONE roster-wide, zero REGULAR).  The
+               signed-count verdict itself (|S_t| ≤ 1, 332/332) is
+               unaffected — the rider offsets it.]
     K2-SHAPE   every single-book β_min group's normalized form in
                {S, P1, P2, T1} — (R3) on all rows.
     K2-REG     REGULAR census 303/332; every REGULAR row protected
@@ -606,16 +779,26 @@ THM-A simply does not apply there; nothing breaks).  (iv) All counts
 are instance evidence, never proof steps; the forms table and the
 dichotomy are proved, their realizability census is measured.
 (v) This unit composed both the note and its machine leg in one
-context; the hostile-pass arc (0/0) is owed entirely.
+context; the hostile-pass arc (0/0) is owed entirely.  [K2-r1: round
+1 has now run — SURVK2-PE1, hostile, fresh-context, with its OWN
+decorrelated probe (`survk2_pe1_ext.py`: independent drain
+enumerators at unit AND raw-j₀ level, the 96-tower A-corner grid,
+the full-roster duplicate-book census, two hand-re-derived kills,
+the CROSS event): GAPS-ONLY, all findings applied; arc 0/1 CLEAN,
+round 2 owed.]
 
 ## S9. The honest consequence display, claims, dependencies, fences
 
 * **(SURV-K2)**: PROVED at attempt grade (capped) on
   TRACK ∧ (H1)–(H3) ∧ g₀ = 2 ∧ (c_{m−1} ≥ k) ∧ (K2-REG) — K2-THM-A,
   residue-assignment-free.  OPEN beyond: exactly the (K2-RES) strata
-  (a) glued, (b) out-of-list, (c) A = {1}, (e) placement pair at
-  g₀ = 2; and all of g₀ ≥ 3 (d).  The S6 box of SURVDISJ_PROOF stays
-  authoritative for g₀ ≥ 3; its g₀ = 2 content is refined here.
+  (a) glued, (b) out-of-list, (e) placement pair at g₀ = 2, plus the
+  A = {0} availability corner (displayed safe at K2-L8's Reading,
+  not composed); and all of g₀ ≥ 3 (d).  [K2-r1: the former stratum
+  (c) — the A = {1} counterexample candidate, the class-wide threat
+  — is RETIRED, provably class-empty (K2-L8).]  The S6 box of
+  SURVDISJ_PROOF stays authoritative for g₀ ≥ 3; its g₀ = 2 content
+  is refined here.
 * **(SURV-DISJ)**: its bottom leg now holds on
   TRACK ∧ (H1)–(H3) ∧ g₀ = 2 ∧ (K2-REG) ∧ (c_{m−1} ≥ k) (K2-COR(ii)).
   Combined coverage of the disjunction: the SD-THM-A locus
@@ -634,16 +817,17 @@ context; the hostile-pass arc (0/0) is owed entirely.
 
 | # | claim | grade | consumes |
 |---|---|---|---|
-| K2-L1 | window normal form: consecutive drains, interior sees only p_w, interchangeability, full realization | PROVED (attempt; any g₀, both stages) | [RMG] S2.2, L-NORM(a) |
-| K2-L2 | window budget n ≤ 2g₀ − 1, all windows, any d₀ | PROVED (attempt) | [RMG] S2.1/S2.2 (reduced cells/dumps) |
-| K2-L3 | the complete g₀ = 2 drain inventory; no order-multiplicity; unique in-window exchange; T0 quantum = 1 forced | PROVED (attempt; g₀ = 2) | K2-L2 (finite check) |
-| K2-L4 | junk-free factorization: sgn/w₀/res multiplicative in (t, K, I) | PROVED (attempt) | [RMG] S2.2, L-NORM(a); W-D2(iv)†, W-D1† |
-| K2-L5 | β_min π-junk-free (any d₀; Y-leg at d₀ = 1, else the (R0) pin); line = f(π⃗); level-0 line-neutrality | PROVED (attempt) | [RMG] L-LINE(i)–(iii), L-NORM, S2.1 |
+| K2-L1 | window normal form: consecutive drains, interior sees only p_w, interchangeability + full realization (JUNK-FREE continuations [K2-r1, G2]) | PROVED (attempt; any g₀ ≥ 2 [K2-r1, N2], both stages) | [RMG] S2.2, L-NORM(a) |
+| K2-L2 | window budget n ≤ 2g₀ − 1, all windows, any d₀ | PROVED (attempt; any g₀ ≥ 2 [K2-r1, N2]) | [RMG] S2.1/S2.2 (reduced cells/dumps) |
+| K2-L3 | the complete g₀ = 2 drain inventory under A = {0,1} [K2-r1, N6]; no order-multiplicity (per-window [K2-r1, G1]); unique in-window exchange; T0 quantum = 1 forced | PROVED (attempt; g₀ = 2) | K2-L2 (finite check); K2-L8 ((R2) reduction) |
+| K2-L4 | junk-free factorization: sgn/w₀/res multiplicative in (t, K, I) | PROVED (attempt; any g₀ ≥ 2 [K2-r1, N2]) | [RMG] S2.2, L-NORM(a); W-D2(iv)†, W-D1† |
+| K2-L5 | β_min π-junk-free (d₀ = 1 unconditional; d₀ ≥ 2 under the (R0) pin — π-leg too [K2-r1, G3]); line = f(π⃗); level-0 line-neutrality | PROVED (attempt) | [RMG] L-LINE(i)–(iii), L-NORM, S2.1 |
 | K2-L6 | ν = t − M invariant per (slot, line, book) | PROVED (attempt) | K2-L4, S2.1 line formula |
-| K2-L7 | β_min fibers = complete legal chains; the involution well-defined; fixed-book seedbound | PROVED (attempt; g₀ = 2, ≤ 1 branch window — the realized class) | K2-L1/L2/L3/L5 |
+| K2-L7 | β_min fibers = complete legal chains; the involution well-defined; fixed-book seedbound | PROVED (attempt; g₀ = 2, ≤ 1 branch window — the hypothesis class = the realized REGULAR class; ONE glued ≥ 2-window realization, boxed (K2-RES)(a) [K2-r1, G1]) | K2-L1/L2/L3/L5 |
+| K2-L8 | ψ₀_0 ≠ 0 class-wide: A = {1} and A = ∅ CLASS-EMPTY; (R2) ≡ ψ₀_1 ≠ 0 [NEW at K2-r1, PE1 G4] | PROVED (attempt; the S0.1 pin + irreducibility, two independent legs) | [ILN]† S0.1 |
 | K2-THM-A | (SURV-K2) on g₀ = 2 ∧ (K2-REG), residue-free | PROVED (attempt, capped) | K2-L1..L7, SD-L7† (forms) |
 | K2-COR | bottom survives; Q¹ ≠ 0 under (RW₀) | PROVED (attempt, capped) | SD-L6†, SD-L7†, S-L3†, S-THM(b)† |
-| (K2-RES) | the residual strata (a)–(e) | **OPEN** (boxed, S7; exact shapes displayed) | — |
+| (K2-RES) | the residual strata (a)/(b)/(d)/(e) + the A = {0} corner — (c) RETIRED class-empty [K2-r1, K2-L8] | **OPEN** (boxed, S7; exact shapes displayed) | — |
 | (SURV-K2) class-wide | g₀ ≥ 2 all shapes | **OPEN** = (K2-RES) ∪ g₀ ≥ 3 | — |
 
 **Dependency line.**  Consumes: RMENGINE_2026-08-08.md [RMG]
@@ -663,14 +847,19 @@ eight + survk2_instrument.py 389b1db9fc0266a12db74e021d7d51c9 + its
 results 1ac516df8292ac5d57a88e430de3d1e4).
 
 **Fences.**
-F-A. Pins are per-lemma and displayed: K2-L1/L2/L4 are any-g₀; K2-L3,
-     K2-L7, K2-THM-A are g₀ = 2; (K2-REG) is a ROW predicate — do not
-     cite THM-A tower-wide.  The d₀ ≥ 2 Y-exclusion at β_min is the
-     (R0) pin, not a theorem.  Nothing is claimed at interior g ≥ 2
-     or g₀ ≥ 3.
+F-A. Pins are per-lemma and displayed: K2-L1/L2/L4 are any-g₀ ≥ 2
+     [K2-r1, PE1 N2: "any g₀" always meant the class floor g₀ ≥ 2 —
+     K2-L2's root-arrival leg uses 2(e₀−1) < e₀g₀, false at g₀ = 1];
+     K2-L3, K2-L7, K2-THM-A are g₀ = 2; (K2-REG) is a ROW predicate —
+     do not cite THM-A tower-wide.  The d₀ ≥ 2 exclusions at β_min
+     (Y outright, and the π-replay leg [K2-r1, G3]) are the (R0) pin,
+     not a theorem.  Nothing is claimed at interior g ≥ 2 or g₀ ≥ 3.
 F-B. K2-L7(ii)'s seedbound is proved on the ≤ 1-branch-window class
-     (= the realized class, K2-CHAIN); the ≥ 2-branch and placement
-     shapes are S7(b)/(e) candidates, NOT covered.
+     (= the realized REGULAR class; K2-CHAIN with the S8 census
+     caveat [K2-r1] — ONE glued ≥ 2-window duplicate-book realization
+     exists, inside (K2-RES)(a)); the ≥ 2-branch and placement shapes
+     are S7 residual candidates, NOT covered — and S7(e)'s
+     "0 instances" counts the PROMO-placement shape only [K2-r1].
 F-C. THM-A eliminates residue HYPOTHESES, not residue CONTENT: the
      dichotomy still runs on the residue field (distinctness in K₀,
      SD-L7).  Do not cite it as "pure combinatorics".
@@ -678,13 +867,119 @@ F-D. The forms table normalizes up to a common factor κρ ≠ 0; the
      identities I₁/I₂/I₃ are tower-level.  At g₀ ≥ 3 the identity set
      enlarges (one Q-A0 instance per (t, k)) — none of S6 transfers.
 F-E. Grade cap: the header sentence (binding cap = the W arc, 0/2
-     CLEAN).  This note's own hostile-pass record: 0/0 — composed
-     this unit, no verification pass yet; the standing arc protocol
-     (fresh-context Fable + the model-diverse Codex leg) is owed
-     before any acceptance-grade citation.
+     CLEAN).  This note's own hostile-pass record: 0/1 CLEAN [K2-r1]
+     — round 1 (SURVK2-PE1) GAPS-ONLY, repaired in place; round 2
+     (PE-K2-2, fresh-context Fable on THIS revision, or the
+     model-diverse Codex leg post-reset) is owed before any
+     acceptance-grade citation.
 F-F. Nothing here upgrades LAW-DCX-(m+1) class-wide, touches the
      EMPTY arc's pins (the c < k half at g₀ = 2 is explicitly NOT
      claimed), or narrows (SD-YJ).
 F-G. The 303/29 census, the realized-systems list, and the branch
      censuses are instance evidence; the PROVED content is the lemma
      chain and the finite form/dichotomy analysis.
+
+## REPAIR RECORD [K2-r1, 2026-08-08 campaign (wallclock 2026-08-04)]
+
+**Round 1 verdict (SURVK2-PE1, fresh-context Fable, hostile, on
+53e0883; full report `lean/notes/openmath/SURVK2_passPE1_report.md`
+(md5 09f321eecc40938580dfeab3ee05b39c) + the verifier's OWN probe
+`verification/openmath/survk2_pe1_ext.py`
+(be1ec1f5ef1e9931c4a00da9ad994c87), output
+(627492317e1e2a3137fa5e57395ef943), results
+(20843c595c1cb5f9633cfb9dc82b343c), all committed with this
+revision): GAPS-ONLY — 0 CRITICAL, 4 JUSTIFICATION GAPS, 6 NOTES.**
+
+**The sound core — the spine confirmations, named.**  PE1's
+re-derivation was independent and decorrelated from the composer:
+(1) THE K2-L3 DOUBLE-ENUMERATOR — the complete drain inventory
+brute-forced at unit level AND at raw-j₀ level (no unit abstraction;
+e₀ ∈ {2,3}, every sub-e₀ residue), the two agreeing with each other
+and with the display EXACTLY (eight drains; unique legal order per
+(K, p); the (2,0) exchange the unique multi-member class anywhere;
+per-class signed counts in {0, ±1}); the g₀ ≥ 3 candidates re-derived
+(the −2 window exactly {C₀} vs {C₂,C₂,C₂}; {C₂,C₁} exactly 2 legal
+orders; bonus census: at FULL g₀ = 3 availability every n ≤ 5
+multi-member class nets in {0, +1} — the −2 window genuinely needs
+ψ₀_1 = 0).  (2) BOTH HAND KILLS TO THE DIGIT — the T0 kill
+EQ3G2B[1479,1485] slot (5,0,0) (ψ₀ = y² + y + 2 over F₃; I₁ verified
+by hand; the (t=0,∅)/(t=1,{C₁}) pair killed; survivor = the S-form at
+(2,0,0)); the exchange kill K2G2P5B[1479,1479] slot (4,1,0) — with
+the witness polynomial ψ₀ = y² + 4y + 1 over F₅ PREDICTED BY HAND
+from pick_irreducible's enumeration order BEFORE reading the probe
+output, and matching; I₃ verified; survivor at (1,1,0).  (3) THE
+CROSS EVENT DERIVED — K2W4G2Z[2635,2635] re-traced: (¬I₁, ¬I₃, I₂)
+confirmed, the (−1, +2) group vector at slot (4,0,0,0) with the
+protected (−1, +1) survivor at (1,0,0,0) — the S6 T1-corner
+parenthetical is cell-exact.  (4) Both runners re-run read-only:
+outputs identical mod timing digits, all ten md5 pins green, the
+traced rowset replicated 332/332.
+
+**The amendment-seal adjudication (PE1 §6), accepted:** the
+three-commit instrument record (10ec9f3 seal / dbe0cb9 mid-battery
+amendment / 5e2b8e4 verdict) is coherent in git; what was read before
+amending was harness/cost TELEMETRY only (the union phase's 286/286
+replication count and the K2G3AF prep stall), no candidate-law
+verdict; the amendment touches no verdict logic and pre-declared the
+g₀ ≥ 3 coverage loss BEFORE any verdict; the seal's evidentiary value
+for PRED-1..7 over the traced set is PRESERVED; PRED-2's g₀ ∈ {3,4}
+clause is honestly dead (coverage failure on record); the "ENGINE
+UNSUPPORTED (TimeoutError)" wording quirk is disclosed in the note
+and reproduced verbatim in PE1's fresh re-run (all nine instrument
+families 0 violations).
+
+Per-finding disposition:
+
+* **G4 (GAP, THE FAVORABLE ONE — (K2-RES)(c) mis-boxed a class-empty
+  stratum as the sharpest open counterexample).**  APPLIED: the
+  emptiness is now **Lemma K2-L8** at S6 (two independent leg proof:
+  the [ILN] S0.1 pin ψ_j(0) ≠ 0 read at j = 0, and irreducibility at
+  g₀ ≥ 2; PE1 probe A as instance shadow — 96-tower grid, exhaustive
+  field scans, zero realizations).  The (c) corner DELETED from
+  (K2-RES) via a superseded-in-place bracket; (K2-REG) coverage
+  extended at the (R2) clause ((R2) ≡ ψ₀_1 ≠ 0; only A = {0}
+  realizable, odd characteristic only, its singleton-safety
+  arithmetic displayed at K2-L8's Reading); consequence display,
+  header verdict, claims table, and the S7 tail paragraph rippled.
+  THE CLASS-WIDE COUNTEREXAMPLE THREAT TO (SURV-K2) IS RETIRED.
+* **G1 (GAP — the realized class is NOT the "≤ 1 branch window"
+  class; duplicated books ARE realized).**  APPLIED: the K2-L3(i)
+  fiber-level gloss and the K2-L7(ii) proof gloss corrected at dated
+  brackets (instance-present: SDW4G2F[2635,2635] slot (4,0,0,0),
+  exactly ONE realization roster-wide, on the GLUED stratum already
+  boxed in (K2-RES)(a); zero REGULAR); the S8 K2-CHAIN census caveats
+  disclosed (promo-only "placement-pair"; representative-dependent
+  "two-branch"); THM-A's insulation via (R1)+(R3) confirmed and
+  stated in the K2-L7 bracket; F-B and S7(e) rippled.  |S_t| ≤ 1
+  machine-true throughout — no theorem moved.
+* **G2 (GAP — K2-L1(c)/(d) over-broad for arbitrary continuations).**
+  APPLIED: the JUNK-FREE qualifier added to both clauses (statement
+  move, queue-named), with the dated bracket explaining the
+  coefficient-dependence of junk-child availability (L-NORM(b)) and
+  noting every consumer in this note is junk-free.
+* **G3 (GAP — K2-L5(a)'s any-d₀ π-exclusion replay).**  APPLIED:
+  closed UNDER (R0) AS CONSUMED — the pin displayed in the statement
+  (statement move, queue-named) and the L-child-fallback repair
+  spelled out in the proof bracket; the formerly unrestricted any-d₀
+  π-clause withdrawn to machine-true status (K2-JBOT 689/689).
+* **N1** (K2-L2's e₀ = 1 net-consumption slip) — cured in the proof.
+  **N2** ("any g₀" ⇒ g₀ ≥ 2) — cured at the L1/L2/L4 headers, claims
+  rows, and F-A.  **N3** (the "A = {2}" slip) — recorded in the
+  superseded (c) bracket.  **N4** ((R2) not consumed by THM-A's
+  proof) — recorded at the (R2) clause.  **N5** (W-D1 missing from
+  the header cap list) — restored.  **N6** (K2-L3's availability
+  hypothesis) — displayed in the lemma header.
+
+**Honest status after K2-r1.**  Arc counter: 0/1 CLEAN (GAPS-ONLY ≠
+CLEAN).  No critical error was found and no theorem-body mathematics
+moved: the four gaps were one favorable class-emptiness (a NEW lemma
+strengthening the note), two scope/gloss corrections confined to the
+glued stratum, and two hypothesis-display repairs — all per PE1's own
+analysis, so verifier and repairer COINCIDE for the new text (K2-L8,
+the qualifiers, the corrected glosses); round 2 must re-read it
+fresh: round 2 = PE-K2-2 (fresh-context Fable) on THIS revision, or
+the model-diverse Codex leg post-reset — whichever lands first; the
+Codex leg is owed regardless before any acceptance claim.  Grade caps
+unchanged (binding cap = the W arc, 0/2 CLEAN).  (K2-RES) narrowed
+FAVORABLY ((c) retired); nothing in this repair touches the machine
+legs, the instrument record, or any consumed source.

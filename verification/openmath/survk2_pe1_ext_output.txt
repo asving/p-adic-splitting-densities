@@ -1,0 +1,126 @@
+==============================================================================
+PROBE B — independent drain inventories
+  A={0} (only C0): every (units,p) class a singleton at n<=3 (in-window exchange dead)  [OK]
+  A={1} (only C1): every (units,p) class a singleton at n<=3 (in-window exchange dead)  [OK]
+  A={0}: cross-seed toggle impossible (parked-parity disjoint) [OK]
+  B2 raw-j0 == unit-level for e0 in {2,3}, all residues [OK]
+  B3 g0=3 n=5 masses {1,3}: drains {(0,): 1, (2, 2, 2): 1}, both sign -, class count -2  [-2 WINDOW CONFIRMED]
+  B3 g0=3 n=5 {C2,C1}: 2 legal orders [(('c', 1), ('c', 2)), (('c', 2), ('c', 1))]  [ORDER-MULTIPLICITY CONFIRMED]
+  B3 full census (masses {1,2,3}), multi-member (n,units,p) classes:
+    n=4 (units,p)=(2,0): [(1,), (2, 2)] signed=0
+    n=4 (units,p)=(3,0): [(0,), (1, 2)] signed=0
+    n=5 (units,p)=(3,0): [(0,), (1, 2), (1, 2), (2, 2, 2)] signed=0
+    n=5 (units,p)=(4,0): [(0, 2), (1, 1), (1, 2, 2)] signed=1
+    n=5 (units,p)=(5,0): [(0, 1), (0, 2, 2)] signed=0
+    n=5 (units,p)=(5,1): [(1,), (2, 2)] signed=0
+  B4 placement-pair chain: 2 paths [((), (1,)), ((1,), ())], net -2 [CONFIRMED]
+==============================================================================
+PROBE A — the A = {1} availability corner (psi0_0 = 0)
+  engine grid: 96 towers built, 0 unsupported; A-census over built towers: {(0, 1): 88, (0,): 8}
+PROBE-FINDING: A2: 0 in A on EVERY built tower (psi0_0 != 0 always) — the A = {1} and A = {} corners never realized
+  A1 field-level: monic degree-2 census per K0:
+    K0 (p=2, d0=1, Fpt): q=2; monic deg-2 total 4, irreducible 1, irreducible with psi(0)=0: 0, irreducible with psi_1=0 (A={0} shape): 0
+    K0 (p=2, d0=1, Zp): q=2; monic deg-2 total 4, irreducible 1, irreducible with psi(0)=0: 0, irreducible with psi_1=0 (A={0} shape): 0
+    K0 (p=2, d0=2, Fpt): q=4; monic deg-2 total 16, irreducible 6, irreducible with psi(0)=0: 0, irreducible with psi_1=0 (A={0} shape): 0
+    K0 (p=2, d0=2, Zp): q=4; monic deg-2 total 16, irreducible 6, irreducible with psi(0)=0: 0, irreducible with psi_1=0 (A={0} shape): 0
+    K0 (p=3, d0=1, Fpt): q=3; monic deg-2 total 9, irreducible 3, irreducible with psi(0)=0: 0, irreducible with psi_1=0 (A={0} shape): 1
+    K0 (p=3, d0=1, Zp): q=3; monic deg-2 total 9, irreducible 3, irreducible with psi(0)=0: 0, irreducible with psi_1=0 (A={0} shape): 1
+    K0 (p=3, d0=2, Fpt): q=9; monic deg-2 total 81, irreducible 36, irreducible with psi(0)=0: 0, irreducible with psi_1=0 (A={0} shape): 4
+    K0 (p=3, d0=2, Zp): q=9; monic deg-2 total 81, irreducible 36, irreducible with psi(0)=0: 0, irreducible with psi_1=0 (A={0} shape): 4
+    K0 (p=5, d0=1, Fpt): q=5; monic deg-2 total 25, irreducible 10, irreducible with psi(0)=0: 0, irreducible with psi_1=0 (A={0} shape): 2
+    K0 (p=5, d0=1, Zp): q=5; monic deg-2 total 25, irreducible 10, irreducible with psi(0)=0: 0, irreducible with psi_1=0 (A={0} shape): 2
+    K0 (p=5, d0=2, Fpt): q=25; monic deg-2 total 625, irreducible 400, irreducible with psi(0)=0: 0, irreducible with psi_1=0 (A={0} shape): 16
+    K0 (p=5, d0=2, Zp): q=25; monic deg-2 total 625, irreducible 400, irreducible with psi(0)=0: 0, irreducible with psi_1=0 (A={0} shape): 16
+PROBE-FINDING: A1: psi(0) = 0 => reducible on every K0 scanned (y | psi): IRREDUCIBILITY ALONE empties the A = {1} corner at g0 = 2; the [ILN] S0.1 class pin ALSO demands psi_j(0) != 0 outright (ITERLAWN_PROOF S0.1). The (K2-RES)(c) candidate is CLASS-VACUOUS, not machine-dark.
+PROBE-FINDING: A1b: the A = {0} shape (psi0_1 = 0) is field-realizable at odd characteristic only (char 2: zero irreducibles of shape y^2 + c); never picked by the committed enumeration on the 16-tower roster (instrument a0tab: ks = [0,1] on all 16).
+==============================================================================
+PROBE C — glued dump-swap groups ((K2-RES)(a)), by hand
+-- tracing SDG2BF (m=3 Fpt p=2 d0=1) --
+  psi0 = [(1,), (1,), (1,)]  (K0 elements, ascending degree; A = {k: psi0_k != 0})
+  SDG2BF[1479,1485] slot (2, 0, 0) beta_min=1002: n=1 cells, signed vector [1], protected=True
+    t=0 K=(0,) I=((1, 0, (4,), 0),) sgn=+1 w0=55 res=((((1,), (0,)),),)
+  SDG2BF[1479,1485] slot (5, 0, 0) beta_min=1002 GLUED (2 books): n=2 cells, signed vector [0], protected=False
+    t=0 K=() I=((1, 0, (1,), 0),) sgn=-1 w0=54 res=((((1,), (0,)),),)
+    t=0 K=(1,) I=((1, 0, (4,), 0),) sgn=+1 w0=54 res=((((1,), (0,)),),)
+    glue pair: rider dump0=4 (+C1) vs other dump0=1: rider-other = 3 (= e0*(g0-k) = 3? YES) same res: True
+-- tracing SDW4G2F (m=4 Fpt p=2 d0=1) --
+  CENSUS [SDW4G2F]: principal d-cell ABSENT (theta_0 = 0 case)
+  psi0 = [(1,), (1,), (1,)]  (K0 elements, ascending degree; A = {k: psi0_k != 0})
+  SDW4G2F[2635,2635] slot (1, 0, 0, 0) beta_min=1784 GLUED (2 books): n=3 cells, signed vector [-1], protected=True
+    t=1 K=(0, 1) I=((1, 0, (1,), 0),) sgn=-1 w0=74 res=(((((1,), (0,)),),),)
+    t=1 K=(0, 0) I=((1, 0, (4,), 0),) sgn=-1 w0=74 res=(((((1,), (0,)),),),)
+    t=1 K=(0, 1, 1) I=((1, 0, (4,), 0),) sgn=+1 w0=74 res=(((((1,), (0,)),),),)
+  SDW4G2F[2635,2635] slot (4, 0, 0, 0) beta_min=1784 GLUED (2 books): n=5 cells, signed vector [-1], protected=True
+    t=1 K=(0,) I=((1, 0, (1,), 0),) sgn=+1 w0=73 res=(((((1,), (0,)),),),)
+    t=1 K=(1, 1) I=((1, 0, (1,), 0),) sgn=-1 w0=73 res=(((((1,), (0,)),),),)
+    t=1 K=(0, 1) I=((1, 0, (4,), 0),) sgn=-1 w0=73 res=(((((1,), (0,)),),),)
+    t=1 K=(0, 1) I=((1, 0, (4,), 0),) sgn=-1 w0=73 res=(((((1,), (0,)),),),)
+    t=1 K=(1, 1, 1) I=((1, 0, (4,), 0),) sgn=+1 w0=73 res=(((((1,), (0,)),),),)
+  SDW4G2F glued groups found: 2; 5-cell groups: 1
+  C2b anatomy of SDW4G2F[2635,2635] slot (4, 0, 0, 0):
+    t=1 K=(0, 1) sgn=-1 pc=(0, 0, 1, 2) dmp=(4, 0, 0, 0)
+      windows: [('root', 4, 1, (), 0), ('dump', 4, 2, (('c', 0),), 0), ('seed', 5, 2, (('c', 1),), 0)]
+    t=1 K=(0, 1) sgn=-1 pc=(0, 0, 1, 2) dmp=(4, 0, 0, 0)
+      windows: [('root', 4, 1, (), 0), ('dump', 4, 2, (('c', 1),), 0), ('seed', 5, 3, (('c', 0),), 0)]
+    t=1 K=(0,) sgn=+1 pc=(0, 0, 1, 2) dmp=(1, 0, 0, 0)
+      windows: [('root', 4, 1, (), 0), ('dump', 1, 1, (), 0), ('seed', 5, 3, (('c', 0),), 0)]
+    t=1 K=(1, 1, 1) sgn=+1 pc=(0, 0, 1, 2) dmp=(4, 0, 0, 0)
+      windows: [('root', 4, 1, (), 0), ('dump', 4, 2, (('c', 1),), 0), ('seed', 5, 3, (('c', 1), ('c', 1)), 0)]
+    t=1 K=(1, 1) sgn=-1 pc=(0, 0, 1, 2) dmp=(1, 0, 0, 0)
+      windows: [('root', 4, 1, (), 0), ('dump', 1, 1, (), 0), ('seed', 5, 3, (('c', 1), ('c', 1)), 0)]
+PROBE-FINDING: C2b: REALIZED (t,K,I,pc,sgn)-duplicate cells inside one fiber (glued stratum, SDW4G2F[2635,2635] slot (4, 0, 0, 0)): {(1, (0, 1), ((1, 0, (4,), 0),), (0, 0, 1, 2), -1): 2} — same-sign same-class pair distinguished only by event placement; the S8 'placement-pair fibers: 0' census counts only PROMOTION-placement pairs and misses this shape
+-- tracing SDG2BZ (m=3 Zp p=2 d0=1) --
+  psi0 = [(1,), (1,), (1,)]  (K0 elements, ascending degree; A = {k: psi0_k != 0})
+  SDG2BZ[1479,1485] slot (2, 0, 0) beta_min=1002: n=1 cells, signed vector [1], protected=True
+    t=0 K=(0,) I=((1, 0, (4,), 0),) sgn=+1 w0=55 res=((((1,), (0,)),),)
+  SDG2BZ[1479,1485] slot (5, 0, 0) beta_min=1002 GLUED (2 books): n=2 cells, signed vector [0], protected=False
+    t=0 K=() I=((1, 0, (1,), 0),) sgn=-1 w0=54 res=((((1,), (0,)),),)
+    t=0 K=(1,) I=((1, 0, (4,), 0),) sgn=+1 w0=54 res=((((1,), (0,)),),)
+==============================================================================
+PROBE D — the two hand-re-derivation witnesses
+-- tracing EQ3G2B (m=3 Zp p=3 d0=1) --
+  psi0 = [(2,), (1,), (1,)]  (K0 elements, ascending degree; A = {k: psi0_k != 0})
+  EQ3G2B[1479,1485] slot (2, 0, 0) beta_min=1002: n=1 cells, signed vector [1], protected=True
+    t=1 K=(0,) I=((1, 0, (1,), 0),) sgn=+1 w0=55 res=((((2,), (0,)),),)
+  EQ3G2B[1479,1485] slot (5, 0, 0) beta_min=1002: n=2 cells, signed vector [0], protected=False
+    t=0 K=() I=((1, 0, (1,), 0),) sgn=-1 w0=54 res=((((1,), (0,)),),)
+    t=1 K=(1,) I=((1, 0, (1,), 0),) sgn=+1 w0=54 res=((((1,), (0,)),),)
+  EQ3G2B raw data for the by-hand leg (K3 elements as nested tuples over F3):
+    x_0 = res(cD_0) = ((((2,), (0,)),),)   (jD = (2, 1, 2), cD = [28697814])
+    x_1 = res(cD_1) = ((((2,), (0,)),),)   (jD = (5, 1, 2), cD = [9565938])
+    psibar_1 = res(C_1) = ((((1,), (0,)),),)   (C_1 = [3])
+    I1 check: res(C1)*x_1 = ((((2,), (0,)),),)  ==  x_0 = ((((2,), (0,)),),)  ->  True
+-- tracing K2G2P5B (m=3 Zp p=5 d0=1) --
+  psi0 = [(1,), (4,), (1,)]  (K0 elements, ascending degree; A = {k: psi0_k != 0})
+  K2G2P5B[1479,1479] slot (1, 1, 0) beta_min=999: n=1 cells, signed vector [-1], protected=True
+    t=0 K=(0, 1) I=((1, 0, (4,), 0),) sgn=-1 w0=53 res=((((2,), (0,)),),)
+  K2G2P5B[1479,1479] slot (4, 1, 0) beta_min=999: n=2 cells, signed vector [0], protected=False
+    t=0 K=(0,) I=((1, 0, (4,), 0),) sgn=+1 w0=52 res=((((3,), (0,)),),)
+    t=0 K=(1, 1) I=((1, 0, (4,), 0),) sgn=-1 w0=52 res=((((3,), (0,)),),)
+  K2G2P5B psi0 = [(1,), (4,), (1,)] over F5
+    res(C0) = ((((1,), (0,)),),)   res(C1) = ((((4,), (0,)),),)
+    I3 check: res(C1)^2 = ((((1,), (0,)),),)  ==  res(C0) = ((((1,), (0,)),),)  ->  True
+-- tracing K2W4G2Z (m=4 Zp p=3 d0=1) --
+  psi0 = [(2,), (1,), (1,)]  (K0 elements, ascending degree; A = {k: psi0_k != 0})
+  K2W4G2Z[2635,2635] slot (1, 0, 0, 0) beta_min=1784: n=2 cells, signed vector [-1, 1], protected=True
+    t=0 K=(0,) I=((1, 0, (1,), 0),) sgn=+1 w0=74 res=(((((2,), (0,)),),),)
+    t=1 K=(0, 1) I=((1, 0, (1,), 0),) sgn=-1 w0=74 res=(((((1,), (0,)),),),)
+  K2W4G2Z[2635,2635] slot (4, 0, 0, 0) beta_min=1784: n=3 cells, signed vector [-1, 2], protected=False
+    t=0 K=(1,) I=((1, 0, (1,), 0),) sgn=+1 w0=73 res=(((((1,), (0,)),),),)
+    t=1 K=(0,) I=((1, 0, (1,), 0),) sgn=+1 w0=73 res=(((((1,), (0,)),),),)
+    t=1 K=(1, 1) I=((1, 0, (1,), 0),) sgn=-1 w0=73 res=(((((2,), (0,)),),),)
+  K2W4G2Z psi0 = [(2,), (1,), (1,)] over F3; seeds ts = [0, 1]
+    I1 (psb1*x1 == x0): False   I3 (psb1^2 == psb0): False   I2 (psb1*x0 == psb0*x1): True
+PROBE-FINDING: D3: K2W4G2Z identities (not-I1, not-I3, I2) confirmed — the note's T1-corner derivation of the CROSS event matches the tower's residue data
+==============================================================================
+PROBE E — full-roster beta_min duplicate-book census
+  CENSUS [SDW3G2F]: principal d-cell ABSENT (theta_0 = 0 case)
+  CENSUS [SDW4G2F]: principal d-cell ABSENT (theta_0 = 0 case)
+  rows traced: 332; beta_min fibers with duplicate (t,K,sgn) books: 1
+    ('SDW4G2F', 2635, 2635, (4, 0, 0, 0), {(1, (0, 1), -1): 2})
+PROBE-FINDING: E: duplicate-book fibers on the full traced roster: 1 (rows: ['SDW4G2F']) — every one on a glued (non-REGULAR) row
+==============================================================================
+probe violations: 0
+findings: 6
+elapsed: 21.2s
+results -> survk2_pe1_ext_results.json

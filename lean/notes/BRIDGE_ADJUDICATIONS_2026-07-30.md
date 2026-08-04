@@ -9867,6 +9867,51 @@ order. The T3E zero-transport residue goes into the composer's charge.**
 
 ---
 
+## K2 HOSTILE ROUND 1 LANDED (PE-K2-1 = SURVK2-PE1) — GAPS-ONLY, REPAIRED IN PLACE [K2-r1]; THE CLASS-WIDE COUNTEREXAMPLE THREAT TO (SURV-K2) RETIRED — 2026-08-08 campaign (wallclock 2026-08-04)
+
+**Verdict (SURVK2_passPE1_report.md, on 53e0883, with the verifier's
+OWN probe survk2_pe1_ext.py + artifacts, committed with the repair):
+GAPS-ONLY — 0 critical, 4 gaps, 6 notes.  K2 arc counter: 0/1 CLEAN
+(GAPS-ONLY ≠ CLEAN).**  The spine held under hostile re-derivation
+with a decorrelated enumerator: the complete K2-L3 inventory
+DOUBLE-ENUMERATED (unit level AND raw-j₀ level, agreeing with the
+display exactly), both hand kills re-derived TO THE DIGIT (the
+exchange witness's ψ₀ = y² + 4y + 1/F₅ PREDICTED by hand from the
+enumeration order before reading the output), the CROSS event
+(K2W4G2Z) derived cell-exact, both runners reproduced with all pins
+green, and the instrument's mid-battery amendment ADJUDICATED
+harmless (telemetry-only read, no verdict logic touched, the
+PRED-1..7 seal preserved; PRED-2's g₀ ∈ {3,4} clause honestly dead).
+
+**The headline is FAVORABLE — the sharpest open threat is GONE.**
+PE1's G4: the (K2-RES)(c) corner A = {1} (ψ₀_0 = 0) — boxed as "the
+sharpest known counterexample CANDIDATE to (SURV-K2) itself,
+machine-dark" — is PROVABLY CLASS-EMPTY: the [ILN] S0.1 pin demands
+ψ_j(0) ≠ 0, and irreducibility at g₀ = 2 forces it independently
+(probe: 96-tower grid + exhaustive field scans, zero realizations).
+Now **Lemma K2-L8** in SURVK2_PROOF; the (c) box superseded in
+place; (R2) reduced to ψ₀_1 ≠ 0; the sole realizable corner A = {0}
+(odd characteristic only, instance-dark) displayed with its
+singleton-safety arithmetic.  THE A = {1} EMPTINESS = THE CLASS-WIDE
+THREAT RETIRED.  Also repaired: G1 — one REALIZED same-sign
+duplicate-book fiber (SDW4G2F[2635,2635] slot (4,0,0,0), exactly one
+roster-wide, GLUED stratum ⊂ (K2-RES)(a)) refutes the "never
+duplicated books" / "≥ 2-branch machine-absent" glosses; corrected,
+THM-A insulated by (R1)+(R3), the S8 census caveats (promo-only /
+representative-dependent) disclosed.  G2 — K2-L1(c)/(d) junk-free
+qualifier.  G3 — K2-L5(a)'s any-d₀ π-exclusion pinned to (R0) at
+d₀ ≥ 2.  N1–N6 cured.  Statements otherwise byte-unchanged (the
+three queue-named moves only).  Full record: the REPAIR RECORD at
+the tail of SURVK2_PROOF_2026-08-08.md.
+
+**Queued: K2 round 2 = PE-K2-2 (fresh-context Fable on the K2-r1
+revision) or the model-diverse Codex leg post-reset — whichever
+lands first; the Codex leg owed regardless before any
+acceptance-grade citation.  Grade caps unchanged (binding: the W
+arc, 0/2 CLEAN).**
+
+---
+
 ## DIRECTIVE (Asvin, 2026-08-04, verbatim): "try and construct counterexamples instead of just doing an automated sweep. Based on the intuition earned so far, try to build a counterexample that would test the claim as much as possible."
 
 **Adjudicated as standing law for every countermodel phase:** both legs
