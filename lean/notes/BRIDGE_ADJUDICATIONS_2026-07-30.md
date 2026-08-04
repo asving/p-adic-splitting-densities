@@ -9653,3 +9653,44 @@ decorrelation caveat of 0b895d0 is DISCHARGED.
 Codex leg post-reset, alongside the W/E Codex legs.  The (SURV-DISJ)
 composition = the next hard core, with the sign-pair constraint on
 record.**
+
+---
+
+## (SURV-DISJ) UNIT LANDED — PROVED on the pinned class; LAW-DCX-(m+1) HOLDS THERE at capped attempt grade — 2026-08-08 campaign (wallclock 2026-08-04)
+
+**The unit** (workflow whi66tnmz; the instrument survived with the full
+two-commit seal — seal 61e9e36, verdict 00e19b4; composer 4f7c3ff).
+
+**The instrument's protection identities** (979 live rows incl. a fresh
+g₀≥2 × char-2 cross; nine families, 0 violations; all controls with
+teeth): **(K1) g₀ = 1 — combinatorial one-path protection**: the
+cascade slot NEVER has a same-slot companion (693/693, both
+characteristics) — the survivor is a single field product, nothing can
+cancel it; **(K2) g₀ ≥ 2 — the signed-multiplicity-one law**: some
+bottom-line group always carries a residue class of signed path-count
+±1 (286/286; verified on all 200 kill rows).
+
+**The composer's theorem** (`SURVDISJ_PROOF_2026-08-08.md`): SD-L2 the
+E-weighted mass ledger (LED_l × E_l telescoped, cellwise, any g₀);
+(★) any cascade-slot companion has Σ correction-deficits = Y₂ ∈ {0,1};
+SD-L1 each g₀ = 1 correction deficit ≥ 1 unless Φ₀Y-fed; SD-L3 =
+L-NORM(c) accepted: at d₀ = 1 the Y-child is identically absent —
+**so no companion exists: (NEP) DISCHARGED TO THEOREM, (SURV-DISJ)
+PROVED at attempt grade on (H1)–(H3) ∧ g₀ = 1 ∧ d₀ = 1 ∧ (STK) ∧
+(c ≥ k), and (SURV)(i) CLOSED on that locus + (RW). CONSEQUENCE:
+LAW-DCX-(m+1) HOLDS ON THE PINNED CLASS at capped attempt grade**
+(cap = the WMULTDCX consumption, W arc 0/2; own arc 0 passes). Plus the
+any-g₀ kit SD-L5/L6/L7 (correction-free terminals pairwise-distinct;
+survival ⟺ signed residue sum ≠ 0; the ±1 and +1/−1 class vectors
+protected char-free — the reduction half of P-M1). Boxed residuals:
+**(SURV-K2)** (g₀ ≥ 2: existence of a protected bottom-line group — the
+sign-reversing-pairing target, full constraint census on record;
+CTRL-DEFNEG silent, disclosed) and **(SD-YJ)** (g₀ = 1 ∧ d₀ ≥ 2, the
+Y-corner, machine-dark). (SURV-DISJ) class-wide = exactly these two
+boxes. d₀ = 1 covers the ENTIRE probed g₀ = 1 class.
+
+**Queued: SURVDISJ hostile round 1 (PE-SD1, dispatched now — the (★)
+telescope and the SD-L1 sharpness are the hard steps; the four Codex
+legs (VC40, W/E/S arcs) + now the SD arc on the post-reset budget.
+The class-wide frontier: (SURV-K2) via sign-reversing pairing;
+(SD-YJ).**
