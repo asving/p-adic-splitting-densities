@@ -1,0 +1,7988 @@
+{
+ "violations": [],
+ "counters": {
+  "cells": 858,
+  "cells_junkfree": 801,
+  "minnz_eq_kdef_yes": 286,
+  "stock1_ok": 302,
+  "greedy_cell_found": 218,
+  "cells_beyond_floor": 112
+ },
+ "towers": [
+  {
+   "tag": "W3DEEP",
+   "m": 3,
+   "kind": "Zp",
+   "p": 3,
+   "d0": 1,
+   "reads": [
+    [
+     3,
+     2,
+     1
+    ],
+    [
+     2,
+     1,
+     1
+    ],
+    [
+     2,
+     1,
+     1
+    ],
+    [
+     2,
+     1,
+     1
+    ]
+   ],
+   "inv": {
+    "u0": 12,
+    "prin": [
+     2,
+     0,
+     1
+    ],
+    "has_prin": true,
+    "psi0_nz": [
+     1
+    ],
+    "ndcells": 1
+   },
+   "rows": [
+    {
+     "key": [
+      663,
+      663
+     ],
+     "cs": [
+      2,
+      1
+     ],
+     "D": 3,
+     "kdef": 1,
+     "live": true,
+     "min_top_cell": 1,
+     "ncells": 1,
+     "stock1": 2,
+     "allg1": true
+    },
+    {
+     "key": [
+      663,
+      667
+     ],
+     "cs": [
+      2,
+      1
+     ],
+     "D": 3,
+     "kdef": 1,
+     "live": true,
+     "min_top_cell": 1,
+     "ncells": 3,
+     "stock1": 3,
+     "allg1": true
+    },
+    {
+     "key": [
+      657,
+      667
+     ],
+     "cs": [
+      2,
+      2
+     ],
+     "D": 2,
+     "kdef": 2,
+     "live": true,
+     "min_top_cell": 2,
+     "ncells": 1,
+     "stock1": 2,
+     "allg1": true
+    },
+    {
+     "key": [
+      667,
+      667
+     ],
+     "cs": [
+      2,
+      2
+     ],
+     "D": 3,
+     "kdef": 1,
+     "live": true,
+     "min_top_cell": 1,
+     "ncells": 8,
+     "stock1": 3,
+     "allg1": true
+    },
+    {
+     "key": [
+      651,
+      655
+     ],
+     "cs": [
+      1,
+      1
+     ],
+     "D": 3,
+     "kdef": 1,
+     "live": true,
+     "min_top_cell": 1,
+     "ncells": 1,
+     "stock1": 2,
+     "allg1": true
+    },
+    {
+     "key": [
+      655,
+      667
+     ],
+     "cs": [
+      1,
+      1
+     ],
+     "D": 3,
+     "kdef": 1,
+     "live": true,
+     "min_top_cell": 1,
+     "ncells": 1,
+     "stock1": 2,
+     "allg1": true
+    },
+    {
+     "key": [
+      659,
+      671
+     ],
+     "cs": [
+      1,
+      1
+     ],
+     "D": 3,
+     "kdef": 1,
+     "live": true,
+     "min_top_cell": 1,
+     "ncells": 1,
+     "stock1": 2,
+     "allg1": true
+    },
+    {
+     "key": [
+      651,
+      659
+     ],
+     "cs": [
+      1,
+      1
+     ],
+     "D": 3,
+     "kdef": 1,
+     "live": true,
+     "min_top_cell": 1,
+     "ncells": 2,
+     "stock1": 3,
+     "allg1": true
+    },
+    {
+     "key": [
+      659,
+      663
+     ],
+     "cs": [
+      1,
+      1
+     ],
+     "D": 3,
+     "kdef": 1,
+     "live": true,
+     "min_top_cell": 1,
+     "ncells": 1,
+     "stock1": 2,
+     "allg1": true
+    },
+    {
+     "key": [
+      659,
+      667
+     ],
+     "cs": [
+      1,
+      1
+     ],
+     "D": 3,
+     "kdef": 1,
+     "live": true,
+     "min_top_cell": 1,
+     "ncells": 4,
+     "stock1": 3,
+     "allg1": true
+    },
+    {
+     "key": [
+      651,
+      671
+     ],
+     "cs": [
+      1,
+      1
+     ],
+     "D": 3,
+     "kdef": 1,
+     "live": true,
+     "min_top_cell": 1,
+     "ncells": 1,
+     "stock1": 2,
+     "allg1": true
+    },
+    {
+     "key": [
+      667,
+      671
+     ],
+     "cs": [
+      1,
+      1
+     ],
+     "D": 3,
+     "kdef": 1,
+     "live": true,
+     "min_top_cell": 1,
+     "ncells": 1,
+     "stock1": 3,
+     "allg1": true
+    },
+    {
+     "key": [
+      651,
+      651
+     ],
+     "cs": [
+      1,
+      1
+     ],
+     "D": 3,
+     "kdef": 1,
+     "live": true,
+     "min_top_cell": 1,
+     "ncells": 4,
+     "stock1": 3,
+     "allg1": true
+    },
+    {
+     "key": [
+      651,
+      663
+     ],
+     "cs": [
+      1,
+      1
+     ],
+     "D": 3,
+     "kdef": 1,
+     "live": true,
+     "min_top_cell": 1,
+     "ncells": 1,
+     "stock1": 3,
+     "allg1": true
+    },
+    {
+     "key": [
+      651,
+      667
+     ],
+     "cs": [
+      1,
+      1
+     ],
+     "D": 3,
+     "kdef": 1,
+     "live": true,
+     "min_top_cell": 1,
+     "ncells": 4,
+     "stock1": 3,
+     "allg1": true
+    },
+    {
+     "key": [
+      659,
+      659
+     ],
+     "cs": [
+      0,
+      1
+     ],
+     "D": 3,
+     "kdef": 1,
+     "live": true,
+     "min_top_cell": 1,
+     "ncells": 1,
+     "stock1": 3,
+     "allg1": true
+    },
+    {
+     "key": [
+      653,
+      667
+     ],
+     "cs": [
+      2,
+      1
+     ],
+     "D": 2,
+     "kdef": 2,
+     "live": false,
+     "min_top_cell": null,
+     "ncells": 0,
+     "stock1": 2,
+     "allg1": true
+    },
+    {
+     "key": [
+      657,
+      663
+     ],
+     "cs": [
+      2,
+      1
+     ],
+     "D": 2,
+     "kdef": 2,
+     "live": false,
+     "min_top_cell": null,
+     "ncells": 0,
+     "stock1": 2,
+     "allg1": true
+    },
+    {
+     "key": [
+      655,
+      671
+     ],
+     "cs": [
+      1,
+      0
+     ],
+     "D": 3,
+     "kdef": 1,
+     "live": false,
+     "min_top_cell": null,
+     "ncells": 0,
+     "stock1": 2,
+     "allg1": true
+    },
+    {
+     "key": [
+      655,
+      663
+     ],
+     "cs": [
+      1,
+      0
+     ],
+     "D": 3,
+     "kdef": 1,
+     "live": false,
+     "min_top_cell": null,
+     "ncells": 0,
+     "stock1": 2,
+     "allg1": true
+    },
+    {
+     "key": [
+      649,
+      651
+     ],
+     "cs": [
+      1,
+      1
+     ],
+     "D": 2,
+     "kdef": 2,
+     "live": false,
+     "min_top_cell": null,
+     "ncells": 0,
+     "stock1": 2,
+     "allg1": true
+    },
+    {
+     "key": [
+      649,
+      667
+     ],
+     "cs": [
+      1,
+      1
+     ],
+     "D": 2,
+     "kdef": 2,
+     "live": false,
+     "min_top_cell": null,
+     "ncells": 0,
+     "stock1": 2,
+     "allg1": true
+    },
+    {
+     "key": [
+      659,
+      665
+     ],
+     "cs": [
+      1,
+      1
+     ],
+     "D": 2,
+     "kdef": 2,
+     "live": false,
+     "min_top_cell": null,
+     "ncells": 0,
+     "stock1": 2,
+     "allg1": true
+    },
+    {
+     "key": [
+      657,
+      659
+     ],
+     "cs": [
+      1,
+      1
+     ],
+     "D": 2,
+     "kdef": 2,
+     "live": false,
+     "min_top_cell": null,
+     "ncells": 0,
+     "stock1": 2,
+     "allg1": true
+    },
+    {
+     "key": [
+      661,
+      667
+     ],
+     "cs": [
+      1,
+      1
+     ],
+     "D": 2,
+     "kdef": 2,
+     "live": false,
+     "min_top_cell": null,
+     "ncells": 0,
+     "stock1": 2,
+     "allg1": true
+    },
+    {
+     "key": [
+      671,
+      671
+     ],
+     "cs": [
+      1,
+      0
+     ],
+     "D": 3,
+     "kdef": 1,
+     "live": false,
+     "min_top_cell": null,
+     "ncells": 0,
+     "stock1": 2,
+     "allg1": true
+    },
+    {
+     "key": [
+      663,
+      671
+     ],
+     "cs": [
+      1,
+      0
+     ],
+     "D": 3,
+     "kdef": 1,
+     "live": false,
+     "min_top_cell": null,
+     "ncells": 0,
+     "stock1": 2,
+     "allg1": true
+    },
+    {
+     "key": [
+      657,
+      671
+     ],
+     "cs": [
+      1,
+      1
+     ],
+     "D": 2,
+     "kdef": 2,
+     "live": false,
+     "min_top_cell": null,
+     "ncells": 0,
+     "stock1": 2,
+     "allg1": true
+    },
+    {
+     "key": [
+      651,
+      665
+     ],
+     "cs": [
+      1,
+      1
+     ],
+     "D": 2,
+     "kdef": 2,
+     "live": false,
+     "min_top_cell": null,
+     "ncells": 0,
+     "stock1": 2,
+     "allg1": true
+    },
+    {
+     "key": [
+      663,
+      665
+     ],
+     "cs": [
+      1,
+      1
+     ],
+     "D": 2,
+     "kdef": 2,
+     "live": false,
+     "min_top_cell": null,
+     "ncells": 0,
+     "stock1": 2,
+     "allg1": true
+    },
+    {
+     "key": [
+      665,
+      667
+     ],
+     "cs": [
+      1,
+      1
+     ],
+     "D": 2,
+     "kdef": 2,
+     "live": false,
+     "min_top_cell": null,
+     "ncells": 0,
+     "stock1": 2,
+     "allg1": true
+    },
+    {
+     "key": [
+      651,
+      653
+     ],
+     "cs": [
+      1,
+      1
+     ],
+     "D": 2,
+     "kdef": 2,
+     "live": false,
+     "min_top_cell": null,
+     "ncells": 0,
+     "stock1": 2,
+     "allg1": true
+    },
+    {
+     "key": [
+      651,
+      657
+     ],
+     "cs": [
+      1,
+      1
+     ],
+     "D": 2,
+     "kdef": 2,
+     "live": false,
+     "min_top_cell": null,
+     "ncells": 0,
+     "stock1": 2,
+     "allg1": true
+    },
+    {
+     "key": [
+      655,
+      655
+     ],
+     "cs": [
+      0,
+      0
+     ],
+     "D": 3,
+     "kdef": 1,
+     "live": false,
+     "min_top_cell": null,
+     "ncells": 0,
+     "stock1": 2,
+     "allg1": true
+    },
+    {
+     "key": [
+      655,
+      659
+     ],
+     "cs": [
+      0,
+      0
+     ],
+     "D": 3,
+     "kdef": 1,
+     "live": false,
+     "min_top_cell": null,
+     "ncells": 0,
+     "stock1": 2,
+     "allg1": true
+    },
+    {
+     "key": [
+      649,
+      659
+     ],
+     "cs": [
+      0,
+      1
+     ],
+     "D": 2,
+     "kdef": 2,
+     "live": false,
+     "min_top_cell": null,
+     "ncells": 0,
+     "stock1": 2,
+     "allg1": true
+    }
+   ]
+  },
+  {
+   "tag": "W3DEEP4",
+   "m": 3,
+   "kind": "Zp",
+   "p": 3,
+   "d0": 1,
+   "reads": [
+    [
+     4,
+     3,
+     1
+    ],
+    [
+     2,
+     1,
+     1
+    ],
+    [
+     2,
+     3,
+     1
+    ],
+    [
+     2,
+     1,
+     1
+    ]
+   ],
+   "inv": {
+    "u0": 14,
+    "prin": [
+     3,
+     1,
+     1
+    ],
+    "has_prin": true,
+    "psi0_nz": [
+     1
+    ],
+    "ndcells": 1
+   },
+   "rows": [
+    {
+     "key": [
+      1261,
+      1271
+     ],
+     "cs": [
+      2,
+      2
+     ],
+     "D": 2,
+     "kdef": 2,
+     "live": true,
+     "min_top_cell": 2,
+     "ncells": 1,
+     "stock1": 2,
+     "allg1": true
+    },
+    {
+     "key": [
+      1267,
+      1275
+     ],
+     "cs": [
+      2,
+      1
+     ],
+     "D": 3,
+     "kdef": 1,
+     "live": true,
+     "min_top_cell": 1,
+     "ncells": 3,
+     "stock1": 2,
+     "allg1": true
+    },
+    {
+     "key": [
+      1257,
+      1275
+     ],
+     "cs": [
+      2,
+      2
+     ],
+     "D": 2,
+     "kdef": 2,
+     "live": true,
+     "min_top_cell": 2,
+     "ncells": 1,
+     "stock1": 2,
+     "allg1": true
+    },
+    {
+     "key": [
+      1271,
+      1275
+     ],
+     "cs": [
+      2,
+      2
+     ],
+     "D": 3,
+     "kdef": 1,
+     "live": true,
+     "min_top_cell": 1,
+     "ncells": 6,
+     "stock1": 3,
+     "allg1": true
+    },
+    {
+     "key": [
+      1265,
+      1267
+     ],
+     "cs": [
+      2,
+      2
+     ],
+     "D": 2,
+     "kdef": 2,
+     "live": true,
+     "min_top_cell": 2,
+     "ncells": 1,
+     "stock1": 2,
+     "allg1": true
+    },
+    {
+     "key": [
+      1265,
+      1271
+     ],
+     "cs": [
+      2,
+      2
+     ],
+     "D": 2,
+     "kdef": 2,
+     "live": true,
+     "min_top_cell": 2,
+     "ncells": 3,
+     "stock1": 2,
+     "allg1": true
+    },
+    {
+     "key": [
+      1253,
+      1279
+     ],
+     "cs": [
+      2,
+      2
+     ],
+     "D": 2,
+     "kdef": 2,
+     "live": true,
+     "min_top_cell": 2,
+     "ncells": 1,
+     "stock1": 2,
+     "allg1": true
+    },
+    {
+     "key": [
+      1267,
+      1279
+     ],
+     "cs": [
+      2,
+      2
+     ],
+     "D": 3,
+     "kdef": 1,
+     "live": true,
+     "min_top_cell": 1,
+     "ncells": 6,
+     "stock1": 3,
+     "allg1": true
+    },
+    {
+     "key": [
+      1257,
+      1279
+     ],
+     "cs": [
+      2,
+      2
+     ],
+     "D": 2,
+     "kdef": 2,
+     "live": true,
+     "min_top_cell": 2,
+     "ncells": 3,
+     "stock1": 2,
+     "allg1": true
+    },
+    {
+     "key": [
+      1271,
+      1279
+     ],
+     "cs": [
+      2,
+      2
+     ],
+     "D": 3,
+     "kdef": 1,
+     "live": true,
+     "min_top_cell": 1,
+     "ncells": 13,
+     "stock1": 3,
+     "allg1": true
+    },
+    {
+     "key": [
+      1253,
+      1271
+     ],
+     "cs": [
+      2,
+      2
+     ],
+     "D": 2,
+     "kdef": 2,
+     "live": true,
+     "min_top_cell": 2,
+     "ncells": 1,
+     "stock1": 2,
+     "allg1": true
+    },
+    {
+     "key": [
+      1267,
+      1267
+     ],
+     "cs": [
+      2,
+      1
+     ],
+     "D": 3,
+     "kdef": 1,
+     "live": true,
+     "min_top_cell": 1,
+     "ncells": 4,
+     "stock1": 2,
+     "allg1": true
+    },
+    {
+     "key": [
+      1257,
+      1267
+     ],
+     "cs": [
+      2,
+      2
+     ],
+     "D": 2,
+     "kdef": 2,
+     "live": true,
+     "min_top_cell": 2,
+     "ncells": 1,
+     "stock1": 2,
+     "allg1": true
+    },
+    {
+     "key": [
+      1267,
+      1271
+     ],
+     "cs": [
+      2,
+      2
+     ],
+     "D": 3,
+     "kdef": 1,
+     "live": true,
+     "min_top_cell": 1,
+     "ncells": 10,
+     "stock1": 3,
+     "allg1": true
+    },
+    {
+     "key": [
+      1257,
+      1271
+     ],
+     "cs": [
+      2,
+      2
+     ],
+     "D": 2,
+     "kdef": 2,
+     "live": true,
+     "min_top_cell": 2,
+     "ncells": 5,
+     "stock1": 2,
+     "allg1": true
+    },
+    {
+     "key": [
+      1271,
+      1271
+     ],
+     "cs": [
+      2,
+      2
+     ],
+     "D": 3,
+     "kdef": 1,
+     "live": true,
+     "min_top_cell": 1,
+     "ncells": 22,
+     "stock1": 3,
+     "allg1": true
+    },
+    {
+     "key": [
+      1251,
+      1259
+     ],
+     "cs": [
+      1,
+      1
+     ],
+     "D": 3,
+     "kdef": 1,
+     "live": true,
+     "min_top_cell": 1,
+     "ncells": 1,
+     "stock1": 2,
+     "allg1": true
+    },
+    {
+     "key": [
+      1255,
+      1259
+     ],
+     "cs": [
+      1,
+      1
+     ],
+     "D": 3,
+     "kdef": 1,
+     "live": true,
+     "min_top_cell": 1,
+     "ncells": 2,
+     "stock1": 2,
+     "allg1": true
+    },
+    {
+     "key": [
+      1259,
+      1275
+     ],
+     "cs": [
+      1,
+      1
+     ],
+     "D": 3,
+     "kdef": 1,
+     "live": true,
+     "min_top_cell": 1,
+     "ncells": 1,
+     "stock1": 2,
+     "allg1": true
+    },
+    {
+     "key": [
+      1259,
+      1279
+     ],
+     "cs": [
+      1,
+      1
+     ],
+     "D": 3,
+     "kdef": 1,
+     "live": true,
+     "min_top_cell": 1,
+     "ncells": 3,
+     "stock1": 2,
+     "allg1": true
+    },
+    {
+     "key": [
+      1259,
+      1267
+     ],
+     "cs": [
+      1,
+      1
+     ],
+     "D": 3,
+     "kdef": 1,
+     "live": true,
+     "min_top_cell": 1,
+     "ncells": 1,
+     "stock1": 2,
+     "allg1": true
+    },
+    {
+     "key": [
+      1259,
+      1271
+     ],
+     "cs": [
+      1,
+      1
+     ],
+     "D": 3,
+     "kdef": 1,
+     "live": true,
+     "min_top_cell": 1,
+     "ncells": 3,
+     "stock1": 2,
+     "allg1": true
+    },
+    {
+     "key": [
+      1249,
+      1255
+     ],
+     "cs": [
+      1,
+      2
+     ],
+     "D": 2,
+     "kdef": 2,
+     "live": true,
+     "min_top_cell": 2,
+     "ncells": 1,
+     "stock1": 2,
+     "allg1": true
+    },
+    {
+     "key": [
+      1249,
+      1279
+     ],
+     "cs": [
+      1,
+      2
+     ],
+     "D": 2,
+     "kdef": 2,
+     "live": true,
+     "min_top_cell": 2,
+     "ncells": 1,
+     "stock1": 2,
+     "allg1": true
+    },
+    {
+     "key": [
+      1249,
+      1271
+     ],
+     "cs": [
+      1,
+      2
+     ],
+     "D": 2,
+     "kdef": 2,
+     "live": true,
+     "min_top_cell": 2,
+     "ncells": 1,
+     "stock1": 2,
+     "allg1": true
+    },
+    {
+     "key": [
+      1251,
+      1263
+     ],
+     "cs": [
+      1,
+      1
+     ],
+     "D": 3,
+     "kdef": 1,
+     "live": true,
+     "min_top_cell": 1,
+     "ncells": 2,
+     "stock1": 2,
+     "allg1": true
+    },
+    {
+     "key": [
+      1263,
+      1273
+     ],
+     "cs": [
+      1,
+      2
+     ],
+     "D": 2,
+     "kdef": 2,
+     "live": true,
+     "min_top_cell": 2,
+     "ncells": 1,
+     "stock1": 2,
+     "allg1": true
+    },
+    {
+     "key": [
+      1255,
+      1263
+     ],
+     "cs": [
+      1,
+      2
+     ],
+     "D": 3,
+     "kdef": 1,
+     "live": true,
+     "min_top_cell": 1,
+     "ncells": 4,
+     "stock1": 3,
+     "allg1": true
+    },
+    {
+     "key": [
+      1263,
+      1275
+     ],
+     "cs": [
+      1,
+      1
+     ],
+     "D": 3,
+     "kdef": 1,
+     "live": true,
+     "min_top_cell": 1,
+     "ncells": 3,
+     "stock1": 2,
+     "allg1": true
+    },
+    {
+     "key": [
+      1263,
+      1265
+     ],
+     "cs": [
+      1,
+      2
+     ],
+     "D": 2,
+     "kdef": 2,
+     "live": true,
+     "min_top_cell": 2,
+     "ncells": 1,
+     "stock1": 2,
+     "allg1": true
+    },
+    {
+     "key": [
+      1263,
+      1279
+     ],
+     "cs": [
+      1,
+      2
+     ],
+     "D": 3,
+     "kdef": 1,
+     "live": true,
+     "min_top_cell": 1,
+     "ncells": 7,
+     "stock1": 3,
+     "allg1": true
+    },
+    {
+     "key": [
+      1263,
+      1267
+     ],
+     "cs": [
+      1,
+      1
+     ],
+     "D": 3,
+     "kdef": 1,
+     "live": true,
+     "min_top_cell": 1,
+     "ncells": 3,
+     "stock1": 2,
+     "allg1": true
+    },
+    {
+     "key": [
+      1257,
+      1263
+     ],
+     "cs": [
+      1,
+      2
+     ],
+     "D": 2,
+     "kdef": 2,
+     "live": true,
+     "min_top_cell": 2,
+     "ncells": 1,
+     "stock1": 2,
+     "allg1": true
+    },
+    {
+     "key": [
+      1263,
+      1271
+     ],
+     "cs": [
+      1,
+      2
+     ],
+     "D": 3,
+     "kdef": 1,
+     "live": true,
+     "min_top_cell": 1,
+     "ncells": 8,
+     "stock1": 3,
+     "allg1": true
+    },
+    {
+     "key": [
+      1251,
+      1251
+     ],
+     "cs": [
+      1,
+      1
+     ],
+     "D": 3,
+     "kdef": 1,
+     "live": true,
+     "min_top_cell": 1,
+     "ncells": 1,
+     "stock1": 2,
+     "allg1": true
+    },
+    {
+     "key": [
+      1251,
+      1255
+     ],
+     "cs": [
+      1,
+      1
+     ],
+     "D": 3,
+     "kdef": 1,
+     "live": true,
+     "min_top_cell": 1,
+     "ncells": 3,
+     "stock1": 2,
+     "allg1": true
+    },
+    {
+     "key": [
+      1251,
+      1275
+     ],
+     "cs": [
+      1,
+      1
+     ],
+     "D": 3,
+     "kdef": 1,
+     "live": true,
+     "min_top_cell": 1,
+     "ncells": 1,
+     "stock1": 2,
+     "allg1": true
+    },
+    {
+     "key": [
+      1251,
+      1279
+     ],
+     "cs": [
+      1,
+      1
+     ],
+     "D": 3,
+     "kdef": 1,
+     "live": true,
+     "min_top_cell": 1,
+     "ncells": 3,
+     "stock1": 2,
+     "allg1": true
+    },
+    {
+     "key": [
+      1251,
+      1267
+     ],
+     "cs": [
+      1,
+      1
+     ],
+     "D": 3,
+     "kdef": 1,
+     "live": true,
+     "min_top_cell": 1,
+     "ncells": 1,
+     "stock1": 2,
+     "allg1": true
+    },
+    {
+     "key": [
+      1251,
+      1271
+     ],
+     "cs": [
+      1,
+      1
+     ],
+     "D": 3,
+     "kdef": 1,
+     "live": true,
+     "min_top_cell": 1,
+     "ncells": 3,
+     "stock1": 3,
+     "allg1": true
+    }
+   ]
+  },
+  {
+   "tag": "W3NEST",
+   "m": 3,
+   "kind": "Zp",
+   "p": 3,
+   "d0": 1,
+   "reads": [
+    [
+     2,
+     1,
+     1
+    ],
+    [
+     2,
+     1,
+     1
+    ],
+    [
+     2,
+     3,
+     1
+    ],
+    [
+     2,
+     1,
+     1
+    ]
+   ],
+   "inv": {
+    "u0": 7,
+    "prin": [
+     1,
+     1,
+     1
+    ],
+    "has_prin": true,
+    "psi0_nz": [
+     1
+    ],
+    "ndcells": 1
+   },
+   "rows": [
+    {
+     "key": [
+      291,
+      299
+     ],
+     "cs": [
+      1,
+      1
+     ],
+     "D": 3,
+     "kdef": 1,
+     "live": true,
+     "min_top_cell": 1,
+     "ncells": 1,
+     "stock1": 2,
+     "allg1": true
+    },
+    {
+     "key": [
+      295,
+      299
+     ],
+     "cs": [
+      1,
+      1
+     ],
+     "D": 3,
+     "kdef": 1,
+     "live": true,
+     "min_top_cell": 1,
+     "ncells": 2,
+     "stock1": 2,
+     "allg1": true
+    },
+    {
+     "key": [
+      289,
+      295
+     ],
+     "cs": [
+      1,
+      2
+     ],
+     "D": 2,
+     "kdef": 2,
+     "live": true,
+     "min_top_cell": 2,
+     "ncells": 1,
+     "stock1": 2,
+     "allg1": true
+    },
+    {
+     "key": [
+      291,
+      303
+     ],
+     "cs": [
+      1,
+      1
+     ],
+     "D": 3,
+     "kdef": 1,
+     "live": true,
+     "min_top_cell": 1,
+     "ncells": 2,
+     "stock1": 2,
+     "allg1": true
+    },
+    {
+     "key": [
+      297,
+      303
+     ],
+     "cs": [
+      1,
+      2
+     ],
+     "D": 2,
+     "kdef": 2,
+     "live": true,
+     "min_top_cell": 2,
+     "ncells": 1,
+     "stock1": 2,
+     "allg1": true
+    },
+    {
+     "key": [
+      295,
+      303
+     ],
+     "cs": [
+      1,
+      2
+     ],
+     "D": 3,
+     "kdef": 1,
+     "live": true,
+     "min_top_cell": 1,
+     "ncells": 4,
+     "stock1": 3,
+     "allg1": true
+    },
+    {
+     "key": [
+      291,
+      291
+     ],
+     "cs": [
+      1,
+      1
+     ],
+     "D": 3,
+     "kdef": 1,
+     "live": true,
+     "min_top_cell": 1,
+     "ncells": 1,
+     "stock1": 2,
+     "allg1": true
+    },
+    {
+     "key": [
+      291,
+      295
+     ],
+     "cs": [
+      1,
+      1
+     ],
+     "D": 3,
+     "kdef": 1,
+     "live": true,
+     "min_top_cell": 1,
+     "ncells": 3,
+     "stock1": 3,
+     "allg1": true
+    },
+    {
+     "key": [
+      295,
+      297
+     ],
+     "cs": [
+      1,
+      2
+     ],
+     "D": 2,
+     "kdef": 2,
+     "live": true,
+     "min_top_cell": 2,
+     "ncells": 1,
+     "stock1": 2,
+     "allg1": true
+    },
+    {
+     "key": [
+      295,
+      295
+     ],
+     "cs": [
+      1,
+      2
+     ],
+     "D": 3,
+     "kdef": 1,
+     "live": true,
+     "min_top_cell": 1,
+     "ncells": 9,
+     "stock1": 3,
+     "allg1": true
+    },
+    {
+     "key": [
+      299,
+      303
+     ],
+     "cs": [
+      0,
+      1
+     ],
+     "D": 3,
+     "kdef": 1,
+     "live": true,
+     "min_top_cell": 1,
+     "ncells": 1,
+     "stock1": 2,
+     "allg1": true
+    },
+    {
+     "key": [
+      303,
+      303
+     ],
+     "cs": [
+      0,
+      1
+     ],
+     "D": 3,
+     "kdef": 1,
+     "live": true,
+     "min_top_cell": 1,
+     "ncells": 2,
+     "stock1": 3,
+     "allg1": true
+    },
+    {
+     "key": [
+      293,
+      295
+     ],
+     "cs": [
+      1,
+      1
+     ],
+     "D": 2,
+     "kdef": 2,
+     "live": false,
+     "min_top_cell": null,
+     "ncells": 0,
+     "stock1": 2,
+     "allg1": true
+    },
+    {
+     "key": [
+      291,
+      297
+     ],
+     "cs": [
+      1,
+      1
+     ],
+     "D": 2,
+     "kdef": 2,
+     "live": false,
+     "min_top_cell": null,
+     "ncells": 0,
+     "stock1": 2,
+     "allg1": true
+    },
+    {
+     "key": [
+      299,
+      299
+     ],
+     "cs": [
+      0,
+      0
+     ],
+     "D": 3,
+     "kdef": 1,
+     "live": false,
+     "min_top_cell": null,
+     "ncells": 0,
+     "stock1": 2,
+     "allg1": true
+    },
+    {
+     "key": [
+      289,
+      303
+     ],
+     "cs": [
+      0,
+      1
+     ],
+     "D": 2,
+     "kdef": 2,
+     "live": false,
+     "min_top_cell": null,
+     "ncells": 0,
+     "stock1": 2,
+     "allg1": true
+    }
+   ]
+  },
+  {
+   "tag": "W3NESTF",
+   "m": 3,
+   "kind": "Fpt",
+   "p": 2,
+   "d0": 1,
+   "reads": [
+    [
+     2,
+     1,
+     1
+    ],
+    [
+     2,
+     1,
+     1
+    ],
+    [
+     2,
+     3,
+     1
+    ],
+    [
+     2,
+     1,
+     1
+    ]
+   ],
+   "inv": {
+    "u0": 7,
+    "prin": [
+     1,
+     1,
+     1
+    ],
+    "has_prin": true,
+    "psi0_nz": [
+     1
+    ],
+    "ndcells": 1
+   },
+   "rows": [
+    {
+     "key": [
+      291,
+      299
+     ],
+     "cs": [
+      1,
+      1
+     ],
+     "D": 3,
+     "kdef": 1,
+     "live": true,
+     "min_top_cell": 1,
+     "ncells": 1,
+     "stock1": 2,
+     "allg1": true
+    },
+    {
+     "key": [
+      295,
+      299
+     ],
+     "cs": [
+      1,
+      1
+     ],
+     "D": 3,
+     "kdef": 1,
+     "live": true,
+     "min_top_cell": 1,
+     "ncells": 2,
+     "stock1": 2,
+     "allg1": true
+    },
+    {
+     "key": [
+      289,
+      295
+     ],
+     "cs": [
+      1,
+      2
+     ],
+     "D": 2,
+     "kdef": 2,
+     "live": true,
+     "min_top_cell": 2,
+     "ncells": 1,
+     "stock1": 2,
+     "allg1": true
+    },
+    {
+     "key": [
+      291,
+      303
+     ],
+     "cs": [
+      1,
+      1
+     ],
+     "D": 3,
+     "kdef": 1,
+     "live": true,
+     "min_top_cell": 1,
+     "ncells": 2,
+     "stock1": 2,
+     "allg1": true
+    },
+    {
+     "key": [
+      297,
+      303
+     ],
+     "cs": [
+      1,
+      2
+     ],
+     "D": 2,
+     "kdef": 2,
+     "live": true,
+     "min_top_cell": 2,
+     "ncells": 1,
+     "stock1": 2,
+     "allg1": true
+    },
+    {
+     "key": [
+      295,
+      303
+     ],
+     "cs": [
+      1,
+      2
+     ],
+     "D": 3,
+     "kdef": 1,
+     "live": true,
+     "min_top_cell": 1,
+     "ncells": 4,
+     "stock1": 3,
+     "allg1": true
+    },
+    {
+     "key": [
+      291,
+      291
+     ],
+     "cs": [
+      1,
+      1
+     ],
+     "D": 3,
+     "kdef": 1,
+     "live": true,
+     "min_top_cell": 1,
+     "ncells": 1,
+     "stock1": 2,
+     "allg1": true
+    },
+    {
+     "key": [
+      291,
+      295
+     ],
+     "cs": [
+      1,
+      1
+     ],
+     "D": 3,
+     "kdef": 1,
+     "live": true,
+     "min_top_cell": 1,
+     "ncells": 3,
+     "stock1": 3,
+     "allg1": true
+    },
+    {
+     "key": [
+      295,
+      297
+     ],
+     "cs": [
+      1,
+      2
+     ],
+     "D": 2,
+     "kdef": 2,
+     "live": true,
+     "min_top_cell": 2,
+     "ncells": 1,
+     "stock1": 2,
+     "allg1": true
+    },
+    {
+     "key": [
+      295,
+      295
+     ],
+     "cs": [
+      1,
+      2
+     ],
+     "D": 3,
+     "kdef": 1,
+     "live": true,
+     "min_top_cell": 1,
+     "ncells": 9,
+     "stock1": 3,
+     "allg1": true
+    },
+    {
+     "key": [
+      299,
+      303
+     ],
+     "cs": [
+      0,
+      1
+     ],
+     "D": 3,
+     "kdef": 1,
+     "live": true,
+     "min_top_cell": 1,
+     "ncells": 1,
+     "stock1": 2,
+     "allg1": true
+    },
+    {
+     "key": [
+      303,
+      303
+     ],
+     "cs": [
+      0,
+      1
+     ],
+     "D": 3,
+     "kdef": 1,
+     "live": true,
+     "min_top_cell": 1,
+     "ncells": 2,
+     "stock1": 3,
+     "allg1": true
+    },
+    {
+     "key": [
+      293,
+      295
+     ],
+     "cs": [
+      1,
+      1
+     ],
+     "D": 2,
+     "kdef": 2,
+     "live": false,
+     "min_top_cell": null,
+     "ncells": 0,
+     "stock1": 2,
+     "allg1": true
+    },
+    {
+     "key": [
+      291,
+      297
+     ],
+     "cs": [
+      1,
+      1
+     ],
+     "D": 2,
+     "kdef": 2,
+     "live": false,
+     "min_top_cell": null,
+     "ncells": 0,
+     "stock1": 2,
+     "allg1": true
+    },
+    {
+     "key": [
+      299,
+      299
+     ],
+     "cs": [
+      0,
+      0
+     ],
+     "D": 3,
+     "kdef": 1,
+     "live": false,
+     "min_top_cell": null,
+     "ncells": 0,
+     "stock1": 2,
+     "allg1": true
+    },
+    {
+     "key": [
+      289,
+      303
+     ],
+     "cs": [
+      0,
+      1
+     ],
+     "D": 2,
+     "kdef": 2,
+     "live": false,
+     "min_top_cell": null,
+     "ncells": 0,
+     "stock1": 2,
+     "allg1": true
+    }
+   ]
+  },
+  {
+   "tag": "W3FMID",
+   "m": 3,
+   "kind": "Zp",
+   "p": 3,
+   "d0": 1,
+   "reads": [
+    [
+     2,
+     1,
+     1
+    ],
+    [
+     1,
+     1,
+     1
+    ],
+    [
+     2,
+     1,
+     1
+    ],
+    [
+     2,
+     1,
+     1
+    ]
+   ],
+   "inv": {
+    "u0": 5,
+    "prin": [
+     1,
+     0,
+     1
+    ],
+    "has_prin": true,
+    "psi0_nz": [
+     1
+    ],
+    "ndcells": 1
+   },
+   "rows": [
+    {
+     "key": [
+      91,
+      95
+     ],
+     "cs": [
+      1,
+      1
+     ],
+     "D": 3,
+     "kdef": 1,
+     "live": true,
+     "min_top_cell": 1,
+     "ncells": 1,
+     "stock1": 2,
+     "allg1": true
+    },
+    {
+     "key": [
+      95,
+      95
+     ],
+     "cs": [
+      1,
+      1
+     ],
+     "D": 3,
+     "kdef": 1,
+     "live": true,
+     "min_top_cell": 1,
+     "ncells": 2,
+     "stock1": 3,
+     "allg1": true
+    },
+    {
+     "key": [
+      89,
+      95
+     ],
+     "cs": [
+      1,
+      1
+     ],
+     "D": 2,
+     "kdef": 2,
+     "live": false,
+     "min_top_cell": null,
+     "ncells": 0,
+     "stock1": 2,
+     "allg1": true
+    },
+    {
+     "key": [
+      91,
+      91
+     ],
+     "cs": [
+      0,
+      0
+     ],
+     "D": 3,
+     "kdef": 1,
+     "live": false,
+     "min_top_cell": null,
+     "ncells": 0,
+     "stock1": 2,
+     "allg1": true
+    }
+   ]
+  },
+  {
+   "tag": "W3FTOP",
+   "m": 3,
+   "kind": "Zp",
+   "p": 3,
+   "d0": 1,
+   "reads": [
+    [
+     2,
+     1,
+     1
+    ],
+    [
+     2,
+     1,
+     1
+    ],
+    [
+     1,
+     1,
+     1
+    ],
+    [
+     2,
+     1,
+     1
+    ]
+   ],
+   "inv": {
+    "u0": 4,
+    "prin": [
+     1,
+     1,
+     0
+    ],
+    "has_prin": true,
+    "psi0_nz": [
+     1
+    ],
+    "ndcells": 1
+   },
+   "rows": [
+    {
+     "key": [
+      73,
+      77
+     ],
+     "cs": [
+      1,
+      2
+     ],
+     "D": 0,
+     "kdef": 2,
+     "live": true,
+     "min_top_cell": 2,
+     "ncells": 1,
+     "stock1": 1,
+     "allg1": true
+    },
+    {
+     "key": [
+      77,
+      77
+     ],
+     "cs": [
+      1,
+      2
+     ],
+     "D": 0,
+     "kdef": 2,
+     "live": true,
+     "min_top_cell": 2,
+     "ncells": 3,
+     "stock1": 1,
+     "allg1": true
+    },
+    {
+     "key": [
+      75,
+      77
+     ],
+     "cs": [
+      1,
+      1
+     ],
+     "D": 0,
+     "kdef": 2,
+     "live": false,
+     "min_top_cell": null,
+     "ncells": 0,
+     "stock1": 1,
+     "allg1": true
+    },
+    {
+     "key": [
+      73,
+      73
+     ],
+     "cs": [
+      0,
+      1
+     ],
+     "D": 0,
+     "kdef": 2,
+     "live": false,
+     "min_top_cell": null,
+     "ncells": 0,
+     "stock1": 1,
+     "allg1": true
+    }
+   ]
+  },
+  {
+   "tag": "W3FDBL",
+   "m": 3,
+   "kind": "Zp",
+   "p": 3,
+   "d0": 1,
+   "reads": [
+    [
+     3,
+     1,
+     1
+    ],
+    [
+     1,
+     1,
+     1
+    ],
+    [
+     1,
+     1,
+     1
+    ],
+    [
+     2,
+     1,
+     1
+    ]
+   ],
+   "inv": {
+    "u0": 3,
+    "prin": [
+     2,
+     0,
+     0
+    ],
+    "has_prin": true,
+    "psi0_nz": [
+     1
+    ],
+    "ndcells": 1
+   },
+   "rows": [
+    {
+     "key": [
+      39,
+      39
+     ],
+     "cs": [
+      2,
+      2
+     ],
+     "D": 0,
+     "kdef": 2,
+     "live": true,
+     "min_top_cell": 2,
+     "ncells": 1,
+     "stock1": 1,
+     "allg1": true
+    },
+    {
+     "key": [
+      37,
+      39
+     ],
+     "cs": [
+      1,
+      1
+     ],
+     "D": 0,
+     "kdef": 2,
+     "live": false,
+     "min_top_cell": null,
+     "ncells": 0,
+     "stock1": 1,
+     "allg1": true
+    }
+   ]
+  },
+  {
+   "tag": "W3FMIDF",
+   "m": 3,
+   "kind": "Fpt",
+   "p": 2,
+   "d0": 1,
+   "reads": [
+    [
+     2,
+     1,
+     1
+    ],
+    [
+     1,
+     1,
+     1
+    ],
+    [
+     2,
+     1,
+     1
+    ],
+    [
+     2,
+     1,
+     1
+    ]
+   ],
+   "inv": {
+    "u0": 5,
+    "prin": [
+     1,
+     0,
+     1
+    ],
+    "has_prin": true,
+    "psi0_nz": [
+     1
+    ],
+    "ndcells": 1
+   },
+   "rows": [
+    {
+     "key": [
+      91,
+      95
+     ],
+     "cs": [
+      1,
+      1
+     ],
+     "D": 3,
+     "kdef": 1,
+     "live": true,
+     "min_top_cell": 1,
+     "ncells": 1,
+     "stock1": 2,
+     "allg1": true
+    },
+    {
+     "key": [
+      95,
+      95
+     ],
+     "cs": [
+      1,
+      1
+     ],
+     "D": 3,
+     "kdef": 1,
+     "live": true,
+     "min_top_cell": 1,
+     "ncells": 2,
+     "stock1": 3,
+     "allg1": true
+    },
+    {
+     "key": [
+      89,
+      95
+     ],
+     "cs": [
+      1,
+      1
+     ],
+     "D": 2,
+     "kdef": 2,
+     "live": false,
+     "min_top_cell": null,
+     "ncells": 0,
+     "stock1": 2,
+     "allg1": true
+    },
+    {
+     "key": [
+      91,
+      91
+     ],
+     "cs": [
+      0,
+      0
+     ],
+     "D": 3,
+     "kdef": 1,
+     "live": false,
+     "min_top_cell": null,
+     "ncells": 0,
+     "stock1": 2,
+     "allg1": true
+    }
+   ]
+  },
+  {
+   "tag": "W3TRK1",
+   "m": 3,
+   "kind": "Zp",
+   "p": 3,
+   "d0": 1,
+   "reads": [
+    [
+     3,
+     2,
+     1
+    ],
+    [
+     2,
+     1,
+     1
+    ],
+    [
+     2,
+     1,
+     1
+    ],
+    [
+     1,
+     1,
+     1
+    ]
+   ],
+   "inv": {
+    "u0": 1,
+    "prin": [
+     2,
+     1,
+     1
+    ],
+    "has_prin": true,
+    "psi0_nz": [
+     1
+    ],
+    "ndcells": 1
+   },
+   "rows": [
+    {
+     "key": [
+      328,
+      335
+     ],
+     "cs": [
+      2,
+      2
+     ],
+     "D": 2,
+     "kdef": 2,
+     "live": true,
+     "min_top_cell": 2,
+     "ncells": 1,
+     "stock1": 2,
+     "allg1": true
+    },
+    {
+     "key": [
+      333,
+      333
+     ],
+     "cs": [
+      2,
+      1
+     ],
+     "D": 3,
+     "kdef": 1,
+     "live": true,
+     "min_top_cell": 1,
+     "ncells": 3,
+     "stock1": 2,
+     "allg1": true
+    },
+    {
+     "key": [
+      330,
+      333
+     ],
+     "cs": [
+      2,
+      2
+     ],
+     "D": 2,
+     "kdef": 2,
+     "live": true,
+     "min_top_cell": 2,
+     "ncells": 1,
+     "stock1": 2,
+     "allg1": true
+    },
+    {
+     "key": [
+      333,
+      335
+     ],
+     "cs": [
+      2,
+      2
+     ],
+     "D": 3,
+     "kdef": 1,
+     "live": true,
+     "min_top_cell": 1,
+     "ncells": 6,
+     "stock1": 3,
+     "allg1": true
+    },
+    {
+     "key": [
+      330,
+      335
+     ],
+     "cs": [
+      2,
+      2
+     ],
+     "D": 2,
+     "kdef": 2,
+     "live": true,
+     "min_top_cell": 2,
+     "ncells": 3,
+     "stock1": 2,
+     "allg1": true
+    },
+    {
+     "key": [
+      335,
+      335
+     ],
+     "cs": [
+      2,
+      2
+     ],
+     "D": 3,
+     "kdef": 1,
+     "live": true,
+     "min_top_cell": 1,
+     "ncells": 14,
+     "stock1": 3,
+     "allg1": true
+    },
+    {
+     "key": [
+      325,
+      329
+     ],
+     "cs": [
+      1,
+      1
+     ],
+     "D": 3,
+     "kdef": 1,
+     "live": true,
+     "min_top_cell": 1,
+     "ncells": 1,
+     "stock1": 2,
+     "allg1": true
+    },
+    {
+     "key": [
+      327,
+      329
+     ],
+     "cs": [
+      1,
+      1
+     ],
+     "D": 3,
+     "kdef": 1,
+     "live": true,
+     "min_top_cell": 1,
+     "ncells": 2,
+     "stock1": 2,
+     "allg1": true
+    },
+    {
+     "key": [
+      329,
+      333
+     ],
+     "cs": [
+      1,
+      1
+     ],
+     "D": 3,
+     "kdef": 1,
+     "live": true,
+     "min_top_cell": 1,
+     "ncells": 1,
+     "stock1": 2,
+     "allg1": true
+    },
+    {
+     "key": [
+      329,
+      335
+     ],
+     "cs": [
+      1,
+      1
+     ],
+     "D": 3,
+     "kdef": 1,
+     "live": true,
+     "min_top_cell": 1,
+     "ncells": 3,
+     "stock1": 2,
+     "allg1": true
+    },
+    {
+     "key": [
+      326,
+      327
+     ],
+     "cs": [
+      1,
+      2
+     ],
+     "D": 2,
+     "kdef": 2,
+     "live": true,
+     "min_top_cell": 2,
+     "ncells": 1,
+     "stock1": 2,
+     "allg1": true
+    },
+    {
+     "key": [
+      326,
+      335
+     ],
+     "cs": [
+      1,
+      2
+     ],
+     "D": 2,
+     "kdef": 2,
+     "live": true,
+     "min_top_cell": 2,
+     "ncells": 1,
+     "stock1": 2,
+     "allg1": true
+    },
+    {
+     "key": [
+      325,
+      331
+     ],
+     "cs": [
+      1,
+      1
+     ],
+     "D": 3,
+     "kdef": 1,
+     "live": true,
+     "min_top_cell": 1,
+     "ncells": 2,
+     "stock1": 2,
+     "allg1": true
+    },
+    {
+     "key": [
+      331,
+      334
+     ],
+     "cs": [
+      1,
+      2
+     ],
+     "D": 2,
+     "kdef": 2,
+     "live": true,
+     "min_top_cell": 2,
+     "ncells": 1,
+     "stock1": 2,
+     "allg1": true
+    },
+    {
+     "key": [
+      327,
+      331
+     ],
+     "cs": [
+      1,
+      2
+     ],
+     "D": 3,
+     "kdef": 1,
+     "live": true,
+     "min_top_cell": 1,
+     "ncells": 4,
+     "stock1": 3,
+     "allg1": true
+    },
+    {
+     "key": [
+      331,
+      333
+     ],
+     "cs": [
+      1,
+      1
+     ],
+     "D": 3,
+     "kdef": 1,
+     "live": true,
+     "min_top_cell": 1,
+     "ncells": 3,
+     "stock1": 2,
+     "allg1": true
+    },
+    {
+     "key": [
+      330,
+      331
+     ],
+     "cs": [
+      1,
+      2
+     ],
+     "D": 2,
+     "kdef": 2,
+     "live": true,
+     "min_top_cell": 2,
+     "ncells": 1,
+     "stock1": 2,
+     "allg1": true
+    },
+    {
+     "key": [
+      331,
+      335
+     ],
+     "cs": [
+      1,
+      2
+     ],
+     "D": 3,
+     "kdef": 1,
+     "live": true,
+     "min_top_cell": 1,
+     "ncells": 7,
+     "stock1": 3,
+     "allg1": true
+    },
+    {
+     "key": [
+      325,
+      325
+     ],
+     "cs": [
+      1,
+      1
+     ],
+     "D": 3,
+     "kdef": 1,
+     "live": true,
+     "min_top_cell": 1,
+     "ncells": 1,
+     "stock1": 2,
+     "allg1": true
+    },
+    {
+     "key": [
+      325,
+      327
+     ],
+     "cs": [
+      1,
+      1
+     ],
+     "D": 3,
+     "kdef": 1,
+     "live": true,
+     "min_top_cell": 1,
+     "ncells": 3,
+     "stock1": 2,
+     "allg1": true
+    },
+    {
+     "key": [
+      325,
+      333
+     ],
+     "cs": [
+      1,
+      1
+     ],
+     "D": 3,
+     "kdef": 1,
+     "live": true,
+     "min_top_cell": 1,
+     "ncells": 1,
+     "stock1": 2,
+     "allg1": true
+    },
+    {
+     "key": [
+      325,
+      335
+     ],
+     "cs": [
+      1,
+      1
+     ],
+     "D": 3,
+     "kdef": 1,
+     "live": true,
+     "min_top_cell": 1,
+     "ncells": 3,
+     "stock1": 3,
+     "allg1": true
+    },
+    {
+     "key": [
+      327,
+      334
+     ],
+     "cs": [
+      1,
+      2
+     ],
+     "D": 2,
+     "kdef": 2,
+     "live": true,
+     "min_top_cell": 2,
+     "ncells": 1,
+     "stock1": 2,
+     "allg1": true
+    },
+    {
+     "key": [
+      334,
+      335
+     ],
+     "cs": [
+      1,
+      2
+     ],
+     "D": 2,
+     "kdef": 2,
+     "live": true,
+     "min_top_cell": 2,
+     "ncells": 1,
+     "stock1": 2,
+     "allg1": true
+    },
+    {
+     "key": [
+      327,
+      327
+     ],
+     "cs": [
+      1,
+      2
+     ],
+     "D": 3,
+     "kdef": 1,
+     "live": true,
+     "min_top_cell": 1,
+     "ncells": 7,
+     "stock1": 3,
+     "allg1": true
+    },
+    {
+     "key": [
+      327,
+      333
+     ],
+     "cs": [
+      1,
+      1
+     ],
+     "D": 3,
+     "kdef": 1,
+     "live": true,
+     "min_top_cell": 1,
+     "ncells": 3,
+     "stock1": 3,
+     "allg1": true
+    },
+    {
+     "key": [
+      327,
+      330
+     ],
+     "cs": [
+      1,
+      2
+     ],
+     "D": 2,
+     "kdef": 2,
+     "live": true,
+     "min_top_cell": 2,
+     "ncells": 1,
+     "stock1": 2,
+     "allg1": true
+    },
+    {
+     "key": [
+      327,
+      335
+     ],
+     "cs": [
+      1,
+      2
+     ],
+     "D": 3,
+     "kdef": 1,
+     "live": true,
+     "min_top_cell": 1,
+     "ncells": 11,
+     "stock1": 3,
+     "allg1": true
+    },
+    {
+     "key": [
+      329,
+      331
+     ],
+     "cs": [
+      0,
+      1
+     ],
+     "D": 3,
+     "kdef": 1,
+     "live": true,
+     "min_top_cell": 1,
+     "ncells": 1,
+     "stock1": 2,
+     "allg1": true
+    },
+    {
+     "key": [
+      331,
+      331
+     ],
+     "cs": [
+      0,
+      1
+     ],
+     "D": 3,
+     "kdef": 1,
+     "live": true,
+     "min_top_cell": 1,
+     "ncells": 2,
+     "stock1": 3,
+     "allg1": true
+    },
+    {
+     "key": [
+      332,
+      335
+     ],
+     "cs": [
+      1,
+      1
+     ],
+     "D": 2,
+     "kdef": 2,
+     "live": false,
+     "min_top_cell": null,
+     "ncells": 0,
+     "stock1": 2,
+     "allg1": true
+    },
+    {
+     "key": [
+      325,
+      330
+     ],
+     "cs": [
+      1,
+      1
+     ],
+     "D": 2,
+     "kdef": 2,
+     "live": false,
+     "min_top_cell": null,
+     "ncells": 0,
+     "stock1": 2,
+     "allg1": true
+    },
+    {
+     "key": [
+      333,
+      334
+     ],
+     "cs": [
+      1,
+      1
+     ],
+     "D": 2,
+     "kdef": 2,
+     "live": false,
+     "min_top_cell": null,
+     "ncells": 0,
+     "stock1": 2,
+     "allg1": true
+    },
+    {
+     "key": [
+      327,
+      328
+     ],
+     "cs": [
+      1,
+      1
+     ],
+     "D": 2,
+     "kdef": 2,
+     "live": false,
+     "min_top_cell": null,
+     "ncells": 0,
+     "stock1": 2,
+     "allg1": true
+    },
+    {
+     "key": [
+      329,
+      329
+     ],
+     "cs": [
+      0,
+      0
+     ],
+     "D": 3,
+     "kdef": 1,
+     "live": false,
+     "min_top_cell": null,
+     "ncells": 0,
+     "stock1": 2,
+     "allg1": true
+    },
+    {
+     "key": [
+      326,
+      331
+     ],
+     "cs": [
+      0,
+      1
+     ],
+     "D": 2,
+     "kdef": 2,
+     "live": false,
+     "min_top_cell": null,
+     "ncells": 0,
+     "stock1": 2,
+     "allg1": true
+    }
+   ]
+  },
+  {
+   "tag": "W3DIR",
+   "m": 3,
+   "kind": "Zp",
+   "p": 3,
+   "d0": 1,
+   "reads": [
+    [
+     2,
+     1,
+     1
+    ],
+    [
+     2,
+     1,
+     1
+    ],
+    [
+     3,
+     2,
+     1
+    ],
+    [
+     2,
+     1,
+     1
+    ]
+   ],
+   "inv": {
+    "u0": 9,
+    "prin": [
+     1,
+     1,
+     2
+    ],
+    "has_prin": true,
+    "psi0_nz": [
+     1
+    ],
+    "ndcells": 1
+   },
+   "rows": [
+    {
+     "key": [
+      617,
+      621
+     ],
+     "cs": [
+      1,
+      1
+     ],
+     "D": 5,
+     "kdef": 1,
+     "live": true,
+     "min_top_cell": 1,
+     "ncells": 1,
+     "stock1": 3,
+     "allg1": true
+    },
+    {
+     "key": [
+      603,
+      617
+     ],
+     "cs": [
+      1,
+      1
+     ],
+     "D": 5,
+     "kdef": 1,
+     "live": true,
+     "min_top_cell": 1,
+     "ncells": 2,
+     "stock1": 3,
+     "allg1": true
+    },
+    {
+     "key": [
+      605,
+      609
+     ],
+     "cs": [
+      1,
+      1
+     ],
+     "D": 5,
+     "kdef": 1,
+     "live": true,
+     "min_top_cell": 1,
+     "ncells": 1,
+     "stock1": 3,
+     "allg1": true
+    },
+    {
+     "key": [
+      609,
+      621
+     ],
+     "cs": [
+      1,
+      1
+     ],
+     "D": 6,
+     "kdef": 0,
+     "live": true,
+     "min_top_cell": 0,
+     "ncells": 3,
+     "stock1": 4,
+     "allg1": true
+    },
+    {
+     "key": [
+      609,
+      611
+     ],
+     "cs": [
+      1,
+      1
+     ],
+     "D": 5,
+     "kdef": 1,
+     "live": true,
+     "min_top_cell": 1,
+     "ncells": 2,
+     "stock1": 3,
+     "allg1": true
+    },
+    {
+     "key": [
+      603,
+      609
+     ],
+     "cs": [
+      1,
+      1
+     ],
+     "D": 6,
+     "kdef": 0,
+     "live": true,
+     "min_top_cell": 0,
+     "ncells": 4,
+     "stock1": 4,
+     "allg1": true
+    },
+    {
+     "key": [
+      603,
+      607
+     ],
+     "cs": [
+      1,
+      2
+     ],
+     "D": 4,
+     "kdef": 2,
+     "live": true,
+     "min_top_cell": 2,
+     "ncells": 1,
+     "stock1": 3,
+     "allg1": true
+    },
+    {
+     "key": [
+      621,
+      623
+     ],
+     "cs": [
+      1,
+      1
+     ],
+     "D": 5,
+     "kdef": 1,
+     "live": true,
+     "min_top_cell": 1,
+     "ncells": 2,
+     "stock1": 3,
+     "allg1": true
+    },
+    {
+     "key": [
+      611,
+      623
+     ],
+     "cs": [
+      1,
+      2
+     ],
+     "D": 4,
+     "kdef": 2,
+     "live": true,
+     "min_top_cell": 2,
+     "ncells": 1,
+     "stock1": 3,
+     "allg1": true
+    },
+    {
+     "key": [
+      603,
+      623
+     ],
+     "cs": [
+      1,
+      2
+     ],
+     "D": 5,
+     "kdef": 1,
+     "live": true,
+     "min_top_cell": 1,
+     "ncells": 4,
+     "stock1": 4,
+     "allg1": true
+    },
+    {
+     "key": [
+      605,
+      615
+     ],
+     "cs": [
+      1,
+      1
+     ],
+     "D": 5,
+     "kdef": 1,
+     "live": true,
+     "min_top_cell": 1,
+     "ncells": 2,
+     "stock1": 3,
+     "allg1": true
+    },
+    {
+     "key": [
+      615,
+      621
+     ],
+     "cs": [
+      1,
+      1
+     ],
+     "D": 6,
+     "kdef": 0,
+     "live": true,
+     "min_top_cell": 0,
+     "ncells": 4,
+     "stock1": 4,
+     "allg1": true
+    },
+    {
+     "key": [
+      615,
+      619
+     ],
+     "cs": [
+      1,
+      2
+     ],
+     "D": 4,
+     "kdef": 2,
+     "live": true,
+     "min_top_cell": 2,
+     "ncells": 1,
+     "stock1": 3,
+     "allg1": true
+    },
+    {
+     "key": [
+      611,
+      615
+     ],
+     "cs": [
+      1,
+      2
+     ],
+     "D": 5,
+     "kdef": 1,
+     "live": true,
+     "min_top_cell": 1,
+     "ncells": 4,
+     "stock1": 4,
+     "allg1": true
+    },
+    {
+     "key": [
+      603,
+      615
+     ],
+     "cs": [
+      1,
+      2
+     ],
+     "D": 6,
+     "kdef": 0,
+     "live": true,
+     "min_top_cell": 0,
+     "ncells": 7,
+     "stock1": 5,
+     "allg1": true
+    },
+    {
+     "key": [
+      605,
+      621
+     ],
+     "cs": [
+      1,
+      1
+     ],
+     "D": 5,
+     "kdef": 1,
+     "live": true,
+     "min_top_cell": 1,
+     "ncells": 1,
+     "stock1": 3,
+     "allg1": true
+    },
+    {
+     "key": [
+      603,
+      605
+     ],
+     "cs": [
+      1,
+      1
+     ],
+     "D": 5,
+     "kdef": 1,
+     "live": true,
+     "min_top_cell": 1,
+     "ncells": 3,
+     "stock1": 4,
+     "allg1": true
+    },
+    {
+     "key": [
+      621,
+      621
+     ],
+     "cs": [
+      1,
+      1
+     ],
+     "D": 6,
+     "kdef": 0,
+     "live": true,
+     "min_top_cell": 0,
+     "ncells": 4,
+     "stock1": 4,
+     "allg1": true
+    },
+    {
+     "key": [
+      611,
+      621
+     ],
+     "cs": [
+      1,
+      1
+     ],
+     "D": 5,
+     "kdef": 1,
+     "live": true,
+     "min_top_cell": 1,
+     "ncells": 3,
+     "stock1": 4,
+     "allg1": true
+    },
+    {
+     "key": [
+      603,
+      621
+     ],
+     "cs": [
+      1,
+      1
+     ],
+     "D": 6,
+     "kdef": 0,
+     "live": true,
+     "min_top_cell": 0,
+     "ncells": 7,
+     "stock1": 5,
+     "allg1": true
+    },
+    {
+     "key": [
+      603,
+      619
+     ],
+     "cs": [
+      1,
+      2
+     ],
+     "D": 4,
+     "kdef": 2,
+     "live": true,
+     "min_top_cell": 2,
+     "ncells": 1,
+     "stock1": 3,
+     "allg1": true
+    },
+    {
+     "key": [
+      611,
+      611
+     ],
+     "cs": [
+      1,
+      2
+     ],
+     "D": 4,
+     "kdef": 2,
+     "live": true,
+     "min_top_cell": 2,
+     "ncells": 1,
+     "stock1": 3,
+     "allg1": true
+    },
+    {
+     "key": [
+      603,
+      611
+     ],
+     "cs": [
+      1,
+      2
+     ],
+     "D": 5,
+     "kdef": 1,
+     "live": true,
+     "min_top_cell": 1,
+     "ncells": 7,
+     "stock1": 4,
+     "allg1": true
+    },
+    {
+     "key": [
+      603,
+      603
+     ],
+     "cs": [
+      1,
+      2
+     ],
+     "D": 6,
+     "kdef": 0,
+     "live": true,
+     "min_top_cell": 0,
+     "ncells": 11,
+     "stock1": 5,
+     "allg1": true
+    },
+    {
+     "key": [
+      615,
+      617
+     ],
+     "cs": [
+      0,
+      1
+     ],
+     "D": 5,
+     "kdef": 1,
+     "live": true,
+     "min_top_cell": 1,
+     "ncells": 1,
+     "stock1": 3,
+     "allg1": true
+    },
+    {
+     "key": [
+      609,
+      609
+     ],
+     "cs": [
+      0,
+      0
+     ],
+     "D": 6,
+     "kdef": 0,
+     "live": true,
+     "min_top_cell": 0,
+     "ncells": 1,
+     "stock1": 4,
+     "allg1": true
+    },
+    {
+     "key": [
+      609,
+      623
+     ],
+     "cs": [
+      0,
+      1
+     ],
+     "D": 5,
+     "kdef": 1,
+     "live": true,
+     "min_top_cell": 1,
+     "ncells": 1,
+     "stock1": 3,
+     "allg1": true
+    },
+    {
+     "key": [
+      609,
+      615
+     ],
+     "cs": [
+      0,
+      1
+     ],
+     "D": 6,
+     "kdef": 0,
+     "live": true,
+     "min_top_cell": 0,
+     "ncells": 3,
+     "stock1": 4,
+     "allg1": true
+    },
+    {
+     "key": [
+      615,
+      623
+     ],
+     "cs": [
+      0,
+      1
+     ],
+     "D": 5,
+     "kdef": 1,
+     "live": true,
+     "min_top_cell": 1,
+     "ncells": 2,
+     "stock1": 4,
+     "allg1": true
+    },
+    {
+     "key": [
+      615,
+      615
+     ],
+     "cs": [
+      0,
+      1
+     ],
+     "D": 6,
+     "kdef": 0,
+     "live": true,
+     "min_top_cell": 0,
+     "ncells": 4,
+     "stock1": 5,
+     "allg1": true
+    },
+    {
+     "key": [
+      603,
+      613
+     ],
+     "cs": [
+      1,
+      1
+     ],
+     "D": 4,
+     "kdef": 2,
+     "live": false,
+     "min_top_cell": null,
+     "ncells": 0,
+     "stock1": 3,
+     "allg1": true
+    },
+    {
+     "key": [
+      605,
+      611
+     ],
+     "cs": [
+      1,
+      1
+     ],
+     "D": 4,
+     "kdef": 2,
+     "live": false,
+     "min_top_cell": null,
+     "ncells": 0,
+     "stock1": 3,
+     "allg1": true
+    },
+    {
+     "key": [
+      619,
+      621
+     ],
+     "cs": [
+      1,
+      1
+     ],
+     "D": 4,
+     "kdef": 2,
+     "live": false,
+     "min_top_cell": null,
+     "ncells": 0,
+     "stock1": 3,
+     "allg1": true
+    },
+    {
+     "key": [
+      609,
+      617
+     ],
+     "cs": [
+      0,
+      0
+     ],
+     "D": 5,
+     "kdef": 1,
+     "live": false,
+     "min_top_cell": null,
+     "ncells": 0,
+     "stock1": 3,
+     "allg1": true
+    },
+    {
+     "key": [
+      607,
+      615
+     ],
+     "cs": [
+      0,
+      1
+     ],
+     "D": 4,
+     "kdef": 2,
+     "live": false,
+     "min_top_cell": null,
+     "ncells": 0,
+     "stock1": 3,
+     "allg1": true
+    },
+    {
+     "key": [
+      623,
+      623
+     ],
+     "cs": [
+      0,
+      1
+     ],
+     "D": 4,
+     "kdef": 2,
+     "live": false,
+     "min_top_cell": null,
+     "ncells": 0,
+     "stock1": 3,
+     "allg1": true
+    }
+   ]
+  },
+  {
+   "tag": "W3G2A",
+   "m": 3,
+   "kind": "Zp",
+   "p": 3,
+   "d0": 1,
+   "reads": [
+    [
+     3,
+     1,
+     2
+    ],
+    [
+     2,
+     1,
+     1
+    ],
+    [
+     2,
+     3,
+     1
+    ],
+    [
+     2,
+     1,
+     1
+    ]
+   ],
+   "inv": {
+    "u0": 11,
+    "prin": [
+     2,
+     1,
+     1
+    ],
+    "has_prin": true,
+    "psi0_nz": [
+     1,
+     1
+    ],
+    "ndcells": 2
+   },
+   "rows": [
+    {
+     "key": [
+      683,
+      683
+     ],
+     "cs": [
+      2,
+      1
+     ],
+     "D": 3,
+     "kdef": 1,
+     "live": true,
+     "min_top_cell": 1,
+     "ncells": 3,
+     "stock1": 2,
+     "allg1": false
+    },
+    {
+     "key": [
+      683,
+      687
+     ],
+     "cs": [
+      2,
+      2
+     ],
+     "D": 3,
+     "kdef": 1,
+     "live": true,
+     "min_top_cell": 1,
+     "ncells": 11,
+     "stock1": 2,
+     "allg1": false
+    },
+    {
+     "key": [
+      673,
+      687
+     ],
+     "cs": [
+      2,
+      2
+     ],
+     "D": 2,
+     "kdef": 2,
+     "live": true,
+     "min_top_cell": 2,
+     "ncells": 3,
+     "stock1": 2,
+     "allg1": false
+    },
+    {
+     "key": [
+      687,
+      687
+     ],
+     "cs": [
+      2,
+      2
+     ],
+     "D": 3,
+     "kdef": 1,
+     "live": true,
+     "min_top_cell": 1,
+     "ncells": 25,
+     "stock1": 3,
+     "allg1": false
+    },
+    {
+     "key": [
+      675,
+      691
+     ],
+     "cs": [
+      1,
+      1
+     ],
+     "D": 3,
+     "kdef": 1,
+     "live": true,
+     "min_top_cell": 1,
+     "ncells": 1,
+     "stock1": 2,
+     "allg1": false
+    },
+    {
+     "key": [
+      679,
+      691
+     ],
+     "cs": [
+      1,
+      1
+     ],
+     "D": 3,
+     "kdef": 1,
+     "live": true,
+     "min_top_cell": 1,
+     "ncells": 5,
+     "stock1": 2,
+     "allg1": false
+    },
+    {
+     "key": [
+      683,
+      691
+     ],
+     "cs": [
+      1,
+      1
+     ],
+     "D": 3,
+     "kdef": 1,
+     "live": true,
+     "min_top_cell": 1,
+     "ncells": 1,
+     "stock1": 2,
+     "allg1": false
+    },
+    {
+     "key": [
+      687,
+      691
+     ],
+     "cs": [
+      1,
+      1
+     ],
+     "D": 3,
+     "kdef": 1,
+     "live": true,
+     "min_top_cell": 1,
+     "ncells": 5,
+     "stock1": 2,
+     "allg1": false
+    },
+    {
+     "key": [
+      679,
+      681
+     ],
+     "cs": [
+      1,
+      2
+     ],
+     "D": 2,
+     "kdef": 2,
+     "live": true,
+     "min_top_cell": 2,
+     "ncells": 1,
+     "stock1": 2,
+     "allg1": false
+    },
+    {
+     "key": [
+      681,
+      687
+     ],
+     "cs": [
+      1,
+      2
+     ],
+     "D": 2,
+     "kdef": 2,
+     "live": true,
+     "min_top_cell": 2,
+     "ncells": 1,
+     "stock1": 2,
+     "allg1": false
+    },
+    {
+     "key": [
+      675,
+      695
+     ],
+     "cs": [
+      1,
+      1
+     ],
+     "D": 3,
+     "kdef": 1,
+     "live": true,
+     "min_top_cell": 1,
+     "ncells": 5,
+     "stock1": 2,
+     "allg1": false
+    },
+    {
+     "key": [
+      689,
+      695
+     ],
+     "cs": [
+      1,
+      2
+     ],
+     "D": 2,
+     "kdef": 2,
+     "live": true,
+     "min_top_cell": 2,
+     "ncells": 1,
+     "stock1": 2,
+     "allg1": false
+    },
+    {
+     "key": [
+      679,
+      695
+     ],
+     "cs": [
+      1,
+      2
+     ],
+     "D": 3,
+     "kdef": 1,
+     "live": true,
+     "min_top_cell": 1,
+     "ncells": 9,
+     "stock1": 3,
+     "allg1": false
+    },
+    {
+     "key": [
+      683,
+      695
+     ],
+     "cs": [
+      1,
+      1
+     ],
+     "D": 3,
+     "kdef": 1,
+     "live": true,
+     "min_top_cell": 1,
+     "ncells": 5,
+     "stock1": 2,
+     "allg1": false
+    },
+    {
+     "key": [
+      673,
+      695
+     ],
+     "cs": [
+      1,
+      2
+     ],
+     "D": 2,
+     "kdef": 2,
+     "live": true,
+     "min_top_cell": 2,
+     "ncells": 1,
+     "stock1": 2,
+     "allg1": false
+    },
+    {
+     "key": [
+      687,
+      695
+     ],
+     "cs": [
+      1,
+      2
+     ],
+     "D": 3,
+     "kdef": 1,
+     "live": true,
+     "min_top_cell": 1,
+     "ncells": 9,
+     "stock1": 3,
+     "allg1": false
+    },
+    {
+     "key": [
+      675,
+      675
+     ],
+     "cs": [
+      1,
+      1
+     ],
+     "D": 3,
+     "kdef": 1,
+     "live": true,
+     "min_top_cell": 1,
+     "ncells": 1,
+     "stock1": 2,
+     "allg1": false
+    },
+    {
+     "key": [
+      675,
+      679
+     ],
+     "cs": [
+      1,
+      1
+     ],
+     "D": 3,
+     "kdef": 1,
+     "live": true,
+     "min_top_cell": 1,
+     "ncells": 5,
+     "stock1": 2,
+     "allg1": false
+    },
+    {
+     "key": [
+      675,
+      683
+     ],
+     "cs": [
+      1,
+      1
+     ],
+     "D": 3,
+     "kdef": 1,
+     "live": true,
+     "min_top_cell": 1,
+     "ncells": 1,
+     "stock1": 2,
+     "allg1": false
+    },
+    {
+     "key": [
+      675,
+      687
+     ],
+     "cs": [
+      1,
+      1
+     ],
+     "D": 3,
+     "kdef": 1,
+     "live": true,
+     "min_top_cell": 1,
+     "ncells": 5,
+     "stock1": 2,
+     "allg1": false
+    },
+    {
+     "key": [
+      679,
+      689
+     ],
+     "cs": [
+      1,
+      2
+     ],
+     "D": 2,
+     "kdef": 2,
+     "live": true,
+     "min_top_cell": 2,
+     "ncells": 1,
+     "stock1": 2,
+     "allg1": false
+    },
+    {
+     "key": [
+      687,
+      689
+     ],
+     "cs": [
+      1,
+      2
+     ],
+     "D": 2,
+     "kdef": 2,
+     "live": true,
+     "min_top_cell": 2,
+     "ncells": 1,
+     "stock1": 2,
+     "allg1": false
+    },
+    {
+     "key": [
+      679,
+      679
+     ],
+     "cs": [
+      1,
+      2
+     ],
+     "D": 3,
+     "kdef": 1,
+     "live": true,
+     "min_top_cell": 1,
+     "ncells": 9,
+     "stock1": 3,
+     "allg1": false
+    },
+    {
+     "key": [
+      679,
+      683
+     ],
+     "cs": [
+      1,
+      1
+     ],
+     "D": 3,
+     "kdef": 1,
+     "live": true,
+     "min_top_cell": 1,
+     "ncells": 5,
+     "stock1": 2,
+     "allg1": false
+    },
+    {
+     "key": [
+      673,
+      679
+     ],
+     "cs": [
+      1,
+      2
+     ],
+     "D": 2,
+     "kdef": 2,
+     "live": true,
+     "min_top_cell": 2,
+     "ncells": 1,
+     "stock1": 2,
+     "allg1": false
+    },
+    {
+     "key": [
+      679,
+      687
+     ],
+     "cs": [
+      1,
+      2
+     ],
+     "D": 3,
+     "kdef": 1,
+     "live": true,
+     "min_top_cell": 1,
+     "ncells": 13,
+     "stock1": 3,
+     "allg1": false
+    },
+    {
+     "key": [
+      691,
+      695
+     ],
+     "cs": [
+      0,
+      1
+     ],
+     "D": 3,
+     "kdef": 1,
+     "live": true,
+     "min_top_cell": 1,
+     "ncells": 2,
+     "stock1": 2,
+     "allg1": false
+    },
+    {
+     "key": [
+      695,
+      695
+     ],
+     "cs": [
+      0,
+      1
+     ],
+     "D": 3,
+     "kdef": 1,
+     "live": true,
+     "min_top_cell": 1,
+     "ncells": 4,
+     "stock1": 3,
+     "allg1": false
+    },
+    {
+     "key": [
+      691,
+      691
+     ],
+     "cs": [
+      0,
+      0
+     ],
+     "D": 3,
+     "kdef": 1,
+     "live": false,
+     "min_top_cell": null,
+     "ncells": 0,
+     "stock1": 2,
+     "allg1": false
+    },
+    {
+     "key": [
+      681,
+      695
+     ],
+     "cs": [
+      0,
+      1
+     ],
+     "D": 2,
+     "kdef": 2,
+     "live": false,
+     "min_top_cell": null,
+     "ncells": 0,
+     "stock1": 2,
+     "allg1": false
+    }
+   ]
+  },
+  {
+   "tag": "W3G2B",
+   "m": 3,
+   "kind": "Zp",
+   "p": 3,
+   "d0": 2,
+   "reads": [
+    [
+     2,
+     1,
+     2
+    ],
+    [
+     3,
+     2,
+     1
+    ],
+    [
+     2,
+     3,
+     1
+    ],
+    [
+     2,
+     1,
+     1
+    ]
+   ],
+   "inv": {
+    "u0": 19,
+    "prin": [
+     1,
+     1,
+     1
+    ],
+    "has_prin": true,
+    "psi0_nz": [
+     1,
+     1
+    ],
+    "ndcells": 2
+   },
+   "rows": [
+    {
+     "key": [
+      1071,
+      1075
+     ],
+     "cs": [
+      1,
+      1
+     ],
+     "D": 3,
+     "kdef": 1,
+     "live": true,
+     "min_top_cell": 1,
+     "ncells": 1,
+     "stock1": 2,
+     "allg1": false
+    },
+    {
+     "key": [
+      1075,
+      1079
+     ],
+     "cs": [
+      1,
+      1
+     ],
+     "D": 3,
+     "kdef": 1,
+     "live": true,
+     "min_top_cell": 1,
+     "ncells": 4,
+     "stock1": 2,
+     "allg1": false
+    },
+    {
+     "key": [
+      1059,
+      1063
+     ],
+     "cs": [
+      1,
+      1
+     ],
+     "D": 3,
+     "kdef": 1,
+     "live": true,
+     "min_top_cell": 1,
+     "ncells": 1,
+     "stock1": 2,
+     "allg1": false
+    },
+    {
+     "key": [
+      1059,
+      1071
+     ],
+     "cs": [
+      1,
+      1
+     ],
+     "D": 3,
+     "kdef": 1,
+     "live": true,
+     "min_top_cell": 1,
+     "ncells": 4,
+     "stock1": 2,
+     "allg1": false
+    },
+    {
+     "key": [
+      1059,
+      1079
+     ],
+     "cs": [
+      1,
+      1
+     ],
+     "D": 3,
+     "kdef": 1,
+     "live": true,
+     "min_top_cell": 1,
+     "ncells": 4,
+     "stock1": 3,
+     "allg1": false
+    },
+    {
+     "key": [
+      1061,
+      1079
+     ],
+     "cs": [
+      1,
+      2
+     ],
+     "D": 2,
+     "kdef": 2,
+     "live": true,
+     "min_top_cell": 2,
+     "ncells": 1,
+     "stock1": 2,
+     "allg1": false
+    },
+    {
+     "key": [
+      1063,
+      1067
+     ],
+     "cs": [
+      1,
+      1
+     ],
+     "D": 3,
+     "kdef": 1,
+     "live": true,
+     "min_top_cell": 1,
+     "ncells": 4,
+     "stock1": 2,
+     "allg1": false
+    },
+    {
+     "key": [
+      1067,
+      1071
+     ],
+     "cs": [
+      1,
+      1
+     ],
+     "D": 3,
+     "kdef": 1,
+     "live": true,
+     "min_top_cell": 1,
+     "ncells": 4,
+     "stock1": 3,
+     "allg1": false
+    },
+    {
+     "key": [
+      1067,
+      1073
+     ],
+     "cs": [
+      1,
+      2
+     ],
+     "D": 2,
+     "kdef": 2,
+     "live": true,
+     "min_top_cell": 2,
+     "ncells": 1,
+     "stock1": 2,
+     "allg1": false
+    },
+    {
+     "key": [
+      1067,
+      1079
+     ],
+     "cs": [
+      1,
+      2
+     ],
+     "D": 3,
+     "kdef": 1,
+     "live": true,
+     "min_top_cell": 1,
+     "ncells": 12,
+     "stock1": 3,
+     "allg1": false
+    },
+    {
+     "key": [
+      1063,
+      1071
+     ],
+     "cs": [
+      1,
+      1
+     ],
+     "D": 3,
+     "kdef": 1,
+     "live": true,
+     "min_top_cell": 1,
+     "ncells": 1,
+     "stock1": 2,
+     "allg1": false
+    },
+    {
+     "key": [
+      1063,
+      1079
+     ],
+     "cs": [
+      1,
+      1
+     ],
+     "D": 3,
+     "kdef": 1,
+     "live": true,
+     "min_top_cell": 1,
+     "ncells": 4,
+     "stock1": 2,
+     "allg1": false
+    },
+    {
+     "key": [
+      1071,
+      1071
+     ],
+     "cs": [
+      1,
+      1
+     ],
+     "D": 3,
+     "kdef": 1,
+     "live": true,
+     "min_top_cell": 1,
+     "ncells": 4,
+     "stock1": 2,
+     "allg1": false
+    },
+    {
+     "key": [
+      1071,
+      1079
+     ],
+     "cs": [
+      1,
+      1
+     ],
+     "D": 3,
+     "kdef": 1,
+     "live": true,
+     "min_top_cell": 1,
+     "ncells": 4,
+     "stock1": 3,
+     "allg1": false
+    },
+    {
+     "key": [
+      1073,
+      1079
+     ],
+     "cs": [
+      1,
+      2
+     ],
+     "D": 2,
+     "kdef": 2,
+     "live": true,
+     "min_top_cell": 2,
+     "ncells": 1,
+     "stock1": 2,
+     "allg1": false
+    },
+    {
+     "key": [
+      1079,
+      1079
+     ],
+     "cs": [
+      1,
+      2
+     ],
+     "D": 3,
+     "kdef": 1,
+     "live": true,
+     "min_top_cell": 1,
+     "ncells": 16,
+     "stock1": 3,
+     "allg1": false
+    },
+    {
+     "key": [
+      1067,
+      1075
+     ],
+     "cs": [
+      0,
+      1
+     ],
+     "D": 3,
+     "kdef": 1,
+     "live": true,
+     "min_top_cell": 1,
+     "ncells": 2,
+     "stock1": 2,
+     "allg1": false
+    },
+    {
+     "key": [
+      1059,
+      1059
+     ],
+     "cs": [
+      0,
+      1
+     ],
+     "D": 3,
+     "kdef": 1,
+     "live": true,
+     "min_top_cell": 1,
+     "ncells": 2,
+     "stock1": 2,
+     "allg1": false
+    },
+    {
+     "key": [
+      1059,
+      1067
+     ],
+     "cs": [
+      0,
+      1
+     ],
+     "D": 3,
+     "kdef": 1,
+     "live": true,
+     "min_top_cell": 1,
+     "ncells": 2,
+     "stock1": 3,
+     "allg1": false
+    },
+    {
+     "key": [
+      1067,
+      1067
+     ],
+     "cs": [
+      0,
+      1
+     ],
+     "D": 3,
+     "kdef": 1,
+     "live": true,
+     "min_top_cell": 1,
+     "ncells": 5,
+     "stock1": 3,
+     "allg1": false
+    },
+    {
+     "key": [
+      1063,
+      1075
+     ],
+     "cs": [
+      1,
+      0
+     ],
+     "D": 3,
+     "kdef": 1,
+     "live": false,
+     "min_top_cell": null,
+     "ncells": 0,
+     "stock1": 2,
+     "allg1": false
+    },
+    {
+     "key": [
+      1077,
+      1079
+     ],
+     "cs": [
+      1,
+      1
+     ],
+     "D": 2,
+     "kdef": 2,
+     "live": false,
+     "min_top_cell": null,
+     "ncells": 0,
+     "stock1": 2,
+     "allg1": false
+    },
+    {
+     "key": [
+      1059,
+      1073
+     ],
+     "cs": [
+      1,
+      1
+     ],
+     "D": 2,
+     "kdef": 2,
+     "live": false,
+     "min_top_cell": null,
+     "ncells": 0,
+     "stock1": 2,
+     "allg1": false
+    },
+    {
+     "key": [
+      1061,
+      1071
+     ],
+     "cs": [
+      1,
+      1
+     ],
+     "D": 2,
+     "kdef": 2,
+     "live": false,
+     "min_top_cell": null,
+     "ncells": 0,
+     "stock1": 2,
+     "allg1": false
+    },
+    {
+     "key": [
+      1065,
+      1067
+     ],
+     "cs": [
+      1,
+      1
+     ],
+     "D": 2,
+     "kdef": 2,
+     "live": false,
+     "min_top_cell": null,
+     "ncells": 0,
+     "stock1": 2,
+     "allg1": false
+    },
+    {
+     "key": [
+      1063,
+      1063
+     ],
+     "cs": [
+      1,
+      0
+     ],
+     "D": 3,
+     "kdef": 1,
+     "live": false,
+     "min_top_cell": null,
+     "ncells": 0,
+     "stock1": 2,
+     "allg1": false
+    },
+    {
+     "key": [
+      1065,
+      1079
+     ],
+     "cs": [
+      1,
+      1
+     ],
+     "D": 2,
+     "kdef": 2,
+     "live": false,
+     "min_top_cell": null,
+     "ncells": 0,
+     "stock1": 2,
+     "allg1": false
+    },
+    {
+     "key": [
+      1071,
+      1073
+     ],
+     "cs": [
+      1,
+      1
+     ],
+     "D": 2,
+     "kdef": 2,
+     "live": false,
+     "min_top_cell": null,
+     "ncells": 0,
+     "stock1": 2,
+     "allg1": false
+    },
+    {
+     "key": [
+      1075,
+      1075
+     ],
+     "cs": [
+      0,
+      0
+     ],
+     "D": 3,
+     "kdef": 1,
+     "live": false,
+     "min_top_cell": null,
+     "ncells": 0,
+     "stock1": 2,
+     "allg1": false
+    },
+    {
+     "key": [
+      1059,
+      1075
+     ],
+     "cs": [
+      0,
+      0
+     ],
+     "D": 3,
+     "kdef": 1,
+     "live": false,
+     "min_top_cell": null,
+     "ncells": 0,
+     "stock1": 2,
+     "allg1": false
+    },
+    {
+     "key": [
+      1067,
+      1077
+     ],
+     "cs": [
+      0,
+      1
+     ],
+     "D": 2,
+     "kdef": 2,
+     "live": false,
+     "min_top_cell": null,
+     "ncells": 0,
+     "stock1": 2,
+     "allg1": false
+    },
+    {
+     "key": [
+      1059,
+      1061
+     ],
+     "cs": [
+      0,
+      1
+     ],
+     "D": 2,
+     "kdef": 2,
+     "live": false,
+     "min_top_cell": null,
+     "ncells": 0,
+     "stock1": 2,
+     "allg1": false
+    },
+    {
+     "key": [
+      1061,
+      1067
+     ],
+     "cs": [
+      0,
+      1
+     ],
+     "D": 2,
+     "kdef": 2,
+     "live": false,
+     "min_top_cell": null,
+     "ncells": 0,
+     "stock1": 2,
+     "allg1": false
+    }
+   ]
+  },
+  {
+   "tag": "W3G2P5",
+   "m": 3,
+   "kind": "Zp",
+   "p": 5,
+   "d0": 2,
+   "reads": [
+    [
+     2,
+     1,
+     2
+    ],
+    [
+     2,
+     1,
+     1
+    ],
+    [
+     2,
+     1,
+     1
+    ],
+    [
+     2,
+     1,
+     1
+    ]
+   ],
+   "inv": {
+    "u0": 14,
+    "prin": [
+     0,
+     0,
+     1
+    ],
+    "has_prin": true,
+    "psi0_nz": [
+     1,
+     1
+    ],
+    "ndcells": 2
+   },
+   "rows": [
+    {
+     "key": [
+      455,
+      459
+     ],
+     "cs": [
+      1,
+      1
+     ],
+     "D": 3,
+     "kdef": 1,
+     "live": true,
+     "min_top_cell": 1,
+     "ncells": 1,
+     "stock1": 2,
+     "allg1": false
+    },
+    {
+     "key": [
+      459,
+      459
+     ],
+     "cs": [
+      1,
+      1
+     ],
+     "D": 3,
+     "kdef": 1,
+     "live": true,
+     "min_top_cell": 1,
+     "ncells": 5,
+     "stock1": 3,
+     "allg1": false
+    },
+    {
+     "key": [
+      451,
+      451
+     ],
+     "cs": [
+      0,
+      1
+     ],
+     "D": 3,
+     "kdef": 1,
+     "live": true,
+     "min_top_cell": 1,
+     "ncells": 2,
+     "stock1": 3,
+     "allg1": false
+    },
+    {
+     "key": [
+      451,
+      459
+     ],
+     "cs": [
+      0,
+      1
+     ],
+     "D": 3,
+     "kdef": 1,
+     "live": true,
+     "min_top_cell": 1,
+     "ncells": 2,
+     "stock1": 3,
+     "allg1": false
+    },
+    {
+     "key": [
+      455,
+      455
+     ],
+     "cs": [
+      1,
+      0
+     ],
+     "D": 3,
+     "kdef": 1,
+     "live": false,
+     "min_top_cell": null,
+     "ncells": 0,
+     "stock1": 2,
+     "allg1": false
+    },
+    {
+     "key": [
+      449,
+      459
+     ],
+     "cs": [
+      1,
+      1
+     ],
+     "D": 2,
+     "kdef": 2,
+     "live": false,
+     "min_top_cell": null,
+     "ncells": 0,
+     "stock1": 2,
+     "allg1": false
+    },
+    {
+     "key": [
+      463,
+      463
+     ],
+     "cs": [
+      0,
+      0
+     ],
+     "D": 3,
+     "kdef": 1,
+     "live": false,
+     "min_top_cell": null,
+     "ncells": 0,
+     "stock1": 2,
+     "allg1": false
+    },
+    {
+     "key": [
+      451,
+      463
+     ],
+     "cs": [
+      0,
+      0
+     ],
+     "D": 3,
+     "kdef": 1,
+     "live": false,
+     "min_top_cell": null,
+     "ncells": 0,
+     "stock1": 2,
+     "allg1": false
+    },
+    {
+     "key": [
+      455,
+      463
+     ],
+     "cs": [
+      0,
+      0
+     ],
+     "D": 3,
+     "kdef": 1,
+     "live": false,
+     "min_top_cell": null,
+     "ncells": 0,
+     "stock1": 2,
+     "allg1": false
+    },
+    {
+     "key": [
+      459,
+      463
+     ],
+     "cs": [
+      0,
+      0
+     ],
+     "D": 3,
+     "kdef": 1,
+     "live": false,
+     "min_top_cell": null,
+     "ncells": 0,
+     "stock1": 2,
+     "allg1": false
+    },
+    {
+     "key": [
+      451,
+      457
+     ],
+     "cs": [
+      0,
+      1
+     ],
+     "D": 2,
+     "kdef": 2,
+     "live": false,
+     "min_top_cell": null,
+     "ncells": 0,
+     "stock1": 2,
+     "allg1": false
+    },
+    {
+     "key": [
+      457,
+      459
+     ],
+     "cs": [
+      0,
+      1
+     ],
+     "D": 2,
+     "kdef": 2,
+     "live": false,
+     "min_top_cell": null,
+     "ncells": 0,
+     "stock1": 2,
+     "allg1": false
+    },
+    {
+     "key": [
+      451,
+      455
+     ],
+     "cs": [
+      0,
+      0
+     ],
+     "D": 3,
+     "kdef": 1,
+     "live": false,
+     "min_top_cell": null,
+     "ncells": 0,
+     "stock1": 2,
+     "allg1": false
+    },
+    {
+     "key": [
+      449,
+      451
+     ],
+     "cs": [
+      0,
+      1
+     ],
+     "D": 2,
+     "kdef": 2,
+     "live": false,
+     "min_top_cell": null,
+     "ncells": 0,
+     "stock1": 2,
+     "allg1": false
+    }
+   ]
+  },
+  {
+   "tag": "W3DEEPF",
+   "m": 3,
+   "kind": "Fpt",
+   "p": 2,
+   "d0": 1,
+   "reads": [
+    [
+     3,
+     2,
+     1
+    ],
+    [
+     2,
+     1,
+     1
+    ],
+    [
+     2,
+     1,
+     1
+    ],
+    [
+     2,
+     1,
+     1
+    ]
+   ],
+   "inv": {
+    "u0": 12,
+    "prin": [
+     2,
+     0,
+     1
+    ],
+    "has_prin": true,
+    "psi0_nz": [
+     1
+    ],
+    "ndcells": 1
+   },
+   "rows": [
+    {
+     "key": [
+      663,
+      663
+     ],
+     "cs": [
+      2,
+      1
+     ],
+     "D": 3,
+     "kdef": 1,
+     "live": true,
+     "min_top_cell": 1,
+     "ncells": 1,
+     "stock1": 2,
+     "allg1": true
+    },
+    {
+     "key": [
+      663,
+      667
+     ],
+     "cs": [
+      2,
+      1
+     ],
+     "D": 3,
+     "kdef": 1,
+     "live": true,
+     "min_top_cell": 1,
+     "ncells": 3,
+     "stock1": 3,
+     "allg1": true
+    },
+    {
+     "key": [
+      657,
+      667
+     ],
+     "cs": [
+      2,
+      2
+     ],
+     "D": 2,
+     "kdef": 2,
+     "live": true,
+     "min_top_cell": 2,
+     "ncells": 1,
+     "stock1": 2,
+     "allg1": true
+    },
+    {
+     "key": [
+      667,
+      667
+     ],
+     "cs": [
+      2,
+      2
+     ],
+     "D": 3,
+     "kdef": 1,
+     "live": true,
+     "min_top_cell": 1,
+     "ncells": 6,
+     "stock1": 3,
+     "allg1": true
+    },
+    {
+     "key": [
+      651,
+      655
+     ],
+     "cs": [
+      1,
+      1
+     ],
+     "D": 3,
+     "kdef": 1,
+     "live": true,
+     "min_top_cell": 1,
+     "ncells": 1,
+     "stock1": 2,
+     "allg1": true
+    },
+    {
+     "key": [
+      655,
+      667
+     ],
+     "cs": [
+      1,
+      1
+     ],
+     "D": 3,
+     "kdef": 1,
+     "live": true,
+     "min_top_cell": 1,
+     "ncells": 1,
+     "stock1": 2,
+     "allg1": true
+    },
+    {
+     "key": [
+      659,
+      671
+     ],
+     "cs": [
+      1,
+      1
+     ],
+     "D": 3,
+     "kdef": 1,
+     "live": true,
+     "min_top_cell": 1,
+     "ncells": 1,
+     "stock1": 2,
+     "allg1": true
+    },
+    {
+     "key": [
+      651,
+      659
+     ],
+     "cs": [
+      1,
+      1
+     ],
+     "D": 3,
+     "kdef": 1,
+     "live": true,
+     "min_top_cell": 1,
+     "ncells": 2,
+     "stock1": 3,
+     "allg1": true
+    },
+    {
+     "key": [
+      659,
+      663
+     ],
+     "cs": [
+      1,
+      1
+     ],
+     "D": 3,
+     "kdef": 1,
+     "live": true,
+     "min_top_cell": 1,
+     "ncells": 1,
+     "stock1": 2,
+     "allg1": true
+    },
+    {
+     "key": [
+      659,
+      667
+     ],
+     "cs": [
+      1,
+      1
+     ],
+     "D": 3,
+     "kdef": 1,
+     "live": true,
+     "min_top_cell": 1,
+     "ncells": 3,
+     "stock1": 3,
+     "allg1": true
+    },
+    {
+     "key": [
+      651,
+      671
+     ],
+     "cs": [
+      1,
+      1
+     ],
+     "D": 3,
+     "kdef": 1,
+     "live": true,
+     "min_top_cell": 1,
+     "ncells": 1,
+     "stock1": 2,
+     "allg1": true
+    },
+    {
+     "key": [
+      667,
+      671
+     ],
+     "cs": [
+      1,
+      1
+     ],
+     "D": 3,
+     "kdef": 1,
+     "live": true,
+     "min_top_cell": 1,
+     "ncells": 1,
+     "stock1": 3,
+     "allg1": true
+    },
+    {
+     "key": [
+      651,
+      651
+     ],
+     "cs": [
+      1,
+      1
+     ],
+     "D": 3,
+     "kdef": 1,
+     "live": true,
+     "min_top_cell": 1,
+     "ncells": 3,
+     "stock1": 3,
+     "allg1": true
+    },
+    {
+     "key": [
+      651,
+      663
+     ],
+     "cs": [
+      1,
+      1
+     ],
+     "D": 3,
+     "kdef": 1,
+     "live": true,
+     "min_top_cell": 1,
+     "ncells": 1,
+     "stock1": 3,
+     "allg1": true
+    },
+    {
+     "key": [
+      651,
+      667
+     ],
+     "cs": [
+      1,
+      1
+     ],
+     "D": 3,
+     "kdef": 1,
+     "live": true,
+     "min_top_cell": 1,
+     "ncells": 3,
+     "stock1": 3,
+     "allg1": true
+    },
+    {
+     "key": [
+      659,
+      659
+     ],
+     "cs": [
+      0,
+      1
+     ],
+     "D": 3,
+     "kdef": 1,
+     "live": true,
+     "min_top_cell": 1,
+     "ncells": 1,
+     "stock1": 3,
+     "allg1": true
+    },
+    {
+     "key": [
+      653,
+      667
+     ],
+     "cs": [
+      2,
+      1
+     ],
+     "D": 2,
+     "kdef": 2,
+     "live": false,
+     "min_top_cell": null,
+     "ncells": 0,
+     "stock1": 2,
+     "allg1": true
+    },
+    {
+     "key": [
+      657,
+      663
+     ],
+     "cs": [
+      2,
+      1
+     ],
+     "D": 2,
+     "kdef": 2,
+     "live": false,
+     "min_top_cell": null,
+     "ncells": 0,
+     "stock1": 2,
+     "allg1": true
+    },
+    {
+     "key": [
+      655,
+      671
+     ],
+     "cs": [
+      1,
+      0
+     ],
+     "D": 3,
+     "kdef": 1,
+     "live": false,
+     "min_top_cell": null,
+     "ncells": 0,
+     "stock1": 2,
+     "allg1": true
+    },
+    {
+     "key": [
+      655,
+      663
+     ],
+     "cs": [
+      1,
+      0
+     ],
+     "D": 3,
+     "kdef": 1,
+     "live": false,
+     "min_top_cell": null,
+     "ncells": 0,
+     "stock1": 2,
+     "allg1": true
+    },
+    {
+     "key": [
+      649,
+      651
+     ],
+     "cs": [
+      1,
+      1
+     ],
+     "D": 2,
+     "kdef": 2,
+     "live": false,
+     "min_top_cell": null,
+     "ncells": 0,
+     "stock1": 2,
+     "allg1": true
+    },
+    {
+     "key": [
+      649,
+      667
+     ],
+     "cs": [
+      1,
+      1
+     ],
+     "D": 2,
+     "kdef": 2,
+     "live": false,
+     "min_top_cell": null,
+     "ncells": 0,
+     "stock1": 2,
+     "allg1": true
+    },
+    {
+     "key": [
+      659,
+      665
+     ],
+     "cs": [
+      1,
+      1
+     ],
+     "D": 2,
+     "kdef": 2,
+     "live": false,
+     "min_top_cell": null,
+     "ncells": 0,
+     "stock1": 2,
+     "allg1": true
+    },
+    {
+     "key": [
+      657,
+      659
+     ],
+     "cs": [
+      1,
+      1
+     ],
+     "D": 2,
+     "kdef": 2,
+     "live": false,
+     "min_top_cell": null,
+     "ncells": 0,
+     "stock1": 2,
+     "allg1": true
+    },
+    {
+     "key": [
+      661,
+      667
+     ],
+     "cs": [
+      1,
+      1
+     ],
+     "D": 2,
+     "kdef": 2,
+     "live": false,
+     "min_top_cell": null,
+     "ncells": 0,
+     "stock1": 2,
+     "allg1": true
+    },
+    {
+     "key": [
+      671,
+      671
+     ],
+     "cs": [
+      1,
+      0
+     ],
+     "D": 3,
+     "kdef": 1,
+     "live": false,
+     "min_top_cell": null,
+     "ncells": 0,
+     "stock1": 2,
+     "allg1": true
+    },
+    {
+     "key": [
+      663,
+      671
+     ],
+     "cs": [
+      1,
+      0
+     ],
+     "D": 3,
+     "kdef": 1,
+     "live": false,
+     "min_top_cell": null,
+     "ncells": 0,
+     "stock1": 2,
+     "allg1": true
+    },
+    {
+     "key": [
+      657,
+      671
+     ],
+     "cs": [
+      1,
+      1
+     ],
+     "D": 2,
+     "kdef": 2,
+     "live": false,
+     "min_top_cell": null,
+     "ncells": 0,
+     "stock1": 2,
+     "allg1": true
+    },
+    {
+     "key": [
+      651,
+      665
+     ],
+     "cs": [
+      1,
+      1
+     ],
+     "D": 2,
+     "kdef": 2,
+     "live": false,
+     "min_top_cell": null,
+     "ncells": 0,
+     "stock1": 2,
+     "allg1": true
+    },
+    {
+     "key": [
+      663,
+      665
+     ],
+     "cs": [
+      1,
+      1
+     ],
+     "D": 2,
+     "kdef": 2,
+     "live": false,
+     "min_top_cell": null,
+     "ncells": 0,
+     "stock1": 2,
+     "allg1": true
+    },
+    {
+     "key": [
+      665,
+      667
+     ],
+     "cs": [
+      1,
+      1
+     ],
+     "D": 2,
+     "kdef": 2,
+     "live": false,
+     "min_top_cell": null,
+     "ncells": 0,
+     "stock1": 2,
+     "allg1": true
+    },
+    {
+     "key": [
+      651,
+      653
+     ],
+     "cs": [
+      1,
+      1
+     ],
+     "D": 2,
+     "kdef": 2,
+     "live": false,
+     "min_top_cell": null,
+     "ncells": 0,
+     "stock1": 2,
+     "allg1": true
+    },
+    {
+     "key": [
+      651,
+      657
+     ],
+     "cs": [
+      1,
+      1
+     ],
+     "D": 2,
+     "kdef": 2,
+     "live": false,
+     "min_top_cell": null,
+     "ncells": 0,
+     "stock1": 2,
+     "allg1": true
+    },
+    {
+     "key": [
+      655,
+      655
+     ],
+     "cs": [
+      0,
+      0
+     ],
+     "D": 3,
+     "kdef": 1,
+     "live": false,
+     "min_top_cell": null,
+     "ncells": 0,
+     "stock1": 2,
+     "allg1": true
+    },
+    {
+     "key": [
+      655,
+      659
+     ],
+     "cs": [
+      0,
+      0
+     ],
+     "D": 3,
+     "kdef": 1,
+     "live": false,
+     "min_top_cell": null,
+     "ncells": 0,
+     "stock1": 2,
+     "allg1": true
+    },
+    {
+     "key": [
+      649,
+      659
+     ],
+     "cs": [
+      0,
+      1
+     ],
+     "D": 2,
+     "kdef": 2,
+     "live": false,
+     "min_top_cell": null,
+     "ncells": 0,
+     "stock1": 2,
+     "allg1": true
+    }
+   ]
+  },
+  {
+   "tag": "W4NEST",
+   "m": 4,
+   "kind": "Zp",
+   "p": 3,
+   "d0": 1,
+   "reads": [
+    [
+     2,
+     1,
+     1
+    ],
+    [
+     2,
+     1,
+     1
+    ],
+    [
+     2,
+     3,
+     1
+    ],
+    [
+     2,
+     1,
+     1
+    ],
+    [
+     2,
+     1,
+     1
+    ]
+   ],
+   "inv": {
+    "u0": 17,
+    "prin": [
+     1,
+     0,
+     0,
+     1
+    ],
+    "has_prin": true,
+    "psi0_nz": [
+     1
+    ],
+    "ndcells": 1
+   },
+   "rows": [
+    {
+     "key": [
+      1123,
+      1135
+     ],
+     "cs": [
+      1,
+      1,
+      1
+     ],
+     "D": 3,
+     "kdef": 1,
+     "live": true,
+     "min_top_cell": 1,
+     "ncells": 1,
+     "stock1": 2,
+     "allg1": true
+    },
+    {
+     "key": [
+      1131,
+      1147
+     ],
+     "cs": [
+      1,
+      0,
+      1
+     ],
+     "D": 3,
+     "kdef": 1,
+     "live": true,
+     "min_top_cell": 1,
+     "ncells": 2,
+     "stock1": 3,
+     "allg1": true
+    },
+    {
+     "key": [
+      1127,
+      1131
+     ],
+     "cs": [
+      1,
+      1,
+      1
+     ],
+     "D": 3,
+     "kdef": 1,
+     "live": true,
+     "min_top_cell": 1,
+     "ncells": 1,
+     "stock1": 2,
+     "allg1": true
+    },
+    {
+     "key": [
+      1123,
+      1131
+     ],
+     "cs": [
+      1,
+      1,
+      1
+     ],
+     "D": 3,
+     "kdef": 1,
+     "live": true,
+     "min_top_cell": 1,
+     "ncells": 3,
+     "stock1": 3,
+     "allg1": true
+    },
+    {
+     "key": [
+      1143,
+      1147
+     ],
+     "cs": [
+      1,
+      1,
+      1
+     ],
+     "D": 3,
+     "kdef": 1,
+     "live": true,
+     "min_top_cell": 1,
+     "ncells": 1,
+     "stock1": 2,
+     "allg1": true
+    },
+    {
+     "key": [
+      1123,
+      1143
+     ],
+     "cs": [
+      1,
+      1,
+      1
+     ],
+     "D": 3,
+     "kdef": 1,
+     "live": true,
+     "min_top_cell": 1,
+     "ncells": 2,
+     "stock1": 3,
+     "allg1": true
+    },
+    {
+     "key": [
+      1139,
+      1151
+     ],
+     "cs": [
+      1,
+      1,
+      1
+     ],
+     "D": 3,
+     "kdef": 1,
+     "live": true,
+     "min_top_cell": 1,
+     "ncells": 1,
+     "stock1": 2,
+     "allg1": true
+    },
+    {
+     "key": [
+      1139,
+      1147
+     ],
+     "cs": [
+      1,
+      1,
+      1
+     ],
+     "D": 3,
+     "kdef": 1,
+     "live": true,
+     "min_top_cell": 1,
+     "ncells": 3,
+     "stock1": 3,
+     "allg1": true
+    },
+    {
+     "key": [
+      1127,
+      1139
+     ],
+     "cs": [
+      1,
+      1,
+      1
+     ],
+     "D": 3,
+     "kdef": 1,
+     "live": true,
+     "min_top_cell": 1,
+     "ncells": 2,
+     "stock1": 3,
+     "allg1": true
+    },
+    {
+     "key": [
+      1123,
+      1139
+     ],
+     "cs": [
+      1,
+      1,
+      1
+     ],
+     "D": 3,
+     "kdef": 1,
+     "live": true,
+     "min_top_cell": 1,
+     "ncells": 5,
+     "stock1": 3,
+     "allg1": true
+    },
+    {
+     "key": [
+      1123,
+      1151
+     ],
+     "cs": [
+      1,
+      1,
+      1
+     ],
+     "D": 3,
+     "kdef": 1,
+     "live": true,
+     "min_top_cell": 1,
+     "ncells": 1,
+     "stock1": 3,
+     "allg1": true
+    },
+    {
+     "key": [
+      1147,
+      1147
+     ],
+     "cs": [
+      1,
+      0,
+      1
+     ],
+     "D": 3,
+     "kdef": 1,
+     "live": true,
+     "min_top_cell": 1,
+     "ncells": 2,
+     "stock1": 3,
+     "allg1": true
+    },
+    {
+     "key": [
+      1127,
+      1147
+     ],
+     "cs": [
+      1,
+      1,
+      1
+     ],
+     "D": 3,
+     "kdef": 1,
+     "live": true,
+     "min_top_cell": 1,
+     "ncells": 1,
+     "stock1": 3,
+     "allg1": true
+    },
+    {
+     "key": [
+      1123,
+      1147
+     ],
+     "cs": [
+      1,
+      1,
+      1
+     ],
+     "D": 3,
+     "kdef": 1,
+     "live": true,
+     "min_top_cell": 1,
+     "ncells": 5,
+     "stock1": 3,
+     "allg1": true
+    }
+   ]
+  },
+  {
+   "tag": "W4DEEP",
+   "m": 4,
+   "kind": "Zp",
+   "p": 3,
+   "d0": 1,
+   "reads": [
+    [
+     3,
+     1,
+     1
+    ],
+    [
+     2,
+     1,
+     1
+    ],
+    [
+     2,
+     1,
+     1
+    ],
+    [
+     2,
+     1,
+     1
+    ],
+    [
+     2,
+     1,
+     1
+    ]
+   ],
+   "inv": {
+    "u0": 14,
+    "prin": [
+     2,
+     0,
+     0,
+     1
+    ],
+    "has_prin": true,
+    "psi0_nz": [
+     1
+    ],
+    "ndcells": 1
+   },
+   "rows": [
+    {
+     "key": [
+      1455,
+      1475
+     ],
+     "cs": [
+      2,
+      1,
+      1
+     ],
+     "D": 3,
+     "kdef": 1,
+     "live": true,
+     "min_top_cell": 1,
+     "ncells": 1,
+     "stock1": 2,
+     "allg1": true
+    },
+    {
+     "key": [
+      1455,
+      1483
+     ],
+     "cs": [
+      2,
+      1,
+      1
+     ],
+     "D": 3,
+     "kdef": 1,
+     "live": true,
+     "min_top_cell": 1,
+     "ncells": 3,
+     "stock1": 3,
+     "allg1": true
+    },
+    {
+     "key": [
+      1475,
+      1475
+     ],
+     "cs": [
+      2,
+      1,
+      1
+     ],
+     "D": 3,
+     "kdef": 1,
+     "live": true,
+     "min_top_cell": 1,
+     "ncells": 5,
+     "stock1": 3,
+     "allg1": true
+    },
+    {
+     "key": [
+      1463,
+      1475
+     ],
+     "cs": [
+      2,
+      1,
+      1
+     ],
+     "D": 3,
+     "kdef": 1,
+     "live": true,
+     "min_top_cell": 1,
+     "ncells": 3,
+     "stock1": 3,
+     "allg1": true
+    },
+    {
+     "key": [
+      1475,
+      1483
+     ],
+     "cs": [
+      2,
+      1,
+      1
+     ],
+     "D": 3,
+     "kdef": 1,
+     "live": true,
+     "min_top_cell": 1,
+     "ncells": 8,
+     "stock1": 3,
+     "allg1": true
+    },
+    {
+     "key": [
+      1463,
+      1463
+     ],
+     "cs": [
+      2,
+      2,
+      1
+     ],
+     "D": 3,
+     "kdef": 1,
+     "live": true,
+     "min_top_cell": 1,
+     "ncells": 1,
+     "stock1": 2,
+     "allg1": true
+    },
+    {
+     "key": [
+      1463,
+      1483
+     ],
+     "cs": [
+      2,
+      2,
+      1
+     ],
+     "D": 3,
+     "kdef": 1,
+     "live": true,
+     "min_top_cell": 1,
+     "ncells": 6,
+     "stock1": 3,
+     "allg1": true
+    },
+    {
+     "key": [
+      1441,
+      1483
+     ],
+     "cs": [
+      2,
+      2,
+      2
+     ],
+     "D": 2,
+     "kdef": 2,
+     "live": true,
+     "min_top_cell": 2,
+     "ncells": 1,
+     "stock1": 2,
+     "allg1": true
+    },
+    {
+     "key": [
+      1483,
+      1483
+     ],
+     "cs": [
+      2,
+      2,
+      2
+     ],
+     "D": 3,
+     "kdef": 1,
+     "live": true,
+     "min_top_cell": 1,
+     "ncells": 16,
+     "stock1": 3,
+     "allg1": true
+    },
+    {
+     "key": [
+      1467,
+      1471
+     ],
+     "cs": [
+      1,
+      1,
+      1
+     ],
+     "D": 3,
+     "kdef": 1,
+     "live": true,
+     "min_top_cell": 1,
+     "ncells": 1,
+     "stock1": 2,
+     "allg1": true
+    },
+    {
+     "key": [
+      1471,
+      1483
+     ],
+     "cs": [
+      1,
+      1,
+      1
+     ],
+     "D": 3,
+     "kdef": 1,
+     "live": true,
+     "min_top_cell": 1,
+     "ncells": 1,
+     "stock1": 2,
+     "allg1": true
+    },
+    {
+     "key": [
+      1443,
+      1459
+     ],
+     "cs": [
+      1,
+      0,
+      1
+     ],
+     "D": 3,
+     "kdef": 1,
+     "live": true,
+     "min_top_cell": 1,
+     "ncells": 2,
+     "stock1": 3,
+     "allg1": true
+    },
+    {
+     "key": [
+      1443,
+      1447
+     ],
+     "cs": [
+      1,
+      1,
+      1
+     ],
+     "D": 3,
+     "kdef": 1,
+     "live": true,
+     "min_top_cell": 1,
+     "ncells": 1,
+     "stock1": 2,
+     "allg1": true
+    },
+    {
+     "key": [
+      1443,
+      1467
+     ],
+     "cs": [
+      1,
+      1,
+      1
+     ],
+     "D": 3,
+     "kdef": 1,
+     "live": true,
+     "min_top_cell": 1,
+     "ncells": 3,
+     "stock1": 3,
+     "allg1": true
+    }
+   ]
+  },
+  {
+   "tag": "W4FLAT",
+   "m": 4,
+   "kind": "Zp",
+   "p": 3,
+   "d0": 1,
+   "reads": [
+    [
+     2,
+     1,
+     1
+    ],
+    [
+     2,
+     3,
+     1
+    ],
+    [
+     1,
+     1,
+     1
+    ],
+    [
+     2,
+     1,
+     1
+    ],
+    [
+     2,
+     1,
+     1
+    ]
+   ],
+   "inv": {
+    "u0": 10,
+    "prin": [
+     0,
+     1,
+     0,
+     1
+    ],
+    "has_prin": true,
+    "psi0_nz": [
+     1
+    ],
+    "ndcells": 1
+   },
+   "rows": [
+    {
+     "key": [
+      387,
+      387
+     ],
+     "cs": [
+      1,
+      1,
+      1
+     ],
+     "D": 3,
+     "kdef": 1,
+     "live": true,
+     "min_top_cell": 1,
+     "ncells": 1,
+     "stock1": 2,
+     "allg1": true
+    },
+    {
+     "key": [
+      387,
+      399
+     ],
+     "cs": [
+      1,
+      1,
+      1
+     ],
+     "D": 3,
+     "kdef": 1,
+     "live": true,
+     "min_top_cell": 1,
+     "ncells": 3,
+     "stock1": 3,
+     "allg1": true
+    },
+    {
+     "key": [
+      385,
+      399
+     ],
+     "cs": [
+      1,
+      2,
+      2
+     ],
+     "D": 2,
+     "kdef": 2,
+     "live": true,
+     "min_top_cell": 2,
+     "ncells": 1,
+     "stock1": 2,
+     "allg1": true
+    },
+    {
+     "key": [
+      399,
+      399
+     ],
+     "cs": [
+      1,
+      2,
+      2
+     ],
+     "D": 3,
+     "kdef": 1,
+     "live": true,
+     "min_top_cell": 1,
+     "ncells": 8,
+     "stock1": 3,
+     "allg1": true
+    },
+    {
+     "key": [
+      391,
+      395
+     ],
+     "cs": [
+      0,
+      1,
+      1
+     ],
+     "D": 3,
+     "kdef": 1,
+     "live": true,
+     "min_top_cell": 1,
+     "ncells": 1,
+     "stock1": 2,
+     "allg1": true
+    },
+    {
+     "key": [
+      395,
+      399
+     ],
+     "cs": [
+      0,
+      1,
+      1
+     ],
+     "D": 3,
+     "kdef": 1,
+     "live": true,
+     "min_top_cell": 1,
+     "ncells": 1,
+     "stock1": 2,
+     "allg1": true
+    },
+    {
+     "key": [
+      391,
+      391
+     ],
+     "cs": [
+      0,
+      1,
+      1
+     ],
+     "D": 3,
+     "kdef": 1,
+     "live": true,
+     "min_top_cell": 1,
+     "ncells": 2,
+     "stock1": 3,
+     "allg1": true
+    },
+    {
+     "key": [
+      387,
+      391
+     ],
+     "cs": [
+      0,
+      1,
+      1
+     ],
+     "D": 3,
+     "kdef": 1,
+     "live": true,
+     "min_top_cell": 1,
+     "ncells": 1,
+     "stock1": 2,
+     "allg1": true
+    },
+    {
+     "key": [
+      391,
+      399
+     ],
+     "cs": [
+      0,
+      1,
+      1
+     ],
+     "D": 3,
+     "kdef": 1,
+     "live": true,
+     "min_top_cell": 1,
+     "ncells": 3,
+     "stock1": 3,
+     "allg1": true
+    },
+    {
+     "key": [
+      389,
+      399
+     ],
+     "cs": [
+      1,
+      1,
+      1
+     ],
+     "D": 2,
+     "kdef": 2,
+     "live": false,
+     "min_top_cell": null,
+     "ncells": 0,
+     "stock1": 2,
+     "allg1": true
+    },
+    {
+     "key": [
+      385,
+      387
+     ],
+     "cs": [
+      1,
+      1,
+      1
+     ],
+     "D": 2,
+     "kdef": 2,
+     "live": false,
+     "min_top_cell": null,
+     "ncells": 0,
+     "stock1": 2,
+     "allg1": true
+    },
+    {
+     "key": [
+      395,
+      395
+     ],
+     "cs": [
+      0,
+      0,
+      0
+     ],
+     "D": 3,
+     "kdef": 1,
+     "live": false,
+     "min_top_cell": null,
+     "ncells": 0,
+     "stock1": 2,
+     "allg1": true
+    },
+    {
+     "key": [
+      387,
+      395
+     ],
+     "cs": [
+      0,
+      0,
+      0
+     ],
+     "D": 3,
+     "kdef": 1,
+     "live": false,
+     "min_top_cell": null,
+     "ncells": 0,
+     "stock1": 2,
+     "allg1": true
+    },
+    {
+     "key": [
+      391,
+      393
+     ],
+     "cs": [
+      0,
+      1,
+      1
+     ],
+     "D": 2,
+     "kdef": 2,
+     "live": false,
+     "min_top_cell": null,
+     "ncells": 0,
+     "stock1": 2,
+     "allg1": true
+    }
+   ]
+  },
+  {
+   "tag": "W4NESTF",
+   "m": 4,
+   "kind": "Fpt",
+   "p": 2,
+   "d0": 1,
+   "reads": [
+    [
+     2,
+     1,
+     1
+    ],
+    [
+     2,
+     1,
+     1
+    ],
+    [
+     2,
+     3,
+     1
+    ],
+    [
+     2,
+     1,
+     1
+    ],
+    [
+     2,
+     1,
+     1
+    ]
+   ],
+   "inv": {
+    "u0": 17,
+    "prin": [
+     1,
+     0,
+     0,
+     1
+    ],
+    "has_prin": true,
+    "psi0_nz": [
+     1
+    ],
+    "ndcells": 1
+   },
+   "rows": [
+    {
+     "key": [
+      1123,
+      1135
+     ],
+     "cs": [
+      1,
+      1,
+      1
+     ],
+     "D": 3,
+     "kdef": 1,
+     "live": true,
+     "min_top_cell": 1,
+     "ncells": 1,
+     "stock1": 2,
+     "allg1": true
+    },
+    {
+     "key": [
+      1131,
+      1147
+     ],
+     "cs": [
+      1,
+      0,
+      1
+     ],
+     "D": 3,
+     "kdef": 1,
+     "live": true,
+     "min_top_cell": 1,
+     "ncells": 2,
+     "stock1": 3,
+     "allg1": true
+    },
+    {
+     "key": [
+      1127,
+      1131
+     ],
+     "cs": [
+      1,
+      1,
+      1
+     ],
+     "D": 3,
+     "kdef": 1,
+     "live": true,
+     "min_top_cell": 1,
+     "ncells": 1,
+     "stock1": 2,
+     "allg1": true
+    },
+    {
+     "key": [
+      1123,
+      1131
+     ],
+     "cs": [
+      1,
+      1,
+      1
+     ],
+     "D": 3,
+     "kdef": 1,
+     "live": true,
+     "min_top_cell": 1,
+     "ncells": 3,
+     "stock1": 3,
+     "allg1": true
+    },
+    {
+     "key": [
+      1143,
+      1147
+     ],
+     "cs": [
+      1,
+      1,
+      1
+     ],
+     "D": 3,
+     "kdef": 1,
+     "live": true,
+     "min_top_cell": 1,
+     "ncells": 1,
+     "stock1": 2,
+     "allg1": true
+    },
+    {
+     "key": [
+      1123,
+      1143
+     ],
+     "cs": [
+      1,
+      1,
+      1
+     ],
+     "D": 3,
+     "kdef": 1,
+     "live": true,
+     "min_top_cell": 1,
+     "ncells": 2,
+     "stock1": 3,
+     "allg1": true
+    },
+    {
+     "key": [
+      1139,
+      1151
+     ],
+     "cs": [
+      1,
+      1,
+      1
+     ],
+     "D": 3,
+     "kdef": 1,
+     "live": true,
+     "min_top_cell": 1,
+     "ncells": 1,
+     "stock1": 2,
+     "allg1": true
+    },
+    {
+     "key": [
+      1139,
+      1147
+     ],
+     "cs": [
+      1,
+      1,
+      1
+     ],
+     "D": 3,
+     "kdef": 1,
+     "live": true,
+     "min_top_cell": 1,
+     "ncells": 3,
+     "stock1": 3,
+     "allg1": true
+    },
+    {
+     "key": [
+      1127,
+      1139
+     ],
+     "cs": [
+      1,
+      1,
+      1
+     ],
+     "D": 3,
+     "kdef": 1,
+     "live": true,
+     "min_top_cell": 1,
+     "ncells": 2,
+     "stock1": 3,
+     "allg1": true
+    },
+    {
+     "key": [
+      1123,
+      1139
+     ],
+     "cs": [
+      1,
+      1,
+      1
+     ],
+     "D": 3,
+     "kdef": 1,
+     "live": true,
+     "min_top_cell": 1,
+     "ncells": 5,
+     "stock1": 3,
+     "allg1": true
+    },
+    {
+     "key": [
+      1123,
+      1151
+     ],
+     "cs": [
+      1,
+      1,
+      1
+     ],
+     "D": 3,
+     "kdef": 1,
+     "live": true,
+     "min_top_cell": 1,
+     "ncells": 1,
+     "stock1": 3,
+     "allg1": true
+    },
+    {
+     "key": [
+      1147,
+      1147
+     ],
+     "cs": [
+      1,
+      0,
+      1
+     ],
+     "D": 3,
+     "kdef": 1,
+     "live": true,
+     "min_top_cell": 1,
+     "ncells": 2,
+     "stock1": 3,
+     "allg1": true
+    },
+    {
+     "key": [
+      1127,
+      1147
+     ],
+     "cs": [
+      1,
+      1,
+      1
+     ],
+     "D": 3,
+     "kdef": 1,
+     "live": true,
+     "min_top_cell": 1,
+     "ncells": 1,
+     "stock1": 3,
+     "allg1": true
+    },
+    {
+     "key": [
+      1123,
+      1147
+     ],
+     "cs": [
+      1,
+      1,
+      1
+     ],
+     "D": 3,
+     "kdef": 1,
+     "live": true,
+     "min_top_cell": 1,
+     "ncells": 5,
+     "stock1": 3,
+     "allg1": true
+    }
+   ]
+  },
+  {
+   "tag": "XM3A",
+   "m": 3,
+   "kind": "Zp",
+   "p": 5,
+   "d0": 1,
+   "reads": [
+    [
+     2,
+     1,
+     1
+    ],
+    [
+     2,
+     1,
+     1
+    ],
+    [
+     2,
+     1,
+     1
+    ],
+    [
+     2,
+     1,
+     1
+    ]
+   ],
+   "inv": {
+    "u0": 8,
+    "prin": [
+     0,
+     0,
+     1
+    ],
+    "has_prin": true,
+    "psi0_nz": [
+     1
+    ],
+    "ndcells": 1
+   },
+   "rows": [
+    {
+     "key": [
+      263,
+      267
+     ],
+     "cs": [
+      1,
+      1
+     ],
+     "D": 3,
+     "kdef": 1,
+     "live": true,
+     "min_top_cell": 1,
+     "ncells": 1,
+     "stock1": 3,
+     "allg1": true
+    },
+    {
+     "key": [
+      267,
+      267
+     ],
+     "cs": [
+      1,
+      1
+     ],
+     "D": 3,
+     "kdef": 1,
+     "live": true,
+     "min_top_cell": 1,
+     "ncells": 3,
+     "stock1": 3,
+     "allg1": true
+    },
+    {
+     "key": [
+      259,
+      259
+     ],
+     "cs": [
+      0,
+      1
+     ],
+     "D": 3,
+     "kdef": 1,
+     "live": true,
+     "min_top_cell": 1,
+     "ncells": 1,
+     "stock1": 3,
+     "allg1": true
+    },
+    {
+     "key": [
+      259,
+      267
+     ],
+     "cs": [
+      0,
+      1
+     ],
+     "D": 3,
+     "kdef": 1,
+     "live": true,
+     "min_top_cell": 1,
+     "ncells": 1,
+     "stock1": 3,
+     "allg1": true
+    },
+    {
+     "key": [
+      267,
+      269
+     ],
+     "cs": [
+      1,
+      1
+     ],
+     "D": 2,
+     "kdef": 2,
+     "live": false,
+     "min_top_cell": null,
+     "ncells": 0,
+     "stock1": 2,
+     "allg1": true
+    },
+    {
+     "key": [
+      263,
+      263
+     ],
+     "cs": [
+      1,
+      0
+     ],
+     "D": 3,
+     "kdef": 1,
+     "live": false,
+     "min_top_cell": null,
+     "ncells": 0,
+     "stock1": 2,
+     "allg1": true
+    },
+    {
+     "key": [
+      257,
+      263
+     ],
+     "cs": [
+      1,
+      1
+     ],
+     "D": 2,
+     "kdef": 2,
+     "live": false,
+     "min_top_cell": null,
+     "ncells": 0,
+     "stock1": 2,
+     "allg1": true
+    },
+    {
+     "key": [
+      257,
+      267
+     ],
+     "cs": [
+      1,
+      1
+     ],
+     "D": 2,
+     "kdef": 2,
+     "live": false,
+     "min_top_cell": null,
+     "ncells": 0,
+     "stock1": 2,
+     "allg1": true
+    },
+    {
+     "key": [
+      271,
+      271
+     ],
+     "cs": [
+      0,
+      0
+     ],
+     "D": 3,
+     "kdef": 1,
+     "live": false,
+     "min_top_cell": null,
+     "ncells": 0,
+     "stock1": 2,
+     "allg1": true
+    },
+    {
+     "key": [
+      259,
+      271
+     ],
+     "cs": [
+      0,
+      0
+     ],
+     "D": 3,
+     "kdef": 1,
+     "live": false,
+     "min_top_cell": null,
+     "ncells": 0,
+     "stock1": 2,
+     "allg1": true
+    },
+    {
+     "key": [
+      263,
+      271
+     ],
+     "cs": [
+      0,
+      0
+     ],
+     "D": 3,
+     "kdef": 1,
+     "live": false,
+     "min_top_cell": null,
+     "ncells": 0,
+     "stock1": 2,
+     "allg1": true
+    },
+    {
+     "key": [
+      267,
+      271
+     ],
+     "cs": [
+      0,
+      0
+     ],
+     "D": 3,
+     "kdef": 1,
+     "live": false,
+     "min_top_cell": null,
+     "ncells": 0,
+     "stock1": 2,
+     "allg1": true
+    },
+    {
+     "key": [
+      259,
+      265
+     ],
+     "cs": [
+      0,
+      1
+     ],
+     "D": 2,
+     "kdef": 2,
+     "live": false,
+     "min_top_cell": null,
+     "ncells": 0,
+     "stock1": 2,
+     "allg1": true
+    },
+    {
+     "key": [
+      265,
+      267
+     ],
+     "cs": [
+      0,
+      1
+     ],
+     "D": 2,
+     "kdef": 2,
+     "live": false,
+     "min_top_cell": null,
+     "ncells": 0,
+     "stock1": 2,
+     "allg1": true
+    },
+    {
+     "key": [
+      259,
+      263
+     ],
+     "cs": [
+      0,
+      0
+     ],
+     "D": 3,
+     "kdef": 1,
+     "live": false,
+     "min_top_cell": null,
+     "ncells": 0,
+     "stock1": 2,
+     "allg1": true
+    },
+    {
+     "key": [
+      257,
+      259
+     ],
+     "cs": [
+      0,
+      1
+     ],
+     "D": 2,
+     "kdef": 2,
+     "live": false,
+     "min_top_cell": null,
+     "ncells": 0,
+     "stock1": 2,
+     "allg1": true
+    }
+   ]
+  },
+  {
+   "tag": "XM3B",
+   "m": 3,
+   "kind": "Zp",
+   "p": 3,
+   "d0": 2,
+   "reads": [
+    [
+     2,
+     1,
+     2
+    ],
+    [
+     3,
+     2,
+     1
+    ],
+    [
+     2,
+     1,
+     1
+    ],
+    [
+     2,
+     1,
+     1
+    ]
+   ],
+   "inv": {
+    "u0": 19,
+    "prin": [
+     0,
+     1,
+     1
+    ],
+    "has_prin": true,
+    "psi0_nz": [
+     1,
+     1
+    ],
+    "ndcells": 2
+   },
+   "rows": [
+    {
+     "key": [
+      1035,
+      1051
+     ],
+     "cs": [
+      1,
+      1
+     ],
+     "D": 3,
+     "kdef": 1,
+     "live": true,
+     "min_top_cell": 1,
+     "ncells": 1,
+     "stock1": 2,
+     "allg1": false
+    },
+    {
+     "key": [
+      1043,
+      1051
+     ],
+     "cs": [
+      1,
+      1
+     ],
+     "D": 3,
+     "kdef": 1,
+     "live": true,
+     "min_top_cell": 1,
+     "ncells": 4,
+     "stock1": 2,
+     "allg1": false
+    },
+    {
+     "key": [
+      1035,
+      1035
+     ],
+     "cs": [
+      1,
+      1
+     ],
+     "D": 3,
+     "kdef": 1,
+     "live": true,
+     "min_top_cell": 1,
+     "ncells": 4,
+     "stock1": 2,
+     "allg1": false
+    },
+    {
+     "key": [
+      1035,
+      1043
+     ],
+     "cs": [
+      1,
+      1
+     ],
+     "D": 3,
+     "kdef": 1,
+     "live": true,
+     "min_top_cell": 1,
+     "ncells": 4,
+     "stock1": 3,
+     "allg1": false
+    },
+    {
+     "key": [
+      1041,
+      1043
+     ],
+     "cs": [
+      1,
+      2
+     ],
+     "D": 2,
+     "kdef": 2,
+     "live": true,
+     "min_top_cell": 2,
+     "ncells": 1,
+     "stock1": 2,
+     "allg1": false
+    },
+    {
+     "key": [
+      1043,
+      1043
+     ],
+     "cs": [
+      1,
+      2
+     ],
+     "D": 3,
+     "kdef": 1,
+     "live": true,
+     "min_top_cell": 1,
+     "ncells": 12,
+     "stock1": 3,
+     "allg1": false
+    },
+    {
+     "key": [
+      1039,
+      1055
+     ],
+     "cs": [
+      0,
+      1
+     ],
+     "D": 3,
+     "kdef": 1,
+     "live": true,
+     "min_top_cell": 1,
+     "ncells": 2,
+     "stock1": 2,
+     "allg1": false
+    },
+    {
+     "key": [
+      1039,
+      1043
+     ],
+     "cs": [
+      0,
+      1
+     ],
+     "D": 3,
+     "kdef": 1,
+     "live": true,
+     "min_top_cell": 1,
+     "ncells": 2,
+     "stock1": 2,
+     "allg1": false
+    },
+    {
+     "key": [
+      1047,
+      1047
+     ],
+     "cs": [
+      0,
+      1
+     ],
+     "D": 3,
+     "kdef": 1,
+     "live": true,
+     "min_top_cell": 1,
+     "ncells": 2,
+     "stock1": 2,
+     "allg1": false
+    },
+    {
+     "key": [
+      1047,
+      1055
+     ],
+     "cs": [
+      0,
+      1
+     ],
+     "D": 3,
+     "kdef": 1,
+     "live": true,
+     "min_top_cell": 1,
+     "ncells": 2,
+     "stock1": 3,
+     "allg1": false
+    },
+    {
+     "key": [
+      1035,
+      1047
+     ],
+     "cs": [
+      0,
+      1
+     ],
+     "D": 3,
+     "kdef": 1,
+     "live": true,
+     "min_top_cell": 1,
+     "ncells": 2,
+     "stock1": 2,
+     "allg1": false
+    },
+    {
+     "key": [
+      1043,
+      1047
+     ],
+     "cs": [
+      0,
+      1
+     ],
+     "D": 3,
+     "kdef": 1,
+     "live": true,
+     "min_top_cell": 1,
+     "ncells": 2,
+     "stock1": 3,
+     "allg1": false
+    },
+    {
+     "key": [
+      1055,
+      1055
+     ],
+     "cs": [
+      0,
+      1
+     ],
+     "D": 3,
+     "kdef": 1,
+     "live": true,
+     "min_top_cell": 1,
+     "ncells": 3,
+     "stock1": 3,
+     "allg1": false
+    },
+    {
+     "key": [
+      1051,
+      1055
+     ],
+     "cs": [
+      0,
+      1
+     ],
+     "D": 3,
+     "kdef": 1,
+     "live": true,
+     "min_top_cell": 1,
+     "ncells": 2,
+     "stock1": 2,
+     "allg1": false
+    },
+    {
+     "key": [
+      1035,
+      1055
+     ],
+     "cs": [
+      0,
+      1
+     ],
+     "D": 3,
+     "kdef": 1,
+     "live": true,
+     "min_top_cell": 1,
+     "ncells": 2,
+     "stock1": 3,
+     "allg1": false
+    },
+    {
+     "key": [
+      1043,
+      1055
+     ],
+     "cs": [
+      0,
+      1
+     ],
+     "D": 3,
+     "kdef": 1,
+     "live": true,
+     "min_top_cell": 1,
+     "ncells": 5,
+     "stock1": 3,
+     "allg1": false
+    },
+    {
+     "key": [
+      1051,
+      1051
+     ],
+     "cs": [
+      1,
+      0
+     ],
+     "D": 3,
+     "kdef": 1,
+     "live": false,
+     "min_top_cell": null,
+     "ncells": 0,
+     "stock1": 2,
+     "allg1": false
+    },
+    {
+     "key": [
+      1033,
+      1043
+     ],
+     "cs": [
+      1,
+      1
+     ],
+     "D": 2,
+     "kdef": 2,
+     "live": false,
+     "min_top_cell": null,
+     "ncells": 0,
+     "stock1": 2,
+     "allg1": false
+    },
+    {
+     "key": [
+      1035,
+      1041
+     ],
+     "cs": [
+      1,
+      1
+     ],
+     "D": 2,
+     "kdef": 2,
+     "live": false,
+     "min_top_cell": null,
+     "ncells": 0,
+     "stock1": 2,
+     "allg1": false
+    },
+    {
+     "key": [
+      1039,
+      1039
+     ],
+     "cs": [
+      0,
+      0
+     ],
+     "D": 3,
+     "kdef": 1,
+     "live": false,
+     "min_top_cell": null,
+     "ncells": 0,
+     "stock1": 2,
+     "allg1": false
+    },
+    {
+     "key": [
+      1039,
+      1047
+     ],
+     "cs": [
+      0,
+      0
+     ],
+     "D": 3,
+     "kdef": 1,
+     "live": false,
+     "min_top_cell": null,
+     "ncells": 0,
+     "stock1": 2,
+     "allg1": false
+    },
+    {
+     "key": [
+      1039,
+      1051
+     ],
+     "cs": [
+      0,
+      0
+     ],
+     "D": 3,
+     "kdef": 1,
+     "live": false,
+     "min_top_cell": null,
+     "ncells": 0,
+     "stock1": 2,
+     "allg1": false
+    },
+    {
+     "key": [
+      1035,
+      1039
+     ],
+     "cs": [
+      0,
+      0
+     ],
+     "D": 3,
+     "kdef": 1,
+     "live": false,
+     "min_top_cell": null,
+     "ncells": 0,
+     "stock1": 2,
+     "allg1": false
+    },
+    {
+     "key": [
+      1045,
+      1055
+     ],
+     "cs": [
+      0,
+      1
+     ],
+     "D": 2,
+     "kdef": 2,
+     "live": false,
+     "min_top_cell": null,
+     "ncells": 0,
+     "stock1": 2,
+     "allg1": false
+    },
+    {
+     "key": [
+      1043,
+      1045
+     ],
+     "cs": [
+      0,
+      1
+     ],
+     "D": 2,
+     "kdef": 2,
+     "live": false,
+     "min_top_cell": null,
+     "ncells": 0,
+     "stock1": 2,
+     "allg1": false
+    },
+    {
+     "key": [
+      1047,
+      1053
+     ],
+     "cs": [
+      0,
+      1
+     ],
+     "D": 2,
+     "kdef": 2,
+     "live": false,
+     "min_top_cell": null,
+     "ncells": 0,
+     "stock1": 2,
+     "allg1": false
+    },
+    {
+     "key": [
+      1047,
+      1051
+     ],
+     "cs": [
+      0,
+      0
+     ],
+     "D": 3,
+     "kdef": 1,
+     "live": false,
+     "min_top_cell": null,
+     "ncells": 0,
+     "stock1": 2,
+     "allg1": false
+    },
+    {
+     "key": [
+      1041,
+      1047
+     ],
+     "cs": [
+      0,
+      1
+     ],
+     "D": 2,
+     "kdef": 2,
+     "live": false,
+     "min_top_cell": null,
+     "ncells": 0,
+     "stock1": 2,
+     "allg1": false
+    },
+    {
+     "key": [
+      1053,
+      1055
+     ],
+     "cs": [
+      0,
+      1
+     ],
+     "D": 2,
+     "kdef": 2,
+     "live": false,
+     "min_top_cell": null,
+     "ncells": 0,
+     "stock1": 2,
+     "allg1": false
+    },
+    {
+     "key": [
+      1035,
+      1053
+     ],
+     "cs": [
+      0,
+      1
+     ],
+     "D": 2,
+     "kdef": 2,
+     "live": false,
+     "min_top_cell": null,
+     "ncells": 0,
+     "stock1": 2,
+     "allg1": false
+    },
+    {
+     "key": [
+      1043,
+      1053
+     ],
+     "cs": [
+      0,
+      1
+     ],
+     "D": 2,
+     "kdef": 2,
+     "live": false,
+     "min_top_cell": null,
+     "ncells": 0,
+     "stock1": 2,
+     "allg1": false
+    },
+    {
+     "key": [
+      1033,
+      1055
+     ],
+     "cs": [
+      0,
+      1
+     ],
+     "D": 2,
+     "kdef": 2,
+     "live": false,
+     "min_top_cell": null,
+     "ncells": 0,
+     "stock1": 2,
+     "allg1": false
+    },
+    {
+     "key": [
+      1041,
+      1055
+     ],
+     "cs": [
+      0,
+      1
+     ],
+     "D": 2,
+     "kdef": 2,
+     "live": false,
+     "min_top_cell": null,
+     "ncells": 0,
+     "stock1": 2,
+     "allg1": false
+    }
+   ]
+  }
+ ],
+ "provenance": {
+  "wmultdcx_derive_checks.py": "bea1a43d619a3c91a9a0b2f32c0920c0",
+  "wmultdcx_stress.py": "15315cca59c87e6c2001ea744c50aab5",
+  "rmengine_pe_reimpl.py": "103c1a9c99e2b4a3e8b63c93cbf87e25",
+  "grb_order2_check.py": "dab62713175363a7185211890019ae2f"
+ },
+ "elapsed": 1.373680591583252
+}

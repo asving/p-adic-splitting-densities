@@ -1,0 +1,37 @@
+-- W3DEEP m=3 Zp,p=3,d0=1 g=[1, 1, 1]: traced=36 cells=35 (0.0s)
+-- W3DEEP4 m=3 Zp,p=3,d0=1 g=[1, 1, 1]: traced=40 cells=137 (0.0s)
+-- W3NEST m=3 Zp,p=3,d0=1 g=[1, 1, 1]: traced=16 cells=28 (0.0s)
+-- W3NESTF m=3 Fpt,p=2,d0=1 g=[1, 1, 1]: traced=16 cells=28 (0.1s)
+-- W3FMID m=3 Zp,p=3,d0=1 g=[1, 1, 1]: traced=4 cells=3 (0.0s)
+-- W3FTOP m=3 Zp,p=3,d0=1 g=[1, 1, 1]: traced=4 cells=4 (0.0s)
+-- W3FDBL m=3 Zp,p=3,d0=1 g=[1, 1, 1]: traced=2 cells=1 (0.0s)
+-- W3FMIDF m=3 Fpt,p=2,d0=1 g=[1, 1, 1]: traced=4 cells=3 (0.0s)
+-- W3TRK1 m=3 Zp,p=3,d0=1 g=[1, 1, 1]: traced=36 cells=90 (0.0s)
+-- W3DIR m=3 Zp,p=3,d0=1 g=[1, 1, 1]: traced=36 cells=89 (0.0s)
+-- W3G2A m=3 Zp,p=3,d0=1 g=[2, 1, 1]: traced=30 cells=134 (0.0s)
+-- W3G2B m=3 Zp,p=3,d0=2 g=[2, 1, 1]: traced=33 cells=77 (0.1s)
+-- W3G2P5 m=3 Zp,p=5,d0=2 g=[2, 1, 1]: traced=14 cells=10 (0.1s)
+-- W3DEEPF m=3 Fpt,p=2,d0=1 g=[1, 1, 1]: traced=36 cells=30 (0.1s)
+-- W4NEST m=4 Zp,p=3,d0=1 g=[1, 1, 1, 1]: traced=14 cells=30 (0.0s)
+-- W4DEEP m=4 Zp,p=3,d0=1 g=[1, 1, 1, 1]: traced=14 cells=52 (0.1s)
+-- W4FLAT m=4 Zp,p=3,d0=1 g=[1, 1, 1, 1]: traced=14 cells=21 (0.0s)
+-- W4NESTF m=4 Fpt,p=2,d0=1 g=[1, 1, 1, 1]: traced=14 cells=30 (0.5s)
+-- XM3A m=3 Zp,p=5,d0=1 g=[1, 1, 1]: traced=16 cells=6 (0.0s)
+-- XM3B m=3 Zp,p=3,d0=2 g=[2, 1, 1]: traced=33 cells=50 (0.2s)
+
+DCK-SEED VERDICT (W-D1 a*a' == formal cell, predicted-0): GREEN [0 violations]
+DCK-INV VERDICT (W-D2 u-chain/d-cell inventory, predicted-0): GREEN [0 violations]
+DCK-LEDGER VERDICT (W-D3 path ledger identity (per cell, per level), predicted-0): GREEN [0 violations]
+DCK-TOP VERDICT (W-D4 top threshold cellwise (pi = k + e*r + j_top >= k), predicted-0): GREEN [0 violations]
+DCK-LINE VERDICT (W-D5 line floor lamhat + sum pi_l q_l, predicted-0): GREEN [0 violations]
+DCK-LINEEQ VERDICT (W-D5 junk-free line EQUALITY, predicted-0): GREEN [0 violations]
+DCK-DFREE VERDICT (W-D6 dump-free principal cap (P-divisor pools), predicted-0): GREEN [0 violations]
+DCK-DIVERGE VERDICT (W-D6c beyond-floor => dumps or non-principal D, predicted-0): GREEN [0 violations]
+DCK-WM VERDICT (W-D5 w_m(Q1) >= lamhat + k*h_{m-1} (live rows), predicted-0): GREEN [0 violations]
+DCK-GREEDY VERDICT (W-D7 greedy a+b=c + greedy Q1 cell exists, predicted-0): GREEN [0 violations]
+DCK-CONS VERDICT (stage trees == canonical divisions, predicted-0): GREEN [0 violations]
+rows traced: 412 (sealed battery: 412); Q1 cells checked: 858; beyond-floor cells: 112; junk-free: 801/858
+CENSUS min-nonzero-part == kdef on live rows: yes=286 no=0
+CENSUS stage-1 stock: ok=302 fail=0 (fail on live rows: 0); greedy cells found: 218; principal d-cell absent: 0
+counters: {'cells': 858, 'cells_beyond_floor': 112, 'cells_junkfree': 801, 'greedy_cell_found': 218, 'minnz_eq_kdef_yes': 286, 'stock1_ok': 302}
+total violations: 0; elapsed 1.4s
