@@ -10235,3 +10235,45 @@ construction; WINDOW-CALC + the T1-RES fork (g₀ ≥ 3); the weld J-A;
 the LED-Λ arc; the Thursday Codex queue as reordered (W leg first).
 LAW-DCX's pinned class WIDENS AGAIN by K2-THM-B's scope at the capped
 grade.
+
+---
+
+## K2CLOSE-PE1 (GAPS-ONLY) + KC-r1 APPLIED — and a dated CORRECTION to the synthesis-9 entry's per-box kill table — 2026-08-08 campaign (wallclock 2026-08-04)
+
+**The pass** (first hostile content pass on the assembled K2-CLOSE
+program; report `K2CLOSE_passPE1_report.md` + the verifier's independent
+probe `verification/openmath/k2close_pe1_ext.py`, ALL PROBES GREEN):
+**GAPS-ONLY — 0 critical, 4 gaps, 6 notes.** The spine CONFIRMED at its
+declared grades: K2-L11 re-derived exact and BUDGET-FREE (rests only on
+the any-budget K2-L4 + K2-L6, so the beyond-B4 identity-algebra claim is
+legitimate); K2-THM-B's proof and every (R4⁺) cover confirmed; K2-L9
+(single-book scope)/K2-L10 re-derived; both runners byte-reproduced;
+GS-40's 53-state exhaustion decorrelated-CONFIRMED by an independent
+full-Bell enumeration; the GLUE-DEGEN census verified straight from the
+md5-pinned instrument artifact. **KC-r1 applied** (brackets + repair
+records in both notes): G1 — (K2-RES-B)(ii) rescoped to the
+B4-enumerated involution perimeter (the "no opposite-sign failure mode
+remains anywhere" flourish WITHDRAWN; additive mixed-sign deaths and
+beyond-perimeter kills excluded by name); G2 — the open (R1)-failure
+space NAMED at (iii) (non-dump-variant / mixed-promotion-profile glued
+groups at W ≤ 2, un-enumerated; "glued" pinned to the dump-variant
+family model); G3 — LEGS23's K2-L9 rescoped SINGLE-BOOK in situ
+(AS-01/02/03 cited as the refuting in-budget shapes); G4 — the
+correction below; N1–N6 in place.
+
+**CORRECTION (append-only; the entry above is NOT edited).** The entry
+"SYNTHESIS PASS 9 + THE ENGINE REFIT LANDED" (2026-08-08 campaign)
+records at its item (4) "the per-box kill table
+((K2-RES)(a)/(e)/W2-BOX-1 pin-immune; (b) budget-killable)" and at item
+(3) prices K2-CLOSE as including "window-budget kills of boxes
+(b)/(e)". STALE after K2-L10 (K2CLOSE_LEGS23_2026-08-08.md, 11e1743):
+the n ≤ 3 window budget kills ONLY the single-window sectors of (b),
+and (e) is budget-LEGAL (its explicit two-placement chain = K2-CAND,
+net −2); the multi-window (b) residual and all of (e) need the glued
+case table / line-quanta arguments, not the budget. Those synthesis-9
+lines stand as the pass's PREDICTION; K2-L10 is the ruling. Consumers
+must cite K2-L10, not the pass-9 kill table, for (b)/(e) budget reach.
+
+**Arcs after this pass:** K2 (SURVK2_PROOF) 0/1 · KC (K2-CLOSE) 0/1 —
+GAPS-ONLY ≠ CLEAN. Both Codex legs run post-reset (Thursday queue, W
+leg still first) on the KC-r1 text.
