@@ -9167,3 +9167,62 @@ legs deferred to post-RM-GEN-arc budget (88% used, window resets
 Aug 08; RM-GEN PC passes have priority). (3) **(SURV-(m+1)) is the new
 hard core** of the closure program's Q2 line. (4) At the r40 fold: the
 stress + compose brackets into ROOT; row 11c's ledger row updated.
+
+---
+
+## RMENGINE ROUND 4 ADJUDICATED (PC4 CLEAN — the Codex leg met) + r4 MICRO-REPAIR; WMULTDCX ROUND 1 ADJUDICATED (1C/2G — repair queued, with a POSITIVE (SURV)(ii) lead) — 2026-08-08 campaign (wallclock 2026-08-04)
+
+**RM-GEN round 4, on the r3 text (ab2e471):**
+- **PC4 (Codex, archived 998e599): CLEAN — 0 critical, 0 gaps** (2
+  notes: the one-tag-per-line loophole hypothetical with no instance;
+  execution unavailable). Every r3 remedy discharged; excluded zones
+  clean; all 12 ⟦nc⟧ survived challenge; spine re-derived.
+- **PE4 (Fable, `RMENGINE_passPE4_report.md` + `rmengine_pe4_ext.py`):
+  GAPS-ONLY — 0 critical, 1 gap + 1 note.** Machine legs all green
+  (census reproduces CLOSED; pe2 referee byte-identical; the r3
+  statement fence verified against the actual diff; 44 row keys exact;
+  attributions accurate). The gap: the r3 "complete SIX-change" r1
+  statement census missed a seventh of its own genre (L-LINE(ii)'s
+  vanishing clause → the NEVER-absent negation) — the FOURTH hand-census
+  completeness recurrence, now on the statement-diff surface.
+- **Adjudication + r4 (applied by the orchestrator, record-layer only):**
+  change (7) added; THE COMPLETENESS CLAIM WITHDRAWN — standing policy
+  in the note: enumerations claim no completeness; machine-checkable
+  surfaces (the tag census, the git diff) are the arbiters, enumerations
+  are reading aids. C28 rewritten (basis re-attributed per-pass); the
+  round-3 bracket's fence sentence re-scoped (PE4-N-1); round-4 head
+  bracket + tail record added. Census re-run CLOSED post-edit (output
+  re-committed; 13 zones — the two new record surfaces auto-excluded).
+  Fifth and sixth consecutive 0-critical passes; the math surface has
+  never moved through the entire arc. **Round 5 (PC5 + PE5, on the r4
+  text) = the acceptance attempt, bar BOTH CLEAN.**
+
+**WMULTDCX round 1, on 9bec735 (PE1, Fable, workflow wbct8oegf; report
+`WMULTDCX_passPE1_report.md` + instrument `wmultdcx_pe1_ext.py`):
+NOT-CLEAN — 1 critical, 2 gaps + 2 notes.**
+- The row-11c REFUTATION independently REPRODUCED set-exactly (fresh
+  two-stage tree, own split/u-chain/pools/traversal; the identical 72
+  divergences on the identical 412 rows; 8 witnesses re-derived incl.
+  both pc₂ = 3 > L-CAP; one full 28-edge hand audit). The refutation
+  STANDS at reproduction grade.
+- **The CRITICAL (S9 obstruction paragraph):** the note's claim that
+  (SURV)(ii)-deadness "is a cancellation phenomenon, not path
+  non-existence … derived, not just measured" is REFUTED by its own
+  artifacts: all 126 traced dead rows carry ZERO Q¹ cells (PE1's
+  instrument concurs) — on every probed instance deadness IS path
+  non-existence, and the "not closable by mass arguments" meta-claim is
+  unsupported. Nothing PROVED consumes it. **The flip side is a
+  POSITIVE LEAD: W-D4 (every Q¹ cell has depth ≥ k) + the observed
+  zero-cell deadness suggests (SURV)(ii) may be provable by a
+  cell-emptiness/counting argument on the cascade — queued as the
+  primary design input for the (SURV) composer.**
+- Gaps: W-D7(iii)'s two-sided max π_l = c_l silently consumes the law
+  clause D + c_{m−1} ≥ 2e_{m−1} (only ≤ proved on clause-failing rows;
+  hypothesis pin needed); W-D2(0)'s u_l ≥ 0 consumes F3-certified
+  principal-cell existence at g₀ ≥ 2 without the pin (one-line (H3)
+  repair). Notes: the (STK) denominator disclosure; LED_l terminal-only
+  machine coverage (honestly bracketed). All else sound — the ledger
+  re-derived child-by-child; a+b=c algebraic; box precise; LAW-DCX
+  genuinely unchanged; no silent row-11c upgrade; all md5 pins match.
+- **W-r1 repair queued** (critical rewording + the two hypothesis pins
+  + notes), then round 2.
