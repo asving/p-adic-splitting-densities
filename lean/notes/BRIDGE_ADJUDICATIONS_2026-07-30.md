@@ -10304,3 +10304,42 @@ engine_ext); the weld J-A (consuming W-2 clause 1); the 𝒵/W2-COB probe.
 **Lean stays deferred** per the math-first directive until the weld
 junctions + the acceptance legs stabilize the corpus — the corpus is
 now MUCH smaller (LEDGER-Λ) and wider (K2-THM-B) than at dawn.
+
+---
+
+## GLUEGEN CONSTRUCTION LANDED — the PV-4 corner probed: THE (R4⁺) COVERS HELD; box (i) proven non-vacuous; the census enriched — 2026-08-08 campaign (wallclock 2026-08-04, closing)
+
+**The unit** (workflow w3yv890si; skeleton+seal 9888ea6, runner seal
+e3922bb, verdict 226cc2b; `GLUEGEN_CONSTRUCT_2026-08-08.md` + runner +
+table). Construction-first per the directive: the genericity conditions
+DERIVED (all 53 shapes pin-compliant; the binding constraint is the
+counting bound q − 1 ≥ #monomials, never the pin; GS-08 impossible at
+q = 3, hand-derived then machine-confirmed), 57 glued rows / 84 groups
+REALIZED at q ∈ {4, 8, 9} incl. 42 non-full-merge and 10 fully generic
+groups, three never-realized shapes entering the census, the first
+two-seed glue tower (F₈, d₀ = 3), and the first odd-characteristic glue
+(F₉ — the char-2 glue attribution REFUTED, a measured prediction miss).
+
+**THE FALSIFIER VERDICT: K2-THM-B's protection HELD** — all 30
+corner-covered realized rows protected (GG-THMB 0 violations; no
+counterexample to the (R4⁺) covers); the 13 uncovered ¬I₃ anchor rows
+also protected in vivo. All eight law families green; predictions 6/8
+with both misses measured and disclosed.
+
+**Major findings:** (a) **box (K2-RES-B)(i) is NON-VACUOUS** — 14
+realized rows (GGB3AF at the c00 corner) where NO bottom group is
+SD-L7-protected and the netted bottoms survive only ADDITIVELY: the
+first realized gap between the weak per-class and protected-vector
+readings; the box's open question is now instance-backed, not
+hypothetical. (b) GS-02 glue pairs stay FULL-MERGE at every q (42/42) —
+a dump-swap residue-preservation LAW; GS-02's generic states appear
+engine-unrealizable (a candidate emptiness lemma for a future unit).
+(c) The residue-degenerate roster observation (PV-4) is now CURED:
+the generic corner is probed and the theorems survived it.
+
+**The wave-21 window closes here with all fleets idle.** The board:
+nine arcs (W/E/S/SD/K2/W2/SDYJ/KC/LED-Λ) awaiting their Codex legs
+Thursday (W first); the specced compositions (WINDOW-CALC + T1-RES,
+the weld J-A, the 𝒵/W2-COB probe, the GS-02 emptiness candidate);
+Lean deferred until the corpus stabilizes — which, after today, means
+after Thursday's window and the weld's remaining junctions.
