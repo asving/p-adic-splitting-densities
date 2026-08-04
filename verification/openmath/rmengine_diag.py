@@ -651,6 +651,136 @@ def rerun_dcx3_ex1(results):
     print(f"-- D6b EX1/Zp3 v2 rerun: live={live} meas={meas_n} mism={mism} "
           f"stored_match={ok} ({time.time()-t0:.1f}s)")
 
+# ---------------- D7 [r1 REPAIR ADDENDUM]: the d0 = 1 FLAT-corner leg --------
+# Added at repair round 1 (2026-08-08 campaign, wallclock 2026-08-04), per
+# PE-F1 / note S4.1 branch (b) + S4.2: the d0 = 1 flat shapes are INSIDE the
+# AMENDED T-scope, so they join the tested scope as a predicted-0 leg.
+# POST-SEAL-LABELED like the rest of this diagnostic: NOT a proof step.
+# D1-D6 above are UNTOUCHED; their stdout must re-run byte-exact.
+
+class FlatTree3(Tree3):
+    """Tree3 with the S4.1 BRANCH-(b) weights (r1): the near-ceiling rule
+    w_i := midpoint of (S_i, w_{i-1}P_{i-1}), S_i := sum_{l<i} w_l*rho_l,
+    rho_0 = P_0 - 1 (d0 = 1), rho_1 = P_1 - 1 — valid at d0 = 1 for
+    ARBITRARY e_i >= 1; (A_i)/(B_i) asserted strictly.  (The base-class
+    init runs first with its own rule; on this leg's roster its interval
+    asserts happen to pass, and its weights are then OVERWRITTEN.)"""
+    def __init__(self, E3):
+        Tree3.__init__(self, E3)
+        T, T3 = self.T, self.T3
+        d0 = len(T.Phi0) - 1
+        assert d0 == 1, "D7 flat leg is d0 = 1 only (branch (b))"
+        rho = [Fr(self.P0 - 1), Fr(self.P1 - 1)]
+        w = [Fr(1)]
+        for i, (ei, Pprev) in enumerate(((T.e1, self.P0), (T3.e2, self.P1)),
+                                        start=1):
+            S = sum(w[l]*rho[l] for l in range(i))
+            lo, hi = S, w[i-1]*Pprev
+            assert lo < hi, f"branch-(b) interval empty at i={i}"
+            w.append((lo + hi)/2)
+            assert w[i] < w[i-1]*Pprev, f"(A_{i}) fails"
+            assert w[i]*ei > S, f"(B_{i}) fails"
+        self.w0f, self.w1f, self.w2f = w
+
+def _d7_retag(n0):
+    """Re-tag violations raised by reused Tree3 machinery into the D7
+    family so the untouched D1-D6 verdict counters stay clean."""
+    for idx in range(n0, len(VIOL)):
+        if not VIOL[idx][0].startswith("D7"):
+            VIOL[idx] = ("D7-" + VIOL[idx][0],) + tuple(VIOL[idx][1:])
+
+def run_m3_flat_tower(tag, r0, r1, r2, r3, kind, p, results):
+    t0 = time.time()
+    T4 = Tower4(kind, p, 1, r0, r1, r2, r3, f"D7{tag}")
+    T3 = T4.T3; T = T3.T; R = T.R
+    E3 = Engine3(T4)
+    n0 = len(VIOL)
+    TR = FlatTree3(E3)
+    ZH = Zh3(T4)
+    name = f"D7-{tag}/{kind},p={p}"
+    certs = E3.certs()
+    certs["id1"], certs["id2"], certs["id3"] = (TR.cert_id1, TR.cert_id2,
+                                                TR.cert_id3)
+    if not all(certs.values()):
+        viol("D7-CERT", name, certs)
+    res = dict(tower=name, leg="D7-r1-flat", d0=1,
+               eshape=[T.e0, T.e1, T3.e2], degPhi3=T3.degPhi3,
+               gamma4=T4.gamma4, certs=certs,
+               muwB=[str(TR.w0f), str(TR.w1f), str(TR.w2f)])
+    # breadth inputs (d0 = 1): pi^u * Phi0^i Phi1^j Phi2^k reduced, + a sum
+    inputs = {}
+    for u in (0, 1):
+        for i in range(T.e0*T.g0):
+            for j in range(T.e1*T.g1):
+                for k in range(T3.e2*T3.g2):
+                    f = pscal(R, R["pi_pow"](u), [R["one"]])
+                    f = pmul(R, f, ppow(R, T.Phi0, i))
+                    f = pmul(R, f, ppow(R, T.Phi1, j))
+                    f = pmul(R, f, ppow(R, T.Phi2, k))
+                    kk = RM2.poly_key(R, pnorm(R, f))
+                    if kk not in inputs: inputs[kk] = (pnorm(R, f), "BR")
+    two = padd(R, pmul(R, ppow(R, T.Phi2, T3.e2*T3.g2 - 1), T.Phi1),
+               pscal(R, R["pi_pow"](1), T.Phi0))
+    two = pnorm(R, two)
+    if two and len(two) - 1 < T3.degPhi3:
+        inputs[RM2.poly_key(R, two)] = (two, "BRsum")
+    zh_checked = 0
+    d7cnt = dict(calls=0, v_zero=0)
+    for kk, (f, prov) in sorted(inputs.items()):
+        c = E3.call(f)
+        d7cnt["calls"] += 1
+        if not (c["okW_R"] and c["okW_Q"]):
+            viol("D7-WEIGHT", name, f"{prov} lam={c['lam']} wR={c['wR']} "
+                                    f"wQ={c['wQ']} tgt={c['target']}")
+        if c["okW_R"] and not c["okRead"]:
+            viol("D7-READ", name, f"{prov} lam={c['lam']} epsp={c['epsp']}")
+        if not c["eps_id"]:
+            viol("D7-EPS", name, prov)
+        if c["v_zero"]: d7cnt["v_zero"] += 1
+        out = TR.run(pmul(R, f, E3.Chat3), name, res)
+        if out is None:
+            _d7_retag(n0); continue
+        Rp, Qp, leaves = out
+        if Rp != pnorm(R, c["R"]) or Qp != pnorm(R, c["Q"]):
+            viol("D7-CONS", name, f"{prov} tree != division")
+        target = c["target"]
+        zsum = E3.K3["zero"]
+        for j, b in leaves.items():
+            ln = TR.line(b, j)
+            if T3.w3(pmul(R, b, pmul(R, ppow(R, T.Phi0, j[0]),
+                     pmul(R, ppow(R, T.Phi1, j[1]),
+                          ppow(R, T.Phi2, j[2]))))) != ln:
+                viol("D7-LEAF", name, f"{prov} leaf {j} w3 != line")
+            if ln == target:
+                zv = ZH.val(b, j, target)
+                cellpoly = pmul(R, b, pmul(R, ppow(R, T.Phi0, j[0]),
+                            pmul(R, ppow(R, T.Phi1, j[1]),
+                                 ppow(R, T.Phi2, j[2]))))
+                hv = E3.R3v_at(cellpoly, target)
+                zh_checked += 1
+                if zv is None:
+                    # L-GRID (r1): on-line leaves must be ON-grid
+                    viol("D7-GRID", name, f"{prov} on-line leaf {j} off-grid")
+                    if not E3.K3["isz"](hv):
+                        viol("D7-ZH", name, f"{prov} off-grid leaf reads !=0")
+                else:
+                    if zv != hv:
+                        viol("D7-ZH", name, f"{prov} leaf {j} zh != harness")
+                    zsum = E3.K3["add"](zsum, zv)
+        if c["okW_R"] and zsum != c["pred"]:
+            viol("D7-SUM", name, f"{prov} zh-sum != z3^eps' v tau3")
+    _d7_retag(n0)
+    res["n_inputs"] = len(inputs)
+    res["zh_checked"] = zh_checked
+    res["calls"] = d7cnt["calls"]
+    res["v_zero"] = d7cnt["v_zero"]
+    print(f"-- {name}: e=({T.e0},{T.e1},{T3.e2}) d0=1 "
+          f"wB=({TR.w0f},{TR.w1f},{TR.w2f}) inputs={len(inputs)} "
+          f"pops={res.get('pops',0)} maxj={res.get('maxj')} "
+          f"zh={zh_checked} vzero={d7cnt['v_zero']} "
+          f"({time.time()-t0:.1f}s)")
+    results.append(res)
+
 # ---------------- main -------------------------------------------------------
 def main():
     t0 = time.time()
@@ -667,6 +797,17 @@ def main():
                  "Zp", 3, results)
     rerun_rm2a(results)
     rerun_dcx3_ex1(results)
+    # D7 [r1 repair addendum, PE-F1]: the d0 = 1 flat shapes join the
+    # tested scope (amended T-scope).  Appended AFTER the untouched D1-D6
+    # legs; everything they print above must remain byte-exact.
+    run_m3_flat_tower("FLTTOP", (2,1,1), (2,1,1), (1,1,1), (2,1,1),
+                      "Zp", 3, results)
+    run_m3_flat_tower("FLTTOP", (2,1,1), (2,1,1), (1,1,1), (2,1,1),
+                      "Fpt", 2, results)
+    run_m3_flat_tower("FLTMID", (2,1,1), (1,1,1), (2,1,1), (2,1,1),
+                      "Zp", 3, results)
+    run_m3_flat_tower("FLTDBL", (2,1,1), (1,1,1), (1,1,1), (2,1,1),
+                      "Zp", 3, results)
     nD1 = sum(1 for v in VIOL if v[0].startswith("D1"))
     nD2 = sum(1 for v in VIOL if v[0].startswith("D2"))
     nD3 = sum(1 for v in VIOL if v[0].startswith("D3"))
@@ -689,6 +830,10 @@ def main():
           f"{sum(r['census']['pairs'] for r in results if 'census' in r and 'pairs' in r.get('census', {}))} pairs")
     print(f"D6 VERDICT (RM2A + DCX3-v2 artifact consistency, predicted-0): "
           f"{'GREEN' if nD6 == 0 else 'RED'} [{nD6} violations]")
+    nD7 = sum(1 for v in VIOL if v[0].startswith("D7"))
+    print(f"D7 VERDICT [r1 ADDENDUM] (box clauses + tree + branch-(b) mu + "
+          f"lines + zh on d0=1 FLAT shapes, predicted-0): "
+          f"{'GREEN' if nD7 == 0 else 'RED'} [{nD7} violations]")
     print(f"counts: {dict(sorted(CNT.items()))}")
     print(f"total violations: {len(VIOL)}; elapsed {time.time()-t0:.1f}s")
     out = dict(counts=CNT, violations=VIOL, towers=results,

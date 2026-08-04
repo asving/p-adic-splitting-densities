@@ -8900,3 +8900,87 @@ the repaired text.  Grades unmoved: RM-GEN stands PROVED on T-scope at
 attempt grade (now instance-confirmed through m = 4); LAW-DCX-(m+1) stays
 conjecture (m >= 2).  Unit files: the PE report, rmengine_pe_reimpl.py +
 output + results JSON, this append ONLY (scoped `git commit --only`).
+
+---
+
+## RMENGINE REPAIR ROUND 1 — substantive math repair applied to RMENGINE_2026-08-08.md (folds PC 1C/4G @ 2b29712 + PE 1C/2G/3n @ 363a051); T-scope STRENGTHENED to the d0 = 1 flat corners; round 2 = PC2 + PE2 on the repaired text
+
+**Anchor:** appended immediately after the RMENGINE-PE entry (363a051);
+note repaired IN PLACE (every edit carries a dated [r1: finding]
+bracket + a REPAIR RECORD table at the note tail + a head bracket).
+Wallclock 2026-08-04, campaign date 2026-08-08.
+
+**Per-finding disposition:**
+* **R1 (PC-C1, CRITICAL; PE-adjudicated TEXT-GAP):** CURED — Lemma
+  L-NORM displayed in S2.1 (factor pi^{w0(b)+w0(c_d)}, DIGIT-SPLIT the
+  primitive parts, restore; L-child w0 exact + residue never 0 in the
+  field K0; pi-child >= w+1; Y-child structure), S2.2 children re-keyed
+  to it, L-LINE(ii)/(iii) re-derived THROUGH it (clean scaled-identity
+  displays replace the garbled ones), DEV-(m)/T-tele residue step
+  pinned to L-NORM(a).  Referee cited in-note: PE's forced-insertion
+  97/97 + the diag's own digit_split_norm.
+* **R2 (PE-F1, CRITICAL display-local):** CURED + STRENGTHENED — fence
+  mechanism corrected (rho = P-1; the necessity CASCADE displayed:
+  (A_i)/(B_i) with a flat level satisfiable IFF d0 = 1; W_{i-1}
+  eliminated; the false "raise any linear mu" sentence deleted); fence
+  RE-SCOPED to d0 >= 2 ∧ (e0 = 1 ∨ ∃ flat); L-MU gains branch (b) (the
+  near-ceiling induction w_i ∈ (S_i, w_{i-1}P_{i-1}), full displayed
+  proof, no e-bound consumed) and T-TERM + DEV-(m) + RM-GEN extend to
+  T-scope(m) := d0 = 1 ∨ (e0 >= 2 ∧ all e_i >= 2) — **the extension is
+  graded PROVED** (the S4.2 inspection census shows L-MU was the ONLY
+  e_i >= 2 consumer on the chain; everything else is e >= 1-safe or
+  [ILN]-class-level).  L-LEX SUBSUMED, retained as remark.  T-class(n)
+  extended in S7.1; headline/S8/S10/S11 re-scoped.
+* **R3 (PC-G2):** REGRADED honestly (the missing quotient-cell-to-pool
+  induction was NOT supplied — it is the (W-MULT-DCX) unit's charge):
+  S6.2 split into the crossing law (PROVED by child inventory, the L-MU
+  citation now carries its T-scope pin — the leak fixed) vs the pool
+  identification (HEURISTIC, conjecture-supported: DCX3 C2/C3, S9 D5,
+  PE census); S8 row 11 split into 11a (L-CAP, proved) / 11b (crossing
+  law, proved) / 11c (floor-form pools, heuristic); S1 narrative
+  softened.
+* **R4 (PC-G5 + PE-F3):** CURED — S3.1 first-failure convention +
+  Lemma L-GRID (on-line => on-grid; PE's two-line congruence proof
+  displayed; lambda-chain = truncation lines); DEV-(m)(D3) off-grid
+  case now EMPTY (census 0 cited), the converse-integrality appeal
+  DELETED from (D3) and from RM-GEN's read assembly; scope remark (ii)
+  replaced by Lemma L-VNZ (v != 0 FORCED on the legal class — full
+  induction displayed: <= g_{l-1} read slots per level, sub-minimal
+  z_l-degree, nonzero min-digit coefficient by IH; measured 0/97 PE +
+  0/319 D1 + 0/30 D7).
+* **R5 (PC-G4 + PE-n5):** CURED — S7.1 inline AT-ACCEPTANCE qualifier;
+  n = 1, 2 exact-union correction displayed (family 2<=m<=n-1 empty
+  there; the composed display still imposed e0>=2 ∨ d0=1 — slip named;
+  corrected: [IL]/[IL3] scopes verbatim, no T-condition); consequence
+  restated for n >= 3.
+* **R6 (PC-G3 + PE-n4/n6):** CURED — claims table completed (C15-C22
+  from a fresh census incl. PC's three quoted absentees + the r1
+  lemmas' own new claims); C2 gains monicity + degree hypotheses and
+  its grep key unwrapped to one physical line (S0.3 reflow); garbled
+  displays rewritten (L-LINE(ii)/(iii), S4.1 existence proof, fence
+  box).
+
+**Diagnostic:** R2's extension CLOSED, so per the charge the flat legs
+were added: `rmengine_diag.py` gains the post-seal-labeled **D7 leg**
+(d0 = 1 flat shapes JOIN the tested scope): FLT-TOP e=(2,2,1) at Zp3 +
+F2[[t]], FLT-MID e=(2,1,2), FLT-DBL e=(2,1,1) — box clauses, tree ==
+division, STRICT mu under the S4.1 branch-(b) near-ceiling weights
+((A)/(B) asserted), line quanta, zh-kernel.  Re-run actuals: exit 0,
+**D7 GREEN [0 violations]** (30 engine calls, weights (1,3/2,11/4) and
+(1,3/2,5/4), 0 non-strict edges, v=0 realized 0/30), and **D1-D6
+BYTE-EXACT** vs the committed output (all six verdict lines + all six
+per-tower lines verbatim; results JSON tower entries/counts/violations
+byte-identical inside the new file; only the volatile trailing
+`elapsed` float moved, 0.6s -> 0.7s, the disclosed volatility class).
+New md5s pinned in S9: runner c50c08e3350c2f3f1e9aa50df7914463, output
+d9118f5a52a5ad8fc87beca4ce00b4fe, results
+1ce263df774f89043aec41874995b1bc.
+
+**Grades after r1:** RM-GEN PROVED on the AMENDED T-scope (attempt
+grade, acceptance counter 0/2 — unchanged); LAW-DCX-(m+1) conjecture at
+m >= 2 (untouched); (W-MULT-DCX-m) OPEN (untouched); the only remaining
+fence = d0 >= 2 ∧ (e0 = 1 ∨ ∃ flat).  No PROVED clause weakened; the
+statement changes are the displayed strengthening + the L-LEX regrade
+to remark.  **Round 2 (PC2 + PE2) runs on the repaired text — next.**
+Unit files: the note, rmengine_diag.py + output + results JSON, this
+append ONLY (scoped commit).
