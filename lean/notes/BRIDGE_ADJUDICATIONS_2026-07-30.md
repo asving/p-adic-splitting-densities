@@ -10422,3 +10422,42 @@ NR-1/NR-2/NR-3/NR-4 ([IL]'s gr(w₂) wrapper → NR-2; [RMG]'s "(P-DS)" line
 **Both arcs: 0/1 CLEAN (gaps-only, repaired in dated brackets); round 2 =
 the Codex legs (Thursday window). No grade changes anywhere; accepted
 texts untouched.**
+
+---
+
+## J-B COMPOSED (the weld 3/4) + NR-1 DISCHARGED (the LIFT corner; (TAIL-STAB) proved) — 2026-08-08 campaign (wallclock 2026-08-04, continuing)
+
+**J-B** (`GRTJB_PROOF_2026-08-08.md`, 17adb80/5a72b62/7f6759d/f5578d0;
+18 families, 6,700 samples, 0 violations): (a) JB-DEV the same-division
+identity PROVED at the W2-C1 representative (3-layer coefficient
+correspondence; cross-key fence displayed); (b) JB-VTX the polygon
+identity PROVED vertex-for-vertex with the EXPLICIT shear (the sheared
+ordinate = the print's own v; slope law s ↦ e_q s + h_q); (c) JB-TREE
+PROVED on T-scope ∧ g_m = 1 — the [RMG] S2.2 tree computes the
+classifier's canonical division (fresh walker == divmod by BOTH key
+families, 125 walks; LED-Λ's line face cited as the polygon
+bookkeeping); (d) JB-CREAD PROVED on the (VD-m) ∩ {v ≠ 0} perimeter —
+THE CARRY CANCELS in print coordinates (Lemma JB-EPS), and the residual
+constant c_m = ψ_{m,0} = −z_{m+1} — **the next residual letter: the
+J-C germ, surfaced and fenced**. Six honest boxes incl. the corrected
+blueprint J-B(iii) frame conflation. **The weld: W-2 + J-A + J-B
+composed; J-C (germ in hand) + J-D remain.**
+
+**NR-1, THE LIFT CORNER, DISCHARGED at attempt grade**
+(`LIFTCORNER_2026-08-08.md`, seal dafc0b5 / verdict 987ffb7 / compose
+dc278ce; 25,409 checks, 0 violations, first run): the probe measured
+the covariance carrying the corner EXACTLY (the display holds with the
+letter the lift carries; the χ-ratio law measured-vs-measured; the
+wrong-letter control in exact set-equivalence with the predicted
+locus — the ξ ≠ 1 orbit direction had ZERO prior corpus evidence);
+the discharge composes via the shift-descent route with **(TAIL-STAB)
+PROVED** (the wave-18 open step closed), the theorem for every orbit
+member, and the honest riders (the rung-≥2 census verify-target; the
+ξ = 1 core chain W-2-FREE — a decoupling fact; deeper-level lifts
+never in the rider). Capped by the W-2 consumption; own arc 0/2.
+
+**The accepted law's conditionality tonight: NR-1 DISCHARGED (pending
+arc) · NR-4 DISCHARGED (pending arc) · NR-2 = the weld at 3/4 · NR-3 =
+Q2, closed at g₀ ≤ 2 except K2-MULT-RES + g₀ ≥ 3.** Hostile rounds
+JB-PE1 + LIFT-PE1 dispatched; the Thursday queue now carries THIRTEEN
+legs (W first).
