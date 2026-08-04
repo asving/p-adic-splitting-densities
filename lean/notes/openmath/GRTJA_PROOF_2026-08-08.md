@@ -415,5 +415,16 @@ action, clause by clause:
   stands), no count/menu claim (J-D untouched), no advance on W2-OPEN-1,
   and the P0 application gate stands.
 
-<!-- SECTION 7 RECORDS: appended at commit 2 from the sealed artifacts -->
+## §7. Records — SEAL PENDING
+
+**Two-commit seal, commit 1:** this note (§§1–6 composed, predictions =
+the displayed laws + the runner docstring's family table) and
+`verification/openmath/grt_ja_checks.py` are committed BEFORE the sealed
+full-roster battery. The §7 machine table, claims/grades table, and
+dependency line are appended in commit 2 FROM THE ARTIFACTS
+(`grt_ja_checks_output.txt`, `grt_ja_checks_results.json`). Build-phase
+smoke disclosed in the runner docstring (reduced roster, ALL GREEN, 4,409
+samples; two runner-local repairs + the CK-BPREF designation triple
+confirmed there, sealed as T2A/T3A/T3E).
+
 — J-A COMPOSER unit, campaign date 2026-08-08.
