@@ -131,5 +131,210 @@ Bézout normalization 0 ≤ ℓ < e is OURS not the print's (tex 1291 pins
 nothing — JA-BOX-3). [Machine: JA-PIN — every clause re-verified by fresh
 integer/field computations on every roster + QO + d₀ ≥ 2 level.]
 
-<!-- SECTIONS 3-7 COMPOSED BELOW -->
+---
+
+## §3. The four operator equalities (= blueprint W-1 (i)–(iii) + W-4 (iv))
+
+Throughout §3 the level-m statements are on the shared-key perimeter (§1);
+§4 states what survives off it and across the orbit.
+
+### 3.1 THEOREM JA-VAL (J-A(i): w_m = v_{m+1})
+
+**Statement.** For every m ≥ 0 and every nonzero A ∈ O[x]:
+w_m(A) = v_{m+1}(A), where v is the print's MacLane/GMN valuation of the
+type prefix (order-one v₁ = min coefficient π-valuation, tex ~460 region;
+order-r recursion v_r(A) = min_i (e_{r−1}·v_{r−1}(a_i) + i·v_r(φ_{r−1})),
+Prop `propertiesv` item 3, tex 1028, hypothesis: φ_{r−1}-adic development).
+
+*Proof.* Induction on m. Base m = 0: w₀ = min coefficient valuation = v₁ by
+definition on both sides. Step: under shared keys the φ_{m+1}-adic dev IS
+the Φ_m-dev (same monic key, same canonical division), and the two
+recursions are the same integer min — v_{m+2}(A) = min_i(e_m^har·v_{m+1}(a_i)
++ i·v_{m+2}(φ_{m+1})) with v_{m+2}(φ_{m+1}) = γ_{m+1} (JA-PIN clause 7)
+versus w_{m+1}(A) = min_i(e_m·w_m(a_i) + i·γ_{m+1}); the inductive
+hypothesis identifies the arguments. ∎ Grade: PROVED (attempt grade),
+unconditional on the shared-key perimeter. This is the P-index pin
+v_i = w_{i−1} PROVED rather than assumed; it is stated in the GD-2 frame
+normalization (the sheared eq-(12) presentation of ordinates — the T-F
+machine check's convention pin) — the identity lives at the v-level where
+no shear ambiguity exists. [Machine: CK-VAL, both engines on the same
+samples, every shared level of every roster/QO/d₀ ≥ 2 tower.]
+
+### 3.2 THEOREM JA-EPS (J-A(iii): ε_m = the print's twist unit)
+
+**Statement.** For every m ≥ 1 and every β ∈ ℤ in the level-m weight
+lattice: ε_m(β) = z_m^{−t_m(β)}, where t_m(β) := (ℓ_{m−1}β − s(β))/e_{m−1}
+is the print's twist exponent (Definition `t(i)`, tex 1431; the same
+exponent prescribes Prop `construct`'s children, tex 1213–1218) evaluated
+at the point of ordinate-argument β on its own side, s(β) = ℓ_{m−1}β mod
+e_{m−1} (integrality by W2-L0). More generally, for u = β + k·W_m (weight
+shifts by key multiples): ε_m(β)·z_m^{t_m-at-u} = z_m^{A_m·k} — W2-L2
+consumed proved (the Bézout bridge; hypothesis list: gcd(e, h) = 1,
+normalized (ℓ, ℓ′), u − β ∈ W_m·ℤ).
+
+*Proof.* The k = 0 case of W2-L2: T + (ℓ′s − ℓu′) = ℓ(u − V)/e = 0 at
+u = V = β, i.e. the ε-exponent ℓ′s − ℓu′ = −t_m(β). ∎ Grade: PROVED,
+unconditional (pure read-data integers; no key bytes consumed). This is
+W-2 §2.4's structural sentence promoted to the J-A ledger: **the harness
+ε-kit IS the print's t(i)-twist rewritten in eq12-canonical coordinates.**
+[Machine: CK-EPS — committed T.eps vs fresh geometric-scan integers;
+k-grid covariance included.]
+
+### 3.3 THEOREM JA-GRID (J-A(iv): eq-(12-int) digits = abscissa/side coordinates, + the carry clause)
+
+**Statement.** Fix a read (e, h), gcd(e, h) = 1, h, e ≥ 1, and V ∈ ℤ_{≥0}.
+(a) The print's T-side initial point (Prop `construct` tex 1176: "the
+greatest side T contained in L whose end points have nonnegative integer
+coordinates", initial point (s, u); same object at tex 1498) is EXACTLY
+eq12(V; e, h): s = ℓV mod e = the smallest nonnegative abscissa with
+integer ordinate on the line, u = (V − sh)/e. (= W2-L0, consumed proved.)
+(b) Consequently the print's slot grid s + je and slot values V_j equal the
+harness digit grid and digit weights at every junction slot (W2-L0's
+consequence display: the two legs' polygons agree point-for-point).
+(c) CARRY CLAUSE (elementary, new display): for V, V′ ≥ 0,
+
+    s(V) + s(V′) − s(V + V′) = e·δ,   δ ∈ {0, 1},   δ = 1 ⟺ s(V) + s(V′) ≥ e,
+
+and δ = 1 exactly when the concatenated grid offsets cross a lattice point
+of the coarser (period-e) grid — the plain carry δ^pl of the harness
+eq-(12-int) split IS the side-lattice crossing indicator (GD-8's exact-key
+seam genre at order 1; the print-side reading of the same integer).
+
+*Proof of (c).* s(V+V′) ≡ ℓ(V+V′) ≡ s(V) + s(V′) (mod e) and all three lie
+in [0, e), so the difference is 0 or e; it is e iff s(V) + s(V′) ≥ e. ∎
+Grade: PROVED, unconditional. SCOPE: this is the single-level additive
+statement only; the multi-level defect/carry chains (S_j, D_j) are [ILN]†'s
+content, consumed not re-proved (fence displayed). [Machine: CK-GRID —
+geometric brute scan (no ℓ, no eq12) vs eq12 on both (a) and (c).]
+
+### 3.4 THEOREM JA-RES (J-A(ii): the residual dictionary — the per-slot character-gauge law)
+
+Notation: at level m ≥ 2, for nonzero A ∈ O[x] with deg A < deg Φ_m, let
+β = w_m(A); dev A by Φ_{m−1} with digits a_i; harness packed coefficients
+C_i := ε_{m−1}(β_i)·R_{m−1}v(a_i) at the exact-weight abscissas i (grid
+s(β) + j·e_{m−1}, β_i = (β − i·γ_m)/e_{m−1}, so R_m v(A) = Σ_j C_{i_j}z_m^j);
+print residual coefficients c_i := z_{m−1}^{t(i)}·R_{m−1}(a_i)(z_{m−1})
+(Definition `rescoeff` tex 1447 at order ≥ 2, `defresidual` tex 1497;
+t(i) = (s_{m−1}(a_i) − ℓ_{m−2}u_i)/e_{m−2} per Definition `t(i)` tex 1431,
+u_i = v_m(a_i·Φ_{m−1}^i); order-one base c_i = red(a_i/π^{u_i}), tex ~460).
+
+**(VD-m), the evaluated dictionary at level m** (the inductive interface):
+
+    z_m^{τ_m(A)} · R_m(A)(z_m) = ε_m(β) · R_m v(A),
+    τ_m(A) := (s_m(A) − ℓ_{m−1}β)/e_{m−1},  s_m(A) = initial attained abscissa.
+
+(VD-1) is W2-L3, PROVED (consumed).
+
+**THEOREM JA-RES (per-slot law).** Level m ≥ 2, shared keys below m. IF
+(VD-(m−1)) holds at every on-line digit a_i of A (the PER-DIGIT PROVISO),
+THEN for every attained abscissa i:
+
+    c_i = z_{m−1}^{−i·A_{m−1}} · C_i .
+
+The print's order-m residual coefficient equals the harness packed digit
+times the PURE CHARACTER z_{m−1}^{−i·A_{m−1}} in the abscissa. At m = 2 the
+proviso is (VD-1) = W2-L3: **the law is UNCONDITIONAL at m = 2.**
+
+*Proof.* By the proviso, R_{m−1}(a_i)(z_{m−1}) = z_{m−1}^{−τ_{m−1}(a_i)}·
+ε_{m−1}(β_i)·R_{m−1}v(a_i) = z_{m−1}^{−τ_{m−1}(a_i)}·C_i. So c_i =
+z_{m−1}^{t(i) − τ_{m−1}(a_i)}·C_i, and with u_i = β_i + i·W_{m−1} (both
+ordinates of the same on-line point, W_{m−1} = w_{m−1}Φ_{m−1} = the print's
+v_m(φ_m), JA-PIN clause 7):
+
+    t(i) − τ_{m−1}(a_i) = [s_{m−1}(a_i) − ℓ_{m−2}u_i − s_{m−1}(a_i)
+        + ℓ_{m−2}β_i]/e_{m−2} = −ℓ_{m−2}·i·W_{m−1}/e_{m−2} = −i·A_{m−1}. ∎
+
+**COROLLARY JA-VDIND (the induction step and its exact boundary).** Under
+the per-slot law, (VD-m) holds for A IF AND ONLY IF the slot character is
+trivial on A's attained abscissas relative to the grid start, i.e.
+z_{m−1}^{(i − s₀(A))·A_{m−1}} = 1 for every attained i — equivalently
+ϑ_m^j = 1 on the attained grid slots, ϑ_m := z_{m−1}^{−e_{m−1}A_{m−1}}
+(sufficient: A_{m−1} = 0, i.e. e_{m−2} = 1; or single-slot support; or
+ord(z_{m−1}) | e_{m−1}A_{m−1}). *Proof.* Summing the per-slot law along the
+grid: R_m(A)(z_m) = z_{m−1}^{−s₀(A)·A_{m−1}}·z_m^{−ν}·Σ_j C_{i_j}(ϑ_m z_m)^j
+(ν = the vanishing-initial-slot shift, s₀ = s(β) + νe_{m−1}), while
+τ_m(A) − ν = the ε_m-exponent (W2-L2 at k = 0, as in W2-L3's proof); the
+two displays agree iff the character drops slotwise... and the s₀-prefactor
+is absorbed by the (i − s₀) normalization displayed. ∎ [The FULL general
+form, off the collapse: R_m(A)(y) = z^{−s₀A_{m−1}}·Q_A(ϑ_m·y) with
+Q_A(y)y^ν = the packed polynomial — the same-polynomial instance of W-2
+§3.2's conjugation; the dictionary at levels ≥ 3 is a CONJUGATION, scalar
+only on the collapse perimeter.]
+
+**Definition (R-coll, the residual collapse perimeter at level m).** Every
+level-q instance of the proviso, 2 ≤ q ≤ m−1, collapses: at every recursion
+node the slot character is trivial on that node's attained abscissas (the
+JA-VDIND condition). On (R-coll): the per-slot law and (VD-m) hold at all
+levels up to m by induction with base (VD-1). Off it: the exact law is the
+per-slot law fed by the recursion (HR-REC genre), not a scalar form —
+JA-BOX-2.
+
+**COROLLARY JA-MIN (the MIN CORE transfer, GD-3 genre at orders ≥ 2).** On
+the per-slot law's perimeter, the gauge is a unit per slot: c_i = 0 ⟺
+C_i = 0, supports and degrees agree slot-for-slot, and ord_ψ data of the
+print residual is computable from the harness read (and conversely). The
+GD-3 MIN CORE at orders ≥ 2 is therefore a theorem WHERE THE DICTIONARY
+REACHES, with the same conditionality — not unconditional (JA-BOX-2).
+
+Grades: JA-RES PROVED at m = 2 (attempt grade); PROVED-under-proviso at
+m ≥ 3, unconditional on (R-coll); JA-VDIND PROVED; JA-MIN rides JA-RES.
+[Machine: CK-RES1 (m = 1, W2-L3 both sides), CK-RES (per-slot, proviso
+machine-evaluated per digit; scored where the proviso holds, boundary rows
+recorded with counts), CK-VDM (JA-VDIND forward direction), CK-BPREF (the
+JA-BOX-1 refutation census: the slot-independent form must FAIL on
+designated character-visible rows).]
+
+---
+
+## §4. Covariance: how each equality transports (the (ξ, w) orbit and the transported chamber)
+
+**The orbit action** (W-2 §4.3, consumed as convention analysis; machine
+family ORB-RES gives it a machine leg it did not have): shifting the print's
+free Bézout representative ℓ_{m−2} ↦ ℓ_{m−2} + κ·e_{m−2} (tex 1291 pins
+none) changes Def-`t(i)` by t(i) ↦ t(i) − κ·u_i and hence rescales the
+order-m residual on a side with initial attained point (s₀, u₀) by
+
+    (ORB-RES)   R^{(ℓ+κe)}(A)(y) = z_{m−1}^{−κ·u₀} · R^{(ℓ)}(A)( z_{m−1}^{κ·h} · y ),
+
+h = the level-m grid height (u drops by h per grid slot). Against this
+action, clause by clause:
+
+* **(i) w = v: INVARIANT.** v never consumes ℓ (Prop `propertiesv`'s
+  recursion is ℓ-free); JA-VAL is orbit-blind. In the W-2 clause-3
+  TRANSPORTED CHAMBER the keys byte-differ (unit ratios persist) yet the
+  VALUES agree — the valuation is representative-independent across the
+  orbit; consumed at attempt grade from W2-C3(i) (same polygons, same
+  weights) plus the machine leg. [Machine: TW-VAL — vgen on the transported
+  chamber's keys vs committed wlev, every level, every tower.]
+* **(ii) the residual dictionary: SHAPE-COVARIANT.** Under the κ-shift the
+  per-slot law keeps its unit-times-character form with transported data:
+  c_i ↦ z^{−κu_i}c_i and u_i = β_i + i·W_{m−1}, β_{i_j} = β₀ − j·γ_m along
+  the grid, so in grid coordinates the law transports to
+  c_j = (w·z^{−κβ₀−κs₀W̃})·(ξ·z^{κ(γ_m − e_{m−1}W_{m−1})})^j·C_j-shape —
+  i.e. the ORBIT of laws {c_j = w·ξ^j·C_j} is stable, with the DISPLAYED
+  (character = z^{−iA_{m−1}}, unit = 1) values valid at the pinned (P-ell)
+  representative only. This is the same orbit as W-2 §3.4's (ξ, w)
+  non-uniqueness — J-A adds no new pinning (JA-BOX-3). [Machine: ORB-RES —
+  the displayed rescaling law verified by running the sealed print
+  transcription with a shifted ℓ at one level, fixed keys.]
+* **(iii) ε = twist: PINNED-CONVENTION STATEMENT.** Under the κ-shift
+  t_m(β) ↦ t_m(β) + κβ, so the identity transports to
+  ε_m(β)·z_m^{t^{(κ)}(β)} = z_m^{κ·β}. The harness ε is canonical (its own
+  normalized Bézout); the print twist is orbit-valued. [Machine: ORB-EPS.]
+* **(iv) grid: INVARIANT.** s = ℓV mod e and u = (V − sh)/e depend on ℓ
+  only mod e — eq12 and the carry clause are orbit-blind (and ℓ-free by the
+  geometric characterization). [Machine: CK-GRID's geometric leg IS the
+  invariance witness.]
+* **The lift tie rides W-2 clause 2 verbatim:** R(Φ_{m+1}^har) =
+  w_{m+1}·ψ_m(ξ_{m+1}·y) with the §3.4 (ξ, w) closed form — JA-RES is the
+  standalone per-slot mechanism behind that tie ("the same HR-REC mechanics
+  read backwards", W2-C1's proof), now displayed as a theorem about
+  ARBITRARY on-line A, not only the lifts.
+* **Transported chamber:** the chamber is itself a class-pin instance
+  (W2-C3's induction), so §2/§3 apply VERBATIM inside it with the
+  transported ledger — the transport of J-A is re-instantiation, not a new
+  proof. The cross-chamber letter identification z_old = ξ·z_new is W-2
+  §5.1 step 2, consumed.
+
+<!-- SECTIONS 5-7 COMPOSED BELOW -->
 — J-A COMPOSER unit, campaign date 2026-08-08.
