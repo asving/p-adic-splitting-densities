@@ -10125,3 +10125,44 @@ SDYJ arc 0/1 CLEAN, Codex leg queued.
 - Next constructions: the g₀ ≥ 3 double-kill (one window-unit short,
   coordinates on record); the d₀ ≥ 2 Tower-constructor fix (the second
   capability wall); then J-A per the blueprint.
+
+---
+
+## SYNTHESIS PASS 9 + THE ENGINE REFIT LANDED — LEDGER-Λ identified (five faces, one theorem); the Thursday queue REORDERED (the W leg first); U1 + K2-CLOSE dispatched — 2026-08-08 campaign (wallclock 2026-08-04)
+
+**Synthesis 9** (`docs/in-progress/SYNTHESIS_PASS9_2026-08-08.md`,
+1ff929c; the first pattern pass since the closure program began).
+Ranked findings: (1) **LEDGER-Λ** — E-L1, SD-L2+(★), W-D4, the
+W-D5-floor, L-MONO, and SDY-L2's additive spine are FIVE
+weight-functional faces (promotion-null / mass / δ-top / valuation /
+line) of ONE telescoped quantum-table theorem on ℤ^{1+m}, with the
+residue face as substrate — 7 displays + 3 pool sites subsumed; unit U1
+priced M, risk LOW, spec at §S7.U1. (2) WINDOW-CALC: K2-L1 is the
+level-0 slice; LEDGER-Λ + WINDOW-CALC = the complete path substrate;
+first consumer = the T1-RES fork (window-cap lemma vs construction —
+one unit, two exits). (3) **K2-CLOSE**: (SURV-K2) class-wide at g₀ = 2
+≈ one M unit (glued case table + A = {0} safety + window-budget kills
+of boxes (b)/(e)); success widens the LAW-DCX class a THIRD time,
+leaving g₀ ≥ 3 as Q2's only open math. (4) PIN-CENSUS: the per-box
+kill table ((K2-RES)(a)/(e)/W2-BOX-1 pin-immune; (b) budget-killable);
+corpus law: intersect the pin before boxing machine-dark. (5) The 𝒵
+twisted-character layer (D and J-C's carrier = twisted group algebras
+over THE carry cocycle; yields the W2-COB probe; "J-C nearly automatic"
+REFUTED — OB-4/OB-6 stand). (6) Nine consolidation items incl. the
+stale (SURV-RES) display and the Q2-FRONTIER display of record. (7)
+**STRUCTURAL: the W arc (0/2) is the single grade cap on ALL of Q2 —
+its Codex leg takes the Thursday queue's FIRST seat, ahead of VC40.**
+QUEUE REORDERED accordingly.
+
+**The engine refit** (seal 9bc2aef, verdict d326677;
+`verification/openmath/engine_ext.py` + note): ALL GREEN — 60/60 tower
+pairs attribute-exact, 42/42 committed rows rebuilt dict-exact, 1,181
+double-leg irreducibility certificates, 4/4 PARI confirmations; the
+FIRST d₀ ∈ {3,4} instances (7 towers, 15 rows) all green for the
+d₀-blind SDY theorem, gains ≥ 1 everywhere. BONUS: a THIRD latent wall
+(the d₀ = 2 hardcode X² + 1 reducible at p ≡ 1 mod 4; no sealed
+artifact affected — committed rosters only ran p ∈ {2,3}); fenced by
+the extension. Standing rule: future wide-class instruments import
+engine_ext + install() and re-run agreement_gate() in-unit.
+
+**Dispatched: U1 (LEDGER-Λ) + K2-CLOSE, parallel.**
