@@ -9457,3 +9457,53 @@ ROOT §0 declaration prose (adjacent bracket; the [RMG] pastes stay
 faithful to the block-as-dated, superseded by THIS entry), and the
 public map (figures fixed before push). The §45.(i) VC40 flag is
 RESOLVED by this entry; VC40 still audits the fold as charged.
+
+---
+
+## (EMPTY-(m+1)) UNIT LANDED — PROVED at attempt grade, WIDER scope than designed — 2026-08-08 campaign (wallclock 2026-08-04)
+
+**The unit** (workflow wo7622y3z, instrument → compose). The instrument
+agent DIED mid-response (API server error) PRE-COMMIT; the composer
+salvaged its artifacts post-hoc (8d1449b, self-pin mismatch disclosed
+in-commit) and completed with its own machine leg. **ADJUDICATION of
+the seal breach: the salvaged instrument files and the composer's
+battery are COMPOSITION SUPPORT, not sealed confirmations** (the
+two-commit seal discipline was not met — no pre-run seal exists);
+evidentiary weight accordingly; the hostile arc re-derives
+independently as always.
+
+**The result** (lean/notes/openmath/EMPTY_PROOF_2026-08-08.md, commit
+4eb1719): **(EMPTY-(m+1)) PROVED at attempt grade on (H1) T-scope ∧
+(H2) g_{m−1} = 1 ∧ (H3) interior g ≡ 1 — with g₀ AND d₀ FREE**
+(exceeding the S9 route's expected g₀ = 1 shape). Proof spine: E-L1
+the exact telescoped ledger identity for π_{m−1} (weights W_l =
+1/(P_l⋯P_{m−2})); E-L2 dumps self-funded (each correction edge's dumps
+≤ its own consumption); E-L4/E-L5 seed supply ≤ c_{m−1} via the pool
+unroll with the level-0 INTEGER floor (divisor P₀ = e₀g₀) absorbing
+both the non-principal d-cell excess and the e₀-vs-P₀ rate mismatch —
+the mechanism that frees g₀; the +1 survives only on the
+arithmetically-characterized Y-tight stratum via the stage-2 Φ₀Y-junk
+child; E-L7 the forcing (k ≥ c_{m−1}+1 ⟹ all slacks vanish ⟹ Y₂ = 1 ∧
+zero correction edges); E-L6 the kill (correction-free stage 1 ⟹ the
+seed is a monomial ⟹ DIGIT-SPLIT's Y-quotient = 0 ⟹ the forced Y₂
+edge cannot exist). Machine leg (committed WITH the note, post-hoc —
+same evidentiary class): 17 families green; sealed 412/858/126
+replicated; 616 dead rows (126 sealed + 490 fresh incl. m = 4, g₀ = 2,
+d₀ = 2, both chars) with ZERO two-exit paths; 1,009 cells all satisfy
+k ≤ c_{m−1}, 560 at equality (SHARP); the Y-tight stratum populated
+(116 rows, all dead). Disclosed by the unit: CTRL-PAY1 (the E-L2
+tightness control) NEVER FIRED — a control without demonstrated teeth,
+FLAGGED for the hostile arc; 303/793 fresh dead rows law-censused but
+untraced.
+
+**Consequences (displayed in the note, grades honest):** (SURV)(ii)
+follows on (H1)–(H3) — at the same capped grade (the note consumes
+WMULTDCX at attempt grade, W arc 0/2 CLEAN; this note's grade cannot
+exceed its weakest consumed grade). (SURV)(i) survival UNTOUCHED.
+LAW-DCX-(m+1) still the m ≥ 2 conjecture. (EMPTY-gen) interior g ≥ 2
+boxed OPEN. **The remaining distance to LAW-DCX-(m+1) on the pinned
+class = (SURV)(i) + the W-arc and E-arc acceptances.**
+
+**Queued: the EMPTY hostile arc round 1 (PE-E1, Fable, on 4eb1719) —
+charged with the CTRL-PAY1 teeth question, the salvage provenance, the
+(H3) pin coverage, and the E-L5/E-L6 hard steps. Codex legs post-reset.**
