@@ -1,0 +1,145 @@
+{
+ "verdict": "LAW GREEN | EVIDENCE(DS-E0) GREEN",
+ "counts": {
+  "ENG-GATE-cases": 1,
+  "DS-CHAT": 17,
+  "DS-SUPP": 3650,
+  "DS-E1": 3650,
+  "DS-E0": 3650,
+  "DS-CASE": 2386,
+  "OB-OUT": 110
+ },
+ "censuses": {
+  "X1-FLATINT-d2/Zp3": {
+   "pairs": 64,
+   "dcx2": 0,
+   "dcx3": 0,
+   "on_dcx_supp_ok": 0,
+   "on_dcx_supp_dev": 0
+  },
+  "X1-FLATINT-d2/Fpt2": {
+   "pairs": 64,
+   "dcx2": 0,
+   "dcx3": 0,
+   "on_dcx_supp_ok": 0,
+   "on_dcx_supp_dev": 0
+  },
+  "X2-DEV1COR/Zp2": {
+   "pairs": 64,
+   "dcx2": 0,
+   "dcx3": 0,
+   "on_dcx_supp_ok": 0,
+   "on_dcx_supp_dev": 0
+  },
+  "X2-DEV1COR/Fpt3": {
+   "pairs": 64,
+   "dcx2": 0,
+   "dcx3": 0,
+   "on_dcx_supp_ok": 0,
+   "on_dcx_supp_dev": 0
+  },
+  "X3-FLAT-H2/Zp3": {
+   "pairs": 144,
+   "dcx2": 16,
+   "dcx3": 0,
+   "on_dcx_supp_ok": 32,
+   "on_dcx_supp_dev": 0
+  },
+  "X3-FLAT-H2/Fpt2": {
+   "pairs": 144,
+   "dcx2": 16,
+   "dcx3": 0,
+   "on_dcx_supp_ok": 32,
+   "on_dcx_supp_dev": 0
+  },
+  "X4-D3FLAT/Zp2": {
+   "pairs": 64,
+   "dcx2": 0,
+   "dcx3": 0,
+   "on_dcx_supp_ok": 0,
+   "on_dcx_supp_dev": 0
+  },
+  "X5-TCTRL-d1/Zp3": {
+   "pairs": 256,
+   "dcx2": 0,
+   "dcx3": 48,
+   "on_dcx_supp_ok": 48,
+   "on_dcx_supp_dev": 0
+  },
+  "X6-DCXLIVE/Zp2": {
+   "pairs": 400,
+   "dcx2": 9,
+   "dcx3": 12,
+   "on_dcx_supp_ok": 30,
+   "on_dcx_supp_dev": 0
+  }
+ },
+ "violations": [],
+ "evidence_deviations": [],
+ "eng_gate_new_viol": 0,
+ "roster": [
+  [
+   "X1-FLATINT-d2",
+   "Zp",
+   "3",
+   "2",
+   "[(2, 1, 1), (1, 1, 1), (2, 1, 1), (1, 1, 1)]"
+  ],
+  [
+   "X1-FLATINT-d2",
+   "Fpt",
+   "2",
+   "2",
+   "[(2, 1, 1), (1, 1, 1), (2, 1, 1), (1, 1, 1)]"
+  ],
+  [
+   "X2-DEV1COR",
+   "Zp",
+   "2",
+   "2",
+   "[(1, 1, 2), (2, 1, 1), (1, 1, 1), (2, 1, 1)]"
+  ],
+  [
+   "X2-DEV1COR",
+   "Fpt",
+   "3",
+   "2",
+   "[(1, 1, 2), (2, 1, 1), (1, 1, 1), (2, 1, 1)]"
+  ],
+  [
+   "X3-FLAT-H2",
+   "Zp",
+   "3",
+   "2",
+   "[(3, 1, 1), (1, 2, 1), (2, 1, 1), (1, 1, 1)]"
+  ],
+  [
+   "X3-FLAT-H2",
+   "Fpt",
+   "2",
+   "2",
+   "[(3, 1, 1), (1, 2, 1), (2, 1, 1), (1, 1, 1)]"
+  ],
+  [
+   "X4-D3FLAT",
+   "Zp",
+   "2",
+   "3",
+   "[(2, 1, 1), (1, 1, 2), (2, 1, 1), (1, 1, 1)]"
+  ],
+  [
+   "X5-TCTRL-d1",
+   "Zp",
+   "3",
+   "1",
+   "[(2, 1, 1), (2, 1, 1), (1, 1, 1), (2, 1, 1)]"
+  ],
+  [
+   "X6-DCXLIVE",
+   "Zp",
+   "2",
+   "2",
+   "[(3, 2, 1), (2, 1, 1), (2, 1, 1), (1, 1, 1)]"
+  ]
+ ]
+}
