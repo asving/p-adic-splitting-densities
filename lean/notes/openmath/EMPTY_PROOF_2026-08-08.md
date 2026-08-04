@@ -271,8 +271,9 @@ y = 1, slack = 0) — the detector demonstrably fires on real committed
 tower data.  E-L2 itself is unaffected: equality at the top corner does
 not hurt the assembly (top corrections are killed by the e_{m−1}-cost
 of E-L3, not by payment slack), and PE1 re-derived E-L2/E-L2h with no
-countermodel possible under the RMENGINE inventory pins.]  DISCLOSED,
-S8.]
+countermodel possible under the RMENGINE inventory pins. DISCLOSED at
+S8.] [E-r2, PE2-N3: the doubled closing bracket here was a nesting
+wart; flattened.]
 
 **Lemma E-L2h (hybrid form — the level-0 dump re-priced by the floor).**
 For every correction edge at level i ≥ 1:
@@ -340,6 +341,14 @@ Then, under (H3):
           (ρ⁺_l-propagation: (t_l + c_{l−1}) ≡ e_{l−1} − 1 mod e_{l−1}
           for 2 ≤ l ≤ m−1).
 
+[E-r2 2026-08-04, PE2-N4 — READER NOTE on a symbol collision; the
+statement above is byte-fenced and unchanged: "ρ⁺_l-propagation" here
+names the MAXIMAL-remainder congruence on the c-chain, while ρ⁺_l as
+DEFINED at S7/R3 is the c⁺-chain remainder — which is ZERO exactly when
+this congruence holds on the riding +1 (E-L8 displays both objects and
+the relation). No derivation step conflates them; flagged for the
+eventual consolidated rewrite.]
+
 *Proof.*  Level 0, (i): write t₁ = q·e₀ + s, 0 ≤ s < e₀, so c₁ = q.
 Then t₁ + (g₀−1)e₀ < (q+1)e₀g₀ ⟺ q + g₀ − 1 + s/e₀ < (q+1)g₀ ⟺
 q − 1 + s/e₀ < q·g₀, which holds always (at q = 0: s/e₀ − 1 < 0; at
@@ -355,7 +364,12 @@ EDC-CPLUS — both chains and the exact +1-classification on every traced
 row (including every g₀ = 2 row), 0 violations; the guard "the Y-unit
 crossed the level-0 floor off tight₀" never fired.  [E-r1, per PE1
 Finding 4(i): that guard is a PHANTOM and its non-firing is roster
-coverage, NOT law — its firing condition (c⁺₁(1) > c⁺₁(0) off tight₀)
+coverage, NOT law — its firing condition (in the v1 code: the TOP-chain
+comparison c⁺_{m−1}(1) > c⁺_{m−1}(0) off tight₀, which coincides with
+the level-1 crossing at m = 2 [E-r2, PE2-N2: this parenthetical
+formerly said c⁺₁; at m ≥ 3 the level-1 crossing is necessary but
+firing also needs the gap to ride to the top — satisfiable in scope,
+so the guard is phantom at every m])
 is satisfiable by clean in-scope arithmetic with every E-L5 clause
 holding, e.g. e₀ = 2, g₀ = 2, t₁ = 5: c⁺₁(1) = 2 > c⁺₁(0) = 1, tight₀
 false, yet (i)/(ii)/classification all hold (c₁ = 2).  Crossing c⁺₁(0)
@@ -417,7 +431,10 @@ prefix has CE = ∅, the stage-1 exit cofactor coefficient is b_Y =
     E-THM's statement and proof paragraph are byte-unchanged; E-L7's
     statement is unchanged, its derivation is new; E-L8 is NEW.]
 
-**Withdrawn displays [E-r1; PE1 Finding 1, quoted from the original].**
+**Withdrawn displays [E-r1; PE1 Finding 1, reproduced from the
+original — E-r2, PE2-N3: the inline annotation column is compressed
+and lines re-wrapped here; the byte-exact original lives at 4eb1719
+and verbatim in the PE1 report's Finding 1 quote].**
 The original assembly asserted, for every two-exit path, the π₁ chain
 
     π₁ ≤ ⌊( t₁ + t·e₀ + Y₂ + Σ_{CE}(a_{c,0} + y_c) − Σ_{CE, i=0}(P₀ − e₀k_c − y_c) )/P₀⌋     [WITHDRAWN]
@@ -568,8 +585,12 @@ t₁ + 1 ≡ 0 (mod P₀ = e₀) — and a non-worst d-cell t < g₀ − 1 only
 lowers it further (by ≥ e₀).  Each level-0 correction then removes
 P₀ − e₀k_c − y_c ≥ e₀ − 1 ≥ 1 (e₀ ≥ 2 at d₀ ≥ 2 under (H1)), pushing
 the numerator strictly below the multiple: the floor drops by ≥ 1,
-i.e. π₁ ≤ c⁺₁(1) − 1.  [Machine: EXT-MIDSTEP true form, 0/68 on the
-tight boundary.]
+i.e. π₁ ≤ c⁺₁(1) − 1 [E-r2 2026-08-04, PE2-N1: as a bare inequality
+this gloss holds only in the final forced configuration (CE_{≥1} = ∅);
+in general the R1 display's + Σ_{CE,i≥1}⌈(a_{c,0}+y_c)/P₀⌉ term rides
+along, and what R7 consumes is exactly Δ₀ ≥ 1 (worth −W₁), with the ⌈⌉
+units separately absorbed by E-L2h].  [Machine: EXT-MIDSTEP true form,
+0/68 on the tight boundary.]
 
 **Lemma E-L7 (forcing) [statement unchanged from composition;
 derivation repaired at E-r1 — steps R4–R7].**  If k ≥ c_{m−1} + 1
@@ -882,3 +903,22 @@ this revision + the v2 runner; Codex legs post-reset.  Grade
 unchanged: PROVED at attempt grade, 0/1 CLEAN, capped by the WMULTDCX
 consumption (0/2 CLEAN) as before.  Nothing in this repair touches
 (EMPTY-gen), (SURV)(i), or the law's grade.
+
+**REPAIR RECORD, E-r2 (2026-08-08 campaign, wallclock 2026-08-04).**
+Round-2 verdict on the E-r1 text (7ebd9c8): **PE2 (Fable,
+`EMPTY_passPE2_report.md` + decorrelated instrument `empty_pe2_ext.py`,
+37,044 grid points / 9 families / 0 failures) CLEAN — 0 critical,
+0 gaps** + 4 notes. The central risk killed: PE2 re-derived the repaired
+S7 (R1–R7 + the corrected master inequality + E-L8) FROM SCRATCH before
+comparing — term-for-term match; E-L8's exact-0 claim and the Y-tight
+characterization exact in both directions; v2 sandbox re-run 18/18
+field-identical with CTRL-PAY2's firing machine-localized; v1 bytes
+untouched; withdrawn displays bracket-clean with zero downstream
+leakage. The four notes CURED at [E-r2] brackets (this record): the R6
+gloss completed (N1); the phantom-guard parenthetical corrected to the
+top-chain comparison (N2); the withdrawal requote's fidelity statement
+made accurate + the doubled bracket flattened (N3); the E-L5(ii)/R3
+ρ⁺-symbol collision given an adjacent reader note — the byte-fenced
+statement untouched (N4). **Counter: 1/2 CLEAN (the Fable leg met).
+Round 3 = the model-diverse Codex leg (post-reset, window Aug 08) — the
+acceptance attempt.**

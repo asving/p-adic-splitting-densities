@@ -9556,3 +9556,18 @@ is PE1's OWN derivation (verifier = repairer for the new S7 text), so
 model-diverse verification of the repair is still owed. **Queued:
 round 2 = PE-E2 (fresh context) on the repaired revision + the v2
 runner; Codex legs post-reset.**
+
+---
+
+## (EMPTY) ROUND 2: PE2 CLEAN (the Fable leg met) + E-r2 notes cured — 2026-08-08 campaign (wallclock 2026-08-04)
+
+On the E-r1 text (7ebd9c8): **EMPTY-PE2 CLEAN 0C/0G + 4n** — the
+repaired S7 re-derived from scratch (term-for-term), E-L8 exact both
+directions, a decorrelated 37k-point instrument 0 failures, CTRL-PAY2's
+firing machine-localized, all pins verified. The four cosmetic notes
+cured at [E-r2] by the orchestrator (the R6 gloss; the guard
+parenthetical; the requote fidelity + bracket wart; the ρ⁺ reader note
+adjacent to the byte-fenced E-L5(ii)). **E arc counter 1/2 CLEAN; round
+3 = the Codex leg post-reset — the acceptance attempt.** The Q2 line's
+remaining mathematics: (SURV)(i) survival; then the three Codex legs
+(VC40, W arc, E arc) close the wave-21 window.
