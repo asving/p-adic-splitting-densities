@@ -9226,3 +9226,33 @@ NOT-CLEAN — 1 critical, 2 gaps + 2 notes.**
   genuinely unchanged; no silent row-11c upgrade; all md5 pins match.
 - **W-r1 repair queued** (critical rewording + the two hypothesis pins
   + notes), then round 2.
+
+**WMULTDCX W-r1 (repair applied 2026-08-04, on the 9bec735 text; PE1
+report/instrument at d63f8bb): all 5 PE1 findings dispatched; round 2
+runs on the repaired text.**
+- **The CRITICAL (PE1-C1): WITHDRAWN + rewritten.**  The S9 claims
+  "(ii)-deadness is a cancellation phenomenon, not path non-existence",
+  "derived, not just measured", and "provably NOT closable by mass
+  arguments" are withdrawn — refuted by the unit's own artifacts (all
+  126 traced dead rows carry ZERO Q¹ cells, derive battery + PE1
+  instrument concurring; the 112 beyond-floor cells / 72 sealed parts
+  sit entirely on LIVE rows).  The paragraph now states the artifact
+  facts and displays the flip side as the conjecture-grade lead
+  **(EMPTY-(m+1))**: c_{m−1} < k ⟹ no two-exit path at all — via
+  W-D4 + W-D6/W-D6c it reduces to showing the two excess channels
+  cannot fund π_{m−1} ≥ k on any legal path, a tree-counting statement
+  with no residue arithmetic.  Primary design input for the (SURV)
+  composer.  Nothing graded PROVED consumed the withdrawn claim
+  (re-confirmed at repair).
+- PE1-G1: W-D7(iii)'s two-sidedness now displays (STK) ∧ the law
+  clause D + c_{m−1} ≥ 2e_{m−1} at every consumption site (W-D7(iii),
+  S0 reconciliation, S8(b), S8 close, F6, claims row); clause-failing
+  case honest (cap ≤ only; empty max displayed).
+- PE1-G2: W-D2(0)'s u ≥ 0 rebased to the (H3) any-d-cell argument —
+  no more consumption of F3-certified principal-cell existence.
+- PE1-N1/N2: (STK) census denominator disclosed (302 = the 16
+  all-g = 1 towers' traced rows only) and LED_l machine coverage
+  marked terminal-cells-only.
+- No other lemma's mathematics touched; every edit carries a dated
+  [W-r1] bracket; head bracket + S11 REPAIR RECORD added.  Grade:
+  W-D1–W-D7 + PID† stay PROVED at attempt grade, 0/2 CLEAN passes.
