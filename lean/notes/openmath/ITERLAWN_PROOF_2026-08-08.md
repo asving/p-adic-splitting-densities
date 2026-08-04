@@ -1014,6 +1014,30 @@ as the S7 r38 block) — S4.3 head erratum.]**
   by e₀ ≤ 2 (proved). The full-class emptiness statement for n ≥ 3 at
   e_j ≤ 2 is conjectural (engine-dependent).
 
+**[REFUTATION BRACKET (2026-08-03, orchestrator-direct; the sealed RM-2
+engine probe, seal 0b42885 → verdict d860a5a, note
+`RM2_PROBE_2026-08-08.md`): the CONJECTURED clause above is FALSE at
+m = 3 — 42 sealed witnesses, all measured ⊋ predicted, headline tuple
+(RM2A/ℤ₃, γ = γ′ = 51, the all-(e = 2, g = 1) stack, every s-value 1),
+cross-ring confirmed (F₂[[t]]): DCX₃ is LIVE at e₁ = 2 (Q¹ ≠ 0). The
+"full-class emptiness for n ≥ 3 at e_j ≤ 2" clause settles NEGATIVELY.
+UNAFFECTED: this note's theorem (proved OFF-DCX-(n), consuming only the
+outer bound, which stayed GREEN 0/73); [IL3]'s proved m = 2 emptiness
+(e₀ ≤ 2); the outer-bound consequence clauses above except the "full-class"
+sentence. THE MEASURED SHARP LOCUS (post-run separation, 102/102 exact,
+display-only, sealed confirmation owed): DCX₃ = TRACK ∧ [T₂ + s₂(γ₃) ≥
+2e₁ ∨ (T₂ + s₂(γ₃) = 2e₁ − 1 ∧ s₁ + s₁′ + s₁(u₀) ≥ e₀)] with
+u₀ = (γ₃ − s₂(γ₃)γ₂)/e₁ — a TWO-LEVEL CARRY CHAIN: the level-2 boundary
+is decided by a level-1 overflow promoting into the Φ₁ slots, riding the
+same E1-promotion edge that carries the engine's termination measure.
+Also of record from the probe: the four (RM-m) box clauses ALL
+instance-true at m = 2 (405/405 engine calls; weight/read/ε′/consistency
+0 violations) — the m = 1 mechanism generalizes AS DISPLAYED; the
+termination measure strictly descends on the inherited scope (e₁ = 1
+flat-promotion edges need a lexicographic tiebreak, priced with the
+engine compose); the fenced e₀ = 1 ∧ d₀ = 2 corner was UNTESTED (inputs
+dodge it), not passed.]**
+
 **On DCX-(n) the W-MULT display is the OPEN family (W-MULT-DCX-m)** —
 instance-true at every probed instance (rung 2: [IL3] S4.7's roster-B
 evidence + its diag 16 DCX pairs/0; rung 3: the sealed 4-read battery's

@@ -8671,3 +8671,23 @@ candidate second-round display. No reseal cycle used; this unit is a
 MEASUREMENT — nothing is accepted, nothing self-confirmed. Unit files:
 prereg + runner + artifacts + separation script + this append ONLY
 (scoped `git commit --only`).
+
+## THE CLOSURE PROGRAM OPENS: the RM-2 probe verdict + the DCX₃ refutation — adjudicated (wallclock 2026-08-04)
+
+The sealed RM-2 engine probe (0b42885 → d860a5a → 9e3ad2c): THE ENGINE
+GENERALIZES — all four (RM-m) box clauses instance-true at m = 2 (405/405
+calls, 0 violations on weight/read/ε′/consistency), termination by a linear
+cross-level measure on the inherited scope. AND a probe SUCCESS: the S4.7
+CONJECTURED emptiness ("DCX_m = ∅ unless e_{m−2} ≥ 3") is REFUTED at m = 3
+(42 sealed witnesses, cross-ring; DCX₃ live at all-(e=2,g=1) stacks). The
+measured sharp locus is a TWO-LEVEL CARRY CHAIN (102/102 exact post-run,
+display-only). [ILN]† UNAFFECTED (off-DCX with the outer bound only, which
+stayed green). Refutation bracket applied at ITERLAWN S4.7 (orchestrator-
+direct; the clause was labeled CONJECTURED — a status update, not an
+erratum). CONSEQUENCES FOR THE QUEUE: (a) the engine compose is GO (the
+mechanism holds; the e₁ = 1 tiebreak priced in); (b) the DCX₃ two-level
+carry chain needs its own SEALED CONFIRMATION before the compose consumes
+it; (c) the unification hint of record: the promotion edge carries BOTH the
+termination measure and the DCX boundary — the (RM-m) and (W-MULT-DCX-m)
+families may close by ONE chained-carry analysis. VC39 launching on the
+built charge (935,170 B, 114/114 pre-verified).
