@@ -10277,3 +10277,30 @@ must cite K2-L10, not the pass-9 kill table, for (b)/(e) budget reach.
 **Arcs after this pass:** K2 (SURVK2_PROOF) 0/1 · KC (K2-CLOSE) 0/1 —
 GAPS-ONLY ≠ CLEAN. Both Codex legs run post-reset (Thursday queue, W
 leg still first) on the KC-r1 text.
+
+---
+
+## THE SECOND EVENING CHECKPOINT — all fleets idle; the synthesis-directed window complete — 2026-08-08 campaign (wallclock 2026-08-04, late)
+
+Since the first evening checkpoint (b6e66d9): SYNTHESIS PASS 9 ran
+(LEDGER-Λ identified + six more ideas + the W-leg-first queue reorder);
+the ENGINE REFIT lifted both capability walls (+ found and fenced a
+third) with the first d₀ ∈ {3,4} instances green; **LEDGER-Λ LANDED**
+(the five-face unification — the corpus's path bookkeeping is ONE
+theorem, all faces byte-fidelity-matched); **K2-CLOSE LANDED** through
+the split architecture after two cap deaths (K2-L9/L10/L11/L12 +
+K2-THM-B on the widened scope; the g₀ = 2 involution program CLOSED on
+its perimeter; the residual unified; the PV-4 residue-generic falsifier
+target named); both new arcs opened and their round-1 repairs applied
+(KC-r1 360ce0b).
+
+**Arcs:** W 0/2 · E 1/2 · S 0/2 · SD 1/2 · K2 0/1 · W2 0/2 · SDYJ 0/1 ·
+KC 0/1 · LED-Λ 0/0. **The Thursday Codex window (Aug 08 04:22), in
+order: the W leg FIRST (the single cap on all of Q2), then VC40, then
+the E/S/SD/K2/W2/SDYJ/KC/LED-Λ legs + the weld blueprint plan-review +
+the errata.** **Next compositions, all specced:** the residue-generic
+glued construction (PV-4); WINDOW-CALC + the T1-RES fork (g₀ ≥ 3, via
+engine_ext); the weld J-A (consuming W-2 clause 1); the 𝒵/W2-COB probe.
+**Lean stays deferred** per the math-first directive until the weld
+junctions + the acceptance legs stabilize the corpus — the corpus is
+now MUCH smaller (LEDGER-Λ) and wider (K2-THM-B) than at dawn.
