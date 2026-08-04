@@ -9983,3 +9983,39 @@ unit-local ĵ display bug (the authoritative cell used everywhere);
 the pick extension's scope. The construction directive's first outing:
 one lemma FOR the claim (T1's budget bound), one tooling discovery,
 one box→lemma conversion — zero sweeps wasted.
+
+---
+
+## W-2 COMPOSED — THE WELD'S CENTRAL JUNCTION at attempt grade; the covariance = the print's own constant; ALL 96 transport REDs turn GREEN — 2026-08-08 campaign (wallclock 2026-08-04)
+
+**The unit** (workflow whxtdfehz; commit 5463f2a;
+`GRTW2_PROOF_2026-08-08.md` + `grt_w2_checks.py`, 6,403 samples / 17
+families / 0 violations). Grades: **Clause 1 (admissible
+representative) PROVED at attempt grade** — polygon legs unconditional
+at every level; the residual leg strict Def-2.12 representative of the
+ξ-conjugate type under the pinned convention (the unpinned-ℓ orbit
+parametrized; convention analysis review-owed). **Clause 2 (unit
+covariance) PROVED** — exact and unconditional at m = 1; on the
+ϑ-trivial collapse perimeter at m ≥ 2 with the general law = the exact
+HR-REC recursion; boundary boxed (W2-BOX-1, witness I4B r = 5: a
+support-invisible interior character re-emerging through mod-wrap).
+**THE (ξ, w) CLOSED FORM**: ξ_{m+1} = χ_m^{γ_{m+1}}·z_m^{−e_m A_m},
+w_{m+1} = χ_m^{−g_m γ_{m+1}}, with A_m = ℓ_{m−1}g_{m−1}γ_m and the
+χ-composition exponent ℓ′ − ℓwΦ = the [ILN] shift-descent operator;
+print tie z_m^{−A_m} = c₁ (Theorem-phir's constant) — at m = 1 the
+whole covariance is (c₁^{e₁}, 1). The probe's T2A witness reconciled
+exactly (the ε-exponent gap = A₁e₁g₁ = 4). **Clause 3 (ψ-transport)**:
+chain level PROVED given 1–2 (strict representative of the transported
+type at every level; same-type = the MacLane-equivalence cash-out;
+44/44/44); the value layer = OPEN lemma W2-OPEN-1
+(instance-confirmed 684 groups / 0). **T3E EXPLAINED** (Lemma W2-T3E,
+carry-inertness: flat middle forces s₂ ≡ 0, the twist never enters a
+read; the T3A converse containment exact). **F3-RED-UNDER-TRANSPORT:
+96 → 0** — every probe transport failure turns GREEN; 12/12 PARI
+transported-lift certificates.
+
+**Weld status after W-2:** the lift junction stands at attempt grade
+(arc 0/2 owed) with two honest boxes (W2-BOX-1 boundary; W2-OPEN-1
+value layer) + the convention-analysis review item. Next per the
+blueprint's dependency order: J-A consumes W-2's clause 1; the W-2
+hostile arc + the blueprint plan-review join the Thursday Codex queue.
