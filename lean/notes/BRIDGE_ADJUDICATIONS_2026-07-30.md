@@ -9928,3 +9928,58 @@ cascade protections at once), (b) the glued duplicate-book stratum
 (seeded by SDW4G2F), (c) the first-ever g₀ = 1 ∧ d₀ ≥ 2 tower for
 (SD-YJ) (a corner with ZERO roster representatives — construct the
 probe instance itself).
+
+---
+
+## THE DOUBLE-KILL CONSTRUCTION UNIT LANDED — (SURV-DISJ) survived all three builds; the (SD-YJ) box converted to ONE lemma; the g₀ ≥ 3 "cost wall" exposed as a CAPABILITY wall — 2026-08-08 campaign (wallclock 2026-08-04)
+
+**The unit** (workflow wft1fm9bq; seal 84edf07 with the defeat systems
++ prediction sheet sealed pre-battery, verdict 092471d; note
+`SURVDISJ_CONSTRUCT_2026-08-08.md`). Sealed battery: 17 verdict
+families, 0 violations, 246 live rows, **0 double kills, 246/246
+protected**.
+
+**K2-ENG (lemma-grade, about our own instrumentation):** the committed
+engine's `fp_irreducible`/`pick_irreducible` support only deg ≤ 2 — the
+SURVK2 instrument's "g₀ ≥ 3 engine cost wall" (dbe0cb9) was a
+CAPABILITY wall; those towers could never have been constructed. Under
+the unit's disclosed, agreement-tested pick extension (committed
+engines byte-untouched, CON-PIN green): **g₀ = 3 is machine-lit** —
+101 first-ever rows, window calculus/mass ledger/factorization all
+0-violation, first g₀ = 3 cascade kills (2) + 50 cascade-absent rows
+with the bottom leg carrying every one. ERRATUM QUEUED: the SURVK2
+instrument note's "cost wall" wording gets a dated cross-note
+correction at the next K2 repair.
+
+**(T1) g₀ = 3 double kill: PARTIAL, boxed (T1-RES).** The defeat system
+armed (over F₂/F₄ the kill identity ψ̄₀ = ψ̄₂³ is AUTOMATIC; the
+order-multiplicity door opened identity-free on an override tower) but
+BLOCKED one unit short: the n = 5 window needs parked+arrival ≥ 10,
+a-priori cap 11, realized max 9 (max window budget 4 < 5 on all 101
+rows — no door instance ever existed). Next construction coordinates on
+record: force a t = 2 seed onto a parked-5 state or a near-full dump.
+
+**(T2) glued stratum: PARTIAL.** A SECOND duplicate-book fiber found
+(SDW4G2F[2619,2635], same book shape); both sit in ODD glued groups so
+a net ±1 always survived; even-parity amplification stays open (the
+m = 3 / h₁ = 3 siblings produce no glue — m = 4 dump geometry
+required).
+
+**(T3) THE HEADLINE — (SD-YJ) machine-dark → DATA + ONE LEMMA.** Nine
+first-ever g₀ = 1 ∧ d₀ = 2 towers (the class pin allows them,
+verified); Φ₀Y-edges real; eight Y-fed cascade-slot companions
+materialized EXACTLY as the box predicted (both Y₂ shapes, (★) exact,
+first d₀ = 2 exercise of the EMPTY machinery); **the cascade survived
+41/41** — every companion carries w₀ ∈ {ŵ+1, ŵ+2}, line > β̂. The
+sharpened single open lemma, verbatim in the note: **(SD-YJ′): at
+g₀ = 1 ∧ (STK), junk ≥ 1 at the fixed slot ĵ forces line > β̂ — the
+junk line-gain cannot be offset by promotion savings at fixed slot.**
+Proving it extends SD-THM-A to every d₀ and closes the g₀ = 1 leg of
+(SURV-DISJ) class-wide. Composer dispatched.
+
+Disclosures adjudicated: pre-seal design probes (feasibility-only)
+honestly scoped; two VOID controls (zero door realizations); the
+unit-local ĵ display bug (the authoritative cell used everywhere);
+the pick extension's scope. The construction directive's first outing:
+one lemma FOR the claim (T1's budget bound), one tooling discovery,
+one box→lemma conversion — zero sweeps wasted.
