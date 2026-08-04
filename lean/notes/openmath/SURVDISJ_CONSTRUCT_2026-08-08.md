@@ -387,6 +387,24 @@ were harmless on every probed row.**
   with (★) Σ defc = Y₂ EXACT on all (CON-STAR 0), the SD-L1 bound and
   the defc = 0 shape analysis exact (CON-DEF/CON-YJ0 0, first d₀ = 2
   exercise; 10 defc = 0 corrections realized).
+
+  [Y-r1 cross-file ERRATUM, 2026-08-08 campaign (wallclock
+  2026-08-04), applied by the (SD-YJ′) Y-r1 repair unit: the second
+  bracket above — "[Y₂ = 1: the correction rides its X-child,
+  defc = 1]" — is WRONG as a mechanism description, contradicted by
+  THIS note's own committed artifacts and confirmed independently
+  twice (SDYJ_PROOF_2026-08-08.md F-E; the SDYJ pass-PE1 three-leg
+  check): (1) every Y₂ = 1 companion carries junk = 1 already fully
+  accounted by the stage-2 seeding Y-edge, and a correction X-child
+  would increment junk to ≥ 2; (2) the realized gains equal the digit
+  valuation v₀ exactly with no π-junk +1, which an X-ride forces
+  (L-NORM(b)); (3) the SDYJ battery's direct census measured nX = 0
+  on ALL 11 realized companions (the 8 of this note + 3 fresh).  The
+  correct second shape is [Y₂ = 1: the SEEDING rides its Y-child and
+  the correction rides its L-CHILD, defc = 1 via the dump (Y_c = 0)].
+  The Y₂ = 0 bracket is confirmed correct.  The (★) arithmetic, the
+  counts, and everything else in this bullet stand; nothing else in
+  this note is touched.]
 * THE CASCADE SURVIVED ALL 41/41 (all companions harmless): every
   realized companion has w₀ ∈ {ŵ+1, ŵ+2} and line = β̂ + E_m·Δw₀ > β̂
   (post-hoc Q2 anatomy) — the junk edge's line-gain was never offset.

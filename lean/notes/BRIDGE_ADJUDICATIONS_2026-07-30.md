@@ -10056,3 +10056,41 @@ repair rounds of those notes. One post-seal repair disclosed (a
 constructor-name bug in the WALL probe; sealed families byte-unchanged).
 **PE-Y1 dispatched; the engine's d₀ ≥ 2 constructor fix + the g₀ ≥ 3
 double-kill (T1-RES coordinates) are the next construction unit.**
+
+---
+
+## (SD-YJ′) hostile arc round 1: PE1 GAPS-ONLY (0 crit / 1 gap / 6 notes) — Y-r1 repair applied, cross-note erratum executed; arc 0/1 CLEAN — 2026-08-08 campaign (wallclock 2026-08-04)
+
+**PE1** (fresh Fable hostile content pass, `SDYJ_passPE1_report.md`,
+object at a44cb70): SDY-L1 re-derived SOUND in full from the accepted
+[RMG] displays alone (forcing window at every level, single-cell
+exactness via L-CELL(i), the (INV) induction by hand, complete
+(H2)/(H3)/all-g-1 entry-point list); the SDY-L2 ledger audited
+edgewise — no leaking child type, no promotion term possible; the
+companion anatomy EXHAUSTIVE; the every-d₀ extension free of hidden
+d₀ = 1 dependence; every grade cap verified; the machine leg re-run
+identical, with 2 full companions + ALL 15 sealed v₀ predictions
+hand-re-derived exact; the F-E cross-note contradiction CONFIRMED on
+three independent legs; the d₀ = 3 wall verified in engine source.
+**The one gap G-1**: the v1 runner's SDYJ-CASC "line = β̂" sub-clause
+was TAUTOLOGICAL as implemented (β̂ defined as the cascade cell's own
+line, never recomputed from S-L1's pool formula).
+
+**Y-r1 repair (this round, statements byte-unchanged):** versioned
+runner `sdyj_checks_v2.py` (v1 byte-untouched AND md5-pinned inside
+v2) recomputes β̂ INDEPENDENTLY from the S-L1 pool formula β̂ = λ̂ +
+Σ c_l·q_l (carries from the pool arithmetic, decorrelated from the
+walk) — re-run: **ALL ELEVEN FAMILIES 0 VIOLATIONS; the
+de-tautologized sub-clause PASSES on all 56 cascade cells; every
+counter identical to v1.**  Six notes fixed (t-window arithmetic
+displayed; L-CELL(i) cited in body + claims row; the "no g₀ = 1
+residual" gloss tightened to box-plus-standing-pins; F-D's stale
+"Tower2" name corrected; the idle "+1 overshoot" gloss tightened;
+run-1 artifact status disclosed — overwritten, nothing to commit).
+**THE CROSS-NOTE ERRATUM APPLIED**: the construct note's "[Y₂ = 1:
+the correction rides its X-child]" bracket
+(`SURVDISJ_CONSTRUCT_2026-08-08.md`) corrected in place by a dated
+[Y-r1 cross-file] bracket — the true mechanism is seeding-Y-edge junk
++ correction L-CHILD (defc = 1 via the dump, Y_c = 0); nX = 0 on all
+11 realized companions.  **Arc standing: 0/1 CLEAN (GAPS-ONLY does
+not count); round 2 = the Codex leg after the usage-window reset.**

@@ -1,0 +1,1103 @@
+{
+ "final": true,
+ "violations": [],
+ "findings": [
+  [
+   "YJ-COMP",
+   "YJ3FLT",
+   {
+    "key": [
+     91,
+     95
+    ],
+    "gain": 1,
+    "junk": 1,
+    "y2": 0,
+    "nce": 1,
+    "nX": 0,
+    "corr_child": "L/Y-only"
+   }
+  ],
+  [
+   "YJ-COMP",
+   "YJ3FLT",
+   {
+    "key": [
+     95,
+     95
+    ],
+    "gain": 1,
+    "junk": 1,
+    "y2": 1,
+    "nce": 1,
+    "nX": 0,
+    "corr_child": "L/Y-only"
+   }
+  ],
+  [
+   "YJ-COMP",
+   "YJ3FLTB",
+   {
+    "key": [
+     187,
+     191
+    ],
+    "gain": 2,
+    "junk": 1,
+    "y2": 0,
+    "nce": 1,
+    "nX": 0,
+    "corr_child": "L/Y-only"
+   }
+  ],
+  [
+   "YJ-COMP",
+   "YJ3FLTB",
+   {
+    "key": [
+     191,
+     191
+    ],
+    "gain": 2,
+    "junk": 1,
+    "y2": 1,
+    "nce": 1,
+    "nX": 0,
+    "corr_child": "L/Y-only"
+   }
+  ],
+  [
+   "YJ-COMP",
+   "YJ4FLT",
+   {
+    "key": [
+     355,
+     355
+    ],
+    "gain": 1,
+    "junk": 1,
+    "y2": 1,
+    "nce": 1,
+    "nX": 0,
+    "corr_child": "L/Y-only"
+   }
+  ],
+  [
+   "YJ-COMP",
+   "YJ4FLT",
+   {
+    "key": [
+     355,
+     359
+    ],
+    "gain": 1,
+    "junk": 1,
+    "y2": 1,
+    "nce": 1,
+    "nX": 0,
+    "corr_child": "L/Y-only"
+   }
+  ],
+  [
+   "YJ-COMP",
+   "YJ3Z",
+   {
+    "key": [
+     91,
+     95
+    ],
+    "gain": 1,
+    "junk": 1,
+    "y2": 0,
+    "nce": 1,
+    "nX": 0,
+    "corr_child": "L/Y-only"
+   }
+  ],
+  [
+   "YJ-COMP",
+   "YJ3Z",
+   {
+    "key": [
+     95,
+     95
+    ],
+    "gain": 1,
+    "junk": 1,
+    "y2": 1,
+    "nce": 1,
+    "nX": 0,
+    "corr_child": "L/Y-only"
+   }
+  ],
+  [
+   "YJ-COMP",
+   "YJX1",
+   {
+    "key": [
+     235,
+     239
+    ],
+    "gain": 3,
+    "junk": 1,
+    "y2": 0,
+    "nce": 1,
+    "nX": 0,
+    "corr_child": "L/Y-only"
+   }
+  ],
+  [
+   "YJ-COMP",
+   "YJX1",
+   {
+    "key": [
+     239,
+     239
+    ],
+    "gain": 3,
+    "junk": 1,
+    "y2": 1,
+    "nce": 1,
+    "nX": 0,
+    "corr_child": "L/Y-only"
+   }
+  ],
+  [
+   "YJ-COMP",
+   "YJX4",
+   {
+    "key": [
+     115,
+     115
+    ],
+    "gain": 1,
+    "junk": 1,
+    "y2": 1,
+    "nce": 1,
+    "nX": 0,
+    "corr_child": "L/Y-only"
+   }
+  ]
+ ],
+ "counters": {
+  "sweep_sharp_v0_1": 3892,
+  "sweep_integrality_loadbearing": 26416,
+  "sweep_chains": 980646,
+  "wall_quadratic_phi0": 1,
+  "gam_towers": 15,
+  "dig_digits": 30,
+  "live_rows": 56,
+  "super_cells": 139,
+  "casc_pool_line_ok": 56,
+  "casc_rows": 56,
+  "dig_sharp_v0_1": 9,
+  "rep_companions": 8
+ },
+ "rows": [
+  {
+   "tower": "YJ2F",
+   "key": [
+    67,
+    67
+   ],
+   "ncells": 1,
+   "stk": true,
+   "casc": "SURV",
+   "ncomp": 0
+  },
+  {
+   "tower": "YJ3F",
+   "key": [
+    259,
+    259
+   ],
+   "ncells": 1,
+   "stk": true,
+   "casc": "SURV",
+   "ncomp": 0
+  },
+  {
+   "tower": "YJ3F",
+   "key": [
+    259,
+    267
+   ],
+   "ncells": 1,
+   "stk": true,
+   "casc": "SURV",
+   "ncomp": 0
+  },
+  {
+   "tower": "YJ3F",
+   "key": [
+    263,
+    267
+   ],
+   "ncells": 1,
+   "stk": true,
+   "casc": "SURV",
+   "ncomp": 0
+  },
+  {
+   "tower": "YJ3F",
+   "key": [
+    267,
+    267
+   ],
+   "ncells": 2,
+   "stk": true,
+   "casc": "SURV",
+   "ncomp": 0
+  },
+  {
+   "tower": "YJ3FLT",
+   "key": [
+    91,
+    95
+   ],
+   "ncells": 2,
+   "stk": true,
+   "casc": "SURV",
+   "ncomp": 1
+  },
+  {
+   "tower": "YJ3FLT",
+   "key": [
+    95,
+    95
+   ],
+   "ncells": 9,
+   "stk": true,
+   "casc": "SURV",
+   "ncomp": 1
+  },
+  {
+   "tower": "YJ3FLTB",
+   "key": [
+    187,
+    191
+   ],
+   "ncells": 2,
+   "stk": true,
+   "casc": "SURV",
+   "ncomp": 1
+  },
+  {
+   "tower": "YJ3FLTB",
+   "key": [
+    191,
+    191
+   ],
+   "ncells": 8,
+   "stk": true,
+   "casc": "SURV",
+   "ncomp": 1
+  },
+  {
+   "tower": "YJ3DPF",
+   "key": [
+    363,
+    363
+   ],
+   "ncells": 6,
+   "stk": true,
+   "casc": "SURV",
+   "ncomp": 0
+  },
+  {
+   "tower": "YJ3DPF",
+   "key": [
+    363,
+    367
+   ],
+   "ncells": 1,
+   "stk": true,
+   "casc": "SURV",
+   "ncomp": 0
+  },
+  {
+   "tower": "YJ3DPF",
+   "key": [
+    363,
+    371
+   ],
+   "ncells": 4,
+   "stk": true,
+   "casc": "SURV",
+   "ncomp": 0
+  },
+  {
+   "tower": "YJ3DPF",
+   "key": [
+    363,
+    375
+   ],
+   "ncells": 1,
+   "stk": true,
+   "casc": "SURV",
+   "ncomp": 0
+  },
+  {
+   "tower": "YJ3DPF",
+   "key": [
+    363,
+    379
+   ],
+   "ncells": 4,
+   "stk": true,
+   "casc": "SURV",
+   "ncomp": 0
+  },
+  {
+   "tower": "YJ3DPF",
+   "key": [
+    363,
+    383
+   ],
+   "ncells": 2,
+   "stk": true,
+   "casc": "SURV",
+   "ncomp": 0
+  },
+  {
+   "tower": "YJ3DPF",
+   "key": [
+    371,
+    371
+   ],
+   "ncells": 1,
+   "stk": true,
+   "casc": "SURV",
+   "ncomp": 0
+  },
+  {
+   "tower": "YJ3DPF",
+   "key": [
+    371,
+    379
+   ],
+   "ncells": 1,
+   "stk": true,
+   "casc": "SURV",
+   "ncomp": 0
+  },
+  {
+   "tower": "YJ3DPF",
+   "key": [
+    371,
+    383
+   ],
+   "ncells": 1,
+   "stk": true,
+   "casc": "SURV",
+   "ncomp": 0
+  },
+  {
+   "tower": "YJ3DPF",
+   "key": [
+    375,
+    379
+   ],
+   "ncells": 1,
+   "stk": true,
+   "casc": "SURV",
+   "ncomp": 0
+  },
+  {
+   "tower": "YJ3DPF",
+   "key": [
+    379,
+    379
+   ],
+   "ncells": 4,
+   "stk": true,
+   "casc": "SURV",
+   "ncomp": 0
+  },
+  {
+   "tower": "YJ3DPF",
+   "key": [
+    379,
+    383
+   ],
+   "ncells": 1,
+   "stk": true,
+   "casc": "SURV",
+   "ncomp": 0
+  },
+  {
+   "tower": "YJ4FLT",
+   "key": [
+    355,
+    355
+   ],
+   "ncells": 9,
+   "stk": true,
+   "casc": "SURV",
+   "ncomp": 1
+  },
+  {
+   "tower": "YJ4FLT",
+   "key": [
+    355,
+    359
+   ],
+   "ncells": 2,
+   "stk": true,
+   "casc": "SURV",
+   "ncomp": 1
+  },
+  {
+   "tower": "YJ4FLT",
+   "key": [
+    355,
+    363
+   ],
+   "ncells": 1,
+   "stk": true,
+   "casc": "SURV",
+   "ncomp": 0
+  },
+  {
+   "tower": "YJ4FLT",
+   "key": [
+    363,
+    363
+   ],
+   "ncells": 1,
+   "stk": true,
+   "casc": "SURV",
+   "ncomp": 0
+  },
+  {
+   "tower": "YJ3Z",
+   "key": [
+    91,
+    95
+   ],
+   "ncells": 2,
+   "stk": true,
+   "casc": "SURV",
+   "ncomp": 1
+  },
+  {
+   "tower": "YJ3Z",
+   "key": [
+    95,
+    95
+   ],
+   "ncells": 7,
+   "stk": true,
+   "casc": "SURV",
+   "ncomp": 1
+  },
+  {
+   "tower": "YJ3F3",
+   "key": [
+    91,
+    95
+   ],
+   "ncells": 1,
+   "stk": true,
+   "casc": "SURV",
+   "ncomp": 0
+  },
+  {
+   "tower": "YJ3F3",
+   "key": [
+    95,
+    95
+   ],
+   "ncells": 2,
+   "stk": true,
+   "casc": "SURV",
+   "ncomp": 0
+  },
+  {
+   "tower": "YJT1F",
+   "key": [
+    137,
+    137
+   ],
+   "ncells": 1,
+   "stk": true,
+   "casc": "SURV",
+   "ncomp": 0
+  },
+  {
+   "tower": "YJT1F",
+   "key": [
+    137,
+    139
+   ],
+   "ncells": 3,
+   "stk": true,
+   "casc": "SURV",
+   "ncomp": 0
+  },
+  {
+   "tower": "YJT1F",
+   "key": [
+    137,
+    141
+   ],
+   "ncells": 1,
+   "stk": true,
+   "casc": "SURV",
+   "ncomp": 0
+  },
+  {
+   "tower": "YJT1F",
+   "key": [
+    137,
+    143
+   ],
+   "ncells": 2,
+   "stk": true,
+   "casc": "SURV",
+   "ncomp": 0
+  },
+  {
+   "tower": "YJT1F",
+   "key": [
+    138,
+    139
+   ],
+   "ncells": 1,
+   "stk": true,
+   "casc": "SURV",
+   "ncomp": 0
+  },
+  {
+   "tower": "YJT1F",
+   "key": [
+    139,
+    139
+   ],
+   "ncells": 7,
+   "stk": true,
+   "casc": "SURV",
+   "ncomp": 0
+  },
+  {
+   "tower": "YJT1F",
+   "key": [
+    139,
+    141
+   ],
+   "ncells": 2,
+   "stk": true,
+   "casc": "SURV",
+   "ncomp": 0
+  },
+  {
+   "tower": "YJT1F",
+   "key": [
+    139,
+    142
+   ],
+   "ncells": 1,
+   "stk": true,
+   "casc": "SURV",
+   "ncomp": 0
+  },
+  {
+   "tower": "YJT1F",
+   "key": [
+    139,
+    143
+   ],
+   "ncells": 4,
+   "stk": true,
+   "casc": "SURV",
+   "ncomp": 0
+  },
+  {
+   "tower": "YJT1F",
+   "key": [
+    141,
+    143
+   ],
+   "ncells": 1,
+   "stk": true,
+   "casc": "SURV",
+   "ncomp": 0
+  },
+  {
+   "tower": "YJT1F",
+   "key": [
+    142,
+    143
+   ],
+   "ncells": 1,
+   "stk": true,
+   "casc": "SURV",
+   "ncomp": 0
+  },
+  {
+   "tower": "YJT1F",
+   "key": [
+    143,
+    143
+   ],
+   "ncells": 2,
+   "stk": true,
+   "casc": "SURV",
+   "ncomp": 0
+  },
+  {
+   "tower": "YJX1",
+   "key": [
+    235,
+    239
+   ],
+   "ncells": 2,
+   "stk": true,
+   "casc": "SURV",
+   "ncomp": 1
+  },
+  {
+   "tower": "YJX1",
+   "key": [
+    239,
+    239
+   ],
+   "ncells": 9,
+   "stk": true,
+   "casc": "SURV",
+   "ncomp": 1
+  },
+  {
+   "tower": "YJX2",
+   "key": [
+    123,
+    123
+   ],
+   "ncells": 5,
+   "stk": true,
+   "casc": "SURV",
+   "ncomp": 0
+  },
+  {
+   "tower": "YJX2",
+   "key": [
+    123,
+    127
+   ],
+   "ncells": 1,
+   "stk": true,
+   "casc": "SURV",
+   "ncomp": 0
+  },
+  {
+   "tower": "YJX2",
+   "key": [
+    123,
+    129
+   ],
+   "ncells": 1,
+   "stk": true,
+   "casc": "SURV",
+   "ncomp": 0
+  },
+  {
+   "tower": "YJX2",
+   "key": [
+    123,
+    131
+   ],
+   "ncells": 2,
+   "stk": true,
+   "casc": "SURV",
+   "ncomp": 0
+  },
+  {
+   "tower": "YJX2",
+   "key": [
+    127,
+    131
+   ],
+   "ncells": 1,
+   "stk": true,
+   "casc": "SURV",
+   "ncomp": 0
+  },
+  {
+   "tower": "YJX2",
+   "key": [
+    131,
+    131
+   ],
+   "ncells": 1,
+   "stk": true,
+   "casc": "SURV",
+   "ncomp": 0
+  },
+  {
+   "tower": "YJX3",
+   "key": [
+    195,
+    195
+   ],
+   "ncells": 1,
+   "stk": true,
+   "casc": "SURV",
+   "ncomp": 0
+  },
+  {
+   "tower": "YJX3",
+   "key": [
+    195,
+    203
+   ],
+   "ncells": 2,
+   "stk": true,
+   "casc": "SURV",
+   "ncomp": 0
+  },
+  {
+   "tower": "YJX3",
+   "key": [
+    199,
+    203
+   ],
+   "ncells": 1,
+   "stk": true,
+   "casc": "SURV",
+   "ncomp": 0
+  },
+  {
+   "tower": "YJX3",
+   "key": [
+    203,
+    203
+   ],
+   "ncells": 3,
+   "stk": true,
+   "casc": "SURV",
+   "ncomp": 0
+  },
+  {
+   "tower": "YJX4",
+   "key": [
+    115,
+    115
+   ],
+   "ncells": 2,
+   "stk": true,
+   "casc": "SURV",
+   "ncomp": 1
+  },
+  {
+   "tower": "YJX5",
+   "key": [
+    91,
+    95
+   ],
+   "ncells": 1,
+   "stk": true,
+   "casc": "SURV",
+   "ncomp": 0
+  },
+  {
+   "tower": "YJX5",
+   "key": [
+    95,
+    95
+   ],
+   "ncells": 2,
+   "stk": true,
+   "casc": "SURV",
+   "ncomp": 0
+  }
+ ],
+ "companions": [
+  {
+   "tower": "YJ3FLT",
+   "key": [
+    91,
+    95
+   ],
+   "w0": 18,
+   "line": 72,
+   "what": 17,
+   "bhat": 68,
+   "gain": 1,
+   "junk": 1,
+   "y2": 0,
+   "ce": [
+    [
+     1,
+     0,
+     [
+      1
+     ],
+     1
+    ]
+   ],
+   "nX": 0,
+   "xmate": false
+  },
+  {
+   "tower": "YJ3FLT",
+   "key": [
+    95,
+    95
+   ],
+   "w0": 18,
+   "line": 74,
+   "what": 17,
+   "bhat": 70,
+   "gain": 1,
+   "junk": 1,
+   "y2": 1,
+   "ce": [
+    [
+     1,
+     0,
+     [
+      1
+     ],
+     0
+    ]
+   ],
+   "nX": 0,
+   "xmate": false
+  },
+  {
+   "tower": "YJ3FLTB",
+   "key": [
+    187,
+    191
+   ],
+   "w0": 35,
+   "line": 140,
+   "what": 33,
+   "bhat": 132,
+   "gain": 2,
+   "junk": 1,
+   "y2": 0,
+   "ce": [
+    [
+     1,
+     0,
+     [
+      1
+     ],
+     1
+    ]
+   ],
+   "nX": 0,
+   "xmate": false
+  },
+  {
+   "tower": "YJ3FLTB",
+   "key": [
+    191,
+    191
+   ],
+   "w0": 34,
+   "line": 142,
+   "what": 32,
+   "bhat": 134,
+   "gain": 2,
+   "junk": 1,
+   "y2": 1,
+   "ce": [
+    [
+     1,
+     0,
+     [
+      1
+     ],
+     0
+    ]
+   ],
+   "nX": 0,
+   "xmate": false
+  },
+  {
+   "tower": "YJ4FLT",
+   "key": [
+    355,
+    355
+   ],
+   "w0": 30,
+   "line": 254,
+   "what": 29,
+   "bhat": 246,
+   "gain": 1,
+   "junk": 1,
+   "y2": 1,
+   "ce": [
+    [
+     1,
+     0,
+     [
+      1
+     ],
+     0
+    ]
+   ],
+   "nX": 0,
+   "xmate": false
+  },
+  {
+   "tower": "YJ4FLT",
+   "key": [
+    355,
+    359
+   ],
+   "w0": 32,
+   "line": 256,
+   "what": 31,
+   "bhat": 248,
+   "gain": 1,
+   "junk": 1,
+   "y2": 1,
+   "ce": [
+    [
+     1,
+     0,
+     [
+      1
+     ],
+     0
+    ]
+   ],
+   "nX": 0,
+   "xmate": false
+  },
+  {
+   "tower": "YJ3Z",
+   "key": [
+    91,
+    95
+   ],
+   "w0": 18,
+   "line": 72,
+   "what": 17,
+   "bhat": 68,
+   "gain": 1,
+   "junk": 1,
+   "y2": 0,
+   "ce": [
+    [
+     1,
+     0,
+     [
+      1
+     ],
+     1
+    ]
+   ],
+   "nX": 0,
+   "xmate": false
+  },
+  {
+   "tower": "YJ3Z",
+   "key": [
+    95,
+    95
+   ],
+   "w0": 18,
+   "line": 74,
+   "what": 17,
+   "bhat": 70,
+   "gain": 1,
+   "junk": 1,
+   "y2": 1,
+   "ce": [
+    [
+     1,
+     0,
+     [
+      1
+     ],
+     0
+    ]
+   ],
+   "nX": 0,
+   "xmate": false
+  },
+  {
+   "tower": "YJX1",
+   "key": [
+    235,
+    239
+   ],
+   "w0": 45,
+   "line": 180,
+   "what": 42,
+   "bhat": 168,
+   "gain": 3,
+   "junk": 1,
+   "y2": 0,
+   "ce": [
+    [
+     1,
+     0,
+     [
+      1
+     ],
+     1
+    ]
+   ],
+   "nX": 0,
+   "xmate": false
+  },
+  {
+   "tower": "YJX1",
+   "key": [
+    239,
+    239
+   ],
+   "w0": 44,
+   "line": 182,
+   "what": 41,
+   "bhat": 170,
+   "gain": 3,
+   "junk": 1,
+   "y2": 1,
+   "ce": [
+    [
+     1,
+     0,
+     [
+      1
+     ],
+     0
+    ]
+   ],
+   "nX": 0,
+   "xmate": false
+  },
+  {
+   "tower": "YJX4",
+   "key": [
+    115,
+    115
+   ],
+   "w0": 22,
+   "line": 88,
+   "what": 21,
+   "bhat": 84,
+   "gain": 1,
+   "junk": 1,
+   "y2": 1,
+   "ce": [
+    [
+     1,
+     0,
+     [
+      1
+     ],
+     0
+    ]
+   ],
+   "nX": 0,
+   "xmate": false
+  }
+ ],
+ "elapsed": 5.976961374282837
+}

@@ -1,5 +1,26 @@
 # (SD-YJ′) PROVED at attempt grade — the digit-valuation floor closes the g₀ = 1 ∧ d₀ ≥ 2 corner: every cascade-slot companion sits at w₀ ≥ ŵ + 1, so SD-THM-A extends to EVERY d₀ and the g₀ = 1 leg of (SURV-DISJ) is class-wide
 
+[Y-r1, 2026-08-08 campaign (wallclock 2026-08-04), post-PE1.  Pass 1
+of this note's hostile arc = PE1 (fresh Fable, hostile content
+verification; report `SDYJ_passPE1_report.md`, committed with this
+revision): **GAPS-ONLY — 0 critical / 1 gap / 6 notes**.  PE1
+re-derived SDY-L1 in full from the accepted [RMG] displays, audited
+the SDY-L2 ledger edgewise, confirmed the companion anatomy exhaustive
+and the every-d₀ extension free of hidden d₀ = 1 dependence, re-ran
+the machine leg identically, and hand-re-derived 2 full companions +
+ALL 15 sealed v₀ predictions exact.  The one gap G-1: the v1 runner's
+SDYJ-CASC "line = β̂" sub-clause was TAUTOLOGICAL as implemented (β̂
+was read off the cascade cell's own line, never recomputed from
+S-L1's pool formula); the other ten families and the other CASC
+sub-clauses were sound.  THIS revision repairs G-1 via the versioned
+runner `sdyj_checks_v2.py` (v1 byte-untouched and pinned; β̂
+recomputed independently from the S-L1 pool formula; re-run: ALL 11
+FAMILIES 0 VIOLATIONS, the de-tautologized sub-clause PASSES on all
+56 cascade cells) and fixes the six notes; every lemma/theorem
+STATEMENT is byte-unchanged.  Repair record at tail.  Arc standing:
+0/1 CLEAN (GAPS-ONLY does not count toward the 2-clean bar); round 2
+= the Codex leg after the usage-window reset.]
+
 Object: the single open lemma extracted by the (SURV-DISJ) construction
 unit (SURVDISJ_CONSTRUCT_2026-08-08.md S6 T3, ledger 1047b48), sharpening
 the (SD-YJ) box of SURVDISJ_PROOF_2026-08-08.md S6:
@@ -197,13 +218,22 @@ of C₀^{(i)} = realize_i(ε_i(γ_{i+1})^{−1}ψ_{i,0}, γ_{i+1}) is REDUCED
 (a_l ≤ P_l − 1 = e_l − 1), ON-LINE at γ_{i+1} at level i, and ON-GRID.
 Run the S3.1 λ-chain top-down from λ_i = γ_{i+1} (L-GRID): at each
 level, on-grid gives a_{l−1} ≡ s_l(λ_l) mod e_{l−1} with t_l :=
-(a_{l−1} − s_l(λ_l))/e_{l−1} ∈ [0, g_{l−1}) — and g_{l−1} = 1 forces
+(a_{l−1} − s_l(λ_l))/e_{l−1} ∈ ℤ, and t_l ∈ [0, g_{l−1}) [Y-r1: the
+window arithmetic displayed, per PE1 n-1 — 0 ≤ a_{l−1} ≤ P_{l−1} − 1
+= e_{l−1}g_{l−1} − 1 (the cell is REDUCED) and 0 ≤ s_l(λ_l) ≤
+e_{l−1} − 1 give e_{l−1}·t_l ≥ −(e_{l−1} − 1) > −e_{l−1} and
+e_{l−1}·t_l ≤ e_{l−1}g_{l−1} − 1 < e_{l−1}·g_{l−1}, so −1 < t_l <
+g_{l−1}, and t_l ∈ ℤ pins t_l ∈ [0, g_{l−1})] — and g_{l−1} = 1 forces
 t_l = 0, i.e. a_{l−1} = s_l(λ_l) EXACTLY, at every level including
 l = 1 (level 0: this is where g₀ = 1 enters).  So the dump vector is
-forced, the λ-chain is the displayed v-chain (integrality of each step
-from γ_l ≡ h_{l−1} and ℓ_{l−1}h_{l−1} ≡ 1 mod e_{l−1} — the L-GRID
-remark), and its terminal is λ₀ = w₀(c_d) (L-GRID: λ-values are the
-truncation lines; at level 0, line₀(b) = w₀(b)).  Since c_d ∈ O[x],
+forced — hence every cell of C₀^{(i)} carries the SAME exponent
+vector, and L-CELL(i) (the development is a finite sum of DISTINCT
+reduced cells, distinctness keyed by exponent vectors — [RMG],
+consumed at S0) leaves exactly ONE cell [Y-r1: citation displayed,
+per PE1 n-2] — the λ-chain is the displayed v-chain (integrality of
+each step from γ_l ≡ h_{l−1} and ℓ_{l−1}h_{l−1} ≡ 1 mod e_{l−1} — the
+L-GRID remark), and its terminal is λ₀ = w₀(c_d) (L-GRID: λ-values
+are the truncation lines; at level 0, line₀(b) = w₀(b)).  Since c_d ∈ O[x],
 v₀ = w₀(c_d) ≥ 0 automatically; the content is v₀ ≠ 0.
 (b) The invariant.  Base l = i: v_i = γ_{i+1} = e_i·w_iΦ_i + h_i with
 w_iΦ_i = e_{i−1}γ_i (all g = 1), e_i ≥ 1, h_i ≥ 1, so v_i ≥
@@ -268,7 +298,16 @@ every live row on both rosters (with X(C) = junk − Y₂ − Σ_c Y_c read
 off the recording walk), and the EQUALITY on every junk-free terminal;
 0 predicted violations.  SDYJ-CASC — ŵ = u₁ + u₁′ + u₀, residue ≠ 0,
 line = β̂ on every cascade cell (the S-L1 shadow at d₀ = 2, first
-dedicated exercise).]
+dedicated exercise).  [Y-r1, PE1 G-1: in the v1 runner the "line = β̂"
+sub-clause was TAUTOLOGICAL as implemented — β̂ was DEFINED as the
+cascade cell's own line (`bhat := crec['line']`), never recomputed
+from S-L1's pool formula; the ŵ/residue/uniqueness sub-clauses were
+real.  Repaired in `sdyj_checks_v2.py` (v1 byte-untouched): β̂
+recomputed INDEPENDENTLY as λ̂ + Σ_{l=1}^{m−1} c_l·q_l with λ̂ =
+line(a) + line(a′) + γ_{m+1} − 2·w_mΦ_m and q_l = h_l·∏_{l<t<m}e_t,
+the carries c_l from the pool arithmetic (decorrelated from the
+walk); the de-tautologized sub-clause PASSES on all 56 cascade cells
+— v2 pins at S7.3.]]
 
 ## S4. SDY-L3 = (SD-YJ′), proved
 
@@ -350,7 +389,11 @@ Everything else is the SD-THM-A architecture verbatim.
   TRACK ∧ (H1)–(H3) ∧ g₀ = 1 ∧ (STK) ∧ (c_{m−1} ≥ k) — ANY d₀ — by
   the cascade leg (SDY-THM(iv)).  The class-wide open set is now
   EXACTLY the (SURV-K2) box (g₀ ≥ 2 protected-group existence).  The
-  g₀ = 1 leg is class-complete: no g₀ = 1 residual remains anywhere.
+  g₀ = 1 leg is class-complete: no g₀ = 1 BOX remains, beyond the
+  standing pins ((STK), the (H2) discharge rider, (H1)/T-scope, (RW)
+  for clause (v)) named four bullets below and carried by the claims
+  table [Y-r1: gloss tightened per PE1 n-3 — the old "no residual
+  remains anywhere" read literally erased those pins].
 * **(NEP)**: a THEOREM on the full g₀ = 1 locus, every d₀
   (SDY-THM(ii)); its former d₀ = 1 pin was an artifact of the proof,
   not of the phenomenon.
@@ -416,6 +459,12 @@ verdict appended at commit 2):**
                 engine-dark (F-D).                             [wall pred]
     HARNESS     engine-internal violations.                    [0 pred]
 
+[Y-r1 annotation on the sealed SDYJ-CASC row (the seal display above
+is byte-unchanged): as implemented in v1 the "line = β̂" sub-clause
+was tautological (PE1 G-1); the honest v1 content of that family was
+ŵ = u₁+u₁′+u₀, residue ≠ 0, uniqueness.  The v2 runner adds the
+independent β̂ recomputation — see the S7.3 repair bracket.]
+
 Measured (no seal): companion realizations on the fresh towers (pool
 arithmetic — any count is a finding); the per-companion L/X-child
 resolution census (F-E).
@@ -425,7 +474,10 @@ number below is hand-derived from SDY-L1's chain in this note and
 SEALED as an exact machine prediction; the committed nine towers'
 values are displayed alongside — the realized companion gains
 w₀ − ŵ ∈ {1, 2} of the construction record are exactly the i = 1
-values below plus 0 or 1 units of junk overshoot):
+values below with junk overshoot 0 on every realized instance [Y-r1,
+per PE1 n-5: the ledger permits a positive π-junk overshoot, but all
+8 committed gains realize overshoot 0 — the old "plus 0 or 1 units"
+gloss was permissive, not a realized case]):
 
     tower     reads (e,h,g) levels 0..m         v₀ per level i ≥ 1
     YJ2F      (2,1)(2,1)|top(2,1)               i1: 2
@@ -497,13 +549,51 @@ b164788ce9f581b067c7fe50bfa472b3 · results
   string, families and every sealed check byte-unchanged; runs are
   otherwise identical (run 1's other ten families: 0 violations, same
   counters).  The disclosed pre-seal shakedown ran the throwaway spec
-  + mini-sweep only, as declared at S0.
+  + mini-sweep only, as declared at S0.  [Y-r1, per PE1 n-6: run 1's
+  artifacts were OVERWRITTEN IN PLACE by the repaired run before
+  commit 2 and are not preserved — the run-1 claim in the previous
+  sentence rests on this disclosure plus determinism, and is now
+  independently supported by PE1's read-only re-run (identical output
+  modulo timing) and by the v2 re-run below.  Nothing existed to
+  commit.]
+
+**S7.4 [Y-r1] The v2 repair of PE1 G-1 (the de-tautologized CASC
+sub-clause).**  The v1 runner DEFINED β̂ as the cascade cell's own
+line (`bhat := crec['line']`, sdyj_checks.py lines 315–321), so the
+sealed "line = β̂" sub-clause of SDYJ-CASC verified nothing; the S-L1
+formula was never independently computed by this unit (PE1 G-1 —
+GAP, machine-bracket display; no proof step damaged: S-L1 is
+consumed†, not re-proved, and the companion line-affinity check was
+real).  Repair, versioned: `sdyj_checks_v2.py` — v1 byte-untouched
+(its committed md5 f77500b474196e3b76a7b80c40eb0012 is now itself
+pinned inside v2's PINS), sole substantive change = β̂ recomputed
+INDEPENDENTLY from the S-L1 pool formula
+
+    β̂_pool = λ̂ + Σ_{l=1}^{m−1} c_l·q_l ,
+    λ̂ = line(a) + line(a′) + γ_{m+1} − 2·w_mΦ_m ,
+    q_l = h_l·∏_{l<t<m} e_t ,
+
+with the carries c_l from the pool arithmetic (WS.pools_of on the
+anchor splits — decorrelated from the walk that produced the cell's
+line) and λ̂ via the W-D1 formal cell, exactly the accepted
+DCK-LINE computation of `wmultdcx_derive_checks.py`; the check is
+line(Ĉ) = β̂_pool on every cascade cell.  **v2 verdict (single
+deterministic 6.0 s run): ALL ELEVEN FAMILIES 0 VIOLATIONS; the
+de-tautologized sub-clause PASSES on all 56 cascade cells
+(casc_pool_line_ok = 56 = casc_rows); every other counter identical
+to v1** (980,646 sweep chains, 3,892 sharp, 26,416 integrality-load,
+56 live rows, 139 super cells, 30 digits/9 sharp, 8 REP companions,
+11 YJ-COMP findings, nX = 0 throughout).  Artifacts:
+`sdyj_checks_v2_output.txt` / `sdyj_checks_v2_results.json`; md5s —
+v2 runner d58be8b80dd01e27eaa7094fe27c4709 · output
+435b7cdcc47d5070f9f90f4a85be48af · results
+37831c56ad2814367b5cb6fa36bead93.
 
 ## S8. Claims table, dependency line, fences
 
 | # | claim | grade | consumes |
 |---|---|---|---|
-| SDY-L1 | digit-valuation floor: every correction-digit cell has w₀ ≥ 1 at all-g-1; = the forced v-chain value; (INV_l) | PROVED (attempt, capped; (H2)–(H3) ∧ g₀ = 1) | [RMG] S2.2 + RM-GEN S2.1 inventory, L-GRID/S3.1, [ILN]† S0.1 weights |
+| SDY-L1 | digit-valuation floor: every correction-digit cell has w₀ ≥ 1 at all-g-1; = the forced v-chain value; (INV_l) | PROVED (attempt, capped; (H2)–(H3) ∧ g₀ = 1) | [RMG] S2.2 + RM-GEN S2.1 inventory, L-CELL(i) [Y-r1: added per PE1 n-2], L-GRID/S3.1, [ILN]† S0.1 weights |
 | SDY-L2 | valuation superadditivity: w₀(term) ≥ ŵ + Σ w₀(c_d) + #π-junk; = on junk-free | PROVED (attempt, capped; (H1)–(H3) ∧ g₀ = 1, any d₀) | W-D1†, W-D2(iii)†, L-NORM(a)(b)(c), S2.2 |
 | SDY-L3 | (SD-YJ′): companions are Φ₀Y-fed (junk ≥ 1) AND w₀ ≥ ŵ + CE + X ≥ ŵ + 1 ⟹ line > β̂ | PROVED (attempt, capped; + (STK) ∧ clause) | SDY-L1, SDY-L2, (★)†, SD-L1†, SD-L4†, S-L4(i)†, S-L4(iii)-uniq† |
 | SDY-THM | SD-THM-A at EVERY d₀: ĵ population, (NEP), B_ĵ survives, (SURV-DISJ), +(RW) Q¹ ≠ 0 | PROVED (attempt, capped) | SDY-L3, S-L0†, S-L1†, S-L4(ii)†, S-THM(c)† |
@@ -541,7 +631,11 @@ F-C. (H1) T-scope is consumed ONLY for T-TERM/W-D0 (tree =
      per-row certificates.
 F-D. d₀ = 3 is ENGINE-DARK: the committed tower chain hardcodes the
      Φ₀-reduction to a fixed quadratic whenever d₀ ≥ 2
-     (grb_order2_check Tower2 __init__ — the d₀-analogue of the K2-ENG
+     (grb_order2_check `Tower.__init__` [Y-r1: name corrected per PE1
+     n-4 — the old text said "Tower2", the exact wrong name whose
+     probe-side repair S7.3 itself discloses; PE1 verified the wall in
+     source at the correct constructor, lines 479–490] — the
+     d₀-analogue of the K2-ENG
      g₀ ≥ 3 pick wall, one slot over; no monkeypatch seam exists short
      of forking the constructor, out of this unit's scope and
      disclosed instead, family SDYJ-WALL).  The PROOF is uniform in d₀
@@ -549,16 +643,74 @@ F-D. d₀ = 3 is ENGINE-DARK: the committed tower chain hardcodes the
      any-d₀, and SDY-L1's arithmetic never mentions d₀ — so the gap is
      an instance-coverage gap only: no d₀ ≥ 3 instance record exists
      anywhere in the program (machine-dark corner, honestly labeled).
-F-E. Cross-note observation (display precision, no erratum performed;
-     the construction note is not touched per the charge): the
-     construction note's S6 bullet "[Y₂ = 1: the correction rides its
-     X-child, defc = 1]" is contradicted by its own committed
-     artifacts — those companions carry junk = 1 accounted by the
-     seeding Y-edge, and correction X-children increment junk, so the
-     Y₂ = 1 corrections rode their L-CHILDREN (defc = 1 via dump 1,
-     Y_c = 0).  The runner's companion census resolves this per
-     instance (measured, no seal).
+F-E. Cross-note observation (display precision; at composition no
+     erratum was performed — the construction note was not touched per
+     the composer charge): the construction note's S6 bullet "[Y₂ = 1:
+     the correction rides its X-child, defc = 1]" is contradicted by
+     its own committed artifacts — those companions carry junk = 1
+     accounted by the seeding Y-edge, and correction X-children
+     increment junk, so the Y₂ = 1 corrections rode their L-CHILDREN
+     (defc = 1 via dump 1, Y_c = 0).  The runner's companion census
+     resolves this per instance (measured, no seal).  [Y-r1: PE1
+     independently CONFIRMED the contradiction on three legs (junk
+     accounting, gain = v₀ with no π-junk +1, the direct nX = 0
+     census on all 11), and the queued erratum is NOW APPLIED — a
+     dated [Y-r1 cross-file] bracket sits at the offending line of
+     SURVDISJ_CONSTRUCT_2026-08-08.md, committed with this revision.]
 F-F. This note upgrades nothing class-wide beyond the displayed
      closures; (SURV-K2) and every acceptance leg named at S6 remain
      open.  The machine counters are instance evidence, never proof
      steps.
+
+---
+
+## Y-r1 REPAIR RECORD (post-PE1; 2026-08-08 campaign, wallclock 2026-08-04)
+
+**PE1** (fresh Fable hostile content pass, `SDYJ_passPE1_report.md`,
+committed with this revision): **GAPS-ONLY — 0 critical / 1 gap / 6
+notes.**  The sound re-derivations, named: SDY-L1 re-derived in full
+from the accepted [RMG] displays alone (inventory basis, the forcing
+window at every level incl. l = 1, single-cell exactness, λ₀ = w₀,
+integrality, the (INV) induction by hand, the complete (H2)/(H3)/
+all-g-1 entry-point list, consumption footprint clean of the W cap);
+SDY-L2 audited edgewise against [RMG] S2.2 + W-D0/W-D1 — no leaking
+child type, no promotion term possible; the Reduction-2 companion
+anatomy EXHAUSTIVE; the every-d₀ extension clean of hidden d₀ = 1
+dependence (step-by-step d₀ audit; the two displayed proof deltas
+exactly right); the consequence display + every grade cap verified
+against the pass-report record; machine leg re-run identical, family
+fidelity audited, 2 full companions + ALL 15 sealed v₀ predictions
+hand-re-derived exact; F-E confirmed on three independent legs; the
+d₀ = 3 wall verified in engine source at `Tower.__init__`.
+
+Dispositions, per finding:
+
+* **G-1 (GAP — the tautological SDYJ-CASC "line = β̂" sub-clause) →
+  REPAIRED.**  `sdyj_checks_v2.py` (v1 byte-untouched + md5-pinned
+  inside v2) recomputes β̂ independently from the S-L1 pool formula
+  λ̂ + Σ c_l·q_l; re-run: ALL ELEVEN FAMILIES 0 VIOLATIONS, the
+  de-tautologized sub-clause PASSES on all 56 cascade cells, every
+  other counter identical to v1.  Full bracket + pins at S7.4;
+  honest-content annotation on the sealed S7.1 row.
+* **n-1** → the t-window arithmetic DISPLAYED in SDY-L1(a).
+* **n-2** → L-CELL(i) cited in SDY-L1's proof body at the single-cell
+  step + added to SDY-L1's claims-table consumption row.
+* **n-3** → the S6 gloss tightened to "no g₀ = 1 BOX remains, beyond
+  the standing pins (…)".
+* **n-4** → F-D's stale "Tower2" corrected to `Tower.__init__`.
+* **n-5** → the idle "+1 overshoot" gloss tightened (all 8 committed
+  gains realize overshoot 0).
+* **n-6** → disclosed at S7.3: run 1's artifacts were overwritten in
+  place, not preserved — nothing existed to commit; the run-1 claim
+  rests on the disclosure + determinism + PE1's identical re-run +
+  the v2 re-run.
+* **The cross-note erratum APPLIED** (the one action outside this
+  file): a dated [Y-r1 cross-file] bracket at the "[Y₂ = 1: rides its
+  X-child]" line of `SURVDISJ_CONSTRUCT_2026-08-08.md`, correcting
+  the mechanism to seeding-Y-edge junk + correction L-child (three-leg
+  confirmation cited).
+
+Statements SDY-L1/SDY-L2/SDY-L3/SDY-THM byte-unchanged (PE1 verified
+them sound; the statement fence held).  **Arc after this revision:
+0/1 CLEAN (PE1 = GAPS-ONLY); round 2 = the Codex leg after the
+usage-window reset.**
