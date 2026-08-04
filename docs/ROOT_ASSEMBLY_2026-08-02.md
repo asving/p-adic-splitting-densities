@@ -1836,7 +1836,15 @@ WINDOW (records at §45): (1) **Q1 IS CLOSED — THEOREM RM-GEN ACCEPTED,
 [RMG]†** (ledger block applied b3ddada; accepted text a0e266c; bar met
 at round 7: PC7 (Codex) CLEAN + PE7 (Fable) CLEAN, same round, on
 a0e266c; 7 rounds / 12 hostile passes / ZERO critical findings across
-the arc; the block is pasted at the §0 declaration extension above and
+the arc [CORRECTED same-day, 2026-08-04 — the §45.(i) counting flag
+ADJUDICATED: the quoted figures were the acceptance bracket's ERROR,
+corrected at source (the note's bracket + the ledger [RMG-c1] entry);
+the true totals: 14 passes (7 Codex + 7 Fable) over 7 rounds; round 1
+found 2 repairable criticals (text-gap; false fence display, cured by
+the branch-(b) strengthening); rounds 2–7 = 12 consecutive 0-critical
+passes; the [RMG] pastes remain faithful to the block-as-dated, whose
+arc-totals sentence is superseded by [RMG-c1]];
+the block is pasted at the §0 declaration extension above and
 at the operative sites — the §3.1 (H1) row r40 bracket, §45.(i)).
 (2) **COR-A APPLIED**: (ITER-LAW-n) is UNCONDITIONAL-ON-(RM) on
 T-class(n) — the declaration bracket above carries the upgrade at every

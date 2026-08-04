@@ -1333,8 +1333,11 @@ Lean-era list above is unchanged and stays parked per the b70a452
 directive; see the r39 checkpoint at the tail.]**
 **[2026-08-04 (campaign 2026-08-08): Q1 IS CLOSED — THEOREM RM-GEN
 ACCEPTED ([RMG], ledger block in BRIDGE_ADJUDICATIONS; accepted text
-a0e266c; bar met at round 7: PC7 + PE7 both CLEAN, 12-pass arc, zero
-critical findings ever). The four (RM-m) box clauses hold
+a0e266c; bar met at round 7: PC7 + PE7 both CLEAN. Arc: 14 passes over
+7 rounds — round 1 found 2 repairable criticals (text-gap + false fence
+display, cured by a strengthening); rounds 2–7 = 12 consecutive
+0-critical passes [count corrected 2026-08-04 per the r40 fold flag]).
+The four (RM-m) box clauses hold
 level-generically for every m ≥ 1 on T-scope(m) = d₀ = 1 ∨ (e₀ ≥ 2 ∧
 eᵢ ≥ 2) — including the d₀ = 1 flat corners (the r1 branch-(b)
 extension). COR-A APPLIED: (ITER-LAW-n) is now unconditional-on-(RM) on

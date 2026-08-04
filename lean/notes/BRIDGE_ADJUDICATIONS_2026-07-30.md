@@ -9434,3 +9434,26 @@ text. Unit files: ROOT + this append ONLY (scoped `git commit
 --only`).
 
 **REVISION 39 = the [RMG] fold.**
+
+---
+
+## [RMG-c1] — COUNT CORRECTION on the [RMG] block's arc-totals sentence — 2026-08-04 (same day; supersede-at-refutation applied to our own record)
+
+The r40 fold unit flagged the [RMG] block's sentence "Arc: 7 rounds, 12
+hostile passes (6 Codex + 6 Fable), ZERO critical findings across the
+arc" against the ledger's own 14 verdict legs. ADJUDICATED: the sentence
+was the orchestrator's error in the acceptance bracket, propagated into
+[RMG] — it conflated the post-repair streak with the whole arc.
+**Corrected figures: 14 hostile passes (7 Codex + 7 Fable) over 7
+rounds. Round 1, on the composed r0 text: PC1 1 critical (PC-C1,
+adjudicated TEXT-GAP — the missing L-NORM display) + PE1 1 critical
+(PE-F1, display-local — the arithmetically false fence mechanism, cured
+at r1 by the branch-(b) STRENGTHENING). Rounds 2–7: twelve consecutive
+passes, zero criticals, zero mathematical gaps.** No critical ever
+touched a theorem clause; the acceptance itself (round 7, PC7+PE7 both
+CLEAN on a0e266c) is untouched by this correction. Corrections applied
+at: the note's acceptance bracket (in place, dated), PROJECT_STATE, the
+ROOT §0 declaration prose (adjacent bracket; the [RMG] pastes stay
+faithful to the block-as-dated, superseded by THIS entry), and the
+public map (figures fixed before push). The §45.(i) VC40 flag is
+RESOLVED by this entry; VC40 still audits the fold as charged.
