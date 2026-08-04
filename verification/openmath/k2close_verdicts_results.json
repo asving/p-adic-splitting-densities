@@ -1,0 +1,5169 @@
+{
+ "final": true,
+ "violations": [],
+ "pred_misses": [
+  [
+   "PV-4",
+   "28 GS-02 groups all (-1,+1) in vivo; all 29 rows protected in vivo"
+  ]
+ ],
+ "tallies": {
+  "main": {
+   "CONDITIONAL": 35,
+   "NOVEL": 8
+  },
+  "annex": {
+   "CONDITIONAL": 9,
+   "NOVEL": 1
+  }
+ },
+ "novel": [
+  "AS-10",
+  "GS-11",
+  "GS-19",
+  "GS-20",
+  "GS-21",
+  "GS-30",
+  "GS-34",
+  "GS-35",
+  "GS-40"
+ ],
+ "predictions": {
+  "PV-1": [
+   true,
+   "no verdict-PROTECTED shape"
+  ],
+  "PV-2": [
+   true,
+   "invariant-core in NOVEL; extras (allowed): ['GS-40']"
+  ],
+  "PV-3": [
+   true,
+   "GS-02/08/16 CONDITIONAL; 08/16 I3-corner-safe; GS-02 safe nowhere"
+  ],
+  "PV-4": [
+   false,
+   "28 GS-02 groups all (-1,+1) in vivo; all 29 rows protected in vivo"
+  ],
+  "PV-5": [
+   true,
+   "ID-CLOSURE zero violations"
+  ]
+ },
+ "shapes": [
+  {
+   "id": "GS-01",
+   "annex": false,
+   "n_cells": 2,
+   "n_monos": 2,
+   "r": 2,
+   "T": 0,
+   "pattern": [
+    -1,
+    1
+   ],
+   "generic": "PROT",
+   "full_merge": "DEAD",
+   "labels": [
+    "f1(dt=0,{},-)",
+    "f2(dt=0,{0},+)"
+   ],
+   "free_states": 1,
+   "free_capped": false,
+   "prot_exists": true,
+   "novel_cert": null,
+   "prot_wit": {
+    "state": "{f1(dt=0,{},-) | net -1}  {f2(dt=0,{0},+) | net +1}",
+    "digit": [],
+    "torsion": false
+   },
+   "kill_wit": {
+    "prot": "DEAD",
+    "state": "{f1(dt=0,{},-) f2(dt=0,{0},+) | net +0}",
+    "digit": [],
+    "torsion": false
+   },
+   "verdict": "CONDITIONAL",
+   "corners": {
+    "c11": {
+     "safe": false,
+     "n_states": 2,
+     "capped": false,
+     "bad": {
+      "prot": "DEAD",
+      "state": "{f1(dt=0,{},-) f2(dt=0,{0},+) | net +0}"
+     }
+    },
+    "c10": {
+     "safe": false,
+     "n_states": 2,
+     "capped": false,
+     "bad": {
+      "prot": "DEAD",
+      "state": "{f1(dt=0,{},-) f2(dt=0,{0},+) | net +0}"
+     }
+    },
+    "c01": {
+     "safe": false,
+     "n_states": 2,
+     "capped": false,
+     "bad": {
+      "prot": "DEAD",
+      "state": "{f1(dt=0,{},-) f2(dt=0,{0},+) | net +0}"
+     }
+    },
+    "c00": {
+     "safe": false,
+     "n_states": 2,
+     "capped": false,
+     "bad": {
+      "prot": "DEAD",
+      "state": "{f1(dt=0,{},-) f2(dt=0,{0},+) | net +0}"
+     }
+    }
+   }
+  },
+  {
+   "id": "GS-02",
+   "annex": false,
+   "n_cells": 2,
+   "n_monos": 2,
+   "r": 2,
+   "T": 0,
+   "pattern": [
+    -1,
+    1
+   ],
+   "generic": "PROT",
+   "full_merge": "DEAD",
+   "labels": [
+    "f1(dt=0,{},-)",
+    "f2(dt=0,{1},+)"
+   ],
+   "free_states": 1,
+   "free_capped": false,
+   "prot_exists": true,
+   "novel_cert": null,
+   "prot_wit": {
+    "state": "{f1(dt=0,{},-) | net -1}  {f2(dt=0,{1},+) | net +1}",
+    "digit": [],
+    "torsion": false
+   },
+   "kill_wit": {
+    "prot": "DEAD",
+    "state": "{f1(dt=0,{},-) f2(dt=0,{1},+) | net +0}",
+    "digit": [],
+    "torsion": false
+   },
+   "verdict": "CONDITIONAL",
+   "corners": {
+    "c11": {
+     "safe": false,
+     "n_states": 2,
+     "capped": false,
+     "bad": {
+      "prot": "DEAD",
+      "state": "{f1(dt=0,{},-) f2(dt=0,{1},+) | net +0}"
+     }
+    },
+    "c10": {
+     "safe": false,
+     "n_states": 2,
+     "capped": false,
+     "bad": {
+      "prot": "DEAD",
+      "state": "{f1(dt=0,{},-) f2(dt=0,{1},+) | net +0}"
+     }
+    },
+    "c01": {
+     "safe": false,
+     "n_states": 2,
+     "capped": false,
+     "bad": {
+      "prot": "DEAD",
+      "state": "{f1(dt=0,{},-) f2(dt=0,{1},+) | net +0}"
+     }
+    },
+    "c00": {
+     "safe": false,
+     "n_states": 2,
+     "capped": false,
+     "bad": {
+      "prot": "DEAD",
+      "state": "{f1(dt=0,{},-) f2(dt=0,{1},+) | net +0}"
+     }
+    }
+   }
+  },
+  {
+   "id": "GS-03",
+   "annex": false,
+   "n_cells": 2,
+   "n_monos": 2,
+   "r": 2,
+   "T": 0,
+   "pattern": [
+    -1,
+    1
+   ],
+   "generic": "PROT",
+   "full_merge": "DEAD",
+   "labels": [
+    "f1(dt=0,{},-)",
+    "f2(dt=1,{0},+)"
+   ],
+   "free_states": 1,
+   "free_capped": false,
+   "prot_exists": true,
+   "novel_cert": null,
+   "prot_wit": {
+    "state": "{f1(dt=0,{},-) | net -1}  {f2(dt=1,{0},+) | net +1}",
+    "digit": [],
+    "torsion": false
+   },
+   "kill_wit": {
+    "prot": "DEAD",
+    "state": "{f1(dt=0,{},-) f2(dt=1,{0},+) | net +0}",
+    "digit": [],
+    "torsion": false
+   },
+   "verdict": "CONDITIONAL",
+   "corners": {
+    "c11": {
+     "safe": false,
+     "n_states": 2,
+     "capped": false,
+     "bad": {
+      "prot": "DEAD",
+      "state": "{f1(dt=0,{},-) f2(dt=1,{0},+) | net +0}"
+     }
+    },
+    "c10": {
+     "safe": false,
+     "n_states": 2,
+     "capped": false,
+     "bad": {
+      "prot": "DEAD",
+      "state": "{f1(dt=0,{},-) f2(dt=1,{0},+) | net +0}"
+     }
+    },
+    "c01": {
+     "safe": false,
+     "n_states": 2,
+     "capped": false,
+     "bad": {
+      "prot": "DEAD",
+      "state": "{f1(dt=0,{},-) f2(dt=1,{0},+) | net +0}"
+     }
+    },
+    "c00": {
+     "safe": false,
+     "n_states": 2,
+     "capped": false,
+     "bad": {
+      "prot": "DEAD",
+      "state": "{f1(dt=0,{},-) f2(dt=1,{0},+) | net +0}"
+     }
+    }
+   }
+  },
+  {
+   "id": "GS-04",
+   "annex": false,
+   "n_cells": 3,
+   "n_monos": 3,
+   "r": 2,
+   "T": -1,
+   "pattern": [
+    -1,
+    -1,
+    1
+   ],
+   "generic": "UNPROT",
+   "full_merge": "PROT",
+   "labels": [
+    "f1(dt=0,{},-)",
+    "f1(dt=1,{1},+)",
+    "f2(dt=1,{},-)"
+   ],
+   "free_states": 2,
+   "free_capped": false,
+   "prot_exists": true,
+   "novel_cert": null,
+   "prot_wit": {
+    "state": "{f1(dt=0,{},-) | net -1}  {f1(dt=1,{1},+) f2(dt=1,{},-) | net +0}",
+    "digit": [],
+    "torsion": false
+   },
+   "kill_wit": {
+    "prot": "UNPROT",
+    "state": "{f1(dt=0,{},-) | net -1}  {f1(dt=1,{1},+) | net +1}  {f2(dt=1,{},-) | net -1}",
+    "digit": [],
+    "torsion": false
+   },
+   "verdict": "CONDITIONAL",
+   "corners": {
+    "c11": {
+     "safe": true,
+     "n_states": 2,
+     "capped": false,
+     "bad": null
+    },
+    "c10": {
+     "safe": true,
+     "n_states": 2,
+     "capped": false,
+     "bad": null
+    },
+    "c01": {
+     "safe": false,
+     "n_states": 1,
+     "capped": false,
+     "bad": {
+      "prot": "UNPROT",
+      "state": "{f1(dt=0,{},-) | net -1}  {f1(dt=1,{1},+) | net +1}  {f2(dt=1,{},-) | net -1}"
+     }
+    },
+    "c00": {
+     "safe": false,
+     "n_states": 1,
+     "capped": false,
+     "bad": {
+      "prot": "UNPROT",
+      "state": "{f1(dt=0,{},-) | net -1}  {f1(dt=1,{1},+) | net +1}  {f2(dt=1,{},-) | net -1}"
+     }
+    }
+   }
+  },
+  {
+   "id": "GS-05",
+   "annex": false,
+   "n_cells": 3,
+   "n_monos": 3,
+   "r": 2,
+   "T": -1,
+   "pattern": [
+    -1,
+    -1,
+    1
+   ],
+   "generic": "UNPROT",
+   "full_merge": "PROT",
+   "labels": [
+    "f1(dt=0,{},-)",
+    "f2(dt=0,{0},+)",
+    "f2(dt=0,{1,1},-)"
+   ],
+   "free_states": 2,
+   "free_capped": false,
+   "prot_exists": true,
+   "novel_cert": null,
+   "prot_wit": {
+    "state": "{f1(dt=0,{},-) | net -1}  {f2(dt=0,{0},+) f2(dt=0,{1,1},-) | net +0}",
+    "digit": [
+     "I1^0*I3^1"
+    ],
+    "torsion": false
+   },
+   "kill_wit": {
+    "prot": "UNPROT",
+    "state": "{f1(dt=0,{},-) | net -1}  {f2(dt=0,{0},+) | net +1}  {f2(dt=0,{1,1},-) | net -1}",
+    "digit": [],
+    "torsion": false
+   },
+   "verdict": "CONDITIONAL",
+   "corners": {
+    "c11": {
+     "safe": true,
+     "n_states": 2,
+     "capped": false,
+     "bad": null
+    },
+    "c10": {
+     "safe": false,
+     "n_states": 1,
+     "capped": false,
+     "bad": {
+      "prot": "UNPROT",
+      "state": "{f1(dt=0,{},-) | net -1}  {f2(dt=0,{0},+) | net +1}  {f2(dt=0,{1,1},-) | net -1}"
+     }
+    },
+    "c01": {
+     "safe": true,
+     "n_states": 2,
+     "capped": false,
+     "bad": null
+    },
+    "c00": {
+     "safe": false,
+     "n_states": 1,
+     "capped": false,
+     "bad": {
+      "prot": "UNPROT",
+      "state": "{f1(dt=0,{},-) | net -1}  {f2(dt=0,{0},+) | net +1}  {f2(dt=0,{1,1},-) | net -1}"
+     }
+    }
+   }
+  },
+  {
+   "id": "GS-06",
+   "annex": false,
+   "n_cells": 3,
+   "n_monos": 3,
+   "r": 2,
+   "T": -1,
+   "pattern": [
+    -1,
+    -1,
+    1
+   ],
+   "generic": "UNPROT",
+   "full_merge": "PROT",
+   "labels": [
+    "f1(dt=0,{},-)",
+    "f2(dt=0,{0},+)",
+    "f2(dt=1,{0,1},-)"
+   ],
+   "free_states": 2,
+   "free_capped": false,
+   "prot_exists": true,
+   "novel_cert": null,
+   "prot_wit": {
+    "state": "{f1(dt=0,{},-) | net -1}  {f2(dt=0,{0},+) f2(dt=1,{0,1},-) | net +0}",
+    "digit": [
+     "I1^1*I3^0"
+    ],
+    "torsion": false
+   },
+   "kill_wit": {
+    "prot": "UNPROT",
+    "state": "{f1(dt=0,{},-) | net -1}  {f2(dt=0,{0},+) | net +1}  {f2(dt=1,{0,1},-) | net -1}",
+    "digit": [],
+    "torsion": false
+   },
+   "verdict": "CONDITIONAL",
+   "corners": {
+    "c11": {
+     "safe": true,
+     "n_states": 2,
+     "capped": false,
+     "bad": null
+    },
+    "c10": {
+     "safe": true,
+     "n_states": 2,
+     "capped": false,
+     "bad": null
+    },
+    "c01": {
+     "safe": false,
+     "n_states": 1,
+     "capped": false,
+     "bad": {
+      "prot": "UNPROT",
+      "state": "{f1(dt=0,{},-) | net -1}  {f2(dt=0,{0},+) | net +1}  {f2(dt=1,{0,1},-) | net -1}"
+     }
+    },
+    "c00": {
+     "safe": false,
+     "n_states": 1,
+     "capped": false,
+     "bad": {
+      "prot": "UNPROT",
+      "state": "{f1(dt=0,{},-) | net -1}  {f2(dt=0,{0},+) | net +1}  {f2(dt=1,{0,1},-) | net -1}"
+     }
+    }
+   }
+  },
+  {
+   "id": "GS-07",
+   "annex": false,
+   "n_cells": 3,
+   "n_monos": 2,
+   "r": 2,
+   "T": 1,
+   "pattern": [
+    -2,
+    1
+   ],
+   "generic": "UNPROT",
+   "full_merge": "PROT",
+   "labels": [
+    "f1(dt=0,{},-)",
+    "f2(dt=0,{1},+x2)"
+   ],
+   "free_states": 2,
+   "free_capped": false,
+   "prot_exists": true,
+   "novel_cert": null,
+   "prot_wit": {
+    "state": "{f1(dt=0,{},-) f2(dt=0,{1},+x2) | net +1}",
+    "digit": [],
+    "torsion": false
+   },
+   "kill_wit": {
+    "prot": "UNPROT",
+    "state": "{f1(dt=0,{},-) | net -1}  {f2(dt=0,{1},+x2) | net +2}",
+    "digit": [],
+    "torsion": false
+   },
+   "verdict": "CONDITIONAL",
+   "corners": {
+    "c11": {
+     "safe": false,
+     "n_states": 1,
+     "capped": false,
+     "bad": {
+      "prot": "UNPROT",
+      "state": "{f1(dt=0,{},-) | net -1}  {f2(dt=0,{1},+x2) | net +2}"
+     }
+    },
+    "c10": {
+     "safe": false,
+     "n_states": 1,
+     "capped": false,
+     "bad": {
+      "prot": "UNPROT",
+      "state": "{f1(dt=0,{},-) | net -1}  {f2(dt=0,{1},+x2) | net +2}"
+     }
+    },
+    "c01": {
+     "safe": false,
+     "n_states": 1,
+     "capped": false,
+     "bad": {
+      "prot": "UNPROT",
+      "state": "{f1(dt=0,{},-) | net -1}  {f2(dt=0,{1},+x2) | net +2}"
+     }
+    },
+    "c00": {
+     "safe": false,
+     "n_states": 1,
+     "capped": false,
+     "bad": {
+      "prot": "UNPROT",
+      "state": "{f1(dt=0,{},-) | net -1}  {f2(dt=0,{1},+x2) | net +2}"
+     }
+    }
+   }
+  },
+  {
+   "id": "GS-08",
+   "annex": false,
+   "n_cells": 3,
+   "n_monos": 3,
+   "r": 2,
+   "T": -1,
+   "pattern": [
+    -1,
+    -1,
+    1
+   ],
+   "generic": "UNPROT",
+   "full_merge": "PROT",
+   "labels": [
+    "f1(dt=0,{0},-)",
+    "f1(dt=0,{1,1},+)",
+    "f2(dt=0,{1},-)"
+   ],
+   "free_states": 2,
+   "free_capped": false,
+   "prot_exists": true,
+   "novel_cert": null,
+   "prot_wit": {
+    "state": "{f1(dt=0,{0},-) | net -1}  {f1(dt=0,{1,1},+) f2(dt=0,{1},-) | net +0}",
+    "digit": [],
+    "torsion": false
+   },
+   "kill_wit": {
+    "prot": "UNPROT",
+    "state": "{f1(dt=0,{0},-) | net -1}  {f1(dt=0,{1,1},+) | net +1}  {f2(dt=0,{1},-) | net -1}",
+    "digit": [],
+    "torsion": false
+   },
+   "verdict": "CONDITIONAL",
+   "corners": {
+    "c11": {
+     "safe": true,
+     "n_states": 2,
+     "capped": false,
+     "bad": null
+    },
+    "c10": {
+     "safe": false,
+     "n_states": 1,
+     "capped": false,
+     "bad": {
+      "prot": "UNPROT",
+      "state": "{f1(dt=0,{0},-) | net -1}  {f1(dt=0,{1,1},+) | net +1}  {f2(dt=0,{1},-) | net -1}"
+     }
+    },
+    "c01": {
+     "safe": true,
+     "n_states": 2,
+     "capped": false,
+     "bad": null
+    },
+    "c00": {
+     "safe": false,
+     "n_states": 1,
+     "capped": false,
+     "bad": {
+      "prot": "UNPROT",
+      "state": "{f1(dt=0,{0},-) | net -1}  {f1(dt=0,{1,1},+) | net +1}  {f2(dt=0,{1},-) | net -1}"
+     }
+    }
+   }
+  },
+  {
+   "id": "GS-09",
+   "annex": false,
+   "n_cells": 4,
+   "n_monos": 3,
+   "r": 2,
+   "T": 0,
+   "pattern": [
+    -2,
+    1,
+    1
+   ],
+   "generic": "UNPROT",
+   "full_merge": "DEAD",
+   "labels": [
+    "f1(dt=0,{},-)",
+    "f1(dt=1,{1},+x2)",
+    "f2(dt=1,{},-)"
+   ],
+   "free_states": 2,
+   "free_capped": false,
+   "prot_exists": true,
+   "novel_cert": null,
+   "prot_wit": {
+    "state": "{f1(dt=0,{},-) | net -1}  {f1(dt=1,{1},+x2) f2(dt=1,{},-) | net +1}",
+    "digit": [],
+    "torsion": false
+   },
+   "kill_wit": {
+    "prot": "UNPROT",
+    "state": "{f1(dt=0,{},-) | net -1}  {f1(dt=1,{1},+x2) | net +2}  {f2(dt=1,{},-) | net -1}",
+    "digit": [],
+    "torsion": false
+   },
+   "verdict": "CONDITIONAL",
+   "corners": {
+    "c11": {
+     "safe": false,
+     "n_states": 2,
+     "capped": false,
+     "bad": {
+      "prot": "DEAD",
+      "state": "{f1(dt=0,{},-) f1(dt=1,{1},+x2) f2(dt=1,{},-) | net +0}"
+     }
+    },
+    "c10": {
+     "safe": false,
+     "n_states": 2,
+     "capped": false,
+     "bad": {
+      "prot": "DEAD",
+      "state": "{f1(dt=0,{},-) f1(dt=1,{1},+x2) f2(dt=1,{},-) | net +0}"
+     }
+    },
+    "c01": {
+     "safe": false,
+     "n_states": 1,
+     "capped": false,
+     "bad": {
+      "prot": "UNPROT",
+      "state": "{f1(dt=0,{},-) | net -1}  {f1(dt=1,{1},+x2) | net +2}  {f2(dt=1,{},-) | net -1}"
+     }
+    },
+    "c00": {
+     "safe": false,
+     "n_states": 1,
+     "capped": false,
+     "bad": {
+      "prot": "UNPROT",
+      "state": "{f1(dt=0,{},-) | net -1}  {f1(dt=1,{1},+x2) | net +2}  {f2(dt=1,{},-) | net -1}"
+     }
+    }
+   }
+  },
+  {
+   "id": "GS-10",
+   "annex": false,
+   "n_cells": 4,
+   "n_monos": 3,
+   "r": 2,
+   "T": 0,
+   "pattern": [
+    -2,
+    1,
+    1
+   ],
+   "generic": "UNPROT",
+   "full_merge": "DEAD",
+   "labels": [
+    "f1(dt=0,{},-)",
+    "f2(dt=0,{0},+x2)",
+    "f2(dt=0,{1,1},-)"
+   ],
+   "free_states": 2,
+   "free_capped": false,
+   "prot_exists": true,
+   "novel_cert": null,
+   "prot_wit": {
+    "state": "{f1(dt=0,{},-) | net -1}  {f2(dt=0,{0},+x2) f2(dt=0,{1,1},-) | net +1}",
+    "digit": [
+     "I1^0*I3^1"
+    ],
+    "torsion": false
+   },
+   "kill_wit": {
+    "prot": "UNPROT",
+    "state": "{f1(dt=0,{},-) | net -1}  {f2(dt=0,{0},+x2) | net +2}  {f2(dt=0,{1,1},-) | net -1}",
+    "digit": [],
+    "torsion": false
+   },
+   "verdict": "CONDITIONAL",
+   "corners": {
+    "c11": {
+     "safe": false,
+     "n_states": 2,
+     "capped": false,
+     "bad": {
+      "prot": "DEAD",
+      "state": "{f1(dt=0,{},-) f2(dt=0,{0},+x2) f2(dt=0,{1,1},-) | net +0}"
+     }
+    },
+    "c10": {
+     "safe": false,
+     "n_states": 1,
+     "capped": false,
+     "bad": {
+      "prot": "UNPROT",
+      "state": "{f1(dt=0,{},-) | net -1}  {f2(dt=0,{0},+x2) | net +2}  {f2(dt=0,{1,1},-) | net -1}"
+     }
+    },
+    "c01": {
+     "safe": false,
+     "n_states": 2,
+     "capped": false,
+     "bad": {
+      "prot": "DEAD",
+      "state": "{f1(dt=0,{},-) f2(dt=0,{0},+x2) f2(dt=0,{1,1},-) | net +0}"
+     }
+    },
+    "c00": {
+     "safe": false,
+     "n_states": 1,
+     "capped": false,
+     "bad": {
+      "prot": "UNPROT",
+      "state": "{f1(dt=0,{},-) | net -1}  {f2(dt=0,{0},+x2) | net +2}  {f2(dt=0,{1,1},-) | net -1}"
+     }
+    }
+   }
+  },
+  {
+   "id": "GS-11",
+   "annex": false,
+   "n_cells": 4,
+   "n_monos": 3,
+   "r": 2,
+   "T": -2,
+   "pattern": [
+    -2,
+    -1,
+    1
+   ],
+   "generic": "UNPROT",
+   "full_merge": "UNPROT",
+   "labels": [
+    "f1(dt=0,{0},-x2)",
+    "f1(dt=0,{1,1},+)",
+    "f2(dt=0,{1},-)"
+   ],
+   "prot_exists": false,
+   "prot_wit": null,
+   "novel_cert": "total-invariant |T|=2>=2 (main)",
+   "free_states": null,
+   "free_capped": false,
+   "kill_wit": {
+    "prot": "UNPROT",
+    "state": "{f1(dt=0,{0},-x2) | net -2}  {f1(dt=0,{1,1},+) | net +1}  {f2(dt=0,{1},-) | net -1}",
+    "digit": [],
+    "torsion": false
+   },
+   "verdict": "NOVEL",
+   "corners": {
+    "c11": {
+     "safe": false,
+     "n_states": 1,
+     "capped": false,
+     "bad": {
+      "prot": "UNPROT",
+      "state": "{f1(dt=0,{0},-x2) f1(dt=0,{1,1},+) | net -1}  {f2(dt=0,{1},-) | net -1}"
+     }
+    },
+    "c10": {
+     "safe": false,
+     "n_states": 1,
+     "capped": false,
+     "bad": {
+      "prot": "UNPROT",
+      "state": "{f1(dt=0,{0},-x2) | net -2}  {f1(dt=0,{1,1},+) | net +1}  {f2(dt=0,{1},-) | net -1}"
+     }
+    },
+    "c01": {
+     "safe": false,
+     "n_states": 1,
+     "capped": false,
+     "bad": {
+      "prot": "UNPROT",
+      "state": "{f1(dt=0,{0},-x2) f1(dt=0,{1,1},+) | net -1}  {f2(dt=0,{1},-) | net -1}"
+     }
+    },
+    "c00": {
+     "safe": false,
+     "n_states": 1,
+     "capped": false,
+     "bad": {
+      "prot": "UNPROT",
+      "state": "{f1(dt=0,{0},-x2) | net -2}  {f1(dt=0,{1,1},+) | net +1}  {f2(dt=0,{1},-) | net -1}"
+     }
+    }
+   }
+  },
+  {
+   "id": "GS-12",
+   "annex": false,
+   "n_cells": 4,
+   "n_monos": 4,
+   "r": 2,
+   "T": 0,
+   "pattern": [
+    -1,
+    -1,
+    1,
+    1
+   ],
+   "generic": "UNPROT",
+   "full_merge": "DEAD",
+   "labels": [
+    "f1(dt=0,{1},-)",
+    "f1(dt=1,{0},-)",
+    "f1(dt=1,{1,1},+)",
+    "f2(dt=1,{},+)"
+   ],
+   "free_states": 3,
+   "free_capped": false,
+   "prot_exists": true,
+   "novel_cert": null,
+   "prot_wit": {
+    "state": "{f1(dt=0,{1},-) | net -1}  {f1(dt=1,{0},-) f1(dt=1,{1,1},+) f2(dt=1,{},+) | net +1}",
+    "digit": [
+     "I1^0*I3^1"
+    ],
+    "torsion": false
+   },
+   "kill_wit": {
+    "prot": "UNPROT",
+    "state": "{f1(dt=0,{1},-) | net -1}  {f1(dt=1,{0},-) | net -1}  {f1(dt=1,{1,1},+) | net +1}  {f2(dt=1,{},+) | net +1}",
+    "digit": [],
+    "torsion": false
+   },
+   "verdict": "CONDITIONAL",
+   "corners": {
+    "c11": {
+     "safe": false,
+     "n_states": 2,
+     "capped": false,
+     "bad": {
+      "prot": "DEAD",
+      "state": "{f1(dt=0,{1},-) f1(dt=1,{0},-) f1(dt=1,{1,1},+) f2(dt=1,{},+) | net +0}"
+     }
+    },
+    "c10": {
+     "safe": false,
+     "n_states": 2,
+     "capped": false,
+     "bad": {
+      "prot": "DEAD",
+      "state": "{f1(dt=0,{1},-) f1(dt=1,{1,1},+) | net +0}  {f1(dt=1,{0},-) f2(dt=1,{},+) | net +0}"
+     }
+    },
+    "c01": {
+     "safe": false,
+     "n_states": 3,
+     "capped": false,
+     "bad": {
+      "prot": "DEAD",
+      "state": "{f1(dt=0,{1},-) f2(dt=1,{},+) | net +0}  {f1(dt=1,{0},-) f1(dt=1,{1,1},+) | net +0}"
+     }
+    },
+    "c00": {
+     "safe": false,
+     "n_states": 1,
+     "capped": false,
+     "bad": {
+      "prot": "UNPROT",
+      "state": "{f1(dt=0,{1},-) | net -1}  {f1(dt=1,{0},-) | net -1}  {f1(dt=1,{1,1},+) | net +1}  {f2(dt=1,{},+) | net +1}"
+     }
+    }
+   }
+  },
+  {
+   "id": "GS-13",
+   "annex": false,
+   "n_cells": 4,
+   "n_monos": 4,
+   "r": 3,
+   "T": 0,
+   "pattern": [
+    -1,
+    -1,
+    1,
+    1
+   ],
+   "generic": "UNPROT",
+   "full_merge": "DEAD",
+   "labels": [
+    "f1(dt=0,{},-)",
+    "f2(dt=0,{0},+)",
+    "f2(dt=0,{1,1},-)",
+    "f3(dt=0,{1},+)"
+   ],
+   "free_states": 2,
+   "free_capped": false,
+   "prot_exists": true,
+   "novel_cert": null,
+   "prot_wit": {
+    "state": "{f1(dt=0,{},-) | net -1}  {f2(dt=0,{0},+) | net +1}  {f2(dt=0,{1,1},-) f3(dt=0,{1},+) | net +0}",
+    "digit": [],
+    "torsion": false
+   },
+   "kill_wit": {
+    "prot": "UNPROT",
+    "state": "{f1(dt=0,{},-) | net -1}  {f2(dt=0,{0},+) | net +1}  {f2(dt=0,{1,1},-) | net -1}  {f3(dt=0,{1},+) | net +1}",
+    "digit": [],
+    "torsion": false
+   },
+   "verdict": "CONDITIONAL",
+   "corners": {
+    "c11": {
+     "safe": false,
+     "n_states": 3,
+     "capped": false,
+     "bad": {
+      "prot": "DEAD",
+      "state": "{f1(dt=0,{},-) f2(dt=0,{0},+) f2(dt=0,{1,1},-) f3(dt=0,{1},+) | net +0}"
+     }
+    },
+    "c10": {
+     "safe": false,
+     "n_states": 1,
+     "capped": false,
+     "bad": {
+      "prot": "UNPROT",
+      "state": "{f1(dt=0,{},-) | net -1}  {f2(dt=0,{0},+) | net +1}  {f2(dt=0,{1,1},-) | net -1}  {f3(dt=0,{1},+) | net +1}"
+     }
+    },
+    "c01": {
+     "safe": false,
+     "n_states": 3,
+     "capped": false,
+     "bad": {
+      "prot": "DEAD",
+      "state": "{f1(dt=0,{},-) f2(dt=0,{0},+) f2(dt=0,{1,1},-) f3(dt=0,{1},+) | net +0}"
+     }
+    },
+    "c00": {
+     "safe": false,
+     "n_states": 1,
+     "capped": false,
+     "bad": {
+      "prot": "UNPROT",
+      "state": "{f1(dt=0,{},-) | net -1}  {f2(dt=0,{0},+) | net +1}  {f2(dt=0,{1,1},-) | net -1}  {f3(dt=0,{1},+) | net +1}"
+     }
+    }
+   }
+  },
+  {
+   "id": "GS-14",
+   "annex": false,
+   "n_cells": 4,
+   "n_monos": 4,
+   "r": 3,
+   "T": 0,
+   "pattern": [
+    -1,
+    -1,
+    1,
+    1
+   ],
+   "generic": "UNPROT",
+   "full_merge": "DEAD",
+   "labels": [
+    "f1(dt=0,{},-)",
+    "f2(dt=0,{0},+)",
+    "f2(dt=1,{0,1},-)",
+    "f3(dt=1,{0},+)"
+   ],
+   "free_states": 2,
+   "free_capped": false,
+   "prot_exists": true,
+   "novel_cert": null,
+   "prot_wit": {
+    "state": "{f1(dt=0,{},-) | net -1}  {f2(dt=0,{0},+) | net +1}  {f2(dt=1,{0,1},-) f3(dt=1,{0},+) | net +0}",
+    "digit": [],
+    "torsion": false
+   },
+   "kill_wit": {
+    "prot": "UNPROT",
+    "state": "{f1(dt=0,{},-) | net -1}  {f2(dt=0,{0},+) | net +1}  {f2(dt=1,{0,1},-) | net -1}  {f3(dt=1,{0},+) | net +1}",
+    "digit": [],
+    "torsion": false
+   },
+   "verdict": "CONDITIONAL",
+   "corners": {
+    "c11": {
+     "safe": false,
+     "n_states": 3,
+     "capped": false,
+     "bad": {
+      "prot": "DEAD",
+      "state": "{f1(dt=0,{},-) f2(dt=0,{0},+) f2(dt=1,{0,1},-) f3(dt=1,{0},+) | net +0}"
+     }
+    },
+    "c10": {
+     "safe": false,
+     "n_states": 3,
+     "capped": false,
+     "bad": {
+      "prot": "DEAD",
+      "state": "{f1(dt=0,{},-) f2(dt=0,{0},+) f2(dt=1,{0,1},-) f3(dt=1,{0},+) | net +0}"
+     }
+    },
+    "c01": {
+     "safe": false,
+     "n_states": 1,
+     "capped": false,
+     "bad": {
+      "prot": "UNPROT",
+      "state": "{f1(dt=0,{},-) | net -1}  {f2(dt=0,{0},+) | net +1}  {f2(dt=1,{0,1},-) | net -1}  {f3(dt=1,{0},+) | net +1}"
+     }
+    },
+    "c00": {
+     "safe": false,
+     "n_states": 1,
+     "capped": false,
+     "bad": {
+      "prot": "UNPROT",
+      "state": "{f1(dt=0,{},-) | net -1}  {f2(dt=0,{0},+) | net +1}  {f2(dt=1,{0,1},-) | net -1}  {f3(dt=1,{0},+) | net +1}"
+     }
+    }
+   }
+  },
+  {
+   "id": "GS-15",
+   "annex": false,
+   "n_cells": 5,
+   "n_monos": 5,
+   "r": 2,
+   "T": 1,
+   "pattern": [
+    -1,
+    -1,
+    -1,
+    1,
+    1
+   ],
+   "generic": "UNPROT",
+   "full_merge": "PROT",
+   "labels": [
+    "f1(dt=0,{},-)",
+    "f1(dt=1,{1},+)",
+    "f2(dt=0,{1},+)",
+    "f2(dt=1,{0},+)",
+    "f2(dt=1,{1,1},-)"
+   ],
+   "free_states": 5,
+   "free_capped": false,
+   "prot_exists": true,
+   "novel_cert": null,
+   "prot_wit": {
+    "state": "{f1(dt=0,{},-) f1(dt=1,{1},+) f2(dt=0,{1},+) f2(dt=1,{0},+) f2(dt=1,{1,1},-) | net +1}",
+    "digit": [
+     "I1^0*I3^1",
+     "I1^1*I3^0"
+    ],
+    "torsion": false
+   },
+   "kill_wit": {
+    "prot": "UNPROT",
+    "state": "{f1(dt=0,{},-) | net -1}  {f1(dt=1,{1},+) | net +1}  {f2(dt=0,{1},+) | net +1}  {f2(dt=1,{0},+) | net +1}  {f2(dt=1,{1,1},-) | net -1}",
+    "digit": [],
+    "torsion": false
+   },
+   "verdict": "CONDITIONAL",
+   "corners": {
+    "c11": {
+     "safe": true,
+     "n_states": 2,
+     "capped": false,
+     "bad": null
+    },
+    "c10": {
+     "safe": true,
+     "n_states": 3,
+     "capped": false,
+     "bad": null
+    },
+    "c01": {
+     "safe": false,
+     "n_states": 1,
+     "capped": false,
+     "bad": {
+      "prot": "UNPROT",
+      "state": "{f1(dt=0,{},-) | net -1}  {f1(dt=1,{1},+) | net +1}  {f2(dt=0,{1},+) | net +1}  {f2(dt=1,{0},+) f2(dt=1,{1,1},-) | net +0}"
+     }
+    },
+    "c00": {
+     "safe": false,
+     "n_states": 1,
+     "capped": false,
+     "bad": {
+      "prot": "UNPROT",
+      "state": "{f1(dt=0,{},-) | net -1}  {f1(dt=1,{1},+) | net +1}  {f2(dt=0,{1},+) | net +1}  {f2(dt=1,{0},+) | net +1}  {f2(dt=1,{1,1},-) | net -1}"
+     }
+    }
+   }
+  },
+  {
+   "id": "GS-16",
+   "annex": false,
+   "n_cells": 5,
+   "n_monos": 4,
+   "r": 2,
+   "T": 1,
+   "pattern": [
+    -2,
+    -1,
+    1,
+    1
+   ],
+   "generic": "UNPROT",
+   "full_merge": "PROT",
+   "labels": [
+    "f1(dt=0,{0},-)",
+    "f1(dt=0,{1,1},+)",
+    "f2(dt=0,{0,1},+x2)",
+    "f2(dt=0,{1,1,1},-)"
+   ],
+   "free_states": 4,
+   "free_capped": false,
+   "prot_exists": true,
+   "novel_cert": null,
+   "prot_wit": {
+    "state": "{f1(dt=0,{0},-) f1(dt=0,{1,1},+) f2(dt=0,{0,1},+x2) f2(dt=0,{1,1,1},-) | net +1}",
+    "digit": [
+     "I1^0*I3^1"
+    ],
+    "torsion": false
+   },
+   "kill_wit": {
+    "prot": "UNPROT",
+    "state": "{f1(dt=0,{0},-) | net -1}  {f1(dt=0,{1,1},+) | net +1}  {f2(dt=0,{0,1},+x2) | net +2}  {f2(dt=0,{1,1,1},-) | net -1}",
+    "digit": [],
+    "torsion": false
+   },
+   "verdict": "CONDITIONAL",
+   "corners": {
+    "c11": {
+     "safe": true,
+     "n_states": 2,
+     "capped": false,
+     "bad": null
+    },
+    "c10": {
+     "safe": false,
+     "n_states": 1,
+     "capped": false,
+     "bad": {
+      "prot": "UNPROT",
+      "state": "{f1(dt=0,{0},-) | net -1}  {f1(dt=0,{1,1},+) | net +1}  {f2(dt=0,{0,1},+x2) | net +2}  {f2(dt=0,{1,1,1},-) | net -1}"
+     }
+    },
+    "c01": {
+     "safe": true,
+     "n_states": 2,
+     "capped": false,
+     "bad": null
+    },
+    "c00": {
+     "safe": false,
+     "n_states": 1,
+     "capped": false,
+     "bad": {
+      "prot": "UNPROT",
+      "state": "{f1(dt=0,{0},-) | net -1}  {f1(dt=0,{1,1},+) | net +1}  {f2(dt=0,{0,1},+x2) | net +2}  {f2(dt=0,{1,1,1},-) | net -1}"
+     }
+    }
+   }
+  },
+  {
+   "id": "GS-17",
+   "annex": false,
+   "n_cells": 5,
+   "n_monos": 4,
+   "r": 2,
+   "T": -1,
+   "pattern": [
+    -2,
+    -1,
+    1,
+    1
+   ],
+   "generic": "UNPROT",
+   "full_merge": "PROT",
+   "labels": [
+    "f1(dt=0,{1},-)",
+    "f1(dt=1,{0},-x2)",
+    "f1(dt=1,{1,1},+)",
+    "f2(dt=1,{},+)"
+   ],
+   "free_states": 3,
+   "free_capped": false,
+   "prot_exists": true,
+   "novel_cert": null,
+   "prot_wit": {
+    "state": "{f1(dt=0,{1},-) | net -1}  {f1(dt=1,{0},-x2) f1(dt=1,{1,1},+) f2(dt=1,{},+) | net +0}",
+    "digit": [
+     "I1^0*I3^1"
+    ],
+    "torsion": false
+   },
+   "kill_wit": {
+    "prot": "UNPROT",
+    "state": "{f1(dt=0,{1},-) | net -1}  {f1(dt=1,{0},-x2) | net -2}  {f1(dt=1,{1,1},+) | net +1}  {f2(dt=1,{},+) | net +1}",
+    "digit": [],
+    "torsion": false
+   },
+   "verdict": "CONDITIONAL",
+   "corners": {
+    "c11": {
+     "safe": false,
+     "n_states": 1,
+     "capped": false,
+     "bad": {
+      "prot": "UNPROT",
+      "state": "{f1(dt=0,{1},-) f1(dt=1,{0},-x2) f1(dt=1,{1,1},+) | net -2}  {f2(dt=1,{},+) | net +1}"
+     }
+    },
+    "c10": {
+     "safe": false,
+     "n_states": 1,
+     "capped": false,
+     "bad": {
+      "prot": "UNPROT",
+      "state": "{f1(dt=0,{1},-) f1(dt=1,{1,1},+) | net +0}  {f1(dt=1,{0},-x2) | net -2}  {f2(dt=1,{},+) | net +1}"
+     }
+    },
+    "c01": {
+     "safe": false,
+     "n_states": 1,
+     "capped": false,
+     "bad": {
+      "prot": "UNPROT",
+      "state": "{f1(dt=0,{1},-) | net -1}  {f1(dt=1,{0},-x2) f1(dt=1,{1,1},+) | net -1}  {f2(dt=1,{},+) | net +1}"
+     }
+    },
+    "c00": {
+     "safe": false,
+     "n_states": 1,
+     "capped": false,
+     "bad": {
+      "prot": "UNPROT",
+      "state": "{f1(dt=0,{1},-) | net -1}  {f1(dt=1,{0},-x2) | net -2}  {f1(dt=1,{1,1},+) | net +1}  {f2(dt=1,{},+) | net +1}"
+     }
+    }
+   }
+  },
+  {
+   "id": "GS-18",
+   "annex": false,
+   "n_cells": 5,
+   "n_monos": 4,
+   "r": 3,
+   "T": 1,
+   "pattern": [
+    -2,
+    -1,
+    1,
+    1
+   ],
+   "generic": "UNPROT",
+   "full_merge": "PROT",
+   "labels": [
+    "f1(dt=0,{},-)",
+    "f2(dt=0,{0},+x2)",
+    "f2(dt=0,{1,1},-)",
+    "f3(dt=0,{1},+)"
+   ],
+   "free_states": 4,
+   "free_capped": false,
+   "prot_exists": true,
+   "novel_cert": null,
+   "prot_wit": {
+    "state": "{f1(dt=0,{},-) f2(dt=0,{0},+x2) f2(dt=0,{1,1},-) f3(dt=0,{1},+) | net +1}",
+    "digit": [
+     "I1^0*I3^1"
+    ],
+    "torsion": false
+   },
+   "kill_wit": {
+    "prot": "UNPROT",
+    "state": "{f1(dt=0,{},-) | net -1}  {f2(dt=0,{0},+x2) | net +2}  {f2(dt=0,{1,1},-) | net -1}  {f3(dt=0,{1},+) | net +1}",
+    "digit": [],
+    "torsion": false
+   },
+   "verdict": "CONDITIONAL",
+   "corners": {
+    "c11": {
+     "safe": false,
+     "n_states": 1,
+     "capped": false,
+     "bad": {
+      "prot": "UNPROT",
+      "state": "{f1(dt=0,{},-) | net -1}  {f2(dt=0,{0},+x2) f2(dt=0,{1,1},-) | net +1}  {f3(dt=0,{1},+) | net +1}"
+     }
+    },
+    "c10": {
+     "safe": false,
+     "n_states": 1,
+     "capped": false,
+     "bad": {
+      "prot": "UNPROT",
+      "state": "{f1(dt=0,{},-) | net -1}  {f2(dt=0,{0},+x2) | net +2}  {f2(dt=0,{1,1},-) | net -1}  {f3(dt=0,{1},+) | net +1}"
+     }
+    },
+    "c01": {
+     "safe": false,
+     "n_states": 1,
+     "capped": false,
+     "bad": {
+      "prot": "UNPROT",
+      "state": "{f1(dt=0,{},-) | net -1}  {f2(dt=0,{0},+x2) f2(dt=0,{1,1},-) | net +1}  {f3(dt=0,{1},+) | net +1}"
+     }
+    },
+    "c00": {
+     "safe": false,
+     "n_states": 1,
+     "capped": false,
+     "bad": {
+      "prot": "UNPROT",
+      "state": "{f1(dt=0,{},-) | net -1}  {f2(dt=0,{0},+x2) | net +2}  {f2(dt=0,{1,1},-) | net -1}  {f3(dt=0,{1},+) | net +1}"
+     }
+    }
+   }
+  },
+  {
+   "id": "GS-19",
+   "annex": false,
+   "n_cells": 6,
+   "n_monos": 5,
+   "r": 2,
+   "T": 2,
+   "pattern": [
+    -2,
+    -1,
+    -1,
+    1,
+    1
+   ],
+   "generic": "UNPROT",
+   "full_merge": "UNPROT",
+   "labels": [
+    "f1(dt=0,{},-)",
+    "f1(dt=1,{1},+)",
+    "f2(dt=0,{1},+)",
+    "f2(dt=1,{0},+x2)",
+    "f2(dt=1,{1,1},-)"
+   ],
+   "prot_exists": false,
+   "prot_wit": null,
+   "novel_cert": "total-invariant |T|=2>=2 (main)",
+   "free_states": null,
+   "free_capped": false,
+   "kill_wit": {
+    "prot": "UNPROT",
+    "state": "{f1(dt=0,{},-) | net -1}  {f1(dt=1,{1},+) | net +1}  {f2(dt=0,{1},+) | net +1}  {f2(dt=1,{0},+x2) | net +2}  {f2(dt=1,{1,1},-) | net -1}",
+    "digit": [],
+    "torsion": false
+   },
+   "verdict": "NOVEL",
+   "corners": {
+    "c11": {
+     "safe": false,
+     "n_states": 1,
+     "capped": false,
+     "bad": {
+      "prot": "UNPROT",
+      "state": "{f1(dt=0,{},-) f1(dt=1,{1},+) | net +0}  {f2(dt=0,{1},+) f2(dt=1,{0},+x2) f2(dt=1,{1,1},-) | net +2}"
+     }
+    },
+    "c10": {
+     "safe": false,
+     "n_states": 1,
+     "capped": false,
+     "bad": {
+      "prot": "UNPROT",
+      "state": "{f1(dt=0,{},-) f1(dt=1,{1},+) | net +0}  {f2(dt=0,{1},+) f2(dt=1,{1,1},-) | net +0}  {f2(dt=1,{0},+x2) | net +2}"
+     }
+    },
+    "c01": {
+     "safe": false,
+     "n_states": 1,
+     "capped": false,
+     "bad": {
+      "prot": "UNPROT",
+      "state": "{f1(dt=0,{},-) | net -1}  {f1(dt=1,{1},+) | net +1}  {f2(dt=0,{1},+) | net +1}  {f2(dt=1,{0},+x2) f2(dt=1,{1,1},-) | net +1}"
+     }
+    },
+    "c00": {
+     "safe": false,
+     "n_states": 1,
+     "capped": false,
+     "bad": {
+      "prot": "UNPROT",
+      "state": "{f1(dt=0,{},-) | net -1}  {f1(dt=1,{1},+) | net +1}  {f2(dt=0,{1},+) | net +1}  {f2(dt=1,{0},+x2) | net +2}  {f2(dt=1,{1,1},-) | net -1}"
+     }
+    }
+   }
+  },
+  {
+   "id": "GS-20",
+   "annex": false,
+   "n_cells": 6,
+   "n_monos": 3,
+   "r": 2,
+   "T": -2,
+   "pattern": [
+    -3,
+    -1,
+    2
+   ],
+   "generic": "UNPROT",
+   "full_merge": "UNPROT",
+   "labels": [
+    "f1(dt=0,{},-)",
+    "f2(dt=0,{0},+x2)",
+    "f2(dt=0,{1,1},-x3)"
+   ],
+   "prot_exists": false,
+   "prot_wit": null,
+   "novel_cert": "total-invariant |T|=2>=2 (main)",
+   "free_states": null,
+   "free_capped": false,
+   "kill_wit": {
+    "prot": "UNPROT",
+    "state": "{f1(dt=0,{},-) | net -1}  {f2(dt=0,{0},+x2) | net +2}  {f2(dt=0,{1,1},-x3) | net -3}",
+    "digit": [],
+    "torsion": false
+   },
+   "verdict": "NOVEL",
+   "corners": {
+    "c11": {
+     "safe": false,
+     "n_states": 1,
+     "capped": false,
+     "bad": {
+      "prot": "UNPROT",
+      "state": "{f1(dt=0,{},-) | net -1}  {f2(dt=0,{0},+x2) f2(dt=0,{1,1},-x3) | net -1}"
+     }
+    },
+    "c10": {
+     "safe": false,
+     "n_states": 1,
+     "capped": false,
+     "bad": {
+      "prot": "UNPROT",
+      "state": "{f1(dt=0,{},-) | net -1}  {f2(dt=0,{0},+x2) | net +2}  {f2(dt=0,{1,1},-x3) | net -3}"
+     }
+    },
+    "c01": {
+     "safe": false,
+     "n_states": 1,
+     "capped": false,
+     "bad": {
+      "prot": "UNPROT",
+      "state": "{f1(dt=0,{},-) | net -1}  {f2(dt=0,{0},+x2) f2(dt=0,{1,1},-x3) | net -1}"
+     }
+    },
+    "c00": {
+     "safe": false,
+     "n_states": 1,
+     "capped": false,
+     "bad": {
+      "prot": "UNPROT",
+      "state": "{f1(dt=0,{},-) | net -1}  {f2(dt=0,{0},+x2) | net +2}  {f2(dt=0,{1,1},-x3) | net -3}"
+     }
+    }
+   }
+  },
+  {
+   "id": "GS-21",
+   "annex": false,
+   "n_cells": 6,
+   "n_monos": 3,
+   "r": 2,
+   "T": 2,
+   "pattern": [
+    -4,
+    1,
+    1
+   ],
+   "generic": "UNPROT",
+   "full_merge": "UNPROT",
+   "labels": [
+    "f1(dt=0,{},-)",
+    "f2(dt=0,{0},+x4)",
+    "f2(dt=0,{1,1},-)"
+   ],
+   "prot_exists": false,
+   "prot_wit": null,
+   "novel_cert": "total-invariant |T|=2>=2 (main)",
+   "free_states": null,
+   "free_capped": false,
+   "kill_wit": {
+    "prot": "UNPROT",
+    "state": "{f1(dt=0,{},-) | net -1}  {f2(dt=0,{0},+x4) | net +4}  {f2(dt=0,{1,1},-) | net -1}",
+    "digit": [],
+    "torsion": false
+   },
+   "verdict": "NOVEL",
+   "corners": {
+    "c11": {
+     "safe": false,
+     "n_states": 1,
+     "capped": false,
+     "bad": {
+      "prot": "UNPROT",
+      "state": "{f1(dt=0,{},-) | net -1}  {f2(dt=0,{0},+x4) f2(dt=0,{1,1},-) | net +3}"
+     }
+    },
+    "c10": {
+     "safe": false,
+     "n_states": 1,
+     "capped": false,
+     "bad": {
+      "prot": "UNPROT",
+      "state": "{f1(dt=0,{},-) | net -1}  {f2(dt=0,{0},+x4) | net +4}  {f2(dt=0,{1,1},-) | net -1}"
+     }
+    },
+    "c01": {
+     "safe": false,
+     "n_states": 1,
+     "capped": false,
+     "bad": {
+      "prot": "UNPROT",
+      "state": "{f1(dt=0,{},-) | net -1}  {f2(dt=0,{0},+x4) f2(dt=0,{1,1},-) | net +3}"
+     }
+    },
+    "c00": {
+     "safe": false,
+     "n_states": 1,
+     "capped": false,
+     "bad": {
+      "prot": "UNPROT",
+      "state": "{f1(dt=0,{},-) | net -1}  {f2(dt=0,{0},+x4) | net +4}  {f2(dt=0,{1,1},-) | net -1}"
+     }
+    }
+   }
+  },
+  {
+   "id": "GS-22",
+   "annex": false,
+   "n_cells": 6,
+   "n_monos": 6,
+   "r": 3,
+   "T": 0,
+   "pattern": [
+    -1,
+    -1,
+    -1,
+    1,
+    1,
+    1
+   ],
+   "generic": "UNPROT",
+   "full_merge": "DEAD",
+   "labels": [
+    "f1(dt=0,{},-)",
+    "f1(dt=1,{1},+)",
+    "f2(dt=0,{1},+)",
+    "f2(dt=1,{0},+)",
+    "f2(dt=1,{1,1},-)",
+    "f3(dt=1,{},-)"
+   ],
+   "free_states": 14,
+   "free_capped": false,
+   "prot_exists": true,
+   "novel_cert": null,
+   "prot_wit": {
+    "state": "{f1(dt=0,{},-) f2(dt=0,{1},+) f2(dt=1,{0},+) | net +1}  {f1(dt=1,{1},+) f2(dt=1,{1,1},-) f3(dt=1,{},-) | net -1}",
+    "digit": [
+     "I1^1*I3^-1"
+    ],
+    "torsion": false
+   },
+   "kill_wit": {
+    "prot": "UNPROT",
+    "state": "{f1(dt=0,{},-) | net -1}  {f1(dt=1,{1},+) | net +1}  {f2(dt=0,{1},+) | net +1}  {f2(dt=1,{0},+) | net +1}  {f2(dt=1,{1,1},-) | net -1}  {f3(dt=1,{},-) | net -1}",
+    "digit": [],
+    "torsion": false
+   },
+   "verdict": "CONDITIONAL",
+   "corners": {
+    "c11": {
+     "safe": false,
+     "n_states": 2,
+     "capped": false,
+     "bad": {
+      "prot": "DEAD",
+      "state": "{f1(dt=0,{},-) f1(dt=1,{1},+) | net +0}  {f2(dt=0,{1},+) f2(dt=1,{0},+) f2(dt=1,{1,1},-) f3(dt=1,{},-) | net +0}"
+     }
+    },
+    "c10": {
+     "safe": false,
+     "n_states": 2,
+     "capped": false,
+     "bad": {
+      "prot": "DEAD",
+      "state": "{f1(dt=0,{},-) f1(dt=1,{1},+) | net +0}  {f2(dt=0,{1},+) f2(dt=1,{1,1},-) | net +0}  {f2(dt=1,{0},+) f3(dt=1,{},-) | net +0}"
+     }
+    },
+    "c01": {
+     "safe": false,
+     "n_states": 1,
+     "capped": false,
+     "bad": {
+      "prot": "UNPROT",
+      "state": "{f1(dt=0,{},-) | net -1}  {f1(dt=1,{1},+) | net +1}  {f2(dt=0,{1},+) | net +1}  {f2(dt=1,{0},+) f2(dt=1,{1,1},-) | net +0}  {f3(dt=1,{},-) | net -1}"
+     }
+    },
+    "c00": {
+     "safe": false,
+     "n_states": 1,
+     "capped": false,
+     "bad": {
+      "prot": "UNPROT",
+      "state": "{f1(dt=0,{},-) | net -1}  {f1(dt=1,{1},+) | net +1}  {f2(dt=0,{1},+) | net +1}  {f2(dt=1,{0},+) | net +1}  {f2(dt=1,{1,1},-) | net -1}  {f3(dt=1,{},-) | net -1}"
+     }
+    }
+   }
+  },
+  {
+   "id": "GS-23",
+   "annex": false,
+   "n_cells": 6,
+   "n_monos": 5,
+   "r": 3,
+   "T": 0,
+   "pattern": [
+    -2,
+    -1,
+    1,
+    1,
+    1
+   ],
+   "generic": "UNPROT",
+   "full_merge": "DEAD",
+   "labels": [
+    "f1(dt=0,{0},-)",
+    "f1(dt=0,{1,1},+)",
+    "f2(dt=0,{0,1},+x2)",
+    "f2(dt=0,{1,1,1},-)",
+    "f3(dt=0,{1},-)"
+   ],
+   "free_states": 7,
+   "free_capped": false,
+   "prot_exists": true,
+   "novel_cert": null,
+   "prot_wit": {
+    "state": "{f1(dt=0,{0},-) f2(dt=0,{0,1},+x2) | net +1}  {f1(dt=0,{1,1},+) f2(dt=0,{1,1,1},-) f3(dt=0,{1},-) | net -1}",
+    "digit": [],
+    "torsion": false
+   },
+   "kill_wit": {
+    "prot": "UNPROT",
+    "state": "{f1(dt=0,{0},-) | net -1}  {f1(dt=0,{1,1},+) | net +1}  {f2(dt=0,{0,1},+x2) | net +2}  {f2(dt=0,{1,1,1},-) | net -1}  {f3(dt=0,{1},-) | net -1}",
+    "digit": [],
+    "torsion": false
+   },
+   "verdict": "CONDITIONAL",
+   "corners": {
+    "c11": {
+     "safe": false,
+     "n_states": 2,
+     "capped": false,
+     "bad": {
+      "prot": "DEAD",
+      "state": "{f1(dt=0,{0},-) f1(dt=0,{1,1},+) | net +0}  {f2(dt=0,{0,1},+x2) f2(dt=0,{1,1,1},-) f3(dt=0,{1},-) | net +0}"
+     }
+    },
+    "c10": {
+     "safe": false,
+     "n_states": 1,
+     "capped": false,
+     "bad": {
+      "prot": "UNPROT",
+      "state": "{f1(dt=0,{0},-) | net -1}  {f1(dt=0,{1,1},+) | net +1}  {f2(dt=0,{0,1},+x2) | net +2}  {f2(dt=0,{1,1,1},-) | net -1}  {f3(dt=0,{1},-) | net -1}"
+     }
+    },
+    "c01": {
+     "safe": false,
+     "n_states": 2,
+     "capped": false,
+     "bad": {
+      "prot": "DEAD",
+      "state": "{f1(dt=0,{0},-) f1(dt=0,{1,1},+) | net +0}  {f2(dt=0,{0,1},+x2) f2(dt=0,{1,1,1},-) f3(dt=0,{1},-) | net +0}"
+     }
+    },
+    "c00": {
+     "safe": false,
+     "n_states": 1,
+     "capped": false,
+     "bad": {
+      "prot": "UNPROT",
+      "state": "{f1(dt=0,{0},-) | net -1}  {f1(dt=0,{1,1},+) | net +1}  {f2(dt=0,{0,1},+x2) | net +2}  {f2(dt=0,{1,1,1},-) | net -1}  {f3(dt=0,{1},-) | net -1}"
+     }
+    }
+   }
+  },
+  {
+   "id": "GS-24",
+   "annex": false,
+   "n_cells": 7,
+   "n_monos": 6,
+   "r": 2,
+   "T": -1,
+   "pattern": [
+    -2,
+    -1,
+    -1,
+    1,
+    1,
+    1
+   ],
+   "generic": "UNPROT",
+   "full_merge": "PROT",
+   "labels": [
+    "f1(dt=0,{},-)",
+    "f1(dt=1,{1},+)",
+    "f2(dt=0,{0},+)",
+    "f2(dt=0,{1,1},-)",
+    "f2(dt=1,{0,1},-x2)",
+    "f2(dt=1,{1,1,1},+)"
+   ],
+   "free_states": 5,
+   "free_capped": false,
+   "prot_exists": true,
+   "novel_cert": null,
+   "prot_wit": {
+    "state": "{f1(dt=0,{},-) f1(dt=1,{1},+) f2(dt=0,{0},+) f2(dt=0,{1,1},-) f2(dt=1,{0,1},-x2) f2(dt=1,{1,1,1},+) | net -1}",
+    "digit": [
+     "I1^0*I3^1",
+     "I1^1*I3^0"
+    ],
+    "torsion": false
+   },
+   "kill_wit": {
+    "prot": "UNPROT",
+    "state": "{f1(dt=0,{},-) | net -1}  {f1(dt=1,{1},+) | net +1}  {f2(dt=0,{0},+) | net +1}  {f2(dt=0,{1,1},-) | net -1}  {f2(dt=1,{0,1},-x2) | net -2}  {f2(dt=1,{1,1,1},+) | net +1}",
+    "digit": [],
+    "torsion": false
+   },
+   "verdict": "CONDITIONAL",
+   "corners": {
+    "c11": {
+     "safe": true,
+     "n_states": 2,
+     "capped": false,
+     "bad": null
+    },
+    "c10": {
+     "safe": true,
+     "n_states": 3,
+     "capped": false,
+     "bad": null
+    },
+    "c01": {
+     "safe": false,
+     "n_states": 1,
+     "capped": false,
+     "bad": {
+      "prot": "UNPROT",
+      "state": "{f1(dt=0,{},-) | net -1}  {f1(dt=1,{1},+) | net +1}  {f2(dt=0,{0},+) f2(dt=0,{1,1},-) | net +0}  {f2(dt=1,{0,1},-x2) f2(dt=1,{1,1,1},+) | net -1}"
+     }
+    },
+    "c00": {
+     "safe": false,
+     "n_states": 1,
+     "capped": false,
+     "bad": {
+      "prot": "UNPROT",
+      "state": "{f1(dt=0,{},-) | net -1}  {f1(dt=1,{1},+) | net +1}  {f2(dt=0,{0},+) | net +1}  {f2(dt=0,{1,1},-) | net -1}  {f2(dt=1,{0,1},-x2) | net -2}  {f2(dt=1,{1,1,1},+) | net +1}"
+     }
+    }
+   }
+  },
+  {
+   "id": "GS-25",
+   "annex": false,
+   "n_cells": 7,
+   "n_monos": 5,
+   "r": 2,
+   "T": -1,
+   "pattern": [
+    -3,
+    -1,
+    1,
+    1,
+    1
+   ],
+   "generic": "UNPROT",
+   "full_merge": "PROT",
+   "labels": [
+    "f1(dt=0,{0},-)",
+    "f1(dt=0,{1,1},+)",
+    "f2(dt=0,{0,0},+)",
+    "f2(dt=0,{0,1,1},-x3)",
+    "f2(dt=0,{1,1,1,1},+)"
+   ],
+   "free_states": 4,
+   "free_capped": false,
+   "prot_exists": true,
+   "novel_cert": null,
+   "prot_wit": {
+    "state": "{f1(dt=0,{0},-) f1(dt=0,{1,1},+) f2(dt=0,{0,0},+) f2(dt=0,{0,1,1},-x3) f2(dt=0,{1,1,1,1},+) | net -1}",
+    "digit": [
+     "I1^0*I3^1"
+    ],
+    "torsion": false
+   },
+   "kill_wit": {
+    "prot": "UNPROT",
+    "state": "{f1(dt=0,{0},-) | net -1}  {f1(dt=0,{1,1},+) | net +1}  {f2(dt=0,{0,0},+) | net +1}  {f2(dt=0,{0,1,1},-x3) | net -3}  {f2(dt=0,{1,1,1,1},+) | net +1}",
+    "digit": [],
+    "torsion": false
+   },
+   "verdict": "CONDITIONAL",
+   "corners": {
+    "c11": {
+     "safe": true,
+     "n_states": 2,
+     "capped": false,
+     "bad": null
+    },
+    "c10": {
+     "safe": false,
+     "n_states": 1,
+     "capped": false,
+     "bad": {
+      "prot": "UNPROT",
+      "state": "{f1(dt=0,{0},-) | net -1}  {f1(dt=0,{1,1},+) | net +1}  {f2(dt=0,{0,0},+) | net +1}  {f2(dt=0,{0,1,1},-x3) | net -3}  {f2(dt=0,{1,1,1,1},+) | net +1}"
+     }
+    },
+    "c01": {
+     "safe": true,
+     "n_states": 2,
+     "capped": false,
+     "bad": null
+    },
+    "c00": {
+     "safe": false,
+     "n_states": 1,
+     "capped": false,
+     "bad": {
+      "prot": "UNPROT",
+      "state": "{f1(dt=0,{0},-) | net -1}  {f1(dt=0,{1,1},+) | net +1}  {f2(dt=0,{0,0},+) | net +1}  {f2(dt=0,{0,1,1},-x3) | net -3}  {f2(dt=0,{1,1,1,1},+) | net +1}"
+     }
+    }
+   }
+  },
+  {
+   "id": "GS-26",
+   "annex": false,
+   "n_cells": 7,
+   "n_monos": 3,
+   "r": 2,
+   "T": -1,
+   "pattern": [
+    -3,
+    2,
+    2
+   ],
+   "generic": "UNPROT",
+   "full_merge": "PROT",
+   "labels": [
+    "f1(dt=0,{0},-x2)",
+    "f1(dt=0,{1,1},+x3)",
+    "f2(dt=0,{1},-x2)"
+   ],
+   "free_states": 3,
+   "free_capped": false,
+   "prot_exists": true,
+   "novel_cert": null,
+   "prot_wit": {
+    "state": "{f1(dt=0,{0},-x2) f1(dt=0,{1,1},+x3) f2(dt=0,{1},-x2) | net -1}",
+    "digit": [
+     "I1^0*I3^1"
+    ],
+    "torsion": false
+   },
+   "kill_wit": {
+    "prot": "UNPROT",
+    "state": "{f1(dt=0,{0},-x2) | net -2}  {f1(dt=0,{1,1},+x3) | net +3}  {f2(dt=0,{1},-x2) | net -2}",
+    "digit": [],
+    "torsion": false
+   },
+   "verdict": "CONDITIONAL",
+   "corners": {
+    "c11": {
+     "safe": false,
+     "n_states": 1,
+     "capped": false,
+     "bad": {
+      "prot": "UNPROT",
+      "state": "{f1(dt=0,{0},-x2) f1(dt=0,{1,1},+x3) | net +1}  {f2(dt=0,{1},-x2) | net -2}"
+     }
+    },
+    "c10": {
+     "safe": false,
+     "n_states": 1,
+     "capped": false,
+     "bad": {
+      "prot": "UNPROT",
+      "state": "{f1(dt=0,{0},-x2) | net -2}  {f1(dt=0,{1,1},+x3) | net +3}  {f2(dt=0,{1},-x2) | net -2}"
+     }
+    },
+    "c01": {
+     "safe": false,
+     "n_states": 1,
+     "capped": false,
+     "bad": {
+      "prot": "UNPROT",
+      "state": "{f1(dt=0,{0},-x2) f1(dt=0,{1,1},+x3) | net +1}  {f2(dt=0,{1},-x2) | net -2}"
+     }
+    },
+    "c00": {
+     "safe": false,
+     "n_states": 1,
+     "capped": false,
+     "bad": {
+      "prot": "UNPROT",
+      "state": "{f1(dt=0,{0},-x2) | net -2}  {f1(dt=0,{1,1},+x3) | net +3}  {f2(dt=0,{1},-x2) | net -2}"
+     }
+    }
+   }
+  },
+  {
+   "id": "GS-27",
+   "annex": false,
+   "n_cells": 7,
+   "n_monos": 6,
+   "r": 3,
+   "T": 1,
+   "pattern": [
+    -2,
+    -1,
+    -1,
+    1,
+    1,
+    1
+   ],
+   "generic": "UNPROT",
+   "full_merge": "PROT",
+   "labels": [
+    "f1(dt=0,{},-)",
+    "f1(dt=1,{1},+)",
+    "f2(dt=0,{1},+)",
+    "f2(dt=1,{0},+x2)",
+    "f2(dt=1,{1,1},-)",
+    "f3(dt=1,{},-)"
+   ],
+   "free_states": 6,
+   "free_capped": false,
+   "prot_exists": true,
+   "novel_cert": null,
+   "prot_wit": {
+    "state": "{f1(dt=0,{},-) f1(dt=1,{1},+) f2(dt=0,{1},+) f2(dt=1,{0},+x2) f2(dt=1,{1,1},-) f3(dt=1,{},-) | net +1}",
+    "digit": [
+     "I1^0*I3^1",
+     "I1^1*I3^0"
+    ],
+    "torsion": false
+   },
+   "kill_wit": {
+    "prot": "UNPROT",
+    "state": "{f1(dt=0,{},-) | net -1}  {f1(dt=1,{1},+) | net +1}  {f2(dt=0,{1},+) | net +1}  {f2(dt=1,{0},+x2) | net +2}  {f2(dt=1,{1,1},-) | net -1}  {f3(dt=1,{},-) | net -1}",
+    "digit": [],
+    "torsion": false
+   },
+   "verdict": "CONDITIONAL",
+   "corners": {
+    "c11": {
+     "safe": false,
+     "n_states": 1,
+     "capped": false,
+     "bad": {
+      "prot": "UNPROT",
+      "state": "{f1(dt=0,{},-) f1(dt=1,{1},+) | net +0}  {f2(dt=0,{1},+) f2(dt=1,{0},+x2) f2(dt=1,{1,1},-) | net +2}  {f3(dt=1,{},-) | net -1}"
+     }
+    },
+    "c10": {
+     "safe": false,
+     "n_states": 1,
+     "capped": false,
+     "bad": {
+      "prot": "UNPROT",
+      "state": "{f1(dt=0,{},-) f1(dt=1,{1},+) | net +0}  {f2(dt=0,{1},+) f2(dt=1,{1,1},-) | net +0}  {f2(dt=1,{0},+x2) | net +2}  {f3(dt=1,{},-) | net -1}"
+     }
+    },
+    "c01": {
+     "safe": false,
+     "n_states": 1,
+     "capped": false,
+     "bad": {
+      "prot": "UNPROT",
+      "state": "{f1(dt=0,{},-) | net -1}  {f1(dt=1,{1},+) | net +1}  {f2(dt=0,{1},+) | net +1}  {f2(dt=1,{0},+x2) f2(dt=1,{1,1},-) | net +1}  {f3(dt=1,{},-) | net -1}"
+     }
+    },
+    "c00": {
+     "safe": false,
+     "n_states": 1,
+     "capped": false,
+     "bad": {
+      "prot": "UNPROT",
+      "state": "{f1(dt=0,{},-) | net -1}  {f1(dt=1,{1},+) | net +1}  {f2(dt=0,{1},+) | net +1}  {f2(dt=1,{0},+x2) | net +2}  {f2(dt=1,{1,1},-) | net -1}  {f3(dt=1,{},-) | net -1}"
+     }
+    }
+   }
+  },
+  {
+   "id": "GS-28",
+   "annex": false,
+   "n_cells": 8,
+   "n_monos": 5,
+   "r": 2,
+   "T": 0,
+   "pattern": [
+    -3,
+    -1,
+    1,
+    1,
+    2
+   ],
+   "generic": "UNPROT",
+   "full_merge": "DEAD",
+   "labels": [
+    "f1(dt=0,{0,0},-)",
+    "f1(dt=0,{0,1,1},+x3)",
+    "f1(dt=0,{1,1,1,1},-)",
+    "f2(dt=0,{0,1},-x2)",
+    "f2(dt=0,{1,1,1},+)"
+   ],
+   "free_states": 6,
+   "free_capped": false,
+   "prot_exists": true,
+   "novel_cert": null,
+   "prot_wit": {
+    "state": "{f1(dt=0,{0,0},-) | net -1}  {f1(dt=0,{0,1,1},+x3) f2(dt=0,{0,1},-x2) | net +1}  {f1(dt=0,{1,1,1,1},-) f2(dt=0,{1,1,1},+) | net +0}",
+    "digit": [],
+    "torsion": false
+   },
+   "kill_wit": {
+    "prot": "UNPROT",
+    "state": "{f1(dt=0,{0,0},-) | net -1}  {f1(dt=0,{0,1,1},+x3) | net +3}  {f1(dt=0,{1,1,1,1},-) | net -1}  {f2(dt=0,{0,1},-x2) | net -2}  {f2(dt=0,{1,1,1},+) | net +1}",
+    "digit": [],
+    "torsion": false
+   },
+   "verdict": "CONDITIONAL",
+   "corners": {
+    "c11": {
+     "safe": false,
+     "n_states": 2,
+     "capped": false,
+     "bad": {
+      "prot": "DEAD",
+      "state": "{f1(dt=0,{0,0},-) f1(dt=0,{0,1,1},+x3) f1(dt=0,{1,1,1,1},-) f2(dt=0,{0,1},-x2) f2(dt=0,{1,1,1},+) | net +0}"
+     }
+    },
+    "c10": {
+     "safe": false,
+     "n_states": 1,
+     "capped": false,
+     "bad": {
+      "prot": "UNPROT",
+      "state": "{f1(dt=0,{0,0},-) | net -1}  {f1(dt=0,{0,1,1},+x3) | net +3}  {f1(dt=0,{1,1,1,1},-) | net -1}  {f2(dt=0,{0,1},-x2) | net -2}  {f2(dt=0,{1,1,1},+) | net +1}"
+     }
+    },
+    "c01": {
+     "safe": false,
+     "n_states": 2,
+     "capped": false,
+     "bad": {
+      "prot": "DEAD",
+      "state": "{f1(dt=0,{0,0},-) f1(dt=0,{0,1,1},+x3) f1(dt=0,{1,1,1,1},-) f2(dt=0,{0,1},-x2) f2(dt=0,{1,1,1},+) | net +0}"
+     }
+    },
+    "c00": {
+     "safe": false,
+     "n_states": 1,
+     "capped": false,
+     "bad": {
+      "prot": "UNPROT",
+      "state": "{f1(dt=0,{0,0},-) | net -1}  {f1(dt=0,{0,1,1},+x3) | net +3}  {f1(dt=0,{1,1,1,1},-) | net -1}  {f2(dt=0,{0,1},-x2) | net -2}  {f2(dt=0,{1,1,1},+) | net +1}"
+     }
+    }
+   }
+  },
+  {
+   "id": "GS-29",
+   "annex": false,
+   "n_cells": 8,
+   "n_monos": 7,
+   "r": 2,
+   "T": 0,
+   "pattern": [
+    -2,
+    -1,
+    -1,
+    1,
+    1,
+    1,
+    1
+   ],
+   "generic": "UNPROT",
+   "full_merge": "DEAD",
+   "labels": [
+    "f1(dt=0,{0},-)",
+    "f1(dt=0,{1,1},+)",
+    "f1(dt=1,{0,1},+x2)",
+    "f1(dt=1,{1,1,1},-)",
+    "f2(dt=0,{1},-)",
+    "f2(dt=1,{0},-)",
+    "f2(dt=1,{1,1},+)"
+   ],
+   "free_states": 6,
+   "free_capped": false,
+   "prot_exists": true,
+   "novel_cert": null,
+   "prot_wit": {
+    "state": "{f1(dt=0,{0},-) f1(dt=1,{0,1},+x2) f2(dt=0,{1},-) f2(dt=1,{1,1},+) | net +1}  {f1(dt=0,{1,1},+) f1(dt=1,{1,1,1},-) f2(dt=1,{0},-) | net -1}",
+    "digit": [
+     "I1^0*I3^2",
+     "I1^1*I3^0"
+    ],
+    "torsion": true
+   },
+   "kill_wit": {
+    "prot": "UNPROT",
+    "state": "{f1(dt=0,{0},-) | net -1}  {f1(dt=0,{1,1},+) | net +1}  {f1(dt=1,{0,1},+x2) | net +2}  {f1(dt=1,{1,1,1},-) | net -1}  {f2(dt=0,{1},-) | net -1}  {f2(dt=1,{0},-) | net -1}  {f2(dt=1,{1,1},+) | net +1}",
+    "digit": [],
+    "torsion": false
+   },
+   "verdict": "CONDITIONAL",
+   "corners": {
+    "c11": {
+     "safe": false,
+     "n_states": 2,
+     "capped": false,
+     "bad": {
+      "prot": "DEAD",
+      "state": "{f1(dt=0,{0},-) f1(dt=0,{1,1},+) f1(dt=1,{0,1},+x2) f1(dt=1,{1,1,1},-) f2(dt=0,{1},-) f2(dt=1,{0},-) f2(dt=1,{1,1},+) | net +0}"
+     }
+    },
+    "c10": {
+     "safe": false,
+     "n_states": 4,
+     "capped": false,
+     "bad": {
+      "prot": "DEAD",
+      "state": "{f1(dt=0,{0},-) f1(dt=1,{0,1},+x2) f2(dt=1,{0},-) | net +0}  {f1(dt=0,{1,1},+) f1(dt=1,{1,1,1},-) f2(dt=0,{1},-) f2(dt=1,{1,1},+) | net +0}"
+     }
+    },
+    "c01": {
+     "safe": false,
+     "n_states": 2,
+     "capped": false,
+     "bad": {
+      "prot": "DEAD",
+      "state": "{f1(dt=0,{0},-) f1(dt=0,{1,1},+) | net +0}  {f1(dt=1,{0,1},+x2) f1(dt=1,{1,1,1},-) f2(dt=0,{1},-) | net +0}  {f2(dt=1,{0},-) f2(dt=1,{1,1},+) | net +0}"
+     }
+    },
+    "c00": {
+     "safe": false,
+     "n_states": 1,
+     "capped": false,
+     "bad": {
+      "prot": "UNPROT",
+      "state": "{f1(dt=0,{0},-) | net -1}  {f1(dt=0,{1,1},+) | net +1}  {f1(dt=1,{0,1},+x2) | net +2}  {f1(dt=1,{1,1,1},-) | net -1}  {f2(dt=0,{1},-) | net -1}  {f2(dt=1,{0},-) | net -1}  {f2(dt=1,{1,1},+) | net +1}"
+     }
+    }
+   }
+  },
+  {
+   "id": "GS-30",
+   "annex": false,
+   "n_cells": 8,
+   "n_monos": 4,
+   "r": 2,
+   "T": 2,
+   "pattern": [
+    -4,
+    -1,
+    1,
+    2
+   ],
+   "generic": "UNPROT",
+   "full_merge": "UNPROT",
+   "labels": [
+    "f1(dt=0,{0},-x2)",
+    "f1(dt=0,{1,1},+)",
+    "f2(dt=0,{0,1},+x4)",
+    "f2(dt=0,{1,1,1},-)"
+   ],
+   "prot_exists": false,
+   "prot_wit": null,
+   "novel_cert": "total-invariant |T|=2>=2 (main)",
+   "free_states": null,
+   "free_capped": false,
+   "kill_wit": {
+    "prot": "UNPROT",
+    "state": "{f1(dt=0,{0},-x2) | net -2}  {f1(dt=0,{1,1},+) | net +1}  {f2(dt=0,{0,1},+x4) | net +4}  {f2(dt=0,{1,1,1},-) | net -1}",
+    "digit": [],
+    "torsion": false
+   },
+   "verdict": "NOVEL",
+   "corners": {
+    "c11": {
+     "safe": false,
+     "n_states": 1,
+     "capped": false,
+     "bad": {
+      "prot": "UNPROT",
+      "state": "{f1(dt=0,{0},-x2) f1(dt=0,{1,1},+) | net -1}  {f2(dt=0,{0,1},+x4) f2(dt=0,{1,1,1},-) | net +3}"
+     }
+    },
+    "c10": {
+     "safe": false,
+     "n_states": 1,
+     "capped": false,
+     "bad": {
+      "prot": "UNPROT",
+      "state": "{f1(dt=0,{0},-x2) | net -2}  {f1(dt=0,{1,1},+) | net +1}  {f2(dt=0,{0,1},+x4) | net +4}  {f2(dt=0,{1,1,1},-) | net -1}"
+     }
+    },
+    "c01": {
+     "safe": false,
+     "n_states": 1,
+     "capped": false,
+     "bad": {
+      "prot": "UNPROT",
+      "state": "{f1(dt=0,{0},-x2) f1(dt=0,{1,1},+) | net -1}  {f2(dt=0,{0,1},+x4) f2(dt=0,{1,1,1},-) | net +3}"
+     }
+    },
+    "c00": {
+     "safe": false,
+     "n_states": 1,
+     "capped": false,
+     "bad": {
+      "prot": "UNPROT",
+      "state": "{f1(dt=0,{0},-x2) | net -2}  {f1(dt=0,{1,1},+) | net +1}  {f2(dt=0,{0,1},+x4) | net +4}  {f2(dt=0,{1,1,1},-) | net -1}"
+     }
+    }
+   }
+  },
+  {
+   "id": "GS-31",
+   "annex": false,
+   "n_cells": 8,
+   "n_monos": 4,
+   "r": 2,
+   "T": 0,
+   "pattern": [
+    -3,
+    -1,
+    2,
+    2
+   ],
+   "generic": "UNPROT",
+   "full_merge": "DEAD",
+   "labels": [
+    "f1(dt=0,{1},-x2)",
+    "f1(dt=1,{0},-x2)",
+    "f1(dt=1,{1,1},+x3)",
+    "f2(dt=1,{},+)"
+   ],
+   "free_states": 8,
+   "free_capped": false,
+   "prot_exists": true,
+   "novel_cert": null,
+   "prot_wit": {
+    "state": "{f1(dt=0,{1},-x2) f1(dt=1,{1,1},+x3) | net +1}  {f1(dt=1,{0},-x2) f2(dt=1,{},+) | net -1}",
+    "digit": [
+     "I1^1*I3^0"
+    ],
+    "torsion": false
+   },
+   "kill_wit": {
+    "prot": "UNPROT",
+    "state": "{f1(dt=0,{1},-x2) | net -2}  {f1(dt=1,{0},-x2) | net -2}  {f1(dt=1,{1,1},+x3) | net +3}  {f2(dt=1,{},+) | net +1}",
+    "digit": [],
+    "torsion": false
+   },
+   "verdict": "CONDITIONAL",
+   "corners": {
+    "c11": {
+     "safe": false,
+     "n_states": 2,
+     "capped": false,
+     "bad": {
+      "prot": "DEAD",
+      "state": "{f1(dt=0,{1},-x2) f1(dt=1,{0},-x2) f1(dt=1,{1,1},+x3) f2(dt=1,{},+) | net +0}"
+     }
+    },
+    "c10": {
+     "safe": false,
+     "n_states": 1,
+     "capped": false,
+     "bad": {
+      "prot": "UNPROT",
+      "state": "{f1(dt=0,{1},-x2) f1(dt=1,{1,1},+x3) | net +1}  {f1(dt=1,{0},-x2) | net -2}  {f2(dt=1,{},+) | net +1}"
+     }
+    },
+    "c01": {
+     "safe": false,
+     "n_states": 1,
+     "capped": false,
+     "bad": {
+      "prot": "UNPROT",
+      "state": "{f1(dt=0,{1},-x2) | net -2}  {f1(dt=1,{0},-x2) f1(dt=1,{1,1},+x3) | net +1}  {f2(dt=1,{},+) | net +1}"
+     }
+    },
+    "c00": {
+     "safe": false,
+     "n_states": 1,
+     "capped": false,
+     "bad": {
+      "prot": "UNPROT",
+      "state": "{f1(dt=0,{1},-x2) | net -2}  {f1(dt=1,{0},-x2) | net -2}  {f1(dt=1,{1,1},+x3) | net +3}  {f2(dt=1,{},+) | net +1}"
+     }
+    }
+   }
+  },
+  {
+   "id": "GS-32",
+   "annex": false,
+   "n_cells": 8,
+   "n_monos": 4,
+   "r": 3,
+   "T": 0,
+   "pattern": [
+    -3,
+    -1,
+    2,
+    2
+   ],
+   "generic": "UNPROT",
+   "full_merge": "DEAD",
+   "labels": [
+    "f1(dt=0,{},-)",
+    "f2(dt=0,{0},+x2)",
+    "f2(dt=0,{1,1},-x3)",
+    "f3(dt=0,{1},+x2)"
+   ],
+   "free_states": 3,
+   "free_capped": false,
+   "prot_exists": true,
+   "novel_cert": null,
+   "prot_wit": {
+    "state": "{f1(dt=0,{},-) | net -1}  {f2(dt=0,{0},+x2) f2(dt=0,{1,1},-x3) f3(dt=0,{1},+x2) | net +1}",
+    "digit": [
+     "I1^0*I3^1"
+    ],
+    "torsion": false
+   },
+   "kill_wit": {
+    "prot": "UNPROT",
+    "state": "{f1(dt=0,{},-) | net -1}  {f2(dt=0,{0},+x2) | net +2}  {f2(dt=0,{1,1},-x3) | net -3}  {f3(dt=0,{1},+x2) | net +2}",
+    "digit": [],
+    "torsion": false
+   },
+   "verdict": "CONDITIONAL",
+   "corners": {
+    "c11": {
+     "safe": false,
+     "n_states": 1,
+     "capped": false,
+     "bad": {
+      "prot": "UNPROT",
+      "state": "{f1(dt=0,{},-) | net -1}  {f2(dt=0,{0},+x2) f2(dt=0,{1,1},-x3) | net -1}  {f3(dt=0,{1},+x2) | net +2}"
+     }
+    },
+    "c10": {
+     "safe": false,
+     "n_states": 1,
+     "capped": false,
+     "bad": {
+      "prot": "UNPROT",
+      "state": "{f1(dt=0,{},-) | net -1}  {f2(dt=0,{0},+x2) | net +2}  {f2(dt=0,{1,1},-x3) | net -3}  {f3(dt=0,{1},+x2) | net +2}"
+     }
+    },
+    "c01": {
+     "safe": false,
+     "n_states": 1,
+     "capped": false,
+     "bad": {
+      "prot": "UNPROT",
+      "state": "{f1(dt=0,{},-) | net -1}  {f2(dt=0,{0},+x2) f2(dt=0,{1,1},-x3) | net -1}  {f3(dt=0,{1},+x2) | net +2}"
+     }
+    },
+    "c00": {
+     "safe": false,
+     "n_states": 1,
+     "capped": false,
+     "bad": {
+      "prot": "UNPROT",
+      "state": "{f1(dt=0,{},-) | net -1}  {f2(dt=0,{0},+x2) | net +2}  {f2(dt=0,{1,1},-x3) | net -3}  {f3(dt=0,{1},+x2) | net +2}"
+     }
+    }
+   }
+  },
+  {
+   "id": "GS-33",
+   "annex": false,
+   "n_cells": 9,
+   "n_monos": 5,
+   "r": 3,
+   "T": 1,
+   "pattern": [
+    -4,
+    -1,
+    1,
+    1,
+    2
+   ],
+   "generic": "UNPROT",
+   "full_merge": "PROT",
+   "labels": [
+    "f1(dt=0,{0},-x2)",
+    "f1(dt=0,{1,1},+)",
+    "f2(dt=0,{0,1},+x4)",
+    "f2(dt=0,{1,1,1},-)",
+    "f3(dt=0,{1},-)"
+   ],
+   "free_states": 5,
+   "free_capped": false,
+   "prot_exists": true,
+   "novel_cert": null,
+   "prot_wit": {
+    "state": "{f1(dt=0,{0},-x2) f1(dt=0,{1,1},+) f2(dt=0,{0,1},+x4) f2(dt=0,{1,1,1},-) f3(dt=0,{1},-) | net +1}",
+    "digit": [
+     "I1^0*I3^1"
+    ],
+    "torsion": false
+   },
+   "kill_wit": {
+    "prot": "UNPROT",
+    "state": "{f1(dt=0,{0},-x2) | net -2}  {f1(dt=0,{1,1},+) | net +1}  {f2(dt=0,{0,1},+x4) | net +4}  {f2(dt=0,{1,1,1},-) | net -1}  {f3(dt=0,{1},-) | net -1}",
+    "digit": [],
+    "torsion": false
+   },
+   "verdict": "CONDITIONAL",
+   "corners": {
+    "c11": {
+     "safe": false,
+     "n_states": 1,
+     "capped": false,
+     "bad": {
+      "prot": "UNPROT",
+      "state": "{f1(dt=0,{0},-x2) f1(dt=0,{1,1},+) | net -1}  {f2(dt=0,{0,1},+x4) f2(dt=0,{1,1,1},-) | net +3}  {f3(dt=0,{1},-) | net -1}"
+     }
+    },
+    "c10": {
+     "safe": false,
+     "n_states": 1,
+     "capped": false,
+     "bad": {
+      "prot": "UNPROT",
+      "state": "{f1(dt=0,{0},-x2) | net -2}  {f1(dt=0,{1,1},+) | net +1}  {f2(dt=0,{0,1},+x4) | net +4}  {f2(dt=0,{1,1,1},-) | net -1}  {f3(dt=0,{1},-) | net -1}"
+     }
+    },
+    "c01": {
+     "safe": false,
+     "n_states": 1,
+     "capped": false,
+     "bad": {
+      "prot": "UNPROT",
+      "state": "{f1(dt=0,{0},-x2) f1(dt=0,{1,1},+) | net -1}  {f2(dt=0,{0,1},+x4) f2(dt=0,{1,1,1},-) | net +3}  {f3(dt=0,{1},-) | net -1}"
+     }
+    },
+    "c00": {
+     "safe": false,
+     "n_states": 1,
+     "capped": false,
+     "bad": {
+      "prot": "UNPROT",
+      "state": "{f1(dt=0,{0},-x2) | net -2}  {f1(dt=0,{1,1},+) | net +1}  {f2(dt=0,{0,1},+x4) | net +4}  {f2(dt=0,{1,1,1},-) | net -1}  {f3(dt=0,{1},-) | net -1}"
+     }
+    }
+   }
+  },
+  {
+   "id": "GS-34",
+   "annex": false,
+   "n_cells": 10,
+   "n_monos": 6,
+   "r": 2,
+   "T": -2,
+   "pattern": [
+    -4,
+    -1,
+    -1,
+    1,
+    1,
+    2
+   ],
+   "generic": "UNPROT",
+   "full_merge": "UNPROT",
+   "labels": [
+    "f1(dt=0,{},-)",
+    "f1(dt=1,{1},+)",
+    "f2(dt=0,{0},+x2)",
+    "f2(dt=0,{1,1},-)",
+    "f2(dt=1,{0,1},-x4)",
+    "f2(dt=1,{1,1,1},+)"
+   ],
+   "prot_exists": false,
+   "prot_wit": null,
+   "novel_cert": "total-invariant |T|=2>=2 (main)",
+   "free_states": null,
+   "free_capped": false,
+   "kill_wit": {
+    "prot": "UNPROT",
+    "state": "{f1(dt=0,{},-) | net -1}  {f1(dt=1,{1},+) | net +1}  {f2(dt=0,{0},+x2) | net +2}  {f2(dt=0,{1,1},-) | net -1}  {f2(dt=1,{0,1},-x4) | net -4}  {f2(dt=1,{1,1,1},+) | net +1}",
+    "digit": [],
+    "torsion": false
+   },
+   "verdict": "NOVEL",
+   "corners": {
+    "c11": {
+     "safe": false,
+     "n_states": 1,
+     "capped": false,
+     "bad": {
+      "prot": "UNPROT",
+      "state": "{f1(dt=0,{},-) f1(dt=1,{1},+) | net +0}  {f2(dt=0,{0},+x2) f2(dt=0,{1,1},-) f2(dt=1,{0,1},-x4) f2(dt=1,{1,1,1},+) | net -2}"
+     }
+    },
+    "c10": {
+     "safe": false,
+     "n_states": 1,
+     "capped": false,
+     "bad": {
+      "prot": "UNPROT",
+      "state": "{f1(dt=0,{},-) f1(dt=1,{1},+) | net +0}  {f2(dt=0,{0},+x2) f2(dt=1,{0,1},-x4) | net -2}  {f2(dt=0,{1,1},-) f2(dt=1,{1,1,1},+) | net +0}"
+     }
+    },
+    "c01": {
+     "safe": false,
+     "n_states": 1,
+     "capped": false,
+     "bad": {
+      "prot": "UNPROT",
+      "state": "{f1(dt=0,{},-) | net -1}  {f1(dt=1,{1},+) | net +1}  {f2(dt=0,{0},+x2) f2(dt=0,{1,1},-) | net +1}  {f2(dt=1,{0,1},-x4) f2(dt=1,{1,1,1},+) | net -3}"
+     }
+    },
+    "c00": {
+     "safe": false,
+     "n_states": 1,
+     "capped": false,
+     "bad": {
+      "prot": "UNPROT",
+      "state": "{f1(dt=0,{},-) | net -1}  {f1(dt=1,{1},+) | net +1}  {f2(dt=0,{0},+x2) | net +2}  {f2(dt=0,{1,1},-) | net -1}  {f2(dt=1,{0,1},-x4) | net -4}  {f2(dt=1,{1,1,1},+) | net +1}"
+     }
+    }
+   }
+  },
+  {
+   "id": "GS-35",
+   "annex": false,
+   "n_cells": 10,
+   "n_monos": 5,
+   "r": 2,
+   "T": 2,
+   "pattern": [
+    -3,
+    -1,
+    2,
+    2,
+    2
+   ],
+   "generic": "UNPROT",
+   "full_merge": "UNPROT",
+   "labels": [
+    "f1(dt=0,{},-)",
+    "f1(dt=1,{1},+x2)",
+    "f2(dt=0,{1},+x2)",
+    "f2(dt=1,{0},+x2)",
+    "f2(dt=1,{1,1},-x3)"
+   ],
+   "prot_exists": false,
+   "prot_wit": null,
+   "novel_cert": "total-invariant |T|=2>=2 (main)",
+   "free_states": null,
+   "free_capped": false,
+   "kill_wit": {
+    "prot": "UNPROT",
+    "state": "{f1(dt=0,{},-) | net -1}  {f1(dt=1,{1},+x2) | net +2}  {f2(dt=0,{1},+x2) | net +2}  {f2(dt=1,{0},+x2) | net +2}  {f2(dt=1,{1,1},-x3) | net -3}",
+    "digit": [],
+    "torsion": false
+   },
+   "verdict": "NOVEL",
+   "corners": {
+    "c11": {
+     "safe": false,
+     "n_states": 1,
+     "capped": false,
+     "bad": {
+      "prot": "UNPROT",
+      "state": "{f1(dt=0,{},-) f1(dt=1,{1},+x2) | net +1}  {f2(dt=0,{1},+x2) f2(dt=1,{0},+x2) f2(dt=1,{1,1},-x3) | net +1}"
+     }
+    },
+    "c10": {
+     "safe": false,
+     "n_states": 1,
+     "capped": false,
+     "bad": {
+      "prot": "UNPROT",
+      "state": "{f1(dt=0,{},-) f1(dt=1,{1},+x2) | net +1}  {f2(dt=0,{1},+x2) f2(dt=1,{1,1},-x3) | net -1}  {f2(dt=1,{0},+x2) | net +2}"
+     }
+    },
+    "c01": {
+     "safe": false,
+     "n_states": 1,
+     "capped": false,
+     "bad": {
+      "prot": "UNPROT",
+      "state": "{f1(dt=0,{},-) | net -1}  {f1(dt=1,{1},+x2) | net +2}  {f2(dt=0,{1},+x2) | net +2}  {f2(dt=1,{0},+x2) f2(dt=1,{1,1},-x3) | net -1}"
+     }
+    },
+    "c00": {
+     "safe": false,
+     "n_states": 1,
+     "capped": false,
+     "bad": {
+      "prot": "UNPROT",
+      "state": "{f1(dt=0,{},-) | net -1}  {f1(dt=1,{1},+x2) | net +2}  {f2(dt=0,{1},+x2) | net +2}  {f2(dt=1,{0},+x2) | net +2}  {f2(dt=1,{1,1},-x3) | net -3}"
+     }
+    }
+   }
+  },
+  {
+   "id": "GS-36",
+   "annex": false,
+   "n_cells": 10,
+   "n_monos": 9,
+   "r": 3,
+   "T": 0,
+   "pattern": [
+    -2,
+    -1,
+    -1,
+    -1,
+    1,
+    1,
+    1,
+    1,
+    1
+   ],
+   "generic": "UNPROT",
+   "full_merge": "DEAD",
+   "labels": [
+    "f1(dt=0,{},-)",
+    "f1(dt=1,{1},+)",
+    "f2(dt=0,{0},+)",
+    "f2(dt=0,{1,1},-)",
+    "f2(dt=1,{0,1},-x2)",
+    "f2(dt=1,{1,1,1},+)",
+    "f3(dt=0,{1},+)",
+    "f3(dt=1,{0},+)",
+    "f3(dt=1,{1,1},-)"
+   ],
+   "free_states": 5,
+   "free_capped": false,
+   "prot_exists": true,
+   "novel_cert": null,
+   "prot_wit": {
+    "state": "{f1(dt=0,{},-) f2(dt=1,{1,1,1},+) f3(dt=1,{0},+) | net +1}  {f1(dt=1,{1},+) f2(dt=0,{1,1},-) | net +0}  {f2(dt=0,{0},+) f3(dt=1,{1,1},-) | net +0}  {f2(dt=1,{0,1},-x2) f3(dt=0,{1},+) | net -1}",
+    "digit": [
+     "I1^0*I3^4",
+     "I1^1*I3^2"
+    ],
+    "torsion": true
+   },
+   "kill_wit": {
+    "prot": "UNPROT",
+    "state": "{f1(dt=0,{},-) | net -1}  {f1(dt=1,{1},+) | net +1}  {f2(dt=0,{0},+) | net +1}  {f2(dt=0,{1,1},-) | net -1}  {f2(dt=1,{0,1},-x2) | net -2}  {f2(dt=1,{1,1,1},+) | net +1}  {f3(dt=0,{1},+) | net +1}  {f3(dt=1,{0},+) | net +1}  {f3(dt=1,{1,1},-) | net -1}",
+    "digit": [],
+    "torsion": false
+   },
+   "verdict": "CONDITIONAL",
+   "corners": {
+    "c11": {
+     "safe": false,
+     "n_states": 2,
+     "capped": false,
+     "bad": {
+      "prot": "DEAD",
+      "state": "{f1(dt=0,{},-) f1(dt=1,{1},+) | net +0}  {f2(dt=0,{0},+) f2(dt=0,{1,1},-) f2(dt=1,{0,1},-x2) f2(dt=1,{1,1,1},+) f3(dt=0,{1},+) f3(dt=1,{0},+) f3(dt=1,{1,1},-) | net +0}"
+     }
+    },
+    "c10": {
+     "safe": false,
+     "n_states": 9,
+     "capped": false,
+     "bad": {
+      "prot": "DEAD",
+      "state": "{f1(dt=0,{},-) f1(dt=1,{1},+) | net +0}  {f2(dt=0,{0},+) f2(dt=1,{0,1},-x2) f3(dt=1,{0},+) | net +0}  {f2(dt=0,{1,1},-) f2(dt=1,{1,1,1},+) f3(dt=0,{1},+) f3(dt=1,{1,1},-) | net +0}"
+     }
+    },
+    "c01": {
+     "safe": false,
+     "n_states": 1,
+     "capped": false,
+     "bad": {
+      "prot": "UNPROT",
+      "state": "{f1(dt=0,{},-) | net -1}  {f1(dt=1,{1},+) | net +1}  {f2(dt=0,{0},+) f2(dt=0,{1,1},-) | net +0}  {f2(dt=1,{0,1},-x2) f2(dt=1,{1,1,1},+) | net -1}  {f3(dt=0,{1},+) | net +1}  {f3(dt=1,{0},+) f3(dt=1,{1,1},-) | net +0}"
+     }
+    },
+    "c00": {
+     "safe": false,
+     "n_states": 1,
+     "capped": false,
+     "bad": {
+      "prot": "UNPROT",
+      "state": "{f1(dt=0,{},-) | net -1}  {f1(dt=1,{1},+) | net +1}  {f2(dt=0,{0},+) | net +1}  {f2(dt=0,{1,1},-) | net -1}  {f2(dt=1,{0,1},-x2) | net -2}  {f2(dt=1,{1,1,1},+) | net +1}  {f3(dt=0,{1},+) | net +1}  {f3(dt=1,{0},+) | net +1}  {f3(dt=1,{1,1},-) | net -1}"
+     }
+    }
+   }
+  },
+  {
+   "id": "GS-37",
+   "annex": false,
+   "n_cells": 10,
+   "n_monos": 7,
+   "r": 3,
+   "T": 0,
+   "pattern": [
+    -3,
+    -1,
+    -1,
+    1,
+    1,
+    1,
+    2
+   ],
+   "generic": "UNPROT",
+   "full_merge": "DEAD",
+   "labels": [
+    "f1(dt=0,{0},-)",
+    "f1(dt=0,{1,1},+)",
+    "f2(dt=0,{0,0},+)",
+    "f2(dt=0,{0,1,1},-x3)",
+    "f2(dt=0,{1,1,1,1},+)",
+    "f3(dt=0,{0,1},+x2)",
+    "f3(dt=0,{1,1,1},-)"
+   ],
+   "free_states": 42,
+   "free_capped": false,
+   "prot_exists": true,
+   "novel_cert": null,
+   "prot_wit": {
+    "state": "{f1(dt=0,{0},-) f1(dt=0,{1,1},+) f3(dt=0,{0,1},+x2) f3(dt=0,{1,1,1},-) | net +1}  {f2(dt=0,{0,0},+) f2(dt=0,{0,1,1},-x3) f2(dt=0,{1,1,1,1},+) | net -1}",
+    "digit": [
+     "I1^0*I3^1"
+    ],
+    "torsion": false
+   },
+   "kill_wit": {
+    "prot": "UNPROT",
+    "state": "{f1(dt=0,{0},-) | net -1}  {f1(dt=0,{1,1},+) | net +1}  {f2(dt=0,{0,0},+) | net +1}  {f2(dt=0,{0,1,1},-x3) | net -3}  {f2(dt=0,{1,1,1,1},+) | net +1}  {f3(dt=0,{0,1},+x2) | net +2}  {f3(dt=0,{1,1,1},-) | net -1}",
+    "digit": [],
+    "torsion": false
+   },
+   "verdict": "CONDITIONAL",
+   "corners": {
+    "c11": {
+     "safe": false,
+     "n_states": 2,
+     "capped": false,
+     "bad": {
+      "prot": "DEAD",
+      "state": "{f1(dt=0,{0},-) f1(dt=0,{1,1},+) | net +0}  {f2(dt=0,{0,0},+) f2(dt=0,{0,1,1},-x3) f2(dt=0,{1,1,1,1},+) f3(dt=0,{0,1},+x2) f3(dt=0,{1,1,1},-) | net +0}"
+     }
+    },
+    "c10": {
+     "safe": false,
+     "n_states": 1,
+     "capped": false,
+     "bad": {
+      "prot": "UNPROT",
+      "state": "{f1(dt=0,{0},-) | net -1}  {f1(dt=0,{1,1},+) | net +1}  {f2(dt=0,{0,0},+) | net +1}  {f2(dt=0,{0,1,1},-x3) | net -3}  {f2(dt=0,{1,1,1,1},+) | net +1}  {f3(dt=0,{0,1},+x2) | net +2}  {f3(dt=0,{1,1,1},-) | net -1}"
+     }
+    },
+    "c01": {
+     "safe": false,
+     "n_states": 2,
+     "capped": false,
+     "bad": {
+      "prot": "DEAD",
+      "state": "{f1(dt=0,{0},-) f1(dt=0,{1,1},+) | net +0}  {f2(dt=0,{0,0},+) f2(dt=0,{0,1,1},-x3) f2(dt=0,{1,1,1,1},+) f3(dt=0,{0,1},+x2) f3(dt=0,{1,1,1},-) | net +0}"
+     }
+    },
+    "c00": {
+     "safe": false,
+     "n_states": 1,
+     "capped": false,
+     "bad": {
+      "prot": "UNPROT",
+      "state": "{f1(dt=0,{0},-) | net -1}  {f1(dt=0,{1,1},+) | net +1}  {f2(dt=0,{0,0},+) | net +1}  {f2(dt=0,{0,1,1},-x3) | net -3}  {f2(dt=0,{1,1,1,1},+) | net +1}  {f3(dt=0,{0,1},+x2) | net +2}  {f3(dt=0,{1,1,1},-) | net -1}"
+     }
+    }
+   }
+  },
+  {
+   "id": "GS-38",
+   "annex": false,
+   "n_cells": 11,
+   "n_monos": 8,
+   "r": 2,
+   "T": 1,
+   "pattern": [
+    -3,
+    -1,
+    -1,
+    -1,
+    1,
+    1,
+    1,
+    2
+   ],
+   "generic": "UNPROT",
+   "full_merge": "PROT",
+   "labels": [
+    "f1(dt=0,{0,1},-x2)",
+    "f1(dt=0,{1,1,1},+)",
+    "f1(dt=1,{0,0},-)",
+    "f1(dt=1,{0,1,1},+x3)",
+    "f1(dt=1,{1,1,1,1},-)",
+    "f2(dt=0,{1},+)",
+    "f2(dt=1,{0},+)",
+    "f2(dt=1,{1,1},-)"
+   ],
+   "free_states": 5,
+   "free_capped": false,
+   "prot_exists": true,
+   "novel_cert": null,
+   "prot_wit": {
+    "state": "{f1(dt=0,{0,1},-x2) f1(dt=0,{1,1,1},+) f1(dt=1,{0,0},-) f1(dt=1,{0,1,1},+x3) f1(dt=1,{1,1,1,1},-) f2(dt=0,{1},+) f2(dt=1,{0},+) f2(dt=1,{1,1},-) | net +1}",
+    "digit": [
+     "I1^0*I3^1",
+     "I1^1*I3^1"
+    ],
+    "torsion": false
+   },
+   "kill_wit": {
+    "prot": "UNPROT",
+    "state": "{f1(dt=0,{0,1},-x2) | net -2}  {f1(dt=0,{1,1,1},+) | net +1}  {f1(dt=1,{0,0},-) | net -1}  {f1(dt=1,{0,1,1},+x3) | net +3}  {f1(dt=1,{1,1,1,1},-) | net -1}  {f2(dt=0,{1},+) | net +1}  {f2(dt=1,{0},+) | net +1}  {f2(dt=1,{1,1},-) | net -1}",
+    "digit": [],
+    "torsion": false
+   },
+   "verdict": "CONDITIONAL",
+   "corners": {
+    "c11": {
+     "safe": true,
+     "n_states": 2,
+     "capped": false,
+     "bad": null
+    },
+    "c10": {
+     "safe": false,
+     "n_states": 1,
+     "capped": false,
+     "bad": {
+      "prot": "UNPROT",
+      "state": "{f1(dt=0,{0,1},-x2) f1(dt=1,{0,1,1},+x3) | net +1}  {f1(dt=0,{1,1,1},+) f1(dt=1,{1,1,1,1},-) | net +0}  {f1(dt=1,{0,0},-) | net -1}  {f2(dt=0,{1},+) f2(dt=1,{1,1},-) | net +0}  {f2(dt=1,{0},+) | net +1}"
+     }
+    },
+    "c01": {
+     "safe": false,
+     "n_states": 1,
+     "capped": false,
+     "bad": {
+      "prot": "UNPROT",
+      "state": "{f1(dt=0,{0,1},-x2) f1(dt=0,{1,1,1},+) | net -1}  {f1(dt=1,{0,0},-) f1(dt=1,{0,1,1},+x3) f1(dt=1,{1,1,1,1},-) | net +1}  {f2(dt=0,{1},+) | net +1}  {f2(dt=1,{0},+) f2(dt=1,{1,1},-) | net +0}"
+     }
+    },
+    "c00": {
+     "safe": false,
+     "n_states": 1,
+     "capped": false,
+     "bad": {
+      "prot": "UNPROT",
+      "state": "{f1(dt=0,{0,1},-x2) | net -2}  {f1(dt=0,{1,1,1},+) | net +1}  {f1(dt=1,{0,0},-) | net -1}  {f1(dt=1,{0,1,1},+x3) | net +3}  {f1(dt=1,{1,1,1,1},-) | net -1}  {f2(dt=0,{1},+) | net +1}  {f2(dt=1,{0},+) | net +1}  {f2(dt=1,{1,1},-) | net -1}"
+     }
+    }
+   }
+  },
+  {
+   "id": "GS-39",
+   "annex": false,
+   "n_cells": 11,
+   "n_monos": 6,
+   "r": 3,
+   "T": 1,
+   "pattern": [
+    -3,
+    -1,
+    -1,
+    2,
+    2,
+    2
+   ],
+   "generic": "UNPROT",
+   "full_merge": "PROT",
+   "labels": [
+    "f1(dt=0,{},-)",
+    "f1(dt=1,{1},+x2)",
+    "f2(dt=0,{1},+x2)",
+    "f2(dt=1,{0},+x2)",
+    "f2(dt=1,{1,1},-x3)",
+    "f3(dt=1,{},-)"
+   ],
+   "free_states": 6,
+   "free_capped": false,
+   "prot_exists": true,
+   "novel_cert": null,
+   "prot_wit": {
+    "state": "{f1(dt=0,{},-) f1(dt=1,{1},+x2) f2(dt=0,{1},+x2) f2(dt=1,{0},+x2) f2(dt=1,{1,1},-x3) f3(dt=1,{},-) | net +1}",
+    "digit": [
+     "I1^0*I3^1",
+     "I1^1*I3^0"
+    ],
+    "torsion": false
+   },
+   "kill_wit": {
+    "prot": "UNPROT",
+    "state": "{f1(dt=0,{},-) | net -1}  {f1(dt=1,{1},+x2) | net +2}  {f2(dt=0,{1},+x2) | net +2}  {f2(dt=1,{0},+x2) | net +2}  {f2(dt=1,{1,1},-x3) | net -3}  {f3(dt=1,{},-) | net -1}",
+    "digit": [],
+    "torsion": false
+   },
+   "verdict": "CONDITIONAL",
+   "corners": {
+    "c11": {
+     "safe": false,
+     "n_states": 1,
+     "capped": false,
+     "bad": {
+      "prot": "UNPROT",
+      "state": "{f1(dt=0,{},-) f1(dt=1,{1},+x2) | net +1}  {f2(dt=0,{1},+x2) f2(dt=1,{0},+x2) f2(dt=1,{1,1},-x3) | net +1}  {f3(dt=1,{},-) | net -1}"
+     }
+    },
+    "c10": {
+     "safe": false,
+     "n_states": 1,
+     "capped": false,
+     "bad": {
+      "prot": "UNPROT",
+      "state": "{f1(dt=0,{},-) f1(dt=1,{1},+x2) | net +1}  {f2(dt=0,{1},+x2) f2(dt=1,{1,1},-x3) | net -1}  {f2(dt=1,{0},+x2) | net +2}  {f3(dt=1,{},-) | net -1}"
+     }
+    },
+    "c01": {
+     "safe": false,
+     "n_states": 1,
+     "capped": false,
+     "bad": {
+      "prot": "UNPROT",
+      "state": "{f1(dt=0,{},-) | net -1}  {f1(dt=1,{1},+x2) | net +2}  {f2(dt=0,{1},+x2) | net +2}  {f2(dt=1,{0},+x2) f2(dt=1,{1,1},-x3) | net -1}  {f3(dt=1,{},-) | net -1}"
+     }
+    },
+    "c00": {
+     "safe": false,
+     "n_states": 1,
+     "capped": false,
+     "bad": {
+      "prot": "UNPROT",
+      "state": "{f1(dt=0,{},-) | net -1}  {f1(dt=1,{1},+x2) | net +2}  {f2(dt=0,{1},+x2) | net +2}  {f2(dt=1,{0},+x2) | net +2}  {f2(dt=1,{1,1},-x3) | net -3}  {f3(dt=1,{},-) | net -1}"
+     }
+    }
+   }
+  },
+  {
+   "id": "GS-40",
+   "annex": false,
+   "n_cells": 12,
+   "n_monos": 7,
+   "r": 2,
+   "T": 0,
+   "pattern": [
+    -4,
+    -1,
+    -1,
+    1,
+    1,
+    2,
+    2
+   ],
+   "generic": "UNPROT",
+   "full_merge": "DEAD",
+   "labels": [
+    "f1(dt=0,{0},-x2)",
+    "f1(dt=0,{1,1},+)",
+    "f1(dt=1,{0,1},+x4)",
+    "f1(dt=1,{1,1,1},-)",
+    "f2(dt=0,{1},-)",
+    "f2(dt=1,{0},-x2)",
+    "f2(dt=1,{1,1},+)"
+   ],
+   "free_states": 53,
+   "free_capped": false,
+   "prot_exists": false,
+   "prot_wit": null,
+   "novel_cert": "exhaustive (53 states, no protected state)",
+   "kill_wit": {
+    "prot": "UNPROT",
+    "state": "{f1(dt=0,{0},-x2) | net -2}  {f1(dt=0,{1,1},+) | net +1}  {f1(dt=1,{0,1},+x4) | net +4}  {f1(dt=1,{1,1,1},-) | net -1}  {f2(dt=0,{1},-) | net -1}  {f2(dt=1,{0},-x2) | net -2}  {f2(dt=1,{1,1},+) | net +1}",
+    "digit": [],
+    "torsion": false
+   },
+   "verdict": "NOVEL",
+   "corners": {
+    "c11": {
+     "safe": false,
+     "n_states": 1,
+     "capped": false,
+     "bad": {
+      "prot": "UNPROT",
+      "state": "{f1(dt=0,{0},-x2) f1(dt=0,{1,1},+) f1(dt=1,{0,1},+x4) f1(dt=1,{1,1,1},-) | net +2}  {f2(dt=0,{1},-) f2(dt=1,{0},-x2) f2(dt=1,{1,1},+) | net -2}"
+     }
+    },
+    "c10": {
+     "safe": false,
+     "n_states": 1,
+     "capped": false,
+     "bad": {
+      "prot": "UNPROT",
+      "state": "{f1(dt=0,{0},-x2) f1(dt=1,{0,1},+x4) | net +2}  {f1(dt=0,{1,1},+) f1(dt=1,{1,1,1},-) | net +0}  {f2(dt=0,{1},-) f2(dt=1,{1,1},+) | net +0}  {f2(dt=1,{0},-x2) | net -2}"
+     }
+    },
+    "c01": {
+     "safe": false,
+     "n_states": 1,
+     "capped": false,
+     "bad": {
+      "prot": "UNPROT",
+      "state": "{f1(dt=0,{0},-x2) f1(dt=0,{1,1},+) | net -1}  {f1(dt=1,{0,1},+x4) f1(dt=1,{1,1,1},-) | net +3}  {f2(dt=0,{1},-) | net -1}  {f2(dt=1,{0},-x2) f2(dt=1,{1,1},+) | net -1}"
+     }
+    },
+    "c00": {
+     "safe": false,
+     "n_states": 1,
+     "capped": false,
+     "bad": {
+      "prot": "UNPROT",
+      "state": "{f1(dt=0,{0},-x2) | net -2}  {f1(dt=0,{1,1},+) | net +1}  {f1(dt=1,{0,1},+x4) | net +4}  {f1(dt=1,{1,1,1},-) | net -1}  {f2(dt=0,{1},-) | net -1}  {f2(dt=1,{0},-x2) | net -2}  {f2(dt=1,{1,1},+) | net +1}"
+     }
+    }
+   }
+  },
+  {
+   "id": "GS-41",
+   "annex": false,
+   "n_cells": 13,
+   "n_monos": 9,
+   "r": 2,
+   "T": 1,
+   "pattern": [
+    -3,
+    -1,
+    -1,
+    -1,
+    1,
+    1,
+    1,
+    2,
+    2
+   ],
+   "generic": "UNPROT",
+   "full_merge": "PROT",
+   "labels": [
+    "f1(dt=0,{0},-)",
+    "f1(dt=0,{1,1},+)",
+    "f1(dt=1,{0,1},+x2)",
+    "f1(dt=1,{1,1,1},-)",
+    "f2(dt=0,{0,1},+x2)",
+    "f2(dt=0,{1,1,1},-)",
+    "f2(dt=1,{0,0},+)",
+    "f2(dt=1,{0,1,1},-x3)",
+    "f2(dt=1,{1,1,1,1},+)"
+   ],
+   "free_states": 5,
+   "free_capped": false,
+   "prot_exists": true,
+   "novel_cert": null,
+   "prot_wit": {
+    "state": "{f1(dt=0,{0},-) f1(dt=0,{1,1},+) f1(dt=1,{0,1},+x2) f1(dt=1,{1,1,1},-) f2(dt=0,{0,1},+x2) f2(dt=0,{1,1,1},-) f2(dt=1,{0,0},+) f2(dt=1,{0,1,1},-x3) f2(dt=1,{1,1,1,1},+) | net +1}",
+    "digit": [
+     "I1^0*I3^1",
+     "I1^1*I3^1"
+    ],
+    "torsion": false
+   },
+   "kill_wit": {
+    "prot": "UNPROT",
+    "state": "{f1(dt=0,{0},-) | net -1}  {f1(dt=0,{1,1},+) | net +1}  {f1(dt=1,{0,1},+x2) | net +2}  {f1(dt=1,{1,1,1},-) | net -1}  {f2(dt=0,{0,1},+x2) | net +2}  {f2(dt=0,{1,1,1},-) | net -1}  {f2(dt=1,{0,0},+) | net +1}  {f2(dt=1,{0,1,1},-x3) | net -3}  {f2(dt=1,{1,1,1,1},+) | net +1}",
+    "digit": [],
+    "torsion": false
+   },
+   "verdict": "CONDITIONAL",
+   "corners": {
+    "c11": {
+     "safe": true,
+     "n_states": 2,
+     "capped": false,
+     "bad": null
+    },
+    "c10": {
+     "safe": false,
+     "n_states": 1,
+     "capped": false,
+     "bad": {
+      "prot": "UNPROT",
+      "state": "{f1(dt=0,{0},-) f1(dt=1,{0,1},+x2) | net +1}  {f1(dt=0,{1,1},+) f1(dt=1,{1,1,1},-) | net +0}  {f2(dt=0,{0,1},+x2) f2(dt=1,{0,1,1},-x3) | net -1}  {f2(dt=0,{1,1,1},-) f2(dt=1,{1,1,1,1},+) | net +0}  {f2(dt=1,{0,0},+) | net +1}"
+     }
+    },
+    "c01": {
+     "safe": false,
+     "n_states": 1,
+     "capped": false,
+     "bad": {
+      "prot": "UNPROT",
+      "state": "{f1(dt=0,{0},-) f1(dt=0,{1,1},+) | net +0}  {f1(dt=1,{0,1},+x2) f1(dt=1,{1,1,1},-) | net +1}  {f2(dt=0,{0,1},+x2) f2(dt=0,{1,1,1},-) | net +1}  {f2(dt=1,{0,0},+) f2(dt=1,{0,1,1},-x3) f2(dt=1,{1,1,1,1},+) | net -1}"
+     }
+    },
+    "c00": {
+     "safe": false,
+     "n_states": 1,
+     "capped": false,
+     "bad": {
+      "prot": "UNPROT",
+      "state": "{f1(dt=0,{0},-) | net -1}  {f1(dt=0,{1,1},+) | net +1}  {f1(dt=1,{0,1},+x2) | net +2}  {f1(dt=1,{1,1,1},-) | net -1}  {f2(dt=0,{0,1},+x2) | net +2}  {f2(dt=0,{1,1,1},-) | net -1}  {f2(dt=1,{0,0},+) | net +1}  {f2(dt=1,{0,1,1},-x3) | net -3}  {f2(dt=1,{1,1,1,1},+) | net +1}"
+     }
+    }
+   }
+  },
+  {
+   "id": "GS-42",
+   "annex": false,
+   "n_cells": 14,
+   "n_monos": 9,
+   "r": 3,
+   "T": 0,
+   "pattern": [
+    -4,
+    -1,
+    -1,
+    -1,
+    1,
+    1,
+    1,
+    2,
+    2
+   ],
+   "generic": "UNPROT",
+   "full_merge": "DEAD",
+   "labels": [
+    "f1(dt=0,{},-)",
+    "f1(dt=1,{1},+)",
+    "f2(dt=0,{0},+x2)",
+    "f2(dt=0,{1,1},-)",
+    "f2(dt=1,{0,1},-x4)",
+    "f2(dt=1,{1,1,1},+)",
+    "f3(dt=0,{1},+)",
+    "f3(dt=1,{0},+x2)",
+    "f3(dt=1,{1,1},-)"
+   ],
+   "free_states": 66,
+   "free_capped": false,
+   "prot_exists": true,
+   "novel_cert": null,
+   "prot_wit": {
+    "state": "{f1(dt=0,{},-) f2(dt=0,{0},+x2) f2(dt=0,{1,1},-) f3(dt=0,{1},+) | net +1}  {f1(dt=1,{1},+) f2(dt=1,{0,1},-x4) f2(dt=1,{1,1,1},+) f3(dt=1,{0},+x2) f3(dt=1,{1,1},-) | net -1}",
+    "digit": [
+     "I1^0*I3^1"
+    ],
+    "torsion": false
+   },
+   "kill_wit": {
+    "prot": "UNPROT",
+    "state": "{f1(dt=0,{},-) | net -1}  {f1(dt=1,{1},+) | net +1}  {f2(dt=0,{0},+x2) | net +2}  {f2(dt=0,{1,1},-) | net -1}  {f2(dt=1,{0,1},-x4) | net -4}  {f2(dt=1,{1,1,1},+) | net +1}  {f3(dt=0,{1},+) | net +1}  {f3(dt=1,{0},+x2) | net +2}  {f3(dt=1,{1,1},-) | net -1}",
+    "digit": [],
+    "torsion": false
+   },
+   "verdict": "CONDITIONAL",
+   "corners": {
+    "c11": {
+     "safe": false,
+     "n_states": 1,
+     "capped": false,
+     "bad": {
+      "prot": "UNPROT",
+      "state": "{f1(dt=0,{},-) f1(dt=1,{1},+) | net +0}  {f2(dt=0,{0},+x2) f2(dt=0,{1,1},-) f2(dt=1,{0,1},-x4) f2(dt=1,{1,1,1},+) | net -2}  {f3(dt=0,{1},+) f3(dt=1,{0},+x2) f3(dt=1,{1,1},-) | net +2}"
+     }
+    },
+    "c10": {
+     "safe": false,
+     "n_states": 1,
+     "capped": false,
+     "bad": {
+      "prot": "UNPROT",
+      "state": "{f1(dt=0,{},-) f1(dt=1,{1},+) | net +0}  {f2(dt=0,{0},+x2) f2(dt=1,{0,1},-x4) | net -2}  {f2(dt=0,{1,1},-) f2(dt=1,{1,1,1},+) | net +0}  {f3(dt=0,{1},+) f3(dt=1,{1,1},-) | net +0}  {f3(dt=1,{0},+x2) | net +2}"
+     }
+    },
+    "c01": {
+     "safe": false,
+     "n_states": 1,
+     "capped": false,
+     "bad": {
+      "prot": "UNPROT",
+      "state": "{f1(dt=0,{},-) | net -1}  {f1(dt=1,{1},+) | net +1}  {f2(dt=0,{0},+x2) f2(dt=0,{1,1},-) | net +1}  {f2(dt=1,{0,1},-x4) f2(dt=1,{1,1,1},+) | net -3}  {f3(dt=0,{1},+) | net +1}  {f3(dt=1,{0},+x2) f3(dt=1,{1,1},-) | net +1}"
+     }
+    },
+    "c00": {
+     "safe": false,
+     "n_states": 1,
+     "capped": false,
+     "bad": {
+      "prot": "UNPROT",
+      "state": "{f1(dt=0,{},-) | net -1}  {f1(dt=1,{1},+) | net +1}  {f2(dt=0,{0},+x2) | net +2}  {f2(dt=0,{1,1},-) | net -1}  {f2(dt=1,{0,1},-x4) | net -4}  {f2(dt=1,{1,1,1},+) | net +1}  {f3(dt=0,{1},+) | net +1}  {f3(dt=1,{0},+x2) | net +2}  {f3(dt=1,{1,1},-) | net -1}"
+     }
+    }
+   }
+  },
+  {
+   "id": "GS-43",
+   "annex": false,
+   "n_cells": 16,
+   "n_monos": 12,
+   "r": 3,
+   "T": 0,
+   "pattern": [
+    -3,
+    -1,
+    -1,
+    -1,
+    -1,
+    -1,
+    1,
+    1,
+    1,
+    1,
+    2,
+    2
+   ],
+   "generic": "UNPROT",
+   "full_merge": "DEAD",
+   "labels": [
+    "f1(dt=0,{0},-)",
+    "f1(dt=0,{1,1},+)",
+    "f1(dt=1,{0,1},+x2)",
+    "f1(dt=1,{1,1,1},-)",
+    "f2(dt=0,{0,1},+x2)",
+    "f2(dt=0,{1,1,1},-)",
+    "f2(dt=1,{0,0},+)",
+    "f2(dt=1,{0,1,1},-x3)",
+    "f2(dt=1,{1,1,1,1},+)",
+    "f3(dt=0,{1},-)",
+    "f3(dt=1,{0},-)",
+    "f3(dt=1,{1,1},+)"
+   ],
+   "free_states": 7,
+   "free_capped": false,
+   "prot_exists": true,
+   "novel_cert": null,
+   "prot_wit": {
+    "state": "{f1(dt=0,{0},-) f1(dt=0,{1,1},+) f2(dt=1,{0,0},+) f2(dt=1,{0,1,1},-x3) f2(dt=1,{1,1,1,1},+) f3(dt=1,{0},-) f3(dt=1,{1,1},+) | net -1}  {f1(dt=1,{0,1},+x2) f1(dt=1,{1,1,1},-) f2(dt=0,{0,1},+x2) f2(dt=0,{1,1,1},-) f3(dt=0,{1},-) | net +1}",
+    "digit": [
+     "I1^0*I3^1",
+     "I1^2*I3^-2"
+    ],
+    "torsion": true
+   },
+   "kill_wit": {
+    "prot": "UNPROT",
+    "state": "{f1(dt=0,{0},-) | net -1}  {f1(dt=0,{1,1},+) | net +1}  {f1(dt=1,{0,1},+x2) | net +2}  {f1(dt=1,{1,1,1},-) | net -1}  {f2(dt=0,{0,1},+x2) | net +2}  {f2(dt=0,{1,1,1},-) | net -1}  {f2(dt=1,{0,0},+) | net +1}  {f2(dt=1,{0,1,1},-x3) | net -3}  {f2(dt=1,{1,1,1,1},+) | net +1}  {f3(dt=0,{1},-) | net -1}  {f3(dt=1,{0},-) | net -1}  {f3(dt=1,{1,1},+) | net +1}",
+    "digit": [],
+    "torsion": false
+   },
+   "verdict": "CONDITIONAL",
+   "corners": {
+    "c11": {
+     "safe": false,
+     "n_states": 3,
+     "capped": false,
+     "bad": {
+      "prot": "DEAD",
+      "state": "{f1(dt=0,{0},-) f1(dt=0,{1,1},+) f1(dt=1,{0,1},+x2) f1(dt=1,{1,1,1},-) f2(dt=0,{0,1},+x2) f2(dt=0,{1,1,1},-) f2(dt=1,{0,0},+) f2(dt=1,{0,1,1},-x3) f2(dt=1,{1,1,1,1},+) f3(dt=0,{1},-) f3(dt=1,{0},-) f3(dt=1,{1,1},+) | net +0}"
+     }
+    },
+    "c10": {
+     "safe": false,
+     "n_states": 1,
+     "capped": false,
+     "bad": {
+      "prot": "UNPROT",
+      "state": "{f1(dt=0,{0},-) f1(dt=1,{0,1},+x2) | net +1}  {f1(dt=0,{1,1},+) f1(dt=1,{1,1,1},-) | net +0}  {f2(dt=0,{0,1},+x2) f2(dt=1,{0,1,1},-x3) | net -1}  {f2(dt=0,{1,1,1},-) f2(dt=1,{1,1,1,1},+) | net +0}  {f2(dt=1,{0,0},+) | net +1}  {f3(dt=0,{1},-) f3(dt=1,{1,1},+) | net +0}  {f3(dt=1,{0},-) | net -1}"
+     }
+    },
+    "c01": {
+     "safe": false,
+     "n_states": 1,
+     "capped": false,
+     "bad": {
+      "prot": "UNPROT",
+      "state": "{f1(dt=0,{0},-) f1(dt=0,{1,1},+) | net +0}  {f1(dt=1,{0,1},+x2) f1(dt=1,{1,1,1},-) | net +1}  {f2(dt=0,{0,1},+x2) f2(dt=0,{1,1,1},-) | net +1}  {f2(dt=1,{0,0},+) f2(dt=1,{0,1,1},-x3) f2(dt=1,{1,1,1,1},+) | net -1}  {f3(dt=0,{1},-) | net -1}  {f3(dt=1,{0},-) f3(dt=1,{1,1},+) | net +0}"
+     }
+    },
+    "c00": {
+     "safe": false,
+     "n_states": 1,
+     "capped": false,
+     "bad": {
+      "prot": "UNPROT",
+      "state": "{f1(dt=0,{0},-) | net -1}  {f1(dt=0,{1,1},+) | net +1}  {f1(dt=1,{0,1},+x2) | net +2}  {f1(dt=1,{1,1,1},-) | net -1}  {f2(dt=0,{0,1},+x2) | net +2}  {f2(dt=0,{1,1,1},-) | net -1}  {f2(dt=1,{0,0},+) | net +1}  {f2(dt=1,{0,1,1},-x3) | net -3}  {f2(dt=1,{1,1,1,1},+) | net +1}  {f3(dt=0,{1},-) | net -1}  {f3(dt=1,{0},-) | net -1}  {f3(dt=1,{1,1},+) | net +1}"
+     }
+    }
+   }
+  },
+  {
+   "id": "AS-01",
+   "annex": true,
+   "n_cells": 2,
+   "n_monos": 2,
+   "r": 2,
+   "T": 0,
+   "pattern": [
+    -1,
+    1
+   ],
+   "generic": "PROT",
+   "full_merge": "DEAD",
+   "labels": [
+    "f1(dt=0,{},-)",
+    "f2(dt=0,{0},+)"
+   ],
+   "free_states": 1,
+   "free_capped": false,
+   "prot_exists": true,
+   "novel_cert": null,
+   "prot_wit": {
+    "state": "{f1(dt=0,{},-) | net -1}  {f2(dt=0,{0},+) | net +1}",
+    "digit": [],
+    "torsion": false
+   },
+   "kill_wit": {
+    "prot": "DEAD",
+    "state": "{f1(dt=0,{},-) f2(dt=0,{0},+) | net +0}",
+    "digit": [],
+    "torsion": false
+   },
+   "verdict": "CONDITIONAL",
+   "corners": null
+  },
+  {
+   "id": "AS-02",
+   "annex": true,
+   "n_cells": 2,
+   "n_monos": 2,
+   "r": 2,
+   "T": 0,
+   "pattern": [
+    -1,
+    1
+   ],
+   "generic": "PROT",
+   "full_merge": "DEAD",
+   "labels": [
+    "f1(dt=0,{},-)",
+    "f2(dt=1,{0},+)"
+   ],
+   "free_states": 1,
+   "free_capped": false,
+   "prot_exists": true,
+   "novel_cert": null,
+   "prot_wit": {
+    "state": "{f1(dt=0,{},-) | net -1}  {f2(dt=1,{0},+) | net +1}",
+    "digit": [],
+    "torsion": false
+   },
+   "kill_wit": {
+    "prot": "DEAD",
+    "state": "{f1(dt=0,{},-) f2(dt=1,{0},+) | net +0}",
+    "digit": [],
+    "torsion": false
+   },
+   "verdict": "CONDITIONAL",
+   "corners": null
+  },
+  {
+   "id": "AS-03",
+   "annex": true,
+   "n_cells": 2,
+   "n_monos": 2,
+   "r": 2,
+   "T": -2,
+   "pattern": [
+    -1,
+    -1
+   ],
+   "generic": "UNPROT",
+   "full_merge": "PROT2K",
+   "labels": [
+    "f1(dt=0,{},-)",
+    "f2(dt=1,{},-)"
+   ],
+   "free_states": 2,
+   "free_capped": false,
+   "prot_exists": true,
+   "novel_cert": null,
+   "prot_wit": {
+    "state": "{f1(dt=0,{},-) f2(dt=1,{},-) | net -2}",
+    "digit": [],
+    "torsion": false
+   },
+   "kill_wit": {
+    "prot": "UNPROT",
+    "state": "{f1(dt=0,{},-) | net -1}  {f2(dt=1,{},-) | net -1}",
+    "digit": [],
+    "torsion": false
+   },
+   "verdict": "CONDITIONAL",
+   "corners": null
+  },
+  {
+   "id": "AS-04",
+   "annex": true,
+   "n_cells": 3,
+   "n_monos": 2,
+   "r": 2,
+   "T": 1,
+   "pattern": [
+    -2,
+    1
+   ],
+   "generic": "UNPROT",
+   "full_merge": "PROT",
+   "labels": [
+    "f1(dt=0,{},-)",
+    "f2(dt=0,{0},+x2)"
+   ],
+   "free_states": 2,
+   "free_capped": false,
+   "prot_exists": true,
+   "novel_cert": null,
+   "prot_wit": {
+    "state": "{f1(dt=0,{},-) f2(dt=0,{0},+x2) | net +1}",
+    "digit": [],
+    "torsion": false
+   },
+   "kill_wit": {
+    "prot": "UNPROT",
+    "state": "{f1(dt=0,{},-) | net -1}  {f2(dt=0,{0},+x2) | net +2}",
+    "digit": [],
+    "torsion": false
+   },
+   "verdict": "CONDITIONAL",
+   "corners": null
+  },
+  {
+   "id": "AS-05",
+   "annex": true,
+   "n_cells": 3,
+   "n_monos": 2,
+   "r": 2,
+   "T": 1,
+   "pattern": [
+    -2,
+    1
+   ],
+   "generic": "UNPROT",
+   "full_merge": "PROT",
+   "labels": [
+    "f1(dt=0,{},-)",
+    "f2(dt=1,{0},+x2)"
+   ],
+   "free_states": 2,
+   "free_capped": false,
+   "prot_exists": true,
+   "novel_cert": null,
+   "prot_wit": {
+    "state": "{f1(dt=0,{},-) f2(dt=1,{0},+x2) | net +1}",
+    "digit": [],
+    "torsion": false
+   },
+   "kill_wit": {
+    "prot": "UNPROT",
+    "state": "{f1(dt=0,{},-) | net -1}  {f2(dt=1,{0},+x2) | net +2}",
+    "digit": [],
+    "torsion": false
+   },
+   "verdict": "CONDITIONAL",
+   "corners": null
+  },
+  {
+   "id": "AS-06",
+   "annex": true,
+   "n_cells": 3,
+   "n_monos": 3,
+   "r": 3,
+   "T": 1,
+   "pattern": [
+    -1,
+    -1,
+    1
+   ],
+   "generic": "UNPROT",
+   "full_merge": "PROT",
+   "labels": [
+    "f1(dt=0,{},-)",
+    "f2(dt=0,{0},+)",
+    "f3(dt=1,{0},+)"
+   ],
+   "free_states": 3,
+   "free_capped": false,
+   "prot_exists": true,
+   "novel_cert": null,
+   "prot_wit": {
+    "state": "{f1(dt=0,{},-) f2(dt=0,{0},+) f3(dt=1,{0},+) | net +1}",
+    "digit": [],
+    "torsion": false
+   },
+   "kill_wit": {
+    "prot": "UNPROT",
+    "state": "{f1(dt=0,{},-) | net -1}  {f2(dt=0,{0},+) | net +1}  {f3(dt=1,{0},+) | net +1}",
+    "digit": [],
+    "torsion": false
+   },
+   "verdict": "CONDITIONAL",
+   "corners": null
+  },
+  {
+   "id": "AS-07",
+   "annex": true,
+   "n_cells": 3,
+   "n_monos": 3,
+   "r": 3,
+   "T": -1,
+   "pattern": [
+    -1,
+    -1,
+    1
+   ],
+   "generic": "UNPROT",
+   "full_merge": "PROT",
+   "labels": [
+    "f1(dt=0,{},-)",
+    "f2(dt=1,{},-)",
+    "f3(dt=1,{0},+)"
+   ],
+   "free_states": 2,
+   "free_capped": false,
+   "prot_exists": true,
+   "novel_cert": null,
+   "prot_wit": {
+    "state": "{f1(dt=0,{},-) | net -1}  {f2(dt=1,{},-) f3(dt=1,{0},+) | net +0}",
+    "digit": [],
+    "torsion": false
+   },
+   "kill_wit": {
+    "prot": "UNPROT",
+    "state": "{f1(dt=0,{},-) | net -1}  {f2(dt=1,{},-) | net -1}  {f3(dt=1,{0},+) | net +1}",
+    "digit": [],
+    "torsion": false
+   },
+   "verdict": "CONDITIONAL",
+   "corners": null
+  },
+  {
+   "id": "AS-08",
+   "annex": true,
+   "n_cells": 4,
+   "n_monos": 2,
+   "r": 2,
+   "T": -4,
+   "pattern": [
+    -2,
+    -2
+   ],
+   "generic": "UNPROT",
+   "full_merge": "PROT2K",
+   "labels": [
+    "f1(dt=0,{},-x2)",
+    "f2(dt=1,{},-x2)"
+   ],
+   "free_states": 2,
+   "free_capped": false,
+   "prot_exists": true,
+   "novel_cert": null,
+   "prot_wit": {
+    "state": "{f1(dt=0,{},-x2) f2(dt=1,{},-x2) | net -4}",
+    "digit": [],
+    "torsion": false
+   },
+   "kill_wit": {
+    "prot": "UNPROT",
+    "state": "{f1(dt=0,{},-x2) | net -2}  {f2(dt=1,{},-x2) | net -2}",
+    "digit": [],
+    "torsion": false
+   },
+   "verdict": "CONDITIONAL",
+   "corners": null
+  },
+  {
+   "id": "AS-09",
+   "annex": true,
+   "n_cells": 4,
+   "n_monos": 3,
+   "r": 3,
+   "T": 0,
+   "pattern": [
+    -2,
+    1,
+    1
+   ],
+   "generic": "UNPROT",
+   "full_merge": "DEAD",
+   "labels": [
+    "f1(dt=0,{},-)",
+    "f2(dt=1,{},-)",
+    "f3(dt=1,{0},+x2)"
+   ],
+   "free_states": 2,
+   "free_capped": false,
+   "prot_exists": true,
+   "novel_cert": null,
+   "prot_wit": {
+    "state": "{f1(dt=0,{},-) | net -1}  {f2(dt=1,{},-) f3(dt=1,{0},+x2) | net +1}",
+    "digit": [],
+    "torsion": false
+   },
+   "kill_wit": {
+    "prot": "UNPROT",
+    "state": "{f1(dt=0,{},-) | net -1}  {f2(dt=1,{},-) | net -1}  {f3(dt=1,{0},+x2) | net +2}",
+    "digit": [],
+    "torsion": false
+   },
+   "verdict": "CONDITIONAL",
+   "corners": null
+  },
+  {
+   "id": "AS-10",
+   "annex": true,
+   "n_cells": 5,
+   "n_monos": 3,
+   "r": 3,
+   "T": 3,
+   "pattern": [
+    -2,
+    -2,
+    1
+   ],
+   "generic": "UNPROT",
+   "full_merge": "UNPROT",
+   "labels": [
+    "f1(dt=0,{},-)",
+    "f2(dt=0,{0},+x2)",
+    "f3(dt=1,{0},+x2)"
+   ],
+   "prot_exists": false,
+   "prot_wit": null,
+   "novel_cert": "annex total-invariant T=3 not 0/+-1/+-2^k",
+   "free_states": null,
+   "free_capped": false,
+   "kill_wit": {
+    "prot": "UNPROT",
+    "state": "{f1(dt=0,{},-) | net -1}  {f2(dt=0,{0},+x2) | net +2}  {f3(dt=1,{0},+x2) | net +2}",
+    "digit": [],
+    "torsion": false
+   },
+   "verdict": "NOVEL",
+   "corners": null
+  }
+ ],
+ "census": [
+  {
+   "tower": "SDG2BF",
+   "key": [
+    1479,
+    1479
+   ],
+   "n_groups": 2,
+   "groups": [
+    {
+     "slot": [
+      1,
+      1,
+      0
+     ],
+     "kind": "GS-02",
+     "n": 2,
+     "signed": [
+      0
+     ],
+     "sdl7_vivo": false,
+     "corners": []
+    },
+    {
+     "slot": [
+      4,
+      1,
+      0
+     ],
+     "kind": "GS-08",
+     "n": 3,
+     "signed": [
+      1
+     ],
+     "sdl7_vivo": true,
+     "corners": [
+      "c01",
+      "c11"
+     ]
+    }
+   ],
+   "corners_covered": [
+    "c01",
+    "c11"
+   ],
+   "class_closed": false,
+   "prot_in_vivo": true
+  },
+  {
+   "tower": "SDG2BF",
+   "key": [
+    1479,
+    1485
+   ],
+   "n_groups": 2,
+   "groups": [
+    {
+     "slot": [
+      2,
+      0,
+      0
+     ],
+     "kind": "S",
+     "n": 1,
+     "signed": [
+      1
+     ],
+     "sdl7_vivo": true,
+     "corners": [
+      "c00",
+      "c01",
+      "c10",
+      "c11"
+     ]
+    },
+    {
+     "slot": [
+      5,
+      0,
+      0
+     ],
+     "kind": "GS-02",
+     "n": 2,
+     "signed": [
+      0
+     ],
+     "sdl7_vivo": false,
+     "corners": []
+    }
+   ],
+   "corners_covered": [
+    "c00",
+    "c01",
+    "c10",
+    "c11"
+   ],
+   "class_closed": true,
+   "prot_in_vivo": true
+  },
+  {
+   "tower": "SDG2BF",
+   "key": [
+    1479,
+    1491
+   ],
+   "n_groups": 2,
+   "groups": [
+    {
+     "slot": [
+      2,
+      1,
+      0
+     ],
+     "kind": "S",
+     "n": 1,
+     "signed": [
+      1
+     ],
+     "sdl7_vivo": true,
+     "corners": [
+      "c00",
+      "c01",
+      "c10",
+      "c11"
+     ]
+    },
+    {
+     "slot": [
+      5,
+      1,
+      0
+     ],
+     "kind": "GS-02",
+     "n": 2,
+     "signed": [
+      0
+     ],
+     "sdl7_vivo": false,
+     "corners": []
+    }
+   ],
+   "corners_covered": [
+    "c00",
+    "c01",
+    "c10",
+    "c11"
+   ],
+   "class_closed": true,
+   "prot_in_vivo": true
+  },
+  {
+   "tower": "SDG2BF",
+   "key": [
+    1479,
+    1497
+   ],
+   "n_groups": 2,
+   "groups": [
+    {
+     "slot": [
+      0,
+      0,
+      0
+     ],
+     "kind": "GS-02",
+     "n": 2,
+     "signed": [
+      0
+     ],
+     "sdl7_vivo": false,
+     "corners": []
+    },
+    {
+     "slot": [
+      3,
+      0,
+      0
+     ],
+     "kind": "GS-08",
+     "n": 3,
+     "signed": [
+      1
+     ],
+     "sdl7_vivo": true,
+     "corners": [
+      "c01",
+      "c11"
+     ]
+    }
+   ],
+   "corners_covered": [
+    "c01",
+    "c11"
+   ],
+   "class_closed": false,
+   "prot_in_vivo": true
+  },
+  {
+   "tower": "SDG2BF",
+   "key": [
+    1479,
+    1503
+   ],
+   "n_groups": 2,
+   "groups": [
+    {
+     "slot": [
+      0,
+      1,
+      0
+     ],
+     "kind": "GS-02",
+     "n": 2,
+     "signed": [
+      0
+     ],
+     "sdl7_vivo": false,
+     "corners": []
+    },
+    {
+     "slot": [
+      3,
+      1,
+      0
+     ],
+     "kind": "GS-08",
+     "n": 3,
+     "signed": [
+      1
+     ],
+     "sdl7_vivo": true,
+     "corners": [
+      "c01",
+      "c11"
+     ]
+    }
+   ],
+   "corners_covered": [
+    "c01",
+    "c11"
+   ],
+   "class_closed": false,
+   "prot_in_vivo": true
+  },
+  {
+   "tower": "SDG2BF",
+   "key": [
+    1479,
+    1509
+   ],
+   "n_groups": 2,
+   "groups": [
+    {
+     "slot": [
+      1,
+      0,
+      0
+     ],
+     "kind": "GS-02",
+     "n": 2,
+     "signed": [
+      0
+     ],
+     "sdl7_vivo": false,
+     "corners": []
+    },
+    {
+     "slot": [
+      4,
+      0,
+      0
+     ],
+     "kind": "GS-08",
+     "n": 3,
+     "signed": [
+      1
+     ],
+     "sdl7_vivo": true,
+     "corners": [
+      "c01",
+      "c11"
+     ]
+    }
+   ],
+   "corners_covered": [
+    "c01",
+    "c11"
+   ],
+   "class_closed": false,
+   "prot_in_vivo": true
+  },
+  {
+   "tower": "SDG2BF",
+   "key": [
+    1485,
+    1491
+   ],
+   "n_groups": 2,
+   "groups": [
+    {
+     "slot": [
+      0,
+      0,
+      0
+     ],
+     "kind": "S",
+     "n": 1,
+     "signed": [
+      1
+     ],
+     "sdl7_vivo": true,
+     "corners": [
+      "c00",
+      "c01",
+      "c10",
+      "c11"
+     ]
+    },
+    {
+     "slot": [
+      3,
+      0,
+      0
+     ],
+     "kind": "GS-02",
+     "n": 2,
+     "signed": [
+      0
+     ],
+     "sdl7_vivo": false,
+     "corners": []
+    }
+   ],
+   "corners_covered": [
+    "c00",
+    "c01",
+    "c10",
+    "c11"
+   ],
+   "class_closed": true,
+   "prot_in_vivo": true
+  },
+  {
+   "tower": "SDG2BF",
+   "key": [
+    1485,
+    1503
+   ],
+   "n_groups": 2,
+   "groups": [
+    {
+     "slot": [
+      1,
+      0,
+      0
+     ],
+     "kind": "S",
+     "n": 1,
+     "signed": [
+      1
+     ],
+     "sdl7_vivo": true,
+     "corners": [
+      "c00",
+      "c01",
+      "c10",
+      "c11"
+     ]
+    },
+    {
+     "slot": [
+      4,
+      0,
+      0
+     ],
+     "kind": "GS-02",
+     "n": 2,
+     "signed": [
+      0
+     ],
+     "sdl7_vivo": false,
+     "corners": []
+    }
+   ],
+   "corners_covered": [
+    "c00",
+    "c01",
+    "c10",
+    "c11"
+   ],
+   "class_closed": true,
+   "prot_in_vivo": true
+  },
+  {
+   "tower": "SDG2BF",
+   "key": [
+    1491,
+    1491
+   ],
+   "n_groups": 2,
+   "groups": [
+    {
+     "slot": [
+      0,
+      1,
+      0
+     ],
+     "kind": "S",
+     "n": 1,
+     "signed": [
+      1
+     ],
+     "sdl7_vivo": true,
+     "corners": [
+      "c00",
+      "c01",
+      "c10",
+      "c11"
+     ]
+    },
+    {
+     "slot": [
+      3,
+      1,
+      0
+     ],
+     "kind": "GS-02",
+     "n": 2,
+     "signed": [
+      0
+     ],
+     "sdl7_vivo": false,
+     "corners": []
+    }
+   ],
+   "corners_covered": [
+    "c00",
+    "c01",
+    "c10",
+    "c11"
+   ],
+   "class_closed": true,
+   "prot_in_vivo": true
+  },
+  {
+   "tower": "SDG2BF",
+   "key": [
+    1491,
+    1497
+   ],
+   "n_groups": 2,
+   "groups": [
+    {
+     "slot": [
+      1,
+      0,
+      0
+     ],
+     "kind": "S",
+     "n": 1,
+     "signed": [
+      1
+     ],
+     "sdl7_vivo": true,
+     "corners": [
+      "c00",
+      "c01",
+      "c10",
+      "c11"
+     ]
+    },
+    {
+     "slot": [
+      4,
+      0,
+      0
+     ],
+     "kind": "GS-02",
+     "n": 2,
+     "signed": [
+      0
+     ],
+     "sdl7_vivo": false,
+     "corners": []
+    }
+   ],
+   "corners_covered": [
+    "c00",
+    "c01",
+    "c10",
+    "c11"
+   ],
+   "class_closed": true,
+   "prot_in_vivo": true
+  },
+  {
+   "tower": "SDG2BF",
+   "key": [
+    1491,
+    1503
+   ],
+   "n_groups": 2,
+   "groups": [
+    {
+     "slot": [
+      1,
+      1,
+      0
+     ],
+     "kind": "S",
+     "n": 1,
+     "signed": [
+      1
+     ],
+     "sdl7_vivo": true,
+     "corners": [
+      "c00",
+      "c01",
+      "c10",
+      "c11"
+     ]
+    },
+    {
+     "slot": [
+      4,
+      1,
+      0
+     ],
+     "kind": "GS-02",
+     "n": 2,
+     "signed": [
+      0
+     ],
+     "sdl7_vivo": false,
+     "corners": []
+    }
+   ],
+   "corners_covered": [
+    "c00",
+    "c01",
+    "c10",
+    "c11"
+   ],
+   "class_closed": true,
+   "prot_in_vivo": true
+  },
+  {
+   "tower": "SDG2BF",
+   "key": [
+    1491,
+    1509
+   ],
+   "n_groups": 2,
+   "groups": [
+    {
+     "slot": [
+      2,
+      0,
+      0
+     ],
+     "kind": "S",
+     "n": 1,
+     "signed": [
+      1
+     ],
+     "sdl7_vivo": true,
+     "corners": [
+      "c00",
+      "c01",
+      "c10",
+      "c11"
+     ]
+    },
+    {
+     "slot": [
+      5,
+      0,
+      0
+     ],
+     "kind": "GS-02",
+     "n": 2,
+     "signed": [
+      0
+     ],
+     "sdl7_vivo": false,
+     "corners": []
+    }
+   ],
+   "corners_covered": [
+    "c00",
+    "c01",
+    "c10",
+    "c11"
+   ],
+   "class_closed": true,
+   "prot_in_vivo": true
+  },
+  {
+   "tower": "SDG2BF",
+   "key": [
+    1497,
+    1503
+   ],
+   "n_groups": 2,
+   "groups": [
+    {
+     "slot": [
+      2,
+      0,
+      0
+     ],
+     "kind": "S",
+     "n": 1,
+     "signed": [
+      1
+     ],
+     "sdl7_vivo": true,
+     "corners": [
+      "c00",
+      "c01",
+      "c10",
+      "c11"
+     ]
+    },
+    {
+     "slot": [
+      5,
+      0,
+      0
+     ],
+     "kind": "GS-02",
+     "n": 2,
+     "signed": [
+      0
+     ],
+     "sdl7_vivo": false,
+     "corners": []
+    }
+   ],
+   "corners_covered": [
+    "c00",
+    "c01",
+    "c10",
+    "c11"
+   ],
+   "class_closed": true,
+   "prot_in_vivo": true
+  },
+  {
+   "tower": "SDG2BF",
+   "key": [
+    1503,
+    1503
+   ],
+   "n_groups": 2,
+   "groups": [
+    {
+     "slot": [
+      2,
+      1,
+      0
+     ],
+     "kind": "S",
+     "n": 1,
+     "signed": [
+      1
+     ],
+     "sdl7_vivo": true,
+     "corners": [
+      "c00",
+      "c01",
+      "c10",
+      "c11"
+     ]
+    },
+    {
+     "slot": [
+      5,
+      1,
+      0
+     ],
+     "kind": "GS-02",
+     "n": 2,
+     "signed": [
+      0
+     ],
+     "sdl7_vivo": false,
+     "corners": []
+    }
+   ],
+   "corners_covered": [
+    "c00",
+    "c01",
+    "c10",
+    "c11"
+   ],
+   "class_closed": true,
+   "prot_in_vivo": true
+  },
+  {
+   "tower": "SDG2BZ",
+   "key": [
+    1479,
+    1479
+   ],
+   "n_groups": 2,
+   "groups": [
+    {
+     "slot": [
+      1,
+      1,
+      0
+     ],
+     "kind": "GS-02",
+     "n": 2,
+     "signed": [
+      0
+     ],
+     "sdl7_vivo": false,
+     "corners": []
+    },
+    {
+     "slot": [
+      4,
+      1,
+      0
+     ],
+     "kind": "GS-08",
+     "n": 3,
+     "signed": [
+      1
+     ],
+     "sdl7_vivo": true,
+     "corners": [
+      "c01",
+      "c11"
+     ]
+    }
+   ],
+   "corners_covered": [
+    "c01",
+    "c11"
+   ],
+   "class_closed": false,
+   "prot_in_vivo": true
+  },
+  {
+   "tower": "SDG2BZ",
+   "key": [
+    1479,
+    1485
+   ],
+   "n_groups": 2,
+   "groups": [
+    {
+     "slot": [
+      2,
+      0,
+      0
+     ],
+     "kind": "S",
+     "n": 1,
+     "signed": [
+      1
+     ],
+     "sdl7_vivo": true,
+     "corners": [
+      "c00",
+      "c01",
+      "c10",
+      "c11"
+     ]
+    },
+    {
+     "slot": [
+      5,
+      0,
+      0
+     ],
+     "kind": "GS-02",
+     "n": 2,
+     "signed": [
+      0
+     ],
+     "sdl7_vivo": false,
+     "corners": []
+    }
+   ],
+   "corners_covered": [
+    "c00",
+    "c01",
+    "c10",
+    "c11"
+   ],
+   "class_closed": true,
+   "prot_in_vivo": true
+  },
+  {
+   "tower": "SDG2BZ",
+   "key": [
+    1479,
+    1491
+   ],
+   "n_groups": 2,
+   "groups": [
+    {
+     "slot": [
+      2,
+      1,
+      0
+     ],
+     "kind": "S",
+     "n": 1,
+     "signed": [
+      1
+     ],
+     "sdl7_vivo": true,
+     "corners": [
+      "c00",
+      "c01",
+      "c10",
+      "c11"
+     ]
+    },
+    {
+     "slot": [
+      5,
+      1,
+      0
+     ],
+     "kind": "GS-02",
+     "n": 2,
+     "signed": [
+      0
+     ],
+     "sdl7_vivo": false,
+     "corners": []
+    }
+   ],
+   "corners_covered": [
+    "c00",
+    "c01",
+    "c10",
+    "c11"
+   ],
+   "class_closed": true,
+   "prot_in_vivo": true
+  },
+  {
+   "tower": "SDG2BZ",
+   "key": [
+    1479,
+    1497
+   ],
+   "n_groups": 2,
+   "groups": [
+    {
+     "slot": [
+      0,
+      0,
+      0
+     ],
+     "kind": "GS-02",
+     "n": 2,
+     "signed": [
+      0
+     ],
+     "sdl7_vivo": false,
+     "corners": []
+    },
+    {
+     "slot": [
+      3,
+      0,
+      0
+     ],
+     "kind": "GS-08",
+     "n": 3,
+     "signed": [
+      1
+     ],
+     "sdl7_vivo": true,
+     "corners": [
+      "c01",
+      "c11"
+     ]
+    }
+   ],
+   "corners_covered": [
+    "c01",
+    "c11"
+   ],
+   "class_closed": false,
+   "prot_in_vivo": true
+  },
+  {
+   "tower": "SDG2BZ",
+   "key": [
+    1479,
+    1503
+   ],
+   "n_groups": 2,
+   "groups": [
+    {
+     "slot": [
+      0,
+      1,
+      0
+     ],
+     "kind": "GS-02",
+     "n": 2,
+     "signed": [
+      0
+     ],
+     "sdl7_vivo": false,
+     "corners": []
+    },
+    {
+     "slot": [
+      3,
+      1,
+      0
+     ],
+     "kind": "GS-08",
+     "n": 3,
+     "signed": [
+      1
+     ],
+     "sdl7_vivo": true,
+     "corners": [
+      "c01",
+      "c11"
+     ]
+    }
+   ],
+   "corners_covered": [
+    "c01",
+    "c11"
+   ],
+   "class_closed": false,
+   "prot_in_vivo": true
+  },
+  {
+   "tower": "SDG2BZ",
+   "key": [
+    1479,
+    1509
+   ],
+   "n_groups": 2,
+   "groups": [
+    {
+     "slot": [
+      1,
+      0,
+      0
+     ],
+     "kind": "GS-02",
+     "n": 2,
+     "signed": [
+      0
+     ],
+     "sdl7_vivo": false,
+     "corners": []
+    },
+    {
+     "slot": [
+      4,
+      0,
+      0
+     ],
+     "kind": "GS-08",
+     "n": 3,
+     "signed": [
+      1
+     ],
+     "sdl7_vivo": true,
+     "corners": [
+      "c01",
+      "c11"
+     ]
+    }
+   ],
+   "corners_covered": [
+    "c01",
+    "c11"
+   ],
+   "class_closed": false,
+   "prot_in_vivo": true
+  },
+  {
+   "tower": "SDG2BZ",
+   "key": [
+    1485,
+    1491
+   ],
+   "n_groups": 2,
+   "groups": [
+    {
+     "slot": [
+      0,
+      0,
+      0
+     ],
+     "kind": "S",
+     "n": 1,
+     "signed": [
+      1
+     ],
+     "sdl7_vivo": true,
+     "corners": [
+      "c00",
+      "c01",
+      "c10",
+      "c11"
+     ]
+    },
+    {
+     "slot": [
+      3,
+      0,
+      0
+     ],
+     "kind": "GS-02",
+     "n": 2,
+     "signed": [
+      0
+     ],
+     "sdl7_vivo": false,
+     "corners": []
+    }
+   ],
+   "corners_covered": [
+    "c00",
+    "c01",
+    "c10",
+    "c11"
+   ],
+   "class_closed": true,
+   "prot_in_vivo": true
+  },
+  {
+   "tower": "SDG2BZ",
+   "key": [
+    1485,
+    1503
+   ],
+   "n_groups": 2,
+   "groups": [
+    {
+     "slot": [
+      1,
+      0,
+      0
+     ],
+     "kind": "S",
+     "n": 1,
+     "signed": [
+      1
+     ],
+     "sdl7_vivo": true,
+     "corners": [
+      "c00",
+      "c01",
+      "c10",
+      "c11"
+     ]
+    },
+    {
+     "slot": [
+      4,
+      0,
+      0
+     ],
+     "kind": "GS-02",
+     "n": 2,
+     "signed": [
+      0
+     ],
+     "sdl7_vivo": false,
+     "corners": []
+    }
+   ],
+   "corners_covered": [
+    "c00",
+    "c01",
+    "c10",
+    "c11"
+   ],
+   "class_closed": true,
+   "prot_in_vivo": true
+  },
+  {
+   "tower": "SDG2BZ",
+   "key": [
+    1491,
+    1491
+   ],
+   "n_groups": 2,
+   "groups": [
+    {
+     "slot": [
+      0,
+      1,
+      0
+     ],
+     "kind": "S",
+     "n": 1,
+     "signed": [
+      1
+     ],
+     "sdl7_vivo": true,
+     "corners": [
+      "c00",
+      "c01",
+      "c10",
+      "c11"
+     ]
+    },
+    {
+     "slot": [
+      3,
+      1,
+      0
+     ],
+     "kind": "GS-02",
+     "n": 2,
+     "signed": [
+      0
+     ],
+     "sdl7_vivo": false,
+     "corners": []
+    }
+   ],
+   "corners_covered": [
+    "c00",
+    "c01",
+    "c10",
+    "c11"
+   ],
+   "class_closed": true,
+   "prot_in_vivo": true
+  },
+  {
+   "tower": "SDG2BZ",
+   "key": [
+    1491,
+    1497
+   ],
+   "n_groups": 2,
+   "groups": [
+    {
+     "slot": [
+      1,
+      0,
+      0
+     ],
+     "kind": "S",
+     "n": 1,
+     "signed": [
+      1
+     ],
+     "sdl7_vivo": true,
+     "corners": [
+      "c00",
+      "c01",
+      "c10",
+      "c11"
+     ]
+    },
+    {
+     "slot": [
+      4,
+      0,
+      0
+     ],
+     "kind": "GS-02",
+     "n": 2,
+     "signed": [
+      0
+     ],
+     "sdl7_vivo": false,
+     "corners": []
+    }
+   ],
+   "corners_covered": [
+    "c00",
+    "c01",
+    "c10",
+    "c11"
+   ],
+   "class_closed": true,
+   "prot_in_vivo": true
+  },
+  {
+   "tower": "SDG2BZ",
+   "key": [
+    1491,
+    1503
+   ],
+   "n_groups": 2,
+   "groups": [
+    {
+     "slot": [
+      1,
+      1,
+      0
+     ],
+     "kind": "S",
+     "n": 1,
+     "signed": [
+      1
+     ],
+     "sdl7_vivo": true,
+     "corners": [
+      "c00",
+      "c01",
+      "c10",
+      "c11"
+     ]
+    },
+    {
+     "slot": [
+      4,
+      1,
+      0
+     ],
+     "kind": "GS-02",
+     "n": 2,
+     "signed": [
+      0
+     ],
+     "sdl7_vivo": false,
+     "corners": []
+    }
+   ],
+   "corners_covered": [
+    "c00",
+    "c01",
+    "c10",
+    "c11"
+   ],
+   "class_closed": true,
+   "prot_in_vivo": true
+  },
+  {
+   "tower": "SDG2BZ",
+   "key": [
+    1491,
+    1509
+   ],
+   "n_groups": 2,
+   "groups": [
+    {
+     "slot": [
+      2,
+      0,
+      0
+     ],
+     "kind": "S",
+     "n": 1,
+     "signed": [
+      1
+     ],
+     "sdl7_vivo": true,
+     "corners": [
+      "c00",
+      "c01",
+      "c10",
+      "c11"
+     ]
+    },
+    {
+     "slot": [
+      5,
+      0,
+      0
+     ],
+     "kind": "GS-02",
+     "n": 2,
+     "signed": [
+      0
+     ],
+     "sdl7_vivo": false,
+     "corners": []
+    }
+   ],
+   "corners_covered": [
+    "c00",
+    "c01",
+    "c10",
+    "c11"
+   ],
+   "class_closed": true,
+   "prot_in_vivo": true
+  },
+  {
+   "tower": "SDG2BZ",
+   "key": [
+    1497,
+    1503
+   ],
+   "n_groups": 2,
+   "groups": [
+    {
+     "slot": [
+      2,
+      0,
+      0
+     ],
+     "kind": "S",
+     "n": 1,
+     "signed": [
+      1
+     ],
+     "sdl7_vivo": true,
+     "corners": [
+      "c00",
+      "c01",
+      "c10",
+      "c11"
+     ]
+    },
+    {
+     "slot": [
+      5,
+      0,
+      0
+     ],
+     "kind": "GS-02",
+     "n": 2,
+     "signed": [
+      0
+     ],
+     "sdl7_vivo": false,
+     "corners": []
+    }
+   ],
+   "corners_covered": [
+    "c00",
+    "c01",
+    "c10",
+    "c11"
+   ],
+   "class_closed": true,
+   "prot_in_vivo": true
+  },
+  {
+   "tower": "SDG2BZ",
+   "key": [
+    1503,
+    1503
+   ],
+   "n_groups": 2,
+   "groups": [
+    {
+     "slot": [
+      2,
+      1,
+      0
+     ],
+     "kind": "S",
+     "n": 1,
+     "signed": [
+      1
+     ],
+     "sdl7_vivo": true,
+     "corners": [
+      "c00",
+      "c01",
+      "c10",
+      "c11"
+     ]
+    },
+    {
+     "slot": [
+      5,
+      1,
+      0
+     ],
+     "kind": "GS-02",
+     "n": 2,
+     "signed": [
+      0
+     ],
+     "sdl7_vivo": false,
+     "corners": []
+    }
+   ],
+   "corners_covered": [
+    "c00",
+    "c01",
+    "c10",
+    "c11"
+   ],
+   "class_closed": true,
+   "prot_in_vivo": true
+  },
+  {
+   "tower": "SDW4G2F",
+   "key": [
+    2635,
+    2635
+   ],
+   "n_groups": 2,
+   "groups": [
+    {
+     "slot": [
+      1,
+      0,
+      0,
+      0
+     ],
+     "kind": "GS-08",
+     "n": 3,
+     "signed": [
+      -1
+     ],
+     "sdl7_vivo": true,
+     "corners": [
+      "c01",
+      "c11"
+     ]
+    },
+    {
+     "slot": [
+      4,
+      0,
+      0,
+      0
+     ],
+     "kind": "GS-16",
+     "n": 5,
+     "signed": [
+      -1
+     ],
+     "sdl7_vivo": true,
+     "corners": [
+      "c01",
+      "c11"
+     ]
+    }
+   ],
+   "corners_covered": [
+    "c01",
+    "c11"
+   ],
+   "class_closed": false,
+   "prot_in_vivo": true
+  }
+ ],
+ "elapsed": 0.34360671043395996
+}
