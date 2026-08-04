@@ -9749,3 +9749,47 @@ gaps-only rounds ridden), E arc 1/2, S arc 0/2 (r1 applied), SD arc
 1/2; the five Codex legs (VC40 + W/E/S/SD) open with the Aug 08 budget;
 the open mathematics = (SURV-K2) (next composition, dispatched) +
 (SD-YJ).**
+
+---
+
+## (SURV-K2) UNIT LANDED — PROVED on g₀ = 2 ∧ (K2-REG), residue-assignment-free; g₀ ≥ 3 pillar failures DERIVED — 2026-08-08 campaign (wallclock 2026-08-04)
+
+**The unit** (workflow wolepupj3; instrument THREE-commit record — seal
+10ec9f3, mid-battery amendment dbe0cb9 (the g₀ ≥ 3 cost wall disclosed,
+rev-2 runner md5-pinned, atomic buffering), verdict 5e2b8e4; composer
+53e0883). Instrument: 332 live g₀ ≥ 2 rows (286 committed replicated
+exact + 46 fresh incl. p = 5 and m = 4), 102 bottom-kill rows, 0
+violations in nine families. **The pairing structure: level-0 mass
+exchange at fixed slot** — three realizations (the T0 seed-shift
+toggle with forced quantum g₀ − k; the dump-swap; the in-window
+exchange) carrying ALL 102 kills; residue preservation always a
+per-realization DIGIT identity, never the carry algebra.
+
+**The theorem** (`SURVK2_PROOF_2026-08-08.md`): the drain-window normal
+form K2-L1 (any g₀, from accepted [RMG] S2.2 walk priority) + the
+window budget K2-L2 (≤ 2g₀ − 1) give at g₀ = 2 a COMPLETE legal-drain
+inventory (K2-L3: no order-multiplicity, one exchange, the T0 toggle
+with quantum 1 — deriving the instrument's M-QA-WRONGQ 76/76); the
+four bottom-group forms are explicit monomial vectors governed by two
+tower identities; **K2-THM-A: on regular rows some protected form
+exists under EVERY residue assignment — (SURV-K2) PROVED at attempt
+grade on g₀ = 2 ∧ (K2-REG), no residue hypothesis** (cap = the W arc
+via W-D1/W-D2(iv)/W-D3). K2-COR: the first g₀ ≥ 2 (SURV) closure;
+**(SURV-DISJ) coverage now = (g₀ = 1 ∧ d₀ = 1) ∪ (g₀ = 2 ∧ REG)**.
+
+**Boxed + the honest warnings:** (K2-RES) — the glued dump-swap
+systems (29/332 rows, instance-protected, case table not composed);
+**the A = {1} corner = the sharpest explicit counterexample candidate
+to class-wide (SURV-K2)** (all 16 probed towers have A = {0,1});
+the −2 placement pair (0 realized). **g₀ ≥ 3: the g₀ = 2 pillars
+PROVABLY fail combinatorially** (count −2 drains; order-multiplicity)
+— sealed falsifiable predictions on record; the class-wide conjecture
+may need a different mechanism or be FALSE there. Machine leg: 16
+families, 0 violations; the recording walk byte-exact against the
+committed engine on all 332 rows.
+
+**Queued: the K2 hostile round (PE-K2-1, dispatched now — K2-L3's
+completeness and K2-THM-A's case analysis are the hard steps; the
+counterexample-candidate corner gets a dedicated probe charge). The
+(SD-YJ) corner and the g₀ ≥ 3 instrument are the remaining Q2
+compositions; five Codex legs (+ eventually K2's) post-reset.**
