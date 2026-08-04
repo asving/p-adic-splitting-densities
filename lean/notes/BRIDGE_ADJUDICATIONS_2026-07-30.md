@@ -8750,3 +8750,33 @@ conjectured DCX-emptiness refuted at m = 3; the two-level carry chain the
 measured sharp locus) and the DCX3 sharp-locus sealed confirmation (in
 flight). Next: the generic (RM-m) ENGINE COMPOSE consuming whatever the seal
 confirms — the closure program's central unit.
+
+## DCX3 SHARP-LOCUS SEALED CONFIRMATION — the reseal cycle earns its keep: v1 REFUTED, THE UNIFORM CARRY LAW (v2) SEALED-CONFIRMED (wallclock 2026-08-04; anchored after the twentieth re-anchoring block above)
+
+The DCX₃ gate unit (note `DCX3_SHARP_2026-08-08.md`; seal 1db30fa →
+verdict 9003821 → reseal a9dd275 → verdict commit 4 = this append):
+the RM-2 probe's display-only two-level carry chain, sealed as primary
+on a fresh 9-shape roster, went RED at run 1 — 40 F-SHARP violations,
+ALL meas ⊋ pred, exactly the deficit-2 stratum {lvl2 = 2e₁−2 ∧ pool ≥
+2e₀} (deep pools s₁(u₀) ∈ {2,3}, e₀ ∈ {3,4}: arithmetically invisible
+on every RM-2 shape), cross-ring; the run-1 trace census already
+split the mechanism exactly (103 direct rows clean-visible / 40
+deficit-2 rows promotion-fed only). The unit's one reseal cycle
+promoted the corrected candidate — THE UNIFORM CARRY LAW, DCX₃ =
+TRACK ∧ lvl2 + ⌊pool/e₀⌋ ≥ 2e₁ — and it ran GREEN on all legs on a
+second fresh roster (11,808 pairs, EX1–EX6 incl. g₀ = 2 double-carry,
+d₀ = 2/p = 5, e₃ = 3, and the s₁(u₀) = 0 low-pool dead stress):
+F-SHARP-2 0/11,808 both inclusions, outer bound 0/708, the
+depth-exact mechanism sealed and 0-violated (deficit-k overflow rides
+the E1-promotion edge exactly ≥ k deep; direct rows clean-visible
+241/241), coverage 446/79/149/57, controls 4/4 incl. MC-3 = the
+refuted v1 as a mutant (79 trips = the exact new stratum). STATUS:
+v2 is SEALED-CONFIRMED (conjecture-grade, 15 shapes, ℤ₃/ℤ₅/F₂[[t]])
+and is THE display the Q1 (RM-m) engine compose consumes for its
+second-round clause; v1 is REFUTED as stated and must not be
+consumed. The ITERLAWN S4.7 refutation bracket (ced7dbb) stays
+accurate (it recorded v1 as display-only pending this seal); the
+compose design input is now sharper: the carry is ⌊pool/e₀⌋ at full
+depth, threading the SAME promotion edge as the termination measure.
+Unit files: prereg+verdicts note, two runners, two design JSONs, two
+output/results pairs, this append ONLY (scoped `git commit --only`).

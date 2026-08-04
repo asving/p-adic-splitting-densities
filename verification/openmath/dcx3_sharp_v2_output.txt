@@ -1,0 +1,29 @@
+dcx3_sharp_seal_v2 — DCX3 UNIFORM CARRY LAW (v2) RESEAL
+-- EX1/Zp,p=3: E4=48 core=True s2g3=3 s1u0=2 (u0=17; mut s1u0'=2) census: {'pairs': 2304, 'track': 264, 'e1nz': 1056, 'd1': 108, 'd2': 48, 'd2_hi': 16, 'd2_edge': 32, 'd3_hi': 0, 'pred_live': 220, 'dcx_meas': 220, 'mism': 0, 'q1nz': 880, 'live_k1': 96, 'live_k2': 16, 'live_dir': 108}; elapsed 0.1s
+-- EX1/Fpt,p=2: E4=48 core=True s2g3=3 s1u0=2 (u0=17; mut s1u0'=2) census: {'pairs': 2304, 'track': 264, 'e1nz': 1056, 'd1': 108, 'd2': 48, 'd2_hi': 16, 'd2_edge': 32, 'd3_hi': 0, 'pred_live': 220, 'dcx_meas': 220, 'mism': 0, 'q1nz': 880, 'live_k1': 96, 'live_k2': 16, 'live_dir': 108}; elapsed 0.5s
+-- EX2/Zp,p=3: E4=24 core=True s2g3=2 s1u0=3 (u0=19; mut s1u0'=3) census: {'pairs': 576, 'track': 66, 'e1nz': 264, 'd1': 32, 'd2': 18, 'd2_hi': 9, 'd2_edge': 9, 'd3_hi': 0, 'pred_live': 55, 'dcx_meas': 55, 'mism': 0, 'q1nz': 220, 'live_k1': 30, 'live_k2': 9, 'live_dir': 16}; elapsed 0.0s
+-- EX3/Zp,p=3: E4=12 core=False s2g3=1 s1u0=2 (u0=20; mut s1u0'=2) census: {'pairs': 144, 'track': 9, 'e1nz': 36, 'd1': 9, 'd2': 0, 'd2_hi': 0, 'd2_edge': 0, 'd3_hi': 0, 'pred_live': 8, 'dcx_meas': 8, 'mism': 0, 'q1nz': 32, 'live_k1': 8, 'live_k2': 0, 'live_dir': 0}; elapsed 0.0s
+-- EX4/Zp,p=5: E4=18 core=False s2g3=1 s1u0=2 (u0=20; mut s1u0'=2) census: {'pairs': 324, 'track': 36, 'e1nz': 144, 'd1': 9, 'd2': 18, 'd2_hi': 2, 'd2_edge': 4, 'd3_hi': 3, 'pred_live': 10, 'dcx_meas': 10, 'mism': 0, 'q1nz': 40, 'live_k1': 8, 'live_k2': 2, 'live_dir': 0}; elapsed 0.0s
+-- EX5/Zp,p=3: E4=54 core=True s2g3=1 s1u0=2 (u0=17; mut s1u0'=2) census: {'pairs': 2916, 'track': 324, 'e1nz': 1296, 'd1': 81, 'd2': 162, 'd2_hi': 18, 'd2_edge': 36, 'd3_hi': 27, 'pred_live': 90, 'dcx_meas': 90, 'mism': 0, 'q1nz': 360, 'live_k1': 72, 'live_k2': 18, 'live_dir': 0}; elapsed 0.1s
+-- EX5/Fpt,p=2: E4=54 core=True s2g3=1 s1u0=2 (u0=17; mut s1u0'=2) census: {'pairs': 2916, 'track': 324, 'e1nz': 1296, 'd1': 81, 'd2': 162, 'd2_hi': 18, 'd2_edge': 36, 'd3_hi': 27, 'pred_live': 90, 'dcx_meas': 90, 'mism': 0, 'q1nz': 360, 'live_k1': 72, 'live_k2': 18, 'live_dir': 0}; elapsed 0.4s
+-- EX6/Zp,p=3: E4=18 core=False s2g3=2 s1u0=0 (u0=27; mut s1u0'=2) census: {'pairs': 324, 'track': 36, 'e1nz': 144, 'd1': 18, 'd2': 9, 'd2_hi': 0, 'd2_edge': 0, 'd3_hi': 0, 'pred_live': 15, 'dcx_meas': 15, 'mism': 0, 'q1nz': 60, 'live_k1': 6, 'live_k2': 0, 'live_dir': 9}; elapsed 0.0s
+
+== COUNTS ==
+  F-CHAIN-2: 708
+  F-OUTER-2: 708
+  F-SHARP-2-CORE: 11016
+  F-SHARP-2-EXT: 792
+== COVERAGE METERS == M1(deficit-1)=446[>=20] M2a(deficit-2,pool>=2e0)=79[>=20] M2b(deficit-2,pool==2e0-1)=149[>=5] M4(deficit>=3,pool>=2e0)=57[>=10]
+== MUTANT VISIBILITY (mut != primary) == {'m1': 440, 'm2': 175, 'm3': 79, 'm4': 13}
+== CONTROLS (mut != measured; SEPARATE) ==
+  MC-1: TRIPPED (count 440)
+  MC-2: TRIPPED (count 175)
+  MC-3: TRIPPED (count 79)
+  MC-4: TRIPPED (count 13)
+== VIOLATIONS: 0 ==
+results -> /data/users/asvin/math-and-lean/p-adic-splitting-densities/verification/openmath/dcx3_sharp_v2_results.json; total elapsed 1.2s
+SHARP-LOCUS VERDICT v2 (F-SHARP-2 both-inclusions, resealed uniform carry law, predicted-0): GREEN [0 violations]
+OUTER VERDICT v2 (predicted-0): GREEN [0 violations]
+CHAIN-MECHANISM VERDICT v2 (C1+C2+C3 depth-exact, predicted-0): GREEN [0 violations]
+BOUNDARY COVERAGE v2 (M1>=20, M2a>=20, M2b>=5, M4>=10): MET [M1=446, M2a=79, M2b=149, M4=57]
+CONTROL VERDICT v2 (MC-1..4 incl. the refuted v1 as MC-3, SEPARATE): MET
