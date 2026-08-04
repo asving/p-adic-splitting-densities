@@ -9735,3 +9735,17 @@ Codex leg is owed regardless before any acceptance claim.  The queue
 after that stands: the five Codex legs (VC40, W/E/S/SD arcs) on the
 post-reset budget; the class-wide frontier: (SURV-K2) via the
 sign-reversing pairing; (SD-YJ).**
+
+---
+
+## (SURV-DISJ) ROUND 2: PE2 CLEAN (the Fable leg met) — 2026-08-08 campaign (wallclock 2026-08-04)
+
+On the SD-r1 text (012d738): **SURVDISJ-PE2 CLEAN 0C/0G + 1n** — the
+pin re-derived fresh and exactly right; spine standing alone; census
+figures re-aggregated independently; two hand-re-derivations
+cell-exact. The note cured at [SD-r2]. **SD arc 1/2 CLEAN — level with
+the E arc. THE WAVE'S PRE-RESET RESTING STATE: W arc 0/2 (three
+gaps-only rounds ridden), E arc 1/2, S arc 0/2 (r1 applied), SD arc
+1/2; the five Codex legs (VC40 + W/E/S/SD) open with the Aug 08 budget;
+the open mathematics = (SURV-K2) (next composition, dispatched) +
+(SD-YJ).**

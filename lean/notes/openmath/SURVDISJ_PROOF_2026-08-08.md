@@ -287,7 +287,10 @@ exponent vector as the L-child.
     clauses.  No lemma-body mathematics moved.]
 
 [Machine: DRV-SEEDY — 1,355 b₀-seeding splits recomputed directly
-(every d-cell on every live row), Y-child zero on ALL, 0 violations.
+(every d-cell on every ROSTER row — the loop runs before the live gate,
+so the 1,355 counted splits properly contain the live-only 1,265
+[SD-r2 2026-08-04, PE2-n: the parenthetical formerly said "every live
+row" — display precision only]), Y-child zero on ALL, 0 violations.
 Measured, beyond the proof's needs: the X-child was ALSO zero on all
 1,355 (counter seedx_zero; seedx_nonzero = 0) — instances realize
 the stronger exactness, which is why the instrument saw NO cascade
@@ -760,3 +763,17 @@ regardless before any acceptance claim.  Grade caps unchanged (the
 binding cap stays the W arc, 0/2 CLEAN).  Nothing in this repair
 touches the two S6 boxes, the machine legs, or any consumed source
 beyond the one-line EMPTY_PROOF header cure.
+
+**REPAIR RECORD, SD-r2 (2026-08-08 campaign, wallclock 2026-08-04).**
+Round-2 verdict on the SD-r1 text (012d738): **PE2 (Fable,
+`SURVDISJ_passPE2_report.md`) CLEAN — 0 critical, 0 gaps** + 1 note.
+The SD-r1 pin re-derived fresh (true exactly at principal seeds, false
+at t ≥ 1 seeds via the class pin's h₀ ≥ 1, automatic on the theorem
+locus); all echo sites verified; both consumers undamaged; all four
+note fixes faithful; the full spine re-derived standing alone; all md5
+pins green, both runners reproducing, the seal genuine; two fresh
+hand-re-derivations (one per kill regime) cell-exact. The one note
+(the DRV-SEEDY parenthetical's roster-vs-live count) cured at the
+[SD-r2] bracket above. **Counter: 1/2 CLEAN (the Fable leg met).
+Round 3 = the model-diverse Codex leg (post-reset, window Aug 08) —
+the acceptance attempt.**
