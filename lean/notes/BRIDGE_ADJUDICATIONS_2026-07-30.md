@@ -9864,3 +9864,22 @@ probe has the mechanism + the per-level (ξ, w) data) — dispatched now;
 the blueprint's adversarial Codex plan-review at the reset (standing
 plan-level-passes rule); then J-B/J-C/J-D in the blueprint's dependency
 order. The T3E zero-transport residue goes into the composer's charge.**
+
+---
+
+## DIRECTIVE (Asvin, 2026-08-04, verbatim): "try and construct counterexamples instead of just doing an automated sweep. Based on the intuition earned so far, try to build a counterexample that would test the claim as much as possible."
+
+**Adjudicated as standing law for every countermodel phase:** both legs
+required — the sweep (coverage) AND a CONSTRUCTION section that derives
+the simultaneous-defeat conditions from the claim's own protections as
+explicit equations in the tower data, then solves them or proves the
+system infeasible (an infeasibility proof is a new lemma FOR the claim
+— the A = {1} pattern, where the class pin killed the candidate).
+Memory: constructed-counterexamples-over-sweeps.md. First application
+dispatched: the (SURV-DISJ) DOUBLE-KILL construction unit — targets (a)
+g₀ = 3 (where the g₀ = 2 pillars provably fail: count-−2 drains,
+order-multiplicity — engineer residues defeating BOTH the bottom and
+cascade protections at once), (b) the glued duplicate-book stratum
+(seeded by SDW4G2F), (c) the first-ever g₀ = 1 ∧ d₀ ≥ 2 tower for
+(SD-YJ) (a corner with ZERO roster representatives — construct the
+probe instance itself).
