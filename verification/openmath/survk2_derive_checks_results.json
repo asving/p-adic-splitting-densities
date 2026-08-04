@@ -1,0 +1,14 @@
+{
+ "final": true,
+ "violations": [],
+ "counters": {
+  "cand_ok": 1,
+  "live_rows": 332,
+  "fact_cells": 1311,
+  "reg_rows": 303,
+  "glued_groups": 38,
+  "nonreg_rows": 29
+ },
+ "elapsed": 23.635905265808105,
+ "nrows": 332
+}

@@ -1,0 +1,46 @@
+==============================================================================
+(SURV-K2) DERIVE CHECKS — the instrument's traced g0 >= 2 rows
+(the ten g0 >= 3 towers excluded up front: measured engine cost
+ wall, SURVK2_INSTRUMENT amendment bracket — disclosed skip)
+==============================================================================
+-- SEALED W3G2A m=3 Zp,p=3,d0=1 g0=2: live traced=28 (0.1s)
+-- SEALED W3G2B m=3 Zp,p=3,d0=2 g0=2: live traced=20 (0.1s)
+-- SEALED W3G2P5 m=3 Zp,p=5,d0=2 g0=2: live traced=4 (0.1s)
+-- SEALED XM3B m=3 Zp,p=3,d0=2 g0=2: live traced=16 (0.3s)
+-- EQ EQ3G2A m=3 Zp,p=3,d0=2 g0=2: live traced=14 (0.4s)
+-- EQ EQ3G2B m=3 Zp,p=3,d0=1 g0=2: live traced=53 (0.2s)
+-- SD SDG2BF m=3 Fpt,p=2,d0=1 g0=2: live traced=39 (0.9s)
+-- SD SDG2BZ m=3 Zp,p=2,d0=1 g0=2: live traced=39 (0.1s)
+-- SD SDG2AF m=3 Fpt,p=2,d0=2 g0=2: live traced=14 (17.5s)
+-- SD SDG2AZ m=3 Zp,p=2,d0=2 g0=2: live traced=14 (0.6s)
+  CENSUS [SDW3G2F]: principal d-cell ABSENT (theta_0 = 0 case)
+-- SD SDW3G2F m=3 Fpt,p=2,d0=1 g0=2: live traced=26 (0.3s)
+-- SD SDDPG2F m=3 Fpt,p=2,d0=1 g0=2: live traced=6 (0.2s)
+-- SD SDDPG2Z m=3 Zp,p=2,d0=1 g0=2: live traced=6 (0.0s)
+  CENSUS [SDW4G2F]: principal d-cell ABSENT (theta_0 = 0 case)
+-- SD SDW4G2F m=4 Fpt,p=2,d0=1 g0=2: live traced=7 (2.5s)
+-- K2 K2G2P5B m=3 Zp,p=5,d0=1 g0=2: live traced=39 (0.2s)
+-- K2 K2W4G2Z m=4 Zp,p=3,d0=1 g0=2: live traced=7 (0.2s)
+==============================================================================
+K2-PIN    : 0 violations
+K2-XWALK  : 0 violations
+K2-CONS   : 0 violations
+K2-WIN    : 0 violations
+K2-FACT   : 0 violations
+K2-NU     : 0 violations
+K2-JBOT   : 0 violations
+K2-COLOC  : 0 violations
+K2-FIB    : 0 violations
+K2-CHAIN  : 0 violations
+K2-SHAPE  : 0 violations
+K2-REG    : 0 violations
+K2-SYS    : 0 violations
+K2-PROT   : 0 violations
+K2-CAND   : 0 violations
+HARNESS   : 0 violations
+------------------------------------------------------------------------------
+live rows traced: 332 (expected 332); REG rows: 303; non-REG: 29; glued groups: 38
+fibers with two n=3 windows: 0; placement-pair fibers: 0; fact cells: 1311
+total violations: 0
+elapsed: 23.6s
+results -> survk2_derive_checks_results.json
