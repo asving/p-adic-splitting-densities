@@ -10166,3 +10166,33 @@ the extension. Standing rule: future wide-class instruments import
 engine_ext + install() and re-run agreement_gate() in-unit.
 
 **Dispatched: U1 (LEDGER-Λ) + K2-CLOSE, parallel.**
+
+---
+
+## LEDGER-Λ LANDED (U1) — the five-face unification PROVED; K2-CLOSE cap-death, relaunched — 2026-08-08 campaign (wallclock 2026-08-04)
+
+**LEDGER-Λ** (seal e05cbc6, verdict 2ad7505;
+`LEDGERLAMBDA_2026-08-08.md`, 639 lines + `ledger_lambda_checks.py`):
+THEOREM LED-Λ — the extended exponent map J(C) ∈ ℤ^{1+m}, ONE fresh
+quantum table over the 8 [RMG] S2.2 edge types, (A1) exact level-block
+telescope for every λ⃗, (A2) the π-coordinate floor (equality iff
+junk-free), (C) the junk-free residue face. **All five committed faces
+byte-fidelity-audited: MATCH** — E-L1 (exact), SD-L2+(★) (exact, any
+g₀; SD-L1 re-derived), W-D4 (= the top-indicator face), SDY-L2's spine
+(the face strictly more general), W-D5-first/L-MONO (with W-D5's
+w_m-floor honestly CONSUMED-not-subsumed; SDY-L1 fenced). POOL-UNROLL
+folded from its three sites; micro-moves M-1/M-2/M-3 extracted. Machine:
+17 families, 0 violations, 876 rows / 2,338 two-exit cells × 5 faces,
+the committed WMULTDCX 412-row selection reproduced exactly; the
+agreement gate re-run in-unit (0 violations); all 7 mutation controls
+fired; one pre-seal shakedown repair disclosed (a double-counted u₀ in
+face D). Grade ATTEMPT (0 passes; W-arc cap). **The corpus's path
+bookkeeping is now one theorem + specializations — the retirement of
+the subsumed displays happens at the next fold, after the LED-Λ arc.**
+
+**K2-CLOSE: the composer DIED on the 64k output cap with ZERO tree
+artifacts** (no note, no runner, no commits — total loss; the staged-
+write instruction was insufficient against the glued case table's
+size). RELAUNCHED with hardened staging: the note written
+section-by-section from the first minute, the case table split into
+per-shape files if needed, return message ≤ 15 lines.
