@@ -10094,3 +10094,34 @@ the correction rides its X-child]" bracket
 + correction L-CHILD (defc = 1 via the dump, Y_c = 0); nX = 0 on all
 11 realized companions.  **Arc standing: 0/1 CLEAN (GAPS-ONLY does
 not count); round 2 = the Codex leg after the usage-window reset.**
+
+---
+
+## Y-r1 APPLIED + THE EVENING CHECKPOINT — all fleets idle — 2026-08-08 campaign (wallclock 2026-08-04, end of day)
+
+Y-r1 (f7a682c): the SDYJ-CASC family de-tautologized (β̂ recomputed
+independently from S-L1's pool formula; ALL ELEVEN FAMILIES 0
+violations, the new sub-clause passing on all 56 cascade cells); the
+six notes fixed; the construct-note X-child erratum APPLIED cross-file.
+SDYJ arc 0/1 CLEAN, Codex leg queued.
+
+**THE DAY'S CORPUS STATE (the resting checkpoint):**
+- **[RMG] ACCEPTED**; COR-A applied. LAW-DCX-(m+1) holds on the pinned
+  class — the class WIDENED TWICE today (r1 flat corners; the d₀ pin
+  dropped by SDY-THM).
+- Survival: the g₀ = 1 leg of (SURV-DISJ) CLOSED class-wide at every
+  d₀; the class-wide open set = exactly (SURV-K2) (g₀ = 2
+  glued/placement/A = {0} + g₀ ≥ 3, with the T1-RES construction
+  coordinates on record).
+- The weld: blueprint delivered; W-2 composed at attempt grade with the
+  (ξ, w) closed form + the ψ-transport (96 → 0); J-A/J-B/J-C/J-D queue
+  per the blueprint's dependency order.
+- Arcs: W 0/2 · E 1/2 · S 0/2 · SD 1/2 · K2 0/1 · W2 0/2 · SDYJ 0/1.
+- **THE THURSDAY CODEX QUEUE (window resets Aug 08 04:22):** VC40; the
+  W/E/S/SD acceptance legs; the K2/W2/SDYJ legs; the weld blueprint
+  plan-review; the SURVK2-instrument cost-wall erratum. Lean
+  formalization stays deferred per the math-first directive until the
+  weld junctions + acceptances stabilize the corpus.
+- Next constructions: the g₀ ≥ 3 double-kill (one window-unit short,
+  coordinates on record); the d₀ ≥ 2 Tower-constructor fix (the second
+  capability wall); then J-A per the blueprint.
