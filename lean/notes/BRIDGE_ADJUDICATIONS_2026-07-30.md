@@ -9507,3 +9507,52 @@ class = (SURV)(i) + the W-arc and E-arc acceptances.**
 **Queued: the EMPTY hostile arc round 1 (PE-E1, Fable, on 4eb1719) —
 charged with the CTRL-PAY1 teeth question, the salvage provenance, the
 (H3) pin coverage, and the E-L5/E-L6 hard steps. Codex legs post-reset.**
+
+---
+
+## (EMPTY) HOSTILE ARC ROUND 1 + E-r1 REPAIR — PE1 NOT-CLEAN (1C/2G+2n), all findings repaired in place — 2026-08-08 campaign (wallclock 2026-08-04)
+
+**Round 1 (EMPTY-PE1, fresh-context Fable, on 4eb1719; report
+`lean/notes/openmath/EMPTY_passPE1_report.md` + instrument
+`verification/openmath/empty_pe1_ext.py`): NOT-CLEAN — 1 CRITICAL, 2
+gaps, 2 notes.** The CRITICAL: the note's S7 assembly was FALSE AS
+PRINTED — the master slack display instance-refuted on 290–437 of the
+batteries' own 492 two-exit cells (three readings of its undefined
+ρ⁺_l), the π₁ chain's unconditional −𝟙[CE₀] step false arithmetic
+(655 grid failures) with a +y_c double-count in the numerator — while
+the THEOREM's CONCLUSION k ≤ c_{m−1} held on all 492 cells and PE1
+re-derived E-L1–E-L6 VALID and E-THM TRUE on (H1)–(H3) end to end,
+supplying the full repair (steps R1–R7 incl. the missing tight-stratum
+remainder-vanishing lemma, machine-verified EXT-TIGHT-RHO
+4,468/4,468).
+
+**E-r1 repair (this entry's commit, on the note at 4eb1719+ab16707):**
+S7 rewritten per PE1's supplied derivation — false displays withdrawn
+inside dated brackets (never deleted), NEW displayed Lemma E-L8
+(tight-stratum remainder vanishing: on the Y-tight stratum c⁺_l(1) =
+c_l + 1 at every level and the c⁺(1)-chain remainders all vanish, so
+the unroll headroom is EXACTLY 0 — the step "every slack vanishes"
+actually needs), E-L7 re-derived through the corrected master
+inequality (remainder term on the PLUS side as < 1 headroom; the CE₀
+deduction claimed only on the forced tight corner where the numerator
+sits at a multiple of P₀). E-THM's statement and E-L1..E-L6
+byte-unchanged. Finding 3 (control teeth): the CTRL-PAY1 disclosure
+had named a CLASS-EMPTY corner; the real slack-0 corner (top-level
+full-house dumps + Y-child at d₀ ≥ 2, inventory-present on
+XM3B/EQ3G2A) is now disclosed, the measured min slack 1/12 = W₀
+EXACTLY (sharp), and the teeth are BUILT:
+`verification/openmath/empty_derive_checks_v2.py` (v1 verbatim + the
+inventory phase; v1 never mutated) — 18 verdict families 0 violations,
+NEW EDC-PAYINV (146 inventory entries clean) and NEW CTRL-PAY2 (the
+broken-E-L2 variant): FIRED exactly on the predicted corner (XM3B +
+EQ3G2A, i = m−1, a⃗ = (3,2), Y, slack 0) and nowhere else. Findings
+4–5 (notes): EDC-CPLUS off-tight guard disclosed as phantom; header
+consumption range tightened to W-D0–W-D4 + W-D6/6c.
+
+**Honest status: grade UNCHANGED — PROVED at attempt grade, hostile
+record 0/1 CLEAN, still capped by the WMULTDCX consumption (0/2
+CLEAN).** The round-1 critical was in the ASSEMBLY step and the repair
+is PE1's OWN derivation (verifier = repairer for the new S7 text), so
+model-diverse verification of the repair is still owed. **Queued:
+round 2 = PE-E2 (fresh context) on the repaired revision + the v2
+runner; Codex legs post-reset.**

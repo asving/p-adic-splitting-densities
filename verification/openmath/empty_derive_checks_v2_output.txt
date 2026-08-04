@@ -1,0 +1,78 @@
+==============================================================================
+(EMPTY-(m+1)) derive checks — SEALED phase (the 412-row selection)
+==============================================================================
+-- SEALED W3DEEP m=3 Zp,p=3,d0=1 g=[1, 1, 1]: traced=36 cells=35 dead=20 (0.1s)
+-- SEALED W3DEEP4 m=3 Zp,p=3,d0=1 g=[1, 1, 1]: traced=40 cells=137 dead=0 (0.1s)
+-- SEALED W3NEST m=3 Zp,p=3,d0=1 g=[1, 1, 1]: traced=16 cells=28 dead=4 (0.0s)
+-- SEALED W3NESTF m=3 Fpt,p=2,d0=1 g=[1, 1, 1]: traced=16 cells=28 dead=4 (0.1s)
+-- SEALED W3FMID m=3 Zp,p=3,d0=1 g=[1, 1, 1]: traced=4 cells=3 dead=2 (0.0s)
+-- SEALED W3FTOP m=3 Zp,p=3,d0=1 g=[1, 1, 1]: traced=4 cells=4 dead=2 (0.0s)
+-- SEALED W3FDBL m=3 Zp,p=3,d0=1 g=[1, 1, 1]: traced=2 cells=1 dead=1 (0.0s)
+-- SEALED W3FMIDF m=3 Fpt,p=2,d0=1 g=[1, 1, 1]: traced=4 cells=3 dead=2 (0.0s)
+-- SEALED W3TRK1 m=3 Zp,p=3,d0=1 g=[1, 1, 1]: traced=36 cells=90 dead=6 (0.1s)
+-- SEALED W3DIR m=3 Zp,p=3,d0=1 g=[1, 1, 1]: traced=36 cells=89 dead=6 (0.0s)
+-- SEALED W3G2A m=3 Zp,p=3,d0=1 g=[2, 1, 1]: traced=30 cells=134 dead=2 (0.1s)
+-- SEALED W3G2B m=3 Zp,p=3,d0=2 g=[2, 1, 1]: traced=33 cells=77 dead=13 (0.2s)
+-- SEALED W3G2P5 m=3 Zp,p=5,d0=2 g=[2, 1, 1]: traced=14 cells=10 dead=10 (0.1s)
+-- SEALED W3DEEPF m=3 Fpt,p=2,d0=1 g=[1, 1, 1]: traced=36 cells=30 dead=20 (0.1s)
+-- SEALED W4NEST m=4 Zp,p=3,d0=1 g=[1, 1, 1, 1]: traced=14 cells=30 dead=0 (0.1s)
+-- SEALED W4DEEP m=4 Zp,p=3,d0=1 g=[1, 1, 1, 1]: traced=14 cells=52 dead=0 (0.1s)
+-- SEALED W4FLAT m=4 Zp,p=3,d0=1 g=[1, 1, 1, 1]: traced=14 cells=21 dead=5 (0.0s)
+-- SEALED W4NESTF m=4 Fpt,p=2,d0=1 g=[1, 1, 1, 1]: traced=14 cells=30 dead=0 (0.5s)
+-- SEALED XM3A m=3 Zp,p=5,d0=1 g=[1, 1, 1]: traced=16 cells=6 dead=12 (0.0s)
+-- SEALED XM3B m=3 Zp,p=3,d0=2 g=[2, 1, 1]: traced=33 cells=50 dead=17 (0.5s)
+SEALED phase: rows=412 cells=858 dead=126
+==============================================================================
+(EMPTY-(m+1)) derive checks — FRESH phase (the frozen EQ roster)
+==============================================================================
+-- FRESH EQ3T3A m=3 Zp,p=3,d0=1 g=[1, 1, 1]: census=36 dead=32 traced=35 cells=3 (0.0s)
+-- FRESH EQ3T3B m=3 Zp,p=3,d0=1 g=[1, 1, 1]: census=81 dead=17 traced=20 cells=17 (0.0s)
+-- FRESH EQ3T3C m=3 Zp,p=5,d0=1 g=[1, 1, 1]: census=81 dead=69 traced=72 cells=7 (0.1s)
+-- FRESH EQ3T4A m=3 Zp,p=3,d0=1 g=[1, 1, 1]: census=64 dead=60 traced=63 cells=3 (0.0s)
+-- FRESH EQ3T4B m=3 Zp,p=3,d0=1 g=[1, 1, 1]: census=256 dead=100 traced=51 cells=11 (0.1s)
+-- FRESH EQ3T4C m=3 Zp,p=3,d0=1 g=[1, 1, 1]: census=64 dead=22 traced=25 cells=6 (0.0s)
+-- FRESH EQ3T3F m=3 Fpt,p=2,d0=1 g=[1, 1, 1]: census=81 dead=9 traced=12 cells=18 (0.2s)
+-- FRESH EQ3T4F m=3 Fpt,p=2,d0=1 g=[1, 1, 1]: census=64 dead=60 traced=63 cells=3 (0.3s)
+-- FRESH EQ3G2A m=3 Zp,p=3,d0=2 g=[2, 1, 1]: census=76 dead=60 traced=62 cells=12 (0.5s)
+-- FRESH EQ3G2B m=3 Zp,p=3,d0=1 g=[2, 1, 1]: census=72 dead=3 traced=6 cells=47 (0.1s)
+-- FRESH EQ3FLT m=3 Zp,p=5,d0=1 g=[1, 1, 1]: census=9 dead=3 traced=6 cells=9 (0.0s)
+-- FRESH EQ4T3A m=4 Zp,p=3,d0=1 g=[1, 1, 1, 1]: census=144 dead=124 traced=43 cells=3 (0.1s)
+-- FRESH EQ4T3F m=4 Fpt,p=2,d0=1 g=[1, 1, 1, 1]: census=144 dead=124 traced=43 cells=3 (0.8s)
+-- FRESH EQ4DEEP m=4 Zp,p=3,d0=1 g=[1, 1, 1, 1]: census=144 dead=102 traced=23 cells=3 (0.1s)
+-- FRESH EQ4NEST m=4 Zp,p=3,d0=1 g=[1, 1, 1, 1]: census=64 dead=8 traced=11 cells=6 (0.0s)
+==============================================================================
+(EMPTY-(m+1)) derive checks v2 — INVENTORY phase (EDC-PAYINV + CTRL-PAY2 teeth)
+==============================================================================
+EDC-PAYINV: 146 inventory entries (all towers, all correction-table d-cells, class-admissible Y-flags)
+CTRL-PAY2 (broken E-L2, slack < W_0 detector): fired 2 times on towers ['EQ3G2A', 'XM3B']; witnesses: [{"tower": "XM3B", "d0": 2, "i": 2, "k": 0, "avec": [3, 2], "y": 1, "slack": "0", "W0": "1/12"}, {"tower": "EQ3G2A", "d0": 2, "i": 2, "k": 0, "avec": [3, 2], "y": 1, "slack": "0", "W0": "1/12"}]
+==============================================================================
+EDC-PIN     : 0 violations
+EDC-LED     : 0 violations
+EDC-TEL     : 0 violations
+EDC-PAY     : 0 violations
+EDC-PAYH    : 0 violations
+EDC-FLOOR   : 0 violations
+EDC-BND     : 0 violations
+EDC-HEAD    : 0 violations
+EDC-EMPTY   : 0 violations
+EDC-Q1LAW   : 0 violations
+EDC-UNROLL  : 0 violations
+EDC-CPLUS   : 0 violations
+EDC-YMON    : 0 violations
+EDC-INV     : 0 violations
+EDC-CONS    : 0 violations
+EDC-SEAL    : 0 violations
+EDC-PAYINV  : 0 violations
+HARNESS     : 0 violations
+------------------------------------------------------------------------------
+counters: {"TIGHT": 116, "TIGHT_d01": 104, "TIGHT_d0ge2": 12, "Y2TAKEN": 61, "Y2TAKEN_s1c1": 61, "YCNZ": 1373, "cells": 1009, "dead_traced": 616, "edges": 54615, "terminals": 22261}
+controls: {"CTRL-FLOOR1": 7675, "CTRL-HEAD1": 560, "CTRL-PAY1": 0, "CTRL-PAY2": 2, "CTRL-TEL0": 11731, "CTRL-TIGHT": 116, "CTRL-Y": 1373}
+CONTROL FAILURE (disclosed, does not color the verdict lines): ['CTRL-PAY1']
+dead rows traced (EMPTY census population): 616
+min payment slack over 54615 correction edges: 1/12 (CTRL-PAY1 fires iff < W_0)
+SLACK-W0 sharpness: global min-slack edge {"tower": "W3G2B", "i": 0, "k": 1, "avec": [], "y": 1, "slack": "1/12", "W0": "1/12"} — min slack 1/12 == the attaining tower's own W_0: True (SHARP: zero margin above the CTRL-PAY1 threshold, not headroom)
+  (first edge at exactly its tower's W_0: {"tower": "W3NEST", "i": 2, "k": 0, "avec": [1, 1], "y": 0, "W0": "1/4"})
+tight-stratum witnesses (first 8): [{"tag": "W3DEEP", "key": "(663, 671)", "kdef": 1, "cs": [1, 0], "d0": 1, "g0": 1}, {"tag": "W3DEEP", "key": "(665, 667)", "kdef": 2, "cs": [1, 1], "d0": 1, "g0": 1}, {"tag": "W3DEEP", "key": "(651, 657)", "kdef": 2, "cs": [1, 1], "d0": 1, "g0": 1}, {"tag": "W3DEEP", "key": "(655, 659)", "kdef": 1, "cs": [0, 0], "d0": 1, "g0": 1}, {"tag": "W3NEST", "key": "(293, 295)", "kdef": 2, "cs": [1, 1], "d0": 1, "g0": 1}, {"tag": "W3NEST", "key": "(291, 297)", "kdef": 2, "cs": [1, 1], "d0": 1, "g0": 1}, {"tag": "W3NEST", "key": "(299, 299)", "kdef": 1, "cs": [0, 0], "d0": 1, "g0": 1}, {"tag": "W3NEST", "key": "(289, 303)", "kdef": 2, "cs": [0, 1], "d0": 1, "g0": 1}]
+total violations: 0
+elapsed: 4.8s
+results -> empty_derive_checks_v2_results.json

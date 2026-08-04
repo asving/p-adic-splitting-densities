@@ -1,5 +1,23 @@
 # (EMPTY-(m+1)) PROVED at attempt grade on (H1)–(H3), g₀ FREE — the weighted path-ledger assembly: the two excess channels cannot fund π_{m−1} ≥ k on any legal path when c_{m−1} < k
 
+    [E-r1 REPAIR BRACKET, 2026-08-08 campaign (wallclock 2026-08-04).
+    Hostile pass 1 (EMPTY-PE1, fresh-context Fable, on 4eb1719; report
+    EMPTY_passPE1_report.md) — verdict NOT-CLEAN: 1 CRITICAL + 2 gaps +
+    2 notes.  The CRITICAL was in the S7 ASSEMBLY step only: the master
+    slack display was false as printed (instance-refuted on 290–437 of
+    the batteries' own 492 two-exit cells, depending on the reading of
+    its undefined ρ⁺_l symbol) and E-L7 was read off it in one line.
+    PE1 re-derived E-L1–E-L6 VALID as displayed and the THEOREM E-THM
+    TRUE on (H1)–(H3) end to end, supplying the full repair.  This
+    revision applies that repair: S7 rewritten (false displays
+    withdrawn in place, never deleted), the new displayed Lemma E-L8
+    (tight-stratum remainder vanishing — PE1 Finding 2) stated and
+    proved, the CTRL-PAY1 disclosure corrected and given teeth via the
+    v2 machine leg (Finding 3), the EDC-CPLUS phantom guard and the
+    header consumption range fixed (Findings 4–5).  E-THM's statement
+    and E-L1..E-L6 are byte-unchanged.  Full disposition: the REPAIR
+    RECORD at the tail.]
+
 Object: the conjecture-grade route displayed at WMULTDCX_2026-08-08.md S9
 (the W-r1 positive lead):
 
@@ -17,18 +35,34 @@ characteristic — the proof is class-level arithmetic of the tree, no
 instance input.  Date: 2026-08-08 campaign (wallclock 2026-08-04;
 composer unit of the W-MULT-DCX arc, the (EMPTY) leg).
 
-**Grade (header summary):** E-L1–E-L7 and the assembled theorem E-THM —
-**PROVED at attempt grade** (composed this unit, ZERO hostile passes so
-far; every displayed intermediate machine-checked at instance level:
-`verification/openmath/empty_derive_checks.py`, 17 verdict families ALL
-GREEN — 22,261 terminal states, 54,615 correction edges, 616 traced dead
-rows with zero two-exit paths, 1,380 fresh TRACK keys law-censused
-clean).  **Grade cap carried from consumption [dagger discipline]: this
-note consumes WMULTDCX_2026-08-08.md (W-D0–W-D7) at ATTEMPT grade — that
-arc stands at 0/2 CLEAN hostile passes, not accepted — so (EMPTY-(m+1))
-CANNOT grade higher than its weakest consumed block until the W arc
-closes.**  (SURV-(m+1))(i) [survival] — UNTOUCHED, open.  LAW-DCX-(m+1)
-— grade UNCHANGED (m = 1 proved, m ≥ 2 conjecture; see S9/S10).
+**Grade (header summary) [E-r1 2026-08-08 (wallclock 2026-08-04),
+amended after hostile pass 1].**  E-L1–E-L8 and the assembled theorem
+E-THM — **PROVED at attempt grade, hostile-pass record 0/1 CLEAN**: pass
+1 (EMPTY-PE1, fresh-context Fable, report
+`lean/notes/openmath/EMPTY_passPE1_report.md`) returned NOT-CLEAN — 1
+CRITICAL (the S7 assembly as originally printed was instance-false; S7
+is REWRITTEN below per the repair PE1 itself supplied and
+machine-verified), 2 gaps, 2 notes — while re-deriving E-L1–E-L6 VALID
+as displayed and the THEOREM's statement TRUE on (H1)–(H3) end to end.
+Machine legs: `verification/openmath/empty_derive_checks.py` (v1, 17
+verdict families ALL GREEN — 22,261 terminal states, 54,615 correction
+edges, 616 traced dead rows with zero two-exit paths, 1,380 fresh TRACK
+keys law-censused clean) + `empty_derive_checks_v2.py` (E-r1: v1 plus
+the inventory-level E-L2 family and the CTRL-PAY2 teeth, 18 families
+ALL GREEN) + PE1's own `empty_pe1_ext.py` (consumed as instance shadow
+for E-L8).  [The original header claim "every displayed intermediate
+machine-checked at instance level" is WITHDRAWN at E-r1: it was false
+for the original S7 master display, which was never machine-checked and
+was instance-refuted by PE1 — see the S7 withdrawal bracket.]  **Grade
+cap carried from consumption [dagger discipline]: this note consumes
+WMULTDCX_2026-08-08.md (W-D0–W-D4 and the W-D6/W-D6c framing ONLY — not
+W-D5, not the W-D7 (STK)/law-clause pins [E-r1: range tightened per PE1
+Finding 5; the S0 list below was always the authoritative one]) at
+ATTEMPT grade — that arc stands at 0/2 CLEAN hostile passes, not
+accepted — so (EMPTY-(m+1)) CANNOT grade higher than its weakest
+consumed block until the W arc closes.**  (SURV-(m+1))(i) [survival] —
+UNTOUCHED, open.  LAW-DCX-(m+1) — grade UNCHANGED (m = 1 proved, m ≥ 2
+conjecture; see S9/S10).
 
 ## S0. Authority, provenance, consumption, and the instrument disclosure
 
@@ -159,7 +193,11 @@ ride the stage-2 Φ₀Y-junk child (Y₂ = 1).  E-L6 kills that rider: a
 path with no correction edges has a π-monomial coefficient at its
 stage-1 exit, and the Φ₀Y-child of a monomial-coefficient split is
 CANONICALLY ABSENT.  E-L7 assembles: k ≥ c_{m−1} + 1 forces
-simultaneously "no corrections" and "Y₂ = 1" — contradiction.
+simultaneously "no corrections" and "Y₂ = 1" — contradiction.  [E-r1:
+the assembly route runs through the NEW Lemma E-L8 (tight-stratum
+remainder vanishing, S7): on the forced Y-tight corner the unroll
+headroom is EXACTLY 0, which is what makes "every slack vanishes"
+follow — integrality alone kills only the fractional part.]
 
 ## S2. E-L1: the weighted telescope (LED_l made a single exact identity)
 
@@ -202,10 +240,39 @@ cells) and (P_l − 1)W_l = W_{l+1} − W_l telescopes:
 (worth W₀) gives ≤ W_i.  And P_i − e_ik = e_i(g_i − k) ≥ e_i ≥ 1 since
 k ≤ g_i − 1.  At i = m−1, W_{m−1} = 1.  ∎  [Machine: EDC-PAY, 0/54,615
 correction edges, per-edge dump vectors from my instrumented walk.
-Measured min slack: 1/12 — comfortably positive everywhere probed;
-control CTRL-PAY1 (tightening by W₀ must fire) did NOT fire: the
-exact-tightness corner (e_i = 1 with maximal dump vector AND the
-Y-child) is not realized in these batteries — DISCLOSED, S8.]
+[E-r1, per PE1 Finding 3 — the original bracket here is WITHDRAWN and
+replaced; it read "Measured min slack: 1/12 — comfortably positive
+everywhere probed; control CTRL-PAY1 (tightening by W₀ must fire) did
+NOT fire: the exact-tightness corner (e_i = 1 with maximal dump vector
+AND the Y-child) is not realized in these batteries".  Both halves were
+wrong.  (1) The named corner is CLASS-EMPTY under (H1): e_i = 1 at an
+interior level is in T-scope only on the d₀ = 1 branch, where the
+Y-child is identically absent (L-NORM(c)); at that corner the slack is
+exactly W₀, which does not fire CTRL-PAY1 (fires iff slack < W₀
+STRICTLY) — so the disclosed corner could never have fired the control
+on any in-scope instance.  The REAL and ONLY in-scope sub-W₀ corner
+(PE1 EXT-PAY: all 150 of 8,308 enumerated in-scope corner cases with
+slack < W₀ are this corner and no other) is: i = m−1 with the
+FULL-HOUSE dump vector a_l = P_l − 1 at every l ≤ m−2 AND the Y-child,
+at d₀ ≥ 2 — slack exactly 0.  That corner is inventory-PRESENT on two
+committed towers (XM3B and EQ3G2A, both d₀ = 2, top d-cell a⃗ = (3,2));
+what the batteries never realized is a PATH reaching it with nonzero
+Φ₀-overflow.  (2) "Comfortably positive" was wrong: the measured min
+slack 1/12 IS W₀ of the attaining tower (W3G2B, edge i = 0, k = 1,
+y = 1) EXACTLY — the payment inequality runs at ZERO margin above the
+CTRL-PAY1 threshold, sharp, not headroom.  TEETH BUILT at E-r1:
+`empty_derive_checks_v2.py` (v1 verbatim + the inventory phase; v1
+never mutated) adds EDC-PAYINV — inventory-level E-L2 over every
+correction-table entry of every roster tower × class-admissible Y-flags
+(146 entries, 0 violations) — and CTRL-PAY2, the BROKEN-E-L2 variant
+(slack ≥ W₀ claimed always): it FIRED, twice, exactly on the predicted
+corner and nowhere else (XM3B and EQ3G2A, i = m−1, k = 0, a⃗ = (3,2),
+y = 1, slack = 0) — the detector demonstrably fires on real committed
+tower data.  E-L2 itself is unaffected: equality at the top corner does
+not hurt the assembly (top corrections are killed by the e_{m−1}-cost
+of E-L3, not by payment slack), and PE1 re-derived E-L2/E-L2h with no
+countermodel possible under the RMENGINE inventory pins.]  DISCLOSED,
+S8.]
 
 **Lemma E-L2h (hybrid form — the level-0 dump re-priced by the floor).**
 For every correction edge at level i ≥ 1:
@@ -286,7 +353,20 @@ at level l iff (t_l + c_{l−1}) ≡ e_{l−1} − 1, level by level; else it
 dies and c⁺_{m−1}(1) ≤ c_{m−1} by monotonicity.  ∎  [Machine:
 EDC-CPLUS — both chains and the exact +1-classification on every traced
 row (including every g₀ = 2 row), 0 violations; the guard "the Y-unit
-crossed the level-0 floor off tight₀" never fired.]
+crossed the level-0 floor off tight₀" never fired.  [E-r1, per PE1
+Finding 4(i): that guard is a PHANTOM and its non-firing is roster
+coverage, NOT law — its firing condition (c⁺₁(1) > c⁺₁(0) off tight₀)
+is satisfiable by clean in-scope arithmetic with every E-L5 clause
+holding, e.g. e₀ = 2, g₀ = 2, t₁ = 5: c⁺₁(1) = 2 > c⁺₁(0) = 1, tight₀
+false, yet (i)/(ii)/classification all hold (c₁ = 2).  Crossing c⁺₁(0)
+is not the event E-L5(ii) bounds (that event is crossing c₁).  A future
+battery hitting t₁ ≡ e₀ − 1 (mod P₀) with q ≥ 1 at g₀ ≥ 2 would report
+a phantom EDC-CPLUS violation; the guard line must not be cited as
+evidence for E-L5.  E-L5 itself is unaffected — PE1's exhaustive grid
+EXT-GRID-EL5 (61,317 cases over m ∈ {2,3,4}, e ∈ {1,2,3}^{m−1}, g₀ ∈
+{1,2,3}, t through 3 periods): 0 failures on (i), (ii)-cap, and the
+exact +1 ⟺ Y-tight classification.  Machine demonstration of the
+phantom: EXT-CPGUARD in empty_pe1_ext.py.]]
 
 The d-cell inventory feeding E-L5 is W-D2 at (H2)+(H3): jD_{m−1} =
 s_m(u_m); jD_l = s_{l+1}(u_{l+1}) at 1 ≤ l ≤ m−2; jD₀ = s₁(u₁) + t·e₀
@@ -327,53 +407,199 @@ correction edges and at stage-2 seeding.  So on a path whose stage-1
 prefix has CE = ∅, the stage-1 exit cofactor coefficient is b_Y =
 π^{u₁+u₁′} verbatim, and E-L6 applies to its stage-2 seeding.
 
-## S7. E-L7 + E-THM: the assembly and the tight-corner contradiction
+## S7. E-L7 + E-L8 + E-THM: the assembly and the tight-corner contradiction
 
-**Assembly.**  Fix a two-exit path with terminal cell C on a TRACK row,
-(H1)–(H3).  Truncating E-L1 at level 1 (same telescope, stopping at
-W₁π₁) and bounding π₁ by the level-0 integer floor (LED₀ with j₀(C) ≥ 0
-and cons₀ ≥ P₀π₁ + [level-0 correction consumption]):
+    [E-r1, 2026-08-08 campaign (wallclock 2026-08-04): THIS SECTION IS
+    REWRITTEN per EMPTY-PE1 Finding 1 (CRITICAL) + Finding 2 (gap).
+    The repair applied below is the one PE1 itself supplied (its report
+    steps R1–R7) and machine-verified; the withdrawn displays are kept
+    in the bracket immediately following, never silently deleted.
+    E-THM's statement and proof paragraph are byte-unchanged; E-L7's
+    statement is unchanged, its derivation is new; E-L8 is NEW.]
+
+**Withdrawn displays [E-r1; PE1 Finding 1, quoted from the original].**
+The original assembly asserted, for every two-exit path, the π₁ chain
+
+    π₁ ≤ ⌊( t₁ + t·e₀ + Y₂ + Σ_{CE}(a_{c,0} + y_c) − Σ_{CE, i=0}(P₀ − e₀k_c − y_c) )/P₀⌋     [WITHDRAWN]
+       ≤ c⁺₁(Y₂) + Σ_{CE, i≥1} ⌈(a_{c,0}+y_c)/P₀⌉ − 𝟙[some level-0 correction]               [WITHDRAWN]
+       ≤ c⁺₁(Y₂) + #CE_{≥1} − 𝟙[CE₀ ≠ ∅]                                                    [WITHDRAWN]
+
+and the master slack display ("every slack term collected on one side")
+
+    k  ≤  c_{m−1} + 𝟙[Y-tight stratum ∧ Y₂ = 1]                                              [WITHDRAWN]
+          − Σ_{l=2}^{m−1} ρ⁺_l·W_{l−1} − Σ_{CE, 1≤i≤m−2} (e_i − 1)·W_i − (e_{m−1} − 1)·r
+          − 𝟙[CE₀ ≠ ∅]·W₁ − j_{m−1}(C) − Σ_{l=1}^{m−2} W_l·j_l(C)
+
+with E-L7 read off it in one line ("Since k and c_{m−1} are
+integers").  BOTH ARE FALSE AS PRINTED (PE1 Finding 1, machine legs in
+`empty_pe1_ext.py`): (1a) the unconditional −𝟙[CE₀] step is false
+arithmetic — removing ≥ 1 from a floor's numerator lowers the floor
+only when the numerator sits at a multiple of P₀ (EXT-MIDSTEP, 655
+grid failures; witness e₀ = 2, g₀ = 2, P₀ = 4, t₁ = 4, t = 1, one
+level-0 correction with removal 1: line 1 = ⌊6/4⌋ = 1 > 0 = line 2);
+(1b) the printed numerator double-counts the Y-dump of level-0
+correction edges (Σ_{CE} includes their y_c AND the removal term
+re-adds it — with that overcount the deduction fails even on the tight
+boundary, 6/68 grid cases); (1c) the master display is false under
+EVERY reading of its never-defined ρ⁺_l — summing the valid ingredient
+inequalities puts the remainder term on the PLUS side (headroom < 1 to
+be killed by integrality + E-L8), not as a subtracted slack — and is
+refuted by the batteries' own cells: 290 / 283 / 437 violations (plain
+c-chain / c⁺-chain / distance-from-maximal readings) on the 492
+two-exit cells of 195 re-walked live rows (EXT-DISPLAY), while the
+CONCLUSION k ≤ c_{m−1} held on ALL 492 (0 breaches).  The display was
+never machine-checked either — EDC-BND checks only the weaker (true)
+midpoint bound; the original header claim is withdrawn with it.  The
+theorem SURVIVES: the derivation below reaches it from the same lemma
+stock plus E-L8.]
+
+**Assembly (repaired at E-r1; steps R1–R3).**  Fix a two-exit path
+with terminal cell C on a TRACK row, (H1)–(H3).
+
+(R1) [true-ledger level-0 floor]  By E-L3 = W-D4,
+k = π_{m−1} − e_{m−1}·r − j_{m−1}(C).  Truncating E-L1 at level 1
+(same telescope, stopping at W₁π₁):
 
     π_{m−1} = W₁·π₁ + Σ_{l=1}^{m−2} W_l·( σ_{l+1} + jD_l + dmp_l − ccons_l − j_l(C) ),
 
-    π₁ ≤ ⌊( t₁ + t·e₀ + Y₂ + Σ_{CE}(a_{c,0} + y_c) − Σ_{CE, i=0}(P₀ − e₀k_c − y_c) )/P₀⌋
-       ≤ c⁺₁(Y₂) + Σ_{CE, i≥1} ⌈(a_{c,0}+y_c)/P₀⌉ − 𝟙[some level-0 correction]
-       ≤ c⁺₁(Y₂) + #CE_{≥1} − 𝟙[CE₀ ≠ ∅]
+and LED₀ with j₀(C) ≥ 0 and cons₀ = P₀π₁ + ccons₀ gives the level-0
+integer floor in TRUE LEDGER FORM — a level-0 correction edge
+contributes ONLY its Y-flag y_c to dmp₀ and P₀ − e₀k_c to ccons₀, so
+it nets exactly −(P₀ − e₀k_c − y_c), never +y_c on top:
 
-using jD₀ = s₁(u₁) + te₀ ≤ s₁(u₁) + (g₀−1)e₀ (W-D2(iv)), floor
-subadditivity ⌊(x + Σy_c)/P₀⌋ ≤ ⌊x/P₀⌋ + Σ⌈y_c/P₀⌉ with y_c ≤ P₀, and,
-for the last step, that each level-0 correction removes P₀ − e₀k − y ≥
-e₀ − 1 ≥ 1 from the numerator on the (H1) branches where level-0
-corrections can matter (d₀ ≥ 2 forces e₀ ≥ 2; at d₀ = 1 the Y-children
-are absent so P₀ − e₀k ≥ 1 outright).  Now insert E-L2h per correction
-edge at levels 1..m−2 (dump value + floor unit ≤ payment, with STRICT
-loss (e_i − 1)W_i > 0 whenever e_i ≥ 2), the ≤ 1 refund per level-(m−1)
-correction against its e_{m−1}-cost from E-L3, the c⁺-unroll (E-L4
-pattern at levels ≥ 1: W₁c⁺₁ + Σ_{l≥2} t_lW_{l−1} ≤ c⁺_{m−1} + 1 − W₁),
-and E-L5.  Every slack term collected on one side:
+    π₁ ≤ ⌊( t₁ + t·e₀ + Y₂ + Σ_{CE, i≥1}(a_{c,0} + y_c) − Σ_{CE, i=0}(P₀ − e₀k_c − y_c) )/P₀⌋
 
-    k  ≤  c_{m−1} + 𝟙[Y-tight stratum ∧ Y₂ = 1]
-          − Σ_{l=2}^{m−1} ρ⁺_l·W_{l−1}                    [E-L4/E-L5 unroll slack;
-                                                           = 0 iff remainders maximal]
+using jD₀ = s₁(u₁) + te₀, 0 ≤ t ≤ g₀ − 1 (W-D2(iv)).  Every removal
+term is ≥ 0 in scope (P₀ − e₀k_c − y_c ≥ e₀ − 1 at d₀ ≥ 2 since
+k_c ≤ g₀ − 1, y_c ≤ 1; at d₀ = 1, y_c = 0 and it is ≥ e₀).  Write Δ₀
+for the floor deduction extracted from the CE₀ removals: Δ₀ := 0 is
+taken UNCONDITIONALLY (removals ≥ 0, floor monotone); Δ₀ ≥ 1 is
+claimed only at step R6 on the forced tight corner — never in general
+[the withdrawn (1a) step claimed it unconditionally; that was the
+false arithmetic].  Peeling the i ≥ 1 edges by floor subadditivity
+⌊(x + Σy)/P₀⌋ ≤ ⌊x/P₀⌋ + Σ⌈y/P₀⌉ (y = a_{c,0} + y_c ≤ P₀) and
+majorizing t ≤ g₀ − 1 in the monotone floor:
+
+    π₁ ≤ c⁺₁(Y₂) + Σ_{CE, i≥1} ⌈(a_{c,0}+y_c)/P₀⌉ − Δ₀.
+
+(R2) [per-edge payment with strict loss]  Insert E-L2h per correction
+edge at levels 1 ≤ i ≤ m−2: its dump value at levels ≥ 1 plus its
+⌈·⌉W₁ floor unit from R1 is ≤ W_i, while its consumption is
+(P_i − e_ik)W_i ≥ W_i + (e_i − 1)W_i — a loss of (e_i − 1)W_i per
+edge, strict whenever e_i ≥ 2.  At i = m−1 the whole package (interior
+dumps + floor unit) is ≤ 1 per edge (E-L2h, top form) against the
+e_{m−1}-consumption priced by E-L3 — net loss (e_{m−1} − 1) per top
+correction.  Terminal exponents j_l(C) ≥ 0 subtract.
+
+(R3) [the c⁺-unroll at levels ≥ 1]  With W_l = w_l for l ≥ 1 under
+(H3), define the c⁺-chain remainders [the withdrawn display's ρ⁺_l,
+now DEFINED — PE1 (1c)]:
+
+    ρ⁺_l := (t_l + c⁺_{l−1}(Y₂)) mod e_{l−1}      (2 ≤ l ≤ m−1).
+
+Unrolling t_l = e_{l−1}c⁺_l − c⁺_{l−1} + ρ⁺_l and telescoping (exactly
+the E-L4 pattern) gives the EXACT identity
+
+    W₁·c⁺₁(Y₂) + Σ_{l=2}^{m−1} t_l·w_{l−1}
+        = c⁺_{m−1}(Y₂) + Σ_{l=2}^{m−1} ρ⁺_l·w_{l−1}.
+
+Assembling R1 + R2 + R3 into the truncated telescope (σ_{l+1} + jD_l =
+t_{l+1} at 1 ≤ l ≤ m−2, W-D2 at (H3)) and subtracting e_{m−1}r +
+j_{m−1}(C):
+
+    k  ≤  c⁺_{m−1}(Y₂) + Σ_{l=2}^{m−1} ρ⁺_l·w_{l−1}      [HEADROOM, plus sign;
+                                                           ≤ 1 − w₁ < 1, E-L4 bound]
           − Σ_{CE, 1≤i≤m−2} (e_i − 1)·W_i                 [E-L2h strict loss]
           − (e_{m−1} − 1)·r                               [E-L3 vs the ≤ 1 refund]
-          − 𝟙[CE₀ ≠ ∅]·W₁                                 [level-0 corrections kill
-                                                           the floor's +1]
+          − W₁·Δ₀                                         [CE₀ deduction; = 0 unless R6]
           − j_{m−1}(C) − Σ_{l=1}^{m−2} W_l·j_l(C)          [terminal exponent slack]
 
-(every collected term is ≥ 0; the machine checks the assembled midpoint
-bound π_{m−1} ≤ Σ W_l(σ_{l+1}+jD_l) + Y₂W₀ + r directly: EDC-BND
-0/1,009).  Since k and c_{m−1} are integers:
+— the CORRECTED master inequality.  Every correction/terminal term is
+≥ 0 and subtracted; the remainder sum is bounded headroom to be killed
+by integrality plus E-L8, not a slack.  [Machine: the midpoint bound
+π_{m−1} ≤ Σ W_l(σ_{l+1}+jD_l) + Y₂W₀ + r stays directly checked,
+EDC-BND 0/1,009 (v1 and v2); the R1 conditional deduction and its
+scope: EXT-MIDSTEP true form, 0/68 failures ON the tight boundary vs
+511 unconditional grid failures (why Δ₀ = 0 off the corner); the R3
+tight-stratum collapse: EXT-TIGHT-RHO 4,468/4,468; the conclusion
+k ≤ c_{m−1} on all 492 re-walked two-exit cells: EXT-DISPLAY, 0
+breaches.]
 
-**Lemma E-L7 (forcing).**  If k ≥ c_{m−1} + 1 then EVERY slack vanishes;
-in particular (a) Y₂ = 1 (the path took the stage-2 Φ₀Y-junk child, on
-the Y-tight stratum), and (b) CE = ∅ and r = 0 — no correction edge
-anywhere on the path.  For (b): at d₀ = 1 nothing is needed (Y₂ = 1 is
-already impossible — L-NORM(c) absence — so k ≥ c+1 is refuted
-outright); at d₀ ≥ 2, (H1) gives e₀ ≥ 2 and e_i ≥ 2 for all
-1 ≤ i ≤ m−1, so every correction edge at levels 0..m−2 carries a
-strictly positive displayed loss and every level-(m−1) correction
-carries (e_{m−1}−1)r ≥ r > 0.  ∎
+**Lemma E-L8 (tight-stratum remainder vanishing) [NEW at E-r1 = PE1
+Finding 2, repair step R5].**  On the Y-tight stratum of E-L5(ii)
+(tight₀ together with maximal remainders (t_l + c_{l−1}) ≡ e_{l−1} − 1
+(mod e_{l−1}) for all 2 ≤ l ≤ m−1), the +1 rides the boundary at EVERY
+level:
+
+    c⁺_l(1) = c_l + 1   for all 1 ≤ l ≤ m−1,    and
+    ρ⁺_l = (t_l + c⁺_{l−1}(1)) mod e_{l−1} = 0   for all 2 ≤ l ≤ m−1;
+
+in particular the unroll headroom Σ_{l=2}^{m−1} ρ⁺_l·w_{l−1} is not
+merely < 1 on this stratum — it is EXACTLY 0.
+
+*Proof.*  Level 1: tight₀ forces c⁺₁(1) = c₁ + 1 (E-L5(ii), displayed
+there).  Induction on l ≥ 2: assume c⁺_{l−1}(1) = c_{l−1} + 1.  The
+maximal remainder at level l says t_l + c_{l−1} = e_{l−1}·c_l +
+(e_{l−1} − 1), hence
+
+    t_l + c⁺_{l−1}(1) = t_l + c_{l−1} + 1 = e_{l−1}·(c_l + 1)   EXACTLY,
+
+so c⁺_l(1) = c_l + 1 and ρ⁺_l = 0.  ∎  [Machine: EXT-TIGHT-RHO
+(`empty_pe1_ext.py`, PE1's instrument, consumed as instance shadow):
+all 4,468 Y-tight grid cases over m ∈ {2,3,4}, e ∈ {1,2,3}^{m−1},
+g₀ ∈ {1,2,3}, t-vectors through 3 periods — 0 failures.]
+
+Why E-L8 is a distinct displayed lemma and not a rephrasing of
+E-L5(ii) [PE1 Finding 2]: E-L5(ii) gives only the TOP value
+c⁺_{m−1}(1) = c_{m−1} + 1.  Integrality of k and c_{m−1} alone kills
+only the FRACTIONAL headroom (Σρ⁺w < 1); at k = c_{m−1} + 1 =
+c⁺_{m−1}(1) a real-valued budget Σρ⁺w ≥ 0 would remain available to
+absorb correction losses — an edge with (e_i − 1)W_i ≤ Σρ⁺w would not
+be forced out, and "every slack vanishes" would NOT follow.  The
+forcing needs the budget EXACTLY 0 on the forced corner — the
+level-by-level collapse above.  Global integrality alone cannot force
+all slacks to vanish.
+
+**(R6) [the CE₀ deduction on the forced corner].**  On the Y-tight
+stratum with Y₂ = 1 at d₀ ≥ 2: if CE₀ ≠ ∅ then Δ₀ ≥ 1.  Indeed tight₀
+puts the worst-case level-0 numerator at a multiple of P₀ — at
+g₀ ≥ 2: t₁ + (g₀−1)e₀ + 1 = (e₀−1) + (g₀−1)e₀ + 1 = P₀; at g₀ = 1:
+t₁ + 1 ≡ 0 (mod P₀ = e₀) — and a non-worst d-cell t < g₀ − 1 only
+lowers it further (by ≥ e₀).  Each level-0 correction then removes
+P₀ − e₀k_c − y_c ≥ e₀ − 1 ≥ 1 (e₀ ≥ 2 at d₀ ≥ 2 under (H1)), pushing
+the numerator strictly below the multiple: the floor drops by ≥ 1,
+i.e. π₁ ≤ c⁺₁(1) − 1.  [Machine: EXT-MIDSTEP true form, 0/68 on the
+tight boundary.]
+
+**Lemma E-L7 (forcing) [statement unchanged from composition;
+derivation repaired at E-r1 — steps R4–R7].**  If k ≥ c_{m−1} + 1
+then EVERY slack vanishes; in particular (a) Y₂ = 1 (the path took the
+stage-2 Φ₀Y-junk child, on the Y-tight stratum), and (b) CE = ∅ and
+r = 0 — no correction edge anywhere on the path.
+
+*Proof.*  Suppose k ≥ c_{m−1} + 1.  (R4, case analysis.)  If Y₂ = 0
+then c⁺_{m−1}(0) ≤ c_{m−1} (E-L5(i)); if Y₂ = 1 but the row is off the
+Y-tight stratum then c⁺_{m−1}(1) ≤ c_{m−1} (E-L5(ii), the exact
+classification).  Either way the corrected master inequality gives
+
+    c_{m−1} + 1 ≤ k ≤ c_{m−1} + (1 − w₁) − [nonneg slacks] < c_{m−1} + 1,
+
+a contradiction.  So Y₂ = 1 AND the row is Y-tight.  At d₀ = 1 this is
+already impossible (the Φ₀Y-junk child is identically absent —
+L-NORM(c)), refuting k ≥ c_{m−1} + 1 outright; so d₀ ≥ 2, where (H1)
+gives e₀ ≥ 2 and e_i ≥ 2 for ALL 1 ≤ i ≤ m−1 including the top.
+(R5 = E-L8.)  On this forced corner c⁺_{m−1}(1) = c_{m−1} + 1 and the
+entire unroll headroom is EXACTLY 0, so the master inequality
+collapses to
+
+    c_{m−1} + 1 ≤ k ≤ (c_{m−1} + 1) − Σ_{CE,1≤i≤m−2}(e_i − 1)·W_i
+                      − (e_{m−1} − 1)·r − W₁·Δ₀ − j_{m−1}(C) − Σ_{l=1}^{m−2} W_l·j_l(C),
+
+forcing every subtracted term to equal 0.  (R7.)  Since every e ≥ 2
+here: (e_i − 1)W_i > 0 kills every interior correction edge;
+(e_{m−1} − 1)r ≥ r forces r = 0; and W₁·Δ₀ = 0 with R6 forces CE₀ = ∅
+(a level-0 edge would give Δ₀ ≥ 1, a loss of W₁ > 0).  Hence CE = ∅,
+r = 0, and the terminal exponents vanish — (a) and (b).  ∎
 
 **Theorem E-THM = (EMPTY-(m+1)), proof.**  Suppose a two-exit path
 exists with k ≥ c_{m−1} + 1.  By E-L7(b) its stage-1 prefix has no
@@ -393,7 +619,12 @@ CTRL-HEAD1 — 560 live cells sit AT k = c_{m−1}, so the bound is sharp.
 The Y-tight stratum is populated: 116 traced rows (104 at d₀ = 1, 12 at
 d₀ ≥ 2, witnesses in the results json) — all dead, all zero-cell, i.e.
 the corner the Y-rider would need is instance-realized and the E-L6
-kill is what closes it there.]
+kill is what closes it there.  [E-r1, per PE1 Finding 4(ii): "all
+dead" is definitionally FORCED, not a census outcome — the runner's
+tight flag conjoins kdef = c_{m−1} + 1 (which already implies
+law-dead) with the E-L5 arithmetic, and rows on the E-L5 stratum with
+other deficits are not counted.  The census content of the sentence is
+the POPULATED-corner claim (116 rows, 12 at d₀ ≥ 2), which stands.]]
 
 **Reading (the mechanism, in one paragraph).**  The pools/carries are
 exactly the tree's seed supply measured in promotion capacity; the two
@@ -425,12 +656,47 @@ EDC-CPLUS · EDC-YMON · EDC-INV · EDC-CONS · HARNESS.  Controls:
 CTRL-TEL0 11,731 · CTRL-FLOOR1 7,675 · CTRL-HEAD1 560 · CTRL-Y 1,373 ·
 CTRL-TIGHT 116 — all fired.
 
-**Disclosures.**  (i) CONTROL FAILURE, CTRL-PAY1: the E-L2 payment
-inequality was never within W₀ of equality on any probed edge (min
-slack 1/12) — the tightness corner (e_i = 1, maximal dump vector, plus
-Y-child) is not realized in these batteries; E-L2's proof is displayed
-arithmetic and does not lean on the control, but the corner is
-instance-unprobed.  (ii) Machine coverage is m ∈ {3, 4} (the sealed
+[E-r1 machine-leg addendum.]  `empty_derive_checks_v2.py` (md5
+61a6a0aa7a0e8d6e28151474e7005224; output
+`empty_derive_checks_v2_output.txt` 12576b80a27faaf212db67264056a287;
+results `empty_derive_checks_v2_results.json`
+8c07787f26ee3deb33f07b9df57c0479) = v1 VERBATIM (v1 committed bytes
+untouched, pinned inside v2's provenance) + the inventory phase:
+**18 verdict families, 0 violations** — all 17 v1 families reproduce
+(same counters, controls, min-slack, sealed 412/858/126) + NEW
+EDC-PAYINV (inventory-level E-L2 over every correction-table entry of
+every roster tower × class-admissible Y-flags, 146 entries, 0
+violations).  NEW control CTRL-PAY2 (the broken-E-L2 variant, teeth
+for the CTRL-PAY1 detector): FIRED 2× — exactly the predicted corner
+and nowhere else (XM3B and EQ3G2A, i = m−1, k = 0, full-house
+a⃗ = (3,2), Y-flag 1, slack = 0; the off-corner classification check
+recorded no other firing).  NEW SLACK-W0 record: the global min
+battery slack 1/12 is attained at W3G2B (i = 0, k = 1, y = 1) whose
+own W₀ = 1/12 — equality EXACT, min_slack_sharp = true.  PE1's
+independent instrument `empty_pe1_ext.py` (md5
+44d032e1f4edddb026dc210a778fc287, output 42e2f3dc…, results
+74076344…) is committed alongside and consumed above as instance
+shadow for E-L8 (EXT-TIGHT-RHO), the R1/R6 conditional step
+(EXT-MIDSTEP), the withdrawal statistics (EXT-DISPLAY), the corner
+classification (EXT-PAY), and the phantom guard (EXT-CPGUARD).
+
+**Disclosures.**  (i) [REWRITTEN at E-r1 per PE1 Finding 3; the
+original disclosure named a corner (e_i = 1, maximal dump vector, plus
+Y-child) that is CLASS-EMPTY under (H1) and could never have fired the
+control — it explained nothing.]  CONTROL CTRL-PAY1 (battery leg)
+still did not fire: no WALKED edge ever had slack < W₀.  The truth
+behind it: (a) the measured min slack 1/12 is EXACTLY W₀ of the
+attaining tower — the E-L2 bound runs at zero margin above the
+threshold (sharp), not "comfortably positive" as originally written;
+(b) the only in-scope sub-W₀ corner is the TOP-LEVEL FULL-HOUSE + Y
+corner at d₀ ≥ 2 (all 150 sub-W₀ cases of PE1's 8,308-case corner
+enumeration are it), which is inventory-present on XM3B/EQ3G2A but was
+never reached by any battery PATH with nonzero Φ₀-overflow — a genuine
+coverage hole, now disclosed as such; (c) the detector itself has
+demonstrated teeth at E-r1: CTRL-PAY2 (v2 leg) fires on exactly that
+corner from the committed correction tables.  Equality at the corner
+does not endanger the assembly (top corrections are killed by the
+e_{m−1}-cost of E-L3, not by payment slack).  (ii) Machine coverage is m ∈ {3, 4} (the sealed
 roster + the EQ roster); the displayed proofs are uniform in m ≥ 2 and
 the m = 2 top-identity anchor is the sealed DCX3-C2 leg cited at W-D4.
 (iii) Fresh dead rows were traced under per-stratum caps (24 at m = 3,
@@ -494,7 +760,8 @@ corrected stage-1 prefixes — consistent with, and required by, E-L6.
 | E-L4 | literal-e unroll c_{m−1} = R − Σρw; R ≤ c+1−w₀ | PROVED (attempt) | arithmetic |
 | E-L5 | c⁺ floor chain: c⁺(0) ≤ c always; c⁺(1) ≤ c+1 with +1 exactly on the Y-tight stratum | PROVED (attempt; (H3), g₀ free) | W-D2(ii)–(iv) inventory |
 | E-L6 | Φ₀Y-child of a deg-0 coefficient split is canonically absent | PROVED (attempt) | L-NORM(c) mechanism + [IL3]† DIGIT-SPLIT canonicity + W-D1 |
-| E-L7 | forcing: k ≥ c+1 ⟹ Y₂ = 1 ∧ CE = ∅ ∧ r = 0 | PROVED (attempt; (H1) e-bounds at d₀ ≥ 2) | E-L1–E-L5 |
+| E-L8 | tight-stratum remainder vanishing: on Y-tight, c⁺_l(1) = c_l+1 all l and ρ⁺_l = 0 all l ≥ 2 (unroll headroom EXACTLY 0) | PROVED (attempt) [NEW at E-r1 = PE1 Finding 2] | E-L5(ii) tight₀ + arithmetic |
+| E-L7 | forcing: k ≥ c+1 ⟹ Y₂ = 1 ∧ CE = ∅ ∧ r = 0 | PROVED (attempt; (H1) e-bounds at d₀ ≥ 2) [derivation REPAIRED at E-r1 — statement unchanged] | E-L1–E-L5 + E-L8 (the repaired S7 assembly) |
 | **E-THM** | **(EMPTY-(m+1)) on (H1)–(H3), g₀ free: c_{m−1} < k ⟹ no two-exit path** | **PROVED at attempt grade** | E-L6 + E-L7 |
 | (SURV)(ii) | c < k ⟹ Q¹ = 0 on (H1)–(H3) | follows from E-THM (attempt, same cap) | E-THM |
 | (EMPTY-gen) | interior g ≥ 2 extension | **OPEN** (boxed, S9) | — |
@@ -517,7 +784,12 @@ battery (WMULTDCX S0 pins), stress d3950f2/d774ecb, the salvaged
 instrument design/smoke (this unit's salvage commit).  Machine legs of
 THIS unit: `empty_derive_checks.py` 8fed92402bcffe6e0c536f1f9d847612 ·
 output ddae400794ce1b25bd332beddd40528d · results
-229a1b1e0c1a93f154bc34e5ce1f5059.
+229a1b1e0c1a93f154bc34e5ce1f5059; [E-r1] `empty_derive_checks_v2.py`
+61a6a0aa7a0e8d6e28151474e7005224 · output
+12576b80a27faaf212db67264056a287 · results
+8c07787f26ee3deb33f07b9df57c0479; PE1's instrument `empty_pe1_ext.py`
+44d032e1f4edddb026dc210a778fc287 (consumed as instance shadow at S7 —
+E-L8, R1/R6, the withdrawal statistics — and at S3/S5/S8).
 
 **Fences.**
 F-A. (H3) is consumed throughout (W-D2's forced inventory); (EMPTY-gen)
@@ -536,6 +808,77 @@ F-D. Machine coverage m ∈ {3,4}, g₀ ∈ {1,2}, d₀ ∈ {1,2}, both
 F-E. Nothing here touches (SURV)(i), the residue layer, attainment, or
      the law's grade.  This note proves properties of T² plus the
      emptiness leg ONLY.
-F-F. This unit's grade: PROVED at attempt grade, ZERO hostile passes.
-     Verification protocol owed: hostile pass(es) on this text +
-     runner, Codex leg included, per the standing arc discipline.
+F-F. [E-r1 update] This unit's grade: PROVED at attempt grade,
+     hostile-pass record 0/1 CLEAN — pass 1 (EMPTY-PE1) NOT-CLEAN
+     (1 critical / 2 gaps / 2 notes), all findings repaired in this
+     revision (REPAIR RECORD at the tail).  Verification protocol
+     owed: round 2 (PE-E2) on THIS repaired text + the v2 runner —
+     and note the honest asymmetry: the round-1 CRITICAL was in the
+     assembly step and the repair applied is PE1's OWN supplied
+     derivation, so a model-diverse leg (Codex, post-reset) is still
+     owed before any acceptance claim; 2 consecutive clean passes
+     minimum per the standing arc discipline.
+
+---
+
+## REPAIR RECORD [E-r1, 2026-08-08 campaign (wallclock 2026-08-04)]
+
+**Round 1 verdict (EMPTY-PE1, fresh-context Fable, on 4eb1719; full
+report `lean/notes/openmath/EMPTY_passPE1_report.md`, committed with
+this revision): NOT-CLEAN — 1 CRITICAL, 2 JUSTIFICATION GAPS, 2
+NOTES.**  PE1 simultaneously re-derived E-L1, E-L2/E-L2h, E-L4, E-L5,
+E-L6 CORRECT as displayed (exhaustive grids EXT-GRID-EL4 20,439 /
+EXT-GRID-EL5 61,317, 0 failures), reproduced the v1 machine leg
+semantically field-by-field in a read-only sandbox re-run (17/17
+families, only wall-clock fields differ), verified every md5 pin, and
+re-derived the THEOREM E-THM TRUE on (H1)–(H3) end to end — supplying
+the complete repair applied in this revision.
+
+Per-finding disposition:
+
+* **Finding 1 (CRITICAL — the S7 assembly false as printed).**
+  REPAIRED: S7 rewritten with PE1's own derivation (steps R1–R7); the
+  false π₁ chain and master slack display WITHDRAWN in place inside
+  the dated bracket (never deleted), with the refutation statistics
+  quoted (655 grid failures for the unconditional −𝟙[CE₀] step; the
+  +y_c double-count; 290/283/437 of 492 battery two-exit cells
+  violating the display under the three readings of its undefined
+  ρ⁺_l, while the CONCLUSION k ≤ c_{m−1} held on all 492).  E-THM's
+  statement did not move; E-L7's statement did not move (its
+  derivation is new).
+* **Finding 2 (GAP — the tight-stratum remainder-vanishing step
+  nowhere stated).**  REPAIRED: NEW displayed Lemma E-L8, stated and
+  proved in S7 (one induction, one line of arithmetic per level), with
+  PE1's EXT-TIGHT-RHO (4,468/4,468 tight grid cases, 0 failures) cited
+  as instance shadow; the "why this is a distinct lemma" paragraph
+  records that global integrality alone cannot force all slacks to
+  vanish.
+* **Finding 3 (GAP — CTRL-PAY1 disclosure named a class-empty
+  corner).**  REPAIRED: the S3 bracket and S8 disclosure (i)
+  rewritten — the real slack-0 corner is the top-level full-house +
+  Y-child corner at d₀ ≥ 2, inventory-present on XM3B/EQ3G2A; the min
+  slack 1/12 = W₀ EXACTLY (sharp, not headroom).  TEETH BUILT:
+  `empty_derive_checks_v2.py` (v1 verbatim + EDC-PAYINV + CTRL-PAY2;
+  v1 never mutated) — 18 families 0 violations; the broken-E-L2
+  variant FIRED exactly on the predicted corner (XM3B + EQ3G2A, slack
+  0) and nowhere else.
+* **Finding 4 (NOTE — machine-bracket accuracy).**  (i) the EDC-CPLUS
+  off-tight guard disclosed as a PHANTOM in the S5 bracket (its
+  non-firing is roster coverage, not law; firing condition satisfiable
+  with all E-L5 clauses true).  (ii) the S7 "all dead" census sentence
+  bracketed: definitionally forced by the runner's tight flag, the
+  census content is the populated-corner claim.
+* **Finding 5 (NOTE — header consumption range).**  REPAIRED: the
+  header grade-cap sentence now names the consumed set exactly
+  (W-D0–W-D4 + W-D6/W-D6c; not W-D5, not the W-D7 (STK)/law-clause
+  pins), matching S0 and the dependency line.
+
+**Honest status after E-r1.**  The round-1 CRITICAL was in the
+ASSEMBLY step, and the repair applied is PE1's OWN supplied
+derivation — the verifier and the repairer are therefore the same
+context for the new S7 text.  Model-diverse verification of the
+repaired assembly is STILL OWED: round 2 = PE-E2 (fresh context) on
+this revision + the v2 runner; Codex legs post-reset.  Grade
+unchanged: PROVED at attempt grade, 0/1 CLEAN, capped by the WMULTDCX
+consumption (0/2 CLEAN) as before.  Nothing in this repair touches
+(EMPTY-gen), (SURV)(i), or the law's grade.

@@ -1,0 +1,20 @@
+EXT-GRID-EL4: 20439 cases, EXT-GRID-EL5: 61317 cases, EXT-TIGHT-RHO: 4468 tight cases — failures so far: 0
+EXT-MIDSTEP witness: e0=2 g0=2 P0=4 t1=4 t=1 Y2=0 CE0 edge (k=1,y=1, removal=1): line1=1 line2=0 -> middle step FALSE
+EXT-MIDSTEP grid: NOTE-form failures 655 (first (2, 1, 0, 0, 0, 0, 1)), of which ON the tight boundary (tight0 & Y2=1): 6 of 68 cases — the printed step fails even where the repair needs it, because the printed numerator double-counts y;
+             TRUE-ledger form: 511 unconditional failures (first (2, 1, 0, 0, 1, 0, 1)) but 0 failures on the tight boundary — the repair's conditional step holds exactly there
+EXT-DISPLAY: 195 live rows re-walked, 492 two-exit cells; S7-display violations A1=290 A2=283 B=437; theorem breaches (k>c): 0
+  first B-witness: {'tower': 'W3DEEP4', 'key': (1249, 1255), 'kdef': 2, 'c': 2, 'r': 0, 'nint': 0, 'ce0': False, 'y2': 0, 'tight': False, 'jtop': 0}
+  first A1-witness: {'tower': 'W3DEEP4', 'key': (1251, 1255), 'kdef': 1, 'c': 1, 'r': 0, 'nint': 0, 'ce0': True, 'y2': 0, 'tight': False, 'jtop': 0}
+  first A2-witness: {'tower': 'W3DEEP4', 'key': (1251, 1255), 'kdef': 1, 'c': 1, 'r': 0, 'nint': 0, 'ce0': True, 'y2': 0, 'tight': False, 'jtop': 0}
+EXT-PAY battery: 301 edges, min pure-form slack 1/12, slack==W0 edge: {'tower': 'W3G2B', 'i': 0, 'k': 1, 'avec': [], 'y': 1, 'W0': '1/12'}
+EXT-PAY corners: 8308 in-scope corner cases, 150 with slack < W0, ALL at the top-full-house+Y corner: True
+EXT-PAY inventory: full-house top-level d-cells across all 35 roster towers: 14 [{'tower': 'W3NEST', 'k': 0, 'a': [1, 1], 'd0': 1}, {'tower': 'W3NESTF', 'k': 0, 'a': [1, 1], 'd0': 1}, {'tower': 'W3FMID', 'k': 0, 'a': [1, 0], 'd0': 1}, {'tower': 'W3FTOP', 'k': 0, 'a': [1, 1], 'd0': 1}, {'tower': 'W3FDBL', 'k': 0, 'a': [2, 0], 'd0': 1}, {'tower': 'W3FMIDF', 'k': 0, 'a': [1, 0], 'd0': 1}, {'tower': 'W4NEST', 'k': 0, 'a': [1, 1, 1], 'd0': 1}, {'tower': 'W4NESTF', 'k': 0, 'a': [1, 1, 1], 'd0': 1}, {'tower': 'XM3B', 'k': 0, 'a': [3, 2], 'd0': 2}, {'tower': 'EQ3T3A', 'k': 0, 'a': [1, 1], 'd0': 1}, {'tower': 'EQ3T3C', 'k': 0, 'a': [2, 1], 'd0': 1}, {'tower': 'EQ3T4B', 'k': 0, 'a': [3, 1], 'd0': 1}, {'tower': 'EQ3T4C', 'k': 0, 'a': [1, 1], 'd0': 1}, {'tower': 'EQ3G2A', 'k': 0, 'a': [3, 2], 'd0': 2}]
+EXT-PAY detector self-test (synthetic top edge, full house + Y, P=(4,3)): lhs=1, pay=1, CTRL-PAY1 condition fires: True
+EXT-CPGUARD: e0=2 g0=2 t1=5: cplus1(0)=1 cplus1(1)=2 c1=2; runner guard condition fires: True; every E-L5 clause holds: True -> the guard is a phantom (firing would not witness a lemma breach)
+EXT-TRACE EQ3T4A row (993, 999): e=[2, 2, 4] g=[1, 1, 1] d0=1 sigma=[1, 2, 3] s_l(u_l)=[0, 0, 1] t=[1, 2] c-chain=[0, 1] kdef=4 c+(0)=1 c+(1)=1 tight=False stage1-exits=1 TWO-EXIT TERMINALS=0 (telescope re-verified at 1 terminals)
+EXT-TRACE EQ3G2A row (2305, 2321): e=[2, 3, 3] g=[2, 1, 1] d0=2 sigma=[2, 3, 2] s_l(u_l)=[0, 1, 1] t=[2, 4] c-chain=[1, 1] kdef=3 c+(0)=1 c+(1)=1 tight=False stage1-exits=1 TWO-EXIT TERMINALS=0 (telescope re-verified at 1 terminals)
+EXT-TRACE EQ4T3A row (2305, 2309): e=[2, 2, 2, 3] g=[1, 1, 1, 1] d0=1 sigma=[1, 0, 2, 2] s_l(u_l)=[1, 0, 0, 1] t=[2, 0, 2] c-chain=[1, 0, 1] kdef=3 c+(0)=1 c+(1)=1 tight=False stage1-exits=1 TWO-EXIT TERMINALS=0 (telescope re-verified at 1 terminals)
+----------------------------------------------------------------------
+engine-harness violations raised during ext walks: 0
+EXT failures: 0
+results -> empty_pe1_ext_results.json

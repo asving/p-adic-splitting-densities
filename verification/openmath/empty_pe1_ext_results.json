@@ -1,0 +1,403 @@
+{
+ "EXT-GRID-EL4": 20439,
+ "EXT-GRID-EL5": 61317,
+ "EXT-TIGHT-RHO": 4468,
+ "EXT-MIDSTEP": {
+  "note_form": {
+   "grid_failures": 655,
+   "first": [
+    2,
+    1,
+    0,
+    0,
+    0,
+    0,
+    1
+   ],
+   "tight_failures": 6
+  },
+  "true_form": {
+   "grid_failures": 511,
+   "first": [
+    2,
+    1,
+    0,
+    0,
+    1,
+    0,
+    1
+   ],
+   "tight_failures": 0
+  },
+  "tight_cases": 68
+ },
+ "EXT-DISPLAY": {
+  "rows": 195,
+  "cells": 492,
+  "violations": {
+   "A1": 290,
+   "A2": 283,
+   "B": 437
+  },
+  "witnesses": {
+   "B": {
+    "tower": "W3DEEP4",
+    "key": [
+     1249,
+     1255
+    ],
+    "kdef": 2,
+    "c": 2,
+    "r": 0,
+    "nint": 0,
+    "ce0": false,
+    "y2": 0,
+    "tight": false,
+    "jtop": 0
+   },
+   "A1": {
+    "tower": "W3DEEP4",
+    "key": [
+     1251,
+     1255
+    ],
+    "kdef": 1,
+    "c": 1,
+    "r": 0,
+    "nint": 0,
+    "ce0": true,
+    "y2": 0,
+    "tight": false,
+    "jtop": 0
+   },
+   "A2": {
+    "tower": "W3DEEP4",
+    "key": [
+     1251,
+     1255
+    ],
+    "kdef": 1,
+    "c": 1,
+    "r": 0,
+    "nint": 0,
+    "ce0": true,
+    "y2": 0,
+    "tight": false,
+    "jtop": 0
+   }
+  },
+  "theorem_breaches": 0
+ },
+ "EXT-PAY-battery": {
+  "edges": 301,
+  "min_slack": "1/12",
+  "slack_eq_W0_edge": {
+   "tower": "W3G2B",
+   "i": 0,
+   "k": 1,
+   "avec": [],
+   "y": 1,
+   "W0": "1/12"
+  }
+ },
+ "EXT-PAY-corners": {
+  "cases": 8308,
+  "below_W0": 150,
+  "only_top_fullhouse_Y": true
+ },
+ "EXT-PAY-inventory": {
+  "fullhouse_top_dcells": [
+   {
+    "tower": "W3NEST",
+    "k": 0,
+    "a": [
+     1,
+     1
+    ],
+    "d0": 1
+   },
+   {
+    "tower": "W3NESTF",
+    "k": 0,
+    "a": [
+     1,
+     1
+    ],
+    "d0": 1
+   },
+   {
+    "tower": "W3FMID",
+    "k": 0,
+    "a": [
+     1,
+     0
+    ],
+    "d0": 1
+   },
+   {
+    "tower": "W3FTOP",
+    "k": 0,
+    "a": [
+     1,
+     1
+    ],
+    "d0": 1
+   },
+   {
+    "tower": "W3FDBL",
+    "k": 0,
+    "a": [
+     2,
+     0
+    ],
+    "d0": 1
+   },
+   {
+    "tower": "W3FMIDF",
+    "k": 0,
+    "a": [
+     1,
+     0
+    ],
+    "d0": 1
+   },
+   {
+    "tower": "W4NEST",
+    "k": 0,
+    "a": [
+     1,
+     1,
+     1
+    ],
+    "d0": 1
+   },
+   {
+    "tower": "W4NESTF",
+    "k": 0,
+    "a": [
+     1,
+     1,
+     1
+    ],
+    "d0": 1
+   },
+   {
+    "tower": "XM3B",
+    "k": 0,
+    "a": [
+     3,
+     2
+    ],
+    "d0": 2
+   },
+   {
+    "tower": "EQ3T3A",
+    "k": 0,
+    "a": [
+     1,
+     1
+    ],
+    "d0": 1
+   },
+   {
+    "tower": "EQ3T3C",
+    "k": 0,
+    "a": [
+     2,
+     1
+    ],
+    "d0": 1
+   },
+   {
+    "tower": "EQ3T4B",
+    "k": 0,
+    "a": [
+     3,
+     1
+    ],
+    "d0": 1
+   },
+   {
+    "tower": "EQ3T4C",
+    "k": 0,
+    "a": [
+     1,
+     1
+    ],
+    "d0": 1
+   },
+   {
+    "tower": "EQ3G2A",
+    "k": 0,
+    "a": [
+     3,
+     2
+    ],
+    "d0": 2
+   }
+  ]
+ },
+ "EXT-PAY-selftest": {
+  "lhs": "1",
+  "pay": "1",
+  "fires": true
+ },
+ "EXT-CPGUARD": {
+  "e0": 2,
+  "g0": 2,
+  "t1": 5,
+  "res0": 1,
+  "res1": 2,
+  "c1": 2,
+  "guard_fires": true,
+  "el5_ok": true
+ },
+ "EXT-TRACE": [
+  {
+   "tower": "EQ3T4A",
+   "key": [
+    993,
+    999
+   ],
+   "m": 3,
+   "e": [
+    2,
+    2,
+    4
+   ],
+   "g": [
+    1,
+    1,
+    1
+   ],
+   "d0": 1,
+   "sig": [
+    1,
+    2,
+    3
+   ],
+   "su": [
+    0,
+    0,
+    1
+   ],
+   "t": [
+    null,
+    1,
+    2
+   ],
+   "c": [
+    0,
+    1
+   ],
+   "kdef": 4,
+   "D": null,
+   "cplus0": 1,
+   "cplus1": 1,
+   "tight": false,
+   "n_exit1": 1,
+   "n_twoexit": 0,
+   "telescope_checked": 1
+  },
+  {
+   "tower": "EQ3G2A",
+   "key": [
+    2305,
+    2321
+   ],
+   "m": 3,
+   "e": [
+    2,
+    3,
+    3
+   ],
+   "g": [
+    2,
+    1,
+    1
+   ],
+   "d0": 2,
+   "sig": [
+    2,
+    3,
+    2
+   ],
+   "su": [
+    0,
+    1,
+    1
+   ],
+   "t": [
+    null,
+    2,
+    4
+   ],
+   "c": [
+    1,
+    1
+   ],
+   "kdef": 3,
+   "D": null,
+   "cplus0": 1,
+   "cplus1": 1,
+   "tight": false,
+   "n_exit1": 1,
+   "n_twoexit": 0,
+   "telescope_checked": 1
+  },
+  {
+   "tower": "EQ4T3A",
+   "key": [
+    2305,
+    2309
+   ],
+   "m": 4,
+   "e": [
+    2,
+    2,
+    2,
+    3
+   ],
+   "g": [
+    1,
+    1,
+    1,
+    1
+   ],
+   "d0": 1,
+   "sig": [
+    1,
+    0,
+    2,
+    2
+   ],
+   "su": [
+    1,
+    0,
+    0,
+    1
+   ],
+   "t": [
+    null,
+    2,
+    0,
+    2
+   ],
+   "c": [
+    1,
+    0,
+    1
+   ],
+   "kdef": 3,
+   "D": null,
+   "cplus0": 1,
+   "cplus1": 1,
+   "tight": false,
+   "n_exit1": 1,
+   "n_twoexit": 0,
+   "telescope_checked": 1
+  }
+ ],
+ "engine_violations_during_ext": [],
+ "failures": []
+}
