@@ -65,13 +65,15 @@ for i, l in enumerate(lines):
         while j < len(lines) and lines[j].strip():
             j += 1
         zones.append((i, j))
+# Acceptance surfaces (post-acceptance annotations) are record surfaces of the
+# same class as repair brackets/records — added when the note was ACCEPTED.
 for i, l in enumerate(lines):
-    if l.startswith("**[REPAIR ROUND"):
+    if l.startswith(("**[REPAIR ROUND", "**[ACCEPTED", "**[LEDGER APPLICATION")):
         j = i
         while j < len(lines) and not lines[j].rstrip().endswith("]**"):
             j += 1
         zones.append((i, j + 1))
-    if l.startswith("**REPAIR RECORD"):
+    if l.startswith(("**REPAIR RECORD", "**ACCEPTANCE RECORD")):
         j = i + 1
         while j < len(lines) and not lines[j].startswith(("## ", "— GENERIC")):
             j += 1
