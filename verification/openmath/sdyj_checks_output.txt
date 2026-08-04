@@ -1,0 +1,52 @@
+==============================================================================
+(SD-YJ') composer machine leg — sealed battery
+==============================================================================
+-- SWEEP: 980646 chains (4.9s); sharp v0=1: 3892; integrality-load: 26416
+-- WALL: committed Tower at d0=3 built deg Phi0 = 2 != 3 (hardcoded quadratic phibar) — d0 = 3 is engine-dark, as disclosed (F-D)
+---- committed T3 roster (replication) ----
+-- YJ2F m=2 Fpt,p=2,d0=2: live-clause rows=1 traced nonempty=1 (0.0s)
+-- YJ3F m=3 Fpt,p=2,d0=2: live-clause rows=4 traced nonempty=4 (0.1s)
+*** FINDING [YJ-COMP] YJ3FLT: {'key': [91, 95], 'gain': 1, 'junk': 1, 'y2': 0, 'nce': 1, 'nX': 0, 'corr_child': 'L/Y-only'}
+*** FINDING [YJ-COMP] YJ3FLT: {'key': [95, 95], 'gain': 1, 'junk': 1, 'y2': 1, 'nce': 1, 'nX': 0, 'corr_child': 'L/Y-only'}
+-- YJ3FLT m=3 Fpt,p=2,d0=2: live-clause rows=2 traced nonempty=2 (0.0s)
+*** FINDING [YJ-COMP] YJ3FLTB: {'key': [187, 191], 'gain': 2, 'junk': 1, 'y2': 0, 'nce': 1, 'nX': 0, 'corr_child': 'L/Y-only'}
+*** FINDING [YJ-COMP] YJ3FLTB: {'key': [191, 191], 'gain': 2, 'junk': 1, 'y2': 1, 'nce': 1, 'nX': 0, 'corr_child': 'L/Y-only'}
+-- YJ3FLTB m=3 Fpt,p=2,d0=2: live-clause rows=2 traced nonempty=2 (0.0s)
+-- YJ3DPF m=3 Fpt,p=2,d0=2: live-clause rows=12 traced nonempty=12 (0.4s)
+*** FINDING [YJ-COMP] YJ4FLT: {'key': [355, 355], 'gain': 1, 'junk': 1, 'y2': 1, 'nce': 1, 'nX': 0, 'corr_child': 'L/Y-only'}
+*** FINDING [YJ-COMP] YJ4FLT: {'key': [355, 359], 'gain': 1, 'junk': 1, 'y2': 1, 'nce': 1, 'nX': 0, 'corr_child': 'L/Y-only'}
+-- YJ4FLT m=4 Fpt,p=2,d0=2: live-clause rows=4 traced nonempty=4 (0.2s)
+*** FINDING [YJ-COMP] YJ3Z: {'key': [91, 95], 'gain': 1, 'junk': 1, 'y2': 0, 'nce': 1, 'nX': 0, 'corr_child': 'L/Y-only'}
+*** FINDING [YJ-COMP] YJ3Z: {'key': [95, 95], 'gain': 1, 'junk': 1, 'y2': 1, 'nce': 1, 'nX': 0, 'corr_child': 'L/Y-only'}
+-- YJ3Z m=3 Zp,p=2,d0=2: live-clause rows=2 traced nonempty=2 (0.0s)
+-- YJ3F3 m=3 Fpt,p=3,d0=2: live-clause rows=2 traced nonempty=2 (0.0s)
+-- YJT1F m=3 Fpt,p=2,d0=2: live-clause rows=12 traced nonempty=12 (0.1s)
+---- fresh roster ----
+*** FINDING [YJ-COMP] YJX1: {'key': [235, 239], 'gain': 3, 'junk': 1, 'y2': 0, 'nce': 1, 'nX': 0, 'corr_child': 'L/Y-only'}
+*** FINDING [YJ-COMP] YJX1: {'key': [239, 239], 'gain': 3, 'junk': 1, 'y2': 1, 'nce': 1, 'nX': 0, 'corr_child': 'L/Y-only'}
+-- YJX1 m=3 Fpt,p=2,d0=2: live-clause rows=2 traced nonempty=2 (0.0s)
+-- YJX2 m=3 Fpt,p=3,d0=2: live-clause rows=6 traced nonempty=6 (0.0s)
+-- YJX3 m=3 Fpt,p=3,d0=2: live-clause rows=4 traced nonempty=4 (0.0s)
+*** FINDING [YJ-COMP] YJX4: {'key': [115, 115], 'gain': 1, 'junk': 1, 'y2': 1, 'nce': 1, 'nX': 0, 'corr_child': 'L/Y-only'}
+-- YJX4 m=4 Fpt,p=2,d0=2: live-clause rows=1 traced nonempty=1 (0.0s)
+-- YJX5 m=3 Fpt,p=2,d0=1: live-clause rows=2 traced nonempty=2 (0.0s)
+-- YJX6 m=2 Fpt,p=2,d0=2: live-clause rows=0 traced nonempty=0 (0.0s)
+-- REP: 41 committed T3 rows re-traced; 8 companions matched against the committed 8
+==============================================================================
+SDYJ-PIN  : 0 violations
+SDYJ-GAM  : 0 violations
+SDYJ-DIG  : 0 violations
+SDYJ-SWEEP: 0 violations
+SDYJ-CASC : 0 violations
+SDYJ-SUPER: 0 violations
+SDYJ-COMP : 0 violations
+SDYJ-NEP  : 0 violations
+SDYJ-REP  : 0 violations
+SDYJ-WALL : 0 violations
+HARNESS   : 0 violations
+------------------------------------------------------------------------------
+FINDINGS census: {'YJ-COMP': 11}
+counters: {'casc_rows': 56, 'dig_digits': 30, 'dig_sharp_v0_1': 9, 'gam_towers': 15, 'live_rows': 56, 'rep_companions': 8, 'super_cells': 139, 'sweep_chains': 980646, 'sweep_integrality_loadbearing': 26416, 'sweep_sharp_v0_1': 3892, 'wall_quadratic_phi0': 1}
+total violations: 0
+elapsed: 5.9s
+results -> sdyj_checks_results.json

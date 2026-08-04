@@ -451,7 +451,53 @@ YJX2/YJX3 are the razor-thin corners: there the naive rational bound
 says it does.  YJX5 is the d₀ = 1 control: same floor arithmetic, zero
 Φ₀Y-edges, zero companions predicted there (SD-L3).
 
-**S7.3 VERDICT (from artifacts; appended at commit 2).**  PENDING.
+**S7.3 VERDICT (from artifacts; appended at commit 2; seal = commit 1
+d9540e0).**  Single deterministic 5.9 s run: **ALL ELEVEN FAMILIES 0
+VIOLATIONS.**  Artifacts: `sdyj_checks_output.txt` /
+`sdyj_checks_results.json`; md5s — runner
+f77500b474196e3b76a7b80c40eb0012 · output
+b164788ce9f581b067c7fe50bfa472b3 · results
+520f30e1951844cd8cbbcf040d04b76e.
+
+* **SDYJ-SWEEP**: 980,646 chains, 0 violations — every chain integral,
+  every (INV_l) held, every v₀ ≥ 1; the floor is SHARP (3,892 chains
+  at v₀ = 1) and integrality is genuinely load-bearing (26,416 chains
+  where the naive full-dump rational bound sits below 1).
+* **SDYJ-GAM/DIG**: 15 towers, 30 interior digits — every digit a
+  single cell with the forced v-chain dump and w₀ = v₀ EXACTLY (9 at
+  the sharp floor v₀ = 1); every displayed S7.2 prediction landed;
+  engine γ-values = the S0.1 recursion everywhere.
+* **56 live rows** (41 committed re-traced + 15 fresh: YJX1 2, YJX2 6,
+  YJX3 4, YJX4 1, YJX5 2, YJX6 0 — the m = 2 corner realized no
+  live-clause rows, disclosed; it contributes GAM/DIG coverage only).
+  Cascade cell PRESENT and unique on all 56; SDYJ-CASC/SUPER (139
+  terminals)/NEP all 0.
+* **SDYJ-REP**: the 41 committed rows re-traced EXACTLY (keys, ncomp,
+  cascade states) and the 8 committed companions matched at (w₀, line).
+* **THREE NEW COMPANIONS** (11 total in the battery), the first beyond
+  the committed record: YJX1[235,239] gain w₀ − ŵ = 3 (Y₂ = 0),
+  YJX1[239,239] gain 3 (Y₂ = 1), YJX4[115,115] gain 1 (Y₂ = 1) — the
+  gains are EXACTLY the displayed v₀ predictions (YJX1 i = 1 digit
+  v₀ = 3; YJX4 i = 1 digit v₀ = 1: the Y-edges again gained zero
+  valuation).  All 11 companions satisfied every (SD-YJ′) clause —
+  (★), the SD-L1 shapes, junk ≥ 1, w₀ ≥ ŵ + 1, the exact line
+  affinity, line > β̂ — 0 violations.
+* **The F-E census settled (measured)**: all 11 companions have
+  nX = 0 — every companion correction rode its L-child (Y₂ = 1 rows)
+  or its Y-child (Y₂ = 0 rows); NO correction ever rode an X-child.
+  The construction note's "[Y₂ = 1: the correction rides its X-child]"
+  bracket is contradicted by both its own artifacts and this battery.
+* **SDYJ-WALL confirmed**: the committed Tower constructor at d₀ = 3
+  silently built deg Φ₀ = 2 ≠ 3 (hardcoded quadratic phibar) — d₀ = 3
+  is engine-dark exactly as F-D discloses, the K2-ENG wall shape one
+  slot over.
+* **Post-seal repair disclosure**: the sealed run 1 aborted the WALL
+  probe on THIS unit's own bug (wrong constructor name "Tower2" —
+  AttributeError, probe vacuous); repaired to `G.Tower` plus its log
+  string, families and every sealed check byte-unchanged; runs are
+  otherwise identical (run 1's other ten families: 0 violations, same
+  counters).  The disclosed pre-seal shakedown ran the throwaway spec
+  + mini-sweep only, as declared at S0.
 
 ## S8. Claims table, dependency line, fences
 

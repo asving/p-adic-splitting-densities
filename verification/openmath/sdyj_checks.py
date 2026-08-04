@@ -168,7 +168,11 @@ def wall_probe():
     old = signal.signal(signal.SIGALRM, _alrm)
     signal.alarm(30)
     try:
-        T = G.Tower2("Fpt", 2, 3, (2, 1, 1), (2, 1, 1), "wallprobe")
+        # [post-seal probe repair, disclosed in the note: the committed
+        # level-0/1 constructor is grb_order2_check.Tower (not "Tower2");
+        # the sealed run 1's AttributeError was THIS probe's bug, not the
+        # engine's.  Family and prediction unchanged.]
+        T = G.Tower("Fpt", 2, 3, (2, 1, 1), (2, 1, 1), "wallprobe")
         degPhi0 = len(pnorm(T.R, T.Phi0)) - 1
         signal.alarm(0)
         if degPhi0 == 3:
@@ -176,15 +180,15 @@ def wall_probe():
                  "— the wall disclosure in the note is WRONG")
         else:
             note("wall_quadratic_phi0")
-            print(f"-- WALL: committed Tower2 at d0=3 built deg Phi0 = "
+            print(f"-- WALL: committed Tower at d0=3 built deg Phi0 = "
                   f"{degPhi0} != 3 (hardcoded quadratic phibar) — d0 = 3 is "
                   f"engine-dark, as disclosed (F-D)")
     except TimeoutError:
         note("wall_hang")
-        print("-- WALL: committed Tower2 at d0=3 HUNG (30s) — engine-dark")
+        print("-- WALL: committed Tower at d0=3 HUNG (30s) — engine-dark")
     except Exception as ex:
         note("wall_exception")
-        print(f"-- WALL: committed Tower2 at d0=3 raised {ex!r} — engine-dark")
+        print(f"-- WALL: committed Tower at d0=3 raised {ex!r} — engine-dark")
     finally:
         signal.alarm(0)
         signal.signal(signal.SIGALRM, old)
