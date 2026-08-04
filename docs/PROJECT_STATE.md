@@ -1354,6 +1354,23 @@ re-derived valid twice) as the design input. NEW STANDING FRONTIER:
 then Q3 corners, Q4 GRT weld. The d₀ ≥ 2 flat fence stands
 (machine-confirmed infeasibility). Next mechanical: the r40 ROOT fold +
 VC40; the public-map refresh; the W arc's Codex leg post-reset.]**
+**[2026-08-04 later (campaign 2026-08-08) — THE FRONTIER SHARPENED TO
+ONE RESIDUE QUESTION. (EMPTY-(m+1)) PROVED at attempt grade (g₀/d₀
+free; E arc 1/2 CLEAN — EMPTY_PROOF_2026-08-08.md at 7314525; round 1
+found + repaired an assembly defect via PE1's own derivation with the
+new E-L8; PE2 CLEAN from-scratch) ⟹ deadness = cell-absence,
+(SURV)(ii) follows on the pins. (SURV)(i) attacked
+(SURV_PROOF_2026-08-08.md, 0b895d0): the slot-netting kit PROVED
+(distinct reduced slots cannot cancel — residue algebra needed only at
+same-slot equal-line collisions); (i) CLOSED on the (NEP) ∧ (RW)
+sub-locus; class-wide the obstruction is RESIDUE ARITHMETIC, witnessed
+by two committed char-2 cancellation instances whose identical tower at
+p = 3 nets nonzero. **The single open mathematical question of the Q2
+line: (SURV-DISJ) — bottom-or-cascade survives (486/486 instance-true)
+— via the DEV-at-depth carry algebra.** Arcs in flight/queued: SURV
+PE-S1 (running, incl. the wider cancellation census); post-reset Codex
+legs VC40 + W arc + E arc. Ledger entries: (EMPTY) rounds at 7ebd9c8 +
+7314525; (SURV) at 01ad07b.]**
 
 ## UPDATE (2026-07-31 evening — THE MATH-FIRST CAMPAIGN AT THE ROOT-ASSEMBLY STAGE)
 
