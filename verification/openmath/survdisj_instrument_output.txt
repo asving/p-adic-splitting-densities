@@ -1,0 +1,264 @@
+==============================================================================
+PHASE SEALED — WS.ROSTER via the committed sealed selection
+==============================================================================
+-- SEALED W3DEEP m=3 Zp,p=3,d0=1 g0=1: live traced=16 (0.0s)
+-- SEALED W3DEEP4 m=3 Zp,p=3,d0=1 g0=1: live traced=40 (0.1s)
+-- SEALED W3NEST m=3 Zp,p=3,d0=1 g0=1: live traced=12 (0.0s)
+-- SEALED W3NESTF m=3 Fpt,p=2,d0=1 g0=1: live traced=12 (0.0s)
+-- SEALED W3FMID m=3 Zp,p=3,d0=1 g0=1: live traced=2 (0.0s)
+-- SEALED W3FTOP m=3 Zp,p=3,d0=1 g0=1: live traced=2 (0.0s)
+-- SEALED W3FDBL m=3 Zp,p=3,d0=1 g0=1: live traced=1 (0.0s)
+-- SEALED W3FMIDF m=3 Fpt,p=2,d0=1 g0=1: live traced=2 (0.0s)
+  !! CROSS-genre kill at W3TRK1[335, 335] slot=[1, 0, 0] line=572
+  !! CROSS-genre kill at W3TRK1[327, 335] slot=[0, 0, 0] line=564
+-- SEALED W3TRK1 m=3 Zp,p=3,d0=1 g0=1: live traced=30 (0.0s)
+-- SEALED W3DIR m=3 Zp,p=3,d0=1 g0=1: live traced=30 (0.0s)
+-- SEALED W3G2A m=3 Zp,p=3,d0=1 g0=2: live traced=28 (0.1s)
+-- SEALED W3G2B m=3 Zp,p=3,d0=2 g0=2: live traced=20 (0.1s)
+-- SEALED W3G2P5 m=3 Zp,p=5,d0=2 g0=2: live traced=4 (0.1s)
+-- SEALED W3DEEPF m=3 Fpt,p=2,d0=1 g0=1: live traced=16 (0.1s)
+-- SEALED W4NEST m=4 Zp,p=3,d0=1 g0=1: live traced=14 (0.0s)
+-- SEALED W4DEEP m=4 Zp,p=3,d0=1 g0=1: live traced=14 (0.1s)
+-- SEALED W4FLAT m=4 Zp,p=3,d0=1 g0=1: live traced=9 (0.0s)
+-- SEALED W4NESTF m=4 Fpt,p=2,d0=1 g0=1: live traced=14 (0.4s)
+-- SEALED XM3A m=3 Zp,p=5,d0=1 g0=1: live traced=4 (0.0s)
+-- SEALED XM3B m=3 Zp,p=3,d0=2 g0=2: live traced=16 (0.2s)
+==============================================================================
+PHASE EQ — ED.FRESH_ROSTER at raised caps 12/6 (PE1 selection)
+==============================================================================
+-- EQ EQ3T3A m=3 Zp,p=3,d0=1 g0=1: live traced=4 (0.0s)
+-- EQ EQ3T3B m=3 Zp,p=3,d0=1 g0=1: live traced=46 (0.1s)
+-- EQ EQ3T3C m=3 Zp,p=5,d0=1 g0=1: live traced=12 (0.0s)
+-- EQ EQ3T4A m=3 Zp,p=3,d0=1 g0=1: live traced=4 (0.0s)
+-- EQ EQ3T4B m=3 Zp,p=3,d0=1 g0=1: live traced=60 (0.2s)
+-- EQ EQ3T4C m=3 Zp,p=3,d0=1 g0=1: live traced=38 (0.1s)
+-- EQ EQ3T3F m=3 Fpt,p=2,d0=1 g0=1: live traced=53 (0.3s)
+-- EQ EQ3T4F m=3 Fpt,p=2,d0=1 g0=1: live traced=4 (0.1s)
+-- EQ EQ3G2A m=3 Zp,p=3,d0=2 g0=2: live traced=14 (0.3s)
+-- EQ EQ3G2B m=3 Zp,p=3,d0=1 g0=2: live traced=53 (0.2s)
+-- EQ EQ3FLT m=3 Zp,p=5,d0=1 g0=1: live traced=6 (0.0s)
+-- EQ EQ4T3A m=4 Zp,p=3,d0=1 g0=1: live traced=6 (0.0s)
+-- EQ EQ4T3F m=4 Fpt,p=2,d0=1 g0=1: live traced=6 (0.6s)
+-- EQ EQ4DEEP m=4 Zp,p=3,d0=1 g0=1: live traced=6 (0.0s)
+  !! CROSS-genre kill at EQ4NEST[1059, 1063] slot=[0, 1, 0, 0] line=724
+  !! CROSS-genre kill at EQ4NEST[1059, 1079] slot=[1, 1, 0, 0] line=732
+  !! CROSS-genre kill at EQ4NEST[1059, 1079] slot=[1, 0, 0, 0] line=728
+  !! CROSS-genre kill at EQ4NEST[1063, 1063] slot=[1, 0, 1, 0] line=722
+  !! CROSS-genre kill at EQ4NEST[1063, 1079] slot=[0, 0, 1, 0] line=730
+  !! CROSS-genre kill at EQ4NEST[1063, 1079] slot=[0, 1, 1, 0] line=734
+-- EQ EQ4NEST m=4 Zp,p=3,d0=1 g0=1: live traced=18 (0.1s)
+==============================================================================
+PHASE PX — the PE1 PX roster, caps 12/6
+==============================================================================
+-- PX PXDEEPF3 m=3 Fpt,p=3,d0=1 g0=1: live traced=14 (0.1s)
+-- PX PXT3F3 m=3 Fpt,p=3,d0=1 g0=1: live traced=53 (0.3s)
+-- PX PXDEEPZ2 m=3 Zp,p=2,d0=1 g0=1: live traced=14 (0.0s)
+-- PX PXT3Z2 m=3 Zp,p=2,d0=1 g0=1: live traced=53 (0.1s)
+-- PX PXDEEP4F m=3 Fpt,p=2,d0=1 g0=1: live traced=36 (0.2s)
+-- PX PXTRK1F m=3 Fpt,p=2,d0=1 g0=1: live traced=28 (0.1s)
+-- PX PXFLTF m=3 Fpt,p=2,d0=1 g0=1: live traced=6 (0.0s)
+-- PX PXW4DPF m=4 Fpt,p=2,d0=1 g0=1: live traced=8 (0.4s)
+==============================================================================
+PHASE SD — NEW adversarial g0>=2 x residue-char-2 roster, 12/6
+==============================================================================
+-- SD SDG2BF m=3 Fpt,p=2,d0=1 g0=2: live traced=39 (0.9s)
+-- SD SDG2BZ m=3 Zp,p=2,d0=1 g0=2: live traced=39 (0.1s)
+  !! CROSS-genre kill at SDG2AF[2321, 2321] slot=[0, 0, 0] line=1584
+-- SD SDG2AF m=3 Fpt,p=2,d0=2 g0=2: live traced=14 (16.8s)
+-- SD SDG2AZ m=3 Zp,p=2,d0=2 g0=2: live traced=14 (0.4s)
+  CENSUS [SDW3G2F]: principal d-cell ABSENT (theta_0 = 0 case)
+-- SD SDW3G2F m=3 Fpt,p=2,d0=1 g0=2: live traced=26 (0.2s)
+-- SD SDDPG2F m=3 Fpt,p=2,d0=1 g0=2: live traced=6 (0.1s)
+-- SD SDDPG2Z m=3 Zp,p=2,d0=1 g0=2: live traced=6 (0.0s)
+  CENSUS [SDW4G2F]: principal d-cell ABSENT (theta_0 = 0 case)
+-- SD SDW4G2F m=4 Fpt,p=2,d0=1 g0=2: live traced=7 (2.2s)
+==============================================================================
+SDI-PIN     : 0 violations
+SDI-CONS    : 0 violations
+SDI-DIGIT   : 0 violations
+SDI-LINE    : 0 violations
+SDI-EQV     : 0 violations
+SDI-RESFACT : 0 violations
+SDI-SEP     : 0 violations
+SDI-SURV    : 0 violations
+HARNESS     : 0 violations
+------------------------------------------------------------------------------
+live rows traced: 979; junk-free cells with verified K0-product factorization: 3218
+CROSS-genre kills (new-genre flag): 9
+total-bottom-dead rows (CANC): 6; on ALL of them survivor = cascade slot at cascade line: True
+------------------------------------------------------------------------------
+LAW-KEYED CANDIDATE COUNTS  (key = g0-class | residue-char | stratum):
+  P-A:
+    g1|rc2|above             ok    44
+    g1|rc2|direct            ok    36
+    g1|rc2|thresh            ok    172
+    g1|rcODD|above           ok    46
+    g1|rcODD|direct          ok    99
+    g1|rcODD|thresh          ok    296
+    TOTAL                    ok=693 fail=0
+  P-C:
+    g1|rc2|above             fail  1
+    g1|rc2|above             ok    43
+    g1|rc2|direct            ok    14
+    g1|rc2|thresh            fail  5
+    g1|rcODD|above           ok    20
+    g1|rcODD|direct          ok    4
+    g1|rcODD|thresh          ok    1
+    g2+|rc2|above            fail  2
+    g2+|rc2|above            ok    13
+    g2+|rc2|direct           fail  28
+    g2+|rcODD|above          fail  19
+    g2+|rcODD|direct         fail  18
+    g2+|rcODD|thresh         fail  30
+    g2+|rcODD|thresh         ok    2
+    TOTAL                    ok=97 fail=103
+  P-D-all:
+    g1|rc2|above             ok    44
+    g1|rc2|direct            ok    36
+    g1|rc2|thresh            ok    172
+    g1|rcODD|above           fail  1
+    g1|rcODD|above           ok    45
+    g1|rcODD|direct          ok    99
+    g1|rcODD|thresh          fail  11
+    g1|rcODD|thresh          ok    285
+    g2+|rc2|above            fail  3
+    g2+|rc2|above            ok    28
+    g2+|rc2|direct           fail  8
+    g2+|rc2|direct           ok    28
+    g2+|rc2|thresh           fail  6
+    g2+|rc2|thresh           ok    78
+    g2+|rcODD|above          fail  6
+    g2+|rcODD|above          ok    14
+    g2+|rcODD|direct         fail  4
+    g2+|rcODD|direct         ok    14
+    g2+|rcODD|thresh         fail  3
+    g2+|rcODD|thresh         ok    94
+    TOTAL                    ok=937 fail=42
+  P-D-all@kill:
+    g1|rc2|above             ok    44
+    g1|rc2|direct            ok    14
+    g1|rc2|thresh            ok    5
+    g1|rcODD|above           ok    20
+    g1|rcODD|direct          ok    4
+    g1|rcODD|thresh          ok    1
+    g2+|rc2|above            fail  3
+    g2+|rc2|above            ok    12
+    g2+|rc2|direct           fail  8
+    g2+|rc2|direct           ok    20
+    g2+|rcODD|above          fail  5
+    g2+|rcODD|above          ok    14
+    g2+|rcODD|direct         fail  4
+    g2+|rcODD|direct         ok    14
+    g2+|rcODD|thresh         ok    32
+    TOTAL                    ok=180 fail=20
+  P-D-some:
+    g1|rc2|above             ok    44
+    g1|rc2|direct            ok    36
+    g1|rc2|thresh            ok    172
+    g1|rcODD|above           fail  1
+    g1|rcODD|above           ok    45
+    g1|rcODD|direct          ok    99
+    g1|rcODD|thresh          fail  11
+    g1|rcODD|thresh          ok    285
+    g2+|rc2|above            fail  1
+    g2+|rc2|above            ok    30
+    g2+|rc2|direct           fail  8
+    g2+|rc2|direct           ok    28
+    g2+|rc2|thresh           ok    84
+    g2+|rcODD|above          fail  5
+    g2+|rcODD|above          ok    15
+    g2+|rcODD|direct         fail  4
+    g2+|rcODD|direct         ok    14
+    g2+|rcODD|thresh         ok    97
+    TOTAL                    ok=949 fail=30
+  PB-mult1-some:
+    g2+|rc2|above            ok    31
+    g2+|rc2|direct           ok    36
+    g2+|rc2|thresh           ok    84
+    g2+|rcODD|above          ok    20
+    g2+|rcODD|direct         ok    18
+    g2+|rcODD|thresh         ok    97
+    TOTAL                    ok=286 fail=0
+  PB-mult1-some@kill:
+    g2+|rc2|above            ok    2
+    g2+|rc2|direct           ok    28
+    g2+|rcODD|above          ok    19
+    g2+|rcODD|direct         ok    18
+    g2+|rcODD|thresh         ok    30
+    TOTAL                    ok=97 fail=0
+  PB-odd-all-surv:
+    g2+|rc2|above            fail  2
+    g2+|rc2|above            ok    29
+    g2+|rc2|direct           ok    36
+    g2+|rc2|thresh           fail  6
+    g2+|rc2|thresh           ok    78
+    g2+|rcODD|above          fail  1
+    g2+|rcODD|above          ok    19
+    g2+|rcODD|direct         ok    18
+    g2+|rcODD|thresh         fail  3
+    g2+|rcODD|thresh         ok    94
+    TOTAL                    ok=274 fail=12
+  PB-odd-all-surv@kill:
+    g2+|rc2|above            ok    2
+    g2+|rc2|direct           ok    28
+    g2+|rcODD|above          ok    19
+    g2+|rcODD|direct         ok    18
+    g2+|rcODD|thresh         ok    30
+    TOTAL                    ok=97 fail=0
+  PB-odd-some:
+    g2+|rc2|above            ok    31
+    g2+|rc2|direct           ok    36
+    g2+|rc2|thresh           ok    84
+    g2+|rcODD|above          ok    20
+    g2+|rcODD|direct         ok    18
+    g2+|rcODD|thresh         ok    97
+    TOTAL                    ok=286 fail=0
+  PB-odd-some@kill:
+    g2+|rc2|above            ok    2
+    g2+|rc2|direct           ok    28
+    g2+|rcODD|above          ok    19
+    g2+|rcODD|direct         ok    18
+    g2+|rcODD|thresh         ok    30
+    TOTAL                    ok=97 fail=0
+  PB-single-some:
+    g2+|rc2|above            fail  1
+    g2+|rc2|above            ok    30
+    g2+|rc2|direct           fail  8
+    g2+|rc2|direct           ok    28
+    g2+|rc2|thresh           ok    84
+    g2+|rcODD|above          fail  5
+    g2+|rcODD|above          ok    15
+    g2+|rcODD|direct         fail  4
+    g2+|rcODD|direct         ok    14
+    g2+|rcODD|thresh         ok    97
+    TOTAL                    ok=268 fail=18
+  PB-single-some@kill:
+    g2+|rc2|above            ok    2
+    g2+|rc2|direct           fail  8
+    g2+|rc2|direct           ok    20
+    g2+|rcODD|above          fail  5
+    g2+|rcODD|above          ok    14
+    g2+|rcODD|direct         fail  4
+    g2+|rcODD|direct         ok    14
+    g2+|rcODD|thresh         ok    30
+    TOTAL                    ok=80 fail=17
+MUTATION CONTROLS (teeth): {'M-A2': 18, 'M-D1': 42, 'M-B1-evenkill': 313, 'M-B1-oddkill': 39, 'M-A1': 77, 'M-B2': 109}
+------------------------------------------------------------------------------
+KILLED-GROUP GENRES (genre, p, g0, at_bottom):
+    ('CROSS', 2, 2, False): 1
+    ('CROSS', 3, 1, False): 8
+    ('MODP', 2, 1, False): 101
+    ('MODP', 2, 1, True): 6
+    ('MODP', 2, 2, False): 21
+    ('MODP', 3, 1, False): 31
+    ('SIGN-PAIR', 2, 2, False): 19
+    ('SIGN-PAIR', 2, 2, True): 30
+    ('SIGN-PAIR', 3, 2, False): 67
+    ('SIGN-PAIR', 3, 2, True): 66
+    ('SIGN-PAIR', 5, 2, True): 1
+    ('SIGN-PAIR-MULTI', 3, 2, False): 1
+KILL-ROW SURVIVOR PATTERN (bottom_surv, casc_surv): {(True, True): 122, (True, False): 72, (False, True): 6}
+KILL-ROW minimal survivor sum-free: {True: 180, False: 20}
+total violations: 0
+elapsed: 26.3s
+results -> /data/users/asvin/math-and-lean/p-adic-splitting-densities/verification/openmath/survdisj_instrument_results.json
