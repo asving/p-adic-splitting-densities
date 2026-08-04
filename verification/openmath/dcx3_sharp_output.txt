@@ -1,0 +1,83 @@
+dcx3_sharp_seal — DCX3 SHARP-LOCUS SEALED CONFIRMATION
+-- DS1/Zp,p=5: E4=8 core=True s2g3=1 s1u0=1 (u0=21; mut s1u0'=1) census: {'pairs': 64, 'track': 6, 'e1nz': 24, 'boundary': 4, 'pool_eq_e0': 2, 'direct': 0, 'pred_live': 3, 'dcx_meas': 3, 'mism': 0, 'q1nz': 12, 'bnd_live': 3, 'dir_live': 0, 'c3_clean_nz': 0, 'c3_clean_z': 0}; elapsed 0.0s
+-- DS1/Fpt,p=2: E4=8 core=True s2g3=1 s1u0=1 (u0=21; mut s1u0'=1) census: {'pairs': 64, 'track': 6, 'e1nz': 24, 'boundary': 4, 'pool_eq_e0': 2, 'direct': 0, 'pred_live': 3, 'dcx_meas': 3, 'mism': 0, 'q1nz': 12, 'bnd_live': 3, 'dir_live': 0, 'c3_clean_nz': 0, 'c3_clean_z': 0}; elapsed 0.0s
+  VIOLATION [F-SHARP] DS2/Zp,p=3: (267,273) meas=True pred=False track=True lvl2=6 2e1=8 pool=6 e0=3 s3=(1,1) s2=(0,3) s1=(2,2) u1=(6,3) core=True
+  VIOLATION [F-SHARP] DS2/Zp,p=3: (269,271) meas=True pred=False track=True lvl2=6 2e1=8 pool=6 e0=3 s3=(1,1) s2=(1,2) s1=(2,2) u1=(5,4) core=True
+  VIOLATION [F-SHARP] DS2/Zp,p=3: (271,269) meas=True pred=False track=True lvl2=6 2e1=8 pool=6 e0=3 s3=(1,1) s2=(2,1) s1=(2,2) u1=(4,5) core=True
+  VIOLATION [F-SHARP] DS2/Zp,p=3: (273,267) meas=True pred=False track=True lvl2=6 2e1=8 pool=6 e0=3 s3=(1,1) s2=(3,0) s1=(2,2) u1=(3,6) core=True
+-- DS2/Zp,p=3: E4=24 core=True s2g3=3 s1u0=2 (u0=17; mut s1u0'=2) census: {'pairs': 576, 'track': 66, 'e1nz': 264, 'boundary': 27, 'pool_eq_e0': 6, 'direct': 27, 'pred_live': 51, 'dcx_meas': 55, 'mism': 4, 'q1nz': 220, 'bnd_live': 24, 'dir_live': 31, 'c3_clean_nz': 27, 'c3_clean_z': 4}; elapsed 0.0s
+-- DS3/Zp,p=3: E4=24 core=False s2g3=2 s1u0=1 (u0=27; mut s1u0'=0) census: {'pairs': 576, 'track': 15, 'e1nz': 240, 'boundary': 8, 'pool_eq_e0': 4, 'direct': 4, 'pred_live': 10, 'dcx_meas': 10, 'mism': 0, 'q1nz': 160, 'bnd_live': 6, 'dir_live': 4, 'c3_clean_nz': 4, 'c3_clean_z': 0}; elapsed 0.0s
+  VIOLATION [F-SHARP] DS4/Zp,p=3: (242,251) meas=True pred=False track=True lvl2=2 2e1=4 pool=8 e0=4 s3=(2,2) s2=(0,1) s1=(2,3) u1=(5,4) core=True
+  VIOLATION [F-SHARP] DS4/Zp,p=3: (245,248) meas=True pred=False track=True lvl2=2 2e1=4 pool=8 e0=4 s3=(2,2) s2=(1,0) s1=(2,3) u1=(4,5) core=True
+  VIOLATION [F-SHARP] DS4/Zp,p=3: (248,245) meas=True pred=False track=True lvl2=2 2e1=4 pool=8 e0=4 s3=(2,2) s2=(0,1) s1=(3,2) u1=(5,4) core=True
+  VIOLATION [F-SHARP] DS4/Zp,p=3: (248,251) meas=True pred=False track=True lvl2=2 2e1=4 pool=9 e0=4 s3=(2,2) s2=(0,1) s1=(3,3) u1=(5,4) core=True
+  VIOLATION [F-SHARP] DS4/Zp,p=3: (251,242) meas=True pred=False track=True lvl2=2 2e1=4 pool=8 e0=4 s3=(2,2) s2=(1,0) s1=(3,2) u1=(4,5) core=True
+  VIOLATION [F-SHARP] DS4/Zp,p=3: (251,248) meas=True pred=False track=True lvl2=2 2e1=4 pool=9 e0=4 s3=(2,2) s2=(1,0) s1=(3,3) u1=(4,5) core=True
+-- DS4/Zp,p=3: E4=24 core=True s2g3=1 s1u0=3 (u0=23; mut s1u0'=3) census: {'pairs': 576, 'track': 28, 'e1nz': 252, 'boundary': 16, 'pool_eq_e0': 2, 'direct': 0, 'pred_live': 15, 'dcx_meas': 21, 'mism': 6, 'q1nz': 189, 'bnd_live': 15, 'dir_live': 6, 'c3_clean_nz': 0, 'c3_clean_z': 6}; elapsed 0.0s
+-- DS4/Fpt,p=2: E4=24 core=True s2g3=1 s1u0=3 (u0=23; mut s1u0'=3) census: {'pairs': 576, 'track': 28, 'e1nz': 252, 'boundary': 16, 'pool_eq_e0': 2, 'direct': 0, 'pred_live': 15, 'dcx_meas': 21, 'mism': 6, 'q1nz': 189, 'bnd_live': 15, 'dir_live': 6, 'c3_clean_nz': 0, 'c3_clean_z': 6}; elapsed 0.1s
+-- DS5/Zp,p=3: E4=18 core=True s2g3=2 s1u0=2 (u0=7; mut s1u0'=2) census: {'pairs': 324, 'track': 144, 'e1nz': 144, 'boundary': 72, 'pool_eq_e0': 16, 'direct': 36, 'pred_live': 100, 'dcx_meas': 112, 'mism': 12, 'q1nz': 112, 'bnd_live': 64, 'dir_live': 48, 'c3_clean_nz': 36, 'c3_clean_z': 12}; elapsed 0.0s
+-- DS5/Fpt,p=2: E4=18 core=True s2g3=2 s1u0=2 (u0=7; mut s1u0'=2) census: {'pairs': 324, 'track': 144, 'e1nz': 144, 'boundary': 72, 'pool_eq_e0': 16, 'direct': 36, 'pred_live': 100, 'dcx_meas': 112, 'mism': 12, 'q1nz': 112, 'bnd_live': 64, 'dir_live': 48, 'c3_clean_nz': 36, 'c3_clean_z': 12}; elapsed 0.1s
+-- DS6/Zp,p=3: E4=4 core=True s2g3=1 s1u0=0 (u0=5; mut s1u0'=0) census: {'pairs': 16, 'track': 1, 'e1nz': 4, 'boundary': 1, 'pool_eq_e0': 0, 'direct': 0, 'pred_live': 0, 'dcx_meas': 0, 'mism': 0, 'q1nz': 0, 'bnd_live': 0, 'dir_live': 0, 'c3_clean_nz': 0, 'c3_clean_z': 0}; elapsed 0.0s
+-- DS7/Zp,p=3: E4=8 core=False s2g3=1 s1u0=1 (u0=15; mut s1u0'=1) census: {'pairs': 64, 'track': 4, 'e1nz': 16, 'boundary': 4, 'pool_eq_e0': 2, 'direct': 0, 'pred_live': 3, 'dcx_meas': 3, 'mism': 0, 'q1nz': 12, 'bnd_live': 3, 'dir_live': 0, 'c3_clean_nz': 0, 'c3_clean_z': 0}; elapsed 0.0s
+-- DS8/Zp,p=3: E4=12 core=False s2g3=1 s1u0=0 (u0=28; mut s1u0'=0) census: {'pairs': 144, 'track': 0, 'e1nz': 0, 'boundary': 0, 'pool_eq_e0': 0, 'direct': 0, 'pred_live': 0, 'dcx_meas': 0, 'mism': 0, 'q1nz': 0, 'bnd_live': 0, 'dir_live': 0, 'c3_clean_nz': 0, 'c3_clean_z': 0}; elapsed 0.0s
+-- DS9/Zp,p=3: E4=4 core=True s2g3=0 s1u0=1 (u0=9; mut s1u0'=1) census: {'pairs': 16, 'track': 1, 'e1nz': 4, 'boundary': 0, 'pool_eq_e0': 0, 'direct': 0, 'pred_live': 0, 'dcx_meas': 0, 'mism': 0, 'q1nz': 0, 'bnd_live': 0, 'dir_live': 0, 'c3_clean_nz': 0, 'c3_clean_z': 0}; elapsed 0.0s
+
+== COUNTS ==
+  F-CHAIN: 340
+  F-OUTER: 340
+  F-SHARP-CORE: 2536
+  F-SHARP-EXT: 784
+== COVERAGE METERS == M1(boundary rows)=224 M2(pool==e0 rows)=52 [both need >= 20]; direct rows=103
+== MUTANT VISIBILITY (mut != primary, design-computable) == {'m1': 94, 'm2': 313, 'm3': 52, 'm4': 4}
+== CONTROLS (mut != measured; SEPARATE from the law) ==
+  MC-1: TRIPPED (count 134)
+  MC-2: TRIPPED (count 273)
+  MC-3: TRIPPED (count 92)
+  MC-4: TRIPPED (count 44)
+== VIOLATIONS: 40 ==
+   ('F-SHARP', 'DS2/Zp,p=3', '(267,273) meas=True pred=False track=True lvl2=6 2e1=8 pool=6 e0=3 s3=(1,1) s2=(0,3) s1=(2,2) u1=(6,3) core=True')
+   ('F-SHARP', 'DS2/Zp,p=3', '(269,271) meas=True pred=False track=True lvl2=6 2e1=8 pool=6 e0=3 s3=(1,1) s2=(1,2) s1=(2,2) u1=(5,4) core=True')
+   ('F-SHARP', 'DS2/Zp,p=3', '(271,269) meas=True pred=False track=True lvl2=6 2e1=8 pool=6 e0=3 s3=(1,1) s2=(2,1) s1=(2,2) u1=(4,5) core=True')
+   ('F-SHARP', 'DS2/Zp,p=3', '(273,267) meas=True pred=False track=True lvl2=6 2e1=8 pool=6 e0=3 s3=(1,1) s2=(3,0) s1=(2,2) u1=(3,6) core=True')
+   ('F-SHARP', 'DS4/Zp,p=3', '(242,251) meas=True pred=False track=True lvl2=2 2e1=4 pool=8 e0=4 s3=(2,2) s2=(0,1) s1=(2,3) u1=(5,4) core=True')
+   ('F-SHARP', 'DS4/Zp,p=3', '(245,248) meas=True pred=False track=True lvl2=2 2e1=4 pool=8 e0=4 s3=(2,2) s2=(1,0) s1=(2,3) u1=(4,5) core=True')
+   ('F-SHARP', 'DS4/Zp,p=3', '(248,245) meas=True pred=False track=True lvl2=2 2e1=4 pool=8 e0=4 s3=(2,2) s2=(0,1) s1=(3,2) u1=(5,4) core=True')
+   ('F-SHARP', 'DS4/Zp,p=3', '(248,251) meas=True pred=False track=True lvl2=2 2e1=4 pool=9 e0=4 s3=(2,2) s2=(0,1) s1=(3,3) u1=(5,4) core=True')
+   ('F-SHARP', 'DS4/Zp,p=3', '(251,242) meas=True pred=False track=True lvl2=2 2e1=4 pool=8 e0=4 s3=(2,2) s2=(1,0) s1=(3,2) u1=(4,5) core=True')
+   ('F-SHARP', 'DS4/Zp,p=3', '(251,248) meas=True pred=False track=True lvl2=2 2e1=4 pool=9 e0=4 s3=(2,2) s2=(1,0) s1=(3,3) u1=(4,5) core=True')
+   ('F-SHARP', 'DS4/Fpt,p=2', '(242,251) meas=True pred=False track=True lvl2=2 2e1=4 pool=8 e0=4 s3=(2,2) s2=(0,1) s1=(2,3) u1=(5,4) core=True')
+   ('F-SHARP', 'DS4/Fpt,p=2', '(245,248) meas=True pred=False track=True lvl2=2 2e1=4 pool=8 e0=4 s3=(2,2) s2=(1,0) s1=(2,3) u1=(4,5) core=True')
+   ('F-SHARP', 'DS4/Fpt,p=2', '(248,245) meas=True pred=False track=True lvl2=2 2e1=4 pool=8 e0=4 s3=(2,2) s2=(0,1) s1=(3,2) u1=(5,4) core=True')
+   ('F-SHARP', 'DS4/Fpt,p=2', '(248,251) meas=True pred=False track=True lvl2=2 2e1=4 pool=9 e0=4 s3=(2,2) s2=(0,1) s1=(3,3) u1=(5,4) core=True')
+   ('F-SHARP', 'DS4/Fpt,p=2', '(251,242) meas=True pred=False track=True lvl2=2 2e1=4 pool=8 e0=4 s3=(2,2) s2=(1,0) s1=(3,2) u1=(4,5) core=True')
+   ('F-SHARP', 'DS4/Fpt,p=2', '(251,248) meas=True pred=False track=True lvl2=2 2e1=4 pool=9 e0=4 s3=(2,2) s2=(1,0) s1=(3,3) u1=(4,5) core=True')
+   ('F-SHARP', 'DS5/Zp,p=3', '(289,289) meas=True pred=False track=True lvl2=4 2e1=6 pool=6 e0=3 s3=(0,0) s2=(1,1) s1=(2,2) u1=(6,6) core=True')
+   ('F-SHARP', 'DS5/Zp,p=3', '(289,296) meas=True pred=False track=True lvl2=4 2e1=6 pool=6 e0=3 s3=(0,0) s2=(1,1) s1=(2,2) u1=(6,13) core=True')
+   ('F-SHARP', 'DS5/Zp,p=3', '(291,294) meas=True pred=False track=True lvl2=4 2e1=6 pool=6 e0=3 s3=(0,0) s2=(2,0) s1=(2,2) u1=(4,15) core=True')
+   ('F-SHARP', 'DS5/Zp,p=3', '(291,305) meas=True pred=False track=True lvl2=4 2e1=6 pool=6 e0=3 s3=(0,0) s2=(2,0) s1=(2,2) u1=(4,9) core=True')
+   ('F-SHARP', 'DS5/Zp,p=3', '(294,291) meas=True pred=False track=True lvl2=4 2e1=6 pool=6 e0=3 s3=(0,0) s2=(0,2) s1=(2,2) u1=(15,4) core=True')
+   ('F-SHARP', 'DS5/Zp,p=3', '(294,298) meas=True pred=False track=True lvl2=4 2e1=6 pool=6 e0=3 s3=(0,0) s2=(0,2) s1=(2,2) u1=(15,11) core=True')
+   ('F-SHARP', 'DS5/Zp,p=3', '(296,289) meas=True pred=False track=True lvl2=4 2e1=6 pool=6 e0=3 s3=(0,0) s2=(1,1) s1=(2,2) u1=(13,6) core=True')
+   ('F-SHARP', 'DS5/Zp,p=3', '(296,296) meas=True pred=False track=True lvl2=4 2e1=6 pool=6 e0=3 s3=(0,0) s2=(1,1) s1=(2,2) u1=(13,13) core=True')
+   ('F-SHARP', 'DS5/Zp,p=3', '(298,294) meas=True pred=False track=True lvl2=4 2e1=6 pool=6 e0=3 s3=(0,0) s2=(2,0) s1=(2,2) u1=(11,15) core=True')
+   ('F-SHARP', 'DS5/Zp,p=3', '(298,305) meas=True pred=False track=True lvl2=4 2e1=6 pool=6 e0=3 s3=(0,0) s2=(2,0) s1=(2,2) u1=(11,9) core=True')
+   ('F-SHARP', 'DS5/Zp,p=3', '(305,291) meas=True pred=False track=True lvl2=4 2e1=6 pool=6 e0=3 s3=(0,0) s2=(0,2) s1=(2,2) u1=(9,4) core=True')
+   ('F-SHARP', 'DS5/Zp,p=3', '(305,298) meas=True pred=False track=True lvl2=4 2e1=6 pool=6 e0=3 s3=(0,0) s2=(0,2) s1=(2,2) u1=(9,11) core=True')
+   ('F-SHARP', 'DS5/Fpt,p=2', '(289,289) meas=True pred=False track=True lvl2=4 2e1=6 pool=6 e0=3 s3=(0,0) s2=(1,1) s1=(2,2) u1=(6,6) core=True')
+   ('F-SHARP', 'DS5/Fpt,p=2', '(289,296) meas=True pred=False track=True lvl2=4 2e1=6 pool=6 e0=3 s3=(0,0) s2=(1,1) s1=(2,2) u1=(6,13) core=True')
+   ('F-SHARP', 'DS5/Fpt,p=2', '(291,294) meas=True pred=False track=True lvl2=4 2e1=6 pool=6 e0=3 s3=(0,0) s2=(2,0) s1=(2,2) u1=(4,15) core=True')
+   ('F-SHARP', 'DS5/Fpt,p=2', '(291,305) meas=True pred=False track=True lvl2=4 2e1=6 pool=6 e0=3 s3=(0,0) s2=(2,0) s1=(2,2) u1=(4,9) core=True')
+   ('F-SHARP', 'DS5/Fpt,p=2', '(294,291) meas=True pred=False track=True lvl2=4 2e1=6 pool=6 e0=3 s3=(0,0) s2=(0,2) s1=(2,2) u1=(15,4) core=True')
+   ('F-SHARP', 'DS5/Fpt,p=2', '(294,298) meas=True pred=False track=True lvl2=4 2e1=6 pool=6 e0=3 s3=(0,0) s2=(0,2) s1=(2,2) u1=(15,11) core=True')
+   ('F-SHARP', 'DS5/Fpt,p=2', '(296,289) meas=True pred=False track=True lvl2=4 2e1=6 pool=6 e0=3 s3=(0,0) s2=(1,1) s1=(2,2) u1=(13,6) core=True')
+   ('F-SHARP', 'DS5/Fpt,p=2', '(296,296) meas=True pred=False track=True lvl2=4 2e1=6 pool=6 e0=3 s3=(0,0) s2=(1,1) s1=(2,2) u1=(13,13) core=True')
+   ('F-SHARP', 'DS5/Fpt,p=2', '(298,294) meas=True pred=False track=True lvl2=4 2e1=6 pool=6 e0=3 s3=(0,0) s2=(2,0) s1=(2,2) u1=(11,15) core=True')
+   ('F-SHARP', 'DS5/Fpt,p=2', '(298,305) meas=True pred=False track=True lvl2=4 2e1=6 pool=6 e0=3 s3=(0,0) s2=(2,0) s1=(2,2) u1=(11,9) core=True')
+   ('F-SHARP', 'DS5/Fpt,p=2', '(305,291) meas=True pred=False track=True lvl2=4 2e1=6 pool=6 e0=3 s3=(0,0) s2=(0,2) s1=(2,2) u1=(9,4) core=True')
+   ('F-SHARP', 'DS5/Fpt,p=2', '(305,298) meas=True pred=False track=True lvl2=4 2e1=6 pool=6 e0=3 s3=(0,0) s2=(0,2) s1=(2,2) u1=(9,11) core=True')
+results -> /data/users/asvin/math-and-lean/p-adic-splitting-densities/verification/openmath/dcx3_sharp_results.json; total elapsed 0.3s
+SHARP-LOCUS VERDICT (F-SHARP both-inclusions, sealed primary, predicted-0): RED (probe SUCCESS) [40 violations]
+OUTER VERDICT (F-OUTER vs the proved bound, predicted-0): GREEN [0 violations]
+CHAIN-MECHANISM VERDICT (F-CHAIN C1+C2, predicted-0): GREEN [0 violations]
+BOUNDARY COVERAGE (F-BOUNDARY, M1>=20 & M2>=20): MET [M1=224, M2=52]
+CONTROL VERDICT (mutation teeth MC-1..4, SEPARATE): MET
