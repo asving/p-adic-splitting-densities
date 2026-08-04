@@ -203,6 +203,14 @@ def trace_k2(E, sA, sB, u1a, u1b, aA, aB, su, cs, Dd, kdef, key, prin,
     if kdef > ctop or not q2sink:
         return None
     lk = lawkey(g0, p, kdef, ctop)
+    # [rev 2] per-row ATOMIC buffers: globals are committed only at the end
+    # of a fully traced row, so a K2-phase budget timeout never leaves a
+    # partially recorded row in the artifacts.
+    L_LAW = []
+    L_MUT = collections.Counter()
+    L_PAIRC = collections.Counter()
+    L_CNT = collections.Counter()
+    L_QB, L_QC, L_QD, L_GRP = [], [], [], []
     cells = []
     for st in q2sink:
         sgn, b, j, pc, dmp, cons, ncorr, junk, jD, isp, ce, y2 = st
@@ -267,12 +275,12 @@ def trace_k2(E, sA, sB, u1a, u1b, aA, aB, su, cs, Dd, kdef, key, prin,
         classes, signed = classify_group(E, g, p)
         ginfo[jv] = (classes, signed)
         if any(abs(s) == 1 for s in signed): mult1 = True
-        if any(abs(s) >= 2 for s in signed): MUT["M-QC-2"] += 1
+        if any(abs(s) >= 2 for s in signed): L_MUT["M-QC-2"] += 1
     if not mult1:
         viol("SK2-MULT1", tag,
              f"(SURV-K2) FORM COUNTEREXAMPLE at {tag}{list(key)} p={p} "
              f"g0={g0}: no bottom-line group carries a +-1 class")
-    LAW["SK2-MULT1"][(lk, "ok" if mult1 else "fail")] += 1
+    L_LAW.append(("SK2-MULT1", lk, "ok" if mult1 else "fail"))
     # survivor bottom slots + the minimal group
     surv_bottom = sorted(s[1] for s in spec if s[0] == beta_min)
     min_jv = surv_bottom[0] if surv_bottom else None
@@ -281,7 +289,7 @@ def trace_k2(E, sA, sB, u1a, u1b, aA, aB, su, cs, Dd, kdef, key, prin,
     for jv, g in sorted(bgroups.items()):
         classes, signed = ginfo[jv]
         if len(g) > 40:
-            note("qa_skipped_big"); continue
+            L_CNT["qa_skipped_big"] += 1; continue
         is_min = (jv == min_jv)
         is_surv = jv in surv_bottom
         # pair census + matching
@@ -292,7 +300,7 @@ def trace_k2(E, sA, sB, u1a, u1b, aA, aB, su, cs, Dd, kdef, key, prin,
             neg = [c for c in cl[3] if c["sgn"] < 0]
             for a in pos:
                 for b_ in neg:
-                    PAIRC[relpair(E, a, b_)[0]] += 1
+                    L_PAIRC[relpair(E, a, b_)[0]] += 1
             sz, pos, neg, labs = class_match(E, cl, ("T0", "TI"))
             perfect = (sz == min(len(pos), len(neg)))
             if not perfect: grp_perfect = False
@@ -302,7 +310,7 @@ def trace_k2(E, sA, sB, u1a, u1b, aA, aB, su, cs, Dd, kdef, key, prin,
                           for a in pos]
                 szm = kuhn(len(pos), len(neg),
                            lambda u, v: labs_m[u][v] in ("T0", "TI"))
-                if szm < sz: MUT["M-QA-WRONGQ"] += 1
+                if szm < sz: L_MUT["M-QA-WRONGQ"] += 1
             # Q-B: canonical remainder for +-1 classes
             s = cl[1] - cl[2]
             qb = None
@@ -317,7 +325,7 @@ def trace_k2(E, sA, sB, u1a, u1b, aA, aB, su, cs, Dd, kdef, key, prin,
                                lambda u, v: laM[idx[u]][v])
                     if szx == len(mino): removable.append(xi)
                 canon = (len(removable) == 1)
-                LAW["QB-canon"][(lk, "ok" if canon else "fail")] += 1
+                L_LAW.append(("QB-canon", lk, "ok" if canon else "fail"))
                 ts = [c["t"] for c in cl[3]]
                 if canon:
                     r = maj[removable[0]]
@@ -325,30 +333,30 @@ def trace_k2(E, sA, sB, u1a, u1b, aA, aB, su, cs, Dd, kdef, key, prin,
                     elif r["t"] == 0: cat = "t0"
                     elif r["t"] == max(ts): cat = "tmax"
                     else: cat = "interior"
-                    LAW["QB-rem"][(lk, cat)] += 1
-                    if r["t"] != 1: MUT["M-QB-T1-fail"] += 1
+                    L_LAW.append(("QB-rem", lk, cat))
+                    if r["t"] != 1: L_MUT["M-QB-T1-fail"] += 1
                     qb = dict(cat=cat, t=r["t"], tmax=max(ts),
                               tset=sorted(set(ts)), ncorr=r["ncorr"],
                               junk=r["junk"],
                               cf=(r["ncorr"] == 0 and r["junk"] == 0),
                               sgn=int(s))
-                    QBREC.append(dict(tower=tag, key=list(key), p=p, g0=g0,
-                                      slot=list(jv), is_min=is_min,
-                                      is_surv=is_surv, killed=killed_bottom[jv],
-                                      **qb))
+                    L_QB.append(dict(tower=tag, key=list(key), p=p, g0=g0,
+                                     slot=list(jv), is_min=is_min,
+                                     is_surv=is_surv, killed=killed_bottom[jv],
+                                     **qb))
                 else:
-                    QBREC.append(dict(tower=tag, key=list(key), p=p, g0=g0,
-                                      slot=list(jv), is_min=is_min,
-                                      is_surv=is_surv, killed=killed_bottom[jv],
-                                      cat="noncanon", nremov=len(removable),
-                                      tset=sorted(set(ts)), sgn=int(s)))
+                    L_QB.append(dict(tower=tag, key=list(key), p=p, g0=g0,
+                                     slot=list(jv), is_min=is_min,
+                                     is_surv=is_surv, killed=killed_bottom[jv],
+                                     cat="noncanon", nremov=len(removable),
+                                     tset=sorted(set(ts)), sgn=int(s)))
             cl_recs.append(dict(signed=int(s), n=len(cl[3]),
                                 npos=len(pos), nneg=len(neg),
                                 perfect=bool(perfect)))
-        LAW["QA-match-all"][(lk, "ok" if grp_perfect else "fail")] += 1
+        L_LAW.append(("QA-match-all", lk, "ok" if grp_perfect else "fail"))
         if is_min:
             row_qa_min = grp_perfect
-            LAW["QA-match"][(lk, "ok" if grp_perfect else "fail")] += 1
+            L_LAW.append(("QA-match", lk, "ok" if grp_perfect else "fail"))
         # Q-C on this group
         St = collections.Counter()
         for c in g: St[c["t"]] += c["sgn"]
@@ -357,18 +365,18 @@ def trace_k2(E, sA, sB, u1a, u1b, aA, aB, su, cs, Dd, kdef, key, prin,
         cfs = sum(c["sgn"] for c in g if c["ncorr"] == 0 and c["junk"] == 0)
         tot = sum(c["sgn"] for c in g)
         if is_min:
-            LAW["QC-seedbound"][(lk, "ok" if seedb else "fail")] += 1
-            LAW["QC-cf"][(lk, "ok" if tot == cfs else "fail")] += 1
-            QCREC.append(dict(tower=tag, key=list(key), p=p, g0=g0,
-                              slot=list(jv), stvec=stvec, total=tot,
-                              cfsigned=cfs, n=len(g),
-                              signed=[int(s) for s in signed],
-                              killed=killed_bottom[jv]))
+            L_LAW.append(("QC-seedbound", lk, "ok" if seedb else "fail"))
+            L_LAW.append(("QC-cf", lk, "ok" if tot == cfs else "fail"))
+            L_QC.append(dict(tower=tag, key=list(key), p=p, g0=g0,
+                             slot=list(jv), stvec=stvec, total=tot,
+                             cfsigned=cfs, n=len(g),
+                             signed=[int(s) for s in signed],
+                             killed=killed_bottom[jv]))
         # Q-D pattern (survivor groups; committed first-occurrence order)
         if is_surv:
             pat = ",".join(str(int(s)) for s in signed)
-            LAW["QD-pattern"][(lk, f"({pat})")] += 1
-        GRPREC.append(dict(
+            L_LAW.append(("QD-pattern", lk, f"({pat})"))
+        L_GRP.append(dict(
             tower=tag, key=list(key), p=p, kind=kind, g0=g0, phase=phase,
             slot=list(jv), n=len(g), is_min=is_min, is_surv=is_surv,
             killed=bool(killed_bottom[jv]), signed=[int(s) for s in signed],
@@ -383,7 +391,7 @@ def trace_k2(E, sA, sB, u1a, u1b, aA, aB, su, cs, Dd, kdef, key, prin,
         classes, signed = ginfo[min_jv]
         gmin = bgroups[min_jv]
         cf = [c for c in gmin if c["ncorr"] == 0 and c["junk"] == 0]
-        QDROWS.append(dict(
+        L_QD.append(dict(
             tower=tag, key=list(key), p=p, kind=kind, g0=g0, phase=phase,
             e0=E.e[0], h0=E.h[0], d0=E.d0, m=m, kdef=kdef, ctop=ctop,
             strat=lk[2], ndcells=len(E.Dcells),
@@ -392,6 +400,12 @@ def trace_k2(E, sA, sB, u1a, u1b, aA, aB, su, cs, Dd, kdef, key, prin,
             nslots_bottom=len(bgroups), kill_here=bool(kill_here),
             n=len(gmin), pattern=",".join(str(int(s)) for s in signed),
             qa_perfect=bool(row_qa_min) if row_qa_min is not None else None))
+    # [rev 2] atomic commit of the fully traced row
+    for (cand, lkk, v) in L_LAW: LAW[cand][(lkk, v)] += 1
+    MUT.update(L_MUT); PAIRC.update(L_PAIRC)
+    for k_, n_ in L_CNT.items(): note(k_, n_)
+    QBREC.extend(L_QB); QCREC.extend(L_QC); QDROWS.extend(L_QD)
+    GRPREC.extend(L_GRP)
     note("live_rows"); note(f"live_rows_{lk[0]}")
     if kill_here: note("kill_rows")
     return dict(live=True)
@@ -573,6 +587,7 @@ SD_ROSTER = [
 
 # NEW adversarial K2 roster: g0 in {2,3,4} (first g0 >= 3 probes anywhere),
 # deep m = 4, chars 2/3/5, d0 = 2, deep pools
+K2_BUDGET = 300          # [rev 2] wall-clock seconds per K2 tower
 K2_ROSTER = [
     ("K2G3AF",  3, "Fpt", 2, 1, [(2,1,3), (2,1,1), (3,2,1), (2,1,1)]),
     ("K2G3AZ",  3, "Zp",  3, 1, [(2,1,3), (2,1,1), (3,2,1), (2,1,1)]),
@@ -634,10 +649,26 @@ def main():
     print("=" * 78)
     print("PHASE K2 — NEW adversarial roster (g0 in {2,3,4}, deep m, "
           "chars 2/3/5)")
+    print("[rev 2] per-tower wall-clock budget %ds (g0 >= 3 engine cost — "
+          "see the note's amendment bracket); timeout = disclosed skip" %
+          K2_BUDGET)
     print("=" * 78)
+    import signal
+    def _alrm(sig, frm): raise TimeoutError("K2 tower budget")
     k2rows = []
     for spec in K2_ROSTER:
-        run_fresh_tower(spec, 12, 6, "k2", k2rows)
+        old = signal.signal(signal.SIGALRM, _alrm)
+        signal.alarm(K2_BUDGET)
+        try:
+            run_fresh_tower(spec, 12, 6, "k2", k2rows)
+        except TimeoutError:
+            note("tower_budget_timeout")
+            print(f"-- K2 {spec[0]} m={spec[1]} {spec[2]},p={spec[3]},"
+                  f"d0={spec[4]} g0={spec[5][0][2]}: BUDGET TIMEOUT "
+                  f"({K2_BUDGET}s) — disclosed, skipped")
+            harvest(spec[0])
+        finally:
+            signal.alarm(0); signal.signal(signal.SIGALRM, old)
         save(time.time() - t0, nu)
     print("=" * 78)
     fams = ["SK2-PIN", "SK2-CONS", "SK2-SEED", "SK2-W0K", "SK2-SGN",

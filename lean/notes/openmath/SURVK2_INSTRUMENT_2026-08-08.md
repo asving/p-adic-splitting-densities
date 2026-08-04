@@ -186,6 +186,34 @@ g0 >= 2), HARNESS.
   Falsifier: a kill-row pattern outside the five — the box's
   constraint census is incomplete.
 
+    [AMENDMENT rev 2, 2026-08-08 campaign (wallclock 2026-08-04), AFTER
+    the seal 10ec9f3 and BEFORE any verdict was read.  The sealed run's
+    union phase replicated the committed selection EXACTLY (286/286
+    g0 >= 2 live rows, tower-by-tower counts matching) in 22 s; PHASE
+    K2's first tower (K2G3AF, Fpt g0 = 3) then exceeded 45 MINUTES
+    inside ENGINE PREP (the w_m(Chat) Phi-adic development;
+    stack-pinned in strata3_probe.w3 -> dev -> pdivmod) without
+    completing.  Throwaway engineering probes (/tmp copies, no
+    artifacts): Fpt g0=3 m=3 prep > 250 s; Zp g0=3 m=3 prep > 240 s;
+    even m=2 g0=3 prep > 240 s; while g0=2 shapes at the SAME level-0
+    polygon width P0 = 6 (e.g. reads (3,2,2)) prep in under a second —
+    the wall is the g0 >= 3 residual-degree K-tower arithmetic in the
+    committed engines (read-only, not repairable here), not polygon
+    size.  Amendment, runner rev 2 (md5 389b1db9fc0266a12db74e021d7d51c9):
+    (i) per-row ATOMIC buffering — global records/counters commit only
+    at the end of a fully traced row; (ii) a 300 s per-tower wall-clock
+    budget in PHASE K2, timeout = disclosed skip (counter
+    tower_budget_timeout), so every sealed K2 tower still gets a
+    bounded attempt in the deterministic run.  ROSTER AND ALL D2
+    PREDICTIONS UNCHANGED.  Consequence declared up front: the g0 >= 3
+    towers are expected to time out, in which case the g0 in {3,4}
+    clause of PRED-2 is UNTESTED — a disclosed COVERAGE FAILURE, kept
+    on record, not repaired away — and g0 >= 3 remains machine-dark
+    program-wide, now with a measured reason (the engine cost wall).
+    The wall-clock budget makes the K2 row set timing-dependent in
+    principle; every row actually traced is listed in the artifacts
+    and all verdicts are law-keyed over those rows.]
+
 ## D3. RESULTS
 
 PENDING — this section is written at commit 2, from the artifacts of
