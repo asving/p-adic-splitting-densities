@@ -1,0 +1,108 @@
+== wmultdcx_stress: LAW-DCX-(m+1) countermodel hunt [mode=run] ==
+  *** PID DIVERGENCE [PID-MAX] *** W3DEEP: {'key': (659, 667), 'level': 1, 'maxnz': 2, 'c': 1, 'cs': [1, 1], 'D': 3, 'kdef': 1}
+  *** PID DIVERGENCE [PID-MAX] *** W3DEEP: {'key': (651, 651), 'level': 1, 'maxnz': 2, 'c': 1, 'cs': [1, 1], 'D': 3, 'kdef': 1}
+  *** PID DIVERGENCE [PID-MAX] *** W3DEEP: {'key': (651, 667), 'level': 1, 'maxnz': 2, 'c': 1, 'cs': [1, 1], 'D': 3, 'kdef': 1}
+-- W3DEEP m=3 Zp,p=3,d0=1 e=[3, 2, 2, 2]: pairs=576 strack=144 track=66 live=28 pred=28 MISM=0 nested12=53/0 c1eq2=10 maxc=[2, 2] defs={0: 27, 1: 1} kdefs={1: 26, 2: 2} edge/miss=27/38 pid=36 (0.0s)
+  *** PID DIVERGENCE [PID-MAX] *** W3DEEP4: {'key': (1271, 1279), 'level': 1, 'maxnz': 3, 'c': 2, 'cs': [2, 2], 'D': 3, 'kdef': 1}
+  *** PID DIVERGENCE [PID-MAX] *** W3DEEP4: {'key': (1271, 1279), 'level': 2, 'maxnz': 3, 'c': 2, 'cs': [2, 2], 'D': 3, 'kdef': 1}
+  *** PID DIVERGENCE [PID-MAX] *** W3DEEP4: {'key': (1267, 1267), 'level': 1, 'maxnz': 3, 'c': 2, 'cs': [2, 1], 'D': 3, 'kdef': 1}
+  *** PID DIVERGENCE [PID-MAX] *** W3DEEP4: {'key': (1267, 1271), 'level': 1, 'maxnz': 3, 'c': 2, 'cs': [2, 2], 'D': 3, 'kdef': 1}
+  *** PID DIVERGENCE [PID-MAX] *** W3DEEP4: {'key': (1257, 1271), 'level': 1, 'maxnz': 3, 'c': 2, 'cs': [2, 2], 'D': 2, 'kdef': 2}
+  *** PID DIVERGENCE [PID-MAX] *** W3DEEP4: {'key': (1271, 1271), 'level': 1, 'maxnz': 3, 'c': 2, 'cs': [2, 2], 'D': 3, 'kdef': 1}
+  *** PID DIVERGENCE [PID-MAX] *** W3DEEP4: {'key': (1271, 1271), 'level': 2, 'maxnz': 3, 'c': 2, 'cs': [2, 2], 'D': 3, 'kdef': 1}
+  *** PID DIVERGENCE [PID-MAX] *** W3DEEP4: {'key': (1259, 1279), 'level': 1, 'maxnz': 2, 'c': 1, 'cs': [1, 1], 'D': 3, 'kdef': 1}
+  *** PID DIVERGENCE [PID-MAX] *** W3DEEP4: {'key': (1259, 1271), 'level': 1, 'maxnz': 2, 'c': 1, 'cs': [1, 1], 'D': 3, 'kdef': 1}
+  *** PID DIVERGENCE [PID-MAX] *** W3DEEP4: {'key': (1263, 1275), 'level': 1, 'maxnz': 2, 'c': 1, 'cs': [1, 1], 'D': 3, 'kdef': 1}
+  *** PID DIVERGENCE [PID-MAX] *** W3DEEP4: {'key': (1263, 1279), 'level': 1, 'maxnz': 2, 'c': 1, 'cs': [1, 2], 'D': 3, 'kdef': 1}
+  *** PID DIVERGENCE [PID-MAX] *** W3DEEP4: {'key': (1263, 1267), 'level': 1, 'maxnz': 2, 'c': 1, 'cs': [1, 1], 'D': 3, 'kdef': 1}
+  *** PID DIVERGENCE [PID-MAX] *** W3DEEP4: {'key': (1263, 1271), 'level': 1, 'maxnz': 3, 'c': 1, 'cs': [1, 2], 'D': 3, 'kdef': 1}
+  *** PID DIVERGENCE [PID-MAX] *** W3DEEP4: {'key': (1251, 1255), 'level': 1, 'maxnz': 2, 'c': 1, 'cs': [1, 1], 'D': 3, 'kdef': 1}
+  *** PID DIVERGENCE [PID-MAX] *** W3DEEP4: {'key': (1251, 1279), 'level': 1, 'maxnz': 2, 'c': 1, 'cs': [1, 1], 'D': 3, 'kdef': 1}
+  *** PID DIVERGENCE [PID-MAX] *** W3DEEP4: {'key': (1251, 1271), 'level': 1, 'maxnz': 2, 'c': 1, 'cs': [1, 1], 'D': 3, 'kdef': 1}
+-- W3DEEP4 m=3 Zp,p=3,d0=1 e=[4, 2, 2, 2]: pairs=1024 strack=256 track=120 live=105 pred=105 MISM=0 nested12=114/0 c1eq2=30 maxc=[2, 2] defs={0: 84, 1: 21} kdefs={2: 42, 1: 63} edge/miss=84/15 pid=40 (0.1s)
+  *** PID DIVERGENCE [PID-MAX] *** W3NEST: {'key': (291, 295), 'level': 1, 'maxnz': 2, 'c': 1, 'cs': [1, 1], 'D': 3, 'kdef': 1}
+  *** PID DIVERGENCE [PID-MAX] *** W3NEST: {'key': (295, 295), 'level': 1, 'maxnz': 2, 'c': 1, 'cs': [1, 2], 'D': 3, 'kdef': 1}
+  *** PID DIVERGENCE [PID-MAX] *** W3NEST: {'key': (295, 295), 'level': 2, 'maxnz': 3, 'c': 2, 'cs': [1, 2], 'D': 3, 'kdef': 1}
+  *** PID DIVERGENCE [PID-MAX] *** W3NEST: {'key': (303, 303), 'level': 1, 'maxnz': 1, 'c': 0, 'cs': [0, 1], 'D': 3, 'kdef': 1}
+-- W3NEST m=3 Zp,p=3,d0=1 e=[2, 2, 2, 2]: pairs=256 strack=64 track=28 live=21 pred=21 MISM=0 nested12=22/0 c1eq2=0 maxc=[1, 2] defs={0: 18, 1: 3} kdefs={2: 6, 1: 15} edge/miss=18/7 pid=16 (0.0s)
+  *** PID DIVERGENCE [PID-MAX] *** W3NESTF: {'key': (291, 295), 'level': 1, 'maxnz': 2, 'c': 1, 'cs': [1, 1], 'D': 3, 'kdef': 1}
+  *** PID DIVERGENCE [PID-MAX] *** W3NESTF: {'key': (303, 303), 'level': 1, 'maxnz': 1, 'c': 0, 'cs': [0, 1], 'D': 3, 'kdef': 1}
+-- W3NESTF m=3 Fpt,p=2,d0=1 e=[2, 2, 2, 2]: pairs=256 strack=64 track=28 live=21 pred=21 MISM=0 nested12=22/0 c1eq2=0 maxc=[1, 2] defs={0: 18, 1: 3} kdefs={2: 6, 1: 15} edge/miss=18/7 pid=16 (0.1s)
+  *** PID DIVERGENCE [PID-MAX] *** W3FMID: {'key': (95, 95), 'level': 1, 'maxnz': 2, 'c': 1, 'cs': [1, 1], 'D': 3, 'kdef': 1}
+-- W3FMID m=3 Zp,p=3,d0=1 e=[2, 1, 2, 2]: pairs=64 strack=16 track=6 live=3 pred=3 MISM=0 nested12=5/0 c1eq2=0 maxc=[1, 1] defs={0: 3} kdefs={1: 3} edge/miss=3/3 pid=4 (0.0s)
+  *** PID DIVERGENCE [PID-MAX] *** W3FTOP: {'key': (77, 77), 'level': 1, 'maxnz': 2, 'c': 1, 'cs': [1, 2], 'D': 0, 'kdef': 2}
+  *** PID DIVERGENCE [PID-MAX] *** W3FTOP: {'key': (77, 77), 'level': 2, 'maxnz': 3, 'c': 2, 'cs': [1, 2], 'D': 0, 'kdef': 2}
+-- W3FTOP m=3 Zp,p=3,d0=1 e=[2, 2, 1, 2]: pairs=64 strack=16 track=6 live=3 pred=3 MISM=0 nested12=5/0 c1eq2=0 maxc=[1, 2] defs={0: 3} kdefs={2: 3} edge/miss=3/3 pid=4 (0.0s)
+-- W3FDBL m=3 Zp,p=3,d0=1 e=[3, 1, 1, 2]: pairs=36 strack=9 track=3 live=1 pred=1 MISM=0 nested12=3/0 c1eq2=1 maxc=[2, 2] defs={0: 1} kdefs={2: 1} edge/miss=1/2 pid=2 (0.0s)
+  *** PID DIVERGENCE [PID-MAX] *** W3FMIDF: {'key': (95, 95), 'level': 1, 'maxnz': 2, 'c': 1, 'cs': [1, 1], 'D': 3, 'kdef': 1}
+-- W3FMIDF m=3 Fpt,p=2,d0=1 e=[2, 1, 2, 2]: pairs=64 strack=16 track=6 live=3 pred=3 MISM=0 nested12=5/0 c1eq2=0 maxc=[1, 1] defs={0: 3} kdefs={1: 3} edge/miss=3/3 pid=4 (0.0s)
+  *** PID DIVERGENCE [PID-MAX] *** W3TRK1: {'key': (335, 335), 'level': 1, 'maxnz': 3, 'c': 2, 'cs': [2, 2], 'D': 3, 'kdef': 1}
+  *** PID DIVERGENCE [PID-MAX] *** W3TRK1: {'key': (335, 335), 'level': 2, 'maxnz': 3, 'c': 2, 'cs': [2, 2], 'D': 3, 'kdef': 1}
+  *** PID DIVERGENCE [PID-MAX] *** W3TRK1: {'key': (329, 335), 'level': 1, 'maxnz': 2, 'c': 1, 'cs': [1, 1], 'D': 3, 'kdef': 1}
+  *** PID DIVERGENCE [PID-MAX] *** W3TRK1: {'key': (331, 333), 'level': 1, 'maxnz': 2, 'c': 1, 'cs': [1, 1], 'D': 3, 'kdef': 1}
+  *** PID DIVERGENCE [PID-MAX] *** W3TRK1: {'key': (331, 335), 'level': 1, 'maxnz': 2, 'c': 1, 'cs': [1, 2], 'D': 3, 'kdef': 1}
+  *** PID DIVERGENCE [PID-MAX] *** W3TRK1: {'key': (325, 327), 'level': 1, 'maxnz': 2, 'c': 1, 'cs': [1, 1], 'D': 3, 'kdef': 1}
+  *** PID DIVERGENCE [PID-MAX] *** W3TRK1: {'key': (325, 335), 'level': 1, 'maxnz': 2, 'c': 1, 'cs': [1, 1], 'D': 3, 'kdef': 1}
+  *** PID DIVERGENCE [PID-MAX] *** W3TRK1: {'key': (327, 327), 'level': 1, 'maxnz': 2, 'c': 1, 'cs': [1, 2], 'D': 3, 'kdef': 1}
+  *** PID DIVERGENCE [PID-MAX] *** W3TRK1: {'key': (327, 333), 'level': 1, 'maxnz': 2, 'c': 1, 'cs': [1, 1], 'D': 3, 'kdef': 1}
+  *** PID DIVERGENCE [PID-MAX] *** W3TRK1: {'key': (327, 335), 'level': 1, 'maxnz': 3, 'c': 1, 'cs': [1, 2], 'D': 3, 'kdef': 1}
+  *** PID DIVERGENCE [PID-MAX] *** W3TRK1: {'key': (327, 335), 'level': 2, 'maxnz': 3, 'c': 2, 'cs': [1, 2], 'D': 3, 'kdef': 1}
+  *** PID DIVERGENCE [PID-MAX] *** W3TRK1: {'key': (331, 331), 'level': 1, 'maxnz': 1, 'c': 0, 'cs': [0, 1], 'D': 3, 'kdef': 1}
+-- W3TRK1 m=3 Zp,p=3,d0=1 e=[3, 2, 2, 1]: pairs=144 strack=144 track=66 live=55 pred=55 MISM=0 nested12=60/0 c1eq2=10 maxc=[2, 2] defs={0: 45, 1: 10} kdefs={1: 35, 2: 20} edge/miss=45/11 pid=36 (0.0s)
+  *** PID DIVERGENCE [PID-MAX] *** W3DIR: {'key': (603, 615), 'level': 1, 'maxnz': 2, 'c': 1, 'cs': [1, 2], 'D': 6, 'kdef': 0}
+  *** PID DIVERGENCE [PID-MAX] *** W3DIR: {'key': (603, 605), 'level': 1, 'maxnz': 2, 'c': 1, 'cs': [1, 1], 'D': 5, 'kdef': 1}
+  *** PID DIVERGENCE [PID-MAX] *** W3DIR: {'key': (621, 621), 'level': 1, 'maxnz': 2, 'c': 1, 'cs': [1, 1], 'D': 6, 'kdef': 0}
+  *** PID DIVERGENCE [PID-MAX] *** W3DIR: {'key': (611, 621), 'level': 1, 'maxnz': 2, 'c': 1, 'cs': [1, 1], 'D': 5, 'kdef': 1}
+  *** PID DIVERGENCE [PID-MAX] *** W3DIR: {'key': (603, 621), 'level': 1, 'maxnz': 2, 'c': 1, 'cs': [1, 1], 'D': 6, 'kdef': 0}
+  *** PID DIVERGENCE [PID-MAX] *** W3DIR: {'key': (603, 611), 'level': 1, 'maxnz': 2, 'c': 1, 'cs': [1, 2], 'D': 5, 'kdef': 1}
+  *** PID DIVERGENCE [PID-MAX] *** W3DIR: {'key': (603, 603), 'level': 1, 'maxnz': 2, 'c': 1, 'cs': [1, 2], 'D': 6, 'kdef': 0}
+  *** PID DIVERGENCE [PID-MAX] *** W3DIR: {'key': (609, 615), 'level': 1, 'maxnz': 1, 'c': 0, 'cs': [0, 1], 'D': 6, 'kdef': 0}
+  *** PID DIVERGENCE [PID-MAX] *** W3DIR: {'key': (615, 623), 'level': 1, 'maxnz': 1, 'c': 0, 'cs': [0, 1], 'D': 5, 'kdef': 1}
+  *** PID DIVERGENCE [PID-MAX] *** W3DIR: {'key': (615, 615), 'level': 1, 'maxnz': 1, 'c': 0, 'cs': [0, 1], 'D': 6, 'kdef': 0}
+-- W3DIR m=3 Zp,p=3,d0=1 e=[2, 2, 3, 2]: pairs=576 strack=144 track=66 live=55 pred=55 MISM=0 nested12=51/0 c1eq2=0 maxc=[1, 2] defs={2: 3, 0: 34, 1: 18} kdefs={0: 16, 1: 30, 2: 9} edge/miss=34/11 pid=36 (0.0s)
+  *** PID DIVERGENCE [PID-MAX] *** W3G2A: {'key': (687, 687), 'level': 2, 'maxnz': 3, 'c': 2, 'cs': [2, 2], 'D': 3, 'kdef': 1}
+  *** PID DIVERGENCE [PID-MAX] *** W3G2A: {'key': (695, 695), 'level': 1, 'maxnz': 1, 'c': 0, 'cs': [0, 1], 'D': 3, 'kdef': 1}
+-- W3G2A m=3 Zp,p=3,d0=1 e=[3, 2, 2, 2]: pairs=576 strack=144 track=54 live=51 pred=51 MISM=0 nested12=48/0 c1eq2=6 maxc=[2, 2] defs={0: 41, 1: 10} kdefs={2: 16, 1: 35} edge/miss=41/3 pid=30 (0.1s)
+  *** PID DIVERGENCE [PID-MAX] *** W3G2B: {'key': (1067, 1067), 'level': 1, 'maxnz': 1, 'c': 0, 'cs': [0, 1], 'D': 3, 'kdef': 1}
+-- W3G2B m=3 Zp,p=3,d0=2 e=[2, 3, 2, 2]: pairs=576 strack=144 track=60 live=36 pred=36 MISM=0 nested12=42/0 c1eq2=0 maxc=[1, 2] defs={0: 33, 1: 3} kdefs={1: 30, 2: 6} edge/miss=33/24 pid=33 (0.2s)
+-- W3G2P5 m=3 Zp,p=5,d0=2 e=[2, 2, 2, 2]: pairs=256 strack=64 track=24 live=6 pred=6 MISM=0 nested12=5/0 c1eq2=0 maxc=[1, 1] defs={0: 6} kdefs={1: 6} edge/miss=6/18 pid=14 (0.1s)
+  *** PID DIVERGENCE [PID-MAX] *** W3DEEPF: {'key': (659, 667), 'level': 1, 'maxnz': 2, 'c': 1, 'cs': [1, 1], 'D': 3, 'kdef': 1}
+  *** PID DIVERGENCE [PID-MAX] *** W3DEEPF: {'key': (651, 651), 'level': 1, 'maxnz': 2, 'c': 1, 'cs': [1, 1], 'D': 3, 'kdef': 1}
+  *** PID DIVERGENCE [PID-MAX] *** W3DEEPF: {'key': (651, 667), 'level': 1, 'maxnz': 2, 'c': 1, 'cs': [1, 1], 'D': 3, 'kdef': 1}
+-- W3DEEPF m=3 Fpt,p=2,d0=1 e=[3, 2, 2, 2]: pairs=576 strack=144 track=66 live=28 pred=28 MISM=0 nested12=53/0 c1eq2=10 maxc=[2, 2] defs={0: 27, 1: 1} kdefs={1: 26, 2: 2} edge/miss=27/38 pid=36 (0.2s)
+  *** PID DIVERGENCE [PID-MAX] *** W4NEST: {'key': (1123, 1139), 'level': 2, 'maxnz': 2, 'c': 1, 'cs': [1, 1, 1], 'D': 3, 'kdef': 1}
+  *** PID DIVERGENCE [PID-MAX] *** W4NEST: {'key': (1123, 1147), 'level': 1, 'maxnz': 2, 'c': 1, 'cs': [1, 1, 1], 'D': 3, 'kdef': 1}
+  *** PID DIVERGENCE [PID-MAX] *** W4NEST: {'key': (1123, 1147), 'level': 2, 'maxnz': 2, 'c': 1, 'cs': [1, 1, 1], 'D': 3, 'kdef': 1}
+-- W4NEST m=4 Zp,p=3,d0=1 e=[2, 2, 2, 2, 2]: pairs=1024 strack=256 track=120 live=36 pred=36 MISM=0 nested12=74/65 c1eq2=0 maxc=[1, 1, 1] defs={0: 36} kdefs={1: 36} edge/miss=36/84 pid=14 (0.1s)
+  *** PID DIVERGENCE [PID-MAX] *** W4DEEP: {'key': (1475, 1483), 'level': 2, 'maxnz': 2, 'c': 1, 'cs': [2, 1, 1], 'D': 3, 'kdef': 1}
+  *** PID DIVERGENCE [PID-MAX] *** W4DEEP: {'key': (1483, 1483), 'level': 1, 'maxnz': 3, 'c': 2, 'cs': [2, 2, 2], 'D': 3, 'kdef': 1}
+-- W4DEEP m=4 Zp,p=3,d0=1 e=[3, 2, 2, 2, 2]: pairs=2304 strack=576 track=276 live=91 pred=91 MISM=0 nested12=206/182 c1eq2=36 maxc=[2, 2, 2] defs={0: 90, 1: 1} kdefs={2: 2, 1: 89} edge/miss=90/185 pid=14 (0.2s)
+  *** PID DIVERGENCE [PID-MAX] *** W4FLAT: {'key': (387, 399), 'level': 2, 'maxnz': 2, 'c': 1, 'cs': [1, 1, 1], 'D': 3, 'kdef': 1}
+  *** PID DIVERGENCE [PID-MAX] *** W4FLAT: {'key': (399, 399), 'level': 2, 'maxnz': 3, 'c': 2, 'cs': [1, 2, 2], 'D': 3, 'kdef': 1}
+  *** PID DIVERGENCE [PID-MAX] *** W4FLAT: {'key': (391, 391), 'level': 2, 'maxnz': 2, 'c': 1, 'cs': [0, 1, 1], 'D': 3, 'kdef': 1}
+  *** PID DIVERGENCE [PID-MAX] *** W4FLAT: {'key': (391, 399), 'level': 1, 'maxnz': 1, 'c': 0, 'cs': [0, 1, 1], 'D': 3, 'kdef': 1}
+  *** PID DIVERGENCE [PID-MAX] *** W4FLAT: {'key': (391, 399), 'level': 2, 'maxnz': 2, 'c': 1, 'cs': [0, 1, 1], 'D': 3, 'kdef': 1}
+-- W4FLAT m=4 Zp,p=3,d0=1 e=[2, 2, 1, 2, 2]: pairs=256 strack=64 track=28 live=15 pred=15 MISM=0 nested12=10/10 c1eq2=0 maxc=[1, 2, 2] defs={0: 14, 1: 1} kdefs={2: 2, 1: 13} edge/miss=14/13 pid=14 (0.0s)
+  *** PID DIVERGENCE [PID-MAX] *** W4NESTF: {'key': (1123, 1139), 'level': 2, 'maxnz': 2, 'c': 1, 'cs': [1, 1, 1], 'D': 3, 'kdef': 1}
+  *** PID DIVERGENCE [PID-MAX] *** W4NESTF: {'key': (1123, 1147), 'level': 1, 'maxnz': 2, 'c': 1, 'cs': [1, 1, 1], 'D': 3, 'kdef': 1}
+  *** PID DIVERGENCE [PID-MAX] *** W4NESTF: {'key': (1123, 1147), 'level': 2, 'maxnz': 2, 'c': 1, 'cs': [1, 1, 1], 'D': 3, 'kdef': 1}
+-- W4NESTF m=4 Fpt,p=2,d0=1 e=[2, 2, 2, 2, 2]: pairs=1024 strack=256 track=120 live=36 pred=36 MISM=0 nested12=74/65 c1eq2=0 maxc=[1, 1, 1] defs={0: 36} kdefs={1: 36} edge/miss=36/84 pid=14 (1.3s)
+-- XM3A m=3 Zp,p=5,d0=1 e=[2, 2, 2, 2]: pairs=256 strack=64 track=28 live=6 pred=6 MISM=0 nested12=9/0 c1eq2=0 maxc=[1, 1] defs={0: 6} kdefs={1: 6} edge/miss=6/22 pid=16 (0.0s)
+  *** PID DIVERGENCE [PID-MAX] *** XM3B: {'key': (1055, 1055), 'level': 1, 'maxnz': 1, 'c': 0, 'cs': [0, 1], 'D': 3, 'kdef': 1}
+  *** PID DIVERGENCE [PID-MAX] *** XM3B: {'key': (1043, 1055), 'level': 1, 'maxnz': 1, 'c': 0, 'cs': [0, 1], 'D': 3, 'kdef': 1}
+-- XM3B m=3 Zp,p=3,d0=2 e=[2, 3, 2, 2]: pairs=576 strack=144 track=60 live=28 pred=28 MISM=0 nested12=14/0 c1eq2=0 maxc=[1, 2] defs={0: 27, 1: 1} kdefs={1: 26, 2: 2} edge/miss=27/32 pid=33 (0.3s)
+-- PE-tie M3A: fresh_leg_match=True stored_match=True
+-- PE-tie M3B: fresh_leg_match=True stored_match=True
+
+LAW-DCX-4 VERDICT (pool-floor law == measured, countermodel hunt): violations=0 over 5044 pairs (track=599, live=416) [NO COUNTERMODEL]
+LAW-DCX-5 VERDICT (pool-floor law == measured, countermodel hunt): violations=0 over 4608 pairs (track=544, live=178) [NO COUNTERMODEL]
+STRUCT VERDICT (u-chain in Z>=0 + L-CAP c_l <= 2, predicted-0): GREEN [0 violations]
+CONS VERDICT (stage trees == canonical divisions + PE/artifact tie + harness events, predicted-0): GREEN [0 violations]
+PID-MAX CENSUS (max promo count into level l vs floor(pool_l/e_(l-1)), nonzero Q1 parts, instance-keyed): divergences=72 over 412 traced rows
+PID-DEF VERDICT (deficit-k live rows feed the top at depth >= k, DCX3-C2 one level up, working-predicted-0 at g0=1): GREEN [0 violations]
+PID-DIR CENSUS (direct live rows clean-visible at depth 0): 10/10
+CONTROL VERDICT (broken-law variants must trip vs meas, teeth, SEPARATE): MET {'CAP1': 122, 'NOCARRY': 578, 'EG': 35, 'THRP1': 519, 'THRM1': 549, 'NOU': 594}
+COVERAGE (battery meters: nested12>=20, c1eq2>=10, justmiss>=10, flat_pass>=5): MET {'nested12': 852, 'c1eq2': 103, 'edge_top': 519, 'justmiss_top': 549, 'flat_pass': 44, 'deficit2live': 117, 'nested123': 322}
+countermodels: 0; PID divergences: 72; verdict-family violations: 0
+counters: {'pid_direct': 10, 'pid_direct_clean': 10}
+elapsed 2.8s

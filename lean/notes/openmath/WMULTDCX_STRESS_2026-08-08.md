@@ -135,4 +135,72 @@ pre-seal.  Traced: track rows dedup'd by split key, capped 40/tower
    meas, no PID) — the DCX3 design convention; plus the disclosed smoke
    run on the two committed replica shapes only.
 
-## S5. VERDICT (commit 2, from the artifacts) — PENDING AT SEAL
+## S5. VERDICT (commit 2, from the artifacts; seal = d3950f2; run
+`wmultdcx_stress_output.txt` + `wmultdcx_stress_results.json`, 2.8 s,
+deterministic; md5s: runner 15315cca59c87e6c2001ea744c50aab5, output
+2ff1cdc7a80a0cc19b8a1cc20999194c, results 41cbf2f1939d1a1548c0f5784a5cb3e8)
+
+**THE VERDICT LINES (transcript tail, verbatim):**
+
+    LAW-DCX-4 VERDICT (pool-floor law == measured, countermodel hunt): violations=0 over 5044 pairs (track=599, live=416) [NO COUNTERMODEL]
+    LAW-DCX-5 VERDICT (pool-floor law == measured, countermodel hunt): violations=0 over 4608 pairs (track=544, live=178) [NO COUNTERMODEL]
+    STRUCT VERDICT (u-chain in Z>=0 + L-CAP c_l <= 2, predicted-0): GREEN [0 violations]
+    CONS VERDICT (stage trees == canonical divisions + PE/artifact tie + harness events, predicted-0): GREEN [0 violations]
+    PID-MAX CENSUS (max promo count into level l vs floor(pool_l/e_(l-1)), nonzero Q1 parts, instance-keyed): divergences=72 over 412 traced rows
+    PID-DEF VERDICT (deficit-k live rows feed the top at depth >= k, DCX3-C2 one level up, working-predicted-0 at g0=1): GREEN [0 violations]
+    PID-DIR CENSUS (direct live rows clean-visible at depth 0): 10/10
+    CONTROL VERDICT (broken-law variants must trip vs meas, teeth, SEPARATE): MET {'CAP1': 122, 'NOCARRY': 578, 'EG': 35, 'THRP1': 519, 'THRM1': 549, 'NOU': 594}
+    COVERAGE (battery meters: nested12>=20, c1eq2>=10, justmiss>=10, flat_pass>=5): MET {'nested12': 852, 'c1eq2': 103, 'edge_top': 519, 'justmiss_top': 549, 'flat_pass': 44, 'deficit2live': 117, 'nested123': 322}
+
+**LAW OUTCOME — NO COUNTERMODEL, corners included.** 0 mismatches over
+10,484 pairs (5,044 m=3 fresh + 4,608 m=4 fresh + 832 replica, replicas
+tying PE.law_leg AND the committed results JSON exactly).  Every hunted
+stratum was realized and matched: 117 deficit-2 live rows (the stratum
+class that killed v1 at m=2 — first realization at m>=3/4, all exactly
+predicted incl. every 2e-1 just-miss dead, 549 rows); c_1 = 2 double
+carries (103 rows) incl. through TWO flat levels (W3FDBL: law = TRACK
+and c_1 >= 2 — live rows exist and match); the carry-only flat corners
+(W3FTOP law = TRACK and c_2 >= 2; W4FLAT pass-through maxc = [1,2,2]);
+m=4 triple nesting (322 rows) + first eq-char LAW-DCX-5 data (W4NESTF);
+g_0 >= 2 at literal e_0 (EG mutant trips 35 pairs — the e*g divisor is
+measurably WRONG, DS7/EX3 extended to m=3 windows); first m=3 direct
+rows (W3DIR, e_2 = 3, kdef <= 0).  All six controls fired (CAP1 = 122:
+the v1 cap-at-1 pattern is refuted at m=3/4 too).  Grade unchanged:
+conjecture, instance evidence only — but the battery was built to kill
+it and did not.
+
+**PID OUTCOME — THE UNIT'S FINDING: the row-11c identification is
+REFUTED as literally worded, and survives only one-sidedly.**  72
+instance-keyed divergences (17 towers: g_0 = 1 AND g_0 >= 2, m = 3 AND
+m = 4, Z_p AND F_2[[t]], flats included) where a NONZERO promotion-
+profile part of Q1 carries pc_l = c_l + 1 (twice +2) — "the maximal
+promotion count into level l is floor(pool_l/e_{l-1})" is false as an
+upper bound on surviving mass.  Sharpest witnesses: W3TRK1 (335,335)
+and W3G2A (687,687): nonzero parts at pc_2 = 3 > 2 — the PHYSICAL
+promotion depth exceeds even the L-CAP constant, so L-CAP bounds the
+pool VARIABLE, not tree paths (the "depth <= 2 structurally" display
+must not be read pathwise).  Structural sources, visible in the traces:
+the pools count only Chat_m's PRINCIPAL digit (s_l(u_l)) while its
+non-principal d-cells carry extra low-level exponent, and correction/
+rebuild children re-add mass (at g_0 >= 2 the naked promotion needs
+e_0 g_0 units, so the literal-e_0 carry demonstrably rides the C_k
+partial-consumption children: XM3B/W3G2B show c_1 = 0 live rows with
+surviving pc_1 = 1 parts).  **What HOLDS, 0/412 + 10/10, both rings,
+m = 3 and m = 4: the one-sided depth mechanism** — on every live
+deficit-k row every nonzero Q1 part has pc_{m-1} >= k (DCX3-C2 lifted
+one and two levels), direct rows are clean-visible at depth 0
+(DCX3-C3), and on every DEAD row the beyond-floor promotion mass
+cancels TOTALLY (zero nonzero parts at ANY depth — verified: all 72
+divergences sit on live rows; a dead-row survivor would have been a
+law countermodel).  Reading for the proof unit (S7.2 design input):
+the pool floor is a THRESHOLD law — liveness needs and gets >= k
+promotions on the deciding path, while off the locus the entire
+profile cancels; any proof threading row 11c as a mass-conservation
+upper bound will fail against these 72 witnesses.  The provable
+object is the lower-bound direction + total off-locus cancellation.
+
+**Fences unchanged (S4):** the law stays conjecture-grade at every
+m >= 2; the PID outcome regrades ONLY the row-11c wording (heuristic,
+now scoped one-sided with 72 committed counter-instances in
+`wmultdcx_stress_results.json` under `pid_divergences` / per-tower
+`pid` records); nothing here is a proof step.

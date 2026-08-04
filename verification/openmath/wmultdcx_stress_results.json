@@ -1,0 +1,13579 @@
+{
+ "mode": "run",
+ "countermodels": [],
+ "pid_divergences": [
+  [
+   "PID-MAX",
+   "W3DEEP",
+   {
+    "key": [
+     659,
+     667
+    ],
+    "level": 1,
+    "maxnz": 2,
+    "c": 1,
+    "cs": [
+     1,
+     1
+    ],
+    "D": 3,
+    "kdef": 1
+   }
+  ],
+  [
+   "PID-MAX",
+   "W3DEEP",
+   {
+    "key": [
+     651,
+     651
+    ],
+    "level": 1,
+    "maxnz": 2,
+    "c": 1,
+    "cs": [
+     1,
+     1
+    ],
+    "D": 3,
+    "kdef": 1
+   }
+  ],
+  [
+   "PID-MAX",
+   "W3DEEP",
+   {
+    "key": [
+     651,
+     667
+    ],
+    "level": 1,
+    "maxnz": 2,
+    "c": 1,
+    "cs": [
+     1,
+     1
+    ],
+    "D": 3,
+    "kdef": 1
+   }
+  ],
+  [
+   "PID-MAX",
+   "W3DEEP4",
+   {
+    "key": [
+     1271,
+     1279
+    ],
+    "level": 1,
+    "maxnz": 3,
+    "c": 2,
+    "cs": [
+     2,
+     2
+    ],
+    "D": 3,
+    "kdef": 1
+   }
+  ],
+  [
+   "PID-MAX",
+   "W3DEEP4",
+   {
+    "key": [
+     1271,
+     1279
+    ],
+    "level": 2,
+    "maxnz": 3,
+    "c": 2,
+    "cs": [
+     2,
+     2
+    ],
+    "D": 3,
+    "kdef": 1
+   }
+  ],
+  [
+   "PID-MAX",
+   "W3DEEP4",
+   {
+    "key": [
+     1267,
+     1267
+    ],
+    "level": 1,
+    "maxnz": 3,
+    "c": 2,
+    "cs": [
+     2,
+     1
+    ],
+    "D": 3,
+    "kdef": 1
+   }
+  ],
+  [
+   "PID-MAX",
+   "W3DEEP4",
+   {
+    "key": [
+     1267,
+     1271
+    ],
+    "level": 1,
+    "maxnz": 3,
+    "c": 2,
+    "cs": [
+     2,
+     2
+    ],
+    "D": 3,
+    "kdef": 1
+   }
+  ],
+  [
+   "PID-MAX",
+   "W3DEEP4",
+   {
+    "key": [
+     1257,
+     1271
+    ],
+    "level": 1,
+    "maxnz": 3,
+    "c": 2,
+    "cs": [
+     2,
+     2
+    ],
+    "D": 2,
+    "kdef": 2
+   }
+  ],
+  [
+   "PID-MAX",
+   "W3DEEP4",
+   {
+    "key": [
+     1271,
+     1271
+    ],
+    "level": 1,
+    "maxnz": 3,
+    "c": 2,
+    "cs": [
+     2,
+     2
+    ],
+    "D": 3,
+    "kdef": 1
+   }
+  ],
+  [
+   "PID-MAX",
+   "W3DEEP4",
+   {
+    "key": [
+     1271,
+     1271
+    ],
+    "level": 2,
+    "maxnz": 3,
+    "c": 2,
+    "cs": [
+     2,
+     2
+    ],
+    "D": 3,
+    "kdef": 1
+   }
+  ],
+  [
+   "PID-MAX",
+   "W3DEEP4",
+   {
+    "key": [
+     1259,
+     1279
+    ],
+    "level": 1,
+    "maxnz": 2,
+    "c": 1,
+    "cs": [
+     1,
+     1
+    ],
+    "D": 3,
+    "kdef": 1
+   }
+  ],
+  [
+   "PID-MAX",
+   "W3DEEP4",
+   {
+    "key": [
+     1259,
+     1271
+    ],
+    "level": 1,
+    "maxnz": 2,
+    "c": 1,
+    "cs": [
+     1,
+     1
+    ],
+    "D": 3,
+    "kdef": 1
+   }
+  ],
+  [
+   "PID-MAX",
+   "W3DEEP4",
+   {
+    "key": [
+     1263,
+     1275
+    ],
+    "level": 1,
+    "maxnz": 2,
+    "c": 1,
+    "cs": [
+     1,
+     1
+    ],
+    "D": 3,
+    "kdef": 1
+   }
+  ],
+  [
+   "PID-MAX",
+   "W3DEEP4",
+   {
+    "key": [
+     1263,
+     1279
+    ],
+    "level": 1,
+    "maxnz": 2,
+    "c": 1,
+    "cs": [
+     1,
+     2
+    ],
+    "D": 3,
+    "kdef": 1
+   }
+  ],
+  [
+   "PID-MAX",
+   "W3DEEP4",
+   {
+    "key": [
+     1263,
+     1267
+    ],
+    "level": 1,
+    "maxnz": 2,
+    "c": 1,
+    "cs": [
+     1,
+     1
+    ],
+    "D": 3,
+    "kdef": 1
+   }
+  ],
+  [
+   "PID-MAX",
+   "W3DEEP4",
+   {
+    "key": [
+     1263,
+     1271
+    ],
+    "level": 1,
+    "maxnz": 3,
+    "c": 1,
+    "cs": [
+     1,
+     2
+    ],
+    "D": 3,
+    "kdef": 1
+   }
+  ],
+  [
+   "PID-MAX",
+   "W3DEEP4",
+   {
+    "key": [
+     1251,
+     1255
+    ],
+    "level": 1,
+    "maxnz": 2,
+    "c": 1,
+    "cs": [
+     1,
+     1
+    ],
+    "D": 3,
+    "kdef": 1
+   }
+  ],
+  [
+   "PID-MAX",
+   "W3DEEP4",
+   {
+    "key": [
+     1251,
+     1279
+    ],
+    "level": 1,
+    "maxnz": 2,
+    "c": 1,
+    "cs": [
+     1,
+     1
+    ],
+    "D": 3,
+    "kdef": 1
+   }
+  ],
+  [
+   "PID-MAX",
+   "W3DEEP4",
+   {
+    "key": [
+     1251,
+     1271
+    ],
+    "level": 1,
+    "maxnz": 2,
+    "c": 1,
+    "cs": [
+     1,
+     1
+    ],
+    "D": 3,
+    "kdef": 1
+   }
+  ],
+  [
+   "PID-MAX",
+   "W3NEST",
+   {
+    "key": [
+     291,
+     295
+    ],
+    "level": 1,
+    "maxnz": 2,
+    "c": 1,
+    "cs": [
+     1,
+     1
+    ],
+    "D": 3,
+    "kdef": 1
+   }
+  ],
+  [
+   "PID-MAX",
+   "W3NEST",
+   {
+    "key": [
+     295,
+     295
+    ],
+    "level": 1,
+    "maxnz": 2,
+    "c": 1,
+    "cs": [
+     1,
+     2
+    ],
+    "D": 3,
+    "kdef": 1
+   }
+  ],
+  [
+   "PID-MAX",
+   "W3NEST",
+   {
+    "key": [
+     295,
+     295
+    ],
+    "level": 2,
+    "maxnz": 3,
+    "c": 2,
+    "cs": [
+     1,
+     2
+    ],
+    "D": 3,
+    "kdef": 1
+   }
+  ],
+  [
+   "PID-MAX",
+   "W3NEST",
+   {
+    "key": [
+     303,
+     303
+    ],
+    "level": 1,
+    "maxnz": 1,
+    "c": 0,
+    "cs": [
+     0,
+     1
+    ],
+    "D": 3,
+    "kdef": 1
+   }
+  ],
+  [
+   "PID-MAX",
+   "W3NESTF",
+   {
+    "key": [
+     291,
+     295
+    ],
+    "level": 1,
+    "maxnz": 2,
+    "c": 1,
+    "cs": [
+     1,
+     1
+    ],
+    "D": 3,
+    "kdef": 1
+   }
+  ],
+  [
+   "PID-MAX",
+   "W3NESTF",
+   {
+    "key": [
+     303,
+     303
+    ],
+    "level": 1,
+    "maxnz": 1,
+    "c": 0,
+    "cs": [
+     0,
+     1
+    ],
+    "D": 3,
+    "kdef": 1
+   }
+  ],
+  [
+   "PID-MAX",
+   "W3FMID",
+   {
+    "key": [
+     95,
+     95
+    ],
+    "level": 1,
+    "maxnz": 2,
+    "c": 1,
+    "cs": [
+     1,
+     1
+    ],
+    "D": 3,
+    "kdef": 1
+   }
+  ],
+  [
+   "PID-MAX",
+   "W3FTOP",
+   {
+    "key": [
+     77,
+     77
+    ],
+    "level": 1,
+    "maxnz": 2,
+    "c": 1,
+    "cs": [
+     1,
+     2
+    ],
+    "D": 0,
+    "kdef": 2
+   }
+  ],
+  [
+   "PID-MAX",
+   "W3FTOP",
+   {
+    "key": [
+     77,
+     77
+    ],
+    "level": 2,
+    "maxnz": 3,
+    "c": 2,
+    "cs": [
+     1,
+     2
+    ],
+    "D": 0,
+    "kdef": 2
+   }
+  ],
+  [
+   "PID-MAX",
+   "W3FMIDF",
+   {
+    "key": [
+     95,
+     95
+    ],
+    "level": 1,
+    "maxnz": 2,
+    "c": 1,
+    "cs": [
+     1,
+     1
+    ],
+    "D": 3,
+    "kdef": 1
+   }
+  ],
+  [
+   "PID-MAX",
+   "W3TRK1",
+   {
+    "key": [
+     335,
+     335
+    ],
+    "level": 1,
+    "maxnz": 3,
+    "c": 2,
+    "cs": [
+     2,
+     2
+    ],
+    "D": 3,
+    "kdef": 1
+   }
+  ],
+  [
+   "PID-MAX",
+   "W3TRK1",
+   {
+    "key": [
+     335,
+     335
+    ],
+    "level": 2,
+    "maxnz": 3,
+    "c": 2,
+    "cs": [
+     2,
+     2
+    ],
+    "D": 3,
+    "kdef": 1
+   }
+  ],
+  [
+   "PID-MAX",
+   "W3TRK1",
+   {
+    "key": [
+     329,
+     335
+    ],
+    "level": 1,
+    "maxnz": 2,
+    "c": 1,
+    "cs": [
+     1,
+     1
+    ],
+    "D": 3,
+    "kdef": 1
+   }
+  ],
+  [
+   "PID-MAX",
+   "W3TRK1",
+   {
+    "key": [
+     331,
+     333
+    ],
+    "level": 1,
+    "maxnz": 2,
+    "c": 1,
+    "cs": [
+     1,
+     1
+    ],
+    "D": 3,
+    "kdef": 1
+   }
+  ],
+  [
+   "PID-MAX",
+   "W3TRK1",
+   {
+    "key": [
+     331,
+     335
+    ],
+    "level": 1,
+    "maxnz": 2,
+    "c": 1,
+    "cs": [
+     1,
+     2
+    ],
+    "D": 3,
+    "kdef": 1
+   }
+  ],
+  [
+   "PID-MAX",
+   "W3TRK1",
+   {
+    "key": [
+     325,
+     327
+    ],
+    "level": 1,
+    "maxnz": 2,
+    "c": 1,
+    "cs": [
+     1,
+     1
+    ],
+    "D": 3,
+    "kdef": 1
+   }
+  ],
+  [
+   "PID-MAX",
+   "W3TRK1",
+   {
+    "key": [
+     325,
+     335
+    ],
+    "level": 1,
+    "maxnz": 2,
+    "c": 1,
+    "cs": [
+     1,
+     1
+    ],
+    "D": 3,
+    "kdef": 1
+   }
+  ],
+  [
+   "PID-MAX",
+   "W3TRK1",
+   {
+    "key": [
+     327,
+     327
+    ],
+    "level": 1,
+    "maxnz": 2,
+    "c": 1,
+    "cs": [
+     1,
+     2
+    ],
+    "D": 3,
+    "kdef": 1
+   }
+  ],
+  [
+   "PID-MAX",
+   "W3TRK1",
+   {
+    "key": [
+     327,
+     333
+    ],
+    "level": 1,
+    "maxnz": 2,
+    "c": 1,
+    "cs": [
+     1,
+     1
+    ],
+    "D": 3,
+    "kdef": 1
+   }
+  ],
+  [
+   "PID-MAX",
+   "W3TRK1",
+   {
+    "key": [
+     327,
+     335
+    ],
+    "level": 1,
+    "maxnz": 3,
+    "c": 1,
+    "cs": [
+     1,
+     2
+    ],
+    "D": 3,
+    "kdef": 1
+   }
+  ],
+  [
+   "PID-MAX",
+   "W3TRK1",
+   {
+    "key": [
+     327,
+     335
+    ],
+    "level": 2,
+    "maxnz": 3,
+    "c": 2,
+    "cs": [
+     1,
+     2
+    ],
+    "D": 3,
+    "kdef": 1
+   }
+  ],
+  [
+   "PID-MAX",
+   "W3TRK1",
+   {
+    "key": [
+     331,
+     331
+    ],
+    "level": 1,
+    "maxnz": 1,
+    "c": 0,
+    "cs": [
+     0,
+     1
+    ],
+    "D": 3,
+    "kdef": 1
+   }
+  ],
+  [
+   "PID-MAX",
+   "W3DIR",
+   {
+    "key": [
+     603,
+     615
+    ],
+    "level": 1,
+    "maxnz": 2,
+    "c": 1,
+    "cs": [
+     1,
+     2
+    ],
+    "D": 6,
+    "kdef": 0
+   }
+  ],
+  [
+   "PID-MAX",
+   "W3DIR",
+   {
+    "key": [
+     603,
+     605
+    ],
+    "level": 1,
+    "maxnz": 2,
+    "c": 1,
+    "cs": [
+     1,
+     1
+    ],
+    "D": 5,
+    "kdef": 1
+   }
+  ],
+  [
+   "PID-MAX",
+   "W3DIR",
+   {
+    "key": [
+     621,
+     621
+    ],
+    "level": 1,
+    "maxnz": 2,
+    "c": 1,
+    "cs": [
+     1,
+     1
+    ],
+    "D": 6,
+    "kdef": 0
+   }
+  ],
+  [
+   "PID-MAX",
+   "W3DIR",
+   {
+    "key": [
+     611,
+     621
+    ],
+    "level": 1,
+    "maxnz": 2,
+    "c": 1,
+    "cs": [
+     1,
+     1
+    ],
+    "D": 5,
+    "kdef": 1
+   }
+  ],
+  [
+   "PID-MAX",
+   "W3DIR",
+   {
+    "key": [
+     603,
+     621
+    ],
+    "level": 1,
+    "maxnz": 2,
+    "c": 1,
+    "cs": [
+     1,
+     1
+    ],
+    "D": 6,
+    "kdef": 0
+   }
+  ],
+  [
+   "PID-MAX",
+   "W3DIR",
+   {
+    "key": [
+     603,
+     611
+    ],
+    "level": 1,
+    "maxnz": 2,
+    "c": 1,
+    "cs": [
+     1,
+     2
+    ],
+    "D": 5,
+    "kdef": 1
+   }
+  ],
+  [
+   "PID-MAX",
+   "W3DIR",
+   {
+    "key": [
+     603,
+     603
+    ],
+    "level": 1,
+    "maxnz": 2,
+    "c": 1,
+    "cs": [
+     1,
+     2
+    ],
+    "D": 6,
+    "kdef": 0
+   }
+  ],
+  [
+   "PID-MAX",
+   "W3DIR",
+   {
+    "key": [
+     609,
+     615
+    ],
+    "level": 1,
+    "maxnz": 1,
+    "c": 0,
+    "cs": [
+     0,
+     1
+    ],
+    "D": 6,
+    "kdef": 0
+   }
+  ],
+  [
+   "PID-MAX",
+   "W3DIR",
+   {
+    "key": [
+     615,
+     623
+    ],
+    "level": 1,
+    "maxnz": 1,
+    "c": 0,
+    "cs": [
+     0,
+     1
+    ],
+    "D": 5,
+    "kdef": 1
+   }
+  ],
+  [
+   "PID-MAX",
+   "W3DIR",
+   {
+    "key": [
+     615,
+     615
+    ],
+    "level": 1,
+    "maxnz": 1,
+    "c": 0,
+    "cs": [
+     0,
+     1
+    ],
+    "D": 6,
+    "kdef": 0
+   }
+  ],
+  [
+   "PID-MAX",
+   "W3G2A",
+   {
+    "key": [
+     687,
+     687
+    ],
+    "level": 2,
+    "maxnz": 3,
+    "c": 2,
+    "cs": [
+     2,
+     2
+    ],
+    "D": 3,
+    "kdef": 1
+   }
+  ],
+  [
+   "PID-MAX",
+   "W3G2A",
+   {
+    "key": [
+     695,
+     695
+    ],
+    "level": 1,
+    "maxnz": 1,
+    "c": 0,
+    "cs": [
+     0,
+     1
+    ],
+    "D": 3,
+    "kdef": 1
+   }
+  ],
+  [
+   "PID-MAX",
+   "W3G2B",
+   {
+    "key": [
+     1067,
+     1067
+    ],
+    "level": 1,
+    "maxnz": 1,
+    "c": 0,
+    "cs": [
+     0,
+     1
+    ],
+    "D": 3,
+    "kdef": 1
+   }
+  ],
+  [
+   "PID-MAX",
+   "W3DEEPF",
+   {
+    "key": [
+     659,
+     667
+    ],
+    "level": 1,
+    "maxnz": 2,
+    "c": 1,
+    "cs": [
+     1,
+     1
+    ],
+    "D": 3,
+    "kdef": 1
+   }
+  ],
+  [
+   "PID-MAX",
+   "W3DEEPF",
+   {
+    "key": [
+     651,
+     651
+    ],
+    "level": 1,
+    "maxnz": 2,
+    "c": 1,
+    "cs": [
+     1,
+     1
+    ],
+    "D": 3,
+    "kdef": 1
+   }
+  ],
+  [
+   "PID-MAX",
+   "W3DEEPF",
+   {
+    "key": [
+     651,
+     667
+    ],
+    "level": 1,
+    "maxnz": 2,
+    "c": 1,
+    "cs": [
+     1,
+     1
+    ],
+    "D": 3,
+    "kdef": 1
+   }
+  ],
+  [
+   "PID-MAX",
+   "W4NEST",
+   {
+    "key": [
+     1123,
+     1139
+    ],
+    "level": 2,
+    "maxnz": 2,
+    "c": 1,
+    "cs": [
+     1,
+     1,
+     1
+    ],
+    "D": 3,
+    "kdef": 1
+   }
+  ],
+  [
+   "PID-MAX",
+   "W4NEST",
+   {
+    "key": [
+     1123,
+     1147
+    ],
+    "level": 1,
+    "maxnz": 2,
+    "c": 1,
+    "cs": [
+     1,
+     1,
+     1
+    ],
+    "D": 3,
+    "kdef": 1
+   }
+  ],
+  [
+   "PID-MAX",
+   "W4NEST",
+   {
+    "key": [
+     1123,
+     1147
+    ],
+    "level": 2,
+    "maxnz": 2,
+    "c": 1,
+    "cs": [
+     1,
+     1,
+     1
+    ],
+    "D": 3,
+    "kdef": 1
+   }
+  ],
+  [
+   "PID-MAX",
+   "W4DEEP",
+   {
+    "key": [
+     1475,
+     1483
+    ],
+    "level": 2,
+    "maxnz": 2,
+    "c": 1,
+    "cs": [
+     2,
+     1,
+     1
+    ],
+    "D": 3,
+    "kdef": 1
+   }
+  ],
+  [
+   "PID-MAX",
+   "W4DEEP",
+   {
+    "key": [
+     1483,
+     1483
+    ],
+    "level": 1,
+    "maxnz": 3,
+    "c": 2,
+    "cs": [
+     2,
+     2,
+     2
+    ],
+    "D": 3,
+    "kdef": 1
+   }
+  ],
+  [
+   "PID-MAX",
+   "W4FLAT",
+   {
+    "key": [
+     387,
+     399
+    ],
+    "level": 2,
+    "maxnz": 2,
+    "c": 1,
+    "cs": [
+     1,
+     1,
+     1
+    ],
+    "D": 3,
+    "kdef": 1
+   }
+  ],
+  [
+   "PID-MAX",
+   "W4FLAT",
+   {
+    "key": [
+     399,
+     399
+    ],
+    "level": 2,
+    "maxnz": 3,
+    "c": 2,
+    "cs": [
+     1,
+     2,
+     2
+    ],
+    "D": 3,
+    "kdef": 1
+   }
+  ],
+  [
+   "PID-MAX",
+   "W4FLAT",
+   {
+    "key": [
+     391,
+     391
+    ],
+    "level": 2,
+    "maxnz": 2,
+    "c": 1,
+    "cs": [
+     0,
+     1,
+     1
+    ],
+    "D": 3,
+    "kdef": 1
+   }
+  ],
+  [
+   "PID-MAX",
+   "W4FLAT",
+   {
+    "key": [
+     391,
+     399
+    ],
+    "level": 1,
+    "maxnz": 1,
+    "c": 0,
+    "cs": [
+     0,
+     1,
+     1
+    ],
+    "D": 3,
+    "kdef": 1
+   }
+  ],
+  [
+   "PID-MAX",
+   "W4FLAT",
+   {
+    "key": [
+     391,
+     399
+    ],
+    "level": 2,
+    "maxnz": 2,
+    "c": 1,
+    "cs": [
+     0,
+     1,
+     1
+    ],
+    "D": 3,
+    "kdef": 1
+   }
+  ],
+  [
+   "PID-MAX",
+   "W4NESTF",
+   {
+    "key": [
+     1123,
+     1139
+    ],
+    "level": 2,
+    "maxnz": 2,
+    "c": 1,
+    "cs": [
+     1,
+     1,
+     1
+    ],
+    "D": 3,
+    "kdef": 1
+   }
+  ],
+  [
+   "PID-MAX",
+   "W4NESTF",
+   {
+    "key": [
+     1123,
+     1147
+    ],
+    "level": 1,
+    "maxnz": 2,
+    "c": 1,
+    "cs": [
+     1,
+     1,
+     1
+    ],
+    "D": 3,
+    "kdef": 1
+   }
+  ],
+  [
+   "PID-MAX",
+   "W4NESTF",
+   {
+    "key": [
+     1123,
+     1147
+    ],
+    "level": 2,
+    "maxnz": 2,
+    "c": 1,
+    "cs": [
+     1,
+     1,
+     1
+    ],
+    "D": 3,
+    "kdef": 1
+   }
+  ],
+  [
+   "PID-MAX",
+   "XM3B",
+   {
+    "key": [
+     1055,
+     1055
+    ],
+    "level": 1,
+    "maxnz": 1,
+    "c": 0,
+    "cs": [
+     0,
+     1
+    ],
+    "D": 3,
+    "kdef": 1
+   }
+  ],
+  [
+   "PID-MAX",
+   "XM3B",
+   {
+    "key": [
+     1043,
+     1055
+    ],
+    "level": 1,
+    "maxnz": 1,
+    "c": 0,
+    "cs": [
+     0,
+     1
+    ],
+    "D": 3,
+    "kdef": 1
+   }
+  ]
+ ],
+ "violations": [],
+ "counters": {
+  "pid_direct": 10,
+  "pid_direct_clean": 10
+ },
+ "controls": {
+  "CAP1": 122,
+  "NOCARRY": 578,
+  "EG": 35,
+  "THRP1": 519,
+  "THRM1": 549,
+  "NOU": 594
+ },
+ "meters": {
+  "nested12": 852,
+  "c1eq2": 103,
+  "edge_top": 519,
+  "justmiss_top": 549,
+  "flat_pass": 44,
+  "deficit2live": 117,
+  "nested123": 322
+ },
+ "per_m": {
+  "3": {
+   "pairs": 5044,
+   "track": 599,
+   "live": 416,
+   "mism": 0
+  },
+  "4": {
+   "pairs": 4608,
+   "track": 544,
+   "live": 178,
+   "mism": 0
+  }
+ },
+ "towers": [
+  {
+   "tag": "W3DEEP",
+   "m": 3,
+   "kind": "Zp",
+   "p": 3,
+   "d0": 1,
+   "reads": [
+    [
+     3,
+     2,
+     1
+    ],
+    [
+     2,
+     1,
+     1
+    ],
+    [
+     2,
+     1,
+     1
+    ],
+    [
+     2,
+     1,
+     1
+    ]
+   ],
+   "Etot": 24,
+   "G0": 648,
+   "harness_events": 0,
+   "uchain": {
+    "3": 213,
+    "2": 80,
+    "1": 40
+   },
+   "su": {
+    "3": 1,
+    "2": 0,
+    "1": 2
+   },
+   "census": {
+    "pairs": 576,
+    "strack": 144,
+    "track": 66,
+    "live": 28,
+    "pred": 28,
+    "mism": 0,
+    "q1nz_offlocus": 84,
+    "chainfed": 28,
+    "nested12": 53,
+    "nested123": 0,
+    "c1eq2": 10,
+    "maxc": [
+     2,
+     2
+    ],
+    "edge_top": 27,
+    "justmiss_top": 38,
+    "justmiss_live": 0,
+    "def_hist": {
+     "0": 27,
+     "1": 1
+    },
+    "kdef_hist": {
+     "1": 26,
+     "2": 2
+    },
+    "pool_mult_edge": 43,
+    "flat_pass": 0
+   },
+   "controls": {
+    "CAP1": 3,
+    "NOCARRY": 28,
+    "EG": 0,
+    "THRP1": 27,
+    "THRM1": 38,
+    "NOU": 28
+   },
+   "pid": [
+    {
+     "key": [
+      663,
+      663
+     ],
+     "cs": [
+      2,
+      1
+     ],
+     "D": 3,
+     "kdef": 1,
+     "live": true,
+     "maxnz": [
+      2,
+      1
+     ],
+     "minnz_top": 1,
+     "maxpc_all": [
+      2,
+      1,
+      1
+     ],
+     "nodes": 23,
+     "q1nz": true
+    },
+    {
+     "key": [
+      663,
+      667
+     ],
+     "cs": [
+      2,
+      1
+     ],
+     "D": 3,
+     "kdef": 1,
+     "live": true,
+     "maxnz": [
+      2,
+      1
+     ],
+     "minnz_top": 1,
+     "maxpc_all": [
+      3,
+      2,
+      1
+     ],
+     "nodes": 55,
+     "q1nz": true
+    },
+    {
+     "key": [
+      657,
+      667
+     ],
+     "cs": [
+      2,
+      2
+     ],
+     "D": 2,
+     "kdef": 2,
+     "live": true,
+     "maxnz": [
+      2,
+      2
+     ],
+     "minnz_top": 2,
+     "maxpc_all": [
+      2,
+      2,
+      1
+     ],
+     "nodes": 38,
+     "q1nz": true
+    },
+    {
+     "key": [
+      667,
+      667
+     ],
+     "cs": [
+      2,
+      2
+     ],
+     "D": 3,
+     "kdef": 1,
+     "live": true,
+     "maxnz": [
+      2,
+      2
+     ],
+     "minnz_top": 1,
+     "maxpc_all": [
+      3,
+      3,
+      1
+     ],
+     "nodes": 146,
+     "q1nz": true
+    },
+    {
+     "key": [
+      651,
+      655
+     ],
+     "cs": [
+      1,
+      1
+     ],
+     "D": 3,
+     "kdef": 1,
+     "live": true,
+     "maxnz": [
+      1,
+      1
+     ],
+     "minnz_top": 1,
+     "maxpc_all": [
+      1,
+      1,
+      1
+     ],
+     "nodes": 17,
+     "q1nz": true
+    },
+    {
+     "key": [
+      655,
+      667
+     ],
+     "cs": [
+      1,
+      1
+     ],
+     "D": 3,
+     "kdef": 1,
+     "live": true,
+     "maxnz": [
+      1,
+      1
+     ],
+     "minnz_top": 1,
+     "maxpc_all": [
+      2,
+      1,
+      1
+     ],
+     "nodes": 22,
+     "q1nz": true
+    },
+    {
+     "key": [
+      659,
+      671
+     ],
+     "cs": [
+      1,
+      1
+     ],
+     "D": 3,
+     "kdef": 1,
+     "live": true,
+     "maxnz": [
+      1,
+      1
+     ],
+     "minnz_top": 1,
+     "maxpc_all": [
+      1,
+      1,
+      1
+     ],
+     "nodes": 17,
+     "q1nz": true
+    },
+    {
+     "key": [
+      651,
+      659
+     ],
+     "cs": [
+      1,
+      1
+     ],
+     "D": 3,
+     "kdef": 1,
+     "live": true,
+     "maxnz": [
+      1,
+      1
+     ],
+     "minnz_top": 1,
+     "maxpc_all": [
+      2,
+      2,
+      1
+     ],
+     "nodes": 37,
+     "q1nz": true
+    },
+    {
+     "key": [
+      659,
+      663
+     ],
+     "cs": [
+      1,
+      1
+     ],
+     "D": 3,
+     "kdef": 1,
+     "live": true,
+     "maxnz": [
+      1,
+      1
+     ],
+     "minnz_top": 1,
+     "maxpc_all": [
+      2,
+      1,
+      1
+     ],
+     "nodes": 22,
+     "q1nz": true
+    },
+    {
+     "key": [
+      659,
+      667
+     ],
+     "cs": [
+      1,
+      1
+     ],
+     "D": 3,
+     "kdef": 1,
+     "live": true,
+     "maxnz": [
+      2,
+      1
+     ],
+     "minnz_top": 1,
+     "maxpc_all": [
+      2,
+      2,
+      1
+     ],
+     "nodes": 60,
+     "q1nz": true
+    },
+    {
+     "key": [
+      651,
+      671
+     ],
+     "cs": [
+      1,
+      1
+     ],
+     "D": 3,
+     "kdef": 1,
+     "live": true,
+     "maxnz": [
+      1,
+      1
+     ],
+     "minnz_top": 1,
+     "maxpc_all": [
+      2,
+      1,
+      1
+     ],
+     "nodes": 22,
+     "q1nz": true
+    },
+    {
+     "key": [
+      667,
+      671
+     ],
+     "cs": [
+      1,
+      1
+     ],
+     "D": 3,
+     "kdef": 1,
+     "live": true,
+     "maxnz": [
+      1,
+      1
+     ],
+     "minnz_top": 1,
+     "maxpc_all": [
+      2,
+      2,
+      1
+     ],
+     "nodes": 42,
+     "q1nz": true
+    },
+    {
+     "key": [
+      651,
+      651
+     ],
+     "cs": [
+      1,
+      1
+     ],
+     "D": 3,
+     "kdef": 1,
+     "live": true,
+     "maxnz": [
+      2,
+      1
+     ],
+     "minnz_top": 1,
+     "maxpc_all": [
+      2,
+      2,
+      1
+     ],
+     "nodes": 60,
+     "q1nz": true
+    },
+    {
+     "key": [
+      651,
+      663
+     ],
+     "cs": [
+      1,
+      1
+     ],
+     "D": 3,
+     "kdef": 1,
+     "live": true,
+     "maxnz": [
+      1,
+      1
+     ],
+     "minnz_top": 1,
+     "maxpc_all": [
+      2,
+      2,
+      1
+     ],
+     "nodes": 42,
+     "q1nz": true
+    },
+    {
+     "key": [
+      651,
+      667
+     ],
+     "cs": [
+      1,
+      1
+     ],
+     "D": 3,
+     "kdef": 1,
+     "live": true,
+     "maxnz": [
+      2,
+      1
+     ],
+     "minnz_top": 1,
+     "maxpc_all": [
+      3,
+      2,
+      1
+     ],
+     "nodes": 96,
+     "q1nz": true
+    },
+    {
+     "key": [
+      659,
+      659
+     ],
+     "cs": [
+      0,
+      1
+     ],
+     "D": 3,
+     "kdef": 1,
+     "live": true,
+     "maxnz": [
+      0,
+      1
+     ],
+     "minnz_top": 1,
+     "maxpc_all": [
+      1,
+      2,
+      1
+     ],
+     "nodes": 31,
+     "q1nz": true
+    },
+    {
+     "key": [
+      653,
+      667
+     ],
+     "cs": [
+      2,
+      1
+     ],
+     "D": 2,
+     "kdef": 2,
+     "live": false,
+     "maxnz": [
+      null,
+      null
+     ],
+     "minnz_top": null,
+     "maxpc_all": [
+      2,
+      1,
+      1
+     ],
+     "nodes": 11,
+     "q1nz": false
+    },
+    {
+     "key": [
+      657,
+      663
+     ],
+     "cs": [
+      2,
+      1
+     ],
+     "D": 2,
+     "kdef": 2,
+     "live": false,
+     "maxnz": [
+      null,
+      null
+     ],
+     "minnz_top": null,
+     "maxpc_all": [
+      2,
+      1,
+      1
+     ],
+     "nodes": 11,
+     "q1nz": false
+    },
+    {
+     "key": [
+      655,
+      671
+     ],
+     "cs": [
+      1,
+      0
+     ],
+     "D": 3,
+     "kdef": 1,
+     "live": false,
+     "maxnz": [
+      null,
+      null
+     ],
+     "minnz_top": null,
+     "maxpc_all": [
+      1,
+      0,
+      1
+     ],
+     "nodes": 5,
+     "q1nz": false
+    },
+    {
+     "key": [
+      655,
+      663
+     ],
+     "cs": [
+      1,
+      0
+     ],
+     "D": 3,
+     "kdef": 1,
+     "live": false,
+     "maxnz": [
+      null,
+      null
+     ],
+     "minnz_top": null,
+     "maxpc_all": [
+      1,
+      1,
+      1
+     ],
+     "nodes": 10,
+     "q1nz": false
+    },
+    {
+     "key": [
+      649,
+      651
+     ],
+     "cs": [
+      1,
+      1
+     ],
+     "D": 2,
+     "kdef": 2,
+     "live": false,
+     "maxnz": [
+      null,
+      null
+     ],
+     "minnz_top": null,
+     "maxpc_all": [
+      1,
+      1,
+      1
+     ],
+     "nodes": 9,
+     "q1nz": false
+    },
+    {
+     "key": [
+      649,
+      667
+     ],
+     "cs": [
+      1,
+      1
+     ],
+     "D": 2,
+     "kdef": 2,
+     "live": false,
+     "maxnz": [
+      null,
+      null
+     ],
+     "minnz_top": null,
+     "maxpc_all": [
+      1,
+      2,
+      1
+     ],
+     "nodes": 14,
+     "q1nz": false
+    },
+    {
+     "key": [
+      659,
+      665
+     ],
+     "cs": [
+      1,
+      1
+     ],
+     "D": 2,
+     "kdef": 2,
+     "live": false,
+     "maxnz": [
+      null,
+      null
+     ],
+     "minnz_top": null,
+     "maxpc_all": [
+      1,
+      1,
+      1
+     ],
+     "nodes": 9,
+     "q1nz": false
+    },
+    {
+     "key": [
+      657,
+      659
+     ],
+     "cs": [
+      1,
+      1
+     ],
+     "D": 2,
+     "kdef": 2,
+     "live": false,
+     "maxnz": [
+      null,
+      null
+     ],
+     "minnz_top": null,
+     "maxpc_all": [
+      1,
+      2,
+      1
+     ],
+     "nodes": 14,
+     "q1nz": false
+    },
+    {
+     "key": [
+      661,
+      667
+     ],
+     "cs": [
+      1,
+      1
+     ],
+     "D": 2,
+     "kdef": 2,
+     "live": false,
+     "maxnz": [
+      null,
+      null
+     ],
+     "minnz_top": null,
+     "maxpc_all": [
+      1,
+      1,
+      1
+     ],
+     "nodes": 7,
+     "q1nz": false
+    },
+    {
+     "key": [
+      671,
+      671
+     ],
+     "cs": [
+      1,
+      0
+     ],
+     "D": 3,
+     "kdef": 1,
+     "live": false,
+     "maxnz": [
+      null,
+      null
+     ],
+     "minnz_top": null,
+     "maxpc_all": [
+      1,
+      1,
+      1
+     ],
+     "nodes": 10,
+     "q1nz": false
+    },
+    {
+     "key": [
+      663,
+      671
+     ],
+     "cs": [
+      1,
+      0
+     ],
+     "D": 3,
+     "kdef": 1,
+     "live": false,
+     "maxnz": [
+      null,
+      null
+     ],
+     "minnz_top": null,
+     "maxpc_all": [
+      2,
+      1,
+      1
+     ],
+     "nodes": 14,
+     "q1nz": false
+    },
+    {
+     "key": [
+      657,
+      671
+     ],
+     "cs": [
+      1,
+      1
+     ],
+     "D": 2,
+     "kdef": 2,
+     "live": false,
+     "maxnz": [
+      null,
+      null
+     ],
+     "minnz_top": null,
+     "maxpc_all": [
+      1,
+      1,
+      1
+     ],
+     "nodes": 7,
+     "q1nz": false
+    },
+    {
+     "key": [
+      651,
+      665
+     ],
+     "cs": [
+      1,
+      1
+     ],
+     "D": 2,
+     "kdef": 2,
+     "live": false,
+     "maxnz": [
+      null,
+      null
+     ],
+     "minnz_top": null,
+     "maxpc_all": [
+      1,
+      2,
+      1
+     ],
+     "nodes": 14,
+     "q1nz": false
+    },
+    {
+     "key": [
+      663,
+      665
+     ],
+     "cs": [
+      1,
+      1
+     ],
+     "D": 2,
+     "kdef": 2,
+     "live": false,
+     "maxnz": [
+      null,
+      null
+     ],
+     "minnz_top": null,
+     "maxpc_all": [
+      1,
+      1,
+      1
+     ],
+     "nodes": 7,
+     "q1nz": false
+    },
+    {
+     "key": [
+      665,
+      667
+     ],
+     "cs": [
+      1,
+      1
+     ],
+     "D": 2,
+     "kdef": 2,
+     "live": false,
+     "maxnz": [
+      null,
+      null
+     ],
+     "minnz_top": null,
+     "maxpc_all": [
+      2,
+      2,
+      1
+     ],
+     "nodes": 18,
+     "q1nz": false
+    },
+    {
+     "key": [
+      651,
+      653
+     ],
+     "cs": [
+      1,
+      1
+     ],
+     "D": 2,
+     "kdef": 2,
+     "live": false,
+     "maxnz": [
+      null,
+      null
+     ],
+     "minnz_top": null,
+     "maxpc_all": [
+      1,
+      1,
+      1
+     ],
+     "nodes": 7,
+     "q1nz": false
+    },
+    {
+     "key": [
+      651,
+      657
+     ],
+     "cs": [
+      1,
+      1
+     ],
+     "D": 2,
+     "kdef": 2,
+     "live": false,
+     "maxnz": [
+      null,
+      null
+     ],
+     "minnz_top": null,
+     "maxpc_all": [
+      2,
+      2,
+      1
+     ],
+     "nodes": 18,
+     "q1nz": false
+    },
+    {
+     "key": [
+      655,
+      655
+     ],
+     "cs": [
+      0,
+      0
+     ],
+     "D": 3,
+     "kdef": 1,
+     "live": false,
+     "maxnz": [
+      null,
+      null
+     ],
+     "minnz_top": null,
+     "maxpc_all": [
+      0,
+      0,
+      1
+     ],
+     "nodes": 3,
+     "q1nz": false
+    },
+    {
+     "key": [
+      655,
+      659
+     ],
+     "cs": [
+      0,
+      0
+     ],
+     "D": 3,
+     "kdef": 1,
+     "live": false,
+     "maxnz": [
+      null,
+      null
+     ],
+     "minnz_top": null,
+     "maxpc_all": [
+      1,
+      1,
+      1
+     ],
+     "nodes": 10,
+     "q1nz": false
+    },
+    {
+     "key": [
+      649,
+      659
+     ],
+     "cs": [
+      0,
+      1
+     ],
+     "D": 2,
+     "kdef": 2,
+     "live": false,
+     "maxnz": [
+      null,
+      null
+     ],
+     "minnz_top": null,
+     "maxpc_all": [
+      0,
+      1,
+      1
+     ],
+     "nodes": 5,
+     "q1nz": false
+    }
+   ],
+   "pid_traced": 36
+  },
+  {
+   "tag": "W3DEEP4",
+   "m": 3,
+   "kind": "Zp",
+   "p": 3,
+   "d0": 1,
+   "reads": [
+    [
+     4,
+     3,
+     1
+    ],
+    [
+     2,
+     1,
+     1
+    ],
+    [
+     2,
+     3,
+     1
+    ],
+    [
+     2,
+     1,
+     1
+    ]
+   ],
+   "Etot": 32,
+   "G0": 1248,
+   "harness_events": 0,
+   "uchain": {
+    "3": 413,
+    "2": 155,
+    "1": 65
+   },
+   "su": {
+    "3": 1,
+    "2": 1,
+    "1": 3
+   },
+   "census": {
+    "pairs": 1024,
+    "strack": 256,
+    "track": 120,
+    "live": 105,
+    "pred": 105,
+    "mism": 0,
+    "q1nz_offlocus": 315,
+    "chainfed": 105,
+    "nested12": 114,
+    "nested123": 0,
+    "c1eq2": 30,
+    "maxc": [
+     2,
+     2
+    ],
+    "edge_top": 84,
+    "justmiss_top": 15,
+    "justmiss_live": 0,
+    "def_hist": {
+     "0": 84,
+     "1": 21
+    },
+    "kdef_hist": {
+     "2": 42,
+     "1": 63
+    },
+    "pool_mult_edge": 80,
+    "flat_pass": 0
+   },
+   "controls": {
+    "CAP1": 42,
+    "NOCARRY": 105,
+    "EG": 0,
+    "THRP1": 84,
+    "THRM1": 15,
+    "NOU": 105
+   },
+   "pid": [
+    {
+     "key": [
+      1261,
+      1271
+     ],
+     "cs": [
+      2,
+      2
+     ],
+     "D": 2,
+     "kdef": 2,
+     "live": true,
+     "maxnz": [
+      2,
+      2
+     ],
+     "minnz_top": 2,
+     "maxpc_all": [
+      2,
+      2,
+      1
+     ],
+     "nodes": 14,
+     "q1nz": true
+    },
+    {
+     "key": [
+      1267,
+      1275
+     ],
+     "cs": [
+      2,
+      1
+     ],
+     "D": 3,
+     "kdef": 1,
+     "live": true,
+     "maxnz": [
+      2,
+      1
+     ],
+     "minnz_top": 1,
+     "maxpc_all": [
+      3,
+      2,
+      1
+     ],
+     "nodes": 28,
+     "q1nz": true
+    },
+    {
+     "key": [
+      1257,
+      1275
+     ],
+     "cs": [
+      2,
+      2
+     ],
+     "D": 2,
+     "kdef": 2,
+     "live": true,
+     "maxnz": [
+      2,
+      2
+     ],
+     "minnz_top": 2,
+     "maxpc_all": [
+      2,
+      2,
+      1
+     ],
+     "nodes": 14,
+     "q1nz": true
+    },
+    {
+     "key": [
+      1271,
+      1275
+     ],
+     "cs": [
+      2,
+      2
+     ],
+     "D": 3,
+     "kdef": 1,
+     "live": true,
+     "maxnz": [
+      2,
+      2
+     ],
+     "minnz_top": 1,
+     "maxpc_all": [
+      3,
+      2,
+      1
+     ],
+     "nodes": 59,
+     "q1nz": true
+    },
+    {
+     "key": [
+      1265,
+      1267
+     ],
+     "cs": [
+      2,
+      2
+     ],
+     "D": 2,
+     "kdef": 2,
+     "live": true,
+     "maxnz": [
+      2,
+      2
+     ],
+     "minnz_top": 2,
+     "maxpc_all": [
+      2,
+      2,
+      1
+     ],
+     "nodes": 14,
+     "q1nz": true
+    },
+    {
+     "key": [
+      1265,
+      1271
+     ],
+     "cs": [
+      2,
+      2
+     ],
+     "D": 2,
+     "kdef": 2,
+     "live": true,
+     "maxnz": [
+      2,
+      2
+     ],
+     "minnz_top": 2,
+     "maxpc_all": [
+      3,
+      3,
+      1
+     ],
+     "nodes": 40,
+     "q1nz": true
+    },
+    {
+     "key": [
+      1253,
+      1279
+     ],
+     "cs": [
+      2,
+      2
+     ],
+     "D": 2,
+     "kdef": 2,
+     "live": true,
+     "maxnz": [
+      2,
+      2
+     ],
+     "minnz_top": 2,
+     "maxpc_all": [
+      2,
+      2,
+      1
+     ],
+     "nodes": 14,
+     "q1nz": true
+    },
+    {
+     "key": [
+      1267,
+      1279
+     ],
+     "cs": [
+      2,
+      2
+     ],
+     "D": 3,
+     "kdef": 1,
+     "live": true,
+     "maxnz": [
+      2,
+      2
+     ],
+     "minnz_top": 1,
+     "maxpc_all": [
+      3,
+      2,
+      1
+     ],
+     "nodes": 59,
+     "q1nz": true
+    },
+    {
+     "key": [
+      1257,
+      1279
+     ],
+     "cs": [
+      2,
+      2
+     ],
+     "D": 2,
+     "kdef": 2,
+     "live": true,
+     "maxnz": [
+      2,
+      2
+     ],
+     "minnz_top": 2,
+     "maxpc_all": [
+      3,
+      3,
+      1
+     ],
+     "nodes": 40,
+     "q1nz": true
+    },
+    {
+     "key": [
+      1271,
+      1279
+     ],
+     "cs": [
+      2,
+      2
+     ],
+     "D": 3,
+     "kdef": 1,
+     "live": true,
+     "maxnz": [
+      3,
+      3
+     ],
+     "minnz_top": 1,
+     "maxpc_all": [
+      4,
+      3,
+      1
+     ],
+     "nodes": 127,
+     "q1nz": true
+    },
+    {
+     "key": [
+      1253,
+      1271
+     ],
+     "cs": [
+      2,
+      2
+     ],
+     "D": 2,
+     "kdef": 2,
+     "live": true,
+     "maxnz": [
+      2,
+      2
+     ],
+     "minnz_top": 2,
+     "maxpc_all": [
+      3,
+      2,
+      1
+     ],
+     "nodes": 16,
+     "q1nz": true
+    },
+    {
+     "key": [
+      1267,
+      1267
+     ],
+     "cs": [
+      2,
+      1
+     ],
+     "D": 3,
+     "kdef": 1,
+     "live": true,
+     "maxnz": [
+      3,
+      1
+     ],
+     "minnz_top": 1,
+     "maxpc_all": [
+      3,
+      2,
+      1
+     ],
+     "nodes": 37,
+     "q1nz": true
+    },
+    {
+     "key": [
+      1257,
+      1267
+     ],
+     "cs": [
+      2,
+      2
+     ],
+     "D": 2,
+     "kdef": 2,
+     "live": true,
+     "maxnz": [
+      2,
+      2
+     ],
+     "minnz_top": 2,
+     "maxpc_all": [
+      3,
+      2,
+      1
+     ],
+     "nodes": 16,
+     "q1nz": true
+    },
+    {
+     "key": [
+      1267,
+      1271
+     ],
+     "cs": [
+      2,
+      2
+     ],
+     "D": 3,
+     "kdef": 1,
+     "live": true,
+     "maxnz": [
+      3,
+      2
+     ],
+     "minnz_top": 1,
+     "maxpc_all": [
+      4,
+      2,
+      1
+     ],
+     "nodes": 77,
+     "q1nz": true
+    },
+    {
+     "key": [
+      1257,
+      1271
+     ],
+     "cs": [
+      2,
+      2
+     ],
+     "D": 2,
+     "kdef": 2,
+     "live": true,
+     "maxnz": [
+      3,
+      2
+     ],
+     "minnz_top": 2,
+     "maxpc_all": [
+      3,
+      3,
+      1
+     ],
+     "nodes": 56,
+     "q1nz": true
+    },
+    {
+     "key": [
+      1271,
+      1271
+     ],
+     "cs": [
+      2,
+      2
+     ],
+     "D": 3,
+     "kdef": 1,
+     "live": true,
+     "maxnz": [
+      3,
+      3
+     ],
+     "minnz_top": 1,
+     "maxpc_all": [
+      4,
+      3,
+      1
+     ],
+     "nodes": 174,
+     "q1nz": true
+    },
+    {
+     "key": [
+      1251,
+      1259
+     ],
+     "cs": [
+      1,
+      1
+     ],
+     "D": 3,
+     "kdef": 1,
+     "live": true,
+     "maxnz": [
+      1,
+      1
+     ],
+     "minnz_top": 1,
+     "maxpc_all": [
+      1,
+      1,
+      1
+     ],
+     "nodes": 8,
+     "q1nz": true
+    },
+    {
+     "key": [
+      1255,
+      1259
+     ],
+     "cs": [
+      1,
+      1
+     ],
+     "D": 3,
+     "kdef": 1,
+     "live": true,
+     "maxnz": [
+      1,
+      1
+     ],
+     "minnz_top": 1,
+     "maxpc_all": [
+      2,
+      2,
+      1
+     ],
+     "nodes": 19,
+     "q1nz": true
+    },
+    {
+     "key": [
+      1259,
+      1275
+     ],
+     "cs": [
+      1,
+      1
+     ],
+     "D": 3,
+     "kdef": 1,
+     "live": true,
+     "maxnz": [
+      1,
+      1
+     ],
+     "minnz_top": 1,
+     "maxpc_all": [
+      2,
+      1,
+      1
+     ],
+     "nodes": 10,
+     "q1nz": true
+    },
+    {
+     "key": [
+      1259,
+      1279
+     ],
+     "cs": [
+      1,
+      1
+     ],
+     "D": 3,
+     "kdef": 1,
+     "live": true,
+     "maxnz": [
+      2,
+      1
+     ],
+     "minnz_top": 1,
+     "maxpc_all": [
+      2,
+      2,
+      1
+     ],
+     "nodes": 26,
+     "q1nz": true
+    },
+    {
+     "key": [
+      1259,
+      1267
+     ],
+     "cs": [
+      1,
+      1
+     ],
+     "D": 3,
+     "kdef": 1,
+     "live": true,
+     "maxnz": [
+      1,
+      1
+     ],
+     "minnz_top": 1,
+     "maxpc_all": [
+      2,
+      1,
+      1
+     ],
+     "nodes": 14,
+     "q1nz": true
+    },
+    {
+     "key": [
+      1259,
+      1271
+     ],
+     "cs": [
+      1,
+      1
+     ],
+     "D": 3,
+     "kdef": 1,
+     "live": true,
+     "maxnz": [
+      2,
+      1
+     ],
+     "minnz_top": 1,
+     "maxpc_all": [
+      3,
+      2,
+      1
+     ],
+     "nodes": 30,
+     "q1nz": true
+    },
+    {
+     "key": [
+      1249,
+      1255
+     ],
+     "cs": [
+      1,
+      2
+     ],
+     "D": 2,
+     "kdef": 2,
+     "live": true,
+     "maxnz": [
+      1,
+      2
+     ],
+     "minnz_top": 2,
+     "maxpc_all": [
+      1,
+      2,
+      1
+     ],
+     "nodes": 12,
+     "q1nz": true
+    },
+    {
+     "key": [
+      1249,
+      1279
+     ],
+     "cs": [
+      1,
+      2
+     ],
+     "D": 2,
+     "kdef": 2,
+     "live": true,
+     "maxnz": [
+      1,
+      2
+     ],
+     "minnz_top": 2,
+     "maxpc_all": [
+      2,
+      2,
+      1
+     ],
+     "nodes": 14,
+     "q1nz": true
+    },
+    {
+     "key": [
+      1249,
+      1271
+     ],
+     "cs": [
+      1,
+      2
+     ],
+     "D": 2,
+     "kdef": 2,
+     "live": true,
+     "maxnz": [
+      1,
+      2
+     ],
+     "minnz_top": 2,
+     "maxpc_all": [
+      2,
+      2,
+      1
+     ],
+     "nodes": 18,
+     "q1nz": true
+    },
+    {
+     "key": [
+      1251,
+      1263
+     ],
+     "cs": [
+      1,
+      1
+     ],
+     "D": 3,
+     "kdef": 1,
+     "live": true,
+     "maxnz": [
+      1,
+      1
+     ],
+     "minnz_top": 1,
+     "maxpc_all": [
+      2,
+      2,
+      1
+     ],
+     "nodes": 19,
+     "q1nz": true
+    },
+    {
+     "key": [
+      1263,
+      1273
+     ],
+     "cs": [
+      1,
+      2
+     ],
+     "D": 2,
+     "kdef": 2,
+     "live": true,
+     "maxnz": [
+      1,
+      2
+     ],
+     "minnz_top": 2,
+     "maxpc_all": [
+      1,
+      2,
+      1
+     ],
+     "nodes": 12,
+     "q1nz": true
+    },
+    {
+     "key": [
+      1255,
+      1263
+     ],
+     "cs": [
+      1,
+      2
+     ],
+     "D": 3,
+     "kdef": 1,
+     "live": true,
+     "maxnz": [
+      1,
+      2
+     ],
+     "minnz_top": 1,
+     "maxpc_all": [
+      2,
+      2,
+      1
+     ],
+     "nodes": 39,
+     "q1nz": true
+    },
+    {
+     "key": [
+      1263,
+      1275
+     ],
+     "cs": [
+      1,
+      1
+     ],
+     "D": 3,
+     "kdef": 1,
+     "live": true,
+     "maxnz": [
+      2,
+      1
+     ],
+     "minnz_top": 1,
+     "maxpc_all": [
+      2,
+      2,
+      1
+     ],
+     "nodes": 26,
+     "q1nz": true
+    },
+    {
+     "key": [
+      1263,
+      1265
+     ],
+     "cs": [
+      1,
+      2
+     ],
+     "D": 2,
+     "kdef": 2,
+     "live": true,
+     "maxnz": [
+      1,
+      2
+     ],
+     "minnz_top": 2,
+     "maxpc_all": [
+      2,
+      2,
+      1
+     ],
+     "nodes": 14,
+     "q1nz": true
+    },
+    {
+     "key": [
+      1263,
+      1279
+     ],
+     "cs": [
+      1,
+      2
+     ],
+     "D": 3,
+     "kdef": 1,
+     "live": true,
+     "maxnz": [
+      2,
+      2
+     ],
+     "minnz_top": 1,
+     "maxpc_all": [
+      3,
+      2,
+      1
+     ],
+     "nodes": 50,
+     "q1nz": true
+    },
+    {
+     "key": [
+      1263,
+      1267
+     ],
+     "cs": [
+      1,
+      1
+     ],
+     "D": 3,
+     "kdef": 1,
+     "live": true,
+     "maxnz": [
+      2,
+      1
+     ],
+     "minnz_top": 1,
+     "maxpc_all": [
+      3,
+      2,
+      1
+     ],
+     "nodes": 30,
+     "q1nz": true
+    },
+    {
+     "key": [
+      1257,
+      1263
+     ],
+     "cs": [
+      1,
+      2
+     ],
+     "D": 2,
+     "kdef": 2,
+     "live": true,
+     "maxnz": [
+      1,
+      2
+     ],
+     "minnz_top": 2,
+     "maxpc_all": [
+      2,
+      2,
+      1
+     ],
+     "nodes": 18,
+     "q1nz": true
+    },
+    {
+     "key": [
+      1263,
+      1271
+     ],
+     "cs": [
+      1,
+      2
+     ],
+     "D": 3,
+     "kdef": 1,
+     "live": true,
+     "maxnz": [
+      3,
+      2
+     ],
+     "minnz_top": 1,
+     "maxpc_all": [
+      3,
+      2,
+      1
+     ],
+     "nodes": 66,
+     "q1nz": true
+    },
+    {
+     "key": [
+      1251,
+      1251
+     ],
+     "cs": [
+      1,
+      1
+     ],
+     "D": 3,
+     "kdef": 1,
+     "live": true,
+     "maxnz": [
+      1,
+      1
+     ],
+     "minnz_top": 1,
+     "maxpc_all": [
+      2,
+      1,
+      1
+     ],
+     "nodes": 10,
+     "q1nz": true
+    },
+    {
+     "key": [
+      1251,
+      1255
+     ],
+     "cs": [
+      1,
+      1
+     ],
+     "D": 3,
+     "kdef": 1,
+     "live": true,
+     "maxnz": [
+      2,
+      1
+     ],
+     "minnz_top": 1,
+     "maxpc_all": [
+      2,
+      2,
+      1
+     ],
+     "nodes": 26,
+     "q1nz": true
+    },
+    {
+     "key": [
+      1251,
+      1275
+     ],
+     "cs": [
+      1,
+      1
+     ],
+     "D": 3,
+     "kdef": 1,
+     "live": true,
+     "maxnz": [
+      1,
+      1
+     ],
+     "minnz_top": 1,
+     "maxpc_all": [
+      2,
+      1,
+      1
+     ],
+     "nodes": 14,
+     "q1nz": true
+    },
+    {
+     "key": [
+      1251,
+      1279
+     ],
+     "cs": [
+      1,
+      1
+     ],
+     "D": 3,
+     "kdef": 1,
+     "live": true,
+     "maxnz": [
+      2,
+      1
+     ],
+     "minnz_top": 1,
+     "maxpc_all": [
+      3,
+      2,
+      1
+     ],
+     "nodes": 30,
+     "q1nz": true
+    },
+    {
+     "key": [
+      1251,
+      1267
+     ],
+     "cs": [
+      1,
+      1
+     ],
+     "D": 3,
+     "kdef": 1,
+     "live": true,
+     "maxnz": [
+      1,
+      1
+     ],
+     "minnz_top": 1,
+     "maxpc_all": [
+      2,
+      2,
+      1
+     ],
+     "nodes": 20,
+     "q1nz": true
+    },
+    {
+     "key": [
+      1251,
+      1271
+     ],
+     "cs": [
+      1,
+      1
+     ],
+     "D": 3,
+     "kdef": 1,
+     "live": true,
+     "maxnz": [
+      2,
+      1
+     ],
+     "minnz_top": 1,
+     "maxpc_all": [
+      3,
+      2,
+      1
+     ],
+     "nodes": 42,
+     "q1nz": true
+    }
+   ],
+   "pid_traced": 40
+  },
+  {
+   "tag": "W3NEST",
+   "m": 3,
+   "kind": "Zp",
+   "p": 3,
+   "d0": 1,
+   "reads": [
+    [
+     2,
+     1,
+     1
+    ],
+    [
+     2,
+     1,
+     1
+    ],
+    [
+     2,
+     3,
+     1
+    ],
+    [
+     2,
+     1,
+     1
+    ]
+   ],
+   "Etot": 16,
+   "G0": 288,
+   "harness_events": 0,
+   "uchain": {
+    "3": 93,
+    "2": 35,
+    "1": 15
+   },
+   "su": {
+    "3": 1,
+    "2": 1,
+    "1": 1
+   },
+   "census": {
+    "pairs": 256,
+    "strack": 64,
+    "track": 28,
+    "live": 21,
+    "pred": 21,
+    "mism": 0,
+    "q1nz_offlocus": 63,
+    "chainfed": 21,
+    "nested12": 22,
+    "nested123": 0,
+    "c1eq2": 0,
+    "maxc": [
+     1,
+     2
+    ],
+    "edge_top": 18,
+    "justmiss_top": 7,
+    "justmiss_live": 0,
+    "def_hist": {
+     "0": 18,
+     "1": 3
+    },
+    "kdef_hist": {
+     "2": 6,
+     "1": 15
+    },
+    "pool_mult_edge": 18,
+    "flat_pass": 0
+   },
+   "controls": {
+    "CAP1": 6,
+    "NOCARRY": 21,
+    "EG": 0,
+    "THRP1": 18,
+    "THRM1": 7,
+    "NOU": 21
+   },
+   "pid": [
+    {
+     "key": [
+      291,
+      299
+     ],
+     "cs": [
+      1,
+      1
+     ],
+     "D": 3,
+     "kdef": 1,
+     "live": true,
+     "maxnz": [
+      1,
+      1
+     ],
+     "minnz_top": 1,
+     "maxpc_all": [
+      1,
+      1,
+      1
+     ],
+     "nodes": 12,
+     "q1nz": true
+    },
+    {
+     "key": [
+      295,
+      299
+     ],
+     "cs": [
+      1,
+      1
+     ],
+     "D": 3,
+     "kdef": 1,
+     "live": true,
+     "maxnz": [
+      1,
+      1
+     ],
+     "minnz_top": 1,
+     "maxpc_all": [
+      2,
+      2,
+      1
+     ],
+     "nodes": 21,
+     "q1nz": true
+    },
+    {
+     "key": [
+      289,
+      295
+     ],
+     "cs": [
+      1,
+      2
+     ],
+     "D": 2,
+     "kdef": 2,
+     "live": true,
+     "maxnz": [
+      1,
+      2
+     ],
+     "minnz_top": 2,
+     "maxpc_all": [
+      1,
+      2,
+      1
+     ],
+     "nodes": 16,
+     "q1nz": true
+    },
+    {
+     "key": [
+      291,
+      303
+     ],
+     "cs": [
+      1,
+      1
+     ],
+     "D": 3,
+     "kdef": 1,
+     "live": true,
+     "maxnz": [
+      1,
+      1
+     ],
+     "minnz_top": 1,
+     "maxpc_all": [
+      2,
+      2,
+      1
+     ],
+     "nodes": 21,
+     "q1nz": true
+    },
+    {
+     "key": [
+      297,
+      303
+     ],
+     "cs": [
+      1,
+      2
+     ],
+     "D": 2,
+     "kdef": 2,
+     "live": true,
+     "maxnz": [
+      1,
+      2
+     ],
+     "minnz_top": 2,
+     "maxpc_all": [
+      1,
+      2,
+      1
+     ],
+     "nodes": 16,
+     "q1nz": true
+    },
+    {
+     "key": [
+      295,
+      303
+     ],
+     "cs": [
+      1,
+      2
+     ],
+     "D": 3,
+     "kdef": 1,
+     "live": true,
+     "maxnz": [
+      1,
+      2
+     ],
+     "minnz_top": 1,
+     "maxpc_all": [
+      2,
+      2,
+      1
+     ],
+     "nodes": 45,
+     "q1nz": true
+    },
+    {
+     "key": [
+      291,
+      291
+     ],
+     "cs": [
+      1,
+      1
+     ],
+     "D": 3,
+     "kdef": 1,
+     "live": true,
+     "maxnz": [
+      1,
+      1
+     ],
+     "minnz_top": 1,
+     "maxpc_all": [
+      2,
+      2,
+      1
+     ],
+     "nodes": 20,
+     "q1nz": true
+    },
+    {
+     "key": [
+      291,
+      295
+     ],
+     "cs": [
+      1,
+      1
+     ],
+     "D": 3,
+     "kdef": 1,
+     "live": true,
+     "maxnz": [
+      2,
+      1
+     ],
+     "minnz_top": 1,
+     "maxpc_all": [
+      2,
+      2,
+      1
+     ],
+     "nodes": 40,
+     "q1nz": true
+    },
+    {
+     "key": [
+      295,
+      297
+     ],
+     "cs": [
+      1,
+      2
+     ],
+     "D": 2,
+     "kdef": 2,
+     "live": true,
+     "maxnz": [
+      1,
+      2
+     ],
+     "minnz_top": 2,
+     "maxpc_all": [
+      2,
+      3,
+      1
+     ],
+     "nodes": 24,
+     "q1nz": true
+    },
+    {
+     "key": [
+      295,
+      295
+     ],
+     "cs": [
+      1,
+      2
+     ],
+     "D": 3,
+     "kdef": 1,
+     "live": true,
+     "maxnz": [
+      2,
+      3
+     ],
+     "minnz_top": 1,
+     "maxpc_all": [
+      3,
+      3,
+      1
+     ],
+     "nodes": 80,
+     "q1nz": true
+    },
+    {
+     "key": [
+      299,
+      303
+     ],
+     "cs": [
+      0,
+      1
+     ],
+     "D": 3,
+     "kdef": 1,
+     "live": true,
+     "maxnz": [
+      0,
+      1
+     ],
+     "minnz_top": 1,
+     "maxpc_all": [
+      1,
+      2,
+      1
+     ],
+     "nodes": 16,
+     "q1nz": true
+    },
+    {
+     "key": [
+      303,
+      303
+     ],
+     "cs": [
+      0,
+      1
+     ],
+     "D": 3,
+     "kdef": 1,
+     "live": true,
+     "maxnz": [
+      1,
+      1
+     ],
+     "minnz_top": 1,
+     "maxpc_all": [
+      1,
+      2,
+      1
+     ],
+     "nodes": 23,
+     "q1nz": true
+    },
+    {
+     "key": [
+      293,
+      295
+     ],
+     "cs": [
+      1,
+      1
+     ],
+     "D": 2,
+     "kdef": 2,
+     "live": false,
+     "maxnz": [
+      null,
+      null
+     ],
+     "minnz_top": null,
+     "maxpc_all": [
+      1,
+      1,
+      1
+     ],
+     "nodes": 7,
+     "q1nz": false
+    },
+    {
+     "key": [
+      291,
+      297
+     ],
+     "cs": [
+      1,
+      1
+     ],
+     "D": 2,
+     "kdef": 2,
+     "live": false,
+     "maxnz": [
+      null,
+      null
+     ],
+     "minnz_top": null,
+     "maxpc_all": [
+      1,
+      1,
+      1
+     ],
+     "nodes": 7,
+     "q1nz": false
+    },
+    {
+     "key": [
+      299,
+      299
+     ],
+     "cs": [
+      0,
+      0
+     ],
+     "D": 3,
+     "kdef": 1,
+     "live": false,
+     "maxnz": [
+      null,
+      null
+     ],
+     "minnz_top": null,
+     "maxpc_all": [
+      0,
+      0,
+      1
+     ],
+     "nodes": 3,
+     "q1nz": false
+    },
+    {
+     "key": [
+      289,
+      303
+     ],
+     "cs": [
+      0,
+      1
+     ],
+     "D": 2,
+     "kdef": 2,
+     "live": false,
+     "maxnz": [
+      null,
+      null
+     ],
+     "minnz_top": null,
+     "maxpc_all": [
+      0,
+      1,
+      1
+     ],
+     "nodes": 5,
+     "q1nz": false
+    }
+   ],
+   "pid_traced": 16
+  },
+  {
+   "tag": "W3NESTF",
+   "m": 3,
+   "kind": "Fpt",
+   "p": 2,
+   "d0": 1,
+   "reads": [
+    [
+     2,
+     1,
+     1
+    ],
+    [
+     2,
+     1,
+     1
+    ],
+    [
+     2,
+     3,
+     1
+    ],
+    [
+     2,
+     1,
+     1
+    ]
+   ],
+   "Etot": 16,
+   "G0": 288,
+   "harness_events": 0,
+   "uchain": {
+    "3": 93,
+    "2": 35,
+    "1": 15
+   },
+   "su": {
+    "3": 1,
+    "2": 1,
+    "1": 1
+   },
+   "census": {
+    "pairs": 256,
+    "strack": 64,
+    "track": 28,
+    "live": 21,
+    "pred": 21,
+    "mism": 0,
+    "q1nz_offlocus": 63,
+    "chainfed": 21,
+    "nested12": 22,
+    "nested123": 0,
+    "c1eq2": 0,
+    "maxc": [
+     1,
+     2
+    ],
+    "edge_top": 18,
+    "justmiss_top": 7,
+    "justmiss_live": 0,
+    "def_hist": {
+     "0": 18,
+     "1": 3
+    },
+    "kdef_hist": {
+     "2": 6,
+     "1": 15
+    },
+    "pool_mult_edge": 18,
+    "flat_pass": 0
+   },
+   "controls": {
+    "CAP1": 6,
+    "NOCARRY": 21,
+    "EG": 0,
+    "THRP1": 18,
+    "THRM1": 7,
+    "NOU": 21
+   },
+   "pid": [
+    {
+     "key": [
+      291,
+      299
+     ],
+     "cs": [
+      1,
+      1
+     ],
+     "D": 3,
+     "kdef": 1,
+     "live": true,
+     "maxnz": [
+      1,
+      1
+     ],
+     "minnz_top": 1,
+     "maxpc_all": [
+      1,
+      1,
+      1
+     ],
+     "nodes": 12,
+     "q1nz": true
+    },
+    {
+     "key": [
+      295,
+      299
+     ],
+     "cs": [
+      1,
+      1
+     ],
+     "D": 3,
+     "kdef": 1,
+     "live": true,
+     "maxnz": [
+      1,
+      1
+     ],
+     "minnz_top": 1,
+     "maxpc_all": [
+      2,
+      2,
+      1
+     ],
+     "nodes": 21,
+     "q1nz": true
+    },
+    {
+     "key": [
+      289,
+      295
+     ],
+     "cs": [
+      1,
+      2
+     ],
+     "D": 2,
+     "kdef": 2,
+     "live": true,
+     "maxnz": [
+      1,
+      2
+     ],
+     "minnz_top": 2,
+     "maxpc_all": [
+      1,
+      2,
+      1
+     ],
+     "nodes": 16,
+     "q1nz": true
+    },
+    {
+     "key": [
+      291,
+      303
+     ],
+     "cs": [
+      1,
+      1
+     ],
+     "D": 3,
+     "kdef": 1,
+     "live": true,
+     "maxnz": [
+      1,
+      1
+     ],
+     "minnz_top": 1,
+     "maxpc_all": [
+      2,
+      2,
+      1
+     ],
+     "nodes": 21,
+     "q1nz": true
+    },
+    {
+     "key": [
+      297,
+      303
+     ],
+     "cs": [
+      1,
+      2
+     ],
+     "D": 2,
+     "kdef": 2,
+     "live": true,
+     "maxnz": [
+      1,
+      2
+     ],
+     "minnz_top": 2,
+     "maxpc_all": [
+      1,
+      2,
+      1
+     ],
+     "nodes": 16,
+     "q1nz": true
+    },
+    {
+     "key": [
+      295,
+      303
+     ],
+     "cs": [
+      1,
+      2
+     ],
+     "D": 3,
+     "kdef": 1,
+     "live": true,
+     "maxnz": [
+      1,
+      2
+     ],
+     "minnz_top": 1,
+     "maxpc_all": [
+      2,
+      2,
+      1
+     ],
+     "nodes": 45,
+     "q1nz": true
+    },
+    {
+     "key": [
+      291,
+      291
+     ],
+     "cs": [
+      1,
+      1
+     ],
+     "D": 3,
+     "kdef": 1,
+     "live": true,
+     "maxnz": [
+      1,
+      1
+     ],
+     "minnz_top": 1,
+     "maxpc_all": [
+      2,
+      2,
+      1
+     ],
+     "nodes": 20,
+     "q1nz": true
+    },
+    {
+     "key": [
+      291,
+      295
+     ],
+     "cs": [
+      1,
+      1
+     ],
+     "D": 3,
+     "kdef": 1,
+     "live": true,
+     "maxnz": [
+      2,
+      1
+     ],
+     "minnz_top": 1,
+     "maxpc_all": [
+      2,
+      2,
+      1
+     ],
+     "nodes": 40,
+     "q1nz": true
+    },
+    {
+     "key": [
+      295,
+      297
+     ],
+     "cs": [
+      1,
+      2
+     ],
+     "D": 2,
+     "kdef": 2,
+     "live": true,
+     "maxnz": [
+      1,
+      2
+     ],
+     "minnz_top": 2,
+     "maxpc_all": [
+      2,
+      3,
+      1
+     ],
+     "nodes": 24,
+     "q1nz": true
+    },
+    {
+     "key": [
+      295,
+      295
+     ],
+     "cs": [
+      1,
+      2
+     ],
+     "D": 3,
+     "kdef": 1,
+     "live": true,
+     "maxnz": [
+      1,
+      2
+     ],
+     "minnz_top": 1,
+     "maxpc_all": [
+      3,
+      3,
+      1
+     ],
+     "nodes": 80,
+     "q1nz": true
+    },
+    {
+     "key": [
+      299,
+      303
+     ],
+     "cs": [
+      0,
+      1
+     ],
+     "D": 3,
+     "kdef": 1,
+     "live": true,
+     "maxnz": [
+      0,
+      1
+     ],
+     "minnz_top": 1,
+     "maxpc_all": [
+      1,
+      2,
+      1
+     ],
+     "nodes": 16,
+     "q1nz": true
+    },
+    {
+     "key": [
+      303,
+      303
+     ],
+     "cs": [
+      0,
+      1
+     ],
+     "D": 3,
+     "kdef": 1,
+     "live": true,
+     "maxnz": [
+      1,
+      1
+     ],
+     "minnz_top": 1,
+     "maxpc_all": [
+      1,
+      2,
+      1
+     ],
+     "nodes": 23,
+     "q1nz": true
+    },
+    {
+     "key": [
+      293,
+      295
+     ],
+     "cs": [
+      1,
+      1
+     ],
+     "D": 2,
+     "kdef": 2,
+     "live": false,
+     "maxnz": [
+      null,
+      null
+     ],
+     "minnz_top": null,
+     "maxpc_all": [
+      1,
+      1,
+      1
+     ],
+     "nodes": 7,
+     "q1nz": false
+    },
+    {
+     "key": [
+      291,
+      297
+     ],
+     "cs": [
+      1,
+      1
+     ],
+     "D": 2,
+     "kdef": 2,
+     "live": false,
+     "maxnz": [
+      null,
+      null
+     ],
+     "minnz_top": null,
+     "maxpc_all": [
+      1,
+      1,
+      1
+     ],
+     "nodes": 7,
+     "q1nz": false
+    },
+    {
+     "key": [
+      299,
+      299
+     ],
+     "cs": [
+      0,
+      0
+     ],
+     "D": 3,
+     "kdef": 1,
+     "live": false,
+     "maxnz": [
+      null,
+      null
+     ],
+     "minnz_top": null,
+     "maxpc_all": [
+      0,
+      0,
+      1
+     ],
+     "nodes": 3,
+     "q1nz": false
+    },
+    {
+     "key": [
+      289,
+      303
+     ],
+     "cs": [
+      0,
+      1
+     ],
+     "D": 2,
+     "kdef": 2,
+     "live": false,
+     "maxnz": [
+      null,
+      null
+     ],
+     "minnz_top": null,
+     "maxpc_all": [
+      0,
+      1,
+      1
+     ],
+     "nodes": 5,
+     "q1nz": false
+    }
+   ],
+   "pid_traced": 16
+  },
+  {
+   "tag": "W3FMID",
+   "m": 3,
+   "kind": "Zp",
+   "p": 3,
+   "d0": 1,
+   "reads": [
+    [
+     2,
+     1,
+     1
+    ],
+    [
+     1,
+     1,
+     1
+    ],
+    [
+     2,
+     1,
+     1
+    ],
+    [
+     2,
+     1,
+     1
+    ]
+   ],
+   "Etot": 8,
+   "G0": 88,
+   "harness_events": 0,
+   "uchain": {
+    "3": 29,
+    "2": 11,
+    "1": 11
+   },
+   "su": {
+    "3": 1,
+    "2": 0,
+    "1": 1
+   },
+   "census": {
+    "pairs": 64,
+    "strack": 16,
+    "track": 6,
+    "live": 3,
+    "pred": 3,
+    "mism": 0,
+    "q1nz_offlocus": 9,
+    "chainfed": 3,
+    "nested12": 5,
+    "nested123": 0,
+    "c1eq2": 0,
+    "maxc": [
+     1,
+     1
+    ],
+    "edge_top": 3,
+    "justmiss_top": 3,
+    "justmiss_live": 0,
+    "def_hist": {
+     "0": 3
+    },
+    "kdef_hist": {
+     "1": 3
+    },
+    "pool_mult_edge": 5,
+    "flat_pass": 5
+   },
+   "controls": {
+    "CAP1": 0,
+    "NOCARRY": 3,
+    "EG": 0,
+    "THRP1": 3,
+    "THRM1": 3,
+    "NOU": 3
+   },
+   "pid": [
+    {
+     "key": [
+      91,
+      95
+     ],
+     "cs": [
+      1,
+      1
+     ],
+     "D": 3,
+     "kdef": 1,
+     "live": true,
+     "maxnz": [
+      1,
+      1
+     ],
+     "minnz_top": 1,
+     "maxpc_all": [
+      1,
+      1,
+      1
+     ],
+     "nodes": 12,
+     "q1nz": true
+    },
+    {
+     "key": [
+      95,
+      95
+     ],
+     "cs": [
+      1,
+      1
+     ],
+     "D": 3,
+     "kdef": 1,
+     "live": true,
+     "maxnz": [
+      2,
+      1
+     ],
+     "minnz_top": 1,
+     "maxpc_all": [
+      2,
+      2,
+      1
+     ],
+     "nodes": 27,
+     "q1nz": true
+    },
+    {
+     "key": [
+      89,
+      95
+     ],
+     "cs": [
+      1,
+      1
+     ],
+     "D": 2,
+     "kdef": 2,
+     "live": false,
+     "maxnz": [
+      null,
+      null
+     ],
+     "minnz_top": null,
+     "maxpc_all": [
+      1,
+      1,
+      1
+     ],
+     "nodes": 7,
+     "q1nz": false
+    },
+    {
+     "key": [
+      91,
+      91
+     ],
+     "cs": [
+      0,
+      0
+     ],
+     "D": 3,
+     "kdef": 1,
+     "live": false,
+     "maxnz": [
+      null,
+      null
+     ],
+     "minnz_top": null,
+     "maxpc_all": [
+      0,
+      0,
+      1
+     ],
+     "nodes": 3,
+     "q1nz": false
+    }
+   ],
+   "pid_traced": 4
+  },
+  {
+   "tag": "W3FTOP",
+   "m": 3,
+   "kind": "Zp",
+   "p": 3,
+   "d0": 1,
+   "reads": [
+    [
+     2,
+     1,
+     1
+    ],
+    [
+     2,
+     1,
+     1
+    ],
+    [
+     1,
+     1,
+     1
+    ],
+    [
+     2,
+     1,
+     1
+    ]
+   ],
+   "Etot": 8,
+   "G0": 72,
+   "harness_events": 0,
+   "uchain": {
+    "3": 23,
+    "2": 23,
+    "1": 9
+   },
+   "su": {
+    "3": 0,
+    "2": 1,
+    "1": 1
+   },
+   "census": {
+    "pairs": 64,
+    "strack": 16,
+    "track": 6,
+    "live": 3,
+    "pred": 3,
+    "mism": 0,
+    "q1nz_offlocus": 9,
+    "chainfed": 3,
+    "nested12": 5,
+    "nested123": 0,
+    "c1eq2": 0,
+    "maxc": [
+     1,
+     2
+    ],
+    "edge_top": 3,
+    "justmiss_top": 3,
+    "justmiss_live": 0,
+    "def_hist": {
+     "0": 3
+    },
+    "kdef_hist": {
+     "2": 3
+    },
+    "pool_mult_edge": 3,
+    "flat_pass": 6
+   },
+   "controls": {
+    "CAP1": 3,
+    "NOCARRY": 3,
+    "EG": 0,
+    "THRP1": 3,
+    "THRM1": 3,
+    "NOU": 3
+   },
+   "pid": [
+    {
+     "key": [
+      73,
+      77
+     ],
+     "cs": [
+      1,
+      2
+     ],
+     "D": 0,
+     "kdef": 2,
+     "live": true,
+     "maxnz": [
+      1,
+      2
+     ],
+     "minnz_top": 2,
+     "maxpc_all": [
+      1,
+      2,
+      1
+     ],
+     "nodes": 19,
+     "q1nz": true
+    },
+    {
+     "key": [
+      77,
+      77
+     ],
+     "cs": [
+      1,
+      2
+     ],
+     "D": 0,
+     "kdef": 2,
+     "live": true,
+     "maxnz": [
+      2,
+      3
+     ],
+     "minnz_top": 2,
+     "maxpc_all": [
+      2,
+      3,
+      1
+     ],
+     "nodes": 47,
+     "q1nz": true
+    },
+    {
+     "key": [
+      75,
+      77
+     ],
+     "cs": [
+      1,
+      1
+     ],
+     "D": 0,
+     "kdef": 2,
+     "live": false,
+     "maxnz": [
+      null,
+      null
+     ],
+     "minnz_top": null,
+     "maxpc_all": [
+      1,
+      1,
+      1
+     ],
+     "nodes": 7,
+     "q1nz": false
+    },
+    {
+     "key": [
+      73,
+      73
+     ],
+     "cs": [
+      0,
+      1
+     ],
+     "D": 0,
+     "kdef": 2,
+     "live": false,
+     "maxnz": [
+      null,
+      null
+     ],
+     "minnz_top": null,
+     "maxpc_all": [
+      0,
+      1,
+      1
+     ],
+     "nodes": 5,
+     "q1nz": false
+    }
+   ],
+   "pid_traced": 4
+  },
+  {
+   "tag": "W3FDBL",
+   "m": 3,
+   "kind": "Zp",
+   "p": 3,
+   "d0": 1,
+   "reads": [
+    [
+     3,
+     1,
+     1
+    ],
+    [
+     1,
+     1,
+     1
+    ],
+    [
+     1,
+     1,
+     1
+    ],
+    [
+     2,
+     1,
+     1
+    ]
+   ],
+   "Etot": 6,
+   "G0": 36,
+   "harness_events": 0,
+   "uchain": {
+    "3": 11,
+    "2": 11,
+    "1": 11
+   },
+   "su": {
+    "3": 0,
+    "2": 0,
+    "1": 2
+   },
+   "census": {
+    "pairs": 36,
+    "strack": 9,
+    "track": 3,
+    "live": 1,
+    "pred": 1,
+    "mism": 0,
+    "q1nz_offlocus": 3,
+    "chainfed": 1,
+    "nested12": 3,
+    "nested123": 0,
+    "c1eq2": 1,
+    "maxc": [
+     2,
+     2
+    ],
+    "edge_top": 1,
+    "justmiss_top": 2,
+    "justmiss_live": 0,
+    "def_hist": {
+     "0": 1
+    },
+    "kdef_hist": {
+     "2": 1
+    },
+    "pool_mult_edge": 3,
+    "flat_pass": 3
+   },
+   "controls": {
+    "CAP1": 1,
+    "NOCARRY": 1,
+    "EG": 0,
+    "THRP1": 1,
+    "THRM1": 2,
+    "NOU": 1
+   },
+   "pid": [
+    {
+     "key": [
+      39,
+      39
+     ],
+     "cs": [
+      2,
+      2
+     ],
+     "D": 0,
+     "kdef": 2,
+     "live": true,
+     "maxnz": [
+      2,
+      2
+     ],
+     "minnz_top": 2,
+     "maxpc_all": [
+      2,
+      2,
+      1
+     ],
+     "nodes": 18,
+     "q1nz": true
+    },
+    {
+     "key": [
+      37,
+      39
+     ],
+     "cs": [
+      1,
+      1
+     ],
+     "D": 0,
+     "kdef": 2,
+     "live": false,
+     "maxnz": [
+      null,
+      null
+     ],
+     "minnz_top": null,
+     "maxpc_all": [
+      1,
+      1,
+      1
+     ],
+     "nodes": 7,
+     "q1nz": false
+    }
+   ],
+   "pid_traced": 2
+  },
+  {
+   "tag": "W3FMIDF",
+   "m": 3,
+   "kind": "Fpt",
+   "p": 2,
+   "d0": 1,
+   "reads": [
+    [
+     2,
+     1,
+     1
+    ],
+    [
+     1,
+     1,
+     1
+    ],
+    [
+     2,
+     1,
+     1
+    ],
+    [
+     2,
+     1,
+     1
+    ]
+   ],
+   "Etot": 8,
+   "G0": 88,
+   "harness_events": 0,
+   "uchain": {
+    "3": 29,
+    "2": 11,
+    "1": 11
+   },
+   "su": {
+    "3": 1,
+    "2": 0,
+    "1": 1
+   },
+   "census": {
+    "pairs": 64,
+    "strack": 16,
+    "track": 6,
+    "live": 3,
+    "pred": 3,
+    "mism": 0,
+    "q1nz_offlocus": 9,
+    "chainfed": 3,
+    "nested12": 5,
+    "nested123": 0,
+    "c1eq2": 0,
+    "maxc": [
+     1,
+     1
+    ],
+    "edge_top": 3,
+    "justmiss_top": 3,
+    "justmiss_live": 0,
+    "def_hist": {
+     "0": 3
+    },
+    "kdef_hist": {
+     "1": 3
+    },
+    "pool_mult_edge": 5,
+    "flat_pass": 5
+   },
+   "controls": {
+    "CAP1": 0,
+    "NOCARRY": 3,
+    "EG": 0,
+    "THRP1": 3,
+    "THRM1": 3,
+    "NOU": 3
+   },
+   "pid": [
+    {
+     "key": [
+      91,
+      95
+     ],
+     "cs": [
+      1,
+      1
+     ],
+     "D": 3,
+     "kdef": 1,
+     "live": true,
+     "maxnz": [
+      1,
+      1
+     ],
+     "minnz_top": 1,
+     "maxpc_all": [
+      1,
+      1,
+      1
+     ],
+     "nodes": 12,
+     "q1nz": true
+    },
+    {
+     "key": [
+      95,
+      95
+     ],
+     "cs": [
+      1,
+      1
+     ],
+     "D": 3,
+     "kdef": 1,
+     "live": true,
+     "maxnz": [
+      2,
+      1
+     ],
+     "minnz_top": 1,
+     "maxpc_all": [
+      2,
+      2,
+      1
+     ],
+     "nodes": 25,
+     "q1nz": true
+    },
+    {
+     "key": [
+      89,
+      95
+     ],
+     "cs": [
+      1,
+      1
+     ],
+     "D": 2,
+     "kdef": 2,
+     "live": false,
+     "maxnz": [
+      null,
+      null
+     ],
+     "minnz_top": null,
+     "maxpc_all": [
+      1,
+      1,
+      1
+     ],
+     "nodes": 7,
+     "q1nz": false
+    },
+    {
+     "key": [
+      91,
+      91
+     ],
+     "cs": [
+      0,
+      0
+     ],
+     "D": 3,
+     "kdef": 1,
+     "live": false,
+     "maxnz": [
+      null,
+      null
+     ],
+     "minnz_top": null,
+     "maxpc_all": [
+      0,
+      0,
+      1
+     ],
+     "nodes": 3,
+     "q1nz": false
+    }
+   ],
+   "pid_traced": 4
+  },
+  {
+   "tag": "W3TRK1",
+   "m": 3,
+   "kind": "Zp",
+   "p": 3,
+   "d0": 1,
+   "reads": [
+    [
+     3,
+     2,
+     1
+    ],
+    [
+     2,
+     1,
+     1
+    ],
+    [
+     2,
+     1,
+     1
+    ],
+    [
+     1,
+     1,
+     1
+    ]
+   ],
+   "Etot": 12,
+   "G0": 324,
+   "harness_events": 0,
+   "uchain": {
+    "3": 107,
+    "2": 27,
+    "1": 7
+   },
+   "su": {
+    "3": 1,
+    "2": 1,
+    "1": 2
+   },
+   "census": {
+    "pairs": 144,
+    "strack": 144,
+    "track": 66,
+    "live": 55,
+    "pred": 55,
+    "mism": 0,
+    "q1nz_offlocus": 0,
+    "chainfed": 55,
+    "nested12": 60,
+    "nested123": 0,
+    "c1eq2": 10,
+    "maxc": [
+     2,
+     2
+    ],
+    "edge_top": 45,
+    "justmiss_top": 11,
+    "justmiss_live": 0,
+    "def_hist": {
+     "0": 45,
+     "1": 10
+    },
+    "kdef_hist": {
+     "1": 35,
+     "2": 20
+    },
+    "pool_mult_edge": 44,
+    "flat_pass": 0
+   },
+   "controls": {
+    "CAP1": 20,
+    "NOCARRY": 55,
+    "EG": 0,
+    "THRP1": 45,
+    "THRM1": 11,
+    "NOU": 55
+   },
+   "pid": [
+    {
+     "key": [
+      328,
+      335
+     ],
+     "cs": [
+      2,
+      2
+     ],
+     "D": 2,
+     "kdef": 2,
+     "live": true,
+     "maxnz": [
+      2,
+      2
+     ],
+     "minnz_top": 2,
+     "maxpc_all": [
+      2,
+      2,
+      1
+     ],
+     "nodes": 14,
+     "q1nz": true
+    },
+    {
+     "key": [
+      333,
+      333
+     ],
+     "cs": [
+      2,
+      1
+     ],
+     "D": 3,
+     "kdef": 1,
+     "live": true,
+     "maxnz": [
+      2,
+      1
+     ],
+     "minnz_top": 1,
+     "maxpc_all": [
+      3,
+      2,
+      1
+     ],
+     "nodes": 34,
+     "q1nz": true
+    },
+    {
+     "key": [
+      330,
+      333
+     ],
+     "cs": [
+      2,
+      2
+     ],
+     "D": 2,
+     "kdef": 2,
+     "live": true,
+     "maxnz": [
+      2,
+      2
+     ],
+     "minnz_top": 2,
+     "maxpc_all": [
+      2,
+      2,
+      1
+     ],
+     "nodes": 14,
+     "q1nz": true
+    },
+    {
+     "key": [
+      333,
+      335
+     ],
+     "cs": [
+      2,
+      2
+     ],
+     "D": 3,
+     "kdef": 1,
+     "live": true,
+     "maxnz": [
+      2,
+      2
+     ],
+     "minnz_top": 1,
+     "maxpc_all": [
+      3,
+      2,
+      1
+     ],
+     "nodes": 87,
+     "q1nz": true
+    },
+    {
+     "key": [
+      330,
+      335
+     ],
+     "cs": [
+      2,
+      2
+     ],
+     "D": 2,
+     "kdef": 2,
+     "live": true,
+     "maxnz": [
+      2,
+      2
+     ],
+     "minnz_top": 2,
+     "maxpc_all": [
+      3,
+      3,
+      1
+     ],
+     "nodes": 48,
+     "q1nz": true
+    },
+    {
+     "key": [
+      335,
+      335
+     ],
+     "cs": [
+      2,
+      2
+     ],
+     "D": 3,
+     "kdef": 1,
+     "live": true,
+     "maxnz": [
+      3,
+      3
+     ],
+     "minnz_top": 1,
+     "maxpc_all": [
+      4,
+      3,
+      1
+     ],
+     "nodes": 215,
+     "q1nz": true
+    },
+    {
+     "key": [
+      325,
+      329
+     ],
+     "cs": [
+      1,
+      1
+     ],
+     "D": 3,
+     "kdef": 1,
+     "live": true,
+     "maxnz": [
+      1,
+      1
+     ],
+     "minnz_top": 1,
+     "maxpc_all": [
+      1,
+      1,
+      1
+     ],
+     "nodes": 8,
+     "q1nz": true
+    },
+    {
+     "key": [
+      327,
+      329
+     ],
+     "cs": [
+      1,
+      1
+     ],
+     "D": 3,
+     "kdef": 1,
+     "live": true,
+     "maxnz": [
+      1,
+      1
+     ],
+     "minnz_top": 1,
+     "maxpc_all": [
+      2,
+      2,
+      1
+     ],
+     "nodes": 25,
+     "q1nz": true
+    },
+    {
+     "key": [
+      329,
+      333
+     ],
+     "cs": [
+      1,
+      1
+     ],
+     "D": 3,
+     "kdef": 1,
+     "live": true,
+     "maxnz": [
+      1,
+      1
+     ],
+     "minnz_top": 1,
+     "maxpc_all": [
+      2,
+      1,
+      1
+     ],
+     "nodes": 15,
+     "q1nz": true
+    },
+    {
+     "key": [
+      329,
+      335
+     ],
+     "cs": [
+      1,
+      1
+     ],
+     "D": 3,
+     "kdef": 1,
+     "live": true,
+     "maxnz": [
+      2,
+      1
+     ],
+     "minnz_top": 1,
+     "maxpc_all": [
+      2,
+      2,
+      1
+     ],
+     "nodes": 35,
+     "q1nz": true
+    },
+    {
+     "key": [
+      326,
+      327
+     ],
+     "cs": [
+      1,
+      2
+     ],
+     "D": 2,
+     "kdef": 2,
+     "live": true,
+     "maxnz": [
+      1,
+      2
+     ],
+     "minnz_top": 2,
+     "maxpc_all": [
+      1,
+      2,
+      1
+     ],
+     "nodes": 12,
+     "q1nz": true
+    },
+    {
+     "key": [
+      326,
+      335
+     ],
+     "cs": [
+      1,
+      2
+     ],
+     "D": 2,
+     "kdef": 2,
+     "live": true,
+     "maxnz": [
+      1,
+      2
+     ],
+     "minnz_top": 2,
+     "maxpc_all": [
+      2,
+      2,
+      1
+     ],
+     "nodes": 19,
+     "q1nz": true
+    },
+    {
+     "key": [
+      325,
+      331
+     ],
+     "cs": [
+      1,
+      1
+     ],
+     "D": 3,
+     "kdef": 1,
+     "live": true,
+     "maxnz": [
+      1,
+      1
+     ],
+     "minnz_top": 1,
+     "maxpc_all": [
+      2,
+      2,
+      1
+     ],
+     "nodes": 25,
+     "q1nz": true
+    },
+    {
+     "key": [
+      331,
+      334
+     ],
+     "cs": [
+      1,
+      2
+     ],
+     "D": 2,
+     "kdef": 2,
+     "live": true,
+     "maxnz": [
+      1,
+      2
+     ],
+     "minnz_top": 2,
+     "maxpc_all": [
+      1,
+      2,
+      1
+     ],
+     "nodes": 12,
+     "q1nz": true
+    },
+    {
+     "key": [
+      327,
+      331
+     ],
+     "cs": [
+      1,
+      2
+     ],
+     "D": 3,
+     "kdef": 1,
+     "live": true,
+     "maxnz": [
+      1,
+      2
+     ],
+     "minnz_top": 1,
+     "maxpc_all": [
+      2,
+      2,
+      1
+     ],
+     "nodes": 61,
+     "q1nz": true
+    },
+    {
+     "key": [
+      331,
+      333
+     ],
+     "cs": [
+      1,
+      1
+     ],
+     "D": 3,
+     "kdef": 1,
+     "live": true,
+     "maxnz": [
+      2,
+      1
+     ],
+     "minnz_top": 1,
+     "maxpc_all": [
+      2,
+      2,
+      1
+     ],
+     "nodes": 35,
+     "q1nz": true
+    },
+    {
+     "key": [
+      330,
+      331
+     ],
+     "cs": [
+      1,
+      2
+     ],
+     "D": 2,
+     "kdef": 2,
+     "live": true,
+     "maxnz": [
+      1,
+      2
+     ],
+     "minnz_top": 2,
+     "maxpc_all": [
+      2,
+      2,
+      1
+     ],
+     "nodes": 19,
+     "q1nz": true
+    },
+    {
+     "key": [
+      331,
+      335
+     ],
+     "cs": [
+      1,
+      2
+     ],
+     "D": 3,
+     "kdef": 1,
+     "live": true,
+     "maxnz": [
+      2,
+      2
+     ],
+     "minnz_top": 1,
+     "maxpc_all": [
+      3,
+      2,
+      1
+     ],
+     "nodes": 83,
+     "q1nz": true
+    },
+    {
+     "key": [
+      325,
+      325
+     ],
+     "cs": [
+      1,
+      1
+     ],
+     "D": 3,
+     "kdef": 1,
+     "live": true,
+     "maxnz": [
+      1,
+      1
+     ],
+     "minnz_top": 1,
+     "maxpc_all": [
+      2,
+      1,
+      1
+     ],
+     "nodes": 15,
+     "q1nz": true
+    },
+    {
+     "key": [
+      325,
+      327
+     ],
+     "cs": [
+      1,
+      1
+     ],
+     "D": 3,
+     "kdef": 1,
+     "live": true,
+     "maxnz": [
+      2,
+      1
+     ],
+     "minnz_top": 1,
+     "maxpc_all": [
+      2,
+      2,
+      1
+     ],
+     "nodes": 35,
+     "q1nz": true
+    },
+    {
+     "key": [
+      325,
+      333
+     ],
+     "cs": [
+      1,
+      1
+     ],
+     "D": 3,
+     "kdef": 1,
+     "live": true,
+     "maxnz": [
+      1,
+      1
+     ],
+     "minnz_top": 1,
+     "maxpc_all": [
+      2,
+      2,
+      1
+     ],
+     "nodes": 24,
+     "q1nz": true
+    },
+    {
+     "key": [
+      325,
+      335
+     ],
+     "cs": [
+      1,
+      1
+     ],
+     "D": 3,
+     "kdef": 1,
+     "live": true,
+     "maxnz": [
+      2,
+      1
+     ],
+     "minnz_top": 1,
+     "maxpc_all": [
+      3,
+      2,
+      1
+     ],
+     "nodes": 57,
+     "q1nz": true
+    },
+    {
+     "key": [
+      327,
+      334
+     ],
+     "cs": [
+      1,
+      2
+     ],
+     "D": 2,
+     "kdef": 2,
+     "live": true,
+     "maxnz": [
+      1,
+      2
+     ],
+     "minnz_top": 2,
+     "maxpc_all": [
+      2,
+      2,
+      1
+     ],
+     "nodes": 19,
+     "q1nz": true
+    },
+    {
+     "key": [
+      334,
+      335
+     ],
+     "cs": [
+      1,
+      2
+     ],
+     "D": 2,
+     "kdef": 2,
+     "live": true,
+     "maxnz": [
+      1,
+      2
+     ],
+     "minnz_top": 2,
+     "maxpc_all": [
+      2,
+      3,
+      1
+     ],
+     "nodes": 28,
+     "q1nz": true
+    },
+    {
+     "key": [
+      327,
+      327
+     ],
+     "cs": [
+      1,
+      2
+     ],
+     "D": 3,
+     "kdef": 1,
+     "live": true,
+     "maxnz": [
+      2,
+      2
+     ],
+     "minnz_top": 1,
+     "maxpc_all": [
+      3,
+      2,
+      1
+     ],
+     "nodes": 83,
+     "q1nz": true
+    },
+    {
+     "key": [
+      327,
+      333
+     ],
+     "cs": [
+      1,
+      1
+     ],
+     "D": 3,
+     "kdef": 1,
+     "live": true,
+     "maxnz": [
+      2,
+      1
+     ],
+     "minnz_top": 1,
+     "maxpc_all": [
+      3,
+      2,
+      1
+     ],
+     "nodes": 57,
+     "q1nz": true
+    },
+    {
+     "key": [
+      327,
+      330
+     ],
+     "cs": [
+      1,
+      2
+     ],
+     "D": 2,
+     "kdef": 2,
+     "live": true,
+     "maxnz": [
+      1,
+      2
+     ],
+     "minnz_top": 2,
+     "maxpc_all": [
+      2,
+      3,
+      1
+     ],
+     "nodes": 28,
+     "q1nz": true
+    },
+    {
+     "key": [
+      327,
+      335
+     ],
+     "cs": [
+      1,
+      2
+     ],
+     "D": 3,
+     "kdef": 1,
+     "live": true,
+     "maxnz": [
+      3,
+      3
+     ],
+     "minnz_top": 1,
+     "maxpc_all": [
+      3,
+      3,
+      1
+     ],
+     "nodes": 132,
+     "q1nz": true
+    },
+    {
+     "key": [
+      329,
+      331
+     ],
+     "cs": [
+      0,
+      1
+     ],
+     "D": 3,
+     "kdef": 1,
+     "live": true,
+     "maxnz": [
+      0,
+      1
+     ],
+     "minnz_top": 1,
+     "maxpc_all": [
+      1,
+      2,
+      1
+     ],
+     "nodes": 20,
+     "q1nz": true
+    },
+    {
+     "key": [
+      331,
+      331
+     ],
+     "cs": [
+      0,
+      1
+     ],
+     "D": 3,
+     "kdef": 1,
+     "live": true,
+     "maxnz": [
+      1,
+      1
+     ],
+     "minnz_top": 1,
+     "maxpc_all": [
+      2,
+      2,
+      1
+     ],
+     "nodes": 36,
+     "q1nz": true
+    },
+    {
+     "key": [
+      332,
+      335
+     ],
+     "cs": [
+      1,
+      1
+     ],
+     "D": 2,
+     "kdef": 2,
+     "live": false,
+     "maxnz": [
+      null,
+      null
+     ],
+     "minnz_top": null,
+     "maxpc_all": [
+      1,
+      1,
+      1
+     ],
+     "nodes": 7,
+     "q1nz": false
+    },
+    {
+     "key": [
+      325,
+      330
+     ],
+     "cs": [
+      1,
+      1
+     ],
+     "D": 2,
+     "kdef": 2,
+     "live": false,
+     "maxnz": [
+      null,
+      null
+     ],
+     "minnz_top": null,
+     "maxpc_all": [
+      1,
+      1,
+      1
+     ],
+     "nodes": 7,
+     "q1nz": false
+    },
+    {
+     "key": [
+      333,
+      334
+     ],
+     "cs": [
+      1,
+      1
+     ],
+     "D": 2,
+     "kdef": 2,
+     "live": false,
+     "maxnz": [
+      null,
+      null
+     ],
+     "minnz_top": null,
+     "maxpc_all": [
+      1,
+      1,
+      1
+     ],
+     "nodes": 7,
+     "q1nz": false
+    },
+    {
+     "key": [
+      327,
+      328
+     ],
+     "cs": [
+      1,
+      1
+     ],
+     "D": 2,
+     "kdef": 2,
+     "live": false,
+     "maxnz": [
+      null,
+      null
+     ],
+     "minnz_top": null,
+     "maxpc_all": [
+      1,
+      1,
+      1
+     ],
+     "nodes": 7,
+     "q1nz": false
+    },
+    {
+     "key": [
+      329,
+      329
+     ],
+     "cs": [
+      0,
+      0
+     ],
+     "D": 3,
+     "kdef": 1,
+     "live": false,
+     "maxnz": [
+      null,
+      null
+     ],
+     "minnz_top": null,
+     "maxpc_all": [
+      0,
+      0,
+      1
+     ],
+     "nodes": 3,
+     "q1nz": false
+    },
+    {
+     "key": [
+      326,
+      331
+     ],
+     "cs": [
+      0,
+      1
+     ],
+     "D": 2,
+     "kdef": 2,
+     "live": false,
+     "maxnz": [
+      null,
+      null
+     ],
+     "minnz_top": null,
+     "maxpc_all": [
+      0,
+      1,
+      1
+     ],
+     "nodes": 5,
+     "q1nz": false
+    }
+   ],
+   "pid_traced": 36
+  },
+  {
+   "tag": "W3DIR",
+   "m": 3,
+   "kind": "Zp",
+   "p": 3,
+   "d0": 1,
+   "reads": [
+    [
+     2,
+     1,
+     1
+    ],
+    [
+     2,
+     1,
+     1
+    ],
+    [
+     3,
+     2,
+     1
+    ],
+    [
+     2,
+     1,
+     1
+    ]
+   ],
+   "Etot": 24,
+   "G0": 600,
+   "harness_events": 0,
+   "uchain": {
+    "3": 193,
+    "2": 43,
+    "1": 19
+   },
+   "su": {
+    "3": 2,
+    "2": 1,
+    "1": 1
+   },
+   "census": {
+    "pairs": 576,
+    "strack": 144,
+    "track": 66,
+    "live": 55,
+    "pred": 55,
+    "mism": 0,
+    "q1nz_offlocus": 165,
+    "chainfed": 54,
+    "nested12": 51,
+    "nested123": 0,
+    "c1eq2": 0,
+    "maxc": [
+     1,
+     2
+    ],
+    "edge_top": 34,
+    "justmiss_top": 11,
+    "justmiss_live": 0,
+    "def_hist": {
+     "2": 3,
+     "0": 34,
+     "1": 18
+    },
+    "kdef_hist": {
+     "0": 16,
+     "1": 30,
+     "2": 9
+    },
+    "pool_mult_edge": 45,
+    "flat_pass": 0
+   },
+   "controls": {
+    "CAP1": 9,
+    "NOCARRY": 39,
+    "EG": 0,
+    "THRP1": 34,
+    "THRM1": 11,
+    "NOU": 55
+   },
+   "pid": [
+    {
+     "key": [
+      617,
+      621
+     ],
+     "cs": [
+      1,
+      1
+     ],
+     "D": 5,
+     "kdef": 1,
+     "live": true,
+     "maxnz": [
+      1,
+      1
+     ],
+     "minnz_top": 1,
+     "maxpc_all": [
+      1,
+      1,
+      1
+     ],
+     "nodes": 8,
+     "q1nz": true
+    },
+    {
+     "key": [
+      603,
+      617
+     ],
+     "cs": [
+      1,
+      1
+     ],
+     "D": 5,
+     "kdef": 1,
+     "live": true,
+     "maxnz": [
+      1,
+      1
+     ],
+     "minnz_top": 1,
+     "maxpc_all": [
+      1,
+      1,
+      1
+     ],
+     "nodes": 11,
+     "q1nz": true
+    },
+    {
+     "key": [
+      605,
+      609
+     ],
+     "cs": [
+      1,
+      1
+     ],
+     "D": 5,
+     "kdef": 1,
+     "live": true,
+     "maxnz": [
+      1,
+      1
+     ],
+     "minnz_top": 1,
+     "maxpc_all": [
+      1,
+      1,
+      1
+     ],
+     "nodes": 8,
+     "q1nz": true
+    },
+    {
+     "key": [
+      609,
+      621
+     ],
+     "cs": [
+      1,
+      1
+     ],
+     "D": 6,
+     "kdef": 0,
+     "live": true,
+     "maxnz": [
+      1,
+      1
+     ],
+     "minnz_top": 0,
+     "maxpc_all": [
+      1,
+      1,
+      1
+     ],
+     "nodes": 10,
+     "q1nz": true
+    },
+    {
+     "key": [
+      609,
+      611
+     ],
+     "cs": [
+      1,
+      1
+     ],
+     "D": 5,
+     "kdef": 1,
+     "live": true,
+     "maxnz": [
+      1,
+      1
+     ],
+     "minnz_top": 1,
+     "maxpc_all": [
+      1,
+      1,
+      1
+     ],
+     "nodes": 11,
+     "q1nz": true
+    },
+    {
+     "key": [
+      603,
+      609
+     ],
+     "cs": [
+      1,
+      1
+     ],
+     "D": 6,
+     "kdef": 0,
+     "live": true,
+     "maxnz": [
+      1,
+      1
+     ],
+     "minnz_top": 0,
+     "maxpc_all": [
+      1,
+      1,
+      1
+     ],
+     "nodes": 13,
+     "q1nz": true
+    },
+    {
+     "key": [
+      603,
+      607
+     ],
+     "cs": [
+      1,
+      2
+     ],
+     "D": 4,
+     "kdef": 2,
+     "live": true,
+     "maxnz": [
+      1,
+      2
+     ],
+     "minnz_top": 2,
+     "maxpc_all": [
+      1,
+      2,
+      1
+     ],
+     "nodes": 12,
+     "q1nz": true
+    },
+    {
+     "key": [
+      621,
+      623
+     ],
+     "cs": [
+      1,
+      1
+     ],
+     "D": 5,
+     "kdef": 1,
+     "live": true,
+     "maxnz": [
+      1,
+      1
+     ],
+     "minnz_top": 1,
+     "maxpc_all": [
+      1,
+      1,
+      1
+     ],
+     "nodes": 11,
+     "q1nz": true
+    },
+    {
+     "key": [
+      611,
+      623
+     ],
+     "cs": [
+      1,
+      2
+     ],
+     "D": 4,
+     "kdef": 2,
+     "live": true,
+     "maxnz": [
+      1,
+      2
+     ],
+     "minnz_top": 2,
+     "maxpc_all": [
+      1,
+      2,
+      1
+     ],
+     "nodes": 12,
+     "q1nz": true
+    },
+    {
+     "key": [
+      603,
+      623
+     ],
+     "cs": [
+      1,
+      2
+     ],
+     "D": 5,
+     "kdef": 1,
+     "live": true,
+     "maxnz": [
+      1,
+      2
+     ],
+     "minnz_top": 1,
+     "maxpc_all": [
+      2,
+      2,
+      1
+     ],
+     "nodes": 23,
+     "q1nz": true
+    },
+    {
+     "key": [
+      605,
+      615
+     ],
+     "cs": [
+      1,
+      1
+     ],
+     "D": 5,
+     "kdef": 1,
+     "live": true,
+     "maxnz": [
+      1,
+      1
+     ],
+     "minnz_top": 1,
+     "maxpc_all": [
+      1,
+      1,
+      1
+     ],
+     "nodes": 11,
+     "q1nz": true
+    },
+    {
+     "key": [
+      615,
+      621
+     ],
+     "cs": [
+      1,
+      1
+     ],
+     "D": 6,
+     "kdef": 0,
+     "live": true,
+     "maxnz": [
+      1,
+      1
+     ],
+     "minnz_top": 0,
+     "maxpc_all": [
+      1,
+      1,
+      1
+     ],
+     "nodes": 13,
+     "q1nz": true
+    },
+    {
+     "key": [
+      615,
+      619
+     ],
+     "cs": [
+      1,
+      2
+     ],
+     "D": 4,
+     "kdef": 2,
+     "live": true,
+     "maxnz": [
+      1,
+      2
+     ],
+     "minnz_top": 2,
+     "maxpc_all": [
+      1,
+      2,
+      1
+     ],
+     "nodes": 12,
+     "q1nz": true
+    },
+    {
+     "key": [
+      611,
+      615
+     ],
+     "cs": [
+      1,
+      2
+     ],
+     "D": 5,
+     "kdef": 1,
+     "live": true,
+     "maxnz": [
+      1,
+      2
+     ],
+     "minnz_top": 1,
+     "maxpc_all": [
+      2,
+      2,
+      1
+     ],
+     "nodes": 23,
+     "q1nz": true
+    },
+    {
+     "key": [
+      603,
+      615
+     ],
+     "cs": [
+      1,
+      2
+     ],
+     "D": 6,
+     "kdef": 0,
+     "live": true,
+     "maxnz": [
+      2,
+      2
+     ],
+     "minnz_top": 0,
+     "maxpc_all": [
+      2,
+      2,
+      1
+     ],
+     "nodes": 26,
+     "q1nz": true
+    },
+    {
+     "key": [
+      605,
+      621
+     ],
+     "cs": [
+      1,
+      1
+     ],
+     "D": 5,
+     "kdef": 1,
+     "live": true,
+     "maxnz": [
+      1,
+      1
+     ],
+     "minnz_top": 1,
+     "maxpc_all": [
+      2,
+      1,
+      1
+     ],
+     "nodes": 12,
+     "q1nz": true
+    },
+    {
+     "key": [
+      603,
+      605
+     ],
+     "cs": [
+      1,
+      1
+     ],
+     "D": 5,
+     "kdef": 1,
+     "live": true,
+     "maxnz": [
+      2,
+      1
+     ],
+     "minnz_top": 1,
+     "maxpc_all": [
+      2,
+      1,
+      1
+     ],
+     "nodes": 22,
+     "q1nz": true
+    },
+    {
+     "key": [
+      621,
+      621
+     ],
+     "cs": [
+      1,
+      1
+     ],
+     "D": 6,
+     "kdef": 0,
+     "live": true,
+     "maxnz": [
+      2,
+      1
+     ],
+     "minnz_top": 0,
+     "maxpc_all": [
+      2,
+      1,
+      1
+     ],
+     "nodes": 15,
+     "q1nz": true
+    },
+    {
+     "key": [
+      611,
+      621
+     ],
+     "cs": [
+      1,
+      1
+     ],
+     "D": 5,
+     "kdef": 1,
+     "live": true,
+     "maxnz": [
+      2,
+      1
+     ],
+     "minnz_top": 1,
+     "maxpc_all": [
+      2,
+      1,
+      1
+     ],
+     "nodes": 22,
+     "q1nz": true
+    },
+    {
+     "key": [
+      603,
+      621
+     ],
+     "cs": [
+      1,
+      1
+     ],
+     "D": 6,
+     "kdef": 0,
+     "live": true,
+     "maxnz": [
+      2,
+      1
+     ],
+     "minnz_top": 0,
+     "maxpc_all": [
+      2,
+      1,
+      1
+     ],
+     "nodes": 26,
+     "q1nz": true
+    },
+    {
+     "key": [
+      603,
+      619
+     ],
+     "cs": [
+      1,
+      2
+     ],
+     "D": 4,
+     "kdef": 2,
+     "live": true,
+     "maxnz": [
+      1,
+      2
+     ],
+     "minnz_top": 2,
+     "maxpc_all": [
+      2,
+      2,
+      1
+     ],
+     "nodes": 16,
+     "q1nz": true
+    },
+    {
+     "key": [
+      611,
+      611
+     ],
+     "cs": [
+      1,
+      2
+     ],
+     "D": 4,
+     "kdef": 2,
+     "live": true,
+     "maxnz": [
+      1,
+      2
+     ],
+     "minnz_top": 2,
+     "maxpc_all": [
+      2,
+      2,
+      1
+     ],
+     "nodes": 16,
+     "q1nz": true
+    },
+    {
+     "key": [
+      603,
+      611
+     ],
+     "cs": [
+      1,
+      2
+     ],
+     "D": 5,
+     "kdef": 1,
+     "live": true,
+     "maxnz": [
+      2,
+      2
+     ],
+     "minnz_top": 1,
+     "maxpc_all": [
+      2,
+      2,
+      1
+     ],
+     "nodes": 36,
+     "q1nz": true
+    },
+    {
+     "key": [
+      603,
+      603
+     ],
+     "cs": [
+      1,
+      2
+     ],
+     "D": 6,
+     "kdef": 0,
+     "live": true,
+     "maxnz": [
+      2,
+      2
+     ],
+     "minnz_top": 0,
+     "maxpc_all": [
+      2,
+      2,
+      1
+     ],
+     "nodes": 40,
+     "q1nz": true
+    },
+    {
+     "key": [
+      615,
+      617
+     ],
+     "cs": [
+      0,
+      1
+     ],
+     "D": 5,
+     "kdef": 1,
+     "live": true,
+     "maxnz": [
+      0,
+      1
+     ],
+     "minnz_top": 1,
+     "maxpc_all": [
+      1,
+      1,
+      1
+     ],
+     "nodes": 8,
+     "q1nz": true
+    },
+    {
+     "key": [
+      609,
+      609
+     ],
+     "cs": [
+      0,
+      0
+     ],
+     "D": 6,
+     "kdef": 0,
+     "live": true,
+     "maxnz": [
+      0,
+      0
+     ],
+     "minnz_top": 0,
+     "maxpc_all": [
+      0,
+      0,
+      1
+     ],
+     "nodes": 4,
+     "q1nz": true
+    },
+    {
+     "key": [
+      609,
+      623
+     ],
+     "cs": [
+      0,
+      1
+     ],
+     "D": 5,
+     "kdef": 1,
+     "live": true,
+     "maxnz": [
+      0,
+      1
+     ],
+     "minnz_top": 1,
+     "maxpc_all": [
+      1,
+      1,
+      1
+     ],
+     "nodes": 8,
+     "q1nz": true
+    },
+    {
+     "key": [
+      609,
+      615
+     ],
+     "cs": [
+      0,
+      1
+     ],
+     "D": 6,
+     "kdef": 0,
+     "live": true,
+     "maxnz": [
+      1,
+      1
+     ],
+     "minnz_top": 0,
+     "maxpc_all": [
+      1,
+      1,
+      1
+     ],
+     "nodes": 10,
+     "q1nz": true
+    },
+    {
+     "key": [
+      615,
+      623
+     ],
+     "cs": [
+      0,
+      1
+     ],
+     "D": 5,
+     "kdef": 1,
+     "live": true,
+     "maxnz": [
+      1,
+      1
+     ],
+     "minnz_top": 1,
+     "maxpc_all": [
+      1,
+      1,
+      1
+     ],
+     "nodes": 13,
+     "q1nz": true
+    },
+    {
+     "key": [
+      615,
+      615
+     ],
+     "cs": [
+      0,
+      1
+     ],
+     "D": 6,
+     "kdef": 0,
+     "live": true,
+     "maxnz": [
+      1,
+      1
+     ],
+     "minnz_top": 0,
+     "maxpc_all": [
+      1,
+      1,
+      1
+     ],
+     "nodes": 15,
+     "q1nz": true
+    },
+    {
+     "key": [
+      603,
+      613
+     ],
+     "cs": [
+      1,
+      1
+     ],
+     "D": 4,
+     "kdef": 2,
+     "live": false,
+     "maxnz": [
+      null,
+      null
+     ],
+     "minnz_top": null,
+     "maxpc_all": [
+      1,
+      1,
+      1
+     ],
+     "nodes": 7,
+     "q1nz": false
+    },
+    {
+     "key": [
+      605,
+      611
+     ],
+     "cs": [
+      1,
+      1
+     ],
+     "D": 4,
+     "kdef": 2,
+     "live": false,
+     "maxnz": [
+      null,
+      null
+     ],
+     "minnz_top": null,
+     "maxpc_all": [
+      1,
+      1,
+      1
+     ],
+     "nodes": 7,
+     "q1nz": false
+    },
+    {
+     "key": [
+      619,
+      621
+     ],
+     "cs": [
+      1,
+      1
+     ],
+     "D": 4,
+     "kdef": 2,
+     "live": false,
+     "maxnz": [
+      null,
+      null
+     ],
+     "minnz_top": null,
+     "maxpc_all": [
+      1,
+      1,
+      1
+     ],
+     "nodes": 7,
+     "q1nz": false
+    },
+    {
+     "key": [
+      609,
+      617
+     ],
+     "cs": [
+      0,
+      0
+     ],
+     "D": 5,
+     "kdef": 1,
+     "live": false,
+     "maxnz": [
+      null,
+      null
+     ],
+     "minnz_top": null,
+     "maxpc_all": [
+      0,
+      0,
+      1
+     ],
+     "nodes": 3,
+     "q1nz": false
+    },
+    {
+     "key": [
+      607,
+      615
+     ],
+     "cs": [
+      0,
+      1
+     ],
+     "D": 4,
+     "kdef": 2,
+     "live": false,
+     "maxnz": [
+      null,
+      null
+     ],
+     "minnz_top": null,
+     "maxpc_all": [
+      0,
+      1,
+      1
+     ],
+     "nodes": 5,
+     "q1nz": false
+    },
+    {
+     "key": [
+      623,
+      623
+     ],
+     "cs": [
+      0,
+      1
+     ],
+     "D": 4,
+     "kdef": 2,
+     "live": false,
+     "maxnz": [
+      null,
+      null
+     ],
+     "minnz_top": null,
+     "maxpc_all": [
+      0,
+      1,
+      1
+     ],
+     "nodes": 5,
+     "q1nz": false
+    }
+   ],
+   "pid_traced": 36
+  },
+  {
+   "tag": "W3G2A",
+   "m": 3,
+   "kind": "Zp",
+   "p": 3,
+   "d0": 1,
+   "reads": [
+    [
+     3,
+     1,
+     2
+    ],
+    [
+     2,
+     1,
+     1
+    ],
+    [
+     2,
+     3,
+     1
+    ],
+    [
+     2,
+     1,
+     1
+    ]
+   ],
+   "Etot": 24,
+   "G0": 672,
+   "harness_events": 0,
+   "uchain": {
+    "3": 221,
+    "2": 83,
+    "1": 35
+   },
+   "su": {
+    "3": 1,
+    "2": 1,
+    "1": 2
+   },
+   "census": {
+    "pairs": 576,
+    "strack": 144,
+    "track": 54,
+    "live": 51,
+    "pred": 51,
+    "mism": 0,
+    "q1nz_offlocus": 153,
+    "chainfed": 51,
+    "nested12": 48,
+    "nested123": 0,
+    "c1eq2": 6,
+    "maxc": [
+     2,
+     2
+    ],
+    "edge_top": 41,
+    "justmiss_top": 3,
+    "justmiss_live": 0,
+    "def_hist": {
+     "0": 41,
+     "1": 10
+    },
+    "kdef_hist": {
+     "2": 16,
+     "1": 35
+    },
+    "pool_mult_edge": 40,
+    "flat_pass": 0
+   },
+   "controls": {
+    "CAP1": 16,
+    "NOCARRY": 51,
+    "EG": 21,
+    "THRP1": 41,
+    "THRM1": 3,
+    "NOU": 51
+   },
+   "pid": [
+    {
+     "key": [
+      683,
+      683
+     ],
+     "cs": [
+      2,
+      1
+     ],
+     "D": 3,
+     "kdef": 1,
+     "live": true,
+     "maxnz": [
+      1,
+      1
+     ],
+     "minnz_top": 1,
+     "maxpc_all": [
+      2,
+      2,
+      1
+     ],
+     "nodes": 44,
+     "q1nz": true
+    },
+    {
+     "key": [
+      683,
+      687
+     ],
+     "cs": [
+      2,
+      2
+     ],
+     "D": 3,
+     "kdef": 1,
+     "live": true,
+     "maxnz": [
+      1,
+      1
+     ],
+     "minnz_top": 1,
+     "maxpc_all": [
+      2,
+      2,
+      1
+     ],
+     "nodes": 131,
+     "q1nz": true
+    },
+    {
+     "key": [
+      673,
+      687
+     ],
+     "cs": [
+      2,
+      2
+     ],
+     "D": 2,
+     "kdef": 2,
+     "live": true,
+     "maxnz": [
+      1,
+      2
+     ],
+     "minnz_top": 2,
+     "maxpc_all": [
+      2,
+      3,
+      1
+     ],
+     "nodes": 46,
+     "q1nz": true
+    },
+    {
+     "key": [
+      687,
+      687
+     ],
+     "cs": [
+      2,
+      2
+     ],
+     "D": 3,
+     "kdef": 1,
+     "live": true,
+     "maxnz": [
+      2,
+      3
+     ],
+     "minnz_top": 1,
+     "maxpc_all": [
+      2,
+      3,
+      1
+     ],
+     "nodes": 238,
+     "q1nz": true
+    },
+    {
+     "key": [
+      675,
+      691
+     ],
+     "cs": [
+      1,
+      1
+     ],
+     "D": 3,
+     "kdef": 1,
+     "live": true,
+     "maxnz": [
+      1,
+      1
+     ],
+     "minnz_top": 1,
+     "maxpc_all": [
+      1,
+      1,
+      1
+     ],
+     "nodes": 14,
+     "q1nz": true
+    },
+    {
+     "key": [
+      679,
+      691
+     ],
+     "cs": [
+      1,
+      1
+     ],
+     "D": 3,
+     "kdef": 1,
+     "live": true,
+     "maxnz": [
+      1,
+      1
+     ],
+     "minnz_top": 1,
+     "maxpc_all": [
+      1,
+      2,
+      1
+     ],
+     "nodes": 56,
+     "q1nz": true
+    },
+    {
+     "key": [
+      683,
+      691
+     ],
+     "cs": [
+      1,
+      1
+     ],
+     "D": 3,
+     "kdef": 1,
+     "live": true,
+     "maxnz": [
+      1,
+      1
+     ],
+     "minnz_top": 1,
+     "maxpc_all": [
+      1,
+      1,
+      1
+     ],
+     "nodes": 14,
+     "q1nz": true
+    },
+    {
+     "key": [
+      687,
+      691
+     ],
+     "cs": [
+      1,
+      1
+     ],
+     "D": 3,
+     "kdef": 1,
+     "live": true,
+     "maxnz": [
+      1,
+      1
+     ],
+     "minnz_top": 1,
+     "maxpc_all": [
+      1,
+      2,
+      1
+     ],
+     "nodes": 60,
+     "q1nz": true
+    },
+    {
+     "key": [
+      679,
+      681
+     ],
+     "cs": [
+      1,
+      2
+     ],
+     "D": 2,
+     "kdef": 2,
+     "live": true,
+     "maxnz": [
+      1,
+      2
+     ],
+     "minnz_top": 2,
+     "maxpc_all": [
+      1,
+      2,
+      1
+     ],
+     "nodes": 16,
+     "q1nz": true
+    },
+    {
+     "key": [
+      681,
+      687
+     ],
+     "cs": [
+      1,
+      2
+     ],
+     "D": 2,
+     "kdef": 2,
+     "live": true,
+     "maxnz": [
+      1,
+      2
+     ],
+     "minnz_top": 2,
+     "maxpc_all": [
+      1,
+      2,
+      1
+     ],
+     "nodes": 16,
+     "q1nz": true
+    },
+    {
+     "key": [
+      675,
+      695
+     ],
+     "cs": [
+      1,
+      1
+     ],
+     "D": 3,
+     "kdef": 1,
+     "live": true,
+     "maxnz": [
+      1,
+      1
+     ],
+     "minnz_top": 1,
+     "maxpc_all": [
+      1,
+      2,
+      1
+     ],
+     "nodes": 56,
+     "q1nz": true
+    },
+    {
+     "key": [
+      689,
+      695
+     ],
+     "cs": [
+      1,
+      2
+     ],
+     "D": 2,
+     "kdef": 2,
+     "live": true,
+     "maxnz": [
+      1,
+      2
+     ],
+     "minnz_top": 2,
+     "maxpc_all": [
+      1,
+      2,
+      1
+     ],
+     "nodes": 16,
+     "q1nz": true
+    },
+    {
+     "key": [
+      679,
+      695
+     ],
+     "cs": [
+      1,
+      2
+     ],
+     "D": 3,
+     "kdef": 1,
+     "live": true,
+     "maxnz": [
+      1,
+      2
+     ],
+     "minnz_top": 1,
+     "maxpc_all": [
+      1,
+      2,
+      1
+     ],
+     "nodes": 90,
+     "q1nz": true
+    },
+    {
+     "key": [
+      683,
+      695
+     ],
+     "cs": [
+      1,
+      1
+     ],
+     "D": 3,
+     "kdef": 1,
+     "live": true,
+     "maxnz": [
+      1,
+      1
+     ],
+     "minnz_top": 1,
+     "maxpc_all": [
+      1,
+      2,
+      1
+     ],
+     "nodes": 60,
+     "q1nz": true
+    },
+    {
+     "key": [
+      673,
+      695
+     ],
+     "cs": [
+      1,
+      2
+     ],
+     "D": 2,
+     "kdef": 2,
+     "live": true,
+     "maxnz": [
+      1,
+      2
+     ],
+     "minnz_top": 2,
+     "maxpc_all": [
+      1,
+      2,
+      1
+     ],
+     "nodes": 16,
+     "q1nz": true
+    },
+    {
+     "key": [
+      687,
+      695
+     ],
+     "cs": [
+      1,
+      2
+     ],
+     "D": 3,
+     "kdef": 1,
+     "live": true,
+     "maxnz": [
+      1,
+      2
+     ],
+     "minnz_top": 1,
+     "maxpc_all": [
+      1,
+      2,
+      1
+     ],
+     "nodes": 97,
+     "q1nz": true
+    },
+    {
+     "key": [
+      675,
+      675
+     ],
+     "cs": [
+      1,
+      1
+     ],
+     "D": 3,
+     "kdef": 1,
+     "live": true,
+     "maxnz": [
+      1,
+      1
+     ],
+     "minnz_top": 1,
+     "maxpc_all": [
+      1,
+      1,
+      1
+     ],
+     "nodes": 14,
+     "q1nz": true
+    },
+    {
+     "key": [
+      675,
+      679
+     ],
+     "cs": [
+      1,
+      1
+     ],
+     "D": 3,
+     "kdef": 1,
+     "live": true,
+     "maxnz": [
+      1,
+      1
+     ],
+     "minnz_top": 1,
+     "maxpc_all": [
+      1,
+      2,
+      1
+     ],
+     "nodes": 60,
+     "q1nz": true
+    },
+    {
+     "key": [
+      675,
+      683
+     ],
+     "cs": [
+      1,
+      1
+     ],
+     "D": 3,
+     "kdef": 1,
+     "live": true,
+     "maxnz": [
+      1,
+      1
+     ],
+     "minnz_top": 1,
+     "maxpc_all": [
+      1,
+      1,
+      1
+     ],
+     "nodes": 19,
+     "q1nz": true
+    },
+    {
+     "key": [
+      675,
+      687
+     ],
+     "cs": [
+      1,
+      1
+     ],
+     "D": 3,
+     "kdef": 1,
+     "live": true,
+     "maxnz": [
+      1,
+      1
+     ],
+     "minnz_top": 1,
+     "maxpc_all": [
+      2,
+      2,
+      1
+     ],
+     "nodes": 82,
+     "q1nz": true
+    },
+    {
+     "key": [
+      679,
+      689
+     ],
+     "cs": [
+      1,
+      2
+     ],
+     "D": 2,
+     "kdef": 2,
+     "live": true,
+     "maxnz": [
+      1,
+      2
+     ],
+     "minnz_top": 2,
+     "maxpc_all": [
+      1,
+      2,
+      1
+     ],
+     "nodes": 16,
+     "q1nz": true
+    },
+    {
+     "key": [
+      687,
+      689
+     ],
+     "cs": [
+      1,
+      2
+     ],
+     "D": 2,
+     "kdef": 2,
+     "live": true,
+     "maxnz": [
+      1,
+      2
+     ],
+     "minnz_top": 2,
+     "maxpc_all": [
+      1,
+      2,
+      1
+     ],
+     "nodes": 21,
+     "q1nz": true
+    },
+    {
+     "key": [
+      679,
+      679
+     ],
+     "cs": [
+      1,
+      2
+     ],
+     "D": 3,
+     "kdef": 1,
+     "live": true,
+     "maxnz": [
+      1,
+      2
+     ],
+     "minnz_top": 1,
+     "maxpc_all": [
+      1,
+      2,
+      1
+     ],
+     "nodes": 97,
+     "q1nz": true
+    },
+    {
+     "key": [
+      679,
+      683
+     ],
+     "cs": [
+      1,
+      1
+     ],
+     "D": 3,
+     "kdef": 1,
+     "live": true,
+     "maxnz": [
+      1,
+      1
+     ],
+     "minnz_top": 1,
+     "maxpc_all": [
+      2,
+      2,
+      1
+     ],
+     "nodes": 82,
+     "q1nz": true
+    },
+    {
+     "key": [
+      673,
+      679
+     ],
+     "cs": [
+      1,
+      2
+     ],
+     "D": 2,
+     "kdef": 2,
+     "live": true,
+     "maxnz": [
+      1,
+      2
+     ],
+     "minnz_top": 2,
+     "maxpc_all": [
+      1,
+      2,
+      1
+     ],
+     "nodes": 21,
+     "q1nz": true
+    },
+    {
+     "key": [
+      679,
+      687
+     ],
+     "cs": [
+      1,
+      2
+     ],
+     "D": 3,
+     "kdef": 1,
+     "live": true,
+     "maxnz": [
+      1,
+      2
+     ],
+     "minnz_top": 1,
+     "maxpc_all": [
+      2,
+      2,
+      1
+     ],
+     "nodes": 186,
+     "q1nz": true
+    },
+    {
+     "key": [
+      691,
+      695
+     ],
+     "cs": [
+      0,
+      1
+     ],
+     "D": 3,
+     "kdef": 1,
+     "live": true,
+     "maxnz": [
+      0,
+      1
+     ],
+     "minnz_top": 1,
+     "maxpc_all": [
+      1,
+      2,
+      1
+     ],
+     "nodes": 32,
+     "q1nz": true
+    },
+    {
+     "key": [
+      695,
+      695
+     ],
+     "cs": [
+      0,
+      1
+     ],
+     "D": 3,
+     "kdef": 1,
+     "live": true,
+     "maxnz": [
+      1,
+      1
+     ],
+     "minnz_top": 1,
+     "maxpc_all": [
+      1,
+      2,
+      1
+     ],
+     "nodes": 72,
+     "q1nz": true
+    },
+    {
+     "key": [
+      691,
+      691
+     ],
+     "cs": [
+      0,
+      0
+     ],
+     "D": 3,
+     "kdef": 1,
+     "live": false,
+     "maxnz": [
+      null,
+      null
+     ],
+     "minnz_top": null,
+     "maxpc_all": [
+      0,
+      0,
+      1
+     ],
+     "nodes": 5,
+     "q1nz": false
+    },
+    {
+     "key": [
+      681,
+      695
+     ],
+     "cs": [
+      0,
+      1
+     ],
+     "D": 2,
+     "kdef": 2,
+     "live": false,
+     "maxnz": [
+      null,
+      null
+     ],
+     "minnz_top": null,
+     "maxpc_all": [
+      0,
+      1,
+      1
+     ],
+     "nodes": 7,
+     "q1nz": false
+    }
+   ],
+   "pid_traced": 30
+  },
+  {
+   "tag": "W3G2B",
+   "m": 3,
+   "kind": "Zp",
+   "p": 3,
+   "d0": 2,
+   "reads": [
+    [
+     2,
+     1,
+     2
+    ],
+    [
+     3,
+     2,
+     1
+    ],
+    [
+     2,
+     3,
+     1
+    ],
+    [
+     2,
+     1,
+     1
+    ]
+   ],
+   "Etot": 24,
+   "G0": 1056,
+   "harness_events": 0,
+   "uchain": {
+    "3": 349,
+    "2": 131,
+    "1": 39
+   },
+   "su": {
+    "3": 1,
+    "2": 1,
+    "1": 1
+   },
+   "census": {
+    "pairs": 576,
+    "strack": 144,
+    "track": 60,
+    "live": 36,
+    "pred": 36,
+    "mism": 0,
+    "q1nz_offlocus": 108,
+    "chainfed": 36,
+    "nested12": 42,
+    "nested123": 0,
+    "c1eq2": 0,
+    "maxc": [
+     1,
+     2
+    ],
+    "edge_top": 33,
+    "justmiss_top": 24,
+    "justmiss_live": 0,
+    "def_hist": {
+     "0": 33,
+     "1": 3
+    },
+    "kdef_hist": {
+     "1": 30,
+     "2": 6
+    },
+    "pool_mult_edge": 38,
+    "flat_pass": 0
+   },
+   "controls": {
+    "CAP1": 6,
+    "NOCARRY": 36,
+    "EG": 12,
+    "THRP1": 33,
+    "THRM1": 24,
+    "NOU": 36
+   },
+   "pid": [
+    {
+     "key": [
+      1071,
+      1075
+     ],
+     "cs": [
+      1,
+      1
+     ],
+     "D": 3,
+     "kdef": 1,
+     "live": true,
+     "maxnz": [
+      1,
+      1
+     ],
+     "minnz_top": 1,
+     "maxpc_all": [
+      1,
+      1,
+      1
+     ],
+     "nodes": 16,
+     "q1nz": true
+    },
+    {
+     "key": [
+      1075,
+      1079
+     ],
+     "cs": [
+      1,
+      1
+     ],
+     "D": 3,
+     "kdef": 1,
+     "live": true,
+     "maxnz": [
+      1,
+      1
+     ],
+     "minnz_top": 1,
+     "maxpc_all": [
+      1,
+      1,
+      1
+     ],
+     "nodes": 74,
+     "q1nz": true
+    },
+    {
+     "key": [
+      1059,
+      1063
+     ],
+     "cs": [
+      1,
+      1
+     ],
+     "D": 3,
+     "kdef": 1,
+     "live": true,
+     "maxnz": [
+      1,
+      1
+     ],
+     "minnz_top": 1,
+     "maxpc_all": [
+      1,
+      1,
+      1
+     ],
+     "nodes": 16,
+     "q1nz": true
+    },
+    {
+     "key": [
+      1059,
+      1071
+     ],
+     "cs": [
+      1,
+      1
+     ],
+     "D": 3,
+     "kdef": 1,
+     "live": true,
+     "maxnz": [
+      1,
+      1
+     ],
+     "minnz_top": 1,
+     "maxpc_all": [
+      1,
+      1,
+      1
+     ],
+     "nodes": 74,
+     "q1nz": true
+    },
+    {
+     "key": [
+      1059,
+      1079
+     ],
+     "cs": [
+      1,
+      1
+     ],
+     "D": 3,
+     "kdef": 1,
+     "live": true,
+     "maxnz": [
+      1,
+      1
+     ],
+     "minnz_top": 1,
+     "maxpc_all": [
+      1,
+      1,
+      1
+     ],
+     "nodes": 100,
+     "q1nz": true
+    },
+    {
+     "key": [
+      1061,
+      1079
+     ],
+     "cs": [
+      1,
+      2
+     ],
+     "D": 2,
+     "kdef": 2,
+     "live": true,
+     "maxnz": [
+      1,
+      2
+     ],
+     "minnz_top": 2,
+     "maxpc_all": [
+      1,
+      2,
+      1
+     ],
+     "nodes": 19,
+     "q1nz": true
+    },
+    {
+     "key": [
+      1063,
+      1067
+     ],
+     "cs": [
+      1,
+      1
+     ],
+     "D": 3,
+     "kdef": 1,
+     "live": true,
+     "maxnz": [
+      1,
+      1
+     ],
+     "minnz_top": 1,
+     "maxpc_all": [
+      1,
+      1,
+      1
+     ],
+     "nodes": 74,
+     "q1nz": true
+    },
+    {
+     "key": [
+      1067,
+      1071
+     ],
+     "cs": [
+      1,
+      1
+     ],
+     "D": 3,
+     "kdef": 1,
+     "live": true,
+     "maxnz": [
+      1,
+      1
+     ],
+     "minnz_top": 1,
+     "maxpc_all": [
+      1,
+      1,
+      1
+     ],
+     "nodes": 100,
+     "q1nz": true
+    },
+    {
+     "key": [
+      1067,
+      1073
+     ],
+     "cs": [
+      1,
+      2
+     ],
+     "D": 2,
+     "kdef": 2,
+     "live": true,
+     "maxnz": [
+      1,
+      2
+     ],
+     "minnz_top": 2,
+     "maxpc_all": [
+      1,
+      2,
+      1
+     ],
+     "nodes": 19,
+     "q1nz": true
+    },
+    {
+     "key": [
+      1067,
+      1079
+     ],
+     "cs": [
+      1,
+      2
+     ],
+     "D": 3,
+     "kdef": 1,
+     "live": true,
+     "maxnz": [
+      1,
+      2
+     ],
+     "minnz_top": 1,
+     "maxpc_all": [
+      2,
+      2,
+      1
+     ],
+     "nodes": 208,
+     "q1nz": true
+    },
+    {
+     "key": [
+      1063,
+      1071
+     ],
+     "cs": [
+      1,
+      1
+     ],
+     "D": 3,
+     "kdef": 1,
+     "live": true,
+     "maxnz": [
+      1,
+      1
+     ],
+     "minnz_top": 1,
+     "maxpc_all": [
+      2,
+      1,
+      1
+     ],
+     "nodes": 19,
+     "q1nz": true
+    },
+    {
+     "key": [
+      1063,
+      1079
+     ],
+     "cs": [
+      1,
+      1
+     ],
+     "D": 3,
+     "kdef": 1,
+     "live": true,
+     "maxnz": [
+      1,
+      1
+     ],
+     "minnz_top": 1,
+     "maxpc_all": [
+      2,
+      1,
+      1
+     ],
+     "nodes": 114,
+     "q1nz": true
+    },
+    {
+     "key": [
+      1071,
+      1071
+     ],
+     "cs": [
+      1,
+      1
+     ],
+     "D": 3,
+     "kdef": 1,
+     "live": true,
+     "maxnz": [
+      1,
+      1
+     ],
+     "minnz_top": 1,
+     "maxpc_all": [
+      2,
+      1,
+      1
+     ],
+     "nodes": 114,
+     "q1nz": true
+    },
+    {
+     "key": [
+      1071,
+      1079
+     ],
+     "cs": [
+      1,
+      1
+     ],
+     "D": 3,
+     "kdef": 1,
+     "live": true,
+     "maxnz": [
+      1,
+      1
+     ],
+     "minnz_top": 1,
+     "maxpc_all": [
+      2,
+      2,
+      1
+     ],
+     "nodes": 155,
+     "q1nz": true
+    },
+    {
+     "key": [
+      1073,
+      1079
+     ],
+     "cs": [
+      1,
+      2
+     ],
+     "D": 2,
+     "kdef": 2,
+     "live": true,
+     "maxnz": [
+      1,
+      2
+     ],
+     "minnz_top": 2,
+     "maxpc_all": [
+      2,
+      2,
+      1
+     ],
+     "nodes": 26,
+     "q1nz": true
+    },
+    {
+     "key": [
+      1079,
+      1079
+     ],
+     "cs": [
+      1,
+      2
+     ],
+     "D": 3,
+     "kdef": 1,
+     "live": true,
+     "maxnz": [
+      1,
+      2
+     ],
+     "minnz_top": 1,
+     "maxpc_all": [
+      2,
+      2,
+      1
+     ],
+     "nodes": 374,
+     "q1nz": true
+    },
+    {
+     "key": [
+      1067,
+      1075
+     ],
+     "cs": [
+      0,
+      1
+     ],
+     "D": 3,
+     "kdef": 1,
+     "live": true,
+     "maxnz": [
+      0,
+      1
+     ],
+     "minnz_top": 1,
+     "maxpc_all": [
+      1,
+      1,
+      1
+     ],
+     "nodes": 42,
+     "q1nz": true
+    },
+    {
+     "key": [
+      1059,
+      1059
+     ],
+     "cs": [
+      0,
+      1
+     ],
+     "D": 3,
+     "kdef": 1,
+     "live": true,
+     "maxnz": [
+      0,
+      1
+     ],
+     "minnz_top": 1,
+     "maxpc_all": [
+      1,
+      1,
+      1
+     ],
+     "nodes": 42,
+     "q1nz": true
+    },
+    {
+     "key": [
+      1059,
+      1067
+     ],
+     "cs": [
+      0,
+      1
+     ],
+     "D": 3,
+     "kdef": 1,
+     "live": true,
+     "maxnz": [
+      0,
+      1
+     ],
+     "minnz_top": 1,
+     "maxpc_all": [
+      1,
+      1,
+      1
+     ],
+     "nodes": 58,
+     "q1nz": true
+    },
+    {
+     "key": [
+      1067,
+      1067
+     ],
+     "cs": [
+      0,
+      1
+     ],
+     "D": 3,
+     "kdef": 1,
+     "live": true,
+     "maxnz": [
+      1,
+      1
+     ],
+     "minnz_top": 1,
+     "maxpc_all": [
+      2,
+      2,
+      1
+     ],
+     "nodes": 101,
+     "q1nz": true
+    },
+    {
+     "key": [
+      1063,
+      1075
+     ],
+     "cs": [
+      1,
+      0
+     ],
+     "D": 3,
+     "kdef": 1,
+     "live": false,
+     "maxnz": [
+      null,
+      null
+     ],
+     "minnz_top": null,
+     "maxpc_all": [
+      1,
+      0,
+      1
+     ],
+     "nodes": 11,
+     "q1nz": false
+    },
+    {
+     "key": [
+      1077,
+      1079
+     ],
+     "cs": [
+      1,
+      1
+     ],
+     "D": 2,
+     "kdef": 2,
+     "live": false,
+     "maxnz": [
+      null,
+      null
+     ],
+     "minnz_top": null,
+     "maxpc_all": [
+      1,
+      1,
+      1
+     ],
+     "nodes": 14,
+     "q1nz": false
+    },
+    {
+     "key": [
+      1059,
+      1073
+     ],
+     "cs": [
+      1,
+      1
+     ],
+     "D": 2,
+     "kdef": 2,
+     "live": false,
+     "maxnz": [
+      null,
+      null
+     ],
+     "minnz_top": null,
+     "maxpc_all": [
+      1,
+      1,
+      1
+     ],
+     "nodes": 14,
+     "q1nz": false
+    },
+    {
+     "key": [
+      1061,
+      1071
+     ],
+     "cs": [
+      1,
+      1
+     ],
+     "D": 2,
+     "kdef": 2,
+     "live": false,
+     "maxnz": [
+      null,
+      null
+     ],
+     "minnz_top": null,
+     "maxpc_all": [
+      1,
+      1,
+      1
+     ],
+     "nodes": 14,
+     "q1nz": false
+    },
+    {
+     "key": [
+      1065,
+      1067
+     ],
+     "cs": [
+      1,
+      1
+     ],
+     "D": 2,
+     "kdef": 2,
+     "live": false,
+     "maxnz": [
+      null,
+      null
+     ],
+     "minnz_top": null,
+     "maxpc_all": [
+      1,
+      1,
+      1
+     ],
+     "nodes": 14,
+     "q1nz": false
+    },
+    {
+     "key": [
+      1063,
+      1063
+     ],
+     "cs": [
+      1,
+      0
+     ],
+     "D": 3,
+     "kdef": 1,
+     "live": false,
+     "maxnz": [
+      null,
+      null
+     ],
+     "minnz_top": null,
+     "maxpc_all": [
+      1,
+      0,
+      1
+     ],
+     "nodes": 11,
+     "q1nz": false
+    },
+    {
+     "key": [
+      1065,
+      1079
+     ],
+     "cs": [
+      1,
+      1
+     ],
+     "D": 2,
+     "kdef": 2,
+     "live": false,
+     "maxnz": [
+      null,
+      null
+     ],
+     "minnz_top": null,
+     "maxpc_all": [
+      1,
+      1,
+      1
+     ],
+     "nodes": 18,
+     "q1nz": false
+    },
+    {
+     "key": [
+      1071,
+      1073
+     ],
+     "cs": [
+      1,
+      1
+     ],
+     "D": 2,
+     "kdef": 2,
+     "live": false,
+     "maxnz": [
+      null,
+      null
+     ],
+     "minnz_top": null,
+     "maxpc_all": [
+      1,
+      1,
+      1
+     ],
+     "nodes": 18,
+     "q1nz": false
+    },
+    {
+     "key": [
+      1075,
+      1075
+     ],
+     "cs": [
+      0,
+      0
+     ],
+     "D": 3,
+     "kdef": 1,
+     "live": false,
+     "maxnz": [
+      null,
+      null
+     ],
+     "minnz_top": null,
+     "maxpc_all": [
+      0,
+      0,
+      1
+     ],
+     "nodes": 5,
+     "q1nz": false
+    },
+    {
+     "key": [
+      1059,
+      1075
+     ],
+     "cs": [
+      0,
+      0
+     ],
+     "D": 3,
+     "kdef": 1,
+     "live": false,
+     "maxnz": [
+      null,
+      null
+     ],
+     "minnz_top": null,
+     "maxpc_all": [
+      0,
+      0,
+      1
+     ],
+     "nodes": 5,
+     "q1nz": false
+    },
+    {
+     "key": [
+      1067,
+      1077
+     ],
+     "cs": [
+      0,
+      1
+     ],
+     "D": 2,
+     "kdef": 2,
+     "live": false,
+     "maxnz": [
+      null,
+      null
+     ],
+     "minnz_top": null,
+     "maxpc_all": [
+      0,
+      1,
+      1
+     ],
+     "nodes": 8,
+     "q1nz": false
+    },
+    {
+     "key": [
+      1059,
+      1061
+     ],
+     "cs": [
+      0,
+      1
+     ],
+     "D": 2,
+     "kdef": 2,
+     "live": false,
+     "maxnz": [
+      null,
+      null
+     ],
+     "minnz_top": null,
+     "maxpc_all": [
+      0,
+      1,
+      1
+     ],
+     "nodes": 8,
+     "q1nz": false
+    },
+    {
+     "key": [
+      1061,
+      1067
+     ],
+     "cs": [
+      0,
+      1
+     ],
+     "D": 2,
+     "kdef": 2,
+     "live": false,
+     "maxnz": [
+      null,
+      null
+     ],
+     "minnz_top": null,
+     "maxpc_all": [
+      0,
+      1,
+      1
+     ],
+     "nodes": 8,
+     "q1nz": false
+    }
+   ],
+   "pid_traced": 33
+  },
+  {
+   "tag": "W3G2P5",
+   "m": 3,
+   "kind": "Zp",
+   "p": 5,
+   "d0": 2,
+   "reads": [
+    [
+     2,
+     1,
+     2
+    ],
+    [
+     2,
+     1,
+     1
+    ],
+    [
+     2,
+     1,
+     1
+    ],
+    [
+     2,
+     1,
+     1
+    ]
+   ],
+   "Etot": 16,
+   "G0": 448,
+   "harness_events": 0,
+   "uchain": {
+    "3": 149,
+    "2": 56,
+    "1": 28
+   },
+   "su": {
+    "3": 1,
+    "2": 0,
+    "1": 0
+   },
+   "census": {
+    "pairs": 256,
+    "strack": 64,
+    "track": 24,
+    "live": 6,
+    "pred": 6,
+    "mism": 0,
+    "q1nz_offlocus": 18,
+    "chainfed": 6,
+    "nested12": 5,
+    "nested123": 0,
+    "c1eq2": 0,
+    "maxc": [
+     1,
+     1
+    ],
+    "edge_top": 6,
+    "justmiss_top": 18,
+    "justmiss_live": 0,
+    "def_hist": {
+     "0": 6
+    },
+    "kdef_hist": {
+     "1": 6
+    },
+    "pool_mult_edge": 15,
+    "flat_pass": 0
+   },
+   "controls": {
+    "CAP1": 0,
+    "NOCARRY": 6,
+    "EG": 2,
+    "THRP1": 6,
+    "THRM1": 18,
+    "NOU": 6
+   },
+   "pid": [
+    {
+     "key": [
+      455,
+      459
+     ],
+     "cs": [
+      1,
+      1
+     ],
+     "D": 3,
+     "kdef": 1,
+     "live": true,
+     "maxnz": [
+      1,
+      1
+     ],
+     "minnz_top": 1,
+     "maxpc_all": [
+      1,
+      1,
+      1
+     ],
+     "nodes": 29,
+     "q1nz": true
+    },
+    {
+     "key": [
+      459,
+      459
+     ],
+     "cs": [
+      1,
+      1
+     ],
+     "D": 3,
+     "kdef": 1,
+     "live": true,
+     "maxnz": [
+      1,
+      1
+     ],
+     "minnz_top": 1,
+     "maxpc_all": [
+      2,
+      2,
+      1
+     ],
+     "nodes": 116,
+     "q1nz": true
+    },
+    {
+     "key": [
+      451,
+      451
+     ],
+     "cs": [
+      0,
+      1
+     ],
+     "D": 3,
+     "kdef": 1,
+     "live": true,
+     "maxnz": [
+      0,
+      1
+     ],
+     "minnz_top": 1,
+     "maxpc_all": [
+      2,
+      2,
+      1
+     ],
+     "nodes": 36,
+     "q1nz": true
+    },
+    {
+     "key": [
+      451,
+      459
+     ],
+     "cs": [
+      0,
+      1
+     ],
+     "D": 3,
+     "kdef": 1,
+     "live": true,
+     "maxnz": [
+      0,
+      1
+     ],
+     "minnz_top": 1,
+     "maxpc_all": [
+      2,
+      2,
+      1
+     ],
+     "nodes": 71,
+     "q1nz": true
+    },
+    {
+     "key": [
+      455,
+      455
+     ],
+     "cs": [
+      1,
+      0
+     ],
+     "D": 3,
+     "kdef": 1,
+     "live": false,
+     "maxnz": [
+      null,
+      null
+     ],
+     "minnz_top": null,
+     "maxpc_all": [
+      1,
+      1,
+      1
+     ],
+     "nodes": 13,
+     "q1nz": false
+    },
+    {
+     "key": [
+      449,
+      459
+     ],
+     "cs": [
+      1,
+      1
+     ],
+     "D": 2,
+     "kdef": 2,
+     "live": false,
+     "maxnz": [
+      null,
+      null
+     ],
+     "minnz_top": null,
+     "maxpc_all": [
+      1,
+      2,
+      1
+     ],
+     "nodes": 19,
+     "q1nz": false
+    },
+    {
+     "key": [
+      463,
+      463
+     ],
+     "cs": [
+      0,
+      0
+     ],
+     "D": 3,
+     "kdef": 1,
+     "live": false,
+     "maxnz": [
+      null,
+      null
+     ],
+     "minnz_top": null,
+     "maxpc_all": [
+      0,
+      0,
+      1
+     ],
+     "nodes": 4,
+     "q1nz": false
+    },
+    {
+     "key": [
+      451,
+      463
+     ],
+     "cs": [
+      0,
+      0
+     ],
+     "D": 3,
+     "kdef": 1,
+     "live": false,
+     "maxnz": [
+      null,
+      null
+     ],
+     "minnz_top": null,
+     "maxpc_all": [
+      1,
+      1,
+      1
+     ],
+     "nodes": 10,
+     "q1nz": false
+    },
+    {
+     "key": [
+      455,
+      463
+     ],
+     "cs": [
+      0,
+      0
+     ],
+     "D": 3,
+     "kdef": 1,
+     "live": false,
+     "maxnz": [
+      null,
+      null
+     ],
+     "minnz_top": null,
+     "maxpc_all": [
+      0,
+      0,
+      1
+     ],
+     "nodes": 4,
+     "q1nz": false
+    },
+    {
+     "key": [
+      459,
+      463
+     ],
+     "cs": [
+      0,
+      0
+     ],
+     "D": 3,
+     "kdef": 1,
+     "live": false,
+     "maxnz": [
+      null,
+      null
+     ],
+     "minnz_top": null,
+     "maxpc_all": [
+      1,
+      1,
+      1
+     ],
+     "nodes": 17,
+     "q1nz": false
+    },
+    {
+     "key": [
+      451,
+      457
+     ],
+     "cs": [
+      0,
+      1
+     ],
+     "D": 2,
+     "kdef": 2,
+     "live": false,
+     "maxnz": [
+      null,
+      null
+     ],
+     "minnz_top": null,
+     "maxpc_all": [
+      0,
+      1,
+      1
+     ],
+     "nodes": 6,
+     "q1nz": false
+    },
+    {
+     "key": [
+      457,
+      459
+     ],
+     "cs": [
+      0,
+      1
+     ],
+     "D": 2,
+     "kdef": 2,
+     "live": false,
+     "maxnz": [
+      null,
+      null
+     ],
+     "minnz_top": null,
+     "maxpc_all": [
+      1,
+      1,
+      1
+     ],
+     "nodes": 10,
+     "q1nz": false
+    },
+    {
+     "key": [
+      451,
+      455
+     ],
+     "cs": [
+      0,
+      0
+     ],
+     "D": 3,
+     "kdef": 1,
+     "live": false,
+     "maxnz": [
+      null,
+      null
+     ],
+     "minnz_top": null,
+     "maxpc_all": [
+      1,
+      1,
+      1
+     ],
+     "nodes": 17,
+     "q1nz": false
+    },
+    {
+     "key": [
+      449,
+      451
+     ],
+     "cs": [
+      0,
+      1
+     ],
+     "D": 2,
+     "kdef": 2,
+     "live": false,
+     "maxnz": [
+      null,
+      null
+     ],
+     "minnz_top": null,
+     "maxpc_all": [
+      1,
+      1,
+      1
+     ],
+     "nodes": 10,
+     "q1nz": false
+    }
+   ],
+   "pid_traced": 14
+  },
+  {
+   "tag": "W3DEEPF",
+   "m": 3,
+   "kind": "Fpt",
+   "p": 2,
+   "d0": 1,
+   "reads": [
+    [
+     3,
+     2,
+     1
+    ],
+    [
+     2,
+     1,
+     1
+    ],
+    [
+     2,
+     1,
+     1
+    ],
+    [
+     2,
+     1,
+     1
+    ]
+   ],
+   "Etot": 24,
+   "G0": 648,
+   "harness_events": 0,
+   "uchain": {
+    "3": 213,
+    "2": 80,
+    "1": 40
+   },
+   "su": {
+    "3": 1,
+    "2": 0,
+    "1": 2
+   },
+   "census": {
+    "pairs": 576,
+    "strack": 144,
+    "track": 66,
+    "live": 28,
+    "pred": 28,
+    "mism": 0,
+    "q1nz_offlocus": 84,
+    "chainfed": 28,
+    "nested12": 53,
+    "nested123": 0,
+    "c1eq2": 10,
+    "maxc": [
+     2,
+     2
+    ],
+    "edge_top": 27,
+    "justmiss_top": 38,
+    "justmiss_live": 0,
+    "def_hist": {
+     "0": 27,
+     "1": 1
+    },
+    "kdef_hist": {
+     "1": 26,
+     "2": 2
+    },
+    "pool_mult_edge": 43,
+    "flat_pass": 0
+   },
+   "controls": {
+    "CAP1": 3,
+    "NOCARRY": 28,
+    "EG": 0,
+    "THRP1": 27,
+    "THRM1": 38,
+    "NOU": 28
+   },
+   "pid": [
+    {
+     "key": [
+      663,
+      663
+     ],
+     "cs": [
+      2,
+      1
+     ],
+     "D": 3,
+     "kdef": 1,
+     "live": true,
+     "maxnz": [
+      2,
+      1
+     ],
+     "minnz_top": 1,
+     "maxpc_all": [
+      2,
+      1,
+      1
+     ],
+     "nodes": 18,
+     "q1nz": true
+    },
+    {
+     "key": [
+      663,
+      667
+     ],
+     "cs": [
+      2,
+      1
+     ],
+     "D": 3,
+     "kdef": 1,
+     "live": true,
+     "maxnz": [
+      2,
+      1
+     ],
+     "minnz_top": 1,
+     "maxpc_all": [
+      3,
+      2,
+      1
+     ],
+     "nodes": 36,
+     "q1nz": true
+    },
+    {
+     "key": [
+      657,
+      667
+     ],
+     "cs": [
+      2,
+      2
+     ],
+     "D": 2,
+     "kdef": 2,
+     "live": true,
+     "maxnz": [
+      2,
+      2
+     ],
+     "minnz_top": 2,
+     "maxpc_all": [
+      2,
+      2,
+      1
+     ],
+     "nodes": 30,
+     "q1nz": true
+    },
+    {
+     "key": [
+      667,
+      667
+     ],
+     "cs": [
+      2,
+      2
+     ],
+     "D": 3,
+     "kdef": 1,
+     "live": true,
+     "maxnz": [
+      2,
+      2
+     ],
+     "minnz_top": 1,
+     "maxpc_all": [
+      3,
+      3,
+      1
+     ],
+     "nodes": 81,
+     "q1nz": true
+    },
+    {
+     "key": [
+      651,
+      655
+     ],
+     "cs": [
+      1,
+      1
+     ],
+     "D": 3,
+     "kdef": 1,
+     "live": true,
+     "maxnz": [
+      1,
+      1
+     ],
+     "minnz_top": 1,
+     "maxpc_all": [
+      1,
+      1,
+      1
+     ],
+     "nodes": 12,
+     "q1nz": true
+    },
+    {
+     "key": [
+      655,
+      667
+     ],
+     "cs": [
+      1,
+      1
+     ],
+     "D": 3,
+     "kdef": 1,
+     "live": true,
+     "maxnz": [
+      1,
+      1
+     ],
+     "minnz_top": 1,
+     "maxpc_all": [
+      2,
+      1,
+      1
+     ],
+     "nodes": 16,
+     "q1nz": true
+    },
+    {
+     "key": [
+      659,
+      671
+     ],
+     "cs": [
+      1,
+      1
+     ],
+     "D": 3,
+     "kdef": 1,
+     "live": true,
+     "maxnz": [
+      1,
+      1
+     ],
+     "minnz_top": 1,
+     "maxpc_all": [
+      1,
+      1,
+      1
+     ],
+     "nodes": 12,
+     "q1nz": true
+    },
+    {
+     "key": [
+      651,
+      659
+     ],
+     "cs": [
+      1,
+      1
+     ],
+     "D": 3,
+     "kdef": 1,
+     "live": true,
+     "maxnz": [
+      1,
+      1
+     ],
+     "minnz_top": 1,
+     "maxpc_all": [
+      2,
+      2,
+      1
+     ],
+     "nodes": 23,
+     "q1nz": true
+    },
+    {
+     "key": [
+      659,
+      663
+     ],
+     "cs": [
+      1,
+      1
+     ],
+     "D": 3,
+     "kdef": 1,
+     "live": true,
+     "maxnz": [
+      1,
+      1
+     ],
+     "minnz_top": 1,
+     "maxpc_all": [
+      2,
+      1,
+      1
+     ],
+     "nodes": 16,
+     "q1nz": true
+    },
+    {
+     "key": [
+      659,
+      667
+     ],
+     "cs": [
+      1,
+      1
+     ],
+     "D": 3,
+     "kdef": 1,
+     "live": true,
+     "maxnz": [
+      2,
+      1
+     ],
+     "minnz_top": 1,
+     "maxpc_all": [
+      2,
+      2,
+      1
+     ],
+     "nodes": 36,
+     "q1nz": true
+    },
+    {
+     "key": [
+      651,
+      671
+     ],
+     "cs": [
+      1,
+      1
+     ],
+     "D": 3,
+     "kdef": 1,
+     "live": true,
+     "maxnz": [
+      1,
+      1
+     ],
+     "minnz_top": 1,
+     "maxpc_all": [
+      2,
+      1,
+      1
+     ],
+     "nodes": 16,
+     "q1nz": true
+    },
+    {
+     "key": [
+      667,
+      671
+     ],
+     "cs": [
+      1,
+      1
+     ],
+     "D": 3,
+     "kdef": 1,
+     "live": true,
+     "maxnz": [
+      1,
+      1
+     ],
+     "minnz_top": 1,
+     "maxpc_all": [
+      2,
+      2,
+      1
+     ],
+     "nodes": 26,
+     "q1nz": true
+    },
+    {
+     "key": [
+      651,
+      651
+     ],
+     "cs": [
+      1,
+      1
+     ],
+     "D": 3,
+     "kdef": 1,
+     "live": true,
+     "maxnz": [
+      2,
+      1
+     ],
+     "minnz_top": 1,
+     "maxpc_all": [
+      2,
+      2,
+      1
+     ],
+     "nodes": 36,
+     "q1nz": true
+    },
+    {
+     "key": [
+      651,
+      663
+     ],
+     "cs": [
+      1,
+      1
+     ],
+     "D": 3,
+     "kdef": 1,
+     "live": true,
+     "maxnz": [
+      1,
+      1
+     ],
+     "minnz_top": 1,
+     "maxpc_all": [
+      2,
+      2,
+      1
+     ],
+     "nodes": 26,
+     "q1nz": true
+    },
+    {
+     "key": [
+      651,
+      667
+     ],
+     "cs": [
+      1,
+      1
+     ],
+     "D": 3,
+     "kdef": 1,
+     "live": true,
+     "maxnz": [
+      2,
+      1
+     ],
+     "minnz_top": 1,
+     "maxpc_all": [
+      3,
+      2,
+      1
+     ],
+     "nodes": 54,
+     "q1nz": true
+    },
+    {
+     "key": [
+      659,
+      659
+     ],
+     "cs": [
+      0,
+      1
+     ],
+     "D": 3,
+     "kdef": 1,
+     "live": true,
+     "maxnz": [
+      0,
+      1
+     ],
+     "minnz_top": 1,
+     "maxpc_all": [
+      1,
+      2,
+      1
+     ],
+     "nodes": 18,
+     "q1nz": true
+    },
+    {
+     "key": [
+      653,
+      667
+     ],
+     "cs": [
+      2,
+      1
+     ],
+     "D": 2,
+     "kdef": 2,
+     "live": false,
+     "maxnz": [
+      null,
+      null
+     ],
+     "minnz_top": null,
+     "maxpc_all": [
+      2,
+      1,
+      1
+     ],
+     "nodes": 11,
+     "q1nz": false
+    },
+    {
+     "key": [
+      657,
+      663
+     ],
+     "cs": [
+      2,
+      1
+     ],
+     "D": 2,
+     "kdef": 2,
+     "live": false,
+     "maxnz": [
+      null,
+      null
+     ],
+     "minnz_top": null,
+     "maxpc_all": [
+      2,
+      1,
+      1
+     ],
+     "nodes": 11,
+     "q1nz": false
+    },
+    {
+     "key": [
+      655,
+      671
+     ],
+     "cs": [
+      1,
+      0
+     ],
+     "D": 3,
+     "kdef": 1,
+     "live": false,
+     "maxnz": [
+      null,
+      null
+     ],
+     "minnz_top": null,
+     "maxpc_all": [
+      1,
+      0,
+      1
+     ],
+     "nodes": 5,
+     "q1nz": false
+    },
+    {
+     "key": [
+      655,
+      663
+     ],
+     "cs": [
+      1,
+      0
+     ],
+     "D": 3,
+     "kdef": 1,
+     "live": false,
+     "maxnz": [
+      null,
+      null
+     ],
+     "minnz_top": null,
+     "maxpc_all": [
+      1,
+      1,
+      1
+     ],
+     "nodes": 9,
+     "q1nz": false
+    },
+    {
+     "key": [
+      649,
+      651
+     ],
+     "cs": [
+      1,
+      1
+     ],
+     "D": 2,
+     "kdef": 2,
+     "live": false,
+     "maxnz": [
+      null,
+      null
+     ],
+     "minnz_top": null,
+     "maxpc_all": [
+      1,
+      1,
+      1
+     ],
+     "nodes": 9,
+     "q1nz": false
+    },
+    {
+     "key": [
+      649,
+      667
+     ],
+     "cs": [
+      1,
+      1
+     ],
+     "D": 2,
+     "kdef": 2,
+     "live": false,
+     "maxnz": [
+      null,
+      null
+     ],
+     "minnz_top": null,
+     "maxpc_all": [
+      1,
+      2,
+      1
+     ],
+     "nodes": 13,
+     "q1nz": false
+    },
+    {
+     "key": [
+      659,
+      665
+     ],
+     "cs": [
+      1,
+      1
+     ],
+     "D": 2,
+     "kdef": 2,
+     "live": false,
+     "maxnz": [
+      null,
+      null
+     ],
+     "minnz_top": null,
+     "maxpc_all": [
+      1,
+      1,
+      1
+     ],
+     "nodes": 9,
+     "q1nz": false
+    },
+    {
+     "key": [
+      657,
+      659
+     ],
+     "cs": [
+      1,
+      1
+     ],
+     "D": 2,
+     "kdef": 2,
+     "live": false,
+     "maxnz": [
+      null,
+      null
+     ],
+     "minnz_top": null,
+     "maxpc_all": [
+      1,
+      2,
+      1
+     ],
+     "nodes": 13,
+     "q1nz": false
+    },
+    {
+     "key": [
+      661,
+      667
+     ],
+     "cs": [
+      1,
+      1
+     ],
+     "D": 2,
+     "kdef": 2,
+     "live": false,
+     "maxnz": [
+      null,
+      null
+     ],
+     "minnz_top": null,
+     "maxpc_all": [
+      1,
+      1,
+      1
+     ],
+     "nodes": 7,
+     "q1nz": false
+    },
+    {
+     "key": [
+      671,
+      671
+     ],
+     "cs": [
+      1,
+      0
+     ],
+     "D": 3,
+     "kdef": 1,
+     "live": false,
+     "maxnz": [
+      null,
+      null
+     ],
+     "minnz_top": null,
+     "maxpc_all": [
+      1,
+      1,
+      1
+     ],
+     "nodes": 9,
+     "q1nz": false
+    },
+    {
+     "key": [
+      663,
+      671
+     ],
+     "cs": [
+      1,
+      0
+     ],
+     "D": 3,
+     "kdef": 1,
+     "live": false,
+     "maxnz": [
+      null,
+      null
+     ],
+     "minnz_top": null,
+     "maxpc_all": [
+      2,
+      1,
+      1
+     ],
+     "nodes": 11,
+     "q1nz": false
+    },
+    {
+     "key": [
+      657,
+      671
+     ],
+     "cs": [
+      1,
+      1
+     ],
+     "D": 2,
+     "kdef": 2,
+     "live": false,
+     "maxnz": [
+      null,
+      null
+     ],
+     "minnz_top": null,
+     "maxpc_all": [
+      1,
+      1,
+      1
+     ],
+     "nodes": 7,
+     "q1nz": false
+    },
+    {
+     "key": [
+      651,
+      665
+     ],
+     "cs": [
+      1,
+      1
+     ],
+     "D": 2,
+     "kdef": 2,
+     "live": false,
+     "maxnz": [
+      null,
+      null
+     ],
+     "minnz_top": null,
+     "maxpc_all": [
+      1,
+      2,
+      1
+     ],
+     "nodes": 13,
+     "q1nz": false
+    },
+    {
+     "key": [
+      663,
+      665
+     ],
+     "cs": [
+      1,
+      1
+     ],
+     "D": 2,
+     "kdef": 2,
+     "live": false,
+     "maxnz": [
+      null,
+      null
+     ],
+     "minnz_top": null,
+     "maxpc_all": [
+      1,
+      1,
+      1
+     ],
+     "nodes": 7,
+     "q1nz": false
+    },
+    {
+     "key": [
+      665,
+      667
+     ],
+     "cs": [
+      1,
+      1
+     ],
+     "D": 2,
+     "kdef": 2,
+     "live": false,
+     "maxnz": [
+      null,
+      null
+     ],
+     "minnz_top": null,
+     "maxpc_all": [
+      2,
+      2,
+      1
+     ],
+     "nodes": 15,
+     "q1nz": false
+    },
+    {
+     "key": [
+      651,
+      653
+     ],
+     "cs": [
+      1,
+      1
+     ],
+     "D": 2,
+     "kdef": 2,
+     "live": false,
+     "maxnz": [
+      null,
+      null
+     ],
+     "minnz_top": null,
+     "maxpc_all": [
+      1,
+      1,
+      1
+     ],
+     "nodes": 7,
+     "q1nz": false
+    },
+    {
+     "key": [
+      651,
+      657
+     ],
+     "cs": [
+      1,
+      1
+     ],
+     "D": 2,
+     "kdef": 2,
+     "live": false,
+     "maxnz": [
+      null,
+      null
+     ],
+     "minnz_top": null,
+     "maxpc_all": [
+      2,
+      2,
+      1
+     ],
+     "nodes": 15,
+     "q1nz": false
+    },
+    {
+     "key": [
+      655,
+      655
+     ],
+     "cs": [
+      0,
+      0
+     ],
+     "D": 3,
+     "kdef": 1,
+     "live": false,
+     "maxnz": [
+      null,
+      null
+     ],
+     "minnz_top": null,
+     "maxpc_all": [
+      0,
+      0,
+      1
+     ],
+     "nodes": 3,
+     "q1nz": false
+    },
+    {
+     "key": [
+      655,
+      659
+     ],
+     "cs": [
+      0,
+      0
+     ],
+     "D": 3,
+     "kdef": 1,
+     "live": false,
+     "maxnz": [
+      null,
+      null
+     ],
+     "minnz_top": null,
+     "maxpc_all": [
+      1,
+      1,
+      1
+     ],
+     "nodes": 7,
+     "q1nz": false
+    },
+    {
+     "key": [
+      649,
+      659
+     ],
+     "cs": [
+      0,
+      1
+     ],
+     "D": 2,
+     "kdef": 2,
+     "live": false,
+     "maxnz": [
+      null,
+      null
+     ],
+     "minnz_top": null,
+     "maxpc_all": [
+      0,
+      1,
+      1
+     ],
+     "nodes": 5,
+     "q1nz": false
+    }
+   ],
+   "pid_traced": 36
+  },
+  {
+   "tag": "W4NEST",
+   "m": 4,
+   "kind": "Zp",
+   "p": 3,
+   "d0": 1,
+   "reads": [
+    [
+     2,
+     1,
+     1
+    ],
+    [
+     2,
+     1,
+     1
+    ],
+    [
+     2,
+     3,
+     1
+    ],
+    [
+     2,
+     1,
+     1
+    ],
+    [
+     2,
+     1,
+     1
+    ]
+   ],
+   "Etot": 32,
+   "G0": 1120,
+   "harness_events": 0,
+   "uchain": {
+    "4": 373,
+    "3": 140,
+    "2": 70,
+    "1": 35
+   },
+   "su": {
+    "4": 1,
+    "3": 0,
+    "2": 0,
+    "1": 1
+   },
+   "census": {
+    "pairs": 1024,
+    "strack": 256,
+    "track": 120,
+    "live": 36,
+    "pred": 36,
+    "mism": 0,
+    "q1nz_offlocus": 108,
+    "chainfed": 36,
+    "nested12": 74,
+    "nested123": 65,
+    "c1eq2": 0,
+    "maxc": [
+     1,
+     1,
+     1
+    ],
+    "edge_top": 36,
+    "justmiss_top": 84,
+    "justmiss_live": 0,
+    "def_hist": {
+     "0": 36
+    },
+    "kdef_hist": {
+     "1": 36
+    },
+    "pool_mult_edge": 104,
+    "flat_pass": 0
+   },
+   "controls": {
+    "CAP1": 0,
+    "NOCARRY": 36,
+    "EG": 0,
+    "THRP1": 36,
+    "THRM1": 84,
+    "NOU": 36
+   },
+   "pid": [
+    {
+     "key": [
+      1123,
+      1135
+     ],
+     "cs": [
+      1,
+      1,
+      1
+     ],
+     "D": 3,
+     "kdef": 1,
+     "live": true,
+     "maxnz": [
+      1,
+      1,
+      1
+     ],
+     "minnz_top": 1,
+     "maxpc_all": [
+      2,
+      3,
+      1,
+      1
+     ],
+     "nodes": 45,
+     "q1nz": true
+    },
+    {
+     "key": [
+      1131,
+      1147
+     ],
+     "cs": [
+      1,
+      0,
+      1
+     ],
+     "D": 3,
+     "kdef": 1,
+     "live": true,
+     "maxnz": [
+      1,
+      0,
+      1
+     ],
+     "minnz_top": 1,
+     "maxpc_all": [
+      2,
+      2,
+      2,
+      1
+     ],
+     "nodes": 77,
+     "q1nz": true
+    },
+    {
+     "key": [
+      1127,
+      1131
+     ],
+     "cs": [
+      1,
+      1,
+      1
+     ],
+     "D": 3,
+     "kdef": 1,
+     "live": true,
+     "maxnz": [
+      1,
+      1,
+      1
+     ],
+     "minnz_top": 1,
+     "maxpc_all": [
+      2,
+      3,
+      1,
+      1
+     ],
+     "nodes": 45,
+     "q1nz": true
+    },
+    {
+     "key": [
+      1123,
+      1131
+     ],
+     "cs": [
+      1,
+      1,
+      1
+     ],
+     "D": 3,
+     "kdef": 1,
+     "live": true,
+     "maxnz": [
+      1,
+      1,
+      1
+     ],
+     "minnz_top": 1,
+     "maxpc_all": [
+      3,
+      3,
+      3,
+      1
+     ],
+     "nodes": 173,
+     "q1nz": true
+    },
+    {
+     "key": [
+      1143,
+      1147
+     ],
+     "cs": [
+      1,
+      1,
+      1
+     ],
+     "D": 3,
+     "kdef": 1,
+     "live": true,
+     "maxnz": [
+      1,
+      1,
+      1
+     ],
+     "minnz_top": 1,
+     "maxpc_all": [
+      2,
+      3,
+      1,
+      1
+     ],
+     "nodes": 45,
+     "q1nz": true
+    },
+    {
+     "key": [
+      1123,
+      1143
+     ],
+     "cs": [
+      1,
+      1,
+      1
+     ],
+     "D": 3,
+     "kdef": 1,
+     "live": true,
+     "maxnz": [
+      1,
+      1,
+      1
+     ],
+     "minnz_top": 1,
+     "maxpc_all": [
+      3,
+      3,
+      2,
+      1
+     ],
+     "nodes": 113,
+     "q1nz": true
+    },
+    {
+     "key": [
+      1139,
+      1151
+     ],
+     "cs": [
+      1,
+      1,
+      1
+     ],
+     "D": 3,
+     "kdef": 1,
+     "live": true,
+     "maxnz": [
+      1,
+      1,
+      1
+     ],
+     "minnz_top": 1,
+     "maxpc_all": [
+      2,
+      3,
+      1,
+      1
+     ],
+     "nodes": 45,
+     "q1nz": true
+    },
+    {
+     "key": [
+      1139,
+      1147
+     ],
+     "cs": [
+      1,
+      1,
+      1
+     ],
+     "D": 3,
+     "kdef": 1,
+     "live": true,
+     "maxnz": [
+      1,
+      1,
+      1
+     ],
+     "minnz_top": 1,
+     "maxpc_all": [
+      3,
+      3,
+      3,
+      1
+     ],
+     "nodes": 173,
+     "q1nz": true
+    },
+    {
+     "key": [
+      1127,
+      1139
+     ],
+     "cs": [
+      1,
+      1,
+      1
+     ],
+     "D": 3,
+     "kdef": 1,
+     "live": true,
+     "maxnz": [
+      1,
+      1,
+      1
+     ],
+     "minnz_top": 1,
+     "maxpc_all": [
+      3,
+      3,
+      2,
+      1
+     ],
+     "nodes": 113,
+     "q1nz": true
+    },
+    {
+     "key": [
+      1123,
+      1139
+     ],
+     "cs": [
+      1,
+      1,
+      1
+     ],
+     "D": 3,
+     "kdef": 1,
+     "live": true,
+     "maxnz": [
+      1,
+      2,
+      1
+     ],
+     "minnz_top": 1,
+     "maxpc_all": [
+      3,
+      4,
+      3,
+      1
+     ],
+     "nodes": 381,
+     "q1nz": true
+    },
+    {
+     "key": [
+      1123,
+      1151
+     ],
+     "cs": [
+      1,
+      1,
+      1
+     ],
+     "D": 3,
+     "kdef": 1,
+     "live": true,
+     "maxnz": [
+      1,
+      1,
+      1
+     ],
+     "minnz_top": 1,
+     "maxpc_all": [
+      3,
+      3,
+      2,
+      1
+     ],
+     "nodes": 87,
+     "q1nz": true
+    },
+    {
+     "key": [
+      1147,
+      1147
+     ],
+     "cs": [
+      1,
+      0,
+      1
+     ],
+     "D": 3,
+     "kdef": 1,
+     "live": true,
+     "maxnz": [
+      1,
+      0,
+      1
+     ],
+     "minnz_top": 1,
+     "maxpc_all": [
+      3,
+      2,
+      3,
+      1
+     ],
+     "nodes": 145,
+     "q1nz": true
+    },
+    {
+     "key": [
+      1127,
+      1147
+     ],
+     "cs": [
+      1,
+      1,
+      1
+     ],
+     "D": 3,
+     "kdef": 1,
+     "live": true,
+     "maxnz": [
+      1,
+      1,
+      1
+     ],
+     "minnz_top": 1,
+     "maxpc_all": [
+      3,
+      3,
+      2,
+      1
+     ],
+     "nodes": 87,
+     "q1nz": true
+    },
+    {
+     "key": [
+      1123,
+      1147
+     ],
+     "cs": [
+      1,
+      1,
+      1
+     ],
+     "D": 3,
+     "kdef": 1,
+     "live": true,
+     "maxnz": [
+      2,
+      2,
+      1
+     ],
+     "minnz_top": 1,
+     "maxpc_all": [
+      3,
+      4,
+      3,
+      1
+     ],
+     "nodes": 319,
+     "q1nz": true
+    }
+   ],
+   "pid_traced": 14
+  },
+  {
+   "tag": "W4DEEP",
+   "m": 4,
+   "kind": "Zp",
+   "p": 3,
+   "d0": 1,
+   "reads": [
+    [
+     3,
+     1,
+     1
+    ],
+    [
+     2,
+     1,
+     1
+    ],
+    [
+     2,
+     1,
+     1
+    ],
+    [
+     2,
+     1,
+     1
+    ],
+    [
+     2,
+     1,
+     1
+    ]
+   ],
+   "Etot": 48,
+   "G0": 1440,
+   "harness_events": 0,
+   "uchain": {
+    "4": 469,
+    "3": 176,
+    "2": 88,
+    "1": 44
+   },
+   "su": {
+    "4": 1,
+    "3": 0,
+    "2": 0,
+    "1": 2
+   },
+   "census": {
+    "pairs": 2304,
+    "strack": 576,
+    "track": 276,
+    "live": 91,
+    "pred": 91,
+    "mism": 0,
+    "q1nz_offlocus": 273,
+    "chainfed": 91,
+    "nested12": 206,
+    "nested123": 182,
+    "c1eq2": 36,
+    "maxc": [
+     2,
+     2,
+     2
+    ],
+    "edge_top": 90,
+    "justmiss_top": 185,
+    "justmiss_live": 0,
+    "def_hist": {
+     "0": 90,
+     "1": 1
+    },
+    "kdef_hist": {
+     "2": 2,
+     "1": 89
+    },
+    "pool_mult_edge": 232,
+    "flat_pass": 0
+   },
+   "controls": {
+    "CAP1": 5,
+    "NOCARRY": 91,
+    "EG": 0,
+    "THRP1": 90,
+    "THRM1": 185,
+    "NOU": 91
+   },
+   "pid": [
+    {
+     "key": [
+      1455,
+      1475
+     ],
+     "cs": [
+      2,
+      1,
+      1
+     ],
+     "D": 3,
+     "kdef": 1,
+     "live": true,
+     "maxnz": [
+      2,
+      1,
+      1
+     ],
+     "minnz_top": 1,
+     "maxpc_all": [
+      2,
+      1,
+      1,
+      1
+     ],
+     "nodes": 30,
+     "q1nz": true
+    },
+    {
+     "key": [
+      1455,
+      1483
+     ],
+     "cs": [
+      2,
+      1,
+      1
+     ],
+     "D": 3,
+     "kdef": 1,
+     "live": true,
+     "maxnz": [
+      2,
+      1,
+      1
+     ],
+     "minnz_top": 1,
+     "maxpc_all": [
+      3,
+      3,
+      1,
+      1
+     ],
+     "nodes": 62,
+     "q1nz": true
+    },
+    {
+     "key": [
+      1475,
+      1475
+     ],
+     "cs": [
+      2,
+      1,
+      1
+     ],
+     "D": 3,
+     "kdef": 1,
+     "live": true,
+     "maxnz": [
+      2,
+      1,
+      1
+     ],
+     "minnz_top": 1,
+     "maxpc_all": [
+      3,
+      2,
+      2,
+      1
+     ],
+     "nodes": 80,
+     "q1nz": true
+    },
+    {
+     "key": [
+      1463,
+      1475
+     ],
+     "cs": [
+      2,
+      1,
+      1
+     ],
+     "D": 3,
+     "kdef": 1,
+     "live": true,
+     "maxnz": [
+      2,
+      1,
+      1
+     ],
+     "minnz_top": 1,
+     "maxpc_all": [
+      3,
+      3,
+      1,
+      1
+     ],
+     "nodes": 62,
+     "q1nz": true
+    },
+    {
+     "key": [
+      1475,
+      1483
+     ],
+     "cs": [
+      2,
+      1,
+      1
+     ],
+     "D": 3,
+     "kdef": 1,
+     "live": true,
+     "maxnz": [
+      2,
+      2,
+      1
+     ],
+     "minnz_top": 1,
+     "maxpc_all": [
+      3,
+      3,
+      2,
+      1
+     ],
+     "nodes": 169,
+     "q1nz": true
+    },
+    {
+     "key": [
+      1463,
+      1463
+     ],
+     "cs": [
+      2,
+      2,
+      1
+     ],
+     "D": 3,
+     "kdef": 1,
+     "live": true,
+     "maxnz": [
+      2,
+      2,
+      1
+     ],
+     "minnz_top": 1,
+     "maxpc_all": [
+      2,
+      2,
+      1,
+      1
+     ],
+     "nodes": 52,
+     "q1nz": true
+    },
+    {
+     "key": [
+      1463,
+      1483
+     ],
+     "cs": [
+      2,
+      2,
+      1
+     ],
+     "D": 3,
+     "kdef": 1,
+     "live": true,
+     "maxnz": [
+      2,
+      2,
+      1
+     ],
+     "minnz_top": 1,
+     "maxpc_all": [
+      3,
+      3,
+      2,
+      1
+     ],
+     "nodes": 129,
+     "q1nz": true
+    },
+    {
+     "key": [
+      1441,
+      1483
+     ],
+     "cs": [
+      2,
+      2,
+      2
+     ],
+     "D": 2,
+     "kdef": 2,
+     "live": true,
+     "maxnz": [
+      2,
+      2,
+      2
+     ],
+     "minnz_top": 2,
+     "maxpc_all": [
+      3,
+      3,
+      2,
+      1
+     ],
+     "nodes": 96,
+     "q1nz": true
+    },
+    {
+     "key": [
+      1483,
+      1483
+     ],
+     "cs": [
+      2,
+      2,
+      2
+     ],
+     "D": 3,
+     "kdef": 1,
+     "live": true,
+     "maxnz": [
+      3,
+      2,
+      2
+     ],
+     "minnz_top": 1,
+     "maxpc_all": [
+      4,
+      4,
+      3,
+      1
+     ],
+     "nodes": 337,
+     "q1nz": true
+    },
+    {
+     "key": [
+      1467,
+      1471
+     ],
+     "cs": [
+      1,
+      1,
+      1
+     ],
+     "D": 3,
+     "kdef": 1,
+     "live": true,
+     "maxnz": [
+      1,
+      1,
+      1
+     ],
+     "minnz_top": 1,
+     "maxpc_all": [
+      1,
+      1,
+      1,
+      1
+     ],
+     "nodes": 18,
+     "q1nz": true
+    },
+    {
+     "key": [
+      1471,
+      1483
+     ],
+     "cs": [
+      1,
+      1,
+      1
+     ],
+     "D": 3,
+     "kdef": 1,
+     "live": true,
+     "maxnz": [
+      1,
+      1,
+      1
+     ],
+     "minnz_top": 1,
+     "maxpc_all": [
+      2,
+      2,
+      1,
+      1
+     ],
+     "nodes": 32,
+     "q1nz": true
+    },
+    {
+     "key": [
+      1443,
+      1459
+     ],
+     "cs": [
+      1,
+      0,
+      1
+     ],
+     "D": 3,
+     "kdef": 1,
+     "live": true,
+     "maxnz": [
+      1,
+      0,
+      1
+     ],
+     "minnz_top": 1,
+     "maxpc_all": [
+      2,
+      2,
+      1,
+      1
+     ],
+     "nodes": 27,
+     "q1nz": true
+    },
+    {
+     "key": [
+      1443,
+      1447
+     ],
+     "cs": [
+      1,
+      1,
+      1
+     ],
+     "D": 3,
+     "kdef": 1,
+     "live": true,
+     "maxnz": [
+      1,
+      1,
+      1
+     ],
+     "minnz_top": 1,
+     "maxpc_all": [
+      1,
+      1,
+      1,
+      1
+     ],
+     "nodes": 18,
+     "q1nz": true
+    },
+    {
+     "key": [
+      1443,
+      1467
+     ],
+     "cs": [
+      1,
+      1,
+      1
+     ],
+     "D": 3,
+     "kdef": 1,
+     "live": true,
+     "maxnz": [
+      1,
+      1,
+      1
+     ],
+     "minnz_top": 1,
+     "maxpc_all": [
+      2,
+      2,
+      2,
+      1
+     ],
+     "nodes": 52,
+     "q1nz": true
+    }
+   ],
+   "pid_traced": 14
+  },
+  {
+   "tag": "W4FLAT",
+   "m": 4,
+   "kind": "Zp",
+   "p": 3,
+   "d0": 1,
+   "reads": [
+    [
+     2,
+     1,
+     1
+    ],
+    [
+     2,
+     3,
+     1
+    ],
+    [
+     1,
+     1,
+     1
+    ],
+    [
+     2,
+     1,
+     1
+    ],
+    [
+     2,
+     1,
+     1
+    ]
+   ],
+   "Etot": 16,
+   "G0": 384,
+   "harness_events": 0,
+   "uchain": {
+    "4": 125,
+    "3": 47,
+    "2": 47,
+    "1": 20
+   },
+   "su": {
+    "4": 1,
+    "3": 0,
+    "2": 1,
+    "1": 0
+   },
+   "census": {
+    "pairs": 256,
+    "strack": 64,
+    "track": 28,
+    "live": 15,
+    "pred": 15,
+    "mism": 0,
+    "q1nz_offlocus": 45,
+    "chainfed": 15,
+    "nested12": 10,
+    "nested123": 10,
+    "c1eq2": 0,
+    "maxc": [
+     1,
+     2,
+     2
+    ],
+    "edge_top": 14,
+    "justmiss_top": 13,
+    "justmiss_live": 0,
+    "def_hist": {
+     "0": 14,
+     "1": 1
+    },
+    "kdef_hist": {
+     "2": 2,
+     "1": 13
+    },
+    "pool_mult_edge": 25,
+    "flat_pass": 25
+   },
+   "controls": {
+    "CAP1": 2,
+    "NOCARRY": 15,
+    "EG": 0,
+    "THRP1": 14,
+    "THRM1": 13,
+    "NOU": 15
+   },
+   "pid": [
+    {
+     "key": [
+      387,
+      387
+     ],
+     "cs": [
+      1,
+      1,
+      1
+     ],
+     "D": 3,
+     "kdef": 1,
+     "live": true,
+     "maxnz": [
+      1,
+      1,
+      1
+     ],
+     "minnz_top": 1,
+     "maxpc_all": [
+      1,
+      1,
+      1,
+      1
+     ],
+     "nodes": 16,
+     "q1nz": true
+    },
+    {
+     "key": [
+      387,
+      399
+     ],
+     "cs": [
+      1,
+      1,
+      1
+     ],
+     "D": 3,
+     "kdef": 1,
+     "live": true,
+     "maxnz": [
+      1,
+      2,
+      1
+     ],
+     "minnz_top": 1,
+     "maxpc_all": [
+      1,
+      2,
+      2,
+      1
+     ],
+     "nodes": 38,
+     "q1nz": true
+    },
+    {
+     "key": [
+      385,
+      399
+     ],
+     "cs": [
+      1,
+      2,
+      2
+     ],
+     "D": 2,
+     "kdef": 2,
+     "live": true,
+     "maxnz": [
+      1,
+      2,
+      2
+     ],
+     "minnz_top": 2,
+     "maxpc_all": [
+      1,
+      2,
+      2,
+      1
+     ],
+     "nodes": 30,
+     "q1nz": true
+    },
+    {
+     "key": [
+      399,
+      399
+     ],
+     "cs": [
+      1,
+      2,
+      2
+     ],
+     "D": 3,
+     "kdef": 1,
+     "live": true,
+     "maxnz": [
+      1,
+      3,
+      2
+     ],
+     "minnz_top": 1,
+     "maxpc_all": [
+      2,
+      3,
+      2,
+      1
+     ],
+     "nodes": 95,
+     "q1nz": true
+    },
+    {
+     "key": [
+      391,
+      395
+     ],
+     "cs": [
+      0,
+      1,
+      1
+     ],
+     "D": 3,
+     "kdef": 1,
+     "live": true,
+     "maxnz": [
+      0,
+      1,
+      1
+     ],
+     "minnz_top": 1,
+     "maxpc_all": [
+      0,
+      1,
+      1,
+      1
+     ],
+     "nodes": 12,
+     "q1nz": true
+    },
+    {
+     "key": [
+      395,
+      399
+     ],
+     "cs": [
+      0,
+      1,
+      1
+     ],
+     "D": 3,
+     "kdef": 1,
+     "live": true,
+     "maxnz": [
+      0,
+      1,
+      1
+     ],
+     "minnz_top": 1,
+     "maxpc_all": [
+      1,
+      1,
+      1,
+      1
+     ],
+     "nodes": 16,
+     "q1nz": true
+    },
+    {
+     "key": [
+      391,
+      391
+     ],
+     "cs": [
+      0,
+      1,
+      1
+     ],
+     "D": 3,
+     "kdef": 1,
+     "live": true,
+     "maxnz": [
+      0,
+      2,
+      1
+     ],
+     "minnz_top": 1,
+     "maxpc_all": [
+      0,
+      2,
+      2,
+      1
+     ],
+     "nodes": 25,
+     "q1nz": true
+    },
+    {
+     "key": [
+      387,
+      391
+     ],
+     "cs": [
+      0,
+      1,
+      1
+     ],
+     "D": 3,
+     "kdef": 1,
+     "live": true,
+     "maxnz": [
+      0,
+      1,
+      1
+     ],
+     "minnz_top": 1,
+     "maxpc_all": [
+      1,
+      1,
+      1,
+      1
+     ],
+     "nodes": 16,
+     "q1nz": true
+    },
+    {
+     "key": [
+      391,
+      399
+     ],
+     "cs": [
+      0,
+      1,
+      1
+     ],
+     "D": 3,
+     "kdef": 1,
+     "live": true,
+     "maxnz": [
+      1,
+      2,
+      1
+     ],
+     "minnz_top": 1,
+     "maxpc_all": [
+      1,
+      2,
+      2,
+      1
+     ],
+     "nodes": 46,
+     "q1nz": true
+    },
+    {
+     "key": [
+      389,
+      399
+     ],
+     "cs": [
+      1,
+      1,
+      1
+     ],
+     "D": 2,
+     "kdef": 2,
+     "live": false,
+     "maxnz": [
+      null,
+      null,
+      null
+     ],
+     "minnz_top": null,
+     "maxpc_all": [
+      1,
+      1,
+      1,
+      1
+     ],
+     "nodes": 9,
+     "q1nz": false
+    },
+    {
+     "key": [
+      385,
+      387
+     ],
+     "cs": [
+      1,
+      1,
+      1
+     ],
+     "D": 2,
+     "kdef": 2,
+     "live": false,
+     "maxnz": [
+      null,
+      null,
+      null
+     ],
+     "minnz_top": null,
+     "maxpc_all": [
+      1,
+      1,
+      1,
+      1
+     ],
+     "nodes": 9,
+     "q1nz": false
+    },
+    {
+     "key": [
+      395,
+      395
+     ],
+     "cs": [
+      0,
+      0,
+      0
+     ],
+     "D": 3,
+     "kdef": 1,
+     "live": false,
+     "maxnz": [
+      null,
+      null,
+      null
+     ],
+     "minnz_top": null,
+     "maxpc_all": [
+      0,
+      0,
+      0,
+      1
+     ],
+     "nodes": 3,
+     "q1nz": false
+    },
+    {
+     "key": [
+      387,
+      395
+     ],
+     "cs": [
+      0,
+      0,
+      0
+     ],
+     "D": 3,
+     "kdef": 1,
+     "live": false,
+     "maxnz": [
+      null,
+      null,
+      null
+     ],
+     "minnz_top": null,
+     "maxpc_all": [
+      0,
+      0,
+      0,
+      1
+     ],
+     "nodes": 3,
+     "q1nz": false
+    },
+    {
+     "key": [
+      391,
+      393
+     ],
+     "cs": [
+      0,
+      1,
+      1
+     ],
+     "D": 2,
+     "kdef": 2,
+     "live": false,
+     "maxnz": [
+      null,
+      null,
+      null
+     ],
+     "minnz_top": null,
+     "maxpc_all": [
+      0,
+      1,
+      1,
+      1
+     ],
+     "nodes": 7,
+     "q1nz": false
+    }
+   ],
+   "pid_traced": 14
+  },
+  {
+   "tag": "W4NESTF",
+   "m": 4,
+   "kind": "Fpt",
+   "p": 2,
+   "d0": 1,
+   "reads": [
+    [
+     2,
+     1,
+     1
+    ],
+    [
+     2,
+     1,
+     1
+    ],
+    [
+     2,
+     3,
+     1
+    ],
+    [
+     2,
+     1,
+     1
+    ],
+    [
+     2,
+     1,
+     1
+    ]
+   ],
+   "Etot": 32,
+   "G0": 1120,
+   "harness_events": 0,
+   "uchain": {
+    "4": 373,
+    "3": 140,
+    "2": 70,
+    "1": 35
+   },
+   "su": {
+    "4": 1,
+    "3": 0,
+    "2": 0,
+    "1": 1
+   },
+   "census": {
+    "pairs": 1024,
+    "strack": 256,
+    "track": 120,
+    "live": 36,
+    "pred": 36,
+    "mism": 0,
+    "q1nz_offlocus": 108,
+    "chainfed": 36,
+    "nested12": 74,
+    "nested123": 65,
+    "c1eq2": 0,
+    "maxc": [
+     1,
+     1,
+     1
+    ],
+    "edge_top": 36,
+    "justmiss_top": 84,
+    "justmiss_live": 0,
+    "def_hist": {
+     "0": 36
+    },
+    "kdef_hist": {
+     "1": 36
+    },
+    "pool_mult_edge": 104,
+    "flat_pass": 0
+   },
+   "controls": {
+    "CAP1": 0,
+    "NOCARRY": 36,
+    "EG": 0,
+    "THRP1": 36,
+    "THRM1": 84,
+    "NOU": 36
+   },
+   "pid": [
+    {
+     "key": [
+      1123,
+      1135
+     ],
+     "cs": [
+      1,
+      1,
+      1
+     ],
+     "D": 3,
+     "kdef": 1,
+     "live": true,
+     "maxnz": [
+      1,
+      1,
+      1
+     ],
+     "minnz_top": 1,
+     "maxpc_all": [
+      2,
+      3,
+      1,
+      1
+     ],
+     "nodes": 44,
+     "q1nz": true
+    },
+    {
+     "key": [
+      1131,
+      1147
+     ],
+     "cs": [
+      1,
+      0,
+      1
+     ],
+     "D": 3,
+     "kdef": 1,
+     "live": true,
+     "maxnz": [
+      1,
+      0,
+      1
+     ],
+     "minnz_top": 1,
+     "maxpc_all": [
+      2,
+      2,
+      2,
+      1
+     ],
+     "nodes": 63,
+     "q1nz": true
+    },
+    {
+     "key": [
+      1127,
+      1131
+     ],
+     "cs": [
+      1,
+      1,
+      1
+     ],
+     "D": 3,
+     "kdef": 1,
+     "live": true,
+     "maxnz": [
+      1,
+      1,
+      1
+     ],
+     "minnz_top": 1,
+     "maxpc_all": [
+      2,
+      3,
+      1,
+      1
+     ],
+     "nodes": 44,
+     "q1nz": true
+    },
+    {
+     "key": [
+      1123,
+      1131
+     ],
+     "cs": [
+      1,
+      1,
+      1
+     ],
+     "D": 3,
+     "kdef": 1,
+     "live": true,
+     "maxnz": [
+      1,
+      1,
+      1
+     ],
+     "minnz_top": 1,
+     "maxpc_all": [
+      3,
+      3,
+      3,
+      1
+     ],
+     "nodes": 132,
+     "q1nz": true
+    },
+    {
+     "key": [
+      1143,
+      1147
+     ],
+     "cs": [
+      1,
+      1,
+      1
+     ],
+     "D": 3,
+     "kdef": 1,
+     "live": true,
+     "maxnz": [
+      1,
+      1,
+      1
+     ],
+     "minnz_top": 1,
+     "maxpc_all": [
+      2,
+      3,
+      1,
+      1
+     ],
+     "nodes": 44,
+     "q1nz": true
+    },
+    {
+     "key": [
+      1123,
+      1143
+     ],
+     "cs": [
+      1,
+      1,
+      1
+     ],
+     "D": 3,
+     "kdef": 1,
+     "live": true,
+     "maxnz": [
+      1,
+      1,
+      1
+     ],
+     "minnz_top": 1,
+     "maxpc_all": [
+      3,
+      3,
+      2,
+      1
+     ],
+     "nodes": 99,
+     "q1nz": true
+    },
+    {
+     "key": [
+      1139,
+      1151
+     ],
+     "cs": [
+      1,
+      1,
+      1
+     ],
+     "D": 3,
+     "kdef": 1,
+     "live": true,
+     "maxnz": [
+      1,
+      1,
+      1
+     ],
+     "minnz_top": 1,
+     "maxpc_all": [
+      2,
+      3,
+      1,
+      1
+     ],
+     "nodes": 44,
+     "q1nz": true
+    },
+    {
+     "key": [
+      1139,
+      1147
+     ],
+     "cs": [
+      1,
+      1,
+      1
+     ],
+     "D": 3,
+     "kdef": 1,
+     "live": true,
+     "maxnz": [
+      1,
+      1,
+      1
+     ],
+     "minnz_top": 1,
+     "maxpc_all": [
+      3,
+      3,
+      3,
+      1
+     ],
+     "nodes": 132,
+     "q1nz": true
+    },
+    {
+     "key": [
+      1127,
+      1139
+     ],
+     "cs": [
+      1,
+      1,
+      1
+     ],
+     "D": 3,
+     "kdef": 1,
+     "live": true,
+     "maxnz": [
+      1,
+      1,
+      1
+     ],
+     "minnz_top": 1,
+     "maxpc_all": [
+      3,
+      3,
+      2,
+      1
+     ],
+     "nodes": 99,
+     "q1nz": true
+    },
+    {
+     "key": [
+      1123,
+      1139
+     ],
+     "cs": [
+      1,
+      1,
+      1
+     ],
+     "D": 3,
+     "kdef": 1,
+     "live": true,
+     "maxnz": [
+      1,
+      2,
+      1
+     ],
+     "minnz_top": 1,
+     "maxpc_all": [
+      3,
+      4,
+      3,
+      1
+     ],
+     "nodes": 280,
+     "q1nz": true
+    },
+    {
+     "key": [
+      1123,
+      1151
+     ],
+     "cs": [
+      1,
+      1,
+      1
+     ],
+     "D": 3,
+     "kdef": 1,
+     "live": true,
+     "maxnz": [
+      1,
+      1,
+      1
+     ],
+     "minnz_top": 1,
+     "maxpc_all": [
+      3,
+      3,
+      2,
+      1
+     ],
+     "nodes": 80,
+     "q1nz": true
+    },
+    {
+     "key": [
+      1147,
+      1147
+     ],
+     "cs": [
+      1,
+      0,
+      1
+     ],
+     "D": 3,
+     "kdef": 1,
+     "live": true,
+     "maxnz": [
+      1,
+      0,
+      1
+     ],
+     "minnz_top": 1,
+     "maxpc_all": [
+      3,
+      2,
+      3,
+      1
+     ],
+     "nodes": 113,
+     "q1nz": true
+    },
+    {
+     "key": [
+      1127,
+      1147
+     ],
+     "cs": [
+      1,
+      1,
+      1
+     ],
+     "D": 3,
+     "kdef": 1,
+     "live": true,
+     "maxnz": [
+      1,
+      1,
+      1
+     ],
+     "minnz_top": 1,
+     "maxpc_all": [
+      3,
+      3,
+      2,
+      1
+     ],
+     "nodes": 80,
+     "q1nz": true
+    },
+    {
+     "key": [
+      1123,
+      1147
+     ],
+     "cs": [
+      1,
+      1,
+      1
+     ],
+     "D": 3,
+     "kdef": 1,
+     "live": true,
+     "maxnz": [
+      2,
+      2,
+      1
+     ],
+     "minnz_top": 1,
+     "maxpc_all": [
+      3,
+      4,
+      3,
+      1
+     ],
+     "nodes": 240,
+     "q1nz": true
+    }
+   ],
+   "pid_traced": 14
+  },
+  {
+   "tag": "XM3A",
+   "m": 3,
+   "kind": "Zp",
+   "p": 5,
+   "d0": 1,
+   "reads": [
+    [
+     2,
+     1,
+     1
+    ],
+    [
+     2,
+     1,
+     1
+    ],
+    [
+     2,
+     1,
+     1
+    ],
+    [
+     2,
+     1,
+     1
+    ]
+   ],
+   "Etot": 16,
+   "G0": 256,
+   "harness_events": 0,
+   "uchain": {
+    "3": 85,
+    "2": 32,
+    "1": 16
+   },
+   "su": {
+    "3": 1,
+    "2": 0,
+    "1": 0
+   },
+   "census": {
+    "pairs": 256,
+    "strack": 64,
+    "track": 28,
+    "live": 6,
+    "pred": 6,
+    "mism": 0,
+    "q1nz_offlocus": 18,
+    "chainfed": 6,
+    "nested12": 9,
+    "nested123": 0,
+    "c1eq2": 0,
+    "maxc": [
+     1,
+     1
+    ],
+    "edge_top": 6,
+    "justmiss_top": 22,
+    "justmiss_live": 0,
+    "def_hist": {
+     "0": 6
+    },
+    "kdef_hist": {
+     "1": 6
+    },
+    "pool_mult_edge": 19,
+    "flat_pass": 0
+   },
+   "controls": {
+    "CAP1": 0,
+    "NOCARRY": 6,
+    "EG": 0,
+    "THRP1": 6,
+    "THRM1": 22,
+    "NOU": 6
+   },
+   "pid": [
+    {
+     "key": [
+      263,
+      267
+     ],
+     "cs": [
+      1,
+      1
+     ],
+     "D": 3,
+     "kdef": 1,
+     "live": true,
+     "maxnz": [
+      1,
+      1
+     ],
+     "minnz_top": 1,
+     "maxpc_all": [
+      1,
+      1,
+      1
+     ],
+     "nodes": 17,
+     "q1nz": true
+    },
+    {
+     "key": [
+      267,
+      267
+     ],
+     "cs": [
+      1,
+      1
+     ],
+     "D": 3,
+     "kdef": 1,
+     "live": true,
+     "maxnz": [
+      1,
+      1
+     ],
+     "minnz_top": 1,
+     "maxpc_all": [
+      2,
+      2,
+      1
+     ],
+     "nodes": 35,
+     "q1nz": true
+    },
+    {
+     "key": [
+      259,
+      259
+     ],
+     "cs": [
+      0,
+      1
+     ],
+     "D": 3,
+     "kdef": 1,
+     "live": true,
+     "maxnz": [
+      0,
+      1
+     ],
+     "minnz_top": 1,
+     "maxpc_all": [
+      0,
+      1,
+      1
+     ],
+     "nodes": 9,
+     "q1nz": true
+    },
+    {
+     "key": [
+      259,
+      267
+     ],
+     "cs": [
+      0,
+      1
+     ],
+     "D": 3,
+     "kdef": 1,
+     "live": true,
+     "maxnz": [
+      0,
+      1
+     ],
+     "minnz_top": 1,
+     "maxpc_all": [
+      1,
+      1,
+      1
+     ],
+     "nodes": 18,
+     "q1nz": true
+    },
+    {
+     "key": [
+      267,
+      269
+     ],
+     "cs": [
+      1,
+      1
+     ],
+     "D": 2,
+     "kdef": 2,
+     "live": false,
+     "maxnz": [
+      null,
+      null
+     ],
+     "minnz_top": null,
+     "maxpc_all": [
+      1,
+      1,
+      1
+     ],
+     "nodes": 7,
+     "q1nz": false
+    },
+    {
+     "key": [
+      263,
+      263
+     ],
+     "cs": [
+      1,
+      0
+     ],
+     "D": 3,
+     "kdef": 1,
+     "live": false,
+     "maxnz": [
+      null,
+      null
+     ],
+     "minnz_top": null,
+     "maxpc_all": [
+      1,
+      1,
+      1
+     ],
+     "nodes": 10,
+     "q1nz": false
+    },
+    {
+     "key": [
+      257,
+      263
+     ],
+     "cs": [
+      1,
+      1
+     ],
+     "D": 2,
+     "kdef": 2,
+     "live": false,
+     "maxnz": [
+      null,
+      null
+     ],
+     "minnz_top": null,
+     "maxpc_all": [
+      1,
+      1,
+      1
+     ],
+     "nodes": 7,
+     "q1nz": false
+    },
+    {
+     "key": [
+      257,
+      267
+     ],
+     "cs": [
+      1,
+      1
+     ],
+     "D": 2,
+     "kdef": 2,
+     "live": false,
+     "maxnz": [
+      null,
+      null
+     ],
+     "minnz_top": null,
+     "maxpc_all": [
+      1,
+      2,
+      1
+     ],
+     "nodes": 15,
+     "q1nz": false
+    },
+    {
+     "key": [
+      271,
+      271
+     ],
+     "cs": [
+      0,
+      0
+     ],
+     "D": 3,
+     "kdef": 1,
+     "live": false,
+     "maxnz": [
+      null,
+      null
+     ],
+     "minnz_top": null,
+     "maxpc_all": [
+      0,
+      0,
+      1
+     ],
+     "nodes": 3,
+     "q1nz": false
+    },
+    {
+     "key": [
+      259,
+      271
+     ],
+     "cs": [
+      0,
+      0
+     ],
+     "D": 3,
+     "kdef": 1,
+     "live": false,
+     "maxnz": [
+      null,
+      null
+     ],
+     "minnz_top": null,
+     "maxpc_all": [
+      0,
+      1,
+      1
+     ],
+     "nodes": 5,
+     "q1nz": false
+    },
+    {
+     "key": [
+      263,
+      271
+     ],
+     "cs": [
+      0,
+      0
+     ],
+     "D": 3,
+     "kdef": 1,
+     "live": false,
+     "maxnz": [
+      null,
+      null
+     ],
+     "minnz_top": null,
+     "maxpc_all": [
+      0,
+      0,
+      1
+     ],
+     "nodes": 3,
+     "q1nz": false
+    },
+    {
+     "key": [
+      267,
+      271
+     ],
+     "cs": [
+      0,
+      0
+     ],
+     "D": 3,
+     "kdef": 1,
+     "live": false,
+     "maxnz": [
+      null,
+      null
+     ],
+     "minnz_top": null,
+     "maxpc_all": [
+      1,
+      1,
+      1
+     ],
+     "nodes": 8,
+     "q1nz": false
+    },
+    {
+     "key": [
+      259,
+      265
+     ],
+     "cs": [
+      0,
+      1
+     ],
+     "D": 2,
+     "kdef": 2,
+     "live": false,
+     "maxnz": [
+      null,
+      null
+     ],
+     "minnz_top": null,
+     "maxpc_all": [
+      0,
+      1,
+      1
+     ],
+     "nodes": 5,
+     "q1nz": false
+    },
+    {
+     "key": [
+      265,
+      267
+     ],
+     "cs": [
+      0,
+      1
+     ],
+     "D": 2,
+     "kdef": 2,
+     "live": false,
+     "maxnz": [
+      null,
+      null
+     ],
+     "minnz_top": null,
+     "maxpc_all": [
+      1,
+      1,
+      1
+     ],
+     "nodes": 8,
+     "q1nz": false
+    },
+    {
+     "key": [
+      259,
+      263
+     ],
+     "cs": [
+      0,
+      0
+     ],
+     "D": 3,
+     "kdef": 1,
+     "live": false,
+     "maxnz": [
+      null,
+      null
+     ],
+     "minnz_top": null,
+     "maxpc_all": [
+      1,
+      1,
+      1
+     ],
+     "nodes": 8,
+     "q1nz": false
+    },
+    {
+     "key": [
+      257,
+      259
+     ],
+     "cs": [
+      0,
+      1
+     ],
+     "D": 2,
+     "kdef": 2,
+     "live": false,
+     "maxnz": [
+      null,
+      null
+     ],
+     "minnz_top": null,
+     "maxpc_all": [
+      1,
+      1,
+      1
+     ],
+     "nodes": 8,
+     "q1nz": false
+    }
+   ],
+   "pid_traced": 16
+  },
+  {
+   "tag": "XM3B",
+   "m": 3,
+   "kind": "Zp",
+   "p": 3,
+   "d0": 2,
+   "reads": [
+    [
+     2,
+     1,
+     2
+    ],
+    [
+     3,
+     2,
+     1
+    ],
+    [
+     2,
+     1,
+     1
+    ],
+    [
+     2,
+     1,
+     1
+    ]
+   ],
+   "Etot": 24,
+   "G0": 1032,
+   "harness_events": 0,
+   "uchain": {
+    "3": 341,
+    "2": 128,
+    "1": 38
+   },
+   "su": {
+    "3": 1,
+    "2": 1,
+    "1": 0
+   },
+   "census": {
+    "pairs": 576,
+    "strack": 144,
+    "track": 60,
+    "live": 28,
+    "pred": 28,
+    "mism": 0,
+    "q1nz_offlocus": 84,
+    "chainfed": 28,
+    "nested12": 14,
+    "nested123": 0,
+    "c1eq2": 0,
+    "maxc": [
+     1,
+     2
+    ],
+    "edge_top": 27,
+    "justmiss_top": 32,
+    "justmiss_live": 0,
+    "def_hist": {
+     "0": 27,
+     "1": 1
+    },
+    "kdef_hist": {
+     "1": 26,
+     "2": 2
+    },
+    "pool_mult_edge": 24,
+    "flat_pass": 0
+   },
+   "controls": {
+    "CAP1": 2,
+    "NOCARRY": 28,
+    "EG": 4,
+    "THRP1": 27,
+    "THRM1": 32,
+    "NOU": 28
+   },
+   "pid": [
+    {
+     "key": [
+      1035,
+      1051
+     ],
+     "cs": [
+      1,
+      1
+     ],
+     "D": 3,
+     "kdef": 1,
+     "live": true,
+     "maxnz": [
+      1,
+      1
+     ],
+     "minnz_top": 1,
+     "maxpc_all": [
+      1,
+      1,
+      1
+     ],
+     "nodes": 80,
+     "q1nz": true
+    },
+    {
+     "key": [
+      1043,
+      1051
+     ],
+     "cs": [
+      1,
+      1
+     ],
+     "D": 3,
+     "kdef": 1,
+     "live": true,
+     "maxnz": [
+      1,
+      1
+     ],
+     "minnz_top": 1,
+     "maxpc_all": [
+      2,
+      2,
+      1
+     ],
+     "nodes": 186,
+     "q1nz": true
+    },
+    {
+     "key": [
+      1035,
+      1035
+     ],
+     "cs": [
+      1,
+      1
+     ],
+     "D": 3,
+     "kdef": 1,
+     "live": true,
+     "maxnz": [
+      1,
+      1
+     ],
+     "minnz_top": 1,
+     "maxpc_all": [
+      2,
+      2,
+      1
+     ],
+     "nodes": 186,
+     "q1nz": true
+    },
+    {
+     "key": [
+      1035,
+      1043
+     ],
+     "cs": [
+      1,
+      1
+     ],
+     "D": 3,
+     "kdef": 1,
+     "live": true,
+     "maxnz": [
+      1,
+      1
+     ],
+     "minnz_top": 1,
+     "maxpc_all": [
+      2,
+      3,
+      1
+     ],
+     "nodes": 619,
+     "q1nz": true
+    },
+    {
+     "key": [
+      1041,
+      1043
+     ],
+     "cs": [
+      1,
+      2
+     ],
+     "D": 2,
+     "kdef": 2,
+     "live": true,
+     "maxnz": [
+      1,
+      2
+     ],
+     "minnz_top": 2,
+     "maxpc_all": [
+      1,
+      2,
+      1
+     ],
+     "nodes": 87,
+     "q1nz": true
+    },
+    {
+     "key": [
+      1043,
+      1043
+     ],
+     "cs": [
+      1,
+      2
+     ],
+     "D": 3,
+     "kdef": 1,
+     "live": true,
+     "maxnz": [
+      1,
+      2
+     ],
+     "minnz_top": 1,
+     "maxpc_all": [
+      3,
+      3,
+      1
+     ],
+     "nodes": 1540,
+     "q1nz": true
+    },
+    {
+     "key": [
+      1039,
+      1055
+     ],
+     "cs": [
+      0,
+      1
+     ],
+     "D": 3,
+     "kdef": 1,
+     "live": true,
+     "maxnz": [
+      0,
+      1
+     ],
+     "minnz_top": 1,
+     "maxpc_all": [
+      1,
+      2,
+      1
+     ],
+     "nodes": 47,
+     "q1nz": true
+    },
+    {
+     "key": [
+      1039,
+      1043
+     ],
+     "cs": [
+      0,
+      1
+     ],
+     "D": 3,
+     "kdef": 1,
+     "live": true,
+     "maxnz": [
+      0,
+      1
+     ],
+     "minnz_top": 1,
+     "maxpc_all": [
+      2,
+      2,
+      1
+     ],
+     "nodes": 114,
+     "q1nz": true
+    },
+    {
+     "key": [
+      1047,
+      1047
+     ],
+     "cs": [
+      0,
+      1
+     ],
+     "D": 3,
+     "kdef": 1,
+     "live": true,
+     "maxnz": [
+      0,
+      1
+     ],
+     "minnz_top": 1,
+     "maxpc_all": [
+      1,
+      2,
+      1
+     ],
+     "nodes": 47,
+     "q1nz": true
+    },
+    {
+     "key": [
+      1047,
+      1055
+     ],
+     "cs": [
+      0,
+      1
+     ],
+     "D": 3,
+     "kdef": 1,
+     "live": true,
+     "maxnz": [
+      0,
+      1
+     ],
+     "minnz_top": 1,
+     "maxpc_all": [
+      2,
+      2,
+      1
+     ],
+     "nodes": 174,
+     "q1nz": true
+    },
+    {
+     "key": [
+      1035,
+      1047
+     ],
+     "cs": [
+      0,
+      1
+     ],
+     "D": 3,
+     "kdef": 1,
+     "live": true,
+     "maxnz": [
+      0,
+      1
+     ],
+     "minnz_top": 1,
+     "maxpc_all": [
+      2,
+      2,
+      1
+     ],
+     "nodes": 114,
+     "q1nz": true
+    },
+    {
+     "key": [
+      1043,
+      1047
+     ],
+     "cs": [
+      0,
+      1
+     ],
+     "D": 3,
+     "kdef": 1,
+     "live": true,
+     "maxnz": [
+      0,
+      1
+     ],
+     "minnz_top": 1,
+     "maxpc_all": [
+      2,
+      2,
+      1
+     ],
+     "nodes": 380,
+     "q1nz": true
+    },
+    {
+     "key": [
+      1055,
+      1055
+     ],
+     "cs": [
+      0,
+      1
+     ],
+     "D": 3,
+     "kdef": 1,
+     "live": true,
+     "maxnz": [
+      1,
+      1
+     ],
+     "minnz_top": 1,
+     "maxpc_all": [
+      2,
+      3,
+      1
+     ],
+     "nodes": 456,
+     "q1nz": true
+    },
+    {
+     "key": [
+      1051,
+      1055
+     ],
+     "cs": [
+      0,
+      1
+     ],
+     "D": 3,
+     "kdef": 1,
+     "live": true,
+     "maxnz": [
+      0,
+      1
+     ],
+     "minnz_top": 1,
+     "maxpc_all": [
+      2,
+      2,
+      1
+     ],
+     "nodes": 114,
+     "q1nz": true
+    },
+    {
+     "key": [
+      1035,
+      1055
+     ],
+     "cs": [
+      0,
+      1
+     ],
+     "D": 3,
+     "kdef": 1,
+     "live": true,
+     "maxnz": [
+      0,
+      1
+     ],
+     "minnz_top": 1,
+     "maxpc_all": [
+      2,
+      2,
+      1
+     ],
+     "nodes": 380,
+     "q1nz": true
+    },
+    {
+     "key": [
+      1043,
+      1055
+     ],
+     "cs": [
+      0,
+      1
+     ],
+     "D": 3,
+     "kdef": 1,
+     "live": true,
+     "maxnz": [
+      1,
+      1
+     ],
+     "minnz_top": 1,
+     "maxpc_all": [
+      2,
+      3,
+      1
+     ],
+     "nodes": 920,
+     "q1nz": true
+    },
+    {
+     "key": [
+      1051,
+      1051
+     ],
+     "cs": [
+      1,
+      0
+     ],
+     "D": 3,
+     "kdef": 1,
+     "live": false,
+     "maxnz": [
+      null,
+      null
+     ],
+     "minnz_top": null,
+     "maxpc_all": [
+      1,
+      1,
+      1
+     ],
+     "nodes": 14,
+     "q1nz": false
+    },
+    {
+     "key": [
+      1033,
+      1043
+     ],
+     "cs": [
+      1,
+      1
+     ],
+     "D": 2,
+     "kdef": 2,
+     "live": false,
+     "maxnz": [
+      null,
+      null
+     ],
+     "minnz_top": null,
+     "maxpc_all": [
+      1,
+      2,
+      1
+     ],
+     "nodes": 21,
+     "q1nz": false
+    },
+    {
+     "key": [
+      1035,
+      1041
+     ],
+     "cs": [
+      1,
+      1
+     ],
+     "D": 2,
+     "kdef": 2,
+     "live": false,
+     "maxnz": [
+      null,
+      null
+     ],
+     "minnz_top": null,
+     "maxpc_all": [
+      1,
+      2,
+      1
+     ],
+     "nodes": 21,
+     "q1nz": false
+    },
+    {
+     "key": [
+      1039,
+      1039
+     ],
+     "cs": [
+      0,
+      0
+     ],
+     "D": 3,
+     "kdef": 1,
+     "live": false,
+     "maxnz": [
+      null,
+      null
+     ],
+     "minnz_top": null,
+     "maxpc_all": [
+      0,
+      0,
+      1
+     ],
+     "nodes": 5,
+     "q1nz": false
+    },
+    {
+     "key": [
+      1039,
+      1047
+     ],
+     "cs": [
+      0,
+      0
+     ],
+     "D": 3,
+     "kdef": 1,
+     "live": false,
+     "maxnz": [
+      null,
+      null
+     ],
+     "minnz_top": null,
+     "maxpc_all": [
+      1,
+      1,
+      1
+     ],
+     "nodes": 24,
+     "q1nz": false
+    },
+    {
+     "key": [
+      1039,
+      1051
+     ],
+     "cs": [
+      0,
+      0
+     ],
+     "D": 3,
+     "kdef": 1,
+     "live": false,
+     "maxnz": [
+      null,
+      null
+     ],
+     "minnz_top": null,
+     "maxpc_all": [
+      1,
+      1,
+      1
+     ],
+     "nodes": 11,
+     "q1nz": false
+    },
+    {
+     "key": [
+      1035,
+      1039
+     ],
+     "cs": [
+      0,
+      0
+     ],
+     "D": 3,
+     "kdef": 1,
+     "live": false,
+     "maxnz": [
+      null,
+      null
+     ],
+     "minnz_top": null,
+     "maxpc_all": [
+      1,
+      1,
+      1
+     ],
+     "nodes": 50,
+     "q1nz": false
+    },
+    {
+     "key": [
+      1045,
+      1055
+     ],
+     "cs": [
+      0,
+      1
+     ],
+     "D": 2,
+     "kdef": 2,
+     "live": false,
+     "maxnz": [
+      null,
+      null
+     ],
+     "minnz_top": null,
+     "maxpc_all": [
+      0,
+      1,
+      1
+     ],
+     "nodes": 8,
+     "q1nz": false
+    },
+    {
+     "key": [
+      1043,
+      1045
+     ],
+     "cs": [
+      0,
+      1
+     ],
+     "D": 2,
+     "kdef": 2,
+     "live": false,
+     "maxnz": [
+      null,
+      null
+     ],
+     "minnz_top": null,
+     "maxpc_all": [
+      1,
+      2,
+      1
+     ],
+     "nodes": 14,
+     "q1nz": false
+    },
+    {
+     "key": [
+      1047,
+      1053
+     ],
+     "cs": [
+      0,
+      1
+     ],
+     "D": 2,
+     "kdef": 2,
+     "live": false,
+     "maxnz": [
+      null,
+      null
+     ],
+     "minnz_top": null,
+     "maxpc_all": [
+      0,
+      1,
+      1
+     ],
+     "nodes": 8,
+     "q1nz": false
+    },
+    {
+     "key": [
+      1047,
+      1051
+     ],
+     "cs": [
+      0,
+      0
+     ],
+     "D": 3,
+     "kdef": 1,
+     "live": false,
+     "maxnz": [
+      null,
+      null
+     ],
+     "minnz_top": null,
+     "maxpc_all": [
+      1,
+      1,
+      1
+     ],
+     "nodes": 50,
+     "q1nz": false
+    },
+    {
+     "key": [
+      1041,
+      1047
+     ],
+     "cs": [
+      0,
+      1
+     ],
+     "D": 2,
+     "kdef": 2,
+     "live": false,
+     "maxnz": [
+      null,
+      null
+     ],
+     "minnz_top": null,
+     "maxpc_all": [
+      1,
+      2,
+      1
+     ],
+     "nodes": 14,
+     "q1nz": false
+    },
+    {
+     "key": [
+      1053,
+      1055
+     ],
+     "cs": [
+      0,
+      1
+     ],
+     "D": 2,
+     "kdef": 2,
+     "live": false,
+     "maxnz": [
+      null,
+      null
+     ],
+     "minnz_top": null,
+     "maxpc_all": [
+      1,
+      2,
+      1
+     ],
+     "nodes": 27,
+     "q1nz": false
+    },
+    {
+     "key": [
+      1035,
+      1053
+     ],
+     "cs": [
+      0,
+      1
+     ],
+     "D": 2,
+     "kdef": 2,
+     "live": false,
+     "maxnz": [
+      null,
+      null
+     ],
+     "minnz_top": null,
+     "maxpc_all": [
+      1,
+      2,
+      1
+     ],
+     "nodes": 14,
+     "q1nz": false
+    },
+    {
+     "key": [
+      1043,
+      1053
+     ],
+     "cs": [
+      0,
+      1
+     ],
+     "D": 2,
+     "kdef": 2,
+     "live": false,
+     "maxnz": [
+      null,
+      null
+     ],
+     "minnz_top": null,
+     "maxpc_all": [
+      1,
+      2,
+      1
+     ],
+     "nodes": 53,
+     "q1nz": false
+    },
+    {
+     "key": [
+      1033,
+      1055
+     ],
+     "cs": [
+      0,
+      1
+     ],
+     "D": 2,
+     "kdef": 2,
+     "live": false,
+     "maxnz": [
+      null,
+      null
+     ],
+     "minnz_top": null,
+     "maxpc_all": [
+      1,
+      2,
+      1
+     ],
+     "nodes": 14,
+     "q1nz": false
+    },
+    {
+     "key": [
+      1041,
+      1055
+     ],
+     "cs": [
+      0,
+      1
+     ],
+     "D": 2,
+     "kdef": 2,
+     "live": false,
+     "maxnz": [
+      null,
+      null
+     ],
+     "minnz_top": null,
+     "maxpc_all": [
+      1,
+      2,
+      1
+     ],
+     "nodes": 53,
+     "q1nz": false
+    }
+   ],
+   "pid_traced": 33
+  }
+ ],
+ "provenance": {
+  "wmultdcx_stress.py": "15315cca59c87e6c2001ea744c50aab5",
+  "rmengine_pe_reimpl.py": "103c1a9c99e2b4a3e8b63c93cbf87e25",
+  "grb_order2_check.py": "dab62713175363a7185211890019ae2f",
+  "iterlaw4_probe.py": "80b4c26587b22eb1892be978aeaf2160",
+  "iterlawn_diag.py": "cd7581b7fd9df555e517b69556199ef3"
+ },
+ "elapsed": 2.805356025695801
+}
