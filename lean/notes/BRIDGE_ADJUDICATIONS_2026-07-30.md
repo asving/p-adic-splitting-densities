@@ -8984,3 +8984,62 @@ statement changes are the displayed strengthening + the L-LEX regrade
 to remark.  **Round 2 (PC2 + PE2) runs on the repaired text — next.**
 Unit files: the note, rmengine_diag.py + output + results JSON, this
 append ONLY (scoped commit).
+
+---
+
+## RMENGINE ROUND 2 ADJUDICATED + r2 MICRO-REPAIR APPLIED — 2026-08-08 campaign (wallclock 2026-08-04)
+
+**Verdicts on the r1 text (8835d20), both model-diverse hostile passes:**
+
+- **PC2 (Codex, detached exec; report archived 9466efe as
+  `RMENGINE_passPC2_report.md`):** GAPS-ONLY, **0 critical / 2 gaps**.
+  Clean checks: L-NORM + every downstream use (L-LINE(iii) re-derived
+  through it); the R2 extension re-derived independently (the branch-(b)
+  interval identity w_{i-1}P_{i-1} - S_i = w_{i-1} - S_{i-1}); L-GRID +
+  L-VNZ; the full round-1 surface (both L-MU branches, quanta, 𝔷-carry
+  cancellation, telescopes, all four RM-GEN clauses); COR-A. Gaps: (g1)
+  repair-record wording conflated regrade with weakening; (g2) claims
+  table still short of its charter + C22 wording. Execution unavailable
+  in its sandbox (bubblewrap) — content-only pass, as charged.
+
+- **PE2 (Fable, workflow wsa27kjnd; report
+  `RMENGINE_passPE2_report.md`, 355 lines, NOT previously committed —
+  checkpointed with this entry):** GAPS-ONLY, **0 critical / 1 gap +
+  2 notes**. Every round-1 remedy DISCHARGED under hostile
+  re-derivation; the S4.2 inspection census independently confirmed
+  (grep of all 50 "≥2" sites); machine legs via the extension referee
+  `rmengine_pe2_ext.py` (a COPY; PE1's referee md5-untouched): 67
+  zero-violation engine calls on 8 FRESH d₀ = 1 flat towers all outside
+  the old scope (e₀ = 1, g₀ = 2, h₀ = 2, m = 4 mixed flats, F₂[[t]]),
+  1080/1080 branch-(b) shapes, 225/225 d₀ ≥ 2-flat infeasible, 252/252
+  branch-(a); committed diag re-ran byte-exact (the results JSON's
+  volatile elapsed field moved — included in this commit). Gap: PE2-1
+  claims-table exhaustiveness (CONVERGENT with PC2-g2). Notes: head
+  bracket C15–C19 slip; L-NORM's DIGIT-SPLIT primitivity paraphrase
+  (conservative direction).
+
+**Adjudication.** Zero critical findings across both passes; the two
+gap-streams converge on ONE defect (claims-table charter completeness)
+plus one wording defect. All documentation-layer; the math surface of
+8835d20 survived both re-derivations and the fresh machine batteries
+UNTOUCHED. **r2 micro-repair applied by the orchestrator** (doc-layer
+only, within adjudication authority): rows C23–C28 added (PE2's complete
+absentee list + PC2's repair-record claim), the charter bracket now
+names its census basis, C22 narrowed, C21/C22 [r1] tags restored, the
+hygiene sentence rewritten (regrade ≠ weakening), head bracket C15–C19 →
+C15–C22, the L-NORM citation corrected (no primitivity hypothesis
+upstream, per ITERLAW3 line 386), and the round-2 REPAIR RECORD table
+appended. Every S2–S7 display byte-identical to 8835d20 except the
+L-NORM citation parenthetical.
+
+**Grades after round 2:** unchanged — RM-GEN PROVED on the amended
+T-scope at attempt grade; acceptance counter 0/2 (GAPS-ONLY ≠ CLEAN).
+**Round 3 = PC3 (Codex, the reserved-budget call at 88% window) + PE3
+(Fable workflow), both on the r2 text — THE ACCEPTANCE ATTEMPT (bar:
+both CLEAN).** Parallel: the W-MULT-DCX pool unit (wspolhsgm) runs its
+stress→compose arc on row 11c's heuristic layer (its own note; does not
+touch the RM-GEN note).
+
+Unit files this entry: the note (r2), `RMENGINE_passPE2_report.md`,
+`rmengine_pe2_ext.py` + its output, the diag results JSON (volatile
+field), this append. Scoped commit.
