@@ -10196,3 +10196,42 @@ write instruction was insufficient against the glued case table's
 size). RELAUNCHED with hardened staging: the note written
 section-by-section from the first minute, the case table split into
 per-shape files if needed, return message ≤ 15 lines.
+
+---
+
+## K2-CLOSE COMPLETE (split-architecture recovery after two cap deaths) — K2-THM-B on the widened scope; the involution program at g₀ = 2 CLOSED; the residual unified — 2026-08-08 campaign (wallclock 2026-08-04)
+
+**The program** (skeleton e5a3fc6 → legs 11e1743/7bb28a6 → enumeration
+13a2179/8579216 → verdicts + assembly 816c75e/3b9bc84/4ed354a; the
+machine-first split absorbed the cap-death failure mode completely).
+
+**Landed:** K2-L9 (A = {0} SAFE — both kill mechanisms dead, the
+placement pair budget-killed); K2-L10 (the honest budget refinement:
+single-window sectors of (b) dead; (e) budget-LEGAL, its chain =
+K2-CAND); the 43+10 glued-shape table (38/38 realized groups matched,
+controls 190/190); the verdict column over all 53 shapes; **K2-L11
+ID-CLOSURE** (every glued digit identity ⊆ ⟨I₁, I₃⟩ — the two governing
+identities generate the whole glued layer; φ-functional proof, machine
+shadow 0); K2-L12 (closed partitions, BFS-exhaustive). **K2-THM-B:
+(SURV-K2) PROVED (attempt, W-arc cap) on (R0) ∧ (R2) ∧ (B4-scope) ∧
+(R4⁺)** — the corner coverage strictly widened (new minimal covers
+{P1 + I₁-safe glued}, {P2 + I₃-safe glued}).
+
+**Boxed residual (K2-RES-B), unified:** (i) the 9 realized
+corner-uncovered rows (all I₃-covered + in-vivo protected); (ii)
+**K2-MULT-RES — the single same-sign multiplicity genre** (the novel
+imbalance shapes at char | T; K2-CAND at char 2; K2-L9-RES) — **the
+involution/opposite-sign program at g₀ = 2 is COMPLETE**; (iii)
+beyond-B4 + box (b) (kill identities still ⊆ ⟨I₁, I₃⟩ by K2-L11); (iv)
+g₀ ≥ 3. **Honest sealed-prediction MISS on record (PV-4, 4/5 green):
+all 38 realized glued groups are residue-DEGENERATE (the full-merge
+corner) — residue-GENERIC glued groups are unprobed; that is the next
+falsifier/construction target per the constructed-counterexamples
+directive.**
+
+**The queue after K2-CLOSE:** the K2-CLOSE hostile arc (Fable next,
+Codex post-reset with the other legs); the residue-generic glued
+construction; WINDOW-CALC + the T1-RES fork (g₀ ≥ 3); the weld J-A;
+the LED-Λ arc; the Thursday Codex queue as reordered (W leg first).
+LAW-DCX's pinned class WIDENS AGAIN by K2-THM-B's scope at the capped
+grade.
