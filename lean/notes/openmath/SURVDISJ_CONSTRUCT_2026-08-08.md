@@ -309,7 +309,114 @@ must show NO in-window exchange class.
 
 ## S6. VERDICT (from artifacts; appended at commit 2)
 
-**PENDING AT SEAL.**
+Sealed run: `survdisj_construct_output.txt` /
+`survdisj_construct_results.json`, single deterministic 15.6 s run.
+**All seventeen CON-* families: 0 violations.  246 live rows traced
+(101 at g₀ = 3 — the first g₀ ≥ 3 rows in program history; 104 on the
+T2 glued towers, full enumeration; 41 at g₀ = 1 ∧ d₀ = 2 — the first
+(SD-YJ)-corner rows ever).  DOUBLE-KILL ROWS: 0.  BOTTOM-DEAD ROWS: 0.
+Every row carried a PROTECTED bottom group (246/246).**  (SURV-DISJ)
+and the (SURV-K2) protected form survive all three constructions;
+each defeat system is displayed with its exact realized blocker.
+Post-hoc diagnostics (labeled, unsealed): `survdisj_construct_posthoc.py`
++ its output artifact.  Artifact md5s: runner
+d8001674768b057d9de113574ee401ff · output
+b3d7ae09ea86291c4b586360a04acf7f · results
+cdf2ce6fef7d3145c50b102da6dad05d · posthoc
+f890a83a2a650d74940b475d2480d4f1 · posthoc output
+456f81f3614abc5800db4ea6e147de00.
+
+**T1 verdict: PARTIAL — doors derived and armed, POOL-BLOCKED on the
+roster; g₀ = 3 RESURRECTED.**
+* The predictions P1–P3 all landed: every extended tower (including
+  the two K2-instrument specs that stalled for 300 s each) constructs
+  in < 1.5 s and passes every engine certificate; the recording walk,
+  stage sums, mass ledger, window budgets (n ≤ 5), inventory
+  membership, factorization and kill-criterion crosschecks are all
+  0-violation at g₀ = 3.  The K2-ENG capability-wall finding stands
+  CONFIRMED in both directions (committed chain cannot build g₀ ≥ 3;
+  extended chain is sound and cheap).
+* THE BLOCKER, measured (post-hoc Q1): the maximal realized window
+  budget over all 101 g₀ = 3 rows is n = 4 (18 seed windows, only on
+  the A = {0,2} m = 3 towers; no dump window ever exceeded n = 3; no
+  near-full dump was realized).  Both doors need n = 5; every n ≤ 4
+  class at the realized availability sets is a singleton (D3) — so no
+  door instance existed, no exchange/order pair fired (CON-EXCH and
+  the C3F3Z char-3 tooth are therefore VOID — zero realizations to
+  test, disclosed), and every bottom class carried count ±1: protected
+  everywhere.  Boxed residual (T1-RES): whether pool arithmetic can
+  realize an n = 5 window at all (opening needs parked + arrival ≥
+  10 units at e₀ = 2; the a-priori caps allow 11; the realized maximum
+  opening was 9) — the door survives as arithmetic headroom exactly
+  one unit out of reach on this roster; a targeted next construction
+  should force a t = 2 seed onto a parked-5 state or a near-full dump.
+* New instance records: 2 g₀ = 3 rows with the cascade slot KILLED
+  (first ever) and 50 with it ABSENT (θ₀ = 0 towers) — the bottom leg
+  carried (SURV-DISJ) on every one.
+
+**T2 verdict: PARTIAL — the duplicate-book mechanism RECURS (a second
+fiber found), amplification not realized.**
+* Full enumeration of SDW4G2F (49 rows; the committed selection traced
+  14) found a SECOND duplicate-book fiber — SDW4G2F[2619,2635], slot
+  (3,0,0,0), same book shape (dump(4,), pc (0,0,1,2), sign −) as the
+  PE1 witness [2635,2635] — updating the census "exactly one in the
+  traced set" to "two in 49 rows on this tower"; CON-DUP verified equal
+  residues on both (the char-2 pair contribution nets 0 as derived).
+* Both duplicate fibers sit in 5-cell glued groups (odd ⟹ net ±1
+  survives).  Glued bottom groups on SDW4G2F: sizes {2:4, 3:6, 5:2};
+  the four even (2-cell) glued groups can and do die individually, but
+  no row reached all-groups-dead (BOTTOM-DEAD 0); the m = 3 and h₁ = 3
+  siblings produced NO glued groups at all — the glue needs the m = 4
+  dump geometry.  The D7 even-parity defeat remains open arithmetic
+  headroom; the odd rider chain was present in every realized glued
+  group of size ≥ 3.
+
+**T3 verdict: THE HEADLINE — the (SD-YJ) box is now MACHINE-LIT: the
+Φ₀Y-fed companions are REAL, realize BOTH deficit shapes exactly, and
+were harmless on every probed row.**
+* 41 live rows on nine g₀ = 1 ∧ d₀ = 2 towers (all (STK)); Φ₀Y-edges
+  exist (23 y₂-flags + 14 Y-corrections across the battery — the first
+  g₀ = 1 Y-instances ever; on d₀ = 1 they are identically absent).
+* EIGHT cascade-slot companions materialized — exclusively on the
+  flat-e₁ towers (YJ3FLT/YJ3FLTB/YJ4FLT/YJ3Z; none on the non-flat
+  towers, none at p = 3), exactly the e_i = 1 door the box's equality
+  analysis singles out.  Every companion: exactly one correction at
+  the flat level i = 1, k = 0, FULL principal dump (a₀ = P₀ − 1 = 1),
+  in the two box shapes — [Y₂ = 0: the correction rides its Y-child,
+  defc = 0] and [Y₂ = 1: the correction rides its X-child, defc = 1] —
+  with (★) Σ defc = Y₂ EXACT on all (CON-STAR 0), the SD-L1 bound and
+  the defc = 0 shape analysis exact (CON-DEF/CON-YJ0 0, first d₀ = 2
+  exercise; 10 defc = 0 corrections realized).
+* THE CASCADE SURVIVED ALL 41/41 (all companions harmless): every
+  realized companion has w₀ ∈ {ŵ+1, ŵ+2} and line = β̂ + E_m·Δw₀ > β̂
+  (post-hoc Q2 anatomy) — the junk edge's line-gain was never offset.
+  The box should be SHARPENED to the proof target
+      (SD-YJ′): at g₀ = 1 ∧ (STK), every cascade-slot companion
+      carries junk ≥ 1 (automatic: it is Φ₀Y-fed by (★) + SD-L1†),
+      and junk ≥ 1 at the FIXED slot ĵ forces line > β̂ (equivalently
+      w₀ > ŵ) — i.e. the junk line-gain cannot be offset by promotion
+      savings at fixed slot;
+  the second clause is the single open lemma (S-L4(ii) then finishes
+  as in SD-THM-A(iii)).  All eight instances realize it; a proof of
+  (SD-YJ′) extends SD-THM-A to every d₀ and closes the g₀ = 1 leg of
+  (SURV-DISJ) class-wide.
+
+**Cross-cutting instance yield** (all measured, instance grade):
+(SURV-K2)'s protected form held on all 246 rows including all 101
+g₀ = 3 rows — the first g₀ ≥ 3 evidence for the S6 box of
+SURVDISJ_PROOF; cascade-partner census 42/246 rows with one same-slot
+partner; 66 rows fired the runner's jhat-formula census counter (the
+runner's convenience formula for ĵ from the pools disagreed with the
+authoritative cascade cell — a display bug in THIS unit's formula, not
+a corpus discrepancy; the cell-derived slot was used everywhere).
+
+**Grading per the charge.**  T1: PARTIAL (boxed as (T1-RES); the
+capability-wall finding K2-ENG is the lemma-grade product).  T2:
+PARTIAL (mechanism recurs, amplification boxed with the parity
+census).  T3: the machine-dark box converted to data + the sharpened
+(SD-YJ′) target; infeasibility-flavored evidence FOR the claim, not a
+proof.  No counterexample to (SURV-DISJ) exists in this unit's 246
+rows; the claim's class-wide status is UNCHANGED (open = the boxes).
 
 ## Fences
 

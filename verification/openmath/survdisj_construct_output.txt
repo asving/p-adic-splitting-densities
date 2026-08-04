@@ -1,0 +1,72 @@
+==============================================================================
+(SURV-DISJ) DOUBLE-KILL CONSTRUCTION — sealed battery
+override cubic for C3OMX (F4, all coeffs nonzero): [(0, 1), (1, 0), (1, 0), (1, 0)]
+==============================================================================
+---- T1: g0 = 3 (the resurrected regime) ----
+  CENSUS [C3W2F]: principal d-cell ABSENT (theta_0 = 0 case)
+-- T1 C3W2F m=3 Fpt,p=2,d0=1 g0=3 A=[0, 2] psi0=[(1,), (0,), (1,), (1,)]: live-clause rows=16 traced nonempty=16 (0.9s)
+-- T1 C3W2F2 m=3 Fpt,p=2,d0=1 g0=3 A=[0, 2] psi0=[(1,), (0,), (1,), (1,)]: live-clause rows=20 traced nonempty=14 (0.4s)
+-- T1 C2W2F m=2 Fpt,p=2,d0=1 g0=3 A=[0, 2] psi0=[(1,), (0,), (1,), (1,)]: live-clause rows=6 traced nonempty=6 (0.0s)
+  CENSUS [C3W2Z]: principal d-cell ABSENT (theta_0 = 0 case)
+-- T1 C3W2Z m=3 Zp,p=2,d0=1 g0=3 A=[0, 2] psi0=[(1,), (0,), (1,), (1,)]: live-clause rows=16 traced nonempty=16 (0.1s)
+  CENSUS [C3T0F]: principal d-cell ABSENT (theta_0 = 0 case)
+-- T1 C3T0F m=3 Fpt,p=2,d0=1 g0=3 A=[0, 1] psi0=[(1,), (1,), (0,), (1,)]: live-clause rows=4 traced nonempty=4 (0.1s)
+-- T1 C3DPF m=3 Fpt,p=2,d0=1 g0=3 A=[0, 1] psi0=[(1,), (1,), (0,), (1,)]: live-clause rows=4 traced nonempty=4 (0.1s)
+-- T1 C3K2AF m=3 Fpt,p=2,d0=1 g0=3 A=[0, 1] psi0=[(1,), (1,), (0,), (1,)]: live-clause rows=30 traced nonempty=22 (0.4s)
+-- T1 C3E3F m=3 Fpt,p=2,d0=1 g0=3 A=[0, 1] psi0=[(1,), (1,), (0,), (1,)]: live-clause rows=12 traced nonempty=6 (0.1s)
+  CENSUS [C3OM3F]: principal d-cell ABSENT (theta_0 = 0 case)
+-- T1 C3OM3F m=3 Fpt,p=2,d0=2 g0=3 A=[0, 2] psi0=[(1, 0), (0, 0), (0, 1), (1, 0)]: live-clause rows=4 traced nonempty=4 (1.5s)
+-- T1 C2OMF m=2 Fpt,p=2,d0=2 g0=3 A=[0, 2] psi0=[(1, 0), (0, 0), (0, 1), (1, 0)]: live-clause rows=1 traced nonempty=1 (0.0s)
+  CENSUS [C3F3Z]: principal d-cell ABSENT (theta_0 = 0 case)
+-- T1 C3F3Z m=3 Zp,p=3,d0=1 g0=3 A=[0, 1, 2] psi0=[(1,), (1,), (2,), (1,)]: live-clause rows=4 traced nonempty=4 (0.0s)
+-- T1 C3OMX m=3 Fpt,p=2,d0=2 g0=3 A=[0, 1, 2] psi0=[(0, 1), (1, 0), (1, 0), (1, 0)]: live-clause rows=4 traced nonempty=4 (1.4s)
+---- T2: the glued stratum (duplicate-book amplification) ----
+  CENSUS [SDW4G2F]: principal d-cell ABSENT (theta_0 = 0 case)
+*** FINDING [DUP-BOOK] SDW4G2F: {'key': (2619, 2635), 'slot': [3, 0, 0, 0], 'mult': 2, 'book': '(1, (0, 1), ((1, 0, (4,), 0),), (0, 0, 1, 2), -1)', 'groupn': 5}
+*** FINDING [DUP-BOOK] SDW4G2F: {'key': (2635, 2635), 'slot': [4, 0, 0, 0], 'mult': 2, 'book': '(1, (0, 1), ((1, 0, (4,), 0),), (0, 0, 1, 2), -1)', 'groupn': 5}
+-- T2 SDW4G2F m=4 Fpt,p=2,d0=1 g0=2 A=[0, 1] psi0=[(1,), (1,), (1,)]: live-clause rows=49 traced nonempty=46 (6.6s)
+-- T2 CDW3G2F m=3 Fpt,p=2,d0=1 g0=2 A=[0, 1] psi0=[(1,), (1,), (1,)]: live-clause rows=12 traced nonempty=12 (0.2s)
+-- T2 CDW4G2F2 m=4 Fpt,p=2,d0=1 g0=2 A=[0, 1] psi0=[(1,), (1,), (1,)]: live-clause rows=49 traced nonempty=46 (2.8s)
+---- T3: g0 = 1 AND d0 = 2 (the (SD-YJ) machine-dark corner) ----
+-- T3 YJ2F m=2 Fpt,p=2,d0=2 g0=1 A=[0] psi0=[(0, 1), (1, 0)]: live-clause rows=1 traced nonempty=1 (0.0s)
+-- T3 YJ3F m=3 Fpt,p=2,d0=2 g0=1 A=[0] psi0=[(0, 1), (1, 0)]: live-clause rows=4 traced nonempty=4 (0.1s)
+*** FINDING [YJ-COMPANION] YJ3FLT: {'key': (91, 95), 'n': 1, 'comps': [{'junk': 1, 'nce': 1, 'y2': 0, 'w0': 18, 'line': 72, 'sumdefc': 0}], 'casc_state': 'SURV'}
+*** FINDING [YJ-COMPANION] YJ3FLT: {'key': (95, 95), 'n': 1, 'comps': [{'junk': 1, 'nce': 1, 'y2': 1, 'w0': 18, 'line': 74, 'sumdefc': 1}], 'casc_state': 'SURV'}
+-- T3 YJ3FLT m=3 Fpt,p=2,d0=2 g0=1 A=[0] psi0=[(0, 1), (1, 0)]: live-clause rows=2 traced nonempty=2 (0.0s)
+*** FINDING [YJ-COMPANION] YJ3FLTB: {'key': (187, 191), 'n': 1, 'comps': [{'junk': 1, 'nce': 1, 'y2': 0, 'w0': 35, 'line': 140, 'sumdefc': 0}], 'casc_state': 'SURV'}
+*** FINDING [YJ-COMPANION] YJ3FLTB: {'key': (191, 191), 'n': 1, 'comps': [{'junk': 1, 'nce': 1, 'y2': 1, 'w0': 34, 'line': 142, 'sumdefc': 1}], 'casc_state': 'SURV'}
+-- T3 YJ3FLTB m=3 Fpt,p=2,d0=2 g0=1 A=[0] psi0=[(0, 1), (1, 0)]: live-clause rows=2 traced nonempty=2 (0.0s)
+-- T3 YJ3DPF m=3 Fpt,p=2,d0=2 g0=1 A=[0] psi0=[(0, 1), (1, 0)]: live-clause rows=12 traced nonempty=12 (0.4s)
+*** FINDING [YJ-COMPANION] YJ4FLT: {'key': (355, 355), 'n': 1, 'comps': [{'junk': 1, 'nce': 1, 'y2': 1, 'w0': 30, 'line': 254, 'sumdefc': 1}], 'casc_state': 'SURV'}
+*** FINDING [YJ-COMPANION] YJ4FLT: {'key': (355, 359), 'n': 1, 'comps': [{'junk': 1, 'nce': 1, 'y2': 1, 'w0': 32, 'line': 256, 'sumdefc': 1}], 'casc_state': 'SURV'}
+-- T3 YJ4FLT m=4 Fpt,p=2,d0=2 g0=1 A=[0] psi0=[(0, 1), (1, 0)]: live-clause rows=4 traced nonempty=4 (0.2s)
+*** FINDING [YJ-COMPANION] YJ3Z: {'key': (91, 95), 'n': 1, 'comps': [{'junk': 1, 'nce': 1, 'y2': 0, 'w0': 18, 'line': 72, 'sumdefc': 0}], 'casc_state': 'SURV'}
+*** FINDING [YJ-COMPANION] YJ3Z: {'key': (95, 95), 'n': 1, 'comps': [{'junk': 1, 'nce': 1, 'y2': 1, 'w0': 18, 'line': 74, 'sumdefc': 1}], 'casc_state': 'SURV'}
+-- T3 YJ3Z m=3 Zp,p=2,d0=2 g0=1 A=[0] psi0=[(0, 1), (1, 0)]: live-clause rows=2 traced nonempty=2 (0.0s)
+-- T3 YJ3F3 m=3 Fpt,p=3,d0=2 g0=1 A=[0] psi0=[(1, 0), (1, 0)]: live-clause rows=2 traced nonempty=2 (0.0s)
+-- T3 YJT1F m=3 Fpt,p=2,d0=2 g0=1 A=[0] psi0=[(0, 1), (1, 0)]: live-clause rows=12 traced nonempty=12 (0.1s)
+==============================================================================
+CON-PIN   : 0 violations
+CON-WALL  : 0 violations
+CON-AGREE : 0 violations
+CON-ENG   : 0 violations
+CON-XWALK : 0 violations
+CON-CONS  : 0 violations
+CON-MASS  : 0 violations
+CON-WIN   : 0 violations
+CON-INV   : 0 violations
+CON-FACT  : 0 violations
+CON-CRIT  : 0 violations
+CON-EXCH  : 0 violations
+CON-DUP   : 0 violations
+CON-STAR  : 0 violations
+CON-DEF   : 0 violations
+CON-YJ0   : 0 violations
+HARNESS   : 0 violations
+------------------------------------------------------------------------------
+FINDINGS census: {'DUP-BOOK': 2, 'YJ-COMPANION': 8}
+counters: {'agree_cases': 20, 'defc0_corrections': 10, 'dup_book_fibers': 2, 'fact_cells': 823, 'glued_groups': 12, 'jhat_formula_mismatch': 66, 'live_rows': 246, 'pick_override_used': 1, 'wall_irr_valueerror': 1, 'wall_pick_deg2': 1, 'y2_edges': 23, 'yc_edges': 14}
+live rows traced: 246; double-kill rows: 0
+total violations: 0
+elapsed: 15.6s
+results -> survdisj_construct_results.json
