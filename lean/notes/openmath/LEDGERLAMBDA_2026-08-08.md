@@ -560,8 +560,28 @@ YJ2F; each control must fire ≥ 1 or the battery is RED):**
     MUT-R     the expected residue product shifted by +1 in K₀.
                                                               FIRES ≥ 1.
 
-**[VERDICT — PENDING at commit 1; to be appended at commit 2 from the
-committed artifacts.]**
+**[VERDICT — appended at commit 2 from the committed artifacts
+(`ledger_lambda_checks_output.txt` / `ledger_lambda_checks_results.json`;
+one runner repair between shakedown and seal is on record: the shakedown
+itself caught a double-counted u₀ in the face-D floor (base included u₀
+AND the seed term w₀(c_D), which coincide at g₀ = 1) — fixed BEFORE the
+seal commit; the sealed text is the fixed runner.]**
+
+**ALL GREEN — 0 violations across all 17 families; every sealed
+prediction met.** The battery: **876 rows traced** (phase W: **412 —
+the committed WMULTDCX battery selection reproduced EXACTLY**, 20/20
+towers; phase SD: 16/16 SURVDISJ-roster towers; phase YJ: 15/15
+SDYJ-roster towers), **2,338 two-exit Q¹ cells**, all five faces checked
+on every one (junk-free: 2,179 — the residue face verified on ALL
+2,179); (★) verified on 497 cascade-slot cells; POOL-UNROLL (fresh
+carry chain + E-L4 unroll + β̂ = λ̂ + Σ c_l q_l + ŵ + residue ≠ 0) on
+486 cascade rows; LAM-GAM/LAM-MICRO on all 72 tower constructions
+(incl. mutation re-traces). The agreement gate re-ran GREEN in-unit:
+**0 violations (pairs=60, irr=158, cert=1181, pick=30)** — the standing
+rule's report. Mutation controls, ALL FIRING on their target faces
+(the CTRL-TEL0 genre has teeth on every face): MUT-LAT 106 ·
+MUT-A 106 · MUT-B 113 · MUT-C 113 · MUT-D 98 · MUT-E 211 · MUT-R 98.
+Elapsed 25.0s; deterministic, exact arithmetic.
 
 ## S6. WHAT LED-Λ DOES NOT SUBSUME (the honest fences, from pass-9 S2)
 
@@ -603,7 +623,7 @@ committed artifacts.]**
 | L11 | Face E ⟹ W-D5's first display + L-MONO's edge signs, MATCH; W-D5's w_m-floor consumed NOT subsumed | PROVED (audit S3.E) | L5; WMULTDCX†, [RMG] |
 | L12 | POOL-UNROLL (i) unroll identity (ii) β̂ = cascade line; folds E-L4/E-L5-site, S-L1-site, SDYJ-v2-runner-site | PROVED ((ii) consumes W-D7(ii)†) | S4.1 |
 | L13 | Micro-moves M-1/M-2/M-3 displayed once with instance lists | PROVED (two-liners) | S4.2 |
-| L14 | Machine leg: 16 families + 7 mutation controls on BOTH committed rosters, agreement gate re-run | SEALED at commit 1; verdict at commit 2 | S5 |
+| L14 | Machine leg: 17 families + 7 mutation controls on BOTH committed rosters, agreement gate re-run | **ALL GREEN at commit 2** (876 rows / 2,338 cells / 0 violations; all controls fire) | S5 |
 | L15 | Non-subsumption fences (window calculus, residue algebra, integrality consumers, hypothesis steps) | DISPLAYED | S6 |
 | L16 | Consumption-only: no accepted/committed statement touched; retirement at next fold | FENCE | header |
 
@@ -618,4 +638,4 @@ LED-Λ; the subsumed displays get dated supersession brackets at the
 next fold (S7.U6), not here.
 
 — LEDGER-Λ COMPOSE, 2026-08-08 campaign (wallclock 2026-08-04); unit
-S7.U1 of synthesis pass 9. Machine verdict pending at commit 1.
+S7.U1 of synthesis pass 9. Machine verdict ALL GREEN (commit 2).

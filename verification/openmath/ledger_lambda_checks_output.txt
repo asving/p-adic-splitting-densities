@@ -1,0 +1,94 @@
+==============================================================================
+LEDGER-Lambda machine leg — full sealed battery
+==============================================================================
+[   0.9s] LAM-GATE: 0 violations (pairs=60, irr=158, cert=1181, pick=30)
+---- Phase W: the WMULTDCX battery selection ----
+-- [W] W3DEEP m=3 Zp,p=3,d0=1 g=[1, 1, 1]: traced=36 nonempty=16 (0.0s)
+-- [W] W3DEEP4 m=3 Zp,p=3,d0=1 g=[1, 1, 1]: traced=40 nonempty=40 (0.0s)
+-- [W] W3NEST m=3 Zp,p=3,d0=1 g=[1, 1, 1]: traced=16 nonempty=12 (0.0s)
+-- [W] W3NESTF m=3 Fpt,p=2,d0=1 g=[1, 1, 1]: traced=16 nonempty=12 (0.0s)
+-- [W] W3FMID m=3 Zp,p=3,d0=1 g=[1, 1, 1]: traced=4 nonempty=2 (0.0s)
+-- [W] W3FTOP m=3 Zp,p=3,d0=1 g=[1, 1, 1]: traced=4 nonempty=2 (0.0s)
+-- [W] W3FDBL m=3 Zp,p=3,d0=1 g=[1, 1, 1]: traced=2 nonempty=1 (0.0s)
+-- [W] W3FMIDF m=3 Fpt,p=2,d0=1 g=[1, 1, 1]: traced=4 nonempty=2 (0.0s)
+-- [W] W3TRK1 m=3 Zp,p=3,d0=1 g=[1, 1, 1]: traced=36 nonempty=30 (0.0s)
+-- [W] W3DIR m=3 Zp,p=3,d0=1 g=[1, 1, 1]: traced=36 nonempty=30 (0.0s)
+-- [W] W3G2A m=3 Zp,p=3,d0=1 g=[2, 1, 1]: traced=30 nonempty=28 (0.0s)
+-- [W] W3G2B m=3 Zp,p=3,d0=2 g=[2, 1, 1]: traced=33 nonempty=20 (0.1s)
+  CENSUS [W3G2P5]: principal d-cell ABSENT (theta_0 = 0 case)
+-- [W] W3G2P5 m=3 Zp,p=5,d0=2 g=[2, 1, 1]: traced=14 nonempty=4 (0.1s)
+-- [W] W3DEEPF m=3 Fpt,p=2,d0=1 g=[1, 1, 1]: traced=36 nonempty=16 (0.1s)
+-- [W] W4NEST m=4 Zp,p=3,d0=1 g=[1, 1, 1, 1]: traced=14 nonempty=14 (0.0s)
+-- [W] W4DEEP m=4 Zp,p=3,d0=1 g=[1, 1, 1, 1]: traced=14 nonempty=14 (0.1s)
+-- [W] W4FLAT m=4 Zp,p=3,d0=1 g=[1, 1, 1, 1]: traced=14 nonempty=9 (0.0s)
+-- [W] W4NESTF m=4 Fpt,p=2,d0=1 g=[1, 1, 1, 1]: traced=14 nonempty=14 (0.3s)
+-- [W] XM3A m=3 Zp,p=5,d0=1 g=[1, 1, 1]: traced=16 nonempty=4 (0.0s)
+-- [W] XM3B m=3 Zp,p=3,d0=2 g=[2, 1, 1]: traced=33 nonempty=16 (0.2s)
+---- Phase SD: the SURVDISJ rosters ----
+-- [SD] PXDEEPF3 m=3 Fpt,p=3,d0=1 g=[1, 1, 1]: traced=14 nonempty=14 (0.1s)
+-- [SD] PXT3F3 m=3 Fpt,p=3,d0=1 g=[1, 1, 1]: traced=53 nonempty=53 (0.3s)
+-- [SD] PXDEEPZ2 m=3 Zp,p=2,d0=1 g=[1, 1, 1]: traced=14 nonempty=14 (0.0s)
+-- [SD] PXT3Z2 m=3 Zp,p=2,d0=1 g=[1, 1, 1]: traced=53 nonempty=53 (0.0s)
+-- [SD] PXDEEP4F m=3 Fpt,p=2,d0=1 g=[1, 1, 1]: traced=36 nonempty=36 (0.2s)
+-- [SD] PXTRK1F m=3 Fpt,p=2,d0=1 g=[1, 1, 1]: traced=28 nonempty=28 (0.1s)
+-- [SD] PXFLTF m=3 Fpt,p=2,d0=1 g=[1, 1, 1]: traced=6 nonempty=6 (0.0s)
+-- [SD] PXW4DPF m=4 Fpt,p=2,d0=1 g=[1, 1, 1, 1]: traced=8 nonempty=8 (0.4s)
+-- [SD] SDG2BF m=3 Fpt,p=2,d0=1 g=[2, 1, 1]: traced=53 nonempty=39 (0.8s)
+-- [SD] SDG2BZ m=3 Zp,p=2,d0=1 g=[2, 1, 1]: traced=53 nonempty=39 (0.1s)
+-- [SD] SDG2AF m=3 Fpt,p=2,d0=2 g=[2, 1, 1]: traced=14 nonempty=14 (16.3s)
+-- [SD] SDG2AZ m=3 Zp,p=2,d0=2 g=[2, 1, 1]: traced=14 nonempty=14 (0.4s)
+  CENSUS [SDW3G2F]: principal d-cell ABSENT (theta_0 = 0 case)
+-- [SD] SDW3G2F m=3 Fpt,p=2,d0=1 g=[2, 1, 1]: traced=26 nonempty=26 (0.2s)
+-- [SD] SDDPG2F m=3 Fpt,p=2,d0=1 g=[2, 1, 1]: traced=14 nonempty=6 (0.1s)
+-- [SD] SDDPG2Z m=3 Zp,p=2,d0=1 g=[2, 1, 1]: traced=14 nonempty=6 (0.0s)
+  CENSUS [SDW4G2F]: principal d-cell ABSENT (theta_0 = 0 case)
+-- [SD] SDW4G2F m=4 Fpt,p=2,d0=1 g=[2, 1, 1, 1]: traced=8 nonempty=7 (2.1s)
+---- Phase YJ: the SDYJ rosters ----
+-- [YJ] YJ2F m=2 Fpt,p=2,d0=2 g=[1, 1]: traced=1 nonempty=1 (0.0s)
+-- [YJ] YJ3F m=3 Fpt,p=2,d0=2 g=[1, 1, 1]: traced=4 nonempty=4 (0.1s)
+-- [YJ] YJ3FLT m=3 Fpt,p=2,d0=2 g=[1, 1, 1]: traced=2 nonempty=2 (0.0s)
+-- [YJ] YJ3FLTB m=3 Fpt,p=2,d0=2 g=[1, 1, 1]: traced=2 nonempty=2 (0.0s)
+-- [YJ] YJ3DPF m=3 Fpt,p=2,d0=2 g=[1, 1, 1]: traced=12 nonempty=12 (0.3s)
+-- [YJ] YJ4FLT m=4 Fpt,p=2,d0=2 g=[1, 1, 1, 1]: traced=4 nonempty=4 (0.2s)
+-- [YJ] YJ3Z m=3 Zp,p=2,d0=2 g=[1, 1, 1]: traced=2 nonempty=2 (0.0s)
+-- [YJ] YJ3F3 m=3 Fpt,p=3,d0=2 g=[1, 1, 1]: traced=2 nonempty=2 (0.0s)
+-- [YJ] YJT1F m=3 Fpt,p=2,d0=2 g=[1, 1, 1]: traced=12 nonempty=12 (0.1s)
+-- [YJ] YJX1 m=3 Fpt,p=2,d0=2 g=[1, 1, 1]: traced=2 nonempty=2 (0.0s)
+-- [YJ] YJX2 m=3 Fpt,p=3,d0=2 g=[1, 1, 1]: traced=6 nonempty=6 (0.0s)
+-- [YJ] YJX3 m=3 Fpt,p=3,d0=2 g=[1, 1, 1]: traced=4 nonempty=4 (0.0s)
+-- [YJ] YJX4 m=4 Fpt,p=2,d0=2 g=[1, 1, 1, 1]: traced=1 nonempty=1 (0.0s)
+-- [YJ] YJX5 m=3 Fpt,p=2,d0=1 g=[1, 1, 1]: traced=2 nonempty=2 (0.0s)
+-- [YJ] YJX6 m=2 Fpt,p=2,d0=2 g=[1, 1]: traced=0 nonempty=0 (0.0s)
+---- mutation controls (the CTRL-TEL0 genre) ----
+  MUT-LAT: LAM-LAT fired 106 times (all faces touched: {'LAM-LAT': 106, 'LAM-A': 106, 'LAM-B': 69, 'LAM-E': 54})
+  MUT-A: LAM-A fired 106 times (all faces touched: {'LAM-A': 106})
+  MUT-B: LAM-B fired 113 times (all faces touched: {'LAM-B': 113})
+  MUT-C: LAM-C fired 113 times (all faces touched: {'LAM-C': 113})
+  MUT-D: LAM-D fired 98 times (all faces touched: {'LAM-D': 98})
+  MUT-E: LAM-E fired 211 times (all faces touched: {'LAM-E': 211})
+  MUT-R: LAM-R fired 98 times (all faces touched: {'LAM-R': 98})
+==============================================================================
+LAM-PIN   : 0 violations [GREEN]
+LAM-GATE  : 0 violations [GREEN]
+LAM-GAM   : 0 violations [GREEN]
+LAM-CONS  : 0 violations [GREEN]
+LAM-LAT   : 0 violations [GREEN]
+LAM-A     : 0 violations [GREEN]
+LAM-B     : 0 violations [GREEN]
+LAM-B1    : 0 violations [GREEN]
+LAM-BSTAR : 0 violations [GREEN]
+LAM-C     : 0 violations [GREEN]
+LAM-D     : 0 violations [GREEN]
+LAM-E     : 0 violations [GREEN]
+LAM-R     : 0 violations [GREEN]
+LAM-POOL  : 0 violations [GREEN]
+LAM-MICRO : 0 violations [GREEN]
+LAM-MUT   : 0 violations [GREEN]
+HARNESS   : 0 violations [GREEN]
+------------------------------------------------------------------------------
+rows traced: 876 (phase W: 412; committed battery selection: 412); Q1 cells: 2338 (junk-free 2179); residue-face cells: 2179; (*) cells: 497; cascade rows: 486
+counters: {'casc_rows': 486, 'cells': 2338, 'cells_junkfree': 2179, 'gam_towers': 72, 'micro_towers': 72, 'mut_A_fires': 106, 'mut_B_fires': 113, 'mut_C_fires': 113, 'mut_D_fires': 98, 'mut_E_fires': 211, 'mut_LAT_fires': 106, 'mut_R_fires': 98, 'res_cells': 2179, 'star_cells': 497}
+total violations: 0
+elapsed: 25.0s
+VERDICT: ALL GREEN
+results -> ledger_lambda_checks_results.json
