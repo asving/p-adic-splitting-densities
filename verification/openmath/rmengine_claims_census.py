@@ -54,6 +54,17 @@ if s8 and s9:
 s11 = find(lambda l: l.startswith("## S11"))
 if s11:
     zones.append((s11[0], len(lines)))
+# r3 mechanical fix: the docstring's excluded-surface list has always included
+# "the ledger-quote blocks" (the three byte-frozen †-paste paragraphs of the head
+# declaration — tagging inside them would break paste fidelity), but the zone
+# logic below never implemented that clause. Implemented here: a paragraph
+# starting "**[IL...† = the ledger block" is excluded through its next blank line.
+for i, l in enumerate(lines):
+    if l.startswith("**[IL") and "the ledger block" in l:
+        j = i
+        while j < len(lines) and lines[j].strip():
+            j += 1
+        zones.append((i, j))
 for i, l in enumerate(lines):
     if l.startswith("**[REPAIR ROUND"):
         j = i

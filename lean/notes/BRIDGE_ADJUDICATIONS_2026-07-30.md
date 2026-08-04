@@ -9043,3 +9043,65 @@ touch the RM-GEN note).
 Unit files this entry: the note (r2), `RMENGINE_passPE2_report.md`,
 `rmengine_pe2_ext.py` + its output, the diag results JSON (volatile
 field), this append. Scoped commit.
+
+---
+
+## RMENGINE ROUND 3 ADJUDICATED + r3 RECORD-LAYER REPAIR APPLIED (the tag-grammar census) — 2026-08-08 campaign (wallclock 2026-08-04)
+
+**Verdicts on the r2 text (423b399), both model-diverse hostile passes —
+the first acceptance attempt:**
+
+- **PC3 (Codex, report `RMENGINE_passPC3_report.md`):** GAPS-ONLY,
+  **0 critical / 3 gaps** — the stale headline gloss (g1), the census
+  exhaustiveness residue (g2), the under-enumerated statement-diff
+  sentence (g3). Its notes CONFIRM the corrected L-NORM citation exactly
+  against [IL3] S4.1 and rows C23–C27 against their body claims.
+- **PE3 (Fable, report `RMENGINE_passPE3_report.md`):** GAPS-ONLY,
+  **0 critical / 3 gaps + 2 notes**. The full spine re-derived
+  independently with ZERO mathematical findings (both L-MU branches from
+  scratch, the necessity iff, both telescope families, L-VNZ, all four
+  RM-GEN clauses, COR-A's union algebra, all md5 pins); the committed
+  referee re-ran byte-exact, all 12 verdict lines GREEN. Gaps: dead grep
+  keys landed-and-broken at r2 (G-1), the PC2 git-diff over-attribution
+  (G-2), the census absentee L-LEX "consumed by nothing" refuting the r2
+  "complete absentee list" claim (G-3, convergent with PC3-g2).
+
+**The arc so far:** r0 composed bf18bfe → round 1 (PC 1C/4G + PE
+1C/2G/3n, substantive math) repaired at 8835d20 → round 2 (PC2 0C/2G +
+PE2 0C/1G+2n) adjudicated 423b399 → round 3 (PC3 0C/3G + PE3 0C/3G+2n).
+**Four consecutive hostile passes with zero critical findings; the math
+surface has been stable since 8835d20 and survived two full independent
+re-derivations plus fresh machine batteries. The defect stream has
+narrowed monotonically to record precision** — every round-3 finding is
+documentation-layer with zero chain impact.
+
+**Adjudication + r3 repair applied by the REPAIR unit** (record-layer
+only, within adjudication authority; no mathematical display changed —
+verified against the diff: S2–S7 changes are trailing census tags plus
+the two queue-named wordings). The structural move: the recurring
+claims-table charter defect (PC-G3 → PC2-g2/PE2-1 → PC3-g2/PE3-G-3 —
+three hand censuses, each claiming completeness, each refuted by the
+next fresh pass) is **KILLED SYNTACTICALLY by the TAG GRAMMAR**, per the
+ITERLAWN machine-census precedent (the r4–r6 lesson there: hand
+enumeration of charter keywords does not converge; only a machine
+arbiter closes it). Every charter-keyword line of the note's body now
+carries an explicit row tag ⟦C<nn>⟧ (55 lines) or the individually
+challengeable non-claim marker ⟦nc⟧ (12 lines); rows C29–C33 added
+(C29 = the L-LEX witness, verified TRUE by PE3; the S3.1 λ-integrality
+claim; the automatic on-grid qualifiers; the S7.1 conditionality census;
+the fence re-scope); rows C7/C10/C26/C28 re-keyed to the committed text;
+C28 re-enumerated to all six r1 statement changes with an accurate
+per-pass evidentiary basis. Arbiter:
+`verification/openmath/rmengine_claims_census.py`, output committed —
+final line: **"CENSUS CLOSED — zero violations."** Any ⟦nc⟧ is a local,
+individually challengeable judgment: round-4 verifiers get a finite
+checkable surface instead of an unclosable global census.
+
+**Grades after round 3:** unchanged — RM-GEN PROVED on the amended
+T-scope at attempt grade; LAW-DCX-(m+1) conjecture at m ≥ 2; acceptance
+counter 0/2 (GAPS-ONLY ≠ CLEAN). **Round 4 = PC4 + PE4 on the r3 text —
+the next acceptance attempt (bar: both CLEAN; notes do not block).**
+
+Unit files this entry: the note (r3), `RMENGINE_passPC3_report.md`,
+`RMENGINE_passPE3_report.md`, `rmengine_claims_census.py` + its
+committed closure output, this append. Scoped commit.
