@@ -9293,3 +9293,32 @@ re-proved via the (H3) any-d-cell argument (the F3 consumption
 removed); the (STK) denominator and LED terminal-only coverage
 disclosed. **WMULTDCX round 2 (PE-W2) queued** — after the RM-GEN
 round-6 dispatch, throttle permitting.
+
+---
+
+## RMENGINE ROUND 6: PE6 CLEAN (the Fable leg met) + PC6 0C/1G -> r6 rule unification; WMULTDCX ROUND 2: PE2 0C/2G -> W-r2 pins/withdrawal — 2026-08-08 campaign (wallclock 2026-08-04)
+
+**RM-GEN round 6 on cfb3648:** PE6 (Fable) **CLEAN 0C/0G** — the ninth
+consecutive 0-critical pass; census/referee/diag byte-identical, the r5
+fence verified, historical zone figures machine-verified, dagger pastes
+content-token identical, spine re-derived from scratch. PC6 (Codex,
+archived 0182e1b) GAPS-ONLY 0C/1G: the r5 records asserted two
+machine-quote rules while satisfying one. **r6 (orchestrator,
+record-layer):** the rule unified to the file-arbiter form at both
+sites (the re-quotation clause superseded in place); PE6-N-1's inline
+as-of added; round-6 records. Census re-ran CLOSED. Both legs have now
+returned CLEAN on the stable text (PC4 @ ab2e471; PE6 @ cfb3648) but
+never same-round — **round 7 (PC7 + PE7) = the acceptance attempt on
+the r6 text.**
+
+**WMULTDCX round 2 on 03635d0:** PE2 (Fable) GAPS-ONLY 0C/2G+2n — all
+W-r1 remedies discharged; **the (EMPTY-(m+1)) reduction independently
+re-derived VALID**; fresh instances hand-verified. Gaps: two attainment
+sites that escaped the W-r1 pin; the S6 fence's ∀-over-arguments claim
+(withdrawn genre). **W-r2 (orchestrator, doc-layer):** pins added at
+both sites; the ∀-claim WITHDRAWN, replaced by the honest scope
+statement + the battery's path-existence ⟺ e₀-clause datum recorded as
+evidence for the counting/emptiness route; the (SURV) box's
+cancellation gloss fixed (absence-or-cancellation, 126/126 absence).
+Round 3 = PE-W3 (Fable) on the W-r2 text; the Codex leg deferred to the
+post-reset budget (window resets Aug 08 04:22).

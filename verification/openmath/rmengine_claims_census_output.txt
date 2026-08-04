@@ -1,3 +1,3 @@
-MACHINE CENSUS (tag grammar): 67 keyword lines in body (55 row-tagged, 12 nc-tagged); 33 table rows (2 table-only); excluded zones: 15
+MACHINE CENSUS (tag grammar): 67 keyword lines in body (55 row-tagged, 12 nc-tagged); 33 table rows (2 table-only); excluded zones: 17
 
 CENSUS CLOSED — zero violations.
