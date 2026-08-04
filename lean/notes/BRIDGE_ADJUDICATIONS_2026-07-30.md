@@ -9793,3 +9793,24 @@ completeness and K2-THM-A's case analysis are the hard steps; the
 counterexample-candidate corner gets a dedicated probe charge). The
 (SD-YJ) corner and the g₀ ≥ 3 instrument are the remaining Q2
 compositions; five Codex legs (+ eventually K2's) post-reset.**
+
+---
+
+## DIRECTIVE (Asvin, 2026-08-04, verbatim): "Work on the most central pieces of math first, formalize once the scope for wholescale revision of the proejct has gone down"
+
+**Adjudicated re-ranking of the standing queue:** centrality = expected
+revision-scope-reduction. (1) **Q4, THE GRT SEMANTIC WELD (GRT-2 /
+grTie)** is promoted to the next major composition — it alone decides
+whether the model-class corpus ([IL]†/[IL3]†/[ILN]†/[RMG]†, the
+carry-law chain W/E/S/SD/K2) transfers to the actual Okutsu–Montes
+classifier objects; any weld-forced restatement would ripple through
+everything, so it must land BEFORE the Lean campaign restarts. (2) The
+[ILN]† non-(RM) residuals ((ITER-LAW-LIFT) at g₀ = 1 ∧ δ₁ = 1; the
+gr(w₂) wrapper; the (P-DS) rung-≥3 discharge) rank second — they are
+the accepted law's own remaining conditionality. (3) The coverage
+corners ((K2-RES), (SD-YJ), g₀ ≥ 3, Q3) rank third — open but
+peripheral by the revision metric. (4) Lean formalization: DEFERRED
+until the weld lands and the arcs accept; then the fleet transcribes a
+stable corpus. The five-plus Codex legs stay on the post-reset budget
+(verification, unaffected by this ranking). Memory:
+math-first-formalize-when-stable.md.
