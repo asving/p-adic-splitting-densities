@@ -1,0 +1,8719 @@
+{
+ "final": true,
+ "towers": {
+  "GGB2AF": {
+   "skipped": false,
+   "q": 4,
+   "A": [
+    0,
+    1
+   ],
+   "psibar": {
+    "0": "((((1, 0), (0, 0)),),)",
+    "1": "((((1, 1), (0, 0)),),)"
+   },
+   "xres": {
+    "0": "((((1, 0), (0, 0)),),)"
+   },
+   "I1": null,
+   "I3": false,
+   "corner": "cx0",
+   "live": 39,
+   "glued_rows": 14,
+   "glued_groups": 18,
+   "rows": [
+    {
+     "key": [
+      1479,
+      1485
+     ],
+     "cphi": "cx0",
+     "covered": [
+      "c00",
+      "c01",
+      "c10",
+      "c11"
+     ],
+     "thmb_applicable": true,
+     "prot_in_vivo": true,
+     "glued": [
+      [
+       5,
+       0,
+       0
+      ]
+     ]
+    },
+    {
+     "key": [
+      1479,
+      1497
+     ],
+     "cphi": "cx0",
+     "covered": [
+      "c01",
+      "c11"
+     ],
+     "thmb_applicable": false,
+     "prot_in_vivo": true,
+     "glued": [
+      [
+       0,
+       0,
+       0
+      ],
+      [
+       3,
+       0,
+       0
+      ]
+     ]
+    },
+    {
+     "key": [
+      1485,
+      1491
+     ],
+     "cphi": "cx0",
+     "covered": [
+      "c00",
+      "c01",
+      "c10",
+      "c11"
+     ],
+     "thmb_applicable": true,
+     "prot_in_vivo": true,
+     "glued": [
+      [
+       3,
+       0,
+       0
+      ]
+     ]
+    },
+    {
+     "key": [
+      1485,
+      1503
+     ],
+     "cphi": "cx0",
+     "covered": [
+      "c00",
+      "c01",
+      "c10",
+      "c11"
+     ],
+     "thmb_applicable": true,
+     "prot_in_vivo": true,
+     "glued": [
+      [
+       4,
+       0,
+       0
+      ]
+     ]
+    },
+    {
+     "key": [
+      1491,
+      1491
+     ],
+     "cphi": "cx0",
+     "covered": [
+      "c00",
+      "c01",
+      "c10",
+      "c11"
+     ],
+     "thmb_applicable": true,
+     "prot_in_vivo": true,
+     "glued": [
+      [
+       3,
+       1,
+       0
+      ]
+     ]
+    },
+    {
+     "key": [
+      1491,
+      1497
+     ],
+     "cphi": "cx0",
+     "covered": [
+      "c00",
+      "c01",
+      "c10",
+      "c11"
+     ],
+     "thmb_applicable": true,
+     "prot_in_vivo": true,
+     "glued": [
+      [
+       4,
+       0,
+       0
+      ]
+     ]
+    },
+    {
+     "key": [
+      1491,
+      1509
+     ],
+     "cphi": "cx0",
+     "covered": [
+      "c00",
+      "c01",
+      "c10",
+      "c11"
+     ],
+     "thmb_applicable": true,
+     "prot_in_vivo": true,
+     "glued": [
+      [
+       5,
+       0,
+       0
+      ]
+     ]
+    },
+    {
+     "key": [
+      1497,
+      1503
+     ],
+     "cphi": "cx0",
+     "covered": [
+      "c00",
+      "c01",
+      "c10",
+      "c11"
+     ],
+     "thmb_applicable": true,
+     "prot_in_vivo": true,
+     "glued": [
+      [
+       5,
+       0,
+       0
+      ]
+     ]
+    },
+    {
+     "key": [
+      1479,
+      1479
+     ],
+     "cphi": "cx0",
+     "covered": [
+      "c01",
+      "c11"
+     ],
+     "thmb_applicable": false,
+     "prot_in_vivo": true,
+     "glued": [
+      [
+       1,
+       1,
+       0
+      ],
+      [
+       4,
+       1,
+       0
+      ]
+     ]
+    },
+    {
+     "key": [
+      1479,
+      1491
+     ],
+     "cphi": "cx0",
+     "covered": [
+      "c00",
+      "c01",
+      "c10",
+      "c11"
+     ],
+     "thmb_applicable": true,
+     "prot_in_vivo": true,
+     "glued": [
+      [
+       5,
+       1,
+       0
+      ]
+     ]
+    },
+    {
+     "key": [
+      1479,
+      1503
+     ],
+     "cphi": "cx0",
+     "covered": [
+      "c01",
+      "c11"
+     ],
+     "thmb_applicable": false,
+     "prot_in_vivo": true,
+     "glued": [
+      [
+       0,
+       1,
+       0
+      ],
+      [
+       3,
+       1,
+       0
+      ]
+     ]
+    },
+    {
+     "key": [
+      1479,
+      1509
+     ],
+     "cphi": "cx0",
+     "covered": [
+      "c01",
+      "c11"
+     ],
+     "thmb_applicable": false,
+     "prot_in_vivo": true,
+     "glued": [
+      [
+       1,
+       0,
+       0
+      ],
+      [
+       4,
+       0,
+       0
+      ]
+     ]
+    },
+    {
+     "key": [
+      1491,
+      1503
+     ],
+     "cphi": "cx0",
+     "covered": [
+      "c00",
+      "c01",
+      "c10",
+      "c11"
+     ],
+     "thmb_applicable": true,
+     "prot_in_vivo": true,
+     "glued": [
+      [
+       4,
+       1,
+       0
+      ]
+     ]
+    },
+    {
+     "key": [
+      1503,
+      1503
+     ],
+     "cphi": "cx0",
+     "covered": [
+      "c00",
+      "c01",
+      "c10",
+      "c11"
+     ],
+     "thmb_applicable": true,
+     "prot_in_vivo": true,
+     "glued": [
+      [
+       5,
+       1,
+       0
+      ]
+     ]
+    }
+   ]
+  },
+  "GGB2AZ": {
+   "skipped": false,
+   "q": 4,
+   "A": [
+    0,
+    1
+   ],
+   "psibar": {
+    "0": "((((1, 0), (0, 0)),),)",
+    "1": "((((1, 1), (0, 0)),),)"
+   },
+   "xres": {
+    "0": "((((1, 0), (0, 0)),),)"
+   },
+   "I1": null,
+   "I3": false,
+   "corner": "cx0",
+   "live": 39,
+   "glued_rows": 14,
+   "glued_groups": 18,
+   "rows": [
+    {
+     "key": [
+      1479,
+      1485
+     ],
+     "cphi": "cx0",
+     "covered": [
+      "c00",
+      "c01",
+      "c10",
+      "c11"
+     ],
+     "thmb_applicable": true,
+     "prot_in_vivo": true,
+     "glued": [
+      [
+       5,
+       0,
+       0
+      ]
+     ]
+    },
+    {
+     "key": [
+      1479,
+      1497
+     ],
+     "cphi": "cx0",
+     "covered": [
+      "c01",
+      "c11"
+     ],
+     "thmb_applicable": false,
+     "prot_in_vivo": true,
+     "glued": [
+      [
+       0,
+       0,
+       0
+      ],
+      [
+       3,
+       0,
+       0
+      ]
+     ]
+    },
+    {
+     "key": [
+      1485,
+      1491
+     ],
+     "cphi": "cx0",
+     "covered": [
+      "c00",
+      "c01",
+      "c10",
+      "c11"
+     ],
+     "thmb_applicable": true,
+     "prot_in_vivo": true,
+     "glued": [
+      [
+       3,
+       0,
+       0
+      ]
+     ]
+    },
+    {
+     "key": [
+      1485,
+      1503
+     ],
+     "cphi": "cx0",
+     "covered": [
+      "c00",
+      "c01",
+      "c10",
+      "c11"
+     ],
+     "thmb_applicable": true,
+     "prot_in_vivo": true,
+     "glued": [
+      [
+       4,
+       0,
+       0
+      ]
+     ]
+    },
+    {
+     "key": [
+      1491,
+      1491
+     ],
+     "cphi": "cx0",
+     "covered": [
+      "c00",
+      "c01",
+      "c10",
+      "c11"
+     ],
+     "thmb_applicable": true,
+     "prot_in_vivo": true,
+     "glued": [
+      [
+       3,
+       1,
+       0
+      ]
+     ]
+    },
+    {
+     "key": [
+      1491,
+      1497
+     ],
+     "cphi": "cx0",
+     "covered": [
+      "c00",
+      "c01",
+      "c10",
+      "c11"
+     ],
+     "thmb_applicable": true,
+     "prot_in_vivo": true,
+     "glued": [
+      [
+       4,
+       0,
+       0
+      ]
+     ]
+    },
+    {
+     "key": [
+      1491,
+      1509
+     ],
+     "cphi": "cx0",
+     "covered": [
+      "c00",
+      "c01",
+      "c10",
+      "c11"
+     ],
+     "thmb_applicable": true,
+     "prot_in_vivo": true,
+     "glued": [
+      [
+       5,
+       0,
+       0
+      ]
+     ]
+    },
+    {
+     "key": [
+      1497,
+      1503
+     ],
+     "cphi": "cx0",
+     "covered": [
+      "c00",
+      "c01",
+      "c10",
+      "c11"
+     ],
+     "thmb_applicable": true,
+     "prot_in_vivo": true,
+     "glued": [
+      [
+       5,
+       0,
+       0
+      ]
+     ]
+    },
+    {
+     "key": [
+      1479,
+      1479
+     ],
+     "cphi": "cx0",
+     "covered": [
+      "c01",
+      "c11"
+     ],
+     "thmb_applicable": false,
+     "prot_in_vivo": true,
+     "glued": [
+      [
+       1,
+       1,
+       0
+      ],
+      [
+       4,
+       1,
+       0
+      ]
+     ]
+    },
+    {
+     "key": [
+      1479,
+      1491
+     ],
+     "cphi": "cx0",
+     "covered": [
+      "c00",
+      "c01",
+      "c10",
+      "c11"
+     ],
+     "thmb_applicable": true,
+     "prot_in_vivo": true,
+     "glued": [
+      [
+       5,
+       1,
+       0
+      ]
+     ]
+    },
+    {
+     "key": [
+      1479,
+      1503
+     ],
+     "cphi": "cx0",
+     "covered": [
+      "c01",
+      "c11"
+     ],
+     "thmb_applicable": false,
+     "prot_in_vivo": true,
+     "glued": [
+      [
+       0,
+       1,
+       0
+      ],
+      [
+       3,
+       1,
+       0
+      ]
+     ]
+    },
+    {
+     "key": [
+      1479,
+      1509
+     ],
+     "cphi": "cx0",
+     "covered": [
+      "c01",
+      "c11"
+     ],
+     "thmb_applicable": false,
+     "prot_in_vivo": true,
+     "glued": [
+      [
+       1,
+       0,
+       0
+      ],
+      [
+       4,
+       0,
+       0
+      ]
+     ]
+    },
+    {
+     "key": [
+      1491,
+      1503
+     ],
+     "cphi": "cx0",
+     "covered": [
+      "c00",
+      "c01",
+      "c10",
+      "c11"
+     ],
+     "thmb_applicable": true,
+     "prot_in_vivo": true,
+     "glued": [
+      [
+       4,
+       1,
+       0
+      ]
+     ]
+    },
+    {
+     "key": [
+      1503,
+      1503
+     ],
+     "cphi": "cx0",
+     "covered": [
+      "c00",
+      "c01",
+      "c10",
+      "c11"
+     ],
+     "thmb_applicable": true,
+     "prot_in_vivo": true,
+     "glued": [
+      [
+       5,
+       1,
+       0
+      ]
+     ]
+    }
+   ]
+  },
+  "GGW4AF": {
+   "skipped": false,
+   "q": 4,
+   "A": [
+    0,
+    1
+   ],
+   "psibar": {
+    "0": "(((((1, 0), (0, 0)),),),)",
+    "1": "(((((1, 1), (0, 0)),),),)"
+   },
+   "xres": {
+    "1": "(((((1, 1), (0, 0)),),),)"
+   },
+   "I1": null,
+   "I3": false,
+   "corner": "cx0",
+   "live": 7,
+   "glued_rows": 1,
+   "glued_groups": 2,
+   "rows": [
+    {
+     "key": [
+      2635,
+      2635
+     ],
+     "cphi": "cx0",
+     "covered": [
+      "c01",
+      "c11"
+     ],
+     "thmb_applicable": false,
+     "prot_in_vivo": true,
+     "glued": [
+      [
+       1,
+       0,
+       0,
+       0
+      ],
+      [
+       4,
+       0,
+       0,
+       0
+      ]
+     ]
+    }
+   ]
+  },
+  "GGB3AF": {
+   "skipped": false,
+   "q": 8,
+   "A": [
+    0,
+    1
+   ],
+   "psibar": {
+    "0": "((((1, 0, 0), (0, 0, 0)),),)",
+    "1": "((((1, 1, 0), (0, 0, 0)),),)"
+   },
+   "xres": {
+    "0": "((((0, 1, 1), (0, 0, 0)),),)",
+    "1": "((((1, 0, 0), (0, 0, 0)),),)"
+   },
+   "I1": false,
+   "I3": false,
+   "corner": "c00",
+   "live": 53,
+   "glued_rows": 14,
+   "glued_groups": 28,
+   "rows": [
+    {
+     "key": [
+      1479,
+      1485
+     ],
+     "cphi": "c00",
+     "covered": [
+      "c10",
+      "c11"
+     ],
+     "thmb_applicable": false,
+     "prot_in_vivo": false,
+     "glued": [
+      [
+       2,
+       0,
+       0
+      ],
+      [
+       5,
+       0,
+       0
+      ]
+     ]
+    },
+    {
+     "key": [
+      1479,
+      1497
+     ],
+     "cphi": "c00",
+     "covered": [
+      "c10",
+      "c11"
+     ],
+     "thmb_applicable": false,
+     "prot_in_vivo": false,
+     "glued": [
+      [
+       0,
+       0,
+       0
+      ],
+      [
+       3,
+       0,
+       0
+      ]
+     ]
+    },
+    {
+     "key": [
+      1485,
+      1491
+     ],
+     "cphi": "c00",
+     "covered": [
+      "c10",
+      "c11"
+     ],
+     "thmb_applicable": false,
+     "prot_in_vivo": false,
+     "glued": [
+      [
+       0,
+       0,
+       0
+      ],
+      [
+       3,
+       0,
+       0
+      ]
+     ]
+    },
+    {
+     "key": [
+      1485,
+      1503
+     ],
+     "cphi": "c00",
+     "covered": [
+      "c10",
+      "c11"
+     ],
+     "thmb_applicable": false,
+     "prot_in_vivo": false,
+     "glued": [
+      [
+       1,
+       0,
+       0
+      ],
+      [
+       4,
+       0,
+       0
+      ]
+     ]
+    },
+    {
+     "key": [
+      1491,
+      1491
+     ],
+     "cphi": "c00",
+     "covered": [
+      "c10",
+      "c11"
+     ],
+     "thmb_applicable": false,
+     "prot_in_vivo": false,
+     "glued": [
+      [
+       0,
+       1,
+       0
+      ],
+      [
+       3,
+       1,
+       0
+      ]
+     ]
+    },
+    {
+     "key": [
+      1491,
+      1497
+     ],
+     "cphi": "c00",
+     "covered": [
+      "c10",
+      "c11"
+     ],
+     "thmb_applicable": false,
+     "prot_in_vivo": false,
+     "glued": [
+      [
+       1,
+       0,
+       0
+      ],
+      [
+       4,
+       0,
+       0
+      ]
+     ]
+    },
+    {
+     "key": [
+      1491,
+      1509
+     ],
+     "cphi": "c00",
+     "covered": [
+      "c10",
+      "c11"
+     ],
+     "thmb_applicable": false,
+     "prot_in_vivo": false,
+     "glued": [
+      [
+       2,
+       0,
+       0
+      ],
+      [
+       5,
+       0,
+       0
+      ]
+     ]
+    },
+    {
+     "key": [
+      1497,
+      1503
+     ],
+     "cphi": "c00",
+     "covered": [
+      "c10",
+      "c11"
+     ],
+     "thmb_applicable": false,
+     "prot_in_vivo": false,
+     "glued": [
+      [
+       2,
+       0,
+       0
+      ],
+      [
+       5,
+       0,
+       0
+      ]
+     ]
+    },
+    {
+     "key": [
+      1479,
+      1479
+     ],
+     "cphi": "c00",
+     "covered": [
+      "c10",
+      "c11"
+     ],
+     "thmb_applicable": false,
+     "prot_in_vivo": false,
+     "glued": [
+      [
+       1,
+       1,
+       0
+      ],
+      [
+       4,
+       1,
+       0
+      ]
+     ]
+    },
+    {
+     "key": [
+      1479,
+      1491
+     ],
+     "cphi": "c00",
+     "covered": [
+      "c10",
+      "c11"
+     ],
+     "thmb_applicable": false,
+     "prot_in_vivo": false,
+     "glued": [
+      [
+       2,
+       1,
+       0
+      ],
+      [
+       5,
+       1,
+       0
+      ]
+     ]
+    },
+    {
+     "key": [
+      1479,
+      1503
+     ],
+     "cphi": "c00",
+     "covered": [
+      "c10",
+      "c11"
+     ],
+     "thmb_applicable": false,
+     "prot_in_vivo": false,
+     "glued": [
+      [
+       0,
+       1,
+       0
+      ],
+      [
+       3,
+       1,
+       0
+      ]
+     ]
+    },
+    {
+     "key": [
+      1479,
+      1509
+     ],
+     "cphi": "c00",
+     "covered": [
+      "c10",
+      "c11"
+     ],
+     "thmb_applicable": false,
+     "prot_in_vivo": false,
+     "glued": [
+      [
+       1,
+       0,
+       0
+      ],
+      [
+       4,
+       0,
+       0
+      ]
+     ]
+    },
+    {
+     "key": [
+      1491,
+      1503
+     ],
+     "cphi": "c00",
+     "covered": [
+      "c10",
+      "c11"
+     ],
+     "thmb_applicable": false,
+     "prot_in_vivo": false,
+     "glued": [
+      [
+       1,
+       1,
+       0
+      ],
+      [
+       4,
+       1,
+       0
+      ]
+     ]
+    },
+    {
+     "key": [
+      1503,
+      1503
+     ],
+     "cphi": "c00",
+     "covered": [
+      "c10",
+      "c11"
+     ],
+     "thmb_applicable": false,
+     "prot_in_vivo": false,
+     "glued": [
+      [
+       2,
+       1,
+       0
+      ],
+      [
+       5,
+       1,
+       0
+      ]
+     ]
+    }
+   ]
+  },
+  "GGW3AF": {
+   "skipped": false,
+   "q": 4,
+   "A": [
+    0,
+    1
+   ],
+   "psibar": {
+    "0": "((((1, 0), (0, 0)),),)",
+    "1": "((((1, 1), (0, 0)),),)"
+   },
+   "xres": {
+    "1": "((((1, 1), (0, 0)),),)"
+   },
+   "I1": null,
+   "I3": false,
+   "corner": "cx0",
+   "live": 26,
+   "glued_rows": 0,
+   "glued_groups": 0,
+   "rows": []
+  },
+  "GGP3BF": {
+   "skipped": false,
+   "q": 9,
+   "A": [
+    0,
+    1
+   ],
+   "psibar": {
+    "0": "((((1, 0), (0, 0)),),)",
+    "1": "((((2, 1), (0, 0)),),)"
+   },
+   "xres": {
+    "0": "((((2, 0), (0, 0)),),)"
+   },
+   "I1": null,
+   "I3": false,
+   "corner": "cx0",
+   "live": 39,
+   "glued_rows": 14,
+   "glued_groups": 18,
+   "rows": [
+    {
+     "key": [
+      1479,
+      1485
+     ],
+     "cphi": "cx0",
+     "covered": [
+      "c00",
+      "c01",
+      "c10",
+      "c11"
+     ],
+     "thmb_applicable": true,
+     "prot_in_vivo": true,
+     "glued": [
+      [
+       5,
+       0,
+       0
+      ]
+     ]
+    },
+    {
+     "key": [
+      1479,
+      1497
+     ],
+     "cphi": "cx0",
+     "covered": [
+      "c01",
+      "c11"
+     ],
+     "thmb_applicable": false,
+     "prot_in_vivo": true,
+     "glued": [
+      [
+       0,
+       0,
+       0
+      ],
+      [
+       3,
+       0,
+       0
+      ]
+     ]
+    },
+    {
+     "key": [
+      1485,
+      1491
+     ],
+     "cphi": "cx0",
+     "covered": [
+      "c00",
+      "c01",
+      "c10",
+      "c11"
+     ],
+     "thmb_applicable": true,
+     "prot_in_vivo": true,
+     "glued": [
+      [
+       3,
+       0,
+       0
+      ]
+     ]
+    },
+    {
+     "key": [
+      1485,
+      1503
+     ],
+     "cphi": "cx0",
+     "covered": [
+      "c00",
+      "c01",
+      "c10",
+      "c11"
+     ],
+     "thmb_applicable": true,
+     "prot_in_vivo": true,
+     "glued": [
+      [
+       4,
+       0,
+       0
+      ]
+     ]
+    },
+    {
+     "key": [
+      1491,
+      1491
+     ],
+     "cphi": "cx0",
+     "covered": [
+      "c00",
+      "c01",
+      "c10",
+      "c11"
+     ],
+     "thmb_applicable": true,
+     "prot_in_vivo": true,
+     "glued": [
+      [
+       3,
+       1,
+       0
+      ]
+     ]
+    },
+    {
+     "key": [
+      1491,
+      1497
+     ],
+     "cphi": "cx0",
+     "covered": [
+      "c00",
+      "c01",
+      "c10",
+      "c11"
+     ],
+     "thmb_applicable": true,
+     "prot_in_vivo": true,
+     "glued": [
+      [
+       4,
+       0,
+       0
+      ]
+     ]
+    },
+    {
+     "key": [
+      1491,
+      1509
+     ],
+     "cphi": "cx0",
+     "covered": [
+      "c00",
+      "c01",
+      "c10",
+      "c11"
+     ],
+     "thmb_applicable": true,
+     "prot_in_vivo": true,
+     "glued": [
+      [
+       5,
+       0,
+       0
+      ]
+     ]
+    },
+    {
+     "key": [
+      1497,
+      1503
+     ],
+     "cphi": "cx0",
+     "covered": [
+      "c00",
+      "c01",
+      "c10",
+      "c11"
+     ],
+     "thmb_applicable": true,
+     "prot_in_vivo": true,
+     "glued": [
+      [
+       5,
+       0,
+       0
+      ]
+     ]
+    },
+    {
+     "key": [
+      1479,
+      1479
+     ],
+     "cphi": "cx0",
+     "covered": [
+      "c01",
+      "c11"
+     ],
+     "thmb_applicable": false,
+     "prot_in_vivo": true,
+     "glued": [
+      [
+       1,
+       1,
+       0
+      ],
+      [
+       4,
+       1,
+       0
+      ]
+     ]
+    },
+    {
+     "key": [
+      1479,
+      1491
+     ],
+     "cphi": "cx0",
+     "covered": [
+      "c00",
+      "c01",
+      "c10",
+      "c11"
+     ],
+     "thmb_applicable": true,
+     "prot_in_vivo": true,
+     "glued": [
+      [
+       5,
+       1,
+       0
+      ]
+     ]
+    },
+    {
+     "key": [
+      1479,
+      1503
+     ],
+     "cphi": "cx0",
+     "covered": [
+      "c01",
+      "c11"
+     ],
+     "thmb_applicable": false,
+     "prot_in_vivo": true,
+     "glued": [
+      [
+       0,
+       1,
+       0
+      ],
+      [
+       3,
+       1,
+       0
+      ]
+     ]
+    },
+    {
+     "key": [
+      1479,
+      1509
+     ],
+     "cphi": "cx0",
+     "covered": [
+      "c01",
+      "c11"
+     ],
+     "thmb_applicable": false,
+     "prot_in_vivo": true,
+     "glued": [
+      [
+       1,
+       0,
+       0
+      ],
+      [
+       4,
+       0,
+       0
+      ]
+     ]
+    },
+    {
+     "key": [
+      1491,
+      1503
+     ],
+     "cphi": "cx0",
+     "covered": [
+      "c00",
+      "c01",
+      "c10",
+      "c11"
+     ],
+     "thmb_applicable": true,
+     "prot_in_vivo": true,
+     "glued": [
+      [
+       4,
+       1,
+       0
+      ]
+     ]
+    },
+    {
+     "key": [
+      1503,
+      1503
+     ],
+     "cphi": "cx0",
+     "covered": [
+      "c00",
+      "c01",
+      "c10",
+      "c11"
+     ],
+     "thmb_applicable": true,
+     "prot_in_vivo": true,
+     "glued": [
+      [
+       5,
+       1,
+       0
+      ]
+     ]
+    }
+   ]
+  }
+ },
+ "glued": [
+  {
+   "tower": "GGB2AF",
+   "key": [
+    1479,
+    1485
+   ],
+   "slot": [
+    5,
+    0,
+    0
+   ],
+   "shape": "GS-02",
+   "n": 2,
+   "r": 2,
+   "nclasses": 1,
+   "n_monos": 2,
+   "signed": [
+    0
+   ],
+   "state": [
+    [
+     0,
+     1
+    ]
+   ],
+   "mlab": [
+    "f2(t=0,K={1})",
+    "f1(t=0,K={})"
+   ],
+   "prot": "DEAD",
+   "full_merge": true,
+   "generic": false
+  },
+  {
+   "tower": "GGB2AF",
+   "key": [
+    1479,
+    1497
+   ],
+   "slot": [
+    0,
+    0,
+    0
+   ],
+   "shape": "GS-02",
+   "n": 2,
+   "r": 2,
+   "nclasses": 1,
+   "n_monos": 2,
+   "signed": [
+    0
+   ],
+   "state": [
+    [
+     0,
+     1
+    ]
+   ],
+   "mlab": [
+    "f2(t=0,K={0,1})",
+    "f1(t=0,K={0})"
+   ],
+   "prot": "DEAD",
+   "full_merge": true,
+   "generic": false
+  },
+  {
+   "tower": "GGB2AF",
+   "key": [
+    1479,
+    1497
+   ],
+   "slot": [
+    3,
+    0,
+    0
+   ],
+   "shape": "GS-08",
+   "n": 3,
+   "r": 2,
+   "nclasses": 2,
+   "n_monos": 3,
+   "signed": [
+    0,
+    1
+   ],
+   "state": [
+    [
+     0,
+     2
+    ],
+    [
+     1
+    ]
+   ],
+   "mlab": [
+    "f2(t=0,K={1,1})",
+    "f2(t=0,K={0})",
+    "f1(t=0,K={1})"
+   ],
+   "prot": "PROT",
+   "full_merge": false,
+   "generic": false
+  },
+  {
+   "tower": "GGB2AF",
+   "key": [
+    1485,
+    1491
+   ],
+   "slot": [
+    3,
+    0,
+    0
+   ],
+   "shape": "GS-02",
+   "n": 2,
+   "r": 2,
+   "nclasses": 1,
+   "n_monos": 2,
+   "signed": [
+    0
+   ],
+   "state": [
+    [
+     0,
+     1
+    ]
+   ],
+   "mlab": [
+    "f2(t=0,K={1})",
+    "f1(t=0,K={})"
+   ],
+   "prot": "DEAD",
+   "full_merge": true,
+   "generic": false
+  },
+  {
+   "tower": "GGB2AF",
+   "key": [
+    1485,
+    1503
+   ],
+   "slot": [
+    4,
+    0,
+    0
+   ],
+   "shape": "GS-02",
+   "n": 2,
+   "r": 2,
+   "nclasses": 1,
+   "n_monos": 2,
+   "signed": [
+    0
+   ],
+   "state": [
+    [
+     0,
+     1
+    ]
+   ],
+   "mlab": [
+    "f2(t=0,K={1})",
+    "f1(t=0,K={})"
+   ],
+   "prot": "DEAD",
+   "full_merge": true,
+   "generic": false
+  },
+  {
+   "tower": "GGB2AF",
+   "key": [
+    1491,
+    1491
+   ],
+   "slot": [
+    3,
+    1,
+    0
+   ],
+   "shape": "GS-02",
+   "n": 2,
+   "r": 2,
+   "nclasses": 1,
+   "n_monos": 2,
+   "signed": [
+    0
+   ],
+   "state": [
+    [
+     0,
+     1
+    ]
+   ],
+   "mlab": [
+    "f1(t=0,K={})",
+    "f2(t=0,K={1})"
+   ],
+   "prot": "DEAD",
+   "full_merge": true,
+   "generic": false
+  },
+  {
+   "tower": "GGB2AF",
+   "key": [
+    1491,
+    1497
+   ],
+   "slot": [
+    4,
+    0,
+    0
+   ],
+   "shape": "GS-02",
+   "n": 2,
+   "r": 2,
+   "nclasses": 1,
+   "n_monos": 2,
+   "signed": [
+    0
+   ],
+   "state": [
+    [
+     0,
+     1
+    ]
+   ],
+   "mlab": [
+    "f2(t=0,K={1})",
+    "f1(t=0,K={})"
+   ],
+   "prot": "DEAD",
+   "full_merge": true,
+   "generic": false
+  },
+  {
+   "tower": "GGB2AF",
+   "key": [
+    1491,
+    1509
+   ],
+   "slot": [
+    5,
+    0,
+    0
+   ],
+   "shape": "GS-02",
+   "n": 2,
+   "r": 2,
+   "nclasses": 1,
+   "n_monos": 2,
+   "signed": [
+    0
+   ],
+   "state": [
+    [
+     0,
+     1
+    ]
+   ],
+   "mlab": [
+    "f2(t=0,K={1})",
+    "f1(t=0,K={})"
+   ],
+   "prot": "DEAD",
+   "full_merge": true,
+   "generic": false
+  },
+  {
+   "tower": "GGB2AF",
+   "key": [
+    1497,
+    1503
+   ],
+   "slot": [
+    5,
+    0,
+    0
+   ],
+   "shape": "GS-02",
+   "n": 2,
+   "r": 2,
+   "nclasses": 1,
+   "n_monos": 2,
+   "signed": [
+    0
+   ],
+   "state": [
+    [
+     0,
+     1
+    ]
+   ],
+   "mlab": [
+    "f2(t=0,K={1})",
+    "f1(t=0,K={})"
+   ],
+   "prot": "DEAD",
+   "full_merge": true,
+   "generic": false
+  },
+  {
+   "tower": "GGB2AF",
+   "key": [
+    1479,
+    1479
+   ],
+   "slot": [
+    1,
+    1,
+    0
+   ],
+   "shape": "GS-02",
+   "n": 2,
+   "r": 2,
+   "nclasses": 1,
+   "n_monos": 2,
+   "signed": [
+    0
+   ],
+   "state": [
+    [
+     0,
+     1
+    ]
+   ],
+   "mlab": [
+    "f1(t=0,K={0})",
+    "f2(t=0,K={0,1})"
+   ],
+   "prot": "DEAD",
+   "full_merge": true,
+   "generic": false
+  },
+  {
+   "tower": "GGB2AF",
+   "key": [
+    1479,
+    1479
+   ],
+   "slot": [
+    4,
+    1,
+    0
+   ],
+   "shape": "GS-08",
+   "n": 3,
+   "r": 2,
+   "nclasses": 2,
+   "n_monos": 3,
+   "signed": [
+    0,
+    1
+   ],
+   "state": [
+    [
+     0,
+     2
+    ],
+    [
+     1
+    ]
+   ],
+   "mlab": [
+    "f1(t=0,K={1})",
+    "f2(t=0,K={0})",
+    "f2(t=0,K={1,1})"
+   ],
+   "prot": "PROT",
+   "full_merge": false,
+   "generic": false
+  },
+  {
+   "tower": "GGB2AF",
+   "key": [
+    1479,
+    1491
+   ],
+   "slot": [
+    5,
+    1,
+    0
+   ],
+   "shape": "GS-02",
+   "n": 2,
+   "r": 2,
+   "nclasses": 1,
+   "n_monos": 2,
+   "signed": [
+    0
+   ],
+   "state": [
+    [
+     0,
+     1
+    ]
+   ],
+   "mlab": [
+    "f1(t=0,K={})",
+    "f2(t=0,K={1})"
+   ],
+   "prot": "DEAD",
+   "full_merge": true,
+   "generic": false
+  },
+  {
+   "tower": "GGB2AF",
+   "key": [
+    1479,
+    1503
+   ],
+   "slot": [
+    0,
+    1,
+    0
+   ],
+   "shape": "GS-02",
+   "n": 2,
+   "r": 2,
+   "nclasses": 1,
+   "n_monos": 2,
+   "signed": [
+    0
+   ],
+   "state": [
+    [
+     0,
+     1
+    ]
+   ],
+   "mlab": [
+    "f1(t=0,K={0})",
+    "f2(t=0,K={0,1})"
+   ],
+   "prot": "DEAD",
+   "full_merge": true,
+   "generic": false
+  },
+  {
+   "tower": "GGB2AF",
+   "key": [
+    1479,
+    1503
+   ],
+   "slot": [
+    3,
+    1,
+    0
+   ],
+   "shape": "GS-08",
+   "n": 3,
+   "r": 2,
+   "nclasses": 2,
+   "n_monos": 3,
+   "signed": [
+    0,
+    1
+   ],
+   "state": [
+    [
+     0,
+     2
+    ],
+    [
+     1
+    ]
+   ],
+   "mlab": [
+    "f1(t=0,K={1})",
+    "f2(t=0,K={0})",
+    "f2(t=0,K={1,1})"
+   ],
+   "prot": "PROT",
+   "full_merge": false,
+   "generic": false
+  },
+  {
+   "tower": "GGB2AF",
+   "key": [
+    1479,
+    1509
+   ],
+   "slot": [
+    1,
+    0,
+    0
+   ],
+   "shape": "GS-02",
+   "n": 2,
+   "r": 2,
+   "nclasses": 1,
+   "n_monos": 2,
+   "signed": [
+    0
+   ],
+   "state": [
+    [
+     0,
+     1
+    ]
+   ],
+   "mlab": [
+    "f2(t=0,K={0,1})",
+    "f1(t=0,K={0})"
+   ],
+   "prot": "DEAD",
+   "full_merge": true,
+   "generic": false
+  },
+  {
+   "tower": "GGB2AF",
+   "key": [
+    1479,
+    1509
+   ],
+   "slot": [
+    4,
+    0,
+    0
+   ],
+   "shape": "GS-08",
+   "n": 3,
+   "r": 2,
+   "nclasses": 2,
+   "n_monos": 3,
+   "signed": [
+    0,
+    1
+   ],
+   "state": [
+    [
+     0,
+     1
+    ],
+    [
+     2
+    ]
+   ],
+   "mlab": [
+    "f2(t=0,K={1,1})",
+    "f1(t=0,K={1})",
+    "f2(t=0,K={0})"
+   ],
+   "prot": "PROT",
+   "full_merge": false,
+   "generic": false
+  },
+  {
+   "tower": "GGB2AF",
+   "key": [
+    1491,
+    1503
+   ],
+   "slot": [
+    4,
+    1,
+    0
+   ],
+   "shape": "GS-02",
+   "n": 2,
+   "r": 2,
+   "nclasses": 1,
+   "n_monos": 2,
+   "signed": [
+    0
+   ],
+   "state": [
+    [
+     0,
+     1
+    ]
+   ],
+   "mlab": [
+    "f1(t=0,K={})",
+    "f2(t=0,K={1})"
+   ],
+   "prot": "DEAD",
+   "full_merge": true,
+   "generic": false
+  },
+  {
+   "tower": "GGB2AF",
+   "key": [
+    1503,
+    1503
+   ],
+   "slot": [
+    5,
+    1,
+    0
+   ],
+   "shape": "GS-02",
+   "n": 2,
+   "r": 2,
+   "nclasses": 1,
+   "n_monos": 2,
+   "signed": [
+    0
+   ],
+   "state": [
+    [
+     0,
+     1
+    ]
+   ],
+   "mlab": [
+    "f1(t=0,K={})",
+    "f2(t=0,K={1})"
+   ],
+   "prot": "DEAD",
+   "full_merge": true,
+   "generic": false
+  },
+  {
+   "tower": "GGB2AZ",
+   "key": [
+    1479,
+    1485
+   ],
+   "slot": [
+    5,
+    0,
+    0
+   ],
+   "shape": "GS-02",
+   "n": 2,
+   "r": 2,
+   "nclasses": 1,
+   "n_monos": 2,
+   "signed": [
+    0
+   ],
+   "state": [
+    [
+     0,
+     1
+    ]
+   ],
+   "mlab": [
+    "f2(t=0,K={1})",
+    "f1(t=0,K={})"
+   ],
+   "prot": "DEAD",
+   "full_merge": true,
+   "generic": false
+  },
+  {
+   "tower": "GGB2AZ",
+   "key": [
+    1479,
+    1497
+   ],
+   "slot": [
+    0,
+    0,
+    0
+   ],
+   "shape": "GS-02",
+   "n": 2,
+   "r": 2,
+   "nclasses": 1,
+   "n_monos": 2,
+   "signed": [
+    0
+   ],
+   "state": [
+    [
+     0,
+     1
+    ]
+   ],
+   "mlab": [
+    "f2(t=0,K={0,1})",
+    "f1(t=0,K={0})"
+   ],
+   "prot": "DEAD",
+   "full_merge": true,
+   "generic": false
+  },
+  {
+   "tower": "GGB2AZ",
+   "key": [
+    1479,
+    1497
+   ],
+   "slot": [
+    3,
+    0,
+    0
+   ],
+   "shape": "GS-08",
+   "n": 3,
+   "r": 2,
+   "nclasses": 2,
+   "n_monos": 3,
+   "signed": [
+    0,
+    1
+   ],
+   "state": [
+    [
+     0,
+     2
+    ],
+    [
+     1
+    ]
+   ],
+   "mlab": [
+    "f2(t=0,K={1,1})",
+    "f2(t=0,K={0})",
+    "f1(t=0,K={1})"
+   ],
+   "prot": "PROT",
+   "full_merge": false,
+   "generic": false
+  },
+  {
+   "tower": "GGB2AZ",
+   "key": [
+    1485,
+    1491
+   ],
+   "slot": [
+    3,
+    0,
+    0
+   ],
+   "shape": "GS-02",
+   "n": 2,
+   "r": 2,
+   "nclasses": 1,
+   "n_monos": 2,
+   "signed": [
+    0
+   ],
+   "state": [
+    [
+     0,
+     1
+    ]
+   ],
+   "mlab": [
+    "f2(t=0,K={1})",
+    "f1(t=0,K={})"
+   ],
+   "prot": "DEAD",
+   "full_merge": true,
+   "generic": false
+  },
+  {
+   "tower": "GGB2AZ",
+   "key": [
+    1485,
+    1503
+   ],
+   "slot": [
+    4,
+    0,
+    0
+   ],
+   "shape": "GS-02",
+   "n": 2,
+   "r": 2,
+   "nclasses": 1,
+   "n_monos": 2,
+   "signed": [
+    0
+   ],
+   "state": [
+    [
+     0,
+     1
+    ]
+   ],
+   "mlab": [
+    "f2(t=0,K={1})",
+    "f1(t=0,K={})"
+   ],
+   "prot": "DEAD",
+   "full_merge": true,
+   "generic": false
+  },
+  {
+   "tower": "GGB2AZ",
+   "key": [
+    1491,
+    1491
+   ],
+   "slot": [
+    3,
+    1,
+    0
+   ],
+   "shape": "GS-02",
+   "n": 2,
+   "r": 2,
+   "nclasses": 1,
+   "n_monos": 2,
+   "signed": [
+    0
+   ],
+   "state": [
+    [
+     0,
+     1
+    ]
+   ],
+   "mlab": [
+    "f1(t=0,K={})",
+    "f2(t=0,K={1})"
+   ],
+   "prot": "DEAD",
+   "full_merge": true,
+   "generic": false
+  },
+  {
+   "tower": "GGB2AZ",
+   "key": [
+    1491,
+    1497
+   ],
+   "slot": [
+    4,
+    0,
+    0
+   ],
+   "shape": "GS-02",
+   "n": 2,
+   "r": 2,
+   "nclasses": 1,
+   "n_monos": 2,
+   "signed": [
+    0
+   ],
+   "state": [
+    [
+     0,
+     1
+    ]
+   ],
+   "mlab": [
+    "f2(t=0,K={1})",
+    "f1(t=0,K={})"
+   ],
+   "prot": "DEAD",
+   "full_merge": true,
+   "generic": false
+  },
+  {
+   "tower": "GGB2AZ",
+   "key": [
+    1491,
+    1509
+   ],
+   "slot": [
+    5,
+    0,
+    0
+   ],
+   "shape": "GS-02",
+   "n": 2,
+   "r": 2,
+   "nclasses": 1,
+   "n_monos": 2,
+   "signed": [
+    0
+   ],
+   "state": [
+    [
+     0,
+     1
+    ]
+   ],
+   "mlab": [
+    "f2(t=0,K={1})",
+    "f1(t=0,K={})"
+   ],
+   "prot": "DEAD",
+   "full_merge": true,
+   "generic": false
+  },
+  {
+   "tower": "GGB2AZ",
+   "key": [
+    1497,
+    1503
+   ],
+   "slot": [
+    5,
+    0,
+    0
+   ],
+   "shape": "GS-02",
+   "n": 2,
+   "r": 2,
+   "nclasses": 1,
+   "n_monos": 2,
+   "signed": [
+    0
+   ],
+   "state": [
+    [
+     0,
+     1
+    ]
+   ],
+   "mlab": [
+    "f2(t=0,K={1})",
+    "f1(t=0,K={})"
+   ],
+   "prot": "DEAD",
+   "full_merge": true,
+   "generic": false
+  },
+  {
+   "tower": "GGB2AZ",
+   "key": [
+    1479,
+    1479
+   ],
+   "slot": [
+    1,
+    1,
+    0
+   ],
+   "shape": "GS-02",
+   "n": 2,
+   "r": 2,
+   "nclasses": 1,
+   "n_monos": 2,
+   "signed": [
+    0
+   ],
+   "state": [
+    [
+     0,
+     1
+    ]
+   ],
+   "mlab": [
+    "f1(t=0,K={0})",
+    "f2(t=0,K={0,1})"
+   ],
+   "prot": "DEAD",
+   "full_merge": true,
+   "generic": false
+  },
+  {
+   "tower": "GGB2AZ",
+   "key": [
+    1479,
+    1479
+   ],
+   "slot": [
+    4,
+    1,
+    0
+   ],
+   "shape": "GS-08",
+   "n": 3,
+   "r": 2,
+   "nclasses": 2,
+   "n_monos": 3,
+   "signed": [
+    0,
+    1
+   ],
+   "state": [
+    [
+     0,
+     2
+    ],
+    [
+     1
+    ]
+   ],
+   "mlab": [
+    "f1(t=0,K={1})",
+    "f2(t=0,K={0})",
+    "f2(t=0,K={1,1})"
+   ],
+   "prot": "PROT",
+   "full_merge": false,
+   "generic": false
+  },
+  {
+   "tower": "GGB2AZ",
+   "key": [
+    1479,
+    1491
+   ],
+   "slot": [
+    5,
+    1,
+    0
+   ],
+   "shape": "GS-02",
+   "n": 2,
+   "r": 2,
+   "nclasses": 1,
+   "n_monos": 2,
+   "signed": [
+    0
+   ],
+   "state": [
+    [
+     0,
+     1
+    ]
+   ],
+   "mlab": [
+    "f1(t=0,K={})",
+    "f2(t=0,K={1})"
+   ],
+   "prot": "DEAD",
+   "full_merge": true,
+   "generic": false
+  },
+  {
+   "tower": "GGB2AZ",
+   "key": [
+    1479,
+    1503
+   ],
+   "slot": [
+    0,
+    1,
+    0
+   ],
+   "shape": "GS-02",
+   "n": 2,
+   "r": 2,
+   "nclasses": 1,
+   "n_monos": 2,
+   "signed": [
+    0
+   ],
+   "state": [
+    [
+     0,
+     1
+    ]
+   ],
+   "mlab": [
+    "f1(t=0,K={0})",
+    "f2(t=0,K={0,1})"
+   ],
+   "prot": "DEAD",
+   "full_merge": true,
+   "generic": false
+  },
+  {
+   "tower": "GGB2AZ",
+   "key": [
+    1479,
+    1503
+   ],
+   "slot": [
+    3,
+    1,
+    0
+   ],
+   "shape": "GS-08",
+   "n": 3,
+   "r": 2,
+   "nclasses": 2,
+   "n_monos": 3,
+   "signed": [
+    0,
+    1
+   ],
+   "state": [
+    [
+     0,
+     2
+    ],
+    [
+     1
+    ]
+   ],
+   "mlab": [
+    "f1(t=0,K={1})",
+    "f2(t=0,K={0})",
+    "f2(t=0,K={1,1})"
+   ],
+   "prot": "PROT",
+   "full_merge": false,
+   "generic": false
+  },
+  {
+   "tower": "GGB2AZ",
+   "key": [
+    1479,
+    1509
+   ],
+   "slot": [
+    1,
+    0,
+    0
+   ],
+   "shape": "GS-02",
+   "n": 2,
+   "r": 2,
+   "nclasses": 1,
+   "n_monos": 2,
+   "signed": [
+    0
+   ],
+   "state": [
+    [
+     0,
+     1
+    ]
+   ],
+   "mlab": [
+    "f2(t=0,K={0,1})",
+    "f1(t=0,K={0})"
+   ],
+   "prot": "DEAD",
+   "full_merge": true,
+   "generic": false
+  },
+  {
+   "tower": "GGB2AZ",
+   "key": [
+    1479,
+    1509
+   ],
+   "slot": [
+    4,
+    0,
+    0
+   ],
+   "shape": "GS-08",
+   "n": 3,
+   "r": 2,
+   "nclasses": 2,
+   "n_monos": 3,
+   "signed": [
+    0,
+    1
+   ],
+   "state": [
+    [
+     0,
+     1
+    ],
+    [
+     2
+    ]
+   ],
+   "mlab": [
+    "f2(t=0,K={1,1})",
+    "f1(t=0,K={1})",
+    "f2(t=0,K={0})"
+   ],
+   "prot": "PROT",
+   "full_merge": false,
+   "generic": false
+  },
+  {
+   "tower": "GGB2AZ",
+   "key": [
+    1491,
+    1503
+   ],
+   "slot": [
+    4,
+    1,
+    0
+   ],
+   "shape": "GS-02",
+   "n": 2,
+   "r": 2,
+   "nclasses": 1,
+   "n_monos": 2,
+   "signed": [
+    0
+   ],
+   "state": [
+    [
+     0,
+     1
+    ]
+   ],
+   "mlab": [
+    "f1(t=0,K={})",
+    "f2(t=0,K={1})"
+   ],
+   "prot": "DEAD",
+   "full_merge": true,
+   "generic": false
+  },
+  {
+   "tower": "GGB2AZ",
+   "key": [
+    1503,
+    1503
+   ],
+   "slot": [
+    5,
+    1,
+    0
+   ],
+   "shape": "GS-02",
+   "n": 2,
+   "r": 2,
+   "nclasses": 1,
+   "n_monos": 2,
+   "signed": [
+    0
+   ],
+   "state": [
+    [
+     0,
+     1
+    ]
+   ],
+   "mlab": [
+    "f1(t=0,K={})",
+    "f2(t=0,K={1})"
+   ],
+   "prot": "DEAD",
+   "full_merge": true,
+   "generic": false
+  },
+  {
+   "tower": "GGW4AF",
+   "key": [
+    2635,
+    2635
+   ],
+   "slot": [
+    1,
+    0,
+    0,
+    0
+   ],
+   "shape": "GS-08",
+   "n": 3,
+   "r": 2,
+   "nclasses": 2,
+   "n_monos": 3,
+   "signed": [
+    0,
+    -1
+   ],
+   "state": [
+    [
+     0,
+     2
+    ],
+    [
+     1
+    ]
+   ],
+   "mlab": [
+    "f1(t=1,K={0,1})",
+    "f2(t=1,K={0,0})",
+    "f2(t=1,K={0,1,1})"
+   ],
+   "prot": "PROT",
+   "full_merge": false,
+   "generic": false
+  },
+  {
+   "tower": "GGW4AF",
+   "key": [
+    2635,
+    2635
+   ],
+   "slot": [
+    4,
+    0,
+    0,
+    0
+   ],
+   "shape": "GS-16",
+   "n": 5,
+   "r": 2,
+   "nclasses": 2,
+   "n_monos": 4,
+   "signed": [
+    0,
+    -1
+   ],
+   "state": [
+    [
+     0,
+     3
+    ],
+    [
+     1,
+     2
+    ]
+   ],
+   "mlab": [
+    "f1(t=1,K={1,1})",
+    "f1(t=1,K={0})",
+    "f2(t=1,K={0,1})",
+    "f2(t=1,K={1,1,1})"
+   ],
+   "prot": "PROT",
+   "full_merge": false,
+   "generic": false
+  },
+  {
+   "tower": "GGB3AF",
+   "key": [
+    1479,
+    1485
+   ],
+   "slot": [
+    2,
+    0,
+    0
+   ],
+   "shape": "GS-04",
+   "n": 3,
+   "r": 2,
+   "nclasses": 3,
+   "n_monos": 3,
+   "signed": [
+    -1,
+    1,
+    1
+   ],
+   "state": [
+    [
+     0
+    ],
+    [
+     1
+    ],
+    [
+     2
+    ]
+   ],
+   "mlab": [
+    "f2(t=1,K={0,1})",
+    "f1(t=1,K={0})",
+    "f2(t=0,K={0})"
+   ],
+   "prot": "UNPROT",
+   "full_merge": false,
+   "generic": true
+  },
+  {
+   "tower": "GGB3AF",
+   "key": [
+    1479,
+    1485
+   ],
+   "slot": [
+    5,
+    0,
+    0
+   ],
+   "shape": "GS-15",
+   "n": 5,
+   "r": 2,
+   "nclasses": 4,
+   "n_monos": 5,
+   "signed": [
+    -1,
+    1,
+    0,
+    1
+   ],
+   "state": [
+    [
+     0
+    ],
+    [
+     1
+    ],
+    [
+     2,
+     4
+    ],
+    [
+     3
+    ]
+   ],
+   "mlab": [
+    "f2(t=1,K={1,1})",
+    "f1(t=1,K={1})",
+    "f2(t=1,K={0})",
+    "f2(t=0,K={1})",
+    "f1(t=0,K={})"
+   ],
+   "prot": "UNPROT",
+   "full_merge": false,
+   "generic": false
+  },
+  {
+   "tower": "GGB3AF",
+   "key": [
+    1479,
+    1497
+   ],
+   "slot": [
+    0,
+    0,
+    0
+   ],
+   "shape": "GS-15",
+   "n": 5,
+   "r": 2,
+   "nclasses": 4,
+   "n_monos": 5,
+   "signed": [
+    1,
+    -1,
+    0,
+    -1
+   ],
+   "state": [
+    [
+     0
+    ],
+    [
+     1
+    ],
+    [
+     2,
+     4
+    ],
+    [
+     3
+    ]
+   ],
+   "mlab": [
+    "f2(t=1,K={0,1,1})",
+    "f1(t=1,K={0,1})",
+    "f2(t=1,K={0,0})",
+    "f2(t=0,K={0,1})",
+    "f1(t=0,K={0})"
+   ],
+   "prot": "UNPROT",
+   "full_merge": false,
+   "generic": false
+  },
+  {
+   "tower": "GGB3AF",
+   "key": [
+    1479,
+    1497
+   ],
+   "slot": [
+    3,
+    0,
+    0
+   ],
+   "shape": "GS-29",
+   "n": 8,
+   "r": 2,
+   "nclasses": 5,
+   "n_monos": 7,
+   "signed": [
+    2,
+    -1,
+    -1,
+    -1,
+    1
+   ],
+   "state": [
+    [
+     0,
+     3
+    ],
+    [
+     1,
+     6
+    ],
+    [
+     2
+    ],
+    [
+     4
+    ],
+    [
+     5
+    ]
+   ],
+   "mlab": [
+    "f2(t=1,K={1,1,1})",
+    "f2(t=1,K={0,1})",
+    "f1(t=1,K={1,1})",
+    "f1(t=1,K={0})",
+    "f2(t=0,K={1,1})",
+    "f2(t=0,K={0})",
+    "f1(t=0,K={1})"
+   ],
+   "prot": "UNPROT",
+   "full_merge": false,
+   "generic": false
+  },
+  {
+   "tower": "GGB3AF",
+   "key": [
+    1485,
+    1491
+   ],
+   "slot": [
+    0,
+    0,
+    0
+   ],
+   "shape": "GS-04",
+   "n": 3,
+   "r": 2,
+   "nclasses": 3,
+   "n_monos": 3,
+   "signed": [
+    -1,
+    1,
+    1
+   ],
+   "state": [
+    [
+     0
+    ],
+    [
+     1
+    ],
+    [
+     2
+    ]
+   ],
+   "mlab": [
+    "f2(t=1,K={0,1})",
+    "f1(t=1,K={0})",
+    "f2(t=0,K={0})"
+   ],
+   "prot": "UNPROT",
+   "full_merge": false,
+   "generic": true
+  },
+  {
+   "tower": "GGB3AF",
+   "key": [
+    1485,
+    1491
+   ],
+   "slot": [
+    3,
+    0,
+    0
+   ],
+   "shape": "GS-15",
+   "n": 5,
+   "r": 2,
+   "nclasses": 4,
+   "n_monos": 5,
+   "signed": [
+    -1,
+    0,
+    1,
+    1
+   ],
+   "state": [
+    [
+     0
+    ],
+    [
+     1,
+     4
+    ],
+    [
+     2
+    ],
+    [
+     3
+    ]
+   ],
+   "mlab": [
+    "f2(t=1,K={1,1})",
+    "f2(t=1,K={0})",
+    "f1(t=1,K={1})",
+    "f2(t=0,K={1})",
+    "f1(t=0,K={})"
+   ],
+   "prot": "UNPROT",
+   "full_merge": false,
+   "generic": false
+  },
+  {
+   "tower": "GGB3AF",
+   "key": [
+    1485,
+    1503
+   ],
+   "slot": [
+    1,
+    0,
+    0
+   ],
+   "shape": "GS-04",
+   "n": 3,
+   "r": 2,
+   "nclasses": 3,
+   "n_monos": 3,
+   "signed": [
+    -1,
+    1,
+    1
+   ],
+   "state": [
+    [
+     0
+    ],
+    [
+     1
+    ],
+    [
+     2
+    ]
+   ],
+   "mlab": [
+    "f2(t=1,K={0,1})",
+    "f1(t=1,K={0})",
+    "f2(t=0,K={0})"
+   ],
+   "prot": "UNPROT",
+   "full_merge": false,
+   "generic": true
+  },
+  {
+   "tower": "GGB3AF",
+   "key": [
+    1485,
+    1503
+   ],
+   "slot": [
+    4,
+    0,
+    0
+   ],
+   "shape": "GS-15",
+   "n": 5,
+   "r": 2,
+   "nclasses": 4,
+   "n_monos": 5,
+   "signed": [
+    -1,
+    1,
+    0,
+    1
+   ],
+   "state": [
+    [
+     0
+    ],
+    [
+     1
+    ],
+    [
+     2,
+     4
+    ],
+    [
+     3
+    ]
+   ],
+   "mlab": [
+    "f2(t=1,K={1,1})",
+    "f1(t=1,K={1})",
+    "f2(t=1,K={0})",
+    "f2(t=0,K={1})",
+    "f1(t=0,K={})"
+   ],
+   "prot": "UNPROT",
+   "full_merge": false,
+   "generic": false
+  },
+  {
+   "tower": "GGB3AF",
+   "key": [
+    1491,
+    1491
+   ],
+   "slot": [
+    0,
+    1,
+    0
+   ],
+   "shape": "GS-04",
+   "n": 3,
+   "r": 2,
+   "nclasses": 3,
+   "n_monos": 3,
+   "signed": [
+    1,
+    -1,
+    1
+   ],
+   "state": [
+    [
+     0
+    ],
+    [
+     1
+    ],
+    [
+     2
+    ]
+   ],
+   "mlab": [
+    "f1(t=1,K={0})",
+    "f2(t=1,K={0,1})",
+    "f2(t=0,K={0})"
+   ],
+   "prot": "UNPROT",
+   "full_merge": false,
+   "generic": true
+  },
+  {
+   "tower": "GGB3AF",
+   "key": [
+    1491,
+    1491
+   ],
+   "slot": [
+    3,
+    1,
+    0
+   ],
+   "shape": "GS-15",
+   "n": 5,
+   "r": 2,
+   "nclasses": 4,
+   "n_monos": 5,
+   "signed": [
+    1,
+    0,
+    -1,
+    1
+   ],
+   "state": [
+    [
+     0
+    ],
+    [
+     1,
+     3
+    ],
+    [
+     2
+    ],
+    [
+     4
+    ]
+   ],
+   "mlab": [
+    "f1(t=1,K={1})",
+    "f1(t=0,K={})",
+    "f2(t=1,K={1,1})",
+    "f2(t=1,K={0})",
+    "f2(t=0,K={1})"
+   ],
+   "prot": "UNPROT",
+   "full_merge": false,
+   "generic": false
+  },
+  {
+   "tower": "GGB3AF",
+   "key": [
+    1491,
+    1497
+   ],
+   "slot": [
+    1,
+    0,
+    0
+   ],
+   "shape": "GS-04",
+   "n": 3,
+   "r": 2,
+   "nclasses": 3,
+   "n_monos": 3,
+   "signed": [
+    -1,
+    1,
+    1
+   ],
+   "state": [
+    [
+     0
+    ],
+    [
+     1
+    ],
+    [
+     2
+    ]
+   ],
+   "mlab": [
+    "f2(t=1,K={0,1})",
+    "f1(t=1,K={0})",
+    "f2(t=0,K={0})"
+   ],
+   "prot": "UNPROT",
+   "full_merge": false,
+   "generic": true
+  },
+  {
+   "tower": "GGB3AF",
+   "key": [
+    1491,
+    1497
+   ],
+   "slot": [
+    4,
+    0,
+    0
+   ],
+   "shape": "GS-15",
+   "n": 5,
+   "r": 2,
+   "nclasses": 4,
+   "n_monos": 5,
+   "signed": [
+    -1,
+    1,
+    0,
+    1
+   ],
+   "state": [
+    [
+     0
+    ],
+    [
+     1
+    ],
+    [
+     2,
+     4
+    ],
+    [
+     3
+    ]
+   ],
+   "mlab": [
+    "f2(t=1,K={1,1})",
+    "f1(t=1,K={1})",
+    "f2(t=1,K={0})",
+    "f2(t=0,K={1})",
+    "f1(t=0,K={})"
+   ],
+   "prot": "UNPROT",
+   "full_merge": false,
+   "generic": false
+  },
+  {
+   "tower": "GGB3AF",
+   "key": [
+    1491,
+    1509
+   ],
+   "slot": [
+    2,
+    0,
+    0
+   ],
+   "shape": "GS-04",
+   "n": 3,
+   "r": 2,
+   "nclasses": 3,
+   "n_monos": 3,
+   "signed": [
+    -1,
+    1,
+    1
+   ],
+   "state": [
+    [
+     0
+    ],
+    [
+     1
+    ],
+    [
+     2
+    ]
+   ],
+   "mlab": [
+    "f2(t=1,K={0,1})",
+    "f1(t=1,K={0})",
+    "f2(t=0,K={0})"
+   ],
+   "prot": "UNPROT",
+   "full_merge": false,
+   "generic": true
+  },
+  {
+   "tower": "GGB3AF",
+   "key": [
+    1491,
+    1509
+   ],
+   "slot": [
+    5,
+    0,
+    0
+   ],
+   "shape": "GS-15",
+   "n": 5,
+   "r": 2,
+   "nclasses": 4,
+   "n_monos": 5,
+   "signed": [
+    -1,
+    1,
+    0,
+    1
+   ],
+   "state": [
+    [
+     0
+    ],
+    [
+     1
+    ],
+    [
+     2,
+     4
+    ],
+    [
+     3
+    ]
+   ],
+   "mlab": [
+    "f2(t=1,K={1,1})",
+    "f1(t=1,K={1})",
+    "f2(t=1,K={0})",
+    "f2(t=0,K={1})",
+    "f1(t=0,K={})"
+   ],
+   "prot": "UNPROT",
+   "full_merge": false,
+   "generic": false
+  },
+  {
+   "tower": "GGB3AF",
+   "key": [
+    1497,
+    1503
+   ],
+   "slot": [
+    2,
+    0,
+    0
+   ],
+   "shape": "GS-04",
+   "n": 3,
+   "r": 2,
+   "nclasses": 3,
+   "n_monos": 3,
+   "signed": [
+    -1,
+    1,
+    1
+   ],
+   "state": [
+    [
+     0
+    ],
+    [
+     1
+    ],
+    [
+     2
+    ]
+   ],
+   "mlab": [
+    "f2(t=1,K={0,1})",
+    "f1(t=1,K={0})",
+    "f2(t=0,K={0})"
+   ],
+   "prot": "UNPROT",
+   "full_merge": false,
+   "generic": true
+  },
+  {
+   "tower": "GGB3AF",
+   "key": [
+    1497,
+    1503
+   ],
+   "slot": [
+    5,
+    0,
+    0
+   ],
+   "shape": "GS-15",
+   "n": 5,
+   "r": 2,
+   "nclasses": 4,
+   "n_monos": 5,
+   "signed": [
+    -1,
+    1,
+    0,
+    1
+   ],
+   "state": [
+    [
+     0
+    ],
+    [
+     1
+    ],
+    [
+     2,
+     4
+    ],
+    [
+     3
+    ]
+   ],
+   "mlab": [
+    "f2(t=1,K={1,1})",
+    "f1(t=1,K={1})",
+    "f2(t=1,K={0})",
+    "f2(t=0,K={1})",
+    "f1(t=0,K={})"
+   ],
+   "prot": "UNPROT",
+   "full_merge": false,
+   "generic": false
+  },
+  {
+   "tower": "GGB3AF",
+   "key": [
+    1479,
+    1479
+   ],
+   "slot": [
+    1,
+    1,
+    0
+   ],
+   "shape": "GS-15",
+   "n": 5,
+   "r": 2,
+   "nclasses": 4,
+   "n_monos": 5,
+   "signed": [
+    -1,
+    0,
+    1,
+    -1
+   ],
+   "state": [
+    [
+     0
+    ],
+    [
+     1,
+     2
+    ],
+    [
+     3
+    ],
+    [
+     4
+    ]
+   ],
+   "mlab": [
+    "f1(t=1,K={0,1})",
+    "f1(t=0,K={0})",
+    "f2(t=1,K={0,0})",
+    "f2(t=1,K={0,1,1})",
+    "f2(t=0,K={0,1})"
+   ],
+   "prot": "UNPROT",
+   "full_merge": false,
+   "generic": false
+  },
+  {
+   "tower": "GGB3AF",
+   "key": [
+    1479,
+    1479
+   ],
+   "slot": [
+    4,
+    1,
+    0
+   ],
+   "shape": "GS-29",
+   "n": 8,
+   "r": 2,
+   "nclasses": 5,
+   "n_monos": 7,
+   "signed": [
+    -1,
+    2,
+    -1,
+    1,
+    -1
+   ],
+   "state": [
+    [
+     0
+    ],
+    [
+     1,
+     5
+    ],
+    [
+     2,
+     3
+    ],
+    [
+     4
+    ],
+    [
+     6
+    ]
+   ],
+   "mlab": [
+    "f1(t=1,K={1,1})",
+    "f1(t=1,K={0})",
+    "f1(t=0,K={1})",
+    "f2(t=1,K={0,1})",
+    "f2(t=0,K={0})",
+    "f2(t=1,K={1,1,1})",
+    "f2(t=0,K={1,1})"
+   ],
+   "prot": "UNPROT",
+   "full_merge": false,
+   "generic": false
+  },
+  {
+   "tower": "GGB3AF",
+   "key": [
+    1479,
+    1491
+   ],
+   "slot": [
+    2,
+    1,
+    0
+   ],
+   "shape": "GS-04",
+   "n": 3,
+   "r": 2,
+   "nclasses": 3,
+   "n_monos": 3,
+   "signed": [
+    1,
+    1,
+    -1
+   ],
+   "state": [
+    [
+     0
+    ],
+    [
+     1
+    ],
+    [
+     2
+    ]
+   ],
+   "mlab": [
+    "f1(t=1,K={0})",
+    "f2(t=0,K={0})",
+    "f2(t=1,K={0,1})"
+   ],
+   "prot": "UNPROT",
+   "full_merge": false,
+   "generic": true
+  },
+  {
+   "tower": "GGB3AF",
+   "key": [
+    1479,
+    1491
+   ],
+   "slot": [
+    5,
+    1,
+    0
+   ],
+   "shape": "GS-15",
+   "n": 5,
+   "r": 2,
+   "nclasses": 4,
+   "n_monos": 5,
+   "signed": [
+    1,
+    0,
+    -1,
+    1
+   ],
+   "state": [
+    [
+     0
+    ],
+    [
+     1,
+     2
+    ],
+    [
+     3
+    ],
+    [
+     4
+    ]
+   ],
+   "mlab": [
+    "f1(t=1,K={1})",
+    "f1(t=0,K={})",
+    "f2(t=1,K={0})",
+    "f2(t=1,K={1,1})",
+    "f2(t=0,K={1})"
+   ],
+   "prot": "UNPROT",
+   "full_merge": false,
+   "generic": false
+  },
+  {
+   "tower": "GGB3AF",
+   "key": [
+    1479,
+    1503
+   ],
+   "slot": [
+    0,
+    1,
+    0
+   ],
+   "shape": "GS-15",
+   "n": 5,
+   "r": 2,
+   "nclasses": 4,
+   "n_monos": 5,
+   "signed": [
+    -1,
+    0,
+    1,
+    -1
+   ],
+   "state": [
+    [
+     0
+    ],
+    [
+     1,
+     2
+    ],
+    [
+     3
+    ],
+    [
+     4
+    ]
+   ],
+   "mlab": [
+    "f1(t=1,K={0,1})",
+    "f1(t=0,K={0})",
+    "f2(t=1,K={0,0})",
+    "f2(t=1,K={0,1,1})",
+    "f2(t=0,K={0,1})"
+   ],
+   "prot": "UNPROT",
+   "full_merge": false,
+   "generic": false
+  },
+  {
+   "tower": "GGB3AF",
+   "key": [
+    1479,
+    1503
+   ],
+   "slot": [
+    3,
+    1,
+    0
+   ],
+   "shape": "GS-29",
+   "n": 8,
+   "r": 2,
+   "nclasses": 5,
+   "n_monos": 7,
+   "signed": [
+    -1,
+    2,
+    -1,
+    1,
+    -1
+   ],
+   "state": [
+    [
+     0
+    ],
+    [
+     1,
+     5
+    ],
+    [
+     2,
+     3
+    ],
+    [
+     4
+    ],
+    [
+     6
+    ]
+   ],
+   "mlab": [
+    "f1(t=1,K={1,1})",
+    "f1(t=1,K={0})",
+    "f1(t=0,K={1})",
+    "f2(t=1,K={0,1})",
+    "f2(t=0,K={0})",
+    "f2(t=1,K={1,1,1})",
+    "f2(t=0,K={1,1})"
+   ],
+   "prot": "UNPROT",
+   "full_merge": false,
+   "generic": false
+  },
+  {
+   "tower": "GGB3AF",
+   "key": [
+    1479,
+    1509
+   ],
+   "slot": [
+    1,
+    0,
+    0
+   ],
+   "shape": "GS-15",
+   "n": 5,
+   "r": 2,
+   "nclasses": 4,
+   "n_monos": 5,
+   "signed": [
+    1,
+    -1,
+    0,
+    -1
+   ],
+   "state": [
+    [
+     0
+    ],
+    [
+     1
+    ],
+    [
+     2,
+     4
+    ],
+    [
+     3
+    ]
+   ],
+   "mlab": [
+    "f2(t=1,K={0,1,1})",
+    "f1(t=1,K={0,1})",
+    "f2(t=1,K={0,0})",
+    "f2(t=0,K={0,1})",
+    "f1(t=0,K={0})"
+   ],
+   "prot": "UNPROT",
+   "full_merge": false,
+   "generic": false
+  },
+  {
+   "tower": "GGB3AF",
+   "key": [
+    1479,
+    1509
+   ],
+   "slot": [
+    4,
+    0,
+    0
+   ],
+   "shape": "GS-29",
+   "n": 8,
+   "r": 2,
+   "nclasses": 5,
+   "n_monos": 7,
+   "signed": [
+    2,
+    -1,
+    -1,
+    -1,
+    1
+   ],
+   "state": [
+    [
+     0,
+     3
+    ],
+    [
+     1
+    ],
+    [
+     2,
+     5
+    ],
+    [
+     4
+    ],
+    [
+     6
+    ]
+   ],
+   "mlab": [
+    "f2(t=1,K={1,1,1})",
+    "f1(t=1,K={1,1})",
+    "f2(t=1,K={0,1})",
+    "f1(t=1,K={0})",
+    "f2(t=0,K={1,1})",
+    "f1(t=0,K={1})",
+    "f2(t=0,K={0})"
+   ],
+   "prot": "UNPROT",
+   "full_merge": false,
+   "generic": false
+  },
+  {
+   "tower": "GGB3AF",
+   "key": [
+    1491,
+    1503
+   ],
+   "slot": [
+    1,
+    1,
+    0
+   ],
+   "shape": "GS-04",
+   "n": 3,
+   "r": 2,
+   "nclasses": 3,
+   "n_monos": 3,
+   "signed": [
+    1,
+    -1,
+    1
+   ],
+   "state": [
+    [
+     0
+    ],
+    [
+     1
+    ],
+    [
+     2
+    ]
+   ],
+   "mlab": [
+    "f1(t=1,K={0})",
+    "f2(t=1,K={0,1})",
+    "f2(t=0,K={0})"
+   ],
+   "prot": "UNPROT",
+   "full_merge": false,
+   "generic": true
+  },
+  {
+   "tower": "GGB3AF",
+   "key": [
+    1491,
+    1503
+   ],
+   "slot": [
+    4,
+    1,
+    0
+   ],
+   "shape": "GS-15",
+   "n": 5,
+   "r": 2,
+   "nclasses": 4,
+   "n_monos": 5,
+   "signed": [
+    1,
+    0,
+    -1,
+    1
+   ],
+   "state": [
+    [
+     0
+    ],
+    [
+     1,
+     3
+    ],
+    [
+     2
+    ],
+    [
+     4
+    ]
+   ],
+   "mlab": [
+    "f1(t=1,K={1})",
+    "f1(t=0,K={})",
+    "f2(t=1,K={1,1})",
+    "f2(t=1,K={0})",
+    "f2(t=0,K={1})"
+   ],
+   "prot": "UNPROT",
+   "full_merge": false,
+   "generic": false
+  },
+  {
+   "tower": "GGB3AF",
+   "key": [
+    1503,
+    1503
+   ],
+   "slot": [
+    2,
+    1,
+    0
+   ],
+   "shape": "GS-04",
+   "n": 3,
+   "r": 2,
+   "nclasses": 3,
+   "n_monos": 3,
+   "signed": [
+    1,
+    1,
+    -1
+   ],
+   "state": [
+    [
+     0
+    ],
+    [
+     1
+    ],
+    [
+     2
+    ]
+   ],
+   "mlab": [
+    "f1(t=1,K={0})",
+    "f2(t=0,K={0})",
+    "f2(t=1,K={0,1})"
+   ],
+   "prot": "UNPROT",
+   "full_merge": false,
+   "generic": true
+  },
+  {
+   "tower": "GGB3AF",
+   "key": [
+    1503,
+    1503
+   ],
+   "slot": [
+    5,
+    1,
+    0
+   ],
+   "shape": "GS-15",
+   "n": 5,
+   "r": 2,
+   "nclasses": 4,
+   "n_monos": 5,
+   "signed": [
+    1,
+    0,
+    -1,
+    1
+   ],
+   "state": [
+    [
+     0
+    ],
+    [
+     1,
+     2
+    ],
+    [
+     3
+    ],
+    [
+     4
+    ]
+   ],
+   "mlab": [
+    "f1(t=1,K={1})",
+    "f1(t=0,K={})",
+    "f2(t=1,K={0})",
+    "f2(t=1,K={1,1})",
+    "f2(t=0,K={1})"
+   ],
+   "prot": "UNPROT",
+   "full_merge": false,
+   "generic": false
+  },
+  {
+   "tower": "GGP3BF",
+   "key": [
+    1479,
+    1485
+   ],
+   "slot": [
+    5,
+    0,
+    0
+   ],
+   "shape": "GS-02",
+   "n": 2,
+   "r": 2,
+   "nclasses": 1,
+   "n_monos": 2,
+   "signed": [
+    0
+   ],
+   "state": [
+    [
+     0,
+     1
+    ]
+   ],
+   "mlab": [
+    "f2(t=0,K={1})",
+    "f1(t=0,K={})"
+   ],
+   "prot": "DEAD",
+   "full_merge": true,
+   "generic": false
+  },
+  {
+   "tower": "GGP3BF",
+   "key": [
+    1479,
+    1497
+   ],
+   "slot": [
+    0,
+    0,
+    0
+   ],
+   "shape": "GS-02",
+   "n": 2,
+   "r": 2,
+   "nclasses": 1,
+   "n_monos": 2,
+   "signed": [
+    0
+   ],
+   "state": [
+    [
+     0,
+     1
+    ]
+   ],
+   "mlab": [
+    "f2(t=0,K={0,1})",
+    "f1(t=0,K={0})"
+   ],
+   "prot": "DEAD",
+   "full_merge": true,
+   "generic": false
+  },
+  {
+   "tower": "GGP3BF",
+   "key": [
+    1479,
+    1497
+   ],
+   "slot": [
+    3,
+    0,
+    0
+   ],
+   "shape": "GS-08",
+   "n": 3,
+   "r": 2,
+   "nclasses": 2,
+   "n_monos": 3,
+   "signed": [
+    0,
+    1
+   ],
+   "state": [
+    [
+     0,
+     2
+    ],
+    [
+     1
+    ]
+   ],
+   "mlab": [
+    "f2(t=0,K={1,1})",
+    "f2(t=0,K={0})",
+    "f1(t=0,K={1})"
+   ],
+   "prot": "PROT",
+   "full_merge": false,
+   "generic": false
+  },
+  {
+   "tower": "GGP3BF",
+   "key": [
+    1485,
+    1491
+   ],
+   "slot": [
+    3,
+    0,
+    0
+   ],
+   "shape": "GS-02",
+   "n": 2,
+   "r": 2,
+   "nclasses": 1,
+   "n_monos": 2,
+   "signed": [
+    0
+   ],
+   "state": [
+    [
+     0,
+     1
+    ]
+   ],
+   "mlab": [
+    "f2(t=0,K={1})",
+    "f1(t=0,K={})"
+   ],
+   "prot": "DEAD",
+   "full_merge": true,
+   "generic": false
+  },
+  {
+   "tower": "GGP3BF",
+   "key": [
+    1485,
+    1503
+   ],
+   "slot": [
+    4,
+    0,
+    0
+   ],
+   "shape": "GS-02",
+   "n": 2,
+   "r": 2,
+   "nclasses": 1,
+   "n_monos": 2,
+   "signed": [
+    0
+   ],
+   "state": [
+    [
+     0,
+     1
+    ]
+   ],
+   "mlab": [
+    "f2(t=0,K={1})",
+    "f1(t=0,K={})"
+   ],
+   "prot": "DEAD",
+   "full_merge": true,
+   "generic": false
+  },
+  {
+   "tower": "GGP3BF",
+   "key": [
+    1491,
+    1491
+   ],
+   "slot": [
+    3,
+    1,
+    0
+   ],
+   "shape": "GS-02",
+   "n": 2,
+   "r": 2,
+   "nclasses": 1,
+   "n_monos": 2,
+   "signed": [
+    0
+   ],
+   "state": [
+    [
+     0,
+     1
+    ]
+   ],
+   "mlab": [
+    "f1(t=0,K={})",
+    "f2(t=0,K={1})"
+   ],
+   "prot": "DEAD",
+   "full_merge": true,
+   "generic": false
+  },
+  {
+   "tower": "GGP3BF",
+   "key": [
+    1491,
+    1497
+   ],
+   "slot": [
+    4,
+    0,
+    0
+   ],
+   "shape": "GS-02",
+   "n": 2,
+   "r": 2,
+   "nclasses": 1,
+   "n_monos": 2,
+   "signed": [
+    0
+   ],
+   "state": [
+    [
+     0,
+     1
+    ]
+   ],
+   "mlab": [
+    "f2(t=0,K={1})",
+    "f1(t=0,K={})"
+   ],
+   "prot": "DEAD",
+   "full_merge": true,
+   "generic": false
+  },
+  {
+   "tower": "GGP3BF",
+   "key": [
+    1491,
+    1509
+   ],
+   "slot": [
+    5,
+    0,
+    0
+   ],
+   "shape": "GS-02",
+   "n": 2,
+   "r": 2,
+   "nclasses": 1,
+   "n_monos": 2,
+   "signed": [
+    0
+   ],
+   "state": [
+    [
+     0,
+     1
+    ]
+   ],
+   "mlab": [
+    "f2(t=0,K={1})",
+    "f1(t=0,K={})"
+   ],
+   "prot": "DEAD",
+   "full_merge": true,
+   "generic": false
+  },
+  {
+   "tower": "GGP3BF",
+   "key": [
+    1497,
+    1503
+   ],
+   "slot": [
+    5,
+    0,
+    0
+   ],
+   "shape": "GS-02",
+   "n": 2,
+   "r": 2,
+   "nclasses": 1,
+   "n_monos": 2,
+   "signed": [
+    0
+   ],
+   "state": [
+    [
+     0,
+     1
+    ]
+   ],
+   "mlab": [
+    "f2(t=0,K={1})",
+    "f1(t=0,K={})"
+   ],
+   "prot": "DEAD",
+   "full_merge": true,
+   "generic": false
+  },
+  {
+   "tower": "GGP3BF",
+   "key": [
+    1479,
+    1479
+   ],
+   "slot": [
+    1,
+    1,
+    0
+   ],
+   "shape": "GS-02",
+   "n": 2,
+   "r": 2,
+   "nclasses": 1,
+   "n_monos": 2,
+   "signed": [
+    0
+   ],
+   "state": [
+    [
+     0,
+     1
+    ]
+   ],
+   "mlab": [
+    "f1(t=0,K={0})",
+    "f2(t=0,K={0,1})"
+   ],
+   "prot": "DEAD",
+   "full_merge": true,
+   "generic": false
+  },
+  {
+   "tower": "GGP3BF",
+   "key": [
+    1479,
+    1479
+   ],
+   "slot": [
+    4,
+    1,
+    0
+   ],
+   "shape": "GS-08",
+   "n": 3,
+   "r": 2,
+   "nclasses": 2,
+   "n_monos": 3,
+   "signed": [
+    0,
+    1
+   ],
+   "state": [
+    [
+     0,
+     2
+    ],
+    [
+     1
+    ]
+   ],
+   "mlab": [
+    "f1(t=0,K={1})",
+    "f2(t=0,K={0})",
+    "f2(t=0,K={1,1})"
+   ],
+   "prot": "PROT",
+   "full_merge": false,
+   "generic": false
+  },
+  {
+   "tower": "GGP3BF",
+   "key": [
+    1479,
+    1491
+   ],
+   "slot": [
+    5,
+    1,
+    0
+   ],
+   "shape": "GS-02",
+   "n": 2,
+   "r": 2,
+   "nclasses": 1,
+   "n_monos": 2,
+   "signed": [
+    0
+   ],
+   "state": [
+    [
+     0,
+     1
+    ]
+   ],
+   "mlab": [
+    "f1(t=0,K={})",
+    "f2(t=0,K={1})"
+   ],
+   "prot": "DEAD",
+   "full_merge": true,
+   "generic": false
+  },
+  {
+   "tower": "GGP3BF",
+   "key": [
+    1479,
+    1503
+   ],
+   "slot": [
+    0,
+    1,
+    0
+   ],
+   "shape": "GS-02",
+   "n": 2,
+   "r": 2,
+   "nclasses": 1,
+   "n_monos": 2,
+   "signed": [
+    0
+   ],
+   "state": [
+    [
+     0,
+     1
+    ]
+   ],
+   "mlab": [
+    "f1(t=0,K={0})",
+    "f2(t=0,K={0,1})"
+   ],
+   "prot": "DEAD",
+   "full_merge": true,
+   "generic": false
+  },
+  {
+   "tower": "GGP3BF",
+   "key": [
+    1479,
+    1503
+   ],
+   "slot": [
+    3,
+    1,
+    0
+   ],
+   "shape": "GS-08",
+   "n": 3,
+   "r": 2,
+   "nclasses": 2,
+   "n_monos": 3,
+   "signed": [
+    0,
+    1
+   ],
+   "state": [
+    [
+     0,
+     2
+    ],
+    [
+     1
+    ]
+   ],
+   "mlab": [
+    "f1(t=0,K={1})",
+    "f2(t=0,K={0})",
+    "f2(t=0,K={1,1})"
+   ],
+   "prot": "PROT",
+   "full_merge": false,
+   "generic": false
+  },
+  {
+   "tower": "GGP3BF",
+   "key": [
+    1479,
+    1509
+   ],
+   "slot": [
+    1,
+    0,
+    0
+   ],
+   "shape": "GS-02",
+   "n": 2,
+   "r": 2,
+   "nclasses": 1,
+   "n_monos": 2,
+   "signed": [
+    0
+   ],
+   "state": [
+    [
+     0,
+     1
+    ]
+   ],
+   "mlab": [
+    "f2(t=0,K={0,1})",
+    "f1(t=0,K={0})"
+   ],
+   "prot": "DEAD",
+   "full_merge": true,
+   "generic": false
+  },
+  {
+   "tower": "GGP3BF",
+   "key": [
+    1479,
+    1509
+   ],
+   "slot": [
+    4,
+    0,
+    0
+   ],
+   "shape": "GS-08",
+   "n": 3,
+   "r": 2,
+   "nclasses": 2,
+   "n_monos": 3,
+   "signed": [
+    0,
+    1
+   ],
+   "state": [
+    [
+     0,
+     1
+    ],
+    [
+     2
+    ]
+   ],
+   "mlab": [
+    "f2(t=0,K={1,1})",
+    "f1(t=0,K={1})",
+    "f2(t=0,K={0})"
+   ],
+   "prot": "PROT",
+   "full_merge": false,
+   "generic": false
+  },
+  {
+   "tower": "GGP3BF",
+   "key": [
+    1491,
+    1503
+   ],
+   "slot": [
+    4,
+    1,
+    0
+   ],
+   "shape": "GS-02",
+   "n": 2,
+   "r": 2,
+   "nclasses": 1,
+   "n_monos": 2,
+   "signed": [
+    0
+   ],
+   "state": [
+    [
+     0,
+     1
+    ]
+   ],
+   "mlab": [
+    "f1(t=0,K={})",
+    "f2(t=0,K={1})"
+   ],
+   "prot": "DEAD",
+   "full_merge": true,
+   "generic": false
+  },
+  {
+   "tower": "GGP3BF",
+   "key": [
+    1503,
+    1503
+   ],
+   "slot": [
+    5,
+    1,
+    0
+   ],
+   "shape": "GS-02",
+   "n": 2,
+   "r": 2,
+   "nclasses": 1,
+   "n_monos": 2,
+   "signed": [
+    0
+   ],
+   "state": [
+    [
+     0,
+     1
+    ]
+   ],
+   "mlab": [
+    "f1(t=0,K={})",
+    "f2(t=0,K={1})"
+   ],
+   "prot": "DEAD",
+   "full_merge": true,
+   "generic": false
+  }
+ ],
+ "solve": [
+  {
+   "id": "GS-01",
+   "annex": false,
+   "n_monos": 2,
+   "r": 2,
+   "per_q": {
+    "2": {
+     "pin": false,
+     "free": false,
+     "bound": true
+    },
+    "3": {
+     "pin": true,
+     "free": true
+    },
+    "4": {
+     "pin": true,
+     "free": true
+    },
+    "5": {
+     "pin": true,
+     "free": true
+    },
+    "7": {
+     "pin": true,
+     "free": true
+    },
+    "8": {
+     "pin": true,
+     "free": true
+    },
+    "9": {
+     "pin": true,
+     "free": true
+    },
+    "11": {
+     "pin": true,
+     "free": true
+    },
+    "13": {
+     "pin": true,
+     "free": true
+    },
+    "16": {
+     "pin": true,
+     "free": true
+    }
+   },
+   "min_q": 3,
+   "min_q_free": 3,
+   "wit": {
+    "q": 3,
+    "ps0": [
+     2
+    ],
+    "ps1": [
+     1
+    ],
+    "x1": [
+     1
+    ],
+    "rhos": [
+     [
+      1
+     ]
+    ],
+    "I1": true,
+    "I3": false
+   }
+  },
+  {
+   "id": "GS-02",
+   "annex": false,
+   "n_monos": 2,
+   "r": 2,
+   "per_q": {
+    "2": {
+     "pin": false,
+     "free": false,
+     "bound": true
+    },
+    "3": {
+     "pin": true,
+     "free": true
+    },
+    "4": {
+     "pin": true,
+     "free": true
+    },
+    "5": {
+     "pin": true,
+     "free": true
+    },
+    "7": {
+     "pin": true,
+     "free": true
+    },
+    "8": {
+     "pin": true,
+     "free": true
+    },
+    "9": {
+     "pin": true,
+     "free": true
+    },
+    "11": {
+     "pin": true,
+     "free": true
+    },
+    "13": {
+     "pin": true,
+     "free": true
+    },
+    "16": {
+     "pin": true,
+     "free": true
+    }
+   },
+   "min_q": 3,
+   "min_q_free": 3,
+   "wit": {
+    "q": 3,
+    "ps0": [
+     2
+    ],
+    "ps1": [
+     1
+    ],
+    "x1": [
+     1
+    ],
+    "rhos": [
+     [
+      2
+     ]
+    ],
+    "I1": true,
+    "I3": false
+   }
+  },
+  {
+   "id": "GS-03",
+   "annex": false,
+   "n_monos": 2,
+   "r": 2,
+   "per_q": {
+    "2": {
+     "pin": false,
+     "free": false,
+     "bound": true
+    },
+    "3": {
+     "pin": true,
+     "free": true
+    },
+    "4": {
+     "pin": true,
+     "free": true
+    },
+    "5": {
+     "pin": true,
+     "free": true
+    },
+    "7": {
+     "pin": true,
+     "free": true
+    },
+    "8": {
+     "pin": true,
+     "free": true
+    },
+    "9": {
+     "pin": true,
+     "free": true
+    },
+    "11": {
+     "pin": true,
+     "free": true
+    },
+    "13": {
+     "pin": true,
+     "free": true
+    },
+    "16": {
+     "pin": true,
+     "free": true
+    }
+   },
+   "min_q": 3,
+   "min_q_free": 3,
+   "wit": {
+    "q": 3,
+    "ps0": [
+     2
+    ],
+    "ps1": [
+     1
+    ],
+    "x1": [
+     1
+    ],
+    "rhos": [
+     [
+      1
+     ]
+    ],
+    "I1": true,
+    "I3": false
+   }
+  },
+  {
+   "id": "GS-04",
+   "annex": false,
+   "n_monos": 3,
+   "r": 2,
+   "per_q": {
+    "2": {
+     "pin": false,
+     "free": false,
+     "bound": true
+    },
+    "3": {
+     "pin": false,
+     "free": false,
+     "bound": true
+    },
+    "4": {
+     "pin": true,
+     "free": true
+    },
+    "5": {
+     "pin": true,
+     "free": true
+    },
+    "7": {
+     "pin": true,
+     "free": true
+    },
+    "8": {
+     "pin": true,
+     "free": true
+    },
+    "9": {
+     "pin": true,
+     "free": true
+    },
+    "11": {
+     "pin": true,
+     "free": true
+    },
+    "13": {
+     "pin": true,
+     "free": true
+    },
+    "16": {
+     "pin": true,
+     "free": true
+    }
+   },
+   "min_q": 4,
+   "min_q_free": 4,
+   "wit": {
+    "q": 4,
+    "ps0": [
+     0,
+     1
+    ],
+    "ps1": [
+     0,
+     1
+    ],
+    "x1": [
+     0,
+     1
+    ],
+    "rhos": [
+     [
+      1,
+      0
+     ]
+    ],
+    "I1": false,
+    "I3": false
+   }
+  },
+  {
+   "id": "GS-05",
+   "annex": false,
+   "n_monos": 3,
+   "r": 2,
+   "per_q": {
+    "2": {
+     "pin": false,
+     "free": false,
+     "bound": true
+    },
+    "3": {
+     "pin": false,
+     "free": false,
+     "bound": true
+    },
+    "4": {
+     "pin": true,
+     "free": true
+    },
+    "5": {
+     "pin": true,
+     "free": true
+    },
+    "7": {
+     "pin": true,
+     "free": true
+    },
+    "8": {
+     "pin": true,
+     "free": true
+    },
+    "9": {
+     "pin": true,
+     "free": true
+    },
+    "11": {
+     "pin": true,
+     "free": true
+    },
+    "13": {
+     "pin": true,
+     "free": true
+    },
+    "16": {
+     "pin": true,
+     "free": true
+    }
+   },
+   "min_q": 4,
+   "min_q_free": 4,
+   "wit": {
+    "q": 4,
+    "ps0": [
+     0,
+     1
+    ],
+    "ps1": [
+     0,
+     1
+    ],
+    "x1": [
+     0,
+     1
+    ],
+    "rhos": [
+     [
+      1,
+      0
+     ]
+    ],
+    "I1": false,
+    "I3": false
+   }
+  },
+  {
+   "id": "GS-06",
+   "annex": false,
+   "n_monos": 3,
+   "r": 2,
+   "per_q": {
+    "2": {
+     "pin": false,
+     "free": false,
+     "bound": true
+    },
+    "3": {
+     "pin": false,
+     "free": false,
+     "bound": true
+    },
+    "4": {
+     "pin": true,
+     "free": true
+    },
+    "5": {
+     "pin": true,
+     "free": true
+    },
+    "7": {
+     "pin": true,
+     "free": true
+    },
+    "8": {
+     "pin": true,
+     "free": true
+    },
+    "9": {
+     "pin": true,
+     "free": true
+    },
+    "11": {
+     "pin": true,
+     "free": true
+    },
+    "13": {
+     "pin": true,
+     "free": true
+    },
+    "16": {
+     "pin": true,
+     "free": true
+    }
+   },
+   "min_q": 4,
+   "min_q_free": 4,
+   "wit": {
+    "q": 4,
+    "ps0": [
+     0,
+     1
+    ],
+    "ps1": [
+     0,
+     1
+    ],
+    "x1": [
+     0,
+     1
+    ],
+    "rhos": [
+     [
+      0,
+      1
+     ]
+    ],
+    "I1": false,
+    "I3": false
+   }
+  },
+  {
+   "id": "GS-07",
+   "annex": false,
+   "n_monos": 2,
+   "r": 2,
+   "per_q": {
+    "2": {
+     "pin": false,
+     "free": false,
+     "bound": true
+    },
+    "3": {
+     "pin": true,
+     "free": true
+    },
+    "4": {
+     "pin": true,
+     "free": true
+    },
+    "5": {
+     "pin": true,
+     "free": true
+    },
+    "7": {
+     "pin": true,
+     "free": true
+    },
+    "8": {
+     "pin": true,
+     "free": true
+    },
+    "9": {
+     "pin": true,
+     "free": true
+    },
+    "11": {
+     "pin": true,
+     "free": true
+    },
+    "13": {
+     "pin": true,
+     "free": true
+    },
+    "16": {
+     "pin": true,
+     "free": true
+    }
+   },
+   "min_q": 3,
+   "min_q_free": 3,
+   "wit": {
+    "q": 3,
+    "ps0": [
+     2
+    ],
+    "ps1": [
+     1
+    ],
+    "x1": [
+     1
+    ],
+    "rhos": [
+     [
+      2
+     ]
+    ],
+    "I1": true,
+    "I3": false
+   }
+  },
+  {
+   "id": "GS-08",
+   "annex": false,
+   "n_monos": 3,
+   "r": 2,
+   "per_q": {
+    "2": {
+     "pin": false,
+     "free": false,
+     "bound": true
+    },
+    "3": {
+     "pin": false,
+     "free": false,
+     "bound": true
+    },
+    "4": {
+     "pin": true,
+     "free": true
+    },
+    "5": {
+     "pin": true,
+     "free": true
+    },
+    "7": {
+     "pin": true,
+     "free": true
+    },
+    "8": {
+     "pin": true,
+     "free": true
+    },
+    "9": {
+     "pin": true,
+     "free": true
+    },
+    "11": {
+     "pin": true,
+     "free": true
+    },
+    "13": {
+     "pin": true,
+     "free": true
+    },
+    "16": {
+     "pin": true,
+     "free": true
+    }
+   },
+   "min_q": 4,
+   "min_q_free": 4,
+   "wit": {
+    "q": 4,
+    "ps0": [
+     0,
+     1
+    ],
+    "ps1": [
+     0,
+     1
+    ],
+    "x1": [
+     0,
+     1
+    ],
+    "rhos": [
+     [
+      1,
+      1
+     ]
+    ],
+    "I1": false,
+    "I3": false
+   }
+  },
+  {
+   "id": "GS-09",
+   "annex": false,
+   "n_monos": 3,
+   "r": 2,
+   "per_q": {
+    "2": {
+     "pin": false,
+     "free": false,
+     "bound": true
+    },
+    "3": {
+     "pin": false,
+     "free": false,
+     "bound": true
+    },
+    "4": {
+     "pin": true,
+     "free": true
+    },
+    "5": {
+     "pin": true,
+     "free": true
+    },
+    "7": {
+     "pin": true,
+     "free": true
+    },
+    "8": {
+     "pin": true,
+     "free": true
+    },
+    "9": {
+     "pin": true,
+     "free": true
+    },
+    "11": {
+     "pin": true,
+     "free": true
+    },
+    "13": {
+     "pin": true,
+     "free": true
+    },
+    "16": {
+     "pin": true,
+     "free": true
+    }
+   },
+   "min_q": 4,
+   "min_q_free": 4,
+   "wit": {
+    "q": 4,
+    "ps0": [
+     0,
+     1
+    ],
+    "ps1": [
+     0,
+     1
+    ],
+    "x1": [
+     0,
+     1
+    ],
+    "rhos": [
+     [
+      1,
+      0
+     ]
+    ],
+    "I1": false,
+    "I3": false
+   }
+  },
+  {
+   "id": "GS-10",
+   "annex": false,
+   "n_monos": 3,
+   "r": 2,
+   "per_q": {
+    "2": {
+     "pin": false,
+     "free": false,
+     "bound": true
+    },
+    "3": {
+     "pin": false,
+     "free": false,
+     "bound": true
+    },
+    "4": {
+     "pin": true,
+     "free": true
+    },
+    "5": {
+     "pin": true,
+     "free": true
+    },
+    "7": {
+     "pin": true,
+     "free": true
+    },
+    "8": {
+     "pin": true,
+     "free": true
+    },
+    "9": {
+     "pin": true,
+     "free": true
+    },
+    "11": {
+     "pin": true,
+     "free": true
+    },
+    "13": {
+     "pin": true,
+     "free": true
+    },
+    "16": {
+     "pin": true,
+     "free": true
+    }
+   },
+   "min_q": 4,
+   "min_q_free": 4,
+   "wit": {
+    "q": 4,
+    "ps0": [
+     0,
+     1
+    ],
+    "ps1": [
+     0,
+     1
+    ],
+    "x1": [
+     0,
+     1
+    ],
+    "rhos": [
+     [
+      1,
+      0
+     ]
+    ],
+    "I1": false,
+    "I3": false
+   }
+  },
+  {
+   "id": "GS-11",
+   "annex": false,
+   "n_monos": 3,
+   "r": 2,
+   "per_q": {
+    "2": {
+     "pin": false,
+     "free": false,
+     "bound": true
+    },
+    "3": {
+     "pin": false,
+     "free": false,
+     "bound": true
+    },
+    "4": {
+     "pin": true,
+     "free": true
+    },
+    "5": {
+     "pin": true,
+     "free": true
+    },
+    "7": {
+     "pin": true,
+     "free": true
+    },
+    "8": {
+     "pin": true,
+     "free": true
+    },
+    "9": {
+     "pin": true,
+     "free": true
+    },
+    "11": {
+     "pin": true,
+     "free": true
+    },
+    "13": {
+     "pin": true,
+     "free": true
+    },
+    "16": {
+     "pin": true,
+     "free": true
+    }
+   },
+   "min_q": 4,
+   "min_q_free": 4,
+   "wit": {
+    "q": 4,
+    "ps0": [
+     0,
+     1
+    ],
+    "ps1": [
+     0,
+     1
+    ],
+    "x1": [
+     0,
+     1
+    ],
+    "rhos": [
+     [
+      1,
+      1
+     ]
+    ],
+    "I1": false,
+    "I3": false
+   }
+  },
+  {
+   "id": "GS-12",
+   "annex": false,
+   "n_monos": 4,
+   "r": 2,
+   "per_q": {
+    "2": {
+     "pin": false,
+     "free": false,
+     "bound": true
+    },
+    "3": {
+     "pin": false,
+     "free": false,
+     "bound": true
+    },
+    "4": {
+     "pin": false,
+     "free": false,
+     "bound": true
+    },
+    "5": {
+     "pin": true,
+     "free": true
+    },
+    "7": {
+     "pin": true,
+     "free": true
+    },
+    "8": {
+     "pin": true,
+     "free": true
+    },
+    "9": {
+     "pin": true,
+     "free": true
+    },
+    "11": {
+     "pin": true,
+     "free": true
+    },
+    "13": {
+     "pin": true,
+     "free": true
+    },
+    "16": {
+     "pin": true,
+     "free": true
+    }
+   },
+   "min_q": 5,
+   "min_q_free": 5,
+   "wit": {
+    "q": 5,
+    "ps0": [
+     2
+    ],
+    "ps1": [
+     1
+    ],
+    "x1": [
+     2
+    ],
+    "rhos": [
+     [
+      4
+     ]
+    ],
+    "I1": false,
+    "I3": false
+   }
+  },
+  {
+   "id": "GS-13",
+   "annex": false,
+   "n_monos": 4,
+   "r": 3,
+   "per_q": {
+    "2": {
+     "pin": false,
+     "free": false,
+     "bound": true
+    },
+    "3": {
+     "pin": false,
+     "free": false,
+     "bound": true
+    },
+    "4": {
+     "pin": false,
+     "free": false,
+     "bound": true
+    },
+    "5": {
+     "pin": true,
+     "free": true
+    },
+    "7": {
+     "pin": true,
+     "free": true
+    },
+    "8": {
+     "pin": true,
+     "free": true
+    },
+    "9": {
+     "pin": true,
+     "free": true
+    },
+    "11": {
+     "pin": true,
+     "free": true
+    },
+    "13": {
+     "pin": true,
+     "free": true
+    },
+    "16": {
+     "pin": true,
+     "free": true
+    }
+   },
+   "min_q": 5,
+   "min_q_free": 5,
+   "wit": {
+    "q": 5,
+    "ps0": [
+     2
+    ],
+    "ps1": [
+     1
+    ],
+    "x1": [
+     1
+    ],
+    "rhos": [
+     [
+      2
+     ],
+     [
+      3
+     ]
+    ],
+    "I1": true,
+    "I3": false
+   }
+  },
+  {
+   "id": "GS-14",
+   "annex": false,
+   "n_monos": 4,
+   "r": 3,
+   "per_q": {
+    "2": {
+     "pin": false,
+     "free": false,
+     "bound": true
+    },
+    "3": {
+     "pin": false,
+     "free": false,
+     "bound": true
+    },
+    "4": {
+     "pin": false,
+     "free": false,
+     "bound": true
+    },
+    "5": {
+     "pin": true,
+     "free": true
+    },
+    "7": {
+     "pin": true,
+     "free": true
+    },
+    "8": {
+     "pin": true,
+     "free": true
+    },
+    "9": {
+     "pin": true,
+     "free": true
+    },
+    "11": {
+     "pin": true,
+     "free": true
+    },
+    "13": {
+     "pin": true,
+     "free": true
+    },
+    "16": {
+     "pin": true,
+     "free": true
+    }
+   },
+   "min_q": 5,
+   "min_q_free": 5,
+   "wit": {
+    "q": 5,
+    "ps0": [
+     1
+    ],
+    "ps1": [
+     1
+    ],
+    "x1": [
+     2
+    ],
+    "rhos": [
+     [
+      2
+     ],
+     [
+      4
+     ]
+    ],
+    "I1": false,
+    "I3": true
+   }
+  },
+  {
+   "id": "GS-15",
+   "annex": false,
+   "n_monos": 5,
+   "r": 2,
+   "per_q": {
+    "2": {
+     "pin": false,
+     "free": false,
+     "bound": true
+    },
+    "3": {
+     "pin": false,
+     "free": false,
+     "bound": true
+    },
+    "4": {
+     "pin": false,
+     "free": false,
+     "bound": true
+    },
+    "5": {
+     "pin": false,
+     "free": false,
+     "bound": true
+    },
+    "7": {
+     "pin": true,
+     "free": true
+    },
+    "8": {
+     "pin": true,
+     "free": true
+    },
+    "9": {
+     "pin": true,
+     "free": true
+    },
+    "11": {
+     "pin": true,
+     "free": true
+    },
+    "13": {
+     "pin": true,
+     "free": true
+    },
+    "16": {
+     "pin": true,
+     "free": true
+    }
+   },
+   "min_q": 7,
+   "min_q_free": 7,
+   "wit": {
+    "q": 7,
+    "ps0": [
+     1
+    ],
+    "ps1": [
+     3
+    ],
+    "x1": [
+     1
+    ],
+    "rhos": [
+     [
+      2
+     ]
+    ],
+    "I1": false,
+    "I3": false
+   }
+  },
+  {
+   "id": "GS-16",
+   "annex": false,
+   "n_monos": 4,
+   "r": 2,
+   "per_q": {
+    "2": {
+     "pin": false,
+     "free": false,
+     "bound": true
+    },
+    "3": {
+     "pin": false,
+     "free": false,
+     "bound": true
+    },
+    "4": {
+     "pin": false,
+     "free": false,
+     "bound": true
+    },
+    "5": {
+     "pin": true,
+     "free": true
+    },
+    "7": {
+     "pin": true,
+     "free": true
+    },
+    "8": {
+     "pin": true,
+     "free": true
+    },
+    "9": {
+     "pin": true,
+     "free": true
+    },
+    "11": {
+     "pin": true,
+     "free": true
+    },
+    "13": {
+     "pin": true,
+     "free": true
+    },
+    "16": {
+     "pin": true,
+     "free": true
+    }
+   },
+   "min_q": 5,
+   "min_q_free": 5,
+   "wit": {
+    "q": 5,
+    "ps0": [
+     2
+    ],
+    "ps1": [
+     1
+    ],
+    "x1": [
+     1
+    ],
+    "rhos": [
+     [
+      4
+     ]
+    ],
+    "I1": true,
+    "I3": false
+   }
+  },
+  {
+   "id": "GS-17",
+   "annex": false,
+   "n_monos": 4,
+   "r": 2,
+   "per_q": {
+    "2": {
+     "pin": false,
+     "free": false,
+     "bound": true
+    },
+    "3": {
+     "pin": false,
+     "free": false,
+     "bound": true
+    },
+    "4": {
+     "pin": false,
+     "free": false,
+     "bound": true
+    },
+    "5": {
+     "pin": true,
+     "free": true
+    },
+    "7": {
+     "pin": true,
+     "free": true
+    },
+    "8": {
+     "pin": true,
+     "free": true
+    },
+    "9": {
+     "pin": true,
+     "free": true
+    },
+    "11": {
+     "pin": true,
+     "free": true
+    },
+    "13": {
+     "pin": true,
+     "free": true
+    },
+    "16": {
+     "pin": true,
+     "free": true
+    }
+   },
+   "min_q": 5,
+   "min_q_free": 5,
+   "wit": {
+    "q": 5,
+    "ps0": [
+     2
+    ],
+    "ps1": [
+     1
+    ],
+    "x1": [
+     2
+    ],
+    "rhos": [
+     [
+      4
+     ]
+    ],
+    "I1": false,
+    "I3": false
+   }
+  },
+  {
+   "id": "GS-18",
+   "annex": false,
+   "n_monos": 4,
+   "r": 3,
+   "per_q": {
+    "2": {
+     "pin": false,
+     "free": false,
+     "bound": true
+    },
+    "3": {
+     "pin": false,
+     "free": false,
+     "bound": true
+    },
+    "4": {
+     "pin": false,
+     "free": false,
+     "bound": true
+    },
+    "5": {
+     "pin": true,
+     "free": true
+    },
+    "7": {
+     "pin": true,
+     "free": true
+    },
+    "8": {
+     "pin": true,
+     "free": true
+    },
+    "9": {
+     "pin": true,
+     "free": true
+    },
+    "11": {
+     "pin": true,
+     "free": true
+    },
+    "13": {
+     "pin": true,
+     "free": true
+    },
+    "16": {
+     "pin": true,
+     "free": true
+    }
+   },
+   "min_q": 5,
+   "min_q_free": 5,
+   "wit": {
+    "q": 5,
+    "ps0": [
+     2
+    ],
+    "ps1": [
+     1
+    ],
+    "x1": [
+     1
+    ],
+    "rhos": [
+     [
+      2
+     ],
+     [
+      3
+     ]
+    ],
+    "I1": true,
+    "I3": false
+   }
+  },
+  {
+   "id": "GS-19",
+   "annex": false,
+   "n_monos": 5,
+   "r": 2,
+   "per_q": {
+    "2": {
+     "pin": false,
+     "free": false,
+     "bound": true
+    },
+    "3": {
+     "pin": false,
+     "free": false,
+     "bound": true
+    },
+    "4": {
+     "pin": false,
+     "free": false,
+     "bound": true
+    },
+    "5": {
+     "pin": false,
+     "free": false,
+     "bound": true
+    },
+    "7": {
+     "pin": true,
+     "free": true
+    },
+    "8": {
+     "pin": true,
+     "free": true
+    },
+    "9": {
+     "pin": true,
+     "free": true
+    },
+    "11": {
+     "pin": true,
+     "free": true
+    },
+    "13": {
+     "pin": true,
+     "free": true
+    },
+    "16": {
+     "pin": true,
+     "free": true
+    }
+   },
+   "min_q": 7,
+   "min_q_free": 7,
+   "wit": {
+    "q": 7,
+    "ps0": [
+     1
+    ],
+    "ps1": [
+     3
+    ],
+    "x1": [
+     1
+    ],
+    "rhos": [
+     [
+      2
+     ]
+    ],
+    "I1": false,
+    "I3": false
+   }
+  },
+  {
+   "id": "GS-20",
+   "annex": false,
+   "n_monos": 3,
+   "r": 2,
+   "per_q": {
+    "2": {
+     "pin": false,
+     "free": false,
+     "bound": true
+    },
+    "3": {
+     "pin": false,
+     "free": false,
+     "bound": true
+    },
+    "4": {
+     "pin": true,
+     "free": true
+    },
+    "5": {
+     "pin": true,
+     "free": true
+    },
+    "7": {
+     "pin": true,
+     "free": true
+    },
+    "8": {
+     "pin": true,
+     "free": true
+    },
+    "9": {
+     "pin": true,
+     "free": true
+    },
+    "11": {
+     "pin": true,
+     "free": true
+    },
+    "13": {
+     "pin": true,
+     "free": true
+    },
+    "16": {
+     "pin": true,
+     "free": true
+    }
+   },
+   "min_q": 4,
+   "min_q_free": 4,
+   "wit": {
+    "q": 4,
+    "ps0": [
+     0,
+     1
+    ],
+    "ps1": [
+     0,
+     1
+    ],
+    "x1": [
+     0,
+     1
+    ],
+    "rhos": [
+     [
+      1,
+      0
+     ]
+    ],
+    "I1": false,
+    "I3": false
+   }
+  },
+  {
+   "id": "GS-21",
+   "annex": false,
+   "n_monos": 3,
+   "r": 2,
+   "per_q": {
+    "2": {
+     "pin": false,
+     "free": false,
+     "bound": true
+    },
+    "3": {
+     "pin": false,
+     "free": false,
+     "bound": true
+    },
+    "4": {
+     "pin": true,
+     "free": true
+    },
+    "5": {
+     "pin": true,
+     "free": true
+    },
+    "7": {
+     "pin": true,
+     "free": true
+    },
+    "8": {
+     "pin": true,
+     "free": true
+    },
+    "9": {
+     "pin": true,
+     "free": true
+    },
+    "11": {
+     "pin": true,
+     "free": true
+    },
+    "13": {
+     "pin": true,
+     "free": true
+    },
+    "16": {
+     "pin": true,
+     "free": true
+    }
+   },
+   "min_q": 4,
+   "min_q_free": 4,
+   "wit": {
+    "q": 4,
+    "ps0": [
+     0,
+     1
+    ],
+    "ps1": [
+     0,
+     1
+    ],
+    "x1": [
+     0,
+     1
+    ],
+    "rhos": [
+     [
+      1,
+      0
+     ]
+    ],
+    "I1": false,
+    "I3": false
+   }
+  },
+  {
+   "id": "GS-22",
+   "annex": false,
+   "n_monos": 6,
+   "r": 3,
+   "per_q": {
+    "2": {
+     "pin": false,
+     "free": false,
+     "bound": true
+    },
+    "3": {
+     "pin": false,
+     "free": false,
+     "bound": true
+    },
+    "4": {
+     "pin": false,
+     "free": false,
+     "bound": true
+    },
+    "5": {
+     "pin": false,
+     "free": false,
+     "bound": true
+    },
+    "7": {
+     "pin": true,
+     "free": true
+    },
+    "8": {
+     "pin": true,
+     "free": true
+    },
+    "9": {
+     "pin": true,
+     "free": true
+    },
+    "11": {
+     "pin": true,
+     "free": true
+    },
+    "13": {
+     "pin": true,
+     "free": true
+    },
+    "16": {
+     "pin": true,
+     "free": true
+    }
+   },
+   "min_q": 7,
+   "min_q_free": 7,
+   "wit": {
+    "q": 7,
+    "ps0": [
+     1
+    ],
+    "ps1": [
+     3
+    ],
+    "x1": [
+     1
+    ],
+    "rhos": [
+     [
+      2
+     ],
+     [
+      5
+     ]
+    ],
+    "I1": false,
+    "I3": false
+   }
+  },
+  {
+   "id": "GS-23",
+   "annex": false,
+   "n_monos": 5,
+   "r": 3,
+   "per_q": {
+    "2": {
+     "pin": false,
+     "free": false,
+     "bound": true
+    },
+    "3": {
+     "pin": false,
+     "free": false,
+     "bound": true
+    },
+    "4": {
+     "pin": false,
+     "free": false,
+     "bound": true
+    },
+    "5": {
+     "pin": false,
+     "free": false,
+     "bound": true
+    },
+    "7": {
+     "pin": true,
+     "free": true
+    },
+    "8": {
+     "pin": true,
+     "free": true
+    },
+    "9": {
+     "pin": true,
+     "free": true
+    },
+    "11": {
+     "pin": true,
+     "free": true
+    },
+    "13": {
+     "pin": true,
+     "free": true
+    },
+    "16": {
+     "pin": true,
+     "free": true
+    }
+   },
+   "min_q": 7,
+   "min_q_free": 7,
+   "wit": {
+    "q": 7,
+    "ps0": [
+     1
+    ],
+    "ps1": [
+     3
+    ],
+    "x1": [
+     1
+    ],
+    "rhos": [
+     [
+      1
+     ],
+     [
+      4
+     ]
+    ],
+    "I1": false,
+    "I3": false
+   }
+  },
+  {
+   "id": "GS-24",
+   "annex": false,
+   "n_monos": 6,
+   "r": 2,
+   "per_q": {
+    "2": {
+     "pin": false,
+     "free": false,
+     "bound": true
+    },
+    "3": {
+     "pin": false,
+     "free": false,
+     "bound": true
+    },
+    "4": {
+     "pin": false,
+     "free": false,
+     "bound": true
+    },
+    "5": {
+     "pin": false,
+     "free": false,
+     "bound": true
+    },
+    "7": {
+     "pin": true,
+     "free": true
+    },
+    "8": {
+     "pin": true,
+     "free": true
+    },
+    "9": {
+     "pin": true,
+     "free": true
+    },
+    "11": {
+     "pin": true,
+     "free": true
+    },
+    "13": {
+     "pin": true,
+     "free": true
+    },
+    "16": {
+     "pin": true,
+     "free": true
+    }
+   },
+   "min_q": 7,
+   "min_q_free": 7,
+   "wit": {
+    "q": 7,
+    "ps0": [
+     1
+    ],
+    "ps1": [
+     3
+    ],
+    "x1": [
+     1
+    ],
+    "rhos": [
+     [
+      2
+     ]
+    ],
+    "I1": false,
+    "I3": false
+   }
+  },
+  {
+   "id": "GS-25",
+   "annex": false,
+   "n_monos": 5,
+   "r": 2,
+   "per_q": {
+    "2": {
+     "pin": false,
+     "free": false,
+     "bound": true
+    },
+    "3": {
+     "pin": false,
+     "free": false,
+     "bound": true
+    },
+    "4": {
+     "pin": false,
+     "free": false,
+     "bound": true
+    },
+    "5": {
+     "pin": false,
+     "free": false,
+     "bound": true
+    },
+    "7": {
+     "pin": true,
+     "free": true
+    },
+    "8": {
+     "pin": true,
+     "free": true
+    },
+    "9": {
+     "pin": true,
+     "free": true
+    },
+    "11": {
+     "pin": true,
+     "free": true
+    },
+    "13": {
+     "pin": true,
+     "free": true
+    },
+    "16": {
+     "pin": true,
+     "free": true
+    }
+   },
+   "min_q": 7,
+   "min_q_free": 7,
+   "wit": {
+    "q": 7,
+    "ps0": [
+     1
+    ],
+    "ps1": [
+     3
+    ],
+    "x1": [
+     1
+    ],
+    "rhos": [
+     [
+      3
+     ]
+    ],
+    "I1": false,
+    "I3": false
+   }
+  },
+  {
+   "id": "GS-26",
+   "annex": false,
+   "n_monos": 3,
+   "r": 2,
+   "per_q": {
+    "2": {
+     "pin": false,
+     "free": false,
+     "bound": true
+    },
+    "3": {
+     "pin": false,
+     "free": false,
+     "bound": true
+    },
+    "4": {
+     "pin": true,
+     "free": true
+    },
+    "5": {
+     "pin": true,
+     "free": true
+    },
+    "7": {
+     "pin": true,
+     "free": true
+    },
+    "8": {
+     "pin": true,
+     "free": true
+    },
+    "9": {
+     "pin": true,
+     "free": true
+    },
+    "11": {
+     "pin": true,
+     "free": true
+    },
+    "13": {
+     "pin": true,
+     "free": true
+    },
+    "16": {
+     "pin": true,
+     "free": true
+    }
+   },
+   "min_q": 4,
+   "min_q_free": 4,
+   "wit": {
+    "q": 4,
+    "ps0": [
+     0,
+     1
+    ],
+    "ps1": [
+     0,
+     1
+    ],
+    "x1": [
+     0,
+     1
+    ],
+    "rhos": [
+     [
+      1,
+      1
+     ]
+    ],
+    "I1": false,
+    "I3": false
+   }
+  },
+  {
+   "id": "GS-27",
+   "annex": false,
+   "n_monos": 6,
+   "r": 3,
+   "per_q": {
+    "2": {
+     "pin": false,
+     "free": false,
+     "bound": true
+    },
+    "3": {
+     "pin": false,
+     "free": false,
+     "bound": true
+    },
+    "4": {
+     "pin": false,
+     "free": false,
+     "bound": true
+    },
+    "5": {
+     "pin": false,
+     "free": false,
+     "bound": true
+    },
+    "7": {
+     "pin": true,
+     "free": true
+    },
+    "8": {
+     "pin": true,
+     "free": true
+    },
+    "9": {
+     "pin": true,
+     "free": true
+    },
+    "11": {
+     "pin": true,
+     "free": true
+    },
+    "13": {
+     "pin": true,
+     "free": true
+    },
+    "16": {
+     "pin": true,
+     "free": true
+    }
+   },
+   "min_q": 7,
+   "min_q_free": 7,
+   "wit": {
+    "q": 7,
+    "ps0": [
+     1
+    ],
+    "ps1": [
+     3
+    ],
+    "x1": [
+     1
+    ],
+    "rhos": [
+     [
+      2
+     ],
+     [
+      5
+     ]
+    ],
+    "I1": false,
+    "I3": false
+   }
+  },
+  {
+   "id": "GS-28",
+   "annex": false,
+   "n_monos": 5,
+   "r": 2,
+   "per_q": {
+    "2": {
+     "pin": false,
+     "free": false,
+     "bound": true
+    },
+    "3": {
+     "pin": false,
+     "free": false,
+     "bound": true
+    },
+    "4": {
+     "pin": false,
+     "free": false,
+     "bound": true
+    },
+    "5": {
+     "pin": false,
+     "free": false,
+     "bound": true
+    },
+    "7": {
+     "pin": true,
+     "free": true
+    },
+    "8": {
+     "pin": true,
+     "free": true
+    },
+    "9": {
+     "pin": true,
+     "free": true
+    },
+    "11": {
+     "pin": true,
+     "free": true
+    },
+    "13": {
+     "pin": true,
+     "free": true
+    },
+    "16": {
+     "pin": true,
+     "free": true
+    }
+   },
+   "min_q": 7,
+   "min_q_free": 7,
+   "wit": {
+    "q": 7,
+    "ps0": [
+     1
+    ],
+    "ps1": [
+     3
+    ],
+    "x1": [
+     1
+    ],
+    "rhos": [
+     [
+      1
+     ]
+    ],
+    "I1": false,
+    "I3": false
+   }
+  },
+  {
+   "id": "GS-29",
+   "annex": false,
+   "n_monos": 7,
+   "r": 2,
+   "per_q": {
+    "2": {
+     "pin": false,
+     "free": false,
+     "bound": true
+    },
+    "3": {
+     "pin": false,
+     "free": false,
+     "bound": true
+    },
+    "4": {
+     "pin": false,
+     "free": false,
+     "bound": true
+    },
+    "5": {
+     "pin": false,
+     "free": false,
+     "bound": true
+    },
+    "7": {
+     "pin": false,
+     "free": false,
+     "bound": true
+    },
+    "8": {
+     "pin": true,
+     "free": true
+    },
+    "9": {
+     "pin": true,
+     "free": true
+    },
+    "11": {
+     "pin": true,
+     "free": true
+    },
+    "13": {
+     "pin": true,
+     "free": true
+    },
+    "16": {
+     "pin": true,
+     "free": true
+    }
+   },
+   "min_q": 8,
+   "min_q_free": 8,
+   "wit": {
+    "q": 8,
+    "ps0": [
+     0,
+     0,
+     1
+    ],
+    "ps1": [
+     0,
+     0,
+     1
+    ],
+    "x1": [
+     0,
+     0,
+     1
+    ],
+    "rhos": [
+     [
+      0,
+      1,
+      0
+     ]
+    ],
+    "I1": false,
+    "I3": false
+   }
+  },
+  {
+   "id": "GS-30",
+   "annex": false,
+   "n_monos": 4,
+   "r": 2,
+   "per_q": {
+    "2": {
+     "pin": false,
+     "free": false,
+     "bound": true
+    },
+    "3": {
+     "pin": false,
+     "free": false,
+     "bound": true
+    },
+    "4": {
+     "pin": false,
+     "free": false,
+     "bound": true
+    },
+    "5": {
+     "pin": true,
+     "free": true
+    },
+    "7": {
+     "pin": true,
+     "free": true
+    },
+    "8": {
+     "pin": true,
+     "free": true
+    },
+    "9": {
+     "pin": true,
+     "free": true
+    },
+    "11": {
+     "pin": true,
+     "free": true
+    },
+    "13": {
+     "pin": true,
+     "free": true
+    },
+    "16": {
+     "pin": true,
+     "free": true
+    }
+   },
+   "min_q": 5,
+   "min_q_free": 5,
+   "wit": {
+    "q": 5,
+    "ps0": [
+     2
+    ],
+    "ps1": [
+     1
+    ],
+    "x1": [
+     1
+    ],
+    "rhos": [
+     [
+      4
+     ]
+    ],
+    "I1": true,
+    "I3": false
+   }
+  },
+  {
+   "id": "GS-31",
+   "annex": false,
+   "n_monos": 4,
+   "r": 2,
+   "per_q": {
+    "2": {
+     "pin": false,
+     "free": false,
+     "bound": true
+    },
+    "3": {
+     "pin": false,
+     "free": false,
+     "bound": true
+    },
+    "4": {
+     "pin": false,
+     "free": false,
+     "bound": true
+    },
+    "5": {
+     "pin": true,
+     "free": true
+    },
+    "7": {
+     "pin": true,
+     "free": true
+    },
+    "8": {
+     "pin": true,
+     "free": true
+    },
+    "9": {
+     "pin": true,
+     "free": true
+    },
+    "11": {
+     "pin": true,
+     "free": true
+    },
+    "13": {
+     "pin": true,
+     "free": true
+    },
+    "16": {
+     "pin": true,
+     "free": true
+    }
+   },
+   "min_q": 5,
+   "min_q_free": 5,
+   "wit": {
+    "q": 5,
+    "ps0": [
+     2
+    ],
+    "ps1": [
+     1
+    ],
+    "x1": [
+     2
+    ],
+    "rhos": [
+     [
+      4
+     ]
+    ],
+    "I1": false,
+    "I3": false
+   }
+  },
+  {
+   "id": "GS-32",
+   "annex": false,
+   "n_monos": 4,
+   "r": 3,
+   "per_q": {
+    "2": {
+     "pin": false,
+     "free": false,
+     "bound": true
+    },
+    "3": {
+     "pin": false,
+     "free": false,
+     "bound": true
+    },
+    "4": {
+     "pin": false,
+     "free": false,
+     "bound": true
+    },
+    "5": {
+     "pin": true,
+     "free": true
+    },
+    "7": {
+     "pin": true,
+     "free": true
+    },
+    "8": {
+     "pin": true,
+     "free": true
+    },
+    "9": {
+     "pin": true,
+     "free": true
+    },
+    "11": {
+     "pin": true,
+     "free": true
+    },
+    "13": {
+     "pin": true,
+     "free": true
+    },
+    "16": {
+     "pin": true,
+     "free": true
+    }
+   },
+   "min_q": 5,
+   "min_q_free": 5,
+   "wit": {
+    "q": 5,
+    "ps0": [
+     2
+    ],
+    "ps1": [
+     1
+    ],
+    "x1": [
+     1
+    ],
+    "rhos": [
+     [
+      2
+     ],
+     [
+      3
+     ]
+    ],
+    "I1": true,
+    "I3": false
+   }
+  },
+  {
+   "id": "GS-33",
+   "annex": false,
+   "n_monos": 5,
+   "r": 3,
+   "per_q": {
+    "2": {
+     "pin": false,
+     "free": false,
+     "bound": true
+    },
+    "3": {
+     "pin": false,
+     "free": false,
+     "bound": true
+    },
+    "4": {
+     "pin": false,
+     "free": false,
+     "bound": true
+    },
+    "5": {
+     "pin": false,
+     "free": false,
+     "bound": true
+    },
+    "7": {
+     "pin": true,
+     "free": true
+    },
+    "8": {
+     "pin": true,
+     "free": true
+    },
+    "9": {
+     "pin": true,
+     "free": true
+    },
+    "11": {
+     "pin": true,
+     "free": true
+    },
+    "13": {
+     "pin": true,
+     "free": true
+    },
+    "16": {
+     "pin": true,
+     "free": true
+    }
+   },
+   "min_q": 7,
+   "min_q_free": 7,
+   "wit": {
+    "q": 7,
+    "ps0": [
+     1
+    ],
+    "ps1": [
+     3
+    ],
+    "x1": [
+     1
+    ],
+    "rhos": [
+     [
+      1
+     ],
+     [
+      4
+     ]
+    ],
+    "I1": false,
+    "I3": false
+   }
+  },
+  {
+   "id": "GS-34",
+   "annex": false,
+   "n_monos": 6,
+   "r": 2,
+   "per_q": {
+    "2": {
+     "pin": false,
+     "free": false,
+     "bound": true
+    },
+    "3": {
+     "pin": false,
+     "free": false,
+     "bound": true
+    },
+    "4": {
+     "pin": false,
+     "free": false,
+     "bound": true
+    },
+    "5": {
+     "pin": false,
+     "free": false,
+     "bound": true
+    },
+    "7": {
+     "pin": true,
+     "free": true
+    },
+    "8": {
+     "pin": true,
+     "free": true
+    },
+    "9": {
+     "pin": true,
+     "free": true
+    },
+    "11": {
+     "pin": true,
+     "free": true
+    },
+    "13": {
+     "pin": true,
+     "free": true
+    },
+    "16": {
+     "pin": true,
+     "free": true
+    }
+   },
+   "min_q": 7,
+   "min_q_free": 7,
+   "wit": {
+    "q": 7,
+    "ps0": [
+     1
+    ],
+    "ps1": [
+     3
+    ],
+    "x1": [
+     1
+    ],
+    "rhos": [
+     [
+      2
+     ]
+    ],
+    "I1": false,
+    "I3": false
+   }
+  },
+  {
+   "id": "GS-35",
+   "annex": false,
+   "n_monos": 5,
+   "r": 2,
+   "per_q": {
+    "2": {
+     "pin": false,
+     "free": false,
+     "bound": true
+    },
+    "3": {
+     "pin": false,
+     "free": false,
+     "bound": true
+    },
+    "4": {
+     "pin": false,
+     "free": false,
+     "bound": true
+    },
+    "5": {
+     "pin": false,
+     "free": false,
+     "bound": true
+    },
+    "7": {
+     "pin": true,
+     "free": true
+    },
+    "8": {
+     "pin": true,
+     "free": true
+    },
+    "9": {
+     "pin": true,
+     "free": true
+    },
+    "11": {
+     "pin": true,
+     "free": true
+    },
+    "13": {
+     "pin": true,
+     "free": true
+    },
+    "16": {
+     "pin": true,
+     "free": true
+    }
+   },
+   "min_q": 7,
+   "min_q_free": 7,
+   "wit": {
+    "q": 7,
+    "ps0": [
+     1
+    ],
+    "ps1": [
+     3
+    ],
+    "x1": [
+     1
+    ],
+    "rhos": [
+     [
+      2
+     ]
+    ],
+    "I1": false,
+    "I3": false
+   }
+  },
+  {
+   "id": "GS-36",
+   "annex": false,
+   "n_monos": 9,
+   "r": 3,
+   "per_q": {
+    "2": {
+     "pin": false,
+     "free": false,
+     "bound": true
+    },
+    "3": {
+     "pin": false,
+     "free": false,
+     "bound": true
+    },
+    "4": {
+     "pin": false,
+     "free": false,
+     "bound": true
+    },
+    "5": {
+     "pin": false,
+     "free": false,
+     "bound": true
+    },
+    "7": {
+     "pin": false,
+     "free": false,
+     "bound": true
+    },
+    "8": {
+     "pin": false,
+     "free": false,
+     "bound": true
+    },
+    "9": {
+     "pin": false,
+     "free": false,
+     "bound": true
+    },
+    "11": {
+     "pin": true,
+     "free": true
+    },
+    "13": {
+     "pin": true,
+     "free": true
+    },
+    "16": {
+     "pin": true,
+     "free": true
+    }
+   },
+   "min_q": 11,
+   "min_q_free": 11,
+   "wit": {
+    "q": 11,
+    "ps0": [
+     1
+    ],
+    "ps1": [
+     5
+    ],
+    "x1": [
+     1
+    ],
+    "rhos": [
+     [
+      2
+     ],
+     [
+      3
+     ]
+    ],
+    "I1": false,
+    "I3": false
+   }
+  },
+  {
+   "id": "GS-37",
+   "annex": false,
+   "n_monos": 7,
+   "r": 3,
+   "per_q": {
+    "2": {
+     "pin": false,
+     "free": false,
+     "bound": true
+    },
+    "3": {
+     "pin": false,
+     "free": false,
+     "bound": true
+    },
+    "4": {
+     "pin": false,
+     "free": false,
+     "bound": true
+    },
+    "5": {
+     "pin": false,
+     "free": false,
+     "bound": true
+    },
+    "7": {
+     "pin": false,
+     "free": false,
+     "bound": true
+    },
+    "8": {
+     "pin": true,
+     "free": true
+    },
+    "9": {
+     "pin": true,
+     "free": true
+    },
+    "11": {
+     "pin": true,
+     "free": true
+    },
+    "13": {
+     "pin": true,
+     "free": true
+    },
+    "16": {
+     "pin": true,
+     "free": true
+    }
+   },
+   "min_q": 8,
+   "min_q_free": 8,
+   "wit": {
+    "q": 8,
+    "ps0": [
+     0,
+     0,
+     1
+    ],
+    "ps1": [
+     0,
+     0,
+     1
+    ],
+    "x1": [
+     0,
+     0,
+     1
+    ],
+    "rhos": [
+     [
+      0,
+      0,
+      1
+     ],
+     [
+      0,
+      1,
+      0
+     ]
+    ],
+    "I1": false,
+    "I3": false
+   }
+  },
+  {
+   "id": "GS-38",
+   "annex": false,
+   "n_monos": 8,
+   "r": 2,
+   "per_q": {
+    "2": {
+     "pin": false,
+     "free": false,
+     "bound": true
+    },
+    "3": {
+     "pin": false,
+     "free": false,
+     "bound": true
+    },
+    "4": {
+     "pin": false,
+     "free": false,
+     "bound": true
+    },
+    "5": {
+     "pin": false,
+     "free": false,
+     "bound": true
+    },
+    "7": {
+     "pin": false,
+     "free": false,
+     "bound": true
+    },
+    "8": {
+     "pin": false,
+     "free": false,
+     "bound": true
+    },
+    "9": {
+     "pin": true,
+     "free": true
+    },
+    "11": {
+     "pin": true,
+     "free": true
+    },
+    "13": {
+     "pin": true,
+     "free": true
+    },
+    "16": {
+     "pin": true,
+     "free": true
+    }
+   },
+   "min_q": 9,
+   "min_q_free": 9,
+   "wit": {
+    "q": 9,
+    "ps0": [
+     0,
+     1
+    ],
+    "ps1": [
+     0,
+     1
+    ],
+    "x1": [
+     1,
+     1
+    ],
+    "rhos": [
+     [
+      1,
+      1
+     ]
+    ],
+    "I1": false,
+    "I3": false
+   }
+  },
+  {
+   "id": "GS-39",
+   "annex": false,
+   "n_monos": 6,
+   "r": 3,
+   "per_q": {
+    "2": {
+     "pin": false,
+     "free": false,
+     "bound": true
+    },
+    "3": {
+     "pin": false,
+     "free": false,
+     "bound": true
+    },
+    "4": {
+     "pin": false,
+     "free": false,
+     "bound": true
+    },
+    "5": {
+     "pin": false,
+     "free": false,
+     "bound": true
+    },
+    "7": {
+     "pin": true,
+     "free": true
+    },
+    "8": {
+     "pin": true,
+     "free": true
+    },
+    "9": {
+     "pin": true,
+     "free": true
+    },
+    "11": {
+     "pin": true,
+     "free": true
+    },
+    "13": {
+     "pin": true,
+     "free": true
+    },
+    "16": {
+     "pin": true,
+     "free": true
+    }
+   },
+   "min_q": 7,
+   "min_q_free": 7,
+   "wit": {
+    "q": 7,
+    "ps0": [
+     1
+    ],
+    "ps1": [
+     3
+    ],
+    "x1": [
+     1
+    ],
+    "rhos": [
+     [
+      2
+     ],
+     [
+      5
+     ]
+    ],
+    "I1": false,
+    "I3": false
+   }
+  },
+  {
+   "id": "GS-40",
+   "annex": false,
+   "n_monos": 7,
+   "r": 2,
+   "per_q": {
+    "2": {
+     "pin": false,
+     "free": false,
+     "bound": true
+    },
+    "3": {
+     "pin": false,
+     "free": false,
+     "bound": true
+    },
+    "4": {
+     "pin": false,
+     "free": false,
+     "bound": true
+    },
+    "5": {
+     "pin": false,
+     "free": false,
+     "bound": true
+    },
+    "7": {
+     "pin": false,
+     "free": false,
+     "bound": true
+    },
+    "8": {
+     "pin": true,
+     "free": true
+    },
+    "9": {
+     "pin": true,
+     "free": true
+    },
+    "11": {
+     "pin": true,
+     "free": true
+    },
+    "13": {
+     "pin": true,
+     "free": true
+    },
+    "16": {
+     "pin": true,
+     "free": true
+    }
+   },
+   "min_q": 8,
+   "min_q_free": 8,
+   "wit": {
+    "q": 8,
+    "ps0": [
+     0,
+     0,
+     1
+    ],
+    "ps1": [
+     0,
+     0,
+     1
+    ],
+    "x1": [
+     0,
+     0,
+     1
+    ],
+    "rhos": [
+     [
+      0,
+      1,
+      0
+     ]
+    ],
+    "I1": false,
+    "I3": false
+   }
+  },
+  {
+   "id": "GS-41",
+   "annex": false,
+   "n_monos": 9,
+   "r": 2,
+   "per_q": {
+    "2": {
+     "pin": false,
+     "free": false,
+     "bound": true
+    },
+    "3": {
+     "pin": false,
+     "free": false,
+     "bound": true
+    },
+    "4": {
+     "pin": false,
+     "free": false,
+     "bound": true
+    },
+    "5": {
+     "pin": false,
+     "free": false,
+     "bound": true
+    },
+    "7": {
+     "pin": false,
+     "free": false,
+     "bound": true
+    },
+    "8": {
+     "pin": false,
+     "free": false,
+     "bound": true
+    },
+    "9": {
+     "pin": false,
+     "free": false,
+     "bound": true
+    },
+    "11": {
+     "pin": true,
+     "free": true
+    },
+    "13": {
+     "pin": true,
+     "free": true
+    },
+    "16": {
+     "pin": true,
+     "free": true
+    }
+   },
+   "min_q": 11,
+   "min_q_free": 11,
+   "wit": {
+    "q": 11,
+    "ps0": [
+     1
+    ],
+    "ps1": [
+     5
+    ],
+    "x1": [
+     1
+    ],
+    "rhos": [
+     [
+      2
+     ]
+    ],
+    "I1": false,
+    "I3": false
+   }
+  },
+  {
+   "id": "GS-42",
+   "annex": false,
+   "n_monos": 9,
+   "r": 3,
+   "per_q": {
+    "2": {
+     "pin": false,
+     "free": false,
+     "bound": true
+    },
+    "3": {
+     "pin": false,
+     "free": false,
+     "bound": true
+    },
+    "4": {
+     "pin": false,
+     "free": false,
+     "bound": true
+    },
+    "5": {
+     "pin": false,
+     "free": false,
+     "bound": true
+    },
+    "7": {
+     "pin": false,
+     "free": false,
+     "bound": true
+    },
+    "8": {
+     "pin": false,
+     "free": false,
+     "bound": true
+    },
+    "9": {
+     "pin": false,
+     "free": false,
+     "bound": true
+    },
+    "11": {
+     "pin": true,
+     "free": true
+    },
+    "13": {
+     "pin": true,
+     "free": true
+    },
+    "16": {
+     "pin": true,
+     "free": true
+    }
+   },
+   "min_q": 11,
+   "min_q_free": 11,
+   "wit": {
+    "q": 11,
+    "ps0": [
+     1
+    ],
+    "ps1": [
+     5
+    ],
+    "x1": [
+     1
+    ],
+    "rhos": [
+     [
+      2
+     ],
+     [
+      3
+     ]
+    ],
+    "I1": false,
+    "I3": false
+   }
+  },
+  {
+   "id": "GS-43",
+   "annex": false,
+   "n_monos": 12,
+   "r": 3,
+   "per_q": {
+    "2": {
+     "pin": false,
+     "free": false,
+     "bound": true
+    },
+    "3": {
+     "pin": false,
+     "free": false,
+     "bound": true
+    },
+    "4": {
+     "pin": false,
+     "free": false,
+     "bound": true
+    },
+    "5": {
+     "pin": false,
+     "free": false,
+     "bound": true
+    },
+    "7": {
+     "pin": false,
+     "free": false,
+     "bound": true
+    },
+    "8": {
+     "pin": false,
+     "free": false,
+     "bound": true
+    },
+    "9": {
+     "pin": false,
+     "free": false,
+     "bound": true
+    },
+    "11": {
+     "pin": false,
+     "free": false,
+     "bound": true
+    },
+    "13": {
+     "pin": true,
+     "free": true
+    },
+    "16": {
+     "pin": true,
+     "free": true
+    }
+   },
+   "min_q": 13,
+   "min_q_free": 13,
+   "wit": {
+    "q": 13,
+    "ps0": [
+     1
+    ],
+    "ps1": [
+     6
+    ],
+    "x1": [
+     1
+    ],
+    "rhos": [
+     [
+      7
+     ],
+     [
+      9
+     ]
+    ],
+    "I1": false,
+    "I3": false
+   }
+  },
+  {
+   "id": "AS-01",
+   "annex": true,
+   "n_monos": 2,
+   "r": 2,
+   "per_q": {
+    "2": {
+     "pin": false,
+     "free": false,
+     "bound": true
+    },
+    "3": {
+     "pin": true,
+     "free": true
+    },
+    "4": {
+     "pin": false,
+     "free": false
+    },
+    "5": {
+     "pin": true,
+     "free": true
+    },
+    "7": {
+     "pin": true,
+     "free": true
+    },
+    "8": {
+     "pin": false,
+     "free": false
+    },
+    "9": {
+     "pin": true,
+     "free": true
+    },
+    "11": {
+     "pin": true,
+     "free": true
+    },
+    "13": {
+     "pin": true,
+     "free": true
+    },
+    "16": {
+     "pin": false,
+     "free": false
+    }
+   },
+   "min_q": 3,
+   "min_q_free": 3,
+   "wit": {
+    "q": 3,
+    "ps0": [
+     1
+    ],
+    "ps1": [
+     0
+    ],
+    "x1": [
+     1
+    ],
+    "rhos": [
+     [
+      2
+     ]
+    ],
+    "I1": false,
+    "I3": false
+   }
+  },
+  {
+   "id": "AS-02",
+   "annex": true,
+   "n_monos": 2,
+   "r": 2,
+   "per_q": {
+    "2": {
+     "pin": false,
+     "free": false,
+     "bound": true
+    },
+    "3": {
+     "pin": true,
+     "free": true
+    },
+    "4": {
+     "pin": false,
+     "free": false
+    },
+    "5": {
+     "pin": true,
+     "free": true
+    },
+    "7": {
+     "pin": true,
+     "free": true
+    },
+    "8": {
+     "pin": false,
+     "free": false
+    },
+    "9": {
+     "pin": true,
+     "free": true
+    },
+    "11": {
+     "pin": true,
+     "free": true
+    },
+    "13": {
+     "pin": true,
+     "free": true
+    },
+    "16": {
+     "pin": false,
+     "free": false
+    }
+   },
+   "min_q": 3,
+   "min_q_free": 3,
+   "wit": {
+    "q": 3,
+    "ps0": [
+     1
+    ],
+    "ps1": [
+     0
+    ],
+    "x1": [
+     1
+    ],
+    "rhos": [
+     [
+      2
+     ]
+    ],
+    "I1": false,
+    "I3": false
+   }
+  },
+  {
+   "id": "AS-03",
+   "annex": true,
+   "n_monos": 2,
+   "r": 2,
+   "per_q": {
+    "2": {
+     "pin": false,
+     "free": false,
+     "bound": true
+    },
+    "3": {
+     "pin": true,
+     "free": true
+    },
+    "4": {
+     "pin": false,
+     "free": false
+    },
+    "5": {
+     "pin": true,
+     "free": true
+    },
+    "7": {
+     "pin": true,
+     "free": true
+    },
+    "8": {
+     "pin": false,
+     "free": false
+    },
+    "9": {
+     "pin": true,
+     "free": true
+    },
+    "11": {
+     "pin": true,
+     "free": true
+    },
+    "13": {
+     "pin": true,
+     "free": true
+    },
+    "16": {
+     "pin": false,
+     "free": false
+    }
+   },
+   "min_q": 3,
+   "min_q_free": 3,
+   "wit": {
+    "q": 3,
+    "ps0": [
+     1
+    ],
+    "ps1": [
+     0
+    ],
+    "x1": [
+     1
+    ],
+    "rhos": [
+     [
+      2
+     ]
+    ],
+    "I1": false,
+    "I3": false
+   }
+  },
+  {
+   "id": "AS-04",
+   "annex": true,
+   "n_monos": 2,
+   "r": 2,
+   "per_q": {
+    "2": {
+     "pin": false,
+     "free": false,
+     "bound": true
+    },
+    "3": {
+     "pin": true,
+     "free": true
+    },
+    "4": {
+     "pin": false,
+     "free": false
+    },
+    "5": {
+     "pin": true,
+     "free": true
+    },
+    "7": {
+     "pin": true,
+     "free": true
+    },
+    "8": {
+     "pin": false,
+     "free": false
+    },
+    "9": {
+     "pin": true,
+     "free": true
+    },
+    "11": {
+     "pin": true,
+     "free": true
+    },
+    "13": {
+     "pin": true,
+     "free": true
+    },
+    "16": {
+     "pin": false,
+     "free": false
+    }
+   },
+   "min_q": 3,
+   "min_q_free": 3,
+   "wit": {
+    "q": 3,
+    "ps0": [
+     1
+    ],
+    "ps1": [
+     0
+    ],
+    "x1": [
+     1
+    ],
+    "rhos": [
+     [
+      2
+     ]
+    ],
+    "I1": false,
+    "I3": false
+   }
+  },
+  {
+   "id": "AS-05",
+   "annex": true,
+   "n_monos": 2,
+   "r": 2,
+   "per_q": {
+    "2": {
+     "pin": false,
+     "free": false,
+     "bound": true
+    },
+    "3": {
+     "pin": true,
+     "free": true
+    },
+    "4": {
+     "pin": false,
+     "free": false
+    },
+    "5": {
+     "pin": true,
+     "free": true
+    },
+    "7": {
+     "pin": true,
+     "free": true
+    },
+    "8": {
+     "pin": false,
+     "free": false
+    },
+    "9": {
+     "pin": true,
+     "free": true
+    },
+    "11": {
+     "pin": true,
+     "free": true
+    },
+    "13": {
+     "pin": true,
+     "free": true
+    },
+    "16": {
+     "pin": false,
+     "free": false
+    }
+   },
+   "min_q": 3,
+   "min_q_free": 3,
+   "wit": {
+    "q": 3,
+    "ps0": [
+     1
+    ],
+    "ps1": [
+     0
+    ],
+    "x1": [
+     1
+    ],
+    "rhos": [
+     [
+      2
+     ]
+    ],
+    "I1": false,
+    "I3": false
+   }
+  },
+  {
+   "id": "AS-06",
+   "annex": true,
+   "n_monos": 3,
+   "r": 3,
+   "per_q": {
+    "2": {
+     "pin": false,
+     "free": false,
+     "bound": true
+    },
+    "3": {
+     "pin": false,
+     "free": false,
+     "bound": true
+    },
+    "4": {
+     "pin": false,
+     "free": false
+    },
+    "5": {
+     "pin": true,
+     "free": true
+    },
+    "7": {
+     "pin": true,
+     "free": true
+    },
+    "8": {
+     "pin": false,
+     "free": false
+    },
+    "9": {
+     "pin": true,
+     "free": true
+    },
+    "11": {
+     "pin": true,
+     "free": true
+    },
+    "13": {
+     "pin": true,
+     "free": true
+    },
+    "16": {
+     "pin": false,
+     "free": false
+    }
+   },
+   "min_q": 5,
+   "min_q_free": 5,
+   "wit": {
+    "q": 5,
+    "ps0": [
+     2
+    ],
+    "ps1": [
+     0
+    ],
+    "x1": [
+     1
+    ],
+    "rhos": [
+     [
+      1
+     ],
+     [
+      2
+     ]
+    ],
+    "I1": false,
+    "I3": false
+   }
+  },
+  {
+   "id": "AS-07",
+   "annex": true,
+   "n_monos": 3,
+   "r": 3,
+   "per_q": {
+    "2": {
+     "pin": false,
+     "free": false,
+     "bound": true
+    },
+    "3": {
+     "pin": false,
+     "free": false,
+     "bound": true
+    },
+    "4": {
+     "pin": false,
+     "free": false
+    },
+    "5": {
+     "pin": true,
+     "free": true
+    },
+    "7": {
+     "pin": true,
+     "free": true
+    },
+    "8": {
+     "pin": false,
+     "free": false
+    },
+    "9": {
+     "pin": true,
+     "free": true
+    },
+    "11": {
+     "pin": true,
+     "free": true
+    },
+    "13": {
+     "pin": true,
+     "free": true
+    },
+    "16": {
+     "pin": false,
+     "free": false
+    }
+   },
+   "min_q": 5,
+   "min_q_free": 5,
+   "wit": {
+    "q": 5,
+    "ps0": [
+     2
+    ],
+    "ps1": [
+     0
+    ],
+    "x1": [
+     1
+    ],
+    "rhos": [
+     [
+      2
+     ],
+     [
+      2
+     ]
+    ],
+    "I1": false,
+    "I3": false
+   }
+  },
+  {
+   "id": "AS-08",
+   "annex": true,
+   "n_monos": 2,
+   "r": 2,
+   "per_q": {
+    "2": {
+     "pin": false,
+     "free": false,
+     "bound": true
+    },
+    "3": {
+     "pin": true,
+     "free": true
+    },
+    "4": {
+     "pin": false,
+     "free": false
+    },
+    "5": {
+     "pin": true,
+     "free": true
+    },
+    "7": {
+     "pin": true,
+     "free": true
+    },
+    "8": {
+     "pin": false,
+     "free": false
+    },
+    "9": {
+     "pin": true,
+     "free": true
+    },
+    "11": {
+     "pin": true,
+     "free": true
+    },
+    "13": {
+     "pin": true,
+     "free": true
+    },
+    "16": {
+     "pin": false,
+     "free": false
+    }
+   },
+   "min_q": 3,
+   "min_q_free": 3,
+   "wit": {
+    "q": 3,
+    "ps0": [
+     1
+    ],
+    "ps1": [
+     0
+    ],
+    "x1": [
+     1
+    ],
+    "rhos": [
+     [
+      2
+     ]
+    ],
+    "I1": false,
+    "I3": false
+   }
+  },
+  {
+   "id": "AS-09",
+   "annex": true,
+   "n_monos": 3,
+   "r": 3,
+   "per_q": {
+    "2": {
+     "pin": false,
+     "free": false,
+     "bound": true
+    },
+    "3": {
+     "pin": false,
+     "free": false,
+     "bound": true
+    },
+    "4": {
+     "pin": false,
+     "free": false
+    },
+    "5": {
+     "pin": true,
+     "free": true
+    },
+    "7": {
+     "pin": true,
+     "free": true
+    },
+    "8": {
+     "pin": false,
+     "free": false
+    },
+    "9": {
+     "pin": true,
+     "free": true
+    },
+    "11": {
+     "pin": true,
+     "free": true
+    },
+    "13": {
+     "pin": true,
+     "free": true
+    },
+    "16": {
+     "pin": false,
+     "free": false
+    }
+   },
+   "min_q": 5,
+   "min_q_free": 5,
+   "wit": {
+    "q": 5,
+    "ps0": [
+     2
+    ],
+    "ps1": [
+     0
+    ],
+    "x1": [
+     1
+    ],
+    "rhos": [
+     [
+      2
+     ],
+     [
+      2
+     ]
+    ],
+    "I1": false,
+    "I3": false
+   }
+  },
+  {
+   "id": "AS-10",
+   "annex": true,
+   "n_monos": 3,
+   "r": 3,
+   "per_q": {
+    "2": {
+     "pin": false,
+     "free": false,
+     "bound": true
+    },
+    "3": {
+     "pin": false,
+     "free": false,
+     "bound": true
+    },
+    "4": {
+     "pin": false,
+     "free": false
+    },
+    "5": {
+     "pin": true,
+     "free": true
+    },
+    "7": {
+     "pin": true,
+     "free": true
+    },
+    "8": {
+     "pin": false,
+     "free": false
+    },
+    "9": {
+     "pin": true,
+     "free": true
+    },
+    "11": {
+     "pin": true,
+     "free": true
+    },
+    "13": {
+     "pin": true,
+     "free": true
+    },
+    "16": {
+     "pin": false,
+     "free": false
+    }
+   },
+   "min_q": 5,
+   "min_q_free": 5,
+   "wit": {
+    "q": 5,
+    "ps0": [
+     2
+    ],
+    "ps1": [
+     0
+    ],
+    "x1": [
+     1
+    ],
+    "rhos": [
+     [
+      1
+     ],
+     [
+      2
+     ]
+    ],
+    "I1": false,
+    "I3": false
+   }
+  }
+ ],
+ "predictions": {
+  "PG-A1": [
+   false,
+   "all 53 generic at some q <= 9; none at q = 2"
+  ],
+  "PG-A2": [
+   true,
+   "GS-01=3 GS-02=3 GS-08=4 (want 3/3/4)"
+  ],
+  "PG-A3": [
+   true,
+   "pin never raises the threshold"
+  ],
+  "PG-B1": [
+   true,
+   "GGB2AF 14 / GGB2AZ 14 glued rows; shapes all matched"
+  ],
+  "PG-B2": [
+   true,
+   "non-full-merge in-vivo state realized at q >= 4: Counter({('GS-02', 1): 42, ('GS-15', 4): 14, ('GS-08', 2): 13, ('GS-04', 3): 10, ('GS-29', 5): 4, ('GS-16', 2): 1})"
+  ],
+  "PG-B3": [
+   true,
+   "law counts {}"
+  ],
+  "PG-C1": [
+   true,
+   "K2-THM-B protection on every covered realized row"
+  ],
+  "PG-C2": [
+   false,
+   "p=3 control glued rows = 14 (char-2 hypothesis; MEASURED)"
+  ]
+ },
+ "violations": [],
+ "findings": [
+  [
+   "PRED-MISS PG-A1",
+   "all 53 generic at some q <= 9; none at q = 2"
+  ],
+  [
+   "PRED-MISS PG-C2",
+   "p=3 control glued rows = 14 (char-2 hypothesis; MEASURED)"
+  ]
+ ],
+ "qs": [
+  2,
+  3,
+  4,
+  5,
+  7,
+  8,
+  9,
+  11,
+  13,
+  16
+ ],
+ "agreement_gate": {
+  "new_violations": 0,
+  "counters": {
+   "install_calls": 1,
+   "agr_irr_cases": 158,
+   "agr_cert_cases": 1181,
+   "agr_gauss_confirms": 7,
+   "agr_pick_cases": 30,
+   "agr_tower_pairs": 60
+  }
+ },
+ "corner_map_md5": "0406de172ff71e2ddcbe71145107b5ff",
+ "elapsed": 140.7216784954071
+}

@@ -1,0 +1,78 @@
+GG-STR pinned validation: 531 grprec records checked
+==============================================================================
+PART A: the solve (minimal generic q per shape)
+ENUM[A={0,1}]: 278 raw glued systems -> 43 distinct shapes
+ENUM[A={0}]: 130 raw glued systems -> 10 distinct shapes
+  GS-01: min generic q = 3 (free-digit 3) wit corner I1=True I3=False
+  GS-02: min generic q = 3 (free-digit 3) wit corner I1=True I3=False
+  GS-03: min generic q = 3 (free-digit 3) wit corner I1=True I3=False
+  GS-04: min generic q = 4 (free-digit 4) wit corner I1=False I3=False
+  GS-05: min generic q = 4 (free-digit 4) wit corner I1=False I3=False
+  GS-06: min generic q = 4 (free-digit 4) wit corner I1=False I3=False
+  GS-07: min generic q = 3 (free-digit 3) wit corner I1=True I3=False
+  GS-08: min generic q = 4 (free-digit 4) wit corner I1=False I3=False
+  GS-09: min generic q = 4 (free-digit 4) wit corner I1=False I3=False
+  GS-10: min generic q = 4 (free-digit 4) wit corner I1=False I3=False
+  GS-11: min generic q = 4 (free-digit 4) wit corner I1=False I3=False
+  GS-12: min generic q = 5 (free-digit 5) wit corner I1=False I3=False
+  GS-13: min generic q = 5 (free-digit 5) wit corner I1=True I3=False
+  GS-14: min generic q = 5 (free-digit 5) wit corner I1=False I3=True
+  GS-15: min generic q = 7 (free-digit 7) wit corner I1=False I3=False
+  GS-16: min generic q = 5 (free-digit 5) wit corner I1=True I3=False
+  GS-17: min generic q = 5 (free-digit 5) wit corner I1=False I3=False
+  GS-18: min generic q = 5 (free-digit 5) wit corner I1=True I3=False
+  GS-19: min generic q = 7 (free-digit 7) wit corner I1=False I3=False
+  GS-20: min generic q = 4 (free-digit 4) wit corner I1=False I3=False
+  GS-21: min generic q = 4 (free-digit 4) wit corner I1=False I3=False
+  GS-22: min generic q = 7 (free-digit 7) wit corner I1=False I3=False
+  GS-23: min generic q = 7 (free-digit 7) wit corner I1=False I3=False
+  GS-24: min generic q = 7 (free-digit 7) wit corner I1=False I3=False
+  GS-25: min generic q = 7 (free-digit 7) wit corner I1=False I3=False
+  GS-26: min generic q = 4 (free-digit 4) wit corner I1=False I3=False
+  GS-27: min generic q = 7 (free-digit 7) wit corner I1=False I3=False
+  GS-28: min generic q = 7 (free-digit 7) wit corner I1=False I3=False
+  GS-29: min generic q = 8 (free-digit 8) wit corner I1=False I3=False
+  GS-30: min generic q = 5 (free-digit 5) wit corner I1=True I3=False
+  GS-31: min generic q = 5 (free-digit 5) wit corner I1=False I3=False
+  GS-32: min generic q = 5 (free-digit 5) wit corner I1=True I3=False
+  GS-33: min generic q = 7 (free-digit 7) wit corner I1=False I3=False
+  GS-34: min generic q = 7 (free-digit 7) wit corner I1=False I3=False
+  GS-35: min generic q = 7 (free-digit 7) wit corner I1=False I3=False
+  GS-36: min generic q = 11 (free-digit 11) wit corner I1=False I3=False
+  GS-37: min generic q = 8 (free-digit 8) wit corner I1=False I3=False
+  GS-38: min generic q = 9 (free-digit 9) wit corner I1=False I3=False
+  GS-39: min generic q = 7 (free-digit 7) wit corner I1=False I3=False
+  GS-40: min generic q = 8 (free-digit 8) wit corner I1=False I3=False
+  GS-41: min generic q = 11 (free-digit 11) wit corner I1=False I3=False
+  GS-42: min generic q = 11 (free-digit 11) wit corner I1=False I3=False
+  GS-43: min generic q = 13 (free-digit 13) wit corner I1=False I3=False
+  AS-01: min generic q = 3 (free-digit 3) wit corner I1=False I3=False
+  AS-02: min generic q = 3 (free-digit 3) wit corner I1=False I3=False
+  AS-03: min generic q = 3 (free-digit 3) wit corner I1=False I3=False
+  AS-04: min generic q = 3 (free-digit 3) wit corner I1=False I3=False
+  AS-05: min generic q = 3 (free-digit 3) wit corner I1=False I3=False
+  AS-06: min generic q = 5 (free-digit 5) wit corner I1=False I3=False
+  AS-07: min generic q = 5 (free-digit 5) wit corner I1=False I3=False
+  AS-08: min generic q = 3 (free-digit 3) wit corner I1=False I3=False
+  AS-09: min generic q = 5 (free-digit 5) wit corner I1=False I3=False
+  AS-10: min generic q = 5 (free-digit 5) wit corner I1=False I3=False
+==============================================================================
+ENGINE_EXT: install() + agreement_gate()
+agreement_gate: 0 new violations; counters {'agr_irr_cases': 158, 'agr_cert_cases': 1181, 'agr_gauss_confirms': 7, 'agr_pick_cases': 30, 'agr_tower_pairs': 60}
+ENUM[A={0,1}]: 278 raw glued systems -> 43 distinct shapes
+ENUM[A={0}]: 130 raw glued systems -> 10 distinct shapes
+==============================================================================
+PART B: the realization roster
+-- GG GGB2AF m=3 Fpt,p=2,d0=2 q=4 corner=cx0: live=39 glued rows=14 groups=18 (16.8s)
+-- GG GGB2AZ m=3 Zp,p=2,d0=2 q=4 corner=cx0: live=39 glued rows=14 groups=18 (0.4s)
+  CENSUS [GGW4AF]: principal d-cell ABSENT (theta_0 = 0 case)
+-- GG GGW4AF m=4 Fpt,p=2,d0=2 q=4 corner=cx0: live=7 glued rows=1 groups=2 (58.6s)
+-- GG GGB3AF m=3 Fpt,p=2,d0=3 q=8 corner=c00: live=53 glued rows=14 groups=28 (39.4s)
+  CENSUS [GGW3AF]: principal d-cell ABSENT (theta_0 = 0 case)
+-- GG GGW3AF m=3 Fpt,p=2,d0=2 q=4 corner=cx0: live=26 glued rows=0 groups=0 (3.1s)
+-- GG GGP3BF m=3 Fpt,p=3,d0=2 q=9 corner=cx0: live=39 glued rows=14 groups=18 (19.5s)
+FINDING [PRED-MISS PG-A1] all 53 generic at some q <= 9; none at q = 2
+FINDING [PRED-MISS PG-C2] p=3 control glued rows = 14 (char-2 hypothesis; MEASURED)
+WROTE /data/users/asvin/math-and-lean/p-adic-splitting-densities/verification/openmath/gluegen_construct_results.json
+WROTE /data/users/asvin/math-and-lean/p-adic-splitting-densities/verification/openmath/gluegen_table.md
+FINAL: laws GREEN (0 violations); findings 2; predictions 6/8 green; 140.7s
