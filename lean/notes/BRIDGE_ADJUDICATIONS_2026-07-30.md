@@ -10343,3 +10343,37 @@ Thursday (W first); the specced compositions (WINDOW-CALC + T1-RES,
 the weld J-A, the 𝒵/W2-COB probe, the GS-02 emptiness candidate);
 Lean deferred until the corpus stabilizes — which, after today, means
 after Thursday's window and the weld's remaining junctions.
+
+---
+
+## J-A COMPOSED + THE [ILN] RESIDUAL MAP DEFINITIVE (NR-4 DISCHARGED at attempt grade) — 2026-08-08 campaign (wallclock 2026-08-04, continuing)
+
+**J-A** (`GRTJA_PROOF_2026-08-08.md`, skeleton d2673ad → seal 696eae8 →
+verdict 1cbf8ca; 17 families, 10,311 samples, 0 violations, 4 fresh
+d₀ ≥ 2/eqchar rows via engine_ext + PARI): the DICTIONARY THEOREM
+(JA-PIN) PROVED at attempt grade — every class-pin clause derived from
+the print's own hypotheses with tex anchors; the lift clause = W-2
+consumed verbatim. Equalities: (i) w_m = v_{m+1} PROVED (shared-key);
+(iii) ε_m = the print twist PROVED unconditional; (iv) the grid/carry
+crossing PROVED; (ii) **CORRECTED — the blueprint's slot-independent c
+REFUTED (26 witnesses) and replaced by the per-slot character-gauge law
+c_i = z_{m−1}^{−i·A_{m−1}}·C_i**, proved unconditional at m = 2,
+proviso-scoped at m ≥ 3 (JA-BOX-2). Five honest boxes; N-1/GD-5
+consumed as graded base cases. **The weld: W-2 + J-A composed; J-B/J-C/
+J-D remain.**
+
+**The [ILN] residual map** (`ILNRES_2026-08-08.md`, a79f0fe/7c6f060/
+d05dd02): the DEFINITIVE post-COR-A list — **NR-1** (ITER-LAW-LIFT,
+g₀ = 1 ∧ δ₁ = 1; priced M, route = W-2 shift-descent + window-calculus
+tail); **NR-2** (gr(w₂) → the weld; = Q4, in progress); **NR-3**
+(W-MULT-DCX — with the finding that it BITES ON T-class, RM2 + fresh X5
+witnesses: not off-class-only work; = the Q2 program); **NR-4** (the
+S4.7/(P-DS) chain) — **DISCHARGED AT ATTEMPT GRADE THIS UNIT** (Lemma
+DS-SUB, engine-free support, rung induction; sealed battery ALL GREEN:
+3,650 + 2,386 + 110 checks incl. 1,344 OFF-T-class pairs). On the
+ILNRES arc's acceptance: the S4.7 erratum conditionality and the [RMG]
+"(H2)-class via (P-DS)" line RETIRE (ledger action queued, accepted
+texts untouched until then).
+
+**Dispatched: the J-A and ILNRES hostile rounds (Fable), parallel.
+The Thursday Codex window now carries eleven legs, W first.**
