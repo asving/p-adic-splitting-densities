@@ -1,0 +1,93 @@
+==============================================================================
+PHASE SEALED — WS.ROSTER via the committed sealed selection
+==============================================================================
+-- SEALED W3DEEP m=3 Zp,p=3,d0=1 g0=1: live traced=16 (0.0s)
+-- SEALED W3DEEP4 m=3 Zp,p=3,d0=1 g0=1: live traced=40 (0.0s)
+-- SEALED W3NEST m=3 Zp,p=3,d0=1 g0=1: live traced=12 (0.0s)
+-- SEALED W3NESTF m=3 Fpt,p=2,d0=1 g0=1: live traced=12 (0.0s)
+-- SEALED W3FMID m=3 Zp,p=3,d0=1 g0=1: live traced=2 (0.0s)
+-- SEALED W3FTOP m=3 Zp,p=3,d0=1 g0=1: live traced=2 (0.0s)
+-- SEALED W3FDBL m=3 Zp,p=3,d0=1 g0=1: live traced=1 (0.0s)
+-- SEALED W3FMIDF m=3 Fpt,p=2,d0=1 g0=1: live traced=2 (0.0s)
+-- SEALED W3TRK1 m=3 Zp,p=3,d0=1 g0=1: live traced=30 (0.0s)
+-- SEALED W3DIR m=3 Zp,p=3,d0=1 g0=1: live traced=30 (0.0s)
+-- SEALED W3G2A m=3 Zp,p=3,d0=1 g0=2: live traced=28 (0.0s)
+-- SEALED W3G2B m=3 Zp,p=3,d0=2 g0=2: live traced=20 (0.1s)
+-- SEALED W3G2P5 m=3 Zp,p=5,d0=2 g0=2: live traced=4 (0.1s)
+-- SEALED W3DEEPF m=3 Fpt,p=2,d0=1 g0=1: live traced=16 (0.1s)
+-- SEALED W4NEST m=4 Zp,p=3,d0=1 g0=1: live traced=14 (0.0s)
+-- SEALED W4DEEP m=4 Zp,p=3,d0=1 g0=1: live traced=14 (0.1s)
+-- SEALED W4FLAT m=4 Zp,p=3,d0=1 g0=1: live traced=9 (0.0s)
+-- SEALED W4NESTF m=4 Fpt,p=2,d0=1 g0=1: live traced=14 (0.3s)
+-- SEALED XM3A m=3 Zp,p=5,d0=1 g0=1: live traced=4 (0.0s)
+-- SEALED XM3B m=3 Zp,p=3,d0=2 g0=2: live traced=16 (0.2s)
+==============================================================================
+PHASE EQ — ED.FRESH_ROSTER, caps 12/6
+==============================================================================
+-- EQ EQ3T3A m=3 Zp,p=3,d0=1 g0=1: live traced=4 (0.0s)
+-- EQ EQ3T3B m=3 Zp,p=3,d0=1 g0=1: live traced=46 (0.1s)
+-- EQ EQ3T3C m=3 Zp,p=5,d0=1 g0=1: live traced=12 (0.0s)
+-- EQ EQ3T4A m=3 Zp,p=3,d0=1 g0=1: live traced=4 (0.0s)
+-- EQ EQ3T4B m=3 Zp,p=3,d0=1 g0=1: live traced=60 (0.1s)
+-- EQ EQ3T4C m=3 Zp,p=3,d0=1 g0=1: live traced=38 (0.0s)
+-- EQ EQ3T3F m=3 Fpt,p=2,d0=1 g0=1: live traced=53 (0.2s)
+-- EQ EQ3T4F m=3 Fpt,p=2,d0=1 g0=1: live traced=4 (0.1s)
+-- EQ EQ3G2A m=3 Zp,p=3,d0=2 g0=2: live traced=14 (0.3s)
+-- EQ EQ3G2B m=3 Zp,p=3,d0=1 g0=2: live traced=53 (0.1s)
+-- EQ EQ3FLT m=3 Zp,p=5,d0=1 g0=1: live traced=6 (0.0s)
+-- EQ EQ4T3A m=4 Zp,p=3,d0=1 g0=1: live traced=6 (0.0s)
+-- EQ EQ4T3F m=4 Fpt,p=2,d0=1 g0=1: live traced=6 (0.6s)
+-- EQ EQ4DEEP m=4 Zp,p=3,d0=1 g0=1: live traced=6 (0.0s)
+-- EQ EQ4NEST m=4 Zp,p=3,d0=1 g0=1: live traced=18 (0.0s)
+==============================================================================
+PHASE PX — the PE1 PX roster, caps 12/6
+==============================================================================
+-- PX PXDEEPF3 m=3 Fpt,p=3,d0=1 g0=1: live traced=14 (0.1s)
+-- PX PXT3F3 m=3 Fpt,p=3,d0=1 g0=1: live traced=53 (0.3s)
+-- PX PXDEEPZ2 m=3 Zp,p=2,d0=1 g0=1: live traced=14 (0.0s)
+-- PX PXT3Z2 m=3 Zp,p=2,d0=1 g0=1: live traced=53 (0.0s)
+-- PX PXDEEP4F m=3 Fpt,p=2,d0=1 g0=1: live traced=36 (0.2s)
+-- PX PXTRK1F m=3 Fpt,p=2,d0=1 g0=1: live traced=28 (0.1s)
+-- PX PXFLTF m=3 Fpt,p=2,d0=1 g0=1: live traced=6 (0.0s)
+-- PX PXW4DPF m=4 Fpt,p=2,d0=1 g0=1: live traced=8 (0.4s)
+==============================================================================
+PHASE SD — the instrument's g0>=2 x residue-char-2 roster, 12/6
+==============================================================================
+-- SD SDG2BF m=3 Fpt,p=2,d0=1 g0=2: live traced=39 (0.8s)
+-- SD SDG2BZ m=3 Zp,p=2,d0=1 g0=2: live traced=39 (0.1s)
+-- SD SDG2AF m=3 Fpt,p=2,d0=2 g0=2: live traced=14 (16.6s)
+-- SD SDG2AZ m=3 Zp,p=2,d0=2 g0=2: live traced=14 (0.4s)
+  CENSUS [SDW3G2F]: principal d-cell ABSENT (theta_0 = 0 case)
+-- SD SDW3G2F m=3 Fpt,p=2,d0=1 g0=2: live traced=26 (0.2s)
+-- SD SDDPG2F m=3 Fpt,p=2,d0=1 g0=2: live traced=6 (0.1s)
+-- SD SDDPG2Z m=3 Zp,p=2,d0=1 g0=2: live traced=6 (0.0s)
+  CENSUS [SDW4G2F]: principal d-cell ABSENT (theta_0 = 0 case)
+-- SD SDW4G2F m=4 Fpt,p=2,d0=1 g0=2: live traced=7 (2.1s)
+==============================================================================
+DRV-PIN   : 0 violations
+DRV-MASS  : 0 violations
+DRV-DEF   : 0 violations
+DRV-Y0    : 0 violations
+DRV-SEEDY : 0 violations
+DRV-NEPS  : 0 violations
+DRV-RIG   : 0 violations
+DRV-CRIT  : 0 violations
+DRV-M1    : 0 violations
+HARNESS   : 0 violations
+------------------------------------------------------------------------------
+counters: {'crit_ok': 280, 'defc_ok_g1': 2167, 'live_rows': 979, 'm1_protected': 56, 'mass_ok': 3606, 'neps_ok': 693, 'rig_rows': 979, 'seedx_zero': 1355, 'y0_ok': 3274}
+min correction deficits (g0class | e_i | Y-flag):
+    g1|e=1|Y=0: 1
+    g1|e=2|Y=0: 2
+    g1|e=3|Y=0: 3
+    g1|e=4|Y=0: 4
+    g2+|e=2|Y=0: 2
+    g2+|e=2|Y=1: 1
+    g2+|e=3|Y=0: 3
+    g2+|e=3|Y=1: 3
+group census (g0class, bottom?, verdict): {'g1|bot|kill': 6, 'g1|bot|surv': 12, 'g1|off|kill': 140, 'g1|off|surv': 160, 'g2+|bot|kill': 97, 'g2+|bot|surv': 31, 'g2+|off|kill': 109, 'g2+|off|surv': 77}
+MUTATION CONTROLS (teeth): {'CTRL-M1': 576, 'CTRL-XSEED': 388, 'CTRL-KILL': 352, 'CTRL-RIGSEEDS': 123, 'CTRL-Y': 60}
+  CONTROL SILENT: CTRL-DEFNEG never fired — the matching family's evidence is TOOTHLESS on this roster
+total violations: 0
+elapsed: 24.5s
+results -> /data/users/asvin/math-and-lean/p-adic-splitting-densities/verification/openmath/survdisj_derive_checks_results.json
