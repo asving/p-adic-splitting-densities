@@ -1,0 +1,1116 @@
+{
+ "towers": {},
+ "keyeq": {
+  "Zp,p=2,T2A": {
+   "1": true
+  },
+  "Zp,p=3,T2B": {
+   "1": true
+  },
+  "Zp,p=3,T2C": {
+   "1": true
+  },
+  "Fpt,p=2,T2D": {
+   "1": true
+  },
+  "Zp,p=2,T2E": {
+   "1": true
+  },
+  "Fpt,p=3,T2F": {
+   "1": true
+  },
+  "Zp,p=3,T2G": {
+   "1": true
+  },
+  "Zp,p=2,T3A": {
+   "1": true,
+   "2": false
+  },
+  "Zp,p=3,T3B": {
+   "1": true,
+   "2": true
+  },
+  "Zp,p=3,T3C": {
+   "1": true,
+   "2": false
+  },
+  "Fpt,p=2,T3D": {
+   "1": true,
+   "2": false
+  },
+  "Zp,p=2,T3E": {
+   "1": true,
+   "2": false
+  },
+  "Zp,p=3,T3F": {
+   "1": true,
+   "2": true
+  },
+  "Zp,p=2,I4A": {
+   "1": true,
+   "2": true,
+   "3": true
+  },
+  "Zp,p=3,I4B": {
+   "1": true,
+   "2": true,
+   "3": true
+  },
+  "Fpt,p=2,I4C": {
+   "1": true,
+   "2": false,
+   "3": false
+  },
+  "QO:x4-2/Q2": {},
+  "QO:x4+4x+4/Q2": {
+   "1": true
+  },
+  "QO:x4+2x2+2/Q2": {},
+  "QO:x4+12/Q2": {
+   "1": true
+  },
+  "QO:x3-3/Q3": {},
+  "Zp,p=5,JD5A": {
+   "1": true
+  },
+  "Zp,p=2,JD3A": {
+   "1": true
+  },
+  "Zp,p=3,JD3B": {
+   "1": true
+  },
+  "Fpt,p=2,JD3C": {
+   "1": true
+  }
+ },
+ "tree": {
+  "Zp,p=2,T2A": {
+   "1": {
+    "byteeq": true,
+    "walks": 3
+   }
+  },
+  "Zp,p=2,T2A/tw": {
+   "1": {
+    "byteeq": true,
+    "walks": 2
+   }
+  },
+  "Zp,p=3,T2B": {
+   "1": {
+    "byteeq": true,
+    "walks": 3
+   }
+  },
+  "Zp,p=3,T2B/tw": {
+   "1": {
+    "byteeq": true,
+    "walks": 2
+   }
+  },
+  "Zp,p=3,T2C": {
+   "1": {
+    "byteeq": true,
+    "walks": 3
+   }
+  },
+  "Zp,p=3,T2C/tw": {
+   "1": {
+    "byteeq": true,
+    "walks": 2
+   }
+  },
+  "Fpt,p=2,T2D": {
+   "1": {
+    "byteeq": true,
+    "walks": 3
+   }
+  },
+  "Fpt,p=2,T2D/tw": {
+   "1": {
+    "byteeq": true,
+    "walks": 2
+   }
+  },
+  "Zp,p=2,T2E": {
+   "1": {
+    "byteeq": true,
+    "walks": 3
+   }
+  },
+  "Zp,p=2,T2E/tw": {
+   "1": {
+    "byteeq": true,
+    "walks": 2
+   }
+  },
+  "Fpt,p=3,T2F": {
+   "1": {
+    "byteeq": true,
+    "walks": 3
+   }
+  },
+  "Fpt,p=3,T2F/tw": {
+   "1": {
+    "byteeq": true,
+    "walks": 2
+   }
+  },
+  "Zp,p=3,T2G": {
+   "1": {
+    "byteeq": true,
+    "walks": 3
+   }
+  },
+  "Zp,p=3,T2G/tw": {
+   "1": {
+    "byteeq": true,
+    "walks": 2
+   }
+  },
+  "Zp,p=2,T3A": {
+   "1": {
+    "byteeq": true,
+    "walks": 3
+   },
+   "2": {
+    "byteeq": false,
+    "walks": 3
+   }
+  },
+  "Zp,p=2,T3A/tw": {
+   "1": {
+    "byteeq": true,
+    "walks": 2
+   },
+   "2": {
+    "byteeq": false,
+    "walks": 2
+   }
+  },
+  "Zp,p=3,T3B": {
+   "1": {
+    "byteeq": true,
+    "walks": 3
+   },
+   "2": {
+    "byteeq": true,
+    "walks": 3
+   }
+  },
+  "Zp,p=3,T3B/tw": {
+   "1": {
+    "byteeq": true,
+    "walks": 2
+   },
+   "2": {
+    "byteeq": true,
+    "walks": 2
+   }
+  },
+  "Zp,p=3,T3C": {
+   "1": {
+    "byteeq": true,
+    "walks": 3
+   },
+   "2": {
+    "byteeq": false,
+    "walks": 3
+   }
+  },
+  "Zp,p=3,T3C/tw": {
+   "1": {
+    "byteeq": true,
+    "walks": 2
+   },
+   "2": {
+    "byteeq": false,
+    "walks": 2
+   }
+  },
+  "Fpt,p=2,T3D": {
+   "1": {
+    "byteeq": true,
+    "walks": 3
+   },
+   "2": {
+    "byteeq": false,
+    "walks": 3
+   }
+  },
+  "Fpt,p=2,T3D/tw": {
+   "1": {
+    "byteeq": true,
+    "walks": 2
+   },
+   "2": {
+    "byteeq": false,
+    "walks": 2
+   }
+  },
+  "Zp,p=2,T3E": {
+   "1": {
+    "byteeq": true,
+    "walks": 3
+   },
+   "2": {
+    "byteeq": false,
+    "walks": 3
+   }
+  },
+  "Zp,p=2,T3E/tw": {
+   "1": {
+    "byteeq": true,
+    "walks": 2
+   },
+   "2": {
+    "byteeq": false,
+    "walks": 2
+   }
+  },
+  "Zp,p=3,T3F": {
+   "1": {
+    "byteeq": true,
+    "walks": 3
+   },
+   "2": {
+    "byteeq": true,
+    "walks": 3
+   }
+  },
+  "Zp,p=3,T3F/tw": {
+   "1": {
+    "byteeq": true,
+    "walks": 2
+   },
+   "2": {
+    "byteeq": true,
+    "walks": 2
+   }
+  },
+  "Zp,p=2,I4A": {
+   "1": {
+    "byteeq": true,
+    "walks": 3
+   },
+   "3": {
+    "byteeq": true,
+    "walks": 3
+   }
+  },
+  "Zp,p=2,I4A/tw": {
+   "1": {
+    "byteeq": true,
+    "walks": 2
+   },
+   "3": {
+    "byteeq": true,
+    "walks": 2
+   }
+  },
+  "Zp,p=3,I4B": {
+   "1": {
+    "byteeq": true,
+    "walks": 3
+   },
+   "3": {
+    "byteeq": true,
+    "walks": 3
+   }
+  },
+  "Zp,p=3,I4B/tw": {
+   "1": {
+    "byteeq": true,
+    "walks": 2
+   },
+   "3": {
+    "byteeq": true,
+    "walks": 2
+   }
+  },
+  "QO:x4+4x+4/Q2": {
+   "1": {
+    "byteeq": true,
+    "walks": 2
+   }
+  },
+  "Zp,p=5,JD5A": {
+   "1": {
+    "byteeq": true,
+    "walks": 2
+   }
+  },
+  "Zp,p=2,JD3A": {
+   "1": {
+    "byteeq": true,
+    "walks": 2
+   }
+  },
+  "Zp,p=3,JD3B": {
+   "1": {
+    "byteeq": true,
+    "walks": 2
+   }
+  },
+  "Fpt,p=2,JD3C": {
+   "1": {
+    "byteeq": true,
+    "walks": 2
+   }
+  }
+ },
+ "cread": {
+  "Zp,p=2,T2A": {
+   "scored": 3,
+   "boundary": 0,
+   "v0": 0,
+   "teeth": 1,
+   "trees": 3
+  },
+  "Zp,p=2,T2A/tw": {
+   "scored": 2,
+   "boundary": 0,
+   "v0": 0,
+   "teeth": 1,
+   "trees": 2
+  },
+  "Zp,p=3,T2B": {
+   "scored": 3,
+   "boundary": 0,
+   "v0": 0,
+   "teeth": 1,
+   "trees": 3
+  },
+  "Zp,p=3,T2B/tw": {
+   "scored": 2,
+   "boundary": 0,
+   "v0": 0,
+   "teeth": 0,
+   "trees": 2
+  },
+  "Zp,p=3,T2C": {
+   "scored": 3,
+   "boundary": 0,
+   "v0": 0,
+   "teeth": 0,
+   "trees": 3
+  },
+  "Zp,p=3,T2C/tw": {
+   "scored": 2,
+   "boundary": 0,
+   "v0": 0,
+   "teeth": 0,
+   "trees": 2
+  },
+  "Fpt,p=2,T2D": {
+   "scored": 3,
+   "boundary": 0,
+   "v0": 0,
+   "teeth": 1,
+   "trees": 3
+  },
+  "Fpt,p=2,T2D/tw": {
+   "scored": 2,
+   "boundary": 0,
+   "v0": 0,
+   "teeth": 1,
+   "trees": 2
+  },
+  "Zp,p=2,T2E": {
+   "scored": 3,
+   "boundary": 0,
+   "v0": 0,
+   "teeth": 0,
+   "trees": 3
+  },
+  "Zp,p=2,T2E/tw": {
+   "scored": 2,
+   "boundary": 0,
+   "v0": 0,
+   "teeth": 0,
+   "trees": 2
+  },
+  "Fpt,p=3,T2F": {
+   "scored": 3,
+   "boundary": 0,
+   "v0": 0,
+   "teeth": 1,
+   "trees": 3
+  },
+  "Fpt,p=3,T2F/tw": {
+   "scored": 2,
+   "boundary": 0,
+   "v0": 0,
+   "teeth": 0,
+   "trees": 2
+  },
+  "Zp,p=3,T2G": {
+   "scored": 3,
+   "boundary": 0,
+   "v0": 0,
+   "teeth": 1,
+   "trees": 3
+  },
+  "Zp,p=3,T2G/tw": {
+   "scored": 2,
+   "boundary": 0,
+   "v0": 0,
+   "teeth": 1,
+   "trees": 2
+  },
+  "Zp,p=2,T3A": {
+   "scored": 3,
+   "boundary": 3,
+   "v0": 0,
+   "teeth": 1,
+   "trees": 6
+  },
+  "Zp,p=2,T3A/tw": {
+   "scored": 2,
+   "boundary": 2,
+   "v0": 0,
+   "teeth": 1,
+   "trees": 4
+  },
+  "Zp,p=3,T3B": {
+   "scored": 3,
+   "boundary": 3,
+   "v0": 0,
+   "teeth": 1,
+   "trees": 6
+  },
+  "Zp,p=3,T3B/tw": {
+   "scored": 2,
+   "boundary": 2,
+   "v0": 0,
+   "teeth": 0,
+   "trees": 4
+  },
+  "Zp,p=3,T3C": {
+   "scored": 5,
+   "boundary": 1,
+   "v0": 0,
+   "teeth": 0,
+   "trees": 6
+  },
+  "Zp,p=3,T3C/tw": {
+   "scored": 4,
+   "boundary": 0,
+   "v0": 0,
+   "teeth": 0,
+   "trees": 4
+  },
+  "Fpt,p=2,T3D": {
+   "scored": 3,
+   "boundary": 3,
+   "v0": 0,
+   "teeth": 1,
+   "trees": 6
+  },
+  "Fpt,p=2,T3D/tw": {
+   "scored": 2,
+   "boundary": 2,
+   "v0": 0,
+   "teeth": 1,
+   "trees": 4
+  },
+  "Zp,p=2,T3E": {
+   "scored": 6,
+   "boundary": 0,
+   "v0": 0,
+   "teeth": 1,
+   "trees": 6
+  },
+  "Zp,p=2,T3E/tw": {
+   "scored": 4,
+   "boundary": 0,
+   "v0": 0,
+   "teeth": 1,
+   "trees": 4
+  },
+  "Zp,p=3,T3F": {
+   "scored": 6,
+   "boundary": 0,
+   "v0": 0,
+   "teeth": 1,
+   "trees": 6
+  },
+  "Zp,p=3,T3F/tw": {
+   "scored": 4,
+   "boundary": 0,
+   "v0": 0,
+   "teeth": 0,
+   "trees": 4
+  },
+  "Zp,p=2,I4A": {
+   "scored": 6,
+   "boundary": 0,
+   "v0": 0,
+   "teeth": 0,
+   "trees": 6
+  },
+  "Zp,p=2,I4A/tw": {
+   "scored": 4,
+   "boundary": 0,
+   "v0": 0,
+   "teeth": 0,
+   "trees": 4
+  },
+  "Zp,p=3,I4B": {
+   "scored": 3,
+   "boundary": 3,
+   "v0": 0,
+   "teeth": 2,
+   "trees": 6
+  },
+  "Zp,p=3,I4B/tw": {
+   "scored": 2,
+   "boundary": 2,
+   "v0": 0,
+   "teeth": 1,
+   "trees": 4
+  },
+  "Fpt,p=2,I4C": {
+   "scored": 0,
+   "boundary": 0,
+   "v0": 0,
+   "teeth": 0,
+   "trees": 0
+  },
+  "Fpt,p=2,I4C/tw": {
+   "scored": 0,
+   "boundary": 0,
+   "v0": 0,
+   "teeth": 0,
+   "trees": 0
+  },
+  "QO:x4-2/Q2": {
+   "scored": 0,
+   "boundary": 0,
+   "v0": 0,
+   "teeth": 0,
+   "trees": 0
+  },
+  "QO:x4+4x+4/Q2": {
+   "scored": 2,
+   "boundary": 0,
+   "v0": 0,
+   "teeth": 0,
+   "trees": 2
+  },
+  "QO:x4+2x2+2/Q2": {
+   "scored": 0,
+   "boundary": 0,
+   "v0": 0,
+   "teeth": 0,
+   "trees": 0
+  },
+  "QO:x4+12/Q2": {
+   "scored": 0,
+   "boundary": 0,
+   "v0": 0,
+   "teeth": 0,
+   "trees": 0
+  },
+  "QO:x3-3/Q3": {
+   "scored": 0,
+   "boundary": 0,
+   "v0": 0,
+   "teeth": 0,
+   "trees": 0
+  },
+  "Zp,p=5,JD5A": {
+   "scored": 2,
+   "boundary": 0,
+   "v0": 0,
+   "teeth": 1,
+   "trees": 2
+  },
+  "Zp,p=2,JD3A": {
+   "scored": 2,
+   "boundary": 0,
+   "v0": 0,
+   "teeth": 1,
+   "trees": 2
+  },
+  "Zp,p=3,JD3B": {
+   "scored": 2,
+   "boundary": 0,
+   "v0": 0,
+   "teeth": 0,
+   "trees": 2
+  },
+  "Fpt,p=2,JD3C": {
+   "scored": 2,
+   "boundary": 0,
+   "v0": 0,
+   "teeth": 1,
+   "trees": 2
+  }
+ },
+ "tw": {
+  "Zp,p=2,T2A": {
+   "ledger": [
+    [
+     3,
+     "((1,), (1,))",
+     "((1,), (0,))"
+    ]
+   ],
+   "cread": {
+    "scored": 2,
+    "boundary": 0,
+    "v0": 0,
+    "teeth": 1,
+    "trees": 2
+   },
+   "new_viol": 0
+  },
+  "Zp,p=3,T2B": {
+   "ledger": [
+    [
+     3,
+     "((1,),)",
+     "((1,),)"
+    ]
+   ],
+   "cread": {
+    "scored": 2,
+    "boundary": 0,
+    "v0": 0,
+    "teeth": 0,
+    "trees": 2
+   },
+   "new_viol": 0
+  },
+  "Zp,p=3,T2C": {
+   "ledger": [
+    [
+     3,
+     "((2,),)",
+     "((1,),)"
+    ]
+   ],
+   "cread": {
+    "scored": 2,
+    "boundary": 0,
+    "v0": 0,
+    "teeth": 0,
+    "trees": 2
+   },
+   "new_viol": 0
+  },
+  "Fpt,p=2,T2D": {
+   "ledger": [
+    [
+     3,
+     "((0, 1),)",
+     "((1, 0),)"
+    ]
+   ],
+   "cread": {
+    "scored": 2,
+    "boundary": 0,
+    "v0": 0,
+    "teeth": 1,
+    "trees": 2
+   },
+   "new_viol": 0
+  },
+  "Zp,p=2,T2E": {
+   "ledger": [
+    [
+     3,
+     "((1,), (0,))",
+     "((1,), (0,))"
+    ]
+   ],
+   "cread": {
+    "scored": 2,
+    "boundary": 0,
+    "v0": 0,
+    "teeth": 0,
+    "trees": 2
+   },
+   "new_viol": 0
+  },
+  "Fpt,p=3,T2F": {
+   "ledger": [
+    [
+     3,
+     "((1,),)",
+     "((1,),)"
+    ]
+   ],
+   "cread": {
+    "scored": 2,
+    "boundary": 0,
+    "v0": 0,
+    "teeth": 0,
+    "trees": 2
+   },
+   "new_viol": 0
+  },
+  "Zp,p=3,T2G": {
+   "ledger": [
+    [
+     3,
+     "((2, 0),)",
+     "((1, 0),)"
+    ]
+   ],
+   "cread": {
+    "scored": 2,
+    "boundary": 0,
+    "v0": 0,
+    "teeth": 1,
+    "trees": 2
+   },
+   "new_viol": 0
+  },
+  "Zp,p=2,T3A": {
+   "ledger": [
+    [
+     3,
+     "((0, 1),)",
+     "((1, 0),)"
+    ],
+    [
+     4,
+     "(((1, 0),),)",
+     "(((1, 0),),)"
+    ]
+   ],
+   "cread": {
+    "scored": 2,
+    "boundary": 2,
+    "v0": 0,
+    "teeth": 1,
+    "trees": 4
+   },
+   "new_viol": 0
+  },
+  "Zp,p=3,T3B": {
+   "ledger": [
+    [
+     3,
+     "((1,),)",
+     "((1,),)"
+    ],
+    [
+     4,
+     "(((2,),),)",
+     "(((2,),),)"
+    ]
+   ],
+   "cread": {
+    "scored": 2,
+    "boundary": 2,
+    "v0": 0,
+    "teeth": 0,
+    "trees": 4
+   },
+   "new_viol": 0
+  },
+  "Zp,p=3,T3C": {
+   "ledger": [
+    [
+     3,
+     "((2,),)",
+     "((1,),)"
+    ],
+    [
+     4,
+     "(((1,),),)",
+     "(((1,),),)"
+    ]
+   ],
+   "cread": {
+    "scored": 4,
+    "boundary": 0,
+    "v0": 0,
+    "teeth": 0,
+    "trees": 4
+   },
+   "new_viol": 0
+  },
+  "Fpt,p=2,T3D": {
+   "ledger": [
+    [
+     3,
+     "((1,), (1,))",
+     "((1,), (0,))"
+    ],
+    [
+     4,
+     "(((1,), (1,)),)",
+     "(((0,), (1,)),)"
+    ]
+   ],
+   "cread": {
+    "scored": 2,
+    "boundary": 2,
+    "v0": 0,
+    "teeth": 1,
+    "trees": 4
+   },
+   "new_viol": 0
+  },
+  "Zp,p=2,T3E": {
+   "ledger": [
+    [
+     3,
+     "((0,), (1,))",
+     "((1,), (0,))"
+    ],
+    [
+     4,
+     "(((1,), (0,)),)",
+     "(((1,), (0,)),)"
+    ]
+   ],
+   "cread": {
+    "scored": 4,
+    "boundary": 0,
+    "v0": 0,
+    "teeth": 1,
+    "trees": 4
+   },
+   "new_viol": 0
+  },
+  "Zp,p=3,T3F": {
+   "ledger": [
+    [
+     3,
+     "((1,), (0,))",
+     "((1,), (0,))"
+    ],
+    [
+     4,
+     "(((2,), (0,)),)",
+     "(((1,), (0,)),)"
+    ]
+   ],
+   "cread": {
+    "scored": 4,
+    "boundary": 0,
+    "v0": 0,
+    "teeth": 0,
+    "trees": 4
+   },
+   "new_viol": 0
+  },
+  "Zp,p=2,I4A": {
+   "ledger": [
+    [
+     3,
+     "((1,),)",
+     "((1,),)"
+    ],
+    [
+     4,
+     "(((1,),),)",
+     "(((1,),),)"
+    ],
+    [
+     5,
+     "((((1,),),), (((0,),),))",
+     "((((1,),),), (((0,),),))"
+    ]
+   ],
+   "cread": {
+    "scored": 4,
+    "boundary": 0,
+    "v0": 0,
+    "teeth": 0,
+    "trees": 4
+   },
+   "new_viol": 0
+  },
+  "Zp,p=3,I4B": {
+   "ledger": [
+    [
+     3,
+     "((1,),)",
+     "((1,),)"
+    ],
+    [
+     4,
+     "(((1,),),)",
+     "(((1,),),)"
+    ],
+    [
+     5,
+     "((((2,),),), (((0,),),))",
+     "((((2,),),), (((0,),),))"
+    ]
+   ],
+   "cread": {
+    "scored": 2,
+    "boundary": 2,
+    "v0": 0,
+    "teeth": 1,
+    "trees": 4
+   },
+   "new_viol": 0
+  },
+  "Fpt,p=2,I4C": {
+   "ledger": [
+    [
+     3,
+     "((1, 1),)",
+     "((1, 0),)"
+    ],
+    [
+     4,
+     "(((1, 0),), ((0, 0),))",
+     "(((1, 0),), ((0, 0),))"
+    ],
+    [
+     5,
+     "((((1, 0),), ((1, 1),)),)",
+     "((((1, 0),), ((0, 0),)),)"
+    ]
+   ],
+   "cread": {
+    "scored": 0,
+    "boundary": 0,
+    "v0": 0,
+    "teeth": 0,
+    "trees": 0
+   },
+   "new_viol": 0
+  }
+ },
+ "qo": {
+  "QO:x4-2/Q2": {
+   "new_viol": 0
+  },
+  "QO:x4+4x+4/Q2": {
+   "new_viol": 0
+  },
+  "QO:x4+2x2+2/Q2": {
+   "new_viol": 0
+  },
+  "QO:x4+12/Q2": {
+   "new_viol": 0
+  },
+  "QO:x3-3/Q3": {
+   "new_viol": 0
+  }
+ },
+ "d0": {
+  "Zp,p=5,JD5A": {
+   "new_viol": 0
+  },
+  "Zp,p=2,JD3A": {
+   "new_viol": 0
+  },
+  "Zp,p=3,JD3B": {
+   "new_viol": 0
+  },
+  "Fpt,p=2,JD3C": {
+   "new_viol": 0
+  }
+ },
+ "mut": {},
+ "families": {
+  "EXT-GATE": {
+   "pred": "0",
+   "obs": 0,
+   "samples": 1
+  },
+  "JB-DEV": {
+   "pred": "0",
+   "obs": 0,
+   "samples": 893
+  },
+  "JB-KEYEQ": {
+   "pred": "0",
+   "obs": 0,
+   "samples": 25
+  },
+  "JB-SHEAR": {
+   "pred": "0",
+   "obs": 0,
+   "samples": 893
+  },
+  "JB-VTX": {
+   "pred": "0",
+   "obs": 0,
+   "samples": 893
+  },
+  "JB-ID": {
+   "pred": "0",
+   "obs": 0,
+   "samples": 34
+  },
+  "JB-TREE": {
+   "pred": "0",
+   "obs": 0,
+   "samples": 79
+  },
+  "JB-LINE": {
+   "pred": "0",
+   "obs": 0,
+   "samples": 194
+  },
+  "JB-EPS": {
+   "pred": "0",
+   "obs": 0,
+   "samples": 955
+  },
+  "JB-CM": {
+   "pred": "0",
+   "obs": 0,
+   "samples": 28
+  },
+  "JB-CREAD": {
+   "pred": "0",
+   "obs": 0,
+   "samples": 79
+  },
+  "JB-QO": {
+   "pred": "0",
+   "obs": 0,
+   "samples": 5
+  },
+  "JB-D0": {
+   "pred": "0",
+   "obs": 0,
+   "samples": 4
+  },
+  "TW-JB": {
+   "pred": "0",
+   "obs": 0,
+   "samples": 2480
+  },
+  "MJB-DEV": {
+   "pred": "0",
+   "obs": 0,
+   "samples": 3
+  },
+  "MJB-VTX": {
+   "pred": "0",
+   "obs": 0,
+   "samples": 3
+  },
+  "MJB-TREE": {
+   "pred": "0",
+   "obs": 0,
+   "samples": 3
+  },
+  "MJB-CREAD": {
+   "pred": "0",
+   "obs": 0,
+   "samples": 3
+  }
+ },
+ "violations": [],
+ "censuses": {
+  "JB-CREAD-SCORED": 104,
+  "JB-CREAD-BOUNDARY": 21,
+  "JB-CREAD-V0": 0
+ },
+ "elapsed_s": 0.7
+}

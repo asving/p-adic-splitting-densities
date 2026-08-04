@@ -1,0 +1,54 @@
+grt_jb_checks.py -- J-B tree-junction runner
+  [   0.2s] EXT-GATE done (new: 0)
+  [   0.2s] Zp,p=2,T2A       done (0.0s; trees 3, cread sc/bd/v0 3/0/0, teeth 1)
+  [   0.2s] Zp,p=3,T2B       done (0.0s; trees 3, cread sc/bd/v0 3/0/0, teeth 1)
+  [   0.2s] Zp,p=3,T2C       done (0.0s; trees 3, cread sc/bd/v0 3/0/0, teeth 0)
+  [   0.2s] Fpt,p=2,T2D      done (0.0s; trees 3, cread sc/bd/v0 3/0/0, teeth 1)
+  [   0.2s] Zp,p=2,T2E       done (0.0s; trees 3, cread sc/bd/v0 3/0/0, teeth 0)
+  [   0.2s] Fpt,p=3,T2F      done (0.0s; trees 3, cread sc/bd/v0 3/0/0, teeth 1)
+  [   0.2s] Zp,p=3,T2G       done (0.0s; trees 3, cread sc/bd/v0 3/0/0, teeth 1)
+  [   0.2s] Zp,p=2,T3A       done (0.0s; trees 6, cread sc/bd/v0 3/3/0, teeth 1)
+  [   0.3s] Zp,p=3,T3B       done (0.0s; trees 6, cread sc/bd/v0 3/3/0, teeth 1)
+  [   0.3s] Zp,p=3,T3C       done (0.0s; trees 6, cread sc/bd/v0 5/1/0, teeth 0)
+  [   0.4s] Fpt,p=2,T3D      done (0.1s; trees 6, cread sc/bd/v0 3/3/0, teeth 1)
+  [   0.4s] Zp,p=2,T3E       done (0.0s; trees 6, cread sc/bd/v0 6/0/0, teeth 1)
+  [   0.4s] Zp,p=3,T3F       done (0.0s; trees 6, cread sc/bd/v0 6/0/0, teeth 1)
+  [   0.5s] Zp,p=2,I4A       done (0.1s; trees 6, cread sc/bd/v0 6/0/0, teeth 0)
+  [   0.5s] Zp,p=3,I4B       done (0.1s; trees 6, cread sc/bd/v0 3/3/0, teeth 2)
+  [   0.7s] Fpt,p=2,I4C      done (0.2s; trees 0, cread sc/bd/v0 0/0/0, teeth 0)
+  [   0.7s] QO leg done
+  [   0.7s] d0>=2 leg done
+  [   0.7s] teeth done
+
+==============================================================================
+PREDICTED vs OBSERVED (violation counts; samples in parentheses)
+==============================================================================
+EXT-GATE   engine_ext pins + agreement gate re-run       pred 0    obs     0 (     1)  GREEN
+JB-DEV     fresh dev == both engines + digit weights     pred 0    obs     0 (   893)  GREEN
+JB-KEYEQ   byte census + TH-BASE                         pred 0    obs     0 (    25)  GREEN
+JB-SHEAR   pointwise shear + min/read ties               pred 0    obs     0 (   893)  GREEN
+JB-VTX     vertex bijection + slope/length law           pred 0    obs     0 (   893)  GREEN
+JB-ID      (ID) exact + key dev digits + print grid      pred 0    obs     0 (    34)  GREEN
+JB-TREE    tree == canonical division (both keys)        pred 0    obs     0 (    79)  GREEN
+JB-LINE    lambda_E quanta + line == wlev == vgen        pred 0    obs     0 (   194)  GREEN
+JB-EPS     eps-cocycle collapse (int + field)            pred 0    obs     0 (   955)  GREEN
+JB-CM      c_m = psi_{m,0} = -z_{m+1}                    pred 0    obs     0 (    28)  GREEN
+JB-CREAD   rho(R) = c_m rho(f) (scored stratum)          pred 0    obs     0 (    79)  GREEN
+JB-QO      concrete shapes                               pred 0    obs     0 (     5)  GREEN
+JB-D0      fresh d0>=2 shapes via engine_ext             pred 0    obs     0 (     4)  GREEN
+TW-JB      transported-chamber re-instantiation          pred 0    obs     0 (  2480)  GREEN
+MJB-DEV    teeth: garbled key caught                     pred 0    obs     0 (     3)  GREEN
+MJB-VTX    teeth: unsheared identification caught        pred 0    obs     0 (     3)  GREEN
+MJB-TREE   teeth: corrupted correction caught            pred 0    obs     0 (     3)  GREEN
+MJB-CREAD  teeth: spurious carry caught                  pred 0    obs     0 (     3)  GREEN
+------------------------------------------------------------------------------
+JB-CREAD censuses: scored 104 | boundary 21 | v=0 0 | R=0 0 | off-perimeter tree rows 0
+byte census (JB-KEYEQ): {"Fpt,p=2,I4C": {"1": true, "2": false, "3": false}, "Fpt,p=2,JD3C": {"1": true}, "Fpt,p=2,T2D": {"1": true}, "Fpt,p=2,T3D": {"1": true, "2": false}, "Fpt,p=3,T2F": {"1": true}, "QO:x3-3/Q3": {}, "QO:x4+12/Q2": {"1": true}, "QO:x4+2x2+2/Q2": {}, "QO:x4+4x+4/Q2": {"1": true}, "QO:x4-2/Q2": {}, "Zp,p=2,I4A": {"1": true, "2": true, "3": true}, "Zp,p=2,JD3A": {"1": true}, "Zp,p=2,T2A": {"1": true}, "Zp,p=2,T2E": {"1": true}, "Zp,p=2,T3A": {"1": true, "2": false}, "Zp,p=2,T3E": {"1": true, "2": false}, "Zp,p=3,I4B": {"1": true, "2": true, "3": true}, "Zp,p=3,JD3B": {"1": true}, "Zp,p=3,T2B": {"1": true}, "Zp,p=3,T2C": {"1": true}, "Zp,p=3,T2G": {"1": true}, "Zp,p=3,T3B": {"1": true, "2": true}, "Zp,p=3,T3C": {"1": true, "2": false}, "Zp,p=3,T3F": {"1": true, "2": true}, "Zp,p=5,JD5A": {"1": true}}
+TOTAL samples: 6700   elapsed 0.7s   JSON: /data/users/asvin/math-and-lean/p-adic-splitting-densities/verification/openmath/grt_jb_checks_results.json
+
+J-B TREE-JUNCTION VERDICT (LAW-KEYED):
+  expansion/polygon (JB-DEV/KEYEQ/SHEAR/VTX): GREEN
+  tree/division (JB-ID/TREE/LINE): GREEN
+  (C-READ) transport (JB-EPS/CM/CREAD): GREEN
+  chamber (TW-JB): GREEN
+  teeth: CAUGHT

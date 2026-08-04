@@ -435,14 +435,39 @@ object is constructed or claimed, and BLOCKED-ON-CARRIER-TIE stands.
 
 ## §7. Records (commit 2 — from the sealed artifacts)
 
-### 7.1 Machine bracket — [VERDICT APPENDED AT COMMIT 2]
+### 7.1 Machine bracket — **ALL 18 FAMILIES GREEN, 6,700 samples, 0 violations, every sealed prediction hit exactly** (`grt_jb_checks_output.txt` / `grt_jb_checks_results.json`, elapsed 0.7 s; seal commit 7f6759d)
 
-Sealed predictions (commit 1): EXT-GATE 0 · JB-DEV 0 · JB-KEYEQ 0
-mismatches vs the W-2 read-data byte law (census disclosed) · JB-VTX 0 ·
-JB-SHEAR 0 · JB-TREE 0 · JB-ID 0 · JB-LINE 0 · JB-EPS 0 · JB-CM 0 ·
-JB-CREAD 0 scored violations (boundary census disclosed) · JB-QO 0 ·
-JB-D0 0 · TW-JB 0 scored (chamber re-instantiation) · teeth MJB-DEV /
-MJB-VTX / MJB-TREE / MJB-CREAD each caught on EVERY designated row.
+| family | claim keyed | samples | verdict |
+|---|---|---|---|
+| EXT-GATE | engine_ext pins + agreement gate re-run (standing rule) | 1 | GREEN |
+| JB-DEV | fresh schoolbook dev == both engines + digit weight ties | 893 | GREEN |
+| JB-KEYEQ | byte census + TH-BASE (q = 1 byte-equal on all 25 rows) | 25 | GREEN |
+| JB-SHEAR | pointwise shear + the four min/read ties (Lemma shape 1 through a second development) | 893 | GREEN |
+| JB-VTX | vertex bijection + per-side slope/length law, fresh hulls | 893 | GREEN |
+| JB-ID | (ID-(i+1)) exact + key-dev digits + print-key grid/shear-constancy | 34 | GREEN |
+| JB-TREE | fresh tree walk == canonical division, harness AND print keys | 79 walks (125 with chambers) | GREEN |
+| JB-LINE | λ_E quanta per edge + leaf line == wlev == vgen | 194 | GREEN |
+| JB-EPS | ε-cocycle collapse, integers + field | 955 | GREEN |
+| JB-CM | c_m = ψ_{m,0} = −z_{m+1} (28 eligible (T, m) rows) | 28 | GREEN |
+| JB-CREAD | ρ(R) = c_m·ρ(f) + w_m(R) pin, scored stratum | 79 | GREEN |
+| JB-QO / JB-D0 | 5 concrete shapes / 4 fresh d₀ ≥ 2 shapes (engine_ext) | 5 / 4 | GREEN |
+| TW-JB | chamber re-instantiation (all 16 towers, nontrivial ledgers) | 2,480 | GREEN |
+| MJB-DEV / MJB-VTX / MJB-TREE / MJB-CREAD | teeth (garbled key / unsheared frame / corrupted correction / spurious carry) | 3/3/3/3 rows | GREEN (all caught) |
+
+Censuses (the note's displayed conditionality, quantified): JB-CREAD
+**scored 104 (66 roster + 38 chamber), 0 violations; boundary 21 —
+ALL on the character-visible/interior-twist towers T3A, T3B, T3C, T3D,
+I4B and their transported chambers**, exactly the JA-BOX-2/(VD-m)-proviso
+geography (T3B/I4B = the W-2 collapse-boundary pair); **v = 0 stratum:
+0 occurrences; R = 0: 0; off-perimeter tree rows: 0**. Byte census
+(JB-KEYEQ) reproduces the probe's F1 pattern row-for-row (e.g. I4A/I4B
+byte-equal through the top; T3A/T3C/T3D/T3E diverge at q = 2; I4C at
+q = 2, 3 — and I4C has NO eligible (g_m = 1 ∧ T-scope) reduction level,
+so its tree/cread rows are honestly absent, the §4 scope fence in
+action). MJB-CREAD teeth material: 22 scored samples with z_m^{ε′} ≠ 1
+across 7 towers — the spurious-carry reading fails on every one, i.e.
+the ε-carry collapse is machine-load-bearing, not a notational
+convention.
 
 ### 7.2 Claims table (grades)
 
