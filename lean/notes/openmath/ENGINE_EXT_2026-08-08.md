@@ -94,4 +94,50 @@ skip).
 
 ## VERDICT (commit 2 — appended from the sealed artifacts)
 
-PENDING at commit 1.
+**ALL GREEN — 0 violations in all 13 families; every sealed prediction hit
+exactly** (`engine_ext_output.txt`, `engine_ext_results.json`; elapsed 10.7 s).
+
+- **EXT-PIN** 13/13 pins green. **EXT-WALL** both walls reproduced from the
+  committed objects (counters `wall_pick_deg2`, `wall_irr_valueerror`,
+  `wall_quadratic_phi0` each = 1) and cleared by `TowerExt`
+  (`wall_cleared_d0_3` + `routing_verified` — a `PE.Eng` at d₀ = 3 carries a
+  `TowerExt` with a cubic root key through the full chain).
+- **Agreement battery, LAW-KEYED, 0 violations everywhere:** AGR-IRR 158
+  deg ≤ 2 cases; AGR-CERT 1181 double-leg certificates with 7/7 Gauss/Möbius
+  census confirmations (the non-textual count leg); AGR-PICK 30 cases;
+  AGR-IRR3 828 cubic cases and AGR-PICK3 33 picks vs the construct unit's
+  local extension; **AGR-TOWER 60/60 tower pairs attribute-exact** (full grb
+  ROSTER × 4 rings, modes C+P); AGR-ENG 4/4 multi-level pairs byte-exact.
+- **EXT-GRB:** the committed order-2 law families T1–T8 + T10 run UNCHANGED on
+  the first deg ≥ 3 root keys — 8 towers (d₀ ∈ {3,4} × 4 rings × 3
+  read-shapes), 0 violations including the T8 TOTAL-form gate.
+- **EXT-PARI (external oracle):** all 4 Zp towers confirmed — d₀ = 3: deg-12
+  Φ₂ irreducible over Q₂ and Q₃ with (e,f) = (4,3); d₀ = 4: deg-8 Φ₂
+  irreducible with (e,f) = (2,4). The corrected constructor's first deg ≥ 3
+  root keys are externally certified OM data.
+- **REB (the rebuild leg):** `reb_rows_exact` = **42/42** — the three committed
+  g₀ = 3 towers (C3W2F 16 rows, C3K2AF 22, C3OM3F 4) re-traced through the
+  extension routing reproduce the pinned `survdisj_construct_results.json`
+  row records dict-EXACTLY, 0 new construct-family violations, 0 new findings,
+  0 skips.
+- **D3-SDYJ (the first d₀ ≥ 3 instances):** 7 towers (6 × d₀ = 3 incl. Zp and
+  p = 3, m up to 4, + the d₀ = 4 first D4YJ3FLT), 15 live rows, **every
+  cascade slot SURV**, 0 violations in SDYJ-GAM/DIG/CASC/SUPER/COMP/NEP +
+  HARNESS — the (SD-YJ′) proof's d₀-blindness is now instance-backed at
+  d₀ ∈ {3,4}. **14 companions measured** (census): every gain ≥ 1 as the
+  SDY-L1/L2 floors force, with the flat-shape towers showing the same sharp
+  gain-1 companions as their d₀ = 2 twins (D3YJ3FLT/D3YJ3Z/D4YJ3FLT: w₀ = 18
+  at ŵ = 17 — the w₀/gain ledger is exactly d₀-invariant on these shapes,
+  while lines shift with E_m·(w₀−ŵ) as SDY-L3 predicts), and richer gains
+  {2,4} on D3YJ3FLTB / {1,2} on D3YJ4FLT.
+- **EXT-WALL3 (measured, as predicted):** the latent THIRD wall machine-lit —
+  the committed d₀ = 2 hardcode X²+1 is reducible at p ≡ 1 (mod 4) (witness
+  roots 2 mod 5, 5 mod 13); `phibar_of` picks certified irreducibles there
+  ([1,1,1] mod 5, [1,3,1] mod 13). The committed rosters never ran that
+  perimeter, so no sealed artifact is affected.
+
+**Standing rule now in force** (see above): future instruments import
+`engine_ext` + `install()` for beyond-wall shapes and re-run
+`agreement_gate()` in-unit. The K2-ENG "T1-RES" boxed door (the g₀ = 3
+double-kill at budget n = 5) and the PE-Y1 queue can now be attempted without
+unit-local engine forks.

@@ -1,0 +1,82 @@
+==============================================================================
+ENGINE REFIT — engine_ext sealed battery
+==============================================================================
+*** FINDING [EXT-WALL3] p=5: {'hardcode': [1, 0, 1], 'root': 2, 'detail': 'committed d0=2 hardcode X^2+1 factors as (X-2)(X+2) mod 5; phibar_of picks [1, 1, 1] instead (certified)'}
+*** FINDING [EXT-WALL3] p=13: {'hardcode': [1, 0, 1], 'root': 5, 'detail': 'committed d0=2 hardcode X^2+1 factors as (X-5)(X+5) mod 13; phibar_of picks [1, 3, 1] instead (certified)'}
+[   0.9s] agreement gate: 0 violations (pairs=60, irr cases=158, cert cases=1181, pick cases=30)
+[   3.6s] construct-unit agreements: irr3=828 pick3=33
+[   3.6s] AGR-ENG: 4 pairs
+[   6.5s] EXT-GRB: 8 towers under the committed law families
+-- PARI: Zp,p=2,d0=3/pari deg Phi2 = 12 irreducible, (e,f) = (4,3) as predicted
+-- PARI: Zp,p=3,d0=3/pari deg Phi2 = 12 irreducible, (e,f) = (4,3) as predicted
+-- PARI: Zp,p=2,d0=4/pari deg Phi2 = 8 irreducible, (e,f) = (2,4) as predicted
+-- PARI: Zp,p=3,d0=4/pari deg Phi2 = 8 irreducible, (e,f) = (2,4) as predicted
+  CENSUS [C3W2F]: principal d-cell ABSENT (theta_0 = 0 case)
+-- REBUILD C3W2F m=3 Fpt,p=2,d0=1 g0=3 A=[0, 2] psi0=[(1,), (0,), (1,), (1,)]: live-clause rows=16 traced nonempty=16 (0.9s)
+-- REBUILD C3K2AF m=3 Fpt,p=2,d0=1 g0=3 A=[0, 1] psi0=[(1,), (1,), (0,), (1,)]: live-clause rows=30 traced nonempty=22 (0.4s)
+  CENSUS [C3OM3F]: principal d-cell ABSENT (theta_0 = 0 case)
+-- REBUILD C3OM3F m=3 Fpt,p=2,d0=2 g0=3 A=[0, 2] psi0=[(1, 0), (0, 0), (0, 1), (1, 0)]: live-clause rows=4 traced nonempty=4 (1.5s)
+-- REB: 42 committed rows reproduced EXACTLY through the extension routing (C3W2F, C3K2AF, C3OM3F)
+-- D3YJ2F m=2 Fpt,p=2,d0=3: live-clause rows=1 traced nonempty=1 (0.0s)
+*** FINDING [YJ-COMP] D3YJ3FLT: {'key': [91, 95], 'gain': 1, 'junk': 1, 'y2': 0, 'nce': 1, 'nX': 0, 'corr_child': 'L/Y-only'}
+*** FINDING [YJ-COMP] D3YJ3FLT: {'key': [95, 95], 'gain': 1, 'junk': 1, 'y2': 1, 'nce': 1, 'nX': 0, 'corr_child': 'L/Y-only'}
+-- D3YJ3FLT m=3 Fpt,p=2,d0=3: live-clause rows=2 traced nonempty=2 (0.0s)
+*** FINDING [YJ-COMP] D3YJ3FLTB: {'key': [187, 191], 'gain': 4, 'junk': 2, 'y2': 0, 'nce': 2, 'nX': 0, 'corr_child': 'L/Y-only'}
+*** FINDING [YJ-COMP] D3YJ3FLTB: {'key': [187, 191], 'gain': 2, 'junk': 1, 'y2': 0, 'nce': 1, 'nX': 0, 'corr_child': 'L/Y-only'}
+*** FINDING [YJ-COMP] D3YJ3FLTB: {'key': [191, 191], 'gain': 4, 'junk': 2, 'y2': 1, 'nce': 2, 'nX': 0, 'corr_child': 'L/Y-only'}
+*** FINDING [YJ-COMP] D3YJ3FLTB: {'key': [191, 191], 'gain': 2, 'junk': 1, 'y2': 1, 'nce': 1, 'nX': 0, 'corr_child': 'L/Y-only'}
+-- D3YJ3FLTB m=3 Fpt,p=2,d0=3: live-clause rows=2 traced nonempty=2 (0.0s)
+*** FINDING [YJ-COMP] D3YJ3Z: {'key': [91, 95], 'gain': 1, 'junk': 1, 'y2': 0, 'nce': 1, 'nX': 0, 'corr_child': 'L/Y-only'}
+*** FINDING [YJ-COMP] D3YJ3Z: {'key': [95, 95], 'gain': 1, 'junk': 1, 'y2': 1, 'nce': 1, 'nX': 0, 'corr_child': 'L/Y-only'}
+-- D3YJ3Z m=3 Zp,p=2,d0=3: live-clause rows=2 traced nonempty=2 (0.0s)
+-- D3YJ3F3 m=3 Fpt,p=3,d0=3: live-clause rows=2 traced nonempty=2 (0.0s)
+*** FINDING [YJ-COMP] D3YJ4FLT: {'key': [355, 355], 'gain': 2, 'junk': 2, 'y2': 1, 'nce': 2, 'nX': 0, 'corr_child': 'L/Y-only'}
+*** FINDING [YJ-COMP] D3YJ4FLT: {'key': [355, 355], 'gain': 1, 'junk': 1, 'y2': 1, 'nce': 1, 'nX': 0, 'corr_child': 'L/Y-only'}
+*** FINDING [YJ-COMP] D3YJ4FLT: {'key': [355, 359], 'gain': 2, 'junk': 2, 'y2': 1, 'nce': 2, 'nX': 0, 'corr_child': 'L/Y-only'}
+*** FINDING [YJ-COMP] D3YJ4FLT: {'key': [355, 359], 'gain': 1, 'junk': 1, 'y2': 1, 'nce': 1, 'nX': 0, 'corr_child': 'L/Y-only'}
+-- D3YJ4FLT m=4 Fpt,p=2,d0=3: live-clause rows=4 traced nonempty=4 (1.1s)
+*** FINDING [YJ-COMP] D4YJ3FLT: {'key': [91, 95], 'gain': 1, 'junk': 1, 'y2': 0, 'nce': 1, 'nX': 0, 'corr_child': 'L/Y-only'}
+*** FINDING [YJ-COMP] D4YJ3FLT: {'key': [95, 95], 'gain': 1, 'junk': 1, 'y2': 1, 'nce': 1, 'nX': 0, 'corr_child': 'L/Y-only'}
+-- D4YJ3FLT m=3 Fpt,p=2,d0=4: live-clause rows=2 traced nonempty=2 (0.0s)
+*** FINDING [D3-INSTANCE] D3YJ2F: {'m': 2, 'kind': 'Fpt', 'p': 2, 'd0': 3, 'reads': [(2, 1, 1), (2, 1, 1), (2, 1, 1)], 'live_rows': 1, 'casc': ['SURV'], 'ncomp': 0}
+*** FINDING [D3-INSTANCE] D3YJ3FLT: {'m': 3, 'kind': 'Fpt', 'p': 2, 'd0': 3, 'reads': [(2, 1, 1), (1, 1, 1), (2, 1, 1), (2, 1, 1)], 'live_rows': 2, 'casc': ['SURV', 'SURV'], 'ncomp': 2}
+*** FINDING [D3-INSTANCE] D3YJ3FLTB: {'m': 3, 'kind': 'Fpt', 'p': 2, 'd0': 3, 'reads': [(2, 3, 1), (1, 1, 1), (2, 1, 1), (2, 1, 1)], 'live_rows': 2, 'casc': ['SURV', 'SURV'], 'ncomp': 4}
+*** FINDING [D3-INSTANCE] D3YJ3Z: {'m': 3, 'kind': 'Zp', 'p': 2, 'd0': 3, 'reads': [(2, 1, 1), (1, 1, 1), (2, 1, 1), (2, 1, 1)], 'live_rows': 2, 'casc': ['SURV', 'SURV'], 'ncomp': 2}
+*** FINDING [D3-INSTANCE] D3YJ3F3: {'m': 3, 'kind': 'Fpt', 'p': 3, 'd0': 3, 'reads': [(2, 1, 1), (1, 1, 1), (2, 1, 1), (2, 1, 1)], 'live_rows': 2, 'casc': ['SURV', 'SURV'], 'ncomp': 0}
+*** FINDING [D3-INSTANCE] D3YJ4FLT: {'m': 4, 'kind': 'Fpt', 'p': 2, 'd0': 3, 'reads': [(2, 1, 1), (1, 1, 1), (2, 1, 1), (2, 1, 1), (2, 1, 1)], 'live_rows': 4, 'casc': ['SURV', 'SURV', 'SURV', 'SURV'], 'ncomp': 4}
+*** FINDING [D3-INSTANCE] D4YJ3FLT: {'m': 3, 'kind': 'Fpt', 'p': 2, 'd0': 4, 'reads': [(2, 1, 1), (1, 1, 1), (2, 1, 1), (2, 1, 1)], 'live_rows': 2, 'casc': ['SURV', 'SURV'], 'ncomp': 2}
+*** FINDING [D3-COMP] D3YJ3FLT: {'key': [91, 95], 'gain': 1, 'junk': 1, 'y2': 0, 'w0': 18, 'line': 72, 'xmate': False}
+*** FINDING [D3-COMP] D3YJ3FLT: {'key': [95, 95], 'gain': 1, 'junk': 1, 'y2': 1, 'w0': 18, 'line': 74, 'xmate': False}
+*** FINDING [D3-COMP] D3YJ3FLTB: {'key': [187, 191], 'gain': 4, 'junk': 2, 'y2': 0, 'w0': 37, 'line': 148, 'xmate': False}
+*** FINDING [D3-COMP] D3YJ3FLTB: {'key': [187, 191], 'gain': 2, 'junk': 1, 'y2': 0, 'w0': 35, 'line': 140, 'xmate': False}
+*** FINDING [D3-COMP] D3YJ3FLTB: {'key': [191, 191], 'gain': 4, 'junk': 2, 'y2': 1, 'w0': 36, 'line': 150, 'xmate': False}
+*** FINDING [D3-COMP] D3YJ3FLTB: {'key': [191, 191], 'gain': 2, 'junk': 1, 'y2': 1, 'w0': 34, 'line': 142, 'xmate': False}
+*** FINDING [D3-COMP] D3YJ3Z: {'key': [91, 95], 'gain': 1, 'junk': 1, 'y2': 0, 'w0': 18, 'line': 72, 'xmate': False}
+*** FINDING [D3-COMP] D3YJ3Z: {'key': [95, 95], 'gain': 1, 'junk': 1, 'y2': 1, 'w0': 18, 'line': 74, 'xmate': False}
+*** FINDING [D3-COMP] D3YJ4FLT: {'key': [355, 355], 'gain': 2, 'junk': 2, 'y2': 1, 'w0': 31, 'line': 262, 'xmate': False}
+*** FINDING [D3-COMP] D3YJ4FLT: {'key': [355, 355], 'gain': 1, 'junk': 1, 'y2': 1, 'w0': 30, 'line': 254, 'xmate': False}
+*** FINDING [D3-COMP] D3YJ4FLT: {'key': [355, 359], 'gain': 2, 'junk': 2, 'y2': 1, 'w0': 33, 'line': 264, 'xmate': False}
+*** FINDING [D3-COMP] D3YJ4FLT: {'key': [355, 359], 'gain': 1, 'junk': 1, 'y2': 1, 'w0': 32, 'line': 256, 'xmate': False}
+*** FINDING [D3-COMP] D4YJ3FLT: {'key': [91, 95], 'gain': 1, 'junk': 1, 'y2': 0, 'w0': 18, 'line': 72, 'xmate': False}
+*** FINDING [D3-COMP] D4YJ3FLT: {'key': [95, 95], 'gain': 1, 'junk': 1, 'y2': 1, 'w0': 18, 'line': 74, 'xmate': False}
+==============================================================================
+EXT-PIN   : 0 violations
+EXT-WALL  : 0 violations
+AGR-IRR   : 0 violations
+AGR-CERT  : 0 violations
+AGR-PICK  : 0 violations
+AGR-IRR3  : 0 violations
+AGR-PICK3 : 0 violations
+AGR-TOWER : 0 violations
+AGR-ENG   : 0 violations
+EXT-GRB   : 0 violations
+EXT-PARI  : 0 violations
+REB       : 0 violations
+D3-SDYJ   : 0 violations
+------------------------------------------------------------------------------
+FINDINGS census: {'D3-COMP': 14, 'D3-INSTANCE': 7, 'EXT-WALL3': 2}
+counters: {'agr_cert_cases': 1181, 'agr_eng_pairs': 4, 'agr_gauss_confirms': 7, 'agr_irr3_cases': 828, 'agr_irr_cases': 158, 'agr_pick3_cases': 33, 'agr_pick_cases': 30, 'agr_tower_pairs': 60, 'd3_towers': 7, 'extgrb_towers': 8, 'install_calls': 1, 'pari_ef_confirms': 4, 'pari_towers': 4, 'pins_green': 13, 'reb_rows_exact': 42, 'routing_verified': 1, 'wall3_witnesses': 2, 'wall_cleared_d0_3': 1, 'wall_irr_valueerror': 1, 'wall_pick_deg2': 1, 'wall_quadratic_phi0': 1}
+total violations: 0
+elapsed: 10.7s
+VERDICT: ALL GREEN
+results -> engine_ext_results.json
