@@ -1,0 +1,549 @@
+{
+ "towers": {},
+ "qo": {
+  "QO:x4-2/Q2": {
+   "status": "complete",
+   "pari_full": "((4, 1),)"
+  },
+  "QO:x4+4x+4/Q2": {
+   "status": "complete",
+   "pari_full": "((4, 1),)"
+  },
+  "QO:x4+2x2+2/Q2": {
+   "status": "complete",
+   "pari_full": "((4, 1),)"
+  },
+  "QO:x4+12/Q2": {
+   "status": "complete",
+   "pari_full": "((2, 2),)"
+  },
+  "QO:x3-3/Q3": {
+   "status": "complete",
+   "pari_full": "((3, 1),)"
+  }
+ },
+ "d0": {
+  "Zp,p=5,JD5A": {
+   "ok": true
+  },
+  "Zp,p=2,JD3A": {
+   "ok": true
+  },
+  "Zp,p=3,JD3B": {
+   "ok": true
+  },
+  "Fpt,p=2,JD3C": {
+   "ok": true
+  }
+ },
+ "tw": {
+  "Zp,p=2,T2A": {
+   "ledger": [
+    [
+     3,
+     "((1,), (1,))",
+     "((1,), (0,))"
+    ]
+   ],
+   "scored": 8,
+   "boundary": 0
+  },
+  "Zp,p=3,T2B": {
+   "ledger": [
+    [
+     3,
+     "((1,),)",
+     "((1,),)"
+    ]
+   ],
+   "scored": 9,
+   "boundary": 0
+  },
+  "Zp,p=3,T2C": {
+   "ledger": [
+    [
+     3,
+     "((2,),)",
+     "((1,),)"
+    ]
+   ],
+   "scored": 8,
+   "boundary": 0
+  },
+  "Fpt,p=2,T2D": {
+   "ledger": [
+    [
+     3,
+     "((0, 1),)",
+     "((1, 0),)"
+    ]
+   ],
+   "scored": 8,
+   "boundary": 0
+  },
+  "Zp,p=2,T2E": {
+   "ledger": [
+    [
+     3,
+     "((1,), (0,))",
+     "((1,), (0,))"
+    ]
+   ],
+   "scored": 8,
+   "boundary": 0
+  },
+  "Fpt,p=3,T2F": {
+   "ledger": [
+    [
+     3,
+     "((1,),)",
+     "((1,),)"
+    ]
+   ],
+   "scored": 9,
+   "boundary": 0
+  },
+  "Zp,p=3,T2G": {
+   "ledger": [
+    [
+     3,
+     "((2, 0),)",
+     "((1, 0),)"
+    ]
+   ],
+   "scored": 8,
+   "boundary": 0
+  },
+  "Zp,p=2,T3A": {
+   "ledger": [
+    [
+     3,
+     "((0, 1),)",
+     "((1, 0),)"
+    ],
+    [
+     4,
+     "(((1, 0),),)",
+     "(((1, 0),),)"
+    ]
+   ],
+   "scored": 11,
+   "boundary": 0
+  },
+  "Zp,p=3,T3B": {
+   "ledger": [
+    [
+     3,
+     "((1,),)",
+     "((1,),)"
+    ],
+    [
+     4,
+     "(((2,),),)",
+     "(((2,),),)"
+    ]
+   ],
+   "scored": 21,
+   "boundary": 3
+  },
+  "Zp,p=3,T3C": {
+   "ledger": [
+    [
+     3,
+     "((2,),)",
+     "((1,),)"
+    ],
+    [
+     4,
+     "(((1,),),)",
+     "(((1,),),)"
+    ]
+   ],
+   "scored": 11,
+   "boundary": 0
+  },
+  "Fpt,p=2,T3D": {
+   "ledger": [
+    [
+     3,
+     "((1,), (1,))",
+     "((1,), (0,))"
+    ],
+    [
+     4,
+     "(((1,), (1,)),)",
+     "(((0,), (1,)),)"
+    ]
+   ],
+   "scored": 11,
+   "boundary": 0
+  },
+  "Zp,p=2,T3E": {
+   "ledger": [
+    [
+     3,
+     "((0,), (1,))",
+     "((1,), (0,))"
+    ],
+    [
+     4,
+     "(((1,), (0,)),)",
+     "(((1,), (0,)),)"
+    ]
+   ],
+   "scored": 11,
+   "boundary": 0
+  },
+  "Zp,p=3,T3F": {
+   "ledger": [
+    [
+     3,
+     "((1,), (0,))",
+     "((1,), (0,))"
+    ],
+    [
+     4,
+     "(((2,), (0,)),)",
+     "(((1,), (0,)),)"
+    ]
+   ],
+   "scored": 24,
+   "boundary": 0
+  },
+  "Zp,p=2,I4A": {
+   "ledger": [
+    [
+     3,
+     "((1,),)",
+     "((1,),)"
+    ],
+    [
+     4,
+     "(((1,),),)",
+     "(((1,),),)"
+    ],
+    [
+     5,
+     "((((1,),),), (((0,),),))",
+     "((((1,),),), (((0,),),))"
+    ]
+   ],
+   "scored": 39,
+   "boundary": 0
+  },
+  "Zp,p=3,I4B": {
+   "ledger": [
+    [
+     3,
+     "((1,),)",
+     "((1,),)"
+    ],
+    [
+     4,
+     "(((1,),),)",
+     "(((1,),),)"
+    ],
+    [
+     5,
+     "((((2,),),), (((0,),),))",
+     "((((2,),),), (((0,),),))"
+    ]
+   ],
+   "scored": 41,
+   "boundary": 4
+  },
+  "Fpt,p=2,I4C": {
+   "ledger": [
+    [
+     3,
+     "((1, 1),)",
+     "((1, 0),)"
+    ],
+    [
+     4,
+     "(((1, 0),), ((0, 0),))",
+     "(((1, 0),), ((0, 0),))"
+    ],
+    [
+     5,
+     "((((1, 0),), ((1, 1),)),)",
+     "((((1, 0),), ((0, 0),)),)"
+    ]
+   ],
+   "scored": 14,
+   "boundary": 0
+  },
+  "Zp,p=5,JD5A": {
+   "ledger": [
+    [
+     3,
+     "((2, 0),)",
+     "((1, 0),)"
+    ]
+   ],
+   "scored": 8,
+   "boundary": 0
+  },
+  "Zp,p=2,JD3A": {
+   "ledger": [
+    [
+     3,
+     "((1, 1, 1),)",
+     "((1, 0, 0),)"
+    ]
+   ],
+   "scored": 8,
+   "boundary": 0
+  },
+  "Zp,p=3,JD3B": {
+   "ledger": [
+    [
+     3,
+     "((1, 2, 2),)",
+     "((1, 0, 0),)"
+    ]
+   ],
+   "scored": 9,
+   "boundary": 0
+  },
+  "Fpt,p=2,JD3C": {
+   "ledger": [
+    [
+     3,
+     "((1, 0, 0), (1, 0, 0))",
+     "((1, 0, 0), (0, 0, 0))"
+    ]
+   ],
+   "scored": 8,
+   "boundary": 0
+  }
+ },
+ "boundary": {
+  "Zp,p=2,T2A": {
+   "scored": 13,
+   "boundary": 0,
+   "bpref": 1
+  },
+  "Zp,p=3,T2B": {
+   "scored": 12,
+   "boundary": 0,
+   "bpref": 0
+  },
+  "Zp,p=3,T2C": {
+   "scored": 12,
+   "boundary": 0,
+   "bpref": 1
+  },
+  "Fpt,p=2,T2D": {
+   "scored": 12,
+   "boundary": 0,
+   "bpref": 1
+  },
+  "Zp,p=2,T2E": {
+   "scored": 12,
+   "boundary": 0,
+   "bpref": 0
+  },
+  "Fpt,p=3,T2F": {
+   "scored": 12,
+   "boundary": 0,
+   "bpref": 0
+  },
+  "Zp,p=3,T2G": {
+   "scored": 12,
+   "boundary": 0,
+   "bpref": 1
+  },
+  "Zp,p=2,T3A": {
+   "scored": 19,
+   "boundary": 0,
+   "bpref": 2
+  },
+  "Zp,p=3,T3B": {
+   "scored": 34,
+   "boundary": 4,
+   "bpref": 0
+  },
+  "Zp,p=3,T3C": {
+   "scored": 19,
+   "boundary": 0,
+   "bpref": 2
+  },
+  "Fpt,p=2,T3D": {
+   "scored": 20,
+   "boundary": 0,
+   "bpref": 2
+  },
+  "Zp,p=2,T3E": {
+   "scored": 17,
+   "boundary": 0,
+   "bpref": 4
+  },
+  "Zp,p=3,T3F": {
+   "scored": 40,
+   "boundary": 0,
+   "bpref": 1
+  },
+  "Zp,p=2,I4A": {
+   "scored": 60,
+   "boundary": 0,
+   "bpref": 0
+  },
+  "Zp,p=3,I4B": {
+   "scored": 76,
+   "boundary": 5,
+   "bpref": 0
+  },
+  "Fpt,p=2,I4C": {
+   "scored": 26,
+   "boundary": 0,
+   "bpref": 7
+  },
+  "QO:x4-2/Q2": {
+   "scored": 0,
+   "boundary": 0,
+   "bpref": 0
+  },
+  "QO:x4+4x+4/Q2": {
+   "scored": 7,
+   "boundary": 0,
+   "bpref": 0
+  },
+  "QO:x4+2x2+2/Q2": {
+   "scored": 0,
+   "boundary": 0,
+   "bpref": 0
+  },
+  "QO:x4+12/Q2": {
+   "scored": 7,
+   "boundary": 0,
+   "bpref": 0
+  },
+  "QO:x3-3/Q3": {
+   "scored": 0,
+   "boundary": 0,
+   "bpref": 0
+  },
+  "Zp,p=5,JD5A": {
+   "scored": 8,
+   "boundary": 0,
+   "bpref": 1
+  },
+  "Zp,p=2,JD3A": {
+   "scored": 8,
+   "boundary": 0,
+   "bpref": 1
+  },
+  "Zp,p=3,JD3B": {
+   "scored": 9,
+   "boundary": 0,
+   "bpref": 1
+  },
+  "Fpt,p=2,JD3C": {
+   "scored": 8,
+   "boundary": 0,
+   "bpref": 1
+  }
+ },
+ "bpref": {},
+ "mut": {
+  "Zp,p=2,T2A/MJ/eps": 8,
+  "Zp,p=3,T2B/MJ/eps": 9,
+  "Fpt,p=2,T2D/MJ/eps": 8,
+  "Zp,p=2,T2A/MJ/val": 11,
+  "Zp,p=3,T2C/MJ/val": 11,
+  "Zp,p=2,T2A/MJ/grid": 12,
+  "Zp,p=3,T2B/MJ/grid": 18
+ },
+ "families": {
+  "EXT-GATE": {
+   "pred": "0",
+   "obs": 0,
+   "samples": 1
+  },
+  "JA-PIN": {
+   "pred": "0",
+   "obs": 0,
+   "samples": 111
+  },
+  "CK-VAL": {
+   "pred": "0",
+   "obs": 0,
+   "samples": 1132
+  },
+  "CK-EPS": {
+   "pred": "0",
+   "obs": 0,
+   "samples": 872
+  },
+  "ORB-EPS": {
+   "pred": "0",
+   "obs": 0,
+   "samples": 1744
+  },
+  "CK-GRID": {
+   "pred": "0",
+   "obs": 0,
+   "samples": 3248
+  },
+  "CK-RES1": {
+   "pred": "0",
+   "obs": 0,
+   "samples": 340
+  },
+  "CK-RES": {
+   "pred": "0",
+   "obs": 0,
+   "samples": 443
+  },
+  "CK-VDM": {
+   "pred": "0",
+   "obs": 0,
+   "samples": 443
+  },
+  "CK-BPREF": {
+   "pred": ">=1/row",
+   "obs": 0,
+   "samples": 26
+  },
+  "ORB-RES": {
+   "pred": "0",
+   "obs": 0,
+   "samples": 444
+  },
+  "TW-INST": {
+   "pred": "0",
+   "obs": 0,
+   "samples": 1452
+  },
+  "JA-QO": {
+   "pred": "0",
+   "obs": 0,
+   "samples": 5
+  },
+  "JA-D0": {
+   "pred": "0",
+   "obs": 0,
+   "samples": 4
+  },
+  "MJ-EPS": {
+   "pred": "0",
+   "obs": 0,
+   "samples": 3
+  },
+  "MJ-VAL": {
+   "pred": "0",
+   "obs": 0,
+   "samples": 2
+  },
+  "MJ-GRID": {
+   "pred": "0",
+   "obs": 0,
+   "samples": 2
+  }
+ },
+ "violations": [],
+ "boundary_total": 16,
+ "bpref_total": 26,
+ "elapsed_s": 7.4
+}

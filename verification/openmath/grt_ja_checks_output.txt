@@ -1,0 +1,54 @@
+grt_ja_checks -- J-A dictionary runner (GRTJA_PROOF machine leg)
+harness: iterlawn_pe_reimpl (committed); print: grt_weld_probe.GmnLeg
+(sealed); fresh legs: this runner's own integers/geometry
+
+  [   0.3s] EXT-GATE done (new violations: 0)
+  [   0.4s] Zp,p=2,T2A       done (0.1s; scored 13, boundary 0, bpref 1)
+  [   0.5s] Zp,p=3,T2B       done (0.0s; scored 12, boundary 0, bpref 0)
+  [   0.5s] Zp,p=3,T2C       done (0.0s; scored 12, boundary 0, bpref 1)
+  [   0.5s] Fpt,p=2,T2D      done (0.0s; scored 12, boundary 0, bpref 1)
+  [   0.6s] Zp,p=2,T2E       done (0.0s; scored 12, boundary 0, bpref 0)
+  [   0.6s] Fpt,p=3,T2F      done (0.0s; scored 12, boundary 0, bpref 0)
+  [   0.6s] Zp,p=3,T2G       done (0.0s; scored 12, boundary 0, bpref 1)
+  [   0.7s] Zp,p=2,T3A       done (0.1s; scored 19, boundary 0, bpref 2)
+  [   0.8s] Zp,p=3,T3B       done (0.1s; scored 34, boundary 4, bpref 0)
+  [   1.1s] Zp,p=3,T3C       done (0.3s; scored 19, boundary 0, bpref 2)
+  [   1.4s] Fpt,p=2,T3D      done (0.3s; scored 20, boundary 0, bpref 2)
+  [   1.5s] Zp,p=2,T3E       done (0.1s; scored 17, boundary 0, bpref 4)
+  [   2.3s] Zp,p=3,T3F       done (0.8s; scored 40, boundary 0, bpref 1)
+  [   3.3s] Zp,p=2,I4A       done (1.0s; scored 60, boundary 0, bpref 0)
+  [   5.3s] Zp,p=3,I4B       done (2.0s; scored 76, boundary 5, bpref 0)
+  [   6.6s] Fpt,p=2,I4C      done (1.2s; scored 26, boundary 0, bpref 7)
+  [   7.0s] QO leg done
+  [   7.4s] d0>=2 leg done
+  [   7.4s] teeth done
+
+==============================================================================
+PREDICTED vs OBSERVED (violation counts; samples in parentheses)
+==============================================================================
+EXT-GATE  engine_ext pins + agreement gate re-run        pred 0       obs     0 (     1)  GREEN
+JA-PIN    class-pin clauses 2-7, fresh legs              pred 0       obs     0 (   111)  GREEN
+CK-VAL    JA-VAL: wlev == vgen (shared levels)           pred 0       obs     0 (  1132)  GREEN
+CK-EPS    JA-EPS: eps == z^-t fresh + k-grid             pred 0       obs     0 (   872)  GREEN
+ORB-EPS   orbit eps covariance                           pred 0       obs     0 (  1744)  GREEN
+CK-GRID   JA-GRID: geometric == eq12 + carry             pred 0       obs     0 (  3248)  GREEN
+CK-RES1   VD-1 both sides (m=1)                          pred 0       obs     0 (   340)  GREEN
+CK-RES    per-slot law (scored where proviso holds)      pred 0       obs     0 (   443)  GREEN
+CK-VDM    VDIND forward (absolute character)             pred 0       obs     0 (   443)  GREEN
+CK-BPREF  JA-BOX-1 census (designated rows fire)         pred >=1/row obs     0 (    26)  GREEN
+ORB-RES   ell-shift rescale law, fixed keys              pred 0       obs     0 (   444)  GREEN
+TW-INST   transported-chamber re-instantiation           pred 0       obs     0 (  1452)  GREEN
+JA-QO     concrete shapes: extraction + PARI + fams      pred 0       obs     0 (     5)  GREEN
+JA-D0     fresh d0>=2 shapes via engine_ext + PARI       pred 0       obs     0 (     4)  GREEN
+MJ-EPS    teeth: P-reading eps caught                    pred 0       obs     0 (     3)  GREEN
+MJ-VAL    teeth: unsheared valuation caught              pred 0       obs     0 (     2)  GREEN
+MJ-GRID   teeth: garbled grid caught                     pred 0       obs     0 (     2)  GREEN
+------------------------------------------------------------------------------
+CK-RES boundary census (proviso-failing, recorded not scored): 16
+CK-BPREF refuting samples (blueprint slot-independent form): 26
+TOTAL samples: 10311   elapsed 7.4s   JSON: /data/users/asvin/math-and-lean/p-adic-splitting-densities/verification/openmath/grt_ja_checks_results.json
+
+J-A DICTIONARY VERDICT (LAW-KEYED):
+  JA-PIN + operator equalities (JA-*/CK-*): ALL GREEN
+  transport (TW-INST): GREEN
+  teeth: CAUGHT

@@ -415,16 +415,70 @@ action, clause by clause:
   stands), no count/menu claim (J-D untouched), no advance on W2-OPEN-1,
   and the P0 application gate stands.
 
-## §7. Records — SEAL PENDING
+## §7. Records (commit 2 — from the sealed artifacts)
 
-**Two-commit seal, commit 1:** this note (§§1–6 composed, predictions =
-the displayed laws + the runner docstring's family table) and
-`verification/openmath/grt_ja_checks.py` are committed BEFORE the sealed
-full-roster battery. The §7 machine table, claims/grades table, and
-dependency line are appended in commit 2 FROM THE ARTIFACTS
-(`grt_ja_checks_output.txt`, `grt_ja_checks_results.json`). Build-phase
-smoke disclosed in the runner docstring (reduced roster, ALL GREEN, 4,409
-samples; two runner-local repairs + the CK-BPREF designation triple
-confirmed there, sealed as T2A/T3A/T3E).
+### 7.1 Machine bracket — **ALL 17 FAMILIES GREEN, 10,311 samples, 0 violations, every sealed prediction hit exactly** (`grt_ja_checks_output.txt` / `grt_ja_checks_results.json`, elapsed 7.4 s; seal commit 696eae8)
+
+| family | claim keyed | samples | verdict |
+|---|---|---|---|
+| EXT-GATE | engine_ext pins + agreement gate re-run (standing rule) | 1 | GREEN |
+| JA-PIN | §2 clauses 2–7, fresh legs, every level of 16+5+4 towers | 111 | GREEN |
+| CK-VAL | JA-VAL: wlev == vgen, shared levels, full pools | 1,132 | GREEN |
+| CK-EPS | JA-EPS: ε == z^{−t} fresh/geometric + W2-L2 k-grid | 872 | GREEN |
+| ORB-EPS | §4(iii) orbit covariance ε·z^{t_κ} = z^{κV} | 1,744 | GREEN |
+| CK-GRID | JA-GRID: geometric scan == eq12 + carry clause | 3,248 | GREEN |
+| CK-RES1 | (VD-1), both sides | 340 | GREEN |
+| CK-RES | JA-RES per-slot law, proviso machine-evaluated | 443 scored | GREEN |
+| CK-VDM | JA-VDIND forward (absolute character) | 443 | GREEN |
+| CK-BPREF | JA-BOX-1 census: designated rows T2A/T3A/T3E fire | 26 hits | GREEN |
+| ORB-RES | §4 ℓ-shift rescale law on fixed keys (κ ∈ {1,2}) | 444 | GREEN |
+| TW-INST | transported-chamber re-instantiation (all 20 ledgers) | 1,452 | GREEN |
+| JA-QO | 5 shapes: extraction complete 5/5 + PARI ties + families | 5 | GREEN |
+| JA-D0 | 4 fresh d₀ ≥ 2 shapes (JD5A/JD3A/JD3B/JD3C) + PARI | 4 | GREEN |
+| MJ-EPS / MJ-VAL / MJ-GRID | teeth (P-reading ε 8/9/8; unsheared v 11/11; garbled grid 12/18 catches) | 3/2/2 rows | GREEN |
+
+Censuses (the note's displayed conditionality, quantified): CK-RES
+boundary (proviso-failing, recorded not scored) = **16, ALL on the two
+interior-twist towers T3B (4 + 3 transported) and I4B (5 + 4 transported)**
+— exactly the W-2 collapse-boundary geography; every other row scored
+fully. CK-BPREF refuting samples = **26 across 12 roster rows + all 4
+fresh d₀ rows** — the blueprint's slot-independent form is refuted
+wherever the character is visible, including at d₀ = 3 and p = 5.
+
+### 7.2 Claims table (grades)
+
+| claim | statement | grade |
+|---|---|---|
+| JA-PIN | T(t) in the class pin except lift; each clause from the print | PROVED (attempt grade 0/2) |
+| JA-PIN cl. 8 | lift clause | CONSUMED from W-2 clauses 1–3 at attempt grade, conditionality verbatim |
+| JA-VAL | w_m = v_{m+1}, shared-key perimeter | PROVED (attempt grade) |
+| JA-EPS | ε_m = z^{−t_m} + k-grid covariance | PROVED |
+| JA-GRID | eq-(12-int) = T-side initial point; carry = lattice crossing | PROVED (single-level scope fence) |
+| JA-RES | per-slot law c_i = z^{−iA}·C_i | PROVED at m = 2; PROVED-under-proviso m ≥ 3 |
+| JA-VDIND | absolute-character collapse ⟹ (VD-m) | PROVED (forward; converse unsealed) |
+| JA-MIN | MIN CORE transfer at orders ≥ 2 | rides JA-RES (same perimeter) |
+| §4 transport | orbit action + re-instantiation | ORB legs PROVED/machine; chamber = W2-C3 consumption |
+| JA-BOX-1 | blueprint J-A(ii) slot-independent c | REFUTED at m ≥ 2 (26 machine witnesses) |
+
+### 7.3 Consequence display and dependency line
+
+**What J-A now supplies (at attempt grade, hostile passes owed):** the
+blueprint's W-0 in full; W-1's (i)/(iii) in full on the shared-key
+perimeter and (ii) in the corrected per-slot form (unconditional at
+m ≤ 2, proviso-scoped above); W-4 in full. **NOT supplied:** W-1's
+uncollapsed all-orders scalar dictionary (JA-BOX-2), W-2's own grades
+(consumed, not upgraded), W-3/W-5 (J-B), the J-C block (no gr claim;
+BLOCKED-ON-CARRIER-TIE stands), J-D counts/menus, W2-OPEN-1. The P0
+application gate stands.
+
+CONSUMES: [ILN]† S0.1/S0.2 (accepted) · GMN HigherNewton as literature
+(§ header anchors) · the sealed probe transcription + W-2 note at attempt
+grade · N-1 (accepted, family-ledger) + GD-5 (nearly closed) as §5 base
+cases · engine_ext (standing rule honored in-unit). CONSUMED BY
+(intended): the W-3/W-4 development unit (J-B), the W-5 tree unit, the
+weld campaign ledger at J-A. Fences: instance evidence = the §7.1 roster
+(reads ≤ 4+top, residue fields ≤ F₉ + F₈/F₂₅ via the d₀ leg, wild rows
+included); F_p[[t]] rows have no PARI leg (JA-BOX-4); acceptance counter
+0/2 — nothing here may be consumed at proof grade before its hostile arc.
 
 — J-A COMPOSER unit, campaign date 2026-08-08.
