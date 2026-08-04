@@ -1,0 +1,143 @@
+==============================================================================
+UNION ROSTER (survdisj_instrument selection, g0 >= 2 towers only)
+==============================================================================
+-- SEALED W3G2A m=3 Zp,p=3,d0=1 g0=2: live traced=28 (0.0s)
+-- SEALED W3G2B m=3 Zp,p=3,d0=2 g0=2: live traced=20 (0.1s)
+-- SEALED W3G2P5 m=3 Zp,p=5,d0=2 g0=2: live traced=4 (0.1s)
+-- SEALED XM3B m=3 Zp,p=3,d0=2 g0=2: live traced=16 (0.2s)
+-- EQ EQ3G2A m=3 Zp,p=3,d0=2 g0=2: live traced=14 (0.3s)
+-- EQ EQ3G2B m=3 Zp,p=3,d0=1 g0=2: live traced=53 (0.1s)
+-- SD SDG2BF m=3 Fpt,p=2,d0=1 g0=2: live traced=39 (0.8s)
+-- SD SDG2BZ m=3 Zp,p=2,d0=1 g0=2: live traced=39 (0.1s)
+-- SD SDG2AF m=3 Fpt,p=2,d0=2 g0=2: live traced=14 (16.8s)
+-- SD SDG2AZ m=3 Zp,p=2,d0=2 g0=2: live traced=14 (0.4s)
+  CENSUS [SDW3G2F]: principal d-cell ABSENT (theta_0 = 0 case)
+-- SD SDW3G2F m=3 Fpt,p=2,d0=1 g0=2: live traced=26 (0.2s)
+-- SD SDDPG2F m=3 Fpt,p=2,d0=1 g0=2: live traced=6 (0.1s)
+-- SD SDDPG2Z m=3 Zp,p=2,d0=1 g0=2: live traced=6 (0.0s)
+  CENSUS [SDW4G2F]: principal d-cell ABSENT (theta_0 = 0 case)
+-- SD SDW4G2F m=4 Fpt,p=2,d0=1 g0=2: live traced=7 (2.2s)
+union-roster g0>=2 live rows: 286 (committed count: 286)
+==============================================================================
+PHASE K2 — NEW adversarial roster (g0 in {2,3,4}, deep m, chars 2/3/5)
+[rev 2] per-tower wall-clock budget 300s (g0 >= 3 engine cost — see the note's amendment bracket); timeout = disclosed skip
+==============================================================================
+-- K2G3AF: ENGINE UNSUPPORTED (TimeoutError('K2 tower budget')) — disclosed, skipped
+-- K2G3AZ: ENGINE UNSUPPORTED (TimeoutError('K2 tower budget')) — disclosed, skipped
+-- K2G3BF: ENGINE UNSUPPORTED (TimeoutError('K2 tower budget')) — disclosed, skipped
+-- K2G3P5: ENGINE UNSUPPORTED (TimeoutError('K2 tower budget')) — disclosed, skipped
+-- K2G4AF: ENGINE UNSUPPORTED (TimeoutError('K2 tower budget')) — disclosed, skipped
+-- K2G4AZ: ENGINE UNSUPPORTED (TimeoutError('K2 tower budget')) — disclosed, skipped
+-- K2G3D2Z: ENGINE UNSUPPORTED (TimeoutError('K2 tower budget')) — disclosed, skipped
+-- K2DPG3F: ENGINE UNSUPPORTED (TimeoutError('K2 tower budget')) — disclosed, skipped
+-- K2W4G3F: ENGINE UNSUPPORTED (TimeoutError('K2 tower budget')) — disclosed, skipped
+-- K2W4G3Z: ENGINE UNSUPPORTED (TimeoutError('K2 tower budget')) — disclosed, skipped
+-- K2 K2G2P5B m=3 Zp,p=5,d0=1 g0=2: live traced=39 (0.1s)
+-- K2 K2W4G2Z m=4 Zp,p=3,d0=1 g0=2: live traced=7 (0.2s)
+==============================================================================
+SK2-PIN     : 0 violations
+SK2-CONS    : 0 violations
+SK2-SEED    : 0 violations
+SK2-W0K     : 0 violations
+SK2-SGN     : 0 violations
+SK2-EQV     : 0 violations
+SK2-MULT1   : 0 violations
+SK2-BOT     : 0 violations
+HARNESS     : 0 violations
+------------------------------------------------------------------------------
+live g0>=2 rows traced: 332 (union 286 + K2 46); kill rows: 102; treecap skips: 0; towers skipped: 10
+Q-A0 seed-level residue law: ok=5 fail=4 over 9 triples, 16 towers
+PAIR-RELATION CENSUS (all same-class opposite-sign bottom pairs): {'T0': 76, 'TM': 58}
+------------------------------------------------------------------------------
+LAW-KEYED COUNTS (key = g0 | residue-char | stratum):
+  QA-match:
+    g2|rc2|above             fail         1
+    g2|rc2|above             ok           30
+    g2|rc2|direct            fail         8
+    g2|rc2|direct            ok           28
+    g2|rc2|thresh            ok           84
+    g2|rcODD|above           ok           31
+    g2|rcODD|direct          ok           36
+    g2|rcODD|thresh          ok           114
+    TOTAL: fail=9, ok=323
+  QA-match-all:
+    g2|rc2|above             fail         4
+    g2|rc2|above             ok           44
+    g2|rc2|direct            fail         36
+    g2|rc2|direct            ok           28
+    g2|rc2|thresh            ok           117
+    g2|rcODD|above           ok           55
+    g2|rcODD|direct          fail         4
+    g2|rcODD|direct          ok           64
+    g2|rcODD|thresh          ok           179
+    TOTAL: fail=44, ok=487
+  QB-canon:
+    g2|rc2|above             ok           46
+    g2|rc2|direct            ok           28
+    g2|rc2|thresh            ok           123
+    g2|rcODD|above           ok           38
+    g2|rcODD|direct          ok           46
+    g2|rcODD|thresh          ok           154
+    TOTAL: ok=435
+  QB-rem:
+    g2|rc2|above             single-t     46
+    g2|rc2|direct            single-t     28
+    g2|rc2|thresh            single-t     123
+    g2|rcODD|above           single-t     38
+    g2|rcODD|direct          single-t     46
+    g2|rcODD|thresh          single-t     154
+    TOTAL: single-t=435
+  QC-cf:
+    g2|rc2|above             fail         17
+    g2|rc2|above             ok           14
+    g2|rc2|direct            fail         28
+    g2|rc2|direct            ok           8
+    g2|rc2|thresh            fail         17
+    g2|rc2|thresh            ok           67
+    g2|rcODD|above           fail         23
+    g2|rcODD|above           ok           8
+    g2|rcODD|direct          fail         32
+    g2|rcODD|direct          ok           4
+    g2|rcODD|thresh          fail         31
+    g2|rcODD|thresh          ok           83
+    TOTAL: fail=148, ok=184
+  QC-seedbound:
+    g2|rc2|above             ok           31
+    g2|rc2|direct            ok           36
+    g2|rc2|thresh            ok           84
+    g2|rcODD|above           ok           31
+    g2|rcODD|direct          ok           36
+    g2|rcODD|thresh          ok           114
+    TOTAL: ok=332
+  QD-pattern:
+    g2|rc2|above             (-1)         28
+    g2|rc2|above             (-1,1)       2
+    g2|rc2|above             (1)          16
+    g2|rc2|direct            (1)          36
+    g2|rc2|thresh            (-1)         26
+    g2|rc2|thresh            (-1,1)       6
+    g2|rc2|thresh            (1)          85
+    g2|rcODD|above           (-1)         21
+    g2|rcODD|above           (-1,1)       2
+    g2|rcODD|above           (0,-1)       5
+    g2|rcODD|above           (1)          7
+    g2|rcODD|direct          (-1)         8
+    g2|rcODD|direct          (0,1)        4
+    g2|rcODD|direct          (1)          34
+    g2|rcODD|thresh          (-1)         31
+    g2|rcODD|thresh          (-1,1)       5
+    g2|rcODD|thresh          (1)          113
+    TOTAL: (-1)=114, (-1,1)=15, (0,-1)=5, (0,1)=4, (1)=291
+  SK2-MULT1:
+    g2|rc2|above             ok           31
+    g2|rc2|direct            ok           36
+    g2|rc2|thresh            ok           84
+    g2|rcODD|above           ok           31
+    g2|rcODD|direct          ok           36
+    g2|rcODD|thresh          ok           114
+    TOTAL: ok=332
+MUTATION CONTROLS (teeth): {'M-QA-WRONGQ': 76, 'M-QB-T1-fail': 203, 'M-QC-2': 1}
+distinct survivor-group patterns: 5 -> ['(-1)', '(-1,1)', '(0,-1)', '(0,1)', '(1)']
+total violations: 0
+elapsed: 3022.5s
+results -> /data/users/asvin/math-and-lean/p-adic-splitting-densities/verification/openmath/survk2_instrument_results.json

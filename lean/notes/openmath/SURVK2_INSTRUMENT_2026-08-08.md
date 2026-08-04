@@ -214,16 +214,189 @@ g0 >= 2), HARNESS.
     principle; every row actually traced is listed in the artifacts
     and all verdicts are law-keyed over those rows.]
 
-## D3. RESULTS
+## D3. RESULTS (commit 2; verdict from the artifacts — single
+deterministic rev-2 run, 3022.5 s wall (2748 s of it the ten g0 >= 3
+budget timeouts), **332 live g0 >= 2 rows** = 286 union (replication
+EXACT, tower-by-tower counts matching the committed instrument) + 46
+fresh K2 (K2G2P5B 39, K2W4G2Z 7); **0 violations in all nine verdict
+families**; 102 bottom-kill rows = the 97 committed + 5 fresh)
 
-PENDING — this section is written at commit 2, from the artifacts of
-the single deterministic run, after the seal commit.  Nothing below
-this line exists at seal time.
+**PRED-1 CONFIRMED.**  SK2-PIN (8 md5 pins) / SK2-CONS / SK2-SEED /
+SK2-W0K / SK2-SGN / SK2-EQV / HARNESS all 0.  In particular SK2-SEED:
+every terminal cell on all 332 rows decomposes per W-D2(iv)
+(j0(D) = s1(u1) + t*e0, w0(c_D) = u0 - t*h0) and SK2-W0K:
+w0(C_k) = (g0-k)*h0 on every level-0 correction digit — the two
+w0-legs of the toggle arithmetic hold cellwise.
+
+**PRED-2 CONFIRMED WHERE TESTED; g0 >= 3 UNTESTED (disclosed).**
+SK2-MULT1 332/332 (every g0 >= 2 live row has a bottom-line group
+with a +-1 class — the box's law, now including 46 fresh rows with
+fresh kills); SK2-BOT 0 (the netted bottom survived every row).  The
+g0 in {3,4} clause is UNTESTED: all ten g0 >= 3 towers hit the 300 s
+budget inside ENGINE PREP (surfaced via the setup except-path as
+"ENGINE UNSUPPORTED (TimeoutError)" — same disclosed-skip semantics,
+counter tower_skipped = 10; the amendment bracket above carries the
+measured cost-wall evidence).  g0 >= 3 remains machine-dark
+program-wide; the first-probe attempt is on record.
+
+**PRED-3 (Q-A) PRODUCTIVELY FALSIFIED — the single-toggle T0 u TI
+matching is NOT the whole pairing; the measured completion is
+displayed below.**  QA-match on minimal groups: 323/332 ok, 9 fail
+(ALL rc2, the SDG2BF/SDG2BZ single-seed towers); QA-match-all over
+all 531 bottom groups: 487 ok / 44 fail (36 rc2 direct + 4 rc2 above
++ 4 rcODD direct = the fresh K2G2P5B).  Pair-relation census over
+all same-class opposite-sign bottom pairs: **T0 = 76, TM = 58,
+TI = 0, TG = 0** — no interior single-edge toggle and no
+wrong-quantum level-0 single edge EVER appears; every non-T0 pair is
+a MULTI-edge exchange, and their anatomy (read from the group
+records) is exactly two further realizations of the same level-0
+mass exchange (see the headline below).  Teeth: M-QA-WRONGQ 76
+(every T0-carried matching strictly shrinks under the quantum+1
+mutation — the g0 - k quantum is load-bearing in all 76 pairs);
+TM > 0 (the T0 predicate genuinely restricts).
+
+**PRED-4 (Q-A0) — the seed-level residue table, the pairing's
+residue input, MIXED as measured: 5 towers TRUE, 4 FALSE, 7 empty
+(single-seed).**  res(C_k)*res(cD_{t+g0-k}) == res(cD_t) holds on
+{W3G2A, W3G2B, W3G2P5, XM3B, EQ3G2B} and FAILS on {EQ3G2A, SDG2AF,
+SDG2AZ, K2W4G2Z}.  The law-keyed correlation: ALL 67 seed-shift
+(cross-t) 2-cell bottom kills live on A0-TRUE towers (EQ3G2B 37,
+W3G2A 15, W3G2B 10, XM3B 4, W3G2P5 1) — where the identity holds,
+the T0 toggle is residue-preserving and kills; the three A0-FALSE
+d0 = 2 towers have ZERO bottom kills; the fourth A0-FALSE tower
+(K2W4G2Z, d0 = 1, m = 4, fresh) produced the single loud NEW event
+below via a DIFFERENT (ratio-law) identity.
+
+**PRED-5 (Q-B) — canonical remainder CONFIRMED; the extremal-t
+question stays open.**  QB-canon 435/435: every +-1 class with a
+perfect T0 u TI matching has a UNIQUE removable cell.  Every one of
+the 435 is SINGLE-SEED (all its cells share one t) — +-1 survivor
+classes never mix seeds; the cross-seed T0 pairs live only in KILLED
+classes.  Minimal-group remainder census (ncorr, sign, t):
+correction-free (+1) 183 (t=0 x122, t=1 x61); 1-corr (-1) 89 (t=1
+x78, t=0 x11); 2-corr (+1) 47; 3-corr (-1) 5 — the remainder is a
+RIDER (not the correction-free path) on 141 of the 324
+minimal-group remainder records, and
+its sign is exactly its correction parity.  t = 0 vs t = 1 both
+common and tower-keyed; at g0 = 2 both seeds are extremal, and the
+g0 >= 3 interior-t probe timed out — the t0-vs-tmax law is
+UNDECIDED, disclosed.  M-QB-T1-fail 203 (teeth).
+
+**PRED-6 (Q-C) — the per-seed bound CONFIRMED; the single-seed
+survivor law measured; ONE |signed| >= 2 bottom class exists (in a
+killed group).**  QC-seedbound 332/332: every per-seed signed count
+S_t of the minimal group lies in {-1, 0, +1}.  Sharper, measured:
+the stvec (S_0, S_1) census is (1,0) x164, (0,1) x73, (0,-1) x74,
+(-1,0) x20, (1,-1) x1 — EXACTLY ONE nonzero seed entry on 331/332
+rows (the minimal survivor nets to one seed's one class at +-1); the
+single (1,-1) exception is the two-class (-1,+1) protected survivor
+on the CROSS-kill row below (both entries still +-1).  QC-cf (total
+= correction-free signed count) 184 ok / 148 fail — the failure set
+is EXACTLY the n_cf = 0 rows (minimal group carries no
+correction-free path; the survivor is a rider class), matching the
+pattern table below.  M-QC-2 fired 1: the (+2) class inside the
+killed CROSS group below — the only class beyond +-1 ever seen at a
+bottom line (332 rows; and it sits in a KILLED group, not a
+survivor).
+
+**PRED-7 (Q-D) CONFIRMED — no new survivor pattern; the strata key
+found.**  Kill-row minimal-survivor patterns: (+1) x44, (-1) x48,
+(0,-1) x5, (0,+1) x4, (-1,+1) x1 — all inside the committed five
+vectors (class-order convention: this unit's (0,-1) = the committed
+(-1,0) content), with (-1,+1) now realized at-kill on the fresh
+roster.  Pattern x pool-arithmetic separation (all 332 rows):
+pattern (+1) with n_cf = 1 x183 (the correction-free path's class
+survives; t_cf in {0 x122, 1 x61}); (+1) with n_cf = 0 x50 (2-corr
+rider remainder); (-1)/(0,-1)/(0,+1)/(-1,+1) x99 all have n_cf = 0
+(NO correction-free path in the minimal group — the survivor is a
+rider class, sign = its parity).  So the taxonomy is keyed by
+(n_cf, remainder correction parity) — a pool/path-count function,
+no residue arithmetic.
+
+**THE PAIRING STRUCTURE (the headline, measured).**  Every observed
+same-slot bottom-line cancellation and every +-1 remainder is
+generated by ONE mechanism — **level-0 mass exchange at fixed slot**:
+two paths pair iff their level-0 books (seed t*e0 + dumps - level-0
+correction consumptions) balance, i.e. their correction multisets
+and seeds differ by an exchange of total level-0 mass
+Sigma e0*(g0-k) against a seed shift (or a dump-cell swap); the sign
+flips iff the correction-count parity differs, w0 matches
+automatically (SK2-W0K + W-D2(iv) — the two sides of
+(g0-k)h0 = h0-per-e0-unit), and residue preservation is a
+DIGIT-LEVEL identity specific to the realization.  Three
+realizations carried ALL 102 bottom kills:
+  (i)  T0 seed-shift toggle: remove C_k, shift t -> t - (g0-k);
+       residue law = the Q-A0 identity; carried the 67 cross-t pair
+       kills, all on A0-TRUE towers (display witness: EQ3G2B
+       [1479,1485] slot (5,0,0) — rider (+, t=1, ce {(0,k=1),
+       (1,0,dump(1,))}) vs (-, t=0, ce {(1,0,dump(1,))}); dt = 1 =
+       g0 - k; same w0 54; equal residue; killed).
+  (ii) dump-swap at fixed seed: interior-correction dump cell
+       a_0 -> a_0 + e0(g0-k) against C_k; carried the 30 same-t
+       char-2 pair kills (SDG2BF/SDG2BZ/SDW3G2F; witness SDG2BF
+       [1479,1485]: dump (4,) + C_1 vs dump (1,), e0(g0-k) = 3).
+  (iii) correction-multiset exchange at fixed seed: C_1 + C_1 <->
+       C_0 (mass 2*e0(g0-1) = e0*g0 at g0 = 2); carried the 4 FRESH
+       p = 5 same-t pair kills (K2G2P5B) — the first same-t kills at
+       ODD characteristic: realization (ii)/(iii) is CHAR-BLIND, not
+       a char-2 artifact.
+And the row-level remainder law: after the exchanges cancel, the
+minimal group nets to ONE seed x ONE residue class x signed count
++-1 (the stvec law), canonically (QB-canon 435/435).  This is the
+measured shape of the box's conjectured sign-reversing pairing: the
+involution is level-0-mass exchange, the "+-1 remainder" is the
+single unpaired path (or the protected (-1,+1) pair of single-seed
+classes), and the only residue input is the per-realization digit
+identity — never the full carry algebra.
+
+**LOUD NEW EVENT (constraint census update for the S6 box).**  The
+fresh tower K2W4G2Z (m = 4, Zp p = 3, g0 = 2, d0 = 1 — an A0-FALSE
+shape) produced, at row [2635,2635] slot (4,0,0,0), the FIRST
+bottom-line killed group of ODD size and the FIRST bottom-line
+CROSS-type kill: n = 3, cells (-, t=1, 3-corr, res 2), (+, t=1,
+2-corr, res 1), (+, t=0, 2-corr, res 1); classes signed (-1, +2);
+net -2 + 2*1 = 0 in F_3 — cancellation ACROSS distinct classes,
+signed counts not all 0 and not all == 0 mod p.  The (+2) class is
+the M-QC-2 event: its two same-sign cells sit at DIFFERENT seeds
+with equal residue via the k-exchange transport C_0 at t+1 <-> C_1
+at t, whose residue law is the RATIO identity
+res(C_0)*res(cD_{t+1}) = res(C_1)*res(cD_t) (which holds here even
+though the Q-A0 identity fails on this tower).  Consequences, stated
+honestly: (a) the committed CROSS confinement ("cross-class field
+relations kill only OFF-bottom, 979/979") is now instance-BROKEN at
+the bottom line — 1 bottom CROSS kill in 332 g0 >= 2 rows; the
+(SURV-K2) box's weaker-form fence "no cross relation at beta_min"
+can no longer be cited as exceptionless and must be restated scoped
+(no cross relation at the SURVIVOR's class set — which held: the
+row's minimal survivor was the protected (-1,+1) two-class group,
+qa-perfect, and the row passed SK2-MULT1 and SK2-BOT); (b) bottom
+kills are NOT always pair kills (M-B1-at-bottom now fires: one odd
+killed group); (c) the boxed LAW ITSELF is untouched — protected
+bottom classes existed on all 332 rows.
+
+**Disclosures.**  (i) The ten g0 >= 3 towers: budget timeouts inside
+setup/prep, reported through the ENGINE UNSUPPORTED message path
+with TimeoutError displayed (same disclosed-skip semantics; wording
+quirk of the rev-2 alarm meeting setup's broad except — no
+functional difference).  (ii) Wall-clock budget makes the K2 phase
+row set timing-dependent in principle; the rows actually traced are
+fully listed in the artifacts and every verdict is law-keyed over
+those rows.  (iii) Coverage: g0 = 2 only in the traced set; m in
+{3,4}; d0 = 2 probed only at g0 = 2 on the A0-FALSE shape; interior
+g >= 2 never probed (program-wide).  (iv) TI = 0 and TG = 0 are
+measured absences on this roster, not impossibilities.  (v) All
+counts are measured instance evidence, never proof steps; the
+committed P-M1/CROSS censuses are quoted as constraints and the
+update in the LOUD EVENT paragraph is instance evidence against ONE
+of the box's secondary constraint displays, not against its law.
 
 ## Files
 
 * runner: `verification/openmath/survk2_instrument.py`
-* output: `verification/openmath/survk2_instrument_output.txt` (commit 2)
+  (rev 2, md5 389b1db9fc0266a12db74e021d7d51c9; seal 10ec9f3,
+  amendment dbe0cb9)
+* output: `verification/openmath/survk2_instrument_output.txt`
+  (md5 0db6f784cf37e747057cc45b9a3f3acb)
 * results: `verification/openmath/survk2_instrument_results.json`
-  (written incrementally during the run; `final: true` on the sealed
-  copy; commit 2)
+  (md5 1ac516df8292ac5d57a88e430de3d1e4; written incrementally during
+  the run; `final: true`)
