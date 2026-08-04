@@ -1,0 +1,53 @@
+grt_w2_checks -- W-2 composition checks + clause-3 psi-transport
+harness leg: iterlawn_pe_reimpl (committed, verbatim);
+classifier leg: grt_weld_probe.GmnLeg (sealed fresh transcription,
+imported verbatim -- no new print transcription in this runner)
+
+  [   0.0s] Zp,p=2,T2A       done (0.0s)
+  [   0.1s] Zp,p=3,T2B       done (0.0s)
+  [   0.1s] Zp,p=3,T2C       done (0.0s)
+  [   0.1s] Fpt,p=2,T2D      done (0.0s)
+  [   0.1s] Zp,p=2,T2E       done (0.0s)
+  [   0.1s] Fpt,p=3,T2F      done (0.0s)
+  [   0.2s] Zp,p=3,T2G       done (0.0s)
+  [   0.3s] Zp,p=2,T3A       done (0.1s)
+  [   0.4s] Zp,p=3,T3B       done (0.1s)
+  [   0.6s] Zp,p=3,T3C       done (0.2s)
+  [   1.0s] Fpt,p=2,T3D      done (0.3s)
+  [   1.0s] Zp,p=2,T3E       done (0.0s)
+  [   1.5s] Zp,p=3,T3F       done (0.5s)
+  [   1.7s] Zp,p=2,I4A       done (0.2s)
+  [   2.0s] Zp,p=3,I4B       done (0.3s)
+  [   3.1s] Fpt,p=2,I4C      done (1.1s)
+  [   3.1s] QO transport done
+  [   3.2s] T3E/T3A mechanism done
+  [   3.2s] MT teeth done
+
+==============================================================================
+PREDICTED vs OBSERVED (violation counts; samples in parentheses)
+==============================================================================
+CK-MM      Bezout mismatch identity (W2-L2)               pred 0    obs     0 (  4396)  GREEN
+CK-HR1     base builder read HR_1 (W2-L1)                 pred 0    obs     0 (   156)  GREEN
+CK-VD1     level-1 packed dictionary (W2-L3)              pred 0    obs     0 (   156)  GREEN
+CK-REC     construct read recursion, all nodes            pred 0    obs     0 (    55)  GREEN
+CK-SLOT    junction slot-ratio law == sim                 pred 0    obs     0 (    44)  GREEN
+CK-SLOT-M1 M=1 exact closed form c*z^(A e j)              pred 0    obs     0 (    16)  GREEN
+CK-XI      orbit (xi,w) == closed form (perimeter)        pred 0    obs     0 (    22)  GREEN
+CK-BYTE    byte law == node-value walk                    pred 0    obs     0 (    28)  GREEN
+TW-RATIO   transported: no WEIGHT/SUPPORT anywhere        pred 0    obs     0 (    44)  GREEN
+TW-ADM     transported: ADM all levels (F2 cure)          pred 0    obs     0 (    44)  GREEN
+TW-STRICT  transported: STRICT rep of t^tw                pred 0    obs     0 (    44)  GREEN
+TW-F3      transported cocycle battery (96 -> 0)          pred 0    obs     0 (   684)  GREEN
+TW-F3b     baseline control                               pred 0    obs     0 (   684)  GREEN
+TW-PARI    transported top lifts (e,f) tie                pred 0    obs     0 (    12)  GREEN
+TW-QO      QO shapes transported                          pred 0    obs     0 (     7)  GREEN
+CK-T3E     T3E carry-inert + T3A overflow mechanism       pred 0    obs     0 (     2)  GREEN
+MT-TW      teeth: garbled transport caught                pred 0    obs     0 (     2)  GREEN
+------------------------------------------------------------------------------
+chi-formula boundary junctions (monomial-collapse, recorded not scored): 1
+TOTAL samples: 6403   elapsed 3.2s   JSON: /data/users/asvin/math-and-lean/p-adic-splitting-densities/verification/openmath/grt_w2_checks_results.json
+
+W-2 COMPOSITION VERDICT:
+  intermediate identities (CK-*): ALL GREEN
+  clause-3 transport (TW-*): ALL GREEN
+  teeth: CAUGHT
