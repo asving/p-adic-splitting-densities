@@ -1,0 +1,3835 @@
+{
+ "mode": "design",
+ "towers": [
+  {
+   "tag": "DEEP-h11",
+   "m": 3,
+   "kind": "Zp",
+   "p": 3,
+   "d0": 1,
+   "reads": [
+    [
+     3,
+     1,
+     1
+    ],
+    [
+     2,
+     1,
+     1
+    ],
+    [
+     2,
+     1,
+     1
+    ],
+    [
+     2,
+     1,
+     1
+    ]
+   ],
+   "Etot": 24,
+   "G0": 360,
+   "harness_events": 0,
+   "uchain": {
+    "3": 117,
+    "2": 44,
+    "1": 22
+   },
+   "su": {
+    "3": 1,
+    "2": 0,
+    "1": 1
+   },
+   "census": {
+    "pairs": 576,
+    "strack": 144,
+    "track": 66,
+    "live": 0,
+    "pred": 21,
+    "mism": 0,
+    "q1nz_offlocus": 0,
+    "chainfed": 0,
+    "nested12": 42,
+    "nested123": 0,
+    "c1eq2": 0,
+    "maxc": [
+     1,
+     1
+    ],
+    "edge_top": 21,
+    "justmiss_top": 45,
+    "justmiss_live": 0,
+    "def_hist": {},
+    "kdef_hist": {
+     "1": 21
+    },
+    "pool_mult_edge": 45,
+    "flat_pass": 0
+   },
+   "controls": {
+    "CAP1": 0,
+    "NOCARRY": 21,
+    "EG": 0,
+    "THRP1": 21,
+    "THRM1": 45,
+    "NOU": 21
+   }
+  },
+  {
+   "tag": "DEEP-h13",
+   "m": 3,
+   "kind": "Zp",
+   "p": 3,
+   "d0": 1,
+   "reads": [
+    [
+     3,
+     1,
+     1
+    ],
+    [
+     2,
+     3,
+     1
+    ],
+    [
+     2,
+     1,
+     1
+    ],
+    [
+     2,
+     1,
+     1
+    ]
+   ],
+   "Etot": 24,
+   "G0": 456,
+   "harness_events": 0,
+   "uchain": {
+    "3": 149,
+    "2": 56,
+    "1": 28
+   },
+   "su": {
+    "3": 1,
+    "2": 0,
+    "1": 1
+   },
+   "census": {
+    "pairs": 576,
+    "strack": 144,
+    "track": 66,
+    "live": 0,
+    "pred": 21,
+    "mism": 0,
+    "q1nz_offlocus": 0,
+    "chainfed": 0,
+    "nested12": 42,
+    "nested123": 0,
+    "c1eq2": 0,
+    "maxc": [
+     1,
+     1
+    ],
+    "edge_top": 21,
+    "justmiss_top": 45,
+    "justmiss_live": 0,
+    "def_hist": {},
+    "kdef_hist": {
+     "1": 21
+    },
+    "pool_mult_edge": 45,
+    "flat_pass": 0
+   },
+   "controls": {
+    "CAP1": 0,
+    "NOCARRY": 21,
+    "EG": 0,
+    "THRP1": 21,
+    "THRM1": 45,
+    "NOU": 21
+   }
+  },
+  {
+   "tag": "DEEP-h21",
+   "m": 3,
+   "kind": "Zp",
+   "p": 3,
+   "d0": 1,
+   "reads": [
+    [
+     3,
+     2,
+     1
+    ],
+    [
+     2,
+     1,
+     1
+    ],
+    [
+     2,
+     1,
+     1
+    ],
+    [
+     2,
+     1,
+     1
+    ]
+   ],
+   "Etot": 24,
+   "G0": 648,
+   "harness_events": 0,
+   "uchain": {
+    "3": 213,
+    "2": 80,
+    "1": 40
+   },
+   "su": {
+    "3": 1,
+    "2": 0,
+    "1": 2
+   },
+   "census": {
+    "pairs": 576,
+    "strack": 144,
+    "track": 66,
+    "live": 0,
+    "pred": 28,
+    "mism": 0,
+    "q1nz_offlocus": 0,
+    "chainfed": 0,
+    "nested12": 53,
+    "nested123": 0,
+    "c1eq2": 10,
+    "maxc": [
+     2,
+     2
+    ],
+    "edge_top": 27,
+    "justmiss_top": 38,
+    "justmiss_live": 0,
+    "def_hist": {},
+    "kdef_hist": {
+     "1": 26,
+     "2": 2
+    },
+    "pool_mult_edge": 43,
+    "flat_pass": 0
+   },
+   "controls": {
+    "CAP1": 3,
+    "NOCARRY": 28,
+    "EG": 0,
+    "THRP1": 27,
+    "THRM1": 38,
+    "NOU": 28
+   }
+  },
+  {
+   "tag": "DEEP-h23",
+   "m": 3,
+   "kind": "Zp",
+   "p": 3,
+   "d0": 1,
+   "reads": [
+    [
+     3,
+     2,
+     1
+    ],
+    [
+     2,
+     3,
+     1
+    ],
+    [
+     2,
+     1,
+     1
+    ],
+    [
+     2,
+     1,
+     1
+    ]
+   ],
+   "Etot": 24,
+   "G0": 744,
+   "harness_events": 0,
+   "uchain": {
+    "3": 245,
+    "2": 92,
+    "1": 46
+   },
+   "su": {
+    "3": 1,
+    "2": 0,
+    "1": 2
+   },
+   "census": {
+    "pairs": 576,
+    "strack": 144,
+    "track": 66,
+    "live": 0,
+    "pred": 28,
+    "mism": 0,
+    "q1nz_offlocus": 0,
+    "chainfed": 0,
+    "nested12": 53,
+    "nested123": 0,
+    "c1eq2": 10,
+    "maxc": [
+     2,
+     2
+    ],
+    "edge_top": 27,
+    "justmiss_top": 38,
+    "justmiss_live": 0,
+    "def_hist": {},
+    "kdef_hist": {
+     "2": 2,
+     "1": 26
+    },
+    "pool_mult_edge": 43,
+    "flat_pass": 0
+   },
+   "controls": {
+    "CAP1": 3,
+    "NOCARRY": 28,
+    "EG": 0,
+    "THRP1": 27,
+    "THRM1": 38,
+    "NOU": 28
+   }
+  },
+  {
+   "tag": "DEEP4-h11",
+   "m": 3,
+   "kind": "Zp",
+   "p": 3,
+   "d0": 1,
+   "reads": [
+    [
+     4,
+     1,
+     1
+    ],
+    [
+     2,
+     1,
+     1
+    ],
+    [
+     2,
+     1,
+     1
+    ],
+    [
+     2,
+     1,
+     1
+    ]
+   ],
+   "Etot": 32,
+   "G0": 448,
+   "harness_events": 0,
+   "uchain": {
+    "3": 149,
+    "2": 56,
+    "1": 28
+   },
+   "su": {
+    "3": 1,
+    "2": 0,
+    "1": 0
+   },
+   "census": {
+    "pairs": 1024,
+    "strack": 256,
+    "track": 120,
+    "live": 0,
+    "pred": 28,
+    "mism": 0,
+    "q1nz_offlocus": 0,
+    "chainfed": 0,
+    "nested12": 54,
+    "nested123": 0,
+    "c1eq2": 0,
+    "maxc": [
+     1,
+     1
+    ],
+    "edge_top": 28,
+    "justmiss_top": 92,
+    "justmiss_live": 0,
+    "def_hist": {},
+    "kdef_hist": {
+     "1": 28
+    },
+    "pool_mult_edge": 78,
+    "flat_pass": 0
+   },
+   "controls": {
+    "CAP1": 0,
+    "NOCARRY": 28,
+    "EG": 0,
+    "THRP1": 28,
+    "THRM1": 92,
+    "NOU": 28
+   }
+  },
+  {
+   "tag": "DEEP4-h13",
+   "m": 3,
+   "kind": "Zp",
+   "p": 3,
+   "d0": 1,
+   "reads": [
+    [
+     4,
+     1,
+     1
+    ],
+    [
+     2,
+     1,
+     1
+    ],
+    [
+     2,
+     3,
+     1
+    ],
+    [
+     2,
+     1,
+     1
+    ]
+   ],
+   "Etot": 32,
+   "G0": 480,
+   "harness_events": 0,
+   "uchain": {
+    "3": 157,
+    "2": 59,
+    "1": 25
+   },
+   "su": {
+    "3": 1,
+    "2": 1,
+    "1": 1
+   },
+   "census": {
+    "pairs": 1024,
+    "strack": 256,
+    "track": 120,
+    "live": 0,
+    "pred": 78,
+    "mism": 0,
+    "q1nz_offlocus": 0,
+    "chainfed": 0,
+    "nested12": 84,
+    "nested123": 0,
+    "c1eq2": 0,
+    "maxc": [
+     1,
+     2
+    ],
+    "edge_top": 68,
+    "justmiss_top": 42,
+    "justmiss_live": 0,
+    "def_hist": {},
+    "kdef_hist": {
+     "2": 20,
+     "1": 58
+    },
+    "pool_mult_edge": 60,
+    "flat_pass": 0
+   },
+   "controls": {
+    "CAP1": 20,
+    "NOCARRY": 78,
+    "EG": 0,
+    "THRP1": 68,
+    "THRM1": 42,
+    "NOU": 78
+   }
+  },
+  {
+   "tag": "DEEP4-h31",
+   "m": 3,
+   "kind": "Zp",
+   "p": 3,
+   "d0": 1,
+   "reads": [
+    [
+     4,
+     3,
+     1
+    ],
+    [
+     2,
+     1,
+     1
+    ],
+    [
+     2,
+     1,
+     1
+    ],
+    [
+     2,
+     1,
+     1
+    ]
+   ],
+   "Etot": 32,
+   "G0": 1216,
+   "harness_events": 0,
+   "uchain": {
+    "3": 405,
+    "2": 152,
+    "1": 76
+   },
+   "su": {
+    "3": 1,
+    "2": 0,
+    "1": 0
+   },
+   "census": {
+    "pairs": 1024,
+    "strack": 256,
+    "track": 120,
+    "live": 0,
+    "pred": 28,
+    "mism": 0,
+    "q1nz_offlocus": 0,
+    "chainfed": 0,
+    "nested12": 54,
+    "nested123": 0,
+    "c1eq2": 0,
+    "maxc": [
+     1,
+     1
+    ],
+    "edge_top": 28,
+    "justmiss_top": 92,
+    "justmiss_live": 0,
+    "def_hist": {},
+    "kdef_hist": {
+     "1": 28
+    },
+    "pool_mult_edge": 78,
+    "flat_pass": 0
+   },
+   "controls": {
+    "CAP1": 0,
+    "NOCARRY": 28,
+    "EG": 0,
+    "THRP1": 28,
+    "THRM1": 92,
+    "NOU": 28
+   }
+  },
+  {
+   "tag": "DEEP4-h33",
+   "m": 3,
+   "kind": "Zp",
+   "p": 3,
+   "d0": 1,
+   "reads": [
+    [
+     4,
+     3,
+     1
+    ],
+    [
+     2,
+     1,
+     1
+    ],
+    [
+     2,
+     3,
+     1
+    ],
+    [
+     2,
+     1,
+     1
+    ]
+   ],
+   "Etot": 32,
+   "G0": 1248,
+   "harness_events": 0,
+   "uchain": {
+    "3": 413,
+    "2": 155,
+    "1": 65
+   },
+   "su": {
+    "3": 1,
+    "2": 1,
+    "1": 3
+   },
+   "census": {
+    "pairs": 1024,
+    "strack": 256,
+    "track": 120,
+    "live": 0,
+    "pred": 105,
+    "mism": 0,
+    "q1nz_offlocus": 0,
+    "chainfed": 0,
+    "nested12": 114,
+    "nested123": 0,
+    "c1eq2": 30,
+    "maxc": [
+     2,
+     2
+    ],
+    "edge_top": 84,
+    "justmiss_top": 15,
+    "justmiss_live": 0,
+    "def_hist": {},
+    "kdef_hist": {
+     "2": 42,
+     "1": 63
+    },
+    "pool_mult_edge": 80,
+    "flat_pass": 0
+   },
+   "controls": {
+    "CAP1": 42,
+    "NOCARRY": 105,
+    "EG": 0,
+    "THRP1": 84,
+    "THRM1": 15,
+    "NOU": 105
+   }
+  },
+  {
+   "tag": "NEST-h11",
+   "m": 3,
+   "kind": "Zp",
+   "p": 3,
+   "d0": 1,
+   "reads": [
+    [
+     2,
+     1,
+     1
+    ],
+    [
+     2,
+     1,
+     1
+    ],
+    [
+     2,
+     1,
+     1
+    ],
+    [
+     2,
+     1,
+     1
+    ]
+   ],
+   "Etot": 16,
+   "G0": 256,
+   "harness_events": 0,
+   "uchain": {
+    "3": 85,
+    "2": 32,
+    "1": 16
+   },
+   "su": {
+    "3": 1,
+    "2": 0,
+    "1": 0
+   },
+   "census": {
+    "pairs": 256,
+    "strack": 64,
+    "track": 28,
+    "live": 0,
+    "pred": 6,
+    "mism": 0,
+    "q1nz_offlocus": 0,
+    "chainfed": 0,
+    "nested12": 9,
+    "nested123": 0,
+    "c1eq2": 0,
+    "maxc": [
+     1,
+     1
+    ],
+    "edge_top": 6,
+    "justmiss_top": 22,
+    "justmiss_live": 0,
+    "def_hist": {},
+    "kdef_hist": {
+     "1": 6
+    },
+    "pool_mult_edge": 19,
+    "flat_pass": 0
+   },
+   "controls": {
+    "CAP1": 0,
+    "NOCARRY": 6,
+    "EG": 0,
+    "THRP1": 6,
+    "THRM1": 22,
+    "NOU": 6
+   }
+  },
+  {
+   "tag": "NEST-h13",
+   "m": 3,
+   "kind": "Zp",
+   "p": 3,
+   "d0": 1,
+   "reads": [
+    [
+     2,
+     1,
+     1
+    ],
+    [
+     2,
+     1,
+     1
+    ],
+    [
+     2,
+     3,
+     1
+    ],
+    [
+     2,
+     1,
+     1
+    ]
+   ],
+   "Etot": 16,
+   "G0": 288,
+   "harness_events": 0,
+   "uchain": {
+    "3": 93,
+    "2": 35,
+    "1": 15
+   },
+   "su": {
+    "3": 1,
+    "2": 1,
+    "1": 1
+   },
+   "census": {
+    "pairs": 256,
+    "strack": 64,
+    "track": 28,
+    "live": 0,
+    "pred": 21,
+    "mism": 0,
+    "q1nz_offlocus": 0,
+    "chainfed": 0,
+    "nested12": 22,
+    "nested123": 0,
+    "c1eq2": 0,
+    "maxc": [
+     1,
+     2
+    ],
+    "edge_top": 18,
+    "justmiss_top": 7,
+    "justmiss_live": 0,
+    "def_hist": {},
+    "kdef_hist": {
+     "2": 6,
+     "1": 15
+    },
+    "pool_mult_edge": 18,
+    "flat_pass": 0
+   },
+   "controls": {
+    "CAP1": 6,
+    "NOCARRY": 21,
+    "EG": 0,
+    "THRP1": 18,
+    "THRM1": 7,
+    "NOU": 21
+   }
+  },
+  {
+   "tag": "NEST-h31",
+   "m": 3,
+   "kind": "Zp",
+   "p": 3,
+   "d0": 1,
+   "reads": [
+    [
+     2,
+     1,
+     1
+    ],
+    [
+     2,
+     3,
+     1
+    ],
+    [
+     2,
+     1,
+     1
+    ],
+    [
+     2,
+     1,
+     1
+    ]
+   ],
+   "Etot": 16,
+   "G0": 352,
+   "harness_events": 0,
+   "uchain": {
+    "3": 117,
+    "2": 44,
+    "1": 22
+   },
+   "su": {
+    "3": 1,
+    "2": 0,
+    "1": 0
+   },
+   "census": {
+    "pairs": 256,
+    "strack": 64,
+    "track": 28,
+    "live": 0,
+    "pred": 6,
+    "mism": 0,
+    "q1nz_offlocus": 0,
+    "chainfed": 0,
+    "nested12": 9,
+    "nested123": 0,
+    "c1eq2": 0,
+    "maxc": [
+     1,
+     1
+    ],
+    "edge_top": 6,
+    "justmiss_top": 22,
+    "justmiss_live": 0,
+    "def_hist": {},
+    "kdef_hist": {
+     "1": 6
+    },
+    "pool_mult_edge": 19,
+    "flat_pass": 0
+   },
+   "controls": {
+    "CAP1": 0,
+    "NOCARRY": 6,
+    "EG": 0,
+    "THRP1": 6,
+    "THRM1": 22,
+    "NOU": 6
+   }
+  },
+  {
+   "tag": "NEST-h33",
+   "m": 3,
+   "kind": "Zp",
+   "p": 3,
+   "d0": 1,
+   "reads": [
+    [
+     2,
+     1,
+     1
+    ],
+    [
+     2,
+     3,
+     1
+    ],
+    [
+     2,
+     3,
+     1
+    ],
+    [
+     2,
+     1,
+     1
+    ]
+   ],
+   "Etot": 16,
+   "G0": 384,
+   "harness_events": 0,
+   "uchain": {
+    "3": 125,
+    "2": 47,
+    "1": 20
+   },
+   "su": {
+    "3": 1,
+    "2": 1,
+    "1": 0
+   },
+   "census": {
+    "pairs": 256,
+    "strack": 64,
+    "track": 28,
+    "live": 0,
+    "pred": 15,
+    "mism": 0,
+    "q1nz_offlocus": 0,
+    "chainfed": 0,
+    "nested12": 10,
+    "nested123": 0,
+    "c1eq2": 0,
+    "maxc": [
+     1,
+     2
+    ],
+    "edge_top": 14,
+    "justmiss_top": 13,
+    "justmiss_live": 0,
+    "def_hist": {},
+    "kdef_hist": {
+     "2": 2,
+     "1": 13
+    },
+    "pool_mult_edge": 16,
+    "flat_pass": 0
+   },
+   "controls": {
+    "CAP1": 2,
+    "NOCARRY": 15,
+    "EG": 0,
+    "THRP1": 14,
+    "THRM1": 13,
+    "NOU": 15
+   }
+  },
+  {
+   "tag": "FMID-h11",
+   "m": 3,
+   "kind": "Zp",
+   "p": 3,
+   "d0": 1,
+   "reads": [
+    [
+     2,
+     1,
+     1
+    ],
+    [
+     1,
+     1,
+     1
+    ],
+    [
+     2,
+     1,
+     1
+    ],
+    [
+     2,
+     1,
+     1
+    ]
+   ],
+   "Etot": 8,
+   "G0": 88,
+   "harness_events": 0,
+   "uchain": {
+    "3": 29,
+    "2": 11,
+    "1": 11
+   },
+   "su": {
+    "3": 1,
+    "2": 0,
+    "1": 1
+   },
+   "census": {
+    "pairs": 64,
+    "strack": 16,
+    "track": 6,
+    "live": 0,
+    "pred": 3,
+    "mism": 0,
+    "q1nz_offlocus": 0,
+    "chainfed": 0,
+    "nested12": 5,
+    "nested123": 0,
+    "c1eq2": 0,
+    "maxc": [
+     1,
+     1
+    ],
+    "edge_top": 3,
+    "justmiss_top": 3,
+    "justmiss_live": 0,
+    "def_hist": {},
+    "kdef_hist": {
+     "1": 3
+    },
+    "pool_mult_edge": 5,
+    "flat_pass": 5
+   },
+   "controls": {
+    "CAP1": 0,
+    "NOCARRY": 3,
+    "EG": 0,
+    "THRP1": 3,
+    "THRM1": 3,
+    "NOU": 3
+   }
+  },
+  {
+   "tag": "FMID-h13",
+   "m": 3,
+   "kind": "Zp",
+   "p": 3,
+   "d0": 1,
+   "reads": [
+    [
+     2,
+     1,
+     1
+    ],
+    [
+     1,
+     1,
+     1
+    ],
+    [
+     2,
+     1,
+     1
+    ],
+    [
+     2,
+     3,
+     1
+    ]
+   ],
+   "Etot": 8,
+   "G0": 96,
+   "harness_events": 0,
+   "uchain": {
+    "3": 31,
+    "2": 12,
+    "1": 12
+   },
+   "su": {
+    "3": 1,
+    "2": 0,
+    "1": 0
+   },
+   "census": {
+    "pairs": 64,
+    "strack": 16,
+    "track": 6,
+    "live": 0,
+    "pred": 1,
+    "mism": 0,
+    "q1nz_offlocus": 0,
+    "chainfed": 0,
+    "nested12": 3,
+    "nested123": 0,
+    "c1eq2": 0,
+    "maxc": [
+     1,
+     1
+    ],
+    "edge_top": 1,
+    "justmiss_top": 5,
+    "justmiss_live": 0,
+    "def_hist": {},
+    "kdef_hist": {
+     "1": 1
+    },
+    "pool_mult_edge": 3,
+    "flat_pass": 3
+   },
+   "controls": {
+    "CAP1": 0,
+    "NOCARRY": 1,
+    "EG": 0,
+    "THRP1": 1,
+    "THRM1": 5,
+    "NOU": 1
+   }
+  },
+  {
+   "tag": "FMID-h31",
+   "m": 3,
+   "kind": "Zp",
+   "p": 3,
+   "d0": 1,
+   "reads": [
+    [
+     2,
+     3,
+     1
+    ],
+    [
+     1,
+     1,
+     1
+    ],
+    [
+     2,
+     1,
+     1
+    ],
+    [
+     2,
+     1,
+     1
+    ]
+   ],
+   "Etot": 8,
+   "G0": 184,
+   "harness_events": 0,
+   "uchain": {
+    "3": 61,
+    "2": 23,
+    "1": 23
+   },
+   "su": {
+    "3": 1,
+    "2": 0,
+    "1": 1
+   },
+   "census": {
+    "pairs": 64,
+    "strack": 16,
+    "track": 6,
+    "live": 0,
+    "pred": 3,
+    "mism": 0,
+    "q1nz_offlocus": 0,
+    "chainfed": 0,
+    "nested12": 5,
+    "nested123": 0,
+    "c1eq2": 0,
+    "maxc": [
+     1,
+     1
+    ],
+    "edge_top": 3,
+    "justmiss_top": 3,
+    "justmiss_live": 0,
+    "def_hist": {},
+    "kdef_hist": {
+     "1": 3
+    },
+    "pool_mult_edge": 5,
+    "flat_pass": 5
+   },
+   "controls": {
+    "CAP1": 0,
+    "NOCARRY": 3,
+    "EG": 0,
+    "THRP1": 3,
+    "THRM1": 3,
+    "NOU": 3
+   }
+  },
+  {
+   "tag": "FMID-h33",
+   "m": 3,
+   "kind": "Zp",
+   "p": 3,
+   "d0": 1,
+   "reads": [
+    [
+     2,
+     3,
+     1
+    ],
+    [
+     1,
+     1,
+     1
+    ],
+    [
+     2,
+     1,
+     1
+    ],
+    [
+     2,
+     3,
+     1
+    ]
+   ],
+   "Etot": 8,
+   "G0": 192,
+   "harness_events": 0,
+   "uchain": {
+    "3": 63,
+    "2": 24,
+    "1": 24
+   },
+   "su": {
+    "3": 1,
+    "2": 0,
+    "1": 0
+   },
+   "census": {
+    "pairs": 64,
+    "strack": 16,
+    "track": 6,
+    "live": 0,
+    "pred": 1,
+    "mism": 0,
+    "q1nz_offlocus": 0,
+    "chainfed": 0,
+    "nested12": 3,
+    "nested123": 0,
+    "c1eq2": 0,
+    "maxc": [
+     1,
+     1
+    ],
+    "edge_top": 1,
+    "justmiss_top": 5,
+    "justmiss_live": 0,
+    "def_hist": {},
+    "kdef_hist": {
+     "1": 1
+    },
+    "pool_mult_edge": 3,
+    "flat_pass": 3
+   },
+   "controls": {
+    "CAP1": 0,
+    "NOCARRY": 1,
+    "EG": 0,
+    "THRP1": 1,
+    "THRM1": 5,
+    "NOU": 1
+   }
+  },
+  {
+   "tag": "FTOP-h11",
+   "m": 3,
+   "kind": "Zp",
+   "p": 3,
+   "d0": 1,
+   "reads": [
+    [
+     2,
+     1,
+     1
+    ],
+    [
+     2,
+     1,
+     1
+    ],
+    [
+     1,
+     1,
+     1
+    ],
+    [
+     2,
+     1,
+     1
+    ]
+   ],
+   "Etot": 8,
+   "G0": 72,
+   "harness_events": 0,
+   "uchain": {
+    "3": 23,
+    "2": 23,
+    "1": 9
+   },
+   "su": {
+    "3": 0,
+    "2": 1,
+    "1": 1
+   },
+   "census": {
+    "pairs": 64,
+    "strack": 16,
+    "track": 6,
+    "live": 0,
+    "pred": 3,
+    "mism": 0,
+    "q1nz_offlocus": 0,
+    "chainfed": 0,
+    "nested12": 5,
+    "nested123": 0,
+    "c1eq2": 0,
+    "maxc": [
+     1,
+     2
+    ],
+    "edge_top": 3,
+    "justmiss_top": 3,
+    "justmiss_live": 0,
+    "def_hist": {},
+    "kdef_hist": {
+     "2": 3
+    },
+    "pool_mult_edge": 3,
+    "flat_pass": 6
+   },
+   "controls": {
+    "CAP1": 3,
+    "NOCARRY": 3,
+    "EG": 0,
+    "THRP1": 3,
+    "THRM1": 3,
+    "NOU": 3
+   }
+  },
+  {
+   "tag": "FTOP-h13",
+   "m": 3,
+   "kind": "Zp",
+   "p": 3,
+   "d0": 1,
+   "reads": [
+    [
+     2,
+     1,
+     1
+    ],
+    [
+     2,
+     3,
+     1
+    ],
+    [
+     1,
+     1,
+     1
+    ],
+    [
+     2,
+     1,
+     1
+    ]
+   ],
+   "Etot": 8,
+   "G0": 96,
+   "harness_events": 0,
+   "uchain": {
+    "3": 31,
+    "2": 31,
+    "1": 12
+   },
+   "su": {
+    "3": 0,
+    "2": 1,
+    "1": 0
+   },
+   "census": {
+    "pairs": 64,
+    "strack": 16,
+    "track": 6,
+    "live": 0,
+    "pred": 1,
+    "mism": 0,
+    "q1nz_offlocus": 0,
+    "chainfed": 0,
+    "nested12": 3,
+    "nested123": 0,
+    "c1eq2": 0,
+    "maxc": [
+     1,
+     2
+    ],
+    "edge_top": 1,
+    "justmiss_top": 5,
+    "justmiss_live": 0,
+    "def_hist": {},
+    "kdef_hist": {
+     "2": 1
+    },
+    "pool_mult_edge": 3,
+    "flat_pass": 6
+   },
+   "controls": {
+    "CAP1": 1,
+    "NOCARRY": 1,
+    "EG": 0,
+    "THRP1": 1,
+    "THRM1": 5,
+    "NOU": 1
+   }
+  },
+  {
+   "tag": "FTOP-h31",
+   "m": 3,
+   "kind": "Zp",
+   "p": 3,
+   "d0": 1,
+   "reads": [
+    [
+     2,
+     3,
+     1
+    ],
+    [
+     2,
+     1,
+     1
+    ],
+    [
+     1,
+     1,
+     1
+    ],
+    [
+     2,
+     1,
+     1
+    ]
+   ],
+   "Etot": 8,
+   "G0": 168,
+   "harness_events": 0,
+   "uchain": {
+    "3": 55,
+    "2": 55,
+    "1": 21
+   },
+   "su": {
+    "3": 0,
+    "2": 1,
+    "1": 1
+   },
+   "census": {
+    "pairs": 64,
+    "strack": 16,
+    "track": 6,
+    "live": 0,
+    "pred": 3,
+    "mism": 0,
+    "q1nz_offlocus": 0,
+    "chainfed": 0,
+    "nested12": 5,
+    "nested123": 0,
+    "c1eq2": 0,
+    "maxc": [
+     1,
+     2
+    ],
+    "edge_top": 3,
+    "justmiss_top": 3,
+    "justmiss_live": 0,
+    "def_hist": {},
+    "kdef_hist": {
+     "2": 3
+    },
+    "pool_mult_edge": 3,
+    "flat_pass": 6
+   },
+   "controls": {
+    "CAP1": 3,
+    "NOCARRY": 3,
+    "EG": 0,
+    "THRP1": 3,
+    "THRM1": 3,
+    "NOU": 3
+   }
+  },
+  {
+   "tag": "FTOP-h33",
+   "m": 3,
+   "kind": "Zp",
+   "p": 3,
+   "d0": 1,
+   "reads": [
+    [
+     2,
+     3,
+     1
+    ],
+    [
+     2,
+     3,
+     1
+    ],
+    [
+     1,
+     1,
+     1
+    ],
+    [
+     2,
+     1,
+     1
+    ]
+   ],
+   "Etot": 8,
+   "G0": 192,
+   "harness_events": 0,
+   "uchain": {
+    "3": 63,
+    "2": 63,
+    "1": 24
+   },
+   "su": {
+    "3": 0,
+    "2": 1,
+    "1": 0
+   },
+   "census": {
+    "pairs": 64,
+    "strack": 16,
+    "track": 6,
+    "live": 0,
+    "pred": 1,
+    "mism": 0,
+    "q1nz_offlocus": 0,
+    "chainfed": 0,
+    "nested12": 3,
+    "nested123": 0,
+    "c1eq2": 0,
+    "maxc": [
+     1,
+     2
+    ],
+    "edge_top": 1,
+    "justmiss_top": 5,
+    "justmiss_live": 0,
+    "def_hist": {},
+    "kdef_hist": {
+     "2": 1
+    },
+    "pool_mult_edge": 3,
+    "flat_pass": 6
+   },
+   "controls": {
+    "CAP1": 1,
+    "NOCARRY": 1,
+    "EG": 0,
+    "THRP1": 1,
+    "THRM1": 5,
+    "NOU": 1
+   }
+  },
+  {
+   "tag": "FDBL-h1",
+   "m": 3,
+   "kind": "Zp",
+   "p": 3,
+   "d0": 1,
+   "reads": [
+    [
+     3,
+     1,
+     1
+    ],
+    [
+     1,
+     1,
+     1
+    ],
+    [
+     1,
+     1,
+     1
+    ],
+    [
+     2,
+     1,
+     1
+    ]
+   ],
+   "Etot": 6,
+   "G0": 36,
+   "harness_events": 0,
+   "uchain": {
+    "3": 11,
+    "2": 11,
+    "1": 11
+   },
+   "su": {
+    "3": 0,
+    "2": 0,
+    "1": 2
+   },
+   "census": {
+    "pairs": 36,
+    "strack": 9,
+    "track": 3,
+    "live": 0,
+    "pred": 1,
+    "mism": 0,
+    "q1nz_offlocus": 0,
+    "chainfed": 0,
+    "nested12": 3,
+    "nested123": 0,
+    "c1eq2": 1,
+    "maxc": [
+     2,
+     2
+    ],
+    "edge_top": 1,
+    "justmiss_top": 2,
+    "justmiss_live": 0,
+    "def_hist": {},
+    "kdef_hist": {
+     "2": 1
+    },
+    "pool_mult_edge": 3,
+    "flat_pass": 3
+   },
+   "controls": {
+    "CAP1": 1,
+    "NOCARRY": 1,
+    "EG": 0,
+    "THRP1": 1,
+    "THRM1": 2,
+    "NOU": 1
+   }
+  },
+  {
+   "tag": "FDBL-h2",
+   "m": 3,
+   "kind": "Zp",
+   "p": 3,
+   "d0": 1,
+   "reads": [
+    [
+     3,
+     2,
+     1
+    ],
+    [
+     1,
+     1,
+     1
+    ],
+    [
+     1,
+     1,
+     1
+    ],
+    [
+     2,
+     1,
+     1
+    ]
+   ],
+   "Etot": 6,
+   "G0": 54,
+   "harness_events": 0,
+   "uchain": {
+    "3": 17,
+    "2": 17,
+    "1": 17
+   },
+   "su": {
+    "3": 0,
+    "2": 0,
+    "1": 1
+   },
+   "census": {
+    "pairs": 36,
+    "strack": 9,
+    "track": 3,
+    "live": 0,
+    "pred": 0,
+    "mism": 0,
+    "q1nz_offlocus": 0,
+    "chainfed": 0,
+    "nested12": 3,
+    "nested123": 0,
+    "c1eq2": 0,
+    "maxc": [
+     1,
+     1
+    ],
+    "edge_top": 0,
+    "justmiss_top": 3,
+    "justmiss_live": 0,
+    "def_hist": {},
+    "kdef_hist": {},
+    "pool_mult_edge": 3,
+    "flat_pass": 3
+   },
+   "controls": {
+    "CAP1": 0,
+    "NOCARRY": 0,
+    "EG": 0,
+    "THRP1": 0,
+    "THRM1": 3,
+    "NOU": 0
+   }
+  },
+  {
+   "tag": "TRK1-h1",
+   "m": 3,
+   "kind": "Zp",
+   "p": 3,
+   "d0": 1,
+   "reads": [
+    [
+     3,
+     1,
+     1
+    ],
+    [
+     2,
+     1,
+     1
+    ],
+    [
+     2,
+     1,
+     1
+    ],
+    [
+     1,
+     1,
+     1
+    ]
+   ],
+   "Etot": 12,
+   "G0": 180,
+   "harness_events": 0,
+   "uchain": {
+    "3": 59,
+    "2": 15,
+    "1": 4
+   },
+   "su": {
+    "3": 1,
+    "2": 1,
+    "1": 1
+   },
+   "census": {
+    "pairs": 144,
+    "strack": 144,
+    "track": 66,
+    "live": 0,
+    "pred": 45,
+    "mism": 0,
+    "q1nz_offlocus": 0,
+    "chainfed": 0,
+    "nested12": 48,
+    "nested123": 0,
+    "c1eq2": 0,
+    "maxc": [
+     1,
+     2
+    ],
+    "edge_top": 39,
+    "justmiss_top": 21,
+    "justmiss_live": 0,
+    "def_hist": {},
+    "kdef_hist": {
+     "1": 33,
+     "2": 12
+    },
+    "pool_mult_edge": 36,
+    "flat_pass": 0
+   },
+   "controls": {
+    "CAP1": 12,
+    "NOCARRY": 45,
+    "EG": 0,
+    "THRP1": 39,
+    "THRM1": 21,
+    "NOU": 45
+   }
+  },
+  {
+   "tag": "TRK1-h2",
+   "m": 3,
+   "kind": "Zp",
+   "p": 3,
+   "d0": 1,
+   "reads": [
+    [
+     3,
+     2,
+     1
+    ],
+    [
+     2,
+     1,
+     1
+    ],
+    [
+     2,
+     1,
+     1
+    ],
+    [
+     1,
+     1,
+     1
+    ]
+   ],
+   "Etot": 12,
+   "G0": 324,
+   "harness_events": 0,
+   "uchain": {
+    "3": 107,
+    "2": 27,
+    "1": 7
+   },
+   "su": {
+    "3": 1,
+    "2": 1,
+    "1": 2
+   },
+   "census": {
+    "pairs": 144,
+    "strack": 144,
+    "track": 66,
+    "live": 0,
+    "pred": 55,
+    "mism": 0,
+    "q1nz_offlocus": 0,
+    "chainfed": 0,
+    "nested12": 60,
+    "nested123": 0,
+    "c1eq2": 10,
+    "maxc": [
+     2,
+     2
+    ],
+    "edge_top": 45,
+    "justmiss_top": 11,
+    "justmiss_live": 0,
+    "def_hist": {},
+    "kdef_hist": {
+     "1": 35,
+     "2": 20
+    },
+    "pool_mult_edge": 44,
+    "flat_pass": 0
+   },
+   "controls": {
+    "CAP1": 20,
+    "NOCARRY": 55,
+    "EG": 0,
+    "THRP1": 45,
+    "THRM1": 11,
+    "NOU": 55
+   }
+  },
+  {
+   "tag": "DIR-h11",
+   "m": 3,
+   "kind": "Zp",
+   "p": 3,
+   "d0": 1,
+   "reads": [
+    [
+     2,
+     1,
+     1
+    ],
+    [
+     2,
+     1,
+     1
+    ],
+    [
+     3,
+     1,
+     1
+    ],
+    [
+     2,
+     1,
+     1
+    ]
+   ],
+   "Etot": 24,
+   "G0": 576,
+   "harness_events": 0,
+   "uchain": {
+    "3": 187,
+    "2": 52,
+    "1": 26
+   },
+   "su": {
+    "3": 1,
+    "2": 0,
+    "1": 0
+   },
+   "census": {
+    "pairs": 576,
+    "strack": 144,
+    "track": 66,
+    "live": 0,
+    "pred": 6,
+    "mism": 0,
+    "q1nz_offlocus": 0,
+    "chainfed": 0,
+    "nested12": 18,
+    "nested123": 0,
+    "c1eq2": 0,
+    "maxc": [
+     1,
+     1
+    ],
+    "edge_top": 6,
+    "justmiss_top": 22,
+    "justmiss_live": 0,
+    "def_hist": {},
+    "kdef_hist": {
+     "1": 6
+    },
+    "pool_mult_edge": 39,
+    "flat_pass": 0
+   },
+   "controls": {
+    "CAP1": 0,
+    "NOCARRY": 6,
+    "EG": 0,
+    "THRP1": 6,
+    "THRM1": 22,
+    "NOU": 6
+   }
+  },
+  {
+   "tag": "DIR-h13",
+   "m": 3,
+   "kind": "Zp",
+   "p": 3,
+   "d0": 1,
+   "reads": [
+    [
+     2,
+     1,
+     1
+    ],
+    [
+     2,
+     1,
+     1
+    ],
+    [
+     3,
+     1,
+     1
+    ],
+    [
+     2,
+     3,
+     1
+    ]
+   ],
+   "Etot": 24,
+   "G0": 576,
+   "harness_events": 0,
+   "uchain": {
+    "3": 189,
+    "2": 63,
+    "1": 29
+   },
+   "su": {
+    "3": 0,
+    "2": 1,
+    "1": 1
+   },
+   "census": {
+    "pairs": 576,
+    "strack": 144,
+    "track": 66,
+    "live": 0,
+    "pred": 3,
+    "mism": 0,
+    "q1nz_offlocus": 0,
+    "chainfed": 0,
+    "nested12": 51,
+    "nested123": 0,
+    "c1eq2": 0,
+    "maxc": [
+     1,
+     2
+    ],
+    "edge_top": 3,
+    "justmiss_top": 18,
+    "justmiss_live": 0,
+    "def_hist": {},
+    "kdef_hist": {
+     "2": 3
+    },
+    "pool_mult_edge": 45,
+    "flat_pass": 0
+   },
+   "controls": {
+    "CAP1": 3,
+    "NOCARRY": 3,
+    "EG": 0,
+    "THRP1": 3,
+    "THRM1": 18,
+    "NOU": 3
+   }
+  },
+  {
+   "tag": "DIR-h21",
+   "m": 3,
+   "kind": "Zp",
+   "p": 3,
+   "d0": 1,
+   "reads": [
+    [
+     2,
+     1,
+     1
+    ],
+    [
+     2,
+     1,
+     1
+    ],
+    [
+     3,
+     2,
+     1
+    ],
+    [
+     2,
+     1,
+     1
+    ]
+   ],
+   "Etot": 24,
+   "G0": 600,
+   "harness_events": 0,
+   "uchain": {
+    "3": 193,
+    "2": 43,
+    "1": 19
+   },
+   "su": {
+    "3": 2,
+    "2": 1,
+    "1": 1
+   },
+   "census": {
+    "pairs": 576,
+    "strack": 144,
+    "track": 66,
+    "live": 0,
+    "pred": 55,
+    "mism": 0,
+    "q1nz_offlocus": 0,
+    "chainfed": 0,
+    "nested12": 51,
+    "nested123": 0,
+    "c1eq2": 0,
+    "maxc": [
+     1,
+     2
+    ],
+    "edge_top": 34,
+    "justmiss_top": 11,
+    "justmiss_live": 0,
+    "def_hist": {},
+    "kdef_hist": {
+     "0": 16,
+     "1": 30,
+     "2": 9
+    },
+    "pool_mult_edge": 45,
+    "flat_pass": 0
+   },
+   "controls": {
+    "CAP1": 9,
+    "NOCARRY": 39,
+    "EG": 0,
+    "THRP1": 34,
+    "THRM1": 11,
+    "NOU": 55
+   }
+  },
+  {
+   "tag": "DIR-h23",
+   "m": 3,
+   "kind": "Zp",
+   "p": 3,
+   "d0": 1,
+   "reads": [
+    [
+     2,
+     1,
+     1
+    ],
+    [
+     2,
+     1,
+     1
+    ],
+    [
+     3,
+     2,
+     1
+    ],
+    [
+     2,
+     3,
+     1
+    ]
+   ],
+   "Etot": 24,
+   "G0": 600,
+   "harness_events": 0,
+   "uchain": {
+    "3": 195,
+    "2": 65,
+    "1": 30
+   },
+   "su": {
+    "3": 0,
+    "2": 1,
+    "1": 0
+   },
+   "census": {
+    "pairs": 576,
+    "strack": 144,
+    "track": 66,
+    "live": 0,
+    "pred": 1,
+    "mism": 0,
+    "q1nz_offlocus": 0,
+    "chainfed": 0,
+    "nested12": 21,
+    "nested123": 0,
+    "c1eq2": 0,
+    "maxc": [
+     1,
+     2
+    ],
+    "edge_top": 1,
+    "justmiss_top": 14,
+    "justmiss_live": 0,
+    "def_hist": {},
+    "kdef_hist": {
+     "2": 1
+    },
+    "pool_mult_edge": 39,
+    "flat_pass": 0
+   },
+   "controls": {
+    "CAP1": 1,
+    "NOCARRY": 1,
+    "EG": 0,
+    "THRP1": 1,
+    "THRM1": 14,
+    "NOU": 1
+   }
+  },
+  {
+   "tag": "G2A-h1",
+   "m": 3,
+   "kind": "Zp",
+   "p": 3,
+   "d0": 1,
+   "reads": [
+    [
+     2,
+     1,
+     2
+    ],
+    [
+     2,
+     1,
+     1
+    ],
+    [
+     2,
+     1,
+     1
+    ],
+    [
+     2,
+     1,
+     1
+    ]
+   ],
+   "Etot": 16,
+   "G0": 448,
+   "harness_events": 0,
+   "uchain": {
+    "3": 149,
+    "2": 56,
+    "1": 28
+   },
+   "su": {
+    "3": 1,
+    "2": 0,
+    "1": 0
+   },
+   "census": {
+    "pairs": 256,
+    "strack": 64,
+    "track": 24,
+    "live": 0,
+    "pred": 6,
+    "mism": 0,
+    "q1nz_offlocus": 0,
+    "chainfed": 0,
+    "nested12": 5,
+    "nested123": 0,
+    "c1eq2": 0,
+    "maxc": [
+     1,
+     1
+    ],
+    "edge_top": 6,
+    "justmiss_top": 18,
+    "justmiss_live": 0,
+    "def_hist": {},
+    "kdef_hist": {
+     "1": 6
+    },
+    "pool_mult_edge": 15,
+    "flat_pass": 0
+   },
+   "controls": {
+    "CAP1": 0,
+    "NOCARRY": 6,
+    "EG": 2,
+    "THRP1": 6,
+    "THRM1": 18,
+    "NOU": 6
+   }
+  },
+  {
+   "tag": "G2A-h3",
+   "m": 3,
+   "kind": "Zp",
+   "p": 3,
+   "d0": 1,
+   "reads": [
+    [
+     2,
+     1,
+     2
+    ],
+    [
+     2,
+     3,
+     1
+    ],
+    [
+     2,
+     1,
+     1
+    ],
+    [
+     2,
+     1,
+     1
+    ]
+   ],
+   "Etot": 16,
+   "G0": 544,
+   "harness_events": 0,
+   "uchain": {
+    "3": 181,
+    "2": 68,
+    "1": 34
+   },
+   "su": {
+    "3": 1,
+    "2": 0,
+    "1": 0
+   },
+   "census": {
+    "pairs": 256,
+    "strack": 64,
+    "track": 24,
+    "live": 0,
+    "pred": 6,
+    "mism": 0,
+    "q1nz_offlocus": 0,
+    "chainfed": 0,
+    "nested12": 5,
+    "nested123": 0,
+    "c1eq2": 0,
+    "maxc": [
+     1,
+     1
+    ],
+    "edge_top": 6,
+    "justmiss_top": 18,
+    "justmiss_live": 0,
+    "def_hist": {},
+    "kdef_hist": {
+     "1": 6
+    },
+    "pool_mult_edge": 15,
+    "flat_pass": 0
+   },
+   "controls": {
+    "CAP1": 0,
+    "NOCARRY": 6,
+    "EG": 2,
+    "THRP1": 6,
+    "THRM1": 18,
+    "NOU": 6
+   }
+  },
+  {
+   "tag": "G2B",
+   "m": 3,
+   "kind": "Zp",
+   "p": 5,
+   "d0": 2,
+   "reads": [
+    [
+     2,
+     1,
+     2
+    ],
+    [
+     2,
+     1,
+     1
+    ],
+    [
+     2,
+     1,
+     1
+    ],
+    [
+     2,
+     1,
+     1
+    ]
+   ],
+   "Etot": 16,
+   "G0": 448,
+   "harness_events": 0,
+   "uchain": {
+    "3": 149,
+    "2": 56,
+    "1": 28
+   },
+   "su": {
+    "3": 1,
+    "2": 0,
+    "1": 0
+   },
+   "census": {
+    "pairs": 256,
+    "strack": 64,
+    "track": 24,
+    "live": 0,
+    "pred": 6,
+    "mism": 0,
+    "q1nz_offlocus": 0,
+    "chainfed": 0,
+    "nested12": 5,
+    "nested123": 0,
+    "c1eq2": 0,
+    "maxc": [
+     1,
+     1
+    ],
+    "edge_top": 6,
+    "justmiss_top": 18,
+    "justmiss_live": 0,
+    "def_hist": {},
+    "kdef_hist": {
+     "1": 6
+    },
+    "pool_mult_edge": 15,
+    "flat_pass": 0
+   },
+   "controls": {
+    "CAP1": 0,
+    "NOCARRY": 6,
+    "EG": 2,
+    "THRP1": 6,
+    "THRM1": 18,
+    "NOU": 6
+   }
+  },
+  {
+   "tag": "G2C-h1",
+   "m": 3,
+   "kind": "Zp",
+   "p": 3,
+   "d0": 1,
+   "reads": [
+    [
+     3,
+     1,
+     2
+    ],
+    [
+     2,
+     1,
+     1
+    ],
+    [
+     2,
+     1,
+     1
+    ],
+    [
+     2,
+     1,
+     1
+    ]
+   ],
+   "Etot": 24,
+   "G0": 648,
+   "harness_events": 0,
+   "uchain": {
+    "3": 213,
+    "2": 80,
+    "1": 40
+   },
+   "su": {
+    "3": 1,
+    "2": 0,
+    "1": 1
+   },
+   "census": {
+    "pairs": 576,
+    "strack": 144,
+    "track": 54,
+    "live": 0,
+    "pred": 21,
+    "mism": 0,
+    "q1nz_offlocus": 0,
+    "chainfed": 0,
+    "nested12": 30,
+    "nested123": 0,
+    "c1eq2": 0,
+    "maxc": [
+     1,
+     1
+    ],
+    "edge_top": 21,
+    "justmiss_top": 33,
+    "justmiss_live": 0,
+    "def_hist": {},
+    "kdef_hist": {
+     "1": 21
+    },
+    "pool_mult_edge": 33,
+    "flat_pass": 0
+   },
+   "controls": {
+    "CAP1": 0,
+    "NOCARRY": 21,
+    "EG": 12,
+    "THRP1": 21,
+    "THRM1": 33,
+    "NOU": 21
+   }
+  },
+  {
+   "tag": "G2D-h1",
+   "m": 3,
+   "kind": "Zp",
+   "p": 3,
+   "d0": 2,
+   "reads": [
+    [
+     2,
+     1,
+     2
+    ],
+    [
+     3,
+     2,
+     1
+    ],
+    [
+     2,
+     1,
+     1
+    ],
+    [
+     2,
+     1,
+     1
+    ]
+   ],
+   "Etot": 24,
+   "G0": 1032,
+   "harness_events": 0,
+   "uchain": {
+    "3": 341,
+    "2": 128,
+    "1": 38
+   },
+   "su": {
+    "3": 1,
+    "2": 1,
+    "1": 0
+   },
+   "census": {
+    "pairs": 576,
+    "strack": 144,
+    "track": 60,
+    "live": 0,
+    "pred": 28,
+    "mism": 0,
+    "q1nz_offlocus": 0,
+    "chainfed": 0,
+    "nested12": 14,
+    "nested123": 0,
+    "c1eq2": 0,
+    "maxc": [
+     1,
+     2
+    ],
+    "edge_top": 27,
+    "justmiss_top": 32,
+    "justmiss_live": 0,
+    "def_hist": {},
+    "kdef_hist": {
+     "1": 26,
+     "2": 2
+    },
+    "pool_mult_edge": 24,
+    "flat_pass": 0
+   },
+   "controls": {
+    "CAP1": 2,
+    "NOCARRY": 28,
+    "EG": 4,
+    "THRP1": 27,
+    "THRM1": 32,
+    "NOU": 28
+   }
+  },
+  {
+   "tag": "G2C-h3",
+   "m": 3,
+   "kind": "Zp",
+   "p": 3,
+   "d0": 1,
+   "reads": [
+    [
+     3,
+     1,
+     2
+    ],
+    [
+     2,
+     1,
+     1
+    ],
+    [
+     2,
+     3,
+     1
+    ],
+    [
+     2,
+     1,
+     1
+    ]
+   ],
+   "Etot": 24,
+   "G0": 672,
+   "harness_events": 0,
+   "uchain": {
+    "3": 221,
+    "2": 83,
+    "1": 35
+   },
+   "su": {
+    "3": 1,
+    "2": 1,
+    "1": 2
+   },
+   "census": {
+    "pairs": 576,
+    "strack": 144,
+    "track": 54,
+    "live": 0,
+    "pred": 51,
+    "mism": 0,
+    "q1nz_offlocus": 0,
+    "chainfed": 0,
+    "nested12": 48,
+    "nested123": 0,
+    "c1eq2": 6,
+    "maxc": [
+     2,
+     2
+    ],
+    "edge_top": 41,
+    "justmiss_top": 3,
+    "justmiss_live": 0,
+    "def_hist": {},
+    "kdef_hist": {
+     "2": 16,
+     "1": 35
+    },
+    "pool_mult_edge": 40,
+    "flat_pass": 0
+   },
+   "controls": {
+    "CAP1": 16,
+    "NOCARRY": 51,
+    "EG": 21,
+    "THRP1": 41,
+    "THRM1": 3,
+    "NOU": 51
+   }
+  },
+  {
+   "tag": "G2D-h3",
+   "m": 3,
+   "kind": "Zp",
+   "p": 3,
+   "d0": 2,
+   "reads": [
+    [
+     2,
+     1,
+     2
+    ],
+    [
+     3,
+     2,
+     1
+    ],
+    [
+     2,
+     3,
+     1
+    ],
+    [
+     2,
+     1,
+     1
+    ]
+   ],
+   "Etot": 24,
+   "G0": 1056,
+   "harness_events": 0,
+   "uchain": {
+    "3": 349,
+    "2": 131,
+    "1": 39
+   },
+   "su": {
+    "3": 1,
+    "2": 1,
+    "1": 1
+   },
+   "census": {
+    "pairs": 576,
+    "strack": 144,
+    "track": 60,
+    "live": 0,
+    "pred": 36,
+    "mism": 0,
+    "q1nz_offlocus": 0,
+    "chainfed": 0,
+    "nested12": 42,
+    "nested123": 0,
+    "c1eq2": 0,
+    "maxc": [
+     1,
+     2
+    ],
+    "edge_top": 33,
+    "justmiss_top": 24,
+    "justmiss_live": 0,
+    "def_hist": {},
+    "kdef_hist": {
+     "1": 30,
+     "2": 6
+    },
+    "pool_mult_edge": 38,
+    "flat_pass": 0
+   },
+   "controls": {
+    "CAP1": 6,
+    "NOCARRY": 36,
+    "EG": 12,
+    "THRP1": 33,
+    "THRM1": 24,
+    "NOU": 36
+   }
+  },
+  {
+   "tag": "M4-h11",
+   "m": 4,
+   "kind": "Zp",
+   "p": 3,
+   "d0": 1,
+   "reads": [
+    [
+     2,
+     1,
+     1
+    ],
+    [
+     2,
+     1,
+     1
+    ],
+    [
+     2,
+     1,
+     1
+    ],
+    [
+     2,
+     1,
+     1
+    ],
+    [
+     2,
+     1,
+     1
+    ]
+   ],
+   "Etot": 32,
+   "G0": 1024,
+   "harness_events": 0,
+   "uchain": {
+    "4": 341,
+    "3": 128,
+    "2": 64,
+    "1": 32
+   },
+   "su": {
+    "4": 1,
+    "3": 0,
+    "2": 0,
+    "1": 0
+   },
+   "census": {
+    "pairs": 1024,
+    "strack": 256,
+    "track": 120,
+    "live": 0,
+    "pred": 28,
+    "mism": 0,
+    "q1nz_offlocus": 0,
+    "chainfed": 0,
+    "nested12": 30,
+    "nested123": 27,
+    "c1eq2": 0,
+    "maxc": [
+     1,
+     1,
+     1
+    ],
+    "edge_top": 28,
+    "justmiss_top": 92,
+    "justmiss_live": 0,
+    "def_hist": {},
+    "kdef_hist": {
+     "1": 28
+    },
+    "pool_mult_edge": 93,
+    "flat_pass": 0
+   },
+   "controls": {
+    "CAP1": 0,
+    "NOCARRY": 28,
+    "EG": 0,
+    "THRP1": 28,
+    "THRM1": 92,
+    "NOU": 28
+   }
+  },
+  {
+   "tag": "M4-h13",
+   "m": 4,
+   "kind": "Zp",
+   "p": 3,
+   "d0": 1,
+   "reads": [
+    [
+     2,
+     1,
+     1
+    ],
+    [
+     2,
+     1,
+     1
+    ],
+    [
+     2,
+     3,
+     1
+    ],
+    [
+     2,
+     1,
+     1
+    ],
+    [
+     2,
+     1,
+     1
+    ]
+   ],
+   "Etot": 32,
+   "G0": 1120,
+   "harness_events": 0,
+   "uchain": {
+    "4": 373,
+    "3": 140,
+    "2": 70,
+    "1": 35
+   },
+   "su": {
+    "4": 1,
+    "3": 0,
+    "2": 0,
+    "1": 1
+   },
+   "census": {
+    "pairs": 1024,
+    "strack": 256,
+    "track": 120,
+    "live": 0,
+    "pred": 36,
+    "mism": 0,
+    "q1nz_offlocus": 0,
+    "chainfed": 0,
+    "nested12": 74,
+    "nested123": 65,
+    "c1eq2": 0,
+    "maxc": [
+     1,
+     1,
+     1
+    ],
+    "edge_top": 36,
+    "justmiss_top": 84,
+    "justmiss_live": 0,
+    "def_hist": {},
+    "kdef_hist": {
+     "1": 36
+    },
+    "pool_mult_edge": 104,
+    "flat_pass": 0
+   },
+   "controls": {
+    "CAP1": 0,
+    "NOCARRY": 36,
+    "EG": 0,
+    "THRP1": 36,
+    "THRM1": 84,
+    "NOU": 36
+   }
+  },
+  {
+   "tag": "M4-h31",
+   "m": 4,
+   "kind": "Zp",
+   "p": 3,
+   "d0": 1,
+   "reads": [
+    [
+     2,
+     1,
+     1
+    ],
+    [
+     2,
+     3,
+     1
+    ],
+    [
+     2,
+     1,
+     1
+    ],
+    [
+     2,
+     1,
+     1
+    ],
+    [
+     2,
+     1,
+     1
+    ]
+   ],
+   "Etot": 32,
+   "G0": 1408,
+   "harness_events": 0,
+   "uchain": {
+    "4": 469,
+    "3": 176,
+    "2": 88,
+    "1": 44
+   },
+   "su": {
+    "4": 1,
+    "3": 0,
+    "2": 0,
+    "1": 0
+   },
+   "census": {
+    "pairs": 1024,
+    "strack": 256,
+    "track": 120,
+    "live": 0,
+    "pred": 28,
+    "mism": 0,
+    "q1nz_offlocus": 0,
+    "chainfed": 0,
+    "nested12": 30,
+    "nested123": 27,
+    "c1eq2": 0,
+    "maxc": [
+     1,
+     1,
+     1
+    ],
+    "edge_top": 28,
+    "justmiss_top": 92,
+    "justmiss_live": 0,
+    "def_hist": {},
+    "kdef_hist": {
+     "1": 28
+    },
+    "pool_mult_edge": 93,
+    "flat_pass": 0
+   },
+   "controls": {
+    "CAP1": 0,
+    "NOCARRY": 28,
+    "EG": 0,
+    "THRP1": 28,
+    "THRM1": 92,
+    "NOU": 28
+   }
+  },
+  {
+   "tag": "M4-h33",
+   "m": 4,
+   "kind": "Zp",
+   "p": 3,
+   "d0": 1,
+   "reads": [
+    [
+     2,
+     1,
+     1
+    ],
+    [
+     2,
+     3,
+     1
+    ],
+    [
+     2,
+     3,
+     1
+    ],
+    [
+     2,
+     1,
+     1
+    ],
+    [
+     2,
+     1,
+     1
+    ]
+   ],
+   "Etot": 32,
+   "G0": 1504,
+   "harness_events": 0,
+   "uchain": {
+    "4": 501,
+    "3": 188,
+    "2": 94,
+    "1": 47
+   },
+   "su": {
+    "4": 1,
+    "3": 0,
+    "2": 0,
+    "1": 1
+   },
+   "census": {
+    "pairs": 1024,
+    "strack": 256,
+    "track": 120,
+    "live": 0,
+    "pred": 36,
+    "mism": 0,
+    "q1nz_offlocus": 0,
+    "chainfed": 0,
+    "nested12": 74,
+    "nested123": 65,
+    "c1eq2": 0,
+    "maxc": [
+     1,
+     1,
+     1
+    ],
+    "edge_top": 36,
+    "justmiss_top": 84,
+    "justmiss_live": 0,
+    "def_hist": {},
+    "kdef_hist": {
+     "1": 36
+    },
+    "pool_mult_edge": 104,
+    "flat_pass": 0
+   },
+   "controls": {
+    "CAP1": 0,
+    "NOCARRY": 36,
+    "EG": 0,
+    "THRP1": 36,
+    "THRM1": 84,
+    "NOU": 36
+   }
+  },
+  {
+   "tag": "M4DEEP-h11",
+   "m": 4,
+   "kind": "Zp",
+   "p": 3,
+   "d0": 1,
+   "reads": [
+    [
+     3,
+     1,
+     1
+    ],
+    [
+     2,
+     1,
+     1
+    ],
+    [
+     2,
+     1,
+     1
+    ],
+    [
+     2,
+     1,
+     1
+    ],
+    [
+     2,
+     1,
+     1
+    ]
+   ],
+   "Etot": 48,
+   "G0": 1440,
+   "harness_events": 0,
+   "uchain": {
+    "4": 469,
+    "3": 176,
+    "2": 88,
+    "1": 44
+   },
+   "su": {
+    "4": 1,
+    "3": 0,
+    "2": 0,
+    "1": 2
+   },
+   "census": {
+    "pairs": 2304,
+    "strack": 576,
+    "track": 276,
+    "live": 0,
+    "pred": 91,
+    "mism": 0,
+    "q1nz_offlocus": 0,
+    "chainfed": 0,
+    "nested12": 206,
+    "nested123": 182,
+    "c1eq2": 36,
+    "maxc": [
+     2,
+     2,
+     2
+    ],
+    "edge_top": 90,
+    "justmiss_top": 185,
+    "justmiss_live": 0,
+    "def_hist": {},
+    "kdef_hist": {
+     "2": 2,
+     "1": 89
+    },
+    "pool_mult_edge": 232,
+    "flat_pass": 0
+   },
+   "controls": {
+    "CAP1": 5,
+    "NOCARRY": 91,
+    "EG": 0,
+    "THRP1": 90,
+    "THRM1": 185,
+    "NOU": 91
+   }
+  },
+  {
+   "tag": "M4DEEP-h13",
+   "m": 4,
+   "kind": "Zp",
+   "p": 3,
+   "d0": 1,
+   "reads": [
+    [
+     3,
+     1,
+     1
+    ],
+    [
+     2,
+     3,
+     1
+    ],
+    [
+     2,
+     1,
+     1
+    ],
+    [
+     2,
+     1,
+     1
+    ],
+    [
+     2,
+     1,
+     1
+    ]
+   ],
+   "Etot": 48,
+   "G0": 1824,
+   "harness_events": 0,
+   "uchain": {
+    "4": 597,
+    "3": 224,
+    "2": 112,
+    "1": 56
+   },
+   "su": {
+    "4": 1,
+    "3": 0,
+    "2": 0,
+    "1": 2
+   },
+   "census": {
+    "pairs": 2304,
+    "strack": 576,
+    "track": 276,
+    "live": 0,
+    "pred": 91,
+    "mism": 0,
+    "q1nz_offlocus": 0,
+    "chainfed": 0,
+    "nested12": 206,
+    "nested123": 182,
+    "c1eq2": 36,
+    "maxc": [
+     2,
+     2,
+     2
+    ],
+    "edge_top": 90,
+    "justmiss_top": 185,
+    "justmiss_live": 0,
+    "def_hist": {},
+    "kdef_hist": {
+     "1": 89,
+     "2": 2
+    },
+    "pool_mult_edge": 232,
+    "flat_pass": 0
+   },
+   "controls": {
+    "CAP1": 5,
+    "NOCARRY": 91,
+    "EG": 0,
+    "THRP1": 90,
+    "THRM1": 185,
+    "NOU": 91
+   }
+  },
+  {
+   "tag": "M4DEEP-h21",
+   "m": 4,
+   "kind": "Zp",
+   "p": 3,
+   "d0": 1,
+   "reads": [
+    [
+     3,
+     2,
+     1
+    ],
+    [
+     2,
+     1,
+     1
+    ],
+    [
+     2,
+     1,
+     1
+    ],
+    [
+     2,
+     1,
+     1
+    ],
+    [
+     2,
+     1,
+     1
+    ]
+   ],
+   "Etot": 48,
+   "G0": 2592,
+   "harness_events": 0,
+   "uchain": {
+    "4": 853,
+    "3": 320,
+    "2": 160,
+    "1": 80
+   },
+   "su": {
+    "4": 1,
+    "3": 0,
+    "2": 0,
+    "1": 1
+   },
+   "census": {
+    "pairs": 2304,
+    "strack": 576,
+    "track": 276,
+    "live": 0,
+    "pred": 78,
+    "mism": 0,
+    "q1nz_offlocus": 0,
+    "chainfed": 0,
+    "nested12": 156,
+    "nested123": 138,
+    "c1eq2": 0,
+    "maxc": [
+     1,
+     1,
+     1
+    ],
+    "edge_top": 78,
+    "justmiss_top": 198,
+    "justmiss_live": 0,
+    "def_hist": {},
+    "kdef_hist": {
+     "1": 78
+    },
+    "pool_mult_edge": 228,
+    "flat_pass": 0
+   },
+   "controls": {
+    "CAP1": 0,
+    "NOCARRY": 78,
+    "EG": 0,
+    "THRP1": 78,
+    "THRM1": 198,
+    "NOU": 78
+   }
+  },
+  {
+   "tag": "M4DEEP-h23",
+   "m": 4,
+   "kind": "Zp",
+   "p": 3,
+   "d0": 1,
+   "reads": [
+    [
+     3,
+     2,
+     1
+    ],
+    [
+     2,
+     3,
+     1
+    ],
+    [
+     2,
+     1,
+     1
+    ],
+    [
+     2,
+     1,
+     1
+    ],
+    [
+     2,
+     1,
+     1
+    ]
+   ],
+   "Etot": 48,
+   "G0": 2976,
+   "harness_events": 0,
+   "uchain": {
+    "4": 981,
+    "3": 368,
+    "2": 184,
+    "1": 92
+   },
+   "su": {
+    "4": 1,
+    "3": 0,
+    "2": 0,
+    "1": 1
+   },
+   "census": {
+    "pairs": 2304,
+    "strack": 576,
+    "track": 276,
+    "live": 0,
+    "pred": 78,
+    "mism": 0,
+    "q1nz_offlocus": 0,
+    "chainfed": 0,
+    "nested12": 156,
+    "nested123": 138,
+    "c1eq2": 0,
+    "maxc": [
+     1,
+     1,
+     1
+    ],
+    "edge_top": 78,
+    "justmiss_top": 198,
+    "justmiss_live": 0,
+    "def_hist": {},
+    "kdef_hist": {
+     "1": 78
+    },
+    "pool_mult_edge": 228,
+    "flat_pass": 0
+   },
+   "controls": {
+    "CAP1": 0,
+    "NOCARRY": 78,
+    "EG": 0,
+    "THRP1": 78,
+    "THRM1": 198,
+    "NOU": 78
+   }
+  },
+  {
+   "tag": "M4FLAT-h1",
+   "m": 4,
+   "kind": "Zp",
+   "p": 3,
+   "d0": 1,
+   "reads": [
+    [
+     2,
+     1,
+     1
+    ],
+    [
+     2,
+     3,
+     1
+    ],
+    [
+     1,
+     1,
+     1
+    ],
+    [
+     2,
+     1,
+     1
+    ],
+    [
+     2,
+     1,
+     1
+    ]
+   ],
+   "Etot": 16,
+   "G0": 384,
+   "harness_events": 0,
+   "uchain": {
+    "4": 125,
+    "3": 47,
+    "2": 47,
+    "1": 20
+   },
+   "su": {
+    "4": 1,
+    "3": 0,
+    "2": 1,
+    "1": 0
+   },
+   "census": {
+    "pairs": 256,
+    "strack": 64,
+    "track": 28,
+    "live": 0,
+    "pred": 15,
+    "mism": 0,
+    "q1nz_offlocus": 0,
+    "chainfed": 0,
+    "nested12": 10,
+    "nested123": 10,
+    "c1eq2": 0,
+    "maxc": [
+     1,
+     2,
+     2
+    ],
+    "edge_top": 14,
+    "justmiss_top": 13,
+    "justmiss_live": 0,
+    "def_hist": {},
+    "kdef_hist": {
+     "2": 2,
+     "1": 13
+    },
+    "pool_mult_edge": 25,
+    "flat_pass": 25
+   },
+   "controls": {
+    "CAP1": 2,
+    "NOCARRY": 15,
+    "EG": 0,
+    "THRP1": 14,
+    "THRM1": 13,
+    "NOU": 15
+   }
+  },
+  {
+   "tag": "M4FLAT-h3",
+   "m": 4,
+   "kind": "Zp",
+   "p": 3,
+   "d0": 1,
+   "reads": [
+    [
+     2,
+     1,
+     1
+    ],
+    [
+     2,
+     3,
+     1
+    ],
+    [
+     1,
+     1,
+     1
+    ],
+    [
+     2,
+     3,
+     1
+    ],
+    [
+     2,
+     1,
+     1
+    ]
+   ],
+   "Etot": 16,
+   "G0": 400,
+   "harness_events": 0,
+   "uchain": {
+    "4": 133,
+    "3": 50,
+    "2": 50,
+    "1": 25
+   },
+   "su": {
+    "4": 1,
+    "3": 0,
+    "2": 0,
+    "1": 1
+   },
+   "census": {
+    "pairs": 256,
+    "strack": 64,
+    "track": 28,
+    "live": 0,
+    "pred": 10,
+    "mism": 0,
+    "q1nz_offlocus": 0,
+    "chainfed": 0,
+    "nested12": 19,
+    "nested123": 19,
+    "c1eq2": 0,
+    "maxc": [
+     1,
+     1,
+     1
+    ],
+    "edge_top": 10,
+    "justmiss_top": 18,
+    "justmiss_live": 0,
+    "def_hist": {},
+    "kdef_hist": {
+     "1": 10
+    },
+    "pool_mult_edge": 24,
+    "flat_pass": 22
+   },
+   "controls": {
+    "CAP1": 0,
+    "NOCARRY": 10,
+    "EG": 0,
+    "THRP1": 10,
+    "THRM1": 18,
+    "NOU": 10
+   }
+  },
+  {
+   "tag": "F-NEST13",
+   "m": 3,
+   "kind": "Fpt",
+   "p": 2,
+   "d0": 1,
+   "reads": [
+    [
+     2,
+     1,
+     1
+    ],
+    [
+     2,
+     1,
+     1
+    ],
+    [
+     2,
+     3,
+     1
+    ],
+    [
+     2,
+     1,
+     1
+    ]
+   ],
+   "Etot": 16,
+   "G0": 288,
+   "harness_events": 0,
+   "uchain": {
+    "3": 93,
+    "2": 35,
+    "1": 15
+   },
+   "su": {
+    "3": 1,
+    "2": 1,
+    "1": 1
+   },
+   "census": {
+    "pairs": 256,
+    "strack": 64,
+    "track": 28,
+    "live": 0,
+    "pred": 21,
+    "mism": 0,
+    "q1nz_offlocus": 0,
+    "chainfed": 0,
+    "nested12": 22,
+    "nested123": 0,
+    "c1eq2": 0,
+    "maxc": [
+     1,
+     2
+    ],
+    "edge_top": 18,
+    "justmiss_top": 7,
+    "justmiss_live": 0,
+    "def_hist": {},
+    "kdef_hist": {
+     "2": 6,
+     "1": 15
+    },
+    "pool_mult_edge": 18,
+    "flat_pass": 0
+   },
+   "controls": {
+    "CAP1": 6,
+    "NOCARRY": 21,
+    "EG": 0,
+    "THRP1": 18,
+    "THRM1": 7,
+    "NOU": 21
+   }
+  },
+  {
+   "tag": "F-FMID11",
+   "m": 3,
+   "kind": "Fpt",
+   "p": 2,
+   "d0": 1,
+   "reads": [
+    [
+     2,
+     1,
+     1
+    ],
+    [
+     1,
+     1,
+     1
+    ],
+    [
+     2,
+     1,
+     1
+    ],
+    [
+     2,
+     1,
+     1
+    ]
+   ],
+   "Etot": 8,
+   "G0": 88,
+   "harness_events": 0,
+   "uchain": {
+    "3": 29,
+    "2": 11,
+    "1": 11
+   },
+   "su": {
+    "3": 1,
+    "2": 0,
+    "1": 1
+   },
+   "census": {
+    "pairs": 64,
+    "strack": 16,
+    "track": 6,
+    "live": 0,
+    "pred": 3,
+    "mism": 0,
+    "q1nz_offlocus": 0,
+    "chainfed": 0,
+    "nested12": 5,
+    "nested123": 0,
+    "c1eq2": 0,
+    "maxc": [
+     1,
+     1
+    ],
+    "edge_top": 3,
+    "justmiss_top": 3,
+    "justmiss_live": 0,
+    "def_hist": {},
+    "kdef_hist": {
+     "1": 3
+    },
+    "pool_mult_edge": 5,
+    "flat_pass": 5
+   },
+   "controls": {
+    "CAP1": 0,
+    "NOCARRY": 3,
+    "EG": 0,
+    "THRP1": 3,
+    "THRM1": 3,
+    "NOU": 3
+   }
+  },
+  {
+   "tag": "F-DEEP21",
+   "m": 3,
+   "kind": "Fpt",
+   "p": 2,
+   "d0": 1,
+   "reads": [
+    [
+     3,
+     2,
+     1
+    ],
+    [
+     2,
+     1,
+     1
+    ],
+    [
+     2,
+     1,
+     1
+    ],
+    [
+     2,
+     1,
+     1
+    ]
+   ],
+   "Etot": 24,
+   "G0": 648,
+   "harness_events": 0,
+   "uchain": {
+    "3": 213,
+    "2": 80,
+    "1": 40
+   },
+   "su": {
+    "3": 1,
+    "2": 0,
+    "1": 2
+   },
+   "census": {
+    "pairs": 576,
+    "strack": 144,
+    "track": 66,
+    "live": 0,
+    "pred": 28,
+    "mism": 0,
+    "q1nz_offlocus": 0,
+    "chainfed": 0,
+    "nested12": 53,
+    "nested123": 0,
+    "c1eq2": 10,
+    "maxc": [
+     2,
+     2
+    ],
+    "edge_top": 27,
+    "justmiss_top": 38,
+    "justmiss_live": 0,
+    "def_hist": {},
+    "kdef_hist": {
+     "1": 26,
+     "2": 2
+    },
+    "pool_mult_edge": 43,
+    "flat_pass": 0
+   },
+   "controls": {
+    "CAP1": 3,
+    "NOCARRY": 28,
+    "EG": 0,
+    "THRP1": 27,
+    "THRM1": 38,
+    "NOU": 28
+   }
+  },
+  {
+   "tag": "F-M4h13",
+   "m": 4,
+   "kind": "Fpt",
+   "p": 2,
+   "d0": 1,
+   "reads": [
+    [
+     2,
+     1,
+     1
+    ],
+    [
+     2,
+     1,
+     1
+    ],
+    [
+     2,
+     3,
+     1
+    ],
+    [
+     2,
+     1,
+     1
+    ],
+    [
+     2,
+     1,
+     1
+    ]
+   ],
+   "Etot": 32,
+   "G0": 1120,
+   "harness_events": 0,
+   "uchain": {
+    "4": 373,
+    "3": 140,
+    "2": 70,
+    "1": 35
+   },
+   "su": {
+    "4": 1,
+    "3": 0,
+    "2": 0,
+    "1": 1
+   },
+   "census": {
+    "pairs": 1024,
+    "strack": 256,
+    "track": 120,
+    "live": 0,
+    "pred": 36,
+    "mism": 0,
+    "q1nz_offlocus": 0,
+    "chainfed": 0,
+    "nested12": 74,
+    "nested123": 65,
+    "c1eq2": 0,
+    "maxc": [
+     1,
+     1,
+     1
+    ],
+    "edge_top": 36,
+    "justmiss_top": 84,
+    "justmiss_live": 0,
+    "def_hist": {},
+    "kdef_hist": {
+     "1": 36
+    },
+    "pool_mult_edge": 104,
+    "flat_pass": 0
+   },
+   "controls": {
+    "CAP1": 0,
+    "NOCARRY": 36,
+    "EG": 0,
+    "THRP1": 36,
+    "THRM1": 84,
+    "NOU": 36
+   }
+  }
+ ],
+ "note": "INTEGER law-side strata + E1IH track census only; no Q1, no meas, no PID (design disclosure)",
+ "elapsed": 0.7354655265808105
+}
