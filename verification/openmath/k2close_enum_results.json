@@ -1,0 +1,122 @@
+{
+ "final": true,
+ "violations": [],
+ "n_shapes_main": 43,
+ "n_shapes_annex": 10,
+ "coverage": {
+  "matched": 38,
+  "total": 38,
+  "unmatched": []
+ },
+ "matches": {
+  "GS-02": 28,
+  "GS-08": 9,
+  "GS-16": 1
+ },
+ "rows": 29,
+ "towers": {
+  "SDG2BF": 14,
+  "SDG2BZ": 14,
+  "SDW4G2F": 1
+ },
+ "dup": [
+  {
+   "gid": [
+    "SDW4G2F",
+    [
+     2635,
+     2635
+    ],
+    [
+     4,
+     0,
+     0,
+     0
+    ]
+   ],
+   "shape": "GS-16",
+   "mult": 2,
+   "group_n": 5,
+   "group_parity": "odd",
+   "cell_sign": -1
+  }
+ ],
+ "parity": {
+  "dup_shapes_main": [
+   "GS-24",
+   "GS-29",
+   "GS-36",
+   "GS-17",
+   "GS-19",
+   "GS-27",
+   "GS-09",
+   "GS-10",
+   "GS-16",
+   "GS-23",
+   "GS-11",
+   "GS-18",
+   "GS-07",
+   "GS-38",
+   "GS-41",
+   "GS-43",
+   "GS-34",
+   "GS-40",
+   "GS-42",
+   "GS-31",
+   "GS-35",
+   "GS-39",
+   "GS-25",
+   "GS-28",
+   "GS-37",
+   "GS-21",
+   "GS-30",
+   "GS-33",
+   "GS-20",
+   "GS-26",
+   "GS-32"
+  ],
+  "dup_even": [
+   "GS-29",
+   "GS-36",
+   "GS-19",
+   "GS-09",
+   "GS-10",
+   "GS-23",
+   "GS-11",
+   "GS-43",
+   "GS-34",
+   "GS-40",
+   "GS-42",
+   "GS-31",
+   "GS-35",
+   "GS-28",
+   "GS-37",
+   "GS-21",
+   "GS-30",
+   "GS-20",
+   "GS-32"
+  ],
+  "dup_odd": [
+   "GS-24",
+   "GS-17",
+   "GS-27",
+   "GS-16",
+   "GS-18",
+   "GS-07",
+   "GS-38",
+   "GS-41",
+   "GS-39",
+   "GS-25",
+   "GS-33",
+   "GS-26"
+  ]
+ },
+ "mut": {
+  "MUT-DROP|caught": 38,
+  "MUT-DUP|caught": 38,
+  "MUT-K|caught": 38,
+  "MUT-MERGE|caught": 38,
+  "MUT-SGN|caught": 38
+ },
+ "elapsed": 0.05028414726257324
+}

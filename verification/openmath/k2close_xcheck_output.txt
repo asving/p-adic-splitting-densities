@@ -1,0 +1,7 @@
+SELFTEST inventory: the K2-L3 8-row display re-derived exactly; unique legal order per (K,p); unique exchange class (n=3,u=2,p=0)
+ENUM[A={0,1}]: 278 raw glued systems -> 43 distinct shapes
+ENUM[A={0}]: 130 raw glued systems -> 10 distinct shapes
+WROTE /data/users/asvin/math-and-lean/p-adic-splitting-densities/verification/openmath/k2close_shape_table.md: 43 main + 10 annex shapes
+VERDICT WRITTEN: ALL MATCHED; 38/38; CTRL-MUT 190/190
+WROTE /data/users/asvin/math-and-lean/p-adic-splitting-densities/verification/openmath/k2close_enum_results.json
+FINAL: GREEN (0 violations)

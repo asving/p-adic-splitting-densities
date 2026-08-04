@@ -82,5 +82,17 @@ Shape key notation: one `[d=..| ...]` block per fiber; `d` = the fiber's level-0
 
 ## Coverage verdict
 
-PENDING — appended by `k2close_enum.py --xcheck` (commit 2).
+**GLUE-COVER: 38/38 realized glued groups matched — ALL MATCHED.**  Violations recorded: 0.
+
+Realized census per shape ID (main table):
+
+| ID | realized groups |
+|---|---|
+| GS-02 | 28 |
+| GS-08 | 9 |
+| GS-16 | 1 |
+
+- rows 29 (towers {'SDG2BF': 14, 'SDG2BZ': 14, 'SDW4G2F': 1}); groups 38 — the committed census.
+- realized duplicate-book fiber: ['SDW4G2F', [2635, 2635], [4, 0, 0, 0]] -> shape GS-16 (dup-flagged), mult 2, cell sign -, group n = 5 (odd).
+- CTRL-MUT: 190/190 mutants caught (TEETH CONFIRMED).
 
