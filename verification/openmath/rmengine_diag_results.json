@@ -1,0 +1,253 @@
+{
+ "counts": {
+  "D1_E0": 142,
+  "D2_CONS": 319,
+  "D4_SUM": 319,
+  "D1_E1": 93,
+  "D1_BR": 80,
+  "D1_BRsum": 4
+ },
+ "violations": [],
+ "towers": [
+  {
+   "tower": "RME3A/Zp,p=3",
+   "E5": 16,
+   "degPhi3": 8,
+   "gamma4": 85,
+   "certs": {
+    "g3_is_1": true,
+    "psi3_monic_deg1": true,
+    "Chat3_C1_deg": true,
+    "Chat3_C2_w3": true,
+    "Chat3_C3_read": true,
+    "id1": true,
+    "id2": true,
+    "id3": true
+   },
+   "muw": [
+    "1",
+    "5/4",
+    "29/16"
+   ],
+   "uchain": [
+    85,
+    32,
+    16
+   ],
+   "s_chain": [
+    1,
+    0,
+    0
+   ],
+   "census": {
+    "pairs": 256,
+    "fired": 120,
+    "e1nz": 112,
+    "track": 28,
+    "q1nz": 24,
+    "meas": 6,
+    "pred": 6,
+    "mism": 0,
+    "d_direct": 0,
+    "d_c2pos": 6,
+    "d_c1pos": 3
+   },
+   "mism_samples": [],
+   "pops": 121,
+   "maxj": [
+    2,
+    2,
+    2
+   ],
+   "n_inputs": 86,
+   "zh_checked": 86,
+   "zh_mut_diff": 46
+  },
+  {
+   "tower": "RME3A/Fpt,p=2",
+   "E5": 16,
+   "degPhi3": 8,
+   "gamma4": 85,
+   "certs": {
+    "g3_is_1": true,
+    "psi3_monic_deg1": true,
+    "Chat3_C1_deg": true,
+    "Chat3_C2_w3": true,
+    "Chat3_C3_read": true,
+    "id1": true,
+    "id2": true,
+    "id3": true
+   },
+   "muw": [
+    "1",
+    "5/4",
+    "29/16"
+   ],
+   "uchain": [
+    85,
+    32,
+    16
+   ],
+   "s_chain": [
+    1,
+    0,
+    0
+   ],
+   "census": {
+    "pairs": 256,
+    "fired": 120,
+    "e1nz": 112,
+    "track": 28,
+    "q1nz": 24,
+    "meas": 6,
+    "pred": 6,
+    "mism": 0,
+    "d_direct": 0,
+    "d_c2pos": 6,
+    "d_c1pos": 3
+   },
+   "mism_samples": [],
+   "pops": 115,
+   "maxj": [
+    2,
+    2,
+    2
+   ],
+   "n_inputs": 80,
+   "zh_checked": 80,
+   "zh_mut_diff": 0
+  },
+  {
+   "tower": "RME3B/Zp,p=3",
+   "E5": 16,
+   "degPhi3": 8,
+   "gamma4": 47,
+   "certs": {
+    "g3_is_1": true,
+    "psi3_monic_deg1": true,
+    "Chat3_C1_deg": true,
+    "Chat3_C2_w3": true,
+    "Chat3_C3_read": true,
+    "id1": true,
+    "id2": true,
+    "id3": true
+   },
+   "muw": [
+    "1",
+    "5/4",
+    "29/16"
+   ],
+   "uchain": [
+    47,
+    12,
+    6
+   ],
+   "s_chain": [
+    1,
+    0,
+    0
+   ],
+   "census": {
+    "pairs": 256,
+    "fired": 112,
+    "e1nz": 112,
+    "track": 112,
+    "q1nz": 24,
+    "meas": 24,
+    "pred": 24,
+    "mism": 0,
+    "d_direct": 0,
+    "d_c2pos": 24,
+    "d_c1pos": 12
+   },
+   "mism_samples": [],
+   "pops": 229,
+   "maxj": [
+    2,
+    3,
+    2
+   ],
+   "n_inputs": 95,
+   "zh_checked": 95,
+   "zh_mut_diff": 42
+  },
+  {
+   "tower": "RME3C/Zp,p=3",
+   "E5": 8,
+   "degPhi3": 16,
+   "gamma4": 43,
+   "certs": {
+    "g3_is_1": true,
+    "psi3_monic_deg1": true,
+    "Chat3_C1_deg": true,
+    "Chat3_C2_w3": true,
+    "Chat3_C3_read": true,
+    "id1": true,
+    "id2": true,
+    "id3": true
+   },
+   "muw": [
+    "1",
+    "3/2",
+    "19/8"
+   ],
+   "uchain": [
+    43,
+    11,
+    3
+   ],
+   "s_chain": [
+    1,
+    1,
+    1
+   ],
+   "census": {
+    "pairs": 64,
+    "fired": 28,
+    "e1nz": 28,
+    "track": 28,
+    "q1nz": 21,
+    "meas": 21,
+    "pred": 21,
+    "mism": 0,
+    "d_direct": 0,
+    "d_c2pos": 21,
+    "d_c1pos": 18
+   },
+   "mism_samples": [],
+   "pops": 205,
+   "maxj": [
+    2,
+    2,
+    3
+   ],
+   "n_inputs": 58,
+   "zh_checked": 58,
+   "zh_mut_diff": 27
+  },
+  {
+   "tower": "D6a-RM2A-rerun",
+   "census": {
+    "pairs": 64,
+    "fired": 28,
+    "II1": 10,
+    "II2": 6,
+    "II3": 12,
+    "e1nz": 24,
+    "q1nz": 4,
+    "dcx_meas": 1
+   },
+   "n_inputs": 20,
+   "engine_viol": 0,
+   "census_match": true
+  },
+  {
+   "tower": "D6b-EX1-v2-rerun",
+   "live": 220,
+   "meas": 220,
+   "mism": 0,
+   "stored_ok": true
+  }
+ ],
+ "elapsed": 0.624765157699585
+}

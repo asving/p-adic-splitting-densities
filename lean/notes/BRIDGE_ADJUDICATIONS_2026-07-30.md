@@ -8780,3 +8780,64 @@ compose design input is now sharper: the carry is ⌊pool/e₀⌋ at full
 depth, threading the SAME promotion edge as the termination measure.
 Unit files: prereg+verdicts note, two runners, two design JSONs, two
 output/results pairs, this append ONLY (scoped `git commit --only`).
+
+## RMENGINE COMPOSED (THE CLOSURE PROGRAM's central unit, wave-21 Q1) — 2026-08-08 (wallclock 2026-08-04): the generic (RM-m) engine PROVED on the T-scope at attempt grade — all four box clauses, every m ≥ 1, by the depth calculus; the level-m uniform carry law stated generically (conjecture-grade); (W-MULT-DCX-m) STANDS as a displayed conditional; first level-3 engine data 0-violation
+
+[Anchor: appended after "DCX3 SHARP-LOCUS SEALED CONFIRMATION" (tail
+"…this append ONLY (scoped `git commit --only`)."). Unit: the GENERIC
+(RM-m) ENGINE COMPOSE per ROOT §44.(ii) Q1, consuming the RM-2 probe
+(ced7dbb) + the DCX3 v2 seal (block above) as chartered.]
+
+**The note:** `lean/notes/openmath/RMENGINE_2026-08-08.md` — attempt
+grade, acceptance counter 0/2, hostile arc OWED (S11 charges on record).
+**HEADLINE:** the [ILN]† S4.6 (RM-m) box — the one resisting leg of the
+accepted all-orders theorem — is PROVED level-generically for every
+m ≥ 1 ON THE T-SCOPE (e₀ ≥ 2 ∨ d₀ = 1) ∧ (e_i ≥ 2, 1 ≤ i ≤ m−1): all
+four clauses (weight-R, weight-Q, R-read = z_m^{ε′}·v·τ_m, ε′-carry),
+canonical division, tree termination. Architecture (the data-dictated
+depth calculus): the cell tree (S2) + the LINE QUANTA (S3: promotions
+raise the level-m line by EXACTLY h_{i+1}·∏e — so the read skeleton is
+carry-depth 0 = the m = 1 mechanism run once per level) + the 𝔷-MULT
+kernel (L-ZMULT: the formal read monomial is multiplicative up to the
+single top carry z_m^{ε̃}; every internal carry self-cures between its
+t-leg and ε-leg) + the generic termination measure (L-MU: the (A_i)/(B_i)
+interval family; the sealed RM-2 measure is an instance point). The read
+transparency across Ĉ-insertions (the box's resistance (ii)) closes via
+EPS-MULT + ε_i(β_k)τ_k = ψ_{i,k} + ψ_i(z_{i+1}) = 0 — the
+ε-carry/canonical-lift cancellation at every level and every k. At m = 1
+the theorem reproduces the (RM-1) scope of record exactly (independent
+re-derivation; DEV-1 not consumed, DIGIT-SPLIT is). **OPEN, fenced,
+priced:** the flat corners {∃i ≥ 1: e_i = 1} (beyond m = 2 ∧ e₁ = 1 ∧
+d₀ = 1, which the designed-in lex tiebreak L-LEX closes) ∪ {e₀ = 1 ∧
+d₀ ≥ 2} — termination + clauses open there, instance-true where probed
+(RM2E inside the 405/405; RM2F untested-not-passed, on record).
+**The second-round clause:** LAW-DCX-(m+1) stated at every m — the
+nested-floor form u_m = γ_{m+1}, u_{l−1} = (u_l − s_l(u_l)γ_l)/e_{l−1},
+pool_l = (s_l+s_l′) + s_l(u_l) + c_{l−1}, c_l = ⌊pool_l/e_{l−1}⌋,
+DCX_{m+1} = TRACK ∧ (s_m+s_m′) + s_m(u_m) + c_{m−1} ≥ 2e_{m−1} —
+specializing on the nose to [IL3]†'s PROVED m = 1 sharp form and to THE
+UNIFORM CARRY LAW v2 at m = 2 (consumed as SEALED-CONFIRMED CONJECTURE,
+grade unchanged); carry cap c_l ≤ 2 and the floor SHAPE derived
+generically (L-CAP + the promotion calculus), the residue non-vanishing
+NOT derived — so **(W-MULT-DCX-m) STANDS** (S7.2 conditional display, not
+a corollary). **CONSEQUENCE (COR-A):** ITERLAWN S7 rows 5/6/8 upgrade on
+T-class(n) = (e₀ ≥ 2 ∨ d₀ = 1) ∧ (e_i ≥ 2, 1 ≤ i ≤ n−2): (ITER-LAW-n)
+off DCX-(n) UNCONDITIONAL there modulo the accepted packages — display
+upgrades ride the acceptance fold, NOT applied now. **Post-seal
+diagnostic (rmengine_diag.py + output + results JSON, first run, 0
+violations):** D1 the FIRST (RM-3) data ever — 319 level-3 engine calls,
+all four clauses exact, ℤ₃ + F₂[[t]]; D2 tree == division 319/319,
+interval-rule Fraction weights strict on all 670 edges; D3 line quanta
+exact (leaf w₃ = line; Δline = e₂h₁/h₂ on promotions; 0 on
+correction-L); D4 the 𝔷-kernel == harness reads == box prediction, ε₂
+tooth 46/42/27; D5 the FIRST m = 3 carry-law data: LAW-DCX-4 == measured
+EXACTLY (51/51 live, 0/896 mismatch), every live row chain-fed (c₂ > 0
+on all, double-nested c₁ > 0 on 33) — conjecture-grade instance
+evidence; D6 committed-artifact consistency: RM2A census == stored JSON
+(8 keys + n_inputs), EX1 v2 re-implementation live/meas/mism =
+220/220/0 == stored. **Next:** the hostile arc on the RMENGINE text
+(2-clean model-diverse; S11 charges); then the acceptance fold sweeps
+ITERLAWN S7/ROOT §44 Q1; the (W-MULT-DCX) second-round unit and the
+flat-corner termination unit inherit S6.2/S4.2 as design input. Unit
+files: the note, rmengine_diag.py + output + results JSON, this append
+ONLY (scoped `git commit --only`).

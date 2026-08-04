@@ -1,0 +1,16 @@
+== rmengine_diag: POST-SEAL diagnostic for RMENGINE (S9) ==
+-- RME3A/Zp,p=3: E5=16 fired=120 inputs=86 track=28 meas/pred=6/6 mism=0 pops=121 maxj=[2, 2, 2] zh=86 (0.1s)
+-- RME3A/Fpt,p=2: E5=16 fired=120 inputs=80 track=28 meas/pred=6/6 mism=0 pops=115 maxj=[2, 2, 2] zh=80 (0.2s)
+-- RME3B/Zp,p=3: E5=16 fired=112 inputs=95 track=112 meas/pred=24/24 mism=0 pops=229 maxj=[2, 3, 2] zh=95 (0.1s)
+-- RME3C/Zp,p=3: E5=8 fired=28 inputs=58 track=28 meas/pred=21/21 mism=0 pops=205 maxj=[2, 2, 3] zh=58 (0.1s)
+-- D6a RM2A/Zp3 rerun: census_match=True engine/tree viol=0 (0.0s)
+-- D6b EX1/Zp3 v2 rerun: live=220 meas=220 mism=0 stored_match=True (0.1s)
+
+D1 VERDICT (four box clauses at m=3, predicted-0): GREEN [0 violations]
+D2 VERDICT (CONS + mu strict descent, predicted-0): GREEN [0 violations]
+D3 VERDICT (line calculus exact, predicted-0): GREEN [0 violations]
+D4 VERDICT (zh-kernel == harness reads == box pred, predicted-0): GREEN [0 violations]
+D5 CENSUS (LAW-DCX-4 vs measured, census-grade): mismatches=0 over 896 pairs
+D6 VERDICT (RM2A + DCX3-v2 artifact consistency, predicted-0): GREEN [0 violations]
+counts: {'D1_BR': 80, 'D1_BRsum': 4, 'D1_E0': 142, 'D1_E1': 93, 'D2_CONS': 319, 'D4_SUM': 319}
+total violations: 0; elapsed 0.6s
