@@ -37,7 +37,11 @@ composer unit of the W-MULT-DCX arc, the (EMPTY) leg).
 
 **Grade (header summary) [E-r1 2026-08-08 (wallclock 2026-08-04),
 amended after hostile pass 1].**  E-L1–E-L8 and the assembled theorem
-E-THM — **PROVED at attempt grade, hostile-pass record 0/1 CLEAN**: pass
+E-THM — **PROVED at attempt grade, hostile-pass record 1/2 CLEAN**
+[SD-r1 cross-file header cure, 2026-08-08 campaign (wallclock
+2026-08-04), flagged by SURVDISJ-PE1 N-4: this header still read the
+stale "0/1 CLEAN" after the E-r2 tail record logged PE2 CLEAN at
+commit 7314525; the counter is cured here, nothing else touched]: pass
 1 (EMPTY-PE1, fresh-context Fable, report
 `lean/notes/openmath/EMPTY_passPE1_report.md`) returned NOT-CLEAN — 1
 CRITICAL (the S7 assembly as originally printed was instance-false; S7

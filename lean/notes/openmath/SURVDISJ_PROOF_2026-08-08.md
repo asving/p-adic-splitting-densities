@@ -1,5 +1,23 @@
 # (SURV-DISJ) — the survival disjunction: PROVED at attempt grade on the g₀ = 1 ∧ d₀ = 1 locus via the E-weighted mass ledger ((NEP) discharged from hypothesis to THEOREM there — the cascade slot always survives); the g₀ ≥ 2 regime boxed as the signed-multiplicity-one law (SURV-K2) with its full proved perimeter; the d₀ ≥ 2 Φ₀Y-corner boxed as (SD-YJ)
 
+    [SD-r1 REPAIR BRACKET, 2026-08-08 campaign (wallclock 2026-08-04).
+    Hostile pass 1 (SURVDISJ-PE1, fresh-context Fable, on 4f7c3ff;
+    report SURVDISJ_passPE1_report.md) — verdict GAPS-ONLY: 0 critical,
+    1 gap, 4 notes.  PE1 re-derived SD-L2, the pool telescope, (★),
+    SD-L1 (all three legs), SD-L3's consumption, SD-THM-A(i)–(v), and
+    SD-L5/L6/L7 EXACT as displayed; re-ran both machine legs read-only
+    (identical mod timings, all md5 pins matching, the two-commit seal
+    verified genuine); hand-re-derived three instrument rows.  The one
+    gap: SD-L4(ii)/(iii) displayed the "w₀ exactly ŵ / w₀ ≥ ŵ + 1"
+    clauses without the principal-d-cell pin (false for t ≥ 1 seeds at
+    g₀ ≥ 2) — repaired in place at S3, claims row + F-A rippled; both
+    consumers verified undamaged by PE1 (SD-THM-A's locus pins the
+    principal seed; SD-L5 consumes only the fork-counting).  The four
+    notes cured at dated [SD-r1] brackets (one cross-file, in
+    EMPTY_PROOF's header).  Statements of SD-THM-A and
+    SD-L1/L2/L3/L5/L6/L7 byte-unchanged.  Full disposition: the REPAIR
+    RECORD at the tail.  Arc counter: 0/1 CLEAN (GAPS-ONLY ≠ CLEAN).]
+
 Object: the boxed conjecture (SURV-DISJ) of SURV_PROOF_2026-08-08.md S7
 (at 51a8ac9), the sharp falsifiable sub-form of (SURV-RES-(m+1)):
 
@@ -42,9 +60,11 @@ unit of the W-MULT-DCX arc, the (SURV-DISJ) leg, on the two-commit
 instrument seal 61e9e36/00e19b4).
 
 **Grade (header summary) and THE GRADE-CAP SENTENCE.**  SD-L1–SD-L7
-and SD-THM-A — PROVED at attempt grade (composed this unit; 0 hostile
-passes yet).  **Grade cap carried from consumption [dagger
-discipline]: this note consumes WMULTDCX_2026-08-08.md† (W-D1, W-D2,
+and SD-THM-A — PROVED at attempt grade (composed this unit;
+hostile-pass record 0/1 CLEAN [SD-r1]: round 1 = SURVDISJ-PE1,
+GAPS-ONLY — 0 critical, 1 gap (the SD-L4(ii)/(iii) pin display,
+repaired in place), 4 notes (cured); GAPS-ONLY ≠ CLEAN).
+**Grade cap carried from consumption [dagger discipline]: this note consumes WMULTDCX_2026-08-08.md† (W-D1, W-D2,
 W-D3, W-D4, W-D5, W-D7) at ATTEMPT grade — that arc stands at 0/2
 CLEAN, not accepted — and SURV_PROOF_2026-08-08.md† (S-L0, S-L1,
 S-L3, S-L4(i)(ii), the S-L4(iii) uniqueness half, S-THM) at ATTEMPT
@@ -238,12 +258,35 @@ verbatim (W-D1 + [RMG] S2.2 b-unchanged — the E-L6 "why b stays
 monomial" leg), and the stage-2 seeding split of b₀·c_D has:
 (i) Φ₀Y-child IDENTICALLY ZERO at ANY d₀ (E-L6: deg b̂₀ = 0 forces
 deg(b̂₀ĉ_D) = deg ĉ_D < d₀);
-(ii) L-child never absent, with w₀ exactly ŵ and residue
-b̄₀c̄_D ≠ 0 (L-NORM(a) — the S-L1 content);
-(iii) π-junk X-child, IF nonzero, with w₀ ≥ ŵ + 1 (L-NORM(b)) and
-the SAME exponent vector as the L-child.
+(ii) [c_D = the PRINCIPAL d-cell (w₀(c_D) = u₀) — SD-r1 pin;
+automatic at (H3) ∧ g₀ = 1, where the principal cell is the UNIQUE
+d-cell (W-D2(iii))] L-child never absent, with w₀ exactly ŵ and
+residue b̄₀c̄_D ≠ 0 (L-NORM(a) — the S-L1 content);
+(iii) [c_D = the PRINCIPAL d-cell — the same SD-r1 pin] π-junk
+X-child, IF nonzero, with w₀ ≥ ŵ + 1 (L-NORM(b)) and the SAME
+exponent vector as the L-child.
 *Proof.*  All three are the cited displays applied to b = b₀, c = c_D.
-∎  [Machine: DRV-SEEDY — 1,355 b₀-seeding splits recomputed directly
+∎
+
+    [SD-r1 pin repair (PE1 finding G-1), 2026-08-08 campaign
+    (wallclock 2026-08-04).  Clauses (ii)/(iii) as originally
+    displayed carried NO seed pin and are FALSE for t ≥ 1 seeds at
+    g₀ ≥ 2: there the d-cell coefficient has w₀ = u₀ − t·h₀
+    (W-D2(iv)), so the L-child sits at w₀ = ŵ − t·h₀ ≠ ŵ and the
+    X-child bound reads off the wrong base.  The pin now displayed —
+    c_D = the principal d-cell — is exactly where PE1 re-derived the
+    clauses TRUE; it is automatic on the SD-THM-A locus, where
+    (H3) ∧ g₀ = 1 makes the principal cell the unique d-cell.
+    Clause (i) is correct at ANY seed and any d₀/g₀ (E-L6 needs only
+    deg b̂₀ = 0) — and that any-seed clause is what DRV-SEEDY's
+    "every d-cell on every live row" bracket checks; the pinned
+    clauses (ii)/(iii) are exercised only at principal seeds.
+    Consumers verified undamaged (PE1): SD-THM-A consumes (ii)/(iii)
+    only at g₀ = 1 ∧ d₀ = 1, where the seed IS the unique principal
+    cell; SD-L5 consumes only the fork-counting, never the ŵ
+    clauses.  No lemma-body mathematics moved.]
+
+[Machine: DRV-SEEDY — 1,355 b₀-seeding splits recomputed directly
 (every d-cell on every live row), Y-child zero on ALL, 0 violations.
 Measured, beyond the proof's needs: the X-child was ALSO zero on all
 1,355 (counter seedx_zero; seedx_nonzero = 0) — instances realize
@@ -305,7 +348,14 @@ the union roster, the cascade slot's population is exactly {Ĉ} —
 zero X-mates observed (the sharper instance fact, matching
 seedx_zero 1,355/1,355 and reproducing the instrument's P-A
 693/693); any companion outside the theorem's X-mate shape would
-have been a violation; 0 violations.]
+have been a violation; 0 violations.  SD-r1 disclosure (PE1 N-3):
+this composer family conditions on the row's unique cascade record
+having been found (`casc_rec is not None`) — a hypothetical
+cascade-missing g₀ = 1 ∧ (STK) row would be silently skipped by THIS
+family.  Backstopped twice: the instrument's SDI-SURV fires
+UNCONDITIONALLY on allg1 ∧ stk ∧ len(casc) ≠ 1 (0 violations), and
+the count arithmetic 693 = 979 − 286 g₀ ≥ 2 rows shows no row was in
+fact skipped.]
 
 **Scope remarks.**  (a) The d₀ = 1 pin covers the ENTIRE probed
 g₀ = 1 class: no battery has ever carried a g₀ = 1 ∧ d₀ ≥ 2 tower
@@ -424,9 +474,10 @@ That is the box.
     │   exactly one unpaired path (or one +1/−1 pair of distinct         │
     │   classes).  CONSTRAINTS any candidate must reproduce: the exact   │
     │   survivor vector census {(+1)×85, (−1)×115, (−1,0)×5, (0,+1)×4,   │
-    │   (−1,+1)×2}; the exceptionless complementarity (no non-CROSS      │
-    │   killed group EVER carries a ±1 class — 0 instances in 979        │
-    │   rows); M-B1 = 39 killed groups with ODD count (parity is NOT     │
+    │   (−1,+1)×2}; the CROSS confinement (cross-class field relations   │
+    │   kill only OFF-bottom: all 9 CROSS kills sit off-bottom, none at  │
+    │   any bottom or survivor line in 979 rows) [reworded at SD-r1,     │
+    │   PE1 N-1]; M-B1 = 39 killed groups with ODD count (parity is NOT  │
     │   the mechanism); P-C refuted (103/200 kill rows have kills AT     │
     │   β_min — valuation separation protects nothing).                  │
     │   Ledger status at g₀ ≥ 2 (why SD-L1 does not close this): the     │
@@ -459,6 +510,20 @@ That is the box.
     │ g₀ = 1 leg of (SURV-DISJ) is class-complete.                       │
     └────────────────────────────────────────────────────────────────────┘
 
+    [SD-r1 (PE1 N-1), 2026-08-08 campaign (wallclock 2026-08-04): the
+    (SURV-K2) box's constraint census originally displayed "the
+    exceptionless complementarity (no non-CROSS killed group EVER
+    carries a ±1 class — 0 instances in 979 rows)" as an empirical
+    constraint.  Under the instrument's own genre taxonomy that is a
+    TAUTOLOGY, not a datum: a killed group carrying a ±1 class has a
+    signed count ≢ 0 (mod p) for EVERY p, hence is classified CROSS
+    by construction — any candidate pairing mechanism reproduces the
+    0-count for free.  The box now displays the genuinely empirical
+    neighbor in its place: cross-class field relations kill only
+    off-bottom (all 9 CROSS kills; none at any bottom or survivor
+    line, 979/979 — the content the box's weaker-form paragraph
+    already carried).  No proof step consumed the removed framing.]
+
 Neither box is claimed minimal: for (SURV)(i) a bare "some slot
 survives" suffices (SURV_PROOF S7); (SURV-K2) is displayed in the
 protected-vector form because it is exactly what every instance
@@ -489,7 +554,8 @@ verbatim (979 live rows: 286 sealed + 330 EQ + 212 PX + 151 SD).
     DRV-NEPS   693/693 g₀ = 1 ∧ d₀ = 1 ∧ (STK) rows: cascade-slot
                population = {Ĉ} (no companion at all — stronger than
                the theorem's X-mate allowance; = the instrument's
-               P-A).
+               P-A).  [SD-r1: conditions on the cascade record being
+               found; backstopped — see the S4 bracket, PE1 N-3.]
     DRV-RIG    SD-L5 on all 979 rows: ≤ 1 correction-free junk-free
                terminal per seed, pairwise distinct slots;
                CTRL-RIGSEEDS 123.
@@ -522,7 +588,9 @@ are measured instance evidence, never proof steps.
 ## S8. The honest consequence display
 
 * **(SURV-DISJ)**: PROVED at attempt grade on
-  (H1)–(H3) ∧ g₀ = 1 ∧ d₀ = 1 ∧ (STK) ∧ (c_{m−1} ≥ k) — cascade leg,
+  TRACK ∧ (H1)–(H3) ∧ g₀ = 1 ∧ d₀ = 1 ∧ (STK) ∧ (c_{m−1} ≥ k)
+  [SD-r1: TRACK restored to this display and the LAW-DCX one, PE1
+  N-2 — SD-THM-A's head always carried it] — cascade leg,
   unconditional there (SD-THM-A(iv)).  OPEN at g₀ ≥ 2 ((SURV-K2))
   and at g₀ = 1 ∧ d₀ ≥ 2 ((SD-YJ)).  Class-wide: still open, now
   with the open set exactly = the two boxes.
@@ -534,7 +602,8 @@ are measured instance evidence, never proof steps.
   first closure not conditioned on (NEP).  OPEN beyond (the boxes;
   and (RW) itself at m ≥ 3).
 * **LAW-DCX-(m+1) ON THE PINNED CLASS**: on
-  (H1)–(H3) ∧ g₀ = 1 ∧ d₀ = 1 ∧ (STK) ∧ (RW), for every m ≥ 2:
+  TRACK ∧ (H1)–(H3) ∧ g₀ = 1 ∧ d₀ = 1 ∧ (STK) ∧ (RW) [SD-r1: TRACK
+  restored, PE1 N-2], for every m ≥ 2:
   c_{m−1} ≥ k ⟹ Q¹ ≠ 0 (this note) and c_{m−1} < k ⟹ Q¹ = 0
   (E-THM†: zero two-exit paths; with W-D4† framing the deficit) —
   **the law holds on that class at the capped attempt grade**: the
@@ -544,7 +613,7 @@ are measured instance evidence, never proof steps.
   (1) the W arc's acceptance (WMULTDCX 0/2 CLEAN — the binding cap on
   every lemma here); (2) the EMPTY arc's acceptance (1/2 CLEAN);
   (3) the SURV_PROOF arc's acceptance (0 CLEAN passes); (4) THIS
-  note's own hostile arc (0 passes); (5) the (H2) on-TRACK discharge
+  note's own hostile arc (0/1 CLEAN after PE1 [SD-r1]); (5) the (H2) on-TRACK discharge
   rider (ITERLAWN S4.7 erratum chain, as at WMULTDCX F1); (6) the
   (RW) window at m ≥ 3 (instance-clean everywhere, unproved); (7)
   (STK) as an explicit pin (not derived from TRACK); (8) the two S6
@@ -559,7 +628,7 @@ are measured instance evidence, never proof steps.
 | SD-L1 | correction deficit ≥ E_{i+1} − E_i + 1 − Y_c at g₀ = 1; = 0 only at (e_i = 1 ∧ Y ∧ full dump) | PROVED (attempt; (H2)–(H3), g₀ = 1) | [RMG] S2.2 (a_{d,l} ≤ P_l − 1) |
 | (★) | cascade-slot companions: Σ defc = Y₂ ∈ {0,1} | PROVED (attempt; + (STK), clause) | SD-L2, W-D2(iii)†, W-D7†, S-L1† |
 | SD-L3 | no Φ₀Y-edge anywhere at d₀ = 1 | consumed VERBATIM (accepted) | L-NORM(c) [RMG] |
-| SD-L4 | b₀-seeding: Y-child zero any d₀; X-mate has same slot, w₀ ≥ ŵ+1 | PROVED (attempt) | E-L6†, W-D1†, L-NORM(a)(b) |
+| SD-L4 | b₀-seeding: (i) Y-child zero any d₀ ANY seed; (ii)/(iii) AT THE PRINCIPAL d-cell [SD-r1 pin]: L-child w₀ = ŵ, X-mate same slot w₀ ≥ ŵ+1 | PROVED (attempt) | E-L6†, W-D1†, W-D2(iii)/(iv)†, L-NORM(a)(b) |
 | SD-THM-A | g₀=1 ∧ d₀=1 ∧ (STK) ∧ clause: cascade slot survives at β̂; (NEP) holds; (SURV-DISJ) holds; +(RW): Q¹ ≠ 0 | PROVED (attempt, capped) | SD-L1–L4, S-L0†, S-L4(i)(ii)†, S-L4(iii)-uniq†, S-THM(c)†, L-CELL(i) |
 | SD-L5 | correction-free junk-free rigidity: ≤1 per seed, distinct slots, any g₀ | PROVED (attempt; (H1)–(H3)) | W-D2(iv)†, W-D3†, S2.2 determinism |
 | SD-L6 | group survives at line ⟺ signed residue sum ≠ 0 in K₀ | PROVED (attempt; (H1)–(H2)) | S-L4(i)†, S-L0†, L-NORM(a) |
@@ -591,8 +660,10 @@ the instrument's seven + survdisj_instrument.py
 **Fences.**
 F-A. Pins are per-lemma and displayed: SD-THM-A consumes
      (H1)–(H3) ∧ g₀ = 1 ∧ d₀ = 1 ∧ (STK) ∧ clause (+ (RW) for (v)
-     only); SD-L5/L6/L7 are g₀-free on (H1)–(H3)/(H1)–(H2); nothing
-     is claimed at interior g ≥ 2.
+     only); SD-L4(i) is any-seed/any-d₀, while SD-L4(ii)/(iii) carry
+     the principal-d-cell pin [SD-r1, PE1 G-1 — automatic on the
+     SD-THM-A locus]; SD-L5/L6/L7 are g₀-free on (H1)–(H3)/(H1)–(H2);
+     nothing is claimed at interior g ≥ 2.
 F-B. Machine coverage: m ∈ {3, 4}; the displayed proofs are uniform
      in m ≥ 2; d₀ ≥ 2 probed only at g₀ = 2.
 F-C. CTRL-DEFNEG silent: the (SURV-K2) box's g₀ ≥ 2 deficit-headroom
@@ -602,7 +673,10 @@ F-D. No claim that X-mates exist (never observed in 1,355 splits);
      proving their absence (that would need the digit-exactness of
      canonical d-cell coefficients, deliberately not consumed).
 F-E. Grade cap: the header sentence; this note's own hostile-pass
-     record: 0 passes — the arc opens with the owed round 1.
+     record [SD-r1]: 0/1 CLEAN — round 1 (SURVDISJ-PE1) GAPS-ONLY
+     (0 critical / 1 gap / 4 notes), repaired in this revision;
+     round 2 owed (PE-SD2 fresh-context Fable, or the model-diverse
+     Codex leg post-reset).
 F-F. Nothing here upgrades LAW-DCX-(m+1) class-wide, touches
      (SURV)(ii)/(EMPTY), or narrows the WMULTDCX S9 / SURV_PROOF S7
      boxes beyond the displayed closures; (SURV-RES-(m+1))'s weaker
@@ -610,3 +684,79 @@ F-F. Nothing here upgrades LAW-DCX-(m+1) class-wide, touches
 F-G. The DRV counters are instance evidence, never proof steps; the
      P-M1 vector census cited in S5/S6 is the INSTRUMENT's
      (committed artifacts), quoted as constraint, not re-derived.
+
+---
+
+## REPAIR RECORD [SD-r1, 2026-08-08 campaign (wallclock 2026-08-04)]
+
+**Round 1 verdict (SURVDISJ-PE1, fresh-context Fable, on 4f7c3ff; full
+report `lean/notes/openmath/SURVDISJ_passPE1_report.md`, committed
+with this revision): GAPS-ONLY — 0 CRITICAL, 1 JUSTIFICATION GAP, 4
+NOTES.**  The sound core is PE1's own re-derivation, independent and
+complete: SD-L2 re-derived from LED_l against the [RMG] S2.2 child
+inventory term by term (every child type accounted, no edge type
+missing); the pool telescope re-checked bracket by bracket; (★)
+re-derived including the unique-principal-seed step; SD-L1 all three
+legs (bound, nonnegativity, equality analysis) plus the exact map of
+where g₀ = 1 enters; SD-L3's consumption checked verbatim against the
+accepted L-NORM(c) display; SD-THM-A(i)–(v) re-derived exact,
+including the two charged subtleties (NO illegal consumption of the
+rescoped S-L4(iii) junk-free-forcing half anywhere in the note; the
+(NEP)-discharge scope exactly the pinned locus); SD-L5's mod-g₀
+forcing, SD-L6's biconditional, and SD-L7's characteristic-free
+distinctness all re-derived; both machine legs re-run read-only
+IDENTICAL mod timings with every md5 pin matching and the two-commit
+seal (61e9e36 predictions sealed before the 00e19b4 verdict) verified
+GENUINE; and three instrument rows re-derived BY HAND — the K1 row
+W3DEEPF[663,667] (incl. the ledger cross-check M(ĵ) − M = Σ defc = 3
+EXACT), the K2 char-blind p = 5 row W3G2P5[459,459], and the
+dual-kill row SDG2BF[1479,1479] — all agreeing with the artifacts
+cell for cell.
+
+Per-finding disposition:
+
+* **G-1 (GAP — SD-L4(ii)/(iii) missing the principal-d-cell pin).**
+  REPAIRED at S3: the pin [c_D = the PRINCIPAL d-cell (w₀(c_D) = u₀)]
+  is now displayed on both clauses, with the dated bracket recording
+  why the unpinned clauses are FALSE for t ≥ 1 seeds at g₀ ≥ 2
+  (w₀ = u₀ − t·h₀, W-D2(iv)) and that clause (i) stays any-seed (the
+  DRV-SEEDY quantifier un-blurred).  Rippled: the S9 claims row and
+  F-A now display the pin.  Consumers verified undamaged (PE1
+  checked both consumption sites): SD-THM-A consumes (ii)/(iii) only
+  at g₀ = 1 ∧ d₀ = 1 where the seed IS the unique principal cell;
+  SD-L5 consumes only the fork-counting.  No lemma-body mathematics
+  moved; SD-THM-A and SD-L1/L2/L3/L5/L6/L7 statements byte-unchanged.
+* **N-1 (NOTE — tautological "complementarity" constraint in the
+  (SURV-K2) box).**  CURED: the box's constraint census now displays
+  the non-tautological content (cross-class field relations kill
+  only off-bottom: all 9 CROSS kills off-bottom, none at any bottom
+  or survivor line in 979 rows); the dated bracket below the box
+  records the removed framing and why it was definitionally forced
+  (a killed ±1-class group is CROSS by the genre taxonomy).  No
+  proof step consumed the removed framing.
+* **N-2 (NOTE — TRACK elided in two S8 bullets).**  CURED: TRACK
+  restored to the S8 (SURV-DISJ) bullet and the S8 LAW-DCX bullet;
+  SD-THM-A's head and the header verdict always carried it.
+* **N-3 (NOTE — DRV-NEPS conditioning).**  DISCLOSED at the S4
+  machine bracket (+ pointer at the S7 family table): the composer
+  family conditions on the cascade record being found; backstopped
+  by the instrument's unconditional SDI-SURV (0 violations) and by
+  693 = 979 − 286 (no row in fact skipped).
+* **N-4 (NOTE — cross-file: stale EMPTY_PROOF header).**  CURED
+  CROSS-FILE with a dated [SD-r1 cross-file] bracket in
+  EMPTY_PROOF_2026-08-08.md's header: its hostile-pass counter now
+  reads 1/2 CLEAN (PE2 CLEAN, commit 7314525, per its own E-r2
+  record), replacing the stale "0/1 CLEAN".  THIS note's "1/2 CLEAN"
+  citation was already correct and did not move.
+
+**Honest status after SD-r1.**  Arc counter: 0/1 CLEAN (GAPS-ONLY ≠
+CLEAN).  The gap was a hypothesis-display repair with no lemma-body
+mathematics at stake (PE1's own classification), and the repair
+follows PE1's analysis — verifier and repairer therefore coincide for
+the new pin text, so round 2 must re-read it fresh: round 2 = PE-SD2
+(fresh-context Fable) on THIS revision, or the model-diverse Codex
+leg post-reset — whichever lands first; the Codex leg is owed
+regardless before any acceptance claim.  Grade caps unchanged (the
+binding cap stays the W arc, 0/2 CLEAN).  Nothing in this repair
+touches the two S6 boxes, the machine legs, or any consumed source
+beyond the one-line EMPTY_PROOF header cure.

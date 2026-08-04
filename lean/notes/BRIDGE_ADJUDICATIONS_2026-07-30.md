@@ -9694,3 +9694,44 @@ telescope and the SD-L1 sharpness are the hard steps; the four Codex
 legs (VC40, W/E/S arcs) + now the SD arc on the post-reset budget.
 The class-wide frontier: (SURV-K2) via sign-reversing pairing;
 (SD-YJ).**
+
+---
+
+## SD-r1 LANDED — SURVDISJ round 1 (PE1) GAPS-ONLY, repaired; SD arc 0/1 CLEAN — 2026-08-08 campaign (wallclock 2026-08-04)
+
+**The pass** (SURVDISJ-PE1, fresh-context Fable, on 4f7c3ff; report
+`lean/notes/openmath/SURVDISJ_passPE1_report.md`): **GAPS-ONLY — 0
+critical, 1 gap, 4 notes.**  The spine re-derived sound end to end:
+SD-L2 from LED_l against the S2.2 inventory term by term; the pool
+telescope bracket by bracket; (★); SD-L1 all three legs; SD-L3's
+verbatim consumption; SD-THM-A(i)–(v) exact (incl. NO illegal use of
+the rescoped S-L4(iii) forcing half and the exact (NEP) scope);
+SD-L5/L6/L7.  Both machine legs re-run read-only identical (all md5
+pins match; the two-commit seal 61e9e36/00e19b4 verified GENUINE);
+three instrument rows re-derived by hand (W3DEEPF K1 with the exact
+ledger cross-check; W3G2P5 the p = 5 char-blind K2; SDG2BF dual-kill)
+— all agreeing with the artifacts.
+
+**The gap (G-1)**: SD-L4(ii)/(iii) displayed the w₀ clauses with NO
+principal-d-cell pin — false for t ≥ 1 seeds at g₀ ≥ 2, where
+w₀ = u₀ − t·h₀ (W-D2(iv)).  Both consumers verified undamaged by PE1
+(SD-THM-A's locus g₀ = 1 ∧ d₀ = 1 pins the principal seed; SD-L5
+consumes fork-counting only).
+
+**The repair (SD-r1, this commit):** the pin displayed on
+SD-L4(ii)/(iii) + claims row + F-A, with the dated bracket at S3; the
+four notes cured — (SURV-K2) box's tautological "complementarity"
+constraint reworded to the CROSS off-bottom confinement (N-1); TRACK
+restored in the two S8 bullets (N-2); DRV-NEPS conditioning disclosed,
+backstopped by SDI-SURV + 693 = 979 − 286 (N-3); the stale
+EMPTY_PROOF header cured cross-file to 1/2 CLEAN (N-4).  SD-THM-A and
+SD-L1/L2/L3/L5/L6/L7 statements byte-unchanged; grade caps unchanged
+(binding cap = the W arc 0/2 CLEAN).
+
+**SD arc counter 0/1 CLEAN** (GAPS-ONLY ≠ CLEAN).  **Round 2 = PE-SD2
+(fresh-context Fable) on the SD-r1 text next, or the model-diverse
+Codex leg post-reset (window Aug 08) — whichever lands first; the
+Codex leg is owed regardless before any acceptance claim.  The queue
+after that stands: the five Codex legs (VC40, W/E/S/SD arcs) on the
+post-reset budget; the class-wide frontier: (SURV-K2) via the
+sign-reversing pairing; (SD-YJ).**
