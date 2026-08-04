@@ -1,0 +1,98 @@
+==============================================================================
+PHASE A — hand-audit dumps (the two committed kills + p=3 witness)
+==============================================================================
+  CANCHUNT [W3DEEPF[663, 667] p=2 Fpt g0=1]: bottom beta_min=456 DEAD; w_m(Q1)=458; head=[(458, [0, 1, 0], 1)]
+
+== HAND-AUDIT W3DEEPF[663, 667]  p=2 Fpt g0=1 cs=[2, 1] D=3 k=1  beta_min=456 w_m(Q1)=458  lamhat=453 csum=5
+   RAW BOTTOM cell: slot=[0, 0, 0] sgn=-1 profile=[1, 1, 2] ncorr=[1, 0, 0] junk=0 y2=0 ce=((0, 0, (), 0),) jD=[2, 0, 1] prin=True
+     coeff b = [(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1)]  w0=38 res = ((((1,),),),)
+   RAW BOTTOM cell: slot=[0, 0, 0] sgn=-1 profile=[1, 1, 2] ncorr=[1, 0, 0] junk=0 y2=0 ce=((0, 0, (), 0),) jD=[2, 0, 1] prin=True
+     coeff b = [(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1)]  w0=38 res = ((((1,),),),)
+   NET at slot [0, 0, 0]: ZERO
+   netted spectrum head: [(458, [0, 1, 0], 1)]
+   cascade cell: slot=[0, 1, 0] line=458 res=((((1,),),),)
+-- W3DEEPF m=3 Fpt,p=2,d0=1 g0=1: live traced=1 (0.0s)
+
+== HAND-AUDIT W3DEEP[663, 667]  p=3 Zp g0=1 cs=[2, 1] D=3 k=1  beta_min=456 w_m(Q1)=456  lamhat=453 csum=5
+   RAW BOTTOM cell: slot=[0, 0, 0] sgn=-1 profile=[1, 1, 2] ncorr=[1, 0, 0] junk=0 y2=0 ce=((0, 0, (), 0),) jD=[2, 0, 1] prin=True
+     coeff b = [2701703435345984178]  w0=38 res = ((((2,),),),)
+   RAW BOTTOM cell: slot=[0, 0, 0] sgn=-1 profile=[1, 1, 2] ncorr=[1, 0, 0] junk=0 y2=0 ce=((0, 0, (), 0),) jD=[2, 0, 1] prin=True
+     coeff b = [2701703435345984178]  w0=38 res = ((((2,),),),)
+   NET at slot [0, 0, 0]: [-5403406870691968356]  line=456
+   netted spectrum head: [(456, [0, 0, 0], 2), (458, [0, 1, 0], 1)]
+   cascade cell: slot=[0, 1, 0] line=458 res=((((2,),),),)
+-- W3DEEP m=3 Zp,p=3,d0=1 g0=1: live traced=1 (0.0s)
+  CANCHUNT [EQ3T3F[831, 835] p=2 Fpt g0=1]: bottom beta_min=576 DEAD; w_m(Q1)=579; head=[(579, [0, 1, 0], 1)]
+
+== HAND-AUDIT EQ3T3F[831, 835]  p=2 Fpt g0=1 cs=[2, 2] D=4 k=2  beta_min=576 w_m(Q1)=579  lamhat=569 csum=10
+   RAW BOTTOM cell: slot=[0, 0, 0] sgn=-1 profile=[1, 2, 2] ncorr=[1, 0, 0] junk=0 y2=0 ce=((0, 0, (), 0),) jD=[2, 1, 2] prin=True
+     coeff b = [(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1)]  w0=32 res = ((((1,),),),)
+   RAW BOTTOM cell: slot=[0, 0, 0] sgn=-1 profile=[1, 2, 2] ncorr=[1, 0, 0] junk=0 y2=0 ce=((0, 0, (), 0),) jD=[2, 1, 2] prin=True
+     coeff b = [(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1)]  w0=32 res = ((((1,),),),)
+   NET at slot [0, 0, 0]: ZERO
+   netted spectrum head: [(579, [0, 1, 0], 1)]
+   cascade cell: slot=[0, 1, 0] line=579 res=((((1,),),),)
+-- EQ3T3F m=3 Fpt,p=2,d0=1 g0=1: live traced=1 (0.1s)
+==============================================================================
+PHASE B — EQ roster, RAISED caps (12/6; committed run used 6/3)
+==============================================================================
+-- EQ3T3A m=3 Zp,p=3,d0=1 g0=1: live traced=4 (0.0s)
+-- EQ3T3B m=3 Zp,p=3,d0=1 g0=1: live traced=46 (0.1s)
+-- EQ3T3C m=3 Zp,p=5,d0=1 g0=1: live traced=12 (0.0s)
+-- EQ3T4A m=3 Zp,p=3,d0=1 g0=1: live traced=4 (0.0s)
+-- EQ3T4B m=3 Zp,p=3,d0=1 g0=1: live traced=60 (0.2s)
+-- EQ3T4C m=3 Zp,p=3,d0=1 g0=1: live traced=38 (0.0s)
+  CANCHUNT [EQ3T3F[831, 835] p=2 Fpt g0=1]: bottom beta_min=576 DEAD; w_m(Q1)=579; head=[(579, [0, 1, 0], 1)]
+-- EQ3T3F m=3 Fpt,p=2,d0=1 g0=1: live traced=53 (0.3s)
+-- EQ3T4F m=3 Fpt,p=2,d0=1 g0=1: live traced=4 (0.1s)
+-- EQ3G2A m=3 Zp,p=3,d0=2 g0=2: live traced=14 (0.3s)
+-- EQ3G2B m=3 Zp,p=3,d0=1 g0=2: live traced=53 (0.1s)
+-- EQ3FLT m=3 Zp,p=5,d0=1 g0=1: live traced=6 (0.0s)
+-- EQ4T3A m=4 Zp,p=3,d0=1 g0=1: live traced=6 (0.0s)
+-- EQ4T3F m=4 Fpt,p=2,d0=1 g0=1: live traced=6 (0.6s)
+-- EQ4DEEP m=4 Zp,p=3,d0=1 g0=1: live traced=6 (0.0s)
+-- EQ4NEST m=4 Zp,p=3,d0=1 g0=1: live traced=18 (0.0s)
+==============================================================================
+PHASE B' — the NEW PX roster (char-3 / mixed-char-2 / p=2 twins)
+==============================================================================
+-- PXDEEPF3 m=3 Fpt,p=3,d0=1 g0=1: live traced=14 (0.1s)
+-- PXT3F3 m=3 Fpt,p=3,d0=1 g0=1: live traced=53 (0.3s)
+-- PXDEEPZ2 m=3 Zp,p=2,d0=1 g0=1: live traced=14 (0.0s)
+  CANCHUNT [PXT3Z2[831, 835] p=2 Zp g0=1]: bottom beta_min=576 DEAD; w_m(Q1)=579; head=[(579, [0, 1, 0], 1), (594, [0, 0, 0], 2)]
+-- PXT3Z2 m=3 Zp,p=2,d0=1 g0=1: live traced=53 (0.0s)
+  CANCHUNT [PXDEEP4F[1257, 1271] p=2 Fpt g0=1]: bottom beta_min=860 DEAD; w_m(Q1)=862; head=[(862, [1, 1, 0], 1)]
+-- PXDEEP4F m=3 Fpt,p=2,d0=1 g0=1: live traced=36 (0.2s)
+  CANCHUNT [PXTRK1F[330, 335] p=2 Fpt g0=1]: bottom beta_min=564 DEAD; w_m(Q1)=566; head=[(566, [0, 1, 0], 1)]
+-- PXTRK1F m=3 Fpt,p=2,d0=1 g0=1: live traced=28 (0.1s)
+  CANCHUNT [PXFLTF[123, 123] p=2 Fpt g0=1]: bottom beta_min=90 DEAD; w_m(Q1)=93; head=[(93, [0, 0, 1], 1)]
+-- PXFLTF m=3 Fpt,p=2,d0=1 g0=1: live traced=6 (0.0s)
+-- PXW4DPF m=4 Fpt,p=2,d0=1 g0=1: live traced=8 (0.4s)
+==============================================================================
+PX-PIN    : 0 violations
+PX-CONS   : 0 violations
+PX-DIGIT  : 0 violations
+PX-LINE   : 0 violations
+PX-CASC   : 0 violations
+PX-SEP    : 0 violations
+HARNESS   : 0 violations
+------------------------------------------------------------------------------
+live rows traced: 545; S-L1 machine-verified on 478 all-g=1 (STK) rows
+CANCHUNT — cancellation instances (netted bottom DEAD): 7
+  W3DEEPF[663, 667] p=2 Fpt g0=1 cs=[2, 1] D=3 k=1 raw_bottom=[([0, 0, 0], -1, 1, 0), ([0, 0, 0], -1, 1, 0)] surv_is_casc_slot=True
+  EQ3T3F[831, 835] p=2 Fpt g0=1 cs=[2, 2] D=4 k=2 raw_bottom=[([0, 0, 0], -1, 1, 0), ([0, 0, 0], -1, 1, 0)] surv_is_casc_slot=True
+  EQ3T3F[831, 835] p=2 Fpt g0=1 cs=[2, 2] D=4 k=2 raw_bottom=[([0, 0, 0], -1, 1, 0), ([0, 0, 0], -1, 1, 0)] surv_is_casc_slot=True
+  PXT3Z2[831, 835] p=2 Zp g0=1 cs=[2, 2] D=4 k=2 raw_bottom=[([0, 0, 0], -1, 1, 0), ([0, 0, 0], -1, 1, 0)] surv_is_casc_slot=True
+  PXDEEP4F[1257, 1271] p=2 Fpt g0=1 cs=[2, 2] D=2 k=2 raw_bottom=[([1, 0, 0], -1, 1, 0), ([1, 0, 0], -1, 1, 0)] surv_is_casc_slot=True
+  PXTRK1F[330, 335] p=2 Fpt g0=1 cs=[2, 2] D=2 k=2 raw_bottom=[([0, 0, 0], -1, 1, 0), ([0, 0, 0], -1, 1, 0)] surv_is_casc_slot=True
+  PXFLTF[123, 123] p=2 Fpt g0=1 cs=[2, 2] D=3 k=1 raw_bottom=[([0, 0, 0], -1, 1, 0), ([0, 0, 0], -1, 1, 0)] surv_is_casc_slot=True
+EQLGRP — same-slot equal-line groups (n >= 2) in full multisets: 377 (58 at the bottom line)
+  bottom groups by (p, kind, killed): {(2, 'Fpt', True): 6, (3, 'Zp', False): 12, (3, 'Zp', True): 37, (5, 'Zp', False): 1, (3, 'Fpt', False): 1, (2, 'Zp', True): 1}
+  bottom groups by (res_equal, killed): {(True, True): 44, (True, False): 3, (False, False): 11}
+MIXJUNK — equal-line same-slot groups with MIXED junk: 1
+  EQ3G2A[2321, 2321] slot=[0, 0, 0] line=1584 junks=[1, 2] ncorr=[1, 2, 3] at_casc=False
+PRT — cascade-slot partners: 39 total, 39 equal-line; equal-line junk/resonance profile:
+  (junk, resonance, has_corr, principal): {(0, False, True, False): 39}
+  partners on g0=1 rows: 0
+total violations: 0
+elapsed: 3.2s
+results -> /data/users/asvin/math-and-lean/p-adic-splitting-densities/verification/openmath/surv_pe1_ext_results.json

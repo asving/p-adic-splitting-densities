@@ -1,5 +1,25 @@
 # (SURV-(m+1))(i) — the survival leg: NOT closed class-wide; the SLOT-SURVIVAL REDUCTION proved around it (cascade-slot content, ultrametric separation, cross-slot independence), the exact blocking obstruction isolated as same-slot equal-line residue cancellation, with two committed cancellation instances and the g₀ ≥ 2 slot-kill population displayed
 
+    [S-r1 REPAIR BRACKET, 2026-08-08 campaign (wallclock 2026-08-04).
+    Hostile pass 1 (SURV-PE1, fresh-context Fable, on 0b895d0; report
+    SURV_passPE1_report.md) — verdict GAPS-ONLY: 0 critical, 1 gap,
+    3 notes + 1 favorable.  The machine leg replicated identically;
+    S-L0–S-L3 (incl. the load-bearing S-L3), S-L4(i)(ii) and
+    S-THM(a)(b)(c) re-derived SOUND; both committed cancellation kills
+    and the p = 3 witness re-derived BY HAND from the committed
+    engines.  The gap (PE1 G-1): S-L4(iii)'s "junk-free forced"
+    inference used only the FORWARD W-D5 inequality — the reverse leg
+    holds at m = 2 via W-D4 but is OPEN at m ≥ 3.  This revision
+    applies the honest repair: S-L4(iii) RESCOPED — the m = 2 forcing
+    displayed via PE1's own W-D4 derivation, the m ≥ 3 forcing boxed
+    into (SURV-RES) at S7.  No PROVED consumer existed (S-THM(c)
+    routes through (NEP) + S-L4(ii) + (iii)'s unrescoped uniqueness
+    half only; confirmed again this pass).  PE1's decorrelated
+    instrument census (545 fresh-traced rows, FOUR new cancellation
+    instances, the sign-pair design constraint) is folded at S8.b/S9.
+    All other statements byte-unchanged.  Full disposition: the
+    REPAIR RECORD at the tail.]
+
 Object: clause (i) of the S9 box of WMULTDCX_2026-08-08.md:
 
     (SURV-(m+1))(i):  on TRACK, (H1)–(H2), k := 2e_{m−1} − D:
@@ -23,9 +43,13 @@ structural perimeter of the survival question —
     same-slot equal-line collisions and nowhere else;
   * S-L4: collision anatomy — same-slot interference requires equal
     line; higher-valuation slot-mates never disturb a slot's residue; at
-    (H3) ∧ g₀ = 1 the cascade is the UNIQUE correction-free two-exit
-    path, so cascade-slot partners must carry corrections and satisfy an
-    exact quantum-resonance equation;
+    (H3) ∧ g₀ = 1 the cascade is the UNIQUE two-exit path free of
+    correction, junk and Y₂ edges, and equal-line cascade-slot partners
+    obey the W-D5 line balance (promotion sum ≤ the cascade's, junk
+    gains covering the deficit) — at m = 2 this FORCES junk-freeness,
+    the exact quantum-resonance equation and ≥ 1 correction L-edge
+    [S-r1: rescoped per PE1 G-1; the m ≥ 3 forcing is OPEN, boxed in
+    S7];
   * S-THM: the assembled conditional theorem — Q¹ ≠ 0 whenever ANY slot
     survives netting (with the top-reduced pin), in particular whenever
     the bottom stratum survives; plus the corollary closing (i) outright
@@ -43,7 +67,8 @@ pin, level m ≥ 2, g_m = 1.  Date: 2026-08-08 campaign (wallclock
 2026-08-04; composer unit of the W-MULT-DCX arc, the (SURV)(i) leg).
 
 **Grade (header summary).**  S-L0–S-L4 and S-THM — PROVED at attempt
-grade (composed this unit, 0 hostile passes yet).  **Grade cap carried
+grade (composed this unit; hostile round 1 SURV-PE1 GAPS-ONLY 0C/1G,
+repaired at [S-r1] — 0 CLEAN passes yet).  **Grade cap carried
 from consumption [dagger discipline]: this note consumes
 WMULTDCX_2026-08-08.md (W-D0–W-D7) at ATTEMPT grade — that arc stands
 at 0/2 CLEAN hostile passes, not accepted — so every lemma here CANNOT
@@ -78,8 +103,9 @@ grade:
   the proof object; (H1) consumed only there), W-D1 (X₀ = â·â′ formal-
   cell identity; b₀ = π^{u₁+u₁′}), W-D2 (the d-cell inventory at
   (H2)/(H3): top pin, forced interior/level-0 exponents), W-D3 (LED_l —
-  the cascade's terminal exponents), W-D4 (top identity, used only in
-  the S5 partner-constraint display), W-D5 (the line law: junk-free
+  the cascade's terminal exponents), W-D4 (top identity: the S5
+  partner-constraint display and, since [S-r1], the m = 2
+  reverse-inequality leg of S-L4(iii)), W-D5 (the line law: junk-free
   cells sit exactly on λ̂ + Σ π_l q_l, junk strictly above), W-D6/W-D7
   (the dump-free cap and the greedy cascade: existence, profile c⃗, top
   exponent c_{m−1} − k, at (H3) ∧ g₀ = 1 ∧ (STK) ∧ the law clause —
@@ -302,15 +328,20 @@ line = E_m·w₀(b) + Σ j_lΓ_l);
 disturb a slot's minimal-line residue: if the equal-line subsum at a
 slot has nonzero residue sum, the slot survives at that line
 (S-L0(b) at w₀, coefficientwise);
-(iii) at (H3) ∧ g₀ = 1: the cascade is the UNIQUE two-exit path taking
-no correction edge, no junk edge and no Y₂-edge; hence every equal-line
-partner of the cascade slot carries ≥ 1 correction L-edge and satisfies
-the exact resonance equation
+(iii) [S-r1: RESCOPED per PE1 G-1] at (H3) ∧ g₀ = 1: the cascade is
+the UNIQUE two-exit path taking no correction edge, no junk edge and
+no Y₂-edge.  Every equal-line partner of the cascade slot satisfies
+the slot equations j⃗(term) = ĵ and Σ w₀(c_d picks) = u₀ together with
+the W-D5 line balance
 
-    Σ_{l=1}^{m−1} π_l·q_l = Σ_{l=1}^{m−1} c_l·q_l ,
+    Σ_{l=1}^{m−1} π_l·q_l + J = Σ_{l=1}^{m−1} c_l·q_l ,   J := junk gains ≥ 0,
 
-(junk-free forced: junk gains are strictly positive, W-D5) together
-with the slot equations j⃗(term) = ĵ and Σ w₀(c_d picks) = u₀.
+i.e. in general only the FORWARD inequality Σ π_l q_l ≤ Σ c_l q_l.
+At m = 2 the balance FORCES J = 0 (junk-free), the exact resonance
+equation Σ π_l q_l = Σ c_l q_l, and ≥ 1 correction L-edge on every
+partner.  At m ≥ 3 that forcing is OPEN — a junk-riding partner could
+compensate interior promotion deficits by junk gains; boxed into
+(SURV-RES), S7.
 *Proof.*  (i) Line is an affine function of (w₀(b), j⃗); equal slot and
 equal line force equal valuation; contributions at distinct valuations
 within a slot stack ultrametrically.  (ii) is S-L0(b) applied to the
@@ -321,22 +352,53 @@ determined by its choices at correction forks and at the stage-2
 seeding; "no correction edge, no junk, no Y₂" removes every fork except
 the d-cell choice, and the d-cell is unique at (H3) ∧ g₀ = 1 (S-L1).
 The Y₂-child of the cascade's own seeding does not even exist (deg
-b₀ = 0; the EMPTY E-L6 mechanism, L-NORM(c) canonicity).  A partner at
-the cascade's slot AND line is junk-free with equal quantum sum by
-W-D5's exact line law.  ∎  [Machine: at g₀ = 1 the cascade slot had NO
-same-slot companion of any valuation on any of the 379 in-scope rows
-(CGRP partnered = 0 there); at g₀ ≥ 2, 55 partnered rows (the t-family
-supplies the second seed), 52 of which killed the slot.]
+b₀ = 0; the EMPTY E-L6 mechanism, L-NORM(c) canonicity).  Line
+balance: the partner shares the cascade's slot equations (the d-cell
+is unique at g₀ = 1, so Σ w₀(c_d picks) = u₀ automatically) and the
+cascade's line β̂ = λ̂ + Σ c_l q_l; W-D5 puts any such cell at
+λ̂ + Σ π_l q_l + J with J ≥ 0 and J = 0 iff junk-free — equating gives
+the displayed balance, hence the forward inequality.  [S-r1, the PE1
+G-1 display]  At m = 2 the interior sum is the single top term
+l = m − 1: the shared top exponent c_{m−1} − k plus W-D4's top
+identity give π_{m−1} = c_{m−1} + e_{m−1}r ≥ c_{m−1}, so
+Σ π_l q_l = π_{m−1}q_{m−1} ≥ c_{m−1}q_{m−1} = Σ c_l q_l — the REVERSE
+inequality; with the balance this forces J = 0 and the exact
+resonance (and e_{m−1}r·q_{m−1} = 0, i.e. r = 0: no top correction).
+A junk-free partner distinct from the cascade must differ at some
+fork; junk-freeness removes junk edges and the π-junk children of
+corrections and of the seeding, the d-cell (hence the seeding) is
+unique and its Y₂-child does not exist — the only fork left is a
+correction taken via its L-child, so ≥ 1 correction L-edge.  At
+m ≥ 3 the reverse inequality is displayed by NOTHING consumed here
+(W-D4 pins only the top level; interior promotion deficits could be
+compensated by junk gains — the PE1 mixed-junk near-miss
+EQ3G2A[2321,2321], S8.b, realizes exactly this junk-line compensation
+between junk-1 and junk-2 cells at one slot and line), so the m ≥ 3
+forcing is boxed, not claimed; no junk-0/junk-positive mixed group
+occurs anywhere in the 545 fresh-traced rows (the only battery that
+censused mixed junk), so the rescoped clause has no instance
+countermodel on present evidence.  ∎  [Machine: at g₀ = 1 the cascade
+slot had NO same-slot companion of any valuation on any of the 379
+in-scope rows (CGRP partnered = 0 there); at g₀ ≥ 2, 55 partnered
+rows (the t-family supplies the second seed), 52 of which killed the
+slot.  Coverage caveat [S-r1]: every battery traces m ∈ {3, 4}, so
+the m = 2 forcing clause is proof-only (cf. F-C).]
 
-Consequence display (the partner's shape, from W-D4/W-D6): an
-equal-line cascade-slot partner with top correction count r has
-π_{m−1} = k + e_{m−1}r + (c_{m−1} − k) = c_{m−1} + e_{m−1}r, so r ≥ 1
-costs e_{m−1}r·h_{m−1} of top line which the resonance must refund at
-interior levels; and an r = 0 dump-free principal partner has π ≤ c⃗
-componentwise (W-D6) with equality forced by the resonance (q_l > 0) —
-i.e. it IS the cascade.  So genuine partners ride dumps or non-principal
-d-cells (W-D6c), which at g₀ = 1 forces corrections with their sign
-flips and shifted residues — the collision arithmetic of S7.
+Consequence display (the JUNK-FREE partner's shape, from W-D4/W-D6;
+junk-freeness is automatic at m = 2, an added hypothesis at m ≥ 3
+[S-r1] — for a junk-free equal-line partner the balance at J = 0 IS
+the exact resonance, any m): such a partner with top correction count
+r has π_{m−1} = k + e_{m−1}r + (c_{m−1} − k) = c_{m−1} + e_{m−1}r, so
+r ≥ 1 costs e_{m−1}r·h_{m−1} of top line which the resonance must
+refund at interior levels; and an r = 0 dump-free principal junk-free
+partner has π ≤ c⃗ componentwise (W-D6) with equality forced by the
+resonance (q_l > 0) — i.e. it IS the cascade.  So genuine junk-free
+partners ride dumps or non-principal d-cells (W-D6c), which at g₀ = 1
+forces corrections with their sign flips and shifted residues — the
+collision arithmetic of S7.  The junk-RIDING partner, excluded at
+m = 2 and never realized on any probed instance (no mixed
+junk-0/junk-positive group in the 545 fresh-traced rows), is the
+residual shape the S7 box carries.
 
 ## S6. S-THM: the assembled conditional theorem
 
@@ -379,19 +441,31 @@ open residual.
     │ decreasing strength, each sufficient over its own locus:           │
     │   (NEP)        [combinatorial, NO residue input]: at (H3)∧g₀ = 1   │
     │                the cascade slot has no equal-line partner path.    │
-    │                Then S-THM(c) closes (i) there.  Instance record:   │
-    │                held 379/379 (never even a partner of ANY           │
-    │                valuation); FALSE at g₀ ≥ 2 (55 partnered rows).    │
+    │                Then S-THM(c) closes (i) there.  Instance record    │
+    │                [S-r1]: held 379/379 committed + every fresh PE1    │
+    │                g₀ = 1 row (0 partners of ANY valuation, ever);     │
+    │                FALSE at g₀ ≥ 2 (55 committed + 39 fresh            │
+    │                partnered rows).                                    │
     │   (SURV-DISJ)  [residue-level, the sharp falsifiable form]: the    │
     │                netted bottom stratum survives OR the cascade slot  │
-    │                survives.  Instance record: 486/486 (bottom on      │
-    │                484; cascade slot EXACTLY on the other 2).          │
+    │                survives.  Instance record [S-r1]: 486/486          │
+    │                committed + 545/545 fresh-traced (PE1), six unique  │
+    │                kill rows in all — and on EVERY kill the survivor   │
+    │                was the cascade slot AT the cascade line.           │
     │ Neither is proved here.  A proof of (NEP) is a quantum-resonance   │
-    │ analysis of the S-L4(iii) equation (no cancellation lemma); a      │
-    │ proof of (SURV-DISJ) needs the same-slot residue sums — the        │
-    │ class-level carry algebra F[u]/(u^e − z̄), i.e. DEV-at-depth, the   │
-    │ [IL3]† "DEV-2" price one level up (the WMULTDCX S9 display,        │
-    │ unchanged by this note).                                           │
+    │ analysis of the S-L4(iii) line balance — and [S-r1, per PE1 G-1]   │
+    │ at m ≥ 3 it must ALSO exclude junk-riding partners (junk gains     │
+    │ compensating interior promotion deficits: the S-L4(iii) forcing    │
+    │ is proved at m = 2 ONLY, and the S8.b mixed-junk near-miss         │
+    │ EQ3G2A[2321,2321] shows junk-line compensation is instance-real)   │
+    │ — still valuation-side, NO residue input needed.  A proof of       │
+    │ (SURV-DISJ) needs the same-slot residue sums — the class-level     │
+    │ carry algebra F[u]/(u^e − z̄), i.e. DEV-at-depth, the [IL3]†        │
+    │ "DEV-2" price one level up (the WMULTDCX S9 display, unchanged     │
+    │ by this note) — and [S-r1] it must handle BOTH kill genres of      │
+    │ the PE1 census (S8.b): mod-p path-multiplicity kills (residue      │
+    │ char 2, six instances) AND characteristic-BLIND opposite-sign      │
+    │ equal-residue kills (37 instances at g₀ = 2).                      │
     └────────────────────────────────────────────────────────────────────┘
 
 **Closest-call display 1 — the two bottom cancellations (both p = 2).**
@@ -418,7 +492,11 @@ The netted bottom stratum vanished on exactly 2 of 486 live rows:
   no counting argument can decide it, and any proof of (SURV-DISJ)
   must be characteristic-aware.  13 same-slot bottom collisions were
   traced at g₀ = 1 in all: 11 net nonzero, 2 cancel — every collision
-  pair rides ≥ 1 correction, consistent with S-L4(iii).
+  pair rides ≥ 1 correction, consistent with S-L4(iii).  [S-r1: the
+  PE1 round-1 census found FOUR more total-bottom kills — all residue
+  characteristic 2, one of them in MIXED characteristic (Zp p = 2),
+  none at p > 2, survivor = the cascade slot at the cascade line on
+  every one; S8.b.]
 
 **Closest-call display 2 — the g₀ ≥ 2 cascade-slot kills.**  On the six
 g₀ = 2 towers, the cascade slot acquired a same-slot partner on 55 rows
@@ -488,11 +566,94 @@ Instrument layer (censuses, measured):
 Controls: CTRL-MULTI 25 · CTRL-ABOVE 134 · CTRL-NONCASC 301 ·
 CTRL-CANCEL 2 — ALL fired.
 
+**S8.b [S-r1] — the PE1 round-1 fresh census (verifier-produced
+instance evidence; the decorrelated leg the null-instrument disclosure
+owed).**  `verification/openmath/surv_pe1_ext.py` (md5
+937317c75fb381eec96b59b8a1f743ad; composed by the PE1 verifier in a
+fresh context; consumes the five committed engines byte-untouched,
+pins re-checked green; deterministic, exact arithmetic).  Output
+`surv_pe1_ext_output.txt` (bcf82acb0f5ed1c18fd9e84f299fb26f) · results
+`surv_pe1_ext_results.json` (877a903e578ac1c7b6d64a1be19ceca6),
+regenerated in-repo by the S-r1 repair unit from the deterministic
+instrument — json byte-identical to PE1's sandbox run mod `elapsed`.
+**545 fresh-traced live rows**: the frozen EQ roster at RAISED
+per-stratum caps (12/6 vs the committed 6/3) plus a NEW 8-tower PX
+roster — char-3 Fpt twins of BOTH committed cancellation shapes, Zp
+p = 2 twins (residue characteristic 2 in MIXED characteristic, a ring
+kind no committed battery ever probed), Fpt p = 2 twins of the other
+collision-carrying sealed shapes.  Verdict families
+PX-PIN/PX-CONS/PX-DIGIT/PX-LINE/PX-CASC/PX-SEP: **0 violations —
+every PROVED lemma held on every fresh row** (S-L1's clauses verified
+on 478 fresh all-g=1 (STK) rows).  Phase A of the same instrument
+re-derived both committed kills and the p = 3 witness BY HAND from
+the committed engines (the report's §4a displays: each kill is a
+path-multiplicity-2 collision netting 2·(unit) ≡ 0 mod p, fatal
+exactly at residue characteristic 2 — the p = 3 twin nets
+2·(unit) ≢ 0).  Instance evidence (measured, INSTANCE grade — never
+proof steps; full report `SURV_passPE1_report.md`):
+
+    CANCHUNT   FOUR new total-bottom-cancellation rows — ALL residue
+               characteristic 2, ALL g₀ = 1, ALL threshold-genre, and
+               on ALL of them the survivor is EXACTLY the cascade
+               slot at the cascade line:
+                 PXT3Z2[831,835]      Zp  p=2 (EQ3T3F reads) — MIXED
+                                      characteristic; bottom DEAD at
+                                      β_min = 576, w_m(Q¹) = 579 =
+                                      the cascade line (the killed
+                                      pair resurfaces at 594 = β_min
+                                      + E_m: net 2·b, valuation +1);
+                 PXDEEP4F[1257,1271]  Fpt p=2 (W3DEEP4 reads) — 860
+                                      dead, cascade slot (1,1,0) at
+                                      862;
+                 PXTRK1F[330,335]     Fpt p=2 (W3TRK1 reads) — 564
+                                      dead, cascade at 566;
+                 PXFLTF[123,123]      Fpt p=2 (EQ3FLT reads) — 90
+                                      dead, cascade at 93.
+               The Zp instance sharpens the S7 reading: the
+               phenomenon is RESIDUE-characteristic-2 (mod-p), not
+               equal-characteristic.  NO p > 2 cancellation exists in
+               the probed class: the char-3 Fpt twins of BOTH
+               committed shapes (PXDEEPF3/PXT3F3, 67 live rows) carry
+               the same collision pairs and net NONZERO everywhere.
+    EQLGRP     377 same-slot equal-line groups (n ≤ 6) across the 545
+               rows; 58 at the bottom line, 44 killed — ALL 44 with
+               EQUAL residues.  Sign split: 7 same-sign pairs (ALL
+               residue char 2) and 37 OPPOSITE-sign pairs, all on
+               EQ3G2B (g₀ = 2, p = 3): sign-flip cancellation of
+               equal residues is CHARACTERISTIC-BLIND and
+               instance-real at g₀ ≥ 2 (the bottom survived elsewhere
+               on every such row — no total kill).  DESIGN CONSTRAINT
+               carried into the S7 box: a (SURV-DISJ) proof must
+               handle sign-pair kills as well as mod-p multiplicity
+               kills.
+    PRT        39 equal-line cascade-slot partners, all on fresh
+               g₀ ≥ 2 rows — ALL junk-free, ALL riding a
+               non-principal d-cell plus ≥ 1 correction (outside
+               S-L4(iii)'s g₀ = 1 scope); 0 partners on ANY g₀ = 1
+               row — the (NEP) instance record extends to every fresh
+               g₀ = 1 row.
+    MIXJUNK    exactly ONE mixed-junk same-slot equal-line group in
+               545 rows: EQ3G2A[2321,2321], slot (0,0,0), line 1584,
+               junk counts {1,2}, correction counts {1,2,3} — the
+               junk-line compensation mechanism of the S-L4(iii)
+               m ≥ 3 box is instance-real; NO junk-0/junk-positive
+               mixed group anywhere, so the rescoped clause has no
+               instance countermodel.
+
+(SURV-DISJ) after this census: 486 committed + 545 fresh-traced rows,
+six unique kill rows in all, ZERO counterexamples — and on every kill
+the minimal survivor was the cascade slot AT the cascade line, not
+merely some slot.
+
 **Disclosures.**  (i) The dedicated (SURV) instrument phase returned a
 NULL verdict (no artifacts anywhere in the tree); this unit's runner is
 the instrument, so route choice and composition share one context — the
 owed hostile passes must treat the census as unverified until re-run
-(deterministic, engines pinned).  (ii) Machine coverage: m ∈ {3, 4},
+(deterministic, engines pinned).  [S-r1: DISCHARGED at round 1 — PE1
+re-ran the committed census read-only (output and json IDENTICAL mod
+timings, selection loop confirmed byte-identical, all controls fired
+from the artifacts) AND produced the decorrelated S8.b census.]
+(ii) Machine coverage: m ∈ {3, 4},
 g₀ ∈ {1, 2}, d₀ ∈ {1, 2}, both characteristics; d₀ = 2 occurs ONLY on
 g₀ = 2 towers, so S-L1's unique-d-cell clause at d₀ ≥ 2 ∧ g₀ = 1 is
 machine-untested (the proof is displayed and exponent-forcing only —
@@ -511,7 +672,12 @@ the sealed 412-selection is replicated in full.
   instance-full in every probed battery but NOT derived from
   c_{m−1} ≥ k.  The blocking obstruction is exactly (SURV-RES-(m+1))
   (S7), now with its cancellation genre instance-realized (char-2
-  same-slot pairs) instead of hypothesized.
+  same-slot pairs) instead of hypothesized.  [S-r1: the PE1 census
+  extends the record to SIX unique kill rows across two ring kinds —
+  all RESIDUE-characteristic 2, incl. one mixed-characteristic Zp
+  p = 2 kill; NO p > 2 kill in the probed class; plus the 37
+  characteristic-blind opposite-sign kills at g₀ = 2 — the two kill
+  genres a (SURV-DISJ) proof must handle; S8.b.]
 * **LAW-DCX-(m+1) is STILL A CONJECTURE at every m ≥ 2.**  The law is
   (SURV)(i) ∧ (ii).  The (ii) leg is (EMPTY-(m+1)), proved at attempt
   grade on (H1)–(H3) (EMPTY_PROOF, 1/2 CLEAN, capped by WMULTDCX 0/2).
@@ -524,7 +690,8 @@ the sealed 412-selection is replicated in full.
   and what would STILL remain before any acceptance-grade claim:
   (1) the W arc's own acceptance (0/2 CLEAN; every lemma here consumes
   it), (2) the EMPTY arc's acceptance (1/2 CLEAN; the Codex leg), (3)
-  this note's own hostile arc (0 passes), (4) the (H2) on-TRACK
+  this note's own hostile arc (round 1 PE1 GAPS-ONLY, repaired at
+  [S-r1]; 0 CLEAN passes), (4) the (H2) on-TRACK
   discharge rider (the ITERLAWN S4.7 erratum chain, as at WMULTDCX F1),
   (5) (EMPTY-gen) for interior g ≥ 2 and the g₀ ≥ 2 side of (i), (6)
   the (RW) window at m ≥ 3.
@@ -540,11 +707,11 @@ the sealed 412-selection is replicated in full.
 | S-L1 | cascade slot content: slot (ρ⃗, c−k), line λ̂+Σc_lq_l, coefficient π^{u₁+u₁′+u₀}·lift(b̄₀c̄_D), residue ≠ 0; unique d-cell at (H3)∧g₀=1 | PROVED (attempt; (H1)–(H3), g₀=1, (STK), c ≥ k) | W-D7(ii)†, W-D3†, W-D2†, W-D1†, L-NORM(a), L-CELL(i) |
 | S-L2 | unique netted bottom ⟹ Q¹ ≠ 0, w_m(Q¹)=β_min | PROVED (attempt) | S-L0 |
 | S-L3 | cross-slot independence: nonempty netted bottom + (RW₀) ⟹ Q¹ ≠ 0 — multi-slot same-line strata CANNOT cancel | PROVED (attempt) | S-L0, L-CELL(i) |
-| S-L4 | collision anatomy: equal-line requirement; higher-w₀ harmless; cascade = unique correction-free path at (H3)∧g₀=1; partner resonance equation | PROVED (attempt) | S-L0, W-D5†, W-D6†, S2.2 inventory, E-L6 mechanism (L-NORM(c)) |
+| S-L4 | collision anatomy: equal-line requirement; higher-w₀ harmless; cascade = unique correction/junk/Y₂-free path at (H3)∧g₀=1; partner line balance (forward inequality); junk-freeness + exact resonance + ≥1 correction L-edge FORCED at m = 2 [S-r1: rescoped per PE1 G-1; m ≥ 3 forcing boxed in S7] | PROVED (attempt) | S-L0, W-D4†, W-D5†, W-D6†, S2.2 inventory, E-L6 mechanism (L-NORM(c)) |
 | S-THM | (a) unique bottom ⟹ Q¹≠0; (b) surviving bottom + (RW₀) ⟹ Q¹≠0; (c) (NEP)∧(RW) at the g₀=1 pins ⟹ (SURV)(i) there | PROVED (attempt) | S-L1–S-L4 |
-| (NEP) | no equal-line cascade-slot partner at (H3)∧g₀=1 | **OPEN** (combinatorial; 379/379 instance record; FALSE at g₀ ≥ 2) | — |
+| (NEP) | no equal-line cascade-slot partner at (H3)∧g₀=1 | **OPEN** (combinatorial; 379/379 committed + every fresh PE1 g₀=1 row [S-r1]; FALSE at g₀ ≥ 2) | — |
 | (RW) | top exponents ≤ P_{m−1}−1 at terminals | **OPEN at m ≥ 3** (W-WIN display; m = 2 argued there; 1,806/1,806 + all sealed batteries instance-clean) | — |
-| (SURV-DISJ) | bottom OR cascade slot survives netting | **OPEN** (conjecture-grade; 486/486 incl. both cancellation rows) | — |
+| (SURV-DISJ) | bottom OR cascade slot survives netting | **OPEN** (conjecture-grade; 486/486 committed + 545/545 fresh-traced incl. all six kill rows [S-r1]) | — |
 | (SURV-RES-(m+1)) | some slot survives — THE residual | **OPEN** (boxed, S7) | = (SURV)(i)'s remaining content given S-THM |
 | (SURV-(m+1))(i) | survival | **OPEN** class-wide; PROVED on (NEP)∧(RW)∧(STK) at (H3)∧g₀=1 (attempt, capped) | S-THM(c) |
 | LAW-DCX-(m+1) | the law | UNCHANGED: m = 1 proved, m ≥ 2 conjecture | not upgraded |
@@ -566,7 +733,11 @@ d3eb83d286eda103c9210a37361e52cd · results
 12b2ef306dc946ce12d641a828ebca56 (consumed runners pinned inside:
 wmultdcx_stress 15315cca…, wmultdcx_derive_checks bea1a43d…,
 rmengine_pe_reimpl 103c1a9c…, grb_order2_check dab62713…,
-empty_derive_checks 8fed9240…).
+empty_derive_checks 8fed9240…).  Verifier leg (round 1, folded at
+S8.b [S-r1]): `surv_pe1_ext.py` 937317c75fb381eec96b59b8a1f743ad ·
+output bcf82acb0f5ed1c18fd9e84f299fb26f · results
+877a903e578ac1c7b6d64a1be19ceca6 (PE1, fresh context; instance
+evidence only).
 
 **Fences.**
 F-A. Pins are per-lemma and displayed: S-L1/S-THM(c) consume (H3) ∧
@@ -583,11 +754,72 @@ F-D. (RW)/(RW₀) are explicit per-instance pins, instance-clean
      everywhere ever probed, unproved at m ≥ 3 (W-WIN).  S-THM(b) needs
      (RW₀) at the bottom only; S-THM(c) needs full (RW).
 F-E. Grade cap: WMULTDCX consumption at 0/2 CLEAN caps every lemma;
-     this note's own hostile-pass record is 0/0 (composed, no passes
-     yet); the null-instrument decorrelation caveat (S0/S8(i)) stands
-     until a fresh-context pass re-runs the census.
+     this note's own hostile-pass record after round 1 [S-r1]: PE1
+     GAPS-ONLY (0 critical / 1 gap, repaired), 0 CLEAN passes — the
+     arc stays open; the null-instrument decorrelation caveat
+     (S0/S8(i)) is DISCHARGED (PE1 re-ran the committed census
+     read-only and produced the decorrelated S8.b census).
 F-F. Nothing here upgrades LAW-DCX-(m+1), touches (SURV)(ii)/(EMPTY),
      or narrows the S9 box of WMULTDCX beyond the displayed reduction.
 F-G. The READADD census is instance evidence for a read-additivity-at-
      depth display that this note does NOT state as a lemma; do not
      cite it as one.
+
+## REPAIR RECORD [S-r1] — round-1 disposition (2026-08-08 campaign, wallclock 2026-08-04)
+
+Hostile pass 1: SURV-PE1 (fresh-context Fable) on 0b895d0 — report
+`SURV_passPE1_report.md`, instrument
+`verification/openmath/surv_pe1_ext.py` (both committed with this
+revision).  **VERDICT GAPS-ONLY: 0 critical / 1 gap (+ 3 notes + 1
+favorable).**
+
+* **Sound re-derivations, named:** the machine leg re-run read-only
+  (output and json IDENTICAL mod timings; all five engine pins green;
+  the sealed-selection loop confirmed byte-identical to the committed
+  `empty_derive_checks.py` loop; all four controls fired from the
+  artifacts, not summaries); S-L0(a)(b)(c); S-L1 (incl. the
+  unique-d-cell forcing and the L-NORM(a) residue chain); S-L2; S-L3 —
+  THE load-bearing step — with the exact mixed-radix degree mechanism
+  checked; S-L4(i)(ii); S-L4(iii)'s uniqueness half; the S-THM(a)(b)(c)
+  assembly; every displayed census number in S0/S1/S7/S8 re-computed
+  independently from the committed json.  **Both cancellation kills
+  hand-confirmed:** W3DEEPF[663,667] and EQ3T3F[831,835] re-derived BY
+  HAND from the committed engines (each a path-multiplicity-2 collision
+  netting 2·(unit) ≡ 0 at residue characteristic 2), and the p = 3
+  witness W3DEEP[663,667] re-derived netting 2·(unit) ≢ 0.  [Report
+  §§0–4.]
+* **G-1 (the gap) REPAIRED — option (a), rescope:** S-L4(iii)'s
+  "junk-free forced" inference had displayed only the forward W-D5
+  inequality.  Applied: the line balance Σπ_lq_l + J = Σc_lq_l is now
+  the general clause; the m = 2 forcing (J = 0 + exact resonance + ≥ 1
+  correction L-edge) is displayed via PE1's own W-D4
+  reverse-inequality derivation, with attribution; the m ≥ 3 forcing
+  is BOXED into (SURV-RES) at S7 with the junk-riding partner shape
+  and the EQ3G2A[2321,2321] mixed-junk near-miss on record.  Echo
+  sites cured: the header S-L4 bullet (which also restores the
+  junk/Y₂ qualifiers — PE1 N-1), the S5 consequence display (rescoped
+  to junk-free partners), the S7 box (NEP) route sentence, the S10
+  S-L4 row (W-D4† added to its consumption).  **No PROVED consumer of
+  the rescoped clause:** PE1 verified, and this unit re-confirmed,
+  that S-THM(c) routes through (NEP) + S-L4(ii) + (iii)'s unrescoped
+  uniqueness half only — S-L0–S-L3 and S-THM statements byte-unchanged,
+  all grades unchanged.
+* **The PE1 census FOLDED (S8.b, instance grade):** 545 fresh-traced
+  rows, 0 violations on every PROVED lemma; FOUR new cancellation
+  instances (PXT3Z2 = MIXED-characteristic Zp p = 2; PXDEEP4F;
+  PXTRK1F; PXFLTF — all residue-char 2, all g₀ = 1, survivor = the
+  cascade slot at the cascade line on every one); NO p > 2 kill in the
+  probed class (the char-3 twins net nonzero); 37 characteristic-blind
+  opposite-sign equal-residue kills at g₀ = 2 — the sign-pair design
+  constraint now displayed in the S7 box; (SURV-DISJ) 486 + 545 rows,
+  0 counterexamples; (NEP) partnered 0 on every fresh g₀ = 1 row.  The
+  null-instrument decorrelation caveat (S0/S8(i)/F-E) is DISCHARGED.
+* **Notes disposition:** N-1 cured by the header echo repair (above);
+  N-2 (the S-L0(c) "two top exponents" wording; S-L2's S-L0(a)/(b)
+  cite) and N-3 (the E-L6 parenthetical is load-bearing for the
+  uniqueness half) stand RECORDED, not edited — S-L0–S-L3 statements
+  and proofs are byte-fenced this pass; N-4 is the favorable census,
+  folded at S8.b.
+* **Arc counter: 0/2 CLEAN** (GAPS-ONLY ≠ CLEAN; consecutive clean
+  passes still owed, atop the W-arc cap).  Round 2 = the Codex leg
+  post-reset, on THIS revision.

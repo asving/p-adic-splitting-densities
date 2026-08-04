@@ -1,0 +1,13038 @@
+{
+ "violations": [],
+ "counters": {
+  "px_casc_ok": 478,
+  "canc_bottom_group": 44,
+  "live_rows": 545,
+  "prt_rows": 39
+ },
+ "canchunt": [
+  {
+   "tower": "W3DEEPF",
+   "key": [
+    663,
+    667
+   ],
+   "p": 2,
+   "kind": "Fpt",
+   "g0": 1,
+   "cs": [
+    2,
+    1
+   ],
+   "D": 3,
+   "kdef": 1,
+   "beta_min": 456,
+   "wmQ1": 458,
+   "raw_bottom": [
+    [
+     [
+      0,
+      0,
+      0
+     ],
+     -1,
+     1,
+     0
+    ],
+    [
+     [
+      0,
+      0,
+      0
+     ],
+     -1,
+     1,
+     0
+    ]
+   ],
+   "surv_head": [
+    [
+     458,
+     [
+      0,
+      1,
+      0
+     ],
+     1
+    ]
+   ],
+   "surv_is_casc_slot": true
+  },
+  {
+   "tower": "EQ3T3F",
+   "key": [
+    831,
+    835
+   ],
+   "p": 2,
+   "kind": "Fpt",
+   "g0": 1,
+   "cs": [
+    2,
+    2
+   ],
+   "D": 4,
+   "kdef": 2,
+   "beta_min": 576,
+   "wmQ1": 579,
+   "raw_bottom": [
+    [
+     [
+      0,
+      0,
+      0
+     ],
+     -1,
+     1,
+     0
+    ],
+    [
+     [
+      0,
+      0,
+      0
+     ],
+     -1,
+     1,
+     0
+    ]
+   ],
+   "surv_head": [
+    [
+     579,
+     [
+      0,
+      1,
+      0
+     ],
+     1
+    ]
+   ],
+   "surv_is_casc_slot": true
+  },
+  {
+   "tower": "EQ3T3F",
+   "key": [
+    831,
+    835
+   ],
+   "p": 2,
+   "kind": "Fpt",
+   "g0": 1,
+   "cs": [
+    2,
+    2
+   ],
+   "D": 4,
+   "kdef": 2,
+   "beta_min": 576,
+   "wmQ1": 579,
+   "raw_bottom": [
+    [
+     [
+      0,
+      0,
+      0
+     ],
+     -1,
+     1,
+     0
+    ],
+    [
+     [
+      0,
+      0,
+      0
+     ],
+     -1,
+     1,
+     0
+    ]
+   ],
+   "surv_head": [
+    [
+     579,
+     [
+      0,
+      1,
+      0
+     ],
+     1
+    ]
+   ],
+   "surv_is_casc_slot": true
+  },
+  {
+   "tower": "PXT3Z2",
+   "key": [
+    831,
+    835
+   ],
+   "p": 2,
+   "kind": "Zp",
+   "g0": 1,
+   "cs": [
+    2,
+    2
+   ],
+   "D": 4,
+   "kdef": 2,
+   "beta_min": 576,
+   "wmQ1": 579,
+   "raw_bottom": [
+    [
+     [
+      0,
+      0,
+      0
+     ],
+     -1,
+     1,
+     0
+    ],
+    [
+     [
+      0,
+      0,
+      0
+     ],
+     -1,
+     1,
+     0
+    ]
+   ],
+   "surv_head": [
+    [
+     579,
+     [
+      0,
+      1,
+      0
+     ],
+     1
+    ],
+    [
+     594,
+     [
+      0,
+      0,
+      0
+     ],
+     2
+    ]
+   ],
+   "surv_is_casc_slot": true
+  },
+  {
+   "tower": "PXDEEP4F",
+   "key": [
+    1257,
+    1271
+   ],
+   "p": 2,
+   "kind": "Fpt",
+   "g0": 1,
+   "cs": [
+    2,
+    2
+   ],
+   "D": 2,
+   "kdef": 2,
+   "beta_min": 860,
+   "wmQ1": 862,
+   "raw_bottom": [
+    [
+     [
+      1,
+      0,
+      0
+     ],
+     -1,
+     1,
+     0
+    ],
+    [
+     [
+      1,
+      0,
+      0
+     ],
+     -1,
+     1,
+     0
+    ]
+   ],
+   "surv_head": [
+    [
+     862,
+     [
+      1,
+      1,
+      0
+     ],
+     1
+    ]
+   ],
+   "surv_is_casc_slot": true
+  },
+  {
+   "tower": "PXTRK1F",
+   "key": [
+    330,
+    335
+   ],
+   "p": 2,
+   "kind": "Fpt",
+   "g0": 1,
+   "cs": [
+    2,
+    2
+   ],
+   "D": 2,
+   "kdef": 2,
+   "beta_min": 564,
+   "wmQ1": 566,
+   "raw_bottom": [
+    [
+     [
+      0,
+      0,
+      0
+     ],
+     -1,
+     1,
+     0
+    ],
+    [
+     [
+      0,
+      0,
+      0
+     ],
+     -1,
+     1,
+     0
+    ]
+   ],
+   "surv_head": [
+    [
+     566,
+     [
+      0,
+      1,
+      0
+     ],
+     1
+    ]
+   ],
+   "surv_is_casc_slot": true
+  },
+  {
+   "tower": "PXFLTF",
+   "key": [
+    123,
+    123
+   ],
+   "p": 2,
+   "kind": "Fpt",
+   "g0": 1,
+   "cs": [
+    2,
+    2
+   ],
+   "D": 3,
+   "kdef": 1,
+   "beta_min": 90,
+   "wmQ1": 93,
+   "raw_bottom": [
+    [
+     [
+      0,
+      0,
+      0
+     ],
+     -1,
+     1,
+     0
+    ],
+    [
+     [
+      0,
+      0,
+      0
+     ],
+     -1,
+     1,
+     0
+    ]
+   ],
+   "surv_head": [
+    [
+     93,
+     [
+      0,
+      0,
+      1
+     ],
+     1
+    ]
+   ],
+   "surv_is_casc_slot": true
+  }
+ ],
+ "eqlgrp": [
+  {
+   "tower": "W3DEEPF",
+   "key": [
+    663,
+    667
+   ],
+   "p": 2,
+   "kind": "Fpt",
+   "g0": 1,
+   "slot": [
+    0,
+    0,
+    0
+   ],
+   "line": 456,
+   "n": 2,
+   "junks": [
+    0
+   ],
+   "ncorr": [
+    1
+   ],
+   "sgns": [
+    -1,
+    -1
+   ],
+   "res_equal": true,
+   "killed": true,
+   "at_bottom": true,
+   "at_casc_slot": false
+  },
+  {
+   "tower": "W3DEEP",
+   "key": [
+    663,
+    667
+   ],
+   "p": 3,
+   "kind": "Zp",
+   "g0": 1,
+   "slot": [
+    0,
+    0,
+    0
+   ],
+   "line": 456,
+   "n": 2,
+   "junks": [
+    0
+   ],
+   "ncorr": [
+    1
+   ],
+   "sgns": [
+    -1,
+    -1
+   ],
+   "res_equal": true,
+   "killed": false,
+   "at_bottom": true,
+   "at_casc_slot": false
+  },
+  {
+   "tower": "EQ3T3F",
+   "key": [
+    831,
+    835
+   ],
+   "p": 2,
+   "kind": "Fpt",
+   "g0": 1,
+   "slot": [
+    0,
+    0,
+    0
+   ],
+   "line": 576,
+   "n": 2,
+   "junks": [
+    0
+   ],
+   "ncorr": [
+    1
+   ],
+   "sgns": [
+    -1,
+    -1
+   ],
+   "res_equal": true,
+   "killed": true,
+   "at_bottom": true,
+   "at_casc_slot": false
+  },
+  {
+   "tower": "EQ3T3B",
+   "key": [
+    1479,
+    1497
+   ],
+   "p": 3,
+   "kind": "Zp",
+   "g0": 1,
+   "slot": [
+    0,
+    1,
+    0
+   ],
+   "line": 1011,
+   "n": 2,
+   "junks": [
+    0
+   ],
+   "ncorr": [
+    2
+   ],
+   "sgns": [
+    1,
+    1
+   ],
+   "res_equal": true,
+   "killed": false,
+   "at_bottom": false,
+   "at_casc_slot": false
+  },
+  {
+   "tower": "EQ3T3B",
+   "key": [
+    1479,
+    1497
+   ],
+   "p": 3,
+   "kind": "Zp",
+   "g0": 1,
+   "slot": [
+    0,
+    1,
+    0
+   ],
+   "line": 1029,
+   "n": 2,
+   "junks": [
+    1
+   ],
+   "ncorr": [
+    2
+   ],
+   "sgns": [
+    1,
+    1
+   ],
+   "res_equal": true,
+   "killed": false,
+   "at_bottom": false,
+   "at_casc_slot": false
+  },
+  {
+   "tower": "EQ3T3B",
+   "key": [
+    1497,
+    1503
+   ],
+   "p": 3,
+   "kind": "Zp",
+   "g0": 1,
+   "slot": [
+    1,
+    1,
+    0
+   ],
+   "line": 1023,
+   "n": 2,
+   "junks": [
+    0
+   ],
+   "ncorr": [
+    2
+   ],
+   "sgns": [
+    1,
+    1
+   ],
+   "res_equal": true,
+   "killed": false,
+   "at_bottom": false,
+   "at_casc_slot": false
+  },
+  {
+   "tower": "EQ3T3B",
+   "key": [
+    1497,
+    1503
+   ],
+   "p": 3,
+   "kind": "Zp",
+   "g0": 1,
+   "slot": [
+    1,
+    1,
+    0
+   ],
+   "line": 1041,
+   "n": 2,
+   "junks": [
+    1
+   ],
+   "ncorr": [
+    2
+   ],
+   "sgns": [
+    1,
+    1
+   ],
+   "res_equal": true,
+   "killed": false,
+   "at_bottom": false,
+   "at_casc_slot": false
+  },
+  {
+   "tower": "EQ3T3B",
+   "key": [
+    1479,
+    1479
+   ],
+   "p": 3,
+   "kind": "Zp",
+   "g0": 1,
+   "slot": [
+    2,
+    0,
+    1
+   ],
+   "line": 1004,
+   "n": 2,
+   "junks": [
+    0
+   ],
+   "ncorr": [
+    1
+   ],
+   "sgns": [
+    -1,
+    -1
+   ],
+   "res_equal": true,
+   "killed": false,
+   "at_bottom": false,
+   "at_casc_slot": false
+  },
+  {
+   "tower": "EQ3T3B",
+   "key": [
+    1479,
+    1479
+   ],
+   "p": 3,
+   "kind": "Zp",
+   "g0": 1,
+   "slot": [
+    2,
+    0,
+    1
+   ],
+   "line": 1022,
+   "n": 2,
+   "junks": [
+    1
+   ],
+   "ncorr": [
+    1
+   ],
+   "sgns": [
+    -1,
+    -1
+   ],
+   "res_equal": true,
+   "killed": false,
+   "at_bottom": false,
+   "at_casc_slot": false
+  },
+  {
+   "tower": "EQ3T3B",
+   "key": [
+    1479,
+    1503
+   ],
+   "p": 3,
+   "kind": "Zp",
+   "g0": 1,
+   "slot": [
+    2,
+    0,
+    0
+   ],
+   "line": 1014,
+   "n": 2,
+   "junks": [
+    0
+   ],
+   "ncorr": [
+    3
+   ],
+   "sgns": [
+    -1,
+    -1
+   ],
+   "res_equal": true,
+   "killed": false,
+   "at_bottom": false,
+   "at_casc_slot": false
+  },
+  {
+   "tower": "EQ3T3B",
+   "key": [
+    1479,
+    1503
+   ],
+   "p": 3,
+   "kind": "Zp",
+   "g0": 1,
+   "slot": [
+    0,
+    0,
+    1
+   ],
+   "line": 1016,
+   "n": 3,
+   "junks": [
+    0
+   ],
+   "ncorr": [
+    2
+   ],
+   "sgns": [
+    1,
+    1,
+    1
+   ],
+   "res_equal": true,
+   "killed": true,
+   "at_bottom": false,
+   "at_casc_slot": false
+  },
+  {
+   "tower": "EQ3T3B",
+   "key": [
+    1479,
+    1503
+   ],
+   "p": 3,
+   "kind": "Zp",
+   "g0": 1,
+   "slot": [
+    0,
+    1,
+    1
+   ],
+   "line": 1019,
+   "n": 2,
+   "junks": [
+    0
+   ],
+   "ncorr": [
+    1
+   ],
+   "sgns": [
+    -1,
+    -1
+   ],
+   "res_equal": true,
+   "killed": false,
+   "at_bottom": false,
+   "at_casc_slot": false
+  },
+  {
+   "tower": "EQ3T3B",
+   "key": [
+    1479,
+    1503
+   ],
+   "p": 3,
+   "kind": "Zp",
+   "g0": 1,
+   "slot": [
+    2,
+    0,
+    0
+   ],
+   "line": 1032,
+   "n": 2,
+   "junks": [
+    1
+   ],
+   "ncorr": [
+    3
+   ],
+   "sgns": [
+    -1,
+    -1
+   ],
+   "res_equal": true,
+   "killed": false,
+   "at_bottom": false,
+   "at_casc_slot": false
+  },
+  {
+   "tower": "EQ3T3B",
+   "key": [
+    1479,
+    1503
+   ],
+   "p": 3,
+   "kind": "Zp",
+   "g0": 1,
+   "slot": [
+    0,
+    0,
+    1
+   ],
+   "line": 1034,
+   "n": 3,
+   "junks": [
+    1
+   ],
+   "ncorr": [
+    2
+   ],
+   "sgns": [
+    1,
+    1,
+    1
+   ],
+   "res_equal": true,
+   "killed": true,
+   "at_bottom": false,
+   "at_casc_slot": false
+  },
+  {
+   "tower": "EQ3T3B",
+   "key": [
+    1479,
+    1503
+   ],
+   "p": 3,
+   "kind": "Zp",
+   "g0": 1,
+   "slot": [
+    0,
+    1,
+    1
+   ],
+   "line": 1037,
+   "n": 2,
+   "junks": [
+    1
+   ],
+   "ncorr": [
+    1
+   ],
+   "sgns": [
+    -1,
+    -1
+   ],
+   "res_equal": true,
+   "killed": false,
+   "at_bottom": false,
+   "at_casc_slot": false
+  },
+  {
+   "tower": "EQ3T3B",
+   "key": [
+    1491,
+    1503
+   ],
+   "p": 3,
+   "kind": "Zp",
+   "g0": 1,
+   "slot": [
+    2,
+    0,
+    1
+   ],
+   "line": 1022,
+   "n": 2,
+   "junks": [
+    0
+   ],
+   "ncorr": [
+    1
+   ],
+   "sgns": [
+    -1,
+    -1
+   ],
+   "res_equal": true,
+   "killed": false,
+   "at_bottom": false,
+   "at_casc_slot": false
+  },
+  {
+   "tower": "EQ3T3B",
+   "key": [
+    1491,
+    1503
+   ],
+   "p": 3,
+   "kind": "Zp",
+   "g0": 1,
+   "slot": [
+    2,
+    0,
+    1
+   ],
+   "line": 1040,
+   "n": 2,
+   "junks": [
+    1
+   ],
+   "ncorr": [
+    1
+   ],
+   "sgns": [
+    -1,
+    -1
+   ],
+   "res_equal": true,
+   "killed": false,
+   "at_bottom": false,
+   "at_casc_slot": false
+  },
+  {
+   "tower": "EQ3T3B",
+   "key": [
+    1503,
+    1503
+   ],
+   "p": 3,
+   "kind": "Zp",
+   "g0": 1,
+   "slot": [
+    0,
+    0,
+    0
+   ],
+   "line": 1026,
+   "n": 2,
+   "junks": [
+    0
+   ],
+   "ncorr": [
+    4
+   ],
+   "sgns": [
+    1,
+    1
+   ],
+   "res_equal": true,
+   "killed": false,
+   "at_bottom": false,
+   "at_casc_slot": false
+  },
+  {
+   "tower": "EQ3T3B",
+   "key": [
+    1503,
+    1503
+   ],
+   "p": 3,
+   "kind": "Zp",
+   "g0": 1,
+   "slot": [
+    1,
+    0,
+    1
+   ],
+   "line": 1028,
+   "n": 3,
+   "junks": [
+    0
+   ],
+   "ncorr": [
+    2
+   ],
+   "sgns": [
+    1,
+    1,
+    1
+   ],
+   "res_equal": true,
+   "killed": true,
+   "at_bottom": false,
+   "at_casc_slot": false
+  },
+  {
+   "tower": "EQ3T3B",
+   "key": [
+    1503,
+    1503
+   ],
+   "p": 3,
+   "kind": "Zp",
+   "g0": 1,
+   "slot": [
+    0,
+    1,
+    0
+   ],
+   "line": 1029,
+   "n": 3,
+   "junks": [
+    0
+   ],
+   "ncorr": [
+    3
+   ],
+   "sgns": [
+    -1,
+    -1,
+    -1
+   ],
+   "res_equal": true,
+   "killed": true,
+   "at_bottom": false,
+   "at_casc_slot": false
+  },
+  {
+   "tower": "EQ3T3B",
+   "key": [
+    1503,
+    1503
+   ],
+   "p": 3,
+   "kind": "Zp",
+   "g0": 1,
+   "slot": [
+    1,
+    1,
+    1
+   ],
+   "line": 1031,
+   "n": 2,
+   "junks": [
+    0
+   ],
+   "ncorr": [
+    1
+   ],
+   "sgns": [
+    -1,
+    -1
+   ],
+   "res_equal": true,
+   "killed": false,
+   "at_bottom": false,
+   "at_casc_slot": false
+  },
+  {
+   "tower": "EQ3T3B",
+   "key": [
+    1503,
+    1503
+   ],
+   "p": 3,
+   "kind": "Zp",
+   "g0": 1,
+   "slot": [
+    0,
+    0,
+    0
+   ],
+   "line": 1044,
+   "n": 2,
+   "junks": [
+    1
+   ],
+   "ncorr": [
+    4
+   ],
+   "sgns": [
+    1,
+    1
+   ],
+   "res_equal": true,
+   "killed": false,
+   "at_bottom": false,
+   "at_casc_slot": false
+  },
+  {
+   "tower": "EQ3T3B",
+   "key": [
+    1503,
+    1503
+   ],
+   "p": 3,
+   "kind": "Zp",
+   "g0": 1,
+   "slot": [
+    1,
+    0,
+    1
+   ],
+   "line": 1046,
+   "n": 3,
+   "junks": [
+    1
+   ],
+   "ncorr": [
+    2
+   ],
+   "sgns": [
+    1,
+    1,
+    1
+   ],
+   "res_equal": true,
+   "killed": true,
+   "at_bottom": false,
+   "at_casc_slot": false
+  },
+  {
+   "tower": "EQ3T3B",
+   "key": [
+    1503,
+    1503
+   ],
+   "p": 3,
+   "kind": "Zp",
+   "g0": 1,
+   "slot": [
+    0,
+    1,
+    0
+   ],
+   "line": 1047,
+   "n": 3,
+   "junks": [
+    1
+   ],
+   "ncorr": [
+    3
+   ],
+   "sgns": [
+    -1,
+    -1,
+    -1
+   ],
+   "res_equal": true,
+   "killed": true,
+   "at_bottom": false,
+   "at_casc_slot": false
+  },
+  {
+   "tower": "EQ3T3B",
+   "key": [
+    1503,
+    1503
+   ],
+   "p": 3,
+   "kind": "Zp",
+   "g0": 1,
+   "slot": [
+    1,
+    1,
+    1
+   ],
+   "line": 1049,
+   "n": 2,
+   "junks": [
+    1
+   ],
+   "ncorr": [
+    1
+   ],
+   "sgns": [
+    -1,
+    -1
+   ],
+   "res_equal": true,
+   "killed": false,
+   "at_bottom": false,
+   "at_casc_slot": false
+  },
+  {
+   "tower": "EQ3T3B",
+   "key": [
+    1503,
+    1503
+   ],
+   "p": 3,
+   "kind": "Zp",
+   "g0": 1,
+   "slot": [
+    2,
+    0,
+    0
+   ],
+   "line": 1050,
+   "n": 2,
+   "junks": [
+    1
+   ],
+   "ncorr": [
+    3
+   ],
+   "sgns": [
+    -1,
+    -1
+   ],
+   "res_equal": true,
+   "killed": false,
+   "at_bottom": false,
+   "at_casc_slot": false
+  },
+  {
+   "tower": "EQ3T3B",
+   "key": [
+    1479,
+    1487
+   ],
+   "p": 3,
+   "kind": "Zp",
+   "g0": 1,
+   "slot": [
+    0,
+    0,
+    0
+   ],
+   "line": 1008,
+   "n": 3,
+   "junks": [
+    0
+   ],
+   "ncorr": [
+    2
+   ],
+   "sgns": [
+    1,
+    1,
+    1
+   ],
+   "res_equal": true,
+   "killed": true,
+   "at_bottom": false,
+   "at_casc_slot": false
+  },
+  {
+   "tower": "EQ3T3B",
+   "key": [
+    1479,
+    1487
+   ],
+   "p": 3,
+   "kind": "Zp",
+   "g0": 1,
+   "slot": [
+    0,
+    1,
+    0
+   ],
+   "line": 1011,
+   "n": 2,
+   "junks": [
+    0
+   ],
+   "ncorr": [
+    1
+   ],
+   "sgns": [
+    -1,
+    -1
+   ],
+   "res_equal": true,
+   "killed": false,
+   "at_bottom": false,
+   "at_casc_slot": false
+  },
+  {
+   "tower": "EQ3T3B",
+   "key": [
+    1479,
+    1487
+   ],
+   "p": 3,
+   "kind": "Zp",
+   "g0": 1,
+   "slot": [
+    0,
+    0,
+    0
+   ],
+   "line": 1026,
+   "n": 3,
+   "junks": [
+    1
+   ],
+   "ncorr": [
+    2
+   ],
+   "sgns": [
+    1,
+    1,
+    1
+   ],
+   "res_equal": true,
+   "killed": true,
+   "at_bottom": false,
+   "at_casc_slot": false
+  },
+  {
+   "tower": "EQ3T3B",
+   "key": [
+    1479,
+    1487
+   ],
+   "p": 3,
+   "kind": "Zp",
+   "g0": 1,
+   "slot": [
+    0,
+    1,
+    0
+   ],
+   "line": 1029,
+   "n": 2,
+   "junks": [
+    1
+   ],
+   "ncorr": [
+    1
+   ],
+   "sgns": [
+    -1,
+    -1
+   ],
+   "res_equal": true,
+   "killed": false,
+   "at_bottom": false,
+   "at_casc_slot": false
+  },
+  {
+   "tower": "EQ3T3B",
+   "key": [
+    1479,
+    1499
+   ],
+   "p": 3,
+   "kind": "Zp",
+   "g0": 1,
+   "slot": [
+    2,
+    0,
+    0
+   ],
+   "line": 1014,
+   "n": 2,
+   "junks": [
+    0
+   ],
+   "ncorr": [
+    1
+   ],
+   "sgns": [
+    -1,
+    -1
+   ],
+   "res_equal": true,
+   "killed": false,
+   "at_bottom": false,
+   "at_casc_slot": false
+  },
+  {
+   "tower": "EQ3T3B",
+   "key": [
+    1479,
+    1499
+   ],
+   "p": 3,
+   "kind": "Zp",
+   "g0": 1,
+   "slot": [
+    2,
+    0,
+    0
+   ],
+   "line": 1032,
+   "n": 2,
+   "junks": [
+    1
+   ],
+   "ncorr": [
+    1
+   ],
+   "sgns": [
+    -1,
+    -1
+   ],
+   "res_equal": true,
+   "killed": false,
+   "at_bottom": false,
+   "at_casc_slot": false
+  },
+  {
+   "tower": "EQ3T3B",
+   "key": [
+    1487,
+    1491
+   ],
+   "p": 3,
+   "kind": "Zp",
+   "g0": 1,
+   "slot": [
+    2,
+    0,
+    0
+   ],
+   "line": 1014,
+   "n": 2,
+   "junks": [
+    0
+   ],
+   "ncorr": [
+    1
+   ],
+   "sgns": [
+    -1,
+    -1
+   ],
+   "res_equal": true,
+   "killed": false,
+   "at_bottom": false,
+   "at_casc_slot": false
+  },
+  {
+   "tower": "EQ3T3B",
+   "key": [
+    1487,
+    1491
+   ],
+   "p": 3,
+   "kind": "Zp",
+   "g0": 1,
+   "slot": [
+    2,
+    0,
+    0
+   ],
+   "line": 1032,
+   "n": 2,
+   "junks": [
+    1
+   ],
+   "ncorr": [
+    1
+   ],
+   "sgns": [
+    -1,
+    -1
+   ],
+   "res_equal": true,
+   "killed": false,
+   "at_bottom": false,
+   "at_casc_slot": false
+  },
+  {
+   "tower": "EQ3T3B",
+   "key": [
+    1487,
+    1503
+   ],
+   "p": 3,
+   "kind": "Zp",
+   "g0": 1,
+   "slot": [
+    1,
+    0,
+    0
+   ],
+   "line": 1020,
+   "n": 3,
+   "junks": [
+    0
+   ],
+   "ncorr": [
+    2
+   ],
+   "sgns": [
+    1,
+    1,
+    1
+   ],
+   "res_equal": true,
+   "killed": true,
+   "at_bottom": false,
+   "at_casc_slot": false
+  },
+  {
+   "tower": "EQ3T3B",
+   "key": [
+    1487,
+    1503
+   ],
+   "p": 3,
+   "kind": "Zp",
+   "g0": 1,
+   "slot": [
+    1,
+    1,
+    0
+   ],
+   "line": 1023,
+   "n": 2,
+   "junks": [
+    0
+   ],
+   "ncorr": [
+    1
+   ],
+   "sgns": [
+    -1,
+    -1
+   ],
+   "res_equal": true,
+   "killed": false,
+   "at_bottom": false,
+   "at_casc_slot": false
+  },
+  {
+   "tower": "EQ3T3B",
+   "key": [
+    1487,
+    1503
+   ],
+   "p": 3,
+   "kind": "Zp",
+   "g0": 1,
+   "slot": [
+    1,
+    0,
+    0
+   ],
+   "line": 1038,
+   "n": 3,
+   "junks": [
+    1
+   ],
+   "ncorr": [
+    2
+   ],
+   "sgns": [
+    1,
+    1,
+    1
+   ],
+   "res_equal": true,
+   "killed": true,
+   "at_bottom": false,
+   "at_casc_slot": false
+  },
+  {
+   "tower": "EQ3T3B",
+   "key": [
+    1487,
+    1503
+   ],
+   "p": 3,
+   "kind": "Zp",
+   "g0": 1,
+   "slot": [
+    1,
+    1,
+    0
+   ],
+   "line": 1041,
+   "n": 2,
+   "junks": [
+    1
+   ],
+   "ncorr": [
+    1
+   ],
+   "sgns": [
+    -1,
+    -1
+   ],
+   "res_equal": true,
+   "killed": false,
+   "at_bottom": false,
+   "at_casc_slot": false
+  },
+  {
+   "tower": "EQ3T3B",
+   "key": [
+    1499,
+    1503
+   ],
+   "p": 3,
+   "kind": "Zp",
+   "g0": 1,
+   "slot": [
+    0,
+    0,
+    0
+   ],
+   "line": 1026,
+   "n": 3,
+   "junks": [
+    0
+   ],
+   "ncorr": [
+    2
+   ],
+   "sgns": [
+    1,
+    1,
+    1
+   ],
+   "res_equal": true,
+   "killed": true,
+   "at_bottom": false,
+   "at_casc_slot": false
+  },
+  {
+   "tower": "EQ3T3B",
+   "key": [
+    1499,
+    1503
+   ],
+   "p": 3,
+   "kind": "Zp",
+   "g0": 1,
+   "slot": [
+    0,
+    1,
+    0
+   ],
+   "line": 1029,
+   "n": 2,
+   "junks": [
+    0
+   ],
+   "ncorr": [
+    1
+   ],
+   "sgns": [
+    -1,
+    -1
+   ],
+   "res_equal": true,
+   "killed": false,
+   "at_bottom": false,
+   "at_casc_slot": false
+  },
+  {
+   "tower": "EQ3T3B",
+   "key": [
+    1499,
+    1503
+   ],
+   "p": 3,
+   "kind": "Zp",
+   "g0": 1,
+   "slot": [
+    0,
+    0,
+    0
+   ],
+   "line": 1044,
+   "n": 3,
+   "junks": [
+    1
+   ],
+   "ncorr": [
+    2
+   ],
+   "sgns": [
+    1,
+    1,
+    1
+   ],
+   "res_equal": true,
+   "killed": true,
+   "at_bottom": false,
+   "at_casc_slot": false
+  },
+  {
+   "tower": "EQ3T3B",
+   "key": [
+    1499,
+    1503
+   ],
+   "p": 3,
+   "kind": "Zp",
+   "g0": 1,
+   "slot": [
+    0,
+    1,
+    0
+   ],
+   "line": 1047,
+   "n": 2,
+   "junks": [
+    1
+   ],
+   "ncorr": [
+    1
+   ],
+   "sgns": [
+    -1,
+    -1
+   ],
+   "res_equal": true,
+   "killed": false,
+   "at_bottom": false,
+   "at_casc_slot": false
+  },
+  {
+   "tower": "EQ3T3B",
+   "key": [
+    1503,
+    1511
+   ],
+   "p": 3,
+   "kind": "Zp",
+   "g0": 1,
+   "slot": [
+    2,
+    0,
+    0
+   ],
+   "line": 1032,
+   "n": 2,
+   "junks": [
+    0
+   ],
+   "ncorr": [
+    1
+   ],
+   "sgns": [
+    -1,
+    -1
+   ],
+   "res_equal": true,
+   "killed": false,
+   "at_bottom": false,
+   "at_casc_slot": false
+  },
+  {
+   "tower": "EQ3T3B",
+   "key": [
+    1503,
+    1511
+   ],
+   "p": 3,
+   "kind": "Zp",
+   "g0": 1,
+   "slot": [
+    2,
+    0,
+    0
+   ],
+   "line": 1050,
+   "n": 2,
+   "junks": [
+    1
+   ],
+   "ncorr": [
+    1
+   ],
+   "sgns": [
+    -1,
+    -1
+   ],
+   "res_equal": true,
+   "killed": false,
+   "at_bottom": false,
+   "at_casc_slot": false
+  },
+  {
+   "tower": "EQ3T4B",
+   "key": [
+    4931,
+    4931
+   ],
+   "p": 3,
+   "kind": "Zp",
+   "g0": 1,
+   "slot": [
+    0,
+    1,
+    1
+   ],
+   "line": 3311,
+   "n": 2,
+   "junks": [
+    0
+   ],
+   "ncorr": [
+    2
+   ],
+   "sgns": [
+    1,
+    1
+   ],
+   "res_equal": true,
+   "killed": false,
+   "at_bottom": false,
+   "at_casc_slot": false
+  },
+  {
+   "tower": "EQ3T4B",
+   "key": [
+    4931,
+    4979
+   ],
+   "p": 3,
+   "kind": "Zp",
+   "g0": 1,
+   "slot": [
+    1,
+    1,
+    1
+   ],
+   "line": 3335,
+   "n": 2,
+   "junks": [
+    0
+   ],
+   "ncorr": [
+    2
+   ],
+   "sgns": [
+    1,
+    1
+   ],
+   "res_equal": true,
+   "killed": false,
+   "at_bottom": false,
+   "at_casc_slot": false
+  },
+  {
+   "tower": "EQ3T4B",
+   "key": [
+    4947,
+    4979
+   ],
+   "p": 3,
+   "kind": "Zp",
+   "g0": 1,
+   "slot": [
+    0,
+    1,
+    1
+   ],
+   "line": 3343,
+   "n": 2,
+   "junks": [
+    0
+   ],
+   "ncorr": [
+    2
+   ],
+   "sgns": [
+    1,
+    1
+   ],
+   "res_equal": true,
+   "killed": false,
+   "at_bottom": false,
+   "at_casc_slot": false
+  },
+  {
+   "tower": "EQ3T4B",
+   "key": [
+    4931,
+    4957
+   ],
+   "p": 3,
+   "kind": "Zp",
+   "g0": 1,
+   "slot": [
+    1,
+    1,
+    0
+   ],
+   "line": 3324,
+   "n": 2,
+   "junks": [
+    0
+   ],
+   "ncorr": [
+    2
+   ],
+   "sgns": [
+    1,
+    1
+   ],
+   "res_equal": true,
+   "killed": false,
+   "at_bottom": false,
+   "at_casc_slot": false
+  },
+  {
+   "tower": "EQ3T4B",
+   "key": [
+    4931,
+    4973
+   ],
+   "p": 3,
+   "kind": "Zp",
+   "g0": 1,
+   "slot": [
+    0,
+    1,
+    0
+   ],
+   "line": 3332,
+   "n": 2,
+   "junks": [
+    0
+   ],
+   "ncorr": [
+    2
+   ],
+   "sgns": [
+    1,
+    1
+   ],
+   "res_equal": true,
+   "killed": false,
+   "at_bottom": false,
+   "at_casc_slot": false
+  },
+  {
+   "tower": "EQ3T4C",
+   "key": [
+    1075,
+    1075
+   ],
+   "p": 3,
+   "kind": "Zp",
+   "g0": 1,
+   "slot": [
+    0,
+    1,
+    1
+   ],
+   "line": 735,
+   "n": 2,
+   "junks": [
+    0
+   ],
+   "ncorr": [
+    2
+   ],
+   "sgns": [
+    1,
+    1
+   ],
+   "res_equal": true,
+   "killed": false,
+   "at_bottom": false,
+   "at_casc_slot": false
+  },
+  {
+   "tower": "EQ3T4C",
+   "key": [
+    1075,
+    1085
+   ],
+   "p": 3,
+   "kind": "Zp",
+   "g0": 1,
+   "slot": [
+    0,
+    1,
+    0
+   ],
+   "line": 740,
+   "n": 2,
+   "junks": [
+    0
+   ],
+   "ncorr": [
+    2
+   ],
+   "sgns": [
+    1,
+    1
+   ],
+   "res_equal": true,
+   "killed": false,
+   "at_bottom": false,
+   "at_casc_slot": false
+  },
+  {
+   "tower": "EQ3T3F",
+   "key": [
+    831,
+    849
+   ],
+   "p": 2,
+   "kind": "Fpt",
+   "g0": 1,
+   "slot": [
+    0,
+    1,
+    0
+   ],
+   "line": 579,
+   "n": 2,
+   "junks": [
+    0
+   ],
+   "ncorr": [
+    2
+   ],
+   "sgns": [
+    1,
+    1
+   ],
+   "res_equal": true,
+   "killed": true,
+   "at_bottom": false,
+   "at_casc_slot": false
+  },
+  {
+   "tower": "EQ3T3F",
+   "key": [
+    831,
+    831
+   ],
+   "p": 2,
+   "kind": "Fpt",
+   "g0": 1,
+   "slot": [
+    2,
+    0,
+    0
+   ],
+   "line": 570,
+   "n": 2,
+   "junks": [
+    0
+   ],
+   "ncorr": [
+    3
+   ],
+   "sgns": [
+    -1,
+    -1
+   ],
+   "res_equal": true,
+   "killed": true,
+   "at_bottom": false,
+   "at_casc_slot": false
+  },
+  {
+   "tower": "EQ3T3F",
+   "key": [
+    831,
+    831
+   ],
+   "p": 2,
+   "kind": "Fpt",
+   "g0": 1,
+   "slot": [
+    1,
+    0,
+    1
+   ],
+   "line": 572,
+   "n": 4,
+   "junks": [
+    0
+   ],
+   "ncorr": [
+    2
+   ],
+   "sgns": [
+    1,
+    1,
+    1,
+    1
+   ],
+   "res_equal": true,
+   "killed": true,
+   "at_bottom": false,
+   "at_casc_slot": false
+  },
+  {
+   "tower": "EQ3T3F",
+   "key": [
+    831,
+    831
+   ],
+   "p": 2,
+   "kind": "Fpt",
+   "g0": 1,
+   "slot": [
+    0,
+    0,
+    2
+   ],
+   "line": 574,
+   "n": 2,
+   "junks": [
+    0
+   ],
+   "ncorr": [
+    1
+   ],
+   "sgns": [
+    -1,
+    -1
+   ],
+   "res_equal": true,
+   "killed": true,
+   "at_bottom": false,
+   "at_casc_slot": false
+  },
+  {
+   "tower": "EQ3T3F",
+   "key": [
+    831,
+    831
+   ],
+   "p": 2,
+   "kind": "Fpt",
+   "g0": 1,
+   "slot": [
+    1,
+    1,
+    1
+   ],
+   "line": 575,
+   "n": 2,
+   "junks": [
+    0
+   ],
+   "ncorr": [
+    1
+   ],
+   "sgns": [
+    -1,
+    -1
+   ],
+   "res_equal": true,
+   "killed": true,
+   "at_bottom": false,
+   "at_casc_slot": false
+  },
+  {
+   "tower": "EQ3T3F",
+   "key": [
+    831,
+    843
+   ],
+   "p": 2,
+   "kind": "Fpt",
+   "g0": 1,
+   "slot": [
+    2,
+    0,
+    1
+   ],
+   "line": 578,
+   "n": 2,
+   "junks": [
+    0
+   ],
+   "ncorr": [
+    1
+   ],
+   "sgns": [
+    -1,
+    -1
+   ],
+   "res_equal": true,
+   "killed": true,
+   "at_bottom": false,
+   "at_casc_slot": false
+  },
+  {
+   "tower": "EQ3T3F",
+   "key": [
+    831,
+    855
+   ],
+   "p": 2,
+   "kind": "Fpt",
+   "g0": 1,
+   "slot": [
+    1,
+    0,
+    0
+   ],
+   "line": 582,
+   "n": 2,
+   "junks": [
+    0
+   ],
+   "ncorr": [
+    3
+   ],
+   "sgns": [
+    -1,
+    -1
+   ],
+   "res_equal": true,
+   "killed": true,
+   "at_bottom": false,
+   "at_casc_slot": false
+  },
+  {
+   "tower": "EQ3T3F",
+   "key": [
+    831,
+    855
+   ],
+   "p": 2,
+   "kind": "Fpt",
+   "g0": 1,
+   "slot": [
+    0,
+    0,
+    1
+   ],
+   "line": 584,
+   "n": 3,
+   "junks": [
+    0
+   ],
+   "ncorr": [
+    2
+   ],
+   "sgns": [
+    1,
+    1,
+    1
+   ],
+   "res_equal": true,
+   "killed": false,
+   "at_bottom": false,
+   "at_casc_slot": false
+  },
+  {
+   "tower": "EQ3T3F",
+   "key": [
+    831,
+    855
+   ],
+   "p": 2,
+   "kind": "Fpt",
+   "g0": 1,
+   "slot": [
+    0,
+    1,
+    1
+   ],
+   "line": 587,
+   "n": 2,
+   "junks": [
+    0
+   ],
+   "ncorr": [
+    1
+   ],
+   "sgns": [
+    -1,
+    -1
+   ],
+   "res_equal": true,
+   "killed": true,
+   "at_bottom": false,
+   "at_casc_slot": false
+  },
+  {
+   "tower": "EQ3T3F",
+   "key": [
+    831,
+    861
+   ],
+   "p": 2,
+   "kind": "Fpt",
+   "g0": 1,
+   "slot": [
+    1,
+    1,
+    0
+   ],
+   "line": 585,
+   "n": 2,
+   "junks": [
+    0
+   ],
+   "ncorr": [
+    2
+   ],
+   "sgns": [
+    1,
+    1
+   ],
+   "res_equal": true,
+   "killed": true,
+   "at_bottom": false,
+   "at_casc_slot": false
+  },
+  {
+   "tower": "EQ3T3F",
+   "key": [
+    831,
+    861
+   ],
+   "p": 2,
+   "kind": "Fpt",
+   "g0": 1,
+   "slot": [
+    0,
+    1,
+    1
+   ],
+   "line": 587,
+   "n": 2,
+   "junks": [
+    0
+   ],
+   "ncorr": [
+    1
+   ],
+   "sgns": [
+    -1,
+    -1
+   ],
+   "res_equal": true,
+   "killed": true,
+   "at_bottom": false,
+   "at_casc_slot": false
+  },
+  {
+   "tower": "EQ3T3F",
+   "key": [
+    831,
+    861
+   ],
+   "p": 2,
+   "kind": "Fpt",
+   "g0": 1,
+   "slot": [
+    1,
+    0,
+    1
+   ],
+   "line": 590,
+   "n": 2,
+   "junks": [
+    0
+   ],
+   "ncorr": [
+    1
+   ],
+   "sgns": [
+    -1,
+    -1
+   ],
+   "res_equal": true,
+   "killed": true,
+   "at_bottom": false,
+   "at_casc_slot": false
+  },
+  {
+   "tower": "EQ3T3F",
+   "key": [
+    843,
+    855
+   ],
+   "p": 2,
+   "kind": "Fpt",
+   "g0": 1,
+   "slot": [
+    1,
+    0,
+    1
+   ],
+   "line": 590,
+   "n": 2,
+   "junks": [
+    0
+   ],
+   "ncorr": [
+    1
+   ],
+   "sgns": [
+    -1,
+    -1
+   ],
+   "res_equal": true,
+   "killed": true,
+   "at_bottom": false,
+   "at_casc_slot": false
+  },
+  {
+   "tower": "EQ3T3F",
+   "key": [
+    855,
+    855
+   ],
+   "p": 2,
+   "kind": "Fpt",
+   "g0": 1,
+   "slot": [
+    2,
+    0,
+    1
+   ],
+   "line": 596,
+   "n": 2,
+   "junks": [
+    0
+   ],
+   "ncorr": [
+    1
+   ],
+   "sgns": [
+    -1,
+    -1
+   ],
+   "res_equal": true,
+   "killed": true,
+   "at_bottom": false,
+   "at_casc_slot": false
+  },
+  {
+   "tower": "EQ3T3F",
+   "key": [
+    831,
+    839
+   ],
+   "p": 2,
+   "kind": "Fpt",
+   "g0": 1,
+   "slot": [
+    0,
+    0,
+    0
+   ],
+   "line": 576,
+   "n": 3,
+   "junks": [
+    0
+   ],
+   "ncorr": [
+    2
+   ],
+   "sgns": [
+    1,
+    1,
+    1
+   ],
+   "res_equal": true,
+   "killed": false,
+   "at_bottom": false,
+   "at_casc_slot": false
+  },
+  {
+   "tower": "EQ3T3F",
+   "key": [
+    831,
+    839
+   ],
+   "p": 2,
+   "kind": "Fpt",
+   "g0": 1,
+   "slot": [
+    0,
+    1,
+    0
+   ],
+   "line": 579,
+   "n": 2,
+   "junks": [
+    0
+   ],
+   "ncorr": [
+    1
+   ],
+   "sgns": [
+    -1,
+    -1
+   ],
+   "res_equal": true,
+   "killed": true,
+   "at_bottom": false,
+   "at_casc_slot": false
+  },
+  {
+   "tower": "EQ3T3F",
+   "key": [
+    831,
+    845
+   ],
+   "p": 2,
+   "kind": "Fpt",
+   "g0": 1,
+   "slot": [
+    0,
+    1,
+    0
+   ],
+   "line": 579,
+   "n": 2,
+   "junks": [
+    0
+   ],
+   "ncorr": [
+    1
+   ],
+   "sgns": [
+    -1,
+    -1
+   ],
+   "res_equal": true,
+   "killed": true,
+   "at_bottom": false,
+   "at_casc_slot": false
+  },
+  {
+   "tower": "EQ3T3F",
+   "key": [
+    831,
+    845
+   ],
+   "p": 2,
+   "kind": "Fpt",
+   "g0": 1,
+   "slot": [
+    1,
+    0,
+    0
+   ],
+   "line": 582,
+   "n": 2,
+   "junks": [
+    0
+   ],
+   "ncorr": [
+    1
+   ],
+   "sgns": [
+    -1,
+    -1
+   ],
+   "res_equal": true,
+   "killed": true,
+   "at_bottom": false,
+   "at_casc_slot": false
+  },
+  {
+   "tower": "EQ3T3F",
+   "key": [
+    831,
+    851
+   ],
+   "p": 2,
+   "kind": "Fpt",
+   "g0": 1,
+   "slot": [
+    1,
+    0,
+    0
+   ],
+   "line": 582,
+   "n": 4,
+   "junks": [
+    0
+   ],
+   "ncorr": [
+    2
+   ],
+   "sgns": [
+    1,
+    1,
+    1,
+    1
+   ],
+   "res_equal": true,
+   "killed": true,
+   "at_bottom": false,
+   "at_casc_slot": false
+  },
+  {
+   "tower": "EQ3T3F",
+   "key": [
+    831,
+    851
+   ],
+   "p": 2,
+   "kind": "Fpt",
+   "g0": 1,
+   "slot": [
+    0,
+    0,
+    1
+   ],
+   "line": 584,
+   "n": 2,
+   "junks": [
+    0
+   ],
+   "ncorr": [
+    1
+   ],
+   "sgns": [
+    -1,
+    -1
+   ],
+   "res_equal": true,
+   "killed": true,
+   "at_bottom": false,
+   "at_casc_slot": false
+  },
+  {
+   "tower": "EQ3T3F",
+   "key": [
+    831,
+    851
+   ],
+   "p": 2,
+   "kind": "Fpt",
+   "g0": 1,
+   "slot": [
+    1,
+    1,
+    0
+   ],
+   "line": 585,
+   "n": 2,
+   "junks": [
+    0
+   ],
+   "ncorr": [
+    1
+   ],
+   "sgns": [
+    -1,
+    -1
+   ],
+   "res_equal": true,
+   "killed": true,
+   "at_bottom": false,
+   "at_casc_slot": false
+  },
+  {
+   "tower": "EQ3T3F",
+   "key": [
+    831,
+    863
+   ],
+   "p": 2,
+   "kind": "Fpt",
+   "g0": 1,
+   "slot": [
+    2,
+    0,
+    0
+   ],
+   "line": 588,
+   "n": 2,
+   "junks": [
+    0
+   ],
+   "ncorr": [
+    1
+   ],
+   "sgns": [
+    -1,
+    -1
+   ],
+   "res_equal": true,
+   "killed": true,
+   "at_bottom": false,
+   "at_casc_slot": false
+  },
+  {
+   "tower": "EQ3T3F",
+   "key": [
+    839,
+    843
+   ],
+   "p": 2,
+   "kind": "Fpt",
+   "g0": 1,
+   "slot": [
+    1,
+    0,
+    0
+   ],
+   "line": 582,
+   "n": 2,
+   "junks": [
+    0
+   ],
+   "ncorr": [
+    1
+   ],
+   "sgns": [
+    -1,
+    -1
+   ],
+   "res_equal": true,
+   "killed": true,
+   "at_bottom": false,
+   "at_casc_slot": false
+  },
+  {
+   "tower": "EQ3T3F",
+   "key": [
+    839,
+    855
+   ],
+   "p": 2,
+   "kind": "Fpt",
+   "g0": 1,
+   "slot": [
+    2,
+    0,
+    0
+   ],
+   "line": 588,
+   "n": 2,
+   "junks": [
+    0
+   ],
+   "ncorr": [
+    1
+   ],
+   "sgns": [
+    -1,
+    -1
+   ],
+   "res_equal": true,
+   "killed": true,
+   "at_bottom": false,
+   "at_casc_slot": false
+  },
+  {
+   "tower": "EQ3T3F",
+   "key": [
+    843,
+    851
+   ],
+   "p": 2,
+   "kind": "Fpt",
+   "g0": 1,
+   "slot": [
+    2,
+    0,
+    0
+   ],
+   "line": 588,
+   "n": 2,
+   "junks": [
+    0
+   ],
+   "ncorr": [
+    1
+   ],
+   "sgns": [
+    -1,
+    -1
+   ],
+   "res_equal": true,
+   "killed": true,
+   "at_bottom": false,
+   "at_casc_slot": false
+  },
+  {
+   "tower": "EQ3T3F",
+   "key": [
+    851,
+    855
+   ],
+   "p": 2,
+   "kind": "Fpt",
+   "g0": 1,
+   "slot": [
+    0,
+    0,
+    0
+   ],
+   "line": 594,
+   "n": 3,
+   "junks": [
+    0
+   ],
+   "ncorr": [
+    2
+   ],
+   "sgns": [
+    1,
+    1,
+    1
+   ],
+   "res_equal": true,
+   "killed": false,
+   "at_bottom": false,
+   "at_casc_slot": false
+  },
+  {
+   "tower": "EQ3T3F",
+   "key": [
+    851,
+    855
+   ],
+   "p": 2,
+   "kind": "Fpt",
+   "g0": 1,
+   "slot": [
+    0,
+    1,
+    0
+   ],
+   "line": 597,
+   "n": 2,
+   "junks": [
+    0
+   ],
+   "ncorr": [
+    1
+   ],
+   "sgns": [
+    -1,
+    -1
+   ],
+   "res_equal": true,
+   "killed": true,
+   "at_bottom": false,
+   "at_casc_slot": false
+  },
+  {
+   "tower": "EQ3T3F",
+   "key": [
+    851,
+    861
+   ],
+   "p": 2,
+   "kind": "Fpt",
+   "g0": 1,
+   "slot": [
+    0,
+    1,
+    0
+   ],
+   "line": 597,
+   "n": 2,
+   "junks": [
+    0
+   ],
+   "ncorr": [
+    1
+   ],
+   "sgns": [
+    -1,
+    -1
+   ],
+   "res_equal": true,
+   "killed": true,
+   "at_bottom": false,
+   "at_casc_slot": false
+  },
+  {
+   "tower": "EQ3T3F",
+   "key": [
+    851,
+    861
+   ],
+   "p": 2,
+   "kind": "Fpt",
+   "g0": 1,
+   "slot": [
+    1,
+    0,
+    0
+   ],
+   "line": 600,
+   "n": 2,
+   "junks": [
+    0
+   ],
+   "ncorr": [
+    1
+   ],
+   "sgns": [
+    -1,
+    -1
+   ],
+   "res_equal": true,
+   "killed": true,
+   "at_bottom": false,
+   "at_casc_slot": false
+  },
+  {
+   "tower": "EQ3T3F",
+   "key": [
+    855,
+    863
+   ],
+   "p": 2,
+   "kind": "Fpt",
+   "g0": 1,
+   "slot": [
+    1,
+    0,
+    0
+   ],
+   "line": 600,
+   "n": 2,
+   "junks": [
+    0
+   ],
+   "ncorr": [
+    1
+   ],
+   "sgns": [
+    -1,
+    -1
+   ],
+   "res_equal": true,
+   "killed": true,
+   "at_bottom": false,
+   "at_casc_slot": false
+  },
+  {
+   "tower": "EQ3T3F",
+   "key": [
+    831,
+    835
+   ],
+   "p": 2,
+   "kind": "Fpt",
+   "g0": 1,
+   "slot": [
+    0,
+    0,
+    0
+   ],
+   "line": 576,
+   "n": 2,
+   "junks": [
+    0
+   ],
+   "ncorr": [
+    1
+   ],
+   "sgns": [
+    -1,
+    -1
+   ],
+   "res_equal": true,
+   "killed": true,
+   "at_bottom": true,
+   "at_casc_slot": false
+  },
+  {
+   "tower": "EQ3G2A",
+   "key": [
+    2309,
+    2309
+   ],
+   "p": 3,
+   "kind": "Zp",
+   "g0": 2,
+   "slot": [
+    2,
+    0,
+    0
+   ],
+   "line": 1548,
+   "n": 2,
+   "junks": [
+    0
+   ],
+   "ncorr": [
+    0,
+    1
+   ],
+   "sgns": [
+    -1,
+    1
+   ],
+   "res_equal": false,
+   "killed": false,
+   "at_bottom": true,
+   "at_casc_slot": true
+  },
+  {
+   "tower": "EQ3G2A",
+   "key": [
+    2309,
+    2321
+   ],
+   "p": 3,
+   "kind": "Zp",
+   "g0": 2,
+   "slot": [
+    2,
+    1,
+    0
+   ],
+   "line": 1554,
+   "n": 2,
+   "junks": [
+    0
+   ],
+   "ncorr": [
+    0,
+    1
+   ],
+   "sgns": [
+    -1,
+    1
+   ],
+   "res_equal": false,
+   "killed": false,
+   "at_bottom": true,
+   "at_casc_slot": true
+  },
+  {
+   "tower": "EQ3G2A",
+   "key": [
+    2321,
+    2333
+   ],
+   "p": 3,
+   "kind": "Zp",
+   "g0": 2,
+   "slot": [
+    2,
+    0,
+    0
+   ],
+   "line": 1566,
+   "n": 2,
+   "junks": [
+    0
+   ],
+   "ncorr": [
+    0,
+    1
+   ],
+   "sgns": [
+    -1,
+    1
+   ],
+   "res_equal": false,
+   "killed": false,
+   "at_bottom": true,
+   "at_casc_slot": true
+  },
+  {
+   "tower": "EQ3G2A",
+   "key": [
+    2321,
+    2339
+   ],
+   "p": 3,
+   "kind": "Zp",
+   "g0": 2,
+   "slot": [
+    0,
+    0,
+    0
+   ],
+   "line": 1584,
+   "n": 3,
+   "junks": [
+    1
+   ],
+   "ncorr": [
+    1,
+    2
+   ],
+   "sgns": [
+    -1,
+    1,
+    1
+   ],
+   "res_equal": false,
+   "killed": false,
+   "at_bottom": false,
+   "at_casc_slot": false
+  },
+  {
+   "tower": "EQ3G2A",
+   "key": [
+    2321,
+    2321
+   ],
+   "p": 3,
+   "kind": "Zp",
+   "g0": 2,
+   "slot": [
+    2,
+    2,
+    0
+   ],
+   "line": 1560,
+   "n": 2,
+   "junks": [
+    0
+   ],
+   "ncorr": [
+    0,
+    1
+   ],
+   "sgns": [
+    -1,
+    1
+   ],
+   "res_equal": false,
+   "killed": false,
+   "at_bottom": true,
+   "at_casc_slot": true
+  },
+  {
+   "tower": "EQ3G2A",
+   "key": [
+    2321,
+    2321
+   ],
+   "p": 3,
+   "kind": "Zp",
+   "g0": 2,
+   "slot": [
+    2,
+    0,
+    0
+   ],
+   "line": 1566,
+   "n": 2,
+   "junks": [
+    0
+   ],
+   "ncorr": [
+    1
+   ],
+   "sgns": [
+    -1,
+    -1
+   ],
+   "res_equal": true,
+   "killed": false,
+   "at_bottom": false,
+   "at_casc_slot": false
+  },
+  {
+   "tower": "EQ3G2A",
+   "key": [
+    2321,
+    2321
+   ],
+   "p": 3,
+   "kind": "Zp",
+   "g0": 2,
+   "slot": [
+    0,
+    0,
+    0
+   ],
+   "line": 1566,
+   "n": 4,
+   "junks": [
+    0
+   ],
+   "ncorr": [
+    1,
+    2
+   ],
+   "sgns": [
+    -1,
+    -1,
+    -1,
+    1
+   ],
+   "res_equal": false,
+   "killed": false,
+   "at_bottom": false,
+   "at_casc_slot": false
+  },
+  {
+   "tower": "EQ3G2A",
+   "key": [
+    2321,
+    2321
+   ],
+   "p": 3,
+   "kind": "Zp",
+   "g0": 2,
+   "slot": [
+    3,
+    0,
+    0
+   ],
+   "line": 1575,
+   "n": 2,
+   "junks": [
+    1
+   ],
+   "ncorr": [
+    1
+   ],
+   "sgns": [
+    -1,
+    -1
+   ],
+   "res_equal": true,
+   "killed": false,
+   "at_bottom": false,
+   "at_casc_slot": false
+  },
+  {
+   "tower": "EQ3G2A",
+   "key": [
+    2321,
+    2321
+   ],
+   "p": 3,
+   "kind": "Zp",
+   "g0": 2,
+   "slot": [
+    1,
+    0,
+    0
+   ],
+   "line": 1575,
+   "n": 3,
+   "junks": [
+    1
+   ],
+   "ncorr": [
+    1,
+    2
+   ],
+   "sgns": [
+    -1,
+    1,
+    1
+   ],
+   "res_equal": false,
+   "killed": false,
+   "at_bottom": false,
+   "at_casc_slot": false
+  },
+  {
+   "tower": "EQ3G2A",
+   "key": [
+    2321,
+    2321
+   ],
+   "p": 3,
+   "kind": "Zp",
+   "g0": 2,
+   "slot": [
+    0,
+    0,
+    0
+   ],
+   "line": 1584,
+   "n": 3,
+   "junks": [
+    1,
+    2
+   ],
+   "ncorr": [
+    1,
+    2,
+    3
+   ],
+   "sgns": [
+    -1,
+    -1,
+    1
+   ],
+   "res_equal": false,
+   "killed": false,
+   "at_bottom": false,
+   "at_casc_slot": false
+  },
+  {
+   "tower": "EQ3G2B",
+   "key": [
+    1479,
+    1485
+   ],
+   "p": 3,
+   "kind": "Zp",
+   "g0": 2,
+   "slot": [
+    5,
+    0,
+    0
+   ],
+   "line": 1002,
+   "n": 2,
+   "junks": [
+    0
+   ],
+   "ncorr": [
+    1,
+    2
+   ],
+   "sgns": [
+    -1,
+    1
+   ],
+   "res_equal": true,
+   "killed": true,
+   "at_bottom": true,
+   "at_casc_slot": false
+  },
+  {
+   "tower": "EQ3G2B",
+   "key": [
+    1479,
+    1485
+   ],
+   "p": 3,
+   "kind": "Zp",
+   "g0": 2,
+   "slot": [
+    4,
+    0,
+    1
+   ],
+   "line": 1004,
+   "n": 2,
+   "junks": [
+    0
+   ],
+   "ncorr": [
+    0,
+    1
+   ],
+   "sgns": [
+    -1,
+    1
+   ],
+   "res_equal": true,
+   "killed": true,
+   "at_bottom": false,
+   "at_casc_slot": true
+  },
+  {
+   "tower": "EQ3G2B",
+   "key": [
+    1479,
+    1485
+   ],
+   "p": 3,
+   "kind": "Zp",
+   "g0": 2,
+   "slot": [
+    5,
+    0,
+    0
+   ],
+   "line": 1020,
+   "n": 2,
+   "junks": [
+    1
+   ],
+   "ncorr": [
+    1,
+    2
+   ],
+   "sgns": [
+    -1,
+    1
+   ],
+   "res_equal": true,
+   "killed": true,
+   "at_bottom": false,
+   "at_casc_slot": false
+  },
+  {
+   "tower": "EQ3G2B",
+   "key": [
+    1479,
+    1497
+   ],
+   "p": 3,
+   "kind": "Zp",
+   "g0": 2,
+   "slot": [
+    3,
+    0,
+    0
+   ],
+   "line": 1008,
+   "n": 3,
+   "junks": [
+    0
+   ],
+   "ncorr": [
+    2,
+    3
+   ],
+   "sgns": [
+    -1,
+    1,
+    1
+   ],
+   "res_equal": false,
+   "killed": false,
+   "at_bottom": true,
+   "at_casc_slot": false
+  },
+  {
+   "tower": "EQ3G2B",
+   "key": [
+    1479,
+    1497
+   ],
+   "p": 3,
+   "kind": "Zp",
+   "g0": 2,
+   "slot": [
+    0,
+    0,
+    0
+   ],
+   "line": 1008,
+   "n": 2,
+   "junks": [
+    0
+   ],
+   "ncorr": [
+    2,
+    3
+   ],
+   "sgns": [
+    -1,
+    1
+   ],
+   "res_equal": true,
+   "killed": true,
+   "at_bottom": true,
+   "at_casc_slot": false
+  },
+  {
+   "tower": "EQ3G2B",
+   "key": [
+    1479,
+    1497
+   ],
+   "p": 3,
+   "kind": "Zp",
+   "g0": 2,
+   "slot": [
+    5,
+    0,
+    1
+   ],
+   "line": 1010,
+   "n": 2,
+   "junks": [
+    0
+   ],
+   "ncorr": [
+    0,
+    1
+   ],
+   "sgns": [
+    -1,
+    1
+   ],
+   "res_equal": true,
+   "killed": true,
+   "at_bottom": false,
+   "at_casc_slot": true
+  },
+  {
+   "tower": "EQ3G2B",
+   "key": [
+    1479,
+    1497
+   ],
+   "p": 3,
+   "kind": "Zp",
+   "g0": 2,
+   "slot": [
+    0,
+    1,
+    0
+   ],
+   "line": 1011,
+   "n": 2,
+   "junks": [
+    0
+   ],
+   "ncorr": [
+    1,
+    2
+   ],
+   "sgns": [
+    -1,
+    1
+   ],
+   "res_equal": true,
+   "killed": true,
+   "at_bottom": false,
+   "at_casc_slot": false
+  },
+  {
+   "tower": "EQ3G2B",
+   "key": [
+    1479,
+    1497
+   ],
+   "p": 3,
+   "kind": "Zp",
+   "g0": 2,
+   "slot": [
+    3,
+    0,
+    0
+   ],
+   "line": 1026,
+   "n": 3,
+   "junks": [
+    1
+   ],
+   "ncorr": [
+    2,
+    3
+   ],
+   "sgns": [
+    -1,
+    1,
+    1
+   ],
+   "res_equal": false,
+   "killed": false,
+   "at_bottom": false,
+   "at_casc_slot": false
+  },
+  {
+   "tower": "EQ3G2B",
+   "key": [
+    1479,
+    1497
+   ],
+   "p": 3,
+   "kind": "Zp",
+   "g0": 2,
+   "slot": [
+    0,
+    0,
+    0
+   ],
+   "line": 1026,
+   "n": 2,
+   "junks": [
+    1
+   ],
+   "ncorr": [
+    2,
+    3
+   ],
+   "sgns": [
+    -1,
+    1
+   ],
+   "res_equal": true,
+   "killed": true,
+   "at_bottom": false,
+   "at_casc_slot": false
+  },
+  {
+   "tower": "EQ3G2B",
+   "key": [
+    1479,
+    1497
+   ],
+   "p": 3,
+   "kind": "Zp",
+   "g0": 2,
+   "slot": [
+    0,
+    1,
+    0
+   ],
+   "line": 1029,
+   "n": 2,
+   "junks": [
+    1
+   ],
+   "ncorr": [
+    1,
+    2
+   ],
+   "sgns": [
+    -1,
+    1
+   ],
+   "res_equal": true,
+   "killed": true,
+   "at_bottom": false,
+   "at_casc_slot": false
+  },
+  {
+   "tower": "EQ3G2B",
+   "key": [
+    1485,
+    1491
+   ],
+   "p": 3,
+   "kind": "Zp",
+   "g0": 2,
+   "slot": [
+    3,
+    0,
+    0
+   ],
+   "line": 1008,
+   "n": 2,
+   "junks": [
+    0
+   ],
+   "ncorr": [
+    1,
+    2
+   ],
+   "sgns": [
+    -1,
+    1
+   ],
+   "res_equal": true,
+   "killed": true,
+   "at_bottom": true,
+   "at_casc_slot": false
+  },
+  {
+   "tower": "EQ3G2B",
+   "key": [
+    1485,
+    1491
+   ],
+   "p": 3,
+   "kind": "Zp",
+   "g0": 2,
+   "slot": [
+    3,
+    0,
+    0
+   ],
+   "line": 1026,
+   "n": 2,
+   "junks": [
+    1
+   ],
+   "ncorr": [
+    1,
+    2
+   ],
+   "sgns": [
+    -1,
+    1
+   ],
+   "res_equal": true,
+   "killed": true,
+   "at_bottom": false,
+   "at_casc_slot": false
+  },
+  {
+   "tower": "EQ3G2B",
+   "key": [
+    1485,
+    1497
+   ],
+   "p": 3,
+   "kind": "Zp",
+   "g0": 2,
+   "slot": [
+    3,
+    1,
+    0
+   ],
+   "line": 1011,
+   "n": 2,
+   "junks": [
+    0
+   ],
+   "ncorr": [
+    0,
+    1
+   ],
+   "sgns": [
+    -1,
+    1
+   ],
+   "res_equal": true,
+   "killed": true,
+   "at_bottom": true,
+   "at_casc_slot": true
+  },
+  {
+   "tower": "EQ3G2B",
+   "key": [
+    1485,
+    1503
+   ],
+   "p": 3,
+   "kind": "Zp",
+   "g0": 2,
+   "slot": [
+    4,
+    0,
+    0
+   ],
+   "line": 1014,
+   "n": 2,
+   "junks": [
+    0
+   ],
+   "ncorr": [
+    1,
+    2
+   ],
+   "sgns": [
+    -1,
+    1
+   ],
+   "res_equal": true,
+   "killed": true,
+   "at_bottom": true,
+   "at_casc_slot": false
+  },
+  {
+   "tower": "EQ3G2B",
+   "key": [
+    1485,
+    1503
+   ],
+   "p": 3,
+   "kind": "Zp",
+   "g0": 2,
+   "slot": [
+    3,
+    0,
+    1
+   ],
+   "line": 1016,
+   "n": 2,
+   "junks": [
+    0
+   ],
+   "ncorr": [
+    0,
+    1
+   ],
+   "sgns": [
+    -1,
+    1
+   ],
+   "res_equal": true,
+   "killed": true,
+   "at_bottom": false,
+   "at_casc_slot": true
+  },
+  {
+   "tower": "EQ3G2B",
+   "key": [
+    1485,
+    1503
+   ],
+   "p": 3,
+   "kind": "Zp",
+   "g0": 2,
+   "slot": [
+    4,
+    0,
+    0
+   ],
+   "line": 1032,
+   "n": 2,
+   "junks": [
+    1
+   ],
+   "ncorr": [
+    1,
+    2
+   ],
+   "sgns": [
+    -1,
+    1
+   ],
+   "res_equal": true,
+   "killed": true,
+   "at_bottom": false,
+   "at_casc_slot": false
+  },
+  {
+   "tower": "EQ3G2B",
+   "key": [
+    1485,
+    1509
+   ],
+   "p": 3,
+   "kind": "Zp",
+   "g0": 2,
+   "slot": [
+    4,
+    1,
+    0
+   ],
+   "line": 1017,
+   "n": 2,
+   "junks": [
+    0
+   ],
+   "ncorr": [
+    0,
+    1
+   ],
+   "sgns": [
+    -1,
+    1
+   ],
+   "res_equal": true,
+   "killed": true,
+   "at_bottom": true,
+   "at_casc_slot": true
+  },
+  {
+   "tower": "EQ3G2B",
+   "key": [
+    1491,
+    1491
+   ],
+   "p": 3,
+   "kind": "Zp",
+   "g0": 2,
+   "slot": [
+    3,
+    1,
+    0
+   ],
+   "line": 1011,
+   "n": 2,
+   "junks": [
+    0
+   ],
+   "ncorr": [
+    1,
+    2
+   ],
+   "sgns": [
+    -1,
+    1
+   ],
+   "res_equal": true,
+   "killed": true,
+   "at_bottom": true,
+   "at_casc_slot": false
+  },
+  {
+   "tower": "EQ3G2B",
+   "key": [
+    1491,
+    1491
+   ],
+   "p": 3,
+   "kind": "Zp",
+   "g0": 2,
+   "slot": [
+    3,
+    1,
+    0
+   ],
+   "line": 1029,
+   "n": 2,
+   "junks": [
+    1
+   ],
+   "ncorr": [
+    1,
+    2
+   ],
+   "sgns": [
+    -1,
+    1
+   ],
+   "res_equal": true,
+   "killed": true,
+   "at_bottom": false,
+   "at_casc_slot": false
+  },
+  {
+   "tower": "EQ3G2B",
+   "key": [
+    1491,
+    1497
+   ],
+   "p": 3,
+   "kind": "Zp",
+   "g0": 2,
+   "slot": [
+    4,
+    0,
+    0
+   ],
+   "line": 1014,
+   "n": 2,
+   "junks": [
+    0
+   ],
+   "ncorr": [
+    1,
+    2
+   ],
+   "sgns": [
+    -1,
+    1
+   ],
+   "res_equal": true,
+   "killed": true,
+   "at_bottom": true,
+   "at_casc_slot": false
+  },
+  {
+   "tower": "EQ3G2B",
+   "key": [
+    1491,
+    1497
+   ],
+   "p": 3,
+   "kind": "Zp",
+   "g0": 2,
+   "slot": [
+    3,
+    0,
+    1
+   ],
+   "line": 1016,
+   "n": 2,
+   "junks": [
+    0
+   ],
+   "ncorr": [
+    0,
+    1
+   ],
+   "sgns": [
+    -1,
+    1
+   ],
+   "res_equal": true,
+   "killed": true,
+   "at_bottom": false,
+   "at_casc_slot": true
+  },
+  {
+   "tower": "EQ3G2B",
+   "key": [
+    1491,
+    1497
+   ],
+   "p": 3,
+   "kind": "Zp",
+   "g0": 2,
+   "slot": [
+    4,
+    0,
+    0
+   ],
+   "line": 1032,
+   "n": 2,
+   "junks": [
+    1
+   ],
+   "ncorr": [
+    1,
+    2
+   ],
+   "sgns": [
+    -1,
+    1
+   ],
+   "res_equal": true,
+   "killed": true,
+   "at_bottom": false,
+   "at_casc_slot": false
+  },
+  {
+   "tower": "EQ3G2B",
+   "key": [
+    1491,
+    1509
+   ],
+   "p": 3,
+   "kind": "Zp",
+   "g0": 2,
+   "slot": [
+    5,
+    0,
+    0
+   ],
+   "line": 1020,
+   "n": 2,
+   "junks": [
+    0
+   ],
+   "ncorr": [
+    1,
+    2
+   ],
+   "sgns": [
+    -1,
+    1
+   ],
+   "res_equal": true,
+   "killed": true,
+   "at_bottom": true,
+   "at_casc_slot": false
+  },
+  {
+   "tower": "EQ3G2B",
+   "key": [
+    1491,
+    1509
+   ],
+   "p": 3,
+   "kind": "Zp",
+   "g0": 2,
+   "slot": [
+    4,
+    0,
+    1
+   ],
+   "line": 1022,
+   "n": 2,
+   "junks": [
+    0
+   ],
+   "ncorr": [
+    0,
+    1
+   ],
+   "sgns": [
+    -1,
+    1
+   ],
+   "res_equal": true,
+   "killed": true,
+   "at_bottom": false,
+   "at_casc_slot": true
+  },
+  {
+   "tower": "EQ3G2B",
+   "key": [
+    1491,
+    1509
+   ],
+   "p": 3,
+   "kind": "Zp",
+   "g0": 2,
+   "slot": [
+    5,
+    0,
+    0
+   ],
+   "line": 1038,
+   "n": 2,
+   "junks": [
+    1
+   ],
+   "ncorr": [
+    1,
+    2
+   ],
+   "sgns": [
+    -1,
+    1
+   ],
+   "res_equal": true,
+   "killed": true,
+   "at_bottom": false,
+   "at_casc_slot": false
+  },
+  {
+   "tower": "EQ3G2B",
+   "key": [
+    1497,
+    1497
+   ],
+   "p": 3,
+   "kind": "Zp",
+   "g0": 2,
+   "slot": [
+    4,
+    1,
+    0
+   ],
+   "line": 1017,
+   "n": 2,
+   "junks": [
+    0
+   ],
+   "ncorr": [
+    0,
+    1
+   ],
+   "sgns": [
+    -1,
+    1
+   ],
+   "res_equal": true,
+   "killed": true,
+   "at_bottom": true,
+   "at_casc_slot": true
+  },
+  {
+   "tower": "EQ3G2B",
+   "key": [
+    1497,
+    1503
+   ],
+   "p": 3,
+   "kind": "Zp",
+   "g0": 2,
+   "slot": [
+    5,
+    0,
+    0
+   ],
+   "line": 1020,
+   "n": 2,
+   "junks": [
+    0
+   ],
+   "ncorr": [
+    1,
+    2
+   ],
+   "sgns": [
+    -1,
+    1
+   ],
+   "res_equal": true,
+   "killed": true,
+   "at_bottom": true,
+   "at_casc_slot": false
+  },
+  {
+   "tower": "EQ3G2B",
+   "key": [
+    1497,
+    1503
+   ],
+   "p": 3,
+   "kind": "Zp",
+   "g0": 2,
+   "slot": [
+    4,
+    0,
+    1
+   ],
+   "line": 1022,
+   "n": 2,
+   "junks": [
+    0
+   ],
+   "ncorr": [
+    0,
+    1
+   ],
+   "sgns": [
+    -1,
+    1
+   ],
+   "res_equal": true,
+   "killed": true,
+   "at_bottom": false,
+   "at_casc_slot": true
+  },
+  {
+   "tower": "EQ3G2B",
+   "key": [
+    1497,
+    1503
+   ],
+   "p": 3,
+   "kind": "Zp",
+   "g0": 2,
+   "slot": [
+    5,
+    0,
+    0
+   ],
+   "line": 1038,
+   "n": 2,
+   "junks": [
+    1
+   ],
+   "ncorr": [
+    1,
+    2
+   ],
+   "sgns": [
+    -1,
+    1
+   ],
+   "res_equal": true,
+   "killed": true,
+   "at_bottom": false,
+   "at_casc_slot": false
+  },
+  {
+   "tower": "EQ3G2B",
+   "key": [
+    1497,
+    1509
+   ],
+   "p": 3,
+   "kind": "Zp",
+   "g0": 2,
+   "slot": [
+    5,
+    1,
+    0
+   ],
+   "line": 1023,
+   "n": 2,
+   "junks": [
+    0
+   ],
+   "ncorr": [
+    0,
+    1
+   ],
+   "sgns": [
+    -1,
+    1
+   ],
+   "res_equal": true,
+   "killed": true,
+   "at_bottom": true,
+   "at_casc_slot": true
+  },
+  {
+   "tower": "EQ3G2B",
+   "key": [
+    1479,
+    1479
+   ],
+   "p": 3,
+   "kind": "Zp",
+   "g0": 2,
+   "slot": [
+    4,
+    1,
+    0
+   ],
+   "line": 999,
+   "n": 3,
+   "junks": [
+    0
+   ],
+   "ncorr": [
+    2,
+    3
+   ],
+   "sgns": [
+    -1,
+    1,
+    1
+   ],
+   "res_equal": false,
+   "killed": false,
+   "at_bottom": true,
+   "at_casc_slot": false
+  },
+  {
+   "tower": "EQ3G2B",
+   "key": [
+    1479,
+    1479
+   ],
+   "p": 3,
+   "kind": "Zp",
+   "g0": 2,
+   "slot": [
+    1,
+    1,
+    0
+   ],
+   "line": 999,
+   "n": 2,
+   "junks": [
+    0
+   ],
+   "ncorr": [
+    2,
+    3
+   ],
+   "sgns": [
+    -1,
+    1
+   ],
+   "res_equal": true,
+   "killed": true,
+   "at_bottom": true,
+   "at_casc_slot": false
+  },
+  {
+   "tower": "EQ3G2B",
+   "key": [
+    1479,
+    1479
+   ],
+   "p": 3,
+   "kind": "Zp",
+   "g0": 2,
+   "slot": [
+    3,
+    1,
+    1
+   ],
+   "line": 1001,
+   "n": 3,
+   "junks": [
+    0
+   ],
+   "ncorr": [
+    1,
+    2
+   ],
+   "sgns": [
+    -1,
+    -1,
+    1
+   ],
+   "res_equal": false,
+   "killed": false,
+   "at_bottom": false,
+   "at_casc_slot": false
+  },
+  {
+   "tower": "EQ3G2B",
+   "key": [
+    1479,
+    1479
+   ],
+   "p": 3,
+   "kind": "Zp",
+   "g0": 2,
+   "slot": [
+    0,
+    1,
+    1
+   ],
+   "line": 1001,
+   "n": 2,
+   "junks": [
+    0
+   ],
+   "ncorr": [
+    1,
+    2
+   ],
+   "sgns": [
+    -1,
+    1
+   ],
+   "res_equal": true,
+   "killed": true,
+   "at_bottom": false,
+   "at_casc_slot": false
+  },
+  {
+   "tower": "EQ3G2B",
+   "key": [
+    1479,
+    1479
+   ],
+   "p": 3,
+   "kind": "Zp",
+   "g0": 2,
+   "slot": [
+    2,
+    0,
+    0
+   ],
+   "line": 1002,
+   "n": 2,
+   "junks": [
+    0
+   ],
+   "ncorr": [
+    2,
+    3
+   ],
+   "sgns": [
+    -1,
+    1
+   ],
+   "res_equal": true,
+   "killed": true,
+   "at_bottom": false,
+   "at_casc_slot": false
+  },
+  {
+   "tower": "EQ3G2B",
+   "key": [
+    1479,
+    1479
+   ],
+   "p": 3,
+   "kind": "Zp",
+   "g0": 2,
+   "slot": [
+    1,
+    0,
+    1
+   ],
+   "line": 1004,
+   "n": 4,
+   "junks": [
+    0
+   ],
+   "ncorr": [
+    1,
+    2
+   ],
+   "sgns": [
+    -1,
+    -1,
+    1,
+    1
+   ],
+   "res_equal": true,
+   "killed": true,
+   "at_bottom": false,
+   "at_casc_slot": false
+  },
+  {
+   "tower": "EQ3G2B",
+   "key": [
+    1479,
+    1479
+   ],
+   "p": 3,
+   "kind": "Zp",
+   "g0": 2,
+   "slot": [
+    4,
+    0,
+    1
+   ],
+   "line": 1004,
+   "n": 2,
+   "junks": [
+    0
+   ],
+   "ncorr": [
+    1
+   ],
+   "sgns": [
+    -1,
+    -1
+   ],
+   "res_equal": true,
+   "killed": false,
+   "at_bottom": false,
+   "at_casc_slot": false
+  },
+  {
+   "tower": "EQ3G2B",
+   "key": [
+    1479,
+    1479
+   ],
+   "p": 3,
+   "kind": "Zp",
+   "g0": 2,
+   "slot": [
+    0,
+    0,
+    2
+   ],
+   "line": 1006,
+   "n": 2,
+   "junks": [
+    0
+   ],
+   "ncorr": [
+    0,
+    1
+   ],
+   "sgns": [
+    -1,
+    1
+   ],
+   "res_equal": true,
+   "killed": true,
+   "at_bottom": false,
+   "at_casc_slot": true
+  },
+  {
+   "tower": "EQ3G2B",
+   "key": [
+    1479,
+    1479
+   ],
+   "p": 3,
+   "kind": "Zp",
+   "g0": 2,
+   "slot": [
+    4,
+    1,
+    0
+   ],
+   "line": 1017,
+   "n": 3,
+   "junks": [
+    1
+   ],
+   "ncorr": [
+    2,
+    3
+   ],
+   "sgns": [
+    -1,
+    1,
+    1
+   ],
+   "res_equal": false,
+   "killed": false,
+   "at_bottom": false,
+   "at_casc_slot": false
+  },
+  {
+   "tower": "EQ3G2B",
+   "key": [
+    1479,
+    1479
+   ],
+   "p": 3,
+   "kind": "Zp",
+   "g0": 2,
+   "slot": [
+    1,
+    1,
+    0
+   ],
+   "line": 1017,
+   "n": 2,
+   "junks": [
+    1
+   ],
+   "ncorr": [
+    2,
+    3
+   ],
+   "sgns": [
+    -1,
+    1
+   ],
+   "res_equal": true,
+   "killed": true,
+   "at_bottom": false,
+   "at_casc_slot": false
+  },
+  {
+   "tower": "EQ3G2B",
+   "key": [
+    1479,
+    1479
+   ],
+   "p": 3,
+   "kind": "Zp",
+   "g0": 2,
+   "slot": [
+    0,
+    1,
+    1
+   ],
+   "line": 1019,
+   "n": 2,
+   "junks": [
+    1
+   ],
+   "ncorr": [
+    1,
+    2
+   ],
+   "sgns": [
+    -1,
+    1
+   ],
+   "res_equal": true,
+   "killed": true,
+   "at_bottom": false,
+   "at_casc_slot": false
+  },
+  {
+   "tower": "EQ3G2B",
+   "key": [
+    1479,
+    1479
+   ],
+   "p": 3,
+   "kind": "Zp",
+   "g0": 2,
+   "slot": [
+    2,
+    0,
+    0
+   ],
+   "line": 1020,
+   "n": 2,
+   "junks": [
+    1
+   ],
+   "ncorr": [
+    2,
+    3
+   ],
+   "sgns": [
+    -1,
+    1
+   ],
+   "res_equal": true,
+   "killed": true,
+   "at_bottom": false,
+   "at_casc_slot": false
+  },
+  {
+   "tower": "EQ3G2B",
+   "key": [
+    1479,
+    1479
+   ],
+   "p": 3,
+   "kind": "Zp",
+   "g0": 2,
+   "slot": [
+    1,
+    0,
+    1
+   ],
+   "line": 1022,
+   "n": 4,
+   "junks": [
+    1
+   ],
+   "ncorr": [
+    1,
+    2
+   ],
+   "sgns": [
+    -1,
+    -1,
+    1,
+    1
+   ],
+   "res_equal": true,
+   "killed": true,
+   "at_bottom": false,
+   "at_casc_slot": false
+  },
+  {
+   "tower": "EQ3G2B",
+   "key": [
+    1479,
+    1479
+   ],
+   "p": 3,
+   "kind": "Zp",
+   "g0": 2,
+   "slot": [
+    4,
+    0,
+    1
+   ],
+   "line": 1022,
+   "n": 2,
+   "junks": [
+    1
+   ],
+   "ncorr": [
+    1
+   ],
+   "sgns": [
+    -1,
+    -1
+   ],
+   "res_equal": true,
+   "killed": false,
+   "at_bottom": false,
+   "at_casc_slot": false
+  },
+  {
+   "tower": "EQ3G2B",
+   "key": [
+    1479,
+    1491
+   ],
+   "p": 3,
+   "kind": "Zp",
+   "g0": 2,
+   "slot": [
+    5,
+    1,
+    0
+   ],
+   "line": 1005,
+   "n": 2,
+   "junks": [
+    0
+   ],
+   "ncorr": [
+    1,
+    2
+   ],
+   "sgns": [
+    -1,
+    1
+   ],
+   "res_equal": true,
+   "killed": true,
+   "at_bottom": true,
+   "at_casc_slot": false
+  },
+  {
+   "tower": "EQ3G2B",
+   "key": [
+    1479,
+    1491
+   ],
+   "p": 3,
+   "kind": "Zp",
+   "g0": 2,
+   "slot": [
+    4,
+    1,
+    1
+   ],
+   "line": 1007,
+   "n": 2,
+   "junks": [
+    0
+   ],
+   "ncorr": [
+    0,
+    1
+   ],
+   "sgns": [
+    -1,
+    1
+   ],
+   "res_equal": true,
+   "killed": true,
+   "at_bottom": false,
+   "at_casc_slot": true
+  },
+  {
+   "tower": "EQ3G2B",
+   "key": [
+    1479,
+    1491
+   ],
+   "p": 3,
+   "kind": "Zp",
+   "g0": 2,
+   "slot": [
+    2,
+    0,
+    1
+   ],
+   "line": 1010,
+   "n": 2,
+   "junks": [
+    0
+   ],
+   "ncorr": [
+    1
+   ],
+   "sgns": [
+    -1,
+    -1
+   ],
+   "res_equal": true,
+   "killed": false,
+   "at_bottom": false,
+   "at_casc_slot": false
+  },
+  {
+   "tower": "EQ3G2B",
+   "key": [
+    1479,
+    1491
+   ],
+   "p": 3,
+   "kind": "Zp",
+   "g0": 2,
+   "slot": [
+    5,
+    1,
+    0
+   ],
+   "line": 1023,
+   "n": 2,
+   "junks": [
+    1
+   ],
+   "ncorr": [
+    1,
+    2
+   ],
+   "sgns": [
+    -1,
+    1
+   ],
+   "res_equal": true,
+   "killed": true,
+   "at_bottom": false,
+   "at_casc_slot": false
+  },
+  {
+   "tower": "EQ3G2B",
+   "key": [
+    1479,
+    1491
+   ],
+   "p": 3,
+   "kind": "Zp",
+   "g0": 2,
+   "slot": [
+    2,
+    0,
+    1
+   ],
+   "line": 1028,
+   "n": 2,
+   "junks": [
+    1
+   ],
+   "ncorr": [
+    1
+   ],
+   "sgns": [
+    -1,
+    -1
+   ],
+   "res_equal": true,
+   "killed": false,
+   "at_bottom": false,
+   "at_casc_slot": false
+  },
+  {
+   "tower": "EQ3G2B",
+   "key": [
+    1479,
+    1503
+   ],
+   "p": 3,
+   "kind": "Zp",
+   "g0": 2,
+   "slot": [
+    3,
+    1,
+    0
+   ],
+   "line": 1011,
+   "n": 3,
+   "junks": [
+    0
+   ],
+   "ncorr": [
+    2,
+    3
+   ],
+   "sgns": [
+    -1,
+    1,
+    1
+   ],
+   "res_equal": false,
+   "killed": false,
+   "at_bottom": true,
+   "at_casc_slot": false
+  },
+  {
+   "tower": "EQ3G2B",
+   "key": [
+    1479,
+    1503
+   ],
+   "p": 3,
+   "kind": "Zp",
+   "g0": 2,
+   "slot": [
+    0,
+    1,
+    0
+   ],
+   "line": 1011,
+   "n": 2,
+   "junks": [
+    0
+   ],
+   "ncorr": [
+    2,
+    3
+   ],
+   "sgns": [
+    -1,
+    1
+   ],
+   "res_equal": true,
+   "killed": true,
+   "at_bottom": true,
+   "at_casc_slot": false
+  },
+  {
+   "tower": "EQ3G2B",
+   "key": [
+    1479,
+    1503
+   ],
+   "p": 3,
+   "kind": "Zp",
+   "g0": 2,
+   "slot": [
+    5,
+    1,
+    1
+   ],
+   "line": 1013,
+   "n": 2,
+   "junks": [
+    0
+   ],
+   "ncorr": [
+    0,
+    1
+   ],
+   "sgns": [
+    -1,
+    1
+   ],
+   "res_equal": true,
+   "killed": true,
+   "at_bottom": false,
+   "at_casc_slot": true
+  },
+  {
+   "tower": "EQ3G2B",
+   "key": [
+    1479,
+    1503
+   ],
+   "p": 3,
+   "kind": "Zp",
+   "g0": 2,
+   "slot": [
+    1,
+    0,
+    0
+   ],
+   "line": 1014,
+   "n": 2,
+   "junks": [
+    0
+   ],
+   "ncorr": [
+    2,
+    3
+   ],
+   "sgns": [
+    -1,
+    1
+   ],
+   "res_equal": true,
+   "killed": true,
+   "at_bottom": false,
+   "at_casc_slot": false
+  },
+  {
+   "tower": "EQ3G2B",
+   "key": [
+    1479,
+    1503
+   ],
+   "p": 3,
+   "kind": "Zp",
+   "g0": 2,
+   "slot": [
+    3,
+    0,
+    1
+   ],
+   "line": 1016,
+   "n": 2,
+   "junks": [
+    0
+   ],
+   "ncorr": [
+    1
+   ],
+   "sgns": [
+    -1,
+    -1
+   ],
+   "res_equal": true,
+   "killed": false,
+   "at_bottom": false,
+   "at_casc_slot": false
+  },
+  {
+   "tower": "EQ3G2B",
+   "key": [
+    1479,
+    1503
+   ],
+   "p": 3,
+   "kind": "Zp",
+   "g0": 2,
+   "slot": [
+    0,
+    0,
+    1
+   ],
+   "line": 1016,
+   "n": 2,
+   "junks": [
+    0
+   ],
+   "ncorr": [
+    1,
+    2
+   ],
+   "sgns": [
+    -1,
+    1
+   ],
+   "res_equal": true,
+   "killed": true,
+   "at_bottom": false,
+   "at_casc_slot": false
+  },
+  {
+   "tower": "EQ3G2B",
+   "key": [
+    1479,
+    1503
+   ],
+   "p": 3,
+   "kind": "Zp",
+   "g0": 2,
+   "slot": [
+    3,
+    1,
+    0
+   ],
+   "line": 1029,
+   "n": 3,
+   "junks": [
+    1
+   ],
+   "ncorr": [
+    2,
+    3
+   ],
+   "sgns": [
+    -1,
+    1,
+    1
+   ],
+   "res_equal": false,
+   "killed": false,
+   "at_bottom": false,
+   "at_casc_slot": false
+  },
+  {
+   "tower": "EQ3G2B",
+   "key": [
+    1479,
+    1503
+   ],
+   "p": 3,
+   "kind": "Zp",
+   "g0": 2,
+   "slot": [
+    0,
+    1,
+    0
+   ],
+   "line": 1029,
+   "n": 2,
+   "junks": [
+    1
+   ],
+   "ncorr": [
+    2,
+    3
+   ],
+   "sgns": [
+    -1,
+    1
+   ],
+   "res_equal": true,
+   "killed": true,
+   "at_bottom": false,
+   "at_casc_slot": false
+  },
+  {
+   "tower": "EQ3G2B",
+   "key": [
+    1479,
+    1503
+   ],
+   "p": 3,
+   "kind": "Zp",
+   "g0": 2,
+   "slot": [
+    1,
+    0,
+    0
+   ],
+   "line": 1032,
+   "n": 2,
+   "junks": [
+    1
+   ],
+   "ncorr": [
+    2,
+    3
+   ],
+   "sgns": [
+    -1,
+    1
+   ],
+   "res_equal": true,
+   "killed": true,
+   "at_bottom": false,
+   "at_casc_slot": false
+  },
+  {
+   "tower": "EQ3G2B",
+   "key": [
+    1479,
+    1503
+   ],
+   "p": 3,
+   "kind": "Zp",
+   "g0": 2,
+   "slot": [
+    3,
+    0,
+    1
+   ],
+   "line": 1034,
+   "n": 2,
+   "junks": [
+    1
+   ],
+   "ncorr": [
+    1
+   ],
+   "sgns": [
+    -1,
+    -1
+   ],
+   "res_equal": true,
+   "killed": false,
+   "at_bottom": false,
+   "at_casc_slot": false
+  },
+  {
+   "tower": "EQ3G2B",
+   "key": [
+    1479,
+    1503
+   ],
+   "p": 3,
+   "kind": "Zp",
+   "g0": 2,
+   "slot": [
+    0,
+    0,
+    1
+   ],
+   "line": 1034,
+   "n": 2,
+   "junks": [
+    1
+   ],
+   "ncorr": [
+    1,
+    2
+   ],
+   "sgns": [
+    -1,
+    1
+   ],
+   "res_equal": true,
+   "killed": true,
+   "at_bottom": false,
+   "at_casc_slot": false
+  },
+  {
+   "tower": "EQ3G2B",
+   "key": [
+    1479,
+    1509
+   ],
+   "p": 3,
+   "kind": "Zp",
+   "g0": 2,
+   "slot": [
+    4,
+    0,
+    0
+   ],
+   "line": 1014,
+   "n": 3,
+   "junks": [
+    0
+   ],
+   "ncorr": [
+    2,
+    3
+   ],
+   "sgns": [
+    -1,
+    1,
+    1
+   ],
+   "res_equal": false,
+   "killed": false,
+   "at_bottom": true,
+   "at_casc_slot": false
+  },
+  {
+   "tower": "EQ3G2B",
+   "key": [
+    1479,
+    1509
+   ],
+   "p": 3,
+   "kind": "Zp",
+   "g0": 2,
+   "slot": [
+    1,
+    0,
+    0
+   ],
+   "line": 1014,
+   "n": 2,
+   "junks": [
+    0
+   ],
+   "ncorr": [
+    2,
+    3
+   ],
+   "sgns": [
+    -1,
+    1
+   ],
+   "res_equal": true,
+   "killed": true,
+   "at_bottom": true,
+   "at_casc_slot": false
+  },
+  {
+   "tower": "EQ3G2B",
+   "key": [
+    1479,
+    1509
+   ],
+   "p": 3,
+   "kind": "Zp",
+   "g0": 2,
+   "slot": [
+    3,
+    0,
+    1
+   ],
+   "line": 1016,
+   "n": 3,
+   "junks": [
+    0
+   ],
+   "ncorr": [
+    1,
+    2
+   ],
+   "sgns": [
+    -1,
+    -1,
+    1
+   ],
+   "res_equal": false,
+   "killed": false,
+   "at_bottom": false,
+   "at_casc_slot": false
+  },
+  {
+   "tower": "EQ3G2B",
+   "key": [
+    1479,
+    1509
+   ],
+   "p": 3,
+   "kind": "Zp",
+   "g0": 2,
+   "slot": [
+    0,
+    0,
+    1
+   ],
+   "line": 1016,
+   "n": 2,
+   "junks": [
+    0
+   ],
+   "ncorr": [
+    1,
+    2
+   ],
+   "sgns": [
+    -1,
+    1
+   ],
+   "res_equal": true,
+   "killed": true,
+   "at_bottom": false,
+   "at_casc_slot": false
+  },
+  {
+   "tower": "EQ3G2B",
+   "key": [
+    1479,
+    1509
+   ],
+   "p": 3,
+   "kind": "Zp",
+   "g0": 2,
+   "slot": [
+    1,
+    1,
+    0
+   ],
+   "line": 1017,
+   "n": 2,
+   "junks": [
+    0
+   ],
+   "ncorr": [
+    1,
+    2
+   ],
+   "sgns": [
+    -1,
+    1
+   ],
+   "res_equal": true,
+   "killed": true,
+   "at_bottom": false,
+   "at_casc_slot": false
+  },
+  {
+   "tower": "EQ3G2B",
+   "key": [
+    1479,
+    1509
+   ],
+   "p": 3,
+   "kind": "Zp",
+   "g0": 2,
+   "slot": [
+    0,
+    1,
+    1
+   ],
+   "line": 1019,
+   "n": 2,
+   "junks": [
+    0
+   ],
+   "ncorr": [
+    0,
+    1
+   ],
+   "sgns": [
+    -1,
+    1
+   ],
+   "res_equal": true,
+   "killed": true,
+   "at_bottom": false,
+   "at_casc_slot": true
+  },
+  {
+   "tower": "EQ3G2B",
+   "key": [
+    1479,
+    1509
+   ],
+   "p": 3,
+   "kind": "Zp",
+   "g0": 2,
+   "slot": [
+    4,
+    0,
+    0
+   ],
+   "line": 1032,
+   "n": 3,
+   "junks": [
+    1
+   ],
+   "ncorr": [
+    2,
+    3
+   ],
+   "sgns": [
+    -1,
+    1,
+    1
+   ],
+   "res_equal": false,
+   "killed": false,
+   "at_bottom": false,
+   "at_casc_slot": false
+  },
+  {
+   "tower": "EQ3G2B",
+   "key": [
+    1479,
+    1509
+   ],
+   "p": 3,
+   "kind": "Zp",
+   "g0": 2,
+   "slot": [
+    1,
+    0,
+    0
+   ],
+   "line": 1032,
+   "n": 2,
+   "junks": [
+    1
+   ],
+   "ncorr": [
+    2,
+    3
+   ],
+   "sgns": [
+    -1,
+    1
+   ],
+   "res_equal": true,
+   "killed": true,
+   "at_bottom": false,
+   "at_casc_slot": false
+  },
+  {
+   "tower": "EQ3G2B",
+   "key": [
+    1479,
+    1509
+   ],
+   "p": 3,
+   "kind": "Zp",
+   "g0": 2,
+   "slot": [
+    0,
+    0,
+    1
+   ],
+   "line": 1034,
+   "n": 2,
+   "junks": [
+    1
+   ],
+   "ncorr": [
+    1,
+    2
+   ],
+   "sgns": [
+    -1,
+    1
+   ],
+   "res_equal": true,
+   "killed": true,
+   "at_bottom": false,
+   "at_casc_slot": false
+  },
+  {
+   "tower": "EQ3G2B",
+   "key": [
+    1479,
+    1509
+   ],
+   "p": 3,
+   "kind": "Zp",
+   "g0": 2,
+   "slot": [
+    1,
+    1,
+    0
+   ],
+   "line": 1035,
+   "n": 2,
+   "junks": [
+    1
+   ],
+   "ncorr": [
+    1,
+    2
+   ],
+   "sgns": [
+    -1,
+    1
+   ],
+   "res_equal": true,
+   "killed": true,
+   "at_bottom": false,
+   "at_casc_slot": false
+  },
+  {
+   "tower": "EQ3G2B",
+   "key": [
+    1491,
+    1503
+   ],
+   "p": 3,
+   "kind": "Zp",
+   "g0": 2,
+   "slot": [
+    4,
+    1,
+    0
+   ],
+   "line": 1017,
+   "n": 2,
+   "junks": [
+    0
+   ],
+   "ncorr": [
+    1,
+    2
+   ],
+   "sgns": [
+    -1,
+    1
+   ],
+   "res_equal": true,
+   "killed": true,
+   "at_bottom": true,
+   "at_casc_slot": false
+  },
+  {
+   "tower": "EQ3G2B",
+   "key": [
+    1491,
+    1503
+   ],
+   "p": 3,
+   "kind": "Zp",
+   "g0": 2,
+   "slot": [
+    3,
+    1,
+    1
+   ],
+   "line": 1019,
+   "n": 2,
+   "junks": [
+    0
+   ],
+   "ncorr": [
+    0,
+    1
+   ],
+   "sgns": [
+    -1,
+    1
+   ],
+   "res_equal": true,
+   "killed": true,
+   "at_bottom": false,
+   "at_casc_slot": true
+  },
+  {
+   "tower": "EQ3G2B",
+   "key": [
+    1491,
+    1503
+   ],
+   "p": 3,
+   "kind": "Zp",
+   "g0": 2,
+   "slot": [
+    1,
+    0,
+    1
+   ],
+   "line": 1022,
+   "n": 2,
+   "junks": [
+    0
+   ],
+   "ncorr": [
+    1
+   ],
+   "sgns": [
+    -1,
+    -1
+   ],
+   "res_equal": true,
+   "killed": false,
+   "at_bottom": false,
+   "at_casc_slot": false
+  },
+  {
+   "tower": "EQ3G2B",
+   "key": [
+    1491,
+    1503
+   ],
+   "p": 3,
+   "kind": "Zp",
+   "g0": 2,
+   "slot": [
+    4,
+    1,
+    0
+   ],
+   "line": 1035,
+   "n": 2,
+   "junks": [
+    1
+   ],
+   "ncorr": [
+    1,
+    2
+   ],
+   "sgns": [
+    -1,
+    1
+   ],
+   "res_equal": true,
+   "killed": true,
+   "at_bottom": false,
+   "at_casc_slot": false
+  },
+  {
+   "tower": "EQ3G2B",
+   "key": [
+    1491,
+    1503
+   ],
+   "p": 3,
+   "kind": "Zp",
+   "g0": 2,
+   "slot": [
+    1,
+    0,
+    1
+   ],
+   "line": 1040,
+   "n": 2,
+   "junks": [
+    1
+   ],
+   "ncorr": [
+    1
+   ],
+   "sgns": [
+    -1,
+    -1
+   ],
+   "res_equal": true,
+   "killed": false,
+   "at_bottom": false,
+   "at_casc_slot": false
+  },
+  {
+   "tower": "EQ3G2B",
+   "key": [
+    1503,
+    1503
+   ],
+   "p": 3,
+   "kind": "Zp",
+   "g0": 2,
+   "slot": [
+    5,
+    1,
+    0
+   ],
+   "line": 1023,
+   "n": 2,
+   "junks": [
+    0
+   ],
+   "ncorr": [
+    1,
+    2
+   ],
+   "sgns": [
+    -1,
+    1
+   ],
+   "res_equal": true,
+   "killed": true,
+   "at_bottom": true,
+   "at_casc_slot": false
+  },
+  {
+   "tower": "EQ3G2B",
+   "key": [
+    1503,
+    1503
+   ],
+   "p": 3,
+   "kind": "Zp",
+   "g0": 2,
+   "slot": [
+    4,
+    1,
+    1
+   ],
+   "line": 1025,
+   "n": 2,
+   "junks": [
+    0
+   ],
+   "ncorr": [
+    0,
+    1
+   ],
+   "sgns": [
+    -1,
+    1
+   ],
+   "res_equal": true,
+   "killed": true,
+   "at_bottom": false,
+   "at_casc_slot": true
+  },
+  {
+   "tower": "EQ3G2B",
+   "key": [
+    1503,
+    1503
+   ],
+   "p": 3,
+   "kind": "Zp",
+   "g0": 2,
+   "slot": [
+    2,
+    0,
+    1
+   ],
+   "line": 1028,
+   "n": 2,
+   "junks": [
+    0
+   ],
+   "ncorr": [
+    1
+   ],
+   "sgns": [
+    -1,
+    -1
+   ],
+   "res_equal": true,
+   "killed": false,
+   "at_bottom": false,
+   "at_casc_slot": false
+  },
+  {
+   "tower": "EQ3G2B",
+   "key": [
+    1503,
+    1503
+   ],
+   "p": 3,
+   "kind": "Zp",
+   "g0": 2,
+   "slot": [
+    5,
+    1,
+    0
+   ],
+   "line": 1041,
+   "n": 2,
+   "junks": [
+    1
+   ],
+   "ncorr": [
+    1,
+    2
+   ],
+   "sgns": [
+    -1,
+    1
+   ],
+   "res_equal": true,
+   "killed": true,
+   "at_bottom": false,
+   "at_casc_slot": false
+  },
+  {
+   "tower": "EQ3G2B",
+   "key": [
+    1503,
+    1503
+   ],
+   "p": 3,
+   "kind": "Zp",
+   "g0": 2,
+   "slot": [
+    2,
+    0,
+    1
+   ],
+   "line": 1046,
+   "n": 2,
+   "junks": [
+    1
+   ],
+   "ncorr": [
+    1
+   ],
+   "sgns": [
+    -1,
+    -1
+   ],
+   "res_equal": true,
+   "killed": false,
+   "at_bottom": false,
+   "at_casc_slot": false
+  },
+  {
+   "tower": "EQ3G2B",
+   "key": [
+    1479,
+    1481
+   ],
+   "p": 3,
+   "kind": "Zp",
+   "g0": 2,
+   "slot": [
+    5,
+    0,
+    0
+   ],
+   "line": 1002,
+   "n": 2,
+   "junks": [
+    0
+   ],
+   "ncorr": [
+    0,
+    1
+   ],
+   "sgns": [
+    -1,
+    1
+   ],
+   "res_equal": true,
+   "killed": true,
+   "at_bottom": true,
+   "at_casc_slot": true
+  },
+  {
+   "tower": "EQ3G2B",
+   "key": [
+    1479,
+    1505
+   ],
+   "p": 3,
+   "kind": "Zp",
+   "g0": 2,
+   "slot": [
+    4,
+    0,
+    0
+   ],
+   "line": 1014,
+   "n": 2,
+   "junks": [
+    0
+   ],
+   "ncorr": [
+    0,
+    1
+   ],
+   "sgns": [
+    -1,
+    1
+   ],
+   "res_equal": true,
+   "killed": true,
+   "at_bottom": true,
+   "at_casc_slot": true
+  },
+  {
+   "tower": "EQ3G2B",
+   "key": [
+    1481,
+    1491
+   ],
+   "p": 3,
+   "kind": "Zp",
+   "g0": 2,
+   "slot": [
+    3,
+    0,
+    0
+   ],
+   "line": 1008,
+   "n": 2,
+   "junks": [
+    0
+   ],
+   "ncorr": [
+    0,
+    1
+   ],
+   "sgns": [
+    -1,
+    1
+   ],
+   "res_equal": true,
+   "killed": true,
+   "at_bottom": true,
+   "at_casc_slot": true
+  },
+  {
+   "tower": "EQ3G2B",
+   "key": [
+    1481,
+    1503
+   ],
+   "p": 3,
+   "kind": "Zp",
+   "g0": 2,
+   "slot": [
+    4,
+    0,
+    0
+   ],
+   "line": 1014,
+   "n": 2,
+   "junks": [
+    0
+   ],
+   "ncorr": [
+    0,
+    1
+   ],
+   "sgns": [
+    -1,
+    1
+   ],
+   "res_equal": true,
+   "killed": true,
+   "at_bottom": true,
+   "at_casc_slot": true
+  },
+  {
+   "tower": "EQ3G2B",
+   "key": [
+    1485,
+    1487
+   ],
+   "p": 3,
+   "kind": "Zp",
+   "g0": 2,
+   "slot": [
+    3,
+    0,
+    0
+   ],
+   "line": 1008,
+   "n": 2,
+   "junks": [
+    0
+   ],
+   "ncorr": [
+    0,
+    1
+   ],
+   "sgns": [
+    -1,
+    1
+   ],
+   "res_equal": true,
+   "killed": true,
+   "at_bottom": true,
+   "at_casc_slot": true
+  },
+  {
+   "tower": "EQ3G2B",
+   "key": [
+    1485,
+    1499
+   ],
+   "p": 3,
+   "kind": "Zp",
+   "g0": 2,
+   "slot": [
+    4,
+    0,
+    0
+   ],
+   "line": 1014,
+   "n": 2,
+   "junks": [
+    0
+   ],
+   "ncorr": [
+    0,
+    1
+   ],
+   "sgns": [
+    -1,
+    1
+   ],
+   "res_equal": true,
+   "killed": true,
+   "at_bottom": true,
+   "at_casc_slot": true
+  },
+  {
+   "tower": "EQ3G2B",
+   "key": [
+    1487,
+    1497
+   ],
+   "p": 3,
+   "kind": "Zp",
+   "g0": 2,
+   "slot": [
+    4,
+    0,
+    0
+   ],
+   "line": 1014,
+   "n": 2,
+   "junks": [
+    0
+   ],
+   "ncorr": [
+    0,
+    1
+   ],
+   "sgns": [
+    -1,
+    1
+   ],
+   "res_equal": true,
+   "killed": true,
+   "at_bottom": true,
+   "at_casc_slot": true
+  },
+  {
+   "tower": "EQ3G2B",
+   "key": [
+    1479,
+    1487
+   ],
+   "p": 3,
+   "kind": "Zp",
+   "g0": 2,
+   "slot": [
+    5,
+    1,
+    0
+   ],
+   "line": 1005,
+   "n": 2,
+   "junks": [
+    0
+   ],
+   "ncorr": [
+    0,
+    1
+   ],
+   "sgns": [
+    -1,
+    1
+   ],
+   "res_equal": true,
+   "killed": true,
+   "at_bottom": true,
+   "at_casc_slot": true
+  },
+  {
+   "tower": "EQ3G2B",
+   "key": [
+    1479,
+    1487
+   ],
+   "p": 3,
+   "kind": "Zp",
+   "g0": 2,
+   "slot": [
+    3,
+    0,
+    0
+   ],
+   "line": 1008,
+   "n": 2,
+   "junks": [
+    0
+   ],
+   "ncorr": [
+    1
+   ],
+   "sgns": [
+    -1,
+    -1
+   ],
+   "res_equal": true,
+   "killed": false,
+   "at_bottom": false,
+   "at_casc_slot": false
+  },
+  {
+   "tower": "EQ3G2B",
+   "key": [
+    1479,
+    1487
+   ],
+   "p": 3,
+   "kind": "Zp",
+   "g0": 2,
+   "slot": [
+    0,
+    0,
+    0
+   ],
+   "line": 1008,
+   "n": 2,
+   "junks": [
+    0
+   ],
+   "ncorr": [
+    1,
+    2
+   ],
+   "sgns": [
+    -1,
+    1
+   ],
+   "res_equal": true,
+   "killed": true,
+   "at_bottom": false,
+   "at_casc_slot": false
+  },
+  {
+   "tower": "EQ3G2B",
+   "key": [
+    1479,
+    1487
+   ],
+   "p": 3,
+   "kind": "Zp",
+   "g0": 2,
+   "slot": [
+    3,
+    0,
+    0
+   ],
+   "line": 1026,
+   "n": 2,
+   "junks": [
+    1
+   ],
+   "ncorr": [
+    1
+   ],
+   "sgns": [
+    -1,
+    -1
+   ],
+   "res_equal": true,
+   "killed": false,
+   "at_bottom": false,
+   "at_casc_slot": false
+  },
+  {
+   "tower": "EQ3G2B",
+   "key": [
+    1479,
+    1487
+   ],
+   "p": 3,
+   "kind": "Zp",
+   "g0": 2,
+   "slot": [
+    0,
+    0,
+    0
+   ],
+   "line": 1026,
+   "n": 2,
+   "junks": [
+    1
+   ],
+   "ncorr": [
+    1,
+    2
+   ],
+   "sgns": [
+    -1,
+    1
+   ],
+   "res_equal": true,
+   "killed": true,
+   "at_bottom": false,
+   "at_casc_slot": false
+  },
+  {
+   "tower": "EQ3G2B",
+   "key": [
+    1479,
+    1493
+   ],
+   "p": 3,
+   "kind": "Zp",
+   "g0": 2,
+   "slot": [
+    3,
+    0,
+    0
+   ],
+   "line": 1008,
+   "n": 3,
+   "junks": [
+    0
+   ],
+   "ncorr": [
+    1,
+    2
+   ],
+   "sgns": [
+    -1,
+    -1,
+    1
+   ],
+   "res_equal": false,
+   "killed": false,
+   "at_bottom": true,
+   "at_casc_slot": false
+  },
+  {
+   "tower": "EQ3G2B",
+   "key": [
+    1479,
+    1493
+   ],
+   "p": 3,
+   "kind": "Zp",
+   "g0": 2,
+   "slot": [
+    0,
+    0,
+    0
+   ],
+   "line": 1008,
+   "n": 2,
+   "junks": [
+    0
+   ],
+   "ncorr": [
+    1,
+    2
+   ],
+   "sgns": [
+    -1,
+    1
+   ],
+   "res_equal": true,
+   "killed": true,
+   "at_bottom": true,
+   "at_casc_slot": false
+  },
+  {
+   "tower": "EQ3G2B",
+   "key": [
+    1479,
+    1493
+   ],
+   "p": 3,
+   "kind": "Zp",
+   "g0": 2,
+   "slot": [
+    0,
+    1,
+    0
+   ],
+   "line": 1011,
+   "n": 2,
+   "junks": [
+    0
+   ],
+   "ncorr": [
+    0,
+    1
+   ],
+   "sgns": [
+    -1,
+    1
+   ],
+   "res_equal": true,
+   "killed": true,
+   "at_bottom": false,
+   "at_casc_slot": true
+  },
+  {
+   "tower": "EQ3G2B",
+   "key": [
+    1479,
+    1493
+   ],
+   "p": 3,
+   "kind": "Zp",
+   "g0": 2,
+   "slot": [
+    0,
+    0,
+    0
+   ],
+   "line": 1026,
+   "n": 2,
+   "junks": [
+    1
+   ],
+   "ncorr": [
+    1,
+    2
+   ],
+   "sgns": [
+    -1,
+    1
+   ],
+   "res_equal": true,
+   "killed": true,
+   "at_bottom": false,
+   "at_casc_slot": false
+  },
+  {
+   "tower": "EQ3G2B",
+   "key": [
+    1479,
+    1499
+   ],
+   "p": 3,
+   "kind": "Zp",
+   "g0": 2,
+   "slot": [
+    3,
+    1,
+    0
+   ],
+   "line": 1011,
+   "n": 3,
+   "junks": [
+    0
+   ],
+   "ncorr": [
+    1,
+    2
+   ],
+   "sgns": [
+    -1,
+    -1,
+    1
+   ],
+   "res_equal": false,
+   "killed": false,
+   "at_bottom": true,
+   "at_casc_slot": false
+  },
+  {
+   "tower": "EQ3G2B",
+   "key": [
+    1479,
+    1499
+   ],
+   "p": 3,
+   "kind": "Zp",
+   "g0": 2,
+   "slot": [
+    0,
+    1,
+    0
+   ],
+   "line": 1011,
+   "n": 2,
+   "junks": [
+    0
+   ],
+   "ncorr": [
+    1,
+    2
+   ],
+   "sgns": [
+    -1,
+    1
+   ],
+   "res_equal": true,
+   "killed": true,
+   "at_bottom": true,
+   "at_casc_slot": false
+  },
+  {
+   "tower": "EQ3G2B",
+   "key": [
+    1479,
+    1499
+   ],
+   "p": 3,
+   "kind": "Zp",
+   "g0": 2,
+   "slot": [
+    1,
+    0,
+    0
+   ],
+   "line": 1014,
+   "n": 4,
+   "junks": [
+    0
+   ],
+   "ncorr": [
+    1,
+    2
+   ],
+   "sgns": [
+    -1,
+    -1,
+    1,
+    1
+   ],
+   "res_equal": true,
+   "killed": true,
+   "at_bottom": false,
+   "at_casc_slot": false
+  },
+  {
+   "tower": "EQ3G2B",
+   "key": [
+    1479,
+    1499
+   ],
+   "p": 3,
+   "kind": "Zp",
+   "g0": 2,
+   "slot": [
+    4,
+    0,
+    0
+   ],
+   "line": 1014,
+   "n": 2,
+   "junks": [
+    0
+   ],
+   "ncorr": [
+    1
+   ],
+   "sgns": [
+    -1,
+    -1
+   ],
+   "res_equal": true,
+   "killed": false,
+   "at_bottom": false,
+   "at_casc_slot": false
+  },
+  {
+   "tower": "EQ3G2B",
+   "key": [
+    1479,
+    1499
+   ],
+   "p": 3,
+   "kind": "Zp",
+   "g0": 2,
+   "slot": [
+    0,
+    0,
+    1
+   ],
+   "line": 1016,
+   "n": 2,
+   "junks": [
+    0
+   ],
+   "ncorr": [
+    0,
+    1
+   ],
+   "sgns": [
+    -1,
+    1
+   ],
+   "res_equal": true,
+   "killed": true,
+   "at_bottom": false,
+   "at_casc_slot": true
+  },
+  {
+   "tower": "EQ3G2B",
+   "key": [
+    1479,
+    1499
+   ],
+   "p": 3,
+   "kind": "Zp",
+   "g0": 2,
+   "slot": [
+    0,
+    1,
+    0
+   ],
+   "line": 1029,
+   "n": 2,
+   "junks": [
+    1
+   ],
+   "ncorr": [
+    1,
+    2
+   ],
+   "sgns": [
+    -1,
+    1
+   ],
+   "res_equal": true,
+   "killed": true,
+   "at_bottom": false,
+   "at_casc_slot": false
+  },
+  {
+   "tower": "EQ3G2B",
+   "key": [
+    1479,
+    1499
+   ],
+   "p": 3,
+   "kind": "Zp",
+   "g0": 2,
+   "slot": [
+    1,
+    0,
+    0
+   ],
+   "line": 1032,
+   "n": 4,
+   "junks": [
+    1
+   ],
+   "ncorr": [
+    1,
+    2
+   ],
+   "sgns": [
+    -1,
+    -1,
+    1,
+    1
+   ],
+   "res_equal": true,
+   "killed": true,
+   "at_bottom": false,
+   "at_casc_slot": false
+  },
+  {
+   "tower": "EQ3G2B",
+   "key": [
+    1479,
+    1499
+   ],
+   "p": 3,
+   "kind": "Zp",
+   "g0": 2,
+   "slot": [
+    4,
+    0,
+    0
+   ],
+   "line": 1032,
+   "n": 2,
+   "junks": [
+    1
+   ],
+   "ncorr": [
+    1
+   ],
+   "sgns": [
+    -1,
+    -1
+   ],
+   "res_equal": true,
+   "killed": false,
+   "at_bottom": false,
+   "at_casc_slot": false
+  },
+  {
+   "tower": "EQ3G2B",
+   "key": [
+    1479,
+    1511
+   ],
+   "p": 3,
+   "kind": "Zp",
+   "g0": 2,
+   "slot": [
+    4,
+    1,
+    0
+   ],
+   "line": 1017,
+   "n": 2,
+   "junks": [
+    0
+   ],
+   "ncorr": [
+    0,
+    1
+   ],
+   "sgns": [
+    -1,
+    1
+   ],
+   "res_equal": true,
+   "killed": true,
+   "at_bottom": true,
+   "at_casc_slot": true
+  },
+  {
+   "tower": "EQ3G2B",
+   "key": [
+    1479,
+    1511
+   ],
+   "p": 3,
+   "kind": "Zp",
+   "g0": 2,
+   "slot": [
+    2,
+    0,
+    0
+   ],
+   "line": 1020,
+   "n": 2,
+   "junks": [
+    0
+   ],
+   "ncorr": [
+    1
+   ],
+   "sgns": [
+    -1,
+    -1
+   ],
+   "res_equal": true,
+   "killed": false,
+   "at_bottom": false,
+   "at_casc_slot": false
+  },
+  {
+   "tower": "EQ3G2B",
+   "key": [
+    1479,
+    1511
+   ],
+   "p": 3,
+   "kind": "Zp",
+   "g0": 2,
+   "slot": [
+    2,
+    0,
+    0
+   ],
+   "line": 1038,
+   "n": 2,
+   "junks": [
+    1
+   ],
+   "ncorr": [
+    1
+   ],
+   "sgns": [
+    -1,
+    -1
+   ],
+   "res_equal": true,
+   "killed": false,
+   "at_bottom": false,
+   "at_casc_slot": false
+  },
+  {
+   "tower": "EQ3G2B",
+   "key": [
+    1487,
+    1491
+   ],
+   "p": 3,
+   "kind": "Zp",
+   "g0": 2,
+   "slot": [
+    3,
+    1,
+    0
+   ],
+   "line": 1011,
+   "n": 2,
+   "junks": [
+    0
+   ],
+   "ncorr": [
+    0,
+    1
+   ],
+   "sgns": [
+    -1,
+    1
+   ],
+   "res_equal": true,
+   "killed": true,
+   "at_bottom": true,
+   "at_casc_slot": true
+  },
+  {
+   "tower": "EQ3G2B",
+   "key": [
+    1487,
+    1491
+   ],
+   "p": 3,
+   "kind": "Zp",
+   "g0": 2,
+   "slot": [
+    1,
+    0,
+    0
+   ],
+   "line": 1014,
+   "n": 2,
+   "junks": [
+    0
+   ],
+   "ncorr": [
+    1
+   ],
+   "sgns": [
+    -1,
+    -1
+   ],
+   "res_equal": true,
+   "killed": false,
+   "at_bottom": false,
+   "at_casc_slot": false
+  },
+  {
+   "tower": "EQ3G2B",
+   "key": [
+    1487,
+    1491
+   ],
+   "p": 3,
+   "kind": "Zp",
+   "g0": 2,
+   "slot": [
+    1,
+    0,
+    0
+   ],
+   "line": 1032,
+   "n": 2,
+   "junks": [
+    1
+   ],
+   "ncorr": [
+    1
+   ],
+   "sgns": [
+    -1,
+    -1
+   ],
+   "res_equal": true,
+   "killed": false,
+   "at_bottom": false,
+   "at_casc_slot": false
+  },
+  {
+   "tower": "EQ3G2B",
+   "key": [
+    1487,
+    1503
+   ],
+   "p": 3,
+   "kind": "Zp",
+   "g0": 2,
+   "slot": [
+    4,
+    1,
+    0
+   ],
+   "line": 1017,
+   "n": 2,
+   "junks": [
+    0
+   ],
+   "ncorr": [
+    0,
+    1
+   ],
+   "sgns": [
+    -1,
+    1
+   ],
+   "res_equal": true,
+   "killed": true,
+   "at_bottom": true,
+   "at_casc_slot": true
+  },
+  {
+   "tower": "EQ3G2B",
+   "key": [
+    1487,
+    1503
+   ],
+   "p": 3,
+   "kind": "Zp",
+   "g0": 2,
+   "slot": [
+    2,
+    0,
+    0
+   ],
+   "line": 1020,
+   "n": 2,
+   "junks": [
+    0
+   ],
+   "ncorr": [
+    1
+   ],
+   "sgns": [
+    -1,
+    -1
+   ],
+   "res_equal": true,
+   "killed": false,
+   "at_bottom": false,
+   "at_casc_slot": false
+  },
+  {
+   "tower": "EQ3G2B",
+   "key": [
+    1487,
+    1503
+   ],
+   "p": 3,
+   "kind": "Zp",
+   "g0": 2,
+   "slot": [
+    2,
+    0,
+    0
+   ],
+   "line": 1038,
+   "n": 2,
+   "junks": [
+    1
+   ],
+   "ncorr": [
+    1
+   ],
+   "sgns": [
+    -1,
+    -1
+   ],
+   "res_equal": true,
+   "killed": false,
+   "at_bottom": false,
+   "at_casc_slot": false
+  },
+  {
+   "tower": "EQ3G2B",
+   "key": [
+    1491,
+    1499
+   ],
+   "p": 3,
+   "kind": "Zp",
+   "g0": 2,
+   "slot": [
+    4,
+    1,
+    0
+   ],
+   "line": 1017,
+   "n": 2,
+   "junks": [
+    0
+   ],
+   "ncorr": [
+    0,
+    1
+   ],
+   "sgns": [
+    -1,
+    1
+   ],
+   "res_equal": true,
+   "killed": true,
+   "at_bottom": true,
+   "at_casc_slot": true
+  },
+  {
+   "tower": "EQ3G2B",
+   "key": [
+    1491,
+    1499
+   ],
+   "p": 3,
+   "kind": "Zp",
+   "g0": 2,
+   "slot": [
+    2,
+    0,
+    0
+   ],
+   "line": 1020,
+   "n": 2,
+   "junks": [
+    0
+   ],
+   "ncorr": [
+    1
+   ],
+   "sgns": [
+    -1,
+    -1
+   ],
+   "res_equal": true,
+   "killed": false,
+   "at_bottom": false,
+   "at_casc_slot": false
+  },
+  {
+   "tower": "EQ3G2B",
+   "key": [
+    1491,
+    1499
+   ],
+   "p": 3,
+   "kind": "Zp",
+   "g0": 2,
+   "slot": [
+    2,
+    0,
+    0
+   ],
+   "line": 1038,
+   "n": 2,
+   "junks": [
+    1
+   ],
+   "ncorr": [
+    1
+   ],
+   "sgns": [
+    -1,
+    -1
+   ],
+   "res_equal": true,
+   "killed": false,
+   "at_bottom": false,
+   "at_casc_slot": false
+  },
+  {
+   "tower": "EQ3G2B",
+   "key": [
+    1499,
+    1503
+   ],
+   "p": 3,
+   "kind": "Zp",
+   "g0": 2,
+   "slot": [
+    5,
+    1,
+    0
+   ],
+   "line": 1023,
+   "n": 2,
+   "junks": [
+    0
+   ],
+   "ncorr": [
+    0,
+    1
+   ],
+   "sgns": [
+    -1,
+    1
+   ],
+   "res_equal": true,
+   "killed": true,
+   "at_bottom": true,
+   "at_casc_slot": true
+  },
+  {
+   "tower": "EQ3G2B",
+   "key": [
+    1499,
+    1503
+   ],
+   "p": 3,
+   "kind": "Zp",
+   "g0": 2,
+   "slot": [
+    3,
+    0,
+    0
+   ],
+   "line": 1026,
+   "n": 2,
+   "junks": [
+    0
+   ],
+   "ncorr": [
+    1
+   ],
+   "sgns": [
+    -1,
+    -1
+   ],
+   "res_equal": true,
+   "killed": false,
+   "at_bottom": false,
+   "at_casc_slot": false
+  },
+  {
+   "tower": "EQ3G2B",
+   "key": [
+    1499,
+    1503
+   ],
+   "p": 3,
+   "kind": "Zp",
+   "g0": 2,
+   "slot": [
+    0,
+    0,
+    0
+   ],
+   "line": 1026,
+   "n": 2,
+   "junks": [
+    0
+   ],
+   "ncorr": [
+    1,
+    2
+   ],
+   "sgns": [
+    -1,
+    1
+   ],
+   "res_equal": true,
+   "killed": true,
+   "at_bottom": false,
+   "at_casc_slot": false
+  },
+  {
+   "tower": "EQ3G2B",
+   "key": [
+    1499,
+    1503
+   ],
+   "p": 3,
+   "kind": "Zp",
+   "g0": 2,
+   "slot": [
+    3,
+    0,
+    0
+   ],
+   "line": 1044,
+   "n": 2,
+   "junks": [
+    1
+   ],
+   "ncorr": [
+    1
+   ],
+   "sgns": [
+    -1,
+    -1
+   ],
+   "res_equal": true,
+   "killed": false,
+   "at_bottom": false,
+   "at_casc_slot": false
+  },
+  {
+   "tower": "EQ3G2B",
+   "key": [
+    1499,
+    1503
+   ],
+   "p": 3,
+   "kind": "Zp",
+   "g0": 2,
+   "slot": [
+    0,
+    0,
+    0
+   ],
+   "line": 1044,
+   "n": 2,
+   "junks": [
+    1
+   ],
+   "ncorr": [
+    1,
+    2
+   ],
+   "sgns": [
+    -1,
+    1
+   ],
+   "res_equal": true,
+   "killed": true,
+   "at_bottom": false,
+   "at_casc_slot": false
+  },
+  {
+   "tower": "EQ3G2B",
+   "key": [
+    1499,
+    1509
+   ],
+   "p": 3,
+   "kind": "Zp",
+   "g0": 2,
+   "slot": [
+    3,
+    0,
+    0
+   ],
+   "line": 1026,
+   "n": 3,
+   "junks": [
+    0
+   ],
+   "ncorr": [
+    1,
+    2
+   ],
+   "sgns": [
+    -1,
+    -1,
+    1
+   ],
+   "res_equal": false,
+   "killed": false,
+   "at_bottom": true,
+   "at_casc_slot": false
+  },
+  {
+   "tower": "EQ3G2B",
+   "key": [
+    1499,
+    1509
+   ],
+   "p": 3,
+   "kind": "Zp",
+   "g0": 2,
+   "slot": [
+    0,
+    0,
+    0
+   ],
+   "line": 1026,
+   "n": 2,
+   "junks": [
+    0
+   ],
+   "ncorr": [
+    1,
+    2
+   ],
+   "sgns": [
+    -1,
+    1
+   ],
+   "res_equal": true,
+   "killed": true,
+   "at_bottom": true,
+   "at_casc_slot": false
+  },
+  {
+   "tower": "EQ3G2B",
+   "key": [
+    1499,
+    1509
+   ],
+   "p": 3,
+   "kind": "Zp",
+   "g0": 2,
+   "slot": [
+    0,
+    1,
+    0
+   ],
+   "line": 1029,
+   "n": 2,
+   "junks": [
+    0
+   ],
+   "ncorr": [
+    0,
+    1
+   ],
+   "sgns": [
+    -1,
+    1
+   ],
+   "res_equal": true,
+   "killed": true,
+   "at_bottom": false,
+   "at_casc_slot": true
+  },
+  {
+   "tower": "EQ3G2B",
+   "key": [
+    1499,
+    1509
+   ],
+   "p": 3,
+   "kind": "Zp",
+   "g0": 2,
+   "slot": [
+    0,
+    0,
+    0
+   ],
+   "line": 1044,
+   "n": 2,
+   "junks": [
+    1
+   ],
+   "ncorr": [
+    1,
+    2
+   ],
+   "sgns": [
+    -1,
+    1
+   ],
+   "res_equal": true,
+   "killed": true,
+   "at_bottom": false,
+   "at_casc_slot": false
+  },
+  {
+   "tower": "EQ3G2B",
+   "key": [
+    1503,
+    1511
+   ],
+   "p": 3,
+   "kind": "Zp",
+   "g0": 2,
+   "slot": [
+    3,
+    1,
+    0
+   ],
+   "line": 1029,
+   "n": 2,
+   "junks": [
+    0
+   ],
+   "ncorr": [
+    0,
+    1
+   ],
+   "sgns": [
+    -1,
+    1
+   ],
+   "res_equal": true,
+   "killed": true,
+   "at_bottom": true,
+   "at_casc_slot": true
+  },
+  {
+   "tower": "EQ3G2B",
+   "key": [
+    1503,
+    1511
+   ],
+   "p": 3,
+   "kind": "Zp",
+   "g0": 2,
+   "slot": [
+    1,
+    0,
+    0
+   ],
+   "line": 1032,
+   "n": 2,
+   "junks": [
+    0
+   ],
+   "ncorr": [
+    1
+   ],
+   "sgns": [
+    -1,
+    -1
+   ],
+   "res_equal": true,
+   "killed": false,
+   "at_bottom": false,
+   "at_casc_slot": false
+  },
+  {
+   "tower": "EQ3G2B",
+   "key": [
+    1503,
+    1511
+   ],
+   "p": 3,
+   "kind": "Zp",
+   "g0": 2,
+   "slot": [
+    1,
+    0,
+    0
+   ],
+   "line": 1050,
+   "n": 2,
+   "junks": [
+    1
+   ],
+   "ncorr": [
+    1
+   ],
+   "sgns": [
+    -1,
+    -1
+   ],
+   "res_equal": true,
+   "killed": false,
+   "at_bottom": false,
+   "at_casc_slot": false
+  },
+  {
+   "tower": "EQ3G2B",
+   "key": [
+    1479,
+    1483
+   ],
+   "p": 3,
+   "kind": "Zp",
+   "g0": 2,
+   "slot": [
+    0,
+    0,
+    0
+   ],
+   "line": 1008,
+   "n": 2,
+   "junks": [
+    0
+   ],
+   "ncorr": [
+    0,
+    1
+   ],
+   "sgns": [
+    -1,
+    1
+   ],
+   "res_equal": true,
+   "killed": true,
+   "at_bottom": true,
+   "at_casc_slot": true
+  },
+  {
+   "tower": "EQ3G2B",
+   "key": [
+    1499,
+    1499
+   ],
+   "p": 3,
+   "kind": "Zp",
+   "g0": 2,
+   "slot": [
+    0,
+    0,
+    0
+   ],
+   "line": 1026,
+   "n": 2,
+   "junks": [
+    0
+   ],
+   "ncorr": [
+    0,
+    1
+   ],
+   "sgns": [
+    -1,
+    1
+   ],
+   "res_equal": true,
+   "killed": true,
+   "at_bottom": true,
+   "at_casc_slot": true
+  },
+  {
+   "tower": "EQ3FLT",
+   "key": [
+    123,
+    123
+   ],
+   "p": 5,
+   "kind": "Zp",
+   "g0": 1,
+   "slot": [
+    0,
+    0,
+    0
+   ],
+   "line": 90,
+   "n": 2,
+   "junks": [
+    0
+   ],
+   "ncorr": [
+    1
+   ],
+   "sgns": [
+    -1,
+    -1
+   ],
+   "res_equal": true,
+   "killed": false,
+   "at_bottom": true,
+   "at_casc_slot": false
+  },
+  {
+   "tower": "EQ3FLT",
+   "key": [
+    123,
+    123
+   ],
+   "p": 5,
+   "kind": "Zp",
+   "g0": 1,
+   "slot": [
+    1,
+    0,
+    0
+   ],
+   "line": 92,
+   "n": 2,
+   "junks": [
+    0
+   ],
+   "ncorr": [
+    1
+   ],
+   "sgns": [
+    -1,
+    -1
+   ],
+   "res_equal": true,
+   "killed": false,
+   "at_bottom": false,
+   "at_casc_slot": false
+  },
+  {
+   "tower": "EQ3FLT",
+   "key": [
+    123,
+    123
+   ],
+   "p": 5,
+   "kind": "Zp",
+   "g0": 1,
+   "slot": [
+    0,
+    0,
+    0
+   ],
+   "line": 96,
+   "n": 2,
+   "junks": [
+    1
+   ],
+   "ncorr": [
+    1
+   ],
+   "sgns": [
+    -1,
+    -1
+   ],
+   "res_equal": true,
+   "killed": false,
+   "at_bottom": false,
+   "at_casc_slot": false
+  },
+  {
+   "tower": "EQ4NEST",
+   "key": [
+    1059,
+    1059
+   ],
+   "p": 3,
+   "kind": "Zp",
+   "g0": 1,
+   "slot": [
+    0,
+    0,
+    0,
+    0
+   ],
+   "line": 720,
+   "n": 3,
+   "junks": [
+    0
+   ],
+   "ncorr": [
+    2
+   ],
+   "sgns": [
+    1,
+    1,
+    1
+   ],
+   "res_equal": true,
+   "killed": true,
+   "at_bottom": false,
+   "at_casc_slot": false
+  },
+  {
+   "tower": "EQ4NEST",
+   "key": [
+    1059,
+    1059
+   ],
+   "p": 3,
+   "kind": "Zp",
+   "g0": 1,
+   "slot": [
+    0,
+    1,
+    0,
+    0
+   ],
+   "line": 724,
+   "n": 2,
+   "junks": [
+    0
+   ],
+   "ncorr": [
+    1
+   ],
+   "sgns": [
+    -1,
+    -1
+   ],
+   "res_equal": true,
+   "killed": false,
+   "at_bottom": false,
+   "at_casc_slot": false
+  },
+  {
+   "tower": "EQ4NEST",
+   "key": [
+    1059,
+    1071
+   ],
+   "p": 3,
+   "kind": "Zp",
+   "g0": 1,
+   "slot": [
+    0,
+    1,
+    0,
+    0
+   ],
+   "line": 724,
+   "n": 2,
+   "junks": [
+    0
+   ],
+   "ncorr": [
+    2
+   ],
+   "sgns": [
+    1,
+    1
+   ],
+   "res_equal": true,
+   "killed": false,
+   "at_bottom": false,
+   "at_casc_slot": false
+  },
+  {
+   "tower": "EQ4NEST",
+   "key": [
+    1059,
+    1071
+   ],
+   "p": 3,
+   "kind": "Zp",
+   "g0": 1,
+   "slot": [
+    1,
+    0,
+    0,
+    0
+   ],
+   "line": 728,
+   "n": 2,
+   "junks": [
+    0
+   ],
+   "ncorr": [
+    1,
+    2
+   ],
+   "sgns": [
+    -1,
+    1
+   ],
+   "res_equal": false,
+   "killed": false,
+   "at_bottom": false,
+   "at_casc_slot": false
+  },
+  {
+   "tower": "EQ4NEST",
+   "key": [
+    1059,
+    1075
+   ],
+   "p": 3,
+   "kind": "Zp",
+   "g0": 1,
+   "slot": [
+    1,
+    0,
+    0,
+    0
+   ],
+   "line": 728,
+   "n": 2,
+   "junks": [
+    0
+   ],
+   "ncorr": [
+    1
+   ],
+   "sgns": [
+    -1,
+    -1
+   ],
+   "res_equal": true,
+   "killed": false,
+   "at_bottom": false,
+   "at_casc_slot": false
+  },
+  {
+   "tower": "EQ4NEST",
+   "key": [
+    1059,
+    1063
+   ],
+   "p": 3,
+   "kind": "Zp",
+   "g0": 1,
+   "slot": [
+    0,
+    0,
+    0,
+    0
+   ],
+   "line": 720,
+   "n": 2,
+   "junks": [
+    0
+   ],
+   "ncorr": [
+    2,
+    3
+   ],
+   "sgns": [
+    -1,
+    1
+   ],
+   "res_equal": false,
+   "killed": false,
+   "at_bottom": false,
+   "at_casc_slot": false
+  },
+  {
+   "tower": "EQ4NEST",
+   "key": [
+    1059,
+    1063
+   ],
+   "p": 3,
+   "kind": "Zp",
+   "g0": 1,
+   "slot": [
+    1,
+    0,
+    1,
+    0
+   ],
+   "line": 722,
+   "n": 2,
+   "junks": [
+    0
+   ],
+   "ncorr": [
+    1
+   ],
+   "sgns": [
+    -1,
+    -1
+   ],
+   "res_equal": true,
+   "killed": false,
+   "at_bottom": false,
+   "at_casc_slot": false
+  },
+  {
+   "tower": "EQ4NEST",
+   "key": [
+    1059,
+    1063
+   ],
+   "p": 3,
+   "kind": "Zp",
+   "g0": 1,
+   "slot": [
+    0,
+    1,
+    0,
+    0
+   ],
+   "line": 724,
+   "n": 3,
+   "junks": [
+    0
+   ],
+   "ncorr": [
+    1,
+    2
+   ],
+   "sgns": [
+    -1,
+    -1,
+    1
+   ],
+   "res_equal": false,
+   "killed": true,
+   "at_bottom": false,
+   "at_casc_slot": false
+  },
+  {
+   "tower": "EQ4NEST",
+   "key": [
+    1059,
+    1079
+   ],
+   "p": 3,
+   "kind": "Zp",
+   "g0": 1,
+   "slot": [
+    1,
+    0,
+    0,
+    0
+   ],
+   "line": 728,
+   "n": 3,
+   "junks": [
+    0
+   ],
+   "ncorr": [
+    2,
+    3
+   ],
+   "sgns": [
+    -1,
+    -1,
+    1
+   ],
+   "res_equal": false,
+   "killed": true,
+   "at_bottom": false,
+   "at_casc_slot": false
+  },
+  {
+   "tower": "EQ4NEST",
+   "key": [
+    1059,
+    1079
+   ],
+   "p": 3,
+   "kind": "Zp",
+   "g0": 1,
+   "slot": [
+    0,
+    0,
+    1,
+    0
+   ],
+   "line": 730,
+   "n": 3,
+   "junks": [
+    0
+   ],
+   "ncorr": [
+    2
+   ],
+   "sgns": [
+    1,
+    1,
+    1
+   ],
+   "res_equal": true,
+   "killed": true,
+   "at_bottom": false,
+   "at_casc_slot": false
+  },
+  {
+   "tower": "EQ4NEST",
+   "key": [
+    1059,
+    1079
+   ],
+   "p": 3,
+   "kind": "Zp",
+   "g0": 1,
+   "slot": [
+    1,
+    1,
+    0,
+    0
+   ],
+   "line": 732,
+   "n": 3,
+   "junks": [
+    0
+   ],
+   "ncorr": [
+    1,
+    2
+   ],
+   "sgns": [
+    -1,
+    -1,
+    1
+   ],
+   "res_equal": false,
+   "killed": true,
+   "at_bottom": false,
+   "at_casc_slot": false
+  },
+  {
+   "tower": "EQ4NEST",
+   "key": [
+    1059,
+    1079
+   ],
+   "p": 3,
+   "kind": "Zp",
+   "g0": 1,
+   "slot": [
+    0,
+    1,
+    1,
+    0
+   ],
+   "line": 734,
+   "n": 2,
+   "junks": [
+    0
+   ],
+   "ncorr": [
+    1
+   ],
+   "sgns": [
+    -1,
+    -1
+   ],
+   "res_equal": true,
+   "killed": false,
+   "at_bottom": false,
+   "at_casc_slot": false
+  },
+  {
+   "tower": "EQ4NEST",
+   "key": [
+    1059,
+    1079
+   ],
+   "p": 3,
+   "kind": "Zp",
+   "g0": 1,
+   "slot": [
+    0,
+    0,
+    0,
+    0
+   ],
+   "line": 736,
+   "n": 2,
+   "junks": [
+    0
+   ],
+   "ncorr": [
+    2
+   ],
+   "sgns": [
+    1,
+    1
+   ],
+   "res_equal": true,
+   "killed": false,
+   "at_bottom": false,
+   "at_casc_slot": false
+  },
+  {
+   "tower": "EQ4NEST",
+   "key": [
+    1063,
+    1063
+   ],
+   "p": 3,
+   "kind": "Zp",
+   "g0": 1,
+   "slot": [
+    0,
+    0,
+    0,
+    0
+   ],
+   "line": 720,
+   "n": 3,
+   "junks": [
+    0
+   ],
+   "ncorr": [
+    3
+   ],
+   "sgns": [
+    -1,
+    -1,
+    -1
+   ],
+   "res_equal": true,
+   "killed": true,
+   "at_bottom": false,
+   "at_casc_slot": false
+  },
+  {
+   "tower": "EQ4NEST",
+   "key": [
+    1063,
+    1063
+   ],
+   "p": 3,
+   "kind": "Zp",
+   "g0": 1,
+   "slot": [
+    1,
+    0,
+    1,
+    0
+   ],
+   "line": 722,
+   "n": 3,
+   "junks": [
+    0
+   ],
+   "ncorr": [
+    1,
+    2
+   ],
+   "sgns": [
+    -1,
+    -1,
+    1
+   ],
+   "res_equal": false,
+   "killed": true,
+   "at_bottom": false,
+   "at_casc_slot": false
+  },
+  {
+   "tower": "EQ4NEST",
+   "key": [
+    1063,
+    1063
+   ],
+   "p": 3,
+   "kind": "Zp",
+   "g0": 1,
+   "slot": [
+    0,
+    1,
+    0,
+    0
+   ],
+   "line": 724,
+   "n": 4,
+   "junks": [
+    0
+   ],
+   "ncorr": [
+    2
+   ],
+   "sgns": [
+    1,
+    1,
+    1,
+    1
+   ],
+   "res_equal": true,
+   "killed": false,
+   "at_bottom": false,
+   "at_casc_slot": false
+  },
+  {
+   "tower": "EQ4NEST",
+   "key": [
+    1063,
+    1063
+   ],
+   "p": 3,
+   "kind": "Zp",
+   "g0": 1,
+   "slot": [
+    1,
+    0,
+    0,
+    0
+   ],
+   "line": 728,
+   "n": 2,
+   "junks": [
+    0
+   ],
+   "ncorr": [
+    1
+   ],
+   "sgns": [
+    -1,
+    -1
+   ],
+   "res_equal": true,
+   "killed": false,
+   "at_bottom": false,
+   "at_casc_slot": false
+  },
+  {
+   "tower": "EQ4NEST",
+   "key": [
+    1063,
+    1071
+   ],
+   "p": 3,
+   "kind": "Zp",
+   "g0": 1,
+   "slot": [
+    0,
+    1,
+    0,
+    0
+   ],
+   "line": 724,
+   "n": 2,
+   "junks": [
+    0
+   ],
+   "ncorr": [
+    2
+   ],
+   "sgns": [
+    1,
+    1
+   ],
+   "res_equal": true,
+   "killed": false,
+   "at_bottom": false,
+   "at_casc_slot": false
+  },
+  {
+   "tower": "EQ4NEST",
+   "key": [
+    1063,
+    1071
+   ],
+   "p": 3,
+   "kind": "Zp",
+   "g0": 1,
+   "slot": [
+    1,
+    0,
+    0,
+    0
+   ],
+   "line": 728,
+   "n": 3,
+   "junks": [
+    0
+   ],
+   "ncorr": [
+    2
+   ],
+   "sgns": [
+    1,
+    1,
+    1
+   ],
+   "res_equal": true,
+   "killed": true,
+   "at_bottom": false,
+   "at_casc_slot": false
+  },
+  {
+   "tower": "EQ4NEST",
+   "key": [
+    1063,
+    1071
+   ],
+   "p": 3,
+   "kind": "Zp",
+   "g0": 1,
+   "slot": [
+    0,
+    0,
+    1,
+    0
+   ],
+   "line": 730,
+   "n": 2,
+   "junks": [
+    0
+   ],
+   "ncorr": [
+    1
+   ],
+   "sgns": [
+    -1,
+    -1
+   ],
+   "res_equal": true,
+   "killed": false,
+   "at_bottom": false,
+   "at_casc_slot": false
+  },
+  {
+   "tower": "EQ4NEST",
+   "key": [
+    1063,
+    1071
+   ],
+   "p": 3,
+   "kind": "Zp",
+   "g0": 1,
+   "slot": [
+    0,
+    0,
+    0,
+    0
+   ],
+   "line": 736,
+   "n": 2,
+   "junks": [
+    0
+   ],
+   "ncorr": [
+    1
+   ],
+   "sgns": [
+    -1,
+    -1
+   ],
+   "res_equal": true,
+   "killed": false,
+   "at_bottom": false,
+   "at_casc_slot": false
+  },
+  {
+   "tower": "EQ4NEST",
+   "key": [
+    1063,
+    1079
+   ],
+   "p": 3,
+   "kind": "Zp",
+   "g0": 1,
+   "slot": [
+    1,
+    0,
+    0,
+    0
+   ],
+   "line": 728,
+   "n": 3,
+   "junks": [
+    0
+   ],
+   "ncorr": [
+    3
+   ],
+   "sgns": [
+    -1,
+    -1,
+    -1
+   ],
+   "res_equal": true,
+   "killed": true,
+   "at_bottom": false,
+   "at_casc_slot": false
+  },
+  {
+   "tower": "EQ4NEST",
+   "key": [
+    1063,
+    1079
+   ],
+   "p": 3,
+   "kind": "Zp",
+   "g0": 1,
+   "slot": [
+    0,
+    0,
+    1,
+    0
+   ],
+   "line": 730,
+   "n": 3,
+   "junks": [
+    0
+   ],
+   "ncorr": [
+    2,
+    3
+   ],
+   "sgns": [
+    -1,
+    1,
+    1
+   ],
+   "res_equal": false,
+   "killed": true,
+   "at_bottom": false,
+   "at_casc_slot": false
+  },
+  {
+   "tower": "EQ4NEST",
+   "key": [
+    1063,
+    1079
+   ],
+   "p": 3,
+   "kind": "Zp",
+   "g0": 1,
+   "slot": [
+    1,
+    1,
+    0,
+    0
+   ],
+   "line": 732,
+   "n": 4,
+   "junks": [
+    0
+   ],
+   "ncorr": [
+    2
+   ],
+   "sgns": [
+    1,
+    1,
+    1,
+    1
+   ],
+   "res_equal": true,
+   "killed": false,
+   "at_bottom": false,
+   "at_casc_slot": false
+  },
+  {
+   "tower": "EQ4NEST",
+   "key": [
+    1063,
+    1079
+   ],
+   "p": 3,
+   "kind": "Zp",
+   "g0": 1,
+   "slot": [
+    0,
+    1,
+    1,
+    0
+   ],
+   "line": 734,
+   "n": 3,
+   "junks": [
+    0
+   ],
+   "ncorr": [
+    1,
+    2
+   ],
+   "sgns": [
+    -1,
+    -1,
+    1
+   ],
+   "res_equal": false,
+   "killed": true,
+   "at_bottom": false,
+   "at_casc_slot": false
+  },
+  {
+   "tower": "EQ4NEST",
+   "key": [
+    1063,
+    1079
+   ],
+   "p": 3,
+   "kind": "Zp",
+   "g0": 1,
+   "slot": [
+    1,
+    0,
+    0,
+    1
+   ],
+   "line": 735,
+   "n": 2,
+   "junks": [
+    0
+   ],
+   "ncorr": [
+    1
+   ],
+   "sgns": [
+    -1,
+    -1
+   ],
+   "res_equal": true,
+   "killed": false,
+   "at_bottom": false,
+   "at_casc_slot": false
+  },
+  {
+   "tower": "EQ4NEST",
+   "key": [
+    1063,
+    1079
+   ],
+   "p": 3,
+   "kind": "Zp",
+   "g0": 1,
+   "slot": [
+    0,
+    0,
+    0,
+    0
+   ],
+   "line": 736,
+   "n": 4,
+   "junks": [
+    0
+   ],
+   "ncorr": [
+    2,
+    3
+   ],
+   "sgns": [
+    -1,
+    1,
+    1,
+    1
+   ],
+   "res_equal": false,
+   "killed": false,
+   "at_bottom": false,
+   "at_casc_slot": false
+  },
+  {
+   "tower": "EQ4NEST",
+   "key": [
+    1063,
+    1079
+   ],
+   "p": 3,
+   "kind": "Zp",
+   "g0": 1,
+   "slot": [
+    0,
+    1,
+    0,
+    0
+   ],
+   "line": 740,
+   "n": 2,
+   "junks": [
+    0
+   ],
+   "ncorr": [
+    1
+   ],
+   "sgns": [
+    -1,
+    -1
+   ],
+   "res_equal": true,
+   "killed": false,
+   "at_bottom": false,
+   "at_casc_slot": false
+  },
+  {
+   "tower": "EQ4NEST",
+   "key": [
+    1063,
+    1087
+   ],
+   "p": 3,
+   "kind": "Zp",
+   "g0": 1,
+   "slot": [
+    1,
+    1,
+    0,
+    0
+   ],
+   "line": 732,
+   "n": 2,
+   "junks": [
+    0
+   ],
+   "ncorr": [
+    1
+   ],
+   "sgns": [
+    -1,
+    -1
+   ],
+   "res_equal": true,
+   "killed": false,
+   "at_bottom": false,
+   "at_casc_slot": false
+  },
+  {
+   "tower": "PXDEEPF3",
+   "key": [
+    667,
+    667
+   ],
+   "p": 3,
+   "kind": "Fpt",
+   "g0": 1,
+   "slot": [
+    0,
+    1,
+    0
+   ],
+   "line": 458,
+   "n": 2,
+   "junks": [
+    0
+   ],
+   "ncorr": [
+    1
+   ],
+   "sgns": [
+    -1,
+    -1
+   ],
+   "res_equal": true,
+   "killed": false,
+   "at_bottom": false,
+   "at_casc_slot": false
+  },
+  {
+   "tower": "PXDEEPF3",
+   "key": [
+    667,
+    667
+   ],
+   "p": 3,
+   "kind": "Fpt",
+   "g0": 1,
+   "slot": [
+    2,
+    0,
+    0
+   ],
+   "line": 460,
+   "n": 2,
+   "junks": [
+    0
+   ],
+   "ncorr": [
+    1
+   ],
+   "sgns": [
+    -1,
+    -1
+   ],
+   "res_equal": true,
+   "killed": false,
+   "at_bottom": false,
+   "at_casc_slot": false
+  },
+  {
+   "tower": "PXT3F3",
+   "key": [
+    831,
+    849
+   ],
+   "p": 3,
+   "kind": "Fpt",
+   "g0": 1,
+   "slot": [
+    0,
+    1,
+    0
+   ],
+   "line": 579,
+   "n": 2,
+   "junks": [
+    0
+   ],
+   "ncorr": [
+    2
+   ],
+   "sgns": [
+    1,
+    1
+   ],
+   "res_equal": true,
+   "killed": false,
+   "at_bottom": false,
+   "at_casc_slot": false
+  },
+  {
+   "tower": "PXT3F3",
+   "key": [
+    831,
+    831
+   ],
+   "p": 3,
+   "kind": "Fpt",
+   "g0": 1,
+   "slot": [
+    2,
+    0,
+    0
+   ],
+   "line": 570,
+   "n": 2,
+   "junks": [
+    0
+   ],
+   "ncorr": [
+    3
+   ],
+   "sgns": [
+    -1,
+    -1
+   ],
+   "res_equal": true,
+   "killed": false,
+   "at_bottom": false,
+   "at_casc_slot": false
+  },
+  {
+   "tower": "PXT3F3",
+   "key": [
+    831,
+    831
+   ],
+   "p": 3,
+   "kind": "Fpt",
+   "g0": 1,
+   "slot": [
+    1,
+    0,
+    1
+   ],
+   "line": 572,
+   "n": 4,
+   "junks": [
+    0
+   ],
+   "ncorr": [
+    2
+   ],
+   "sgns": [
+    1,
+    1,
+    1,
+    1
+   ],
+   "res_equal": true,
+   "killed": false,
+   "at_bottom": false,
+   "at_casc_slot": false
+  },
+  {
+   "tower": "PXT3F3",
+   "key": [
+    831,
+    831
+   ],
+   "p": 3,
+   "kind": "Fpt",
+   "g0": 1,
+   "slot": [
+    0,
+    0,
+    2
+   ],
+   "line": 574,
+   "n": 2,
+   "junks": [
+    0
+   ],
+   "ncorr": [
+    1
+   ],
+   "sgns": [
+    -1,
+    -1
+   ],
+   "res_equal": true,
+   "killed": false,
+   "at_bottom": false,
+   "at_casc_slot": false
+  },
+  {
+   "tower": "PXT3F3",
+   "key": [
+    831,
+    831
+   ],
+   "p": 3,
+   "kind": "Fpt",
+   "g0": 1,
+   "slot": [
+    1,
+    1,
+    1
+   ],
+   "line": 575,
+   "n": 2,
+   "junks": [
+    0
+   ],
+   "ncorr": [
+    1
+   ],
+   "sgns": [
+    -1,
+    -1
+   ],
+   "res_equal": true,
+   "killed": false,
+   "at_bottom": false,
+   "at_casc_slot": false
+  },
+  {
+   "tower": "PXT3F3",
+   "key": [
+    831,
+    843
+   ],
+   "p": 3,
+   "kind": "Fpt",
+   "g0": 1,
+   "slot": [
+    2,
+    0,
+    1
+   ],
+   "line": 578,
+   "n": 2,
+   "junks": [
+    0
+   ],
+   "ncorr": [
+    1
+   ],
+   "sgns": [
+    -1,
+    -1
+   ],
+   "res_equal": true,
+   "killed": false,
+   "at_bottom": false,
+   "at_casc_slot": false
+  },
+  {
+   "tower": "PXT3F3",
+   "key": [
+    831,
+    855
+   ],
+   "p": 3,
+   "kind": "Fpt",
+   "g0": 1,
+   "slot": [
+    1,
+    0,
+    0
+   ],
+   "line": 582,
+   "n": 2,
+   "junks": [
+    0
+   ],
+   "ncorr": [
+    3
+   ],
+   "sgns": [
+    -1,
+    -1
+   ],
+   "res_equal": true,
+   "killed": false,
+   "at_bottom": false,
+   "at_casc_slot": false
+  },
+  {
+   "tower": "PXT3F3",
+   "key": [
+    831,
+    855
+   ],
+   "p": 3,
+   "kind": "Fpt",
+   "g0": 1,
+   "slot": [
+    0,
+    0,
+    1
+   ],
+   "line": 584,
+   "n": 3,
+   "junks": [
+    0
+   ],
+   "ncorr": [
+    2
+   ],
+   "sgns": [
+    1,
+    1,
+    1
+   ],
+   "res_equal": true,
+   "killed": true,
+   "at_bottom": false,
+   "at_casc_slot": false
+  },
+  {
+   "tower": "PXT3F3",
+   "key": [
+    831,
+    855
+   ],
+   "p": 3,
+   "kind": "Fpt",
+   "g0": 1,
+   "slot": [
+    0,
+    1,
+    1
+   ],
+   "line": 587,
+   "n": 2,
+   "junks": [
+    0
+   ],
+   "ncorr": [
+    1
+   ],
+   "sgns": [
+    -1,
+    -1
+   ],
+   "res_equal": true,
+   "killed": false,
+   "at_bottom": false,
+   "at_casc_slot": false
+  },
+  {
+   "tower": "PXT3F3",
+   "key": [
+    831,
+    861
+   ],
+   "p": 3,
+   "kind": "Fpt",
+   "g0": 1,
+   "slot": [
+    1,
+    1,
+    0
+   ],
+   "line": 585,
+   "n": 2,
+   "junks": [
+    0
+   ],
+   "ncorr": [
+    2
+   ],
+   "sgns": [
+    1,
+    1
+   ],
+   "res_equal": true,
+   "killed": false,
+   "at_bottom": false,
+   "at_casc_slot": false
+  },
+  {
+   "tower": "PXT3F3",
+   "key": [
+    831,
+    861
+   ],
+   "p": 3,
+   "kind": "Fpt",
+   "g0": 1,
+   "slot": [
+    0,
+    1,
+    1
+   ],
+   "line": 587,
+   "n": 2,
+   "junks": [
+    0
+   ],
+   "ncorr": [
+    1
+   ],
+   "sgns": [
+    -1,
+    -1
+   ],
+   "res_equal": true,
+   "killed": false,
+   "at_bottom": false,
+   "at_casc_slot": false
+  },
+  {
+   "tower": "PXT3F3",
+   "key": [
+    831,
+    861
+   ],
+   "p": 3,
+   "kind": "Fpt",
+   "g0": 1,
+   "slot": [
+    1,
+    0,
+    1
+   ],
+   "line": 590,
+   "n": 2,
+   "junks": [
+    0
+   ],
+   "ncorr": [
+    1
+   ],
+   "sgns": [
+    -1,
+    -1
+   ],
+   "res_equal": true,
+   "killed": false,
+   "at_bottom": false,
+   "at_casc_slot": false
+  },
+  {
+   "tower": "PXT3F3",
+   "key": [
+    843,
+    855
+   ],
+   "p": 3,
+   "kind": "Fpt",
+   "g0": 1,
+   "slot": [
+    1,
+    0,
+    1
+   ],
+   "line": 590,
+   "n": 2,
+   "junks": [
+    0
+   ],
+   "ncorr": [
+    1
+   ],
+   "sgns": [
+    -1,
+    -1
+   ],
+   "res_equal": true,
+   "killed": false,
+   "at_bottom": false,
+   "at_casc_slot": false
+  },
+  {
+   "tower": "PXT3F3",
+   "key": [
+    855,
+    855
+   ],
+   "p": 3,
+   "kind": "Fpt",
+   "g0": 1,
+   "slot": [
+    2,
+    0,
+    1
+   ],
+   "line": 596,
+   "n": 2,
+   "junks": [
+    0
+   ],
+   "ncorr": [
+    1
+   ],
+   "sgns": [
+    -1,
+    -1
+   ],
+   "res_equal": true,
+   "killed": false,
+   "at_bottom": false,
+   "at_casc_slot": false
+  },
+  {
+   "tower": "PXT3F3",
+   "key": [
+    831,
+    839
+   ],
+   "p": 3,
+   "kind": "Fpt",
+   "g0": 1,
+   "slot": [
+    0,
+    0,
+    0
+   ],
+   "line": 576,
+   "n": 3,
+   "junks": [
+    0
+   ],
+   "ncorr": [
+    2
+   ],
+   "sgns": [
+    1,
+    1,
+    1
+   ],
+   "res_equal": true,
+   "killed": true,
+   "at_bottom": false,
+   "at_casc_slot": false
+  },
+  {
+   "tower": "PXT3F3",
+   "key": [
+    831,
+    839
+   ],
+   "p": 3,
+   "kind": "Fpt",
+   "g0": 1,
+   "slot": [
+    0,
+    1,
+    0
+   ],
+   "line": 579,
+   "n": 2,
+   "junks": [
+    0
+   ],
+   "ncorr": [
+    1
+   ],
+   "sgns": [
+    -1,
+    -1
+   ],
+   "res_equal": true,
+   "killed": false,
+   "at_bottom": false,
+   "at_casc_slot": false
+  },
+  {
+   "tower": "PXT3F3",
+   "key": [
+    831,
+    845
+   ],
+   "p": 3,
+   "kind": "Fpt",
+   "g0": 1,
+   "slot": [
+    0,
+    1,
+    0
+   ],
+   "line": 579,
+   "n": 2,
+   "junks": [
+    0
+   ],
+   "ncorr": [
+    1
+   ],
+   "sgns": [
+    -1,
+    -1
+   ],
+   "res_equal": true,
+   "killed": false,
+   "at_bottom": false,
+   "at_casc_slot": false
+  },
+  {
+   "tower": "PXT3F3",
+   "key": [
+    831,
+    845
+   ],
+   "p": 3,
+   "kind": "Fpt",
+   "g0": 1,
+   "slot": [
+    1,
+    0,
+    0
+   ],
+   "line": 582,
+   "n": 2,
+   "junks": [
+    0
+   ],
+   "ncorr": [
+    1
+   ],
+   "sgns": [
+    -1,
+    -1
+   ],
+   "res_equal": true,
+   "killed": false,
+   "at_bottom": false,
+   "at_casc_slot": false
+  },
+  {
+   "tower": "PXT3F3",
+   "key": [
+    831,
+    851
+   ],
+   "p": 3,
+   "kind": "Fpt",
+   "g0": 1,
+   "slot": [
+    1,
+    0,
+    0
+   ],
+   "line": 582,
+   "n": 4,
+   "junks": [
+    0
+   ],
+   "ncorr": [
+    2
+   ],
+   "sgns": [
+    1,
+    1,
+    1,
+    1
+   ],
+   "res_equal": true,
+   "killed": false,
+   "at_bottom": false,
+   "at_casc_slot": false
+  },
+  {
+   "tower": "PXT3F3",
+   "key": [
+    831,
+    851
+   ],
+   "p": 3,
+   "kind": "Fpt",
+   "g0": 1,
+   "slot": [
+    0,
+    0,
+    1
+   ],
+   "line": 584,
+   "n": 2,
+   "junks": [
+    0
+   ],
+   "ncorr": [
+    1
+   ],
+   "sgns": [
+    -1,
+    -1
+   ],
+   "res_equal": true,
+   "killed": false,
+   "at_bottom": false,
+   "at_casc_slot": false
+  },
+  {
+   "tower": "PXT3F3",
+   "key": [
+    831,
+    851
+   ],
+   "p": 3,
+   "kind": "Fpt",
+   "g0": 1,
+   "slot": [
+    1,
+    1,
+    0
+   ],
+   "line": 585,
+   "n": 2,
+   "junks": [
+    0
+   ],
+   "ncorr": [
+    1
+   ],
+   "sgns": [
+    -1,
+    -1
+   ],
+   "res_equal": true,
+   "killed": false,
+   "at_bottom": false,
+   "at_casc_slot": false
+  },
+  {
+   "tower": "PXT3F3",
+   "key": [
+    831,
+    863
+   ],
+   "p": 3,
+   "kind": "Fpt",
+   "g0": 1,
+   "slot": [
+    2,
+    0,
+    0
+   ],
+   "line": 588,
+   "n": 2,
+   "junks": [
+    0
+   ],
+   "ncorr": [
+    1
+   ],
+   "sgns": [
+    -1,
+    -1
+   ],
+   "res_equal": true,
+   "killed": false,
+   "at_bottom": false,
+   "at_casc_slot": false
+  },
+  {
+   "tower": "PXT3F3",
+   "key": [
+    839,
+    843
+   ],
+   "p": 3,
+   "kind": "Fpt",
+   "g0": 1,
+   "slot": [
+    1,
+    0,
+    0
+   ],
+   "line": 582,
+   "n": 2,
+   "junks": [
+    0
+   ],
+   "ncorr": [
+    1
+   ],
+   "sgns": [
+    -1,
+    -1
+   ],
+   "res_equal": true,
+   "killed": false,
+   "at_bottom": false,
+   "at_casc_slot": false
+  },
+  {
+   "tower": "PXT3F3",
+   "key": [
+    839,
+    855
+   ],
+   "p": 3,
+   "kind": "Fpt",
+   "g0": 1,
+   "slot": [
+    2,
+    0,
+    0
+   ],
+   "line": 588,
+   "n": 2,
+   "junks": [
+    0
+   ],
+   "ncorr": [
+    1
+   ],
+   "sgns": [
+    -1,
+    -1
+   ],
+   "res_equal": true,
+   "killed": false,
+   "at_bottom": false,
+   "at_casc_slot": false
+  },
+  {
+   "tower": "PXT3F3",
+   "key": [
+    843,
+    851
+   ],
+   "p": 3,
+   "kind": "Fpt",
+   "g0": 1,
+   "slot": [
+    2,
+    0,
+    0
+   ],
+   "line": 588,
+   "n": 2,
+   "junks": [
+    0
+   ],
+   "ncorr": [
+    1
+   ],
+   "sgns": [
+    -1,
+    -1
+   ],
+   "res_equal": true,
+   "killed": false,
+   "at_bottom": false,
+   "at_casc_slot": false
+  },
+  {
+   "tower": "PXT3F3",
+   "key": [
+    851,
+    855
+   ],
+   "p": 3,
+   "kind": "Fpt",
+   "g0": 1,
+   "slot": [
+    0,
+    0,
+    0
+   ],
+   "line": 594,
+   "n": 3,
+   "junks": [
+    0
+   ],
+   "ncorr": [
+    2
+   ],
+   "sgns": [
+    1,
+    1,
+    1
+   ],
+   "res_equal": true,
+   "killed": true,
+   "at_bottom": false,
+   "at_casc_slot": false
+  },
+  {
+   "tower": "PXT3F3",
+   "key": [
+    851,
+    855
+   ],
+   "p": 3,
+   "kind": "Fpt",
+   "g0": 1,
+   "slot": [
+    0,
+    1,
+    0
+   ],
+   "line": 597,
+   "n": 2,
+   "junks": [
+    0
+   ],
+   "ncorr": [
+    1
+   ],
+   "sgns": [
+    -1,
+    -1
+   ],
+   "res_equal": true,
+   "killed": false,
+   "at_bottom": false,
+   "at_casc_slot": false
+  },
+  {
+   "tower": "PXT3F3",
+   "key": [
+    851,
+    861
+   ],
+   "p": 3,
+   "kind": "Fpt",
+   "g0": 1,
+   "slot": [
+    0,
+    1,
+    0
+   ],
+   "line": 597,
+   "n": 2,
+   "junks": [
+    0
+   ],
+   "ncorr": [
+    1
+   ],
+   "sgns": [
+    -1,
+    -1
+   ],
+   "res_equal": true,
+   "killed": false,
+   "at_bottom": false,
+   "at_casc_slot": false
+  },
+  {
+   "tower": "PXT3F3",
+   "key": [
+    851,
+    861
+   ],
+   "p": 3,
+   "kind": "Fpt",
+   "g0": 1,
+   "slot": [
+    1,
+    0,
+    0
+   ],
+   "line": 600,
+   "n": 2,
+   "junks": [
+    0
+   ],
+   "ncorr": [
+    1
+   ],
+   "sgns": [
+    -1,
+    -1
+   ],
+   "res_equal": true,
+   "killed": false,
+   "at_bottom": false,
+   "at_casc_slot": false
+  },
+  {
+   "tower": "PXT3F3",
+   "key": [
+    855,
+    863
+   ],
+   "p": 3,
+   "kind": "Fpt",
+   "g0": 1,
+   "slot": [
+    1,
+    0,
+    0
+   ],
+   "line": 600,
+   "n": 2,
+   "junks": [
+    0
+   ],
+   "ncorr": [
+    1
+   ],
+   "sgns": [
+    -1,
+    -1
+   ],
+   "res_equal": true,
+   "killed": false,
+   "at_bottom": false,
+   "at_casc_slot": false
+  },
+  {
+   "tower": "PXT3F3",
+   "key": [
+    831,
+    835
+   ],
+   "p": 3,
+   "kind": "Fpt",
+   "g0": 1,
+   "slot": [
+    0,
+    0,
+    0
+   ],
+   "line": 576,
+   "n": 2,
+   "junks": [
+    0
+   ],
+   "ncorr": [
+    1
+   ],
+   "sgns": [
+    -1,
+    -1
+   ],
+   "res_equal": true,
+   "killed": false,
+   "at_bottom": true,
+   "at_casc_slot": false
+  },
+  {
+   "tower": "PXDEEPZ2",
+   "key": [
+    667,
+    667
+   ],
+   "p": 2,
+   "kind": "Zp",
+   "g0": 1,
+   "slot": [
+    0,
+    1,
+    0
+   ],
+   "line": 458,
+   "n": 2,
+   "junks": [
+    0
+   ],
+   "ncorr": [
+    1
+   ],
+   "sgns": [
+    -1,
+    -1
+   ],
+   "res_equal": true,
+   "killed": true,
+   "at_bottom": false,
+   "at_casc_slot": false
+  },
+  {
+   "tower": "PXDEEPZ2",
+   "key": [
+    667,
+    667
+   ],
+   "p": 2,
+   "kind": "Zp",
+   "g0": 1,
+   "slot": [
+    2,
+    0,
+    0
+   ],
+   "line": 460,
+   "n": 2,
+   "junks": [
+    0
+   ],
+   "ncorr": [
+    1
+   ],
+   "sgns": [
+    -1,
+    -1
+   ],
+   "res_equal": true,
+   "killed": true,
+   "at_bottom": false,
+   "at_casc_slot": false
+  },
+  {
+   "tower": "PXT3Z2",
+   "key": [
+    831,
+    849
+   ],
+   "p": 2,
+   "kind": "Zp",
+   "g0": 1,
+   "slot": [
+    0,
+    1,
+    0
+   ],
+   "line": 579,
+   "n": 2,
+   "junks": [
+    0
+   ],
+   "ncorr": [
+    2
+   ],
+   "sgns": [
+    1,
+    1
+   ],
+   "res_equal": true,
+   "killed": true,
+   "at_bottom": false,
+   "at_casc_slot": false
+  },
+  {
+   "tower": "PXT3Z2",
+   "key": [
+    831,
+    831
+   ],
+   "p": 2,
+   "kind": "Zp",
+   "g0": 1,
+   "slot": [
+    2,
+    0,
+    0
+   ],
+   "line": 570,
+   "n": 2,
+   "junks": [
+    0
+   ],
+   "ncorr": [
+    3
+   ],
+   "sgns": [
+    -1,
+    -1
+   ],
+   "res_equal": true,
+   "killed": true,
+   "at_bottom": false,
+   "at_casc_slot": false
+  },
+  {
+   "tower": "PXT3Z2",
+   "key": [
+    831,
+    831
+   ],
+   "p": 2,
+   "kind": "Zp",
+   "g0": 1,
+   "slot": [
+    1,
+    0,
+    1
+   ],
+   "line": 572,
+   "n": 4,
+   "junks": [
+    0
+   ],
+   "ncorr": [
+    2
+   ],
+   "sgns": [
+    1,
+    1,
+    1,
+    1
+   ],
+   "res_equal": true,
+   "killed": true,
+   "at_bottom": false,
+   "at_casc_slot": false
+  },
+  {
+   "tower": "PXT3Z2",
+   "key": [
+    831,
+    831
+   ],
+   "p": 2,
+   "kind": "Zp",
+   "g0": 1,
+   "slot": [
+    0,
+    0,
+    2
+   ],
+   "line": 574,
+   "n": 2,
+   "junks": [
+    0
+   ],
+   "ncorr": [
+    1
+   ],
+   "sgns": [
+    -1,
+    -1
+   ],
+   "res_equal": true,
+   "killed": true,
+   "at_bottom": false,
+   "at_casc_slot": false
+  },
+  {
+   "tower": "PXT3Z2",
+   "key": [
+    831,
+    831
+   ],
+   "p": 2,
+   "kind": "Zp",
+   "g0": 1,
+   "slot": [
+    1,
+    1,
+    1
+   ],
+   "line": 575,
+   "n": 2,
+   "junks": [
+    0
+   ],
+   "ncorr": [
+    1
+   ],
+   "sgns": [
+    -1,
+    -1
+   ],
+   "res_equal": true,
+   "killed": true,
+   "at_bottom": false,
+   "at_casc_slot": false
+  },
+  {
+   "tower": "PXT3Z2",
+   "key": [
+    831,
+    843
+   ],
+   "p": 2,
+   "kind": "Zp",
+   "g0": 1,
+   "slot": [
+    2,
+    0,
+    1
+   ],
+   "line": 578,
+   "n": 2,
+   "junks": [
+    0
+   ],
+   "ncorr": [
+    1
+   ],
+   "sgns": [
+    -1,
+    -1
+   ],
+   "res_equal": true,
+   "killed": true,
+   "at_bottom": false,
+   "at_casc_slot": false
+  },
+  {
+   "tower": "PXT3Z2",
+   "key": [
+    831,
+    855
+   ],
+   "p": 2,
+   "kind": "Zp",
+   "g0": 1,
+   "slot": [
+    1,
+    0,
+    0
+   ],
+   "line": 582,
+   "n": 2,
+   "junks": [
+    0
+   ],
+   "ncorr": [
+    3
+   ],
+   "sgns": [
+    -1,
+    -1
+   ],
+   "res_equal": true,
+   "killed": true,
+   "at_bottom": false,
+   "at_casc_slot": false
+  },
+  {
+   "tower": "PXT3Z2",
+   "key": [
+    831,
+    855
+   ],
+   "p": 2,
+   "kind": "Zp",
+   "g0": 1,
+   "slot": [
+    0,
+    0,
+    1
+   ],
+   "line": 584,
+   "n": 3,
+   "junks": [
+    0
+   ],
+   "ncorr": [
+    2
+   ],
+   "sgns": [
+    1,
+    1,
+    1
+   ],
+   "res_equal": true,
+   "killed": false,
+   "at_bottom": false,
+   "at_casc_slot": false
+  },
+  {
+   "tower": "PXT3Z2",
+   "key": [
+    831,
+    855
+   ],
+   "p": 2,
+   "kind": "Zp",
+   "g0": 1,
+   "slot": [
+    0,
+    1,
+    1
+   ],
+   "line": 587,
+   "n": 2,
+   "junks": [
+    0
+   ],
+   "ncorr": [
+    1
+   ],
+   "sgns": [
+    -1,
+    -1
+   ],
+   "res_equal": true,
+   "killed": true,
+   "at_bottom": false,
+   "at_casc_slot": false
+  },
+  {
+   "tower": "PXT3Z2",
+   "key": [
+    831,
+    861
+   ],
+   "p": 2,
+   "kind": "Zp",
+   "g0": 1,
+   "slot": [
+    1,
+    1,
+    0
+   ],
+   "line": 585,
+   "n": 2,
+   "junks": [
+    0
+   ],
+   "ncorr": [
+    2
+   ],
+   "sgns": [
+    1,
+    1
+   ],
+   "res_equal": true,
+   "killed": true,
+   "at_bottom": false,
+   "at_casc_slot": false
+  },
+  {
+   "tower": "PXT3Z2",
+   "key": [
+    831,
+    861
+   ],
+   "p": 2,
+   "kind": "Zp",
+   "g0": 1,
+   "slot": [
+    0,
+    1,
+    1
+   ],
+   "line": 587,
+   "n": 2,
+   "junks": [
+    0
+   ],
+   "ncorr": [
+    1
+   ],
+   "sgns": [
+    -1,
+    -1
+   ],
+   "res_equal": true,
+   "killed": true,
+   "at_bottom": false,
+   "at_casc_slot": false
+  },
+  {
+   "tower": "PXT3Z2",
+   "key": [
+    831,
+    861
+   ],
+   "p": 2,
+   "kind": "Zp",
+   "g0": 1,
+   "slot": [
+    1,
+    0,
+    1
+   ],
+   "line": 590,
+   "n": 2,
+   "junks": [
+    0
+   ],
+   "ncorr": [
+    1
+   ],
+   "sgns": [
+    -1,
+    -1
+   ],
+   "res_equal": true,
+   "killed": true,
+   "at_bottom": false,
+   "at_casc_slot": false
+  },
+  {
+   "tower": "PXT3Z2",
+   "key": [
+    843,
+    855
+   ],
+   "p": 2,
+   "kind": "Zp",
+   "g0": 1,
+   "slot": [
+    1,
+    0,
+    1
+   ],
+   "line": 590,
+   "n": 2,
+   "junks": [
+    0
+   ],
+   "ncorr": [
+    1
+   ],
+   "sgns": [
+    -1,
+    -1
+   ],
+   "res_equal": true,
+   "killed": true,
+   "at_bottom": false,
+   "at_casc_slot": false
+  },
+  {
+   "tower": "PXT3Z2",
+   "key": [
+    855,
+    855
+   ],
+   "p": 2,
+   "kind": "Zp",
+   "g0": 1,
+   "slot": [
+    2,
+    0,
+    1
+   ],
+   "line": 596,
+   "n": 2,
+   "junks": [
+    0
+   ],
+   "ncorr": [
+    1
+   ],
+   "sgns": [
+    -1,
+    -1
+   ],
+   "res_equal": true,
+   "killed": true,
+   "at_bottom": false,
+   "at_casc_slot": false
+  },
+  {
+   "tower": "PXT3Z2",
+   "key": [
+    831,
+    839
+   ],
+   "p": 2,
+   "kind": "Zp",
+   "g0": 1,
+   "slot": [
+    0,
+    0,
+    0
+   ],
+   "line": 576,
+   "n": 3,
+   "junks": [
+    0
+   ],
+   "ncorr": [
+    2
+   ],
+   "sgns": [
+    1,
+    1,
+    1
+   ],
+   "res_equal": true,
+   "killed": false,
+   "at_bottom": false,
+   "at_casc_slot": false
+  },
+  {
+   "tower": "PXT3Z2",
+   "key": [
+    831,
+    839
+   ],
+   "p": 2,
+   "kind": "Zp",
+   "g0": 1,
+   "slot": [
+    0,
+    1,
+    0
+   ],
+   "line": 579,
+   "n": 2,
+   "junks": [
+    0
+   ],
+   "ncorr": [
+    1
+   ],
+   "sgns": [
+    -1,
+    -1
+   ],
+   "res_equal": true,
+   "killed": true,
+   "at_bottom": false,
+   "at_casc_slot": false
+  },
+  {
+   "tower": "PXT3Z2",
+   "key": [
+    831,
+    845
+   ],
+   "p": 2,
+   "kind": "Zp",
+   "g0": 1,
+   "slot": [
+    0,
+    1,
+    0
+   ],
+   "line": 579,
+   "n": 2,
+   "junks": [
+    0
+   ],
+   "ncorr": [
+    1
+   ],
+   "sgns": [
+    -1,
+    -1
+   ],
+   "res_equal": true,
+   "killed": true,
+   "at_bottom": false,
+   "at_casc_slot": false
+  },
+  {
+   "tower": "PXT3Z2",
+   "key": [
+    831,
+    845
+   ],
+   "p": 2,
+   "kind": "Zp",
+   "g0": 1,
+   "slot": [
+    1,
+    0,
+    0
+   ],
+   "line": 582,
+   "n": 2,
+   "junks": [
+    0
+   ],
+   "ncorr": [
+    1
+   ],
+   "sgns": [
+    -1,
+    -1
+   ],
+   "res_equal": true,
+   "killed": true,
+   "at_bottom": false,
+   "at_casc_slot": false
+  },
+  {
+   "tower": "PXT3Z2",
+   "key": [
+    831,
+    851
+   ],
+   "p": 2,
+   "kind": "Zp",
+   "g0": 1,
+   "slot": [
+    1,
+    0,
+    0
+   ],
+   "line": 582,
+   "n": 4,
+   "junks": [
+    0
+   ],
+   "ncorr": [
+    2
+   ],
+   "sgns": [
+    1,
+    1,
+    1,
+    1
+   ],
+   "res_equal": true,
+   "killed": true,
+   "at_bottom": false,
+   "at_casc_slot": false
+  },
+  {
+   "tower": "PXT3Z2",
+   "key": [
+    831,
+    851
+   ],
+   "p": 2,
+   "kind": "Zp",
+   "g0": 1,
+   "slot": [
+    0,
+    0,
+    1
+   ],
+   "line": 584,
+   "n": 2,
+   "junks": [
+    0
+   ],
+   "ncorr": [
+    1
+   ],
+   "sgns": [
+    -1,
+    -1
+   ],
+   "res_equal": true,
+   "killed": true,
+   "at_bottom": false,
+   "at_casc_slot": false
+  },
+  {
+   "tower": "PXT3Z2",
+   "key": [
+    831,
+    851
+   ],
+   "p": 2,
+   "kind": "Zp",
+   "g0": 1,
+   "slot": [
+    1,
+    1,
+    0
+   ],
+   "line": 585,
+   "n": 2,
+   "junks": [
+    0
+   ],
+   "ncorr": [
+    1
+   ],
+   "sgns": [
+    -1,
+    -1
+   ],
+   "res_equal": true,
+   "killed": true,
+   "at_bottom": false,
+   "at_casc_slot": false
+  },
+  {
+   "tower": "PXT3Z2",
+   "key": [
+    831,
+    863
+   ],
+   "p": 2,
+   "kind": "Zp",
+   "g0": 1,
+   "slot": [
+    2,
+    0,
+    0
+   ],
+   "line": 588,
+   "n": 2,
+   "junks": [
+    0
+   ],
+   "ncorr": [
+    1
+   ],
+   "sgns": [
+    -1,
+    -1
+   ],
+   "res_equal": true,
+   "killed": true,
+   "at_bottom": false,
+   "at_casc_slot": false
+  },
+  {
+   "tower": "PXT3Z2",
+   "key": [
+    839,
+    843
+   ],
+   "p": 2,
+   "kind": "Zp",
+   "g0": 1,
+   "slot": [
+    1,
+    0,
+    0
+   ],
+   "line": 582,
+   "n": 2,
+   "junks": [
+    0
+   ],
+   "ncorr": [
+    1
+   ],
+   "sgns": [
+    -1,
+    -1
+   ],
+   "res_equal": true,
+   "killed": true,
+   "at_bottom": false,
+   "at_casc_slot": false
+  },
+  {
+   "tower": "PXT3Z2",
+   "key": [
+    839,
+    855
+   ],
+   "p": 2,
+   "kind": "Zp",
+   "g0": 1,
+   "slot": [
+    2,
+    0,
+    0
+   ],
+   "line": 588,
+   "n": 2,
+   "junks": [
+    0
+   ],
+   "ncorr": [
+    1
+   ],
+   "sgns": [
+    -1,
+    -1
+   ],
+   "res_equal": true,
+   "killed": true,
+   "at_bottom": false,
+   "at_casc_slot": false
+  },
+  {
+   "tower": "PXT3Z2",
+   "key": [
+    843,
+    851
+   ],
+   "p": 2,
+   "kind": "Zp",
+   "g0": 1,
+   "slot": [
+    2,
+    0,
+    0
+   ],
+   "line": 588,
+   "n": 2,
+   "junks": [
+    0
+   ],
+   "ncorr": [
+    1
+   ],
+   "sgns": [
+    -1,
+    -1
+   ],
+   "res_equal": true,
+   "killed": true,
+   "at_bottom": false,
+   "at_casc_slot": false
+  },
+  {
+   "tower": "PXT3Z2",
+   "key": [
+    851,
+    855
+   ],
+   "p": 2,
+   "kind": "Zp",
+   "g0": 1,
+   "slot": [
+    0,
+    0,
+    0
+   ],
+   "line": 594,
+   "n": 3,
+   "junks": [
+    0
+   ],
+   "ncorr": [
+    2
+   ],
+   "sgns": [
+    1,
+    1,
+    1
+   ],
+   "res_equal": true,
+   "killed": false,
+   "at_bottom": false,
+   "at_casc_slot": false
+  },
+  {
+   "tower": "PXT3Z2",
+   "key": [
+    851,
+    855
+   ],
+   "p": 2,
+   "kind": "Zp",
+   "g0": 1,
+   "slot": [
+    0,
+    1,
+    0
+   ],
+   "line": 597,
+   "n": 2,
+   "junks": [
+    0
+   ],
+   "ncorr": [
+    1
+   ],
+   "sgns": [
+    -1,
+    -1
+   ],
+   "res_equal": true,
+   "killed": true,
+   "at_bottom": false,
+   "at_casc_slot": false
+  },
+  {
+   "tower": "PXT3Z2",
+   "key": [
+    851,
+    861
+   ],
+   "p": 2,
+   "kind": "Zp",
+   "g0": 1,
+   "slot": [
+    0,
+    1,
+    0
+   ],
+   "line": 597,
+   "n": 2,
+   "junks": [
+    0
+   ],
+   "ncorr": [
+    1
+   ],
+   "sgns": [
+    -1,
+    -1
+   ],
+   "res_equal": true,
+   "killed": true,
+   "at_bottom": false,
+   "at_casc_slot": false
+  },
+  {
+   "tower": "PXT3Z2",
+   "key": [
+    851,
+    861
+   ],
+   "p": 2,
+   "kind": "Zp",
+   "g0": 1,
+   "slot": [
+    1,
+    0,
+    0
+   ],
+   "line": 600,
+   "n": 2,
+   "junks": [
+    0
+   ],
+   "ncorr": [
+    1
+   ],
+   "sgns": [
+    -1,
+    -1
+   ],
+   "res_equal": true,
+   "killed": true,
+   "at_bottom": false,
+   "at_casc_slot": false
+  },
+  {
+   "tower": "PXT3Z2",
+   "key": [
+    855,
+    863
+   ],
+   "p": 2,
+   "kind": "Zp",
+   "g0": 1,
+   "slot": [
+    1,
+    0,
+    0
+   ],
+   "line": 600,
+   "n": 2,
+   "junks": [
+    0
+   ],
+   "ncorr": [
+    1
+   ],
+   "sgns": [
+    -1,
+    -1
+   ],
+   "res_equal": true,
+   "killed": true,
+   "at_bottom": false,
+   "at_casc_slot": false
+  },
+  {
+   "tower": "PXT3Z2",
+   "key": [
+    831,
+    835
+   ],
+   "p": 2,
+   "kind": "Zp",
+   "g0": 1,
+   "slot": [
+    0,
+    0,
+    0
+   ],
+   "line": 576,
+   "n": 2,
+   "junks": [
+    0
+   ],
+   "ncorr": [
+    1
+   ],
+   "sgns": [
+    -1,
+    -1
+   ],
+   "res_equal": true,
+   "killed": true,
+   "at_bottom": true,
+   "at_casc_slot": false
+  },
+  {
+   "tower": "PXDEEP4F",
+   "key": [
+    1255,
+    1255
+   ],
+   "p": 2,
+   "kind": "Fpt",
+   "g0": 1,
+   "slot": [
+    0,
+    0,
+    0
+   ],
+   "line": 848,
+   "n": 3,
+   "junks": [
+    0
+   ],
+   "ncorr": [
+    2
+   ],
+   "sgns": [
+    1,
+    1,
+    1
+   ],
+   "res_equal": true,
+   "killed": false,
+   "at_bottom": false,
+   "at_casc_slot": false
+  },
+  {
+   "tower": "PXDEEP4F",
+   "key": [
+    1255,
+    1255
+   ],
+   "p": 2,
+   "kind": "Fpt",
+   "g0": 1,
+   "slot": [
+    0,
+    1,
+    0
+   ],
+   "line": 850,
+   "n": 2,
+   "junks": [
+    0
+   ],
+   "ncorr": [
+    1
+   ],
+   "sgns": [
+    -1,
+    -1
+   ],
+   "res_equal": true,
+   "killed": true,
+   "at_bottom": false,
+   "at_casc_slot": false
+  },
+  {
+   "tower": "PXDEEP4F",
+   "key": [
+    1255,
+    1263
+   ],
+   "p": 2,
+   "kind": "Fpt",
+   "g0": 1,
+   "slot": [
+    3,
+    0,
+    0
+   ],
+   "line": 852,
+   "n": 2,
+   "junks": [
+    0
+   ],
+   "ncorr": [
+    1
+   ],
+   "sgns": [
+    -1,
+    -1
+   ],
+   "res_equal": true,
+   "killed": true,
+   "at_bottom": false,
+   "at_casc_slot": false
+  },
+  {
+   "tower": "PXDEEP4F",
+   "key": [
+    1255,
+    1271
+   ],
+   "p": 2,
+   "kind": "Fpt",
+   "g0": 1,
+   "slot": [
+    2,
+    0,
+    0
+   ],
+   "line": 856,
+   "n": 3,
+   "junks": [
+    0
+   ],
+   "ncorr": [
+    2
+   ],
+   "sgns": [
+    1,
+    1,
+    1
+   ],
+   "res_equal": true,
+   "killed": false,
+   "at_bottom": false,
+   "at_casc_slot": false
+  },
+  {
+   "tower": "PXDEEP4F",
+   "key": [
+    1255,
+    1271
+   ],
+   "p": 2,
+   "kind": "Fpt",
+   "g0": 1,
+   "slot": [
+    2,
+    1,
+    0
+   ],
+   "line": 858,
+   "n": 2,
+   "junks": [
+    0
+   ],
+   "ncorr": [
+    1
+   ],
+   "sgns": [
+    -1,
+    -1
+   ],
+   "res_equal": true,
+   "killed": true,
+   "at_bottom": false,
+   "at_casc_slot": false
+  },
+  {
+   "tower": "PXDEEP4F",
+   "key": [
+    1255,
+    1271
+   ],
+   "p": 2,
+   "kind": "Fpt",
+   "g0": 1,
+   "slot": [
+    0,
+    0,
+    0
+   ],
+   "line": 864,
+   "n": 2,
+   "junks": [
+    0
+   ],
+   "ncorr": [
+    1
+   ],
+   "sgns": [
+    -1,
+    -1
+   ],
+   "res_equal": true,
+   "killed": true,
+   "at_bottom": false,
+   "at_casc_slot": false
+  },
+  {
+   "tower": "PXDEEP4F",
+   "key": [
+    1255,
+    1279
+   ],
+   "p": 2,
+   "kind": "Fpt",
+   "g0": 1,
+   "slot": [
+    1,
+    0,
+    0
+   ],
+   "line": 860,
+   "n": 3,
+   "junks": [
+    0
+   ],
+   "ncorr": [
+    2
+   ],
+   "sgns": [
+    1,
+    1,
+    1
+   ],
+   "res_equal": true,
+   "killed": false,
+   "at_bottom": false,
+   "at_casc_slot": false
+  },
+  {
+   "tower": "PXDEEP4F",
+   "key": [
+    1255,
+    1279
+   ],
+   "p": 2,
+   "kind": "Fpt",
+   "g0": 1,
+   "slot": [
+    1,
+    1,
+    0
+   ],
+   "line": 862,
+   "n": 2,
+   "junks": [
+    0
+   ],
+   "ncorr": [
+    1
+   ],
+   "sgns": [
+    -1,
+    -1
+   ],
+   "res_equal": true,
+   "killed": true,
+   "at_bottom": false,
+   "at_casc_slot": false
+  },
+  {
+   "tower": "PXDEEP4F",
+   "key": [
+    1263,
+    1271
+   ],
+   "p": 2,
+   "kind": "Fpt",
+   "g0": 1,
+   "slot": [
+    1,
+    0,
+    0
+   ],
+   "line": 860,
+   "n": 3,
+   "junks": [
+    0
+   ],
+   "ncorr": [
+    2
+   ],
+   "sgns": [
+    1,
+    1,
+    1
+   ],
+   "res_equal": true,
+   "killed": false,
+   "at_bottom": false,
+   "at_casc_slot": false
+  },
+  {
+   "tower": "PXDEEP4F",
+   "key": [
+    1263,
+    1271
+   ],
+   "p": 2,
+   "kind": "Fpt",
+   "g0": 1,
+   "slot": [
+    1,
+    1,
+    0
+   ],
+   "line": 862,
+   "n": 2,
+   "junks": [
+    0
+   ],
+   "ncorr": [
+    1
+   ],
+   "sgns": [
+    -1,
+    -1
+   ],
+   "res_equal": true,
+   "killed": true,
+   "at_bottom": false,
+   "at_casc_slot": false
+  },
+  {
+   "tower": "PXDEEP4F",
+   "key": [
+    1263,
+    1279
+   ],
+   "p": 2,
+   "kind": "Fpt",
+   "g0": 1,
+   "slot": [
+    0,
+    0,
+    0
+   ],
+   "line": 864,
+   "n": 3,
+   "junks": [
+    0
+   ],
+   "ncorr": [
+    2
+   ],
+   "sgns": [
+    1,
+    1,
+    1
+   ],
+   "res_equal": true,
+   "killed": false,
+   "at_bottom": false,
+   "at_casc_slot": false
+  },
+  {
+   "tower": "PXDEEP4F",
+   "key": [
+    1263,
+    1279
+   ],
+   "p": 2,
+   "kind": "Fpt",
+   "g0": 1,
+   "slot": [
+    0,
+    1,
+    0
+   ],
+   "line": 866,
+   "n": 2,
+   "junks": [
+    0
+   ],
+   "ncorr": [
+    1
+   ],
+   "sgns": [
+    -1,
+    -1
+   ],
+   "res_equal": true,
+   "killed": true,
+   "at_bottom": false,
+   "at_casc_slot": false
+  },
+  {
+   "tower": "PXDEEP4F",
+   "key": [
+    1267,
+    1271
+   ],
+   "p": 2,
+   "kind": "Fpt",
+   "g0": 1,
+   "slot": [
+    1,
+    1,
+    0
+   ],
+   "line": 862,
+   "n": 2,
+   "junks": [
+    0
+   ],
+   "ncorr": [
+    1
+   ],
+   "sgns": [
+    -1,
+    -1
+   ],
+   "res_equal": true,
+   "killed": true,
+   "at_bottom": false,
+   "at_casc_slot": false
+  },
+  {
+   "tower": "PXDEEP4F",
+   "key": [
+    1267,
+    1271
+   ],
+   "p": 2,
+   "kind": "Fpt",
+   "g0": 1,
+   "slot": [
+    0,
+    0,
+    0
+   ],
+   "line": 864,
+   "n": 4,
+   "junks": [
+    0
+   ],
+   "ncorr": [
+    2
+   ],
+   "sgns": [
+    1,
+    1,
+    1,
+    1
+   ],
+   "res_equal": true,
+   "killed": true,
+   "at_bottom": false,
+   "at_casc_slot": false
+  },
+  {
+   "tower": "PXDEEP4F",
+   "key": [
+    1267,
+    1271
+   ],
+   "p": 2,
+   "kind": "Fpt",
+   "g0": 1,
+   "slot": [
+    0,
+    1,
+    0
+   ],
+   "line": 866,
+   "n": 2,
+   "junks": [
+    0
+   ],
+   "ncorr": [
+    1
+   ],
+   "sgns": [
+    -1,
+    -1
+   ],
+   "res_equal": true,
+   "killed": true,
+   "at_bottom": false,
+   "at_casc_slot": false
+  },
+  {
+   "tower": "PXDEEP4F",
+   "key": [
+    1267,
+    1279
+   ],
+   "p": 2,
+   "kind": "Fpt",
+   "g0": 1,
+   "slot": [
+    0,
+    1,
+    0
+   ],
+   "line": 866,
+   "n": 2,
+   "junks": [
+    0
+   ],
+   "ncorr": [
+    1
+   ],
+   "sgns": [
+    -1,
+    -1
+   ],
+   "res_equal": true,
+   "killed": true,
+   "at_bottom": false,
+   "at_casc_slot": false
+  },
+  {
+   "tower": "PXDEEP4F",
+   "key": [
+    1267,
+    1279
+   ],
+   "p": 2,
+   "kind": "Fpt",
+   "g0": 1,
+   "slot": [
+    3,
+    0,
+    0
+   ],
+   "line": 868,
+   "n": 2,
+   "junks": [
+    0
+   ],
+   "ncorr": [
+    1
+   ],
+   "sgns": [
+    -1,
+    -1
+   ],
+   "res_equal": true,
+   "killed": true,
+   "at_bottom": false,
+   "at_casc_slot": false
+  },
+  {
+   "tower": "PXDEEP4F",
+   "key": [
+    1271,
+    1271
+   ],
+   "p": 2,
+   "kind": "Fpt",
+   "g0": 1,
+   "slot": [
+    0,
+    0,
+    0
+   ],
+   "line": 864,
+   "n": 5,
+   "junks": [
+    0
+   ],
+   "ncorr": [
+    3
+   ],
+   "sgns": [
+    -1,
+    -1,
+    -1,
+    -1,
+    -1
+   ],
+   "res_equal": true,
+   "killed": false,
+   "at_bottom": false,
+   "at_casc_slot": false
+  },
+  {
+   "tower": "PXDEEP4F",
+   "key": [
+    1271,
+    1271
+   ],
+   "p": 2,
+   "kind": "Fpt",
+   "g0": 1,
+   "slot": [
+    0,
+    1,
+    0
+   ],
+   "line": 866,
+   "n": 6,
+   "junks": [
+    0
+   ],
+   "ncorr": [
+    2
+   ],
+   "sgns": [
+    1,
+    1,
+    1,
+    1,
+    1,
+    1
+   ],
+   "res_equal": true,
+   "killed": true,
+   "at_bottom": false,
+   "at_casc_slot": false
+  },
+  {
+   "tower": "PXDEEP4F",
+   "key": [
+    1271,
+    1271
+   ],
+   "p": 2,
+   "kind": "Fpt",
+   "g0": 1,
+   "slot": [
+    1,
+    0,
+    1
+   ],
+   "line": 867,
+   "n": 2,
+   "junks": [
+    0
+   ],
+   "ncorr": [
+    1
+   ],
+   "sgns": [
+    -1,
+    -1
+   ],
+   "res_equal": true,
+   "killed": true,
+   "at_bottom": false,
+   "at_casc_slot": false
+  },
+  {
+   "tower": "PXDEEP4F",
+   "key": [
+    1271,
+    1271
+   ],
+   "p": 2,
+   "kind": "Fpt",
+   "g0": 1,
+   "slot": [
+    3,
+    0,
+    0
+   ],
+   "line": 868,
+   "n": 3,
+   "junks": [
+    0
+   ],
+   "ncorr": [
+    2
+   ],
+   "sgns": [
+    1,
+    1,
+    1
+   ],
+   "res_equal": true,
+   "killed": false,
+   "at_bottom": false,
+   "at_casc_slot": false
+  },
+  {
+   "tower": "PXDEEP4F",
+   "key": [
+    1271,
+    1271
+   ],
+   "p": 2,
+   "kind": "Fpt",
+   "g0": 1,
+   "slot": [
+    0,
+    0,
+    1
+   ],
+   "line": 871,
+   "n": 2,
+   "junks": [
+    0
+   ],
+   "ncorr": [
+    1
+   ],
+   "sgns": [
+    -1,
+    -1
+   ],
+   "res_equal": true,
+   "killed": true,
+   "at_bottom": false,
+   "at_casc_slot": false
+  },
+  {
+   "tower": "PXDEEP4F",
+   "key": [
+    1271,
+    1271
+   ],
+   "p": 2,
+   "kind": "Fpt",
+   "g0": 1,
+   "slot": [
+    2,
+    0,
+    0
+   ],
+   "line": 872,
+   "n": 2,
+   "junks": [
+    0
+   ],
+   "ncorr": [
+    1
+   ],
+   "sgns": [
+    -1,
+    -1
+   ],
+   "res_equal": true,
+   "killed": true,
+   "at_bottom": false,
+   "at_casc_slot": false
+  },
+  {
+   "tower": "PXDEEP4F",
+   "key": [
+    1271,
+    1275
+   ],
+   "p": 2,
+   "kind": "Fpt",
+   "g0": 1,
+   "slot": [
+    0,
+    1,
+    0
+   ],
+   "line": 866,
+   "n": 2,
+   "junks": [
+    0
+   ],
+   "ncorr": [
+    1
+   ],
+   "sgns": [
+    -1,
+    -1
+   ],
+   "res_equal": true,
+   "killed": true,
+   "at_bottom": false,
+   "at_casc_slot": false
+  },
+  {
+   "tower": "PXDEEP4F",
+   "key": [
+    1271,
+    1275
+   ],
+   "p": 2,
+   "kind": "Fpt",
+   "g0": 1,
+   "slot": [
+    3,
+    0,
+    0
+   ],
+   "line": 868,
+   "n": 2,
+   "junks": [
+    0
+   ],
+   "ncorr": [
+    1
+   ],
+   "sgns": [
+    -1,
+    -1
+   ],
+   "res_equal": true,
+   "killed": true,
+   "at_bottom": false,
+   "at_casc_slot": false
+  },
+  {
+   "tower": "PXDEEP4F",
+   "key": [
+    1271,
+    1279
+   ],
+   "p": 2,
+   "kind": "Fpt",
+   "g0": 1,
+   "slot": [
+    3,
+    0,
+    0
+   ],
+   "line": 868,
+   "n": 4,
+   "junks": [
+    0
+   ],
+   "ncorr": [
+    2
+   ],
+   "sgns": [
+    1,
+    1,
+    1,
+    1
+   ],
+   "res_equal": true,
+   "killed": true,
+   "at_bottom": false,
+   "at_casc_slot": false
+  },
+  {
+   "tower": "PXDEEP4F",
+   "key": [
+    1271,
+    1279
+   ],
+   "p": 2,
+   "kind": "Fpt",
+   "g0": 1,
+   "slot": [
+    3,
+    1,
+    0
+   ],
+   "line": 870,
+   "n": 2,
+   "junks": [
+    0
+   ],
+   "ncorr": [
+    1
+   ],
+   "sgns": [
+    -1,
+    -1
+   ],
+   "res_equal": true,
+   "killed": true,
+   "at_bottom": false,
+   "at_casc_slot": false
+  },
+  {
+   "tower": "PXDEEP4F",
+   "key": [
+    1271,
+    1279
+   ],
+   "p": 2,
+   "kind": "Fpt",
+   "g0": 1,
+   "slot": [
+    0,
+    0,
+    1
+   ],
+   "line": 871,
+   "n": 2,
+   "junks": [
+    0
+   ],
+   "ncorr": [
+    1
+   ],
+   "sgns": [
+    -1,
+    -1
+   ],
+   "res_equal": true,
+   "killed": true,
+   "at_bottom": false,
+   "at_casc_slot": false
+  },
+  {
+   "tower": "PXDEEP4F",
+   "key": [
+    1271,
+    1279
+   ],
+   "p": 2,
+   "kind": "Fpt",
+   "g0": 1,
+   "slot": [
+    1,
+    0,
+    0
+   ],
+   "line": 876,
+   "n": 2,
+   "junks": [
+    0
+   ],
+   "ncorr": [
+    1
+   ],
+   "sgns": [
+    -1,
+    -1
+   ],
+   "res_equal": true,
+   "killed": true,
+   "at_bottom": false,
+   "at_casc_slot": false
+  },
+  {
+   "tower": "PXDEEP4F",
+   "key": [
+    1279,
+    1279
+   ],
+   "p": 2,
+   "kind": "Fpt",
+   "g0": 1,
+   "slot": [
+    2,
+    0,
+    0
+   ],
+   "line": 872,
+   "n": 3,
+   "junks": [
+    0
+   ],
+   "ncorr": [
+    2
+   ],
+   "sgns": [
+    1,
+    1,
+    1
+   ],
+   "res_equal": true,
+   "killed": false,
+   "at_bottom": false,
+   "at_casc_slot": false
+  },
+  {
+   "tower": "PXDEEP4F",
+   "key": [
+    1279,
+    1279
+   ],
+   "p": 2,
+   "kind": "Fpt",
+   "g0": 1,
+   "slot": [
+    2,
+    1,
+    0
+   ],
+   "line": 874,
+   "n": 2,
+   "junks": [
+    0
+   ],
+   "ncorr": [
+    1
+   ],
+   "sgns": [
+    -1,
+    -1
+   ],
+   "res_equal": true,
+   "killed": true,
+   "at_bottom": false,
+   "at_casc_slot": false
+  },
+  {
+   "tower": "PXDEEP4F",
+   "key": [
+    1279,
+    1279
+   ],
+   "p": 2,
+   "kind": "Fpt",
+   "g0": 1,
+   "slot": [
+    0,
+    0,
+    0
+   ],
+   "line": 880,
+   "n": 2,
+   "junks": [
+    0
+   ],
+   "ncorr": [
+    1
+   ],
+   "sgns": [
+    -1,
+    -1
+   ],
+   "res_equal": true,
+   "killed": true,
+   "at_bottom": false,
+   "at_casc_slot": false
+  },
+  {
+   "tower": "PXDEEP4F",
+   "key": [
+    1257,
+    1271
+   ],
+   "p": 2,
+   "kind": "Fpt",
+   "g0": 1,
+   "slot": [
+    1,
+    0,
+    0
+   ],
+   "line": 860,
+   "n": 2,
+   "junks": [
+    0
+   ],
+   "ncorr": [
+    1
+   ],
+   "sgns": [
+    -1,
+    -1
+   ],
+   "res_equal": true,
+   "killed": true,
+   "at_bottom": true,
+   "at_casc_slot": false
+  },
+  {
+   "tower": "PXDEEP4F",
+   "key": [
+    1257,
+    1271
+   ],
+   "p": 2,
+   "kind": "Fpt",
+   "g0": 1,
+   "slot": [
+    0,
+    0,
+    0
+   ],
+   "line": 864,
+   "n": 2,
+   "junks": [
+    0
+   ],
+   "ncorr": [
+    1
+   ],
+   "sgns": [
+    -1,
+    -1
+   ],
+   "res_equal": true,
+   "killed": true,
+   "at_bottom": false,
+   "at_casc_slot": false
+  },
+  {
+   "tower": "PXTRK1F",
+   "key": [
+    327,
+    327
+   ],
+   "p": 2,
+   "kind": "Fpt",
+   "g0": 1,
+   "slot": [
+    0,
+    0,
+    0
+   ],
+   "line": 552,
+   "n": 3,
+   "junks": [
+    0
+   ],
+   "ncorr": [
+    2
+   ],
+   "sgns": [
+    1,
+    1,
+    1
+   ],
+   "res_equal": true,
+   "killed": false,
+   "at_bottom": false,
+   "at_casc_slot": false
+  },
+  {
+   "tower": "PXTRK1F",
+   "key": [
+    327,
+    327
+   ],
+   "p": 2,
+   "kind": "Fpt",
+   "g0": 1,
+   "slot": [
+    0,
+    1,
+    0
+   ],
+   "line": 554,
+   "n": 2,
+   "junks": [
+    0
+   ],
+   "ncorr": [
+    1
+   ],
+   "sgns": [
+    -1,
+    -1
+   ],
+   "res_equal": true,
+   "killed": true,
+   "at_bottom": false,
+   "at_casc_slot": false
+  },
+  {
+   "tower": "PXTRK1F",
+   "key": [
+    327,
+    331
+   ],
+   "p": 2,
+   "kind": "Fpt",
+   "g0": 1,
+   "slot": [
+    2,
+    0,
+    0
+   ],
+   "line": 556,
+   "n": 2,
+   "junks": [
+    0
+   ],
+   "ncorr": [
+    1
+   ],
+   "sgns": [
+    -1,
+    -1
+   ],
+   "res_equal": true,
+   "killed": true,
+   "at_bottom": false,
+   "at_casc_slot": false
+  },
+  {
+   "tower": "PXTRK1F",
+   "key": [
+    327,
+    335
+   ],
+   "p": 2,
+   "kind": "Fpt",
+   "g0": 1,
+   "slot": [
+    1,
+    0,
+    0
+   ],
+   "line": 560,
+   "n": 3,
+   "junks": [
+    0
+   ],
+   "ncorr": [
+    2
+   ],
+   "sgns": [
+    1,
+    1,
+    1
+   ],
+   "res_equal": true,
+   "killed": false,
+   "at_bottom": false,
+   "at_casc_slot": false
+  },
+  {
+   "tower": "PXTRK1F",
+   "key": [
+    327,
+    335
+   ],
+   "p": 2,
+   "kind": "Fpt",
+   "g0": 1,
+   "slot": [
+    1,
+    1,
+    0
+   ],
+   "line": 562,
+   "n": 2,
+   "junks": [
+    0
+   ],
+   "ncorr": [
+    1
+   ],
+   "sgns": [
+    -1,
+    -1
+   ],
+   "res_equal": true,
+   "killed": true,
+   "at_bottom": false,
+   "at_casc_slot": false
+  },
+  {
+   "tower": "PXTRK1F",
+   "key": [
+    327,
+    335
+   ],
+   "p": 2,
+   "kind": "Fpt",
+   "g0": 1,
+   "slot": [
+    0,
+    0,
+    0
+   ],
+   "line": 564,
+   "n": 3,
+   "junks": [
+    0
+   ],
+   "ncorr": [
+    1,
+    2
+   ],
+   "sgns": [
+    -1,
+    -1,
+    1
+   ],
+   "res_equal": true,
+   "killed": false,
+   "at_bottom": false,
+   "at_casc_slot": false
+  },
+  {
+   "tower": "PXTRK1F",
+   "key": [
+    331,
+    335
+   ],
+   "p": 2,
+   "kind": "Fpt",
+   "g0": 1,
+   "slot": [
+    0,
+    0,
+    0
+   ],
+   "line": 564,
+   "n": 3,
+   "junks": [
+    0
+   ],
+   "ncorr": [
+    2
+   ],
+   "sgns": [
+    1,
+    1,
+    1
+   ],
+   "res_equal": true,
+   "killed": false,
+   "at_bottom": false,
+   "at_casc_slot": false
+  },
+  {
+   "tower": "PXTRK1F",
+   "key": [
+    331,
+    335
+   ],
+   "p": 2,
+   "kind": "Fpt",
+   "g0": 1,
+   "slot": [
+    0,
+    1,
+    0
+   ],
+   "line": 566,
+   "n": 2,
+   "junks": [
+    0
+   ],
+   "ncorr": [
+    1
+   ],
+   "sgns": [
+    -1,
+    -1
+   ],
+   "res_equal": true,
+   "killed": true,
+   "at_bottom": false,
+   "at_casc_slot": false
+  },
+  {
+   "tower": "PXTRK1F",
+   "key": [
+    333,
+    335
+   ],
+   "p": 2,
+   "kind": "Fpt",
+   "g0": 1,
+   "slot": [
+    0,
+    1,
+    0
+   ],
+   "line": 566,
+   "n": 2,
+   "junks": [
+    0
+   ],
+   "ncorr": [
+    1
+   ],
+   "sgns": [
+    -1,
+    -1
+   ],
+   "res_equal": true,
+   "killed": true,
+   "at_bottom": false,
+   "at_casc_slot": false
+  },
+  {
+   "tower": "PXTRK1F",
+   "key": [
+    333,
+    335
+   ],
+   "p": 2,
+   "kind": "Fpt",
+   "g0": 1,
+   "slot": [
+    2,
+    0,
+    0
+   ],
+   "line": 568,
+   "n": 2,
+   "junks": [
+    0
+   ],
+   "ncorr": [
+    1
+   ],
+   "sgns": [
+    -1,
+    -1
+   ],
+   "res_equal": true,
+   "killed": true,
+   "at_bottom": false,
+   "at_casc_slot": false
+  },
+  {
+   "tower": "PXTRK1F",
+   "key": [
+    335,
+    335
+   ],
+   "p": 2,
+   "kind": "Fpt",
+   "g0": 1,
+   "slot": [
+    2,
+    0,
+    0
+   ],
+   "line": 568,
+   "n": 4,
+   "junks": [
+    0
+   ],
+   "ncorr": [
+    2
+   ],
+   "sgns": [
+    1,
+    1,
+    1,
+    1
+   ],
+   "res_equal": true,
+   "killed": true,
+   "at_bottom": false,
+   "at_casc_slot": false
+  },
+  {
+   "tower": "PXTRK1F",
+   "key": [
+    335,
+    335
+   ],
+   "p": 2,
+   "kind": "Fpt",
+   "g0": 1,
+   "slot": [
+    0,
+    0,
+    1
+   ],
+   "line": 569,
+   "n": 2,
+   "junks": [
+    0
+   ],
+   "ncorr": [
+    1
+   ],
+   "sgns": [
+    -1,
+    -1
+   ],
+   "res_equal": true,
+   "killed": true,
+   "at_bottom": false,
+   "at_casc_slot": false
+  },
+  {
+   "tower": "PXTRK1F",
+   "key": [
+    335,
+    335
+   ],
+   "p": 2,
+   "kind": "Fpt",
+   "g0": 1,
+   "slot": [
+    2,
+    1,
+    0
+   ],
+   "line": 570,
+   "n": 2,
+   "junks": [
+    0
+   ],
+   "ncorr": [
+    1
+   ],
+   "sgns": [
+    -1,
+    -1
+   ],
+   "res_equal": true,
+   "killed": true,
+   "at_bottom": false,
+   "at_casc_slot": false
+  },
+  {
+   "tower": "PXTRK1F",
+   "key": [
+    335,
+    335
+   ],
+   "p": 2,
+   "kind": "Fpt",
+   "g0": 1,
+   "slot": [
+    1,
+    0,
+    0
+   ],
+   "line": 572,
+   "n": 3,
+   "junks": [
+    0
+   ],
+   "ncorr": [
+    1,
+    2
+   ],
+   "sgns": [
+    -1,
+    -1,
+    1
+   ],
+   "res_equal": true,
+   "killed": false,
+   "at_bottom": false,
+   "at_casc_slot": false
+  },
+  {
+   "tower": "PXTRK1F",
+   "key": [
+    330,
+    335
+   ],
+   "p": 2,
+   "kind": "Fpt",
+   "g0": 1,
+   "slot": [
+    0,
+    0,
+    0
+   ],
+   "line": 564,
+   "n": 2,
+   "junks": [
+    0
+   ],
+   "ncorr": [
+    1
+   ],
+   "sgns": [
+    -1,
+    -1
+   ],
+   "res_equal": true,
+   "killed": true,
+   "at_bottom": true,
+   "at_casc_slot": false
+  },
+  {
+   "tower": "PXFLTF",
+   "key": [
+    123,
+    123
+   ],
+   "p": 2,
+   "kind": "Fpt",
+   "g0": 1,
+   "slot": [
+    0,
+    0,
+    0
+   ],
+   "line": 90,
+   "n": 2,
+   "junks": [
+    0
+   ],
+   "ncorr": [
+    1
+   ],
+   "sgns": [
+    -1,
+    -1
+   ],
+   "res_equal": true,
+   "killed": true,
+   "at_bottom": true,
+   "at_casc_slot": false
+  },
+  {
+   "tower": "PXFLTF",
+   "key": [
+    123,
+    123
+   ],
+   "p": 2,
+   "kind": "Fpt",
+   "g0": 1,
+   "slot": [
+    1,
+    0,
+    0
+   ],
+   "line": 92,
+   "n": 2,
+   "junks": [
+    0
+   ],
+   "ncorr": [
+    1
+   ],
+   "sgns": [
+    -1,
+    -1
+   ],
+   "res_equal": true,
+   "killed": true,
+   "at_bottom": false,
+   "at_casc_slot": false
+  },
+  {
+   "tower": "PXW4DPF",
+   "key": [
+    1483,
+    1483
+   ],
+   "p": 2,
+   "kind": "Fpt",
+   "g0": 1,
+   "slot": [
+    1,
+    1,
+    0,
+    0
+   ],
+   "line": 1020,
+   "n": 2,
+   "junks": [
+    0
+   ],
+   "ncorr": [
+    2
+   ],
+   "sgns": [
+    1,
+    1
+   ],
+   "res_equal": true,
+   "killed": true,
+   "at_bottom": false,
+   "at_casc_slot": false
+  },
+  {
+   "tower": "PXW4DPF",
+   "key": [
+    1483,
+    1483
+   ],
+   "p": 2,
+   "kind": "Fpt",
+   "g0": 1,
+   "slot": [
+    0,
+    1,
+    1,
+    0
+   ],
+   "line": 1022,
+   "n": 2,
+   "junks": [
+    0
+   ],
+   "ncorr": [
+    1
+   ],
+   "sgns": [
+    -1,
+    -1
+   ],
+   "res_equal": true,
+   "killed": true,
+   "at_bottom": false,
+   "at_casc_slot": false
+  },
+  {
+   "tower": "PXW4DPF",
+   "key": [
+    1483,
+    1483
+   ],
+   "p": 2,
+   "kind": "Fpt",
+   "g0": 1,
+   "slot": [
+    2,
+    0,
+    0,
+    0
+   ],
+   "line": 1024,
+   "n": 3,
+   "junks": [
+    0
+   ],
+   "ncorr": [
+    2
+   ],
+   "sgns": [
+    1,
+    1,
+    1
+   ],
+   "res_equal": true,
+   "killed": false,
+   "at_bottom": false,
+   "at_casc_slot": false
+  },
+  {
+   "tower": "PXW4DPF",
+   "key": [
+    1483,
+    1483
+   ],
+   "p": 2,
+   "kind": "Fpt",
+   "g0": 1,
+   "slot": [
+    1,
+    0,
+    1,
+    0
+   ],
+   "line": 1026,
+   "n": 2,
+   "junks": [
+    0
+   ],
+   "ncorr": [
+    1
+   ],
+   "sgns": [
+    -1,
+    -1
+   ],
+   "res_equal": true,
+   "killed": true,
+   "at_bottom": false,
+   "at_casc_slot": false
+  },
+  {
+   "tower": "PXW4DPF",
+   "key": [
+    1483,
+    1483
+   ],
+   "p": 2,
+   "kind": "Fpt",
+   "g0": 1,
+   "slot": [
+    2,
+    1,
+    0,
+    0
+   ],
+   "line": 1028,
+   "n": 2,
+   "junks": [
+    0
+   ],
+   "ncorr": [
+    1
+   ],
+   "sgns": [
+    -1,
+    -1
+   ],
+   "res_equal": true,
+   "killed": true,
+   "at_bottom": false,
+   "at_casc_slot": false
+  },
+  {
+   "tower": "PXW4DPF",
+   "key": [
+    1483,
+    1483
+   ],
+   "p": 2,
+   "kind": "Fpt",
+   "g0": 1,
+   "slot": [
+    0,
+    0,
+    0,
+    0
+   ],
+   "line": 1032,
+   "n": 2,
+   "junks": [
+    0
+   ],
+   "ncorr": [
+    2
+   ],
+   "sgns": [
+    1,
+    1
+   ],
+   "res_equal": true,
+   "killed": true,
+   "at_bottom": false,
+   "at_casc_slot": false
+  }
+ ],
+ "mixjunk": [
+  {
+   "tower": "EQ3G2A",
+   "key": [
+    2321,
+    2321
+   ],
+   "p": 3,
+   "kind": "Zp",
+   "g0": 2,
+   "slot": [
+    0,
+    0,
+    0
+   ],
+   "line": 1584,
+   "n": 3,
+   "junks": [
+    1,
+    2
+   ],
+   "ncorr": [
+    1,
+    2,
+    3
+   ],
+   "sgns": [
+    -1,
+    -1,
+    1
+   ],
+   "res_equal": false,
+   "killed": false,
+   "at_bottom": false,
+   "at_casc_slot": false
+  }
+ ],
+ "prt": [
+  {
+   "tower": "EQ3G2A",
+   "key": [
+    2309,
+    2309
+   ],
+   "p": 3,
+   "g0": 2,
+   "eql": true,
+   "dline": 0,
+   "junk": 0,
+   "ncorr": 1,
+   "r": 0,
+   "prin": false,
+   "y2": 0,
+   "resonance": false
+  },
+  {
+   "tower": "EQ3G2A",
+   "key": [
+    2309,
+    2321
+   ],
+   "p": 3,
+   "g0": 2,
+   "eql": true,
+   "dline": 0,
+   "junk": 0,
+   "ncorr": 1,
+   "r": 0,
+   "prin": false,
+   "y2": 0,
+   "resonance": false
+  },
+  {
+   "tower": "EQ3G2A",
+   "key": [
+    2321,
+    2333
+   ],
+   "p": 3,
+   "g0": 2,
+   "eql": true,
+   "dline": 0,
+   "junk": 0,
+   "ncorr": 1,
+   "r": 0,
+   "prin": false,
+   "y2": 0,
+   "resonance": false
+  },
+  {
+   "tower": "EQ3G2A",
+   "key": [
+    2321,
+    2321
+   ],
+   "p": 3,
+   "g0": 2,
+   "eql": true,
+   "dline": 0,
+   "junk": 0,
+   "ncorr": 1,
+   "r": 0,
+   "prin": false,
+   "y2": 0,
+   "resonance": false
+  },
+  {
+   "tower": "EQ3G2B",
+   "key": [
+    1479,
+    1485
+   ],
+   "p": 3,
+   "g0": 2,
+   "eql": true,
+   "dline": 0,
+   "junk": 0,
+   "ncorr": 1,
+   "r": 0,
+   "prin": false,
+   "y2": 0,
+   "resonance": false
+  },
+  {
+   "tower": "EQ3G2B",
+   "key": [
+    1479,
+    1497
+   ],
+   "p": 3,
+   "g0": 2,
+   "eql": true,
+   "dline": 0,
+   "junk": 0,
+   "ncorr": 1,
+   "r": 0,
+   "prin": false,
+   "y2": 0,
+   "resonance": false
+  },
+  {
+   "tower": "EQ3G2B",
+   "key": [
+    1485,
+    1497
+   ],
+   "p": 3,
+   "g0": 2,
+   "eql": true,
+   "dline": 0,
+   "junk": 0,
+   "ncorr": 1,
+   "r": 0,
+   "prin": false,
+   "y2": 0,
+   "resonance": false
+  },
+  {
+   "tower": "EQ3G2B",
+   "key": [
+    1485,
+    1503
+   ],
+   "p": 3,
+   "g0": 2,
+   "eql": true,
+   "dline": 0,
+   "junk": 0,
+   "ncorr": 1,
+   "r": 0,
+   "prin": false,
+   "y2": 0,
+   "resonance": false
+  },
+  {
+   "tower": "EQ3G2B",
+   "key": [
+    1485,
+    1509
+   ],
+   "p": 3,
+   "g0": 2,
+   "eql": true,
+   "dline": 0,
+   "junk": 0,
+   "ncorr": 1,
+   "r": 0,
+   "prin": false,
+   "y2": 0,
+   "resonance": false
+  },
+  {
+   "tower": "EQ3G2B",
+   "key": [
+    1491,
+    1497
+   ],
+   "p": 3,
+   "g0": 2,
+   "eql": true,
+   "dline": 0,
+   "junk": 0,
+   "ncorr": 1,
+   "r": 0,
+   "prin": false,
+   "y2": 0,
+   "resonance": false
+  },
+  {
+   "tower": "EQ3G2B",
+   "key": [
+    1491,
+    1509
+   ],
+   "p": 3,
+   "g0": 2,
+   "eql": true,
+   "dline": 0,
+   "junk": 0,
+   "ncorr": 1,
+   "r": 0,
+   "prin": false,
+   "y2": 0,
+   "resonance": false
+  },
+  {
+   "tower": "EQ3G2B",
+   "key": [
+    1497,
+    1497
+   ],
+   "p": 3,
+   "g0": 2,
+   "eql": true,
+   "dline": 0,
+   "junk": 0,
+   "ncorr": 1,
+   "r": 0,
+   "prin": false,
+   "y2": 0,
+   "resonance": false
+  },
+  {
+   "tower": "EQ3G2B",
+   "key": [
+    1497,
+    1503
+   ],
+   "p": 3,
+   "g0": 2,
+   "eql": true,
+   "dline": 0,
+   "junk": 0,
+   "ncorr": 1,
+   "r": 0,
+   "prin": false,
+   "y2": 0,
+   "resonance": false
+  },
+  {
+   "tower": "EQ3G2B",
+   "key": [
+    1497,
+    1509
+   ],
+   "p": 3,
+   "g0": 2,
+   "eql": true,
+   "dline": 0,
+   "junk": 0,
+   "ncorr": 1,
+   "r": 0,
+   "prin": false,
+   "y2": 0,
+   "resonance": false
+  },
+  {
+   "tower": "EQ3G2B",
+   "key": [
+    1479,
+    1479
+   ],
+   "p": 3,
+   "g0": 2,
+   "eql": true,
+   "dline": 0,
+   "junk": 0,
+   "ncorr": 1,
+   "r": 0,
+   "prin": false,
+   "y2": 0,
+   "resonance": false
+  },
+  {
+   "tower": "EQ3G2B",
+   "key": [
+    1479,
+    1491
+   ],
+   "p": 3,
+   "g0": 2,
+   "eql": true,
+   "dline": 0,
+   "junk": 0,
+   "ncorr": 1,
+   "r": 0,
+   "prin": false,
+   "y2": 0,
+   "resonance": false
+  },
+  {
+   "tower": "EQ3G2B",
+   "key": [
+    1479,
+    1503
+   ],
+   "p": 3,
+   "g0": 2,
+   "eql": true,
+   "dline": 0,
+   "junk": 0,
+   "ncorr": 1,
+   "r": 0,
+   "prin": false,
+   "y2": 0,
+   "resonance": false
+  },
+  {
+   "tower": "EQ3G2B",
+   "key": [
+    1479,
+    1509
+   ],
+   "p": 3,
+   "g0": 2,
+   "eql": true,
+   "dline": 0,
+   "junk": 0,
+   "ncorr": 1,
+   "r": 0,
+   "prin": false,
+   "y2": 0,
+   "resonance": false
+  },
+  {
+   "tower": "EQ3G2B",
+   "key": [
+    1491,
+    1503
+   ],
+   "p": 3,
+   "g0": 2,
+   "eql": true,
+   "dline": 0,
+   "junk": 0,
+   "ncorr": 1,
+   "r": 0,
+   "prin": false,
+   "y2": 0,
+   "resonance": false
+  },
+  {
+   "tower": "EQ3G2B",
+   "key": [
+    1503,
+    1503
+   ],
+   "p": 3,
+   "g0": 2,
+   "eql": true,
+   "dline": 0,
+   "junk": 0,
+   "ncorr": 1,
+   "r": 0,
+   "prin": false,
+   "y2": 0,
+   "resonance": false
+  },
+  {
+   "tower": "EQ3G2B",
+   "key": [
+    1479,
+    1481
+   ],
+   "p": 3,
+   "g0": 2,
+   "eql": true,
+   "dline": 0,
+   "junk": 0,
+   "ncorr": 1,
+   "r": 0,
+   "prin": false,
+   "y2": 0,
+   "resonance": false
+  },
+  {
+   "tower": "EQ3G2B",
+   "key": [
+    1479,
+    1505
+   ],
+   "p": 3,
+   "g0": 2,
+   "eql": true,
+   "dline": 0,
+   "junk": 0,
+   "ncorr": 1,
+   "r": 0,
+   "prin": false,
+   "y2": 0,
+   "resonance": false
+  },
+  {
+   "tower": "EQ3G2B",
+   "key": [
+    1481,
+    1491
+   ],
+   "p": 3,
+   "g0": 2,
+   "eql": true,
+   "dline": 0,
+   "junk": 0,
+   "ncorr": 1,
+   "r": 0,
+   "prin": false,
+   "y2": 0,
+   "resonance": false
+  },
+  {
+   "tower": "EQ3G2B",
+   "key": [
+    1481,
+    1503
+   ],
+   "p": 3,
+   "g0": 2,
+   "eql": true,
+   "dline": 0,
+   "junk": 0,
+   "ncorr": 1,
+   "r": 0,
+   "prin": false,
+   "y2": 0,
+   "resonance": false
+  },
+  {
+   "tower": "EQ3G2B",
+   "key": [
+    1485,
+    1487
+   ],
+   "p": 3,
+   "g0": 2,
+   "eql": true,
+   "dline": 0,
+   "junk": 0,
+   "ncorr": 1,
+   "r": 0,
+   "prin": false,
+   "y2": 0,
+   "resonance": false
+  },
+  {
+   "tower": "EQ3G2B",
+   "key": [
+    1485,
+    1499
+   ],
+   "p": 3,
+   "g0": 2,
+   "eql": true,
+   "dline": 0,
+   "junk": 0,
+   "ncorr": 1,
+   "r": 0,
+   "prin": false,
+   "y2": 0,
+   "resonance": false
+  },
+  {
+   "tower": "EQ3G2B",
+   "key": [
+    1487,
+    1497
+   ],
+   "p": 3,
+   "g0": 2,
+   "eql": true,
+   "dline": 0,
+   "junk": 0,
+   "ncorr": 1,
+   "r": 0,
+   "prin": false,
+   "y2": 0,
+   "resonance": false
+  },
+  {
+   "tower": "EQ3G2B",
+   "key": [
+    1479,
+    1487
+   ],
+   "p": 3,
+   "g0": 2,
+   "eql": true,
+   "dline": 0,
+   "junk": 0,
+   "ncorr": 1,
+   "r": 0,
+   "prin": false,
+   "y2": 0,
+   "resonance": false
+  },
+  {
+   "tower": "EQ3G2B",
+   "key": [
+    1479,
+    1493
+   ],
+   "p": 3,
+   "g0": 2,
+   "eql": true,
+   "dline": 0,
+   "junk": 0,
+   "ncorr": 1,
+   "r": 0,
+   "prin": false,
+   "y2": 0,
+   "resonance": false
+  },
+  {
+   "tower": "EQ3G2B",
+   "key": [
+    1479,
+    1499
+   ],
+   "p": 3,
+   "g0": 2,
+   "eql": true,
+   "dline": 0,
+   "junk": 0,
+   "ncorr": 1,
+   "r": 0,
+   "prin": false,
+   "y2": 0,
+   "resonance": false
+  },
+  {
+   "tower": "EQ3G2B",
+   "key": [
+    1479,
+    1511
+   ],
+   "p": 3,
+   "g0": 2,
+   "eql": true,
+   "dline": 0,
+   "junk": 0,
+   "ncorr": 1,
+   "r": 0,
+   "prin": false,
+   "y2": 0,
+   "resonance": false
+  },
+  {
+   "tower": "EQ3G2B",
+   "key": [
+    1487,
+    1491
+   ],
+   "p": 3,
+   "g0": 2,
+   "eql": true,
+   "dline": 0,
+   "junk": 0,
+   "ncorr": 1,
+   "r": 0,
+   "prin": false,
+   "y2": 0,
+   "resonance": false
+  },
+  {
+   "tower": "EQ3G2B",
+   "key": [
+    1487,
+    1503
+   ],
+   "p": 3,
+   "g0": 2,
+   "eql": true,
+   "dline": 0,
+   "junk": 0,
+   "ncorr": 1,
+   "r": 0,
+   "prin": false,
+   "y2": 0,
+   "resonance": false
+  },
+  {
+   "tower": "EQ3G2B",
+   "key": [
+    1491,
+    1499
+   ],
+   "p": 3,
+   "g0": 2,
+   "eql": true,
+   "dline": 0,
+   "junk": 0,
+   "ncorr": 1,
+   "r": 0,
+   "prin": false,
+   "y2": 0,
+   "resonance": false
+  },
+  {
+   "tower": "EQ3G2B",
+   "key": [
+    1499,
+    1503
+   ],
+   "p": 3,
+   "g0": 2,
+   "eql": true,
+   "dline": 0,
+   "junk": 0,
+   "ncorr": 1,
+   "r": 0,
+   "prin": false,
+   "y2": 0,
+   "resonance": false
+  },
+  {
+   "tower": "EQ3G2B",
+   "key": [
+    1499,
+    1509
+   ],
+   "p": 3,
+   "g0": 2,
+   "eql": true,
+   "dline": 0,
+   "junk": 0,
+   "ncorr": 1,
+   "r": 0,
+   "prin": false,
+   "y2": 0,
+   "resonance": false
+  },
+  {
+   "tower": "EQ3G2B",
+   "key": [
+    1503,
+    1511
+   ],
+   "p": 3,
+   "g0": 2,
+   "eql": true,
+   "dline": 0,
+   "junk": 0,
+   "ncorr": 1,
+   "r": 0,
+   "prin": false,
+   "y2": 0,
+   "resonance": false
+  },
+  {
+   "tower": "EQ3G2B",
+   "key": [
+    1479,
+    1483
+   ],
+   "p": 3,
+   "g0": 2,
+   "eql": true,
+   "dline": 0,
+   "junk": 0,
+   "ncorr": 1,
+   "r": 0,
+   "prin": false,
+   "y2": 0,
+   "resonance": false
+  },
+  {
+   "tower": "EQ3G2B",
+   "key": [
+    1499,
+    1499
+   ],
+   "p": 3,
+   "g0": 2,
+   "eql": true,
+   "dline": 0,
+   "junk": 0,
+   "ncorr": 1,
+   "r": 0,
+   "prin": false,
+   "y2": 0,
+   "resonance": false
+  }
+ ],
+ "elapsed": 3.2032389640808105
+}

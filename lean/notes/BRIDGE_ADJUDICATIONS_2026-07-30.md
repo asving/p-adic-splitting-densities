@@ -9611,3 +9611,45 @@ deadness (E arc 1/2 CLEAN); survival = (SURV-DISJ) via the carry
 algebra — the next composition hard core. Queued: the SURV hostile arc
 (PE-S1 dispatched now); the three Codex legs post-reset (VC40, W arc,
 E arc); then the (SURV-DISJ) composition.
+
+---
+
+## (SURV) ROUND 1: PE1 GAPS-ONLY (0C/1G) + S-r1 REPAIR — the census decorrelated, FOUR new kills incl. mixed characteristic, the sign-pair constraint on record — 2026-08-08 campaign (wallclock 2026-08-04)
+
+On 0b895d0: **SURV-PE1 GAPS-ONLY 0C/1G + 3n + 1 favorable** (report
+`SURV_passPE1_report.md`, instrument `surv_pe1_ext.py`, both now
+committed).  The machine leg replicated identically (pins green,
+selection loop byte-confirmed, all four controls fired from the
+artifacts); S-L0–S-L3 (incl. the load-bearing S-L3 cross-slot
+independence), S-L4(i)(ii) and the S-THM(a)(b)(c) assembly re-derived
+SOUND; both committed cancellation kills AND the p = 3 witness
+re-derived BY HAND from the committed engines (each kill = a
+path-multiplicity-2 collision netting 2·(unit) ≡ 0 at residue char 2).
+The one gap (G-1): S-L4(iii)'s "junk-free forced" rode only the
+forward W-D5 inequality — TRUE at m = 2 via W-D4's reverse leg, OPEN
+at m ≥ 3 (mixed-junk near-miss EQ3G2A[2321,2321] on record); no PROVED
+consumer (S-THM(c) routes through (NEP) + S-L4(ii) + the uniqueness
+half only).  **Repaired at [S-r1]:** (iii) RESCOPED — the line balance
+is the general clause, the m = 2 forcing displayed via PE1's own W-D4
+derivation, the m ≥ 3 forcing boxed into (SURV-RES); S-L0–S-L3/S-THM
+statements byte-unchanged.
+
+**The census fold (S8.b, instance grade):** PE1's decorrelated
+instrument traced 545 fresh rows, 0 violations on every PROVED lemma.
+FOUR new bottom kills — ALL residue-characteristic 2, all g₀ = 1,
+survivor = the cascade slot AT the cascade line on every one — incl.
+**PXT3Z2, the first MIXED-characteristic kill (Zp p = 2)**: the
+phenomenon is mod-p, not equal-characteristic.  NO p > 2 kill in the
+probed class (char-3 twins of both committed shapes net nonzero).  New
+genre on record: **37 characteristic-BLIND opposite-sign equal-residue
+slot kills at g₀ = 2** (bottom survived elsewhere on each) — so a
+(SURV-DISJ) proof must handle sign-pair kills AND mod-p multiplicity
+kills; the design constraint is now displayed in the note's S7 box.
+(SURV-DISJ): 486 committed + 545 fresh-traced rows, 0 counterexamples;
+(NEP) partnered 0 on every fresh g₀ = 1 row.  The null-instrument
+decorrelation caveat of 0b895d0 is DISCHARGED.
+
+**SURV arc counter 0/2 CLEAN** (GAPS-ONLY ≠ CLEAN).  **Round 2 = the
+Codex leg post-reset, alongside the W/E Codex legs.  The (SURV-DISJ)
+composition = the next hard core, with the sign-pair constraint on
+record.**
