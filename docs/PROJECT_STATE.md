@@ -1371,6 +1371,24 @@ line: (SURV-DISJ) — bottom-or-cascade survives (486/486 instance-true)
 PE-S1 (running, incl. the wider cancellation census); post-reset Codex
 legs VC40 + W arc + E arc. Ledger entries: (EMPTY) rounds at 7ebd9c8 +
 7314525; (SURV) at 01ad07b.]**
+**[2026-08-04 latest (campaign 2026-08-08) — (SURV-DISJ) PROVED ON THE
+PINNED CLASS; LAW-DCX-(m+1) HOLDS THERE at capped attempt grade.
+SURV round 1 GAPS-ONLY (census: cancellation is char-2-only at g₀ = 1,
+sign-pairs at g₀ = 2; S-r1 rescope at 51a8ac9). The (SURV-DISJ) unit
+(instrument FULLY SEALED 61e9e36/00e19b4; composer 4f7c3ff): at g₀ = 1
+the cascade slot has NO same-slot companion (combinatorial one-path
+protection, 693/693 both chars) — proved via the E-weighted mass
+telescope (★: companion correction-deficits sum to Y₂ ∈ {0,1}) + the
+accepted L-NORM(c) Y-absence at d₀ = 1; (NEP) discharged to theorem;
+(SURV)(i) closed on (H1)–(H3) ∧ g₀ = 1 ∧ d₀ = 1 ∧ (STK) + (RW).
+**CONSEQUENCE: LAW-DCX-(m+1) holds on the pinned class at capped
+attempt grade** (caps: WMULTDCX 0/2, own arc 0 passes). Class-wide
+residuals = exactly two boxes: (SURV-K2) (g₀ ≥ 2 — the
+signed-multiplicity-one law measured 286/286, sign-reversing-pairing
+target on record) and (SD-YJ) (g₀ = 1 ∧ d₀ ≥ 2 Y-corner, machine-dark).
+PE-SD1 running (ledger 654ba28). THE ARC QUEUE for the post-reset
+budget (Aug 08): VC40, then the W/E/S/SD Codex legs — five arcs close
+the wave; the two boxes are the only open mathematics left in Q2.]**
 
 ## UPDATE (2026-07-31 evening — THE MATH-FIRST CAMPAIGN AT THE ROOT-ASSEMBLY STAGE)
 
