@@ -10377,3 +10377,48 @@ texts untouched until then).
 
 **Dispatched: the J-A and ILNRES hostile rounds (Fable), parallel.
 The Thursday Codex window now carries eleven legs, W first.**
+
+---
+
+## J-A + ILNRES ROUND 1: PE1 twins both GAPS-ONLY 0-CRITICAL; r1 repairs applied; the off-T coverage figure CORRECTED (1,344 → 608) — 2026-08-08 campaign (wallclock 2026-08-04)
+
+**J-A (JA-PE1: 0 critical / 5 gaps; `GRTJA_passPE1_report.md` +
+`ja_pe1_ext.py`).** The machine bracket re-ran BIT-IDENTICAL (17 families,
+10,311 samples, 0 violations); all four equalities re-derived by hand incl.
+the full (ii) chain and the 26 JA-BOX-1 witnesses recounted; per-ring hand
+instances green. [JA-r1] repairs in dated brackets: the JA-EPS anchor
+corrected (child prescription tex 1200–1201, not the tex 1213–1218 picture
+code) with the t_m SIGN CONVENTION displayed explicitly against Def-`t(i)`
+tex 1431 (opposite sign; Lemma `enlarge` tex 1528–1541 = the clean
+print-side object; the same inherited range stands in W-2 §3.1, cure owed
+to that arc); CK-BPREF census "12 roster rows" → 10 (22 roster + 4 d₀
+hits, total 26 unchanged); JA-MIN RESCOPED to the DICTIONARY HALF of GD-3's
+MIN CORE (the in(f) graded-initial-form leg neither derived nor cited —
+boxed OPEN); JA-GRID(a) gains the u ≥ 0/print-hypothesis proviso + the
+tex-1498 gloss corrected to Lemma `enlarge` ~1528–1531; two wording
+overstatements cured (§2 machine bracket = clauses 2–7 only; JA-BOX-2
+"are PROVED only on (R-coll)"). No grade changes.
+
+**ILNRES (ILNRES-PE1: 0 critical / 2 gaps; `ILNRES_passPE1_report.md` +
+`ilnres_pe1_ext.py`).** **THE COMPLETENESS CONFIRMATION: S1's four-member
+residual list is COMPLETE — NO FIFTH RESIDUAL** (adversarial hunt:
+(TAIL-STAB) sits inside NR-1; the S9-fence items are NR-2 genre or fences
+on unclaimed statements; the fenced corners = exactly the T-class(n)
+complement, set algebra verified). The (DS-SUB) induction re-derived in
+full with the consumption census EXACT; machine re-run byte-identical +
+33 fresh-arithmetic hand checks incl. an independent dcx3 = 48 recount.
+[ILNRES-r1] repairs: **FIGURE CORRECTION — the off-T-class coverage is
+608 of 1,264 pairs (1,760/3,650 sub-package checks, ≈48%), NOT "1,344 of
+1,656". This ledger's own J-A/ILNRES block above ("incl. 1,344 OFF-T-class
+pairs") and the immutable commit-2 message 7c6f060 both carried the wrong
+figure and stand CORRECTED BY THIS ENTRY (append-only discipline).** The
+substantive decorrelation claim survives (roughly half the coverage
+genuinely off-T, all four rings, all green) and the (DS-SUB) discharge
+derivation is UNAFFECTED — PE1 verified the S6 proof consumes no coverage
+count. Perimeter fact (ii)'s parenthetical completed to
+NR-1/NR-2/NR-3/NR-4 ([IL]'s gr(w₂) wrapper → NR-2; [RMG]'s "(P-DS)" line
+→ NR-4).
+
+**Both arcs: 0/1 CLEAN (gaps-only, repaired in dated brackets); round 2 =
+the Codex legs (Thursday window). No grade changes anywhere; accepted
+texts untouched.**

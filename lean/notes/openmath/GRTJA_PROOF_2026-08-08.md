@@ -128,8 +128,10 @@ EXCEPT the lift clause, each clause forced by the print's own hypotheses:
 *Proof.* Clauses 1–7 are the cited definitions plus the displayed one-line
 arguments; clause 8 is consumption. ∎ Grade: PROVED at attempt grade; the
 Bézout normalization 0 ≤ ℓ < e is OURS not the print's (tex 1291 pins
-nothing — JA-BOX-3). [Machine: JA-PIN — every clause re-verified by fresh
-integer/field computations on every roster + QO + d₀ ≥ 2 level.]
+nothing — JA-BOX-3). [Machine: JA-PIN — clauses 2–7 re-verified by fresh
+integer/field computations on every roster + QO + d₀ ≥ 2 level; clause 1
+is not machine-checkable and clause 8 is consumption ([JA-r1] per JA-PE1
+GAP-5a: "every clause" corrected to the runner's own coverage).]
 
 ---
 
@@ -164,10 +166,20 @@ samples, every shared level of every roster/QO/d₀ ≥ 2 tower.]
 
 **Statement.** For every m ≥ 1 and every β ∈ ℤ in the level-m weight
 lattice: ε_m(β) = z_m^{−t_m(β)}, where t_m(β) := (ℓ_{m−1}β − s(β))/e_{m−1}
-is the print's twist exponent (Definition `t(i)`, tex 1431; the same
-exponent prescribes Prop `construct`'s children, tex 1213–1218) evaluated
-at the point of ordinate-argument β on its own side, s(β) = ℓ_{m−1}β mod
-e_{m−1} (integrality by W2-L0). More generally, for u = β + k·W_m (weight
+evaluated at the point of ordinate-argument β on its own side, s(β) =
+ℓ_{m−1}β mod e_{m−1} (integrality by W2-L0). SIGN CONVENTION (explicit):
+t_m carries the Prop-`construct` CHILD orientation (ℓu − 𝔰)/e — the child
+prescription φ_j(y) ≡ y^{(ℓ_{r−2}u_j−𝔰_j)/e_{r−2}}c_j(y), tex 1200–1201;
+Definition `t(i)` (tex 1431) defines the print twist with the OPPOSITE
+sign, (s_{r−1}(a) − ℓ_{r−1}u)/e_{r−1} (differing further by the ν-shift
+s(a_i) vs 𝔰); the clean print-side carrier of the (𝔰 − ℓu)/e exponent is
+Lemma `enlarge` (tex 1528–1541). JA-RES (§3.4) uses the Def-`t(i)` sign.
+[JA-r1 2026-08-08 (wallclock 2026-08-04), per JA-PE1 GAP-1: anchor
+corrected — tex 1213–1218 is picture-environment drawing code; the earlier
+gloss "the print's twist exponent (Definition t(i))" was sign-loose and is
+superseded by this display. The same inherited 1213–1218 range stands in
+W-2 §3.1 — cure owed to that note's own arc. Equality + machine leg
+unchanged.] More generally, for u = β + k·W_m (weight
 shifts by key multiples): ε_m(β)·z_m^{t_m-at-u} = z_m^{A_m·k} — W2-L2
 consumed proved (the Bézout bridge; hypothesis list: gcd(e, h) = 1,
 normalized (ℓ, ℓ′), u − β ∈ W_m·ℤ).
@@ -182,12 +194,22 @@ k-grid covariance included.]
 
 ### 3.3 THEOREM JA-GRID (J-A(iv): eq-(12-int) digits = abscissa/side coordinates, + the carry clause)
 
-**Statement.** Fix a read (e, h), gcd(e, h) = 1, h, e ≥ 1, and V ∈ ℤ_{≥0}.
-(a) The print's T-side initial point (Prop `construct` tex 1176: "the
-greatest side T contained in L whose end points have nonnegative integer
-coordinates", initial point (s, u); same object at tex 1498) is EXACTLY
+**Statement.** Fix a read (e, h), gcd(e, h) = 1, h, e ≥ 1, and V ∈ ℤ_{≥0}
+with u := (V − s·h)/e ≥ 0 — the proviso holds at every consumption site by
+the print's own hypothesis V ≥ e_{r−1}f_{r−1}v_r(φ_{r−1}) (tex 1167–1168);
+for small V off it the print-side T has no such point (e.g. (e,h) = (2,3),
+V = 1 ⟹ u = −1). (a) The print's T-side initial point (Prop `construct`
+tex 1176: "the greatest side T contained in L whose end points have
+nonnegative integer coordinates", initial point (s, u); the T-side object
+genuinely reappears at Lemma `enlarge`, tex ~1528–1531) is EXACTLY
 eq12(V; e, h): s = ℓV mod e = the smallest nonnegative abscissa with
 integer ordinate on the line, u = (V − sh)/e. (= W2-L0, consumed proved.)
+[JA-r1 2026-08-08 (wallclock 2026-08-04), per JA-PE1 GAP-4: the u ≥ 0/
+print-hypothesis proviso added (the bare V ∈ ℤ_{≥0} quantifier was false
+at small V); the "same object at tex 1498" gloss corrected — the (s, u)
+at tex 1498 is the initial point of the ACTUAL side S, ≠ eq12 when the
+first grid slot is unattained. The machine's geometric leg checks the
+unconditionally-true integer-ordinate characterization; (b)/(c) unaffected.]
 (b) Consequently the print's slot grid s + je and slot values V_j equal the
 harness digit grid and digit weights at every junction slot (W2-L0's
 consequence display: the two legs' polygons agree point-for-point).
@@ -272,12 +294,21 @@ levels up to m by induction with base (VD-1). Off it: the exact law is the
 per-slot law fed by the recursion (HR-REC genre), not a scalar form —
 JA-BOX-2.
 
-**COROLLARY JA-MIN (the MIN CORE transfer, GD-3 genre at orders ≥ 2).** On
-the per-slot law's perimeter, the gauge is a unit per slot: c_i = 0 ⟺
-C_i = 0, supports and degrees agree slot-for-slot, and ord_ψ data of the
-print residual is computable from the harness read (and conversely). The
-GD-3 MIN CORE at orders ≥ 2 is therefore a theorem WHERE THE DICTIONARY
-REACHES, with the same conditionality — not unconditional (JA-BOX-2).
+**COROLLARY JA-MIN (the DICTIONARY HALF of the MIN CORE, GD-3 genre at
+orders ≥ 2).** On the per-slot law's perimeter, the gauge is a unit per
+slot: c_i = 0 ⟺ C_i = 0, supports and degrees agree slot-for-slot, and
+ord_ψ data of the print residual is computable from the harness read (and
+conversely) — same conditionality as JA-RES (JA-BOX-2), not unconditional.
+[JA-r1 2026-08-08 (wallclock 2026-08-04), per JA-PE1 GAP-3 — RESCOPED:
+the earlier close "The GD-3 MIN CORE at orders ≥ 2 is therefore a theorem
+WHERE THE DICTIONARY REACHES" overstated. GD-3's MIN CORE per
+`docs/MATH_COMPLETION_TREE_2026-08-01.md` is ord_{ψ̂_hom}(in(f)) =
+ord_ψ(R_λ(f)); what is established here is its DICTIONARY HALF only —
+ord_ψ(R_λ(f)) computable from the harness read on the per-slot law's
+perimeter. The graded-initial-form leg (the in(f) tie, a graded-carrier
+object) is NEITHER derived NOR cited in this note and stays OPEN with
+GD-3 (blueprint taxonomy: inside J-A(ii), so a gap, not a J-C fence
+violation; nothing downstream in this note consumes JA-MIN).]
 
 Grades: JA-RES PROVED at m = 2 (attempt grade); PROVED-under-proviso at
 m ≥ 3, unconditional on (R-coll); JA-VDIND PROVED; JA-MIN rides JA-RES.
@@ -393,8 +424,10 @@ action, clause by clause:
   exactly the JA-VDIND collapse case. [Machine: CK-BPREF census — refuting
   samples counted on designated rows; prediction ≥ 1 per designated row.]
 * **JA-BOX-2 (the collapse perimeter, inherited genre W2-BOX-1).** At
-  m ≥ 3 the scalar/evaluated forms hold only on (R-coll); the exact law off
-  it is the per-slot law fed by the recursion. A two-parameter scalar
+  m ≥ 3 the scalar/evaluated forms are PROVED only on (R-coll) ([JA-r1]
+  per JA-PE1 GAP-5b: "hold only on" overstated — by the unsealed JA-VDIND
+  converse the per-digit proviso can hold off (R-coll) by cancellation);
+  the exact law off it is the per-slot law fed by the recursion. A two-parameter scalar
   formula on ALL levels would need the monomial-collapse exponents tracked
   explicitly — same residue as W-2 clause 2's. W-1's FULL "operator
   dictionary at all orders" therefore remains OPEN beyond the displayed
@@ -441,9 +474,14 @@ Censuses (the note's displayed conditionality, quantified): CK-RES
 boundary (proviso-failing, recorded not scored) = **16, ALL on the two
 interior-twist towers T3B (4 + 3 transported) and I4B (5 + 4 transported)**
 — exactly the W-2 collapse-boundary geography; every other row scored
-fully. CK-BPREF refuting samples = **26 across 12 roster rows + all 4
-fresh d₀ rows** — the blueprint's slot-independent form is refuted
-wherever the character is visible, including at d₀ = 3 and p = 5.
+fully. CK-BPREF refuting samples = **26 = 22 roster hits on 10 roster rows
+(T2A, T2C, T2D, T2G, T3A, T3C, T3D, T3E, T3F, I4C) + 4 d₀ hits (one on
+each fresh d₀ ≥ 2 row)** — the blueprint's slot-independent form is
+refuted wherever the character is visible, including at d₀ = 3 and p = 5.
+[JA-r1 2026-08-08 (wallclock 2026-08-04), per JA-PE1 GAP-2: "across 12
+roster rows" corrected to the committed JSON's 10 (PE1 recount +
+bit-identical re-run); the total 26, the d₀ clause, and the refutation
+are unaffected.]
 
 ### 7.2 Claims table (grades)
 
@@ -456,7 +494,7 @@ wherever the character is visible, including at d₀ = 3 and p = 5.
 | JA-GRID | eq-(12-int) = T-side initial point; carry = lattice crossing | PROVED (single-level scope fence) |
 | JA-RES | per-slot law c_i = z^{−iA}·C_i | PROVED at m = 2; PROVED-under-proviso m ≥ 3 |
 | JA-VDIND | absolute-character collapse ⟹ (VD-m) | PROVED (forward; converse unsealed) |
-| JA-MIN | MIN CORE transfer at orders ≥ 2 | rides JA-RES (same perimeter) |
+| JA-MIN | DICTIONARY HALF of the MIN CORE at orders ≥ 2 (in(f) leg OPEN, [JA-r1]) | rides JA-RES (same perimeter) |
 | §4 transport | orbit action + re-instantiation | ORB legs PROVED/machine; chamber = W2-C3 consumption |
 | JA-BOX-1 | blueprint J-A(ii) slot-independent c | REFUTED at m ≥ 2 (26 machine witnesses) |
 
@@ -482,3 +520,22 @@ included); F_p[[t]] rows have no PARI leg (JA-BOX-4); acceptance counter
 0/2 — nothing here may be consumed at proof grade before its hostile arc.
 
 — J-A COMPOSER unit, campaign date 2026-08-08.
+
+---
+
+## §8. r1 record (round 1 of the acceptance arc)
+
+**JA-PE1 (fresh hostile Fable context; report `GRTJA_passPE1_report.md`,
+instrument `verification/openmath/ja_pe1_ext.py`): VERDICT GAPS-ONLY —
+0 critical, 5 gaps.** The machine bracket re-ran BIT-IDENTICAL (17
+families, 10,311 samples, 0 violations; JSON identical except elapsed_s);
+all four operator equalities re-derived by hand, hardest-first on the (ii)
+chain, with the 26 JA-BOX-1 witnesses recounted from the committed JSON;
+JA-PIN re-derived clause-by-clause at the print anchors; per-ring hand
+instances (ℤ_p and F_p[[t]]) green. The five gaps — GAP-1 anchor/sign
+attribution (§3.2), GAP-2 census row count (§7.1), GAP-3 JA-MIN over-reach
+(§3.4), GAP-4 JA-GRID(a) quantifier + tex-1498 gloss (§3.3), GAP-5 two
+wording overstatements (§2, JA-BOX-2) — are all repaired in place in the
+dated [JA-r1 2026-08-08 (wallclock 2026-08-04)] brackets above. No grade
+changes; no statement's mathematical content altered. **Arc: 0/1 CLEAN
+(gaps-only, repaired); round 2 = the Codex leg (Thursday window).**
