@@ -336,5 +336,71 @@ action, clause by clause:
   proof. The cross-chamber letter identification z_old = ξ·z_new is W-2
   §5.1 step 2, consumed.
 
-<!-- SECTIONS 5-7 COMPOSED BELOW -->
+---
+
+## §5. Base cases consumed (accepted partials, with their exact grades)
+
+* **N-1 (order 2) = the GRB order-2 numeric harness** (`grb_order2_check.py`;
+  record `GRB_ORDER2_2026-08-05.md` REV 11/14): **EXECUTED and GREEN
+  (2026-08-08) at family-ledger scope** — harness operators = FGMN print
+  operators (Def 3.15/3.16/3.18, eq (12)) at order 2, with the ǫ
+  extraction-artifact CORRECTED reading ǫ_i(α) = z_i^{ℓ′_i s(α) − ℓ_i u(α)}
+  pinned three independent ways (FGMN's own ǫ₀ ≡ 1 remark; Lemma 4.3's
+  Bézout algebra, 0/23,111; the external PARI kill-shot P12). Consumed as:
+  the ACCEPTED order-2 instance of JA-VAL/JA-EPS and the operator half of
+  JA-RES — against a SECOND print (FGMN), decorrelated from this unit's
+  GMN/HigherNewton literature leg. Its honest deferral rides: the
+  garbled-prime genre at e₀ ≥ 2 was N-1's teeth, reused here (MJ-EPS).
+  N-1 does NOT cover: the carrier identification (C15 separation), orders
+  ≥ 3, the lift construction (that is W-2).
+* **GD-5 (order 1) = base-read conformance, NEARLY CLOSED by composition**
+  (`docs/MATH_COMPLETION_TREE_2026-08-01.md` §D2.2 row GD-5): O-2a OL-5
+  (b′)+(c′) = O-1thr's PROVED (V1)/(V2)-at-order-1 layer (VAL1 + KEY1 +
+  DIV1 + ROOT-M + WGEO) composed with O-2a's PROVED (D3); residue = the S-1
+  transcription audit + the degree-g > 1 root-key KEY1 generalization.
+  Consumed as: the order-1 floor of JA-VAL/JA-GRID and (with W2-L3) of
+  JA-RES. Riding machine partials, cited not re-run: GD-2's T-F check
+  (41,720 instances, 0 violations sheared / 7,472 violations unsheared —
+  the convention pin this note's §3.1 sentence honors) and GD-8's order-1
+  exact-key harness (871 forced samples, 0 findings) for the §3.3 carry
+  clause's order-1 layer.
+* **W-2 clause 1/2/3** (`GRTW2_PROOF_2026-08-08.md`): consumed AT ATTEMPT
+  GRADE (0/2 hostile passes) with its full conditionality ledger — the §2
+  clause-8 citation, W2-L0/L2/L3 in §3, and the §4 transport. Nothing here
+  upgrades W-2's grades.
+
+## §6. Honest boxes
+
+* **JA-BOX-1 (blueprint correction, review-owed).** Blueprint J-A(ii)
+  displays "R_{m,λ} = c·R_λ^GMN with c ∈ F^× slot-independent". FALSE as
+  stated at m ≥ 2 whenever the character z_{m−1}^{−i·A_{m−1}} is nontrivial
+  on the read support (A_{m−1} > 0 rows abound: any e_{m−2} ≥ 2 with
+  ℓ_{m−2} ≥ 1 and ord(z_{m−1}) ∤ e_{m−1}A_{m−1}). The CORRECTED display is
+  JA-RES (unit-per-slot CHARACTER gauge). The slot-independent form is
+  exactly the JA-VDIND collapse case. [Machine: CK-BPREF census — refuting
+  samples counted on designated rows; prediction ≥ 1 per designated row.]
+* **JA-BOX-2 (the collapse perimeter, inherited genre W2-BOX-1).** At
+  m ≥ 3 the scalar/evaluated forms hold only on (R-coll); the exact law off
+  it is the per-slot law fed by the recursion. A two-parameter scalar
+  formula on ALL levels would need the monomial-collapse exponents tracked
+  explicitly — same residue as W-2 clause 2's. W-1's FULL "operator
+  dictionary at all orders" therefore remains OPEN beyond the displayed
+  forms; J-A does not claim it.
+* **JA-BOX-3 (the unpinned-ℓ convention, inherited from the probe/W-2
+  §4.3, review-owed).** Every §3 equality involving print twists/residuals
+  is stated at the pinned (P-ell) representative; the print pins no ℓ (tex
+  1291). §4 displays the exact orbit action; whether Def-2.12-genre
+  statements are read strictly-at-pinned-ℓ or up-to-orbit is genuinely
+  underdetermined by the print. Nothing downstream may consume a pinned
+  reading silently.
+* **JA-BOX-4 (equal characteristic).** The print is mixed-characteristic;
+  the F_p[[t]] rows ride construction-identity + the machine leg only (no
+  PARI entry point) — displayed deferral, inherited from the probe.
+* **JA-BOX-5 (scope fences).** "Realized principal-read" only (slope-0 →
+  Hensel/L1 at order 0; JA-PIN clause 2). Single-level carry clause only
+  (§3.3 fence). No gr/carrier claim (J-C untouched; BLOCKED-ON-CARRIER-TIE
+  stands), no count/menu claim (J-D untouched), no advance on W2-OPEN-1,
+  and the P0 application gate stands.
+
+<!-- SECTION 7 RECORDS: appended at commit 2 from the sealed artifacts -->
 — J-A COMPOSER unit, campaign date 2026-08-08.
