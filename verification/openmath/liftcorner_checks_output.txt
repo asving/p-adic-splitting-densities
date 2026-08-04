@@ -1,0 +1,41 @@
+[   0.0s] Zp,p=2,CA done, viol=0
+[   0.2s] Zp,p=2,CB done, viol=0
+[   0.2s] Zp,p=2,CC done, viol=0
+[   0.4s] Zp,p=2,CD done, viol=0
+[   0.4s] Zp,p=2,CE done, viol=0
+[   0.4s] Zp,p=2,CF done, viol=0
+[   0.4s] Zp,p=3,CA done, viol=0
+[   0.6s] Zp,p=3,CB done, viol=0
+[   0.8s] Zp,p=3,CC done, viol=0
+[   1.0s] Zp,p=3,CD done, viol=0
+[   1.2s] Zp,p=3,CE done, viol=0
+[   1.2s] Zp,p=3,CF done, viol=0
+[   1.2s] Fpt,p=2,CA done, viol=0
+[   1.8s] Fpt,p=2,CB done, viol=0
+[   1.8s] Fpt,p=2,CC done, viol=0
+[   2.3s] Fpt,p=2,CD done, viol=0
+[   2.3s] Fpt,p=2,CE done, viol=0
+[   2.4s] Fpt,p=2,CF done, viol=0
+[   2.4s] Fpt,p=3,CA done, viol=0
+[   2.9s] Fpt,p=3,CB done, viol=0
+[   3.2s] Fpt,p=3,CC done, viol=0
+[   3.8s] Fpt,p=3,CD done, viol=0
+[   4.2s] Fpt,p=3,CE done, viol=0
+[   4.2s] Fpt,p=3,CF done, viol=0
+========================================================================
+GATE      pred 0  obs     0  (    56)  GREEN
+AV        pred 0  obs     0  (   656)  GREEN
+TLAW      pred 0  obs     0  (  4176)  GREEN
+PV        pred 0  obs     0  (  4176)  GREEN
+INT       pred 0  obs     0  (  4176)  GREEN
+LOC       pred 0  obs     0  (     0)  GREEN
+CHI       pred 0  obs     0  (  4176)  GREEN
+COV       pred 0  obs     0  (     0)  GREEN
+WRONGLET  pred 0  obs     0  (  3816)  GREEN
+TRS       pred 0  obs     0  (  4176)  GREEN
+ENGGATE   pred 0  obs     0  (     1)  GREEN
+CERT      pred 0  obs     0  internal T1/T2(nf=4)+T5  GREEN
+WRONGLET total fires 1576 (pred > 0)
+orbit towers gate-passed: 56; coverage min d1-pairs 6; teeth min 6
+TOTAL checks 25409  elapsed 4.4s
+VERDICT: ALL GREEN

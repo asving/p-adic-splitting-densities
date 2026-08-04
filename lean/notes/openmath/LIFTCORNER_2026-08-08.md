@@ -89,9 +89,35 @@ so ψ₁ and every deeper byte carries over verbatim; the runner asserts this
 (ψ₁ bytes equal, K₂ arithmetic representation shared) before any comparison;
 (d) SP bug-detector counters recorded.
 
-## S3. VERDICT (commit 2; from the artifacts)
+## S3. VERDICT (commit 2; from the artifacts; seal dafc0b5, runner
+byte-untouched, md5 ccb4351c92573f5f962cae4ae952d8dd)
 
-[PENDING — appended at commit 2.]
+**ALL GREEN, FIRST RUN, exit 0** — 25,409 checks, **0 violations in every
+family**, elapsed 4.4 s (`liftcorner_checks_output.txt`,
+`liftcorner_checks_results.json`; these govern on any transcription
+discrepancy):
+
+* Q1 GATE 56/56 orbit towers pass the lawfulness gate for their OWN ψ₀′
+  (48 twisted + 8 ξ = 1 dense controls — exactly the deterministic
+  applicability counts of the sheet); Q2 AV 656/0;
+* **Q3 TLAW 4,176/0 — THE CANDIDATE: the display holds with the letter the
+  lift carries (z₁′ = −c′) on every ξ-twisted tower**, both pair blocks;
+* **Q7 CHI 4,176/0 — the χ-ratio law c_base = c′·ξ^{D₁} EXACT, measured
+  against measured** (no closed form in the comparison): the W-2 covariance
+  carries the corner;
+* Q4 PV / Q5 INT / TRS 4,176/0 each; Q6 LOC 0 (no δ₁ = 0 anomaly);
+* Q8 COV met — min 6 δ₁ = 1 pairs and min 6 teeth pairs (ξ^{D₁} ≠ 1) per
+  twisted block; Q9 WRONGLET: per-pair set equivalence EXACT on 3,816
+  samples, total fires 1,576 > 0 (the wrong-letter form fails exactly where
+  ξ^{D₁} ≠ 1 — the transport is sharp, not slack);
+* Q10 XI1: the ξ = 1 dense slice reproduces the unchanged display (wave-18
+  tie re-confirmed); CERT internal 0; ENG-GATE 0 new (full=False disclosed);
+  SP bug-detector 0.
+
+STATUS EFFECT of S3 alone (before S4): the ξ ≠ 1 orbit direction — where NO
+corpus evidence existed — is now MEASURED-TRANSPORT-EXACT: the displays
+change under the lift orbit by EXACTLY the χ-law, W-2 clause 3's prediction
+degenerate at the corner. The S4 compose is earned per the seal condition.
 
 ## S4. THE COMPOSE (written only on a green S3, per the seal condition)
 
