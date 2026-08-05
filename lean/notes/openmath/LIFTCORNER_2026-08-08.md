@@ -17,6 +17,11 @@ its committed output `liftcorner_tailstab_children_table.txt` — the
 examples-first child-type table the repaired S4.1 induction is derived from
 (disclosed as written AFTER the refutation, hence evidence for a repair, not
 a prediction). The sealed runner is byte-untouched (md5 unchanged, S3).
+[r2] That post-hoc generator was AMENDED at repair round r2 (assertion **A7**
+added, curing PE2's G3: the enumerated children now have to reconstruct the
+very polynomial A6 develops) and its output recommitted; its r1 data sections
+(§§1–6) regenerate byte-identically, A7 adds assertions only. The sealed
+runner is STILL byte-untouched at r2 (md5 `ccb4351c92573f5f962cae4ae952d8dd`).
 
 **[REPAIR ROUND r1 — 2026-08-08 campaign (wallclock 2026-08-05).** Applied
 against LIFTCORNER-PE1 (hostile pass, fresh context, report
@@ -51,6 +56,47 @@ with a box naming the two things still owed for the W2-OPEN-1 tie.
 modulus-independence verification actually lives (`mk_field_ext` at g = 1).
 Acceptance counter unchanged at 0/2 — a repair round is not a pass; round r2
 (a fresh hostile pass on THIS text) is the next acceptance attempt.]**
+
+**[REPAIR ROUND r2 — 2026-08-08 campaign (wallclock 2026-08-05).** Applied
+against LIFTCORNER-PE2 (hostile pass, fresh context, on the r1 text; report
+`LIFTCORNER_passPE2_report.md`, commit 3367f3c: **0 CRITICAL + 5 gaps**;
+ledger entry BRIDGE_ADJUDICATIONS_2026-07-30.md "LIFT PE2: THE REPAIR HOLDS").
+Naming, since r1's closing sentence used "round r2" for the pass: the hostile
+pass on the r1 text was **PE2**; **r2 is this REPAIR round**; the next
+acceptance attempt is **PE3**, a fresh hostile pass on THIS text. **F1 IS
+CURED and HELD** — PE2 re-derived every load-bearing piece of the lex repair
+independently (9 ↦ 7 mapping total and disjoint; row 7b's degree drop correct
+at the deg a = 0 and deg b = 0 edges; both emptiness strata PROVED not merely
+measured; ρ strictly drops on every edge, so the lex order well-founds both
+consumers) and both machine legs re-ran bit-identically at PE2 (i.e. on the
+pre-r2 artifacts, before this round's A7 amendment to the children generator).
+No critical finding, so no r2 edit touches the chain. Dispositions, each edit carrying a dated
+`[r2, G#]` bracket, strike-and-replace (the refuted r1 wording is quoted
+inside the bracket that supersedes it, never silently deleted): **G1** — the
+(C)(ii) branching count "≤ 2e₀+1" is FALSE (its own parenthetical sums to
+2e₀+3, and the committed table shows 7 children at e₀ = 2); corrected to
+**≤ 2e₀+3**, attained at every e₀ in the battery, with the disclosure that
+ONLY finiteness of this count is consumed and the quantitative claim is the
+independent ρ bound. **G2** (honesty) — the F1 box credited PE1 with
+independently re-verifying "all ω-gains", but rows 3/5/7a/7b are NEW per-digit
+displays PE1 never saw; the attribution is corrected (PE1 checked r0's four
+per-branch rows; the eight per-digit bounds were first hostile-read at PE2,
+which re-derived all eight and found them correct and tight) and the charge
+list gains item **(7)** naming them. **G3** — the children generator never
+asserted that its enumeration EXHAUSTS the development (A6 bypasses
+`children()` entirely, so a missing branch would leave the table green); PE2
+supplied that leg ad hoc (0/752 mismatches) and r2 makes it DURABLE as
+assertion **A7** in the committed generator, with the output recommitted.
+**G4** — "gain(q-digit) = gain(r-digit) + e₁h₀" is STRICKEN (not an identity;
+PE2's witness a·b = 4x²+2 over ℤ₂ has w₀(q) = 2 > 1 = w₀(r)) and replaced by
+the direct CONTENT application to the q-digit, which yields the same displayed
+"≥" column; the equality is recorded as an OBSERVATION (held on all 896
+battery r/q pairs), not a law, and nothing consumes it. **G5** — "valid
+EXACTLY on the flat corner d₀ = 1" weakened to the true statement (d₀ = 1 is
+sufficient; the r0 clause also holds vacuously wherever no m-preserving child
+occurs, and the table has such d₀ = 2 rows: A12, B14). Acceptance counter
+unchanged at **0/2**: PE2 was a hostile pass but returned 5 gaps, and the r2
+repairs are themselves unaudited.]**
 
 **Sources of record:** ILNRES_2026-08-08.md S1 [NR-1] + S5.1 (the spec);
 ITERLAWLIFT_CORNER_2026-08-08.md (wave 18: the LAWFUL slice measured
@@ -257,8 +303,28 @@ So every one of the seven genres has (m′, deg a′) <_lex (m, deg a) and the I
 applies to every child.
 
 *The ω-gains.* For a branch with factor b at Φ₀-exponent M = m−e₀+k and
-w₀(b) ≥ β: gain(r-digit) = e₁[e₀(w₀(a′)−w₀(a)) + (M−m)h₀] ≥ e₁[e₀β −
-(e₀−k)h₀] by CONTENT, and gain(q-digit) = gain(r-digit) + e₁h₀. Row 1:
+w₀(b) ≥ β, a digit a′ landing at Φ₀-exponent M′ has
+gain = e₁[e₀(w₀(a′) − w₀(a)) + (M′−m)h₀], with M′ = M for the r-digit and
+M′ = M+1 for the q-digit. **[r2, G4 — the q-digit bound RE-DERIVED; the r1
+identity STRICKEN.]** CONTENT is applied to EACH digit separately: from
+a·b = r + qΦ₀ it gives w₀(r) ≥ w₀(a·b) ≥ w₀(a) + β AND w₀(q) ≥ w₀(a·b) ≥
+w₀(a) + β, i.e. w₀(a′) − w₀(a) ≥ β for either digit. Hence
+
+    gain(r-digit) ≥ e₁[e₀β − (e₀−k)h₀],
+    gain(q-digit) ≥ e₁[e₀β − (e₀−k)h₀ + h₀],
+
+the q-digit's extra e₁h₀ coming from its Φ₀-exponent being one higher, NOT
+from any relation between w₀(q) and w₀(r). The r1 text's
+"gain(q-digit) = gain(r-digit) + e₁h₀" is STRICKEN: it is not an identity.
+The ultrametric only forces min(w₀(r), w₀(q)) = w₀(a·b), so the other digit
+may sit strictly higher — over ℤ₂ with Φ₀ = x²+x+1, a·b = 4x²+2 gives q = 4
+and r = −4x−2, so w₀(q) = 2 > 1 = w₀(r) = w₀(a·b) (PE2 G4's witness), and
+there gain(q) − gain(r) = e₁[e₀·1 + h₀] ≠ e₁h₀. Nothing in the table's "ω-gain
+≥" column changes: those entries are exactly what the two displayed
+inequalities give. OBSERVATION, not law, recorded so the stricken step leaves a
+trace: the equality did hold on all **896** r/q branch pairs of the committed
+battery (PE2 checked gain(q) − gain(r) == e₁h₀ pairwise, 0 exceptions) — an
+artifact of those instances' shapes, and no step below consumes it. Row 1:
 b = 1, but j′ = j+1 adds γ₂ and the Φ₀-drop costs e₁e₀h₀, net h₁ > 0. Rows
 2–3: β = h₀, k = 0. Rows 4–5: β = h₀+1. Rows 6–7: β = amin(k) with
 e₀·amin(k) ≥ (e₀−k)h₀ + 1, forced by gcd(e₀, h₀) = 1 (e₀ | kh₀ ⟺ e₀ | k,
@@ -289,6 +355,43 @@ nonzero digits, minimum slack 0 (the equality thread realized) — all PASS.
 The table is evidence for the case split, not a substitute for (A)–(C): it
 is a finite battery, and the proof above is what carries the ∀.
 
+**[r2, G3 — the completeness leg made DURABLE: assertion A7.]** PE2's G3:
+A1–A6 cannot certify the census's COMPLETENESS, which is exactly charge item
+(1). A6 recomputes the double development of X *directly* and never calls
+`children()`, so an enumeration missing a whole branch would have left every
+assertion green — the prose and the script shared ONE transcription of the pass
+identity (the standing extraction-corruption trap: a second leg pinned to the
+first inherits its corruption). PE2 supplied the missing leg ad hoc
+(Σ children == X, 0 mismatches on 752 nodes); r2 puts it INSIDE the committed
+generator as **A7**, over the same 752 (a, m, j) probes A6 walks, with X built
+by direct multiplication from Φ₀ and Φ′ — not from the pass identity — so a
+missing or a spurious branch fails the check:
+
+* **A7(i) SUM IDENTITY** Σ_children a′Φ₀^{m′}Φ′^{j′} = X exactly — **0
+  mismatches over 752 nodes / 5,336 enumerated children**;
+* **A7(ii) SHAPE** deg a′ < d₀ and m′ ≥ 0 for every child (so every child is a
+  legal IH target) — 0 violations;
+* **A7(iii) DIGIT-WISE dev-linearity** — the slot-wise sum of the children's
+  double developments IS X's double development, i.e. the digits A6 walks are
+  exactly the digits the children generate — 0 mismatches; this machine-checks
+  (C)(i)'s additivity step ("polynomial devs carry no carries") at every probe;
+* **A7(iv) BRANCHING** ≤ 2e₀+3 (G1's corrected count) — 0 violations, observed
+  maximum per node exactly 2e₀+3 at e₀ = 2, 3, 4, 5, 6.
+
+Regeneration discipline: the r1 DATA sections (§§1–6 — roster, the 2,668 child
+rows, genre summary, the m′ = m stratum, LEDGER statistics, counter-instance
+tree) come back BYTE-IDENTICAL; the diff old → new is **7 pure INSERTIONS**
+(one provenance line in the header, six A7 verdict lines in §7) with **0
+deleted and 0 modified lines**, and §7's pre-existing lines — "assertion
+failures: 0", A1–A6 all PASS, "ANY CHILD DROPPING NEITHER COORDINATE: NO",
+"OVERALL: ALL GREEN" — are unchanged. A7 adds assertions, not table content.
+HONEST LIMIT: A7 is instance-level. It certifies that AT
+THESE 752 NODES the enumeration is exhaustive and non-spurious; the ∀ is
+carried by (A)'s algebra (Φ₀^{e₀} = Φ′ − Σ_{k<e₀}b_kΦ₀^k gives exactly the key
++ b₀ + (e₀−1) mid terms, and deg(a·b) ≤ 2d₀−2 forces exactly two digits per
+branch and forbids a redigit cascade — PE2 re-derived both independently), and
+A7 says nothing about the genre LABELS, only about the summands.
+
 **(B) The deg a = 0 stratum (the second coordinate's base) and the d₀ = 1
 corner.** At deg a = 0 row 7b is EMPTY: deg(a b_{e₀−1}) ≤ 0 + (d₀−1) < d₀,
 so its q-digit vanishes and the top-mid branch contributes only its r-child.
@@ -298,9 +401,19 @@ alone. Two consequences worth recording: (i) at most deg a ≤ d₀−1
 consecutive m-preserving steps can occur from any node, so the recursion is
 equally a single induction on m with an inner chain of length < d₀; (ii) at
 d₀ = 1 NO branch ever produces a q-digit (deg(a·b) ≤ 0 < 1 = d₀), so the r0
-single-m induction was in fact valid exactly on the flat corner d₀ = 1 —
-which is why no d₀ = 1 row could have exposed the defect, and why the
-counter-instance below is at d₀ = 2.
+single-m induction was in fact valid on the whole flat corner d₀ = 1 — which
+is why no d₀ = 1 row could have exposed the defect, and why the
+counter-instance below is at d₀ = 2. **[r2, G5 — "exactly" STRICKEN.]** The r1
+wording "valid EXACTLY on the flat corner d₀ = 1" claimed a
+characterization and is false: d₀ = 1 is SUFFICIENT, not necessary. The r0
+clause "every child has m′ ≤ m−1" also holds VACUOUSLY at any node with no
+m-preserving child — in particular on any orbit member whose top mid
+b_{e₀−1} vanishes, since row 7b is then absent for every a. Such instances
+exist at d₀ ≥ 2 in the note's own committed table: `A12` (ℤ₂, d₀ = 2, e₀ = 2,
+genre `pure`) and `B14` (ℤ₂, d₀ = 2, e₀ = 5, genre `pure`) have all mids zero
+and contribute NO row to the table's §4 m′ = m stratum. What (ii) is consumed
+for is unaffected: d₀ = 1 rows cannot exhibit the defect, so the
+counter-instance has to sit at d₀ ≥ 2.
 
 **(C) The two consumers, re-closed on the lex order.** (i) *The induction.*
 The IH is invoked only on the children of one pass; each is strictly lex-below
@@ -309,9 +422,29 @@ child satisfies (LEDGER) at its own ω(child) ≥ ω(X); dev-linearity (the
 double dev of X is the digit-wise sum of the children's — polynomial devs
 carry no carries) plus the ultrametric close then gives (LEDGER) for X.
 (ii) *Termination/finiteness* (the job the false clause was doing). The
-recursion tree is finitely branching — ≤ 2e₀+1 children per node (row 1,
-rows 2–5, and ≤ e₀−1 realizations each of rows 6 and 7) — and by (A) has no
-infinite path, hence is FINITE, so the dev-linearity sum is finite. Explicit
+recursion tree is FINITELY BRANCHING, and by (A) has no infinite path, hence
+is FINITE (König), so the dev-linearity sum is finite. **[r2, G1 — the count
+CORRECTED; the r1 number was false.]** The r1 text said "≤ 2e₀+1 children per
+node (row 1, rows 2–5, and ≤ e₀−1 realizations each of rows 6 and 7)"; its own
+parenthetical sums to 1 + 4 + (e₀−1) + (e₀−1) = **2e₀+3**, and the note's own
+committed table exhibits 7 children at e₀ = 2 (row `A1`, a = x+1, m = 2), which
+already refutes "≤ 5". The correct bound is
+
+    #children(node) ≤ 2e₀+3
+      = 1 (row 1) + 4 (rows 2–5, counted per DIGIT: b₀-main r and q,
+                       b₀-tail r and q)
+        + (e₀−1) (row 6) + (e₀−1) (rows 7a+7b),
+
+the r1 number having come from counting rows 2–5 as two BRANCHES while rows
+6/7 were counted as digits. It is attained: the committed table's observed
+maximum children per node is exactly 2e₀+3 at every e₀ in the battery
+(e₀ = 2, 3, 4, 5, 6 → 7, 9, 11, 13, 15), and the bound is now machine-asserted
+per node as A7(iv) (0 violations, 752 nodes). **ONLY FINITENESS of this count
+is consumed** — by the König step in the previous sentence and by the
+finiteness of (i)'s dev-linearity sum; 2e₀+3 is finite, so both go through
+unchanged, and no step anywhere uses the count's VALUE. The quantitative claim
+that does matter is the ρ depth bound next, which is independent of the
+branching count. Explicit
 depth bound: ρ(m, deg a) := m·d₀ + max(deg a, 0) strictly drops along every
 child edge (an m-drop of ≥ 1 costs ≥ d₀ and can restore at most d₀−1 in the
 second coordinate; an m-preserving step drops the second coordinate by ≥ 1),
@@ -340,6 +473,37 @@ displayed per digit, hence sharper on rows 3, 5, 7 than r0's per-branch
 lower bounds), the gain-0 census (row 2 only), CONTENT, dev-linearity, the
 (LEDGER) ⟹ w₂(X) ≥ ω(X) tie and the read-kill close, and the ⌈m/e₀⌉
 equality-thread bound in its correct scope.
+
+**[r2, G2 — that attribution is CORRECTED; it was self-refuting.]** The
+sentence above put "all ω-gains (now displayed per digit, hence sharper on rows
+3, 5, 7 than r0's per-branch lower bounds)" inside the list of things
+"UNCHANGED in content and re-verified by PE1 independently" — but bounds that
+are NEW and SHARPER at r1 are by construction not unchanged, and PE1, which
+read the r0 table, cannot have verified them. The honest split:
+
+* **What PE1 re-verified** (verbatim scope, from its F1 repair observation:
+  "all four ω-gain rows of the branch table (checked, using
+  e₀·amin(k) ≥ (e₀−k)h₀+1 which I re-derived from gcd(e₀,h₀) = 1 …)"): r0's
+  **four PER-BRANCH** ω-gain rows, plus the base case, the one-pass identity,
+  the gain-0 census (row 2 only), CONTENT, dev-linearity, the
+  (LEDGER) ⟹ w₂(X) ≥ ω(X) tie and read-kill close, and the ⌈m/e₀⌉ bound in
+  its correct scope.
+* **What PE1 never saw**: the r1 table's **eight PER-DIGIT** gain entries
+  (rows 1, 2, 3, 4, 5, 6, 7a, 7b). Rows 3, 5, 7a, 7b are new at r1.
+* **Who first hostile-read them**: **PE2** (report
+  `LIFTCORNER_passPE2_report.md`, commit 3367f3c, G2's "for the record"), which
+  re-derived ALL EIGHT independently — row 1 = exactly +h₁; row 2 =
+  e₁e₀[w₀(r) − w₀(a) − h₀] ≥ 0; row 3 ≥ e₁h₀; row 4 ≥ e₁e₀; row 5 ≥ e₁e₀+e₁h₀;
+  row 6 ≥ e₁; rows 7a/7b ≥ e₁(h₀+1), with e₀·amin(k) ≥ (e₀−k)h₀+1 re-derived
+  from gcd(e₀,h₀) = 1 — and found them CORRECT and, against the battery's
+  minimal (e₁, h₀, e₀), TIGHT.
+
+The r1 charge list also pointed away from these bounds (its items (1)–(6) name
+neither) — the same defect PE1 recorded against r0's charge list, recurring one
+round later on a different step. r2 adds charge item **(7)** for them (grade
+box). Their audit status after r2, stated plainly: displayed at r1, re-derived
+ONCE by a hostile pass (PE2), and now named in the charge list — one
+independent re-derivation, no acceptance credit, PE3 owed.
 
 **[r1, F1 — the counter-instance's own descent chain, numerically.]** PE1's
 instance: O = ℤ₂, d₀ = 2, e₀ = 2, h₀ = 1, Φ₀ = x²+x+1, b₀ = 2 (so ĉ′ = 1,
@@ -460,8 +624,17 @@ tables, not re-proved here.
 
 **Grade box + W-2 consumption census (the cap).** This note: ATTEMPT 0/2 —
 r1 is a REPAIR round, not a pass; one hostile pass has run (PE1: 1 CRITICAL
-+ 3 gaps, all four repaired here) and the arc is OWED on THIS text. Charge
-(r1-updated; the r0 charge list named neither the step that broke nor the
++ 3 gaps, all four repaired here) and the arc is OWED on THIS text.
+**[r2 — grade box updated.]** TWO hostile passes have now run: **PE1** on the
+r0 text (1 CRITICAL + 3 gaps → repair round r1) and **PE2** on the r1 text
+(**0 CRITICAL + 5 gaps** → this repair round r2; report
+`LIFTCORNER_passPE2_report.md`, commit 3367f3c). PE2 confirmed the F1 repair
+holds and re-derived its load-bearing pieces independently, but it returned 5
+gaps, so **no acceptance slot closed: the counter stays 0/2**, and the r2 edits
+(G1–G5) are themselves unaudited. **PE3 — a fresh hostile pass on THIS text —
+is the next acceptance attempt.** Charge
+(r1-updated, item (7) added at r2 per PE2 G2; the r0 charge list named neither
+the step that broke nor the
 r1 argument — PE1 F1's closing observation, accepted): **(1) the S4.1
 seven-genre child census's COMPLETENESS** — that the pass identity, after
 the b₀-split and the r/q redigit, produces no branch outside rows 1–7 — and
@@ -470,7 +643,11 @@ finite branching + the ρ depth bound); **(3)** the CONTENT sub-lemma's
 base-fact status; **(4)** the READ-EQ on-line-content/ultrametric close;
 **(5)** PROP's census cite; **(6)** COR 2's rescoped statement (the F3 box's
 (a)/(b) are owed for any W2-OPEN-1 tie, and are NOT part of this note's
-claim). W-2
+claim); **[r2, G2] (7) the EIGHT PER-DIGIT ω-gain bounds** of (A)'s last column
+(rows 1, 2, 3, 4, 5, 6, 7a, 7b) together with the CONTENT application that
+derives them per digit — new at r1, never named by the r1 charge list,
+re-derived once by PE2 (correct and tight) and, per (A)'s [r2, G4] bracket, no
+longer resting on the stricken r-to-q identity. W-2
 consumption: COR 2 and the S1 orbit frame consume GRTW2 clause 3 (the
 ψ-transport definition + its corner degeneration) — GRTW2 is itself 0/2, so
 **the unit's grade is CAPPED at that consumption, as charged**. Honest
@@ -515,5 +692,37 @@ stands exactly as PE1 verified it GIVEN (TAIL-STAB), and the corner
 measurement (S3, the covariance carrying the corner) is machine fact,
 untouched by F1 in either direction.
 
+**STATUS LINE [r2] (supersedes the r1 clause "the r1 argument itself has NEVER
+been hostile-read, and the grade box's charge (1)–(2) names exactly which of
+its steps are unaudited" — the r1 argument HAS now been hostile-read, and the
+charge list has grown).** As of repair round r2: **(TAIL-STAB) is PROVED by
+S4.1 as repaired at r1 and confirmed at PE2 — 0 CRITICAL** on the r1 argument,
+with PE2 independently re-deriving the 9 ↦ 7 genre mapping (total, disjoint),
+row 7b's degree drop at every boundary (deg a = 0, deg b = 0, a or b zero), the
+two emptiness strata as PROVED rather than measured, and the ρ depth function's
+strict drop on every child edge. **THE ARC:** PE1 (1 CRITICAL + 3 gaps) → r1 →
+PE2 (0 CRITICAL + 5 gaps) → **r2 (this round, G1–G5 applied)** → **PE3 = the
+next acceptance attempt**. Grade: **attempt 0/2, unchanged** — PE2 was a
+hostile pass and found no critical, but 5 gaps is not a clean pass, and the r2
+repairs (the corrected branching count, the corrected PE1 attribution, the new
+A7 assertion, the stricken r-to-q gain identity, the weakened d₀ = 1 claim)
+have never been read by anyone. Which steps are unaudited is now the grade
+box's charge **(1)–(2) and (7)**, plus the r2 edits themselves. The five r2
+repairs, for the record: (C)(ii)'s branching count corrected 2e₀+1 → **2e₀+3**
+with only finiteness consumed (G1); PE1's verification scope corrected and the
+eight per-digit ω-gain bounds attributed to PE2 and charged as item (7) (G2);
+the census-completeness leg made durable as generator assertion **A7**
+(Σ children = X, 0 mismatches / 752 nodes, plus shape, digit-wise
+dev-linearity, and the 2e₀+3 branching bound) (G3);
+"gain(q) = gain(r) + e₁h₀" STRICKEN as a non-identity and re-derived by
+applying CONTENT to the q-digit, the equality demoted to a battery observation
+(896/896) (G4); "valid EXACTLY on d₀ = 1" weakened to sufficiency, with the
+table's own d₀ = 2 vacuous rows A12/B14 named (G5). Wave-18's price sheet
+remains settled MODULO this note's own arc, not "in full". S3's corner
+measurement and both machine legs re-ran bit-identically at PE2 (sealed runner
+25,409/0, md5 `ccb4351c92573f5f962cae4ae952d8dd` intact and still intact at
+r2; children table's data sections byte-identical under the A7 amendment).
+
 — LIFT-CORNER unit, campaign date 2026-08-08 (wallclock 2026-08-04);
-repair round r1 applied 2026-08-08 campaign (wallclock 2026-08-05).
+repair round r1 applied 2026-08-08 campaign (wallclock 2026-08-05);
+repair round r2 applied 2026-08-08 campaign (wallclock 2026-08-05).
