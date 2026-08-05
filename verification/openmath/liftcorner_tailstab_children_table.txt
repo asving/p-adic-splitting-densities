@@ -1,6 +1,7 @@
 LIFT-CORNER (TAIL-STAB) CHILD-TYPE TABLE — examples-first artifact
 generator: verification/openmath/liftcorner_tailstab_children.py
 target lemma: LIFTCORNER_2026-08-08.md S4.1 (TAIL-STAB), repair round r1
+assertions A1-A6 as sealed at r1; A7 (the children reconstruct X) ADDED at repair round r2 [passPE2 G3] — data sections 1-6 unchanged
 
 === 1. INSTANCE ROSTER (towers) ===
 inst   p  d0  e0  h0  e1  h1  gam2 genre     Phi0            Phi'
@@ -2974,6 +2975,12 @@ A3 no m'=m child at deg a = 0: PASS
 A4 no m'=m child at d0 = 1: PASS
 A5 omega-gain >= 0, gain 0 only at b0-main-r: PASS
 A6 LEDGER on the honest double development: PASS
+A7 [r2] the enumerated children RECONSTRUCT the object A6 walks: PASS
+   nodes reconciled: 752   children enumerated: 5336
+   (i)   sum(children a' Phi0^m' Phi'^j') == X exactly: mismatches 0
+   (ii)  every child in shape (deg a' < d0, m' >= 0): violations 0
+   (iii) digit-wise dev-linearity (children's digits == X's digits): mismatches 0
+   (iv)  branching <= 2e0+3: violations 0; observed max children per node by e0: {2: 7, 3: 9, 4: 11, 5: 13, 6: 15}  (2e0+3 = {2: 7, 3: 9, 4: 11, 5: 13, 6: 15})
 
 ANY CHILD DROPPING NEITHER COORDINATE: NO
 OVERALL: ALL GREEN

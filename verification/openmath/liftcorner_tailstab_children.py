@@ -52,6 +52,33 @@ ASSERTIONS (script exits 1 if any fails):
   A6  LEDGER holds on the honestly computed double development of X:
       every nonzero digit a_{ji} of X = sum_j (sum_i a_{ji} Phi0^i) Phi'^j
       obeys e1(e0 w0(a_{ji}) + i h0) + j gamma2 >= omega(X).
+  A7  [ADDED AT REPAIR ROUND r2, 2026-08-08 campaign; cures passPE2's G3]
+      the enumerated children RECONSTRUCT the very object A6 walks -- the leg
+      that makes the census's COMPLETENESS checkable at all.  PE2's G3: A1-A6
+      cannot see a missing branch, because A6 recomputes the double development
+      of X directly and never calls children(), so an enumeration missing a
+      whole branch would leave every assertion green (the prose and the script
+      shared one transcription of the pass identity).  Per node, over the SAME
+      752 (a, m, j) probes A6 walks:
+        (i)   SUM IDENTITY: sum over enumerated children of
+              a' Phi0^{m'} Phi'^{j'} equals X = a Phi0^m Phi'^j EXACTLY, where
+              X is built by direct multiplication from Phi0 and Phi' (not from
+              the pass identity) -- so a missing or spurious branch fails here;
+        (ii)  SHAPE: every child has deg a' < d0 and m' >= 0, i.e. is a
+              legitimate instance of the lemma's X-shape (a legal IH target);
+        (iii) DIGIT-WISE dev-linearity: the slot-wise sum of the children's
+              double developments IS X's double development -- the digits A6
+              walks are exactly the digits the children generate, which is the
+              note's (C)(i) additivity step, machine-checked at every probe;
+        (iv)  BRANCHING: at most 2 e0 + 3 children per node (= 1 key + 4 b0
+              digits + 2(e0-1) mid digits), with the observed maximum per e0
+              reported (it is attained; this is the corrected count of the
+              note's (C)(ii), passPE2 G1).
+      HONEST LIMIT: A7 is instance-level.  It certifies the enumeration is
+      exhaustive and non-spurious AT the 752 battery nodes; the forall is
+      carried by the algebra of the note's (A) (Phi0^{e0} = Phi' - sum_{k<e0}
+      b_k Phi0^k plus deg(a*b) <= 2 d0 - 2, which forbids a redigit cascade).
+      A7 does not check the genre LABELS, only the summands.
 
 Ring genre: only O = Z_p is instantiated.  The child-type combinatorics depends
 on the instance ONLY through degrees and w0-values (the pass identity and the
@@ -338,23 +365,59 @@ def lex_delta(m, da, m2, da2):
 
 # ------------------------------------------------------------ LEDGER (A6)
 
+def bigX(inst, a, m, j):
+    """The object of the lemma, built by DIRECT multiplication: X = a Phi0^m Phi'^j.
+    Shared by A6 (ledger_check) and A7 (reconcile_children) so that the two
+    assertions provably speak about the same polynomial."""
+    return pmul(a, pmul(ppow(inst['Phi0'], m), ppow(inst['Phip'], j)))
+
+
+def double_dev_digits(inst, F):
+    """THE DIGITS A6 WALKS: dev F by Phi', then each Phi'-digit by Phi0.
+    Returns {(j, i): digit} over the NONZERO digits only."""
+    Phi0, Phip = inst['Phi0'], inst['Phip']
+    D = {}
+    for jj, A in enumerate(dev(F, Phip)):
+        for ii, aji in enumerate(dev(A, Phi0)):
+            if ptrim(aji):
+                D[(jj, ii)] = ptrim(aji)
+    return D
+
+
 def ledger_check(inst, a, m, j):
     """Honest double development of X = a Phi0^m Phi'^j: dev by Phi', then each
     Phi'-digit by Phi0.  Returns (ok, worst_slack, ndigits)."""
-    p, Phi0, Phip = inst['p'], inst['Phi0'], inst['Phip']
-    X = pmul(a, pmul(ppow(Phi0, m), ppow(Phip, j)))
+    p = inst['p']
     om = omega(inst, w0(a, p), m, j)
     worst, n = None, 0
-    for jj, A in enumerate(dev(X, Phip)):
-        for ii, aji in enumerate(dev(A, Phi0)):
-            if not ptrim(aji):
-                continue
-            n += 1
-            wt = inst['e1'] * (inst['e0'] * w0(aji, p) + ii * inst['h0']) \
-                 + jj * inst['gamma2']
-            slack = wt - om
-            worst = slack if worst is None else min(worst, slack)
+    for (jj, ii), aji in double_dev_digits(inst, bigX(inst, a, m, j)).items():
+        n += 1
+        wt = inst['e1'] * (inst['e0'] * w0(aji, p) + ii * inst['h0']) \
+             + jj * inst['gamma2']
+        slack = wt - om
+        worst = slack if worst is None else min(worst, slack)
     return (worst is None or worst >= 0), worst, n
+
+
+# ------------------------------------------------ A7 (r2): CHILDREN == X
+def reconcile_children(inst, a, m, j):
+    """A7, added at repair round r2 to cure passPE2's G3 (see the module
+    docstring).  Ties children() to the SAME polynomial A6 develops.
+    Returns (ok_sum, n_shape_bad, ok_digits, nchildren)."""
+    d0 = inst['d0']
+    X = bigX(inst, a, m, j)
+    chs = children(inst, a, m, j)
+    S, bad_shape, agg = [], 0, {}
+    for ch in chs:
+        C = bigX(inst, ch['coef'], ch['m'], ch['j'])
+        S = padd(S, C)
+        if pdeg(ch['coef']) >= d0 or ch['m'] < 0:
+            bad_shape += 1
+        for slot, dg in double_dev_digits(inst, C).items():
+            agg[slot] = padd(agg.get(slot, []), dg)
+    ok_sum = not ptrim(psub(S, X))
+    agg = {s: v for s, v in agg.items() if ptrim(v)}
+    return ok_sum, bad_shape, agg == double_dev_digits(inst, X), len(chs)
 
 # ------------------------------------------------------------------ the table
 
@@ -376,6 +439,8 @@ def probe_coefs(inst):
 def run(table_path):
     rows, fails, genre_stat, ledger_stat = [], [], {}, []
     nochild_m_eq = []           # every m' = m child, recorded
+    a7 = dict(nodes=0, sum_bad=0, shape_bad=0, dig_bad=0, nchildren=0,
+              maxch={}, bound_bad=0)          # A7 (r2)
     insts = instances()
     for inst in insts:
         e0 = inst['e0']
@@ -388,6 +453,28 @@ def run(table_path):
                     if not ok:
                         fails.append(f"A6 LEDGER violated: {inst['name']} "
                                      f"a={fmt(a)} m={m} j={j} slack={slack}")
+                    # --- A7 (r2): the children RECONSTRUCT the same X ------
+                    ok_s, nbad, ok_d, nch = reconcile_children(inst, a, m, j)
+                    a7['nodes'] += 1
+                    a7['nchildren'] += nch
+                    a7['maxch'][e0] = max(a7['maxch'].get(e0, 0), nch)
+                    if not ok_s:
+                        a7['sum_bad'] += 1
+                        fails.append(f"A7(i) children do NOT sum to X: "
+                                     f"{inst['name']} a={fmt(a)} m={m} j={j}")
+                    if nbad:
+                        a7['shape_bad'] += nbad
+                        fails.append(f"A7(ii) child out of shape (deg a' >= d0 "
+                                     f"or m' < 0): {inst['name']} a={fmt(a)} "
+                                     f"m={m} j={j} ({nbad} children)")
+                    if not ok_d:
+                        a7['dig_bad'] += 1
+                        fails.append(f"A7(iii) digit-wise dev-linearity FAILS: "
+                                     f"{inst['name']} a={fmt(a)} m={m} j={j}")
+                    if nch > 2 * e0 + 3:
+                        a7['bound_bad'] += 1
+                        fails.append(f"A7(iv) more than 2e0+3 children: "
+                                     f"{inst['name']} m={m} j={j} nch={nch}")
                     if j:                     # child table is j-independent
                         continue
                     om = omega(inst, w0(a, inst['p']), m, j)
@@ -437,7 +524,7 @@ def run(table_path):
                             fails.append(f"A5 gain-0 genre other than "
                                          f"b0-main-r: {ch['genre']} "
                                          f"({inst['name']})")
-    return insts, rows, genre_stat, ledger_stat, nochild_m_eq, fails
+    return insts, rows, genre_stat, ledger_stat, nochild_m_eq, fails, a7
 
 # ------------------------------------------- the counter-instance descent tree
 
@@ -470,12 +557,14 @@ def main():
     table_path = 'liftcorner_tailstab_children_table.txt'
     if '--table' in sys.argv:
         table_path = sys.argv[sys.argv.index('--table') + 1]
-    insts, rows, genre_stat, ledger_stat, m_eq, fails = run(table_path)
+    insts, rows, genre_stat, ledger_stat, m_eq, fails, a7 = run(table_path)
     L = []
     W = L.append
     W("LIFT-CORNER (TAIL-STAB) CHILD-TYPE TABLE — examples-first artifact")
     W("generator: verification/openmath/liftcorner_tailstab_children.py")
     W("target lemma: LIFTCORNER_2026-08-08.md S4.1 (TAIL-STAB), repair round r1")
+    W("assertions A1-A6 as sealed at r1; A7 (the children reconstruct X) ADDED "
+      "at repair round r2 [passPE2 G3] — data sections 1-6 unchanged")
     W("")
     W("=== 1. INSTANCE ROSTER (towers) ===")
     W(f"{'inst':5} {'p':>2} {'d0':>3} {'e0':>3} {'h0':>3} {'e1':>3} {'h1':>3} "
@@ -553,6 +642,21 @@ def main():
       f"{'PASS' if not any(x.startswith('A5') for x in fails) else 'FAIL'}")
     W("A6 LEDGER on the honest double development: "
       f"{'PASS' if not any(x.startswith('A6') for x in fails) else 'FAIL'}")
+    W("A7 [r2] the enumerated children RECONSTRUCT the object A6 walks: "
+      f"{'PASS' if not any(x.startswith('A7') for x in fails) else 'FAIL'}")
+    W(f"   nodes reconciled: {a7['nodes']}   children enumerated: "
+      f"{a7['nchildren']}")
+    W(f"   (i)   sum(children a' Phi0^m' Phi'^j') == X exactly: mismatches "
+      f"{a7['sum_bad']}")
+    W(f"   (ii)  every child in shape (deg a' < d0, m' >= 0): violations "
+      f"{a7['shape_bad']}")
+    W(f"   (iii) digit-wise dev-linearity (children's digits == X's digits): "
+      f"mismatches {a7['dig_bad']}")
+    W(f"   (iv)  branching <= 2e0+3: violations {a7['bound_bad']}; observed max "
+      f"children per node by e0: "
+      f"{ {k: a7['maxch'][k] for k in sorted(a7['maxch'])} }"
+      f"  (2e0+3 = "
+      f"{ {k: 2*k+3 for k in sorted(a7['maxch'])} })")
     W("")
     W(f"ANY CHILD DROPPING NEITHER COORDINATE: "
       f"{'YES' if any('NO-DESCENT' in r['delta'] for r in rows) else 'NO'}")
