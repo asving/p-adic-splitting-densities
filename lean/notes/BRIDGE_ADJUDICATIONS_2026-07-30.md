@@ -10834,3 +10834,16 @@ dispatched: restate (COORD) on B_n and RE-DERIVE §3.1/OB-4/W-7-bijectivity/
 JC-F1-dimensions/(MULT) on it (an honest failed re-derivation drops the
 clause to boxed — reported, not hidden); re-quantify PSIKER; the 8 gaps;
 supplementary mini-sealed checks for the repaired statements.**
+
+---
+
+## GUIDANCE (Asvin, 2026-08-05, mid-arc, verbatim): "only try hard to prove complete theorems, use examples and intermediate theorems to build intuition"
+
+Effort-allocation corollary of examples-first, in force: full proving
+effort and the 2-clean hostile bar are reserved for COMPLETE theorems the
+main proof consumes (junction theorems, discharges, accepted laws).
+Intermediate artifacts (walkers, censuses, side lemmas) get
+disclosure-grade honesty, not their own multi-round arcs. Current arcs
+(LIFT / JB / JC) all target complete theorems — aligned. J-C r1
+(structural: (COORD) restated on B_n, five consumers re-derived or
+honestly boxed) dispatched under this rule (wje7echcs).
