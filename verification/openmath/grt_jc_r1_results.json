@@ -1,0 +1,1981 @@
+{
+ "families": {
+  "counts": {
+   "EXT-GATE": 1,
+   "R1-BND": 29,
+   "R1-COB": 2607,
+   "R1-DMULT": 2784,
+   "R1-INJ": 585,
+   "R1-PER": 841,
+   "R1-PSIK-HI": 1182,
+   "R1-PSIK-LO": 591,
+   "R1-SURJ": 841,
+   "R1-UNIT": 869,
+   "T1": 29,
+   "T2": 29,
+   "T3": 1392,
+   "T4": 29,
+   "T5": 406,
+   "TOOTH-ROW": 145
+  },
+  "violations": {}
+ },
+ "rows": {
+  "C2A": {
+   "E": 4,
+   "G0": 4,
+   "N": 12,
+   "c_pi": [
+    "zb^2"
+   ],
+   "cob": {
+    "oow": 0,
+    "tested": 16
+   },
+   "d0": 2,
+   "e_m": 2,
+   "g_m": 1,
+   "gam": 5,
+   "grid": 16,
+   "id": "C2A",
+   "m": 1,
+   "maxslot": [
+    0,
+    0,
+    1,
+    1
+   ],
+   "nK": 4,
+   "nsamples": 7,
+   "p": 2,
+   "psik_hi": {
+    "lines": [
+     12,
+     17,
+     10,
+     15
+    ],
+    "nu": 4
+   },
+   "psik_lo": {
+    "certified_dead": 0,
+    "lines": 4
+   },
+   "ring": "Zp",
+   "surj": {
+    "0-mixed": 0,
+    "0-ones": 0,
+    "1-mixed": 3,
+    "1-ones": 3,
+    "2-mixed": 5,
+    "2-ones": 5
+   },
+   "teeth": {
+    "T1": 1,
+    "T2": 1,
+    "T3": 48,
+    "T4": 1,
+    "T5": 14
+   },
+   "unit_census": {
+    "den0": 0,
+    "oow": 0,
+    "unit": 16,
+    "zero": 0
+   },
+   "wPhiTop": 10
+  },
+  "C2B": {
+   "E": 4,
+   "G0": 8,
+   "N": 20,
+   "c_pi": [
+    "zb^2"
+   ],
+   "cob": {
+    "oow": 0,
+    "tested": 16
+   },
+   "d0": 1,
+   "e_m": 2,
+   "g_m": 1,
+   "gam": 9,
+   "grid": 16,
+   "id": "C2B",
+   "m": 1,
+   "maxslot": [
+    0,
+    0,
+    0,
+    1
+   ],
+   "nK": 4,
+   "nsamples": 7,
+   "p": 2,
+   "psik_hi": {
+    "lines": [
+     20,
+     29,
+     18,
+     27
+    ],
+    "nu": 4
+   },
+   "psik_lo": {
+    "certified_dead": 0,
+    "lines": 4
+   },
+   "ring": "Zp",
+   "surj": {
+    "0-mixed": 0,
+    "0-ones": 0,
+    "1-mixed": 5,
+    "1-ones": 5,
+    "2-mixed": 9,
+    "2-ones": 9
+   },
+   "teeth": {
+    "T1": 1,
+    "T2": 1,
+    "T3": 48,
+    "T4": 1,
+    "T5": 14
+   },
+   "unit_census": {
+    "den0": 0,
+    "oow": 0,
+    "unit": 16,
+    "zero": 0
+   },
+   "wPhiTop": 18
+  },
+  "C2C": {
+   "E": 6,
+   "G0": 6,
+   "N": 18,
+   "c_pi": [
+    "zb^1"
+   ],
+   "cob": {
+    "oow": 0,
+    "tested": 36
+   },
+   "d0": 1,
+   "e_m": 2,
+   "g_m": 1,
+   "gam": 7,
+   "grid": 36,
+   "id": "C2C",
+   "m": 1,
+   "maxslot": [
+    0,
+    0,
+    1,
+    1
+   ],
+   "nK": 3,
+   "nsamples": 7,
+   "p": 3,
+   "psik_hi": {
+    "lines": [
+     18,
+     25,
+     14,
+     21,
+     16,
+     23
+    ],
+    "nu": 6
+   },
+   "psik_lo": {
+    "certified_dead": 0,
+    "lines": 6
+   },
+   "ring": "Zp",
+   "surj": {
+    "0-mixed": 0,
+    "0-ones": 0,
+    "1-mixed": 3,
+    "1-ones": 3,
+    "2-mixed": 5,
+    "2-ones": 5
+   },
+   "teeth": {
+    "T1": 1,
+    "T2": 1,
+    "T3": 48,
+    "T4": 1,
+    "T5": 14
+   },
+   "unit_census": {
+    "den0": 0,
+    "oow": 0,
+    "unit": 36,
+    "zero": 0
+   },
+   "wPhiTop": 14
+  },
+  "C2D": {
+   "E": 6,
+   "G0": 18,
+   "N": 24,
+   "c_pi": [
+    "zb^1"
+   ],
+   "cob": {
+    "oow": 0,
+    "tested": 36
+   },
+   "d0": 2,
+   "e_m": 3,
+   "g_m": 1,
+   "gam": 8,
+   "grid": 36,
+   "id": "C2D",
+   "m": 1,
+   "maxslot": [
+    0,
+    1,
+    1,
+    1
+   ],
+   "nK": 9,
+   "nsamples": 7,
+   "p": 3,
+   "psik_hi": {
+    "lines": [
+     24,
+     43,
+     32,
+     27,
+     40,
+     35
+    ],
+    "nu": 6
+   },
+   "psik_lo": {
+    "certified_dead": 0,
+    "lines": 6
+   },
+   "ring": "Zp",
+   "surj": {
+    "0-mixed": 0,
+    "0-ones": 0,
+    "1-mixed": 2,
+    "1-ones": 2,
+    "2-mixed": 6,
+    "2-ones": 6
+   },
+   "teeth": {
+    "T1": 1,
+    "T2": 1,
+    "T3": 48,
+    "T4": 1,
+    "T5": 14
+   },
+   "unit_census": {
+    "den0": 0,
+    "oow": 0,
+    "unit": 36,
+    "zero": 0
+   },
+   "wPhiTop": 24
+  },
+  "C2E": {
+   "E": 4,
+   "G0": 4,
+   "N": 12,
+   "c_pi": [
+    "zb^2"
+   ],
+   "cob": {
+    "oow": 0,
+    "tested": 16
+   },
+   "d0": 2,
+   "e_m": 2,
+   "g_m": 1,
+   "gam": 5,
+   "grid": 16,
+   "id": "C2E",
+   "m": 1,
+   "maxslot": [
+    0,
+    0,
+    1,
+    1
+   ],
+   "nK": 4,
+   "nsamples": 7,
+   "p": 2,
+   "psik_hi": {
+    "lines": [
+     12,
+     17,
+     10,
+     15
+    ],
+    "nu": 4
+   },
+   "psik_lo": {
+    "certified_dead": 0,
+    "lines": 4
+   },
+   "ring": "Fpt",
+   "surj": {
+    "0-mixed": 0,
+    "0-ones": 0,
+    "1-mixed": 3,
+    "1-ones": 3,
+    "2-mixed": 5,
+    "2-ones": 5
+   },
+   "teeth": {
+    "T1": 1,
+    "T2": 1,
+    "T3": 48,
+    "T4": 1,
+    "T5": 14
+   },
+   "unit_census": {
+    "den0": 0,
+    "oow": 0,
+    "unit": 16,
+    "zero": 0
+   },
+   "wPhiTop": 10
+  },
+  "C2F": {
+   "E": 10,
+   "G0": 10,
+   "N": 30,
+   "c_pi": [
+    "zb^1"
+   ],
+   "cob": {
+    "oow": 0,
+    "tested": 24
+   },
+   "d0": 1,
+   "e_m": 2,
+   "g_m": 1,
+   "gam": 11,
+   "grid": 24,
+   "id": "C2F",
+   "m": 1,
+   "maxslot": [
+    0,
+    0,
+    1,
+    1
+   ],
+   "nK": 5,
+   "nsamples": 7,
+   "p": 5,
+   "psik_hi": {
+    "lines": [
+     30,
+     41,
+     22,
+     33,
+     24,
+     35,
+     26,
+     37
+    ],
+    "nu": 8
+   },
+   "psik_lo": {
+    "certified_dead": 0,
+    "lines": 8
+   },
+   "ring": "Zp",
+   "surj": {
+    "0-mixed": 0,
+    "0-ones": 0,
+    "1-mixed": 3,
+    "1-ones": 3,
+    "2-mixed": 5,
+    "2-ones": 5
+   },
+   "teeth": {
+    "T1": 1,
+    "T2": 1,
+    "T3": 48,
+    "T4": 1,
+    "T5": 14
+   },
+   "unit_census": {
+    "den0": 0,
+    "oow": 0,
+    "unit": 24,
+    "zero": 0
+   },
+   "wPhiTop": 22
+  },
+  "C2G": {
+   "E": 6,
+   "G0": 12,
+   "N": 24,
+   "c_pi": [
+    "zb^3"
+   ],
+   "cob": {
+    "oow": 0,
+    "tested": 36
+   },
+   "d0": 2,
+   "e_m": 3,
+   "g_m": 1,
+   "gam": 7,
+   "grid": 36,
+   "id": "C2G",
+   "m": 1,
+   "maxslot": [
+    0,
+    0,
+    1,
+    1
+   ],
+   "nK": 25,
+   "nsamples": 7,
+   "p": 5,
+   "psik_hi": {
+    "lines": [
+     24,
+     31,
+     38,
+     21,
+     28,
+     35
+    ],
+    "nu": 6
+   },
+   "psik_lo": {
+    "certified_dead": 0,
+    "lines": 6
+   },
+   "ring": "Zp",
+   "surj": {
+    "0-mixed": 0,
+    "0-ones": 0,
+    "1-mixed": 3,
+    "1-ones": 3,
+    "2-mixed": 6,
+    "2-ones": 6
+   },
+   "teeth": {
+    "T1": 1,
+    "T2": 1,
+    "T3": 48,
+    "T4": 1,
+    "T5": 14
+   },
+   "unit_census": {
+    "den0": 0,
+    "oow": 0,
+    "unit": 36,
+    "zero": 0
+   },
+   "wPhiTop": 21
+  },
+  "C2H": {
+   "E": 4,
+   "G0": 4,
+   "N": 12,
+   "c_pi": [
+    "zb^6"
+   ],
+   "cob": {
+    "oow": 0,
+    "tested": 16
+   },
+   "d0": 3,
+   "e_m": 2,
+   "g_m": 1,
+   "gam": 5,
+   "grid": 16,
+   "id": "C2H",
+   "m": 1,
+   "maxslot": [
+    0,
+    0,
+    1,
+    1
+   ],
+   "nK": 8,
+   "nsamples": 7,
+   "p": 2,
+   "psik_hi": {
+    "lines": [
+     12,
+     17,
+     10,
+     15
+    ],
+    "nu": 4
+   },
+   "psik_lo": {
+    "certified_dead": 0,
+    "lines": 4
+   },
+   "ring": "Zp",
+   "surj": {
+    "0-mixed": 0,
+    "0-ones": 0,
+    "1-mixed": 3,
+    "1-ones": 3,
+    "2-mixed": 5,
+    "2-ones": 5
+   },
+   "teeth": {
+    "T1": 1,
+    "T2": 1,
+    "T3": 48,
+    "T4": 1,
+    "T5": 14
+   },
+   "unit_census": {
+    "den0": 0,
+    "oow": 0,
+    "unit": 16,
+    "zero": 0
+   },
+   "wPhiTop": 10
+  },
+  "C2I": {
+   "E": 4,
+   "G0": 4,
+   "N": 20,
+   "c_pi": [
+    "1"
+   ],
+   "cob": {
+    "oow": 0,
+    "tested": 16
+   },
+   "d0": 1,
+   "e_m": 2,
+   "g_m": 2,
+   "gam": 5,
+   "grid": 16,
+   "id": "C2I",
+   "m": 1,
+   "maxslot": [
+    0,
+    0,
+    1,
+    1
+   ],
+   "nK": 4,
+   "nsamples": 7,
+   "p": 2,
+   "psik_hi": {
+    "lines": [
+     20,
+     25,
+     22,
+     27
+    ],
+    "nu": 4
+   },
+   "psik_lo": {
+    "certified_dead": 0,
+    "lines": 4
+   },
+   "ring": "Zp",
+   "surj": {
+    "0-mixed": 0,
+    "0-ones": 0,
+    "1-mixed": 3,
+    "1-ones": 3,
+    "2-mixed": 5,
+    "2-ones": 5
+   },
+   "teeth": {
+    "T1": 1,
+    "T2": 1,
+    "T3": 48,
+    "T4": 1,
+    "T5": 14
+   },
+   "unit_census": {
+    "den0": 0,
+    "oow": 0,
+    "unit": 16,
+    "zero": 0
+   },
+   "wPhiTop": 20
+  },
+  "C2J": {
+   "E": 3,
+   "G0": 6,
+   "N": 12,
+   "c_pi": [
+    "1"
+   ],
+   "cob": {
+    "oow": 0,
+    "tested": 9
+   },
+   "d0": 1,
+   "e_m": 3,
+   "g_m": 1,
+   "gam": 4,
+   "grid": 9,
+   "id": "C2J",
+   "m": 1,
+   "maxslot": [
+    0,
+    0,
+    1,
+    1
+   ],
+   "nK": 3,
+   "nsamples": 7,
+   "p": 3,
+   "psik_hi": {
+    "lines": [
+     12,
+     16,
+     20
+    ],
+    "nu": 3
+   },
+   "psik_lo": {
+    "certified_dead": 0,
+    "lines": 3
+   },
+   "ring": "Zp",
+   "surj": {
+    "0-mixed": 0,
+    "0-ones": 0,
+    "1-mixed": 3,
+    "1-ones": 3,
+    "2-mixed": 7,
+    "2-ones": 7
+   },
+   "teeth": {
+    "T1": 1,
+    "T2": 1,
+    "T3": 48,
+    "T4": 1,
+    "T5": 14
+   },
+   "unit_census": {
+    "den0": 0,
+    "oow": 0,
+    "unit": 9,
+    "zero": 0
+   },
+   "wPhiTop": 12
+  },
+  "C3A": {
+   "E": 8,
+   "G0": 32,
+   "N": 48,
+   "c_pi": [
+    "1"
+   ],
+   "cob": {
+    "oow": 0,
+    "tested": 64
+   },
+   "d0": 2,
+   "e_m": 2,
+   "g_m": 1,
+   "gam": 21,
+   "grid": 64,
+   "id": "C3A",
+   "m": 2,
+   "maxslot": [
+    0,
+    0,
+    1,
+    1
+   ],
+   "nK": 4,
+   "nsamples": 7,
+   "p": 2,
+   "psik_hi": {
+    "lines": [
+     56,
+     73,
+     42,
+     67,
+     52,
+     77,
+     46,
+     63
+    ],
+    "nu": 8
+   },
+   "psik_lo": {
+    "certified_dead": 0,
+    "lines": 8
+   },
+   "ring": "Zp",
+   "surj": {
+    "0-mixed": 0,
+    "0-ones": 0,
+    "1-mixed": 4,
+    "1-ones": 4,
+    "2-mixed": 9,
+    "2-ones": 9
+   },
+   "teeth": {
+    "T1": 1,
+    "T2": 1,
+    "T3": 48,
+    "T4": 1,
+    "T5": 14
+   },
+   "unit_census": {
+    "den0": 0,
+    "oow": 0,
+    "unit": 64,
+    "zero": 0
+   },
+   "wPhiTop": 42
+  },
+  "C3B": {
+   "E": 12,
+   "G0": 48,
+   "N": 60,
+   "c_pi": [
+    "1"
+   ],
+   "cob": {
+    "oow": 0,
+    "tested": 24
+   },
+   "d0": 1,
+   "e_m": 2,
+   "g_m": 1,
+   "gam": 29,
+   "grid": 24,
+   "id": "C3B",
+   "m": 2,
+   "maxslot": [
+    0,
+    1,
+    1,
+    1
+   ],
+   "nK": 3,
+   "nsamples": 7,
+   "p": 3,
+   "psik_hi": {
+    "lines": [
+     72,
+     109,
+     62,
+     87,
+     76,
+     101,
+     66,
+     91
+    ],
+    "nu": 8
+   },
+   "psik_lo": {
+    "certified_dead": 0,
+    "lines": 8
+   },
+   "ring": "Zp",
+   "surj": {
+    "0-mixed": 0,
+    "0-ones": 0,
+    "1-mixed": 4,
+    "1-ones": 4,
+    "2-mixed": 8,
+    "2-ones": 8
+   },
+   "teeth": {
+    "T1": 1,
+    "T2": 1,
+    "T3": 48,
+    "T4": 1,
+    "T5": 14
+   },
+   "unit_census": {
+    "den0": 0,
+    "oow": 0,
+    "unit": 24,
+    "zero": 0
+   },
+   "wPhiTop": 58
+  },
+  "C3C": {
+   "E": 12,
+   "G0": 84,
+   "N": 108,
+   "c_pi": [
+    "zb^1"
+   ],
+   "cob": {
+    "oow": 0,
+    "tested": 24
+   },
+   "d0": 1,
+   "e_m": 2,
+   "g_m": 1,
+   "gam": 49,
+   "grid": 24,
+   "id": "C3C",
+   "m": 2,
+   "maxslot": [
+    0,
+    0,
+    1,
+    1
+   ],
+   "nK": 3,
+   "nsamples": 7,
+   "p": 3,
+   "psik_hi": {
+    "lines": [
+     120,
+     169,
+     98,
+     147,
+     136,
+     185,
+     114,
+     163
+    ],
+    "nu": 8
+   },
+   "psik_lo": {
+    "certified_dead": 0,
+    "lines": 8
+   },
+   "ring": "Zp",
+   "surj": {
+    "0-mixed": 0,
+    "0-ones": 0,
+    "1-mixed": 6,
+    "1-ones": 6,
+    "2-mixed": 14,
+    "2-ones": 14
+   },
+   "teeth": {
+    "T1": 1,
+    "T2": 1,
+    "T3": 48,
+    "T4": 1,
+    "T5": 14
+   },
+   "unit_census": {
+    "den0": 0,
+    "oow": 0,
+    "unit": 24,
+    "zero": 0
+   },
+   "wPhiTop": 98
+  },
+  "C3D": {
+   "E": 8,
+   "G0": 56,
+   "N": 80,
+   "c_pi": [
+    "1"
+   ],
+   "cob": {
+    "oow": 0,
+    "tested": 64
+   },
+   "d0": 1,
+   "e_m": 2,
+   "g_m": 1,
+   "gam": 37,
+   "grid": 64,
+   "id": "C3D",
+   "m": 2,
+   "maxslot": [
+    0,
+    0,
+    0,
+    1
+   ],
+   "nK": 4,
+   "nsamples": 7,
+   "p": 2,
+   "psik_hi": {
+    "lines": [
+     96,
+     129,
+     74,
+     115,
+     92,
+     133,
+     78,
+     111
+    ],
+    "nu": 8
+   },
+   "psik_lo": {
+    "certified_dead": 0,
+    "lines": 8
+   },
+   "ring": "Fpt",
+   "surj": {
+    "0-mixed": 0,
+    "0-ones": 0,
+    "1-mixed": 7,
+    "1-ones": 7,
+    "2-mixed": 16,
+    "2-ones": 16
+   },
+   "teeth": {
+    "T1": 1,
+    "T2": 1,
+    "T3": 48,
+    "T4": 1,
+    "T5": 14
+   },
+   "unit_census": {
+    "den0": 0,
+    "oow": 0,
+    "unit": 64,
+    "zero": 0
+   },
+   "wPhiTop": 74
+  },
+  "C3E": {
+   "E": 4,
+   "G0": 12,
+   "N": 28,
+   "c_pi": [
+    "zb^2"
+   ],
+   "cob": {
+    "oow": 0,
+    "tested": 16
+   },
+   "d0": 1,
+   "e_m": 2,
+   "g_m": 1,
+   "gam": 13,
+   "grid": 16,
+   "id": "C3E",
+   "m": 2,
+   "maxslot": [
+    0,
+    0,
+    0,
+    0
+   ],
+   "nK": 4,
+   "nsamples": 7,
+   "p": 2,
+   "psik_hi": {
+    "lines": [
+     28,
+     41,
+     26,
+     39
+    ],
+    "nu": 4
+   },
+   "psik_lo": {
+    "certified_dead": 0,
+    "lines": 4
+   },
+   "ring": "Zp",
+   "surj": {
+    "0-mixed": 0,
+    "0-ones": 0,
+    "1-mixed": 6,
+    "1-ones": 6,
+    "2-mixed": 13,
+    "2-ones": 13
+   },
+   "teeth": {
+    "T1": 1,
+    "T2": 1,
+    "T3": 48,
+    "T4": 1,
+    "T5": 14
+   },
+   "unit_census": {
+    "den0": 0,
+    "oow": 0,
+    "unit": 16,
+    "zero": 0
+   },
+   "wPhiTop": 26
+  },
+  "C3F": {
+   "E": 12,
+   "G0": 72,
+   "N": 96,
+   "c_pi": [
+    "zb^1"
+   ],
+   "cob": {
+    "oow": 0,
+    "tested": 24
+   },
+   "d0": 2,
+   "e_m": 3,
+   "g_m": 1,
+   "gam": 31,
+   "grid": 24,
+   "id": "C3F",
+   "m": 2,
+   "maxslot": [
+    0,
+    0,
+    1,
+    1
+   ],
+   "nK": 9,
+   "nsamples": 7,
+   "p": 3,
+   "psik_hi": {
+    "lines": [
+     108,
+     145,
+     170,
+     99,
+     124,
+     161,
+     114,
+     139
+    ],
+    "nu": 8
+   },
+   "psik_lo": {
+    "certified_dead": 0,
+    "lines": 8
+   },
+   "ring": "Zp",
+   "surj": {
+    "0-mixed": 0,
+    "0-ones": 0,
+    "1-mixed": 5,
+    "1-ones": 5,
+    "2-mixed": 12,
+    "2-ones": 12
+   },
+   "teeth": {
+    "T1": 1,
+    "T2": 1,
+    "T3": 48,
+    "T4": 1,
+    "T5": 14
+   },
+   "unit_census": {
+    "den0": 0,
+    "oow": 0,
+    "unit": 24,
+    "zero": 0
+   },
+   "wPhiTop": 93
+  },
+  "C3G": {
+   "E": 20,
+   "G0": 200,
+   "N": 240,
+   "c_pi": [
+    "zb^1"
+   ],
+   "cob": {
+    "oow": 0,
+    "tested": 24
+   },
+   "d0": 1,
+   "e_m": 2,
+   "g_m": 1,
+   "gam": 111,
+   "grid": 24,
+   "id": "C3G",
+   "m": 2,
+   "maxslot": [
+    0,
+    0,
+    1,
+    1
+   ],
+   "nK": 5,
+   "nsamples": 7,
+   "p": 5,
+   "psik_hi": {
+    "lines": [
+     320,
+     421,
+     222,
+     343,
+     244,
+     365,
+     266,
+     387
+    ],
+    "nu": 8
+   },
+   "psik_lo": {
+    "certified_dead": 0,
+    "lines": 8
+   },
+   "ring": "Zp",
+   "surj": {
+    "0-mixed": 0,
+    "0-ones": 0,
+    "1-mixed": 7,
+    "1-ones": 7,
+    "2-mixed": 18,
+    "2-ones": 18
+   },
+   "teeth": {
+    "T1": 1,
+    "T2": 1,
+    "T3": 48,
+    "T4": 1,
+    "T5": 14
+   },
+   "unit_census": {
+    "den0": 0,
+    "oow": 0,
+    "unit": 24,
+    "zero": 0
+   },
+   "wPhiTop": 222
+  },
+  "C3H": {
+   "E": 8,
+   "G0": 32,
+   "N": 48,
+   "c_pi": [
+    "zb^4"
+   ],
+   "cob": {
+    "oow": 0,
+    "tested": 64
+   },
+   "d0": 3,
+   "e_m": 2,
+   "g_m": 1,
+   "gam": 21,
+   "grid": 64,
+   "id": "C3H",
+   "m": 2,
+   "maxslot": [
+    0,
+    0,
+    1,
+    1
+   ],
+   "nK": 8,
+   "nsamples": 7,
+   "p": 2,
+   "psik_hi": {
+    "lines": [
+     56,
+     73,
+     42,
+     67,
+     52,
+     77,
+     46,
+     63
+    ],
+    "nu": 8
+   },
+   "psik_lo": {
+    "certified_dead": 0,
+    "lines": 8
+   },
+   "ring": "Zp",
+   "surj": {
+    "0-mixed": 0,
+    "0-ones": 0,
+    "1-mixed": 4,
+    "1-ones": 4,
+    "2-mixed": 9,
+    "2-ones": 9
+   },
+   "teeth": {
+    "T1": 1,
+    "T2": 1,
+    "T3": 48,
+    "T4": 1,
+    "T5": 14
+   },
+   "unit_census": {
+    "den0": 0,
+    "oow": 0,
+    "unit": 64,
+    "zero": 0
+   },
+   "wPhiTop": 42
+  },
+  "C3I": {
+   "E": 8,
+   "G0": 48,
+   "N": 88,
+   "c_pi": [
+    "zb^1"
+   ],
+   "cob": {
+    "oow": 0,
+    "tested": 64
+   },
+   "d0": 1,
+   "e_m": 2,
+   "g_m": 1,
+   "gam": 41,
+   "grid": 64,
+   "id": "C3I",
+   "m": 2,
+   "maxslot": [
+    0,
+    0,
+    0,
+    0
+   ],
+   "nK": 4,
+   "nsamples": 7,
+   "p": 2,
+   "psik_hi": {
+    "lines": [
+     96,
+     137,
+     82,
+     123,
+     92,
+     133,
+     86,
+     127
+    ],
+    "nu": 8
+   },
+   "psik_lo": {
+    "certified_dead": 0,
+    "lines": 8
+   },
+   "ring": "Zp",
+   "surj": {
+    "0-mixed": 0,
+    "0-ones": 0,
+    "1-mixed": 10,
+    "1-ones": 10,
+    "2-mixed": 20,
+    "2-ones": 20
+   },
+   "teeth": {
+    "T1": 1,
+    "T2": 1,
+    "T3": 48,
+    "T4": 1,
+    "T5": 14
+   },
+   "unit_census": {
+    "den0": 0,
+    "oow": 0,
+    "unit": 64,
+    "zero": 0
+   },
+   "wPhiTop": 82
+  },
+  "C3J": {
+   "E": 12,
+   "G0": 48,
+   "N": 60,
+   "c_pi": [
+    "1"
+   ],
+   "cob": {
+    "oow": 0,
+    "tested": 24
+   },
+   "d0": 1,
+   "e_m": 2,
+   "g_m": 1,
+   "gam": 29,
+   "grid": 24,
+   "id": "C3J",
+   "m": 2,
+   "maxslot": [
+    0,
+    1,
+    1,
+    1
+   ],
+   "nK": 3,
+   "nsamples": 7,
+   "p": 3,
+   "psik_hi": {
+    "lines": [
+     72,
+     109,
+     62,
+     87,
+     76,
+     101,
+     66,
+     91
+    ],
+    "nu": 8
+   },
+   "psik_lo": {
+    "certified_dead": 0,
+    "lines": 8
+   },
+   "ring": "Fpt",
+   "surj": {
+    "0-mixed": 0,
+    "0-ones": 0,
+    "1-mixed": 4,
+    "1-ones": 4,
+    "2-mixed": 8,
+    "2-ones": 8
+   },
+   "teeth": {
+    "T1": 1,
+    "T2": 1,
+    "T3": 48,
+    "T4": 1,
+    "T5": 14
+   },
+   "unit_census": {
+    "den0": 0,
+    "oow": 0,
+    "unit": 24,
+    "zero": 0
+   },
+   "wPhiTop": 58
+  },
+  "C4A": {
+   "E": 16,
+   "G0": 144,
+   "N": 176,
+   "c_pi": [
+    "1"
+   ],
+   "cob": {
+    "oow": 0,
+    "tested": 24
+   },
+   "d0": 1,
+   "e_m": 2,
+   "g_m": 1,
+   "gam": 85,
+   "grid": 24,
+   "id": "C4A",
+   "m": 3,
+   "maxslot": [
+    0,
+    0,
+    1,
+    1
+   ],
+   "nK": 2,
+   "nsamples": 7,
+   "p": 2,
+   "psik_hi": {
+    "lines": [
+     240,
+     305,
+     178,
+     275,
+     212,
+     325,
+     198,
+     263
+    ],
+    "nu": 8
+   },
+   "psik_lo": {
+    "certified_dead": 0,
+    "lines": 8
+   },
+   "ring": "Zp",
+   "surj": {
+    "0-mixed": 0,
+    "0-ones": 0,
+    "1-mixed": 7,
+    "1-ones": 7,
+    "2-mixed": 18,
+    "2-ones": 18
+   },
+   "teeth": {
+    "T1": 1,
+    "T2": 1,
+    "T3": 48,
+    "T4": 1,
+    "T5": 14
+   },
+   "unit_census": {
+    "den0": 0,
+    "oow": 0,
+    "unit": 24,
+    "zero": 0
+   },
+   "wPhiTop": 170
+  },
+  "C4B": {
+   "E": 16,
+   "G0": 144,
+   "N": 176,
+   "c_pi": [
+    "zb^2"
+   ],
+   "cob": {
+    "oow": 0,
+    "tested": 24
+   },
+   "d0": 2,
+   "e_m": 2,
+   "g_m": 1,
+   "gam": 85,
+   "grid": 24,
+   "id": "C4B",
+   "m": 3,
+   "maxslot": [
+    0,
+    0,
+    1,
+    1
+   ],
+   "nK": 4,
+   "nsamples": 7,
+   "p": 2,
+   "psik_hi": {
+    "lines": [
+     240,
+     305,
+     178,
+     275,
+     212,
+     325,
+     198,
+     263
+    ],
+    "nu": 8
+   },
+   "psik_lo": {
+    "certified_dead": 0,
+    "lines": 8
+   },
+   "ring": "Zp",
+   "surj": {
+    "0-mixed": 0,
+    "0-ones": 0,
+    "1-mixed": 7,
+    "1-ones": 7,
+    "2-mixed": 18,
+    "2-ones": 18
+   },
+   "teeth": {
+    "T1": 1,
+    "T2": 1,
+    "T3": 48,
+    "T4": 1,
+    "T5": 14
+   },
+   "unit_census": {
+    "den0": 0,
+    "oow": 0,
+    "unit": 24,
+    "zero": 0
+   },
+   "wPhiTop": 170
+  },
+  "C4C": {
+   "E": 24,
+   "G0": 312,
+   "N": 360,
+   "c_pi": [
+    "zb^1"
+   ],
+   "cob": {
+    "oow": 0,
+    "tested": 24
+   },
+   "d0": 1,
+   "e_m": 2,
+   "g_m": 1,
+   "gam": 173,
+   "grid": 24,
+   "id": "C4C",
+   "m": 3,
+   "maxslot": [
+    0,
+    0,
+    1,
+    1
+   ],
+   "nK": 3,
+   "nsamples": 7,
+   "p": 3,
+   "psik_hi": {
+    "lines": [
+     432,
+     673,
+     386,
+     531,
+     460,
+     605,
+     414,
+     559
+    ],
+    "nu": 8
+   },
+   "psik_lo": {
+    "certified_dead": 0,
+    "lines": 8
+   },
+   "ring": "Zp",
+   "surj": {
+    "0-mixed": 0,
+    "0-ones": 0,
+    "1-mixed": 9,
+    "1-ones": 9,
+    "2-mixed": 23,
+    "2-ones": 23
+   },
+   "teeth": {
+    "T1": 1,
+    "T2": 1,
+    "T3": 48,
+    "T4": 1,
+    "T5": 14
+   },
+   "unit_census": {
+    "den0": 0,
+    "oow": 0,
+    "unit": 24,
+    "zero": 0
+   },
+   "wPhiTop": 346
+  },
+  "C4G": {
+   "E": 16,
+   "G0": 256,
+   "N": 304,
+   "c_pi": [
+    "zb^2"
+   ],
+   "cob": {
+    "oow": 0,
+    "tested": 24
+   },
+   "d0": 1,
+   "e_m": 2,
+   "g_m": 1,
+   "gam": 149,
+   "grid": 24,
+   "id": "C4G",
+   "m": 3,
+   "maxslot": [
+    0,
+    0,
+    0,
+    1
+   ],
+   "nK": 4,
+   "nsamples": 7,
+   "p": 2,
+   "psik_hi": {
+    "lines": [
+     416,
+     529,
+     306,
+     483,
+     372,
+     565,
+     342,
+     455
+    ],
+    "nu": 8
+   },
+   "psik_lo": {
+    "certified_dead": 0,
+    "lines": 8
+   },
+   "ring": "Fpt",
+   "surj": {
+    "0-mixed": 0,
+    "0-ones": 0,
+    "1-mixed": 12,
+    "1-ones": 12,
+    "2-mixed": 31,
+    "2-ones": 31
+   },
+   "teeth": {
+    "T1": 1,
+    "T2": 1,
+    "T3": 48,
+    "T4": 1,
+    "T5": 14
+   },
+   "unit_census": {
+    "den0": 0,
+    "oow": 0,
+    "unit": 24,
+    "zero": 0
+   },
+   "wPhiTop": 298
+  },
+  "C4H": {
+   "E": 10,
+   "G0": 60,
+   "N": 90,
+   "c_pi": [
+    "zb^1"
+   ],
+   "cob": {
+    "oow": 0,
+    "tested": 24
+   },
+   "d0": 1,
+   "e_m": 1,
+   "g_m": 1,
+   "gam": 81,
+   "grid": 24,
+   "id": "C4H",
+   "m": 3,
+   "maxslot": [
+    0,
+    0,
+    0,
+    1
+   ],
+   "nK": 5,
+   "nsamples": 7,
+   "p": 5,
+   "psik_hi": {
+    "lines": [
+     150,
+     81,
+     102,
+     113,
+     134,
+     145,
+     86,
+     97
+    ],
+    "nu": 8
+   },
+   "psik_lo": {
+    "certified_dead": 0,
+    "lines": 8
+   },
+   "ring": "Zp",
+   "surj": {
+    "0-mixed": 2,
+    "0-ones": 2,
+    "1-mixed": 11,
+    "1-ones": 11,
+    "2-mixed": 19,
+    "2-ones": 19
+   },
+   "teeth": {
+    "T1": 1,
+    "T2": 1,
+    "T3": 48,
+    "T4": 1,
+    "T5": 14
+   },
+   "unit_census": {
+    "den0": 0,
+    "oow": 0,
+    "unit": 24,
+    "zero": 0
+   },
+   "wPhiTop": 81
+  },
+  "C4I": {
+   "E": 16,
+   "G0": 144,
+   "N": 352,
+   "c_pi": [
+    "1"
+   ],
+   "cob": {
+    "oow": 0,
+    "tested": 24
+   },
+   "d0": 1,
+   "e_m": 2,
+   "g_m": 2,
+   "gam": 85,
+   "grid": 24,
+   "id": "C4I",
+   "m": 3,
+   "maxslot": [
+    0,
+    0,
+    1,
+    1
+   ],
+   "nK": 4,
+   "nsamples": 7,
+   "p": 2,
+   "psik_hi": {
+    "lines": [
+     368,
+     433,
+     402,
+     467,
+     340,
+     453,
+     390,
+     487
+    ],
+    "nu": 8
+   },
+   "psik_lo": {
+    "certified_dead": 0,
+    "lines": 8
+   },
+   "ring": "Zp",
+   "surj": {
+    "0-mixed": 0,
+    "0-ones": 0,
+    "1-mixed": 7,
+    "1-ones": 7,
+    "2-mixed": 18,
+    "2-ones": 18
+   },
+   "teeth": {
+    "T1": 1,
+    "T2": 1,
+    "T3": 48,
+    "T4": 1,
+    "T5": 14
+   },
+   "unit_census": {
+    "den0": 0,
+    "oow": 0,
+    "unit": 24,
+    "zero": 0
+   },
+   "wPhiTop": 340
+  },
+  "I4A": {
+   "E": 12,
+   "G0": 156,
+   "N": 204,
+   "c_pi": [
+    "1"
+   ],
+   "cob": {
+    "oow": 0,
+    "tested": 24
+   },
+   "d0": 1,
+   "e_m": 3,
+   "g_m": 1,
+   "gam": 68,
+   "grid": 24,
+   "id": "I4A",
+   "m": 3,
+   "maxslot": [
+    0,
+    0,
+    0,
+    0
+   ],
+   "nK": 4,
+   "nsamples": 7,
+   "p": 2,
+   "psik_hi": {
+    "lines": [
+     204,
+     361,
+     278,
+     219,
+     340,
+     293,
+     210,
+     355
+    ],
+    "nu": 8
+   },
+   "psik_lo": {
+    "certified_dead": 0,
+    "lines": 8
+   },
+   "ring": "Zp",
+   "surj": {
+    "0-mixed": 0,
+    "0-ones": 0,
+    "1-mixed": 10,
+    "1-ones": 10,
+    "2-mixed": 27,
+    "2-ones": 27
+   },
+   "teeth": {
+    "T1": 1,
+    "T2": 1,
+    "T3": 48,
+    "T4": 1,
+    "T5": 14
+   },
+   "unit_census": {
+    "den0": 0,
+    "oow": 0,
+    "unit": 24,
+    "zero": 0
+   },
+   "wPhiTop": 204
+  },
+  "I4B": {
+   "E": 12,
+   "G0": 144,
+   "N": 228,
+   "c_pi": [
+    "zb^2"
+   ],
+   "cob": {
+    "oow": 0,
+    "tested": 24
+   },
+   "d0": 1,
+   "e_m": 2,
+   "g_m": 1,
+   "gam": 109,
+   "grid": 24,
+   "id": "I4B",
+   "m": 3,
+   "maxslot": [
+    0,
+    0,
+    0,
+    0
+   ],
+   "nK": 9,
+   "nsamples": 7,
+   "p": 3,
+   "psik_hi": {
+    "lines": [
+     252,
+     361,
+     218,
+     327,
+     244,
+     353,
+     234,
+     343
+    ],
+    "nu": 8
+   },
+   "psik_lo": {
+    "certified_dead": 0,
+    "lines": 8
+   },
+   "ring": "Zp",
+   "surj": {
+    "0-mixed": 0,
+    "0-ones": 0,
+    "1-mixed": 16,
+    "1-ones": 16,
+    "2-mixed": 34,
+    "2-ones": 34
+   },
+   "teeth": {
+    "T1": 1,
+    "T2": 1,
+    "T3": 48,
+    "T4": 1,
+    "T5": 14
+   },
+   "unit_census": {
+    "den0": 0,
+    "oow": 0,
+    "unit": 24,
+    "zero": 0
+   },
+   "wPhiTop": 218
+  },
+  "I4C": {
+   "E": 8,
+   "G0": 80,
+   "N": 112,
+   "c_pi": [
+    "zb^8"
+   ],
+   "cob": {
+    "oow": 0,
+    "tested": 64
+   },
+   "d0": 2,
+   "e_m": 2,
+   "g_m": 1,
+   "gam": 53,
+   "grid": 64,
+   "id": "I4C",
+   "m": 3,
+   "maxslot": [
+    0,
+    0,
+    0,
+    0
+   ],
+   "nK": 16,
+   "nsamples": 7,
+   "p": 2,
+   "psik_hi": {
+    "lines": [
+     136,
+     185,
+     106,
+     163,
+     132,
+     189,
+     110,
+     159
+    ],
+    "nu": 8
+   },
+   "psik_lo": {
+    "certified_dead": 0,
+    "lines": 8
+   },
+   "ring": "Fpt",
+   "surj": {
+    "0-mixed": 0,
+    "0-ones": 0,
+    "1-mixed": 10,
+    "1-ones": 10,
+    "2-mixed": 23,
+    "2-ones": 23
+   },
+   "teeth": {
+    "T1": 1,
+    "T2": 1,
+    "T3": 48,
+    "T4": 1,
+    "T5": 14
+   },
+   "unit_census": {
+    "den0": 0,
+    "oow": 0,
+    "unit": 64,
+    "zero": 0
+   },
+   "wPhiTop": 106
+  }
+ },
+ "teeth": {
+  "T1": 29,
+  "T2": 29,
+  "T3": 1392,
+  "T4": 29,
+  "T5": 406
+ },
+ "totals": {
+  "cob": 869,
+  "den0": 0,
+  "grid": 869,
+  "hi": 197,
+  "lo": 197,
+  "oow": 0,
+  "unit": 869,
+  "uoow": 0,
+  "zero": 0
+ },
+ "violations": []
+}

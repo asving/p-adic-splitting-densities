@@ -105,8 +105,15 @@ bracket that supersedes it, never silently deleted):
   `T.read` are DISCLOSED, with the non-circularity argument spelled out.
 
 **New machine leg (r1):** `verification/openmath/grt_jc_r1_checks.py` under its
-own two-commit mini-seal, testing the REPAIRED statements only (§9.3). The r0
-battery, the instrument, and all their artifacts stay byte-frozen.**]**
+own two-commit mini-seal (sealed UNRUN at `f45b63c`), testing the REPAIRED
+statements only. **VERDICT (§9.3): 10 families, 10,475 scored samples, 0
+violations, 29 rows, 2.6 s, exit 0; all five teeth fired (1,885 firings)** —
+including (DMULT) exact on 2,784 samples, JC-COB's u = a_γa_{γ′} on 869/869
+anchor pairs, the corrected PSIKER range in both directions (197 lines below
+wΦ_NR with kernel 0; 197 residue classes with a certified nonzero witness), and
+G3's missing unit census (869 unit / 0 zero / 0 undefined / 0 out-of-window)
+with a planted-zero tooth proving the predicate can fire. The r0 battery, the
+instrument, and all their artifacts stay byte-frozen.**]**
 
 ---
 
@@ -966,9 +973,11 @@ is mentioned, and only then compared. This note's chain does exactly that, and
 the dependency order is auditable:
 
 1. **gr-side only** (no c_T, no harness read): JC-DOM, JC-GAUGE, JC-PER, JC-FIB,
-   JC-ANCHMON, JC-SCAL, JC-SPAN, JC-LOAD, JC-PSIKER, §2.10's (COORD)/(MULT),
+   JC-ANCHMON, JC-SCAL, JC-SPAN, JC-LOAD, JC-PSIKER, §2.10's ~~(COORD)/(MULT)~~
+   **[r1, F1]** (COORD-B)/(MULT-B) with JC-LOC/JC-PIINV/JC-BSURJ/JC-COB,
    JC-CARRY-m, JC-IND. Inputs used: the corpus's definitions of w, split,
-   anchors, REALIZE, and FGMN (b)(c)(e). **The structure constant's existence,
+   anchors, REALIZE, and FGMN (b)(e) + (DMULT) **[r1: (c) enters only through
+   (DMULT), on B]**. **The structure constant's existence,
    its outer/inner shape, its y-degree, and the TC-3 load set are all fixed
    here.**
 2. **comparison only** (c_T enters ONCE): §3.3 evaluates the already-computed
@@ -1019,7 +1028,9 @@ the same two call sites in its own docstring.
 >
 > exactly, with every line-wise normalization cancelling; and the residue chain
 > K_0 ⊂ … ⊂ K_{m+1} used by both sides is one and the same tower (J-C(iii)).
-> **GRADE: PROVED at general m** on inputs (COORD)+(MULT)+JC-SPAN+JC-SCAL+R3
+> **GRADE: PROVED at general m** on inputs ~~(COORD)+(MULT)~~ **[r1, F1]**
+> (COORD-B)+(MULT-B) **on B, i.e. (DMULT) + the in-note lemmas JC-LOC/JC-PIINV/
+> JC-BSURJ** +JC-SPAN+JC-SCAL+R3
 > (i.e. FGMN (b)(c)(e) via W-1, ATTEMPT). Attempt 0/2. Machine: the instrument's
 > **P5-OB6 0/669** (both sides computed independently per pair).
 
@@ -1328,6 +1339,20 @@ proved obstruction direction.
   e_m = 1 ∧ g_m = 1, where deg ρ = 0 is **measured** (C4H: all pairs
   RAW-solvable, 0 violations; family JC3 re-tests it) and unproved. JC-LOAD and
   JC-CARRY-m are therefore stated with e_m ≥ 2 and this corner is boxed OPEN.
+  **[r1 — CONDITIONALLY CLOSED, on (DMULT).]** The r0 proof of JC-SPAN is
+  e_m-sensitive because it bounds the top abscissa by degrees (JC-ANCHMON(d)).
+  The r1 coordinate calculus gives a second, e_m-blind proof: by (DMULT) with
+  f = φ_γ, g = φ_{γ′}, and since each anchor's digit polynomial is the CONSTANT
+  a_γ (JC-ANCHMON(c)),
+  𝑅_{γ+γ′}(φ_γφ_{γ′}) = y^{δ}·a_γ·a_{γ′} — a MONOMIAL of degree exactly δ, with
+  no hypothesis on e_m (COROLLARY JC-COB). At e_m = 1 one has s_NR ≡ 0 hence
+  δ ≡ 0, so the slot set is exactly {0} and JC-LOAD's dichotomy holds trivially
+  there (0 = δ < g_m always ⟹ RAW always solvable, which is exactly what C4H
+  measures). **So: the corner is CLOSED for a reader who grants (DMULT)
+  (JC-BOX-3), and stays OPEN for one who wants it independent of the FGMN
+  input** — r0's proof and r1's proof have different footprints, and the note
+  keeps both. Machine: r1 family **R1-COB scores C4H's 24 grid pairs with the
+  sharp form and 0 violations** (§9.3).
 * **JC-BOX-5 (the cyclic characterization).** JC-CYC(b)(c) are proved; the
   general form of (d)'s **inclusion** (CYCLIC ⟹ collapse geography) is OPEN, its
   measured resolution is low (only 2 of 29 rows lie off the collapse geography),
@@ -1506,8 +1531,52 @@ psiker line offset ≤ 14 steps). No scored predicate was weakened by either pro
 and the two teeth T1/T2 are the r0 text's own refuted claims, fixed before the
 probes were written.
 
-**VERDICT: [PENDING — the r1 battery is sealed at this commit and has not yet
-been run. The verdict below is written from the committed artifacts only.]**
+**VERDICT (written FROM the committed artifacts
+`verification/openmath/grt_jc_r1_output.txt` + `grt_jc_r1_results.json`; runner
+md5 `7f896bfa27d06158f95c5987c7299770`, sealed UNRUN at commit `f45b63c`).**
+**ALL 10 FAMILIES GREEN — 10,475 scored samples, 0 violations, 29 rows,
+elapsed 2.6 s, exit 0; ALL FIVE TEETH FIRED (1,885 firings, no silent tooth,
+every per-row obligation met: TOOTH-ROW 145/145).** Every sealed prediction hit
+exactly.
+
+| family | the r1 statement | samples | violations | verdict |
+|---|---|---|---|---|
+| EXT-GATE | engine_ext standing rule | 1 | **0** | GREEN (0 new) |
+| **R1-BND** | the slot bound: maxslot(G0) == 0 | 29 | **0** | GREEN — **0 on 29/29 rows**, i.e. the r0 (COORD) is refuted at the note's own base on every row; the ladder census maxslot(G0+kE), k = 0..3, shows the growth that makes B_n ⊋ gr_n (e.g. C2A [0,0,1,1], C2D [0,1,1,1], I4C [0,0,0,0] — slower but unbounded) |
+| **R1-PER** | JC-PIINV | 841 | **0** | GREEN — c_π is ONE constant per row (k = 1 and k = 2 consistent, c_π² exact) and ρ is EXACTLY π-invariant; measured c_π = 1 on 9 rows and z̄^a with a ∈ {1,2,3,4,6,8} on the other 20 — so the un-normalized 𝑅 is genuinely NOT π-invariant and the ρ-normalization is doing real work |
+| **R1-INJ** | §1 injectivity, both directions | 585 | **0** | GREEN — 𝑅_λ(f) ≠ 0 at λ = w(f), and empty at λ = w(f)−E, w(f)−2E |
+| **R1-SURJ** | JC-BSURJ | 841 | **0** | GREEN — every target (degrees 0,1,2 × {all-ones, mixed}) realized on the nose at the predicted k, with REALIZE's R2/R3 laws verified per digit; minimal k for the all-ones targets: degree 0 at k = 0 on 28 rows (k = 2 on C4H), degree 1 at k = 2..16, degree 2 at k = 5..34 — **the k-shift is structural, not a convenience** |
+| **R1-DMULT** | (DMULT), the cited input | 2,784 | **0** | GREEN — 𝑅_{λ+μ}(fg) == y^{δ}𝑅_λ(f)𝑅_μ(g) **EXACTLY** (multiplier 1, not merely proportional) on every sampled pair of every row, together with w(fg) = w(f)+w(g). This is the Δ-module leg PE1 recorded as unmeasured |
+| **R1-COB** | JC-COB | 2,607 | **0** | GREEN — **u == a_γ·a_{γ′} with slot set exactly {δ} on 869/869 anchor pairs, all 29 rows**, including the e_m = 1 row C4H (0 out-of-window skips) |
+| **R1-PSIK-LO** | JC-PSIKER(ii), zero half | 591 | **0** | GREEN — **197 window lines below wΦ_NR**, no class certified dead at any of them (one-sided certifier, JC-BOX-8(ii)) |
+| **R1-PSIK-HI** | JC-PSIKER(iii) | 1,182 | **0** | GREEN — **197 residue classes** (all E classes per row, capped at 8) carry a witness Φ_{m+1}·φ_{λ−wΦ_NR} with w exact, digit polynomial == a_ν·y^δ·ψ_m(y) on the nose, read == 0, death CERTIFIED |
+| **R1-UNIT** | G3's falsifiable unit check | 869 | **0** | GREEN with the census r0 lacked: **869 unit / 0 zero / 0 undefined-denominator / 0 out-of-window over 869 grid pairs** — and tooth T4 proves the predicate can fire (a planted zero is caught on every row, which the r0 JC8 predicate could not do) |
+| TOOTH-ROW | per-row tooth obligations | 145 | **0** | GREEN — all five teeth fire on all 29 rows |
+
+| tooth | mutation | opportunities | firings |
+|---|---|---|---|
+| T1 | the REFUTED r0 universal kernel claim (λ−wΦ_NR ≥ 0 at λ = G0) | 29 | **29** |
+| T2 | "no k-shift needed" (maxslot(G0) ≥ 1) | 29 | **29** |
+| T3 | mutated (DMULT), shift y^{δ+1} | 1,392 | **1,392** |
+| T4 | planted zero in the constant table (G3's falsifiability check) | 29 | **29** |
+| T5 | mutated JC-PIINV, ρ_{λ+E}(πf) == y·ρ_λ(f) | 406 | **406** |
+
+**THREE FINDINGS OF THE r1 BATTERY, applied above.**
+1. **(DMULT) holds with multiplier exactly 1**, not merely up to a line-wise
+   unit — which is why JC-COB can be stated in the sharp form u = a_γa_{γ′}
+   (§2.10) rather than "u is some K_m^*-unit".
+2. **The e_m = 1 corner's sharp form is measured true by R1-COB on C4H** (slot
+   set exactly {δ} = {0} on all 24 of its grid pairs), and on (DMULT) it is in
+   fact PROVED — see JC-BOX-4 [r1].
+3. **c_π ≠ 1 on 20 of 29 rows.** The colimit coordinate would NOT be well
+   defined in the un-normalized 𝑅; JC-PIINV(c)'s ρ-normalization is
+   load-bearing, not cosmetic.
+
+**Honest scope of this leg.** It measures the r1 statements on the SAME 29-row
+roster (m ≤ 3, |K| ≤ 25, g_j ≤ 2, d_0 ≤ 3, p ∈ {2,3,5}), so JC-BOX-1's
+proof-scope-vs-machine-scope fence applies verbatim; and it does NOT touch the
+one place r1 leaves a measurement owed, the non-integral elements of B
+(JC-BOX-8(i)).
 
 ---
 

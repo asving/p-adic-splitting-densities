@@ -1,0 +1,91 @@
+grt_jc_r1_checks.py -- GRTJC r1 SUPPLEMENTARY battery
+  [   0.2s] EXT-GATE done (new: 0)
+  [   0.2s] C2A    m=1 E=4   |K|=4   g_m=1 e_m=2  maxslot(G0)=0  c_pi=zb^2  COB 16/16  psik lo 4 hi 4  units 16/16  (0.0s)
+  [   0.2s] C2B    m=1 E=4   |K|=4   g_m=1 e_m=2  maxslot(G0)=0  c_pi=zb^2  COB 16/16  psik lo 4 hi 4  units 16/16  (0.0s)
+  [   0.2s] C2C    m=1 E=6   |K|=3   g_m=1 e_m=2  maxslot(G0)=0  c_pi=zb^1  COB 36/36  psik lo 6 hi 6  units 36/36  (0.0s)
+  [   0.2s] C2D    m=1 E=6   |K|=9   g_m=1 e_m=3  maxslot(G0)=0  c_pi=zb^1  COB 36/36  psik lo 6 hi 6  units 36/36  (0.0s)
+  [   0.2s] C2E    m=1 E=4   |K|=4   g_m=1 e_m=2  maxslot(G0)=0  c_pi=zb^2  COB 16/16  psik lo 4 hi 4  units 16/16  (0.0s)
+  [   0.3s] C2F    m=1 E=10  |K|=5   g_m=1 e_m=2  maxslot(G0)=0  c_pi=zb^1  COB 24/24  psik lo 8 hi 8  units 24/24  (0.0s)
+  [   0.3s] C2G    m=1 E=6   |K|=25  g_m=1 e_m=3  maxslot(G0)=0  c_pi=zb^3  COB 36/36  psik lo 6 hi 6  units 36/36  (0.0s)
+  [   0.3s] C2H    m=1 E=4   |K|=8   g_m=1 e_m=2  maxslot(G0)=0  c_pi=zb^6  COB 16/16  psik lo 4 hi 4  units 16/16  (0.0s)
+  [   0.3s] C2I    m=1 E=4   |K|=4   g_m=2 e_m=2  maxslot(G0)=0  c_pi=1  COB 16/16  psik lo 4 hi 4  units 16/16  (0.0s)
+  [   0.3s] C2J    m=1 E=3   |K|=3   g_m=1 e_m=3  maxslot(G0)=0  c_pi=1  COB 9/9  psik lo 3 hi 3  units 9/9  (0.0s)
+  [   0.4s] C3A    m=2 E=8   |K|=4   g_m=1 e_m=2  maxslot(G0)=0  c_pi=1  COB 64/64  psik lo 8 hi 8  units 64/64  (0.0s)
+  [   0.4s] C3B    m=2 E=12  |K|=3   g_m=1 e_m=2  maxslot(G0)=0  c_pi=1  COB 24/24  psik lo 8 hi 8  units 24/24  (0.0s)
+  [   0.4s] C3C    m=2 E=12  |K|=3   g_m=1 e_m=2  maxslot(G0)=0  c_pi=zb^1  COB 24/24  psik lo 8 hi 8  units 24/24  (0.0s)
+  [   0.5s] C3D    m=2 E=8   |K|=4   g_m=1 e_m=2  maxslot(G0)=0  c_pi=1  COB 64/64  psik lo 8 hi 8  units 64/64  (0.1s)
+  [   0.6s] C3E    m=2 E=4   |K|=4   g_m=1 e_m=2  maxslot(G0)=0  c_pi=zb^2  COB 16/16  psik lo 4 hi 4  units 16/16  (0.0s)
+  [   0.6s] C3F    m=2 E=12  |K|=9   g_m=1 e_m=3  maxslot(G0)=0  c_pi=zb^1  COB 24/24  psik lo 8 hi 8  units 24/24  (0.1s)
+  [   0.7s] C3G    m=2 E=20  |K|=5   g_m=1 e_m=2  maxslot(G0)=0  c_pi=zb^1  COB 24/24  psik lo 8 hi 8  units 24/24  (0.0s)
+  [   0.7s] C3H    m=2 E=8   |K|=8   g_m=1 e_m=2  maxslot(G0)=0  c_pi=zb^4  COB 64/64  psik lo 8 hi 8  units 64/64  (0.1s)
+  [   0.8s] C3I    m=2 E=8   |K|=4   g_m=1 e_m=2  maxslot(G0)=0  c_pi=zb^1  COB 64/64  psik lo 8 hi 8  units 64/64  (0.1s)
+  [   0.8s] C3J    m=2 E=12  |K|=3   g_m=1 e_m=2  maxslot(G0)=0  c_pi=1  COB 24/24  psik lo 8 hi 8  units 24/24  (0.1s)
+  [   0.9s] C4A    m=3 E=16  |K|=2   g_m=1 e_m=2  maxslot(G0)=0  c_pi=1  COB 24/24  psik lo 8 hi 8  units 24/24  (0.1s)
+  [   1.0s] C4B    m=3 E=16  |K|=4   g_m=1 e_m=2  maxslot(G0)=0  c_pi=zb^2  COB 24/24  psik lo 8 hi 8  units 24/24  (0.1s)
+  [   1.2s] C4C    m=3 E=24  |K|=3   g_m=1 e_m=2  maxslot(G0)=0  c_pi=zb^1  COB 24/24  psik lo 8 hi 8  units 24/24  (0.1s)
+  [   1.5s] C4G    m=3 E=16  |K|=4   g_m=1 e_m=2  maxslot(G0)=0  c_pi=zb^2  COB 24/24  psik lo 8 hi 8  units 24/24  (0.4s)
+  [   1.6s] C4H    m=3 E=10  |K|=5   g_m=1 e_m=1  maxslot(G0)=0  c_pi=zb^1  COB 24/24  psik lo 8 hi 8  units 24/24  (0.0s)
+  [   1.7s] C4I    m=3 E=16  |K|=4   g_m=2 e_m=2  maxslot(G0)=0  c_pi=1  COB 24/24  psik lo 8 hi 8  units 24/24  (0.1s)
+  [   1.8s] I4A    m=3 E=12  |K|=4   g_m=1 e_m=3  maxslot(G0)=0  c_pi=1  COB 24/24  psik lo 8 hi 8  units 24/24  (0.1s)
+  [   1.8s] I4B    m=3 E=12  |K|=9   g_m=1 e_m=2  maxslot(G0)=0  c_pi=zb^2  COB 24/24  psik lo 8 hi 8  units 24/24  (0.1s)
+  [   2.6s] I4C    m=3 E=8   |K|=16  g_m=1 e_m=2  maxslot(G0)=0  c_pi=zb^8  COB 64/64  psik lo 8 hi 8  units 64/64  (0.8s)
+
+==============================================================================
+FAMILY TABLE (samples / violations; sealed predictions in the docstring)
+  EXT-GATE     samples      1   violations    0
+  R1-BND       samples     29   violations    0
+  R1-PER       samples    841   violations    0
+  R1-INJ       samples    585   violations    0
+  R1-SURJ      samples    841   violations    0
+  R1-DMULT     samples   2784   violations    0
+  R1-COB       samples   2607   violations    0
+  R1-PSIK-LO   samples    591   violations    0
+  R1-PSIK-HI   samples   1182   violations    0
+  R1-UNIT      samples    869   violations    0
+  TOOTH-ROW    samples    145   violations    0
+
+TEETH (each MUST fire)
+  T1  fired     29 times (opportunities 29)
+  T2  fired     29 times (opportunities 29)
+  T3  fired   1392 times (opportunities 1392)
+  T4  fired     29 times (opportunities 29)
+  T5  fired    406 times (opportunities 406)
+
+PER-ROW CENSUS (R1-CEN: the r1 repair's own geography)
+  row     m    E  |K|  gm  em      G0  wPhi_NR  maxslot k=0..3 c_pi       minK d=0,1,2 (ones)
+  C2A     1    4    4   1   2       4       10  [0, 0, 1, 1]   zb^2       [0, 3, 5]
+  C2B     1    4    4   1   2       8       18  [0, 0, 0, 1]   zb^2       [0, 5, 9]
+  C2C     1    6    3   1   2       6       14  [0, 0, 1, 1]   zb^1       [0, 3, 5]
+  C2D     1    6    9   1   3      18       24  [0, 1, 1, 1]   zb^1       [0, 2, 6]
+  C2E     1    4    4   1   2       4       10  [0, 0, 1, 1]   zb^2       [0, 3, 5]
+  C2F     1   10    5   1   2      10       22  [0, 0, 1, 1]   zb^1       [0, 3, 5]
+  C2G     1    6   25   1   3      12       21  [0, 0, 1, 1]   zb^3       [0, 3, 6]
+  C2H     1    4    8   1   2       4       10  [0, 0, 1, 1]   zb^6       [0, 3, 5]
+  C2I     1    4    4   2   2       4       20  [0, 0, 1, 1]   1          [0, 3, 5]
+  C2J     1    3    3   1   3       6       12  [0, 0, 1, 1]   1          [0, 3, 7]
+  C3A     2    8    4   1   2      32       42  [0, 0, 1, 1]   1          [0, 4, 9]
+  C3B     2   12    3   1   2      48       58  [0, 1, 1, 1]   1          [0, 4, 8]
+  C3C     2   12    3   1   2      84       98  [0, 0, 1, 1]   zb^1       [0, 6, 14]
+  C3D     2    8    4   1   2      56       74  [0, 0, 0, 1]   1          [0, 7, 16]
+  C3E     2    4    4   1   2      12       26  [0, 0, 0, 0]   zb^2       [0, 6, 13]
+  C3F     2   12    9   1   3      72       93  [0, 0, 1, 1]   zb^1       [0, 5, 12]
+  C3G     2   20    5   1   2     200      222  [0, 0, 1, 1]   zb^1       [0, 7, 18]
+  C3H     2    8    8   1   2      32       42  [0, 0, 1, 1]   zb^4       [0, 4, 9]
+  C3I     2    8    4   1   2      48       82  [0, 0, 0, 0]   zb^1       [0, 10, 20]
+  C3J     2   12    3   1   2      48       58  [0, 1, 1, 1]   1          [0, 4, 8]
+  C4A     3   16    2   1   2     144      170  [0, 0, 1, 1]   1          [0, 7, 18]
+  C4B     3   16    4   1   2     144      170  [0, 0, 1, 1]   zb^2       [0, 7, 18]
+  C4C     3   24    3   1   2     312      346  [0, 0, 1, 1]   zb^1       [0, 9, 23]
+  C4G     3   16    4   1   2     256      298  [0, 0, 0, 1]   zb^2       [0, 12, 31]
+  C4H     3   10    5   1   1      60       81  [0, 0, 0, 1]   zb^1       [2, 11, 19]
+  C4I     3   16    4   2   2     144      340  [0, 0, 1, 1]   1          [0, 7, 18]
+  I4A     3   12    4   1   3     156      204  [0, 0, 0, 0]   1          [0, 10, 27]
+  I4B     3   12    9   1   2     144      218  [0, 0, 0, 0]   zb^2       [0, 16, 34]
+  I4C     3    8   16   1   2      80      106  [0, 0, 0, 0]   zb^8       [0, 10, 23]
+
+R1-COB: 869 anchor pairs scored (0 out-of-window skipped) -- u == a_gamma a_gamma' y^delta
+R1-UNIT census: 869 unit / 0 zero / 0 undefined-denominator / 0 out-of-window, over 869 grid pairs (GAP 3's missing census)
+R1-PSIK: 197 window lines below wPhi_NR with kernel 0; 197 residue classes with a certified nonzero kernel witness
+
+elapsed 2.6s;  total violations 0;  silent teeth NONE
+wrote /data/users/asvin/math-and-lean/p-adic-splitting-densities/verification/openmath/grt_jc_r1_results.json
