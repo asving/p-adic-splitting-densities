@@ -968,7 +968,9 @@ axis. So a rung-≥2 clause-(ii) census must show that S4.1/WELL-DEF-(n) and the
 S4.2 telescope read Φ₁ only through monicity, degree e₀d₀ and w₁Φ₁ = e₀g₀h₀
 (plausible — the C_k are built from ψ_m, γ_{m+1}, ε_m, realize_m and Φ_m, and
 Φ₂ = Σ_k C_kΦ₁^{e₁k} uses Φ₁ only as a power) — **an argument this note does
-not make, and which exists nowhere in the corpus as of r4.** Charge item (5)
+not make, and which neither the two formerly cited tables nor ITERLAWN's own
+r4 erratum supplies** (PE4 read all 22 sweep rows and ILNRES S6's census; no
+row is about how much of Φ₁ a rung leg opens). Charge item (5)
 is re-scoped to exactly that: the census is OWED, its site of record is
 ITERLAWN's r4 erratum, and the deeper-level fence of S5 is untouched by it.
 
@@ -1136,7 +1138,7 @@ edit these five lines; do not grow a sixth.**
 the ARCHIVE-BEGIN / ARCHIVE-END markers, quoted BYTE-UNCHANGED.]** Nothing
 between the markers is live: it is superseded wholesale by the five-line STATUS
 BLOCK above, and is kept only because this note's discipline never silently
-deletes superseded wording. Two corrections apply INSIDE the archive and are
+deletes superseded wording. THREE corrections apply INSIDE the archive and are
 stated here so no sentence in it can be misread as current:
 **(1) [F4-2]** the r1 STATUS LINE's clause "S2 disclosure (c) corrected to what
 the runner actually asserts (F4)" is **REFUTED** — r3's own F-A showed r1's F4
