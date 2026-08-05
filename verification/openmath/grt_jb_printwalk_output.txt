@@ -1,0 +1,64 @@
+grt_jb_printwalk.py -- POST-SEAL print-key tree walker
+  [   0.0s] Zp,p=2,T2A         done
+  [   0.0s] Zp,p=3,T2B         done
+  [   0.0s] Zp,p=3,T2C         done
+  [   0.0s] Fpt,p=2,T2D        done
+  [   0.0s] Zp,p=2,T2E         done
+  [   0.0s] Fpt,p=3,T2F        done
+  [   0.0s] Zp,p=3,T2G         done
+  [   0.0s] Zp,p=2,T3A         done
+  [   0.0s] Zp,p=3,T3B         done
+  [   0.0s] Zp,p=3,T3C         done
+  [   0.0s] Fpt,p=2,T3D        done
+  [   0.0s] Zp,p=2,T3E         done
+  [   0.0s] Zp,p=3,T3F         done
+  [   0.0s] Zp,p=2,I4A         done
+  [   0.1s] Zp,p=3,I4B         done
+  [   0.1s] Fpt,p=2,I4C        done
+  [   0.1s] QO leg done
+  [   0.1s] d0>=2 leg done
+
+==============================================================================
+PREDICTED vs OBSERVED (violations; samples in parentheses)
+==============================================================================
+PW-ID      print (ID-(i+1)) structure from the print chain pred 0   obs     0 (    38)  GREEN
+PW-WALK    print E1 walk terminates + leaves reduced     pred 0   obs     0 (    84)  GREEN
+PW-REASM   signed reassembly == f*Chat^cls               pred 0   obs     0 (    84)  GREEN
+PW-DIV     tree == own print-key division (+ engine)     pred 0   obs     0 (    84)  GREEN
+PW-XFRAME  byte-eq rows: print tree == harness division  pred 0   obs     0 (    72)  GREEN
+------------------------------------------------------------------------------
+COVERAGE: LEG-A print-key walks 84 (predicted 79) | at byte-UNEQUAL junctions 12 (predicted 12)
+CROSS-FRAME (LEG B): fired 72 (predicted 67), agreeing 72 | chain-divergent LEG-A walks, leg B not claimed: 12
+rows (tag|m -> walks/unequal/xframe): 28
+   Fpt,p=2,JD3C|m=1           walks 3  top_eq True  chain_eq True  chat_eq False xframe 3/3  differ 0
+   Fpt,p=2,T2D|m=1            walks 3  top_eq True  chain_eq True  chat_eq False xframe 3/3  differ 0
+   Fpt,p=2,T3D|m=1            walks 3  top_eq True  chain_eq True  chat_eq False xframe 3/3  differ 0
+   Fpt,p=2,T3D|m=2            walks 3  top_eq False chain_eq False chat_eq False xframe 0/0  differ 3
+   Fpt,p=3,T2F|m=1            walks 3  top_eq True  chain_eq True  chat_eq True  xframe 3/3  differ 0
+   QO:x4+4x+4/Q2|m=1          walks 3  top_eq True  chain_eq True  chat_eq True  xframe 3/3  differ 0
+   Zp,p=2,I4A|m=1             walks 3  top_eq True  chain_eq True  chat_eq True  xframe 3/3  differ 0
+   Zp,p=2,I4A|m=3             walks 3  top_eq True  chain_eq True  chat_eq True  xframe 3/3  differ 0
+   Zp,p=2,JD3A|m=1            walks 3  top_eq True  chain_eq True  chat_eq False xframe 3/3  differ 0
+   Zp,p=2,T2A|m=1             walks 3  top_eq True  chain_eq True  chat_eq False xframe 3/3  differ 0
+   Zp,p=2,T2E|m=1             walks 3  top_eq True  chain_eq True  chat_eq True  xframe 3/3  differ 0
+   Zp,p=2,T3A|m=1             walks 3  top_eq True  chain_eq True  chat_eq False xframe 3/3  differ 0
+   Zp,p=2,T3A|m=2             walks 3  top_eq False chain_eq False chat_eq True  xframe 0/0  differ 3
+   Zp,p=2,T3E|m=1             walks 3  top_eq True  chain_eq True  chat_eq False xframe 3/3  differ 0
+   Zp,p=2,T3E|m=2             walks 3  top_eq False chain_eq False chat_eq True  xframe 0/0  differ 3
+   Zp,p=3,I4B|m=1             walks 3  top_eq True  chain_eq True  chat_eq True  xframe 3/3  differ 0
+   Zp,p=3,I4B|m=3             walks 3  top_eq True  chain_eq True  chat_eq False xframe 3/3  differ 0
+   Zp,p=3,JD3B|m=1            walks 3  top_eq True  chain_eq True  chat_eq False xframe 3/3  differ 0
+   Zp,p=3,T2B|m=1             walks 3  top_eq True  chain_eq True  chat_eq True  xframe 3/3  differ 0
+   Zp,p=3,T2C|m=1             walks 3  top_eq True  chain_eq True  chat_eq False xframe 3/3  differ 0
+   Zp,p=3,T2G|m=1             walks 3  top_eq True  chain_eq True  chat_eq False xframe 3/3  differ 0
+   Zp,p=3,T3B|m=1             walks 3  top_eq True  chain_eq True  chat_eq True  xframe 3/3  differ 0
+   Zp,p=3,T3B|m=2             walks 3  top_eq True  chain_eq True  chat_eq False xframe 3/3  differ 0
+   Zp,p=3,T3C|m=1             walks 3  top_eq True  chain_eq True  chat_eq False xframe 3/3  differ 0
+   Zp,p=3,T3C|m=2             walks 3  top_eq False chain_eq False chat_eq True  xframe 0/0  differ 3
+   Zp,p=3,T3F|m=1             walks 3  top_eq True  chain_eq True  chat_eq True  xframe 3/3  differ 0
+   Zp,p=3,T3F|m=2             walks 3  top_eq True  chain_eq True  chat_eq False xframe 3/3  differ 0
+   Zp,p=5,JD5A|m=1            walks 3  top_eq True  chain_eq True  chat_eq False xframe 3/3  differ 0
+JSON: /data/users/asvin/math-and-lean/p-adic-splitting-densities/verification/openmath/grt_jb_printwalk_results.json
+TOTAL samples 458  elapsed 0.1s
+
+PRINT-WALK VERDICT: ALL GREEN (the print-key tree identity holds at print keys, including off the byte-equal set)

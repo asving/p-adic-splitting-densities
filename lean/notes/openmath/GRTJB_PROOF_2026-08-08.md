@@ -852,7 +852,55 @@ realize(ε^{−1}ψ), builds Ĉ_m^cls = φ_{m+2} − φ_{m+1}^{e_m}, divides by 
 print key with its own Horner/synthetic implementation certified per call by
 reassembly + degree bound, and never imports the sealed runner.
 
-    [VERDICT APPENDED AT r1 COMMIT 2 — from the committed artifacts]
+Mini-seal record: script sealed UNRUN at r1 commit 1 `4c97649`, verdict
+appended at r1 commit 2, and the script's md5
+`f53e23e8d1c79f084a1e34eee857e37c` is identical at both commits (checked with
+`git show <commit>:…`), i.e. it was not touched between its preregistration
+and its run.
+
+**VERDICT (r1 commit 2, transcribed from `grt_jb_printwalk_output.txt`;
+exit 0, elapsed 0.1 s, 458 samples, seal commit 4c97649):
+ALL FIVE FAMILIES GREEN — the print-key tree identity HOLDS at print keys,
+including on every junction the sealed battery left unchecked.**
+
+| family | claim keyed | pred | obs | samples | verdict |
+|---|---|---|---|---|---|
+| PW-ID | print (ID-(i+1)) read off the print chain: digit 1 at abscissa P_i, digits only at e_i·k (k < g_i), nothing off-grid | 0 | 0 | 38 | GREEN |
+| PW-WALK | print E1-priority walk terminates under the cap; every R-leaf reduced (j_l ≤ P_l − 1) | 0 | 0 | 84 | GREEN |
+| PW-REASM | signed reassembly Σleaves + (Σexits)·φ_{m+1}^cls = f·Ĉ_m^cls in O[x] | 0 | 0 | 84 | GREEN |
+| PW-DIV | tree pair == this script's own certified print-key division (+ the engine's `divmod_monic` as a third leg) | 0 | 0 | 84 | GREEN |
+| PW-XFRAME | leg B: on chain-byte-equal rows, the PRINT-keyed tree on f·Ĉ_m^har == the harness-key division | 0 | 0 | 72 | GREEN |
+
+    COVERAGE  leg-A print-key walks 84 (predicted 79)
+              at byte-UNEQUAL junctions 12 (predicted 12 — EXACT)
+              leg B fired 72 (predicted 67), agreed 72
+    the 12 byte-unequal walks are exactly the sealed rows with byteeq = false:
+              T3A m=2 (3) · T3C m=2 (3) · T3D m=2 (3) · T3E m=2 (3)
+    I4C: no print-eligible reduction level, so no rows — the same scope fence
+              the sealed battery reports, reached from the print side
+
+**Honest prediction accounting.** The five LAW predictions hit exactly (0
+violations each). The two COVERAGE counts came in 5 HIGH (84 not 79; leg B 72
+not 67) — a mis-prediction on my side, in the direction of MORE evidence, with
+a fully identified cause: the sealed runner runs its QO and d₀ legs with
+`small=True` (2 samples per row), while this walker uses the full 3-sample pool
+uniformly, giving +1 walk on the single QO tree row and +4 on the four d₀ rows.
+Every other row matches walk-for-walk, and the number that G-1 turns on — the
+12 walks at byte-unequal junctions, which the sealed battery's print-key leg
+never ran — hit its prediction exactly and is GREEN. **No disagreement with
+the tree identity was found anywhere** (had there been one, the script prints
+both polynomials' coefficient lists and exits nonzero; the DISAGREEMENT
+DISCIPLINE paragraph of its docstring is the standing commitment).
+
+**What this does and does not buy.** It buys: the tree/division
+correspondence of JB-TREE(i) now has genuinely print-keyed machine evidence,
+decorrelated in keys (print chain), in correction digits (extracted by
+dividing print keys, never via realize(ε^{−1}ψ)), in the divisor, and in the
+division code; and it buys the 12-walk off-byte-equal stratum the sealed leg
+could not reach. It does NOT buy: any change of grade (this is post-seal
+evidence, and JB-TREE stays PROVED at attempt grade on [RMG]'s scope), any
+claim about chambers (the walker runs the base rows only), and nothing about
+(VD-m) or §5 (a different family entirely).
 
 — J-B COMPOSER unit, campaign date 2026-08-08 (wallclock 2026-08-04);
 **[r1] repaired 2026-08-08 campaign (wallclock 2026-08-05) against JB-PE1;

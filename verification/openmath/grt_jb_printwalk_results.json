@@ -1,0 +1,320 @@
+{
+ "rows": {
+  "Zp,p=2,T2A|m=1": {
+   "walks": 3,
+   "chain_eq": true,
+   "top_eq": true,
+   "chat_eq": false,
+   "xframe_rows": 3,
+   "xframe_agree": 3,
+   "unequal_walks": 0,
+   "frames_differ": 0
+  },
+  "Zp,p=3,T2B|m=1": {
+   "walks": 3,
+   "chain_eq": true,
+   "top_eq": true,
+   "chat_eq": true,
+   "xframe_rows": 3,
+   "xframe_agree": 3,
+   "unequal_walks": 0,
+   "frames_differ": 0
+  },
+  "Zp,p=3,T2C|m=1": {
+   "walks": 3,
+   "chain_eq": true,
+   "top_eq": true,
+   "chat_eq": false,
+   "xframe_rows": 3,
+   "xframe_agree": 3,
+   "unequal_walks": 0,
+   "frames_differ": 0
+  },
+  "Fpt,p=2,T2D|m=1": {
+   "walks": 3,
+   "chain_eq": true,
+   "top_eq": true,
+   "chat_eq": false,
+   "xframe_rows": 3,
+   "xframe_agree": 3,
+   "unequal_walks": 0,
+   "frames_differ": 0
+  },
+  "Zp,p=2,T2E|m=1": {
+   "walks": 3,
+   "chain_eq": true,
+   "top_eq": true,
+   "chat_eq": true,
+   "xframe_rows": 3,
+   "xframe_agree": 3,
+   "unequal_walks": 0,
+   "frames_differ": 0
+  },
+  "Fpt,p=3,T2F|m=1": {
+   "walks": 3,
+   "chain_eq": true,
+   "top_eq": true,
+   "chat_eq": true,
+   "xframe_rows": 3,
+   "xframe_agree": 3,
+   "unequal_walks": 0,
+   "frames_differ": 0
+  },
+  "Zp,p=3,T2G|m=1": {
+   "walks": 3,
+   "chain_eq": true,
+   "top_eq": true,
+   "chat_eq": false,
+   "xframe_rows": 3,
+   "xframe_agree": 3,
+   "unequal_walks": 0,
+   "frames_differ": 0
+  },
+  "Zp,p=2,T3A|m=1": {
+   "walks": 3,
+   "chain_eq": true,
+   "top_eq": true,
+   "chat_eq": false,
+   "xframe_rows": 3,
+   "xframe_agree": 3,
+   "unequal_walks": 0,
+   "frames_differ": 0
+  },
+  "Zp,p=2,T3A|m=2": {
+   "walks": 3,
+   "chain_eq": false,
+   "top_eq": false,
+   "chat_eq": true,
+   "xframe_rows": 0,
+   "xframe_agree": 0,
+   "unequal_walks": 3,
+   "frames_differ": 3
+  },
+  "Zp,p=3,T3B|m=1": {
+   "walks": 3,
+   "chain_eq": true,
+   "top_eq": true,
+   "chat_eq": true,
+   "xframe_rows": 3,
+   "xframe_agree": 3,
+   "unequal_walks": 0,
+   "frames_differ": 0
+  },
+  "Zp,p=3,T3B|m=2": {
+   "walks": 3,
+   "chain_eq": true,
+   "top_eq": true,
+   "chat_eq": false,
+   "xframe_rows": 3,
+   "xframe_agree": 3,
+   "unequal_walks": 0,
+   "frames_differ": 0
+  },
+  "Zp,p=3,T3C|m=1": {
+   "walks": 3,
+   "chain_eq": true,
+   "top_eq": true,
+   "chat_eq": false,
+   "xframe_rows": 3,
+   "xframe_agree": 3,
+   "unequal_walks": 0,
+   "frames_differ": 0
+  },
+  "Zp,p=3,T3C|m=2": {
+   "walks": 3,
+   "chain_eq": false,
+   "top_eq": false,
+   "chat_eq": true,
+   "xframe_rows": 0,
+   "xframe_agree": 0,
+   "unequal_walks": 3,
+   "frames_differ": 3
+  },
+  "Fpt,p=2,T3D|m=1": {
+   "walks": 3,
+   "chain_eq": true,
+   "top_eq": true,
+   "chat_eq": false,
+   "xframe_rows": 3,
+   "xframe_agree": 3,
+   "unequal_walks": 0,
+   "frames_differ": 0
+  },
+  "Fpt,p=2,T3D|m=2": {
+   "walks": 3,
+   "chain_eq": false,
+   "top_eq": false,
+   "chat_eq": false,
+   "xframe_rows": 0,
+   "xframe_agree": 0,
+   "unequal_walks": 3,
+   "frames_differ": 3
+  },
+  "Zp,p=2,T3E|m=1": {
+   "walks": 3,
+   "chain_eq": true,
+   "top_eq": true,
+   "chat_eq": false,
+   "xframe_rows": 3,
+   "xframe_agree": 3,
+   "unequal_walks": 0,
+   "frames_differ": 0
+  },
+  "Zp,p=2,T3E|m=2": {
+   "walks": 3,
+   "chain_eq": false,
+   "top_eq": false,
+   "chat_eq": true,
+   "xframe_rows": 0,
+   "xframe_agree": 0,
+   "unequal_walks": 3,
+   "frames_differ": 3
+  },
+  "Zp,p=3,T3F|m=1": {
+   "walks": 3,
+   "chain_eq": true,
+   "top_eq": true,
+   "chat_eq": true,
+   "xframe_rows": 3,
+   "xframe_agree": 3,
+   "unequal_walks": 0,
+   "frames_differ": 0
+  },
+  "Zp,p=3,T3F|m=2": {
+   "walks": 3,
+   "chain_eq": true,
+   "top_eq": true,
+   "chat_eq": false,
+   "xframe_rows": 3,
+   "xframe_agree": 3,
+   "unequal_walks": 0,
+   "frames_differ": 0
+  },
+  "Zp,p=2,I4A|m=1": {
+   "walks": 3,
+   "chain_eq": true,
+   "top_eq": true,
+   "chat_eq": true,
+   "xframe_rows": 3,
+   "xframe_agree": 3,
+   "unequal_walks": 0,
+   "frames_differ": 0
+  },
+  "Zp,p=2,I4A|m=3": {
+   "walks": 3,
+   "chain_eq": true,
+   "top_eq": true,
+   "chat_eq": true,
+   "xframe_rows": 3,
+   "xframe_agree": 3,
+   "unequal_walks": 0,
+   "frames_differ": 0
+  },
+  "Zp,p=3,I4B|m=1": {
+   "walks": 3,
+   "chain_eq": true,
+   "top_eq": true,
+   "chat_eq": true,
+   "xframe_rows": 3,
+   "xframe_agree": 3,
+   "unequal_walks": 0,
+   "frames_differ": 0
+  },
+  "Zp,p=3,I4B|m=3": {
+   "walks": 3,
+   "chain_eq": true,
+   "top_eq": true,
+   "chat_eq": false,
+   "xframe_rows": 3,
+   "xframe_agree": 3,
+   "unequal_walks": 0,
+   "frames_differ": 0
+  },
+  "QO:x4+4x+4/Q2|m=1": {
+   "walks": 3,
+   "chain_eq": true,
+   "top_eq": true,
+   "chat_eq": true,
+   "xframe_rows": 3,
+   "xframe_agree": 3,
+   "unequal_walks": 0,
+   "frames_differ": 0
+  },
+  "Zp,p=5,JD5A|m=1": {
+   "walks": 3,
+   "chain_eq": true,
+   "top_eq": true,
+   "chat_eq": false,
+   "xframe_rows": 3,
+   "xframe_agree": 3,
+   "unequal_walks": 0,
+   "frames_differ": 0
+  },
+  "Zp,p=2,JD3A|m=1": {
+   "walks": 3,
+   "chain_eq": true,
+   "top_eq": true,
+   "chat_eq": false,
+   "xframe_rows": 3,
+   "xframe_agree": 3,
+   "unequal_walks": 0,
+   "frames_differ": 0
+  },
+  "Zp,p=3,JD3B|m=1": {
+   "walks": 3,
+   "chain_eq": true,
+   "top_eq": true,
+   "chat_eq": false,
+   "xframe_rows": 3,
+   "xframe_agree": 3,
+   "unequal_walks": 0,
+   "frames_differ": 0
+  },
+  "Fpt,p=2,JD3C|m=1": {
+   "walks": 3,
+   "chain_eq": true,
+   "top_eq": true,
+   "chat_eq": false,
+   "xframe_rows": 3,
+   "xframe_agree": 3,
+   "unequal_walks": 0,
+   "frames_differ": 0
+  }
+ },
+ "families": {
+  "PW-ID": {
+   "pred": "0",
+   "obs": 0,
+   "samples": 38
+  },
+  "PW-WALK": {
+   "pred": "0",
+   "obs": 0,
+   "samples": 84
+  },
+  "PW-REASM": {
+   "pred": "0",
+   "obs": 0,
+   "samples": 84
+  },
+  "PW-DIV": {
+   "pred": "0",
+   "obs": 0,
+   "samples": 84
+  },
+  "PW-XFRAME": {
+   "pred": "0",
+   "obs": 0,
+   "samples": 72
+  }
+ },
+ "coverage": {
+  "walks": 84,
+  "unequal_walks": 12,
+  "xframe_fired": 72,
+  "xframe_agree": 72,
+  "chain_divergent_walks": 12
+ },
+ "violations": [],
+ "elapsed_s": 0.1
+}
