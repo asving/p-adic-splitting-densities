@@ -10847,3 +10847,43 @@ disclosure-grade honesty, not their own multi-round arcs. Current arcs
 (LIFT / JB / JC) all target complete theorems — aligned. J-C r1
 (structural: (COORD) restated on B_n, five consumers re-derived or
 honestly boxed) dispatched under this rule (wje7echcs).
+
+---
+
+## LIFT r3 LANDED (no claim consumes the no-op assert — verified; witness fixed by exact arithmetic) + JB PE3: 0C/8G — the fence-propagation disease named; r3 = the conditionality-matrix normalization — 2026-08-05
+
+**LIFT r3 (feedaab, note-only, 280/23) — ADJUDICATED: COMPLETE.** F-A: the
+mutation trace verified independently from source (psi1 assigned once,
+before the orbit tower; every ψ₁ site walked; NO claim consumes assert (i))
+— disclosure (c) rewritten honestly (the no-op named, the mk_field_ext
+reading = the soundness site, the sealed docstring's own overstatement
+disclosed with the note as correction of record); NO new script (aligned
+with the 2026-08-05 effort guidance). F-B: substitute witness a = x,
+b₁ = 4x+2 VERIFIED exact (w₀(q) = 2 > 1 = w₀(r); division identity checked;
+r2's dividend re-checked and its unrealizability confirmed). F-C/F-D/F-E
+applied. **Arc: PE1 1C+3G → r1 → PE2 0C+5G → r2 → PE3 0C+5G → r3 → PE4 =
+next acceptance attempt. Counter 0/2.**
+
+**JB PE3 (report 2fd271e, 832 lines) — VERDICT 0C/8G, NOT CLEAN; counter
+0/2.** The mathematics verified clean again (JB-VTX(a) re-derived in full;
+JB-ID correct; ε′ verbatim vs [RMG]; G2-4's refutation confirmed from the
+roster; all figure decompositions exact; walker2 correct with limitation
+honoured; all four machine legs bit-identical, md5s intact). The eight
+gaps are ALL fence/evidence-classification: F-1/F-1B the u ≥ 0 proviso and
+the qcap fence STILL missing grade surfaces (incl. two r2 declared
+"already consistent" — falsified by its own hit 7); F-2 the PE1/G-1
+same-computation disease at a THIRD site (JB-DEV's "both engines" = one
+PolyO.dev on one ring object, violation unreachable); F-3 "all four ties
+keyed" — runner keys three, the unkeyed fourth is exactly the
+proviso-riding sub-clause; F-4 the (VAL)/(GRID)/(RES) perimeter conflation
+(RES needs through-q — the two r2-named variants differ exactly at qcap;
+no machine leg covers (RES)); F-5 JB-EPS applied at γ_{m+1} without the
+lattice-membership license (the §5 recital DROPS [RMG]'s w_m(Ĉ_m) =
+γ_{m+1} clause — lemma true, citation unlicensed); F-6 sufficient-vs-
+equivalent conflation; F-7 P_i undefined (PE1/G-7 genre, unfixed).
+**DIAGNOSIS: per-site patching does not converge — r3 charged with the
+UNIFYING repair: build the clause × proviso conditionality MATRIX once as
+a note section, then REGENERATE every grade surface from it (grade cap,
+∎Grade lines, §7.2 rows, §7.3, boxes), restore the dropped [RMG] clauses
+to the recital with the γ_{m+1} membership displayed, and reclassify the
+same-engine evidence honestly. PE4 = next acceptance attempt.**
