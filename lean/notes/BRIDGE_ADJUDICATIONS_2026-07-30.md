@@ -10746,3 +10746,55 @@ discharged).
 **THE WELD: W-2 + J-A + J-B + J-C ALL COMPOSED (each 0/2). Remaining: the
 J-D block (W-10 count equality / W-11 menu tie / W-12 faithfulness handoff
 — M/S-priced bookkeeping) + every arc. J-C PE1 dispatched.**
+
+---
+
+## LIFT PE3: 0 critical / 5 gaps (the promoted assert is a TAUTOLOGY; the G4 witness unrealizable) + JB r2 LANDED (8 grade-surface hits fixed; walker2 45/45 with non-degeneracy certificates) — 2026-08-05
+
+**LIFT PE3 (report 39ea0db, 726 lines) — VERDICT 0C/5G; counter stays 0/2
+(no clean pass yet).** F-A (the sharpest, source-read confirmed): S2
+disclosure (c)'s assert (i) — the one r1's F4 repair PROMOTED as substantive
+against (ii)'s demoted smoke check — is a TAUTOLOGY: psi1_base is
+snapshotted from the same T before the ledger override and nothing between
+writes T.psi1 (single assignment grb_order2_check.py:515); it cannot fail
+and certifies nothing about carryover; (ii) is the only substantive half.
+r1 fixed the wrong half of its own sentence; PE1 called (i) "genuine"; PE2
+only matched the source line verbatim — three-pass blind spot, caught by
+the third fresh reader. F-B: r2's G4 witness a·b = 4x²+2 cannot arise at a
+branch in its own setting (Φ₀ = x²+x+1 forces deg a, deg b ≤ 1; needs
+v₂(−8) odd); realizable substitute supplied (a = x, b₁ = 4x+2); the strike
+right on merits, the witness wrong. F-C: "re-ran bit-identically" at 2
+sites overstates PE2's own "modulo elapsed/timestamp fields". F-D: status
+line labels charges (1)–(2) "unaudited" while crediting PE2 with re-deriving
+exactly them. F-E (minor): Q6 LOC has no note() call — 0 checks; S3 omits
+the one zero family count. MACHINE LEGS both clean: sealed runner 25,409/0
+(md5 intact, 0-byte diff dafc0b5→HEAD; all counts independently re-derived);
+children generator BYTE-IDENTICAL regeneration, A7 all four legs PASS with
+the leg-(i) source audit confirming G3's cure genuine (A6 and A7 walk the
+same double_dev_digits(bigX(...)) in the same iteration). **r3 dispatched
+(5 gaps, note-level); PE4 = next acceptance attempt.**
+
+**JB r2 (67bf0c4 walker2 sealed unrun / 888e293 note + verdict) —
+ADJUDICATED: COMPLETE, exemplary.** G2-1: re-grep found EIGHT
+grade-surface hits (5 from PE2's list + 3 new: §3/§4 ∎Grade lines and the
+§7.2 JB-TREE row) — all fixed, every change adding conditionality, nothing
+widened. G2-2: disclosure applied (45 cross-frame + 27 degenerate walks,
+mechanism displayed) AND walker2 BUILT under its own mini-seal
+(grt_jb_printwalk2.py, md5 stable seal→verdict): exit 0, PW2-XFRAME 45/45
+agreed with per-sample non-degeneracy certificates (f·Ĉ^har ≠ f·Ĉ^cls),
+PW2-DEGEN 27 walks certified vacuous by argument-tuple byte-identity,
+PW2-RECON row-for-row against the r1 JSON (45+27+12 = 84 exactly); NO
+disagreement anywhere; honest limitation disclosed (imports the frozen r1
+walker — gate repair, not decorrelation). G2-3: coverage restated (8
+byteeq:false rows; the 4 /tw chamber rows = 8 walks unreached by BOTH
+instruments, cause named). G2-4: both mechanism claims STRICKEN at 3 sites
++ the fence, roster displayed as data, refutation sharpened (T3D/T3E share
+(e₀,h₀,g₀) AND ψ₀ — same A₁, same ord z₁ — yet split: the failing set is
+not a function of (A₁, ord z₁)); explicit ban on predicting from the table.
+G2-5: discharge RETRACTED at 4 surfaces, proviso carried with named
+consumers and the real-discharge requirement written out. G2-6: two named
+conditions defined (byte-equal chain through q vs shared-key perimeter =
+qcap_of), citations unified. G2-7: both figure decompositions displayed.
+Byte-frozen artifacts verified unchanged (zero diff on all three scripts +
+both JSONs). **Arc: PE1 (1C+9G) → r1 → PE2 (0C+7G) → r2 → PE3 dispatched
+(first acceptance attempt).**
