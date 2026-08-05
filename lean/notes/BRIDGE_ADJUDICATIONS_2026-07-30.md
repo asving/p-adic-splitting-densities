@@ -10798,3 +10798,39 @@ qcap_of), citations unified. G2-7: both figure decompositions displayed.
 Byte-frozen artifacts verified unchanged (zero diff on all three scripts +
 both JSONs). **Arc: PE1 (1C+9G) → r1 → PE2 (0C+7G) → r2 → PE3 dispatched
 (first acceptance attempt).**
+
+---
+
+## J-C PE1: 2 CRITICAL / 8 GAPS — a structural repair round ((COORD) false per-piece, true on the note's own B_n; PSIKER over-quantified); the load-bearing algebra CLEARED under hostile re-derivation — 2026-08-05
+
+**GRTJC PE1 (report 1a27be3) — VERDICT 2C/8G; counter 0/2; r1 = structural.**
+C1: §2.10 (COORD) "𝑅_λ : gr_λ(w) → Δ = K_m[y] a K_m-linear ISOMORPHISM"
+(citing FGMN Thm 4.2 via (IN-3)(c)) is FALSE on the note's own gr(w) —
+integral ambient + w ≥ 0 makes every gr_λ finite-dimensional (slot bound
+⌊λ/γ_{m+1}⌋); machine counter-instance on the battery's own row C2I at its
+own window base λ = G0 = 4 (3,072 integral f sampled: gr_λ ≅ K_m, NOT a
+1-dim K-space with [K:K_m] = 2; maxslot(G0) = 0 on 29/29 rows). Breaks as
+stated: §3.1, JC-IND/OB-4, W-7's bijectivity, JC-F1's dimension count,
+(MULT). THE REPAIR LIVES IN THE NOTE'S OWN MACHINERY: state (COORD) on
+B_n = ∪_k in(π)^{−k} gr_{n+kE} (JC-DOM's object); JC-BOX-3 re-drawn to box
+applicability, not literature truth. C2: JC-PSIKER's "nonzero kernel on
+EVERY graded piece" false for λ < wΦ_NR (all 29 rows at G0); the witness
+computation itself CORRECT and W-6(v)'s fenced version CORRECT — an
+over-quantification, not a wrong mechanism. Gaps 1–8: the A_ν ≅ B_n vs
+graded-piece interface mismatch; the "degree-0 component" definition
+contradiction INHERITED from the design note/brief/blueprint (silently
+corrected in use — needs its own JC-F2 flag); JC8's unit check
+unfalsifiable as coded (zeros filtered before cval; skipped pairs
+uncensused); §7's g_m case labels contradict the runner; §2.8(c) "THEOREM"
+vs the e_m ≥ 2 fence; the dropped 606-skip census; §4.1 remark (a)'s two
+unproved identifications (W-8 needs neither); fence hygiene on T.constants.
+**CLEARED under hostile re-derivation: JC-GAUGE in full (unit hypothesis
+satisfied, TC-1 strictly before TC-2), JC-PER, JC-FIB, JC-ANCHMON,
+JC-SCAL, JC-SPAN (Cor 2.7 within hypotheses), JC-LOAD's iff both
+directions, the PSIKER witness, W-8's cancellation, JC-F1's algebra given
+JC-IND, and the 22/28 consistency.** Machine leg: battery re-run exit 0,
+every §9.2 cell identical; seal verified; instrument reproduces. **r1
+dispatched: restate (COORD) on B_n and RE-DERIVE §3.1/OB-4/W-7-bijectivity/
+JC-F1-dimensions/(MULT) on it (an honest failed re-derivation drops the
+clause to boxed — reported, not hidden); re-quantify PSIKER; the 8 gaps;
+supplementary mini-sealed checks for the repaired statements.**
