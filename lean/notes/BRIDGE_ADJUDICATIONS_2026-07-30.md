@@ -10647,3 +10647,43 @@ computation — the fence law refines to a characterization.
 the measured law; case splits derived from the instrument's genre censuses
 per the examples-first directive).** Concurrent: LIFT r2 + JB PE2
 (wr9n33bu1) in flight.
+
+---
+
+## LIFT r2 LANDED (A7 durable; five gaps applied) + JB PE2: F1 CURED, 0 critical / 7 gaps (the walker reproduced G-1's disease on 27/72 walks) — 2026-08-05
+
+**LIFT r2 (a3112dc generator+table / e5b3faf note) — ADJUDICATED: COMPLETE.**
+G1 branching bound corrected to ≤ 2e₀+3 with per-digit arithmetic + attainment
+(7/9/11/13/15 at e₀ = 2..6; only finiteness consumed, disclosed); G2 the F1
+box's attribution split honestly three ways (PE1's verbatim scope / the eight
+per-digit rows PE1 never saw / PE2 as their first hostile reader), charge list
++item (7); G3 DURABLE — assert A7 (four legs) added to the children generator,
+sharing bigX()/double_dev_digits() with A6 so both provably speak about the
+same digits: 752 nodes / 5,336 children / 0 mismatches on every leg, observed
+max branching {7,9,11,13,15} = 2e₀+3 number-for-number with PE2's ad hoc leg;
+table bit-identical on all pre-existing content (7 pure insertions, cmp/md5
+clean on §§1–6); G4 the false gain identity STRICKEN (witness displayed),
+replaced by per-digit CONTENT bounds, all seven rows' ≥-entries re-checked,
+equality demoted to a consumed-nowhere observation (896/896); G5 weakened to
+sufficiency + vacuity with A12/B14 named (0 of the 220 m′ = m rows). Sealed
+runner byte-frozen (0-line diff dafc0b5→HEAD, re-run 25,409/0). **Arc: PE1
+(1C+3G) → r1 → PE2 (0C+5G) → r2 → PE3 dispatched (first acceptance attempt).**
+
+**JB PE2 (report committed by the pass) — VERDICT 0 CRITICAL / 7 GAPS; PE1's
+F1 confirmed CURED; counter 0/2.** The seven: G2-1 the qcap re-fence never
+reached §7.2/§7.3 (the same body/grade-surface divergence that made F1
+critical — the disease pattern recurs); G2-2 THE WALKER'S OWN DISEASE:
+PW-XFRAME is a bit-identical re-execution of PW-DIV on 27 of 72 walks (the
+re-gate dropped the chat_eq conjunct instead of negating it) — undisclosed;
+G2-3 §7.4's "every junction the sealed battery left unchecked" is false
+(byteeq:false rows number 8, not 4; the four /tw rows at m = 2 unreached);
+G2-4 the proposed mechanism refuted by the note's own roster (T3E e₀ = 2
+scores 6/6; T3D/T3E share (e₀,g₀) yet split); G2-5 the u ≥ 0 proviso
+"discharge" is an assertion, not a derivation; G2-6 the shared-key perimeter
+definition/citation off-by-one vs the runner's qcap_of; G2-7 census figure
+inconsistencies (66 vs 56 roster; 458 samples incl. 96 counters). Machine
+legs: all three scripts re-run line-for-line (the main JSON regenerated
+BYTE-identically incl. elapsed_s); md5 seals intact; plus a new decorrelated
+JSON-only derivation of the 13 = 0/10/3 level split. The verifier's own
+from-scratch loop was outage-blocked and honestly marked NOT-RUN. **JB r2
+dispatched (the 7 gaps; disclosure of the walker degeneracy MANDATORY).**
