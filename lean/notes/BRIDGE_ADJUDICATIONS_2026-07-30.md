@@ -10525,3 +10525,43 @@ Workflow blocked at the orchestrator), so this entry was written via the
 Edit path and committed after recovery. Re-dispatch carries the
 examples-first phase as MANDATORY in the r1 repair prompt (child-type
 table before induction-writing).
+
+---
+
+## LIFT r1 REPAIRED-WITH-PROOF (examples-first's first full win) + JB-PE1 fresh verdict: 1 CRITICAL (grade surface) + 9 gaps — 2026-08-05, Opus units
+
+**LIFT r1 (b2dc120) — ADJUDICATED: F1 CURED.** The mandatory phase-0 table
+(29 towers, 752 probes, 2,668 child rows, new script
+`liftcorner_tailstab_children.py`, sealed runner untouched) found NINE child
+genres and ZERO no-descent children; the only m-preserving genre
+(`mid[TOP=e0-1]-q`, 220 instances) always drops deg a, never occurs at
+deg a = 0 or d₀ = 1 (both strata proved child-free of m-preservers). The
+repaired (TAIL-STAB) runs lexicographic (m, deg a) descent with a 7-row case
+list mapped onto the 9 observed genres, row-7b's deg-drop proved from
+deg b_k < d₀, both consumers re-closed (IH on lex-smaller children; depth
+bound ρ = m·d₀ + max(deg a, 0)), the PE1 counter-instance's descent chain
+displayed numerically. F2 (b₀-split defined, wave-18 S1 cited), F3 (COR 2's
+W2-OPEN-1 identification WITHDRAWN, rescoped to the harness orbit + owed-items
+box), F4 (exact runner-assert wording) all applied. **The directive's type
+specimen closed BY the directive's own method: the case list came from the
+table.** (TAIL-STAB) status: PROVED (r1), arc 0/2 — PE2 dispatched.
+
+**JB-PE1 fresh pass (85a8dc9, 791 lines) — VERDICT 1 CRITICAL + 9 GAPS, NOT
+CLEAN; counter stays 0/2, r1 owed.** F1 CRITICAL (grade surface; the theorem
+survives): the note's "(VD-m) unconditional for m ≤ 2 (m = 2 by JA-RES)" at 4
+sites conflates J-A's per-slot law (genuinely unconditional at m = 2) with the
+evaluated dictionary (VD-2) — refuted by the note's OWN sealed runner: 10 of
+13 boundary rows machine-evaluated FALSE (VD-2) at m = 2 (T3A/T3B/T3C/T3D).
+Post-repair, JB-CREAD has no unconditional stratum above m = 1. Gaps G-1..G-9
+incl. G-1: JB-TREE's "harness AND print keys" is one `fresh_divmod` computed
+twice behind a byte-equality — the two-key-family independence is NOT what the
+wording claims. Survived re-derivation: JB-EPS line-by-line, JB-CREAD's chain,
+the shear + slope law (derived), JB-AFF, the blueprint-correction quote, LED-Λ
+quanta. Machine leg RUN (exit 0, all figures match; JSON differs in elapsed_s
+only). **Divergence audit vs the outage-killed partial: the partial had
+CLEARED the boundary geography claim — it checked which towers but never the
+level m, and so MISSED the critical.** The fresh-pass-only rule and model
+diversity both just paid for themselves.
+
+Next: JB r1 repair (4-site F1 re-fence + G-1..G-9) ∥ LIFT PE2 hostile pass,
+Opus. J-C instrument (w22eojl90) still in flight.
