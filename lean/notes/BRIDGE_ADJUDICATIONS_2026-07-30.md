@@ -10565,3 +10565,44 @@ diversity both just paid for themselves.
 
 Next: JB r1 repair (4-site F1 re-fence + G-1..G-9) ∥ LIFT PE2 hostile pass,
 Opus. J-C instrument (w22eojl90) still in flight.
+
+---
+
+## LIFT PE2: THE REPAIR HOLDS (0 critical / 5 gaps) + JB r1 LANDED (walker green at the byte-unequal junctions) — 2026-08-05
+
+**LIFT PE2 (report 3367f3c) — ADJUDICATED: r1's F1 repair CURED AND HELD.**
+All six charged questions positive: the 9→7 genre mapping total+disjoint (no
+fall-through); row-7b's degree-drop correct incl. the deg a = 0 / deg b = 0
+edges; the two strata emptiness claims PROVED (re-derived) + separately
+measured + correctly fenced; the lex order well-founds both consumers (ρ
+strictly drops on every edge); the F3 rescope self-consistent, the withdrawn
+identification gone from every consuming line; F2/F4 verified applied. Both
+machine legs bit-identical (sealed runner 25,409/0, md5 intact dafc0b5→HEAD;
+children table regenerates exactly, headline figures independently
+re-derived). Five gaps for r2, all repairable: G1 branching bound "≤ 2e₀+1"
+FALSE (true max 2e₀+3, the note's own table; only finiteness consumed); G2
+honesty — the F1 box credits PE1 with re-verifying the NEW per-digit ω-gain
+rows it never saw (the recurring "charge points away from the flaw" defect;
+PE2 re-derived all eight bounds itself: correct and tight); G3 evidence
+architecture — the generator never asserts Σ children = X, so a missing
+branch would leave the table green; PE2 supplied the missing leg (0/752
+mismatches) — r2 must make it durable (assert A7 + recommitted output); G4
+gain(q-digit) = gain(r-digit) + e₁h₀ is NOT an identity (witness a·b = 4x²+2
+over ℤ₂; bounds unaffected, held 896/896); G5 "valid EXACTLY on d₀ = 1"
+refuted by A12/B14. Arc: PE1 (1C+3G) → r1 → PE2 (0C+5G) → r2 + PE3 next.
+
+**JB r1 (4c97649 seal / 46f9452 verdict) — ADJUDICATED: LANDED IN FULL.**
+F1's 4 sites + census sentence + a new §2(iii)(RES) reading-fence re-fenced
+to the honest perimeter ((VD-m) unconditional at m ≤ 1 ONLY; every m ≥ 2
+rides JA-VDIND; JB-CREAD has no unconditional stratum above m = 1); the
+10/13 level split independently re-verified by a new committed level-census
+script (0 evaluator scope-outs). G-1 discharged with REAL evidence: the
+independent print-key walker (own mini two-commit seal, md5 stable) — exit
+0, 458 samples, 5 families all green, 84 print-key walks incl. the 12
+byte-UNEQUAL junctions the sealed leg never exercised; coverage +5 vs
+prediction, cause identified and recorded (sealed runner's small=True
+pools). G-2..G-9 all applied. Sealed battery byte-frozen throughout. J-B
+counter 0/2; PE2 on the post-r1 text dispatched.
+
+**J-C instrument: SEALED at 7212e56 (prereg + runner, pre-run commit);
+battery has run (artifacts in tree); verdict commit pending.**
