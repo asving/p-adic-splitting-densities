@@ -10606,3 +10606,44 @@ counter 0/2; PE2 on the post-r1 text dispatched.
 
 **J-C instrument: SEALED at 7212e56 (prereg + runner, pre-run commit);
 battery has run (artifacts in tree); verdict commit pending.**
+
+---
+
+## J-C INSTRUMENT VERDICT: THE CARRIER ISO HOLDS ON THE NOSE (669/0, exhaustive) — germ SPLIT (confirmed as val law, refuted as OB-3 factor); composer dispatched — 2026-08-05
+
+**GRTJC instrument (seal 7212e56 → verdict fc89b03; GRTJC_PROBE_2026-08-08.md
++ grt_jc_probe.py): 29 towers (m ≤ 3, p ∈ {2,3,5}, d₀ ≤ 3, wild e_j = p legs,
+g_j = 2 branching), 669 scored pairs, 0 violations across 22 families.**
+
+THE HEADLINE — P2-ISO 669/0: c_gr == c_T = z̄^δ·∏z_j^{D_j} ON THE NOSE, every
+pair, every tower; all 29 rows EXHAUSTIVE (|K| ≤ 512, constant found with zero
+witness input, per-pair uniqueness machine-proved). OB-2 byte-exact 285/0;
+OB-6 (harness-val = TC-read) 669/0; OB-4 SPAN-M 328 certified / 0 failed
+(SPAN-S census: 435 certified / 60 zero-class / 0 unexplained — the
+zero-class genre is the composer's to fence); teeth all caught (MT2 fired the
+cyclic controls; MT3 197/206 with the 9 single-pair escapes disclosed, all
+prime-residue-field rows).
+
+GERM VERDICT — SPLIT, and sharper than the hypothesis: CONFIRMED exactly
+where J-B put it (val(Ĉ_m) = −z̄ = −z_{m+1} on ALL 27 eligible g_m = 1
+stages; carrier-side κ·val(φ_{e_mγ_{m+1}}) = −z_{m+1} on all 27, κ varying
+over z̄-powers — the bare letter appears exactly when the anchor's own value
+normalization is 1). REFUTED as OB-3's inner normalization (the brief's
+literal reading = H-D, fails 138/669): the measured inner factor is
+∏_{j=1}^{m} z_j^{D_j} — the INNER letters, not the top letter. The composer
+inherits the true law, not the guess.
+
+TWO STRUCTURAL FINDINGS (composer must prove, not just cite): (1) TC-3 is
+load-bearing EXACTLY at δ ≥ g_m — sealed set identity {no pre-TC-3 scalar} =
+{δ ≥ g_m} matched 29/29 rows; the outer z̄^δ IS TC-3's image of the graded
+slot shift y^δ, unobtainable from TC-1/TC-2 alone; corollary: the level-NR
+read is non-injective on a graded piece (TC-3's ψ-kernel) — TC-3 is NOT a
+relabeling. (2) The cyclic fence is a GENRE, not a universal: 14 NOT-CYCLIC /
+6 CYCLIC / 9 UNDECIDED, the cyclic rows = the twist-blind/collapse geography,
+independently reproducing the byte-frozen 22/28 strata split from a different
+computation — the fence law refines to a characterization.
+
+**Composer dispatched (W-6..W-9 per the blueprint, structure constants from
+the measured law; case splits derived from the instrument's genre censuses
+per the examples-first directive).** Concurrent: LIFT r2 + JB PE2
+(wr9n33bu1) in flight.
