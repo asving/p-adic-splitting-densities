@@ -11,6 +11,46 @@ W-2 consumption (GRTW2_PROOF, itself attempt 0/2, no acceptance arc run).**
 **Machine leg:** `verification/openmath/liftcorner_checks.py` (this header +
 the runner commit BEFORE any full run; verdict appended in commit 2 from the
 artifacts `liftcorner_checks_output.txt` / `liftcorner_checks_results.json`).
+[r1] A SECOND, post-hoc machine leg was added at repair round r1 and is NOT
+part of the sealed prediction battery: `liftcorner_tailstab_children.py` +
+its committed output `liftcorner_tailstab_children_table.txt` — the
+examples-first child-type table the repaired S4.1 induction is derived from
+(disclosed as written AFTER the refutation, hence evidence for a repair, not
+a prediction). The sealed runner is byte-untouched (md5 unchanged, S3).
+
+**[REPAIR ROUND r1 — 2026-08-08 campaign (wallclock 2026-08-05).** Applied
+against LIFTCORNER-PE1 (hostile pass, fresh context, report
+`LIFTCORNER_passPE1_report.md`, commit 30e570c: **1 CRITICAL + 3 gaps**;
+ledger entry BRIDGE_ADJUDICATIONS_2026-07-30.md "PE1 VERDICTS"). PE1's
+machine leg was bit-identical (exit 0, 25,409/0, fires 1,576, all roster
+counts independently re-derived, two-commit seal verified), so nothing in
+S1–S3 or in the corner measurement moved; the critical finding is confined
+to one line of the S4.1 PROOF. Dispositions, each edit carrying a dated
+`[r1, F#]` bracket: **F1** (CRITICAL) — the S4.1 strict-descent clause
+"every child has m′ ≤ m−1" is FALSE at the top-mid q-digit child (k = e₀−1,
+which sits at m′ = m; PE1's counter-instance reproduced numerically in
+S4.1). REPAIRED, statement byte-unchanged, by replacing the single
+induction on m with the LEXICOGRAPHIC (m, deg a) induction: the child census
+is now displayed in full (seven genres), the one m-preserving genre is proved
+to drop deg a strictly, the deg a = 0 stratum is proved to have NO
+m-preserving child at all, and BOTH consumers (the induction; the
+termination/dev-linearity finiteness) are re-closed on the lex order with an
+explicit depth bound. The case list is DERIVED FROM the examples-first
+table (standing directive, Asvin 2026-08-05), which is committed with this
+round: 29 towers over p ∈ {2,3,5}, d₀ ∈ {1,2,3}, e₀ ∈ {2,…,6} (the e₀ = 2
+boundary included), all four lift genres, PE1's counter-instance verbatim —
+0 children dropping neither coordinate, and the (LEDGER) conclusion itself
+re-verified on the honestly recomputed double development. **F2** — the
+wave-18 S1 split b₀ = ĉ′π^{h₀} + t₀ is now defined in-note at first use
+(S4 setting), with its source cited inline. **F3** — COR 2's identification
+with "W2-OPEN-1 RESTRICTED to the base junction" is WITHDRAWN as underived;
+COR 2 is rescoped to exactly what S4 proves (the harness monic-lift orbit),
+with a box naming the two things still owed for the W2-OPEN-1 tie.
+**F4** — S2 disclosure (c) now says exactly what the runner asserts (full
+ψ₁-byte carryover + a one-element K₂ smoke check) and where the
+modulus-independence verification actually lives (`mk_field_ext` at g = 1).
+Acceptance counter unchanged at 0/2 — a repair round is not a pass; round r2
+(a fresh hostile pass on THIS text) is the next acceptance attempt.]**
 
 **Sources of record:** ILNRES_2026-08-08.md S1 [NR-1] + S5.1 (the spec);
 ITERLAWLIFT_CORNER_2026-08-08.md (wave 18: the LAWFUL slice measured
@@ -85,8 +125,17 @@ deterministic full windows, no sampling beyond the seeded pert residues;
 (c) the ledger override (ψ₀ ↦ y + c′) is IN-MEMORY on a fresh Tower object —
 sound because at g₀ = 1 the degree-1 extension arithmetic of K₁ is
 modulus-independent (mk_field_ext at g = 1: products never touch the reducer),
-so ψ₁ and every deeper byte carries over verbatim; the runner asserts this
-(ψ₁ bytes equal, K₂ arithmetic representation shared) before any comparison;
+so ψ₁ and every deeper byte carries over verbatim; **[r1, F4 — corrected
+wording]** the runner asserts, before any comparison, (i) full ψ₁-BYTE
+carryover (`[tuple(c) for c in T.psi1] == psi1_base`) and (ii) a
+single-element byte check on the K₂ table (`C.K2["one"] == C0.K2["one"]`) —
+(ii) is a SMOKE CHECK on one element, NOT an assertion that the K₂ arithmetic
+representation is shared, as the r0 text's parenthesis "(ψ₁ bytes equal, K₂
+arithmetic representation shared)" implied. The modulus-independence itself is
+verified by READING `mk_field_ext`: at g = 1 its reduction loop
+`range(len(out)-1, g-1, -1)` is empty, so products never touch the reducer —
+that is where the override's soundness lives (PE1 F4 re-derived it there
+independently), not in the runner's asserts;
 (d) SP bug-detector counters recorded.
 
 ## S3. VERDICT (commit 2; from the artifacts; seal dafc0b5, runner
@@ -127,12 +176,27 @@ with residue c′; Φ″ := Φ₀^{e₀} + lift(c′)·π^{h₀} the STANDARD li
 ψ₀^{(ξ)} = y + c′. Base facts as [IL S1]/[ILN] S0.2 (division algorithm by
 monic keys, w₀ a valuation, res additive + kills strict π-excess), plus:
 
+**[r1, F2 — notation, defined here at first use.]** The b₀-SPLIT, used by the
+S4.1 branch table and by S4.2 and imported from wave-18 S1
+(ITERLAWLIFT_CORNER_2026-08-08.md S1, a source of record above; it was used
+in the r0 text without an in-note binding):
+
+    b₀ = ĉ′·π^{h₀} + t₀,   deg ĉ′ < d₀, res(ĉ′) = c′ ≠ 0 (so w₀(ĉ′) = 0),
+                            deg t₀ < d₀, w₀(t₀) ≥ h₀ + 1.
+
+Existence and uniqueness given a choice of the lift ĉ′ of c′: w₀(b₀) = h₀ (S1)
+lets one divide b₀ by π^{h₀}, take ĉ′ := any degree-<d₀ lift of the residue
+c′ = res(b₀/π^{h₀}), and set t₀ := b₀ − ĉ′π^{h₀}, whose residue at level h₀
+vanishes — i.e. w₀(t₀) ≥ h₀+1. "ĉ′π^{h₀}" is the b₀-MAIN part, "t₀" the
+b₀-TAIL; the STANDARD lift Φ″ is the orbit member with ĉ′ = lift(c′) and
+t₀ = 0 and all mids b_k = 0 (k ≥ 1).
+
 **CONTENT (sub-lemma).** For monic Φ, the digits of dev(F, Φ) satisfy
 w₀-content ≥ w₀-content(F). *Proof:* induction through the division step —
 each subtraction removes lc(F)·x^i·Φ with lc(F) a coefficient of the current
 remainder; w₀ is a valuation. ∎
 
-### S4.1 LEMMA (TAIL-STAB) — the wave-18 open step, closed
+### S4.1 LEMMA (TAIL-STAB) — the wave-18 open step, closed (proof REPAIRED at r1; statement byte-unchanged)
 
 For X = a·Φ₀^m·Φ′^j (a ∈ O[x], deg a < d₀) put the LEDGER weight
 ω(X) := e₁(e₀·w₀(a) + m·h₀) + j·γ₂, γ₂ = e₁e₀h₀ + h₁. Then in the double
@@ -144,30 +208,172 @@ Hence w₂(X) ≥ ω(X), and for any read weight Γ < ω(X) every level-2 read o
 at Γ contributes 0 at every grid slot (on-line: strict-excess summands die in
 res; off-line: C_j = 0; digit collisions: w₀ ultrametric, min bounds survive).
 
-*Proof.* Strong induction on m. **Base m < e₀:** deg(aΦ₀^m) < (m+1)d₀ ≤
-e₀d₀ = deg Φ′, so by dev uniqueness the double dev is the single digit a at
-(i, j) = (m, j): equality. **Step m ≥ e₀:** one pass of the orbit identity
-Φ₀^{e₀} = Φ′ − b₀ − Σ_{k≥1}b_kΦ₀^k gives X = aΦ₀^{m−e₀}Φ′^{j+1} −
-ab₀Φ₀^{m−e₀}Φ′^j − Σ_{k≥1} ab_kΦ₀^{m−e₀+k}Φ′^j; re-digit each level-0
-coefficient (deg(ab) < 2d₀: dev = r + qΦ₀, CONTENT bounds both). Every child
-is again of the lemma's shape with m′ ≤ m−1 (strict descent; termination),
-and the ledger GAINS per branch (using e₀·amin(k) ≥ (e₀−k)h₀ + 1, forced by
-gcd(e₀, h₀) = 1: e₀ | kh₀ ⟺ e₀ | k, impossible for 1 ≤ k < e₀):
+*Proof (r1).* Induction on the pair (m, deg a) in the LEXICOGRAPHIC order on
+ℕ × ({−∞} ∪ {0,…,d₀−1}) — m first, then deg a, with deg 0 := −∞ (a zero
+coefficient contributes no digit and generates no child). Lex products of
+well-orders are well-founded, which is all the induction uses; the statement
+is proved for every (a, m, j) with deg a < d₀, uniformly in j.
 
-| branch | (m′, j′) | ω-gain ≥ |
-|---|---|---|
-| key | (m−e₀, j+1) | γ₂ − e₁e₀h₀ = h₁ > 0 |
-| b₀-main ĉ′π^{h₀}, r/q digit | (m−e₀ / m−e₀+1, j) | 0 / e₁h₀ |
-| b₀-tail t₀ (w₀ ≥ h₀+1) | (m−e₀ (+1), j) | e₁e₀ |
-| mid b_k (w₀ ≥ amin(k)) | (m−e₀+k (+1), j) | e₁ |
+**Base m < e₀** (any deg a): deg(aΦ₀^m) ≤ (d₀−1) + (e₀−1)d₀ < e₀d₀ = deg Φ′,
+so by dev uniqueness the double dev is the single digit a at (i, j) = (m, j):
+(LEDGER) with equality.
 
-IH on each child + dev-linearity (the double dev of X is the digit-wise sum
-of the children's) + the ultrametric close (LEDGER). The ONLY 0-gain branch
-is b₀-main's r-digit, which also strictly drops m: the ω(X)-thread
-terminates in ≤ ⌈m/e₀⌉ passes. ∎ [This IS the shift-descent bookkeeping:
-one key up costs h₁, exactly the χ-chain's descent step (GRTW2 §3.4 rem. 1);
-the window-calculus ledger ω is the tail-weight bookkeeping ILNRES S5.1
-priced. Machine mirror: Q3/Q4 — the tail never reaches the read.]
+**Step m ≥ e₀:** one pass of the orbit identity Φ₀^{e₀} = Φ′ − b₀ −
+Σ_{k≥1}b_kΦ₀^k gives X = aΦ₀^{m−e₀}Φ′^{j+1} − ab₀Φ₀^{m−e₀}Φ′^j −
+Σ_{k≥1} ab_kΦ₀^{m−e₀+k}Φ′^j, with b₀ = ĉ′π^{h₀} + t₀ split as above. Each
+level-0 coefficient is a product a·b with b ∈ {1, ĉ′π^{h₀}, t₀, b_1, …,
+b_{e₀−1}}, so deg(a·b) ≤ deg a + d₀ − 1 < 2d₀ and its Φ₀-redigit
+a·b = r + qΦ₀ has deg r, deg q < d₀ with w₀(r), w₀(q) ≥ w₀(a·b) ≥
+w₀(a) + w₀(b) by CONTENT. Every child is again of the lemma's shape.
+
+**(A) THE CHILD CENSUS — seven genres** (this case list matches the genre
+list of the r1 examples-first table under the explicit 9 ↦ 7 label mapping
+displayed in the machine-leg bracket below; the two coordinates are read off
+per row, then justified):
+
+| # | child genre | a′ | (m′, j′) | m-descent | lex (m, deg a) descent | ω-gain ≥ |
+|---|---|---|---|---|---|---|
+| 1 | key | a | (m−e₀, j+1) | m′ ≤ m−2 | 1st coord | γ₂ − e₁e₀h₀ = h₁ > 0 |
+| 2 | b₀-main r-digit | −r(aĉ′π^{h₀}) | (m−e₀, j) | m′ ≤ m−2 | 1st | **0** (the only 0-gain genre) |
+| 3 | b₀-main q-digit | −q(aĉ′π^{h₀}) | (m−e₀+1, j) | m′ ≤ m−1 | 1st | e₁h₀ |
+| 4 | b₀-tail r-digit | −r(a t₀) | (m−e₀, j) | m′ ≤ m−2 | 1st | e₁e₀ |
+| 5 | b₀-tail q-digit | −q(a t₀) | (m−e₀+1, j) | m′ ≤ m−1 | 1st | e₁e₀ + e₁h₀ |
+| 6 | mid r-digit, 1 ≤ k ≤ e₀−1 | −r(a b_k) | (m−e₀+k, j) | m′ ≤ m−1 | 1st | e₁ |
+| 7a | mid q-digit, 1 ≤ k ≤ e₀−2 | −q(a b_k) | (m−e₀+k+1, j) | m′ ≤ m−1 | 1st | e₁(h₀+1) |
+| 7b | **mid q-digit at k = e₀−1 (the TOP mid)** | −q(a b_{e₀−1}) | **(m, j)** | **NONE: m′ = m** | **2nd: deg a′ ≤ deg a − 1** | e₁(h₀+1) |
+
+*The m′ column.* Read off the pass identity (a q-digit sits one Φ₀-power
+above its r-digit). Rows 1–5 use e₀ ≥ 2 (the S4 setting; e₀ = 1 is COR-3's
+degeneration, out of scope): m−e₀ ≤ m−2 and m−e₀+1 ≤ m−1. Row 6:
+k ≤ e₀−1 ⟹ m−e₀+k ≤ m−1. Row 7a: k ≤ e₀−2 ⟹ m−e₀+k+1 ≤ m−1. Row 7b:
+k = e₀−1 gives m′ = m exactly — the one m-preserving genre.
+
+*Row 7b drops the second coordinate.* Its q-digit is nonzero only if
+deg(a b_{e₀−1}) ≥ d₀, and then, using only deg b_k < d₀ (S1),
+
+    deg a′ = deg q = deg(a b_{e₀−1}) − d₀ ≤ deg a + (d₀−1) − d₀ = deg a − 1.
+
+So every one of the seven genres has (m′, deg a′) <_lex (m, deg a) and the IH
+applies to every child.
+
+*The ω-gains.* For a branch with factor b at Φ₀-exponent M = m−e₀+k and
+w₀(b) ≥ β: gain(r-digit) = e₁[e₀(w₀(a′)−w₀(a)) + (M−m)h₀] ≥ e₁[e₀β −
+(e₀−k)h₀] by CONTENT, and gain(q-digit) = gain(r-digit) + e₁h₀. Row 1:
+b = 1, but j′ = j+1 adds γ₂ and the Φ₀-drop costs e₁e₀h₀, net h₁ > 0. Rows
+2–3: β = h₀, k = 0. Rows 4–5: β = h₀+1. Rows 6–7: β = amin(k) with
+e₀·amin(k) ≥ (e₀−k)h₀ + 1, forced by gcd(e₀, h₀) = 1 (e₀ | kh₀ ⟺ e₀ | k,
+impossible for 1 ≤ k < e₀). Every gain is ≥ 0 and the ONLY zero is row 2.
+
+**[r1 MACHINE LEG for (A)/(B) — the examples-first table.]**
+`verification/openmath/liftcorner_tailstab_children.py`, output committed as
+`liftcorner_tailstab_children_table.txt` (exit 0, ALL GREEN; independent of
+the sealed battery, which is byte-untouched). 29 towers spanning p ∈ {2,3,5},
+d₀ ∈ {1,2,3}, e₀ ∈ {2,3,4,5,6} (the e₀ = 2 boundary and e₀ ≥ 3 both), all
+four lift genres (pure = Φ″, dense = tail + mids, mids-only, tail-only), plus
+PE1's counter-instance verbatim as row CTR; 752 (a, m, j) probes; **2,668
+child rows**. Its §3 genre summary reports NINE normalized labels, which map
+onto the seven rows above exactly: `key` = 1, `b0-main-r/q` = 2/3,
+`b0-tail-r/q` = 4/5, `mid[k<e0-1]-r` and `mid[TOP=e0-1]-r` both = 6 (same
+bound m′ ≤ m−1), `mid[k<e0-1]-q` = 7a, `mid[TOP=e0-1]-q` = 7b. Observed lex
+deltas per label: `m-DROP` for all eight non-7b labels, `degA-DROP` for all
+220 instances of 7b; **0 children dropping NEITHER coordinate**. Observed
+ω-gains per label agree with the table's bounds, with `b0-main-r` the unique
+label whose gain set is exactly {0}. The 220 m′ = m children are ALL of
+genre 7b, all with deg a′ < deg a, all at deg a ≥ 1, all at d₀ ≥ 2 (the (B)
+predictions), min gain +2. Assertions A1 (lex descent on every child),
+A2 (every m′ = m child is 7b with deg a′ ≤ deg a − 1), A3 (none at
+deg a = 0), A4 (none at d₀ = 1), A5 (gain ≥ 0, zero only at row 2), and
+A6 — (LEDGER) itself re-verified on the HONESTLY RECOMPUTED double
+development (dev by Φ′, then each Φ′-digit by Φ₀) over 752 probes / 4,438
+nonzero digits, minimum slack 0 (the equality thread realized) — all PASS.
+The table is evidence for the case split, not a substitute for (A)–(C): it
+is a finite battery, and the proof above is what carries the ∀.
+
+**(B) The deg a = 0 stratum (the second coordinate's base) and the d₀ = 1
+corner.** At deg a = 0 row 7b is EMPTY: deg(a b_{e₀−1}) ≤ 0 + (d₀−1) < d₀,
+so its q-digit vanishes and the top-mid branch contributes only its r-child.
+Hence at deg a = 0 EVERY child drops m, and the lex induction needs no
+separate base for the second coordinate — it bottoms out on the m < e₀ base
+alone. Two consequences worth recording: (i) at most deg a ≤ d₀−1
+consecutive m-preserving steps can occur from any node, so the recursion is
+equally a single induction on m with an inner chain of length < d₀; (ii) at
+d₀ = 1 NO branch ever produces a q-digit (deg(a·b) ≤ 0 < 1 = d₀), so the r0
+single-m induction was in fact valid exactly on the flat corner d₀ = 1 —
+which is why no d₀ = 1 row could have exposed the defect, and why the
+counter-instance below is at d₀ = 2.
+
+**(C) The two consumers, re-closed on the lex order.** (i) *The induction.*
+The IH is invoked only on the children of one pass; each is strictly lex-below
+its parent by (A), so the appeal is legitimate. With the gains of (A) every
+child satisfies (LEDGER) at its own ω(child) ≥ ω(X); dev-linearity (the
+double dev of X is the digit-wise sum of the children's — polynomial devs
+carry no carries) plus the ultrametric close then gives (LEDGER) for X.
+(ii) *Termination/finiteness* (the job the false clause was doing). The
+recursion tree is finitely branching — ≤ 2e₀+1 children per node (row 1,
+rows 2–5, and ≤ e₀−1 realizations each of rows 6 and 7) — and by (A) has no
+infinite path, hence is FINITE, so the dev-linearity sum is finite. Explicit
+depth bound: ρ(m, deg a) := m·d₀ + max(deg a, 0) strictly drops along every
+child edge (an m-drop of ≥ 1 costs ≥ d₀ and can restore at most d₀−1 in the
+second coordinate; an m-preserving step drops the second coordinate by ≥ 1),
+so every root-to-leaf path has length ≤ m·d₀ + d₀ − 1. The r0 bound
+⌈m/e₀⌉ survives in its correct scope: it bounds the ω-EQUALITY thread, whose
+only genre is row 2 (gain 0), which drops m by exactly e₀ per step. ∎
+
+[This IS the shift-descent bookkeeping: one key up costs h₁, exactly the
+χ-chain's descent step (GRTW2 §3.4 rem. 1); the window-calculus ledger ω is
+the tail-weight bookkeeping ILNRES S5.1 priced. Machine mirror: Q3/Q4 — the
+tail never reaches the read.]
+
+**[r1, F1 — CRITICAL (PE1): what changed, and what did not.]** The r0 proof
+asserted "Every child is again of the lemma's shape with m′ ≤ m−1 (strict
+descent; termination)" and closed "The ONLY 0-gain branch is b₀-main's
+r-digit, which also strictly drops m: the ω(X)-thread terminates in
+≤ ⌈m/e₀⌉ passes." The first clause is FALSE at row 7b (m′ = m), so the
+strong induction on m alone had no IH at that child and the finiteness claim
+rode the same clause; PE1 graded this CRITICAL and the ledger dropped
+(TAIL-STAB) to PROVED-MODULO-F1. The LEMMA STATEMENT is byte-unchanged. NEW
+at r1: the lex order, the seven-genre census with its per-genre descent
+column, the (B) deg a = 0 / d₀ = 1 analysis, and the (C)(ii) finiteness with
+an explicit depth bound. UNCHANGED in content and re-verified by PE1
+independently: the base case, the one-pass identity, all ω-gains (now
+displayed per digit, hence sharper on rows 3, 5, 7 than r0's per-branch
+lower bounds), the gain-0 census (row 2 only), CONTENT, dev-linearity, the
+(LEDGER) ⟹ w₂(X) ≥ ω(X) tie and the read-kill close, and the ⌈m/e₀⌉
+equality-thread bound in its correct scope.
+
+**[r1, F1 — the counter-instance's own descent chain, numerically.]** PE1's
+instance: O = ℤ₂, d₀ = 2, e₀ = 2, h₀ = 1, Φ₀ = x²+x+1, b₀ = 2 (so ĉ′ = 1,
+t₀ = 0, c′ = 1), b₁ = 2x (w₀ = 1 = amin(1)); Φ′ = Φ₀² + b₁Φ₀ + b₀ =
+x⁴+4x³+5x²+4x+3. Take e₁ = h₁ = 1, so γ₂ = e₁e₀h₀+h₁ = 3 and
+ω(aΦ₀^mΦ′^j) = 2w₀(a) + m + 3j. Root X = xΦ₀^2, i.e. (m, deg a) = (2, 1),
+ω(X) = 2. One pass, its four nonzero branches (mid digits from
+2x² = 2Φ₀ − 2x − 2, i.e. r = −2x−2, q = 2, negated by the identity's sign):
+
+    key        → a′ = x      (m′,j′) = (0,1)  ω = 3  gain +1 = h₁        [m-DROP]
+    b₀-main r  → a′ = −2x              (0,0)  ω = 2  gain  0            [m-DROP]
+    mid[1] r   → a′ = 2x+2             (1,0)  ω = 3  gain +1 = e₁       [m-DROP]
+    mid[1] q   → a′ = −2               (2,0)  ω = 4  gain +2 = e₁(h₀+1)
+                                     [m′ = m = 2, deg a′ = 0 < 1 = deg a: row 7b]
+
+The r0 induction stops dead at the fourth child. Under the lex order that
+child, (m, deg a) = (2, 0), is expanded once more:
+
+    key        → a′ = −2              (0,1)  ω = 5  gain +1             [m-DROP]
+    b₀-main r  → a′ = 4               (0,0)  ω = 4  gain  0            [m-DROP]
+    mid[1] r   → a′ = 4x              (1,0)  ω = 5  gain +1            [m-DROP]
+
+— and NO mid q-child, exactly as (B) predicts at deg a = 0 (a·b₁ = −4x has
+degree 1 < 2 = d₀). All six leaves sit at m ≤ 1 < e₀ = 2, i.e. on the base
+case: the tree is 8 nodes, depth 2, well inside the (C)(ii) bound
+m·d₀ + d₀ − 1 = 5. (This whole chain is machine-printed in §6 of the r1
+table, digit for digit.) Independent tie (not via the recursion): the honest double
+development of the root is
+
+    xΦ₀² = (x−2)·Φ′ + (6x+2)·Φ₀ + (−2x+4),
+
+digits at (j,i) = (1,0), (0,1), (0,0) with weights 3, 3, 2 against
+ω(X) = 2 — (LEDGER) holds, slacks 1, 1, 0, and the equality thread is the
+(0,0) digit, precisely row 2's gain-0 thread.
 
 ### S4.2 LEMMA (READ-EQ) — the Φ′-tower reads = the Φ″-tower reads
 
@@ -207,11 +413,39 @@ proved at g₀ = 1 ∧ δ₁ = 1, exactly where it was open (ITERLAW S7: only
 PAIR-VAL Case II consumes Φ₁'s form; all other strata lift-form-free).
 [Machine: Q10 + wave-18's 104,404/0.]
 
-**COR 2 (the χ-covariance).** Across the orbit the display transports by
-z₁ = ξ·z₁′ alone: c_base = c′·ξ^{D₁}. This is W-2 clause 3's value-layer
-statement (W2-OPEN-1) RESTRICTED to the base junction at the corner — now
-PROVED at this note's grade there, upgraded from instance-confirmed.
+**COR 2 (the χ-covariance; RESCOPED at r1).** Across the HARNESS monic-lift
+orbit of S1 the 2-read display transports by the letter alone: for every
+orbit member Φ′ with residue c′ and ξ := c₀/c′,
+
+    c_base(γ,γ′) = c′(γ,γ′)·ξ^{D₁}   for all γ, γ′ ∈ W₂.
+
+*Proof.* The THEOREM applied on the Φ′-tower and on the base tower, plus
+z₁ = ξ·z₁′ (S1) and the lift-independence of D₁ (S1/S2). ∎ This is the
+corner-degenerate FORM that W-2 clause 3's value-layer transport predicts,
+and (with Q9's sharpness) evidence that it is the true covariance there.
+Nothing beyond the displayed identity on the harness orbit is claimed.
 [Machine: Q7 4,176/0 measured-vs-measured; Q9 sharpness 1,576 fires exact.]
+
+**[r1, F3 — WITHDRAWN identification + what is still owed for the W2-OPEN-1
+tie.]** The r0 text said this corollary "is W-2 clause 3's value-layer
+statement (W2-OPEN-1) RESTRICTED to the base junction at the corner — now
+PROVED at this note's grade there, upgraded from instance-confirmed". That
+identification is WITHDRAWN as underived (PE1 F3): no equivalence between
+COR 2 and any slice of W2-OPEN-1 is derived anywhere in this note.
+W2-OPEN-1 as recorded (GRTW2 §5.3) quantifies over the committed
+value/cocycle battery — K5/K6/K7, K12 = π-shift/ρ-monodromy, K1–K4/K13
+riding — WITH THE TRANSPORTED CLASSIFIER LIFTS substituted for the harness
+lifts. Two things are therefore owed before even the base-junction slice of
+that statement may be claimed, and NEITHER is in this note: **(a) an
+orbit-membership display** — that the transported CLASSIFIER key at the base
+junction is an S1 orbit member (monic, degree e₀d₀, w₁ = e₀h₀, nonzero
+order-1 residual y + c′), which needs the GMN key-polynomial normalization
+plus W2-C3(ii), not merely the harness parametrization this note uses;
+**(b) the battery legs outside the display/anchor families** — K12 above
+all — under the restriction. Until both are displayed, COR 2 is a statement
+about the harness monic-lift orbit only. The unit's W-2 grade cap (grade
+box) is unaffected: it was and remains driven by S1's and this corollary's
+consumption of clause 3's FRAMING.
 
 **PROP (propagation to every level — the S0.1 rider leg).** (ITER-LAW-n)
 for every lawful monic Φ₁ at the corner, all n: the [ILN] chain consumes
@@ -224,9 +458,19 @@ the arc: the clause-(ii) census at rungs ≥ 2 (no rung leg opens Φ₁'s bytes
 outside the level-1 package) is cited from the [ILN]/ILNRES consumption
 tables, not re-proved here.
 
-**Grade box + W-2 consumption census (the cap).** This note: ATTEMPT 0/2,
-hostile arc OWED (charge: the CONTENT sub-lemma's base-fact status; the
-READ-EQ on-line-content/ultrametric close; PROP's census cite). W-2
+**Grade box + W-2 consumption census (the cap).** This note: ATTEMPT 0/2 —
+r1 is a REPAIR round, not a pass; one hostile pass has run (PE1: 1 CRITICAL
++ 3 gaps, all four repaired here) and the arc is OWED on THIS text. Charge
+(r1-updated; the r0 charge list named neither the step that broke nor the
+r1 argument — PE1 F1's closing observation, accepted): **(1) the S4.1
+seven-genre child census's COMPLETENESS** — that the pass identity, after
+the b₀-split and the r/q redigit, produces no branch outside rows 1–7 — and
+the row-7b degree drop; **(2) the lex-order finiteness argument** ((C)(ii):
+finite branching + the ρ depth bound); **(3)** the CONTENT sub-lemma's
+base-fact status; **(4)** the READ-EQ on-line-content/ultrametric close;
+**(5)** PROP's census cite; **(6)** COR 2's rescoped statement (the F3 box's
+(a)/(b) are owed for any W2-OPEN-1 tie, and are NOT part of this note's
+claim). W-2
 consumption: COR 2 and the S1 orbit frame consume GRTW2 clause 3 (the
 ψ-transport definition + its corner degeneration) — GRTW2 is itself 0/2, so
 **the unit's grade is CAPPED at that consumption, as charged**. Honest
@@ -247,8 +491,29 @@ ILNRES residual list; the T-class(n) conditionality of record shrinks to
 NR-2/NR-3 (+ NR-4's own closing arc). NOT covered, said plainly:
 non-canonical lawful lifts at DEEPER levels (Φ_{m+1}, m ≥ 1) — a separate
 corner (the g_m = 1 analogue), never part of (ITER-LAW-LIFT)'s displayed
-statement (wave-18 S0), stays open as its own priced item. The wave-18
-sketch's one open step (TAIL-STAB) is CLOSED by S4.1 (its ω is this ledger;
-the monomial form is subsumed); wave-18's price sheet is settled in full.
+statement (wave-18 S0), stays open as its own priced item.
 
-— LIFT-CORNER unit, campaign date 2026-08-08 (wallclock 2026-08-04).
+**STATUS LINE (r1-honest; supersedes the r0 sentence "The wave-18 sketch's
+one open step (TAIL-STAB) is CLOSED by S4.1 (its ω is this ledger; the
+monomial form is subsumed); wave-18's price sheet is settled in full").**
+As of repair round r1: (TAIL-STAB) is PROVED by S4.1 AS REPAIRED — the r0
+proof's strict-descent clause (m′ ≤ m−1 at every child) was REFUTED by PE1
+at the top-mid q-child (m′ = m), the lemma STATEMENT is byte-unchanged, and
+the argument now rides the lexicographic (m, deg a) descent over a
+seven-genre child census derived from the committed examples-first table
+(`liftcorner_tailstab_children.py` / `..._table.txt`). Its ω is this ledger
+and wave-18's monomial form is subsumed, as r0 said. Grade: **attempt 0/2**
+— PE1 was a hostile pass but returned 1 CRITICAL, so no acceptance credit
+accrued; the r1 argument itself has NEVER been hostile-read, and the grade
+box's charge (1)–(2) names exactly which of its steps are unaudited. So:
+wave-18's price sheet is settled MODULO this note's own arc, not "in full".
+The three r1 gap repairs, for the record: ĉ′/t₀ now defined in-note (F2);
+COR 2's W2-OPEN-1 identification WITHDRAWN and rescoped, with (a)/(b) owed
+(F3); S2 disclosure (c) corrected to what the runner actually asserts (F4).
+Everything downstream of (TAIL-STAB) — READ-EQ, the THEOREM, COR 1, PROP —
+stands exactly as PE1 verified it GIVEN (TAIL-STAB), and the corner
+measurement (S3, the covariance carrying the corner) is machine fact,
+untouched by F1 in either direction.
+
+— LIFT-CORNER unit, campaign date 2026-08-08 (wallclock 2026-08-04);
+repair round r1 applied 2026-08-08 campaign (wallclock 2026-08-05).
