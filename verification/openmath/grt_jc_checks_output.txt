@@ -1,0 +1,108 @@
+grt_jc_checks.py -- GRTJC COMPOSER battery (W-6..W-9)
+  [   0.2s] EXT-GATE done (new: 0)
+  [   0.2s] C2A    m=1 E=4   |K|=4   g_m=1 e_m=2  span 16/16  raw nosol 4/12  trip 12  cyc=Y  (0.0s)
+  [   0.2s] C2B    m=1 E=4   |K|=4   g_m=1 e_m=2  span 16/16  raw nosol 4/12  trip 12  cyc=N  (0.0s)
+  [   0.2s] C2C    m=1 E=6   |K|=3   g_m=1 e_m=2  span 24/24  raw nosol 4/12  trip 12  cyc=N  (0.0s)
+  [   0.2s] C2D    m=1 E=6   |K|=9   g_m=1 e_m=3  span 24/24  raw nosol 4/12  trip 12  cyc=N  (0.0s)
+  [   0.2s] C2E    m=1 E=4   |K|=4   g_m=1 e_m=2  span 16/16  raw nosol 4/12  trip 12  cyc=Y  (0.0s)
+  [   0.2s] C2F    m=1 E=10  |K|=5   g_m=1 e_m=2  span 24/24  raw nosol 4/12  trip 6  cyc=?  (0.0s)
+  [   0.2s] C2G    m=1 E=6   |K|=25  g_m=1 e_m=3  span 24/24  raw nosol 4/12  trip 12  cyc=Y  (0.0s)
+  [   0.2s] C2H    m=1 E=4   |K|=8   g_m=1 e_m=2  span 16/16  raw nosol 4/12  trip 12  cyc=N  (0.0s)
+  [   0.2s] C2I    m=1 E=4   |K|=4   g_m=2 e_m=2  span 16/16  raw nosol 0/8  trip 12  cyc=N  (0.0s)
+  [   0.2s] C2J    m=1 E=3   |K|=3   g_m=1 e_m=3  span 9/9  raw nosol 3/9  trip 9  cyc=Y  (0.0s)
+  [   0.3s] C3A    m=2 E=8   |K|=4   g_m=1 e_m=2  span 24/24  raw nosol 4/12  trip 12  cyc=Y  (0.0s)
+  [   0.3s] C3B    m=2 E=12  |K|=3   g_m=1 e_m=2  span 24/24  raw nosol 4/12  trip 6  cyc=?  (0.0s)
+  [   0.3s] C3C    m=2 E=12  |K|=3   g_m=1 e_m=2  span 24/24  raw nosol 4/12  trip 6  cyc=?  (0.0s)
+  [   0.4s] C3D    m=2 E=8   |K|=4   g_m=1 e_m=2  span 24/24  raw nosol 4/12  trip 12  cyc=N  (0.1s)
+  [   0.4s] C3E    m=2 E=4   |K|=4   g_m=1 e_m=2  span 16/16  raw nosol 4/12  trip 12  cyc=N  (0.0s)
+  [   0.4s] C3F    m=2 E=12  |K|=9   g_m=1 e_m=3  span 24/24  raw nosol 4/12  trip 6  cyc=N  (0.0s)
+  [   0.5s] C3G    m=2 E=20  |K|=5   g_m=1 e_m=2  span 24/24  raw nosol 4/12  trip 6  cyc=?  (0.0s)
+  [   0.5s] C3H    m=2 E=8   |K|=8   g_m=1 e_m=2  span 24/24  raw nosol 4/12  trip 12  cyc=N  (0.0s)
+  [   0.6s] C3I    m=2 E=8   |K|=4   g_m=1 e_m=2  span 24/24  raw nosol 4/12  trip 12  cyc=N  (0.1s)
+  [   0.6s] C3J    m=2 E=12  |K|=3   g_m=1 e_m=2  span 24/24  raw nosol 4/12  trip 6  cyc=?  (0.0s)
+  [   0.6s] C4A    m=3 E=16  |K|=2   g_m=1 e_m=2  span 24/24  raw nosol 4/12  trip 6  cyc=Y  (0.0s)
+  [   0.7s] C4B    m=3 E=16  |K|=4   g_m=1 e_m=2  span 24/24  raw nosol 4/12  trip 6  cyc=N  (0.0s)
+  [   0.7s] C4C    m=3 E=24  |K|=3   g_m=1 e_m=2  span 24/24  raw nosol 4/12  trip 6  cyc=?  (0.1s)
+  [   0.9s] C4G    m=3 E=16  |K|=4   g_m=1 e_m=2  span 24/24  raw nosol 4/12  trip 6  cyc=N  (0.2s)
+  [   0.9s] C4H    m=3 E=10  |K|=5   g_m=1 e_m=1  span 0/0  raw nosol 0/8  trip 6  cyc=?  (0.0s)
+  [   1.0s] C4I    m=3 E=16  |K|=4   g_m=2 e_m=2  span 24/24  raw nosol 0/8  trip 6  cyc=?  (0.0s)
+  [   1.0s] I4A    m=3 E=12  |K|=4   g_m=1 e_m=3  span 24/24  raw nosol 4/12  trip 6  cyc=?  (0.0s)
+  [   1.0s] I4B    m=3 E=12  |K|=9   g_m=1 e_m=2  span 24/24  raw nosol 4/12  trip 6  cyc=N  (0.0s)
+  [   2.0s] I4C    m=3 E=8   |K|=16  g_m=1 e_m=2  span 24/24  raw nosol 4/12  trip 12  cyc=N  (0.9s)
+
+==============================================================================
+FAMILY TABLE (samples / violations; sealed predictions in the docstring)
+  EXT-GATE         samples      1   violations    0
+  JC1              samples   2594   violations    0
+  JC2              samples    570   violations    0
+  JC3              samples   2484   violations    0
+  JC3-FLAT-census  samples     24   violations    0
+  JC4              samples    443   violations    0
+  JC5              samples    855   violations    0
+  JC6              samples    116   violations    0
+  JC7              samples    581   violations    0
+  JC8              samples    898   violations    0
+
+TEETH (each MUST fire)
+  MJ1  fired   103 times (opportunities 333)
+  MJ2  fired   285 times (opportunities 285)
+  MJ3  fired     4 times (opportunities 6)
+  MJ4  fired    29 times (opportunities 29)
+  MJ5  fired   633 times (opportunities 633)
+
+JC3 SLOT-SPAN (the note's new sharp prediction): 609/609 pairs with slot set == {delta} on e_m >= 2 rows; 0 violations
+JC3 e_m = 1 CENSUS (JC-BOX-4, measured not scored): 24 pairs, 0 with a slot > 0
+MJ1 RAW census: 103/333 tested pairs have NO pre-TC-3 scalar, of which 103 are the delta >= g_m load set
+JC7 cocycle triples checked: 261
+JC8 CYCLIC split: CYCLIC 6 / NOT-CYCLIC 14 / UNDECIDED 9 (law: CYCLIC => collapse geography)
+
+CYCLIC ADJUDICATION + COLLAPSE GEOGRAPHY (per row)
+  C2A    collapse=True  nvals=1  CYCLIC zeta = zb^1, sigma = (0, 1, 2, 3)
+  C2B    collapse=True  nvals=2  NOT-CYCLIC (2 distinct non-1 values: zb^1, zb^2)
+  C2C    collapse=True  nvals=1  NOT-CYCLIC (single value zb^1, carry pattern not realizable)
+  C2D    collapse=True  nvals=2  NOT-CYCLIC (2 distinct non-1 values: zb^1, zb^3)
+  C2E    collapse=True  nvals=1  CYCLIC zeta = zb^1, sigma = (0, 1, 2, 3)
+  C2F    collapse=True  nvals=1  UNDECIDED (E = 10 > 8: relabeling search skipped; single value zb^1)
+  C2G    collapse=True  nvals=1  CYCLIC zeta = zb^5, sigma = (0, 1, 2, 3, 4, 5)
+  C2H    collapse=True  nvals=3  NOT-CYCLIC (3 distinct non-1 values: zb^1, zb^3, zb^4)
+  C2I    collapse=False nvals=1  NOT-CYCLIC (single value zb^1, carry pattern not realizable)
+  C2J    collapse=True  nvals=1  CYCLIC zeta = zb^1, sigma = (0, 1, 2)
+  C3A    collapse=True  nvals=1  CYCLIC zeta = zb^1, sigma = (0, 5, 2, 7, 4, 1, 6, 3)
+  C3B    collapse=True  nvals=1  UNDECIDED (E = 12 > 8: relabeling search skipped; single value zb^1)
+  C3C    collapse=True  nvals=1  UNDECIDED (E = 12 > 8: relabeling search skipped; single value zb^1)
+  C3D    collapse=True  nvals=2  NOT-CYCLIC (2 distinct non-1 values: zb^1, zb^2)
+  C3E    collapse=True  nvals=2  NOT-CYCLIC (2 distinct non-1 values: zb^1, zb^2)
+  C3F    collapse=True  nvals=3  NOT-CYCLIC (3 distinct non-1 values: zb^1, zb^2, zb^3)
+  C3G    collapse=True  nvals=1  UNDECIDED (E = 20 > 8: relabeling search skipped; single value zb^1)
+  C3H    collapse=True  nvals=5  NOT-CYCLIC (5 distinct non-1 values: zb^1, zb^2, zb^3, zb^4, zb^5)
+  C3I    collapse=True  nvals=1  NOT-CYCLIC (single value zb^1, carry pattern not realizable)
+  C3J    collapse=True  nvals=1  UNDECIDED (E = 12 > 8: relabeling search skipped; single value zb^1)
+  C4A    collapse=True  nvals=0  CYCLIC (c == 1 identically)
+  C4B    collapse=True  nvals=2  NOT-CYCLIC (2 distinct non-1 values: zb^1, zb^2)
+  C4C    collapse=True  nvals=1  UNDECIDED (E = 24 > 8: relabeling search skipped; single value zb^1)
+  C4G    collapse=True  nvals=2  NOT-CYCLIC (2 distinct non-1 values: zb^1, zb^2)
+  C4H    collapse=True  nvals=1  UNDECIDED (E = 10 > 8: relabeling search skipped; single value zb^1)
+  C4I    collapse=False nvals=1  UNDECIDED (E = 16 > 8: relabeling search skipped; single value zb^1)
+  I4A    collapse=True  nvals=1  UNDECIDED (E = 12 > 8: relabeling search skipped; single value zb^1)
+  I4B    collapse=True  nvals=3  NOT-CYCLIC (3 distinct non-1 values: zb^1, zb^2, zb^3)
+  I4C    collapse=True  nvals=7  NOT-CYCLIC (7 distinct non-1 values: zb^1, zb^2, zb^3, zb^5, zb^6, zb^7, zb^8)
+
+E-FOLD CHAIN (monodromy vs orbit product, E <= 8)
+  C2A    direct zb^1         prod zb^1        
+  C2B    direct zb^2         prod zb^2        
+  C2C    direct 1            prod 1           
+  C2D    direct zb^1         prod zb^1        
+  C2E    direct zb^1         prod zb^1        
+  C2G    direct zb^5         prod zb^5        
+  C2H    direct 1            prod 1           
+  C2I    direct zb^2         prod zb^2        
+  C2J    direct zb^1         prod zb^1        
+  C3A    direct zb^2         prod zb^2        
+  C3D    direct zb^2         prod zb^2        
+  C3E    direct 1            prod 1           
+  C3H    direct zb^1         prod zb^1        
+  C3I    direct zb^2         prod zb^2        
+  I4C    direct zb^5         prod zb^5        
+
+elapsed 2.0s;  total violations 0;  silent teeth NONE
+wrote /data/users/asvin/math-and-lean/p-adic-splitting-densities/verification/openmath/grt_jc_checks_results.json

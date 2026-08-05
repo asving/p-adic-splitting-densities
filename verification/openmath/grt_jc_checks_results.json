@@ -1,0 +1,1419 @@
+{
+ "census": {},
+ "cyc_split": {
+  "?": 9,
+  "N": 14,
+  "Y": 6
+ },
+ "families": {
+  "counts": {
+   "EXT-GATE": 1,
+   "JC1": 2594,
+   "JC2": 570,
+   "JC3": 2484,
+   "JC3-FLAT-census": 24,
+   "JC4": 443,
+   "JC5": 855,
+   "JC6": 116,
+   "JC7": 581,
+   "JC8": 898,
+   "MJ1": 333,
+   "MJ2": 285,
+   "MJ3": 6,
+   "MJ4": 29,
+   "MJ5": 633,
+   "TOOTH-ROW": 89
+  },
+  "violations": {}
+ },
+ "rows": {
+  "C2A": {
+   "E": 4,
+   "G0": 4,
+   "N": 12,
+   "chain": [
+    "zb^1",
+    "zb^1"
+   ],
+   "cocycle_triples": 12,
+   "cyc": {
+    "collapse": true,
+    "cyclic": true,
+    "nvals": 1,
+    "values": [
+     "zb^1"
+    ],
+    "verdict": "CYCLIC zeta = zb^1, sigma = (0, 1, 2, 3)"
+   },
+   "d0": 2,
+   "e_m": 2,
+   "fib_tuples": 4,
+   "g_m": 1,
+   "id": "C2A",
+   "m": 1,
+   "nK": 4,
+   "p": 2,
+   "psiker_witness": true,
+   "raw": {
+    "nosol": 4,
+    "nosol_load": 4,
+    "sol_nonload": 0,
+    "tested": 12
+   },
+   "ring": "Zp",
+   "span": {
+    "bad": 0,
+    "flat_census": 0,
+    "flat_maxgt0": 0,
+    "scored": 16,
+    "sharp": 16
+   },
+   "teeth": {
+    "MJ1": 4,
+    "MJ2": 4,
+    "MJ4": 1,
+    "MJ5": 16
+   }
+  },
+  "C2B": {
+   "E": 4,
+   "G0": 8,
+   "N": 20,
+   "chain": [
+    "zb^2",
+    "zb^2"
+   ],
+   "cocycle_triples": 12,
+   "cyc": {
+    "collapse": true,
+    "cyclic": false,
+    "nvals": 2,
+    "values": [
+     "zb^1",
+     "zb^2"
+    ],
+    "verdict": "NOT-CYCLIC (2 distinct non-1 values: zb^1, zb^2)"
+   },
+   "d0": 1,
+   "e_m": 2,
+   "fib_tuples": 4,
+   "g_m": 1,
+   "id": "C2B",
+   "m": 1,
+   "nK": 4,
+   "p": 2,
+   "psiker_witness": true,
+   "raw": {
+    "nosol": 4,
+    "nosol_load": 4,
+    "sol_nonload": 0,
+    "tested": 12
+   },
+   "ring": "Zp",
+   "span": {
+    "bad": 0,
+    "flat_census": 0,
+    "flat_maxgt0": 0,
+    "scored": 16,
+    "sharp": 16
+   },
+   "teeth": {
+    "MJ1": 4,
+    "MJ2": 4,
+    "MJ4": 1,
+    "MJ5": 16
+   }
+  },
+  "C2C": {
+   "E": 6,
+   "G0": 6,
+   "N": 18,
+   "chain": [
+    "1",
+    "1"
+   ],
+   "cocycle_triples": 12,
+   "cyc": {
+    "collapse": true,
+    "cyclic": false,
+    "nvals": 1,
+    "values": [
+     "zb^1"
+    ],
+    "verdict": "NOT-CYCLIC (single value zb^1, carry pattern not realizable)"
+   },
+   "d0": 1,
+   "e_m": 2,
+   "fib_tuples": 6,
+   "g_m": 1,
+   "id": "C2C",
+   "m": 1,
+   "nK": 3,
+   "p": 3,
+   "psiker_witness": true,
+   "raw": {
+    "nosol": 4,
+    "nosol_load": 4,
+    "sol_nonload": 0,
+    "tested": 12
+   },
+   "ring": "Zp",
+   "span": {
+    "bad": 0,
+    "flat_census": 0,
+    "flat_maxgt0": 0,
+    "scored": 24,
+    "sharp": 24
+   },
+   "teeth": {
+    "MJ1": 4,
+    "MJ2": 6,
+    "MJ4": 1,
+    "MJ5": 24
+   }
+  },
+  "C2D": {
+   "E": 6,
+   "G0": 18,
+   "N": 24,
+   "chain": [
+    "zb^1",
+    "zb^1"
+   ],
+   "cocycle_triples": 12,
+   "cyc": {
+    "collapse": true,
+    "cyclic": false,
+    "nvals": 2,
+    "values": [
+     "zb^1",
+     "zb^3"
+    ],
+    "verdict": "NOT-CYCLIC (2 distinct non-1 values: zb^1, zb^3)"
+   },
+   "d0": 2,
+   "e_m": 3,
+   "fib_tuples": 6,
+   "g_m": 1,
+   "id": "C2D",
+   "m": 1,
+   "nK": 9,
+   "p": 3,
+   "psiker_witness": true,
+   "raw": {
+    "nosol": 4,
+    "nosol_load": 4,
+    "sol_nonload": 0,
+    "tested": 12
+   },
+   "ring": "Zp",
+   "span": {
+    "bad": 0,
+    "flat_census": 0,
+    "flat_maxgt0": 0,
+    "scored": 24,
+    "sharp": 24
+   },
+   "teeth": {
+    "MJ1": 4,
+    "MJ2": 6,
+    "MJ4": 1,
+    "MJ5": 24
+   }
+  },
+  "C2E": {
+   "E": 4,
+   "G0": 4,
+   "N": 12,
+   "chain": [
+    "zb^1",
+    "zb^1"
+   ],
+   "cocycle_triples": 12,
+   "cyc": {
+    "collapse": true,
+    "cyclic": true,
+    "nvals": 1,
+    "values": [
+     "zb^1"
+    ],
+    "verdict": "CYCLIC zeta = zb^1, sigma = (0, 1, 2, 3)"
+   },
+   "d0": 2,
+   "e_m": 2,
+   "fib_tuples": 4,
+   "g_m": 1,
+   "id": "C2E",
+   "m": 1,
+   "nK": 4,
+   "p": 2,
+   "psiker_witness": true,
+   "raw": {
+    "nosol": 4,
+    "nosol_load": 4,
+    "sol_nonload": 0,
+    "tested": 12
+   },
+   "ring": "Fpt",
+   "span": {
+    "bad": 0,
+    "flat_census": 0,
+    "flat_maxgt0": 0,
+    "scored": 16,
+    "sharp": 16
+   },
+   "teeth": {
+    "MJ1": 4,
+    "MJ2": 4,
+    "MJ4": 1,
+    "MJ5": 16
+   }
+  },
+  "C2F": {
+   "E": 10,
+   "G0": 10,
+   "N": 30,
+   "chain": null,
+   "cocycle_triples": 6,
+   "cyc": {
+    "collapse": true,
+    "cyclic": null,
+    "nvals": 1,
+    "values": [
+     "zb^1"
+    ],
+    "verdict": "UNDECIDED (E = 10 > 8: relabeling search skipped; single value zb^1)"
+   },
+   "d0": 1,
+   "e_m": 2,
+   "fib_tuples": 10,
+   "g_m": 1,
+   "id": "C2F",
+   "m": 1,
+   "nK": 5,
+   "p": 5,
+   "psiker_witness": true,
+   "raw": {
+    "nosol": 4,
+    "nosol_load": 4,
+    "sol_nonload": 0,
+    "tested": 12
+   },
+   "ring": "Zp",
+   "span": {
+    "bad": 0,
+    "flat_census": 0,
+    "flat_maxgt0": 0,
+    "scored": 24,
+    "sharp": 24
+   },
+   "teeth": {
+    "MJ1": 4,
+    "MJ2": 10,
+    "MJ4": 1,
+    "MJ5": 24
+   }
+  },
+  "C2G": {
+   "E": 6,
+   "G0": 12,
+   "N": 24,
+   "chain": [
+    "zb^5",
+    "zb^5"
+   ],
+   "cocycle_triples": 12,
+   "cyc": {
+    "collapse": true,
+    "cyclic": true,
+    "nvals": 1,
+    "values": [
+     "zb^5"
+    ],
+    "verdict": "CYCLIC zeta = zb^5, sigma = (0, 1, 2, 3, 4, 5)"
+   },
+   "d0": 2,
+   "e_m": 3,
+   "fib_tuples": 6,
+   "g_m": 1,
+   "id": "C2G",
+   "m": 1,
+   "nK": 25,
+   "p": 5,
+   "psiker_witness": true,
+   "raw": {
+    "nosol": 4,
+    "nosol_load": 4,
+    "sol_nonload": 0,
+    "tested": 12
+   },
+   "ring": "Zp",
+   "span": {
+    "bad": 0,
+    "flat_census": 0,
+    "flat_maxgt0": 0,
+    "scored": 24,
+    "sharp": 24
+   },
+   "teeth": {
+    "MJ1": 4,
+    "MJ2": 6,
+    "MJ4": 1,
+    "MJ5": 24
+   }
+  },
+  "C2H": {
+   "E": 4,
+   "G0": 4,
+   "N": 12,
+   "chain": [
+    "1",
+    "1"
+   ],
+   "cocycle_triples": 12,
+   "cyc": {
+    "collapse": true,
+    "cyclic": false,
+    "nvals": 3,
+    "values": [
+     "zb^1",
+     "zb^3",
+     "zb^4"
+    ],
+    "verdict": "NOT-CYCLIC (3 distinct non-1 values: zb^1, zb^3, zb^4)"
+   },
+   "d0": 3,
+   "e_m": 2,
+   "fib_tuples": 4,
+   "g_m": 1,
+   "id": "C2H",
+   "m": 1,
+   "nK": 8,
+   "p": 2,
+   "psiker_witness": true,
+   "raw": {
+    "nosol": 4,
+    "nosol_load": 4,
+    "sol_nonload": 0,
+    "tested": 12
+   },
+   "ring": "Zp",
+   "span": {
+    "bad": 0,
+    "flat_census": 0,
+    "flat_maxgt0": 0,
+    "scored": 16,
+    "sharp": 16
+   },
+   "teeth": {
+    "MJ1": 4,
+    "MJ2": 4,
+    "MJ4": 1,
+    "MJ5": 16
+   }
+  },
+  "C2I": {
+   "E": 4,
+   "G0": 4,
+   "N": 20,
+   "chain": [
+    "zb^2",
+    "zb^2"
+   ],
+   "cocycle_triples": 12,
+   "cyc": {
+    "collapse": false,
+    "cyclic": false,
+    "nvals": 1,
+    "values": [
+     "zb^1"
+    ],
+    "verdict": "NOT-CYCLIC (single value zb^1, carry pattern not realizable)"
+   },
+   "d0": 1,
+   "e_m": 2,
+   "fib_tuples": 4,
+   "g_m": 2,
+   "id": "C2I",
+   "m": 1,
+   "nK": 4,
+   "p": 2,
+   "psiker_witness": true,
+   "raw": {
+    "nosol": 0,
+    "nosol_load": 0,
+    "sol_nonload": 0,
+    "tested": 8
+   },
+   "ring": "Zp",
+   "span": {
+    "bad": 0,
+    "flat_census": 0,
+    "flat_maxgt0": 0,
+    "scored": 16,
+    "sharp": 16
+   },
+   "teeth": {
+    "MJ2": 4,
+    "MJ3": 2,
+    "MJ4": 1,
+    "MJ5": 16
+   }
+  },
+  "C2J": {
+   "E": 3,
+   "G0": 6,
+   "N": 12,
+   "chain": [
+    "zb^1",
+    "zb^1"
+   ],
+   "cocycle_triples": 9,
+   "cyc": {
+    "collapse": true,
+    "cyclic": true,
+    "nvals": 1,
+    "values": [
+     "zb^1"
+    ],
+    "verdict": "CYCLIC zeta = zb^1, sigma = (0, 1, 2)"
+   },
+   "d0": 1,
+   "e_m": 3,
+   "fib_tuples": 3,
+   "g_m": 1,
+   "id": "C2J",
+   "m": 1,
+   "nK": 3,
+   "p": 3,
+   "psiker_witness": true,
+   "raw": {
+    "nosol": 3,
+    "nosol_load": 3,
+    "sol_nonload": 0,
+    "tested": 9
+   },
+   "ring": "Zp",
+   "span": {
+    "bad": 0,
+    "flat_census": 0,
+    "flat_maxgt0": 0,
+    "scored": 9,
+    "sharp": 9
+   },
+   "teeth": {
+    "MJ1": 3,
+    "MJ2": 3,
+    "MJ4": 1,
+    "MJ5": 9
+   }
+  },
+  "C3A": {
+   "E": 8,
+   "G0": 32,
+   "N": 48,
+   "chain": [
+    "zb^2",
+    "zb^2"
+   ],
+   "cocycle_triples": 12,
+   "cyc": {
+    "collapse": true,
+    "cyclic": true,
+    "nvals": 1,
+    "values": [
+     "zb^1"
+    ],
+    "verdict": "CYCLIC zeta = zb^1, sigma = (0, 5, 2, 7, 4, 1, 6, 3)"
+   },
+   "d0": 2,
+   "e_m": 2,
+   "fib_tuples": 8,
+   "g_m": 1,
+   "id": "C3A",
+   "m": 2,
+   "nK": 4,
+   "p": 2,
+   "psiker_witness": true,
+   "raw": {
+    "nosol": 4,
+    "nosol_load": 4,
+    "sol_nonload": 0,
+    "tested": 12
+   },
+   "ring": "Zp",
+   "span": {
+    "bad": 0,
+    "flat_census": 0,
+    "flat_maxgt0": 0,
+    "scored": 24,
+    "sharp": 24
+   },
+   "teeth": {
+    "MJ1": 4,
+    "MJ2": 8,
+    "MJ4": 1,
+    "MJ5": 24
+   }
+  },
+  "C3B": {
+   "E": 12,
+   "G0": 48,
+   "N": 60,
+   "chain": null,
+   "cocycle_triples": 6,
+   "cyc": {
+    "collapse": true,
+    "cyclic": null,
+    "nvals": 1,
+    "values": [
+     "zb^1"
+    ],
+    "verdict": "UNDECIDED (E = 12 > 8: relabeling search skipped; single value zb^1)"
+   },
+   "d0": 1,
+   "e_m": 2,
+   "fib_tuples": 12,
+   "g_m": 1,
+   "id": "C3B",
+   "m": 2,
+   "nK": 3,
+   "p": 3,
+   "psiker_witness": true,
+   "raw": {
+    "nosol": 4,
+    "nosol_load": 4,
+    "sol_nonload": 0,
+    "tested": 12
+   },
+   "ring": "Zp",
+   "span": {
+    "bad": 0,
+    "flat_census": 0,
+    "flat_maxgt0": 0,
+    "scored": 24,
+    "sharp": 24
+   },
+   "teeth": {
+    "MJ1": 4,
+    "MJ2": 12,
+    "MJ4": 1,
+    "MJ5": 24
+   }
+  },
+  "C3C": {
+   "E": 12,
+   "G0": 84,
+   "N": 108,
+   "chain": null,
+   "cocycle_triples": 6,
+   "cyc": {
+    "collapse": true,
+    "cyclic": null,
+    "nvals": 1,
+    "values": [
+     "zb^1"
+    ],
+    "verdict": "UNDECIDED (E = 12 > 8: relabeling search skipped; single value zb^1)"
+   },
+   "d0": 1,
+   "e_m": 2,
+   "fib_tuples": 12,
+   "g_m": 1,
+   "id": "C3C",
+   "m": 2,
+   "nK": 3,
+   "p": 3,
+   "psiker_witness": true,
+   "raw": {
+    "nosol": 4,
+    "nosol_load": 4,
+    "sol_nonload": 0,
+    "tested": 12
+   },
+   "ring": "Zp",
+   "span": {
+    "bad": 0,
+    "flat_census": 0,
+    "flat_maxgt0": 0,
+    "scored": 24,
+    "sharp": 24
+   },
+   "teeth": {
+    "MJ1": 4,
+    "MJ2": 12,
+    "MJ4": 1,
+    "MJ5": 24
+   }
+  },
+  "C3D": {
+   "E": 8,
+   "G0": 56,
+   "N": 80,
+   "chain": [
+    "zb^2",
+    "zb^2"
+   ],
+   "cocycle_triples": 12,
+   "cyc": {
+    "collapse": true,
+    "cyclic": false,
+    "nvals": 2,
+    "values": [
+     "zb^1",
+     "zb^2"
+    ],
+    "verdict": "NOT-CYCLIC (2 distinct non-1 values: zb^1, zb^2)"
+   },
+   "d0": 1,
+   "e_m": 2,
+   "fib_tuples": 8,
+   "g_m": 1,
+   "id": "C3D",
+   "m": 2,
+   "nK": 4,
+   "p": 2,
+   "psiker_witness": true,
+   "raw": {
+    "nosol": 4,
+    "nosol_load": 4,
+    "sol_nonload": 0,
+    "tested": 12
+   },
+   "ring": "Fpt",
+   "span": {
+    "bad": 0,
+    "flat_census": 0,
+    "flat_maxgt0": 0,
+    "scored": 24,
+    "sharp": 24
+   },
+   "teeth": {
+    "MJ1": 4,
+    "MJ2": 8,
+    "MJ4": 1,
+    "MJ5": 24
+   }
+  },
+  "C3E": {
+   "E": 4,
+   "G0": 12,
+   "N": 28,
+   "chain": [
+    "1",
+    "1"
+   ],
+   "cocycle_triples": 12,
+   "cyc": {
+    "collapse": true,
+    "cyclic": false,
+    "nvals": 2,
+    "values": [
+     "zb^1",
+     "zb^2"
+    ],
+    "verdict": "NOT-CYCLIC (2 distinct non-1 values: zb^1, zb^2)"
+   },
+   "d0": 1,
+   "e_m": 2,
+   "fib_tuples": 4,
+   "g_m": 1,
+   "id": "C3E",
+   "m": 2,
+   "nK": 4,
+   "p": 2,
+   "psiker_witness": true,
+   "raw": {
+    "nosol": 4,
+    "nosol_load": 4,
+    "sol_nonload": 0,
+    "tested": 12
+   },
+   "ring": "Zp",
+   "span": {
+    "bad": 0,
+    "flat_census": 0,
+    "flat_maxgt0": 0,
+    "scored": 16,
+    "sharp": 16
+   },
+   "teeth": {
+    "MJ1": 4,
+    "MJ2": 4,
+    "MJ4": 1,
+    "MJ5": 16
+   }
+  },
+  "C3F": {
+   "E": 12,
+   "G0": 72,
+   "N": 96,
+   "chain": null,
+   "cocycle_triples": 6,
+   "cyc": {
+    "collapse": true,
+    "cyclic": false,
+    "nvals": 3,
+    "values": [
+     "zb^1",
+     "zb^2",
+     "zb^3"
+    ],
+    "verdict": "NOT-CYCLIC (3 distinct non-1 values: zb^1, zb^2, zb^3)"
+   },
+   "d0": 2,
+   "e_m": 3,
+   "fib_tuples": 12,
+   "g_m": 1,
+   "id": "C3F",
+   "m": 2,
+   "nK": 9,
+   "p": 3,
+   "psiker_witness": true,
+   "raw": {
+    "nosol": 4,
+    "nosol_load": 4,
+    "sol_nonload": 0,
+    "tested": 12
+   },
+   "ring": "Zp",
+   "span": {
+    "bad": 0,
+    "flat_census": 0,
+    "flat_maxgt0": 0,
+    "scored": 24,
+    "sharp": 24
+   },
+   "teeth": {
+    "MJ1": 4,
+    "MJ2": 12,
+    "MJ4": 1,
+    "MJ5": 24
+   }
+  },
+  "C3G": {
+   "E": 20,
+   "G0": 200,
+   "N": 240,
+   "chain": null,
+   "cocycle_triples": 6,
+   "cyc": {
+    "collapse": true,
+    "cyclic": null,
+    "nvals": 1,
+    "values": [
+     "zb^1"
+    ],
+    "verdict": "UNDECIDED (E = 20 > 8: relabeling search skipped; single value zb^1)"
+   },
+   "d0": 1,
+   "e_m": 2,
+   "fib_tuples": 20,
+   "g_m": 1,
+   "id": "C3G",
+   "m": 2,
+   "nK": 5,
+   "p": 5,
+   "psiker_witness": true,
+   "raw": {
+    "nosol": 4,
+    "nosol_load": 4,
+    "sol_nonload": 0,
+    "tested": 12
+   },
+   "ring": "Zp",
+   "span": {
+    "bad": 0,
+    "flat_census": 0,
+    "flat_maxgt0": 0,
+    "scored": 24,
+    "sharp": 24
+   },
+   "teeth": {
+    "MJ1": 4,
+    "MJ2": 20,
+    "MJ4": 1,
+    "MJ5": 24
+   }
+  },
+  "C3H": {
+   "E": 8,
+   "G0": 32,
+   "N": 48,
+   "chain": [
+    "zb^1",
+    "zb^1"
+   ],
+   "cocycle_triples": 12,
+   "cyc": {
+    "collapse": true,
+    "cyclic": false,
+    "nvals": 5,
+    "values": [
+     "zb^1",
+     "zb^2",
+     "zb^3",
+     "zb^4",
+     "zb^5"
+    ],
+    "verdict": "NOT-CYCLIC (5 distinct non-1 values: zb^1, zb^2, zb^3, zb^4, zb^5)"
+   },
+   "d0": 3,
+   "e_m": 2,
+   "fib_tuples": 8,
+   "g_m": 1,
+   "id": "C3H",
+   "m": 2,
+   "nK": 8,
+   "p": 2,
+   "psiker_witness": true,
+   "raw": {
+    "nosol": 4,
+    "nosol_load": 4,
+    "sol_nonload": 0,
+    "tested": 12
+   },
+   "ring": "Zp",
+   "span": {
+    "bad": 0,
+    "flat_census": 0,
+    "flat_maxgt0": 0,
+    "scored": 24,
+    "sharp": 24
+   },
+   "teeth": {
+    "MJ1": 4,
+    "MJ2": 8,
+    "MJ4": 1,
+    "MJ5": 24
+   }
+  },
+  "C3I": {
+   "E": 8,
+   "G0": 48,
+   "N": 88,
+   "chain": [
+    "zb^2",
+    "zb^2"
+   ],
+   "cocycle_triples": 12,
+   "cyc": {
+    "collapse": true,
+    "cyclic": false,
+    "nvals": 1,
+    "values": [
+     "zb^1"
+    ],
+    "verdict": "NOT-CYCLIC (single value zb^1, carry pattern not realizable)"
+   },
+   "d0": 1,
+   "e_m": 2,
+   "fib_tuples": 8,
+   "g_m": 1,
+   "id": "C3I",
+   "m": 2,
+   "nK": 4,
+   "p": 2,
+   "psiker_witness": true,
+   "raw": {
+    "nosol": 4,
+    "nosol_load": 4,
+    "sol_nonload": 0,
+    "tested": 12
+   },
+   "ring": "Zp",
+   "span": {
+    "bad": 0,
+    "flat_census": 0,
+    "flat_maxgt0": 0,
+    "scored": 24,
+    "sharp": 24
+   },
+   "teeth": {
+    "MJ1": 4,
+    "MJ2": 8,
+    "MJ4": 1,
+    "MJ5": 24
+   }
+  },
+  "C3J": {
+   "E": 12,
+   "G0": 48,
+   "N": 60,
+   "chain": null,
+   "cocycle_triples": 6,
+   "cyc": {
+    "collapse": true,
+    "cyclic": null,
+    "nvals": 1,
+    "values": [
+     "zb^1"
+    ],
+    "verdict": "UNDECIDED (E = 12 > 8: relabeling search skipped; single value zb^1)"
+   },
+   "d0": 1,
+   "e_m": 2,
+   "fib_tuples": 12,
+   "g_m": 1,
+   "id": "C3J",
+   "m": 2,
+   "nK": 3,
+   "p": 3,
+   "psiker_witness": true,
+   "raw": {
+    "nosol": 4,
+    "nosol_load": 4,
+    "sol_nonload": 0,
+    "tested": 12
+   },
+   "ring": "Fpt",
+   "span": {
+    "bad": 0,
+    "flat_census": 0,
+    "flat_maxgt0": 0,
+    "scored": 24,
+    "sharp": 24
+   },
+   "teeth": {
+    "MJ1": 4,
+    "MJ2": 12,
+    "MJ4": 1,
+    "MJ5": 24
+   }
+  },
+  "C4A": {
+   "E": 16,
+   "G0": 144,
+   "N": 176,
+   "chain": null,
+   "cocycle_triples": 6,
+   "cyc": {
+    "collapse": true,
+    "cyclic": true,
+    "nvals": 0,
+    "values": [],
+    "verdict": "CYCLIC (c == 1 identically)"
+   },
+   "d0": 1,
+   "e_m": 2,
+   "fib_tuples": 16,
+   "g_m": 1,
+   "id": "C4A",
+   "m": 3,
+   "nK": 2,
+   "p": 2,
+   "psiker_witness": true,
+   "raw": {
+    "nosol": 4,
+    "nosol_load": 4,
+    "sol_nonload": 0,
+    "tested": 12
+   },
+   "ring": "Zp",
+   "span": {
+    "bad": 0,
+    "flat_census": 0,
+    "flat_maxgt0": 0,
+    "scored": 24,
+    "sharp": 24
+   },
+   "teeth": {
+    "MJ1": 4,
+    "MJ2": 16,
+    "MJ4": 1,
+    "MJ5": 24
+   }
+  },
+  "C4B": {
+   "E": 16,
+   "G0": 144,
+   "N": 176,
+   "chain": null,
+   "cocycle_triples": 6,
+   "cyc": {
+    "collapse": true,
+    "cyclic": false,
+    "nvals": 2,
+    "values": [
+     "zb^1",
+     "zb^2"
+    ],
+    "verdict": "NOT-CYCLIC (2 distinct non-1 values: zb^1, zb^2)"
+   },
+   "d0": 2,
+   "e_m": 2,
+   "fib_tuples": 16,
+   "g_m": 1,
+   "id": "C4B",
+   "m": 3,
+   "nK": 4,
+   "p": 2,
+   "psiker_witness": true,
+   "raw": {
+    "nosol": 4,
+    "nosol_load": 4,
+    "sol_nonload": 0,
+    "tested": 12
+   },
+   "ring": "Zp",
+   "span": {
+    "bad": 0,
+    "flat_census": 0,
+    "flat_maxgt0": 0,
+    "scored": 24,
+    "sharp": 24
+   },
+   "teeth": {
+    "MJ1": 4,
+    "MJ2": 16,
+    "MJ4": 1,
+    "MJ5": 24
+   }
+  },
+  "C4C": {
+   "E": 24,
+   "G0": 312,
+   "N": 360,
+   "chain": null,
+   "cocycle_triples": 6,
+   "cyc": {
+    "collapse": true,
+    "cyclic": null,
+    "nvals": 1,
+    "values": [
+     "zb^1"
+    ],
+    "verdict": "UNDECIDED (E = 24 > 8: relabeling search skipped; single value zb^1)"
+   },
+   "d0": 1,
+   "e_m": 2,
+   "fib_tuples": 24,
+   "g_m": 1,
+   "id": "C4C",
+   "m": 3,
+   "nK": 3,
+   "p": 3,
+   "psiker_witness": true,
+   "raw": {
+    "nosol": 4,
+    "nosol_load": 4,
+    "sol_nonload": 0,
+    "tested": 12
+   },
+   "ring": "Zp",
+   "span": {
+    "bad": 0,
+    "flat_census": 0,
+    "flat_maxgt0": 0,
+    "scored": 24,
+    "sharp": 24
+   },
+   "teeth": {
+    "MJ1": 4,
+    "MJ2": 24,
+    "MJ4": 1,
+    "MJ5": 24
+   }
+  },
+  "C4G": {
+   "E": 16,
+   "G0": 256,
+   "N": 304,
+   "chain": null,
+   "cocycle_triples": 6,
+   "cyc": {
+    "collapse": true,
+    "cyclic": false,
+    "nvals": 2,
+    "values": [
+     "zb^1",
+     "zb^2"
+    ],
+    "verdict": "NOT-CYCLIC (2 distinct non-1 values: zb^1, zb^2)"
+   },
+   "d0": 1,
+   "e_m": 2,
+   "fib_tuples": 16,
+   "g_m": 1,
+   "id": "C4G",
+   "m": 3,
+   "nK": 4,
+   "p": 2,
+   "psiker_witness": true,
+   "raw": {
+    "nosol": 4,
+    "nosol_load": 4,
+    "sol_nonload": 0,
+    "tested": 12
+   },
+   "ring": "Fpt",
+   "span": {
+    "bad": 0,
+    "flat_census": 0,
+    "flat_maxgt0": 0,
+    "scored": 24,
+    "sharp": 24
+   },
+   "teeth": {
+    "MJ1": 4,
+    "MJ2": 16,
+    "MJ4": 1,
+    "MJ5": 24
+   }
+  },
+  "C4H": {
+   "E": 10,
+   "G0": 60,
+   "N": 90,
+   "chain": null,
+   "cocycle_triples": 6,
+   "cyc": {
+    "collapse": true,
+    "cyclic": null,
+    "nvals": 1,
+    "values": [
+     "zb^1"
+    ],
+    "verdict": "UNDECIDED (E = 10 > 8: relabeling search skipped; single value zb^1)"
+   },
+   "d0": 1,
+   "e_m": 1,
+   "fib_tuples": 10,
+   "g_m": 1,
+   "id": "C4H",
+   "m": 3,
+   "nK": 5,
+   "p": 5,
+   "psiker_witness": true,
+   "raw": {
+    "nosol": 0,
+    "nosol_load": 0,
+    "sol_nonload": 0,
+    "tested": 8
+   },
+   "ring": "Zp",
+   "span": {
+    "bad": 0,
+    "flat_census": 24,
+    "flat_maxgt0": 0,
+    "scored": 0,
+    "sharp": 0
+   },
+   "teeth": {
+    "MJ2": 10,
+    "MJ4": 1,
+    "MJ5": 24
+   }
+  },
+  "C4I": {
+   "E": 16,
+   "G0": 144,
+   "N": 352,
+   "chain": null,
+   "cocycle_triples": 6,
+   "cyc": {
+    "collapse": false,
+    "cyclic": null,
+    "nvals": 1,
+    "values": [
+     "zb^1"
+    ],
+    "verdict": "UNDECIDED (E = 16 > 8: relabeling search skipped; single value zb^1)"
+   },
+   "d0": 1,
+   "e_m": 2,
+   "fib_tuples": 16,
+   "g_m": 2,
+   "id": "C4I",
+   "m": 3,
+   "nK": 4,
+   "p": 2,
+   "psiker_witness": true,
+   "raw": {
+    "nosol": 0,
+    "nosol_load": 0,
+    "sol_nonload": 0,
+    "tested": 8
+   },
+   "ring": "Zp",
+   "span": {
+    "bad": 0,
+    "flat_census": 0,
+    "flat_maxgt0": 0,
+    "scored": 24,
+    "sharp": 24
+   },
+   "teeth": {
+    "MJ2": 16,
+    "MJ3": 2,
+    "MJ4": 1,
+    "MJ5": 24
+   }
+  },
+  "I4A": {
+   "E": 12,
+   "G0": 156,
+   "N": 204,
+   "chain": null,
+   "cocycle_triples": 6,
+   "cyc": {
+    "collapse": true,
+    "cyclic": null,
+    "nvals": 1,
+    "values": [
+     "zb^1"
+    ],
+    "verdict": "UNDECIDED (E = 12 > 8: relabeling search skipped; single value zb^1)"
+   },
+   "d0": 1,
+   "e_m": 3,
+   "fib_tuples": 12,
+   "g_m": 1,
+   "id": "I4A",
+   "m": 3,
+   "nK": 4,
+   "p": 2,
+   "psiker_witness": true,
+   "raw": {
+    "nosol": 4,
+    "nosol_load": 4,
+    "sol_nonload": 0,
+    "tested": 12
+   },
+   "ring": "Zp",
+   "span": {
+    "bad": 0,
+    "flat_census": 0,
+    "flat_maxgt0": 0,
+    "scored": 24,
+    "sharp": 24
+   },
+   "teeth": {
+    "MJ1": 4,
+    "MJ2": 12,
+    "MJ4": 1,
+    "MJ5": 24
+   }
+  },
+  "I4B": {
+   "E": 12,
+   "G0": 144,
+   "N": 228,
+   "chain": null,
+   "cocycle_triples": 6,
+   "cyc": {
+    "collapse": true,
+    "cyclic": false,
+    "nvals": 3,
+    "values": [
+     "zb^1",
+     "zb^2",
+     "zb^3"
+    ],
+    "verdict": "NOT-CYCLIC (3 distinct non-1 values: zb^1, zb^2, zb^3)"
+   },
+   "d0": 1,
+   "e_m": 2,
+   "fib_tuples": 12,
+   "g_m": 1,
+   "id": "I4B",
+   "m": 3,
+   "nK": 9,
+   "p": 3,
+   "psiker_witness": true,
+   "raw": {
+    "nosol": 4,
+    "nosol_load": 4,
+    "sol_nonload": 0,
+    "tested": 12
+   },
+   "ring": "Zp",
+   "span": {
+    "bad": 0,
+    "flat_census": 0,
+    "flat_maxgt0": 0,
+    "scored": 24,
+    "sharp": 24
+   },
+   "teeth": {
+    "MJ1": 4,
+    "MJ2": 12,
+    "MJ4": 1,
+    "MJ5": 24
+   }
+  },
+  "I4C": {
+   "E": 8,
+   "G0": 80,
+   "N": 112,
+   "chain": [
+    "zb^5",
+    "zb^5"
+   ],
+   "cocycle_triples": 12,
+   "cyc": {
+    "collapse": true,
+    "cyclic": false,
+    "nvals": 7,
+    "values": [
+     "zb^1",
+     "zb^2",
+     "zb^3",
+     "zb^5",
+     "zb^6",
+     "zb^7",
+     "zb^8"
+    ],
+    "verdict": "NOT-CYCLIC (7 distinct non-1 values: zb^1, zb^2, zb^3, zb^5, zb^6, zb^7, zb^8)"
+   },
+   "d0": 2,
+   "e_m": 2,
+   "fib_tuples": 8,
+   "g_m": 1,
+   "id": "I4C",
+   "m": 3,
+   "nK": 16,
+   "p": 2,
+   "psiker_witness": true,
+   "raw": {
+    "nosol": 4,
+    "nosol_load": 4,
+    "sol_nonload": 0,
+    "tested": 12
+   },
+   "ring": "Fpt",
+   "span": {
+    "bad": 0,
+    "flat_census": 0,
+    "flat_maxgt0": 0,
+    "scored": 24,
+    "sharp": 24
+   },
+   "teeth": {
+    "MJ1": 4,
+    "MJ2": 8,
+    "MJ4": 1,
+    "MJ5": 24
+   }
+  }
+ },
+ "teeth": {
+  "MJ1": 103,
+  "MJ2": 285,
+  "MJ3": 4,
+  "MJ4": 29,
+  "MJ5": 633
+ },
+ "totals": {
+  "bad": 0,
+  "flat": 24,
+  "flat_max": 0,
+  "nosol": 103,
+  "nosol_load": 103,
+  "scored": 609,
+  "sharp": 609,
+  "tested": 333,
+  "trip": 261
+ },
+ "violations": []
+}

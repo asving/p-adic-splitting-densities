@@ -21,10 +21,15 @@ inner factor is ∏_{j=1}^{m} z_j^{D_j} — the INNER letters. This note proves 
 instrument's law, not the brief's guess.
 
 **Own machine leg:** `verification/openmath/grt_jc_checks.py` (two-commit seal;
-predictions §9.1 sealed BEFORE the run) — it tests THIS note's clauses, not the
-instrument's: the slot-span theorem, the scalar-image lemma, the ψ-kernel
-witness, the fibred-index bijection, the cocycle identity, the cyclic-genre law,
-with five planted teeth.
+predictions §9.1 sealed BEFORE the run at commit `6ad01d1`) — it tests THIS
+note's clauses, not the instrument's: the slot-span theorem, the scalar-image
+lemma, the ψ-kernel witness, the fibred-index bijection, the cocycle identity,
+the cyclic-genre law, with five planted teeth. **VERDICT (§9.2): 10 families,
+8,566 scored samples, 0 violations, all five teeth fired (1,054 firings),
+29 rows, 2.0 s** — including the note's own new sharp prediction (slot set of an
+anchor product == {δ}) at **609/609**, and one battery-driven correction applied
+to §6(d) (the cyclic law's converse is FALSE — 13 collapse-geography rows are
+NOT-CYCLIC).
 
 ---
 
@@ -762,13 +767,19 @@ supplies one level down (K_{m+1}[u]/(u^{e_m} − z̄), anchors = powers of u).
 * **(c) [PROVED, general m — the twist-blind direction]** If |K| = 2 then
   K^* = {1}, so c ≡ 1 and (CYC) holds with ζ′ = 1, σ ≡ 0. Likewise if the table
   has at most one non-1 value AND (β) is solvable, (CYC) holds by definition.
-* **(d) [MEASURED, m ≤ 3 — the characterization]** On the instrument's roster the
-  cyclic side is EXACTLY the twist-blind/collapse geography: |K| = 2 (C4A), or
-  g_m = 1 so that K_{m+1} = K_m and z̄ ∈ ⟨z_1⟩ (C2A/C2E/C2G/C3A), or the e_0 = 1
-  flat control (C2J). Both designated g_m = 2 rows that were decidable came back
-  NOT-CYCLIC (C2I, C3I); C4I is UNDECIDED at E = 16 (compute fence, not a
-  finding). **The general iff — that the collapse geography is exactly the cyclic
-  side at every m — is OPEN (JC-BOX-5).**
+* **(d) [MEASURED, m ≤ 3 — ONE-DIRECTIONAL; corrected by this note's own battery,
+  §9.2 finding 1]** On both rosters the cyclic side is CONTAINED in the
+  twist-blind/collapse geography: every CYCLIC row has \|K\| = 2 (C4A), or
+  g_m = 1 so that K_{m+1} = K_m and z̄ ∈ ⟨z_1⟩ (C2A/C2E/C2G/C3A), or e_0 = 1
+  (C2J) — 0 violations of "CYCLIC ⟹ collapse" on 29 rows. **The CONVERSE IS
+  FALSE and this note does not claim it**: 13 collapse-geography rows are
+  NOT-CYCLIC (C2B, C2C, C2D, C2H, C3D, C3E, C3F, C3H, C3I, C4B, C4G, I4B, I4C),
+  by two visible mechanisms — ≥ 2 distinct non-1 values (up to 7 on I4C), or a
+  single value whose carry pattern no integer relabeling realizes (C2C, C3I). The
+  decidable designated g_m = 2 row came back NOT-CYCLIC (C2I); C4I is UNDECIDED
+  at E = 16 (compute fence, not a finding). **The general form of the inclusion —
+  CYCLIC ⟹ collapse at every m — is OPEN (JC-BOX-5), and its measured resolution
+  is low: only 2 of 29 rows lie off the collapse geography.**
 * **(e) Consistency with the byte-frozen record, explicit.** The 22/28
   adjudication and its value set {z₁, z̄, z̄z₁^b} are **unamended**; no row is
   re-scored here; the instrument's 14/6/9 is a different roster and a different
@@ -833,8 +844,10 @@ proved obstruction direction.
   RAW-solvable, 0 violations; family JC3 re-tests it) and unproved. JC-LOAD and
   JC-CARRY-m are therefore stated with e_m ≥ 2 and this corner is boxed OPEN.
 * **JC-BOX-5 (the cyclic characterization).** JC-CYC(b)(c) are proved; the
-  general iff of (d) — collapse geography ⟺ cyclic — is OPEN, and the 9
-  UNDECIDED rows are a compute fence. **JC-F1 (the abstract-cyclicity
+  general form of (d)'s **inclusion** (CYCLIC ⟹ collapse geography) is OPEN, its
+  measured resolution is low (only 2 of 29 rows lie off the collapse geography),
+  and the **converse is FALSE** — 13 collapse-geography rows are NOT-CYCLIC
+  (§9.2 finding 1). The 9 UNDECIDED rows are a compute fence. **JC-F1 (the abstract-cyclicity
   computation) is a blueprint-display correction and is REVIEW-OWED**: it must be
   adjudicated before any text repeats the fence in the abstract-isomorphism
   wording.
@@ -910,7 +923,54 @@ UNDECIDED, so a truncated table cannot manufacture a CYCLIC verdict);
 
 ### 9.2 VERDICT (commit 2 — written FROM the artifacts)
 
-[PENDING — battery not yet run at seal time.]
+**Artifacts:** `verification/openmath/grt_jc_checks_output.txt`,
+`grt_jc_checks_results.json` (deterministic; 29 rows, elapsed **2.0 s**; seal
+commit `6ad01d1`). **ALL 10 FAMILIES GREEN — 0 violations, every sealed
+prediction hit exactly; ALL FIVE TEETH FIRED (no silent tooth).**
+
+| family | the clause | samples | violations | verdict |
+|---|---|---|---|---|
+| EXT-GATE | engine_ext standing rule | 1 | 0 | GREEN (0 new) |
+| JC1 | JC-PER + w(π) = E | 2,594 | **0** | GREEN — π^k-periodicity byte-for-byte at k = 1,2,3, s-tuple periodic, u_1 ↦ u_1+k, w(π) = E on all 29 rows |
+| JC2 | JC-FIB | 570 | **0** | GREEN — the s-tuple map is injective on E consecutive γ on every row |
+| **JC3** | **JC-SPAN (the note's new sharp prediction)** | 2,484 | **0** | GREEN — **slot set == {δ} on 609/609 pairs** with e_m ≥ 2; δ ∈ {0,1} everywhere; u ≠ 0 everywhere |
+| JC3-FLAT | the e_m = 1 corner (JC-BOX-4) | 24 | **0** scored | GREEN; **census: 0 of 24 pairs have a slot > 0** — the unproved sharp form is measured true on the top-flat row (C4H) |
+| JC4 | JC-SCAL + the lift normalization | 443 | **0** | GREEN — Λ_N(c)'s slot set == supp(c) ⊆ {0..g_m−1} with slot-i digit == c_i, and 𝑅_N(X_N) == 1 exactly, on every row and every c ∈ K |
+| JC5 | JC-ANCHMON | 855 | **0** | GREEN — the telescoping degree bound, the single-digit development, slot set {0}, a_λ ≠ 0 |
+| JC6 | JC-PSIKER | 116 | **0** | GREEN — w(Φ_{m+1}) = wΦ_{NR}, 𝑅(Φ_{m+1}) == ψ_m coefficientwise, read == 0, and the equal-read/different-class pair |
+| JC7 | W-9 cocycle semantics | 581 | **0** | GREEN — **261 triples** satisfy both the K^*-cocycle identity and the integer carry identity; the **E-fold chain matched the orbit product on all 15 rows with E ≤ 8** |
+| JC8 | JC-CYC + JC-F1 | 898 | **0** | GREEN — every structure constant a unit (so JC-F1's power basis exists on every row); no CYCLIC verdict off the collapse geography |
+| MJ1 | tooth: "TC-3 never load-bearing" | 333 tested | **103 firings** | FIRED — 103 pairs have NO pre-TC-3 scalar and **all 103 lie in the δ ≥ g_m load set**; 0 anomalies in either direction (JC-LOAD's dichotomy, machine-confirmed both ways) |
+| MJ2 | tooth: φ_{γ+E} = π²φ_γ | 285 | **285 firings** | FIRED on every row |
+| MJ3 | tooth: "Λ_N slots ⊆ {0}" | 6 | **4 firings** | FIRED on every g_m ≥ 2 row (2 of the 6 opportunities are the c's whose slot 1 is genuinely empty) |
+| MJ4 | tooth: "the read is injective on gr_λ" | 29 | **29 firings** | FIRED on every row — read(wΦ, Φ_{m+1}) = 0 everywhere |
+| MJ5 | tooth: slot set == {δ+1} | 633 | **633 firings** | FIRED on every pair |
+
+**The cyclic split reproduced: CYCLIC 6 / NOT-CYCLIC 14 / UNDECIDED 9**, with the
+cyclic rows **C2A / C2E / C2G / C2J / C3A / C4A** — *the same six rows, and the
+same 14/6/9 split, as the instrument's MT2*. **Disclosure (resolution, honest):**
+this battery's constant table is the harness ratio c_val (via the probe's
+`Stage.cval`), whereas the instrument's MT2 used the fence-clean gr-side
+certified constant c_gr; the two tables agree because W-8/P5-OB6 says
+c_gr = c_val (0/669), so the verdict-identity is a *consistency* check of W-8,
+not a second independent measurement of the split. The adjudicator itself is a
+fresh transcription.
+
+**TWO BATTERY-DRIVEN FINDINGS, applied above:**
+
+1. **The collapse geography does NOT imply cyclic** (the converse of JC-CYC(d) is
+   FALSE): 13 rows sit in the collapse geography and still come back NOT-CYCLIC
+   (C2B, C2C, C2D, C2H, C3D, C3E, C3F, C3H, C3I, C4B, C4G, I4B, I4C). Two
+   mechanisms are visible in the printed table: **≥ 2 distinct non-1 values**
+   (C2B/C2D/C2H/C3D/C3E/C3F/C3H/C4B/C4G/I4B/I4C — up to **7** distinct values on
+   I4C) and **a single value whose carry pattern is not realizable by any integer
+   relabeling** (C2C, C3I). §6(d) is stated one-directionally because of this,
+   and JC-CYC(b)'s obstruction direction is what does the work.
+2. **The law's resolution on this roster is low and is disclosed**: only **2 of
+   29 rows (C2I, C4I) are OFF the collapse geography**, and both are
+   NOT-CYCLIC / UNDECIDED — so "CYCLIC ⟹ collapse" was tested against few
+   potential counterexamples. A hostile pass should build g_m ≥ 2 rows with
+   small tables.
 
 ---
 
@@ -924,7 +984,7 @@ UNDECIDED, so a truncated table cannot manufacture a CYCLIC verdict);
 | **W-7** | Ψ: OB-2 **PROVED general m**; OB-3 existence/structure (constant = (K_m^*-unit)·z̄^δ) **PROVED general m on ALL window pairs**; OB-3 value (inner = ∏_{j≤m}z_j^{D_j}) **PROVED general m on [ILN]†'s scored stratum**; OB-4 independence **PROVED general m** (Δ-rank input literature-carried); OB-5 fence **DISCHARGED as architecture** | **PROVED on the stated scopes**, attempt 0/2; the germ split displayed honestly (val law CONFIRMED on 27 stages; H-D REFUTED 138/669) |
 | **W-8** | harness-val = TC-read (OB-6), with every line-wise normalization cancelling; J-C(iii) residue chain | **PROVED at general m** on (COORD)+(MULT)+JC-SPAN+JC-SCAL+R3, attempt 0/2 |
 | **W-9** | cocycle semantics: descent to ℤ/E, COR-2 = gr-associativity, the {0,1} carry cocycle, the twisted-group-algebra display, COR-4 monodromy = the gauge period | **PROVED given W-6..W-8** (S-priced, as the blueprint priced it), attempt 0/2 |
-| **cyclic fence** | LAW JC-CYC: abstract cyclicity always (JC-F1, **review-owed display correction**); the adjudicated (CYC) property is the letter-monomial one; obstruction direction PROVED; twist-blind direction PROVED; the characterization MEASURED (m ≤ 3) with the general iff OPEN | **REFINED, not refuted**; byte-frozen 22/28 record unamended |
+| **cyclic fence** | LAW JC-CYC: abstract cyclicity always (JC-F1, **review-owed display correction**); the adjudicated (CYC) property is the letter-monomial one; obstruction direction PROVED; twist-blind direction PROVED; the inclusion CYCLIC ⟹ collapse MEASURED (m ≤ 3, 0/29, low resolution) with its general form OPEN and its **converse REFUTED** by this note's own battery (13 collapse rows NOT-CYCLIC) | **REFINED, not refuted**; byte-frozen 22/28 record unamended |
 
 ### 10.2 The conditionality stack (one line, then itemized)
 
