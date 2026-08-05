@@ -1,0 +1,65 @@
+grt_jb_printwalk2.py -- r2 cross-frame GATE REPAIR (chain_eq AND NOT chat_eq)
+  [   0.0s] Zp,p=2,T2A         done
+  [   0.0s] Zp,p=3,T2B         done
+  [   0.0s] Zp,p=3,T2C         done
+  [   0.0s] Fpt,p=2,T2D        done
+  [   0.0s] Zp,p=2,T2E         done
+  [   0.0s] Fpt,p=3,T2F        done
+  [   0.0s] Zp,p=3,T2G         done
+  [   0.0s] Zp,p=2,T3A         done
+  [   0.0s] Zp,p=3,T3B         done
+  [   0.0s] Zp,p=3,T3C         done
+  [   0.0s] Fpt,p=2,T3D        done
+  [   0.0s] Zp,p=2,T3E         done
+  [   0.0s] Zp,p=3,T3F         done
+  [   0.0s] Zp,p=2,I4A         done
+  [   0.0s] Zp,p=3,I4B         done
+  [   0.1s] Fpt,p=2,I4C        done
+  [   0.1s] QO leg done
+  [   0.1s] d0>=2 leg done
+
+==============================================================================
+PREDICTED vs OBSERVED (violations; samples in parentheses)
+==============================================================================
+PW2-XFRAME  HONEST cross-frame: chain_eq AND NOT chat_eq pred 0   obs     0 (   45 samples, predicted 45)  GREEN
+PW2-DEGEN   degeneracy certified (no re-run): chain&chat pred 0   obs     0 (   27 samples, predicted 27)  GREEN
+PW2-RECON   row-for-row reconciliation vs the r1 JSON    pred 0   obs     0 (   28 samples, predicted 28)  GREEN
+------------------------------------------------------------------------------
+CENSUS: cross-frame walks 45 (predicted 45, agreed 45) | DEGENERATE re-execution walks 27 (predicted 27) | chain-divergent, leg B not claimable 12 (predicted 12)
+        total walks considered 84 (r1 leg-A walks 84) | rows 28
+        r1 PW-XFRAME advertised 72 samples = 45 cross-frame + 27 degenerate
+CROSS-FRAME rows (15):
+   Fpt,p=2,JD3C|m=1           xframe 3/3
+   Fpt,p=2,T2D|m=1            xframe 3/3
+   Fpt,p=2,T3D|m=1            xframe 3/3
+   Zp,p=2,JD3A|m=1            xframe 3/3
+   Zp,p=2,T2A|m=1             xframe 3/3
+   Zp,p=2,T3A|m=1             xframe 3/3
+   Zp,p=2,T3E|m=1             xframe 3/3
+   Zp,p=3,I4B|m=3             xframe 3/3
+   Zp,p=3,JD3B|m=1            xframe 3/3
+   Zp,p=3,T2C|m=1             xframe 3/3
+   Zp,p=3,T2G|m=1             xframe 3/3
+   Zp,p=3,T3B|m=2             xframe 3/3
+   Zp,p=3,T3C|m=1             xframe 3/3
+   Zp,p=3,T3F|m=2             xframe 3/3
+   Zp,p=5,JD5A|m=1            xframe 3/3
+DEGENERATE rows (9) -- VACUOUS for cross-frame purposes:
+   Fpt,p=3,T2F|m=1            degen 3
+   QO:x4+4x+4/Q2|m=1          degen 3
+   Zp,p=2,I4A|m=1             degen 3
+   Zp,p=2,I4A|m=3             degen 3
+   Zp,p=2,T2E|m=1             degen 3
+   Zp,p=3,I4B|m=1             degen 3
+   Zp,p=3,T2B|m=1             degen 3
+   Zp,p=3,T3B|m=1             degen 3
+   Zp,p=3,T3F|m=1             degen 3
+CHAIN-DIVERGENT rows (4) -- leg B not claimable:
+   Fpt,p=2,T3D|m=2            walks 3
+   Zp,p=2,T3A|m=2             walks 3
+   Zp,p=2,T3E|m=2             walks 3
+   Zp,p=3,T3C|m=2             walks 3
+JSON: /data/users/asvin/math-and-lean/p-adic-splitting-densities/verification/openmath/grt_jb_printwalk2_results.json
+TOTAL samples 100 (law families only: PW2-XFRAME 45 + PW2-DEGEN 27 + PW2-RECON 28)  elapsed 0.1s
+
+PRINT-WALK2 VERDICT: GREEN -- the print-keyed tree == the harness-key division on the NON-DEGENERATE cross-frame walks, and the degenerate complement is certified vacuous
