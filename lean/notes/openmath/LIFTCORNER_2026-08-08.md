@@ -29,6 +29,16 @@ note-level only, and PE3 verified both legs before the round: sealed runner
 its committed table regenerate **byte-identically** (`diff` empty) with A7's
 four legs PASS (752 nodes / 5,336 children, 0/0/0/0). No script or table is
 touched at r3.
+[r4] **STILL BYTE-FROZEN AT r4** — repair round r4 is note-level only, and PE4
+re-ran both legs before the round: sealed runner md5
+`ccb4351c92573f5f962cae4ae952d8dd`, `git diff dafc0b5 HEAD` = **0 bytes**,
+exit 0 at 25,409/0 with every counted family at 0 violations (its output
+differs from the committed artifact `liftcorner_checks_output.txt` at exactly
+4 wall-clock lines — three per-block stamps plus `elapsed 4.3s` vs `4.4s` —
+and the diff is empty under timing normalisation); children generator
+regenerates its committed table **byte-identically** (`diff` empty) with A7's
+four legs PASS (752 nodes / 5,336 children, 0/0/0/0). No script or table is
+touched at r4.
 
 **[REPAIR ROUND r1 — 2026-08-08 campaign (wallclock 2026-08-05).** Applied
 against LIFTCORNER-PE1 (hostile pass, fresh context, report
@@ -65,7 +75,15 @@ modulus-independence verification actually lives (`mk_field_ext` at g = 1).
 "full ψ₁-byte carryover" is a snapshot-consistency no-op that cannot fail, and
 the demoted one-element K₂ check is the only substantive half of the pair. See
 S2 disclosure (c)'s [r3, F-A] bracket; the `mk_field_ext` relocation, which is
-where the soundness actually lives, stands.]
+where the soundness actually lives, stands.
+**[r4, F4-1 — the SECOND half of that r3 sentence is stricken too.]** "the
+demoted one-element K₂ check is the only substantive half of the pair" is
+FALSE: `C.K2["one"]` is a structural constant of (d₀, g₀, g₁) that never reads
+a ψ₁ coefficient, so assert (ii) is as incapable of firing as assert (i).
+**BOTH asserts are inert**; nothing in this note consumes either; the
+soundness is in `mk_field_ext`'s g = 1 reading. Final description: S2
+disclosure (c)'s **[r4, F4-1]** bracket. What survives of r3's F-A is (i)'s
+no-op diagnosis and the `mk_field_ext` relocation.]
 Acceptance counter unchanged at 0/2 — a repair round is not a pass; round r2
 (a fresh hostile pass on THIS text) is the next acceptance attempt.]**
 
@@ -94,6 +112,23 @@ COUNTED quantity is identical (25,409 checks, 0 violations in every family,
 1,576 WRONGLET fires, coverage minima, md5). The children-generator table IS
 bit-identical (`diff` empty at both PE2 and PE3) — the defect was the word
 "both".
+**[r4, F4-3 — the PROVENANCE in the sentence above is corrected; the FACTS
+are unchanged.]** The r3 wording, quoted and superseded: "**"bit-identically"
+STRICKEN here as an overstatement of PE2's own record** … PE2's report says
+something weaker for the sealed leg". That misassigns the origin. PE2's report
+(`LIFTCORNER_passPE2_report.md`, 3367f3c) states the UNQUALIFIED form for the
+sealed runner at **three** sites — its verdict summary (line 33, "The sealed
+runner re-runs **bit-identically**"), its section header (line 54, "### (a)
+The SEALED runner — **bit-identical**, seal intact") and its closing
+machine-legs line (line 471) — and the qualified form at **one** (line 67,
+the family-table paragraph: "identical line-for-line modulo the
+`elapsed`/per-block timestamp fields only"). So the overstatement
+**ORIGINATES in PE2's report**; the r2 round **transcribed** PE2's own
+headline word rather than dropping a qualification the source only ever gave
+qualified. The truth, unchanged and independently re-confirmed at PE3 and at
+PE4 (4 differing lines, all wall-clock): the runner's OUTPUT FILE is
+**identical modulo timing fields**, not bit-identical, while every COUNTED
+quantity is identical; the children-generator table IS bit-identical.
 No critical finding, so no r2 edit touches the chain. Dispositions, each edit carrying a dated
 `[r2, G#]` bracket, strike-and-replace (the refuted r1 wording is quoted
 inside the bracket that supersedes it, never silently deleted): **G1** — the
@@ -148,7 +183,14 @@ cannot fail and certifies nothing about carryover, while (ii)
 (`C.K2["one"] == C0.K2["one"]`), which r1 demoted, is the only one of the two
 that compares distinct objects. CORRECTED, source-verified afresh at r3 (the
 mutation trace is displayed in (c)); **no claim in this note consumes (i)**, so
-nothing is re-fenced and no new script is added. **F-B** — the witness r2's G4
+nothing is re-fenced and no new script is added. **[r4, F4-1: the promotion of
+(ii) — "the only one of the two that compares distinct objects", read as an
+evidential ranking — is STRICKEN. `C.K2["one"]` is a constant of (d₀, g₀, g₁);
+(ii) compares two occurrences of that constant and cannot fire either. BOTH
+asserts are inert. What stands from F-A: (i)'s no-op diagnosis, the
+`mk_field_ext` relocation, and "no claim in this note consumes (i)" — which
+r4 states of (ii) as well. Final description: S2 (c)'s [r4, F4-1] bracket.]**
+**F-B** — the witness r2's G4
 bracket displayed for the stricken r-to-q identity (a·b = 4x²+2) is NOT
 realizable as a branch product in its own setting (Φ₀ = x²+x+1 forces
 deg a, deg b ≤ 1, and the factorization would need a square root of −8 in ℚ₂
@@ -167,6 +209,51 @@ supplied in S3 so no family count is omitted, and the wording that read it as
 an affirmative observation on a probed stratum is stricken. Acceptance counter
 unchanged at **0/2** — PE3 was a hostile pass and found no critical, but 5
 gaps is not a clean pass, so no acceptance slot closed; **PE4 — a fresh
+hostile pass on THIS text — is the next acceptance attempt.**]**
+
+**[REPAIR ROUND r4 — 2026-08-08 campaign (wallclock 2026-08-05).** Applied
+against LIFTCORNER-PE4 (hostile pass, fresh context, on the r3 text — the
+arc's SECOND acceptance attempt; report `LIFTCORNER_passPE4_report.md`,
+commit 8b53efa: **0 CRITICAL + 6 gaps**). PE4 was directed at S1's
+definitions, S4.2/S4.3 end to end, COR 1 + the PROP rider, S5 as the note's
+summary of record, the bracket system as a system, and the ILNRES NR-1
+interplay. **The mathematics held everywhere it pushed** — PE4 re-derived
+from scratch all eight per-digit ω-gain bounds, the census/lex/ρ consumers,
+READ-EQ's δ₁ = 1 comparison digit by digit on both towers, the
+counter-instance's two passes and its double-development tie, and the
+THEOREM + COR 2 exactly on a concrete ℤ₂/𝔽₄ orbit member; it also
+established a POSITIVE fact this note now records (S4.3, COR 1): **δ₁ = 1 is
+empty at e₀ = 1**, so S4's e₀ ≥ 2 Setting costs COR 1 nothing and the corner
+is covered in full. Both machine legs reproduce (timing-only diffs; see the
+[r4] machine-leg bracket above). All six gaps land in the
+evidence-description / bookkeeping layer, not in the chain. Dispositions,
+each edit carrying a dated `[r4, F4-#]` bracket, strike-and-replace (the
+superseded r1/r2/r3 wording is quoted inside the bracket that replaces it,
+never silently deleted): **F4-1** (the assert saga, act three — ENDED) — r3
+promoted assert (ii) (`C.K2["one"] == C0.K2["one"]`) as "the half that can
+actually fire"; that is FALSE, and the round-by-round pattern (r0 described
+the pair, r1 promoted (i), r3 promoted (ii)) is closed by promoting NOTHING:
+**both asserts are inert**, no chain step consumes either, the soundness is
+`mk_field_ext`'s g = 1 reading. Final description in S2 (c). **F4-2** — S5's
+r1 status line still carried the F4 clause r3's own F-A refutes; struck, and
+superseded in place by a pointer to F4-1's final description. **F4-3** — the
+"bit-identically" overstatement is re-attributed to its true origin (PE2's
+own report, three unqualified sites, one qualified) with r2 recorded as the
+TRANSCRIBER; the factual correction ("identical modulo timing fields") is
+unchanged. **F4-4** — PROP's rung-≥2 clause-(ii) census cite is re-pointed
+from the (false) "[ILN]/ILNRES consumption tables" to ITERLAWN's own r4
+erratum, and the pin a rung-≥2 census must clear is named explicitly.
+**F4-5** — the `c′` collision (residue scalar vs cocycle) in the headline
+display is fixed by renaming the COCYCLE to `c^{Φ′}`, with a renaming note
+between the THEOREM and COR 2. **F4-6** — S5's "NR-1 then leaves the ILNRES
+residual list" is rewritten to exactly what this note delivers (the Φ₁-only
+corner), with the deeper-level discrepancy stated neutrally and flagged as an
+ILNRES-side erratum candidate (ILNRES is NOT edited). **STRUCTURAL:** S5's
+status block — which produced findings in three consecutive passes — is
+REGENERATED from a minimal five-line template; every removed sentence is
+quoted verbatim inside S5's `[r4, ARCHIVE]` bracket. Acceptance counter
+unchanged at **0/2** — PE4 was a hostile pass and found no critical, but 6
+gaps is not a clean pass, so no acceptance slot closed; **PE5 — a fresh
 hostile pass on THIS text — is the next acceptance attempt.**]**
 
 **Sources of record:** ILNRES_2026-08-08.md S1 [NR-1] + S5.1 (the spec);
@@ -242,7 +329,15 @@ deterministic full windows, no sampling beyond the seeded pert residues;
 (c) the ledger override (ψ₀ ↦ y + c′) is IN-MEMORY on a fresh Tower object —
 sound because at g₀ = 1 the degree-1 extension arithmetic of K₁ is
 modulus-independent (mk_field_ext at g = 1: products never touch the reducer),
-so ψ₁ and every deeper byte carries over verbatim.
+so ψ₁ and every deeper byte carries over verbatim; **(d) SP bug-detector
+counters recorded.**
+
+**[r4, structural — item (d) is RESTORED to the pre-seal list.]** r3 inserted
+its F-A bracket between (c) and (d), leaving (d) hanging off the end of a
+post-hoc correction so that a reader could not tell it belonged to the SEALED
+pre-run disclosure (PE4 §3(e), recorded there but not numbered). The list
+(a)–(d) is now complete and unbroken; the r3/r4 correction brackets follow it.
+No claim changes.
 
 **[r3, F-A — the r1 ranking of the runner's two asserts is INVERTED;
 corrected here, source-verified afresh at r3.]** The r1 wording, quoted in full
@@ -276,20 +371,60 @@ contrast is backwards (PE3, report `LIFTCORNER_passPE3_report.md`, commit
   transported K₁ — the one act that could have made it a carryover check.
   Its honest job is a REGRESSION GUARD against a future edit that makes the
   override path (or `apply_pert`/`build_Phi2`) recompute ψ₁.
-* **assert (ii) is the only substantive one of the two.**
-  `C.K2["one"] == C0.K2["one"]` (`liftcorner_checks.py:179`) compares two
-  DISTINCT objects — the K₂ table built on the transported tower against the
-  one on the base standard tower — so it is the half that can actually fire.
+* **[r4, F4-1 — the r3 bullet on assert (ii) is STRICKEN, and NOTHING is
+  promoted in its place.]** The r3 wording, quoted in full and SUPERSEDED:
+  "*assert (ii) is the only substantive one of the two.*
+  `C.K2["one"] == C0.K2["one"]` (`liftcorner_checks.py:179`) *compares two
+  DISTINCT objects* — the K₂ table built on the transported tower against the
+  one on the base standard tower — *so it is the half that can actually fire.*
   It remains a one-element check and does not certify that the whole K₂
   arithmetic representation is shared (r1's correction of the r0 parenthesis is
-  right about that); but a one-element check on two objects carries strictly
-  more evidence than a tautology on one.
+  right about that); *but a one-element check on two objects carries strictly
+  more evidence than a tautology on one.*" **That ranking is false: `K2["one"]`
+  is a structural CONSTANT of (d₀, g₀, g₁).** From source,
+  `mk_field_ext(K, psi)` (`grb_order2_check.py:333–334`) sets
+  `g = len(psi) − 1` and
+  `one = tuple([K["one"]] + [K["zero"]]*(g−1))` — it never reads a single
+  coefficient of `psi`, and never reads the reduction data `red` built from it.
+  Composing the two levels: `T.K1 = mk_field_ext(K0, T.psi0)` at g₀ = 1 gives
+  `K1["one"] = (K0["one"],)`, independent of the residue the override writes
+  into `T.psi0`; `C.K2 = mk_field_ext(T.K1, T.psi1)`
+  (`strata_probe.py:389`) then gives `K2["one"] = ((K0["one"],),)` for ANY ψ₁;
+  and `T`, `T0` come from the SAME `LC.make_tower(kind, p, d₀, r₀, r₁, ·)`
+  call (`liftcorner_checks.py:35` and `:144`), so g₁ agrees on both. Hence (ii)
+  compares two occurrences of one constant and is **structurally incapable of
+  failing — on exactly the same footing as (i).** Re-verified at r4 from source
+  AND empirically on the note's own d₀ = 2 row CB over ℤ₂ (K₀ = 𝔽₄, both twist
+  draws exist): `K2["one"] = (((1,0),),)` on the base tower, on both twist draws
+  c′, and again with ψ₁ perturbed — while the letter `z₁` DOES move under the
+  override, so the override is doing real work to which this assert is blind.
+  Failure scenario it cannot catch: if the transported K₂ arithmetic were built
+  on stale reduction data, every K₂ product would be wrong and (ii) would still
+  pass, because it inspects only the multiplicative identity.
 
 Stated plainly: **r1's F4 repair promoted the wrong half of its own sentence**,
 and both later passes signed off on the unfixed half — PE1 called (i)
 "genuine", PE2 checked only that the quoted source line matched verbatim (a
 text match, not a semantic one) — so the overstatement survived two hostile
 readings before PE3 traced the mutations. **No claim in this note consumes (i).**
+
+**[r4, F4-1 — THE FINAL DESCRIPTION OF THE PAIR, promoting nothing.] BOTH
+asserts are INERT: neither can fire on any input this battery generates.**
+(i) is a snapshot-consistency no-op — a regression guard against a future edit
+that recomputes ψ₁ on the transported K₁; (ii) is a comparison of two
+occurrences of a constant — a regression guard against a future change of the
+(d₀, g₀, g₁) ↦ identity-element representation. **NO CHAIN STEP CONSUMES
+EITHER**: the ψ₁-site walk below establishes it for (i), and the same walk
+gives it for (ii) verbatim (ψ₁ and K₂ enter no counted predicate of S3 and no
+step of S4). **The soundness of the K₂ layer lives in `mk_field_ext`'s g = 1
+reading** — `grb_order2_check.py:345`, where the reduction loop
+`range(len(out)−1, g−1, −1)` is `range(0, 0, −1)`, empty, so products never
+touch the reducer — **not in either assert.** *Arc of this pair, recorded in
+one sentence so that no future round re-promotes either half:* r0 described it
+("ψ₁ bytes equal, K₂ arithmetic representation shared"), r1 promoted (i), r3
+promoted (ii), and **r4 demotes both** — every promotion so far has been an
+overclaim, and there is no third half left to promote.
+
 Checked at r3 by walking every ψ₁ site in the note: S2 (c)'s own soundness
 claim is discharged by READING `mk_field_ext` (next sentence), not by the
 asserts; S3's figures are the runner's counted families (GATE/AV/TLAW/PV/INT/
@@ -314,10 +449,12 @@ module docstring carries the same overstatement ("the runner ASSERTS psi1-byte
 carryover and shared K2 representation", `liftcorner_checks.py:14`); it is
 BYTE-FROZEN by the two-commit seal and is therefore NOT corrected — the seal
 outranks the wording, and this bracket is the correction of record. Anyone
-reading that docstring should read it as: assert (i) is a regression guard,
-assert (ii) is a one-element check on two objects, and the soundness is in
-`mk_field_ext`;
-(d) SP bug-detector counters recorded.
+reading that docstring should read it as **[r4, F4-1 — the re-reading
+instruction is corrected; the r3 wording, quoted and superseded, was "assert
+(i) is a regression guard, assert (ii) is a one-element check on two objects,
+and the soundness is in `mk_field_ext`"]**: **BOTH asserts are inert
+regression guards that certify nothing about carryover**, and the soundness is
+in `mk_field_ext`'s g = 1 reading.
 
 ## S3. VERDICT (commit 2; from the artifacts; seal dafc0b5, runner
 byte-untouched, md5 ccb4351c92573f5f962cae4ae952d8dd)
@@ -741,11 +878,24 @@ the on-line status equal on both sides. Reads agree slot-by-slot. ∎
 
 **THEOREM.** For EVERY orbit member Φ′ (any residue c′ ≠ 0), the 2-read
 ITER-LAW display holds on the Φ′-tower with the letter the lift carries:
-c(γ,γ′) = z̄^{δ₂}·(z₁′)^{D₁}, z₁′ = −c′, all γ,γ′ ∈ W₂. *Proof.* READ-EQ
+c^{Φ′}(γ,γ′) = z̄^{δ₂}·(z₁′)^{D₁}, z₁′ = −c′, all γ,γ′ ∈ W₂. *Proof.* READ-EQ
 transports every anchor value, pair value and cocycle to the Φ″-tower; Φ″ is
 a STANDARD-LIFT instance of the accepted class with ψ₀ ↦ ψ₀^{(ξ)} (same
 (e,h,g) data, ψ₀^{(ξ)}(0) = c′ ≠ 0), where the ACCEPTED ITER-LAW gives the
 display with its letter z₁′. ∎ [Machine: Q3 4,176/0.]
+
+**[r4, F4-5 — NOTATION, one line, fixing a `c′` collision inside the unit's
+headline identity; a pure renaming, no content changes.]** From here on
+**`c^{Φ′}(γ,γ′)`** denotes the 2-read COCYCLE on the Φ′-tower and `c_base(γ,γ′)`
+the cocycle on the base standard tower, while **`c′` (no arguments) stays the
+RESIDUE SCALAR** `res(b₀/π^{h₀}) ∈ K₀` of S1. The r1–r3 text wrote the same
+cocycle two ways — `c(γ,γ′)` in the THEOREM and `c′(γ,γ′)` in COR 2 — and the
+second collides with the scalar inside COR 2's own display (`ξ := c₀/c′`); both
+are renamed to `c^{Φ′}` here, and they were always the same function (PE3
+recorded the collision, PE4 numbered it F4-5). **S1's CANDIDATE display is
+sealed pre-run text and is NOT edited**: it writes this cocycle as `c′(γ,γ′)`,
+and this bracket is the correction of record for it (the same precedent as the
+sealed runner's docstring under [r3/r4, F4-1]).
 
 **COR 1 ((ITER-LAW-LIFT), the corner).** ξ = 1 slice (c′ = c₀): the display
 holds UNCHANGED for every LAWFUL monic lift — the 2-read (ITER-LAW-LIFT) is
@@ -755,9 +905,9 @@ PAIR-VAL Case II consumes Φ₁'s form; all other strata lift-form-free).
 
 **COR 2 (the χ-covariance; RESCOPED at r1).** Across the HARNESS monic-lift
 orbit of S1 the 2-read display transports by the letter alone: for every
-orbit member Φ′ with residue c′ and ξ := c₀/c′,
+orbit member Φ′ with residue scalar c′ and ξ := c₀/c′,
 
-    c_base(γ,γ′) = c′(γ,γ′)·ξ^{D₁}   for all γ, γ′ ∈ W₂.
+    c_base(γ,γ′) = c^{Φ′}(γ,γ′)·ξ^{D₁}   for all γ, γ′ ∈ W₂.
 
 *Proof.* The THEOREM applied on the Φ′-tower and on the base tower, plus
 z₁ = ξ·z₁′ (S1) and the lift-independence of D₁ (S1/S2). ∎ This is the
@@ -795,8 +945,32 @@ here by COR 1; at n = 1 clause (ii) is ITERLAW S7's own display). Riding
 S0.1's verbatim propagation, the discharge lifts to every rung AT [ILN]'s
 OWN conditionality (T-class/(RM-m)/DCX ledger unchanged). VERIFY-TARGET for
 the arc: the clause-(ii) census at rungs ≥ 2 (no rung leg opens Φ₁'s bytes
-outside the level-1 package) is cited from the [ILN]/ILNRES consumption
-tables, not re-proved here.
+outside the level-1 package) is NOT re-proved here.
+**[r4, F4-4 — the CITE for that census is re-pointed; the r3 wording, quoted
+and superseded, was "is cited from the [ILN]/ILNRES consumption tables, not
+re-proved here".]** That cite was false as to location: ITERLAWN_PROOF's S9
+dependency/exemption sweep (22 rows) and ILNRES S6's "consumption census" are
+both keyed to *accepted-package* consumption (which levels, which of
+[IL]/[IL3]†/(RM-m)/DCX), and NEITHER contains any row about how much of Φ₁'s
+explicit form a rung leg opens (PE4 read all 22 rows; the nearest, rows 1 and
+10, are level-scope claims). **The true site of record, and the one pin a
+rung-≥2 census must clear, is ITERLAWN's own r4 erratum:** its S0.3 clause
+table, L6 row, now reads "PROVED given only the [IL] base … **[attribution
+(errata r4, 2026-08-03; PE4-F1): + S4.1 at rungs ≥ 2 — the canonical-lift
+certification (WELL-DEF-(n)/(R1) + C_k existence) consumed via the S0.1 class
+pin and the S4.2 degree-telescope input; S4.1's m = 1 base rides [IL3]†; rung 1
+given [IL] alone]**" (same erratum: sweep rows 4/12/19 at status C-r4, and the
+S4.1 → L6-(n) DAG edge added). **The pin, named explicitly**, is ITERLAWN
+S0.1's Lifts clause, verbatim: "**Φ₁ := the STANDARD LIFT of ψ₀**
+(grb_order2_check :499–507); for 1 ≤ m ≤ n−1, Φ_{m+1} := the CANONICAL
+ε_m-CORRECTED LIFT of ψ_m" — i.e. exactly the clause PROP relaxes on the Φ₁
+axis. So a rung-≥2 clause-(ii) census must show that S4.1/WELL-DEF-(n) and the
+S4.2 telescope read Φ₁ only through monicity, degree e₀d₀ and w₁Φ₁ = e₀g₀h₀
+(plausible — the C_k are built from ψ_m, γ_{m+1}, ε_m, realize_m and Φ_m, and
+Φ₂ = Σ_k C_kΦ₁^{e₁k} uses Φ₁ only as a power) — **an argument this note does
+not make, and which exists nowhere in the corpus as of r4.** Charge item (5)
+is re-scoped to exactly that: the census is OWED, its site of record is
+ITERLAWN's r4 erratum, and the deeper-level fence of S5 is untouched by it.
 
 **Grade box + W-2 consumption census (the cap).** This note: ATTEMPT 0/2 —
 r1 is a REPAIR round, not a pass; one hostile pass has run (PE1: 1 CRITICAL
@@ -822,6 +996,25 @@ counter stays 0/2** — 5 gaps is not a clean pass, and a repair round is not a
 pass. Audit state after r3, plainly: charge items **(1), (2), (7)** have been
 re-derived by TWO hostile passes (PE2, PE3) with no acceptance credit; the r2
 edits have been read ONCE (PE3); **the r3 edits are UNAUDITED**. **PE4 — a
+fresh hostile pass on THIS text — is the next acceptance attempt.**
+**[r4 — grade box updated.]** FOUR hostile passes have now run: **PE1** on the
+r0 text (1 CRITICAL + 3 gaps → r1), **PE2** on the r1 text (0 CRITICAL + 5
+gaps → r2), **PE3** on the r2 text — the arc's FIRST acceptance attempt (0
+CRITICAL + 5 gaps → r3) — and **PE4** on the r3 text, the SECOND acceptance
+attempt (**0 CRITICAL + 6 gaps** → this repair round r4; report
+`LIFTCORNER_passPE4_report.md`, commit 8b53efa). PE4 found no defect in the
+mathematics and re-derived, from scratch, the eight per-digit ω-gain bounds,
+the census/lex/ρ consumers, READ-EQ digit by digit on both towers, the
+counter-instance's two passes and its double-development tie, and the THEOREM
++ COR 2 on a concrete ℤ₂/𝔽₄ orbit member; all six of its gaps are
+evidence-description / bookkeeping defects (F4-1 the assert pair, F4-2 an
+un-superseded refuted S5 clause, F4-3 the "bit-identical" provenance, F4-4
+PROP's census cite, F4-5 the `c′` collision, F4-6 the NR-1 bookkeeping
+sentence), so no r4 edit touches the chain. **The counter stays 0/2** — 6 gaps
+is not a clean pass, and a repair round is not a pass. Audit state after r4:
+items **(1), (2), (7)** have been re-derived by **THREE** hostile passes (PE2,
+PE3, PE4) with NO acceptance credit; the r2 edits have been read twice (PE3,
+PE4) and the r3 edits once (PE4); **the r4 edits are UNAUDITED**. **PE5 — a
 fresh hostile pass on THIS text — is the next acceptance attempt.** Charge
 (r1-updated, item (7) added at r2 per PE2 G2; the r0 charge list named neither
 the step that broke nor the
@@ -853,12 +1046,122 @@ g₀ = 1 ∧ δ₁ = 1; nothing is claimed for any non-canonical lawful lift at 
 level" becomes, on the Φ₁ axis: "(ITER-LAW-LIFT) DISCHARGED at attempt grade
 (capped by the W-2 0/2 consumption; ξ = 1 core W-2-free): ITER-LAW-n holds
 for EVERY lawful monic Φ₁, every n, at [ILN]'s own conditionality, and
-covariantly for the full Φ₁-orbit by the χ-law". NR-1 then leaves the
-ILNRES residual list; the T-class(n) conditionality of record shrinks to
-NR-2/NR-3 (+ NR-4's own closing arc). NOT covered, said plainly:
-non-canonical lawful lifts at DEEPER levels (Φ_{m+1}, m ≥ 1) — a separate
-corner (the g_m = 1 analogue), never part of (ITER-LAW-LIFT)'s displayed
-statement (wave-18 S0), stays open as its own priced item.
+covariantly for the full Φ₁-orbit by the χ-law".
+
+**[r4, F4-6 — the bookkeeping sentence that followed is STRICKEN and replaced
+by the three paragraphs below. The r3 wording, quoted in full and superseded:**
+"NR-1 then leaves the ILNRES residual list; the T-class(n) conditionality of
+record shrinks to NR-2/NR-3 (+ NR-4's own closing arc). NOT covered, said
+plainly: non-canonical lawful lifts at DEEPER levels (Φ_{m+1}, m ≥ 1) — a
+separate corner (the g_m = 1 analogue), never part of (ITER-LAW-LIFT)'s
+displayed statement (wave-18 S0), stays open as its own priced item."**]**
+
+**What this note delivers, exactly.** The **Φ₁ corner** of NR-1:
+(ITER-LAW-LIFT) for every lawful monic lift Φ₁ at g₀ = 1 ∧ δ₁ = 1 (COR 1),
+plus the χ-covariance across the harness Φ₁-orbit (COR 2) and PROP's rung
+propagation at [ILN]'s own conditionality. That is exactly the deliverable of
+the spec of record, ILNRES S5.1 — "Extend the [IL] L7 Case-II analysis to an
+arbitrary lawful lift Φ₁′ = Φ₁ + (π-excess) at g₀ = 1 ∧ δ₁ = 1, then ride
+S0.1's verbatim propagation" — and exactly the residual as DISPLAYED at
+wave-18 S0: "the honest OPEN displayed lemma **(ITER-LAW-LIFT)**: ITER-LAW for
+every lawful monic lift Φ₁" (Φ₁ only; both quotes verified at source, and PE4
+independently confirmed the delivery matches the spec). **So the honest claim
+is: NR-1's Φ₁ corner is DISCHARGED PENDING THIS NOTE'S ARC** (attempt 0/2,
+W-2-capped; the ξ = 1 core W-2-free). No residual leaves any list until the arc
+closes, and this note edits no ledger.
+
+**The discrepancy, stated neutrally.** NR-1 as RECORDED in ILNRES S1 is wider
+than the residual as DISPLAYED at wave-18 S0: the recorded statement quotes the
+[IL] rider "nothing is claimed for any non-canonical lawful lift **at any
+level**", which reads on Φ_{m+1} for m ≥ 1 as well. This note covers the Φ₁
+level only. Under the wave-18 / S5.1 reading NR-1 is addressed in full here;
+under the ILNRES S1 "at any level" reading a deeper-level remainder survives.
+The two readings live in different notes of record, and this unit does not
+choose between them.
+
+**Disposition of the deeper levels — NOT a new priced item.** Non-canonical
+lawful lifts at levels m ≥ 1 (Φ_{m+1}, the g_m = 1 analogue) are **not covered
+here and are not priced by this note**; r3's "stays open as its own priced
+item" is withdrawn, because this unit has no authority to create a residual and
+an uncited new one would collide with ILNRES S7's recorded outcome that "S1's
+FOUR-MEMBER residual list is COMPLETE relative to the sources of record — NO
+FIFTH RESIDUAL EXISTS". **Flagged for the next fold as an ILNRES-side ERRATUM
+CANDIDATE (ILNRES is NOT edited here):** ILNRES's own ledger entry should rule
+whether the "at any level" clause of NR-1's recorded statement is (a) a scope
+fence in the genre of its perimeter fact (iii) ("orders ≥ 3 untouched … is
+subsumed by [ILN] itself"), in which case the Φ₁ corner is the whole of NR-1
+and this note discharges it on its arc; or (b) a live conditionality, in which
+case it is a fifth member and the S7 completeness sentence needs amending.
+Until ILNRES rules, **nothing here re-prices anything**, and the consequence
+display above should be read as changing the **Φ₁ axis** of the rider only.
+
+**STATUS BLOCK [r4] — REGENERATED from a minimal five-line template.** This
+block is the note's whole status of record; it replaces the r1, r2 and r3
+STATUS LINEs wholesale (they are quoted verbatim, byte-unchanged, inside the
+[r4, ARCHIVE] region below). The status surface produced findings in three
+consecutive passes — PE2's G2 attribution, PE3's F-C/F-D, PE4's F4-2/F4-3 —
+so it is now five lines and nothing else. **Standing rule for future rounds:
+edit these five lines; do not grow a sixth.**
+
+* **ARC.** PE1 (1 CRITICAL + 3 gaps) → r1 → PE2 (0C + 5G) → r2 → PE3 (0C + 5G;
+  the arc's FIRST acceptance attempt) → r3 → PE4 (0C + 6G; the SECOND
+  acceptance attempt) → **r4 (this round: F4-1…F4-6 + this regeneration)** →
+  **PE5 = the next acceptance attempt.**
+* **COUNTER.** Acceptance **0/2** — no pass has been clean, and a repair round
+  is not a pass. The grade is CAPPED by this unit's W-2 consumption (GRTW2
+  itself 0/2); the COR 1 / ξ = 1 chain is W-2-free, so if W-2's arc lags the
+  ξ = 1 discharge stands on this note's own arc alone.
+* **PROVED (at that grade).** (TAIL-STAB) by S4.1 as repaired at r1, statement
+  byte-unchanged, its argument re-derived independently by PE2, PE3 and PE4;
+  and on it READ-EQ, the THEOREM, **COR 1** ((ITER-LAW-LIFT) at the corner —
+  and δ₁ = 1 is EMPTY at e₀ = 1, so S4's e₀ ≥ 2 Setting costs COR 1 nothing),
+  COR 2 on the harness orbit, and PROP's rung propagation. S3's corner
+  measurement (25,409 checks / 0 violations) is machine fact either way.
+* **CONDITIONALITY.** Grade-box charge items (1)–(7), of which **(5) PROP's
+  rung-≥2 clause-(ii) census is OWED** with its site of record re-pointed at
+  [r4, F4-4]; COR 2's W2-OPEN-1 tie needs (a) and (b) of the [r1, F3] box;
+  NR-1's discharge is the **Φ₁ corner** only, pending this note's arc, with the
+  deeper-level reading flagged as an ILNRES-side erratum candidate ([r4,
+  F4-6]); wave-18's price sheet is settled MODULO this note's own arc, not "in
+  full".
+* **NEXT / AUDIT STATE.** PE5, a fresh hostile pass on THIS text. Unaudited
+  going in: **the r4 edits**. Read once: the r3 edits (PE4). Read twice: the r2
+  edits (PE3, PE4). Items (1), (2), (7): re-derived by three hostile passes, NO
+  acceptance credit. Both machine legs BYTE-FROZEN and re-run clean at PE4
+  (sealed runner exit 0, 25,409/0, md5 `ccb4351c92573f5f962cae4ae952d8dd`,
+  `git diff dafc0b5 HEAD` = 0 bytes, output identical modulo timing fields;
+  children table regenerates byte-identically, A7's four legs PASS).
+
+**[r4, ARCHIVE — the three superseded STATUS LINEs (r1, r2, r3) follow between
+the ARCHIVE-BEGIN / ARCHIVE-END markers, quoted BYTE-UNCHANGED.]** Nothing
+between the markers is live: it is superseded wholesale by the five-line STATUS
+BLOCK above, and is kept only because this note's discipline never silently
+deletes superseded wording. Two corrections apply INSIDE the archive and are
+stated here so no sentence in it can be misread as current:
+**(1) [F4-2]** the r1 STATUS LINE's clause "S2 disclosure (c) corrected to what
+the runner actually asserts (F4)" is **REFUTED** — r3's own F-A showed r1's F4
+repair landed on the wrong half of its sentence, and r4's F4-1 shows the other
+half was wrong too; the FINAL description of the runner's two asserts is S2
+disclosure (c)'s **[r4, F4-1]** bracket (BOTH inert, nothing consumes either,
+the soundness is `mk_field_ext`'s g = 1 reading). r3 bracketed the header
+occurrence of this claim and missed this one; that omission is what F4-2
+records, and the sentence is now dead text inside the archive.
+**(2) [F4-3]** the r2 STATUS LINE's `[r3, F-C]` bracket says PE2's own
+qualification was "dropped in the r2 paraphrase" — the **PROVENANCE is wrong**:
+PE2's report carries the unqualified word "bit-identically" at three sites and
+the qualified form at one, so the overstatement ORIGINATES with PE2 and r2
+TRANSCRIBED it. The factual correction is unchanged and is not in dispute: the
+sealed runner's output file is **identical modulo timing fields**, every counted
+quantity is identical, and the children table is bit-identical. The corrected
+provenance of record is the **[r4, F4-3]** bracket in the r2 header round.
+**(3) [F4-1, third site]** the r3 STATUS LINE's own summary of F-A — "the
+sealed runner's ψ₁ assert is now described as the no-op it is and the K₂
+one-element check **as the only substantive half of that pair**" — carries the
+same refuted promotion; `K2["one"]` is a constant of (d₀, g₀, g₁) and BOTH
+asserts are inert. Same final description: S2 disclosure (c)'s [r4, F4-1]
+bracket.
+
+<!-- ARCHIVE-BEGIN (superseded at r4; retained verbatim; NOT live status) -->
 
 **STATUS LINE (r1-honest; supersedes the r0 sentence "The wave-18 sketch's
 one open step (TAIL-STAB) is CLOSED by S4.1 (its ω is this ledger; the
@@ -979,7 +1282,10 @@ full". Both machine legs are BYTE-FROZEN at r3 and were re-run clean by PE3
 `ccb4351c92573f5f962cae4ae952d8dd`; children generator table regenerates
 byte-identically with A7's four legs PASS at 752 nodes / 5,336 children).
 
+<!-- ARCHIVE-END -->
+
 — LIFT-CORNER unit, campaign date 2026-08-08 (wallclock 2026-08-04);
 repair round r1 applied 2026-08-08 campaign (wallclock 2026-08-05);
 repair round r2 applied 2026-08-08 campaign (wallclock 2026-08-05);
-repair round r3 applied 2026-08-08 campaign (wallclock 2026-08-05).
+repair round r3 applied 2026-08-08 campaign (wallclock 2026-08-05);
+repair round r4 applied 2026-08-08 campaign (wallclock 2026-08-05).
