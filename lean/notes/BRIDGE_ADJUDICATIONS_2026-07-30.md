@@ -10964,3 +10964,30 @@ ratio); **COR 1's corner FULLY covered — δ₁ = 1 is empty at e₀ = 1**.
 Machine legs all reproduce (timing-only diffs). **r4 dispatched (surgical:
 the 6 gaps + regenerate S5's status line from a minimal template — it has
 become its own bug source); PE5 = next acceptance attempt.**
+
+---
+
+## J-C PE2: 0 critical / 9 gaps — THE STRUCTURAL REPAIR SURVIVES FULL HOSTILE RE-DERIVATION ("no false statement found"); r2 dispatched — 2026-08-05
+
+**GRTJC PE2 (report 4a76d52) — VERDICT 0C/9G; counter 0/2.** The r1
+structure CLEARED end-to-end: JC-LOC, JC-PIINV, JC-BSURJ, (COORD-B)(1)(2),
+(MULT-B), JC-COB, PSIKER(ii)(iii), and all five consumers re-derived by a
+fresh hostile reader with NO false statement found; the verifier
+hand-derived two rows (C2A, C2I) and audited R1-DMULT as genuinely
+independent. The nine gaps, substantive first: G-1 (DMULT) over-cited —
+the §0 transport delivers it only up to the unit cocycle (costs JC-COB's
+sharp u = a_γa_γ′ form, no clause grade); G-2 R1-DMULT never exercises
+true bilinearity (6/7 sample elements monomial; the one non-monomial pair
+continue'd UNDISCLOSED — the same defect species r1 repaired elsewhere);
+G-6 JC-LOC identifies B with gr of the note's OWN extension of w — the tie
+to the literature's valuation is asserted; G-3 stale pre-seal c_π roster
+quote; G-4 bracket leak (7 live sites naming struck (COORD)/(MULT), worst
+in the W-7 THEOREM box); G-5 quantifier display over ℤ where objects live
+on W (transport step parenthetical); G-7 "JC-BOX-4 unchanged" vs its [r1]
+conditional closure; G-8 headline figure decomposition (10,330 + 145);
+G-9 the one-line additive-iso-to-ring-quotient argument unwritten. Machine
+legs: both batteries reproduce exactly (JSON byte-identical; both seals
+verified; R1-UNIT confirmed unfiltered with a planted zero tooth). **r2
+dispatched (the 9 gaps; the bilinearity family gets a real leg; the
+literature-valuation tie gets displayed or fenced). Arc: composed → PE1
+2C+8G → r1 structural → PE2 0C+9G → r2; PE3 = next acceptance attempt.**
