@@ -10497,3 +10497,31 @@ verbatim, sealed JSON md5-identical) and §B–D analysis but BEFORE composing
 `GRTJB_passPE1_PARTIAL_outage_2026-08-05.md` — evidence only, NOT a pass;
 J-B's counter stays 0/2. Fresh JB-PE1 + the LIFT r1 repair dispatched in
 parallel (workflow, this entry's commit).
+
+---
+
+## DIRECTIVE (Asvin, 2026-08-05, verbatim) + second outage wave — 2026-08-05
+
+"if the mathematics is proving difficult get an agent to generate lots of
+relevant examples (specially constructed to test open questions) and build
+intuition from there. This is the sort of problem that, if it works at all,
+we will find out easily by looking at examples WHY it works."
+
+**Standing law from this point: examples-first.** When a unit stalls or a
+route is unclear, the first deliverable is a constructed example battery
+spanning the shape space (boundaries and thin strata included) tabulating
+exactly the quantities the open question turns on; the proof's case split
+is derived FROM the observed genres, and the case list must match the
+observed list. Extends the constructed-counterexamples directive
+(2026-08-04): that one aims at defeat, this one at MECHANISM. Note the
+TAIL-STAB F1 critical is the type specimen — the examples knew the true
+induction order (lex (m, deg a)) before the prover did.
+
+**Outage record:** the first LIFT-r1 + fresh-JB-PE1 dispatch (workflow
+wjjk2svi6) was killed entirely by a second API error wave (529 Overloaded +
+mid-response server error; 7 tool uses total, nothing landed, no commits).
+The wave also took down the harness permission classifier (Bash and
+Workflow blocked at the orchestrator), so this entry was written via the
+Edit path and committed after recovery. Re-dispatch carries the
+examples-first phase as MANDATORY in the r1 repair prompt (child-type
+table before induction-writing).
