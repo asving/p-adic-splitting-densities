@@ -3055,3 +3055,57 @@ remedies confirmed) + r36b + VC36c CONFIRMED; VC37 NOT-CONFIRMED 0C/4G
 CONFIRMED (= the STANDING anchor, REVISION 37 + r38b)**; VC39
 NOT-CONFIRMED 0C/6G (disposed 2026-08-04: r39b six cures + the
 whitespace-normalization convention amendment, ledger; VC39b owed).
+
+---
+
+## CHECKPOINT 2026-08-05 (wallclock; campaign date 2026-08-08 series) — RM-GEN ACCEPTED; THE WELD COMPOSED 4/4; the LIFT corner discharged; examples-first directive
+
+**Ledger of record: `lean/notes/BRIDGE_ADJUDICATIONS_2026-07-30.md` (every
+entry below has a dated bracket there with commit hashes; this checkpoint
+is the resumability summary).**
+
+**Q1 CLOSED — [RMG] = THEOREM RM-GEN ACCEPTED** (a0e266c; 7-round dual-model
+arc, 14 passes, rounds 2–7 zero-critical; count erratum [RMG-c1]): the four
+(RM-m) box clauses at every m on T-scope(m). COR-A: (ITER-LAW-n)
+unconditional-on-(RM) on T-class(n).
+
+**Q2 nearly closed**: LAW-DCX-(m+1) proved on the pinned class, widened by
+SDY-THM (d₀ pin dropped) and K2-THM-B (g₀ = 2 involution program; K2-CLOSE
+legs committed). Residue: K2-MULT-RES (one same-sign multiplicity genre) +
+g₀ ≥ 3. ALL at attempt grade capped by the W-arc (W-MULT-DCX, 0/2) — the
+FIRST Codex leg at the Thursday window (resets 2026-08-08 ~04:22; thirteen+
+legs queued in ledger order).
+
+**Q4 THE WELD: ALL FOUR JUNCTIONS COMPOSED (each at attempt 0/2)** —
+W-2 lift (GRTW2), J-A dictionary (GRTJA), J-B tree (GRTJB; the carry
+cancels in print coordinates; c_m = the next residual letter), J-C
+carry-algebra (GRTJC: W-6/W-7/W-8 PROVED AT GENERAL m — gauge lemma =
+the unsupplied OB-1, THEOREM JC-LOAD, zero-class genre = the ψ-kernel;
+W-9 given them; instrument first: iso ON THE NOSE 669/0 exhaustive).
+Remaining: the J-D block (W-10/W-11/W-12, M/S-priced) + all arcs.
+JC-F1: blueprint cyclic-fence display correction owed at next fold.
+
+**[ILN] residual map (definitive four)**: NR-1 LIFT corner DISCHARGED at
+attempt (LIFTCORNER: covariance carried the corner 25,409/0; (TAIL-STAB)
+proved via lex (m, deg a) descent after PE1 found the m-descent false —
+arc PE1 1C → r1 → PE2 0C (repair held) → r2 → PE3 in flight); NR-4
+DISCHARGED (DS-SUB); NR-2 = the weld (above); NR-3 = Q2's residue.
+
+**Active hostile arcs (2026-08-05, Opus 5 fleet — Fable outage sidestepped
+per Asvin)**: LIFT PE3 (first acceptance attempt) ∥ JB r2 (7 PE2 gaps;
+walker degeneracy disclosure mandatory) ∥ J-C PE1. JB arc: PE1 1C+9G → r1
+(print-key walker green incl. 12 byte-unequal junctions) → PE2 0C+7G → r2.
+
+**Directives in force**: math-first-formalize-when-stable (2026-08-04);
+constructed-counterexamples (2026-08-04); **examples-first (2026-08-05:
+batteries before proofs; case splits derived FROM observed genres — the
+(TAIL-STAB) repair is the type specimen)**. Lean formalization DEFERRED
+until the weld arcs stabilize the corpus; sorry census 34 unchanged, no
+.lean touched.
+
+**FRONTIER NOW**: (1) the running arcs to acceptance (2-clean each); (2)
+J-D compose; (3) Thursday Codex queue (W-arc leg FIRST, then VC40 +
+E/S/SD/K2/W2/SDYJ/KC/LED-Λ/JA/ILNRES/JB/LIFT/JC legs + the weld blueprint
+plan-review + errata); (4) K2-MULT-RES + g₀ ≥ 3 (peripheral by centrality);
+(5) public map/paper refresh at ACCEPTANCE milestones (not composition);
+(6) then the Lean campaign per the math-first gate.
