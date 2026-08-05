@@ -10887,3 +10887,80 @@ a note section, then REGENERATE every grade surface from it (grade cap,
 ∎Grade lines, §7.2 rows, §7.3, boxes), restore the dropped [RMG] clauses
 to the recital with the γ_{m+1} membership displayed, and reclassify the
 same-engine evidence honestly. PE4 = next acceptance attempt.**
+
+---
+
+## J-C r1 STRUCTURAL COMPLETE — all five consumers THROUGH, W-7 STRENGTHENED, literature footprint shrunk to (DMULT); PSIKER's exact range derived; JC-PE2 dispatched — 2026-08-05
+
+**GRTJC r1 (85d5811 + 54904cc note; f45b63c/66263ce mini-seal) —
+ADJUDICATED: both criticals cured on B_n with NO consumer downgraded.**
+(COORD-B)/(MULT-B)/TC-3 restated on JC-DOM's own B_n; the five PE1
+consumers re-derived THROUGH (§3.1 via JC-GAUGE(iii) + B_n/(𝔦∩B_n) ≅ K;
+OB-4 on the free rank-one B_{γ_ν}; W-7 bijectivity STRENGTHENED — dim_K 𝒜
+= E makes spanning a THEOREM, repairing G2 en route; JC-F1's count; (MULT)
+with the previously-skipped Δ-bilinearity displayed). Repair internals:
+JC-LOC (B = gr(w)[in(π)⁻¹] ≅ gr_{K[x]}(w) — B IS FGMN's object, the
+citation now on the nose), JC-PIINV, JC-BSURJ (surjectivity PROVED from
+REALIZE-(m), no longer cited) — **the literature footprint shrinks from
+"Thm 4.2 on gr" to the single identity (DMULT)**; bonus JC-COB
+(u = a_γa_{γ′}) and the top-flat corner box conditionally closed on
+(DMULT). PSIKER re-quantified EXACTLY (𝔦 ∩ gr_λ = in(Φ_{m+1})·gr_{λ−wΦ_NR}:
+zero below wΦ_NR, nonzero on wΦ_NR + W; on B_n nonzero for ALL n — the
+form §2.10 consumes); witness unchanged. G1–G8 all applied; **FINDING
+JC-F2** (the inherited degree-0 display defect) flagged REVIEW-OWED
+alongside JC-F1 for the blueprint correction at next fold. New mini-sealed
+battery grt_jc_r1_checks.py: 10 families / 10,475 scored / 0 violations /
+5 teeth fired (1,885); R1-DMULT multiplier EXACTLY 1 (2,784/0); R1-COB
+869/869 incl. the boxed C4H row; R1-UNIT replaces the vacuous JC8 cell
+(869 unit / 0 zero). Sealed r0 battery + instrument byte-untouched.
+**Arc: composed → PE1 2C+8G → r1 structural; counter 0/2; JC-PE2
+dispatched.** Concurrent: JB r3 + LIFT PE4 (wxdii4091).
+
+---
+
+## JB r3 MATRIX NORMALIZATION LANDED (224 cells, 14 surfaces regenerated, license discharged) + LIFT PE4: 0C/6G (the assert saga act three; theorem re-derived clean on a concrete orbit member) — 2026-08-05
+
+**JB r3 (8acb2d1 + 87c553d, note-only; all four instruments byte-frozen,
+machine legs deliberately not re-run — PE3's bit-identical record stands) —
+ADJUDICATED: COMPLETE.** §0M matrix: 28 claims × 8 provisos = 224 cells;
+findings: only 2 rows consume the through-q perimeter (JB-DEV(ii) AND —
+the F-4 movement, toward MORE conditionality — (RES)); only 2 consume
+u ≥ 0; THREE cells are open-proviso-with-NO-LEG (rows 5 (RES), 12 (d4),
+22 (v = 0)) — honest targets for any future leg. 14 grade surfaces
+regenerated FROM the matrix; JB-BOX-6 carries the standing rule (edit §0M
+first, then re-derive). F-5 DISCHARGED: [RMG] §S0.2 restored verbatim
+((Ĉ-deg)/(Ĉ-wt)/(Ĉ-read)) + the one-line lattice-membership derivation;
+lemma quantifier unchanged; (Ĉ-deg) additionally supplies L-CANON's third
+hypothesis. F-2 evidence: JB-DEV's engine leg reclassified SAME-COMPUTATION
+(violation unreachable), "both engines" withdrawn at all 3 live sites,
+surviving IND evidence named. F-3: three ties keyed, (d4) NO-LEG = the sole
+u ≥ 0 rider (coincidence disclosed). F-6/F-7 applied. **Arc: PE1 1C+9G →
+r1 → PE2 0C+7G → r2 → PE3 0C+8G → r3 matrix; counter 0/2; JB-PE4 = next
+acceptance attempt.**
+
+**LIFT PE4 (report 8b53efa) — VERDICT 0C/6G; counter 0/2.** F4-1 (the
+assert saga, act three): r3 promoted assert (ii) as "the half that can
+actually fire" — but K2["one"] is a CONSTANT of (d₀,g₀,g₁), never reads a
+ψ₁ coefficient (source + machine confirmed on the note's own row: invariant
+under perturbing ψ₁ while z₁ changes). r0 described the pair, r1 promoted
+(i), r3 promoted (ii) — every description of the pair has overclaimed one
+half. The honest statement (nothing else changes): BOTH asserts inert,
+NOTHING consumes them, the soundness lives in mk_field_ext's g = 1 reading.
+F4-2: S5's r1 status line still carries the refuted F4-correction claim
+(first violation of PE3's no-un-superseded-text property — r3 bracketed the
+header site, missed this one). F4-3: the "bit-identical" overstatement
+ORIGINATES in PE2's own report (3 sites) — provenance corrected, r2
+partially exonerated. F4-4: PROP's census clause mis-cited (neither
+consumption table contains it; ITERLAWN r4's class-pin site unmentioned).
+F4-5: the c′ notation collision (residue scalar vs cocycle) in COR 2's
+display. F4-6: "NR-1 then leaves the ILNRES residual list" over-reaches
+the recorded residual (the "at any level" clause; S5's next sentence
+reopens it as an UNCITED new priced item against ILNRES S7's four-member
+completeness claim) — mitigated: delivery matches the S5.1 spec verbatim.
+POSITIVE re-derivations (from scratch, no findings): all eight per-digit
+ω-gain bounds; census/lex/ρ consumers; READ-EQ digit-by-digit on both
+towers; THE THEOREM + COR 2 on a concrete ℤ₂/𝔽₄ orbit member (exact
+ratio); **COR 1's corner FULLY covered — δ₁ = 1 is empty at e₀ = 1**.
+Machine legs all reproduce (timing-only diffs). **r4 dispatched (surgical:
+the 6 gaps + regenerate S5's status line from a minimal template — it has
+become its own bug source); PE5 = next acceptance attempt.**
