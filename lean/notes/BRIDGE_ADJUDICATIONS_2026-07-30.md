@@ -10461,3 +10461,39 @@ arc) · NR-4 DISCHARGED (pending arc) · NR-2 = the weld at 3/4 · NR-3 =
 Q2, closed at g₀ ≤ 2 except K2-MULT-RES + g₀ ≥ 3.** Hostile rounds
 JB-PE1 + LIFT-PE1 dispatched; the Thursday queue now carries THIRTEEN
 legs (W first).
+
+---
+
+## PE1 VERDICTS: LIFT 1-CRITICAL (repairable) + 3 gaps; JB pass KILLED by API outage (archived partial, re-dispatched) — 2026-08-05
+
+**LIFT-PE1** (report 30e570c, `LIFTCORNER_passPE1_report.md`): machine leg
+bit-identical (exit 0; 25,409/0; fires 1,576; all roster counts independently
+re-derived; seal dafc0b5 → 987ffb7 → dc278ce verified, runner md5 byte-untouched).
+**F1 CRITICAL, (TAIL-STAB) S4.1**: the strict-descent clause "every child has
+m′ ≤ m−1" is FALSE — the mid-branch q-digit child at k = e₀−1 sits at m′ = m
+(explicit counter-instance: ℤ₂, d₀=2, e₀=2, Φ₀ = x²+x+1, b₁ = 2x, a = x, m=2 →
+q-child −2Φ₀² at m′ = 2). The strong induction on m and the termination/
+dev-linearity finiteness both ride it. **SUPERSEDE-AT-REFUTATION: the
+"(TAIL-STAB) PROVED" claims in the dc278ce note S5 and this ledger's b312716
+entry are OVERSTATED as of this entry** — status drops to PROVED-MODULO-F1
+pending the r1 repair (verifier's own repair readout: the mid-q-child strictly
+drops deg a, so lexicographic (m, deg a) descent should cure it; repair unit
+must prove the deg-a drop for EVERY m′ = m child, not the exhibited one).
+Downstream READ-EQ / THEOREM / COR 1 / COR 2 / PROP verified sound GIVEN
+(TAIL-STAB); the corner measurement (the covariance carrying the corner) is
+untouched — it is machine fact, not induction. Gaps: F2 ĉ′/t₀ notation
+in-note-undefined (wave-18 S1 import); F3 COR 2's "= W2-OPEN-1 restricted —
+now PROVED" asserts an underived equivalence (orbit-membership of the
+transported key not displayed; K12 legs unaddressed) — rescope or derive;
+F4 disclosure (c) overstates a K2["one"] byte smoke check. Confirmations:
+wrong-letter control independently computed per pair (3,816 checks, 1,576
+fires, exact set-equivalence); ξ=1 core W-2-freeness CONFIRMED by dependency
+trace; S5 rider display factually accurate.
+
+**JB-PE1: NO VERDICT — the verifier died at the 401 outage** after completing
+the machine leg (bit-identical: 18 families green, 6,700 samples, censuses
+verbatim, sealed JSON md5-identical) and §B–D analysis but BEFORE composing
+§E. Partial archived with a provenance header as
+`GRTJB_passPE1_PARTIAL_outage_2026-08-05.md` — evidence only, NOT a pass;
+J-B's counter stays 0/2. Fresh JB-PE1 + the LIFT r1 repair dispatched in
+parallel (workflow, this entry's commit).
