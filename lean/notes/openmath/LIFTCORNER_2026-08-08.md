@@ -22,6 +22,13 @@ added, curing PE2's G3: the enumerated children now have to reconstruct the
 very polynomial A6 develops) and its output recommitted; its r1 data sections
 (§§1–6) regenerate byte-identically, A7 adds assertions only. The sealed
 runner is STILL byte-untouched at r2 (md5 `ccb4351c92573f5f962cae4ae952d8dd`).
+[r3] **BOTH MACHINE LEGS ARE BYTE-FROZEN AT r3** — repair round r3 is
+note-level only, and PE3 verified both legs before the round: sealed runner
+`git diff dafc0b5 HEAD` = **0 bytes**, md5 still
+`ccb4351c92573f5f962cae4ae952d8dd`, exit 0 at 25,409/0; children generator +
+its committed table regenerate **byte-identically** (`diff` empty) with A7's
+four legs PASS (752 nodes / 5,336 children, 0/0/0/0). No script or table is
+touched at r3.
 
 **[REPAIR ROUND r1 — 2026-08-08 campaign (wallclock 2026-08-05).** Applied
 against LIFTCORNER-PE1 (hostile pass, fresh context, report
@@ -54,6 +61,11 @@ with a box naming the two things still owed for the W2-OPEN-1 tie.
 **F4** — S2 disclosure (c) now says exactly what the runner asserts (full
 ψ₁-byte carryover + a one-element K₂ smoke check) and where the
 modulus-independence verification actually lives (`mk_field_ext` at g = 1).
+[**r3, F-A:** that F4 repair landed on the WRONG HALF of its own sentence —
+"full ψ₁-byte carryover" is a snapshot-consistency no-op that cannot fail, and
+the demoted one-element K₂ check is the only substantive half of the pair. See
+S2 disclosure (c)'s [r3, F-A] bracket; the `mk_field_ext` relocation, which is
+where the soundness actually lives, stands.]
 Acceptance counter unchanged at 0/2 — a repair round is not a pass; round r2
 (a fresh hostile pass on THIS text) is the next acceptance attempt.]**
 
@@ -68,8 +80,20 @@ CURED and HELD** — PE2 re-derived every load-bearing piece of the lex repair
 independently (9 ↦ 7 mapping total and disjoint; row 7b's degree drop correct
 at the deg a = 0 and deg b = 0 edges; both emptiness strata PROVED not merely
 measured; ρ strictly drops on every edge, so the lex order well-founds both
-consumers) and both machine legs re-ran bit-identically at PE2 (i.e. on the
-pre-r2 artifacts, before this round's A7 amendment to the children generator).
+consumers) and both machine legs re-ran clean at PE2 on the pre-r2 artifacts
+(before this round's A7 amendment to the children generator). **[r3, F-C —
+"bit-identically" STRICKEN here as an overstatement of PE2's own record.]** The
+r2 wording was "both machine legs re-ran **bit-identically** at PE2"; PE2's
+report says something weaker for the sealed leg, verbatim: its family table is
+"identical line-for-line modulo the `elapsed`/per-block timestamp fields only
+(diff of the two outputs with timing normalised is empty)" — the committed
+artifact `liftcorner_checks_output.txt` reads `elapsed 4.4s`, PE2's and PE3's
+re-runs both printed `elapsed 4.3s`, so the runner's OUTPUT FILE carries
+wall-clock fields and is demonstrably not bit-identical across runs. Every
+COUNTED quantity is identical (25,409 checks, 0 violations in every family,
+1,576 WRONGLET fires, coverage minima, md5). The children-generator table IS
+bit-identical (`diff` empty at both PE2 and PE3) — the defect was the word
+"both".
 No critical finding, so no r2 edit touches the chain. Dispositions, each edit carrying a dated
 `[r2, G#]` bracket, strike-and-replace (the refuted r1 wording is quoted
 inside the bracket that supersedes it, never silently deleted): **G1** — the
@@ -88,7 +112,10 @@ asserted that its enumeration EXHAUSTS the development (A6 bypasses
 supplied that leg ad hoc (0/752 mismatches) and r2 makes it DURABLE as
 assertion **A7** in the committed generator, with the output recommitted.
 **G4** — "gain(q-digit) = gain(r-digit) + e₁h₀" is STRICKEN (not an identity;
-PE2's witness a·b = 4x²+2 over ℤ₂ has w₀(q) = 2 > 1 = w₀(r)) and replaced by
+PE2's witness a·b = 4x²+2 over ℤ₂ has w₀(q) = 2 > 1 = w₀(r) — **[r3, F-B:** that
+DIVIDEND is not realizable as a branch product at d₀ = 2; the witness is
+replaced in S4.1 by a = x, b₁ = 4x+2 at a legal mid, and the strike itself
+stands**]**) and replaced by
 the direct CONTENT application to the q-digit, which yields the same displayed
 "≥" column; the equality is recorded as an OBSERVATION (held on all 896
 battery r/q pairs), not a law, and nothing consumes it. **G5** — "valid
@@ -97,6 +124,50 @@ sufficient; the r0 clause also holds vacuously wherever no m-preserving child
 occurs, and the table has such d₀ = 2 rows: A12, B14). Acceptance counter
 unchanged at **0/2**: PE2 was a hostile pass but returned 5 gaps, and the r2
 repairs are themselves unaudited.]**
+
+**[REPAIR ROUND r3 — 2026-08-08 campaign (wallclock 2026-08-05).** Applied
+against LIFTCORNER-PE3 (hostile pass, fresh context, on the r2 text — the
+FIRST acceptance attempt of the arc; report `LIFTCORNER_passPE3_report.md`,
+commit 39ea0db: **0 CRITICAL + 5 gaps**). PE3 was directed at the veins the
+first two passes had not mined: S2/S3's measurement design, the (TAIL-STAB)
+consumer interface, the r2 patches themselves, and the arc's own grade
+arithmetic. **The mathematics held at every point it touched** — PE3
+re-derived independently all eight per-digit ω-gain bounds, the 2e₀+3
+branching arithmetic, the counter-instance's two passes and its
+double-development tie, the whole S2 applicability arithmetic (16 → 48 → 56 →
+656/4,176/3,816 → 25,409), and the (TAIL-STAB) interface at every downstream
+site; both machine legs re-ran clean (see the [r3] machine-leg bracket above).
+All five gaps land in the EVIDENCE-DESCRIPTION layer, not in the chain.
+Dispositions, each edit carrying a dated `[r3, F-#]` bracket,
+strike-and-replace (the superseded r1/r2 wording is quoted inside the bracket
+that replaces it, never silently deleted): **F-A** (the substantive one) — S2
+disclosure (c)'s evidential ranking of the runner's two asserts is INVERTED:
+assert (i) (`[tuple(c) for c in T.psi1] == psi1_base`), which r1's F4 repair
+promoted as the genuine leg, is a snapshot-consistency NO-OP that provably
+cannot fail and certifies nothing about carryover, while (ii)
+(`C.K2["one"] == C0.K2["one"]`), which r1 demoted, is the only one of the two
+that compares distinct objects. CORRECTED, source-verified afresh at r3 (the
+mutation trace is displayed in (c)); **no claim in this note consumes (i)**, so
+nothing is re-fenced and no new script is added. **F-B** — the witness r2's G4
+bracket displayed for the stricken r-to-q identity (a·b = 4x²+2) is NOT
+realizable as a branch product in its own setting (Φ₀ = x²+x+1 forces
+deg a, deg b ≤ 1, and the factorization would need a square root of −8 in ℚ₂
+with v₂(−8) = 3 odd); replaced by PE3's realizable substitute at a LEGAL mid
+branch (a = x, b₁ = 4x+2 ⟹ w₀(q) = 2 > 1 = w₀(r) = w₀(a·b₁)), re-verified in
+exact integer arithmetic at r3. The strike itself stands unchanged — the
+identity is still false and nothing consumes it. **F-C** — "both machine legs
+re-ran BIT-IDENTICALLY at PE2" is corrected at both sites to PE2's own
+qualified record (line-for-line identical *modulo the elapsed/per-block
+timestamp fields*; committed artifact 4.4 s vs re-runs 4.3 s). **F-D** — the
+r2 status line labelled charge items (1)–(2) "unaudited" in the same paragraph
+crediting PE2 with re-deriving exactly them; relabelled to item (7)'s accurate
+pattern (re-derived by hostile passes, no acceptance credit). **F-E** — Q6
+LOC's family count (zero: the runner emits no `note("LOC")` at all) is
+supplied in S3 so no family count is omitted, and the wording that read it as
+an affirmative observation on a probed stratum is stricken. Acceptance counter
+unchanged at **0/2** — PE3 was a hostile pass and found no critical, but 5
+gaps is not a clean pass, so no acceptance slot closed; **PE4 — a fresh
+hostile pass on THIS text — is the next acceptance attempt.**]**
 
 **Sources of record:** ILNRES_2026-08-08.md S1 [NR-1] + S5.1 (the spec);
 ITERLAWLIFT_CORNER_2026-08-08.md (wave 18: the LAWFUL slice measured
@@ -171,17 +242,81 @@ deterministic full windows, no sampling beyond the seeded pert residues;
 (c) the ledger override (ψ₀ ↦ y + c′) is IN-MEMORY on a fresh Tower object —
 sound because at g₀ = 1 the degree-1 extension arithmetic of K₁ is
 modulus-independent (mk_field_ext at g = 1: products never touch the reducer),
-so ψ₁ and every deeper byte carries over verbatim; **[r1, F4 — corrected
-wording]** the runner asserts, before any comparison, (i) full ψ₁-BYTE
-carryover (`[tuple(c) for c in T.psi1] == psi1_base`) and (ii) a
-single-element byte check on the K₂ table (`C.K2["one"] == C0.K2["one"]`) —
-(ii) is a SMOKE CHECK on one element, NOT an assertion that the K₂ arithmetic
-representation is shared, as the r0 text's parenthesis "(ψ₁ bytes equal, K₂
-arithmetic representation shared)" implied. The modulus-independence itself is
+so ψ₁ and every deeper byte carries over verbatim.
+
+**[r3, F-A — the r1 ranking of the runner's two asserts is INVERTED;
+corrected here, source-verified afresh at r3.]** The r1 wording, quoted in full
+and SUPERSEDED: "**[r1, F4 — corrected wording]** the runner asserts, before
+any comparison, (i) full ψ₁-BYTE carryover
+(`[tuple(c) for c in T.psi1] == psi1_base`) and (ii) a single-element byte
+check on the K₂ table (`C.K2["one"] == C0.K2["one"]`) — (ii) is a SMOKE CHECK
+on one element, NOT an assertion that the K₂ arithmetic representation is
+shared, as the r0 text's parenthesis "(ψ₁ bytes equal, K₂ arithmetic
+representation shared)" implied." Both asserts do exist verbatim in the sealed
+runner (`liftcorner_checks.py:36`/`:52` and `:179`), and (ii)'s SCOPE
+downgrade stands. What is wrong is the bracket's whole rhetorical structure —
+a CONTRAST promoting (i) as the genuine leg and demoting (ii) — because the
+contrast is backwards (PE3, report `LIFTCORNER_passPE3_report.md`, commit
+39ea0db, F-A; the mutation trace below re-read line by line at r3):
+
+* **assert (i) is a SNAPSHOT-CONSISTENCY NO-OP: it cannot fail, and it
+  certifies NOTHING about carryover.** `psi1_base` is snapshotted from the SAME
+  object `T` that is then mutated — `liftcorner_checks.py:36`, one line after
+  `T = LC.make_tower(...)` — and nothing between the snapshot and the assert
+  writes `T.psi1`. Exhaustively: `T.psi1` is assigned exactly ONCE, in
+  `Tower.__init__` (`grb_order2_check.py:515`,
+  `self.psi1 = self._psi1_override if … else pick_irreducible(self.K1, self.g1,
+  idx=(self.h0) % 2)`), i.e. BEFORE `make_orbit_tower` ever sees `T` (and with
+  no override on this path — `LC.make_tower` passes none); the override block
+  writes only `T.psi0`, `T.K1`, `T.z1`, `T.Phi1_std`; `LC.apply_pert`
+  (`iterlawlift_corner.py:145–155`) writes only `T.Phi1` and `T.Phi2`, as its
+  own docstring says; and `build_Phi2` (`grb_order2_check.py:651`) only READS
+  `self.psi1`. So (i) compares `T.psi1` against a copy of itself across code
+  that provably never touches it. In particular it never RECOMPUTES ψ₁ on the
+  transported K₁ — the one act that could have made it a carryover check.
+  Its honest job is a REGRESSION GUARD against a future edit that makes the
+  override path (or `apply_pert`/`build_Phi2`) recompute ψ₁.
+* **assert (ii) is the only substantive one of the two.**
+  `C.K2["one"] == C0.K2["one"]` (`liftcorner_checks.py:179`) compares two
+  DISTINCT objects — the K₂ table built on the transported tower against the
+  one on the base standard tower — so it is the half that can actually fire.
+  It remains a one-element check and does not certify that the whole K₂
+  arithmetic representation is shared (r1's correction of the r0 parenthesis is
+  right about that); but a one-element check on two objects carries strictly
+  more evidence than a tautology on one.
+
+Stated plainly: **r1's F4 repair promoted the wrong half of its own sentence**,
+and both later passes signed off on the unfixed half — PE1 called (i)
+"genuine", PE2 checked only that the quoted source line matched verbatim (a
+text match, not a semantic one) — so the overstatement survived two hostile
+readings before PE3 traced the mutations. **No claim in this note consumes (i).**
+Checked at r3 by walking every ψ₁ site in the note: S2 (c)'s own soundness
+claim is discharged by READING `mk_field_ext` (next sentence), not by the
+asserts; S3's figures are the runner's counted families (GATE/AV/TLAW/PV/INT/
+CHI/COV/WRONGLET/TRS/CERT/ENG-GATE), and ψ₁ enters none of their predicates;
+and S4.2 READ-EQ's "the towers share every read datum (reads, ψ₁, K₂, …)" is a
+statement about the Φ′- and Φ″-TOWERS OF THE PROOF, proved from the S4 setting
+(both are monic lifts over the same K₁ = K₀ at g₀ = 1), with no dependence on
+any runner assert. So nothing is re-fenced and NO new supplementary script is
+added at r3: there is no claim for a genuine carryover check to hold up.
+The modulus-independence itself is
 verified by READING `mk_field_ext`: at g = 1 its reduction loop
 `range(len(out)-1, g-1, -1)` is empty, so products never touch the reducer —
 that is where the override's soundness lives (PE1 F4 re-derived it there
-independently), not in the runner's asserts;
+independently; PE3 re-derived it independently again AND checked the consequence
+the sheet actually needs, which no assert checks: at g₀ = 1 the K₁ elements are
+1-tuples over K₀ with modulus-free multiplication, so `_field_elems(K1)`
+enumerates them in a c′-independent order and `pick_irreducible(K1, g1, idx)`
+returns the same ψ₁ bytes for every residue c′ — i.e. the transported ψ₁ IS
+the base ψ₁, as a fact about the code, not as a machine assertion) — not in
+the runner's asserts. **[r3, F-A, fence disclosure]** The SEALED runner's own
+module docstring carries the same overstatement ("the runner ASSERTS psi1-byte
+carryover and shared K2 representation", `liftcorner_checks.py:14`); it is
+BYTE-FROZEN by the two-commit seal and is therefore NOT corrected — the seal
+outranks the wording, and this bracket is the correction of record. Anyone
+reading that docstring should read it as: assert (i) is a regression guard,
+assert (ii) is a one-element check on two objects, and the soundness is in
+`mk_field_ext`;
 (d) SP bug-detector counters recorded.
 
 ## S3. VERDICT (commit 2; from the artifacts; seal dafc0b5, runner
@@ -200,7 +335,20 @@ discrepancy):
 * **Q7 CHI 4,176/0 — the χ-ratio law c_base = c′·ξ^{D₁} EXACT, measured
   against measured** (no closed form in the comparison): the W-2 covariance
   carries the corner;
-* Q4 PV / Q5 INT / TRS 4,176/0 each; Q6 LOC 0 (no δ₁ = 0 anomaly);
+* Q4 PV / Q5 INT / TRS 4,176/0 each; **[r3, F-E — the one omitted family
+  count, supplied; the r2 wording "Q6 LOC 0 (no δ₁ = 0 anomaly)" STRICKEN as
+  reading like an affirmative observation on a probed stratum]** Q6 LOC
+  **0 checks counted / 0 violations**: the runner emits no `note("LOC")` call
+  at all, so LOC has no check counter and contributes 0 of the 25,409 (the
+  committed artifact reads `LOC       pred 0  obs     0  (     0)  GREEN`), and
+  `viol("LOC", …)` fires only NESTED inside the violation branches of PV, INT
+  and TLAW. So LOC's content is LOGICALLY IMPLIED by those three being green and
+  carries no information they do not already carry — it is the nested bug
+  detector S2's sheet row calls it, not an independent leg. A reader tallying
+  S2's thirteen prediction families as thirteen independent legs over-counts by
+  one. (Q8 COV also counts 0 but is NOT in this position: its `if ncov == 0` /
+  `nteeth == 0` checks can fire independently of every other family, and its
+  substance is reported explicitly in the next bullet.)
 * Q8 COV met — min 6 δ₁ = 1 pairs and min 6 teeth pairs (ξ^{D₁} ≠ 1) per
   twisted block; Q9 WRONGLET: per-pair set equivalence EXACT on 3,816
   samples, total fires 1,576 > 0 (the wrong-letter form fails exactly where
@@ -317,9 +465,37 @@ the q-digit's extra e₁h₀ coming from its Φ₀-exponent being one higher, NO
 from any relation between w₀(q) and w₀(r). The r1 text's
 "gain(q-digit) = gain(r-digit) + e₁h₀" is STRICKEN: it is not an identity.
 The ultrametric only forces min(w₀(r), w₀(q)) = w₀(a·b), so the other digit
-may sit strictly higher — over ℤ₂ with Φ₀ = x²+x+1, a·b = 4x²+2 gives q = 4
-and r = −4x−2, so w₀(q) = 2 > 1 = w₀(r) = w₀(a·b) (PE2 G4's witness), and
-there gain(q) − gain(r) = e₁[e₀·1 + h₀] ≠ e₁h₀. Nothing in the table's "ω-gain
+may sit strictly higher. **[r3, F-B — the witness is REPLACED by a realizable
+one; the strike stands.]** The r2 display, quoted and superseded: "over ℤ₂ with
+Φ₀ = x²+x+1, **a·b = 4x²+2** gives q = 4 and r = −4x−2, so
+w₀(q) = 2 > 1 = w₀(r) = w₀(a·b) (PE2 G4's witness), and there
+gain(q) − gain(r) = e₁[e₀·1 + h₀] ≠ e₁h₀." Its division arithmetic is right
+(4x²+2 = 4Φ₀ − 4x − 2, w₀ = 1, 2, 1) but the dividend is labelled "a·b", i.e.
+a level-0 BRANCH coefficient, and at Φ₀ = x²+x+1 the lemma's own hypotheses
+(deg a < d₀ = 2, deg b < d₀ = 2 by S1) forbid it: a = αx+β, b = γx+δ forces
+αγ = 4, βδ = 2, αδ+βγ = 0, hence (αδ)(βγ) = 8 with αδ = −βγ, so (αδ)² = −8 —
+and v₂(−8) = 3 is odd, so −8 is not a square in ℚ₂. **4x²+2 is not a·b for any
+a, b ∈ ℤ₂[x] of degree ≤ 1** (PE3 F-B), so the r2 text exhibited the phenomenon
+for a general dividend while attaching a branch-level conclusion to it. PE2, who
+authored the witness, had hedged exactly there ("witness for the ARITHMETIC
+phenomenon"); the hedge was load-bearing and r2 dropped it. The replacement
+witness is realizable AT A LEGAL BRANCH — same corner (ℤ₂, d₀ = 2, e₀ = 2,
+h₀ = 1, Φ₀ = x²+x+1), take
+
+    a = x  (deg 1 < d₀)   and the mid   b₁ = 4x+2  (deg 1 < d₀,
+                                        w₀(b₁) = 1 = amin(1), so a LEGAL mid):
+    a·b₁ = 4x²+2x = 4·Φ₀ + (−2x−4),  i.e.  q = 4,  r = −2x−4,
+    w₀(a·b₁) = 1,   **w₀(q) = 2 > 1 = w₀(r) = w₀(a·b₁)**,
+
+so there gain(q) − gain(r) = e₁[e₀(w₀(q)−w₀(r)) + h₀] = e₁[e₀·1 + h₀] = 3e₁ ≠
+e₁h₀ = e₁ — the inequality, and the failure of the stricken identity, realized
+at a genuine mid branch of a genuine orbit member. (Both divisions and the
+non-factorization criterion re-verified in exact integer arithmetic at r3,
+coefficient lists written LOW→HIGH:
+`a·b₁ = [0,2,4] → q=[4], r=[−4,−2]` (i.e. r = −2x−4) with
+w₀(a·b₁)/w₀(q)/w₀(r) = 1/2/1 and `q·Φ₀+r == a·b₁` exactly;
+`4x²+2 = [2,0,4] → q=[4], r=[−2,−4]` (i.e. r = −4x−2), w₀ = 1/2/1,
+reproducing the r2 numbers; v₂(−8) = 3.) Nothing in the table's "ω-gain
 ≥" column changes: those entries are exactly what the two displayed
 inequalities give. OBSERVATION, not law, recorded so the stricken step leaves a
 trace: the equality did hold on all **896** r/q branch pairs of the committed
@@ -632,7 +808,21 @@ r0 text (1 CRITICAL + 3 gaps → repair round r1) and **PE2** on the r1 text
 holds and re-derived its load-bearing pieces independently, but it returned 5
 gaps, so **no acceptance slot closed: the counter stays 0/2**, and the r2 edits
 (G1–G5) are themselves unaudited. **PE3 — a fresh hostile pass on THIS text —
-is the next acceptance attempt.** Charge
+is the next acceptance attempt.**
+**[r3 — grade box updated.]** THREE hostile passes have now run: **PE1** on the
+r0 text (1 CRITICAL + 3 gaps → r1), **PE2** on the r1 text (0 CRITICAL + 5
+gaps → r2), and **PE3** on the r2 text — the arc's FIRST acceptance attempt
+(**0 CRITICAL + 5 gaps** → this repair round r3; report
+`LIFTCORNER_passPE3_report.md`, commit 39ea0db). PE3 found no defect in the
+mathematics it audited, and all five of its gaps are evidence-DESCRIPTION
+defects (F-A the ψ₁-assert ranking, F-B the G4 witness display, F-C a machine
+quote attributed to PE2, F-D the grade box's own audit labels, F-E a zero-count
+family reported as a result), so no r3 edit touches the chain either. **The
+counter stays 0/2** — 5 gaps is not a clean pass, and a repair round is not a
+pass. Audit state after r3, plainly: charge items **(1), (2), (7)** have been
+re-derived by TWO hostile passes (PE2, PE3) with no acceptance credit; the r2
+edits have been read ONCE (PE3); **the r3 edits are UNAUDITED**. **PE4 — a
+fresh hostile pass on THIS text — is the next acceptance attempt.** Charge
 (r1-updated, item (7) added at r2 per PE2 G2; the r0 charge list named neither
 the step that broke nor the
 r1 argument — PE1 F1's closing observation, accepted): **(1) the S4.1
@@ -706,8 +896,27 @@ next acceptance attempt**. Grade: **attempt 0/2, unchanged** — PE2 was a
 hostile pass and found no critical, but 5 gaps is not a clean pass, and the r2
 repairs (the corrected branching count, the corrected PE1 attribution, the new
 A7 assertion, the stricken r-to-q gain identity, the weakened d₀ = 1 claim)
-have never been read by anyone. Which steps are unaudited is now the grade
-box's charge **(1)–(2) and (7)**, plus the r2 edits themselves. The five r2
+have never been read by anyone. **[r3, F-D — the audit LABELS on charge items
+(1)–(2) are corrected (the r2 sentence was internally inconsistent), and the r2
+clause "the r2 repairs … have never been read by anyone" is SUPERSEDED: PE3 has
+now read them.]** The r2
+wording, quoted and superseded: "Which steps are unaudited is now the grade
+box's charge **(1)–(2) and (7)**, plus the r2 edits themselves." But item (1)
+(the seven-genre census's COMPLETENESS + the row-7b degree drop) and item (2)
+(the lex-order finiteness argument: finite branching + the ρ depth bound) are
+exactly what the SAME paragraph credits PE2 with re-deriving, so "unaudited"
+contradicts its own two preceding sentences; item (7)'s label two hundred lines
+earlier already had the accurate pattern ("re-derived ONCE by a hostile pass
+(PE2) … one independent re-derivation, no acceptance credit"). Corrected, and
+brought up to date through PE3, whose §§1(b′)/3/4 re-derived (1)'s pass-identity
+and two-digits-per-branch algebra plus row 7b's drop, (2)'s 2e₀+3 arithmetic and
+ρ's strict drop, and (7)'s eight per-digit bounds from scratch: **items (1), (2)
+and (7) have each now been RE-DERIVED BY TWO HOSTILE PASSES (PE2 and PE3) and
+carry NO ACCEPTANCE CREDIT** — neither pass was clean, and re-derivation inside
+a gap-returning pass is not acceptance. The r2 edits (G1–G5) have been read
+ONCE (PE3), which confirmed G1/G2/G3/G5 and found G4's substance sound but its
+displayed witness non-realizable (r3's F-B). The r3 edits themselves are
+UNAUDITED; PE4 is owed. The five r2
 repairs, for the record: (C)(ii)'s branching count corrected 2e₀+1 → **2e₀+3**
 with only finiteness consumed (G1); PE1's verification scope corrected and the
 eight per-digit ω-gain bounds attributed to PE2 and charged as item (7) (G2);
@@ -718,11 +927,59 @@ dev-linearity, and the 2e₀+3 branching bound) (G3);
 applying CONTENT to the q-digit, the equality demoted to a battery observation
 (896/896) (G4); "valid EXACTLY on d₀ = 1" weakened to sufficiency, with the
 table's own d₀ = 2 vacuous rows A12/B14 named (G5). Wave-18's price sheet
-remains settled MODULO this note's own arc, not "in full". S3's corner
-measurement and both machine legs re-ran bit-identically at PE2 (sealed runner
-25,409/0, md5 `ccb4351c92573f5f962cae4ae952d8dd` intact and still intact at
-r2; children table's data sections byte-identical under the A7 amendment).
+remains settled MODULO this note's own arc, not "in full". **[r3, F-C — second
+site of the same overstatement; corrected to PE2's own record.]** The r2
+wording: "S3's corner measurement and both machine legs re-ran
+**bit-identically** at PE2 (sealed runner 25,409/0, md5
+`ccb4351c92573f5f962cae4ae952d8dd` intact and still intact at r2; children
+table's data sections byte-identical under the A7 amendment)." Corrected: at
+PE2 the sealed runner re-ran to the SAME COUNTED RESULT (25,409 checks, 0
+violations in every family, md5 `ccb4351c92573f5f962cae4ae952d8dd` intact and
+still intact at r2/r3) with its output "identical line-for-line **modulo the
+`elapsed`/per-block timestamp fields only**" — PE2's own qualification, dropped
+in the r2 paraphrase; the committed artifact reads `elapsed 4.4s` against
+PE2's and PE3's `elapsed 4.3s`, so the runner's output FILE is not bit-identical
+across runs. The children table's data sections ARE byte-identical under the A7
+amendment (`diff` empty at PE2 and again at PE3).
+
+**STATUS LINE [r3] (supersedes the r2 clause "the r2 repairs … have never been
+read by anyone" — PE3 has read them — and carries the arc forward one hop).**
+As of repair round r3: **(TAIL-STAB) is PROVED by S4.1 as repaired at r1,
+confirmed at PE2 (0 CRITICAL) and confirmed again at PE3 (0 CRITICAL)** — three
+hostile readings, and the third re-derived independently, from scratch, all
+eight per-digit ω-gain bounds, the 2e₀+3 branching arithmetic, the two
+emptiness strata, ρ's strict drop on every child edge, the counter-instance's
+two passes and its double-development tie, and the (TAIL-STAB) consumer
+interface at every downstream site (finding that READ-EQ's one pass sits
+entirely in the deg a = 0 stratum, where the repaired proof shows there are no
+q-children at all, so the r0 defect could never have propagated there).
+**THE ARC:** PE1 (1 CRITICAL + 3 gaps) → r1 → PE2 (0 CRITICAL + 5 gaps) → r2 →
+PE3 (0 CRITICAL + 5 gaps; the arc's FIRST acceptance attempt) → **r3 (this
+round, F-A…F-E applied)** → **PE4 = the next acceptance attempt**. Grade:
+**attempt 0/2, unchanged** — PE3 was a hostile pass and found no critical, but
+5 gaps is not a clean pass, so no acceptance slot has opened; a repair round is
+not a pass; and the W-2 cap still binds (GRTW2 itself 0/2), with the honest
+decoupling fact intact (the COR 1 / ξ = 1 chain is W-2-free). What r3 changed
+is entirely the note's EVIDENCE-DESCRIPTION layer, never the chain: the sealed
+runner's ψ₁ assert is now described as the no-op it is and the K₂ one-element
+check as the only substantive half of that pair, with the explicit statement
+that **no claim in this note consumes the ψ₁ assert** (F-A); the G4 strike's
+witness is replaced by one realizable at a legal mid branch, the strike itself
+unchanged (F-B); "bit-identically at PE2" is corrected at both sites to PE2's
+own timestamp qualification (F-C); charge items (1)–(2) are relabelled to the
+accurate "re-derived, no acceptance credit" pattern, now reading "re-derived by
+TWO hostile passes (PE2, PE3)" (F-D); and Q6 LOC's zero family count is
+supplied in S3 with the disclosure that it is a nested derived counter, not an
+independent leg (F-E). Which steps are unaudited after r3: **the r3 edits
+themselves**, and nothing else has changed status — items (1), (2), (7) stand
+at two independent re-derivations with no acceptance credit, and the r2 edits at
+one. Wave-18's price sheet remains settled MODULO this note's own arc, not "in
+full". Both machine legs are BYTE-FROZEN at r3 and were re-run clean by PE3
+(sealed runner exit 0, 25,409/0, `git diff dafc0b5 HEAD` = 0 bytes, md5
+`ccb4351c92573f5f962cae4ae952d8dd`; children generator table regenerates
+byte-identically with A7's four legs PASS at 752 nodes / 5,336 children).
 
 — LIFT-CORNER unit, campaign date 2026-08-08 (wallclock 2026-08-04);
 repair round r1 applied 2026-08-08 campaign (wallclock 2026-08-05);
-repair round r2 applied 2026-08-08 campaign (wallclock 2026-08-05).
+repair round r2 applied 2026-08-08 campaign (wallclock 2026-08-05);
+repair round r3 applied 2026-08-08 campaign (wallclock 2026-08-05).
