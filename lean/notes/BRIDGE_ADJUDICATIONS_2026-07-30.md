@@ -10687,3 +10687,62 @@ BYTE-identically incl. elapsed_s); md5 seals intact; plus a new decorrelated
 JSON-only derivation of the 13 = 0/10/3 level split. The verifier's own
 from-scratch loop was outage-blocked and honestly marked NOT-RUN. **JB r2
 dispatched (the 7 gaps; disclosure of the walker degeneracy MANDATORY).**
+
+---
+
+## THE WELD STANDS AT 4/4: J-C COMPOSED — W-6/W-7/W-8 PROVED AT GENERAL m, W-9 given them; J-D is the last junction block — 2026-08-05
+
+**GRTJC composed (seal 6ad01d1 → verdict 8f07904;
+GRTJC_PROOF_2026-08-08.md + grt_jc_checks.py; battery 10 families /
+8,566 scored samples / 0 violations / all 5 planted teeth fired, 1,054
+firings; runner byte-identical across the seal). ADJUDICATED: the
+carry-algebra junction is composed at attempt grade 0/2, and the grades
+EXCEED the blueprint pricing** (three of the four L-priced weld rows sat
+here; all three came back proved-general, not measured-scope):
+
+W-6 PROVED at general m — TC-1 (gr(w) graded domain, in(π) nonzerodivisor),
+TC-2 via a self-contained GAUGE LEMMA (ℤ-graded + degree-E unit ⟹ ℤ/E-graded
+quotient) — this is OB-1, which the design note said no accepted clause
+supplies; JC-FIB (ℤ/E ≅ ∏ℤ/e_j); JC-PER (φ_{γ+kE} = π^k φ_γ byte-for-byte);
+THEOREM JC-LOAD — the instrument's sealed set identity is now a THEOREM
+(pre-TC-3 scalar exists iff δ < g_m; the outer z̄^δ IS TC-3's image of y^δ);
+COROLLARY JC-PSIKER with explicit kernel witness (TC-3 not a relabeling).
+Box: the top-flat corner e_m = 1 ∧ g_m = 1 (sharp form measured only).
+
+W-7 PROVED on stated scopes at general m — OB-2 proved; OB-3 existence +
+structure on ALL window pairs (STRICTLY WIDER than [ILN]†, valid where c_T
+is undefined; 0 machine rows there, boxed), value (inner = ∏_{j≤m} z_j^{D_j})
+proved on the scored stratum through W-8; OB-4 proved with the SPAN-S 60-row
+zero-class genre PROVED AWAY as the ψ_m-kernel; OB-5 discharged as auditable
+architecture. Germ split displayed honestly (val(Ĉ_m) = −z_{m+1} as the
+C-READ constant mod the anchor's own normalization, 27 stages; H-D refuted
+138/669).
+
+W-8 PROVED at general m (c_gr = c_val exactly; the general-m form of
+JB-EPS: both reads on the same line, anchor digit constants cancel; the
+lift exactly normalized). W-9 PROVED given W-6..W-8 (cocycle =
+gr-associativity; twisted group algebra K^c[ℤ/E]; monodromy = the gauge
+period).
+
+**FINDING JC-F1 (review-owed blueprint display correction):** 𝒜(T) ≅
+K[v]/(v^E − ζ_T) as an ABSTRACT K-algebra at every composite stage — the
+cyclic fence cannot be read as an abstract-isomorphism claim; its real
+content is the letter-monomial (anchor-indexed) presentation, which stays
+dead. The byte-frozen 22/28 record is UNAMENDED; the blueprint's fence
+display gets the correction marker at the next fold. Battery-driven
+corrections also applied in-note: the cyclic genre law's CONVERSE is FALSE
+(13 collapse rows NOT-CYCLIC) and its inclusion has low measured resolution
+(2/29 off-collapse rows).
+
+**Conditionality stack (the note's own line):** [ILN]† accepted (scored
+stratum + its residuals) + GRB/CARRY-1/D-REAL accepted-conditional (§0
+ladder) + FGMN 4.2/4.8/Cor 2.7 cited at composite order (numbering
+re-verification owed — a Codex leg) + W-1/W-2/J-A/J-B at attempt 0/2 ⟹
+this note, own arc 0/2. **Consumers displayed, NONE retired** (J3b stays
+BLOCKED-ON-CARRIER-TIE pending this note's arc — correct discipline; JS1's
+hTrack identified as the integer carry-cocycle identity, no Lean hypothesis
+discharged).
+
+**THE WELD: W-2 + J-A + J-B + J-C ALL COMPOSED (each 0/2). Remaining: the
+J-D block (W-10 count equality / W-11 menu tie / W-12 faithfulness handoff
+— M/S-priced bookkeeping) + every arc. J-C PE1 dispatched.**
