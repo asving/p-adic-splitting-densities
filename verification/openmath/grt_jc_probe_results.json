@@ -1,0 +1,3850 @@
+{
+ "cyc": {
+  "Fpt,p=2,C2E": {
+   "cyclic": true,
+   "values": [
+    "zb^1"
+   ],
+   "verdict": "CYCLIC zeta = zb^1, sigma = (0, 1, 2, 3)"
+  },
+  "Fpt,p=2,C3D": {
+   "cyclic": false,
+   "values": [
+    "zb^1",
+    "zb^2"
+   ],
+   "verdict": "NOT-CYCLIC (>= 2 distinct non-1 values: zb^1, zb^2)"
+  },
+  "Fpt,p=2,C4G": {
+   "cyclic": false,
+   "values": [
+    "zb^1",
+    "zb^2"
+   ],
+   "verdict": "NOT-CYCLIC (>= 2 distinct non-1 values: zb^1, zb^2)"
+  },
+  "Fpt,p=2,I4C": {
+   "cyclic": false,
+   "values": [
+    "zb^1",
+    "zb^5",
+    "zb^6",
+    "zb^7",
+    "zb^8"
+   ],
+   "verdict": "NOT-CYCLIC (>= 2 distinct non-1 values: zb^1, zb^5, zb^6, zb^7, zb^8)"
+  },
+  "Fpt,p=3,C3J": {
+   "cyclic": null,
+   "values": [
+    "zb^1"
+   ],
+   "verdict": "UNDECIDED (E = 12 > 8: relabeling search skipped; single value zb^1)"
+  },
+  "Zp,p=2,C2A": {
+   "cyclic": true,
+   "values": [
+    "zb^1"
+   ],
+   "verdict": "CYCLIC zeta = zb^1, sigma = (0, 1, 2, 3)"
+  },
+  "Zp,p=2,C2B": {
+   "cyclic": false,
+   "values": [
+    "zb^1",
+    "zb^2"
+   ],
+   "verdict": "NOT-CYCLIC (>= 2 distinct non-1 values: zb^1, zb^2)"
+  },
+  "Zp,p=2,C2H": {
+   "cyclic": false,
+   "values": [
+    "zb^1",
+    "zb^3",
+    "zb^4"
+   ],
+   "verdict": "NOT-CYCLIC (>= 2 distinct non-1 values: zb^1, zb^3, zb^4)"
+  },
+  "Zp,p=2,C2I": {
+   "cyclic": false,
+   "values": [
+    "zb^1"
+   ],
+   "verdict": "NOT-CYCLIC (single value zb^1 but carry pattern not realizable by any relabeling)"
+  },
+  "Zp,p=2,C3A": {
+   "cyclic": true,
+   "values": [
+    "zb^1"
+   ],
+   "verdict": "CYCLIC zeta = zb^1, sigma = (0, 5, 2, 7, 4, 1, 6, 3)"
+  },
+  "Zp,p=2,C3E": {
+   "cyclic": false,
+   "values": [
+    "zb^1",
+    "zb^2"
+   ],
+   "verdict": "NOT-CYCLIC (>= 2 distinct non-1 values: zb^1, zb^2)"
+  },
+  "Zp,p=2,C3H": {
+   "cyclic": false,
+   "values": [
+    "zb^1",
+    "zb^2",
+    "zb^3",
+    "zb^4",
+    "zb^5"
+   ],
+   "verdict": "NOT-CYCLIC (>= 2 distinct non-1 values: zb^1, zb^2, zb^3, zb^4, zb^5)"
+  },
+  "Zp,p=2,C3I": {
+   "cyclic": false,
+   "values": [
+    "zb^1"
+   ],
+   "verdict": "NOT-CYCLIC (single value zb^1 but carry pattern not realizable by any relabeling)"
+  },
+  "Zp,p=2,C4A": {
+   "cyclic": true,
+   "values": [],
+   "verdict": "CYCLIC (c == 1 identically, zeta = 1)"
+  },
+  "Zp,p=2,C4B": {
+   "cyclic": false,
+   "values": [
+    "zb^1",
+    "zb^2"
+   ],
+   "verdict": "NOT-CYCLIC (>= 2 distinct non-1 values: zb^1, zb^2)"
+  },
+  "Zp,p=2,C4I": {
+   "cyclic": null,
+   "values": [
+    "zb^1"
+   ],
+   "verdict": "UNDECIDED (E = 16 > 8: relabeling search skipped; single value zb^1)"
+  },
+  "Zp,p=2,I4A": {
+   "cyclic": null,
+   "values": [
+    "zb^1"
+   ],
+   "verdict": "UNDECIDED (E = 12 > 8: relabeling search skipped; single value zb^1)"
+  },
+  "Zp,p=3,C2C": {
+   "cyclic": false,
+   "values": [
+    "zb^1"
+   ],
+   "verdict": "NOT-CYCLIC (single value zb^1 but carry pattern not realizable by any relabeling)"
+  },
+  "Zp,p=3,C2D": {
+   "cyclic": false,
+   "values": [
+    "zb^1",
+    "zb^3"
+   ],
+   "verdict": "NOT-CYCLIC (>= 2 distinct non-1 values: zb^1, zb^3)"
+  },
+  "Zp,p=3,C2J": {
+   "cyclic": true,
+   "values": [
+    "zb^1"
+   ],
+   "verdict": "CYCLIC zeta = zb^1, sigma = (0, 1, 2)"
+  },
+  "Zp,p=3,C3B": {
+   "cyclic": null,
+   "values": [
+    "zb^1"
+   ],
+   "verdict": "UNDECIDED (E = 12 > 8: relabeling search skipped; single value zb^1)"
+  },
+  "Zp,p=3,C3C": {
+   "cyclic": null,
+   "values": [
+    "zb^1"
+   ],
+   "verdict": "UNDECIDED (E = 12 > 8: relabeling search skipped; single value zb^1)"
+  },
+  "Zp,p=3,C3F": {
+   "cyclic": false,
+   "values": [
+    "zb^1",
+    "zb^2",
+    "zb^3"
+   ],
+   "verdict": "NOT-CYCLIC (>= 2 distinct non-1 values: zb^1, zb^2, zb^3)"
+  },
+  "Zp,p=3,C4C": {
+   "cyclic": null,
+   "values": [
+    "zb^1"
+   ],
+   "verdict": "UNDECIDED (E = 24 > 8: relabeling search skipped; single value zb^1)"
+  },
+  "Zp,p=3,I4B": {
+   "cyclic": false,
+   "values": [
+    "zb^1",
+    "zb^2",
+    "zb^3"
+   ],
+   "verdict": "NOT-CYCLIC (>= 2 distinct non-1 values: zb^1, zb^2, zb^3)"
+  },
+  "Zp,p=5,C2F": {
+   "cyclic": null,
+   "values": [
+    "zb^1"
+   ],
+   "verdict": "UNDECIDED (E = 10 > 8: relabeling search skipped; single value zb^1)"
+  },
+  "Zp,p=5,C2G": {
+   "cyclic": true,
+   "values": [
+    "zb^5"
+   ],
+   "verdict": "CYCLIC zeta = zb^5, sigma = (0, 1, 2, 3, 4, 5)"
+  },
+  "Zp,p=5,C3G": {
+   "cyclic": null,
+   "values": [
+    "zb^1"
+   ],
+   "verdict": "UNDECIDED (E = 20 > 8: relabeling search skipped; single value zb^1)"
+  },
+  "Zp,p=5,C4H": {
+   "cyclic": null,
+   "values": [
+    "zb^1"
+   ],
+   "verdict": "UNDECIDED (E = 10 > 8: relabeling search skipped; single value zb^1)"
+  }
+ },
+ "cyc_designated": {
+  "C2I": "NOT-CYCLIC (single value zb^1 but carry pattern not realizable by any relabeling)",
+  "C3I": "NOT-CYCLIC (single value zb^1 but carry pattern not realizable by any relabeling)",
+  "C4I": "UNDECIDED (E = 16 > 8: relabeling search skipped; single value zb^1)"
+ },
+ "families": {
+  "counts": {
+   "EXT-GATE": 1,
+   "MT1": 79,
+   "MT2": 1,
+   "MT3": 234,
+   "MT4": 557,
+   "P0-ANCH": 285,
+   "P0-LIFT": 138,
+   "P0-OB2": 285,
+   "P0-PSI": 29,
+   "P0-SCAL": 293,
+   "P0-SCAL-ADD-census": 210,
+   "P0-TRUNC": 151,
+   "P1-RAW": 669,
+   "P1-RAW-SET": 29,
+   "P1-TC3": 669,
+   "P2-ISO": 669,
+   "P2-OFF": 116,
+   "P2-REP": 174,
+   "P2-VAL": 669,
+   "P3-FACT": 669,
+   "P3-GERM": 188,
+   "P4-DEG": 29,
+   "P4-SPAN": 328,
+   "P4-SPANS-census": 495,
+   "P5-OB6": 669
+  },
+  "violations": {}
+ },
+ "genres": [],
+ "germ": {},
+ "rows": {
+  "Fpt,p=2,C2E": {
+   "E": 4,
+   "G0": 4,
+   "N": 12,
+   "NR": 2,
+   "Wj": [
+    2,
+    5
+   ],
+   "counts": {
+    "HB_fail": 4,
+    "HC_fail": 0,
+    "HD_fail": 0,
+    "MT1_fail": 0,
+    "MT1_pairs": 0,
+    "MT4_fail": 0,
+    "MT4_pairs": 16,
+    "dcx": 0,
+    "inner_ne1": 4,
+    "iso_bad": 0,
+    "nonint": 0,
+    "nonuniq": 0,
+    "ob6_bad": 0,
+    "raw_nosol": 4,
+    "scored": 16,
+    "tc3_nosol": 0,
+    "val_bad": 0
+   },
+   "cyc": {
+    "cyclic": true,
+    "values": [
+     "zb^1"
+    ],
+    "verdict": "CYCLIC zeta = zb^1, sigma = (0, 1, 2, 3)"
+   },
+   "d0": 2,
+   "delta_pos": 4,
+   "egg": 10,
+   "exhaustive": true,
+   "g_m": 1,
+   "gam": [
+    1,
+    5
+   ],
+   "germ": {
+    "eligible": true,
+    "kappa": "1",
+    "kappa_times_val": "zb^1",
+    "neg_zbar": "zb^1",
+    "nsol": 1,
+    "route": "exhaustive",
+    "t_shift": 0,
+    "transport_bad": 0,
+    "transport_scored": 4,
+    "valChat": "zb^1",
+    "val_anchor": "zb^1",
+    "wChat": 10,
+    "wChat_expected": 10
+   },
+   "id": "C2E",
+   "inner_values": {
+    "zb^1": 3,
+    "zb^2": 1
+   },
+   "kdist": {
+    "0": 16
+   },
+   "m": 1,
+   "mt3": {
+    "cT_defined_violations": 0,
+    "caught": 7,
+    "kappa": "zb^1",
+    "pairs": 7
+   },
+   "nK": 4,
+   "neg_zbar": "zb^1",
+   "off_checked": 4,
+   "p": 2,
+   "pairs": 16,
+   "psi0": "zb^1",
+   "raw_nosol": 4,
+   "reads": [
+    [
+     2,
+     1,
+     1
+    ],
+    [
+     2,
+     1,
+     1
+    ]
+   ],
+   "rep_checked": 6,
+   "ring": "Fpt",
+   "scal_add_genre": 0,
+   "span": {
+    "fail": 0,
+    "ok": 4,
+    "skip": 4
+   },
+   "spanM": {
+    "fail": 0,
+    "ok": 4,
+    "skip": 4,
+    "zero": 0
+   },
+   "spanS": {
+    "fail": 0,
+    "ok": 3,
+    "skip": 8,
+    "zero": 1
+   },
+   "tag": "Fpt,p=2,C2E",
+   "wPhiTop": 10,
+   "zbar": "zb^1"
+  },
+  "Fpt,p=2,C3D": {
+   "E": 8,
+   "G0": 56,
+   "N": 80,
+   "NR": 3,
+   "Wj": [
+    4,
+    18,
+    37
+   ],
+   "counts": {
+    "HB_fail": 10,
+    "HC_fail": 0,
+    "HD_fail": 0,
+    "MT1_fail": 0,
+    "MT1_pairs": 0,
+    "MT4_fail": 0,
+    "MT4_pairs": 24,
+    "dcx": 0,
+    "inner_ne1": 10,
+    "iso_bad": 0,
+    "nonint": 0,
+    "nonuniq": 0,
+    "ob6_bad": 0,
+    "raw_nosol": 4,
+    "scored": 24,
+    "tc3_nosol": 0,
+    "val_bad": 0
+   },
+   "cyc": {
+    "cyclic": false,
+    "values": [
+     "zb^1",
+     "zb^2"
+    ],
+    "verdict": "NOT-CYCLIC (>= 2 distinct non-1 values: zb^1, zb^2)"
+   },
+   "d0": 1,
+   "delta_pos": 4,
+   "egg": 74,
+   "exhaustive": true,
+   "g_m": 1,
+   "gam": [
+    1,
+    9,
+    37
+   ],
+   "germ": {
+    "eligible": true,
+    "kappa": "zb^2",
+    "kappa_times_val": "zb^1",
+    "neg_zbar": "zb^1",
+    "nsol": 1,
+    "route": "exhaustive",
+    "t_shift": 0,
+    "transport_bad": 0,
+    "transport_scored": 4,
+    "valChat": "zb^1",
+    "val_anchor": "zb^2",
+    "wChat": 74,
+    "wChat_expected": 74
+   },
+   "id": "C3D",
+   "inner_values": {
+    "zb^1": 7,
+    "zb^2": 3
+   },
+   "kdist": {
+    "0": 24
+   },
+   "m": 2,
+   "mt3": {
+    "cT_defined_violations": 0,
+    "caught": 7,
+    "kappa": "zb^1",
+    "pairs": 7
+   },
+   "nK": 4,
+   "neg_zbar": "zb^1",
+   "off_checked": 4,
+   "p": 2,
+   "pairs": 24,
+   "psi0": "zb^1",
+   "raw_nosol": 4,
+   "reads": [
+    [
+     2,
+     1,
+     2
+    ],
+    [
+     2,
+     1,
+     1
+    ],
+    [
+     2,
+     1,
+     1
+    ]
+   ],
+   "rep_checked": 6,
+   "ring": "Fpt",
+   "scal_add_genre": 0,
+   "span": {
+    "fail": 0,
+    "ok": 8,
+    "skip": 16
+   },
+   "spanM": {
+    "fail": 0,
+    "ok": 8,
+    "skip": 16,
+    "zero": 0
+   },
+   "spanS": {
+    "fail": 0,
+    "ok": 7,
+    "skip": 16,
+    "zero": 1
+   },
+   "tag": "Fpt,p=2,C3D",
+   "wPhiTop": 74,
+   "zbar": "zb^1"
+  },
+  "Fpt,p=2,C4G": {
+   "E": 16,
+   "G0": 256,
+   "N": 304,
+   "NR": 4,
+   "Wj": [
+    8,
+    36,
+    74,
+    149
+   ],
+   "counts": {
+    "HB_fail": 10,
+    "HC_fail": 0,
+    "HD_fail": 0,
+    "MT1_fail": 0,
+    "MT1_pairs": 0,
+    "MT4_fail": 0,
+    "MT4_pairs": 24,
+    "dcx": 0,
+    "inner_ne1": 10,
+    "iso_bad": 0,
+    "nonint": 0,
+    "nonuniq": 0,
+    "ob6_bad": 0,
+    "raw_nosol": 4,
+    "scored": 24,
+    "tc3_nosol": 0,
+    "val_bad": 0
+   },
+   "cyc": {
+    "cyclic": false,
+    "values": [
+     "zb^1",
+     "zb^2"
+    ],
+    "verdict": "NOT-CYCLIC (>= 2 distinct non-1 values: zb^1, zb^2)"
+   },
+   "d0": 1,
+   "delta_pos": 4,
+   "egg": 298,
+   "exhaustive": true,
+   "g_m": 1,
+   "gam": [
+    1,
+    9,
+    37,
+    149
+   ],
+   "germ": {
+    "eligible": true,
+    "kappa": "1",
+    "kappa_times_val": "zb^1",
+    "neg_zbar": "zb^1",
+    "nsol": 1,
+    "route": "exhaustive",
+    "t_shift": 0,
+    "transport_bad": 0,
+    "transport_scored": 4,
+    "valChat": "zb^1",
+    "val_anchor": "zb^1",
+    "wChat": 298,
+    "wChat_expected": 298
+   },
+   "id": "C4G",
+   "inner_values": {
+    "zb^1": 7,
+    "zb^2": 3
+   },
+   "kdist": {
+    "0": 24
+   },
+   "m": 3,
+   "mt3": {
+    "cT_defined_violations": 0,
+    "caught": 7,
+    "kappa": "zb^1",
+    "pairs": 7
+   },
+   "nK": 4,
+   "neg_zbar": "zb^1",
+   "off_checked": 4,
+   "p": 2,
+   "pairs": 24,
+   "psi0": "zb^1",
+   "raw_nosol": 4,
+   "reads": [
+    [
+     2,
+     1,
+     2
+    ],
+    [
+     2,
+     1,
+     1
+    ],
+    [
+     2,
+     1,
+     1
+    ],
+    [
+     2,
+     1,
+     1
+    ]
+   ],
+   "rep_checked": 6,
+   "ring": "Fpt",
+   "scal_add_genre": 0,
+   "span": {
+    "fail": 0,
+    "ok": 16,
+    "skip": 48
+   },
+   "spanM": {
+    "fail": 0,
+    "ok": 16,
+    "skip": 48,
+    "zero": 0
+   },
+   "spanS": {
+    "fail": 0,
+    "ok": 41,
+    "skip": 6,
+    "zero": 1
+   },
+   "tag": "Fpt,p=2,C4G",
+   "wPhiTop": 298,
+   "zbar": "zb^1"
+  },
+  "Fpt,p=2,I4C": {
+   "E": 8,
+   "G0": 80,
+   "N": 112,
+   "NR": 4,
+   "Wj": [
+    4,
+    12,
+    26,
+    53
+   ],
+   "counts": {
+    "HB_fail": 12,
+    "HC_fail": 0,
+    "HD_fail": 12,
+    "MT1_fail": 0,
+    "MT1_pairs": 12,
+    "MT4_fail": 0,
+    "MT4_pairs": 24,
+    "dcx": 0,
+    "inner_ne1": 12,
+    "iso_bad": 0,
+    "nonint": 0,
+    "nonuniq": 0,
+    "ob6_bad": 0,
+    "raw_nosol": 4,
+    "scored": 24,
+    "tc3_nosol": 0,
+    "val_bad": 0
+   },
+   "cyc": {
+    "cyclic": false,
+    "values": [
+     "zb^1",
+     "zb^5",
+     "zb^6",
+     "zb^7",
+     "zb^8"
+    ],
+    "verdict": "NOT-CYCLIC (>= 2 distinct non-1 values: zb^1, zb^5, zb^6, zb^7, zb^8)"
+   },
+   "d0": 2,
+   "delta_pos": 4,
+   "egg": 106,
+   "exhaustive": true,
+   "g_m": 1,
+   "gam": [
+    1,
+    3,
+    13,
+    53
+   ],
+   "germ": {
+    "eligible": true,
+    "kappa": "zb^2",
+    "kappa_times_val": "zb^1",
+    "neg_zbar": "zb^1",
+    "nsol": 1,
+    "route": "exhaustive",
+    "t_shift": 0,
+    "transport_bad": 0,
+    "transport_scored": 4,
+    "valChat": "zb^1",
+    "val_anchor": "zb^14",
+    "wChat": 106,
+    "wChat_expected": 106
+   },
+   "id": "I4C",
+   "inner_values": {
+    "zb^1": 2,
+    "zb^5": 4,
+    "zb^6": 3,
+    "zb^7": 3
+   },
+   "kdist": {
+    "0": 24
+   },
+   "m": 3,
+   "mt3": {
+    "cT_defined_violations": 0,
+    "caught": 7,
+    "kappa": "zb^1",
+    "pairs": 7
+   },
+   "nK": 16,
+   "neg_zbar": "zb^1",
+   "off_checked": 4,
+   "p": 2,
+   "pairs": 24,
+   "psi0": "zb^1",
+   "raw_nosol": 4,
+   "reads": [
+    [
+     2,
+     1,
+     1
+    ],
+    [
+     1,
+     1,
+     2
+    ],
+    [
+     2,
+     1,
+     1
+    ],
+    [
+     2,
+     1,
+     1
+    ]
+   ],
+   "rep_checked": 6,
+   "ring": "Fpt",
+   "scal_add_genre": 0,
+   "span": {
+    "fail": 0,
+    "ok": 8,
+    "skip": 24
+   },
+   "spanM": {
+    "fail": 0,
+    "ok": 8,
+    "skip": 24,
+    "zero": 0
+   },
+   "spanS": {
+    "fail": 0,
+    "ok": 22,
+    "skip": 0,
+    "zero": 2
+   },
+   "tag": "Fpt,p=2,I4C",
+   "wPhiTop": 106,
+   "zbar": "zb^1"
+  },
+  "Fpt,p=3,C3J": {
+   "E": 12,
+   "G0": 48,
+   "N": 60,
+   "NR": 3,
+   "Wj": [
+    4,
+    14,
+    29
+   ],
+   "counts": {
+    "HB_fail": 7,
+    "HC_fail": 4,
+    "HD_fail": 7,
+    "MT1_fail": 0,
+    "MT1_pairs": 0,
+    "MT4_fail": 0,
+    "MT4_pairs": 24,
+    "dcx": 0,
+    "inner_ne1": 7,
+    "iso_bad": 0,
+    "nonint": 0,
+    "nonuniq": 0,
+    "ob6_bad": 0,
+    "raw_nosol": 4,
+    "scored": 24,
+    "tc3_nosol": 0,
+    "val_bad": 0
+   },
+   "cyc": {
+    "cyclic": null,
+    "values": [
+     "zb^1"
+    ],
+    "verdict": "UNDECIDED (E = 12 > 8: relabeling search skipped; single value zb^1)"
+   },
+   "d0": 1,
+   "delta_pos": 4,
+   "egg": 58,
+   "exhaustive": true,
+   "g_m": 1,
+   "gam": [
+    1,
+    7,
+    29
+   ],
+   "germ": {
+    "eligible": true,
+    "kappa": "zb^1",
+    "kappa_times_val": "1",
+    "neg_zbar": "1",
+    "nsol": 1,
+    "route": "exhaustive",
+    "t_shift": 0,
+    "transport_bad": 0,
+    "transport_scored": 4,
+    "valChat": "1",
+    "val_anchor": "zb^1",
+    "wChat": 58,
+    "wChat_expected": 58
+   },
+   "id": "C3J",
+   "inner_values": {
+    "zb^1": 7
+   },
+   "kdist": {
+    "0": 24
+   },
+   "m": 2,
+   "mt3": {
+    "cT_defined_violations": 0,
+    "caught": 6,
+    "kappa": "zb^1",
+    "pairs": 7
+   },
+   "nK": 3,
+   "neg_zbar": "1",
+   "off_checked": 4,
+   "p": 3,
+   "pairs": 24,
+   "psi0": "1",
+   "raw_nosol": 4,
+   "reads": [
+    [
+     3,
+     1,
+     1
+    ],
+    [
+     2,
+     1,
+     1
+    ],
+    [
+     2,
+     1,
+     1
+    ]
+   ],
+   "rep_checked": 6,
+   "ring": "Fpt",
+   "scal_add_genre": 0,
+   "span": {
+    "fail": 0,
+    "ok": 12,
+    "skip": 24
+   },
+   "spanM": {
+    "fail": 0,
+    "ok": 12,
+    "skip": 24,
+    "zero": 0
+   },
+   "spanS": {
+    "fail": 0,
+    "ok": 24,
+    "skip": 8,
+    "zero": 4
+   },
+   "tag": "Fpt,p=3,C3J",
+   "wPhiTop": 58,
+   "zbar": "zb^1"
+  },
+  "Zp,p=2,C2A": {
+   "E": 4,
+   "G0": 4,
+   "N": 12,
+   "NR": 2,
+   "Wj": [
+    2,
+    5
+   ],
+   "counts": {
+    "HB_fail": 4,
+    "HC_fail": 0,
+    "HD_fail": 0,
+    "MT1_fail": 0,
+    "MT1_pairs": 0,
+    "MT4_fail": 0,
+    "MT4_pairs": 16,
+    "dcx": 0,
+    "inner_ne1": 4,
+    "iso_bad": 0,
+    "nonint": 0,
+    "nonuniq": 0,
+    "ob6_bad": 0,
+    "raw_nosol": 4,
+    "scored": 16,
+    "tc3_nosol": 0,
+    "val_bad": 0
+   },
+   "cyc": {
+    "cyclic": true,
+    "values": [
+     "zb^1"
+    ],
+    "verdict": "CYCLIC zeta = zb^1, sigma = (0, 1, 2, 3)"
+   },
+   "d0": 2,
+   "delta_pos": 4,
+   "egg": 10,
+   "exhaustive": true,
+   "g_m": 1,
+   "gam": [
+    1,
+    5
+   ],
+   "germ": {
+    "eligible": true,
+    "kappa": "1",
+    "kappa_times_val": "zb^1",
+    "neg_zbar": "zb^1",
+    "nsol": 1,
+    "route": "exhaustive",
+    "t_shift": 0,
+    "transport_bad": 0,
+    "transport_scored": 4,
+    "valChat": "zb^1",
+    "val_anchor": "zb^1",
+    "wChat": 10,
+    "wChat_expected": 10
+   },
+   "id": "C2A",
+   "inner_values": {
+    "zb^1": 3,
+    "zb^2": 1
+   },
+   "kdist": {
+    "0": 16
+   },
+   "m": 1,
+   "mt3": {
+    "cT_defined_violations": 0,
+    "caught": 7,
+    "kappa": "zb^1",
+    "pairs": 7
+   },
+   "nK": 4,
+   "neg_zbar": "zb^1",
+   "off_checked": 4,
+   "p": 2,
+   "pairs": 16,
+   "psi0": "zb^1",
+   "raw_nosol": 4,
+   "reads": [
+    [
+     2,
+     1,
+     1
+    ],
+    [
+     2,
+     1,
+     1
+    ]
+   ],
+   "rep_checked": 6,
+   "ring": "Zp",
+   "scal_add_genre": 0,
+   "span": {
+    "fail": 0,
+    "ok": 4,
+    "skip": 4
+   },
+   "spanM": {
+    "fail": 0,
+    "ok": 4,
+    "skip": 4,
+    "zero": 0
+   },
+   "spanS": {
+    "fail": 0,
+    "ok": 3,
+    "skip": 8,
+    "zero": 1
+   },
+   "tag": "Zp,p=2,C2A",
+   "wPhiTop": 10,
+   "zbar": "zb^1"
+  },
+  "Zp,p=2,C2B": {
+   "E": 4,
+   "G0": 8,
+   "N": 20,
+   "NR": 2,
+   "Wj": [
+    2,
+    9
+   ],
+   "counts": {
+    "HB_fail": 7,
+    "HC_fail": 0,
+    "HD_fail": 0,
+    "MT1_fail": 0,
+    "MT1_pairs": 0,
+    "MT4_fail": 0,
+    "MT4_pairs": 16,
+    "dcx": 0,
+    "inner_ne1": 7,
+    "iso_bad": 0,
+    "nonint": 0,
+    "nonuniq": 0,
+    "ob6_bad": 0,
+    "raw_nosol": 4,
+    "scored": 16,
+    "tc3_nosol": 0,
+    "val_bad": 0
+   },
+   "cyc": {
+    "cyclic": false,
+    "values": [
+     "zb^1",
+     "zb^2"
+    ],
+    "verdict": "NOT-CYCLIC (>= 2 distinct non-1 values: zb^1, zb^2)"
+   },
+   "d0": 1,
+   "delta_pos": 4,
+   "egg": 18,
+   "exhaustive": true,
+   "g_m": 1,
+   "gam": [
+    1,
+    9
+   ],
+   "germ": {
+    "eligible": true,
+    "kappa": "zb^2",
+    "kappa_times_val": "zb^1",
+    "neg_zbar": "zb^1",
+    "nsol": 1,
+    "route": "exhaustive",
+    "t_shift": 0,
+    "transport_bad": 0,
+    "transport_scored": 4,
+    "valChat": "zb^1",
+    "val_anchor": "zb^2",
+    "wChat": 18,
+    "wChat_expected": 18
+   },
+   "id": "C2B",
+   "inner_values": {
+    "zb^1": 4,
+    "zb^2": 3
+   },
+   "kdist": {
+    "0": 16
+   },
+   "m": 1,
+   "mt3": {
+    "cT_defined_violations": 0,
+    "caught": 7,
+    "kappa": "zb^1",
+    "pairs": 7
+   },
+   "nK": 4,
+   "neg_zbar": "zb^1",
+   "off_checked": 4,
+   "p": 2,
+   "pairs": 16,
+   "psi0": "zb^1",
+   "raw_nosol": 4,
+   "reads": [
+    [
+     2,
+     1,
+     2
+    ],
+    [
+     2,
+     1,
+     1
+    ]
+   ],
+   "rep_checked": 6,
+   "ring": "Zp",
+   "scal_add_genre": 0,
+   "span": {
+    "fail": 0,
+    "ok": 4,
+    "skip": 4
+   },
+   "spanM": {
+    "fail": 0,
+    "ok": 4,
+    "skip": 4,
+    "zero": 0
+   },
+   "spanS": {
+    "fail": 0,
+    "ok": 11,
+    "skip": 0,
+    "zero": 1
+   },
+   "tag": "Zp,p=2,C2B",
+   "wPhiTop": 18,
+   "zbar": "zb^1"
+  },
+  "Zp,p=2,C2H": {
+   "E": 4,
+   "G0": 4,
+   "N": 12,
+   "NR": 2,
+   "Wj": [
+    2,
+    5
+   ],
+   "counts": {
+    "HB_fail": 7,
+    "HC_fail": 0,
+    "HD_fail": 0,
+    "MT1_fail": 0,
+    "MT1_pairs": 0,
+    "MT4_fail": 0,
+    "MT4_pairs": 16,
+    "dcx": 0,
+    "inner_ne1": 7,
+    "iso_bad": 0,
+    "nonint": 0,
+    "nonuniq": 0,
+    "ob6_bad": 0,
+    "raw_nosol": 4,
+    "scored": 16,
+    "tc3_nosol": 0,
+    "val_bad": 0
+   },
+   "cyc": {
+    "cyclic": false,
+    "values": [
+     "zb^1",
+     "zb^3",
+     "zb^4"
+    ],
+    "verdict": "NOT-CYCLIC (>= 2 distinct non-1 values: zb^1, zb^3, zb^4)"
+   },
+   "d0": 3,
+   "delta_pos": 4,
+   "egg": 10,
+   "exhaustive": true,
+   "g_m": 1,
+   "gam": [
+    1,
+    5
+   ],
+   "germ": {
+    "eligible": true,
+    "kappa": "zb^3",
+    "kappa_times_val": "zb^1",
+    "neg_zbar": "zb^1",
+    "nsol": 1,
+    "route": "exhaustive",
+    "t_shift": 0,
+    "transport_bad": 0,
+    "transport_scored": 4,
+    "valChat": "zb^1",
+    "val_anchor": "zb^5",
+    "wChat": 10,
+    "wChat_expected": 10
+   },
+   "id": "C2H",
+   "inner_values": {
+    "zb^1": 3,
+    "zb^2": 1,
+    "zb^3": 3
+   },
+   "kdist": {
+    "0": 16
+   },
+   "m": 1,
+   "mt3": {
+    "cT_defined_violations": 0,
+    "caught": 7,
+    "kappa": "zb^1",
+    "pairs": 7
+   },
+   "nK": 8,
+   "neg_zbar": "zb^1",
+   "off_checked": 4,
+   "p": 2,
+   "pairs": 16,
+   "psi0": "zb^1",
+   "raw_nosol": 4,
+   "reads": [
+    [
+     2,
+     1,
+     1
+    ],
+    [
+     2,
+     1,
+     1
+    ]
+   ],
+   "rep_checked": 6,
+   "ring": "Zp",
+   "scal_add_genre": 0,
+   "span": {
+    "fail": 0,
+    "ok": 4,
+    "skip": 4
+   },
+   "spanM": {
+    "fail": 0,
+    "ok": 4,
+    "skip": 4,
+    "zero": 0
+   },
+   "spanS": {
+    "fail": 0,
+    "ok": 11,
+    "skip": 0,
+    "zero": 1
+   },
+   "tag": "Zp,p=2,C2H",
+   "wPhiTop": 10,
+   "zbar": "zb^1"
+  },
+  "Zp,p=2,C2I": {
+   "E": 4,
+   "G0": 4,
+   "N": 20,
+   "NR": 2,
+   "Wj": [
+    2,
+    5
+   ],
+   "counts": {
+    "HB_fail": 0,
+    "HC_fail": 0,
+    "HD_fail": 4,
+    "MT1_fail": 0,
+    "MT1_pairs": 4,
+    "MT4_fail": 0,
+    "MT4_pairs": 0,
+    "dcx": 0,
+    "inner_ne1": 0,
+    "iso_bad": 0,
+    "nonint": 0,
+    "nonuniq": 0,
+    "ob6_bad": 0,
+    "raw_nosol": 0,
+    "scored": 16,
+    "tc3_nosol": 0,
+    "val_bad": 0
+   },
+   "cyc": {
+    "cyclic": false,
+    "values": [
+     "zb^1"
+    ],
+    "verdict": "NOT-CYCLIC (single value zb^1 but carry pattern not realizable by any relabeling)"
+   },
+   "d0": 1,
+   "delta_pos": 0,
+   "egg": 20,
+   "exhaustive": true,
+   "g_m": 2,
+   "gam": [
+    1,
+    5
+   ],
+   "germ": {
+    "eligible": false
+   },
+   "id": "C2I",
+   "inner_values": {},
+   "kdist": {
+    "0": 16
+   },
+   "m": 1,
+   "mt3": {
+    "cT_defined_violations": 0,
+    "caught": 7,
+    "kappa": "zb^1",
+    "pairs": 7
+   },
+   "nK": 4,
+   "neg_zbar": "zb^1",
+   "off_checked": 4,
+   "p": 2,
+   "pairs": 16,
+   "psi0": "1",
+   "raw_nosol": 0,
+   "reads": [
+    [
+     2,
+     1,
+     1
+    ],
+    [
+     2,
+     1,
+     2
+    ]
+   ],
+   "rep_checked": 6,
+   "ring": "Zp",
+   "scal_add_genre": 0,
+   "span": {
+    "fail": 0,
+    "ok": 4,
+    "skip": 4
+   },
+   "spanM": {
+    "fail": 0,
+    "ok": 4,
+    "skip": 4,
+    "zero": 0
+   },
+   "spanS": {
+    "fail": 0,
+    "ok": 2,
+    "skip": 10,
+    "zero": 0
+   },
+   "tag": "Zp,p=2,C2I",
+   "wPhiTop": 20,
+   "zbar": "zb^1"
+  },
+  "Zp,p=2,C3A": {
+   "E": 8,
+   "G0": 32,
+   "N": 48,
+   "NR": 3,
+   "Wj": [
+    4,
+    10,
+    21
+   ],
+   "counts": {
+    "HB_fail": 6,
+    "HC_fail": 0,
+    "HD_fail": 0,
+    "MT1_fail": 0,
+    "MT1_pairs": 0,
+    "MT4_fail": 0,
+    "MT4_pairs": 24,
+    "dcx": 0,
+    "inner_ne1": 6,
+    "iso_bad": 0,
+    "nonint": 0,
+    "nonuniq": 0,
+    "ob6_bad": 0,
+    "raw_nosol": 4,
+    "scored": 24,
+    "tc3_nosol": 0,
+    "val_bad": 0
+   },
+   "cyc": {
+    "cyclic": true,
+    "values": [
+     "zb^1"
+    ],
+    "verdict": "CYCLIC zeta = zb^1, sigma = (0, 5, 2, 7, 4, 1, 6, 3)"
+   },
+   "d0": 2,
+   "delta_pos": 4,
+   "egg": 42,
+   "exhaustive": true,
+   "g_m": 1,
+   "gam": [
+    1,
+    5,
+    21
+   ],
+   "germ": {
+    "eligible": true,
+    "kappa": "1",
+    "kappa_times_val": "zb^1",
+    "neg_zbar": "zb^1",
+    "nsol": 1,
+    "route": "exhaustive",
+    "t_shift": 0,
+    "transport_bad": 0,
+    "transport_scored": 4,
+    "valChat": "zb^1",
+    "val_anchor": "zb^1",
+    "wChat": 42,
+    "wChat_expected": 42
+   },
+   "id": "C3A",
+   "inner_values": {
+    "zb^1": 6
+   },
+   "kdist": {
+    "0": 24
+   },
+   "m": 2,
+   "mt3": {
+    "cT_defined_violations": 0,
+    "caught": 7,
+    "kappa": "zb^1",
+    "pairs": 7
+   },
+   "nK": 4,
+   "neg_zbar": "zb^1",
+   "off_checked": 4,
+   "p": 2,
+   "pairs": 24,
+   "psi0": "zb^1",
+   "raw_nosol": 4,
+   "reads": [
+    [
+     2,
+     1,
+     1
+    ],
+    [
+     2,
+     1,
+     1
+    ],
+    [
+     2,
+     1,
+     1
+    ]
+   ],
+   "rep_checked": 6,
+   "ring": "Zp",
+   "scal_add_genre": 0,
+   "span": {
+    "fail": 0,
+    "ok": 8,
+    "skip": 16
+   },
+   "spanM": {
+    "fail": 0,
+    "ok": 8,
+    "skip": 16,
+    "zero": 0
+   },
+   "spanS": {
+    "fail": 0,
+    "ok": 7,
+    "skip": 16,
+    "zero": 1
+   },
+   "tag": "Zp,p=2,C3A",
+   "wPhiTop": 42,
+   "zbar": "zb^1"
+  },
+  "Zp,p=2,C3E": {
+   "E": 4,
+   "G0": 12,
+   "N": 28,
+   "NR": 3,
+   "Wj": [
+    2,
+    10,
+    13
+   ],
+   "counts": {
+    "HB_fail": 6,
+    "HC_fail": 0,
+    "HD_fail": 0,
+    "MT1_fail": 0,
+    "MT1_pairs": 0,
+    "MT4_fail": 0,
+    "MT4_pairs": 16,
+    "dcx": 0,
+    "inner_ne1": 6,
+    "iso_bad": 0,
+    "nonint": 0,
+    "nonuniq": 0,
+    "ob6_bad": 0,
+    "raw_nosol": 4,
+    "scored": 16,
+    "tc3_nosol": 0,
+    "val_bad": 0
+   },
+   "cyc": {
+    "cyclic": false,
+    "values": [
+     "zb^1",
+     "zb^2"
+    ],
+    "verdict": "NOT-CYCLIC (>= 2 distinct non-1 values: zb^1, zb^2)"
+   },
+   "d0": 1,
+   "delta_pos": 4,
+   "egg": 26,
+   "exhaustive": true,
+   "g_m": 1,
+   "gam": [
+    1,
+    5,
+    13
+   ],
+   "germ": {
+    "eligible": true,
+    "kappa": "zb^1",
+    "kappa_times_val": "zb^1",
+    "neg_zbar": "zb^1",
+    "nsol": 1,
+    "route": "exhaustive",
+    "t_shift": 0,
+    "transport_bad": 0,
+    "transport_scored": 4,
+    "valChat": "zb^1",
+    "val_anchor": "1",
+    "wChat": 26,
+    "wChat_expected": 26
+   },
+   "id": "C3E",
+   "inner_values": {
+    "zb^1": 6
+   },
+   "kdist": {
+    "0": 16
+   },
+   "m": 2,
+   "mt3": {
+    "cT_defined_violations": 0,
+    "caught": 7,
+    "kappa": "zb^1",
+    "pairs": 7
+   },
+   "nK": 4,
+   "neg_zbar": "zb^1",
+   "off_checked": 4,
+   "p": 2,
+   "pairs": 16,
+   "psi0": "zb^1",
+   "raw_nosol": 4,
+   "reads": [
+    [
+     2,
+     1,
+     2
+    ],
+    [
+     1,
+     1,
+     1
+    ],
+    [
+     2,
+     3,
+     1
+    ]
+   ],
+   "rep_checked": 6,
+   "ring": "Zp",
+   "scal_add_genre": 0,
+   "span": {
+    "fail": 0,
+    "ok": 4,
+    "skip": 8
+   },
+   "spanM": {
+    "fail": 0,
+    "ok": 4,
+    "skip": 8,
+    "zero": 0
+   },
+   "spanS": {
+    "fail": 0,
+    "ok": 9,
+    "skip": 2,
+    "zero": 1
+   },
+   "tag": "Zp,p=2,C3E",
+   "wPhiTop": 26,
+   "zbar": "zb^1"
+  },
+  "Zp,p=2,C3H": {
+   "E": 8,
+   "G0": 32,
+   "N": 48,
+   "NR": 3,
+   "Wj": [
+    4,
+    10,
+    21
+   ],
+   "counts": {
+    "HB_fail": 12,
+    "HC_fail": 0,
+    "HD_fail": 0,
+    "MT1_fail": 0,
+    "MT1_pairs": 0,
+    "MT4_fail": 0,
+    "MT4_pairs": 24,
+    "dcx": 0,
+    "inner_ne1": 12,
+    "iso_bad": 0,
+    "nonint": 0,
+    "nonuniq": 0,
+    "ob6_bad": 0,
+    "raw_nosol": 4,
+    "scored": 24,
+    "tc3_nosol": 0,
+    "val_bad": 0
+   },
+   "cyc": {
+    "cyclic": false,
+    "values": [
+     "zb^1",
+     "zb^2",
+     "zb^3",
+     "zb^4",
+     "zb^5"
+    ],
+    "verdict": "NOT-CYCLIC (>= 2 distinct non-1 values: zb^1, zb^2, zb^3, zb^4, zb^5)"
+   },
+   "d0": 3,
+   "delta_pos": 4,
+   "egg": 42,
+   "exhaustive": true,
+   "g_m": 1,
+   "gam": [
+    1,
+    5,
+    21
+   ],
+   "germ": {
+    "eligible": true,
+    "kappa": "zb^1",
+    "kappa_times_val": "zb^1",
+    "neg_zbar": "zb^1",
+    "nsol": 1,
+    "route": "exhaustive",
+    "t_shift": 0,
+    "transport_bad": 0,
+    "transport_scored": 4,
+    "valChat": "zb^1",
+    "val_anchor": "1",
+    "wChat": 42,
+    "wChat_expected": 42
+   },
+   "id": "C3H",
+   "inner_values": {
+    "zb^1": 5,
+    "zb^3": 2,
+    "zb^4": 5
+   },
+   "kdist": {
+    "0": 24
+   },
+   "m": 2,
+   "mt3": {
+    "cT_defined_violations": 0,
+    "caught": 7,
+    "kappa": "zb^1",
+    "pairs": 7
+   },
+   "nK": 8,
+   "neg_zbar": "zb^1",
+   "off_checked": 4,
+   "p": 2,
+   "pairs": 24,
+   "psi0": "zb^1",
+   "raw_nosol": 4,
+   "reads": [
+    [
+     2,
+     1,
+     1
+    ],
+    [
+     2,
+     1,
+     1
+    ],
+    [
+     2,
+     1,
+     1
+    ]
+   ],
+   "rep_checked": 6,
+   "ring": "Zp",
+   "scal_add_genre": 0,
+   "span": {
+    "fail": 0,
+    "ok": 8,
+    "skip": 16
+   },
+   "spanM": {
+    "fail": 0,
+    "ok": 8,
+    "skip": 16,
+    "zero": 0
+   },
+   "spanS": {
+    "fail": 0,
+    "ok": 22,
+    "skip": 2,
+    "zero": 0
+   },
+   "tag": "Zp,p=2,C3H",
+   "wPhiTop": 42,
+   "zbar": "zb^1"
+  },
+  "Zp,p=2,C3I": {
+   "E": 8,
+   "G0": 48,
+   "N": 88,
+   "NR": 3,
+   "Wj": [
+    4,
+    10,
+    41
+   ],
+   "counts": {
+    "HB_fail": 5,
+    "HC_fail": 0,
+    "HD_fail": 4,
+    "MT1_fail": 0,
+    "MT1_pairs": 4,
+    "MT4_fail": 0,
+    "MT4_pairs": 0,
+    "dcx": 0,
+    "inner_ne1": 5,
+    "iso_bad": 0,
+    "nonint": 0,
+    "nonuniq": 0,
+    "ob6_bad": 0,
+    "raw_nosol": 4,
+    "scored": 24,
+    "tc3_nosol": 0,
+    "val_bad": 0
+   },
+   "cyc": {
+    "cyclic": false,
+    "values": [
+     "zb^1"
+    ],
+    "verdict": "NOT-CYCLIC (single value zb^1 but carry pattern not realizable by any relabeling)"
+   },
+   "d0": 1,
+   "delta_pos": 4,
+   "egg": 82,
+   "exhaustive": true,
+   "g_m": 1,
+   "gam": [
+    1,
+    5,
+    41
+   ],
+   "germ": {
+    "eligible": true,
+    "kappa": "1",
+    "kappa_times_val": "zb^1",
+    "neg_zbar": "zb^1",
+    "nsol": 1,
+    "route": "exhaustive",
+    "t_shift": 0,
+    "transport_bad": 0,
+    "transport_scored": 4,
+    "valChat": "zb^1",
+    "val_anchor": "zb^1",
+    "wChat": 82,
+    "wChat_expected": 82
+   },
+   "id": "C3I",
+   "inner_values": {
+    "zb^1": 4,
+    "zb^2": 1
+   },
+   "kdist": {
+    "0": 24
+   },
+   "m": 2,
+   "mt3": {
+    "cT_defined_violations": 0,
+    "caught": 7,
+    "kappa": "zb^1",
+    "pairs": 7
+   },
+   "nK": 4,
+   "neg_zbar": "zb^1",
+   "off_checked": 4,
+   "p": 2,
+   "pairs": 24,
+   "psi0": "zb^1",
+   "raw_nosol": 4,
+   "reads": [
+    [
+     2,
+     1,
+     1
+    ],
+    [
+     2,
+     1,
+     2
+    ],
+    [
+     2,
+     1,
+     1
+    ]
+   ],
+   "rep_checked": 6,
+   "ring": "Zp",
+   "scal_add_genre": 0,
+   "span": {
+    "fail": 0,
+    "ok": 8,
+    "skip": 16
+   },
+   "spanM": {
+    "fail": 0,
+    "ok": 8,
+    "skip": 16,
+    "zero": 0
+   },
+   "spanS": {
+    "fail": 0,
+    "ok": 18,
+    "skip": 4,
+    "zero": 2
+   },
+   "tag": "Zp,p=2,C3I",
+   "wPhiTop": 82,
+   "zbar": "zb^1"
+  },
+  "Zp,p=2,C4A": {
+   "E": 16,
+   "G0": 144,
+   "N": 176,
+   "NR": 4,
+   "Wj": [
+    8,
+    20,
+    42,
+    85
+   ],
+   "counts": {
+    "HB_fail": 0,
+    "HC_fail": 0,
+    "HD_fail": 0,
+    "MT1_fail": 0,
+    "MT1_pairs": 0,
+    "MT4_fail": 0,
+    "MT4_pairs": 0,
+    "dcx": 0,
+    "inner_ne1": 0,
+    "iso_bad": 0,
+    "nonint": 0,
+    "nonuniq": 0,
+    "ob6_bad": 0,
+    "raw_nosol": 4,
+    "scored": 24,
+    "tc3_nosol": 0,
+    "val_bad": 0
+   },
+   "cyc": {
+    "cyclic": true,
+    "values": [],
+    "verdict": "CYCLIC (c == 1 identically, zeta = 1)"
+   },
+   "d0": 1,
+   "delta_pos": 4,
+   "egg": 170,
+   "exhaustive": true,
+   "g_m": 1,
+   "gam": [
+    1,
+    5,
+    21,
+    85
+   ],
+   "germ": {
+    "eligible": true,
+    "kappa": "1",
+    "kappa_times_val": "1",
+    "neg_zbar": "1",
+    "nsol": 1,
+    "route": "exhaustive",
+    "t_shift": 0,
+    "transport_bad": 0,
+    "transport_scored": 4,
+    "valChat": "1",
+    "val_anchor": "1",
+    "wChat": 170,
+    "wChat_expected": 170
+   },
+   "id": "C4A",
+   "inner_values": {},
+   "kdist": {
+    "0": 24
+   },
+   "m": 3,
+   "mt3": {
+    "kappa": null,
+    "skipped": "no nontrivial scalar class (|K| = 2)"
+   },
+   "nK": 2,
+   "neg_zbar": "1",
+   "off_checked": 4,
+   "p": 2,
+   "pairs": 24,
+   "psi0": "1",
+   "raw_nosol": 4,
+   "reads": [
+    [
+     2,
+     1,
+     1
+    ],
+    [
+     2,
+     1,
+     1
+    ],
+    [
+     2,
+     1,
+     1
+    ],
+    [
+     2,
+     1,
+     1
+    ]
+   ],
+   "rep_checked": 6,
+   "ring": "Zp",
+   "scal_add_genre": 0,
+   "span": {
+    "fail": 0,
+    "ok": 16,
+    "skip": 48
+   },
+   "spanM": {
+    "fail": 0,
+    "ok": 16,
+    "skip": 48,
+    "zero": 0
+   },
+   "spanS": {
+    "fail": 0,
+    "ok": 0,
+    "skip": 40,
+    "zero": 8
+   },
+   "tag": "Zp,p=2,C4A",
+   "wPhiTop": 170,
+   "zbar": "1"
+  },
+  "Zp,p=2,C4B": {
+   "E": 16,
+   "G0": 144,
+   "N": 176,
+   "NR": 4,
+   "Wj": [
+    8,
+    20,
+    42,
+    85
+   ],
+   "counts": {
+    "HB_fail": 13,
+    "HC_fail": 0,
+    "HD_fail": 0,
+    "MT1_fail": 0,
+    "MT1_pairs": 0,
+    "MT4_fail": 0,
+    "MT4_pairs": 24,
+    "dcx": 0,
+    "inner_ne1": 13,
+    "iso_bad": 0,
+    "nonint": 0,
+    "nonuniq": 0,
+    "ob6_bad": 0,
+    "raw_nosol": 4,
+    "scored": 24,
+    "tc3_nosol": 0,
+    "val_bad": 0
+   },
+   "cyc": {
+    "cyclic": false,
+    "values": [
+     "zb^1",
+     "zb^2"
+    ],
+    "verdict": "NOT-CYCLIC (>= 2 distinct non-1 values: zb^1, zb^2)"
+   },
+   "d0": 2,
+   "delta_pos": 4,
+   "egg": 170,
+   "exhaustive": true,
+   "g_m": 1,
+   "gam": [
+    1,
+    5,
+    21,
+    85
+   ],
+   "germ": {
+    "eligible": true,
+    "kappa": "zb^1",
+    "kappa_times_val": "zb^1",
+    "neg_zbar": "zb^1",
+    "nsol": 1,
+    "route": "exhaustive",
+    "t_shift": 0,
+    "transport_bad": 0,
+    "transport_scored": 4,
+    "valChat": "zb^1",
+    "val_anchor": "1",
+    "wChat": 170,
+    "wChat_expected": 170
+   },
+   "id": "C4B",
+   "inner_values": {
+    "zb^1": 13
+   },
+   "kdist": {
+    "0": 24
+   },
+   "m": 3,
+   "mt3": {
+    "cT_defined_violations": 0,
+    "caught": 7,
+    "kappa": "zb^1",
+    "pairs": 7
+   },
+   "nK": 4,
+   "neg_zbar": "zb^1",
+   "off_checked": 4,
+   "p": 2,
+   "pairs": 24,
+   "psi0": "zb^1",
+   "raw_nosol": 4,
+   "reads": [
+    [
+     2,
+     1,
+     1
+    ],
+    [
+     2,
+     1,
+     1
+    ],
+    [
+     2,
+     1,
+     1
+    ],
+    [
+     2,
+     1,
+     1
+    ]
+   ],
+   "rep_checked": 6,
+   "ring": "Zp",
+   "scal_add_genre": 0,
+   "span": {
+    "fail": 0,
+    "ok": 16,
+    "skip": 48
+   },
+   "spanM": {
+    "fail": 0,
+    "ok": 16,
+    "skip": 48,
+    "zero": 0
+   },
+   "spanS": {
+    "fail": 0,
+    "ok": 41,
+    "skip": 0,
+    "zero": 7
+   },
+   "tag": "Zp,p=2,C4B",
+   "wPhiTop": 170,
+   "zbar": "zb^1"
+  },
+  "Zp,p=2,C4I": {
+   "E": 16,
+   "G0": 144,
+   "N": 352,
+   "NR": 4,
+   "Wj": [
+    8,
+    20,
+    42,
+    85
+   ],
+   "counts": {
+    "HB_fail": 0,
+    "HC_fail": 0,
+    "HD_fail": 13,
+    "MT1_fail": 0,
+    "MT1_pairs": 13,
+    "MT4_fail": 0,
+    "MT4_pairs": 0,
+    "dcx": 0,
+    "inner_ne1": 0,
+    "iso_bad": 0,
+    "nonint": 0,
+    "nonuniq": 0,
+    "ob6_bad": 0,
+    "raw_nosol": 0,
+    "scored": 24,
+    "tc3_nosol": 0,
+    "val_bad": 0
+   },
+   "cyc": {
+    "cyclic": null,
+    "values": [
+     "zb^1"
+    ],
+    "verdict": "UNDECIDED (E = 16 > 8: relabeling search skipped; single value zb^1)"
+   },
+   "d0": 1,
+   "delta_pos": 0,
+   "egg": 340,
+   "exhaustive": true,
+   "g_m": 2,
+   "gam": [
+    1,
+    5,
+    21,
+    85
+   ],
+   "germ": {
+    "eligible": false
+   },
+   "id": "C4I",
+   "inner_values": {},
+   "kdist": {
+    "0": 24
+   },
+   "m": 3,
+   "mt3": {
+    "cT_defined_violations": 0,
+    "caught": 7,
+    "kappa": "zb^1",
+    "pairs": 7
+   },
+   "nK": 4,
+   "neg_zbar": "zb^1",
+   "off_checked": 4,
+   "p": 2,
+   "pairs": 24,
+   "psi0": "1",
+   "raw_nosol": 0,
+   "reads": [
+    [
+     2,
+     1,
+     1
+    ],
+    [
+     2,
+     1,
+     1
+    ],
+    [
+     2,
+     1,
+     1
+    ],
+    [
+     2,
+     1,
+     2
+    ]
+   ],
+   "rep_checked": 6,
+   "ring": "Zp",
+   "scal_add_genre": 0,
+   "span": {
+    "fail": 0,
+    "ok": 16,
+    "skip": 48
+   },
+   "spanM": {
+    "fail": 0,
+    "ok": 16,
+    "skip": 48,
+    "zero": 0
+   },
+   "spanS": {
+    "fail": 0,
+    "ok": 8,
+    "skip": 40,
+    "zero": 0
+   },
+   "tag": "Zp,p=2,C4I",
+   "wPhiTop": 340,
+   "zbar": "zb^1"
+  },
+  "Zp,p=2,I4A": {
+   "E": 12,
+   "G0": 156,
+   "N": 204,
+   "NR": 4,
+   "Wj": [
+    6,
+    15,
+    33,
+    68
+   ],
+   "counts": {
+    "HB_fail": 0,
+    "HC_fail": 0,
+    "HD_fail": 11,
+    "MT1_fail": 0,
+    "MT1_pairs": 11,
+    "MT4_fail": 0,
+    "MT4_pairs": 0,
+    "dcx": 0,
+    "inner_ne1": 0,
+    "iso_bad": 0,
+    "nonint": 0,
+    "nonuniq": 0,
+    "ob6_bad": 0,
+    "raw_nosol": 9,
+    "scored": 24,
+    "tc3_nosol": 0,
+    "val_bad": 0
+   },
+   "cyc": {
+    "cyclic": null,
+    "values": [
+     "zb^1"
+    ],
+    "verdict": "UNDECIDED (E = 12 > 8: relabeling search skipped; single value zb^1)"
+   },
+   "d0": 1,
+   "delta_pos": 9,
+   "egg": 204,
+   "exhaustive": true,
+   "g_m": 1,
+   "gam": [
+    1,
+    5,
+    11,
+    68
+   ],
+   "germ": {
+    "eligible": true,
+    "kappa": "zb^1",
+    "kappa_times_val": "zb^1",
+    "neg_zbar": "zb^1",
+    "nsol": 1,
+    "route": "exhaustive",
+    "t_shift": 0,
+    "transport_bad": 0,
+    "transport_scored": 4,
+    "valChat": "zb^1",
+    "val_anchor": "1",
+    "wChat": 204,
+    "wChat_expected": 204
+   },
+   "id": "I4A",
+   "inner_values": {},
+   "kdist": {
+    "0": 24
+   },
+   "m": 3,
+   "mt3": {
+    "cT_defined_violations": 0,
+    "caught": 7,
+    "kappa": "zb^1",
+    "pairs": 7
+   },
+   "nK": 4,
+   "neg_zbar": "zb^1",
+   "off_checked": 4,
+   "p": 2,
+   "pairs": 24,
+   "psi0": "zb^1",
+   "raw_nosol": 9,
+   "reads": [
+    [
+     2,
+     1,
+     1
+    ],
+    [
+     2,
+     1,
+     1
+    ],
+    [
+     1,
+     1,
+     2
+    ],
+    [
+     3,
+     2,
+     1
+    ]
+   ],
+   "rep_checked": 6,
+   "ring": "Zp",
+   "scal_add_genre": 0,
+   "span": {
+    "fail": 0,
+    "ok": 24,
+    "skip": 24
+   },
+   "spanM": {
+    "fail": 0,
+    "ok": 24,
+    "skip": 24,
+    "zero": 0
+   },
+   "spanS": {
+    "fail": 0,
+    "ok": 12,
+    "skip": 24,
+    "zero": 0
+   },
+   "tag": "Zp,p=2,I4A",
+   "wPhiTop": 204,
+   "zbar": "zb^1"
+  },
+  "Zp,p=3,C2C": {
+   "E": 6,
+   "G0": 6,
+   "N": 18,
+   "NR": 2,
+   "Wj": [
+    2,
+    7
+   ],
+   "counts": {
+    "HB_fail": 15,
+    "HC_fail": 9,
+    "HD_fail": 15,
+    "MT1_fail": 0,
+    "MT1_pairs": 0,
+    "MT4_fail": 0,
+    "MT4_pairs": 36,
+    "dcx": 0,
+    "inner_ne1": 15,
+    "iso_bad": 0,
+    "nonint": 0,
+    "nonuniq": 0,
+    "ob6_bad": 0,
+    "raw_nosol": 9,
+    "scored": 36,
+    "tc3_nosol": 0,
+    "val_bad": 0
+   },
+   "cyc": {
+    "cyclic": false,
+    "values": [
+     "zb^1"
+    ],
+    "verdict": "NOT-CYCLIC (single value zb^1 but carry pattern not realizable by any relabeling)"
+   },
+   "d0": 1,
+   "delta_pos": 9,
+   "egg": 14,
+   "exhaustive": true,
+   "g_m": 1,
+   "gam": [
+    1,
+    7
+   ],
+   "germ": {
+    "eligible": true,
+    "kappa": "1",
+    "kappa_times_val": "1",
+    "neg_zbar": "1",
+    "nsol": 1,
+    "route": "exhaustive",
+    "t_shift": 0,
+    "transport_bad": 0,
+    "transport_scored": 4,
+    "valChat": "1",
+    "val_anchor": "1",
+    "wChat": 14,
+    "wChat_expected": 14
+   },
+   "id": "C2C",
+   "inner_values": {
+    "zb^1": 15
+   },
+   "kdist": {
+    "0": 36
+   },
+   "m": 1,
+   "mt3": {
+    "cT_defined_violations": 0,
+    "caught": 10,
+    "kappa": "zb^1",
+    "pairs": 11
+   },
+   "nK": 3,
+   "neg_zbar": "1",
+   "off_checked": 4,
+   "p": 3,
+   "pairs": 36,
+   "psi0": "1",
+   "raw_nosol": 9,
+   "reads": [
+    [
+     3,
+     1,
+     1
+    ],
+    [
+     2,
+     1,
+     1
+    ]
+   ],
+   "rep_checked": 6,
+   "ring": "Zp",
+   "scal_add_genre": 0,
+   "span": {
+    "fail": 0,
+    "ok": 6,
+    "skip": 6
+   },
+   "spanM": {
+    "fail": 0,
+    "ok": 6,
+    "skip": 6,
+    "zero": 0
+   },
+   "spanS": {
+    "fail": 0,
+    "ok": 4,
+    "skip": 13,
+    "zero": 1
+   },
+   "tag": "Zp,p=3,C2C",
+   "wPhiTop": 14,
+   "zbar": "zb^1"
+  },
+  "Zp,p=3,C2D": {
+   "E": 6,
+   "G0": 18,
+   "N": 24,
+   "NR": 2,
+   "Wj": [
+    3,
+    8
+   ],
+   "counts": {
+    "HB_fail": 9,
+    "HC_fail": 12,
+    "HD_fail": 0,
+    "MT1_fail": 0,
+    "MT1_pairs": 9,
+    "MT4_fail": 0,
+    "MT4_pairs": 36,
+    "dcx": 0,
+    "inner_ne1": 9,
+    "iso_bad": 0,
+    "nonint": 0,
+    "nonuniq": 0,
+    "ob6_bad": 0,
+    "raw_nosol": 12,
+    "scored": 36,
+    "tc3_nosol": 0,
+    "val_bad": 0
+   },
+   "cyc": {
+    "cyclic": false,
+    "values": [
+     "zb^1",
+     "zb^3"
+    ],
+    "verdict": "NOT-CYCLIC (>= 2 distinct non-1 values: zb^1, zb^3)"
+   },
+   "d0": 2,
+   "delta_pos": 12,
+   "egg": 24,
+   "exhaustive": true,
+   "g_m": 1,
+   "gam": [
+    1,
+    8
+   ],
+   "germ": {
+    "eligible": true,
+    "kappa": "zb^3",
+    "kappa_times_val": "zb^3",
+    "neg_zbar": "zb^3",
+    "nsol": 1,
+    "route": "exhaustive",
+    "t_shift": 0,
+    "transport_bad": 0,
+    "transport_scored": 4,
+    "valChat": "zb^3",
+    "val_anchor": "1",
+    "wChat": 24,
+    "wChat_expected": 24
+   },
+   "id": "C2D",
+   "inner_values": {
+    "zb^3": 9
+   },
+   "kdist": {
+    "0": 36
+   },
+   "m": 1,
+   "mt3": {
+    "cT_defined_violations": 0,
+    "caught": 11,
+    "kappa": "zb^1",
+    "pairs": 11
+   },
+   "nK": 9,
+   "neg_zbar": "zb^3",
+   "off_checked": 4,
+   "p": 3,
+   "pairs": 36,
+   "psi0": "zb^3",
+   "raw_nosol": 12,
+   "reads": [
+    [
+     2,
+     1,
+     1
+    ],
+    [
+     3,
+     2,
+     1
+    ]
+   ],
+   "rep_checked": 6,
+   "ring": "Zp",
+   "scal_add_genre": 0,
+   "span": {
+    "fail": 0,
+    "ok": 12,
+    "skip": 0
+   },
+   "spanM": {
+    "fail": 0,
+    "ok": 12,
+    "skip": 0,
+    "zero": 0
+   },
+   "spanS": {
+    "fail": 0,
+    "ok": 18,
+    "skip": 0,
+    "zero": 0
+   },
+   "tag": "Zp,p=3,C2D",
+   "wPhiTop": 24,
+   "zbar": "zb^1"
+  },
+  "Zp,p=3,C2J": {
+   "E": 3,
+   "G0": 6,
+   "N": 12,
+   "NR": 2,
+   "Wj": [
+    3,
+    4
+   ],
+   "counts": {
+    "HB_fail": 0,
+    "HC_fail": 3,
+    "HD_fail": 0,
+    "MT1_fail": 0,
+    "MT1_pairs": 0,
+    "MT4_fail": 0,
+    "MT4_pairs": 9,
+    "dcx": 0,
+    "inner_ne1": 0,
+    "iso_bad": 0,
+    "nonint": 0,
+    "nonuniq": 0,
+    "ob6_bad": 0,
+    "raw_nosol": 3,
+    "scored": 9,
+    "tc3_nosol": 0,
+    "val_bad": 0
+   },
+   "cyc": {
+    "cyclic": true,
+    "values": [
+     "zb^1"
+    ],
+    "verdict": "CYCLIC zeta = zb^1, sigma = (0, 1, 2)"
+   },
+   "d0": 1,
+   "delta_pos": 3,
+   "egg": 12,
+   "exhaustive": true,
+   "g_m": 1,
+   "gam": [
+    1,
+    4
+   ],
+   "germ": {
+    "eligible": true,
+    "kappa": "1",
+    "kappa_times_val": "1",
+    "neg_zbar": "1",
+    "nsol": 1,
+    "route": "exhaustive",
+    "t_shift": 0,
+    "transport_bad": 0,
+    "transport_scored": 3,
+    "valChat": "1",
+    "val_anchor": "1",
+    "wChat": 12,
+    "wChat_expected": 12
+   },
+   "id": "C2J",
+   "inner_values": {},
+   "kdist": {
+    "0": 9
+   },
+   "m": 1,
+   "mt3": {
+    "cT_defined_violations": 0,
+    "caught": 4,
+    "kappa": "zb^1",
+    "pairs": 5
+   },
+   "nK": 3,
+   "neg_zbar": "1",
+   "off_checked": 4,
+   "p": 3,
+   "pairs": 9,
+   "psi0": "1",
+   "raw_nosol": 3,
+   "reads": [
+    [
+     1,
+     1,
+     1
+    ],
+    [
+     3,
+     1,
+     1
+    ]
+   ],
+   "rep_checked": 6,
+   "ring": "Zp",
+   "scal_add_genre": 0,
+   "span": {
+    "fail": 0,
+    "ok": 6,
+    "skip": 0
+   },
+   "spanM": {
+    "fail": 0,
+    "ok": 6,
+    "skip": 0,
+    "zero": 0
+   },
+   "spanS": {
+    "fail": 0,
+    "ok": 6,
+    "skip": 0,
+    "zero": 3
+   },
+   "tag": "Zp,p=3,C2J",
+   "wPhiTop": 12,
+   "zbar": "zb^1"
+  },
+  "Zp,p=3,C3B": {
+   "E": 12,
+   "G0": 48,
+   "N": 60,
+   "NR": 3,
+   "Wj": [
+    4,
+    14,
+    29
+   ],
+   "counts": {
+    "HB_fail": 7,
+    "HC_fail": 4,
+    "HD_fail": 7,
+    "MT1_fail": 0,
+    "MT1_pairs": 0,
+    "MT4_fail": 0,
+    "MT4_pairs": 24,
+    "dcx": 0,
+    "inner_ne1": 7,
+    "iso_bad": 0,
+    "nonint": 0,
+    "nonuniq": 0,
+    "ob6_bad": 0,
+    "raw_nosol": 4,
+    "scored": 24,
+    "tc3_nosol": 0,
+    "val_bad": 0
+   },
+   "cyc": {
+    "cyclic": null,
+    "values": [
+     "zb^1"
+    ],
+    "verdict": "UNDECIDED (E = 12 > 8: relabeling search skipped; single value zb^1)"
+   },
+   "d0": 1,
+   "delta_pos": 4,
+   "egg": 58,
+   "exhaustive": true,
+   "g_m": 1,
+   "gam": [
+    1,
+    7,
+    29
+   ],
+   "germ": {
+    "eligible": true,
+    "kappa": "zb^1",
+    "kappa_times_val": "1",
+    "neg_zbar": "1",
+    "nsol": 1,
+    "route": "exhaustive",
+    "t_shift": 0,
+    "transport_bad": 0,
+    "transport_scored": 4,
+    "valChat": "1",
+    "val_anchor": "zb^1",
+    "wChat": 58,
+    "wChat_expected": 58
+   },
+   "id": "C3B",
+   "inner_values": {
+    "zb^1": 7
+   },
+   "kdist": {
+    "0": 24
+   },
+   "m": 2,
+   "mt3": {
+    "cT_defined_violations": 0,
+    "caught": 6,
+    "kappa": "zb^1",
+    "pairs": 7
+   },
+   "nK": 3,
+   "neg_zbar": "1",
+   "off_checked": 4,
+   "p": 3,
+   "pairs": 24,
+   "psi0": "1",
+   "raw_nosol": 4,
+   "reads": [
+    [
+     3,
+     1,
+     1
+    ],
+    [
+     2,
+     1,
+     1
+    ],
+    [
+     2,
+     1,
+     1
+    ]
+   ],
+   "rep_checked": 6,
+   "ring": "Zp",
+   "scal_add_genre": 0,
+   "span": {
+    "fail": 0,
+    "ok": 12,
+    "skip": 24
+   },
+   "spanM": {
+    "fail": 0,
+    "ok": 12,
+    "skip": 24,
+    "zero": 0
+   },
+   "spanS": {
+    "fail": 0,
+    "ok": 24,
+    "skip": 8,
+    "zero": 4
+   },
+   "tag": "Zp,p=3,C3B",
+   "wPhiTop": 58,
+   "zbar": "zb^1"
+  },
+  "Zp,p=3,C3C": {
+   "E": 12,
+   "G0": 84,
+   "N": 108,
+   "NR": 3,
+   "Wj": [
+    6,
+    16,
+    49
+   ],
+   "counts": {
+    "HB_fail": 8,
+    "HC_fail": 4,
+    "HD_fail": 8,
+    "MT1_fail": 0,
+    "MT1_pairs": 0,
+    "MT4_fail": 0,
+    "MT4_pairs": 24,
+    "dcx": 0,
+    "inner_ne1": 8,
+    "iso_bad": 0,
+    "nonint": 0,
+    "nonuniq": 0,
+    "ob6_bad": 0,
+    "raw_nosol": 4,
+    "scored": 24,
+    "tc3_nosol": 0,
+    "val_bad": 0
+   },
+   "cyc": {
+    "cyclic": null,
+    "values": [
+     "zb^1"
+    ],
+    "verdict": "UNDECIDED (E = 12 > 8: relabeling search skipped; single value zb^1)"
+   },
+   "d0": 1,
+   "delta_pos": 4,
+   "egg": 98,
+   "exhaustive": true,
+   "g_m": 1,
+   "gam": [
+    1,
+    8,
+    49
+   ],
+   "germ": {
+    "eligible": true,
+    "kappa": "zb^1",
+    "kappa_times_val": "1",
+    "neg_zbar": "1",
+    "nsol": 1,
+    "route": "exhaustive",
+    "t_shift": 0,
+    "transport_bad": 0,
+    "transport_scored": 4,
+    "valChat": "1",
+    "val_anchor": "zb^1",
+    "wChat": 98,
+    "wChat_expected": 98
+   },
+   "id": "C3C",
+   "inner_values": {
+    "zb^1": 8
+   },
+   "kdist": {
+    "0": 24
+   },
+   "m": 2,
+   "mt3": {
+    "cT_defined_violations": 0,
+    "caught": 6,
+    "kappa": "zb^1",
+    "pairs": 7
+   },
+   "nK": 3,
+   "neg_zbar": "1",
+   "off_checked": 4,
+   "p": 3,
+   "pairs": 24,
+   "psi0": "1",
+   "raw_nosol": 4,
+   "reads": [
+    [
+     2,
+     1,
+     1
+    ],
+    [
+     3,
+     2,
+     1
+    ],
+    [
+     2,
+     1,
+     1
+    ]
+   ],
+   "rep_checked": 6,
+   "ring": "Zp",
+   "scal_add_genre": 0,
+   "span": {
+    "fail": 0,
+    "ok": 24,
+    "skip": 12
+   },
+   "spanM": {
+    "fail": 0,
+    "ok": 24,
+    "skip": 12,
+    "zero": 0
+   },
+   "spanS": {
+    "fail": 0,
+    "ok": 9,
+    "skip": 24,
+    "zero": 3
+   },
+   "tag": "Zp,p=3,C3C",
+   "wPhiTop": 98,
+   "zbar": "zb^1"
+  },
+  "Zp,p=3,C3F": {
+   "E": 12,
+   "G0": 72,
+   "N": 96,
+   "NR": 3,
+   "Wj": [
+    6,
+    15,
+    31
+   ],
+   "counts": {
+    "HB_fail": 11,
+    "HC_fail": 9,
+    "HD_fail": 9,
+    "MT1_fail": 0,
+    "MT1_pairs": 6,
+    "MT4_fail": 0,
+    "MT4_pairs": 24,
+    "dcx": 0,
+    "inner_ne1": 11,
+    "iso_bad": 0,
+    "nonint": 0,
+    "nonuniq": 0,
+    "ob6_bad": 0,
+    "raw_nosol": 9,
+    "scored": 24,
+    "tc3_nosol": 0,
+    "val_bad": 0
+   },
+   "cyc": {
+    "cyclic": false,
+    "values": [
+     "zb^1",
+     "zb^2",
+     "zb^3"
+    ],
+    "verdict": "NOT-CYCLIC (>= 2 distinct non-1 values: zb^1, zb^2, zb^3)"
+   },
+   "d0": 2,
+   "delta_pos": 9,
+   "egg": 93,
+   "exhaustive": true,
+   "g_m": 1,
+   "gam": [
+    1,
+    5,
+    31
+   ],
+   "germ": {
+    "eligible": true,
+    "kappa": "zb^2",
+    "kappa_times_val": "zb^3",
+    "neg_zbar": "zb^3",
+    "nsol": 1,
+    "route": "exhaustive",
+    "t_shift": 0,
+    "transport_bad": 0,
+    "transport_scored": 4,
+    "valChat": "zb^3",
+    "val_anchor": "zb^1",
+    "wChat": 93,
+    "wChat_expected": 93
+   },
+   "id": "C3F",
+   "inner_values": {
+    "zb^1": 6,
+    "zb^2": 4,
+    "zb^3": 1
+   },
+   "kdist": {
+    "0": 24
+   },
+   "m": 2,
+   "mt3": {
+    "cT_defined_violations": 0,
+    "caught": 7,
+    "kappa": "zb^1",
+    "pairs": 7
+   },
+   "nK": 9,
+   "neg_zbar": "zb^3",
+   "off_checked": 4,
+   "p": 3,
+   "pairs": 24,
+   "psi0": "zb^3",
+   "raw_nosol": 9,
+   "reads": [
+    [
+     2,
+     1,
+     1
+    ],
+    [
+     2,
+     1,
+     1
+    ],
+    [
+     3,
+     1,
+     1
+    ]
+   ],
+   "rep_checked": 6,
+   "ring": "Zp",
+   "scal_add_genre": 0,
+   "span": {
+    "fail": 0,
+    "ok": 12,
+    "skip": 24
+   },
+   "spanM": {
+    "fail": 0,
+    "ok": 12,
+    "skip": 24,
+    "zero": 0
+   },
+   "spanS": {
+    "fail": 0,
+    "ok": 31,
+    "skip": 0,
+    "zero": 5
+   },
+   "tag": "Zp,p=3,C3F",
+   "wPhiTop": 93,
+   "zbar": "zb^1"
+  },
+  "Zp,p=3,C4C": {
+   "E": 24,
+   "G0": 312,
+   "N": 360,
+   "NR": 4,
+   "Wj": [
+    12,
+    28,
+    86,
+    173
+   ],
+   "counts": {
+    "HB_fail": 10,
+    "HC_fail": 4,
+    "HD_fail": 10,
+    "MT1_fail": 0,
+    "MT1_pairs": 0,
+    "MT4_fail": 0,
+    "MT4_pairs": 24,
+    "dcx": 0,
+    "inner_ne1": 10,
+    "iso_bad": 0,
+    "nonint": 0,
+    "nonuniq": 0,
+    "ob6_bad": 0,
+    "raw_nosol": 4,
+    "scored": 24,
+    "tc3_nosol": 0,
+    "val_bad": 0
+   },
+   "cyc": {
+    "cyclic": null,
+    "values": [
+     "zb^1"
+    ],
+    "verdict": "UNDECIDED (E = 24 > 8: relabeling search skipped; single value zb^1)"
+   },
+   "d0": 1,
+   "delta_pos": 4,
+   "egg": 346,
+   "exhaustive": true,
+   "g_m": 1,
+   "gam": [
+    1,
+    7,
+    43,
+    173
+   ],
+   "germ": {
+    "eligible": true,
+    "kappa": "zb^1",
+    "kappa_times_val": "1",
+    "neg_zbar": "1",
+    "nsol": 1,
+    "route": "exhaustive",
+    "t_shift": 0,
+    "transport_bad": 0,
+    "transport_scored": 4,
+    "valChat": "1",
+    "val_anchor": "zb^1",
+    "wChat": 346,
+    "wChat_expected": 346
+   },
+   "id": "C4C",
+   "inner_values": {
+    "zb^1": 10
+   },
+   "kdist": {
+    "0": 24
+   },
+   "m": 3,
+   "mt3": {
+    "cT_defined_violations": 0,
+    "caught": 6,
+    "kappa": "zb^1",
+    "pairs": 7
+   },
+   "nK": 3,
+   "neg_zbar": "1",
+   "off_checked": 4,
+   "p": 3,
+   "pairs": 24,
+   "psi0": "1",
+   "raw_nosol": 4,
+   "reads": [
+    [
+     2,
+     1,
+     1
+    ],
+    [
+     3,
+     1,
+     1
+    ],
+    [
+     2,
+     1,
+     1
+    ],
+    [
+     2,
+     1,
+     1
+    ]
+   ],
+   "rep_checked": 6,
+   "ring": "Zp",
+   "scal_add_genre": 0,
+   "span": {
+    "fail": 0,
+    "ok": 24,
+    "skip": 72
+   },
+   "spanM": {
+    "fail": 0,
+    "ok": 24,
+    "skip": 72,
+    "zero": 0
+   },
+   "spanS": {
+    "fail": 0,
+    "ok": 27,
+    "skip": 40,
+    "zero": 5
+   },
+   "tag": "Zp,p=3,C4C",
+   "wPhiTop": 346,
+   "zbar": "zb^1"
+  },
+  "Zp,p=3,I4B": {
+   "E": 12,
+   "G0": 144,
+   "N": 228,
+   "NR": 4,
+   "Wj": [
+    8,
+    26,
+    54,
+    109
+   ],
+   "counts": {
+    "HB_fail": 7,
+    "HC_fail": 4,
+    "HD_fail": 11,
+    "MT1_fail": 0,
+    "MT1_pairs": 11,
+    "MT4_fail": 0,
+    "MT4_pairs": 24,
+    "dcx": 0,
+    "inner_ne1": 7,
+    "iso_bad": 0,
+    "nonint": 0,
+    "nonuniq": 0,
+    "ob6_bad": 0,
+    "raw_nosol": 4,
+    "scored": 24,
+    "tc3_nosol": 0,
+    "val_bad": 0
+   },
+   "cyc": {
+    "cyclic": false,
+    "values": [
+     "zb^1",
+     "zb^2",
+     "zb^3"
+    ],
+    "verdict": "NOT-CYCLIC (>= 2 distinct non-1 values: zb^1, zb^2, zb^3)"
+   },
+   "d0": 1,
+   "delta_pos": 4,
+   "egg": 218,
+   "exhaustive": true,
+   "g_m": 1,
+   "gam": [
+    2,
+    13,
+    27,
+    109
+   ],
+   "germ": {
+    "eligible": true,
+    "kappa": "zb^3",
+    "kappa_times_val": "zb^3",
+    "neg_zbar": "zb^3",
+    "nsol": 1,
+    "route": "exhaustive",
+    "t_shift": 0,
+    "transport_bad": 0,
+    "transport_scored": 4,
+    "valChat": "zb^3",
+    "val_anchor": "1",
+    "wChat": 218,
+    "wChat_expected": 218
+   },
+   "id": "I4B",
+   "inner_values": {
+    "zb^2": 7
+   },
+   "kdist": {
+    "0": 24
+   },
+   "m": 3,
+   "mt3": {
+    "cT_defined_violations": 0,
+    "caught": 7,
+    "kappa": "zb^1",
+    "pairs": 7
+   },
+   "nK": 9,
+   "neg_zbar": "zb^3",
+   "off_checked": 4,
+   "p": 3,
+   "pairs": 24,
+   "psi0": "zb^3",
+   "raw_nosol": 4,
+   "reads": [
+    [
+     3,
+     2,
+     1
+    ],
+    [
+     2,
+     1,
+     1
+    ],
+    [
+     1,
+     1,
+     2
+    ],
+    [
+     2,
+     1,
+     1
+    ]
+   ],
+   "rep_checked": 6,
+   "ring": "Zp",
+   "scal_add_genre": 0,
+   "span": {
+    "fail": 0,
+    "ok": 12,
+    "skip": 36
+   },
+   "spanM": {
+    "fail": 0,
+    "ok": 12,
+    "skip": 36,
+    "zero": 0
+   },
+   "spanS": {
+    "fail": 0,
+    "ok": 8,
+    "skip": 28,
+    "zero": 0
+   },
+   "tag": "Zp,p=3,I4B",
+   "wPhiTop": 218,
+   "zbar": "zb^1"
+  },
+  "Zp,p=5,C2F": {
+   "E": 10,
+   "G0": 10,
+   "N": 30,
+   "NR": 2,
+   "Wj": [
+    2,
+    11
+   ],
+   "counts": {
+    "HB_fail": 9,
+    "HC_fail": 4,
+    "HD_fail": 9,
+    "MT1_fail": 0,
+    "MT1_pairs": 0,
+    "MT4_fail": 0,
+    "MT4_pairs": 24,
+    "dcx": 0,
+    "inner_ne1": 9,
+    "iso_bad": 0,
+    "nonint": 0,
+    "nonuniq": 0,
+    "ob6_bad": 0,
+    "raw_nosol": 4,
+    "scored": 24,
+    "tc3_nosol": 0,
+    "val_bad": 0
+   },
+   "cyc": {
+    "cyclic": null,
+    "values": [
+     "zb^1"
+    ],
+    "verdict": "UNDECIDED (E = 10 > 8: relabeling search skipped; single value zb^1)"
+   },
+   "d0": 1,
+   "delta_pos": 4,
+   "egg": 22,
+   "exhaustive": true,
+   "g_m": 1,
+   "gam": [
+    1,
+    11
+   ],
+   "germ": {
+    "eligible": true,
+    "kappa": "1",
+    "kappa_times_val": "1",
+    "neg_zbar": "1",
+    "nsol": 1,
+    "route": "exhaustive",
+    "t_shift": 0,
+    "transport_bad": 0,
+    "transport_scored": 4,
+    "valChat": "1",
+    "val_anchor": "1",
+    "wChat": 22,
+    "wChat_expected": 22
+   },
+   "id": "C2F",
+   "inner_values": {
+    "zb^1": 9
+   },
+   "kdist": {
+    "0": 24
+   },
+   "m": 1,
+   "mt3": {
+    "cT_defined_violations": 0,
+    "caught": 6,
+    "kappa": "zb^1",
+    "pairs": 7
+   },
+   "nK": 5,
+   "neg_zbar": "1",
+   "off_checked": 4,
+   "p": 5,
+   "pairs": 24,
+   "psi0": "1",
+   "raw_nosol": 4,
+   "reads": [
+    [
+     5,
+     1,
+     1
+    ],
+    [
+     2,
+     1,
+     1
+    ]
+   ],
+   "rep_checked": 6,
+   "ring": "Zp",
+   "scal_add_genre": 0,
+   "span": {
+    "fail": 0,
+    "ok": 10,
+    "skip": 10
+   },
+   "spanM": {
+    "fail": 0,
+    "ok": 10,
+    "skip": 10,
+    "zero": 0
+   },
+   "spanS": {
+    "fail": 0,
+    "ok": 6,
+    "skip": 23,
+    "zero": 1
+   },
+   "tag": "Zp,p=5,C2F",
+   "wPhiTop": 22,
+   "zbar": "zb^1"
+  },
+  "Zp,p=5,C2G": {
+   "E": 6,
+   "G0": 12,
+   "N": 24,
+   "NR": 2,
+   "Wj": [
+    3,
+    7
+   ],
+   "counts": {
+    "HB_fail": 18,
+    "HC_fail": 12,
+    "HD_fail": 0,
+    "MT1_fail": 0,
+    "MT1_pairs": 9,
+    "MT4_fail": 0,
+    "MT4_pairs": 36,
+    "dcx": 0,
+    "inner_ne1": 18,
+    "iso_bad": 0,
+    "nonint": 0,
+    "nonuniq": 0,
+    "ob6_bad": 0,
+    "raw_nosol": 12,
+    "scored": 36,
+    "tc3_nosol": 0,
+    "val_bad": 0
+   },
+   "cyc": {
+    "cyclic": true,
+    "values": [
+     "zb^5"
+    ],
+    "verdict": "CYCLIC zeta = zb^5, sigma = (0, 1, 2, 3, 4, 5)"
+   },
+   "d0": 2,
+   "delta_pos": 12,
+   "egg": 21,
+   "exhaustive": true,
+   "g_m": 1,
+   "gam": [
+    1,
+    7
+   ],
+   "germ": {
+    "eligible": true,
+    "kappa": "zb^4",
+    "kappa_times_val": "zb^5",
+    "neg_zbar": "zb^5",
+    "nsol": 1,
+    "route": "exhaustive",
+    "t_shift": 0,
+    "transport_bad": 0,
+    "transport_scored": 4,
+    "valChat": "zb^5",
+    "val_anchor": "zb^1",
+    "wChat": 21,
+    "wChat_expected": 21
+   },
+   "id": "C2G",
+   "inner_values": {
+    "zb^4": 9,
+    "zb^5": 6,
+    "zb^7": 3
+   },
+   "kdist": {
+    "0": 36
+   },
+   "m": 1,
+   "mt3": {
+    "cT_defined_violations": 0,
+    "caught": 11,
+    "kappa": "zb^1",
+    "pairs": 11
+   },
+   "nK": 25,
+   "neg_zbar": "zb^5",
+   "off_checked": 4,
+   "p": 5,
+   "pairs": 36,
+   "psi0": "zb^5",
+   "raw_nosol": 12,
+   "reads": [
+    [
+     2,
+     1,
+     1
+    ],
+    [
+     3,
+     1,
+     1
+    ]
+   ],
+   "rep_checked": 6,
+   "ring": "Zp",
+   "scal_add_genre": 0,
+   "span": {
+    "fail": 0,
+    "ok": 6,
+    "skip": 6
+   },
+   "spanM": {
+    "fail": 0,
+    "ok": 6,
+    "skip": 6,
+    "zero": 0
+   },
+   "spanS": {
+    "fail": 0,
+    "ok": 3,
+    "skip": 12,
+    "zero": 3
+   },
+   "tag": "Zp,p=5,C2G",
+   "wPhiTop": 21,
+   "zbar": "zb^1"
+  },
+  "Zp,p=5,C3G": {
+   "E": 20,
+   "G0": 200,
+   "N": 240,
+   "NR": 3,
+   "Wj": [
+    10,
+    22,
+    111
+   ],
+   "counts": {
+    "HB_fail": 11,
+    "HC_fail": 4,
+    "HD_fail": 11,
+    "MT1_fail": 0,
+    "MT1_pairs": 0,
+    "MT4_fail": 0,
+    "MT4_pairs": 24,
+    "dcx": 0,
+    "inner_ne1": 11,
+    "iso_bad": 0,
+    "nonint": 0,
+    "nonuniq": 0,
+    "ob6_bad": 0,
+    "raw_nosol": 4,
+    "scored": 24,
+    "tc3_nosol": 0,
+    "val_bad": 0
+   },
+   "cyc": {
+    "cyclic": null,
+    "values": [
+     "zb^1"
+    ],
+    "verdict": "UNDECIDED (E = 20 > 8: relabeling search skipped; single value zb^1)"
+   },
+   "d0": 1,
+   "delta_pos": 4,
+   "egg": 222,
+   "exhaustive": true,
+   "g_m": 1,
+   "gam": [
+    1,
+    11,
+    111
+   ],
+   "germ": {
+    "eligible": true,
+    "kappa": "1",
+    "kappa_times_val": "1",
+    "neg_zbar": "1",
+    "nsol": 1,
+    "route": "exhaustive",
+    "t_shift": 0,
+    "transport_bad": 0,
+    "transport_scored": 4,
+    "valChat": "1",
+    "val_anchor": "1",
+    "wChat": 222,
+    "wChat_expected": 222
+   },
+   "id": "C3G",
+   "inner_values": {
+    "zb^1": 11
+   },
+   "kdist": {
+    "0": 24
+   },
+   "m": 2,
+   "mt3": {
+    "cT_defined_violations": 0,
+    "caught": 6,
+    "kappa": "zb^1",
+    "pairs": 7
+   },
+   "nK": 5,
+   "neg_zbar": "1",
+   "off_checked": 4,
+   "p": 5,
+   "pairs": 24,
+   "psi0": "1",
+   "raw_nosol": 4,
+   "reads": [
+    [
+     2,
+     1,
+     1
+    ],
+    [
+     5,
+     1,
+     1
+    ],
+    [
+     2,
+     1,
+     1
+    ]
+   ],
+   "rep_checked": 6,
+   "ring": "Zp",
+   "scal_add_genre": 0,
+   "span": {
+    "fail": 0,
+    "ok": 20,
+    "skip": 40
+   },
+   "spanM": {
+    "fail": 0,
+    "ok": 20,
+    "skip": 40,
+    "zero": 0
+   },
+   "spanS": {
+    "fail": 0,
+    "ok": 49,
+    "skip": 7,
+    "zero": 4
+   },
+   "tag": "Zp,p=5,C3G",
+   "wPhiTop": 222,
+   "zbar": "zb^1"
+  },
+  "Zp,p=5,C4H": {
+   "E": 10,
+   "G0": 60,
+   "N": 90,
+   "NR": 4,
+   "Wj": [
+    5,
+    15,
+    16,
+    81
+   ],
+   "counts": {
+    "HB_fail": 7,
+    "HC_fail": 0,
+    "HD_fail": 7,
+    "MT1_fail": 0,
+    "MT1_pairs": 0,
+    "MT4_fail": 0,
+    "MT4_pairs": 24,
+    "dcx": 0,
+    "inner_ne1": 7,
+    "iso_bad": 0,
+    "nonint": 0,
+    "nonuniq": 0,
+    "ob6_bad": 0,
+    "raw_nosol": 0,
+    "scored": 24,
+    "tc3_nosol": 0,
+    "val_bad": 0
+   },
+   "cyc": {
+    "cyclic": null,
+    "values": [
+     "zb^1"
+    ],
+    "verdict": "UNDECIDED (E = 10 > 8: relabeling search skipped; single value zb^1)"
+   },
+   "d0": 1,
+   "delta_pos": 0,
+   "egg": 81,
+   "exhaustive": true,
+   "g_m": 1,
+   "gam": [
+    1,
+    3,
+    16,
+    81
+   ],
+   "germ": {
+    "eligible": true,
+    "kappa": "1",
+    "kappa_times_val": "1",
+    "neg_zbar": "1",
+    "nsol": 1,
+    "route": "exhaustive",
+    "t_shift": 0,
+    "transport_bad": 0,
+    "transport_scored": 4,
+    "valChat": "1",
+    "val_anchor": "1",
+    "wChat": 81,
+    "wChat_expected": 81
+   },
+   "id": "C4H",
+   "inner_values": {
+    "zb^1": 7
+   },
+   "kdist": {
+    "0": 24
+   },
+   "m": 3,
+   "mt3": {
+    "cT_defined_violations": 0,
+    "caught": 6,
+    "kappa": "zb^1",
+    "pairs": 7
+   },
+   "nK": 5,
+   "neg_zbar": "1",
+   "off_checked": 4,
+   "p": 5,
+   "pairs": 24,
+   "psi0": "1",
+   "raw_nosol": 0,
+   "reads": [
+    [
+     2,
+     1,
+     1
+    ],
+    [
+     1,
+     1,
+     1
+    ],
+    [
+     5,
+     1,
+     1
+    ],
+    [
+     1,
+     1,
+     1
+    ]
+   ],
+   "rep_checked": 6,
+   "ring": "Zp",
+   "scal_add_genre": 0,
+   "span": {
+    "fail": 0,
+    "ok": 20,
+    "skip": 20
+   },
+   "spanM": {
+    "fail": 0,
+    "ok": 20,
+    "skip": 20,
+    "zero": 0
+   },
+   "spanS": {
+    "fail": 0,
+    "ok": 9,
+    "skip": 21,
+    "zero": 0
+   },
+   "tag": "Zp,p=5,C4H",
+   "wPhiTop": 81,
+   "zbar": "zb^1"
+  }
+ },
+ "totals": {
+  "HB_fail": 215,
+  "HC_fail": 73,
+  "HD_fail": 138,
+  "MT1_fail": 0,
+  "MT1_pairs": 79,
+  "MT4_fail": 0,
+  "MT4_pairs": 557,
+  "dcx": 0,
+  "delta_pos": 134,
+  "inner_ne1": 215,
+  "mt3_caught": 197,
+  "mt3_pairs": 206,
+  "nonint": 0,
+  "pairs": 669,
+  "raw_nosol": 134,
+  "scored": 669,
+  "spanM_zero": 0,
+  "spanS_fail": 0,
+  "spanS_ok": 435,
+  "spanS_skip": 360,
+  "spanS_zero": 60,
+  "span_fail": 0,
+  "span_ok": 328,
+  "span_skip": 606
+ },
+ "violations": []
+}

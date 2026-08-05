@@ -190,7 +190,135 @@ NOT sanitized to the smoke.
 
 ## S6. VERDICT (commit 2 — written FROM the artifacts)
 
-PENDING — the battery has not been run at commit 1. This section is filled in
-commit 2 from `grt_jc_probe_output.txt` / `grt_jc_probe_results.json` only.
+**Artifacts:** `verification/openmath/grt_jc_probe_output.txt`,
+`grt_jc_probe_results.json` (deterministic; 29 rows, 669 scored pairs, 18.3 s;
+seal commit `7212e56`). **ALL 22 SCORED FAMILIES GREEN — 0 violations, every
+sealed prediction hit exactly.**
+
+**All 29 rows ran EXHAUSTIVE** (|K| ≤ 512 on every row: |K| ∈ {2,3,4,5,8,9,16,25}).
+So on every one of the 669 pairs the gr-side structure constant was determined by
+exhaustive search over K with **no witness input from the harness side at all**,
+and its **uniqueness is machine-proved** (exactly one certifying scalar per pair).
+The π-clearing ladder was never needed: **k-distribution {0: 669}** — the
+canonical division by Φ_{NR} alone discharges TC-3 on this roster.
+
+| leg | sealed | observed | verdict |
+|---|---|---|---|
+| EXT-GATE | 0 | 0 (pins + agreement gate re-run, 0 new) | GREEN |
+| P0-TRUNC | 0 | **0 / 151** | GREEN (the truncation identity holds byte-for-byte at every depth) |
+| P0-ANCH | 0 | 0 / 285 | GREEN |
+| P0-OB2 | 0 | **0 / 285** | GREEN — φ_{γ+E} == π·φ_γ **byte-for-byte** on every anchor of every row (OB-2/COR-4 exact) |
+| P0-LIFT | 0 | 0 / 138 | GREEN |
+| P0-SCAL | 0 | 0 / 293 | GREEN (scalar multiplicativity in gr); additivity census: **0 non-additive samples** |
+| P0-PSI | 0 | 0 / 29 | GREEN (ψ_{m,0} = −z̄ per stage) |
+| **P1-RAW** | set identity, count nonzero | **134 of 669 pairs have NO pre-TC-3 scalar; 0 / 29 set-mismatches** | GREEN — the set is EXACTLY {δ ≥ g_m} on all 29 rows |
+| P1-TC3 | 0 | **0 / 669** (0 no-solution, 0 non-unique) | GREEN |
+| **P2-ISO** | 0 | **0 / 669** | GREEN — c_gr == c_T = z̄^δ∏_{j≤m} z_j^{D_j} **on the nose, per pair** |
+| P2-OFF | 0 | 0 / 116 | GREEN (constants independent of the scalar offset) |
+| P2-REP | 0 | 0 / 174 | GREEN (representative-independent) |
+| P2-VAL | 0 | 0 / 669 | GREEN (accepted ITER-LAW re-confirmed on this roster) |
+| P3-FACT | 0 | 0 / 669 | GREEN |
+| P3-GERM | 0 | **0 / 188** | GREEN (see the germ verdict below) |
+| P4-DEG | 0 | 0 / 29 | GREEN |
+| P4-SPAN-M | 0 failures | **328 certified / 0 zero-class / 0 FAILED** (606 skipped for non-integrality) | GREEN — **0 genre rows**: the anchor generates over K_{m+1} for every monomial perturbation tested |
+| P5-OB6 | 0 | **0 / 669** | GREEN — harness-val == TC-read per pair |
+| MT1 | 0 misses | 0 / 79 designated pairs | GREEN (tooth fires) |
+| MT2 | ≥ 1 designated NOT-CYCLIC | **C2I NOT-CYCLIC, C3I NOT-CYCLIC**, C4I UNDECIDED (E = 16 > 8) | GREEN (tooth fires) |
+| MT3 | ≥ 1 catch per stage | **197 / 206 pairs caught; ≥ 1 catch on all 28 non-skipped rows** | GREEN (tooth fires) |
+| MT4 | 0 misses | 0 / 557 | GREEN (tooth fires) |
+
+Scope census: **DCX pairs 0, non-integral-D pairs 0** — the entire grid sat inside
+[ILN]†'s own scored stratum, so no pair was excluded from P2-ISO/P2-VAL/P5-OB6.
+
+### S6.1 THE FIVE MEASUREMENTS THE COMPOSER SHOULD BUILD ON
+
+**(M1) The carrier iso holds on the nose, and its gr-side is fence-clean.**
+c_gr == c_T on 669/669 pairs across m ∈ {1,2,3}, p ∈ {2,3,5}, d₀ ∈ {1,2,3}, wild
+and flat legs, g_j = 2 rows, and the three committed ITERLAWN instances — with the
+gr-side constant determined by exhaustive certification that never calls c_T or
+the read. Uniqueness machine-proved on every pair. This is OB-3's scalar content
+and OB-2 (byte-exact) measured, not assumed.
+
+**(M2) TC-3 IS LOAD-BEARING, AND EXACTLY WHERE.** The pre-TC-3 certifier fails on
+134/669 pairs, and the failure set is EXACTLY {δ ≥ g_m} on all 29 rows (0
+set-mismatches). Mechanism, now machine-located: the scalar lift Λ_N already
+realizes slot shifts up to y^{g_m−1} (that is what c = Σ_{i<g_m} c_i z̄^i *is*), so
+a carry of δ < g_m is a scalar for free; a carry of δ ≥ g_m needs the ψ-relation,
+i.e. the TC-3 quotient. **Consequence for the composer: the OUTER factor z̄^δ of
+c_T is precisely the TC-3 image of the graded slot shift y^δ — not a coordinate
+artifact, and not obtainable from TC-1/TC-2 alone.** Corollary measured on the
+way: the level-NR read is NOT injective on a graded piece (two weight-(N+E) lifts
+with equal read can be different classes), and that non-injectivity IS TC-3's
+ψ-kernel — so any draft that treats TC-3 as a relabeling is refuted here.
+
+**(M3) THE GERM VERDICT — measured factor vs −z_{m+1}, adjudicated in two parts.**
+CONFIRMED where J-B put it: on all **27 eligible stages** (g_m = 1),
+**val(Ĉ_m) = −z̄ = −z_{m+1} exactly** — the germ letter is the correction digit's
+own anchor value, machine-verified independently per stage. And the carrier-side
+class constant κ of multiplication by [Ĉ_m] satisfies
+**κ · val(φ_{e_mγ_{m+1}}) = −z_{m+1} on all 27 stages** (0 violations), with κ
+itself varying across stages (measured values: 1, z̄, z̄², z̄³, z̄⁴). **So the
+measured factor is −z_{m+1} divided by the anchor's own value normalization, not
+−z_{m+1} bare** — κ = −z_{m+1} only on the stages where val(φ_{e_mγ_{m+1}}) = 1.
+Germ transport c_germ(r) = κ·c_T(e_mγ_{m+1}, γ_r): 0 violations on every scored r.
+**REFUTED as an inner-factor claim:** the brief's literal working hypothesis
+("the inner normalization factor at general m is −z_{m+1}") is reading H-D, and
+H-D FAILS on **138 of 669** scored pairs. The measured inner factor is
+∏_{j=1}^{m} z_j^{D_j} — the INNER letters z₁..z_m, not the top letter — nontrivial
+on **215 of 669** pairs (and H-B, which drops it, fails on exactly those 215: the
+inner factor is load-bearing pair-for-pair, never absorbable). The germ-signed
+outer reading H-C also fails (73/669). **The composer must NOT assume the germ
+letter is OB-3's inner normalization; the two are different quantities, and the
+instrument separates them.**
+
+**(M4) OB-4 splits, and the hard half is not independence.** In the fibred
+presentation the independence content reduces to degree separation mod E, which is
+GREEN on all 29 rows (P4-DEG); the content that could actually drop is spanning,
+and the monomial rank-one probe certifies 328/328 with **zero genre rows**. So
+the composer's case split gets **no genre from OB-4 on this roster** — budget the
+effort at OB-1 (which sampling cannot reach) instead. Two honest riders: the
+Δ-rank refinement (freeness over K_m[y] BEFORE TC-3) is NOT measured, and the
+SPAN-S sum census contributed 60 **zero-class** samples (classes that die in the
+TC-3 quotient) with 0 unexplained — the two smoke "failures" were exactly such
+zero-classes, which is why c = 0 was admitted.
+
+**(M5) The cyclic fence is a GENRE, not a universal — with the split reproduced
+independently.** On the measured c_gr tables: **14 NOT-CYCLIC / 6 CYCLIC / 9
+UNDECIDED** (relabeling search skipped at E > 8). The 6 CYCLIC rows are
+C2A/C2E/C2G/C2J/C3A/C4A — the twist-blind and collapse geography (|K| = 2, or
+g_m = 1 collapsing K_{m+1} = K_m so z̄ ∈ ⟨z₁⟩, or the e₀ = 1 flat control) —
+and this 6-cyclic / rest-not-cyclic split **independently reproduces the strata
+probe's byte-frozen 22/28 NOT-CYCLIC adjudication** from a completely different
+computation (gr-side certification vs harness value cocycle). Both designated
+g_m = 2 rows that were decidable came back NOT-CYCLIC. **Consequence: the
+composer's case split MUST carry a cyclic/non-cyclic genre column, and the cyclic
+side is not only the last-read layer — it includes composite stages whose residue
+tower collapses (g_m = 1 ⇒ K_{m+1} = K_m).**
+
+### S6.2 Honest reporting of the imperfect and the unmeasured
+
+* **MT3's 9 escapes.** 197 of 206 tautology-tooth pairs were caught; exactly one
+  pair escapes on each of 9 rows (C2C/C2F/C2J/C3B/C3C/C3G/C3J/C4C/C4H — all
+  prime-residue-field rows, |K| ∈ {3,5}), where the planted rescaling coincides
+  with a lawful constant. The sealed criterion (≥ 1 catch per stage) held on all
+  28 non-skipped rows; C4A (|K| = 2) has no nontrivial scalar class and is
+  skipped, disclosed.
+* **The inner-factor value names** printed in the tables (z̄^1 ×143, z̄^2 ×24,
+  z̄^3 ×15, z̄^4 ×14, z̄^5 ×10, z̄^7 ×6, z̄^6 ×3) come from a printer that tries
+  z̄ before z₁: on g_m = 1 rows K_{m+1} = K_m, so an inner ∏z_j^{D_j} can *equal*
+  a z̄-power numerically. The **structural** statement is the scored one
+  (c_gr == outer·inner with inner = ∏_{j≤m} z_j^{D_j}, 0 violations); the value
+  names are a display convenience, not a claim that the inner factor is a z̄-power.
+* **MT2's aggregate check runs after the family table is printed** (a cosmetic
+  ordering artifact of the runner); its result lives in the JSON key
+  `cyc_designated` and in the printed per-row CYCLIC table.
+* **9 rows UNDECIDED for MT2** (E > 8, relabeling search skipped) — a stated
+  compute fence, not a finding.
+* Everything in §S5 remains unmeasured: OB-1's legitimacy, OB-6's carrier
+  identification, the Δ-rank refinement, and the TC3 certifier's completeness
+  (canonical quotient only — though with k = 0 sufficing on 669/669 pairs the
+  ladder was never even exercised).
+* **No proof step, no gr/carrier claim, no gate, no density statement.** The P0
+  application gate and BLOCKED-ON-CARRIER-TIE stand.
 
 — GRTJC INSTRUMENT unit, campaign date 2026-08-08.

@@ -1,0 +1,129 @@
+grt_jc_probe.py -- GRT J-C carry-algebra instrument
+  [   0.2s] EXT-GATE done (new: 0)
+  [   0.2s] C2A                m=1 E=4   |K|=4    pairs=16  scored=16  raw-nosol=4  (delta+=4  ) iso=0 val=0 ob6=0 inner!=1:4   span 4/4 cyc=Y (0.0s)
+  [   0.2s] C2B                m=1 E=4   |K|=4    pairs=16  scored=16  raw-nosol=4  (delta+=4  ) iso=0 val=0 ob6=0 inner!=1:7   span 4/4 cyc=N (0.0s)
+  [   0.2s] C2C                m=1 E=6   |K|=3    pairs=36  scored=36  raw-nosol=9  (delta+=9  ) iso=0 val=0 ob6=0 inner!=1:15  span 6/6 cyc=N (0.0s)
+  [   0.3s] C2D                m=1 E=6   |K|=9    pairs=36  scored=36  raw-nosol=12 (delta+=12 ) iso=0 val=0 ob6=0 inner!=1:9   span 12/12 cyc=N (0.1s)
+  [   0.4s] C2E                m=1 E=4   |K|=4    pairs=16  scored=16  raw-nosol=4  (delta+=4  ) iso=0 val=0 ob6=0 inner!=1:4   span 4/4 cyc=Y (0.0s)
+  [   0.4s] C2F                m=1 E=10  |K|=5    pairs=24  scored=24  raw-nosol=4  (delta+=4  ) iso=0 val=0 ob6=0 inner!=1:9   span 10/10 cyc=? (0.0s)
+  [   0.6s] C2G                m=1 E=6   |K|=25   pairs=36  scored=36  raw-nosol=12 (delta+=12 ) iso=0 val=0 ob6=0 inner!=1:18  span 6/6 cyc=Y (0.2s)
+  [   0.7s] C2H                m=1 E=4   |K|=8    pairs=16  scored=16  raw-nosol=4  (delta+=4  ) iso=0 val=0 ob6=0 inner!=1:7   span 4/4 cyc=N (0.1s)
+  [   0.7s] C2I                m=1 E=4   |K|=4    pairs=16  scored=16  raw-nosol=0  (delta+=0  ) iso=0 val=0 ob6=0 inner!=1:0   span 4/4 cyc=N (0.0s)
+  [   0.7s] C2J                m=1 E=3   |K|=3    pairs=9   scored=9   raw-nosol=3  (delta+=3  ) iso=0 val=0 ob6=0 inner!=1:0   span 6/6 cyc=Y (0.0s)
+  [   0.8s] C3A                m=2 E=8   |K|=4    pairs=24  scored=24  raw-nosol=4  (delta+=4  ) iso=0 val=0 ob6=0 inner!=1:6   span 8/8 cyc=Y (0.1s)
+  [   0.8s] C3B                m=2 E=12  |K|=3    pairs=24  scored=24  raw-nosol=4  (delta+=4  ) iso=0 val=0 ob6=0 inner!=1:7   span 12/12 cyc=? (0.0s)
+  [   0.8s] C3C                m=2 E=12  |K|=3    pairs=24  scored=24  raw-nosol=4  (delta+=4  ) iso=0 val=0 ob6=0 inner!=1:8   span 24/24 cyc=? (0.0s)
+  [   1.0s] C3D                m=2 E=8   |K|=4    pairs=24  scored=24  raw-nosol=4  (delta+=4  ) iso=0 val=0 ob6=0 inner!=1:10  span 8/8 cyc=N (0.2s)
+  [   1.1s] C3E                m=2 E=4   |K|=4    pairs=16  scored=16  raw-nosol=4  (delta+=4  ) iso=0 val=0 ob6=0 inner!=1:6   span 4/4 cyc=N (0.0s)
+  [   1.3s] C3F                m=2 E=12  |K|=9    pairs=24  scored=24  raw-nosol=9  (delta+=9  ) iso=0 val=0 ob6=0 inner!=1:11  span 12/12 cyc=N (0.2s)
+  [   1.4s] C3G                m=2 E=20  |K|=5    pairs=24  scored=24  raw-nosol=4  (delta+=4  ) iso=0 val=0 ob6=0 inner!=1:11  span 20/20 cyc=? (0.1s)
+  [   1.6s] C3H                m=2 E=8   |K|=8    pairs=24  scored=24  raw-nosol=4  (delta+=4  ) iso=0 val=0 ob6=0 inner!=1:12  span 8/8 cyc=N (0.2s)
+  [   1.6s] C3I                m=2 E=8   |K|=4    pairs=24  scored=24  raw-nosol=4  (delta+=4  ) iso=0 val=0 ob6=0 inner!=1:5   span 8/8 cyc=N (0.1s)
+  [   1.7s] C3J                m=2 E=12  |K|=3    pairs=24  scored=24  raw-nosol=4  (delta+=4  ) iso=0 val=0 ob6=0 inner!=1:7   span 12/12 cyc=? (0.1s)
+  [   1.8s] C4A                m=3 E=16  |K|=2    pairs=24  scored=24  raw-nosol=4  (delta+=4  ) iso=0 val=0 ob6=0 inner!=1:0   span 16/16 cyc=Y (0.1s)
+  [   2.0s] C4B                m=3 E=16  |K|=4    pairs=24  scored=24  raw-nosol=4  (delta+=4  ) iso=0 val=0 ob6=0 inner!=1:13  span 16/16 cyc=N (0.2s)
+  [   2.2s] C4C                m=3 E=24  |K|=3    pairs=24  scored=24  raw-nosol=4  (delta+=4  ) iso=0 val=0 ob6=0 inner!=1:10  span 24/24 cyc=? (0.2s)
+  [   3.3s] C4G                m=3 E=16  |K|=4    pairs=24  scored=24  raw-nosol=4  (delta+=4  ) iso=0 val=0 ob6=0 inner!=1:10  span 16/16 cyc=N (1.1s)
+  [   3.4s] C4H                m=3 E=10  |K|=5    pairs=24  scored=24  raw-nosol=0  (delta+=0  ) iso=0 val=0 ob6=0 inner!=1:7   span 20/20 cyc=? (0.1s)
+  [   3.6s] C4I                m=3 E=16  |K|=4    pairs=24  scored=24  raw-nosol=0  (delta+=0  ) iso=0 val=0 ob6=0 inner!=1:0   span 16/16 cyc=? (0.2s)
+  [   3.8s] I4A                m=3 E=12  |K|=4    pairs=24  scored=24  raw-nosol=9  (delta+=9  ) iso=0 val=0 ob6=0 inner!=1:0   span 24/24 cyc=? (0.2s)
+  [   4.0s] I4B                m=3 E=12  |K|=9    pairs=24  scored=24  raw-nosol=4  (delta+=4  ) iso=0 val=0 ob6=0 inner!=1:7   span 12/12 cyc=N (0.2s)
+  [  18.3s] I4C                m=3 E=8   |K|=16   pairs=24  scored=24  raw-nosol=4  (delta+=4  ) iso=0 val=0 ob6=0 inner!=1:12  span 8/8 cyc=N (14.3s)
+
+==============================================================================
+FAMILY TABLE (samples / violations; sealed prediction in the docstring)
+  EXT-GATE     samples      1   violations    0
+  P0-TRUNC     samples    151   violations    0
+  P0-ANCH      samples    285   violations    0
+  P0-OB2       samples    285   violations    0
+  P0-LIFT      samples    138   violations    0
+  P0-SCAL      samples    293   violations    0
+  P0-PSI       samples     29   violations    0
+  P1-RAW       samples    669   violations    0
+  P1-RAW-SET   samples     29   violations    0
+  P1-TC3       samples    669   violations    0
+  P2-ISO       samples    669   violations    0
+  P2-OFF       samples    116   violations    0
+  P2-REP       samples    174   violations    0
+  P2-VAL       samples    669   violations    0
+  P3-FACT      samples    669   violations    0
+  P3-GERM      samples    188   violations    0
+  P4-DEG       samples     29   violations    0
+  P4-SPAN      samples    328   violations    0
+  P5-OB6       samples    669   violations    0
+  MT1          samples     79   violations    0
+  MT3          samples    234   violations    0
+  MT4          samples    557   violations    0
+
+TOTALS: rows 29  pairs 669  scored 669  (DCX-censused 0, non-integral-D 0)
+P1-RAW: no-solution pairs 134  == delta>=1 pairs 134  (set identity violations 0)
+P3 inner factor != 1 on 215 scored pairs; rival-reading failures: H-B 215, H-C 73, H-D 138 (of 669 scored)
+P4-SPAN-M (monomial rank-one probe): 328 certified / 0 zero-class / 0 FAILED / 606 skipped
+P4-SPAN-S (sum census, measured-only): 435 certified / 60 zero-class / 0 neither / 360 skipped
+TEETH: MT1 0/79 designated pairs missed; MT3 197/206 pairs caught; MT4 0/557 missed
+MT2 CYCLIC FENCE: NOT-CYCLIC 14 / CYCLIC 6 / UNDECIDED 9 rows
+
+GERM TABLE (per eligible stage: val(Chat) vs -zbar; kappa; kappa*val(anchor) vs -zbar)
+  C2A                      val(Chat)=zb^1       -zbar=zb^1       kappa=1            kappa*val=zb^1       transport 0/4
+  C2B                      val(Chat)=zb^1       -zbar=zb^1       kappa=zb^2         kappa*val=zb^1       transport 0/4
+  C2C                      val(Chat)=1          -zbar=1          kappa=1            kappa*val=1          transport 0/4
+  C2D                      val(Chat)=zb^3       -zbar=zb^3       kappa=zb^3         kappa*val=zb^3       transport 0/4
+  C2E                      val(Chat)=zb^1       -zbar=zb^1       kappa=1            kappa*val=zb^1       transport 0/4
+  C2F                      val(Chat)=1          -zbar=1          kappa=1            kappa*val=1          transport 0/4
+  C2G                      val(Chat)=zb^5       -zbar=zb^5       kappa=zb^4         kappa*val=zb^5       transport 0/4
+  C2H                      val(Chat)=zb^1       -zbar=zb^1       kappa=zb^3         kappa*val=zb^1       transport 0/4
+  C2I                      INELIGIBLE (g_m = 2)
+  C2J                      val(Chat)=1          -zbar=1          kappa=1            kappa*val=1          transport 0/3
+  C3A                      val(Chat)=zb^1       -zbar=zb^1       kappa=1            kappa*val=zb^1       transport 0/4
+  C3B                      val(Chat)=1          -zbar=1          kappa=zb^1         kappa*val=1          transport 0/4
+  C3C                      val(Chat)=1          -zbar=1          kappa=zb^1         kappa*val=1          transport 0/4
+  C3D                      val(Chat)=zb^1       -zbar=zb^1       kappa=zb^2         kappa*val=zb^1       transport 0/4
+  C3E                      val(Chat)=zb^1       -zbar=zb^1       kappa=zb^1         kappa*val=zb^1       transport 0/4
+  C3F                      val(Chat)=zb^3       -zbar=zb^3       kappa=zb^2         kappa*val=zb^3       transport 0/4
+  C3G                      val(Chat)=1          -zbar=1          kappa=1            kappa*val=1          transport 0/4
+  C3H                      val(Chat)=zb^1       -zbar=zb^1       kappa=zb^1         kappa*val=zb^1       transport 0/4
+  C3I                      val(Chat)=zb^1       -zbar=zb^1       kappa=1            kappa*val=zb^1       transport 0/4
+  C3J                      val(Chat)=1          -zbar=1          kappa=zb^1         kappa*val=1          transport 0/4
+  C4A                      val(Chat)=1          -zbar=1          kappa=1            kappa*val=1          transport 0/4
+  C4B                      val(Chat)=zb^1       -zbar=zb^1       kappa=zb^1         kappa*val=zb^1       transport 0/4
+  C4C                      val(Chat)=1          -zbar=1          kappa=zb^1         kappa*val=1          transport 0/4
+  C4G                      val(Chat)=zb^1       -zbar=zb^1       kappa=1            kappa*val=zb^1       transport 0/4
+  C4H                      val(Chat)=1          -zbar=1          kappa=1            kappa*val=1          transport 0/4
+  C4I                      INELIGIBLE (g_m = 2)
+  I4A                      val(Chat)=zb^1       -zbar=zb^1       kappa=zb^1         kappa*val=zb^1       transport 0/4
+  I4B                      val(Chat)=zb^3       -zbar=zb^3       kappa=zb^3         kappa*val=zb^3       transport 0/4
+  I4C                      val(Chat)=zb^1       -zbar=zb^1       kappa=zb^2         kappa*val=zb^1       transport 0/4
+
+CYCLIC ADJUDICATION (per row)
+  Zp,p=2,C2A                   CYCLIC zeta = zb^1, sigma = (0, 1, 2, 3)
+  Zp,p=2,C2B                   NOT-CYCLIC (>= 2 distinct non-1 values: zb^1, zb^2)
+  Zp,p=3,C2C                   NOT-CYCLIC (single value zb^1 but carry pattern not realizable by any relabeling)
+  Zp,p=3,C2D                   NOT-CYCLIC (>= 2 distinct non-1 values: zb^1, zb^3)
+  Fpt,p=2,C2E                  CYCLIC zeta = zb^1, sigma = (0, 1, 2, 3)
+  Zp,p=5,C2F                   UNDECIDED (E = 10 > 8: relabeling search skipped; single value zb^1)
+  Zp,p=5,C2G                   CYCLIC zeta = zb^5, sigma = (0, 1, 2, 3, 4, 5)
+  Zp,p=2,C2H                   NOT-CYCLIC (>= 2 distinct non-1 values: zb^1, zb^3, zb^4)
+  Zp,p=2,C2I                   NOT-CYCLIC (single value zb^1 but carry pattern not realizable by any relabeling)
+  Zp,p=3,C2J                   CYCLIC zeta = zb^1, sigma = (0, 1, 2)
+  Zp,p=2,C3A                   CYCLIC zeta = zb^1, sigma = (0, 5, 2, 7, 4, 1, 6, 3)
+  Zp,p=3,C3B                   UNDECIDED (E = 12 > 8: relabeling search skipped; single value zb^1)
+  Zp,p=3,C3C                   UNDECIDED (E = 12 > 8: relabeling search skipped; single value zb^1)
+  Fpt,p=2,C3D                  NOT-CYCLIC (>= 2 distinct non-1 values: zb^1, zb^2)
+  Zp,p=2,C3E                   NOT-CYCLIC (>= 2 distinct non-1 values: zb^1, zb^2)
+  Zp,p=3,C3F                   NOT-CYCLIC (>= 2 distinct non-1 values: zb^1, zb^2, zb^3)
+  Zp,p=5,C3G                   UNDECIDED (E = 20 > 8: relabeling search skipped; single value zb^1)
+  Zp,p=2,C3H                   NOT-CYCLIC (>= 2 distinct non-1 values: zb^1, zb^2, zb^3, zb^4, zb^5)
+  Zp,p=2,C3I                   NOT-CYCLIC (single value zb^1 but carry pattern not realizable by any relabeling)
+  Fpt,p=3,C3J                  UNDECIDED (E = 12 > 8: relabeling search skipped; single value zb^1)
+  Zp,p=2,C4A                   CYCLIC (c == 1 identically, zeta = 1)
+  Zp,p=2,C4B                   NOT-CYCLIC (>= 2 distinct non-1 values: zb^1, zb^2)
+  Zp,p=3,C4C                   UNDECIDED (E = 24 > 8: relabeling search skipped; single value zb^1)
+  Fpt,p=2,C4G                  NOT-CYCLIC (>= 2 distinct non-1 values: zb^1, zb^2)
+  Zp,p=5,C4H                   UNDECIDED (E = 10 > 8: relabeling search skipped; single value zb^1)
+  Zp,p=2,C4I                   UNDECIDED (E = 16 > 8: relabeling search skipped; single value zb^1)
+  Zp,p=2,I4A                   UNDECIDED (E = 12 > 8: relabeling search skipped; single value zb^1)
+  Zp,p=3,I4B                   NOT-CYCLIC (>= 2 distinct non-1 values: zb^1, zb^2, zb^3)
+  Fpt,p=2,I4C                  NOT-CYCLIC (>= 2 distinct non-1 values: zb^1, zb^5, zb^6, zb^7, zb^8)
+
+elapsed 18.3s;  total violations 0
+wrote /data/users/asvin/math-and-lean/p-adic-splitting-densities/verification/openmath/grt_jc_probe_results.json
