@@ -11298,3 +11298,36 @@ run against pin-stable texts.**
 ---
 
 ## Wave fold 2026-08-06d (compact): JB r7 landed (4c4ee56 — the m-1 truth restored at 3 sites: EQUIVALENT at m=1 displayed both directions, strictness unproved at m≥2; conjunct re-read from source) → PE8. JC r5 landed (3870bc8 — per-alias table verified against git show; stacks completed (a)(b); round-records annotated not edited) → PE6. LIFT PE8 died mid-response (server error, no partial) → fresh re-run. WM r2 now unblocked: pins against JB@4c4ee56 + JC@3870bc8 per the as-of rule. Counters 0/2; all seals intact.
+
+---
+
+## ★ THE FIRST CLEAN PASS: LIFT PE8 — 0 CRITICAL / 0 GAPS. COUNTER ADVANCES TO 1/2 ★ (JB PE8 0C/0G/1-minor; JC PE6 0C/1G — both one tiny fix from their own counts) — 2026-08-06
+
+**LIFT PE8 (report c6097d7, 394 lines) — CLEAN. The sixth acceptance
+attempt and the arc's first clean pass: every charge adjudicated true
+(the r7 diff, the arc system TRUE AT HEAD, PE7's observations concurred
+non-owed, and a decorrelated re-derivation of the CANDIDATE's
+lift-independence clause — proved abstractly AND at source, with the
+wrong-letter identity confirmed on all 48 blocks). Four unnumbered
+observations recorded as alignment options, explicitly NOT owed repairs.
+Machine legs bit-identical. COUNTER: 0/2 → 1/2. PE9 = THE ACCEPTANCE
+PASS (fresh context; if clean, LIFTCORNER_2026-08-08.md is ACCEPTED and
+NR-1's discharge rides only the W-2 cap thereafter).**
+
+**JB PE8 (6c61b82) — 0C/0G/1 MINOR** (a fused misquotation of its own
+two brackets on a live record surface — semantically exact, both
+originals visible; the byte-faithfulness irony noted). The mathematics:
+the m = 1 equivalence re-derived both directions + a WIDER decorrelated
+box (340 read data, 0 counterexamples); the m ≥ 2 converse probed
+(strict at one read, equality at e₀ = 1 — instance-dependent exactly as
+written). **r8 = the one-quotation fix → PE9.**
+
+**JC PE6 (66760f6) — 0C/1G** (r5-bred record-surface inversion: the
+[r4, G-1] bracket's "current stacks which supersede" clauses inverted at
+HEAD after r5's round-record ruling; one dated annotation + one word).
+Per-alias table reproduced 18/18 by the verifier's own grep; JC-SCAL
+re-derived decorrelated. **r6 = one annotation + one word → PE7.**
+
+WM r2: second connection casualty, this time mid-edit — uncommitted
+partial REVERTED (provenance-clean re-dispatch; the r1 commit 90db22d
+intact). Counters: LIFT **1/2**; JB 0/2; JC 0/2; WM 0/2.
