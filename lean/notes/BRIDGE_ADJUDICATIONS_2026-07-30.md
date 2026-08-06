@@ -11036,3 +11036,25 @@ undefined + the V,V′ ≥ 0 half of the license unaddressed. Machine legs:
 all four scripts exit 0, md5s intact. **r4 dispatched (F-4 = re-scope the
 transfer to leaves/reduced cells or derive the internal-edge case; the
 matrix precision items; F-8 defines the lattice); PE5 = next attempt.**
+
+---
+
+## J-C r2 LANDED ON FABLE (the Opus 529 wave sidestepped): all nine gaps repaired; (DMULT) two-tier with a PROVED consumer split; the skipped pair was the only true bilinear one — 2026-08-06
+
+**GRTJC r2 (5742e25 note / 79611a4 runner sealed unrun / db12666 verdict;
+Fable unit after four Opus casualties) — ADJUDICATED: COMPLETE.** G-1:
+(DMULT-s) MEASURED-ONLY — the exact-form citation attempt FAILED REPORTABLY
+((IN-3) prices the transport at "c a line-wise unit"; TR-3′-GEN is stated
+with per-argument units and OPEN beyond order-≤3 — both quoted); the
+CONSUMER SPLIT PROVED: (COORD-B)(2)/(MULT-B)/W-8/the JC-BOX-4 closure ride
+the DERIVED (DMULT-w) (ρ line-rescaling invariant; κ = 1 via JC-PIINV(c));
+only JC-COB's sharp u = a_γa_γ′ rides (DMULT-s), re-fenced at every site.
+G-2: new leg grt_jc_r2_checks.py (own mini-seal) ALL GREEN 3,655/0 —
+R2-BIL 696/0 on dense multi-slot pairs, R2-PHI 87/0 on the r1-skipped
+(Φ,Φ) pair, and the census shows r1's ONLY true bilinear pair WAS the
+skipped one (the gap fully vindicated); teeth fired on plants, 0 on
+replays. G-6 DERIVED (extension forced + valuation; residual tie = W-1,
+already in the stack). G-4: 22 hit-lines at fixed point, 0 live consuming
+sites. G-3/5/7/8/9 applied. **Arc: composed → PE1 2C+8G → r1 structural →
+PE2 0C+9G → r2 → JC-PE3 = next acceptance attempt; counter 0/2. Fleet
+relaunching on Fable (JB r4 + LIFT PE5; weld synthesis).**
