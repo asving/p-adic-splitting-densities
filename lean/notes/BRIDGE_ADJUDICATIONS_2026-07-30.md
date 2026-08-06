@@ -11099,3 +11099,36 @@ unit). (2) J-D via the blueprint route: J-D0 first, then W-10 at the
 multiplicativity (would move (DMULT-s) from MEASURED toward PROVED —
 closing J-C's one open citation from the inside) and the χ-from-S closed
 form.
+
+---
+
+## JB r4 LANDED (F-4 re-scoped to leaves after derivability honestly checked; NO-LEG census = 4) + LIFT PE5: 0C/5G all in r4's own text — r5 = MINIMAL five one-liners — 2026-08-06
+
+**JB r4 (ae0acdf, note-only, 372+/47−) — ADJUDICATED: COMPLETE.** F-4:
+derivability checked FIRST (L-LINE(iv) reduced-only; LED-Λ's face is
+definitional; the print-valuation route recorded NOT TAKEN — new uncited
+anchor + degenerates at interior P_t = 1, in-roster at T3E), then
+RE-SCOPED to R-leaves at every surface; jb_line already keyed leaves;
+nothing downstream moves. NO-LEG census corrected: FOUR (rows 4/5/12/22;
+13/18 adjudicated OUT with displayed reason; both u ≥ 0 riders have a
+NONE half). F-1/3/5/6/7/8 fixed (F-5: the applied instance NOT-SAMPLED on
+52/56 scored rows, disclosed + candidate leg named; F-8: lattice defined
+as 𝒲_m, dodging a pre-existing W_m collision the unit itself caught).
+**Arc: → PE4 0C+8G → r4; counter 0/2; JB-PE5 = next attempt.**
+
+**LIFT PE5 (report a5212e8) — 0C/5G, ALL in the r4 edits; counter 0/2.**
+F5-1 the new status block lists PROP under PROVED (its own F4-4 declared
+the census unmade); F5-2 a false parenthetical (ψ₁/K₂ DO enter S4.2 as
+read data — only the ASSERTS are unconsumed); F5-3 the c′→c^{Φ′} renaming
+missed 2 sites (one sealed → correction-of-record extension owed, one
+live); F5-4 the cite repair itself miscited S9 for S7 (transcribed from
+PE4's header); F5-5 a false pointer. CLEAN ON: the archive byte-verified,
+provenance verified, ILNRES quotes verbatim, and vein (e) — TAIL-STAB's
+read-kill close, never touched by four passes, re-derived from scratch
+SOUND. Machine legs all reproduce; the K2 probe independently confirmed
+both asserts inert. **ARC DYNAMICS DIAGNOSED: each repair round
+introduces ~5 defects in its own new prose; convergence requires a
+ZERO-NEW-DEFECT round ⟹ r5 = MINIMAL (five one-line fixes, nothing else,
+no restructuring). PE6 = next attempt. The master-transport note's
+one-perimeter fence is the structural cure for this class going
+forward.**
