@@ -59,9 +59,10 @@ counter 0/2, TWO hostile passes RUN and TWO repair rounds applied.**
 A repair round is NOT a pass, so the counter stays **0/2**. No gate fires, none
 retires; no `.lean` touched; no density/menu/count statement anywhere.
 
-**[r3] S-STATUS (CURRENT; supersedes the [r2] status block above): attempt
-grade, acceptance counter 0/2, THREE hostile passes RUN and THREE repair
-rounds applied.**
+**[r3] S-STATUS (SUPERSEDED at r4 by the block below; kept annotated rather
+than struck because of the embedded ARC display; supersedes the [r2] status
+block above): attempt grade, acceptance counter 0/2, THREE hostile passes RUN
+and THREE repair rounds applied.**
 
     ARC:  composed (seal 6ad01d1 -> verdict 8f07904)
       ->  JC-PE1  (GRTJC_passPE1_report.md, 1a27be3)   2 CRITICAL + 8 gaps
@@ -81,6 +82,77 @@ rounds applied.**
 
 A repair round is NOT a pass, so the counter stays **0/2**. No gate fires, none
 retires; no `.lean` touched; no density/menu/count statement anywhere.
+
+**[r4] S-STATUS (CURRENT; supersedes the [r3] status block above): attempt
+grade, acceptance counter 0/2, FOUR hostile passes RUN and FOUR repair rounds
+applied.**
+
+    ARC:  composed (seal 6ad01d1 -> verdict 8f07904)
+      ->  JC-PE1  (GRTJC_passPE1_report.md, 1a27be3)   2 CRITICAL + 8 gaps
+      ->  r1      STRUCTURAL repair (85d5811/54904cc; mini-seal f45b63c/66263ce)
+      ->  JC-PE2  (GRTJC_passPE2_report.md, 4a76d52)   0 CRITICAL + 9 gaps
+      ->  r2      LABELLING + FOOTPRINT + one new machine leg
+                  (5742e25; mini-seal 79611a4/db12666)
+      ->  JC-PE3  (GRTJC_passPE3_report.md, e4b6fbf)   0 CRITICAL + 8 gaps
+      ->  r3      NOTE-ONLY: re-route + disclosure + record corrections
+                  (126c33f)
+      ->  JC-PE4  (GRTJC_passPE4_report.md, d5072b6)   0 CRITICAL + 4 gaps
+                  — "the r3 diff itself is sound and every machine-checkable
+                    figure it added is exact"; all four gaps sit in what r3
+                    left untouched
+      ->  r4      THIS round: NOTE-ONLY (the FINAL alias sweep: §0's stack
+                  display + §0's (c) content line; §10.1's arc brought
+                  forward; JC-LOAD's two constant displays re-tiered —
+                  all three batteries, the instrument, and every artifact
+                  stay BYTE-FROZEN)
+      ->  JC-PE5  = the next acceptance attempt (a fresh hostile pass on THIS
+                    post-r4 text)
+
+A repair round is NOT a pass, so the counter stays **0/2**. No gate fires, none
+retires; no `.lean` touched; no density/menu/count statement anywhere.
+
+**[REPAIR ROUND r4 — 2026-08-08 campaign (wallclock 2026-08-06). NOTE-ONLY.**
+Applied against JC-PE4 (`GRTJC_passPE4_report.md`, commit `d5072b6`: **0
+CRITICAL + 4 gaps**, all in what r3 left untouched — PE4 re-derived the r3
+re-route at both §2.8 sites, reproduced the r3 alias census EXACTLY
+(90 = 23/25/42, bucket for bucket), verified every r3-added figure
+machine-exact, and re-ran all three batteries + the instrument byte-identically
+at exit 0). No measured quantity moves at r4; nothing in `verification/` is
+touched. Dispositions, each edit carrying an `[r4, G-#]` bracket keyed to
+PE4's gap numbers:
+
+* **G-1 (the FOURTH alias — the species ended the census way)** — §0's "THE
+  STACK, ONE LINE" still cited the re-routed input as "FGMN (c)(d)(e) CITED":
+  a live conditionality display under a fourth alias matching NONE of the
+  swept names, un-superseded since r0. (c) is STRUCK from that display, with
+  the bracket saying what is true (its content is consumed in this note only
+  as (DMULT-w) via JC-LOC, on B — §10.2's [r1]/[r2] stacks are the current
+  form). And the sweep protocol is widened one final time, to the UNION
+  pattern over every name the input has ever carried in this note —
+  `(IN-3) | Thm 4.2 | Theorem 4.2 | FGMN | 4.8 | Cor 2.7 | (COORD) | (MULT)`
+  (the last two excluding `-B` forms) — with the complete census recorded in
+  §9.5 [r4, G-1] and, the PE4 upgrade, every LIVE hit audited **by content**
+  (what the line SAYS), not only by name.
+* **G-2** — §10.1's grade box still ended its arc "→ JC-PE3 next" at HEAD
+  (r3 broke the note's own convention of extending that arc, leaving two
+  contradictory arc displays). The arc is brought forward through
+  JC-PE3 → r3 → JC-PE4 (0 CRITICAL + 4 gaps) → r4 → "JC-PE5 next", and the
+  missing convention lines "[r3] Grade deltas: NONE" and "[r4] Grade deltas:
+  NONE" are added.
+* **G-3** — JC-LOAD's re-routed proof body retained two EXACT-TIER constant
+  displays ("the constant 𝑅(X_N)") under its newly declared citable-tier
+  fence. Re-worded to the (DMULT-w)-tier truth PE4 §A1 verified: the
+  multiplier is the anchor coboundary a_{λ+N}/(a_λa_N), λ := γ+γ′ (the
+  in-note κ = 1 pinning; = 𝑅(X_N) = 1 exactly when ω(λ,N) ≡ 1, i.e. on
+  (DMULT-s), the MEASURED tier), and the iff conclusion is unaffected — the
+  same constant appears on both sides (both are the line pair (γ+γ′, N), and
+  ω(λ,μ) = c_{λ+μ}/(c_λc_μ) is symmetric), so it cancels exactly.
+* **G-4** — §0's (c) CONTENT line (the display PE1's CRITICAL 1 quoted;
+  invisible to every name-pattern census because its `[Thm 4.2]` tag sits on
+  the adjacent line) is annotated in place with the re-route pointer every
+  other formerly-misaimed display already carries, and §9.5's protocol now
+  DISCLOSES that the census is NAME-pattern-based (content lines without
+  name tags are outside its resolution).
 
 **[REPAIR ROUND r3 — 2026-08-08 campaign (wallclock 2026-08-06). NOTE-ONLY.**
 Applied against JC-PE3 (0 CRITICAL + 8 gaps, all labelling/disclosure/record:
@@ -314,7 +386,17 @@ isomorphism F_r[y] → Δ) … ord_y-additivity from s(gh) = s(g) + s(h), Cor 2.
     (a) w = w_{m+1} is multiplicative: w(fg) = w(f) + w(g);
     (b) gr(w) is a DOMAIN, and in(fg) = in(f)·in(g);
     (c) gr_γ(w) is FREE OF RANK ONE over Δ ≅ K_m[y] on the anchor basis
-        in(φ_γ) at attained γ  [Thm 4.2];
+        in(φ_γ) at attained γ  [Thm 4.2]
+        [r4, G-4 — CONTENT-LINE ANNOTATION (this clause's first line carries
+        no swept name — its tag sits on the line above — so it is invisible
+        to §9.5's NAME-pattern census; PE1's CRITICAL 1 quoted exactly this
+        display): the freeness displayed here is FGMN's statement about
+        FGMN's OWN object, gr = gr_K(w) on K[x] (the §S6a quotation above);
+        on THIS note's gr(w) — §1's O[x] object — the transported claim is
+        REFUTED (PE1 CRITICAL 1; §2.10 [r1, F1]). This note consumes the
+        clause ONLY through JC-LOC, as (DMULT-w) on B ≅ gr_{K[x]}(w)
+        (§2.10, JC-BOX-3 [r1]) — the same re-route pointer every other
+        formerly-misaimed display carries.];
     (d) evaluation y ↦ z̄ is an isomorphism K_m[y]/(ψ_m) ≅ K_{m+1}
         [Thm 4.8 / Cor 4.9];
     (e) the minimal on-line Φ_m-abscissa is additive: s(fg) = s(f)+s(g)
@@ -342,7 +424,15 @@ g_j ≥ 1), the split/anchor conventions (S0.2), REALIZE-(m) with its R1/R2/R3 l
 definition, not claim.
 
 **THE STACK, ONE LINE.** Every clause of §§2–5 rides
-`[ILN]† ACCEPTED (scored stratum) + GRB/CARRY-1 ACCEPTED-conditional (§0 ladder) + FGMN (c)(d)(e) CITED + W-1/W-2/J-A/J-B ATTEMPT (0/2)`,
+`[ILN]† ACCEPTED (scored stratum) + GRB/CARRY-1 ACCEPTED-conditional (§0 ladder) + FGMN ~~(c)~~(d)(e) CITED + W-1/W-2/J-A/J-B ATTEMPT (0/2)`,
+**[r4, G-1 — (c) STRUCK from this display. This r0 one-liner was the
+PE1-refuted input's FOURTH alias, live here since r0 and outside every earlier
+sweep pattern (none of `(IN-3)`, `Thm 4.2`, `(COORD)`, `(MULT)` occurs on it).
+What is true, and what the current stacks (§10.2 [r1]/[r2], which supersede
+this display) say: clause (c)'s content is consumed in this note ONLY as
+(DMULT-w) via JC-LOC, on B ≅ gr_{K[x]}(w) — never on gr_{O[x]} — with the
+(DMULT-w)/(DMULT-s) tier split of [r2, G-1]; clauses (d)(e) remain unchanged
+citations. Final census: §9.5 [r4, G-1].]**
 and this note's own arc starts at **0/2**. Nothing here may be consumed at proof
 grade before its hostile arc.
 
@@ -630,11 +720,23 @@ scalar exists on every pair except those with δ = 1 ∧ g_m = 1, where the
 alias-blind); the step actually used is the offset-transport LEMMA §4.2 =
 (MULT-B)|gr at δ = 0, which rides (DMULT-w), not (IN-3)(c)-on-gr. Re-routed:
 by §4.2]** and
-JC-SCAL(b), multiplies the digit polynomial by the constant 𝑅(X_N) without
+JC-SCAL(b), multiplies the digit polynomial by ~~the constant 𝑅(X_N)~~ **a
+K_m^*-constant b_× [r4, G-3 — "the constant 𝑅(X_N)" was an EXACT-TIER value
+inside a proof whose fence declares the citable tier. On (MULT-B)|gr riding
+(DMULT-w) — the declared footprint — the multiplier is the anchor coboundary
+b_× := a_{λ+N}/(a_λa_N), λ := γ+γ′ (the in-note κ = 1 pinning, (COORD-B)(2)
+[r2, G-1], gives A(λ,N) = 1 here via JC-PER + JC-PIINV); b_× equals the r0
+display's 𝑅(X_N) (= 1, §4.1) exactly when ω(λ,N) ≡ 1, i.e. on (DMULT-s), the
+MEASURED tier]** without
 changing its y-degree (offset transport, §4.2; note s_{NR}(N) = 0 so
 δ(γ+γ′,N) = 0). So by JC-SPAN the LHS has digit polynomial
-𝑅(X_N)·u·y^δ, of exact y-degree δ; by JC-SCAL(a)(c) the RHS ranges exactly over
-𝑅(X_N)·{polynomials of degree < g_m} as c ranges over K^*. Since K_m[y] is a
+~~𝑅(X_N)~~**b_×**·u·y^δ, of exact y-degree δ; by JC-SCAL(a)(c) the RHS ranges exactly over
+~~𝑅(X_N)~~**b_×**·{polynomials of degree < g_m} as c ranges over K^*
+**[r4, G-3 — b_× is the SAME constant on both sides: both applications are at
+the line pair (γ+γ′, N), and ω(λ,μ) = c_{λ+μ}/(c_λc_μ) is symmetric, so the
+two units are literally equal and cancel exactly (a unit constant scales
+{nonzero polynomials of degree < g_m} bijectively) — the iff below is
+tier-blind. PE4 §A1 verified this; transcribed]**. Since K_m[y] is a
 polynomial ring, u y^δ (u ≠ 0) equals a polynomial of degree < g_m iff δ < g_m.
 For (a): after TC-3 the class of y^δ is z̄^δ, and by §3.2 the value of the
 constant is c_T = z̄^δ·u; the pre-TC-3 object y^δ is not in the K_m-span of
@@ -2152,7 +2254,9 @@ input surviving under its ALIAS — JC-LOAD's proof body and honest fence
 used, at δ = 0 — struck-and-bracketed, never silently deleted. The r3
 protocol: grep for EVERY name the refuted input ever carried in this note —
 `(IN-3)`, `Thm 4.2` (and the spelled-out variant, which returns 0 hits
-anywhere in this note), and
+anywhere in this note **[r4 — true at the r3 commit; at r4 close the
+spelled-out variant appears exactly on the r4 sweep-protocol's own pattern
+displays, RECORD lines by construction — §9.5 [r4, G-1] below]**), and
 `(COORD)`/`(MULT)` (excluding `-B` forms, as before) — and classify every
 hit-line as LIVE (consuming), STRUCK (inside a strike or strike-and-replace
 bracket), or RECORD (repair-history headers, grade-box and stack histories,
@@ -2172,6 +2276,105 @@ JC-BOX-3 [r1] items 1–2, §10.2's r1 stack) — and **ZERO live hits name
 the refuted input is at fixed point under its aliases, not only under its
 post-repair names.]**
 
+**[r4, G-1 — THE FINAL ALIAS SWEEP (the species ended the census way: ONE
+union pattern over every name the input has EVER carried in this note, and
+the LIVE bucket audited BY CONTENT, not only by name).** PE4 found the r3
+census's own headline true of its pattern but not of the input's alias set:
+§0's "THE STACK, ONE LINE" still cited the input as "FGMN (c)(d)(e) CITED" —
+a FOURTH alias, live since r0, matching none of the r3-swept names — and §0's
+clause-(c) CONTENT line (the display PE1's CRITICAL 1 quoted) carried no
+annotation while being structurally invisible to any name grep (its tag sits
+on the adjacent line). r4 struck (c) from the stack display [r4, G-1 at §0],
+annotated the content line [r4, G-4 at §0], and ran the FINAL sweep. The
+pattern is the union
+
+    (IN-3) | Thm 4.2 | Theorem 4.2 | FGMN | 4.8 | Cor 2.7 | (COORD) | (MULT)
+
+(the last two excluding `-B` forms, as always; the two names added only for
+completeness — the spelled-out variant of the theorem number and the bare
+numeral — contribute no hit-lines of their own: every line containing either
+also carries another swept name, and all such lines are the sweep-protocol
+displays and this census's own itemization, RECORD by construction; before r4
+the spelled-out variant returned 0 hits anywhere in the note, as the [r3]
+block above records, true at ITS commit). **Census at
+r4 close, grep executed AT THE COMMITTING STATE (the [r3, G-2] lesson): 144
+hit-lines = 42 LIVE + 28 STRUCK + 74 RECORD.** RECORD: the r1/r2/r3/r4
+repair-history headers 13; the §0 [r4] brackets 3; the W-6 grade-box (r0 +
+[r1] grade lines + the [r2, G-7] bracket) 3; §2.10's REPLACES-headers and
+repair narratives 6; the JC-BOX-3 [r1] verdict narrative 2; the PE1-consumers
+verdict row 1; R1-BND's two rows; the §10 grade-box/stack histories 4; the
+§9.5 sweep records themselves (the r2 + r3 blocks and THIS block) 40.
+Borderline conventions, disclosed and fixed here: strike-and-replace bracket
+INTERIORS that re-name the struck form count STRUCK when they sit inside the
+superseding bracket of the strike itself (the §2.8 [r3, G-1] interior) and
+RECORD when they only quote the struck wording ([r2, G-4]-genre quotation
+brackets); §10.1's W-8 row, whose only hits sit inside `~~…~~`, counts
+STRUCK. Neither choice moves the LIVE set (PE4's audit remark, adopted as
+convention).
+
+**THE LIVE BUCKET, AUDITED BY CONTENT (all 42 — what each line SAYS, checked
+against the current footprint, not just its tag):**
+
+1. **§0's (IN-3) declaration block, 8** — the package header and W-1
+   transport clause; the §S6a pinned quotation (two lines: domain,
+   evaluation isomorphism, abscissa additivity — all statements about
+   gr_K/Δ, FGMN's own objects); the clause tag-lines ((c)'s `[Thm 4.2]` tag,
+   whose clause content now carries the [r4, G-4] annotation; (d)'s
+   `[Thm 4.8 / Cor 4.9]`; (e)'s `[Cor 2.7]`); the arbitrary-order scope
+   sentence (with the numbering-precision flag); and the stack one-liner,
+   now citing FGMN (d)(e) with (c) STRUCK and re-pointed [r4, G-1]. VALID —
+   these are the input's declaration lines, stating FGMN's theorems about
+   FGMN's objects.
+2. **JC-DOM, 3** — consumes (a) (w multiplicative) and (b) (in(fg) =
+   in(f)in(g), gr a domain) for the domain and w(π) = E arguments. VALID
+   ((a)/(b) were never refuted; PE1 §C1 and PE4 §A5 both re-derived).
+3. **JC-SPAN, 1** — (e)/Cor 2.7 abscissa additivity, within its hypotheses.
+   VALID (PE1 §C2 concurs).
+4. **JC-LOC + its [r2, G-6] derivation, 8** — "B *is* the object FGMN's
+   theorems speak about" (title, licensing sentence, and the G6-2
+   min-formula identification), with (a)/(b) consumed inside the proofs, and
+   the "(IN-3)'s W-1 transport clause, already priced" closing line. VALID —
+   the identification is PROVED in-note; the FGMN mentions point AT the
+   correct object (gr_K), which is the theorem's content.
+5. **The (DMULT) gloss + (DMULT-w) derivation + tier status, 5** — "via
+   JC-LOC it is the content of (IN-3)(c) on the object (IN-3)(c) is about";
+   the transport clause 𝑅 = c·R^{GMN} priced at a line-wise unit; TR-3′-GEN
+   quoted as OPEN with per-argument units. VALID — this is the re-routed
+   consumption itself, tier-split honest.
+6. **(MULT-B) + its |gr display, 2** — consume (b) only. VALID.
+7. **§3.4 title + proof, 3** — the rank-one freeness "applied — after JC-LOC
+   — to the object Thm 4.2 is about". VALID (the [r1] re-aim, PE2-verified).
+8. **§2.10's dependency-order list, 1** — "FGMN (b)(e) + (DMULT), (c) enters
+   only through (DMULT), on B". VALID.
+9. **§4.3, 2** — (d)'s evaluation isomorphism for TC-3's identification
+   Δ/(ψ_m) ≅ K_{m+1}. VALID ((d) unchanged, consumed on Δ — the B_0 object).
+10. **JC-BOX-3 [r1] items 1–3, 6** — "only on B … never on gr_{O[x]}"; Thm
+    4.8/Cor 4.9 + Cor 2.7 unchanged citations; the citation-precision Codex
+    leg (numbering still not re-verified against a printed source — OWED,
+    unchanged); standard Montes/FGMN multiplicativity; W-1 transport of w
+    and 𝑅. VALID — the box that fences this input, stating the fence.
+11. **JC-BOX-4 [r1], 1** — the corner closed on (DMULT-w), "OPEN for one who
+    wants it independent of the FGMN input". VALID (a fence, not a claim).
+12. **§10.2's [r1] stack one-liner + [r2] tier-split narrative, 2** —
+    "(DMULT) on B [= FGMN Thm 4.2's content via JC-LOC]"; the (DMULT-w)/
+    (DMULT-s) division. VALID — the current stack, which §0's display now
+    points to.
+
+**The verified fixed point, at the union pattern and by content: ZERO live
+hits state (IN-3)(c)-on-gr, (COORD), (MULT), the Thm-4.2-on-gr_{O[x]}
+transport, or the bare "FGMN (c)" stack alias.** Every live hit either
+declares the package (group 1), consumes a never-refuted clause within its
+hypotheses (groups 2, 3, 6, 9), states or consumes the JC-LOC re-route and
+its tier split (groups 4, 5, 7, 8, 12), or fences the input (groups 10, 11).
+
+**DISCLOSED PROTOCOL LIMIT [r4, G-4]: this census counts hit-LINES by NAME.**
+A content line whose name-tag sits on an adjacent line is outside its
+resolution — §0's clause-(c) display was exactly such a line, and is now
+annotated in place [r4, G-4]. The limit was discharged this round by a
+read-through of §0's input block, the only place the package's clauses are
+DISPLAYED as propositions rather than consumed by name; the census cannot
+certify the absence of further such lines by grep, and says so.]**
+
 ---
 
 ## §10. GRADE BOX, THE CONDITIONALITY STACK, AND CONSUMERS
@@ -2180,14 +2383,29 @@ post-repair names.]**
 
 **[r1] GRADE BOX, POST-REPAIR (read this first; the r0 table below stands except
 where this block supersedes it).** ~~Arc: **composed (0/2) → JC-PE1: 2 CRITICAL +
-8 gaps → r1 (this round, STRUCTURAL) → JC-PE2 next**.~~ **[r2] Arc: composed
+8 gaps → r1 (this round, STRUCTURAL) → JC-PE2 next**.~~ ~~**[r2] Arc: composed
 (0/2) → JC-PE1 (2 CRITICAL + 8 gaps) → r1 (STRUCTURAL) → JC-PE2 (0 CRITICAL +
 9 gaps; "no false statement") → r2 (labelling/footprint/disclosure + the
-bilinearity machine leg, §9.4) → JC-PE3 next.** Acceptance counter
+bilinearity machine leg, §9.4) → JC-PE3 next.**~~ **[r4, G-2 — PE4: r3 did not
+extend this arc record (the note's own per-round convention, set when r2
+struck r1's arc line here), leaving two contradictory arc displays at HEAD —
+the header's current one and this box's stale "JC-PE3 next". Extended: Arc:
+composed (0/2) → JC-PE1 (2 CRITICAL + 8 gaps) → r1 (STRUCTURAL) → JC-PE2
+(0 CRITICAL + 9 gaps; "no false statement") → r2 (labelling/footprint/
+disclosure + the bilinearity machine leg, §9.4) → JC-PE3 (0 CRITICAL + 8 gaps;
+all labelling/disclosure/record defects) → r3 (NOTE-ONLY: re-route +
+disclosure + record corrections) → JC-PE4 (0 CRITICAL + 4 gaps; all in what
+r3 left untouched) → r4 (NOTE-ONLY: the final alias sweep + arc and tier
+bookkeeping, this round) → JC-PE5 next.]** Acceptance counter
 **0/2** (a repair round is not a pass). **[r2] Grade deltas at r2: NONE — the
 one status that MOVES is (DMULT)'s label (its exact tier from "CITED" to
 MEASURED, §2.10 [r2, G-1]), which downgrades no clause grade but re-fences
-JC-COB's sharp form onto the measured tier.**
+JC-COB's sharp form onto the measured tier.** **[r3] Grade deltas: NONE
+[r4, G-2 — convention line supplied at r4: r3 moved no grade and no measured
+quantity (recorded at r3 only in the header; a reader of §10.1 alone could
+not see it)].** **[r4] Grade deltas: NONE — r4 moves no grade and no measured
+quantity (note-only; the three batteries, the instrument, and every artifact
+stay BYTE-FROZEN).**
 
 | clause | r0 grade | r1 grade | what changed |
 |---|---|---|---|
