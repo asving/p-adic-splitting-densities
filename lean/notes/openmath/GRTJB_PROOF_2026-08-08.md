@@ -18,7 +18,7 @@ block below). No gate fires; no acceptance arc is open. A repair round is NOT
 a pass, so the counter stays 0/2, and JB-PE3 — a fresh hostile pass on THIS
 post-r2 text — is the next acceptance attempt.**~~
 
-**[r3] S-STATUS (CURRENT, supersedes both struck lines): attempt grade,
+~~**[r3] S-STATUS (CURRENT, supersedes both struck lines): attempt grade,
 acceptance counter 0/2 (ZERO clean passes), THREE hostile passes RUN and
 THREE repair rounds applied. Arc: JB-PE1 (85a8dc9 — 1 CRITICAL + 9 gaps, NOT
 CLEAN) → r1 (4c97649, 46f9452) → JB-PE2 (`GRTJB_passPE2_report.md` — 0
@@ -30,7 +30,30 @@ gate fires; no acceptance arc is open. A repair round is NOT a pass, so the
 counter stays 0/2, and JB-PE4 — a fresh hostile pass on THIS post-r3 text —
 is the next acceptance attempt. All four machine instruments are BYTE-FROZEN
 in r3 (md5s in the front-matter blocks; r3 is note-only, no script and no
-artifact is touched).**
+artifact is touched).**~~
+
+**[r4] S-STATUS (CURRENT, supersedes the three struck lines): attempt grade,
+acceptance counter 0/2 (ZERO clean passes), FOUR hostile passes RUN and FOUR
+repair rounds applied. Arc: JB-PE1 (85a8dc9 — 1 CRITICAL + 9 gaps, NOT CLEAN)
+→ r1 (4c97649, 46f9452) → JB-PE2 (0 CRITICAL + 7 gaps) → r2 (67bf0c4,
+888e293) → JB-PE3 (2fd271e — 0 CRITICAL + 8 gaps; the FIRST acceptance
+attempt, did not land) → r3 (8acb2d1, 87c553d — the §0M matrix + 14 surfaces)
+→ JB-PE4 (`GRTJB_passPE4_report.md`, commit 38c4754 — 0 CRITICAL + 8 gaps,
+NOT CLEAN; the SECOND acceptance attempt, did not land. All eight PE3
+findings verified discharged and NO fifth instance of the old
+surface-divergence class found — the matrix mechanism HELD; four of the eight
+new findings are defects of §0M's own precision, and the substantive one,
+F-4, is a scope defect in §4(iii)) → r4 (this round, block below:
+matrix-precision repairs F-1/F-2/F-3/F-5/F-7, the §4(iii) LINE-LAW RE-SCOPE
+F-4, the §7.3 superseded-region termination F-6, and the level-m weight
+lattice DEFINED F-8; per JB-BOX-6's standing rule the MATRIX was edited FIRST
+and every touched surface re-derived from it). No gate fires; no acceptance
+arc is open. A repair round is NOT a pass, so the counter stays 0/2, and
+JB-PE5 — a fresh hostile pass on THIS post-r4 text — is the next acceptance
+attempt. All four machine instruments remain BYTE-FROZEN in r4 (md5s
+re-verified 2026-08-06 and `git diff verification/` empty; r4 is note-only —
+its two supporting probes ran read-only to /tmp and are transcribed where
+cited).**
 
 ## §0M. **[r3] THE CONDITIONALITY MATRIX — the single surface every grade statement in this note is generated from**
 
@@ -59,9 +82,19 @@ of the round.]**
 
   **(a2) BYTE-EQUAL CHAIN THROUGH q, `P≤q`** — §1's first name: Φ_j^har =
   φ_{j+1}^cls for every j ≤ q. Equivalently: **J-A's perimeter instantiated at
-  level m = q+1.** STRICTLY STRONGER than `P<q`; the two differ exactly at the
+  level m = q+1.** STRICTLY STRONGER than `P<q`; ~~the two differ exactly at the
   top level q = qcap = shared_upto+1, where `P<q` holds and `P≤q` FAILS by the
-  definition of shared_upto. Consumers: JB-DEV(ii)'s byte clause **and — [r3,
+  definition of shared_upto.~~ **[r4, F-3 — the struck arithmetic is FALSE on 11
+  of the note's own 16 roster towers: qcap := min(n, shared_upto+1), so
+  qcap = shared_upto+1 only when shared_upto < n. THE TRUE STATEMENT: as
+  conditions at a fixed level q the two differ exactly at j = q; as fences over
+  the level range 0 ≤ q ≤ qcap, the exclusion BITES ONLY WHEN shared_upto < n —
+  there qcap = shared_upto+1 and `P<q` holds while `P≤q` fails at q = qcap
+  (5 roster towers: T3A, T3C, T3D, T3E, I4C); when qcap = n ≤ shared_upto the
+  two fences COINCIDE on the whole range and (RES) is excluded at NO level
+  (the other 11: T2A–T2G, T3B, T3F, I4A, I4B). Read off the runner's own
+  `qcap_of`/`shared_upto` by a read-only probe, 2026-08-06; every regenerated
+  site now carries this statement or points here.]** Consumers: JB-DEV(ii)'s byte clause **and — [r3,
   F-4, NEW — JB-DEV(iii)'s (RES) layer**, which is JA-RES at read level
   m = q+1 and therefore needs J-A's perimeter at m, i.e. through j = q. (This
   corrects §1's r2 sentence "no statement cites §1 for the through-q condition
@@ -120,7 +153,7 @@ consumed / free).**
 | 2 | **JB-DEV(ii)** byte clause, §2(ii) | — | **YES — this IS its hypothesis** | — | — | — (W-2 clause 2, not clause 1) | — | **IND** `jb_keyeq` byte census, 25 rows (3 VACUOUS: T.n = 0, r1/G-3) | TH-BASE gives q = 1 always; W-2 (C-coll)/recursion split |
 | 3 | **JB-DEV(iii)(VAL)**, §2(iii) | **YES** | — | — | — | YES\* (via row 1) | — | **IND** cross-engine `G.vgen(q+1,A)` vs `T.wlev(q,A)` inside `jb_dev`, over 0 ≤ q ≤ qcap | — |
 | 4 | **JB-DEV(iii)(GRID)**, §2(iii) | **YES** | — | **YES — UNDISCHARGED** | — | YES\* | — | carry half **IND** (`jb_eps` keys JA-GRID(c)); grid/attained-abscissa half **NONE** | W2-L0 consumed |
-| 5 | **JB-DEV(iii)(RES)**, §2(iii) | insufficient — see (a2) | **YES [r3, F-4]** | — | — ⟨n4⟩ | YES\* | — | **NONE** — no family keys (RES) anywhere ⟨n4⟩ | JA-RES's OWN fence: unconditional at m = q+1 = 2, per-digit proviso at m ≥ 3 (JA-BOX-2) |
+| 5 | **JB-DEV(iii)(RES)**, §2(iii) | insufficient — see (a2) | **YES [r3, F-4]** | — | at m = q+1 ≥ 3: **(VD-(m−1)) at EVERY ON-LINE DIGIT** — JA-RES's per-digit proviso IS the evaluated dictionary ONE level down **[r4, F-1]** ⟨n4⟩ | YES\* | — | **NONE** — no family keys (RES) anywhere ⟨n4⟩ | JA-RES's OWN fence: unconditional at m = q+1 = 2, per-digit proviso at m ≥ 3 (JA-BOX-2) |
 | 6 | **JB-DEV(iv)** cross-key fence, §2(iv) | — | — | — | — | — | — | **NONE** (a displayed fence: nothing to key) | J-A §4(i) cited; W-2 clause 2/3 the only lawful transport |
 | 7 | **LEMMA JB-AFF**, §3 | — | — | — | — | — | — | **NONE** as a lemma — its content is exercised inside rows 9/10 | unconditional, two lines |
 | 8 | **JB-VTX(a)** pointwise shear | **YES** | — | — | — | **YES** | — | **IND** print ordinates (`G.vgen`/`G.vkey`) vs harness ordinates (`T.wlev`/`T.gam`), 893 | second half cites print `propertiesv` item 3 |
@@ -132,14 +165,14 @@ consumed / free).**
 | 14 | **JB-ID** — (ID-(i+1)) as the key's own development, §4(ii) 1st sentence | — | — | — | — | — | **YES** S2.2 (ID-(i+1)); P_i := e_i·g_i from S0.1 **[r3, F-7]** | **IND** `jb_id`: identity + digit list by fresh arithmetic, plus a genuinely print-side leg on the print chain's OWN keys | — |
 | 15 | **JB-TREE(i)** tree = the classifier's division | — | — | — | — | **YES** (representative reading; W2-C3 chamber off the byte perimeter) | **YES** T-TERM, L-EXACT, L-CANON (L-CANON needs deg Ĉ_m < deg Φ_m — restored, r3/F-5) | **IND** fresh tree walk vs `fresh_divmod`; **+ IND** post-seal walker leg A (84 print-keyed walks) · **+ SAME** sub-leg ⟨n2⟩ · 8 chamber walks **NONE** | T-scope(m), g_m = 1 |
 | 16 | **JB-TREE(ii)** each edge = one division step | — | — | — | — | — | **YES** S2.2 + L-NORM splits + L-CELL | **IND** `jb_id` digit list + `jb_tree`'s L-NORM exactness/reducedness assertions | — |
-| 17 | **JB-TREE(iii)** λ_E face = the polygon bookkeeping | **YES** | — | — | — | YES\* | **YES** L-LINE(iv), S3.2 | **IND** `jb_line`: λ_E quanta recomputed FRESH per edge + leaf line == wlev == vgen (the vgen half gated on qcap ≥ m) | **LED-Λ at ATTEMPT grade — the tie's grade rides it** |
+| 17 | **JB-TREE(iii)** λ_E face = the polygon bookkeeping **of the LINE functional per edge; v_{m+1} read off at the R-LEAVES only [r4, F-4]** | **YES** | — | — | — | YES\* | **YES** L-LINE(i)–(iii) per edge (Δline laws, every edge); L-LINE(iv) **REDUCED CELLS ONLY** = the R-leaves **[r4, F-4]**; S3.2 | **IND** `jb_line`: λ_E quanta recomputed FRESH per edge **on line(·)** + **leaf** line == wlev == vgen (the vgen half gated on qcap ≥ m); NO v_{m+1} statement is keyed — or, as of r4, claimed — at any internal node **[r4, F-4]** | **LED-Λ at ATTEMPT grade — the tie's grade rides it** |
 | 18 | **JB-TREE(iv)** (RM-m) as the transported instance | **YES** | — | — | **YES for the (C-READ) leg** (it transports as §5) | YES\* | **YES** all four box clauses | (C-W_R) **IND** (`jb_cread`'s w_m(R) = λ+γ_{m+1} pin); (C-W_Q) **NONE**; (C-READ) **IND** on the scored stratum | T-scope(m), g_m = 1 |
 | 19 | **LEMMA JB-EPS**, §5 | — | — | — | — | — | JA-GRID(c) = (C-EPS) | **IND** `jb_eps`, 955: ℓ-FREE `s_geo` + fresh Bézout against the ℓ-form t_m, then the field form | **unconditional at every m ≥ 1** |
-| 20 | **JB-EPS APPLIED at (V,V′) = (λ, γ_{m+1})** (inside §5's display) | — | — | — | inherits row 21's context | — | **YES — the RESTORED clause w_m(Ĉ_m) = γ_{m+1} licenses the instance [r3, F-5]** | **IND** — the leg quantifies PLAIN integers 0 ≤ V,V′ < 25, a superset of the lattice instance | — |
+| 20 | **JB-EPS APPLIED at (V,V′) = (λ, γ_{m+1})** (inside §5's display) | — | — | — | inherits row 21's context | — | **YES — the RESTORED clause w_m(Ĉ_m) = γ_{m+1} licenses the instance [r3, F-5]** | ~~**IND** — the leg quantifies PLAIN integers 0 ≤ V,V′ < 25, a superset of the lattice instance~~ **[r4, F-5 — the struck cell misdescribed the code twice. `jb_eps` samples V from `range(0, min(3·e·h + 5, 25))` STEPPED `[::2]` (even V only) and V′ from the same range STEPPED `[::3]` (V′ ≡ 0 mod 3 only) — a SPOT-CHECK of the LEMMA, not a superset of anything. The applied instance: IN the sampled set on 4 of the 56 roster scored rows ONLY (T2A and T3D at m = 1, λ ∈ {0, 4}, γ_2 = 9 — read-only probe, 2026-08-06); NOT-SAMPLED on the other 52, including EVERY m ≥ 2 row (γ_{m+1} exceeds the range bound on all of them). Instance-keyed evidence: NONE on those 52; the license is the lemma's PROOF at the derived membership (column (e) + §5's display), never this leg. An instance-keyed leg is a CANDIDATE for a future instrument.]** | — |
 | 21 | **JB-CREAD** ρ_m(R) = c_m·ρ_m(f), v ≠ 0 | — for the STATEMENT (a legitimate conditional at any level) ⟨n5⟩ | — | — | **YES — the governing fence** | — (no representative claim in §5) | **YES** (C-READ), (C-W_R), the complete Ĉ_m clause list, L-CELL(i)/(ii) = (B-READ) | **IND** end-to-end cross-engine (print residuals via the sealed `GmnLeg`, harness division/reads via ITL, τ/ε′ fresh integers) on the SCORED stratum: 104 scored / 21 boundary disclosed · **+ IND** teeth MJB-CREAD (22) | v ≠ 0 stratum; g_m = 1; T-scope(m) |
 | 22 | **JB-CREAD, v = 0 branch** | — ⟨n5⟩ | — | — | **YES** ((VD-m) at f) | — | **YES** — (C-READ) gives the TARGET read only | **NONE — machine UNEXERCISED** (v = 0 census: 0 rows; disclosed in §7.1) | read-at-target (0 = 0) only; the ρ-form is NOT claimed |
 | 23 | **JB-BOX-1** blueprint carry placement | — | — | — | inherits row 21 | — | (C-READ) is the HARNESS-frame form | **IND** teeth MJB-CREAD — the carry-bearing reading must FAIL, and does, on all 22 designated samples over 14 towers | — |
-| 24 | **JB-BOX-2** the carrier box | records rows 3,4,5,8–13,17,18 | records row 5 | records rows 4,12 | records rows 21,22 | records rows 1,8–13,15 | — | n/a (record) | — |
+| 24 | **JB-BOX-2** the carrier box | records rows 3,4,8–13,17,18 **[r4, F-7 — row 5 dropped from this cell: its own (a1) is "insufficient", and surface 14 lists it under `P≤q` only]** | records rows 2,5 **[r4, F-7 — row 2 was omitted; surface 14 lists both]** | records rows 4,12 | records rows 18,21,22,23 **[r4, F-7 — synced with summary point (4); the box now carries row 18's (VD-m) rider]** | records rows 1,8–13,15 | — | n/a (record) | — |
 | 25 | **JB-BOX-3** cross-key fence | — | — | — | — | — | — | n/a (record) | no cross-representative operator or byte identity anywhere; SideReads/TreeModel consumed nowhere |
 | 26 | **JB-BOX-4** tree scope | — | — | — | — | — | **YES** ([RMG]'s fences inherited verbatim) | n/a (record) — the FRESH λ_E re-verification of row 17 is the decorrelation this box claims | T-scope(m), g_m = 1, W-WIN unconsumed, LED-Λ ATTEMPT |
 | 27 | **JB-BOX-5** instance perimeter | — | — | — | — | — | — | n/a (record) — **evidence caveat: F_p[[t]] rows have NO external (PARI) oracle leg** (JA-BOX-4 inherited) | the 16-tower roster + 5 QO shapes + 4 fresh d₀ ≥ 2 shapes |
@@ -187,10 +220,15 @@ m := q+1. J-A's perimeter is level-indexed — "Shared-key perimeter at level m:
 Φ_q = φ_{q+1} byte-for-byte for all q ≤ m−1" — so at m = q+1 it requires
 agreement for j ≤ q, i.e. `P≤q`, NOT `P<q`. r2 fenced all three layers of
 §2(iii) with `P<q`, which is correct for (VAL) (JA-VAL at level q) and one
-level short for (RES); the two differ exactly at q = qcap, where `P≤q` fails by
-definition. (RES) does NOT consume (VD-m) — it is the PER-SLOT law — but it
-carries JA-RES's own fence: unconditional at m = 2, per-digit proviso at m ≥ 3
-(JA-BOX-2). No machine leg can catch the mis-fencing because no family keys
+level short for (RES); ~~the two differ exactly at q = qcap, where `P≤q` fails by
+definition~~ **[r4, F-3 — corrected: the exclusion at q = qcap bites only when
+shared_upto < n (5 of the 16 roster towers); on the other 11 the two fences
+coincide over the whole level range — column (a2)]**. (RES) does NOT consume
+(VD-m) — it is the PER-SLOT law — **[r4, F-1 — at the row's OWN read level; at
+m = q+1 ≥ 3 its per-digit proviso IS (VD-(m−1)) at every on-line digit, an
+evaluated-dictionary hypothesis ONE level down, now recorded in column (c)]**
+but it carries JA-RES's own fence: unconditional at m = 2, per-digit proviso
+at m ≥ 3 (JA-BOX-2). No machine leg can catch the mis-fencing because no family keys
 (RES) at all. Nothing inside §3–§5 consumes (RES), so the note's internal chain
 is unaffected; what was over-supplied is JB-DEV(iii)'s (RES) layer as handed to
 a downstream unit through §7.3.
@@ -202,14 +240,35 @@ INSTRUMENT cuts reduction levels at `qcap_of(T,G)` before `jb_tree`/`jb_cread`,
 and the off-perimeter counter is **0** on the roster, so nothing was scored
 outside that cut.
 
-**What the matrix shows that no earlier surface stated.** (1) Three cells hold
+**What the matrix shows that no earlier surface stated.** ~~(1) Three cells hold
 an open proviso with NO machine leg beside it — rows 5 (RES), 12 (d4), 22
 (v = 0) — and one of them (row 12) is the u ≥ 0 rider; those three are the
-note's honest evidence frontier. (2) Exactly two rows consume `P≤q` (2 and 5),
+note's honest evidence frontier.~~ **[r4, F-2 — RECOUNTED under the sentence's
+own criterion; the struck count missed row 4 and its uniqueness claim was
+false. (1) FOUR cells hold an open proviso with NO machine leg beside it —
+rows 4 (the (GRID) grid/attained-abscissa half; its carry half is IND via
+`jb_eps`), 5 (RES), 12 (d4) and 22 (v = 0) — and TWO of them, rows 4 and 12,
+are the u ≥ 0 riders: BOTH riders have a NONE half. Those FOUR are the note's
+honest evidence frontier. ADJUDICATED AND EXCLUDED, with the reason stated:
+row 13 (JB-VTX(e)) and row 18's (C-W_Q) sub-cell are NO-LEG cells but carry no
+OPEN proviso — their conditionality is consumption at grade (W2-C1a for
+row 13; [RMG] ACCEPTED plus the m ≤ qcap perimeter for (C-W_Q)), not an
+undischarged hypothesis — so they stand as no-leg DISCLOSURES (named at the
+grade cap, §7.2 and here) outside the open-proviso frontier.]** (2) Exactly two
+rows consume `P≤q` (2 and 5),
 and only one of them was ever fenced that way. (3) Exactly two rows consume the
 u ≥ 0 proviso (4 and 12), and every surface must therefore name JB-VTX(d)'s
-grid content as well as JB-DEV(iii)(GRID). (4) The (VD-m) fence reaches exactly
-rows 18 (its (C-READ) leg), 21, 22 and 23 — nothing in §2–§4 rides it.
+grid content as well as JB-DEV(iii)(GRID). ~~(4) The (VD-m) fence reaches exactly
+rows 18 (its (C-READ) leg), 21, 22 and 23 — nothing in §2–§4 rides it.~~
+**[r4, F-1 — the struck sentence contradicted the table's own row 18 (a §4
+row: JB-TREE(iv)) four lines above it, and surfaces 4 and 6 say the opposite
+too. (4) The (VD-m) fence AT THE CLAIM'S OWN READ LEVEL reaches exactly rows
+18 (JB-TREE(iv)'s (C-READ) leg — a §4 row, riding §5's fence IN FULL), 21, 22
+and 23; nothing in §2–§3 rides the level-m dictionary, and §4 rides it exactly
+through that one leg. ONE LEVEL DOWN: at m = q+1 ≥ 3, row 5 ((RES)) rides
+(VD-(m−1)) at every on-line digit — JA-RES's per-digit proviso, an
+evaluated-dictionary hypothesis at level m−1 ≥ 2, recorded in column (c) as of
+r4.]**
 
 **Grade cap (read first) — [r3, STEP 2: SURFACE 1 of 14, REGENERATED FROM
 §0M's MATRIX.** Every fence below is a cell of that table; the table carries
@@ -228,7 +287,9 @@ contains r1/r2 strike markup, which cannot nest.**]**
   **(GRID)** on `P<q` **and** on JA-GRID(a)'s `[JA-r1]` u ≥ 0 proviso, which
   is CARRIED AND UNDISCHARGED (row 4; r2/G2-5, JB-BOX-2); **(RES)** on the
   **BYTE-EQUAL CHAIN THROUGH q** — `P≤q`, one level deeper than r2's fence,
-  because (RES) is JA-RES at read level m = q+1 (row 5, **[r3, F-4]**) — plus
+  because (RES) is JA-RES at read level m = q+1 (row 5, **[r3, F-4]**;
+  **[r4, F-3]** the deeper fence excludes a level only where shared_upto < n —
+  5 of the 16 roster towers, column (a2)) — plus
   JA-RES's own fence (unconditional at m = 2, per-digit proviso at m ≥ 3,
   JA-BOX-2 inherited); (RES) is NOT the evaluated dictionary (VD-m) (r1/F1's
   reading fence stands). **(iv)** a displayed fence, cited (row 6).
@@ -246,7 +307,9 @@ contains r1/r2 strike markup, which cannot nest.**]**
 * **JB-TREE (§4) — PROVED at attempt grade on [RMG]'s own scope** (T-scope(m)
   termination fence, g_m = 1 rows for the Ĉ_m instance), consuming [RMG] as
   ACCEPTED and LED-Λ at ATTEMPT grade (its λ_E face is cited as the polygon
-  bookkeeping — the grade rides). Clause-level: **(i)/(ii) are
+  bookkeeping — **[r4, F-4] as per-edge laws of the LINE functional, with the
+  identification line = w_m = v_{m+1} asserted at the R-LEAVES only (row 17)**
+  — the grade rides). Clause-level: **(i)/(ii) are
   PERIMETER-FREE** (rows 15–16); **(iii)/(iv) are asserted only at levels
   m ≤ qcap** (`P<q` read at level m), since they consume JA-VAL (rows 17–18) —
   **[r3, F-1B: this fence, which r2 added at §4 and §7.2 while certifying this
@@ -685,6 +748,111 @@ JB-PE2 0C+7G, JB-PE3 0C+8G), r1/r2/r3 applied, no gate fired, nothing consumed
 at proof grade; **JB-PE4 — a fresh hostile pass on this post-r3 text — is the
 next acceptance attempt.**]**
 
+**[REPAIR ROUND r4 — 2026-08-08 campaign (wallclock 2026-08-06).** Applied
+against **JB-PE4** (hostile pass, fresh context, read-only, fixes nothing;
+report `GRTJB_passPE4_report.md`, commit 38c4754: **0 CRITICAL + 8
+JUSTIFICATION GAPS, VERDICT NOT CLEAN** — the SECOND acceptance attempt, which
+did not land; ledger entry `BRIDGE_ADJUDICATIONS_2026-07-30.md`, "LIFT r4
+LANDED … + JB PE4: 0C/8G"). PE4 re-ran all FOUR machine instruments
+bit-identically (exit 0, all four md5s intact, `git diff verification/`
+empty), verified all eight PE3 findings genuinely discharged, byte-compared
+the (RM-m) recital against RMENGINE S0.2 (11/11 lines identical), counted the
+strike system balanced (48 spans), and found NO fifth instance of the old
+surface-divergence disease — **the r3 matrix mechanism held; the frontier
+moved into the matrix's OWN precision** (F-1/F-2/F-3/F-7 are defects of §0M
+itself) **plus one scope defect in body mathematics no earlier pass had dug
+(F-4)**. **r4 is NOTE-ONLY: all four scripts and every artifact byte-frozen
+(md5s re-verified this round). Per JB-BOX-6's standing rule, §0M was edited
+FIRST and every touched surface re-derived from it.** Two read-only probes
+(to /tmp, nothing committed, instruments untouched) support F-3 and F-5; their
+outputs are transcribed at the cells that cite them. Dispositions:
+
+* **F-1 (the matrix's summary contradicted its own row 18; row 5's (c) cell
+  understated JA-RES).** Summary point (4) REWRITTEN: the (VD-m) fence at the
+  claim's own read level reaches rows 18 (JB-TREE(iv)'s (C-READ) leg — a §4
+  row), 21, 22 and 23; the struck "nothing in §2–§4 rides it" was false
+  against the table's own row 18 and against surfaces 4 and 6, which say the
+  opposite. Second leg: row 5's column (c) now records that at m = q+1 ≥ 3
+  JA-RES's per-digit proviso IS (VD-(m−1)) at every on-line digit — an
+  evaluated-dictionary hypothesis one level down (⟨n4⟩ and the §2/§7.2/§7.3
+  surfaces amended to match).
+* **F-2 (the NO-LEG census undercounted).** RECOUNTED under the criterion's
+  own words: **FOUR** cells hold an open proviso with no machine leg — rows 4
+  (the (GRID) grid/attained-abscissa half), 5, 12, 22 — and BOTH u ≥ 0 riders
+  (rows 4 and 12) have a NONE half, so "one of them is the u ≥ 0 rider" was
+  false as a uniqueness claim. Rows 13 and 18's (C-W_Q) sub-cell were
+  ADJUDICATED AND EXCLUDED with the reason displayed: no-leg cells whose
+  conditionality is consumption at grade (W2-C1a; [RMG] ACCEPTED + the
+  m ≤ qcap perimeter), not an OPEN proviso — they stand as no-leg disclosures
+  outside the frontier.
+* **F-3 (the (RES) re-fence gloss false on 11 of 16 roster towers).** The
+  FENCE is source-correct and does not move; the arithmetic gloss
+  "q = qcap = shared_upto+1, where `P≤q` fails" is corrected at every carrying
+  site — §0M column (a2) (the master statement), ⟨n4⟩, §1's r3 amendment,
+  §2(iii)'s r3 bracket, the grade cap, the §2 ∎ Grade line, the §7.2 JB-DEV
+  row, §7.3's W-3 bullet, JB-BOX-2 — to: the exclusion bites ONLY WHEN
+  shared_upto < n (5 roster towers: T3A/T3C/T3D/T3E/I4C); when
+  qcap = n ≤ shared_upto the two fences coincide on the whole range and (RES)
+  is excluded at NO level (the other 11). Probe-verified against the runner's
+  own `qcap_of`/`shared_upto`. Direction: the note claimed MORE conditionality
+  than it had; nothing downstream moves.
+* **F-4 (THE SCOPE REPAIR — the one movement of substance in r4, a strict
+  narrowing).** §4(iii) transferred the per-edge λ_E line laws to v_{m+1}
+  across EVERY tree edge; the license (line = w_m, [RMG] L-LINE(iv)) is a
+  REDUCED-CELL identity, every internal tree node is non-reduced by [RMG]
+  S2.2's own construction, and `jb_line` keys the tie at leaves only.
+  DERIVABILITY WAS CHECKED FIRST, per the repair charge: within this note's
+  consumption list the internal-edge transfer is NOT derivable ([RMG] gives
+  only line ≤ w_m off reduced cells via L-CELL(i)/L-MONO; LED-Λ's face is
+  about line by definition), and the one candidate route outside the list —
+  the print valuation's multiplicativity (HigherNewton tex ~1012, a NEW
+  anchor this note does not consume) with per-atom values v_{m+1}(Φ_l) = Γ_l
+  — is recorded at §4(iii) as NOT TAKEN (its atom value degenerates at
+  interior periods P_t = 1, in-roster at T3E, and no instrument keys any
+  internal-node v_{m+1} statement). RE-SCOPED at §4(iii), row 17, the grade
+  cap, the §4 ∎ Grade line, the §7.2 JB-TREE row and §7.3's W-5 bullet: the
+  per-edge laws are EXACT LAWS OF THE LINE FUNCTIONAL on every edge; the
+  classifier reading line = w_m = v_{m+1} is asserted at the R-LEAVES ONLY —
+  which is what the machine measures, and all JB-TREE(iv)/§5 consumption
+  needs (they read w_m/v_{m+1} of the output polynomials R and Q through
+  JA-VAL directly).
+* **F-5 (row 20's machine cell misdescribed `jb_eps` twice).** Rewritten to
+  the code: V from `range(0, min(3·e·h + 5, 25))` stepped `[::2]`, V′ same
+  range stepped `[::3]` — a SPOT-CHECK of the lemma, never a superset of the
+  applied instance. Probe verdict transcribed into the cell: the applied
+  (λ, γ_{m+1}) is IN the sampled set on **4 of the 56** roster scored rows
+  (T2A and T3D at m = 1) and **NOT-SAMPLED on the other 52 — including every
+  m ≥ 2 row** (γ_{m+1} exceeds the range bound on all of them). The license
+  stands on the lemma's PROOF at the derived membership; an instance-keyed
+  leg is named as a candidate instrument. The §5 echo of the same
+  misdescription is struck too.
+* **F-6 (the unterminated SUPERSEDED region in §7.3).** An explicit
+  terminator now closes the region (matching the grade cap's), and the three
+  live items that sat inside it — the NOT-supplied list, the r1/F1 (C-READ)
+  notice, the CONSUMES + acceptance-counter line — are REGENERATED from the
+  matrix inside surface 13 as [r4, F-6] bullets. No live content sits in a
+  non-authoritative region.
+* **F-7 (three surface-vs-table disagreements, reportable under JB-BOX-6's
+  own rule).** (a) row 24's (a1)/(a2)/(c) cells synced with surface 14 and
+  with summary point (4), and JB-BOX-2 gains the (VD-m)-rider sentence it had
+  omitted (row 18); (b) §7.3's W-3 bullet now names JB-VTX(d4) and (e) in its
+  `P<q` enumeration; (c) JB-BOX-6's "or any box" narrowed to JB-BOX-2, the
+  one box actually regenerated.
+* **F-8 (the license's load-bearing object was undefined, and only half the
+  quantifier was derived).** THE LEVEL-m WEIGHT LATTICE is DEFINED once at
+  the §5 license site, with the explicit description
+  𝒲_m = {E_m·a + Σ_{l<m} j_l·Γ_l : a ∈ ℤ_{≥0}, 0 ≤ j_l ≤ P_l − 1} derived
+  from [RMG] L-CELL(i) + L-LINE(iv); the description gives 𝒲_m ⊆ ℤ_{≥0}, so
+  the V, V′ ≥ 0 half of JB-EPS's quantifier follows from membership — the
+  license's parenthetical warrant is now a displayed definition, not an
+  uncited assertion.
+
+Acceptance counter unchanged at **0/2** — a repair round is not a pass. State
+after this round: attempt grade, FOUR hostile passes run (JB-PE1 1C+9G, JB-PE2
+0C+7G, JB-PE3 0C+8G, JB-PE4 0C+8G), r1–r4 applied, no gate fired, nothing
+consumed at proof grade; **JB-PE5 — a fresh hostile pass on this post-r4
+text — is the next acceptance attempt.**]**
+
 ---
 
 ## §1. Setting, indexing, and the two frames (fixed once)
@@ -736,10 +904,17 @@ layer. CORRECTED STATEMENT, which §0M's matrix column (a2) now carries as the
 single record: every restatement of the (VAL)/(GRID) layers and of all of
 JB-VTX and JB-TREE(iii)/(iv) cites the SHARED-KEY PERIMETER `P<q`
 (0 ≤ q ≤ qcap); the (RES) layer and JB-DEV(ii)'s byte clause cite the
-BYTE-EQUAL CHAIN THROUGH q. The two differ exactly at the top level
+BYTE-EQUAL CHAIN THROUGH q. ~~The two differ exactly at the top level
 q = qcap = shared_upto+1 — the level the `+1` exists for — where `P<q` holds
 and `P≤q` fails by definition of shared_upto, so at that one level per tower
-r2's single fence over-supplied (RES) by exactly one level. No machine leg can
+r2's single fence over-supplied (RES) by exactly one level.~~ **[r4, F-3 — the
+struck arithmetic held on only 5 of the 16 roster towers. qcap :=
+min(n, shared_upto+1), so q = qcap is a level where `P≤q` fails ONLY WHEN
+shared_upto < n (T3A, T3C, T3D, T3E, I4C); when qcap = n ≤ shared_upto the two
+fences COINCIDE on the whole range 0 ≤ q ≤ qcap and r2's fence over-supplied
+(RES) at NO level (the other 11 towers). The corrected record is §0M column
+(a2); probe-verified against the runner's own `qcap_of`/`shared_upto`,
+2026-08-06.]** No machine leg can
 catch this: the runner keys (VAL) over `range(0, qcap+1)` and keys (RES)
 NOWHERE (§0M row 5, cell note ⟨n4⟩).]**]**
 Read data A_m := ℓ_{m−1}g_{m−1}γ_m, W_m := w_mΦ_m as in W-2/J-A.
@@ -815,10 +990,15 @@ level m := q+1: J-A's perimeter is level-indexed, so at level m it requires
 Φ_j^har = φ_{j+1}^cls for all j ≤ m−1 = q — the BYTE-EQUAL CHAIN THROUGH q of
 §1, not the shared-key perimeter. THE FENCE, PER LAYER (§0M rows 3/4/5): (VAL)
 and (GRID) on `P<q` = the SHARED-KEY PERIMETER 0 ≤ q ≤ qcap; **(RES) on the
-BYTE-EQUAL CHAIN THROUGH q (`P≤q`)**, which is strictly stronger and excludes
+BYTE-EQUAL CHAIN THROUGH q (`P≤q`)**, which is strictly stronger ~~and excludes
 exactly the top level q = qcap. This moves toward MORE conditionality: r2's
 single fence asserted (RES) at one level per tower beyond the hypothesis of the
-theorem it cites. No machine leg is affected — the runner keys (RES)
+theorem it cites.~~ **[r4, F-3 — corrected: the exclusion at q = qcap bites only
+when shared_upto < n (5 of the 16 roster towers: T3A/T3C/T3D/T3E/I4C); on the
+other 11 the two fences coincide over the whole level range, and r2's fence
+over-supplied (RES) there at no level — §0M column (a2). The fence itself is
+unchanged and the movement is still toward MORE conditionality where it bites
+at all.]** No machine leg is affected — the runner keys (RES)
 nowhere.]** For the common digit list (A_i):
 
     (VAL)  w_q(A_i) = v_{q+1}(A_i) for every i           [JA-VAL, consumed]
@@ -930,9 +1110,11 @@ no clause here upgrades W-2/J-A. PER CLAUSE:**
     (iii)(GRID) on `P<q` AND on JA-GRID(a)'s `[JA-r1]` u ≥ 0 proviso,
                 CARRIED AND UNDISCHARGED (r2, G2-5).             [row 4]
     (iii)(RES)  on the BYTE-EQUAL CHAIN THROUGH q (`P≤q`) — one level deeper
-                than r2's fence, F-4 — plus JA-RES's own fence (unconditional
-                at m = q+1 = 2, per-digit proviso at m ≥ 3, JA-BOX-2). NOT
-                the evaluated dictionary (VD-m).                 [row 5]
+                than r2's fence, F-4; the exclusion bites on 5/16 roster
+                towers only ((a2), r4/F-3) — plus JA-RES's own fence
+                (unconditional at m = q+1 = 2, per-digit proviso at m ≥ 3 =
+                (VD-(m−1)) at every on-line digit, JA-BOX-2; r4/F-1). NOT
+                the evaluated dictionary (VD-m) at level m.      [row 5]
     (iv)        a displayed fence, cited; no level condition.    [row 6]
 
 **]** ~~[Machine: JB-DEV — the development recomputed
@@ -1164,11 +1346,44 @@ L-CELL: every node is a sum of reduced cells = multiadic expansion slots
 **(iii) [the polygon bookkeeping = LED-Λ's line face, one citation].**
 On reduced cells, line(C) = w_m(C) ([RMG] L-LINE(iv)) = v_{m+1}(C)
 (JA-VAL): THE LEDGER'S LINE FUNCTIONAL IS THE CLASSIFIER'S MacLANE
-ORDINATE. Hence LED-Λ(A1)/(B) at the face λ_E — one theorem — supplies the
+ORDINATE. ~~Hence LED-Λ(A1)/(B) at the face λ_E — one theorem — supplies the
 complete per-edge polygon bookkeeping of the division in classifier
 coordinates: promotions raise v_{m+1} by exactly the quantum q_{i+1} > 0,
 correction-main edges are v_{m+1}-flat, junk edges gain ≥ E_m (π) / ≥ Γ₀
-(Y), exits pay w_mΦ_m ([LED-Λ] S1 table, λ_E column; L-MONO = the
+(Y), exits pay w_mΦ_m~~ **[r4, F-4 — RE-SCOPED. The struck sentence
+transferred the per-edge line laws to v_{m+1} across EVERY tree edge, but its
+license is a REDUCED-CELL identity and NO internal tree node is reduced ([RMG]
+S2.2's own construction: a node with an outgoing edge has some j_i ≥ P_i);
+off the reduced cells [RMG] supplies only line(C) ≤ w_m(C) (L-CELL(i): w_m =
+min line over the reduced cells of the decomposition, plus L-MONO), never
+equality. THE CLAUSE AS RE-SCOPED, stated of the right functional:
+LED-Λ(A1)/(B) at the face λ_E — one theorem — supplies the complete per-edge
+polygon bookkeeping of the division AS EXACT LAWS OF THE LINE FUNCTIONAL, on
+every edge: promotions raise line by exactly the quantum q_{i+1} > 0,
+correction-main edges are line-flat, junk edges gain ≥ E_m (π) / ≥ Γ₀ (Y),
+exits pay w_mΦ_m in line. AT THE R-LEAVES — the reduced cells, where the
+division's output R lives — and there ONLY, the ledger reads in classifier
+coordinates: line = w_m (L-LINE(iv)) = v_{m+1} (JA-VAL). That leaf reading is
+the only v_{m+1} statement this clause asserts, and it is exactly what
+`jb_line` keys (leaf line == wlev == vgen; no v_{m+1} statement is tested at
+any non-leaf — §0M row 17). DERIVABILITY OF THE INTERNAL-EDGE TRANSFER WAS
+CHECKED BEFORE RE-SCOPING: within this note's consumption list it is NOT
+derivable (L-LINE(iv) is reduced-only; LED-Λ's own face is "λ_E·J(C) = line(C)
+BY DEFINITION of the line" — a statement about line, not w_m). A candidate
+route OUTSIDE the list exists and is recorded as NOT TAKEN: the print's
+order-(m+1) valuation is multiplicative (HigherNewton's valuation proposition,
+tex ~1012 — NOT among this note's print anchors), which with JA-VAL and the
+per-atom values v_{m+1}(b) = E_m·w₀(b), v_{m+1}(Φ_l) = Γ_l would extend
+line = v_{m+1} to every cell; but the Φ_l atom value rests on the single-digit
+weight recursion, which degenerates where deg Φ_q = deg Φ_l (interior periods
+P_t = 1 — realized on this note's own roster, e.g. T3E's P_1 = 1) and there
+needs a two-digit-development case argument consuming WELL-DEF data one level
+down, and no instrument keys any internal-node v_{m+1} statement. Honesty over
+reach: the line law is what is cited, proved and measured; the leaf reading is
+what is claimed in classifier coordinates. Nothing downstream moves —
+JB-TREE(iv) and §5 consume w_m/v_{m+1} of the OUTPUT polynomials R and Q
+through JA-VAL directly, never a per-edge internal-cell ordinate.]**
+([LED-Λ] S1 table, λ_E column; L-MONO = the
 division never descends below the polygon — the print's
 division-stability genre read through the dictionary). Where earlier
 units re-derived these per edge, J-B cites the ledger ONCE; LED-Λ is
@@ -1220,7 +1435,12 @@ consumed (window-free legs only, as in [RMG]). **PER CLAUSE:**
                   the v_{m+1}-reading of the print side is a different object.
                                                            [rows 17, 18]
     (iii)         LED-Λ is consumed at ATTEMPT grade and the tie's grade rides
-                  it (the runner re-verifies the λ_E quanta FRESH).  [row 17]
+                  it (the runner re-verifies the λ_E quanta FRESH). [r4, F-4]
+                  the per-edge laws are laws of the LINE functional; the
+                  identification line = w_m = v_{m+1} is asserted at the
+                  R-LEAVES ONLY (L-LINE(iv) reduced cells + JA-VAL), which is
+                  where `jb_line` keys it; no internal-node v_{m+1} statement
+                  is claimed or tested.                              [row 17]
     (iv)          its (C-READ) leg transports as §5 and therefore rides §5's
                   (VD-m) fence IN FULL; its (C-W_Q) clause has NO machine leg.
                                                                 [row 18]
@@ -1290,14 +1510,40 @@ L-CANON's three hypotheses are Φ_m MONIC, deg f < deg Φ_m and (Ĉ-deg), so the
 restored clause is exactly what makes "THE canonical division" canonical at
 this site.**
 
+**[r4, F-8 — THE OBJECT, DEFINED ONCE (the lemma quantifies over it, this
+license derives membership in it, and the u ≥ 0 retraction prose at §2(iii)
+argues about it — and no display in this note defined it).**
+
+    THE LEVEL-m WEIGHT LATTICE
+        𝒲_m := { w_m(f) : f ∈ O[x], f ≠ 0, deg f < deg Φ_m }
+             = { E_m·a + Σ_{l<m} j_l·Γ_l : a ∈ ℤ_{≥0}, 0 ≤ j_l ≤ P_l − 1 },
+
+**the VALUE SET of the level-m weight on this note's polynomial class (the
+SCRIPT letter 𝒲 deliberately — the roman W_m is already §1's read datum
+W_m := w_mΦ_m and is untouched). The
+second, explicit description is [RMG]: every such f is a finite sum of
+distinct REDUCED cells with w_m(f) = min line over them (L-CELL(i)), so every
+weight value IS a reduced-cell line value E_m·w₀(b) + Σ j_l·Γ_l with
+0 ≤ j_l ≤ P_l − 1 and a := w₀(b) ≥ 0; conversely every reduced cell attains
+its line as its own weight (L-LINE(iv)), so every such value occurs.
+CONSEQUENCE, which closes the second half of the lemma's quantifier (PE4's
+F-8): E_m ≥ 1 and every Γ_l ≥ 1, with all coefficients ≥ 0, so 𝒲_m ⊆ ℤ_{≥0} —
+the quantifier's "V, V′ ≥ 0" half is IMPLIED by lattice membership, not a
+separate unchecked side condition.]**
+
 **THE LICENSE (what F-5 charged). LEMMA JB-EPS below is quantified over
-V, V′ ≥ 0 IN THE LEVEL-m WEIGHT LATTICE, and THEOREM JB-CREAD's display applies
-it at (V, V′) = (λ, γ_{m+1}). Both memberships now follow in one line each:**
+V, V′ ≥ 0 IN THE LEVEL-m WEIGHT LATTICE (:= 𝒲_m above; the script letter — W_m stays §1's read datum w_mΦ_m), and THEOREM JB-CREAD's
+display applies it at (V, V′) = (λ, γ_{m+1}). Both LATTICE memberships now
+follow in one line each — and the ≥ 0 conditions follow from them, since
+𝒲_m ⊆ ℤ_{≥0} (r4, F-8):**
 
     λ = w_m(f)  with f ≠ 0        ⇒  λ is the level-m weight of a NONZERO
-                                     polynomial, hence in the level-m weight
-                                     lattice (which contains every value of
-                                     w_m on nonzero polynomials).
+                                     polynomial of the class (deg f < deg Φ_m),
+                                     hence λ ∈ 𝒲_m BY THE DEFINITION ABOVE
+                                     [r4, F-8: the old warrant "(which contains
+                                     every value of w_m on nonzero
+                                     polynomials)" is now the displayed
+                                     definition, not an uncited parenthetical].
     γ_{m+1} = w_m(Ĉ_m) by (Ĉ-wt), and Ĉ_m ≠ 0 because its read
     R_{m,γ_{m+1}}(Ĉ_m) = τ_m is NONZERO by (Ĉ-read) (τ_m = ε_m(γ_{m+1})^{−1}c_m
     with c_m = ψ_{m,0} ≠ 0, the class pin)
@@ -1309,8 +1555,12 @@ it at (V, V′) = (λ, γ_{m+1}). Both memberships now follow in one line each:*
 as the DEFINED INTEGER γ_{m+1} := e_m·w_mΦ_m + h_m of §1's read data, and
 (Ĉ-wt) — the clause that identifies that integer as a weight — was the clause
 the recital had dropped. The lemma itself was never in danger (its proof uses
-only s^wt(β) ≡ ℓ_{m−1}β mod e_{m−1} and JA-GRID(c), and `jb_eps` quantifies
-PLAIN integers 0 ≤ V,V′ < 25, a superset of the lattice), so r3 restores the
+only s^wt(β) ≡ ℓ_{m−1}β mod e_{m−1} and JA-GRID(c), ~~and `jb_eps` quantifies
+PLAIN integers 0 ≤ V,V′ < 25, a superset of the lattice~~ **[r4, F-5 — the
+struck description of the machine leg was wrong twice: `jb_eps` samples the
+STRIDED grid V ∈ 2ℤ, V′ ∈ 3ℤ inside [0, min(3·e·h + 5, 25)) — a spot-check of
+the lemma, NOT a superset of anything; the applied instance is sampled on only
+4 of the 56 roster scored rows (§0M row 20)]**), so r3 restores the
 LICENSE rather than widening the lemma: the quantifier stands as written and the
 cited instance is now provably inside it. §0M rows 19/20.]**
 
@@ -1550,8 +1800,9 @@ object is constructed or claimed, and BLOCKED-ON-CARRIER-TIE stands.
         ALL of JB-VTX — (a), (b), (c), (d1)–(d3), (d4), and (e) through
         (a) at f = Φ_{q+1}^har                            [rows 8–13]
         JB-TREE(iii) and JB-TREE(iv), read at level m       [rows 17, 18]
-    on the BYTE-EQUAL CHAIN THROUGH q `P≤q` (strictly stronger; they differ
-    exactly at q = qcap):
+    on the BYTE-EQUAL CHAIN THROUGH q `P≤q` (strictly stronger; the difference
+    bites at q = qcap only where shared_upto < n — 5 of the 16 roster towers;
+    on the other 11 the two fences coincide over the whole range, r4/F-3):
         §2(ii)'s byte clause                                    [row 2]
         §2(iii)(RES) — added in r3, F-4                         [row 5]
     on NO key perimeter:
@@ -1563,7 +1814,12 @@ object is constructed or claimed, and BLOCKED-ON-CARRIER-TIE stands.
   **And the u ≥ 0 proviso of this box reaches EXACTLY TWO claims: §2(iii)(GRID)
   (row 4) and JB-VTX's clause (d4) — the attained-abscissa/read-grid tie, which
   is also the ONE sub-clause of JB-VTX with no machine leg (row 12, r3/F-3).
-  No other statement in this note consumes JA-GRID(a).]**
+  No other statement in this note consumes JA-GRID(a). And the (VD-m) fence,
+  recorded by this box [r4, F-7 — this box carried rows 21/22 only and omitted
+  row 18's rider]: it reaches EXACTLY rows 18 (JB-TREE(iv)'s (C-READ) leg,
+  which transports as §5 and rides the fence IN FULL), 21 and 22 (JB-CREAD,
+  both strata) and 23 (JB-BOX-1) — §0M row 24's (c) cell, synced with summary
+  point (4).]**
   JB-CREAD's own stratum
   split (v ≠ 0 scored; v = 0 = the read-at-target branch only, ρ-form
   not claimed) is displayed at the theorem. W2-OPEN-1 (the value layer
@@ -1594,7 +1850,11 @@ object is constructed or claimed, and BLOCKED-ON-CARRIER-TIE stands.
   **[r3 — and one procedural fence, added by this round: the COMPLETE
   conditionality of every claim in this note is §0M's matrix. A consumer who
   reads a grade surface (the grade cap, any ∎ Grade line, any §7.2 row, §7.3,
-  or any box) is reading a REGENERATION of that table; if a surface and the
+  or ~~any box~~ **[r4, F-7 — narrowed to the inventory that is true:
+  JB-BOX-2, the ONE box regenerated from the table (surface 14); JB-BOX-1 and
+  JB-BOX-3/4/5 and this box are standing records — consistent with the table
+  as checked, but NOT regenerations of it]**) is reading a REGENERATION of
+  that table; if a surface and the
   table ever disagree, THE TABLE GOVERNS and the disagreement is a defect to
   report. Any future repair round that adds or moves a fence must edit §0M
   first and re-derive the 14 surfaces from it — the per-site sweep genre that
@@ -1731,10 +1991,10 @@ it is generated, not patched.**]**
 
 | claim | grade — every fence from §0M, and no other |
 |---|---|
-| **JB-DEV** (expansion identity: same division; byte clause; three-layer coefficient correspondence; cross-key fence) | PROVED (attempt grade 0/2), consumptions at their own grades. **(i)** every q ≥ 0, at the W2-C1 admissible representative; **(iv)** every q ≥ 0 (a displayed fence); **(ii)** on the BYTE-EQUAL CHAIN THROUGH q (`P≤q`, §1); **(iii)(VAL)** on the SHARED-KEY PERIMETER `P<q` = 0 ≤ q ≤ qcap = min(n, shared_upto+1) — off it (VAL) is FALSE, not merely unproved; **(iii)(GRID)** on `P<q` **AND** on JA-GRID(a)'s UNDISCHARGED `[JA-r1]` u ≥ 0 proviso; **(iii)(RES)** on the BYTE-EQUAL CHAIN THROUGH q (`P≤q`) — one level deeper than r2's fence, **r3/F-4** — plus JA-RES's own fence (free at m = q+1 = 2, per-digit proviso at m ≥ 3, JA-BOX-2), and NOT (VD-m). Machine: one genuine second implementation + one genuine cross-engine tie; the advertised "print engine" leg is SAME-COMPUTATION with an UNREACHABLE violation (**r3/F-2**). [§0M rows 1–6] |
+| **JB-DEV** (expansion identity: same division; byte clause; three-layer coefficient correspondence; cross-key fence) | PROVED (attempt grade 0/2), consumptions at their own grades. **(i)** every q ≥ 0, at the W2-C1 admissible representative; **(iv)** every q ≥ 0 (a displayed fence); **(ii)** on the BYTE-EQUAL CHAIN THROUGH q (`P≤q`, §1); **(iii)(VAL)** on the SHARED-KEY PERIMETER `P<q` = 0 ≤ q ≤ qcap = min(n, shared_upto+1) — off it (VAL) is FALSE, not merely unproved; **(iii)(GRID)** on `P<q` **AND** on JA-GRID(a)'s UNDISCHARGED `[JA-r1]` u ≥ 0 proviso; **(iii)(RES)** on the BYTE-EQUAL CHAIN THROUGH q (`P≤q`) — one level deeper than r2's fence, **r3/F-4**; the exclusion bites on 5 of the 16 roster towers only (**r4/F-3**, column (a2)) — plus JA-RES's own fence (free at m = q+1 = 2, per-digit proviso at m ≥ 3 = (VD-(m−1)) at every on-line digit, JA-BOX-2; **r4/F-1**), and NOT (VD-m) at level m. Machine: one genuine second implementation + one genuine cross-engine tie; the advertised "print engine" leg is SAME-COMPUTATION with an UNREACHABLE violation (**r3/F-2**). [§0M rows 1–6] |
 | **JB-AFF** (affine ordinate maps preserve hulls/vertices) | PROVED (two lines), **UNCONDITIONAL** — no perimeter, no proviso, no [RMG] clause, no (VD-m); no separate machine leg, its content being exercised inside JB-VTX(b)/(c)'s legs. [row 7] |
 | **JB-VTX** (development polygon = Σ_q(N_{q+1}(f)) vertex-for-vertex; slope/length translation; min/read ties; window clause) | PROVED (attempt grade) **on the SHARED-KEY PERIMETER `P<q` (0 ≤ q ≤ qcap), every statement at the W2-C1 admissible representative** — off it clause (a)'s JA-VAL input is unavailable and (a) is FALSE, not merely unproved. Clause-level: **(a)/(b)/(c)** and the **THREE** keyed min ties **(d1)–(d3)** ride `P<q` + W2-C1 only (the two print-side ties machine-restricted further to q ≤ shared_upto); clause **(d)'s FOURTH tie** — attained abscissas = the read grid — **ALSO rides JA-GRID(a)'s UNDISCHARGED u ≥ 0 proviso AND has NO MACHINE LEG** (**r3/F-1 + F-3**); **(e)** is at f = Φ_{q+1}^har, the W2-C1a window object, not at the theorem's quantified f (r1, G-4). [rows 7–13] |
-| **JB-TREE** (the [RMG] tree computes the classifier's division; edge = division step; cells = expansion slots; λ_E face = polygon bookkeeping) | PROVED (attempt grade) on T-scope(m), g_m = 1, W-WIN unconsumed; LED-Λ cited at ATTEMPT grade and the tie's grade rides it. **(i)/(ii) PERIMETER-FREE; (iii)/(iv) at levels m ≤ qcap ONLY** (`P<q` read at level m), since both consume JA-VAL — **r3/F-1B: this fence now also stands at the grade cap and in JB-BOX-2**; **(iv)**'s (C-READ) leg additionally rides §5's (VD-m) fence in full, and its **(C-W_Q) clause has NO machine leg**. [RMG]: (i) T-TERM + L-EXACT + L-CANON (the latter through the restored deg Ĉ_m < deg Φ_m, **r3/F-5**); (ii) S2.2 + L-NORM + L-CELL + S0.1's P_i = e_i·g_i (**r3/F-7**). The print-key machine evidence for (i) is §7.4's post-seal walker, base rows only, with 8 byte-unequal chamber walks unreached (r1/G-1; r2/G2-2, G2-3). [rows 14–18] |
+| **JB-TREE** (the [RMG] tree computes the classifier's division; edge = division step; cells = expansion slots; λ_E face = polygon bookkeeping **of the LINE functional, with the v_{m+1} reading at the R-leaves only — r4/F-4, row 17**) | PROVED (attempt grade) on T-scope(m), g_m = 1, W-WIN unconsumed; LED-Λ cited at ATTEMPT grade and the tie's grade rides it. **[r4, F-4]** §4(iii)'s per-edge laws are laws of line(·), every edge; line = w_m = v_{m+1} is asserted (and machine-keyed by `jb_line`) at the R-LEAVES ONLY — no internal-node v_{m+1} statement is claimed. **(i)/(ii) PERIMETER-FREE; (iii)/(iv) at levels m ≤ qcap ONLY** (`P<q` read at level m), since both consume JA-VAL — **r3/F-1B: this fence now also stands at the grade cap and in JB-BOX-2**; **(iv)**'s (C-READ) leg additionally rides §5's (VD-m) fence in full, and its **(C-W_Q) clause has NO machine leg**. [RMG]: (i) T-TERM + L-EXACT + L-CANON (the latter through the restored deg Ĉ_m < deg Φ_m, **r3/F-5**); (ii) S2.2 + L-NORM + L-CELL + S0.1's P_i = e_i·g_i (**r3/F-7**). The print-key machine evidence for (i) is §7.4's post-seal walker, base rows only, with 8 byte-unequal chamber walks unreached (r1/G-1; r2/G2-2, G2-3). [rows 14–18] |
 | **JB-EPS** (ε-cocycle collapse t(V+V′) − t(V) − t(V′) = ε′) | PROVED, **UNCONDITIONAL at every m ≥ 1** — no perimeter, no u ≥ 0 (it cites JA-GRID(c), which carries none), no (VD-m). **Its application inside §5 at (V, V′) = (λ, γ_{m+1}) is LICENSED by [RMG]'s restored clause w_m(Ĉ_m) = γ_{m+1} (r3/F-5); before r3 that instance sat outside the lemma's own quantifier.** [rows 19–20] |
 | **JB-CREAD** ((C-READ) transport: ρ_m(R) = c_m·ρ_m(f), carry-free in print coordinates) | PROVED on the **(VD-m) perimeter ∩ {v ≠ 0}**: (VD-m) unconditional at m ≤ 1 ONLY, CONDITIONAL at every m ≥ 2 (JA-VDIND collapse; ⊇ (R-coll)/JA-BOX-2 at m ≥ 3) — **NO unconditional stratum above m = 1** (r1, F1) — and required at BOTH f and R. **No key perimeter** (a legitimate conditional at any level); the instrument's own m ≤ qcap cut is disclosed with off-perimeter rows 0. The **v = 0 branch is read-at-target only and machine UNEXERCISED**. [RMG]: (C-READ), (C-W_R), the complete Ĉ_m clause list, L-CELL(i)/(ii) = (B-READ), on [RMG]'s scope. [rows 21–22] |
 | **JB-BOX-1** (blueprint J-B(iii) carry placement) | CORRECTED (frame conflation; both frames displayed). Inherits JB-CREAD's (VD-m) ∩ {v ≠ 0} fence; its machine leg is the teeth family MJB-CREAD, where the carry-bearing reading must FAIL — and does, on all 22 designated samples over 14 towers. [row 23] |
@@ -1759,14 +2019,19 @@ attempt grade, acceptance counter 0/2, hostile passes owed), stated so that a
 downstream unit reading ONLY this display inherits every fence:**
 
 * **W-3 = both halves of the identity (expansion + polygon, shear explicit) —
-  full in CONTENT, not full in q.** The polygon half (JB-VTX (a)/(b)/(c) and
-  the three keyed min ties) and the (VAL)/(GRID) layers of the expansion half
+  full in CONTENT, not full in q.** The polygon half — **ALL of JB-VTX: (a)/
+  (b)/(c), the three keyed min ties (d1)–(d3), the (d4) grid/attained-abscissa
+  tie, and (e) through (a) at f = Φ_{q+1}^har [r4, F-7 — (d4) and (e) were
+  omitted from this enumeration; §0M rows 12–13 and surface 14 carry them]** —
+  and the (VAL)/(GRID) layers of the expansion half
   hold on the **SHARED-KEY PERIMETER `P<q` (0 ≤ q ≤ qcap = min(n,
   shared_upto+1))**; off it JB-VTX(a) and JB-DEV(iii)(VAL) are **FALSE**, not
   merely unproved. JB-DEV(i)/(ii)/(iv) hold at every q ≥ 0, with (ii) on the
   **BYTE-EQUAL CHAIN THROUGH q**. **JB-DEV(iii)(RES) holds only on the
   BYTE-EQUAL CHAIN THROUGH q (`P≤q`) — r3/F-4, one level deeper than r2's
-  display said — plus JA-RES's own per-digit proviso at m = q+1 ≥ 3.** TWO
+  display said; the exclusion bites on 5 of the 16 roster towers only (r4/F-3,
+  §0M (a2)) — plus JA-RES's own per-digit proviso at m = q+1 ≥ 3
+  (= (VD-(m−1)) at every on-line digit, r4/F-1).** TWO
   sub-clauses ride JA-GRID(a)'s **UNDISCHARGED u ≥ 0 proviso**: the (GRID)
   layer inside JB-DEV(iii) **and the grid/attained-abscissa content of
   JB-VTX(d) — the polygon half, which r2's display omitted (r3/F-1)**; that
@@ -1774,7 +2039,10 @@ downstream unit reading ONLY this display inherits every fence:**
   (r3/F-3). JB-VTX(e) is at f = Φ_{q+1}^har only (r1, G-4). [§0M rows 1–13]
 * **W-5 on [RMG]'s scope (T-scope(m), g_m = 1), with two further fences.**
   (ii) the tree/division correspondence with LED-Λ as the bookkeeping, at
-  attempt grade — **(i)/(ii) of §4 perimeter-free, but §4(iii)/(iv) only at
+  attempt grade — **the bookkeeping is per-edge laws of the LINE functional,
+  with the classifier reading line = w_m = v_{m+1} at the R-LEAVES only
+  (r4/F-4, §0M row 17)** — **(i)/(ii) of §4 perimeter-free, but §4(iii)/(iv)
+  only at
   levels m ≤ qcap, since they consume JA-VAL (r3/F-1B)**, and §4(iv)'s (C-W_Q)
   clause has no machine leg. (iii) the (C-READ) transport in both frames, on
   the **(VD-m) perimeter ∩ {v ≠ 0}**: free of extra hypotheses at **m = 1
@@ -1782,6 +2050,28 @@ downstream unit reading ONLY this display inherits every fence:**
   and R), with the v = 0 branch a read-at-target statement only and machine
   unexercised. LEMMA JB-EPS is unconditional and its §5 instance is licensed by
   [RMG]'s restored w_m(Ĉ_m) = γ_{m+1} (r3/F-5). [§0M rows 14–23]
+* **NOT supplied [r4, F-6 — REGENERATED LIVE from the matrix; the r0 list
+  below sat inside the superseded region with no live replacement]:** W-1's
+  uncollapsed all-orders dictionary (JA-BOX-2), W-2's grades (consumed), the
+  J-C block W-6..W-9 (no gr claim; BLOCKED-ON-CARRIER-TIE stands — §0M
+  row 28), J-D counts/menus (W-10..W-12), W2-OPEN-1 (consumed nowhere,
+  JB-BOX-2). The P0 application gate stands.
+* **(C-READ) downstream notice [r4, F-6 — the live form of the r1/F1 notice
+  below]:** W-5(iii)'s transport ρ_m(R) = c_m·ρ_m(f) is free of extra
+  hypotheses at m = 1 ONLY; at every m ≥ 2 a consumer must either carry
+  JA-VDIND's collapse condition (⊇ (R-coll) at m ≥ 3) or work on the
+  machine-scored stratum (§0M rows 21–22). Downstream units that read
+  "unconditional at m ≤ 2" from r0 must re-read this line; the J-C germ
+  (ρ_m(R) = −z_{m+1}·ρ_m(f), §5's remark) inherits the same conditionality
+  above m = 1.
+* **CONSUMES [r4, F-6 — regenerated]:** [RMG] (ACCEPTED) · [ILN]† (accepted) ·
+  W-2 + J-A + LED-Λ at attempt grade (conditionality verbatim) · GMN
+  HigherNewton as literature (header anchors) through the sealed probe
+  transcription · engine_ext (standing rule). CONSUMED BY (intended): the J-C
+  block units (W-6..W-9 — §5's remark is their semantic germ), the W-10/J-D
+  count units, the weld campaign ledger at J-B. **Acceptance counter 0/2**
+  (four hostile passes run, four repair rounds applied; JB-PE5 is the next
+  acceptance attempt).
 
 **]**
 
@@ -1830,6 +2120,16 @@ attempt grade (conditionality verbatim) · GMN HigherNewton as literature
 (standing rule). CONSUMED BY (intended): the J-C block units (W-6..W-9 —
 the §5 remark is their semantic germ), the W-10/J-D count units, the weld
 campaign ledger at J-B. Acceptance counter 0/2.
+
+**[r4 — end of the superseded consequence display (F-6). The r3 banner above
+opened a superseded region and never closed it, so on the note's own reading
+discipline the NOT-supplied list, the r1/F1 (C-READ) notice and the CONSUMES +
+counter line just above sat in a NOT-authoritative region with no live
+replacement. This terminator closes the region here; everything from the
+banner through this line is retained record, and all three items are
+REGENERATED LIVE inside surface 13 above (the [r4, F-6] bullets), which is the
+authoritative surface. The old counter line's "0/2" remains true; the live
+CONSUMES bullet carries the current arc.]**
 
 ### 7.4 [r1] POST-SEAL SUPPLEMENTARY EVIDENCE — outside the sealed battery
 
@@ -2070,6 +2370,31 @@ to the BYTE-EQUAL CHAIN THROUGH q (F-4 — the one mathematical movement, toward
 more conditionality); the sufficient-vs-equivalent conflation fixed at both
 sites and §7.4(C) softened by the purity step (F-6); P_i := e_i·g_i defined at
 first use with [RMG] S0.1 added to the consumption list (F-7). **No §2–§5
-identity moved; all four instruments byte-frozen; note-only.** Arc:
+identity moved; all four instruments byte-frozen; note-only.** ~~Arc:
 PE1 (1C+9G) → r1 → PE2 (0C+7G) → r2 → PE3 (0C+8G) → r3 → **JB-PE4 = the next
-acceptance attempt**; acceptance counter still **0/2**.**
+acceptance attempt**; acceptance counter still **0/2**.~~**
+
+**[r4] repaired a FOURTH time, 2026-08-08 campaign (wallclock 2026-08-06),
+against JB-PE4 (0 CRITICAL + 8 gaps, the second acceptance attempt, which did
+not land; all eight PE3 findings verified discharged and the matrix mechanism
+held — the frontier moved into §0M's own precision). THE MATRIX-PRECISION
+ROUND + ONE SCOPE REPAIR: §0M's summary self-contradiction fixed and row 5's
+(c) cell completed (F-1); the open-proviso-NO-LEG frontier recounted to FOUR
+members — rows 4, 5, 12, 22, both u ≥ 0 riders included — with rows 13/18
+adjudicated OUT with reasons (F-2); the (RES) re-fence gloss corrected at
+every carrying site to "the exclusion bites only where shared_upto < n"
+(5/16 roster towers, probe-verified) (F-3); **§4(iii) RE-SCOPED: the λ_E
+per-edge laws are laws of the LINE functional, with line = w_m = v_{m+1}
+asserted at the R-leaves ONLY, after the internal-edge transfer was checked
+and found NOT derivable within this note's consumption list — the candidate
+valuation-multiplicativity route recorded as NOT TAKEN (F-4, the round's one
+movement of substance, a strict narrowing)**; row 20's `jb_eps` cell rewritten
+to the code's strided sample, applied instance NOT-SAMPLED on 52/56 roster
+scored rows (F-5); §7.3's superseded region terminated with its three live
+items regenerated inside surface 13 (F-6); the three surface-vs-table
+disagreements synced (F-7); THE LEVEL-m WEIGHT LATTICE defined at the license
+site with 𝒲_m ⊆ ℤ_{≥0} closing the quantifier's ≥ 0 half (F-8). **No §2–§5
+identity moved except the F-4 re-scope (a strict narrowing of one clause);
+all four instruments byte-frozen (md5s re-verified); note-only.** Arc:
+PE1 (1C+9G) → r1 → PE2 (0C+7G) → r2 → PE3 (0C+8G) → r3 → PE4 (0C+8G) → r4 →
+**JB-PE5 = the next acceptance attempt**; acceptance counter still **0/2**.**
