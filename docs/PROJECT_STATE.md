@@ -3109,3 +3109,42 @@ E/S/SD/K2/W2/SDYJ/KC/LED-Λ/JA/ILNRES/JB/LIFT/JC legs + the weld blueprint
 plan-review + errata); (4) K2-MULT-RES + g₀ ≥ 3 (peripheral by centrality);
 (5) public map/paper refresh at ACCEPTANCE milestones (not composition);
 (6) then the Lean campaign per the math-first gate.
+
+---
+
+## CHECKPOINT 2026-08-06 — THE WELD CONSOLIDATED (WELDMASTER composed: one transport, carry = coboundary); all arcs 0-critical and converging; J-D0 next
+
+**Ledger of record: lean/notes/BRIDGE_ADJUDICATIONS_2026-07-30.md (through
+this fold). Since the 2026-08-05 checkpoint:**
+
+**WELD SYNTHESIS (WELD_SYNTHESIS_2026-08-05.md, f71cd68):** H1 one-transport
+SUBSUMES all four junctions; H2 the four normalization laws = ONE COCHAIN,
+the [ILN] inner factor a COBOUNDARY c_{n+1} = z̄^δ·∂E; H3 the J-D dimension
+shortcut REFUTED exactly (dim q-independent vs counts q-rational; salvage =
+J-D0 count-gauge-blindness). → **WELDMASTER_2026-08-08.md composed
+(b375f42/0baeb3b): THEOREM WELD-M (five faces, citation-table proof), WM-COB
+PROVED unconditional on [ILN] SHIFT-(n)+D_j-INT alone, PERIM-μ (the three
+fence villains = one character-triviality condition). Arc: PE1 0C/5G+3m →
+r1 (evidence-class labels on all prereg rows per the NEW STANDING RULE:
+IND/SAME/NONE mandatory, decorrelated path named) → PE2 next.**
+
+**Arc states (all 0/2, all 0-critical, per-round findings now 2–4
+one-liners):** LIFT → r6 → PE7 (r5 was the arc's first ZERO-DEFECT round,
+verified line-by-line by PE6; math clean on six independent readings).
+JB → PE6 0C/2G → r6 (the u ≥ 0 proviso NARROWED: proved on 𝒲_{q+1},
+carried as membership at unbounded degree; frontier four rows 4/5/12/22).
+JC → PE4 0C/4G → r4 (the (DMULT) two-tier split verified end-to-end; the
+literature footprint = one derived identity + one measured sharpening).
+
+**Standing rules minted this window:** examples-first (Asvin 2026-08-05) +
+complete-theorems-only effort rule (Asvin 2026-08-05, mid-arc) +
+evidence-class labels (2026-08-06). Fable pool healthy; Opus saturated
+(529 waves 2026-08-06) — fleet runs Fable, no model override.
+
+**FRONTIER: (1) the four arcs to 2-clean; (2) J-D0 (count-gauge-blindness)
+then W-10 at the (2,1,1) shape then W-11 — the LAST composition block;
+(3) Codex window 2026-08-08 ~04:22: W-arc leg FIRST, then VC40 + all note
+legs + FGMN numbering (settles (DMULT-s) and the J-C citation) + the
+WELDMASTER plan-review; (4) K2-MULT-RES + g₀ ≥ 3 (peripheral); (5) Lean
+campaign after corpus stability (the math-first gate); (6) a_λ
+multiplicativity + χ-from-S (queued synthesis targets).**

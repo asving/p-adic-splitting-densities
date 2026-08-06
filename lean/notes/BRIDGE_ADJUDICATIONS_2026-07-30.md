@@ -11259,3 +11259,7 @@ applied with machine re-verification where numeric. JC-PE4 next.
 **Dispatched: LIFT r6 + JB PE6 + JC PE4 + WELDMASTER r1 (unblocked — the
 frontier census is settled at four/narrowed; F-1's fix now has a stable
 target).**
+
+---
+
+## Wave fold 2026-08-06 (compact): LIFT r6 landed (61/11, one disclosed correct deviation) → PE7; JB PE6 0C/2G+1m (d3 tie needs P≤q — the F-4 disease at the one never-level-audited row; the unreproducible probe figure) → r6; JC PE4 0C/4G (r3 diff CLEAN; FGMN-(c) = the 4th alias; grade box not brought forward; tier hygiene; census resolution) → r4; WELDMASTER r1 complete (frontier verbatim; all 10 prereg rows evidence-class labeled) → PE2. All machine legs green, all seals intact. Counters all 0/2.
