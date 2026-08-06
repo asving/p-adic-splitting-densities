@@ -83,9 +83,10 @@ and THREE repair rounds applied.**
 A repair round is NOT a pass, so the counter stays **0/2**. No gate fires, none
 retires; no `.lean` touched; no density/menu/count statement anywhere.
 
-**[r4] S-STATUS (CURRENT; supersedes the [r3] status block above): attempt
-grade, acceptance counter 0/2, FOUR hostile passes RUN and FOUR repair rounds
-applied.**
+**[r4] S-STATUS (SUPERSEDED at r5 by the block below; kept annotated rather
+than struck because of the embedded ARC display; supersedes the [r3] status
+block above): attempt grade, acceptance counter 0/2, FOUR hostile passes RUN
+and FOUR repair rounds applied.**
 
     ARC:  composed (seal 6ad01d1 -> verdict 8f07904)
       ->  JC-PE1  (GRTJC_passPE1_report.md, 1a27be3)   2 CRITICAL + 8 gaps
@@ -110,6 +111,78 @@ applied.**
 
 A repair round is NOT a pass, so the counter stays **0/2**. No gate fires, none
 retires; no `.lean` touched; no density/menu/count statement anywhere.
+
+**[r5] S-STATUS (CURRENT; supersedes the [r4] status block above): attempt
+grade, acceptance counter 0/2, FIVE hostile passes RUN and FIVE repair rounds
+applied.**
+
+    ARC:  composed (seal 6ad01d1 -> verdict 8f07904)
+      ->  JC-PE1  (GRTJC_passPE1_report.md, 1a27be3)   2 CRITICAL + 8 gaps
+      ->  r1      STRUCTURAL repair (85d5811/54904cc; mini-seal f45b63c/66263ce)
+      ->  JC-PE2  (GRTJC_passPE2_report.md, 4a76d52)   0 CRITICAL + 9 gaps
+      ->  r2      LABELLING + FOOTPRINT + one new machine leg
+                  (5742e25; mini-seal 79611a4/db12666)
+      ->  JC-PE3  (GRTJC_passPE3_report.md, e4b6fbf)   0 CRITICAL + 8 gaps
+      ->  r3      NOTE-ONLY: re-route + disclosure + record corrections
+                  (126c33f)
+      ->  JC-PE4  (GRTJC_passPE4_report.md, d5072b6)   0 CRITICAL + 4 gaps
+      ->  r4      NOTE-ONLY: the final alias sweep + arc and tier bookkeeping
+                  (edbb966)
+      ->  JC-PE5  (GRTJC_passPE5_report.md, b38f3f4)   0 CRITICAL + 2 gaps
+                                                       + 1 minor
+                  — "the r4 diff's mathematics is EXACT … the two gaps are
+                    both in the census/stack RECORD surface, not in any
+                    proof"
+      ->  r5      THIS round: NOTE-ONLY (three record repairs: §9.5's census
+                  remark restated as a per-alias contribution table,
+                  census-not-prose; FGMN (a)(b) completed at the stack
+                  displays; "nonzero" at §2.8's RHS display — all three
+                  batteries, the instrument, and every artifact stay
+                  BYTE-FROZEN)
+      ->  JC-PE6  = the next acceptance attempt (a fresh hostile pass on THIS
+                    post-r5 text)
+
+A repair round is NOT a pass, so the counter stays **0/2**. No gate fires, none
+retires; no `.lean` touched; no density/menu/count statement anywhere.
+
+**[REPAIR ROUND r5 — 2026-08-08 campaign (wallclock 2026-08-06). NOTE-ONLY.**
+Applied against JC-PE5 (`GRTJC_passPE5_report.md`, commit `b38f3f4`: **0
+CRITICAL + 2 gaps + 1 minor**, both gaps in the census/stack RECORD surface —
+PE5 re-derived the [r4, G-3] b_× re-tiering from the note's own lemmas and
+found it EXACT, re-executed the union census independently at HEAD
+(144 = 42/28/74 bucket for bucket, all twelve content groups reproduced,
+zero live hits stating the refuted content), verified the arc-accounting
+system CONSISTENT for the first time in the arc (16/16 hashes), and re-ran
+all three batteries + the instrument at exit 0, byte-identical). No measured
+quantity moves at r5; nothing in `verification/` is touched. Dispositions,
+each edit carrying an `[r5, G-#]` or `[r5, m-1]` bracket keyed to PE5's
+findings:
+
+* **G-1 (the [r3, G-2] species' THIRD recurrence, inside the block written
+  to end it)** — the r4 census's completeness parenthetical was FALSE on its
+  own grep: `4.8` contributes FOUR hit-lines of its own (union-minus-`4.8`
+  returns 140, not 144: L383 + L401 LIVE in group 1, L1801 LIVE in group 10,
+  L1782 STRUCK — line numbers at `edbb966`), not "RECORD by construction".
+  The clause is struck and the remark restated the census way — a PER-ALIAS
+  CONTRIBUTION TABLE, every number from the grep, with unit (hit-lines) and
+  commit (`edbb966`), at §9.5 [r5, G-1]. The census's recorded totals
+  144 = 42 LIVE + 28 STRUCK + 74 RECORD are a decomposition invariant of
+  that same grep and are UNCHANGED; the species' cure (census-not-prose) is
+  now applied to the census's own protocol remark, the one place it had not
+  reached.
+* **G-2 (the unrepaired half of PE4's GAP 1)** — every one-line stack
+  display omitted the consumed FGMN clauses (a)/(b) from the cited
+  footprint, while the r4 census itself certifies those consumptions LIVE
+  (groups 2, 4, 6: JC-DOM, JC-LOC/G6, (MULT-B)). §0's live one-liner now
+  carries (a)(b) in place [r5, G-2 at §0]; §10.2's r0/[r1]/[r2] stack
+  displays are ROUND-RECORDS and carry the completion by ANNOTATION, not
+  edit (§10.2 [r5, G-2], which also displays the current stack with the
+  completed FGMN entry). Nothing false was concluded; the summary displays
+  understated the literature footprint by two consumed clauses.
+* **m-1** — §2.8's re-set RHS display gains the word "nonzero"
+  ({nonzero polynomials of degree < g_m} is the attained set for c ∈ K^*,
+  as the [r4, G-3] bracket's own parenthetical already stated); the iff is
+  unaffected (the LHS b_×·u·y^δ is nonzero).
 
 **[REPAIR ROUND r4 — 2026-08-08 campaign (wallclock 2026-08-06). NOTE-ONLY.**
 Applied against JC-PE4 (`GRTJC_passPE4_report.md`, commit `d5072b6`: **0
@@ -424,7 +497,19 @@ g_j ≥ 1), the split/anchor conventions (S0.2), REALIZE-(m) with its R1/R2/R3 l
 definition, not claim.
 
 **THE STACK, ONE LINE.** Every clause of §§2–5 rides
-`[ILN]† ACCEPTED (scored stratum) + GRB/CARRY-1 ACCEPTED-conditional (§0 ladder) + FGMN ~~(c)~~(d)(e) CITED + W-1/W-2/J-A/J-B ATTEMPT (0/2)`,
+`[ILN]† ACCEPTED (scored stratum) + GRB/CARRY-1 ACCEPTED-conditional (§0 ladder) + FGMN (a)(b)~~(c)~~(d)(e) CITED + W-1/W-2/J-A/J-B ATTEMPT (0/2)`,
+**[r5, G-2 — (a)(b) ADDED to this display (PE4 GAP 1's second half, printed
+verbatim there and left unrepaired at r4; PE5 GAP 2). The note's live proofs
+consume **(IN-3)(a)** (w multiplicative: JC-DOM's proof twice; JC-LOC's
+G6-1/G6-3) and **(IN-3)(b)** (gr a domain + in(fg) = in(f)·in(g): JC-DOM,
+JC-LOC's proof, (MULT-B) and its |gr display) as CITED literature — the r4
+census itself certifies exactly these consumptions LIVE (§9.5 [r4, G-1],
+groups 2, 4, 6). Nothing false was concluded — the (IN-3) declaration block
+above carries (a)/(b) as CITED, and W-6's [r1] grade line reads
+"(IN-3)(a)(b)(e) + (IN-5) unchanged" — but the one-line summary displays
+understated the cited-literature footprint by two consumed clauses. §10.2's
+r0/[r1]/[r2] stack displays are round-records and carry the same completion
+by ANNOTATION, not edit: §10.2 [r5, G-2].]**
 **[r4, G-1 — (c) STRUCK from this display. This r0 one-liner was the
 PE1-refuted input's FOURTH alias, live here since r0 and outside every earlier
 sweep pattern (none of `(IN-3)`, `Thm 4.2`, `(COORD)`, `(MULT)` occurs on it).
@@ -731,7 +816,13 @@ MEASURED tier]** without
 changing its y-degree (offset transport, §4.2; note s_{NR}(N) = 0 so
 δ(γ+γ′,N) = 0). So by JC-SPAN the LHS has digit polynomial
 ~~𝑅(X_N)~~**b_×**·u·y^δ, of exact y-degree δ; by JC-SCAL(a)(c) the RHS ranges exactly over
-~~𝑅(X_N)~~**b_×**·{polynomials of degree < g_m} as c ranges over K^*
+~~𝑅(X_N)~~**b_×**·{**nonzero** polynomials of degree < g_m} as c ranges over K^*
+**[r5, m-1 — "nonzero" added (PE5 m-1): for c ∈ K^* the canonical
+representative 𝑅_N(Λ_N(c)) is never 0 (JC-SCAL(a): the representative packs
+back to c under R3, so c ≠ 0 forces it nonzero), so the r0 wording's
+"exactly" silently included the unattained zero polynomial; the [r4, G-3]
+bracket below already uses the nonzero form, and the iff is unaffected — the
+LHS b_×·u·y^δ is nonzero]**
 **[r4, G-3 — b_× is the SAME constant on both sides: both applications are at
 the line pair (γ+γ′, N), and ω(λ,μ) = c_{λ+μ}/(c_λc_μ) is symmetric, so the
 two units are literally equal and cancel exactly (a unit constant scales
@@ -2292,11 +2383,57 @@ pattern is the union
 
 (the last two excluding `-B` forms, as always; the two names added only for
 completeness — the spelled-out variant of the theorem number and the bare
-numeral — contribute no hit-lines of their own: every line containing either
+numeral — ~~contribute no hit-lines of their own: every line containing either
 also carries another swept name, and all such lines are the sweep-protocol
-displays and this census's own itemization, RECORD by construction; before r4
+displays and this census's own itemization, RECORD by construction~~
+**[r5, G-1 — FALSE ON ITS OWN GREP for the bare numeral (PE5 GAP 1); restated
+as the per-alias contribution table below]**; before r4
 the spelled-out variant returned 0 hits anywhere in the note, as the [r3]
-block above records, true at ITS commit). **Census at
+block above records, true at ITS commit).
+
+**[r5, G-1 — THE PER-ALIAS CONTRIBUTION TABLE (the struck redundancy remark,
+restated census-not-prose).** The struck clause was the **[r3, G-2] species'
+THIRD recurrence** — a sweep record misreporting its own machine-checkable
+claim (FIRST: r2's fixed-point count, 22 claimed vs 37 on its own grep at its
+own commit, repaired at [r3, G-2]; SECOND: the r3 census's "at fixed point
+under its aliases" headline, true of its own pattern but not of the input's
+alias set, PE4 GAP 1; THIRD: this remark, refutable by two greps) — and it
+recurred INSIDE the block written to end the species. The species' cure,
+applied to the remark itself: NO prose redundancy claims; every such figure
+comes FROM THE GREP, with unit and commit. Per-alias contributions to the
+union census — unit: hit-lines; executed at `edbb966`, the r4 committing
+state, where the union returns 144 (this table is a decomposition OF that
+census, so the recorded totals 144 = 42 LIVE + 28 STRUCK + 74 RECORD are
+unchanged); "exclusive" = the union count minus the count of the union with
+that alias removed:
+
+    alias          total   exclusive
+    (IN-3)           39       26
+    Thm 4.2          30       12
+    Theorem 4.2       2        0    (both hits = the two pattern displays)
+    FGMN             48       32
+    4.8              11        4    (L383 + L401 — LIVE, group 1; L1801 —
+                                     LIVE, group 10; L1782 — STRUCK; line
+                                     numbers at edbb966)
+    Cor 2.7          13        5
+    (COORD)          30        9
+    (MULT)           36       16
+                            Σ 104   (the other 40 of the 144 lines carry
+                                     ≥ 2 aliases)
+
+So the spelled-out variant's half of the struck remark was true (0 exclusive
+lines; its two hits are the two RECORD pattern displays), and the bare
+numeral's half was FALSE: `4.8` contributes FOUR hit-lines of its own —
+three of them LIVE lines this census's own groups 1 and 10 itemize (so the
+buckets and totals were right; only the redundancy REMARK was wrong), one
+STRUCK — which is exactly WHY it belongs in the union: shrinking the pattern
+by `4.8` would lose two LIVE declaration lines and a LIVE fence line from
+every future sweep. (Self-reference, disclosed: this table's own lines add
+hit-lines to any later execution of the union grep; they are census record,
+RECORD under the disclosed conventions, and any future count must be
+re-executed at ITS committing state — the [r3, G-2] lesson, kept.)]**
+
+**Census at
 r4 close, grep executed AT THE COMMITTING STATE (the [r3, G-2] lesson): 144
 hit-lines = 42 LIVE + 28 STRUCK + 74 RECORD.** RECORD: the r1/r2/r3/r4
 repair-history headers 13; the §0 [r4] brackets 3; the W-6 grade-box (r0 +
@@ -2389,14 +2526,26 @@ where this block supersedes it).** ~~Arc: **composed (0/2) → JC-PE1: 2 CRITICA
 bilinearity machine leg, §9.4) → JC-PE3 next.**~~ **[r4, G-2 — PE4: r3 did not
 extend this arc record (the note's own per-round convention, set when r2
 struck r1's arc line here), leaving two contradictory arc displays at HEAD —
-the header's current one and this box's stale "JC-PE3 next". Extended: Arc:
+the header's current one and this box's stale "JC-PE3 next". Extended: ~~Arc:
 composed (0/2) → JC-PE1 (2 CRITICAL + 8 gaps) → r1 (STRUCTURAL) → JC-PE2
 (0 CRITICAL + 9 gaps; "no false statement") → r2 (labelling/footprint/
 disclosure + the bilinearity machine leg, §9.4) → JC-PE3 (0 CRITICAL + 8 gaps;
 all labelling/disclosure/record defects) → r3 (NOTE-ONLY: re-route +
 disclosure + record corrections) → JC-PE4 (0 CRITICAL + 4 gaps; all in what
 r3 left untouched) → r4 (NOTE-ONLY: the final alias sweep + arc and tier
-bookkeeping, this round) → JC-PE5 next.]** Acceptance counter
+bookkeeping, this round) → JC-PE5 next.~~]** **[r5 — arc extended per the
+same convention (the [r4, G-2] display above is struck, not deleted): Arc:
+composed (0/2) → JC-PE1 (2 CRITICAL + 8 gaps) → r1 (STRUCTURAL) → JC-PE2
+(0 CRITICAL + 9 gaps; "no false statement") → r2 (labelling/footprint/
+disclosure + the bilinearity machine leg, §9.4) → JC-PE3 (0 CRITICAL + 8 gaps;
+all labelling/disclosure/record defects) → r3 (NOTE-ONLY: re-route +
+disclosure + record corrections) → JC-PE4 (0 CRITICAL + 4 gaps; all in what
+r3 left untouched) → r4 (NOTE-ONLY: the final alias sweep + arc and tier
+bookkeeping) → JC-PE5 (0 CRITICAL + 2 gaps + 1 minor; "the r4 diff's
+mathematics is EXACT"; both gaps in the census/stack record surface) → r5
+(NOTE-ONLY: three record repairs — the census remark restated per-alias
+census-not-prose, FGMN (a)(b) completed at the stack displays, one word at
+§2.8 — this round) → JC-PE6 next.]** Acceptance counter
 **0/2** (a repair round is not a pass). **[r2] Grade deltas at r2: NONE — the
 one status that MOVES is (DMULT)'s label (its exact tier from "CITED" to
 MEASURED, §2.10 [r2, G-1]), which downgrades no clause grade but re-fences
@@ -2405,7 +2554,9 @@ JC-COB's sharp form onto the measured tier.** **[r3] Grade deltas: NONE
 quantity (recorded at r3 only in the header; a reader of §10.1 alone could
 not see it)].** **[r4] Grade deltas: NONE — r4 moves no grade and no measured
 quantity (note-only; the three batteries, the instrument, and every artifact
-stay BYTE-FROZEN).**
+stay BYTE-FROZEN).** **[r5] Grade deltas: NONE — r5 moves no grade and no
+measured quantity (note-only; the three batteries, the instrument, and every
+artifact stay BYTE-FROZEN).**
 
 | clause | r0 grade | r1 grade | what changed |
 |---|---|---|---|
@@ -2469,6 +2620,25 @@ non-integral residue JC-BOX-8(i) (unchanged); (4) (DMULT-s)'s measured-only
 status wherever JC-COB's sharp value is displayed; (5) the top-flat corner
 (JC-BOX-4, conditionally closed on (DMULT-w)); (6) JC-F1/JC-F2 REVIEW-OWED
 (JC-BOX-5, unchanged).
+
+**[r5, G-2 — THE FGMN ENTRY COMPLETED (annotation, not edit: the r0/[r1]/[r2]
+stack displays above are ROUND-RECORDS — each states the stack AS OF its
+round and is quoted as such by later brackets, §0 [r4, G-1] included — so
+their wording stays; PE5 GAP 2, the half of PE4's GAP 1 that r4 left
+unrepaired).** Every stack display above names the FGMN footprint only as
+Thm 4.2 (r0) / its (DMULT)-via-JC-LOC re-route ([r1], tier-split at [r2]) +
+Thm 4.8/Cor 4.9 + Cor 2.7, but the note's live proofs ALSO consume, as CITED
+literature, **(IN-3)(a)** (w multiplicative: JC-DOM's proof twice; JC-LOC's
+G6-1/G6-3) and **(IN-3)(b)** (gr a domain + in(fg) = in(f)·in(g): JC-DOM,
+JC-LOC's proof, (MULT-B) and its |gr display) — the r4 census certifies
+exactly these consumptions LIVE (§9.5 [r4, G-1], groups 2, 4, 6). The
+CURRENT stack is therefore the [r2] tier-split form with its FGMN entry read
+as: **FGMN (a)(b) + (DMULT-w) on B [= Thm 4.2's content via JC-LOC;
+(DMULT-s) MEASURED-only] + Thm 4.8/Cor 4.9 + Cor 2.7 CITED (numbering
+re-verification still owed)**. §0's live one-line display carries the same
+completion in place [r5, G-2 at §0]. Nothing false was concluded and no
+ranking moves: (a)/(b) were never refuted (PE1 §C1, PE4 §A5 both re-derived
+them), and the [r2] weakest-links order above stands.]**
 
 ### 10.3 Consumers — named, with what each may and may NOT take
 
