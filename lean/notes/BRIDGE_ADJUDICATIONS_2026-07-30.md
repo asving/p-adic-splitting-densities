@@ -11294,3 +11294,7 @@ drift, only updatable at folds. WM r2 applies it throughout. ENDGAME
 SEQUENCE: (1) JB r7 + JC r5 + LIFT PE8 now; (2) then WM r2 (pinned quotes
 against the settled siblings) + JB PE8 + JC PE6; acceptance passes then
 run against pin-stable texts.**
+
+---
+
+## Wave fold 2026-08-06d (compact): JB r7 landed (4c4ee56 — the m-1 truth restored at 3 sites: EQUIVALENT at m=1 displayed both directions, strictness unproved at m≥2; conjunct re-read from source) → PE8. JC r5 landed (3870bc8 — per-alias table verified against git show; stacks completed (a)(b); round-records annotated not edited) → PE6. LIFT PE8 died mid-response (server error, no partial) → fresh re-run. WM r2 now unblocked: pins against JB@4c4ee56 + JC@3870bc8 per the as-of rule. Counters 0/2; all seals intact.
