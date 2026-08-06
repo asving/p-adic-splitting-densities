@@ -11161,3 +11161,38 @@ fresh on 804 polygons, runner md5 6b406f81 stable across the seal.
 Conditionality honest (rides the four junctions at 0/2 + [ILN] accepted;
 nothing upgraded). **WELDMASTER PE1 dispatched. The weld now: 4 junctions
 + 1 capstone, all composed; J-D0 next on the composition queue.**
+
+---
+
+## LIFT r5 minimal LANDED (32/9 lines) → PE6; JB PE5 0C/5G incl. THE u ≥ 0 GIFT (the r4 lattice implies the proviso, 4 lines, machine-confirmed); JC PE3 0C/8G (tier split survives; diversity overstatement, 3rd recurrence) — 2026-08-06
+
+**LIFT r5 (46e6e88) — COMPLETE under the minimality contract**: five fixes
+at 1–3 lines each + the [r5] strike block; F5-4 verified at source
+(ITERLAWN S7 line 1148); instruments byte-frozen. **Arc: → PE5 0C+5G →
+r5 → PE6 = next attempt (the cleanest shot yet).**
+
+**JB PE5 (39e16ee) — 0C/5G; counter 0/2.** F-1 ONE live leftover of the
+r4 leaves re-scope (surface 4's (iii)/(iv) gloss). F-2 §4(ii)'s closing
+gloss false at exit-bound nodes (first §4(i)/(ii) re-derivation:
+operative content SOUND). **F-3 THE GIFT: the r4 𝒲_m definition IMPLIES
+u ≥ 0 on all of 𝒲_m in 4 lines (machine-confirmed; J-A's V = 1
+counterexample excluded by parity) — two retained "not excluded"
+sentences are wrong in the CONSERVATIVE direction; the [JA-r1] proviso
+is DISCHARGEABLE. r5 charged to display the derivation and discharge the
+proviso at rows 4/12 (careful scope: consumers whose V ranges over 𝒲_m),
+shrinking the NO-LEG frontier.** F-4 row 20 = candidate fifth frontier
+member (adjudicate). F-5 one matrix cell error. Machine legs all green.
+
+**JC PE3 (e4b6fbf) — 0C/8G; counter 0/2. The r2 tier split SURVIVES full
+re-derivation (consumer split VERIFIED — no hidden (DMULT-s)
+consumption; G6 sound; residual = W-1 confirmed).** GAP 1: JC-LOAD's
+body + fence still consume the PE1-refuted (IN-3)(c)-on-gr BY NAME (the
+sweep's grep pattern was blind to non-(COORD)/(MULT) aliases) — live,
+recoverable via §4.2/(MULT-B)|gr. GAP 2: the sweep record's own numbers
+wrong (37 hit-lines, not 22) though "0 live" verified true for ITS
+pattern. GAP 3: R2-BIL diversity overstated (mix2 == ones2 on 13/29 rows
+incl. BOTH g_m = 2 rows) — THE THIRD RECURRENCE of the
+sampling-diversity overstatement species; r3 charged to fix the claim
+AND add the honest composition census to the note (not a new battery).
+GAPs 4–8 record-layer. Machine legs all green, all seals verified.
+**LIFT PE6 + JB r5 + JC r3 dispatched. WELDMASTER PE1 in flight.**
