@@ -6,9 +6,14 @@ WELD_SYNTHESIS_2026-08-05.md` commit f71cd68 §4(i)). **Genre: CONSOLIDATION
 THEOREM note in the LEDGER-Λ genre** (`LEDGERLAMBDA_2026-08-08.md` is the
 model): one theorem whose faces are already-composed notes, consumed at
 their own grades; ONE genuinely new display (S2's coboundary theorem, with
-its complete proof); ONE fence surface (S3). Acceptance counter **0/2** —
-no hostile pass has run on THIS note. Author: Fable, campaign date
-2026-08-08 (wallclock 2026-08-06).
+its complete proof); ONE fence surface (S3). ~~Acceptance counter **0/2** —
+no hostile pass has run on THIS note.~~ **[r1 STATUS — ARC: composed (seal
+b375f42 → verdict 0baeb3b) → PE1 HOSTILE (report df00707: 0 CRITICAL /
+5 JUSTIFICATION GAPS F-1..F-5 + 3 minors F-6..F-8, NOT CLEAN) → r1 (THIS
+ROUND — note-only repair against all eight findings; runner + artifacts
+BYTE-FROZEN, runner md5 6b406f81c250d25f615f715fa9eff474 verified
+unchanged). Counter 0/2; PE2 is the next acceptance attempt.]** Author:
+Fable, campaign date 2026-08-08 (wallclock 2026-08-06).
 
 **SCOPE AND FENCES (stated before anything else).**
 
@@ -36,7 +41,10 @@ no hostile pass has run on THIS note. Author: Fable, campaign date
 the §3.4 (ξ,w) closed form, (C-coll), (HR-REC), W2-BOX-1, W2-OPEN-1 (OPEN).
 **[JA]†** = `GRTJA_PROOF_2026-08-08.md` (post-r1, 0/2): JA-PIN, JA-VAL,
 JA-EPS, JA-GRID, JA-RES, JA-VDIND, (R-coll), JA-BOX-1..5.
-**[JB]†** = `GRTJB_PROOF_2026-08-08.md` (post-r4, 0/2): JB-DEV, JB-AFF,
+**[JB]†** = `GRTJB_PROOF_2026-08-08.md` (post-r4, 0/2) **[r1: JB r5 landed
+mid-arc (f9f104e, note-only — the u ≥ 0 partial discharge); the §0M
+frontier census carried in this note is the settled post-r5 one, rows
+4/5/12/22]**: JB-DEV, JB-AFF,
 JB-VTX, JB-TREE, LEMMA JB-EPS, JB-CREAD, the §0M conditionality matrix.
 **[JC]†** = `GRTJC_PROOF_2026-08-08.md` (post-r2, 0/2): W-6..W-9, JC-LOC,
 JC-LOAD, JC-PSIKER, JC-F1/JC-F2, the (DMULT-w)/(DMULT-s) tier split, LAW
@@ -76,7 +84,11 @@ e_{j−1} (eq-12 at read (e_{j−1}, h_{j−1})). [ILN]† S0.3 pair data:
 level j (read (e_{j−1}, h_{j−1})), for β ∈ ℤ:
 
     t_j(β) := (ℓ_{j−1}·β − s(β))/e_{j−1} ∈ ℤ,    s(β) := ℓ_{j−1}β mod e_{j−1},
-    ε_j(β)  = z_j^{−t_j(β)}                       [JA-EPS, PROVED in [JA]†],
+    ε_j(β)  = z_j^{−t_j(β)}      [r1, F-4: [ILN]† EXP-KIT(a) (EPS-CLOSED),
+                                  β ∈ ℤ UNRESTRICTED — the carrier at every
+                                  argument this note consumes; JA-EPS
+                                  ([JA]† 0/2) cited for the ON-LATTICE
+                                  print identification only],
     E(γ)   := ∏_{j=1}^{n} ε_j(β_j(γ))             (embedded in K; γ ∈ ℤ),
     A_j    := ℓ_{j−1}·g_{j−1}·γ_j  (j ≥ 1;  A_j = 0 ⟺ e_{j−1} = 1).
 
@@ -84,6 +96,17 @@ t_j is exactly the print twist exponent in eq12-canonical coordinates
 (JA-EPS's sign convention — the Prop-`construct` CHILD orientation, [JA]†
 §3.2's display; NOT Def-`t(i)`'s opposite sign). Nothing in this note
 re-proves JA-EPS; the field identifications below consume it.
+
+**[r1, F-4 — the citation carrier, verified at source.** [ILN]† EXP-KIT(a)
+(EPS-CLOSED) states, on the eq-(12-int) data of a read (e,h) with β ∈ ℤ
+unrestricted: "(s(β) − ℓβ)/e ∈ ℤ and ε(β) = z^{(s(β)−ℓβ)/e}" — exactly
+ε_j(β) = z_j^{−t_j(β)}, ACCEPTED and unconditional. That is the identity's
+carrier at the off-window/negative arguments this note evaluates ε_j at
+(WM-RHO's "every γ ∈ ℤ", the WM-COB-OFFW legs, WM-CLASS's Ẽ; machine leg
+WM-EPS 615/0 over ranges wider than any lattice). JA-EPS's own quantifier
+at [JA]† HEAD is "every β ∈ ℤ in the level-m weight lattice" — it stays
+cited for what it proves: the PRINT identification (t_j = the print twist
+exponent) on 𝒲_m.]**
 
 ## S1. THEOREM WELD-M (the master transport; four faces, each a citation)
 
@@ -124,8 +147,8 @@ the middle column are the domain/codomain pins the synthesis adjudicated
 | clause | citation (proof of the clause) | identification displayed | conditionality carried verbatim |
 |---|---|---|---|
 | (M0) | **[JB]† JB-DEV(i)** (same division, digit-for-digit) + **[JA]† JA-PIN** clauses 1–7 (domain) + **[W2]† W2-C1** (representative legitimacy) | JA-PIN: T(t) satisfies every class-pin clause except the lift clause (= W-2); the representative is φ_{q+1} := Φ_q^har | W-2 clause 1's perimeter; JB §0M rows 1–2; byte clause on `P≤q` only |
-| (M1) | **[JA]† JA-VAL** (w_m = v_{m+1}) + **[JB]† JB-AFF + JB-VTX** (H(f) = Σ_q(U(f)) vertex-for-vertex; the sheared frame IS the print's own next-level bookkeeping) + **[JA]† JA-GRID** (grid face: eq-(12-int) = T-side initial point; carry = lattice crossing) | the shear Σ_q is the induced affine map on gradings; the read side is horizontal at height w_{q+1}(f) in the sheared frame | shared-key perimeter `P<q`, 0 ≤ q ≤ qcap; JA-GRID(a)'s u ≥ 0 proviso (undischarged, JB §0M col (b)); JB-VTX(d4) NO-LEG rides |
-| (M2) | **[JA]† JA-EPS** (ε_m = z^{−t_m}: the cochain identification) + **JA-RES** (per-slot law c_i = z_{m−1}^{−i·A_{m−1}}·C_i, unconditional at m = 2) + **[W2]† W2-C2/(HR-REC)** (exact recursion; scalar form on (C-coll)) | the ε-kit IS the print's t(i)-twist in eq12-canonical coordinates; all transport characters are values/differences of ONE cochain (S2, S3) | JA-RES per-digit proviso at m ≥ 3 / (R-coll); (C-coll) at m ≥ 2; W2-BOX-1 mod-wrap; JA-BOX-1: PER-SLOT, never scalar |
+| (M1) | **[JA]† JA-VAL** (w_m = v_{m+1}) + **[JB]† JB-AFF + JB-VTX** (H(f) = Σ_q(U(f)) vertex-for-vertex; the sheared frame IS the print's own next-level bookkeeping) + **[JA]† JA-GRID** (grid face: eq-(12-int) = T-side initial point; carry = lattice crossing) | the shear Σ_q is the induced affine map on gradings; the read side is horizontal at height w_{q+1}(f) in the sheared frame | shared-key perimeter `P<q`, 0 ≤ q ≤ qcap; JA-GRID(a)'s u ≥ 0 proviso (~~undischarged~~ **[r1, F-1 — NARROWED at JB r5: u ≥ 0 PROVED at V ∈ 𝒲_{q+1}; open residue = the membership hypothesis at the unbounded-degree quantifier]**, JB §0M col (b)); JB-VTX(d4) NO-LEG rides |
+| (M2) | **[JA]† JA-EPS** (ε_m = z^{−t_m}: the cochain identification) + **JA-RES** (per-slot law c_i = z_{m−1}^{−i·A_{m−1}}·C_i, unconditional at m = 2) + **[W2]† W2-C2/(HR-REC)** (exact recursion; scalar form on (C-coll)) | the ε-kit IS the print's t(i)-twist in eq12-canonical coordinates; all transport characters are ~~values/differences of~~ **generated by [r1, F-3 — aligned with the clause text and S2.3's own fence: the χ-chain at m ≥ 2 and the mod-wrap are NOT reduced to cochain values]** ONE 1-cochain (S2, S3) | JA-RES per-digit proviso at m ≥ 3 / (R-coll); (C-coll) at m ≥ 2; W2-BOX-1 mod-wrap; JA-BOX-1: PER-SLOT, never scalar |
 | (M3) | **[JC]† W-6/W-7/W-8/W-9** (target exists; Ψ iso with inner normalization ∏_{j≤m} z_j^{D_j} on the scored stratum; harness-val = TC-read; K^c[ℤ/E]) | **JC-LOC (the CODOMAIN pin): B = gr(w)[in(π)^{−1}] ≅ gr_{K[x]}(w) — "B *is* the object FGMN's theorems speak about"**; 𝒜(T) = the whole transported ring (JC-F2's corrected display) | [ILN]† scored stratum; (DMULT-w) CITED / (DMULT-s) MEASURED tier split; GRB §0 ladder; JC-BOX-2/-4/-8 |
 | (M4) | **[W2]† W2-C2 + §3.4** (the (ξ, w) closed form: ξ_{m+1} = χ_m^{γ_{m+1}}·z_m^{−e_m A_m}, w_{m+1} = χ_m^{−g_mγ_{m+1}}, the χ-chain; print tie z_m^{−A_m} = c₁) + **W2-C3** (ψ-transport: strict representative at every level of the transported chain, no weight/support splits) | the covariance seed is the cochain at the key weight: c₁ = ε_m(W_m) (S3's seed identity); the χ-multiplier = the [ILN]† shift-chain descent operator (byte-identical displays, [W2]† §3.4 rk. 1) | scalar closed form on (C-coll) only (exact law = (HR-REC)); §4.3 ℓ-orbit convention fence; **W2-OPEN-1 (value layer) OPEN — inherited displayed** |
 
@@ -135,7 +158,10 @@ the middle column are the domain/codomain pins the synthesis adjudicated
 [SYN] §1.3 verbatim in substance).** WELD-M is an ORGANIZING UMBRELLA
 engineered so that the four composed junction theorems are its faces; it
 proves no new instance and discharges no open leg (W2-OPEN-1, the (VD-m)
-strata, (DMULT-s), JB's rows 5/12/22 evidence frontier all ride). Its net
+strata, (DMULT-s), JB's ~~rows 5/12/22~~ **rows 4/5/12/22 [r1, F-1 — the
+post-r4/r5 census: FOUR NO-LEG open-proviso rows, with rows 4/12 at the
+NARROWED membership residue; the S4 bullet carries [JB]†'s wording
+verbatim]** evidence frontier all ride). Its net
 new content is exactly two displays: S2 (the coboundary theorem — the one
 theorem-shaped new item) and S3 (the one-perimeter fence). What each
 junction note carries BEYOND its face (its closed forms, boundary censuses,
@@ -153,7 +179,11 @@ level j = 1..n:
 
     D_j  =  t_j(β″_j) − t_j(β_j) − t_j(β′_j)   =: (∂t_j)(γ, γ′).
 
-**(ii) [field form — adds JA-EPS, PROVED in [JA]† at 0/2].** In K_j:
+**(ii) [field form — adds JA-EPS, PROVED in [JA]† at 0/2] [r1, F-4: as a
+field identity of the ε-kit, (ii) rides [ILN]† EXP-KIT(a) (β unrestricted,
+ACCEPTED) — JA-EPS enters only for the PRINT reading of the cochain, on the
+weight lattice; the sealed 0/2 pricing of (ii) was conservative, not
+upgraded here].** In K_j:
 
     z_j^{D_j} = ε_j(β_j)·ε_j(β′_j)·ε_j(β″_j)^{−1}.
 
@@ -178,7 +208,8 @@ SHIFT-(n): β″_j = β_j + β′_j + S_j, unconditional. Compute:
       = −D_j                                            [S0.3's definition].
 
 Every step is integer arithmetic; t_j(β) ∈ ℤ always (s(β) ≡ ℓβ mod e).
-(ii): raise z_j to (i) and apply JA-EPS (ε_j = z_j^{−t_j}). (iii): multiply
+(ii): raise z_j to (i) and apply ε_j = z_j^{−t_j} ([ILN]† EXP-KIT(a),
+β unrestricted [r1, F-4]; = JA-EPS's identity on the lattice). (iii): multiply
 (ii) over j = 1..n inside K (each ε_j embedded) — the product telescopes to
 ∂E — and substitute into the accepted value law c_{n+1} = z̄^δ·∏_j
 z_j^{D_j} on its own stratum. ∎
@@ -219,7 +250,11 @@ factor z_j^{−ℓ_{j−1}E_{j−1}}. ∎ [Machine: WM-RHO.]
 
 Let σ : ℤ/E → W be the minimal window section (the engine's
 `window_reps`), Ẽ := E∘σ (a genuine ℤ/E-cochain), and κ(ν,ν′) :=
-(σν + σν′ − σ(ν+ν′))/E ∈ ℤ_{≥0} (the section carry; census S5). Then
+(σν + σν′ − σ(ν+ν′))/E ∈ ℤ_{≥0} (the section carry; census S5) **[r1,
+F-8 — the ℤ_{≥0} warrant: integrality is immediate; non-negativity because
+σν + σν′ ∈ W ([ILN]† Lemma WINDOW-(n), PROVED generic unconditional) and σ
+picks the MINIMAL in-window representative of each class (`window_reps`'s
+defining scan), so σ(ν+ν′) ≤ σν + σν′]**. Then
 ∂Ẽ = ∂E·ρ_T^{κ} on classes, hence on the scored stratum (where the value
 law holds and c descends to ℤ/E, [JC]† W-9(i)):
 
@@ -323,7 +358,10 @@ own surfaces stay authoritative until the next fold):**
     (F-c) the LITERATURE/CONVENTION fence — (DMULT-w) CITED / (DMULT-s)
           MEASURED ([JC]† tier split), the unpinned-ℓ orbit convention
           (JA-BOX-3 / [W2]† §4.3), the FGMN numbering re-verification owed,
-          and the [RMG]/LED-Λ attempt grades where [JB]† consumes them.
+          and ~~the [RMG]/LED-Λ attempt grades where [JB]† consumes them~~
+          **[RMG] at ACCEPTED grade and LED-Λ at ATTEMPT grade, as [JB]†
+          consumes them ([JB]† §4 grade cap: "consuming [RMG] as ACCEPTED
+          and LED-Λ at ATTEMPT grade") [r1, F-7]**.
 
 **Consequence for the four notes' fence surfaces.** Each note's collapse
 fence becomes a DERIVABLE DISPLAY of (F-b): (C-coll) = slot-grid (PERIM) +
@@ -339,11 +377,14 @@ stated once is the same medicine at campaign level.)
 
 **One line.**
 `[ILN]† ACCEPTED (SHIFT-(n)/D_j-INT unconditional; value law on the scored
-stratum; residuals (RM-m ≥ 2), (W-MULT-DCX-m), standard-lift) + W-2/J-A/
+stratum; residuals (RM-m ≥ 2), (W-MULT-DCX-m), (ITER-LAW-LIFT) [r1, F-5],
+standard-lift) + W-2/J-A/
 J-B/J-C at ATTEMPT 0/2 each (their boxes verbatim: (C-coll)+W2-BOX-1+
-W2-OPEN-1; JA-BOX-1..5+(R-coll); JB §0M incl. rows 5/12/22 NO-LEG; JC's
+W2-OPEN-1; JA-BOX-1..5+(R-coll); JB §0M incl. rows 4/5/12/22 NO-LEG, 4/12
+at the narrowed membership residue [r1, F-1]; JC's
 (DMULT-w/s) tiers + GRB ladder + JC-BOX-2/4/8 + JC-F1/F2 review-owed) +
-GRB/CARRY-1/D-REAL accepted-conditional + FGMN cites (numbering
+GRB/CARRY-1/D-REAL accepted-conditional (§0 ladder + [T] pins) [r1, F-5] +
+FGMN cites (numbering
 re-verification owed) + LED-Λ attempt ⟹ this note, own arc 0/2.`
 
 Itemized honesty:
@@ -358,13 +399,35 @@ Itemized honesty:
   instrument with no seal and no teeth. This note's own evidence leg is S5.
 * **NOT claimed, NOT discharged, NOT retired:** W2-OPEN-1 (the transported
   value layer) stays OPEN; the (VD-m) strata stay conditional exactly as
-  [JB]† §0M has them; (DMULT-s) stays MEASURED-only; JB rows 5/12/22 stay
-  NO-LEG; the J3b BLOCKED-ON-CARRIER-TIE gate stands; hExhaust and every
+  [JB]† §0M has them; (DMULT-s) stays MEASURED-only; ~~JB rows 5/12/22 stay
+  NO-LEG~~ **JB's NO-LEG open-proviso frontier stays FOUR ROWS — 4/5/12/22
+  [r1, F-1: the sealed text reproduced [JB]† §0M's STRUCK pre-r4 census at
+  three sites; the r4/F-2 recount added row 4 (JB-DEV(iii)(GRID)'s
+  grid/attained-abscissa half) and JB r5's census amendment NARROWED rows
+  4/12's residue — [JB]† §0M column (b) verbatim: "u ≥ 0 PROVED at
+  V ∈ 𝒲_{q+1}, i.e. DISCHARGED for deg f < deg Φ_{q+1} (§5); open residue
+  = MEMBERSHIP at the unbounded-degree quantifier" — per [JB]† §5's r5
+  split: "membership V ∈ 𝒲_{q+1} holds by definition exactly at
+  deg f < deg Φ_{q+1} — THERE THE PROVISO NOW HOLDS; off that sub-window
+  membership is not established by anything this note consumes, and the
+  proviso is CARRIED as that membership hypothesis". Rows 5 (RES) and 22
+  (v = 0) ride unchanged; nothing here consumed the missing row's content
+  unfenced (the u ≥ 0 rider was carried at (M1)), but the carried census
+  cell was stale]**; the J3b BLOCKED-ON-CARRIER-TIE gate stands; hExhaust and every
   Phase-B Lean obligation untouched; the P0 application gate stands. NO
   consumer retirements: nothing that today cites a junction note may
   re-point to this note at better grade (there is none to give).
 * **No grade upgrade by composition.** A theorem whose proof is a citation
   table is exactly as conditional as its worst-cited row.
+* **[r1, F-5 — two stack items restored to [JC]†'s granularity.** The (M3)
+  face consumes W-6..W-9 "with their full conditionality ledgers carried
+  verbatim", so the enumerated stack must carry what [JC]† §10.2 carries on
+  the SAME [ILN] consumption: (1) the **(ITER-LAW-LIFT)** residual — the
+  open lift-transport leg, open exactly at g_0 = 1 ∧ δ_1 = 1, currently the
+  LIFTCORNER arc's subject — now rides in [ILN]†'s residual list above;
+  (2) GRB/CARRY-1/D-REAL's conditionality reads "§0 ladder **+ [T] pins**"
+  ([JC]† §3.3's transcription pins). Both mirrored verbatim from [JC]†
+  §10.2's stack line.]
 
 ## S5. MACHINE BRACKET — weldmaster_checks.py (two-commit seal)
 
@@ -387,29 +450,80 @@ engine leg of each comparison; the M1 shear leg uses a FRESH monotone-chain
 lower hull with exact Fraction slopes (its min tie recomputes the engine's
 own weight recursion — disclosed as a sanity leg, not IND).
 
+**[r1, F-2 — WM-SHEAR RECLASSIFIED SAME-COMPUTATION**, per the standing
+evidence-class rule (ledgered 2026-08-06: every machine family carries an
+IND / SAME / NONE label at its prereg row; "re-key"/"independent" claims
+must name the decorrelated computation path) and [JB]†'s taxonomy ("SAME
+… the violation is UNREACHABLE and the leg carries NO information … never
+advertised as a second engine"). Both point sets are the same engine
+numbers: `Upts = (i, wq + i·wPhi[q])` and `Hpts = (i, e[q]·wq +
+i·gam[q+1])` with the same `wq = T.wlev(q, Ai)`, and the engine itself
+defines `gam[q+1] = e_q·wPhi[q] + h_q` — so shearU ≡ Hpts is an arithmetic
+identity of the harness engine, not a harness-vs-print comparison, and
+`hullSU == hullH` cannot fail for any true or false (M1). The residual
+content: hull-commutes-with-shear is [JB]†'s generic two-line LEMMA JB-AFF
+(tower-free), and the min tie is `wlev`'s own defining recursion — also
+same-computation. Consequences, stated plainly: (a) the 804/0 STAYS AS A
+RECORD (it exercises the fresh hull/slope code) but is NO LONGER BILLED as
+(M1) evidence; (b) the sealed row's "M1 re-key" billing and the runner
+docstring's "the IND content is the hull/vertex/slope covariance under the
+fresh shear" are WITHDRAWN as billing (runner BYTE-FROZEN, md5 unchanged —
+the label supersedes the docstring); (c) what (M1) machine evidence
+REMAINS is the junction notes' own legs: [JB]† §0M rows 8–11's genuinely
+IND families (print ordinates `G.vgen`/`G.vkey` vs harness
+`T.wlev`/`T.gam`, 893; fresh lower hulls of BOTH frames + vertex
+bijection; `hull_sides` per-side slope/length; the three min ties) and
+[JA]† JA-VAL's own leg — this battery adds none.]**
+
 **Families and SEALED PREDICTIONS (any observed count differing from its
 prediction is RED):**
 
     WM-PIN       md5 pins on iterlawn_pe_reimpl.py + grt_jc_probe.py.
                                                           PREDICTED 0.
+                 [r1, F-2 class: NONE — an instrument-integrity pin; keys
+                 no mathematical display]
     WM-EPS       committed eps == z^{−t}, t FRESH (JA-EPS re-keyed).
                                                           PREDICTED 0.
+                 [r1, F-2 class: IND — committed `Tower.eps` (the ℓ′s−ℓu
+                 exponent path) vs `t_fresh` built from raw read integers]
     WM-COB-I     WM-COB(i): D_j == ∂t_j, every level, every sampled pair
                  (dint_ok gate reported).                 PREDICTED 0.
+                 [r1, F-2 class: IND — committed `Tower.constants` (the
+                 [ILN] S0.3 D_j recursion) vs fresh ∂t_j from `t_fresh`]
     WM-COB-OFFW  the same on off-window pairs (γ−E legs) — the "γ,γ′ ∈ ℤ
                  arbitrary" scope of [ILN]† S2.           PREDICTED 0.
+                 [r1, F-2 class: IND — the same decorrelated pair of paths
+                 at off-window/negative arguments through `split`]
     WM-COB-F     WM-COB(ii) in K_j.                       PREDICTED 0.
+                 [r1, F-2 class: IND — cross-path engine-vs-engine:
+                 z_j^{D_j} from `Tower.constants` vs `Tower.eps` products;
+                 the fresh cochain leg enters at (i)/WM-EPS]
     WM-COB-C     WM-COB(iii): inner == ∂E in the top field AND the full
                  z̄^δ display.                             PREDICTED 0.
+                 [r1, F-2 class: IND — the engine's D-word
+                 (`Tower.constants`, embedded top) vs ∂E of the FRESH
+                 cochain (`Ecoch`/`t_fresh`)]
     WM-RHO       LEMMA WM-RHO: E(γ+E)/E(γ) == ρ_T (constant, closed
                  form); κ census reported for WM-CLASS.   PREDICTED 0.
+                 [r1, F-2 class: IND — fresh-cochain ratio at sampled γ vs
+                 the closed-form word ∏ z^{−ℓE}; γ-independence is itself
+                 the tested content; the engine enters via `split` only]
     WM-FENCE-XI  seed identities: t(kW) = kA (integers), ε(W) = z^{−A}
                  (c₁ tie), ε(eW) = z^{−eA} (slot char).   PREDICTED 0.
+                 [r1, F-2 class: IND — committed `Tower.eps` / fresh
+                 `t_fresh` vs the closed-form exponents kA/A/eA from raw
+                 reads; tooth WM-T-XI shows the violation is reachable]
     WM-FENCE-EQ  brute character triviality == ord-divisibility criteria
                  (absolute + slot forms); absolute ⟹ slot asserted;
                  strict-gap census reported.              PREDICTED 0.
+                 [r1, F-2 class: IND — brute multiplicative-order loop in
+                 K_μ vs the arithmetic divisibility criterion]
     WM-SHEAR     M1 re-key: fresh-hull(Σ_q(U)) == fresh-hull(H)
                  vertex-for-vertex + slope law + min tie. PREDICTED 0.
+                 [r1, F-2 class: SAME — RECLASSIFIED; the sealed "M1
+                 re-key" billing is WITHDRAWN (shearU ≡ Hpts by the
+                 engine's own gam-definition; see the Decorrelation
+                 block above). Record leg only, not (M1) evidence.]
 
 **Teeth (each must fire ≥ 1 GLOBALLY or the battery is RED):**
 
@@ -434,8 +548,14 @@ WM-COB-F 1,885 · WM-COB-C 897 (the full z̄^δ·∂E display, top-field
 composite) · WM-RHO 87 (the period constant exact on every sampled γ of
 every tower) · WM-FENCE-XI 349 · WM-FENCE-EQ 171 · WM-SHEAR 804 hulls
 (342 with ≥ 2 vertices — the shear law exercised on genuinely multi-vertex
-polygons). Teeth: WM-T-SIGN 374 · WM-T-DELTA 861 · WM-T-SHEAR 514 ·
-WM-T-XI 47 — all ≥ 1, battery has teeth on every new display. Census
+polygons) **[r1, F-2: the WM-SHEAR figures stand as a RECORD of the fresh
+hull code, not as (M1) evidence — SAME-computation family, see the
+Decorrelation block]**. Teeth: WM-T-SIGN 374 · WM-T-DELTA 861 ·
+WM-T-SHEAR 514 · WM-T-XI 47 — all ≥ 1~~, battery has teeth on every new
+display~~ **[r1, F-6: the four teeth key WM-COB-I (sign), the composite
+display (δ), the shear, and the c₁ tie — WM-RHO and WM-FENCE-EQ, both new
+displays, carry NO tooth; the sealed S5 teeth list was honest, this
+commit-2 gloss overstated coverage]**. Census
 (reported, not violation-keyed): fence rows **22 absolute-(PERIM) / 9
 SLOT-ONLY / 26 neither** — the 9 slot-only rows are the machine-realized
 honest gap between (C-coll)'s slot-grid form and (R-coll)'s absolute form
@@ -471,3 +591,9 @@ brackets for the four fence surfaces happen at the next fold, citing S3.
 
 — WELD MASTER-TRANSPORT COMPOSER, campaign date 2026-08-08 (wallclock
 2026-08-06).
+
+— r1 REPAIR ROUND against PE1 (report df00707: 0C/5G+3m), wallclock
+2026-08-06. Note-only; runner + artifacts BYTE-FROZEN (runner md5
+6b406f81c250d25f615f715fa9eff474 re-verified this round; `git diff
+verification/` empty). All eight findings addressed in place ([r1, F-n]
+tags). Counter 0/2; PE2 next.
