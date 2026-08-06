@@ -276,6 +276,33 @@ update, NOTHING else; both machine legs BYTE-FROZEN and untouched. Acceptance
 counter unchanged at **0/2**; **PE6 — a fresh hostile pass on THIS text — is
 the next acceptance attempt.**]**
 
+**[REPAIR ROUND r6 — 2026-08-08 campaign (wallclock 2026-08-06): MINIMAL round
+against LIFTCORNER-PE6 (`LIFTCORNER_passPE6_report.md`, commit f2b48e7:
+**0 CRITICAL + 3 gaps** — the arc's first ZERO-defect diff: all 32 r5
+insertions verified true, all five fixes correctly placed, the mathematics
+clean on its sixth hostile reading; all three gaps in record surfaces r5 did
+not touch), same discipline — exactly three record-surface fixes, each
+superseding the quoted prior wording: **F6-1** the STATUS BLOCK is brought
+forward to match its own r5-updated ARC line (superseded, NEXT/AUDIT bullet:
+"PE5, a fresh hostile pass on THIS text. Unaudited going in: **the r4
+edits**. Read once: the r3 edits (PE4). Read twice: the r2 edits (PE3,
+PE4)." and its machine-leg clause "re-run clean at PE4"; superseded, label:
+"STATUS BLOCK [r4]"), and the S4.3 grade box gains a dated [r6] bracket —
+its last entry, the [r4] bracket, still closed "the r4 edits are UNAUDITED …
+PE5 … is the next acceptance attempt" (true when dated, stale as the box's
+last word; the first bring-forward since r4); **F6-2** the [r4, F4-5]
+correction-of-record clause is extended to S2's sealed Q9 sheet row, the
+THIRD bare-`c′`-as-cocycle site (superseded: "for S2's sealed Q7 sheet row,
+whose `c′` is likewise this cocycle"); with Q9 the census is COMPLETE —
+PE6's sweep of "all 42 `c′` occurrences" at its HEAD (46e6e88) found NO
+fourth site; the sealed sheet text itself is NOT edited; **F6-3** the
+closing dating record gains its missing r5 line (wallclock 2026-08-06) and
+this round's r6 line (superseded terminator: "repair round r4 applied
+2026-08-08 campaign (wallclock 2026-08-05).") — plus the STATUS BLOCK
+ARC-line update, NOTHING else; both machine legs BYTE-FROZEN and untouched.
+Acceptance counter unchanged at **0/2**; **PE7 — a fresh hostile pass on
+THIS text — is the next acceptance attempt.**]**
+
 **Sources of record:** ILNRES_2026-08-08.md S1 [NR-1] + S5.1 (the spec);
 ITERLAWLIFT_CORNER_2026-08-08.md (wave 18: the LAWFUL slice measured
 104,404/0; the S7 sketch + its one open step (TAIL-STAB)); ITERLAWN_PROOF
@@ -916,8 +943,10 @@ are renamed to `c^{Φ′}` here, and they were always the same function (PE3
 recorded the collision, PE4 numbered it F4-5). **S1's CANDIDATE display is
 sealed pre-run text and is NOT edited**: it writes this cocycle as `c′(γ,γ′)`,
 and this bracket is the correction of record for it and for S2's sealed Q7
-sheet row, whose `c′` is likewise this cocycle (the same precedent as the
-sealed runner's docstring under [r3/r4, F4-1]).
+and Q9 sheet rows, whose `c′` is likewise this cocycle in each (the same
+precedent as the sealed runner's docstring under [r3/r4, F4-1]); with Q9 the
+census is COMPLETE — PE6's sweep of "all 42 `c′` occurrences" at its HEAD
+(46e6e88) found NO fourth site.
 
 **COR 1 ((ITER-LAW-LIFT), the corner).** ξ = 1 slice (c′ = c₀): the display
 holds UNCHANGED for every LAWFUL monic lift — the 2-read (ITER-LAW-LIFT) is
@@ -1039,7 +1068,24 @@ is not a clean pass, and a repair round is not a pass. Audit state after r4:
 items **(1), (2), (7)** have been re-derived by **THREE** hostile passes (PE2,
 PE3, PE4) with NO acceptance credit; the r2 edits have been read twice (PE3,
 PE4) and the r3 edits once (PE4); **the r4 edits are UNAUDITED**. **PE5 — a
-fresh hostile pass on THIS text — is the next acceptance attempt.** Charge
+fresh hostile pass on THIS text — is the next acceptance attempt.**
+**[r6 — grade box brought forward (the first since r4; the close just above is
+dated [r4] text).]** SIX hostile passes have now run — the two since the [r4]
+entry: **PE5** on the r4 text, the THIRD acceptance attempt (0 CRITICAL + 5
+gaps → r5, the five one-line fixes; report `LIFTCORNER_passPE5_report.md`,
+commit a5212e8), and **PE6** on the r5 text, the FOURTH acceptance attempt
+(**0 CRITICAL + 3 gaps** → this repair round r6; report
+`LIFTCORNER_passPE6_report.md`, commit f2b48e7). PE6's line-audit found ZERO
+defects in the r5 diff itself (all 32 insertions true, all five fixes
+correctly placed — the arc's first zero-new-defect round) and no defect in the
+mathematics on its sixth hostile reading; all three of its gaps are
+record-surface defects (F6-1 the STATUS BLOCK's stale NEXT/AUDIT bullet and
+this box's stale close, F6-2 the sealed Q9 row as a third bare-`c′` cocycle
+site, F6-3 the footer dating record missing r5), cured at r6. **The counter
+stays 0/2** — 3 gaps is not a clean pass, and a repair round is not a pass.
+Audit state after r6: the r6 edits are UNAUDITED; the r5 edits were read once
+(PE6); **PE7 — a fresh hostile pass on THIS text — is the next acceptance
+attempt.** Charge
 (r1-updated, item (7) added at r2 per PE2 G2; the r0 charge list named neither
 the step that broke nor the
 r1 argument — PE1 F1's closing observation, accepted): **(1) the S4.1
@@ -1119,7 +1165,7 @@ case it is a fifth member and the S7 completeness sentence needs amending.
 Until ILNRES rules, **nothing here re-prices anything**, and the consequence
 display above should be read as changing the **Φ₁ axis** of the rider only.
 
-**STATUS BLOCK [r4] — REGENERATED from a minimal five-line template.** This
+**STATUS BLOCK [r4; edited r5, r6] — REGENERATED from a minimal five-line template.** This
 block is the note's whole status of record; it replaces the r1, r2 and r3
 STATUS LINEs wholesale (they are quoted verbatim, byte-unchanged, inside the
 [r4, ARCHIVE] region below). The status surface produced findings in three
@@ -1130,8 +1176,9 @@ edit these five lines; do not grow a sixth.**
 * **ARC.** PE1 (1 CRITICAL + 3 gaps) → r1 → PE2 (0C + 5G) → r2 → PE3 (0C + 5G;
   the arc's FIRST acceptance attempt) → r3 → PE4 (0C + 6G; the SECOND
   acceptance attempt) → r4 → PE5 (0C + 5G; the THIRD acceptance attempt) →
-  **r5 (this round: the five one-line fixes F5-1…F5-5, nothing else)** →
-  **PE6 = the next acceptance attempt.**
+  r5 (the five one-line fixes F5-1…F5-5) → PE6 (0C + 3G; the FOURTH
+  acceptance attempt) → **r6 (this round: the three record-surface fixes
+  F6-1…F6-3, nothing else)** → **PE7 = the next acceptance attempt.**
 * **COUNTER.** Acceptance **0/2** — no pass has been clean, and a repair round
   is not a pass. The grade is CAPPED by this unit's W-2 consumption (GRTW2
   itself 0/2); the COR 1 / ξ = 1 chain is W-2-free, so if W-2's arc lags the
@@ -1149,10 +1196,11 @@ edit these five lines; do not grow a sixth.**
   deeper-level reading flagged as an ILNRES-side erratum candidate ([r4,
   F4-6]); wave-18's price sheet is settled MODULO this note's own arc, not "in
   full".
-* **NEXT / AUDIT STATE.** PE5, a fresh hostile pass on THIS text. Unaudited
-  going in: **the r4 edits**. Read once: the r3 edits (PE4). Read twice: the r2
-  edits (PE3, PE4). Items (1), (2), (7): re-derived by three hostile passes, NO
-  acceptance credit. Both machine legs BYTE-FROZEN and re-run clean at PE4
+* **NEXT / AUDIT STATE.** PE7, a fresh hostile pass on THIS text. Unaudited
+  going in: **the r6 edits** (the r5 edits were line-audited by PE6 — all 32
+  insertions verified true — and the r4 edits by PE5; earlier edit sets read
+  twice or more). Items (1), (2), (7): re-derived by three hostile passes, NO
+  acceptance credit. Both machine legs BYTE-FROZEN and re-run clean at PE6
   (sealed runner exit 0, 25,409/0, md5 `ccb4351c92573f5f962cae4ae952d8dd`,
   `git diff dafc0b5 HEAD` = 0 bytes, output identical modulo timing fields;
   children table regenerates byte-identically, A7's four legs PASS).
@@ -1313,4 +1361,6 @@ byte-identically with A7's four legs PASS at 752 nodes / 5,336 children).
 repair round r1 applied 2026-08-08 campaign (wallclock 2026-08-05);
 repair round r2 applied 2026-08-08 campaign (wallclock 2026-08-05);
 repair round r3 applied 2026-08-08 campaign (wallclock 2026-08-05);
-repair round r4 applied 2026-08-08 campaign (wallclock 2026-08-05).
+repair round r4 applied 2026-08-08 campaign (wallclock 2026-08-05);
+repair round r5 applied 2026-08-08 campaign (wallclock 2026-08-06);
+repair round r6 applied 2026-08-08 campaign (wallclock 2026-08-06).
