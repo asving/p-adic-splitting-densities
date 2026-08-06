@@ -2,9 +2,16 @@
 
 **Unit:** J-A COMPOSER (weld dependency order: consumes W-2 clause 1 at attempt
 grade; per `docs/in-progress/GRT_WELD_BLUEPRINT_2026-08-08.md` §S2.1/S3.1
-rows W-0/W-1/W-4). **Genre: PROOF NOTE at attempt grade (acceptance counter
-0/2; no gate fires; no acceptance arc opened), with sealed-runner machine
-brackets** (`verification/openmath/grt_ja_checks.py`, two-commit seal).
+rows W-0/W-1/W-4). **Genre: PROOF NOTE at attempt grade (acceptance ARC
+OPEN: round 1 = the 2026-08-04 JA-PE1 pass (gaps-only, repaired at r1),
+round 2 = JA-PE2 (1 critical + 3 gaps + 1 minor, repaired at r2 below);
+counter 0 CLEAN passes of the 2 consecutive required; no gate fires; next
+pass = JA-PE3), with sealed-runner machine brackets**
+(`verification/openmath/grt_ja_checks.py`, two-commit seal). [JA-r2
+2026-08-08 (wallclock 2026-08-06), per JA-PE2 FINDING 4: the stale "no
+acceptance arc opened" header contradicted §8's own r1 record ("round 1 of
+the acceptance arc") at HEAD; the counter is normalized to the 0/2-CLEAN
+convention at every surface (§8's "0/1" denominator wobble included).]
 
 **Grade cap (read first).** J-A-PIN (§2) is PROVED at attempt grade (its legs
 are the print's own definitions plus one one-line argument), with its lift
@@ -195,11 +202,25 @@ k-grid covariance included.]
 ### 3.3 THEOREM JA-GRID (J-A(iv): eq-(12-int) digits = abscissa/side coordinates, + the carry clause)
 
 **Statement.** Fix a read (e, h), gcd(e, h) = 1, h, e ≥ 1, and V ∈ ℤ_{≥0}
-with u := (V − s·h)/e ≥ 0 — the proviso holds at every consumption site by
-the print's own hypothesis V ≥ e_{r−1}f_{r−1}v_r(φ_{r−1}) (tex 1167–1168);
-for small V off it the print-side T has no such point (e.g. (e,h) = (2,3),
-V = 1 ⟹ u = −1). (a) The print's T-side initial point (Prop `construct`
-tex 1176: "the greatest side T contained in L whose end points have
+with u := (V − s·h)/e ≥ 0 — the proviso holds at every PRINT-SIDE
+consumption site IN THIS NOTE (the sites where Prop `construct`'s own
+hypothesis V ≥ e_{r−1}f_{r−1}v_r(φ_{r−1}), tex 1167–1168, is in force);
+for small V off it the print-side T has no such point (e.g.
+(e,h) = (2,3), V = 1 ⟹ u = −1). [JA-r2 2026-08-08 (wallclock 2026-08-06),
+per JA-PE2 FINDING 2: the r1 gloss's unquantified "at every consumption
+site" was over-broad read consumer-facing — DOWNSTREAM consumers do NOT
+inherit a discharge from tex 1167–1168. The consumer-facing truth is the
+accepted JB's own matrix, §0M column (b) as of 4c4ee56: the proviso is
+“**CARRIED AND UNDISCHARGED** (r2, G2-5; r1's "discharge" retracted)”,
+then (ellipses ours) “[r5, F-3 — STATUS NARROWED: u ≥ 0 is now PROVED on
+ALL of the level-m weight lattice 𝒲_m … The carried residue at the two
+consuming rows (4 and 12) is … the MEMBERSHIP hypothesis
+V = w_{q+1}(f) ∈ 𝒲_{q+1} … CARRIED, NARROWED; not fully discharged.]” At JB's sites V = w_{q+1}(f)
+is a harness weight for which the print hypothesis supplies nothing; the
+discharge sentence above is scoped to this note's print-side sites ONLY.
+The proviso OBJECT and the shared-key perimeter are unchanged — PE2
+verified them fenced identically to JB's consumption.]
+(a) The print's T-side initial point (Prop `construct` tex 1176: "the greatest side T contained in L whose end points have
 nonnegative integer coordinates", initial point (s, u); the T-side object
 genuinely reappears at Lemma `enlarge`, tex ~1528–1531) is EXACTLY
 eq12(V; e, h): s = ℓV mod e = the smallest nonnegative abscissa with
@@ -286,13 +307,47 @@ form, off the collapse: R_m(A)(y) = z^{−s₀A_{m−1}}·Q_A(ϑ_m·y),
 same-polynomial instance of W-2 §3.2's conjugation; the dictionary at
 levels ≥ 3 is a CONJUGATION, scalar only on the collapse perimeter.]
 
-**Definition (R-coll, the residual collapse perimeter at level m).** Every
-level-q instance of the proviso, 2 ≤ q ≤ m−1, collapses: at every recursion
-node the slot character is trivial on that node's attained abscissas (the
-JA-VDIND condition). On (R-coll): the per-slot law and (VD-m) hold at all
-levels up to m by induction with base (VD-1). Off it: the exact law is the
-per-slot law fed by the recursion (HR-REC genre), not a scalar form —
-JA-BOX-2.
+**Definition (R-coll, the residual collapse perimeter at level m —
+ROOT-INCLUSIVE, [r2]).** Every level-q instance of the JA-VDIND condition,
+**2 ≤ q ≤ m**, collapses: at every recursion node — INCLUDING THE ROOT
+(the q = m instance: A's own attained abscissas) — the slot character is
+trivial on that node's attained abscissas. On (R-coll): the per-slot law
+and (VD-m) hold at all levels up to m by induction with base (VD-1). Off
+it: the exact law is the per-slot law fed by the recursion (HR-REC genre),
+not a scalar form — JA-BOX-2.
+
+[JA-r2 2026-08-08 (wallclock 2026-08-06), per JA-PE2 FINDING 1
+(CRITICAL): the quantifier formerly read "2 ≤ q ≤ m−1" — the recursion
+nodes BELOW the root only — and the displayed conclusion "(VD-m) hold at
+all levels up to m" is FALSE from that root-exclusive definition: PE2
+constructed 8 machine witnesses at m = 3 sitting ON the old perimeter
+(every level-2 node character trivial) with (VD-3) FALSE (T3B/T3F/I4B;
+e.g. T3B deg A = 6, attained {1}, A₂ = 7), plus 58 at m = 2 where the old
+range [2, m−1] is empty. The cure is the one-line root-inclusive
+extension above (the quantifier gains the q = m root condition, which IS
+the JA-VDIND hypothesis for the top-level step). WITNESS RE-CHECK (r2
+/tmp probe over the sealed engines and pools, committed artifacts
+byte-frozen; preregistered 5/5 PASS): PE2's census reproduced EXACTLY
+(66 = 58 at m = 2 + 8 at m = 3; the 8 ON the old perimeter, rows
+T3B/T3F/I4B); every one of the 66 witnesses has the ROOT character
+visible (z_{m−1}^{i·A_{m−1}} ≠ 1 at some attained i), so ALL 66 lie OFF
+the extended perimeter — excluded exactly by the new q = m condition; and
+on the extended perimeter (VD-m) evaluates TRUE on every proviso-holding
+instance (330 scored, 0 violations). CK-VDM's `triv` gate IS the q = m
+root condition (per-digit proviso + root triviality ⟹ (VD-m), 443/0 in
+the sealed battery), so the sealed family keys the extended form's
+induction step — PE2's cure line: "after which both displays are true,
+CK-VDM keys them"; JA-VDIND itself and the per-slot law were never in
+question (PE2 fresh leg 396/0). Cross-note state: the
+extended display now COINCIDES with the accepted JB's OPERATIVE fence —
+root triviality a HYPOTHESIS at every m ≥ 2 (JB §0M col (c) at 4c4ee56)
+— which PE2 itself adjudicated correct and uncontaminated ("the false
+clause has no accepted consumer"); JB col (c)'s subordinate "(R-coll)"
+label and WM-FENCE (a)'s "(2 ≤ q ≤ m−1)" range gloss inherited the old
+reading — the WM companion line is being fixed in parallel by the WM arc
+and the JB erratum ANNOTATION is owed at the fold (ledger
+BRIDGE_ADJUDICATIONS entry at commit 3626f55); accepted texts are not
+edited from this note.]
 
 **COROLLARY JA-MIN (the DICTIONARY HALF of the MIN CORE, GD-3 genre at
 orders ≥ 2).** On the per-slot law's perimeter, the gauge is a unit per
@@ -311,7 +366,8 @@ GD-3 (blueprint taxonomy: inside J-A(ii), so a gap, not a J-C fence
 violation; nothing downstream in this note consumes JA-MIN).]
 
 Grades: JA-RES PROVED at m = 2 (attempt grade); PROVED-under-proviso at
-m ≥ 3, unconditional on (R-coll); JA-VDIND PROVED; JA-MIN rides JA-RES.
+m ≥ 3, unconditional on (R-coll) (root-inclusive as defined above, [r2]);
+JA-VDIND PROVED; JA-MIN rides JA-RES.
 [Machine: CK-RES1 (m = 1, W2-L3 both sides), CK-RES (per-slot, proviso
 machine-evaluated per digit; scored where the proviso holds, boundary rows
 recorded with counts), CK-VDM (JA-VDIND forward direction), CK-BPREF (the
@@ -350,7 +406,10 @@ action, clause by clause:
   per-slot law keeps its unit-times-character form with transported data:
   c_i ↦ z^{−κu_i}c_i and u_i = β_i + i·W_{m−1}, β_{i_j} = β₀ − j·γ_m along
   the grid, so in grid coordinates the law transports to
-  c_j = (w·z^{−κβ₀−κs₀W̃})·(ξ·z^{κ(γ_m − e_{m−1}W_{m−1})})^j·C_j-shape —
+  c_j = (w·z^{−κβ₀−κs₀W̃})·(ξ·z^{κ(γ_m − e_{m−1}W_{m−1})})^j·C_j-shape,
+  where W̃ := W_{m−1} ([JA-r2 2026-08-08 (wallclock 2026-08-06), per
+  JA-PE2 FINDING 5: symbol previously undefined; the exponents are
+  otherwise exact per PE2's re-derivation]) —
   i.e. the ORBIT of laws {c_j = w·ξ^j·C_j} is stable, with the DISPLAYED
   (character = z^{−iA_{m−1}}, unit = 1) values valid at the pinned (P-ell)
   representative only. This is the same orbit as W-2 §3.4's (ξ, w)
@@ -376,9 +435,16 @@ action, clause by clause:
   it — harness tower REBUILT on the transported ψ-ledger against the
   chamber's print chain, same theorems, new instance. The cross-chamber
   letter identification z_old = ξ·z_new is W-2 §5.1 step 2, consumed.
-  [Machine: TW-INST — the full CK battery re-run on the transported
-  instance (SpecTower on the transported ledger + its own GmnLeg), every
-  roster tower with a nontrivial transport ledger.]
+  [Machine: TW-INST — the FIELD-DEPENDENT families
+  JA-PIN/CK-VAL/CK-RES1/CK-RES/CK-VDM re-run on the transported instance
+  (SpecTower on the transported ledger + its own GmnLeg; the sealed
+  runner's own docstring: "the field-dependent families");
+  CK-EPS/CK-GRID/ORB-EPS/ORB-RES are NOT re-run inside the chamber.
+  Coverage: ALL 16 roster + 4 d₀ ledgers unconditionally (§7.1's "all 20
+  ledgers"), not a nontrivial-ledger subset. [JA-r2 2026-08-08 (wallclock
+  2026-08-06), per JA-PE2 FINDING 3: the earlier "the full CK battery
+  re-run … every roster tower with a nontrivial transport ledger"
+  overstated the runner on both counts.]]
 
 ---
 
@@ -424,10 +490,14 @@ action, clause by clause:
   exactly the JA-VDIND collapse case. [Machine: CK-BPREF census — refuting
   samples counted on designated rows; prediction ≥ 1 per designated row.]
 * **JA-BOX-2 (the collapse perimeter, inherited genre W2-BOX-1).** At
-  m ≥ 3 the scalar/evaluated forms are PROVED only on (R-coll) ([JA-r1]
-  per JA-PE1 GAP-5b: "hold only on" overstated — by the unsealed JA-VDIND
-  converse the per-digit proviso can hold off (R-coll) by cancellation);
-  the exact law off it is the per-slot law fed by the recursion. A two-parameter scalar
+  m ≥ 3 the scalar/evaluated forms are PROVED only on (R-coll) —
+  ROOT-INCLUSIVE per the §3.4 [r2] extension ([JA-r2 2026-08-08 (wallclock
+  2026-08-06), per JA-PE2 FINDING 1: on the old root-exclusive perimeter
+  this "evaluated … PROVED" clause was FALSE — 8 machine witnesses; true
+  as now defined, CK-VDM-keyed]) ([JA-r1] per JA-PE1 GAP-5b: "hold only
+  on" overstated — by the unsealed JA-VDIND converse the per-digit proviso
+  can hold off (R-coll) by cancellation); the exact law off it is the
+  per-slot law fed by the recursion. A two-parameter scalar
   formula on ALL levels would need the monomial-collapse exponents tracked
   explicitly — same residue as W-2 clause 2's. W-1's FULL "operator
   dictionary at all orders" therefore remains OPEN beyond the displayed
@@ -516,14 +586,17 @@ cases · engine_ext (standing rule honored in-unit). CONSUMED BY
 (intended): the W-3/W-4 development unit (J-B), the W-5 tree unit, the
 weld campaign ledger at J-A. Fences: instance evidence = the §7.1 roster
 (reads ≤ 4+top, residue fields ≤ F₉ + F₈/F₂₅ via the d₀ leg, wild rows
-included); F_p[[t]] rows have no PARI leg (JA-BOX-4); acceptance counter
-0/2 — nothing here may be consumed at proof grade before its hostile arc.
+included); F_p[[t]] rows have no PARI leg (JA-BOX-4); acceptance arc OPEN,
+counter 0/2 CLEAN (rounds 1–2 = PE1/PE2, both repaired; next = PE3, [r2])
+— nothing here may be consumed at proof grade before acceptance.
 
 — J-A COMPOSER unit, campaign date 2026-08-08.
 
 ---
 
-## §8. r1 record (round 1 of the acceptance arc)
+## §8. Arc record (rounds 1–2)
+
+### r1 record (round 1 of the acceptance arc — the 2026-08-04 JA-PE1 pass)
 
 **JA-PE1 (fresh hostile Fable context; report `GRTJA_passPE1_report.md`,
 instrument `verification/openmath/ja_pe1_ext.py`): VERDICT GAPS-ONLY —
@@ -537,5 +610,49 @@ attribution (§3.2), GAP-2 census row count (§7.1), GAP-3 JA-MIN over-reach
 (§3.4), GAP-4 JA-GRID(a) quantifier + tex-1498 gloss (§3.3), GAP-5 two
 wording overstatements (§2, JA-BOX-2) — are all repaired in place in the
 dated [JA-r1 2026-08-08 (wallclock 2026-08-04)] brackets above. No grade
-changes; no statement's mathematical content altered. **Arc: 0/1 CLEAN
-(gaps-only, repaired); round 2 = the Codex leg (Thursday window).**
+changes; no statement's mathematical content altered. ~~**Arc: 0/1 CLEAN
+(gaps-only, repaired); round 2 = the Codex leg (Thursday window).**~~
+[JA-r2: superseded — round 2 was the Fable JA-PE2 pass (below), not the
+planned Codex leg; the counter convention is normalized to 0/2 CLEAN (0
+clean passes of the 2 consecutive required), per JA-PE2 FINDING 4.]
+
+### r2 record (round 2 of the acceptance arc — JA-PE2, + this repair)
+
+**JA-PE2 (fresh hostile Fable context; report
+`GRTJA_passPE2_report.md`, commit 9040961): VERDICT NOT CLEAN — 1
+CRITICAL, 3 gaps, 1 minor.** Dispatch/path note: the pass was dispatched
+under the colliding name "passPE1"; the verifier filed it as PE2 to
+protect this section's cited r1 record (the committed 2026-08-04
+`GRTJA_passPE1_report.md`) — correct deviation, adopted here. The machine
+bracket re-ran BIT-IDENTICAL (exit 0, 17 families, 10,311 samples, 0
+violations; JSON identical except elapsed_s), censuses independently
+recounted, seals verified; the per-slot gauge law, JA-EPS, JA-VDIND
+forward, and ORB-RES were re-derived exactly, and all five r1 repair
+brackets hostile-verified TRUE at source. THE CRITICAL (FINDING 1):
+§3.4's (R-coll) quantifier "2 ≤ q ≤ m−1" omitted the ROOT (level-m)
+JA-VDIND condition, falsifying the "(VD-m) at all levels up to m"
+conclusion as defined — 8 witnesses at m = 3 ON the old perimeter with
+(VD-3) FALSE + 58 at m = 2 (range empty). The gaps: (2) the [JA-r1]
+u ≥ 0 gloss's unquantified universal (consumer-facing false at accepted
+JB's sites); (3) the TW-INST "full CK battery" coverage overstatement;
+(4) the header/§8 arc-record contradiction + the dispatch-name collision.
+Minor (5): W̃ undefined. **All five repaired in place in the dated
+[JA-r2 2026-08-08 (wallclock 2026-08-06)] brackets above** — the
+root-inclusive (R-coll) extension (§3.4, with the witness re-check probe:
+PE2's 66 witnesses reproduced exactly, 66/66 root-character-visible,
+66/66 OFF the extended perimeter, extended perimeter ⟹ (VD-m) 330/0;
+preregistered 5/5 PASS; sealed runner + artifacts BYTE-FROZEN, md5s
+re-verified 5972d412/0d6d0522/13ab52ab), the print-side scoping of the
+u ≥ 0 discharge sentence with JB's col-(b) truth quoted at its 4c4ee56
+pin (§3.3), the TW-INST family-list correction (§4), the arc-record
+normalization (header/§7.3/§8), and the W̃ := W_{m−1} definition (§4(ii)).
+Grade changes: NONE (the §3.4/JA-BOX-2 statements are REPAIRED to the
+root-inclusive form under which the existing grades and machine keys are
+correct; the per-slot law, JA-VDIND, and all other theorems were never in
+question). Cross-note state per PE2 and the ledger (3626f55): accepted
+JB's operative fence correct and uncontaminated; the JB erratum
+annotation (col (c) subordinate clause) is the orchestrator's at the
+fold; WM-FENCE (a)'s range gloss is the parallel WM r4 companion line.
+PE2's ungraded observations (o1)–(o4) are recorded there, not repaired
+here (o2's [ILN]† as-of pin owed at the next round/fold stands). **Arc:
+rounds 1–2 complete; counter 0/2 CLEAN; next pass = JA-PE3.**
