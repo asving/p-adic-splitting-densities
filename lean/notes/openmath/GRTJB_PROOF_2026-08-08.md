@@ -109,7 +109,7 @@ instruments remain BYTE-FROZEN in r6 (md5s re-verified 2026-08-06; r6 is
 note-only and ran NO probe of its own — the one machine figure it newly cites
 is the PE6 verifier's, attributed).**~~
 
-**[r7] S-STATUS (CURRENT, supersedes the six struck lines): attempt grade,
+~~**[r7] S-STATUS (CURRENT, supersedes the six struck lines): attempt grade,
 acceptance counter 0/2 (ZERO clean passes), SEVEN hostile passes RUN and
 SEVEN repair rounds applied. Arc: JB-PE1 (85a8dc9 — 1C + 9 gaps) → r1
 (4c97649, 46f9452) → JB-PE2 (0C + 7 gaps) → r2 (67bf0c4, 888e293) → JB-PE3
@@ -137,7 +137,36 @@ hostile pass on THIS post-r7 text — is the next acceptance attempt. All
 four machine instruments remain BYTE-FROZEN in r7 (md5s re-verified
 2026-08-06 and `git diff verification/` empty; r7 is note-only and ran NO
 probe of its own — the one machine figure it newly cites, 96 read data / 0
-counterexamples, is the PE7 verifier's, attributed).**
+counterexamples, is the PE7 verifier's, attributed).**~~
+
+**[r8] S-STATUS (CURRENT, supersedes the seven struck lines): attempt grade,
+acceptance counter 0/2 (ZERO clean passes), EIGHT hostile passes RUN and
+EIGHT repair rounds applied. Arc: JB-PE1 (85a8dc9 — 1C + 9 gaps) → r1
+(4c97649, 46f9452) → JB-PE2 (0C + 7 gaps) → r2 (67bf0c4, 888e293) → JB-PE3
+(2fd271e — 0C + 8 gaps; the FIRST acceptance attempt, did not land) → r3
+(8acb2d1, 87c553d) → JB-PE4 (38c4754 — 0C + 8 gaps; the SECOND attempt, did
+not land) → r4 (ae0acdf) → JB-PE5 (39e16ee — 0C + 5 gaps; the THIRD attempt,
+did not land) → r5 (f9f104e) → JB-PE6 (ca39044 — 0C + 2 gaps + 1 minor; the
+FOURTH attempt, did not land) → r6 (4607824) → JB-PE7 (aa9b603 — 0C +
+1 gap + 2 minor; the FIFTH attempt, did not land) → r7 (4c4ee56) → JB-PE8
+(`GRTJB_passPE8_report.md`, commit 6c61b82 — 0 CRITICAL + 0 gaps + 1 minor,
+NOT CLEAN; the SIXTH acceptance attempt, did not land. The r7 diff's
+mathematics verified EXACT end-to-end: both directions of the m = 1
+equivalence re-derived and independently machine-confirmed on a WIDER box
+than PE7's — 340 read data, 0 counterexamples; the disclosed `q+1 <= G.RANK`
+conjunct re-read from committed source at every cited line and its
+redundancy re-derived; the arc-accounting system verified consistent. The
+one finding is quotation-form: the r7 round block's F-1 bullet quoted, as
+the assertion of "both [r6, m-1] brackets", a FUSED string appearing
+byte-for-byte at NEITHER site) → r8 (this round, block below: THE
+ONE-QUOTATION ROUND — the fused quote STRUCK in place at the r7 F-1 bullet
+and each site's actual struck wording quoted separately, byte-exactly). No
+gate fires; no acceptance arc is open. A repair round is NOT a pass, so the
+counter stays 0/2, and JB-PE9 — a fresh hostile pass on THIS post-r8 text —
+is the next acceptance attempt. All four machine instruments remain
+BYTE-FROZEN in r8 (md5s re-verified 2026-08-06 at their sealed values and
+`git diff verification/` empty; r8 is note-only and ran NO probe of its own
+— it cites NO new machine figure).**
 
 ## §0M. **[r3] THE CONDITIONALITY MATRIX — the single surface every grade statement in this note is generated from**
 
@@ -1188,8 +1217,18 @@ or §2–§5 identity moves. Dispositions:
 
 * **F-1 (the r6 m-1 fix's non-equivalence overclaim — underived, and FALSE
   at m = 1).** Both [r6, m-1] brackets asserted the carried membership
-  hypothesis is "per-instance a logically STRONGER hypothesis than the
-  proviso, not an equivalent (or weaker one)" — an affirmative
+  hypothesis is ~~"per-instance a logically STRONGER hypothesis than the
+  proviso, not an equivalent (or weaker one)"~~ **[r8, PE8 F-1 — the struck
+  string is a FUSION of the two sites' different wordings (site A's "than
+  the proviso" + site B's "or weaker one", parenthesized) and appears
+  byte-for-byte at NEITHER site. Each site's actual struck wording,
+  transcribed exactly from under its strike: §0M column (b) —
+  "per-instance a logically STRONGER hypothesis than the proviso, not an
+  equivalent"; §5 SCOPE — "per-instance a logically STRONGER hypothesis,
+  not an equivalent or weaker one". The fused string was semantically the
+  union of the two assertions; every disposition in this bullet
+  (underived; FALSE at m = 1; STRUCK and replaced) applies to each site's
+  verbatim wording]** — an affirmative
   non-equivalence claim derived nowhere in the note, which dropped PE6's
   "strictness unproved either way" qualifier in transcription, and which
   PE7 REFUTED at every m = 1 (q = 0) instance (inside rows 4/12's
@@ -1237,6 +1276,27 @@ JB-PE2 0C+7G, JB-PE3 0C+8G, JB-PE4 0C+8G, JB-PE5 0C+5G, JB-PE6 0C+2G+1m,
 JB-PE7 0C+1G+2m), r1–r7 applied, no gate fired, nothing consumed at proof
 grade; **JB-PE8 — a fresh hostile pass on this post-r7 text — is the next
 acceptance attempt.**]**
+
+**[REPAIR ROUND r8 — 2026-08-08 campaign (wallclock 2026-08-06). THE
+ONE-QUOTATION ROUND.** Applied against **JB-PE8** (hostile pass, fresh
+context, read-only, fixes nothing; report `GRTJB_passPE8_report.md`, commit
+6c61b82: **0 CRITICAL + 0 JUSTIFICATION GAPS + 1 MINOR, VERDICT NOT CLEAN**
+— the SIXTH acceptance attempt, which did not land). The ONE fix (PE8 F-1,
+quotation form): the r7 F-1 bullet above quoted, as the assertion of "both
+[r6, m-1] brackets", a FUSED string appearing byte-for-byte at NEITHER site
+— the fused quote is now STRUCK in place and each site's actual struck
+wording is quoted separately, byte-exactly, in the [r8, PE8 F-1] bracket
+there. NOTE-ONLY; no fence, frontier, grade, or §2–§5 identity moves; all
+four instruments BYTE-FROZEN (md5s re-verified this round at their sealed
+values; `git diff verification/` empty); r8 ran NO probe and cites NO new
+figure. Strike census 83 → 87 spans (the four r8 spans: the fused quote,
+the [r7] S-STATUS wrap, the §7.3 [r7] counter clause, the footer r7 Arc
+line). Acceptance counter unchanged at **0/2** — a repair round is not a
+pass. State after this round: attempt grade, EIGHT hostile passes run
+(JB-PE1 1C+9G, JB-PE2 0C+7G, JB-PE3 0C+8G, JB-PE4 0C+8G, JB-PE5 0C+5G,
+JB-PE6 0C+2G+1m, JB-PE7 0C+1G+2m, JB-PE8 0C+0G+1m), r1–r8 applied, no gate
+fired, nothing consumed at proof grade; **JB-PE9 — a fresh hostile pass on
+this post-r8 text — is the next acceptance attempt.**]**
 
 ---
 
@@ -2613,8 +2673,9 @@ downstream unit reading ONLY this display inherits every fence:**
   acceptance attempt~~ ~~**[r5]** five hostile passes run, five repair rounds
   applied; JB-PE6 is the next acceptance attempt~~ ~~**[r6]** six hostile
   passes run, six repair rounds applied; JB-PE7 is the next acceptance
-  attempt~~ **[r7]** seven hostile passes run, seven repair rounds applied;
-  JB-PE8 is the next acceptance attempt).
+  attempt~~ ~~**[r7]** seven hostile passes run, seven repair rounds applied;
+  JB-PE8 is the next acceptance attempt~~ **[r8]** eight hostile passes run,
+  eight repair rounds applied; JB-PE9 is the next acceptance attempt).
 
 **]**
 
@@ -3014,7 +3075,27 @@ byte-faithful at all four live sites — the code's second conjunct
 `q+1 <= G.RANK` (grt_jb_checks.py L283) disclosed as a vgen-domain guard,
 identically true on the loop domain since RANK = n+1 ≥ qcap+1 (m-3). **No
 §2–§5 identity moved; no fence, census or grade moves; all four instruments
-byte-frozen (md5s re-verified); note-only, no new probe.** Arc:
+byte-frozen (md5s re-verified); note-only, no new probe.** ~~Arc:
 PE1 (1C+9G) → r1 → PE2 (0C+7G) → r2 → PE3 (0C+8G) → r3 → PE4 (0C+8G) → r4 →
 PE5 (0C+5G) → r5 → PE6 (0C+2G+1m) → r6 → PE7 (0C+1G+2m) → r7 →
-**JB-PE8 = the next acceptance attempt**; acceptance counter still **0/2**.**
+**JB-PE8 = the next acceptance attempt**; acceptance counter still **0/2**.~~**
+
+**[r8] repaired an EIGHTH time, 2026-08-08 campaign (wallclock 2026-08-06),
+against JB-PE8 (0 CRITICAL + 0 gaps + 1 minor, the sixth acceptance attempt,
+which did not land; the r7 diff verified EXACT end-to-end — the m = 1
+equivalence re-derived both directions and independently machine-confirmed
+on a wider box than PE7's, 340 read data / 0 counterexamples; the disclosed
+`q+1 <= G.RANK` conjunct re-read from committed source at every cited line;
+the arc-accounting system verified consistent at HEAD). THE ONE-QUOTATION
+ROUND: the r7 round block's F-1 bullet quoted, as the assertion of "both
+[r6, m-1] brackets", a FUSED string appearing byte-for-byte at NEITHER site
+(site A lacks "or weaker one", site B lacks "than the proviso"); the fused
+quote STRUCK in place and each site's actual struck wording quoted
+separately, byte-exactly, in the [r8, PE8 F-1] bracket there (PE8 F-1, the
+round's ONE fix). **No §2–§5 identity moved; no fence, frontier or grade
+moves; all four instruments byte-frozen (md5s re-verified at their sealed
+values); note-only, no new probe.** Arc:
+PE1 (1C+9G) → r1 → PE2 (0C+7G) → r2 → PE3 (0C+8G) → r3 → PE4 (0C+8G) → r4 →
+PE5 (0C+5G) → r5 → PE6 (0C+2G+1m) → r6 → PE7 (0C+1G+2m) → r7 →
+PE8 (0C+0G+1m) → r8 →
+**JB-PE9 = the next acceptance attempt**; acceptance counter still **0/2**.**
