@@ -31,7 +31,7 @@ anchor product == {δ}) at **609/609**, and one battery-driven correction applie
 to §6(d) (the cyclic law's converse is FALSE — 13 collapse-geography rows are
 NOT-CYCLIC).
 
-**[r1] S-STATUS (CURRENT): attempt grade, acceptance counter 0/2, ONE hostile
+~~**[r1] S-STATUS (CURRENT): attempt grade, acceptance counter 0/2, ONE hostile
 pass RUN and ONE repair round applied.** Arc: composed (seal `6ad01d1` →
 verdict `8f07904`) → **JC-PE1** (`GRTJC_passPE1_report.md`, commit `1a27be3` —
 **2 CRITICAL + 8 gaps, NOT CLEAN**; ledger `BRIDGE_ADJUDICATIONS_2026-07-30.md`
@@ -39,7 +39,24 @@ entry "J-C PE1", commit `6ed4680`) → **r1 = THIS repair round, STRUCTURAL**
 (block below). A repair round is NOT a pass, so the counter stays **0/2**, and
 **JC-PE2** — a fresh hostile pass on THIS post-r1 text — is the next acceptance
 attempt. No gate fires, none retires; no `.lean` touched; no density/menu/count
-statement anywhere.
+statement anywhere.~~
+
+**[r2] S-STATUS (CURRENT; supersedes the r1 status line above, which is kept
+struck rather than deleted): attempt grade, acceptance counter 0/2, TWO hostile
+passes RUN and TWO repair rounds applied.**
+
+    ARC:  composed (seal 6ad01d1 -> verdict 8f07904)
+      ->  JC-PE1  (GRTJC_passPE1_report.md, 1a27be3)   2 CRITICAL + 8 gaps
+      ->  r1      STRUCTURAL repair (85d5811/54904cc; mini-seal f45b63c/66263ce)
+      ->  JC-PE2  (GRTJC_passPE2_report.md, 4a76d52)   0 CRITICAL + 9 gaps
+                  — "the structural repair itself survives a full hostile
+                    re-derivation … no false statement"
+      ->  r2      THIS round: LABELLING + FOOTPRINT + one new machine leg
+      ->  JC-PE3  = the next acceptance attempt (a fresh hostile pass on THIS
+                    post-r2 text)
+
+A repair round is NOT a pass, so the counter stays **0/2**. No gate fires, none
+retires; no `.lean` touched; no density/menu/count statement anywhere.
 
 **[REPAIR ROUND r1 — 2026-08-08 campaign (wallclock 2026-08-05).** Applied
 against JC-PE1. PE1's machine leg reproduced this note's battery **bit-for-bit**
@@ -106,14 +123,88 @@ bracket that supersedes it, never silently deleted):
 
 **New machine leg (r1):** `verification/openmath/grt_jc_r1_checks.py` under its
 own two-commit mini-seal (sealed UNRUN at `f45b63c`), testing the REPAIRED
-statements only. **VERDICT (§9.3): 10 families, 10,475 scored samples, 0
-violations, 29 rows, 2.6 s, exit 0; all five teeth fired (1,885 firings)** —
+statements only. **VERDICT (§9.3): ~~10 families, 10,475 scored samples~~
+[r2, G-8: **10 families = 10,330 scored samples + TOOTH-ROW 145 = 10,475 over
+the 11-row table** — the r1 headline summed an 11-row table under a 10-family
+label], 0 violations, 29 rows, 2.6 s, exit 0; all five teeth fired (1,885
+firings)** —
 including (DMULT) exact on 2,784 samples, JC-COB's u = a_γa_{γ′} on 869/869
 anchor pairs, the corrected PSIKER range in both directions (197 lines below
 wΦ_NR with kernel 0; 197 residue classes with a certified nonzero witness), and
 G3's missing unit census (869 unit / 0 zero / 0 undefined / 0 out-of-window)
 with a planted-zero tooth proving the predicate can fire. The r0 battery, the
 instrument, and all their artifacts stay byte-frozen.**]**
+
+**[REPAIR ROUND r2 — 2026-08-08 campaign (wallclock 2026-08-05/06).** Applied
+against **JC-PE2** (`GRTJC_passPE2_report.md`, commit `4a76d52`): **0 CRITICAL,
+9 gaps**. PE2 re-derived the whole r1 structure hostilely and independently —
+JC-LOC, JC-PIINV, JC-BSURJ, (COORD-B)(1)(2), (MULT-B), JC-COB,
+JC-PSIKER(ii)(iii) and **all five PE1 consumers** — and found **no false
+statement**; it also reproduced both batteries byte-for-byte and verified both
+seals. So r2 is a **labelling / footprint / disclosure round with ONE new
+machine leg**, not a restatement: **no clause changes grade, no measured
+quantity moves, and the r0 battery, the r1 battery, the instrument and all
+their artifacts stay BYTE-FROZEN** (r2 adds one new runner and touches nothing
+else in `verification/`). Dispositions, each edit carrying a dated `[r2, G#]`
+bracket, strike-and-replace:
+
+* **G-1 (the one with content) — `(DMULT)` was labelled "CITED, not proved
+  here" in its EXACT (multiplier-1) form, which §0's own transport statement
+  cannot deliver.** Split into two honest tiers in §2.10: **(DMULT-w)**, the
+  up-to-a-unit-cocycle form, **DERIVED here from §0's transport** (derivation
+  displayed), and **(DMULT-s)**, the exact form, **MEASURED (R1-DMULT 2,784/0
+  and r2's new R2-BIL/R2-PHI), NOT cited** — the attempt to verify the exact
+  form against the sources the note names FAILED in a specific, reportable
+  way: (IN-3)'s own transport clause delivers `𝑅 = c·R^{GMN}` only up to a
+  line-wise unit, and the corpus's sharpest harness↔literature read
+  dictionary, **open lemma TR-3′-GEN** (`GRB_ORDER2_2026-08-05.md` §S3.4), is
+  itself stated *"together with per-argument units"* and is OPEN beyond its
+  order-≤ 3 closed strata — so no corpus-pinned statement delivers
+  multiplier 1 (§2.10 [r2, G-1] quotes both). JC-COB's sharp `u = a_γa_{γ′}`
+  is re-fenced to ride **(DMULT-s)** explicitly, at every site.
+* **G-2 — R1-DMULT's samples are monomial-dominated and its one
+  non-monomial × non-monomial pair was `continue`d UNDISCLOSED.** (a) the
+  sample composition and the skip are now disclosed in §9.3 [r2, G-2]; (b) the
+  real leg is r2's new runner `verification/openmath/grt_jc_r2_checks.py`
+  (§9.4, own two-commit mini-seal), which builds **dense multi-slot digit
+  polynomials on BOTH factors** by the JC-BSURJ construction and tests (DMULT)
+  on genuinely bilinear input (family **R2-BIL**), scores the r1-skipped pair
+  (Φ_{m+1}, Φ_{m+1}) on every row (**R2-PHI**), machine-checks the r1 sample
+  composition itself (**R2-MONO**: ≤ 1 multi-slot element per row, every
+  r1-tested pair had a single-slot factor), and plants the **cross-term tooth
+  U2** — the convolution-killing mutation that is provably SILENT on every
+  r1-tested pair (censused at 0 fires there) and must fire on the new dense
+  pairs.
+* **G-3** — §2.10's stale pre-seal `c_π` quote (`{1, z̄, z̄²}`, a 6-row smoke
+  value labelled "across the roster") replaced by the **as-of-r1 roster value
+  set** from the committed artifact.
+* **G-4** — the `[r1]` bracket leak: every live site still naming the STRUCK
+  `(COORD)`/`(MULT)` re-pointed to `(COORD-B)`/`(MULT-B)`, including the two
+  honesty defects PE2 named — the **W-7 THEOREM box's OB-4 grade line** (which
+  graded OB-4 on the refuted input and denied r1's own machine leg) and §4.1
+  remark (b)'s footprint sentence. Re-grepped to fixed point; count reported in
+  §9.5.
+* **G-5** — (MULT-B)'s and TC-3's all-of-ℤ quantifiers: the window/virtual-anchor
+  transport is now an explicit displayed step (§2.10 [r2, G-5]), not a
+  parenthesis.
+* **G-6** — JC-LOC's identification of the note's own extension of `w` with the
+  literature's valuation: **DERIVED** (three displayed steps: the extension is
+  forced; §1's min-formula is `π`-homogeneous, so the recursion computes it on
+  all of K[x]; it is a valuation), with the **additivity** of the degreewise map
+  supplied. The residual tie (§1's recursion = MacLane's inductive valuation) is
+  **W-1**, already in §0's stack — not a new input.
+* **G-7** — "JC-BOX-4 (unchanged)" corrected at both sites (the box DID change:
+  it gained an `[r1]` conditional closure).
+* **G-8** — §9.3's headline figure decomposed: **10 families = 10,330 scored
+  samples**, plus TOOTH-ROW 145 = **11 rows / 10,475** in the table.
+* **G-9** — the one-line ideal transport along JC-GAUGE(iii) written out.
+
+**New machine leg (r2):** `verification/openmath/grt_jc_r2_checks.py` under its
+own two-commit mini-seal (commit 1 = the runner, sealed UNRUN, prereg in its
+docstring = §9.4's table; commit 2 = the verdict FROM the committed artifacts),
+testing ONLY the bilinearity content of (DMULT) and the disclosure census. See
+**§9.4** for its preregistration and verdict, and **§9.5** for the r2
+bracket-sweep record.**]**
 
 ---
 
@@ -270,9 +361,14 @@ so NR := m+1 reads. Write E := e_0e_1⋯e_m (= E_{m+1} of the blueprint), and:
 >
 > **[r1] GRADE, post-repair (supersedes the input list only).** Still **PROVED
 > at general m**, and on a SMALLER literature footprint: the coordinate calculus
-> now rides `(DMULT)` (composite-stage residual multiplicativity) instead of
+> now rides `(DMULT-w)` **[r2, G-1: the citable tier; the exact tier (DMULT-s)
+> is MEASURED-only and carries JC-COB's sharp form alone]** (composite-stage
+> residual multiplicativity) instead of
 > (IN-3)(c)-on-gr, with (IN-3)(a)(b)(e) + (IN-5) unchanged; clause (ii)'s object
-> is B_n (G1); clause (v) is re-quantified (F2). Boxes: JC-BOX-4 (unchanged) and
+> is B_n (G1); clause (v) is re-quantified (F2). Boxes: ~~JC-BOX-4 (unchanged)~~
+> **[r2, G-7: the box DID change at r1 — it gained a CONDITIONAL CLOSURE on
+> (DMULT) (the corner is closed for a reader who grants (DMULT-w), open for one
+> who wants it FGMN-independent); see JC-BOX-4 [r1]]** and
 > JC-BOX-3 **re-cut to box APPLICABILITY, not literature truth**. Attempt 0/2.
 
 ### 2.1 LEMMA JC-DOM (TC-1 is legitimate at every stage)
@@ -578,11 +674,14 @@ set {0} throughout and 𝔦 ∩ gr_4 = 0, so gr_4 ≅ K_m while [K:K_m] = g_m = 
 Δ ≅ K_m[y] is the degree-0 part of the graded algebra of a MacLane valuation on
 **K[x]** — π INVERTED — and that object is exactly what JC-DOM (§2.1) builds one
 page earlier: `B := gr(w)[in(π)^{-1}]`, `B_n = ∪_{k≥0}in(π)^{-k}gr_{n+kE}`. So
-(COORD)/(MULT)/TC-3 belong strictly AFTER TC-1, on B. Four lemmas do it. Note
+the coordinate calculus — (COORD-B)/(MULT-B) below — and TC-3 belong strictly
+AFTER TC-1, on B **[r2, G-4: this sentence formerly named the struck
+(COORD)/(MULT) here]**. Four lemmas do it. Note
 that this makes the note's literature footprint SMALLER, not larger: the
 surjectivity half becomes a theorem of this note (JC-BSURJ, from REALIZE-(m)),
 and the only cited input left in the coordinate calculus is the multiplicativity
-(DMULT).
+(DMULT) **[r2, G-1: in its citable tier (DMULT-w); the exact tier (DMULT-s) is
+MEASURED, not cited — see the split below]**.
 
 **LEMMA JC-LOC [r1] (B *is* the object FGMN's theorems speak about).** Write
 gr^O(w) for §1's graded ring (built on O[x]) and gr^K(w) for the same
@@ -601,7 +700,52 @@ multiplicative by in(fg) = in(f)in(g) ((IN-3)(b)) and w(π) = E (JC-DOM).
 Surjective in degree n: any f ∈ K[x] with w(f) = n has π^kf =: g ∈ O[x] for some
 k ≥ 0, and then w(g) = n+kE and f's class is the image of in(π)^{-k}in(g).
 Injective: in(π)^{-k}in(g) with w(g) = n+kE maps to the class of π^{-k}g, which
-is nonzero in gr^K_n because w(π^{-k}g) = n exactly. ∎
+is nonzero in gr^K_n because w(π^{-k}g) = n exactly. **[r2, G-6 — additivity of
+the degreewise map, previously unchecked (needed because homogeneous elements
+are in(f) or 0, and sums can drop degree):** bring two degree-n elements to a
+common denominator k; then in(π)^{-k}in(g) + in(π)^{-k}in(g′) is
+in(π)^{-k}·(in(g)+in(g′)), and in gr^O the sum in(g)+in(g′) is in(g+g′) if
+w(g+g′) = n+kE and 0 if w(g+g′) > n+kE. The image is the class of
+π^{-k}(g+g′) in gr^K_n, which by the extension formula is nonzero exactly when
+w(g+g′) = n+kE and zero when w(g+g′) > n+kE — the SAME dichotomy, so the map
+carries sums to sums in both cases.**]** ∎
+
+**[r2, G-6 — the identification of the extension with the LITERATURE's
+valuation, previously asserted by the phrase "the same construction on K[x]";
+now derived in three displayed steps, PE2 GAP 6.]** JC-LOC as stated proves
+B ≅ gr of *this note's own* extension `w(π^{-k}g) := w(g) − kE`. What licenses
+"B *is* the object FGMN's theorems speak about" is that this extension IS the
+valuation the literature puts on K[x]:
+
+    (G6-1) THE EXTENSION IS FORCED.  Every f ∈ K[x] is π^{-k}g with g ∈ O[x],
+           and any valuation w^K on K[x] restricting to w with w^K(π) = E
+           (JC-DOM) must satisfy w^K(π^{-k}g) = w(g) − kE.  Well-defined: if
+           π^{-k}g = π^{-k′}g′ (k′ ≥ k) then g′ = π^{k′−k}g, and w(πf) =
+           w(π) + w(f) ((IN-3)(a)) gives w(g′) − k′E = w(g) − kE.  So there is
+           exactly ONE candidate, the displayed one.
+    (G6-2) §1's MIN-FORMULA COMPUTES IT ON ALL OF K[x], i.e. the extension is
+           the same MacLane recursion evaluated on K-coefficients: the
+           Φ_j-development of π^{-k}g is π^{-k}·(the development of g), and by
+           induction on j, w_{j+1}(π^{-k}f) = min_a(e_jw_j(π^{-k}A_a) +
+           aγ_{j+1}) = w_{j+1}(f) − k·e_0⋯e_j for every f ∈ O[x] with digits
+           A_a (base: w_0 is the coefficientwise π-valuation, which drops by
+           exactly k).  At j = m this is the extension formula.  So gr^K(w) is the graded ring of the MacLane
+           min-formula valuation on K[x] — the object of FGMN's graded package
+           — not of an ad-hoc extension.
+    (G6-3) IT IS A VALUATION.  Multiplicative: w(π^{-k}g·π^{-k′}g′) =
+           w(gg′) − (k+k′)E by (IN-3)(a) on O[x].  Ultrametric: clear π-powers
+           to a common k; on O[x] the min-formula satisfies w(g+g′) ≥
+           min(w(g), w(g′)) (developments add termwise and min is
+           subadditive), and subtracting kE preserves it.
+
+*Honest residue of this derivation (unchanged input, not a new one).* Steps
+G6-1..3 identify the extension with **the min-formula valuation on K[x] in the
+harness normalization**. The remaining tie — that §1's recursion (the harness
+w = w_{m+1}, sheared frame) is the literature's inductive valuation v_{m+1},
+and 𝑅 its residual-polynomial operator up to the line-wise unit — is exactly
+**(IN-3)'s W-1 transport clause, already priced in §0's stack** (and the
+subject of the open dictionary TR-3′-GEN quoted at [r2, G-1] below). G-6 adds
+no new conditionality; it removes the "same construction" hand-wave.
 
 *What this settles.* The r0 text transported FGMN Thm 4.2 to gr^O, where its
 conclusion is refuted by §1's own arithmetic; Thm 4.2 is a statement about
@@ -639,8 +783,13 @@ the single constant c_π := δ_m·c^{(m)} ∈ K_m^*. (c) JC-PER gives
 
 *Machine (r1 §9.3):* family **R1-PER** — 𝑅_{λ+kE}(π^kf) = c_π^k·𝑅_λ(f) with one
 c_π per row and ρ exactly invariant, k = 1,2, on every row (measured
-c_π ∈ {1, z̄, z̄²} across the roster: a nontrivial constant, which is exactly why
-the ρ-normalization is the one that makes the colimit well defined).
+~~c_π ∈ {1, z̄, z̄²} across the roster~~ **[r2, G-3: that was the PRE-SEAL 6-ROW
+SMOKE's value set mislabelled "across the roster"; the as-of-r1 ROSTER value
+set, from the committed artifact `grt_jc_r1_results.json` (R1-CEN `c_pi`
+column), is c_π ∈ {1, z̄, z̄², z̄³, z̄⁴, z̄⁶, z̄⁸} — 1 on 9 rows, z̄ on 9, z̄² on 7,
+and z̄³/z̄⁴/z̄⁶/z̄⁸ on the single rows C2G/C3H/C2H/I4C]**: a nontrivial constant,
+which is exactly why the ρ-normalization is the one that makes the colimit
+well defined).
 
 **LEMMA JC-BSURJ [r1] (the colimit coordinate is ONTO Δ — proved, not cited).**
 Fix n ∈ W and p = Σ_{j≤d}c_jy^j ∈ Δ = K_m[y]. For every k with
@@ -680,31 +829,94 @@ needed", which must fire on every row).
         (JC-BSURJ) K_m-linear map, with ρ^B_n(in φ_n) = 1.  Moreover in(π) is a
         unit in B of degree E, so B_j ≅ B_{j+E} for EVERY j ∈ ℤ: after TC-1 no
         graded piece is zero and the window restriction disappears.
-    (2) [PROVED at general m from (1) + (DMULT)]  B_0 ≅ Δ as K_m-ALGEBRAS via
+    (2) [PROVED at general m from (1) + (DMULT-w) — the CITABLE tier suffices,
+        [r2, G-1]]  B_0 ≅ Δ as K_m-ALGEBRAS via
         ρ^B_0, and B_n is FREE OF RANK ONE over B_0 ≅ Δ on in(φ_n), with ρ^B_n
         the coordinate of that module structure.
 
-**(DMULT) [r1 — the one cited input of the coordinate calculus].** For f,g ∈ O[x]
-with λ := w(f), μ := w(g):
+**(DMULT) [r1 — the one cited input of the coordinate calculus] [r2, G-1 —
+SPLIT INTO TWO HONEST TIERS; the r1 status line is struck below].** For
+f,g ∈ O[x] with λ := w(f), μ := w(g):
 
     𝑅_{λ+μ}(fg) = y^{δ(λ,μ)}·𝑅_λ(f)·𝑅_μ(g),
     δ(λ,μ) := (s_NR(λ) + s_NR(μ) − s_NR(λ+μ))/e_m ∈ {0,1}.
 
 This is the composite-stage form of (IN-2)'s (W-MULT) — stated there at the
 last-read layer — and of Montes/FGMN residual-polynomial multiplicativity; via
-JC-LOC it is the content of (IN-3)(c) on the object (IN-3)(c) is about. It is
-**CITED, not proved here**, and it is now the ONLY literature input of §§2.10–5's
-coordinate calculus (JC-BOX-3). *Machine (r1 §9.3):* family **R1-DMULT** tests
-the displayed identity EXACTLY (not up to a unit) on sampled pairs on every row,
-with tooth **T3** (the y^{δ+1} mutation) — the leg PE1 correctly noted the r0
-battery and the instrument did not have.
+JC-LOC it is the content of (IN-3)(c) on the object (IN-3)(c) is about. ~~It is
+**CITED, not proved here**~~ **[r2, G-1: PE2 caught that r1 labelled the EXACT
+(multiplier-1) display "CITED" while §0's own transport statement can only
+deliver it up to a line-wise unit — and simultaneously called the exactness "a
+finding of the r1 battery". The honest form is two tiers:]**
 
-*Proof of (2) from (1) + (DMULT).* Represent t ∈ B_0 at a line kE (so
+**(DMULT-w) [the citable tier — DERIVED from the citation + §0's transport].**
+There is a unit ω(λ,μ) ∈ K_m^*, independent of f and g, with
+
+    𝑅_{λ+μ}(fg) = ω(λ,μ)·y^{δ(λ,μ)}·𝑅_λ(f)·𝑅_μ(g).
+
+*Derivation (displayed, the step r1 skipped).* The literature identity is
+stated for the FGMN operator R^{GMN}; (IN-3)'s transport clause is
+𝑅_λ = c_λ·R^{GMN}_λ with c_λ a LINE-WISE unit (W-1). Substituting,
+
+    𝑅_{λ+μ}(fg) = c_{λ+μ}·R^{GMN}_{λ+μ}(fg)
+                = c_{λ+μ}·y^δ·R^{GMN}_λ(f)·R^{GMN}_μ(g)
+                = (c_{λ+μ}/(c_λc_μ))·y^δ·𝑅_λ(f)·𝑅_μ(g),
+
+so ω(λ,μ) = c_{λ+μ}/(c_λc_μ) — the 2-coboundary of the line-wise unit system.
+That ω depends only on the lines is what the transport gives; nothing gives
+ω ≡ 1.
+
+**(DMULT-s) [the exact tier — MEASURED, NOT CITED].** ω(λ,μ) ≡ 1, i.e. the
+display at the top holds with multiplier exactly 1. *Status:* **MEASURED**
+(R1-DMULT 2,784/0 with tooth T3; §9.3 finding 1 "multiplier exactly 1"; r2's
+bilinear leg R2-BIL/R2-PHI, §9.4) and **not cited**: the r2 attempt to locate
+a multiplier-1 statement for the harness 𝑅 in the sources the note names
+FAILED reportably — (IN-3) itself prices the transport at "c a line-wise
+unit", and the corpus's sharpest harness↔literature read dictionary, **open
+lemma TR-3′-GEN** (`GRB_ORDER2_2026-08-05.md` §S3.4, statement of record:
+*"a level-by-level compatible family of identifications σ_j … together with
+per-argument units, under which the FGMN side-read operator corresponds to
+the project/GMN-convention R_λ"*), is stated WITH per-argument units even
+where closed, and is OPEN beyond {all order-2} ∪ {two order-3 strata}. So no
+corpus-pinned citation delivers ω ≡ 1; proving it would mean proving the
+ε-kit's unit system multiplicative (c_{λ+μ} = c_λc_μ), which this note does
+not do. The standing printed-source Codex leg (JC-BOX-3 item 2) rides
+unchanged.
+
+**Who consumes which tier (checked by PE2, GAP 1 blast radius).** (COORD-B)(2),
+(MULT-B), JC-CARRY-m, W-8 and JC-BOX-4's [r1] corner closure need only
+**(DMULT-w)**, and the mechanism is one line: the normalized coordinate
+ρ_λ = 𝑅_λ/a_λ with a_λ = 𝑅_λ(φ_λ) is **invariant under ANY line-wise
+rescaling of 𝑅** (the unit c_λ cancels between numerator and denominator), so
+the whole ρ-calculus can be run in the R^{GMN} gauge, where the cited identity
+is exact; equivalently, ω is absorbed into the anchor cocycle A(λ,μ), and the
+monomial-shape/degree-δ statements are ω-blind. Riding **(DMULT-s)** and
+downgraded with it: COROLLARY JC-COB's sharp value u = a_γa_{γ′} FOR THE
+HARNESS constants a (and its §4.1 restatement and second half) — on (DMULT-w)
+alone it degrades to JC-SPAN's already-proved u ∈ K_m^*. No clause GRADE
+changes between tiers.
+
+(DMULT-w) is now the ONLY literature input of §§2.10–5's coordinate calculus
+(JC-BOX-3). *Machine (r1 §9.3):* family **R1-DMULT** tests the exact-tier
+identity (DMULT-s) on sampled pairs on every row, with tooth **T3** (the
+y^{δ+1} mutation) — the leg PE1 correctly noted the r0 battery and the
+instrument did not have; **[r2, G-2]** its samples are monomial-dominated
+(disclosure at §9.3), and the genuinely bilinear leg is r2's **R2-BIL** (§9.4).
+
+*Proof of (2) from (1) + (DMULT-w) [r2, G-1 — re-run on the citable tier].*
+Represent t ∈ B_0 at a line kE (so
 s_NR(kE) = 0, JC-FIB) and β ∈ B_n at a line n+k′E. Then δ(kE, n+k′E) = 0, so
-(DMULT) gives 𝑅(tβ) = 𝑅(t)𝑅(β); dividing by the anchor constants and using
-a_0 = 𝑅_0(φ_0) = 1 (φ_0 = 1, since 0 ∈ W) together with JC-PIINV(c) turns this
-into ρ^B_0(tβ) = ρ^B_0(t)·ρ^B_n(β) for the B_0-action on B_n and, at n = 0, into
-multiplicativity of ρ^B_0. So ρ^B_0 : B_0 → Δ is a bijective K_m-algebra map
+(DMULT-w) gives 𝑅(tβ) = ω·𝑅(t)𝑅(β) with ω = ω(kE, n+k′E) depending on the
+LINES only; dividing by the anchor constants this reads
+ρ^B_n(tβ) = κ·ρ^B_0(t)·ρ^B_n(β) with κ := ω·a_{kE}a_{n+k′E}/a_{n+(k+k′)E},
+again line-dependent only. **The in-note lemmas pin κ = 1** [r2, G-1]: take
+t = in(φ_{kE}) = in(π^k) (the anchor at line kE, JC-PER); then
+ρ^B_0(t) = 1 and ρ^B_n(π^kβ) = ρ^B_n(β) EXACTLY by JC-PIINV(c) (proved, not
+cited), so κ·1·ρ^B_n(β) = ρ^B_n(β) for a β with ρ^B_n(β) ≠ 0 forces κ = 1 —
+for every representative line pair, since κ never saw t or β. Hence
+ρ^B_n(tβ) = ρ^B_0(t)·ρ^B_n(β) for the B_0-action on B_n and, at n = 0,
+multiplicativity of ρ^B_0 (using a_0 = 𝑅_0(φ_0) = 1, φ_0 = 1, 0 ∈ W). So
+ρ^B_0 : B_0 → Δ is a bijective K_m-algebra map
 (bijective by (1)), and for β ∈ B_n the element t ∈ B_0 with ρ^B_0(t) = ρ^B_n(β)
 satisfies ρ^B_n(t·in φ_n) = ρ^B_0(t)·1 = ρ^B_n(β), hence β = t·in φ_n by
 injectivity: B_n = Δ·in(φ_n), free of rank one because ρ^B_n is injective. ∎
@@ -719,8 +931,25 @@ half, not mere K_m-linearity].** in(fg) = in(f)in(g) ((IN-3)(b)) plus
 
     ρ^B_{λ+μ}(αβ) = A(λ,μ)·ρ^B_λ(α)·ρ^B_μ(β),  A(λ,μ) = ρ^B_{λ+μ}(in φ_λ·in φ_μ),
 
-for α ∈ B_λ, β ∈ B_μ and **all λ,μ ∈ ℤ** (window representatives are used only to
-name the anchors; by (COORD-B)(1) every class mod E has one). By JC-SPAN,
+for α ∈ B_λ, β ∈ B_μ and **all λ,μ ∈ ℤ**. ~~(window representatives are used
+only to name the anchors; by (COORD-B)(1) every class mod E has one)~~
+**[r2, G-5 — the all-of-ℤ quantifier was licensed by a parenthesis; here is
+the explicit transport step it stands on.** ρ^B and the anchors are DEFINED
+only on the window W (off it, gr_γ = 0 and no anchor exists — JC-BOX-7). The
+extension to all of ℤ is two displayed definitions, each k-independent:
+
+    (G5-i)  VIRTUAL ANCHOR.  For λ ∈ ℤ choose k ≥ 0 with λ+kE ∈ W (all large
+            k qualify) and set  in φ_λ := in(π)^{-k}·in(φ_{λ+kE}) ∈ B_λ.
+            k-independence: for k ≤ k′ with both lines in W, JC-PER gives
+            φ_{λ+k′E} = π^{k′−k}·φ_{λ+kE} byte-for-byte, so the two candidates
+            differ by in(π)^{-(k′−k)}in(π^{k′−k}) = 1 in B.
+    (G5-ii) ρ^B OFF THE WINDOW.  ρ^B_λ := ρ^B_{λ+kE} ∘ (in π)^k (multiply into
+            a window line, read there).  k-independence is exactly
+            JC-PIINV(c): ρ is π-invariant on the nose.
+
+With (G5-i)/(G5-ii), every statement below quantified over λ, n ∈ ℤ reads the
+virtual anchors and the transported ρ^B; on W they agree with the original
+definitions (k = 0).**]** By JC-SPAN,
 A(λ,μ) = (u/a_{λ+μ})·y^{δ(λ,μ)} with u ∈ K_m^*, so **A is a MONOMIAL of y-degree
 exactly δ** (e_m ≥ 2).
 
@@ -732,19 +961,32 @@ multiplication to *some* K_m-bilinear map Δ × Δ → Δ, and only Δ-BILINEARI
 i.e. compatibility with the degree-0 action, (COORD-B)(2) — makes that map
 "multiply and scale by A(λ,μ)". ∎
 
-**COROLLARY JC-COB [r1] (what the slot-δ unit u actually is).** On (DMULT):
+**[r2, G-4 — the gr-level restriction, recorded once so the proof bodies can
+cite it.]** For α ∈ gr_λ ⊆ B_λ and β ∈ gr_μ ⊆ B_μ one has αβ ∈ gr_{λ+μ}
+((IN-3)(b)) and ρ^B_λ|_{gr_λ} = ρ_λ (the k = 0 term of the colimit), so
+(MULT-B) restricted to the gr-pieces reads ρ_{λ+μ}(αβ) = A(λ,μ)ρ_λ(α)ρ_μ(β) —
+the identity the proofs of §3.2, §4.1, §4.2 and §5 apply at gr level. Those
+proofs formerly invoked it under the STRUCK name (MULT); every such site is
+re-pointed at r2 to **(MULT-B)|gr, this display** (sweep record §9.5).
+
+**COROLLARY JC-COB [r1] (what the slot-δ unit u actually is) [r2, G-1 —
+re-fenced onto the EXACT tier].** On ~~(DMULT)~~ **(DMULT-s)**:
 A(λ,μ) = (a_λa_μ/a_{λ+μ})·y^{δ(λ,μ)}, i.e. JC-SPAN's unit is
 **u = a_λ·a_μ** — the product of the two anchors' own digit constants. Hence the
 structure constant of §3.2 is c_{m+1}(γ,γ′) = (a_γa_{γ′}/a_{γ+γ′})·z̄^δ: the
 INNER factor is exactly the **coboundary of the anchor normalization**, and (on
 [ILN]†'s scored stratum, composing with §3.3) ∏_{j≤m}z_j^{D_j} =
-a_γa_{γ′}/a_{γ+γ′}. *Fences:* this rides (DMULT) (and the second half rides
-[ILN]†); it does NOT trivialize the (CYC) property, which is a statement about
+a_γa_{γ′}/a_{γ+γ′}. *Fences [r2, G-1]:* this rides **(DMULT-s), the MEASURED
+tier** — on the citable (DMULT-w) alone the sharp values here degrade to
+JC-SPAN's u ∈ K_m^* — and the second half additionally rides [ILN]†; it does
+NOT trivialize the (CYC) property, which is a statement about
 the ANCHOR-INDEXED presentation and is invariant under nothing (§6, JC-F1), and
 it re-scores no measured verdict. *Machine (r1 §9.3):* family **R1-COB** tests
 𝑅_{γ+γ′}(φ_γφ_{γ′}) == a_γa_{γ′}y^δ exactly on the full anchor grid of every row
-— a sharp, falsifiable consequence of (DMULT), so a failure would refute
-(COORD-B)(2) and with it the repair.
+— a sharp, falsifiable consequence of ~~(DMULT)~~ **[r2, G-1] (DMULT-s)**: a
+failure with the slot set still {δ} would refute only the exact tier (ω ≢ 1),
+while a failure of the SLOT-SET half would refute (DMULT-w), (COORD-B)(2) and
+with them the repair.
 
 **TC-3 = the quotient by the homogeneous ideal 𝔦^B := in(Φ_{m+1})·B** (this is
 exactly what the instrument's certifier operationalizes as division by Φ_{NR}),
@@ -757,9 +999,13 @@ the quotient is not a K-line. On B, by (COORD-B)+(MULT-B),
     𝔦^B ∩ B_n = in(Φ_{m+1})·B_{n−wΦ_NR}  corresponds to  ψ_m(y)·Δ,
 
 because ρ^B(in Φ_{m+1}·β) = A·ψ_m(y)·ρ^B(β) with
-ρ^B(in Φ_{m+1}) = ψ_m(y)/a_{wΦ_NR} (JC-PSIKER(i)'s computation) and
+ρ^B(in Φ_{m+1}) = ψ_m(y)/a_{wΦ_NR} (JC-PSIKER(i)'s computation; **[r2, G-5]**
+the line wΦ_NR IS in W — it is attained by Φ_{m+1}, JC-PSIKER's own weight
+computation, so the anchor a_{wΦ_NR} exists with no virtual-anchor step —
+while the quantifiers "every n" below read the (G5-i)/(G5-ii) transport) and
 B_{n−wΦ_NR} ≠ 0 for every n (COORD-B(1)) — the π-translate hedge is no longer
-needed, since in(π) is a unit in B. Hence for **every n ∈ ℤ**
+needed, since in(π) is a unit in B. Hence for **every n ∈ ℤ** (via
+(G5-i)/(G5-ii), no longer a parenthesis)
 
     B_n/(𝔦^B ∩ B_n)  ≅  Δ/(ψ_m)  =  K_{m+1} = K       (via y ↦ z̄),
 
@@ -769,7 +1015,14 @@ says its kernel ψ_m·Δ ≠ 0 on every piece of B, so no relabeling can replace
 Write 𝒜 := (B/(in(π)−1))/image(𝔦^B) for the TC-transported ring; it is
 ℤ/E-graded (JC-GAUGE(ii), and 𝔦^B is generated by ONE homogeneous element, so
 its image is a graded ideal) with 𝒜_ν = A_ν/(𝔦 ∩ A_ν) ≅ K·[φ_{γ_ν}] and
-𝒜_0 = K.
+𝒜_0 = K. **[r2, G-9 — the ideal transport along JC-GAUGE(iii), the one-line
+step PE2 found unwritten: 𝒜_ν ≅ K needs JC-GAUGE(iii)'s ADDITIVE isomorphism
+σ : A_ν ≅ B_n to carry image(𝔦^B) ∩ A_ν onto 𝔦^B ∩ B_n, which additivity alone
+does not give. It does carry it:** with σ(Σ_k b_{n+kE}) = Σ_k ϑ^{-k}b_{n+kE}
+(ϑ = in π), σ(𝔦^B ∩ B^{(ν)}) = Σ_k ϑ^{-k}(𝔦^B ∩ B_{n+kE}) ⊆ 𝔦^B ∩ B_n because
+𝔦^B is an IDEAL of B and ϑ^{-k} ∈ B; the reverse inclusion is the k = 0 term.
+So B_n/(𝔦^B ∩ B_n) ≅ A_ν/(image(𝔦^B) ∩ A_ν) = 𝒜_ν, which is what the display
+above and §3.1 consume.**]**
 
 **[r1] THE FIVE CONSUMERS, RE-DERIVED ONE BY ONE.** PE1 listed exactly five
 places that consumed the refuted r0 form. Each is re-derived on (COORD-B); none
@@ -781,7 +1034,7 @@ needed downgrading, and one is strengthened.
 | §3.4 THEOREM JC-IND / OB-4 (independence) | ℤ/E degree separation + each 𝒜_ν a K-line with basis [φ_{γ_ν}] ≠ 0 | **THROUGH** — §3.4, with the base-changed module now existing (B_n free rank one over Δ, (COORD-B)(2)) |
 | W-7's bijectivity of Ψ | injectivity = JC-IND; surjectivity = spanning | **THROUGH and STRENGTHENED**: dim_K 𝒜 = E, so the K-span of the anchor classes is ALL of 𝒜 — spanning is now a theorem, not a definition (this is also G2's repair) |
 | §5 FINDING JC-F1's dimension count | dim_K 𝒜(T) = E | **THROUGH** — E graded K-lines |
-| (MULT) for arbitrary α,β | Δ-bilinearity of the multiplication | **THROUGH** as (MULT-B), on (COORD-B)(2) = (1) + (DMULT) |
+| (MULT) for arbitrary α,β | Δ-bilinearity of the multiplication | **THROUGH** as (MULT-B), on (COORD-B)(2) = (1) + (DMULT-w) [r2, G-1] |
 
 Nothing else in §§2–5 used the refuted form: JC-DOM, JC-GAUGE, JC-PER, JC-FIB,
 JC-ANCHMON, JC-SCAL, JC-SPAN, JC-LOAD and JC-PSIKER's witness are statements
@@ -821,8 +1074,14 @@ independently and found no defect).
 >   [ILN]†'s scored stratum** (D integral ∧ off DCX), by transport through W-8
 >   + [ILN]† ACCEPTED (§3.3).
 > * **OB-4 (independence): PROVED, general m** — degree separation +
->   (COORD)/(IN-3)(c) base change (§3.4); the Δ-rank input is
->   literature-carried, NOT measured (JC-BOX-3).
+>   ~~(COORD)/(IN-3)(c) base change (§3.4); the Δ-rank input is
+>   literature-carried, NOT measured (JC-BOX-3)~~ **[r2, G-4: that grade line
+>   survived r1 un-superseded inside this THEOREM box — it graded OB-4 on the
+>   input PE1 REFUTED and denied r1's own machine leg. As §3.4 [r1] actually
+>   states: (COORD-B)(2) base change on B_{γ_ν}, riding (DMULT-w); the
+>   Δ-module input IS measured in its equivalent digit form (R1-DMULT
+>   2,784/0, R1-COB 869/869; bilinear leg R2-BIL at §9.4), with the exact
+>   tier (DMULT-s) measured-not-cited (JC-BOX-3).]**
 > * **OB-5 (tautology fence): DISCHARGED as an architecture statement**
 >   (§3.5), with the instrument's independent-code leg as its machine bracket.
 > * Attempt grade 0/2; the whole clause rides §0's stack.
@@ -840,7 +1099,7 @@ B_n/(𝔦^B ∩ B_n) ≅ Δ/(ψ_m) = K with basis the image of in(φ_n). So afte
 each 𝒜_ν is a 1-dimensional K-space with basis [φ_{γ_ν}], and Ψ maps the
 ν-summand ONTO it. The step is now available at every ν and every n ≡ ν, with no
 window and no attainment side-condition (COORD-B(1)). **PROVED, general m**, on
-(DMULT) + (IN-5). *Machine:* JC1 (k = 1,2,3) + the instrument's
+(DMULT-w) + (IN-5) [r2, G-1]. *Machine:* JC1 (k = 1,2,3) + the instrument's
 P0-OB2 0/285 and P2-REP 0/174; r1 families R1-PER/R1-SURJ/R1-DMULT for the
 repaired coordinate itself.
 
@@ -855,8 +1114,8 @@ and after TC-3 the scalar (u/a_{γ+γ′})·z̄^δ ∈ K^* is the structure cons
 𝒜(T) at (γ,γ′). Pre-TC-3 it is a K-scalar iff δ < g_m (JC-LOAD).
 
 *Proof.* JC-SPAN computes 𝑅_{γ+γ′}(φ_γφ_{γ′}) = u·y^δ with u ∈ K_m^*; divide by
-a_{γ+γ′} to pass to ρ, which is the definition of A(γ,γ′) in (MULT). TC-3 sends
-y ↦ z̄ (§2.10). ∎
+a_{γ+γ′} to pass to ρ, which is the definition of A(γ,γ′) in ~~(MULT)~~
+**(MULT-B)|gr [r2, G-4]**. TC-3 sends y ↦ z̄ (§2.10). ∎
 
 **This is the composite-stage generalization of CARRY-1** (IN-2: at the last-read
 layer φ_γφ_{γ′} = φ_{γ+γ′}ȳ^δ with NO extra factor). The extra factor at a
@@ -955,13 +1214,17 @@ instrument explicitly did NOT measure freeness over Δ before TC-3 (only its
 degree-separation shadow and post-TC-3 spanning). If Thm 4.2's composite-order
 instance failed, (COORD) and hence §§2.7–3.4 would fail together.~~ **[r1 —
 re-stated on the repaired footprint.]** The Δ-module input is now exactly
-**(DMULT)** (§2.10), applied to B = gr^K(w) (JC-LOC), and it is the ONLY cited
+**(DMULT-w)** **[r2, G-1: the CITABLE tier — the r1 wording said "(DMULT)"
+undifferentiated]** (§2.10), applied to B = gr^K(w) (JC-LOC), and it is the
+ONLY cited
 input of the coordinate calculus: the surjectivity half that r0 also cited is
 PROVED here (JC-BSURJ). PE1's observation stands and is now answered on its own
 terms — the instrument did not measure Δ-freeness, so **r1 measures its
-equivalent digit form**: family R1-DMULT (the exact identity
-𝑅_{λ+μ}(fg) = y^δ𝑅_λ(f)𝑅_μ(g)) plus its sharp corollary R1-COB
-(u = a_γa_{γ′}), with tooth T3. If (DMULT) failed at composite order,
+equivalent digit form**: family R1-DMULT (the exact-tier identity (DMULT-s),
+𝑅_{λ+μ}(fg) = y^δ𝑅_λ(f)𝑅_μ(g) with multiplier 1) plus its sharp corollary
+R1-COB (u = a_γa_{γ′}, riding (DMULT-s)), with tooth T3, **[r2, G-2]** on
+monomial-dominated samples — the genuinely bilinear leg is r2's R2-BIL (§9.4).
+If (DMULT-w) failed at composite order,
 (COORD-B)(2), (MULT-B) and §§2.7–3.4 would fail together — JC-BOX-3, which r1
 re-cuts to box APPLICABILITY and citation precision rather than literature
 truth.
@@ -1029,9 +1292,11 @@ the same two call sites in its own docstring.
 > exactly, with every line-wise normalization cancelling; and the residue chain
 > K_0 ⊂ … ⊂ K_{m+1} used by both sides is one and the same tower (J-C(iii)).
 > **GRADE: PROVED at general m** on inputs ~~(COORD)+(MULT)~~ **[r1, F1]**
-> (COORD-B)+(MULT-B) **on B, i.e. (DMULT) + the in-note lemmas JC-LOC/JC-PIINV/
-> JC-BSURJ** +JC-SPAN+JC-SCAL+R3
-> (i.e. FGMN (b)(c)(e) via W-1, ATTEMPT). Attempt 0/2. Machine: the instrument's
+> (COORD-B)+(MULT-B) **on B, i.e. (DMULT-w) [r2, G-1] + the in-note lemmas
+> JC-LOC/JC-PIINV/JC-BSURJ** +JC-SPAN+JC-SCAL+R3
+> ~~(i.e. FGMN (b)(c)(e) via W-1, ATTEMPT)~~ **[r2, G-4: (i.e. FGMN (b)(e) +
+> (c)-ENTERING-ONLY-THROUGH-(DMULT-w)-on-B (§3.5), via W-1, ATTEMPT)]**.
+> Attempt 0/2. Machine: the instrument's
 > **P5-OB6 0/669** (both sides computed independently per pair).
 
 ### 4.1 Proof
@@ -1052,7 +1317,8 @@ equation at the offset line λ+N, λ := γ+γ′:
 
     in(φ_γ)in(φ_{γ′})in(X_N) = in(Λ_N(c))·in(φ_λ)   in the TC-transported ring.
 
-Apply ρ_{λ+N} and (MULT) to both sides. LHS = A(γ,γ′)·A(λ,N)·ρ_N(in X_N) and
+Apply ρ_{λ+N} and ~~(MULT)~~ **(MULT-B)|gr [r2, G-4]** to both sides.
+LHS = A(γ,γ′)·A(λ,N)·ρ_N(in X_N) and
 RHS = A(λ,N)·ρ_N(in Λ_N(c)); A(λ,N) ≠ 0 cancels (Δ is a domain), leaving
 
     ρ_N(in Λ_N(c)) = A(γ,γ′)·ρ_N(in X_N).                              (‡)
@@ -1086,15 +1352,26 @@ so about a different object; importing J-B's authority for this step was
 unwarranted. What is TRUE, and all W-8 uses, is: **both reads in c_val are taken
 at the SAME line λ = γ+γ′ by the definition of c_val, so the single constant a_λ
 cancels in the ratio** — definitional, hence no coboundary condition. What is
-additionally PROVED (on (DMULT), §2.10 COROLLARY JC-COB) is the sharper
+additionally ~~PROVED (on (DMULT), ...)~~ **[r2, G-1: PROVED CONDITIONAL ON
+(DMULT-s), the MEASURED tier —]** (§2.10 COROLLARY JC-COB) is the sharper
 statement the r0 sentence was reaching for: the a's do not merely cancel, they
 ARE the inner factor — u = a_γa_{γ′}, so
 c_{m+1} = (a_γa_{γ′}/a_{γ+γ′})·z̄^δ, an anchor-normalization coboundary times
-z̄^δ, with its own scored machine family (R1-COB). (b) C15's separation stands: nothing above uses N-1's
-operator-level commuting diagram; what is used is (COORD)+(MULT), i.e. the
-carrier-level content, which is precisely what C15 said was missing. This note
+z̄^δ, with its own scored machine family (R1-COB) **[r2, G-1: that sharper
+statement rides (DMULT-s), the MEASURED tier — see §2.10]**. (b) C15's
+separation stands: nothing above uses N-1's
+operator-level commuting diagram; what is used is ~~(COORD)+(MULT)~~
+**(COORD-B)+(MULT-B) [r2, G-4]**, i.e. the
+carrier-level content, which is precisely what C15 said was missing. ~~This note
 supplies it from FGMN Thm 4.2 + the corpus's read definition, at the cost of
-riding W-1's dictionary for the transport of Thm 4.2 to the harness w.
+riding W-1's dictionary for the transport of Thm 4.2 to the harness w.~~
+**[r2, G-4: that footprint sentence contradicted r1's own headline (the only
+cited input left is (DMULT)) and JC-BOX-3[r1] ("only through the single
+statement (DMULT)"). As repaired: this note supplies it from the corpus's read
+definition + the single cited identity (DMULT-w) on B (via JC-LOC), with the
+surjectivity half PROVED in-note (JC-BSURJ), at the cost of riding W-1's
+dictionary for the transport of the residual-multiplicativity citation to the
+harness w and 𝑅.]**
 
 ### 4.2 The offset-transport lemma (used by JC-LOAD and by (‡))
 
@@ -1104,8 +1381,8 @@ isomorphically onto ρ_{λ+N} up to that constant — in particular it preserves
 y-degrees.
 
 *Proof.* s_{NR}(N) = 0 by JC-FIB (E | N); then s_{NR}(λ+N) = s_{NR}(λ)
-(JC-PER), so δ(λ,N) = 0 and JC-SPAN gives A(λ,N) constant. Apply (MULT) with
-ρ_N(in X_N) = 1/a_N ∈ K_m^*. ∎
+(JC-PER), so δ(λ,N) = 0 and JC-SPAN gives A(λ,N) constant. Apply ~~(MULT)~~
+**(MULT-B)|gr [r2, G-4]** with ρ_N(in X_N) = 1/a_N ∈ K_m^*. ∎
 
 *Machine:* the instrument's **P2-OFF 0/116** (constants independent of the scalar
 offset) and **P0-SCAL 0/293** (scalar multiplicativity in gr), plus this note's
@@ -1140,13 +1417,15 @@ by construction — no independent content beyond the identification (IN-3)(d).*
 > **GRADE: PROVED given W-6..W-8 (general m), S-priced as the blueprint says.**
 
 *Proofs.* (i) Descent is JC-PER. Associativity of gr(w) gives
-(in φ_a·in φ_b)·in φ_c = in φ_a·(in φ_b·in φ_c); expanding both with (MULT)
+(in φ_a·in φ_b)·in φ_c = in φ_a·(in φ_b·in φ_c); expanding both with ~~(MULT)~~
+**(MULT-B)|gr [r2, G-4]**
 yields A(a,b)A(a+b,c) = A(b,c)A(a,b+c) in Δ, and reducing mod ψ_m gives the
 K^*-cocycle identity. (ii) Take y-degrees in the same Δ-identity (JC-CARRY-m:
 deg A(a,b) = δ(a,b)) — degrees add, so the identity is the additive one. (iii)
 Restatement of W-7's Ψ. (iv) With the representative γ_0 = 0 ∈ W we have
 φ_0 = 1, and JC-PER gives φ_{kE} = π^k, whose gauged class is 1; iterating
-(MULT) along the orbit of the class 1 gives [φ_1]^E = ζ_T·[φ_0] = ζ_T. ∎
+~~(MULT)~~ **(MULT-B)|gr [r2, G-4]** along the orbit of the class 1 gives
+[φ_1]^E = ζ_T·[φ_0] = ζ_T. ∎
 
 **FINDING JC-F1 (blueprint display correction, REVIEW-OWED — read with §6).**
 (iv)'s computation has a consequence the blueprint's cyclic-fence wording does
@@ -1170,7 +1449,8 @@ it now comes from §2.10's repaired display (each of the E pieces
 powers v^k = β_k[φ_{γ_k}] (β_k ∈ K^*) lie in pairwise distinct ℤ/E-degrees, so
 they are independent, so {1,v,…,v^{E−1}} is a K-basis; the K-algebra map
 K[v]/(v^E − ζ_T) → 𝒜(T) is well defined and surjective, and injective by
-comparing dimensions E = E. **THROUGH, general m**, on (DMULT) + JC-IND.
+comparing dimensions E = E. **THROUGH, general m**, on (DMULT-w) + JC-IND
+[r2, G-1].
 
 **FINDING JC-F2 [r1, G2] (blueprint display correction, REVIEW-OWED — the second
 inherited-display defect, same treatment as JC-F1).** The corpus defines the
@@ -1266,7 +1546,7 @@ proved obstruction direction.
 | 2 | g_m ≥ 2, δ = 1 | the carry-boundary pairs on g_m = 2 rows | δ = 1 < g_m ⟹ still RAW-solvable (this is the smoke correction that sharpened the sealed identity from {δ≥1} to {δ≥g_m}) — **PROVED** |
 | 3 | g_m = 1, δ = 0 | most pairs on the 27 g_m = 1 stages | K_{m+1} = K_m collapse: value identity holds; the outer/inner split is canonical on the gr side (y-degree) but NOT recoverable from the VALUE alone — **PROVED, with the display fence** (the instrument's printer caveat S6.2) |
 | 4 | **g_m = 1, δ = 1 — the TC-3 load set** | **134 of 669 pairs, 0/29 set-mismatches** | THEOREM JC-LOAD: no pre-TC-3 scalar exists; the ψ_m-relation is unavoidable — **PROVED** (this is the case that makes TC-3 load-bearing) |
-| 5 | top-flat stage e_m = 1 | C4H (+ any I4x with e_m = 1 — **[r1, G5]** the roster has NONE: C4H is the unique e_m = 1 row, r1 census R1-CEN, which is why §2.8(c)'s theorem covers 28 rows) | δ ≡ 0; JC-SPAN gives deg ρ ≤ 1 instead of the singleton; sharp form **MEASURED not proved** — JC-BOX-4 |
+| 5 | top-flat stage e_m = 1 | C4H (+ any I4x with e_m = 1 — **[r1, G5]** the roster has NONE: C4H is the unique e_m = 1 row, r1 census R1-CEN, which is why §2.8(c)'s theorem covers 28 rows) | δ ≡ 0; JC-SPAN gives deg ρ ≤ 1 instead of the singleton; sharp form **MEASURED not proved** **[r2, G-7: and CONDITIONALLY CLOSED on (DMULT-w) since r1 — the two statuses coexist because they have different footprints]** — JC-BOX-4 |
 | 6 | interior-flat legs e_j = 1, j < m | C2J, C3E, C4H | no special role: the split/anchor calculus is uniform in e_j; the [RMG] fenced-corner genre is inherited via J-B, not re-opened — **PROVED (no case owed)** |
 | 7 | twist-blind \|K\| = 2 | C4A | c ≡ 1; cyclic by JC-CYC(c); MT3 skipped there (no nontrivial scalar class) — **PROVED** |
 | 8 | zero-class genre (SPAN-S) | 60 samples | the TC-3 kernel ψ_m·Δ (§2.10) — **PROVED AWAY**, not a failure genre |
@@ -1306,7 +1586,10 @@ proved obstruction direction.
   Post-r1 the box reads:
   1. **WHICH OBJECT.** The note uses FGMN Thm 4.2 **only on
      B = gr(w)[in(π)^{-1}] ≅ gr_{K[x]}(w)** (LEMMA JC-LOC), never on gr_{O[x]},
-     and it uses it **only** through the single statement (DMULT) (equivalently:
+     and it uses it **only** through the single statement (DMULT) — **[r2,
+     G-1] in its CITABLE tier (DMULT-w) (up to the line-pair unit ω); the
+     EXACT tier (DMULT-s) (ω ≡ 1) is MEASURED, not cited, and carries only
+     JC-COB's sharp form** — (equivalently:
      B_0 ≅ Δ = K_m[y] as K_m-algebras and B_n free of rank one over B_0 on
      in(φ_n)). The surjectivity half r0 also cited is now PROVED in-note
      (JC-BSURJ, from REALIZE-(m)); Thm 4.8 / Cor 4.9 (Δ/(ψ_m) ≅ K_{m+1}) and
@@ -1320,9 +1603,14 @@ proved obstruction direction.
      (DMULT) — which is standard Montes/FGMN residual multiplicativity and is
      now separately machine-tested (R1-DMULT, R1-COB) — but the note's citation
      would be wrong and must be re-pointed.
-  3. **WHAT DIES WITH IT.** If (DMULT) failed at composite order, (COORD-B)(2),
-     (MULT-B), §§2.7–3.4, W-8 and W-9 fail together. Transport of the harness
-     w and 𝑅 to the FGMN objects is still W-1 (ATTEMPT).
+  3. **WHAT DIES WITH IT.** If (DMULT-w) failed at composite order,
+     (COORD-B)(2),
+     (MULT-B), §§2.7–3.4, W-8 and W-9 fail together; if only (DMULT-s) failed
+     (ω ≢ 1), JC-COB's sharp values and R1-COB's exact predicate fail while
+     the structural clauses stand [r2, G-1]. Transport of the harness
+     w and 𝑅 to the FGMN objects is still W-1 (ATTEMPT) — and the corpus's own
+     march-level dictionary for that transport, TR-3′-GEN, is OPEN at general
+     order and unit-valued where closed (quoted at §2.10 [r2, G-1]).
 * **JC-BOX-8 [r1] (what the r1 repair does NOT supply).** Three honest residues
   of this round: (i) the **606 skipped non-integral SPAN-M perturbations** (G6)
   are exactly elements that live in B but not in gr(w) — the repaired statement
@@ -1332,23 +1620,28 @@ proved obstruction direction.
   at such a line is *certified dead* by the (one-sided, canonical-quotient)
   TC-3 certifier — the probe's own disclosed limitation; (iii) **JC-COB's second
   half** (∏_j z_j^{D_j} = a_γa_{γ′}/a_{γ+γ′}) rides [ILN]† in addition to
-  (DMULT), and the identity is displayed, not consumed by any clause.
+  (DMULT-s) [r2, G-1], and the identity is displayed, not consumed by any
+  clause.
 * **JC-BOX-4 (the top-flat corner e_m = 1 ∧ g_m = 1).** JC-SPAN's sharp
   conclusion (slot set = {δ}) is proved for e_m ≥ 2; at e_m = 1 the degree bound
   gives only deg ρ ≤ 1, which suffices whenever g_m ≥ 2 but NOT at
   e_m = 1 ∧ g_m = 1, where deg ρ = 0 is **measured** (C4H: all pairs
   RAW-solvable, 0 violations; family JC3 re-tests it) and unproved. JC-LOAD and
   JC-CARRY-m are therefore stated with e_m ≥ 2 and this corner is boxed OPEN.
-  **[r1 — CONDITIONALLY CLOSED, on (DMULT).]** The r0 proof of JC-SPAN is
+  **[r1 — CONDITIONALLY CLOSED, on (DMULT).] [r2, G-1 — tiered: the closure
+  needs only (DMULT-w).]** The r0 proof of JC-SPAN is
   e_m-sensitive because it bounds the top abscissa by degrees (JC-ANCHMON(d)).
-  The r1 coordinate calculus gives a second, e_m-blind proof: by (DMULT) with
+  The r1 coordinate calculus gives a second, e_m-blind proof: by (DMULT-w) with
   f = φ_γ, g = φ_{γ′}, and since each anchor's digit polynomial is the CONSTANT
   a_γ (JC-ANCHMON(c)),
-  𝑅_{γ+γ′}(φ_γφ_{γ′}) = y^{δ}·a_γ·a_{γ′} — a MONOMIAL of degree exactly δ, with
-  no hypothesis on e_m (COROLLARY JC-COB). At e_m = 1 one has s_NR ≡ 0 hence
+  𝑅_{γ+γ′}(φ_γφ_{γ′}) = ω·y^{δ}·a_γ·a_{γ′} — a MONOMIAL of degree exactly δ
+  whatever the unit ω, with
+  no hypothesis on e_m (the sharp coefficient value ω = 1, i.e. u = a_γa_{γ′},
+  additionally holds on (DMULT-s) — COROLLARY JC-COB). At e_m = 1 one has
+  s_NR ≡ 0 hence
   δ ≡ 0, so the slot set is exactly {0} and JC-LOAD's dichotomy holds trivially
   there (0 = δ < g_m always ⟹ RAW always solvable, which is exactly what C4H
-  measures). **So: the corner is CLOSED for a reader who grants (DMULT)
+  measures). **So: the corner is CLOSED for a reader who grants (DMULT-w)
   (JC-BOX-3), and stays OPEN for one who wants it independent of the FGMN
   input** — r0's proof and r1's proof have different footprints, and the note
   keeps both. Machine: r1 family **R1-COB scores C4H's 24 grid pairs with the
@@ -1534,7 +1827,13 @@ probes were written.
 **VERDICT (written FROM the committed artifacts
 `verification/openmath/grt_jc_r1_output.txt` + `grt_jc_r1_results.json`; runner
 md5 `7f896bfa27d06158f95c5987c7299770`, sealed UNRUN at commit `f45b63c`).**
-**ALL 10 FAMILIES GREEN — 10,475 scored samples, 0 violations, 29 rows,
+~~**ALL 10 FAMILIES GREEN — 10,475 scored samples**~~ **[r2, G-8 — the split,
+displayed: ALL 10 FAMILIES GREEN with 10,330 scored samples (EXT-GATE 1 +
+R1-BND 29 + R1-PER 841 + R1-INJ 585 + R1-SURJ 841 + R1-DMULT 2,784 + R1-COB
+2,607 + R1-PSIK-LO 591 + R1-PSIK-HI 1,182 + R1-UNIT 869), plus the ELEVENTH
+table row TOOTH-ROW 145 (a family by §9.1's own convention) = 10,475 rows
+scored over the 11-row table; the r1 headline attached the 11-row total to a
+10-family label]**, **0 violations, 29 rows,
 elapsed 2.6 s, exit 0; ALL FIVE TEETH FIRED (1,885 firings, no silent tooth,
 every per-row obligation met: TOOTH-ROW 145/145).** Every sealed prediction hit
 exactly.
@@ -1564,7 +1863,9 @@ exactly.
 **THREE FINDINGS OF THE r1 BATTERY, applied above.**
 1. **(DMULT) holds with multiplier exactly 1**, not merely up to a line-wise
    unit — which is why JC-COB can be stated in the sharp form u = a_γa_{γ′}
-   (§2.10) rather than "u is some K_m^*-unit".
+   (§2.10) rather than "u is some K_m^*-unit". **[r2, G-1: this measured
+   finding IS the exact tier (DMULT-s) — it is the note's evidence FOR that
+   tier, not a citation of it.]**
 2. **The e_m = 1 corner's sharp form is measured true by R1-COB on C4H** (slot
    set exactly {δ} = {0} on all 24 of its grid pairs), and on (DMULT) it is in
    fact PROVED — see JC-BOX-4 [r1].
@@ -1572,11 +1873,109 @@ exactly.
    defined in the un-normalized 𝑅; JC-PIINV(c)'s ρ-normalization is
    load-bearing, not cosmetic.
 
+**[r2, G-2 — INSTRUMENT DISCLOSURE the r1 battery owed: R1-DMULT's sample
+composition and its silent skip.]** PE2's code audit of the byte-frozen
+`grt_jc_r1_checks.py`, confirmed here against the source: the per-row sample
+list has SEVEN elements — up to three anchors φ_r, the scalar lift X_N, one
+anchor product φ_0φ_{1 mod E}, (1+π)φ_0, and Φ_{m+1} — of which **six have
+SINGLE-SLOT (monomial) digit polynomials** (JC-ANCHMON(c), JC-SCAL(b),
+JC-SPAN, and π-scaling; Φ_{m+1}, whose digit polynomial is ψ_m, is the only
+multi-slot element), and the DMULT loop **`continue`s the one
+non-monomial × non-monomial pair** `(Φ_{m+1}, Φ_{m+1})` — a skip the r1 text
+did not disclose. Consequence: on every one of R1-DMULT's 48 ordered pairs
+per row, y^δ·𝑅(f)·𝑅(g) is a shift-and-scale of one factor — the identity's
+genuinely BILINEAR content (cross-term convolution of two multi-slot digit
+polynomials) was **never exercised** by r1 (R1-PSIK-HI's Φ_{m+1}·φ_ν leg is
+non-monomial × monomial, still one-sided). The verdict cell above
+("on every sampled pair") is therefore true but weaker than it reads. This is
+the same defect species r1 repaired in G3/G6, reintroduced in the new leg;
+the repair is r2's own machine leg (§9.4): dense multi-slot × multi-slot
+pairs (R2-BIL), the skipped pair scored (R2-PHI), the sample-composition
+facts above scored rather than asserted (R2-MONO), and the cross-term tooth
+U2 that is provably silent on every r1-tested pair.
+
 **Honest scope of this leg.** It measures the r1 statements on the SAME 29-row
 roster (m ≤ 3, |K| ≤ 25, g_j ≤ 2, d_0 ≤ 3, p ∈ {2,3,5}), so JC-BOX-1's
 proof-scope-vs-machine-scope fence applies verbatim; and it does NOT touch the
 one place r1 leaves a measurement owed, the non-integral elements of B
 (JC-BOX-8(i)).
+
+### 9.4 [r2] THE SUPPLEMENTARY r2 BATTERY — the bilinearity leg (own two-commit mini-seal)
+
+**Runner:** `verification/openmath/grt_jc_r2_checks.py`, whose docstring
+carries the authoritative preregistration and **is part of this mini-seal**
+(commit 1 = the runner alone, SEALED and UNRUN, exactly the r1 protocol;
+commit 2 = the verdict below, written FROM the committed artifacts
+`grt_jc_r2_output.txt` / `grt_jc_r2_results.json`). It imports the
+instrument's roster and stage builder (`grt_jc_probe.ROSTER`/`Stage`, the same
+29 rows) and the byte-frozen r1 helpers (`grt_jc_r1_checks.Rpoly`/`pmul`/
+`surj_build` — imported, not re-typed, so the (DMULT) predicate is the SAME
+predicate PE2 audited as independent), and tests **only what G-2 found
+missing: the bilinear content of (DMULT-s)**. The r0 battery, the r1 battery,
+the instrument, and ALL their artifacts stay byte-frozen. Fence hygiene as in
+§3.5 [r1, G8]: `T.constants` only for the integer δ; `T.read_coeffs` supplies
+the digit data under test.
+
+| family | the statement it tests | sealed prediction |
+|---|---|---|
+| EXT-GATE | engine_ext `install()`+`check_pins()`+`agreement_gate()` (standing rule) | **0** |
+| **R2-BIL** | (DMULT-s) on genuinely BILINEAR input: both factors built by the JC-BSURJ construction with **dense multi-slot targets** (degree-2 all-coefficients-nonzero "ones" and "mixed" variants on every row — realizable per R1-SURJ's census k ≤ 34; a degree-3 dense pair attempted per row with the same k-cap 80, CENSUSED where realized, not scored where not), every ordered pair tested: w(fg) == w(f)+w(g) and 𝑅_{λ+μ}(fg) == y^δ·𝑅_λ(f)·𝑅_μ(g) EXACTLY (dict equality — the cross-term convolution finally exercised) | **0** |
+| **R2-PHI** | the pair r1 silently skipped, scored on every row: f = g = Φ_{m+1}, i.e. w(Φ_{m+1}²) == 2wΦ_NR and 𝑅_{2wΦ_NR}(Φ_{m+1}²) == y^{δ(wΦ,wΦ)}·ψ_m(y)² exactly; the skipped-pair census printed (r1 skipped exactly this 1 pair per row) | **0** |
+| **R2-MONO** | §9.3 [r2, G-2]'s disclosure as SCORED fact, not prose: (a) exactly ONE of the r1 sample elements per row has a multi-slot digit polynomial; (b) every r1-TESTED DMULT pair (the skip excluded) has ≥ 1 single-slot factor; (c) the U2 mutation, replayed on the r1-tested pairs, fires **0** times there — machine proof that the r1 leg had zero resolution against it | **0** |
+| **U1** | tooth: the y^{δ+1} shift mutation on the new dense pairs (the r1 T3 tooth, re-armed here to prove the r2 predicate is live) | **≥ 1 firing per row** |
+| **U2** | tooth: the **CROSS-TERM DROP** — the mutated product keeps only the terms a_ib_j with i ∈ {min, max} of supp 𝑅(f) OR j ∈ {min, max} of supp 𝑅(g), i.e. it deletes exactly the interior×interior convolution terms. PROVABLY equal to the true product whenever either factor has ≤ 2 occupied slots (all its indices are extremal) — hence silent on every r1-tested pair (scored as R2-MONO(c)) — and provably different on a dense deg-2 × dense deg-2 pair over a field (the dropped a₁b₁ ≠ 0 moves the slot-(2+δ) coefficient) | **≥ 1 firing per row** |
+| TOOTH-ROW | per-row tooth obligations (U1, U2) | **0** |
+
+A silent tooth is a RED. Exit code = (violations + silent teeth).
+
+**PRE-SEAL SMOKE DISCLOSURE (honest, part of this mini-seal).** One read-only
+/tmp design probe ran BEFORE the seal on rows C2A/C2I/C4H to fix the dense
+construction and cost (it found: dense degree-2 targets realize within the
+R1-SURJ k-range on all three; the U2 mutation fires on the dense pairs and is
+silent on the r1 pairs there; per-row cost comparable to r1's). No scored
+predicate was weakened by it.
+
+**VERDICT: PENDING — this table is sealed BEFORE the run; the verdict block
+is written at mini-seal commit 2 FROM the committed artifacts.**
+
+### 9.5 [r2] THE BRACKET-SWEEP RECORD (G-4: struck names re-pointed to fixed point)
+
+PE2 found the `[r1]` strike system leaking: live text still CONSUMING the
+struck `(COORD)`/`(MULT)` at seven sites, worst inside the W-7 THEOREM box.
+r2 re-pointed every live consuming site, each with a `[r2, G-4]` (or
+`[r2, G-1]`) bracket:
+
+1. W-7 THEOREM box, OB-4 grade line (the honesty defect: graded OB-4 on the
+   refuted input and denied r1's own machine leg) — struck and regenerated.
+2. §3.2 JC-CARRY-m proof ("the definition of A(γ,γ′) in (MULT)") → (MULT-B)|gr.
+3. §4.1 W-8 proof ("Apply ρ_{λ+N} and (MULT)") → (MULT-B)|gr.
+4. §4.2 offset-transport proof ("Apply (MULT)") → (MULT-B)|gr.
+5. §5 proof (i) ("expanding both with (MULT)") → (MULT-B)|gr.
+6. §5 proof (iv) ("iterating (MULT)") → (MULT-B)|gr.
+7. §4.1 remark (b) (the second honesty defect: the pre-repair footprint
+   sentence "supplies it from FGMN Thm 4.2") — struck and regenerated on the
+   (DMULT-w) footprint.
+8. (lower weight) §10.1 r0 grade table, W-8 row → (COORD-B)+(MULT-B).
+9. (lower weight) W-8 [r1] grade-line tail "(i.e. FGMN (b)(c)(e) via W-1)" →
+   (b)(e) + (c)-only-through-(DMULT-w).
+10. (courtesy) §2.10's repair narrative "(COORD)/(MULT)/TC-3 belong strictly
+    AFTER TC-1" → named the B-restatements instead.
+
+The gr-level restriction that makes sites 2–6 rigorous ((MULT-B)|gr:
+ρ^B|_{gr_λ} = ρ_λ, products of gr-elements stay in gr) is recorded ONCE, at
+the end of (MULT-B)'s proof [r2, G-4]. **Fixed-point re-grep, protocol and
+result:** grep for `(COORD)`/`(MULT)` excluding `-B` forms; every remaining
+hit must be (a) inside a `~~…~~` strike, (b) a quotation of the struck r0
+wording inside an `[r1]`/`[r2]` bracket, or (c) a reference to the r0 form AS
+refuted (R1-BND's rows, the repair-history blocks). Count at r2 close: the
+grep returns **22 hit-lines**, classified: **11** inside `~~…~~` strikes or
+strike-and-replace brackets (the struck (COORD)/(MULT) displays and their
+[r1]/[r2] supersessions), **4** in the r1 repair-history header naming the
+struck forms as the objects repaired, **2** R1-BND rows citing the r0 (COORD)
+as refuted, **3** in this §9.5 record itself, **2** in [r2, G-4]'s own
+quotation brackets (§2.10's narrative line; the (MULT-B)|gr display naming
+"the STRUCK name (MULT)") = 22. **0 live consuming sites**;
+PE2's seven, plus the two lower-weight §10.1/W-8 sites, all re-pointed.
 
 ---
 
@@ -1585,13 +1984,19 @@ one place r1 leaves a measurement owed, the non-integral elements of B
 ### 10.1 Per-clause grades
 
 **[r1] GRADE BOX, POST-REPAIR (read this first; the r0 table below stands except
-where this block supersedes it).** Arc: **composed (0/2) → JC-PE1: 2 CRITICAL +
-8 gaps → r1 (this round, STRUCTURAL) → JC-PE2 next**. Acceptance counter
-**0/2** (a repair round is not a pass).
+where this block supersedes it).** ~~Arc: **composed (0/2) → JC-PE1: 2 CRITICAL +
+8 gaps → r1 (this round, STRUCTURAL) → JC-PE2 next**.~~ **[r2] Arc: composed
+(0/2) → JC-PE1 (2 CRITICAL + 8 gaps) → r1 (STRUCTURAL) → JC-PE2 (0 CRITICAL +
+9 gaps; "no false statement") → r2 (labelling/footprint/disclosure + the
+bilinearity machine leg, §9.4) → JC-PE3 next.** Acceptance counter
+**0/2** (a repair round is not a pass). **[r2] Grade deltas at r2: NONE — the
+one status that MOVES is (DMULT)'s label (its exact tier from "CITED" to
+MEASURED, §2.10 [r2, G-1]), which downgrades no clause grade but re-fences
+JC-COB's sharp form onto the measured tier.**
 
 | clause | r0 grade | r1 grade | what changed |
 |---|---|---|---|
-| **W-6** | PROVED general m | **PROVED general m** | (ii) re-keyed to B_n (G1); (v) re-quantified (F2); box JC-BOX-4 unchanged |
+| **W-6** | PROVED general m | **PROVED general m** | (ii) re-keyed to B_n (G1); (v) re-quantified (F2); ~~box JC-BOX-4 unchanged~~ **[r2, G-7: JC-BOX-4 CHANGED at r1 — it gained the conditional closure on (DMULT-w); the corner is closed for a reader granting that tier, open for one wanting it FGMN-free]** |
 | **W-7** | PROVED on stated scopes | **PROVED on stated scopes, one clause STRENGTHENED** | OB-4 re-derived on B (F1); spanning promoted from definition to theorem, so Ψ is onto the WHOLE transported ring (G2/F1) |
 | **W-8** | PROVED general m | **PROVED general m** | inputs re-listed as (COORD-B)+(MULT-B)+JC-SPAN+JC-SCAL+R3; remark (a)'s two identifications struck (G7) and replaced by JC-COB |
 | **W-9** | PROVED given W-6..W-8 | **PROVED given W-6..W-8** | JC-F1's dimension count now rests on the repaired display; JC-F2 added as a second REVIEW-OWED display correction (G2) |
@@ -1608,7 +2013,7 @@ first thing JC-PE2 should attack.
 |---|---|---|
 | **W-6** | carry-target existence: TC-1 legitimate (JC-DOM), TC-2 legitimate + ℤ→ℤ/E collapse (JC-GAUGE), the surviving fibred index (JC-FIB), OB-2 periodicity (JC-PER), the anchor-monomial and scalar-image lemmas, **THEOREM JC-LOAD** (TC-3 load-bearing exactly at δ ≥ g_m) and **COROLLARY JC-PSIKER** (TC-3 is not a relabeling) | **PROVED at general m**, attempt 0/2, one located box: the top-flat corner e_m = 1 ∧ g_m = 1 (JC-BOX-4) |
 | **W-7** | Ψ: OB-2 **PROVED general m**; OB-3 existence/structure (constant = (K_m^*-unit)·z̄^δ) **PROVED general m on ALL window pairs**; OB-3 value (inner = ∏_{j≤m}z_j^{D_j}) **PROVED general m on [ILN]†'s scored stratum**; OB-4 independence **PROVED general m** (Δ-rank input literature-carried); OB-5 fence **DISCHARGED as architecture** | **PROVED on the stated scopes**, attempt 0/2; the germ split displayed honestly (val law CONFIRMED on 27 stages; H-D REFUTED 138/669) |
-| **W-8** | harness-val = TC-read (OB-6), with every line-wise normalization cancelling; J-C(iii) residue chain | **PROVED at general m** on (COORD)+(MULT)+JC-SPAN+JC-SCAL+R3, attempt 0/2 |
+| **W-8** | harness-val = TC-read (OB-6), with every line-wise normalization cancelling; J-C(iii) residue chain | **PROVED at general m** on ~~(COORD)+(MULT)~~ **(COORD-B)+(MULT-B) [r2, G-4]**+JC-SPAN+JC-SCAL+R3, attempt 0/2 |
 | **W-9** | cocycle semantics: descent to ℤ/E, COR-2 = gr-associativity, the {0,1} carry cocycle, the twisted-group-algebra display, COR-4 monodromy = the gauge period | **PROVED given W-6..W-8** (S-priced, as the blueprint priced it), attempt 0/2 |
 | **cyclic fence** | LAW JC-CYC: abstract cyclicity always (JC-F1, **review-owed display correction**); the adjudicated (CYC) property is the letter-monomial one; obstruction direction PROVED; twist-blind direction PROVED; the inclusion CYCLIC ⟹ collapse MEASURED (m ≤ 3, 0/29, low resolution) with its general form OPEN and its **converse REFUTED** by this note's own battery (13 collapse rows NOT-CYCLIC) | **REFINED, not refuted**; byte-frozen 22/28 record unamended |
 
@@ -1637,6 +2042,20 @@ machine support (JC-BOX-2); (3) the non-integral half of the coordinate
 statement, which the repair NEWLY covers and no runner measures (JC-BOX-8(i));
 (4) the top-flat corner (JC-BOX-4); (5) the two REVIEW-OWED display corrections
 JC-F1/JC-F2 (JC-BOX-5).
+
+**[r2] The stack after the G-1 tier split, for JC-PE3.** The single FGMN entry
+divides: **(DMULT-w)** (up to the line-pair unit ω — the citable content,
+carrying (COORD-B)(2)/(MULT-B)/JC-CARRY-m/W-8 and JC-BOX-4's closure) stays
+CITED with the numbering re-verification owed; **(DMULT-s)** (ω ≡ 1) is
+**MEASURED-only** (R1-DMULT + §9.4's bilinear leg), carrying exactly JC-COB's
+sharp form. Weakest links, re-ranked for JC-PE3: (1) (DMULT-w) at composite
+order + W-1's transport (with TR-3′-GEN, the corpus's march-level dictionary,
+OPEN at general order — quoted at §2.10 [r2, G-1]); (2) JC-BOX-2's
+off-stratum existence claim (zero machine support, unchanged); (3) the
+non-integral residue JC-BOX-8(i) (unchanged); (4) (DMULT-s)'s measured-only
+status wherever JC-COB's sharp value is displayed; (5) the top-flat corner
+(JC-BOX-4, conditionally closed on (DMULT-w)); (6) JC-F1/JC-F2 REVIEW-OWED
+(JC-BOX-5, unchanged).
 
 ### 10.3 Consumers — named, with what each may and may NOT take
 
