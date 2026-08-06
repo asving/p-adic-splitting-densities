@@ -13,7 +13,7 @@ b375f42 → verdict 0baeb3b) → PE1 HOSTILE (report df00707: 0 CRITICAL /
 ROUND — note-only repair against all eight findings; runner + artifacts
 BYTE-FROZEN, runner md5 6b406f81c250d25f615f715fa9eff474 verified
 unchanged). Counter 0/2; PE2 is the next acceptance attempt.]**~~
-**[r2 STATUS (CURRENT; supersedes the struck r1 line) — ARC: composed (seal
+~~**[r2 STATUS (CURRENT; supersedes the struck r1 line) — ARC: composed (seal
 b375f42 → verdict 0baeb3b) → PE1 HOSTILE (df00707: 0C/5G+3m, NOT CLEAN) →
 r1 (90db22d, note-only, all eight findings addressed) → PE2 HOSTILE (report
 1edb104: 0 CRITICAL / 1 JUSTIFICATION GAP + 2 minors, NOT CLEAN — the r1
@@ -26,6 +26,18 @@ falsifiable by sibling drift, only updatable at a fold): [JB] read at
 round-labels and the F-3 WM-EPS range gloss. Note-only; runner + artifacts
 BYTE-FROZEN, runner md5 6b406f81c250d25f615f715fa9eff474 re-verified
 unchanged). A repair round is NOT a pass: counter 0/2; PE3 is the next
+acceptance attempt.]**~~
+**[r3 STATUS (CURRENT; supersedes the struck r2 line) — ARC: composed (seal
+b375f42 → verdict 0baeb3b) → PE1 HOSTILE (df00707: 0C/5G+3m, NOT CLEAN) →
+r1 (90db22d) → PE2 HOSTILE (1edb104: 0C/1G+2m — pure freshness drift, r1
+diff clean at source) → r2 (8f1c1f2, THE PIN ROUND) → PE3 HOSTILE (report
+07acb37: 0 CRITICAL / 0 GAPS / 1 MINOR, NOT CLEAN — the r2 diff itself
+verified substantively EXACT at every site, machine leg byte-identical; the
+one finding = S3(b)'s quotation attribution, semantically nil) → r3 (THIS
+ROUND — the one-line F-1 attribution repair at S3(b), plus PE3 O-1's as-of
+pins on the [JA]/[W2]/[ILN] dagger groups. Note-only; runner + artifacts
+BYTE-FROZEN, runner md5 6b406f81c250d25f615f715fa9eff474 re-verified
+unchanged). A repair round is NOT a pass: counter 0/2; PE4 is the next
 acceptance attempt.]** Author:
 Fable, campaign date 2026-08-08 (wallclock 2026-08-06).
 
@@ -51,9 +63,13 @@ Fable, campaign date 2026-08-08 (wallclock 2026-08-06).
   shortcut stays REFUTED).
 
 **Incorporation convention (dagger forms, declared once).**
-**[W2]†** = `GRTW2_PROOF_2026-08-08.md` (attempt 0/2): clauses W2-C1/C2/C3,
+**[W2]†** = `GRTW2_PROOF_2026-08-08.md` (attempt 0/2) **[r3, O-1: every
+[W2] quote reads as of 5463f2a (its only commit; all byte-verified true at
+HEAD by PE3)]**: clauses W2-C1/C2/C3,
 the §3.4 (ξ,w) closed form, (C-coll), (HR-REC), W2-BOX-1, W2-OPEN-1 (OPEN).
-**[JA]†** = `GRTJA_PROOF_2026-08-08.md` (post-r1, 0/2): JA-PIN, JA-VAL,
+**[JA]†** = `GRTJA_PROOF_2026-08-08.md` (post-r1, 0/2) **[r3, O-1: every
+[JA] quote reads as of ce0469a (= JA r1, its last commit; all byte-verified
+true at HEAD by PE3, incl. the F-4 block's JA-EPS quantifier)]**: JA-PIN, JA-VAL,
 JA-EPS, JA-GRID, JA-RES, JA-VDIND, (R-coll), JA-BOX-1..5.
 **[JB]†** = `GRTJB_PROOF_2026-08-08.md` ~~(post-r4, 0/2)~~ **[r1: JB r5 landed
 mid-arc (f9f104e, note-only — the u ≥ 0 partial discharge); the §0M
@@ -81,7 +97,8 @@ split, the §3.3 germ figures, and the §10.2 stack items this note mirrors
 are byte-stable at 3870bc8]**: W-6..W-9, JC-LOC,
 JC-LOAD, JC-PSIKER, JC-F1/JC-F2, the (DMULT-w)/(DMULT-s) tier split, LAW
 JC-CYC. **[ILN]†** = `ITERLAWN_PROOF_2026-08-08.md`, **ACCEPTED**
-(2-clean): the S0.1 class pin, S0.3 recursion (δ, S_j, D_j), Lemma
+(2-clean) **[r3, O-1: every [ILN] quote reads as of ced7dbb (its last
+commit, pre-WM-seal; all byte-verified true at HEAD by PE3)]**: the S0.1 class pin, S0.3 recursion (δ, S_j, D_j), Lemma
 SHIFT-(n) and Lemma D_j-INT ("PROVED, generic, unconditional" — its S2
 scope: γ, γ′ ∈ ℤ arbitrary), the value law c_{n+1} = z̄^δ·∏_j z_j^{D_j} on
 the scored stratum. **[SYN]** = `WELD_SYNTHESIS_2026-08-05.md` (adjudication
@@ -358,7 +375,11 @@ m is its every-recursion-node form (2 ≤ q ≤ m−1). *Proof: citation;
 [JA]† §3.4's display is this condition verbatim.*
 
 **(b) [the (VD-m) proviso, J-B].** JB-CREAD's governing fence consumes
-JA-VDIND verbatim ([JB]† §0M column (c) **[r2: as of 4c4ee56]**: "at every
+JA-VDIND verbatim ([JB]† §5's regenerated fence display — the (VD-m) line
+of JB's internal [r3, STEP 2] block, citing [row 21]; §0M row 21's own (c)
+cell is the pointer "YES — the governing fence" **[r3, F-1: attribution
+corrected from "§0M column (c)", where the cell carries the same content in
+paren byte-form; quote + pin unchanged]** **[r2: as of 4c4ee56]**: "at every
 m ≥ 2 a HYPOTHESIS —
 JA-VDIND's ABSOLUTE character-triviality"); hence = (a) = (PERIM) at the
 same attained sets. Unconditional at m ≤ 1 only ((VD-1) = W2-L3). *Proof:
@@ -684,3 +705,18 @@ corrected (F-2); the WM-EPS machine-leg range gloss corrected to the
 runner's exact sampling range (F-3). Note-only; runner + artifacts
 BYTE-FROZEN (runner md5 6b406f81c250d25f615f715fa9eff474 re-verified this
 round; `git diff verification/` empty). Counter 0/2; PE3 next.
+
+— r3 REPAIR ROUND against PE3 (report 07acb37: 0 CRITICAL / 0 GAPS / 1
+MINOR — the r2 diff itself verified substantively EXACT at every site;
+machine leg reproduced byte-identically), wallclock 2026-08-06. ONE FIX
+(F-1): the S3(b) quotation attribution corrected to the quote's true
+byte-site at the pin — [JB]@4c4ee56 §5's regenerated fence display (JB's
+internal [r3, STEP 2] block, the (VD-m) line citing [row 21]) — replacing
+"§0M column (c)", whose cell carries the same content in paren byte-form
+and whose row-21 (c) cell is the pointer "YES — the governing fence";
+quote and pin unchanged. Plus PE3 O-1: as-of pins added to the
+[JA]/[W2]/[ILN] dagger groups (ce0469a / 5463f2a / ced7dbb — every quote
+from these sources byte-verified true at HEAD by PE3), closing the
+unpinned-source drift species going forward. Note-only; runner + artifacts
+BYTE-FROZEN (runner md5 6b406f81c250d25f615f715fa9eff474 re-verified this
+round; `git diff verification/` empty). Counter 0/2; PE4 next.
