@@ -1425,3 +1425,29 @@ repair round r4 applied 2026-08-08 campaign (wallclock 2026-08-05);
 repair round r5 applied 2026-08-08 campaign (wallclock 2026-08-06);
 repair round r6 applied 2026-08-08 campaign (wallclock 2026-08-06);
 repair round r7 applied 2026-08-08 campaign (wallclock 2026-08-06).
+
+---
+
+## ★ ACCEPTANCE RECORD (orchestrator, 2026-08-06) ★
+
+**THIS NOTE IS ACCEPTED at 2/2** — two consecutive clean hostile passes:
+PE8 (report c6097d7, CLEAN 0C/0G) and PE9 (report 9b5175c, CLEAN 0C/0G,
+including a fresh-instance leg at p = 7 outside the sealed battery's
+roster: 2,178 nonzero digits, 0 violations, the PE1 counter-instance
+identity re-multiplied exact). Full arc: PE1 (1C+3G) → r1 → PE2 (0C+5G)
+→ r2 → PE3 (0C+5G) → r3 → PE4 (0C+6G) → r4 → PE5 (0C+5G) → r5 → PE6
+(0C+3G) → r6 → PE7 (0C+1m) → r7 → PE8 CLEAN → PE9 CLEAN. Nine hostile
+passes, seven repair rounds, every substantive component re-derived by
+at least two independent fresh readers.
+
+**WHAT IS ACCEPTED**: this note's theorems as fenced — (TAIL-STAB) via
+lexicographic (m, deg a) descent; READ-EQ; THE THEOREM (the display with
+the letter the lift carries, every orbit member); COR 1 (the ξ = 1
+slice); COR 2 (the corner restriction, as rescoped at r1/F3) — at the
+note's own conditionality: **the shift-descent consumption of GRTW2
+(0/2, arc open) caps the discharge grade; the ξ = 1 core chain is
+W-2-free as displayed.** NR-1's discharge is hereby at ACCEPTED grade
+modulo the W-2 cap. The S5 rider-rewrite display (what [ILN]'s NR-1
+entry becomes) is NOW LICENSED for execution at the next ledger fold.
+Machine record: sealed runner 25,409/0 (md5 ccb4351c… byte-frozen
+dafc0b5 → HEAD); children generator + A7 752/5,336/0.

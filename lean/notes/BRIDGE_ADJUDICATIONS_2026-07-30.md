@@ -11331,3 +11331,24 @@ re-derived decorrelated. **r6 = one annotation + one word → PE7.**
 WM r2: second connection casualty, this time mid-edit — uncommitted
 partial REVERTED (provenance-clean re-dispatch; the r1 commit 90db22d
 intact). Counters: LIFT **1/2**; JB 0/2; JC 0/2; WM 0/2.
+
+---
+
+## ★★ FIRST ACCEPTANCE: LIFTCORNER_2026-08-08.md ACCEPTED AT 2/2 (PE8 + PE9 both CLEAN) ★★ — 2026-08-06
+
+**PE9 (report 9b5175c) — CLEAN, 0C/0G; the second consecutive clean
+pass. ACCEPTED.** Acceptance record appended to the note (this commit).
+PE9's extras: a fresh-instance leg at p = 7 (outside the battery roster)
+clean; two decorrelated re-derivations (CONTENT via O-linearity of monic
+division; READ-EQ case-(b) by general ledger arithmetic); the post-PE8
+record-lag question adjudicated NOT-a-defect (protocol's division of
+record — a contrary ruling would make every clean pass self-falsifying).
+**CONSEQUENCES**: NR-1 discharged at ACCEPTED grade modulo the W-2 cap
+(the ξ = 1 core chain W-2-free); the [ILN] NR-1 rider-rewrite (per the
+note's S5 display) LICENSED for the next fold; the W-2 arc is now the
+single remaining cap on this discharge — the Codex W-arc leg
+(~12h away) and the GRTW2 PE arc are the direct route. JB r8 (49f9168),
+JC r6 (4b804b4), WM r2 (8f1c1f2 — 16 pinned sites, 24 as-of pins) all
+landed. **Dispatched: JB PE9 + JC PE7 + WM PE3.** Counters: LIFT
+**ACCEPTED 2/2**; JB 0/2; JC 0/2; WM 0/2. Public map/paper refresh:
+deferred to the group-acceptance fold per the milestone policy.

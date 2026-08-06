@@ -3148,3 +3148,5 @@ legs + FGMN numbering (settles (DMULT-s) and the J-C citation) + the
 WELDMASTER plan-review; (4) K2-MULT-RES + g₀ ≥ 3 (peripheral); (5) Lean
 campaign after corpus stability (the math-first gate); (6) a_λ
 multiplicativity + χ-from-S (queued synthesis targets).**
+
+**2026-08-06 LATE: ★ LIFTCORNER ACCEPTED 2/2 ★ (first weld-program acceptance; NR-1 at accepted grade mod the W-2 cap; ILN rider-rewrite licensed). JB/JC/WM one clean pass each from counts opening.**
