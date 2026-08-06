@@ -11263,3 +11263,7 @@ target).**
 ---
 
 ## Wave fold 2026-08-06 (compact): LIFT r6 landed (61/11, one disclosed correct deviation) → PE7; JB PE6 0C/2G+1m (d3 tie needs P≤q — the F-4 disease at the one never-level-audited row; the unreproducible probe figure) → r6; JC PE4 0C/4G (r3 diff CLEAN; FGMN-(c) = the 4th alias; grade box not brought forward; tier hygiene; census resolution) → r4; WELDMASTER r1 complete (frontier verbatim; all 10 prereg rows evidence-class labeled) → PE2. All machine legs green, all seals intact. Counters all 0/2.
+
+---
+
+## Wave fold 2026-08-06b (compact): LIFT PE7 0C/1-MINOR (one clause from clean — units mismatch in a census cite, material claim independently TRUE; the status system verified TRUE-AT-HEAD for the first time) → r7 one-clause → PE8. JB r6 landed (12-site d3 re-fence to P≤q, pin rescue refused for consistency; F-2 replaced with the reproducible PE6 figure, r5's parameters verified unrecoverable) → PE7. JC r4 landed (final alias census 144 = 42 live / 0 refuted-content, audited BY CONTENT in 12 groups; grade box brought forward; tier hygiene fixed per PE4 §A1) → PE5. WELDMASTER PE2 died on a connection error (no partial; fresh re-dispatch). Counters all 0/2; all machine legs green; all seals intact.
