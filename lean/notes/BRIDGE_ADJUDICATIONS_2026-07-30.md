@@ -11267,3 +11267,30 @@ target).**
 ---
 
 ## Wave fold 2026-08-06b (compact): LIFT PE7 0C/1-MINOR (one clause from clean — units mismatch in a census cite, material claim independently TRUE; the status system verified TRUE-AT-HEAD for the first time) → r7 one-clause → PE8. JB r6 landed (12-site d3 re-fence to P≤q, pin rescue refused for consistency; F-2 replaced with the reproducible PE6 figure, r5's parameters verified unrecoverable) → PE7. JC r4 landed (final alias census 144 = 42 live / 0 refuted-content, audited BY CONTENT in 12 groups; grade box brought forward; tier hygiene fixed per PE4 §A1) → PE5. WELDMASTER PE2 died on a connection error (no partial; fresh re-dispatch). Counters all 0/2; all machine legs green; all seals intact.
+
+---
+
+## Wave fold 2026-08-06c (compact) + STANDING RULE: cross-note quotes carry AS-OF COMMIT PINS — 2026-08-06
+
+LIFT r7 landed (4898d32; occurrence-level warrant, figures re-verified not
+transcribed; the transcription species' standing rule written in: quote
+counts only WITH UNIT AND COMMIT; disclosed correct deviation per the F6-1
+precedent) → PE8. JB PE7 0C/1G+2m (the gap r6-BRED: "strictly stronger"
+unproved and refuted at m = 1 where membership IS equivalent — the PE6
+qualifier dropped in transcription; third m-1 site; redundant-conjunct
+omission verified redundant; **re-derivation complement now EMPTY**) → r7
+tiny. JC PE5 0C/2G+1m (the 4.8-remark false on its own grep — third
+[r3,G-2] recurrence; stacks omit consumed (a)/(b) — PE4 GAP 1's unrepaired
+half; a display wording) → r5 tiny. WM PE2 0C/1-drift+2m (**the r1 diff
+itself CLEAN, all eight repairs source-verified; the gap is pure freshness
+drift — JB r6 landed 35 min after WM r1**; both verbatim frontier quotes
+BYTE-INTACT at JB HEAD) → r2.
+
+**DIAGNOSIS: the arcs are asymptotic — substance clean everywhere, residue
+= transcription precision + parallel-evolution drift. STANDING RULE
+MINTED: cross-note quotes carry as-of commit pins (extends the as-of
+machine-quote discipline); a pinned quote is never falsifiable by sibling
+drift, only updatable at folds. WM r2 applies it throughout. ENDGAME
+SEQUENCE: (1) JB r7 + JC r5 + LIFT PE8 now; (2) then WM r2 (pinned quotes
+against the settled siblings) + JB PE8 + JC PE6; acceptance passes then
+run against pin-stable texts.**
