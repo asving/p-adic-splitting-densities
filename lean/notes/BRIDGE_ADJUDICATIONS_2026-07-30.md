@@ -11132,3 +11132,32 @@ ZERO-NEW-DEFECT round ⟹ r5 = MINIMAL (five one-line fixes, nothing else,
 no restructuring). PE6 = next attempt. The master-transport note's
 one-perimeter fence is the structural cure for this class going
 forward.**
+
+---
+
+## WELDMASTER COMPOSED (seal b375f42 / verdict 0baeb3b): THEOREM WELD-M — one transport, five clause-faces, proof = the citation table; WM-COB PROVED unconditional; PERIM-μ derived — 2026-08-06
+
+**WELDMASTER_2026-08-08.md + weldmaster_checks.py (LEDGERLAMBDA genre;
+consumption-only, no note edited, nothing retired) — ADJUDICATED: the
+consolidation stands at attempt 0/2.** THEOREM WELD-M: (M0) division
+arithmetic identity [JB-DEV(i)+JA-PIN+W2-C1] · (M1) w = v in the sheared
+frame, gradings map = the affine shear vertex-for-vertex
+[JA-VAL+JB-AFF/VTX+JA-GRID] · (M2) per-slot z-characters from the ONE
+cochain t_j/ε_j [JA-EPS+JA-RES+W2-C2] · (M3) K^c[ℤ/E] on B_n with JC-LOC
+the codomain pin [W-6..W-9] · (M4) (ξ,w)-covariance [W2-C2/C3;
+W2-OPEN-1 inherited OPEN]. Net new content declared: S2 + S3 only.
+**S2 WM-COB PROVED (complete proof): D_j = t_j(β″)−t_j(β)−t_j(β′) on
+footprint [ILN]† SHIFT-(n)+D_j-INT ALONE, unconditional all γ,γ′;
+c_{n+1} = z̄^δ·∂E on the scored stratum; LEMMA WM-RHO proved; COROLLARY
+WM-CLASS [c] = [z̄^δ·ρ_T^{−κ}] ∈ H²(ℤ/E,K^*) — the JC-F1 explanation at
+display grade. Residue fenced (the outer letter; mod-wrap/χ-chain not
+reduced).** S3 PERIM-μ stated + derived: (R-coll) and the (VD-m) proviso
+= absolute (PERIM) at attained sets (verbatim cites); (C-coll) =
+slot-grid (PERIM) (one line from W-2 §3.4); I4B mod-wrap caveat carried;
+the four notes' fence surfaces UNTOUCHED — supersession at next fold.
+Battery: 29/29 frozen towers, 10 families, 7,208/0, 4 teeth fired
+(374/861/514/47), coboundary exact incl. 513 off-window, shear re-keyed
+fresh on 804 polygons, runner md5 6b406f81 stable across the seal.
+Conditionality honest (rides the four junctions at 0/2 + [ILN] accepted;
+nothing upgraded). **WELDMASTER PE1 dispatched. The weld now: 4 junctions
++ 1 capstone, all composed; J-D0 next on the composition queue.**
