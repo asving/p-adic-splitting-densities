@@ -11400,3 +11400,45 @@ at 3-accepted + 2-in-arc + J-D; NR-3 = Q2's residue; NR-4 discharged.**
 Acceptance-fold housekeeping (JB/JC round-record closings per LIFTCORNER
 convention + the licensed ILN rider-rewrite) queued for the group fold
 with the public-exposition refresh.
+
+---
+
+## The last two arcs open: JA PE2 1C+3G (root-quantifier slip, 8 witnesses; ACCEPTED TEXTS UNCONTAMINATED) + W2 PE1 0C+2G (W2-C3 proved-to-first-twist/measured-above; core math CONFIRMED) + WM PE4 0C/0G/1m — 2026-08-06/07
+
+**WM PE4 (39e1eec) — 0C/0G/1 MINOR** (the r3 "closing the species" footer
+overstates: LED-Λ still unpinned — one line). Fresh decomposition-route
+re-proof of WM-COB(i) + a 17,624/0 fresh leg. **r4 = one line → PE5.**
+
+**JA PE2 (9040961; filed as PE2 — the dispatched PE1 name was already
+taken by the 2026-08-04 report the note cites; correct deviation) —
+1 CRITICAL + 3G + 1m.** THE CRITICAL: §3.4's (R-coll) display concludes
+"(VD-m) at all levels up to m" but its perimeter quantifier 2 ≤ q ≤ m−1
+OMITS the root-level JA-VDIND condition — 8 constructed witnesses at
+m = 3 ON the perimeter as defined with (VD-3) FALSE (+ 58 at m = 2 where
+the range is empty); JA-VDIND itself and the per-slot law STAND (fresh
+396/0). **The accepted JB's operative fence is CORRECT and uncontaminated
+(root triviality is a HYPOTHESIS there at every m ≥ 2); only its
+subordinate "(R-coll)" label inherited the slip — recorded ungraded; an
+erratum ANNOTATION (dated, no silent edit) on the accepted JB is owed at
+the fold.** Cure: the one-line root-inclusive extension. Gaps: the
+[JA-r1] gloss's unquantified universal (true only print-side-scoped);
+a battery-coverage overstatement; a header/§8 arc-record contradiction.
+WM-FENCE(a) reads the same range — a WM r4 companion line.
+
+**W2 PE1 (report committed; the highest-blast-radius target) — 0C + 2G +
+5m; CORE MATH CONFIRMED (the (ξ,w) closed form incl. the linearization
+error = ξ_Q^δ exactly, HR-REC, W2-L0–L3, the transport algebra, the I4B
+boundary; W2-OPEN-1 fence honest and carried OPEN by all riders; K12
+genuinely runs inside TW-F3).** F1 (major gap): W2-C3's induction applies
+clause 1 in transported chambers where its own (iii) says byte-equality
+fails — PROVED only up to the first ξ ≠ 1 junction, MEASURED above
+(44/44); the bridging lemma (rep-independence off the byte perimeter)
+undisplayed. F2: W2-C1a's "every level" refuted by the probe's own F2
+record — needs the chamber qualifier; **JB's accepted (d)-column already
+consumes the REPAIRED pairing — no accepted text falsified.** Minors:
+count inflations, an indexing collision, a sign typo, a characterization
+overclaim. **r1 = re-scope W2-C3 honestly (proved-to-first-twist +
+measured-above + the bridging lemma stated as the note's open box) + the
+chamber qualifier + minors. The Codex W-legs (~8h) now have fresh
+targets.** Counters: LIFT/JB/JC ACCEPTED · WM 0/2 · JA 0-clean · W2
+0-clean.
