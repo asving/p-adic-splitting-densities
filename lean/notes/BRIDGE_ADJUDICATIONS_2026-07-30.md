@@ -11352,3 +11352,30 @@ JC r6 (4b804b4), WM r2 (8f1c1f2 — 16 pinned sites, 24 as-of pins) all
 landed. **Dispatched: JB PE9 + JC PE7 + WM PE3.** Counters: LIFT
 **ACCEPTED 2/2**; JB 0/2; JC 0/2; WM 0/2. Public map/paper refresh:
 deferred to the group-acceptance fold per the milestone policy.
+
+---
+
+## ★ JB PE9 CLEAN + JC PE7 CLEAN — both counters open at 1/2; WM PE3 0C/0G/1-minor ★ — 2026-08-06
+
+**JB PE9 (b0b4c3a) — CLEAN 0C/0G/0m; counter 1/2.** Decorrelated
+re-derivation: JB-EPS re-proved by the FLOOR-COCYCLE route (t_m = ⌊ℓβ/e⌋,
+defect = ε′ via the floor-carry identity — no report nor the note used
+it) + a fresh 31,941-check leg, 0 violations; all four theorem boxes true
+as fenced; three unscored observations (quote-reflow convention;
+round-record closings; JB-EPS holds on all of ℤ≥0² — harmless strictness).
+**JB-PE10 = the acceptance pass.**
+
+**JC PE7 (782000e) — CLEAN 0C/0G; counter 1/2.** JC-GAUGE re-proved via
+coarsened-grading (no retraction map); fresh p = 7 leg OUTSIDE all
+rosters: X7A/X7B towers, SPAN/COB-sharp/LOAD-dichotomy all 72/72, 400
+cocycle triples, 0 violations — and X7B is a NEW off-collapse g_m = 2 row
+adjudicated NOT-CYCLIC (JC-CYC(d)'s inclusion survives out-of-roster).
+W-6..W-9 + both (DMULT) tiers true as fenced; no live (DMULT-s)
+consumption (127-line grep). **JC-PE8 = the acceptance pass.**
+
+**WM PE3 (07acb37) — 0C/0G/1 MINOR** (one pinned quote attributed to §0M
+col (c) when it is byte-exact at §5's regenerated fence — semantically
+nil; predates r2). Pin construction VERIFIED (no unpinned [JB]/[JC]
+quote; JB r8/JC r6 falsify nothing by construction); WM-COB/WM-RHO/
+WM-CLASS/PERIM-μ all re-derived exact. **r3 = one attribution line →
+PE4.** Counters: LIFT ACCEPTED · JB 1/2 · JC 1/2 · WM 0/2.
