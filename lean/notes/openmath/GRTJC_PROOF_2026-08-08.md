@@ -112,9 +112,10 @@ and FOUR repair rounds applied.**
 A repair round is NOT a pass, so the counter stays **0/2**. No gate fires, none
 retires; no `.lean` touched; no density/menu/count statement anywhere.
 
-**[r5] S-STATUS (CURRENT; supersedes the [r4] status block above): attempt
-grade, acceptance counter 0/2, FIVE hostile passes RUN and FIVE repair rounds
-applied.**
+**[r5] S-STATUS (SUPERSEDED at r6 by the block below; kept annotated rather
+than struck because of the embedded ARC display; supersedes the [r4] status
+block above): attempt grade, acceptance counter 0/2, FIVE hostile passes RUN
+and FIVE repair rounds applied.**
 
     ARC:  composed (seal 6ad01d1 -> verdict 8f07904)
       ->  JC-PE1  (GRTJC_passPE1_report.md, 1a27be3)   2 CRITICAL + 8 gaps
@@ -144,6 +145,79 @@ applied.**
 
 A repair round is NOT a pass, so the counter stays **0/2**. No gate fires, none
 retires; no `.lean` touched; no density/menu/count statement anywhere.
+
+**[r6] S-STATUS (CURRENT; supersedes the [r5] status block above): attempt
+grade, acceptance counter 0/2, SIX hostile passes RUN and SIX repair rounds
+applied.**
+
+    ARC:  composed (seal 6ad01d1 -> verdict 8f07904)
+      ->  JC-PE1  (GRTJC_passPE1_report.md, 1a27be3)   2 CRITICAL + 8 gaps
+      ->  r1      STRUCTURAL repair (85d5811/54904cc; mini-seal f45b63c/66263ce)
+      ->  JC-PE2  (GRTJC_passPE2_report.md, 4a76d52)   0 CRITICAL + 9 gaps
+      ->  r2      LABELLING + FOOTPRINT + one new machine leg
+                  (5742e25; mini-seal 79611a4/db12666)
+      ->  JC-PE3  (GRTJC_passPE3_report.md, e4b6fbf)   0 CRITICAL + 8 gaps
+      ->  r3      NOTE-ONLY: re-route + disclosure + record corrections
+                  (126c33f)
+      ->  JC-PE4  (GRTJC_passPE4_report.md, d5072b6)   0 CRITICAL + 4 gaps
+      ->  r4      NOTE-ONLY: the final alias sweep + arc and tier bookkeeping
+                  (edbb966)
+      ->  JC-PE5  (GRTJC_passPE5_report.md, b38f3f4)   0 CRITICAL + 2 gaps
+                                                       + 1 minor
+      ->  r5      NOTE-ONLY: three record repairs (per-alias census table;
+                  FGMN (a)(b) at the stack displays; "nonzero" at §2.8)
+                  (3870bc8)
+      ->  JC-PE6  (GRTJC_passPE6_report.md, 66760f6)   0 CRITICAL + 1 gap
+                  — "the r5 diff's substance is exact, everywhere I could
+                    machine-check it"; the one gap is r5-bred, entirely in
+                    the pointer RECORD (§0's [r4, G-1] bracket left saying
+                    "current stacks … supersede" after r5 inverted both
+                    clauses; the [r5, G-2] parenthetical's "as such")
+      ->  r6      THIS round: NOTE-ONLY (the two-edit pointer repair PE6
+                  prescribed: one dated [r6] annotation inside §0's
+                  [r4, G-1] bracket + the [r5, G-2] parenthetical's
+                  mischaracterization fixed — all three batteries, the
+                  instrument, and every artifact stay BYTE-FROZEN)
+      ->  JC-PE7  = the next acceptance attempt (a fresh hostile pass on THIS
+                    post-r6 text)
+
+A repair round is NOT a pass, so the counter stays **0/2**. No gate fires, none
+retires; no `.lean` touched; no density/menu/count statement anywhere.
+
+**[REPAIR ROUND r6 — 2026-08-08 campaign (wallclock 2026-08-06). NOTE-ONLY.**
+Applied against JC-PE6 (`GRTJC_passPE6_report.md`, commit `66760f6`: **0
+CRITICAL + 1 gap** — PE6 reproduced the r5 per-alias contribution table to the
+last digit (18/18 numbers by independent grep at `edbb966`, the four
+`4.8`-only lines verified at source with their dispositions), verified the
+[r5, G-2] consumption attribution source-true line by line, re-derived the
+m-1 warrant decorrelated (JC-SCAL from REALIZE R1/R2/R3 + a fresh 6-row
+numeric leg, 0 exceptions), re-ran the union grep at HEAD (172; zero new
+refuted-content lines), found the arc system consistent (18/18 hashes), and
+re-ran all three batteries + the instrument at exit 0, stdouts byte-identical
+on r0/r2/instrument). The one gap lives entirely in the pointer RECORD; no
+measured quantity moves at r6; nothing in `verification/` is touched.
+Disposition, keyed `[r6, G-1]`:
+
+* **G-1 (the stale pointer r5's own re-classification created)** — r5
+  declared §10.2's [r1]/[r2] stack displays ROUND-RECORDS and completed §0's
+  display in place, but §0's [r4, G-1] bracket still said, un-annotated and
+  in the present tense, that those displays are "the current stacks …
+  which supersede this display" — both clauses inverted at HEAD — while the
+  new [r5, G-2] parenthetical said [r4, G-1] quotes them "as such" [as
+  round-records], which it did not (it cited them as current and
+  superseding). The two edits PE6 prescribed, per the arc's own
+  dated-annotation convention (the precedent: r4's "[r4 — true at the r3
+  commit …]" on the [r3] block's falsified present-tense claim): (i) a dated
+  [r6, G-1] annotation inside §0's [r4, G-1] bracket stating the post-r5
+  truth — both clauses true at the r4 state (`edbb966`); since r5 those
+  displays are round-records, the current stack is §10.2 [r5, G-2]'s
+  completed form, and §0's display above carries the same completion in
+  place, itself live; (ii) the [r5, G-2] parenthetical's "as such" struck
+  and replaced by what [r4, G-1] actually does (cites their content as of
+  r4, under a since-annotated "current"/"supersede" label). Plus the
+  one-liner PE6 noted but did not weight: the §9.5 group-12 audit line's
+  "the current stack" gains an [r6] as-of pin (it sits inside the r4 census
+  record, executed-at-`edbb966`).
 
 **[REPAIR ROUND r5 — 2026-08-08 campaign (wallclock 2026-08-06). NOTE-ONLY.**
 Applied against JC-PE5 (`GRTJC_passPE5_report.md`, commit `b38f3f4`: **0
@@ -514,7 +588,15 @@ by ANNOTATION, not edit: §10.2 [r5, G-2].]**
 PE1-refuted input's FOURTH alias, live here since r0 and outside every earlier
 sweep pattern (none of `(IN-3)`, `Thm 4.2`, `(COORD)`, `(MULT)` occurs on it).
 What is true, and what the current stacks (§10.2 [r1]/[r2], which supersede
-this display) say: clause (c)'s content is consumed in this note ONLY as
+this display) **[r6, G-1 — 2026-08-08 campaign (wallclock 2026-08-06), per
+PE6 GAP 1: "current stacks" and "supersede this display" were both true at
+the r4 state (`edbb966`) and are inverted since r5 — §10.2's [r1]/[r2]
+displays are ROUND-RECORDS ([r5, G-2]), the current stack is §10.2
+[r5, G-2]'s completed form (FGMN (a)(b) + (DMULT-w) on B + Thm 4.8/Cor 4.9 +
+Cor 2.7), and this §0 display above carries the same completion IN PLACE and
+is itself live, superseded by nothing. The clause-(c) content this bracket
+goes on to state is unchanged and remains true.]** say: clause (c)'s content
+is consumed in this note ONLY as
 (DMULT-w) via JC-LOC, on B ≅ gr_{K[x]}(w) — never on gr_{O[x]} — with the
 (DMULT-w)/(DMULT-s) tier split of [r2, G-1]; clauses (d)(e) remain unchanged
 citations. Final census: §9.5 [r4, G-1].]**
@@ -2495,7 +2577,9 @@ against the current footprint, not just its tag):**
 12. **§10.2's [r1] stack one-liner + [r2] tier-split narrative, 2** —
     "(DMULT) on B [= FGMN Thm 4.2's content via JC-LOC]"; the (DMULT-w)/
     (DMULT-s) division. VALID — the current stack, which §0's display now
-    points to.
+    points to. **[r6 — reads as of this census's executed-at pin `edbb966`;
+    since r5 those displays are round-records and the current stack is §10.2
+    [r5, G-2]'s completed form.]**
 
 **The verified fixed point, at the union pattern and by content: ZERO live
 hits state (IN-3)(c)-on-gr, (COORD), (MULT), the Thm-4.2-on-gr_{O[x]}
@@ -2533,7 +2617,7 @@ disclosure + the bilinearity machine leg, §9.4) → JC-PE3 (0 CRITICAL + 8 gaps
 all labelling/disclosure/record defects) → r3 (NOTE-ONLY: re-route +
 disclosure + record corrections) → JC-PE4 (0 CRITICAL + 4 gaps; all in what
 r3 left untouched) → r4 (NOTE-ONLY: the final alias sweep + arc and tier
-bookkeeping, this round) → JC-PE5 next.~~]** **[r5 — arc extended per the
+bookkeeping, this round) → JC-PE5 next.~~]** ~~**[r5 — arc extended per the
 same convention (the [r4, G-2] display above is struck, not deleted): Arc:
 composed (0/2) → JC-PE1 (2 CRITICAL + 8 gaps) → r1 (STRUCTURAL) → JC-PE2
 (0 CRITICAL + 9 gaps; "no false statement") → r2 (labelling/footprint/
@@ -2545,7 +2629,24 @@ bookkeeping) → JC-PE5 (0 CRITICAL + 2 gaps + 1 minor; "the r4 diff's
 mathematics is EXACT"; both gaps in the census/stack record surface) → r5
 (NOTE-ONLY: three record repairs — the census remark restated per-alias
 census-not-prose, FGMN (a)(b) completed at the stack displays, one word at
-§2.8 — this round) → JC-PE6 next.]** Acceptance counter
+§2.8 — this round) → JC-PE6 next.]**~~ **[r6 — arc extended per the same
+convention (the [r5] display above is struck, not deleted): Arc:
+composed (0/2) → JC-PE1 (2 CRITICAL + 8 gaps) → r1 (STRUCTURAL) → JC-PE2
+(0 CRITICAL + 9 gaps; "no false statement") → r2 (labelling/footprint/
+disclosure + the bilinearity machine leg, §9.4) → JC-PE3 (0 CRITICAL + 8 gaps;
+all labelling/disclosure/record defects) → r3 (NOTE-ONLY: re-route +
+disclosure + record corrections) → JC-PE4 (0 CRITICAL + 4 gaps; all in what
+r3 left untouched) → r4 (NOTE-ONLY: the final alias sweep + arc and tier
+bookkeeping) → JC-PE5 (0 CRITICAL + 2 gaps + 1 minor; "the r4 diff's
+mathematics is EXACT"; both gaps in the census/stack record surface) → r5
+(NOTE-ONLY: three record repairs — the census remark restated per-alias
+census-not-prose, FGMN (a)(b) completed at the stack displays, one word at
+§2.8) → JC-PE6 (0 CRITICAL + 1 gap; "the r5 diff's substance is exact,
+everywhere I could machine-check it"; the gap entirely in the pointer
+record r5's own re-classification created) → r6 (NOTE-ONLY: the two-edit
+pointer repair — the dated [r6] annotation at §0's [r4, G-1] bracket + the
+[r5, G-2] parenthetical's "as such" corrected — this round) →
+JC-PE7 next.]** Acceptance counter
 **0/2** (a repair round is not a pass). **[r2] Grade deltas at r2: NONE — the
 one status that MOVES is (DMULT)'s label (its exact tier from "CITED" to
 MEASURED, §2.10 [r2, G-1]), which downgrades no clause grade but re-fences
@@ -2556,7 +2657,9 @@ not see it)].** **[r4] Grade deltas: NONE — r4 moves no grade and no measured
 quantity (note-only; the three batteries, the instrument, and every artifact
 stay BYTE-FROZEN).** **[r5] Grade deltas: NONE — r5 moves no grade and no
 measured quantity (note-only; the three batteries, the instrument, and every
-artifact stay BYTE-FROZEN).**
+artifact stay BYTE-FROZEN).** **[r6] Grade deltas: NONE — r6 moves no grade
+and no measured quantity (note-only; the three batteries, the instrument,
+and every artifact stay BYTE-FROZEN).**
 
 | clause | r0 grade | r1 grade | what changed |
 |---|---|---|---|
@@ -2623,7 +2726,11 @@ status wherever JC-COB's sharp value is displayed; (5) the top-flat corner
 
 **[r5, G-2 — THE FGMN ENTRY COMPLETED (annotation, not edit: the r0/[r1]/[r2]
 stack displays above are ROUND-RECORDS — each states the stack AS OF its
-round and is quoted as such by later brackets, §0 [r4, G-1] included — so
+round and is quoted ~~as such~~ **for its content as of the citing round
+[r6, G-1 — wording corrected per PE6 GAP 1: §0 [r4, G-1] cites those
+displays as "the current stacks … which supersede this display", NOT as
+round-records; that bracket now carries its own dated [r6] annotation in
+place]** by later brackets, §0 [r4, G-1] included — so
 their wording stays; PE5 GAP 2, the half of PE4's GAP 1 that r4 left
 unrepaired).** Every stack display above names the FGMN footprint only as
 Thm 4.2 (r0) / its (DMULT)-via-JC-LOC re-route ([r1], tier-split at [r2]) +
