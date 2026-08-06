@@ -27,7 +27,7 @@ round-labels and the F-3 WM-EPS range gloss. Note-only; runner + artifacts
 BYTE-FROZEN, runner md5 6b406f81c250d25f615f715fa9eff474 re-verified
 unchanged). A repair round is NOT a pass: counter 0/2; PE3 is the next
 acceptance attempt.]**~~
-**[r3 STATUS (CURRENT; supersedes the struck r2 line) — ARC: composed (seal
+~~**[r3 STATUS (CURRENT; supersedes the struck r2 line) — ARC: composed (seal
 b375f42 → verdict 0baeb3b) → PE1 HOSTILE (df00707: 0C/5G+3m, NOT CLEAN) →
 r1 (90db22d) → PE2 HOSTILE (1edb104: 0C/1G+2m — pure freshness drift, r1
 diff clean at source) → r2 (8f1c1f2, THE PIN ROUND) → PE3 HOSTILE (report
@@ -38,7 +38,28 @@ ROUND — the one-line F-1 attribution repair at S3(b), plus PE3 O-1's as-of
 pins on the [JA]/[W2]/[ILN] dagger groups. Note-only; runner + artifacts
 BYTE-FROZEN, runner md5 6b406f81c250d25f615f715fa9eff474 re-verified
 unchanged). A repair round is NOT a pass: counter 0/2; PE4 is the next
-acceptance attempt.]** Author:
+acceptance attempt.]**~~
+**[r4 STATUS (CURRENT; supersedes the struck r3 line) — ARC: composed (seal
+b375f42 → verdict 0baeb3b) → PE1 HOSTILE (df00707: 0C/5G+3m, NOT CLEAN) →
+r1 (90db22d) → PE2 HOSTILE (1edb104: 0C/1G+2m — pure freshness drift) →
+r2 (8f1c1f2, THE PIN ROUND) → PE3 HOSTILE (07acb37: 0C/0G/1m) → r3
+(52d40bb, the attribution fix + three O-1 pins) → PE4 HOSTILE (report
+39e1eec, FOURTH attempt: 0 CRITICAL / 0 GAPS / 1 MINOR, NOT CLEAN — the r3
+diff verified correct at every edit site; the conditionality stack survives
+the JB/JC acceptance (83f47f4) with zero misleading sentences, four
+conservative understatements catalogued fold-owed; fresh
+decomposition-route re-proof of WM-COB(i), 17,624/0; the one finding = the
+r3 footer's "closing the unpinned-source drift species" coverage gloss —
+LED-Λ was still an unpinned quoted source) → r4 (THIS ROUND — TWO FIXES:
+(F-1) the LED-Λ† as-of pin (2ad7505) + the r3 footer gloss scoped to the
+three groups r3 actually pinned; (JA-COMPANION, owed by ledger 3626f55)
+WM-FENCE(a)'s (R-coll) range gloss extended ROOT-INCLUSIVELY per JA PE2
+FINDING 1 (report 9040961; 8 machine witnesses at m = 3 ON the
+root-exclusive perimeter with (VD-3) FALSE), consumer check recorded at
+(a): no WM display consumed the root-exclusive range. Note-only; runner +
+artifacts BYTE-FROZEN, runner md5 6b406f81c250d25f615f715fa9eff474
+re-verified unchanged). A repair round is NOT a pass: counter 0/2; PE5 is
+the next acceptance attempt.]** Author:
 Fable, campaign date 2026-08-08 (wallclock 2026-08-06).
 
 **SCOPE AND FENCES (stated before anything else).**
@@ -103,8 +124,11 @@ SHIFT-(n) and Lemma D_j-INT ("PROVED, generic, unconditional" — its S2
 scope: γ, γ′ ∈ ℤ arbitrary), the value law c_{n+1} = z̄^δ·∏_j z_j^{D_j} on
 the scored stratum. **[SYN]** = `WELD_SYNTHESIS_2026-08-05.md` (adjudication
 note, f71cd68): the H1/H2 verdicts and derivation sketches this note
-executes. **LED-Λ†** = `LEDGERLAMBDA_2026-08-08.md` (attempt): genre model
-+ the line-face bookkeeping [JB]† already consumes.
+executes. **LED-Λ†** = `LEDGERLAMBDA_2026-08-08.md` (attempt) **[r4, F-1:
+every LED-Λ quote reads as of 2ad7505 (its last commit, pre-WM-seal; the
+header fence's verbatim quote byte-verified true at LED-Λ HEAD by PE4) —
+the fourth and last of PE3 O-1's named unpinned-quote sources]**: genre
+model + the line-face bookkeeping [JB]† already consumes.
 
 **THE EXTRACTION-DECORRELATION LAW, obeyed as follows.** S2's cochain is
 implemented FRESH in the sealed runner (`t(β) = (ℓβ − s)/e` from the raw
@@ -371,8 +395,27 @@ specializations of (PERIM):
 **(a) [(R-coll), J-A].** JA-VDIND's absolute character-triviality at read
 level m — "z_{m−1}^{i·A_{m−1}} = 1 for every attained abscissa i" — IS
 (PERIM-(m−1) on the attained abscissa set of the object). (R-coll) at level
-m is its every-recursion-node form (2 ≤ q ≤ m−1). *Proof: citation;
-[JA]† §3.4's display is this condition verbatim.*
+m is its every-recursion-node form ~~(2 ≤ q ≤ m−1)~~ **(2 ≤ q ≤ m,
+ROOT-INCLUSIVE — the q = m instance is JA-VDIND itself, the condition at
+the head of this clause) [r4, JA-COMPANION per ledger 3626f55 — JA PE2
+FINDING 1 (report 9040961): [JA]† §3.4's own quantifier "2 ≤ q ≤ m−1" (as
+read at the ce0469a pin) OMITS the root instance, and root-exclusively the
+display's "(VD-m) hold at all levels up to m" conclusion is FALSE — 8
+machine witnesses at m = 3 sit ON the root-exclusive perimeter (every
+level-2 node character trivial) with (VD-3) FALSE (T3B/T3F/I4B; e.g. T3B
+deg 6, attained {1}, A₂ = 7), plus 58 at m = 2 where the stated range is
+EMPTY; JA-VDIND itself and the per-slot law STAND (JA PE2's fresh 396/0).
+Root-inclusive, the condition coincides with accepted [JB]'s operative
+fence (root triviality a HYPOTHESIS at every m ≥ 2) — exactly (b) below.
+CONSUMER CHECK (this note): no WM display consumed the root-exclusive
+range — the (M2) face and S3's seed identities cite JA-VDIND/JA-EPS
+directly; (F-b) and this section's "Consequence" display read through THIS
+cured clause; the S4 stack carries JA's boxes verbatim at the pin, where
+JA-BOX-2's "evaluated" clause inherits the same slip (recorded here, not
+consumed by any WM display)]**. *Proof: citation — [JA]† §3.4's display is
+this condition verbatim for the node instances 2 ≤ q ≤ m−1, JA-VDIND
+(quoted above) is the root instance; the root inclusion is JA PE2's
+one-line cure.*
 
 **(b) [the (VD-m) proviso, J-B].** JB-CREAD's governing fence consumes
 JA-VDIND verbatim ([JB]† §5's regenerated fence display — the (VD-m) line
@@ -436,7 +479,8 @@ own surfaces stay authoritative until the next fold):**
 
 **Consequence for the four notes' fence surfaces.** Each note's collapse
 fence becomes a DERIVABLE DISPLAY of (F-b): (C-coll) = slot-grid (PERIM) +
-χ-corrections; (R-coll) = absolute (PERIM) at recursion nodes; (VD-m) =
+χ-corrections; (R-coll) = absolute (PERIM) at recursion nodes **[r4:
+nodes AND root, per (a)'s cured root-inclusive range]**; (VD-m) =
 absolute (PERIM) at attained sets. **No note is edited by this
 consolidation** — the four fence surfaces stand as committed; if a future
 fold brackets them onto (F-b), that fold cites this section. (The campaign
@@ -716,7 +760,41 @@ internal [r3, STEP 2] block, the (VD-m) line citing [row 21]) — replacing
 and whose row-21 (c) cell is the pointer "YES — the governing fence";
 quote and pin unchanged. Plus PE3 O-1: as-of pins added to the
 [JA]/[W2]/[ILN] dagger groups (ce0469a / 5463f2a / ced7dbb — every quote
-from these sources byte-verified true at HEAD by PE3), closing the
-unpinned-source drift species going forward. Note-only; runner + artifacts
+from these sources byte-verified true at HEAD by PE3), ~~closing the
+unpinned-source drift species going forward~~ **[r4, F-1: closing THREE of
+the FOUR unpinned-quote sources PE3 O-1 named — LED-Λ remained unpinned
+until r4's header pin (2ad7505), so the species closed at r4, not r3]**.
+Note-only; runner + artifacts
 BYTE-FROZEN (runner md5 6b406f81c250d25f615f715fa9eff474 re-verified this
 round; `git diff verification/` empty). Counter 0/2; PE4 next.
+
+— r4 REPAIR ROUND against PE4 (report 39e1eec: 0 CRITICAL / 0 GAPS / 1
+MINOR — the r3 diff verified correct at every edit site; the
+conditionality stack survives the JB/JC acceptance with zero misleading
+sentences; fresh decomposition-route re-proof of WM-COB(i), 17,624/0),
+wallclock 2026-08-06/07. TWO FIXES. (F-1) The LED-Λ† dagger now carries
+its as-of pin — 2ad7505, LEDGERLAMBDA's last commit, pre-WM-seal; the
+header fence's verbatim quote byte-true there and at LED-Λ HEAD (PE4's own
+check, re-verified this round) — the fourth and last of PE3 O-1's named
+unpinned-quote sources; and the r3 footer's "closing the unpinned-source
+drift species going forward" gloss is scoped (struck + bracketed above) to
+the three groups r3 actually pinned. (JA-COMPANION, owed by ledger
+3626f55) WM-FENCE(a)'s (R-coll) range gloss "(2 ≤ q ≤ m−1)" extended
+ROOT-INCLUSIVELY (2 ≤ q ≤ m) per JA PE2 FINDING 1 (report 9040961): the
+root-exclusive range omits the level-m JA-VDIND instance — 8 machine
+witnesses at m = 3 sit ON the perimeter as [JA]† §3.4 defines it with
+(VD-3) FALSE (T3B/T3F/I4B), plus 58 at m = 2 where the range is empty;
+JA-VDIND itself and the per-slot law stand (fresh 396/0). CONSUMER CHECK
+(recorded at (a)): NO WM display consumed the root-exclusive range — the
+(M2) face and S3's seed identities cite JA-VDIND/JA-EPS directly, (F-b)
+and the S3 "Consequence" display read through the cured clause (the
+Consequence line carries its own [r4] tag), and the S4 stack carries JA's
+boxes verbatim at the ce0469a pin, where JA-BOX-2's "evaluated" clause
+inherits the same slip (recorded, not consumed). The [JA] pin ce0469a is
+UNCHANGED — the cure is cited from the PE2 report, not from any post-pin
+JA edit (JA r2 runs in parallel; only a fold updates pins). Note-only;
+runner + artifacts BYTE-FROZEN (runner md5
+6b406f81c250d25f615f715fa9eff474 re-verified this round; this note's
+runner and both sealed artifacts show empty `git diff`; a parallel arc's
+`grt_w2_checks_results.json` working-tree edit is NOT this round's and is
+not staged). Counter 0/2; PE5 next.
