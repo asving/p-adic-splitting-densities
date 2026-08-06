@@ -222,7 +222,7 @@ from scratch all eight per-digit ω-gain bounds, the census/lex/ρ consumers,
 READ-EQ's δ₁ = 1 comparison digit by digit on both towers, the
 counter-instance's two passes and its double-development tie, and the
 THEOREM + COR 2 exactly on a concrete ℤ₂/𝔽₄ orbit member; it also
-established a POSITIVE fact this note now records (S4.3, COR 1): **δ₁ = 1 is
+established a POSITIVE fact this note now records (S5 STATUS BLOCK, PROVED bullet): **δ₁ = 1 is
 empty at e₀ = 1**, so S4's e₀ ≥ 2 Setting costs COR 1 nothing and the corner
 is covered in full. Both machine legs reproduce (timing-only diffs; see the
 [r4] machine-leg bracket above). All six gaps land in the
@@ -255,6 +255,26 @@ quoted verbatim inside S5's `[r4, ARCHIVE]` bracket. Acceptance counter
 unchanged at **0/2** — PE4 was a hostile pass and found no critical, but 6
 gaps is not a clean pass, so no acceptance slot closed; **PE5 — a fresh
 hostile pass on THIS text — is the next acceptance attempt.**]**
+
+**[REPAIR ROUND r5 — 2026-08-08 campaign (wallclock 2026-08-06): MINIMAL round
+against LIFTCORNER-PE5 (`LIFTCORNER_passPE5_report.md`, commit a5212e8:
+**0 CRITICAL + 5 gaps**, all five in the r4 edits), per the ledgered
+arc-dynamics diagnosis (each round's new prose has bred ~5 defects) — exactly
+five one-line fixes, each superseding the quoted prior wording: **F5-1** the
+STATUS BLOCK PROVED line drops "and PROP's rung propagation" (the
+CONDITIONALITY line's "(5) PROP's rung-≥2 clause-(ii) census is OWED" is its
+status of record); **F5-2** the [r4, F4-1] parenthetical "(ψ₁ and K₂ enter no
+counted predicate of S3 and no step of S4)" re-scoped to the ASSERTS (ψ₁ and
+K₂ themselves DO enter S4.2 as shared read data); **F5-3** S3's Q7 bullet
+"c_base = c′·ξ^{D₁}" renamed to c^{Φ′}·ξ^{D₁} and the [r4, F4-5]
+correction-of-record clause extended to S2's sealed Q7 sheet row; **F5-4** the
+[r4, F4-4] bracket's "ITERLAWN_PROOF's S9" corrected to **S7** (the 22-row
+sweep sits in ITERLAWN S7, verified at source; ITERLAWN's S9 is a table-free
+scope box); **F5-5** the r4 header's "(S4.3, COR 1)" pointer re-aimed at the
+true site, the S5 STATUS BLOCK PROVED bullet — plus the STATUS BLOCK ARC-line
+update, NOTHING else; both machine legs BYTE-FROZEN and untouched. Acceptance
+counter unchanged at **0/2**; **PE6 — a fresh hostile pass on THIS text — is
+the next acceptance attempt.**]**
 
 **Sources of record:** ILNRES_2026-08-08.md S1 [NR-1] + S5.1 (the spec);
 ITERLAWLIFT_CORNER_2026-08-08.md (wave 18: the LAWFUL slice measured
@@ -415,8 +435,9 @@ that recomputes ψ₁ on the transported K₁; (ii) is a comparison of two
 occurrences of a constant — a regression guard against a future change of the
 (d₀, g₀, g₁) ↦ identity-element representation. **NO CHAIN STEP CONSUMES
 EITHER**: the ψ₁-site walk below establishes it for (i), and the same walk
-gives it for (ii) verbatim (ψ₁ and K₂ enter no counted predicate of S3 and no
-step of S4). **The soundness of the K₂ layer lives in `mk_field_ext`'s g = 1
+gives it for (ii) verbatim (the ASSERTS enter no counted predicate of S3 and
+no proof step of S4; ψ₁ and K₂ themselves enter S4.2 as shared read data).
+**The soundness of the K₂ layer lives in `mk_field_ext`'s g = 1
 reading** — `grb_order2_check.py:345`, where the reduction loop
 `range(len(out)−1, g−1, −1)` is `range(0, 0, −1)`, empty, so products never
 touch the reducer — **not in either assert.** *Arc of this pair, recorded in
@@ -469,7 +490,7 @@ discrepancy):
   applicability counts of the sheet); Q2 AV 656/0;
 * **Q3 TLAW 4,176/0 — THE CANDIDATE: the display holds with the letter the
   lift carries (z₁′ = −c′) on every ξ-twisted tower**, both pair blocks;
-* **Q7 CHI 4,176/0 — the χ-ratio law c_base = c′·ξ^{D₁} EXACT, measured
+* **Q7 CHI 4,176/0 — the χ-ratio law c_base = c^{Φ′}·ξ^{D₁} EXACT, measured
   against measured** (no closed form in the comparison): the W-2 covariance
   carries the corner;
 * Q4 PV / Q5 INT / TRS 4,176/0 each; **[r3, F-E — the one omitted family
@@ -894,7 +915,8 @@ second collides with the scalar inside COR 2's own display (`ξ := c₀/c′`); 
 are renamed to `c^{Φ′}` here, and they were always the same function (PE3
 recorded the collision, PE4 numbered it F4-5). **S1's CANDIDATE display is
 sealed pre-run text and is NOT edited**: it writes this cocycle as `c′(γ,γ′)`,
-and this bracket is the correction of record for it (the same precedent as the
+and this bracket is the correction of record for it and for S2's sealed Q7
+sheet row, whose `c′` is likewise this cocycle (the same precedent as the
 sealed runner's docstring under [r3/r4, F4-1]).
 
 **COR 1 ((ITER-LAW-LIFT), the corner).** ξ = 1 slice (c′ = c₀): the display
@@ -948,7 +970,7 @@ the arc: the clause-(ii) census at rungs ≥ 2 (no rung leg opens Φ₁'s bytes
 outside the level-1 package) is NOT re-proved here.
 **[r4, F4-4 — the CITE for that census is re-pointed; the r3 wording, quoted
 and superseded, was "is cited from the [ILN]/ILNRES consumption tables, not
-re-proved here".]** That cite was false as to location: ITERLAWN_PROOF's S9
+re-proved here".]** That cite was false as to location: ITERLAWN_PROOF's S7
 dependency/exemption sweep (22 rows) and ILNRES S6's "consumption census" are
 both keyed to *accepted-package* consumption (which levels, which of
 [IL]/[IL3]†/(RM-m)/DCX), and NEITHER contains any row about how much of Φ₁'s
@@ -1107,8 +1129,9 @@ edit these five lines; do not grow a sixth.**
 
 * **ARC.** PE1 (1 CRITICAL + 3 gaps) → r1 → PE2 (0C + 5G) → r2 → PE3 (0C + 5G;
   the arc's FIRST acceptance attempt) → r3 → PE4 (0C + 6G; the SECOND
-  acceptance attempt) → **r4 (this round: F4-1…F4-6 + this regeneration)** →
-  **PE5 = the next acceptance attempt.**
+  acceptance attempt) → r4 → PE5 (0C + 5G; the THIRD acceptance attempt) →
+  **r5 (this round: the five one-line fixes F5-1…F5-5, nothing else)** →
+  **PE6 = the next acceptance attempt.**
 * **COUNTER.** Acceptance **0/2** — no pass has been clean, and a repair round
   is not a pass. The grade is CAPPED by this unit's W-2 consumption (GRTW2
   itself 0/2); the COR 1 / ξ = 1 chain is W-2-free, so if W-2's arc lags the
@@ -1117,7 +1140,7 @@ edit these five lines; do not grow a sixth.**
   byte-unchanged, its argument re-derived independently by PE2, PE3 and PE4;
   and on it READ-EQ, the THEOREM, **COR 1** ((ITER-LAW-LIFT) at the corner —
   and δ₁ = 1 is EMPTY at e₀ = 1, so S4's e₀ ≥ 2 Setting costs COR 1 nothing),
-  COR 2 on the harness orbit, and PROP's rung propagation. S3's corner
+  and COR 2 on the harness orbit. S3's corner
   measurement (25,409 checks / 0 violations) is machine fact either way.
 * **CONDITIONALITY.** Grade-box charge items (1)–(7), of which **(5) PROP's
   rung-≥2 clause-(ii) census is OWED** with its site of record re-pointed at
