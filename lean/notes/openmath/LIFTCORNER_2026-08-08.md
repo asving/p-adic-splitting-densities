@@ -295,13 +295,48 @@ correction-of-record clause is extended to S2's sealed Q9 sheet row, the
 THIRD bare-`c′`-as-cocycle site (superseded: "for S2's sealed Q7 sheet row,
 whose `c′` is likewise this cocycle"); with Q9 the census is COMPLETE —
 PE6's sweep of "all 42 `c′` occurrences" at its HEAD (46e6e88) found NO
-fourth site; the sealed sheet text itself is NOT edited; **F6-3** the
+fourth site **[r7, F7-1 — UNIT: PE6's "42" is a hit-LINE count; the raw
+count at 46e6e88 is 46 occurrences on 42 lines (four lines carry two, all
+scalar pairs); the occurrence-level warrant of record is PE7's re-execution
+(commit 58f7060) at 91f0cde — 51 occurrences / 47 lines = 34 scalar + 4
+covered-cocycle + 13 mention/quotation, NO fourth site — restated in full
+at the [r4, F4-5] bracket]**; the sealed sheet text itself is NOT edited; **F6-3** the
 closing dating record gains its missing r5 line (wallclock 2026-08-06) and
 this round's r6 line (superseded terminator: "repair round r4 applied
 2026-08-08 campaign (wallclock 2026-08-05).") — plus the STATUS BLOCK
 ARC-line update, NOTHING else; both machine legs BYTE-FROZEN and untouched.
 Acceptance counter unchanged at **0/2**; **PE7 — a fresh hostile pass on
 THIS text — is the next acceptance attempt.**]**
+
+**[REPAIR ROUND r7 — 2026-08-08 campaign (wallclock 2026-08-06): ONE-CLAUSE
+round against LIFTCORNER-PE7 (`LIFTCORNER_passPE7_report.md`, commit 58f7060:
+**0 CRITICAL + 1 gap (minor)** — all four r6 hunks verified true and
+correctly placed except one clause; the record system judged CONSISTENT AND
+TRUE AT HEAD for the first time in the arc; r6's disclosed NEXT/AUDIT
+deviation judged CORRECT; the mathematics clean on its SEVENTH hostile
+reading; both machine legs re-run clean), exactly one fix: **F7-1** the
+census-completeness warrant's figure — PE6's "all 42 `c′` occurrences",
+transcribed twice at r6 — is a hit-LINE count, not an occurrence count (at
+46e6e88: **46** occurrences on 42 lines, four lines carrying two, all scalar
+pairs), so the stated sweep universe did not reproduce under its own unit;
+both census sites now carry PE7's occurrence-level warrant of record — at
+91f0cde, 51 occurrences / 47 lines = 34 residue-scalar + 4 covered-cocycle
+(S1 CANDIDATE ×2, Q7, Q9 — all inside the correction of record) + 13
+mention/quotation, NO fourth site — (superseded, at the [r4, F4-5] bracket:
+"with Q9 the census is COMPLETE — PE6's sweep of "all 42 `c′` occurrences"
+at its HEAD (46e6e88) found NO fourth site."; the r6 round block's twin
+clause is dated text and gains a dated [r7, F7-1] bracket instead).
+PROVENANCE: the figure and its unit word originate in PE6's report (its
+F6-2 sweep sentence); r6 TRANSCRIBED them inside quotation marks — the
+arc's documented transcription mechanism, now its THIRD recurrence ([r3,
+F-C]/[r4, F4-3]: PE2's "bit-identically"; [r5] F5-4: PE4's "S9") — standing
+rule henceforth: quote counts only WITH THEIR UNIT AND COMMIT. Plus the
+round-close record surfaces brought to HEAD truth (the r6/F6-1 + F6-3
+precedent; PE7 §3 verified that bring-forward judgment CORRECT): the STATUS
+BLOCK ARC-line + NEXT/AUDIT bullet, a dated [r7] grade-box entry, and the
+footer r7 dating line — NOTHING else; both machine legs BYTE-FROZEN and
+untouched. Acceptance counter unchanged at **0/2**; **PE8 — a fresh hostile
+pass on THIS text — is the next acceptance attempt.**]**
 
 **Sources of record:** ILNRES_2026-08-08.md S1 [NR-1] + S5.1 (the spec);
 ITERLAWLIFT_CORNER_2026-08-08.md (wave 18: the LAWFUL slice measured
@@ -945,8 +980,16 @@ sealed pre-run text and is NOT edited**: it writes this cocycle as `c′(γ,γ�
 and this bracket is the correction of record for it and for S2's sealed Q7
 and Q9 sheet rows, whose `c′` is likewise this cocycle in each (the same
 precedent as the sealed runner's docstring under [r3/r4, F4-1]); with Q9 the
-census is COMPLETE — PE6's sweep of "all 42 `c′` occurrences" at its HEAD
-(46e6e88) found NO fourth site.
+census is COMPLETE — warrant of record at OCCURRENCE level **[r7, F7-1]**:
+PE7's independent re-execution (report `LIFTCORNER_passPE7_report.md`, commit
+58f7060) counts, at its HEAD 91f0cde, **51 `c′` occurrences on 47 lines =
+34 residue-scalar + 4 covered-cocycle (S1's CANDIDATE display ×2, S2's Q7
+row, S2's Q9 row — all inside this correction of record) + 13
+mention/quotation — NO fourth bare-`c′`-as-cocycle site**; at PE6's HEAD
+46e6e88 the same sweep gives 46 occurrences on 42 lines (four lines carry
+two, all scalar pairs) — PE6's "42" was its hit-LINE count, and the four
+uncounted occurrences are scalar second occurrences on already-classified
+lines, so no site was lost.
 
 **COR 1 ((ITER-LAW-LIFT), the corner).** ξ = 1 slice (c′ = c₀): the display
 holds UNCHANGED for every LAWFUL monic lift — the 2-read (ITER-LAW-LIFT) is
@@ -1085,7 +1128,21 @@ site, F6-3 the footer dating record missing r5), cured at r6. **The counter
 stays 0/2** — 3 gaps is not a clean pass, and a repair round is not a pass.
 Audit state after r6: the r6 edits are UNAUDITED; the r5 edits were read once
 (PE6); **PE7 — a fresh hostile pass on THIS text — is the next acceptance
-attempt.** Charge
+attempt.**
+**[r7 — grade box brought forward (the close just above is dated [r6]
+text).]** SEVEN hostile passes have now run — the one since the [r6] entry:
+**PE7** on the r6 text, the FIFTH acceptance attempt (**0 CRITICAL + 1 gap,
+minor** → this repair round r7, the one-clause F7-1 fix; report
+`LIFTCORNER_passPE7_report.md`, commit 58f7060). PE7's line-audit verified
+the r6 diff true and correctly placed at every hunk except the one census
+clause (F7-1, a transcribed unit mismatch: PE6's "42 occurrences" is a
+hit-LINE count), found the record system consistent and true at HEAD for
+the first time in the arc, judged r6's disclosed deviation CORRECT, and
+found no defect in the mathematics on its seventh hostile reading. **The
+counter stays 0/2** — a gap is not a clean pass, and a repair round is not a
+pass. Audit state after r7: the r7 edits are UNAUDITED; the r6 edits were
+line-audited by PE7; **PE8 — a fresh hostile pass on THIS text — is the next
+acceptance attempt.** Charge
 (r1-updated, item (7) added at r2 per PE2 G2; the r0 charge list named neither
 the step that broke nor the
 r1 argument — PE1 F1's closing observation, accepted): **(1) the S4.1
@@ -1165,7 +1222,7 @@ case it is a fifth member and the S7 completeness sentence needs amending.
 Until ILNRES rules, **nothing here re-prices anything**, and the consequence
 display above should be read as changing the **Φ₁ axis** of the rider only.
 
-**STATUS BLOCK [r4; edited r5, r6] — REGENERATED from a minimal five-line template.** This
+**STATUS BLOCK [r4; edited r5, r6, r7] — REGENERATED from a minimal five-line template.** This
 block is the note's whole status of record; it replaces the r1, r2 and r3
 STATUS LINEs wholesale (they are quoted verbatim, byte-unchanged, inside the
 [r4, ARCHIVE] region below). The status surface produced findings in three
@@ -1177,8 +1234,10 @@ edit these five lines; do not grow a sixth.**
   the arc's FIRST acceptance attempt) → r3 → PE4 (0C + 6G; the SECOND
   acceptance attempt) → r4 → PE5 (0C + 5G; the THIRD acceptance attempt) →
   r5 (the five one-line fixes F5-1…F5-5) → PE6 (0C + 3G; the FOURTH
-  acceptance attempt) → **r6 (this round: the three record-surface fixes
-  F6-1…F6-3, nothing else)** → **PE7 = the next acceptance attempt.**
+  acceptance attempt) → r6 (the three record-surface fixes F6-1…F6-3) →
+  PE7 (0C + 1 minor; the FIFTH acceptance attempt) → **r7 (this round: the
+  one-clause census-unit fix F7-1, nothing else)** → **PE8 = the next
+  acceptance attempt.**
 * **COUNTER.** Acceptance **0/2** — no pass has been clean, and a repair round
   is not a pass. The grade is CAPPED by this unit's W-2 consumption (GRTW2
   itself 0/2); the COR 1 / ξ = 1 chain is W-2-free, so if W-2's arc lags the
@@ -1196,11 +1255,12 @@ edit these five lines; do not grow a sixth.**
   deeper-level reading flagged as an ILNRES-side erratum candidate ([r4,
   F4-6]); wave-18's price sheet is settled MODULO this note's own arc, not "in
   full".
-* **NEXT / AUDIT STATE.** PE7, a fresh hostile pass on THIS text. Unaudited
-  going in: **the r6 edits** (the r5 edits were line-audited by PE6 — all 32
-  insertions verified true — and the r4 edits by PE5; earlier edit sets read
-  twice or more). Items (1), (2), (7): re-derived by three hostile passes, NO
-  acceptance credit. Both machine legs BYTE-FROZEN and re-run clean at PE6
+* **NEXT / AUDIT STATE.** PE8, a fresh hostile pass on THIS text. Unaudited
+  going in: **the r7 edits** (the r6 edits were line-audited by PE7 — all
+  four hunks verified true except the one census clause, its F7-1 — the r5
+  edits by PE6, the r4 edits by PE5; earlier edit sets read twice or more).
+  Items (1), (2), (7): re-derived by three hostile passes, NO acceptance
+  credit. Both machine legs BYTE-FROZEN and re-run clean at PE7
   (sealed runner exit 0, 25,409/0, md5 `ccb4351c92573f5f962cae4ae952d8dd`,
   `git diff dafc0b5 HEAD` = 0 bytes, output identical modulo timing fields;
   children table regenerates byte-identically, A7's four legs PASS).
@@ -1363,4 +1423,5 @@ repair round r2 applied 2026-08-08 campaign (wallclock 2026-08-05);
 repair round r3 applied 2026-08-08 campaign (wallclock 2026-08-05);
 repair round r4 applied 2026-08-08 campaign (wallclock 2026-08-05);
 repair round r5 applied 2026-08-08 campaign (wallclock 2026-08-06);
-repair round r6 applied 2026-08-08 campaign (wallclock 2026-08-06).
+repair round r6 applied 2026-08-08 campaign (wallclock 2026-08-06);
+repair round r7 applied 2026-08-08 campaign (wallclock 2026-08-06).
