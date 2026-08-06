@@ -3099,3 +3099,21 @@ PE1 (1C+9G) → r1 → PE2 (0C+7G) → r2 → PE3 (0C+8G) → r3 → PE4 (0C+8G)
 PE5 (0C+5G) → r5 → PE6 (0C+2G+1m) → r6 → PE7 (0C+1G+2m) → r7 →
 PE8 (0C+0G+1m) → r8 →
 **JB-PE9 = the next acceptance attempt**; acceptance counter still **0/2**.**
+
+---
+
+## ★ ACCEPTANCE RECORD (orchestrator, 2026-08-06) ★
+
+**THIS NOTE IS ACCEPTED at 2/2** — PE9 (b0b4c3a, CLEAN 0C/0G/0m; the
+floor-cocycle re-derivation of JB-EPS + 31,941-check fresh leg) and PE10
+(6d548f3, CLEAN; the cone-decomposition re-derivation of the u ≥ 0
+theorem, 326,206/0, + support-function duality for JB-VTX, 106,562/0).
+Full arc: PE1 (1C+9G) → r1 → PE2 (0C+7G) → r2 → PE3 (0C+8G) → r3 matrix
+→ PE4 (0C+8G) → r4 → PE5 (0C+5G) → r5 → PE6 (0C+2G+1m) → r6 → PE7
+(0C+1G+2m) → r7 → PE8 (0C+0G+1m) → r8 → PE9 CLEAN → PE10 CLEAN. Ten
+hostile passes, eight repair rounds. **WHAT IS ACCEPTED**: the four
+junction identities (JB-DEV, JB-VTX, JB-ID, JB-TREE) and JB-CREAD as
+fenced by the §0M conditionality matrix at HEAD — riding [RMG] accepted,
+W-2/J-A at their own arc grades, with the four-member NO-LEG frontier
+(rows 4/5/12/22) as the note's honest open cells. Machine record: four
+byte-frozen instruments, all green.

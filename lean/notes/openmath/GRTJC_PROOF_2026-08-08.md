@@ -2779,3 +2779,21 @@ them), and the [r2] weakest-links order above stands.]**
 * **The MOVES B2-FINAL bridge and bare-interface discharges stay DEAD** (brief
   fence 3): nothing above routes through them, and the option-(ii) vacuity trap
   (P1-FLAG-1/J3B-FLAG-1) is not re-opened.
+
+---
+
+## ★ ACCEPTANCE RECORD (orchestrator, 2026-08-06) ★
+
+**THIS NOTE IS ACCEPTED at 2/2** — PE7 (782000e, CLEAN 0C/0G; JC-GAUGE
+re-proved via coarsened grading + the fresh p = 7 out-of-roster leg) and
+PE8 (9d240b6, CLEAN; W-8 + JC-LOAD's iff by the double-(DMULT-w) +
+ω-symmetry route + the FIRST g_m = 3 instances and an order-5 (m = 4,
+E = 8) tower, 885/0). Full arc: composed → PE1 (2C+8G) → r1 STRUCTURAL
+((COORD-B) on B_n) → PE2 (0C+9G) → r2 → PE3 (0C+8G) → r3 → PE4 (0C+4G)
+→ r4 → PE5 (0C+2G+1m) → r5 → PE6 (0C+1G) → r6 → PE7 CLEAN → PE8 CLEAN.
+Eight hostile passes, six repair rounds. **WHAT IS ACCEPTED**: W-6/W-7/
+W-8 at general m and W-9 given them, on the (COORD-B)-on-B_n
+restatement, with the (DMULT-w)/(DMULT-s) two-tier honesty (load-bearing
+clauses ride the DERIVED weak tier; the exact tier MEASURED with
+numbering-verification owed) and the cyclic-genre law as fenced. Machine
+record: three byte-frozen batteries + instrument, all green.

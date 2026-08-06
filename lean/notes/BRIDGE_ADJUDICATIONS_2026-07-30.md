@@ -11379,3 +11379,24 @@ nil; predates r2). Pin construction VERIFIED (no unpinned [JB]/[JC]
 quote; JB r8/JC r6 falsify nothing by construction); WM-COB/WM-RHO/
 WM-CLASS/PERIM-μ all re-derived exact. **r3 = one attribution line →
 PE4.** Counters: LIFT ACCEPTED · JB 1/2 · JC 1/2 · WM 0/2.
+
+---
+
+## ★★★ DOUBLE ACCEPTANCE: GRTJB 2/2 (PE9+PE10 CLEAN) + GRTJC 2/2 (PE7+PE8 CLEAN) — THREE OF FIVE WELD NOTES ACCEPTED ★★★ — 2026-08-06
+
+Acceptance records appended to both notes (this commit). PE10's novel
+routes: cone-decomposition (u ≥ 0 on the whole cone, 326,206/0) +
+support-function duality (106,562/0). PE8's: double-(DMULT-w)/ω-symmetry
+(no anchor cocycle) + THE FIRST g_m = 3 INSTANCES (K = 𝔽₈, deg-3 ψ-kernel
+witness, new decidable NOT-CYCLIC row) + an ORDER-5 tower (m = 4, E = 8;
+the load set exactly the 16 δ = 1 pairs). WM r3 verified landed (52d40bb
+— the prior "casualty" had completed; attribution fixed, [JA]/[W2]/[ILN]
+pins added). **WELD STATE: LIFTCORNER + GRTJB + GRTJC ACCEPTED; WELDMASTER
+0/2 (PE4 = acceptance attempt, dispatched); GRTJA 0/2 (arc OPENED this
+wave); GRTW2 0/2 (arc opened; its Codex leg remains first in the window,
+now ~9h). The J-D block remains the sole uncomposed piece. The accepted
+law's conditionality after tonight: NR-1 accepted-mod-W2; NR-2 = the weld
+at 3-accepted + 2-in-arc + J-D; NR-3 = Q2's residue; NR-4 discharged.**
+Acceptance-fold housekeeping (JB/JC round-record closings per LIFTCORNER
+convention + the licensed ILN rider-rewrite) queued for the group fold
+with the public-exposition refresh.
