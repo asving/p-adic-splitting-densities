@@ -41,9 +41,10 @@ entry "J-C PE1", commit `6ed4680`) → **r1 = THIS repair round, STRUCTURAL**
 attempt. No gate fires, none retires; no `.lean` touched; no density/menu/count
 statement anywhere.~~
 
-**[r2] S-STATUS (CURRENT; supersedes the r1 status line above, which is kept
-struck rather than deleted): attempt grade, acceptance counter 0/2, TWO hostile
-passes RUN and TWO repair rounds applied.**
+**[r2] S-STATUS (SUPERSEDED at r3 by the block below; kept annotated rather
+than struck because of the embedded ARC display; supersedes the r1 status line
+above, which is kept struck rather than deleted): attempt grade, acceptance
+counter 0/2, TWO hostile passes RUN and TWO repair rounds applied.**
 
     ARC:  composed (seal 6ad01d1 -> verdict 8f07904)
       ->  JC-PE1  (GRTJC_passPE1_report.md, 1a27be3)   2 CRITICAL + 8 gaps
@@ -57,6 +58,69 @@ passes RUN and TWO repair rounds applied.**
 
 A repair round is NOT a pass, so the counter stays **0/2**. No gate fires, none
 retires; no `.lean` touched; no density/menu/count statement anywhere.
+
+**[r3] S-STATUS (CURRENT; supersedes the [r2] status block above): attempt
+grade, acceptance counter 0/2, THREE hostile passes RUN and THREE repair
+rounds applied.**
+
+    ARC:  composed (seal 6ad01d1 -> verdict 8f07904)
+      ->  JC-PE1  (GRTJC_passPE1_report.md, 1a27be3)   2 CRITICAL + 8 gaps
+      ->  r1      STRUCTURAL repair (85d5811/54904cc; mini-seal f45b63c/66263ce)
+      ->  JC-PE2  (GRTJC_passPE2_report.md, 4a76d52)   0 CRITICAL + 9 gaps
+      ->  r2      LABELLING + FOOTPRINT + one new machine leg
+                  (5742e25; mini-seal 79611a4/db12666)
+      ->  JC-PE3  (GRTJC_passPE3_report.md, e4b6fbf)   0 CRITICAL + 8 gaps
+                  — "the r2 tier split is mathematically sound and survives
+                    full hostile re-derivation … every gap is a labelling,
+                    disclosure, or record defect"
+      ->  r3      THIS round: NOTE-ONLY (re-route + disclosure + record
+                  corrections; NO new script — all three batteries, the
+                  instrument, and every artifact stay BYTE-FROZEN)
+      ->  JC-PE4  = the next acceptance attempt (a fresh hostile pass on THIS
+                    post-r3 text)
+
+A repair round is NOT a pass, so the counter stays **0/2**. No gate fires, none
+retires; no `.lean` touched; no density/menu/count statement anywhere.
+
+**[REPAIR ROUND r3 — 2026-08-08 campaign (wallclock 2026-08-06). NOTE-ONLY.**
+Applied against JC-PE3 (0 CRITICAL + 8 gaps, all labelling/disclosure/record:
+PE3 re-derived the r2 tier split, the κ = 1 pinning, the full consumer split
+(no hidden (DMULT-s) consumption), the G6 derivation and the residual = W-1 tie
+and found them SOUND; all three batteries reproduced byte-identically, exit 0,
+all seals verified). No measured quantity moves at r3; nothing in
+`verification/` is touched (the diversity fix is DISCLOSURE, not a new
+battery, per the effort directive). Dispositions, each edit carrying an
+`[r3, G-#]` bracket keyed to PE3's gap numbers:
+
+* **G-1 (the live one)** — JC-LOAD's proof body and honest fence (§2.8) still
+  consumed the PE1-refuted `(IN-3)(c)`-on-gr BY NAME: the r2 sweep's grep was
+  ALIAS-BLIND (`(COORD)`/`(MULT)` only). Both sites re-routed through
+  §4.2 = (MULT-B)|gr (riding (DMULT-w)) — the step actually used, at δ = 0 —
+  and the ALIAS-COMPLETE re-sweep ((IN-3) + Thm 4.2 + (COORD)/(MULT)) is now
+  §9.5's protocol, census recorded there.
+* **G-2** — §9.5's sweep record misreported its own machine-verifiable count
+  AT ITS OWN COMMIT (22 claimed; the grep returns 37 at `5742e25` and at the
+  pre-r3 HEAD). Corrected from greps executed at the committing states; the
+  load-bearing half ("0 live consuming sites" for the old pattern) was
+  independently re-verified by PE3 and stands.
+* **G-3** — R2-BIL's "THREE elements on all 29 rows" overstated the sample
+  diversity: mix2 == ones2 BYTE-IDENTICAL on 13/29 rows, including BOTH
+  g_m = 2 rows. Honest census now in §9.4 [r3, G-3], with the species history
+  (THIRD recurrence) and the candidate leg NAMED, NOT built.
+* **G-4** — §9.4's R2-PHI cell justified a true measured fact by a false
+  divisibility ("E | wΦ_NR", false on 25/29 rows): replaced by e_m | wΦ_NR
+  (true 29/29, re-verified this round).
+* **G-5** — the TC-3 display's load-bearing one-liner δ(wΦ_NR, n−wΦ_NR) = 0
+  (what makes "corresponds to ψ_m(y)·Δ" an EQUALITY) written into §2.10.
+* **G-6** — the TR-3′-GEN closed-scope gloss corrected to the record's truth
+  (ONE order-3 stratum; exactness where closed on stratum (i); units-only
+  phrasing PERMANENTLY REFUTED on (ii) — the record quoted).
+* **G-7** — §9.3's byte-frozen R1-COB prereg row annotated with the
+  post-tier-split blast radius (quote untouched, annotation only).
+* **G-8** — JC-CYC(b)'s false trigger ("two multiplicatively distinct
+  (δ, D)-words") replaced by the true one (two distinct non-1 VALUES of the
+  word), with the note's own C2C/C3I mechanism-2 rows displayed as the
+  counterexample.
 
 **[REPAIR ROUND r1 — 2026-08-08 campaign (wallclock 2026-08-05).** Applied
 against JC-PE1. PE1's machine leg reproduced this note's battery **bit-for-bit**
@@ -561,7 +625,11 @@ scalar exists on every pair except those with δ = 1 ∧ g_m = 1, where the
         (C4H).  The instrument's 0/29 set-mismatch count is unchanged — what is
         corrected is the r0 wording, which implied the theorem covered all 29.
 
-*Proof.* Multiplying by X_N transports lines additively and, by (IN-3)(c) and
+*Proof.* Multiplying by X_N transports lines additively and, by ~~(IN-3)(c)~~
+**[r3, G-1 — the PE1-refuted name survived the r2 sweep here (its grep was
+alias-blind); the step actually used is the offset-transport LEMMA §4.2 =
+(MULT-B)|gr at δ = 0, which rides (DMULT-w), not (IN-3)(c)-on-gr. Re-routed:
+by §4.2]** and
 JC-SCAL(b), multiplies the digit polynomial by the constant 𝑅(X_N) without
 changing its y-degree (offset transport, §4.2; note s_{NR}(N) = 0 so
 δ(γ+γ′,N) = 0). So by JC-SPAN the LHS has digit polynomial
@@ -573,7 +641,9 @@ constant is c_T = z̄^δ·u; the pre-TC-3 object y^δ is not in the K_m-span of
 {y^i}_{i<g_m} when δ ≥ g_m, so no relabeling of scalars produces it. ∎
 
 *Honest fence.* The proof of the ⟸ direction rides the offset-transport step
-(§4.2), which rides (IN-3)(c); the ⟹ direction (the obstruction) rides only
+(§4.2), which rides ~~(IN-3)(c)~~ **(MULT-B)|gr and with it (DMULT-w)
+[r3, G-1 — the fence misstated its own repaired footprint; §4.2's proof has
+applied (MULT-B)|gr since r2]**; the ⟹ direction (the obstruction) rides only
 JC-SPAN + JC-SCAL. The instrument's k-distribution **{0 : 669}** says the
 π-clearing ladder is never needed on its roster: the canonical division by
 Φ_{m+1} alone discharges TC-3 there.
@@ -882,8 +952,20 @@ unit", and the corpus's sharpest harness↔literature read dictionary, **open
 lemma TR-3′-GEN** (`GRB_ORDER2_2026-08-05.md` §S3.4, statement of record:
 *"a level-by-level compatible family of identifications σ_j … together with
 per-argument units, under which the FGMN side-read operator corresponds to
-the project/GMN-convention R_λ"*), is stated WITH per-argument units even
-where closed, and is OPEN beyond {all order-2} ∪ {two order-3 strata}. So no
+the project/GMN-convention R_λ"*), ~~is stated WITH per-argument units even
+where closed, and is OPEN beyond {all order-2} ∪ {two order-3 strata}~~
+**[r3, G-6 — that gloss misquoted the record twice. The closed scope of
+record is {all order-2} ∪ {order-3 all-e_j = 1}: ONE order-3 stratum (the
+HV3 discharge changed that same stratum's CONDITIONALITY, not the count).
+And where closed the record is NOT a per-argument-units statement: on
+stratum (i) the accepted closures deliver EXACTNESS — TR3-S1
+"σ₁(R^F₂(f)) = R_λ(f) EXACTLY", TR3-S3 "σ₂(R^F₃(f)) = R_λ₃(f) EXACTLY —
+discrepancy ≡ 1, per-argument units ≡ 1" — while on stratum (ii) the
+record's own bracket rules the units phrasing OUT: "the units-only phrasing
+of the record statement below is PERMANENTLY REFUTED on (ii)" (the
+discrepancy there is an explicit slot-keyed character, not a unit system).
+What this passage needs is unchanged and true: TR-3′-GEN is OPEN beyond
+that closed scope]**. So no
 corpus-pinned citation delivers ω ≡ 1; proving it would mean proving the
 ε-kit's unit system multiplicative (c_{λ+μ} = c_λc_μ), which this note does
 not do. The standing printed-source Codex leg (JC-BOX-3 item 2) rides
@@ -1005,7 +1087,15 @@ the quotient is not a K-line. On B, by (COORD-B)+(MULT-B),
     𝔦^B ∩ B_n = in(Φ_{m+1})·B_{n−wΦ_NR}  corresponds to  ψ_m(y)·Δ,
 
 because ρ^B(in Φ_{m+1}·β) = A·ψ_m(y)·ρ^B(β) with
-ρ^B(in Φ_{m+1}) = ψ_m(y)/a_{wΦ_NR} (JC-PSIKER(i)'s computation; **[r2, G-5]**
+ρ^B(in Φ_{m+1}) = ψ_m(y)/a_{wΦ_NR} **[r3, G-5 — the one-liner that makes the
+display an EQUALITY of ideal pieces rather than an inclusion, previously
+unwritten: A = A(wΦ_NR, n−wΦ_NR) = (unit)·y^{δ(wΦ_NR, n−wΦ_NR)} by
+(MULT-B) + JC-SPAN, and δ(wΦ_NR, n−wΦ_NR) = 0 for EVERY n, because
+e_m | wΦ_NR (= e_m·g_m·γ_{m+1}) gives s_NR(wΦ_NR) = 0 and
+s_NR(n−wΦ_NR) = s_NR(n), so δ = (0 + s_NR(n) − s_NR(n))/e_m = 0. Hence A is
+a CONSTANT and the image is ψ_m(y)·Δ on the nose — were δ = 1 the quotient
+B_n/(𝔦^B ∩ B_n) would strictly contain a K-line and §3.1's "each 𝒜_ν is a
+1-dimensional K-space" would fail]** (JC-PSIKER(i)'s computation; **[r2, G-5]**
 the line wΦ_NR IS in W — it is attained by Φ_{m+1}, JC-PSIKER's own weight
 computation, so the anchor a_{wΦ_NR} exists with no virtual-anchor step —
 while the quantifiers "every n" below read the (G5-i)/(G5-ii) transport) and
@@ -1507,10 +1597,18 @@ supplies one level down (K_{m+1}[u]/(u^{e_m} − z̄), anchors = powers of u).
   coset progression") is exactly this, and it stays dead.
 * **(b) [PROVED, general m — the obstruction direction]** If the measured value
   table has two distinct non-1 values, (CYC) fails by (α). With JC-INNER's law
-  image(c) = {z̄^δ∏_j z_j^{D_j}}, this happens as soon as the stage realizes two
-  multiplicatively distinct (δ, D)-words — which is the generic composite
+  image(c) = {z̄^δ∏_j z_j^{D_j}}, ~~this happens as soon as the stage realizes two
+  multiplicatively distinct (δ, D)-words~~ **[r3, G-8 — FALSE as stated: two
+  multiplicatively distinct words can evaluate to {1, v}, a SINGLE non-1
+  value, where (α) holds with ζ′ = v and (CYC) can only fail through (β);
+  clause (d) below exhibits exactly that genre on the note's own roster
+  (C2C, C3I — "a single value whose carry pattern no integer relabeling
+  realizes", NOT-CYCLIC by (β), not (α)). The true trigger: this happens as
+  soon as the stage realizes two distinct non-1 VALUES of the (δ, D)-word]**
+  — which is the generic composite
   situation and is why 14/29 (instrument) and 22/28 (byte-frozen strata probe)
-  come back NOT-CYCLIC.
+  come back NOT-CYCLIC **[r3, G-8: those empirics are carried by (α) AND (β)
+  jointly, not by (α) alone]**.
 * **(c) [PROVED, general m — the twist-blind direction]** If |K| = 2 then
   K^* = {1}, so c ≡ 1 and (CYC) holds with ζ′ = 1, σ ≡ 0. Likewise if the table
   has at most one non-1 value AND (β) is solvable, (CYC) holds by definition.
@@ -1805,7 +1903,7 @@ Fence hygiene as in §3.5 [r1, G8]: `T.constants` is used only for the integer �
 | **R1-INJ** | §1's injectivity, both directions: 𝑅_λ(f) == 0 ⟺ w(f) > λ | **0** |
 | **R1-SURJ** | LEMMA JC-BSURJ: for targets p of y-degree 0,1,2 the REALIZE construction at the predicted k gives integral f with w(f) == n+kE and 𝑅(f) == p ON THE NOSE; the minimal k is censused (k > 0 for degree ≥ 1 — the k-shift is structural) | **0** |
 | **R1-DMULT** | (DMULT): 𝑅_{λ+μ}(fg) == y^{δ(λ,μ)}·𝑅_λ(f)·𝑅_μ(g) EXACTLY (not merely up to a unit) on sampled pairs — the Δ-module half of (COORD-B), the leg neither prior runner had | **0** |
-| **R1-COB** | COROLLARY JC-COB: 𝑅_{γ+γ′}(φ_γφ_{γ′}) == a_γ·a_{γ′}·y^δ on the full anchor grid (a sharp consequence of (DMULT): a failure refutes (COORD-B)(2)) | **0** |
+| **R1-COB** | COROLLARY JC-COB: 𝑅_{γ+γ′}(φ_γφ_{γ′}) == a_γ·a_{γ′}·y^δ on the full anchor grid (a sharp consequence of (DMULT): a failure refutes (COORD-B)(2)) **[r3, G-7 — prereg quotation from the sealed r1 docstring, BYTE-FROZEN, annotated only: post-tier-split (§2.10 [r2, G-1]) the blast radius is two-mode — a failure with the slot set still {δ} would refute only the exact tier (DMULT-s) and with it JC-COB's sharp value (ω ≢ 1), NOT (COORD-B)(2); only a failure of the SLOT-SET half would refute (DMULT-w) and (COORD-B)(2)]** | **0** |
 | **R1-PSIK-LO** | JC-PSIKER(ii) lower half: at window lines λ < wΦ_NR no class is certified dead by TC-3 (the kernel is 0 there — one-sided certifier, JC-BOX-8(ii)) | **0** |
 | **R1-PSIK-HI** | JC-PSIKER(iii): for EVERY residue ν ∈ ℤ/E, at a line λ ≡ ν with λ−wΦ_NR ∈ W, the witness Φ_{m+1}·φ_{λ−wΦ_NR} has w == λ, digit polynomial == (unit)·y^k·ψ_m(y), read == 0, and its death is certified | **0** |
 | **R1-UNIT** | G3's falsifiable replacement: every constant of the FULL E×E grid classified (unit / zero / undefined-denominator / out-of-window); scored = "no zero and no undefined-denominator among in-window pairs", with the skipped-pair census printed | **0**, census printed |
@@ -1952,14 +2050,46 @@ tooth).** Every sealed prediction hit exactly.
 
 | family | result |
 |---|---|
-| **R2-BIL** | **0 violations on 261 dense multi-slot × multi-slot ordered pairs** (9 per row: the dense set D realized THREE elements on all 29 rows — degree-2 "ones2"/"mix2" at k = 5..34 and, censused, the degree-3 dense "ones3" at k = 7..52, so every row's D is {3,3,4}-slot dense) — **(DMULT-s) holds EXACTLY (dict equality, multiplier 1) on genuinely bilinear input**, cross-term convolution finally exercised, together with w(fg) = w(f)+w(g) on every pair |
-| **R2-PHI** | **0 violations on 29/29 rows** for the pair r1 `continue`d: 𝑅(Φ_{m+1}) = ψ_m coefficientwise, w(Φ_{m+1}²) = 2wΦ_NR, and 𝑅(Φ²) = y^δ·ψ_m(y)² exactly (δ = 0 on every row — E \| wΦ_NR forces s_NR(wΦ_NR) = 0). **Census: the skipped pair has genuine bilinear content (occupied interior ψ_m slot) on exactly the two g_m = 2 rows, C2I and C4I** — on the other 27 rows ψ_m is 2-slot and the skip cost nothing; on those two, r1's one true bilinear pair was the skipped one |
+| **R2-BIL** | **0 violations on 261 dense multi-slot × multi-slot ordered pairs** (9 per row: the dense set D realized THREE elements on all 29 rows **[r3, G-3 — three BUILDS, not three distinct elements: on 13/29 rows mix2 == ones2 byte-identically; census in the disclosure block below]** — degree-2 "ones2"/"mix2" at k = 5..34 and, censused, the degree-3 dense "ones3" at k = 7..52, so every row's D is {3,3,4}-slot dense) — **(DMULT-s) holds EXACTLY (dict equality, multiplier 1) on genuinely bilinear input**, cross-term convolution finally exercised, together with w(fg) = w(f)+w(g) on every pair |
+| **R2-PHI** | **0 violations on 29/29 rows** for the pair r1 `continue`d: 𝑅(Φ_{m+1}) = ψ_m coefficientwise, w(Φ_{m+1}²) = 2wΦ_NR, and 𝑅(Φ²) = y^δ·ψ_m(y)² exactly (δ = 0 on every row — ~~E \| wΦ_NR forces s_NR(wΦ_NR) = 0~~ **[r3, G-4: false divisibility attached to the true measured fact — E \| wΦ_NR holds on only 4/29 roster rows (C2D/C2I/C2J/I4A; e.g. C2A has E = 4, wΦ_NR = 10). The correct one-liner is e_m \| wΦ_NR (wΦ_NR = e_m·g_m·γ_{m+1}), true on 29/29 (re-verified this round), which forces s_NR(wΦ_NR) = 0]**). **Census: the skipped pair has genuine bilinear content (occupied interior ψ_m slot) on exactly the two g_m = 2 rows, C2I and C4I** — on the other 27 rows ψ_m is 2-slot and the skip cost nothing; on those two, r1's one true bilinear pair was the skipped one |
 | **R2-MONO** | **0 violations**: exactly ONE multi-slot element among the r1 samples on every row (Φ_{m+1}); every r1-TESTED pair has ≥ 1 single-slot factor (29/29 rows); and **U2 replayed on the r1-tested pairs fired 0 times across the whole roster** — machine proof that the r1 leg had zero resolution against the cross-term mutation class |
 | **U1 / U2** | U1 (y^{δ+1} shift) 261/261, U2 (cross-term drop) **261/261 — U2 fires on EVERY dense pair and NEVER on an r1-tested pair**, which is exactly the separation the tooth was designed to exhibit |
 
+**[r3, G-3 — DIVERSITY DISCLOSURE (the census the R2-BIL cell owed), and the
+species record.** The frozen runner's `build_dense` sets
+`alt = elems[1] if len(elems) > 1 else elems[0]` over the nonzero elements of
+K_m and gives mix2 the target {0: 1, 1: alt, 2: 1}. On **13 of 29 rows** that
+`alt` IS 1 — on ten rows (C2A, C2B, C2E, C3A, C3D, C3E, C3I, C4B, C4G, I4A)
+the enumeration's second nonzero element is 1, and on three rows (C2I, C4A,
+C4I) K_m^* = {1} so no other choice exists — hence mix2's target equals
+ones2's target and the deterministic `surj_build` returns the
+**byte-identical polynomial** (composition re-verified against the frozen
+code this round; byte-identity of the builds verified by PE3 on C2I/C4I/C2A).
+On those 13 rows D = {f, f, f′}: the 9 ordered pairs contain only **4
+distinct** pairs, and the "mixed variant" adds zero resolution — including on
+**BOTH g_m = 2 rows (C2I, C4I)**, exactly the rows where ψ_m has interior
+content. What stands, undiminished: ones2 × ones2, ones2 × ones3,
+ones3 × ones3 are genuinely dense × dense with live cross-term convolutions,
+U2 fired 261/261, and (DMULT-s)'s bilinear evidence is real — the defect is
+RESOLUTION overstatement, not a wrong verdict, and no measured quantity
+moves. **Species record (the THIRD recurrence of the sampling-diversity
+overstatement, ended here the way such sagas end — by censusing composition
+instead of asserting it):** PE2 G-2 (r1's monomial-dominated samples and the
+undisclosed (Φ_{m+1}, Φ_{m+1}) skip) → r2's fix (the dense leg + R2-MONO
+scoring the composition) → PE3 GAP 3 (the dense leg's own mix2 == ones2
+collapse, undisclosed). Standing rule from this history: any
+sampling-diversity claim in this note must be a SCORED or CENSUSED fact,
+never prose. **Candidate repair leg, NAMED, NOT BUILT (r3 is note-only per
+the effort directive):** an alt-corrected dense variant — enumerate for
+`alt` an element ∉ {0, 1} where K_m^* > 1 (recovers a genuine third element
+on the ten coincidence rows) and, on the three K_m = 𝔽₂ rows, a second
+higher-degree dense target instead — a NEW SCORED LEG that would need its
+own two-commit mini-seal.]**
+
 **What this leg does and does not carry.** It supplies the missing bilinear
 evidence for **(DMULT-s)** on the roster (m ≤ 3 machine scope, JC-BOX-1
-verbatim); it does NOT convert (DMULT-s) to CITED — the tier split of
+verbatim) — at the sample resolution censused in [r3, G-3] above; it does
+NOT convert (DMULT-s) to CITED — the tier split of
 §2.10 [r2, G-1] stands, and the non-integral residue JC-BOX-8(i) is still
 untouched by every runner.
 
@@ -1992,15 +2122,55 @@ the end of (MULT-B)'s proof [r2, G-4]. **Fixed-point re-grep, protocol and
 result:** grep for `(COORD)`/`(MULT)` excluding `-B` forms; every remaining
 hit must be (a) inside a `~~…~~` strike, (b) a quotation of the struck r0
 wording inside an `[r1]`/`[r2]` bracket, or (c) a reference to the r0 form AS
-refuted (R1-BND's rows, the repair-history blocks). Count at r2 close: the
-grep returns **22 hit-lines**, classified: **11** inside `~~…~~` strikes or
+refuted (R1-BND's rows, the repair-history blocks). ~~Count at r2 close: the
+grep returns **22 hit-lines**, classified: **11** inside strikes or
 strike-and-replace brackets (the struck (COORD)/(MULT) displays and their
 [r1]/[r2] supersessions), **4** in the r1 repair-history header naming the
 struck forms as the objects repaired, **2** R1-BND rows citing the r0 (COORD)
 as refuted, **3** in this §9.5 record itself, **2** in [r2, G-4]'s own
 quotation brackets (§2.10's narrative line; the (MULT-B)|gr display naming
-"the STRUCK name (MULT)") = 22. **0 live consuming sites**;
+"the STRUCK name (MULT)") = 22.~~ **[r3, G-2 — that count was WRONG AT ITS
+OWN COMMIT (evidently taken before this §9.5 record and some [r2] brackets
+were themselves written, then committed unrefreshed — a fixed-point claim
+must be grepped AT the committing state): executed at `5742e25` (the commit
+that wrote the record) and again at the pre-r3 HEAD, the recorded grep
+returns 37 hit-lines both times (24 pre-r2 at `66263ce`), classified (PE3's
+independent line-by-line pass, reproduced this round): 17 inside strikes or
+strike-and-replace brackets, 4 in the r1 repair-history header, 1 in the r2
+dispositions header, 2 R1-BND rows, 11 in this §9.5 record itself, 2 in
+[r2, G-4]'s own quotation brackets = 37.]** The load-bearing half stands:
+**0 live consuming sites** for this pattern — PE3 re-verified it by
+independent classification of all 37 hits;
 PE2's seven, plus the two lower-weight §10.1/W-8 sites, all re-pointed.
+
+**[r3, G-1 — THE ALIAS-COMPLETE RE-SWEEP (the protocol widened from the
+struck NAMES to the refuted INPUT under all its aliases).** The r2 protocol
+above grepped only `(COORD)`/`(MULT)`; PE3's GAP 1 found the PE1-refuted
+input surviving under its ALIAS — JC-LOAD's proof body and honest fence
+(§2.8) still consumed `(IN-3)(c)`-on-gr by name. Both sites are re-routed at
+[r3, G-1] through §4.2 = (MULT-B)|gr (riding (DMULT-w)) — the step actually
+used, at δ = 0 — struck-and-bracketed, never silently deleted. The r3
+protocol: grep for EVERY name the refuted input ever carried in this note —
+`(IN-3)`, `Thm 4.2` (and the spelled-out variant, which returns 0 hits
+anywhere in this note), and
+`(COORD)`/`(MULT)` (excluding `-B` forms, as before) — and classify every
+hit-line as LIVE (consuming), STRUCK (inside a strike or strike-and-replace
+bracket), or RECORD (repair-history headers, grade-box and stack histories,
+prereg/verdict rows, supersession/quotation brackets, and the sweep records
+themselves). **Census at r3 close: 90 hit-lines = 23 LIVE + 25 STRUCK + 42
+RECORD** (RECORD: the r1/r2/r3 repair-history headers 9; the W-6 grade-box
+and §10.2 stack histories 4; §2.10's REPLACES-headers, repair narrative and
+the JC-BOX-3 [r1] verdict narrative 9; R1-BND's two rows; the §9.5 sweep
+records themselves 18, this block included). The verified fixed point:
+**every LIVE hit cites a currently-valid input** — 16 are
+(IN-3)(a)/(b)/(d)/(e) or the (IN-3) package/transport-clause citations
+(§0, JC-DOM, JC-SPAN, JC-LOC, the (DMULT-w) derivation, (MULT-B), §4.3),
+and 7 apply the freeness content THROUGH JC-LOC to B ≅ gr_{K[x]}(w), the
+object the theorem is about (§2.10's (DMULT) gloss, §3.4 title + proof,
+JC-BOX-3 [r1] items 1–2, §10.2's r1 stack) — and **ZERO live hits name
+(IN-3)(c)-on-gr, (COORD), (MULT), or the Thm-4.2-on-gr_{O[x]} transport**:
+the refuted input is at fixed point under its aliases, not only under its
+post-repair names.]**
 
 ---
 
