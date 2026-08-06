@@ -80,7 +80,7 @@ acceptance attempt. All four machine instruments remain BYTE-FROZEN in r5
 note-only — its one supporting probe ran read-only to /tmp and is transcribed
 at §5).**~~
 
-**[r6] S-STATUS (CURRENT, supersedes the five struck lines): attempt grade,
+~~**[r6] S-STATUS (CURRENT, supersedes the five struck lines): attempt grade,
 acceptance counter 0/2 (ZERO clean passes), SIX hostile passes RUN and SIX
 repair rounds applied. Arc: JB-PE1 (85a8dc9 — 1C + 9 gaps) → r1 (4c97649,
 46f9452) → JB-PE2 (0C + 7 gaps) → r2 (67bf0c4, 888e293) → JB-PE3 (2fd271e —
@@ -107,7 +107,37 @@ round is NOT a pass, so the counter stays 0/2, and JB-PE7 — a fresh hostile
 pass on THIS post-r6 text — is the next acceptance attempt. All four machine
 instruments remain BYTE-FROZEN in r6 (md5s re-verified 2026-08-06; r6 is
 note-only and ran NO probe of its own — the one machine figure it newly cites
-is the PE6 verifier's, attributed).**
+is the PE6 verifier's, attributed).**~~
+
+**[r7] S-STATUS (CURRENT, supersedes the six struck lines): attempt grade,
+acceptance counter 0/2 (ZERO clean passes), SEVEN hostile passes RUN and
+SEVEN repair rounds applied. Arc: JB-PE1 (85a8dc9 — 1C + 9 gaps) → r1
+(4c97649, 46f9452) → JB-PE2 (0C + 7 gaps) → r2 (67bf0c4, 888e293) → JB-PE3
+(2fd271e — 0C + 8 gaps; the FIRST acceptance attempt, did not land) → r3
+(8acb2d1, 87c553d) → JB-PE4 (38c4754 — 0C + 8 gaps; the SECOND attempt, did
+not land) → r4 (ae0acdf) → JB-PE5 (39e16ee — 0C + 5 gaps; the THIRD attempt,
+did not land) → r5 (f9f104e) → JB-PE6 (ca39044 — 0C + 2 gaps + 1 minor; the
+FOURTH attempt, did not land) → r6 (4607824) → JB-PE7
+(`GRTJB_passPE7_report.md`, commit aa9b603 — 0 CRITICAL + 1 gap + 2 minor,
+NOT CLEAN; the FIFTH acceptance attempt, did not land. The r6 re-fence
+itself verified CLEAN end-to-end: the fence mathematics re-derived at the
+J-A source, all 12 re-fence surfaces mutually consistent, the load-bearing
+gate claim verified from committed code, and the 598,500-lattice-member
+replacement record independently REPRODUCED, 0/0 violations; the one gap is
+r6-BRED, inside the m-1 wording fix — the inserted "not an equivalent" is
+underived and FALSE at m = 1) → r7 (this round, block below: the
+non-equivalence overclaim STRUCK at both [r6, m-1] brackets and replaced by
+the instance-honest relation — EQUIVALENT at m = 1, strictness UNPROVED
+either way in general (F-1); the m-1 sweep completed at its third site,
+JB-BOX-2's "exactly" struck (m-2); (d3)'s machine-gate transcription made
+byte-faithful at all four live sites — the code's redundant `q+1 <= G.RANK`
+conjunct disclosed (m-3)). No gate fires; no acceptance arc is open. A
+repair round is NOT a pass, so the counter stays 0/2, and JB-PE8 — a fresh
+hostile pass on THIS post-r7 text — is the next acceptance attempt. All
+four machine instruments remain BYTE-FROZEN in r7 (md5s re-verified
+2026-08-06 and `git diff verification/` empty; r7 is note-only and ran NO
+probe of its own — the one machine figure it newly cites, 96 read data / 0
+counterexamples, is the PE7 verifier's, attributed).**
 
 ## §0M. **[r3] THE CONDITIONALITY MATRIX — the single surface every grade statement in this note is generated from**
 
@@ -170,8 +200,23 @@ of the round.]**
   CARRIED, NARROWED; not fully discharged.]** **[r6, m-1 — the relation,
   stated precisely ("exactly" struck above as overstating necessity):
   membership IMPLIES the u ≥ 0 instance the two rows need at V = w_{q+1}(f)
-  — a SUFFICIENT route, per-instance a logically STRONGER hypothesis than
-  the proviso, not an equivalent; what is smaller is the remaining open
+  — a SUFFICIENT route, ~~per-instance a logically STRONGER hypothesis than
+  the proviso, not an equivalent~~ **[r7, PE7 F-1 — the struck
+  non-equivalence claim was derived nowhere and is FALSE at every m = 1
+  (q = 0) instance, which rows 4/12's quantifier 0 ≤ q ≤ qcap includes: at
+  m = 1, for EVERY read datum (e₀, h₀, g₀),
+  {V ∈ ℤ_{≥0} : u(V) ≥ 0} = 𝒲₁ EXACTLY. (⊇) is the §5 four-line theorem at
+  m = 1; (⊆) u(V) ≥ 0 means V = s·h₀ + u·e₀ with s := (ℓ₀V) mod e₀ ∈
+  [0, e₀−1] and u ≥ 0 — take j := s ≤ e₀−1 ≤ P₀−1 (P₀ = e₀g₀, g₀ ≥ 1) and
+  a := u in the displayed description 𝒲₁ = {e₀a + h₀j : a ≥ 0,
+  0 ≤ j ≤ P₀−1}. Machine-checked by the PE7 verifier on 96 read data (all
+  coprime (e₀, h₀) with e₀ ≤ 6, h₀ ≤ 8, g₀ ≤ 3), every V ∈ [0, 150), 0
+  counterexamples to the equivalence (`GRTJB_passPE7_report.md` §2 F-1, as
+  of commit aa9b603). THE INSTANCE-HONEST RELATION: membership implies the
+  needed instance — the sufficiency direction, all any consumer uses; the
+  converse is INSTANCE-DEPENDENT — EQUIVALENT at m = 1 (above), containment
+  possibly strict at m ≥ 2, strictness UNPROVED either way in general
+  (PE6's qualifier, restored)]**; what is smaller is the remaining open
   DOMAIN, now confined to deg f ≥ deg Φ_{q+1} and pinned to that one
   membership question.]**
 
@@ -272,7 +317,14 @@ division code), and it does not reach the four byte-unequal CHAMBER rows
 
 ⟨n3⟩ **Rows 11/12, column (f) — [r3, F-3].** `jb_shear_vtx` contains exactly
 THREE tie assertions: `minH == T.wlev(q+1,f)` (d2), and under `q <= L` both
-`minU == G.vgen(q+1,f)` (d1) and `minH == G.vgen(q+2,f)` (d3). Clause (d)'s
+`minU == G.vgen(q+1,f)` (d1) and `minH == G.vgen(q+2,f)` (d3). **[r7, PE7
+m-3 — byte-faithful transcription of (d3)'s guard: the code's d3 assertion
+(grt_jb_checks.py L283) carries a SECOND conjunct, `q + 1 <= G.RANK` — a
+vgen-domain check, IDENTICALLY TRUE on the loop domain, since RANK = T.NR =
+n+1 and the loop caps q ≤ qcap ≤ n, so RANK = n+1 ≥ qcap+1 — verified
+redundant by PE7 (`GRTJB_passPE7_report.md` m-3, as of commit aa9b603); the
+effective (d3) gate is q ≤ shared_upto = `P≤q` exactly, so every coverage
+claim reading this cell stands unchanged.]** Clause (d)'s
 FOURTH tie — the attained abscissas on the realized side are the read grid
 s(λ) + j·e_q and the level-(q+1) read is assembled from the on-line digits at
 those slots — **has no leg in any family**: `jb_dev` keys only the (VAL) weight
@@ -1067,7 +1119,11 @@ and every carrying surface re-derived from it. Dispositions:
   for free) is NOT taken — it is not derived anywhere in this note, and
   r3/F-4 recorded the same refusal at (RES); taking it at (d3) alone would
   unmotivate (RES)'s deeper fence. MACHINE: no leg changes — the runner's
-  `jb_shear_vtx` has ALWAYS gated (d1)/(d3) at q ≤ `shared_upto(T,G)`,
+  `jb_shear_vtx` has ALWAYS gated (d1)/(d3) at q ≤ `shared_upto(T,G)`
+  ((d3) additionally under the code's second conjunct `q+1 <= G.RANK`, a
+  vgen-domain guard, identically true on the loop domain since
+  RANK = n+1 ≥ qcap+1 — verified redundant [r7, PE7 m-3, commit aa9b603];
+  full transcription at ⟨n3⟩),
   which on the roster is exactly `P≤q`, so after the re-fence that gate IS
   (d3)'s own statement fence (an instrument cut only for (d1)) and the IND
   leg covers the full re-fenced range. NO frontier change: (d3) carries a
@@ -1099,13 +1155,88 @@ and every carrying surface re-derived from it. Dispositions:
   true only of the remaining open DOMAIN, confined to deg f ≥ deg Φ_{q+1}.
   Direction conservative (PE6): a consumer carrying membership carries at
   least what the proviso needs. The r5 round block's own wording above
-  stands as record.
+  stands as record. **[r7, F-1 — this bullet stands as the record of what
+  r6 wrote; the "not an equivalent" clause it records was underived and is
+  FALSE at m = 1, and is STRUCK at both live sites (§0M column (b), §5
+  SCOPE) in favor of the instance-honest relation — r7 round block below.]**
 
 Acceptance counter unchanged at **0/2** — a repair round is not a pass. State
 after this round: attempt grade, SIX hostile passes run (JB-PE1 1C+9G, JB-PE2
 0C+7G, JB-PE3 0C+8G, JB-PE4 0C+8G, JB-PE5 0C+5G, JB-PE6 0C+2G+1m), r1–r6
 applied, no gate fired, nothing consumed at proof grade; **JB-PE7 — a fresh
 hostile pass on this post-r6 text — is the next acceptance attempt.**]**
+
+**[REPAIR ROUND r7 — 2026-08-08 campaign (wallclock 2026-08-06).** Applied
+against **JB-PE7** (hostile pass, fresh context, read-only, fixes nothing;
+report `GRTJB_passPE7_report.md`, commit aa9b603: **0 CRITICAL + 1
+JUSTIFICATION GAP + 2 minor, VERDICT NOT CLEAN** — the FIFTH acceptance
+attempt, which did not land). PE7 re-ran all FOUR machine instruments
+bit-identically (exit 0, all four md5s intact, `git diff verification/`
+empty), verified the r6 re-fence CLEAN end-to-end (the fence mathematics
+re-derived at the J-A source; all 12 re-fence surfaces mutually consistent;
+the load-bearing gate claim verified from committed code), independently
+REPRODUCED the replacement record EXACTLY on the first natural
+parameterization (598,500 lattice members, 0/0 violations), verified the
+r5-figure unrecoverability at both cited sources, and closed the
+re-derivation complement (every §1–§7 body vein now re-derived or
+source-checked by at least one of seven readers). Its one gap is r6-BRED,
+inside the m-1 wording fix. r7 is NOTE-ONLY: all four scripts and every
+artifact byte-frozen (md5s re-verified this round); r7 ran NO probe of its
+own — the one machine figure it newly cites (96 read data, 0
+counterexamples) is the PE7 verifier's, attributed. No fence, census, grade,
+or §2–§5 identity moves. Dispositions:
+
+* **F-1 (the r6 m-1 fix's non-equivalence overclaim — underived, and FALSE
+  at m = 1).** Both [r6, m-1] brackets asserted the carried membership
+  hypothesis is "per-instance a logically STRONGER hypothesis than the
+  proviso, not an equivalent (or weaker one)" — an affirmative
+  non-equivalence claim derived nowhere in the note, which dropped PE6's
+  "strictness unproved either way" qualifier in transcription, and which
+  PE7 REFUTED at every m = 1 (q = 0) instance (inside rows 4/12's
+  quantifier 0 ≤ q ≤ qcap): for every read datum (e₀, h₀, g₀),
+  {V ∈ ℤ_{≥0} : u(V) ≥ 0} = 𝒲₁ EXACTLY — (⊇) is the §5 four-line theorem
+  at m = 1, (⊆) is the j := s decomposition (both displayed at §0M column
+  (b)); machine-checked by PE7 on 96 read data (all coprime (e₀, h₀) with
+  e₀ ≤ 6, h₀ ≤ 8, g₀ ≤ 3), every V ∈ [0, 150), 0 counterexamples to the
+  equivalence (`GRTJB_passPE7_report.md` §2 F-1, commit aa9b603). STRUCK at
+  both sites (§0M column (b); §5 SCOPE) and replaced by the instance-honest
+  relation: membership IMPLIES the needed instance — the sufficiency
+  direction, all any consumer uses — while the converse is
+  INSTANCE-DEPENDENT: EQUIVALENT at m = 1, containment possibly strict at
+  m ≥ 2, strictness UNPROVED either way in general (PE6's qualifier
+  restored). Direction conservative both before and after (a consumer
+  carrying membership carries at least what the proviso needs; nothing
+  anywhere consumes non-equivalence), so no row cell's operative content,
+  no fence and no frontier member moves — the census stays FOUR.
+* **m-2 (the m-1 disease at a THIRD live site, which the r6 sweep —
+  transcribing PE6's two-site quote list as the sweep universe — never
+  reached).** JB-BOX-2's [r5, F-3] bracket still said the open residue "is
+  exactly lattice MEMBERSHIP": the same necessity-overstating "exactly"
+  that r6 struck at §0M column (b). STRUCK, with an [r7] pointer to column
+  (b)'s corrected relation — membership is the SUFFICIENT hypothesis the
+  note CARRIES (and at m = 1 moreover equivalent, F-1). The surrounding
+  operative content (holds by definition at deg f < deg Φ_{q+1}, not
+  established off it) was verified accurate by PE7 and is untouched.
+* **m-3 (byte-faithful gate transcription).** All four live transcriptions
+  of (d3)'s machine gate stated the single conjunct q ≤ shared_upto; the
+  code's d3 assertion (grt_jb_checks.py L283) is `if q + 1 <= G.RANK and
+  minH != G.vgen(q + 2, f):` under `q <= L`. The second conjunct is a
+  vgen-domain guard, IDENTICALLY TRUE on the loop domain — RANK = T.NR =
+  n+1 (GmnLeg L211 via gmn_from_tower L456–459; re-read from committed
+  source this round) and the loop caps q ≤ qcap ≤ n, so q+1 ≤ n+1 = RANK
+  always — verified redundant by PE7 (m-3, commit aa9b603), so every
+  coverage claim ("the gate IS the fence"; "the IND leg covers the full
+  re-fenced range") stands unchanged. ONE PARENTHETICAL ADDED at each of
+  the four sites: ⟨n3⟩ (the cell the others cite, full transcription), the
+  §3 machine bracket, §7.1's JB-SHEAR row, and the r6 round block's MACHINE
+  clause.
+
+Acceptance counter unchanged at **0/2** — a repair round is not a pass. State
+after this round: attempt grade, SEVEN hostile passes run (JB-PE1 1C+9G,
+JB-PE2 0C+7G, JB-PE3 0C+8G, JB-PE4 0C+8G, JB-PE5 0C+5G, JB-PE6 0C+2G+1m,
+JB-PE7 0C+1G+2m), r1–r7 applied, no gate fired, nothing consumed at proof
+grade; **JB-PE8 — a fresh hostile pass on this post-r7 text — is the next
+acceptance attempt.**]**
 
 ---
 
@@ -1567,7 +1698,10 @@ frames, vertex bijection, per-side slope/length translation (IND, 893).
 JB-SHEAR — the pointwise shear plus **THREE** of clause (d)'s four ties, not
 four: the code's assertions are `minH == T.wlev(q+1, f)` (d2) and, under
 q ≤ shared_upto, `minU == G.vgen(q+1, f)` (d1) and `minH == G.vgen(q+2, f)`
-(d3) **[r6, F-1 — for (d3) that gate coincides with its own statement fence
+(d3) ((d3) additionally under the code's second conjunct `q+1 <= G.RANK`, a
+vgen-domain guard, identically true on the loop domain since
+RANK = n+1 ≥ qcap+1 — verified redundant [r7, PE7 m-3, commit aa9b603];
+⟨n3⟩) **[r6, F-1 — for (d3) that gate coincides with its own statement fence
 `P≤q` (§0M row 11 (a2)); for (d1) it remains an instrument cut]** — so
 v_{q+1}(f) IS computed both as min u_i and by the vgen recursion
 through the φ_q-development (two different developments, one value; Lemma
@@ -1898,8 +2032,17 @@ So the proviso is DISCHARGED on the deg f < deg Φ_{q+1} sub-window, where
 membership holds by definition, and stays CARRIED at the full quantifier as
 the ~~strictly smaller~~ MEMBERSHIP hypothesis w_{q+1}(f) ∈ 𝒲_{q+1} **[r6,
 m-1 — the accurate relation: membership IMPLIES the u ≥ 0 instance needed at
-V = w_{q+1}(f) — a SUFFICIENT route, per-instance a logically STRONGER
-hypothesis, not an equivalent or weaker one; "smaller" is true only of the
+V = w_{q+1}(f) — a SUFFICIENT route, ~~per-instance a logically STRONGER
+hypothesis, not an equivalent or weaker one~~ **[r7, PE7 F-1 — the struck
+non-equivalence claim was derived nowhere and is FALSE at every m = 1
+(q = 0) instance, where {V ∈ ℤ_{≥0} : u(V) ≥ 0} = 𝒲₁ EXACTLY — §0M column
+(b) carries the two-direction proof (the §5 four-line theorem + the j := s
+decomposition) and PE7's machine check (96 read data, every V ∈ [0, 150),
+0 counterexamples; `GRTJB_passPE7_report.md` §2 F-1, commit aa9b603). The
+instance-honest relation: sufficiency always — all any consumer uses; the
+converse INSTANCE-DEPENDENT — EQUIVALENT at m = 1, containment possibly
+strict at m ≥ 2, strictness UNPROVED either way in general]**; "smaller" is
+true only of the
 remaining open DOMAIN, now confined to deg f ≥ deg Φ_{q+1} and pinned to one
 concrete question]**, which
 nothing this note consumes establishes at deg f ≥ deg Φ_{q+1}. Rows 4 and 12
@@ -2159,7 +2302,11 @@ object is constructed or claimed, and BLOCKED-ON-CARRIER-TIE stands.
   anything this note says~~ **[r5, F-3 — struck as STALE against r4's own
   definition: the lattice 𝒲_m of §5 EXCLUDES J-A's instance by parity, and
   u ≥ 0 is PROVED on ALL of 𝒲_m there (machine-confirmed). What remains open
-  at the two consuming rows (4 and 12) is exactly lattice MEMBERSHIP at their
+  at the two consuming rows (4 and 12) is ~~exactly~~ **[r7, PE7 m-2 —
+  "exactly" struck as overstating necessity, the same defect r6 struck at
+  §0M column (b): membership is the SUFFICIENT hypothesis the note CARRIES
+  (and at m = 1 it is moreover EQUIVALENT to the needed u ≥ 0 instance —
+  column (b), r7/F-1)]** lattice MEMBERSHIP at their
   unbounded-degree quantifiers (V = w_{q+1}(f), f of any degree): it holds by
   definition at deg f < deg Φ_{q+1} — where the proviso is DISCHARGED — and
   is not established off it. §0M column (b)]**).]** JA-GRID(c) — the carry clause
@@ -2272,7 +2419,7 @@ wording corrections marked inline.**
 | EXT-GATE | engine_ext pins + agreement gate re-run (standing rule) | 1 | GREEN |
 | JB-DEV | ~~fresh schoolbook dev == both engines + digit weight ties~~ **[r3, F-2 — RESTATED to the code's content; "both engines" WITHDRAWN. fresh schoolbook dev (`fresh_dev`) == the engine's `PolyO.dev` (IND: one genuine second implementation) + the (VAL) digit-weight tie `G.vgen(q+1,A) == T.wlev(q,A)` (IND: the genuine cross-engine leg). The third leg, `G.P.dev` on the print key, is SAME-COMPUTATION — the same `PolyO.dev` on the same ring object with byte-equal arguments, behind a guard that already forced agreement, so its violation is UNREACHABLE and it carries no information (§0M row 1, cell note ⟨n1⟩)]** | 893 | GREEN |
 | JB-KEYEQ | byte census + TH-BASE (~~q = 1 byte-equal on all 25 rows~~ **[r1, G-3]** q = 1 byte-equal on **22 of the 25 rows**, and the other 3 are VACUOUS, not confirmations: `QO:x3-3/Q3`, `QO:x4+2x2+2/Q2`, `QO:x4-2/Q2` have T.n = 0, so the census loop `range(1, T.n+1)` walks nothing, the census is `{}`, and the TH-BASE guard `if T.n >= 1 and not cen.get(1, True)` is never exercised) | 25 | GREEN |
-| JB-SHEAR | ~~pointwise shear + the four min/read ties (Lemma shape 1 through a second development)~~ **[r3, F-3 — RESTATED: pointwise shear + **THREE** of clause (d)'s four min/read ties (d1 `minU == vgen(q+1,f)` and d3 `minH == vgen(q+2,f)`, both under q ≤ shared_upto, and d2 `minH == wlev(q+1,f)`; Lemma `shape` item 1 keyed through a second development). The FOURTH tie (d4: attained abscissas = the read grid, read assembled from the on-line digits at those slots) is MACHINE-UNKEYED in every family of every instrument — and is also the only sub-clause riding the undischarged u ≥ 0 proviso (§0M row 12, cell note ⟨n3⟩; narrowed to the membership residue, r5/F-3, §5)]** | 893 | GREEN |
+| JB-SHEAR | ~~pointwise shear + the four min/read ties (Lemma shape 1 through a second development)~~ **[r3, F-3 — RESTATED: pointwise shear + **THREE** of clause (d)'s four min/read ties (d1 `minU == vgen(q+1,f)` and d3 `minH == vgen(q+2,f)`, both under q ≤ shared_upto (d3 additionally under the code's second conjunct `q+1 <= G.RANK`, a vgen-domain guard, identically true on the loop domain since RANK = n+1 ≥ qcap+1 — verified redundant [r7, PE7 m-3, commit aa9b603]; ⟨n3⟩), and d2 `minH == wlev(q+1,f)`; Lemma `shape` item 1 keyed through a second development). The FOURTH tie (d4: attained abscissas = the read grid, read assembled from the on-line digits at those slots) is MACHINE-UNKEYED in every family of every instrument — and is also the only sub-clause riding the undischarged u ≥ 0 proviso (§0M row 12, cell note ⟨n3⟩; narrowed to the membership residue, r5/F-3, §5)]** | 893 | GREEN |
 | JB-VTX | vertex bijection + per-side slope/length law, fresh hulls | 893 | GREEN |
 | JB-ID | (ID-(i+1)) exact + key-dev digits + print-key grid/shear-constancy | 34 | GREEN |
 | JB-TREE | ~~fresh tree walk == canonical division, harness AND print keys~~ **[r1, G-1]** fresh tree walk == the canonical division BY THE HARNESS KEY (one fresh division), plus a byte-equality-gated RE-EXECUTION of that same division on the print key's bytes (a consistency re-check, NOT an independent print-key reading; no print-key check at all off the byte-equal set — the independent print-key evidence is §7.4's post-seal walker) | 79 walks (125 with chambers) | GREEN |
@@ -2464,9 +2611,10 @@ downstream unit reading ONLY this display inherits every fence:**
   count units, the weld campaign ledger at J-B. **Acceptance counter 0/2**
   (~~four hostile passes run, four repair rounds applied; JB-PE5 is the next
   acceptance attempt~~ ~~**[r5]** five hostile passes run, five repair rounds
-  applied; JB-PE6 is the next acceptance attempt~~ **[r6]** six hostile
+  applied; JB-PE6 is the next acceptance attempt~~ ~~**[r6]** six hostile
   passes run, six repair rounds applied; JB-PE7 is the next acceptance
-  attempt).
+  attempt~~ **[r7]** seven hostile passes run, seven repair rounds applied;
+  JB-PE8 is the next acceptance attempt).
 
 **]**
 
@@ -2840,7 +2988,33 @@ theorem carries the discharge (F-2). The membership-residue wording
 corrected at §5 and §0M column (b) to the SUFFICIENT (per-instance STRONGER)
 relation, "smaller" true only of the open domain (m-1). **No §2–§5 identity
 moved (F-1 is a strict narrowing of one sub-clause's fence); all four
-instruments byte-frozen (md5s re-verified); note-only, no new probe.** Arc:
+instruments byte-frozen (md5s re-verified); note-only, no new probe.** ~~Arc:
 PE1 (1C+9G) → r1 → PE2 (0C+7G) → r2 → PE3 (0C+8G) → r3 → PE4 (0C+8G) → r4 →
 PE5 (0C+5G) → r5 → PE6 (0C+2G+1m) → r6 →
-**JB-PE7 = the next acceptance attempt**; acceptance counter still **0/2**.**
+**JB-PE7 = the next acceptance attempt**; acceptance counter still **0/2**.~~**
+
+**[r7] repaired a SEVENTH time, 2026-08-08 campaign (wallclock 2026-08-06),
+against JB-PE7 (0 CRITICAL + 1 gap + 2 minor, the fifth acceptance attempt,
+which did not land; the r6 re-fence verified CLEAN end-to-end — the fence
+mathematics re-derived at the J-A source, all 12 re-fence surfaces
+consistent, the gate claim verified from committed code — and the 598,500
+lattice-member replacement record independently REPRODUCED at 0/0
+violations; the one gap is r6-bred, inside the m-1 wording fix). THE
+WORDING-HYGIENE ROUND: the underived non-equivalence claim ("not an
+equivalent") STRUCK at both [r6, m-1] brackets and replaced by the
+instance-honest relation — membership IMPLIES the needed u ≥ 0 instance
+(sufficiency, all any consumer uses); the converse is INSTANCE-DEPENDENT:
+EQUIVALENT at m = 1, where {V ∈ ℤ_{≥0} : u(V) ≥ 0} = 𝒲₁ exactly (PE7's
+two-direction proof, machine-checked on 96 read data with 0
+counterexamples, commit aa9b603), containment possibly strict at m ≥ 2,
+strictness UNPROVED either way in general (F-1); the m-1 sweep completed at
+its third site — JB-BOX-2's necessity-overstating "exactly" struck with a
+pointer to column (b) (m-2); (d3)'s machine-gate transcription made
+byte-faithful at all four live sites — the code's second conjunct
+`q+1 <= G.RANK` (grt_jb_checks.py L283) disclosed as a vgen-domain guard,
+identically true on the loop domain since RANK = n+1 ≥ qcap+1 (m-3). **No
+§2–§5 identity moved; no fence, census or grade moves; all four instruments
+byte-frozen (md5s re-verified); note-only, no new probe.** Arc:
+PE1 (1C+9G) → r1 → PE2 (0C+7G) → r2 → PE3 (0C+8G) → r3 → PE4 (0C+8G) → r4 →
+PE5 (0C+5G) → r5 → PE6 (0C+2G+1m) → r6 → PE7 (0C+1G+2m) → r7 →
+**JB-PE8 = the next acceptance attempt**; acceptance counter still **0/2**.**
