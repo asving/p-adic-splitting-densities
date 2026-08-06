@@ -11442,3 +11442,35 @@ measured-above + the bridging lemma stated as the note's open box) + the
 chamber qualifier + minors. The Codex W-legs (~8h) now have fresh
 targets.** Counters: LIFT/JB/JC ACCEPTED · WM 0/2 · JA 0-clean · W2
 0-clean.
+
+---
+
+## Repair wave landed: W2-OPEN-2 minted (the bridging lemma proved IRREDUCIBLY NEW by a four-route adjudication; live region = 6 junction-levels, 44/44 measured) + JA root-extension verified on all 66 witnesses + WM companion — 2026-08-07
+
+**W2 r1 (8d5e3fa, +291/−25) — RE-SCOPED-WITH-BOX after the four-route
+derivability check (JC = single-valuation chamber-internal; JB =
+weight-frame not rep-change; MacLane needs v ≥ γ where the ratios sit
+below; GMN itself flags rep-dependence at tex 2053 — any cite would be
+NEW consumption). W2-C3 regraded proved-to-first-twist (38/44
+junction-levels) / measured above (6/44: T3A/C/D/E r=4, I4C r=4,5);
+**W2-OPEN-2** stated as the note's own box (the harness canonical lift's
+vok + one-sided polygon + exact unit-times-ψ residual in transported
+chambers above the first twist — the chain-level shadow of §5.4's carry
+analysis); TW-STRICT reclassified SAME-adjacent; C1a chamber-qualified;
+counts fixed; **WM (M4) + JB row-15 fold annotations recorded
+ORCHESTRATOR-OWED (both pin-protected meanwhile)**. W2-PE2 next.
+
+**JA r2 (5d95805, +147/−30) — the root-inclusive extension applied and
+VERIFIED: 66/66 PE2 witnesses carry visible root character ⟹ all lie OFF
+the extended perimeter; extended (R-coll) ⟹ (VD-m) TRUE at 330/0
+(preregistered probe 5/5). F2–F5 applied (the u ≥ 0 gloss scoped with
+JB's accepted col (b) quoted at pin; the arc-record normalized: 2026-08-04
+= round 1, PE2 = round 2, JA-PE3 next).**
+
+**WM r4 (14706f5) — LED-Λ pinned (species closed AT r4, honestly); the
+JA companion applied (WM-FENCE(a) root-inclusive, proof line re-scoped);
+consumer check VERIFIED (no WM display consumed clause (a) at the
+unextended range — the M2/PERIM-μ faces cite JA-VDIND directly). PE5
+next.** Owed at the group fold: the JB "(R-coll)" label + row-15 + WM(M4)
+dated erratum annotations on accepted texts; the ILN rider-rewrite; the
+public refresh. Dispatched: WM PE5 + JA PE3 + W2 PE2.
