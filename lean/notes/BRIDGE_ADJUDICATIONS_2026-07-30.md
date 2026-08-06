@@ -10991,3 +10991,48 @@ verified; R1-UNIT confirmed unfiltered with a planted zero tooth). **r2
 dispatched (the 9 gaps; the bilinearity family gets a real leg; the
 literature-valuation tie gets displayed or fenced). Arc: composed → PE1
 2C+8G → r1 structural → PE2 0C+9G → r2; PE3 = next acceptance attempt.**
+
+---
+
+## LIFT r4 LANDED (the assert saga ENDED; S5 → 5-line template + archive) + JB PE4: 0C/8G (all PE3 findings discharged; the matrix's own precision now the frontier; F-4 = a real scope finding) — 2026-08-06
+
+**LIFT r4 (6170b09 + 56997be, note-only; freeze verified read-only; worked
+through ~6 Bash refusals) — ADJUDICATED: COMPLETE.** F4-1: BOTH asserts
+demoted with the arc recorded in one sentence ("r0 described, r1 promoted
+(i), r3 promoted (ii), r4 demotes both — no third half left to promote");
+mk_field_ext source + empirical probe verified before writing; superseded
+at 5 sites. F4-2/3/4/5/6 applied (provenance to PE2's report; the PROP
+census re-pointed to ITERLAWN r4's class-pin site with the pin named
+verbatim and charge item (5) re-scoped OWED; cocycle renamed c^{Φ′}; the
+NR-1 cross-note claim reduced to the Φ₁-corner delivery + the ILNRES-side
+erratum candidate flagged, ILNRES untouched). STRUCTURAL: S5 regenerated to
+FIVE template lines + standing rule ("do not grow a sixth"); the three old
+STATUS LINEs archived byte-unchanged with 3 flagged corrections. **Arc:
+PE1 1C+3G → r1 → PE2 0C+5G → r2 → PE3 0C+5G → r3 → PE4 0C+6G → r4 → PE5 =
+next acceptance attempt. Counter 0/2.**
+
+**JB PE4 (report committed by the pass) — VERDICT 0C/8G; counter 0/2;
+second acceptance attempt missed BUT: all 8 PE3 findings verified
+genuinely discharged, the (RM-m) quote byte-identical to RMENGINE S0.2
+(11/11 machine-compared), the strike system balanced (48 spans), and NO
+fifth instance of the old surface-divergence class — the matrix
+normalization worked; the frontier is now the MATRIX'S OWN precision.**
+The eight: F-1 §0M summary self-contradiction (row 18 both named and
+denied as a (VD-m) consumer; row 5's JA-RES hypothesis understated at
+m ≥ 3); F-2 the fourth-cell hunt SUCCEEDED — the "three NO-LEG cells"
+claim undercounts (row 4's grid half is NONE too, + rows 13/18 under the
+note's own criterion); F-3 the (RES) re-fence gloss false on 11/16 roster
+towers (conservative direction; the fence itself source-correct); **F-4
+(substantive, first dig at §4(iii)): the per-edge line-law transfer
+claims every tree edge, but line = w_m = v_{m+1} is L-LINE(iv)'s
+REDUCED-CELL identity, internal nodes are non-reduced by [RMG] S2.2's own
+definition, and jb_line keys leaves only — the machine matches the
+finding, not the prose**; F-5 row-20's jb_eps sampling description wrong
+(strided, not plain; the applied lattice instance not shown tested); F-6
+§7.3's SUPERSEDED block unterminated (live content sitting in a
+not-authoritative region); F-7 three surface-vs-table disagreements
+(reportable under JB-BOX-6's own rule); F-8 "the level-m weight lattice"
+undefined + the V,V′ ≥ 0 half of the license unaddressed. Machine legs:
+all four scripts exit 0, md5s intact. **r4 dispatched (F-4 = re-scope the
+transfer to leaves/reduced cells or derive the internal-edge case; the
+matrix precision items; F-8 defines the lattice); PE5 = next attempt.**
