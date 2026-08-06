@@ -11223,3 +11223,39 @@ stack omits the (ITER-LAW-LIFT) residual + [T] pins that [JC]'s own stack
 carries. Minors: teeth-coverage gloss; an [RMG] grade cell; WM-CLASS's κ
 domain cite. **r1 queued behind JB r5; the evidence-class rule applies to
 ALL future preregs.**
+
+---
+
+## THE FIRST ZERO-DEFECT ROUND (LIFT r5 verified clean by PE6; 3 leftover one-liners) + JB r5 (u ≥ 0: derivation HELD on 5.29M members, honest partial discharge — frontier 4 with narrowed residues) + JC r3 complete — 2026-08-06
+
+**LIFT PE6 (f2b48e7) — 0C/3G; counter 0/2. THE ARC TURNED: the r5 diff
+verified clean line-by-line (all 32 insertions true, all fixes placed) —
+the first round whose new prose bred NO defect; the mathematics clean on
+the SIXTH independent reading.** Leftovers: F6-1 the status block's
+NEXT/AUDIT bullets not brought forward with the ARC bullet (+ block label
++ grade box); F6-2 a THIRD bare-c′ cocycle site (S2's sealed Q9 row —
+PE5's census undercounted; extend the correction-of-record; all 42 c′
+occurrences now swept, no fourth); F6-3 the closing dating record misses
+r5. All one-liners. **r6 = three one-line fixes → PE7.**
+
+**JB r5 (f9f104e, 265/31) — LANDED.** The u ≥ 0 derivation HELD (4 lines
+from the note's own 𝒲_m display; fresh probe: 5,288,324 lattice members,
+0 violations; J-A's counterexample excluded by parity) BUT the scope
+check was honest: NEITHER consumer fully discharges — rows 4/12 quantify
+over unbounded-degree f while 𝒲_{q+1} is the value set only below
+deg Φ_{q+1}; DISCHARGED on the sub-window, CARRIED at full quantifier as
+the strictly smaller membership hypothesis w_{q+1}(f) ∈ 𝒲_{q+1}.
+**FRONTIER: unchanged at FOUR (4/5/12/22), residues re-characterized
+NARROWED.** F-1/F-2/F-4 (row 20 OUT with displayed reason)/F-5 fixed.
+JB-PE6 next.
+
+**JC r3 (126c33f, 188/18) — COMPLETE.** GAP 1 re-routed through
+(MULT-B)|gr at δ = 0; alias-complete census 90 hit-lines = 23 LIVE (all
+citing currently-valid inputs) / 25 struck / 42 record — 0 live naming
+any refuted form; the diversity species ENDED by census-not-prose (the
+one-sentence history + the named-not-built candidate leg); GAPs 2/4–8
+applied with machine re-verification where numeric. JC-PE4 next.
+
+**Dispatched: LIFT r6 + JB PE6 + JC PE4 + WELDMASTER r1 (unblocked — the
+frontier census is settled at four/narrowed; F-1's fix now has a stable
+target).**
