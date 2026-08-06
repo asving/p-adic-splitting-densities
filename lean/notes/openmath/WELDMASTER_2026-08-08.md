@@ -7,12 +7,26 @@ THEOREM note in the LEDGER-Λ genre** (`LEDGERLAMBDA_2026-08-08.md` is the
 model): one theorem whose faces are already-composed notes, consumed at
 their own grades; ONE genuinely new display (S2's coboundary theorem, with
 its complete proof); ONE fence surface (S3). ~~Acceptance counter **0/2** —
-no hostile pass has run on THIS note.~~ **[r1 STATUS — ARC: composed (seal
+no hostile pass has run on THIS note.~~ ~~**[r1 STATUS — ARC: composed (seal
 b375f42 → verdict 0baeb3b) → PE1 HOSTILE (report df00707: 0 CRITICAL /
 5 JUSTIFICATION GAPS F-1..F-5 + 3 minors F-6..F-8, NOT CLEAN) → r1 (THIS
 ROUND — note-only repair against all eight findings; runner + artifacts
 BYTE-FROZEN, runner md5 6b406f81c250d25f615f715fa9eff474 verified
-unchanged). Counter 0/2; PE2 is the next acceptance attempt.]** Author:
+unchanged). Counter 0/2; PE2 is the next acceptance attempt.]**~~
+**[r2 STATUS (CURRENT; supersedes the struck r1 line) — ARC: composed (seal
+b375f42 → verdict 0baeb3b) → PE1 HOSTILE (df00707: 0C/5G+3m, NOT CLEAN) →
+r1 (90db22d, note-only, all eight findings addressed) → PE2 HOSTILE (report
+1edb104: 0 CRITICAL / 1 JUSTIFICATION GAP + 2 minors, NOT CLEAN — the r1
+diff itself verified CLEAN at source; the gap was pure freshness DRIFT, JB
+r6 landing 35 minutes after WM r1) → r2 (THIS ROUND — the drift repair, done
+as AS-OF COMMIT PINS per the 2026-08-06 standing rule (cross-note quotes
+carry as-of pins; ledger wave fold 2026-08-06c — a pinned quote is never
+falsifiable by sibling drift, only updatable at a fold): [JB] read at
+4c4ee56 (post-r7), [JC] at 3870bc8 (post-r5); plus the F-2 dagger
+round-labels and the F-3 WM-EPS range gloss. Note-only; runner + artifacts
+BYTE-FROZEN, runner md5 6b406f81c250d25f615f715fa9eff474 re-verified
+unchanged). A repair round is NOT a pass: counter 0/2; PE3 is the next
+acceptance attempt.]** Author:
 Fable, campaign date 2026-08-08 (wallclock 2026-08-06).
 
 **SCOPE AND FENCES (stated before anything else).**
@@ -41,12 +55,30 @@ Fable, campaign date 2026-08-08 (wallclock 2026-08-06).
 the §3.4 (ξ,w) closed form, (C-coll), (HR-REC), W2-BOX-1, W2-OPEN-1 (OPEN).
 **[JA]†** = `GRTJA_PROOF_2026-08-08.md` (post-r1, 0/2): JA-PIN, JA-VAL,
 JA-EPS, JA-GRID, JA-RES, JA-VDIND, (R-coll), JA-BOX-1..5.
-**[JB]†** = `GRTJB_PROOF_2026-08-08.md` (post-r4, 0/2) **[r1: JB r5 landed
+**[JB]†** = `GRTJB_PROOF_2026-08-08.md` ~~(post-r4, 0/2)~~ **[r1: JB r5 landed
 mid-arc (f9f104e, note-only — the u ≥ 0 partial discharge); the §0M
 frontier census carried in this note is the settled post-r5 one, rows
-4/5/12/22]**: JB-DEV, JB-AFF,
+4/5/12/22]** **[r2, F-1/F-2: (post-r7, 0/2, as of 4c4ee56) — every [JB]
+citation in this note READS AT THAT COMMIT (as-of pin, the 2026-08-06
+standing rule). Deltas since the r1 bracket: JB r6 (4607824) SPLIT §0M
+row 11 — JB-VTX(d3)'s min tie moved from `P<q` to `P≤q` (column (a2)) —
+carried below at (M1) and (F-a); JB r7 (4c4ee56) restored the
+instance-honest membership relation at column (b) (EQUIVALENT at m = 1;
+re-quoted at S4). The frontier census is UNCHANGED at FOUR (rows
+4/5/12/22) at 4c4ee56, so the r1 bracket's census clause stays true]**:
+JB-DEV, JB-AFF,
 JB-VTX, JB-TREE, LEMMA JB-EPS, JB-CREAD, the §0M conditionality matrix.
-**[JC]†** = `GRTJC_PROOF_2026-08-08.md` (post-r2, 0/2): W-6..W-9, JC-LOC,
+**[JC]†** = `GRTJC_PROOF_2026-08-08.md` ~~(post-r2, 0/2)~~ **[r2, F-2:
+(post-r5, 0/2, as of 3870bc8) — every [JC] citation in this note reads at
+that commit. The struck "(post-r2)" label was already one round stale AT
+the r1 commit (JC r3 = 126c33f, 09:02, predates WM r1's 09:27 — the r1
+round's one freshness miss, PE2 F-2); materiality NIL: PE2's diff scan
+verified r3+r4 leave every WM-consumed face content-stable (alias sweeps,
+JC-LOAD tier re-routes, census records), and r5's deltas (the per-alias
+census table; the FGMN (a)(b) stack completion BY ANNOTATION) were checked
+at the pin this round — the JC-LOC sentence, the (DMULT-w)/(DMULT-s) tier
+split, the §3.3 germ figures, and the §10.2 stack items this note mirrors
+are byte-stable at 3870bc8]**: W-6..W-9, JC-LOC,
 JC-LOAD, JC-PSIKER, JC-F1/JC-F2, the (DMULT-w)/(DMULT-s) tier split, LAW
 JC-CYC. **[ILN]†** = `ITERLAWN_PROOF_2026-08-08.md`, **ACCEPTED**
 (2-clean): the S0.1 class pin, S0.3 recursion (δ, S_j, D_j), Lemma
@@ -103,7 +135,14 @@ unrestricted: "(s(β) − ℓβ)/e ∈ ℤ and ε(β) = z^{(s(β)−ℓβ)/e}" �
 ε_j(β) = z_j^{−t_j(β)}, ACCEPTED and unconditional. That is the identity's
 carrier at the off-window/negative arguments this note evaluates ε_j at
 (WM-RHO's "every γ ∈ ℤ", the WM-COB-OFFW legs, WM-CLASS's Ẽ; machine leg
-WM-EPS 615/0 over ranges wider than any lattice). JA-EPS's own quantifier
+WM-EPS 615/0 ~~over ranges wider than any lattice~~ **[r2, F-3 — the
+range, stated exactly: WM-EPS samples β ∈ [0, 3e·h + 4) per level (runner
+line 222) — BOUNDED NON-NEGATIVE, so it machine-keys the committed-eps ≡
+z^{−t} tie OFF-LATTICE but NOT at negative arguments; the
+negative-argument sites named in this sentence ride the EXP-KIT PROOF
+(all β ∈ ℤ, the declared carrier) plus the FRESH-cochain legs
+(`Ecoch`/`t_fresh` through `split`: WM-RHO, the OFFW legs), which never
+evaluate `Tower.eps` at negative β]**). JA-EPS's own quantifier
 at [JA]† HEAD is "every β ∈ ℤ in the level-m weight lattice" — it stays
 cited for what it proves: the PRINT identification (t_j = the print twist
 exponent) on 𝒲_m.]**
@@ -147,9 +186,9 @@ the middle column are the domain/codomain pins the synthesis adjudicated
 | clause | citation (proof of the clause) | identification displayed | conditionality carried verbatim |
 |---|---|---|---|
 | (M0) | **[JB]† JB-DEV(i)** (same division, digit-for-digit) + **[JA]† JA-PIN** clauses 1–7 (domain) + **[W2]† W2-C1** (representative legitimacy) | JA-PIN: T(t) satisfies every class-pin clause except the lift clause (= W-2); the representative is φ_{q+1} := Φ_q^har | W-2 clause 1's perimeter; JB §0M rows 1–2; byte clause on `P≤q` only |
-| (M1) | **[JA]† JA-VAL** (w_m = v_{m+1}) + **[JB]† JB-AFF + JB-VTX** (H(f) = Σ_q(U(f)) vertex-for-vertex; the sheared frame IS the print's own next-level bookkeeping) + **[JA]† JA-GRID** (grid face: eq-(12-int) = T-side initial point; carry = lattice crossing) | the shear Σ_q is the induced affine map on gradings; the read side is horizontal at height w_{q+1}(f) in the sheared frame | shared-key perimeter `P<q`, 0 ≤ q ≤ qcap; JA-GRID(a)'s u ≥ 0 proviso (~~undischarged~~ **[r1, F-1 — NARROWED at JB r5: u ≥ 0 PROVED at V ∈ 𝒲_{q+1}; open residue = the membership hypothesis at the unbounded-degree quantifier]**, JB §0M col (b)); JB-VTX(d4) NO-LEG rides |
+| (M1) | **[JA]† JA-VAL** (w_m = v_{m+1}) + **[JB]† JB-AFF + JB-VTX** (H(f) = Σ_q(U(f)) vertex-for-vertex; the sheared frame IS the print's own next-level bookkeeping) + **[JA]† JA-GRID** (grid face: eq-(12-int) = T-side initial point; carry = lattice crossing) | the shear Σ_q is the induced affine map on gradings; the read side is horizontal at height w_{q+1}(f) in the sheared frame | shared-key perimeter `P<q`, 0 ≤ q ≤ qcap **[r2, F-1 — SPLIT per [JB] §0M row 11 as of 4c4ee56 (the JB r6 re-fence): `P<q` fences JB-VTX(d1)/(d2) and every other layer of this face; (d3) — the min tie w_{q+1}(f) = v_{q+2}(f), which is JA-VAL at level q+1 — carries the STRICTLY STRONGER `P≤q` (the BYTE-EQUAL CHAIN THROUGH q, column (a2)); bites at q = qcap on the 5 shared_upto < n roster towers (T3A/T3C/T3D/T3E/I4C), where [JB]'s runner gates (d3) at q ≤ shared_upto — its own fence, so the IND leg covers the re-fenced range]**; JA-GRID(a)'s u ≥ 0 proviso (~~undischarged~~ **[r1, F-1 — NARROWED at JB r5: u ≥ 0 PROVED at V ∈ 𝒲_{q+1}; open residue = the membership hypothesis at the unbounded-degree quantifier]**, JB §0M col (b) **[r2: as of 4c4ee56 — col (b) there further displays the m = 1 EQUIVALENCE; re-quoted at S4]**); JB-VTX(d4) NO-LEG rides |
 | (M2) | **[JA]† JA-EPS** (ε_m = z^{−t_m}: the cochain identification) + **JA-RES** (per-slot law c_i = z_{m−1}^{−i·A_{m−1}}·C_i, unconditional at m = 2) + **[W2]† W2-C2/(HR-REC)** (exact recursion; scalar form on (C-coll)) | the ε-kit IS the print's t(i)-twist in eq12-canonical coordinates; all transport characters are ~~values/differences of~~ **generated by [r1, F-3 — aligned with the clause text and S2.3's own fence: the χ-chain at m ≥ 2 and the mod-wrap are NOT reduced to cochain values]** ONE 1-cochain (S2, S3) | JA-RES per-digit proviso at m ≥ 3 / (R-coll); (C-coll) at m ≥ 2; W2-BOX-1 mod-wrap; JA-BOX-1: PER-SLOT, never scalar |
-| (M3) | **[JC]† W-6/W-7/W-8/W-9** (target exists; Ψ iso with inner normalization ∏_{j≤m} z_j^{D_j} on the scored stratum; harness-val = TC-read; K^c[ℤ/E]) | **JC-LOC (the CODOMAIN pin): B = gr(w)[in(π)^{−1}] ≅ gr_{K[x]}(w) — "B *is* the object FGMN's theorems speak about"**; 𝒜(T) = the whole transported ring (JC-F2's corrected display) | [ILN]† scored stratum; (DMULT-w) CITED / (DMULT-s) MEASURED tier split; GRB §0 ladder; JC-BOX-2/-4/-8 |
+| (M3) | **[JC]† W-6/W-7/W-8/W-9** (target exists; Ψ iso with inner normalization ∏_{j≤m} z_j^{D_j} on the scored stratum; harness-val = TC-read; K^c[ℤ/E]) | **JC-LOC (the CODOMAIN pin): B = gr(w)[in(π)^{−1}] ≅ gr_{K[x]}(w) — "B *is* the object FGMN's theorems speak about"** **[r2: quote as of 3870bc8]**; 𝒜(T) = the whole transported ring (JC-F2's corrected display) | [ILN]† scored stratum; (DMULT-w) CITED / (DMULT-s) MEASURED tier split; GRB §0 ladder; JC-BOX-2/-4/-8 |
 | (M4) | **[W2]† W2-C2 + §3.4** (the (ξ, w) closed form: ξ_{m+1} = χ_m^{γ_{m+1}}·z_m^{−e_m A_m}, w_{m+1} = χ_m^{−g_mγ_{m+1}}, the χ-chain; print tie z_m^{−A_m} = c₁) + **W2-C3** (ψ-transport: strict representative at every level of the transported chain, no weight/support splits) | the covariance seed is the cochain at the key weight: c₁ = ε_m(W_m) (S3's seed identity); the χ-multiplier = the [ILN]† shift-chain descent operator (byte-identical displays, [W2]† §3.4 rk. 1) | scalar closed form on (C-coll) only (exact law = (HR-REC)); §4.3 ℓ-orbit convention fence; **W2-OPEN-1 (value layer) OPEN — inherited displayed** |
 
 ∎ (each row = consumption; no row is re-proved here).
@@ -161,7 +200,8 @@ proves no new instance and discharges no open leg (W2-OPEN-1, the (VD-m)
 strata, (DMULT-s), JB's ~~rows 5/12/22~~ **rows 4/5/12/22 [r1, F-1 — the
 post-r4/r5 census: FOUR NO-LEG open-proviso rows, with rows 4/12 at the
 NARROWED membership residue; the S4 bullet carries [JB]†'s wording
-verbatim]** evidence frontier all ride). Its net
+verbatim]** **[r2: census UNCHANGED at 4c4ee56 (post-r7)]** evidence
+frontier all ride). Its net
 new content is exactly two displays: S2 (the coboundary theorem — the one
 theorem-shaped new item) and S3 (the one-perimeter fence). What each
 junction note carries BEYOND its face (its closed forms, boundary censuses,
@@ -282,7 +322,8 @@ arithmetic from WM-COB + WM-RHO, no separate leg.]
 a value of the weld cochain.** The level-≤m cochain generates only
 monomials in z_1..z_m; c_m is the NEXT residual letter — TC-3's defining
 relation at g_m = 1 (ψ_m(z̄) = 0 ⟺ z̄ = −ψ_{m,0}) surfacing as a transport
-constant ([JB]† §5; [JC]† §3.3's germ split: CONFIRMED as value law on all
+constant ([JB]† §5 **[r2: as of 4c4ee56]**; [JC]† §3.3's germ split
+**[r2: figures as of 3870bc8]**: CONFIRMED as value law on all
 27 eligible stages, REFUTED as inner-factor reading, 138/669). Assignment:
 c_m belongs to the z̄^δ family — the part WM-COB(iii) shows is NOT ∂E.
 Likewise the mod-wrap boundary (W2-BOX-1's I4B r = 5 witness) and the
@@ -317,7 +358,8 @@ m is its every-recursion-node form (2 ≤ q ≤ m−1). *Proof: citation;
 [JA]† §3.4's display is this condition verbatim.*
 
 **(b) [the (VD-m) proviso, J-B].** JB-CREAD's governing fence consumes
-JA-VDIND verbatim ([JB]† §0M column (c): "at every m ≥ 2 a HYPOTHESIS —
+JA-VDIND verbatim ([JB]† §0M column (c) **[r2: as of 4c4ee56]**: "at every
+m ≥ 2 a HYPOTHESIS —
 JA-VDIND's ABSOLUTE character-triviality"); hence = (a) = (PERIM) at the
 same attained sets. Unconditional at m ≤ 1 only ((VD-1) = W2-L3). *Proof:
 citation of the r1/F1-repaired fence.*
@@ -349,9 +391,16 @@ the one-perimeter observation seen from the failure side.
 replacing four per-note fence systems as a READING AID — the four notes'
 own surfaces stay authoritative until the next fold):**
 
-    (F-a) the SHARED-KEY / BYTE perimeter — (M0)'s hypothesis: `P<q` for
+    (F-a) the SHARED-KEY / BYTE perimeter — (M0)'s hypothesis: ~~`P<q` for
           the (VAL)/(GRID) layers, `P≤q` for the (RES) layer ([JB]† §0M
-          (a1)/(a2)); off it the print frame is a different computation.
+          (a1)/(a2))~~ **[r2, F-1 — per [JB]† §0M (a1)/(a2) as of 4c4ee56
+          (row 11 split at JB r6): `P<q` for the (VAL)/(GRID) layers
+          EXCEPT JB-VTX(d3); `P≤q` (the byte-equal chain THROUGH q) for
+          the (RES) layer AND for (d3)'s min tie w_{q+1}(f) = v_{q+2}(f) —
+          a VAL-family tie that is JA-VAL at level q+1, hence needs the
+          byte-equal chain through q; (a2)'s consumer list there: rows 2,
+          5, and row 11's (d3)]**; off it the print frame is a different
+          computation.
     (F-b) the COLLAPSE perimeter — THIS section's (PERIM) condition at the
           appropriate abscissa sets ((a)/(b)/(c) above), with the χ-chain
           and mod-wrap caveat displayed.
@@ -361,7 +410,8 @@ own surfaces stay authoritative until the next fold):**
           and ~~the [RMG]/LED-Λ attempt grades where [JB]† consumes them~~
           **[RMG] at ACCEPTED grade and LED-Λ at ATTEMPT grade, as [JB]†
           consumes them ([JB]† §4 grade cap: "consuming [RMG] as ACCEPTED
-          and LED-Λ at ATTEMPT grade") [r1, F-7]**.
+          and LED-Λ at ATTEMPT grade") [r1, F-7]** **[r2: quote as of
+          4c4ee56]**.
 
 **Consequence for the four notes' fence surfaces.** Each note's collapse
 fence becomes a DERIVABLE DISPLAY of (F-b): (C-coll) = slot-grid (PERIM) +
@@ -386,6 +436,8 @@ at the narrowed membership residue [r1, F-1]; JC's
 GRB/CARRY-1/D-REAL accepted-conditional (§0 ladder + [T] pins) [r1, F-5] +
 FGMN cites (numbering
 re-verification owed) + LED-Λ attempt ⟹ this note, own arc 0/2.`
+**[r2, F-1/F-2 — the stack's cross-note items read at the as-of pins:
+[JB] 4c4ee56 (post-r7), [JC] 3870bc8 (post-r5).]**
 
 Itemized honesty:
 
@@ -413,7 +465,20 @@ Itemized honesty:
   proviso is CARRIED as that membership hypothesis". Rows 5 (RES) and 22
   (v = 0) ride unchanged; nothing here consumed the missing row's content
   unfenced (the u ≥ 0 rider was carried at (M1)), but the carried census
-  cell was stale]**; the J3b BLOCKED-ON-CARRIER-TIE gate stands; hExhaust and every
+  cell was stale]** **[r2, F-1 — AS-OF PINS: both quotes in the r1 bracket
+  above re-verified BYTE-INTACT at [JB] commit 4c4ee56 (post-r7), and the
+  census stays FOUR there (r6's own words: "the census stays FOUR (rows 4,
+  5, 12, 22)" — (d3)'s re-fence carries a key perimeter, not an open
+  proviso). Column (b)'s definition at that commit FURTHER displays the
+  instance-honest relation ([JB]'s [r7, PE7 F-1] bracket, quoted at the
+  pin): "membership implies the needed instance — the sufficiency
+  direction, all any consumer uses; the converse is INSTANCE-DEPENDENT —
+  EQUIVALENT at m = 1 (above), containment possibly strict at m ≥ 2,
+  strictness UNPROVED either way in general (PE6's qualifier, restored)".
+  Sufficiency is all this note's (M1) rider uses, so the carried residue
+  is unchanged in substance — the m = 1 equivalence only says the carried
+  membership hypothesis is NOT strictly stronger there]**; the J3b
+  BLOCKED-ON-CARRIER-TIE gate stands; hExhaust and every
   Phase-B Lean obligation untouched; the P0 application gate stands. NO
   consumer retirements: nothing that today cites a junction note may
   re-point to this note at better grade (there is none to give).
@@ -427,7 +492,12 @@ Itemized honesty:
   LIFTCORNER arc's subject — now rides in [ILN]†'s residual list above;
   (2) GRB/CARRY-1/D-REAL's conditionality reads "§0 ladder **+ [T] pins**"
   ([JC]† §3.3's transcription pins). Both mirrored verbatim from [JC]†
-  §10.2's stack line.]
+  §10.2's stack line. **[r2, F-2 — pin: as of 3870bc8. At that commit
+  §10.2's r0/[r1]/[r2] stack displays are ROUND-RECORDS by [JC]'s own
+  [r5, G-2] annotation, with the CURRENT stack = the [r2] tier-split form
+  whose FGMN entry is completed to "FGMN (a)(b) + (DMULT-w) on B …"; both
+  items mirrored here — the (ITER-LAW-LIFT) residual and "§0 ladder +
+  [T] pins" — ride byte-stable in it]**]
 
 ## S5. MACHINE BRACKET — weldmaster_checks.py (two-commit seal)
 
@@ -455,7 +525,7 @@ evidence-class rule (ledgered 2026-08-06: every machine family carries an
 IND / SAME / NONE label at its prereg row; "re-key"/"independent" claims
 must name the decorrelated computation path) and [JB]†'s taxonomy ("SAME
 … the violation is UNREACHABLE and the leg carries NO information … never
-advertised as a second engine"). Both point sets are the same engine
+advertised as a second engine" **[r2: quote as of 4c4ee56]**). Both point sets are the same engine
 numbers: `Upts = (i, wq + i·wPhi[q])` and `Hpts = (i, e[q]·wq +
 i·gam[q+1])` with the same `wq = T.wlev(q, Ai)`, and the engine itself
 defines `gam[q+1] = e_q·wPhi[q] + h_q` — so shearU ≡ Hpts is an arithmetic
@@ -473,7 +543,10 @@ REMAINS is the junction notes' own legs: [JB]† §0M rows 8–11's genuinely
 IND families (print ordinates `G.vgen`/`G.vkey` vs harness
 `T.wlev`/`T.gam`, 893; fresh lower hulls of BOTH frames + vertex
 bijection; `hull_sides` per-side slope/length; the three min ties) and
-[JA]† JA-VAL's own leg — this battery adds none.]**
+[JA]† JA-VAL's own leg — this battery adds none. **[r2: as of 4c4ee56 —
+the r6 row-11 split leaves its (f) IND cell standing ("IND three tie
+assertions", (d1)/(d3) gated q ≤ shared_upto — (d3)'s own fence, an
+instrument cut for (d1)); rows 8–10 unchanged at `P<q`]**]**
 
 **Families and SEALED PREDICTIONS (any observed count differing from its
 prediction is RED):**
@@ -597,3 +670,17 @@ brackets for the four fence surfaces happen at the next fold, citing S3.
 6b406f81c250d25f615f715fa9eff474 re-verified this round; `git diff
 verification/` empty). All eight findings addressed in place ([r1, F-n]
 tags). Counter 0/2; PE2 next.
+
+— r2 REPAIR ROUND against PE2 (report 1edb104: 0 CRITICAL / 1 gap —
+freshness DRIFT, not an r1 error — + 2 minors; the r1 diff itself verified
+CLEAN at source), wallclock 2026-08-06. THE PIN ROUND: every [JB]/[JC]
+cross-note reference now carries an AS-OF COMMIT PIN per the 2026-08-06
+standing rule — [JB] at 4c4ee56 (post-r7: the r6 (d3) `P≤q` re-fence
+carried at (M1) and (F-a); the r7 instance-honest m = 1-equivalence
+wording re-quoted at S4; frontier census unchanged at FOUR), [JC] at
+3870bc8 (post-r5) — so sibling drift can no longer falsify this note's
+quotes; only a fold updates pins (F-1). Dagger round-labels dated and
+corrected (F-2); the WM-EPS machine-leg range gloss corrected to the
+runner's exact sampling range (F-3). Note-only; runner + artifacts
+BYTE-FROZEN (runner md5 6b406f81c250d25f615f715fa9eff474 re-verified this
+round; `git diff verification/` empty). Counter 0/2; PE3 next.
