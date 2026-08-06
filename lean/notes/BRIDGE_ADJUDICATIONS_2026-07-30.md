@@ -11058,3 +11058,44 @@ already in the stack). G-4: 22 hit-lines at fixed point, 0 live consuming
 sites. G-3/5/7/8/9 applied. **Arc: composed → PE1 2C+8G → r1 structural →
 PE2 0C+9G → r2 → JC-PE3 = next acceptance attempt; counter 0/2. Fleet
 relaunching on Fable (JB r4 + LIFT PE5; weld synthesis).**
+
+---
+
+## WELD SYNTHESIS VERDICTS (f71cd68): ONE-TRANSPORT subsumes all four junctions; the normalization laws are ONE COCHAIN (the [ILN] inner factor is a COBOUNDARY); the J-D dimension shortcut REFUTED with the breaking point named — 2026-08-06
+
+**WELD_SYNTHESIS_2026-08-05.md (docs/in-progress, commit f71cd68; 6 spot
+families, 7,999 samples, 0 violations on T2A/T2C/T3A/T3E/I4B):**
+
+H1 ONE-TRANSPORT: SUBSUMED-PLUS-SHARPENING at all four junctions — the
+master transport (M0 substrate / M1 shear-on-gradings / M2 cochain gauge /
+M3 K^c[ℤ/E] / M4 lift covariance) has each composed note as a face; each
+note's extra content = its domain/codomain identifications + closed forms.
+THE REAL GAIN: the fence surface collapses to THREE master fences, and
+(C-coll)/(R-coll)/(VD-m) are ONE character-triviality condition — the
+conditionality bookkeeping that has consumed four repair rounds per note
+becomes one perimeter.
+
+H2 ONE-COCYCLE: PARTIAL as literally stated, HOLDS as ONE-COCHAIN — all
+four normalization laws are faces of t_j(β) = (ℓβ−s)/e (= ε_j via JA-EPS):
+the [ILN] inner factor is a COBOUNDARY, **c_{n+1} = z̄^δ·∂E** (a 3-line
+display), which EXPLAINS JC-F1 cohomologically (the cocycle is trivial up
+to the outer letter — exactly why 𝒜(T) is abstractly cyclic while the
+letter-monomial presentation is not); JB-EPS is the plain face; i·A the
+key-sublattice face; residue: J-B's c_m = −z_{m+1} is the OUTER letter,
+not a cochain value.
+
+H3 J-D SHORTCUT: NOT VIABLE — dim K^c[ℤ/E] = E is q-independent while
+omCount is q-rational (order-0 inert 1/4 = (q²−q)/2q² vs ≤ 2 characters;
+explicit at the Eisenstein order-1 shape too). SALVAGE: (J-D0)
+count-gauge-blindness (counts escape ALL value-layer fences) + JC-PSIKER/
+JC-LOAD as the wild-stage warrant.
+
+RECOMMENDATION ADOPTED: (1) the MASTER-TRANSPORT note worth composing as a
+LEDGERLAMBDA-genre consolidation — consumes the 4 junction notes + [ILN]†,
+forces NO revision, adds the coboundary display + the one-perimeter fence;
+composer dispatched (must not displace the arcs — separate file, separate
+unit). (2) J-D via the blueprint route: J-D0 first, then W-10 at the
+(2,1,1) shape, then W-11. (3) Extra targets queued: a_λ/E(λ)
+multiplicativity (would move (DMULT-s) from MEASURED toward PROVED —
+closing J-C's one open citation from the inside) and the χ-from-S closed
+form.
