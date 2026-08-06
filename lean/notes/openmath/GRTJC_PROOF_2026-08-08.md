@@ -200,11 +200,17 @@ bracket, strike-and-replace:
 * **G-9** — the one-line ideal transport along JC-GAUGE(iii) written out.
 
 **New machine leg (r2):** `verification/openmath/grt_jc_r2_checks.py` under its
-own two-commit mini-seal (commit 1 = the runner, sealed UNRUN, prereg in its
-docstring = §9.4's table; commit 2 = the verdict FROM the committed artifacts),
-testing ONLY the bilinearity content of (DMULT) and the disclosure census. See
-**§9.4** for its preregistration and verdict, and **§9.5** for the r2
-bracket-sweep record.**]**
+own two-commit mini-seal (commit 1 = the runner, sealed UNRUN at `79611a4`,
+prereg in its docstring = §9.4's table; commit 2 = the verdict FROM the
+committed artifacts), testing ONLY the bilinearity content of (DMULT) and the
+disclosure census. **VERDICT (§9.4): ALL 4 FAMILIES GREEN — 3,655 table rows
+(3,597 in-family + TOOTH-ROW 58), 0 violations, 29 rows, exit 0; U1 261/261,
+U2 261/261, no silent tooth; (DMULT-s) exact on 261 dense bilinear pairs; the
+r1-skipped pair scored on 29/29 (bilinear content on exactly C2I/C4I, the two
+g_m = 2 rows); U2 fired 0 times on the r1-tested pairs — the r1 leg had zero
+resolution against the cross-term class.** See **§9.4** for the
+preregistration and verdict, and **§9.5** for the r2 bracket-sweep
+record.**]**
 
 ---
 
@@ -1935,8 +1941,27 @@ R1-SURJ k-range on all three; the U2 mutation fires on the dense pairs and is
 silent on the r1 pairs there; per-row cost comparable to r1's). No scored
 predicate was weakened by it.
 
-**VERDICT: PENDING — this table is sealed BEFORE the run; the verdict block
-is written at mini-seal commit 2 FROM the committed artifacts.**
+**VERDICT (written FROM the committed artifacts
+`verification/openmath/grt_jc_r2_output.txt` + `grt_jc_r2_results.json`;
+runner md5 `c02bf06029a72259512ea005bd2562fd`, sealed UNRUN at mini-seal
+commit 1 = `79611a4`).** **ALL 4 FAMILIES GREEN — 3,597 scored samples in the
+four families (EXT-GATE 1 + R2-BIL 696 + R2-PHI 87 + R2-MONO 2,813) plus
+TOOTH-ROW 58 = 3,655 table rows, 0 violations, 29 rows, elapsed 7.4 s, exit
+0; BOTH TEETH FIRED ON EVERY OPPORTUNITY (U1 261/261, U2 261/261, no silent
+tooth).** Every sealed prediction hit exactly.
+
+| family | result |
+|---|---|
+| **R2-BIL** | **0 violations on 261 dense multi-slot × multi-slot ordered pairs** (9 per row: the dense set D realized THREE elements on all 29 rows — degree-2 "ones2"/"mix2" at k = 5..34 and, censused, the degree-3 dense "ones3" at k = 7..52, so every row's D is {3,3,4}-slot dense) — **(DMULT-s) holds EXACTLY (dict equality, multiplier 1) on genuinely bilinear input**, cross-term convolution finally exercised, together with w(fg) = w(f)+w(g) on every pair |
+| **R2-PHI** | **0 violations on 29/29 rows** for the pair r1 `continue`d: 𝑅(Φ_{m+1}) = ψ_m coefficientwise, w(Φ_{m+1}²) = 2wΦ_NR, and 𝑅(Φ²) = y^δ·ψ_m(y)² exactly (δ = 0 on every row — E \| wΦ_NR forces s_NR(wΦ_NR) = 0). **Census: the skipped pair has genuine bilinear content (occupied interior ψ_m slot) on exactly the two g_m = 2 rows, C2I and C4I** — on the other 27 rows ψ_m is 2-slot and the skip cost nothing; on those two, r1's one true bilinear pair was the skipped one |
+| **R2-MONO** | **0 violations**: exactly ONE multi-slot element among the r1 samples on every row (Φ_{m+1}); every r1-TESTED pair has ≥ 1 single-slot factor (29/29 rows); and **U2 replayed on the r1-tested pairs fired 0 times across the whole roster** — machine proof that the r1 leg had zero resolution against the cross-term mutation class |
+| **U1 / U2** | U1 (y^{δ+1} shift) 261/261, U2 (cross-term drop) **261/261 — U2 fires on EVERY dense pair and NEVER on an r1-tested pair**, which is exactly the separation the tooth was designed to exhibit |
+
+**What this leg does and does not carry.** It supplies the missing bilinear
+evidence for **(DMULT-s)** on the roster (m ≤ 3 machine scope, JC-BOX-1
+verbatim); it does NOT convert (DMULT-s) to CITED — the tier split of
+§2.10 [r2, G-1] stands, and the non-integral residue JC-BOX-8(i) is still
+untouched by every runner.
 
 ### 9.5 [r2] THE BRACKET-SWEEP RECORD (G-4: struck names re-pointed to fixed point)
 

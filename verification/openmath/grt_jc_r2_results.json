@@ -1,0 +1,958 @@
+{
+ "families": {
+  "counts": {
+   "EXT-GATE": 1,
+   "R2-BIL": 696,
+   "R2-MONO": 2813,
+   "R2-PHI": 87,
+   "TOOTH-ROW": 58,
+   "U1": 261,
+   "U2": 261
+  },
+  "violations": {}
+ },
+ "rows": {
+  "C2A": {
+   "E": 4,
+   "bil_pairs": 9,
+   "dense_k": {
+    "mix2": 5,
+    "ones2": 5,
+    "ones3": 8
+   },
+   "e_m": 2,
+   "g_m": 1,
+   "id": "C2A",
+   "m": 1,
+   "mono": {
+    "multi_slot_samples": 1,
+    "r1_skipped_pairs": 1,
+    "tested_pairs_both_multi": 0,
+    "u2_fires_on_r1_tested": 0
+   },
+   "nK": 4,
+   "phi": {
+    "bilinear_content": false,
+    "delta": 0,
+    "slots": [
+     0,
+     1
+    ]
+   },
+   "teeth": {
+    "U1": 9,
+    "U2": 9
+   }
+  },
+  "C2B": {
+   "E": 4,
+   "bil_pairs": 9,
+   "dense_k": {
+    "mix2": 9,
+    "ones2": 9,
+    "ones3": 14
+   },
+   "e_m": 2,
+   "g_m": 1,
+   "id": "C2B",
+   "m": 1,
+   "mono": {
+    "multi_slot_samples": 1,
+    "r1_skipped_pairs": 1,
+    "tested_pairs_both_multi": 0,
+    "u2_fires_on_r1_tested": 0
+   },
+   "nK": 4,
+   "phi": {
+    "bilinear_content": false,
+    "delta": 0,
+    "slots": [
+     0,
+     1
+    ]
+   },
+   "teeth": {
+    "U1": 9,
+    "U2": 9
+   }
+  },
+  "C2C": {
+   "E": 6,
+   "bil_pairs": 9,
+   "dense_k": {
+    "mix2": 5,
+    "ones2": 5,
+    "ones3": 7
+   },
+   "e_m": 2,
+   "g_m": 1,
+   "id": "C2C",
+   "m": 1,
+   "mono": {
+    "multi_slot_samples": 1,
+    "r1_skipped_pairs": 1,
+    "tested_pairs_both_multi": 0,
+    "u2_fires_on_r1_tested": 0
+   },
+   "nK": 3,
+   "phi": {
+    "bilinear_content": false,
+    "delta": 0,
+    "slots": [
+     0,
+     1
+    ]
+   },
+   "teeth": {
+    "U1": 9,
+    "U2": 9
+   }
+  },
+  "C2D": {
+   "E": 6,
+   "bil_pairs": 9,
+   "dense_k": {
+    "mix2": 6,
+    "ones2": 6,
+    "ones3": 10
+   },
+   "e_m": 3,
+   "g_m": 1,
+   "id": "C2D",
+   "m": 1,
+   "mono": {
+    "multi_slot_samples": 1,
+    "r1_skipped_pairs": 1,
+    "tested_pairs_both_multi": 0,
+    "u2_fires_on_r1_tested": 0
+   },
+   "nK": 9,
+   "phi": {
+    "bilinear_content": false,
+    "delta": 0,
+    "slots": [
+     0,
+     1
+    ]
+   },
+   "teeth": {
+    "U1": 9,
+    "U2": 9
+   }
+  },
+  "C2E": {
+   "E": 4,
+   "bil_pairs": 9,
+   "dense_k": {
+    "mix2": 5,
+    "ones2": 5,
+    "ones3": 8
+   },
+   "e_m": 2,
+   "g_m": 1,
+   "id": "C2E",
+   "m": 1,
+   "mono": {
+    "multi_slot_samples": 1,
+    "r1_skipped_pairs": 1,
+    "tested_pairs_both_multi": 0,
+    "u2_fires_on_r1_tested": 0
+   },
+   "nK": 4,
+   "phi": {
+    "bilinear_content": false,
+    "delta": 0,
+    "slots": [
+     0,
+     1
+    ]
+   },
+   "teeth": {
+    "U1": 9,
+    "U2": 9
+   }
+  },
+  "C2F": {
+   "E": 10,
+   "bil_pairs": 9,
+   "dense_k": {
+    "mix2": 5,
+    "ones2": 5,
+    "ones3": 7
+   },
+   "e_m": 2,
+   "g_m": 1,
+   "id": "C2F",
+   "m": 1,
+   "mono": {
+    "multi_slot_samples": 1,
+    "r1_skipped_pairs": 1,
+    "tested_pairs_both_multi": 0,
+    "u2_fires_on_r1_tested": 0
+   },
+   "nK": 5,
+   "phi": {
+    "bilinear_content": false,
+    "delta": 0,
+    "slots": [
+     0,
+     1
+    ]
+   },
+   "teeth": {
+    "U1": 9,
+    "U2": 9
+   }
+  },
+  "C2G": {
+   "E": 6,
+   "bil_pairs": 9,
+   "dense_k": {
+    "mix2": 6,
+    "ones2": 6,
+    "ones3": 10
+   },
+   "e_m": 3,
+   "g_m": 1,
+   "id": "C2G",
+   "m": 1,
+   "mono": {
+    "multi_slot_samples": 1,
+    "r1_skipped_pairs": 1,
+    "tested_pairs_both_multi": 0,
+    "u2_fires_on_r1_tested": 0
+   },
+   "nK": 25,
+   "phi": {
+    "bilinear_content": false,
+    "delta": 0,
+    "slots": [
+     0,
+     1
+    ]
+   },
+   "teeth": {
+    "U1": 9,
+    "U2": 9
+   }
+  },
+  "C2H": {
+   "E": 4,
+   "bil_pairs": 9,
+   "dense_k": {
+    "mix2": 5,
+    "ones2": 5,
+    "ones3": 8
+   },
+   "e_m": 2,
+   "g_m": 1,
+   "id": "C2H",
+   "m": 1,
+   "mono": {
+    "multi_slot_samples": 1,
+    "r1_skipped_pairs": 1,
+    "tested_pairs_both_multi": 0,
+    "u2_fires_on_r1_tested": 0
+   },
+   "nK": 8,
+   "phi": {
+    "bilinear_content": false,
+    "delta": 0,
+    "slots": [
+     0,
+     1
+    ]
+   },
+   "teeth": {
+    "U1": 9,
+    "U2": 9
+   }
+  },
+  "C2I": {
+   "E": 4,
+   "bil_pairs": 9,
+   "dense_k": {
+    "mix2": 5,
+    "ones2": 5,
+    "ones3": 8
+   },
+   "e_m": 2,
+   "g_m": 2,
+   "id": "C2I",
+   "m": 1,
+   "mono": {
+    "multi_slot_samples": 1,
+    "r1_skipped_pairs": 1,
+    "tested_pairs_both_multi": 0,
+    "u2_fires_on_r1_tested": 0
+   },
+   "nK": 4,
+   "phi": {
+    "bilinear_content": true,
+    "delta": 0,
+    "slots": [
+     0,
+     1,
+     2
+    ]
+   },
+   "teeth": {
+    "U1": 9,
+    "U2": 9
+   }
+  },
+  "C2J": {
+   "E": 3,
+   "bil_pairs": 9,
+   "dense_k": {
+    "mix2": 7,
+    "ones2": 7,
+    "ones3": 11
+   },
+   "e_m": 3,
+   "g_m": 1,
+   "id": "C2J",
+   "m": 1,
+   "mono": {
+    "multi_slot_samples": 1,
+    "r1_skipped_pairs": 1,
+    "tested_pairs_both_multi": 0,
+    "u2_fires_on_r1_tested": 0
+   },
+   "nK": 3,
+   "phi": {
+    "bilinear_content": false,
+    "delta": 0,
+    "slots": [
+     0,
+     1
+    ]
+   },
+   "teeth": {
+    "U1": 9,
+    "U2": 9
+   }
+  },
+  "C3A": {
+   "E": 8,
+   "bil_pairs": 9,
+   "dense_k": {
+    "mix2": 9,
+    "ones2": 9,
+    "ones3": 15
+   },
+   "e_m": 2,
+   "g_m": 1,
+   "id": "C3A",
+   "m": 2,
+   "mono": {
+    "multi_slot_samples": 1,
+    "r1_skipped_pairs": 1,
+    "tested_pairs_both_multi": 0,
+    "u2_fires_on_r1_tested": 0
+   },
+   "nK": 4,
+   "phi": {
+    "bilinear_content": false,
+    "delta": 0,
+    "slots": [
+     0,
+     1
+    ]
+   },
+   "teeth": {
+    "U1": 9,
+    "U2": 9
+   }
+  },
+  "C3B": {
+   "E": 12,
+   "bil_pairs": 9,
+   "dense_k": {
+    "mix2": 8,
+    "ones2": 8,
+    "ones3": 13
+   },
+   "e_m": 2,
+   "g_m": 1,
+   "id": "C3B",
+   "m": 2,
+   "mono": {
+    "multi_slot_samples": 1,
+    "r1_skipped_pairs": 1,
+    "tested_pairs_both_multi": 0,
+    "u2_fires_on_r1_tested": 0
+   },
+   "nK": 3,
+   "phi": {
+    "bilinear_content": false,
+    "delta": 0,
+    "slots": [
+     0,
+     1
+    ]
+   },
+   "teeth": {
+    "U1": 9,
+    "U2": 9
+   }
+  },
+  "C3C": {
+   "E": 12,
+   "bil_pairs": 9,
+   "dense_k": {
+    "mix2": 14,
+    "ones2": 14,
+    "ones3": 22
+   },
+   "e_m": 2,
+   "g_m": 1,
+   "id": "C3C",
+   "m": 2,
+   "mono": {
+    "multi_slot_samples": 1,
+    "r1_skipped_pairs": 1,
+    "tested_pairs_both_multi": 0,
+    "u2_fires_on_r1_tested": 0
+   },
+   "nK": 3,
+   "phi": {
+    "bilinear_content": false,
+    "delta": 0,
+    "slots": [
+     0,
+     1
+    ]
+   },
+   "teeth": {
+    "U1": 9,
+    "U2": 9
+   }
+  },
+  "C3D": {
+   "E": 8,
+   "bil_pairs": 9,
+   "dense_k": {
+    "mix2": 16,
+    "ones2": 16,
+    "ones3": 26
+   },
+   "e_m": 2,
+   "g_m": 1,
+   "id": "C3D",
+   "m": 2,
+   "mono": {
+    "multi_slot_samples": 1,
+    "r1_skipped_pairs": 1,
+    "tested_pairs_both_multi": 0,
+    "u2_fires_on_r1_tested": 0
+   },
+   "nK": 4,
+   "phi": {
+    "bilinear_content": false,
+    "delta": 0,
+    "slots": [
+     0,
+     1
+    ]
+   },
+   "teeth": {
+    "U1": 9,
+    "U2": 9
+   }
+  },
+  "C3E": {
+   "E": 4,
+   "bil_pairs": 9,
+   "dense_k": {
+    "mix2": 13,
+    "ones2": 13,
+    "ones3": 19
+   },
+   "e_m": 2,
+   "g_m": 1,
+   "id": "C3E",
+   "m": 2,
+   "mono": {
+    "multi_slot_samples": 1,
+    "r1_skipped_pairs": 1,
+    "tested_pairs_both_multi": 0,
+    "u2_fires_on_r1_tested": 0
+   },
+   "nK": 4,
+   "phi": {
+    "bilinear_content": false,
+    "delta": 0,
+    "slots": [
+     0,
+     1
+    ]
+   },
+   "teeth": {
+    "U1": 9,
+    "U2": 9
+   }
+  },
+  "C3F": {
+   "E": 12,
+   "bil_pairs": 9,
+   "dense_k": {
+    "mix2": 12,
+    "ones2": 12,
+    "ones3": 20
+   },
+   "e_m": 3,
+   "g_m": 1,
+   "id": "C3F",
+   "m": 2,
+   "mono": {
+    "multi_slot_samples": 1,
+    "r1_skipped_pairs": 1,
+    "tested_pairs_both_multi": 0,
+    "u2_fires_on_r1_tested": 0
+   },
+   "nK": 9,
+   "phi": {
+    "bilinear_content": false,
+    "delta": 0,
+    "slots": [
+     0,
+     1
+    ]
+   },
+   "teeth": {
+    "U1": 9,
+    "U2": 9
+   }
+  },
+  "C3G": {
+   "E": 20,
+   "bil_pairs": 9,
+   "dense_k": {
+    "mix2": 18,
+    "ones2": 18,
+    "ones3": 29
+   },
+   "e_m": 2,
+   "g_m": 1,
+   "id": "C3G",
+   "m": 2,
+   "mono": {
+    "multi_slot_samples": 1,
+    "r1_skipped_pairs": 1,
+    "tested_pairs_both_multi": 0,
+    "u2_fires_on_r1_tested": 0
+   },
+   "nK": 5,
+   "phi": {
+    "bilinear_content": false,
+    "delta": 0,
+    "slots": [
+     0,
+     1
+    ]
+   },
+   "teeth": {
+    "U1": 9,
+    "U2": 9
+   }
+  },
+  "C3H": {
+   "E": 8,
+   "bil_pairs": 9,
+   "dense_k": {
+    "mix2": 9,
+    "ones2": 9,
+    "ones3": 15
+   },
+   "e_m": 2,
+   "g_m": 1,
+   "id": "C3H",
+   "m": 2,
+   "mono": {
+    "multi_slot_samples": 1,
+    "r1_skipped_pairs": 1,
+    "tested_pairs_both_multi": 0,
+    "u2_fires_on_r1_tested": 0
+   },
+   "nK": 8,
+   "phi": {
+    "bilinear_content": false,
+    "delta": 0,
+    "slots": [
+     0,
+     1
+    ]
+   },
+   "teeth": {
+    "U1": 9,
+    "U2": 9
+   }
+  },
+  "C3I": {
+   "E": 8,
+   "bil_pairs": 9,
+   "dense_k": {
+    "mix2": 20,
+    "ones2": 20,
+    "ones3": 30
+   },
+   "e_m": 2,
+   "g_m": 1,
+   "id": "C3I",
+   "m": 2,
+   "mono": {
+    "multi_slot_samples": 1,
+    "r1_skipped_pairs": 1,
+    "tested_pairs_both_multi": 0,
+    "u2_fires_on_r1_tested": 0
+   },
+   "nK": 4,
+   "phi": {
+    "bilinear_content": false,
+    "delta": 0,
+    "slots": [
+     0,
+     1
+    ]
+   },
+   "teeth": {
+    "U1": 9,
+    "U2": 9
+   }
+  },
+  "C3J": {
+   "E": 12,
+   "bil_pairs": 9,
+   "dense_k": {
+    "mix2": 8,
+    "ones2": 8,
+    "ones3": 13
+   },
+   "e_m": 2,
+   "g_m": 1,
+   "id": "C3J",
+   "m": 2,
+   "mono": {
+    "multi_slot_samples": 1,
+    "r1_skipped_pairs": 1,
+    "tested_pairs_both_multi": 0,
+    "u2_fires_on_r1_tested": 0
+   },
+   "nK": 3,
+   "phi": {
+    "bilinear_content": false,
+    "delta": 0,
+    "slots": [
+     0,
+     1
+    ]
+   },
+   "teeth": {
+    "U1": 9,
+    "U2": 9
+   }
+  },
+  "C4A": {
+   "E": 16,
+   "bil_pairs": 9,
+   "dense_k": {
+    "mix2": 18,
+    "ones2": 18,
+    "ones3": 29
+   },
+   "e_m": 2,
+   "g_m": 1,
+   "id": "C4A",
+   "m": 3,
+   "mono": {
+    "multi_slot_samples": 1,
+    "r1_skipped_pairs": 1,
+    "tested_pairs_both_multi": 0,
+    "u2_fires_on_r1_tested": 0
+   },
+   "nK": 2,
+   "phi": {
+    "bilinear_content": false,
+    "delta": 0,
+    "slots": [
+     0,
+     1
+    ]
+   },
+   "teeth": {
+    "U1": 9,
+    "U2": 9
+   }
+  },
+  "C4B": {
+   "E": 16,
+   "bil_pairs": 9,
+   "dense_k": {
+    "mix2": 18,
+    "ones2": 18,
+    "ones3": 29
+   },
+   "e_m": 2,
+   "g_m": 1,
+   "id": "C4B",
+   "m": 3,
+   "mono": {
+    "multi_slot_samples": 1,
+    "r1_skipped_pairs": 1,
+    "tested_pairs_both_multi": 0,
+    "u2_fires_on_r1_tested": 0
+   },
+   "nK": 4,
+   "phi": {
+    "bilinear_content": false,
+    "delta": 0,
+    "slots": [
+     0,
+     1
+    ]
+   },
+   "teeth": {
+    "U1": 9,
+    "U2": 9
+   }
+  },
+  "C4C": {
+   "E": 24,
+   "bil_pairs": 9,
+   "dense_k": {
+    "mix2": 23,
+    "ones2": 23,
+    "ones3": 38
+   },
+   "e_m": 2,
+   "g_m": 1,
+   "id": "C4C",
+   "m": 3,
+   "mono": {
+    "multi_slot_samples": 1,
+    "r1_skipped_pairs": 1,
+    "tested_pairs_both_multi": 0,
+    "u2_fires_on_r1_tested": 0
+   },
+   "nK": 3,
+   "phi": {
+    "bilinear_content": false,
+    "delta": 0,
+    "slots": [
+     0,
+     1
+    ]
+   },
+   "teeth": {
+    "U1": 9,
+    "U2": 9
+   }
+  },
+  "C4G": {
+   "E": 16,
+   "bil_pairs": 9,
+   "dense_k": {
+    "mix2": 31,
+    "ones2": 31,
+    "ones3": 50
+   },
+   "e_m": 2,
+   "g_m": 1,
+   "id": "C4G",
+   "m": 3,
+   "mono": {
+    "multi_slot_samples": 1,
+    "r1_skipped_pairs": 1,
+    "tested_pairs_both_multi": 0,
+    "u2_fires_on_r1_tested": 0
+   },
+   "nK": 4,
+   "phi": {
+    "bilinear_content": false,
+    "delta": 0,
+    "slots": [
+     0,
+     1
+    ]
+   },
+   "teeth": {
+    "U1": 9,
+    "U2": 9
+   }
+  },
+  "C4H": {
+   "E": 10,
+   "bil_pairs": 9,
+   "dense_k": {
+    "mix2": 19,
+    "ones2": 19,
+    "ones3": 27
+   },
+   "e_m": 1,
+   "g_m": 1,
+   "id": "C4H",
+   "m": 3,
+   "mono": {
+    "multi_slot_samples": 1,
+    "r1_skipped_pairs": 1,
+    "tested_pairs_both_multi": 0,
+    "u2_fires_on_r1_tested": 0
+   },
+   "nK": 5,
+   "phi": {
+    "bilinear_content": false,
+    "delta": 0,
+    "slots": [
+     0,
+     1
+    ]
+   },
+   "teeth": {
+    "U1": 9,
+    "U2": 9
+   }
+  },
+  "C4I": {
+   "E": 16,
+   "bil_pairs": 9,
+   "dense_k": {
+    "mix2": 18,
+    "ones2": 18,
+    "ones3": 29
+   },
+   "e_m": 2,
+   "g_m": 2,
+   "id": "C4I",
+   "m": 3,
+   "mono": {
+    "multi_slot_samples": 1,
+    "r1_skipped_pairs": 1,
+    "tested_pairs_both_multi": 0,
+    "u2_fires_on_r1_tested": 0
+   },
+   "nK": 4,
+   "phi": {
+    "bilinear_content": true,
+    "delta": 0,
+    "slots": [
+     0,
+     1,
+     2
+    ]
+   },
+   "teeth": {
+    "U1": 9,
+    "U2": 9
+   }
+  },
+  "I4A": {
+   "E": 12,
+   "bil_pairs": 9,
+   "dense_k": {
+    "mix2": 27,
+    "ones2": 27,
+    "ones3": 44
+   },
+   "e_m": 3,
+   "g_m": 1,
+   "id": "I4A",
+   "m": 3,
+   "mono": {
+    "multi_slot_samples": 1,
+    "r1_skipped_pairs": 1,
+    "tested_pairs_both_multi": 0,
+    "u2_fires_on_r1_tested": 0
+   },
+   "nK": 4,
+   "phi": {
+    "bilinear_content": false,
+    "delta": 0,
+    "slots": [
+     0,
+     1
+    ]
+   },
+   "teeth": {
+    "U1": 9,
+    "U2": 9
+   }
+  },
+  "I4B": {
+   "E": 12,
+   "bil_pairs": 9,
+   "dense_k": {
+    "mix2": 34,
+    "ones2": 34,
+    "ones3": 52
+   },
+   "e_m": 2,
+   "g_m": 1,
+   "id": "I4B",
+   "m": 3,
+   "mono": {
+    "multi_slot_samples": 1,
+    "r1_skipped_pairs": 1,
+    "tested_pairs_both_multi": 0,
+    "u2_fires_on_r1_tested": 0
+   },
+   "nK": 9,
+   "phi": {
+    "bilinear_content": false,
+    "delta": 0,
+    "slots": [
+     0,
+     1
+    ]
+   },
+   "teeth": {
+    "U1": 9,
+    "U2": 9
+   }
+  },
+  "I4C": {
+   "E": 8,
+   "bil_pairs": 9,
+   "dense_k": {
+    "mix2": 23,
+    "ones2": 23,
+    "ones3": 37
+   },
+   "e_m": 2,
+   "g_m": 1,
+   "id": "I4C",
+   "m": 3,
+   "mono": {
+    "multi_slot_samples": 1,
+    "r1_skipped_pairs": 1,
+    "tested_pairs_both_multi": 0,
+    "u2_fires_on_r1_tested": 0
+   },
+   "nK": 16,
+   "phi": {
+    "bilinear_content": false,
+    "delta": 0,
+    "slots": [
+     0,
+     1
+    ]
+   },
+   "teeth": {
+    "U1": 9,
+    "U2": 9
+   }
+  }
+ },
+ "teeth": {
+  "U1": 261,
+  "U2": 261
+ },
+ "totals": {
+  "bil": 261,
+  "bilphi": 2,
+  "d3": 29,
+  "skip": 29,
+  "u2r1": 0
+ },
+ "violations": []
+}

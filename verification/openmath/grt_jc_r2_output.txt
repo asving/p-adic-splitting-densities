@@ -1,0 +1,50 @@
+grt_jc_r2_checks.py -- GRTJC r2 SUPPLEMENTARY battery (the bilinearity leg)
+  [   0.2s] EXT-GATE done (new: 0)
+  [   0.2s] C2A    m=1 E=4   |K|=4   g_m=1 e_m=2  dense k=[5, 5, 8]  BIL pairs 9  phi delta=0 bilinear=False  U1 9 U2 9  (0.0s)
+  [   0.2s] C2B    m=1 E=4   |K|=4   g_m=1 e_m=2  dense k=[9, 9, 14]  BIL pairs 9  phi delta=0 bilinear=False  U1 9 U2 9  (0.0s)
+  [   0.2s] C2C    m=1 E=6   |K|=3   g_m=1 e_m=2  dense k=[5, 5, 7]  BIL pairs 9  phi delta=0 bilinear=False  U1 9 U2 9  (0.0s)
+  [   0.2s] C2D    m=1 E=6   |K|=9   g_m=1 e_m=3  dense k=[6, 6, 10]  BIL pairs 9  phi delta=0 bilinear=False  U1 9 U2 9  (0.0s)
+  [   0.3s] C2E    m=1 E=4   |K|=4   g_m=1 e_m=2  dense k=[5, 5, 8]  BIL pairs 9  phi delta=0 bilinear=False  U1 9 U2 9  (0.1s)
+  [   0.3s] C2F    m=1 E=10  |K|=5   g_m=1 e_m=2  dense k=[5, 5, 7]  BIL pairs 9  phi delta=0 bilinear=False  U1 9 U2 9  (0.0s)
+  [   0.3s] C2G    m=1 E=6   |K|=25  g_m=1 e_m=3  dense k=[6, 6, 10]  BIL pairs 9  phi delta=0 bilinear=False  U1 9 U2 9  (0.0s)
+  [   0.4s] C2H    m=1 E=4   |K|=8   g_m=1 e_m=2  dense k=[5, 5, 8]  BIL pairs 9  phi delta=0 bilinear=False  U1 9 U2 9  (0.0s)
+  [   0.4s] C2I    m=1 E=4   |K|=4   g_m=2 e_m=2  dense k=[5, 5, 8]  BIL pairs 9  phi delta=0 bilinear=True  U1 9 U2 9  (0.0s)
+  [   0.4s] C2J    m=1 E=3   |K|=3   g_m=1 e_m=3  dense k=[7, 7, 11]  BIL pairs 9  phi delta=0 bilinear=False  U1 9 U2 9  (0.0s)
+  [   0.4s] C3A    m=2 E=8   |K|=4   g_m=1 e_m=2  dense k=[9, 9, 15]  BIL pairs 9  phi delta=0 bilinear=False  U1 9 U2 9  (0.0s)
+  [   0.4s] C3B    m=2 E=12  |K|=3   g_m=1 e_m=2  dense k=[8, 8, 13]  BIL pairs 9  phi delta=0 bilinear=False  U1 9 U2 9  (0.0s)
+  [   0.5s] C3C    m=2 E=12  |K|=3   g_m=1 e_m=2  dense k=[14, 14, 22]  BIL pairs 9  phi delta=0 bilinear=False  U1 9 U2 9  (0.0s)
+  [   0.8s] C3D    m=2 E=8   |K|=4   g_m=1 e_m=2  dense k=[16, 16, 26]  BIL pairs 9  phi delta=0 bilinear=False  U1 9 U2 9  (0.3s)
+  [   0.8s] C3E    m=2 E=4   |K|=4   g_m=1 e_m=2  dense k=[13, 13, 19]  BIL pairs 9  phi delta=0 bilinear=False  U1 9 U2 9  (0.0s)
+  [   0.9s] C3F    m=2 E=12  |K|=9   g_m=1 e_m=3  dense k=[12, 12, 20]  BIL pairs 9  phi delta=0 bilinear=False  U1 9 U2 9  (0.1s)
+  [   0.9s] C3G    m=2 E=20  |K|=5   g_m=1 e_m=2  dense k=[18, 18, 29]  BIL pairs 9  phi delta=0 bilinear=False  U1 9 U2 9  (0.1s)
+  [   1.0s] C3H    m=2 E=8   |K|=8   g_m=1 e_m=2  dense k=[9, 9, 15]  BIL pairs 9  phi delta=0 bilinear=False  U1 9 U2 9  (0.1s)
+  [   1.1s] C3I    m=2 E=8   |K|=4   g_m=1 e_m=2  dense k=[20, 20, 30]  BIL pairs 9  phi delta=0 bilinear=False  U1 9 U2 9  (0.1s)
+  [   1.2s] C3J    m=2 E=12  |K|=3   g_m=1 e_m=2  dense k=[8, 8, 13]  BIL pairs 9  phi delta=0 bilinear=False  U1 9 U2 9  (0.1s)
+  [   1.3s] C4A    m=3 E=16  |K|=2   g_m=1 e_m=2  dense k=[18, 18, 29]  BIL pairs 9  phi delta=0 bilinear=False  U1 9 U2 9  (0.1s)
+  [   1.5s] C4B    m=3 E=16  |K|=4   g_m=1 e_m=2  dense k=[18, 18, 29]  BIL pairs 9  phi delta=0 bilinear=False  U1 9 U2 9  (0.2s)
+  [   1.6s] C4C    m=3 E=24  |K|=3   g_m=1 e_m=2  dense k=[23, 23, 38]  BIL pairs 9  phi delta=0 bilinear=False  U1 9 U2 9  (0.2s)
+  [   3.0s] C4G    m=3 E=16  |K|=4   g_m=1 e_m=2  dense k=[31, 31, 50]  BIL pairs 9  phi delta=0 bilinear=False  U1 9 U2 9  (1.4s)
+  [   3.0s] C4H    m=3 E=10  |K|=5   g_m=1 e_m=1  dense k=[19, 19, 27]  BIL pairs 9  phi delta=0 bilinear=False  U1 9 U2 9  (0.1s)
+  [   3.1s] C4I    m=3 E=16  |K|=4   g_m=2 e_m=2  dense k=[18, 18, 29]  BIL pairs 9  phi delta=0 bilinear=True  U1 9 U2 9  (0.1s)
+  [   3.2s] I4A    m=3 E=12  |K|=4   g_m=1 e_m=3  dense k=[27, 27, 44]  BIL pairs 9  phi delta=0 bilinear=False  U1 9 U2 9  (0.1s)
+  [   3.3s] I4B    m=3 E=12  |K|=9   g_m=1 e_m=2  dense k=[34, 34, 52]  BIL pairs 9  phi delta=0 bilinear=False  U1 9 U2 9  (0.1s)
+  [   7.4s] I4C    m=3 E=8   |K|=16  g_m=1 e_m=2  dense k=[23, 23, 37]  BIL pairs 9  phi delta=0 bilinear=False  U1 9 U2 9  (4.1s)
+
+==============================================================================
+FAMILY TABLE (samples / violations; sealed predictions in the docstring)
+  EXT-GATE   samples      1   violations    0
+  R2-BIL     samples    696   violations    0
+  R2-PHI     samples     87   violations    0
+  R2-MONO    samples   2813   violations    0
+  TOOTH-ROW  samples     58   violations    0
+
+TEETH (each MUST fire)
+  U1  fired    261 times (opportunities 261)
+  U2  fired    261 times (opportunities 261)
+
+R2-BIL: 261 dense multi-slot x multi-slot ordered pairs scored; degree-3 dense realized on 29/29 rows (censused)
+R2-PHI census: r1 skipped exactly 1 pair(s) per row (total 29); the skipped pair has genuine bilinear content (interior psi_m slot) on 2 row(s): ['C2I', 'C4I']
+R2-MONO: U2 fired 0 times on the r1-TESTED pairs across the roster (predicted 0 -- the r1 leg had zero resolution against the cross-term class)
+
+elapsed 7.4s;  total violations 0;  silent teeth NONE
+wrote /data/users/asvin/math-and-lean/p-adic-splitting-densities/verification/openmath/grt_jc_r2_results.json
