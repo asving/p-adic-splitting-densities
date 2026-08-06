@@ -1,0 +1,23 @@
+
+family        violations   samples
+WM-PIN                 0         2
+WM-EPS                 0       615
+WM-COB-I               0      1885
+WM-COB-OFFW            0       513
+WM-COB-F               0      1885
+WM-COB-C               0       897
+WM-RHO                 0        87
+WM-FENCE-XI            0       349
+WM-FENCE-EQ            0       171
+WM-SHEAR               0       804
+
+teeth (must fire >= 1 globally):
+WM-T-SIGN     fires=374
+WM-T-DELTA    fires=861
+WM-T-SHEAR    fires=514
+WM-T-XI       fires=47
+
+census: {"fence_rows": {"full": 22, "neither": 26, "slot_only": 9}, "kappa_hist": {"0": 292, "1": 87, "2": 18, "3": 37, "4": 6, "5": 9, "6": 2, "7": 6}, "pairs_scored": 897, "shear_hulls": 804, "shear_multivertex": 342, "towers": 29}
+
+VERDICT: ALL GREEN
+elapsed 0.6s

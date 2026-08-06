@@ -1,0 +1,75 @@
+{
+ "all_green": true,
+ "census": {
+  "fence_rows": {
+   "full": 22,
+   "neither": 26,
+   "slot_only": 9
+  },
+  "kappa_hist": {
+   "0": 292,
+   "1": 87,
+   "2": 18,
+   "3": 37,
+   "4": 6,
+   "5": 9,
+   "6": 2,
+   "7": 6
+  },
+  "pairs_scored": 897,
+  "shear_hulls": 804,
+  "shear_multivertex": 342,
+  "towers": 29
+ },
+ "elapsed_s": 0.6,
+ "families": {
+  "WM-COB-C": {
+   "samples": 897,
+   "violations": 0
+  },
+  "WM-COB-F": {
+   "samples": 1885,
+   "violations": 0
+  },
+  "WM-COB-I": {
+   "samples": 1885,
+   "violations": 0
+  },
+  "WM-COB-OFFW": {
+   "samples": 513,
+   "violations": 0
+  },
+  "WM-EPS": {
+   "samples": 615,
+   "violations": 0
+  },
+  "WM-FENCE-EQ": {
+   "samples": 171,
+   "violations": 0
+  },
+  "WM-FENCE-XI": {
+   "samples": 349,
+   "violations": 0
+  },
+  "WM-PIN": {
+   "samples": 2,
+   "violations": 0
+  },
+  "WM-RHO": {
+   "samples": 87,
+   "violations": 0
+  },
+  "WM-SHEAR": {
+   "samples": 804,
+   "violations": 0
+  }
+ },
+ "smoke": false,
+ "teeth": {
+  "WM-T-DELTA": 861,
+  "WM-T-SHEAR": 514,
+  "WM-T-SIGN": 374,
+  "WM-T-XI": 47
+ },
+ "violations": []
+}

@@ -419,7 +419,30 @@ prediction is RED):**
                                                               FIRES ≥ 1.
     WM-T-XI      A_μ+1 must break the c₁ tie.                 FIRES ≥ 1.
 
-**[VERDICT — appended at commit 2 from the committed artifacts.]**
+**[VERDICT — appended at commit 2 from the committed artifacts
+(`weldmaster_checks_output.txt` / `weldmaster_checks_results.json`; runner
+md5 6b406f81c250d25f615f715fa9eff474, byte-unchanged seal → verdict).]**
+
+**ALL GREEN — 0 violations across all 10 families, every sealed prediction
+met; all four teeth fired.** The battery: **29/29 roster towers built**
+(NR = 2/3/4; E up to 24; wild p ∈ {2,3,5} legs; d₀ ≤ 3; eq-char rows;
+I4A/I4B/I4C), **7,208 samples total** — WM-PIN 2 (both md5s intact) ·
+WM-EPS 615 · WM-COB-I 1,885 (every level of every dint_ok pair; the
+dint_ok gate never excluded a pair, consistent with D_j-INT) ·
+WM-COB-OFFW 513 (off-window γ−E legs, the "γ,γ′ ∈ ℤ arbitrary" scope) ·
+WM-COB-F 1,885 · WM-COB-C 897 (the full z̄^δ·∂E display, top-field
+composite) · WM-RHO 87 (the period constant exact on every sampled γ of
+every tower) · WM-FENCE-XI 349 · WM-FENCE-EQ 171 · WM-SHEAR 804 hulls
+(342 with ≥ 2 vertices — the shear law exercised on genuinely multi-vertex
+polygons). Teeth: WM-T-SIGN 374 · WM-T-DELTA 861 · WM-T-SHEAR 514 ·
+WM-T-XI 47 — all ≥ 1, battery has teeth on every new display. Census
+(reported, not violation-keyed): fence rows **22 absolute-(PERIM) / 9
+SLOT-ONLY / 26 neither** — the 9 slot-only rows are the machine-realized
+honest gap between (C-coll)'s slot-grid form and (R-coll)'s absolute form
+(S3's "the converse fails in general", now instance-backed); κ section-
+carry histogram {0: 292, 1: 87, 2: 18, 3: 37, 4: 6, 5: 9, 6: 2, 7: 6} —
+κ is NOT {0,1}-valued (WM-CLASS correctly makes no such claim). Elapsed
+0.6 s; deterministic, exact arithmetic.
 
 ## S6. Claims table, dependency line
 
