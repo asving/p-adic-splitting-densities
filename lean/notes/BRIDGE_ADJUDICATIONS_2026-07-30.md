@@ -11650,3 +11650,24 @@ pre-edit grep found a FOURTH (§6.2 appositive = PE4's o-d) and FIFTH
 (adjacent row label) same-species surface; all five scoped; every
 remaining "identification" token dispositioned in the round block.**
 PE5 next. Counters: LIFT/JB/JC ACCEPTED · JA 0/2 · WM 0/2 · W2 0/2.
+
+---
+
+## W2 PE5 CLEAN (1/2! + the SECOND Lean-verified leg: 17 ∀-theorems, 0 sorry) + WM r7 and JA r5 landed — ALL THREE remaining notes enter acceptance attempts simultaneously — 2026-08-07
+
+**W2 PE5 (ba2c47c) — CLEAN 0C/0G/0m; counter 1/2.** Own 27-token
+"identification" disposition check complete; W2-ID1 re-derived; the
+census exact from committed JSON; **fresh route = the LEAN KERNEL: 17
+general ∀-theorems (W2-L0 both halves, W2-L2 + integrality, the ID1
+chain + w-forcing, counter-instance pins incl. x³ = 1 in every 4-element
+field), lake env lean exit 0, zero sorry — source in the report Appendix
+I; artifact rescued to verification/openmath/w2_pe5_lean_leg.lean if
+/tmp survived.** Three nil-weight observations. **W2-PE6 = the would-be
+accepting attempt.**
+
+**WM r7 (53aa1d9) landed** (the + convention restored, verified at three
+pins + the bez source pre-write) → **WM PE9**. **JA r5 (f131c53) landed**
+(heading; the fired-trigger re-quote executed as-of W2@94534df; the
+Lean-leg rescue recorded) → **JA PE7 = the acceptance attempt.**
+Counters: LIFT/JB/JC ACCEPTED · JA 0/2 (PE7 = attempt) · WM 0/2 (PE9 =
+attempt) · W2 **1/2** (PE6 = would-be accepting). Codex ~13h.
