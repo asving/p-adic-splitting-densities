@@ -12044,3 +12044,32 @@ hot): hourly job c1740592 DELETED, bi-hourly job c986a06a created
 Codex-reset flag). FULL STEAM otherwise per the same message: W-11
 attempt 4 in flight (w41q4j1g3) + new wave wmyhw298v (W2-OPEN-2
 examples-first attack + K2-MULT-RES/g0>=3 residue closure).**
+
+---
+
+## ★★ W-11(n=2) PROVED — THE SEVEN-FAMILY MENU THEOREM: hExhaust PROVED at n=2 (exact drainage q^(−N)) + the R_τ ∈ ℚ(q) tie AT THE SLICE (split = inert = q/(2(q+1)), ram = 1/(q+1), Σ=1, both characteristics, wild included) — 2026-08-07
+
+Adjudicated from the wave return (attempt 4 after 3 API casualties;
+seal 7020ceb, verdict cb05127, attempt 0/2). The decided menu of monic
+quadratics over any complete DVR O/π^N is EXACTLY seven families
+(SEP-SPLIT, SEP-INERT, RAM(h) h odd, 2SIDED(w₁,w₂), SPLITEQ(k),
+INERTDEEP(k), SPLIT-TAIL(w)), each with ONE exact q-polynomial window
+count — RAM(1) = THEOREM W-10 verbatim; exhaustion with σ-undecided
+EXACTLY q^N. Blueprint W-11 row composed instance-first at n=2 (match
+quoted in note §S0; "hExhaust program stated" EXCEEDED — proved at the
+slice, general-n program stated §S4.3; R_τ∈ℚ(q) as n=2 corollary;
+divergence box honest). Hypotheses: {W-10 @ 2e6fdd8/9506a55, J-D0 @
+9387eb1 (frame), L2core id, classical Hensel/Eisenstein/Artin–Schreier};
+DULEMMA NOT consumed (no e_m=1 stretch). Battery 1,250,280/0 (30
+census rows = 1,235,872 quadratics, deep N=6,8 rows with depth-3
+refinement histories; 12 tower levels, 7 wild incl. C3E (2,3,1); PARI
+IND 8,252 + 1,070 double-lifts 0 bad), 5/5 teeth at preregistered
+counts. 7 boxes (n=2-only the governing one). SIGNIFICANCE FOR THE
+GOAL: this is the first PROVED all-primes uniformity statement at a
+complete degree slice, and the first proved drainage/hExhaust
+statement anywhere in the program. NEXT: W-12 (general n per
+blueprint) + W-11 PE1 (hostile pass — the slice theorem is
+load-bearing enough to verify despite intermediate grade).
+
+(Also: fold-annex idempotency re-run recorded at e37cb51 — 0 new
+annexes, sweep re-verified at HEAD.)
