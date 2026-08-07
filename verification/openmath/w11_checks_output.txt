@@ -1,0 +1,6 @@
+W11 BATTERY VERDICT: GREEN
+census rows: 30   tower (2,h,1) levels: 12 (wild 7, beyond-211 1)   checks: 1250280
+violations: W11-PIN=0 W11-CENSUS=0 W11-W10TIE=0 W11-EXHAUST=0 W11-TOWER=0 W11-ORACLE=0
+teeth: W11-T-MISSING=30 W11-T-SHADOW=30 W11-T-DRAIN=30 W11-T-SIGMA=3020 W11-T-TAMEDISC=1440
+oracle: (2,3):64/0bad (2,4):256/0bad (2,6):4096/0bad (3,2):81/0bad (3,3):729/0bad (5,2):625/0bad (7,2):2401/0bad
+elapsed: 49.9s
