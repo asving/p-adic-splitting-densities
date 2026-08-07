@@ -1,0 +1,959 @@
+{
+ "mode": "full",
+ "verdict": "GREEN",
+ "census_rows": 23,
+ "checks": {
+  "W10-PIN": 3,
+  "W10-CENSUS": 1083953,
+  "W10-RECENTER": 2958,
+  "W10-TOWER": 45,
+  "W10-ORACLE": 3405
+ },
+ "violations": {
+  "W10-PIN": 0,
+  "W10-CENSUS": 0,
+  "W10-RECENTER": 0,
+  "W10-TOWER": 0,
+  "W10-ORACLE": 0
+ },
+ "violation_detail": {
+  "W10-PIN": [],
+  "W10-CENSUS": [],
+  "W10-RECENTER": [],
+  "W10-TOWER": [],
+  "W10-ORACLE": []
+ },
+ "teeth_fires": {
+  "W10-T-VEXACT": 23,
+  "W10-T-CENTER0": 23,
+  "W10-T-LETTER0": 23,
+  "W10-T-TAMEDISC": 40
+ },
+ "census": [
+  {
+   "kind": "Zp",
+   "q": 2,
+   "N": 2,
+   "total": 16,
+   "census": 4,
+   "model": 4,
+   "L3_level0": 2,
+   "L3_level1": 1,
+   "B": 1,
+   "buckets": {
+    "deep": 4,
+    "sep": 8,
+    "211": 4
+   },
+   "vexact_count": 8,
+   "center0_count": 2,
+   "interior_mismatch": 0,
+   "per_center_counts": [
+    2,
+    2
+   ],
+   "n_centers": 2,
+   "elapsed_s": 0.0
+  },
+  {
+   "kind": "Zp",
+   "q": 2,
+   "N": 3,
+   "total": 64,
+   "census": 16,
+   "model": 16,
+   "L3_level0": 2,
+   "L3_level1": 1,
+   "B": 3,
+   "buckets": {
+    "deep": 8,
+    "sep": 32,
+    "211": 16,
+    "side-e1": 8
+   },
+   "vexact_count": 32,
+   "center0_count": 8,
+   "interior_mismatch": 0,
+   "per_center_counts": [
+    8,
+    8
+   ],
+   "n_centers": 2,
+   "elapsed_s": 0.0
+  },
+  {
+   "kind": "Zp",
+   "q": 2,
+   "N": 4,
+   "total": 256,
+   "census": 64,
+   "model": 64,
+   "L3_level0": 2,
+   "L3_level1": 1,
+   "B": 5,
+   "buckets": {
+    "deep": 16,
+    "sep": 128,
+    "211": 64,
+    "side-e1": 32,
+    "side-2h": 8,
+    "vertex": 8
+   },
+   "vexact_count": 128,
+   "center0_count": 32,
+   "interior_mismatch": 0,
+   "per_center_counts": [
+    32,
+    32
+   ],
+   "n_centers": 2,
+   "elapsed_s": 0.0
+  },
+  {
+   "kind": "Zp",
+   "q": 3,
+   "N": 2,
+   "total": 81,
+   "census": 18,
+   "model": 18,
+   "L3_level0": 3,
+   "L3_level1": 2,
+   "B": 1,
+   "buckets": {
+    "deep": 9,
+    "sep": 54,
+    "211": 18
+   },
+   "vexact_count": 27,
+   "center0_count": 6,
+   "interior_mismatch": 0,
+   "per_center_counts": [
+    6,
+    6,
+    6
+   ],
+   "n_centers": 3,
+   "elapsed_s": 0.0
+  },
+  {
+   "kind": "Zp",
+   "q": 3,
+   "N": 3,
+   "total": 729,
+   "census": 162,
+   "model": 162,
+   "L3_level0": 3,
+   "L3_level1": 2,
+   "B": 3,
+   "buckets": {
+    "deep": 27,
+    "sep": 486,
+    "211": 162,
+    "side-e1": 54
+   },
+   "vexact_count": 243,
+   "center0_count": 54,
+   "interior_mismatch": 0,
+   "per_center_counts": [
+    54,
+    54,
+    54
+   ],
+   "n_centers": 3,
+   "elapsed_s": 0.0
+  },
+  {
+   "kind": "Zp",
+   "q": 5,
+   "N": 2,
+   "total": 625,
+   "census": 100,
+   "model": 100,
+   "L3_level0": 5,
+   "L3_level1": 4,
+   "B": 1,
+   "buckets": {
+    "deep": 25,
+    "sep": 500,
+    "211": 100
+   },
+   "vexact_count": 125,
+   "center0_count": 20,
+   "interior_mismatch": 0,
+   "per_center_counts": [
+    20,
+    20,
+    20,
+    20,
+    20
+   ],
+   "n_centers": 5,
+   "elapsed_s": 0.0
+  },
+  {
+   "kind": "Zp",
+   "q": 5,
+   "N": 3,
+   "total": 15625,
+   "census": 2500,
+   "model": 2500,
+   "L3_level0": 5,
+   "L3_level1": 4,
+   "B": 3,
+   "buckets": {
+    "deep": 125,
+    "sep": 12500,
+    "side-e1": 500,
+    "211": 2500
+   },
+   "vexact_count": 3125,
+   "center0_count": 500,
+   "interior_mismatch": 0,
+   "per_center_counts": [
+    500,
+    500,
+    500,
+    500,
+    500
+   ],
+   "n_centers": 5,
+   "elapsed_s": 0.1
+  },
+  {
+   "kind": "Zp",
+   "q": 7,
+   "N": 2,
+   "total": 2401,
+   "census": 294,
+   "model": 294,
+   "L3_level0": 7,
+   "L3_level1": 6,
+   "B": 1,
+   "buckets": {
+    "deep": 49,
+    "sep": 2058,
+    "211": 294
+   },
+   "vexact_count": 343,
+   "center0_count": 42,
+   "interior_mismatch": 0,
+   "per_center_counts": [
+    42,
+    42,
+    42,
+    42,
+    42,
+    42,
+    42
+   ],
+   "n_centers": 7,
+   "elapsed_s": 0.0
+  },
+  {
+   "kind": "Zp",
+   "q": 7,
+   "N": 3,
+   "total": 117649,
+   "census": 14406,
+   "model": 14406,
+   "L3_level0": 7,
+   "L3_level1": 6,
+   "B": 3,
+   "buckets": {
+    "deep": 343,
+    "sep": 100842,
+    "side-e1": 2058,
+    "211": 14406
+   },
+   "vexact_count": 16807,
+   "center0_count": 2058,
+   "interior_mismatch": 0,
+   "per_center_counts": [
+    2058,
+    2058,
+    2058,
+    2058,
+    2058,
+    2058,
+    2058
+   ],
+   "n_centers": 7,
+   "elapsed_s": 0.4
+  },
+  {
+   "kind": "Fqt",
+   "q": 2,
+   "N": 2,
+   "total": 16,
+   "census": 4,
+   "model": 4,
+   "L3_level0": 2,
+   "L3_level1": 1,
+   "B": 1,
+   "buckets": {
+    "deep": 4,
+    "sep": 8,
+    "211": 4
+   },
+   "vexact_count": 8,
+   "center0_count": 2,
+   "interior_mismatch": 0,
+   "per_center_counts": [
+    2,
+    2
+   ],
+   "n_centers": 2,
+   "elapsed_s": 0.0
+  },
+  {
+   "kind": "Fqt",
+   "q": 2,
+   "N": 3,
+   "total": 64,
+   "census": 16,
+   "model": 16,
+   "L3_level0": 2,
+   "L3_level1": 1,
+   "B": 3,
+   "buckets": {
+    "deep": 8,
+    "sep": 32,
+    "side-e1": 8,
+    "211": 16
+   },
+   "vexact_count": 32,
+   "center0_count": 8,
+   "interior_mismatch": 0,
+   "per_center_counts": [
+    8,
+    8
+   ],
+   "n_centers": 2,
+   "elapsed_s": 0.0
+  },
+  {
+   "kind": "Fqt",
+   "q": 3,
+   "N": 2,
+   "total": 81,
+   "census": 18,
+   "model": 18,
+   "L3_level0": 3,
+   "L3_level1": 2,
+   "B": 1,
+   "buckets": {
+    "deep": 9,
+    "sep": 54,
+    "211": 18
+   },
+   "vexact_count": 27,
+   "center0_count": 6,
+   "interior_mismatch": 0,
+   "per_center_counts": [
+    6,
+    6,
+    6
+   ],
+   "n_centers": 3,
+   "elapsed_s": 0.0
+  },
+  {
+   "kind": "Fqt",
+   "q": 3,
+   "N": 3,
+   "total": 729,
+   "census": 162,
+   "model": 162,
+   "L3_level0": 3,
+   "L3_level1": 2,
+   "B": 3,
+   "buckets": {
+    "deep": 27,
+    "sep": 486,
+    "side-e1": 54,
+    "211": 162
+   },
+   "vexact_count": 243,
+   "center0_count": 54,
+   "interior_mismatch": 0,
+   "per_center_counts": [
+    54,
+    54,
+    54
+   ],
+   "n_centers": 3,
+   "elapsed_s": 0.0
+  },
+  {
+   "kind": "Fqt",
+   "q": 4,
+   "N": 2,
+   "total": 256,
+   "census": 48,
+   "model": 48,
+   "L3_level0": 4,
+   "L3_level1": 3,
+   "B": 1,
+   "buckets": {
+    "deep": 16,
+    "sep": 192,
+    "211": 48
+   },
+   "vexact_count": 64,
+   "center0_count": 12,
+   "interior_mismatch": 0,
+   "per_center_counts": [
+    12,
+    12,
+    12,
+    12
+   ],
+   "n_centers": 4,
+   "elapsed_s": 0.0
+  },
+  {
+   "kind": "Fqt",
+   "q": 4,
+   "N": 3,
+   "total": 4096,
+   "census": 768,
+   "model": 768,
+   "L3_level0": 4,
+   "L3_level1": 3,
+   "B": 3,
+   "buckets": {
+    "deep": 64,
+    "sep": 3072,
+    "side-e1": 192,
+    "211": 768
+   },
+   "vexact_count": 1024,
+   "center0_count": 192,
+   "interior_mismatch": 0,
+   "per_center_counts": [
+    192,
+    192,
+    192,
+    192
+   ],
+   "n_centers": 4,
+   "elapsed_s": 0.1
+  },
+  {
+   "kind": "Fqt",
+   "q": 5,
+   "N": 2,
+   "total": 625,
+   "census": 100,
+   "model": 100,
+   "L3_level0": 5,
+   "L3_level1": 4,
+   "B": 1,
+   "buckets": {
+    "deep": 25,
+    "sep": 500,
+    "211": 100
+   },
+   "vexact_count": 125,
+   "center0_count": 20,
+   "interior_mismatch": 0,
+   "per_center_counts": [
+    20,
+    20,
+    20,
+    20,
+    20
+   ],
+   "n_centers": 5,
+   "elapsed_s": 0.0
+  },
+  {
+   "kind": "Fqt",
+   "q": 5,
+   "N": 3,
+   "total": 15625,
+   "census": 2500,
+   "model": 2500,
+   "L3_level0": 5,
+   "L3_level1": 4,
+   "B": 3,
+   "buckets": {
+    "deep": 125,
+    "sep": 12500,
+    "side-e1": 500,
+    "211": 2500
+   },
+   "vexact_count": 3125,
+   "center0_count": 500,
+   "interior_mismatch": 0,
+   "per_center_counts": [
+    500,
+    500,
+    500,
+    500,
+    500
+   ],
+   "n_centers": 5,
+   "elapsed_s": 0.1
+  },
+  {
+   "kind": "Fqt",
+   "q": 7,
+   "N": 2,
+   "total": 2401,
+   "census": 294,
+   "model": 294,
+   "L3_level0": 7,
+   "L3_level1": 6,
+   "B": 1,
+   "buckets": {
+    "deep": 49,
+    "sep": 2058,
+    "211": 294
+   },
+   "vexact_count": 343,
+   "center0_count": 42,
+   "interior_mismatch": 0,
+   "per_center_counts": [
+    42,
+    42,
+    42,
+    42,
+    42,
+    42,
+    42
+   ],
+   "n_centers": 7,
+   "elapsed_s": 0.0
+  },
+  {
+   "kind": "Fqt",
+   "q": 7,
+   "N": 3,
+   "total": 117649,
+   "census": 14406,
+   "model": 14406,
+   "L3_level0": 7,
+   "L3_level1": 6,
+   "B": 3,
+   "buckets": {
+    "deep": 343,
+    "sep": 100842,
+    "side-e1": 2058,
+    "211": 14406
+   },
+   "vexact_count": 16807,
+   "center0_count": 2058,
+   "interior_mismatch": 0,
+   "per_center_counts": [
+    2058,
+    2058,
+    2058,
+    2058,
+    2058,
+    2058,
+    2058
+   ],
+   "n_centers": 7,
+   "elapsed_s": 0.6
+  },
+  {
+   "kind": "Fqt",
+   "q": 8,
+   "N": 2,
+   "total": 4096,
+   "census": 448,
+   "model": 448,
+   "L3_level0": 8,
+   "L3_level1": 7,
+   "B": 1,
+   "buckets": {
+    "deep": 64,
+    "sep": 3584,
+    "211": 448
+   },
+   "vexact_count": 512,
+   "center0_count": 56,
+   "interior_mismatch": 0,
+   "per_center_counts": [
+    56,
+    56,
+    56,
+    56,
+    56,
+    56,
+    56,
+    56
+   ],
+   "n_centers": 8,
+   "elapsed_s": 0.0
+  },
+  {
+   "kind": "Fqt",
+   "q": 8,
+   "N": 3,
+   "total": 262144,
+   "census": 28672,
+   "model": 28672,
+   "L3_level0": 8,
+   "L3_level1": 7,
+   "B": 3,
+   "buckets": {
+    "deep": 512,
+    "sep": 229376,
+    "side-e1": 3584,
+    "211": 28672
+   },
+   "vexact_count": 32768,
+   "center0_count": 3584,
+   "interior_mismatch": 0,
+   "per_center_counts": [
+    3584,
+    3584,
+    3584,
+    3584,
+    3584,
+    3584,
+    3584,
+    3584
+   ],
+   "n_centers": 8,
+   "elapsed_s": 3.9
+  },
+  {
+   "kind": "Fqt",
+   "q": 9,
+   "N": 2,
+   "total": 6561,
+   "census": 648,
+   "model": 648,
+   "L3_level0": 9,
+   "L3_level1": 8,
+   "B": 1,
+   "buckets": {
+    "deep": 81,
+    "sep": 5832,
+    "211": 648
+   },
+   "vexact_count": 729,
+   "center0_count": 72,
+   "interior_mismatch": 0,
+   "per_center_counts": [
+    72,
+    72,
+    72,
+    72,
+    72,
+    72,
+    72,
+    72,
+    72
+   ],
+   "n_centers": 9,
+   "elapsed_s": 0.2
+  },
+  {
+   "kind": "Fqt",
+   "q": 9,
+   "N": 3,
+   "total": 531441,
+   "census": 52488,
+   "model": 52488,
+   "L3_level0": 9,
+   "L3_level1": 8,
+   "B": 3,
+   "buckets": {
+    "deep": 729,
+    "sep": 472392,
+    "side-e1": 5832,
+    "211": 52488
+   },
+   "vexact_count": 59049,
+   "center0_count": 5832,
+   "interior_mismatch": 0,
+   "per_center_counts": [
+    5832,
+    5832,
+    5832,
+    5832,
+    5832,
+    5832,
+    5832,
+    5832,
+    5832
+   ],
+   "n_centers": 9,
+   "elapsed_s": 15.5
+  }
+ ],
+ "towers": {
+  "levels": [
+   {
+    "id": "C2A",
+    "level": 0,
+    "p": 2,
+    "ring": "Zp",
+    "pts": [
+     [
+      0,
+      1
+     ],
+     [
+      2,
+      0
+     ]
+    ],
+    "gam": 1,
+    "wPhi_j": 0,
+    "wild": true
+   },
+   {
+    "id": "C2A",
+    "level": 1,
+    "p": 2,
+    "ring": "Zp",
+    "pts": [
+     [
+      0,
+      5
+     ],
+     [
+      2,
+      0
+     ]
+    ],
+    "gam": 5,
+    "wPhi_j": 2,
+    "wild": true
+   },
+   {
+    "id": "C2C",
+    "level": 1,
+    "p": 3,
+    "ring": "Zp",
+    "pts": [
+     [
+      0,
+      7
+     ],
+     [
+      2,
+      0
+     ]
+    ],
+    "gam": 7,
+    "wPhi_j": 3,
+    "wild": false
+   },
+   {
+    "id": "C2E",
+    "level": 0,
+    "p": 2,
+    "ring": "Fpt",
+    "pts": [
+     [
+      0,
+      1
+     ],
+     [
+      2,
+      0
+     ]
+    ],
+    "gam": 1,
+    "wPhi_j": 0,
+    "wild": true
+   },
+   {
+    "id": "C2E",
+    "level": 1,
+    "p": 2,
+    "ring": "Fpt",
+    "pts": [
+     [
+      0,
+      5
+     ],
+     [
+      2,
+      0
+     ]
+    ],
+    "gam": 5,
+    "wPhi_j": 2,
+    "wild": true
+   },
+   {
+    "id": "C2F",
+    "level": 1,
+    "p": 5,
+    "ring": "Zp",
+    "pts": [
+     [
+      0,
+      11
+     ],
+     [
+      2,
+      0
+     ]
+    ],
+    "gam": 11,
+    "wPhi_j": 5,
+    "wild": false
+   },
+   {
+    "id": "P3A",
+    "level": 1,
+    "p": 3,
+    "ring": "Zp",
+    "pts": [
+     [
+      0,
+      7
+     ],
+     [
+      2,
+      0
+     ]
+    ],
+    "gam": 7,
+    "wPhi_j": 3,
+    "wild": false
+   },
+   {
+    "id": "P3A",
+    "level": 2,
+    "p": 3,
+    "ring": "Zp",
+    "pts": [
+     [
+      0,
+      29
+     ],
+     [
+      2,
+      0
+     ]
+    ],
+    "gam": 29,
+    "wPhi_j": 14,
+    "wild": false
+   },
+   {
+    "id": "J7A",
+    "level": 1,
+    "p": 7,
+    "ring": "Zp",
+    "pts": [
+     [
+      0,
+      15
+     ],
+     [
+      2,
+      0
+     ]
+    ],
+    "gam": 15,
+    "wPhi_j": 7,
+    "wild": false
+   },
+   {
+    "id": "P1B",
+    "level": 0,
+    "p": 2,
+    "ring": "Zp",
+    "pts": [
+     [
+      0,
+      1
+     ],
+     [
+      2,
+      0
+     ]
+    ],
+    "gam": 1,
+    "wPhi_j": 0,
+    "wild": true
+   },
+   {
+    "id": "P1B",
+    "level": 1,
+    "p": 2,
+    "ring": "Zp",
+    "pts": [
+     [
+      0,
+      5
+     ],
+     [
+      2,
+      0
+     ]
+    ],
+    "gam": 5,
+    "wPhi_j": 2,
+    "wild": true
+   }
+  ],
+  "wild_hits": 6
+ },
+ "oracle": {
+  "impl": [
+   {
+    "p": 2,
+    "N": 3,
+    "members": 8,
+    "parsed": 8,
+    "bad": 0
+   },
+   {
+    "p": 2,
+    "N": 4,
+    "members": 32,
+    "parsed": 32,
+    "bad": 0
+   },
+   {
+    "p": 3,
+    "N": 3,
+    "members": 54,
+    "parsed": 54,
+    "bad": 0
+   },
+   {
+    "p": 5,
+    "N": 3,
+    "members": 500,
+    "parsed": 500,
+    "bad": 0
+   },
+   {
+    "p": 7,
+    "N": 3,
+    "members": 2058,
+    "parsed": 2058,
+    "bad": 0
+   }
+  ],
+  "conv": [
+   {
+    "p": 3,
+    "N": 2,
+    "polys": 81,
+    "parsed": 81,
+    "bad": 0
+   },
+   {
+    "p": 5,
+    "N": 2,
+    "polys": 625,
+    "parsed": 625,
+    "bad": 0
+   }
+  ]
+ },
+ "elapsed_s": 21.4
+}

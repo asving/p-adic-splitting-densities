@@ -1,0 +1,6 @@
+W10 BATTERY VERDICT: GREEN
+census rows: 23   tower (2,1,1) levels: 11 (wild 6)   checks: 1090364
+violations: W10-PIN=0 W10-CENSUS=0 W10-RECENTER=0 W10-TOWER=0 W10-ORACLE=0
+teeth: W10-T-VEXACT=23 W10-T-CENTER0=23 W10-T-LETTER0=23 W10-T-TAMEDISC=40
+oracle: impl rows [(2, 3, 8, 0), (2, 4, 32, 0), (3, 3, 54, 0), (5, 3, 500, 0), (7, 3, 2058, 0)]   conv rows [(3, 2, 81, 0), (5, 2, 625, 0)]
+elapsed: 21.4s
