@@ -11774,3 +11774,33 @@ preliminaries c0d6d84/bca1f16/9485862). Codex window: Sat 04:22 UTC
 (~13h) — the queue is unchanged and this outage does not affect it.
 Pending revival after the wave: the J-D0 composer
 (jd0-unit-wf_e98760e6-a15.js).
+
+---
+
+## NUMBERING-LEG PRELIMINARY, PART 4 (local): THE REDUCTION — (DMULT-s) ⟺ ∂u ≡ 1 for the JC-SCAL unit 1-cochain; the remaining lemma is strictly weaker than unit-1 — 2026-08-07
+
+Let u_N ∈ K^* denote JC-SCAL(a)'s line-wise unit at line N — i.e.
+𝑅_N = u_N · 𝑅_N^{FGMN}, where 𝑅^{FGMN} is the eq-(14)-normalized operator
+(both operators send Λ_N(c) to a degree-<g_m representative of c; the
+proved clause fixes them up to this unit). THEN, in four lines:
+
+  𝑅_{N+N′}(fg) = u_{N+N′} · 𝑅^{FGMN}_{N+N′}(fg)
+              = u_{N+N′} · 𝑅^{FGMN}_N(f) · 𝑅^{FGMN}_{N′}(g)      [FGMN Cor 4.7(2),
+                                                    verified at source, line 1121]
+              = (u_{N+N′} / (u_N u_{N′})) · 𝑅_N(f) · 𝑅_{N′}(g).
+
+**So the (DMULT-s) multiplier is EXACTLY the coboundary ∂u(N, N′) =
+u_{N+N′}/(u_N u_{N′}), and (DMULT-s) holds iff ∂u ≡ 1 — i.e. iff N ↦ u_N
+is multiplicative — which is STRICTLY WEAKER than u ≡ 1.** The measured
+multiplier-exactly-1 (R1-DMULT 2,784/0; r2 dense 3,655/0) is precisely
+the statement ∂u ≡ 1 on every tested pair. Candidate proof for the unit:
+u_N is determined by the ε-correction normalization at line N, and the
+multiplicativity of the ε-system across lines is the very structure
+WM-COB organizes (the ε-defects form the displayed coboundary) — the
+unit's task is to derive ∂u ≡ 1 from WM-COB/JC-PIINV, with the fallback
+that even a direct verification on the anchor generators suffices (u is
+determined by its values on key-powers, where eq (14) pins the FGMN side
+and JC-PER pins the note's side). Hypothesis bookkeeping unchanged
+(Cor 4.7(2)'s P_α-membership; Lemma 5.13's µ-proper for the ideal form).
+**The (DMULT-s) upgrade task is now: one coboundary-triviality lemma
+with two mapped proof routes and exhaustive empirical confirmation.**
