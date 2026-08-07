@@ -7,9 +7,11 @@ OPEN: round 1 = the 2026-08-04 JA-PE1 pass (gaps-only, repaired at r1),
 round 2 = JA-PE2 (1 critical + 3 gaps + 1 minor, repaired at r2 below),
 round 3 = JA-PE3 (CLEAN; counter reached 1/2), round 4 = JA-PE4
 (0 critical + 1 gap, repaired at r3; counter reset), round 5 = JA-PE5
-(0 critical + 1 justification gap (minor), repaired at r4 below);
+(0 critical + 1 justification gap (minor), repaired at r4 below), round 6
+= JA-PE6 (0 critical + 2 justification gaps (both minor, both
+arc-accounting), repaired at r5 below);
 counter 0 CLEAN passes of the 2 consecutive required; no gate fires; next
-pass = JA-PE6 = the acceptance attempt), with sealed-runner machine
+pass = JA-PE7 = the acceptance attempt), with sealed-runner machine
 brackets** (`verification/openmath/grt_ja_checks.py`, two-commit seal).
 [JA-r2 2026-08-08 (wallclock 2026-08-06), per JA-PE2 FINDING 4: the stale
 "no acceptance arc opened" header contradicted §8's own r1 record ("round
@@ -632,16 +634,16 @@ cases · engine_ext (standing rule honored in-unit). CONSUMED BY
 weld campaign ledger at J-A. Fences: instance evidence = the §7.1 roster
 (reads ≤ 4+top, residue fields ≤ F₉ + F₈/F₂₅ via the d₀ leg, wild rows
 included); F_p[[t]] rows have no PARI leg (JA-BOX-4); acceptance arc OPEN,
-counter 0/2 CLEAN (rounds 1–5 = PE1 → r1 → PE2 → r2 → PE3 CLEAN → PE4
-0C+1G → r3 → PE5 0C+1Gm → r4; counter reset by PE4; next = PE6, the
-acceptance attempt, [r4]) — nothing here may be consumed at proof grade
-before acceptance.
+counter 0/2 CLEAN (rounds 1–6 = PE1 → r1 → PE2 → r2 → PE3 CLEAN → PE4
+0C+1G → r3 → PE5 0C+1Gm → r4 → PE6 0C+2Gm → r5; counter reset by PE4;
+next = PE7, the acceptance attempt, [r5]) — nothing here may be consumed
+at proof grade before acceptance.
 
 — J-A COMPOSER unit, campaign date 2026-08-08.
 
 ---
 
-## §8. Arc record (rounds 1–2)
+## §8. Arc record (rounds 1–6)
 
 ### r1 record (round 1 of the acceptance arc — the 2026-08-04 JA-PE1 pass)
 
@@ -770,9 +772,79 @@ nothing else touched. Grade changes: NONE. PE5's ungraded observations
 (m1)–(m3) are recorded there, not repaired here (m1: the carried
 (OPEN-2a)/W2-ID1 language is faithful at the ffa1e57 pin but W2-PE3 has
 since confirmed W2-ID1 one-directional, contained — re-quote owed at the
-fold or when W2 r3 lands; m2: standing PE4 items n1/o2 ride; m3: the
+fold or when W2 r3 lands **[JA-r5 2026-08-08 (wallclock 2026-08-07), per
+JA-PE6 FINDING 2: this deferral rode a FIRED trigger — W2 r3 (79d1d9c,
+09:31:14) had landed 15 minutes BEFORE r4 (debf99d, 09:46:49), and the
+r4-dispatching commit (a48c22d, 09:44) presupposes the landing; the owed
+re-quote, executable at write time, is executed here as-of
+[W2 @ 94534df] (the supplier's HEAD at this repair — W2 r4 has since
+landed too): the supplier's W2-C3 claims-table row now carries, on the
+exact (OPEN-2a)/W2-ID1 clause this note's clause 8 carries, the [r3]
+bracket "W2-ID1/(OPEN-2a) carry the FORWARD direction only (recorded
+ξ = 1 ⟹ byte-equal, so nothing byte-RED below the first recorded twist —
+all the proved scope needs); the converse is unproved at every m, PE3's
+counter-instance recorded at §5.2", and §6.3(d)'s (OPEN-2a) carry item
+itself is re-scoped [r4, PE4-P1] to "the FORWARD direction of the
+recorded-ξ/byte-divergence identification at m ≥ 2 (recorded ξ = 1 ⟹
+byte-equal — all the proved scope needs), proved at m = 1 (W2-ID1); the
+CONVERSE (recorded ξ ≠ 1 ⟹ byte-RED) is UNPROVED at every m, PE3's
+counter-instance recorded at §5.2". Clause 8's
+carried "(OPEN-2a) … proved only at m = 1 (W2-ID1)" is henceforth read
+with that one-direction scoping. Blast radius nil, PE6-verified three
+ways: the blanket as-of pin covers the consumption; W-2 §6.3 is
+byte-identical between ffa1e57 and 79d1d9c (the later 94534df motion
+being this very forward-only scoping — the weakening direction); no JA
+derivation rides the converse.]**; m2: standing PE4 items n1/o2 ride; m3: the
 blueprint/completion-tree cites remain commit-unpinned, motion-free
 suppliers). Runner + artifacts BYTE-FROZEN. **Arc: rounds 1–5 complete
 (PE1 → r1 → PE2 → r2 → PE3 CLEAN → PE4 0C+1G → r3 → PE5 0C+1Gm → r4);
 counter 0/2 CLEAN (reset by PE4); next pass = JA-PE6 = the acceptance
 attempt.**
+
+### r5 record (round 6 of the acceptance arc — JA-PE6, + this repair)
+
+**JA-PE6 (fresh hostile Fable context; report `GRTJA_passPE6_report.md`,
+commit 8b2fbed; the acceptance attempt at 0/2 post-r4): NOT CLEAN — 0
+critical, 2 JUSTIFICATION GAPS (both minor, both arc-accounting), 0
+minor; the counter stays 0/2.** PE6's machine leg re-ran bit-identical
+(exit 0, 17 families, 10,311 samples, 0 violations, boundary 16, bpref
+26; seals 5972d412/0d6d0522/13ab52ab intact at pins and worktree; every
+§7.1 census recounted exact from the committed JSON); the r4 diff was
+verified faithful at all three edit sites with every bracket fact exact
+against git and the PE5 report; all four theorem displays were verified
+statement-level TRUE at HEAD with their fences; and — the pass's fresh
+route, unused by PE1–PE5 — the ENTIRE §3/§4 integer exponent system was
+PROVED as GENERAL ∀-theorems over ℤ by the Lean kernel (19 declarations,
+`lake env lean` exit 0, zero `sorry`: the master lemma both directions,
+W2-L0 integrality, least-abscissa, the JA-EPS exponent, the carry clause
+with its biconditional, W2-L2 covariance, the JA-RES per-slot exponent,
+both orbit shifts, the conjugation split, A = 0 ⟺ e = 1, and the
+(2,3,1) ⟹ u = −1 counter-instance), reaching past interpolation
+(mod/min content is not polynomial) and past exhaustion (unbounded
+quantifiers). THE GAPS: (FINDING 1) the §8 heading still read "(rounds
+1–2)" against the section's own rounds-1–5 contents — stale since r3,
+survived PE5's sweep and two repairs; (FINDING 2) the r4 record's m1
+clause repeated the deferral "re-quote owed at the fold or when W2 r3
+lands" although W2 r3 (79d1d9c, 09:31:14) had landed 15 minutes before
+r4 (debf99d, 09:46:49) — a deferral riding a FIRED trigger, PE5
+FINDING 1's own species; blast radius nil (as-of pin; W-2 §6.3
+byte-identical at ffa1e57 vs 79d1d9c; no JA derivation rides the
+converse). **Repaired in place at the two sites** — the §8 heading's
+range extended to the true rounds 1–6 (this record included; the range
+is a live surface, owed extension at every future round), and the dated
+[JA-r5] bracket at the r4 record's m1 clause executing the owed
+one-directional re-quote of the supplier's W2-C3 row as-of
+[W2 @ 94534df] (the supplier's HEAD at this repair, post-W2-r4).
+Housekeeping (this commit): PE6's Lean leg was rescued from /tmp into
+`verification/openmath/ja_pe6_lean_leg.lean` at orchestrator commit
+9dfd8fc (md5 `52a81e63` preserved) — the campaign's FIRST kernel-checked
+leg, a future Lean-campaign seed. Grade changes: NONE. PE6's ungraded
+observations (p1)–(p3) are recorded there, not repaired here (p1: §7.3's
+short-form [rN] bracket, r2-precedent convention; p2: the
+blueprint/completion-tree cites remain commit-unpinned, motion-free
+suppliers — PE5 m3 standing; p3: §5's GRB dated-REV cite rides — PE4 n1
+standing); p4 (the Lean leg available for sealing) is EXECUTED by the
+rescue above. Runner + artifacts BYTE-FROZEN. **Arc: rounds 1–6 complete
+(PE1 → r1 → PE2 → r2 → PE3 CLEAN → PE4 0C+1G → r3 → PE5 0C+1Gm → r4 →
+PE6 0C+2Gm → r5); counter 0/2 CLEAN (reset by PE4); next pass = JA-PE7 =
+the acceptance attempt.**
