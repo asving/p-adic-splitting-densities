@@ -11759,3 +11759,18 @@ CITED+PROVED, JC-COB's sharp form inherits. Empirical status: unit
 exactly 1 on every pair ever measured (R1-DMULT 2,784/0; r2 dense
 3,655/0; PE6's 6-row leg). **Queued as the completion of the small unit
 — one lemma, examples already in hand.**
+
+---
+
+## OUTAGE LOG (watchdog protocol step 3) — 2026-08-07 ~15:30 UTC
+
+The triple acceptance wave (JA PE7 + WM PE9 + W2 PE6, script
+ja-pe7-wm-pe9-w2-pe6-wf_644004dd-292.js) has died FOUR consecutive times
+to 529 saturation (three at 0 tool uses; the fourth at 1 tool use —
+capacity flickering but unstable). Per protocol: standing down; the next
+watchdog firing (hourly at :23) performs the next single resume. The
+storm-window local work is complete (the fold 5054d69, the numbering
+preliminaries c0d6d84/bca1f16/9485862). Codex window: Sat 04:22 UTC
+(~13h) — the queue is unchanged and this outage does not affect it.
+Pending revival after the wave: the J-D0 composer
+(jd0-unit-wf_e98760e6-a15.js).
