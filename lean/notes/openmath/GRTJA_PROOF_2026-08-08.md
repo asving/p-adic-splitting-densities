@@ -4,14 +4,24 @@
 grade; per `docs/in-progress/GRT_WELD_BLUEPRINT_2026-08-08.md` §S2.1/S3.1
 rows W-0/W-1/W-4). **Genre: PROOF NOTE at attempt grade (acceptance ARC
 OPEN: round 1 = the 2026-08-04 JA-PE1 pass (gaps-only, repaired at r1),
-round 2 = JA-PE2 (1 critical + 3 gaps + 1 minor, repaired at r2 below);
+round 2 = JA-PE2 (1 critical + 3 gaps + 1 minor, repaired at r2 below),
+round 3 = JA-PE3 (CLEAN; counter reached 1/2), round 4 = JA-PE4
+(0 critical + 1 gap, repaired at r3; counter reset), round 5 = JA-PE5
+(0 critical + 1 justification gap (minor), repaired at r4 below);
 counter 0 CLEAN passes of the 2 consecutive required; no gate fires; next
-pass = JA-PE3), with sealed-runner machine brackets**
-(`verification/openmath/grt_ja_checks.py`, two-commit seal). [JA-r2
-2026-08-08 (wallclock 2026-08-06), per JA-PE2 FINDING 4: the stale "no
-acceptance arc opened" header contradicted §8's own r1 record ("round 1 of
-the acceptance arc") at HEAD; the counter is normalized to the 0/2-CLEAN
-convention at every surface (§8's "0/1" denominator wobble included).]
+pass = JA-PE6 = the acceptance attempt), with sealed-runner machine
+brackets** (`verification/openmath/grt_ja_checks.py`, two-commit seal).
+[JA-r2 2026-08-08 (wallclock 2026-08-06), per JA-PE2 FINDING 4: the stale
+"no acceptance arc opened" header contradicted §8's own r1 record ("round
+1 of the acceptance arc") at HEAD; the counter is normalized to the
+0/2-CLEAN convention at every surface (§8's "0/1" denominator wobble
+included).] [JA-r4 2026-08-08 (wallclock 2026-08-07), per JA-PE5
+FINDING 1: the r3 repair left this genre line reading "next pass =
+JA-PE3" (and §7.3 "next = PE3") against §8's own r3 record ("rounds 1–4
+complete … next pass = JA-PE5") at HEAD — PE4's n3 staleness warrant
+("no repair round since") lapsed when r3 edited the note; the r2
+FINDING-4 normalization re-applied at both live surfaces (round
+inventory extended through PE5, next pass named).]
 
 **Grade cap (read first).** J-A-PIN (§2) is PROVED at attempt grade (its legs
 are the print's own definitions plus one one-line argument), with its lift
@@ -622,8 +632,10 @@ cases · engine_ext (standing rule honored in-unit). CONSUMED BY
 weld campaign ledger at J-A. Fences: instance evidence = the §7.1 roster
 (reads ≤ 4+top, residue fields ≤ F₉ + F₈/F₂₅ via the d₀ leg, wild rows
 included); F_p[[t]] rows have no PARI leg (JA-BOX-4); acceptance arc OPEN,
-counter 0/2 CLEAN (rounds 1–2 = PE1/PE2, both repaired; next = PE3, [r2])
-— nothing here may be consumed at proof grade before acceptance.
+counter 0/2 CLEAN (rounds 1–5 = PE1 → r1 → PE2 → r2 → PE3 CLEAN → PE4
+0C+1G → r3 → PE5 0C+1Gm → r4; counter reset by PE4; next = PE6, the
+acceptance attempt, [r4]) — nothing here may be consumed at proof grade
+before acceptance.
 
 — J-A COMPOSER unit, campaign date 2026-08-08.
 
@@ -724,3 +736,43 @@ consumed the retracted strength; TW-INST is JA's own instance evidence,
 unaffected). Runner + artifacts BYTE-FROZEN. **Arc: rounds 1–4 complete
 (PE1 → r1 → PE2 → r2 → PE3 CLEAN → PE4 0C+1G → r3); counter 0/2 CLEAN
 (reset by PE4); next pass = JA-PE5 = the acceptance attempt.**
+
+### r4 record (round 5 of the acceptance arc — JA-PE5, + this repair)
+
+**JA-PE5 (fresh hostile Fable context; report `GRTJA_passPE5_report.md`,
+commit 6a216b9; the acceptance attempt at 0/2 post-r3): NOT CLEAN — 0
+critical, 1 JUSTIFICATION GAP (minor), 0 minor; the counter stays 0/2.**
+PE5's machine leg re-ran bit-identical (exit 0, 17 families, 10,311
+samples, 0 violations, boundary 16, bpref 26; seals
+5972d412/0d6d0522/13ab52ab intact at pins and worktree); the r3 diff was
+verified faithful at all six edit sites, with the new W-2 grade text,
+machine gloss, and (a)–(d) carry-list byte-checked against the supplier
+at the ffa1e57 pin; the pin system was swept COMPLETE for live-arc edges
+(W2 blanket @ ffa1e57, [ILN]† @ ced7dbb, JB @ 4c4ee56, all verified at
+source and motion-free since); and the entire §3/§4 exponent system was
+re-derived from a single coset master lemma by a route unused by
+PE1–PE4 — every integrality warrant derived, the W2-L2 covariance
+display derived from scratch — confirmed by the arc's first engine-free,
+pool-free probe (358,127 checks, 0 violations, incl. negative-k shifts
+no sealed family exercises; 1,194 u < 0 instances = the JA-GRID(a)
+proviso non-vacuous). THE GAP (FINDING 1): the r3 repair left the two
+live arc surfaces contradicting the arc record it wrote — the header
+still read "next pass = JA-PE3" and §7.3 "next = PE3" while §8's r3
+record (same commit) stated "rounds 1–4 complete … next pass = JA-PE5";
+PE4's n3 staleness warrant was expressly conditioned on "no repair round
+since" and lapsed when r3 edited the note. NOT critical: no mathematical
+content moves; the counter VALUE 0/2 was true at every surface.
+**Repaired in place in the dated [JA-r4 2026-08-08 (wallclock
+2026-08-07)] brackets above at the two surfaces** — the header genre
+line and the §7.3 fence re-normalized to the r2 FINDING-4 convention
+(round inventory through PE5, counter 0/2, next pass named). Note-only;
+nothing else touched. Grade changes: NONE. PE5's ungraded observations
+(m1)–(m3) are recorded there, not repaired here (m1: the carried
+(OPEN-2a)/W2-ID1 language is faithful at the ffa1e57 pin but W2-PE3 has
+since confirmed W2-ID1 one-directional, contained — re-quote owed at the
+fold or when W2 r3 lands; m2: standing PE4 items n1/o2 ride; m3: the
+blueprint/completion-tree cites remain commit-unpinned, motion-free
+suppliers). Runner + artifacts BYTE-FROZEN. **Arc: rounds 1–5 complete
+(PE1 → r1 → PE2 → r2 → PE3 CLEAN → PE4 0C+1G → r3 → PE5 0C+1Gm → r4);
+counter 0/2 CLEAN (reset by PE4); next pass = JA-PE6 = the acceptance
+attempt.**
