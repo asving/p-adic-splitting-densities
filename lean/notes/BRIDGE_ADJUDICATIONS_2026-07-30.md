@@ -11916,3 +11916,69 @@ Bonus from the wave resume: the expo unit's cache replay re-verified
 the published site page line-by-line against all six acceptance
 records + JD0 + HIGHLEVEL_INTERPRETATION — every claim ✓, no changes
 (verification ledger in the wave output).
+
+---
+
+## FOLD-CARRY ANNEXES APPLIED (FOLD-ANNEX unit, append-only per the GRTJC e3535d5 template): the six accepted weld tails swept — 10 dated annex entries across 5 notes; standing items listed — 2026-08-07
+
+Every closure verified against git/ledger at write time (as-of pins, no
+memory). Annexes applied, note → items:
+
+- **GRTJA → 4** (the acceptance record's FOLD-CARRY INVENTORY, all
+  closed): FC-1 the §1 "ITERLAWN_PROOF motion-free since" clause —
+  supplier moved twice since ced7dbb (5054d69 rider-rewrite + adc6cf3
+  supplement), verified pure-append by `git diff ced7dbb HEAD` (33
+  insertions / 0 deletions), S0.1/S0.2 byte-identical, FAVORABLE; FC-2
+  the §5/"(0/2 hostile passes)" supplier billings — W2 adc6cf3, JB+JC
+  83f47f4, WM 66b3498 all since ACCEPTED 2/2, FAVORABLE; FC-3 the
+  grade-cap W-2 consumption — accepted supplier at its fenced scope,
+  FAVORABLE; FC-4 the §3.2 "cure owed to that note's own arc" pointer —
+  the W-2 arc CLOSED with tex-1213–1218 standing at the accepted W-2
+  §3.1 (verified at HEAD), pointer superseded (any cure = a W-2 annex
+  item now), NEUTRAL-FAVORABLE. (s3 needs no annex — already recorded in
+  the acceptance record; s4 stands, below.)
+- **WELDMASTER → 2**: O-1 the (M4) W2-C3 grade-split carry — the dated
+  annotation W2's r1 record left orchestrator-owed is EXECUTED (supplier
+  accepted adc6cf3; W2-C3 proved-to-first-twist 38/44 / measured-above,
+  W2-OPEN-2/OPEN-2a the accepted BOX; W2's record names the M4 face);
+  O-2 the grown conservative understatements — the PE4/PE6-catalogued
+  sites (grade-cap sentence, S4 stack, WM1/WM6 cells, "four hostile ARCS
+  remain", dagger parentheticals) all superseded FAVORABLY (all four
+  junction arcs closed at 2/2; all six weld notes accepted 17d2a32),
+  plus S4's "(DMULT-s) stays MEASURED-only" superseded by DULEMMA
+  THEOREM DU (048cf6d/f819f26, adjudicated e3535d5).
+- **LIFTCORNER → 2**: FC-1 the W-2 cap ("GRTW2 (0/2, arc open)") —
+  supplier ACCEPTED adc6cf3, NR-1's discharge now rides accepted
+  suppliers throughout, ξ = 1 core chain W-2-free as displayed,
+  FAVORABLE; FC-2 the S5 rider-rewrite license — DISCHARGED, executed
+  5054d69 (8 sites governed) + supplemented adc6cf3, FAVORABLE.
+- **GRTJB → 1**: the record's "W-2/J-A at their own arc grades" — both
+  since ACCEPTED (adc6cf3, 17d2a32); E-1/E-2's governing HEADs now read
+  accepted frozen texts; NO-LEG frontier rows 4/5/12/22 unchanged,
+  FAVORABLE.
+- **GRTW2 → 1**: the r1 record's "Fold implications recorded for the
+  orchestrator" pair — BOTH discharged (JB row-15 at 5054d69 E-2; WM
+  (M4) at this fold's WM annex O-1), NEUTRAL bookkeeping.
+- **GRTJC → 0**: its fold annex (the DMULT-s upgrade) was already
+  applied at e3535d5 per the note's §9; nothing further catalogued
+  closable.
+
+STANDING (catalogued but NOT closable as pure status-updates — no annex
+written):
+
+1. **GRTJC FGMN numbering re-verification** ("numbering re-verification
+   owed"): Thm 4.2 / Thm 4.8 / Cor 2.7 verified correct at the local
+   print (the 2026-08-07 numbering-leg preliminaries), but Cor 4.9 is
+   not yet re-read at the print and the leg is orchestrator-local,
+   single-context — not annex-grade yet.
+2. **W2-OPEN-2/OPEN-2a**: the weld's one open lemma, accepted AS A BOX —
+   needs new mathematics (the MacLane–Vaquié probe needs external
+   literature; Codex queue).
+3. **GRTJA s4 trio** (PE4-n1 §5 GRB dated-REV cite; PE6-p1 §7.3
+   short-form [rN] bracket convention; PE5-m3 blueprint/completion-tree
+   cites commit-unpinned): standing nil-weight observations — nothing
+   has changed status; suppliers motion-free.
+4. **WM PE10 observations 3–4** (the window_reps sorted-list note = the
+   verifier's own disclosed harness bug, no WM text implicated; the
+   H¹ = 0 uniqueness by-product display offer = new composition work):
+   not status-updates.

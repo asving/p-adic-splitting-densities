@@ -886,3 +886,58 @@ grade-cap attempt-grade billing (W-2 cap now an accepted supplier);
 §3.2's "cure owed to that note's own arc" (the W-2 arc closed with
 tex-1213–1218 standing). s3: the converse-escape fence now positively
 witnessed off-roster. s4: standing PE4-n1/PE6-p1/PE5-m3.
+
+---
+
+## ANNEX (dated appends; the frozen body — md5 cba309ce, byte-frozen since f131c53 — is not edited)
+
+> **[ANNEX 2026-08-08, orchestrator, fold-carry closure FC-1 — the §1 ILN
+motion clause.]** The frozen §1 pin bracket closes "…[ILN]† consumed as-of
+ced7dbb — the as-of pin owed since PE2 o2 / PE3 o3, executed with the
+FINDING 1 pin sweep; **ITERLAWN_PROOF motion-free since**". The supplier
+is no longer motion-free: `ITERLAWN_PROOF_2026-08-08.md` has moved exactly
+twice since ced7dbb — the 5054d69 NR-1 rider-rewrite (LIFTCORNER's
+acceptance license executed as an append-only fold annex) and the adc6cf3
+rider supplement (the W-2 cap = an accepted supplier) — re-verified at
+this fold by `git diff ced7dbb HEAD`: 33 insertions, 0 deletions, both
+dated appends after [ILN]'s acceptance record; S0.1/S0.2 (everything this
+note consumes) byte-identical ced7dbb → HEAD (PE8's check, standing).
+Direction: FAVORABLE (pure-append supplier motion; the as-of pin was and
+remains exact).
+
+> **[ANNEX 2026-08-08, FC-2 — the supplier arc-grade billings.]** The
+frozen §5 entry bills "**W-2 clause 1/2/3** (`GRTW2_PROOF_2026-08-08.md`):
+consumed AT ATTEMPT GRADE (0/2 hostile passes) with its full
+conditionality ledger", and the same arc-grade billing rides at §2
+clause 8, the §7.2 JA-PIN-cl.-8 and §4-transport rows (as-of
+[W2 @ ffa1e57]), and the [JB]-pinned spans (4c4ee56). Every supplier this
+note bills at an open arc grade has since been ACCEPTED at 2/2: GRTW2 at
+adc6cf3 (2026-08-07; W2-C3 at its honest proved-to-first-twist (38/44) /
+measured-above grade, W2-OPEN-2/OPEN-2a the accepted BOX), GRTJB + GRTJC
+at 83f47f4 (2026-08-06), WELDMASTER at 66b3498 (2026-08-07). The as-of
+pins protect every quote; the suppliers' accepted HEADs govern their
+grades. Direction: FAVORABLE ("(0/2 hostile passes)" is now a conservative
+understatement everywhere it appears; nothing this note consumes
+weakened).
+
+> **[ANNEX 2026-08-08, FC-3 — the grade-cap billing.]** The frozen header
+reads "**Grade cap (read first).** J-A-PIN (§2) is PROVED at attempt grade
+…, with its lift clause consumed from W-2 clause 1 AT ATTEMPT GRADE and
+W-2's conditionality carried verbatim." The cap's supplier is now ACCEPTED
+(GRTW2 2/2 at adc6cf3): the lift-clause consumption rides an accepted
+supplier at its fenced scope (the supplier's acceptance-record CONSEQUENCE
+names exactly this consumer species), and this note itself stands ACCEPTED
+at 2/2 (17d2a32). Direction: FAVORABLE.
+
+> **[ANNEX 2026-08-08, FC-4 — the §3.2 cure pointer.]** The frozen [JA-r1]
+bracket at §3.2 reads "The same inherited 1213–1218 range stands in W-2
+§3.1 — cure owed to that note's own arc." That arc has since CLOSED
+(GRTW2 ACCEPTED 2/2 at adc6cf3) with the tex-1213–1218 cite STANDING at
+the accepted W-2 §3.1 (the HR-REC head, verified at HEAD this fold), so
+the pointer is superseded: the accepted W-2 is under the dated-annex
+discipline, and the cure, if ever executed, is a W-2 annex item — no
+longer "that note's own arc". Nothing rides it: this note's own display
+was cured in place by this same [JA-r1] bracket (the correct
+child-prescription anchor is tex 1200–1201), and the slip is anchor-only
+(picture-environment line numbers), semantically nil at both notes.
+Direction: NEUTRAL-FAVORABLE (pointer superseded; no consumer affected).

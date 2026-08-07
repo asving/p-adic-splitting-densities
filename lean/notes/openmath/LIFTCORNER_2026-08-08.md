@@ -1451,3 +1451,31 @@ modulo the W-2 cap. The S5 rider-rewrite display (what [ILN]'s NR-1
 entry becomes) is NOW LICENSED for execution at the next ledger fold.
 Machine record: sealed runner 25,409/0 (md5 ccb4351c… byte-frozen
 dafc0b5 → HEAD); children generator + A7 752/5,336/0.
+
+---
+
+## ANNEX (dated appends; the frozen body is not edited)
+
+> **[ANNEX 2026-08-08, orchestrator, fold-carry closure FC-1 — the W-2
+cap.]** The acceptance record above reads "the shift-descent consumption
+of GRTW2 (0/2, arc open) caps the discharge grade" and "NR-1's discharge
+is hereby at ACCEPTED grade modulo the W-2 cap". The cap's supplier has
+since been ACCEPTED at 2/2 — GRTW2 at adc6cf3 (2026-08-07), with
+W2-OPEN-2/OPEN-2a accepted AS A BOX (the weld's one fenced open lemma) —
+and the supplier's acceptance record names this consumer: "the accepted
+LIFTCORNER's shift-descent consumption … now ride[s] an ACCEPTED supplier
+at its fenced scope." Wherever this note bills GRTW2 at "0/2 / arc open"
+(the record above; the grade box's W-2 cap), read: capped by an ACCEPTED
+supplier at its fenced scope — NR-1's discharge stands at ACCEPTED grade
+riding accepted suppliers throughout, and the ξ = 1 core chain stays
+W-2-free as displayed. Direction: FAVORABLE.
+
+> **[ANNEX 2026-08-08, FC-2 — the rider-rewrite license.]** The record's
+clause "The S5 rider-rewrite display (what [ILN]'s NR-1 entry becomes) is
+NOW LICENSED for execution at the next ledger fold" is DISCHARGED:
+executed at 5054d69 (2026-08-07) as an append-only fold annex on
+`ITERLAWN_PROOF_2026-08-08.md` (the S5 display transcribed verbatim; all
+8 occurrence sites enumerated and governed; grade = ACCEPTED mod the W-2
+cap), then supplemented at adc6cf3 after GRTW2's acceptance (the cap = an
+accepted supplier). Direction: FAVORABLE (license executed; nothing
+further owed on this item).

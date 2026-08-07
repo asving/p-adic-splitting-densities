@@ -3140,3 +3140,22 @@ pin-protected (as-of quotes). Wherever this note cites W2-C3's grade,
 the supplier's current form (GRTW2 at HEAD, ≥ 94534df: forward-direction
 W2-ID1 + OPEN-2a) governs. No identity or count in this note consumes
 the re-graded clause beyond its still-valid instance evidence.
+
+---
+
+## ANNEX (dated append; the frozen body is not edited)
+
+> **[ANNEX 2026-08-08, orchestrator, fold-carry closure — the supplier
+arc grades in the acceptance record.]** The record above accepts this note
+"riding [RMG] accepted, W-2/J-A at their own arc grades". Both arc-graded
+suppliers have since been ACCEPTED at 2/2: GRTW2 at adc6cf3 (2026-08-07;
+W2-C3 at its honest proved-to-first-twist (38/44) / measured-above grade,
+W2-OPEN-2/OPEN-2a the accepted BOX — the supplier's acceptance record
+names "JB's W2-C1 restriction" as now riding an ACCEPTED supplier at its
+fenced scope) and GRTJA at 17d2a32 (2026-08-07; body byte-frozen, md5
+cba309ce @ f131c53). Consequently E-1's governing form ("the
+root-inclusive form of GRTJA at HEAD (≥ 5d95805)") and E-2's ("GRTW2 at
+HEAD, ≥ 94534df") now read ACCEPTED suppliers' frozen texts. The
+four-member NO-LEG frontier (rows 4/5/12/22) is UNCHANGED — those stay
+the note's honest open cells. Direction: FAVORABLE (supplier grades only;
+no identity, fence, or census moves).

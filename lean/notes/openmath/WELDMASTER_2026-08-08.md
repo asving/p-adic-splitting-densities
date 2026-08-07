@@ -1038,3 +1038,55 @@ WM-CLASS at display grade, PERIM-μ with its three specializations — the
 weld's consolidation, at its displayed conditionality (W2-OPEN-2/OPEN-2a
 carried as the accepted W-2's fenced box; the O-1/fold understatements
 catalogued conservative).
+
+---
+
+## ANNEX (dated appends; the frozen body is not edited)
+
+> **[ANNEX 2026-08-08, orchestrator, fold-carry closure O-1 — the (M4)
+W2-C3 annotation owed since W2 r1.]** The frozen (M4) face row cites
+"**W2-C3** (ψ-transport: strict representative at every level of the
+transported chain, no weight/support splits)" under its as-of pin
+[W2]@5463f2a, and the dagger line bills "**[W2]†** =
+`GRTW2_PROOF_2026-08-08.md` (attempt 0/2)". Per the annotation GRTW2's own
+r1 record left owed to the orchestrator ("at the next ledger fold a dated
+annotation pointing (M4)'s W2-C3 cite at the re-scoped grade
+(proved-to-first-twist / measured-above / W2-OPEN-2) is owed"): wherever
+this note cites W2-C3, the supplier's accepted form governs — GRTW2
+ACCEPTED 2/2 at adc6cf3 (2026-08-07), W2-C3 at its honest grade
+(proved-to-first-twist, 38/44 = 36 derived + 2 instance-warranted;
+MEASURED above), riding **W2-OPEN-2/OPEN-2a as the accepted supplier's
+fenced OPEN box** (accepted AS A BOX, not as a theorem). The pin makes the
+frozen row drift-proof and PE1 adjudicated that the face carries the
+conditionality BY CITATION — nothing is falsified; the supplier's
+acceptance record names this face ("WM's M4 face … now ride[s] an ACCEPTED
+supplier at its fenced scope"). The parallel GRTJB §0M row-15 half of the
+same owed pair was executed at 5054d69 (JB erratum E-2). Direction:
+FAVORABLE on the supplier's status; the grade split itself is a narrowing
+already carried by citation, hereby annotated.
+
+> **[ANNEX 2026-08-08, O-2 — the grown conservative understatements.]**
+The frozen body's supplier billings all understate, in the conservative
+direction, statuses that have since improved. The catalogued sites (PE4's
+four, fold-owed; PE6's stale dagger parentheticals; PE10 observation 2):
+the grade-cap sentence ("Every clause below rides the four junction notes
+at ATTEMPT grade 0/2 each, with their full conditionality ledgers carried
+verbatim; [ILN]† is the sole ACCEPTED engine input"); the S4 one-line
+stack ("W-2/J-A/J-B/J-C at ATTEMPT 0/2 each … ⟹ this note, own arc 0/2");
+the WM1 cell ("PROVED-BY-CITATION at the cited grades (0/2 each)") with
+the WM3/WM6 companion cells; the S6 dependency line ("WELD-M ⟵ all four
+junction notes at 0/2 (the grade cap)"; "the four hostile ARCS remain the
+campaign's gating work"); and the dagger-line parentheticals ("(attempt
+0/2)", "(post-r1, 0/2)", the [JB]†/[JC]† as-of 0/2 labels). As-of truth:
+ALL FOUR junction notes are ACCEPTED at 2/2 — GRTW2 adc6cf3, GRTJA
+17d2a32 (freeze cba309ce @ f131c53), GRTJB + GRTJC 83f47f4 — as is this
+note (66b3498) and the full six-note weld (17d2a32, 2026-08-07); the four
+hostile arcs have all CLOSED. Additionally, the S4 clause "(DMULT-s) stays
+MEASURED-only" is superseded FAVORABLY: (DMULT-s) is PROVED-conditional on
+the measured perimeter ([ILN]† scored stratum, m ≥ 1, e_m ≥ 2) by
+`DULEMMA_PROOF_2026-08-08.md` THEOREM DU (∂u ≡ 1; two-commit seal
+048cf6d/f819f26, adjudicated e3535d5, riding [ILN]†+GRTJC+WELDMASTER as
+accepted plus DU-A/DU-B at 0/2; the e_m = 1 row stays measured,
+off-stratum pairs open). Every quoted billing was true when frozen and is
+now strictly conservative. Direction: FAVORABLE at every site; no display
+moves.
