@@ -3162,3 +3162,5 @@ multiplicativity + χ-from-S (queued synthesis targets).**
 **2026-08-07 LATE: DULEMMA PROVED (∂u ≡ 1 on the measured perimeter; LEMMA DU-A a_γ = E(γ)) — (DMULT-s) upgraded MEASURED → PROVED-conditional; GRTJC annex applied. J-D block: W-10 done, W-11 next.**
 
 **2026-08-07 LATE: ★★ W-11(n=2) PROVED — seven-family menu, hExhaust PROVED at n=2 (drainage exactly q^(−N)), R_τ ∈ ℚ(q) tie at the slice (q/(2(q+1)), q/(2(q+1)), 1/(q+1)) both characteristics incl. wild. First proved all-primes uniformity slice + first proved drainage statement. J-D block → W-12. ★★**
+
+**2026-08-07 LATE: OPEN-2a NARROWED to the Σ-LAW (one evaluator-ledger lemma; GRTW2 annex applied) · W-11 PE1: all findings display-level, theorem survives (r1 owed) · K2RES sealed (Q2's two residue legs = ONE genre).**

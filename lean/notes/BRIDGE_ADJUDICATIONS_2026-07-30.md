@@ -12073,3 +12073,45 @@ load-bearing enough to verify despite intermediate grade).
 
 (Also: fold-annex idempotency re-run recorded at e37cb51 — 0 new
 annexes, sweep re-verified at HEAD.)
+
+---
+
+## HARVEST x3 + 2 CASUALTIES: OPEN-2a NARROWED TO THE Σ-LAW (annex applied) · W-11 PE1 = 2C+2G+2m ALL DISPLAY-LEVEL (clauses survive independent re-derivation; r1 owed) · K2RES sealed rich, verdict redo owed · W12 partial archived — 2026-08-07
+
+**OPEN-2 ATTACK ADJUDICATED**: the mechanism is found — byte-shared
+lower keys force the interior twist to a K₁-automorphism σ′, and the
+junction gauge discrepancy is the σ′-coboundary δ_j = ρ_j·σ′(ρ_j)^{∓1};
+a coboundary equals its argument only at ρ = 1, so a strict residual
+cannot mask byte divergence. THEOREM OPEN-2a-RED (unconditional,
+attempt grade): strict ⟺ defeat-system infeasibility. THEOREM
+OPEN-2a-Σ (conditional): given the Σ-LAW, the m ≥ 2 forward direction
+follows. THE BOX IS NARROWED TO ONE LEMMA: the Σ-LAW at proof grade
+(level-m generalization of proved W2-L3; no byte quantifier). Battery
+8,141 samples / 863 junction rows, all 13 prereg families 0
+violations, teeth 2/2; ONE SEALED PREDICTION FAILED AND DISCLOSED
+(OA-SPUR m≥2; cured by labeled EXPLORATORY-EXT, 16 m=2 spurious
+witnesses constructed). Seal bd82766, verdict 4a970aa. GRTW2 dated
+annex applied at THIS commit (verbatim §7 text). QUEUED NEXT: the
+Σ-LAW unit (one evaluator-ledger identity closes W2-OPEN-2's forward
+direction at every m).
+
+**W-11 PE1 ADJUDICATED (fbf0a02): NOT CLEAN, 2 CRITICAL + 2 GAPS + 2
+MINOR — every finding display/side-claim level, ZERO count/box/machine
+impact; the verifier re-derived the full classification + all counts
+independently and ran a fresh ~345k-poly route (own arithmetic, 7
+census rows, 0 mismatches); capstone tie verified against the Lean
+gate (OMCountV2.lean:646). F1 S2.4 exhaustiveness display off by
+exactly q per leg (conclusion re-proved TRUE); F2 disc=0 side-claim
+false in equal char 2 (blast radius zero); F3 S4.2 ·q double-apply;
+F4 S5 drops the "mixed" fence; F5/F6 minor. r1 REPAIR OWED (all six),
+minimality contract applies.**
+
+**CASUALTIES (529 wave, patchy — two died while two completed):
+W-12 composer down (untracked partial archived to /tmp, clean tree);
+K2RES down POST-SEAL (seal caa7c50 COMMITTED and rich: K2-L13..L17 +
+K2-THM-C at attempt grade, the two Q2 residue legs proved ONE genre,
+promotion-carrying cells found in vivo; battery RAN but artifacts
+died uncommitted — archived to /tmp, verdict redo from the committed
+seal owed). Redo order: W-11 r1 + K2RES verdict NOW (parallel); W-12
+redo AFTER r1 lands (its consumed sections S2.4/S4.2 are exactly the
+repair surface).**
