@@ -11717,3 +11717,24 @@ P_α-membership + Lemma 5.13's µ-proper hypotheses. **Queued as a small
 unit (Codex no longer required for this leg — the print is local).**
 Storm status: solo canary also insta-died (0 tool uses); watchdog owns
 the revival; the fold and this preliminary were the storm-window work.
+
+---
+
+## NUMBERING-LEG PRELIMINARY, PART 2 (local): FGMN eq (14) = the key-power normalization R_{i,α}(φᵢˢ) = y^⌊s/eᵢ⌋, Rᵢ(φᵢˢ) = 1 — the (DMULT-s) upgrade condition now ONE sentence — 2026-08-07
+
+eq (14) located (layout line 1004): FGMN's residual operators are
+normalized to send key-powers to plain monomials with constant 1 (whence
+"R_r(g) monic", line 1254, via Cor 4.7(1)). THE UPGRADE CONDITION,
+precisely: J-C's 𝑅/ρ sends anchor key-powers to the eq-(14) values —
+which JC-PER (byte-exact periodicity), R1-UNIT (869 unit / 0 zero), and
+R1-DMULT (multiplier EXACTLY 1, 2,784/0 + the r2 dense leg 3,655/0)
+verify empirically on every tested pair. The transcription unit's
+remaining job: the definitional comparison (J-C §2's operator vs eq (14)
+on key-powers) + carrying Cor 4.7(2)'s P_α-membership and Lemma 5.13's
+µ-proper hypotheses — then (DMULT-s) upgrades MEASURED → CITED
+(FGMN Cor 4.7(2)(3) + Lemma 5.13 + eq (14)), and JC-COB's sharp form
+inherits the citation. References inventory: FGMN (layout + pdf),
+HigherNewton.tex, montes-blueprint.pdf local; NO Vaquié print — the
+W2-OPEN-2/MacLane–Vaquié probe still needs external literature (a Codex
+or web leg at the window). Storm-window output this turn: this
+preliminary; wave revival remains watchdog-owned.
