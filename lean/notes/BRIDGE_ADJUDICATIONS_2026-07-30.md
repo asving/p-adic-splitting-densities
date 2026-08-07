@@ -12036,3 +12036,11 @@ convention, unpinned blueprint cites) — nil-weight, suppliers
 motion-free; (3) WM PE10 obs 3–4 (verifier's own harness bug; H¹ = 0
 display offer = new composition work) — not status-updates. This entry
 is the re-run's idempotency record; no annex duplication.
+
+**WATCHDOG RE-CADENCED (Asvin, 2026-08-07 ~20:5x UTC: "keep a watcher
+but on a longer time line" — the storms recur over days, hourly is too
+hot): hourly job c1740592 DELETED, bi-hourly job c986a06a created
+(every 2h at :23, 7-day expiry, same protocol incl. single-resume +
+Codex-reset flag). FULL STEAM otherwise per the same message: W-11
+attempt 4 in flight (w41q4j1g3) + new wave wmyhw298v (W2-OPEN-2
+examples-first attack + K2-MULT-RES/g0>=3 residue closure).**
