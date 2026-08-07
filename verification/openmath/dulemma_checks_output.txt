@@ -1,0 +1,56 @@
+[gate] engine_ext OK (0.2s)
+  [   0.2s] C2A   m=1 E=4   e_m=2 g_m=1 |Km|=4   grid=16 skips={'offW': 0, 'dint': 0} dense_both=16 teeth=[10, 6, 16]
+  [   0.2s] C2B   m=1 E=4   e_m=2 g_m=1 |Km|=4   grid=16 skips={'offW': 0, 'dint': 0} dense_both=16 teeth=[10, 4, 16]
+  [   0.2s] C2C   m=1 E=6   e_m=2 g_m=1 |Km|=3   grid=36 skips={'offW': 0, 'dint': 0} dense_both=16 teeth=[16, 0, 36]
+  [   0.3s] C2D   m=1 E=6   e_m=3 g_m=1 |Km|=9   grid=36 skips={'offW': 0, 'dint': 0} dense_both=16 teeth=[16, 6, 36]
+  [   0.4s] C2E   m=1 E=4   e_m=2 g_m=1 |Km|=4   grid=16 skips={'offW': 0, 'dint': 0} dense_both=16 teeth=[10, 6, 16]
+  [   0.4s] C2F   m=1 E=10  e_m=2 g_m=1 |Km|=5   grid=100 skips={'offW': 0, 'dint': 0} dense_both=16 teeth=[28, 0, 100]
+  [   0.4s] C2G   m=1 E=6   e_m=3 g_m=1 |Km|=25  grid=36 skips={'offW': 0, 'dint': 0} dense_both=16 teeth=[16, 10, 36]
+  [   0.5s] C2H   m=1 E=4   e_m=2 g_m=1 |Km|=8   grid=16 skips={'offW': 0, 'dint': 0} dense_both=16 teeth=[10, 6, 16]
+  [   0.5s] C2I   m=1 E=4   e_m=2 g_m=2 |Km|=2   grid=16 skips={'offW': 0, 'dint': 0} dense_both=16 teeth=[0, 0, 16]
+  [   0.5s] C2J   m=1 E=3   e_m=3 g_m=1 |Km|=3   grid=9 skips={'offW': 0, 'dint': 0} dense_both=16 teeth=[7, 0, 9]
+  [   0.6s] C3A   m=2 E=8   e_m=2 g_m=1 |Km|=4   grid=64 skips={'offW': 0, 'dint': 0} dense_both=16 teeth=[22, 22, 64]
+  [   0.7s] C3B   m=2 E=12  e_m=2 g_m=1 |Km|=3   grid=144 skips={'offW': 0, 'dint': 0} dense_both=16 teeth=[34, 0, 144]
+  [   0.8s] C3C   m=2 E=12  e_m=2 g_m=1 |Km|=3   grid=144 skips={'offW': 0, 'dint': 0} dense_both=16 teeth=[34, 0, 144]
+  [   1.3s] C3D   m=2 E=8   e_m=2 g_m=1 |Km|=4   grid=64 skips={'offW': 0, 'dint': 0} dense_both=16 teeth=[22, 23, 64]
+  [   1.3s] C3E   m=2 E=4   e_m=2 g_m=1 |Km|=4   grid=16 skips={'offW': 0, 'dint': 0} dense_both=16 teeth=[10, 4, 16]
+  [   1.5s] C3F   m=2 E=12  e_m=3 g_m=1 |Km|=9   grid=144 skips={'offW': 0, 'dint': 0} dense_both=16 teeth=[34, 24, 144]
+  [   1.8s] C3G   m=2 E=20  e_m=2 g_m=1 |Km|=5   grid=400 skips={'offW': 0, 'dint': 0} dense_both=16 teeth=[58, 0, 400]
+  [   1.9s] C3H   m=2 E=8   e_m=2 g_m=1 |Km|=8   grid=64 skips={'offW': 0, 'dint': 0} dense_both=16 teeth=[22, 31, 64]
+  [   2.1s] C3I   m=2 E=8   e_m=2 g_m=1 |Km|=4   grid=64 skips={'offW': 0, 'dint': 0} dense_both=16 teeth=[22, 10, 64]
+  [   2.4s] C3J   m=2 E=12  e_m=2 g_m=1 |Km|=3   grid=144 skips={'offW': 0, 'dint': 0} dense_both=16 teeth=[34, 0, 144]
+  [   2.6s] C4A   m=3 E=16  e_m=2 g_m=1 |Km|=2   grid=256 skips={'offW': 0, 'dint': 0} dense_both=16 teeth=[0, 0, 256]
+  [   3.1s] C4B   m=3 E=16  e_m=2 g_m=1 |Km|=4   grid=256 skips={'offW': 0, 'dint': 0} dense_both=16 teeth=[46, 61, 256]
+  [   3.8s] C4C   m=3 E=24  e_m=2 g_m=1 |Km|=3   grid=576 skips={'offW': 0, 'dint': 0} dense_both=16 teeth=[70, 0, 576]
+  [   6.5s] C4G   m=3 E=16  e_m=2 g_m=1 |Km|=4   grid=256 skips={'offW': 0, 'dint': 0} dense_both=16 teeth=[46, 68, 256]
+  [   6.7s] C4H   m=3 E=10  e_m=1 g_m=1 |Km|=5   grid=100 skips={'offW': 0, 'dint': 0} dense_both=16 teeth=[28, 0, 100]
+  [   6.9s] C4I   m=3 E=16  e_m=2 g_m=2 |Km|=2   grid=256 skips={'offW': 0, 'dint': 0} dense_both=16 teeth=[0, 0, 256]
+  [   7.2s] I4A   m=3 E=12  e_m=3 g_m=1 |Km|=4   grid=144 skips={'offW': 0, 'dint': 0} dense_both=16 teeth=[34, 0, 144]
+  [   7.5s] I4B   m=3 E=12  e_m=2 g_m=1 |Km|=9   grid=144 skips={'offW': 0, 'dint': 0} dense_both=16 teeth=[34, 0, 144]
+  [  13.6s] I4C   m=3 E=8   e_m=2 g_m=1 |Km|=16  grid=64 skips={'offW': 0, 'dint': 0} dense_both=16 teeth=[22, 30, 64]
+
+================ SKIPPED-PAIR CENSUS ================
+grid pairs scored: 3597
+skipped off-window sums: 0 (predicted 0)
+skipped dint_ok=False (off scored stratum): 0 (census only)
+e_m = 1 rows (MEASURED tier, theorem fence): ['C4H']
+both-dense pairs scored: 464
+T1-ineligible rows (|Km^*| = 1, du==1 trivially): ['C2I', 'C4A', 'C4I']
+T2-ineligible rows (all z_j^{2t_j} == 1): ['C2C', 'C2F', 'C2I', 'C2J', 'C3B', 'C3C', 'C3G', 'C3J', 'C4A', 'C4C', 'C4H', 'C4I', 'I4A', 'I4B']
+
+================ FAMILIES ================
+DU-PIN    samples=4       violations=0
+EXT-GATE  samples=1       violations=0
+DU-EPS    samples=570     violations=0
+DU-RHO    samples=285     violations=0
+DU-COBW   samples=3597    violations=0
+DU-CHAIN  samples=7194    violations=0
+DU-DENSE  samples=1943    violations=0
+
+================ TEETH ================
+DU-T1-FAKEU    fires=695    OK
+DU-T2-FAKEKIT  fires=311    OK
+DU-T3-SHIFT    fires=3597   OK
+
+TOTAL: 0 violations, 0 silent teeth, 13.6s
+results -> /data/users/asvin/math-and-lean/p-adic-splitting-densities/verification/openmath/dulemma_checks_results.json

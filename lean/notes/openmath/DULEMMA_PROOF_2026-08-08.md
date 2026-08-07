@@ -534,7 +534,40 @@ post-smoke.
 
 ### 8.2 VERDICT (commit 2 — written FROM the committed artifacts)
 
-**PENDING at commit 1.**
+**ALL SEVEN FAMILIES GREEN, ALL THREE TEETH CAUGHT — every sealed prediction
+hit exactly.** Runner sealed at commit `048cf6d`, run unmodified; artifacts
+`dulemma_checks_output.txt` / `dulemma_checks_results.json`; elapsed 13.6 s;
+exit code 0.
+
+| family | samples | violations (predicted) |
+|---|---|---|
+| DU-PIN | 4 | 0 (0) |
+| EXT-GATE | 1 | 0 (0) |
+| DU-EPS | 570 | 0 (0) |
+| DU-RHO | 285 | 0 (0) |
+| DU-COBW | 3,597 | 0 (0) |
+| DU-CHAIN | 7,194 | 0 (0) |
+| DU-DENSE | 1,943 | 0 (0) |
+| **total** | **13,594** | **0** |
+
+Teeth: DU-T1-FAKEU **695 fires** (every |K_m^*| ≥ 2 row; ineligible rows
+exactly the three F₂-letter rows C2I/C4A/C4I, where ∂u ≡ 1 is trivially
+true — DU-BOX-7); DU-T2-FAKEKIT **311 fires** (every runtime-eligible row;
+14 rows censused ineligible, all z_j^{2t_j} = 1 there); DU-T3-SHIFT
+**3,597 fires** (every scored grid pair). No silent tooth.
+
+Census, as predicted: **0 off-window sums** (WINDOW-(n) exercised on all
+3,597 grid pairs); **0 dint-skips** — the full 29-row representative grid
+lies inside the scored stratum (re-confirming GRTJC's JC-BOX-2 geography:
+the stratum fence is a fence of the GENERAL claim, never bitten on-roster);
+e_m = 1 rows = {C4H} only (its 100 grid pairs GREEN at MEASURED tier,
+DU-BOX-1); 464 both-dense pairs scored (the r2 lesson leg, all green).
+
+Reading, per COROLLARY DU-FIN: since the grid DECIDES ∂u ≡ 1 per row, the
+battery is not a sample — **∂u ≡ 1 holds for every attained line pair of
+every roster row**, and the theorem's proof-chain legs (DU-A at 570 lines,
+c_π = ρ_T at 285 steps, WM-COB(ii)/JC-INNER links at 7,194 checks) were each
+verified independently of the conclusion.
 
 ---
 
