@@ -11820,3 +11820,15 @@ three warrants kernel-graded) — **WM PE10 = the would-be accepting
 attempt.** Weld: LIFTCORNER + GRTJB + GRTJC + GRTW2 ACCEPTED · JA 1/2 ·
 WM 1/2 · W2-OPEN-2 the one open box · J-D0 revival dispatched alongside
 the two accepting attempts. Codex ~12.5h.
+
+---
+
+## ★★★ WELDMASTER ACCEPTED AT 2/2 (PE9+PE10 clean; Ẽ proved THE canonical gauge via direct-H²/bar resolution) — FIVE OF SIX WELD NOTES ACCEPTED; J-A's accepting attempt + J-D0 in flight — 2026-08-07
+
+Acceptance record at the note tail (this commit). PE10's structural
+bonus: the gauge primitive is CANONICAL (H¹ = 0 forces uniqueness) — the
+coboundary display c = z̄^δ·∂Ẽ is not one gauge among many but THE gauge.
+**Weld: LIFTCORNER + GRTJB + GRTJC + GRTW2 + WELDMASTER ACCEPTED · JA
+1/2 (PE8 = the accepting attempt, in flight) · W2-OPEN-2 the one open
+box · J-D0 composing (in flight).** The watchdog found the fleet alive;
+this fold executed at its firing. Codex ~11.5h.

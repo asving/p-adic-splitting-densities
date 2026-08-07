@@ -1015,3 +1015,26 @@ every machine family green under the + convention). Strike census: +1
 span (the r6 STATUS strike), 20 total. Note-only; runner + artifacts
 BYTE-FROZEN (runner md5 6b406f81c250d25f615f715fa9eff474 re-verified
 this round; `git diff` on `verification/` empty). Counter 0/2; PE9 next.
+
+---
+
+## ★ ACCEPTANCE RECORD (orchestrator, 2026-08-07) ★
+
+**THIS NOTE IS ACCEPTED at 2/2** — PE9 (9384083, CLEAN; the 12-theorem
+Lean leg incl. bez_plus and the minus-form falsification; the
+sealed-declaration sweep finding no second convention item) and PE10
+(1f9d82e, CLEAN; the DIRECT-H²/bar-resolution route proving Ẽ is THE
+canonical gauge — constructed from the cocycle alone and forced by
+H¹ = 0 uniqueness — plus the generating-function/lattice-point route for
+WM-COB/WM-RHO; 18,707/0, six teeth). Full arc: composed → PE1 (0C/5G+3m)
+→ r1 (evidence-class labels; the JA-companion) → PE2 (0C/1-drift+2m) →
+r2 (16 as-of pin sites) → PE3 (0C/0G/1m) → r3 → PE4 (0C/0G/1m) → r4 →
+PE5 (0C/0G/1m) → r5 → PE6 (0C/0G/2m) → r6 → PE7 CLEAN → PE8 (0C/1G — the
+eighth-reader Bézout-convention catch) → r7 → PE9 CLEAN → PE10 CLEAN.
+Ten passes, seven repairs. **WHAT IS ACCEPTED**: THEOREM WELD-M (the one
+transport, five faces, citation-table proof over the now-FOUR-accepted
+junction notes + pinned suppliers), WM-COB proved unconditional, WM-RHO,
+WM-CLASS at display grade, PERIM-μ with its three specializations — the
+weld's consolidation, at its displayed conditionality (W2-OPEN-2/OPEN-2a
+carried as the accepted W-2's fenced box; the O-1/fold understatements
+catalogued conservative).
