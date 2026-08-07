@@ -12115,3 +12115,12 @@ died uncommitted — archived to /tmp, verdict redo from the committed
 seal owed). Redo order: W-11 r1 + K2RES verdict NOW (parallel); W-12
 redo AFTER r1 lands (its consumed sections S2.4/S4.2 are exactly the
 repair surface).**
+
+**W-11 r1 LANDED (8c87fa3): all six PE1 findings fixed under the
+minimality contract; F2 grep sweep = ZERO external consumers of the
+false disc=0 claim; corrected F1 display verified exact (1/7+1/28+1/14
+= 1/4 = μ₀); runner byte-frozen at seal md5. Counter 0/2, PE2 next.
+W-12 composer REDISPATCHED on the post-r1 text (resume wl9borxl3,
+script pin line updated to the post-r1 arc; the archived partial
+explicitly fenced off in the prompt). K2RES verdict redo still in
+flight (wz2ycnsd5).**
