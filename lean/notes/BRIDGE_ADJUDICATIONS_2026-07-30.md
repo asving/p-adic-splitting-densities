@@ -11585,3 +11585,19 @@ the proved direction — blast radius contained; **one-sentence cure
 P2's sign revert verified faithful at source. **r3 → PE4.** Counters:
 LIFT/JB/JC ACCEPTED · JA 0/2 (PE5 next) · WM 0/2 (r6 → PE7) · W2 0/2
 (r3 → PE4). Codex window ~2h: queue per ledger (W-MULT-DCX first).
+
+---
+
+## Timeline correction + wave (compact) — 2026-08-07 09:44 UTC
+
+CODEX: 95% used, window resets Sat 2026-08-08 04:22 UTC (~18.5h) — my
+recent "~2h" estimates were WRONG; the full ledgered queue (W-MULT-DCX
+first) executes at reset; the last 5% conserved. Meanwhile: JA r4 (one
+line) + WM PE7 + W2 PE4 dispatched (wjmm1vsbf); the Fable arcs are
+Codex-independent. Prior wave: JA PE5 0C/1Gm (arc-surface sync — its own
+species' last instance) with a 358,127/0 engine-free probe + the
+coset-master-lemma derivation of the whole exponent system; WM r6 landed
+(both quotes byte-true at pins); W2 r3 landed (claims scoped to the
+proved direction at 4 sites; THE CONVERSE'S HONEST BOUNDARY block records
+the counter-instance; consumption re-check PASS; one [r3]-flagged
+converse-consuming premise clause handed to PE4 for adjudication).
