@@ -11601,3 +11601,26 @@ coset-master-lemma derivation of the whole exponent system; WM r6 landed
 proved direction at 4 sites; THE CONVERSE'S HONEST BOUNDARY block records
 the counter-instance; consumption re-check PASS; one [r3]-flagged
 converse-consuming premise clause handed to PE4 for adjudication).
+
+---
+
+## WM PE7 CLEAN (1/2 — the quote species EXHAUSTED at 69/69 spans; PE8 = the accepting attempt) + W2 PE4 0C/1Gm+1m (converse flag SUFFICES; the disclosure condition proved the EXACT characterization, 33,408/0) — 2026-08-07
+
+**WM PE7 (0a2fb54) — CLEAN 0C/0G/0m; counter 1/2.** All 69 double-quoted
+spans byte-true wrap-insensitively — the species exhausted; fresh
+order-lattice route re-derived WM-FENCE (1,868/0, the ξ-tooth count
+independently matching the sealed 47). **WM PE8 = THE ACCEPTING
+ATTEMPT.**
+
+**W2 PE4 (e92cb22) — 0C/1Gm+1m.** P1: three same-species two-sided-claim
+surfaces r3's sweep missed (§6.3(d), the (OPEN-2a) opening gloss, §6.4
+[r2]) — blast radius nil, every load-bearing consumption re-read
+one-directional. P2: the footer dateline. ADJUDICATED: the [r3] converse
+flag inside W2-OPEN-2's premise SUFFICES — no restating (the premise is
+the scope of an OPEN box; roster instances premise-verified). The
+counter-instance re-derived from scratch; the fresh selection-geography
+leg (33,408/0) proved r3's disclosure condition EXACTLY characterizes the
+spurious set ({(𝔽₄,g3),(𝔽₉,g4)}; zero at g ≤ 2). A prior dead PE4's
+draft honestly disclosed and fully re-verified. **r4 = three one-liners +
+dateline → PE5.** Counters: LIFT/JB/JC ACCEPTED · JA 0/2 (PE6 next) · WM
+**1/2** (PE8 = accepting) · W2 0/2 (r4 → PE5).
