@@ -11509,3 +11509,28 @@ statement (sub-clause: proved at m = 1, open at m ≥ 2), scope the grade
 sentence to the instance census, revert the sign with the conflation
 bracket, fix the off-by-one → PE3.** Counters: LIFT/JB/JC ACCEPTED · JA
 1/2 · WM 0/2 · W2 0/2.
+
+---
+
+## HIGH-LEVEL INTERPRETATION verdicts (1f3e671, Asvin's side question): H-B HOLDS — the section carry IS the local fundamental class, and THE WILD CLASS DIES over 𝔽_q (explaining why the proof must run at cochain level); H-A/H-D fail cleanly with witnesses; H-C = correct positioning — 2026-08-07
+
+H-A Witt/δ-rings FAILS CLEANLY (ℤ/9 hand witness: positional carry ≠
+Witt carry at p ≥ 3; carries weight-frame conjugated; letter-pricing has
+no Witt counterpart). H-B HOLDS: class[κ] = 1 ∈ H²(ℤ/E, ℤ) — the carry
+cocycle IS the fundamental class, inv of local CFT reads exactly this
+carry; AND the wild class provably dies over finite residue fields
+(K^*/(K^*)^E ≅ ℤ/gcd(E, q−1) — all-wild towers trivial, T2C keeps
+exactly its tame ℤ/2) — THE STRUCTURAL EXPLANATION for the proof's
+low-level necessity: at wild primes the cohomology CLASS carries nothing,
+so the content lives irreducibly in the COCHAIN (the carries themselves);
+class-level machinery cannot see it. Deliverables named: THEOREM
+CLASS-TAME (the measured class facts as preregistered predictions), a
+Tignol–Wadsworth citation leg for (DMULT-w), and a W2-OPEN-2 adjudication
+probe vs MacLane–Vaquié unicity (BLOCKED allowed, the ≥-key-weight vs
+≥-assigned-value gap named). H-C: correct positioning, empty as machinery
+(the corpus's own ∫|disc| = 7/12 ≠ 2/3 at p = 2 kills motivic-corollary
+hopes; strata ARE Pas-definable; the new mechanism = carry-gauge-
+invariance of volume = J-D0). H-D: analogy not factorization (g₀ = 2
+witness; exact on the Eisenstein slice, Pauli–Sinclair). **QUEUED (after
+the arcs, complete-theorem grade): the H-B unit (CLASS-TAME + T-W leg +
+the OPEN-2 probe).**
