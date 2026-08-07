@@ -11738,3 +11738,24 @@ HigherNewton.tex, montes-blueprint.pdf local; NO Vaquié print — the
 W2-OPEN-2/MacLane–Vaquié probe still needs external literature (a Codex
 or web leg at the window). Storm-window output this turn: this
 preliminary; wave revival remains watchdog-owned.
+
+---
+
+## NUMBERING-LEG PRELIMINARY, PART 3 (local; the honest sharpening): JC-SCAL is up-to-unit AS PROVED — the (DMULT-s) upgrade has exactly ONE remaining mathematical step — 2026-08-07
+
+Checked the accepted J-C §2.6: LEMMA JC-SCAL(a) proves 𝑅_N(Λ_N(c)) = the
+canonical degree-<g_m representative of c **up to one line-wise unit**;
+the exact unit-1 form is the PE6 verifier's MEASURED leg (6 rows, 0
+exceptions), NOT the accepted clause. THE UPGRADE TASK, now exactly
+specified: prove the JC-SCAL line-wise unit is 1 for the note's
+ε-corrected normalization — OR prove it cancels in the (DMULT)
+comparison (the identity compares 𝑅(fg) with 𝑅(f)𝑅(g) on matched lines;
+a per-line unit u_N contributes u_{N+N′}/(u_N u_{N′}), a coboundary-shaped
+factor — if the units are multiplicative in N, which eq (14)'s key-power
+values suggest, the factor is 1; the same ω-symmetry mechanism the note
+already uses at JC-LOAD's re-tiering). Chain when done: FGMN Cor 4.7(2)(3)
++ Lemma 5.13 + eq (14) + [the unit-1/cancellation lemma] ⟹ (DMULT-s)
+CITED+PROVED, JC-COB's sharp form inherits. Empirical status: unit
+exactly 1 on every pair ever measured (R1-DMULT 2,784/0; r2 dense
+3,655/0; PE6's 6-row leg). **Queued as the completion of the small unit
+— one lemma, examples already in hand.**
