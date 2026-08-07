@@ -55,7 +55,10 @@ LAW-KEYED with teeth. Verdict in §7 (commit 2).
 
 ## §1. Setting and indexing (fixed once)
 
-Harness: the [ILN]† S0.1 class pin verbatim (DVR O, uniformizer π, reads
+Harness: the [ILN]† S0.1 class pin verbatim **[JA-r3 2026-08-08 (wallclock
+2026-08-07): [ILN]† consumed as-of ced7dbb — the as-of pin owed since PE2
+o2 / PE3 o3, executed with the FINDING 1 pin sweep; ITERLAWN_PROOF
+motion-free since]** (DVR O, uniformizer π, reads
 (e_j, h_j, g_j) for j = 0..n with e_j, h_j, g_j ≥ 1 and gcd(e_j, h_j) = 1;
 normalized Bézout ℓ_j h_j + ℓ′_j e_j = 1 with 0 ≤ ℓ_j < e_j; residue chain
 K_{j+1} = K_j[z_{j+1}]/(ψ_j), ψ_j monic irreducible, ψ_j(0) ≠ 0; weights
@@ -128,9 +131,30 @@ EXCEPT the lift clause, each clause forced by the print's own hypotheses:
    three-clause form: Φ_{m+1}^har is a strict GMN Def-2.12 representative
    (tex 1285) of the ξ-CONJUGATE type under the pinned (P-ell) convention
    (W2-C1, proved on the §3 perimeter there), and of the TRANSPORTED type
-   t^tw strictly at every level (W2-C3, attempt grade, machine 44/44/44).
-   Conditionality carried verbatim: the (C-coll)/recursion split, the §4.3
-   ℓ-orbit convention fence, and W2-OPEN-1 (value layer) OPEN.
+   t^tw ~~strictly at every level (W2-C3, attempt grade, machine
+   44/44/44)~~ at the supplier's CURRENT grade: W2-C3 PROVED at attempt
+   grade given its §3–§4 up to and including each chamber's first ξ ≠ 1
+   junction (38/44 junction-levels; 36 fully derived + 2
+   instance-warranted I4A/I4B r = 5), MEASURED above it (6/44:
+   T3A/T3C/T3D/T3E r = 4, I4C r = 4,5) riding W2-OPEN-2; machine
+   TW-RATIO/TW-ADM 44/44 with TW-STRICT SAME-adjacent (NOT three
+   independent 44/44 legs). Conditionality carried verbatim per W-2
+   §6.3's consumer contract: (a) the (C-coll)/recursion split, (b)
+   W2-OPEN-1 (value layer) OPEN, (c) the §4.3 ℓ-orbit convention fence,
+   and (d) W2-OPEN-2's open status for clause 3's chain level above each
+   chamber's first ξ ≠ 1 junction (the proved-to-first-twist /
+   measured-above grade split), the W2-C1a chamber qualifier, and
+   (OPEN-2a) — W2-OPEN-2's own premise sub-clause, the
+   recorded-ξ/byte-divergence identification, proved only at m = 1
+   (W2-ID1). **[JA-r3 2026-08-08 (wallclock 2026-08-07), per JA-PE4
+   FINDING 1: the struck grade text and the closed (a)/(b)/(c) carry-list
+   predated the supplier's motion — W2 r1 (8d5e3fa, nine minutes after
+   JA r2) struck that exact W2-C3 grade text and W2 r1/r2 added §6.3's
+   mandatory carry item (d); this cite — and every W-2 cite in this
+   note — is henceforth pinned as-of [W2] := GRTW2_PROOF_2026-08-08.md
+   @ ffa1e57 (post-W2-r2). No JA derivation consumed the retracted
+   strength (clause 8 is consumption billing; TW-INST is JA's own
+   instance evidence, unaffected; the W2-C1 leg did not move).]**
 
 *Proof.* Clauses 1–7 are the cited definitions plus the displayed one-line
 arguments; clause 8 is consumption. ∎ Grade: PROVED at attempt grade; the
@@ -398,7 +422,12 @@ action, clause by clause:
   augmented valuations already disagree AT the key class (A = φ genre) —
   the standard MacLane representative-dependence, surfaced here rather
   than hidden. The honest transport of (i) is (a) the CHAIN level: key
-  polygons and weights agree (W2-C3(i), machine 44/44 in the W-2 runner),
+  polygons and weights agree (W2-C3(i), machine 44/44 in the W-2 runner
+  **[JA-r3 2026-08-08 (wallclock 2026-08-07), per JA-PE4 FINDING 1: at
+  [W2 @ ffa1e57]'s current grade — W2-C3 is proved up to and including
+  each chamber's first ξ ≠ 1 junction (38/44 junction-levels), MEASURED
+  above it (6/44) riding W2-OPEN-2; the machine figure (TW-RATIO 44/44)
+  stands, the former "strictly at every level" grade gloss does not]**),
   and (b) RE-INSTANTIATION (last bullet): inside the transported chamber
   J-A holds verbatim with the chamber's own keys on both sides.
   [Machine: TW-INST.]
@@ -431,8 +460,14 @@ action, clause by clause:
   ARBITRARY on-line A, not only the lifts.
 * **Transported chamber (the transport of J-A is RE-INSTANTIATION, not
   cross-key operator equality):** the transported ledger is itself a
-  class-pin instance (W2-C3's induction), so §2/§3 apply VERBATIM inside
-  it — harness tower REBUILT on the transported ψ-ledger against the
+  class-pin instance (W2-C3's induction **[JA-r3 2026-08-08 (wallclock
+  2026-08-07), per JA-PE4 FINDING 1: at [W2 @ ffa1e57]'s current grade
+  the induction is proved-to-first-twist and MEASURED above it (riding
+  W2-OPEN-2/(OPEN-2a)), so above a chamber's first ξ ≠ 1 junction the
+  class-pin-instance warrant is supplier instance evidence plus JA's own
+  TW-INST leg (all 20 ledgers), not derivation]**), so §2/§3 apply
+  VERBATIM inside it — harness tower REBUILT on the transported ψ-ledger
+  against the
   chamber's print chain, same theorems, new instance. The cross-chamber
   letter identification z_old = ξ·z_new is W-2 §5.1 step 2, consumed.
   [Machine: TW-INST — the FIELD-DEPENDENT families
@@ -558,14 +593,14 @@ are unaffected.]
 | claim | statement | grade |
 |---|---|---|
 | JA-PIN | T(t) in the class pin except lift; each clause from the print | PROVED (attempt grade 0/2) |
-| JA-PIN cl. 8 | lift clause | CONSUMED from W-2 clauses 1–3 at attempt grade, conditionality verbatim |
+| JA-PIN cl. 8 | lift clause | CONSUMED from W-2 clauses 1–3 at attempt grade, conditionality verbatim **[JA-r3 2026-08-08 (wallclock 2026-08-07), per JA-PE4 FINDING 1: carry-list = W-2 §6.3's current (a)–(d), incl. (d)'s W2-OPEN-2/(OPEN-2a), the W2-C3 proved-to-first-twist (38/44) / measured-above (6/44) grade split, and the W2-C1a chamber qualifier; pinned as-of [W2 @ ffa1e57]]** |
 | JA-VAL | w_m = v_{m+1}, shared-key perimeter | PROVED (attempt grade) |
 | JA-EPS | ε_m = z^{−t_m} + k-grid covariance | PROVED |
 | JA-GRID | eq-(12-int) = T-side initial point; carry = lattice crossing | PROVED (single-level scope fence) |
 | JA-RES | per-slot law c_i = z^{−iA}·C_i | PROVED at m = 2; PROVED-under-proviso m ≥ 3 |
 | JA-VDIND | absolute-character collapse ⟹ (VD-m) | PROVED (forward; converse unsealed) |
 | JA-MIN | DICTIONARY HALF of the MIN CORE at orders ≥ 2 (in(f) leg OPEN, [JA-r1]) | rides JA-RES (same perimeter) |
-| §4 transport | orbit action + re-instantiation | ORB legs PROVED/machine; chamber = W2-C3 consumption |
+| §4 transport | orbit action + re-instantiation | ORB legs PROVED/machine; chamber = W2-C3 consumption **[JA-r3 2026-08-08 (wallclock 2026-08-07), per JA-PE4 FINDING 1: at its current re-scoped grade — proved-to-first-twist / measured-above riding W2-OPEN-2/(OPEN-2a) — as-of [W2 @ ffa1e57]]** |
 | JA-BOX-1 | blueprint J-A(ii) slot-independent c | REFUTED at m ≥ 2 (26 machine witnesses) |
 
 ### 7.3 Consequence display and dependency line
@@ -656,3 +691,36 @@ fold; WM-FENCE (a)'s range gloss is the parallel WM r4 companion line.
 PE2's ungraded observations (o1)–(o4) are recorded there, not repaired
 here (o2's [ILN]† as-of pin owed at the next round/fold stands). **Arc:
 rounds 1–2 complete; counter 0/2 CLEAN; next pass = JA-PE3.**
+
+### r3 record (rounds 3–4 of the acceptance arc — JA-PE3 CLEAN, JA-PE4, + this repair)
+
+**JA-PE3 (fresh hostile Fable context; report `GRTJA_passPE3_report.md`,
+commit c77ae6f, 2026-08-07): CLEAN — 0 critical, 0 gaps, 0 minor, 4
+ungraded observations (o1–o4); counter reached 1/2 (ledger action
+a83c108). JA-PE4 (fresh hostile Fable context; report
+`GRTJA_passPE4_report.md`, commit 535e79f; the acceptance attempt at
+1/2): NOT CLEAN — 0 critical, 1 JUSTIFICATION GAP, 0 minor; the counter
+RESETS.** PE4's machine leg re-ran bit-identical (exit 0, 17 families,
+10,311 samples, 0 violations; seals 5972d412/0d6d0522/13ab52ab intact at
+pins and worktree); the gauge law and JA-VDIND's triviality theory were
+re-derived by routes unused by PE1–PE3, with four previously
+machine-unkeyed displays instance-verified 396/396 and the census
+third-reproduced. THE GAP (FINDING 1): the W-2 consumption was UNPINNED
+and drifted — W2 r1 (8d5e3fa, nine minutes after JA r2) struck the exact
+W2-C3 grade text this note carried ("strictly at every level", "machine
+44/44/44"), re-grading it proved-to-first-twist (38/44) /
+measured-above (6/44) riding W2-OPEN-2, and W-2 §6.3's consumer contract
+gained mandatory carry item (d) postdating clause 8's closed (a)/(b)/(c)
+list. **Repaired in place in the dated [JA-r3 2026-08-08 (wallclock
+2026-08-07)] brackets above at PE4's five sites** — §2 clause 8 (grade
+text re-quoted at the supplier's current form + carry-list extended to
+§6.3's (a)–(d)), §4(i)'s chain-level bullet, §4's transported-chamber
+bullet, and the two §7.2 rows (JA-PIN cl. 8, §4 transport) — every W-2
+cite now pinned as-of [W2] := GRTW2_PROOF_2026-08-08.md @ ffa1e57
+(post-W2-r2, the supplier's HEAD at this repair). Also executed: the
+[ILN]† as-of pin (ced7dbb) owed since PE2 o2 / PE3 o3 (§1). Grade
+changes: NONE (clause 8 is consumption billing; no JA derivation
+consumed the retracted strength; TW-INST is JA's own instance evidence,
+unaffected). Runner + artifacts BYTE-FROZEN. **Arc: rounds 1–4 complete
+(PE1 → r1 → PE2 → r2 → PE3 CLEAN → PE4 0C+1G → r3); counter 0/2 CLEAN
+(reset by PE4); next pass = JA-PE5 = the acceptance attempt.**
