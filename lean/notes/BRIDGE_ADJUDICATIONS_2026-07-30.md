@@ -11534,3 +11534,28 @@ invariance of volume = J-D0). H-D: analogy not factorization (g₀ = 2
 witness; exact on the Eisenstein slice, Pauli–Sinclair). **QUEUED (after
 the arcs, complete-theorem grade): the H-B unit (CLASS-TAME + T-W leg +
 the OPEN-2 probe).**
+
+---
+
+## JA PE4: 0C/1G — reset by the drift species' LAST unpinned edge (the W-2 cite; math untouched, four new machine keys 396/396) + WM r5 landed + W2 r2 landed (LEMMA W2-ID1 proved; OPEN-2a folded into the box; sign REVERTED with anti-re-flip records) — 2026-08-07
+
+**JA PE4 (535e79f) — 0C/1G; counter resets 0/2.** The gap: W-2 supplier
+drift over JA's one UNPINNED cross-note consumption (W2 r1 struck the
+exact W2-C3 grade text JA carries; no fold annotation covered JA; escaped
+PE3 by timing). Fresh legs: per-slot gauge law re-derived by the
+field-identity route; four machine-unkeyed displays FIRST-KEYED (full
+conjugation form, difference display, JA-MIN support tie, packing — all
+396/396). **r3 = one dated bracket + as-of pin (the LAST unpinned edge in
+the weld — the drift species goes structurally extinct after this).**
+
+**WM r5 (f8c2c09) — landed** (byte-true quote restored with the
+interpolation's origin recorded; O-1 accuracy). PE6 next.
+
+**W2 r2 (ffa1e57, +225/−38) — landed: LEMMA W2-ID1 (the m = 1
+identification PROVED from the §3.4 display); OPEN-2a folded INSIDE
+W2-OPEN-2 as its own premise sub-clause (proved m = 1 / open m ≥ 2 /
+instance-exact); the census split refined (38/44 = 36 fully derived + 2
+riding OPEN-2a); the sign REVERTED to the source-correct r0 form with the
+conflation displayed and anti-re-flip records in both brackets.** PE3
+next. Counters: LIFT/JB/JC ACCEPTED · JA 0/2 (one-pin r3) · WM 0/2 · W2
+0/2. Codex window ~3h.
