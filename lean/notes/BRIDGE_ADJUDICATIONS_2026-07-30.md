@@ -12009,3 +12009,10 @@ numbering leg is no longer needed (ratification legs still queued).
 Fold-annex standing list: item 1 CLOSED; items 2–4 stand (W2-OPEN-2
 needs mathematics; JA s4 trio + WM obs 3–4 nil-weight). W-11 resume
 in flight (wqtnsu7fx, 3rd attempt after 2x 529 casualty).
+
+**OUTAGE UPDATE (~20:25 UTC 2026-08-07): W-11 attempt 3 = hard-saturation
+insta-death (both wave agents, 0 tool uses, 105 s — even the cached
+fold-annex replay errored). No partials (nothing ran). STANDING DOWN
+per storm protocol; the watchdog owns the next resume of
+wf_6796c48c-f67. Meanwhile orchestrator-local: FGMN Cor 4.9 leg closed
+at 63091ce (GRTJC annex #2).**
