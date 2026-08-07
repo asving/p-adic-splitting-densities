@@ -232,38 +232,183 @@ commit 1 (two-commit seal).
 
 ## §4. RESULTS (commit 2; from the committed artifacts)
 
-**PENDING at commit 1.** To be filled verbatim from
-`open2attack_output.txt` / `open2attack_results.json`: the family table,
-the censuses (walked/strict/byte per m-stratum; δ-nontrivial rows; gap
-rows; σ-law sign census; partial-defeat rows; spurious rows), the
-mechanism verdict, and the stage-2 outcome.
+**Sealed battery (`open2attack_checks.py`, run once post-seal, exit 0,
+14.0 s, 8,141 samples): 389 towers built (0 spec rejects), 863 junction
+rows = 857 walked (389 m=1 + 377 m=2 + 91 m=3) + 6 SKIP (exactly the
+roster's 6 above-twist rows). ALL preregistered-0 families GREEN; both
+teeth CAUGHT; the QUESTION families 0 violations.** Family table
+(pred/obs/samples): OA-ADM 0/0 (862) · OA-PHIR 0/0 (862) · OA-TOPRES 0/0
+(862) · OA-RHOBYTE 0/0 (860) · OA-BWD 0/0 (860) · OA-GAUGE 0/0 (520) ·
+OA-XI 0/0 (520) · OA-FWD-M1 0/0 (391) · **OA-FWD-M2 ?/0 (378) ·
+OA-FWD-M3 ?/0 (91) · OA-FWD-REC ?/0 (860)** · OA-SIGMA 0/0 (236 gap-free
+m=2) · OA-SPURGEO 0/0 (564) · TEETH-1 caught 2/2 · TEETH-2 caught 2/2.
+
+The censuses that carry the mechanism (per-genre table in the JSON):
+
+1. **THE QUESTION: 0 violations on all 468 m ≥ 2 walked rows.**
+   strict_M2 = 154 = strict∧byte_M2; strict_M3 = 30 = strict∧byte_M3 —
+   on the whole battery, strict ⟺ byte-equal, at every stratum,
+   including the engineered invisible-twist chambers (B1: 172 m=2 rows,
+   only 10 byte-equal — 162 honest byte-RED rows, every one NON-strict)
+   and the I4A/I4B r = 5 geography swept (B3B: 50 m=3 rows).
+2. **The defeat system never comes close: ZERO rows with δ_j = ρ_j ≠ 1
+   on even a single slot** (the `defeat_slots` census is empty across
+   all 857 walked rows) — pointwise infeasibility, not just
+   conjunction-level.
+3. **The gauge discrepancy is real** — δ ≠ 1 on 141 m=2 + 38 m=3 rows
+   (B1 115, B1F 26, B3B 25, B3D 13) — **and σ′-covariant everywhere:
+   (Σ-LAW) holds on ALL 377 m=2 rows AND, with the composite σ′, on ALL
+   91 m=3 rows, including every one of the 142+41 gap rows** — the gap
+   corrections cancel in the C_j/P_j ratio on the entire battery. Every
+   observed δ is an involution (±1 in the relevant field), so the two
+   sign variants are indistinguishable on this data (0 rows separate
+   them); the sign stays boxed (B4). On B2 (ord-3 twist, char 2) δ ≡ 1
+   on all 32 m=2 rows — ρ lands in the σ′-fixed field F₄ there,
+   consistent with the law.
+4. **Roster reproduction exact**: 22 walked + 6 SKIP; recorded ξ ≠ 1 ⟺
+   byte-RED two-sidedly on the roster rows (as GRTW2 records).
+5. **One preregistered prediction FAILED, disclosed**: OA-SPUR predicted
+   ≥ 1 spurious row at m ≥ 2; the sealed battery produced 32 spurious
+   rows, ALL at m = 1 (each = the B2 chamber's own r = 3 — PE3's
+   counter-instance genre reproduced by construction). Cause, read off
+   the table: in the sealed chambers, stabilizer-rich sparse supports
+   only landed on byte-RED m ≥ 2 junctions (nontrivial slot characters),
+   and spuriousness is a byte-equal-row phenomenon. Cured by the
+   extension below. The geography law OA-SPURGEO itself was green on all
+   564 byte-equal rows.
+
+**Extension leg (`open2attack_ext.py`, EXPLORATORY-EXT, designed
+post-table with its predictions written before its run, disclosed): 24
+towers / 48 rows, all sealed families green on the extension rows, and
+16 SPURIOUS ROWS AT m = 2** — EXT-A: recorded pair (z₂, 1)-type with
+ord(z₂) = 4 at byte-equal STRICT junctions (F₉ (C-coll) chamber, ψ₂ =
+y⁴+c, d = 4); EXT-B: recorded ζ of order 3 (F₆₄ (C-coll) chamber, ψ₂ =
+y³+c, d = 3). EXT-C instantiated PE4 o-e's "append any third read" on
+the literal PE3 chamber: its r = 3 stays the PE3 spurious row and the
+m = 2 junctions above it are walked with the forward families green.
 
 ---
 
-## §5. The converse boundary at m ≥ 2 (census; no verdict change)
+## §5. The converse boundary at m ≥ 2 (census; GRTW2's verdict untouched)
 
-**PENDING at commit 1.** The spurious-selection census (OA-SPUR/
-OA-SPURGEO) extends PE3/PE4's m = 1 converse boundary geography to m ≥ 2;
-GRTW2's converse verdict (UNPROVED at every m) is untouched either way.
-
----
-
-## §6. Stage-2 outcome (the proof attempt)
-
-**PENDING at commit 1.** The skeleton, fixed in advance: given the
-battery confirms (Σ-LAW) on its perimeter, the deliverable is LEMMA
-OPEN-2a-M2 (strict ⟹ byte-equal at m = 2 on the Σ-LAW perimeter) via
-OA-L1–L4 + OA-M1 + OA-C2, with the honest boxes: (B1) the per-coordinate
-ledger identity Prnt_j(A) = u_j·σ′(R_m v(A)) at proof grade including the
-exact gap-correction form; (B2) gap rows; (B3) the m ≥ 3 composition;
-(B4) the sign convention. If the battery instead finds a (DEFEAT)
-solution, the deliverable is the counter-instance, displayed.
+The 16 extension rows are the first m ≥ 2 spurious-selection instances:
+byte-equal, strict junctions where the SEALED scan's enumeration-order
+selection records ξ ≠ 1 (z₂ of order 4 precedes 1 in F₉ enumeration; ζ
+precedes 1 in F₆₄ enumeration), so a spurious §5.1-step-2 conjugation
+would fire mid-tower — exactly PE3's m = 1 phenomenon, now witnessed at
+m = 2. The selection-geography law is verified verbatim at every m
+measured (OA-SPURGEO: spurious ⟺ the d-torsion subgroup, d = gcd of
+pairwise differences of supp(ψ_m) ∪ {g_m}, contains an element preceding
+1 in `F.elems()` order; 564 + 40 byte-equal rows, 0 violations). GRTW2's
+converse verdict (UNPROVED at every m, counter-instance displayed) is
+unchanged — this section only extends its instance geography, in the
+direction GRTW2 predicted.
 
 ---
 
-## §7. Proposed annex text for GRTW2 (orchestrator action; only if §4
-confirms)
+## §6. Stage-2 outcome (the proof attempt): the box NARROWED to the
+coboundary law
 
-**PENDING at commit 1.**
+**PROVED at attempt grade, unconditional (this note, §1):**
+**THEOREM OPEN-2a-RED** — at every shared-below junction at level m+1,
+the strict form of the identification ("strict ⟹ byte-equal") is
+EQUIVALENT to the infeasibility of the simultaneous-defeat system
 
-— W2-OPEN-2 ATTACK unit, campaign date 2026-08-08; commit 1 (seal).
+    δ_j = ρ_j (∀ j ∈ supp)   ∧   ρ_{j*} ≠ 1 (some j*),
+
+via OA-L1–L4; and recorded ξ = 1 ⟹ strict, so the box's literal premise
+clause rides the same system under EVERY selection rule. At m = 1, and
+at any m on (C-coll), δ ≡ 1 (scalar gauge) and the system is infeasible
+outright — recovering LEMMA W2-ID1's forward direction and extending it
+verbatim to the (C-coll) perimeter at every m.
+
+**PROVED at attempt grade (§2):** **LEMMA OA-M1** — the premise's
+byte-share clause makes the interior twist σ′ a K₁-automorphism (at
+m = 2; at m ≥ 3 the composite σ′ is at least a coordinate bijection
+fixing 1, which is all the corollary needs).
+
+**THEOREM OPEN-2a-Σ (conditional; the m ≥ 2 extension of W2-ID1's
+forward direction at attempt grade, GIVEN the Σ-LAW):** at any
+shared-below junction at level m+1, m ≥ 2, where the gauge satisfies
+δ_j = ρ_j·σ′(ρ_j)^{∓1} (either sign), strict ⟹ byte-equal — hence
+recorded ξ = 1 ⟹ byte-equal under every selection rule. *Proof.* Strict
+⟹ δ_j = ρ_j on supp (OA-L3) ⟹ σ′(ρ_j) = 1 = σ′(1) ⟹ ρ_j = 1 (σ′
+injective) ⟹ byte-equal (OA-L4). ∎ The structural reading: **the gauge
+discrepancy of a shared-below junction is a σ′-coboundary, and a
+coboundary can never equal its own argument except at 1 — a strict
+residual cannot mask a byte divergence.** The recorded pair CAN be
+fooled about ξ (the spurious-selection genre, §5 — the converse side)
+but, on the Σ-LAW perimeter, never about byte-divergence (the forward
+side). This is the WHY the examples-first directive asked for.
+
+**THE REMAINING BOX (the exact obstruction, displayed):**
+
+> **(Σ-LAW box)** Prove at proof grade: at every shared-below junction
+> at level m+1 (m ≥ 2), for every supported slot j,
+> δ_j = ρ_j·σ′(ρ_j)^{∓1} with one fixed sign, σ′ the composite
+> interior-twist map — equivalently the per-coordinate ledger identity
+> Prnt_j(A) = u_j·σ′(R_m v(A)) (u_j slot-constant) for the two builders'
+> slot digits, including the exact behaviour of the support-gap terms
+> (measured: they cancel in the C_j/P_j ratio on every one of the 219
+> gap rows; a proof must show the two builders' gap ledgers coincide,
+> plausibly because the slot reads differ by the unit ρ_j and gap
+> patterns are read-support data — un-derived here). Status: OPEN at
+> proof grade; machine-confirmed 468/468 sealed + 24/24 extension m ≥ 2
+> rows, 0 violations (219 gap rows across both artifacts, all
+> conforming); sign undetermined (all observed δ are involutions).
+
+This box is STRICTLY SMALLER than (OPEN-2a): it is an evaluator-ledger
+identity about ONE junction's two slot digits — no byte-equality
+quantifier, no recursion-tree walk, no selection rule — and it is
+exactly the level-m generalization of LEMMA W2-L3 (whose m = 1 scalar
+form is proved in GRTW2). The (DEFEAT) system, which the
+constructed-counterexamples directive asked to solve or refute, is
+REFUTED-ON-THE-BATTERY (zero even single-slot solutions in 905 walked
+rows across engineered defeat-friendly genres) and PROVED INFEASIBLE
+given the Σ-LAW; a future counter-instance to (OPEN-2a) must therefore
+break the Σ-LAW itself, i.e. produce asymmetric gap ledgers — the hunt
+is now one lemma wide.
+
+**What is NOT advanced:** the full W2-OPEN-2 claim (a)/(b) — vok/
+onesided/strictness of the harness lift in the TRANSPORTED chamber above
+a fired twist r₀ — lives off this note's raw shared-below perimeter and
+is untouched (GRTW2's TW-ADM 44/44 instance evidence stands as its only
+support). No Lean artifact; nothing here edits GRTW2.
+
+---
+
+## §7. Proposed annex text for GRTW2 (verbatim; orchestrator action)
+
+> **[ANNEX 2026-08-08, orchestrator, OPEN-2a NARROWED — the OPEN2ATTACK
+> unit (`OPEN2ATTACK_2026-08-08.md`, sealed battery
+> `open2attack_checks.py` + disclosed extension `open2attack_ext.py`;
+> seal commit bd82766, verdict commit = this fold).]** The (OPEN-2a)
+> box's forward direction at m ≥ 2 is reduced, at attempt grade with no
+> new literature consumption, to a single displayed lemma: (i)
+> strict-form identification ⟺ infeasibility of the defeat system
+> δ_j = ρ_j ∧ ρ ≢ 1 (slot calculus, OPEN2ATTACK §1), with recorded
+> ξ = 1 ⟹ strict under every selection rule; (ii) the premise's own
+> byte-share clause makes the interior twist a K₁-automorphism σ′ and
+> the measured gauge law is the coboundary δ_j = ρ_j·σ′(ρ_j)^{∓1}
+> (Σ-LAW: 468 sealed + 24 extension m ≥ 2 junction rows, 0 violations,
+> every gap row included), under which the defeat is infeasible and the
+> m ≥ 2 forward direction FOLLOWS (THEOREM OPEN-2a-Σ, conditional); the
+> surviving open step is the Σ-LAW at proof grade — the level-m
+> generalization of LEMMA W2-L3, strictly smaller than (OPEN-2a).
+> (iii) Instance geography: the identification is instance-exact at 468
+> fresh m ≥ 2 junction-levels (engineered invisible-twist chambers; the
+> I4A/I4B r = 5 geography swept 50 rows), so the two instance-warranted
+> census entries now ride a 470-point instance base plus a displayed
+> mechanism. (iv) The converse's honest boundary extends to m ≥ 2 as
+> predicted: 16 constructed spurious-selection witnesses (F₉ y⁴+c
+> recorded ord-4; F₆₄ y³+c recorded ord-3; byte-equal strict (C-coll)
+> junctions), PE4 o-e's third-read instantiation measured, the
+> d-torsion selection-geography law green at every m (604 byte-equal
+> rows). Direction: box NARROWED (forward direction now one
+> evaluator-ledger lemma wide), NOT closed; W2-OPEN-2's chain-level
+> claim above r₀ and the converse's UNPROVED status are unchanged.
+
+---
+
+— W2-OPEN-2 ATTACK unit, campaign date 2026-08-08; commit 1 (seal)
+bd82766; commit 2 (verdict from committed artifacts) = this commit.

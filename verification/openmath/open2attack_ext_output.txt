@@ -1,0 +1,29 @@
+open2attack_ext -- POST-SEAL EXTENSION (EXPLORATORY-EXT): the m >= 2 spurious-selection geography, targeted
+extension battery: 24 tower specs
+  built 24 towers, 48 junction rows
+censuses: {"spurious_M1": 16, "spurious_M2": 16, "walked_M1": 24, "walked_M2": 24}
+
+OA-ADM      vok+onesided at shared-below junctions           pred 0  obs    0 (   48)  GREEN
+OA-PHIR     rres(phi^cls) = c*psi (Thm-phir)                 pred 0  obs    0 (   48)  GREEN
+OA-TOPRES   top rres slot of Phi^har = c                     pred 0  obs    0 (   48)  GREEN
+OA-RHOBYTE  byte-equal <=> rho == 1                          pred 0  obs    0 (   48)  GREEN
+OA-BWD      byte-equal ==> STRICT                            pred 0  obs    0 (   48)  GREEN
+OA-GAUGE    theta-trivial rows: delta == 1                   pred 0  obs    0 (   48)  GREEN
+OA-XI       theta-trivial rows: Sec 3.4 pair satisfies       pred 0  obs    0 (   48)  GREEN
+OA-FWD-M1   m=1 STRICT ==> byte-equal (W2-ID1 strict)        pred 0  obs    0 (   24)  GREEN
+OA-FWD-M2   m=2 STRICT ==> byte-equal  [THE QUESTION]        pred ?  obs    0 (   24)  GREEN
+OA-FWD-REC  recorded xi=1 ==> byte-equal (box premise)       pred ?  obs    0 (   48)  GREEN
+OA-SIGMA    gap-free M=2: delta = rho^{1-sigma} (a sign)     pred 0  obs    0 (    9)  GREEN
+OA-SPURGEO  spurious <=> d-torsion precedes 1 in enum        pred 0  obs    0 (   40)  GREEN
+
+EXT VERDICT: spurious rows at m >= 2: 16 (PREDICT >= 1 on EXT-A/EXT-B)
+   SPUR-M2+: ('Zp,p=3,EXTA-11-00', 4, ('(((0,),), ((1,),))', '(((1,),), ((0,),))'), True, True)
+   SPUR-M2+: ('Zp,p=3,EXTA-11-01', 4, ('(((0,),), ((1,),))', '(((1,),), ((0,),))'), True, True)
+   SPUR-M2+: ('Zp,p=3,EXTA-11-02', 4, ('(((0,),), ((1,),))', '(((1,),), ((0,),))'), True, True)
+   SPUR-M2+: ('Zp,p=3,EXTA-11-03', 4, ('(((0,),), ((1,),))', '(((1,),), ((0,),))'), True, True)
+   SPUR-M2+: ('Zp,p=3,EXTA-21-00', 4, ('(((0,),), ((1,),))', '(((1,),), ((0,),))'), True, True)
+   SPUR-M2+: ('Zp,p=3,EXTA-21-01', 4, ('(((0,),), ((1,),))', '(((1,),), ((0,),))'), True, True)
+   SPUR-M2+: ('Zp,p=3,EXTA-21-02', 4, ('(((0,),), ((1,),))', '(((1,),), ((0,),))'), True, True)
+   SPUR-M2+: ('Zp,p=3,EXTA-21-03', 4, ('(((0,),), ((1,),))', '(((1,),), ((0,),))'), True, True)
+   SPUR-M2+: ('Zp,p=2,EXTB-11-00', 4, ('(((0,), (1,)), ((0,), (0,)), ((0,), (0,)))', '(((1,), (0,)), ((0,), (0,)), ((0,), (0,)))'), True, True)
+   SPUR-M2+: ('Zp,p=2,EXTB-11-01', 4, ('(((0,), (1,)), ((0,), (0,)), ((0,), (0,)))', '(((1,), (0,)), ((0,), (0,)), ((0,), (0,)))'), True, True)

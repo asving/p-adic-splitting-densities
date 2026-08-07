@@ -1,0 +1,1806 @@
+{
+ "rows": [
+  {
+   "tag": "Zp,p=3,EXTA-11-00",
+   "genre": "EXTA",
+   "r": 3,
+   "M": 1,
+   "shared_below": true,
+   "byte_equal": true,
+   "vok": true,
+   "onesided": true,
+   "strict": true,
+   "orbit": [
+    "((1,),)",
+    "((1,),)"
+   ],
+   "recorded_trivial": true,
+   "supp": [
+    0
+   ],
+   "g_m": 2,
+   "rho": {
+    "0": "((1,),)"
+   },
+   "delta": {
+    "0": "((1,),)"
+   },
+   "rho_nontriv": [],
+   "delta_nontriv": [],
+   "defeat_slots": [],
+   "theta_trivial": true,
+   "gaps": 0,
+   "spurious": false,
+   "spur_d": 2
+  },
+  {
+   "tag": "Zp,p=3,EXTA-11-00",
+   "genre": "EXTA",
+   "r": 4,
+   "M": 2,
+   "shared_below": true,
+   "byte_equal": true,
+   "vok": true,
+   "onesided": true,
+   "strict": true,
+   "orbit": [
+    "(((0,),), ((1,),))",
+    "(((1,),), ((0,),))"
+   ],
+   "recorded_trivial": false,
+   "supp": [
+    0
+   ],
+   "g_m": 4,
+   "rho": {
+    "0": "(((1,),), ((0,),))"
+   },
+   "delta": {
+    "0": "(((1,),), ((0,),))"
+   },
+   "rho_nontriv": [],
+   "delta_nontriv": [],
+   "defeat_slots": [],
+   "theta_trivial": true,
+   "gaps": 0,
+   "sigma_law_A": true,
+   "sigma_law_B": true,
+   "spurious": true,
+   "spur_d": 4
+  },
+  {
+   "tag": "Zp,p=3,EXTA-11-01",
+   "genre": "EXTA",
+   "r": 3,
+   "M": 1,
+   "shared_below": true,
+   "byte_equal": true,
+   "vok": true,
+   "onesided": true,
+   "strict": true,
+   "orbit": [
+    "((1,),)",
+    "((1,),)"
+   ],
+   "recorded_trivial": true,
+   "supp": [
+    0
+   ],
+   "g_m": 2,
+   "rho": {
+    "0": "((1,),)"
+   },
+   "delta": {
+    "0": "((1,),)"
+   },
+   "rho_nontriv": [],
+   "delta_nontriv": [],
+   "defeat_slots": [],
+   "theta_trivial": true,
+   "gaps": 0,
+   "spurious": false,
+   "spur_d": 2
+  },
+  {
+   "tag": "Zp,p=3,EXTA-11-01",
+   "genre": "EXTA",
+   "r": 4,
+   "M": 2,
+   "shared_below": true,
+   "byte_equal": true,
+   "vok": true,
+   "onesided": true,
+   "strict": true,
+   "orbit": [
+    "(((0,),), ((1,),))",
+    "(((1,),), ((0,),))"
+   ],
+   "recorded_trivial": false,
+   "supp": [
+    0
+   ],
+   "g_m": 4,
+   "rho": {
+    "0": "(((1,),), ((0,),))"
+   },
+   "delta": {
+    "0": "(((1,),), ((0,),))"
+   },
+   "rho_nontriv": [],
+   "delta_nontriv": [],
+   "defeat_slots": [],
+   "theta_trivial": true,
+   "gaps": 0,
+   "sigma_law_A": true,
+   "sigma_law_B": true,
+   "spurious": true,
+   "spur_d": 4
+  },
+  {
+   "tag": "Zp,p=3,EXTA-11-02",
+   "genre": "EXTA",
+   "r": 3,
+   "M": 1,
+   "shared_below": true,
+   "byte_equal": true,
+   "vok": true,
+   "onesided": true,
+   "strict": true,
+   "orbit": [
+    "((1,),)",
+    "((1,),)"
+   ],
+   "recorded_trivial": true,
+   "supp": [
+    0
+   ],
+   "g_m": 2,
+   "rho": {
+    "0": "((1,),)"
+   },
+   "delta": {
+    "0": "((1,),)"
+   },
+   "rho_nontriv": [],
+   "delta_nontriv": [],
+   "defeat_slots": [],
+   "theta_trivial": true,
+   "gaps": 0,
+   "spurious": false,
+   "spur_d": 2
+  },
+  {
+   "tag": "Zp,p=3,EXTA-11-02",
+   "genre": "EXTA",
+   "r": 4,
+   "M": 2,
+   "shared_below": true,
+   "byte_equal": true,
+   "vok": true,
+   "onesided": true,
+   "strict": true,
+   "orbit": [
+    "(((0,),), ((1,),))",
+    "(((1,),), ((0,),))"
+   ],
+   "recorded_trivial": false,
+   "supp": [
+    0
+   ],
+   "g_m": 4,
+   "rho": {
+    "0": "(((1,),), ((0,),))"
+   },
+   "delta": {
+    "0": "(((1,),), ((0,),))"
+   },
+   "rho_nontriv": [],
+   "delta_nontriv": [],
+   "defeat_slots": [],
+   "theta_trivial": true,
+   "gaps": 0,
+   "sigma_law_A": true,
+   "sigma_law_B": true,
+   "spurious": true,
+   "spur_d": 4
+  },
+  {
+   "tag": "Zp,p=3,EXTA-11-03",
+   "genre": "EXTA",
+   "r": 3,
+   "M": 1,
+   "shared_below": true,
+   "byte_equal": true,
+   "vok": true,
+   "onesided": true,
+   "strict": true,
+   "orbit": [
+    "((1,),)",
+    "((1,),)"
+   ],
+   "recorded_trivial": true,
+   "supp": [
+    0
+   ],
+   "g_m": 2,
+   "rho": {
+    "0": "((1,),)"
+   },
+   "delta": {
+    "0": "((1,),)"
+   },
+   "rho_nontriv": [],
+   "delta_nontriv": [],
+   "defeat_slots": [],
+   "theta_trivial": true,
+   "gaps": 0,
+   "spurious": false,
+   "spur_d": 2
+  },
+  {
+   "tag": "Zp,p=3,EXTA-11-03",
+   "genre": "EXTA",
+   "r": 4,
+   "M": 2,
+   "shared_below": true,
+   "byte_equal": true,
+   "vok": true,
+   "onesided": true,
+   "strict": true,
+   "orbit": [
+    "(((0,),), ((1,),))",
+    "(((1,),), ((0,),))"
+   ],
+   "recorded_trivial": false,
+   "supp": [
+    0
+   ],
+   "g_m": 4,
+   "rho": {
+    "0": "(((1,),), ((0,),))"
+   },
+   "delta": {
+    "0": "(((1,),), ((0,),))"
+   },
+   "rho_nontriv": [],
+   "delta_nontriv": [],
+   "defeat_slots": [],
+   "theta_trivial": true,
+   "gaps": 0,
+   "sigma_law_A": true,
+   "sigma_law_B": true,
+   "spurious": true,
+   "spur_d": 4
+  },
+  {
+   "tag": "Zp,p=3,EXTA-21-00",
+   "genre": "EXTA",
+   "r": 3,
+   "M": 1,
+   "shared_below": true,
+   "byte_equal": true,
+   "vok": true,
+   "onesided": true,
+   "strict": true,
+   "orbit": [
+    "((1,),)",
+    "((1,),)"
+   ],
+   "recorded_trivial": true,
+   "supp": [
+    0
+   ],
+   "g_m": 2,
+   "rho": {
+    "0": "((1,),)"
+   },
+   "delta": {
+    "0": "((1,),)"
+   },
+   "rho_nontriv": [],
+   "delta_nontriv": [],
+   "defeat_slots": [],
+   "theta_trivial": true,
+   "gaps": 0,
+   "spurious": false,
+   "spur_d": 2
+  },
+  {
+   "tag": "Zp,p=3,EXTA-21-00",
+   "genre": "EXTA",
+   "r": 4,
+   "M": 2,
+   "shared_below": true,
+   "byte_equal": true,
+   "vok": true,
+   "onesided": true,
+   "strict": true,
+   "orbit": [
+    "(((0,),), ((1,),))",
+    "(((1,),), ((0,),))"
+   ],
+   "recorded_trivial": false,
+   "supp": [
+    0
+   ],
+   "g_m": 4,
+   "rho": {
+    "0": "(((1,),), ((0,),))"
+   },
+   "delta": {
+    "0": "(((1,),), ((0,),))"
+   },
+   "rho_nontriv": [],
+   "delta_nontriv": [],
+   "defeat_slots": [],
+   "theta_trivial": true,
+   "gaps": 0,
+   "sigma_law_A": true,
+   "sigma_law_B": true,
+   "spurious": true,
+   "spur_d": 4
+  },
+  {
+   "tag": "Zp,p=3,EXTA-21-01",
+   "genre": "EXTA",
+   "r": 3,
+   "M": 1,
+   "shared_below": true,
+   "byte_equal": true,
+   "vok": true,
+   "onesided": true,
+   "strict": true,
+   "orbit": [
+    "((1,),)",
+    "((1,),)"
+   ],
+   "recorded_trivial": true,
+   "supp": [
+    0
+   ],
+   "g_m": 2,
+   "rho": {
+    "0": "((1,),)"
+   },
+   "delta": {
+    "0": "((1,),)"
+   },
+   "rho_nontriv": [],
+   "delta_nontriv": [],
+   "defeat_slots": [],
+   "theta_trivial": true,
+   "gaps": 0,
+   "spurious": false,
+   "spur_d": 2
+  },
+  {
+   "tag": "Zp,p=3,EXTA-21-01",
+   "genre": "EXTA",
+   "r": 4,
+   "M": 2,
+   "shared_below": true,
+   "byte_equal": true,
+   "vok": true,
+   "onesided": true,
+   "strict": true,
+   "orbit": [
+    "(((0,),), ((1,),))",
+    "(((1,),), ((0,),))"
+   ],
+   "recorded_trivial": false,
+   "supp": [
+    0
+   ],
+   "g_m": 4,
+   "rho": {
+    "0": "(((1,),), ((0,),))"
+   },
+   "delta": {
+    "0": "(((1,),), ((0,),))"
+   },
+   "rho_nontriv": [],
+   "delta_nontriv": [],
+   "defeat_slots": [],
+   "theta_trivial": true,
+   "gaps": 0,
+   "sigma_law_A": true,
+   "sigma_law_B": true,
+   "spurious": true,
+   "spur_d": 4
+  },
+  {
+   "tag": "Zp,p=3,EXTA-21-02",
+   "genre": "EXTA",
+   "r": 3,
+   "M": 1,
+   "shared_below": true,
+   "byte_equal": true,
+   "vok": true,
+   "onesided": true,
+   "strict": true,
+   "orbit": [
+    "((1,),)",
+    "((1,),)"
+   ],
+   "recorded_trivial": true,
+   "supp": [
+    0
+   ],
+   "g_m": 2,
+   "rho": {
+    "0": "((1,),)"
+   },
+   "delta": {
+    "0": "((1,),)"
+   },
+   "rho_nontriv": [],
+   "delta_nontriv": [],
+   "defeat_slots": [],
+   "theta_trivial": true,
+   "gaps": 0,
+   "spurious": false,
+   "spur_d": 2
+  },
+  {
+   "tag": "Zp,p=3,EXTA-21-02",
+   "genre": "EXTA",
+   "r": 4,
+   "M": 2,
+   "shared_below": true,
+   "byte_equal": true,
+   "vok": true,
+   "onesided": true,
+   "strict": true,
+   "orbit": [
+    "(((0,),), ((1,),))",
+    "(((1,),), ((0,),))"
+   ],
+   "recorded_trivial": false,
+   "supp": [
+    0
+   ],
+   "g_m": 4,
+   "rho": {
+    "0": "(((1,),), ((0,),))"
+   },
+   "delta": {
+    "0": "(((1,),), ((0,),))"
+   },
+   "rho_nontriv": [],
+   "delta_nontriv": [],
+   "defeat_slots": [],
+   "theta_trivial": true,
+   "gaps": 0,
+   "sigma_law_A": true,
+   "sigma_law_B": true,
+   "spurious": true,
+   "spur_d": 4
+  },
+  {
+   "tag": "Zp,p=3,EXTA-21-03",
+   "genre": "EXTA",
+   "r": 3,
+   "M": 1,
+   "shared_below": true,
+   "byte_equal": true,
+   "vok": true,
+   "onesided": true,
+   "strict": true,
+   "orbit": [
+    "((1,),)",
+    "((1,),)"
+   ],
+   "recorded_trivial": true,
+   "supp": [
+    0
+   ],
+   "g_m": 2,
+   "rho": {
+    "0": "((1,),)"
+   },
+   "delta": {
+    "0": "((1,),)"
+   },
+   "rho_nontriv": [],
+   "delta_nontriv": [],
+   "defeat_slots": [],
+   "theta_trivial": true,
+   "gaps": 0,
+   "spurious": false,
+   "spur_d": 2
+  },
+  {
+   "tag": "Zp,p=3,EXTA-21-03",
+   "genre": "EXTA",
+   "r": 4,
+   "M": 2,
+   "shared_below": true,
+   "byte_equal": true,
+   "vok": true,
+   "onesided": true,
+   "strict": true,
+   "orbit": [
+    "(((0,),), ((1,),))",
+    "(((1,),), ((0,),))"
+   ],
+   "recorded_trivial": false,
+   "supp": [
+    0
+   ],
+   "g_m": 4,
+   "rho": {
+    "0": "(((1,),), ((0,),))"
+   },
+   "delta": {
+    "0": "(((1,),), ((0,),))"
+   },
+   "rho_nontriv": [],
+   "delta_nontriv": [],
+   "defeat_slots": [],
+   "theta_trivial": true,
+   "gaps": 0,
+   "sigma_law_A": true,
+   "sigma_law_B": true,
+   "spurious": true,
+   "spur_d": 4
+  },
+  {
+   "tag": "Zp,p=2,EXTB-11-00",
+   "genre": "EXTB",
+   "r": 3,
+   "M": 1,
+   "shared_below": true,
+   "byte_equal": true,
+   "vok": true,
+   "onesided": true,
+   "strict": true,
+   "orbit": [
+    "((0,), (1,))",
+    "((1,), (0,))"
+   ],
+   "recorded_trivial": false,
+   "supp": [
+    0
+   ],
+   "g_m": 3,
+   "rho": {
+    "0": "((1,), (0,))"
+   },
+   "delta": {
+    "0": "((1,), (0,))"
+   },
+   "rho_nontriv": [],
+   "delta_nontriv": [],
+   "defeat_slots": [],
+   "theta_trivial": true,
+   "gaps": 2,
+   "spurious": true,
+   "spur_d": 3
+  },
+  {
+   "tag": "Zp,p=2,EXTB-11-00",
+   "genre": "EXTB",
+   "r": 4,
+   "M": 2,
+   "shared_below": true,
+   "byte_equal": true,
+   "vok": true,
+   "onesided": true,
+   "strict": true,
+   "orbit": [
+    "(((0,), (1,)), ((0,), (0,)), ((0,), (0,)))",
+    "(((1,), (0,)), ((0,), (0,)), ((0,), (0,)))"
+   ],
+   "recorded_trivial": false,
+   "supp": [
+    0
+   ],
+   "g_m": 3,
+   "rho": {
+    "0": "(((1,), (0,)), ((0,), (0,)), ((0,), (0,)))"
+   },
+   "delta": {
+    "0": "(((1,), (0,)), ((0,), (0,)), ((0,), (0,)))"
+   },
+   "rho_nontriv": [],
+   "delta_nontriv": [],
+   "defeat_slots": [],
+   "theta_trivial": true,
+   "gaps": 2,
+   "sigma_law_A": true,
+   "sigma_law_B": true,
+   "spurious": true,
+   "spur_d": 3
+  },
+  {
+   "tag": "Zp,p=2,EXTB-11-01",
+   "genre": "EXTB",
+   "r": 3,
+   "M": 1,
+   "shared_below": true,
+   "byte_equal": true,
+   "vok": true,
+   "onesided": true,
+   "strict": true,
+   "orbit": [
+    "((0,), (1,))",
+    "((1,), (0,))"
+   ],
+   "recorded_trivial": false,
+   "supp": [
+    0
+   ],
+   "g_m": 3,
+   "rho": {
+    "0": "((1,), (0,))"
+   },
+   "delta": {
+    "0": "((1,), (0,))"
+   },
+   "rho_nontriv": [],
+   "delta_nontriv": [],
+   "defeat_slots": [],
+   "theta_trivial": true,
+   "gaps": 2,
+   "spurious": true,
+   "spur_d": 3
+  },
+  {
+   "tag": "Zp,p=2,EXTB-11-01",
+   "genre": "EXTB",
+   "r": 4,
+   "M": 2,
+   "shared_below": true,
+   "byte_equal": true,
+   "vok": true,
+   "onesided": true,
+   "strict": true,
+   "orbit": [
+    "(((0,), (1,)), ((0,), (0,)), ((0,), (0,)))",
+    "(((1,), (0,)), ((0,), (0,)), ((0,), (0,)))"
+   ],
+   "recorded_trivial": false,
+   "supp": [
+    0
+   ],
+   "g_m": 3,
+   "rho": {
+    "0": "(((1,), (0,)), ((0,), (0,)), ((0,), (0,)))"
+   },
+   "delta": {
+    "0": "(((1,), (0,)), ((0,), (0,)), ((0,), (0,)))"
+   },
+   "rho_nontriv": [],
+   "delta_nontriv": [],
+   "defeat_slots": [],
+   "theta_trivial": true,
+   "gaps": 2,
+   "sigma_law_A": true,
+   "sigma_law_B": true,
+   "spurious": true,
+   "spur_d": 3
+  },
+  {
+   "tag": "Zp,p=2,EXTB-11-03",
+   "genre": "EXTB",
+   "r": 3,
+   "M": 1,
+   "shared_below": true,
+   "byte_equal": true,
+   "vok": true,
+   "onesided": true,
+   "strict": true,
+   "orbit": [
+    "((0,), (1,))",
+    "((1,), (0,))"
+   ],
+   "recorded_trivial": false,
+   "supp": [
+    0
+   ],
+   "g_m": 3,
+   "rho": {
+    "0": "((1,), (0,))"
+   },
+   "delta": {
+    "0": "((1,), (0,))"
+   },
+   "rho_nontriv": [],
+   "delta_nontriv": [],
+   "defeat_slots": [],
+   "theta_trivial": true,
+   "gaps": 2,
+   "spurious": true,
+   "spur_d": 3
+  },
+  {
+   "tag": "Zp,p=2,EXTB-11-03",
+   "genre": "EXTB",
+   "r": 4,
+   "M": 2,
+   "shared_below": true,
+   "byte_equal": true,
+   "vok": true,
+   "onesided": true,
+   "strict": true,
+   "orbit": [
+    "(((0,), (1,)), ((0,), (0,)), ((0,), (0,)))",
+    "(((1,), (0,)), ((0,), (0,)), ((0,), (0,)))"
+   ],
+   "recorded_trivial": false,
+   "supp": [
+    0
+   ],
+   "g_m": 3,
+   "rho": {
+    "0": "(((1,), (0,)), ((0,), (0,)), ((0,), (0,)))"
+   },
+   "delta": {
+    "0": "(((1,), (0,)), ((0,), (0,)), ((0,), (0,)))"
+   },
+   "rho_nontriv": [],
+   "delta_nontriv": [],
+   "defeat_slots": [],
+   "theta_trivial": true,
+   "gaps": 4,
+   "sigma_law_A": true,
+   "sigma_law_B": true,
+   "spurious": true,
+   "spur_d": 3
+  },
+  {
+   "tag": "Zp,p=2,EXTB-11-04",
+   "genre": "EXTB",
+   "r": 3,
+   "M": 1,
+   "shared_below": true,
+   "byte_equal": true,
+   "vok": true,
+   "onesided": true,
+   "strict": true,
+   "orbit": [
+    "((0,), (1,))",
+    "((1,), (0,))"
+   ],
+   "recorded_trivial": false,
+   "supp": [
+    0
+   ],
+   "g_m": 3,
+   "rho": {
+    "0": "((1,), (0,))"
+   },
+   "delta": {
+    "0": "((1,), (0,))"
+   },
+   "rho_nontriv": [],
+   "delta_nontriv": [],
+   "defeat_slots": [],
+   "theta_trivial": true,
+   "gaps": 2,
+   "spurious": true,
+   "spur_d": 3
+  },
+  {
+   "tag": "Zp,p=2,EXTB-11-04",
+   "genre": "EXTB",
+   "r": 4,
+   "M": 2,
+   "shared_below": true,
+   "byte_equal": true,
+   "vok": true,
+   "onesided": true,
+   "strict": true,
+   "orbit": [
+    "(((0,), (1,)), ((0,), (0,)), ((0,), (0,)))",
+    "(((1,), (0,)), ((0,), (0,)), ((0,), (0,)))"
+   ],
+   "recorded_trivial": false,
+   "supp": [
+    0
+   ],
+   "g_m": 3,
+   "rho": {
+    "0": "(((1,), (0,)), ((0,), (0,)), ((0,), (0,)))"
+   },
+   "delta": {
+    "0": "(((1,), (0,)), ((0,), (0,)), ((0,), (0,)))"
+   },
+   "rho_nontriv": [],
+   "delta_nontriv": [],
+   "defeat_slots": [],
+   "theta_trivial": true,
+   "gaps": 4,
+   "sigma_law_A": true,
+   "sigma_law_B": true,
+   "spurious": true,
+   "spur_d": 3
+  },
+  {
+   "tag": "Zp,p=2,EXTB-21-00",
+   "genre": "EXTB",
+   "r": 3,
+   "M": 1,
+   "shared_below": true,
+   "byte_equal": true,
+   "vok": true,
+   "onesided": true,
+   "strict": true,
+   "orbit": [
+    "((0,), (1,))",
+    "((1,), (0,))"
+   ],
+   "recorded_trivial": false,
+   "supp": [
+    0
+   ],
+   "g_m": 3,
+   "rho": {
+    "0": "((1,), (0,))"
+   },
+   "delta": {
+    "0": "((1,), (0,))"
+   },
+   "rho_nontriv": [],
+   "delta_nontriv": [],
+   "defeat_slots": [],
+   "theta_trivial": true,
+   "gaps": 2,
+   "spurious": true,
+   "spur_d": 3
+  },
+  {
+   "tag": "Zp,p=2,EXTB-21-00",
+   "genre": "EXTB",
+   "r": 4,
+   "M": 2,
+   "shared_below": true,
+   "byte_equal": true,
+   "vok": true,
+   "onesided": true,
+   "strict": true,
+   "orbit": [
+    "(((0,), (1,)), ((0,), (0,)), ((0,), (0,)))",
+    "(((1,), (0,)), ((0,), (0,)), ((0,), (0,)))"
+   ],
+   "recorded_trivial": false,
+   "supp": [
+    0
+   ],
+   "g_m": 3,
+   "rho": {
+    "0": "(((1,), (0,)), ((0,), (0,)), ((0,), (0,)))"
+   },
+   "delta": {
+    "0": "(((1,), (0,)), ((0,), (0,)), ((0,), (0,)))"
+   },
+   "rho_nontriv": [],
+   "delta_nontriv": [],
+   "defeat_slots": [],
+   "theta_trivial": true,
+   "gaps": 2,
+   "sigma_law_A": true,
+   "sigma_law_B": true,
+   "spurious": true,
+   "spur_d": 3
+  },
+  {
+   "tag": "Zp,p=2,EXTB-21-01",
+   "genre": "EXTB",
+   "r": 3,
+   "M": 1,
+   "shared_below": true,
+   "byte_equal": true,
+   "vok": true,
+   "onesided": true,
+   "strict": true,
+   "orbit": [
+    "((0,), (1,))",
+    "((1,), (0,))"
+   ],
+   "recorded_trivial": false,
+   "supp": [
+    0
+   ],
+   "g_m": 3,
+   "rho": {
+    "0": "((1,), (0,))"
+   },
+   "delta": {
+    "0": "((1,), (0,))"
+   },
+   "rho_nontriv": [],
+   "delta_nontriv": [],
+   "defeat_slots": [],
+   "theta_trivial": true,
+   "gaps": 2,
+   "spurious": true,
+   "spur_d": 3
+  },
+  {
+   "tag": "Zp,p=2,EXTB-21-01",
+   "genre": "EXTB",
+   "r": 4,
+   "M": 2,
+   "shared_below": true,
+   "byte_equal": true,
+   "vok": true,
+   "onesided": true,
+   "strict": true,
+   "orbit": [
+    "(((0,), (1,)), ((0,), (0,)), ((0,), (0,)))",
+    "(((1,), (0,)), ((0,), (0,)), ((0,), (0,)))"
+   ],
+   "recorded_trivial": false,
+   "supp": [
+    0
+   ],
+   "g_m": 3,
+   "rho": {
+    "0": "(((1,), (0,)), ((0,), (0,)), ((0,), (0,)))"
+   },
+   "delta": {
+    "0": "(((1,), (0,)), ((0,), (0,)), ((0,), (0,)))"
+   },
+   "rho_nontriv": [],
+   "delta_nontriv": [],
+   "defeat_slots": [],
+   "theta_trivial": true,
+   "gaps": 2,
+   "sigma_law_A": true,
+   "sigma_law_B": true,
+   "spurious": true,
+   "spur_d": 3
+  },
+  {
+   "tag": "Zp,p=2,EXTB-21-03",
+   "genre": "EXTB",
+   "r": 3,
+   "M": 1,
+   "shared_below": true,
+   "byte_equal": true,
+   "vok": true,
+   "onesided": true,
+   "strict": true,
+   "orbit": [
+    "((0,), (1,))",
+    "((1,), (0,))"
+   ],
+   "recorded_trivial": false,
+   "supp": [
+    0
+   ],
+   "g_m": 3,
+   "rho": {
+    "0": "((1,), (0,))"
+   },
+   "delta": {
+    "0": "((1,), (0,))"
+   },
+   "rho_nontriv": [],
+   "delta_nontriv": [],
+   "defeat_slots": [],
+   "theta_trivial": true,
+   "gaps": 2,
+   "spurious": true,
+   "spur_d": 3
+  },
+  {
+   "tag": "Zp,p=2,EXTB-21-03",
+   "genre": "EXTB",
+   "r": 4,
+   "M": 2,
+   "shared_below": true,
+   "byte_equal": true,
+   "vok": true,
+   "onesided": true,
+   "strict": true,
+   "orbit": [
+    "(((0,), (1,)), ((0,), (0,)), ((0,), (0,)))",
+    "(((1,), (0,)), ((0,), (0,)), ((0,), (0,)))"
+   ],
+   "recorded_trivial": false,
+   "supp": [
+    0
+   ],
+   "g_m": 3,
+   "rho": {
+    "0": "(((1,), (0,)), ((0,), (0,)), ((0,), (0,)))"
+   },
+   "delta": {
+    "0": "(((1,), (0,)), ((0,), (0,)), ((0,), (0,)))"
+   },
+   "rho_nontriv": [],
+   "delta_nontriv": [],
+   "defeat_slots": [],
+   "theta_trivial": true,
+   "gaps": 4,
+   "sigma_law_A": true,
+   "sigma_law_B": true,
+   "spurious": true,
+   "spur_d": 3
+  },
+  {
+   "tag": "Zp,p=2,EXTB-21-04",
+   "genre": "EXTB",
+   "r": 3,
+   "M": 1,
+   "shared_below": true,
+   "byte_equal": true,
+   "vok": true,
+   "onesided": true,
+   "strict": true,
+   "orbit": [
+    "((0,), (1,))",
+    "((1,), (0,))"
+   ],
+   "recorded_trivial": false,
+   "supp": [
+    0
+   ],
+   "g_m": 3,
+   "rho": {
+    "0": "((1,), (0,))"
+   },
+   "delta": {
+    "0": "((1,), (0,))"
+   },
+   "rho_nontriv": [],
+   "delta_nontriv": [],
+   "defeat_slots": [],
+   "theta_trivial": true,
+   "gaps": 2,
+   "spurious": true,
+   "spur_d": 3
+  },
+  {
+   "tag": "Zp,p=2,EXTB-21-04",
+   "genre": "EXTB",
+   "r": 4,
+   "M": 2,
+   "shared_below": true,
+   "byte_equal": true,
+   "vok": true,
+   "onesided": true,
+   "strict": true,
+   "orbit": [
+    "(((0,), (1,)), ((0,), (0,)), ((0,), (0,)))",
+    "(((1,), (0,)), ((0,), (0,)), ((0,), (0,)))"
+   ],
+   "recorded_trivial": false,
+   "supp": [
+    0
+   ],
+   "g_m": 3,
+   "rho": {
+    "0": "(((1,), (0,)), ((0,), (0,)), ((0,), (0,)))"
+   },
+   "delta": {
+    "0": "(((1,), (0,)), ((0,), (0,)), ((0,), (0,)))"
+   },
+   "rho_nontriv": [],
+   "delta_nontriv": [],
+   "defeat_slots": [],
+   "theta_trivial": true,
+   "gaps": 4,
+   "sigma_law_A": true,
+   "sigma_law_B": true,
+   "spurious": true,
+   "spur_d": 3
+  },
+  {
+   "tag": "Zp,p=2,EXTC-11-00",
+   "genre": "EXTC",
+   "r": 3,
+   "M": 1,
+   "shared_below": true,
+   "byte_equal": true,
+   "vok": true,
+   "onesided": true,
+   "strict": true,
+   "orbit": [
+    "((0,), (1,))",
+    "((1,), (0,))"
+   ],
+   "recorded_trivial": false,
+   "supp": [
+    0
+   ],
+   "g_m": 3,
+   "rho": {
+    "0": "((1,), (0,))"
+   },
+   "delta": {
+    "0": "((1,), (0,))"
+   },
+   "rho_nontriv": [],
+   "delta_nontriv": [],
+   "defeat_slots": [],
+   "theta_trivial": true,
+   "gaps": 2,
+   "spurious": true,
+   "spur_d": 3
+  },
+  {
+   "tag": "Zp,p=2,EXTC-11-00",
+   "genre": "EXTC",
+   "r": 4,
+   "M": 2,
+   "shared_below": true,
+   "byte_equal": false,
+   "vok": true,
+   "onesided": true,
+   "strict": false,
+   "orbit": [
+    "(((0,), (1,)), ((0,), (0,)), ((0,), (0,)))",
+    "(((1,), (0,)), ((0,), (0,)), ((0,), (0,)))"
+   ],
+   "recorded_trivial": false,
+   "supp": [
+    0
+   ],
+   "g_m": 1,
+   "rho": {
+    "0": "(((0,), (1,)), ((0,), (0,)), ((0,), (0,)))"
+   },
+   "delta": {
+    "0": "(((1,), (0,)), ((0,), (0,)), ((0,), (0,)))"
+   },
+   "rho_nontriv": [
+    0
+   ],
+   "delta_nontriv": [],
+   "defeat_slots": [],
+   "theta_trivial": true,
+   "gaps": 0,
+   "sigma_law_A": true,
+   "sigma_law_B": true
+  },
+  {
+   "tag": "Zp,p=2,EXTC-11-01",
+   "genre": "EXTC",
+   "r": 3,
+   "M": 1,
+   "shared_below": true,
+   "byte_equal": true,
+   "vok": true,
+   "onesided": true,
+   "strict": true,
+   "orbit": [
+    "((0,), (1,))",
+    "((1,), (0,))"
+   ],
+   "recorded_trivial": false,
+   "supp": [
+    0
+   ],
+   "g_m": 3,
+   "rho": {
+    "0": "((1,), (0,))"
+   },
+   "delta": {
+    "0": "((1,), (0,))"
+   },
+   "rho_nontriv": [],
+   "delta_nontriv": [],
+   "defeat_slots": [],
+   "theta_trivial": true,
+   "gaps": 2,
+   "spurious": true,
+   "spur_d": 3
+  },
+  {
+   "tag": "Zp,p=2,EXTC-11-01",
+   "genre": "EXTC",
+   "r": 4,
+   "M": 2,
+   "shared_below": true,
+   "byte_equal": false,
+   "vok": true,
+   "onesided": true,
+   "strict": false,
+   "orbit": [
+    "(((0,), (1,)), ((0,), (0,)), ((0,), (0,)))",
+    "(((1,), (0,)), ((0,), (0,)), ((0,), (0,)))"
+   ],
+   "recorded_trivial": false,
+   "supp": [
+    0
+   ],
+   "g_m": 1,
+   "rho": {
+    "0": "(((0,), (1,)), ((0,), (0,)), ((0,), (0,)))"
+   },
+   "delta": {
+    "0": "(((1,), (0,)), ((0,), (0,)), ((0,), (0,)))"
+   },
+   "rho_nontriv": [
+    0
+   ],
+   "delta_nontriv": [],
+   "defeat_slots": [],
+   "theta_trivial": true,
+   "gaps": 2,
+   "sigma_law_A": true,
+   "sigma_law_B": true
+  },
+  {
+   "tag": "Zp,p=2,EXTC-11-02",
+   "genre": "EXTC",
+   "r": 3,
+   "M": 1,
+   "shared_below": true,
+   "byte_equal": true,
+   "vok": true,
+   "onesided": true,
+   "strict": true,
+   "orbit": [
+    "((0,), (1,))",
+    "((1,), (0,))"
+   ],
+   "recorded_trivial": false,
+   "supp": [
+    0
+   ],
+   "g_m": 3,
+   "rho": {
+    "0": "((1,), (0,))"
+   },
+   "delta": {
+    "0": "((1,), (0,))"
+   },
+   "rho_nontriv": [],
+   "delta_nontriv": [],
+   "defeat_slots": [],
+   "theta_trivial": true,
+   "gaps": 2,
+   "spurious": true,
+   "spur_d": 3
+  },
+  {
+   "tag": "Zp,p=2,EXTC-11-02",
+   "genre": "EXTC",
+   "r": 4,
+   "M": 2,
+   "shared_below": true,
+   "byte_equal": false,
+   "vok": true,
+   "onesided": true,
+   "strict": false,
+   "orbit": [
+    "(((0,), (1,)), ((0,), (0,)), ((0,), (0,)))",
+    "(((1,), (0,)), ((0,), (0,)), ((0,), (0,)))"
+   ],
+   "recorded_trivial": false,
+   "supp": [
+    0
+   ],
+   "g_m": 1,
+   "rho": {
+    "0": "(((0,), (1,)), ((0,), (0,)), ((0,), (0,)))"
+   },
+   "delta": {
+    "0": "(((1,), (0,)), ((0,), (0,)), ((0,), (0,)))"
+   },
+   "rho_nontriv": [
+    0
+   ],
+   "delta_nontriv": [],
+   "defeat_slots": [],
+   "theta_trivial": true,
+   "gaps": 2,
+   "sigma_law_A": true,
+   "sigma_law_B": true
+  },
+  {
+   "tag": "Zp,p=2,EXTC-11-03",
+   "genre": "EXTC",
+   "r": 3,
+   "M": 1,
+   "shared_below": true,
+   "byte_equal": true,
+   "vok": true,
+   "onesided": true,
+   "strict": true,
+   "orbit": [
+    "((0,), (1,))",
+    "((1,), (0,))"
+   ],
+   "recorded_trivial": false,
+   "supp": [
+    0
+   ],
+   "g_m": 3,
+   "rho": {
+    "0": "((1,), (0,))"
+   },
+   "delta": {
+    "0": "((1,), (0,))"
+   },
+   "rho_nontriv": [],
+   "delta_nontriv": [],
+   "defeat_slots": [],
+   "theta_trivial": true,
+   "gaps": 2,
+   "spurious": true,
+   "spur_d": 3
+  },
+  {
+   "tag": "Zp,p=2,EXTC-11-03",
+   "genre": "EXTC",
+   "r": 4,
+   "M": 2,
+   "shared_below": true,
+   "byte_equal": false,
+   "vok": true,
+   "onesided": true,
+   "strict": false,
+   "orbit": [
+    "(((0,), (1,)), ((0,), (0,)), ((0,), (0,)))",
+    "(((1,), (0,)), ((0,), (0,)), ((0,), (0,)))"
+   ],
+   "recorded_trivial": false,
+   "supp": [
+    0
+   ],
+   "g_m": 1,
+   "rho": {
+    "0": "(((0,), (1,)), ((0,), (0,)), ((0,), (0,)))"
+   },
+   "delta": {
+    "0": "(((1,), (0,)), ((0,), (0,)), ((0,), (0,)))"
+   },
+   "rho_nontriv": [
+    0
+   ],
+   "delta_nontriv": [],
+   "defeat_slots": [],
+   "theta_trivial": true,
+   "gaps": 1,
+   "sigma_law_A": true,
+   "sigma_law_B": true
+  },
+  {
+   "tag": "Zp,p=2,EXTC-21-00",
+   "genre": "EXTC",
+   "r": 3,
+   "M": 1,
+   "shared_below": true,
+   "byte_equal": true,
+   "vok": true,
+   "onesided": true,
+   "strict": true,
+   "orbit": [
+    "((0,), (1,))",
+    "((1,), (0,))"
+   ],
+   "recorded_trivial": false,
+   "supp": [
+    0
+   ],
+   "g_m": 3,
+   "rho": {
+    "0": "((1,), (0,))"
+   },
+   "delta": {
+    "0": "((1,), (0,))"
+   },
+   "rho_nontriv": [],
+   "delta_nontriv": [],
+   "defeat_slots": [],
+   "theta_trivial": true,
+   "gaps": 2,
+   "spurious": true,
+   "spur_d": 3
+  },
+  {
+   "tag": "Zp,p=2,EXTC-21-00",
+   "genre": "EXTC",
+   "r": 4,
+   "M": 2,
+   "shared_below": true,
+   "byte_equal": false,
+   "vok": true,
+   "onesided": true,
+   "strict": false,
+   "orbit": [
+    "(((1,), (1,)), ((0,), (0,)), ((0,), (0,)))",
+    "(((1,), (0,)), ((0,), (0,)), ((0,), (0,)))"
+   ],
+   "recorded_trivial": false,
+   "supp": [
+    0
+   ],
+   "g_m": 1,
+   "rho": {
+    "0": "(((1,), (1,)), ((0,), (0,)), ((0,), (0,)))"
+   },
+   "delta": {
+    "0": "(((1,), (0,)), ((0,), (0,)), ((0,), (0,)))"
+   },
+   "rho_nontriv": [
+    0
+   ],
+   "delta_nontriv": [],
+   "defeat_slots": [],
+   "theta_trivial": true,
+   "gaps": 1,
+   "sigma_law_A": true,
+   "sigma_law_B": true
+  },
+  {
+   "tag": "Zp,p=2,EXTC-21-01",
+   "genre": "EXTC",
+   "r": 3,
+   "M": 1,
+   "shared_below": true,
+   "byte_equal": true,
+   "vok": true,
+   "onesided": true,
+   "strict": true,
+   "orbit": [
+    "((0,), (1,))",
+    "((1,), (0,))"
+   ],
+   "recorded_trivial": false,
+   "supp": [
+    0
+   ],
+   "g_m": 3,
+   "rho": {
+    "0": "((1,), (0,))"
+   },
+   "delta": {
+    "0": "((1,), (0,))"
+   },
+   "rho_nontriv": [],
+   "delta_nontriv": [],
+   "defeat_slots": [],
+   "theta_trivial": true,
+   "gaps": 2,
+   "spurious": true,
+   "spur_d": 3
+  },
+  {
+   "tag": "Zp,p=2,EXTC-21-01",
+   "genre": "EXTC",
+   "r": 4,
+   "M": 2,
+   "shared_below": true,
+   "byte_equal": false,
+   "vok": true,
+   "onesided": true,
+   "strict": false,
+   "orbit": [
+    "(((1,), (1,)), ((0,), (0,)), ((0,), (0,)))",
+    "(((1,), (0,)), ((0,), (0,)), ((0,), (0,)))"
+   ],
+   "recorded_trivial": false,
+   "supp": [
+    0
+   ],
+   "g_m": 1,
+   "rho": {
+    "0": "(((1,), (1,)), ((0,), (0,)), ((0,), (0,)))"
+   },
+   "delta": {
+    "0": "(((1,), (0,)), ((0,), (0,)), ((0,), (0,)))"
+   },
+   "rho_nontriv": [
+    0
+   ],
+   "delta_nontriv": [],
+   "defeat_slots": [],
+   "theta_trivial": true,
+   "gaps": 3,
+   "sigma_law_A": true,
+   "sigma_law_B": true
+  },
+  {
+   "tag": "Zp,p=2,EXTC-21-02",
+   "genre": "EXTC",
+   "r": 3,
+   "M": 1,
+   "shared_below": true,
+   "byte_equal": true,
+   "vok": true,
+   "onesided": true,
+   "strict": true,
+   "orbit": [
+    "((0,), (1,))",
+    "((1,), (0,))"
+   ],
+   "recorded_trivial": false,
+   "supp": [
+    0
+   ],
+   "g_m": 3,
+   "rho": {
+    "0": "((1,), (0,))"
+   },
+   "delta": {
+    "0": "((1,), (0,))"
+   },
+   "rho_nontriv": [],
+   "delta_nontriv": [],
+   "defeat_slots": [],
+   "theta_trivial": true,
+   "gaps": 2,
+   "spurious": true,
+   "spur_d": 3
+  },
+  {
+   "tag": "Zp,p=2,EXTC-21-02",
+   "genre": "EXTC",
+   "r": 4,
+   "M": 2,
+   "shared_below": true,
+   "byte_equal": false,
+   "vok": true,
+   "onesided": true,
+   "strict": false,
+   "orbit": [
+    "(((1,), (1,)), ((0,), (0,)), ((0,), (0,)))",
+    "(((1,), (0,)), ((0,), (0,)), ((0,), (0,)))"
+   ],
+   "recorded_trivial": false,
+   "supp": [
+    0
+   ],
+   "g_m": 1,
+   "rho": {
+    "0": "(((1,), (1,)), ((0,), (0,)), ((0,), (0,)))"
+   },
+   "delta": {
+    "0": "(((1,), (0,)), ((0,), (0,)), ((0,), (0,)))"
+   },
+   "rho_nontriv": [
+    0
+   ],
+   "delta_nontriv": [],
+   "defeat_slots": [],
+   "theta_trivial": true,
+   "gaps": 3,
+   "sigma_law_A": true,
+   "sigma_law_B": true
+  },
+  {
+   "tag": "Zp,p=2,EXTC-21-03",
+   "genre": "EXTC",
+   "r": 3,
+   "M": 1,
+   "shared_below": true,
+   "byte_equal": true,
+   "vok": true,
+   "onesided": true,
+   "strict": true,
+   "orbit": [
+    "((0,), (1,))",
+    "((1,), (0,))"
+   ],
+   "recorded_trivial": false,
+   "supp": [
+    0
+   ],
+   "g_m": 3,
+   "rho": {
+    "0": "((1,), (0,))"
+   },
+   "delta": {
+    "0": "((1,), (0,))"
+   },
+   "rho_nontriv": [],
+   "delta_nontriv": [],
+   "defeat_slots": [],
+   "theta_trivial": true,
+   "gaps": 2,
+   "spurious": true,
+   "spur_d": 3
+  },
+  {
+   "tag": "Zp,p=2,EXTC-21-03",
+   "genre": "EXTC",
+   "r": 4,
+   "M": 2,
+   "shared_below": true,
+   "byte_equal": false,
+   "vok": true,
+   "onesided": true,
+   "strict": false,
+   "orbit": [
+    "(((1,), (1,)), ((0,), (0,)), ((0,), (0,)))",
+    "(((1,), (0,)), ((0,), (0,)), ((0,), (0,)))"
+   ],
+   "recorded_trivial": false,
+   "supp": [
+    0
+   ],
+   "g_m": 1,
+   "rho": {
+    "0": "(((1,), (1,)), ((0,), (0,)), ((0,), (0,)))"
+   },
+   "delta": {
+    "0": "(((1,), (0,)), ((0,), (0,)), ((0,), (0,)))"
+   },
+   "rho_nontriv": [
+    0
+   ],
+   "delta_nontriv": [],
+   "defeat_slots": [],
+   "theta_trivial": true,
+   "gaps": 1,
+   "sigma_law_A": true,
+   "sigma_law_B": true
+  }
+ ],
+ "violations": [],
+ "censuses": {
+  "walked_M1": 24,
+  "walked_M2": 24,
+  "spurious_M2": 16,
+  "spurious_M1": 16
+ },
+ "spur_m2_rows": [
+  [
+   "Zp,p=3,EXTA-11-00",
+   4,
+   [
+    "(((0,),), ((1,),))",
+    "(((1,),), ((0,),))"
+   ],
+   true,
+   true
+  ],
+  [
+   "Zp,p=3,EXTA-11-01",
+   4,
+   [
+    "(((0,),), ((1,),))",
+    "(((1,),), ((0,),))"
+   ],
+   true,
+   true
+  ],
+  [
+   "Zp,p=3,EXTA-11-02",
+   4,
+   [
+    "(((0,),), ((1,),))",
+    "(((1,),), ((0,),))"
+   ],
+   true,
+   true
+  ],
+  [
+   "Zp,p=3,EXTA-11-03",
+   4,
+   [
+    "(((0,),), ((1,),))",
+    "(((1,),), ((0,),))"
+   ],
+   true,
+   true
+  ],
+  [
+   "Zp,p=3,EXTA-21-00",
+   4,
+   [
+    "(((0,),), ((1,),))",
+    "(((1,),), ((0,),))"
+   ],
+   true,
+   true
+  ],
+  [
+   "Zp,p=3,EXTA-21-01",
+   4,
+   [
+    "(((0,),), ((1,),))",
+    "(((1,),), ((0,),))"
+   ],
+   true,
+   true
+  ],
+  [
+   "Zp,p=3,EXTA-21-02",
+   4,
+   [
+    "(((0,),), ((1,),))",
+    "(((1,),), ((0,),))"
+   ],
+   true,
+   true
+  ],
+  [
+   "Zp,p=3,EXTA-21-03",
+   4,
+   [
+    "(((0,),), ((1,),))",
+    "(((1,),), ((0,),))"
+   ],
+   true,
+   true
+  ],
+  [
+   "Zp,p=2,EXTB-11-00",
+   4,
+   [
+    "(((0,), (1,)), ((0,), (0,)), ((0,), (0,)))",
+    "(((1,), (0,)), ((0,), (0,)), ((0,), (0,)))"
+   ],
+   true,
+   true
+  ],
+  [
+   "Zp,p=2,EXTB-11-01",
+   4,
+   [
+    "(((0,), (1,)), ((0,), (0,)), ((0,), (0,)))",
+    "(((1,), (0,)), ((0,), (0,)), ((0,), (0,)))"
+   ],
+   true,
+   true
+  ],
+  [
+   "Zp,p=2,EXTB-11-03",
+   4,
+   [
+    "(((0,), (1,)), ((0,), (0,)), ((0,), (0,)))",
+    "(((1,), (0,)), ((0,), (0,)), ((0,), (0,)))"
+   ],
+   true,
+   true
+  ],
+  [
+   "Zp,p=2,EXTB-11-04",
+   4,
+   [
+    "(((0,), (1,)), ((0,), (0,)), ((0,), (0,)))",
+    "(((1,), (0,)), ((0,), (0,)), ((0,), (0,)))"
+   ],
+   true,
+   true
+  ],
+  [
+   "Zp,p=2,EXTB-21-00",
+   4,
+   [
+    "(((0,), (1,)), ((0,), (0,)), ((0,), (0,)))",
+    "(((1,), (0,)), ((0,), (0,)), ((0,), (0,)))"
+   ],
+   true,
+   true
+  ],
+  [
+   "Zp,p=2,EXTB-21-01",
+   4,
+   [
+    "(((0,), (1,)), ((0,), (0,)), ((0,), (0,)))",
+    "(((1,), (0,)), ((0,), (0,)), ((0,), (0,)))"
+   ],
+   true,
+   true
+  ],
+  [
+   "Zp,p=2,EXTB-21-03",
+   4,
+   [
+    "(((0,), (1,)), ((0,), (0,)), ((0,), (0,)))",
+    "(((1,), (0,)), ((0,), (0,)), ((0,), (0,)))"
+   ],
+   true,
+   true
+  ],
+  [
+   "Zp,p=2,EXTB-21-04",
+   4,
+   [
+    "(((0,), (1,)), ((0,), (0,)), ((0,), (0,)))",
+    "(((1,), (0,)), ((0,), (0,)), ((0,), (0,)))"
+   ],
+   true,
+   true
+  ]
+ ],
+ "elapsed_s": 1.6
+}

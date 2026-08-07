@@ -1,0 +1,61 @@
+open2attack_checks -- W2-OPEN-2 ATTACK battery (m >= 2 junction identification)
+engine: iterlawn_pe_reimpl (committed, verbatim) + TowerX (disclosed general-g init)
+classifier: grt_weld_probe.GmnLeg (sealed transcription, verbatim)
+junction helpers: grt_w2_checks orbit_scan/actual_ratios/junction_data (sealed, verbatim)
+mode: FULL
+
+battery: 389 tower specs
+  [   2.2s] 50 towers analyzed...
+  [   3.7s] 100 towers analyzed...
+  [   5.4s] 150 towers analyzed...
+  [   6.7s] 200 towers analyzed...
+  [   7.3s] 250 towers analyzed...
+  [  10.6s] 300 towers analyzed...
+  [  11.7s] 350 towers analyzed...
+  built 389 towers (0 spec rejects), 863 junction rows
+
+censuses: {
+ "byte_eq_M1": 380,
+ "byte_eq_M2": 154,
+ "byte_eq_M3": 30,
+ "delta_nontriv_M2": 141,
+ "delta_nontriv_M3": 38,
+ "gap_rows_M2": 142,
+ "gap_rows_M3": 41,
+ "sigmaA_M2": 377,
+ "sigmaA_M3": 91,
+ "sigmaB_M2": 377,
+ "sigmaB_M3": 91,
+ "skip": 6,
+ "spurious_M1": 32,
+ "strict_M1": 380,
+ "strict_M2": 154,
+ "strict_M3": 30,
+ "strict_and_byte_M1": 380,
+ "strict_and_byte_M2": 154,
+ "strict_and_byte_M3": 30,
+ "walked_M1": 389,
+ "walked_M2": 377,
+ "walked_M3": 91
+}
+
+==============================================================================
+PREREGISTERED vs OBSERVED (violations; samples in parens; '?' = THE QUESTION, no confident preregistration)
+==============================================================================
+OA-ADM      vok+onesided at shared-below junctions           pred 0  obs    0 (  862)  GREEN
+OA-PHIR     rres(phi^cls) = c*psi (Thm-phir)                 pred 0  obs    0 (  862)  GREEN
+OA-TOPRES   top rres slot of Phi^har = c                     pred 0  obs    0 (  862)  GREEN
+OA-RHOBYTE  byte-equal <=> rho == 1                          pred 0  obs    0 (  860)  GREEN
+OA-BWD      byte-equal ==> STRICT                            pred 0  obs    0 (  860)  GREEN
+OA-GAUGE    theta-trivial rows: delta == 1                   pred 0  obs    0 (  520)  GREEN
+OA-XI       theta-trivial rows: Sec 3.4 pair satisfies       pred 0  obs    0 (  520)  GREEN
+OA-FWD-M1   m=1 STRICT ==> byte-equal (W2-ID1 strict)        pred 0  obs    0 (  391)  GREEN
+OA-FWD-M2   m=2 STRICT ==> byte-equal  [THE QUESTION]        pred ?  obs    0 (  378)  GREEN
+OA-FWD-M3   m=3 STRICT ==> byte-equal  [THE QUESTION]        pred ?  obs    0 (   91)  GREEN
+OA-FWD-REC  recorded xi=1 ==> byte-equal (box premise)       pred ?  obs    0 (  860)  GREEN
+OA-SIGMA    gap-free M=2: delta = rho^{1-sigma} (a sign)     pred 0  obs    0 (  236)  GREEN
+OA-SPURGEO  spurious <=> d-torsion precedes 1 in enum        pred 0  obs    0 (  564)  GREEN
+TEETH-1     garbled print leg caught on both rows            pred 0  obs    0 (    2)  GREEN
+TEETH-2     garbled harness eps caught on both rows          pred 0  obs    0 (    2)  GREEN
+------------------------------------------------------------------------------
+OA-SPUR census rows (byte-equal & recorded xi != 1, PREDICT >= 1 at m >= 2): 32
