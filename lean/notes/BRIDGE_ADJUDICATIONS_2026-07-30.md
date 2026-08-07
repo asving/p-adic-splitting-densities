@@ -11995,3 +11995,17 @@ resume via Workflow({scriptPath:
 resumeFromRunId: wf_6796c48c-f67}) — fold-annex replays from cache,
 W-11 runs live. Next watchdog firing executes the resume if the wave
 has passed. Codex window resets Sat 04:22 UTC (W-MULT-DCX first).
+
+---
+
+## STANDING ITEM 1 CLOSED: FGMN Cor 4.9 read at the local print — GRTJC's "numbering re-verification owed" DISCHARGED (annex #2 applied) — 2026-08-07
+
+Cor 4.9 @ print line 1153: "Fᵢ₊₁ = Fᵢ[zᵢ] = F₀[z₀,…,zᵢ], deg ψᵢ = fᵢ".
+GRTJC's gloss "Δ/(ψ_m) ≅ K_{m+1}" = Thm 4.8 ∘ (§3.3 def: ψᵢ = min
+poly of zᵢ, @ 862) ∘ Cor 4.9 — faithful as the pair-cite. With the
+2026-08-07 preliminaries (Thm 4.2/4.8, Cor 2.7/4.7, eq 14, Lemma 5.13)
+ALL FGMN numbering GRTJC consumes is now verified locally; the Codex
+numbering leg is no longer needed (ratification legs still queued).
+Fold-annex standing list: item 1 CLOSED; items 2–4 stand (W2-OPEN-2
+needs mathematics; JA s4 trio + WM obs 3–4 nil-weight). W-11 resume
+in flight (wqtnsu7fx, 3rd attempt after 2x 529 casualty).
