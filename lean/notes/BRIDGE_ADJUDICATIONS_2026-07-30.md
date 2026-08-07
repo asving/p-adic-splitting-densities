@@ -11671,3 +11671,22 @@ pins + the bez source pre-write) → **WM PE9**. **JA r5 (f131c53) landed**
 Lean-leg rescue recorded) → **JA PE7 = the acceptance attempt.**
 Counters: LIFT/JB/JC ACCEPTED · JA 0/2 (PE7 = attempt) · WM 0/2 (PE9 =
 attempt) · W2 **1/2** (PE6 = would-be accepting). Codex ~13h.
+
+---
+
+## FOLD EXECUTED during the API storm (orchestrator-local, 5054d69): the ILN NR-1 rider-rewrite + the JB errata — 2026-08-07
+
+The API saturation (two instant-death waves, 0 tool uses each) blocked
+the triple acceptance wave; the watchdog owns its revival. Meanwhile the
+ORCHESTRATOR-OWED fold debt was discharged locally, append-only, no
+inline accepted text altered: (1) **ITERLAWN fold annex — the NR-1
+rider-rewrite EXECUTED** per LIFTCORNER's acceptance license (the S5
+display transcribed verbatim; all 8 occurrence sites enumerated and
+governed; grade = ACCEPTED mod the W-2 cap; the deeper-level carve-out
+restated). (2) **GRTJB fold annex — both dated errata** (E-1 the
+"(R-coll)" label reads root-inclusive per JA r2; E-2 row-15's W-2 grade
+citations governed by supplier HEAD). Remaining fold debt: the WM (M4)
+annotation (WM is IN-ARC — its own rounds carry it; nothing owed on an
+accepted text) and the public map/paper refresh (deferred to the
+group-acceptance fold as planned). PENDING REVIVAL (watchdog): the
+triple acceptance wave (JA PE7 + WM PE9 + W2 PE6) + the J-D0 composer.
