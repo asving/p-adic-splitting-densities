@@ -1512,3 +1512,30 @@ not-clean state.
   first 5-read data 0-violation" — at the fold.
 
 — GENERAL-n COMPOSE unit, campaign date 2026-08-08 (wallclock 2026-08-03).
+
+---
+
+## ★ FOLD ANNEX (orchestrator, 2026-08-07): THE NR-1 RIDER-REWRITE, LICENSED AND EXECUTED ★
+
+**License chain**: LIFTCORNER_2026-08-08.md was ACCEPTED at 2/2 (PE8 +
+PE9 both clean; acceptance record at its tail, commit 08f61e9). Its S5
+consequence display (lines 1168–1176 at acceptance) specified what this
+note's S0.1 rider becomes once that arc closed, and the acceptance record
+licensed the rewrite for execution at the next ledger fold. This annex IS
+that execution (append-only; no inline text of this accepted note is
+altered; this annex governs every occurrence).
+
+**The rider as written (8 occurrence sites at this commit: lines 49, 118,
+341, 686, 1055, 1108, 1248, 1282)**: "(ITER-LAW-LIFT) open exactly at
+g₀ = 1 ∧ δ₁ = 1; …"
+
+**The rider AS IT NOW READS, on the Φ₁ axis (verbatim from LIFTCORNER
+S5)**: "(ITER-LAW-LIFT) DISCHARGED at attempt grade (capped by the W-2
+0/2 consumption; ξ = 1 core W-2-free): ITER-LAW-n holds for EVERY lawful
+monic Φ₁, every n, at [ILN]'s own conditionality, and covariantly for the
+full Φ₁-orbit by the χ-law." Grade note as of this fold: LIFTCORNER is
+ACCEPTED, so the discharge stands at ACCEPTED grade modulo the W-2 cap
+(GRTW2 arc at 1/2, W2-OPEN-2/OPEN-2a its open box); the ξ = 1 core chain
+is W-2-free per LIFTCORNER's accepted text. Deeper-level non-canonical
+lifts (Φ_{m+1}, m ≥ 1) were never in the rider's scope and remain open,
+as LIFTCORNER's accepted record states.

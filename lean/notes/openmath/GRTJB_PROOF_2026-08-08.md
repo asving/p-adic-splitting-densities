@@ -3117,3 +3117,26 @@ fenced by the §0M conditionality matrix at HEAD — riding [RMG] accepted,
 W-2/J-A at their own arc grades, with the four-member NO-LEG frontier
 (rows 4/5/12/22) as the note's honest open cells. Machine record: four
 byte-frozen instruments, all green.
+
+---
+
+## ★ FOLD ANNEX (orchestrator, 2026-08-07): two dated errata on this accepted note (no inline text altered; this annex is the correction of record) ★
+
+**E-1 (the "(R-coll)" subordinate label, from GRTJA PE2 FINDING 1, report
+9040961)**: J-A's (R-coll) perimeter as originally displayed omitted the
+root-level (q = m) JA-VDIND condition; JA r2 (5d95805) applied the
+root-inclusive extension, verified on all 66 witnesses. THIS NOTE's
+operative fence was already correct (root triviality a HYPOTHESIS at
+every m ≥ 2 — PE2's own adjudication: uncontaminated); only the
+subordinate "(R-coll)" LABEL in the §0M column-(c) apparatus inherited
+the pre-extension reading. Wherever this note's text says "(R-coll)", read
+the root-inclusive form of GRTJA at HEAD (≥ 5d95805).
+
+**E-2 (row 15's W-2 grade citation, from GRTW2 r1, 8d5e3fa)**: W-2's
+W2-C3 was re-graded at its r1 from "strictly at every level (44/44)" to
+proved-to-first-twist (38/44) / measured above (6/44, riding W2-OPEN-2);
+this note's row-15/W-2 citations predate that re-grade and are
+pin-protected (as-of quotes). Wherever this note cites W2-C3's grade,
+the supplier's current form (GRTW2 at HEAD, ≥ 94534df: forward-direction
+W2-ID1 + OPEN-2a) governs. No identity or count in this note consumes
+the re-graded clause beyond its still-valid instance evidence.
