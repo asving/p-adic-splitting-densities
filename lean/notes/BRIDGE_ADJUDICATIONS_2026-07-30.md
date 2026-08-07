@@ -11857,3 +11857,34 @@ Per the effort directive (2026-08-05) J-D0 is an intermediate lemma:
 disclosure-grade honesty, no 2-clean arc owed; W-10 consumes it at pin
 9387eb1. Next: W-10 at the (2,1,1) shape with
 (VD-m)/(C-coll)/(R-coll)/(DMULT-s)/PERIM-μ deleted from its hypotheses.
+
+---
+
+## W-10(2,1,1) PROVED (the J-D block's first stratum-count equality, value-fence-free) + the all-six milestone PUBLISHED + DULEMMA API casualty (clean redo dispatched) — 2026-08-07
+
+**W-10 ADJUDICATED**: THEOREM W-10(2,1,1) — #{monic quadratics over
+O/π^N realizing the decided order-1 Eisenstein shape T(2,1,1)} =
+q·(q−1)·q^(2N−3) = L3(centers)×L3(letters)×q^B, ONE polynomial family
+in q across BOTH residue characteristics, wild p=2 included (every
+member wildly ramified yet the count expression unchanged) — stands
+PROVED at the instance at attempt 0/2, two-commit seal 2e6fdd8/9506a55,
+battery 1,090,364 checks / 0 violations incl. IND PARI oracle legs
+(implication 2,652 members; converse 706 polys set-equal), 4/4 teeth at
+exactly-predicted counts, 6 honest boxes (generality/menu/reimpl/
+oracle-coverage/p2-converse/density-chain). Hypothesis set after
+J-D0's deletion of (VD-m)/(C-coll)/(R-coll)/(DMULT-s)/PERIM-μ:
+{J-D0 @ 9387eb1, L2core assembly id}. This is the first J-D2-species
+count equality DERIVED rather than measured. Next: W-11.
+
+**PUBLIC EXPOSITION**: uniformity map + paper refreshed at the all-six
+milestone (site commit a536084, reviewed + PUSHED per standing policy;
+honest badges: "accepted ≠ machine-checked", W2-OPEN-2 named, order-0
+vs full-density Lean boundary displayed; the six arcs quoted at 51
+hostile passes / 37 repair rounds total). Pipeline artifacts archived
+to docs/public/graph_build/ (this commit).
+
+**DULEMMA (the ∂u≡1 unit): API casualty** — died mid-response leaving
+one UNCOMMITTED partial note, no runner, no commits; partial archived
+OUT of the repo (/tmp/dulemma_partial_archive/, WM-r2 provenance
+precedent) and a clean redo dispatched via wave resume
+(wf_dc60a99c-2ad; W-10 + expo replay from cache).

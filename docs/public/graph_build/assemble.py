@@ -22,6 +22,7 @@ STAGE_CORPORA = {
     'classifier-tree': ['OM', 'capstone-chain'],
     'carry-algebra': ['Moves', 'MovesC', 'MovesRBase', 'MovesGr', 'HC1', 'HC2'],
     'carry-cocycle-ladder': ['CocycleLadder'],
+    'grt-weld': ['GRTWeld'],
     'species-alphabet': ['MovesSp'],
     'branch-mass-laws': ['MovesD'],
     'transfer-assembly': ['MovesT'],
@@ -49,6 +50,7 @@ CORPUS_LABEL = {
     'MovesU': 'Theorem U: the capstone (MovesU)',
     'root-engine': 'The measure route and the trusted base (root modules)',
     'CocycleLadder': 'The carry-cocycle ladder (accepted proof notes and sealed numeric batteries, 2026-08-03)',
+    'GRTWeld': 'The weld (six accepted proof notes, 2026-08-06/07)',
 }
 
 extra_stage = {
@@ -204,7 +206,7 @@ details.leansrc pre { background: #f4f4f4; border: 1px solid #e0e0e0; border-rad
 </header>
 <main class="gwrap">
 <h1>The Uniformity Theorem for p-adic Splitting Densities, Mapped</h1>
-<p class="post-date">The Lean 4 formalization as an expandable graph &mdash; every node carries the formal statement and its mathematical translation. Companion to <a href="paper.html">the expository account</a>. Built July 2026; stage 3 (the carry-cocycle ladder) and the refreshed honest boundary added August 3, 2026.</p>
+<p class="post-date">The Lean 4 formalization as an expandable graph &mdash; every node carries the formal statement and its mathematical translation. Companion to <a href="paper.html">the expository account</a>. Built July 2026; stage 3 (the carry-cocycle ladder) and the refreshed honest boundary added August 3, 2026; stage 4 (the weld) added August 7, 2026.</p>
 
 <div class="howto"><strong>How to read this page.</strong> The page has four levels. The <em>story</em> below reads on its own. Each numbered <em>stage</em> expands to a summary of one step of the proof. Inside a stage, each <em>module group</em> expands to its role and its main results. Each <em>result</em> expands to a plain-mathematics translation, and one further click shows the exact Lean statement. Status badges say what kind of certificate each node carries; the legend is at the bottom, and the honest boundary of the whole development is in the amber panel.</div>
 
