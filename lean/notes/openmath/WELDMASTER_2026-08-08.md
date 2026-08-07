@@ -39,7 +39,7 @@ pins on the [JA]/[W2]/[ILN] dagger groups. Note-only; runner + artifacts
 BYTE-FROZEN, runner md5 6b406f81c250d25f615f715fa9eff474 re-verified
 unchanged). A repair round is NOT a pass: counter 0/2; PE4 is the next
 acceptance attempt.]**~~
-**[r4 STATUS (CURRENT; supersedes the struck r3 line) — ARC: composed (seal
+~~**[r4 STATUS (CURRENT; supersedes the struck r3 line) — ARC: composed (seal
 b375f42 → verdict 0baeb3b) → PE1 HOSTILE (df00707: 0C/5G+3m, NOT CLEAN) →
 r1 (90db22d) → PE2 HOSTILE (1edb104: 0C/1G+2m — pure freshness drift) →
 r2 (8f1c1f2, THE PIN ROUND) → PE3 HOSTILE (07acb37: 0C/0G/1m) → r3
@@ -59,7 +59,30 @@ root-exclusive perimeter with (VD-3) FALSE), consumer check recorded at
 (a): no WM display consumed the root-exclusive range. Note-only; runner +
 artifacts BYTE-FROZEN, runner md5 6b406f81c250d25f615f715fa9eff474
 re-verified unchanged). A repair round is NOT a pass: counter 0/2; PE5 is
-the next acceptance attempt.]** Author:
+the next acceptance attempt.]**~~
+**[r5 STATUS (CURRENT; supersedes the struck r4 line) — ARC: composed (seal
+b375f42 → verdict 0baeb3b) → PE1 HOSTILE (df00707: 0C/5G+3m, NOT CLEAN) →
+r1 (90db22d) → PE2 HOSTILE (1edb104: 0C/1G+2m — pure freshness drift) →
+r2 (8f1c1f2, THE PIN ROUND) → PE3 HOSTILE (07acb37: 0C/0G/1m) → r3
+(52d40bb, the attribution fix + three O-1 pins) → PE4 HOSTILE (39e1eec:
+0C/0G/1m — the LED-Λ pin gap) → r4 (14706f5, the LED-Λ pin + the
+JA-COMPANION root-inclusive extension of WM-FENCE(a)) → PE5 HOSTILE
+(report f97bc78, FIFTH attempt: 0 CRITICAL / 0 GAPS / 1 MINOR, NOT CLEAN
+— the r4 diff verified correct at every edit site, side-by-side consistent
+with the independently written JA r2; consumer check re-verified TRUE by
+an independent 8-site sweep; pin system COMPLETE under a ~45-site quote
+sweep; fresh E-pair-route re-derivation of WM-RHO from WM-COB, 1,344/0;
+the one finding = sealed pre-r4 text: WM-FENCE(a)'s head quote silently
+interpolated "abscissa" into JA-VDIND's display, fused from JA-RES's
+quantifier line — not byte-contiguous at the ce0469a pin, semantically
+nil) → r5 (THIS ROUND — ONE FIX (PE5 F-1): the (a) head quote restored to
+its byte-form at the pin, "= 1 for every attained i", with an [r5]
+bracket in place recording the interpolation's origin; plus PE5 O-1's
+one-line name-list accuracy fix in (a)'s live consumer-check sentence
+((M2)'s citation cell names JA-EPS + JA-RES, not JA-VDIND/JA-EPS).
+Note-only; runner + artifacts BYTE-FROZEN, runner md5
+6b406f81c250d25f615f715fa9eff474 re-verified unchanged). A repair round
+is NOT a pass: counter 0/2; PE6 is the next acceptance attempt.]** Author:
 Fable, campaign date 2026-08-08 (wallclock 2026-08-06).
 
 **SCOPE AND FENCES (stated before anything else).**
@@ -393,7 +416,15 @@ the converse fails in general (the honest gap, censused in S5).
 specializations of (PERIM):
 
 **(a) [(R-coll), J-A].** JA-VDIND's absolute character-triviality at read
-level m — "z_{m−1}^{i·A_{m−1}} = 1 for every attained abscissa i" — IS
+level m — "z_{m−1}^{i·A_{m−1}} = 1 for every attained i" **[r5, PE5 F-1:
+quote restored to its byte-form at the ce0469a pin (JA-VDIND's display,
+wrap-joined there; byte-identical at [JA] HEAD, re-checked this round).
+The sealed text read "… for every attained abscissa i" — the word
+"abscissa" was interpolated by fusion with THEOREM JA-RES's quantifier
+line ("THEN for every attained abscissa i:"), that phrase's only
+occurrence in [JA]; semantically nil — "attained i" ranges over abscissas
+by JA's own surrounding sentence, and the identification below is
+unchanged]** — IS
 (PERIM-(m−1) on the attained abscissa set of the object). (R-coll) at level
 m is its every-recursion-node form ~~(2 ≤ q ≤ m−1)~~ **(2 ≤ q ≤ m,
 ROOT-INCLUSIVE — the q = m instance is JA-VDIND itself, the condition at
@@ -408,8 +439,14 @@ EMPTY; JA-VDIND itself and the per-slot law STAND (JA PE2's fresh 396/0).
 Root-inclusive, the condition coincides with accepted [JB]'s operative
 fence (root triviality a HYPOTHESIS at every m ≥ 2) — exactly (b) below.
 CONSUMER CHECK (this note): no WM display consumed the root-exclusive
-range — the (M2) face and S3's seed identities cite JA-VDIND/JA-EPS
-directly; (F-b) and this section's "Consequence" display read through THIS
+range — the (M2) face and S3's seed identities ~~cite JA-VDIND/JA-EPS
+directly~~ cite JA-EPS + JA-RES (+ W2-C2) and JA-EPS + W2-L2 directly
+[r5, PE5 O-1: name list corrected to the actual citation cells; JA-VDIND
+is itself cited at this clause's head and inside (c); the operative claim
+— those displays rest on JA primitives that STAND per JA PE2's fresh
+396/0, not on the (R-coll) range — is unchanged and was independently
+re-verified by PE5's 8-site sweep]; (F-b) and this section's
+"Consequence" display read through THIS
 cured clause; the S4 stack carries JA's boxes verbatim at the pin, where
 JA-BOX-2's "evaluated" clause inherits the same slip (recorded here, not
 consumed by any WM display)]**. *Proof: citation — [JA]† §3.4's display is
@@ -798,3 +835,36 @@ runner + artifacts BYTE-FROZEN (runner md5
 runner and both sealed artifacts show empty `git diff`; a parallel arc's
 `grt_w2_checks_results.json` working-tree edit is NOT this round's and is
 not staged). Counter 0/2; PE5 next.
+
+— r5 REPAIR ROUND against PE5 (report f97bc78: 0 CRITICAL / 0 GAPS / 1
+MINOR — the r4 diff verified correct at every edit site and side-by-side
+consistent with the independently written JA r2 at 5d95805; consumer
+check re-verified TRUE by an independent 8-site sweep; pin system
+COMPLETE under a ~45-site quote sweep; fresh E-pair-route re-derivation
+of WM-RHO as the (γ, E)-slice of WM-COB, 1,344/0 with both teeth fired),
+wallclock 2026-08-07. ONE FIX (PE5 F-1): WM-FENCE(a)'s head quote —
+sealed text, untouched by r1–r4, escaped four passes — presented as
+JA-VDIND's display the fused string "… = 1 for every attained abscissa
+i", which occurs NOWHERE byte-contiguously in [JA] at the ce0469a pin:
+"abscissa" was interpolated by fusion with THEOREM JA-RES's quantifier
+line ("THEN for every attained abscissa i:"), that phrase's only
+occurrence in [JA]. The quote now reads the pin's byte-form
+"z_{m−1}^{i·A_{m−1}} = 1 for every attained i" (wrap-joined at the pin;
+byte-identical at [JA] HEAD, re-checked this round), with an [r5] bracket
+in place recording the interpolation's origin and preserving the sealed
+wording verbatim — replacement-with-bracket rather than an in-quote
+strike, deliberately: a strike token inside the quotation marks would
+leave the live quote still not byte-true. Semantically nil (PE5's own
+classification: no inference rides the wording). Plus PE5 O-1
+(loose-but-true name list in a LIVE sentence): (a)'s consumer-check line
+"the (M2) face and S3's seed identities cite JA-VDIND/JA-EPS directly"
+corrected (struck + replaced in place) to the actual citation cells —
+(M2) names JA-EPS + JA-RES (+ W2-C2), the seed identities JA-EPS + W2-L2;
+JA-VDIND is itself cited at (a)'s head and inside (c); the operative
+claim (those displays rest on JA primitives that stand per JA PE2's
+fresh 396/0, not on the (R-coll) range) unchanged. The r4 round record
+above carries the same loose phrasing as HISTORY and is untouched.
+Strike census: +2 spans (the r4 STATUS strike + the O-1 strike), 18
+total. Note-only; runner + artifacts BYTE-FROZEN (runner md5
+6b406f81c250d25f615f715fa9eff474 re-verified this round; `git diff` on
+`verification/` empty). Counter 0/2; PE6 next.
