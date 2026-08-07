@@ -83,7 +83,7 @@ one-line name-list accuracy fix in (a)'s live consumer-check sentence
 Note-only; runner + artifacts BYTE-FROZEN, runner md5
 6b406f81c250d25f615f715fa9eff474 re-verified unchanged). A repair round
 is NOT a pass: counter 0/2; PE6 is the next acceptance attempt.]**~~
-**[r6 STATUS (CURRENT; supersedes the struck r5 line) — ARC: composed (seal
+~~**[r6 STATUS (CURRENT; supersedes the struck r5 line) — ARC: composed (seal
 b375f42 → verdict 0baeb3b) → PE1 HOSTILE (df00707: 0C/5G+3m, NOT CLEAN) →
 r1 (90db22d) → PE2 HOSTILE (1edb104: 0C/1G+2m — pure freshness drift) →
 r2 (8f1c1f2, THE PIN ROUND) → PE3 HOSTILE (07acb37: 0C/0G/1m) → r3
@@ -107,7 +107,40 @@ S3 Consequence-paragraph quote's sentence-initial case restored ("A fifth
 sweep …"), matching [JB] 4c4ee56 line 149 / [SYN] f71cd68 line 131, [r6]
 bracket in place. Note-only; runner + artifacts BYTE-FROZEN, runner md5
 6b406f81c250d25f615f715fa9eff474 re-verified unchanged). A repair round
-is NOT a pass: counter 0/2; PE7 is the next acceptance attempt.]** Author:
+is NOT a pass: counter 0/2; PE7 is the next acceptance attempt.]**~~
+**[r7 STATUS (CURRENT; supersedes the struck r6 line) — ARC: composed (seal
+b375f42 → verdict 0baeb3b) → PE1 HOSTILE (df00707: 0C/5G+3m, NOT CLEAN) →
+r1 (90db22d) → PE2 HOSTILE (1edb104: 0C/1G+2m — pure freshness drift) →
+r2 (8f1c1f2, THE PIN ROUND) → PE3 HOSTILE (07acb37: 0C/0G/1m) → r3
+(52d40bb, the attribution fix + three O-1 pins) → PE4 HOSTILE (39e1eec:
+0C/0G/1m — the LED-Λ pin gap) → r4 (14706f5, the LED-Λ pin + the
+JA-COMPANION root-inclusive extension of WM-FENCE(a)) → PE5 HOSTILE
+(f97bc78: 0C/0G/1m — the WM-FENCE(a) head-quote interpolation) → r5
+(f8c2c09, the head-quote byte-form restoration + the O-1 name-list fix) →
+PE6 HOSTILE (7c3893f: 0C/0G/2m — two quote-fidelity slips in sealed text)
+→ r6 (355a14f, both quote sites restored to their pinned byte-forms) →
+PE7 HOSTILE (report 0a2fb54, SEVENTH attempt: CLEAN — 0 CRITICAL / 0 GAPS
+/ 0 MINOR; counter 1/2; ledger 93da1d1; PE8 = the accepting attempt) →
+PE8 HOSTILE (report 8d84d77, EIGHTH attempt: 0 CRITICAL / 1 JUSTIFICATION
+GAP / 0 MINOR, NOT CLEAN — counter RESETS 1/2 → 0/2; the r6-state note
+otherwise verified TRUE at HEAD: the five faces statement-by-statement at
+the pins, two fresh-route re-derivations unused by PE1–PE7 (WM-RHO by the
+proof-step/shift route at integer level, negative γ included; WM-CLASS by
+the cyclic-norm-invariant route), 20,398/0 exit 0, five teeth fired,
+sealed battery byte-identical; THE GAP = sealed S0 setting text, escaped
+all seven passes because it is neither a quote nor consumed by any
+display: the Bézout line declared the minus-form "ℓ_j h_j − ℓ′_j e_j =
+±1 … as pinned (`bez`)", FALSE of the pinned `bez` and of every pinned
+supplier's + display at every read with e > 1, h > 1, realized on the
+note's own roster (reads (3,2) → 7, (2,3) → 5); blast radius NIL — ℓ′
+enters no display except the correct S0.3 transcription) → r7 (THIS
+ROUND — ONE FIX (PE8 F-1): the S0 Bézout line restored to the pinned
+byte-form "ℓ_j h_j + ℓ′_j e_j = 1 (0 ≤ ℓ_j < e_j) as pinned (`bez`)",
+re-verified this round against [ILN] ced7dbb line 157, with an [r7]
+bracket in place recording the sealed minus-form and its roster
+falsification. Note-only; runner + artifacts BYTE-FROZEN, runner md5
+6b406f81c250d25f615f715fa9eff474 re-verified unchanged). A repair round
+is NOT a pass: counter 0/2; PE9 is the next acceptance attempt.]** Author:
 Fable, campaign date 2026-08-08 (wallclock 2026-08-06).
 
 **SCOPE AND FENCES (stated before anything else).**
@@ -189,10 +222,20 @@ of each comparison. The non-textual leg is
 ## S0. Setting (all consumed; nothing new defined until S1)
 
 Tower T of the [ILN]† S0.1 class with reads (e_j, h_j, g_j), j = 0..n
-(NR = n+1 reads), normalized Bézout ℓ_j h_j − ℓ′_j e_j = ±1 form as pinned
-(`bez`), weights γ_1 = h_0, γ_{j+1} = e_j·w_jΦ_j + h_j, W_j := w_jΦ_j =
-e_{j−1}g_{j−1}γ_j; letters z_j ∈ K_j (units, ψ(0) ≠ 0), z̄ := z_{n+1},
-K := K_{n+1}; E_0 := 1, E_j := e_0⋯e_{j−1}, E := E_{n+1}. Split
+(NR = n+1 reads), normalized Bézout ℓ_j h_j + ℓ′_j e_j = 1 (0 ≤ ℓ_j < e_j)
+as pinned (`bez`) **[r7, PE8 F-1: the sealed line (present at b375f42,
+untouched by r1–r6) declared the minus-form "ℓ_j h_j − ℓ′_j e_j = ±1" —
+the PRINT calculus's convention with the print's own different, unpinned
+ℓ′ — which is FALSE of the pinned `bez` at every read with e > 1 and
+h > 1 (ℓh − ℓ′e = 1 − 2ℓ′e ∉ {±1}), falsified on this note's own frozen
+roster: read (3, 2) gives (ℓ, ℓ′) = (2, −1), ℓh − ℓ′e = 7; read (2, 3)
+gives (1, −1), 5 — towers C2D/C3C/C3E/I4A/I4B. The + form restored here
+is the byte-form at every pinned supplier ([ILN] ced7dbb line 157, [W2]
+5463f2a line 76, [JA] ce0469a line 53 — [ILN] re-verified this round)
+and the ONLY convention the S0.3 S-chain display below and the S5
+eps-path gloss consume]**, weights γ_1 = h_0, γ_{j+1} = e_j·w_jΦ_j + h_j,
+W_j := w_jΦ_j = e_{j−1}g_{j−1}γ_j; letters z_j ∈ K_j (units, ψ(0) ≠ 0),
+z̄ := z_{n+1}, K := K_{n+1}; E_0 := 1, E_j := e_0⋯e_{j−1}, E := E_{n+1}. Split
 γ ↦ (s_1..s_{n+1}, u_1) by iterated eq-(12); β_j(γ) = the split's own
 level-j weight; the split abscissa satisfies s_j(γ) = ℓ_{j−1}β_j(γ) mod
 e_{j−1} (eq-12 at read (e_{j−1}, h_{j−1})). [ILN]† S0.3 pair data:
@@ -936,3 +979,39 @@ would find a sixth site", [r6] bracket in place. Strike census: +1 span
 (the r5 STATUS strike), 19 total. Note-only; runner + artifacts
 BYTE-FROZEN (runner md5 6b406f81c250d25f615f715fa9eff474 re-verified this
 round; `git diff` on `verification/` empty). Counter 0/2; PE7 next.
+
+— r7 REPAIR ROUND against PE8 (report 8d84d77: 0 CRITICAL / 1
+JUSTIFICATION GAP / 0 MINOR — the would-be accepting attempt after PE7's
+clean 0a2fb54; counter RESET 1/2 → 0/2; everything else verified TRUE at
+HEAD: the five faces statement-by-statement at the pins, WM-COB / WM-RHO
+/ WM-CLASS / WM-FENCE re-derived by hand, two fresh routes unused by
+PE1–PE7 (the proof-step/shift route at integer level with negative γ; the
+cyclic-norm-invariant route), 20,398/0 exit 0, five teeth fired, sealed
+battery byte-identical), wallclock 2026-08-07. ONE FIX (PE8 F-1): the S0
+setting line's Bézout normalization — sealed text, present at b375f42,
+untouched by r1–r6, escaped all seven prior passes (neither a quote nor
+consumed by any display, so no sweep touched it; PE8 was the first pass
+to machine-check the S0 setting identities themselves) — declared the
+minus-form "ℓ_j h_j − ℓ′_j e_j = ±1 form as pinned (`bez`)". That is the
+PRINT calculus's convention with the print's own (different, unpinned)
+ℓ′; of the pinned `bez` (ℓ ∈ [0, e), ℓh ≡ 1 mod e, ℓ′ = (1 − ℓh)/e) it
+is FALSE at every read with e > 1 and h > 1 (ℓh − ℓ′e = 1 − 2ℓ′e ∉
+{±1}), falsified on this note's own frozen roster: read (3, 2) gives
+(ℓ, ℓ′) = (2, −1) and ℓh − ℓ′e = 7; read (2, 3) gives (1, −1) and 5 —
+towers C2D/C3C/C3E/I4A/I4B carry these reads (PE8's machine check). The
+line now reads the pinned byte-form "normalized Bézout ℓ_j h_j + ℓ′_j
+e_j = 1 (0 ≤ ℓ_j < e_j) as pinned (`bez`)" — re-verified THIS ROUND
+against [ILN] ced7dbb line 157 ("Normalized Bézout pairs (ℓ_j, ℓ_j′):
+ℓ_jh_j + ℓ_j′e_j = 1, 0 ≤ ℓ_j < e_j"), the same + display carried at
+[W2] 5463f2a line 76 and [JA] ce0469a line 53 (both re-extracted this
+round), and the ONLY convention the note's own S0.3 S-chain display and
+S5 eps-path gloss consume — with an [r7] bracket in place recording the
+sealed minus-form and its roster falsification
+(replacement-with-bracket per the r5/r6 precedent: a strike inside the
+setting sentence would leave the live setting still false). Semantically
+nil for every displayed result (PE8's own blast-radius verdict: ℓ′
+enters no display of this note except the correct S0.3 transcription;
+every machine family green under the + convention). Strike census: +1
+span (the r6 STATUS strike), 20 total. Note-only; runner + artifacts
+BYTE-FROZEN (runner md5 6b406f81c250d25f615f715fa9eff474 re-verified
+this round; `git diff` on `verification/` empty). Counter 0/2; PE9 next.
