@@ -12016,3 +12016,23 @@ fold-annex replay errored). No partials (nothing ran). STANDING DOWN
 per storm protocol; the watchdog owns the next resume of
 wf_6796c48c-f67. Meanwhile orchestrator-local: FGMN Cor 4.9 leg closed
 at 63091ce (GRTJC annex #2).**
+
+---
+
+## FOLD-ANNEX LIVE RE-RUN (wave resume, cache replay unavailable): sweep verified COMPLETE at HEAD — no new annexes owed, none written — 2026-08-07
+
+The re-run swept the six accepted weld tails fresh against git at HEAD
+(0474dd6). All 12 dated annex blocks present and correct: GRTJA 4
+(FC-1–FC-4 @ fdf1d99), WELDMASTER 2 (O-1/O-2 @ fdf1d99), LIFTCORNER 2
+(FC-1/FC-2 @ fdf1d99), GRTJB 1 (@ fdf1d99), GRTW2 1 (@ fdf1d99),
+GRTJC 2 (DMULT-s @ e3535d5, Cor 4.9 @ 63091ce). No note-body text
+above any acceptance record touched since the freezes (only commits
+touching the six tails since fdf1d99: 63091ce, pure append). No newly
+closable fold-carry item found. STANDING list unchanged from 63091ce:
+(1) W2-OPEN-2/OPEN-2a — the weld's one open lemma, accepted as a BOX,
+needs new mathematics (MacLane–Vaquié probe; Codex queue, W-MULT-DCX
+first); (2) GRTJA s4 trio (GRB dated-REV cite, [rN] bracket
+convention, unpinned blueprint cites) — nil-weight, suppliers
+motion-free; (3) WM PE10 obs 3–4 (verifier's own harness bug; H¹ = 0
+display offer = new composition work) — not status-updates. This entry
+is the re-run's idempotency record; no annex duplication.
