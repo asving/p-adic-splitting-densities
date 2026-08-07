@@ -1539,3 +1539,9 @@ ACCEPTED, so the discharge stands at ACCEPTED grade modulo the W-2 cap
 is W-2-free per LIFTCORNER's accepted text. Deeper-level non-canonical
 lifts (Φ_{m+1}, m ≥ 1) were never in the rider's scope and remain open,
 as LIFTCORNER's accepted record states.
+
+**FOLD ANNEX SUPPLEMENT (orchestrator, 2026-08-07)**: GRTW2 was ACCEPTED
+at 2/2 this date (record at its tail). The rider's grade note upgrades
+accordingly: the W-2 cap on the (ITER-LAW-LIFT) discharge is now an
+ACCEPTED supplier at its fenced scope (W2-OPEN-2/OPEN-2a remaining the
+weld's one open box); the ξ = 1 core chain was W-2-free throughout.

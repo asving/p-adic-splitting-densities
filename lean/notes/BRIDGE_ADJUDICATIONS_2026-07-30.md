@@ -11804,3 +11804,19 @@ and JC-PER pins the note's side). Hypothesis bookkeeping unchanged
 (Cor 4.7(2)'s P_α-membership; Lemma 5.13's µ-proper for the ideal form).
 **The (DMULT-s) upgrade task is now: one coboundary-triviality lemma
 with two mapped proof routes and exhaustive empirical confirmation.**
+
+---
+
+## ★★★ GRTW2 ACCEPTED AT 2/2 (the highest-risk junction; PE5+PE6 clean; 566-junction resultant leg, 560 off-roster) + JA PE7 CLEAN (1/2) + WM PE9 CLEAN (1/2; 3rd Lean leg) — FOUR OF SIX NOTES ACCEPTED, both others one pass away — 2026-08-07
+
+W2 acceptance record at the note tail; ITERLAWN's rider annex
+supplemented (the W-2 cap = an accepted supplier now); the WM PE9 Lean
+leg rescued (verification/openmath/wm_pe9_lean_leg.lean, 12 ∀-theorems
+0-sorry incl. bez_plus + the minus-form falsification). JA PE7 CLEAN
+(1670f67; unimodular-matrix route 322,916/0; both as-of quotes
+byte-exact) — **JA PE8 = the would-be accepting attempt.** WM PE9 CLEAN
+(9384083; the sealed-declaration sweep found NO second F-1-species item;
+three warrants kernel-graded) — **WM PE10 = the would-be accepting
+attempt.** Weld: LIFTCORNER + GRTJB + GRTJC + GRTW2 ACCEPTED · JA 1/2 ·
+WM 1/2 · W2-OPEN-2 the one open box · J-D0 revival dispatched alongside
+the two accepting attempts. Codex ~12.5h.
