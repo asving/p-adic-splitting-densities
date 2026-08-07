@@ -11690,3 +11690,30 @@ annotation (WM is IN-ARC — its own rounds carry it; nothing owed on an
 accepted text) and the public map/paper refresh (deferred to the
 group-acceptance fold as planned). PENDING REVIVAL (watchdog): the
 triple acceptance wave (JA PE7 + WM PE9 + W2 PE6) + the J-D0 composer.
+
+---
+
+## NUMBERING-LEG PRELIMINARY, EXECUTED LOCALLY during the storm (orchestrator; the FGMN print is at docs/references/fgmn_residual_ideals_1305.0775v3_layout.txt): THE EXACT FORM IS IN THE SOURCE — 2026-08-07
+
+The (DMULT-s) "numbering-verification owed" flag (J-C r2; the Codex-queue
+leg) is now HALF-DISCHARGED by direct local reading of the print:
+**Corollary 4.7 (layout line 1121)** states (1) exact additivity, (2)
+R_{i,α+β}(gh) = R_{i,α}(g)·R_{i,β}(h) on P_α × P_β — the exact graded
+multiplicativity, multiplier 1 — and (3) R_i(gh) = R_i(g)·R_i(h) for ALL
+g, h ∈ K[x]; **Lemma 5.13 (line 1403)** gives the residual-ideal version
+R(gh) = R(g)R(h) under g µ-PROPER (its proof = Cor 4.6 + Thm 4.8 + Lemma
+2.6 + Cor 4.7 + the ceiling identity (21)); the eq-(14) normalization
+makes R_r(g) monic (line 1254). Also verified while reading: Thm 4.2
+(line 1028: H_µ(g) = φ_r(α)R_{r,α}(g)(y_r); P_α/P_α⁺ = φ_r(α)Δ free of
+rank one), Thm 4.8 (line 1136: R_{r,0} : Δ ≅ F_r[y]), Cor 2.7 (line 525:
+S_λ(gh) = S_λ(g) + S_λ(h)) — all THREE cited numbers correct as used.
+**What r2's citation attempt actually hit**: the up-to-unit pricing lives
+in the CORPUS's transport (TR-3′-GEN / (IN-3)'s line-wise c), not in
+FGMN's own operator. REMAINING for the (DMULT-s) upgrade MEASURED →
+CITED: one small transcription task — verify J-C's ρ/𝑅 normalization
+coincides with FGMN's eq-(14) normalization (the R1-DMULT 2,784/0
+multiplier-exactly-1 measurement says it does), and carry Cor 4.7(2)'s
+P_α-membership + Lemma 5.13's µ-proper hypotheses. **Queued as a small
+unit (Codex no longer required for this leg — the print is local).**
+Storm status: solo canary also insta-died (0 tool uses); watchdog owns
+the revival; the fold and this preliminary were the storm-window work.
