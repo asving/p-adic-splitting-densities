@@ -11832,3 +11832,28 @@ coboundary display c = z̄^δ·∂Ẽ is not one gauge among many but THE gauge.
 1/2 (PE8 = the accepting attempt, in flight) · W2-OPEN-2 the one open
 box · J-D0 composing (in flight).** The watchdog found the fleet alive;
 this fold executed at its firing. Codex ~11.5h.
+
+---
+
+## ★★★★★★ ALL SIX WELD NOTES ACCEPTED — GRTJA 2/2 (PE7+PE8 clean; GF + Galois-descent routes) — THE GRT WELD IS VERIFIED-COMPLETE AT ITS DISPLAYED CONDITIONALITY + J-D0 PROVED (W-10 opens value-fence-free) — 2026-08-07
+
+GRTJA acceptance record at the note tail (this commit; freeze stamp md5
+cba309ce @ f131c53; fold-carry inventory catalogued). **THE WELD:
+LIFTCORNER + GRTJB + GRTJC + GRTW2 + WELDMASTER + GRTJA — ALL SIX
+ACCEPTED at 2/2.** Remaining open surface of the weld: W2-OPEN-2/OPEN-2a
+(the ONE fenced open lemma), the ∂u≡1 lemma ((DMULT-s)
+MEASURED→PROVED), the Codex ratification legs (window ~11h).
+
+J-D0 ADJUDICATED: LEMMA J-D0 (count-gauge-blindness — stratum counts
+see the SHAPE, never the letters; the coboundary law c' = c·∂u exact in
+K_top) stands PROVED on its stated perimeter (unit-character gauges,
+L3×L4 assembly) at attempt 0/2 with 6 honest boxes — two-commit seal
+1642275/9387eb1, 68,523 checks / 0 violations on 37 towers (29 frozen
+roster + fresh p=7 genre incl. wild-top (7,3,1)), 4/4 teeth, all 3
+same-shape-different-letters pairs count-equal. Its conditionality
+stack IMPROVED post-hoc: BOX-1/BOX-2 priced GRTJA + WELDMASTER at 1/2 —
+both are now ACCEPTED, so the stack is SIX accepted suppliers + [ILN]†.
+Per the effort directive (2026-08-05) J-D0 is an intermediate lemma:
+disclosure-grade honesty, no 2-clean arc owed; W-10 consumes it at pin
+9387eb1. Next: W-10 at the (2,1,1) shape with
+(VD-m)/(C-coll)/(R-coll)/(DMULT-s)/PERIM-μ deleted from its hypotheses.

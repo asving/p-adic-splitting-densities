@@ -848,3 +848,41 @@ rescue above. Runner + artifacts BYTE-FROZEN. **Arc: rounds 1–6 complete
 (PE1 → r1 → PE2 → r2 → PE3 CLEAN → PE4 0C+1G → r3 → PE5 0C+1Gm → r4 →
 PE6 0C+2Gm → r5); counter 0/2 CLEAN (reset by PE4); next pass = JA-PE7 =
 the acceptance attempt.**
+
+---
+
+## ★ ACCEPTANCE RECORD (orchestrator, 2026-08-07) ★
+
+**THIS NOTE IS ACCEPTED at 2/2** — PE7 (1670f67, CLEAN) and PE8 (0efa82e,
+CLEAN; the two routes unused by PE1–PE7: the GENERATING-FUNCTION route —
+rational-abscissa GF with the carry as the GF defect, the graded
+carry-marker algebra ℤ[x,T,T⁻¹]/(xᵉ−T) giving JA-EPS by normal-form
+uniqueness, Bézout technology #4, 385,057/0 — and the GALOIS-DESCENT
+route — isotypic decomposition, the conjugation split as a μ_d-torsor,
+JA-VDIND by descent with both boundary fences positively witnessed
+including CONSTRUCTED converse-escape cancellation instances ≥3 per
+field up to 𝔽₂₅, 5,519/0; sealed runner 10,311/0 across 17 families;
+PE6 Lean leg recompiled 0-sorry). Full arc: composed → PE1 → r1 → PE2 →
+r2 → PE3 CLEAN → PE4 (0C+1G; counter reset) → r3 → PE5 (0C+1Gm) → r4 →
+PE6 (0C+2Gm) → r5 → PE7 CLEAN → PE8 CLEAN. Eight passes, five repairs.
+
+**FREEZE-CONVENTION STAMP** (the s2 item, W2 precedent): the accepted
+text is the post-r5 body, md5 cba309ce, byte-frozen since f131c53; both
+clean passes read that identical text; this record and any future annex
+are dated appends — the frozen body is never edited inline.
+
+**WHAT IS ACCEPTED**: the J-A junction — the operator dictionary and the
+per-slot character-gauge law (JA-RES, JA-EPS, JA-GRID, JA-VDIND with its
+fences, ORB-RES, JA-PIN, the boxes) at their displayed grades and
+conditionality, sealed-runner-keyed, with the 𝔽_p[[t]] no-PARI-leg
+disclosure (JA-BOX-4) standing.
+
+**FOLD-CARRY INVENTORY** (PE8's s1, all pin-protected and
+favorable-direction — owed at the next annex, never as inline edits):
+§1's ILN "motion-free since" (ILN has since gained the 5054d69 rider
+rewrite + adc6cf3 supplement, both pure appends); §5's suppliers still
+billed "(0/2 hostile passes)" (JB/JC/W2/WM since ACCEPTED); the
+grade-cap attempt-grade billing (W-2 cap now an accepted supplier);
+§3.2's "cure owed to that note's own arc" (the W-2 arc closed with
+tex-1213–1218 standing). s3: the converse-escape fence now positively
+witnessed off-roster. s4: standing PE4-n1/PE6-p1/PE5-m3.
