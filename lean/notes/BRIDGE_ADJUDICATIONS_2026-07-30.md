@@ -11624,3 +11624,29 @@ spurious set ({(𝔽₄,g3),(𝔽₉,g4)}; zero at g ≤ 2). A prior dead PE4's
 draft honestly disclosed and fully re-verified. **r4 = three one-liners +
 dateline → PE5.** Counters: LIFT/JB/JC ACCEPTED · JA 0/2 (PE6 next) · WM
 **1/2** (PE8 = accepting) · W2 0/2 (r4 → PE5).
+
+---
+
+## WM PE8: 0C/1G — RESET by a sealed-text sign-convention error the EIGHTH reader caught (ℓh−ℓ′e vs the pinned ℓh+ℓ′e; nil consumption; one line) + JA PE6 0C/2Gm with THE FIRST LEAN-VERIFIED LEG (19 decls, 0 sorry) + W2 r4 found a 4th AND 5th same-species surface — 2026-08-07
+
+**WM PE8 (8d84d77) — counter resets to 0/2.** F-1: note line 192's Bézout
+normalization "ℓ_j h_j − ℓ′_j e_j = ±1" FALSE vs every pinned supplier
+AND the note's own S0.3/S5 displays (+ convention); falsified on its own
+roster; escaped PE1–PE7; blast radius nil (no display consumes ℓ′). Two
+fresh legs: WM-RHO by proof-step/shift incl. negative γ (15,260/0);
+WM-CLASS by the CYCLIC-NORM-INVARIANT route (N(c) exact 29/29; κ ≥ 0 on
+all 3,597 class pairs; explicit E-th-root form). **r7 = one line → PE9.**
+
+**JA PE6 (8b2fbed) — 0C/2Gm** (a stale §8 heading; a deferral whose
+trigger fired 15 min before r4 — blast radius nil, pin covers). **FRESH
+LEG OF NOTE: the §3/§4 integer exponent system PROVED IN LEAN — 19
+declarations, lake env lean exit 0, ZERO sorry (/tmp, md5 52a81e63) —
+the campaign's first kernel-checked leg; artifact rescued into
+verification/openmath/ja_pe6_lean_leg.lean this commit (if /tmp
+survived).** r5 = two one-liners → PE7.
+
+**W2 r4 (94534df) — landed WITH the completeness lesson applied: the
+pre-edit grep found a FOURTH (§6.2 appositive = PE4's o-d) and FIFTH
+(adjacent row label) same-species surface; all five scoped; every
+remaining "identification" token dispositioned in the round block.**
+PE5 next. Counters: LIFT/JB/JC ACCEPTED · JA 0/2 · WM 0/2 · W2 0/2.
