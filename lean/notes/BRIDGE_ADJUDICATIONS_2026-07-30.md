@@ -11559,3 +11559,29 @@ riding OPEN-2a); the sign REVERTED to the source-correct r0 form with the
 conflation displayed and anti-re-flip records in both brackets.** PE3
 next. Counters: LIFT/JB/JC ACCEPTED · JA 0/2 (one-pin r3) · WM 0/2 · W2
 0/2. Codex window ~3h.
+
+---
+
+## JA r3 landed (ALL cross-note edges now pinned — drift species extinct) + WM PE6 0C/0G/2m (the 54-span sweep) + W2 PE3 0C/1G-minor (W2-ID1 is one-directional; converse counter-instance constructed, blast radius contained) — 2026-08-07
+
+**JA r3 (8ee86da)**: 6 sites, [W2]@ffa1e57 + [ILN]@ced7dbb pins; the
+supplier's current grade quoted with the full (a)–(d) carry-list.
+**JA-PE5 = next acceptance attempt.**
+
+**WM PE6 (7c3893f) — 0C/0G/2m**: two quote-fidelity one-liners (an [ILN]
+span not byte-contiguous at pin; a case-only slip), caught by the
+exhaustive wrap-insensitive sweep of ALL 54 quoted spans; r5 verified
+correct everywhere; fresh σ-section leg keyed WM-CLASS directly
+(10,792/0). **r6 = two lines → PE7.**
+
+**W2 PE3 (9bd938f) — 0C/1G minor, CONFIRMED**: the "PROVED at m = 1"
+claims outrun LEMMA W2-ID1 — it proves recorded-ξ = 1 ⟹ byte-equal; the
+CONVERSE rides an unpinned recorded-pair selection rule, and the verifier
+CONSTRUCTED an m = 1 counter-instance to the converse (K₁ = 𝔽₄, the
+scan's enumeration order records a spurious transport; roster-invisible
+at the g ≤ 2 builder limit). The warrant/OPEN-2a/36+2 census consume ONLY
+the proved direction — blast radius contained; **one-sentence cure
+(scope the claims to the proved direction; record the counter-instance)**.
+P2's sign revert verified faithful at source. **r3 → PE4.** Counters:
+LIFT/JB/JC ACCEPTED · JA 0/2 (PE5 next) · WM 0/2 (r6 → PE7) · W2 0/2
+(r3 → PE4). Codex window ~2h: queue per ledger (W-MULT-DCX first).
