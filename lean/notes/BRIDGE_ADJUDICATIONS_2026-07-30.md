@@ -11474,3 +11474,38 @@ unextended range — the M2/PERIM-μ faces cite JA-VDIND directly). PE5
 next.** Owed at the group fold: the JB "(R-coll)" label + row-15 + WM(M4)
 dated erratum annotations on accepted texts; the ILN rider-rewrite; the
 public refresh. Dispatched: WM PE5 + JA PE3 + W2 PE2.
+
+---
+
+## JA PE3 CLEAN (counter 1/2) + WM PE5 0C/0G/1m + W2 PE2 0C/2G/1m (the r1 sign "fix" was UNFAITHFUL — original correct; W2-OPEN-2 grows its own premise) — 2026-08-07
+
+**JA PE3 (c77ae6f) — CLEAN.** The root-inclusive extension re-derived as
+the exact cure; 3 witnesses hand-checked (root exponent ≠ 0 mod ord in
+each); the runner's triv gate = the q = m condition at source; machine
+legs bit-identical. Counter 1/2; **JA-PE4 = the acceptance pass.** (o3:
+the [ILN] pin debt deferred again — fold-owed.)
+
+**WM PE5 (f97bc78) — 0C/0G/1m**: "abscissa" silently interpolated into
+the WM-FENCE(a) head quote (fused from JA-RES's quantifier line; sealed
+pre-r4, escaped four passes; semantically nil). Bonus: WM-RHO re-proved
+as a COROLLARY of WM-COB by the E-pair route (1,344/0). Pin system
+verified complete (7/7 groups). **r5 = one line → PE6.**
+
+**W2 PE2 (79e796b) — 0C/2G/1m.** P1 (moderate): the [r1,F1] re-scope
+warrant AND W2-OPEN-2's premise ride the unproven identification "first
+recorded ξ ≠ 1 junction = first byte-divergence" — provable at m = 1
+from W2-C2(a), OPEN at m ≥ 2 (the read-invisible-divergence genre);
+instance evidence exact 22/22, so the CENSUS stands and only the general
+grade sentence overreaches. P2: the r1 sign fix UNFAITHFUL — under tex
+1431's literal Def-t the r0 sign was CORRECT; the bracket rode W2-L2's
+r0 naming conflation (which PE1's F6 also rode) — revert with the
+conflation explained. P3: W2-OPEN-2's premise pairs φ_q^tw with Φ_q —
+off by one vs the note's own dictionary. CONFIRMED: the four-route
+adjudication HOLDS at source with a fifth-route hunt (base-change
+lemmas have exact factor ρ_r — no supplier; admissible2 is the right
+genre and the cross-term control IS the open content); consumer surfaces
+pin-protected. **r2 = fold the junction identification INTO W2-OPEN-2's
+statement (sub-clause: proved at m = 1, open at m ≥ 2), scope the grade
+sentence to the instance census, revert the sign with the conflation
+bracket, fix the off-by-one → PE3.** Counters: LIFT/JB/JC ACCEPTED · JA
+1/2 · WM 0/2 · W2 0/2.
