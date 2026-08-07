@@ -1,0 +1,7 @@
+JD0 BATTERY VERDICT: GREEN
+towers: 37   checks: 68523
+violations: JD0-PIN=0 JD0-L3=0 JD0-COB=0 JD0-STRAT=0 JD0-BLIND=0
+teeth: JD0-T-NONCHAR=11514 JD0-T-NONUNIT=37 JD0-T-COB=487 JD0-T-SHAPE=1
+gauge census: res-nontrivial rows=36, res-trivial rows=1, L3 nontrivial levels=252, trivial levels=57
+skips: realize=0 pair=0
+elapsed: 77.4s
