@@ -11888,3 +11888,31 @@ one UNCOMMITTED partial note, no runner, no commits; partial archived
 OUT of the repo (/tmp/dulemma_partial_archive/, WM-r2 provenance
 precedent) and a clean redo dispatched via wave resume
 (wf_dc60a99c-2ad; W-10 + expo replay from cache).
+
+---
+
+## DULEMMA ADJUDICATED: ∂u ≡ 1 PROVED on the measured perimeter — (DMULT-s) upgraded MEASURED → PROVED-conditional (DERIVED, not cited: the FGMN ideal-tier route REFUTED as a unit-multiplier supplier) — GRTJC annex applied — 2026-08-07
+
+Clean redo after the API casualty (partial archived, provenance
+disclosed in the note header; every citation re-verified this session).
+**THEOREM DU** (route (a), the WM-COB structural compose ω =
+a_{λ+μ}·∂E/(a_λa_μ) = 1, valid via the ONE new identity **LEMMA DU-A:
+a_γ = E(γ)** — the harness anchor constant IS the composite ε-kit
+cochain; bonus unification c_π = ρ_T). Route (b) BOXED honestly:
+FGMN-internally tautological, transport reduces to the statement
+itself; closes only on {order-2} ∪ {order-3 all-eⱼ=1} (Remark DU-D);
+derived constraint DU-C on any future dictionary closure. Perimeter:
+[ILN]† scored stratum, m ≥ 1, e_m ≥ 2; e_m = 1 stays MEASURED
+(DU-BOX-1), off-stratum pairs OPEN (DU-BOX-2). COROLLARY DU-COB:
+JC-COB's sharp u = a_γa_{γ′} inherits. Battery 13,594 checks / 0
+violations, 3/3 teeth, full E×E grid per row DECIDES ∂u≡1 (DU-FIN),
+two-commit seal 048cf6d/f819f26. Intermediate grade 0/2 per the effort
+directive. GRTJC annex (the note's §9 proposed line) APPLIED at this
+commit as a dated append after the acceptance record. NOTE: the W-2
+Codex ratification queue item (W-MULT-DCX) remains FIRST at the window
+— DU does not displace it (different clause).
+
+Bonus from the wave resume: the expo unit's cache replay re-verified
+the published site page line-by-line against all six acceptance
+records + JD0 + HIGHLEVEL_INTERPRETATION — every claim ✓, no changes
+(verification ledger in the wave output).

@@ -2797,3 +2797,9 @@ restatement, with the (DMULT-w)/(DMULT-s) two-tier honesty (load-bearing
 clauses ride the DERIVED weak tier; the exact tier MEASURED with
 numbering-verification owed) and the cyclic-genre law as fenced. Machine
 record: three byte-frozen batteries + instrument, all green.
+
+---
+
+## ANNEX (dated append; the frozen body is not edited)
+
+> **[ANNEX 2026-08-08, orchestrator, post-acceptance] (DMULT-s) — §2.10's MEASURED tier — is PROVED-conditional on the measured perimeter (the [ILN]† scored stratum, m ≥ 1, e_m ≥ 2) by `DULEMMA_PROOF_2026-08-08.md` THEOREM DU (∂u ≡ 1 via the four-line WM-COB compose; the one new identity a_γ = E(γ), LEMMA DU-A), riding [ILN]†+GRTJC+WELDMASTER as accepted plus DU-A/DU-B at 0/2 — machine leg `dulemma_checks.py` two-commit seal, all families green; COROLLARY JC-COB's sharp u = a_γa_{γ′} inherits (DU-COB); the e_m = 1 row stays measured and off-stratum pairs stay open (DU-BOX-1/2); no text of this note is edited.**

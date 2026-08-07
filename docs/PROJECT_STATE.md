@@ -3158,3 +3158,5 @@ multiplicativity + χ-from-S (queued synthesis targets).**
 **2026-08-07 LATE: ★★★ WELDMASTER ACCEPTED 2/2 (the consolidation theorem; the gauge proved canonical) — FIVE of six weld notes accepted; JA's accepting attempt + J-D0 in flight. ★★★**
 
 **2026-08-07 LATE: ★★★★★★ ALL SIX WELD NOTES ACCEPTED (GRTJA 2/2 closed the group) — the GRT weld is verified-complete at its displayed conditionality; ONE open box (W2-OPEN-2). J-D0 count-gauge-blindness PROVED (68,523/0) — the J-D block opens value-fence-free. ★★★★★★**
+
+**2026-08-07 LATE: DULEMMA PROVED (∂u ≡ 1 on the measured perimeter; LEMMA DU-A a_γ = E(γ)) — (DMULT-s) upgraded MEASURED → PROVED-conditional; GRTJC annex applied. J-D block: W-10 done, W-11 next.**
