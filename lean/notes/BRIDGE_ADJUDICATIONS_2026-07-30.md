@@ -11982,3 +11982,16 @@ written):
    verifier's own disclosed harness bug, no WM text implicated; the
    H¹ = 0 uniqueness by-product display offer = new composition work):
    not status-updates.
+
+---
+
+## OUTAGE STATE: W-11 composer down 2x consecutive (server-error mid-response, then repeated 529 Overloaded ~20:10 UTC) — standing down per storm protocol — 2026-08-07
+
+No partial state either death (no W11 files, no commits; clean tree
+verified both times). The fold-annex half of the wave is COMPLETE and
+double-verified at fdf1d99. PENDING SET = the W-11 composer only:
+resume via Workflow({scriptPath:
+.../workflows/scripts/w11-foldannex-wf_6796c48c-f67.js,
+resumeFromRunId: wf_6796c48c-f67}) — fold-annex replays from cache,
+W-11 runs live. Next watchdog firing executes the resume if the wave
+has passed. Codex window resets Sat 04:22 UTC (W-MULT-DCX first).
