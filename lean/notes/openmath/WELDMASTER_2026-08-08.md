@@ -60,7 +60,7 @@ root-exclusive perimeter with (VD-3) FALSE), consumer check recorded at
 artifacts BYTE-FROZEN, runner md5 6b406f81c250d25f615f715fa9eff474
 re-verified unchanged). A repair round is NOT a pass: counter 0/2; PE5 is
 the next acceptance attempt.]**~~
-**[r5 STATUS (CURRENT; supersedes the struck r4 line) — ARC: composed (seal
+~~**[r5 STATUS (CURRENT; supersedes the struck r4 line) — ARC: composed (seal
 b375f42 → verdict 0baeb3b) → PE1 HOSTILE (df00707: 0C/5G+3m, NOT CLEAN) →
 r1 (90db22d) → PE2 HOSTILE (1edb104: 0C/1G+2m — pure freshness drift) →
 r2 (8f1c1f2, THE PIN ROUND) → PE3 HOSTILE (07acb37: 0C/0G/1m) → r3
@@ -82,7 +82,32 @@ one-line name-list accuracy fix in (a)'s live consumer-check sentence
 ((M2)'s citation cell names JA-EPS + JA-RES, not JA-VDIND/JA-EPS).
 Note-only; runner + artifacts BYTE-FROZEN, runner md5
 6b406f81c250d25f615f715fa9eff474 re-verified unchanged). A repair round
-is NOT a pass: counter 0/2; PE6 is the next acceptance attempt.]** Author:
+is NOT a pass: counter 0/2; PE6 is the next acceptance attempt.]**~~
+**[r6 STATUS (CURRENT; supersedes the struck r5 line) — ARC: composed (seal
+b375f42 → verdict 0baeb3b) → PE1 HOSTILE (df00707: 0C/5G+3m, NOT CLEAN) →
+r1 (90db22d) → PE2 HOSTILE (1edb104: 0C/1G+2m — pure freshness drift) →
+r2 (8f1c1f2, THE PIN ROUND) → PE3 HOSTILE (07acb37: 0C/0G/1m) → r3
+(52d40bb, the attribution fix + three O-1 pins) → PE4 HOSTILE (39e1eec:
+0C/0G/1m — the LED-Λ pin gap) → r4 (14706f5, the LED-Λ pin + the
+JA-COMPANION root-inclusive extension of WM-FENCE(a)) → PE5 HOSTILE
+(f97bc78: 0C/0G/1m — the WM-FENCE(a) head-quote interpolation) → r5
+(f8c2c09, the head-quote byte-form restoration + the O-1 name-list fix) →
+PE6 HOSTILE (report 7c3893f, SIXTH attempt: 0 CRITICAL / 0 GAPS / 2 MINOR,
+NOT CLEAN — the r5 diff verified correct at every edit site; EXHAUSTIVE
+54-span quote sweep, every load-bearing cross-note quote byte-true at its
+pin; fresh σ-section-route re-derivation of WM-CLASS, 10,792/0 on the
+full class-pair grid, both teeth fired, the sealed κ census reproduced
+exactly; the two findings = pre-r1 sealed text, both semantically nil:
+the [ILN]-attributed S2 scope quote compressed from the pin's byte-form,
+two S5 sites; a sentence-initial case change on the JB/SYN "fifth sweep"
+quote) → r6 (THIS ROUND — TWO FIXES: (PE6 F-1) both S5 quote sites
+restored to the ced7dbb byte-form "γ, γ′ ∈ ℤ are arbitrary", [r6]
+brackets in place recording the sealed compressed wording; (PE6 F-2) the
+S3 Consequence-paragraph quote's sentence-initial case restored ("A fifth
+sweep …"), matching [JB] 4c4ee56 line 149 / [SYN] f71cd68 line 131, [r6]
+bracket in place. Note-only; runner + artifacts BYTE-FROZEN, runner md5
+6b406f81c250d25f615f715fa9eff474 re-verified unchanged). A repair round
+is NOT a pass: counter 0/2; PE7 is the next acceptance attempt.]** Author:
 Fable, campaign date 2026-08-08 (wallclock 2026-08-06).
 
 **SCOPE AND FENCES (stated before anything else).**
@@ -522,7 +547,12 @@ absolute (PERIM) at attained sets. **No note is edited by this
 consolidation** — the four fence surfaces stand as committed; if a future
 fold brackets them onto (F-b), that fold cites this section. (The campaign
 motivation, recorded: JB's r1–r4 arc exists because per-site fence patching
-did not converge — "a fifth sweep would find a sixth site"; one perimeter
+did not converge — "A fifth sweep would find a sixth site" **[r6, PE6 F-2:
+sentence-initial case restored to the pins' byte-form — the sentence
+begins with capital "A" at both byte-sites in the pinned corpus, [JB]
+4c4ee56 line 149 and [SYN] f71cd68 line 131; the sealed text's lowercase
+"a fifth sweep …" occurred byte-contiguously at NEITHER pin; semantically
+nil]**; one perimeter
 stated once is the same medicine at campaign level.)
 
 ## S4. HONEST GRADE — the full conditionality stack
@@ -665,8 +695,17 @@ prediction is RED):**
                  (dint_ok gate reported).                 PREDICTED 0.
                  [r1, F-2 class: IND — committed `Tower.constants` (the
                  [ILN] S0.3 D_j recursion) vs fresh ∂t_j from `t_fresh`]
-    WM-COB-OFFW  the same on off-window pairs (γ−E legs) — the "γ,γ′ ∈ ℤ
-                 arbitrary" scope of [ILN]† S2.           PREDICTED 0.
+    WM-COB-OFFW  the same on off-window pairs (γ−E legs) — the "γ, γ′ ∈ ℤ
+                 are arbitrary" scope of [ILN]† S2.       PREDICTED 0.
+                 [r6, PE6 F-1: quote restored to its byte-form at the
+                 ced7dbb pin — [ILN]'s S2 scope sentence, line 360
+                 ("Throughout S2, γ, γ′ ∈ ℤ are arbitrary (no window
+                 hypothesis needed except in WINDOW-(n) itself)"), its
+                 only occurrence there. The sealed text read "γ,γ′ ∈ ℤ
+                 arbitrary" — compressed ("are" dropped, the comma-space
+                 fused), ZERO byte-contiguous occurrences at the pin;
+                 semantically nil (the scope is exactly as [ILN] declares
+                 it). Same cure at the commit-2 verdict line below]
                  [r1, F-2 class: IND — the same decorrelated pair of paths
                  at off-window/negative arguments through `split`]
     WM-COB-F     WM-COB(ii) in K_j.                       PREDICTED 0.
@@ -718,7 +757,9 @@ met; all four teeth fired.** The battery: **29/29 roster towers built**
 I4A/I4B/I4C), **7,208 samples total** — WM-PIN 2 (both md5s intact) ·
 WM-EPS 615 · WM-COB-I 1,885 (every level of every dint_ok pair; the
 dint_ok gate never excluded a pair, consistent with D_j-INT) ·
-WM-COB-OFFW 513 (off-window γ−E legs, the "γ,γ′ ∈ ℤ arbitrary" scope) ·
+WM-COB-OFFW 513 (off-window γ−E legs, the "γ, γ′ ∈ ℤ are arbitrary" scope
+**[r6, PE6 F-1: byte-form restored, here and at the families row above —
+the bracket there records the sealed compressed wording]**) ·
 WM-COB-F 1,885 · WM-COB-C 897 (the full z̄^δ·∂E display, top-field
 composite) · WM-RHO 87 (the period constant exact on every sampled γ of
 every tower) · WM-FENCE-XI 349 · WM-FENCE-EQ 171 · WM-SHEAR 804 hulls
@@ -868,3 +909,30 @@ Strike census: +2 spans (the r4 STATUS strike + the O-1 strike), 18
 total. Note-only; runner + artifacts BYTE-FROZEN (runner md5
 6b406f81c250d25f615f715fa9eff474 re-verified this round; `git diff` on
 `verification/` empty). Counter 0/2; PE6 next.
+
+— r6 REPAIR ROUND against PE6 (report 7c3893f: 0 CRITICAL / 0 GAPS / 2
+MINOR — the r5 diff verified correct at every edit site; exhaustive
+54-span quote sweep at the seven pins, every load-bearing cross-note
+quote byte-true; fresh σ-section-route WM-CLASS leg 10,792/0 on the full
+class-pair grid, both teeth fired, the sealed κ census reproduced
+exactly), wallclock 2026-08-07. TWO FIXES, both quote-fidelity slips in
+pre-r1 sealed text, both semantically nil (PE6's own classification).
+(PE6 F-1) The [ILN]-attributed S2 scope quote "γ,γ′ ∈ ℤ arbitrary" — two
+S5 sites (the WM-COB-OFFW families row, wrap-split; the commit-2 verdict
+line) — occurs ZERO times byte-contiguously in [ILN] at the ced7dbb pin
+("are" dropped, the comma-space fused). Both sites now read the pin's
+byte-form "γ, γ′ ∈ ℤ are arbitrary" — [ILN]'s S2 scope sentence, line 360
+("Throughout S2, γ, γ′ ∈ ℤ are arbitrary (no window hypothesis needed
+except in WINDOW-(n) itself)"), re-verified this round to occur exactly
+once at the pin — with [r6] brackets in place recording the sealed
+compressed wording: replacement-with-bracket per the r5 precedent (an
+in-quote strike would leave the live quote still not byte-true). (PE6
+F-2) The S3 Consequence-paragraph quote read "a fifth sweep would find a
+sixth site"; the sentence begins with capital "A" at both byte-sites in
+the pinned corpus ([JB] 4c4ee56 line 149; [SYN] f71cd68 line 131 — both
+re-verified this round), so the lowercase form occurred byte-contiguously
+at NEITHER pin. One-character fix: the quote now reads "A fifth sweep
+would find a sixth site", [r6] bracket in place. Strike census: +1 span
+(the r5 STATUS strike), 19 total. Note-only; runner + artifacts
+BYTE-FROZEN (runner md5 6b406f81c250d25f615f715fa9eff474 re-verified this
+round; `git diff` on `verification/` empty). Counter 0/2; PE7 next.
