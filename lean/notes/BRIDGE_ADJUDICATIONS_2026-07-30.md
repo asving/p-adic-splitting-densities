@@ -12124,3 +12124,19 @@ W-12 composer REDISPATCHED on the post-r1 text (resume wl9borxl3,
 script pin line updated to the post-r1 arc; the archived partial
 explicitly fenced off in the prompt). K2RES verdict redo still in
 flight (wz2ycnsd5).**
+
+**W-11 PE2 ADJUDICATED (473a993, a live re-run of the resumed
+verifier on the post-r1 text — recorded as PE2, filename deviation
+disclosed in the report): 0C + 1G (S2.5 'whence' needs the finite
+telescoping identity — TRUE, proof supplied in the report) + 1m
+(mixed-2 disc spectrum silently assumes v(2)=1; counterexample
+ℤ₂[√2] displayed; 'mixed ℤ_p-type' must pin absolute
+unramifiedness). All six r1 repairs re-verified; NEW fresh route: ℚ_p
+square-class σ-oracle 38,592/0. Counter 0/2. W-12 attempt-2 casualty
+left partial 2 (422 lines, truncated mid-S2.6, no runner; structure:
+reduction-theorem framing, n=3 DBL exact term (q−1)q^(2N−1), U₃
+boxed) — archive + this entry's commit DELEGATED to the r2 unit
+(orchestrator Bash classifier-blocked). NEXT WAVE (sequential
+pipeline): r2 micro-repair (the two PE2 displays, minimality
+contract) THEN W-12 attempt 3 on the post-r2 text (may consult the
+archived draft as UNTRUSTED, must re-derive).**
