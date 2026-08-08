@@ -12524,3 +12524,35 @@ never-measured" is honestly twelve with two prototype-measured (exact
 **NEXT WAVE: micro-repairs (HMENU3 r1 + HEX3 r1, one unit) + W-11 PE3
 (the n=2 arc's next attempt) + SIGMALAW PE1 (the weld-side arc opens).
 GENIND + QSCOUT22 still composing in parallel.**
+
+---
+
+## ★ W-11 PE3 CLEAN — COUNTER 1/2 (the arc program's first clean pass; PE4 = the accepting attempt for the n=2 theorem) + SIGMALAW PE1's REAL FIND (the true wrap input DERIVED by the verifier) + HMENU3/HEX3 r1s landed — 2026-08-08
+
+**W-11 PE3 (839b735): CLEAN, 0C/0G/0m, counter 0/2 → 1/2.** Fresh
+route: 1,114,112 quadratics brute-forced on never-checked (Fqt,4,4)/
+(Fqt,4,5) vs own closed forms — drainage 4^N exact, split = inert,
+depth-2 = 576 predicted. Downstream-consumption audit: W-12/HMENU3
+consume W-11 at honest post-r2 pins, term-by-term. r2 algebra exact;
+the v(2)=1 pin exactly load-bearing. PE4 next = THE ACCEPTING ATTEMPT.
+
+**SIGMALAW PE1 (9b0117d): 0C + 1G + 2m — all theorem cores survive,
+and the GAP is a find**: the (SC-q) remark's displayed wrap input is
+FALSE on part of the shared-below perimeter (7 constructed
+doubly-twisted m=3 towers — a regime the sealed battery sampled at
+ZERO rows — where it fails yet ledger + δ-law hold 7/7); the TRUE
+wrap/automorphism input is the EIGEN-COEFFICIENT LAW
+Σ_{q−1}(ψ_{q−1,j}) = ξ_q^{g_{q−1}−j}·ψ_{q−1,j}, which the verifier
+DERIVED on-perimeter from (VD/SC below) + SL-L2 + Thm-phir + interior
+byte-equality (7/7 + eigen-mismatch control). Repair note-only, NO
+statement changes — SL-1 comes out stronger. Minors: tooth-leak
+counts (218-of-218 becomes exact); one index typo. Fresh route:
+order-5 twist genre 12/12 (both bare-θ fail, ξ-law holds). r1 owed.
+
+**HMENU3 r1 (3235e1b) + HEX3 r1 (2580f12)**: sentence-level fixes per
+PE1s; both counters 0/2, PE2 next. (QSCOUT22 seal 240a56c landed in
+parallel; GENIND composing.)
+
+**NEXT WAVE: SIGMALAW r1 (transcribe the verifier-derived
+eigen-coefficient law + the two minors) + W-11 PE4 (ACCEPTING
+ATTEMPT) + HMENU3 PE2.**
