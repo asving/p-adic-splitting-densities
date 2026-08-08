@@ -2,8 +2,15 @@
 
 **Unit:** Σ-LAW (the one displayed lemma of the (Σ-LAW box),
 `OPEN2ATTACK_2026-08-08.md` §6; the level-m generalization of GRTW2's LEMMA
-W2-L3). **Genre: PROOF NOTE at attempt grade (acceptance counter 0/2; no
-hostile pass run; disclosure-grade honesty).** Neither
+W2-L3). **Genre: PROOF NOTE at attempt grade (acceptance counter 0/2;
+arc: composed → PE1 NOT CLEAN 0C+1G+2m @ 9b0117d
+(`SIGMALAW_passPE1_report.md`: every theorem statement survives, incl. on
+an adversarial regime the sealed battery never samples; the GAP = the
+(SC-q) REMARK's wrap display, whose TRUE input — the eigen-coefficient
+law — the verifier derived on-perimeter) → r1 THIS REPAIR (F1
+substantive transcription of the PE1 derivation + F2/F3 in place,
+note-only, [r1] tags; runner + artifacts byte-frozen at seal 8064ae3);
+counter 0/2; PE2 next; disclosure-grade honesty).** Neither
 `GRTW2_PROOF_2026-08-08.md` (ACCEPTED-FROZEN) nor
 `OPEN2ATTACK_2026-08-08.md` is edited by this unit; the closing fold is
 delivered as PROPOSED ANNEX TEXT (§8).
@@ -80,7 +87,10 @@ weight β, with (s, u) = eq12(β; e_{q−1}, h_{q−1}) and s₀ = s_q(A) = s +
     P_q(A) := z_q^{τ_q(A)} · R_q(A)(z_q),   τ_q(A) := (s₀ − ℓ_{q−1}β)/e_{q−1}.
 
 τ_q is W2-L3's τ₁ verbatim at level q. Then t_j(A) = τ_m(A) − k_j·A_m
-(Bézout: ℓ_{m−1}(u_j − β_j)/e_{m−1} = k_j·ℓ_{m−1}g_mγ_{m+1}... = k_jA_m
+(Bézout: ℓ_{m−1}(u_j − β_j)/e_{m−1} = k_j·ℓ_{m−1}g_{m−1}γ_m = k_jA_m
+[r1, PE1 F3: the sealed parenthetical read k_j·ℓ_{m−1}g_mγ_{m+1} — an
+index slip; u_j − β_j = k_j·w_mΦ_m = k_j·e_{m−1}g_{m−1}γ_m; the final
+k_jA_m and every downstream use are correct and machine-keyed]
 with A_m = ℓ_{m−1}g_{m−1}γ_m read off u_j − β_j = k_j·w_mΦ_m and
 ℓ_{m−1}w_mΦ_m/e_{m−1} = A_m), so **Prnt_j = z_m^{−k_jA_m}·P_m** on slot-j
 digits, and the whole problem is the dictionary P_m vs H_m.
@@ -219,7 +229,9 @@ action Σ_{q−1}(ε'·y) with ε' ∈ K_{q−1} — and there the identity
 level down, resolved by the induction: formally, SL-L2's content is the
 scalar identity Σ_{q−1}(ε_{q−1}(w)·y) = ε_{q−1}(w)Λ_{q−1}(w)^{−1}·
 U_{q−1}(w)... — to keep the chain honest the induction is run with the
-COMBINED statement: (VD-q) AND the scalar covariance
+COMBINED statement [r1, PE1 F1: THREE clauses now — the
+eigen-coefficient law (EC-q), displayed below, joins the sealed two as
+the wrap-closing clause]: (VD-q) AND (EC-q) AND the scalar covariance
 
     (SC-q)   Σ_q( ε_q(w) · y ) = ε_q(w)·ξ_q^{E(w)} · Σ_q(y)   for all y ∈ K_q, w,
 
@@ -228,16 +240,75 @@ multiplication by z_q^{E} maps the coordinate basis z_q^ν by shifting
 ν-support through the relation; (SC-q) as stated is the assertion that
 this shift commutes with Σ_q up to ξ_q^{E}. For 0 ≤ E and ν with
 E + ν < g_{q−1} it is definitional; the wrap terms (E + ν ≥ g_{q−1})
-consume ξ_q-invariance of the relation: z_q^{g_{q−1}} = −Σ_{i<g_{q−1}}
-ψ_{q−1,i}z_q^i and Σ_q(z_q^{g_{q−1}}·y') needs ξ_q^{g_{q−1}−i}-weighted
-coefficients to agree, i.e. **ξ_q^{g_{q−1}−i} = 1 on supp(ψ_{q−1})** —
-EXACTLY the byte-share law of the junction below (GRTW2 §3.4 rk. 3 at
-level q−1, which the shared-below premise supplies at every interior
-level), the same input OA-M1 consumed to make σ′ an automorphism. So
-(SC-q) holds ON THE SHARED-BELOW PERIMETER, level by level, and the
-induction closes there — which is the Σ-LAW's stated scope. [Machine:
-the checker tests (VD-q)/(Σ-LEDGER)/(SC) jointly by testing the final
-identities on elements; SL-VDM.]
+consume preservation of the relation z_q^{g_{q−1}} = −Σ_{i<g_{q−1}}
+ψ_{q−1,i}z_q^i: the wrapped slot comparison is, per supported i,
+
+    Σ_{q−1}(y·ψ_{q−1,i})·ξ_q^{i} = Σ_{q−1}(y)·ψ_{q−1,i}·ξ_q^{g_{q−1}}   for ARBITRARY y ∈ K_{q−1},
+
+equivalently (take y = 1; Σ_{q−1} fixes 1) the **EIGEN-COEFFICIENT LAW**
+
+    (EC-q)   Σ_{q−1}(ψ_{q−1,j}) = ξ_q^{g_{q−1}−j} · ψ_{q−1,j}    (j ∈ supp ψ_{q−1})
+
+plus Σ_{q−1}-multiplicativity against ψ_{q−1,j} (Σ_{q−1} ∈ Aut(K_{q−1}),
+supplied one level down by the same ladder). (EC-q) is exactly the
+condition that the (Σ-DEF) twist preserve the relation ideal
+(ψ_{q−1} ↦ ξ_q^{g_{q−1}}·ψ_{q−1}), making Σ_q a ring AUTOMORPHISM of
+K_q — whence the shift commutes with Σ_q up to ξ_q^{E} for ALL E, and
+(SC-q) closes.
+
+[r1, PE1 F1 (justification gap; the two §7 self-flagged points, one
+root cause) — SUBSTANTIVE REPLACEMENT: the sealed REMARK displayed the
+wrap input as "ξ_q^{g_{q−1}−i} = 1 on supp(ψ_{q−1})", identified with
+the byte-share law of GRTW2 §3.4 rk. 3 "at level q−1" as supplied by
+the shared-below premise. That display is (EC-q)'s Σ_{q−1} = id
+SPECIAL CASE only, and PE1 proved it FALSE on part of the shared-below
+perimeter: 7 constructed doubly-twisted towers (instrument note, end
+of §5) are shared-below with ξ₃^{g₂−j} = z₁^{±2} ≠ 1 on the supported
+slot — the asserted implication "shared-below ⟹ ξ_q-invisibility at
+every interior level" is REFUTED, and rk. 3's proved display is the
+m = 1 form only. The theorem SURVIVES there: the ledger identity, the
+δ-law, and (EC-q) itself hold on all 7 rows, with a NON-trivial
+eigenvalue. At Σ_{q−1} = id, (EC-q) collapses to the old display
+(λ_j = 1 ⟺ θ^{g−j} = 1 at m = 1 — rk. 3 recovered). The derivation
+below is PE1's, transcribed in full per the repair charge; r1
+re-verified the k = 1 tower's arithmetic and the λ_j collapse by
+hand.]
+
+**(EC-q) is DERIVABLE on the shared-below perimeter** — no new premise.
+At the interior junction at level q (slot field K_{q−1}, modulus
+ψ_{q−1}, weights β_j = (g_{q−1}−j)γ_q, slots k_j = j·e_{q−1}), which
+the shared-below premise makes byte-equal (2 ≤ q ≤ m), chain the
+level-(q−1) induction clauses with the junction's evaluator theorems:
+byte-equal ⟹ ρ_j = 1 (OA-L4), so both builders' slot digits carry the
+read R_{q−1}v = ε_{q−1}(β_j)^{−1}·ψ_{q−1,j} (REALIZE R3); then
+
+    c·ψ_{q−1,j} = Prnt_j(P_j)                                      [Thm-`phir`]
+                = u_j · Σ_{q−1}( ε_{q−1}(β_j)^{−1}·ψ_{q−1,j} )     [(Σ-LEDGER) at q−1, from (VD-(q−1)); ρ_j = 1]
+                = u_j · ε_{q−1}(β_j)^{−1}·ξ_{q−1}^{−E(β_j)} · Σ_{q−1}(ψ_{q−1,j})   [(SC-(q−1))],
+
+and with u_j's closed form (§3): Σ_{q−1}(ψ_{q−1,j}) = λ_j·ψ_{q−1,j},
+λ_j = c·z_{q−1}^{k_jA_{q−1}}·U_{q−1}(β_j)^{−1}·ξ_{q−1}^{E(β_j)}. SL-L2
+at q−1 gives U_{q−1}(β_j)^{−1}·ξ_{q−1}^{E(β_j)} = χ_{q−1}^{β_j}, and
+Thm-`phir`'s constant is c = z_{q−1}^{−A_{q−1}e_{q−1}g_{q−1}} (GRTW2:
+c = c₁^{e_{q−1}g_{q−1}}, c₁ = z_{q−1}^{−A_{q−1}}), so
+
+    λ_j = z_{q−1}^{−A_{q−1}e_{q−1}g_{q−1}} · z_{q−1}^{j·e_{q−1}A_{q−1}} · χ_{q−1}^{(g_{q−1}−j)γ_q}
+        = [ χ_{q−1}^{γ_q} · z_{q−1}^{−e_{q−1}A_{q−1}} ]^{g_{q−1}−j}  =  ξ_q^{g_{q−1}−j}
+
+— identically, by ξ_q's §3.4 definition, with NO invisibility
+assumption. The ladder is well-founded: (VD-1)/(SC-1) are trivial
+(Σ₁ = id); for q ≥ 2, (EC-q) is discharged by the display above from
+(VD-(q−1)) + (SC-(q−1)) + SL-L2 at q−1 + Thm-`phir` + the byte-equal
+interior junction at level q; (EC-q) closes (SC-q)'s wrap terms and
+makes Σ_q ∈ Aut(K_q); (SC-q) feeds (VD-q). Every interior level
+2 ≤ q ≤ m is byte-equal on the shared-below perimeter — which is the
+Σ-LAW's stated scope. [Machine: the checker tests
+(VD-q)/(Σ-LEDGER)/(SC) jointly by testing the final identities on
+elements; SL-VDM. (EC-q) itself is machine-keyed by PE1 on the
+doubly-twisted regime — 7/7 with a non-trivial eigenvalue — and its
+eigen-MISMATCH control (k = 3, i = 1) builds but FAILS m = 2
+byte-equality 1/1, exactly as the derivation predicts; instrument
+note, end of §5.]
 
 **Grade & consumption.** Attempt grade (0/2). Consumes: the engine
 definitions (REALIZE R1–R3, read/eq12/ε — S0.1/S0.2 accepted), the print
@@ -246,8 +317,13 @@ sealed transcription), the P-index dictionary (GRTW2 §1.2), W2-L0 grid
 mechanics, W2-L2 Bézout identity (both directions of the exponent
 bookkeeping), W2-L3 as the base case, the §3.4 χ/ξ RECURSIONS as
 definitions (no §3.4 theorem-content consumed — the recursion falls OUT
-of the induction here), and the shared-below byte-share law at interior
-levels (the junction premise) for (SC-q). No new literature consumption.
+of the induction here), and, for (EC-q) at each interior level, the
+shared-below premise's byte-equal interior junctions consumed through
+OA-L4 (byte-equal ⟹ ρ = 1) + Thm-`phir` with its constant [r1, PE1 F1:
+the sealed list cited "the shared-below byte-share law" here — the
+Σ_{q−1} = id reading of the input; the true consumption is interior
+byte-EQUALITY itself, per the (EC-q) derivation above]. No new
+literature consumption.
 
 ---
 
@@ -263,14 +339,24 @@ invariant reading, consuming Thm-`phir` = OA-PHIR for the denominator);
 by (Σ-LEDGER) both bracketed gauges are u_j·Σ_m(x)/x at x = the
 respective reads, so δ_j = ρ_j·Σ_m(x/y) = ρ_j·Σ_m(ρ_j^{−1}·...)
 — with x = R_mv(C_j), y = R_mv(P_j) = ρ_j·x: δ_j = (y/x)·Σ_m(x)/Σ_m(y).
-Σ_m(x)/Σ_m(y): Σ_m is not multiplicative in general, but x and y = ρ_jx
-are the two reads and the quotient identity δ_j = ρ_j/Σ_m(ρ_j) is
+Σ_m(x)/Σ_m(y): x and y = ρ_jx are the two reads
+and the quotient identity δ_j = ρ_j/Σ_m(ρ_j) is
 asserted as the ELEMENT identity that follows when Σ_m(y)/Σ_m(x) =
-Σ_m(ρ_j) — this holds by (SC)-type covariance when x is an
-ε-monomial-times-class (x = ε_m(β_j)^{−1}ψ_{m,j}, REALIZE R3), by the
-same wrap-invariance as §3's REMARK; the machine keys the element
+Σ_m(ρ_j) — this holds because **Σ_m ∈ Aut(K_m)**: the eigen-coefficient
+law (EC-q) of §3's REMARK preserves the relation ideal at every
+interior level 2 ≤ q ≤ m (ψ_{q−1} ↦ ξ_q^{g_{q−1}}·ψ_{q−1}), so the
+composite Σ_m is a ring automorphism and Σ_m(y) = Σ_m(ρ_j)·Σ_m(x)
+outright [r1, PE1 F1: re-pointed at the derived law. The sealed hedge —
+"(SC)-type covariance when x is an ε-monomial-times-class
+(x = ε_m(β_j)^{−1}ψ_{m,j}, REALIZE R3), by the same wrap-invariance as
+§3's REMARK" — was INSUFFICIENT as stated: the step needs
+Σ_m(ρ·x) = Σ_m(ρ)Σ_m(x) with ρ an ARBITRARY unit, i.e. the automorphism
+property, i.e. ideal preservation = exactly (EC); OA-M1 never met this
+because σ′ is coefficientwise-trivial below, while the composite Σ_m at
+m ≥ 3 is not]; the machine keys the element
 identity directly on every walked row (SL-DELTA). ∎ (attempt grade; the
-multiplicativity step rides the same shared-below wrap-invariance).
+multiplicativity step now rides (EC-q), discharged on-perimeter in §3's
+REMARK).
 
 **COROLLARY SL-C2 (THEOREM OPEN-2a-Σ, now unconditional on its Σ-leg).**
 At every shared-below junction at level m+1, m ≥ 1: strict ⟹ byte-equal;
@@ -322,6 +408,41 @@ So the honest restatement of the boxed law is: **δ_j = ρ_j/Σ_m(ρ_j),
 INVERTED. The involution degeneracy of the sealed battery is now
 explained rather than boxed: on every one of its δ ≠ 1 rows the acting
 characters were ±1, where Σ_m = σ′ = σ′^{−1}.
+
+**[r1] INSTRUMENT NOTE (PE1 F1): the doubly-twisted counter-regime —
+the 7 towers the sealed battery never samples.** PE1's verifier
+constructed the regime where the sealed REMARK's wrap display fails
+while every theorem survives (verifier's own code,
+`/tmp/slverify/fresh_check.py`, not committed; figures quoted from
+`SIGMALAW_passPE1_report.md`): chamber ℤ₃, reads (2,1,2)+(3,1,4),
+ψ₀ = y²+y+2 (z₁ primitive, ord 8), ψ₁ = y⁴+z₁^k (k odd) — A₁ = 2,
+ξ₂ = z₁^{−6} = z₁² of ORDER 4, support-invisible on supp ψ₁ = {0,4}
+(m = 1 junction byte-equal); third read (1,1,2), ψ₂ = y² + c·z₂
+(c ∈ K₁*) — the coefficient is NOT Σ₂-fixed (Σ₂(cz₂) = ξ₂·cz₂ =
+z₁²·cz₂), and ξ₃ = χ₂^{γ₃}z₂^{−e₂A₂} = z₁^{6−5k mod 8} has
+ξ₃^{g₂−0} = ξ₃² = z₁^{±2} ≠ 1 on the supported slot; deg-1
+non-monomial top (1,1,1)/ψ₃ = y+(1+z₃) walks the m = 3 junction.
+Machine (PE1): 8 towers built, 7 shared-below (byte-equal m = 2); on
+all 7 walked m = 3 rows the ledger identity AND the δ-law hold (0
+violations), each row is a separator (both bare-θ variants fail),
+(EC-q) holds with a NON-trivial eigenvalue, and the sealed REMARK's
+input ξ₃^{g₂−j} = 1 is FALSE; the eigen-MISMATCH control (k = 3,
+i = 1) builds but fails m = 2 byte-equality, 1/1 as predicted. r1
+re-verified the k = 1 tower by hand: z₁⁴ = 2 = −1 (ord 8); γ₁ = 1,
+ℓ₀ = 1 ⟹ A₁ = 2; w₁Φ₁ = 4, γ₂ = 13, w₂Φ₂ = 156, A₂ = 52, γ₃ = 157
+odd; χ₂ = z₁^{A₁ℓ₁} = z₁²; z₂⁴ = −z₁^k = z₁^{k+4} ⟹ z₂^{−52} =
+z₁^{3k+4 mod 8}, so ξ₃ = z₁^{3k+6} = z₁^{6−5k mod 8} ✓; at k = 1:
+ξ₃ = z₁, ξ₃² = z₁² = ξ₂ — (EC) holds, non-trivially eigen; at k = 3:
+ξ₃² = z₁⁶ ≠ ξ₂ = z₁² — the control's mismatch ✓. **Zero-sampling
+disclosure for the SEALED battery:** PE1's census of all 145 walked
+m = 3 rows: (ξ₂-trivial, g₂, ψ₂-Σ₂-fixed) = {(True, 2, True): 123;
+(False, 1, False): 22 — the B3D genre, whose g₂ = 1 relation is
+degenerate (Σ₃ = Σ₂, no wrap)}. NO sealed row has ξ₂ ≠ 1 with g₂ ≥ 2:
+the regime where the sealed display fails is exactly the regime the
+sealed instrument never samples — PE1's 7 rows are its first
+instances, and the law is green there too. The sealed runner +
+artifacts stay byte-frozen (seal 8064ae3); this note records the
+coverage hole honestly rather than patching the battery.
 
 ---
 
@@ -379,6 +500,27 @@ which 218 on the OA-battery geography — the sealed unit's ENTIRE δ ≠ 1
 record sits where the two maps coincide, confirming §5's explanation of
 its 0-violation-with-undetermined-sign verdict.
 
+[r1, PE1 F2 (bookkeeping; counts kept above as machine-quoted): the
+printed family COUNTS include teeth-run leakage — `run_tooth` restores
+`VIOL` and pops `ROWS` but never restores `COUNTS`, so the six mutation
+runs leak `note()` samples into the family tallies. PE1 measured the
+leak exactly (teeth re-run in isolation): SL-VDM +26, SL-DELTA +13,
+SL-PHIR +13, SL-GAP +8, SL-INVREC +3; cross-check Σ|supp| over all
+1,211 walked rows of the committed JSON = 1,414 (OA 1,060 + SEP 354),
+and 1,427 − 1,414 = 13, 2,854 − 2×1,414 = 26, 688 − 2×340 = 8 — exact.
+The GENUINE battery figures are SL-VDM 2,828 (both legs, every walked
+slot, every m) · SL-DELTA 1,414 · SL-PHIR 1,414 · SL-GAP 680; and
+SL-INVREC = 218 EXACTLY — the 3 non-OA samples inside the printed 221
+are not battery rows but TEETH-PR mutation artifacts (garbled-print δ
+on T2C/T3C under `mut_print`), so the genuine census is 218 = exactly
+the OA δ ≠ 1 record, which makes the reconciliation claim STRONGER,
+not weaker. No verdict is affected: teeth violations are correctly
+diverted; 0-violation families are 0 on the genuine samples a
+fortiori; the 340-gap-slot and 96/27 separator censuses come from
+`ROWS`, which IS cleaned, and are exact. Runner + artifacts stay
+byte-frozen (seal 8064ae3); figures per `SIGMALAW_passPE1_report.md`
+Finding 2.]
+
 ---
 
 ## §7. What is and is not advanced
@@ -394,11 +536,20 @@ its 0-violation-with-undetermined-sign verdict.
   claims (a)/(b) ABOVE a fired twist r₀ (off the shared-below perimeter)
   — untouched, still riding TW-ADM instance evidence; drainage,
   exhaustiveness, and every other Phase-B box.
-* **Grades:** this note is attempt grade 0/2 — it has had NO hostile
+* **Grades:** this note is attempt grade 0/2 — ~~it has had NO hostile
   pass; SL-1's REMARK step ((SC-q) wrap-invariance) and SL-C1's
   multiplicativity step are the two places a hostile pass should press
   first (both ride the same shared-below byte-share input, and both are
-  machine-keyed on every walked row). No Lean artifact.
+  machine-keyed on every walked row)~~ **[r1] arc: PE1 (report
+  `SIGMALAW_passPE1_report.md`, ledger 9b0117d/a00cf97) pressed exactly
+  the two self-flagged places and found their ONE root cause — the wrap
+  input as displayed was FALSE on the doubly-twisted part of the
+  perimeter; the true input is the eigen-coefficient law (EC-q), which
+  PE1 derived on-perimeter and r1 transcribed into §3's REMARK and
+  SL-C1's proof (no statement changed); every theorem statement
+  survived, incl. on the 7-tower regime the sealed battery never
+  samples (§5 instrument note); machine leg re-run bit-identical
+  ex-timing, exit 0; counter 0/2, PE2 next**. No Lean artifact.
 
 ---
 
@@ -434,6 +585,17 @@ its 0-violation-with-undetermined-sign verdict.
 > attempt grade** and the simultaneous-defeat system is infeasible on
 > the whole shared-below perimeter. The converse's UNPROVED status and
 > W2-OPEN-2's above-r₀ chain claims are unchanged.
+
+[r1, PE1 F2 — annex caveat: the annex's 2,854/1,427/688 and 218/218
+figures are the machine-printed counts; per §6R's [r1] block the
+genuine battery decomposition is 2,828/1,414/680 with SL-INVREC = 218
+exactly (the printed 221 carries 3 TEETH-PR artifacts). The annex as
+applied to GRTW2 at a9f45ab carries the printed figures; mirroring this
+caveat there is an orchestrator action (GRTW2 is ACCEPTED-FROZEN, not
+edited by this repair), owed alongside the PE2 fold. Also owed to the
+PE2 reader: the annex's "(SC-q) wrap" mechanics now run through the
+eigen-coefficient law (EC-q) per §3's [r1] REMARK — the annex text
+above is the SEALED wording, kept verbatim as applied.]
 
 ---
 
