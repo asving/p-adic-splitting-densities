@@ -12966,3 +12966,37 @@ statement-fence discipline. W-12.C's q^N ≤ U₃^TRP and the BOX-3
 annex's σ-side bound now hold in every characteristic. NEXT: W-12 PE5
 + MOMENTS resume (both Opus; Fable still saturated). HE3 attempt 5
 (Opus) running.
+
+---
+
+## ★★★★ HE3 LANDED: [GENHN-HE(μ≤3)] PROVED — P(6) AND P(7) FIRE (degrees 2–7 complete); the program's ENTIRE remaining mathematics = HE3-BOX-6 (fractional-height test keys, μ≥4, first live n=8; route named = higher-order Montes) — 2026-08-08
+
+Adjudicated from the unit return (skeleton a4e0a5c 20-min survival →
+proofs + GREEN battery 872327b → SELF-FOUND gap HE3-BOX-6 + honest
+regrade 6f5a072 → its own mid-arc Codex PE1 (5C+2G, adjudicated, μ≤3
+SURVIVES, repairs applied) 06a4b77/2299cc4 → 22b328a → ca240d0).
+**MECHANISM**: σ at a μ-stage = the label read of the degree-μ stage
+resolvent F(Y) over the stage ring, (e,f) ↦ (e₁e_s, f₁f_s); the SLOT
+LEMMA pins every root's Y-relation to the stage polygon with
+Frobenius-conjugate residuals; label class sizes pinned by resultant
+valuations over test keys. WHY μ=2 was easy: two labels ⟹ root-count
++ one resultant identity; at μ=3 the degenerate side needed HE3-3's
+Ψ-inversion (tooth HE-T-UNDET: 10 spurious solutions vs the unique
+truth). NEW LEMMAS HE3-1/1′/2/3/4/5; the σ chain consumes NO W-9 weld
+face (HE3-2 elementary) — cleaner than the count laws. **RECURSION**:
+[GENHN-HE(μ)] for ALL μ by strict-descent induction (μ′ ≤ μ/2, base
+μ≤3) MODULO HE3-BOX-6 (no test key at fractional heights when ℓ≥2 ∧
+deg-res ≥2; base-change substitute under-argued, both branches
+honestly named). Battery GREEN 0 violations (72,134 resultant
+identities; 947 PARI σ jobs 0 bad; all FIVE μ=3 stage types confirmed
+incl. sextic-into-three-ramified-quadratics, p≥5; byte-ties GENHN's
+committed E3 census); a mid-run tooth caught a REAL soundness bug
+(capped-digit drop mis-reads split as inert — fixed, disclosed);
+sealed-vs-delivered disclosed (BOX-4b). COUNTER NORMALIZED by the
+orchestrator: 0/2 on the post-repair text (the unit's ca240d0 "1/2"
+predates a clean pass on frozen text; PE2 = next attempt).
+**CONSEQUENCE: W-12.D + GENIND.B + GENHN.A/B + GENH4 + HE3.A ⟹
+degrees 2–7 COMPLETE. The uniformity theorem's remaining mathematics
+= ONE lemma: HE3-BOX-6.** NEXT UNIT: HE6 (the fractional-height test
+family; also the faithful-cite target). [This entry written via Edit
+during a classifier block; commit delegated to the HE6 unit.]

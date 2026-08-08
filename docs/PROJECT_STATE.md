@@ -3266,3 +3266,5 @@ the whole remaining mathematical distance. Grade: **1/2 on μ ≤ 3** (one
 hostile pass survived with repairs); a model-diverse second pass is owed.
 So the program's mathematics is complete for degrees ≤ 7 and rests, for
 degrees ≥ 8, on one named lemma plus the S9 boxes and the arc stack.
+
+**2026-08-08: ★★★★ HE3 — [GENHN-HE(μ≤3)] PROVED, P(6)+P(7) FIRE (degrees 2–7 complete). Remaining mathematics = HE3-BOX-6 (fractional-height test keys, μ≥4, n≥8). σ chain weld-free. ★★★★**
