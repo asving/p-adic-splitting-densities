@@ -3220,3 +3220,32 @@ watchdog c986a06a owns revival; pending set at ledger 4ad061d.
 **2026-08-08: ★★★★★★ THE FULL UNIFORMITY THEOREM IS COMPOSED — GENHN complete (battery 2,223,050/0): [GENIND-H(n)] for all n modulo ONE lemma family [GENHN-HE(μ≥3)]. P(5) FIRED OUTRIGHT — quintics = 4th complete degree, zero new work. Critical path: HE3 + the arcs. ★★★★★★**
 
 **2026-08-08: ★★ BCFGTIE — E_n(q) = q/(q+1) PROVED all n (HE-free); E^proj ≡ 1 (BCFG raw1 explained); 17 quintic densities delivered (GENH5-DENS); BCFG tie: 1st moment symbolic all n, full distribution machine-exact n≤6, n=7 prereg PASS. ★★**
+
+**2026-08-08: ★★★★★★★ [GENHN-HE(μ≥3)] CLOSED — THE LAST OPEN MATHEMATICS OF
+THE UNIFORMITY PROGRAM IS PROVED (HE3, commits a4e0a5c/872327b;
+`lean/notes/openmath/HE3_PROOF_2026-08-08.md`). ★★★★★★★**
+
+THEOREM HE3.A (the stage-σ recursion): at a decided stage leaf of a
+composite stage of multiplicity μ over the stage ring R, with stage type
+{(e_s,f_s)}, Σ e_s f_s = μ, every disc ≠ 0 lift factors as
+σ(f) = {(e₁e_s, f₁f_s)} — i.e. **σ at a μ-stage IS the σ-decision at
+DEGREE μ over R, re-based multiplicatively.** COROLLARY HE3.B:
+[GENHN-HE(μ)] for ALL μ, by induction with STRICT DESCENT μ′ ≤ μ/2
+(GENIND.A(IV): an inner composite stage needs e₁′f₁′μ′ ≤ μ, e₁′f₁′ ≥ 2),
+base μ ≤ 3 composite-stage-free. New lemmas: HE3-1 (resultant identity at
+every test key) · HE3-1′ (evaluation display) · HE3-2 (recentering
+valuations, ELEMENTARY — so the σ chain carries **no W-9 weld face**,
+unlike GENHN's count laws) · HE3-3 (Ψ-inversion ⇒ n_λ = D′L_λ) · HE3-4
+(residue peel + base change) · HE3-5 (the σ-resolution boundary).
+
+WHY the μ=2 argument stopped: ≤ 2 labels ⇒ root count + one resultant
+identity determine the class sizes; at μ=3 three labels on ONE side make
+the second identity degenerate (tooth HE-T-UNDET: 10 spurious solutions).
+Machine leg GREEN 0 violations: 72,134 entry-key resultant identities +
+43,528 test-key checks + 947 PARI σ jobs 0 bad + 72,602 reader reads; all
+FIVE μ=3 stage types PARI-confirmed incl. 25 sextics splitting into three
+ramified quadratics; a FRESH reader byte-ties GENHN's committed E3 census
+((ℤ₃,4,1): 13,122 + 26,244 = 39,366). Grade **0/2, no hostile arc** —
+HE3-BOX-4b discloses the sealed-vs-delivered coverage gap (ℤ_p only,
+4 teeth, no n=7 row). Open surface now: **the ARCS only** (W-12 PE3,
+HEX3, GENH4, GENIND, GENHN, HE3) + the S9 compression/coverage boxes.
