@@ -3182,3 +3182,37 @@ multiplicativity + χ-from-S (queued synthesis targets).**
 **2026-08-08: ★★★★★ P(4) FIRES — quartics = third complete degree (eleven R_τ(q), Σ=1, Igusa-tied); [GENIND-H(4)] discharged at both genres; W-9's cocycle literal in the count; P-D settled as theorem. LAST COMPOSITION: GENHN (general-n discharge) opens. ★★★★★**
 
 **2026-08-08: ★★★ HMENU3 ACCEPTED 2/2 (9th note; PE4 = symbolic polynomial-identity engine over the whole menu). n=3 chain: W-11 ✓ HMENU3 ✓, HEX3 + W-12 arcs continue. GENHN (last composition) + GENH4 PE1 in flight. ★★★**
+
+---
+
+## ★ CHECKPOINT 2026-08-08 (post-surge; written during the 529 stand-down) — THE STATE OF THE UNIFORMITY PROGRAM ★
+
+**The theorem chain as it stands (grades in brackets):**
+- THEOREM W-12.D (the reduction): menu + drainage ⟹ ONE R_τ ∈ ℚ(q)
+  per splitting type at every prime incl. wild, = Haar density, Σ = 1
+  [proved; arc r2, PE3 re-running].
+- n=2: W-11 seven-family menu + drainage [ACCEPTED 2/2] → densities
+  q/(2(q+1)), q/(2(q+1)), 1/(q+1).
+- n=3: HMENU3 33-family menu [ACCEPTED 2/2] + HEX3 exact U₃ law
+  [1/2, PE4 accepting next] → the five cubic densities (Φ₅-forms,
+  Σ=1, triple-tied).
+- n=4: GENH4 [GENIND-H(4)] discharge at both genres [PE1 0C/0G/1m +
+  r1; PE2 next] → eleven quartic densities (Σ=1 symbolic,
+  Igusa-tied).
+- General n: GENIND (grammar + α-bracket + composite criterion n≥4 +
+  simple layer proved; induction from P(2),P(3)) [0/2, arc unopened]
+  + GENHN (genre classification finite-uniform, general stage law,
+  σ at every μ=2 stage, towers μ≥4 ⟺ n≥8 with multiplicative
+  composition; ONE box family [GENHN-HE(μ≥3)]) [proofs committed
+  S2–S10; battery pending — the 529-storm pending set].
+- The carry corpus feeding the composite stages: six weld notes +
+  Σ-LAW [all ACCEPTED 2/2]; DULEMMA, J-D0, W-10, K2RES [proved,
+  intermediate grade].
+
+**NINE notes accepted total.** Open surface (short list): the GENHN
+battery + its arc; [GENHN-HE(μ≥3)]; the remaining arcs (W-12, HEX3,
+GENH4, GENIND, GENHN); OPEN-2a converse; U₃^σ; the Codex queue
+(VC40b, ratification legs, Σ-LAW/Vaquié probe, WELDMASTER
+plan-review; window ~1%); then STAGE TWO of the goal: the Lean
+campaign (three kernel-checked seed files banked). Storm protocol:
+watchdog c986a06a owns revival; pending set at ledger 4ad061d.
