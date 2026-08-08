@@ -941,8 +941,23 @@ preserved). Fix: basin-started Newton — V4E2 rows start at the
 split-side residual root −res(b₄,v₄)·π^{v₄} (dominant balance
 x⁴(x+b₄)); v(f′) = 4v₄ throughout the basin and the loss law
 L = N−4v₄ of S11.F is unchanged. No prediction, law, gate, or
-dictionary was touched. Full run 2 (the scoring run) launched from
-the re-sealed runner; artifacts at commit 2 come from it alone.
+dictionary was touched. **RE-SEAL 2 (disclosed; predictions still
+byte-unchanged).** Full run 2 completed end-to-end — 2,223,050
+checks with ZERO mathematical violations, all five teeth (fired
+2/2/2/2/1 across rows), certified σ 0-bad on every ANSWERED job,
+and the diagnostic tails exactly as S11.F predicts (V p=2:
+1,216 uncertified jobs / 350 mismatches; V p=3: 241/58; all
+full-side legs 0/0) — but went RED on ONE oracle-infrastructure
+seam: 4 of the 20,800 V p=2 gp jobs got no answer
+(`idealprimedec: precision too low in get_norm` inside the pinned
+sig's factorpadic-200 lift; the gp REPL skips the erroring line),
+scoring as 1 truncation + 3 None-mismatches. Forensics: the 4 jobs
+were reproduced deterministically and re-asked individually at
+precisions 50/100/400 — all four answer {(1,1),(4,1)}, CONFIRMING
+their prediction. Fix: run_oracle gains a per-miss retry ladder
+(same independent PARI question, different working precision);
+misses surviving the ladder still score as violations. Full run 3
+= the scoring run; artifacts at commit 2 come from it alone.
 
 ### S11.F The extraction-certified σ perimeter (the machine-surfaced
 finding, with derivation)

@@ -1267,6 +1267,21 @@ def run_tower():
 # ===================================================================
 # GN-SIGMA (PARI)
 # ===================================================================
+GP_SIGP = r"""
+ef(g, p) = {
+  if (poldegree(g) == 1, return([1, 1]));
+  my(nf = nfinit([g, [p]]), dec = idealprimedec(nf, p));
+  [dec[1].e, dec[1].f]
+}
+sigp(f, p, prec) = {
+  my(d = poldisc(f), F);
+  if (d == 0, return([[-1, -1]]));
+  F = factorpadic(f, p, prec);
+  vecsort(vector(matsize(F)[1], i, ef(liftall(F[i, 1]), p)))
+}
+"""
+
+
 def run_oracle(jobs, rowid, p, flip_e31=False):
     """jobs = (polystr, want, tag, cert).  cert=True jobs SCORE
     (mismatch = violation); cert=False jobs (beyond the extraction-
@@ -1285,6 +1300,32 @@ def run_oracle(jobs, rowid, p, flip_e31=False):
         if line.startswith('R '):
             idx, rest = line[2:].split(' ', 1)
             got[int(idx)] = W12.parse_sig(rest)
+    # [re-seal fix 2, disclosed] retry ladder for gp misses: on rare
+    # inputs the pinned sig's factorpadic precision 200 makes
+    # idealprimedec fail ('precision too low in get_norm'; run 2 hit
+    # 4/20,800, every one confirming its prediction on retry); the
+    # REPL skips those lines.  Retry each missing job individually at
+    # precisions 50/100/400 -- same independent PARI question, only
+    # the working precision changes.  Misses after the ladder still
+    # count as violations below.
+    nretry = 0
+    missing = [i for i in range(len(jobs)) if i not in got]
+    for i in missing:
+        for prec in (50, 100, 400):
+            alt = (GP_SIGP + 'print("R %d ", sigp(%s, %d, %d))\nquit\n'
+                   % (i, jobs[i][0], p, prec))
+            out2 = W10.gp_run(alt)
+            done = False
+            for line in out2.splitlines():
+                if line.startswith('R %d ' % i):
+                    got[i] = W12.parse_sig(line.split(' ', 2)[2])
+                    done = True
+            if done:
+                nretry += 1
+                break
+    if nretry:
+        say('  [oracle %s] %d gp precision misses recovered by the '
+            'retry ladder' % (rowid, nretry))
     ncert = sum(1 for j in jobs if j[3])
     note('GN-SIGMA', ncert)
     if len(got) != len(jobs):
