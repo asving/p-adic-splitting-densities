@@ -419,14 +419,20 @@ def peval(R, coeffs, x):
     return acc
 
 
-def newton_root(R, fc, dvf):
+def newton_root(R, fc, dvf, rho0=None):
     """root of monic f (fc = [b0..b(m-1)] + implicit leading 1) on the
     simple integer-slope segment with v(f'(root)) = dvf; returns rho
-    with f(rho) == 0 in R (exactly; see GENHN S11 prereg argument)."""
+    with f(rho) == 0 in R (exactly; see GENHN S11 prereg argument).
+    [re-seal fix, disclosed] rho0 = basin start: Newton must begin
+    where v(f'(rho)) = dvf already holds.  rho0 = 0 works for V1E2
+    (f'(0) = b1 pinned at exactly 2h) but NOT for V4E2 (f'(0) = b1
+    has v >= v4+(3h+1)/2 > 4*v4, or b1 = 0): the first full run
+    crashed here; V4E2 rows now start at the split-side residual
+    root -res(b4, v4)*pi^v4 (dominant balance x^4(x + b4))."""
     one = Q.rint(R, 1)
     full = list(fc) + [one]
     dfull = [R.mul(full[i], Q.rint(R, i)) for i in range(1, len(full))]
-    rho = Q.rzero(R)
+    rho = Q.rzero(R) if rho0 is None else rho0
     guard = 0
     lastv = -1
     while True:
@@ -913,7 +919,12 @@ def run_v_row(kind, q, N, h, genre, v4=None, sink=None, step=1):
     tab = cert_table_E(genre, q, N, h, v4)
     fcheck_step = 64 if q ** (4 * N) > 10 ** 7 else 16
     for z, fc in gen:
-        rho = newton_root(R, fc, dvf)
+        if genre == 'V4E2':
+            r0 = Q.rneg(R, R.mul(R.lift(R.res(fc[4], v4)),
+                                 Q.pipow(R, v4)))
+        else:
+            r0 = None
+        rho = newton_root(R, fc, dvf, rho0=r0)
         cs = divide_linear(R, fc, rho)
         key, _ = Q.read22(R, K, q, cs[3], cs[2], cs[1], cs[0])
         if not (key[0] == 'E' and key[1] == () and key[2] == h):

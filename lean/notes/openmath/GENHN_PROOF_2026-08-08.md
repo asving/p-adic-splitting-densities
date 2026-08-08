@@ -929,6 +929,21 @@ mismatching (uncertified), exactly at the derived floors. Smoke 2
 all 5 teeth, certified σ 720/720, diagnostic tail 24 jobs / 6
 mismatches, 50.8s. No full row ran before seal.
 
+**RE-SEAL (disclosed; predictions byte-unchanged).** Full run 1
+(from the commit-1 seal) CRASHED at the first V4E2 row on
+newton_root's own guard `assert vd <= dvf` — an infrastructure
+bug the audit missed: Newton started at rho = 0, where
+f′(0) = b₁ has v ≥ v₄+(3h+1)/2 > 4v₄ (V1E2 was immune: its b₁ is
+pinned at exactly 2h). Every row completed before the crash matched
+its P1/P3 prediction exactly (all six CLASS flagships; V1E2 totals
+12,288 / 458,752 / 26,244 / 458,752 with 0 violations; log
+preserved). Fix: basin-started Newton — V4E2 rows start at the
+split-side residual root −res(b₄,v₄)·π^{v₄} (dominant balance
+x⁴(x+b₄)); v(f′) = 4v₄ throughout the basin and the loss law
+L = N−4v₄ of S11.F is unchanged. No prediction, law, gate, or
+dictionary was touched. Full run 2 (the scoring run) launched from
+the re-sealed runner; artifacts at commit 2 come from it alone.
+
 ### S11.F The extraction-certified σ perimeter (the machine-surfaced
 finding, with derivation)
 
