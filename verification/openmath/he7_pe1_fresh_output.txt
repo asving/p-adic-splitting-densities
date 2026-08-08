@@ -1,0 +1,15 @@
+PARI stack size set to 67108864 bytes, maximum size set to 67108864
+frame p=3 s=1   sigma(Psi) = ((4, 1),)  OK
+frame p=3 s=2   sigma(Psi) = ((4, 1),)  OK
+frame p=5 s=1   sigma(Psi) = ((4, 1),)  OK
+frame p=5 s=2   sigma(Psi) = ((4, 1),)  OK
+frame p=5 s=3   sigma(Psi) = ((4, 1),)  OK
+frame p=7 s=1   sigma(Psi) = ((4, 1),)  OK
+frame p=7 s=2   sigma(Psi) = ((4, 1),)  OK
+frame p=7 s=3   sigma(Psi) = ((4, 1),)  OK
+
+MEMBERS 2704  used 2552  F1-discard 0  refine used 0  refine-skip 152
+PARI jobs 2552  agree 2552  MISMATCH 0  VIOLATIONS 0
+case census: {'one-side-l2=2': 792, 'one-side-inert-weven': 396, 'one-side-split-weven': 320, 'one-side-inert-wodd': 396, 'one-side-split-wodd': 320, 'two-sides': 328}
+psi oracle: 8/8
+221.4s

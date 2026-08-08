@@ -1,0 +1,71 @@
+{
+ "frames": [],
+ "members": 2704,
+ "used": 2552,
+ "discard_F1": 0,
+ "refine_used": 0,
+ "refine_skip": 152,
+ "pari_jobs": 2552,
+ "agree": 2552,
+ "mismatch": [],
+ "viol": [],
+ "psi_checks": [
+  {
+   "p": 3,
+   "s": 1,
+   "sigma_Psi": "((4, 1),)",
+   "ok": true
+  },
+  {
+   "p": 3,
+   "s": 2,
+   "sigma_Psi": "((4, 1),)",
+   "ok": true
+  },
+  {
+   "p": 5,
+   "s": 1,
+   "sigma_Psi": "((4, 1),)",
+   "ok": true
+  },
+  {
+   "p": 5,
+   "s": 2,
+   "sigma_Psi": "((4, 1),)",
+   "ok": true
+  },
+  {
+   "p": 5,
+   "s": 3,
+   "sigma_Psi": "((4, 1),)",
+   "ok": true
+  },
+  {
+   "p": 7,
+   "s": 1,
+   "sigma_Psi": "((4, 1),)",
+   "ok": true
+  },
+  {
+   "p": 7,
+   "s": 2,
+   "sigma_Psi": "((4, 1),)",
+   "ok": true
+  },
+  {
+   "p": 7,
+   "s": 3,
+   "sigma_Psi": "((4, 1),)",
+   "ok": true
+  }
+ ],
+ "by_case": {
+  "one-side-l2=2": 792,
+  "one-side-inert-weven": 396,
+  "one-side-split-weven": 320,
+  "one-side-inert-wodd": 396,
+  "one-side-split-wodd": 320,
+  "two-sides": 328
+ },
+ "elapsed": 221.4
+}
