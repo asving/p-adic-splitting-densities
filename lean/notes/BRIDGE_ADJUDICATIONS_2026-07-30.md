@@ -12669,3 +12669,40 @@ an S8.2 aside k=1-correction misattribution. r2 owed
 at full depth; R(M) both parities; N=1,2 corners; the q=27
 never-measured row predicted exactly by the verifier's own
 enumerator).
+
+---
+
+## ★★★★★ GENH4: [GENIND-H(4)] DISCHARGED AT BOTH GENRES — P(4) FIRES FULL: QUARTICS = THE THIRD COMPLETE DEGREE (eleven R_τ(q), Σ=1 symbolic, Igusa-engine-tied) — THE WELD'S COCYCLE MADE LITERAL IN THE COUNT — 2026-08-08
+
+Adjudicated from the unit return (skeleton ea5978d → seal 121d9ab →
+verdict run-1 RED 3eb1667 → verdict run-2 GREEN 4b5c085; attempt 0/2).
+ALL FOUR OBSTRUCTIONS PROVED: OB-a (GENH4-3+CAP: the coherent object
+IS the e₁-fold cover; hidden band = never-consulted free slots); OB-b
+(GENH4-2/4: the refine carry computed in print coordinates — the
+z̄-twist cancels exactly against carry × key-constant, W-9's cocycle
+LITERAL; 192,000 pointwise); OB-c (GENH4.C: σ by the resolvent method
+= the (H-e) INSTANCE at both n=4 genres; general (H-e) boxed); OB-d
+(GENH4-1F: F_{q²} fibration, budgets exact). ALL THREE LEMMAS PROVED:
+Q22-L1 (the (e₁,f₁)-re-based cell law), Q22-L2 (triangular-with-carry
+bijection, caps included; CS-2 brackets (q−1)q^{2μ−1} /
+(q²−1)(q²)^{μ−1}), Q22-L3 WITH SEALED-DISPLAY CORRECTION (QSCOUT22's
+fitted (q−1)q^{N+(h−1)/2} was the h=1 instance; true E-genre law
+(q−1)^{r+1+t}q^{N+h−1} per (entry,H₂) — the committed artifact
+decided, 512 not 256 at (2,7,3); QSCOUT22 dated annex OWED at next
+fold). BONUS: P-D SETTLED AS A THEOREM (GENH4-6: dead-S₁-slot cascade
+UNREACHABLE at n=4; two too-strong intermediate claims smoke-caught
+and disclosed). **P(4) FIRES FULL — [GENIND-H(4)] discharged;
+GENIND.B fires at n=4 conditional exactly on the S11 arc stack;
+ELEVEN quartic densities displayed (S9.4), Σ=1 symbolic, ν₄ ≡ β₄ via
+the independent Igusa-recursion engine, E[#roots] = q/(q+1).**
+Battery: run-1 RED honestly arced (1/245,694 — the unit's OWN
+generator floor bug, diagnosed from artifacts, laws untouched) → 1-line
+repair → run-2 GREEN 0/all-11-families, JSONTIE 481/0 on all 23
+QSCOUT22 rows, PARI 6,185/0 incl. fresh q=7/h=5/depth-2 territory.
+n=5 CS genres (the 4+1 fracture) remain open.
+
+**THE PROGRAM'S LAST COMPOSITION OPENS: GENHN — the general
+[GENIND-H(n)] discharge (GENH4's method genre-generically at every n)
+⟹ with GENIND.B + W-12.D: THE FULL UNIFORMITY THEOREM composed
+end-to-end. Dispatching: GENHN composer + GENH4 PE1 (complete-theorem
+bar).**
