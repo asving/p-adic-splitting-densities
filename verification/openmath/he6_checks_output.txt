@@ -1,0 +1,61 @@
+HE6 checks — the enlarged fractional-height test family
+pins: he3_checks.py 7c38f5ab76, he3_checks_results.json 1b679cd23e, w12_checks.py 7dc040d94f, w10_checks.py a9c34244a3
+
+=== ROW Z_3  u=5 (lam=5/2)  W=2 char 0
+ cfg=SPLIT  labels=[('5/2', [1, 1]), ('5/2', [2, 1])] deeper=False sigma_pred=((4, 1), (4, 1)) (#tests/member=15)
+   RANK old=1/2 labels  spurious old=3 new=1 true=[4, 4]
+   PARI 200 jobs, sigma multiset: {'((4, 1), (4, 1))': 200}
+ cfg=INERT  labels=[('5/2', [1, 0, 1])] deeper=False sigma_pred=((4, 2),) (#tests/member=15)
+   PARI 200 jobs, sigma multiset: {'((4, 2),)': 200}
+ cfg=ALPHA2 labels=[('5/2', [2, 1])] deeper=True sigma_pred=None (#tests/member=15)
+   PARI 200 jobs, sigma multiset: {'((8, 1),)': 153, '((4, 2),)': 30, '((4, 1), (4, 1))': 17}
+
+=== ROW Z_5  u=5 (lam=5/2)  W=2 char 0
+ cfg=SPLIT  labels=[('5/2', [3, 1]), ('5/2', [4, 1])] deeper=False sigma_pred=((4, 1), (4, 1)) (#tests/member=24)
+   RANK old=1/2 labels  spurious old=3 new=1 true=[4, 4]
+   PARI 200 jobs, sigma multiset: {'((4, 1), (4, 1))': 200}
+ cfg=INERT  labels=[('5/2', [1, 1, 1])] deeper=False sigma_pred=((4, 2),) (#tests/member=24)
+   PARI 200 jobs, sigma multiset: {'((4, 2),)': 200}
+ cfg=ALPHA2 labels=[('5/2', [4, 1])] deeper=True sigma_pred=None (#tests/member=24)
+   PARI 200 jobs, sigma multiset: {'((8, 1),)': 176, '((4, 1), (4, 1))': 13, '((4, 2),)': 11}
+
+=== ROW Z_7  u=5 (lam=5/2)  W=1 char 0
+ cfg=SPLIT  labels=[('5/2', [5, 1]), ('5/2', [6, 1])] deeper=False sigma_pred=((4, 1), (4, 1)) (#tests/member=37)
+   RANK old=1/2 labels  spurious old=3 new=1 true=[4, 4]
+   PARI 185 jobs, sigma multiset: {'((4, 1), (4, 1))': 185}
+ cfg=INERT  labels=[('5/2', [1, 0, 1])] deeper=False sigma_pred=((4, 2),) (#tests/member=37)
+   PARI 185 jobs, sigma multiset: {'((4, 2),)': 185}
+ cfg=ALPHA2 labels=[('5/2', [6, 1])] deeper=True sigma_pred=None (#tests/member=37)
+   PARI 185 jobs, sigma multiset: {'((8, 1),)': 162, '((4, 1), (4, 1))': 11, '((4, 2),)': 12}
+
+=== ROW Z_5  u=7 (lam=7/2)  W=1 char 0, deeper side
+ cfg=SPLIT  labels=[('7/2', [3, 1]), ('7/2', [4, 1])] deeper=False sigma_pred=((4, 1), (4, 1)) (#tests/member=28)
+   RANK old=1/2 labels  spurious old=3 new=1 true=[4, 4]
+   PARI 157 jobs, sigma multiset: {'((4, 1), (4, 1))': 157}
+ cfg=INERT  labels=[('7/2', [1, 1, 1])] deeper=False sigma_pred=((4, 2),) (#tests/member=28)
+   PARI 157 jobs, sigma multiset: {'((4, 2),)': 157}
+ cfg=ALPHA2 labels=[('7/2', [4, 1])] deeper=True sigma_pred=None (#tests/member=28)
+   PARI 157 jobs, sigma multiset: {'((8, 1),)': 127, '((4, 1), (4, 1))': 17, '((4, 2),)': 13}
+
+=== ROW F_3[[t]]  u=5 (lam=5/2)  W=2 char 3
+ cfg=SPLIT  labels=[('5/2', [1, 1]), ('5/2', [2, 1])] deeper=False sigma_pred=((4, 1), (4, 1)) (#tests/member=15)
+   RANK old=1/2 labels  spurious old=3 new=1 true=[4, 4]
+ cfg=INERT  labels=[('5/2', [1, 0, 1])] deeper=False sigma_pred=((4, 2),) (#tests/member=15)
+ cfg=ALPHA2 labels=[('5/2', [2, 1])] deeper=True sigma_pred=None (#tests/member=15)
+
+=== ROW F_5[[t]]  u=5 (lam=5/2)  W=1 char 5
+ cfg=SPLIT  labels=[('5/2', [3, 1]), ('5/2', [4, 1])] deeper=False sigma_pred=((4, 1), (4, 1)) (#tests/member=24)
+   RANK old=1/2 labels  spurious old=3 new=1 true=[4, 4]
+ cfg=INERT  labels=[('5/2', [1, 1, 1])] deeper=False sigma_pred=((4, 2),) (#tests/member=24)
+ cfg=ALPHA2 labels=[('5/2', [4, 1])] deeper=True sigma_pred=None (#tests/member=24)
+
+--- teeth
+  TOOTH HE6-T-UNDET2     FIRED  rank_old=1/2 spurious old=3 new=1 (true [4, 4])
+  TOOTH HE6-T-PLANT      FIRED  dropped [[4, 1]]: reported UNDETERMINED (certified labels 1 of 2)
+  TOOTH HE6-T-FLIP       FIRED  PARI truth=((4, 1), (4, 1)) rejects [((8, 1),), ((4, 2),), ((2, 1), (2, 1), (2, 1), (2, 1))]
+  TOOTH HE6-T-BADKEY     FIRED  kappa=6/2 (gcd 2): Psi has 2 p-adic factors (roots carry DIFFERENT residues +-1), height read 3
+  TOOTH HE6-T-CASEB      FIRED  ALPHA2 (R_lam=(Z-s)^2, l=2): 3 distinct sigma over members with IDENTICAL outer data: {'((8, 1),)': 4, '((4, 2),)': 1, '((4, 1), (4, 1))': 1}
+
+LEGS: {'HE6-GEN': 72315, 'HE6-SEP': 4232, 'HE6-XI': 24, 'HE6-XI-ORTH': 6, 'HE6-SIG': 2226}
+VIOLATIONS: 0
+196.1s

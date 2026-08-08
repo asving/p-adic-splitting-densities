@@ -89,7 +89,7 @@ from fractions import Fraction as Fr
 HERE = os.path.dirname(os.path.abspath(__file__))
 sys.path.insert(0, HERE)
 
-WIP = True      # commit 1: skeleton + smoke; commit 2 flips this to False
+WIP = False     # commit 1 sealed this True (smoke only); commit 2 flipped it
 
 PINS = ['he3_checks.py', 'he3_checks_results.json', 'w12_checks.py',
         'w10_checks.py']
@@ -589,6 +589,247 @@ def gp_sig_batch(jobs, p):
     return got
 
 
+# ======================================================== bookkeeping
+RES = {'legs': {}, 'viol': [], 'teeth': {}, 'rows': [], 'rank': [],
+       'caseB': {}}
+
+
+def note(leg, k=1):
+    RES['legs'][leg] = RES['legs'].get(leg, 0) + k
+
+
+def viol(leg, what, detail):
+    RES['viol'].append({'leg': leg, 'what': what, 'detail': str(detail)[:400]})
+    print('  !! VIOLATION %s %s %s' % (leg, what, str(detail)[:200]))
+
+
+def tooth(name, fired, detail=''):
+    RES['teeth'][name] = {'fired': bool(fired), 'detail': str(detail)[:400]}
+    print('  TOOTH %-16s %s  %s' % (name, 'FIRED' if fired else 'DID NOT FIRE',
+                                    str(detail)[:150]))
+
+
+# ================================================ irreducibles over F_p
+def peval_l(c, a, p):
+    s = 0
+    for co in reversed(c):
+        s = (s * a + co) % p
+    return s
+
+
+def irred_list(p, deg):
+    """monic irreducibles of degree deg over F_p, low-to-high, r(0) != 0."""
+    out = []
+    for tup in itertools.product(range(p), repeat=deg):
+        c = list(tup) + [1]
+        if c[0] == 0:
+            continue
+        if deg == 1:
+            out.append(c)
+        elif deg == 2:
+            if all(peval_l(c, a, p) for a in range(p)):
+                out.append(c)
+    return out
+
+
+# ================================================== member enumeration
+def line_floor(j, u):
+    """smallest integer dv STRICTLY above the lam-line at abscissa j,
+    lam = u/2 (u odd), line height (4-j)*u/2."""
+    num = (MU - j) * u
+    return num // 2 + 1
+
+
+def member_family(R, p, u, W=2):
+    """options[j] = list of perturbation polys for A_j, all strictly above
+    the lam-line (so the outer read is INVARIANT and only the DEEPER digits
+    move)."""
+    opts = []
+    for j in range(MU):
+        o = [[R.zero]]
+        lo = line_floor(j, u)
+        for m in range(lo, lo + W):
+            for c in range(1, p):
+                o.append([x * R.el(c) for x in nrm(m, R)])
+        opts.append(o)
+    return opts
+
+
+def members(R, p, u, rco2, W=2, cap=None):
+    opts = member_family(R, p, u, W)
+    tot = 1
+    for o in opts:
+        tot *= len(o)
+    stride = 1 if (cap is None or tot <= cap) else -(-tot // cap)
+    n = 0
+    for i, tup in enumerate(itertools.product(*opts)):
+        if i % stride:
+            continue
+        pert = {j: tup[j] for j in range(MU)}
+        A, f = instance(u, rco2, R, pert)
+        n += 1
+        yield A, f
+    RES.setdefault('member_counts', []).append((R.name(), u, tot, n))
+
+
+def disc_nonzero(f, R):
+    fp = [c * R.el(i) for i, c in enumerate(f)][1:]
+    d = resultant(f, fp)
+    return bool(d) if not isinstance(d, int) else d != 0
+
+
+# ============================================================ the legs
+def test_grid(p, u, labels):
+    """the sampled test family: (u', l', r, expect_excess)."""
+    out = []
+    lam = Fr(u, 2)
+    lab_keys = set((lb['lam'], tuple(lb['r'])) for lb in labels)
+    # (a) the side's OWN fractional height, every irreducible of degree <= 2
+    for deg in (1, 2):
+        for r in irred_list(p, deg):
+            key = (str(lam), tuple(r))
+            out.append((u, 2, r, key in lab_keys))
+    # (b) other rational heights (l' = 1, 2, 3), one letter each
+    r1 = irred_list(p, 1)[0]
+    for lp in (1, 2, 3):
+        for up in range(2 * lp + 1, (u + 4) * lp // 2 + 1):
+            if gcd(up, lp) != 1 or Fr(up, lp) <= 2:
+                continue
+            key = (str(Fr(up, lp)), tuple(r1))
+            out.append((up, lp, r1, key in lab_keys))
+    return out
+
+
+def leg_member(f, A, R, p, u, rd, grid):
+    """P1 (flat identity at generic (kappa, r)) + P2 (strict excess exactly
+    at the labels).  Returns dict label-key -> measured excess."""
+    dvs = rd['dvs']
+    exc = {}
+    for (up, lp, r, want_exc) in grid:
+        d = len(r) - 1
+        Ps = test_poly(up, lp, r[:-1], R)
+        meas = dv_res(f, Ps, R)
+        kappa = Fr(up, lp)
+        gen = lp * d * DP * h_F(dvs, kappa)
+        assert gen.denominator == 1, (gen, up, lp)
+        gen = int(gen)
+        note('HE6-GEN')
+        if want_exc:
+            note('HE6-SEP')
+            if meas <= gen:
+                viol('HE6-SEP', 'no excess at a label',
+                     'p=%s u=%d r=%s meas=%s gen=%s' % (p, up, r, meas, gen))
+            exc[(str(kappa), tuple(r))] = meas - gen
+        else:
+            if meas != gen:
+                viol('HE6-GEN', 'flat identity failed',
+                     'p=%s kappa=%s/%s r=%s meas=%s gen=%s'
+                     % (p, up, lp, r, meas, gen))
+    return exc
+
+
+def leg_xi(R, p, u, rd):
+    """P3: every root xi of Psi_{lam,r} carries the label (lam, r).
+    (i) 2 v(Res(Psi, Phi')) / deg Psi == lam ; (ii) Psi irreducible over the
+    base (char 0 only, PARI) ; (iii) distinct r's are mutually generic."""
+    key = key_poly(R)
+    lam = Fr(u, 2)
+    Ps = {}
+    for lb in rd['labels']:
+        r = lb['r']
+        P = test_poly(u, 2, r[:-1], R)
+        Ps[tuple(r)] = P
+        note('HE6-XI')
+        got = Fr(dv_res(P, key, R), len(P) - 1)
+        if got != lam:
+            viol('HE6-XI', 'root height wrong',
+                 'r=%s got=%s want=%s' % (r, got, lam))
+    ks = sorted(Ps)
+    for i in range(len(ks)):
+        for j in range(i + 1, len(ks)):
+            note('HE6-XI-ORTH')
+            m = dv_res(Ps[ks[i]], Ps[ks[j]], R)
+            di, dj = len(ks[i]) - 1, len(ks[j]) - 1
+            gen = 2 * di * 2 * dj * int(u)          # l*d_i * l*d_j * u ... /1
+            # generic value: sum over roots xi of Psi_i of dv(Psi_j(xi))
+            #  = (deg Psi_i) * l*d_j * lam = (2*2*di) * (2*dj) * (u/2)
+            gen = (2 * 2 * di) * (2 * dj) * u // 2
+            if m != gen:
+                viol('HE6-XI-ORTH', 'test polys not mutually generic',
+                     'r1=%s r2=%s got=%s want=%s' % (ks[i], ks[j], m, gen))
+    return Ps
+
+
+def leg_rank(rd, exc, u):
+    """P5: the OLD (integer-height) family is rank-deficient at the l >= 2
+    degenerate side; the NEW family pins the class-size vector uniquely."""
+    labels = rd['labels']
+    L = len(labels)
+    if L < 2:
+        return None
+    lams = [Fr(lb['lam']) for lb in labels]
+    sizes = [lb['size'] for lb in labels]
+    rows_old = [[1] * L]                              # the root count
+    for kappa in range(3, int(max(lams)) + 3):
+        rows_old.append([min(la, Fr(kappa)) for la in lams])
+
+    def rank(rows):
+        M = [[Fr(x) for x in r] for r in rows]
+        rk, piv = 0, 0
+        for c in range(L):
+            sel = None
+            for i in range(rk, len(M)):
+                if M[i][c] != 0:
+                    sel = i
+                    break
+            if sel is None:
+                continue
+            M[rk], M[sel] = M[sel], M[rk]
+            for i in range(len(M)):
+                if i != rk and M[i][c] != 0:
+                    fac = M[i][c] / M[rk][c]
+                    M[i] = [a - fac * b for a, b in zip(M[i], M[rk])]
+            rk += 1
+        return rk
+
+    rk_old = rank(rows_old)
+    # spurious solutions under the OLD family
+    tot = DP * MU
+    def sols(need_nonempty):
+        out = []
+        rngs = [range(0, tot + 1, sizes[i]) for i in range(L)]
+        for tup in itertools.product(*rngs):
+            if sum(tup) != tot:
+                continue
+            if need_nonempty and any(x == 0 for x in tup):
+                continue
+            ok = True
+            for row in rows_old[1:]:
+                # the old family's RHS is D' h_F(kappa), which by LEMMA
+                # HE6-3 equals the value at the TRUE size vector: a candidate
+                # is old-family-compatible iff it matches the truth on rows.
+                lhs = sum(Fr(t) * c for t, c in zip(tup, row))
+                true_lhs = sum(Fr(s) * c for s, c in zip(sizes, row))
+                if lhs != true_lhs:
+                    ok = False
+                    break
+            if ok:
+                out.append(tuple(tup))
+        return out
+
+    sp_old = sols(False)
+    sp_new = sols(True)          # the enlarged family certifies each nonempty
+    rec = dict(labels=[(lb['lam'], lb['r']) for lb in labels],
+               rank_old=rk_old, n_labels=L,
+               spurious_old=len(sp_old), spurious_new=len(sp_new),
+               sols_old=[list(s) for s in sp_old[:12]],
+               sols_new=[list(s) for s in sp_new[:12]],
+               true_sizes=sizes,
+               excesses={str(k): v for k, v in exc.items()})
+    RES['rank'].append(rec)
+    return rec
+
+
 # ============================================================ smoke run
 def smoke(p=3, u=5):
     R = Zp(p)
@@ -607,12 +848,203 @@ def smoke(p=3, u=5):
     return rd
 
 
+# ======================================================== the row runner
+def residual_configs(p):
+    """(tag, rco2 = [c0, c1] of R_lam = Z^2 + c1 Z + c0, expectation)."""
+    out = []
+    lin = [c[0] for c in irred_list(p, 1)]        # r = Z + c0  <-> root -c0
+    roots = sorted(set((-c) % p for c in lin))
+    if len(roots) >= 2:
+        s1, s2 = roots[0], roots[1]
+        out.append(('SPLIT', [(s1 * s2) % p, (-(s1 + s2)) % p],
+                    ((E1 * 2, F1), (E1 * 2, F1))))
+    irr = irred_list(p, 2)
+    if irr:
+        out.append(('INERT', [irr[0][0], irr[0][1]], ((E1 * 2, F1 * 2),)))
+    s = roots[0]
+    out.append(('ALPHA2', [(s * s) % p, (-2 * s) % p, ], None))   # (Z-s)^2
+    return out
+
+
+def run_row(R, p, u, W=2, cap=None, oracle=True, tag=''):
+    print('\n=== ROW %s  u=%d (lam=%d/2)  W=%d %s' % (R.name(), u, u, W, tag))
+    for cfg, rco2, sig_want in residual_configs(p):
+        jobs, ms, nm = [], [], 0
+        rd0 = None
+        t0 = time.time()
+        for A, f in members(R, p, u, rco2, W=W, cap=cap):
+            if not disc_nonzero(f, R):
+                continue
+            rd = read_labels(A, R, p)
+            if rd0 is None:
+                rd0 = rd
+                grid = test_grid(p, u, rd['labels'])
+                print(' cfg=%-6s labels=%s deeper=%s sigma_pred=%s '
+                      '(#tests/member=%d)'
+                      % (cfg, [(lb['lam'], lb['r']) for lb in rd['labels']],
+                         rd['deeper'], rd['sigma'], len(grid)))
+                if sig_want is not None and rd['sigma'] != sig_want:
+                    viol('HE6-READ', 'sigma_pred mismatch',
+                         '%s got=%s want=%s' % (cfg, rd['sigma'], sig_want))
+            else:
+                if ([(lb['lam'], tuple(lb['r'])) for lb in rd['labels']] !=
+                        [(lb['lam'], tuple(lb['r'])) for lb in rd0['labels']]):
+                    viol('HE6-READ', 'outer data moved under perturbation',
+                         '%s' % cfg)
+            exc = leg_member(f, A, R, p, u, rd, grid)
+            nm += 1
+            ms.append((A, f, rd, exc))
+            if oracle and R.char0 and len(jobs) < 200:
+                jobs.append((polystr(f), rd['sigma']))
+        # xi-side + rank on the first member (they depend on outer data only)
+        if rd0 is not None:
+            leg_xi(R, p, u, rd0)
+            rec = leg_rank(rd0, ms[0][3] if ms else {}, u)
+            if rec:
+                print('   RANK old=%d/%d labels  spurious old=%d new=%d '
+                      'true=%s' % (rec['rank_old'], rec['n_labels'],
+                                   rec['spurious_old'], rec['spurious_new'],
+                                   rec['true_sizes']))
+        # PARI oracle
+        sigs = {}
+        if jobs:
+            got = gp_sig_batch(jobs, p)
+            nbad = 0
+            for i, (ps, want) in enumerate(jobs):
+                note('HE6-SIG')
+                g = got.get(i)
+                if g is None:
+                    viol('HE6-SIG', 'oracle missing', 'i=%d' % i)
+                    continue
+                sigs[g] = sigs.get(g, 0) + 1
+                if want is not None and g != want:
+                    nbad += 1
+                    viol('HE6-SIG', 'sigma mismatch',
+                         '%s got=%s want=%s' % (cfg, g, want))
+            print('   PARI %d jobs, sigma multiset: %s%s'
+                  % (len(jobs), dict((str(k), v) for k, v in sigs.items()),
+                     '' if not nbad else '  BAD=%d' % nbad))
+        RES['rows'].append(dict(ring=R.name(), p=p, u=u, cfg=cfg, W=W,
+                                members=nm, pari=len(jobs),
+                                sigma_pred=(str(sig_want) if sig_want else
+                                            'DEEPER'),
+                                sigma_seen={str(k): v for k, v in
+                                            sigs.items()},
+                                secs=round(time.time() - t0, 1)))
+        if cfg == 'ALPHA2':
+            RES['caseB'].setdefault('%s_u%d' % (R.name(), u), {})
+            RES['caseB']['%s_u%d' % (R.name(), u)] = {
+                str(k): v for k, v in sigs.items()}
+
+
+# ============================================================== the teeth
+def teeth_run(p=5, u=5):
+    R = Zp(p)
+    cfgs = dict((c[0], c) for c in residual_configs(p))
+    # ---- T1 HE6-T-UNDET2: old family rank-deficient at the l=2 side
+    _, rco2, _ = cfgs['SPLIT']
+    A, f = instance(u, rco2, R)
+    rd = read_labels(A, R, p)
+    rec = leg_rank(rd, {}, u)
+    tooth('HE6-T-UNDET2',
+          rec and rec['rank_old'] < rec['n_labels'] and
+          rec['spurious_old'] > 1 and rec['spurious_new'] == 1,
+          'rank_old=%s/%s spurious old=%s new=%s (true %s)'
+          % (rec['rank_old'], rec['n_labels'], rec['spurious_old'],
+             rec['spurious_new'], rec['true_sizes']))
+    # ---- T2 HE6-T-PLANT: a family missing one label's test poly must be
+    #      reported as NOT separating (no excess measured for that label)
+    labels = rd['labels']
+    seen = {}
+    for lb in labels[:1]:                     # deliberately drop label 2
+        P = test_poly(u, 2, lb['r'][:-1], R)
+        m = dv_res(f, P, R)
+        g = int(2 * 1 * DP * h_F(rd['dvs'], Fr(u, 2)))
+        seen[tuple(lb['r'])] = m - g
+    unpinned = [lb for lb in labels if tuple(lb['r']) not in seen]
+    tooth('HE6-T-PLANT', len(unpinned) == 1 and
+          all(v > 0 for v in seen.values()),
+          'dropped %s: reported UNDETERMINED (certified labels %d of %d)'
+          % ([lb['r'] for lb in unpinned], len(seen), len(labels)))
+    # ---- T3 HE6-T-FLIP: flipped dictionaries caught by PARI
+    flips = [((E1 * 4, F1),), ((E1 * 2, F1 * 2),), ((E1, F1),) * 4]
+    jobs = [(polystr(f), None)]
+    got = gp_sig_batch(jobs, p)
+    truth = got.get(0)
+    tooth('HE6-T-FLIP', truth is not None and all(fl != truth for fl in flips),
+          'PARI truth=%s rejects %s' % (truth, flips))
+    # ---- T4 HE6-T-BADKEY: gcd(u', l') != 1 -> the test poly's own side has
+    #      residual degree 2 and (when it splits) is REDUCIBLE, so its roots
+    #      do NOT all carry one label; the xi-side check must FAIL.
+    s = 1
+    bad_u = 6                                  # kappa = 6/2 : gcd = 2
+    Pbad = test_poly(bad_u, 2, [(-s * s) % p], R)   # Phi'^2 - s^2 varpi^6
+    key = key_poly(R)
+    got_h = Fr(dv_res(Pbad, key, R), len(Pbad) - 1)
+    import w10_checks as W10
+    out = W10.gp_run('print("F ", matsize(factorpadic(%s, %d, 60))[1]);quit\n'
+                     % (polystr(Pbad), p))
+    nfac = None
+    for line in out.splitlines():
+        if line.startswith('F '):
+            nfac = int(line[2:].strip())
+    tooth('HE6-T-BADKEY', nfac is not None and nfac > 1,
+          'kappa=6/2 (gcd 2): Psi has %s p-adic factors (roots carry '
+          'DIFFERENT residues +-%d), height read %s' % (nfac, s, got_h))
+    # ---- T5 HE6-T-CASEB: repeated residual on an l=2 side: outer data
+    #      IDENTICAL, PARI sigma DIFFERENT -> the deeper read is needed.
+    _, rco2b, _ = cfgs['ALPHA2']
+    seen_sig, ex = {}, []
+    for j, pert in enumerate([None,
+                              {3: [c * R.el(1) for c in nrm(3, R)]},
+                              {1: [c * R.el(1) for c in nrm(8, R)]},
+                              {3: [c * R.el(2) for c in nrm(3, R)]},
+                              {2: [c * R.el(1) for c in nrm(u + 1, R)]},
+                              {0: [c * R.el(1) for c in nrm(2 * u + 1, R)]}]):
+        A2, f2 = instance(u, rco2b, R, pert)
+        if not disc_nonzero(f2, R):
+            continue
+        rd2 = read_labels(A2, R, p)
+        ex.append((polystr(f2), rd2))
+    got = gp_sig_batch([(e[0], None) for e in ex], p)
+    for i, (ps, rd2) in enumerate(ex):
+        g = got.get(i)
+        if g:
+            seen_sig[g] = seen_sig.get(g, 0) + 1
+    tooth('HE6-T-CASEB', len(seen_sig) >= 2,
+          'ALPHA2 (R_lam=(Z-s)^2, l=2): %d distinct sigma over members with '
+          'IDENTICAL outer data: %s'
+          % (len(seen_sig), dict((str(k), v) for k, v in seen_sig.items())))
+
+
 def main():
     t0 = time.time()
-    print('HE6 checks — WIP smoke (commit 1)' if WIP else 'HE6 checks')
-    smoke(3, 5)
-    smoke(5, 5)
+    if WIP:
+        print('HE6 checks — WIP smoke (commit 1)')
+        smoke(3, 5)
+        smoke(5, 5)
+        print('%.1fs' % (time.time() - t0))
+        return
+    print('HE6 checks — the enlarged fractional-height test family')
+    print('pins: ' + ', '.join('%s %s' % (f, md5(f)[:10]) for f in PINS
+                               if os.path.exists(os.path.join(HERE, f))))
+    # char 0 rows
+    run_row(Zp(3), 3, 5, W=2, cap=300, tag='char 0')
+    run_row(Zp(5), 5, 5, W=2, cap=300, tag='char 0')
+    run_row(Zp(7), 7, 5, W=1, cap=200, tag='char 0')
+    run_row(Zp(5), 5, 7, W=1, cap=200, tag='char 0, deeper side')
+    # char p rows (no factorpadic oracle: reader + resultant identities)
+    run_row(FpTring(3), 3, 5, W=2, cap=80, oracle=False, tag='char 3')
+    run_row(FpTring(5), 5, 5, W=1, cap=60, oracle=False, tag='char 5')
+    print('\n--- teeth')
+    teeth_run(5, 5)
+    RES['secs'] = round(time.time() - t0, 1)
+    RES['nviol'] = len(RES['viol'])
+    print('\nLEGS: %s' % RES['legs'])
+    print('VIOLATIONS: %d' % len(RES['viol']))
     print('%.1fs' % (time.time() - t0))
+    with open(os.path.join(HERE, 'he6_checks_results.json'), 'w') as fh:
+        json.dump(RES, fh, indent=1, sort_keys=True, default=str)
 
 
 if __name__ == '__main__':
