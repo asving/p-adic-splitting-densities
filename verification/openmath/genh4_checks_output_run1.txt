@@ -1,0 +1,63 @@
+GENH4 battery -- FULL ROSTER
+  pin qscout22_checks.py = cb885663dd4ef6dfda9c28a67c1a076e
+  pin qscout22_results.json = 6c2441a12cf52ffd43055de912a4affe
+  pin qscout22_output.txt = 378a12b30b1ee3e1d3b929835827c7c7
+  pin w10_checks.py = a9c34244a3af19f5fa864375b494380b
+  pin w12_checks.py = 7dc040d94fbbb1e8d20ac817b665d418
+  pin ../om_density_engine.py = 7240a916060c360d4433ca8a802d315d
+  [GH-JSONTIE] all committed rows checked
+  [consE Zp q=7 N=3 h=1] 14406 members, 2 keys (0.2s)
+  [consE Fqt q=5 N=4 h=1] 1562500 members, 9 keys (72.5s)
+  [consE Fqt q=3 N=5 h=1] 1062882 members, 25 keys (53.7s)
+  [consE Zp q=2 N=11 h=5] 65536 members, 2 keys (1.0s)
+  [consF Zp q=7 N=5 k=1] 2470629 members, 2 keys (630.3s)
+  [consF Zp q=2 N=9 k=2] 4096 members, 2 keys (0.1s)
+  [full Fqt q=5 N=3] 390625 members, 7 keys (1.4s)
+  [pre2 Zp q=2 N=11 (1,2)] 1048576 members, 6 keys (52.3s)
+  VIOLATION [GH-FEVEN] law: feven Zp q=3 N=7 k=1 f0=5 ('F', (), 1, (), 'RAM', (5,)): obs 3188646 exp 0
+  [feven Zp q=3 N=7 k=1 f0=5] 4782969 members, 9 keys (259.1s)
+  [refineE Zp q=2 N=6 h=1] 65536 members, 10752 refine events (1.5s)
+  [refineE Fqt q=2 N=6 h=1] 65536 members, 10752 refine events (7.8s)
+  [refineF Zp q=2 N=7 k=1] 16384 members, 768 refine events (0.7s)
+  [pd-liveness] 3580 (h/k,N,dmu) cells scanned
+  [pd-cascade Fqt q=2 N=7 h=1] 512 members, leaves [('2SIDED', False), ('INERT', False), ('RAM', False), ('RAM', True), ('SPLTAIL', False), ('UND', False), ('UND', True)]
+  [pd-cascade Zp q=3 N=5 h=1] 486 members, leaves [('INERT', True), ('RAM', True), ('SPLITEQ', True), ('UND', True)]
+  [oracle consE Zp q=7 N=3 h=1] 1543 scored, 0 bad, F-RAM 0/0 (2.3s)
+  [oracle consF Zp q=2 N=9 k=2] 512 scored, 0 bad, F-RAM 512/512 (0.7s)
+  [oracle consF Zp q=7 N=5 k=1] 4130 scored, 0 bad, F-RAM 4130/4130 (5.7s)
+  == THE ELEVEN QUARTIC DENSITIES R_tau(q) ==
+    R_((1, 1), (1, 1), (1, 1), (1, 1)) = q**6*(q**8 - 2*q**7 + q**6 + 2*q**5 - q**4 + 2*q**3 + q**2 - 2*q + 1)/(24*(q + 1)**2*(q**2 + q + 1)*(q**6 + q**3 + 1)*(q**4 + q**3 + q**2 + q + 1))
+    R_((1, 1), (1, 1), (1, 2)) = q**6*(q**8 + 2*q**7 + 3*q**6 + 2*q**5 + q**4 + 2*q**3 + 3*q**2 + 2*q + 1)/(4*(q + 1)**2*(q**2 + q + 1)*(q**6 + q**3 + 1)*(q**4 + q**3 + q**2 + q + 1))
+    R_((1, 1), (1, 1), (2, 1)) = q**3*(q**10 + q**8 + 3*q**7 + q**6 + q**5 + 3*q**4 + 2*q**3 + 2*q**2 + 2*q + 1)/(2*(q + 1)**2*(q**2 + q + 1)*(q**6 + q**3 + 1)*(q**4 + q**3 + q**2 + q + 1))
+    R_((1, 1), (1, 3)) = q**6*(q + 1)**2*(q**2 - q + 1)/(3*(q**6 + q**3 + 1)*(q**4 + q**3 + q**2 + q + 1))
+    R_((1, 1), (3, 1)) = q*(q**9 + 2*q**7 + q**6 + q**5 + 2*q**4 + 2*q**3 + q**2 + q + 1)/((q**2 + q + 1)*(q**6 + q**3 + 1)*(q**4 + q**3 + q**2 + q + 1))
+    R_((1, 2), (1, 2)) = q**6*(q**6 + q**5 - 2*q**3 + q + 1)/(8*(q + 1)**2*(q**2 + 1)*(q**2 + q + 1)*(q**6 + q**3 + 1))
+    R_((1, 2), (2, 1)) = q**3*(q**6 + q**5 + q**4 + q + 1)/(2*(q + 1)**2*(q**2 + q + 1)*(q**6 + q**3 + 1))
+    R_((1, 4),) = q**6*(q**4 + q**3 + q**2 + q + 1)/(4*(q**2 + 1)*(q**2 + q + 1)*(q**6 + q**3 + 1))
+    R_((2, 1), (2, 1)) = q**2/(2*(q + 1)**2*(q**2 + q + 1))
+    R_((2, 2),) = q**2*(q**7 + q**6 + q**4 + q**3 + 2*q**2 + q + 1)/(2*(q + 1)*(q**2 + 1)*(q**2 + q + 1)*(q**6 + q**3 + 1))
+    R_((4, 1),) = (q**6 + q**5 + q**3 + q + 1)/((q + 1)*(q**2 + q + 1)*(q**6 + q**3 + 1))
+    q=2: {'((1, 1), (1, 1), (1, 1), (1, 1))': '344/142569', '((1, 1), (1, 1), (1, 2))': '13072/142569', '((1, 1), (1, 1), (2, 1))': '7348/142569', '((1, 1), (1, 3))': '576/2263', '((1, 1), (3, 1))': '1838/15841', '((1, 2), (1, 2))': '664/22995', '((1, 2), (2, 1))': '460/4599', '((1, 4),)': '496/2555', '((2, 1), (2, 1))': '2/63', '((2, 2),)': '454/7665', '((4, 1),)': '107/1533'}
+    q=3: {'((1, 1), (1, 1), (1, 1), (1, 1))': '821097/152417408', '((1, 1), (1, 1), (1, 2))': '10043433/76208704', '((1, 1), (1, 1), (2, 1))': '1983555/38104352', '((1, 1), (1, 3))': '27216/91597', '((1, 1), (3, 1))': '75774/1190761', '((1, 2), (1, 2))': '336069/6298240', '((1, 2), (2, 1))': '28539/314912', '((1, 4),)': '88209/393640', '((2, 1), (2, 1))': '9/416', '((2, 2),)': '13707/393640', '((4, 1),)': '1003/39364'}
+    q=5: {'((1, 1), (1, 1), (1, 1), (1, 1))': '1332765625/109828068768', '((1, 1), (1, 1), (1, 2))': '9390015625/54914034384', '((1, 1), (1, 1), (2, 1))': '1301445125/27457017192', '((1, 1), (1, 3))': '3937500/12301531', '((1, 1), (3, 1))': '10648280/381347461', '((1, 2), (1, 2))': '7609375/96217056', '((1, 2), (2, 1))': '2422625/35156232', '((1, 4),)': '12203125/50781224', '((2, 1), (2, 1))': '25/2232', '((2, 2),)': '590975/38085918', '((4, 1),)': '18881/2929686'}
+  [GH-DENS] symbolic leg complete
+
+== FAMILY TOTALS ==
+  GH-PIN      checks 6        violations 0
+  GH-JSONTIE  checks 481      violations 0
+  GH-FRESH    checks 54       violations 0
+  GH-PRE2     checks 5        violations 0
+  GH-REFINE   checks 192000   violations 0
+  GH-FEVEN    checks 9        violations 1
+  GH-PD       checks 46590    violations 0
+  GH-UND      checks 92       violations 0
+  GH-BRACKET  checks 157      violations 0
+  GH-DENS     checks 115      violations 0
+  GH-SIGMA    checks 6185     violations 0
+== TEETH ==
+  GH-T-LAT    fired 19
+  GH-T-CEN    fired 14
+  GH-T-ALPH   fired 4
+  GH-T-SIG    fired 2
+  GH-T-DENS   fired 1
+== RED (1102.2s) ==

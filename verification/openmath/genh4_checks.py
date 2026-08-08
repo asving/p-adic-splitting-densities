@@ -785,7 +785,10 @@ def run_feven(kind, q, N, k, f0dv):
         p1sq = R.mul(p1, p1)
         for al1 in Q.elems_with_floor(R, k + 1):
             for al0 in Q.elems_with_floor(R, 2 * k + 1):
-                for be1 in Q.elems_with_floor(R, f0dv - k):
+                # v1(A0) > f0dv needs BOTH components above f0dv:
+                # v(be1) >= f0dv-k+1 (run-1 had f0dv-k: the off-by-one
+                # RED, diagnosed exactly -- note S13)
+                for be1 in Q.elems_with_floor(R, f0dv - k + 1):
                     for be0 in Q.elems_with_floor(R, f0dv + 1):
                         B3 = R.add(R.add(p1, p1), al1)
                         B2 = R.add(R.add(p1sq, R.add(p0, p0)),
