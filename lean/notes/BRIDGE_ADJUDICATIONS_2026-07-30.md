@@ -13171,3 +13171,74 @@ wsj8ox1b4 (HE7 r1 + GENIND PE1 + GENH4 PE2, wf_5a570fa4-e19) — if its
 notification shows casualties, resume it. One per firing. All state
 committed; the save-everything dump (HEURISTICS_AND_INTUITIONS +
 playbook memory) is on disk.**
+
+---
+
+## ARC-SWEEP WAVE FOLDED (wsj8ox1b4, 3/3 through the storm): HE7 r1 COMPLETE (both HE6R1 findings + the HE6-1L fold, use-site margin > h) · GENIND PE1 = 0C+3G+4m (all three GAPs at the GENIND.B ↔ [GENIND-H] seam) · GENH4 PE2 = 1 CRITICAL (census display q−1 vs Q−1 at genre-F boundary-band pins; runner correct, no number moves) — REPAIR WAVE DISPATCHED: GENIND r1 + GENH4 r2 + HE7 PE1 — 2026-08-08
+
+**HE7 r1 (aafb481 → d58680e → 2970615; 46 [r1] tags).** HE6R1-F1
+applied WIDENED: HE7.A(3)/HE7.C now split on ℓ₂·deg r₂ (not ℓ₂ alone)
+= HE6.B[r1]'s exact complement; §S7 proof reused with ℓ≥2 → ℓd_r≥2;
+non-propagation INDEPENDENTLY RE-DERIVED (mis-stated branch needs
+μ₂ ≥ 4; at n ≤ 15, μ₂ ≤ 3 — vacuous at n=8). HE6R1-F2 applied as a
+§S1 CONVENTION (Ψ ∤ f_S; else peel via LEMMA HE6R1-3, at most once)
++ hypothesis on HE7.A/HE7-7″ + §S8 fifth dictionary row + HE7-BOX-5.
+The (LIFT) fold: FINDING HE7-F1 DISCHARGED AT SOURCE (HE6-1L =
+HE7-L1 verbatim); the requested §S4.3 use-site check PASSES with
+margin m_t − (D′−1)h > h ≥ 1 at every level-1 lift call. NEW MACHINE
+LEG he7r1_supp.py (additive; seal artifacts untouched): peel exact
+8/8, single-peel 8/8, peeled read 8/8, PARI σ(Ψ) DIRECT 2/2 — the
+first direct oracle test of HE6R1-3's letter. Verdict re-scoped:
+1,335/1,335 is the Ψ∤f_S stratum; 1,587/1,587 net, 0 mis-decisions.
+Grade 0/2 post-r1; residual coverage honest in HE7-BOX-2 (d_r ≥ 3,
+f₁ ≥ 2 genres, μ ≥ 5 proper blocks, level 3, peel at μ₂ ≥ 3).
+
+**GENIND PE1 (report 4259a93): UNREFUTED, NOT CLEAN — 0C, 3 GAP,
+4 MINOR.** All three GAPs at ONE seam, GENIND.B's induction ↔ the
+[GENIND-H] box: G1 the induction consumes P(k)'s exact-complement
+(A2) member but [GENIND-H]'s (CS-1/2/3) carry NO exactness clause
+(GENH4's Q22-L3 supplies it de facto — box-statement hole, not live
+error); G2 (CS-1) stated without the ragged-window correction its
+own OB-a and discharger GENHN.A(v) require; G3 (CS-2) normalization
+undeclared — GENIND's genre-F (q²−1)(q²)^{2μ−1} vs GENH4 §S6.2's
+(q²−1)(q²)^{μ−1}, a (q²)^μ gap reconciled only in a THIRD note
+(GENHN §S6.2 ghost×letters split), invisible at genre E — survived
+five downstream notes. Minors: bracket window condition; the F₂
+padding impossibility (n ≥ 6); CS4-E floor omitted; GENIND-4 proof
+scar + (h,z)-slice (q−1) mis-scope. Charges 1/2/3/6 CLEAN (no sixth
+event; criterion both directions; S5.3's CS genres re-enumerated
+COMPLETE; n=5 prime-yet-composite confirmed). [r1] erratum check
+CLEAN (R9's corrected node = GENIND-4's display at f₁=1; no GENIND
+erratum owed). Machine: fresh isolated run GREEN 163,536/0, teeth
+12/12/4/24, runner md5 identical at worktree/HEAD/seal. Fresh route:
+7 numeric + 2 symbolic legs all EXACT. Grade 0/2; r1 owed.
+
+**GENH4 PE2 (report 2618e9b): NOT CLEAN — 1 CRITICAL + 2 GAP + 2m.**
+THE CRITICAL: GENH4.A's displayed census "Q−1 per RAM/2SIDED pin"
+FALSE at genre-F boundary-band pins (comp(m)=1, m ≥ N) where the
+in-window datum is one 𝔽_q-digit: census q−1. Killed 3 independent
+ways (6 committed keys both characteristics; mass conservation —
+displayed census overcounts 40/50, comp-weighted closes 216/216 F +
+288/288 E; the note's OWN S6.3/P-3 use q−1). Same DEFECT SHAPE as
+the corrected (LIFT): reachable residues a proper subspace priced as
+all of K^×. Runner/artifacts correct → display repair only. GAP 1:
+"dv0 = N → UND exit" false as stated (odd N decides RAM(N) — 86% of
+the q=7 row; UND only at even dv0 = N). GAP 2: W-12.D fired at the
+stale r2 pin 99f1813 (pre-σ-labelling clause, insufficient by W-12's
+own PE4); W-12's r4 firing table rules GENH4.C supplies the clause —
+conclusion holds, cite repair owed. Minors: ν₃≡β₃ tie not executed;
+r1 supplier stack stale at HEAD (HEX3 r3, W-12 r5). RETRO-EFFECT
+CHECK (the charge): NO HE6/HE7 retro-effect, 3 ways — no HE pins;
+GENH4-2 = HE6-0″'s D′=2 instance verbatim, HE6-1L threshold never
+bites; widened HE6.B box VACUOUS at n=4 (independent length bound
+n ≥ D′μ ≥ 8). Fresh route: symbolic GENH4-1F re-derivation + 504-case
+recount + eleven R_τ at FRESH q=11,13 + a MECHANISM-FREE σ-density
+measurement (300,000 quartics, PARI nfinit/idealprimedec, NO engine:
+χ² = 5.02/13.88 on 10 df, exactly the eleven types). Grade 0/2;
+r2 owed then PE3. Smoke artifacts genh4_checks_*_smoke committed here.
+
+**NEXT WAVE (dispatched this entry): GENIND r1 (G1–G3 + minors,
+minimality contract) + GENH4 r2 (the census display + CAP(F) + the
+W-12 fired-clause cite + minors) + HE7 PE1 (first hostile pass on
+the r1 text 2970615, fresh route). TAMEK (wtec9cy9u) still in
+flight.**
