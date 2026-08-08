@@ -504,6 +504,104 @@ for k in range(1, KMAX + 1):
         ok_stabp = False
 check(f"C5b  PROJECTIVE M^p_k(n) constant for n >= 2k (n_0^p <= 2k = {n0p})", ok_stabp)
 
+# SHARP projective threshold 2k-1, with the exact drop at 2k-2:
+#   M^p_k(2k-2) - D^p_k(1/q) = D^p_{k,2k} / (q b_{2k-2})
+ok_sharp = True
+drops = {}
+for k in range(1, KMAX + 1):
+    if 2 * k > NSYM:
+        continue
+    c = sp.cancel(sum(Dp_k[k][i] * qs ** (-i) for i in range(0, 2 * k + 1)))
+    if SIMP(Mp[(k, 2 * k - 1)] - c) != 0:
+        ok_sharp = False
+        log(f"    projective NOT constant already at n=2k-1={2*k-1}, k={k}")
+    if 2 * k - 2 >= 1:
+        drop = sp.cancel(Dp_k[k][2 * k] / (qs * ES.b[2 * k - 2]))
+        drops[k] = str(sp.factor(drop))
+        if SIMP(Mp[(k, 2 * k - 2)] - c - drop) != 0:
+            ok_sharp = False
+            log(f"    drop formula fails at k={k}")
+        if SIMP(Dp_k[k][2 * k]) == 0:
+            ok_sharp = False
+            log(f"    D^p_{{k,2k}} = 0 at k={k} (threshold would not be sharp)")
+check(f"C5b'  SHARP projective threshold: M^p_k(n) = D^p_k(1/q) for n >= 2k-1, and the "
+      f"n=2k-2 drop equals D^p_{{k,2k}}/(q b_{{2k-2}}) != 0, k<={KMAX} (drops {drops})",
+      ok_sharp)
+
+# the exact projective one-step recursion, all n:  b_n M^p_k(n) - q b_{n-1} M^p_k(n-1)
+#                                                  = sum_{i<=n} D^p_{k,i}
+ok_rec = True
+for k in range(1, KMAX + 1):
+    for n in range(1, NSYM + 1):
+        lhs = sp.cancel(ES.b[n] * Mp[(k, n)] - qs * ES.b[n - 1] * Mp[(k, n - 1)])
+        rhs = sp.cancel(sum(Dp_k[k][i] for i in range(0, n + 1)))
+        if SIMP(lhs - rhs) != 0:
+            ok_rec = False
+            log(f"    projective one-step recursion fails k={k} n={n}")
+check(f"C5d  b_n M^p_k(n) - q b_{{n-1}} M^p_k(n-1) = sum_{{i<=n}} D^p_{{k,i}}, all n<={NSYM}",
+      ok_rec)
+
+# the per-point factorial moments psi_k = Psi_k(1/q) and the Faa-di-Bruno reconstruction
+def setpartitions(lst):
+    if not lst:
+        yield []
+        return
+    first, rest = lst[0], lst[1:]
+    for p in setpartitions(rest):
+        for i in range(len(p)):
+            yield p[:i] + [[first] + p[i]] + p[i + 1:]
+        yield [[first]] + p
+
+def falling(x, k):
+    r = sp.Integer(1)
+    for i in range(k):
+        r *= (x - i)
+    return r
+
+psi_k = {}
+for k in range(1, KMAX + 1):
+    psi_k[k] = sp.cancel(sum(Psi_k[k][i] * qs ** (-i) for i in range(0, NSYM + 1)))
+ok_fdb = True
+for k in range(1, KMAX + 1):
+    if 2 * k > NSYM:
+        continue
+    for (pts, tgt) in ((qs, M[(k, 2 * k)]), (qs + 1, Mp[(k, 2 * k)])):
+        acc = sp.Integer(0)
+        for part in setpartitions(list(range(k))):
+            trm = falling(pts, len(part))
+            for B in part:
+                trm *= psi_k[len(B)]
+            acc += trm
+        if SIMP(acc - tgt) != 0:
+            ok_fdb = False
+            log(f"    Faa-di-Bruno reconstruction fails k={k} pts={pts}")
+check(f"C9d  M_k(inf) = sum_{{partitions pi of [k]}} (q)_{{|pi|}} prod_B psi_{{|B|}} and the "
+      f"same with (q+1) for the projective limit, k<={KMAX} "
+      f"[psi_1={sp.factor(psi_k[1])}, psi_2={sp.factor(psi_k[2])}]", ok_fdb)
+
+# Lemma 5.1: the level-0 no-rational-root density is EXACTLY (1-1/q)^q for d >= q
+ok_nu = True
+for qv in (2, 3):
+    for dd in range(0, 8):
+        cnt = 0
+        for co in iproduct(range(qv), repeat=dd):      # monic deg dd over F_qv
+            ok = True
+            for x in range(qv):
+                v = 1
+                for c in reversed(co):
+                    v = (v * x + c) % qv
+                if v % qv == 0:
+                    ok = False
+                    break
+            if ok:
+                cnt += 1
+        nu = sp.Rational(cnt, qv ** dd)
+        if dd >= qv and nu != (1 - sp.Rational(1, qv)) ** qv:
+            ok_nu = False
+            log(f"    nu_d != (1-1/q)^q at q={qv} d={dd}: {nu}")
+check("C9c  LEMMA 5.1: density of monic deg-d polys over F_q with no rational root is "
+      "exactly (1-1/q)^q for every d >= q (brute force, q in {2,3}, d<=7)", ok_nu)
+
 ok_sr = True
 for k in range(1, KMAX + 1):
     for n in range(2 * k, NSYM + 1):
@@ -683,6 +781,8 @@ PRED = {
                for n in range(0, NSYM + 1)},
     "n0_monic": {str(k): (None if n0.get(k) is None else int(n0[k])) for k in n0},
     "Psi_k": {str(k): [str(c) for c in Psi_k[k]] for k in Psi_k},
+    "psi_perpoint": {str(k): str(sp.factor(psi_k[k])) for k in psi_k},
+    "proj_drop_at_2k_2": drops,
     "ext_exact_q": ext_rec,
 }
 for n in range(2, NSYM + 1):

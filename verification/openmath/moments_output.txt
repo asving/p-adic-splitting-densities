@@ -1,0 +1,72 @@
+[    0.0s] ==============================================================================
+[    0.0s] C1/C2  the deep-count law P_m(j), (GEOM-J) and (MASS)
+[    0.0s] ==============================================================================
+[    0.6s]   PASS  C1a  P_m(j) closed form == independent exact enumeration, m=2..6 SYMBOLIC
+[    0.6s]   PASS  C1b  P_7(j) closed form == exact enumeration at q in {2,3,5}
+[    1.0s]   PASS  C1c  sum_j P_m(j) = 1, m=2..10 symbolic
+[    1.0s]   PASS  C1d  P_m(m-1) = 0, m=2..10 symbolic
+[    1.0s]   PASS  C1e  KEY IDENTITY q P_m(0) - P_m(1) = q-1, m=2..10 symbolic
+[    1.1s]   PASS  C2a  (GEOM-J)  c(j,mu) = q^j c(0,mu), all 0<=j<mu<=10 symbolic
+[    1.2s]   PASS  C2b  (MASS)  sum_{j<mu} c(j,mu) = d_mu - d_{mu+1}, mu<=10 symbolic
+[    1.5s]   PASS  C4a  (INF=GEO) weight telescope  G(j) = P_inf(j), j=0..8 symbolic (exact tail)
+[    1.5s] ==============================================================================
+[    1.5s] C3  building the PGF recursion: symbolic q to n=7, exact q to n=10
+[    1.5s] ==============================================================================
+[  128.6s]   symbolic build done (n<=7)
+[  144.3s]   PASS  C3a  F_n(1) = 1 and F^p_n(1) = 1, n<=7 symbolic
+[  144.3s]   PASS  C3b  F_2(t) = (q t^2 + q + 2)/(2(q+1))  [hand-derived, preregistered]
+[  145.9s]   PASS  C3c  P(X_n = n-1) = 0 (monic and projective), n=2..7
+[  160.7s]   PASS  C3d  all coefficients in [0,1] and sum to 1 at 9 prime powers, n<=7
+[  165.0s]   PASS  C3e  BCFGTIE recovered: E_n = q/(q+1) (n=2..7) and E^p_n = 1 (n=1..7)
+[  167.5s]   PASS  C3f  BCFGTIE recovered: eps_m = 1/(q+1), m=2..7 (cluster mean)
+[  167.5s] ==============================================================================
+[  167.5s] C8/C4b  Psi_k polynomial of degree <= 2k;  D_k(1) = D_k(1/q)
+[  167.5s] ==============================================================================
+[  201.8s]   PASS  C8a  deg_v Psi_k <= 2k for every k with 2k <= 7 (observed degrees {1: 2, 2: 4, 3: 6, 4: 7})
+[  203.0s]   PASS  C4b  D_k(1) = D_k(1/q) and D^p_k(1) = D^p_k(1/q) for 2k <= 7
+[  203.0s] ==============================================================================
+[  203.0s] C5/C6  factorial moments, stabilization threshold, sum rule
+[  203.0s] ==============================================================================
+[  205.2s]   k=1: M_k(n) n=0..7 computed
+[  209.2s]   k=2: M_k(n) n=0..7 computed
+[  212.9s]   k=3: M_k(n) n=0..7 computed
+[  215.9s]   k=4: M_k(n) n=0..7 computed
+[  216.1s]   PASS  C5a  MONIC stabilization at n_0(k) = 2k exactly, for 2k < 7 (n_0 = {1: 2, 2: 4, 3: 6})
+[  216.1s]   PASS  C5b  PROJECTIVE M^p_k(n) constant for n >= 2k (n_0^p <= 2k = {1: 2, 2: 4, 3: 6})
+[  216.4s]   PASS  C5b'  SHARP projective threshold: M^p_k(n) = D^p_k(1/q) for n >= 2k-1, and the n=2k-2 drop equals D^p_{k,2k}/(q b_{2k-2}) != 0, k<=4 (drops {2: 'q*(q**2 - q + 1)/(q**4 + q**3 + q**2 + q + 1)', 3: '-q**2*(q**4 - q**3 + q**2 - q + 1)**3/((q**4 + q**3 + q**2 + q + 1)*(q**6 - q**5 + q**4 - q**3 + q**2 - q + 1)*(q**6 + q**5 + q**4 + q**3 + q**2 + q + 1))'})
+[  220.4s]   PASS  C5d  b_n M^p_k(n) - q b_{n-1} M^p_k(n-1) = sum_{i<=n} D^p_{k,i}, all n<=7
+[  223.8s]   PASS  C9d  M_k(inf) = sum_{partitions pi of [k]} (q)_{|pi|} prod_B psi_{|B|} and the same with (q+1) for the projective limit, k<=4 [psi_1=1/(q + 1), psi_2=(q**3 + q**2 + 1)/((q + 1)**2*(q**4 + q**3 + q**2 + q + 1))]
+[  223.8s]   PASS  C9c  LEMMA 5.1: density of monic deg-d polys over F_q with no rational root is exactly (1-1/q)^q for every d >= q (brute force, q in {2,3}, d<=7)
+[  225.0s]   PASS  C6a  SUM RULE  sum_{i<=n} q^i M_k(i) = b_n M_k(n) for all n>=2k, k<=4
+[  225.1s]   PASS  C6b  M_k(2k) = (q-1)/(q^{2k}-1) * sum_{i=k}^{2k-1} q^i M_k(i) (the closed-form solve), k<=4
+[  225.1s] ==============================================================================
+[  225.1s] C5c  exact-q extension to n=10 (q in 2,3,5): stabilization for k<=4
+[  225.1s] ==============================================================================
+[  225.5s]   q=2 done to n=10
+[  225.8s]   q=3 done to n=10
+[  226.2s]   q=5 done to n=10
+[  226.2s]   PASS  C5c  M_k(n)=M_k(2k) for 2k<=n<=10 and M_k(2k-1) != M_k(2k), k<=4, q in 2,3,5
+[  226.2s] ==============================================================================
+[  226.2s] C9  the limiting law F_inf = g^q, F^p_inf = g^{q+1},  g = Psi(1/q,t)
+[  226.2s] ==============================================================================
+[  292.2s]   PASS  C9a  truncated g(1) = 1 - q^{-8} (the exact omitted mass)
+[  292.3s]   PASS  C9b  M_k(inf) = M_k(2k) and M^p_k(inf) = M^p_k(2k), k<=4 symbolic
+[  292.3s] ==============================================================================
+[  292.3s] TEETH T1..T5
+[  292.3s] ==============================================================================
+[  299.0s]   TOOTH T1 mis-level self-similarity (phi_m = sum_j P_m(j) phi_j): BITES [normalization passes=True; mean E_2=(q - 1)/q vs q/(q+1)]
+[  312.3s]   TOOTH T2 point-count off by one (q+1 points in the monic master): BITES [normalization passes=True]
+[  321.3s]   TOOTH T3 min-argmin deep count: BITES [sum_j P~=1 passes=True; KEY fails=True; mean fails=True]
+[  321.7s]   TOOTH T4 mean-preserving output transfer (+d,-2d,+d at r=0,1,2): BITES [Sigma=1 passes=True; E^p=1 passes=True; fac2 moves=True]
+[  322.4s]   TOOTH T5 comonotone points (Psi(u,t^{q+1}) for Psi(u,t)^{q+1}): BITES [E^p_n = 1 still passes at every n=True; fac2 moves=True]
+[  354.2s] ==============================================================================
+[  354.2s] C7  BCFG tie (the committed transcription; citation grade OWED-EXTERNAL)
+[  354.2s] ==============================================================================
+[  355.5s]   PASS  C7a  per-r rows dist(n,r) == our projective F^p_n coefficients, n=2..7
+[  369.2s]   PASS  C7b  moment rows fac/binom/raw == ours, n=2..7 (all d)
+[  378.5s]   PASS  C7c  BLIND n=7 rows (consumed by NO standing check): 24 rows all equal
+[  380.6s]   PASS  C7d  bcfg_n7.json per-r rows == ours (n=7, second committed copy)
+[  380.6s]   TOOTH T4/cache  mutant fails the committed BCFG dist rows at n=3: BITES 
+[  380.6s] ==============================================================================
+[  380.6s] CHECKS=31  FAILS=0  TEETH_BITING=6/6
+[  380.6s] VERDICT: GREEN
