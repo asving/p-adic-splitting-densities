@@ -13242,3 +13242,70 @@ minimality contract) + GENH4 r2 (the census display + CAP(F) + the
 W-12 fired-clause cite + minors) + HE7 PE1 (first hostile pass on
 the r1 text 2970615, fresh route). TAMEK (wtec9cy9u) still in
 flight.**
+
+---
+
+## WAVE 2 FOLDED (wr7krtq2u, 3/3): GENIND r1 COMPLETE (all 7 findings, one commit, 13 audited hunks) · GENH4 r2 COMPLETE (census display cured + ν₃-tie supp leg GREEN) · HE7 PE1 = 0C + 1 GAP + 3m (the refined-key read continuation — 41 sealed members, repair verified available) — WAVE 3: GENIND PE2 + GENH4 PE3 + HE7 r2 — 2026-08-08
+
+**GENIND r1 (66200f2; note-only, 148 ins/30 del, 13 hunks = 13
+intended sites).** G1: (CS-EXACT) clause added to [GENIND-H(n)]
+(W-12-r4 style) + Step 4's hedge replaced by its invocation + the
+(A2)-member consumption path displayed + discharge geography honest
+(de facto at n=4 via GENH4.B=Q22-L3 @ dff23f8; hypothesis at general
+n). G2: (CS-1) restated ragged-window-corrected; Step 4's (A2)
+inventory gains the CS ragged bands. G3: (CS-2) normalization
+DECLARED with the ghost×letters reconciliation displayed in-note
+(numerically verified at 4 points pre-display, exact). M1–M4 all
+landed (window clause; F₂ padding → one irreducible of degree n−4;
+CS4-E floor; GENIND-4 scar + (q−1) slice scope). Runner md5
+unchanged; suppliers cited at as-of pins, not edited. 0/2; PE2 owed.
+
+**GENH4 r2 (fd35416 + 5279a11).** CRITICAL 1: S1 census display
+corrected to the comp-weighted form q^{comp}−1 per pin (PE2's
+216/216 + 288/288 mass-conservation closure displayed as the
+verification); GAP 1: the dv0=N exit corrected to the runner's
+trichotomy (UND exactly at EVEN N); GAP 2: W-12.D re-pinned at r5
+with the σ-labelling clause verbatim + the fired-clause row (W-12's
+own r4 table rules GENH4.C supplies it). MINOR 1 via NEW SUPP LEG
+genh4r2_supp.py: T_τ derived from ACCEPTED HMENU3 displays alone,
+q³·T_τ ≡ β₃(τ) term-for-term vs md5-pinned engine, GREEN + tooth
+fired + Σ T = q^{−3} symbolic. Sealed runner/artifacts byte-verified
+untouched. INHERITED-CENSUS REPORT (report-only, no other note
+edited): GENHN does NOT textually inherit the census CRITICAL, but
+(a) GENHN-3(a) (~l.481) cites GENH4-CAP(F) with the pre-r2 "exits
+UND" phrasing — conditionalize to even-N at GENHN's next round; (b)
+GENHN.A(v) is silent on comp-weighting at f₁ ≥ 2 boundary-band pins
+— **BOTH QUEUED for GENHN's next repair round.** GENIND: no
+inheritance (different quantities). 0/2; PE3 owed.
+
+**HE7 PE1 (report 7b66364): UNREFUTED, NOT CLEAN — 0 CRITICAL,
+1 GAP, 3 MINOR (+3 remarks).** THE GAP (F-1): HE7.A(3)/S8-row-5/
+HE7-8's "the read continues" applies the S5 package to the REFINED
+key Ψ−w, which is NOT of DEFINITION HE6-1's form and no displayed
+lemma covers it; 41 sealed members take this path; the verifier
+VERIFIED an in-note repair closes (slot-domination: w's slots
+strictly above T₂ while Ψ's sit at T₂, + the S5.3 two-offset
+estimate) and flags the asserted-not-derived strict slope-increase
+along the chain. F-2: S5.3's ε₀=0 clause a false dichotomy (unused
+half). F-3: "μ₂ ≤ μ/2 ≤ 3" needs the integer floor at μ=7. F-4: S6
+[r1](ii) cites (LIFT_i) where HE7.D's indexing wants (LIFT_{i−1}).
+CLEAN under attack: (SLOT₂)/(LIFT₂) fully re-derived incl. residue
+clause + boundary; the widened jump condition verbatim-valid (no
+structural ℓ≥2 use); peel = development shift with at-most-once
+PROVED; S4.3 margin chain exact; termination re-derived; HE6R1-1/2/3
+sound at source. MACHINE: runner bit-identical at 4 pins; isolated
+re-run GREEN 0 violations, results JSON bit-identical. FRESH ROUTE
+(new instrument he7_pe1_fresh.py): constructed n=12, μ₂=3 peel
+family at HE7-BOX-5's named hole — 2,552/2,552 PARI, all six genres,
+716 twist-live members, σ(Ψ) direct 8/8 — FIRST machine contact at
+μ≥5/n≥10 and first confirmation of peel∘(nontrivial level-2 read);
+disclosed: F-1's refined path gets no new exercise there. 0/2;
+r2 owed.
+
+**WAVE 3 (dispatched this entry): GENIND PE2 (post-r1 66200f2,
+fresh route required) + GENH4 PE3 (post-r2 5279a11, fresh route
+required) + HE7 r2 (F-1 slot-domination repair with the
+slope-increase DERIVED, + F-2/F-3/F-4 + remark disclosures).
+A clean pass at GENIND PE2 or GENH4 PE3 would be the arc program's
+FIRST 1/2 on the induction spine. TAMEK (wtec9cy9u) still in
+flight.**
