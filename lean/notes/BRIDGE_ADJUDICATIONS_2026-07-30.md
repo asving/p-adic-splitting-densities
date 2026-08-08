@@ -13163,3 +13163,11 @@ equidistribution, which the carry corpus owns. Also per Asvin: BCFG
 presumably already has the full MGF — our answers MATCH the cached
 tables machine-exactly (n≤7, 24 blind rows); novelty labels stay
 UNSEARCHED and the cite OWED-EXTERNAL until the literature check.
+
+**TAMEK insta-death (51s, Opus — the storm reached the Opus pool too).
+WATCHDOG PENDING SET: (1) TAMEK — resume wf_27e8551f-e10 via
+…/workflows/scripts/tamek-wf_27e8551f-e10.js; (2) the arc-sweep wave
+wsj8ox1b4 (HE7 r1 + GENIND PE1 + GENH4 PE2, wf_5a570fa4-e19) — if its
+notification shows casualties, resume it. One per firing. All state
+committed; the save-everything dump (HEURISTICS_AND_INTUITIONS +
+playbook memory) is on disk.**
