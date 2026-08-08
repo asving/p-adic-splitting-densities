@@ -982,6 +982,61 @@ the sextic IS the stage) have no extraction: un-gated. The finding
 is folded into GENHN-BOX-4; it strengthens, not weakens, the window
 story: GENHN-3(a) composes exactly as the ledger predicts.
 
-## S12. VERDICT
+## S12. VERDICT (commit 2, FROM the committed artifacts)
 
-PENDING (commit 2, from the committed artifacts).
+**GREEN — 2,223,050 checks, 0 violations, all five teeth fired
+(LAT 2 / CEN 2 / SIG 2 / CRIT 2 / NODE 1), 450.0s.** Artifacts:
+`genhn_checks_results.json` md5 dd9edbeadaedf0b19873d58731d92d78 ·
+`genhn_checks_output.txt` md5 7d4a3e86113fb3dbe241788b6c81ab40 ·
+runner-as-run md5 637427dc475d231e803a8219127a5b3e. Arc: seal
+58ae603 → run 1 CRASH (V4E2 Newton basin; re-seal 4e3b2ff) → run 2
+RED on 4/20,800 gp precision misses, zero mathematical violations
+(re-seal 6f977ea) → run 3 GREEN (this verdict). The retry ladder
+recovered exactly the 4 known misses, each answering its predicted
+{(1,1),(4,1)}.
+
+**Prediction scorecard (every P-item, against S11.D as sealed):**
+* P1 ✓ all six CLASS flagships EXACT (V1E2(1) 12,288 ×2 = the
+  committed GENIND row; E3(1) 512 ×2; E31(1) 8,192 ×2; E31(1)
+  4,374 ×2); all PREDICTED-ABSENT genres absent; 2,147,916 GN-CLASS
+  checks incl. the 2×2²⁰-state genind-reader tie, 0 violations.
+* P2 ✓ law_Egen(e₁=2) ≡ law_E on all 5 grid points.
+* P3 ✓ V1E2 totals 12,288 / 458,752 / 26,244 / 458,752, per-key
+  law × fiber both directions, 0 escapes.
+* P4 ✓ ★ V4E2 FIRST measurement: obs ≡ law_E(2,8,3) × 4 exactly,
+  totals 65,536 + 65,536 (GENIND's derivation-only law now
+  machine-real).
+* P5 ✓ ★ E31 (the first e₁ = 3 stage law ever measured): all four
+  rows ≡ (q−1)·law_Egen(q,N,h,3), totals 8,192 / 524,288 / 4,374 /
+  524,288, node floors clean.
+* P6 ✓ ★ E3 (the first μ = 3 stage ever read): totals 39,366 /
+  32,768 / 32,768, zero stage-CS, spot laws EXACT (UND3 13,122 +
+  RAM3(7) 26,244 = the whole (3,4,1) row; (2,5,1): 4,096 / 16,384 /
+  4,096 / ALPHA3(3) 512).
+* P7 ✓ ★ GN-REFINE3 = 3,072 pin checks exactly (= 2 rows × 1,536),
+  0 violations — every μ = 3 stage-α event transported by actual
+  re-division kills all three pins into the floored node
+  (GENHN-BOX-2's compensating instrument, delivered).
+* P8 ✓ ★ the tower witness: frame ('EMB',8,(0,8),2,1,4,1), stage
+  dvs (10,·,5,·), hull (0,10)–(4,0) with (e_s,g) = (2,2), inner
+  residual (T−1)² — stage-CS fired inside the μ = 4 stage; min-n
+  = 8; zero stage-CS anywhere else in the battery.
+* P9 ✓ certified σ 37,792 jobs / 0 bad across six oracle batches —
+  V composed σ (19,584 + 2,915), E31 4,992 + 1,944 (★ wild p = 3
+  at e₁ = 3), E3 1,792 + 6,565 ([GENHN-HE(3)] corroboration,
+  labeled). Diagnostic tails measured as predicted: V p=2
+  1,216 / 349 mismatches, V p=3 241 / 58, all full-side legs 0/0 —
+  the S11.F perimeter is REAL on both sides (certified exact,
+  uncertified genuinely mixed).
+* P10 ✓ all teeth; GREEN.
+
+**What the machine leg establishes** (instrument grade, not
+acceptance): the genre classification at n = 5 AND n = 6 sweeps;
+the (e₁,f₁)-re-based stage law at THREE genres beyond GENH4's two,
+including first-ever e₁ = 3 and first-ever μ = 3 territory; the
+μ = 3 refine transfer pointwise; the first composite-over-composite
+event; σ dictionaries at never-oracled wild territory; and the
+machine-surfaced extraction-certified perimeter (S11.F) — a
+sharpening, not a defect, of the window ledger. Grade box
+(GENHN-BOX-1) unchanged: attempt 0/2, no hostile arc yet; nothing
+here upgrades the conditionality display of THEOREM GENHN.B.

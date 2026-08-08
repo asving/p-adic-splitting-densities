@@ -1,0 +1,32 @@
+=== GENHN battery (FULL) ===
+[GN-PIN] 7 pins checked
+[GN-LAWTIE] law_Egen(e1=2) == law_E on 5 grid points
+  [CLASS Zp q=2 N=5 n=5] 1048576 states DEC/DRAIN/CS 960512/75776/12288, 12288 CS events, depth0 CS {"('V1E2', 1)": 12288} (25.3s)
+  [CLASS Zp q=2 N=4 n=6] 262144 states DEC/DRAIN/CS 216576/36864/8704, 8704 CS events, depth0 CS {"('E3', 1)": 512, "('E31', 1)": 8192} (3.2s)
+  [CLASS Fqt q=2 N=5 n=5] 1048576 states DEC/DRAIN/CS 960512/75776/12288, 12288 CS events, depth0 CS {"('V1E2', 1)": 12288} (24.9s)
+  [CLASS Fqt q=2 N=4 n=6] 262144 states DEC/DRAIN/CS 216576/36864/8704, 8704 CS events, depth0 CS {"('E3', 1)": 512, "('E31', 1)": 8192} (3.2s)
+  [CLASS Zp q=3 N=3 n=6] 531441 states DEC/DRAIN/CS 468018/59049/4374, 4374 CS events, depth0 CS {"('E31', 1)": 4374} (7.1s)
+  [CLASS Fqt q=3 N=3 n=6] 531441 states DEC/DRAIN/CS 468018/59049/4374, 4374 CS events, depth0 CS {"('E31', 1)": 4374} (7.2s)
+  [V1E2 Zp q=2 N=5 h=1] 12288 members, 22 keys (0.7s)
+  [V1E2 Zp q=2 N=6 h=1] 458752 members, 52 keys (19.8s)
+  [V1E2 Zp q=3 N=4 h=1] 26244 members, 9 keys (1.1s)
+  [V1E2 Fqt q=2 N=6 h=1] 458752 members, 52 keys (119.1s)
+  [V4E2 Zp q=2 N=8 h=3] 65536 members, 8 keys (2.7s)
+  [V4E2 Fqt q=2 N=8 h=3] 65536 members, 8 keys (18.3s)
+  [E31 Zp q=2 N=4 h=1] 8192 members, 22 keys (0.2s)
+  [E31 Zp q=2 N=5 h=1] 524288 members, 83 keys (12.2s)
+  [E31 Zp q=3 N=3 h=1] 4374 members, 6 keys (0.1s)
+  [E31 Fqt q=2 N=5 h=1] 524288 members, 83 keys (74.1s)
+  [E3 Zp q=3 N=4 h=1] 39366 members, 2 keys, stage_cs=0 (1.7s)
+  [E3 Zp q=2 N=5 h=1] 32768 members, 8 keys, stage_cs=0 (1.5s)
+  [E3 Fqt q=2 N=5 h=1] 32768 members, 8 keys, stage_cs=0 (5.8s)
+  [TOWER] witness fires: inner stage residual [((2, 1), 2)] = repeated (mu_s=2) on the e_s=2 side -- the (2,1,2) opening INSIDE the (2,1,4) stage at n=8
+  [TOWER] min tower degree = 8; witness frame + stage read complete (0.0s)
+  [oracle V p=2] 4 gp precision misses recovered by the retry ladder
+  [oracle V p=2] 19584 certified scored, 0 bad; 1216 diagnostic (uncertified tail), 349 diag-mismatch; E31-RAM flip 0/0 (64.4s)
+  [oracle V p=3] 2915 certified scored, 0 bad; 241 diagnostic (uncertified tail), 58 diag-mismatch; E31-RAM flip 0/0 (16.7s)
+  [oracle E31 p=2] 4992 certified scored, 0 bad; 0 diagnostic (uncertified tail), 0 diag-mismatch; E31-RAM flip 4416/4416 (12.6s)
+  [oracle E31 p=3] 1944 certified scored, 0 bad; 0 diagnostic (uncertified tail), 0 diag-mismatch; E31-RAM flip 1460/1460 (5.5s)
+  [oracle E3 p=2] 1792 certified scored, 0 bad; 0 diagnostic (uncertified tail), 0 diag-mismatch; E31-RAM flip 0/0 (5.1s)
+  [oracle E3 p=3] 6565 certified scored, 0 bad; 0 diagnostic (uncertified tail), 0 diag-mismatch; E31-RAM flip 0/0 (17.2s)
+=== VERDICT: GREEN -- 2223050 checks, 0 violations, teeth {'GN-T-LAT': 2, 'GN-T-CEN': 2, 'GN-T-SIG': 2, 'GN-T-CRIT': 2, 'GN-T-NODE': 1} (450.0s) ===
