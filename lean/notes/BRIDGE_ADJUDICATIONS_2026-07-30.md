@@ -12844,3 +12844,19 @@ arcs. Hardening: BOX-2's elementary carry; GENIND-3 β-ledgers n≥6;
 machine coverage items; GENH5-DENS + public-map fold. NEXT WAVE: HE3
 (resume) + W-12 PE3 (resume) — the storm has passed (GENHN ran 73 min
 clean).**
+
+---
+
+## W-12 PE3 (attempt 4 — draft-resilience delivered): 0C + 1G + 1m — THE GAP IS A COMPUTED AMBIGUITY (W-12.B's undecided(n,q,N) pinned by two non-equivalent definitions; conservative parse FALSE at n=3, residue slope 1/24 at q=2, computed from HEX3.A; all proved surfaces use the robust BOX-7 notion; repair = one σ-pin clause) + HEX3 PE3 CLEAN (cache-replayed, counter 1/2) — 2026-08-08
+
+W-12 PE3 (c9c5c0e): the fourth-genre hunt NEGATIVE
+(Galois-multiplicity re-proof), boundary-tail mass re-derived and
+verified on all 23 rows, annexes byte-faithful with the timeline
+verified TO THE SECOND, the seven TRP families' (A1)-admissibility
+verified family-by-family (new), fresh route = first prime-power-q
+rows at both degrees, all pointwise == committed JSON. Minor: the r2
+genre-(ii) warrant's per-state phrasing (substance re-derived TRUE).
+Counter 0/2; r3 owed (the σ-pin clause + the minor). The
+draft-resilience instruction worked: draft preserved at
+/tmp/w12_pe3_draft.md for any successor. NEXT WAVE: W-12 r3 + HEX3
+PE4 (the accepting attempt at 1/2). HE3 + BCFGTIE verdict in flight.
