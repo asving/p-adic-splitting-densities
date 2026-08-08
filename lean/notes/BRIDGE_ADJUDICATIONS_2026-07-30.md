@@ -12381,3 +12381,52 @@ citation REMAINS at REVISION 38 + r39b (VC39+VC39b) until VC40b lands**;
 this unit never self-confirms. Unit files: CODEX_VC40 note + charge copy +
 report + this append ONLY (scoped commit; scaffold cb82b23 sealed the
 pre-verification before the verdict was read).
+
+## r40b APPLIED — the VC40 cure batch on ROOT (18 dated brackets, flawed text preserved everywhere) — VC40b OWED; the acceptance citation stays at REVISION 38 + r39b — 2026-08-08
+
+**The unit** (orchestrator cure batch, the VC38-r38b/VC39-r39b precedent;
+ran no audit, never self-confirms). Input: the VC40 adjudication above
+(0C/15G: 14 document gaps + 1 charge defect; findings 6–7 rejected as
+misquotes). All edits are dated additive `[r40b 2026-08-08 ...]` brackets
+on `docs/ROOT_ASSEMBLY_2026-08-02.md` — no flawed text removed, no pasted
+block touched, no Lean file touched.
+
+**Class A cured (VC40 gaps 1–3, the incomplete [RMG-c1] ripple):** dated
+arc-count brackets at the three own-voice sites still carrying "the
+12-pass arc / zero critical findings ever" — the §3.2 end-to-end row, the
+§6 dispatch bracket, the §44.(ii) Q1 bracket. Each displays the [RMG-c1]
+figures: 14 hostile passes (7 Codex + 7 Fable) over 7 rounds; round 1
+carried 2 repairable criticals (adjudicated text-gap + display-local,
+cured by the branch-(b) strengthening); rounds 2–7 = 12 consecutive
+0-critical passes. (The §45.(i) occurrence inside the faithful [RMG]
+block paste is correct-as-dated and untouched.)
+
+**Class B cured (VC40 gaps 4–5, 8–16, the rule-8 bare-token class, FOURTH
+recurrence) + the full sweep:** dagger brackets at the eleven filed sites
+(§0 standing-paragraph correction prose; §6 corpus-law bracket; §45
+opening summary ×2; §45.(ii) ×2; §45.(v); disposition cells r40-2/3/6;
+§45 bookkeeping) PLUS the cure batch's own bare-token sweep of all 11 r40
+hunks, which cured SEVEN unfiled in-class extras (the census-table
+`T-scope` cell; the "all four [ILN] pastes" mentions at the §0 standing
+paragraph, the §3.2 row, and §45.(0); the standing paragraph's "every
+pasted [ILN] block" mention; §45.(ii)'s adjacent "every pasted [ILN]
+block" and "accepted [ILN] note" mentions). Remaining bare tokens in the
+r40 hunks CLASSIFIED LEGITIMATE, three classes (recorded in the ROOT r40b
+revision-record bracket at EOF): (a) full-paste-site mentions (§0
+declaration extension; §45.(i)); (b) use-mention of the token or defect
+class; (c) the §45 VC40 charge block (the EXECUTED charge of record, kept
+in correspondence with the committed launched charge).
+
+**The recurrence gate:** a STANDING SELF-CHECK bracket now sits at the §0
+INCORPORATION-CONVENTION declaration's tail (VC37 4 → VC38 8 → VC39 4 →
+VC40 11: every future fold machine-greps its own new hunks for bare
+tokens BEFORE committing) — the compose-time machine-gate move that ended
+the ITERLAWN census treadmill, per the VC40 note's process observation.
+
+**Revision record:** the r40b adjudication-record bracket appended at ROOT
+EOF (VC40 NOT-CONFIRMED 0C/17G as filed → 0C/15G adjudicated; this cure;
+**VC40b OWED** — micro pass on the cures with the corrected PROJECT_STATE
+slice (@24ef527 lines ~1330–1345) pinned into its charge, the B.4 cure).
+**The acceptance citation REMAINS at REVISION 38 + r39b (VC39+VC39b)
+until VC40b lands.** Unit files: ROOT + this ledger entry ONLY (scoped
+add; parallel units untouched).
