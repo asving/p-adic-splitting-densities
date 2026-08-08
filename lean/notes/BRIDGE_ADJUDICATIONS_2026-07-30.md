@@ -12774,3 +12774,16 @@ verified its predecessor's committed report idempotently (263a36f /
 → W-12 PE3 → GENH4 PE2 + HEX3 PE4 (accepting) → GENIND PE1 → Codex
 legs (VC40b, ratification, Σ-LAW/Vaquié probe, WELDMASTER
 plan-review; window ~1% used).
+
+**VC40b LAUNCHED ORCHESTRATOR-DIRECT during the 529 stand-down (Codex =
+OpenAI-side, storm-immune; no Anthropic subagent consumed): micro brief
+113,288 chars assembled mechanically from committed sources (the S3
+findings list of CODEX_VC40; the CORRECTED PROJECT_STATE slice
+@24ef527:1328-1348 per the B.4 cure spec; the full e92d5b4 diff); five
+checks (Class A ×3, Class B 18-bracket + self-check-practices-itself,
+Class C item (v) on the corrected slice, EOF revision record,
+nothing-else-moved). Brief copy: /tmp/vc40b_brief.txt; log:
+/tmp/codex_vc40b_1786199184.log. FOLD OWED when it exits (orchestrator
+or first available agent): adjudicate, transcribe into
+CODEX_VC40B_2026-08-08.md, ledger; if CONFIRMED the acceptance citation
+advances past REVISION 38 + r39b per the VC40 note's rule.**
