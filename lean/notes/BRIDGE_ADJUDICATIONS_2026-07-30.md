@@ -13020,3 +13020,62 @@ green run 3,232,506/0. Counter 0/2; r5 owed + THE HMENU3 DATED ANNEX
 (HM3.C's "every lift" → disc≠0 lifts; drafted by r5, applied by the
 orchestrator). [Entry via Edit during classifier block; commit
 delegated to the r5 unit.]
+
+---
+
+## ★★ MOMENTS COMPLETE (Asvin-directed): the FULL law of #roots at every n from P_m(j) alone (HE-free PGF recursion); stabilization n₀(k) = 2k exact; variance closed form; THE LIMITING DISTRIBUTION = q iid geometric-multiplicity residue discs — 2026-08-08
+
+Adjudicated (seal a91e7a6 → verdict 82eca94 → honesty pass adb3381;
+attempt 0/2; produced during the classifier outage — deep verification
+deferred to its PE pass; the 24 BLIND n=7 BCFG rows all matching is
+the strongest internal control). **THE PGF RECURSION**: Σ_n F_n uⁿ =
+Ψ(u/q,t)^q/(1−u), Ψ(v,t) = (1−v)Σ_m φ_m(t)v^m, φ_m = Σ_j P_m(j)F_j —
+the whole distribution from the cluster-valuation law alone, no menu,
+no engine, HE-FREE. **STABILIZATION**: monic n₀(k) = 2k EXACTLY
+(symbolic k ≤ 3); projective 2k−1, proved sharp. **CLOSED FORMS**:
+M₂(n) = q³(q³+q+1)/((q+1)²Φ₅) for n ≥ 4; projective M₂ᵖ = (q²+1)²/Φ₅;
+the SUM RULE Σ_{i≤n} qⁱM_k(i) = b_nM_k(n); THREE new exponent
+identities incl. (INF=GEO) Ψ(1,t) = Ψ(1/q,t) — carrying the whole
+theorem, generalizing BCFGTIE's KEY IDENTITY. **THE LIMIT**: F_∞ =
+g^q, F^p_∞ = g^{q+1} — q (resp. q+1) IID RESIDUE DISCS WITH GEOMETRIC
+MULTIPLICITY (the level-0 profile is iid geometric on the bulk); d_TV
+= O(n^{q−1}q^{−n}); all limiting factorial moments exactly rational;
+individual P(X_∞ = r) honestly boxed NOT rational (q-series). Battery
+31/0/6 teeth incl. T5 (first in-repo level-0-INDEPENDENCE check);
+BCFG tie symbolic n=2..7 with 24 blind rows. BCFG cite OWED-EXTERNAL;
+ψ₄ needs an n=8 symbolic build (flagged, unconsumed). [Entry via Edit
+during classifier block; commit delegated to the next unit/watchdog.]
+
+---
+
+## ★★★ HE6: HE6.A PROVED BASE-CHANGE-FREE (both HE3 branches SUPERSEDED; fractional-height family needs no irreducibility — no Montes cite in the family) — [GENHN-HE(μ)] closes at every separable-residual leaf; THE PROGRAM'S REMAINING MATHEMATICS = HE6-BOX-1 = (LIFT₂)+(SLOT₂), two named level-2 lemmas, first live n=8 — 2026-08-08
+
+Adjudicated (housekeeping 7a95449; seal a77c376 → close 1f5a417;
+attempt 0/2). WHERE BOX-6 BITES sharpened: μ ≥ 4 ∧ D′ ≥ 2 ⟹ n ≥ 8
+exactly (does NOT bite below); first prime genre-dependent (q≥3 at
+(2,1,4); q=2 already at (1,2,4) over F_{q²}). **HE6.A**: |S_{λ,r}| =
+D′·ℓ·deg r at every separable-residual side — via order-2 keys
+Ψ = Φ′^{ℓd} + ΣB_tΦ′^{ℓt} at the side's own fractional height;
+HE6-1 (every root of Ψ carries the label — SLOT LEMMA + ultrametric,
+Ψ NEVER assumed irreducible), HE6-2 (label separation), HE6-3 ((SEP)
+REMOVED — rational sampling), HE6-4 (nonemptiness by strictness
+transfer — what replaces base change). Bonus closures: HE3-0′'s
+n(λ) repaired; HE3-PE1 finding 6 (semilinearity) CLOSED by HE6-5
+(labels Galois-invariant at every f₁). **HE6.B PARTIAL, honestly**:
+all four μ≥4 defects closed EXCEPT the repeated-residual-factor node
+(R_λ = (Z−s)², ℓ=2, L=4=μ, n=8 = GENHN-T(a)'s machine-fired event) —
+HE6-BOX-1, machine-certified REAL (T-CASEB: identical outer data,
+THREE different σ — 742-member classes; no outer-data-only proof
+exists); exact residue = (LIFT₂) level-2 lift surjectivity + (SLOT₂)
+level-2 evaluation dichotomy; everything else transfers by
+(Φ′,D′h,κ) ↦ (Ψ,ℓdλ,κ₂). Faithful-cite target displayed at VERIFIED
+FGMN numbering (Thm 2.8, Def 3.18, Thm 4.2 …). Battery GREEN 0
+violations, 5/5 teeth (72,315 flat identities; 4,232 strict-excess
+certificates; 2,226 PARI jobs incl. 742 split octics ALL
+{(4,1),(4,1)} invariant under deeper-digit perturbation; the old
+integer-height family exhibited rank-DEFICIENT with 3 spurious
+solutions — the enlargement is load-bearing). The unit SPECIFIED its
+own Codex-PE1 attack order (HE6-1 Step 1 ultrametric cases; (LIFT)
+from GENHN-2; HE6-3(a) c₀=0; the HE6.B scope-complement question).
+NEXT: HE7 ((LIFT₂)+(SLOT₂) — the level-2 lemmas, same method one
+level up) + HE6 Codex PE1 per the specified order.
