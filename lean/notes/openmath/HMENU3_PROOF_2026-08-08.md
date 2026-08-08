@@ -829,3 +829,32 @@ record at HM3-BOX-2]; W-11 since ACCEPTED at 2/2, fold 35e6545
 [r2 m2]; this note per
 the arc line above)**. HEX3-BOX-1 (the exact U₃^σ
 law) remains open and off the critical path (S5.4).
+
+---
+
+## ★ ACCEPTANCE RECORD (orchestrator, 2026-08-08) ★
+
+**THIS NOTE IS ACCEPTED at 2/2** — PE3 (7e5026a, CLEAN; own
+enumeration of never-measured N=10 α-slices at 2×16.7M states
+confirming the b(3) bracket composition-by-composition; B3 re-derived
+in full; all double-claim candidates structurally excluded) and PE4
+(6249166, CLEAN; fresh route = the full symbolic-q identity engine —
+the entire menu verified as POLYNOMIAL IDENTITIES in ℚ[q]: tierI+II+B
++ u(q,N) ≡ q^{3(N−1)}, whole space ≡ q^{3N}, all five R_τ + Σ=1 +
+E[#roots] symbolically exact; plus a constructive HM3-2 member factory
+with 2,610 fresh PARI σ-reads at wild p=3). Full arc: composed → seal
+64d3ff9 / verdict 625fa49 → PE1 (0C+1G+1m, f4f7b03) → r1 (3235e1b) →
+PE2 (0C+0G+2m, af988ee) → r2 (e1280be) → PE3 CLEAN → PE4 CLEAN. Four
+passes, two repairs.
+
+**FREEZE-CONVENTION STAMP**: the accepted text is the post-r2 body,
+byte-frozen since e1280be (PE4 verified all four eras read their own
+texts, zero anachronisms); dated appends only hereafter.
+
+**WHAT IS ACCEPTED**: THEOREMS HM3.A/B/C + COROLLARY HM3.D — the
+complete 33-family cubic core menu (exhaustiveness via the two-species
+grammar, exact q-uniform counts both characteristics, disjointness,
+(A0)+(A2)-complement), discharging (hMenu-3), and the five cubic
+densities R_τ(q) with Σ = 1 — at the S9/S10 conditionality as
+displayed (the corollary rides the W-12/HEX3 arc grades, which
+continue their own arcs).

@@ -12706,3 +12706,17 @@ n=5 CS genres (the 4+1 fracture) remain open.
 ⟹ with GENIND.B + W-12.D: THE FULL UNIFORMITY THEOREM composed
 end-to-end. Dispatching: GENHN composer + GENH4 PE1 (complete-theorem
 bar).**
+
+---
+
+## ★★★ HMENU3 ACCEPTED AT 2/2 (ninth note) — THE CUBIC MENU THEOREM VERIFIED AT THE FULL BAR (PE4's symbolic-q identity engine: the whole menu as polynomial identities) + HEX3 r2 landed — 2026-08-08
+
+Acceptance record at the note tail (this commit). The n=3 chain now:
+W-11 ACCEPTED + HMENU3 ACCEPTED + HEX3 (r2 a707430, counter 0/2, PE3
+next) + W-12 (r2, counter 0/2, PE3 next). The five cubic densities'
+supplier stack is two-thirds accepted. HEX3 r2: the "honest 11" made
+honestly TWELVE at all 4 sites with the verifier-measured (8,3) row
+recorded; the S8.2 k=1 factor restored ((2,7) = 960 tie). NEXT: HEX3
+PE3 + W-12 PE3 (both notes' next passes; if both go clean twice, the
+ENTIRE n≤3 chain is accepted end-to-end). GENHN + GENH4 PE1 still in
+flight — the general-n composition and the P(4) verification.

@@ -3180,3 +3180,5 @@ multiplicativity + χ-from-S (queued synthesis targets).**
 **2026-08-08: ★★ Σ-LAW ACCEPTED 2/2 (8th note) — weld's last box accepted-closed on the forward leg. HMENU3 at 1/2 (PE4 accepting next). HEX3 r2 owed (bracket bookkeeping). GENH4 running.**
 
 **2026-08-08: ★★★★★ P(4) FIRES — quartics = third complete degree (eleven R_τ(q), Σ=1, Igusa-tied); [GENIND-H(4)] discharged at both genres; W-9's cocycle literal in the count; P-D settled as theorem. LAST COMPOSITION: GENHN (general-n discharge) opens. ★★★★★**
+
+**2026-08-08: ★★★ HMENU3 ACCEPTED 2/2 (9th note; PE4 = symbolic polynomial-identity engine over the whole menu). n=3 chain: W-11 ✓ HMENU3 ✓, HEX3 + W-12 arcs continue. GENHN (last composition) + GENH4 PE1 in flight. ★★★**
