@@ -361,7 +361,23 @@ else tuned; the full sealed battery is UNRUN at commit 1.
 
 ## §6R. RESULTS (commit 2; from the committed artifacts)
 
-**PENDING at commit 1.**
+**Sealed battery (`sigmalaw_checks.py`, run once post-seal, exit 0,
+18.5 s, 6,970 samples): 539 towers built (389 OA-battery + 96 SEPA + 54
+SEPB, 0 rejects), 1,217 junction rows = 1,211 walked (539 m=1 + 527 m=2
++ 145 m=3) + 6 SKIP (the roster's above-twist rows). ALL preregistered
+families GREEN; all six teeth rows CAUGHT.** Family table (pred/obs/
+samples): SL-VDM 0/0 (2,854 — both legs, every walked slot, every m) ·
+SL-DELTA 0/0 (1,427) · SL-GAP 0/0 (688 gap-slot samples; 340 gap slots
+across 317 gap rows — every one conforming with NO correction term) ·
+SL-PHIR 0/0 (1,427) · TEETH-US caught 2/2 · TEETH-SB caught 2/2 ·
+TEETH-PR caught 2/2. Separator censuses: **SL-SEP2 = 96 rows (predicted
+≥ 8)** — every SEPA junction row separated: δ non-involution, the ξ-law
+holds, BOTH bare-θ variants fail; **SL-SEP3 = 27 rows (predicted ≥ 6)**
+— the χ-chain correction witnessed at m = 3 likewise. Reconciliation:
+SL-INVREC = 221 δ ≠ 1 slot-samples with Σ_m(ρ) = `sigma_twist`(ρ), of
+which 218 on the OA-battery geography — the sealed unit's ENTIRE δ ≠ 1
+record sits where the two maps coincide, confirming §5's explanation of
+its 0-violation-with-undetermined-sign verdict.
 
 ---
 
@@ -390,7 +406,7 @@ else tuned; the full sealed battery is UNRUN at commit 1.
 
 > **[ANNEX 2026-08-08, orchestrator, Σ-LAW PROVED — the SIGMALAW unit
 > (`SIGMALAW_PROOF_2026-08-08.md`, sealed battery `sigmalaw_checks.py`;
-> seal commit ___, verdict commit ___).]** The (Σ-LAW box) displayed at
+> seal commit 8064ae3, verdict commit = the §6R fold).]** The (Σ-LAW box) displayed at
 > OPEN2ATTACK §6 is CLOSED at attempt grade, with two corrections to the
 > boxed display: the covariance map is the **ξ-formula composite** (the
 > §3.4 characters ξ_q = χ_{q−1}^{γ_q}z_{q−1}^{−e_{q−1}A_{q−1}}, χ-chain
@@ -402,10 +418,15 @@ else tuned; the full sealed battery is UNRUN at commit 1.
 > the attained-start τ-normalization is W2-L3's mechanism at every
 > level, so gap rows carry NO correction term; and the gauge-ratio
 > recursion Λ_q(w) = χ_q^{−w} REDERIVES the §3.4 χ/ξ recursion from the
-> evaluator side). Machine: [commit-2 figures]; the sign/map corrections
-> are witnessed by constructed non-involution separators at m = 2 and
-> m = 3 where the ξ-law holds and BOTH boxed variants fail — the sealed
-> battery's involution degeneracy is thereby explained. Consequence:
+> evaluator side). Machine: 1,211 walked junction rows (539 towers:
+> the full OPEN2ATTACK battery reproduced + 150 constructed separator
+> towers), SL-VDM 2,854 / SL-DELTA 1,427 / SL-GAP 688 samples (340 gap
+> slots), 0 violations, exit 0, 3 teeth caught 2/2 each; the sign/map
+> corrections are witnessed by 96 constructed non-involution separator
+> rows at m = 2 and 27 at m = 3 where the ξ-law holds and BOTH boxed
+> variants fail — the sealed battery's involution degeneracy is thereby
+> explained (its entire δ ≠ 1 record sits where the maps coincide,
+> 218/218 slot-samples). Consequence:
 > THEOREM OPEN-2a-Σ fires unconditionally on its Σ-leg — at every
 > shared-below junction at every m, strict ⟹ byte-equal and recorded
 > ξ = 1 ⟹ byte-equal under every selection rule, at attempt grade given

@@ -1,0 +1,44 @@
+sigmalaw_checks -- THE Sigma-LAW machine leg (ledger identity + delta law + separators)
+engine: iterlawn_pe_reimpl + open2attack TowerX/gap_scan (committed, verbatim)
+classifier: grt_weld_probe.GmnLeg (sealed, verbatim); ratios: grt_w2_checks.actual_ratios (sealed, verbatim)
+comparison map sigma_twist (the REFUTED bare-theta composite): open2attack_checks (sealed, verbatim)
+mode: FULL
+
+battery: 539 tower specs (96 SEPA + 54 SEPB)
+  [   3.1s] 100 towers analyzed...
+  [   5.1s] 200 towers analyzed...
+  [   7.3s] 300 towers analyzed...
+  [  10.5s] 400 towers analyzed...
+  [  16.6s] 500 towers analyzed...
+  built 539 towers (0 rejects), 1217 junction rows
+
+censuses: {
+ "INVREC_OA_rows": 218,
+ "INVREC_rows": 221,
+ "SEP2_rows": 96,
+ "SEP3_rows": 27,
+ "gap_rows_M1": 37,
+ "gap_rows_M2": 197,
+ "gap_rows_M3": 83,
+ "gap_slots_total": 340,
+ "separator_M2": 96,
+ "separator_M3": 27,
+ "skip": 6,
+ "walked_M1": 539,
+ "walked_M2": 527,
+ "walked_M3": 145
+}
+
+==============================================================================
+PREREGISTERED vs OBSERVED
+==============================================================================
+SL-VDM    ledger identity, closed-form u_j, both legs        pred 0  obs    0 ( 2854)  GREEN
+SL-DELTA  delta = rho / Sigma(rho)                           pred 0  obs    0 ( 1427)  GREEN
+SL-GAP    ledger/delta on gap slots                          pred 0  obs    0 (  688)  GREEN
+SL-PHIR   Thm-phir slot reproduction                         pred 0  obs    0 ( 1427)  GREEN
+TEETH-US  u_j garbled (U dropped) caught on both             pred 0  obs    0 (    2)  GREEN
+TEETH-SB  Sigma garbled (bare-theta) caught on both          pred 0  obs    0 (    2)  GREEN
+TEETH-PR  print leg garbled caught on both                   pred 0  obs    0 (    2)  GREEN
+------------------------------------------------------------------------------
+SL-SEP2 separator rows (PREDICT >= 8): 96  GREEN
+SL-SEP3 separator rows (PREDICT >= 6): 27  GREEN
