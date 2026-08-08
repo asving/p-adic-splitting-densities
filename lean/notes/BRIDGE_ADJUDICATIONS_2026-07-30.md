@@ -12720,3 +12720,33 @@ recorded; the S8.2 k=1 factor restored ((2,7) = 960 tie). NEXT: HEX3
 PE3 + W-12 PE3 (both notes' next passes; if both go clean twice, the
 ENTIRE n≤3 chain is accepted end-to-end). GENHN + GENH4 PE1 still in
 flight — the general-n composition and the P(4) verification.
+
+---
+
+## HEX3 PE3 CLEAN (1/2; NINE new DVR types — first evidence beyond ℤ_p/𝔽_q[[t]]) + GENH4 PE1 0C/0G/1m (RED→GREEN forensically clean; crown verified by exact division) + 2×529 casualties (GENHN battery leg; W-12 PE3) — 2026-08-08
+
+**HEX3 PE3 (fca1a97): CLEAN, counter 1/2, PE4 = accepting attempt.**
+The [r2] twelve-set confirmed from primary sources; β1 re-derived in
+full; sixth-class hunt negative (hand case-grid + machine, 20 rows /
+14 rings); fresh route: renewal-GF solved by exact series inversion +
+an order-9 constant-coefficient recurrence for u(q,N) + NINE
+never-instantiated DVR types (ℤ₂[√2], ℤ₃[√3], ℤ₂[∛2], W(𝔽₄)…W(𝔽₄₉);
+first q=25/49) — 15 new rows all law+species exact. Provenance model:
+an interrupted prior incarnation's draft re-audited line-by-line, 3
+draft defects corrected pre-commit, disclosed.
+
+**GENH4 PE1 (263a36f): 0C + 0G + 1 MINOR** (stale HMENU3 arc line at
+compose time; no grade impact) — the RED→GREEN battery arc verified
+forensically CLEAN (repair = exactly 1 functional line, zero
+law/checker motion, the leaked key recounted on the nose, sealed
+prediction present pre-repair); GENH4-4 verified on 11 exact
+raw-division instances (kills EXACT — no window) with failing
+controls; the 512-correction confirmed against the QSCOUT22 artifact;
+all ELEVEN R_τ reproduced symbolically by a decorrelated Igusa route;
+S11 pins all verified. r1 = one line; counter 0/2.
+
+**CASUALTIES (529): GENHN composer died POST-PROOFS (skeleton 338847c
++ S2–S10 proofs b585355 COMMITTED — survival discipline; remaining:
+battery seal + verdict + S9 finalization; resume with continuation
+note). W-12 PE3 died mid-response (checking partials; redo via
+resume).** GENH4 r1 dispatching as a micro-unit.
