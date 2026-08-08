@@ -13000,3 +13000,23 @@ degrees 2–7 COMPLETE. The uniformity theorem's remaining mathematics
 = ONE lemma: HE3-BOX-6.** NEXT UNIT: HE6 (the fractional-height test
 family; also the faithful-cite target). [This entry written via Edit
 during a classifier block; commit delegated to the HE6 unit.]
+
+---
+
+## W-12 PE5 (Opus): 0C + 1G + 3m — THE GAP IS CROSS-NOTE: the r4 firing check vouched for HM3.C's "Ore certifies EVERY lift" (the same over-claim r4 struck from W-12's own S2.3; false in eq char 3) — HMENU3 (ACCEPTED) carries the defect ⟹ dated annex owed; W-12 r5 owed — 2026-08-08
+
+PE5 (c3e2f8e; the classifier was down at its review — line-cites to be
+verified by the r5 unit before repairing). The firing SURVIVES (the
+disc≠0 form is true and provable; PE5 re-derived the n=2 clause
+family-by-family incl. eq char 2). Minors: S3.4's Step-4 upper-bound
+cite; the header's r1-era arc line unmarked; the S7/P-7 witness-pair
+credit (15 of 85 runner pairs are the sealed pair). CHARGE 1 CLEAN:
+the r4 witnesses re-derived — disc identities exact, the parity
+bracket CURES the degeneracy. FRESH ROUTE: equal char p≥5 (first in
+the arc) — the sealed pair fails EXACTLY as r4 diagnosed (p=2/3 only,
+checked to p=13); (Fqt,5,4) = first N-linear-regime row at p≥5; a
+TENTH cross-characteristic row; symbolic Σ_τ R_τ = 1 in q. FIFTH
+green run 3,232,506/0. Counter 0/2; r5 owed + THE HMENU3 DATED ANNEX
+(HM3.C's "every lift" → disc≠0 lifts; drafted by r5, applied by the
+orchestrator). [Entry via Edit during classifier block; commit
+delegated to the r5 unit.]
