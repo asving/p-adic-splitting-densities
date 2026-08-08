@@ -1,0 +1,1226 @@
+{
+ "smoke": false,
+ "cubic": [
+  {
+   "kind": "Zp",
+   "q": 2,
+   "N": 5,
+   "patterns": {
+    "SEP3": 0,
+    "SEP12": 2,
+    "IRR3": 2,
+    "DBL": 2,
+    "TRP": 2
+   },
+   "sep_total": 16384,
+   "dbl_total": 8192,
+   "trp_total": 8192,
+   "dbl_undecided": 512,
+   "U3TRP_measured_conservative": 608,
+   "species": 32,
+   "trp_deep_decided": 96,
+   "depth0_keys": {
+    "('FULL', (1, '12'))": 128,
+    "('FULL', (1, '3'))": 256,
+    "('LINRAM2', (2, 1))": 1024,
+    "('LINRAM2', (3, 1))": 512,
+    "('LINRAM2', (4, 1))": 256,
+    "('RAM2LIN', (4, 1))": 64,
+    "('RAM3', (1,))": 4096,
+    "('RAM3', (2,))": 1024,
+    "('RAM3', (4,))": 64,
+    "('VERT1', (4, 1, '2'))": 64
+   },
+   "dbl_keys": {
+    "('2SIDED', (1, 2), ())": 512,
+    "('2SIDED', (1, 3), ())": 256,
+    "('INERTDEEP', (1,), ())": 1024,
+    "('INERTDEEP', (2,), ())": 128,
+    "('INERTDEEP', (2,), (1,))": 128,
+    "('RAM', (1,), ())": 4096,
+    "('RAM', (3,), ())": 512,
+    "('RAM', (3,), (1,))": 512,
+    "('SPLIT-TAIL', (1,), ())": 256,
+    "('SPLIT-TAIL', (2,), ())": 128,
+    "('SPLIT-TAIL', (2,), (1,))": 128,
+    "('UNDECIDED', (), ())": 128,
+    "('UNDECIDED', (), (1, 2))": 128,
+    "('UNDECIDED', (), (1,))": 128,
+    "('UNDECIDED', (), (2,))": 128
+   },
+   "elapsed_s": 0.3
+  },
+  {
+   "kind": "Zp",
+   "q": 2,
+   "N": 6,
+   "patterns": {
+    "SEP3": 0,
+    "SEP12": 2,
+    "IRR3": 2,
+    "DBL": 2,
+    "TRP": 2
+   },
+   "sep_total": 131072,
+   "dbl_total": 65536,
+   "trp_total": 65536,
+   "dbl_undecided": 2048,
+   "U3TRP_measured_conservative": 2720,
+   "species": 64,
+   "trp_deep_decided": 1248,
+   "depth0_keys": {
+    "('FULL', (1, '12'))": 1024,
+    "('FULL', (1, '3'))": 2048,
+    "('LINRAM2', (2, 1))": 8192,
+    "('LINRAM2', (3, 1))": 4096,
+    "('LINRAM2', (4, 1))": 2048,
+    "('LINRAM2', (5, 1))": 1024,
+    "('LINRAM2', (5, 3))": 128,
+    "('RAM2LIN', (4, 1))": 512,
+    "('RAM3', (1,))": 32768,
+    "('RAM3', (2,))": 8192,
+    "('RAM3', (4,))": 512,
+    "('RAM3', (5,))": 128,
+    "('VERT1', (4, 1, '2'))": 512,
+    "('VERT1', (5, 1, '2'))": 256,
+    "('VERT2', (5, 1, '2'))": 128
+   },
+   "dbl_keys": {
+    "('2SIDED', (1, 2), ())": 4096,
+    "('2SIDED', (1, 3), ())": 2048,
+    "('2SIDED', (1, 4), ())": 1024,
+    "('2SIDED', (2, 3), ())": 512,
+    "('2SIDED', (2, 3), (1,))": 512,
+    "('INERTDEEP', (1,), ())": 8192,
+    "('INERTDEEP', (2,), ())": 1024,
+    "('INERTDEEP', (2,), (1,))": 1024,
+    "('RAM', (1,), ())": 32768,
+    "('RAM', (3,), ())": 4096,
+    "('RAM', (3,), (1,))": 4096,
+    "('RAM', (5,), ())": 512,
+    "('RAM', (5,), (1, 2))": 512,
+    "('RAM', (5,), (1,))": 512,
+    "('RAM', (5,), (2,))": 512,
+    "('SPLIT-TAIL', (1,), ())": 1024,
+    "('SPLIT-TAIL', (2,), ())": 512,
+    "('SPLIT-TAIL', (2,), (1,))": 512,
+    "('UNDECIDED', (), ())": 512,
+    "('UNDECIDED', (), (1, 2))": 512,
+    "('UNDECIDED', (), (1,))": 512,
+    "('UNDECIDED', (), (2,))": 512
+   },
+   "elapsed_s": 2.2
+  },
+  {
+   "kind": "Zp",
+   "q": 2,
+   "N": 7,
+   "patterns": {
+    "SEP3": 0,
+    "SEP12": 2,
+    "IRR3": 2,
+    "DBL": 2,
+    "TRP": 2
+   },
+   "sep_total": 1048576,
+   "dbl_total": 524288,
+   "trp_total": 524288,
+   "dbl_undecided": 8192,
+   "U3TRP_measured_conservative": 11328,
+   "species": 128,
+   "trp_deep_decided": 13376,
+   "depth0_keys": {
+    "('3LIN', (3, 2, 1))": 512,
+    "('FULL', (1, '12'))": 8192,
+    "('FULL', (1, '3'))": 16384,
+    "('FULL', (2, '12'))": 128,
+    "('FULL', (2, '3'))": 256,
+    "('LINRAM2', (2, 1))": 65536,
+    "('LINRAM2', (3, 1))": 32768,
+    "('LINRAM2', (4, 1))": 16384,
+    "('LINRAM2', (5, 1))": 8192,
+    "('LINRAM2', (5, 3))": 1024,
+    "('LINRAM2', (6, 1))": 4096,
+    "('LINRAM2', (6, 3))": 512,
+    "('RAM2LIN', (4, 1))": 4096,
+    "('RAM2LIN', (6, 1))": 512,
+    "('RAM3', (1,))": 262144,
+    "('RAM3', (2,))": 65536,
+    "('RAM3', (4,))": 4096,
+    "('RAM3', (5,))": 1024,
+    "('VERT1', (4, 1, '2'))": 4096,
+    "('VERT1', (5, 1, '2'))": 2048,
+    "('VERT1', (6, 1, '2'))": 1024,
+    "('VERT2', (5, 1, '2'))": 1024
+   },
+   "dbl_keys": {
+    "('2SIDED', (1, 2), ())": 32768,
+    "('2SIDED', (1, 3), ())": 16384,
+    "('2SIDED', (1, 4), ())": 8192,
+    "('2SIDED', (1, 5), ())": 4096,
+    "('2SIDED', (2, 3), ())": 4096,
+    "('2SIDED', (2, 3), (1,))": 4096,
+    "('2SIDED', (2, 4), ())": 2048,
+    "('2SIDED', (2, 4), (1,))": 2048,
+    "('INERTDEEP', (1,), ())": 65536,
+    "('INERTDEEP', (2,), ())": 8192,
+    "('INERTDEEP', (2,), (1,))": 8192,
+    "('INERTDEEP', (3,), ())": 1024,
+    "('INERTDEEP', (3,), (1, 2))": 1024,
+    "('INERTDEEP', (3,), (1,))": 1024,
+    "('INERTDEEP', (3,), (2,))": 1024,
+    "('RAM', (1,), ())": 262144,
+    "('RAM', (3,), ())": 32768,
+    "('RAM', (3,), (1,))": 32768,
+    "('RAM', (5,), ())": 4096,
+    "('RAM', (5,), (1, 2))": 4096,
+    "('RAM', (5,), (1,))": 4096,
+    "('RAM', (5,), (2,))": 4096,
+    "('SPLIT-TAIL', (1,), ())": 4096,
+    "('SPLIT-TAIL', (2,), ())": 2048,
+    "('SPLIT-TAIL', (2,), (1,))": 2048,
+    "('SPLIT-TAIL', (3,), ())": 1024,
+    "('SPLIT-TAIL', (3,), (1, 2))": 1024,
+    "('SPLIT-TAIL', (3,), (1,))": 1024,
+    "('SPLIT-TAIL', (3,), (2,))": 1024,
+    "('UNDECIDED', (), ())": 1024,
+    "('UNDECIDED', (), (1, 2))": 1024,
+    "('UNDECIDED', (), (1, 2, 3))": 1024,
+    "('UNDECIDED', (), (1, 3))": 1024,
+    "('UNDECIDED', (), (1,))": 1024,
+    "('UNDECIDED', (), (2, 3))": 1024,
+    "('UNDECIDED', (), (2,))": 1024,
+    "('UNDECIDED', (), (3,))": 1024
+   },
+   "elapsed_s": 18.4
+  },
+  {
+   "kind": "Zp",
+   "q": 3,
+   "N": 4,
+   "patterns": {
+    "SEP3": 1,
+    "SEP12": 9,
+    "IRR3": 8,
+    "DBL": 6,
+    "TRP": 3
+   },
+   "sep_total": 354294,
+   "dbl_total": 118098,
+   "trp_total": 59049,
+   "dbl_undecided": 4374,
+   "U3TRP_measured_conservative": 2511,
+   "species": 81,
+   "trp_deep_decided": 0,
+   "depth0_keys": {
+    "('FULL', (1, '12'))": 486,
+    "('FULL', (1, '3'))": 648,
+    "('LINRAM2', (2, 1))": 8748,
+    "('LINRAM2', (3, 1))": 2916,
+    "('RAM3', (1,))": 39366,
+    "('RAM3', (2,))": 4374
+   },
+   "dbl_keys": {
+    "('2SIDED', (1, 2), ())": 5832,
+    "('INERTDEEP', (1,), ())": 13122,
+    "('RAM', (1,), ())": 78732,
+    "('RAM', (3,), ())": 2916,
+    "('RAM', (3,), (1,))": 5832,
+    "('SPLIT-TAIL', (1,), ())": 2916,
+    "('SPLITEQ', (1,), ())": 4374,
+    "('UNDECIDED', (), ())": 1458,
+    "('UNDECIDED', (), (1,))": 2916
+   },
+   "elapsed_s": 3.5
+  },
+  {
+   "kind": "Zp",
+   "q": 7,
+   "N": 2,
+   "patterns": {
+    "SEP3": 35,
+    "SEP12": 147,
+    "IRR3": 112,
+    "DBL": 42,
+    "TRP": 7
+   },
+   "sep_total": 100842,
+   "dbl_total": 14406,
+   "trp_total": 2401,
+   "dbl_undecided": 2058,
+   "U3TRP_measured_conservative": 343,
+   "species": 49,
+   "trp_deep_decided": 0,
+   "depth0_keys": {
+    "('RAM3', (1,))": 2058
+   },
+   "dbl_keys": {
+    "('RAM', (1,), ())": 12348,
+    "('UNDECIDED', (), ())": 2058
+   },
+   "elapsed_s": 0.2
+  },
+  {
+   "kind": "Fqt",
+   "q": 2,
+   "N": 3,
+   "patterns": {
+    "SEP3": 0,
+    "SEP12": 2,
+    "IRR3": 2,
+    "DBL": 2,
+    "TRP": 2
+   },
+   "sep_total": 256,
+   "dbl_total": 128,
+   "trp_total": 128,
+   "dbl_undecided": 32,
+   "U3TRP_measured_conservative": 32,
+   "species": 8,
+   "trp_deep_decided": 0,
+   "depth0_keys": {
+    "('LINRAM2', (2, 1))": 16,
+    "('RAM3', (1,))": 64,
+    "('RAM3', (2,))": 16
+   },
+   "dbl_keys": {
+    "('INERTDEEP', (1,), ())": 16,
+    "('RAM', (1,), ())": 64,
+    "('SPLIT-TAIL', (1,), ())": 16,
+    "('UNDECIDED', (), ())": 16,
+    "('UNDECIDED', (), (1,))": 16
+   },
+   "elapsed_s": 0.0
+  },
+  {
+   "kind": "Fqt",
+   "q": 2,
+   "N": 4,
+   "patterns": {
+    "SEP3": 0,
+    "SEP12": 2,
+    "IRR3": 2,
+    "DBL": 2,
+    "TRP": 2
+   },
+   "sep_total": 2048,
+   "dbl_total": 1024,
+   "trp_total": 1024,
+   "dbl_undecided": 128,
+   "U3TRP_measured_conservative": 144,
+   "species": 16,
+   "trp_deep_decided": 0,
+   "depth0_keys": {
+    "('FULL', (1, '12'))": 16,
+    "('FULL', (1, '3'))": 32,
+    "('LINRAM2', (2, 1))": 128,
+    "('LINRAM2', (3, 1))": 64,
+    "('RAM3', (1,))": 512,
+    "('RAM3', (2,))": 128
+   },
+   "dbl_keys": {
+    "('2SIDED', (1, 2), ())": 64,
+    "('INERTDEEP', (1,), ())": 128,
+    "('RAM', (1,), ())": 512,
+    "('RAM', (3,), ())": 64,
+    "('RAM', (3,), (1,))": 64,
+    "('SPLIT-TAIL', (1,), ())": 64,
+    "('UNDECIDED', (), ())": 64,
+    "('UNDECIDED', (), (1,))": 64
+   },
+   "elapsed_s": 0.2
+  },
+  {
+   "kind": "Fqt",
+   "q": 2,
+   "N": 5,
+   "patterns": {
+    "SEP3": 0,
+    "SEP12": 2,
+    "IRR3": 2,
+    "DBL": 2,
+    "TRP": 2
+   },
+   "sep_total": 16384,
+   "dbl_total": 8192,
+   "trp_total": 8192,
+   "dbl_undecided": 512,
+   "U3TRP_measured_conservative": 608,
+   "species": 32,
+   "trp_deep_decided": 96,
+   "depth0_keys": {
+    "('FULL', (1, '12'))": 128,
+    "('FULL', (1, '3'))": 256,
+    "('LINRAM2', (2, 1))": 1024,
+    "('LINRAM2', (3, 1))": 512,
+    "('LINRAM2', (4, 1))": 256,
+    "('RAM2LIN', (4, 1))": 64,
+    "('RAM3', (1,))": 4096,
+    "('RAM3', (2,))": 1024,
+    "('RAM3', (4,))": 64,
+    "('VERT1', (4, 1, '2'))": 64
+   },
+   "dbl_keys": {
+    "('2SIDED', (1, 2), ())": 512,
+    "('2SIDED', (1, 3), ())": 256,
+    "('INERTDEEP', (1,), ())": 1024,
+    "('INERTDEEP', (2,), ())": 128,
+    "('INERTDEEP', (2,), (1,))": 128,
+    "('RAM', (1,), ())": 4096,
+    "('RAM', (3,), ())": 512,
+    "('RAM', (3,), (1,))": 512,
+    "('SPLIT-TAIL', (1,), ())": 256,
+    "('SPLIT-TAIL', (2,), ())": 128,
+    "('SPLIT-TAIL', (2,), (1,))": 128,
+    "('UNDECIDED', (), ())": 128,
+    "('UNDECIDED', (), (1, 2))": 128,
+    "('UNDECIDED', (), (1,))": 128,
+    "('UNDECIDED', (), (2,))": 128
+   },
+   "elapsed_s": 1.9
+  },
+  {
+   "kind": "Fqt",
+   "q": 2,
+   "N": 6,
+   "patterns": {
+    "SEP3": 0,
+    "SEP12": 2,
+    "IRR3": 2,
+    "DBL": 2,
+    "TRP": 2
+   },
+   "sep_total": 131072,
+   "dbl_total": 65536,
+   "trp_total": 65536,
+   "dbl_undecided": 2048,
+   "U3TRP_measured_conservative": 2720,
+   "species": 64,
+   "trp_deep_decided": 1248,
+   "depth0_keys": {
+    "('FULL', (1, '12'))": 1024,
+    "('FULL', (1, '3'))": 2048,
+    "('LINRAM2', (2, 1))": 8192,
+    "('LINRAM2', (3, 1))": 4096,
+    "('LINRAM2', (4, 1))": 2048,
+    "('LINRAM2', (5, 1))": 1024,
+    "('LINRAM2', (5, 3))": 128,
+    "('RAM2LIN', (4, 1))": 512,
+    "('RAM3', (1,))": 32768,
+    "('RAM3', (2,))": 8192,
+    "('RAM3', (4,))": 512,
+    "('RAM3', (5,))": 128,
+    "('VERT1', (4, 1, '2'))": 512,
+    "('VERT1', (5, 1, '2'))": 256,
+    "('VERT2', (5, 1, '2'))": 128
+   },
+   "dbl_keys": {
+    "('2SIDED', (1, 2), ())": 4096,
+    "('2SIDED', (1, 3), ())": 2048,
+    "('2SIDED', (1, 4), ())": 1024,
+    "('2SIDED', (2, 3), ())": 512,
+    "('2SIDED', (2, 3), (1,))": 512,
+    "('INERTDEEP', (1,), ())": 8192,
+    "('INERTDEEP', (2,), ())": 1024,
+    "('INERTDEEP', (2,), (1,))": 1024,
+    "('RAM', (1,), ())": 32768,
+    "('RAM', (3,), ())": 4096,
+    "('RAM', (3,), (1,))": 4096,
+    "('RAM', (5,), ())": 512,
+    "('RAM', (5,), (1, 2))": 512,
+    "('RAM', (5,), (1,))": 512,
+    "('RAM', (5,), (2,))": 512,
+    "('SPLIT-TAIL', (1,), ())": 1024,
+    "('SPLIT-TAIL', (2,), ())": 512,
+    "('SPLIT-TAIL', (2,), (1,))": 512,
+    "('UNDECIDED', (), ())": 512,
+    "('UNDECIDED', (), (1, 2))": 512,
+    "('UNDECIDED', (), (1,))": 512,
+    "('UNDECIDED', (), (2,))": 512
+   },
+   "elapsed_s": 18.4
+  },
+  {
+   "kind": "Fqt",
+   "q": 2,
+   "N": 7,
+   "patterns": {
+    "SEP3": 0,
+    "SEP12": 2,
+    "IRR3": 2,
+    "DBL": 2,
+    "TRP": 2
+   },
+   "sep_total": 1048576,
+   "dbl_total": 524288,
+   "trp_total": 524288,
+   "dbl_undecided": 8192,
+   "U3TRP_measured_conservative": 11328,
+   "species": 128,
+   "trp_deep_decided": 13376,
+   "depth0_keys": {
+    "('3LIN', (3, 2, 1))": 512,
+    "('FULL', (1, '12'))": 8192,
+    "('FULL', (1, '3'))": 16384,
+    "('FULL', (2, '12'))": 128,
+    "('FULL', (2, '3'))": 256,
+    "('LINRAM2', (2, 1))": 65536,
+    "('LINRAM2', (3, 1))": 32768,
+    "('LINRAM2', (4, 1))": 16384,
+    "('LINRAM2', (5, 1))": 8192,
+    "('LINRAM2', (5, 3))": 1024,
+    "('LINRAM2', (6, 1))": 4096,
+    "('LINRAM2', (6, 3))": 512,
+    "('RAM2LIN', (4, 1))": 4096,
+    "('RAM2LIN', (6, 1))": 512,
+    "('RAM3', (1,))": 262144,
+    "('RAM3', (2,))": 65536,
+    "('RAM3', (4,))": 4096,
+    "('RAM3', (5,))": 1024,
+    "('VERT1', (4, 1, '2'))": 4096,
+    "('VERT1', (5, 1, '2'))": 2048,
+    "('VERT1', (6, 1, '2'))": 1024,
+    "('VERT2', (5, 1, '2'))": 1024
+   },
+   "dbl_keys": {
+    "('2SIDED', (1, 2), ())": 32768,
+    "('2SIDED', (1, 3), ())": 16384,
+    "('2SIDED', (1, 4), ())": 8192,
+    "('2SIDED', (1, 5), ())": 4096,
+    "('2SIDED', (2, 3), ())": 4096,
+    "('2SIDED', (2, 3), (1,))": 4096,
+    "('2SIDED', (2, 4), ())": 2048,
+    "('2SIDED', (2, 4), (1,))": 2048,
+    "('INERTDEEP', (1,), ())": 65536,
+    "('INERTDEEP', (2,), ())": 8192,
+    "('INERTDEEP', (2,), (1,))": 8192,
+    "('INERTDEEP', (3,), ())": 1024,
+    "('INERTDEEP', (3,), (1, 2))": 1024,
+    "('INERTDEEP', (3,), (1,))": 1024,
+    "('INERTDEEP', (3,), (2,))": 1024,
+    "('RAM', (1,), ())": 262144,
+    "('RAM', (3,), ())": 32768,
+    "('RAM', (3,), (1,))": 32768,
+    "('RAM', (5,), ())": 4096,
+    "('RAM', (5,), (1, 2))": 4096,
+    "('RAM', (5,), (1,))": 4096,
+    "('RAM', (5,), (2,))": 4096,
+    "('SPLIT-TAIL', (1,), ())": 4096,
+    "('SPLIT-TAIL', (2,), ())": 2048,
+    "('SPLIT-TAIL', (2,), (1,))": 2048,
+    "('SPLIT-TAIL', (3,), ())": 1024,
+    "('SPLIT-TAIL', (3,), (1, 2))": 1024,
+    "('SPLIT-TAIL', (3,), (1,))": 1024,
+    "('SPLIT-TAIL', (3,), (2,))": 1024,
+    "('UNDECIDED', (), ())": 1024,
+    "('UNDECIDED', (), (1, 2))": 1024,
+    "('UNDECIDED', (), (1, 2, 3))": 1024,
+    "('UNDECIDED', (), (1, 3))": 1024,
+    "('UNDECIDED', (), (1,))": 1024,
+    "('UNDECIDED', (), (2, 3))": 1024,
+    "('UNDECIDED', (), (2,))": 1024,
+    "('UNDECIDED', (), (3,))": 1024
+   },
+   "elapsed_s": 175.0
+  },
+  {
+   "kind": "Fqt",
+   "q": 3,
+   "N": 2,
+   "patterns": {
+    "SEP3": 1,
+    "SEP12": 9,
+    "IRR3": 8,
+    "DBL": 6,
+    "TRP": 3
+   },
+   "sep_total": 486,
+   "dbl_total": 162,
+   "trp_total": 81,
+   "dbl_undecided": 54,
+   "U3TRP_measured_conservative": 27,
+   "species": 9,
+   "trp_deep_decided": 0,
+   "depth0_keys": {
+    "('RAM3', (1,))": 54
+   },
+   "dbl_keys": {
+    "('RAM', (1,), ())": 108,
+    "('UNDECIDED', (), ())": 54
+   },
+   "elapsed_s": 0.0
+  },
+  {
+   "kind": "Fqt",
+   "q": 3,
+   "N": 3,
+   "patterns": {
+    "SEP3": 1,
+    "SEP12": 9,
+    "IRR3": 8,
+    "DBL": 6,
+    "TRP": 3
+   },
+   "sep_total": 13122,
+   "dbl_total": 4374,
+   "trp_total": 2187,
+   "dbl_undecided": 486,
+   "U3TRP_measured_conservative": 243,
+   "species": 27,
+   "trp_deep_decided": 0,
+   "depth0_keys": {
+    "('LINRAM2', (2, 1))": 324,
+    "('RAM3', (1,))": 1458,
+    "('RAM3', (2,))": 162
+   },
+   "dbl_keys": {
+    "('INERTDEEP', (1,), ())": 486,
+    "('RAM', (1,), ())": 2916,
+    "('SPLIT-TAIL', (1,), ())": 324,
+    "('SPLITEQ', (1,), ())": 162,
+    "('UNDECIDED', (), ())": 162,
+    "('UNDECIDED', (), (1,))": 324
+   },
+   "elapsed_s": 0.7
+  },
+  {
+   "kind": "Fqt",
+   "q": 3,
+   "N": 4,
+   "patterns": {
+    "SEP3": 1,
+    "SEP12": 9,
+    "IRR3": 8,
+    "DBL": 6,
+    "TRP": 3
+   },
+   "sep_total": 354294,
+   "dbl_total": 118098,
+   "trp_total": 59049,
+   "dbl_undecided": 4374,
+   "U3TRP_measured_conservative": 2511,
+   "species": 81,
+   "trp_deep_decided": 0,
+   "depth0_keys": {
+    "('FULL', (1, '12'))": 486,
+    "('FULL', (1, '3'))": 648,
+    "('LINRAM2', (2, 1))": 8748,
+    "('LINRAM2', (3, 1))": 2916,
+    "('RAM3', (1,))": 39366,
+    "('RAM3', (2,))": 4374
+   },
+   "dbl_keys": {
+    "('2SIDED', (1, 2), ())": 5832,
+    "('INERTDEEP', (1,), ())": 13122,
+    "('RAM', (1,), ())": 78732,
+    "('RAM', (3,), ())": 2916,
+    "('RAM', (3,), (1,))": 5832,
+    "('SPLIT-TAIL', (1,), ())": 2916,
+    "('SPLITEQ', (1,), ())": 4374,
+    "('UNDECIDED', (), ())": 1458,
+    "('UNDECIDED', (), (1,))": 2916
+   },
+   "elapsed_s": 23.2
+  },
+  {
+   "kind": "Fqt",
+   "q": 4,
+   "N": 2,
+   "patterns": {
+    "SEP3": 4,
+    "SEP12": 24,
+    "IRR3": 20,
+    "DBL": 12,
+    "TRP": 4
+   },
+   "sep_total": 3072,
+   "dbl_total": 768,
+   "trp_total": 256,
+   "dbl_undecided": 192,
+   "U3TRP_measured_conservative": 64,
+   "species": 16,
+   "trp_deep_decided": 0,
+   "depth0_keys": {
+    "('RAM3', (1,))": 192
+   },
+   "dbl_keys": {
+    "('RAM', (1,), ())": 576,
+    "('UNDECIDED', (), ())": 192
+   },
+   "elapsed_s": 0.2
+  },
+  {
+   "kind": "Fqt",
+   "q": 4,
+   "N": 3,
+   "patterns": {
+    "SEP3": 4,
+    "SEP12": 24,
+    "IRR3": 20,
+    "DBL": 12,
+    "TRP": 4
+   },
+   "sep_total": 196608,
+   "dbl_total": 49152,
+   "trp_total": 16384,
+   "dbl_undecided": 3072,
+   "U3TRP_measured_conservative": 1024,
+   "species": 64,
+   "trp_deep_decided": 0,
+   "depth0_keys": {
+    "('LINRAM2', (2, 1))": 2304,
+    "('RAM3', (1,))": 12288,
+    "('RAM3', (2,))": 768
+   },
+   "dbl_keys": {
+    "('INERTDEEP', (1,), ())": 4608,
+    "('RAM', (1,), ())": 36864,
+    "('SPLIT-TAIL', (1,), ())": 2304,
+    "('SPLITEQ', (1,), ())": 2304,
+    "('UNDECIDED', (), ())": 768,
+    "('UNDECIDED', (), (1,))": 2304
+   },
+   "elapsed_s": 27.2
+  },
+  {
+   "kind": "Fqt",
+   "q": 5,
+   "N": 2,
+   "patterns": {
+    "SEP3": 10,
+    "SEP12": 50,
+    "IRR3": 40,
+    "DBL": 20,
+    "TRP": 5
+   },
+   "sep_total": 12500,
+   "dbl_total": 2500,
+   "trp_total": 625,
+   "dbl_undecided": 500,
+   "U3TRP_measured_conservative": 125,
+   "species": 25,
+   "trp_deep_decided": 0,
+   "depth0_keys": {
+    "('RAM3', (1,))": 500
+   },
+   "dbl_keys": {
+    "('RAM', (1,), ())": 2000,
+    "('UNDECIDED', (), ())": 500
+   },
+   "elapsed_s": 0.2
+  },
+  {
+   "kind": "Fqt",
+   "q": 8,
+   "N": 2,
+   "patterns": {
+    "SEP3": 56,
+    "SEP12": 224,
+    "IRR3": 168,
+    "DBL": 56,
+    "TRP": 8
+   },
+   "sep_total": 229376,
+   "dbl_total": 28672,
+   "trp_total": 4096,
+   "dbl_undecided": 3584,
+   "U3TRP_measured_conservative": 512,
+   "species": 64,
+   "trp_deep_decided": 0,
+   "depth0_keys": {
+    "('RAM3', (1,))": 3584
+   },
+   "dbl_keys": {
+    "('RAM', (1,), ())": 25088,
+    "('UNDECIDED', (), ())": 3584
+   },
+   "elapsed_s": 11.8
+  },
+  {
+   "kind": "Fqt",
+   "q": 9,
+   "N": 2,
+   "patterns": {
+    "SEP3": 84,
+    "SEP12": 324,
+    "IRR3": 240,
+    "DBL": 72,
+    "TRP": 9
+   },
+   "sep_total": 472392,
+   "dbl_total": 52488,
+   "trp_total": 6561,
+   "dbl_undecided": 5832,
+   "U3TRP_measured_conservative": 729,
+   "species": 81,
+   "trp_deep_decided": 0,
+   "depth0_keys": {
+    "('RAM3', (1,))": 5832
+   },
+   "dbl_keys": {
+    "('RAM', (1,), ())": 46656,
+    "('UNDECIDED', (), ())": 5832
+   },
+   "elapsed_s": 19.0
+  },
+  {
+   "kind": "Zp",
+   "q": 2,
+   "N": 3,
+   "patterns": {
+    "SEP3": 0,
+    "SEP12": 2,
+    "IRR3": 2,
+    "DBL": 2,
+    "TRP": 2
+   },
+   "sep_total": 256,
+   "dbl_total": 128,
+   "trp_total": 128,
+   "dbl_undecided": 32,
+   "U3TRP_measured_conservative": 32,
+   "species": 8,
+   "trp_deep_decided": 0,
+   "depth0_keys": {
+    "('LINRAM2', (2, 1))": 16,
+    "('RAM3', (1,))": 64,
+    "('RAM3', (2,))": 16
+   },
+   "dbl_keys": {
+    "('INERTDEEP', (1,), ())": 16,
+    "('RAM', (1,), ())": 64,
+    "('SPLIT-TAIL', (1,), ())": 16,
+    "('UNDECIDED', (), ())": 16,
+    "('UNDECIDED', (), (1,))": 16
+   },
+   "elapsed_s": 0.0
+  },
+  {
+   "kind": "Zp",
+   "q": 2,
+   "N": 4,
+   "patterns": {
+    "SEP3": 0,
+    "SEP12": 2,
+    "IRR3": 2,
+    "DBL": 2,
+    "TRP": 2
+   },
+   "sep_total": 2048,
+   "dbl_total": 1024,
+   "trp_total": 1024,
+   "dbl_undecided": 128,
+   "U3TRP_measured_conservative": 144,
+   "species": 16,
+   "trp_deep_decided": 0,
+   "depth0_keys": {
+    "('FULL', (1, '12'))": 16,
+    "('FULL', (1, '3'))": 32,
+    "('LINRAM2', (2, 1))": 128,
+    "('LINRAM2', (3, 1))": 64,
+    "('RAM3', (1,))": 512,
+    "('RAM3', (2,))": 128
+   },
+   "dbl_keys": {
+    "('2SIDED', (1, 2), ())": 64,
+    "('INERTDEEP', (1,), ())": 128,
+    "('RAM', (1,), ())": 512,
+    "('RAM', (3,), ())": 64,
+    "('RAM', (3,), (1,))": 64,
+    "('SPLIT-TAIL', (1,), ())": 64,
+    "('UNDECIDED', (), ())": 64,
+    "('UNDECIDED', (), (1,))": 64
+   },
+   "elapsed_s": 0.0
+  },
+  {
+   "kind": "Zp",
+   "q": 3,
+   "N": 2,
+   "patterns": {
+    "SEP3": 1,
+    "SEP12": 9,
+    "IRR3": 8,
+    "DBL": 6,
+    "TRP": 3
+   },
+   "sep_total": 486,
+   "dbl_total": 162,
+   "trp_total": 81,
+   "dbl_undecided": 54,
+   "U3TRP_measured_conservative": 27,
+   "species": 9,
+   "trp_deep_decided": 0,
+   "depth0_keys": {
+    "('RAM3', (1,))": 54
+   },
+   "dbl_keys": {
+    "('RAM', (1,), ())": 108,
+    "('UNDECIDED', (), ())": 54
+   },
+   "elapsed_s": 0.0
+  },
+  {
+   "kind": "Zp",
+   "q": 3,
+   "N": 3,
+   "patterns": {
+    "SEP3": 1,
+    "SEP12": 9,
+    "IRR3": 8,
+    "DBL": 6,
+    "TRP": 3
+   },
+   "sep_total": 13122,
+   "dbl_total": 4374,
+   "trp_total": 2187,
+   "dbl_undecided": 486,
+   "U3TRP_measured_conservative": 243,
+   "species": 27,
+   "trp_deep_decided": 0,
+   "depth0_keys": {
+    "('LINRAM2', (2, 1))": 324,
+    "('RAM3', (1,))": 1458,
+    "('RAM3', (2,))": 162
+   },
+   "dbl_keys": {
+    "('INERTDEEP', (1,), ())": 486,
+    "('RAM', (1,), ())": 2916,
+    "('SPLIT-TAIL', (1,), ())": 324,
+    "('SPLITEQ', (1,), ())": 162,
+    "('UNDECIDED', (), ())": 162,
+    "('UNDECIDED', (), (1,))": 324
+   },
+   "elapsed_s": 0.1
+  },
+  {
+   "kind": "Zp",
+   "q": 5,
+   "N": 2,
+   "patterns": {
+    "SEP3": 10,
+    "SEP12": 50,
+    "IRR3": 40,
+    "DBL": 20,
+    "TRP": 5
+   },
+   "sep_total": 12500,
+   "dbl_total": 2500,
+   "trp_total": 625,
+   "dbl_undecided": 500,
+   "U3TRP_measured_conservative": 125,
+   "species": 25,
+   "trp_deep_decided": 0,
+   "depth0_keys": {
+    "('RAM3', (1,))": 500
+   },
+   "dbl_keys": {
+    "('RAM', (1,), ())": 2000,
+    "('UNDECIDED', (), ())": 500
+   },
+   "elapsed_s": 0.0
+  }
+ ],
+ "qrt": [
+  {
+   "kind": "Zp",
+   "q": 2,
+   "N": 5,
+   "stratum_members": 131072,
+   "keys": {
+    "('QRT-G2', (1, '1sq'))": 8192,
+    "('QRT-G2', (1, '2'))": 8192
+   },
+   "elapsed_s": 0.4
+  },
+  {
+   "kind": "Fqt",
+   "q": 2,
+   "N": 4,
+   "stratum_members": 8192,
+   "keys": {
+    "('QRT-G2', (1, '1sq'))": 512,
+    "('QRT-G2', (1, '2'))": 512
+   },
+   "elapsed_s": 0.0
+  },
+  {
+   "kind": "Fqt",
+   "q": 2,
+   "N": 5,
+   "stratum_members": 131072,
+   "keys": {
+    "('QRT-G2', (1, '1sq'))": 8192,
+    "('QRT-G2', (1, '2'))": 8192
+   },
+   "elapsed_s": 0.5
+  },
+  {
+   "kind": "Fqt",
+   "q": 3,
+   "N": 3,
+   "stratum_members": 19683,
+   "keys": {
+    "('QRT-G2', (1, '11'))": 243,
+    "('QRT-G2', (1, '1sq'))": 486,
+    "('QRT-G2', (1, '2'))": 729
+   },
+   "elapsed_s": 0.1
+  },
+  {
+   "kind": "Fqt",
+   "q": 4,
+   "N": 3,
+   "stratum_members": 262144,
+   "keys": {
+    "('QRT-G2', (1, '11'))": 3072,
+    "('QRT-G2', (1, '1sq'))": 3072,
+    "('QRT-G2', (1, '2'))": 6144
+   },
+   "elapsed_s": 2.0
+  },
+  {
+   "kind": "Zp",
+   "q": 2,
+   "N": 3,
+   "stratum_members": 512,
+   "keys": {
+    "('QRT-G2', (1, '1sq'))": 32,
+    "('QRT-G2', (1, '2'))": 32
+   },
+   "elapsed_s": 0.0
+  },
+  {
+   "kind": "Zp",
+   "q": 2,
+   "N": 4,
+   "stratum_members": 8192,
+   "keys": {
+    "('QRT-G2', (1, '1sq'))": 512,
+    "('QRT-G2', (1, '2'))": 512
+   },
+   "elapsed_s": 0.0
+  },
+  {
+   "kind": "Zp",
+   "q": 3,
+   "N": 3,
+   "stratum_members": 19683,
+   "keys": {
+    "('QRT-G2', (1, '11'))": 243,
+    "('QRT-G2', (1, '1sq'))": 486,
+    "('QRT-G2', (1, '2'))": 729
+   },
+   "elapsed_s": 0.1
+  }
+ ],
+ "l0hist": [
+  {
+   "kind": "Zp",
+   "q": 2,
+   "N": 5,
+   "total": 1024,
+   "hist_keys": 17,
+   "max_depth": 2,
+   "elapsed_s": 0.0
+  },
+  {
+   "kind": "Zp",
+   "q": 2,
+   "N": 7,
+   "total": 16384,
+   "hist_keys": 39,
+   "max_depth": 3,
+   "elapsed_s": 0.1
+  },
+  {
+   "kind": "Zp",
+   "q": 3,
+   "N": 3,
+   "total": 729,
+   "hist_keys": 8,
+   "max_depth": 1,
+   "elapsed_s": 0.0
+  },
+  {
+   "kind": "Zp",
+   "q": 5,
+   "N": 3,
+   "total": 15625,
+   "hist_keys": 8,
+   "max_depth": 1,
+   "elapsed_s": 0.1
+  },
+  {
+   "kind": "Zp",
+   "q": 7,
+   "N": 2,
+   "total": 2401,
+   "hist_keys": 4,
+   "max_depth": 0,
+   "elapsed_s": 0.0
+  },
+  {
+   "kind": "Fqt",
+   "q": 2,
+   "N": 5,
+   "total": 1024,
+   "hist_keys": 17,
+   "max_depth": 2,
+   "elapsed_s": 0.0
+  },
+  {
+   "kind": "Fqt",
+   "q": 2,
+   "N": 7,
+   "total": 16384,
+   "hist_keys": 39,
+   "max_depth": 3,
+   "elapsed_s": 0.2
+  },
+  {
+   "kind": "Fqt",
+   "q": 3,
+   "N": 3,
+   "total": 729,
+   "hist_keys": 8,
+   "max_depth": 1,
+   "elapsed_s": 0.0
+  },
+  {
+   "kind": "Fqt",
+   "q": 4,
+   "N": 3,
+   "total": 4096,
+   "hist_keys": 8,
+   "max_depth": 1,
+   "elapsed_s": 0.2
+  },
+  {
+   "kind": "Fqt",
+   "q": 8,
+   "N": 2,
+   "total": 4096,
+   "hist_keys": 4,
+   "max_depth": 0,
+   "elapsed_s": 0.3
+  },
+  {
+   "kind": "Fqt",
+   "q": 9,
+   "N": 2,
+   "total": 6561,
+   "hist_keys": 4,
+   "max_depth": 0,
+   "elapsed_s": 0.2
+  }
+ ],
+ "oracle3": [
+  {
+   "p": 2,
+   "N": 3,
+   "decided_scored": 448,
+   "bad": 0,
+   "witness_pairs": 8,
+   "disc0_bad": 0
+  },
+  {
+   "p": 2,
+   "N": 4,
+   "decided_scored": 3824,
+   "bad": 0,
+   "witness_pairs": 16,
+   "disc0_bad": 0
+  },
+  {
+   "p": 3,
+   "N": 2,
+   "decided_scored": 648,
+   "bad": 0,
+   "witness_pairs": 9,
+   "disc0_bad": 0
+  },
+  {
+   "p": 3,
+   "N": 3,
+   "decided_scored": 18954,
+   "bad": 0,
+   "witness_pairs": 27,
+   "disc0_bad": 0
+  },
+  {
+   "p": 5,
+   "N": 2,
+   "decided_scored": 15000,
+   "bad": 0,
+   "witness_pairs": 25,
+   "disc0_bad": 0
+  }
+ ],
+ "oracle4": [
+  {
+   "p": 2,
+   "N": 3,
+   "qrt_scored": 32,
+   "bad": 0
+  },
+  {
+   "p": 2,
+   "N": 4,
+   "qrt_scored": 512,
+   "bad": 0
+  },
+  {
+   "p": 3,
+   "N": 3,
+   "qrt_scored": 972,
+   "bad": 0
+  }
+ ],
+ "families": {
+  "W12-PIN": {
+   "checks": 5,
+   "violations": []
+  },
+  "W12-LVL0": {
+   "checks": 138,
+   "violations": []
+  },
+  "W12-SHAPE": {
+   "checks": 164,
+   "violations": []
+  },
+  "W12-QRT": {
+   "checks": 27,
+   "violations": []
+  },
+  "W12-L0HIST": {
+   "checks": 306,
+   "violations": []
+  },
+  "W12-BLOCK": {
+   "checks": 1594670,
+   "violations": []
+  },
+  "W12-L1X": {
+   "checks": 1594090,
+   "violations": []
+  },
+  "W12-DRAIN3": {
+   "checks": 1183,
+   "violations": []
+  },
+  "W12-ORACLE": {
+   "checks": 41923,
+   "violations": []
+  }
+ },
+ "teeth": {
+  "W12-T-SHAPE": 23,
+  "W12-T-DRAIN": 23,
+  "W12-T-CENSUS4": 8,
+  "W12-T-SIGMA": 1273
+ },
+ "verdict": "GREEN",
+ "elapsed_s": 323.0
+}

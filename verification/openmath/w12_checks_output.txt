@@ -1,0 +1,71 @@
+W12 SEALED BATTERY (FULL)
+== cubic census rows ==
+  [cubic Zp q=2 N=5] dbl=8192 trp=8192 dblU=512 U3TRP=608 depth0keys=10 deep=96 (0.3s)
+  [cubic Zp q=2 N=6] dbl=65536 trp=65536 dblU=2048 U3TRP=2720 depth0keys=15 deep=1248 (2.2s)
+  [cubic Zp q=2 N=7] dbl=524288 trp=524288 dblU=8192 U3TRP=11328 depth0keys=22 deep=13376 (18.4s)
+  [cubic Zp q=3 N=4] dbl=118098 trp=59049 dblU=4374 U3TRP=2511 depth0keys=6 deep=0 (3.5s)
+  [cubic Zp q=7 N=2] dbl=14406 trp=2401 dblU=2058 U3TRP=343 depth0keys=1 deep=0 (0.2s)
+  [cubic Fqt q=2 N=3] dbl=128 trp=128 dblU=32 U3TRP=32 depth0keys=3 deep=0 (0.0s)
+  [cubic Fqt q=2 N=4] dbl=1024 trp=1024 dblU=128 U3TRP=144 depth0keys=6 deep=0 (0.2s)
+  [cubic Fqt q=2 N=5] dbl=8192 trp=8192 dblU=512 U3TRP=608 depth0keys=10 deep=96 (1.9s)
+  [cubic Fqt q=2 N=6] dbl=65536 trp=65536 dblU=2048 U3TRP=2720 depth0keys=15 deep=1248 (18.4s)
+  [cubic Fqt q=2 N=7] dbl=524288 trp=524288 dblU=8192 U3TRP=11328 depth0keys=22 deep=13376 (175.0s)
+  [cubic Fqt q=3 N=2] dbl=162 trp=81 dblU=54 U3TRP=27 depth0keys=1 deep=0 (0.0s)
+  [cubic Fqt q=3 N=3] dbl=4374 trp=2187 dblU=486 U3TRP=243 depth0keys=3 deep=0 (0.7s)
+  [cubic Fqt q=3 N=4] dbl=118098 trp=59049 dblU=4374 U3TRP=2511 depth0keys=6 deep=0 (23.2s)
+  [cubic Fqt q=4 N=2] dbl=768 trp=256 dblU=192 U3TRP=64 depth0keys=1 deep=0 (0.2s)
+  [cubic Fqt q=4 N=3] dbl=49152 trp=16384 dblU=3072 U3TRP=1024 depth0keys=3 deep=0 (27.2s)
+  [cubic Fqt q=5 N=2] dbl=2500 trp=625 dblU=500 U3TRP=125 depth0keys=1 deep=0 (0.2s)
+  [cubic Fqt q=8 N=2] dbl=28672 trp=4096 dblU=3584 U3TRP=512 depth0keys=1 deep=0 (11.8s)
+  [cubic Fqt q=9 N=2] dbl=52488 trp=6561 dblU=5832 U3TRP=729 depth0keys=1 deep=0 (19.0s)
+== quartic stratum rows ==
+  [qrt Zp q=2 N=5] 131072 members, keys={"('QRT-G2', (1, '1sq'))": 8192, "('QRT-G2', (1, '2'))": 8192} (0.4s)
+  [qrt Fqt q=2 N=4] 8192 members, keys={"('QRT-G2', (1, '1sq'))": 512, "('QRT-G2', (1, '2'))": 512} (0.0s)
+  [qrt Fqt q=2 N=5] 131072 members, keys={"('QRT-G2', (1, '1sq'))": 8192, "('QRT-G2', (1, '2'))": 8192} (0.5s)
+  [qrt Fqt q=3 N=3] 19683 members, keys={"('QRT-G2', (1, '11'))": 243, "('QRT-G2', (1, '1sq'))": 486, "('QRT-G2', (1, '2'))": 729} (0.1s)
+  [qrt Fqt q=4 N=3] 262144 members, keys={"('QRT-G2', (1, '11'))": 3072, "('QRT-G2', (1, '1sq'))": 3072, "('QRT-G2', (1, '2'))": 6144} (2.0s)
+== L0HIST rows ==
+  [l0hist Zp q=2 N=5] 1024 quadratics, 17 keys, maxdepth 2 (0.0s)
+  [l0hist Zp q=2 N=7] 16384 quadratics, 39 keys, maxdepth 3 (0.1s)
+  [l0hist Zp q=3 N=3] 729 quadratics, 8 keys, maxdepth 1 (0.0s)
+  [l0hist Zp q=5 N=3] 15625 quadratics, 8 keys, maxdepth 1 (0.1s)
+  [l0hist Zp q=7 N=2] 2401 quadratics, 4 keys, maxdepth 0 (0.0s)
+  [l0hist Fqt q=2 N=5] 1024 quadratics, 17 keys, maxdepth 2 (0.0s)
+  [l0hist Fqt q=2 N=7] 16384 quadratics, 39 keys, maxdepth 3 (0.2s)
+  [l0hist Fqt q=3 N=3] 729 quadratics, 8 keys, maxdepth 1 (0.0s)
+  [l0hist Fqt q=4 N=3] 4096 quadratics, 8 keys, maxdepth 1 (0.2s)
+  [l0hist Fqt q=8 N=2] 4096 quadratics, 4 keys, maxdepth 0 (0.3s)
+  [l0hist Fqt q=9 N=2] 6561 quadratics, 4 keys, maxdepth 0 (0.2s)
+== oracle rows (cubic, with census) ==
+  [cubic Zp q=2 N=3] dbl=128 trp=128 dblU=32 U3TRP=32 depth0keys=3 deep=0 (0.0s)
+  [oracle3 p=2 N=3] 448 decided scored, 8 witnesses (0.2s total incl. census)
+  [cubic Zp q=2 N=4] dbl=1024 trp=1024 dblU=128 U3TRP=144 depth0keys=6 deep=0 (0.0s)
+  [oracle3 p=2 N=4] 3824 decided scored, 16 witnesses (1.3s total incl. census)
+  [cubic Zp q=3 N=2] dbl=162 trp=81 dblU=54 U3TRP=27 depth0keys=1 deep=0 (0.0s)
+  [oracle3 p=3 N=2] 648 decided scored, 9 witnesses (0.3s total incl. census)
+  [cubic Zp q=3 N=3] dbl=4374 trp=2187 dblU=486 U3TRP=243 depth0keys=3 deep=0 (0.1s)
+  [oracle3 p=3 N=3] 18954 decided scored, 27 witnesses (6.7s total incl. census)
+  [cubic Zp q=5 N=2] dbl=2500 trp=625 dblU=500 U3TRP=125 depth0keys=1 deep=0 (0.0s)
+  [oracle3 p=5 N=2] 15000 decided scored, 25 witnesses (6.1s total incl. census)
+== oracle rows (quartic, with stratum) ==
+  [qrt Zp q=2 N=3] 512 members, keys={"('QRT-G2', (1, '1sq'))": 32, "('QRT-G2', (1, '2'))": 32} (0.0s)
+  [oracle4 p=2 N=3] 32 QRT members scored (0.1s incl. stratum)
+  [qrt Zp q=2 N=4] 8192 members, keys={"('QRT-G2', (1, '1sq'))": 512, "('QRT-G2', (1, '2'))": 512} (0.0s)
+  [oracle4 p=2 N=4] 512 QRT members scored (0.6s incl. stratum)
+  [qrt Zp q=3 N=3] 19683 members, keys={"('QRT-G2', (1, '11'))": 243, "('QRT-G2', (1, '1sq'))": 486, "('QRT-G2', (1, '2'))": 729} (0.1s)
+  [oracle4 p=3 N=3] 972 QRT members scored (1.1s incl. stratum)
+== verdict ==
+  W12-PIN      checks=5        violations=0
+  W12-LVL0     checks=138      violations=0
+  W12-SHAPE    checks=164      violations=0
+  W12-QRT      checks=27       violations=0
+  W12-L0HIST   checks=306      violations=0
+  W12-BLOCK    checks=1594670  violations=0
+  W12-L1X      checks=1594090  violations=0
+  W12-DRAIN3   checks=1183     violations=0
+  W12-ORACLE   checks=41923    violations=0
+  W12-T-SHAPE    fired=23
+  W12-T-DRAIN    fired=23
+  W12-T-CENSUS4  fired=8
+  W12-T-SIGMA    fired=1273
+TOTAL: 3232506 checks, 0 violations, teeth 23/23/8/1273 -- GREEN (323.0s)
