@@ -12886,3 +12886,33 @@ W(𝔽₄)[π²=2] (first ramified non-prime-residue ring) and 𝔽₈₁[[t]] �
 the any-complete-DVR scope now machine-witnessed in 15 ring types;
 one own-bug disclosed and repaired (a live demo of the J-D0 gauge
 seam). NEXT: HEX3 r3 (one clause) + W-12 PE4.
+
+---
+
+## ★★ BCFGTIE COMPLETE (Asvin-directed): E_n(q) = q/(q+1) PROVED FOR ALL n ≥ 2, 100% HE-FREE; E^proj ≡ 1 EXACTLY (the closed-form explanation of BCFG's raw1 row); THE SEVENTEEN QUINTIC DENSITIES DELIVERED (GENH5-DENS) — 2026-08-08
+
+Adjudicated (seal 21c13d7 → instrument-repair 8fc1330 (disclosed,
+harness-only) → verdict e448331; attempt 0/2; suppliers pinned as-of
+0a1f409). **THE RECURSION**: E_n = q·[Σ_{k<n}(1−1/q)q⁻ᵏ·ε_k +
+q⁻ⁿ·ε_n], ε_m = Σ_j P_m(j)·E_j with P_m(j) the cluster-valuation
+distribution (α-self-loop P_m(m) = q^{−m(m−1)/2}; β-re-entries the
+E_{j<m}); composite μ≥3 stages contribute mass only — the shallow band
+is root-free, so **E_n NEVER consumes [GENHN-HE(μ≥3)]**. **CLOSED FORM
+PROVED all n** via the KEY IDENTITY q·P_m(0) − P_m(1) = q−1
+(pairwise-cancelling exponents) + induction; equivalently ε_m ≡
+1/(q+1) ∀m ≥ 2; **E_n^proj = 1 exactly ∀n ≥ 1** — monic = projective
+minus the ∞-point's 1/(q+1) share. **BCFG TIE**: first moment symbolic
+at ALL n (new); full distribution machine-exact n ≤ 6 (the standing
+reconcile_om_bcfg.py re-run BYTE-IDENTICAL); n=7 committed rows
+confirm Σ P = 1 and Σ r·P = 1 (conversation-preregistered, PASS);
+BCFG = arXiv:2101.09590 per repo records, paper not local —
+faithful-cite OWED-EXTERNAL beyond the committed transcription.
+**COMPUTABILITY** (the direct answer): exact algorithm displayed;
+menu-type count 3,5,11,17,34,52,94,145,244 at n=2..10 (subexponential
+base ≈2.45); E_n itself O(1). **GENH5-DENS DELIVERED**: the seventeen
+quintic densities in Φ-cyclotomic closed form (note S9 + artifact),
+triple-tied (Σ=1 symbolic; all six BCFG P(5,r) rows; 17-pattern
+cross-foot; 9-prime-power exact window; the single-source β₅ anchors
+R_{(2,1)(3,1)} and R_{(5,1)} = q⁴Φ₄Φ₁₂/(Φ₃Φ₇Φ₁₄) reproduced exactly).
+Battery: run-1 RED at the instrument only (disclosed, math 67/67
+green), scoring run GREEN 93/0, 4/4 teeth.
