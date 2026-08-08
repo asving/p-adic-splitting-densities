@@ -12932,3 +12932,26 @@ order): (1) HE3 (resume wf_94f4984c-0da — hardened prompt in place);
 (2) MOMENTS (resume wf_1002500c-012); (3) W-12 PE4 attempt 3
 (w7hai3m68) still nominally running — if its notification shows a
 casualty, resume wf_420812db-993 (the /tmp draft survives).**
+
+---
+
+## W-12 PE4 (Opus): 1 CRITICAL + 2 GAPS + 2m — THE REAL FINDS: an inseparable witness (equal-char p∈{2,3}, battery-invisible via BOX-6) + the missing σ-labeling hypothesis clause in W-12.D's display — pin-coherence PASS; BOX-6's ring gap closed empirically — 2026-08-08
+
+W-12 PE4 (26689da): **F1 CRITICAL** — W12-S3.2's b₂=0 witness pair
+inseparable in equal char 2/3 (disc 0), so q^N ≤ U₃^TRP was
+unestablished over 𝔽_q[[t]] at p∈{2,3}; repair = witness B = π^N
+(separable all characteristics); conclusion + all counts survive;
+battery-invisible (PARI leg mixed-char only — BOX-6). **GAP 1** —
+(A0)+(A1) never assert core-family members σ-DECIDED with forced σ =
+σ_F; Step 4 needs both (degenerate one-family instance displayed);
+the firings all SUPPLY the clause (σ-keyed menus) — the display must
+state it. **GAP 2** — §S10 P-6's order-q^{2N} wording contradicts the
+annexed HEX3.A (Θ(N·q^{2N})). Minors: BOX-7's TRP-side convention
+scope word; S2.3's "every lift" false at equal-char wild shapes.
+PIN-COHERENCE: PASS (degenerate corner EMPTY — every window class has
+a disc≠0 lift; totality sentence owed as R-1). Rejected-parse record
+verified arithmetically (8.7833 at N=200 reproduced). FRESH ROUTE:
+W-12's laws in ℤ₂[π²=2] (ramified) + W(𝔽₄) (mixed-char prime-power —
+the BOX-6 gap) — ALL pointwise == committed JSON, first
+cross-characteristic prime-power check. Counter 0/2; r4 owed. HEX3 r3
+(b6a1d69) confirmed landed in the same wave.
