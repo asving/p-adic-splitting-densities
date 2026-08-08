@@ -12477,3 +12477,19 @@ HMENU3 PE1, SIGMALAW PE1) + the general-n program (the HM3-1
 two-species recursion is the visible route to (hMenu-n) for ALL n —
 the next composition target). NEXT WAVE: W-12 r2 (+ HMENU3/HEX3
 annex applications) + HMENU3 PE1 + HEX3 PE1.**
+
+---
+
+## DIRECTIVE (Asvin, 2026-08-08, on reading HMENU3): "what excites me most is precisely the claim that we now have the shape of a general inductive argument! Exhilarating, lets keep going!" — THE GENERAL-n COMPOSITION OPENS
+
+Orchestrator reading: green light to compose the general induction NOW,
+in parallel with the running n=3 arc chain (webq303px). The route: the
+HM3-1 two-species recursion as induction on n — α-nodes self-similar
+(same degree, deeper window; the bracket lemma), β-nodes re-entering
+STRICTLY LOWER degrees (at n=3: one-time n=2 re-entry; at general n:
+partition-indexed products of lower-degree systems). KEY STRUCTURAL
+FACT: n=3 has NO composite stages (PE2-verified) — n=4's (2,2) shape is
+the FIRST composite stage in the counting, where [W12-H] bites and the
+carry corpus (J-D0, W-9/K^c[Z/E], WELD-M, DULEMMA) becomes the counting
+engine for deep-wild strata. The general unit + an n=4 (2,2) empirical
+scout dispatched (examples-first).
