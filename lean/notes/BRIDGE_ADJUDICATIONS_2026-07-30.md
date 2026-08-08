@@ -12787,3 +12787,12 @@ nothing-else-moved). Brief copy: /tmp/vc40b_brief.txt; log:
 or first available agent): adjudicate, transcribe into
 CODEX_VC40B_2026-08-08.md, ledger; if CONFIRMED the acceptance citation
 advances past REVISION 38 + r39b per the VC40 note's rule.**
+
+---
+
+## VC40B FOLDED (orchestrator-direct): NOT-CONFIRMED — 1 rule-consistency finding (the r40b self-check vs its own EOF exception classes); checks 1/3/4/5 PASS incl. the B.4 cure — r40c one-bracket harmonization + VC40c owed; citation stays REVISION 38 + r39b — 2026-08-08
+
+Full record: lean/notes/openmath/CODEX_VC40B_2026-08-08.md (+ raw log +
+charge committed alongside). The ROOT-hygiene track is converging: the
+mathematical content has been 0-critical since VC40; the residue is one
+exception-list sentence.
