@@ -1,0 +1,234 @@
+{
+ "pins": {
+  "genhn_checks.py": "637427dc475d231e803a8219127a5b3e",
+  "genhn_checks_results.json": "dd9edbeadaedf0b19873d58731d92d78",
+  "w10_checks.py": "a9c34244a3af19f5fa864375b494380b",
+  "w12_checks.py": "7dc040d94fbbb1e8d20ac817b665d418"
+ },
+ "rows": [
+  {
+   "census": {
+    "((2, 1), (2, 2))": 512,
+    "((2, 1), (4, 1))": 6144,
+    "((2, 3),)": 1024,
+    "((6, 1),)": 20480
+   },
+   "decided": 28160,
+   "members": 32768,
+   "members_pred_genhn": 32768,
+   "norm_checks": 32768,
+   "oracle_bad": 0,
+   "oracle_jobs": 290,
+   "psi_checks": 1246,
+   "psi_viol": 0,
+   "row": "A Zp p=2 N=5 h=1",
+   "und": {
+    "drain": 4608
+   }
+  },
+  {
+   "census": {
+    "((6, 1),)": 26244
+   },
+   "decided": 26244,
+   "members": 39366,
+   "members_pred_genhn": 39366,
+   "norm_checks": 39366,
+   "oracle_bad": 0,
+   "oracle_jobs": 270,
+   "psi_checks": 1485,
+   "psi_viol": 0,
+   "row": "A Zp p=3 N=4 h=1",
+   "und": {
+    "drain": 13122
+   }
+  },
+  {
+   "census": {
+    "((2, 1), (2, 1), (2, 1))": 4,
+    "((2, 1), (2, 2))": 40,
+    "((2, 1), (4, 1))": 8,
+    "((2, 3),)": 40,
+    "((6, 1),)": 4
+   },
+   "members": 125,
+   "oracle_bad": 0,
+   "oracle_bad_detail": [],
+   "oracle_jobs": 96,
+   "psi_checks": 7452,
+   "psi_viol": 0,
+   "row": "B aligned Zp p=5 N=6 h=1 lam=3",
+   "und": {
+    "drain": 29
+   }
+  },
+  {
+   "census": {
+    "((2, 1), (2, 1), (2, 1))": 21,
+    "((2, 1), (2, 2))": 128,
+    "((2, 1), (4, 1))": 24,
+    "((2, 3),)": 112,
+    "((6, 1),)": 6
+   },
+   "members": 343,
+   "oracle_bad": 0,
+   "oracle_bad_detail": [],
+   "oracle_jobs": 291,
+   "psi_checks": 33345,
+   "psi_viol": 0,
+   "row": "B aligned Zp p=7 N=6 h=1 lam=3",
+   "und": {
+    "drain": 52
+   }
+  },
+  {
+   "profile": [
+    {
+     "N": 4,
+     "cap_dv": 8,
+     "decided": 0,
+     "mu_lambda": 9,
+     "undecided": 125
+    },
+    {
+     "N": 5,
+     "cap_dv": 10,
+     "decided": 84,
+     "mu_lambda": 9,
+     "undecided": 41
+    },
+    {
+     "N": 6,
+     "cap_dv": 12,
+     "decided": 96,
+     "mu_lambda": 9,
+     "undecided": 29
+    },
+    {
+     "N": 7,
+     "cap_dv": 14,
+     "decided": 97,
+     "mu_lambda": 9,
+     "undecided": 28
+    }
+   ],
+   "row": "C boundary p=5"
+  },
+  {
+   "profile": [
+    {
+     "N": 4,
+     "cap_dv": 8,
+     "decided": 0,
+     "mu_lambda": 9,
+     "undecided": 343
+    },
+    {
+     "N": 5,
+     "cap_dv": 10,
+     "decided": 258,
+     "mu_lambda": 9,
+     "undecided": 85
+    },
+    {
+     "N": 6,
+     "cap_dv": 12,
+     "decided": 291,
+     "mu_lambda": 9,
+     "undecided": 52
+    },
+    {
+     "N": 7,
+     "cap_dv": 14,
+     "decided": 292,
+     "mu_lambda": 9,
+     "undecided": 51
+    }
+   ],
+   "row": "C boundary p=7"
+  }
+ ],
+ "secs": 17.0,
+ "teeth": {
+  "HE-T-CAP": [
+   {
+    "disagreements": 17,
+    "members": 96,
+    "p": 5
+   },
+   {
+    "disagreements": 43,
+    "members": 291,
+    "p": 7
+   }
+  ],
+  "HE-T-NODE": [
+   {
+    "p": 5,
+    "probed": 40,
+    "still_in_node_after_floor_drop": 32
+   },
+   {
+    "p": 7,
+    "probed": 40,
+    "still_in_node_after_floor_drop": 34
+   }
+  ],
+  "HE-T-SIG": [
+   {
+    "caught": 6,
+    "flipped_jobs": 6,
+    "p": 5
+   },
+   {
+    "caught": 6,
+    "flipped_jobs": 6,
+    "p": 7
+   }
+  ],
+  "HE-T-UNDET": [
+   {
+    "example_alternatives": [
+     "(0, 0, 3)",
+     "(0, 1, 2)",
+     "(0, 2, 1)",
+     "(0, 3, 0)"
+    ],
+    "nsolutions_of_mu2_system": 10,
+    "p": 5,
+    "pieces": "[(1, 1), (1, 1), (1, 1)]",
+    "tag": [
+     1,
+     1,
+     1
+    ],
+    "truth": "(1, 1, 1)"
+   },
+   {
+    "example_alternatives": [
+     "(0, 0, 3)",
+     "(0, 1, 2)",
+     "(0, 2, 1)",
+     "(0, 3, 0)"
+    ],
+    "nsolutions_of_mu2_system": 10,
+    "p": 7,
+    "pieces": "[(1, 1), (1, 1), (1, 1)]",
+    "tag": [
+     0,
+     0,
+     1
+    ],
+    "truth": "(1, 1, 1)"
+   }
+  ]
+ },
+ "teeth_fired": {
+  "HE-T-CAP": 2,
+  "HE-T-NODE": 2,
+  "HE-T-SIG": 2,
+  "HE-T-UNDET": 2
+ },
+ "verdict": "GREEN",
+ "violations": []
+}
