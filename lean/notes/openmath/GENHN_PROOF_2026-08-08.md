@@ -607,6 +607,17 @@ the (3,1,2) instance gives {(6,1)}/{(3,1)²}/{(3,2)} — first tested
 here (GN-SIGMA, PARI, wild p = 3 included); (1,3,2) gives
 {(2,3)}/{(1,3)²}/{(1,6)} (visibility-floored, no row — S9 box). ∎
 
+**Remark [r0-battery] (scope: stage data vs ambient window).** The
+theorem's leaf is STAGE data (the A_j digit strings at the stage
+window); "lift-stable" is relative to that data. At EMBEDDED genres
+read through an AMBIENT window N, the stage digits are themselves
+only partially determined by the ambient data — the sibling Hensel
+split loses v(f′(ρ)) digits — so the set of stage leaves CERTIFIED
+by an ambient window is strictly smaller than the stage window
+suggests. This composition fact (machine-surfaced at the smoke run)
+is quantified in GENHN-BOX-4/S11.F; it does not touch this
+theorem's statement or proof.
+
 > **[GENHN-HE(μ ≥ 3)] (THE box; first live n = 6).** At stage
 > leaves of multiplicity μ ≥ 3 (decided by the stage read with
 > separable residuals over K), the σ-decision — every disc ≠ 0 lift
@@ -690,13 +701,32 @@ machine-unmeasured beyond the GN-TOWER witness (S9 box). ∎
   inherited), q = 4 F-genre rows (QSCOUT22 Q22-BOX-3 inherited).
   The proofs are uniform in all of these; the coverage gap is
   machine-side only, named here.
-* **GENHN-BOX-4 (embedded-genre extraction convention).** The n = 5
-  stage rows read the extracted block (Newton root + exact
-  division, deterministic); read well-posedness across extraction
+* **GENHN-BOX-4 (embedded-genre extraction convention + THE
+  CERTIFIED-PERIMETER FINDING [r0-battery]).** The n = 5 stage rows
+  read the extracted block (Newton root + exact division,
+  deterministic); read well-posedness across extraction
   representatives is GENHN-3(a) + GENIND-1(iii), and the law match
   is the test. The reader-reimplementation seams of GENH4-BOX-5
   (pinned QSCOUT22 reader; canonical-lift letters; conservative
-  tails) are inherited verbatim.
+  tails) are inherited verbatim. SHARPENING (machine-surfaced at
+  the smoke run, derivation S11.F): the extracted block is
+  determined by the ambient window-N data only mod explicit
+  per-coefficient floors — the split root is defined mod
+  π^L, L = N − v(f′(ρ)), and solving (x−ρ)(q−Q) = −δQ triangularly
+  gives exact-digit floors per stage coordinate/class. Stage leaves
+  consulting digits at or above the floors are (A0)-WEAK AT THE
+  AMBIENT WINDOW (their σ is not a function of the swept data —
+  verified: PARI exhibits both agreement and disagreement in the
+  uncertified tail, e.g. V1E2(2,5,1)-RAM(9), while every certified
+  leaf matches exactly). COUNT laws are untouched (the truncated
+  read is a bijection of window data — GN-STAGE2 exact at full N).
+  Consequence for the theory: the embedded-genre σ-certification
+  cap composes as N ↦ N − (sibling Hensel loss) coordinate-wise —
+  GENHN-3(a) at the composed read; the battery's σ legs on
+  extracted rows are gated at exactly this perimeter (cert_table_E
+  / leaf_cert_E), with the uncertified tail measured as labeled
+  diagnostics. GENHN.C itself (a statement about stage data) is
+  unaffected.
 * **GENHN-BOX-5 (P(5) density display owed).** P(5) fires (GENHN.B);
   the SEVENTEEN quintic R_τ(q) displays + Σ = 1 + engine/β₅ tie are
   a mechanical GENH4-S9-style assembly NOT executed here — a
@@ -782,9 +812,145 @@ with no weld face; GENHN.A(iv) at μ ≥ 3 adds ONE accepted weld face
 family [GENHN-HE(μ ≥ 3)]. No axiom anywhere; grade = composition
 0/2.**
 
-## S11. THE SEALED BATTERY
+## S11. THE SEALED BATTERY (sealed at commit 1; predictions
+preregistered BEFORE the first full run)
 
-(to follow — sealed at commit 1 with preregistered predictions)
+### S11.A Instrument + provenance
+
+`verification/openmath/genhn_checks.py`, two-commit seal (commit 1 =
+this note + the runner, full battery UNRUN; commit 2 = §S12 verdict
+appended FROM the committed artifacts `genhn_checks_output.txt` /
+`genhn_checks_results.json`). Pins (md5, checked as family GN-PIN):
+genind_checks.py e7ca150b…aca2 · genh4_checks.py ee8024b7…432f ·
+qscout22_checks.py cb885663…076e · w10_checks.py a9c34244…380b ·
+w12_checks.py 7dc040d9…d418 · genind_checks_results.json
+366f2143…96f6 · qscout22_results.json 6c2441a1…4affe.
+PROVENANCE: the runner was drafted by the interrupted prior
+incarnation and re-audited line-by-line as UNTRUSTED by the fresh
+continuation — laws, twist corrections (E31 i₁=2 wrap z⁻¹; the
+E3/tower wrap exponent), node floors, and all flagship volumes
+re-derived by hand — then ADOPTED with two repairs (R1 irreducible
+table 4→6; R2 the three Q-genre names, de-vacuifying their
+PREDICTED-ABSENT checks); disclosed in the runner docstring.
+
+### S11.B Families + teeth
+
+GN-PIN (7 pins) · GN-CLASS (n=5/n=6 sweeps: grammar at all depths,
+flagships, visibility floors, genind-reader tie on n=5) · GN-LAWTIE
+(law_Egen(e₁=2) ≡ pinned law_E, 5 grid points) · GN-FIB (constructed
+loci: frames parse to genre, volumes = entry laws) · GN-STAGE2 (the
+μ=2 stage law at THREE fresh genres, both directions) · GN-E3 (the
+μ=3 stage: species partition + UND3/RAM3/ALPHA3 laws) · GN-REFINE3
+(pointwise μ=3 refine transport: every stage-α event re-divided,
+three pins dead, floored node) · GN-TOWER (criterion + the n=8
+witness + min-n scan) · GN-SIGMA (PARI factorpadic vs dictionary;
+extraction-certified perimeter on V rows — S11.F). TEETH (each must
+fire ≥1 else RED): GN-T-LAT (E31 law collapsed to integer lattice) ·
+GN-T-CEN (INERT census ×2) · GN-T-SIG (E31 RAM σ {(6,1)}→{(3,2)}
+must be caught by PARI) · GN-T-CRIT (grammar bound e₁f₁μ ≥ 4 dropped
+to ≥ 3 must accept an order-1 (3)-child fake that the true grammar
+rejects) · GN-T-NODE (E3 construction a₀₀ floor off-by-one must
+break the volume).
+
+### S11.C Rows
+
+CLASS: (Zp,2,5,n5)+(Fqt,2,5,n5) [tie=ON], (Zp,2,4,n6)+(Fqt,2,4,n6),
+(Zp,3,3,n6)+(Fqt,3,3,n6). ((Zp,2,5,n6) = 16.7M states DROPPED for
+runtime, disclosed.) V1E2: (Zp,2,5,1), (Zp,2,6,1), (Zp,3,4,1),
+(Fqt,2,6,1). V4E2 (v₄=1, h=3): (Zp,2,8,3), (Fqt,2,8,3). E31:
+(Zp,2,4,1), (Zp,2,5,1), (Zp,3,3,1) [wild p=3, e₁=3], (Fqt,2,5,1).
+E3: (Zp,3,4,1), (Zp,2,5,1), (Fqt,2,5,1). TOWER: the constructed
+n=8 witness at (Zp,3,6). ORACLE: PARI legs on all Zp sinks, sampled
+by the per-row steps in main().
+
+### S11.D Preregistered predictions (never-measured territory
+flagged ★)
+
+* **P1 (CLASS flagships).** V1E2(1) = 12,288 at both n=5 rows
+  (= the committed GENIND row, machine-tied); E3(1) = 512 ★ and
+  E31(1) = 8,192 ★ at both (2,4,n6) rows; E31(1) = 4,374 ★ at both
+  (3,3,n6) rows. PREDICTED-ABSENT: V4E2/V1E1Q/V4E1Q/FULLQ at n=5;
+  F3/E13/F2X + E2X at (2,4,n6); F3/E13/F2X + E3 at (3,3,n6). Every
+  CS event at every depth parses under the strict grammar
+  (μ ≥ 2, e₁f₁ ≥ 2, 4 ≤ e₁f₁μ ≤ m ≤ n, span ≥ e₁f₁μ). Tie rows:
+  verdict + σ + depth-0 event agree with the pinned GENIND reader
+  on all 2×2²⁰ states.
+* **P2 (LAWTIE).** law_Egen(q,N,h,e₁=2) ≡ law_E(q,N,h) at (2,5,1),
+  (2,6,1), (2,7,3), (3,5,1), (5,4,1).
+* **P3 (V1E2 re-based law).** obs ≡ law_E(q,N,h) × (q−1)(q^{N−(5h+1)/2}−1)
+  per key, both directions; totals 12,288 / 458,752 / 26,244 /
+  458,752. Escapes = 0.
+* **P4 (V4E2 ★ FIRST measurement — GENIND's law was
+  derivation-only).** obs ≡ law_E(2,8,3) × (q−1)²q^{N−5v₄−1} = ×4;
+  totals 65,536 + 65,536. Escapes = 0.
+* **P5 (E31 ★ the first e₁=3 stage law ever measured).** obs ≡
+  (q−1) × law_Egen(q,N,h,e₁=3) per key; totals 8,192 / 524,288 /
+  4,374 / 524,288; per-member node floors dv₁ > 3h, dv₀ > 6h at
+  entry and > κ-floors along chains.
+* **P6 (E3 ★ the first μ=3 stage ever read).** Totals
+  (q−1)q^{6N−(21h+9)/2}: 39,366 / 32,768 / 32,768; zero stage-CS;
+  per-member floors dv_j > (3−j)·2h. Laws: UND3 = (q−1)q^{#(s₀≥cap)+|s₁|+|s₂|};
+  RAM3(u₀)/ALPHA3(κ) per the coded formulas. Spot instances: at
+  (Zp,3,4,1): UND3 = 13,122, RAM3(7) = 26,244, no ALPHA3, and
+  13,122 + 26,244 = the whole row; at (Zp,2,5,1): UND3 = 4,096,
+  RAM3(7) = 16,384, RAM3(8) = 4,096, ALPHA3(3) = 512.
+* **P7 (REFINE3 ★ the μ=3 transfer, pointwise).** Stage-α events
+  live exactly at the (·,2,5,1) E3 rows (κ=3; the (3,4,1) row has
+  none — 3κ ∉ s₀): 512 events per row, each transported by ACTUAL
+  re-division; all three pins dead and in the floored node — 1,536
+  pin checks per row, 0 violations. This is GENHN-BOX-2's
+  compensating instrument.
+* **P8 (TOWER ★ the first composite-over-composite event ever
+  constructed).** The (Zp,3,6) witness: frame parses
+  ('EMB',8,(0,8),2,1,4,1); stage dvs (10,None,5,None); stage hull
+  one side (0,10)–(4,0), (e_s,g) = (2,2); twisted inner residual
+  rc = (T−1)² — stage-CS FIRES inside the μ=4 stage; min-n scan
+  = 8; zero stage-CS anywhere else in the battery.
+* **P9 (SIGMA).** Certified jobs: 0 bad — V1E2/V4E2 composed
+  σ = SIG_E + {(1,1)}; E31 {(6,1)}/{(3,1)²}/{(3,2)} including
+  ★ wild p=3 at an e₁=3 stage (never-oracled territory); E3
+  depth-0-decided σ ([GENHN-HE(3)] corroboration, labeled — an
+  OPEN box, not proof). Diagnostic tail (S11.F): reported, not
+  scored; at (Zp,2,5,1) it is exactly the RAM(9) family (384 jobs
+  at step 1) and is PREDICTED to contain mismatches.
+* **P10 (teeth).** All five fire; verdict GREEN ⟺ 0 violations ∧
+  all teeth ≥ 1.
+
+### S11.E Smoke record (wiring only; no artifacts written; fully
+disclosed)
+
+Smoke 1 (post-audit-repairs): RED — 6 GN-SIGMA mismatches, ALL at
+(Zp,2,5,1) V1E2 RAM(9) (claimed {(1,1),(4,1)}; PARI {(1,1),(2,2)}
+or {(1,1),(2,1),(2,1)}); every other family clean (1.08M checks).
+Discovery event for S11.F. A lift-perturbation probe + per-u₀
+resampling confirmed: RAM(5)/RAM(7) exact (certified), RAM(9)
+mismatching (uncertified), exactly at the derived floors. Smoke 2
+(certification gate added): GREEN — 1,081,425 checks, 0 violations,
+all 5 teeth, certified σ 720/720, diagnostic tail 24 jobs / 6
+mismatches, 50.8s. No full row ran before seal.
+
+### S11.F The extraction-certified σ perimeter (the machine-surfaced
+finding, with derivation)
+
+For an embedded genre, the sibling split loses precision: the split
+root ρ of the window-N ambient data is defined only mod π^L,
+L = N − v(f′(ρ)) (V1E2: L = N−2h; V4E2: L = N−4v₄). Writing
+f = (x−ρ)Q exactly and (x−rho)q ≡ f mod π^N for the computed pair,
+the error E := q − Q solves (x−rho)E ≡ −δQ (v(δ) ≥ L) triangularly
+from the top: with entry floors v(Q_j) ≥ (2h,(3h+1)/2,h,(h+1)/2)
+and worst-case v(ρ), E₃ ≥ L, E₂ ≥ min(L+(h+1)/2, v(ρ)+E₃),
+E₁ ≥ min(L+h, v(ρ)+E₂), E₀ ≥ min(L+(3h+1)/2, v(ρ)+E₁); the stage
+coordinates inherit a₁₁ = q₃, a₁₀ = q₂+c, a₀₁ = q₁+ẑπ^h q₃,
+a₀₀ = q₀+ẑπ^h a₁₀+c: exact strictly below the floors, meaningless
+at or above them. Instance (2,5,1): certified digit heights
+(a₀₀,a₀₁,a₁₀,a₁₁) = (4,3,3,2) — RAM(9) reads a₀₁@4: uncertified ✗;
+RAM(7) reads a₀₁@3: certified ✓ — exactly the observed smoke split.
+The battery gates σ-emission on extracted rows by the per-leaf
+consulted-digit set against this table (leaf_cert_E) and measures
+the uncertified tail as diagnostics. Full-side genres (E31, E3 —
+the sextic IS the stage) have no extraction: un-gated. The finding
+is folded into GENHN-BOX-4; it strengthens, not weakens, the window
+story: GENHN-3(a) composes exactly as the ledger predicts.
 
 ## S12. VERDICT
 
