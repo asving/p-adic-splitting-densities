@@ -912,4 +912,69 @@ appends §S11 from `genind_checks_output.txt` /
 
 ## S11. VERDICT (commit 2 — from the committed artifacts)
 
-PENDING.
+**GREEN. 163,536 checks, 0 violations in every family, all four teeth
+fired at their EXACTLY-preregistered counts (12/12/4/24), zero
+skips.** 22/22 sweep rows (6,422,014 per-center states, both ring
+kinds) + all 7 constructed legs + 3/3 oracle rows; single fresh run,
+elapsed 164.5 s, exit 0; artifacts `genind_checks_output.txt`
+(md5 c157dc318af13eb10a126cdb9f08f87d),
+`genind_checks_results.json` (md5 366f214322fee97c9669f0584696b3f6);
+runner byte-identical to the sealed commit c3212cc (empty `git diff`).
+
+Prediction scorecard (all eleven confirmed):
+* P-1 ✓ GT-PIN 0/5 — all five frozen suppliers unmoved.
+* P-2 ✓ GT-PART 0/33 — partition exact on every row; Zp/Fqt depth-0
+  tallies IDENTICAL at all 11 shared (m, q, N) — visible already at
+  row level: every Zp/Fqt pair printed identical
+  DEC/DRAIN/CS triples.
+* P-3 ✓ GT-DEPTH0 0/108 both directions. Every never-measured spot
+  EXACT: (·,2,6,n4) ALPHA(1) = 1,024, E4(1) = 65,536, F4(1) = 1,024,
+  B2Q(1) = 1,024, DRAIN₀ = 32,768 (row CS total 66,560 = E4+F4);
+  (·,3,4,n4) E4(1) = 13,122 with ALPHA/F4/BFULL correctly ABSENT;
+  (·,5,3,n4) E4(1) = 2,500; (·,2,5,n5) V1E2(1) = 12,288 with V4E2
+  ABSENT (the vertex condition); (·,3,3,n5) ZERO CS keys (the
+  visibility floor) — the criterion's fine structure on the nose.
+* P-4 ✓ GT-BDRAIN 0/4 — B2Q(1) drained = 512/1,024 at (·,2,6,n4):
+  the β drain composition through R(M) exact.
+* P-5 ✓ GT-ALPHA 0/2,474 — every pointwise scaled re-read agrees
+  (verdict + σ), every ghost fiber exactly q^{k·m(m−1)/2}, scaled
+  states onto the full reduced-window space.
+* P-6 ✓ GT-BETA 0/87,156 Hensel reconstructions coefficient-exact;
+  GT-RECUR 0/8 — the α-drain self-similarity
+  (q−1)q^{k·c(m)}·u_m(N−mk) exact at every realized k.
+* P-7 ✓ GT-BRACKETID 24/24 — LEMMA GENIND-2(b) integer-exact at
+  m ∈ {2,3,4,5} (exponent coefficients 2/4/7/11).
+* P-8 ✓ GT-CRIT 0/22 — ZERO CS events on all four n = 3 control rows
+  (the criterion's negative half); every n = 4/5 CS event (all
+  depths) obeys μ ≥ 2, e·γ ≥ 2, 4 ≤ e·μ·γ ≤ m_frame; no genre
+  outside the S5.3 grammar.
+* P-9 ✓ GT-N3TIE 0/16 — my fresh reader's n = 3 depth-0 species
+  tables equal BOTH the HEX3 S5.1 closed forms AND the committed
+  hex3 JSON, key by key (locus AND drained): the reader IS the
+  suppliers' convention where they overlap. GT-ORACLE 0 bad /
+  73,676 checks — PARI (nfinit/idealprimedec) confirms the σ
+  multiset of EVERY decided member on all three rows (3,264 + 5,670
+  + 27,904 = 36,838 members: the FIRST independent σ verification of
+  quartic and quintic cluster reads in this corpus, wild p = 2
+  strata included), 0 disc-0 lifts.
+* P-10 ✓ teeth — GT-T-ALPHA = 12, GT-T-CS = 12, GT-T-CRIT = 4,
+  GT-T-BRACKET = 24: every count exactly as preregistered.
+* P-11 ✓ — no falsifier fired.
+
+**Consequence for the grade box:** THEOREM GENIND.A's clauses (I),
+(II), (IV) and the GENIND.C layer stand as composed,
+machine-corroborated at n = 4 AND n = 5 both characteristics — the
+general α-bracket exercised at m = 4, 5 (exponents 7, 11), the
+β-transport pointwise-Hensel-verified and its drain composition
+consuming the PROVED n ≤ 3 laws confirmed in closed form, and the
+composite-stage criterion confirmed in BOTH directions (n = 3 clean;
+n = 4, 5 CS at exactly the predicted genres, visibility floors
+included). THEOREM GENIND.B stands as the displayed reduction:
+(hMenu-n)+(hExhaust-n) for ALL n — hence, with THEOREM W-12.D, the
+FULL uniformity theorem — is now conditional exactly on the
+composite-stage package [GENIND-H] per genre plus the supplier arc
+grades; at n ≤ 3 it is the proved chain. CANDIDATE GENIND-5 (the
+(2,2) stage law with stage bracket (q−1)q^{2μ−1}) remains boxed at
+(OB-a)/(OB-b)/(OB-c)/(OB-d), with LEMMA GENIND-4 (the fibration +
+the ℤ/2 slot grading) PROVED and its predictions handed to QSCOUT22.
+Attempt 0/2; the hostile arc has not begun.

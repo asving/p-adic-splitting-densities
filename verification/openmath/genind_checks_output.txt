@@ -1,0 +1,52 @@
+GENIND battery FULL
+  row Zp q=2 N=5 n=3: 4096 states, 3792 dec / 304 drain / 0 cs (0.0s)
+  row Fqt q=2 N=5 n=3: 4096 states, 3792 dec / 304 drain / 0 cs (0.0s)
+  row Zp q=3 N=4 n=3: 19683 states, 18846 dec / 837 drain / 0 cs (0.1s)
+  row Fqt q=3 N=4 n=3: 19683 states, 18846 dec / 837 drain / 0 cs (0.1s)
+  row Zp q=2 N=4 n=4: 4096 states, 3264 dec / 576 drain / 256 cs (0.0s)
+  row Fqt q=2 N=4 n=4: 4096 states, 3264 dec / 576 drain / 256 cs (0.0s)
+  row Zp q=2 N=5 n=4: 65536 states, 56640 dec / 4736 drain / 4160 cs (0.7s)
+  row Fqt q=2 N=5 n=4: 65536 states, 56640 dec / 4736 drain / 4160 cs (0.7s)
+  row Zp q=2 N=6 n=4: 1048576 states, 939520 dec / 42496 drain / 66560 cs (11.8s)
+  row Fqt q=2 N=6 n=4: 1048576 states, 939520 dec / 42496 drain / 66560 cs (13.5s)
+  row Zp q=3 N=3 n=4: 6561 states, 5670 dec / 729 drain / 162 cs (0.0s)
+  row Fqt q=3 N=3 n=4: 6561 states, 5670 dec / 729 drain / 162 cs (0.0s)
+  row Zp q=3 N=4 n=4: 531441 states, 495720 dec / 22599 drain / 13122 cs (4.3s)
+  row Fqt q=3 N=4 n=4: 531441 states, 495720 dec / 22599 drain / 13122 cs (4.3s)
+  row Zp q=5 N=3 n=4: 390625 states, 372500 dec / 15625 drain / 2500 cs (2.8s)
+  row Fqt q=5 N=3 n=4: 390625 states, 372500 dec / 15625 drain / 2500 cs (2.8s)
+  row Zp q=2 N=4 n=5: 32768 states, 27904 dec / 4608 drain / 256 cs (0.3s)
+  row Fqt q=2 N=4 n=5: 32768 states, 27904 dec / 4608 drain / 256 cs (0.3s)
+  row Zp q=2 N=5 n=5: 1048576 states, 960512 dec / 75776 drain / 12288 cs (11.0s)
+  row Fqt q=2 N=5 n=5: 1048576 states, 960512 dec / 75776 drain / 12288 cs (12.0s)
+  row Zp q=3 N=3 n=5: 59049 states, 52488 dec / 6561 drain / 0 cs (0.4s)
+  row Fqt q=3 N=3 n=5: 59049 states, 52488 dec / 6561 drain / 0 cs (0.4s)
+  constructed ALPHA(k=2) Zp q=2 N=9 n=4: 4096 members, 0 misclassified
+  constructed ALPHA(k=1) Zp q=2 N=6 n=5: 1024 members, 0 misclassified
+  constructed ALPHA(k=1) Fqt q=2 N=6 n=5: 1024 members, 0 misclassified
+  constructed ALPHA(k=1) Zp q=3 N=6 n=5: 118098 members, 0 misclassified
+  constructed ('B22', 1) Zp q=3 N=6: 59049 members, 32805 drained (want 59049/32805)
+  constructed ('B2Q', 1) Zp q=3 N=6: 354294 members, 118098 drained (want 354294/118098)
+  constructed ('B31', 1) Zp q=3 N=6: 118098 members, 39366 drained (want 118098/39366)
+  oracle Zp q=2 N=4 n=4: 3264 decided scored, 0 bad
+  oracle Zp q=3 N=3 n=4: 5670 decided scored, 0 bad
+  oracle Zp q=2 N=4 n=5: 27904 decided scored, 0 bad
+
+GT-PIN        checks 5        violations 0
+GT-PART       checks 33       violations 0
+GT-DEPTH0     checks 108      violations 0
+GT-BDRAIN     checks 4        violations 0
+GT-ALPHA      checks 2474     violations 0
+GT-BETA       checks 87156    violations 0
+GT-RECUR      checks 8        violations 0
+GT-BRACKETID  checks 24       violations 0
+GT-CRIT       checks 22       violations 0
+GT-N3TIE      checks 16       violations 0
+GT-CONS       checks 10       violations 0
+GT-ORACLE     checks 73676    violations 0
+GT-T-ALPHA    fired 12 / expected 12 OK
+GT-T-CS       fired 12 / expected 12 OK
+GT-T-CRIT     fired 4 / expected 4 OK
+GT-T-BRACKET  fired 24 / expected 24 OK
+
+VERDICT: GREEN — 163536 checks, 0 violations, 164.5 s
