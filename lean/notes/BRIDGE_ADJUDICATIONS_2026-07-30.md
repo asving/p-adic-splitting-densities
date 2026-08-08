@@ -12327,3 +12327,57 @@ their diffs; all SIGMALAW machine numbers re-checked against §6R
 (539/1,211/2,854/1,427/688/340/96/27/218-of-218, exit 0); CODEX
 margins 2h/3h/2h + (7.1) re-checked against S1/S3/S4; every grade
 word in both applied texts is "attempt", never "accepted".
+
+## VC40 ADJUDICATED: NOT-CONFIRMED 0C/17G as filed → 0C/15G on adjudication (14 document + 1 charge-defect; 2 misquotes REJECTED) — r40b cure batch + VC40b owed — 2026-08-08 (Codex leg 2, post-reset queue item (2))
+
+**The leg** (charge of record ROOT §45; frozen-history trim mandatory;
+executed per the VC39 pattern). Pin RETARGETED and disclosed in-charge:
+audited text = ROOT @24ef527 = REVISION 39 + the same-day [RMG-c1]
+correction (the only two ROOT-touching commits in 2d3080f..24ef527; ROOT at
+HEAD byte-identical to the pin; the 282 post-pin commits — W arc, weld,
+HEX3, SIGMALAW, SURV-K2, (EMPTY-(m+1)) — declared OUT OF PERIMETER, nothing
+claimed either direction). Charge 834,906 B, committed
+`lean/notes/openmath/VC40_charge_2026-08-08.txt`: BLOCK 1 = §§0–6 + BLOCK 2
+= §§43–45 IN FULL (both inherited charge blocks inside); all 11 window
+hunks inside the blocks; middle §§7–42 byte-identical to the
+VC39b-certified 2d3080f text (md5 91cab65d = VC39's own middle — provenance
+continuity). Orchestrator pre-verification pinned into the charge and
+UNCONTESTED by the pass: [RMG] 154/154 content-tokens ×3; [ILN]
+byte-unchanged ×4; ALL 114 r39 census rows + joint row + 14 new markers
+re-grepped (14/14 reproduce the recorded r40 values at c357bf0 — the
+fixed-point claim CONFIRMED; the fresh 24ef527 column = the new baseline of
+record per §45.(vii)); sorry census 34 reproduced two independent ways;
+32/32 hashes resolve. Run: session 019fe04b-ff19, gpt-5.6-sol effort HIGH,
+≈7 min, report archived `lean/notes/openmath/VC40_report.md` with the raw
+messages verbatim.
+
+**VERDICT as filed: NOT-CONFIRMED, 0 critical / 17 gaps. ADJUDICATED
+(quote-by-quote re-grep, all evidence in the report): 0C/15G.**
+(A) THE INCOMPLETE [RMG-c1] RIPPLE — 3 gaps CONFIRMED: the arc-count
+correction landed only at the §0 standing paragraph; the §3.2 row, the §6
+dispatch bracket, and the §44.(ii) Q1 bracket still say "the 12-pass arc /
+zero critical findings ever" in ROOT's own voice (the §45.(i) hit is inside
+the faithful block paste, correct-as-dated, properly unflagged).
+(B) THE RULE-8 CLASS, FOURTH RECURRENCE — 11 gaps CONFIRMED (VC37 4 → VC38
+8 → VC39 4 → VC40 11): bare [RMG]/[ILN] tokens in the NEW r40 text at the
+§0 correction prose, §6 corpus-law bracket, §45 summary ×2, §45.(ii) ×2,
+§45.(v), disposition cells r40-2/3/6, §45 bookkeeping.
+(C) CHARGE DEFECT — 1 gap CONFIRMED AGAINST THE CHARGE-BUILDER: APPENDIX
+B.4 pinned the wrong PROJECT_STATE neighborhood (substring heuristic hit
+"hRes-Q1" line 1044, not the Q1-closed bracket line 1334) — checklist rule
+3's class; item (v) unverifiable from the charge; cure = correct slice in
+the VC40b charge.
+(R) REJECTED — findings 6–7: quotes exist NOWHERE in the pinned text; the
+four §44.(ii) brackets contain ZERO [ILN] tokens (only [RMG]†/PID†) —
+misquotes, contested with evidence, removed from the cure queue.
+ZERO mathematical findings; zero criticals — the VC38/VC39 profile.
+
+**OWED: the r40b cure batch** (three dated arc-count brackets at the A
+sites; dagger errata at the eleven B sites + a full bare-token sweep of the
+r40 hunks — a fresh census shows 14 un-daggered [RMG] lines; consider the
+compose-time machine gate that ended the ITERLAWN treadmill) **then VC40b**
+(micro pass on the cures, corrected B.4 slice pinned). **The acceptance
+citation REMAINS at REVISION 38 + r39b (VC39+VC39b) until VC40b lands**;
+this unit never self-confirms. Unit files: CODEX_VC40 note + charge copy +
+report + this append ONLY (scoped commit; scaffold cb82b23 sealed the
+pre-verification before the verdict was read).
