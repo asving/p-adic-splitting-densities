@@ -12860,3 +12860,29 @@ Counter 0/2; r3 owed (the σ-pin clause + the minor). The
 draft-resilience instruction worked: draft preserved at
 /tmp/w12_pe3_draft.md for any successor. NEXT WAVE: W-12 r3 + HEX3
 PE4 (the accepting attempt at 1/2). HE3 + BCFGTIE verdict in flight.
+
+---
+
+## W-12 r3 LANDED (the σ-pin; rejected parse priced verbatim; 40-surface sweep clean) + HEX3 PE4: 0C/0G/1m at the accepting attempt — COUNTER RESETS (the aside three passes missed: asserting BOX-1's open lemma as fact) — but the CROSS-NOTE CHECK IS POSITIVE: the (hExhaust-3) discharge is PARSE-ROBUST — 2026-08-08
+
+**W-12 r3 (b17238a)**: undecided(n,q,N) pinned to the BOX-7
+lift-certification notion at S1 + the W-12.B bullet; the rejected
+read-anchored parse RECORDED with its full price (the verifier's
+divergence table 0.50→8.78, slope 1/24, tied to all 23 committed U₃
+values); ~40 σ-surfaces classified, NO consumer of the rejected
+parse; m1 phrasing fixed. Counter 0/2, PE4 next.
+
+**HEX3 PE4 (34a946b)**: the (A2)-pin check POSITIVE and STRONGER than
+required — U₃^conv = (σ-undecided TRP) ∪ (certified boundary tails)
+exactly, so HEX3.B bounds BOTH r(3,N) TRP legs however BOX-1
+resolves. FINDING m1: S8.2's closing clause asserts the transported
+TRP SPLIT-TAIL mass is σ-decided — EXACTLY HEX3-BOX-1's open lemma —
+conflating the proved DBL side with the open TRP side; aside-grade,
+zero theorem blast radius; one conditionalizing clause. Counter
+RESETS 0/2 per the standing convention; r3 then the 2-clean bar
+afresh. Fresh route: the order-9 GF denominator proved STRUCTURAL and
+MINIMAL by hand; SIX more never-instantiated DVR types incl.
+W(𝔽₄)[π²=2] (first ramified non-prime-residue ring) and 𝔽₈₁[[t]] —
+the any-complete-DVR scope now machine-witnessed in 15 ring types;
+one own-bug disclosed and repaired (a live demo of the J-D0 gauge
+seam). NEXT: HEX3 r3 (one clause) + W-12 PE4.
