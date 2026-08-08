@@ -137,6 +137,15 @@ from he6_checks import (Zp, FpTring, padd, pmul, ppow, development,
 PINS = ['he6_checks.py', 'he7_checks.py', 'w12_checks.py', 'w10_checks.py']
 
 
+def pstr(f):
+    """[r1-fix, print-only, no predicate touched] polystr breaks on the
+    char-p ring's FpT coefficients; fall back to a plain rendering there."""
+    try:
+        return polystr(f)
+    except TypeError:
+        return '[' + ','.join(str(c) for c in f) + ']'
+
+
 def md5(path):
     with open(os.path.join(HERE, path), 'rb') as fh:
         return hashlib.md5(fh.read()).hexdigest()
@@ -605,7 +614,7 @@ def run_row(R, p, u, c0, c1, W=2, cap=140, oracle=True, tag=''):
     print('\n== ROW %s ==' % name)
     fr = L2Frame1(R, p, u, c0, c1)
     print('   Psi = %s   D\'\' = %d  T2 = %d  K2 = F_%d^2'
-          % (polystr(fr.Psi), fr.Dpp, fr.T2, p))
+          % (pstr(fr.Psi), fr.Dpp, fr.T2, p))
     rows, jobs, sigs = [], [], {}
     nmem = 0
     for A, f in members1(R, p, u, c0, c1, W=W, cap=cap):
@@ -613,7 +622,7 @@ def run_row(R, p, u, c0, c1, W=2, cap=140, oracle=True, tag=''):
             continue
         nmem += 1
         rd = level2_read(f, fr)
-        rec = {'f': polystr(f), 'status': rd['status'],
+        rec = {'f': pstr(f), 'status': rd['status'],
                'sigma': rd.get('sigma'), 'refines': rd.get('refines')}
         if rd['status'] != 'OK':
             viol('HE6R1-READ2', 'reader did not decide', rec)

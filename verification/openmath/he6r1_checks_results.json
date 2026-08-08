@@ -1,0 +1,525 @@
+{
+ "legs": {
+  "HE6R1-LIFT2": 59,
+  "HE6R1-READ2": 932,
+  "HE6R1-SLOT2": 1512,
+  "HE6R1-GEN2": 252,
+  "HE6R1-SEP2": 46,
+  "HE6R1-SEP2-inf": 4,
+  "HE6R1-SIG2": 682
+ },
+ "viol": [
+  {
+   "leg": "HE6R1-READ2",
+   "what": "reader did not decide",
+   "detail": "{'f': '(1296)*x^0+(972)*x^1+(-432)*x^2+(-162)*x^3+(108)*x^4+(27)*x^5+(-12)*x^6+(1)*x^8', 'status': 'BADTOTAL', 'sigma': None, 'refines': None}"
+  },
+  {
+   "leg": "HE6R1-READ2",
+   "what": "reader did not decide",
+   "detail": "{'f': '(1296)*x^0+(1944)*x^1+(-432)*x^2+(-324)*x^3+(108)*x^4+(54)*x^5+(-12)*x^6+(1)*x^8', 'status': 'BADTOTAL', 'sigma': None, 'refines': None}"
+  },
+  {
+   "leg": "HE6R1-READ2",
+   "what": "reader did not decide",
+   "detail": "{'f': '(4212)*x^0+(-918)*x^2+(189)*x^4+(-12)*x^6+(1)*x^8', 'status': 'BADTOTAL', 'sigma': None, 'refines': None}"
+  },
+  {
+   "leg": "HE6R1-READ2",
+   "what": "reader did not decide",
+   "detail": "{'f': '(7128)*x^0+(-1404)*x^2+(270)*x^4+(-12)*x^6+(1)*x^8', 'status': 'BADTOTAL', 'sigma': None, 'refines': None}"
+  },
+  {
+   "leg": "HE6R1-SIG2",
+   "what": "level-2 read != PARI",
+   "detail": "{'read': None, 'pari': ((2, 2), (2, 2)), 'f': '(1296)*x^0+(972)*x^1+(-432)*x^2+(-162)*x^3+(108)*x^4+(27)*x^5+(-12)*x^6+(1)*x^8'}"
+  },
+  {
+   "leg": "HE6R1-SIG2",
+   "what": "level-2 read != PARI",
+   "detail": "{'read': None, 'pari': ((2, 2), (2, 2)), 'f': '(1296)*x^0+(1944)*x^1+(-432)*x^2+(-324)*x^3+(108)*x^4+(54)*x^5+(-12)*x^6+(1)*x^8'}"
+  },
+  {
+   "leg": "HE6R1-SIG2",
+   "what": "level-2 read != PARI",
+   "detail": "{'read': None, 'pari': ((2, 2), (2, 2)), 'f': '(4212)*x^0+(-918)*x^2+(189)*x^4+(-12)*x^6+(1)*x^8'}"
+  },
+  {
+   "leg": "HE6R1-SIG2",
+   "what": "level-2 read != PARI",
+   "detail": "{'read': None, 'pari': ((2, 2), (2, 2)), 'f': '(7128)*x^0+(-1404)*x^2+(270)*x^4+(-12)*x^6+(1)*x^8'}"
+  },
+  {
+   "leg": "HE6R1-SEP2",
+   "what": "no strict excess at the level-2 label",
+   "detail": "{'got': 56, 'flat': 56, 'kappa2': '8'}"
+  },
+  {
+   "leg": "HE6R1-SEP2",
+   "what": "no strict excess at the level-2 label",
+   "detail": "{'got': 56, 'flat': 56, 'kappa2': '8'}"
+  },
+  {
+   "leg": "HE6R1-READ2",
+   "what": "reader did not decide",
+   "detail": "{'f': '(303750)*x^0+(-54375)*x^1+(-21125)*x^2+(11375)*x^3+(2025)*x^4+(-150)*x^5+(5)*x^6+(10)*x^7+(1)*x^8', 'status': 'BADTOTAL', 'sigma': None, 'refines': None}"
+  },
+  {
+   "leg": "HE6R1-SIG2",
+   "what": "level-2 read != PARI",
+   "detail": "{'read': None, 'pari': ((2, 2), (2, 2)), 'f': '(303750)*x^0+(-54375)*x^1+(-21125)*x^2+(11375)*x^3+(2025)*x^4+(-150)*x^5+(5)*x^6+(10)*x^7+(1)*x^8'}"
+  },
+  {
+   "leg": "HE6R1-SEP2",
+   "what": "no strict excess at the level-2 label",
+   "detail": "{'got': 88, 'flat': 88, 'kappa2': '12'}"
+  },
+  {
+   "leg": "HE6R1-SEP2",
+   "what": "no strict excess at the level-2 label",
+   "detail": "{'got': 88, 'flat': 88, 'kappa2': '12'}"
+  },
+  {
+   "leg": "HE6R1-READ2",
+   "what": "reader did not decide",
+   "detail": "{'f': '[FpT([0, 0, 0, 0, 1, 2, 1]),FpT([0, 0, 0, 0, 0, 1, 1]),FpT([0, 0, 0, 2, 2]),FpT([0, 0, 0, 0, 1]),FpT([0, 0, 0, 2]),FpT([0, 0, 0, 1]),FpT([0, 2]),FpT([]),FpT([1])]', 'status': 'BADTOTAL', 'sigma': None, 'refines': None}"
+  },
+  {
+   "leg": "HE6R1-READ2",
+   "what": "reader did not decide",
+   "detail": "{'f': '[FpT([0, 0, 0, 0, 1, 2, 1]),FpT([0, 0, 0, 0, 0, 2, 2]),FpT([0, 0, 0, 2, 2]),FpT([0, 0, 0, 0, 2]),FpT([0, 0, 0, 2]),FpT([0, 0, 0, 2]),FpT([0, 2]),FpT([]),FpT([1])]', 'status': 'BADTOTAL', 'sigma': None, 'refines': None}"
+  },
+  {
+   "leg": "HE6R1-READ2",
+   "what": "reader did not decide",
+   "detail": "{'f': '[FpT([0, 0, 0, 0, 1, 2, 2, 1]),FpT([]),FpT([0, 0, 0, 2, 2, 1]),FpT([]),FpT([0, 0, 0, 2, 1]),0,FpT([0, 2]),FpT([]),FpT([1])]', 'status': 'BADTOTAL', 'sigma': None, 'refines': None}"
+  },
+  {
+   "leg": "HE6R1-READ2",
+   "what": "reader did not decide",
+   "detail": "{'f': '[FpT([0, 0, 0, 0, 1, 2, 0, 2]),FpT([]),FpT([0, 0, 0, 2, 2, 2]),FpT([]),FpT([0, 0, 0, 2, 2]),0,FpT([0, 2]),FpT([]),FpT([1])]', 'status': 'BADTOTAL', 'sigma': None, 'refines': None}"
+  },
+  {
+   "leg": "HE6R1-READ2",
+   "what": "reader did not decide",
+   "detail": "{'f': '[FpT([0, 0, 0, 0, 1, 4, 4]),FpT([0, 0, 0, 0, 0, 1, 2]),FpT([0, 0, 0, 1, 2]),FpT([0, 0, 0, 0, 0, 4]),FpT([0, 0, 1, 4]),FpT([0, 0, 0, 2]),FpT([0, 1]),FpT([0, 0, 2]),FpT([1])]', 'status': 'BADTOTAL', 'sigma': None, 'refines': None}"
+  },
+  {
+   "leg": "HE6R1-READ2",
+   "what": "reader did not decide",
+   "detail": "{'f': '[FpT([0, 0, 0, 0, 1, 1, 3]),FpT([0, 0, 0, 0, 0, 1, 2]),FpT([0, 0, 0, 1, 1, 1]),FpT([0, 0, 0, 0, 3]),FpT([0, 0, 1]),FpT([0, 0, 0, 1]),FpT([0, 1, 3]),FpT([]),FpT([1])]', 'status': 'BADTOTAL', 'sigma': None, 'refines': None}"
+  },
+  {
+   "leg": "HE6R1-READ2",
+   "what": "reader did not decide",
+   "detail": "{'f': '[FpT([0, 0, 0, 0, 1, 4, 1, 4]),FpT([0, 0, 0, 0, 0, 2, 4]),FpT([0, 0, 0, 1, 2, 1]),FpT([0, 0, 0, 0, 4, 1]),FpT([0, 0, 1, 4, 2]),FpT([0, 0, 0, 1]),FpT([0, 1]),FpT([0, 0, 3]),FpT([1])]', 'status': 'BADTOTAL', 'sigma': None, 'refines': None}"
+  }
+ ],
+ "teeth": {
+  "HE6R1-T-CRACK": {
+   "fired": true,
+   "detail": "distinct PARI sigma on identical outer data: [(((2, 2), (2, 2)), 1), (((2, 4),), 6), (((4, 2),), 47)]  (read agrees 54/54)"
+  },
+  "HE6R1-T-NAIVEHE6A": {
+   "fired": true,
+   "detail": "members whose PARI sigma refutes the planted separable dictionary ((2, 2), (2, 2)): 53 of 54"
+  },
+  "HE6R1-T-BASIS": {
+   "fired": true,
+   "detail": "no cancellation at gamma_0 = -gamma_1 (K2-independence); a naive K-summing reader WOULD cancel: [{'a': 1, 'dv2': 5, 'res2': [1, 2], 'vRes': 20, 'want': 20, 'naive_reader_sees_cancellation': True}, {'a': 2, 'dv2': 5, 'res2': [2, 1], 'vRes': 20, 'want': 20, 'naive_reader_sees_cancellation': True}]"
+  },
+  "HE6R1-T-TWIST0": {
+   "fired": true,
+   "detail": "1276 twist exponents computed, all zero (n2(k) = varpi^k at ell = 1)"
+  },
+  "HE6R1-T-WITHHOLD": {
+   "fired": true,
+   "detail": "withheld lambda2 = 13/2 -> UNDETERMINED"
+  }
+ },
+ "rows": [
+  {
+   "row": "Z_3 lam=3 r=Z^2+0Z+1 r inert, c1=0",
+   "members": 124,
+   "pari": 124,
+   "sigma_counts": {
+    "((4, 2),)": 92,
+    "((2, 2), (2, 2))": 12,
+    "((2, 4),)": 16
+   },
+   "pari_counts": {
+    "((4, 2),)": 92,
+    "((2, 2), (2, 2))": 16,
+    "((2, 4),)": 16
+   },
+   "secs": 5.7
+  },
+  {
+   "row": "Z_5 lam=3 r=Z^2+0Z+2 r inert, c1=0",
+   "members": 139,
+   "pari": 139,
+   "sigma_counts": {
+    "((4, 2),)": 118,
+    "((2, 2), (2, 2))": 13,
+    "((2, 4),)": 8
+   },
+   "pari_counts": {
+    "((4, 2),)": 118,
+    "((2, 2), (2, 2))": 13,
+    "((2, 4),)": 8
+   },
+   "secs": 13.4
+  },
+  {
+   "row": "Z_5 lam=3 r=Z^2+1Z+1 r inert, c1 LIVE",
+   "members": 140,
+   "pari": 140,
+   "sigma_counts": {
+    "((4, 2),)": 134,
+    "((2, 2), (2, 2))": 3,
+    "((2, 4),)": 2
+   },
+   "pari_counts": {
+    "((4, 2),)": 134,
+    "((2, 2), (2, 2))": 4,
+    "((2, 4),)": 2
+   },
+   "secs": 18.2
+  },
+  {
+   "row": "Z_7 lam=3 r=Z^2+1Z+3 r inert, c1 LIVE",
+   "members": 140,
+   "pari": 140,
+   "sigma_counts": {
+    "((4, 2),)": 139,
+    "((2, 4),)": 1
+   },
+   "pari_counts": {
+    "((4, 2),)": 139,
+    "((2, 4),)": 1
+   },
+   "secs": 21.0
+  },
+  {
+   "row": "Z_5 lam=5 r=Z^2+0Z+2 lambda = 5",
+   "members": 139,
+   "pari": 139,
+   "sigma_counts": {
+    "((4, 2),)": 118,
+    "((2, 2), (2, 2))": 13,
+    "((2, 4),)": 8
+   },
+   "pari_counts": {
+    "((4, 2),)": 118,
+    "((2, 2), (2, 2))": 13,
+    "((2, 4),)": 8
+   },
+   "secs": 11.0
+  },
+  {
+   "row": "F_3[[t]] lam=3 r=Z^2+0Z+1 char p, identities only",
+   "members": 124,
+   "pari": 0,
+   "sigma_counts": {
+    "((4, 2),)": 92,
+    "((2, 2), (2, 2))": 12,
+    "((2, 4),)": 16
+   },
+   "pari_counts": {},
+   "secs": 3.9
+  },
+  {
+   "row": "F_5[[t]] lam=3 r=Z^2+0Z+2 char p, identities only",
+   "members": 138,
+   "pari": 0,
+   "sigma_counts": {
+    "((4, 2),)": 119,
+    "((2, 4),)": 7,
+    "((2, 2), (2, 2))": 9
+   },
+   "pari_counts": {},
+   "secs": 5.9
+  }
+ ],
+ "lift2": [
+  {
+   "p": 3,
+   "lam": 3,
+   "r": [
+    1,
+    0
+   ],
+   "thr_closed_form": 4,
+   "onto": [
+    3,
+    4,
+    5,
+    6,
+    7,
+    8,
+    9,
+    10
+   ],
+   "not_onto": [
+    0,
+    1,
+    2
+   ],
+   "predicted_onto_W2": [
+    3,
+    4,
+    5,
+    6,
+    7,
+    8,
+    9,
+    10
+   ],
+   "above_thr_all_onto": true,
+   "below_lam_none_onto": true
+  },
+  {
+   "p": 5,
+   "lam": 3,
+   "r": [
+    2,
+    0
+   ],
+   "thr_closed_form": 4,
+   "onto": [
+    3,
+    4,
+    5,
+    6,
+    7,
+    8,
+    9,
+    10
+   ],
+   "not_onto": [
+    0,
+    1,
+    2
+   ],
+   "predicted_onto_W2": [
+    3,
+    4,
+    5,
+    6,
+    7,
+    8,
+    9,
+    10
+   ],
+   "above_thr_all_onto": true,
+   "below_lam_none_onto": true
+  },
+  {
+   "p": 5,
+   "lam": 3,
+   "r": [
+    1,
+    1
+   ],
+   "thr_closed_form": 4,
+   "onto": [
+    3,
+    4,
+    5,
+    6,
+    7,
+    8,
+    9,
+    10
+   ],
+   "not_onto": [
+    0,
+    1,
+    2
+   ],
+   "predicted_onto_W2": [
+    3,
+    4,
+    5,
+    6,
+    7,
+    8,
+    9,
+    10
+   ],
+   "above_thr_all_onto": true,
+   "below_lam_none_onto": true
+  },
+  {
+   "p": 7,
+   "lam": 3,
+   "r": [
+    3,
+    1
+   ],
+   "thr_closed_form": 4,
+   "onto": [
+    3,
+    4,
+    5,
+    6,
+    7,
+    8,
+    9,
+    10
+   ],
+   "not_onto": [
+    0,
+    1,
+    2
+   ],
+   "predicted_onto_W2": [
+    3,
+    4,
+    5,
+    6,
+    7,
+    8,
+    9,
+    10
+   ],
+   "above_thr_all_onto": true,
+   "below_lam_none_onto": true
+  },
+  {
+   "p": 5,
+   "lam": 5,
+   "r": [
+    2,
+    0
+   ],
+   "thr_closed_form": 6,
+   "onto": [
+    5,
+    6,
+    7,
+    8,
+    9,
+    10,
+    11,
+    12,
+    13,
+    14
+   ],
+   "not_onto": [
+    0,
+    1,
+    2,
+    3,
+    4
+   ],
+   "predicted_onto_W2": [
+    5,
+    6,
+    7,
+    8,
+    9,
+    10,
+    11,
+    12,
+    13,
+    14
+   ],
+   "above_thr_all_onto": true,
+   "below_lam_none_onto": true
+  }
+ ],
+ "crack": {
+  "sigma": {
+   "((4, 2),)": 47,
+   "((2, 4),)": 6,
+   "((2, 2), (2, 2))": 1
+  },
+  "agree": 54,
+  "pari": 54,
+  "bad": []
+ },
+ "notes": [],
+ "pins": {
+  "he6_checks.py": "321fa4d4990eef67ff6a20f375c32366",
+  "he7_checks.py": "688adbe88447b570104e379b1fa11cd5",
+  "w12_checks.py": "7dc040d94fbbb1e8d20ac817b665d418",
+  "w10_checks.py": "a9c34244a3af19f5fa864375b494380b"
+ },
+ "member_counts": [
+  [
+   "Z_3",
+   3,
+   1,
+   0,
+   625,
+   125
+  ],
+  [
+   "Z_5",
+   3,
+   2,
+   0,
+   6561,
+   140
+  ],
+  [
+   "Z_5",
+   3,
+   1,
+   1,
+   6561,
+   140
+  ],
+  [
+   "Z_7",
+   3,
+   3,
+   1,
+   28561,
+   140
+  ],
+  [
+   "Z_5",
+   5,
+   2,
+   0,
+   6561,
+   140
+  ],
+  [
+   "F_3[[t]]",
+   3,
+   1,
+   0,
+   625,
+   125
+  ],
+  [
+   "F_5[[t]]",
+   3,
+   2,
+   0,
+   6561,
+   140
+  ],
+  [
+   "Z_5",
+   3,
+   2,
+   0,
+   6561,
+   60
+  ],
+  [
+   "Z_3",
+   3,
+   1,
+   0,
+   625,
+   57
+  ]
+ ],
+ "secs": 87.2,
+ "violations": 21
+}

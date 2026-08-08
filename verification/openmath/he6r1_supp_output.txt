@@ -1,0 +1,23 @@
+== (A) the Psi | f_S stratum: LEMMA HE6R1-3 peel vs PARI ==
+   degenerate members 12  peel-decided 12  PARI-checked 5  agree 5
+    Z_3 lam 3 BADTOTAL -> peels 1 ((2, 2), (2, 2)) ((2, 2), (2, 2)) AGREE
+    Z_3 lam 3 BADTOTAL -> peels 1 ((2, 2), (2, 2)) ((2, 2), (2, 2)) AGREE
+    Z_3 lam 3 BADTOTAL -> peels 1 ((2, 2), (2, 2)) ((2, 2), (2, 2)) AGREE
+    Z_3 lam 3 BADTOTAL -> peels 1 ((2, 2), (2, 2)) ((2, 2), (2, 2)) AGREE
+    Z_5 lam 3 BADTOTAL -> peels 1 ((2, 2), (2, 2)) ((2, 2), (2, 2)) AGREE
+    F_3[[t]] lam 3 BADTOTAL -> peels 1 ((2, 2), (2, 2)) (char p: no oracle) 
+    F_3[[t]] lam 3 BADTOTAL -> peels 1 ((2, 2), (2, 2)) (char p: no oracle) 
+    F_3[[t]] lam 3 BADTOTAL -> peels 1 ((2, 2), (2, 2)) (char p: no oracle) 
+    F_3[[t]] lam 3 BADTOTAL -> peels 1 ((2, 2), (2, 2)) (char p: no oracle) 
+    F_5[[t]] lam 3 BADTOTAL -> peels 1 ((2, 2), (2, 2)) (char p: no oracle) 
+    F_5[[t]] lam 3 BADTOTAL -> peels 1 ((2, 2), (2, 2)) (char p: no oracle) 
+    F_5[[t]] lam 3 BADTOTAL -> peels 1 ((2, 2), (2, 2)) (char p: no oracle) 
+
+== (B) the post-refine P5 instances: rebuild Psi2 over the REFINED key ==
+   p=5 lam=3 refined-key label 8/1: got 68 flat 64 STRICT
+   p=5 lam=3 refined-key label 8/1: got 68 flat 64 STRICT
+   p=5 lam=5 refined-key label 12/1: got 100 flat 96 STRICT
+   p=5 lam=5 refined-key label 12/1: got 100 flat 96 STRICT
+   post-refine label instances 4, strict excess 4
+
+SUMMARY {"peel": {"degenerate_members": 12, "peel_decided": 12, "pari_checked": 5, "pari_agree": 5}, "refine": {"instances": 4, "strict": 4}}

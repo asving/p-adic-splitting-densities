@@ -1,0 +1,216 @@
+{
+ "peel": [
+  {
+   "ring": "Z_3",
+   "p": 3,
+   "lam": 3,
+   "r": [
+    1,
+    0
+   ],
+   "sealed_status": "BADTOTAL",
+   "peel": "OK",
+   "peels": 1,
+   "sigma": "((2, 2), (2, 2))",
+   "pari": "((2, 2), (2, 2))",
+   "verdict": "AGREE"
+  },
+  {
+   "ring": "Z_3",
+   "p": 3,
+   "lam": 3,
+   "r": [
+    1,
+    0
+   ],
+   "sealed_status": "BADTOTAL",
+   "peel": "OK",
+   "peels": 1,
+   "sigma": "((2, 2), (2, 2))",
+   "pari": "((2, 2), (2, 2))",
+   "verdict": "AGREE"
+  },
+  {
+   "ring": "Z_3",
+   "p": 3,
+   "lam": 3,
+   "r": [
+    1,
+    0
+   ],
+   "sealed_status": "BADTOTAL",
+   "peel": "OK",
+   "peels": 1,
+   "sigma": "((2, 2), (2, 2))",
+   "pari": "((2, 2), (2, 2))",
+   "verdict": "AGREE"
+  },
+  {
+   "ring": "Z_3",
+   "p": 3,
+   "lam": 3,
+   "r": [
+    1,
+    0
+   ],
+   "sealed_status": "BADTOTAL",
+   "peel": "OK",
+   "peels": 1,
+   "sigma": "((2, 2), (2, 2))",
+   "pari": "((2, 2), (2, 2))",
+   "verdict": "AGREE"
+  },
+  {
+   "ring": "Z_5",
+   "p": 5,
+   "lam": 3,
+   "r": [
+    1,
+    1
+   ],
+   "sealed_status": "BADTOTAL",
+   "peel": "OK",
+   "peels": 1,
+   "sigma": "((2, 2), (2, 2))",
+   "pari": "((2, 2), (2, 2))",
+   "verdict": "AGREE"
+  },
+  {
+   "ring": "F_3[[t]]",
+   "p": 3,
+   "lam": 3,
+   "r": [
+    1,
+    0
+   ],
+   "sealed_status": "BADTOTAL",
+   "peel": "OK",
+   "peels": 1,
+   "sigma": "((2, 2), (2, 2))"
+  },
+  {
+   "ring": "F_3[[t]]",
+   "p": 3,
+   "lam": 3,
+   "r": [
+    1,
+    0
+   ],
+   "sealed_status": "BADTOTAL",
+   "peel": "OK",
+   "peels": 1,
+   "sigma": "((2, 2), (2, 2))"
+  },
+  {
+   "ring": "F_3[[t]]",
+   "p": 3,
+   "lam": 3,
+   "r": [
+    1,
+    0
+   ],
+   "sealed_status": "BADTOTAL",
+   "peel": "OK",
+   "peels": 1,
+   "sigma": "((2, 2), (2, 2))"
+  },
+  {
+   "ring": "F_3[[t]]",
+   "p": 3,
+   "lam": 3,
+   "r": [
+    1,
+    0
+   ],
+   "sealed_status": "BADTOTAL",
+   "peel": "OK",
+   "peels": 1,
+   "sigma": "((2, 2), (2, 2))"
+  },
+  {
+   "ring": "F_5[[t]]",
+   "p": 5,
+   "lam": 3,
+   "r": [
+    2,
+    0
+   ],
+   "sealed_status": "BADTOTAL",
+   "peel": "OK",
+   "peels": 1,
+   "sigma": "((2, 2), (2, 2))"
+  },
+  {
+   "ring": "F_5[[t]]",
+   "p": 5,
+   "lam": 3,
+   "r": [
+    2,
+    0
+   ],
+   "sealed_status": "BADTOTAL",
+   "peel": "OK",
+   "peels": 1,
+   "sigma": "((2, 2), (2, 2))"
+  },
+  {
+   "ring": "F_5[[t]]",
+   "p": 5,
+   "lam": 3,
+   "r": [
+    2,
+    0
+   ],
+   "sealed_status": "BADTOTAL",
+   "peel": "OK",
+   "peels": 1,
+   "sigma": "((2, 2), (2, 2))"
+  }
+ ],
+ "refine": [
+  {
+   "p": 5,
+   "lam": 3,
+   "lam2": "8/1",
+   "got": 68,
+   "flat": "64",
+   "strict": true
+  },
+  {
+   "p": 5,
+   "lam": 3,
+   "lam2": "8/1",
+   "got": 68,
+   "flat": "64",
+   "strict": true
+  },
+  {
+   "p": 5,
+   "lam": 5,
+   "lam2": "12/1",
+   "got": 100,
+   "flat": "96",
+   "strict": true
+  },
+  {
+   "p": 5,
+   "lam": 5,
+   "lam2": "12/1",
+   "got": 100,
+   "flat": "96",
+   "strict": true
+  }
+ ],
+ "summary": {
+  "peel": {
+   "degenerate_members": 12,
+   "peel_decided": 12,
+   "pari_checked": 5,
+   "pari_agree": 5
+  },
+  "refine": {
+   "instances": 4,
+   "strict": 4
+  }
+ }
+}

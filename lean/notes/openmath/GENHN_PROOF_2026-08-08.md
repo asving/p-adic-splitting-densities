@@ -141,8 +141,11 @@ machine row (GENIND-BOX-3 inherited).
 > f = Φ′^μ + Σ_{j<μ} A_j Φ′^j (deg A_j < D′) is a triangular digit
 > bijection from the opening coordinates onto explicit budget floors
 > whose total equals the entry exponent (no over/undercount), and the
-> stage-initial node is {dv(A_j) ≥ (μ−j)·S + 1} with S := e₁h — the
-> α(S)-node of the (μ, K) system in dv-units.
+> stage-initial node is {dv(A_j) ≥ (μ−j)·S + 1} with S := e₁h **[r1
+> 2026-08-08: CORRECTED at f₁ ≥ 2 to {dv(A_j) ≥ (μ−j)·D′h + 1},
+> D′h = f₁S — see the ERRATUM annex after LEMMA GENHN-1; the two agree
+> exactly at f₁ = 1, which is every battery row and every first-live
+> case]** — the α-node of the (μ, K) system in dv-units.
 > (ii) [SLOTS + NO-CANCELLATION — proved] each A_j carries exactly ONE
 > K-digit slot per integer dv-height (the e₁ residue classes mod e₁
 > separate the x-coordinates; within a class, {1, η, …, η^{f₁−1}}
@@ -352,7 +355,8 @@ e₁ ≥ 2 — proved directly here, not consumed.
 >
 > total = the entry exponent of W-12.A's law for the genre (no
 > over/undercount), and the stage-initial node is
-> {dv(A_j) ≥ (μ−j)S + 1}, S := e₁h.
+> {dv(A_j) ≥ (μ−j)S + 1}, S := e₁h **[r1: read D′h = f₁S for S at
+> f₁ ≥ 2 — ERRATUM annex below]**.
 
 *Proof.* Triangularity: division by the monic Φ′ determines A_j from
 the coefficients of f at x-degrees ≥ jD′ by unipotent elimination
@@ -375,8 +379,47 @@ each j, dv(A_j) = min_i (e₁·v(a_{j,i}) + ih) over the floors
 computes to (μ−j)e₁h + 1 = (μ−j)S + 1 (the minimum is attained just
 above the consumed pin; the e₁ = 2, 3 computations are displayed in
 S2/GENH4-S7.2 and the general case is the same one-line arithmetic:
-e₁⌈(μ−j)h + (e₁−i)h/e₁⌉ + ih ≥ e₁(μ−j)h + 1 with equality realized).
+e₁⌈(μ−j)h + (e₁−i)h/e₁⌉ + ih ≥ e₁(μ−j)h + 1 with equality realized)
+**[r1: this one-line arithmetic is the offending line at f₁ ≥ 2; see the
+ERRATUM annex immediately below]**.
 ∎
+
+> **[r1] ERRATUM 2026-08-08 (the stage-initial node at f₁ ≥ 2) — raised by
+> Codex's hostile pass on HE6 (`CODEX_HE6PE1_2026-08-08.md` finding 3,
+> adjudicated: the member-level contradiction REGRADED because the member it
+> exhibits is OUTSIDE the ⁺-pinned budget, but the DISPLAY inconsistency it
+> exposes is real and lands here, not on HE6). Mechanism: GENHN is at attempt
+> grade 0/2 (unaccepted), so this is a tagged repair, not a frozen-note
+> annex; the sealed battery runner and artifacts are UNTOUCHED, and every
+> battery row has f₁ = 1, where the correction is invisible.**
+>
+> **CORRECTED NODE.** At f₁ ≥ 2 the stage-initial node is
+>
+>     { dv(A_j) ≥ (μ − j)·D′h + 1 } ,      D′h = e₁f₁h = f₁·S ,
+>
+> not {dv(A_j) ≥ (μ−j)S + 1}. At f₁ = 1 the two coincide (D′h = e₁h = S).
+>
+> **DERIVATION (independent of the finding, from the opening locus itself).**
+> Every root ρ of f on the genre-G opening locus satisfies (T1)/(T2)
+> (HE3-0), hence dv(Φ′(ρ)) > D′h (LEMMA HE6-0 as re-proved by HE6's r1 round
+> — the ψ-cancellation argument), hence every side of the stage polygon
+> P(F) has dv-slope > D′h (LEMMA HE6-3(a), which PROVES this with no (SEP)
+> hypothesis), hence every pin (j, dv(A_j)) lies strictly above the line of
+> slope D′h through (μ, 0): dv(A_j) > (μ−j)D′h, i.e. ≥ (μ−j)D′h + 1 because
+> dv is ℤ-valued on the A_j. See also this note's own §S3.1 remark in HE6
+> ("why D′h and not S = e₁h").
+>
+> **CONSUMPTION AUDIT.** HE6 and HE7 consume **LEMMA GENHN-2** (the SLOT
+> LEMMA) and HE3-0's locus, never GENHN-1's node display, so nothing in the
+> σ-decision chain propagates this erratum; HE6's f₁ ≥ 2 σ-prediction
+> {(2,2),(2,2)} at genre (1,2,4) is proof-only and rests on HE6's own D′h
+> remark. **RESIDUE (GENHN-ERR-1, named honestly):** whether GENHN's own
+> f₁ ≥ 2 count-side displays that substitute the numeric value S = e₁h for
+> the node height (the (μ,K)-cluster read "at the S-node", and any entry-
+> exponent arithmetic keyed to it) need re-reading with D′h is NOT settled
+> here. The law's FORM is unaffected (it is stated as the cluster read AT THE
+> NODE, whatever the node height is), no f₁ ≥ 2 stage genre is machine-
+> exercised, and none is live below n = 8.
 
 **Prehistory/embedding composition (consumed).** Prehistory chains
 compose by GENIND-1(ii) at general m (@ pin); embedded genres (the
