@@ -1545,3 +1545,49 @@ at 2/2 this date (record at its tail). The rider's grade note upgrades
 accordingly: the W-2 cap on the (ITER-LAW-LIFT) discharge is now an
 ACCEPTED supplier at its fenced scope (W2-OPEN-2/OPEN-2a remaining the
 weld's one open box); the ξ = 1 core chain was W-2-free throughout.
+
+---
+
+## ANNEX (dated append, 2026-08-08; the accepted body is not edited)
+
+> **[ANNEX 2026-08-08, orchestrator, (W-MULT-DCX-m) CLOSED ON T-SCOPE AT
+> ATTEMPT GRADE — the Codex leg-1 unit (`CODEX_WMULTDCX_2026-08-08.md`,
+> raw derivation `CODEX_WMULTDCX_2026-08-08_raw.md`; commit e9ef949;
+> TIER-0, orchestrator-verified display-by-display against a pre-derived
+> key; ATTEMPT GRADE, 0 hostile passes, NOT accepted — the W-arc
+> Codex-verifier leg stays queued).]** The S4.7 carry-over ("a proof of
+> (RM-m) with a second-round clause would close both II-legs and DCX at
+> once") is DELIVERED on T-scope: (SRC-m) — the second-round clause, all
+> four clauses (a)–(d) — is PROVED on T-scope(m) WITHOUT consuming
+> LAW-DCX-(m+1) (every re-entrant second-round term lands strictly above
+> the read line, margin ≥ 2h_{n−1}; II-2 closes in one degree-bounded
+> round; the II-3 flat cascade is finite by strict degree descent), so
+> T-scope(m) ⟹ (W-MULT-DCX-m). The unit's two S6 annex drafts are hereby
+> applied, quoted verbatim, as dated-append content:
+>
+> (1) [on COND-B, the (W-MULT-DCX-m) conditional display at [RMG] S7.2 =
+> `RMENGINE_2026-08-08.md` S7.2 / S8 row 13 — carried by THIS dated
+> append and the ledger per the incorporation convention; RMENGINE's
+> accepted text is not edited:] "SRC RESOLVED (2026-08-08, Codex leg 1,
+> orchestrator-verified, attempt grade): the second-round clause (SRC-m)
+> is PROVED on T-scope(m) WITHOUT LAW-DCX-(m+1) — every re-entrant term
+> strictly above the line (margin ≥ 2h_{m}), flat cascade finite by
+> degree descent. COND-B's IF-clause is dischargeable: T-scope(m) ⟹
+> (W-MULT-DCX-m). LAW-DCX-(m+1) stays a sealed conjecture, now OFF the
+> W-MULT critical path (locus characterization only)."
+>
+> (2) [on this note's S4.7 box + S7 ledger row 7:] "On T-scope(m), the
+> OPEN family (W-MULT-DCX-m) is CLOSED at attempt grade
+> (CODEX_WMULTDCX_2026-08-08.md): the S4.6 Cases II-2/II-3 extend ON
+> DCX_n by the second-round development, (P-WM)/(P-DS) exports intact.
+> Jointly with [RMG]/COR-A: (ITER-LAW-n) holds on T-class(n) WITHOUT the
+> DCX-(n) exclusion, modulo the S7 non-(RM) residuals." (T-class(n) =
+> ∧_m T-scope(m) over called levels = d₀ = 1 ∨ (e₀ ≥ 2 ∧ e_i ≥ 2,
+> i ≤ n−2).)
+>
+> Grade fence (nothing here upgrades an accepted row): the closure rides
+> the Codex derivation at ATTEMPT GRADE (0 hostile passes; the hostile
+> arc = the queued W-arc Codex-verifier leg + PE, on the unit's own
+> text); off T-scope (d₀ ≥ 2 with a flat or e₀ = 1 called level) S7
+> row 7 stands OPEN exactly as frozen; the S8/S4.7 instance evidence
+> remains evidence, never proof.

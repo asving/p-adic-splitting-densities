@@ -12304,3 +12304,26 @@ grade; the W-arc Codex-verifier leg stays queued.
 erratum's note-side echo) + ANNEX-APPLIER (Σ-LAW §8 → GRTW2 tail;
 CODEX_WMULTDCX drafts → ITERLAWN tail; verbatim verification) + CODEX
 LEG 2 (VC40).**
+
+**ANNEX-APPLIER EXECUTED (2026-08-08; a9f45ab + this commit): both
+dated appends APPLIED, source-verified, no overstatement found.**
+(1) SIGMALAW §8 → GRTW2 tail (a9f45ab, after the OPEN2ATTACK annex):
+the (Σ-LAW box) of OPEN2ATTACK §6 CLOSED at attempt grade, map/sign
+corrected (ξ-formula composite, δ = ρ^{1−Σ}); (OPEN-2a) forward at
+m ≥ 2 PROVED at attempt grade; converse + W2-OPEN-2 above-r₀
+unchanged. Applied VERBATIM except the note-designated blank "verdict
+commit = the §6R fold" resolved to 59c1ff2. Companion: one dated
+pointer-annex on OPEN2ATTACK's own tail (its §6 box now displays
+refuted variants; superseded-by-SIGMALAW notice, no inline edit).
+(2) CODEX_WMULTDCX S6 drafts (e9ef949) → ITERLAWN tail (this commit):
+both drafts quoted VERBATIM inside a dated annex — (W-MULT-DCX-m)
+closed on T-scope(m) at ATTEMPT grade (TIER-0, 0 hostile passes, NOT
+accepted; W-arc verifier leg still queued), DCX-(n) exclusion removed
+on T-class(n) jointly with [RMG]/COR-A; the COND-B display ([RMG]
+S7.2/S8 row 13) carried by the same append without editing RMENGINE;
+grade fence appended (off-T-scope row 7 stays OPEN as frozen).
+Verification record: commits 8064ae3/59c1ff2/e9ef949 checked against
+their diffs; all SIGMALAW machine numbers re-checked against §6R
+(539/1,211/2,854/1,427/688/340/96/27/218-of-218, exit 0); CODEX
+margins 2h/3h/2h + (7.1) re-checked against S1/S3/S4; every grade
+word in both applied texts is "attempt", never "accepted".
