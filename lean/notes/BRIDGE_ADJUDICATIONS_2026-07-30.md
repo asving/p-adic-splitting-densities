@@ -12140,3 +12140,41 @@ boxed) — archive + this entry's commit DELEGATED to the r2 unit
 pipeline): r2 micro-repair (the two PE2 displays, minimality
 contract) THEN W-12 attempt 3 on the post-r2 text (may consult the
 archived draft as UNTRUSTED, must re-derive).**
+
+---
+
+## ★ CODEX WINDOW RESET (0% used, fresh 7-day) — THE QUEUE IS LIVE ★ + r2/K2RES adjudicated + W-12 casualty #4 — 2026-08-08 ~04:53 UTC
+
+**W-11 r2 ADJUDICATED (31506b3 + delegated ledger commit 187289f)**:
+both PE2 findings closed under the minimality contract (telescoping
+identity displayed + independently re-checked incl. the S7 smoke-table
+cross-check; v(2)=1 pinned at S1/S2.2/S5 with the ℤ₂[√2]
+counterexample; general law min(2w, 2e₀+h) displayed). Counter 0/2,
+PE3 next. NEW STANDING ERRATUM: W10_PROOF line ~30 carries the same
+unpinned "mixed ℤ_p-type" phrase (sealed note; out of r2's scope) —
+queued for W10's next annex.
+
+**K2RES ADJUDICATED (c9c17da; the fold that took three agents)**: 12/12
+families GREEN 0 violations, teeth 3/3; P-1..P-5/P-7 CONFIRMED, P-6
+MEASURED (67 promo rows, all REGULAR; every multi-cell promo group an
+opposite-sign net-0 pair), P-8 confirmed on the disclosed SKIP branch
+(VIVO budget box hit at 2,999/3,000s — accounting artifact disclosed).
+KR-COL CONFIRMS K2-THM-C, no RED. **Q2's residue program (K2-MULT-RES
+genre + g₀≥3, proved ONE genre at the seal) stands closed at attempt
+grade**: K2-L13..L17 + K2-THM-C + K2-COR-C supported. Provenance chain
+fully disclosed (fresh full re-run; run-1 partial agrees on shared
+blocks).
+
+**W-12: FOURTH API casualty** (server error mid-response; partial 3 =
+26.7KB archived to /tmp). Attempt 5 dispatched with NEW DISCIPLINE:
+commit the §S0-S1 skeleton within the first 15 minutes, then extend in
+committed increments — casualties must leave committed progress.
+
+**CODEX QUEUE (ledger order, window fresh): (1) W-MULT-DCX leg — Q2's
+grade cap (the S4.7 carry-over: the engine second-round clause closing
+both II-legs + DCX); (2) VC40; (3) note ratification legs (now on
+ACCEPTED texts); (4) the W2-OPEN-2/MacLane–Vaquié probe (external
+Vaquié; note: the OPEN2ATTACK narrowing to the Σ-LAW reshapes this
+leg — the probe should now target the Σ-LAW's literature shape); (5)
+WELDMASTER plan-review. FGMN numbering leg OFF the queue (closed
+locally 63091ce). Leg (1) launching now via a brief-builder agent.**
