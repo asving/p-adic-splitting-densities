@@ -13046,6 +13046,14 @@ BCFG tie symbolic n=2..7 with 24 blind rows. BCFG cite OWED-EXTERNAL;
 ψ₄ needs an n=8 symbolic build (flagged, unconsumed). [Entry via Edit
 during classifier block; commit delegated to the next unit/watchdog.]
 
+**WATCHDOG PENDING (classifier blocked the launch ~22:3x): the
+HE7 + HE6-Codex-PE1 wave — script SAVED at
+…/5b5b89b0…/workflows/scripts/he7-codexpe1.js (fresh launch, no
+resumeFromRunId). It carries the TWO FINAL LEMMAS (LIFT₂)/(SLOT₂) =
+HE6-BOX-1's exact residue + the HE6 Codex PE1 at the unit-specified
+attack order. Launch it first at the next firing; also commit this
+ledger tail (the MOMENTS + this entry are uncommitted Edit-appends).**
+
 ---
 
 ## ★★★ HE6: HE6.A PROVED BASE-CHANGE-FREE (both HE3 branches SUPERSEDED; fractional-height family needs no irreducibility — no Montes cite in the family) — [GENHN-HE(μ)] closes at every separable-residual leaf; THE PROGRAM'S REMAINING MATHEMATICS = HE6-BOX-1 = (LIFT₂)+(SLOT₂), two named level-2 lemmas, first live n=8 — 2026-08-08
