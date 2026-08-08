@@ -12750,3 +12750,27 @@ S11 pins all verified. r1 = one line; counter 0/2.
 battery seal + verdict + S9 finalization; resume with continuation
 note). W-12 PE3 died mid-response (checking partials; redo via
 resume).** GENH4 r1 dispatching as a micro-unit.
+
+---
+
+## OUTAGE STAND-DOWN (529 wave; Asvin: "go back to a timer") — pending set ledgered for the bi-hourly watchdog — 2026-08-08 ~17:0x UTC
+
+Per Asvin's instruction, no more immediate resumes into the storm; the
+bi-hourly watchdog (cron c986a06a, :23 every 2h) owns revival. THE
+PENDING SET (both died 2× to 529s, no partials at risk):
+(1) GENHN battery leg — proofs COMMITTED through S10 (338847c +
+b585355); runner draft on disk uncommitted; resume via
+Workflow({scriptPath: …/workflows/scripts/genhn-genh4pe1-wf_a1402ff6-520.js,
+resumeFromRunId: wf_a1402ff6-520}) — GENH4 PE1 replays cached.
+(2) W-12 PE3 — clean deaths, no report file; resume via
+Workflow({scriptPath: …/workflows/scripts/hex3pe3-w12pe3-wf_c0feafac-6df.js,
+resumeFromRunId: wf_c0feafac-6df}) — HEX3 PE3 (CLEAN, 1/2) replays
+cached. One wave per firing, GENHN first (it is the last composition).
+
+Also closed this hour: GENH4 r1 (dff23f8, the stale cell + both
+remarks; counter 0/2, PE2 queued); GENH4 PE1's resumed incarnation
+verified its predecessor's committed report idempotently (263a36f /
+8c984db stand). Queued when capacity returns, in order: GENHN battery
+→ W-12 PE3 → GENH4 PE2 + HEX3 PE4 (accepting) → GENIND PE1 → Codex
+legs (VC40b, ratification, Σ-LAW/Vaquié probe, WELDMASTER
+plan-review; window ~1% used).
