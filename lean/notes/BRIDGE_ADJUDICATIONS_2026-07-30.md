@@ -12925,3 +12925,10 @@ counter 0/2, PE5 next). RELAUNCHED: HE3 attempt 4 (waof3etof) + W-12
 PE4 attempt 3 (w7hai3m68, draft-adopt). PENDING FOR NEXT
 RESUME-SLOT: MOMENTS (resume wf_1002500c-012 via
 …/workflows/scripts/moments-wf_1002500c-012.js).**
+
+**HE3 attempt 4 = insta-death (73s, hard saturation confirmed). STAND
+DOWN per timer protocol. WATCHDOG PENDING SET (one per firing, priority
+order): (1) HE3 (resume wf_94f4984c-0da — hardened prompt in place);
+(2) MOMENTS (resume wf_1002500c-012); (3) W-12 PE4 attempt 3
+(w7hai3m68) still nominally running — if its notification shows a
+casualty, resume wf_420812db-993 (the /tmp draft survives).**
