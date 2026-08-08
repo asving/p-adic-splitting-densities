@@ -1,0 +1,2224 @@
+{
+ "rows": [
+  {
+   "tower": "EQ3G2A",
+   "key": [
+    2309,
+    2333
+   ],
+   "g0": 2,
+   "avail": [
+    0,
+    1
+   ],
+   "row_reg": true,
+   "prot_some": true,
+   "npromo": 1,
+   "ngroups": 1,
+   "promo_cells": [
+    {
+     "slot": [
+      0,
+      0,
+      0
+     ],
+     "group_fibers": 1,
+     "group_size": 1,
+     "group_prot": true,
+     "signed": [
+      1
+     ]
+    }
+   ]
+  },
+  {
+   "tower": "EQ3G2A",
+   "key": [
+    2319,
+    2321
+   ],
+   "g0": 2,
+   "avail": [
+    0,
+    1
+   ],
+   "row_reg": true,
+   "prot_some": true,
+   "npromo": 1,
+   "ngroups": 1,
+   "promo_cells": [
+    {
+     "slot": [
+      0,
+      0,
+      0
+     ],
+     "group_fibers": 1,
+     "group_size": 1,
+     "group_prot": true,
+     "signed": [
+      1
+     ]
+    }
+   ]
+  },
+  {
+   "tower": "EQ3G2B",
+   "key": [
+    1481,
+    1485
+   ],
+   "g0": 2,
+   "avail": [
+    0,
+    1
+   ],
+   "row_reg": true,
+   "prot_some": true,
+   "npromo": 1,
+   "ngroups": 1,
+   "promo_cells": [
+    {
+     "slot": [
+      0,
+      0,
+      0
+     ],
+     "group_fibers": 1,
+     "group_size": 1,
+     "group_prot": true,
+     "signed": [
+      1
+     ]
+    }
+   ]
+  },
+  {
+   "tower": "EQ3G2B",
+   "key": [
+    1481,
+    1497
+   ],
+   "g0": 2,
+   "avail": [
+    0,
+    1
+   ],
+   "row_reg": true,
+   "prot_some": true,
+   "npromo": 1,
+   "ngroups": 1,
+   "promo_cells": [
+    {
+     "slot": [
+      1,
+      0,
+      0
+     ],
+     "group_fibers": 1,
+     "group_size": 1,
+     "group_prot": true,
+     "signed": [
+      1
+     ]
+    }
+   ]
+  },
+  {
+   "tower": "EQ3G2B",
+   "key": [
+    1481,
+    1509
+   ],
+   "g0": 2,
+   "avail": [
+    0,
+    1
+   ],
+   "row_reg": true,
+   "prot_some": true,
+   "npromo": 1,
+   "ngroups": 1,
+   "promo_cells": [
+    {
+     "slot": [
+      2,
+      0,
+      0
+     ],
+     "group_fibers": 1,
+     "group_size": 1,
+     "group_prot": true,
+     "signed": [
+      1
+     ]
+    }
+   ]
+  },
+  {
+   "tower": "EQ3G2B",
+   "key": [
+    1485,
+    1493
+   ],
+   "g0": 2,
+   "avail": [
+    0,
+    1
+   ],
+   "row_reg": true,
+   "prot_some": true,
+   "npromo": 1,
+   "ngroups": 1,
+   "promo_cells": [
+    {
+     "slot": [
+      1,
+      0,
+      0
+     ],
+     "group_fibers": 1,
+     "group_size": 1,
+     "group_prot": true,
+     "signed": [
+      1
+     ]
+    }
+   ]
+  },
+  {
+   "tower": "EQ3G2B",
+   "key": [
+    1479,
+    1483
+   ],
+   "g0": 2,
+   "avail": [
+    0,
+    1
+   ],
+   "row_reg": true,
+   "prot_some": true,
+   "npromo": 3,
+   "ngroups": 2,
+   "promo_cells": [
+    {
+     "slot": [
+      0,
+      0,
+      0
+     ],
+     "group_fibers": 1,
+     "group_size": 2,
+     "group_prot": false,
+     "signed": [
+      0
+     ]
+    },
+    {
+     "slot": [
+      0,
+      0,
+      0
+     ],
+     "group_fibers": 1,
+     "group_size": 2,
+     "group_prot": false,
+     "signed": [
+      0
+     ]
+    },
+    {
+     "slot": [
+      3,
+      0,
+      0
+     ],
+     "group_fibers": 1,
+     "group_size": 1,
+     "group_prot": true,
+     "signed": [
+      1
+     ]
+    }
+   ]
+  },
+  {
+   "tower": "EQ3G2B",
+   "key": [
+    1479,
+    1495
+   ],
+   "g0": 2,
+   "avail": [
+    0,
+    1
+   ],
+   "row_reg": true,
+   "prot_some": true,
+   "npromo": 1,
+   "ngroups": 1,
+   "promo_cells": [
+    {
+     "slot": [
+      1,
+      0,
+      0
+     ],
+     "group_fibers": 1,
+     "group_size": 1,
+     "group_prot": true,
+     "signed": [
+      1
+     ]
+    }
+   ]
+  },
+  {
+   "tower": "EQ3G2B",
+   "key": [
+    1479,
+    1507
+   ],
+   "g0": 2,
+   "avail": [
+    0,
+    1
+   ],
+   "row_reg": true,
+   "prot_some": true,
+   "npromo": 1,
+   "ngroups": 1,
+   "promo_cells": [
+    {
+     "slot": [
+      2,
+      0,
+      0
+     ],
+     "group_fibers": 1,
+     "group_size": 1,
+     "group_prot": true,
+     "signed": [
+      1
+     ]
+    }
+   ]
+  },
+  {
+   "tower": "EQ3G2B",
+   "key": [
+    1483,
+    1491
+   ],
+   "g0": 2,
+   "avail": [
+    0,
+    1
+   ],
+   "row_reg": true,
+   "prot_some": true,
+   "npromo": 1,
+   "ngroups": 1,
+   "promo_cells": [
+    {
+     "slot": [
+      1,
+      0,
+      0
+     ],
+     "group_fibers": 1,
+     "group_size": 1,
+     "group_prot": true,
+     "signed": [
+      1
+     ]
+    }
+   ]
+  },
+  {
+   "tower": "EQ3G2B",
+   "key": [
+    1483,
+    1503
+   ],
+   "g0": 2,
+   "avail": [
+    0,
+    1
+   ],
+   "row_reg": true,
+   "prot_some": true,
+   "npromo": 1,
+   "ngroups": 1,
+   "promo_cells": [
+    {
+     "slot": [
+      2,
+      0,
+      0
+     ],
+     "group_fibers": 1,
+     "group_size": 1,
+     "group_prot": true,
+     "signed": [
+      1
+     ]
+    }
+   ]
+  },
+  {
+   "tower": "EQ3G2B",
+   "key": [
+    1487,
+    1487
+   ],
+   "g0": 2,
+   "avail": [
+    0,
+    1
+   ],
+   "row_reg": true,
+   "prot_some": true,
+   "npromo": 1,
+   "ngroups": 1,
+   "promo_cells": [
+    {
+     "slot": [
+      1,
+      0,
+      0
+     ],
+     "group_fibers": 1,
+     "group_size": 1,
+     "group_prot": true,
+     "signed": [
+      1
+     ]
+    }
+   ]
+  },
+  {
+   "tower": "EQ3G2B",
+   "key": [
+    1487,
+    1499
+   ],
+   "g0": 2,
+   "avail": [
+    0,
+    1
+   ],
+   "row_reg": true,
+   "prot_some": true,
+   "npromo": 1,
+   "ngroups": 1,
+   "promo_cells": [
+    {
+     "slot": [
+      2,
+      0,
+      0
+     ],
+     "group_fibers": 1,
+     "group_size": 1,
+     "group_prot": true,
+     "signed": [
+      1
+     ]
+    }
+   ]
+  },
+  {
+   "tower": "EQ3G2B",
+   "key": [
+    1487,
+    1511
+   ],
+   "g0": 2,
+   "avail": [
+    0,
+    1
+   ],
+   "row_reg": true,
+   "prot_some": true,
+   "npromo": 1,
+   "ngroups": 1,
+   "promo_cells": [
+    {
+     "slot": [
+      0,
+      0,
+      0
+     ],
+     "group_fibers": 1,
+     "group_size": 1,
+     "group_prot": true,
+     "signed": [
+      1
+     ]
+    }
+   ]
+  },
+  {
+   "tower": "EQ3G2B",
+   "key": [
+    1491,
+    1507
+   ],
+   "g0": 2,
+   "avail": [
+    0,
+    1
+   ],
+   "row_reg": true,
+   "prot_some": true,
+   "npromo": 1,
+   "ngroups": 1,
+   "promo_cells": [
+    {
+     "slot": [
+      0,
+      0,
+      0
+     ],
+     "group_fibers": 1,
+     "group_size": 1,
+     "group_prot": true,
+     "signed": [
+      1
+     ]
+    }
+   ]
+  },
+  {
+   "tower": "EQ3G2B",
+   "key": [
+    1495,
+    1503
+   ],
+   "g0": 2,
+   "avail": [
+    0,
+    1
+   ],
+   "row_reg": true,
+   "prot_some": true,
+   "npromo": 1,
+   "ngroups": 1,
+   "promo_cells": [
+    {
+     "slot": [
+      0,
+      0,
+      0
+     ],
+     "group_fibers": 1,
+     "group_size": 1,
+     "group_prot": true,
+     "signed": [
+      1
+     ]
+    }
+   ]
+  },
+  {
+   "tower": "EQ3G2B",
+   "key": [
+    1499,
+    1499
+   ],
+   "g0": 2,
+   "avail": [
+    0,
+    1
+   ],
+   "row_reg": true,
+   "prot_some": true,
+   "npromo": 3,
+   "ngroups": 2,
+   "promo_cells": [
+    {
+     "slot": [
+      0,
+      0,
+      0
+     ],
+     "group_fibers": 1,
+     "group_size": 2,
+     "group_prot": false,
+     "signed": [
+      0
+     ]
+    },
+    {
+     "slot": [
+      0,
+      0,
+      0
+     ],
+     "group_fibers": 1,
+     "group_size": 2,
+     "group_prot": false,
+     "signed": [
+      0
+     ]
+    },
+    {
+     "slot": [
+      3,
+      0,
+      0
+     ],
+     "group_fibers": 1,
+     "group_size": 1,
+     "group_prot": true,
+     "signed": [
+      1
+     ]
+    }
+   ]
+  },
+  {
+   "tower": "EQ3G2B",
+   "key": [
+    1499,
+    1511
+   ],
+   "g0": 2,
+   "avail": [
+    0,
+    1
+   ],
+   "row_reg": true,
+   "prot_some": true,
+   "npromo": 1,
+   "ngroups": 1,
+   "promo_cells": [
+    {
+     "slot": [
+      1,
+      0,
+      0
+     ],
+     "group_fibers": 1,
+     "group_size": 1,
+     "group_prot": true,
+     "signed": [
+      1
+     ]
+    }
+   ]
+  },
+  {
+   "tower": "K2G2P5B",
+   "key": [
+    1479,
+    1483
+   ],
+   "g0": 2,
+   "avail": [
+    0,
+    1
+   ],
+   "row_reg": true,
+   "prot_some": true,
+   "npromo": 1,
+   "ngroups": 1,
+   "promo_cells": [
+    {
+     "slot": [
+      0,
+      0,
+      0
+     ],
+     "group_fibers": 1,
+     "group_size": 1,
+     "group_prot": true,
+     "signed": [
+      1
+     ]
+    }
+   ]
+  },
+  {
+   "tower": "K2G2P5B",
+   "key": [
+    1499,
+    1499
+   ],
+   "g0": 2,
+   "avail": [
+    0,
+    1
+   ],
+   "row_reg": true,
+   "prot_some": true,
+   "npromo": 1,
+   "ngroups": 1,
+   "promo_cells": [
+    {
+     "slot": [
+      0,
+      0,
+      0
+     ],
+     "group_fibers": 1,
+     "group_size": 1,
+     "group_prot": true,
+     "signed": [
+      1
+     ]
+    }
+   ]
+  },
+  {
+   "tower": "K2W4G2Z",
+   "key": [
+    2595,
+    2599
+   ],
+   "g0": 2,
+   "avail": [
+    0,
+    1
+   ],
+   "row_reg": true,
+   "prot_some": true,
+   "npromo": 1,
+   "ngroups": 1,
+   "promo_cells": [
+    {
+     "slot": [
+      0,
+      0,
+      0,
+      0
+     ],
+     "group_fibers": 1,
+     "group_size": 1,
+     "group_prot": true,
+     "signed": [
+      1
+     ]
+    }
+   ]
+  },
+  {
+   "tower": "K2W4G2Z",
+   "key": [
+    2595,
+    2615
+   ],
+   "g0": 2,
+   "avail": [
+    0,
+    1
+   ],
+   "row_reg": true,
+   "prot_some": true,
+   "npromo": 1,
+   "ngroups": 1,
+   "promo_cells": [
+    {
+     "slot": [
+      1,
+      0,
+      0,
+      0
+     ],
+     "group_fibers": 1,
+     "group_size": 1,
+     "group_prot": true,
+     "signed": [
+      1
+     ]
+    }
+   ]
+  },
+  {
+   "tower": "SDG2AF",
+   "key": [
+    2309,
+    2333
+   ],
+   "g0": 2,
+   "avail": [
+    0,
+    1
+   ],
+   "row_reg": true,
+   "prot_some": true,
+   "npromo": 1,
+   "ngroups": 1,
+   "promo_cells": [
+    {
+     "slot": [
+      0,
+      0,
+      0
+     ],
+     "group_fibers": 1,
+     "group_size": 1,
+     "group_prot": true,
+     "signed": [
+      1
+     ]
+    }
+   ]
+  },
+  {
+   "tower": "SDG2AF",
+   "key": [
+    2319,
+    2321
+   ],
+   "g0": 2,
+   "avail": [
+    0,
+    1
+   ],
+   "row_reg": true,
+   "prot_some": true,
+   "npromo": 1,
+   "ngroups": 1,
+   "promo_cells": [
+    {
+     "slot": [
+      0,
+      0,
+      0
+     ],
+     "group_fibers": 1,
+     "group_size": 1,
+     "group_prot": true,
+     "signed": [
+      1
+     ]
+    }
+   ]
+  },
+  {
+   "tower": "SDG2AZ",
+   "key": [
+    2309,
+    2333
+   ],
+   "g0": 2,
+   "avail": [
+    0,
+    1
+   ],
+   "row_reg": true,
+   "prot_some": true,
+   "npromo": 1,
+   "ngroups": 1,
+   "promo_cells": [
+    {
+     "slot": [
+      0,
+      0,
+      0
+     ],
+     "group_fibers": 1,
+     "group_size": 1,
+     "group_prot": true,
+     "signed": [
+      1
+     ]
+    }
+   ]
+  },
+  {
+   "tower": "SDG2AZ",
+   "key": [
+    2319,
+    2321
+   ],
+   "g0": 2,
+   "avail": [
+    0,
+    1
+   ],
+   "row_reg": true,
+   "prot_some": true,
+   "npromo": 1,
+   "ngroups": 1,
+   "promo_cells": [
+    {
+     "slot": [
+      0,
+      0,
+      0
+     ],
+     "group_fibers": 1,
+     "group_size": 1,
+     "group_prot": true,
+     "signed": [
+      1
+     ]
+    }
+   ]
+  },
+  {
+   "tower": "SDG2BF",
+   "key": [
+    1479,
+    1483
+   ],
+   "g0": 2,
+   "avail": [
+    0,
+    1
+   ],
+   "row_reg": true,
+   "prot_some": true,
+   "npromo": 1,
+   "ngroups": 1,
+   "promo_cells": [
+    {
+     "slot": [
+      0,
+      0,
+      0
+     ],
+     "group_fibers": 1,
+     "group_size": 1,
+     "group_prot": true,
+     "signed": [
+      1
+     ]
+    }
+   ]
+  },
+  {
+   "tower": "SDG2BF",
+   "key": [
+    1499,
+    1499
+   ],
+   "g0": 2,
+   "avail": [
+    0,
+    1
+   ],
+   "row_reg": true,
+   "prot_some": true,
+   "npromo": 1,
+   "ngroups": 1,
+   "promo_cells": [
+    {
+     "slot": [
+      0,
+      0,
+      0
+     ],
+     "group_fibers": 1,
+     "group_size": 1,
+     "group_prot": true,
+     "signed": [
+      1
+     ]
+    }
+   ]
+  },
+  {
+   "tower": "SDG2BZ",
+   "key": [
+    1479,
+    1483
+   ],
+   "g0": 2,
+   "avail": [
+    0,
+    1
+   ],
+   "row_reg": true,
+   "prot_some": true,
+   "npromo": 1,
+   "ngroups": 1,
+   "promo_cells": [
+    {
+     "slot": [
+      0,
+      0,
+      0
+     ],
+     "group_fibers": 1,
+     "group_size": 1,
+     "group_prot": true,
+     "signed": [
+      1
+     ]
+    }
+   ]
+  },
+  {
+   "tower": "SDG2BZ",
+   "key": [
+    1499,
+    1499
+   ],
+   "g0": 2,
+   "avail": [
+    0,
+    1
+   ],
+   "row_reg": true,
+   "prot_some": true,
+   "npromo": 1,
+   "ngroups": 1,
+   "promo_cells": [
+    {
+     "slot": [
+      0,
+      0,
+      0
+     ],
+     "group_fibers": 1,
+     "group_size": 1,
+     "group_prot": true,
+     "signed": [
+      1
+     ]
+    }
+   ]
+  },
+  {
+   "tower": "SDW3G2F",
+   "key": [
+    675,
+    675
+   ],
+   "g0": 2,
+   "avail": [
+    0,
+    1
+   ],
+   "row_reg": true,
+   "prot_some": true,
+   "npromo": 1,
+   "ngroups": 1,
+   "promo_cells": [
+    {
+     "slot": [
+      1,
+      0,
+      0
+     ],
+     "group_fibers": 1,
+     "group_size": 1,
+     "group_prot": true,
+     "signed": [
+      1
+     ]
+    }
+   ]
+  },
+  {
+   "tower": "SDW3G2F",
+   "key": [
+    675,
+    683
+   ],
+   "g0": 2,
+   "avail": [
+    0,
+    1
+   ],
+   "row_reg": true,
+   "prot_some": true,
+   "npromo": 1,
+   "ngroups": 1,
+   "promo_cells": [
+    {
+     "slot": [
+      2,
+      0,
+      0
+     ],
+     "group_fibers": 1,
+     "group_size": 1,
+     "group_prot": true,
+     "signed": [
+      1
+     ]
+    }
+   ]
+  },
+  {
+   "tower": "SDW3G2F",
+   "key": [
+    675,
+    691
+   ],
+   "g0": 2,
+   "avail": [
+    0,
+    1
+   ],
+   "row_reg": true,
+   "prot_some": true,
+   "npromo": 1,
+   "ngroups": 1,
+   "promo_cells": [
+    {
+     "slot": [
+      0,
+      0,
+      0
+     ],
+     "group_fibers": 1,
+     "group_size": 1,
+     "group_prot": true,
+     "signed": [
+      1
+     ]
+    }
+   ]
+  },
+  {
+   "tower": "SDW3G2F",
+   "key": [
+    683,
+    683
+   ],
+   "g0": 2,
+   "avail": [
+    0,
+    1
+   ],
+   "row_reg": true,
+   "prot_some": true,
+   "npromo": 2,
+   "ngroups": 2,
+   "promo_cells": [
+    {
+     "slot": [
+      0,
+      0,
+      0
+     ],
+     "group_fibers": 1,
+     "group_size": 1,
+     "group_prot": true,
+     "signed": [
+      -1
+     ]
+    },
+    {
+     "slot": [
+      3,
+      0,
+      0
+     ],
+     "group_fibers": 1,
+     "group_size": 1,
+     "group_prot": true,
+     "signed": [
+      1
+     ]
+    }
+   ]
+  },
+  {
+   "tower": "SDW3G2F",
+   "key": [
+    683,
+    691
+   ],
+   "g0": 2,
+   "avail": [
+    0,
+    1
+   ],
+   "row_reg": true,
+   "prot_some": true,
+   "npromo": 1,
+   "ngroups": 1,
+   "promo_cells": [
+    {
+     "slot": [
+      1,
+      0,
+      0
+     ],
+     "group_fibers": 1,
+     "group_size": 1,
+     "group_prot": true,
+     "signed": [
+      1
+     ]
+    }
+   ]
+  },
+  {
+   "tower": "SDW3G2F",
+   "key": [
+    673,
+    679
+   ],
+   "g0": 2,
+   "avail": [
+    0,
+    1
+   ],
+   "row_reg": true,
+   "prot_some": true,
+   "npromo": 1,
+   "ngroups": 1,
+   "promo_cells": [
+    {
+     "slot": [
+      2,
+      0,
+      0
+     ],
+     "group_fibers": 1,
+     "group_size": 1,
+     "group_prot": true,
+     "signed": [
+      1
+     ]
+    }
+   ]
+  },
+  {
+   "tower": "SDW3G2F",
+   "key": [
+    673,
+    687
+   ],
+   "g0": 2,
+   "avail": [
+    0,
+    1
+   ],
+   "row_reg": true,
+   "prot_some": true,
+   "npromo": 2,
+   "ngroups": 2,
+   "promo_cells": [
+    {
+     "slot": [
+      0,
+      0,
+      0
+     ],
+     "group_fibers": 1,
+     "group_size": 1,
+     "group_prot": true,
+     "signed": [
+      -1
+     ]
+    },
+    {
+     "slot": [
+      3,
+      0,
+      0
+     ],
+     "group_fibers": 1,
+     "group_size": 1,
+     "group_prot": true,
+     "signed": [
+      1
+     ]
+    }
+   ]
+  },
+  {
+   "tower": "SDW3G2F",
+   "key": [
+    673,
+    695
+   ],
+   "g0": 2,
+   "avail": [
+    0,
+    1
+   ],
+   "row_reg": true,
+   "prot_some": true,
+   "npromo": 1,
+   "ngroups": 1,
+   "promo_cells": [
+    {
+     "slot": [
+      1,
+      0,
+      0
+     ],
+     "group_fibers": 1,
+     "group_size": 1,
+     "group_prot": true,
+     "signed": [
+      1
+     ]
+    }
+   ]
+  },
+  {
+   "tower": "SDW3G2F",
+   "key": [
+    679,
+    681
+   ],
+   "g0": 2,
+   "avail": [
+    0,
+    1
+   ],
+   "row_reg": true,
+   "prot_some": true,
+   "npromo": 1,
+   "ngroups": 1,
+   "promo_cells": [
+    {
+     "slot": [
+      0,
+      0,
+      0
+     ],
+     "group_fibers": 1,
+     "group_size": 1,
+     "group_prot": true,
+     "signed": [
+      1
+     ]
+    }
+   ]
+  },
+  {
+   "tower": "SDW3G2F",
+   "key": [
+    679,
+    689
+   ],
+   "g0": 2,
+   "avail": [
+    0,
+    1
+   ],
+   "row_reg": true,
+   "prot_some": true,
+   "npromo": 1,
+   "ngroups": 1,
+   "promo_cells": [
+    {
+     "slot": [
+      1,
+      0,
+      0
+     ],
+     "group_fibers": 1,
+     "group_size": 1,
+     "group_prot": true,
+     "signed": [
+      1
+     ]
+    }
+   ]
+  },
+  {
+   "tower": "SDW3G2F",
+   "key": [
+    681,
+    687
+   ],
+   "g0": 2,
+   "avail": [
+    0,
+    1
+   ],
+   "row_reg": true,
+   "prot_some": true,
+   "npromo": 1,
+   "ngroups": 1,
+   "promo_cells": [
+    {
+     "slot": [
+      1,
+      0,
+      0
+     ],
+     "group_fibers": 1,
+     "group_size": 1,
+     "group_prot": true,
+     "signed": [
+      1
+     ]
+    }
+   ]
+  },
+  {
+   "tower": "SDW3G2F",
+   "key": [
+    687,
+    689
+   ],
+   "g0": 2,
+   "avail": [
+    0,
+    1
+   ],
+   "row_reg": true,
+   "prot_some": true,
+   "npromo": 1,
+   "ngroups": 1,
+   "promo_cells": [
+    {
+     "slot": [
+      2,
+      0,
+      0
+     ],
+     "group_fibers": 1,
+     "group_size": 1,
+     "group_prot": true,
+     "signed": [
+      1
+     ]
+    }
+   ]
+  },
+  {
+   "tower": "SDW3G2F",
+   "key": [
+    689,
+    695
+   ],
+   "g0": 2,
+   "avail": [
+    0,
+    1
+   ],
+   "row_reg": true,
+   "prot_some": true,
+   "npromo": 1,
+   "ngroups": 1,
+   "promo_cells": [
+    {
+     "slot": [
+      0,
+      0,
+      0
+     ],
+     "group_fibers": 1,
+     "group_size": 1,
+     "group_prot": true,
+     "signed": [
+      1
+     ]
+    }
+   ]
+  },
+  {
+   "tower": "SDW4G2F",
+   "key": [
+    2595,
+    2599
+   ],
+   "g0": 2,
+   "avail": [
+    0,
+    1
+   ],
+   "row_reg": true,
+   "prot_some": true,
+   "npromo": 1,
+   "ngroups": 1,
+   "promo_cells": [
+    {
+     "slot": [
+      0,
+      0,
+      0,
+      0
+     ],
+     "group_fibers": 1,
+     "group_size": 1,
+     "group_prot": true,
+     "signed": [
+      1
+     ]
+    }
+   ]
+  },
+  {
+   "tower": "SDW4G2F",
+   "key": [
+    2595,
+    2615
+   ],
+   "g0": 2,
+   "avail": [
+    0,
+    1
+   ],
+   "row_reg": true,
+   "prot_some": true,
+   "npromo": 1,
+   "ngroups": 1,
+   "promo_cells": [
+    {
+     "slot": [
+      1,
+      0,
+      0,
+      0
+     ],
+     "group_fibers": 1,
+     "group_size": 1,
+     "group_prot": true,
+     "signed": [
+      1
+     ]
+    }
+   ]
+  },
+  {
+   "tower": "W3G2A",
+   "key": [
+    683,
+    683
+   ],
+   "g0": 2,
+   "avail": [
+    0,
+    1
+   ],
+   "row_reg": true,
+   "prot_some": true,
+   "npromo": 3,
+   "ngroups": 2,
+   "promo_cells": [
+    {
+     "slot": [
+      0,
+      0,
+      0
+     ],
+     "group_fibers": 1,
+     "group_size": 2,
+     "group_prot": false,
+     "signed": [
+      0
+     ]
+    },
+    {
+     "slot": [
+      0,
+      0,
+      0
+     ],
+     "group_fibers": 1,
+     "group_size": 2,
+     "group_prot": false,
+     "signed": [
+      0
+     ]
+    },
+    {
+     "slot": [
+      3,
+      0,
+      0
+     ],
+     "group_fibers": 1,
+     "group_size": 1,
+     "group_prot": true,
+     "signed": [
+      1
+     ]
+    }
+   ]
+  },
+  {
+   "tower": "W3G2A",
+   "key": [
+    673,
+    687
+   ],
+   "g0": 2,
+   "avail": [
+    0,
+    1
+   ],
+   "row_reg": true,
+   "prot_some": true,
+   "npromo": 3,
+   "ngroups": 2,
+   "promo_cells": [
+    {
+     "slot": [
+      0,
+      0,
+      0
+     ],
+     "group_fibers": 1,
+     "group_size": 2,
+     "group_prot": false,
+     "signed": [
+      0
+     ]
+    },
+    {
+     "slot": [
+      0,
+      0,
+      0
+     ],
+     "group_fibers": 1,
+     "group_size": 2,
+     "group_prot": false,
+     "signed": [
+      0
+     ]
+    },
+    {
+     "slot": [
+      3,
+      0,
+      0
+     ],
+     "group_fibers": 1,
+     "group_size": 1,
+     "group_prot": true,
+     "signed": [
+      1
+     ]
+    }
+   ]
+  },
+  {
+   "tower": "W3G2A",
+   "key": [
+    675,
+    691
+   ],
+   "g0": 2,
+   "avail": [
+    0,
+    1
+   ],
+   "row_reg": true,
+   "prot_some": true,
+   "npromo": 1,
+   "ngroups": 1,
+   "promo_cells": [
+    {
+     "slot": [
+      0,
+      0,
+      0
+     ],
+     "group_fibers": 1,
+     "group_size": 1,
+     "group_prot": true,
+     "signed": [
+      1
+     ]
+    }
+   ]
+  },
+  {
+   "tower": "W3G2A",
+   "key": [
+    683,
+    691
+   ],
+   "g0": 2,
+   "avail": [
+    0,
+    1
+   ],
+   "row_reg": true,
+   "prot_some": true,
+   "npromo": 1,
+   "ngroups": 1,
+   "promo_cells": [
+    {
+     "slot": [
+      1,
+      0,
+      0
+     ],
+     "group_fibers": 1,
+     "group_size": 1,
+     "group_prot": true,
+     "signed": [
+      1
+     ]
+    }
+   ]
+  },
+  {
+   "tower": "W3G2A",
+   "key": [
+    679,
+    681
+   ],
+   "g0": 2,
+   "avail": [
+    0,
+    1
+   ],
+   "row_reg": true,
+   "prot_some": true,
+   "npromo": 1,
+   "ngroups": 1,
+   "promo_cells": [
+    {
+     "slot": [
+      0,
+      0,
+      0
+     ],
+     "group_fibers": 1,
+     "group_size": 1,
+     "group_prot": true,
+     "signed": [
+      1
+     ]
+    }
+   ]
+  },
+  {
+   "tower": "W3G2A",
+   "key": [
+    681,
+    687
+   ],
+   "g0": 2,
+   "avail": [
+    0,
+    1
+   ],
+   "row_reg": true,
+   "prot_some": true,
+   "npromo": 1,
+   "ngroups": 1,
+   "promo_cells": [
+    {
+     "slot": [
+      1,
+      0,
+      0
+     ],
+     "group_fibers": 1,
+     "group_size": 1,
+     "group_prot": true,
+     "signed": [
+      1
+     ]
+    }
+   ]
+  },
+  {
+   "tower": "W3G2A",
+   "key": [
+    689,
+    695
+   ],
+   "g0": 2,
+   "avail": [
+    0,
+    1
+   ],
+   "row_reg": true,
+   "prot_some": true,
+   "npromo": 1,
+   "ngroups": 1,
+   "promo_cells": [
+    {
+     "slot": [
+      0,
+      0,
+      0
+     ],
+     "group_fibers": 1,
+     "group_size": 1,
+     "group_prot": true,
+     "signed": [
+      1
+     ]
+    }
+   ]
+  },
+  {
+   "tower": "W3G2A",
+   "key": [
+    673,
+    695
+   ],
+   "g0": 2,
+   "avail": [
+    0,
+    1
+   ],
+   "row_reg": true,
+   "prot_some": true,
+   "npromo": 1,
+   "ngroups": 1,
+   "promo_cells": [
+    {
+     "slot": [
+      1,
+      0,
+      0
+     ],
+     "group_fibers": 1,
+     "group_size": 1,
+     "group_prot": true,
+     "signed": [
+      1
+     ]
+    }
+   ]
+  },
+  {
+   "tower": "W3G2A",
+   "key": [
+    675,
+    675
+   ],
+   "g0": 2,
+   "avail": [
+    0,
+    1
+   ],
+   "row_reg": true,
+   "prot_some": true,
+   "npromo": 1,
+   "ngroups": 1,
+   "promo_cells": [
+    {
+     "slot": [
+      1,
+      0,
+      0
+     ],
+     "group_fibers": 1,
+     "group_size": 1,
+     "group_prot": true,
+     "signed": [
+      1
+     ]
+    }
+   ]
+  },
+  {
+   "tower": "W3G2A",
+   "key": [
+    675,
+    683
+   ],
+   "g0": 2,
+   "avail": [
+    0,
+    1
+   ],
+   "row_reg": true,
+   "prot_some": true,
+   "npromo": 1,
+   "ngroups": 1,
+   "promo_cells": [
+    {
+     "slot": [
+      2,
+      0,
+      0
+     ],
+     "group_fibers": 1,
+     "group_size": 1,
+     "group_prot": true,
+     "signed": [
+      1
+     ]
+    }
+   ]
+  },
+  {
+   "tower": "W3G2A",
+   "key": [
+    679,
+    689
+   ],
+   "g0": 2,
+   "avail": [
+    0,
+    1
+   ],
+   "row_reg": true,
+   "prot_some": true,
+   "npromo": 1,
+   "ngroups": 1,
+   "promo_cells": [
+    {
+     "slot": [
+      1,
+      0,
+      0
+     ],
+     "group_fibers": 1,
+     "group_size": 1,
+     "group_prot": true,
+     "signed": [
+      1
+     ]
+    }
+   ]
+  },
+  {
+   "tower": "W3G2A",
+   "key": [
+    687,
+    689
+   ],
+   "g0": 2,
+   "avail": [
+    0,
+    1
+   ],
+   "row_reg": true,
+   "prot_some": true,
+   "npromo": 1,
+   "ngroups": 1,
+   "promo_cells": [
+    {
+     "slot": [
+      2,
+      0,
+      0
+     ],
+     "group_fibers": 1,
+     "group_size": 1,
+     "group_prot": true,
+     "signed": [
+      1
+     ]
+    }
+   ]
+  },
+  {
+   "tower": "W3G2A",
+   "key": [
+    673,
+    679
+   ],
+   "g0": 2,
+   "avail": [
+    0,
+    1
+   ],
+   "row_reg": true,
+   "prot_some": true,
+   "npromo": 1,
+   "ngroups": 1,
+   "promo_cells": [
+    {
+     "slot": [
+      2,
+      0,
+      0
+     ],
+     "group_fibers": 1,
+     "group_size": 1,
+     "group_prot": true,
+     "signed": [
+      1
+     ]
+    }
+   ]
+  },
+  {
+   "tower": "W3G2B",
+   "key": [
+    1071,
+    1075
+   ],
+   "g0": 2,
+   "avail": [
+    0,
+    1
+   ],
+   "row_reg": true,
+   "prot_some": true,
+   "npromo": 1,
+   "ngroups": 1,
+   "promo_cells": [
+    {
+     "slot": [
+      0,
+      0,
+      0
+     ],
+     "group_fibers": 1,
+     "group_size": 1,
+     "group_prot": true,
+     "signed": [
+      1
+     ]
+    }
+   ]
+  },
+  {
+   "tower": "W3G2B",
+   "key": [
+    1059,
+    1063
+   ],
+   "g0": 2,
+   "avail": [
+    0,
+    1
+   ],
+   "row_reg": true,
+   "prot_some": true,
+   "npromo": 1,
+   "ngroups": 1,
+   "promo_cells": [
+    {
+     "slot": [
+      0,
+      0,
+      0
+     ],
+     "group_fibers": 1,
+     "group_size": 1,
+     "group_prot": true,
+     "signed": [
+      1
+     ]
+    }
+   ]
+  },
+  {
+   "tower": "W3G2B",
+   "key": [
+    1061,
+    1079
+   ],
+   "g0": 2,
+   "avail": [
+    0,
+    1
+   ],
+   "row_reg": true,
+   "prot_some": true,
+   "npromo": 1,
+   "ngroups": 1,
+   "promo_cells": [
+    {
+     "slot": [
+      0,
+      0,
+      0
+     ],
+     "group_fibers": 1,
+     "group_size": 1,
+     "group_prot": true,
+     "signed": [
+      1
+     ]
+    }
+   ]
+  },
+  {
+   "tower": "W3G2B",
+   "key": [
+    1067,
+    1073
+   ],
+   "g0": 2,
+   "avail": [
+    0,
+    1
+   ],
+   "row_reg": true,
+   "prot_some": true,
+   "npromo": 1,
+   "ngroups": 1,
+   "promo_cells": [
+    {
+     "slot": [
+      0,
+      0,
+      0
+     ],
+     "group_fibers": 1,
+     "group_size": 1,
+     "group_prot": true,
+     "signed": [
+      1
+     ]
+    }
+   ]
+  },
+  {
+   "tower": "W3G2B",
+   "key": [
+    1063,
+    1071
+   ],
+   "g0": 2,
+   "avail": [
+    0,
+    1
+   ],
+   "row_reg": true,
+   "prot_some": true,
+   "npromo": 1,
+   "ngroups": 1,
+   "promo_cells": [
+    {
+     "slot": [
+      1,
+      0,
+      0
+     ],
+     "group_fibers": 1,
+     "group_size": 1,
+     "group_prot": true,
+     "signed": [
+      1
+     ]
+    }
+   ]
+  },
+  {
+   "tower": "W3G2B",
+   "key": [
+    1073,
+    1079
+   ],
+   "g0": 2,
+   "avail": [
+    0,
+    1
+   ],
+   "row_reg": true,
+   "prot_some": true,
+   "npromo": 1,
+   "ngroups": 1,
+   "promo_cells": [
+    {
+     "slot": [
+      1,
+      0,
+      0
+     ],
+     "group_fibers": 1,
+     "group_size": 1,
+     "group_prot": true,
+     "signed": [
+      1
+     ]
+    }
+   ]
+  },
+  {
+   "tower": "W3G2P5",
+   "key": [
+    455,
+    459
+   ],
+   "g0": 2,
+   "avail": [
+    0,
+    1
+   ],
+   "row_reg": true,
+   "prot_some": true,
+   "npromo": 1,
+   "ngroups": 1,
+   "promo_cells": [
+    {
+     "slot": [
+      0,
+      0,
+      0
+     ],
+     "group_fibers": 1,
+     "group_size": 1,
+     "group_prot": true,
+     "signed": [
+      1
+     ]
+    }
+   ]
+  },
+  {
+   "tower": "XM3B",
+   "key": [
+    1035,
+    1051
+   ],
+   "g0": 2,
+   "avail": [
+    0,
+    1
+   ],
+   "row_reg": true,
+   "prot_some": true,
+   "npromo": 1,
+   "ngroups": 1,
+   "promo_cells": [
+    {
+     "slot": [
+      0,
+      0,
+      0
+     ],
+     "group_fibers": 1,
+     "group_size": 1,
+     "group_prot": true,
+     "signed": [
+      1
+     ]
+    }
+   ]
+  },
+  {
+   "tower": "XM3B",
+   "key": [
+    1041,
+    1043
+   ],
+   "g0": 2,
+   "avail": [
+    0,
+    1
+   ],
+   "row_reg": true,
+   "prot_some": true,
+   "npromo": 1,
+   "ngroups": 1,
+   "promo_cells": [
+    {
+     "slot": [
+      0,
+      0,
+      0
+     ],
+     "group_fibers": 1,
+     "group_size": 1,
+     "group_prot": true,
+     "signed": [
+      1
+     ]
+    }
+   ]
+  }
+ ],
+ "summary": {
+  "promo_rows": 67,
+  "reg_rows": 67,
+  "nonreg_rows": 0,
+  "promo_cells_in_single_fiber_groups": 77,
+  "promo_cells_in_glued_groups": 0,
+  "rows_without_protected_group": 0,
+  "elapsed": 0.7
+ }
+}
