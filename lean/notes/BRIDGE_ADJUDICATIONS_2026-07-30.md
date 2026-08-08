@@ -12601,3 +12601,26 @@ laws attached. Proving Q22-L1/L2/L3 discharges [GENIND-H] at the E/F
 genres ⟹ P(4) fires (quartics = third complete degree) AND the
 induction machinery validates at the first composite degree. NEXT:
 the GENH4 prover unit.**
+
+---
+
+## ★★ THEOREM W-11(n=2) ACCEPTED AT 2/2 (PE3+PE4 clean; disc-fibration fresh route + the arc's first mutant audit) — THE FIRST DENSITY-SIDE ACCEPTANCE; the n=2 slice of the uniformity theorem verified at the full bar — 2026-08-08
+
+Acceptance record at the note tail (this commit; freeze stamp
+byte-frozen since 31506b3). SEVENTH accepted note. Downstream: W-12,
+HMENU3, GENIND consume W-11 at now-ACCEPTED grade — their S9 stacks
+upgrade at their next folds.
+
+**Same wave: SIGMALAW r1 (6b24942)** — the eigen-coefficient law
+(EC-q) transcribed with PE1's full on-perimeter derivation; induction
+restated as the (VD-q)+(EC-q)+(SC-q) ladder; the doubly-twisted
+counter-regime recorded as an instrument note; tooth-leak counts
+corrected (INVREC = 218 exactly). Counter 0/2, PE2 next. ORCHESTRATOR
+ACTION OWED (flagged by r1): the GRTW2 §8-annex mirror carries the
+sealed tooth-leaked counts — dated annex correction applied at THIS
+commit: see GRTW2 tail.
+
+**HMENU3 PE2 (af988ee): 0C + 0G + 2 MINOR** (the r1-introduced carry
+misassignment on the B-RAM aggregates — committed pin contradicts the
+(3u+1)/2 reading; a fired-clause record gap vs HEX3's H-2(i), cured
+by HEX3 r1 six minutes later). Word-level r2 owed, then PE3.
