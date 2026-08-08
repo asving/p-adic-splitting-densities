@@ -2,8 +2,11 @@
 
 **Unit:** HMENU3 (the (hMenu-3) attack; W-12's BOX-2 = the TRP
 refinement-family menu, the last named hypothesis of THEOREM W-12.D at
-n = 3 after HEX3 discharged (hExhaust-3)). **Attempt grade 0/2**
-(composed; no hostile arc yet). **Instrument:** sealed two-commit
+n = 3 after HEX3 discharged (hExhaust-3)). **Attempt grade 0/2** (arc:
+composed → PE1 NOT CLEAN 0C+1G+1m @ f4f7b03 → r1 THIS REPAIR,
+note-only, [r1] tags, minimality contract — the stale W-12
+supplier-arc display (GAP) + the HM3.B integer-coefficient clause
+(minor) repaired in place; counter 0/2; PE2 next). **Instrument:** sealed two-commit
 battery `verification/openmath/hmenu3_checks.py` — 41 census rows =
 94,824,902 per-center TRP states read individually with the FULL
 refinement history recorded per state (18 ℤ_p rows incl. q = 13, 23
@@ -59,7 +62,11 @@ of core families F, each with a splitting type σ_F, a parameter set
 P_F ⊆ ℤ^{d_F}_{≥0} that is a finite union of shifted products of
 arithmetic progressions, an affine visibility threshold ν_F, and an
 exact window count dens_F(x)·q^{3N} with dens_F = c_F(q)·q^{−ℓ_F(x)},
-ℓ_F affine with strictly positive integer coefficients — families
+ℓ_F affine with strictly positive parameter coefficients [r1, PE1
+FINDING 2 seam: the sealed "integer" here misquoted W-12.D §S1(iii),
+which demands strict positivity only; the geometric-series display
+consumes m_i·b_i ∈ ℤ_{>0} + ℓ(base) ∈ ℤ (W-12 [r1 m1]/[r2 G3]) —
+see the HM3.B repair bracket] — families
 pairwise DISJOINT, all data q- and characteristic-independent; (A0):
 every window member of a core family has ALL its disc ≠ 0 lifts of
 the family's σ; (A2): r(N) := q^{3N} − Σ_{visible} count → 0 after
@@ -161,8 +168,20 @@ keys PARTITION the state space (disjointness is structural).
 > Every family is (A1)-ADMISSIBLE: parameter set a shifted product of
 > arithmetic progressions (u odd = 1+2ℤ_{≥0}; h with 3∤h = the union
 > (1+3ℤ)∪(2+3ℤ); all others full shifted lattices), exponent ℓ affine
-> with strictly positive integer coefficients (m carries 5, k/t carry
-> ≥ 3, w/j/u/k′ carry ≥ 1), visibility ν affine (= the deepest pinned
+> with strictly positive coefficients, integer in AP-INDEX coordinates
+> (m carries 5, k/t carry ≥ 3, w/j/k′ carry ≥ 1; the odd RAM-type
+> parameters u/u₁ carry 3/2 in RAW coordinates — the two consulted
+> windows contribute u + (u+1)/2, e.g. LINRAM2's ℓ term
+> u₁ + (u₁+1)/2 = (3u₁+1)/2 — which becomes integer carry 3 at the AP
+> index u = 2i−1) [r1, PE1 FINDING 2: the sealed "integer
+> coefficients (… w/j/u/k′ carry ≥ 1)" is false in the raw odd
+> parameters (carry 3/2, a half-integer); what (A1) demands is only
+> strict positivity (W-12.D §S1(iii)), and what the geometric-series
+> display consumes is only m_i·b_i ∈ ℤ_{>0} (W-12.D Step 1's
+> [r1 m1]/[r2 G3] guard), which holds at every family here —
+> (3/2)·2 = 3 on the step-2 progressions — so admissibility and every
+> series stand, PE1 having independently re-summed all of them],
+> visibility ν affine (= the deepest pinned
 > height + 1 = the loop bound), one c_F(q) per family (b's two
 > regimes split each B-family into its m = 0 and m ≥ 1 variants —
 > a finite relabeling), all data single q-polynomial expressions,
@@ -191,7 +210,11 @@ keys PARTITION the state space (disjointness is structural).
 >
 > **COROLLARY HM3.D (THE UNIFORM CUBIC DENSITIES; W-12.D fires at
 > n = 3).** Assuming exactly the displayed conditionality stack (S9:
-> W-12.D as proved @ its 0/2-post-r1 arc; W-11 @ its accepted pins;
+> W-12.D as proved @ its 0/2 arc — post-r2 99f1813 as of this repair,
+> PE3 next [r1, PE1 FINDING 1: the sealed "0/2-post-r1 arc" was stale
+> at seal time — W12 PE2 (NOT CLEAN 0C+3G+2m, 1be15d2) had landed 26
+> minutes before the seal 64d3ff9; see S9 bullet 1 for the
+> fired-clause check]; W-11 @ its accepted pins;
 > W-12.A/C + W12-L0/L1 @ the w12 seal; HEX3 @ 0/2; this note @ 0/2),
 > for every prime power q and BOTH characteristics, wild primes
 > included, the cubic splitting densities are (Φ := q⁴+q³+q²+q+1):
@@ -449,9 +472,18 @@ ramified cubics behind a refinement step — all confirmed {(3,1)}).
 * **HM3-BOX-1 (σ-residue; inherited).** HEX3-BOX-1 verbatim: the
   exact U₃^σ law needs the tail-σ-certification lemma. Not consumed
   here (S5.4). Whether U₃^σ is characteristic-independent stays open.
-* **HM3-BOX-2 (grades).** This note 0/2, no hostile arc; the
-  corollary inherits every supplier grade in S9 — in particular
-  W-12's own PE arc (r1 done, PE2 owed) and HEX3's unbegun arc. A
+* **HM3-BOX-2 (grades).** This note 0/2 (PE1 NOT CLEAN 0C+1G+1m @
+  f4f7b03; r1 applied [r1]); the corollary inherits every supplier
+  grade in S9 — in particular W-12's own PE arc ~~(r1 done, PE2
+  owed)~~ **[r1, PE1 FINDING 1 — CURRENT: PE2 ran NOT CLEAN
+  0C+3G+2m @ 1be15d2, landed 26 minutes BEFORE this note's seal
+  64d3ff9, so the sealed "PE2 owed" was stale at birth; r2 landed @
+  99f1813 (all five PE2 findings repaired note-only, and this note's
+  S8.1 BOX-2 annex applied there verbatim); counter 0/2, PE3 next.
+  None of PE2's three gaps touches a clause HM3.D fires — gap 2's
+  DBL SPLIT-TAIL leg is exactly S5.3's displayed term (PE1-verified)**
+  and HEX3's arc (PE1 NOT CLEAN 0C+2G+2m @ d177fd8, counter 0/2, r1
+  owed [r1]). A
   finding against ANY of W-11/W-12/HEX3 propagates here; the
   falsifier map is P-10.
 * **HM3-BOX-3 (instrument seams).** The reader/predictor are fresh
@@ -609,8 +641,21 @@ appends §S10 from `hmenu3_checks_output.txt` /
 ## S9. CONDITIONALITY STACK (consumed suppliers, as-of pins)
 
 * **THEOREM W-12.D** @ w12 seal f669cb0 / verdict c16c717 /
-  adjudication 97122f2 / r1 repair ba0d1a4 (arc 0/2, PE1 adjudicated,
-  PE2 owed) — the reduction consumed as proved; its Steps 1–4 are
+  adjudication 97122f2 / r1 repair ba0d1a4 ~~(arc 0/2, PE1
+  adjudicated, PE2 owed)~~ **[r1, PE1 FINDING 1 — arc CURRENT: PE2
+  ran NOT CLEAN 0C+3G+2m @ 1be15d2, landed 2026-08-08 08:14Z, 26
+  minutes BEFORE this note's seal 64d3ff9 (08:40Z) — the sealed "PE2
+  owed" misdescribed the supplier state; r2 landed @ 99f1813 (all
+  five PE2 findings repaired note-only; this note's S8.1 BOX-2 annex
+  applied there verbatim); counter 0/2, PE3 next. Fired-clause check
+  (PE1's): none of the three PE2 gaps touches Steps 1–4 as consumed —
+  gap 1 (the a ≡ b (mod p) disc-0 sub-genre) is fence wording on
+  disc-0 members, outside HM3.C's level-0-type partition; gap 2's
+  (hExhaust-3) DBL SPLIT-TAIL boundary leg is EXACTLY the term S5.3
+  displays (this note already carries that mass in r(N)); gap 3's
+  integrality seam is the m_i·b_i ∈ ℤ guard, satisfied at every
+  family here (HM3.B repair bracket)]** — the reduction consumed as
+  proved; its Steps 1–4 are
   what COROLLARY HM3.D fires.
 * **THEOREM W-12.A (order-1 laws) + S2.4 depth-0 completeness +
   LEMMA W12-L0 + LEMMA W12-L1** @ the same pins — the depth-0 laws,
@@ -706,12 +751,23 @@ Prediction scorecard (all ten confirmed):
 composed, machine-sealed on 41 rows both characteristics with the
 menu checked key by key in both directions and the σ side
 independently oracled on every deep member of four rows — (hMenu-3)
-is DISCHARGED at composition grade (attempt 0/2; the hostile arc has
-not begun). COROLLARY HM3.D therefore stands at the S9 stack's
+is DISCHARGED at composition grade (attempt 0/2; ~~the hostile arc
+has not begun~~ **[r1] arc: composed → PE1 NOT CLEAN 0C+1G+1m @
+f4f7b03 (every mathematical charge CONFIRMED; machine leg re-run
+GREEN 183,387/0 with the seal md5 intact; independent fresh-route
+reader key-for-key on 6 rows / 113,838 states — arc facts) → r1 THIS
+REPAIR (both findings, note-only, [r1] tags, minimality contract;
+runner + artifacts byte-frozen at seal 64d3ff9); counter 0/2; PE2
+next**). COROLLARY HM3.D therefore stands at the S9 stack's
 composition grade: W-12.D FIRES AT n = 3 — the five cubic splitting
 densities R_τ(q) ∈ ℚ(q), one expression per type at every prime
 power, both characteristics, wild included, Σ_τ R_τ = 1 — the first
 COMPLETE degree instance of the uniformity directive beyond n = 2,
-conditional exactly on the displayed arc grades (W-12 PE2 owed; HEX3
-and this note's hostile arcs unbegun). HEX3-BOX-1 (the exact U₃^σ
+conditional exactly on the displayed arc grades ~~(W-12 PE2 owed;
+HEX3 and this note's hostile arcs unbegun)~~ **[r1, PE1 FINDING 1 —
+CURRENT: W-12 @ r2 99f1813 (PE2 NOT CLEAN 0C+3G+2m @ 1be15d2 had
+landed before this note's seal; all five findings repaired; this
+note's BOX-2 annex applied there), counter 0/2, PE3 next; HEX3 PE1
+NOT CLEAN 0C+2G+2m @ d177fd8, counter 0/2, r1 owed; this note per
+the arc line above)**. HEX3-BOX-1 (the exact U₃^σ
 law) remains open and off the critical path (S5.4).
