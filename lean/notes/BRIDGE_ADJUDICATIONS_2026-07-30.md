@@ -13087,3 +13087,36 @@ own Codex-PE1 attack order (HE6-1 Step 1 ultrametric cases; (LIFT)
 from GENHN-2; HE6-3(a) c₀=0; the HE6.B scope-complement question).
 NEXT: HE7 ((LIFT₂)+(SLOT₂) — the level-2 lemmas, same method one
 level up) + HE6 Codex PE1 per the specified order.
+
+---
+
+## HE6 CODEX PE1 RUN + ADJUDICATED: 9 findings (4 CRITICAL + 5 GAPS), 8 upheld, 1 regraded to a GENHN-side erratum — HE6.A's conclusion unrefuted (repair queue owed), COROLLARY HE6.B's scope FALSE AS WORDED (the ℓ=1 repeated-nonlinear crack ⟹ HE6-BOX-1 WIDENS to any ℓ), n ≤ 7 unconditional claim UNAFFECTED — 2026-08-08
+
+Report `CODEX_HE6PE1_2026-08-08.md` (+ brief + pre-verdict scaffold, same
+directory). Session 019fe327-6d2a-75e0-8961-4a16a6c20d07, gpt-5.6-sol
+effort HIGH, ≈11 min, 59,609 tokens; unit-specified attack order enforced.
+Attack answers: (1) HE6-1 Step 1 CLEAN (algebra verbatim = the pre-verdict
+key); (2) (LIFT) FALSE at small k (k < (i(k)+e₁(f₁−1))h; f₁≥2 k=0 and
+e₁≥2 h≥2 both real) — all use sites k > D′h survive, restatement owed;
+(3) HE6-3(a) elimination CLEAN conditional on TWO surfaced premises:
+the Φ′|f stratum (A₀ = 0: HE3-0(iii)/(★)/(†) false as displayed —
+∞-label or Φ′∤f repair, conclusions survive) and HE6-0's third-case
+converse (per-i inference false, ξ=−θ; ψ-cancellation re-proof owed);
+(4) THE PREREGISTERED CRACK IS REAL: ℓ=1 repeated irreducible residual
+deg ≥ 2 = stage-CS with e₁′=1, hit by S7.1's own counting-half objection,
+NOT excluded by HE6.B's "ℓ ≥ 2" wording — HE6.B must exclude ALL
+stage-CS events; (LIFT₂)/(SLOT₂) already cover the ℓ=1 instance; same
+first-live n = 8. Free hunt also caught: GENHN-2 stated only at roots of
+Φ′ (overconsumption; proof generalizes verbatim — restatement owed),
+missing disc(f) ≠ 0 on HE6.A, ϖ ∉ O[x] display, c_t = 0 display, and the
+f₁ ≥ 2 SUPPLIER SEAM: GENHN-1's stage-initial node {dv(A_j) ≥ (μ−j)S+1}
+vs the ⁺-pinned budget/D′h disk threshold — Codex's member violates the
+pinned budget (its direct counterexample regraded) but the display
+disjunction is real: GENHN-1 NODE ERRATUM OWED at f₁ ≥ 2 (expected
+correction (μ−j)D′h + 1; f₁ ≥ 2 stage genres are battery-unexercised).
+Decorrelation earned its cost: pre-verdict key predicted F1/F4/F5/F8;
+Codex EXCEEDED it with the Φ′|f stratum and the f₁ ≥ 2 seam. Machine
+verdict untouched (all findings live off the exercised strata).
+**Grade: HE6-BOX-2 stays 0/2; repair unit (R1–R9, report S4) owed before
+any 1/2. Next: HE7 ((LIFT₂)/(SLOT₂)) + the HE6 repair unit + the GENHN
+node erratum adjudication.**
