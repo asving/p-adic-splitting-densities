@@ -12252,3 +12252,55 @@ LAW-DCX-(m+1)/PID†/(SURV-(m+1))/(EMPTY-(m+1)) re-scoped to the LOCUS
 program (off the W-MULT critical path); GRTJC (DMULT) conditionality
 row upgradeable after the hostile arc. NEXT: PE hostile pass on the new
 note + queue items (2)–(5).
+
+---
+
+## ★★★ TRIPLE LANDING + CODEX TIER-0: Σ-LAW PROVED (the weld's one open box CLOSED in forward direction — the boxed sign was WRONG, the true law rides the ξ-formula twist) · (hExhaust-3) DISCHARGED (exact U₃ law, 11/11 preregistered never-measured hits) · W-12 PE1 1C+3G (r1 owed; ledger erratum at 97122f2) · (W-MULT-DCX-m) PROVED-BY-CODEX TIER-0 — 2026-08-08
+
+**Σ-LAW ADJUDICATED (SIGMALAW_PROOF_2026-08-08.md, two-commit seal;
+attempt 0/2)**: THEOREM SL-1 — Prnt_j(A) = u_j·Σ_m(R_m v(A)) with
+closed-form slot constant, every on-line level-m object, every
+shared-below junction, every m ≥ 1 — where Σ_m is the ξ-FORMULA
+composite twist (GRTW2 §3.4 χ-chain), NOT the boxed bare-θ σ′: both
+boxed variants ρ^{1∓σ′} REFUTED on 96 constructed m=2 + 27 m=3
+separator rows; Σ_m = σ′ exactly on involution geographies (the whole
+sealed δ≠1 record — why OPEN2ATTACK saw 0 violations but no sign).
+Gap terms cancel PER NODE (W2-L3's τ-normalization mechanism at every
+level; the box's coincide-guess was the wrong mechanism). Battery
+6,970 samples / 1,211 rows / 0 violations, teeth 2/2 each. **THEOREM
+OPEN-2a-Σ FIRES: (OPEN-2a) forward direction at m ≥ 2 PROVED at
+attempt grade given OA-L1–L4 — the weld's one open box is closed on
+its forward leg; the converse stays UNPROVED as fenced.** Hostile
+pressure points self-flagged (§7). Annex drafted (§8).
+
+**HEX3 ADJUDICATED** (seal e3f3459, verdict 671a126): THEOREM HEX3.A
+exact U₃^conv law PROVED by per-center transport (5-way partition,
+α-scaling + three β-routes into the W-11 block system, telescoped);
+HEX3.B: undecided(3,q,N)/q^{3N} ≤ (1+N)q^{−N} → 0 — **W12-BOX-3's
+named obligation (hExhaust-3) DISCHARGED at composition grade** (for
+the disclosed conservative convention; the σ-side exact law boxed at
+the tail-σ-certification lemma, HEX3-BOX-1, with bracket displayed);
+HEX3.C char-independence PROVED (J-D0 mechanism at drainage level).
+11/11 never-measured (q,N) preregistered hits. Annex drafted (§S8.1).
+
+**W-12 PE1 ADJUDICATED (2b47711): 1C+3G+2m, r1 OWED** — F1 the W-12.A
+display omits the simple-branch factor Π_{m_i=1} q^{d_i(N−1)} (S2
+proves the corrected law; display false on m_i=1 shapes) — **ERRATUM:
+the 97122f2 ledger entry transcribed the faulty display; corrected
+here: #T(N) = C₀(q)·Π_{i:m_i≥2}[…]·Π_{i:m_i=1} q^{d_i(N−1)}**; F2 the
+[W12-H] box gains a FIFTH member (order-≥2 GMN leaf/σ-decision input);
+F3 taxonomy corner; F4 oracle warrant via the conservative convention;
+W-12.D itself re-derived CLEAN, hidden-hypothesis hunt negative.
+
+**CODEX LEG 1 (e9ef949): (W-MULT-DCX-m) PROVED-BY-CODEX, TIER-0
+orchestrator-verified** — (SRC-m) on T-scope(m) WITHOUT LAW-DCX-(m+1)
+(re-entrant terms ≥ 2h_{n−1} above the read line); with [RMG]/COR-A,
+(ITER-LAW-n) on T-class(n) with the DCX-(n) exclusion REMOVED. Q2's
+grade cap is OFF (both priced families of the closure program now
+closed at their grades; [ILN]† non-(RM) residuals remain). Attempt
+grade; the W-arc Codex-verifier leg stays queued.
+
+**NEXT WAVE: W-12 r1 (6 findings + HEX3 §S8.1 annex append + this
+erratum's note-side echo) + ANNEX-APPLIER (Σ-LAW §8 → GRTW2 tail;
+CODEX_WMULTDCX drafts → ITERLAWN tail; verbatim verification) + CODEX
+LEG 2 (VC40).**

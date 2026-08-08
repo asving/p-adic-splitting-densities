@@ -3168,3 +3168,5 @@ multiplicativity + χ-from-S (queued synthesis targets).**
 **2026-08-08: CODEX WINDOW RESET — queue live (W-MULT-DCX first). W-11 at r2 (counter 0/2, PE3 next). K2RES folded: Q2 residue CLOSED at attempt grade (12/12 green). W-12 at attempt 5 (4 API casualties, now with incremental-commit discipline).**
 
 **2026-08-08: ★★★ W-12 LANDED — THEOREM W-12.D (THE REDUCTION) PROVED: menu + drainage ⟹ one R_τ ∈ ℚ(q) per type at every prime incl. wild. The goal = W-12.D + per-degree (hMenu-n, hExhaust-n): n=2 DONE, n=3 boxed exactly, [W12-H] for orders ≥2. Battery 3,232,506/0. ★★★**
+
+**2026-08-08: ★★★ Σ-LAW PROVED (OPEN-2a forward CLOSED at every m — the weld box's last leg; true law = ξ-formula twist, boxed sign refuted by construction) · (hExhaust-3) DISCHARGED (exact U₃ law) · (W-MULT-DCX-m) PROVED (Codex TIER-0) · W-12 r1 owed (display-level). Frontier: (hMenu-3), [W12-H] now 5 members, U₃^σ box, OPEN-2a converse. ★★★**
