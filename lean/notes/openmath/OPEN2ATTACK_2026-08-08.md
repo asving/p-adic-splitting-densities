@@ -412,3 +412,19 @@ support). No Lean artifact; nothing here edits GRTW2.
 
 — W2-OPEN-2 ATTACK unit, campaign date 2026-08-08; commit 1 (seal)
 bd82766; commit 2 (verdict from committed artifacts) = this commit.
+
+---
+
+> **[ANNEX 2026-08-08, orchestrator, pointer — dated append; no inline
+> edit.]** §6's (Σ-LAW box) is SUPERSEDED: closed at attempt grade by
+> the SIGMALAW unit (`SIGMALAW_PROOF_2026-08-08.md`, seal 8064ae3,
+> verdict 59c1ff2), with the boxed display CORRECTED there — the map is
+> the ξ-formula composite Σ_m, NOT the bare-θ σ′ (BOTH boxed variants
+> ρ^{1∓σ′} refuted by constructed non-involution separators, 96 rows at
+> m = 2 + 27 at m = 3); the sign is fixed, δ_j = ρ_j/Σ_m(ρ_j); and the
+> gap mechanism is per-node cancellation inside each builder's own
+> evaluator (the box's "the two builders' gap ledgers coincide" guess
+> was the wrong mechanism — no coincidence is needed). §6's "sign
+> undetermined" is resolved; THEOREM OPEN-2a-Σ fires with no
+> Σ-hypothesis. The converse's UNPROVED status and W2-OPEN-2's above-r₀
+> claims are unchanged.
