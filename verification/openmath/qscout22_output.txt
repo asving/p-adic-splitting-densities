@@ -1,0 +1,56 @@
+QSCOUT22 battery -- FULL ROSTER
+  pin w10_checks.py = a9c34244a3af19f5fa864375b494380b
+  pin w12_checks.py = 7dc040d94fbbb1e8d20ac817b665d418
+  [full Zp q=2 N=4] 4096 members, 16 keys (0.0s)
+  [full Zp q=2 N=5] 65536 members, 40 keys (0.3s)
+  [full Zp q=2 N=6] 1048576 members, 79 keys (5.2s)
+  [full Zp q=3 N=4] 531441 members, 18 keys (2.1s)
+  [full Zp q=5 N=3] 390625 members, 7 keys (1.3s)
+  [full Fqt q=2 N=5] 65536 members, 40 keys (0.5s)
+  [full Fqt q=3 N=4] 531441 members, 18 keys (2.9s)
+  [full Fqt q=4 N=3] 65536 members, 7 keys (0.7s)
+  [consE Zp q=2 N=6 h=1] 65536 members, 52 keys (1.3s)
+  [consE Zp q=2 N=7 h=1] 1048576 members, 114 keys (20.6s)
+  [consE Zp q=2 N=7 h=3] 1024 members, 2 keys (0.0s)
+  [consE Zp q=3 N=5 h=1] 1062882 members, 25 keys (21.3s)
+  [consE Zp q=5 N=4 h=1] 1562500 members, 9 keys (33.5s)
+  [consE Fqt q=2 N=6 h=1] 65536 members, 52 keys (4.8s)
+  [consE Fqt q=4 N=4 h=1] 196608 members, 9 keys (49.0s)
+  [consF Zp q=2 N=7 k=1] 16384 members, 9 keys (0.7s)
+  [consF Zp q=2 N=8 k=1] 262144 members, 10 keys (11.2s)
+  [consF Zp q=3 N=6 k=1] 177147 members, 2 keys (10.6s)
+  [consF Zp q=5 N=5 k=1] 156250 members, 2 keys (23.4s)
+  [consF Fqt q=2 N=7 k=1] 16384 members, 9 keys (1.8s)
+  [consF Fqt q=3 N=5 k=1] 2187 members, 2 keys (0.2s)
+  [pre Zp q=2 N=7 k1=1] 16384 members, 6 keys (0.6s)
+  [pre Zp q=2 N=8 k1=1] 262144 members, 16 keys (9.1s)
+  [oracle consE Zp q=2 N=6 h=1] 960 scored, 0 bad, F-RAM tooth 0/0 (0.7s)
+  [oracle consE Zp q=2 N=7 h=1] 1920 scored, 0 bad, F-RAM tooth 0/0 (1.2s)
+  [oracle consE Zp q=3 N=5 h=1] 1037 scored, 0 bad, F-RAM tooth 0/0 (1.5s)
+  [oracle consE Zp q=5 N=4 h=1] 1515 scored, 0 bad, F-RAM tooth 0/0 (2.3s)
+  [oracle consF Zp q=2 N=7 k=1] 2048 scored, 0 bad, F-RAM tooth 1536/1536 (2.2s)
+  [oracle consF Zp q=2 N=8 k=1] 4096 scored, 0 bad, F-RAM tooth 3072/3072 (4.0s)
+  [oracle consF Zp q=3 N=6 k=1] 2464 scored, 0 bad, F-RAM tooth 2464/2464 (3.5s)
+  [oracle consF Zp q=5 N=5 k=1] 1936 scored, 0 bad, F-RAM tooth 1936/1936 (2.8s)
+  [oracle full Zp q=2 N=5] 4000 scored, 0 bad, F-RAM tooth 32/32 (5.0s)
+  [oracle full Zp q=2 N=6] 768 scored, 0 bad, F-RAM tooth 768/768 (1.1s)
+  [oracle full Zp q=3 N=4] 12636 scored, 0 bad, F-RAM tooth 0/0 (17.2s)
+  [oracle full Zp q=5 N=3] 2000 scored, 0 bad, F-RAM tooth 0/0 (2.9s)
+
+== FAMILY TOTALS ==
+  Q22-PIN     checks 2        violations 0
+  Q22-SUM     checks 23       violations 0
+  Q22-W12TIE  checks 37       violations 0
+  Q22-E       checks 389      violations 0
+  Q22-F       checks 40       violations 0
+  Q22-PRE     checks 16       violations 0
+  Q22-CONS    checks 1        violations 0
+  Q22-JD0     checks 858      violations 0
+  Q22-XCHAR   checks 94       violations 0
+  Q22-ORACLE  checks 35380    violations 0
+== TEETH ==
+  Q22-T-LAT   fired 15
+  Q22-T-CEN   fired 12
+  Q22-T-ALPH  fired 3
+  Q22-T-SIG   fired 6
+== GREEN (245.2s) ==
