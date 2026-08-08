@@ -3166,3 +3166,5 @@ multiplicativity + χ-from-S (queued synthesis targets).**
 **2026-08-07 LATE: OPEN-2a NARROWED to the Σ-LAW (one evaluator-ledger lemma; GRTW2 annex applied) · W-11 PE1: all findings display-level, theorem survives (r1 owed) · K2RES sealed (Q2's two residue legs = ONE genre).**
 
 **2026-08-08: CODEX WINDOW RESET — queue live (W-MULT-DCX first). W-11 at r2 (counter 0/2, PE3 next). K2RES folded: Q2 residue CLOSED at attempt grade (12/12 green). W-12 at attempt 5 (4 API casualties, now with incremental-commit discipline).**
+
+**2026-08-08: ★★★ W-12 LANDED — THEOREM W-12.D (THE REDUCTION) PROVED: menu + drainage ⟹ one R_τ ∈ ℚ(q) per type at every prime incl. wild. The goal = W-12.D + per-degree (hMenu-n, hExhaust-n): n=2 DONE, n=3 boxed exactly, [W12-H] for orders ≥2. Battery 3,232,506/0. ★★★**

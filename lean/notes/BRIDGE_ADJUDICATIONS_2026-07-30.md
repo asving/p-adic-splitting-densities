@@ -12178,3 +12178,34 @@ Vaquié; note: the OPEN2ATTACK narrowing to the Σ-LAW reshapes this
 leg — the probe should now target the Σ-LAW's literature shape); (5)
 WELDMASTER plan-review. FGMN numbering leg OFF the queue (closed
 locally 63091ce). Leg (1) launching now via a brief-builder agent.**
+
+---
+
+## ★★★ W-12 COMPOSED SEALED GREEN (attempt 5; the survival discipline delivered) — THEOREM W-12.D THE REDUCTION PROVED UNCONDITIONALLY: (A1 menu)+(A2 drainage) ⟹ ONE R_τ ∈ ℚ(q) PER SPLITTING TYPE AT EVERY PRIME INCL. WILD, = Haar density, Σ = 1 — the goal's uniformity statement is now a per-degree hypothesis pair — 2026-08-08
+
+Adjudicated from the wave return (commits 20dd400 → b472222 → 732b936
+→ 2c2c6af → f669cb0 seal → c16c717 verdict; attempt 0/2). THREE PARTS:
+**(i) THEOREM W-12.A** — the order-1 shape-generic count law
+#T(N) = C₀(q)·Π[Π_S S_λ(q^d)·q^{d·B(N)}] PROVED at the order-1 layer
+of EVERY degree, all prime powers, both characteristics, wild
+included; orders ≥ 2 conditional on the displayed [W12-H] box (JC
+warrant, JB row-12 residue, J-D1 package, tower censuses). **(ii)
+CONJECTURE W-12.B** (DRAIN-n, precise, char-independent) + **THEOREM
+W-12.C** — undecided(3,q,N) = (q−1)q^{2N−1} + U₃^TRP with the DBL term
+EXACT (LEMMA W12-L1, block transfer of W-11) and q^N ≤ U₃^TRP ≤
+q^{3N−2}. **(iii) THEOREM W-12.D — THE REDUCTION, PROVED
+UNCONDITIONALLY**, firing at n=2 (re-derives split = inert =
+q/(2(q+1)), ram = 1/(q+1)) and at n=3 conditional on EXACTLY
+(hMenu-3)+(hExhaust-3). Blueprint divergence boxed; W-11 §S4.3
+reconciled; suppliers pinned as-of in S9. Battery 3,232,506 checks /
+0 violations (7,105,774 cubics covered incl. 3 wild TRP strata;
+quartic g=2 rows; W12-L1X cross-read 1,594,090 pointwise; PARI legs
+0 bad; teeth exactly preregistered). 8 boxes. BONUS EXPLORATORY FACT:
+U₃^TRP measured IDENTICAL across ℤ_p/𝔽_q[[t]] at every shared (q,N) —
+char-independence exactly where (hExhaust-3) needs it. **THE
+FRONTIER, restated: the all-primes-all-degrees uniform proof = W-12.D
+(proved) + per-degree (hMenu-n, hExhaust-n) — discharged at n=2, boxed
+at n=3 (BOX-2 two node species; BOX-3 the U₃ exact law), open n ≥ 4 —
++ the [W12-H] order-≥2 box + the Σ-LAW (W2-OPEN-2). NEXT WAVE: W-12
+PE1 (the complete-theorem target — full hostile bar per the effort
+directive) + the hExhaust-3/U₃ examples-first unit + the Σ-LAW unit.**
