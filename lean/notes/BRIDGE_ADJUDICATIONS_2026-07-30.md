@@ -12955,3 +12955,14 @@ W-12's laws in ℤ₂[π²=2] (ramified) + W(𝔽₄) (mixed-char prime-power �
 the BOX-6 gap) — ALL pointwise == committed JSON, first
 cross-characteristic prime-power check. Counter 0/2; r4 owed. HEX3 r3
 (b6a1d69) confirmed landed in the same wave.
+
+---
+
+## W-12 r4 LANDED (d2d91b7+5728258): the witness repaired + separability VERIFIED all characteristics (explicit discs + sympy leg); the σ-labeling clause at (A1) with ALL FIRINGS VERIFIED (n=2 W-11, n=3 HM3.C verbatim, n=4 GENH4.C, n=5 GENHN.C; n≥6 = openly the HE box); bonus parity fix (L ≥ 3N+1); P-6/BOX-7/S2.3/R-1 done — counter 0/2, PE5 next — 2026-08-08
+
+The only statement-adjacent change: (A1) GAINS a hypothesis (a
+strengthening every firing supplies) — recorded per the
+statement-fence discipline. W-12.C's q^N ≤ U₃^TRP and the BOX-3
+annex's σ-side bound now hold in every characteristic. NEXT: W-12 PE5
++ MOMENTS resume (both Opus; Fable still saturated). HE3 attempt 5
+(Opus) running.
