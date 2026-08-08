@@ -13120,3 +13120,29 @@ verdict untouched (all findings live off the exercised strata).
 **Grade: HE6-BOX-2 stays 0/2; repair unit (R1–R9, report S4) owed before
 any 1/2. Next: HE7 ((LIFT₂)/(SLOT₂)) + the HE6 repair unit + the GENHN
 node erratum adjudication.**
+
+---
+
+## ★★★★★ HE7 LANDED (committed pre-casualty): (LIFT₂)+(SLOT₂) PROVED, THE LADDER TERMINATES (depth ≤ log₂n − 2), THE LEVEL-2 READ DECIDES THE THREE-σ FAMILY (1,335/1,335 PARI) — HE6-BOX-1 CLOSES AT ITS SEALED SCOPE; the Codex-widened scope (any-ℓ) needs the RECONCILIATION CHECK — 2026-08-08
+
+HE7 (seal 1956151, verdict 4c42f9d; attempt 0/2): (SLOT₂) §S3 +
+(LIFT₂) §S4 proved, with FINDING HE7-F1 — HE6's level-1 (LIFT)
+over-stated, threshold corrected — CONVERGENT with Codex-PE1's F4
+(two independent detections of the same defect, found in PARALLEL
+waves). THEOREM HE7.A: the whole level ladder by ONE induction;
+TERMINATION proved (n=8 lands at μ₂=2, level 3 degenerate).
+COROLLARY HE7.B: HE6-BOX-1 closes AT ITS SEALED (ℓ≥2) SCOPE.
+Battery GREEN 0/1,587, 6/6 teeth (T-CASEB-SEP: the three-σ family
+separated 8/8 == PARI; T-RANK: outer read UNDETERMINED, level-2
+exact; T-BADTWIST: the β-power twist load-bearing 21 flips /
+480 twisted-correct), 1,335 PARI jobs 0 mismatch, both
+characteristics. **SEQUENCING HONESTY: HE7 was composed against
+HE6's sealed box (ℓ≥2); the Codex PE1 (06f55f0, landed in the same
+wave) WIDENED the box to any ℓ (the ℓ=1 repeated-irreducible case).
+The mathematics of the goal is composed-complete IF HE7's ladder
+covers the widened scope — the mechanism is ℓ-agnostic on its face,
+but this is a CHECK, not an assumption. NEXT UNIT: HE6-r1 —
+the R1–R9 repairs + HE6.B reworded to the widened box + HE7-F1's
+level-1 correction folded (= Codex F4) + THE RECONCILIATION: verify
+HE7's (SLOT₂)/(LIFT₂)/ladder cover ℓ=1 repeated-irreducible (or box
+the residue) + the GENHN f₁≥2 node-display erratum.**
