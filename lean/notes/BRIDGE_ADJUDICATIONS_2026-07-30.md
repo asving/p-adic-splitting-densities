@@ -12209,3 +12209,46 @@ at n=3 (BOX-2 two node species; BOX-3 the U₃ exact law), open n ≥ 4 —
 + the [W12-H] order-≥2 box + the Σ-LAW (W2-OPEN-2). NEXT WAVE: W-12
 PE1 (the complete-theorem target — full hostile bar per the effort
 directive) + the hExhaust-3/U₃ examples-first unit + the Σ-LAW unit.**
+
+---
+
+## ★★ CODEX LEG 1 FOLDED — (W-MULT-DCX-m) CLOSED AT ATTEMPT GRADE: TIER-0, LAW-DCX NOT NEEDED — T-scope(m) ⟹ (W-MULT-DCX-m); Q2's grade cap falls (pending the hostile arc) — 2026-08-08 ~06:55–07:30 UTC
+
+**The queue-(1) prover leg delivered beyond its charter.** Brief 194,171
+chars (pastes A–G @ 3c2ac60, fully self-contained); run of record
+gpt-5.6-sol @ HIGH effort, session 019fdfc8-4362-7cb3-8846-e15f4ecbdffe,
+≈6 min, 86,607 tokens (launch 1 was an effort-none config accident, no
+output, superseded). **VERDICT (orchestrator-adjudicated after
+step-by-step verification, not Codex's self-grade): TIER-0 CONFIRMED —
+(SRC-m) proved, all four clauses, on T-scope(m), WITHOUT the
+LAW-DCX-(m+1) hypothesis the TIER-0 charter had budgeted.** The
+mechanism: every re-entrant second-round term gains a fresh engine
+round's net weight (+γ_n per Ĉ-multiplication, −w(Φ) per Φ-division =
++h_{n−1} per round), so ALL second-round mass sits ≥ 2h_{n−1} STRICTLY
+ABOVE the read line B_n (margin structural — survives the W-D5 tightness
+stratum, checked at exact attainment); the II-2 round closes in ONE
+extra division by degree (deg(R²+Q²Φ) < 2·deg Φ ≤ deg Φ_n); the II-3
+flat cascade terminates FINITELY by strict degree descent
+(deg Q^{r+1} = deg Q^r + deg Ĉ − deg Φ < deg Q^r, via (Ĉ1)); the −Q¹
+top-slot join keeps line ≥ Γ″ + h_n; reads/exports verbatim the (P-DS)
+package. **Family: T-scope(m) ⟹ (W-MULT-DCX-m)** — jointly with
+[RMG]/COR-A this puts (ITER-LAW-n) on T-class(n) WITHOUT the DCX-(n)
+exclusion, modulo [ILN]†'s own non-(RM) S7 residuals. Verification
+record: the orchestrator's PRE-DERIVED key (committed to /tmp BEFORE
+reading output) matched every margin (2h/3h/2h), the collision
+inventory, and the LAW-DCX-not-needed expectation; Codex's two route
+improvements (degree-closure; finite descent vs π-adic convergence)
+verified superior; every CONSUMED display located verbatim in the
+pastes; 40+ displays re-derived by hand; zero critical, zero open gaps;
+two harmless consumption-wording compressions noted. **GRADE:
+Codex-derived, orchestrator-verified, ATTEMPT GRADE, 0 hostile passes —
+NOT accepted; the W-arc Codex-VERIFIER leg (separate queue item) now
+targets this derivation.** Note (full verified transcription + annex
+drafts): `openmath/CODEX_WMULTDCX_2026-08-08.md`; raw message
+`openmath/CODEX_WMULTDCX_2026-08-08_raw.md`; brief
+`openmath/wmultdcx_brief_2026-08-08.txt`. CONSEQUENCES: COND-B ([RMG]
+S7.2) dischargeable per the drafted annex (applied at acceptance only);
+LAW-DCX-(m+1)/PID†/(SURV-(m+1))/(EMPTY-(m+1)) re-scoped to the LOCUS
+program (off the W-MULT critical path); GRTJC (DMULT) conditionality
+row upgradeable after the hostile arc. NEXT: PE hostile pass on the new
+note + queue items (2)–(5).
