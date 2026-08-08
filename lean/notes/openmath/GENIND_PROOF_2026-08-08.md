@@ -3,7 +3,11 @@
 **Unit:** GENIND (the general-induction composer; Asvin's 2026-08-08
 directive on reading HMENU3: "we now have the shape of a general
 inductive argument! Exhilarating, lets keep going!" — ledger 66057f4).
-**Attempt grade 0/2** (composed; no hostile arc). **Instrument:**
+**Attempt grade 0/2** (composed; hostile pass PE1 adjudicated
+UNREFUTED NOT CLEAN, 0 CRITICAL + 3 GAP + 4 MINOR, all three GAPs at
+the GENIND.B ↔ [GENIND-H] seam — `GENIND_passPE1_report.md`
+@ 4259a93; r1 repairs applied in place, [r1]-tagged; the clean count
+has NOT started). **Instrument:**
 sealed two-commit battery `verification/openmath/genind_checks.py` —
 the two-species classification machine-checked at n = 4 AND n = 5 on
 targeted rosters (full-sweep rows where the state space permits;
@@ -104,7 +108,11 @@ product (W12-S2.1). Write c(m) := m(m−1)/2.
 > (m, d) system at window N − mk), key-sheared; the α-prefix histories
 > aggregate with the bracket
 >
->     b_{m,d}(μ) = (Q−1) · Q^{(c(m)+1)·μ − 1}   (μ ≥ 1; b(0) = 1),
+>     b_{m,d}(μ) = (Q−1) · Q^{(c(m)+1)·μ − 1}   (μ ≥ 1; b(0) = 1;
+>     WINDOW CONDITION mμ ≤ N−1 [r1, PE1-M1] — the per-step
+>     admissibilities m·k_i ≤ (current window) − 1 conjoin along the
+>     chain to exactly this, so the unrestricted composition sum is
+>     the realized-history aggregate precisely for mμ ≤ N−1),
 >
 > exponent coefficient c(m)+1 = m(m−1)/2 + 1 (= 2, 4, 7, 11 at
 > m = 2, 3, 4, 5): the n-dependence of HM3-4's (q−1)q^{4μ−1}.
@@ -144,7 +152,19 @@ product (W12-S2.1). Write c(m) := m(m−1)/2.
 >   degree ≤ n: (CS-1) the stage transport (the stage system is
 >   count-fibred over an explicit lower-complexity system), (CS-2) the
 >   stage bracket (the stage's own refine aggregation), (CS-3) the
->   order-≥2 σ-decision theorem ((H-e), = (A0) at the stage's leaves).
+>   order-≥2 σ-decision theorem ((H-e), = (A0) at the stage's leaves),
+>   **[r1, PE1-G1: and (CS-EXACT) the EXACTNESS clause — the stage
+>   menu and stage drain that (CS-1)+(CS-2) deliver are EXACT, one
+>   closed-form q-power family per stratum, not asymptotic bounds.
+>   This clause is load-bearing, not decorative: P(n)'s fourth member
+>   is the exact-COMPLEMENT (A2), and the induction CONSUMES it at
+>   higher degrees — S5.2's drainage bullet runs inclusion–exclusion
+>   over the child systems' u's, an identity only if those u's are
+>   exact — so without (CS-EXACT) the antecedent would admit bound-
+>   only stage laws under which P(n)'s fourth member fails while
+>   (CS-1)(CS-2)(CS-3) hold, and the strong induction would not close
+>   on that member. See Step 4's [r1] record for the consumption path
+>   and the discharge geography.]**
 > THEN P(n) holds. CONSEQUENTLY, by strong induction from the proved
 > bases P(2) (W-11/W12-L0) and P(3) (HEX3+HMENU3): given [GENIND-H(n)]
 > for all n, the packages (hMenu-n)+(hExhaust-n) hold for ALL n, and
@@ -232,7 +252,11 @@ which is why W-11 never needed it.
 > key-sheared.
 > (b) [the bracket] Σ over all finite sequences (k₁, …, k_r), k_i ≥ 1,
 > Σk_i = μ, of Π_i (Q−1)Q^{c(m)·k_i} = (Q−1)·Q^{(c(m)+1)μ−1} =:
-> b_{m,d}(μ).
+> b_{m,d}(μ) [r1, PE1-M1: as the aggregate of REALIZED α-prefix
+> histories this carries the window condition mμ ≤ N−1 — each step is
+> admissible iff m·k_i ≤ (its window) − 1, and the conjunction along
+> the chain is exactly mμ ≤ N−1; the generating-function identity
+> itself is unconditional].
 
 *Proof.* (a) The three parts are HEX3 H-2(i)(ii)(iii) with the n = 3
 exponents replaced by their general forms, plus HM3-2's upgrade of the
@@ -378,9 +402,19 @@ n ≤ 3 program never consulted [W12-H].
 
 *Sufficiency (realization at every n ≥ 4, every q, both
 characteristics).* At d = 1, m = 4: the QRT-G2(h; (1²)) stratum
-exists with positive locus (q−1)q^{4N−5h−3} > 0 (W-12 S2.5, PROVED);
-at n > 4 pad with n−4 distinct simple roots at level 0 (Hensel
-product, W12-S2.1) or realize the embedded genres of S5.3 inside the
+exists with positive locus (q−1)q^{4N−5h−3} > 0 at every window with
+2h ≤ N−1 [r1, PE1-M3] (W-12 S2.5, PROVED); at n > 4 pad with ONE
+monic irreducible of degree n−4 at level 0 (Hensel product,
+W12-S2.1): it is coprime to the linear center automatically (at
+n−4 = 1 take any of the q−1 other monic linears; at n−4 ≥ 2 an
+irreducible of that degree exists over every F_q and shares no root
+with the center), and the padding block is separable at level 0,
+hence a decided piece — the degree-n state opens the same CS stage
+with positive locus **[r1, PE1-M2: the sealed text's "n−4 distinct
+simple roots" padding is impossible over F_2 for n ≥ 6 (only two
+monic linears exist and the cluster's center takes one); the
+single-irreducible padding delivers the same Hensel-product
+realization]** — or realize the embedded genres of S5.3 inside the
 full cluster. ∎
 
 **The criterion in one line: composite stages exist at degree n ⟺
@@ -442,7 +476,12 @@ counts (this session; the two n = 4 laws are W-12 S2.5's and its
 
 **n = 4 (the whole polygon is the side):**
 * **CS4-E(h)** [e-first: e = 2, ψ linear, μ = 2; = QRT-G2(h;(1²))]:
-  slope h/2, h odd, residual (y−z)²: (q−1)·q^{4N−5h−3}. [pin: proved
+  slope h/2, h odd, residual (y−z)²: (q−1)·q^{4N−5h−3}, VISIBILITY
+  FLOOR 2h ≤ N−1 [r1, PE1-M3: displayed like every sibling law —
+  v(a₀) = 2h must sit below the window or DRAIN fires first; at
+  (N, h) = (2, 1) the unfloored display would return q−1 against a
+  true locus of 0; the sealed runner already gates on it
+  (`while 2*h <= N-1`), so this is display-only]. [pin: proved
   at the w12 seal; QSCOUT22's GENRE E entry.]
 * **CS4-F(k)** [f-first: e = 1, residual ψ², deg ψ = 2]: integer
   slope k, heights (4k, 3k, 2k, k), L = 4:
@@ -519,16 +558,42 @@ coherence (S5.2 bullet). CS leaves: (CS-3) = (H-e). Products: σ and
 certificates compose branchwise (W12-S2.1, GENIND-3). 
 
 *Step 4 (A2).* r(N) = conservative drains + window-boundary (tail)
-families + CS-internal residues. The simple part: GENIND.C's
-recursion telescopes and vanishes; the boundary families route
-through (A2) exactly as W-12 S3.4 [r2] displays at n = 2, 3 (their
-masses are the transported SPLIT-TAIL-type aggregates, N-dependent
-counts, vanishing after normalization); the CS-internal part:
-(CS-1)+(CS-2) resolve each stage into its own decided menu + drain,
-with the stage drains vanishing by the same telescoping run inside
-the stage ([GENIND-H]'s content). Summing: r(N)/q^{nN} → 0, with the
-same exact-complement sharpening HM3.C S5.3 achieved at n = 3
-wherever the stage laws are exact.
+families + the CS stages' RAGGED BANDS [r1, PE1-G2: (CS-1)'s
+ragged-window correction produces per-genre N-boundary slot
+families — see S7.1's corrected (CS-1)] + CS-internal residues. The
+simple part: GENIND.C's recursion telescopes and vanishes; the
+boundary families route through (A2) exactly as W-12 S3.4 [r2]
+displays at n = 2, 3 (their masses are the transported
+SPLIT-TAIL-type aggregates, N-dependent counts, vanishing after
+normalization); the ragged bands route through (A2) the same way
+[r1, PE1-G2: finitely many per genre, N-boundary slot strings — at
+the (2,2)-E stage the last ~⌊h/2⌋ window slots of S7.3's parity-
+ragged window; their confinement below every consulted height at
+the discharged genres is LEMMA GENHN-3 (GENHN @ 850e77e)]; the
+CS-internal part: (CS-1)+(CS-2) resolve each stage into its own
+decided menu + drain, with the stage drains vanishing by the same
+telescoping run inside the stage ([GENIND-H]'s content). Summing:
+r(N)/q^{nN} → 0, with the same exact-complement sharpening HM3.C
+S5.3 achieved at n = 3. **[r1, PE1-G1: the sealed text hedged this
+last clause "wherever the stage laws are exact" — a hedge the box's
+three sealed members nowhere secured. The hedge is now the box's own
+(CS-EXACT) clause, so given [GENIND-H(n)] the sharpening holds
+unconditionally. WHY P(n) needs the exact form and not a bound: the
+exact-complement (A2) member is consumed at HIGHER degrees — a
+degree-n′ > n β-fracture into a degree-n child runs S5.2's
+inclusion–exclusion over the child systems' u's and totals, which is
+an identity only if the children's u's are exact closed forms; with
+bound-only stage laws the first-step recursion at n′ degrades to an
+inequality and P(n′)'s fourth member fails (the verifier's
+n = 8-through-a-degree-4-child scenario), i.e. the induction would
+not propagate the very member it assumed. Discharge geography,
+honestly: at n = 4 the clause is supplied DE FACTO by GENH4
+(@ dff23f8) — THEOREM GENH4.B (= Q22-L3) delivers the stage drain as
+ONE exact q-power per (center, entry, history) stratum — and GENHN
+S6.3 (@ 850e77e) displays the same "one exact q-power per stratum"
+shape at general genres; at general n, (CS-EXACT) remains a
+HYPOTHESIS on the box, which is exactly what [GENIND-H] is for — no
+claim of general discharge is made.]**
 
 *Step 5 (fire W-12.D).* P(n)'s (A0)+(A1)+(A2) are W-12.D's
 hypotheses at degree n: THEOREM W-12.D (PROVED, @ pin) yields one
@@ -558,13 +623,51 @@ index E = e (the new denominator), stage residue field K
   K-digit slot per (abscissa, v′-height) in the stage's value
   normalization — and the stage read (polygon, residuals over K,
   refine events) is count-isomorphic to a degree-m′ cluster-system
-  read over K at an explicit stage window.
+  read over K at an explicit stage window, RAGGED-WINDOW-CORRECTED
+  [r1, PE1-G2: the E residue classes' slot strings end at different
+  v′-heights (at the (2,2)-E stage: even slots at dv = 2N−2, odd at
+  2N+h−2 — S7.3), so the count-isomorphism is asserted BELOW the
+  ragged threshold, uniform there, with the ragged band a boundary
+  family routed through (A2) — it enters Step 4's inventory
+  explicitly. This is the form the note's own (OB-a) requires and
+  the form the discharger proves: GENHN.A(v) @ 850e77e reads "the
+  stage read IS the (μ, K)-cluster read in dv-units at the S-node,
+  ragged-window-corrected", with the band confined by LEMMA GENHN-3.
+  The sealed statement omitted the correction.]
 * **(CS-2) the stage bracket** — the stage's own α-aggregation:
   b_{m′,K}(μ″) = (|K|−1)·|K|^{(c(m′)+1)μ″−1} in stage units, i.e.
-  GENIND-2(b) run inside the stage.
+  GENIND-2(b) run inside the stage. NORMALIZATION DECLARED [r1,
+  PE1-G3]: this bracket is MASS-NORMALIZED — it includes the ghost
+  fibers |K|^{c(m′)·k_i} of the stage α-transport, totalling
+  |K|^{c(m′)·μ″} over the chain — whereas a ladder-telescoped
+  LETTER-SUM (per-node laws carrying the floors, GENH4 S6.2's form)
+  reads (|K|−1)·|K|^{μ″−1} at m′ = 2; the two compose as
+  (|K|−1)|K|^{2μ″−1} = |K|^{μ″} · (|K|−1)|K|^{μ″−1} (ghost ×
+  letters), the reconciliation GENHN S6.2 displays (@ 850e77e). At
+  the e-first genre E (|K| = q; the ladder has δ = 2μ″ integer
+  dv-points, so the letter-sum (q−1)q^{δ−1} coincides numerically
+  with this display) the gap is invisible; it surfaces only at
+  f-first genres — GENH4 S6.2's genre-F (q²−1)(q²)^{μ−1} vs this
+  box's instantiation (q²−1)(q²)^{2μ−1}, differing by exactly the
+  ghost (q²)^μ. A discharge of (CS-2) must therefore be read in THIS
+  (mass) normalization, or composed with its ghost fiber. Checked
+  numerically this round at (q, μ″) = (2, 2), |K| = 4 (genre F,
+  c(2) = 1): composition sum Σ_{(k₁..k_r), Σk_i=2} Π_i
+  (|K|−1)|K|^{k_i} = 48 + 144 = 192 = (|K|−1)|K|³ (mass form);
+  letters-only Σ (|K|−1)^r = 3 + 9 = 12 = (|K|−1)|K|¹ (GENH4 form);
+  ghost |K|² = 16; 16 · 12 = 192. [r1]
 * **(CS-3) the σ-decision** — the order-≥2 GMN leaf theorem
   ([W12-H](H-e)): separable stage residuals ⟹ σ-decided with (e·E,
   f·[K-ext]) read off, for ALL disc ≠ 0 lifts — (A0) at the stage.
+* **(CS-EXACT) the exactness clause [r1, PE1-G1]** — the stage menu
+  and stage drain delivered by (CS-1)+(CS-2) are EXACT: one
+  closed-form q-power family per stratum, not asymptotic bounds. A
+  genuine fourth member, consumed by GENIND.B Step 4 (see its [r1]
+  record: the induction propagates P(n)'s exact-complement (A2)
+  member only through exact stage laws). De facto discharge at
+  n = 4: THEOREM GENH4.B (= Q22-L3, GENH4 @ dff23f8), one exact
+  q-power per (center, entry, history) stratum; at general n this
+  clause is a hypothesis on the box — not claimed discharged.
 
 **Where the carry corpus delivers (the displayed mechanism).** The
 stage slot claim in (CS-1) — one K-digit per (abscissa, v′-height) —
@@ -587,8 +690,10 @@ analogue of W12-L1(b)'s case check) — that is the exact residue of
 The first instance, the quartic e-first genre CS4-E(h) (= QSCOUT22
 GENRE E): m′ = 2, D′ = 2, E = 2, K = F_q, Φ′ = x² − s, s = ẑπ^h.
 
-> **LEMMA GENIND-4.** On the CS4-E(h, z) opening locus (per center,
-> (q−1)q^{4N−5h−3} members), the Φ′-adic development f = Φ′² +
+> **LEMMA GENIND-4.** On the CS4-E(h, z) opening locus (per center
+> AND letter z: q^{4N−5h−3} members — the (q−1) belongs to the
+> h-genre's sum over z ∈ F_q^×, not to the fixed-(h, z) slice this
+> lemma fibrates [r1, PE1-M4]), the Φ′-adic development f = Φ′² +
 > A₁Φ′ + A₀ (A₁ = α₁x + α₀, A₀ = β₁x + β₀) is a TRIANGULAR digit
 > bijection from the opening coordinates (b₃, b₂, b₁, b₀):
 >
@@ -621,8 +726,11 @@ min((3h+1)/2, h + (h+1)/2) = (3h+1)/2; β₀ = b₀ + sα₀ − s² has its
 check. dv-arithmetic: dv(a·x + b) = min(2v(a) + h, 2v(b)) (the root
 has v = h/2); 2v(b) is even, 2v(a)+h odd — distinct parities, no
 ties, one slot per integer dv. Node: dv(A₁) ≥ min(2·(h+1)/2 + h,
-2(h+1)) = 2h+1 = S+... = 2h+1; dv(A₀) ≥ min(2·(3h+1)/2 + h,
-2(2h+1)) = 4h+1. With S = 2h: (2S+1, S+1) = (4h+1, 2h+1). ∎
+2(h+1)) = min(2h+1, 2h+2) = 2h+1 = S+1; dv(A₀) ≥ min(2·(3h+1)/2 + h,
+2(2h+1)) = min(4h+1, 4h+2) = 4h+1 = 2S+1 [r1, PE1-M4: the sealed
+line's editing scar "= 2h+1 = S+... = 2h+1" repaired; both minima now
+displayed, values unchanged]. With S = 2h: (2S+1, S+1) =
+(4h+1, 2h+1). ∎
 
 (QSCOUT22's LEMMA Q22-B states the same budgets from the scout side;
 the two derivations were made independently — the numbers agree,
@@ -706,8 +814,12 @@ fibration (the entry pins cancel coordinatewise; expected budgets =
 the entry law's exponent, the E parities/residues mod E separating
 slots — W-9's ℤ/E grading) + the stage read's identification with
 the (m′, 1) cluster system over K in v′-units; (CS-2) = GENIND-2(b)
-inside the stage: b_{m′,K}(μ) = (|K|−1)|K|^{(c(m′)+1)μ−1}; (CS-3) =
-(H-e). Each is per-genre finite work at each degree; the corpus
+inside the stage: b_{m′,K}(μ) = (|K|−1)|K|^{(c(m′)+1)μ−1} (mass
+normalization — S7.1's [r1] declaration); (CS-3) = (H-e);
+(CS-EXACT) [r1, PE1-G1] = deliver the stage menu and drain as exact
+per-stratum closed forms (a GENIND-4-style fibration does this by
+construction when it lands). Each is per-genre finite work at each
+degree; the corpus
 supplies grading + blindness + no-cancellation; the residue is the
 transcription (OB-a)/(OB-b) per genre plus (H-e) once. NOTHING in
 the scaffold consumes a stage law before its genre is realized
@@ -738,8 +850,12 @@ degree-by-degree while the SCAFFOLD stays uniform in n.
   instances are the proved HEX3.B/W-11(iii). The battery checks the
   EXACT first-step recursion at n = 4, 5, which is stronger at those
   degrees than the bound it feeds.
-* **GENIND-BOX-5 (grades).** 0/2, composed this session, no hostile
-  arc; every supplier consumed at the pins of S10's PIN family; the
+* **GENIND-BOX-5 (grades).** 0/2; PE1 (hostile, fresh context)
+  adjudicated 0C + 3G + 4m, all three GAPs at the single GENIND.B ↔
+  [GENIND-H] seam, r1 repairs applied in place ([r1] tags; report
+  @ 4259a93; runner + artifacts byte-frozen, untouched) — the clean
+  count has NOT started;
+  every supplier consumed at the pins of S10's PIN family; the
   full-degree corollary inherits the MINIMUM grade over
   {W-11, W-12, HEX3, HMENU3 arcs, this note, and — at n ≥ 4 —
   [GENIND-H] which is OPEN}: i.e. the uniformity theorem at n ≥ 4 is
@@ -756,8 +872,10 @@ degree-by-degree while the SCAFFOLD stays uniform in n.
 
 > **[BOX-1 ANNEX, 2026-08-08, GENIND]** The orders-≥2 program now has
 > its INDUCTION: THEOREM GENIND.B reduces (hMenu-n)+(hExhaust-n) for
-> ALL n to the per-genre composite-stage package {(CS-1) transport,
-> (CS-2) stage bracket, (CS-3) = (H-e)} — with the two-species
+> ALL n to the per-genre composite-stage package {(CS-1) transport
+> (ragged-window-corrected), (CS-2) stage bracket (mass-normalized),
+> (CS-3) = (H-e), (CS-EXACT) exact per-stratum laws [r1]} — with the
+> two-species
 > scaffold (α-bracket (Q−1)Q^{(m(m−1)/2+1)μ−1}, β partition-product
 > transport), the simple-stage layer, and the criterion "composite
 > stages ⟺ some stage carries ≥ 4 keys ⟺ n ≥ 4" PROVED
