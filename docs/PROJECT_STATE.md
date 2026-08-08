@@ -3249,3 +3249,20 @@ ramified quadratics; a FRESH reader byte-ties GENHN's committed E3 census
 HE3-BOX-4b discloses the sealed-vs-delivered coverage gap (ℤ_p only,
 4 teeth, no n=7 row). Open surface now: **the ARCS only** (W-12 PE3,
 HEX3, GENH4, GENIND, GENHN, HE3) + the S9 compression/coverage boxes.
+
+**HE3 REGRADE after PE1 (commits 6f5a072/2299cc4).** The claim is
+**[GENHN-HE(μ)] UNCONDITIONAL for μ ≤ 3 — the first-live case, hence
+every degree n ≤ 7 — and BOXED at μ ≥ 4 (degrees n ≥ 8) at ONE named
+place, HE3-BOX-6.** Two independent sources agree on that boundary: this
+unit's own review (the ℓ ≥ 2-side peel has nothing to recenter on, since
+no element of R has non-integer dv) and Codex's PE1 hostile pass (5
+CRITICAL + 2 gaps, all adjudicated in `HE3_passPE1_report.md`; every
+CRITICAL one is μ ≥ 4-reachable only, or a proof-display error whose
+conclusion survives restatement). μ ≤ 3 is proved BASE-CHANGE-FREE
+in-line. Repair route for μ ≥ 4: enlarge the test family to higher-degree
+test polynomials reaching fractional dv-heights (the higher-order Montes
+construction) — this single step closes findings 1, 2 and 3 at once and is
+the whole remaining mathematical distance. Grade: **1/2 on μ ≤ 3** (one
+hostile pass survived with repairs); a model-diverse second pass is owed.
+So the program's mathematics is complete for degrees ≤ 7 and rests, for
+degrees ≥ 8, on one named lemma plus the S9 boxes and the arc stack.
