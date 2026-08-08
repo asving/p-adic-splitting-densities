@@ -1,0 +1,23 @@
+HE7 r1 supplementary leg — the level-2 PEEL (LEMMA HE6R1-3) on HE7's own Psi | f_S stratum
+pins: he7_checks.py 688adbe88447, he7_checks_results.json f5bedab2ecda, he6_checks.py 321fa4d4990e
+  row Z_3        u=5 s=1 char 0                 members  209  key-divides 0  peel-decided 0  {}
+  row Z_5        u=5 s=1 char 0                 members  243  key-divides 0  peel-decided 0  {}
+  row Z_7        u=5 s=1 char 0                 members  161  key-divides 0  peel-decided 0  {}
+  row Z_5        u=7 s=1 char 0, deeper side    members  125  key-divides 0  peel-decided 0  {}
+  row Z_3        u=5 s=2 char 0, twist live     members  124  key-divides 2  peel-decided 2  {'((4, 1), (4, 1))': 2}
+  row Z_5        u=5 s=2 char 0, twist live     members  150  key-divides 0  peel-decided 0  {}
+  row Z_5        u=5 s=3 char 0, twist live     members  105  key-divides 0  peel-decided 0  {}
+  row Z_7        u=5 s=3 char 0, twist live     members  115  key-divides 0  peel-decided 0  {}
+  row Z_5        u=7 s=2 char 0, deeper+twist   members  105  key-divides 0  peel-decided 0  {}
+  row F_3[[t]]   u=5 s=1 char 3                 members   79  key-divides 3  peel-decided 3  {'((4, 1), (4, 1))': 3}
+  row F_3[[t]]   u=5 s=2 char 3, twist live     members   57  key-divides 0  peel-decided 0  {}
+  row F_5[[t]]   u=5 s=1 char 5                 members   57  key-divides 2  peel-decided 2  {'((4, 1), (4, 1))': 2}
+  row F_5[[t]]   u=5 s=3 char 5, twist live     members   57  key-divides 1  peel-decided 1  {'((4, 1), (4, 1))': 1}
+
+--- PARI leg (A4: sigma(f); A5: sigma(Psi) = the peel letter)
+  A4 sigma(f)   predicted {(4,1),(4,1)} : 2/2 PARI agree
+  A5 sigma(Psi) predicted {(4,1)}       : 2/2 PARI agree
+
+MEMBERS 1587  KEY-DIVIDES 8  CHECKS {'A1-peel-exact': 8, 'A2-single-peel': 8, 'A3-peeled-read': 8, 'A4-pari-sigma-f': 2, 'A5-pari-sigma-Psi': 2}
+VIOLATIONS: 0
+3.3s
