@@ -12493,3 +12493,34 @@ the FIRST composite stage in the counting, where [W12-H] bites and the
 carry corpus (J-D0, W-9/K^c[Z/E], WELD-M, DULEMMA) becomes the counting
 engine for deep-wild strata. The general unit + an n=4 (2,2) empirical
 scout dispatched (examples-first).
+
+---
+
+## n=3 ARC CHAIN ROUND 1: all three theorem cores SURVIVE hostile re-derivation — findings sentence-level across the board — 2026-08-08
+
+**W-12 r2 (99f1813)**: all 5 PE2 findings fixed (the three-genre disc=0
+disposition complete; the r(3,N) boundary-tail leg displayed with the
+mass independently verified on all 23 rows; integrality fixed; H-e cite
+re-priced; discharge marked CONVENTION-FREE) + the HMENU3 BOX-2 annex
+applied verbatim (md5 4eb3bacc both sides) — W-12.D's n=3 conditionality
+CLOSED at composition grade on the note. Counter 0/2, PE3 next.
+
+**HMENU3 PE1 (f4f7b03): 0C + 1G + 1m** — CONFIRMED: HM3-1 re-derived
+(third-species hunt NEGATIVE incl. char-2/3; 1,031 committed keys obey
+the grammar), 11 counts re-derived, disjointness survived 6 adversarial
+probes, ALL FIVE R_τ re-derived by independent sympy (Σ=1 exact; q=2:
+4/93, 28/93, 8/31, 22/93, 5/31; engine tie q³·T_τ = β₃ term-for-term),
+§S5.4 SOUND (Step 4 consults no σ-labels). Gap = stale supplier-arc
+record (PE2 landed 26 min pre-seal); minor = raw-coordinate carry
+display. r1 = sentence-level, owed.
+
+**HEX3 PE1 (d177fd8): 0C + 2G + 2m** — HEX3.A/B/C all survived full
+re-derivation; fresh-route own enumerator == law at 9 rows both ring
+types + all big-row prereg values. F1 = ghost-zone inequality displayed
+backwards at j=1 (correct form holds; one line); F2 = "eleven
+never-measured" is honestly twelve with two prototype-measured (exact
+11-set displayed). r1 owed.
+
+**NEXT WAVE: micro-repairs (HMENU3 r1 + HEX3 r1, one unit) + W-11 PE3
+(the n=2 arc's next attempt) + SIGMALAW PE1 (the weld-side arc opens).
+GENIND + QSCOUT22 still composing in parallel.**
