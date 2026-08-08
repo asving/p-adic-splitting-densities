@@ -13146,3 +13146,20 @@ the R1–R9 repairs + HE6.B reworded to the widened box + HE7-F1's
 level-1 correction folded (= Codex F4) + THE RECONCILIATION: verify
 HE7's (SLOT₂)/(LIFT₂)/ladder cover ℓ=1 repeated-irreducible (or box
 the residue) + the GENHN f₁≥2 node-display erratum.**
+
+---
+
+## ASVIN DIRECTIVES (2026-08-08, post-completion): (1) once the arcs pass → SIMPLIFICATION CAMPAIGN, then FORMALIZATION; (2) save-everything executed; (3) TAMEK — roots in a fixed tame extension (Cohen–Lenstra spirit) — dispatched
+
+(1) Pipeline set: hostile arcs → proof-simplification agents ("simplify
+as much as you can see") → stage two Lean. (2) Context-preservation:
+docs/HEURISTICS_AND_INTUITIONS_2026-08-08.md written (the campaign's
+mathematical intuitions §A, process heuristics §B, failed guesses §A8,
+directives §C) + memory/completion-campaign-playbook.md indexed. (3)
+TAMEK: X_K(f) = #maps ℚ_p[x]/f → K for FIXED TAME K/ℚ_p — the first
+LETTER-SENSITIVE statistic (embedding needs e′|e, f′|f AND the twist
+class to match); Cohen–Lenstra cleanness would come from letter
+equidistribution, which the carry corpus owns. Also per Asvin: BCFG
+presumably already has the full MGF — our answers MATCH the cached
+tables machine-exactly (n≤7, 24 blind rows); novelty labels stay
+UNSEARCHED and the cite OWED-EXTERNAL until the literature check.
