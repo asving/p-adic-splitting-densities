@@ -12624,3 +12624,25 @@ commit: see GRTW2 tail.
 misassignment on the B-RAM aggregates — committed pin contradicts the
 (3u+1)/2 reading; a fired-clause record gap vs HEX3's H-2(i), cured
 by HEX3 r1 six minutes later). Word-level r2 owed, then PE3.
+
+---
+
+## SIGMALAW PE2: CLEAN ON THE NOTE (counter 0/2 → 1/2, PE3 = the accepting attempt; the one minor was the ORCHESTRATOR'S OWN annex transposition — fixed at this commit) + HMENU3 r2 landed — 2026-08-08
+
+**SIGMALAW PE2 (6e57e03): 0C/0G/0m on the note text at 6b24942.**
+Confirmation quality: (EC-q) re-derived independently with the 3-clause
+ladder proved WELL-FOUNDED (no circularity; base = rk.3's m=1 byte
+law); 16 own doubly-twisted towers incl. the k≡3 (mod 4) CONTRAPOSITIVE
+(EC-3 fails AND the junction goes byte-RED, 8/8 — the derivation's
+converse leg witnessed); SL-L1 verified beyond the battery envelope
+(gap depth 3); §6R recount exact to the digit; order-7 twist fresh
+route 24/24 (twist orders 2/4/5/7 now all witnessed). COUNTER RULING
+(orchestrator): the sole finding is OFF-NOTE — my 35e6545 GRTW2
+correction annex transposed SL-PHIR/SL-GAP (真 figures 1,414/680); a
+dated erratum is applied to GRTW2's tail at THIS commit; the note's
+counter advances 0/2 → 1/2. PE3 = the accepting attempt.
+
+**HMENU3 r2 (e1280be)**: both PE2 minors fixed (the 3/2 carry rescoped
+with the pin verified on THREE legs; the HEX3 fired-clause record
+added; supplier arcs refreshed incl. W-11 ACCEPTED). Counter 0/2, PE3
+next.
