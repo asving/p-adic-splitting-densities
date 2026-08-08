@@ -644,3 +644,74 @@ HEX3 H-1..H-4 @ pins, + this note's transports/bracket}; COROLLARY
 HM3.D's = {that + THEOREM W-12.D @ pin}. No axiom, no weld face; the
 corollary's grade = the minimum over the stack's arc grades, i.e.
 composition grade 0/2 until the hostile arcs run.**
+
+---
+## S10. VERDICT (commit 2 — from the committed artifacts)
+
+**GREEN. 183,387 checks, 0 violations in every family, all four teeth
+fired at their EXACTLY-preregistered counts, zero skips.** 41/41 rows
+(94,824,902 per-center TRP states read individually with full history
+recording; 18 ℤ_p + 23 𝔽_q[[t]]), single fresh run, elapsed 443.8 s,
+exit 0; artifacts `hmenu3_checks_output.txt`
+(md5 7f75488790df0be3f44a721f5cebe299), `hmenu3_checks_results.json`
+(md5 daf077d0a417d66e45e486659a40cdbe); runner byte-identical to the
+sealed commit 64d3ff9 (empty `git diff`).
+
+Prediction scorecard (all ten confirmed):
+* P-1 ✓ [NONE] HM3-PIN 0/7 — all seven frozen files unmoved.
+* P-2 ✓ [SAME] HM3-MENU 0/1,031 — every history-resolved key at its
+  closed form, BOTH directions, on all 41 rows. Every never-measured
+  spot EXACT: (Fqt,2,9): 150 decided keys (187 with drain-history
+  keys), decided 16,674,048, deep-decided 523,008,
+  (('ALPHA',1),('RAM3',4)) = 131,072,
+  (('VERT1',4,1),('RAM2LIN',4,1)) = 65,536,
+  (('ALPHA',1),('RAM3',5)) = (('ALPHA',1),('LINRAM2',5,3)) = 32,768;
+  (Fqt,3,6): 30 decided keys, deep 95,580,
+  (('ALPHA',1),('RAM3',4)) = (('FULL11SQ',1),('RAM2LIN',4,1)) =
+  26,244, (('VERT1',4,1),('RAM2LIN',4,1)) = 17,496,
+  (('ALPHA',1),('LINRAM2',5,3)) = 5,832; (Fqt,27,2): EXACTLY the two
+  predicted keys — ('RAM3',1) = 18,954 decided + 729 drain — the
+  first q = 27 measurement in the corpus, on the nose.
+* P-3 ✓ [SAME] HM3-DRAIN 0/82 — partition and drain-sum = u(q,N) on
+  every row: THEOREM HEX3.A re-derived at key granularity, incl. the
+  first eq-char N = 9 and (27,2) = 729 checks.
+* P-4 ✓ [SAME] HM3-AGG 0/707 — the FINITE aggregate menu equals the
+  summed measured raw keys, both directions, all 41 rows: LEMMA
+  HM3-4's bracket and every A_L/A^{(j)} aggregation machine-checked
+  against enumeration (116 aggregate families realized at (2,9)).
+* P-5 ✓ [SEAL-TIE] HM3-XREAD 0 divergences / 171,444 pointwise states
+  on all 22 eligible rows — decided verdict, depth-0 key identity,
+  and σ all agree with the SEALED w12 reader.
+* P-6 ✓ [NONE] HM3-HEX3TIE 38/38, HM3-W12TIE 69/69 (23 rows × 3),
+  HM3-DBLTIE 23/23 — the committed hex3 species tables, w12
+  depth0_keys/deep counts/U3TRP, and w12 dbl_keys (incl. the
+  SPLIT-TAIL/UNDECIDED boundary laws) all reproduced from the closed
+  forms, both directions.
+* P-7 ✓ [IND] HM3-ORACLE 0 bad / 9,956 checks — deep-decided counts
+  EXACTLY 48 / 624 / 6,688 / 2,592; all 9,952 PARI σ multisets equal
+  the leaf table, including the 972 wild deep-RAM3 members at p = 3
+  (wild totally ramified behind a refinement) and the p = 2 wild
+  e = 2 composites: the first independent σ verification of ANY
+  deep-decided TRP member.
+* P-8 ✓ [SYM] HM3-RTAU 0/30 — Σ_τ R_τ = 1 symbolic; the five R_τ ==
+  the monic assembly of the engine's β(2)/β(3); the per-center
+  identity Σ_τ D_τ(N) = q^{3(N−1)} − u(q,N) EXACT at N = 24 for
+  q ∈ {2,3,4,5}; whole-space partial sums inside (0, q^{−(N−4)}).
+* P-9 ✓ teeth — HM3-T-BRACKET = 21, HM3-T-SHEAR = 15,
+  HM3-T-L0BRK = 10, HM3-T-SIGMA = 4: every count exactly as
+  preregistered.
+* P-10 ✓ — no falsifier fired; nothing to diagnose upstream.
+
+**Consequence for the grade box:** THEOREMS HM3.A/B/C stand as
+composed, machine-sealed on 41 rows both characteristics with the
+menu checked key by key in both directions and the σ side
+independently oracled on every deep member of four rows — (hMenu-3)
+is DISCHARGED at composition grade (attempt 0/2; the hostile arc has
+not begun). COROLLARY HM3.D therefore stands at the S9 stack's
+composition grade: W-12.D FIRES AT n = 3 — the five cubic splitting
+densities R_τ(q) ∈ ℚ(q), one expression per type at every prime
+power, both characteristics, wild included, Σ_τ R_τ = 1 — the first
+COMPLETE degree instance of the uniformity directive beyond n = 2,
+conditional exactly on the displayed arc grades (W-12 PE2 owed; HEX3
+and this note's hostile arcs unbegun). HEX3-BOX-1 (the exact U₃^σ
+law) remains open and off the critical path (S5.4).
