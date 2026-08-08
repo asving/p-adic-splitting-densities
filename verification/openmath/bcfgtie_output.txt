@@ -1,0 +1,131 @@
+[    2.5s] betas 1..6 loaded, sum=1 sanity ok
+[    2.5s] == C1: cluster-law root yields eps_m ==
+[   88.4s]   PASS  eps_1 == 1
+[   88.4s]   PASS  eps_2 == 1/(q+1)   [got 1/(q + 1)]
+[   88.4s]   PASS  eps_3 == 1/(q+1)   [got 1/(q + 1)]
+[   88.4s]   PASS  eps_4 == 1/(q+1)   [got 1/(q + 1)]
+[   88.4s]   PASS  eps_5 == 1/(q+1)   [got 1/(q + 1)]
+[   88.4s]   PASS  eps_6 == 1/(q+1)   [got 1/(q + 1)]
+[   88.4s] == C2: MONIC E_n — telescope (I) vs full type-sum ==
+[   88.4s]   PASS  E_2 (telescope) == q/(q+1)   [got q/(q + 1)]
+[   88.4s]   PASS  E_3 (telescope) == q/(q+1)   [got q/(q + 1)]
+[   88.4s]   PASS  E_4 (telescope) == q/(q+1)   [got q/(q + 1)]
+[   88.4s]   PASS  E_5 (telescope) == q/(q+1)   [got q/(q + 1)]
+[   88.4s]   PASS  E_6 (telescope) == q/(q+1)   [got q/(q + 1)]
+[   88.4s]   PASS  monic assembly n=2: Sigma == 1
+[   88.4s]   PASS  E_2 cross-route (type-sum) == telescope
+[   88.5s]   PASS  monic assembly n=3: Sigma == 1
+[   88.5s]   PASS  E_3 cross-route (type-sum) == telescope
+[   91.0s]   PASS  monic assembly n=4: Sigma == 1
+[   91.1s]   PASS  E_4 cross-route (type-sum) == telescope
+[  120.3s]   PASS  monic assembly n=5: Sigma == 1
+[  130.4s]   PASS  E_5 cross-route (type-sum) == telescope
+[  930.6s]   PASS  monic assembly n=6: Sigma == 1
+[  986.2s]   PASS  E_6 cross-route (type-sum) == telescope
+[  986.2s] == C3: PROJECTIVE E_n == 1; BCFG raw1 rows ==
+[  986.2s]   PASS  proj assembly n=2: Sigma == 1
+[  986.2s]   PASS  E_2^proj (type-sum) == 1
+[  986.2s]   PASS  E_2^proj (telescope) == 1
+[  986.2s]   PASS  BCFG raw1 row n=2 == 1 (committed)
+[  986.3s]   PASS  proj assembly n=3: Sigma == 1
+[  986.3s]   PASS  E_3^proj (type-sum) == 1
+[  986.3s]   PASS  E_3^proj (telescope) == 1
+[  986.3s]   PASS  BCFG raw1 row n=3 == 1 (committed)
+[  987.0s]   PASS  proj assembly n=4: Sigma == 1
+[  987.6s]   PASS  E_4^proj (type-sum) == 1
+[  987.6s]   PASS  E_4^proj (telescope) == 1
+[  987.6s]   PASS  BCFG raw1 row n=4 == 1 (committed)
+[  997.6s]   PASS  proj assembly n=5: Sigma == 1
+[ 1000.5s]   PASS  E_5^proj (type-sum) == 1
+[ 1000.5s]   PASS  E_5^proj (telescope) == 1
+[ 1000.5s]   PASS  BCFG raw1 row n=5 == 1 (committed)
+[ 1479.4s]   PASS  proj assembly n=6: Sigma == 1
+[ 1526.0s]   PASS  E_6^proj (type-sum) == 1
+[ 1526.0s]   PASS  E_6^proj (telescope) == 1
+[ 1526.0s]   PASS  BCFG raw1 row n=6 == 1 (committed)
+[ 1526.0s] == C4: deep-count law P_m(j) ==
+[ 1526.0s]   PASS  sum_j P_2(j) == 1
+[ 1526.0s]   PASS  KEY IDENTITY q*P_2(0) - P_2(1) == q-1
+[ 1526.0s]   PASS  sum_j P_3(j) == 1
+[ 1526.0s]   PASS  KEY IDENTITY q*P_3(0) - P_3(1) == q-1
+[ 1526.0s]   PASS  sum_j P_4(j) == 1
+[ 1526.0s]   PASS  KEY IDENTITY q*P_4(0) - P_4(1) == q-1
+[ 1526.0s]   PASS  sum_j P_5(j) == 1
+[ 1526.0s]   PASS  KEY IDENTITY q*P_5(0) - P_5(1) == q-1
+[ 1526.1s]   PASS  sum_j P_6(j) == 1
+[ 1526.1s]   PASS  KEY IDENTITY q*P_6(0) - P_6(1) == q-1
+[ 1526.1s]   PASS  sum_j P_7(j) == 1
+[ 1526.1s]   PASS  KEY IDENTITY q*P_7(0) - P_7(1) == q-1
+[ 1526.2s]   PASS  sum_j P_8(j) == 1
+[ 1526.2s]   PASS  KEY IDENTITY q*P_8(0) - P_8(1) == q-1
+[ 1526.3s]   PASS  sum_j P_9(j) == 1
+[ 1526.3s]   PASS  KEY IDENTITY q*P_9(0) - P_9(1) == q-1
+[ 1526.4s]   PASS  sum_j P_10(j) == 1
+[ 1526.4s]   PASS  KEY IDENTITY q*P_10(0) - P_10(1) == q-1
+[ 1526.4s]   PASS  P_2(j) closed form == brute enumeration (symbolic, all j)
+[ 1526.5s]   PASS  P_3(j) closed form == brute enumeration (symbolic, all j)
+[ 1526.8s]   PASS  P_4(j) closed form == brute enumeration (symbolic, all j)
+[ 1530.4s]   PASS  P_5(j) closed form == brute enumeration (symbolic, all j)
+[ 1533.4s]   PASS  P_6(j) closed form == brute enumeration (q=2, exact rational)
+[ 1536.5s]   PASS  P_6(j) closed form == brute enumeration (q=3, exact rational)
+[ 1539.7s]   PASS  P_6(j) closed form == brute enumeration (q=5, exact rational)
+[ 1543.1s]   PASS  P_6(j) closed form == brute enumeration (q=7, exact rational)
+[ 1606.6s]   PASS  P_7(j) closed form == brute enumeration (q=2, exact rational)
+[ 1672.2s]   PASS  P_7(j) closed form == brute enumeration (q=3, exact rational)
+[ 1739.8s]   PASS  P_7(j) closed form == brute enumeration (q=5, exact rational)
+[ 1807.7s]   PASS  P_7(j) closed form == brute enumeration (q=7, exact rational)
+[ 1807.7s] == C5: Lemma B machine tie  eps_m == sum_j P_m(j) E_j ==
+[ 1807.7s]   PASS  eps_2 (engine) == sum_j P_2(j) E_j   [rhs=1/(q + 1)]
+[ 1807.7s]   PASS  eps_3 (engine) == sum_j P_3(j) E_j   [rhs=1/(q + 1)]
+[ 1807.7s]   PASS  eps_4 (engine) == sum_j P_4(j) E_j   [rhs=1/(q + 1)]
+[ 1807.7s]   PASS  eps_5 (engine) == sum_j P_5(j) E_j   [rhs=1/(q + 1)]
+[ 1807.7s]   PASS  eps_6 (engine) == sum_j P_6(j) E_j   [rhs=1/(q + 1)]
+[ 1807.7s] == C6: THE SEVENTEEN QUINTIC DENSITIES (projective rho(5)) ==
+[ 1807.7s]   PASS  n=5 type count == 17
+[ 1837.1s]   PASS  per-pattern partial sums: contribution == cfg/b5, all 17 patterns
+[ 1837.1s]   PASS  sum of pattern partials == 1
+[ 1837.2s]   PASS  P(5,0) OM == BCFG committed
+[ 1837.9s]   PASS  P(5,1) OM == BCFG committed
+[ 1838.1s]   PASS  P(5,2) OM == BCFG committed
+[ 1838.1s]   PASS  P(5,3) OM == BCFG committed
+[ 1838.1s]   PASS  P(5,4) OM == BCFG committed
+[ 1838.2s]   PASS  P(5,5) OM == BCFG committed
+[ 1838.6s]   PASS  numeric sanity: 0 < R_tau < 1 and Sigma == 1 exactly at 9 prime powers
+[ 1838.8s]     R_((1, 1), (1, 1), (1, 1), (1, 1), (1, 1)) = (q**2 + 1)*(q**2 - q + 1)**2*(q**18 - 2*q**17 + 4*q**16 + 2*q**15 + 3*q**14 + 2*q**12 - 6*q**11 + 5*q**10 + 12*q**9 + 5*q**8 - 6*q**7 + 2*q**6 + 3*q**4 + 2*q**3 + 4*q**2 - 2*q + 1)/(120*(q**2 + q + 1)*(q**6 + q**3 + 1)*(q**4 + q**3 + q**2 + q + 1)*(q**6 - q**5 + q**4 - q**3 + q**2 - q + 1)*(q**6 + q**5 + q**4 + q**3 + q**2 + q + 1))
+[ 1838.8s]     R_((1, 1), (1, 1), (1, 1), (1, 2)) = (q**24 + 4*q**22 - 2*q**21 + 7*q**20 - 2*q**19 + 9*q**18 - 2*q**17 + 11*q**16 - 2*q**15 + 14*q**14 - 2*q**13 + 12*q**12 - 2*q**11 + 14*q**10 - 2*q**9 + 11*q**8 - 2*q**7 + 9*q**6 - 2*q**5 + 7*q**4 - 2*q**3 + 4*q**2 + 1)/(12*(q**2 + q + 1)*(q**6 + q**3 + 1)*(q**4 + q**3 + q**2 + q + 1)*(q**6 - q**5 + q**4 - q**3 + q**2 - q + 1)*(q**6 + q**5 + q**4 + q**3 + q**2 + q + 1))
+[ 1838.9s]     R_((1, 1), (1, 1), (1, 1), (2, 1)) = q*(q**2 - q + 1)*(q**20 - q**19 + 5*q**18 + q**17 + 6*q**16 + 3*q**15 + 8*q**14 + q**13 + 10*q**12 + 5*q**11 + 6*q**10 + 5*q**9 + 10*q**8 + q**7 + 8*q**6 + 3*q**5 + 6*q**4 + q**3 + 5*q**2 - q + 1)/(6*(q**2 + q + 1)*(q**6 + q**3 + 1)*(q**4 + q**3 + q**2 + q + 1)*(q**6 - q**5 + q**4 - q**3 + q**2 - q + 1)*(q**6 + q**5 + q**4 + q**3 + q**2 + q + 1))
+[ 1838.9s]     R_((1, 1), (1, 1), (1, 3)) = (q**6 - q**3 + 1)*(q**16 + q**15 + q**14 + 2*q**13 + 2*q**12 + 2*q**11 + 2*q**10 + 2*q**9 + 3*q**8 + 2*q**7 + 2*q**6 + 2*q**5 + 2*q**4 + 2*q**3 + q**2 + q + 1)/(6*(q**6 + q**3 + 1)*(q**4 + q**3 + q**2 + q + 1)*(q**6 - q**5 + q**4 - q**3 + q**2 - q + 1)*(q**6 + q**5 + q**4 + q**3 + q**2 + q + 1))
+[ 1839.0s]     R_((1, 1), (1, 1), (3, 1)) = q**2*(q**20 + 4*q**18 + 2*q**17 + 4*q**16 + 5*q**15 + 7*q**14 + 3*q**13 + 8*q**12 + 7*q**11 + 5*q**10 + 7*q**9 + 8*q**8 + 3*q**7 + 7*q**6 + 5*q**5 + 4*q**4 + 2*q**3 + 4*q**2 + 1)/(2*(q**2 + q + 1)*(q**6 + q**3 + 1)*(q**4 + q**3 + q**2 + q + 1)*(q**6 - q**5 + q**4 - q**3 + q**2 - q + 1)*(q**6 + q**5 + q**4 + q**3 + q**2 + q + 1))
+[ 1839.0s]     R_((1, 1), (1, 2), (1, 2)) = (q**4 - q**2 + 1)*(q**20 + q**18 - 2*q**17 + 3*q**16 - 2*q**15 + 5*q**14 + 7*q**12 + 6*q**10 + 7*q**8 + 5*q**6 - 2*q**5 + 3*q**4 - 2*q**3 + q**2 + 1)/(8*(q**2 + q + 1)*(q**6 + q**3 + 1)*(q**4 + q**3 + q**2 + q + 1)*(q**6 - q**5 + q**4 - q**3 + q**2 - q + 1)*(q**6 + q**5 + q**4 + q**3 + q**2 + q + 1))
+[ 1839.0s]     R_((1, 1), (1, 2), (2, 1)) = q*(q**16 + q**15 + 3*q**14 + 2*q**13 + 3*q**12 + 4*q**11 + 5*q**10 + 4*q**9 + 6*q**8 + 4*q**7 + 5*q**6 + 4*q**5 + 3*q**4 + 2*q**3 + 3*q**2 + q + 1)/(2*(q**2 + q + 1)*(q**6 + q**3 + 1)*(q**4 + q**3 + q**2 + q + 1)*(q**6 + q**5 + q**4 + q**3 + q**2 + q + 1))
+[ 1839.0s]     R_((1, 1), (1, 4)) = (q**4 + 1)*(q**4 - q**2 + 1)*(q**8 - q**4 + 1)*(q**4 + q**3 + q**2 + q + 1)/(4*(q**2 + q + 1)*(q**6 + q**3 + 1)*(q**6 - q**5 + q**4 - q**3 + q**2 - q + 1)*(q**6 + q**5 + q**4 + q**3 + q**2 + q + 1))
+[ 1839.1s]     R_((1, 1), (2, 1), (2, 1)) = q**2*(q**2 + 1)*(q**2 - q + 1)*(q**10 + 2*q**8 + q**7 + q**6 - 3*q**5 + q**4 + q**3 + 2*q**2 + 1)/(2*(q**2 + q + 1)*(q**4 + q**3 + q**2 + q + 1)*(q**6 - q**5 + q**4 - q**3 + q**2 - q + 1)*(q**6 + q**5 + q**4 + q**3 + q**2 + q + 1))
+[ 1839.1s]     R_((1, 1), (2, 2)) = q**2*(q**4 - q**2 + 1)*(q**12 + q**9 + 2*q**7 + 2*q**5 + q**3 + 1)/(2*(q**2 + q + 1)*(q**6 + q**3 + 1)*(q**6 - q**5 + q**4 - q**3 + q**2 - q + 1)*(q**6 + q**5 + q**4 + q**3 + q**2 + q + 1))
+[ 1839.1s]     R_((1, 1), (4, 1)) = q**3*(q**4 + q**3 + q**2 + q + 1)*(q**10 - q**9 + q**8 - 2*q**6 + 4*q**5 - 2*q**4 + q**2 - q + 1)/((q**2 + q + 1)*(q**6 + q**3 + 1)*(q**6 - q**5 + q**4 - q**3 + q**2 - q + 1)*(q**6 + q**5 + q**4 + q**3 + q**2 + q + 1))
+[ 1839.1s]     R_((1, 2), (1, 3)) = (q**18 + q**16 + q**14 + 2*q**12 + q**10 - q**9 + q**8 + 2*q**6 + q**4 + q**2 + 1)/(6*(q**2 + q + 1)*(q**4 + q**3 + q**2 + q + 1)*(q**6 - q**5 + q**4 - q**3 + q**2 - q + 1)*(q**6 + q**5 + q**4 + q**3 + q**2 + q + 1))
+[ 1839.1s]     R_((1, 2), (3, 1)) = q**2*(q**8 + q**7 + 2*q**6 + q**5 + q**4 + q**3 + 2*q**2 + q + 1)/(2*(q**2 + q + 1)*(q**4 + q**3 + q**2 + q + 1)*(q**6 + q**5 + q**4 + q**3 + q**2 + q + 1))
+[ 1839.1s]     R_((1, 3), (2, 1)) = q*(q**6 - q**3 + 1)*(q**10 + q**9 + q**8 + q**7 + q**6 + q**5 + q**4 + q**3 + q**2 + q + 1)/(3*(q**2 + q + 1)*(q**4 + q**3 + q**2 + q + 1)*(q**6 - q**5 + q**4 - q**3 + q**2 - q + 1)*(q**6 + q**5 + q**4 + q**3 + q**2 + q + 1))
+[ 1839.2s]     R_((1, 5),) = (q**2 + 1)*(q**4 - q**3 + q**2 - q + 1)*(q**8 + q**7 - q**5 - q**4 - q**3 + q + 1)/(5*(q**2 + q + 1)*(q**6 - q**5 + q**4 - q**3 + q**2 - q + 1)*(q**6 + q**5 + q**4 + q**3 + q**2 + q + 1))
+[ 1839.2s]     R_((2, 1), (3, 1)) = q**3*(q**2 - q + 1)*(q**10 + q**9 + 2*q**8 + q**7 + q**6 - q**5 + q**4 + q**3 + 2*q**2 + q + 1)/((q**2 + q + 1)*(q**4 + q**3 + q**2 + q + 1)*(q**6 - q**5 + q**4 - q**3 + q**2 - q + 1)*(q**6 + q**5 + q**4 + q**3 + q**2 + q + 1))
+[ 1839.2s]     R_((5, 1),) = q**4*(q**2 + 1)*(q**4 - q**2 + 1)/((q**2 + q + 1)*(q**6 - q**5 + q**4 - q**3 + q**2 - q + 1)*(q**6 + q**5 + q**4 + q**3 + q**2 + q + 1))
+[ 1839.2s] == C7: full dist tie n=2..6 vs committed BCFG rows (in-process) ==
+[ 1886.2s]   PASS  ALL P(n,r) n=2..6 match committed BCFG rows
+[ 1886.2s] == C8: menu growth (computability display) ==
+[ 1886.2s]     n=2: #types = 3, #divisor patterns = 3
+[ 1886.2s]     n=3: #types = 5, #divisor patterns = 5
+[ 1886.2s]     n=4: #types = 11, #divisor patterns = 11
+[ 1886.2s]     n=5: #types = 17, #divisor patterns = 17
+[ 1886.2s]     n=6: #types = 34, #divisor patterns = 34
+[ 1886.2s]     n=7: #types = 52, #divisor patterns = 52
+[ 1886.2s]     n=8: #types = 94, #divisor patterns = 94
+[ 1886.2s]     n=9: #types = 145, #divisor patterns = 145
+[ 1886.2s]     n=10: #types = 244, #divisor patterns = 244
+[ 1886.2s]   PASS  #types(4) == 11 (GENH4's ELEVEN)
+[ 1886.2s]   PASS  #types(5) == 17
+[ 1886.2s] == TEETH ==
+[ 1886.4s]   PASS  T1 bites: min-argmin mutant FAILS the KEY identity (m=3,4)
+[ 1886.4s]   PASS  T2 bites: eps-mutant q/(q+1)^2 breaks E_2 == q/(q+1)
+[ 1898.4s]   PASS  T3 bites: swap mutant passes Sigma=1 but FAILS BCFG rows r=0,5
+[ 1906.4s]   PASS  T4 bites: bump mutant FAILS Sigma == 1
+[ 1906.4s] DONE GREEN: 93 checks, 0 fails -> bcfgtie_results.json
+EXIT=0
