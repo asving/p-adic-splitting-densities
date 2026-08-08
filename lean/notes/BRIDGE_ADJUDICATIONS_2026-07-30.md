@@ -12646,3 +12646,26 @@ counter advances 0/2 → 1/2. PE3 = the accepting attempt.
 with the pin verified on THREE legs; the HEX3 fired-clause record
 added; supplier arcs refreshed incl. W-11 ACCEPTED). Counter 0/2, PE3
 next.
+
+---
+
+## ★★ Σ-LAW ACCEPTED AT 2/2 (eighth accepted note) — THE WELD'S LAST OPEN BOX NOW ACCEPTED-CLOSED ON ITS FORWARD LEG (converse the sole residue) + HMENU3 1/2 (PE4 = accepting attempt) + HEX3 r2 owed (bracket-level; the "honest 11" is truly TWELVE) — 2026-08-08
+
+SIGMALAW acceptance record at the note tail + GRTW2 annex #3 (supplier
+upgrade) at THIS commit. **HMENU3 PE3 (7e5026a): CLEAN, counter 1/2**
+— the verifier extended machine evidence to α-depth m=3 by own
+enumeration of never-measured N=10 slices (2×16.7M states; the b(3) =
+2,048 bracket confirmed composition-by-composition; bonus: the
+N=10-only deep-3LIN key discriminates the note's slope-shear against
+the +3m misreading — note's law true); B3 route re-derived in full;
+all double-claim candidates structurally excluded; 4 remark-grade
+non-findings. PE4 = the accepting attempt. **HEX3 PE2 (f60348b): 0C +
+1G + 1m, both inside [r1] brackets** — the r1 "honest 11-set" is
+itself miscounted: truly TWELVE ((8,3) omitted by verbatim
+inheritance of PE1's own census; the verifier independently measured
+(Fqt,8,3) = 32,768 = 8⁵ CONFIRMING the law on the omitted row); plus
+an S8.2 aside k=1-correction misattribution. r2 owed
+(bookkeeping-level). All theorem-level claims survived again (β2/β3
+at full depth; R(M) both parities; N=1,2 corners; the q=27
+never-measured row predicted exactly by the verifier's own
+enumerator).

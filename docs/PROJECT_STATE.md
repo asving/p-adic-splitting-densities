@@ -3176,3 +3176,5 @@ multiplicativity + χ-from-S (queued synthesis targets).**
 **2026-08-08: ★★★ GENERAL INDUCTION COMPOSED (GENIND: grammar/α-bracket/criterion/simple-layer PROVED; [GENIND-H] the one box) + QSCOUT22: composite stage = SAME LAW RE-BASED (wildness never enters the count). [GENIND-H] → three concrete lemmas Q22-L1/L2/L3. ★★★**
 
 **2026-08-08: ★★ W-11(n=2) ACCEPTED 2/2 — first density-side acceptance (7th note overall; disc-fibration + mutant-audit legs). SIGMALAW r1 landed (EC-law transcribed); HMENU3 word-level r2 owed. GENH4 (P(4) prover) running.**
+
+**2026-08-08: ★★ Σ-LAW ACCEPTED 2/2 (8th note) — weld's last box accepted-closed on the forward leg. HMENU3 at 1/2 (PE4 accepting next). HEX3 r2 owed (bracket bookkeeping). GENH4 running.**

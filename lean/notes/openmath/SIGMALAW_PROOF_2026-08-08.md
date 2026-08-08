@@ -602,3 +602,32 @@ above is the SEALED wording, kept verbatim as applied.]
 — Σ-LAW unit, campaign date 2026-08-08; commit 1 (seal) = runner + this
 note with §6R PENDING; commit 2 (verdict from committed artifacts) fills
 §6R and the annex blanks.
+
+---
+
+## ★ ACCEPTANCE RECORD (orchestrator, 2026-08-08) ★
+
+**THIS NOTE IS ACCEPTED at 2/2** — PE2 (6e57e03, CLEAN on the note
+text; independent (EC-q) re-derivation with the 3-clause ladder proved
+well-founded; 16 own doubly-twisted towers incl. the k≡3 (mod 4)
+contrapositive; order-7 fresh route) and PE3 (165ca12, CLEAN; SL-L2
+re-derived line-by-line + machine-keyed BY NAME for the first time;
+the all-three-u_j-factors junction constructed; own census walk
+1,211 rows leak-free; mutant audit 13/13 caught; fresh route = 𝔽₂₇
+chamber with ord-13 invisible twist, 0 violations). Full arc: composed
+→ seal 8064ae3 / verdict 59c1ff2 → PE1 (0C+1G+2m, 9b0117d — the GAP
+was the wrap display; the verifier DERIVED the true (EC-q) law) → r1
+(6b24942, the derivation transcribed) → PE2 CLEAN-on-note → PE3
+CLEAN. Three passes, one substantive repair.
+
+**FREEZE-CONVENTION STAMP**: the accepted text is the post-r1 body,
+md5 a50d3d5f, byte-frozen since 6b24942; dated appends only hereafter.
+
+**WHAT IS ACCEPTED**: THEOREM SL-1 (the Σ-LAW: Prnt_j(A) =
+u_j·Σ_m(R_m v(A)) with closed-form slot constant, every on-line
+level-m object at every shared-below junction, every m ≥ 1, via the
+(VD-q)+(EC-q)+(SC-q) ladder — Σ_m the ξ-formula composite twist, both
+bare-θ variants refuted by construction) + THEOREM OPEN-2a-Σ's firing
+(the (OPEN-2a) forward direction at every m ≥ 2, given OA-L1–L4) +
+COROLLARIES, at the displayed boxes; the converse's UNPROVED status
+unchanged.
