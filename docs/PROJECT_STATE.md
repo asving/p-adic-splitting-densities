@@ -3170,3 +3170,5 @@ multiplicativity + χ-from-S (queued synthesis targets).**
 **2026-08-08: ★★★ W-12 LANDED — THEOREM W-12.D (THE REDUCTION) PROVED: menu + drainage ⟹ one R_τ ∈ ℚ(q) per type at every prime incl. wild. The goal = W-12.D + per-degree (hMenu-n, hExhaust-n): n=2 DONE, n=3 boxed exactly, [W12-H] for orders ≥2. Battery 3,232,506/0. ★★★**
 
 **2026-08-08: ★★★ Σ-LAW PROVED (OPEN-2a forward CLOSED at every m — the weld box's last leg; true law = ξ-formula twist, boxed sign refuted by construction) · (hExhaust-3) DISCHARGED (exact U₃ law) · (W-MULT-DCX-m) PROVED (Codex TIER-0) · W-12 r1 owed (display-level). Frontier: (hMenu-3), [W12-H] now 5 members, U₃^σ box, OPEN-2a converse. ★★★**
+
+**2026-08-08: ★★★★ CUBIC DENSITIES PROVED AT COMPOSITION GRADE — (hMenu-3) discharged (33 families, no box), W-12.D fires at n=3: exact R_τ(q) per type, both characteristics, wild p=2+p=3, Σ=1 (triple-tied). n≤3 chain composition-complete; hostile arcs owed (all 0/2). General-n route visible via the HM3-1 two-species recursion. ★★★★**
