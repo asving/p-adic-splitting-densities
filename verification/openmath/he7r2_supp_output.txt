@@ -1,0 +1,20 @@
+HE7 r2 supplementary leg — LEMMA HE7-12 (SLOT-DOMINATION) + LEMMA HE7-13 (strict slope increase) on the sealed refine-path members
+pins: he7_checks.py 688adbe88447, he7_checks_results.json f5bedab2ecda, he6_checks.py 321fa4d4990e, he7r1_supp.py 24ece42e4538
+  row Z_3        u=5 s=1 char 0                 members  209  refine-fired  9 (frozen  9)  B-ok  9
+  row Z_5        u=5 s=1 char 0                 members  243  refine-fired  1 (frozen  1)  B-ok  1
+  row Z_7        u=5 s=1 char 0                 members  161  refine-fired  5 (frozen  5)  B-ok  5
+  row Z_5        u=7 s=1 char 0, deeper side    members  125  refine-fired  0 (frozen  0)  B-ok  0
+  row Z_3        u=5 s=2 char 0, twist live     members  124  refine-fired  0 (frozen  0)  B-ok  0
+  row Z_5        u=5 s=2 char 0, twist live     members  150  refine-fired  5 (frozen  5)  B-ok  5
+  row Z_5        u=5 s=3 char 0, twist live     members  105  refine-fired  0 (frozen  0)  B-ok  0
+  row Z_7        u=5 s=3 char 0, twist live     members  115  refine-fired  0 (frozen  0)  B-ok  0
+  row Z_5        u=7 s=2 char 0, deeper+twist   members  105  refine-fired  3 (frozen  3)  B-ok  3
+  row F_3[[t]]   u=5 s=1 char 3                 members   79  refine-fired  8 (frozen  8)  B-ok  8
+  row F_3[[t]]   u=5 s=2 char 3, twist live     members   57  refine-fired  6 (frozen  6)  B-ok  6
+  row F_5[[t]]   u=5 s=1 char 5                 members   57  refine-fired  2 (frozen  2)  B-ok  2
+  row F_5[[t]]   u=5 s=3 char 5, twist live     members   57  refine-fired  3 (frozen  3)  B-ok  3
+
+REFINE-PATH MEMBERS 42 (frozen artifact total 42; S11 Q1's sentence says 41 — recount disclosure)
+CHECKS {'B4-residual-form': 42, 'B1-slot-domination': 42, 'B2-offdisk': 210, 'B3-strict-slope-increase': 42, 'B5-recount-row': 13}
+VIOLATIONS: 0
+3.8s

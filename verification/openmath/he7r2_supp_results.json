@@ -1,0 +1,256 @@
+{
+ "checks": {
+  "B1-slot-domination": 42,
+  "B2-offdisk": 210,
+  "B3-strict-slope-increase": 42,
+  "B4-residual-form": 42,
+  "B5-recount-row": 13
+ },
+ "examples": [
+  {
+   "Psi_slots": [
+    [
+     0,
+     10
+    ],
+    [
+     2,
+     10
+    ]
+   ],
+   "T2": 10,
+   "dv2res_f_Psi": 88,
+   "dv2res_f_Psi1": 92,
+   "lam2": 11,
+   "post_slopes": [
+    "23/2"
+   ],
+   "ring": "Z_3",
+   "s": 1,
+   "s2": 1,
+   "u": 5,
+   "w_slots": [
+    [
+     1,
+     11
+    ]
+   ]
+  },
+  {
+   "Psi_slots": [
+    [
+     0,
+     10
+    ],
+    [
+     2,
+     10
+    ]
+   ],
+   "T2": 10,
+   "dv2res_f_Psi": 88,
+   "dv2res_f_Psi1": 96,
+   "lam2": 11,
+   "post_slopes": [
+    "12"
+   ],
+   "ring": "Z_3",
+   "s": 1,
+   "s2": 1,
+   "u": 5,
+   "w_slots": [
+    [
+     1,
+     11
+    ]
+   ]
+  },
+  {
+   "Psi_slots": [
+    [
+     0,
+     10
+    ],
+    [
+     2,
+     10
+    ]
+   ],
+   "T2": 10,
+   "dv2res_f_Psi": 88,
+   "dv2res_f_Psi1": 92,
+   "lam2": 11,
+   "post_slopes": [
+    "23/2"
+   ],
+   "ring": "Z_3",
+   "s": 1,
+   "s2": 1,
+   "u": 5,
+   "w_slots": [
+    [
+     1,
+     11
+    ]
+   ]
+  },
+  {
+   "Psi_slots": [
+    [
+     0,
+     10
+    ],
+    [
+     2,
+     10
+    ]
+   ],
+   "T2": 10,
+   "dv2res_f_Psi": 88,
+   "dv2res_f_Psi1": 100,
+   "lam2": 11,
+   "post_slopes": [
+    "25/2"
+   ],
+   "ring": "Z_3",
+   "s": 1,
+   "s2": 1,
+   "u": 5,
+   "w_slots": [
+    [
+     1,
+     11
+    ]
+   ]
+  }
+ ],
+ "frozen_total": 42,
+ "pins": {
+  "he6_checks.py": "321fa4d4990e",
+  "he7_checks.py": "688adbe88447",
+  "he7_checks_results.json": "f5bedab2ecda",
+  "he7r1_supp.py": "24ece42e4538"
+ },
+ "refine_members": 42,
+ "rows": [
+  {
+   "B_ok": 9,
+   "members": 209,
+   "refine_members": 9,
+   "ring": "Z_3",
+   "s": 1,
+   "tag": "char 0",
+   "u": 5
+  },
+  {
+   "B_ok": 1,
+   "members": 243,
+   "refine_members": 1,
+   "ring": "Z_5",
+   "s": 1,
+   "tag": "char 0",
+   "u": 5
+  },
+  {
+   "B_ok": 5,
+   "members": 161,
+   "refine_members": 5,
+   "ring": "Z_7",
+   "s": 1,
+   "tag": "char 0",
+   "u": 5
+  },
+  {
+   "B_ok": 0,
+   "members": 125,
+   "refine_members": 0,
+   "ring": "Z_5",
+   "s": 1,
+   "tag": "char 0, deeper side",
+   "u": 7
+  },
+  {
+   "B_ok": 0,
+   "members": 124,
+   "refine_members": 0,
+   "ring": "Z_3",
+   "s": 2,
+   "tag": "char 0, twist live",
+   "u": 5
+  },
+  {
+   "B_ok": 5,
+   "members": 150,
+   "refine_members": 5,
+   "ring": "Z_5",
+   "s": 2,
+   "tag": "char 0, twist live",
+   "u": 5
+  },
+  {
+   "B_ok": 0,
+   "members": 105,
+   "refine_members": 0,
+   "ring": "Z_5",
+   "s": 3,
+   "tag": "char 0, twist live",
+   "u": 5
+  },
+  {
+   "B_ok": 0,
+   "members": 115,
+   "refine_members": 0,
+   "ring": "Z_7",
+   "s": 3,
+   "tag": "char 0, twist live",
+   "u": 5
+  },
+  {
+   "B_ok": 3,
+   "members": 105,
+   "refine_members": 3,
+   "ring": "Z_5",
+   "s": 2,
+   "tag": "char 0, deeper+twist",
+   "u": 7
+  },
+  {
+   "B_ok": 8,
+   "members": 79,
+   "refine_members": 8,
+   "ring": "F_3[[t]]",
+   "s": 1,
+   "tag": "char 3",
+   "u": 5
+  },
+  {
+   "B_ok": 6,
+   "members": 57,
+   "refine_members": 6,
+   "ring": "F_3[[t]]",
+   "s": 2,
+   "tag": "char 3, twist live",
+   "u": 5
+  },
+  {
+   "B_ok": 2,
+   "members": 57,
+   "refine_members": 2,
+   "ring": "F_5[[t]]",
+   "s": 1,
+   "tag": "char 5",
+   "u": 5
+  },
+  {
+   "B_ok": 3,
+   "members": 57,
+   "refine_members": 3,
+   "ring": "F_5[[t]]",
+   "s": 3,
+   "tag": "char 5, twist live",
+   "u": 5
+  }
+ ],
+ "secs": 3.8,
+ "viol": []
+}
