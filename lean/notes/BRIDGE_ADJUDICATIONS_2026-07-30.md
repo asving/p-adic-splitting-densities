@@ -12916,3 +12916,12 @@ cross-foot; 9-prime-power exact window; the single-source β₅ anchors
 R_{(2,1)(3,1)} and R_{(5,1)} = q⁴Φ₄Φ₁₂/(Φ₃Φ₇Φ₁₄) reproduced exactly).
 Battery: run-1 RED at the instrument only (disclosed, math 67/67
 green), scoring run GREEN 93/0, 4/4 teeth.
+
+**Evening 529 flare: MOMENTS casualty (~15 min, no partials) + W-12 PE4
+casualty #2 (draft SURVIVED at /tmp/w12_pe4_draft.md — mid-Witt-vector
+fresh route) + HE3 casualty #3 (2.2h, nothing recoverable — prompt
+hardened with detached-computation rules). HEX3 r3 LANDED (b6a1d69;
+counter 0/2, PE5 next). RELAUNCHED: HE3 attempt 4 (waof3etof) + W-12
+PE4 attempt 3 (w7hai3m68, draft-adopt). PENDING FOR NEXT
+RESUME-SLOT: MOMENTS (resume wf_1002500c-012 via
+…/workflows/scripts/moments-wf_1002500c-012.js).**
