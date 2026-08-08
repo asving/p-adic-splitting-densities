@@ -1,0 +1,14 @@
+{
+ "checks": {
+  "C0-pins": 7,
+  "C1-sum": 1,
+  "C2-tie": 6,
+  "C3-beta3-dist": 1,
+  "C4-spots": 25,
+  "T1-tooth": 1
+ },
+ "elapsed_s": 1.7,
+ "leg": "GENH4-r2-SUPP (nu3 tie, PE2 MINOR 1)",
+ "verdict": "GREEN",
+ "violations": []
+}

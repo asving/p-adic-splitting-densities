@@ -1,0 +1,21 @@
+C0 pin genh4_checks.py = ee8024b7a500220a6408dab373d7432f (want ee8024b7a500220a6408dab373d7432f)
+C0 pin ../om_density_engine.py      7240a916060c360d4433ca8a802d315d ok
+C0 pin qscout22_checks.py           cb885663dd4ef6dfda9c28a67c1a076e ok
+C0 pin qscout22_output.txt          378a12b30b1ee3e1d3b929835827c7c7 ok
+C0 pin qscout22_results.json        6c2441a12cf52ffd43055de912a4affe ok
+C0 pin w10_checks.py                a9c34244a3af19f5fa864375b494380b ok
+C0 pin w12_checks.py                7dc040d94fbbb1e8d20ac817b665d418 ok
+C1 Sum_tau T_tau - q^-3 = 0
+C2 tie ((1, 1), (1, 1), (1, 1))     q^3*T - beta3 = 0
+C2 tie ((1, 1), (1, 2))             q^3*T - beta3 = 0
+C2 tie ((1, 1), (2, 1))             q^3*T - beta3 = 0
+C2 tie ((1, 3),)                    q^3*T - beta3 = 0
+C2 tie ((3, 1),)                    q^3*T - beta3 = 0
+C3 Sum beta3 - 1 = 0
+C4 q=2  all five spot ties exact
+C4 q=3  all five spot ties exact
+C4 q=5  all five spot ties exact
+C4 q=7  all five spot ties exact
+C4 q=11 all five spot ties exact
+T1 tooth (INERTDEEP x2): FIRED
+VERDICT: GREEN (0 violations) 1.7s
