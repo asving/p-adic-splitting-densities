@@ -228,10 +228,17 @@ for m in range(2, 6):
     br = Pmj_brute(m)
     ok = all(eqz(Pmj(m, j) - br.get(j, sp.Integer(0))) for j in range(m + 1))
     check(f"P_{m}(j) closed form == brute enumeration (symbolic, all j)", ok)
+def _frac(expr):
+    """[r1] exact Rational -> Fraction.  (Run 1 used Fraction(str(nsimplify(.))):
+    nsimplify mangles huge-denominator exact rationals (e.g. 7^-21) into surd
+    products -> ValueError crash at m=7.  Instrument-side; no predicate changed.)"""
+    r = sp.Rational(sp.cancel(expr))
+    return Fraction(int(r.p), int(r.q))
+
 for m in (6, 7):
     for p in (2, 3, 5, 7):
         br = Pmj_brute(m, qval=p)
-        ok = all(Fraction(str(sp.nsimplify(Pmj(m, j).subs(q, p)))) == br.get(j, Fraction(0))
+        ok = all(_frac(Pmj(m, j).subs(q, p)) == br.get(j, Fraction(0))
                  for j in range(m + 1))
         check(f"P_{m}(j) closed form == brute enumeration (q={p}, exact rational)", ok)
 
@@ -279,7 +286,7 @@ for r in range(0, 6):
 # numeric sanity at prime powers
 num_ok = True
 for p in (2, 3, 4, 5, 7, 8, 9, 11, 13):
-    vals = {t: sp.Rational(sp.nsimplify(v.subs(q, p))) for t, v in rho5.items()}
+    vals = {t: sp.Rational(sp.cancel(v.subs(q, p))) for t, v in rho5.items()}  # [r1] same cure
     if not all(0 < v < 1 for v in vals.values()) or sum(vals.values()) != 1:
         num_ok = False
 check("numeric sanity: 0 < R_tau < 1 and Sigma == 1 exactly at 9 prime powers", num_ok)

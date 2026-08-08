@@ -1,0 +1,83 @@
+[    2.5s] betas 1..6 loaded, sum=1 sanity ok
+[    2.5s] == C1: cluster-law root yields eps_m ==
+[   88.3s]   PASS  eps_1 == 1
+[   88.3s]   PASS  eps_2 == 1/(q+1)   [got 1/(q + 1)]
+[   88.3s]   PASS  eps_3 == 1/(q+1)   [got 1/(q + 1)]
+[   88.3s]   PASS  eps_4 == 1/(q+1)   [got 1/(q + 1)]
+[   88.3s]   PASS  eps_5 == 1/(q+1)   [got 1/(q + 1)]
+[   88.3s]   PASS  eps_6 == 1/(q+1)   [got 1/(q + 1)]
+[   88.3s] == C2: MONIC E_n — telescope (I) vs full type-sum ==
+[   88.3s]   PASS  E_2 (telescope) == q/(q+1)   [got q/(q + 1)]
+[   88.3s]   PASS  E_3 (telescope) == q/(q+1)   [got q/(q + 1)]
+[   88.3s]   PASS  E_4 (telescope) == q/(q+1)   [got q/(q + 1)]
+[   88.3s]   PASS  E_5 (telescope) == q/(q+1)   [got q/(q + 1)]
+[   88.3s]   PASS  E_6 (telescope) == q/(q+1)   [got q/(q + 1)]
+[   88.3s]   PASS  monic assembly n=2: Sigma == 1
+[   88.3s]   PASS  E_2 cross-route (type-sum) == telescope
+[   88.4s]   PASS  monic assembly n=3: Sigma == 1
+[   88.4s]   PASS  E_3 cross-route (type-sum) == telescope
+[   91.0s]   PASS  monic assembly n=4: Sigma == 1
+[   91.1s]   PASS  E_4 cross-route (type-sum) == telescope
+[  120.8s]   PASS  monic assembly n=5: Sigma == 1
+[  130.9s]   PASS  E_5 cross-route (type-sum) == telescope
+[  951.8s]   PASS  monic assembly n=6: Sigma == 1
+[ 1007.2s]   PASS  E_6 cross-route (type-sum) == telescope
+[ 1007.2s] == C3: PROJECTIVE E_n == 1; BCFG raw1 rows ==
+[ 1007.2s]   PASS  proj assembly n=2: Sigma == 1
+[ 1007.2s]   PASS  E_2^proj (type-sum) == 1
+[ 1007.2s]   PASS  E_2^proj (telescope) == 1
+[ 1007.2s]   PASS  BCFG raw1 row n=2 == 1 (committed)
+[ 1007.3s]   PASS  proj assembly n=3: Sigma == 1
+[ 1007.3s]   PASS  E_3^proj (type-sum) == 1
+[ 1007.3s]   PASS  E_3^proj (telescope) == 1
+[ 1007.3s]   PASS  BCFG raw1 row n=3 == 1 (committed)
+[ 1007.9s]   PASS  proj assembly n=4: Sigma == 1
+[ 1008.4s]   PASS  E_4^proj (type-sum) == 1
+[ 1008.4s]   PASS  E_4^proj (telescope) == 1
+[ 1008.4s]   PASS  BCFG raw1 row n=4 == 1 (committed)
+[ 1018.6s]   PASS  proj assembly n=5: Sigma == 1
+[ 1021.4s]   PASS  E_5^proj (type-sum) == 1
+[ 1021.4s]   PASS  E_5^proj (telescope) == 1
+[ 1021.4s]   PASS  BCFG raw1 row n=5 == 1 (committed)
+[ 1510.0s]   PASS  proj assembly n=6: Sigma == 1
+[ 1557.9s]   PASS  E_6^proj (type-sum) == 1
+[ 1558.0s]   PASS  E_6^proj (telescope) == 1
+[ 1558.0s]   PASS  BCFG raw1 row n=6 == 1 (committed)
+[ 1558.0s] == C4: deep-count law P_m(j) ==
+[ 1558.0s]   PASS  sum_j P_2(j) == 1
+[ 1558.0s]   PASS  KEY IDENTITY q*P_2(0) - P_2(1) == q-1
+[ 1558.0s]   PASS  sum_j P_3(j) == 1
+[ 1558.0s]   PASS  KEY IDENTITY q*P_3(0) - P_3(1) == q-1
+[ 1558.0s]   PASS  sum_j P_4(j) == 1
+[ 1558.0s]   PASS  KEY IDENTITY q*P_4(0) - P_4(1) == q-1
+[ 1558.0s]   PASS  sum_j P_5(j) == 1
+[ 1558.0s]   PASS  KEY IDENTITY q*P_5(0) - P_5(1) == q-1
+[ 1558.0s]   PASS  sum_j P_6(j) == 1
+[ 1558.1s]   PASS  KEY IDENTITY q*P_6(0) - P_6(1) == q-1
+[ 1558.1s]   PASS  sum_j P_7(j) == 1
+[ 1558.1s]   PASS  KEY IDENTITY q*P_7(0) - P_7(1) == q-1
+[ 1558.2s]   PASS  sum_j P_8(j) == 1
+[ 1558.2s]   PASS  KEY IDENTITY q*P_8(0) - P_8(1) == q-1
+[ 1558.2s]   PASS  sum_j P_9(j) == 1
+[ 1558.3s]   PASS  KEY IDENTITY q*P_9(0) - P_9(1) == q-1
+[ 1558.4s]   PASS  sum_j P_10(j) == 1
+[ 1558.4s]   PASS  KEY IDENTITY q*P_10(0) - P_10(1) == q-1
+[ 1558.4s]   PASS  P_2(j) closed form == brute enumeration (symbolic, all j)
+[ 1558.4s]   PASS  P_3(j) closed form == brute enumeration (symbolic, all j)
+[ 1558.7s]   PASS  P_4(j) closed form == brute enumeration (symbolic, all j)
+[ 1562.4s]   PASS  P_5(j) closed form == brute enumeration (symbolic, all j)
+[ 1565.5s]   PASS  P_6(j) closed form == brute enumeration (q=2, exact rational)
+[ 1568.7s]   PASS  P_6(j) closed form == brute enumeration (q=3, exact rational)
+[ 1571.9s]   PASS  P_6(j) closed form == brute enumeration (q=5, exact rational)
+[ 1575.2s]   PASS  P_6(j) closed form == brute enumeration (q=7, exact rational)
+Traceback (most recent call last):
+  File "/data/users/asvin/math-and-lean/p-adic-splitting-densities/verification/openmath/bcfgtie_checks.py", line 234, in <module>
+    ok = all(Fraction(str(sp.nsimplify(Pmj(m, j).subs(q, p)))) == br.get(j, Fraction(0))
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/data/users/asvin/math-and-lean/p-adic-splitting-densities/verification/openmath/bcfgtie_checks.py", line 234, in <genexpr>
+    ok = all(Fraction(str(sp.nsimplify(Pmj(m, j).subs(q, p)))) == br.get(j, Fraction(0))
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/data/users/asvin/.local/share/uv/python/cpython-3.11.11-linux-x86_64-gnu/lib/python3.11/fractions.py", line 115, in __new__
+    raise ValueError('Invalid literal for Fraction: %r' %
+ValueError: Invalid literal for Fraction: '3*2**(31/160)*3**(29/160)*5**(221/240)*7**(47/120)/4900'
+EXIT=1

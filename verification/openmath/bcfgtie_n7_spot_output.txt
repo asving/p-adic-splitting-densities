@@ -1,0 +1,3 @@
+rows present: r = [0, 1, 2, 3, 4, 5, 6, 7]
+sum_r P(7,r)   == 1 : True   [1]
+sum_r r*P(7,r) == 1 : True   [1]

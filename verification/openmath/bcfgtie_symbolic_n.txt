@@ -1,0 +1,3 @@
+monic  (I ) at fixed point == q/(q+1): True
+proj   (I') at fixed point == 1      : True
+window identity E_n == E^proj - 1/(q+1): True
