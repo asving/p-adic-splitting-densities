@@ -12796,3 +12796,13 @@ Full record: lean/notes/openmath/CODEX_VC40B_2026-08-08.md (+ raw log +
 charge committed alongside). The ROOT-hygiene track is converging: the
 mathematical content has been 0-critical since VC40; the residue is one
 exception-list sentence.
+
+**HE3 probe casualty (529, ~5 min, no partials) — the storm holds for
+Anthropic agents; timer mode confirmed. PENDING SET NOW THREE, priority
+order for the watchdog (one per firing): (1) GENHN battery leg
+(resume wf_a1402ff6-520 via its script); (2) HE3 — the LAST MATH BOX
+[GENHN-HE(μ≥3)] (resume wf_94f4984c-0da via
+…/workflows/scripts/he3-sigma-deep-wf_94f4984c-0da.js); (3) W-12 PE3
+(resume wf_c0feafac-6df). VC40B meanwhile FOLDED orchestrator-direct
+(03421ef): NOT-CONFIRMED on one rule-consistency finding, B.4 cure
+passes; r40c one-bracket cure + VC40c queued for agent capacity.**
