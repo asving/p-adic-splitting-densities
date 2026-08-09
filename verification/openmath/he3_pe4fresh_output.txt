@@ -1,0 +1,79 @@
+========================================================================
+HE3 passPE4 FRESH ROUTE -- mu=2 dictionaries at new frames / (SEP) direct / starved (2,2) corner
+========================================================================
+== FR-A1: mu=2 dictionary at (e1,f1) = (4,1), Z_3, Phi = x^4-3 ==
+   [OK ] A1-RAM: node floors dv(A_j) >= (2-j)D'h+1  (dv = [Fraction(9, 1), None])
+   [OK ] A1-RAM: polygon sides [(Fraction(9, 2), 2)] == predicted [(Fraction(9, 2), 2)]
+   [OK ] A1-RAM: HE3-1a  v3 Res(f,Phi) = v3 Res(Phi,A0) = 9
+   [OK ] A1-INERT: node floors dv(A_j) >= (2-j)D'h+1  (dv = [Fraction(10, 1), None])
+   [OK ] A1-INERT: polygon sides [(Fraction(5, 1), 2)] == predicted [(Fraction(5, 1), 2)]
+   [OK ] A1-INERT: HE3-1a  v3 Res(f,Phi) = v3 Res(Phi,A0) = 10
+   [OK ] A1-SPLIT: node floors dv(A_j) >= (2-j)D'h+1  (dv = [Fraction(10, 1), None])
+   [OK ] A1-SPLIT: polygon sides [(Fraction(5, 1), 2)] == predicted [(Fraction(5, 1), 2)]
+   [OK ] A1-SPLIT: HE3-1a  v3 Res(f,Phi) = v3 Res(Phi,A0) = 10
+   [OK ] A1-2SIDED: node floors dv(A_j) >= (2-j)D'h+1  (dv = [Fraction(11, 1), Fraction(5, 1)])
+   [OK ] A1-2SIDED: polygon sides [(Fraction(6, 1), 1), (Fraction(5, 1), 1)] == predicted [(Fraction(6, 1), 1), (Fraction(5, 1), 1)]
+   [OK ] A1-2SIDED: HE3-1a  v3 Res(f,Phi) = v3 Res(Phi,A0) = 11
+   [OK ] A1-INERT: peel profile m_s {1: 0, 2: 0} == {1: 0, 2: 0}
+   [OK ] A1-SPLIT: peel profile m_s {1: 1, 2: 1} == {1: 1, 2: 1}  [STARVED slope at (3,1): all letters are roots]
+   [OK ] A1-RAM: PARI sigma ((8, 1),) == dictionary ((8, 1),)
+   [OK ] A1-INERT: PARI sigma ((4, 2),) == dictionary ((4, 2),)
+   [OK ] A1-SPLIT: PARI sigma ((4, 1), (4, 1)) == dictionary ((4, 1), (4, 1))
+   [OK ] A1-2SIDED: PARI sigma ((4, 1), (4, 1)) == dictionary ((4, 1), (4, 1))
+== FR-A2: mu=2 dictionary + wrap seam at (e1,f1) = (2,3), Z_2, Phi = x^6+4x^2+8 ==
+   [OK ] A2-RAM: node floors  (dv = [Fraction(13, 1), None])
+   [OK ] A2-RAM: HE3-1a  v2 Res(f,Phi) = v2 Res(Phi,A0) = 39
+   [OK ] A2-INERT: node floors  (dv = [Fraction(14, 1), Fraction(7, 1)])
+   [OK ] A2-INERT: HE3-1a  v2 Res(f,Phi) = v2 Res(Phi,A0) = 42
+   [OK ] A2-SPLIT: node floors  (dv = [Fraction(14, 1), Fraction(7, 1)])
+   [OK ] A2-SPLIT: HE3-1a  v2 Res(f,Phi) = v2 Res(Phi,A0) = 42
+   [OK ] A2-RAM: polygon sides [(Fraction(13, 2), 2)] == predicted [(Fraction(13, 2), 2)]
+   [OK ] A2-INERT: polygon sides [(Fraction(7, 1), 2)] == predicted [(Fraction(7, 1), 2)]
+   [OK ] A2-SPLIT: polygon sides [(Fraction(7, 1), 2)] == predicted [(Fraction(7, 1), 2)]
+   [OK ] A2-INERT: peel profile over F_8^x == predicted (ones at [])
+   [OK ] A2-SPLIT: peel profile over F_8^x == predicted (ones at [(0, 0, 1), (0, 1, 0)])
+   [OK ] TOOTH T-REACH: old s^ n(kappa) reach {1} misses both A2-SPLIT residual roots {eta, eta^2}
+   [OK ] A2-RAM: PARI sigma ((4, 3),) == dictionary ((4, 3),)
+   [OK ] A2-INERT: PARI sigma ((2, 6),) == dictionary ((2, 6),)
+   [OK ] A2-SPLIT: PARI sigma ((2, 3), (2, 3)) == dictionary ((2, 3), (2, 3))
+   [OK ] A2-SPLIT construction: both factors (e,f) = (2,3) per PARI
+   [OK ] nfinit: unique prime above 2 with e = 2, f = 3
+   [OK ] W-DIRECT coherent INERT = (eta,eta,eta)
+   [OK ] W-DIRECT naive   INERT = (eta,1,1)
+   [OK ] W-DIRECT coherent SPLIT = (eta^2+eta, eta^2+eta+1, eta)
+   [OK ] W-DIRECT naive   SPLIT = (eta^2+eta, eta^2+eta, 1)
+   [OK ] INERT residuals: coherent irreducible, naive split (coh [2] nai [1, 1])
+   [OK ] TOOTH T-FLIP-1: naive INERT read splits, PARI sides with coherent {(2,6)}
+   [OK ] TOOTH T-FLIP-2: naive SPLIT read irreducible, PARI sides with coherent {(2,3)^2}
+== FR-A3a: EQUAL CHAR q=3, (e1,f1) = (1,2): F_3[[t]], Phi = x^2+t^2, f = (x^2-t^2x+t^2)(x^2+t^2x+t^2) ==
+   [OK ] development A1 = -t^4 (got [[0, 0, 0, 0, 2]])
+   [OK ] A0 = t^6 (got [[0, 0, 0, 0, 0, 0, 1]])
+   [OK ] hull raw: [(Fraction(3, 1), 2)]
+   [OK ] pin (1, dv=4) strictly above the lam = 3 line -> single side lam 3, len 2; residual R = Z^2 + 1 (a~1 = 0), split at {eta, -eta} over F_9
+   [OK ] per-root Hensel reads: dv(Phi(rho)) = 3 at all 4 roots; g1 roots BOTH carry (3, Z - eta), g2 roots BOTH carry (3, Z + eta)  [HE3-6 at f1 = 2] {('g1', '+u'): (3, (0, 1), (0, 1)), ('g1', '-u'): (3, (0, 2), (0, 2)), ('g2', '+u'): (3, (0, 2), (0, 1)), ('g2', '-u'): (3, (0, 1), (0, 2))}
+   [OK ] sigma = {(1,2),(1,2)} BY CONSTRUCTION: disc = t^2(t^2 - 1), unit part -1 nonsquare in F_3 -> unramified quadratics; dictionary blocks (1*1, 2*1) x2 MATCH
+== FR-A3b: EQUAL CHAR q=2, (e1,f1) = (3,1): F_2[[t]], Phi = x^3+t, f = (x^3+tx+t)(x^3+tx^2+t) ==
+   [OK ] development A1 = t^2 + tx + tx^2 (got [[0, 0, 1], [0, 1], [0, 1]])
+   [OK ] A0 = t^3 (got [[0, 0, 0, 1]])
+   [OK ] polygon sides [(Fraction(5, 1), 1), (Fraction(4, 1), 1)] == [(5,1),(4,1)] -- 2SIDED, labels (4,Z-1),(5,Z-1)
+   [OK ] per-root reads: dv(Phi(rho)) = 4 (g1), 5 (g2); beta = 1 at n(4), n(5) (got {'g1': (4, 1), 'g2': (5, 1)}) -- labels (4,Z-1),(5,Z-1) -> sigma {(3,1)}^2 = construction
+   [OK ] sigma = {(3,1),(3,1)} BY CONSTRUCTION: each factor single-side slope-1/3 with linear residual -> irreducible, e = 3, f = 1
+== FR-B: (SEP) apparatus direct test, Z_5, (2,1), Phi = x^2-5, slopes {3,4,5} consecutive ==
+   [OK ] polygon sides [(Fraction(5, 1), 1), (Fraction(4, 1), 1), (Fraction(3, 1), 1)] == three consecutive integer slopes 3,4,5
+   [OK ] Psi(kappa,s) = D'h_F(kappa) at ALL 13 non-root samples on BOTH members, INCLUDING the at-slope generic-letter samples (kappa in {3,4,5}, s != 1)
+   [OK ] strict excess at the root samples (kappa,1): exact member Res = 0 (Key | f, Psi = +inf); junk member finite [36, 36, 36] > [18, 22, 24]
+   [OK ] (SEP) triangular inversion on MEASURED Psi -> n = (2, 2, 2) (exact) and (2, 2, 2) (junk) == (2,2,2) = construction
+   [OK ] TOOTH T-INV: corrupted Psi(4)+2 breaks the solve (got (0, 6, 0))
+   [OK ] PARI sigma ((2, 1), (2, 1), (2, 1)) == dictionary {(2,1)^3} (exact member)
+   [OK ] PARI sigma ((2, 1), (2, 1), (2, 1)) == dictionary {(2,1)^3} (junk member, dictionary-only prediction)
+== FR-C: the STARVED (2,2) corner, Z_2, (1,2), Phi = x^2+2x+4, K = F_4, mu = 3, lam = 3 = D'h+1 ==
+   [OK ] development pins dv(A0,A1,A2) = [Fraction(9, 1), Fraction(7, 1), Fraction(4, 1)] == (9,7,4): A2, A1 lifted, single side lam = 3 len 3
+   [OK ] polygon = single side lam 3 len 3 ([(Fraction(3, 1), 3)])
+   [OK ] A0 = 512 -> a~0 = 1, R = Z^3 + 1 = (Z+1)(Z+w)(Z+w^2) over F_4: root set = ALL of F_4^x  [STARVED: no generic letter at kappa = 3 -- the S1(iii)/GENHN-fence corner geography]
+   [OK ] Z^3+1 vanishes at 1, w, w^2 (F_4 arithmetic)
+   [OK ] peel m_s = 1 at each of the three F_4^x letters ({'1': 1, 'w': 1, 'w2': 1}); Sigma D'm_s = 6 = deg f
+   [OK ] PARI sigma ((1, 2), (1, 2), (1, 2)) == dictionary {(1,2)^3}
+   [OK ] construction: all three quadratic factors (e,f) = (1,2) per PARI (5, -3, 5 mod 8 nonsquare units)
+TEETH: {'T-REACH': True, 'T-FLIP-1': True, 'T-FLIP-2': True, 'T-INV': True}
+VIOLATIONS: 0
+== VERDICT: GREEN ==

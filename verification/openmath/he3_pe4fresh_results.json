@@ -1,0 +1,18 @@
+{
+ "sections": {
+  "FR-A1": "run",
+  "FR-A2": "run",
+  "FR-A3a": "run",
+  "FR-A3b": "run",
+  "FR-B": "run",
+  "FR-C": "run"
+ },
+ "violations": [],
+ "teeth": {
+  "T-REACH": true,
+  "T-FLIP-1": true,
+  "T-FLIP-2": true,
+  "T-INV": true
+ },
+ "verdict": "GREEN"
+}
