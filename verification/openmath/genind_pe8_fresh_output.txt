@@ -1,0 +1,14 @@
+== N1a raw-exhaustive, q in {3,4,8,9} ==
+   N1a done 41.878424644470215
+== N1b profile-exhaustive (4,1,N), q in {4,8,9} ==
+   N1b done 107.06213164329529
+== N3 I-E symbolic + m=6 section over F_4[[t]] ==
+   N3 done: undec 2368 dec 1728 108.58372139930725
+== N2 n=12 two composite stages + pad, PARI, p in {2,5} ==
+PARI stack size set to 268435456 bytes, maximum size set to 268435456
+   p=2 sigma multiset variety over 15 lifts: 4 shapes
+   p=2 witness sigma set: [((2, 2),), ((4, 1),)]
+   p=5 sigma multiset variety over 15 lifts: 3 shapes
+   p=5 witness sigma set: [((2, 1), (2, 1)), ((2, 2),), ((4, 1),)]
+   N2 done 108.73253512382507
+VERDICT: GREEN -- 3171585 checks, 0 violations, teeth 6/6, 108.7 s
