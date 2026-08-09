@@ -1,0 +1,52 @@
+=== GENHN r2 supp: corrected tower read T(b)' vs PARI ===
+  SUPP-A0 T-RAM: TRUE pins (25,14) tRAM -> [(8, 1)] | STAGE pins (21,14) iRAM -> [(8, 1)]
+  SUPP-A0 T-RAM-pert: TRUE pins (25,14) tRAM -> [(8, 1)] | STAGE pins (21,14) iRAM -> [(8, 1)]
+  SUPP-A0 T-INERT: TRUE pins (21,14) tRAM -> [(8, 1)] | STAGE pins (28,14) iINERT -> [(4, 2)]
+  SUPP-A0 T-INERT-pert: TRUE pins (21,14) tRAM -> [(8, 1)] | STAGE pins (28,14) iINERT -> [(4, 2)]
+  SUPP-A0 T-2SIDED: TRUE pins (21,14) tRAM -> [(8, 1)] | STAGE pins (30,14) i2SIDED -> [(4, 1), (4, 1)]
+  SUPP-A0 T-2SIDED-pert: TRUE pins (21,14) tRAM -> [(8, 1)] | STAGE pins (30,14) i2SIDED -> [(4, 1), (4, 1)]
+  SUPP-A1 u2=5#0: TRUE pins (21,13) tRAM -> [(8, 1)] | STAGE pins (23,13) iRAM -> [(8, 1)]
+  SUPP-A1 u2=5#0-pert: TRUE pins (21,13) tRAM -> [(8, 1)] | STAGE pins (23,13) iRAM -> [(8, 1)]
+  SUPP-A1 u2=5#1: TRUE pins (21,12) tRAM -> [(8, 1)] | STAGE pins (22,12) iEVEN -> None
+  SUPP-A1 u2=5#2: TRUE pins (21,12) tRAM -> [(8, 1)] | STAGE pins (22,12) iEVEN -> None
+  SUPP-A1 u2=5#2-pert: TRUE pins (21,12) tRAM -> [(8, 1)] | STAGE pins (22,12) iEVEN -> None
+  SUPP-A1 u2=5#3: TRUE pins (22,12) tEVEN -> None | STAGE pins (21,12) iRAM -> [(8, 1)]
+  SUPP-A1 u2=5#4: TRUE pins (22,12) tEVEN -> None | STAGE pins (21,12) iRAM -> [(8, 1)]
+  SUPP-A1 u2=5#4-pert: TRUE pins (22,12) tEVEN -> None | STAGE pins (21,12) iRAM -> [(8, 1)]
+  SUPP-A1 u2=5#5: TRUE pins (24,14) tEVEN -> None | STAGE pins (21,14) iRAM -> [(8, 1)]
+  SUPP-A1 u2=7#0: TRUE pins (31,18) tRAM -> [(8, 1)] | STAGE pins (36,18) iINERT -> [(4, 2)]
+  SUPP-A1 u2=7#0-pert: TRUE pins (31,18) tRAM -> [(8, 1)] | STAGE pins (36,18) iINERT -> [(4, 2)]
+  SUPP-A1 u2=7#1: TRUE pins (31,18) tRAM -> [(8, 1)] | STAGE pins (32,18) iEVEN -> None
+  SUPP-A1 u2=7#2: TRUE pins (31,18) tRAM -> [(8, 1)] | STAGE pins (34,18) iEVEN -> None
+  SUPP-A1 u2=7#2-pert: TRUE pins (31,18) tRAM -> [(8, 1)] | STAGE pins (34,18) iEVEN -> None
+  SUPP-A1 u2=7#3: TRUE pins (31,18) tRAM -> [(8, 1)] | STAGE pins (36,18) iINERT -> [(4, 2)]
+  SUPP-B B#0: TRUE pins (13,7) tRAM -> [(4, 2)] | STAGE pins (14,8) tEVEN -> None
+  SUPP-B B#0-pert: TRUE pins (13,7) tRAM -> [(4, 2)] | STAGE pins (14,8) tEVEN -> None
+  SUPP-B B#1: TRUE pins (13,7) tRAM -> [(4, 2)] | STAGE pins (15,8) tRAM -> [(4, 2)]
+  SUPP-B B#2: TRUE pins (14,8) tEVEN -> None | STAGE pins (13,7) tRAM -> [(4, 2)]
+  SUPP-B B#3: TRUE pins (13,8) tRAM -> [(4, 2)] | STAGE pins (13,7) tRAM -> [(4, 2)]
+  SUPP-B B#3-pert: TRUE pins (13,8) tRAM -> [(4, 2)] | STAGE pins (13,7) tRAM -> [(4, 2)]
+  SUPP-B B#4: TRUE pins (13,7) tRAM -> [(4, 2)] | STAGE pins (14,8) tEVEN -> None
+  SUPP-B B#5: TRUE pins (14,8) tEVEN -> None | STAGE pins (13,7) tRAM -> [(4, 2)]
+  SUPP-B B#6: TRUE pins (13,7) tRAM -> [(4, 2)] | STAGE pins (13,8) tRAM -> [(4, 2)]
+  SUPP-B B#6-pert: TRUE pins (13,7) tRAM -> [(4, 2)] | STAGE pins (13,8) tRAM -> [(4, 2)]
+  SUPP-B B#7: TRUE pins (13,7) tRAM -> [(4, 2)] | STAGE pins (15,8) tRAM -> [(4, 2)]
+  SUPP-B B#8: TRUE pins (13,7) tRAM -> [(4, 2)] | STAGE pins (13,8) tRAM -> [(4, 2)]
+  SUPP-B B#9: TRUE pins (13,7) tRAM -> [(4, 2)] | STAGE pins (13,8) tRAM -> [(4, 2)]
+  SUPP-B B#9-pert: TRUE pins (13,7) tRAM -> [(4, 2)] | STAGE pins (13,8) tRAM -> [(4, 2)]
+  SUPP-C C-RAM85 level-1 dvs: [20, None, 16, None, 12, 12, 9, None]
+  SUPP-C C-RAM85 level-2 dv2(D): [42, 36, 25, None]
+  SUPP-C C-RAM85: level-3 pins (85,None) tRAM -> [(16, 1)]
+  SUPP-C C-RAM93 level-1 dvs: [20, None, 18, None, 12, 12, 9, None]
+  SUPP-C C-RAM93 level-2 dv2(D): [42, 32, 25, None]
+  SUPP-C C-RAM93: level-3 pins (93,None) tRAM -> [(16, 1)]
+  SUPP-C C-2SIDED level-1 dvs: [20, 28, 19, 25, 12, 12, 9, None]
+  SUPP-C C-2SIDED level-2 dv2(D): [42, 32, 25, None]
+  SUPP-C C-2SIDED: level-3 pins (179,82) t2SIDED -> [(8, 1), (8, 1)]
+  38 gp jobs (route 1 all; route 2 on 24)
+  UNDEC diagnostic tail (unscored): {((8, 1),): 4, ((2, 4),): 1, ((4, 2),): 1}
+  stage-vs-corrected divergence: 35 pin rows, 13 sigma rows (of 38 tower rows)
+  tooth T-SHADOW-INERT fired x5
+  tooth T-SHADOW-2SIDED fired x2
+  tooth T-LABEL fired x13
+=== VERDICT: GREEN -- checks {'SUPP-A0': 24, 'SUPP-A1': 42, 'SUPP-B': 51, 'SUPP-C': 30, 'TEETH': 3}, 0 violations (1.7s) ===
