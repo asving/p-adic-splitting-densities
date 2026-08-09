@@ -1,0 +1,58 @@
+=== GENTOW-1 battery (items (1)/(2)/(5)) seal 2026-08-09 ===
+== FAM-A5: n=8 D2=4 E2=10 m=4 ==
+  floors j=0: (a=0,b=0):6* (a=1,b=0):5 (a=0,b=1):4 (a=1,b=1):4   (* = consumed pin)
+  floors j=1: (a=0,b=0):3 (a=1,b=0):3* (a=0,b=1):2 (a=1,b=1):1   (* = consumed pin)
+  node floors: [21, 11] ; mutant base 8 vs E2 10
+  mutant leg: 8/8 below-E2 members (v=4 at slot (0,0,0)) rejected: True
+== FAM-A7: n=8 D2=4 E2=14 m=4 ==
+  floors j=0: (a=0,b=0):8* (a=1,b=0):7 (a=0,b=1):6 (a=1,b=1):5   (* = consumed pin)
+  floors j=1: (a=0,b=0):4 (a=1,b=0):4* (a=0,b=1):2 (a=1,b=1):2   (* = consumed pin)
+  node floors: [29, 15] ; mutant base 8 vs E2 14
+  mutant leg: 8/8 below-E2 members (v=4 at slot (0,0,0)) rejected: True
+== FAM-B: n=8 D2=4 E2=6 m=2 ==
+  floors j=0: (a=0,b=0):7* (a=1,b=0):6 (a=0,b=1):5 (a=1,b=1):5*   (* = consumed pin)
+  floors j=1: (a=0,b=0):4* (a=1,b=0):3 (a=0,b=1):2 (a=1,b=1):2*   (* = consumed pin)
+  node floors: [13, 7] ; mutant base 4 vs E2 6
+  mutant leg: 8/8 below-E2 members (v=4 at slot (0,0,0)) rejected: True
+== FAM-C: n=12 D2=6 E2=21 m=6 ==
+  floors j=0: (a=0,b=0):8* (a=1,b=0):7 (a=0,b=1):6 (a=1,b=1):6 (a=0,b=2):5 (a=1,b=2):5   (* = consumed pin)
+  floors j=1: (a=0,b=0):4 (a=1,b=0):4* (a=0,b=1):3 (a=1,b=1):2 (a=0,b=2):2 (a=1,b=2):1   (* = consumed pin)
+  node floors: [43, 22] ; mutant base 18 vs E2 21
+  mutant leg: 8/8 below-E2 members (v=6 at slot (0,0,0)) rejected: True
+== FAM-D: n=8 D2=4 E2=6 m=2 ==
+  floors j=0: (a=0,b=0):7* (a=1,b=0):6 (a=0,b=1):5 (a=1,b=1):5*   (* = consumed pin)
+  floors j=1: (a=0,b=0):4* (a=1,b=0):3 (a=0,b=1):2 (a=1,b=1):2*   (* = consumed pin)
+  node floors: [13, 7] ; mutant base 4 vs E2 6
+  mutant leg: 8/8 below-E2 members (v=4 at slot (0,0,0)) rejected: True
+== T-BELOWNODE: digit AT wt mu2*E2 breaks entry: dv(A0) = 12 want 20/e2 ==
+== T-SHADOW: PE1 corrected-read regression (3 rows) ==
+== T-UNDERCUT: below-cap digits change the read ==
+  FAM-A5: base (21, None, 'tRAM') -> undercut (8, None, 'tEVEN') (N'=2, e1e2N'=8 <= m*=21)
+  FAM-B: base (13, None, 'tRAM') -> undercut (6, None, 'tEVEN') (N'=3, e1e2N'=6 <= m*=13)
+== REFINE (item 2): composed-alpha transport rows ==
+  A5-R1: old (26,14,tEVEN) -> new (31,14,t2SIDED) [(4, 1), (4, 1)]
+  A5-R2: old (42,22,tEVEN) -> new (47,22,t2SIDED) [(4, 1), (4, 1)]
+  A7-R1: old (30,19,tEVEN) -> new (35,16,t2SIDED) [(4, 1), (4, 1)]
+  B-R1: old (14,9,tEVEN) -> new (15,8,tRAM) [(4, 2)]
+  B-R2: old (16,10,tEVEN) -> new (19,11,tRAM) [(4, 2)]
+  C-R1: old (44,24,tEVEN) -> new (47,25,tRAM) [(12, 1)]
+  D-R1: old (18,9,tDBL) -> new (19,10,tRAM) [(4, 2)]
+  D-R2: old (20,10,tDBL) -> new (21,13,tRAM) [(4, 2)]
+== PARI leg: 206 jobs ==
+  gp stderr tail:   ***   Warning: new maximum stack size = 4000002048 (3814.699 Mbytes).
+
+  [diag] FAM-A5-NEC4 sigma [(8, 1)] (unscored)
+  [diag] FAM-A5-NEC4.r2 sigma [(8, 1)] (unscored)
+  [diag] FAM-A5-NEC8 sigma [(8, 1)] (unscored)
+  [diag] FAM-B-NEC8 sigma [(4, 2)] (unscored)
+  [diag] FAM-C-NEC4 sigma [(12, 1)] (unscored)
+  [diag] FAM-C-NEC4.r2 sigma [(12, 1)] (unscored)
+  [diag] FAM-A5-UC sigma [(8, 1)] (unscored)
+  [diag] FAM-B-UC sigma [(8, 1)] (unscored)
+tooth T-MUTFLOOR fired x5
+tooth T-BELOWNODE fired x1
+tooth T-REFWRONG fired x8
+tooth T-UNDERCUT fired x2
+tooth T-SHADOW fired x1
+=== VERDICT: GREEN -- 1128 checks, 0 violations (5.0s) ===
+per-family check tally: {'NEC': 350, 'REAL': 180, 'ROUNDTRIP': 150, 'NODE-EQ': 5, 'MUTANT': 5, 'WINDOW': 35, 'STRINGS': 22, 'BELOWNODE': 1, 'SHADOW': 3, 'UNDERCUT': 2, 'REFINE': 40, 'GP-SIG': 94, 'GP-DISC': 57, 'GP-NODE': 171, 'GP-EF': 8, 'TEETH': 5}

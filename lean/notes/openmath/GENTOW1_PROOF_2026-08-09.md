@@ -1,8 +1,9 @@
 # GENTOW-1: composed entry budgets, inner refine transfer, composed window ledger
 ## ([GENHN-TOW-1] items (1), (2), (5) — proof attempt, BOX-CLOSURE campaign wave B1)
 
-**2026-08-09 — SKELETON (composition in progress; per-section commits
-follow). Grade 0/2 (attempt; hostile arc later). Unit: GENTOW-1.**
+**2026-08-09 — COMPLETE at attempt grade 0/2 (hostile arc owed).
+Unit: GENTOW-1. Composed in per-section commits; machine leg
+sealed-then-verdict (S5).**
 
 CHARGE (Asvin directive, ledger 2026-08-09: prove the boxes; a box
 survives only after genuine attempts fail): PROVE [GENHN-TOW-1] items
@@ -26,7 +27,7 @@ STATUS TABLE (updated per section as composed):
 | (1) rider: depth-3 floor (6)(beta) | COR GENTOW-1.1 | PROVED (S2.4) |
 | (2) inner refine transfer | LEMMA GENTOW-2 | PROVED at mu2=2 pointwise; general mu2 layer-1 via graded frame (disclosed, GENHN-BOX-2 pattern) (S3) |
 | (5) composed window ledger | LEMMA GENTOW-5 | PROVED (S4) |
-| battery | gentow1_checks.py | GREEN 15,478 checks / 0 violations, 5/5 teeth (S5) |
+| battery | gentow1_checks.py | GREEN 1,128 checks / 0 violations, 5/5 teeth (S5) |
 
 ## S0. SETTING AND NOTATION (all from T(b)', restated for one-pass reading)
 
@@ -54,14 +55,71 @@ monomial at any tower-node point where dv2(Phi') = u2 and
 dv2(Phi2) = E2 hold exactly; on the actual locus dv2(Phi2(x0)) > E2
 (S2.2), so wt is a LOWER bound with the j-graded part strict.
 
-## S1. THE EXAMPLE BATTERY (examples-first; laws read off tables)
+## S1. THE EXAMPLE BATTERY (examples-first; the laws read off tables)
 
-[Section composed at S5-commit from the sealed runner's tables:
-families FAM-A (2,1,4)->(2,1,2) q=2 u2 in {5,7}; FAM-B
-(2,1,4)->(1,2,2) q=2 K2=F4; FAM-C (2,1,6)->(3,1,2) q=2 e2=3 n=12;
-FAM-D (2,1,4)->(1,2,2) q=3 K2=F9. Exact budget/window/refine tables
-via slot arithmetic + PARI (idealprimedec valuations = nfeltval
-route, factorpadic route).]
+Five constructed tower families (per the standing examples-first
+discipline; recipes: genhnr2_supp SUPP-A/B + genhn_pe3 FR1/FR2 +
+fresh):
+
+| family | genre | q | Phi2 | u2 | E2 | dv2 | n |
+|---|---|---|---|---|---|---|---|
+| FAM-A5 | (2,1,4)->(2,1,2) | 2 | (x²−2)²−4x | 5 | 10 | 4v | 8 |
+| FAM-A7 | (2,1,4)->(2,1,2) | 2 | (x²−2)²−8x | 7 | 14 | 4v | 8 |
+| FAM-B | (2,1,4)->(1,2,2), K2=F4 | 2 | Phi'²−2xPhi'−8 | 3 | 6 | 2v | 8 |
+| FAM-C | (2,1,6)->(3,1,2), e2=3 | 2 | (x²−2)³−8x | 7 | 21 | 6v | 12 |
+| FAM-D | (2,1,4)->(1,2,2), K2=F9 | 3 | (x²−3)²+27 | 3 | 6 | 2v | 8 |
+
+**THE BUDGET TABLES (machine output, gentow1_checks run of
+2026-08-09; * = consumed pin).** v-floors per composed slot
+(a,b) at coordinate j:
+
+    FAM-A5 j=0: (0,0):6*  (1,0):5  (0,1):4  (1,1):4
+           j=1: (0,0):3   (1,0):3* (0,1):2  (1,1):1
+    FAM-A7 j=0: (0,0):8*  (1,0):7  (0,1):6  (1,1):5
+           j=1: (0,0):4   (1,0):4* (0,1):2  (1,1):2
+    FAM-B  j=0: (0,0):7*  (1,0):6  (0,1):5  (1,1):5*
+           j=1: (0,0):4*  (1,0):3  (0,1):2  (1,1):2*
+    FAM-C  j=0: (0,0):8*  (1,0):7  (0,1):6 (1,1):6 (0,2):5 (1,2):5
+           j=1: (0,0):4   (1,0):4* (0,1):3 (1,1):2 (0,2):2 (1,2):1
+    FAM-D  j=0: (0,0):7*  (1,0):6  (0,1):5  (1,1):5*
+           j=1: (0,0):4*  (1,0):3  (0,1):2  (1,1):2*
+
+READ OFF THE TABLES (then proved in S2): (i) the floor at slot
+(j,a,b) is the SIDE HEIGHT (mu2−j)E2 minus the slot offset w(a,b),
+divided by e1e2 and ceiled, +1 at the lattice slots — e.g. FAM-C
+(0,(0,1)): ceil((42−7)/6) = 6, no pin (35 ≢ 0 mod 6); (ii) at
+f1f2 = 1 exactly ONE pinned slot per coordinate; at f2 = 2 (FAM-B,
+FAM-D) exactly TWO pinned slots per pinned height ((0,0) and (1,1)
+— the two flavor components of the one consumed K2-digit,
+two-step class separation made visible); (iii) node floors
+[21,11]/[29,15]/[13,7]/[43,22]/[13,7] = (mu2−j)E2 + 1, realized
+exactly by the NODE-EQ anchors (16Phi', 32xPhi', 64x, 64Phi',
+729x — all tRAM with PARI sigma the composed-RAM dictionary
+value); (iv) the mutant base dv2(x^{D2}) = 8/8/4/18/4 sits BELOW
+E2 = 10/14/6/21/6 — the gap the wrong-floor tooth exploits.
+
+**THE REFINE TABLE (old-key read -> refined-key read; all rows
+PARI-exact on the refined decided sigma; wrong-normalizer variant
+keeps the pin on every row = T-REFWRONG x8):**
+
+    A5-R1 lam=13 s=1     : old (26,14,tEVEN) -> new (31,14,t2SIDED)
+    A5-R2 lam=21 s=1     : old (42,22,tEVEN) -> new (47,22,t2SIDED)
+      [n2hat(21) = 16Phi' — the r3 witness normalizer, exercised]
+    A7-R1 lam=15 s=1     : old (30,19,tEVEN) -> new (35,16,t2SIDED)
+    B-R1  lam=7  s=eta2  : old (14, 9,tEVEN) -> new (15, 8,tRAM)
+    B-R2  lam=8  s=1+eta2: old (16,10,tEVEN) -> new (19,11,tRAM)
+      [two-monomial K2-digit lift 16 + 4xPhi']
+    C-R1  lam=22 s=1     : old (44,24,tEVEN) -> new (47,25,tRAM)
+    D-R1  lam=9  s=1     : old (18, 9,tDBL ) -> new (19,10,tRAM)
+    D-R2  lam=10 s=eta2  : old (20,10,tDBL ) -> new (21,13,tRAM)
+      [q=3: BOTH event pins (lam AND 2lam) show and BOTH die]
+
+Read off: the old key sees the alpha-event at exactly (2lam, lam)
+heights with the (T−s)²-residues (q=2: the lam-pin vanishes, 2s=0;
+q=3: tDBL with both pins — the binomial char-sensitivity);
+the refine kills the pins into the lam-floored node; heights
+transport on the dv2-ladder; eta2-flavored and two-monomial lifts
+behave identically to monomial ones. (Then proved in S3.)
 
 ## S2. LEMMA GENTOW-1 (composed entry budgets; item (1))
 
@@ -392,13 +450,97 @@ partial inner sides — where extraction seams would return — are
 
 ## S5. MACHINE LEG (sealed battery, two-commit discipline)
 
-[runner gentow1_checks.py; preregistered predictions in its
-docstring; >= 3 teeth incl. wrong-floor mutant; verdict from
-committed artifacts]
+INSTRUMENT: `verification/openmath/gentow1_checks.py`, sealed at
+commit 982abe7 (predictions P-1..P-9 + 5 teeth in the docstring,
+BEFORE the first full run; wiring smoke disclosed there — two
+pre-seal constant slips named). RUN 1 crashed on instrument
+defects, repaired and REDISCLOSED in the docstring (commit before
+re-run): the sealed P-7 check compared reads INCLUDING above-cap
+values (over-claiming GENTOW-5(a), whose content is stability
+below e1e2·N only — the 25 run-1 flags were all above-cap p1
+appearances under lifts, below-cap data and sigma identical);
+plus a +oo nfeltval parser guard and a DRAIN-member PARI skip
+(members with Phi2 | f carry no scored mu2 = 2 read). No
+prediction changed. Runner md5 at the verdict run:
+6df4b213ed0aab6afa37ac7b418540aa.
 
-## S6. HONEST RESIDUE (what this note does NOT prove)
+VERDICT RUN (this repo, 2026-08-09, output
+`gentow1_checks_output.txt` md5 25667bf6, ~5s + PARI):
 
-[GENHN-TOW-1] items (3) faithfulness geography, (4) partial inner
-sides, (6)(alpha) iterated carry bookkeeping: NOT touched here.
-Discharge of items (1)/(2)/(5) into GENHN_PROOF is the
-orchestrator's later dated consumption update, not this note.
+    GREEN — 1,128 checks, 0 violations, 5/5 teeth.
+    Tally: NEC 350, REAL 180, ROUNDTRIP 150, NODE-EQ 5, MUTANT 5,
+    WINDOW 35, STRINGS 22, BELOWNODE 1, SHADOW 3, UNDERCUT 2,
+    REFINE 40, GP-SIG 94, GP-DISC 57, GP-NODE 171, GP-EF 8,
+    TEETH 5.
+
+What the scored rows of this run verified (per prediction):
+* P-2/P-4 (both budget directions): 10 level-1-recipe members +
+  ~4 deep perturbations per family satisfy the composed floors +
+  node pins + strict-above (NEC 350); 12 random in-budget members
+  per family pass the level-1 entry gate + strict-above, with
+  decided reads PARI-exact (REAL 180, GP-SIG rows).
+* P-3 (node oracle): 171 GP-NODE row-checks — per irreducible
+  factor per prime of the scored members, e1e2·nfeltval(Phi2)
+  > E2·pr.e (STRICT, the field floor GENTOW-1(d)), with
+  e1·val(x) = h·pr.e and e1e2·val(Phi') = u2·pr.e exact (the
+  (T1)/(T12) transport at leaves).
+* P-5: the five NODE-EQ anchors hit p0 = mu2·E2 + 1 exactly, tRAM,
+  PARI both routes (the node floor is SHARP).
+* P-6: the 8 refine rows of S1's table (REFINE 40 + GP-EF 8: the
+  refined keys keep carrier (e1e2, f1f2) by PARI).
+* P-7/P-8/P-9: window stability below the cap on 6 lifts/family +
+  mod-p^N reads (WINDOW 35), string ends (STRINGS 22), digit
+  round-trips (ROUNDTRIP 150).
+* TEETH: T-MUTFLOOR x5 (per family, 8/8 members clearing the
+  dv2(x^{D2})-based mutant floors but below the true E2-floors are
+  REJECTED by the level-1 truth — the wrong-floor mutant is
+  machine-dead); T-BELOWNODE (a digit AT weight mu2·E2 breaks the
+  entry endpoint: dv(A0) = 12 ≠ 10); T-REFWRONG x8 (wrong-height,
+  wrong-residue at q=3, and wrong-flavor normalizers all leave the
+  event pin alive); T-UNDERCUT x2 (a v = N' digit with
+  e1e2·N' <= m* changes the read); T-SHADOW (the three PE1
+  corrected-read regressions: pins (25,14)/(21,14)/(21,14), sigma
+  {(8,1)} PARI-exact).
+Unscored diagnostics: 8 (sigma of undecided/off-locus probes,
+printed in the output).
+
+## S6. HONEST RESIDUE + GRADE BOX
+
+**What stays in [GENHN-TOW-1] (untouched here):** item (3) the
+genre-general faithfulness geography; item (4) partial inner sides
+(e2f2mu2 < mu1 — 𝒯's definition here is FULL-side; every S2–S4
+statement is scoped to it); item (6)(alpha) the iterated
+carry-cancellation bookkeeping at depth >= 3 (the Okutsu-optimality
+content — COR GENTOW-1.1 discharges only the (beta) leg, the
+depth-3 node floor, and does so with the sharper constant E2).
+
+**GENTOW-BOX-1 (the mu2 >= 3 graded-frame consumption —
+GENHN-BOX-2 one level up).** LEMMA GENTOW-2 layer 1 at mu2 >= 3
+consumes the composed graded frame (one K2-line per dv2-height,
+the two-wrap cocycle) rather than re-deriving the carry
+digit-by-digit; at mu2 = 2 (every first-live tower shape, n <= 15)
+the battery's refine rows are pointwise re-division checks with no
+formula consulted. An elementary general-mu2 carry display would
+retire this box exactly as GENH4-S5's would retire GENHN-BOX-2.
+Note mu2 >= 3 towers first live at n = e1f1·e2f2·mu2 >= 2·2·3 = 12
+with sigma behind [GENHN-HE(mu2)] regardless.
+
+**GENTOW-BOX-2 (machine coverage).** Rows exercise: mu2 = 2 only;
+f1 = 1 outer keys only (D' = 2); q ∈ {2, 3}; e2 ∈ {1, 2, 3},
+f2 ∈ {1, 2}; d = 1 ambients; depth 2 only. The S2–S4 proofs are
+uniform in (e1, f1, e2, f2, mu2, q, h) — the coverage gap is
+machine-side, named here (the f1 >= 2 outer and mu2 >= 3 rows are
+constructible follow-ups; iterated depth >= 3 rows exist in
+genhnr2_supp SUPP-C and stay with item (6)).
+
+**GRADE: 0/2 (attempt; composed this session, no hostile arc).**
+Conditionality stack: consumes LEMMA GENHN-T(b)' (i)/(ii)/(iii)
+(GENHN accepted 2/2 at PE4), the [r1] node floor u2 > e2D'h
+(GENHN-1 erratum, inside the accepted text), S4's coherent
+normalizers, and — at mu2 >= 3 only — the graded frame
+(GENTOW-BOX-1). Machine leg = S5 (this unit's sealed battery).
+
+**Consumption path (not executed here):** discharge of items
+(1)/(2)/(5) into GENHN_PROOF's [GENHN-TOW-1] box text is the
+orchestrator's dated consumption update after this note's own
+hostile arc; GENHN_PROOF is byte-untouched by this unit.
