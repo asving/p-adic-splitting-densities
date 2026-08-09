@@ -37,8 +37,17 @@ universal-coverage sentences rescoped to their executed pattern
 scope with PE5's outside-scope witness displayed (PE5-G1), the
 same-side COMPOSITE case added to step (1)'s enumeration (PE5-m2,
 S4.1), a 7-rewrite universal-sentence sweep, and the corrupt
-PE4-results pin transcription corrected (e549331a); the clean
-count has NOT started — PE6 attempts the first clean).
+PE4-results pin transcription corrected (e549331a); hostile pass
+PE6 adjudicated UNREFUTED NOT CLEAN, 0 CRITICAL + 1 GAP + 1 MINOR —
+`GENIND_passPE6_report.md` @ 265a562/ad1bd98/f7f45f1, the same-side
+f-first genre machine-realized corpus-first (2,132,082/0) — r6
+repairs applied in place (§S16), [r6]-tagged, THE SUPPLIER RE-PIN
+ROUND: the S9.3 stack re-pinned at the suppliers' current HEADs
+with per-supplier fired-clause rows (PE6-G1; S14 C14's false
+git-log-check close corrected in place and replaced by the S16
+table) + three dated appends on the stale arc parentheticals
+(PE6-m1); every consumption verdict SURVIVES at the new pins — the
+clean count has NOT started — PE7 attempts the first clean).
 **Instrument:**
 sealed two-commit battery `verification/openmath/genind_checks.py` —
 the two-species classification machine-checked at n = 4 AND n = 5 on
@@ -1392,6 +1401,16 @@ degree-by-degree while the SCAFFOLD stays uniform in n.
   pin correction; sealed runner + artifacts + all prior legs
   byte-frozen, untouched; no r5 machine leg — the machine evidence
   cited is PE5's committed fresh leg genind_pe5_fresh.*, the
+  verifier's artifact, cited, not this note's); PE6 (hostile, fresh
+  context, the same-side f-first genre realized corpus-first +
+  isolated re-runs of ALL FIVE committed legs) adjudicated
+  0C + 1G + 1m (report @ 265a562/ad1bd98/f7f45f1), r6 repairs
+  applied in place AS THE SUPPLIER RE-PIN ROUND (§S16; [r6] tags:
+  the S9.3 stack re-pinned at current supplier HEADs with the
+  per-supplier fired-clause table + C14 corrected in place + three
+  dated appends; sealed runner + artifacts + all prior legs
+  byte-frozen, untouched; no r6 machine leg — the machine evidence
+  cited is PE6's committed fresh leg genind_pe6_fresh.*, the
   verifier's artifact, cited, not this note's) — the clean count
   has NOT started;
   every supplier consumed at the pins of S10's PIN family; the
@@ -2293,4 +2312,147 @@ unmoved); GENH4 note HEAD = b10a5a7 (the post-r4 Codex CHALLENGE @
 S9.3's GENH4 bullet — no consumed clause touched).
 
 **Grade: stays 0/2. The consecutive-clean count has NOT started; PE6
+(a fresh hostile pass) attempts the first clean.**
+
+## S16. [r6] REPAIR RECORD (PE6 adjudication; THE SUPPLIER RE-PIN ROUND — S11 stays frozen at its seal; S14's C14 corrected in place where its own sentence was the finding; S9.3 re-pinned with [r6] dated appends)
+
+**Arc.** Hostile pass PE6 (fresh context; the same-side f-first genre
+machine-realized corpus-first, 2,132,082 checks / 0 violations single
+run; report `GENIND_passPE6_report.md` @ 265a562/ad1bd98/f7f45f1)
+adjudicated 0 CRITICAL + 1 GAP + 1 MINOR. The GAP (PE6-G1) is the
+arc's FIFTH consecutive record-integrity finding (PE2-G2 → PE3-G1 →
+PE4-G1 → PE5-G1 → PE6-G1): S14 C14's [r5 sweep] rewrite asserted a
+per-supplier git-log check that was never executed, while the S9.3
+pins had gone stale across the suppliers' own repair arcs — the
+disease is the STALE PIN SET (diagnosis at ledger 26d2dbf: the S9.3
+supplier stack pinned states predating multiple supplier repair
+rounds, W-12 pinned at r2 while W-12 stood at r5 with a repaired
+CRITICAL in between). This r6 is THE SUPPLIER RE-PIN ROUND: the
+stack's suppliers re-pinned at their current HEADs, each with a
+fired-clause row below (C14's replacement — rows with evidence, no
+summary sentence, per the standing rule); C14 corrected in place at
+S14 with the false close quoted; the three stale arc parentheticals
+(PE6-m1: the W-12, HMENU3, W-11 bullets) given [r6] dated appends.
+Minimality contract: the pin refresh + the two findings, NOTHING
+else — no machine leg added (fresh numbers cited are PE6's committed
+leg `genind_pe6_fresh.*` @ ad1bd98); no sealed or committed artifact
+touched; no count law, theorem clause, or frozen number moved.
+Scope, enumeratively: the files edited this round are exactly one
+(this note); the sites edited are exactly five (the header arc
+line, GENIND-BOX-5's arc line, S9.3, S14's C14 item, this S16); the
+S9.3 bullets edited are exactly seven (W-12, W-11, HEX3, HMENU3,
+QSCOUT22, GENHN, GENH4).
+
+**THE PER-SUPPLIER FIRED-CLAUSE TABLE** (C14's replacement; each row
+git-log-verified at THIS commit against the supplier's note file;
+consumption verdicts carry their evidence in-row; the two heaviest
+re-verified from the supplier texts below, the rest citing PE6's
+traces @ f7f45f1 §1 "What survives"):
+
+| # | supplier | old pin | current HEAD (= new pin) | what moved between them (one line) | clauses GENIND consumes (sites) | consumption verdict at the new pin, with evidence |
+|---|---|---|---|---|---|---|
+| 1 | **W-12** | r2 99f1813 | **r5 be4a1dc/ee17210** | r3 b17238a (PE3 GAP: undecided(n,q,N) σ-pinned) + r4 d2d91b7/5728258 (PE4 F1 **CRITICAL** in S3.2 repaired; (A1) σ-LABELING clause + FIRING CHECK added) + r5 (PE5 GAP + 3m; HM3.C (A0) supply re-derived at disc ≠ 0) | THEOREM W-12.D (S6 Step 5); W-12.A (S1, S5.2, S6 Steps 1–2); S2.3 (S5.2's certificate transport, "W-12 S2.3 + GENIND-2(a)"); S2.4/S2.5 (S5.1/S5.3, S7.2); S3.4 (S4.2 δ-substitution ×2, S6 Step 4 boundary routing); W12-L0/L1 (S2–S4 transports, P(2)) | **SURVIVES.** The repaired CRITICAL was in S3.2 — zero S3.2 cites in this note (grep, this round). W-12.D re-read at r5 and re-matched to Step 5 verbatim (quote below). The r4 σ-LABELING clause STRENGTHENS (A1); its per-degree supply is verified by W12 r4's own FIRING CHECK at exactly this note's suppliers (W-11(i)/(iii), HM3.C, GENH4.C, GENHN.C; n ≥ 6 = [GENHN-HE(μ ≥ 3)], the box this note already displays); W12 r5's supply table records "The n = 3 firing SURVIVES unchanged" |
+| 2 | **HEX3** | r1 2580f12 | **r3 b6a1d69** (arc 0/2) | r2 a707430 (census 11 → 12; S8.2 k = 1 mass factor) + r3 (S8.2 W-12.B consistency clause conditionalized on HEX3-BOX-1) | H-1..H-4 (S2–S4 n = 3 transport instances); u₃(M) (S5.2 drainage); the committed species tables (GT-N3TIE) | **SURVIVES.** Both corrected items are S8.2/census records, uncited here (PE6 trace (iii)); the species tie is at the md5-frozen `hex3_checks_results.json` ce6f4116 — GT-PIN re-verified 5/5 by md5sum THIS round, file byte-identical |
+| 3 | **HMENU3** | seal 64d3ff9 / verdict 625fa49 | **ACCEPTED body 050425d + ANNEX A 19c0285** | r1 3235e1b + r2 e1280be + ACCEPTED 2/2 (08-08 12:44) + ANNEX A (HM3.C's (A0) quantifier → disc ≠ 0 form, two sites, body byte-frozen) | HM3-1 (GENIND-1 template); HM3-2/-4 (GENIND-2); HM3-3 (GENIND-3); HM3.A (P(3) menus, S4.1 dictionary); HM3.B (S4.2); HM3.C (S5.2's (A0) argument; S6 Step 4 exact-complement); HM3.D (P(3) grounding) | **SURVIVES.** ANNEX A corrects the quantifier exactly TO the form consumed here — this note's citations quantify over disc ≠ 0 lifts only (PE6 trace (iv); HMENU3 annex text re-read this round: "every disc ≠ 0 lift of that member has σ = the leaf table's entry") |
+| 4 | **W-11** | narrative to PE3 CLEAN 839b735 (1/2) | **ACCEPTED 2/2 @ 35e6545** | one append-only acceptance annotation (08-08 10:53); body byte-frozen since r2 31506b3 | THEOREM W-11(n = 2) through W12-L0 and R(M) (P(2) base, S5.2, S6) | **SURVIVES.** Honest strengthening; zero content diff to the consumed body (git log: no commit between 31506b3's content and the annotation) |
+| 5 | **QSCOUT22** | 240a56c (skeleton) | **verdict dd67cda + L3-correction annex fcaf268** | seal 970197d → VERDICT (GREEN 7,614,473/0) → L3 annex (genre-E UND display h = 1 slip; = GENH4-BOX-7's disclosed slip) | NOTHING (S7.3's predictions target its committed table; division-of-labor disclosure only) | **SURVIVES trivially.** No consumed clause exists to break; S7.3's targets are the committed artifacts @ dd67cda, byte-fixed; the corrected display is the one GENH4.B independently re-proves |
+| 6 | **GENHN** | 850e77e | **850e77e — UNMOVED** (re-pin is a no-op) | note HEAD unchanged; THREE errata QUEUED unexecuted (PROJECT_STATE 2026-08-09: UND phrasing; comp-weighting; A(i) transport ← Codex-GENH4 F3) | GENHN.A(iv) (GENIND-6(b)); A(v) ((CS-1)); LEMMA GENHN-3 ((CS-1), S6 Step 4); S6.2 ((CS-2)) | **SURVIVES as-of.** None of the three queued errata names a consumed clause (ledger-granularity check; A(i) is uncited here); execution disclosure owed at the next dated append |
+| 7 | **GENH4** | r3 4b0d946 + appends through b10a5a7 | **accepted body 4b0d946 (byte-frozen) + annex stack through R2 @ 760d20f** (stack 0/2; pass #2 in flight, not landed at this commit) | after r5: annex-pass #1 NOT CLEAN (GAP-1 on ANNEX R R2's N-even band-pinned leg, machine-refuted @ a8dec16/fed3cff) → ANNEX R2 760d20f (legs withdrawn; (c) → (c') key-level, unconsumed) | THEOREM GENH4.A (= Q22-L1) + GENH4-1F (menu half) and THEOREM GENH4.B (= Q22-L3, drain half) + comp-weighted census — S6 Step 4 + S7.1 only | **SURVIVES.** GAP-1 sat on a clause this note never cites; the W-12.D-consumed supply clause (b) was re-derived CLEAN at annex-pass #1; "W-12.D consumes (b) only" per ANNEX R2's record; GENH4.B re-read at the accepted body — `git show 4b0d946` display byte-identical to worktree HEAD — and re-matched to Step 4 (quote below) |
+| 8 | **HE7** | (no pin — never in this stack) | **FULLY FROZEN @ ca3754d** (body + annexes 2/2; Codex challenge discharged) | body accepted, annex stack accepted 2/2, post-acceptance micro-annex ca3754d | NOTHING — zero references in the r5 text (grep "HE7\|HE6" = 0 at f30e0fa/9f2da0f, re-run this round; this row's own mentions are disclosure, not consumption) | **Correctly absent** (PE6 Remark R2); row recorded so the stack disclosure is total across all eight suppliers the re-pin charge names |
+
+**Pins that did NOT move (the stack's remaining four bullets, each
+git-log-checked at this commit; last note-file touch listed):**
+J-D0 @ 1642275/9387eb1 — note last touched 9387eb1 (08-07 16:54),
+pre-seal, pin = HEAD ✓; DULEMMA @ f819f26 — last touched f819f26
+(08-07 18:59), pin = HEAD ✓; GRTJC (accepted 2/2 @ 83f47f4) — note
+last touched 63091ce (08-07 20:06, pre-seal annex), body unmoved ✓;
+WELDMASTER (accepted) — note last touched fdf1d99 (08-07 19:20,
+pre-seal fold-carry annexes), body unmoved ✓. Four checked, four
+keep their pins; [W12-H] is W12-note-internal and rides row 1.
+
+**THE TWO HEAVIEST CONSUMPTIONS, RE-VERIFIED FROM THE SUPPLIER TEXTS
+THIS ROUND (not inherited from PE6's traces).**
+
+*(1) THEOREM W-12.D at the new pin (r5 HEAD ee17210).* The supplier
+text at HEAD states, verbatim (W12 S1(iii)): "**(iii) [THEOREM
+W-12.D — THE REDUCTION THEOREM] PROVED, unconditional as a
+reduction.** Fix n and suppose, at every prime power q
+simultaneously: (A0) [lift well-posedness] … (A1) [exact core menu]
+… (A2) [drainage of the rest] … THEN for every splitting type τ of
+degree n: R_τ(q) := Σ_{F: σ_F = τ} Σ_{x ∈ P_F} c_F(q)·q^{−ℓ_F(x)}
+converges to ONE rational function in ℚ(q); it equals the N → ∞
+limit of the decided-τ window mass AND the Haar splitting density
+μ_τ; it is the SAME expression at every prime power q, both
+characteristics, wild primes included; and Σ_τ R_τ(q) = 1." This
+note's use-site (S6 Step 5), verbatim: "P(n)'s (A0)+(A1)+(A2) are
+W-12.D's hypotheses at degree n: THEOREM W-12.D (PROVED, @ pin)
+yields one R_τ(q) ∈ ℚ(q) per splitting type of degree n, = the Haar
+density, same expression at every prime power and characteristic,
+Σ_τ R_τ = 1." Match: hypothesis triple and all four conclusion
+clauses, one for one. The r4-added σ-LABELING bracket inside (A1)
+is a STRENGTHENED hypothesis (more is demanded of P(n), nothing
+less is delivered by the theorem); its per-degree supply is not
+this note's to re-prove — W12 r4's own FIRING CHECK verified it at
+W-11(i)/(iii) (n = 2), HM3.C (n = 3), GENH4.C (n = 4), GENHN.C
+(μ = 2 stages), with n ≥ 6 named as [GENHN-HE(μ ≥ 3)] — the exact
+open box this note's [GENIND-H] display already carries. VERDICT:
+consumption SURVIVES at the new pin.
+
+*(2) THEOREM GENH4.B (= Q22-L3) at the accepted body (4b0d946).*
+The supplier text — byte-identical at `git show 4b0d946` and at
+worktree HEAD, checked this round — states, verbatim: "**THEOREM
+GENH4.B (composite drainage = Q22-L3, PROVED — with the sealed
+display CORRECTED).** Per center, per entry, per history H₂ (any
+t ≥ 0, any prehistory r): the σ-undecided (conservative) count is
+ONE exact q-power … genre E: UND(h; H₂) = (q−1)^{r+t} · q^{N+h−1}
+per center … genre F: UND(k; H₂) = (q²−1)^t (q−1)^r ·
+[ q^{2⌊N/2⌋+2k−1} + 1_{2|N}·(q−1)·q^{N+2k−1} ] … the second term is
+the readable-value/unreadable-residual band at dv0 = N
+(GENH4-CAP(F)), present at even N only". This note's use-site (S6
+Step 4's discharge geography), verbatim: "the DRAIN half by THEOREM
+GENH4.B (= Q22-L3), one exact closed form per (center, entry,
+history) stratum (a single q-power off the boundary band; a
+TWO-term q-power sum at genre-F even N, GENH4-CAP(F)'s own
+display…)". Match: stratum granularity (center, entry, history),
+the single-q-power off-band clause, and the two-term even-N band —
+one for one; the (CS-EXACT) consumption needs exact finite q-power
+sums, which both displayed laws are. VERDICT: consumption SURVIVES
+at the accepted-body pin, with the annex stack strictly appended
+and its GAP-1/(c′) material unconsumed.
+
+**PE6's consumption-survival traces, cited at their report pin
+(f7f45f1 §1 "What survives"), covering the remaining rows:** (i)
+W12 r5's supply table re-derives the (A0) clause at the disc ≠ 0
+form, the form this note's citations consume; (ii) the W12-PE4
+CRITICAL was in W12 S3.2, which this note does not cite; (iii)
+HEX3's corrected items are not the consumed clauses and the species
+tie is at the unmoved md5-frozen JSON; (iv) HMENU3's ANNEX A
+corrects (A0) exactly to the form the induction needs; (v) BOX-5's
+"every supplier consumed at the pins of S10's PIN family" is an
+md5-runner-level sentence and TRUE (GT-PIN 5/5).
+
+**PE6-m1 disposition:** the three stale arc parentheticals (W-12
+"PE3 owed"; HMENU3 "r1 owed"; W-11 "counter 1/2") each received an
+[r6] dated append at their S9.3 bullets — originals preserved in
+place as dated records, per the note's convention (previously
+executed three times on the GENH4 bullet).
+
+**Byte-freeze at this commit (enumerated, re-verified by md5sum
+this round):** sealed runner e7ca150b; r2 supp triple
+7335fc16/63b7413a/6c93f29c; PE3 fresh triple
+fce9cb08/2075dd28/360eb239; PE4 fresh triple
+aa2b9af8/1a29a9c1/e549331a; PE5 fresh triple
+6ef3132e/a0452521/bdc04c4d; PE6 fresh triple
+87b0f27e/1c2f8eed/fb473a57 (the verifier's committed leg @ ad1bd98,
+now in the frozen list) — 16 md5s; plus GT-PIN suppliers 5/5
+(w11 500aae15 / w12 7dc040d9 / hex3 83faf7ed / hmenu3 65326f85 /
+hex3_checks_results.json ce6f4116). No committed artifact touched
+by this round. As-of states at commit time against the git log:
+W12 note HEAD = ee17210; HEX3 = b6a1d69; HMENU3 = 19c0285; W11 =
+35e6545; QSCOUT22 = fcaf268; GENHN = 850e77e; GENH4 = 760d20f
+(annex pass #2 in flight, unlanded); HE7 = ca3754d; repo movement
+since the wave-11 fold 26d2dbf = TAMEKQX commits only
+(209ed18/fa58556/f3c6eef, b99daa7), none touching a pinned file.
+
+**Grade: stays 0/2. The consecutive-clean count has NOT started; PE7
 (a fresh hostile pass) attempts the first clean.**
