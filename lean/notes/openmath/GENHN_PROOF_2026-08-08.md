@@ -137,7 +137,10 @@ machine row (GENIND-BOX-3 inherited).
 > (priced by W-12.A at the ambient — PROVED at every degree, @ pin),
 > with Φ′ the entry key (degree D′ = e₁f₁) and R := Ô[x]/(Φ′):
 > (i) [FIBRATION — proved] R is a complete DVR with e(R/O) = e₁,
-> f(R/O) = f₁, K = F_{Q^{f₁}}; the Φ′-adic development
+> f(R/O) = f₁, K = F_{Q^{f₁}} **[e2-E3 2026-08-09: carrier
+> corrected — read e/f/v/res in L/O_L, L := Frac(Ô)(θ); R = Ô[θ] is
+> in general a NON-MAXIMAL ORDER, not a DVR — ERRATUM E3 at S3.1]**;
+> the Φ′-adic development
 > f = Φ′^μ + Σ_{j<μ} A_j Φ′^j (deg A_j < D′) is a triangular digit
 > bijection from the opening coordinates onto explicit budget floors
 > whose total equals the entry exponent (no over/undercount), and the
@@ -380,10 +383,71 @@ maintained along every chain (S6's invariant maintenance):
 * η := res(θ^{e₁}π^{−h}) is a root of (a unit multiple of) ψ:
   [F_Q(η) : F_Q] = f₁, so f(R/O) ≥ f₁;
 * e·f ≤ [R : Ô] = D′ = e₁f₁ forces e = e₁, f = f₁, R a complete DVR
-  with residue field K = F_{Q^{f₁}} = F_Q(η), and Φ′ irreducible.
+  with residue field K = F_{Q^{f₁}} = F_Q(η), and Φ′ irreducible
+  **[e2-E3: the forcing chain is correct AT THE FIELD L — the DVR is
+  O_L, not R; ERRATUM E3 below]**.
 Set dv := e₁·v (value group ℤ; density e₁ per ambient v-unit). This
 is the exact-valuation statement DULEMMA's perimeter covers at
 e₁ ≥ 2 — proved directly here, not consumed.
+
+> **[e2] ERRATUM E3 2026-08-09 (the stage-ring carrier — v and res
+> live in L/O_L; R is an order, not a DVR). Queued at the GENH4
+> Codex-ratification fold (CHALLENGE 5c8d2fd, finding F3: "R
+> non-maximal order, not DVR — all consumed v/res facts live in L;
+> GENHN.A(i) transport erratum owed") and by GENH4 ANNEX R's R3
+> transport obligation ("one rider of exactly this R3 form at
+> GENHN.A(i), with the non-maximality witnesses transported";
+> ANNEX R @ b10a5a7). Tagged repair per the [r1] mechanism (GENHN at
+> 0/2, unaccepted); sealed battery runner and artifacts UNTOUCHED —
+> the battery's counts are digit-coordinate counts on
+> Ô[x]-coefficients and its σ legs are PARI oracle reads; neither
+> consumes R's ring structure.**
+>
+> **ORIGINAL (the two carrier displays):** GENHN.A(i): "R is a
+> complete DVR with e(R/O) = e₁, f(R/O) = f₁, K = F_{Q^{f₁}}";
+> S3.1's closing bullet: "e·f ≤ [R : Ô] = D′ = e₁f₁ forces e = e₁,
+> f = f₁, R a complete DVR with residue field K = F_{Q^{f₁}} =
+> F_Q(η), and Φ′ irreducible".
+>
+> **THE DEFECT (witnesses transported from ANNEX R R3).** R =
+> Ô[x]/(Φ′) = Ô[θ] is in general the NON-MAXIMAL order Ô[θ], not a
+> DVR: at the (e₁, f₁) = (1, 2) pattern (GENH4 genre F), every
+> k ≥ 1 — Codex's witness φ = x² + 2x + 4 over ℤ₂ has R/2R ≅
+> F₂[ε]/(ε²) (nilpotents mod 2; maximal-ideal residue field F₂, not
+> F₄; θ/2 ∉ R); at the (2, 1) pattern (genre E), every h ≥ 3 —
+> m_R = (π, θ) is non-principal. R = O_L at enumerated corners only
+> (genre E's h = 1 Eisenstein case); no general maximality claim is
+> made or needed.
+>
+> **THE RESTATED FRAME (where every consumed fact is true — the
+> ANNEX R R3 pattern at general (e₁, f₁)).** Let θ be a root of Φ′,
+> L := Frac(Ô)(θ), O_L its valuation ring — a complete DVR — with
+> **v := v_L** normalized on the base and every residue read in
+> O_L/m_L. S3.1's forcing chain runs verbatim AT THE FIELD:
+> v(θ) = h/e₁ with gcd(h, e₁) = 1 gives e(L/base) ≥ e₁; η =
+> res(θ^{e₁}π^{−h}) a root of (a unit multiple of) ψ gives
+> f(L/base) ≥ f₁; then e·f = [L : base] ≤ deg Φ′ = D′ = e₁f₁ forces
+> e = e₁, f = f₁, [L : base] = D′ — hence Φ′ IS the minimal
+> polynomial of θ (monic, degree D′), irreducible, and O_L/m_L =
+> F_Q(η) = K = F_{Q^{f₁}}. dv := e₁·v as displayed. The facts this
+> note consumes downstream are exactly v(A(θ)) and
+> res(A(θ)/normalizer) of EVALUATED elements A(θ) ∈ Ô[θ] ⊆ O_L —
+> GENHN-2's slot-min reads (S4), S6's carry computation, S7's
+> (T1)/(T2) (S7 already declares L := Frac(O)(θ) and works there) —
+> and the count laws are digit counts on coefficients, never
+> touching R. S6.1 layer 1's graded frame re-aims at **gr(O_L)**
+> (one K-line per dv-height, W-9's twisted algebra; R ⊆ O_L and
+> every graded read of an evaluated element happens in gr(O_L)).
+> RIDERED (named exactly, not edited): GENHN.A(i)'s DVR clause and
+> S3.1's closing bullet (tagged inline above); S6's invariant-
+> maintenance "S3.1's ring invariants"; S6.1's "gr R = the twisted
+> algebra"; S0's and S10's DULEMMA lines "stage rings have
+> e(R/O) = e₁ ≥ 2" (read e(L/base) = e₁); S9.2 item 1's "Ore over
+> the stage ring" (read: over O_L) — each with R's v/residue/graded
+> data interpreted as O_L's, per this erratum. Display-scope only:
+> no count, no σ conclusion, no density moves. SOURCE: CODEX GENH4
+> ratification finding F3 (CONFIRMED GAP, display-scope) @ fold
+> 5c8d2fd; model = GENH4 ANNEX R R3 @ b10a5a7.
 
 ### S3.2 LEMMA GENHN-1 (the fibration)
 
