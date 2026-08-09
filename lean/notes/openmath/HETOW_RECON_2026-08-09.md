@@ -277,6 +277,63 @@ P1–P5 + teeth T-NAIVE / T-WITHHOLD / T-BADTWIST / T-THREESIGMA.
 
 ---
 
-## S6. VERDICT (commit 2, from the committed artifacts)
+## S6. VERDICT (commit 2, from the committed artifacts): **GREEN — 1,200 checks, 0 violations, 4/4 teeth, 300/300 PARI agreements**
 
-*(pending at commit 1)*
+**Artifacts.** `hetow_checks_output.txt`, `hetow_checks_results.json`
+(sealed runner `hetow_checks.py` @ commit 1 = 2e5c4b1; no post-seal edit).
+Import pins printed in the artifacts: he6_checks 321fa4d4…, he7_checks
+688adbe8…, he6r1_checks 7112f7c7…, w12_checks 7dc040d9…, w10_checks
+a9c34244…. Runtime 42.9 s.
+
+**Totals.** 6 rows (4 × case A, 2 × case B), **300 members, 0 dropped,
+300 reader-decided (status OK on every member), 300 PARI jobs** — the
+first machine contact anywhere with inner-μ₂ ≥ 3 tower stages.
+
+* **P1 ✓ 300/300** — every member parses as a genuine tower: level-1
+  Φ′-development = ONE full side of slope κ₂ with residual r^3
+  (r = Z−s / the irreducible quadratic), i.e. the widened-box node with
+  multiplicity 3.
+* **P2 ✓ (HEADLINE) 300/300, zero mis-decisions** — the FROZEN readers
+  (he7_checks / he6r1_checks `level2_read`, byte-unmodified) decided
+  every member and matched PARI factorpadic exactly. This is the machine
+  form of THEOREM HETOW.A: the code written for the ordinary-leaf box
+  decides the tower box with no change.
+* **P3 ✓ 300/300** — every σ inside the preregistered 5-element menus.
+* **P4 ✓ per case** — all 5 menu σ realized in each case (case A:
+  {(4,1)}³ only at p = 5, structurally: F₃^× has just 2 elements, so a
+  cubic residual with nonzero constant term cannot have 3 distinct roots
+  at p = 3 — disclosed, not a violation). Per-row census (members //
+  PARI σ counts):
+
+      caseA p=3 s=1   33: {(12,1)} 7 · {(4,3)} 8 · {(4,2),(4,1)} 6 · {(8,1),(4,1)} 12
+      caseA p=3 s=2   33: same distribution
+      caseA p=5 s=1   65: {(12,1)} 10 · {(4,3)} 14 · {(4,1)³} 1 · {(4,2),(4,1)} 17 · {(8,1),(4,1)} 23
+      caseA p=5 s=2   65: 10 · 14 · 1 · 18 · 22
+      caseB p=3 r=Z²+1  52: {(6,2)} 10 · {(2,6)} 17 · {(2,2)³} 7 · {(2,4),(2,2)} 8 · {(4,2),(2,2)} 10
+      caseB p=5 r=Z²+2  52: 6 · 12 · 10 · 11 · 13
+
+* **P5 ✓ 300/300** — no member ever took the LEVEL3 branch: THEOREM
+  HE7.C's μ₂ ≥ 4 floor for a level-3 jump held on every read (refine
+  chains occurred and terminated; all adjudicated by PARI).
+
+**Teeth 4/4 FIRED.**
+* **T-NAIVE ✓** the "treat ψ₂³ as separable" dictionary is refuted by
+  PARI on ≥ 33 members of every case-A row and ≥ 42 of every case-B row.
+* **T-WITHHOLD ✓** both readers return UNDETERMINED when a level-2
+  residual is withheld.
+* **T-BADTWIST ✓** at s = 2 the level-2 cocycle twist is load-bearing at
+  μ₂ = 3: 55 members flip σ when the twist is dropped; on the
+  adjudicated flip the twisted read {(4,2),(4,1)} = PARI while the
+  untwisted read says {(4,3)} — the first μ₂ = 3 exercise of the
+  β-cocycle anywhere.
+* **T-THREESIGMA ✓** up to FIVE distinct PARI σ inside one family of
+  identical level-1 outer+entry data (fixed p, case, letter) — the tower
+  μ₂ = 3 σ-decision is genuinely deeper than the outer data, and the
+  composed level-2 read decides it.
+
+**What the leg establishes** (instrument grade, not acceptance): the
+first-ever machine contact with [GENHN-HE(μ₂ ≥ 3)]'s tower instances is
+GREEN against an independent oracle at the minimal live degree n = 12,
+on both inner branches ((e₂,f₂) = (2,1) and (1,2)), with the σ-decision
+executed by HE7's frozen instruments unmodified — exactly what THEOREM
+HETOW.A's "literal instance" predicts and preregisters.
