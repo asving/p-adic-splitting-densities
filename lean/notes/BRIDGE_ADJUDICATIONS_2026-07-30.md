@@ -13922,3 +13922,36 @@ inside the very unit that implemented it. Note TAMEKQX 0/2; commits
 b99daa7…18bc55c. SITE PUSH UNBLOCKED: the TAMEK paragraph upgrades
 to exact-identity language — applier dispatched (works in the site
 repo, commits locally, does NOT push; orchestrator reviews + pushes).
+
+---
+
+## WAVE 12 FOLDED (wbcqriq05, 2/2): GENH4 ANNEX STACK 1/2 (CLEAN; first 2w=N machine exercise anywhere + first non-prime-q on the consumed clause, W(F₄) 36/36) · GENIND r6 SUPPLIER RE-PIN COMPLETE (8/8 consumption verdicts SURVIVE; two heaviest re-verified verbatim) — WAVE 13: GENH4 stack micro-rider → PASS #3 (STACK ACCEPTANCE ATTEMPT) + GENIND PE7 (first-clean attempt) — 2026-08-09
+
+**GENH4 ANNEX-PASS #2 (510c0cf → 9049823 → d6a9ac8): CLEAN at
+stack scope — 3 display MINORs** (a one-hex-digit pin transcription
+7153578c; the disc parenthetical false in equal char 2 — conclusion
+survives via disc = A₁², machine-confirmed 4/4; a per-cell vs total
+count inflation). (c′) re-derived from scratch (u₀ trichotomy
+exhaustive; coset count sound; trace leg sound; transport display
+matches FR4; withdrawal quotes verbatim; supersession chain states
+itself at every link). FRESH ROUTE: 6 never-touched cells — all
+three u₀ branches (35/35 PARI + 4/4 equal-char), FIRST 2w=N leg
+exercise anywhere ((3,10,1) 20/20 with 8 inert witnesses + (2,14,2)
+trace-leg 9/9), FIRST non-prime-q on consumed 7′(b) ((4,11,2) over
+W(F₄), 36/36 + teeth 2/2). Stack 1/2; micro-rider (3 one-liners,
+count HOLDS per the HE7-r3 precedent) then pass #3 = the stack
+acceptance attempt.
+
+**GENIND r6 (760afed / dcc20bb / 993935d).** The 8-row pin table
+landed in S16 (W-12 r2→r5 with the movement inventory incl. its
+repaired CRITICAL — zero S3.2 cites in GENIND, grep-verified;
+HEX3 r1→r3; HMENU3→ACCEPTED+ANNEX A, which corrects TOWARD the
+consumed form; W-11→ACCEPTED; QSCOUT22 verdict+annex, nothing
+consumed; GENHN UNMOVED with 3 queued errata disclosed, none naming
+a consumed clause; GENH4 body+stack as-of; HE7 correctly absent) +
+the 4 unmoved suppliers enumerated with git evidence. The TWO
+HEAVIEST consumptions re-verified from the current supplier texts
+with verbatim clause quotes (W-12.D @ ee17210 clause-for-clause;
+GENH4.B @ 4b0d946 byte-identical incl. the two-term genre-F form).
+3/3 dated appends; C14 corrected in place. NO MATHEMATICAL EVENT.
+0/2; PE7 attempts the first clean on a fresh pin set.
