@@ -13979,3 +13979,52 @@ pre-push: the GENH4 annex-stack sentences (drafted pre-R2) said
 "repair still owed" — amended to the as-of-push truth (repair
 landed, one clean pass, mid-arc) in all three files (59e7fc0).
 Website repo: 6e21f5d → 59e7fc0, pushed.
+
+---
+
+## ★★★ WAVE 13 FOLDED (wwj02ux36, 3/3): GENH4 STACK ACCEPTED 2/2 — FULLY FROZEN, SECOND CHALLENGE-DISCHARGE CYCLE CLOSED · GENIND PE7 CLEAN — THE SPINE AT 1/2 AFTER SIX PASSES — WAVE 14: GENIND rider → PE8 (ACCEPTANCE ATTEMPT) + W-12 PE6 + GENHN ERRATUM ROUND — 2026-08-09
+
+**GENH4 ANNEX-PASS #3 (a118aa6 → 95984a9 → 7f27065): CLEAN — 0C,
+0G, 1 MINOR (a terminology collision in a superseded-text sentence,
+unconsumed) + 3 remarks.** The charges: the S6.3 complement route
+walked hostile for the first time; the W-12.D r5 seam read
+END-TO-END by one verifier in one sitting — (A1) σ-LABELING +
+BOX-7 disc≠0 + the n=4 firing row match GENH4.C/S7/7′(b)
+clause-for-clause, the F-SPLTAIL label identical everywhere, both
+characteristics; the micro-rider verified 3/3; the SYSTEM audit
+found the stack's only two shared components (one GP σ-oracle; the
+imported Panayi) and KILLED BOTH (FL1 dual-oracle 38/38; FL2 a
+fresh GF-tower Panayi instrument with self-tests). FRESH CELLS:
+first k=4 ever ((2,19,4) 36/36 + teeth), first equal-char
+non-prime-q on consumed 7′(b) ((4,11,2) F₄[[t]] 27/27), q=5
+dual-oracle 2w=N (48/48, 15 inert witnesses — R2.M2
+machine-witnessed). All four stack legs re-run BIT-IDENTICAL.
+**GENH4 = the second fully-frozen note. Dated appends only.**
+
+**GENIND PE7 (ac3cbd5 → 380bc66): CLEAN — 0C, 0G, 3 MINOR (+2
+remarks) ⟹ 1/2.** The minors: wording-precision inside the r6
+record (a grep self-report counting its own disclosure sentences;
+a GENHN-surface undercount; a box-name locality) — none touches a
+law, clause, or number. The record held: 7/8 S16 rows walked
+against git, both heavy quotes character-faithful, C14 accurate.
+THE MATHEMATICS RE-DERIVED: Step 4's (A2)+(CS-EXACT) mixed bucket
+(the GENIND-6(d) product identity with three consumptions each at
+the right clause), Step 5's W-12.D firing incl. the r4 σ-labelling
+strengthening, the M6 ledger independently recounted. FRESH ROUTE
+(9th distinct): the (2,5) cluster system — first d ≥ 2, first
+n=10 tower reads (20/20 PARI), first non-prime Q=32 letters
+(exhaustive 32⁴ grammar; α-transport ONTO with constant fiber;
+teeth 992/30/60) — 2,068,533/0; an honest 3-run instrument arc
+disclosed (2 REDs = the unit's own honesty gates). R2's σ-constant
+tail observation recorded (the n=10/d=5 echo of HEX3-BOX-1 — a
+future σ-certification lead, no law violated). PE8 = the
+acceptance attempt; micro-rider first (3 one-liners, count HOLDS
+per precedent).
+
+**WAVE 14 (dispatched this entry): GENIND rider → PE8 (THE SPINE'S
+ACCEPTANCE ATTEMPT — if clean, the theorem chain's three leaders
+are ALL through the bar) + W-12 PE6 (the reduction note's 6th pass,
+first since r5) + GENHN ERRATUM ROUND (the 3 queued: GENHN-3(a)
+"exits UND" conditionalization; GENHN.A(v) comp-weighting clause;
+GENHN.A(i) transport/non-maximality erratum — then GENHN PE1 can
+run).**

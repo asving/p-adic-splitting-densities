@@ -3390,3 +3390,22 @@ repair in wave 11. GENIND r5 complete (f30e0fa/9f2da0f: enumerative
 records standing rule applied — 7 universal sentences rewritten;
 the f-first law corrected; bonus md5-typo caught at commit-time pin
 check); PE6 attempts the first clean.
+
+**2026-08-09 DATED APPEND #6 — GENH4 FULLY FROZEN (body 2/2 + annex
+stack 2/2 at 7f27065; the SECOND challenge-discharge cycle closes)
++ GENIND 1/2 (the spine's FIRST clean, PE7 380bc66, after six
+passes).** GENH4's acceptance pass owned the P(4) supply seam
+end-to-end (GENH4.C + 7′(b) → W-12.D's σ-labelling clause at r5,
+clause-for-clause, both characteristics), audited the four stack
+machine legs as a SYSTEM (exactly two shared components found, both
+killed: dual PARI oracles 38/38 + a fresh GF-tower Panayi with
+self-tests), and ran first-ever cells (k=4; equal-char F₄[[t]] on
+the consumed clause; q=5 dual-oracle 2w=N with 15 machine inert
+witnesses). GENIND PE7: the r6 record verified row-by-row, the
+MATHEMATICS re-derived end-to-end (Step 4 mixed bucket, Step 5
+firing incl. the σ-labelling strengthening, M6 recount), fresh
+route = first d ≥ 2 / first n=10 / first non-prime Q=32 on
+GENIND's own laws (2,068,533/0). Board: HE7 + GENH4 fully frozen;
+GENIND 1/2 (micro-rider then PE8 = acceptance attempt); then
+W-12/HEX3/GENHN/HE6 + the distribution arcs. Site refreshed and
+pushed at 59e7fc0.
