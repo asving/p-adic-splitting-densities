@@ -287,7 +287,187 @@ an f2 = 2 two-flavor-lift row.
 ## S2. TARGET 2 — THE LEVEL-r LADDER GRAMMAR (definitions + the two
 ## working lemmas)
 
-(to be filled: DEF GENTOW5-1; LEMMA GENTOW5-C; LEMMA GENTOW5-D)
+### S2.1 DEF GENTOW5-1 (the depth-r tower data)
+
+Indices: level 1 = the outer stage (key Phi_1 := Phi', deg D_1 =
+e1f1); level i has stage data (e_i, f_i) with properness l_i :=
+e_i f_i >= 2 at every i >= 2 (an improper stage is a refinement, not
+a level — FGMN Lemma 3.5/Prop 3.7 collapsing, per GENTOW2 S6 (H-f)).
+Write ehat_i := e_1 ... e_i, D_i := l_1 ... l_i (l_1 := e1f1),
+K_0 := F_Q, K_i := F_{Q^{f_1...f_i}}.
+
+* **Ladders.** dv_i := ehat_i * v. Heights at level-(i+1) points:
+  u_1 := h = dv_1(x); u_{i+1} := dv_{i+1}(Phi_i(xi)) with
+  gcd(u_{i+1}, e_{i+1}) = 1; so dv_i(Phi_j) = (ehat_i/ehat_{j+1}) *
+  u_{j+1} for j < i. Side constants E_i := e_i f_i u_i (E_1 = D_1 h).
+  **Floor chain:** u_{i+1} > e_{i+1} E_i (provenance: the level-i
+  budgets' node corollary, S3(e); at i = 1 this is the [r1] node
+  floor u_2 > e_2 D'h verbatim since E_1 = D'h).
+
+* **Normalizers (the recursion of HE7-2', tower-based).**
+  n1hat(m) := pi^a x^{i0} (i0 < e1, e1*a + i0*h = m); for i >= 1
+
+      nhat_{i+1}(k) := nhat_i(m_i(k)) * Phi_i^{b_i(k)},
+      e_{i+1} m_i(k) + b_i(k) u_{i+1} = k,  0 <= b_i(k) < e_{i+1}
+
+  (unique since gcd(u_{i+1}, e_{i+1}) = 1). Unrolled: nhat_i(m) =
+  pi^a x^{i0} Phi_1^{b_1} ... Phi_{i-1}^{b_{i-1}} with i0 < e1,
+  b_j < e_{j+1}. At i = 2 this is GENTOW-1 S3's n2hat verbatim.
+  NOTE the base differs from HE7-2's varpi-powers (varpi^k has
+  unreduced x-degree); the two systems differ per height by a fixed
+  unit — S2.3's remark.
+
+* **Cocycle + letters.** tau_i(a, b) := nhat_i(a) nhat_i(b) /
+  nhat_i(a+b); the level letters Lam_i := Phi_i^{e_{i+1}} /
+  nhat_i(u_{i+1}) (dv-value 0 at level-(i+1) points), beta_{i,xi} :=
+  res(Lam_i(xi)); transport tower iota^{(i+1)} extending iota^{(i)}
+  by beta_i -> beta_{i,xi} — ANNEX-DEF HE7-2''s attached objects,
+  tower-instantiated.
+
+* **K_i-digit lifts.** For c in K_i and height m, lift_i(c; m) :=
+  the sum of the f_1...f_i within-class monomials x^{i0+e1 r}
+  Phi_1^{b_1 + e_2 t_1} ... at height m with O-digit coefficients
+  realizing c in the coherent normalization (deg < D_i always);
+  at i = 2 this is GENTOW-2's lift(s; m).
+
+* **THE COMPOSED KEY RECIPE (the charge's display).** Given stage
+  data (e_{i+1}, f_{i+1}) and monic irreducible psi_{i+1} =
+  y^{f_{i+1}} - Sum_{t<f_{i+1}} c_t y^t over K_i with c_0 != 0:
+
+      Phi_{i+1} := Phi_i^{e_{i+1} f_{i+1}}
+                   - Sum_{t < f_{i+1}} khat_t * Phi_i^{e_{i+1} t},
+      khat_t := lift_i(c_t; u_{i+1}(f_{i+1} - t))   (0 if c_t = 0),
+
+  monic of degree D_{i+1}; every side term at dv_{i+1}-height
+  E_{i+1} exactly (e_{i+1} * u_{i+1}(f_{i+1}-t) + e_{i+1} t u_{i+1}
+  = E_{i+1}; the top term e_{i+1} f_{i+1} u_{i+1} = E_{i+1}).
+  At i = 1 this is T(b)''s Phi2; at i = 2 the r3 box's Phi3.
+
+* **The depth-(i+1) node locus P_{i+1}** := roots xi with
+  v(x(xi)) = h/e1 exactly, eta(xi) a psi_1-root, and inductively
+  v(Phi_j(xi)) = u_{j+1}/ehat_{j+1} exactly with the level-(j+1)
+  residue class a psi_{j+1}-root, for j < i+1 — the tower transport
+  chain (T(b)'(iii) at i = 1; GENTOW2-A(d)'s data at i = 2).
+
+First-live arithmetic: a depth-r tower with a live top problem
+mu_r >= 2 needs n = D_r * mu_r >= 2^{r+1}; depth 4 first lives at
+n = 32 (S4's witness is exactly minimal).
+
+### S2.2 Consistency checks on the recursion (worked pins)
+
+n3hat(85) at the S4 chain ((e_i) = (2,2,2,2), h = 1, u = 5, 21, 85):
+recursion: b_3... level 3: 2m + 21b = 85, b < 2 -> b = 1, m = 32;
+level 2: 2m' + 5b' = 32, b' < 2 -> b' = 0, m' = 16; base: 2a + i0 =
+16 -> i0 = 0, a = 8. n3hat(85) = 2^8 * Phi_2 — matching the direct
+unrolled solve (16a + 8 i0 + 20 b_1 + 42 b_2 : mod-parity forces
+b_2 = 1, then b_1 = 0, i0 = 0, a = 8... on the dv_4 ladder; see S4).
+The r3 witness n2hat(21) = 16 Phi' is the recursion at level 2:
+2m + 5b = 21 -> b = 1, m = 8 -> 2a + i0 = 8 -> 2^4. Both match the
+committed runners' values (genhnr2_supp L388-389; gentow2 W1).
+
+### S2.3 LEMMA GENTOW5-C ((SLOT_i) + (LIFT_i) for the tower ladder)
+
+**Statement.** Let i >= 1 and assume the tower data of DEF GENTOW5-1
+through level i+1 with P_{i+1} nonempty, and (SLOT_{i-1}) at level i
+(base: i = 1 is GENHN-2 + HE6-1's transport identity; i = 2 is
+GENHN-2' — both accepted). Let xi in P_{i+1}, C in O[x] with
+0 != deg C < D_{i+1}, developed C = Sum_{b < e_{i+1} f_{i+1}} c_b
+Phi_i^b with deg c_b < D_i. Then
+dv_{i+1}(C(xi)) equals the slot minimum EXACTLY; the minimizing b
+lie in one class mod e_{i+1}; and the height-k residue against
+nhat_{i+1}(k)(xi) is iota^{(i+1)}(Sum_t gamma_t vartheta_t
+beta_i^t) != 0 with gamma_t the level-i digit symbols ((SLOT_{i-1}))
+and vartheta_t the FIXED twist units of the telescoped tau_i-cocycle
+— i.e. one K_{i+1}-digit per dv_{i+1}-height, class separation
+mod e_{i+1} between Phi_i-slots and mod ehat_{i+1} overall.
+(LIFT_i): k-uniformly above the bound recursion bound_{i+1} =
+(l_{i+1}-1)u_{i+1} + e...*bound_i, every K_{i+1}-residue at height k
+is realized by some C with deg < D_{i+1} (inverse-twisted digits).
+
+**Proof: ANNEX-THEOREM R1-b/R1-c's proofs, re-based.** The HE7
+ANNEX R proofs consume exactly four clauses of their level-i datum:
+(a) values exact one level down ((SLOT_{i-1}), our induction
+hypothesis); (b) the defining clause w_{i+1}(Phi_i(xi)) = u_{i+1}
+exactly (our P_{i+1}, clause j = i); (c) gcd(u_{i+1}, e_{i+1}) = 1
+(DEF GENTOW5-1); (d) {1, beta_i, ..., beta_i^{g-1}} a K_i-basis of
+K_{i+1} with beta_i := the level-(i+1) residue letter, r_i := its
+minimal polynomial irreducible (our psi_{i+1}-root clause of
+P_{i+1}, f_{i+1} = deg psi_{i+1}). Steps: (1) values of
+c_b(xi)Phi_i(xi)^b are e_{i+1}*w_i(c_b) + b*u_{i+1} exactly by
+(a)+(b); (2) cross-class ties impossible: b*u_{i+1} mod e_{i+1}
+bijective by (c); (3) within one class, slots b0 + e_{i+1}t: the
+monomial identity of R1-b (R1.2) with theta_t telescoping into
+tau_i-values; each theta_t has residue a fixed K_i^x-unit by the
+S1.2-style cocycle computation run at level i (the letter monomial —
+tau_i is a Laurent monomial in pi, x, Phi_1, ..., Phi_{i-1} of
+dv-value 0, residue a fixed product of the letters beta_1 ... beta_{i-1}
+through iota^{(i)}); (4) summing the class, the residue is the
+displayed K_i-combination of beta_i-powers, nonzero by (d) since the
+gamma_t vanish iff their slots do not attain and at least one
+attains — no cancellation, value exact. (LIFT_i): R1-c verbatim —
+prescribe the level-i digits INVERSE-twisted by vartheta_t^{-1}
+((LIFT_{i-1}) supplies them one level down; base = the level-1/2
+lift lemmas, accepted); the bound arithmetic never sees residues.
+**Grade honesty:** this is HE7 ANNEX R's R1-b/R1-c argument
+transported onto the tower ladder — the annex is POST-RATIFICATION,
+UNPASSED (annex grade); the transport itself (the four-clause
+instantiation table above) is this note's, and the base cases i <= 2
+rest only on accepted corpus. Every i >= 3 consumer below carries
+this annex-grade pin explicitly. ∎
+
+*Remark (HE7 base vs tower base).* HE7-2''s n_1 = varpi-powers and
+our n1hat differ per height by the fixed wrap letter (both are
+value-m monomials; the quotient is a value-0 Laurent monomial in
+x, pi with residue a fixed power of the level-1 letter). By J-D0
+(counts twist-blind, letters re-coordinatize; R1.2 item 7) every
+count/degree/vanishing statement transports between the two systems;
+residue letters re-coordinatize by fixed units. We work in the tower
+base throughout; no invariance under CHANGING systems mid-argument
+is consumed (that stronger claim is false — HE7-T-BADTWIST).
+
+### S2.4 LEMMA GENTOW5-D (Step-0 carry monotonicity is
+### level-agnostic — the charge's check, answered YES)
+
+**Weight.** On monomials M = pi^v x^{a} Phi_1^{J_1} ... Phi_i^{J_i}
+(exponents unbounded) define
+
+    wt_i(M) := ehat_i*v + a*(ehat_i/e1)h
+               + Sum_{j<i} J_j * (ehat_i/ehat_{j+1}) u_{j+1}
+               + J_i * E-part as applicable at the top grid.
+
+**Statement.** For every level i, the i reduction moves — the
+x-carry (a >= D_1) and the Phi_j-carries (J_j >= l_{j+1}, j < i) —
+are wt_i-nondecreasing; lift-generated terms preserve weight
+exactly; the key-part of each carry strictly raises it. Hence
+"all slots at weight >= W" is the same condition on every grid of
+the tower (the two-directional rewriting closes), and per-slot
+weight arithmetic converts to the digit floors verbatim as in
+GENTOW-1 Step 0.
+
+*Proof (the two displays, uniform in j).*
+* x-carry: x^{D_1} = Phi_1 + tail, tail monomials x^c pi^g with
+  g >= (D_1 - c)h/e1 (Phi_1's one side): tail wt >=
+  (ehat_i/e1) D_1 h = wt(x^{D_1}), equality on the side lattice;
+  Phi_1-part wt = (ehat_i/ehat_2) u_2 > (ehat_i/ehat_2) e_2 E_1 =
+  (ehat_i/e1) D_1 h — STRICT by the floor chain at j = 1.
+* Phi_j-carry: Phi_j^{l_{j+1}} = Phi_{j+1} + Sum_t khat_t
+  Phi_j^{e_{j+1}t}; each lift term has wt =
+  (ehat_i/ehat_{j+1}) [e_{j+1} u_{j+1}... ] — compute:
+  khat_t's monomials all sit at dv_j-height u_{j+1}(f_{j+1}-t)
+  exactly (single-height lifts, DEF GENTOW5-1), contributing
+  (ehat_i/ehat_{j+1}) e_{j+1} u_{j+1}(f_{j+1}-t) +
+  e_{j+1} t (ehat_i/ehat_{j+1}) u_{j+1} = (ehat_i/ehat_{j+1})
+  E_{j+1} = wt(Phi_j^{l_{j+1}}) — PRESERVED exactly; the
+  Phi_{j+1}-part has wt = (ehat_i/ehat_{j+2}) u_{j+2} >
+  (ehat_i/ehat_{j+2}) e_{j+2} E_{j+1} = (ehat_i/ehat_{j+1}) E_{j+1}
+  — STRICT by the floor chain at j+1.
+The only inputs are (INV-j): the recipe keys' side terms at exact
+height E_{j+1} (DEF GENTOW5-1's construction) and (FLOOR-j):
+u_{j+1} > e_{j+1} E_j. Both are level-uniform; GENTOW-1's Step 0 is
+the i = 2 instance ("two carries priced by two sides" becomes "i
+carries priced by i sides", each the same two lines). The converse
+rewriting (Phi_{j+1} = Phi_j^{l_{j+1}} - weight-E_{j+1} lifts) is
+weight-nondecreasing by the same displays. ∎
 
 ## S3. THEOREM GENTOW5-B (the general-depth composition theorem)
 
