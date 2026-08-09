@@ -460,7 +460,8 @@ window-adjudication circularity executed (three-source structure +
 consumption-level splits + mechanism-free PARI).
 
 **Fresh route:** the sealed-window regime census (FR-1, exhaustive,
-both characteristics, 1,516 + 512 states with preregistered
+both characteristics, 544 sealed-row + 972 companion states with
+preregistered
 onto/fiber/verdict splits — adjudicating PE4-G1); the first
 three-child three-slope genre with the mixed cap in one D_l (FR-2,
 windows (1,3,7), C-box bijection 4,096, PARI {3:2,2:2,1:2}); the
