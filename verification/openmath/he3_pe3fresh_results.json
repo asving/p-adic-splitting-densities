@@ -1,0 +1,12 @@
+{
+ "violations": 0,
+ "legs": {
+  "FR1a": "ok",
+  "FR1b": "ok",
+  "FR1c": "ok",
+  "FR1d": "ok",
+  "FR2": "ok",
+  "FR2b": "ok",
+  "FR3": "ok"
+ }
+}
