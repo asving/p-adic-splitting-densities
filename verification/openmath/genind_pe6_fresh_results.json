@@ -1,0 +1,28 @@
+{
+ "checks": 2132082,
+ "elapsed_s": 244.1,
+ "runner_md5": "e7ca150b1b5cb13ad4f3350ac776aca2",
+ "tally": {
+  "FRA-ssf-exh": 2097152,
+  "FRA2-ssf-N7": 32768,
+  "FRA3-floor": 20,
+  "FRA4-k2": 200,
+  "FRA5-fqt-q2": 200,
+  "FRA5-fqt-q3": 100,
+  "FRB-q3": 360,
+  "FRC-dsa-q2": 200,
+  "FRC-dsa-q3": 120,
+  "FRD-box-q2": 256,
+  "FRD-box-q3": 81,
+  "FRD-dsb-q2": 300,
+  "FRD-dsb-q3": 120,
+  "FRE-ecell-q2": 100,
+  "FRE-ecell-q3": 60,
+  "FRF-dsb-q2": 10,
+  "FRF-ssf-q2": 15,
+  "FRF-ssf-q3": 10,
+  "FRG-tooth": 10
+ },
+ "verdict": "GREEN",
+ "violations": []
+}

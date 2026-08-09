@@ -1,0 +1,47 @@
+GENIND passPE6 FRESH ROUTE (same-side f-first realization + the f-first entry/cap laws)
+sealed runner md5 e7ca150b1b5cb13ad4f3350ac776aca2 VERIFIED; imported read-only
+-- FRA3-floor: N=6 sits below the 6k law floor: DRAIN 20/20 [0.0s]
+-- FRA2-ssf-N7: first-visible window, locus 32768 exhaustive, Wc=1, single class [2.9s]
+-- FRA4-k2 (2,6,N=14): the 6k law at k=2 (v(a0)=12, Wc=2), 200 samples [2.9s]
+-- FRA5-fqt-q2: char-p mirror, 200 samples, Wc=2 exact [3.0s]
+-- FRA5-fqt-q3: char-p mirror, 100 samples, Wc=2 exact [3.0s]
+-- FRB-q3: all 6 letter slices x 60, gcd-branch reader, Wc=2, Bbar=psi^2, psi(w)!=0 [3.1s]
+-- FRC-dsa-q2: distinct-side minimum cell (v(a0)=8), degree-drop cofactor, Wc=2 [3.1s]
+-- FRC-dsa-q3: distinct-side minimum cell (v(a0)=8), degree-drop cofactor, Wc=2 [3.1s]
+-- FRD-dsb-q2: f-first-STEEPER cap regime: Wc=5 (uncapped 1), 182 distinct window-5 classes seen, collapse cofactor y^4 [3.2s]
+-- FRD-dsb-q3: f-first-STEEPER cap regime: Wc=5 (uncapped 1), 119 distinct window-5 classes seen, collapse cofactor y^4 [3.2s]
+-- FRD-box-q2: driving box ONTO 256/256 distinct classes (bijection) [3.2s]
+-- FRD-box-q3: driving box ONTO 81/81 distinct classes (bijection) [3.2s]
+-- FRE-ecell-q2: child+E family k=2 boundary cell (entry 6, Wc=2) [3.3s]
+-- FRE-ecell-q3: child+E family k=2 boundary cell (entry 6, Wc=2) [3.3s]
+  ***   Warning: new maximum stack size = 536870912 (512.000 Mbytes).
+-- FRF-ssf-q2: 15 irreducible disc!=0 lifts: partition {1:6}, child (2,1) the only odd-f prime, even-f mass 4 [3.4s]
+-- FRF-ssf-q3: 10 irreducible disc!=0 lifts: partition {1:6}, child (2,1) the only odd-f prime, even-f mass 4 [3.9s]
+-- FRF-dsb-q2: 10 lifts, partition {2:4, 1:2} exact (the cap regime fracture, mechanism-free) [3.9s]
+-- FRG-tooth: a0-pin corruption -> one-side e=6 DEC read, fired 10/10 [3.9s]
+   ... 500000 members [61.1s]
+   ... 1000000 members [118.4s]
+   ... 1500000 members [175.7s]
+   ... 2000000 members [233.0s]
+-- FRA-ssf-exh (2,6,N=8) SAME-SIDE F-FIRST, first machine realization: locus 2097152, ONTO 4 fibers [524288], child-DEC 1048576 [244.1s]
+
+  FRA-ssf-exh      2097152
+  FRA2-ssf-N7      32768
+  FRA3-floor       20
+  FRA4-k2          200
+  FRA5-fqt-q2      200
+  FRA5-fqt-q3      100
+  FRB-q3           360
+  FRC-dsa-q2       200
+  FRC-dsa-q3       120
+  FRD-box-q2       256
+  FRD-box-q3       81
+  FRD-dsb-q2       300
+  FRD-dsb-q3       120
+  FRE-ecell-q2     100
+  FRE-ecell-q3     60
+  FRF-dsb-q2       10
+  FRF-ssf-q2       15
+  FRF-ssf-q3       10
+  FRG-tooth        10
+VERDICT: GREEN -- 2132082 checks, 0 violations, 244.1 s
