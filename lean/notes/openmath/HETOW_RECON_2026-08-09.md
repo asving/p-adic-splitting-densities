@@ -602,3 +602,51 @@ Z³+5Z²+4Z+5 exactly, both W-telescoping identities (heights 6 and 9)
 exact, μ₂ = 2 trichotomy 8/8, forced μ₂ = 3 {(6,3)} row. The axis is
 now a disclosed row with first contact on record rather than an
 omission.
+
+---
+
+### Dated acceptance record + correction (2026-08-09, post-PE3)
+
+*Source: `HETOW_passPE3_report.md` @ 5b6db24 — verdict CLEAN
+(0C/0G/1m). The body above (through rider C-A/C-B/C-C) is
+**BYTE-FROZEN as of this record — dated appends only.***
+
+**ACCEPTANCE.** Per the arc rule the tower σ-closure counter moves
+1/2 → **2/2 — HETOW ACCEPTED** (the CLEAN bar: nothing at
+GAP-or-worse survived the pass's own verification). The arc, one
+breath: seal (3e19eba) → passPE1 NOT CLEAN, 1 CRITICAL — the
+ϖ-wrap-cocycle seam in the sealed key (5f821dc) → r1's corrected key
+ĉ_t ↦ L_{(f₂−t)u₂}(c_t·η^{W(t)}), W(t) = ⌊(f₂−t)i(u₂)/e₁⌋ (5335ae3)
+→ passPE2 CLEAN 0C/0G/3m, counter 0/2 → 1/2 (67cbab2) → rider
+C-A/C-B/C-C (5b879e0) → passPE3 CLEAN 0C/0G/1m, counter 1/2 → 2/2
+(5b6db24). What the two clean passes proved at the corrected key:
+**wrap-immunity** of the §S1 termination row (the wrap correction
+moves unit factors only — heights, degrees, and multiplicities,
+hence HE6R1-1's descent factor ℓd_r = e₂f₂ and both displayed
+bounds, are untouched by it) and **gauge-invariance** of the
+tightness read, with the letter clause (ψ₂(η₂(ξ)) = 0,
+HETOW-1(b)/T(b)′(i)) standing as the load-bearing seam detector at
+the σ-blind faces (PE2 frame V at f₂ = 3; PE3 frame M2 at f₂ = 4).
+Consequences inherit min over {GENHN 0/2, HE6 0/2 post-r2, HE7
+(frozen, accepted annex stack), HE3 1/2 at μ ≤ 3} per the status
+header.
+
+**F-α CURE (PE3's one MINOR — HETOW-BOX-3's e₂f₂ ≥ 4 row folded
+against PE2's frame S).** The [r1] row reads "e₂f₂ ≥ 4 (both ℓ ≥ 2
+AND d_r ≥ 2 — first live n = 24)"; its parenthetical pins the row's
+reading to the μ₂ ≥ 3 box family, under which it stays literally
+accurate — frame S's members sit at μ₂ = 2, and no μ₂ ≥ 3 member at
+e₂ ≥ 2 is on record. Appended citation, scoped **μ₂ ≤ 2 trichotomy
+grade**: PE2's **frame S** (p = 3, (e₂,f₂) = (2,2), u₂ = 5; η ≠ 1
+twist-trivial but wrap-live) carries the first e₂f₂ = 4 machine
+members, at μ₂ = 2, n = 16: RAM {(8,2)} FORCED (dv₂ = 41 via the
+b-odd Φ′-monomial) and integer-λ₂ menu 2/2 ({(4,4)}) —
+`hetow_pe2_fresh.py` artifacts @ 67cbab2. Verified against those
+artifacts before this append: the runner's G4 design row pins
+frame S at μ₂ = 2, n = 16, T₂ = 20; both G4 job constructors call
+`member(cS, 2, ·)` (the 2 is μ₂); the committed output scores
+G4-RAM {(8,2)} (1 member, dual routes agree) and G4-INT {(4,4)}
+(2 members, dual routes agree) inside the sealed menu
+{{(8,2)},{(4,4)},{(4,2),(4,2)}}, run total 0 violations. The row's
+μ₂ ≥ 3 face (first live n = 24) has no machine contact and stays on
+the NOT-exercised list.
