@@ -34,8 +34,8 @@ STATUS TABLE (updated per section as composed):
 | (2) | LEMMA GENTOW5-C ((SLOT_i) for the tower ladder) | PROVED at annex-template grade (S2.3) |
 | (2) | LEMMA GENTOW5-D (Step-0 carry monotonicity is level-agnostic) | PROVED (S2.4) |
 | (2) | THEOREM GENTOW5-B (general-depth composition) | PROVED with named pins (S3) |
-| (2) | depth-4 witness n = 32 q = 2 | constructed; verdict PENDING seal run (S4) |
-| battery | gentow5_checks.py | PENDING (sealed, verdict by second commit) (S5) |
+| (2) | depth-4 witness n = 32 q = 2 | GREEN: ladder (16,40,84,170,341) exact, resultant + PARI routes (S4.3) |
+| battery | gentow5_checks.py | GREEN 92 checks / 0 violations, 5/5 teeth-and-flags as predicted (S5) |
 
 ## S0. SETTING (one-pass restate; GENTOW-1 S0 + HE7-2' names)
 
@@ -680,17 +680,130 @@ e = 32, f = 1 (RAM leaf at the odd top height). Machine forms:
   and the single-(e = 32)-factor read is refuted without PARI. The
   gcd != 1 proviso is machine-load-bearing at depth 4.
 
-### S4.3 Run record (VERDICT — appended from committed artifacts
-### after the sealed run; PENDING at seal time)
+### S4.3 Run record (VERDICT — appended from the committed
+### artifacts after the sealed run)
 
-**PENDING.** Nothing here is filled before the sealed run per the
-two-commit discipline; the verdict paragraph is appended verbatim
-from the committed output artifacts in the second commit.
+**GREEN on both routes.** Exact-integer route (P-B4, artifact
+`gentow5_output_exact.txt`): v2(Res(f32, g)) = (16, 40, 84, 170,
+341) for g = (x, Phi_1, Phi_2, Phi_3, Phi_4) and v2(Res(Phi_4, g)) =
+(8, 20, 42, 85) — EXACT at the predicted rungs. PARI route (P-C,
+artifact `gentow5_output_full.txt`): factorpadic(f32, 2) = one
+degree-32 factor; nfinit([f32,[2]]) + idealprimedec = one prime with
+(e, f) = (32, 1); nfeltval ladder [16, 40, 84, 170, 341] EXACT.
+Polygon reads (P-B3): 10 polygons one-sided with on-chord support
+exactly the char-2 binomial spots, pin tables printed in the
+artifacts. T-B1 fired (drain collapse exact + `C4 nfactors=2
+degs=[8, 24]`). **f32 = Phi_4^2 - 2^16 Phi_3 is the first depth-4
+contact anywhere in the program: a degree-32, e = 32 witness whose
+four-rung intermediate ladder is exact on two independent routes.**
 
 ## S5. MACHINE LEG (gentow5_checks.py, two-commit seal)
 
-(to be filled from committed artifacts)
+INSTRUMENT: `verification/openmath/gentow5_checks.py`, sealed at
+commit 4b279a7 (predictions P-A1..A4, T-A1W/T-A2W/T-A4W, P-B1..B4,
+T-B1, P-C1..C4 in the docstring BEFORE the first run; the T-B1 drain
+factorization and the A-row residual arithmetic were hand-derived
+pre-seal and disclosed in S4.2/S1.2). Run 1: 85/86 — the single flag
+was an instrument-wiring defect in T-A1W's survivor comparison (the
+predicted survivor (j=2, slotmin 10) WAS in the alive list; the check
+read the first list entry — the wrong-height refine also drags the
+j = 0, 1 coordinates below their event pins, which is additional
+tooth-firing). Repaired + disclosed in the docstring (committed
+before re-run); no prediction changed; no reader/kill logic touched.
+UNIT NOTE (disclosed): the f32@* and Phi4@Phi3 polygon rows print one
+dv-scale above the canonical N_j normalization; one-sidedness and
+on-chord support are affine-invariant.
+
+VERDICT RUN (exact leg, artifact `gentow5_output_exact.txt`):
+
+    GREEN — 86 checks, 0 violations, exit 0.
+    * P-A1/A2/A3 mu2 = 3 KILLS: all three pins die at all three
+      frames (q = 2; q = 3 char-3; K2 = F4 two-flavor lift) — the
+      FIRST mu2 = 3 pointwise re-division transports at the composed
+      key anywhere in the program (GN-REFINE3 one level up).
+    * P-A4 live-twist mu2 = 2 kill: the vartheta_2-corrected member
+      dies; T-A4W THE CONVENTION TOOTH FIRED: the naive-digit twin
+      keeps its pin at 22 exactly — LEMMA GENTOW5-A1's fixed-unit
+      dictionary is machine-load-bearing, not decorative.
+    * T-A1W (wrong height) and T-A2W (wrong digit, char 3, surviving
+      pin 33 exactly) FIRED as predicted.
+    * P-B1/B2: floor chain tight (u = 5, 21, 85, 341), recipe side
+      heights (10, 42, 170) = (E2, E3, E4) and top event 341 exact.
+    * P-B3: 10 polygons (Phi2/Phi3/Phi4/f32 at every lower key)
+      one-sided with on-chord support EXACTLY the char-2 binomial
+      spots {0, L} — Cor 6.4's display verified at depth 4, incl.
+      the pin tables printed in the artifact.
+    * P-B4 THE RESULTANT LADDERS: v2(Res(f32, ·)) =
+      (16, 40, 84, 170, 341) and v2(Res(Phi4, ·)) = (8, 20, 42, 85)
+      EXACT — the depth-4 witness by the PARI-free integer route.
+    * T-B1 FIRED: Phi3 | f32m exactly (remainder 0, resultant 0) —
+      the even-height-at-node mutant collapses into the drain.
+
+PARI leg (detached; verdict from the committed artifact
+`gentow5_output_full.txt`, md5 839a8660…; runner-as-run md5
+5fa684c7…; exact-leg artifact md5 dc499a49…):
+
+**GREEN — full run 92 checks, 0 violations** (86 exact + 6 PARI;
+`grep -c VIOLATION` = 0). PARI lines verbatim from the artifact:
+`C1 nfactors=1 deg1=32` (P-C1: f32 irreducible over Q_2 at degree
+32); `C2 nprimes=1 e=32 f=1` and `C2 ladder=[16, 40, 84, 170, 341]`
+(P-C2: the four-rung intermediate ladder EXACT on the independent
+nfeltval route — matching P-B4's integer-resultant route rung for
+rung); `C3a nfactors=1 deg=4 / e=4 f=1` and `C3b nfactors=1 deg=4 /
+e=4 f=1` (P-C3: the refined keys of rows A-1 and A-2/A-4 keep
+carrier at q = 2 and q = 3); `C4 nfactors=2 degs=[8, 24]` (P-C4:
+the node-height mutant is NOT a single factor — the degree-8 piece
+is the drain factor Phi_3 that T-B1's exact division already
+exhibited). The run also reproduced the 86 exact checks unchanged.
 
 ## S6. HONEST RESIDUE + GRADE BOX
 
-(to be filled)
+**What this note PROVES (grade 0/2, hostile arc owed):**
+* TARGET 1: THEOREM GENTOW5-A + LEMMAS GENTOW5-A0/A1 — LEMMA
+  GENTOW-2 layer 1 at GENERAL mu2. GENTOW-BOX-1 is RETIRED as a
+  mathematical box: the "composed graded frame" is gr(leaf field)
+  (a graded division ring — elementary) + GENHN-2' (accepted) + the
+  fixed-unit dictionary; no W-9-analogue weld face. Residue: this
+  note's own arc grade; and the mu2 >= 3 machine rows are three
+  constructed frames, not a sweep (GENTOW-BOX-2's coverage
+  discipline applies to them verbatim).
+* TARGET 2: DEF GENTOW5-1 + LEMMAS GENTOW5-C/D + THEOREM GENTOW5-B —
+  the level-r ladder grammar and the general-depth composition
+  theorem, with the depth-4 witness EXACT on two independent routes.
+
+**Named conditionality stack (per consumer):**
+* Accepted 2/2: LEMMA GENHN-T(b)'(i)/(ii)/(iii), GENHN-2/2', the S4
+  coherent normalizers, the [r1] node floor (= floor chain rung 1).
+* Cited at verified numbering: FGMN [Q1]-[Q10] via GENTOW2_PROOF S3
+  (Cor 6.4's level quantifier "for any 1 <= i <= r" carries the
+  one-sidedness at every depth; faithfulness audit GENTOW2 S6).
+* Grade 0/2 (same campaign, hostile arcs owed): GENTOW-1, GENTOW-2
+  layers 2-3, GENTOW2-A/B, THIS NOTE.
+* ANNEX GRADE (post-ratification, unpassed): HE7 ANNEX R's
+  R1-a/R1-b/R1-c ARGUMENT — consumed at rungs i >= 3 through LEMMA
+  GENTOW5-C (reproved tower-side, but the argument's precedent and
+  its only hostile-adjacent scrutiny live in the annex). THE GRADE
+  CAP FOR DEPTH >= 3 CLAIMS IS THIS PIN plus this note's arc.
+* Machine coverage (GENTOW5-BOX-A): CHECK-A exercises mu2 in {2,3},
+  q in {2,3}, K2 in {F2, F3, F4}, e2 in {1,2}, f2 in {1,2}, d = 1,
+  depth 2; CHECK-B exercises ONE depth-4 chain (all-(2,1) stages,
+  q = 2, minimal heights). The proofs are uniform in the stage data;
+  the coverage gap is machine-side, named here. The vartheta
+  direction (theta vs theta^{-1}) is machine-tested only up to
+  self-inverse units (F3; disclosed at T-A4W) — an F5-frame or
+  F4-live-twist row would pin it; proof-side the direction is
+  S1.2's derivation.
+
+**What stays OPEN (not claimed):** tower COUNT laws at depth >= 3
+(no ledger, no measurement); partial inner sides ([GENHN-TOW-1] item
+(4)) at every depth; the genre-general faithfulness geography (item
+(3)); sigma laws behind [GENHN-HE(mu >= 3)] wherever the top problem
+has mu >= 3 — none of these is touched by GENTOW5-B, which is a
+carrier/read/budget/refine theorem, not a density display.
+
+**Consumption path (not executed here):** GENTOW1_PROOF's S3 grade
+note and S6 GENTOW-BOX-1, GENHN_PROOF's GENHN-BOX-2 and
+[GENHN-TOW-1] item (6) depth->=4 sentence, and GENTOW2_PROOF S7's
+depth->=4 bullet are candidates for the orchestrator's dated
+consumption updates after this note's own hostile arc; the four
+source notes are byte-untouched by this unit.

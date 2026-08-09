@@ -1,0 +1,13 @@
+== CHECK-A: composed-key refine kills (THEOREM GENTOW5-A) ==
+== CHECK-B: depth-4 minimal chain, q = 2 ==
+   Phi2@Phi1: pins [10, 'inf', 0]
+   Phi3@Phi2: pins [42, 'inf', 0]
+   Phi3@Phi1: pins [20, 'inf', 14, 'inf', 0]
+   Phi4@Phi3: pins [170, 'inf', 0]
+   Phi4@Phi2: pins [84, 'inf', 50, 'inf', 0]
+   Phi4@Phi1: pins [40, 'inf', 32, 'inf', 24, 24, 18, 'inf', 0]
+   f32@Phi4: pins [682, 'inf', 0]
+   f32@Phi3: pins [340, 'inf', 186, 'inf', 0]
+   f32@Phi2: pins [168, 'inf', 128, 'inf', 92, 80, 58, 'inf', 0]
+   f32@Phi1: pins [80, 80, 76, 80, 68, 68, 60, 64, 44, 52, 36, 46, 28, 28, 22, 'inf', 0]
+== VERDICT: 86 checks passed, 0 violations ==
