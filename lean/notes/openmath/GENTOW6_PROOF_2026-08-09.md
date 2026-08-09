@@ -278,7 +278,158 @@ stays named as GENTOW6-BOX-2 (S5). The box's BUDGET half is closed
 by the display above; the LEDGER half was never a partial-side
 novelty.
 
-## S3. THEOREM GENTOW-6.3 (the attainment certificate) — TBD
+## S3. THEOREM GENTOW-6.3 (the attainment certificate — GENTOW3-BOX-1
+## made genre-general at mu2 = 2)
+
+**Setting (GENTOW-3 S0/S2, restated).** Full-side tower genre;
+Phi2 = Phi'^{e2f2} − Sum_{t in T} chat_t·nhat(u2(f2−t))·Phi'^{e2t},
+T := {t < f2 : chat_t != 0} (nonempty: Phi2 irreducible needs the
+t = 0 term, 0 in T), nhat(m) = pi^{a_m} x^{i_m} with
+e1·a_m + i_m·h = m, 0 <= i_m < e1. Write i_t := i_{u2(f2−t)},
+a_t := a_{u2(f2−t)}, and t* := max T. X-FREE genre ⟺ i_t = 0 for
+every t in T (GENTOW-3's definition). delta = u2 − e2D'h,
+THETA_j = (mu2−j)E2 + delta. The self-shadow object: f = Phi2^{mu2},
+honest composed read C_j = 0 (DRAIN); shadow read ShC_j from the
+K2-division of F = the level-1 development of Phi2^{mu2} over
+R = Ô[x]/(Phi'). THEOREM GENTOW-3(i) floors every discrepancy at
+THETA_j; clause (iv)'s ATTAINMENT rested on a per-genre certificate
+(machine-checked at 4 families) — GENTOW3-BOX-1. Scope here:
+**mu2 = 2** (every first-live tower shape; GENTOW-BOX-2's
+geography) — the mu2 >= 3 display is written where it is uniform
+and boxed where it is not (S5).
+
+> **THEOREM GENTOW-6.3 (attainment at mu2 = 2, every genre).** For
+> f = Phi2^2 at any tower genre:
+>
+> (a) [SOURCE CLASSIFICATION] the height-THETA graded layer of the
+> discrepancy (ShC_j − C_j over the composed grid) is a sum of
+> SINGLE-Phi'-extraction branches, one per x-overflowing lift pair:
+> the products (chat_t nhat_t Phi'^{e2t})·(chat_{t'} nhat_{t'}
+> Phi'^{e2t'}), (t, t') in T^2, with i_t + i_{t'} >= D'; a pair's
+> branches enter at two-variable position (x^{i_t+i_{t'}}, Y^{e2(t+t')}),
+> are extracted to Y-exponent e2(t+t') + 1, and every subsequent
+> division/recarry step emits terms of Y-exponent LOWERED by
+> e2f2 − e2s >= e2(f2 − t*) >= e2 > 0 (s in T) at the same weight.
+> Multi-extraction branches sit at weight >= THETA + delta; tail
+> (non-extraction) routes are shared by both reads and cancel.
+>
+> (b) [CERT-TOP: the top-lift certificate] if 2·i_{t*} >= D', the
+> composed slot at two-variable position (x^{2i_{t*}−D'}, Y^{2e2t*+1})
+> — composed coordinate j* = floor((2e2t*+1)/(e2f2)), slot
+> b* = (2e2t*+1) mod e2f2, a* = 2i_{t*} − D' — receives EXACTLY ONE
+> height-THETA branch, of digit
+>
+>     (chat_{t*})^2 · pi^{2a_{t*}} · (wrap unit) ,   v = 2a_{t*},
+>
+> nonzero in the field K2: the shadow diverges at height
+> THETA_{j*} = (2−j*)E2 + delta at coordinate j*, exactly on the
+> floor. In particular GENTOW-3(iv)'s certificate holds
+> UNCONDITIONALLY at every genre with 2i_{t*} >= D'.
+>
+> (c) [NO-OVERFLOW EXACTNESS] if i_t + i_{t'} < D' for every pair
+> (t, t') in T^2, then the level-1 development of Phi2^2 equals
+> K2(x, Y)^2 term by term on the grid (no x-carry ever fires), the
+> shadow division is the honest division, and ShC_j = C_j = 0: the
+> key-power witness is shadow-EXACT.
+>
+> (d) [REGIME 3] genres with some i_t >= 1 (non-x-free) and no
+> overflowing pair exist (witness FAM-E, S4: (e1,f1,mu1;h) =
+> (3,1,4;1)/Q2, e2 = 2, f2 = 1, u2 = 7, i_0 = 1, 2i_0 = 2 < 3 = D'),
+> and there the geography's failure clause survives through ENTRY-
+> driven overflows: a displayed member (S4's E-ENTRY row: an entry
+> digit at a slot with a + i_{t} >= D') has shadow read != honest
+> read at a displayed height >= THETA_j, both reads decided,
+> PARI-adjudicated. Attainment AT EXACTLY THETA via entry drivers,
+> and the general classification of which regime-3 members diverge,
+> is NOT claimed as a theorem — GENTOW6-BOX-3 (S5).
+>
+> *Proof.* (a) GENTOW-3 Step 2's ledger already classifies
+> discrepancy content as x-carry Phi'-branch routes, k extractions
+> costing k·delta above the weight-2E2 source layer; at height
+> THETA = 2E2 + delta exactly, k = 1 and every non-extraction step
+> is weight-exact. The weight-2E2 monomials of F with x-degree >= D'
+> are exactly the overflowing lift-pair products: expanding
+> K2(x,Y)^2 multinomially at mu2 = 2, the terms are Y^{2e2f2}
+> (x-free), the k = 1 terms −2chat_t nhat_t Y^{e2f2+e2t} (x-degree
+> i_t < e1 <= D': never overflow), and the pair terms
+> chat_t chat_{t'} nhat_t nhat_{t'} Y^{e2(t+t')} of x-degree
+> i_t + i_{t'}. A single extraction rewrites x^{I} (D' <= I < 2D',
+> since i < e1 <= D' each) as x^{I−D'}·Phi' + x^{I−D'}·tail with
+> the Phi'-part in-grid (I − D' < D'), raising the Y(=Phi')-
+> exponent by exactly 1. Subsequent processing of a height-THETA
+> branch keeps weight (else it leaves the layer): the shadow-side
+> division steps subtract quotient·K2, emitting lift terms with
+> Y-change −e2f2 + e2s (s in T); the honest-side re-expansion of
+> Phi'-exponents >= e2f2 recarries Phi'^{e2f2} = Phi2 + lifts with
+> the same Y-change on lift parts and a terminal Phi2-part
+> (coordinate j+1, Y-change −e2f2). Every step's Y-change is
+> <= −e2(f2 − t*) <= −e2 < 0 since s <= t* < f2. Secondary
+> extraction inside a tail factor would add a second Phi'
+> (weight >= THETA + delta: out of the layer) except when the tail
+> step was weight-exact — and then it is still a k=1 branch counted
+> above with the same Y-bookkeeping (+1 total from its one
+> extraction). Tail-only routes: identical in the two reads (the
+> shadow's mod-Phi' reduction keeps exactly the tail route),
+> difference zero. ∎(a)
+> (b) The certificate slot has Y-exponent 2e2t* + 1 = B* + 1 with
+> B* = 2e2t* the MAXIMAL Y-exponent among pair terms (t + t' <=
+> 2t*), attained only by (t,t') = (t*,t*) (t, t' <= t* forces
+> equality). A height-THETA branch reaching Y-exponent B* + 1
+> starts at pair Y-exponent e2(t+t') and reaches e2(t+t') + 1 −
+> (nonneg. multiple of the positive step deficits) <= B* + 1, with
+> equality iff zero steps and t + t' = 2t*: the (t*,t*) direct
+> branch alone. Its digit: the pair coefficient (chat_{t*})^2
+> (multinomial coefficient 1: the diagonal), times
+> nhat_{t*}^2 = pi^{2a_{t*}} x^{2i_{t*}}, one extraction
+> coefficient 1 (I = 2i_{t*} < 2D': the single x^{D'}-rewrite,
+> Phi'-branch coefficient exactly 1), times the coherent
+> normalizer's wrap unit. A product of units in K2^x: nonzero — no
+> binomial coefficient, no characteristic condition, no zero
+> divisors. Coordinate/height: weight 2E2 + delta at coordinate j*
+> reads at coefficient height 2E2 + delta − j*E2 = THETA_{j*}. The
+> x-slot a* = 2i_{t*} − D' < D' and no other height-THETA branch
+> lands at (a*, Y^{B*+1}) by the uniqueness just shown (branches
+> at the same Y-exponent but other x-slots differ in position, not
+> height). ∎(b)
+> (c) With no overflowing pair, every product of grid monomials in
+> the expansion of Phi2^2 keeps x-degree < D' (pair x-degrees
+> i_t + i_{t'} < D'; k=1 terms i_t < D'; the leading term x-free),
+> so dev(Phi2^2) = K2(x,Y)^2 with in-grid coefficients and the
+> R-division of F by K2 is the literal square: Ĝ_2 = 1, Ĝ_1 = Ĝ_0
+> = 0 = ShC_j = C_j. ∎(c)
+> (d) is a construction + machine adjudication, not a theorem:
+> S4's FAM-E rows. ∎
+>
+> **Consequences for the geography (GENTOW-3's trichotomy is
+> really a QUADRICHOTOMY at mu2 = 2).** Per genre: (1) x-free ⟹
+> faithful at every height (GENTOW-3(iii)); (2) 2i_{t*} >= D' ⟹
+> the floor THETA is attained by the key power itself — the
+> divergence is generic at leaf depth (GENTOW-3(iv), now proved,
+> no per-genre certificate left); (3) non-x-free with some
+> overflowing pair but 2i_{t*} < D': attainment content exists at
+> the maximal overflowing pair's slots but its digit is the
+> DISPLAYED pair sum Sum_{t+t'=s, i_t+i_{t'}=I} m_{tt'} chat_t
+> chat_{t'}·(units) (m_{tt'} = 2 − delta_{tt'}) — vanishing is a
+> genre arithmetic condition (char-2 kills the off-diagonal m = 2
+> terms one pi-depth down), NOT decided here beyond the display;
+> (4) non-x-free, no overflowing pair ⟹ key-power shadow-EXACT
+> and only entry-driven divergence remains (regime 3). At f2 = 1
+> (T = {0}, t* = 0) regimes (2)/(3) collapse: attainment ⟺
+> 2i_0 >= D', with digit chat_0^2 pi^{2a_0}·unit — the four
+> GENTOW-3 battery families (A5/A7/B/C) all sit in regime (2),
+> which is the ALGEBRAIC REASON the machine never saw the
+> certificate vanish: their certificate digit is a unit square
+> times pi^{2a}, and a field kills no unit.
+>
+> **Machine face of (b) at the four families (predicted, verified
+> S4):** A5: (chat,a,i) = (1,2,1), digit 16Phi' (v=4) at (j*,b*) =
+> (0,1), THETA_0 = 21. A7: (1,3,1) ⟹ 64Phi' at 31. C: (1,3,1) ⟹
+> 64Phi' at 43 (E2 = 21). B (f2 = 2, t* = 1, chat_1 = 1, a_1 = 1,
+> i_1 = 1, 2i_1 = 2 = D'): digit 4Phi' (v = 1·2 = 2) at coordinate
+> j* = floor(3/2) = 1, slot b* = 1, THETA_1 = 7 — exactly the
+> battery's ShC_1 = 4Phi' + 8x pin (the 8x is a downstream chain
+> term at the same height, different slot; the certificate slot
+> digit is the predicted 4).
 
 ## S4. MACHINE LEG — TBD
 
