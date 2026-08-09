@@ -1,0 +1,212 @@
+PASS TK0 (3, 2, 1, 0) <- L(2, 1, 0)  brute=2 formula=2
+PASS TK0 (3, 2, 1, 0) <- L(2, 1, 1)  brute=0 formula=0
+PASS TK0 (3, 2, 1, 0) <- L(4, 1, 0)  brute=0 formula=0
+PASS TK0 (3, 2, 1, 0) <- L(4, 1, 1)  brute=0 formula=0
+PASS TK0 (3, 2, 1, 0) <- L(1, 2, 1)  brute=0 formula=0
+PASS TK0 (3, 2, 1, 0) <- L(1, 3, 1)  brute=0 formula=0
+PASS TK0 (3, 2, 1, 0) <- L(2, 2, 1)  brute=0 formula=0
+PASS TK0 (3, 2, 1, 1) <- L(2, 1, 0)  brute=0 formula=0
+PASS TK0 (3, 2, 1, 1) <- L(2, 1, 1)  brute=2 formula=2
+PASS TK0 (3, 2, 1, 1) <- L(4, 1, 0)  brute=0 formula=0
+PASS TK0 (3, 2, 1, 1) <- L(4, 1, 1)  brute=0 formula=0
+PASS TK0 (3, 2, 1, 1) <- L(1, 2, 1)  brute=0 formula=0
+PASS TK0 (3, 2, 1, 1) <- L(1, 3, 1)  brute=0 formula=0
+PASS TK0 (3, 2, 1, 1) <- L(2, 2, 1)  brute=0 formula=0
+PASS TK0 (3, 1, 2, 0) <- L(2, 1, 0)  brute=0 formula=0
+PASS TK0 (3, 1, 2, 0) <- L(2, 1, 1)  brute=0 formula=0
+PASS TK0 (3, 1, 2, 0) <- L(4, 1, 0)  brute=0 formula=0
+PASS TK0 (3, 1, 2, 0) <- L(4, 1, 1)  brute=0 formula=0
+PASS TK0 (3, 1, 2, 0) <- L(1, 2, 1)  brute=2 formula=2
+PASS TK0 (3, 1, 2, 0) <- L(1, 3, 1)  brute=0 formula=0
+PASS TK0 (3, 1, 2, 0) <- L(2, 2, 1)  brute=0 formula=0
+PASS TK0 (3, 1, 3, 0) <- L(2, 1, 0)  brute=0 formula=0
+PASS TK0 (3, 1, 3, 0) <- L(2, 1, 1)  brute=0 formula=0
+PASS TK0 (3, 1, 3, 0) <- L(4, 1, 0)  brute=0 formula=0
+PASS TK0 (3, 1, 3, 0) <- L(4, 1, 1)  brute=0 formula=0
+PASS TK0 (3, 1, 3, 0) <- L(1, 2, 1)  brute=0 formula=0
+PASS TK0 (3, 1, 3, 0) <- L(1, 3, 1)  brute=3 formula=3
+PASS TK0 (3, 1, 3, 0) <- L(2, 2, 1)  brute=0 formula=0
+PASS TK0 (3, 2, 2, 0) <- L(2, 1, 0)  brute=2 formula=2
+PASS TK0 (3, 2, 2, 0) <- L(2, 1, 1)  brute=2 formula=2
+PASS TK0 (3, 2, 2, 0) <- L(4, 1, 0)  brute=0 formula=0
+PASS TK0 (3, 2, 2, 0) <- L(4, 1, 1)  brute=0 formula=0
+PASS TK0 (3, 2, 2, 0) <- L(1, 2, 1)  brute=2 formula=2
+PASS TK0 (3, 2, 2, 0) <- L(1, 3, 1)  brute=0 formula=0
+PASS TK0 (3, 2, 2, 0) <- L(2, 2, 1)  brute=0 formula=0
+PASS TK0 (3, 2, 2, 1) <- L(2, 1, 0)  brute=0 formula=0
+PASS TK0 (3, 2, 2, 1) <- L(2, 1, 1)  brute=0 formula=0
+PASS TK0 (3, 2, 2, 1) <- L(4, 1, 0)  brute=0 formula=0
+PASS TK0 (3, 2, 2, 1) <- L(4, 1, 1)  brute=0 formula=0
+PASS TK0 (3, 2, 2, 1) <- L(1, 2, 1)  brute=2 formula=2
+PASS TK0 (3, 2, 2, 1) <- L(1, 3, 1)  brute=0 formula=0
+PASS TK0 (3, 2, 2, 1) <- L(2, 2, 1)  brute=4 formula=4
+PASS TK0 (3, 4, 1, 0) <- L(2, 1, 0)  brute=2 formula=2
+PASS TK0 (3, 4, 1, 0) <- L(2, 1, 1)  brute=0 formula=0
+PASS TK0 (3, 4, 1, 0) <- L(4, 1, 0)  brute=2 formula=2
+PASS TK0 (3, 4, 1, 0) <- L(4, 1, 1)  brute=0 formula=0
+PASS TK0 (3, 4, 1, 0) <- L(1, 2, 1)  brute=0 formula=0
+PASS TK0 (3, 4, 1, 0) <- L(1, 3, 1)  brute=0 formula=0
+PASS TK0 (3, 4, 1, 0) <- L(2, 2, 1)  brute=0 formula=0
+PASS TK0 (5, 2, 1, 0) <- L(2, 1, 0)  brute=2 formula=2
+PASS TK0 (5, 2, 1, 0) <- L(2, 1, 1)  brute=0 formula=0
+PASS TK0 (5, 2, 1, 0) <- L(3, 1, 0)  brute=0 formula=0
+PASS TK0 (5, 2, 1, 0) <- L(4, 1, 0)  brute=0 formula=0
+PASS TK0 (5, 2, 1, 0) <- L(4, 1, 1)  brute=0 formula=0
+PASS TK0 (5, 2, 1, 0) <- L(1, 2, 1)  brute=0 formula=0
+PASS TK0 (5, 2, 1, 0) <- L(2, 2, 1)  brute=0 formula=0
+PASS TK0 (5, 2, 1, 1) <- L(2, 1, 0)  brute=0 formula=0
+PASS TK0 (5, 2, 1, 1) <- L(2, 1, 1)  brute=2 formula=2
+PASS TK0 (5, 2, 1, 1) <- L(3, 1, 0)  brute=0 formula=0
+PASS TK0 (5, 2, 1, 1) <- L(4, 1, 0)  brute=0 formula=0
+PASS TK0 (5, 2, 1, 1) <- L(4, 1, 1)  brute=0 formula=0
+PASS TK0 (5, 2, 1, 1) <- L(1, 2, 1)  brute=0 formula=0
+PASS TK0 (5, 2, 1, 1) <- L(2, 2, 1)  brute=0 formula=0
+PASS TK0 (5, 3, 1, 0) <- L(2, 1, 0)  brute=0 formula=0
+PASS TK0 (5, 3, 1, 0) <- L(2, 1, 1)  brute=0 formula=0
+PASS TK0 (5, 3, 1, 0) <- L(3, 1, 0)  brute=1 formula=1
+PASS TK0 (5, 3, 1, 0) <- L(4, 1, 0)  brute=0 formula=0
+PASS TK0 (5, 3, 1, 0) <- L(4, 1, 1)  brute=0 formula=0
+PASS TK0 (5, 3, 1, 0) <- L(1, 2, 1)  brute=0 formula=0
+PASS TK0 (5, 3, 1, 0) <- L(2, 2, 1)  brute=0 formula=0
+PASS TK0 (5, 1, 2, 0) <- L(2, 1, 0)  brute=0 formula=0
+PASS TK0 (5, 1, 2, 0) <- L(2, 1, 1)  brute=0 formula=0
+PASS TK0 (5, 1, 2, 0) <- L(3, 1, 0)  brute=0 formula=0
+PASS TK0 (5, 1, 2, 0) <- L(4, 1, 0)  brute=0 formula=0
+PASS TK0 (5, 1, 2, 0) <- L(4, 1, 1)  brute=0 formula=0
+PASS TK0 (5, 1, 2, 0) <- L(1, 2, 1)  brute=2 formula=2
+PASS TK0 (5, 1, 2, 0) <- L(2, 2, 1)  brute=0 formula=0
+PASS TK0 (7, 3, 1, 0) <- L(2, 1, 0)  brute=0 formula=0
+PASS TK0 (7, 3, 1, 0) <- L(2, 1, 1)  brute=0 formula=0
+PASS TK0 (7, 3, 1, 0) <- L(3, 1, 0)  brute=3 formula=3
+PASS TK0 (7, 3, 1, 0) <- L(3, 1, 1)  brute=0 formula=0
+PASS TK0 (7, 3, 1, 0) <- L(3, 1, 2)  brute=0 formula=0
+PASS TK0 (7, 3, 1, 0) <- L(4, 1, 0)  brute=0 formula=0
+PASS TK0 (7, 3, 1, 0) <- L(4, 1, 1)  brute=0 formula=0
+PASS TK0 (7, 3, 1, 0) <- L(1, 2, 1)  brute=0 formula=0
+PASS TK0 (7, 3, 1, 0) <- L(2, 2, 1)  brute=0 formula=0
+PASS TK0 (7, 3, 1, 1) <- L(2, 1, 0)  brute=0 formula=0
+PASS TK0 (7, 3, 1, 1) <- L(2, 1, 1)  brute=0 formula=0
+PASS TK0 (7, 3, 1, 1) <- L(3, 1, 0)  brute=0 formula=0
+PASS TK0 (7, 3, 1, 1) <- L(3, 1, 1)  brute=3 formula=3
+PASS TK0 (7, 3, 1, 1) <- L(3, 1, 2)  brute=0 formula=0
+PASS TK0 (7, 3, 1, 1) <- L(4, 1, 0)  brute=0 formula=0
+PASS TK0 (7, 3, 1, 1) <- L(4, 1, 1)  brute=0 formula=0
+PASS TK0 (7, 3, 1, 1) <- L(1, 2, 1)  brute=0 formula=0
+PASS TK0 (7, 3, 1, 1) <- L(2, 2, 1)  brute=0 formula=0
+PASS TK0 (7, 3, 1, 2) <- L(2, 1, 0)  brute=0 formula=0
+PASS TK0 (7, 3, 1, 2) <- L(2, 1, 1)  brute=0 formula=0
+PASS TK0 (7, 3, 1, 2) <- L(3, 1, 0)  brute=0 formula=0
+PASS TK0 (7, 3, 1, 2) <- L(3, 1, 1)  brute=0 formula=0
+PASS TK0 (7, 3, 1, 2) <- L(3, 1, 2)  brute=3 formula=3
+PASS TK0 (7, 3, 1, 2) <- L(4, 1, 0)  brute=0 formula=0
+PASS TK0 (7, 3, 1, 2) <- L(4, 1, 1)  brute=0 formula=0
+PASS TK0 (7, 3, 1, 2) <- L(1, 2, 1)  brute=0 formula=0
+PASS TK0 (7, 3, 1, 2) <- L(2, 2, 1)  brute=0 formula=0
+PASS TK0 (7, 1, 2, 0) <- L(2, 1, 0)  brute=0 formula=0
+PASS TK0 (7, 1, 2, 0) <- L(2, 1, 1)  brute=0 formula=0
+PASS TK0 (7, 1, 2, 0) <- L(3, 1, 0)  brute=0 formula=0
+PASS TK0 (7, 1, 2, 0) <- L(3, 1, 1)  brute=0 formula=0
+PASS TK0 (7, 1, 2, 0) <- L(3, 1, 2)  brute=0 formula=0
+PASS TK0 (7, 1, 2, 0) <- L(4, 1, 0)  brute=0 formula=0
+PASS TK0 (7, 1, 2, 0) <- L(4, 1, 1)  brute=0 formula=0
+PASS TK0 (7, 1, 2, 0) <- L(1, 2, 1)  brute=2 formula=2
+PASS TK0 (7, 1, 2, 0) <- L(2, 2, 1)  brute=0 formula=0
+PASS TK0 (7, 2, 1, 0) <- L(2, 1, 0)  brute=2 formula=2
+PASS TK0 (7, 2, 1, 0) <- L(2, 1, 1)  brute=0 formula=0
+PASS TK0 (7, 2, 1, 0) <- L(3, 1, 0)  brute=0 formula=0
+PASS TK0 (7, 2, 1, 0) <- L(3, 1, 1)  brute=0 formula=0
+PASS TK0 (7, 2, 1, 0) <- L(3, 1, 2)  brute=0 formula=0
+PASS TK0 (7, 2, 1, 0) <- L(4, 1, 0)  brute=0 formula=0
+PASS TK0 (7, 2, 1, 0) <- L(4, 1, 1)  brute=0 formula=0
+PASS TK0 (7, 2, 1, 0) <- L(1, 2, 1)  brute=0 formula=0
+PASS TK0 (7, 2, 1, 0) <- L(2, 2, 1)  brute=0 formula=0
+TOOTH T1 bites: True (26 mismatches)
+PASS TKQ mean n=2 (3, 2, 1, 0)  mc=0.9964 exact=1.0000 se=0.0026
+PASS TKQ support {0,2} (3, 2, 1, 0)  {0: 75267, 2: 74733}
+PASS N3 mean n=3 (3, 2, 1, 0)  mc=0.9416 exact=0.9421 se=0.0026
+PASS LIM mean n=7 (3, 2, 1, 0)  mc=0.9329 lim=1.0000 band=0.0800
+PASS TKQ mean n=2 (3, 2, 1, 1)  mc=0.9971 exact=1.0000 se=0.0026
+PASS TKQ support {0,2} (3, 2, 1, 1)  {0: 75218, 2: 74782}
+PASS N3 mean n=3 (3, 2, 1, 1)  mc=0.9371 exact=0.9421 se=0.0026
+PASS LIM mean n=7 (3, 2, 1, 1)  mc=0.9332 lim=1.0000 band=0.0800
+PASS TKQ mean n=2 (3, 1, 2, 0)  mc=1.4989 exact=1.5000 se=0.0022
+PASS TKQ support {0,2} (3, 1, 2, 0)  {2: 112420, 0: 37580}
+PASS N3 mean n=3 (3, 1, 2, 0)  mc=1.4747 exact=1.4752 se=0.0035
+PASS LIM mean n=7 (3, 1, 2, 0)  mc=1.4105 lim=1.5000 band=0.1000
+PASS TKQ mean n=2 (3, 1, 3, 0)  mc=0.7502 exact=0.7500 se=0.0025
+PASS TKQ support {0,2} (3, 1, 3, 0)  {2: 56263, 0: 93737}
+PASS N3 mean n=3 (3, 1, 3, 0)  mc=1.6449 exact=1.6426 se=0.0027
+FAIL LIM mean n=7 (3, 1, 3, 0)  mc=1.6086 lim=1.5000 band=0.1000
+PASS TKQ mean n=2 (3, 2, 2, 0)  mc=2.0000 exact=2.0000 se=0.0000
+PASS TKQ support {0,2} (3, 2, 2, 0)  {2: 150000}
+PASS N3 mean n=3 (3, 2, 2, 0)  mc=1.8595 exact=1.8595 se=0.0038
+FAIL LIM mean n=7 (3, 2, 2, 0)  mc=1.8485 lim=2.0833 band=0.1233
+PASS TKQ mean n=2 (3, 2, 2, 1)  mc=1.4985 exact=1.5000 se=0.0022
+PASS TKQ support {0,2} (3, 2, 2, 1)  {2: 112387, 0: 37613}
+PASS N3 mean n=3 (3, 2, 2, 1)  mc=1.4822 exact=1.4752 se=0.0035
+FAIL LIM mean n=7 (3, 2, 2, 1)  mc=1.4740 lim=1.5833 band=0.1033
+PASS TKQ mean n=2 (3, 4, 1, 0)  mc=1.0001 exact=1.0000 se=0.0026
+PASS TKQ support {0,2} (3, 4, 1, 0)  {2: 75004, 0: 74996}
+PASS N3 mean n=3 (3, 4, 1, 0)  mc=0.9407 exact=0.9421 se=0.0026
+PASS LIM mean n=7 (3, 4, 1, 0)  mc=0.9562 lim=1.0278 band=0.0811
+PASS TKQ mean n=2 (5, 2, 1, 0)  mc=0.9934 exact=1.0000 se=0.0041
+PASS TKQ support {0,2} (5, 2, 1, 0)  {2: 29801, 0: 30199}
+PASS N3 mean n=3 (5, 2, 1, 0)  mc=0.9713 exact=0.9731 se=0.0041
+PASS LIM mean n=6 (5, 2, 1, 0)  mc=0.9747 lim=1.0000 band=0.0800
+PASS TKQ mean n=2 (5, 2, 1, 1)  mc=1.0090 exact=1.0000 se=0.0041
+PASS TKQ support {0,2} (5, 2, 1, 1)  {0: 29730, 2: 30270}
+PASS N3 mean n=3 (5, 2, 1, 1)  mc=0.9730 exact=0.9731 se=0.0041
+PASS LIM mean n=6 (5, 2, 1, 1)  mc=0.9774 lim=1.0000 band=0.0800
+PASS TKQ mean n=2 (5, 3, 1, 0)  mc=0.8345 exact=0.8333 se=0.0040
+PASS TKQ support {0,2} (5, 3, 1, 0)  {0: 34965, 2: 25035}
+PASS N3 mean n=3 (5, 3, 1, 0)  mc=0.8614 exact=0.8666 se=0.0033
+PASS LIM mean n=6 (5, 3, 1, 0)  mc=0.8632 lim=0.8667 band=0.0747
+PASS TKQ mean n=2 (5, 1, 2, 0)  mc=1.6651 exact=1.6667 se=0.0030
+PASS TKQ support {0,2} (5, 1, 2, 0)  {0: 10046, 2: 49954}
+PASS N3 mean n=3 (5, 1, 2, 0)  mc=1.6703 exact=1.6603 se=0.0057
+PASS LIM mean n=6 (5, 1, 2, 0)  mc=1.6325 lim=1.6667 band=0.1067
+PASS TKQ mean n=2 (7, 3, 1, 0)  mc=0.8832 exact=0.8750 se=0.0050
+PASS TKQ support {0,2} (7, 3, 1, 0)  {2: 17664, 0: 22336}
+PASS N3 mean n=3 (7, 3, 1, 0)  mc=0.8880 exact=0.8929 se=0.0044
+PASS LIM mean n=6 (7, 3, 1, 0)  mc=0.8936 lim=0.8929 band=0.0757
+PASS TKQ mean n=2 (7, 3, 1, 1)  mc=0.8724 exact=0.8750 se=0.0050
+PASS TKQ support {0,2} (7, 3, 1, 1)  {0: 22552, 2: 17448}
+PASS N3 mean n=3 (7, 3, 1, 1)  mc=0.8991 exact=0.8929 se=0.0044
+PASS LIM mean n=6 (7, 3, 1, 1)  mc=0.8912 lim=0.8929 band=0.0757
+PASS TKQ mean n=2 (7, 3, 1, 2)  mc=0.8780 exact=0.8750 se=0.0050
+PASS TKQ support {0,2} (7, 3, 1, 2)  {0: 22441, 2: 17559}
+PASS N3 mean n=3 (7, 3, 1, 2)  mc=0.8941 exact=0.8929 se=0.0044
+PASS LIM mean n=6 (7, 3, 1, 2)  mc=0.8886 lim=0.8929 band=0.0757
+PASS TKQ mean n=2 (7, 1, 2, 0)  mc=1.7491 exact=1.7500 se=0.0033
+PASS TKQ support {0,2} (7, 1, 2, 0)  {2: 34983, 0: 5017}
+PASS N3 mean n=3 (7, 1, 2, 0)  mc=1.7510 exact=1.7475 se=0.0070
+PASS LIM mean n=6 (7, 1, 2, 0)  mc=1.7417 lim=1.7500 band=0.1100
+PASS TKQ mean n=2 (7, 2, 1, 0)  mc=0.9999 exact=1.0000 se=0.0050
+PASS TKQ support {0,2} (7, 2, 1, 0)  {0: 20002, 2: 19998}
+PASS N3 mean n=3 (7, 2, 1, 0)  mc=0.9815 exact=0.9846 se=0.0050
+PASS LIM mean n=6 (7, 2, 1, 0)  mc=0.9794 lim=1.0000 band=0.0800
+PASS DIP down (3, 2, 1, 0)  E2-E3=0.0548 (pred 0.0579) sj=0.0037
+FAIL DIP recover (3, 2, 1, 0)  E7-E3=-0.0087 sj=0.0036
+PASS DIP down (3, 2, 1, 1)  E2-E3=0.0600 (pred 0.0579) sj=0.0037
+FAIL DIP recover (3, 2, 1, 1)  E7-E3=-0.0039 sj=0.0036
+PASS SPLIT n=2  diff=0.5015 pred=0.5 se=0.0022
+PASS SPLIT n=7  diff=0.3745 se=0.0056
+PASS LEQ (3, 2, 1, 0)=(3, 2, 1, 1) n=2  d=-0.0007
+PASS LEQ (3, 2, 1, 0)=(3, 2, 1, 1) n=3  d=0.0045
+PASS LEQ (3, 2, 1, 0)=(3, 2, 1, 1) n=4  d=-0.0004
+PASS LEQ (3, 2, 1, 0)=(3, 2, 1, 1) n=5  d=-0.0031
+PASS LEQ (3, 2, 1, 0)=(3, 2, 1, 1) n=6  d=-0.0020
+PASS LEQ (3, 2, 1, 0)=(3, 2, 1, 1) n=7  d=-0.0003
+PASS LEQ (5, 2, 1, 0)=(5, 2, 1, 1) n=2  d=-0.0156
+PASS LEQ (5, 2, 1, 0)=(5, 2, 1, 1) n=3  d=-0.0017
+PASS LEQ (5, 2, 1, 0)=(5, 2, 1, 1) n=6  d=-0.0027
+PASS LEQ (7, 3, 1, 0)=(7, 3, 1, 1) n=2  d=0.0108
+PASS LEQ (7, 3, 1, 0)=(7, 3, 1, 1) n=3  d=-0.0111
+PASS LEQ (7, 3, 1, 0)=(7, 3, 1, 1) n=6  d=0.0024
+PASS LEQ (7, 3, 1, 0)=(7, 3, 1, 2) n=2  d=0.0052
+PASS LEQ (7, 3, 1, 0)=(7, 3, 1, 2) n=3  d=-0.0060
+PASS LEQ (7, 3, 1, 0)=(7, 3, 1, 2) n=6  d=0.0050
+TOOTH T2 mass-blind bites: True (mutant=1.5000 mc=0.9329 se=0.0025)
+TOOTH T3 letter-blind (2,2) c=0 n=2 bites: True (mutant=1.7500 mc=2.0000 se=0.0000)
+TOOTH T4 tame-blind bites: True (mutant=0.7500 mc=0.9964 se=0.0026)
+SUMMARY: {'checks': 207, 'fails': 5, 'teeth': 4, 'bites': 4, 'elapsed_s': 182.4, 'smoke': False}
