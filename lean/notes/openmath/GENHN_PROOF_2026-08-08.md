@@ -591,8 +591,20 @@ ERRATUM annex immediately below]**.
 > the side of slope h/e₁ through (μD′, 0) evaluated at jD′ + i.
 > The old base (μ−j)h + (e₁−i)h/e₁ = ((μ−j+1)e₁ − i)h/e₁ is the
 > side height ONE KEY-DEGREE too high: at f₁ = 1 (D′ = e₁) it
-> exceeds the truth by exactly h at every slot; at f₁ ≥ 2 by more
-> ((μ−j)e₁(f₁−1)h/e₁ + h). With the old floors the lemma's own
+> exceeds the truth by exactly h at every slot **[r3 2026-08-09
+> (passPE2 F3): the erratum's own f₁ ≥ 2 magnitude parenthetical
+> — "at f₁ ≥ 2 by more ((μ−j)e₁(f₁−1)h/e₁ + h)" — had the WRONG
+> SIGN and is superseded here. Re-derived: old − correct =
+> ((μ−j+1)e₁ − i)h/e₁ − ((μ−j)e₁f₁ − i)h/e₁ = h(1 − (μ−j)(f₁−1)).
+> At f₁ = 1 this is +h (the clause above stands); at f₁ ≥ 2 the
+> old base does NOT exceed the truth — it COINCIDES at
+> (μ−j)(f₁−1) = 1 and UNDERSHOOTS by (μ−j)(f₁−1)h − h at
+> (μ−j)(f₁−1) ≥ 2. Instance (genre F = (1,2,2), h = 1, j = 0,
+> i = 0): old base 3 < correct base 4. "Too high" is the f₁ = 1
+> story; at f₁ ≥ 2 the old display erred in the OTHER direction —
+> either way the totals at the three instance checks below
+> contradicted the lemma's own no-over/undercount clause, so the
+> correction's substance is unchanged]**. With the old floors the lemma's own
 > clause "total = the entry exponent (no over/undercount)" fails
 > at every checked genre — the display contradicted the statement
 > it sits in.
@@ -1136,7 +1148,13 @@ evaluation-faithful (the mechanism is derived in the annex).]**
 > inner side, corrections above it — machine-verified at the PE1
 > instances and the P8 witness; its genre-general proof is part of
 > [GENHN-TOW-1]) and FAILS generically at leaf depth (PE1: 3/3
-> constructions; supp sweep: 35/38 rows diverge at pin level).
+> constructions; supp sweep: 35/35 COMPARED rows diverge at pin
+> level **[r3 2026-08-09 (passPE2 F4): the r2 figure "35/38"
+> transcribed the output line's "(of 38 tower rows)"; the runner
+> compares stage-vs-corrected pins only on the 35 two-stage rows
+> — the 3 SUPP-C 3-stage rows have no stage read and are skipped
+> before the tally (`continue` at the divergence loop) — and the
+> 35 compared rows ALL diverged; the honest denominator is 35]**).
 > The stage algebra is a projection, not the state.
 > (v) [COUNT-LAW FORM + LEAF LABELS] the tower-leaf STATE is the
 > composed digit strings of (C_j) — one K₂-digit per dv₂-height
@@ -1238,7 +1256,10 @@ evaluation-faithful (the mechanism is derived in the annex).]**
 >
 > (+ deep-perturbation variants, identical verdicts; supp sweep:
 > u₂ = 7 rows add stage-INERT(36) vs true RAM(31), and
-> stage-vs-corrected pins diverge on 35/38 rows — count strata
+> stage-vs-corrected pins diverge on 35/35 compared rows **[r3:
+> the 3 SUPP-C 3-stage rows are excluded from the comparison — no
+> stage read at 3 stages; see the (iv) tally correction above]** —
+> count strata
 > priced through the shadow pins are systematically mislabeled.
 > The f₂ = 2 genre (2,1,4)→(1,2,2): corrected {(4,2)} exact on
 > every decided leaf; 3-stage n = 16: {(16,1)}/{(8,1),(8,1)}
