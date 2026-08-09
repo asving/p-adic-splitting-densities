@@ -1,0 +1,20 @@
+pe3_fresh: GENIND passPE3 fresh route (n=7 M7T + TWOCHILD adjudication + SS6 + M6 split tooth)
+-- FR-B-twochild-q2N7: locus 2048 ONTO 16 B-classes x 1 A-classes, fibers [128] (= q^7) [0.5s]
+-- FR-B-twochild-q3N7: locus 177147 ONTO 81 B-classes x 1 A-classes, fibers [2187] (= q^7) [50.6s]
+-- FR-B-tc-stab-q2N7: 80 x 5 lift-STABLE at capped windows (child-B mod p^{N-4}, child-A mod p^{N-6})
+-- FR-B-tc-stab-q3N7: 60 x 4 lift-STABLE at capped windows (child-B mod p^{N-4}, child-A mod p^{N-6})
+-- FR-A-m7t-fib-q2N6: CS key read = (('CS', ('CSOTHER', 7, (3, 7), 2, 1, 2, 1)),)
+-- FR-A-m7t-fib-q2N6: locus 524288 ONTO 1 x 32, fibers [16384] (= q^14) [146.7s]
+-- FR-A-m7t-class-q2N7: 400 sampled states: signature+read+budgets OK [146.8s]
+-- FR-A-m7t-class-q3N6-WILDp3: 300 sampled states: signature+read+budgets OK [146.8s]
+-- FR-A-m7t-stab-q2N7: 120 x 5 exact-factor-STABLE at coarse windows
+-- FR-A-m7t-stab-q3N6-WILDp3: 80 x 4 exact-factor-STABLE at coarse windows
+-- FR-C-ss6-q2N9: 250 states (sig+read+budgets+Wc) x 4 lifts stable at windows (7, 6, 5, 4) [147.2s]
+-- FR-C-ss6-q3N9: 120 states (sig+read+budgets+Wc) x 3 lifts stable at windows (7, 6, 5, 4) [147.3s]
+-- FR-D-m6split-q2N6 [u0-only]: 0/40 states unstable
+-- FR-D-m6split-q2N6 [u2-only]: 39/40 states unstable
+-- FR-D-m6split-q2N5 [u0-only]: 0/40 states unstable
+-- FR-D-m6split-q2N5 [u2-only]: 39/40 states unstable
+-- FR-D-m6split-q3N5 [u0-only]: 40/40 states unstable
+-- FR-D-m6split-q3N5 [u2-only]: 40/40 states unstable
+== GREEN: 705133 checks, 0 violations, 147.4s ==

@@ -1,0 +1,36 @@
+{
+ "checks_total": 705133,
+ "elapsed_s": 147.4,
+ "m6_split": {
+  "q2N5": {
+   "u0-only": 0,
+   "u2-only": 39
+  },
+  "q2N6": {
+   "u0-only": 0,
+   "u2-only": 39
+  },
+  "q3N5": {
+   "u0-only": 40,
+   "u2-only": 40
+  }
+ },
+ "tallies": {
+  "FR-A-m7t-class-q2N7": 400,
+  "FR-A-m7t-class-q3N6-WILDp3": 300,
+  "FR-A-m7t-fib-q2N6": 524288,
+  "FR-A-m7t-stab-q2N7": 120,
+  "FR-A-m7t-stab-q3N6-WILDp3": 80,
+  "FR-B-tc-stab-q2N7": 80,
+  "FR-B-tc-stab-q3N7": 60,
+  "FR-B-twochild-q2N7": 2048,
+  "FR-B-twochild-q3N7": 177147,
+  "FR-C-ss6-q2N9": 250,
+  "FR-C-ss6-q3N9": 120,
+  "FR-D-m6split-q2N5": 80,
+  "FR-D-m6split-q2N6": 80,
+  "FR-D-m6split-q3N5": 80
+ },
+ "verdict": "GREEN",
+ "violations": []
+}
