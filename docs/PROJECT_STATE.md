@@ -3314,3 +3314,18 @@ cells ever measured — F₄/F₁₆ censuses exact). GENIND at 0/2 (r3
 owed: the capped-window formula). Board + arc history:
 lean/notes/BRIDGE_ADJUDICATIONS_2026-07-30.md. Codex ratification
 of the frozen HE7 queued post-annex.
+
+**2026-08-09 DATED APPEND #2 — SECOND ACCEPTANCE: GENH4_PROOF
+ACCEPTED 2/2** (PE4 CLEAN e15308d → PE5 CLEAN 11dbd23; text frozen
+at r3 4b0d946; annex owed for 2 display minors — SPLTAIL cap 2w<N
+undisplayed + a v-units halving; the HE7-ANNEX precedent). P(4) and
+the eleven quartic densities now rest on FROZEN text; their
+conditionality display stays honest (supplier stack min grade 0/2:
+W-12, HEX3, GENIND live). HE7's ANNEX F-1 also landed (a4a91ee +
+7b3f0f1): ANNEX-LEMMA HE7-13′ proved in full — mixed nodes = bouquets
+of pure nodes, per-class conclusions; the naive whole-key
+continuation PROVABLY CYCLES at two repeated classes (machine-
+exhibited 48/48), so the per-class wiring is load-bearing; first
+machine σ at n=16/μ₂=4 (96/96 PARI). GENIND at 0/2, r3 complete
+(capped window), PE4 next. Codex ratification of frozen HE7 now
+unblocked.

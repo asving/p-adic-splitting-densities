@@ -13568,3 +13568,54 @@ commit-time pin rule correctly this round (GENH4 HEAD 4b0d946
 verified at commit; PE4 CLEAN e15308d disclosed). RESUME:
 wf_78e3bb07-57a via scriptPath (GENIND r3 replays cached; HE7-ANNEX
 + GENH4-PE5 run live).
+
+---
+
+## ★★ WAVE 6 COMPLETE (resume wp66nmmjn, 3/3): GENH4 ACCEPTED 2/2 (SECOND stage-one acceptance; PE5 CLEAN, 2 display minors → annex owed) · HE7 ANNEX F-1 PROVED (HE7-13′; the naive continuation CYCLES — per-class wiring load-bearing; first n=16/μ₂=4 σ) · GENIND r3 verified intact — WAVE 7: GENH4 ANNEX + GENIND PE4 + CODEX RATIFICATION OF FROZEN HE7 — 2026-08-09
+
+**GENH4 PE5 (11dbd23): CLEAN — 0C, 0G, 2 MINOR (+1 remark) ⟹
+ACCEPTED 2/2, text frozen at 4b0d946.** The pass: CAP(E) + the slot
+ladder re-derived with an own evaluator over ALL 10 committed consE
+rows (301/301, deep-band included); the ENTIRE level-0 assembly
+re-executed — all eleven R_τ tie symbolically in ℚ(q) with ν₃
+derived from ACCEPTED HMENU3 (the first cross-degree tie); the
+σ-supply argument (GENH4.C → W-12's clause) re-derived both
+characteristics; FRESH ROUTE = the first odd-non-prime-q cells ever
+(GF(9): validation row 1,062,882 members exact, fresh box 2×531,441
+with a hand-preregistered 8-key table EXACT incl. the carry-forced
+w′=4 node; T-TWIST 52,488/52,488 — the W-9 cocycle load-bearing at
+q=9). MINORS (annex owed, 3 display sentences): the genre-F SPLTAIL
+cap is 2w<N everywhere implemented/committed but displayed as w<N
+(committed-refutable at (Zp,2,8,k1)); S7's 2SIDED Nm valuation "u"
+is 2u at genre F in declared units (halved balance display, j=2, σ
+unaffected); + S9.2's dangling fraction (= exactly 1/Φ₂, masses
+close to 1). CONDITIONALITY UNCHANGED: P(4) rests on the S11 stack,
+min grade 0/2 (W-12, HEX3, GENIND) — acceptance freezes TEXT, not
+the stack.
+
+**HE7 ANNEX F-1 (a4a91ee + 7b3f0f1).** ANNEX-LEMMA HE7-13′ PROVED
+from displayed lemmas only: a mixed node is a BOUQUET OF PURE NODES
+— each residual class C_{λ,r} is the root set of a monic block
+factor with single-side polygon and residual c·r^k, so HE7.A's
+trichotomy applies PER BLOCK; the (LIFT₂) refine acts per class
+((b) refined class jumps, (c) other classes survive EXACTLY with
+translated labels, (d) lower sides untouched, (e) steeper sides
+collapse). DERIVED SURPRISE (disclosed + machine-exhibited): the
+naive whole-key continuation genuinely CYCLES at two repeated
+classes (P4 tooth: 48/48 naive-route cycles) — the per-class wiring
+is load-bearing, not pedantry. Honesty box: the BOX-4-adjacent
+k=m link explicitly NOT claimed. New leg he7annex_supp.py: 96
+members, σ==PARI 96/96, FIRST machine σ at n=16/μ₂=4; P1–P5 all
+fired. Byte-freeze verified 3-way (accepted bytes md5 identical at
+both commits). R-a folded.
+
+**GENIND r3 (d3ef66d): verified intact by the resume** (correct
+post-storm behavior: verify committed state, don't redo). 0/2;
+PE4 next.
+
+**WAVE 7 (dispatched this entry): GENH4-ANNEX (3 display sentences,
+frozen bytes untouched) + GENIND PE4 (first-clean attempt) +
+HE7-CODEX-RAT (the ratification sweep OPENS on the frozen HE7+annex;
+window reset, CODEX_WMULTDCX pattern). Site refresh queued next
+(two acceptances + composed-complete = the milestone the standing
+policy names).**
