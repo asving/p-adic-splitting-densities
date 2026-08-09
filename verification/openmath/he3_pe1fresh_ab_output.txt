@@ -1,0 +1,30 @@
+== LEG A1: test keys at kappa=2 (> S=1) at genre (3;1,2,3;1) ==
+(g,p)->if(poldegree(g)==1,return([1,1]));my(nf=nfinit([g,[p]]),dec=idealprimedec(nf,p));[dec[1].e,dec[1].f]
+(f,p)->my(d=poldisc(f),F);if(d==0,return([[-1,-1]]));F=factorpadic(f,p,200);vecsort(vector(matsize(F)[1],i,ef(liftall(F[i,1]),p)))
+[[1, 2]]
+[[1, 1], [1, 1]]
+[[2, 1]]
+[(1 + O(3^20))*x + (3 + 3^2 + 2*3^3 + 2*3^6 + 3^8 + 2*3^12 + 3^13 + 2*3^14 + 3^16 + 3^18 + 3^19 + O(3^20)), 1; (1 + O(3^20))*x + (2*3 + 3^2 + 2*3^4 + 2*3^5 + 2*3^7 + 3^8 + 2*3^9 + 2*3^10 + 2*3^11 + 3^13 + 2*3^15 + 3^16 + 2*3^17 + 3^18 + 3^19 + O(3^20)), 1]
+
+== LEG A2: displayed-node OFF-LOCUS member ==
+f_off = [2916, 0, 486, 0, 36, 0, 1] node dv(A_j) = [6, 4, 2] (displayed floors 4,3,2) on-locus: False
+face-value stage read: [(Fraction(2, 1), 1, [1, 1, 1])] -> face-value sigma: ((1, 2), (1, 2), (1, 2))
+(g,p)->if(poldegree(g)==1,return([1,1]));my(nf=nfinit([g,[p]]),dec=idealprimedec(nf,p));[dec[1].e,dec[1].f]
+(f,p)->my(d=poldisc(f),F);if(d==0,return([[-1,-1]]));F=factorpadic(f,p,200);vecsort(vector(matsize(F)[1],i,ef(liftall(F[i,1]),p)))
+[[1, 1], [1, 1], [1, 4]]
+
+== LEG B: ON-LOCUS f1=2 mu=3 sweep (fresh reader vs PARI) ==
+T:{1,i,-i}             onloc=1 pred=((1, 2), (1, 2), (1, 2)) pari=((1, 2), (1, 2), (1, 2)) OK 
+T:{1,i,-i}+junk        onloc=1 pred=((1, 2), (1, 2), (1, 2)) pari=((1, 2), (1, 2), (1, 2)) OK 
+T:{1,2,i}              onloc=1 pred=((1, 2), (1, 2), (1, 2)) pari=((1, 2), (1, 2), (1, 2)) OK 
+T:{1,2,i}+junk         onloc=1 pred=((1, 2), (1, 2), (1, 2)) pari=((1, 2), (1, 2), (1, 2)) OK 
+T:{i,1+i,2+i}          onloc=1 pred=((1, 2), (1, 2), (1, 2)) pari=((1, 2), (1, 2), (1, 2)) OK 
+T:{i,1+i,2+i}+junk     onloc=1 pred=((1, 2), (1, 2), (1, 2)) pari=((1, 2), (1, 2), (1, 2)) OK 
+T:(Z-1)(Z^2-(1+i))     onloc=1 pred=((1, 2), (1, 4)) pari=((1, 2), (1, 4)) OK 
+T:irred-cubic          onloc=1 pred=((1, 6),) pari=((1, 6),) OK 
+2side:{i,-i}           onloc=1 pred=((1, 2), (1, 2), (1, 2)) pari=((1, 2), (1, 2), (1, 2)) OK 
+2side:irredq           onloc=1 pred=((1, 2), (1, 4)) pari=((1, 2), (1, 4)) OK 
+ell2+lin               onloc=1 pred=((1, 2), (2, 2)) pari=((1, 2), (2, 2)) OK 
+ell3                   onloc=1 pred=((3, 2),) pari=((3, 2),) OK 
+ell3b                  onloc=1 pred=((3, 2),) pari=((3, 2),) OK 
+LEG B: 13 jobs, 0 mismatches

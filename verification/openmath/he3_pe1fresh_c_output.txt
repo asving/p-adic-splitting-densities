@@ -1,0 +1,16 @@
+OK   z=(1, 0) aa=[(1, 0), (2, 0), (0, 1)] dvs=[9, 6, 3] residual-roots=[(0, 1), (1, 0), (2, 0)] == letters; pred sigma {(2,1)}x3 == constructed sigma
+OK   z=(1, 0) aa=[(0, 1), (0, 2), (1, 0)] dvs=[9, 6, 3] residual-roots=[(0, 1), (0, 2), (1, 0)] == letters; pred sigma {(2,1)}x3 == constructed sigma
+OK   z=(1, 0) aa=[(1, 1), (2, 2), (0, 1)] dvs=[9, 6, 3] residual-roots=[(0, 1), (1, 1), (2, 2)] == letters; pred sigma {(2,1)}x3 == constructed sigma
+OK   z=(1, 0) aa=[(1, 0), (1, 1), (1, 2)] dvs=[9, 6, 4] residual-roots=[(1, 0), (1, 1), (1, 2)] == letters; pred sigma {(2,1)}x3 == constructed sigma
+OK   z=(1, 0) aa=[(2, 1), (1, 2), (0, 2)] dvs=[9, 6, 3] residual-roots=[(0, 2), (1, 2), (2, 1)] == letters; pred sigma {(2,1)}x3 == constructed sigma
+OK   z=(0, 1) aa=[(1, 0), (2, 0), (0, 1)] dvs=[9, 6, 3] residual-roots=[(0, 1), (1, 0), (2, 0)] == letters; pred sigma {(2,1)}x3 == constructed sigma
+OK   z=(0, 1) aa=[(0, 1), (0, 2), (1, 0)] dvs=[9, 6, 3] residual-roots=[(0, 1), (0, 2), (1, 0)] == letters; pred sigma {(2,1)}x3 == constructed sigma
+OK   z=(0, 1) aa=[(1, 1), (2, 2), (0, 1)] dvs=[9, 6, 3] residual-roots=[(0, 1), (1, 1), (2, 2)] == letters; pred sigma {(2,1)}x3 == constructed sigma
+OK   z=(0, 1) aa=[(1, 0), (1, 1), (1, 2)] dvs=[9, 6, 4] residual-roots=[(1, 0), (1, 1), (1, 2)] == letters; pred sigma {(2,1)}x3 == constructed sigma
+OK   z=(0, 1) aa=[(2, 1), (1, 2), (0, 2)] dvs=[9, 6, 3] residual-roots=[(0, 2), (1, 2), (2, 1)] == letters; pred sigma {(2,1)}x3 == constructed sigma
+OK   z=(1, 1) aa=[(1, 0), (2, 0), (0, 1)] dvs=[9, 6, 3] residual-roots=[(0, 1), (1, 0), (2, 0)] == letters; pred sigma {(2,1)}x3 == constructed sigma
+OK   z=(1, 1) aa=[(0, 1), (0, 2), (1, 0)] dvs=[9, 6, 3] residual-roots=[(0, 1), (0, 2), (1, 0)] == letters; pred sigma {(2,1)}x3 == constructed sigma
+OK   z=(1, 1) aa=[(1, 1), (2, 2), (0, 1)] dvs=[9, 6, 3] residual-roots=[(0, 1), (1, 1), (2, 2)] == letters; pred sigma {(2,1)}x3 == constructed sigma
+OK   z=(1, 1) aa=[(1, 0), (1, 1), (1, 2)] dvs=[9, 6, 4] residual-roots=[(1, 0), (1, 1), (1, 2)] == letters; pred sigma {(2,1)}x3 == constructed sigma
+OK   z=(1, 1) aa=[(2, 1), (1, 2), (0, 2)] dvs=[9, 6, 3] residual-roots=[(0, 2), (1, 2), (2, 1)] == letters; pred sigma {(2,1)}x3 == constructed sigma
+LEG C: 15 jobs, 0 failures (each job: 3-label mu=3 stage at q=9, equal char, sigma known by construction)
