@@ -431,6 +431,50 @@ and boxed where it is not (S5).
 > term at the same height, different slot; the certificate slot
 > digit is the predicted 4).
 
-## S4. MACHINE LEG — TBD
+## S4. MACHINE LEG (gentow6_checks.py — imports B1/B2 additively)
+
+Runner: `verification/openmath/gentow6_checks.py`, importing
+gentow1_checks (B1 families + slot algebra), gentow3_checks (the
+shadow read), gentow4_checks (partial-side families, composed_read,
+gp bridge) — none edited. Three legs mirror S1/S2/S3; predictions
+P-1…P-9 + four teeth are preregistered in the runner docstring
+(sealed at commit 1 with the pre-seal smoke DISCLOSED there: one
+wiring finding — the unperturbed B2-reproduction row P5R.r2m1 drew
+sib_block = the simple key exactly, so the composed read PEELs;
+fix = the same height-46 perturbation as the constructed rows).
+
+* **LEG-1 (S1's tie).** FAM-P5 geography (Q3, side [0,6] slope 5/2,
+  residual deg 3): constructed product rows realize multiplicity
+  profiles (m_{T-1}, m_{T-2}) ∈ {(1,2),(2,1),(0,3),(3,0)} — the
+  (1,2)/(0,3)/(3,0) shapes are NEW (B2 only had (1,2)-transpose);
+  per row, per class: m_r measured by res_factor on the level-1
+  side digits vs mu2*(r) measured by composed_read at the class
+  key; PARI decorrelated leg: nodev6 class-degree sums =
+  D2·m_r (the deg display of LEMMA GENTOW-6.1), poldisc ≠ 0;
+  (1,2)-profile rows fully decided, sigma = PARI sig1.
+* **LEG-2 (S2's block layer).** On non-perturbed product rows the
+  block factor f_S is known EXACTLY (coprime-class product):
+  check LEMMA GENTOW-6.2's display (single side slope 5/2 to
+  (M_C, 0), residual = psi2^{mu2*} monic via res_factor), COR
+  GENTOW-6.2C(a)(c) budget + node floors at (mu2*, E2) incl.
+  the RAM-anchor sharpness p_0^S = mu2*·E2 + 1, and COR 6.2C(d)'s
+  projection p_j(f) − c_g = p_j(f_S) on the >T2 initial hull.
+* **LEG-3 (S3's certificate).** Self-shadow of Phi2^2 at SEVEN
+  cert rows — B1's A5/A7/B/C plus NEW genres GEN-R2X (e1 = 3,
+  u2 = 11: first e1 = 3 certificate, a* = 1), GEN-P3/GEN-P3b
+  (p = 3: first odd-p certificates, killing any char-2-luck
+  reading): slot (a*,b*) of ShC_{j*} nonzero with v = 2a_{t*},
+  height = THETA_{j*} = the pin. Regime-4 rows: FAM-E
+  ((3,1,4;1)/Q2, u2 = 7, i_0 = 1, no overflowing pair):
+  self-shadow ≡ 0 (THEOREM 6.3(c)); E-ENTRY row f_E = Phi2² +
+  4x²·Phi2 + 16·Phi' (entry digit with a + i_0 = 3 ≥ D'): honest
+  tRAM(31) = PARI, shadow diverges at 31 ≥ THETA_0 = 29 and flips
+  the label (hand-traced pre-seal: the overflow's Phi'-kill
+  exactly cancels the C_0 digit — shadow DRAIN) — THEOREM 6.3(d)'s
+  witness. Teeth: T-TIE-CONST (mu2* ≡ 2 mutant), T-CERT-V
+  (valuation off-by-one), T-ODDP (p = 2-only mutant), T-SHEXACT
+  (regime-4 ⟹ member-faithful over-claim).
+
+**RESULTS (commit 2): PENDING — full run after the seal.**
 
 ## S5. HONEST RESIDUE + GRADE BOX — TBD
