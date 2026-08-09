@@ -1086,7 +1086,13 @@ evaluation-faithful (the mechanism is derived in the annex).]**
 >
 > (ψ₂(T) = T^{f₂} − Σ_t c_t T^t; n̂(m) = x^i π^a the dv-height-m
 > normalizer monomial, i < e₁), monic of degree D₂ := D′e₂f₂. Set
-> dv₂ := e₁e₂·v (the composed ladder). Then:
+> dv₂ := e₁e₂·v (the composed ladder). (At f₁ ≥ 2 the coefficient
+> products ĉ_t·n̂ can overflow x-degree D′; their Φ′-carries sit at
+> the same dv-value one Φ′-step right, i.e. STRICTLY ABOVE the
+> inner side — side drop u₂/e₂ per step — so Φ₂'s literal
+> Φ′-development differs from the display only above the side:
+> side and residual are unchanged, and (i)'s proof reads on the
+> literal development.) Then:
 > (i) [COMPOSED CARRIER] every root ξ of Φ₂ has v(ξ) = h/e₁ with
 > η(ξ) a root of ψ, and v(Φ′(ξ)) = u₂/(e₁e₂) with η₂(ξ) :=
 > res(Φ′(ξ)^{e₂}/n̂(u₂)(ξ)) a root of ψ₂; the forcing chain gives
