@@ -2453,6 +2453,12 @@ W12 note HEAD = ee17210; HEX3 = b6a1d69; HMENU3 = 19c0285; W11 =
 (annex pass #2 in flight, unlanded); HE7 = ca3754d; repo movement
 since the wave-11 fold 26d2dbf = TAMEKQX commits only
 (209ed18/fa58556/f3c6eef, b99daa7), none touching a pinned file.
+[r6 photo-finish disclosure, same round: between this record's two
+commits (760afed → dcc20bb) one more TAMEKQX commit landed
+(9b170f0, its verdict), so the enumerated list above was short by
+one AT THE SECOND COMMIT'S timestamp; git-show-verified: 9b170f0
+touches TAMEKQX files only, no pinned file, no supplier note — the
+as-of verdicts stand.]
 
 **Grade: stays 0/2. The consecutive-clean count has NOT started; PE7
 (a fresh hostile pass) attempts the first clean.**
