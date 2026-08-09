@@ -1,0 +1,104 @@
+HETOW r1 supp: wrap-corrected key at 3 eta != 1 frames + teeth
+frame X: naive = (90)*x^0+(-18)*x^1+(-12)*x^2+(3)*x^3+(1)*x^4
+frame X: coh   = (144)*x^0+(-18)*x^1+(-12)*x^2+(3)*x^3+(1)*x^4
+  E1-W-two-ways-X                ok  Q(6)-2Q(3) = 1 vs floor = 1
+  killed(naive) Z^2+2Z+1  killed(coh) Z^2+2Z+2  minpoly(beta) Z^2+2Z+2
+  E2-coh-eq-minpoly-X            ok  slot residues (2, 2) vs minpoly (2, 2)
+  E2-twist-real-X                ok  minpoly (2, 2) != psi2 (2, 1)
+  E3-naive-diverges-X            ok  naive killed (1, 2) vs minpoly (2, 2)
+  E3-naive-degenerate-X          ok  killed(naive) has an F_3 root
+frame Z: naive = (225)*x^0+(-50)*x^1+(-20)*x^2+(5)*x^3+(1)*x^4
+frame Z: coh   = (350)*x^0+(-50)*x^1+(-20)*x^2+(5)*x^3+(1)*x^4
+  E1-W-two-ways-Z                ok  Q(6)-2Q(3) = 1 vs floor = 1
+  killed(naive) Z^2+3Z+2  killed(coh) Z^2+3Z+4  minpoly(beta) Z^2+3Z+4
+  E2-coh-eq-minpoly-Z            ok  slot residues (4, 3) vs minpoly (4, 3)
+  E2-twist-real-Z                ok  minpoly (4, 3) != psi2 (1, 1)
+  E3-naive-diverges-Z            ok  naive killed (2, 3) vs minpoly (4, 3)
+  E3-naive-degenerate-Z          ok  killed(naive) has an F_5 root
+frame W: naive = (100)*x^0+(125)*x^1+(-50)*x^2+(-20)*x^3+(5)*x^5+(1)*x^6
+frame W: coh   = (100)*x^0+(250)*x^1+(-50)*x^2+(-20)*x^3+(5)*x^5+(1)*x^6
+  E1-W-two-ways-W                ok  Q(10)-2Q(5) = 1 vs floor = 1
+  killed(naive) Z^2+3Z+2  killed(coh) Z^2+3Z+4  minpoly(beta) Z^2+3Z+4
+  E2-coh-eq-minpoly-W            ok  slot residues (4, 3) vs minpoly (4, 3)
+  E2-twist-real-W                ok  minpoly (4, 3) != psi2 (1, 1)
+  E3-naive-diverges-W            ok  naive killed (2, 3) vs minpoly (4, 3)
+  E3-naive-degenerate-W          ok  killed(naive) has an F_5 root
+29 gp jobs (both routes on all; 8 ONE21) ...
+  G1-coh-X-routes-agree          ok  ((2, 2),) vs ((2, 2),)
+  G1-coh-X                       ok  sigma = ((2, 2),)
+  G1-coh-Z-routes-agree          ok  ((2, 2),) vs ((2, 2),)
+  G1-coh-Z                       ok  sigma = ((2, 2),)
+  G1-coh-W-routes-agree          ok  ((3, 2),) vs ((3, 2),)
+  G1-coh-W                       ok  sigma = ((3, 2),)
+  G2-TOOTH-naive-X-routes-agree  ok  ((4, 1),) vs ((4, 1),)
+  G2-TOOTH-naive-X               ok  sigma = ((4, 1),) (INFO)
+  G2-TOOTH-naive-Z-routes-agree  ok  ((2, 1), (2, 1)) vs ((2, 1), (2, 1))
+  G2-TOOTH-naive-Z               ok  sigma = ((2, 1), (2, 1))
+  G2-TOOTH-naive-W-routes-agree  ok  ((3, 1), (3, 1)) vs ((3, 1), (3, 1))
+  G2-TOOTH-naive-W               ok  sigma = ((3, 1), (3, 1))
+  G3-3RAM-routes-agree           ok  ((6, 2),) vs ((6, 2),)
+  G3-3RAM                        ok  sigma = ((6, 2),)
+  G3-3RAM-routes-agree           ok  ((6, 2),) vs ((6, 2),)
+  G3-3RAM                        ok  sigma = ((6, 2),)
+  G3-2+1-routes-agree            ok  ((2, 2), (4, 2)) vs ((2, 2), (4, 2))
+  G3-2+1                         ok  sigma = ((2, 2), (4, 2))
+  G3-2+1-routes-agree            ok  ((2, 2), (4, 2)) vs ((2, 2), (4, 2))
+  G3-2+1                         ok  sigma = ((2, 2), (4, 2))
+  G3-3RAM-routes-agree           ok  ((6, 2),) vs ((6, 2),)
+  G3-3RAM                        ok  sigma = ((6, 2),)
+  G3-3RAM-routes-agree           ok  ((6, 2),) vs ((6, 2),)
+  G3-3RAM                        ok  sigma = ((6, 2),)
+  G3-2+1-routes-agree            ok  ((2, 2), (4, 2)) vs ((2, 2), (4, 2))
+  G3-2+1                         ok  sigma = ((2, 2), (4, 2))
+  G3-2+1-routes-agree            ok  ((2, 2), (4, 2)) vs ((2, 2), (4, 2))
+  G3-2+1                         ok  sigma = ((2, 2), (4, 2))
+  G3-ONE21-routes-agree          ok  ((2, 2), (2, 2), (2, 2)) vs ((2, 2), (2, 2), (2, 2))
+  G3-ONE21                       ok  sigma = ((2, 2), (2, 2), (2, 2))
+  G3-ONE21-routes-agree          ok  ((2, 2), (2, 2), (2, 2)) vs ((2, 2), (2, 2), (2, 2))
+  G3-ONE21                       ok  sigma = ((2, 2), (2, 2), (2, 2))
+  G3-ONE21-routes-agree          ok  ((2, 2), (2, 4)) vs ((2, 2), (2, 4))
+  G3-ONE21                       ok  sigma = ((2, 2), (2, 4))
+  G3-ONE21-routes-agree          ok  ((2, 6),) vs ((2, 6),)
+  G3-ONE21                       ok  sigma = ((2, 6),)
+  G3-ONE21-routes-agree          ok  ((2, 2), (2, 2), (2, 2)) vs ((2, 2), (2, 2), (2, 2))
+  G3-ONE21                       ok  sigma = ((2, 2), (2, 2), (2, 2))
+  G3-ONE21-routes-agree          ok  ((2, 6),) vs ((2, 6),)
+  G3-ONE21                       ok  sigma = ((2, 6),)
+  G3-ONE21-routes-agree          ok  ((2, 2), (2, 4)) vs ((2, 2), (2, 4))
+  G3-ONE21                       ok  sigma = ((2, 2), (2, 4))
+  G3-ONE21-routes-agree          ok  ((2, 2), (2, 4)) vs ((2, 2), (2, 4))
+  G3-ONE21                       ok  sigma = ((2, 2), (2, 4))
+  G4-3RAM-routes-agree           ok  ((9, 2),) vs ((9, 2),)
+  G4-3RAM                        ok  sigma = ((9, 2),)
+  G4-2+1-routes-agree            ok  ((3, 2), (6, 2)) vs ((3, 2), (6, 2))
+  G4-2+1                         ok  sigma = ((3, 2), (6, 2))
+  G4-int-slope-routes-agree      ok  ((3, 2), (3, 2), (3, 2)) vs ((3, 2), (3, 2), (3, 2))
+  G4-int-slope                   ok  sigma = ((3, 2), (3, 2), (3, 2))
+  G4-3RAM-routes-agree           ok  ((9, 2),) vs ((9, 2),)
+  G4-3RAM                        ok  sigma = ((9, 2),)
+  G4-2+1-routes-agree            ok  ((3, 2), (6, 2)) vs ((3, 2), (6, 2))
+  G4-2+1                         ok  sigma = ((3, 2), (6, 2))
+  G4-int-slope-routes-agree      ok  ((3, 2), (3, 2), (3, 2)) vs ((3, 2), (3, 2), (3, 2))
+  G4-int-slope                   ok  sigma = ((3, 2), (3, 2), (3, 2))
+  G4-int-slope-routes-agree      ok  ((3, 2), (6, 2)) vs ((3, 2), (6, 2))
+  G4-int-slope                   ok  sigma = ((3, 2), (6, 2))
+
+census:
+   G1-coh-W:((3, 2),)                                       1
+   G1-coh-X:((2, 2),)                                       1
+   G1-coh-Z:((2, 2),)                                       1
+   G2-TOOTH-naive-W:((3, 1), (3, 1))                        1
+   G2-TOOTH-naive-X:((4, 1),)                               1
+   G2-TOOTH-naive-Z:((2, 1), (2, 1))                        1
+   G3-2+1:((2, 2), (4, 2))                                  4
+   G3-3RAM:((6, 2),)                                        4
+   G3-ONE21:((2, 2), (2, 2), (2, 2))                        3
+   G3-ONE21:((2, 2), (2, 4))                                3
+   G3-ONE21:((2, 6),)                                       2
+   G4-2+1:((3, 2), (6, 2))                                  2
+   G4-3RAM:((9, 2),)                                        2
+   G4-int-slope:((3, 2), (3, 2), (3, 2))                    2
+   G4-int-slope:((3, 2), (6, 2))                            1
+
+TOTAL jobs 29 violations 0 (21.3s)
+VERDICT: GREEN
