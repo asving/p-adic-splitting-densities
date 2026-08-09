@@ -14477,3 +14477,19 @@ applied under the [r1′] tag convention (collision-free, stated);
 the F-2 rider proves HE7-7′(b) at general Ψ-coprime evaluands
 keyed to frozen §S5.8's evaluand-blind mechanism. Both 0/2;
 PE2s dispatched (wave 23). B2 in flight.
+
+---
+
+## ★★★ BOX WAVE B2 FOLDED (w0eqctrl7, 3/3 — THREE MORE PROOFS): item (3) + T(a)-as-theorem PROVED (the exact threshold Θ_j; the PE1 refutations = its first violations) · item (4) PROVED (PE2-P exact; η₂-cocycle smoke finding derived+toothed) · GENTOW-BOX-1 RETIRED + THE LEVEL-r GRAMMAR PROVED + FIRST DEPTH-4 WITNESS (n=32, two routes) — WAVE B3: the three sub-boxes + the GENTOW/HETOW arc program opens — 2026-08-09
+
+Residue after B1+B2 (each with read/σ unaffected): GENTOW3-BOX-1
+(attainment certificate, display-grade), GENTOW4-BOX-1 (mixed-side
+tie μ₂*(r) = m_r — Ore-II/FGMN content: LITERATURE-FIRST),
+GENTOW4-BOX-2 (partial-side count layer). The six new notes
+(GENTOW1–5, HETOW) are chain-load-bearing at n ≥ 8 and all 0/2 —
+their arc program opens with HETOW PE1 + GENTOW2 PE1 (the FGMN
+cite note first: the campaign's first load-bearing external
+citation deserves the earliest hostile review). Note GENTOW5's
+grade-honesty: depth ≥ 3 capped at annex grade via the HE7 ANNEX R
+pin — the cap lifts when HE7's annex-stack acceptance (2/2, done)
+is folded into the pin wording at GENTOW5's arc.

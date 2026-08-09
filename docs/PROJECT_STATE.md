@@ -3527,3 +3527,29 @@ faithfulness geography + (4) partial sides + GENTOW-BOX-1
 level-r grammar at n ≥ 32 — plus the three new notes' own arcs
 (all 0/2). Wave B2 dispatched at (3), (4), GENTOW-BOX-1 + the
 grammar attempt.**
+
+**2026-08-09 DATED APPEND #12 — BOX WAVE B2: THE n ≥ 8 BOX FAMILY
+CLOSES AT ATTEMPT GRADE.** GENTOW3 (d90db6d-era): item (3) PROVED —
+THEOREM GENTOW-3, the exact faithfulness threshold Θ_j =
+(μ₂−j)E₂ + δ (δ = u₂ − e₂D′h ≥ 1): faithful band below Θ, x-free
+genres exactly faithful everywhere, T(a)-as-theorem PROVED with
+margin δ, and the PE1 refutations = the criterion's first
+violations exactly (582/0). GENTOW4 (c21b59e-era): item (4) PROVED
+— partial sides = bouquet split ∘ HE6R1-2 block projection at the
+composed key ∘ per-block literal HE7 instances; PE2-P reproduced
+exactly; a real pre-seal smoke finding (the η₂-cocycle at partial
+sides) derived, wired, toothed; 1,740/0, 6/6 teeth. GENTOW5: BOTH
+targets PROVED — GENTOW-BOX-1 RETIRED (the frame is free in
+gr(leaf field); the box's true content was the multiplicative
+convention; bonus rider = GENHN-BOX-2's own retirement condition)
++ THE LEVEL-r GRAMMAR (GENTOW-1's Step 0 is level-agnostic; FGMN
+Cor 6.4 level-general; HE7 ANNEX R reproved tower-side; the
+annex-grade pin named as the depth ≥ 3 grade cap) + THE FIRST
+DEPTH-4 WITNESS ANYWHERE (n=32, q=2, ladder (16,40,84,170,341)
+exact on two routes). HONEST RESIDUE: GENTOW3-BOX-1
+(attainment-only certificate), GENTOW4-BOX-1 (mixed-side
+multiplicity tie — Ore-II/FGMN content, literature-first
+candidate; read/σ unaffected), GENTOW4-BOX-2 (partial-side count
+layer) — wave B3 — plus the SIX new notes' hostile arcs (all 0/2).
+The σ/read chain at every n now rests on PROVED statements at
+attempt grade or better.
