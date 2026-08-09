@@ -1,0 +1,53 @@
+GENIND passPE4 fresh route (sealed runner md5 e7ca150b1b5cb13ad4f3350ac776aca2)
+-- FR1a-psteep3-q2N5: top event = (('BOTHER', 3, (2,), ((1, 1),), ((0, 4, 1, 2), (1, 2, 3, 0))),)
+-- FR1a-psteep3-q2N5: locus 32, ONTO 4 fibers [8], verdicts {'DEC': 16, 'DRAIN': 16, 'CS': 0}, stab 0 bad, one-deeper fired 17x [0.0s]
+-- FR1a-psteep3-q3N5-c1z1: top event = (('BOTHER', 3, (2,), ((1, 1),), ((0, 4, 1, 2), (1, 2, 3, 0))),)
+-- FR1a-psteep3-q3N5-c1z1: locus 243, ONTO 9 fibers [27], verdicts {'DEC': 162, 'DRAIN': 81, 'CS': 0}, stab 0 bad, one-deeper fired 22x [0.1s]
+-- FR1a-psteep3-q3N5-c1z2: top event = (('BOTHER', 3, (2,), ((1, 1),), ((0, 4, 1, 2), (1, 2, 3, 0))),)
+-- FR1a-psteep3-q3N5-c1z2: locus 243, ONTO 9 fibers [27], verdicts {'DEC': 162, 'DRAIN': 81, 'CS': 0}, stab 0 bad, one-deeper fired 22x [0.1s]
+-- FR1a-psteep3-q3N5-c2z1: top event = (('BOTHER', 3, (2,), ((1, 1),), ((0, 4, 1, 2), (1, 2, 3, 0))),)
+-- FR1a-psteep3-q3N5-c2z1: locus 243, ONTO 9 fibers [27], verdicts {'DEC': 162, 'DRAIN': 81, 'CS': 0}, stab 0 bad, one-deeper fired 22x [0.1s]
+-- FR1a-psteep3-q3N5-c2z2: top event = (('BOTHER', 3, (2,), ((1, 1),), ((0, 4, 1, 2), (1, 2, 3, 0))),)
+-- FR1a-psteep3-q3N5-c2z2: locus 243, ONTO 9 fibers [27], verdicts {'DEC': 162, 'DRAIN': 81, 'CS': 0}, stab 0 bad, one-deeper fired 22x [0.2s]
+-- FR1b-psteep4-q2N6: top event = (('BOTHER', 4, (3,), ((1, 1),), ((0, 5, 1, 3), (1, 3, 4, 0))),)
+-- FR1b-psteep4-q2N6: locus 512, ONTO 8 fibers [64], verdicts {'DEC': 256, 'DRAIN': 256, 'CS': 0}, stab 0 bad, one-deeper fired 18x [0.3s]
+-- FR2-tc-q2: top event class = ('BOTHER', 6, (2, 2, 2), (), ((0, 12, 2, 6), (2, 6, 4, 2), (4, 2, 6, 0))) (verdict sample DRAIN)
+-- FR2-tc-q2: 250 samples, windows (1,3,7) exact [0.4s]
+-- FR2-tc-q3: top event class = ('BOTHER', 6, (2, 2, 2), (), ((0, 12, 2, 6), (2, 6, 4, 2), (4, 2, 6, 0))) (verdict sample DRAIN)
+-- FR2-tc-q3: 150 samples, windows (1,3,7) exact [0.6s]
+-- FR2-box: C-box 4096 -> 4096 classes, fibers [1] [1.2s]
+-- FR2-box: B-box 16 -> 16 classes, fibers [1] [1.2s]
+-- FR2-stab-q2: 20 x 3 lifts stable at (7,3); one-deeper C fired 20x
+-- FR2-stab-q3: 12 x 3 lifts stable at (7,3); one-deeper C fired 17x
+-- FR2-pari-q2: 30 disc!=0 lifts, val partition {3:2,2:2,1:2} exact
+-- FR2-pari-q3: 20 disc!=0 lifts, val partition {3:2,2:2,1:2} exact
+-- FR3-n8mix: CS key = (('CS', ('CSOTHER', 8, (4, 8), 2, 1, 2, 1)),)
+-- FR3-n8mix: 250 samples CS, child Wc=2, stage budgets exact [1.4s]
+-- FR3-n8mix: child-box 16 -> 16 classes fibers [1]
+-- FR3-n8mix: T-PIN fired 10/10
+-- FR3-n8mix-pari: 25 disc!=0 lifts, val partition {1:4,1/2:4} exact
+
+  FR1a-psteep3-q2N5            32
+  FR1a-psteep3-q2N5-stab       16
+  FR1a-psteep3-q3N5-c1z1       243
+  FR1a-psteep3-q3N5-c1z1-stab  16
+  FR1a-psteep3-q3N5-c1z2       243
+  FR1a-psteep3-q3N5-c1z2-stab  16
+  FR1a-psteep3-q3N5-c2z1       243
+  FR1a-psteep3-q3N5-c2z1-stab  16
+  FR1a-psteep3-q3N5-c2z2       243
+  FR1a-psteep3-q3N5-c2z2-stab  16
+  FR1b-psteep4-q2N6            512
+  FR1b-psteep4-q2N6-stab       16
+  FR2-box                      4112
+  FR2-pari-q2                  30
+  FR2-pari-q3                  20
+  FR2-stab-q2                  20
+  FR2-stab-q3                  12
+  FR2-tc-q2                    250
+  FR2-tc-q3                    150
+  FR3-n8mix                    250
+  FR3-n8mix-box                16
+  FR3-n8mix-pari               25
+  FR3-n8mix-tooth              10
+VERDICT: GREEN — 6507 checks, 0 violations, 1.4 s

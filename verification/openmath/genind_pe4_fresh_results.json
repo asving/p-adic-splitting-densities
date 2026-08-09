@@ -1,0 +1,29 @@
+{
+ "elapsed_s": 1.4,
+ "tally": {
+  "FR1a-psteep3-q2N5": 32,
+  "FR1a-psteep3-q2N5-stab": 16,
+  "FR1a-psteep3-q3N5-c1z1": 243,
+  "FR1a-psteep3-q3N5-c1z1-stab": 16,
+  "FR1a-psteep3-q3N5-c1z2": 243,
+  "FR1a-psteep3-q3N5-c1z2-stab": 16,
+  "FR1a-psteep3-q3N5-c2z1": 243,
+  "FR1a-psteep3-q3N5-c2z1-stab": 16,
+  "FR1a-psteep3-q3N5-c2z2": 243,
+  "FR1a-psteep3-q3N5-c2z2-stab": 16,
+  "FR1b-psteep4-q2N6": 512,
+  "FR1b-psteep4-q2N6-stab": 16,
+  "FR2-box": 4112,
+  "FR2-pari-q2": 30,
+  "FR2-pari-q3": 20,
+  "FR2-stab-q2": 20,
+  "FR2-stab-q3": 12,
+  "FR2-tc-q2": 250,
+  "FR2-tc-q3": 150,
+  "FR3-n8mix": 250,
+  "FR3-n8mix-box": 16,
+  "FR3-n8mix-pari": 25,
+  "FR3-n8mix-tooth": 10
+ },
+ "violations": []
+}
