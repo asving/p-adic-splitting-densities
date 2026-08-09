@@ -1976,3 +1976,63 @@ is a scope re-reading only: the law's node form ("the cluster read AT
 THE NODE, whatever the node height is"), the [r1] corrected node
 D′h + 1 (machine-confirmed at (1,3,2) by PE1), and the σ dictionary
 are byte-untouched by it.
+
+### Dated erratum (2026-08-09, from HETOW PE1 F-1)
+
+**The seam.** LEMMA GENHN-T(b)′'s DISPLAY of the composed key's lift
+coefficients is gauge-naive: the displayed
+
+    Φ₂ := Φ′^{e₂f₂} − Σ_{t<f₂} ĉ_t · n̂(u₂(f₂−t)) · Φ′^{e₂t}
+
+with ĉ_t a plain lift of ψ₂'s coefficient c_t carries a wrap seam at
+η ≠ 1 frames. The normalizer monomials are not multiplicative —
+n̂(u₂)^{f₂−t} = n̂((f₂−t)u₂)·(x^{e₁}/π^{h})^{W(t)} with
+W(t) = ⌊(f₂−t)·i(u₂)/e₁⌋ — so the displayed coefficient's residue
+against S4's coherent normalizers (the ones (i)'s proof computes the
+side residual with) is c_t·η^{−W(t)}, not c_t: for the slot residues
+to equal the residual's coefficients (and for the key's roots to
+satisfy ψ₂(η₂(ξ)) = 0), the lifts need the correction absorbing that
+wrap factor,
+
+    ĉ_t := lift(c_t·η^{W(t)})   (per digit at f₁ ≥ 2:
+    the exact-height (LIFT) output L_{(f₂−t)u₂}(c_t·η^{W(t)})).
+
+This is the CORRECTED DISPLAY. At any frame where each
+c_t·(η^{W(t)} − 1) = 0 — in particular at η = 1 — corrected = naive.
+
+**Machine confirmation (frame X — the first η ≠ 1 tower contact).**
+HETOW passPE1 (`HETOW_passPE1_report.md` @ 5f821dc, fresh instrument
+`hetow_pe1_fresh.py`, dual PARI routes agreeing): p = 3, Φ′ = x² − 6
+(legal outer genre (3; 2,1,1), η = 2), (e₂,f₂) = (1,2), u₂ = 3,
+ψ₂ = Z² + Z + 2, W(0) = 1. The DISPLAYED key Φ′² + 3xΦ′ + 54 has
+PARI σ = {(4,1)} ≠ {(e₁e₂, f₁f₂)} = {(2,2)} and degenerate slot
+polynomial (Z+1)² — it is not the composed carrier, and (i)'s letter
+claim fails at its roots. The CORRECTED key Φ′² + 3xΦ′ + 108 has
+σ = {(2,2)} with slot polynomial = minpoly(η^{−1}η₂) = Z² + 2Z + 2.
+Re-confirmed at two further η ≠ 1 frames (p = 5, Φ′ = x² − 10 with
+ord(η) = 4; p = 5, Φ′ = x³ − 10 at e₁ = 3) by `hetowr1_supp.py`
+(sealed @ d0d3ca6, artifacts @ 5335ae3: GREEN, 29 gp jobs + 15 exact
+checks, 0 violations; the gauge-naive tooth fired at each of the
+three frames).
+
+**Scope.** T(b)′'s PROOF mechanism is unaffected: the carrier forcing
+chain, the composed slot lemma (ii), and the σ clauses (iii)–(v) hold
+AT THE CORRECTED KEY — the proof of (i) already computes the side
+residual through S4's coherent normalizers, and the polygon/clearance
+computation (L1216–1226) is unit-blind; what was wrong is the
+DISPLAY's lift prescription (L1136–1148, including the f₁ ≥ 2
+overflow parenthetical — see HETOW [r1] F-4 for the pinned
+no-overflow (LIFT) form) feeding that proof, which transcribed the
+gauge-naive lifts. This note's committed tower machine contact is
+untouched: `genhnr2_supp.py`'s tower frames sit at q = 2
+(Φ′ = x² − 2, K = F₂), where η = 1 forcibly and the two prescriptions
+coincide; the sealed battery had no tower-leaf rows (GENHN-BOX-3).
+Downstream consumption: HETOW_RECON_2026-08-09.md [r1 2026-08-09]
+carries the corrected key, the restated bridge lemmas HETOW-1/2
+re-proved at it, and the wrap-cocycle derivation (its §S2 preamble).
+
+**Freeze discipline.** GENHN stays ACCEPTED 2/2, text FROZEN,
+dated-appends-only: this erratum is an append; the body above it is
+byte-identical to the acceptance state (pre-append file md5
+13e087d62b4dad5a5724d337576f3411 = the file at acceptance commit
+ba3de2a, verified at this append).
