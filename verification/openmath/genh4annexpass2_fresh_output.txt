@@ -1,0 +1,12 @@
+FA1 (2,7,2) N<=4k branch: u0=9 RAM witnesses (incl. the b1@7 route) + u=2w+1 2SIDED witnesses, band-zero (A0 slot string EMPTY): 18/18 PARI match
+FA equal-char differ-leg (F_2[[t]]): 4/4 -- RAM witnesses 0 roots in F_4[[t]] (disc != 0); 2SIDED witnesses 4 roots in F_4[[t]], 0 in F_2[[t]]: the (c')(i) pair differs in BOTH characteristics at (2,7,2) and (2,12,2)
+FA2 (2,12,2) N-even branch: u0=13 RAM + u=15 2SIDED at band-zero, u=13=m RAM at band-pinned: 9/9 PARI match
+FA3 (3,13,2) N-odd branch: u0=N=13 RAM + u=15 2SIDED at band-zero: 8/8 PARI match
+FB1 note: S1=1+0y,d0=1 residual 1sq (recorded, ungated): sigma ((2, 2),)
+FB1 note: S1=1+2y,d0=2 residual 1sq (recorded, ungated): sigma ((2, 2),)
+FB1 note: S1=2+0y,d0=1 residual 1sq (recorded, ungated): sigma ((-1, -1),)
+FB1 note: S1=2+1y,d0=2 residual 1sq (recorded, ungated): sigma ((2, 2),)
+FB1 (3,10,1) 2w=N char-odd: 20 decided reads, 20/20 PARI match member-for-member; INERT continuations EXIST (8 members, first S1=0+1y,d0=1 -> {(1,4)}), each member also carrying the u=11 lift {(1,2),(1,2)}: the (c')(ii) differing pair machine-witnessed; 8 inert reads predicted by the F_9 residual computation
+FB2 (2,14,2) 2w=N residue-char-2: trace-leg predictions (S1 in {ybar, ybar+1}: u=14 INERT {(1,4)}; S1 = 1 tau-degenerate: {(1,2),(1,2)}; u=15 and A0=0 lifts {(1,2),(1,2)}): 9/9 PARI match -- FIRST machine exercise of the 2w=N leg; the (c')(ii) pair exists at the tau != 0 members
+FC (4,11,2) over W(F_4) -- FIRST non-prime-q exercise of the consumed clause GENH4-7'(b): 36/36 members (3 pins x 3 band values x 4 lifts incl. A0=0 corner and u=N) read relative sigma {(1,2),(1,2)} over K_v; u>=N and u<=m verified on the valuation layer; wrong-floor teeth FIRED 2/2 (rel {(2,2)})
+VERDICT: GREEN (0 violations) 0.4s

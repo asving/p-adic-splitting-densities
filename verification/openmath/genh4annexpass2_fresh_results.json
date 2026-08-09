@@ -1,0 +1,15 @@
+{
+ "checks": {
+  "FA1": 18,
+  "FA2": 9,
+  "FA3": 8,
+  "FAeq": 4,
+  "FB1-inert": 8,
+  "FB2": 9,
+  "FC": 36,
+  "FC-teeth": 2
+ },
+ "elapsed_s": 0.4,
+ "verdict": "GREEN",
+ "violations": 0
+}
