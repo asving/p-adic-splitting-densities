@@ -13380,3 +13380,42 @@ GENH4 r3 (two-token + remark scoping; re-derive from GENH4-3(i),
 NOT from the PE3 sentence) + HE7 PE2 (clean-count attempt; prime
 surface = the never-attacked §S5.8). TAMEK v3 (wx03dfg69) in
 flight.**
+
+---
+
+## TAMEK COMPLETE (attempt 3, staged-write rules held — 11 incremental commits a06bac3…eec4738): "YES to nice, NO to Cohen–Lenstra" — CONJ-MEAN refuted by its own preregistered falsifier; exact unramified law via divisor-tower telescope; letter sensitivity PROVED at n=2 — 2026-08-09
+
+Asvin's question answered in TAMEK_2026-08-08.md (§S0 = his overview).
+(1) LEMMA TK-0 (proved from scratch, ~90 pairs brute-verified):
+#Hom(L,K) = gcd(e′, q^f−1) · #{j < f′ : a·r·q^j ≡ c mod gcd} —
+divisibility + ONE letter congruence. (2) X_K IS the corpus's first
+letter-sensitive statistic, even at the mean: the two (2,2)-fields
+over ℚ₃ (same shape, different letters) split E[X_K] exactly — 2 vs
+2q/(q+1) at n=2 (THEOREM TK-Q, proved for EVERY tame K: P(X=2) =
+Haar mass of the quadratic classes m with √m ∈ K), 0.374 ± 0.006
+apart at n=7. (3) THE CL GUESS DIED HONORABLY: E^proj → Σ_{L⊆K}
+q^{−v(disc)} (embeddings × 1/#Aut × Serre mass) sealed as CONJ-MEAN
+with falsifier attached; the battery (3.3M samples, exact O_K root
+search, 16 fields, p ∈ {3,5,7}, n ≤ 7; 202/207 with the 5 fails =
+the falsifier FIRING; 4/4 teeth incl. wrong-twist mutant) killed it
+at exactly the preregistered cells. It even fails at EXACT n=3 for
+(3,1) while holding perfectly for quadratics — which is what made
+it look right. MECHANISM: cross-degree production (a rational
+disc's deep cluster re-enters the full monic law and emits
+inert-factor roots — discs do NOT carry independent per-field
+masses). The mass formula is only the q → ∞ shadow. (4) THE TRUE
+LAW (unramified K SETTLED): divisor-tower telescope over closed
+points of degree δ | f; 17/17 sealed measurements ≤ 1.8σ; EXACT
+stabilization at n = 2f; closed form at f=2:
+E = q(2q⁶+2q⁵+3q⁴+2q³+3q²+q+1)/((q+1)(q²+1)Φ₅) for n ≥ 4. SURPRISE:
+the mean DIPS at n=3 for ramified K (1 → 1 − Φ₆/Φ₅, never returns).
+(5) Letter equidistribution: single-face uniformity PROVED at
+measure level (TK-2 — NOT derivable from the count layer; J-D0 is
+its complement); n ≤ 3 instances proved; joint n ≥ 4 = TK-BOX-2.
+OPEN BOXES: TK-BOX-1 ramified stable value (≈0.933 at q=3 ram quad,
+telescope needs shallow-face source terms); TK-BOX-3 wild K;
+TK-BOX-5 literature UNSEARCHED (all novelty labels (c), consistent
+with the standing BCFG-cite embargo). Grade 0/2; its hostile arc
+joins the queue. Wave-4 status at this fold: GENH4 r3 LANDED
+(4b0d946, trichotomy re-derived not transcribed); GENIND r2 +
+HE7 PE2 still in flight.
