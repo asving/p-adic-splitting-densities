@@ -13728,3 +13728,64 @@ minors) + GENIND PE5 (first-clean attempt, S14 checklist) +
 HE7-ANNEX-PASS (scoped hostile pass on ANNEX F-1 + ANNEX R — the
 annex stack is unpassed; body 2/2 not at stake, the annexes need
 their own clean). Site refresh next. GENHN erratum queue: 3 items.**
+
+---
+
+## WAVE 9 FOLDED (w9w5e4aoe, 3/3): HE7 ANNEX STACK 1/2 (CLEAN, ϑ-tooth 48/96 — the challenge repair now machine-load-bearing in FULL) · GENH4 ANNEX R COMPLETE (old gloss COUNT-REFUTED at exactly half; first char-p F-SPLTAIL σ) · GENIND PE5 = 0C+1G+2m (FOURTH record-integrity round → POLICY CHANGE: enumerative records only) — WAVE 10: GENIND r5 + HE7 ANNEX-PASS #2 + GENH4 ANNEX-PASS #1 — 2026-08-09
+
+**HE7 ANNEX PASS (8a0bc5b → 1857f20 → 4a613d8): CLEAN scoped to the
+stack — 0C, 0G, 1 MINOR (a shared-counter run-record sentence: 102 =
+47 corrected-chain + 55 naive re-reads) + 3 remarks (each closed
+inside the stack's own disclosures). All six charged surfaces CLEAN:
+the cocycle recursion re-derived (c ∈ {0,1} confirmed; levels 1–2
+reproduce §S1 symbol-for-symbol); R1-b survives ϑ-collisions; R1-c
+needs no g_i = 1; HE7-13′(a)–(e) re-derived; R2-a covers the refined
+reducible key. FRESH ROUTE: the K₃ = F_{p²} (g₂ = 2) family — BOTH
+annex legs' disclosed hole, first coverage anywhere — 96/96 PARI,
+ϑ-TOOTH 48/96 flips when the within-class unit is dropped, 34/34
+inverse-ϑ refine contract, + 44,328 exact symbolic cocycle checks.
+Stack at 1/2; one more clean = the annex stack accepted and the
+Codex challenge FULLY discharged. (Caution noted: the verifier
+deleted a stale untracked q9.pid at repo root — predated its
+session, likely PE5's completed GF(9) walker; harmless here, but
+pidfile hygiene stays: agents never delete others' pidfiles.)
+
+**GENH4 ANNEX R (6272cd4 seal → b10a5a7): the F2 repair with
+teeth.** ANNEX-LEMMA GENH4-7′ (leaf-sense hidden A₀ with the k−1
+band digits FREE; label lift-sound over ALL band completions, both
+characteristics; k = 1 degenerates to GENH4-7). The old gloss's
+self-contradiction displayed. MACHINE: first k ≥ 2 exercise ever —
+(2,11,2), all 24,576 SPLTAIL members enumerated, old-gloss family
+= 12,288 = EXACTLY HALF (count-refuted); 96/96 PARI char-0 + 96/96
+char-p (Panayi recursion — first char-p σ contact for F-SPLTAIL);
+tooth 4/4. R-F3 frame restated in L/O_L (non-maximality witnesses
+displayed); R-F4 FULLY displayed, no box needed (the even-N char-2
+leg bypassed via RAM(N+1); inert-continuation existence proved both
+characteristics). GENHN.A(i) erratum queued (GENHN item 3).
+Byte-freeze 3-way. Annex stack unpassed → scoped pass wave 10.
+
+**GENIND PE5 (29ad62f → 74e9004 → bd9bce1): 0C + 1 GAP + 2 MINOR.**
+PE5-G1: S14's universal-coverage sentences FALSE by witness — a
+hyphenated "first-visible" sentence matched NONE of the nine grep
+patterns, was never audited, and displays a false f-first entry law
+(true: 6k same-side / 2k+4h distinct-side; conclusion survives).
+FOURTH consecutive record-integrity finding, inside the sweep built
+to end them. THE POLICY CHANGE (r5's charge, and a STANDING RULE for
+all notes henceforth): RECORD SENTENCES MAY NOT QUANTIFY
+UNIVERSALLY. "Every X was checked" is banned; records state
+enumerated lists with evidence ("checked: [list]") or
+pattern-scoped claims ("among sites matched by P1–P9"). A universal
+is falsified by any coverage gap; an enumeration cannot be. m1 the
+witness display; m2 same-side composite blocks missing from step
+(1)'s enumeration (covered by 6(a)'s gloss). CLEAN otherwise: the
+r4 mathematics held end-to-end (capped window re-derived; all four
+committed legs re-run GREEN). FRESH ROUTE: NINEMIX n=9 — first
+n ≥ 9 evidence, all four GENIND-6 block types in ONE genre — +
+SAMESIDE 59,049 exhaustive (corpus-first same-side co-children leg)
++ STEEPSCAN; 109,146/0.
+
+**WAVE 10 (dispatched this entry): GENIND r5 (the enumerative-
+records rewrite + the f-first law fix + m2, SMALL) + HE7 ANNEX-PASS
+#2 (stack acceptance attempt) + GENH4 ANNEX-PASS #1 (scoped, stack
+1st clean attempt). Then: site refresh; the W-12/HEX3/GENHN arcs;
+Codex W-MULT-DCX + r40c/VC40c legs.**
