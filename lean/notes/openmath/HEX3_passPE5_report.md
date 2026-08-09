@@ -237,7 +237,10 @@ states/s). Protocol: validate on committed rows first, then extend.
     tightest);
   - **(Fqt,2,11): u = 1,840,640** — 1,073,741,824 states; ALPHA(3) =
     (4096, 2048) = ((q−1)q^{3N−3−18}, q⁹u(2)) ✓; 21 realized keys;
-  - **(Fqt,2,12): u = [PENDING — run in flight]** — 8,589,934,592 states;
+  - **(Fqt,2,12): u = 7,936,000** — 8,589,934,592 states (the largest
+    exact enumeration in this corpus, ~8.6B states single run); 26
+    realized keys ALL exact both directions; ALPHA(3) = (32768, 8192) =
+    ((q−1)q^{3N−3−18}, q⁹u(3)) ✓;
   - **(Fqt,3,7): u = 734,589** — 387,420,489 states, 9 keys;
   - **(Fqt,4,6): u = 1,387,264** — 1,073,741,824 states, non-prime depth
     extension.
@@ -262,9 +265,12 @@ warrant is the post-r4 W-12 S2.3 restricted to disc ≠ 0 lifts, under
 which U₃^σ ≤ U₃^conv is intact; m2: the L438 parenthetical + its
 "fully-hidden" gloss). The law itself now stands machine-exact on a
 window strictly deeper than anything the battery or any prior pass
-touched (N = 10, 11 at q = 2 with the first k = 3 stratum keys, N = 7 at
-q = 3, N = 6 at q = 4) and at two new prime powers (8 and 9 at N = 4,
-16 at N = 3). **Counter stays 0/2 per protocol; r4 owed on m1 + m2, then
+touched (N = 10, 11, 12 at q = 2 with the first k = 3 stratum keys, N = 7
+at q = 3, N = 6 at q = 4) and at new prime-power cells ((8,4), (9,4),
+(16,3)). Structural bonus: the reader's own invariants (at most ONE
+repeated-root side per read state, always on a width-comparable side —
+the S2 partition's uniqueness) were hard asserts in my C reader and
+never fired across ~11.5B states read, depths no instrument had touched. **Counter stays 0/2 per protocol; r4 owed on m1 + m2, then
 PE6 is the next pass.** Per-protocol note for the adjudicator: both
 findings are inherited-phrasing corrections that W-12's own arc already
 priced ("owed at HEX3's own arc"); if r4 lands as the two one-clause
