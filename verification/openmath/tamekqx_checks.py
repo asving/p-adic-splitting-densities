@@ -30,6 +30,13 @@ numeric q=3 ONLY, against the COMMITTED mean recursion tamek_unram_exact.E_mean
 sanity (surfaced the binomial(q,2) expand_func fix, pre-seal repair, non-predicate).
 No k>=2 value, no symbolic f>=2 value, and no menu-vs-recursion comparison was
 computed before sealing.
+ARC INTEGRITY (run 1 aborted, disclosed): the first scoring run FAILed P2 at n>=4
+with byte-identical menu/recursion displays -- an INSTRUMENT defect, not a math
+mismatch: sympify of the JSON menus created a plain Symbol('q') distinct from the
+module's positive Symbol('q'), so the difference could not cancel. Repair = bind
+sympify locals to the module symbol (one line, manifestly non-predicate; no
+predicate, weight, menu row, or recursion coefficient touched). Run 2 is the
+scoring run; run-1 log kept as tamekqx_run1_aborted.log.
 """
 import json, os, sys, time, ast
 sys.setrecursionlimit(10000)
@@ -211,7 +218,7 @@ def _load_json_menu(fname, key):
     out = {}
     for kk, vv in raw.items():
         tau = tuple(tuple(x) for x in ast.literal_eval(kk))
-        out[tau] = sp.sympify(vv)
+        out[tau] = sp.sympify(vv, locals={"q": q})  # bind to THIS module's q symbol
     return out
 
 def X_K(tau, f):
