@@ -1,0 +1,6 @@
+=== GENHN passPE4 fresh instrument (sealed predictions in docstring) ===
+[FR1] 26 slot legs; offset-tooth mismatches 12
+[FR2-diag] deeper-band pair sigma (unscored): d0=[[2, 4]] d1=[[2, 4]] (undercut 10 vs 9 verified above)
+[FR2] 24 sigma jobs both routes; swap-tooth 2/2
+[FR3] rider u3=23 data + u3=21 identity + NEW u3=25 key: devs/pins/carriers/ascents/leaves checked; below-floor p0=95<100 member PARI sigma = [[4, 1], [12, 1]] (naive {(16,1)} refused)
+=== VERDICT: GREEN -- 145 checks, 0 violations, teeth {'T-SLOT-OFF': 12, 'T-DICT-F16': 2, 'T-FLOOR3': 1} (1.2s) ===
