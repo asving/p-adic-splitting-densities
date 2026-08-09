@@ -364,4 +364,23 @@ T(b)′-mechanism iteration (carrier via GENTOW2-A(a), slot inputs via
 (c)+(d), read via T(b)′(iii) at the level-3 basis), i.e. item (6)
 reduces to the SAME acceptance state as items (1)–(5): no residue
 special to depth ≥ 3 remains open beyond them.
-## S8. Machine battery (gentow2_checks.py): 5 committed + 2 NEW[TODO]
+## S8. MACHINE BATTERY (gentow2_checks.py): 5 committed + 2 NEW
+
+**SEAL STATE: PENDING** — verdict lands in the second seal commit,
+read off the run artifacts only. Runner:
+verification/openmath/gentow2_checks.py, preregistered predictions in
+its module docstring (P-W1/P-W2/P-W3/4/5/P-N1/P-N2 + TOOTH-T1/T2),
+written BEFORE the first full run. Witness inventory: the 5 committed
+ones (W1 = the r3 box witness Φ₂² − 16Φ′; W2 = the PE3-F1/FR3
+uncancelled-carry key Φ₂² − 16xΦ′; W3–W5 = the three SUPP-C n = 16
+leaves) + 2 NEW depth-3 witnesses at other (e_i, f_i) profiles
+(N1: the f₂ = 2 tower (2,1,1,2,2,1), Φ₃ = (Φ′²−2xΦ′−8)² − 64x;
+N2: the f₃ = 2 branch (2,1,2,1,1,2), Φ₃ = Φ₂² − 2xΦ′Φ₂ − 32x — the
+first machine witness ANYWHERE of the K₂-digit f₃ ≥ 2 clause, the
+gap PE3 remark R1 disclosed). Oracle A = exact integer pins/hull/
+residual-support/Bareiss-resultants; oracle B = PARI/gp
+(factorpadic → per-factor idealprimedec + nfeltval intermediate
+triples). Teeth: T1 = a floor-breaching recipe (u₃ = 9 < 10) whose
+Φ′-development must be flagged NOT one-sided (machine-couples (α) to
+the (β) floor); T2 = a reducible-residual recipe (R = (y+1)²) that
+must factor [(4,1),(4,1)] — the polygon side alone must NOT certify.
