@@ -1,0 +1,2373 @@
+{
+ "checks": [
+  {
+   "name": "TK0 (3, 2, 1, 0) <- L(2, 1, 0)",
+   "pass": true,
+   "info": "brute=2 formula=2"
+  },
+  {
+   "name": "TK0 (3, 2, 1, 0) <- L(2, 1, 1)",
+   "pass": true,
+   "info": "brute=0 formula=0"
+  },
+  {
+   "name": "TK0 (3, 2, 1, 0) <- L(4, 1, 0)",
+   "pass": true,
+   "info": "brute=0 formula=0"
+  },
+  {
+   "name": "TK0 (3, 2, 1, 0) <- L(4, 1, 1)",
+   "pass": true,
+   "info": "brute=0 formula=0"
+  },
+  {
+   "name": "TK0 (3, 2, 1, 0) <- L(1, 2, 1)",
+   "pass": true,
+   "info": "brute=0 formula=0"
+  },
+  {
+   "name": "TK0 (3, 2, 1, 0) <- L(1, 3, 1)",
+   "pass": true,
+   "info": "brute=0 formula=0"
+  },
+  {
+   "name": "TK0 (3, 2, 1, 0) <- L(2, 2, 1)",
+   "pass": true,
+   "info": "brute=0 formula=0"
+  },
+  {
+   "name": "TK0 (3, 2, 1, 1) <- L(2, 1, 0)",
+   "pass": true,
+   "info": "brute=0 formula=0"
+  },
+  {
+   "name": "TK0 (3, 2, 1, 1) <- L(2, 1, 1)",
+   "pass": true,
+   "info": "brute=2 formula=2"
+  },
+  {
+   "name": "TK0 (3, 2, 1, 1) <- L(4, 1, 0)",
+   "pass": true,
+   "info": "brute=0 formula=0"
+  },
+  {
+   "name": "TK0 (3, 2, 1, 1) <- L(4, 1, 1)",
+   "pass": true,
+   "info": "brute=0 formula=0"
+  },
+  {
+   "name": "TK0 (3, 2, 1, 1) <- L(1, 2, 1)",
+   "pass": true,
+   "info": "brute=0 formula=0"
+  },
+  {
+   "name": "TK0 (3, 2, 1, 1) <- L(1, 3, 1)",
+   "pass": true,
+   "info": "brute=0 formula=0"
+  },
+  {
+   "name": "TK0 (3, 2, 1, 1) <- L(2, 2, 1)",
+   "pass": true,
+   "info": "brute=0 formula=0"
+  },
+  {
+   "name": "TK0 (3, 1, 2, 0) <- L(2, 1, 0)",
+   "pass": true,
+   "info": "brute=0 formula=0"
+  },
+  {
+   "name": "TK0 (3, 1, 2, 0) <- L(2, 1, 1)",
+   "pass": true,
+   "info": "brute=0 formula=0"
+  },
+  {
+   "name": "TK0 (3, 1, 2, 0) <- L(4, 1, 0)",
+   "pass": true,
+   "info": "brute=0 formula=0"
+  },
+  {
+   "name": "TK0 (3, 1, 2, 0) <- L(4, 1, 1)",
+   "pass": true,
+   "info": "brute=0 formula=0"
+  },
+  {
+   "name": "TK0 (3, 1, 2, 0) <- L(1, 2, 1)",
+   "pass": true,
+   "info": "brute=2 formula=2"
+  },
+  {
+   "name": "TK0 (3, 1, 2, 0) <- L(1, 3, 1)",
+   "pass": true,
+   "info": "brute=0 formula=0"
+  },
+  {
+   "name": "TK0 (3, 1, 2, 0) <- L(2, 2, 1)",
+   "pass": true,
+   "info": "brute=0 formula=0"
+  },
+  {
+   "name": "TK0 (3, 1, 3, 0) <- L(2, 1, 0)",
+   "pass": true,
+   "info": "brute=0 formula=0"
+  },
+  {
+   "name": "TK0 (3, 1, 3, 0) <- L(2, 1, 1)",
+   "pass": true,
+   "info": "brute=0 formula=0"
+  },
+  {
+   "name": "TK0 (3, 1, 3, 0) <- L(4, 1, 0)",
+   "pass": true,
+   "info": "brute=0 formula=0"
+  },
+  {
+   "name": "TK0 (3, 1, 3, 0) <- L(4, 1, 1)",
+   "pass": true,
+   "info": "brute=0 formula=0"
+  },
+  {
+   "name": "TK0 (3, 1, 3, 0) <- L(1, 2, 1)",
+   "pass": true,
+   "info": "brute=0 formula=0"
+  },
+  {
+   "name": "TK0 (3, 1, 3, 0) <- L(1, 3, 1)",
+   "pass": true,
+   "info": "brute=3 formula=3"
+  },
+  {
+   "name": "TK0 (3, 1, 3, 0) <- L(2, 2, 1)",
+   "pass": true,
+   "info": "brute=0 formula=0"
+  },
+  {
+   "name": "TK0 (3, 2, 2, 0) <- L(2, 1, 0)",
+   "pass": true,
+   "info": "brute=2 formula=2"
+  },
+  {
+   "name": "TK0 (3, 2, 2, 0) <- L(2, 1, 1)",
+   "pass": true,
+   "info": "brute=2 formula=2"
+  },
+  {
+   "name": "TK0 (3, 2, 2, 0) <- L(4, 1, 0)",
+   "pass": true,
+   "info": "brute=0 formula=0"
+  },
+  {
+   "name": "TK0 (3, 2, 2, 0) <- L(4, 1, 1)",
+   "pass": true,
+   "info": "brute=0 formula=0"
+  },
+  {
+   "name": "TK0 (3, 2, 2, 0) <- L(1, 2, 1)",
+   "pass": true,
+   "info": "brute=2 formula=2"
+  },
+  {
+   "name": "TK0 (3, 2, 2, 0) <- L(1, 3, 1)",
+   "pass": true,
+   "info": "brute=0 formula=0"
+  },
+  {
+   "name": "TK0 (3, 2, 2, 0) <- L(2, 2, 1)",
+   "pass": true,
+   "info": "brute=0 formula=0"
+  },
+  {
+   "name": "TK0 (3, 2, 2, 1) <- L(2, 1, 0)",
+   "pass": true,
+   "info": "brute=0 formula=0"
+  },
+  {
+   "name": "TK0 (3, 2, 2, 1) <- L(2, 1, 1)",
+   "pass": true,
+   "info": "brute=0 formula=0"
+  },
+  {
+   "name": "TK0 (3, 2, 2, 1) <- L(4, 1, 0)",
+   "pass": true,
+   "info": "brute=0 formula=0"
+  },
+  {
+   "name": "TK0 (3, 2, 2, 1) <- L(4, 1, 1)",
+   "pass": true,
+   "info": "brute=0 formula=0"
+  },
+  {
+   "name": "TK0 (3, 2, 2, 1) <- L(1, 2, 1)",
+   "pass": true,
+   "info": "brute=2 formula=2"
+  },
+  {
+   "name": "TK0 (3, 2, 2, 1) <- L(1, 3, 1)",
+   "pass": true,
+   "info": "brute=0 formula=0"
+  },
+  {
+   "name": "TK0 (3, 2, 2, 1) <- L(2, 2, 1)",
+   "pass": true,
+   "info": "brute=4 formula=4"
+  },
+  {
+   "name": "TK0 (3, 4, 1, 0) <- L(2, 1, 0)",
+   "pass": true,
+   "info": "brute=2 formula=2"
+  },
+  {
+   "name": "TK0 (3, 4, 1, 0) <- L(2, 1, 1)",
+   "pass": true,
+   "info": "brute=0 formula=0"
+  },
+  {
+   "name": "TK0 (3, 4, 1, 0) <- L(4, 1, 0)",
+   "pass": true,
+   "info": "brute=2 formula=2"
+  },
+  {
+   "name": "TK0 (3, 4, 1, 0) <- L(4, 1, 1)",
+   "pass": true,
+   "info": "brute=0 formula=0"
+  },
+  {
+   "name": "TK0 (3, 4, 1, 0) <- L(1, 2, 1)",
+   "pass": true,
+   "info": "brute=0 formula=0"
+  },
+  {
+   "name": "TK0 (3, 4, 1, 0) <- L(1, 3, 1)",
+   "pass": true,
+   "info": "brute=0 formula=0"
+  },
+  {
+   "name": "TK0 (3, 4, 1, 0) <- L(2, 2, 1)",
+   "pass": true,
+   "info": "brute=0 formula=0"
+  },
+  {
+   "name": "TK0 (5, 2, 1, 0) <- L(2, 1, 0)",
+   "pass": true,
+   "info": "brute=2 formula=2"
+  },
+  {
+   "name": "TK0 (5, 2, 1, 0) <- L(2, 1, 1)",
+   "pass": true,
+   "info": "brute=0 formula=0"
+  },
+  {
+   "name": "TK0 (5, 2, 1, 0) <- L(3, 1, 0)",
+   "pass": true,
+   "info": "brute=0 formula=0"
+  },
+  {
+   "name": "TK0 (5, 2, 1, 0) <- L(4, 1, 0)",
+   "pass": true,
+   "info": "brute=0 formula=0"
+  },
+  {
+   "name": "TK0 (5, 2, 1, 0) <- L(4, 1, 1)",
+   "pass": true,
+   "info": "brute=0 formula=0"
+  },
+  {
+   "name": "TK0 (5, 2, 1, 0) <- L(1, 2, 1)",
+   "pass": true,
+   "info": "brute=0 formula=0"
+  },
+  {
+   "name": "TK0 (5, 2, 1, 0) <- L(2, 2, 1)",
+   "pass": true,
+   "info": "brute=0 formula=0"
+  },
+  {
+   "name": "TK0 (5, 2, 1, 1) <- L(2, 1, 0)",
+   "pass": true,
+   "info": "brute=0 formula=0"
+  },
+  {
+   "name": "TK0 (5, 2, 1, 1) <- L(2, 1, 1)",
+   "pass": true,
+   "info": "brute=2 formula=2"
+  },
+  {
+   "name": "TK0 (5, 2, 1, 1) <- L(3, 1, 0)",
+   "pass": true,
+   "info": "brute=0 formula=0"
+  },
+  {
+   "name": "TK0 (5, 2, 1, 1) <- L(4, 1, 0)",
+   "pass": true,
+   "info": "brute=0 formula=0"
+  },
+  {
+   "name": "TK0 (5, 2, 1, 1) <- L(4, 1, 1)",
+   "pass": true,
+   "info": "brute=0 formula=0"
+  },
+  {
+   "name": "TK0 (5, 2, 1, 1) <- L(1, 2, 1)",
+   "pass": true,
+   "info": "brute=0 formula=0"
+  },
+  {
+   "name": "TK0 (5, 2, 1, 1) <- L(2, 2, 1)",
+   "pass": true,
+   "info": "brute=0 formula=0"
+  },
+  {
+   "name": "TK0 (5, 3, 1, 0) <- L(2, 1, 0)",
+   "pass": true,
+   "info": "brute=0 formula=0"
+  },
+  {
+   "name": "TK0 (5, 3, 1, 0) <- L(2, 1, 1)",
+   "pass": true,
+   "info": "brute=0 formula=0"
+  },
+  {
+   "name": "TK0 (5, 3, 1, 0) <- L(3, 1, 0)",
+   "pass": true,
+   "info": "brute=1 formula=1"
+  },
+  {
+   "name": "TK0 (5, 3, 1, 0) <- L(4, 1, 0)",
+   "pass": true,
+   "info": "brute=0 formula=0"
+  },
+  {
+   "name": "TK0 (5, 3, 1, 0) <- L(4, 1, 1)",
+   "pass": true,
+   "info": "brute=0 formula=0"
+  },
+  {
+   "name": "TK0 (5, 3, 1, 0) <- L(1, 2, 1)",
+   "pass": true,
+   "info": "brute=0 formula=0"
+  },
+  {
+   "name": "TK0 (5, 3, 1, 0) <- L(2, 2, 1)",
+   "pass": true,
+   "info": "brute=0 formula=0"
+  },
+  {
+   "name": "TK0 (5, 1, 2, 0) <- L(2, 1, 0)",
+   "pass": true,
+   "info": "brute=0 formula=0"
+  },
+  {
+   "name": "TK0 (5, 1, 2, 0) <- L(2, 1, 1)",
+   "pass": true,
+   "info": "brute=0 formula=0"
+  },
+  {
+   "name": "TK0 (5, 1, 2, 0) <- L(3, 1, 0)",
+   "pass": true,
+   "info": "brute=0 formula=0"
+  },
+  {
+   "name": "TK0 (5, 1, 2, 0) <- L(4, 1, 0)",
+   "pass": true,
+   "info": "brute=0 formula=0"
+  },
+  {
+   "name": "TK0 (5, 1, 2, 0) <- L(4, 1, 1)",
+   "pass": true,
+   "info": "brute=0 formula=0"
+  },
+  {
+   "name": "TK0 (5, 1, 2, 0) <- L(1, 2, 1)",
+   "pass": true,
+   "info": "brute=2 formula=2"
+  },
+  {
+   "name": "TK0 (5, 1, 2, 0) <- L(2, 2, 1)",
+   "pass": true,
+   "info": "brute=0 formula=0"
+  },
+  {
+   "name": "TK0 (7, 3, 1, 0) <- L(2, 1, 0)",
+   "pass": true,
+   "info": "brute=0 formula=0"
+  },
+  {
+   "name": "TK0 (7, 3, 1, 0) <- L(2, 1, 1)",
+   "pass": true,
+   "info": "brute=0 formula=0"
+  },
+  {
+   "name": "TK0 (7, 3, 1, 0) <- L(3, 1, 0)",
+   "pass": true,
+   "info": "brute=3 formula=3"
+  },
+  {
+   "name": "TK0 (7, 3, 1, 0) <- L(3, 1, 1)",
+   "pass": true,
+   "info": "brute=0 formula=0"
+  },
+  {
+   "name": "TK0 (7, 3, 1, 0) <- L(3, 1, 2)",
+   "pass": true,
+   "info": "brute=0 formula=0"
+  },
+  {
+   "name": "TK0 (7, 3, 1, 0) <- L(4, 1, 0)",
+   "pass": true,
+   "info": "brute=0 formula=0"
+  },
+  {
+   "name": "TK0 (7, 3, 1, 0) <- L(4, 1, 1)",
+   "pass": true,
+   "info": "brute=0 formula=0"
+  },
+  {
+   "name": "TK0 (7, 3, 1, 0) <- L(1, 2, 1)",
+   "pass": true,
+   "info": "brute=0 formula=0"
+  },
+  {
+   "name": "TK0 (7, 3, 1, 0) <- L(2, 2, 1)",
+   "pass": true,
+   "info": "brute=0 formula=0"
+  },
+  {
+   "name": "TK0 (7, 3, 1, 1) <- L(2, 1, 0)",
+   "pass": true,
+   "info": "brute=0 formula=0"
+  },
+  {
+   "name": "TK0 (7, 3, 1, 1) <- L(2, 1, 1)",
+   "pass": true,
+   "info": "brute=0 formula=0"
+  },
+  {
+   "name": "TK0 (7, 3, 1, 1) <- L(3, 1, 0)",
+   "pass": true,
+   "info": "brute=0 formula=0"
+  },
+  {
+   "name": "TK0 (7, 3, 1, 1) <- L(3, 1, 1)",
+   "pass": true,
+   "info": "brute=3 formula=3"
+  },
+  {
+   "name": "TK0 (7, 3, 1, 1) <- L(3, 1, 2)",
+   "pass": true,
+   "info": "brute=0 formula=0"
+  },
+  {
+   "name": "TK0 (7, 3, 1, 1) <- L(4, 1, 0)",
+   "pass": true,
+   "info": "brute=0 formula=0"
+  },
+  {
+   "name": "TK0 (7, 3, 1, 1) <- L(4, 1, 1)",
+   "pass": true,
+   "info": "brute=0 formula=0"
+  },
+  {
+   "name": "TK0 (7, 3, 1, 1) <- L(1, 2, 1)",
+   "pass": true,
+   "info": "brute=0 formula=0"
+  },
+  {
+   "name": "TK0 (7, 3, 1, 1) <- L(2, 2, 1)",
+   "pass": true,
+   "info": "brute=0 formula=0"
+  },
+  {
+   "name": "TK0 (7, 3, 1, 2) <- L(2, 1, 0)",
+   "pass": true,
+   "info": "brute=0 formula=0"
+  },
+  {
+   "name": "TK0 (7, 3, 1, 2) <- L(2, 1, 1)",
+   "pass": true,
+   "info": "brute=0 formula=0"
+  },
+  {
+   "name": "TK0 (7, 3, 1, 2) <- L(3, 1, 0)",
+   "pass": true,
+   "info": "brute=0 formula=0"
+  },
+  {
+   "name": "TK0 (7, 3, 1, 2) <- L(3, 1, 1)",
+   "pass": true,
+   "info": "brute=0 formula=0"
+  },
+  {
+   "name": "TK0 (7, 3, 1, 2) <- L(3, 1, 2)",
+   "pass": true,
+   "info": "brute=3 formula=3"
+  },
+  {
+   "name": "TK0 (7, 3, 1, 2) <- L(4, 1, 0)",
+   "pass": true,
+   "info": "brute=0 formula=0"
+  },
+  {
+   "name": "TK0 (7, 3, 1, 2) <- L(4, 1, 1)",
+   "pass": true,
+   "info": "brute=0 formula=0"
+  },
+  {
+   "name": "TK0 (7, 3, 1, 2) <- L(1, 2, 1)",
+   "pass": true,
+   "info": "brute=0 formula=0"
+  },
+  {
+   "name": "TK0 (7, 3, 1, 2) <- L(2, 2, 1)",
+   "pass": true,
+   "info": "brute=0 formula=0"
+  },
+  {
+   "name": "TK0 (7, 1, 2, 0) <- L(2, 1, 0)",
+   "pass": true,
+   "info": "brute=0 formula=0"
+  },
+  {
+   "name": "TK0 (7, 1, 2, 0) <- L(2, 1, 1)",
+   "pass": true,
+   "info": "brute=0 formula=0"
+  },
+  {
+   "name": "TK0 (7, 1, 2, 0) <- L(3, 1, 0)",
+   "pass": true,
+   "info": "brute=0 formula=0"
+  },
+  {
+   "name": "TK0 (7, 1, 2, 0) <- L(3, 1, 1)",
+   "pass": true,
+   "info": "brute=0 formula=0"
+  },
+  {
+   "name": "TK0 (7, 1, 2, 0) <- L(3, 1, 2)",
+   "pass": true,
+   "info": "brute=0 formula=0"
+  },
+  {
+   "name": "TK0 (7, 1, 2, 0) <- L(4, 1, 0)",
+   "pass": true,
+   "info": "brute=0 formula=0"
+  },
+  {
+   "name": "TK0 (7, 1, 2, 0) <- L(4, 1, 1)",
+   "pass": true,
+   "info": "brute=0 formula=0"
+  },
+  {
+   "name": "TK0 (7, 1, 2, 0) <- L(1, 2, 1)",
+   "pass": true,
+   "info": "brute=2 formula=2"
+  },
+  {
+   "name": "TK0 (7, 1, 2, 0) <- L(2, 2, 1)",
+   "pass": true,
+   "info": "brute=0 formula=0"
+  },
+  {
+   "name": "TK0 (7, 2, 1, 0) <- L(2, 1, 0)",
+   "pass": true,
+   "info": "brute=2 formula=2"
+  },
+  {
+   "name": "TK0 (7, 2, 1, 0) <- L(2, 1, 1)",
+   "pass": true,
+   "info": "brute=0 formula=0"
+  },
+  {
+   "name": "TK0 (7, 2, 1, 0) <- L(3, 1, 0)",
+   "pass": true,
+   "info": "brute=0 formula=0"
+  },
+  {
+   "name": "TK0 (7, 2, 1, 0) <- L(3, 1, 1)",
+   "pass": true,
+   "info": "brute=0 formula=0"
+  },
+  {
+   "name": "TK0 (7, 2, 1, 0) <- L(3, 1, 2)",
+   "pass": true,
+   "info": "brute=0 formula=0"
+  },
+  {
+   "name": "TK0 (7, 2, 1, 0) <- L(4, 1, 0)",
+   "pass": true,
+   "info": "brute=0 formula=0"
+  },
+  {
+   "name": "TK0 (7, 2, 1, 0) <- L(4, 1, 1)",
+   "pass": true,
+   "info": "brute=0 formula=0"
+  },
+  {
+   "name": "TK0 (7, 2, 1, 0) <- L(1, 2, 1)",
+   "pass": true,
+   "info": "brute=0 formula=0"
+  },
+  {
+   "name": "TK0 (7, 2, 1, 0) <- L(2, 2, 1)",
+   "pass": true,
+   "info": "brute=0 formula=0"
+  },
+  {
+   "name": "TKQ mean n=2 (3, 2, 1, 0)",
+   "pass": true,
+   "info": "mc=1.0467 exact=1.0000 se=0.0578"
+  },
+  {
+   "name": "TKQ support {0,2} (3, 2, 1, 0)",
+   "pass": true,
+   "info": "{0: 143, 2: 157}"
+  },
+  {
+   "name": "N3 mean n=3 (3, 2, 1, 0)",
+   "pass": true,
+   "info": "mc=0.9100 exact=0.9421 se=0.0561"
+  },
+  {
+   "name": "LIM mean n=7 (3, 2, 1, 0)",
+   "pass": true,
+   "info": "mc=0.8500 lim=1.0000 band=0.2734"
+  },
+  {
+   "name": "TKQ mean n=2 (3, 2, 1, 1)",
+   "pass": true,
+   "info": "mc=1.0933 exact=1.0000 se=0.0576"
+  },
+  {
+   "name": "TKQ support {0,2} (3, 2, 1, 1)",
+   "pass": true,
+   "info": "{2: 164, 0: 136}"
+  },
+  {
+   "name": "N3 mean n=3 (3, 2, 1, 1)",
+   "pass": true,
+   "info": "mc=0.8867 exact=0.9421 se=0.0601"
+  },
+  {
+   "name": "LIM mean n=7 (3, 2, 1, 1)",
+   "pass": true,
+   "info": "mc=0.8833 lim=1.0000 band=0.2665"
+  },
+  {
+   "name": "TKQ mean n=2 (3, 1, 2, 0)",
+   "pass": true,
+   "info": "mc=1.5867 exact=1.5000 se=0.0468"
+  },
+  {
+   "name": "TKQ support {0,2} (3, 1, 2, 0)",
+   "pass": true,
+   "info": "{2: 238, 0: 62}"
+  },
+  {
+   "name": "N3 mean n=3 (3, 1, 2, 0)",
+   "pass": true,
+   "info": "mc=1.4600 exact=1.4752 se=0.0778"
+  },
+  {
+   "name": "LIM mean n=7 (3, 1, 2, 0)",
+   "pass": true,
+   "info": "mc=1.3100 lim=1.5000 band=0.3944"
+  },
+  {
+   "name": "TKQ mean n=2 (3, 1, 3, 0)",
+   "pass": true,
+   "info": "mc=0.7467 exact=0.7500 se=0.0559"
+  },
+  {
+   "name": "TKQ support {0,2} (3, 1, 3, 0)",
+   "pass": true,
+   "info": "{0: 188, 2: 112}"
+  },
+  {
+   "name": "N3 mean n=3 (3, 1, 3, 0)",
+   "pass": true,
+   "info": "mc=1.6800 exact=1.6426 se=0.0600"
+  },
+  {
+   "name": "LIM mean n=7 (3, 1, 3, 0)",
+   "pass": true,
+   "info": "mc=1.6667 lim=1.5000 band=0.5164"
+  },
+  {
+   "name": "TKQ mean n=2 (3, 2, 2, 0)",
+   "pass": true,
+   "info": "mc=2.0000 exact=2.0000 se=0.0000"
+  },
+  {
+   "name": "TKQ support {0,2} (3, 2, 2, 0)",
+   "pass": true,
+   "info": "{2: 300}"
+  },
+  {
+   "name": "N3 mean n=3 (3, 2, 2, 0)",
+   "pass": true,
+   "info": "mc=1.8500 exact=1.8595 se=0.0844"
+  },
+  {
+   "name": "LIM mean n=7 (3, 2, 2, 0)",
+   "pass": true,
+   "info": "mc=1.8400 lim=2.0833 band=0.4699"
+  },
+  {
+   "name": "TKQ mean n=2 (3, 2, 2, 1)",
+   "pass": true,
+   "info": "mc=1.5200 exact=1.5000 se=0.0494"
+  },
+  {
+   "name": "TKQ support {0,2} (3, 2, 2, 1)",
+   "pass": true,
+   "info": "{2: 228, 0: 72}"
+  },
+  {
+   "name": "N3 mean n=3 (3, 2, 2, 1)",
+   "pass": true,
+   "info": "mc=1.4600 exact=1.4752 se=0.0778"
+  },
+  {
+   "name": "LIM mean n=7 (3, 2, 2, 1)",
+   "pass": true,
+   "info": "mc=1.3767 lim=1.5833 band=0.3895"
+  },
+  {
+   "name": "TKQ mean n=2 (3, 4, 1, 0)",
+   "pass": true,
+   "info": "mc=1.0133 exact=1.0000 se=0.0578"
+  },
+  {
+   "name": "TKQ support {0,2} (3, 4, 1, 0)",
+   "pass": true,
+   "info": "{2: 152, 0: 148}"
+  },
+  {
+   "name": "N3 mean n=3 (3, 4, 1, 0)",
+   "pass": true,
+   "info": "mc=0.8300 exact=0.9421 se=0.0555"
+  },
+  {
+   "name": "LIM mean n=7 (3, 4, 1, 0)",
+   "pass": true,
+   "info": "mc=0.9633 lim=1.0278 band=0.2806"
+  },
+  {
+   "name": "TKQ mean n=2 (5, 2, 1, 0)",
+   "pass": true,
+   "info": "mc=0.9933 exact=1.0000 se=0.0578"
+  },
+  {
+   "name": "TKQ support {0,2} (5, 2, 1, 0)",
+   "pass": true,
+   "info": "{2: 149, 0: 151}"
+  },
+  {
+   "name": "N3 mean n=3 (5, 2, 1, 0)",
+   "pass": true,
+   "info": "mc=0.9500 exact=0.9731 se=0.0592"
+  },
+  {
+   "name": "LIM mean n=6 (5, 2, 1, 0)",
+   "pass": true,
+   "info": "mc=1.0100 lim=1.0000 band=0.2788"
+  },
+  {
+   "name": "TKQ mean n=2 (5, 2, 1, 1)",
+   "pass": true,
+   "info": "mc=1.0867 exact=1.0000 se=0.0576"
+  },
+  {
+   "name": "TKQ support {0,2} (5, 2, 1, 1)",
+   "pass": true,
+   "info": "{2: 163, 0: 137}"
+  },
+  {
+   "name": "N3 mean n=3 (5, 2, 1, 1)",
+   "pass": true,
+   "info": "mc=1.0200 exact=0.9731 se=0.0578"
+  },
+  {
+   "name": "LIM mean n=6 (5, 2, 1, 1)",
+   "pass": true,
+   "info": "mc=0.9867 lim=1.0000 band=0.2743"
+  },
+  {
+   "name": "TKQ mean n=2 (5, 3, 1, 0)",
+   "pass": true,
+   "info": "mc=0.8467 exact=0.8333 se=0.0571"
+  },
+  {
+   "name": "TKQ support {0,2} (5, 3, 1, 0)",
+   "pass": true,
+   "info": "{2: 127, 0: 173}"
+  },
+  {
+   "name": "N3 mean n=3 (5, 3, 1, 0)",
+   "pass": true,
+   "info": "mc=0.8433 exact=0.8666 se=0.0437"
+  },
+  {
+   "name": "LIM mean n=6 (5, 3, 1, 0)",
+   "pass": true,
+   "info": "mc=0.8500 lim=0.8667 band=0.2522"
+  },
+  {
+   "name": "TKQ mean n=2 (5, 1, 2, 0)",
+   "pass": true,
+   "info": "mc=1.6600 exact=1.6667 se=0.0434"
+  },
+  {
+   "name": "TKQ support {0,2} (5, 1, 2, 0)",
+   "pass": true,
+   "info": "{2: 249, 0: 51}"
+  },
+  {
+   "name": "N3 mean n=3 (5, 1, 2, 0)",
+   "pass": true,
+   "info": "mc=1.6500 exact=1.6603 se=0.0807"
+  },
+  {
+   "name": "LIM mean n=6 (5, 1, 2, 0)",
+   "pass": true,
+   "info": "mc=1.6600 lim=1.6667 band=0.4114"
+  },
+  {
+   "name": "TKQ mean n=2 (7, 3, 1, 0)",
+   "pass": true,
+   "info": "mc=0.8667 exact=0.8750 se=0.0573"
+  },
+  {
+   "name": "TKQ support {0,2} (7, 3, 1, 0)",
+   "pass": true,
+   "info": "{2: 130, 0: 170}"
+  },
+  {
+   "name": "N3 mean n=3 (7, 3, 1, 0)",
+   "pass": true,
+   "info": "mc=0.9900 exact=0.8929 se=0.0539"
+  },
+  {
+   "name": "LIM mean n=6 (7, 3, 1, 0)",
+   "pass": true,
+   "info": "mc=0.9200 lim=0.8929 band=0.2619"
+  },
+  {
+   "name": "TKQ mean n=2 (7, 3, 1, 1)",
+   "pass": true,
+   "info": "mc=0.8733 exact=0.8750 se=0.0574"
+  },
+  {
+   "name": "TKQ support {0,2} (7, 3, 1, 1)",
+   "pass": true,
+   "info": "{0: 169, 2: 131}"
+  },
+  {
+   "name": "N3 mean n=3 (7, 3, 1, 1)",
+   "pass": true,
+   "info": "mc=0.8567 exact=0.8929 se=0.0492"
+  },
+  {
+   "name": "LIM mean n=6 (7, 3, 1, 1)",
+   "pass": true,
+   "info": "mc=0.9133 lim=0.8929 band=0.2628"
+  },
+  {
+   "name": "TKQ mean n=2 (7, 3, 1, 2)",
+   "pass": true,
+   "info": "mc=0.8667 exact=0.8750 se=0.0573"
+  },
+  {
+   "name": "TKQ support {0,2} (7, 3, 1, 2)",
+   "pass": true,
+   "info": "{2: 130, 0: 170}"
+  },
+  {
+   "name": "N3 mean n=3 (7, 3, 1, 2)",
+   "pass": true,
+   "info": "mc=0.8533 exact=0.8929 se=0.0538"
+  },
+  {
+   "name": "LIM mean n=6 (7, 3, 1, 2)",
+   "pass": true,
+   "info": "mc=0.8667 lim=0.8929 band=0.2706"
+  },
+  {
+   "name": "TKQ mean n=2 (7, 1, 2, 0)",
+   "pass": true,
+   "info": "mc=1.8067 exact=1.7500 se=0.0342"
+  },
+  {
+   "name": "TKQ support {0,2} (7, 1, 2, 0)",
+   "pass": true,
+   "info": "{2: 271, 0: 29}"
+  },
+  {
+   "name": "N3 mean n=3 (7, 1, 2, 0)",
+   "pass": true,
+   "info": "mc=1.7200 exact=1.7475 se=0.0818"
+  },
+  {
+   "name": "LIM mean n=6 (7, 1, 2, 0)",
+   "pass": true,
+   "info": "mc=1.7300 lim=1.7500 band=0.4338"
+  },
+  {
+   "name": "TKQ mean n=2 (7, 2, 1, 0)",
+   "pass": true,
+   "info": "mc=1.0267 exact=1.0000 se=0.0578"
+  },
+  {
+   "name": "TKQ support {0,2} (7, 2, 1, 0)",
+   "pass": true,
+   "info": "{2: 154, 0: 146}"
+  },
+  {
+   "name": "N3 mean n=3 (7, 2, 1, 0)",
+   "pass": true,
+   "info": "mc=1.0567 exact=0.9846 se=0.0590"
+  },
+  {
+   "name": "LIM mean n=6 (7, 2, 1, 0)",
+   "pass": true,
+   "info": "mc=0.9367 lim=1.0000 band=0.2752"
+  },
+  {
+   "name": "DIP down (3, 2, 1, 0)",
+   "pass": false,
+   "info": "E2-E3=0.1367 (pred 0.0579) sj=0.0805"
+  },
+  {
+   "name": "DIP recover (3, 2, 1, 0)",
+   "pass": false,
+   "info": "E7-E3=-0.0600 sj=0.0784"
+  },
+  {
+   "name": "DIP down (3, 2, 1, 1)",
+   "pass": false,
+   "info": "E2-E3=0.2067 (pred 0.0579) sj=0.0832"
+  },
+  {
+   "name": "DIP recover (3, 2, 1, 1)",
+   "pass": false,
+   "info": "E7-E3=-0.0033 sj=0.0803"
+  },
+  {
+   "name": "SPLIT n=2",
+   "pass": true,
+   "info": "diff=0.4800 pred=0.5 se=0.0494"
+  },
+  {
+   "name": "SPLIT n=7",
+   "pass": false,
+   "info": "diff=0.4633 se=0.1221"
+  },
+  {
+   "name": "LEQ (3, 2, 1, 0)=(3, 2, 1, 1) n=2",
+   "pass": true,
+   "info": "d=-0.0467"
+  },
+  {
+   "name": "LEQ (3, 2, 1, 0)=(3, 2, 1, 1) n=3",
+   "pass": true,
+   "info": "d=0.0233"
+  },
+  {
+   "name": "LEQ (3, 2, 1, 0)=(3, 2, 1, 1) n=4",
+   "pass": true,
+   "info": "d=0.1067"
+  },
+  {
+   "name": "LEQ (3, 2, 1, 0)=(3, 2, 1, 1) n=5",
+   "pass": true,
+   "info": "d=0.0033"
+  },
+  {
+   "name": "LEQ (3, 2, 1, 0)=(3, 2, 1, 1) n=6",
+   "pass": true,
+   "info": "d=-0.0267"
+  },
+  {
+   "name": "LEQ (3, 2, 1, 0)=(3, 2, 1, 1) n=7",
+   "pass": true,
+   "info": "d=-0.0333"
+  },
+  {
+   "name": "LEQ (5, 2, 1, 0)=(5, 2, 1, 1) n=2",
+   "pass": true,
+   "info": "d=-0.0933"
+  },
+  {
+   "name": "LEQ (5, 2, 1, 0)=(5, 2, 1, 1) n=3",
+   "pass": true,
+   "info": "d=-0.0700"
+  },
+  {
+   "name": "LEQ (5, 2, 1, 0)=(5, 2, 1, 1) n=6",
+   "pass": true,
+   "info": "d=0.0233"
+  },
+  {
+   "name": "LEQ (7, 3, 1, 0)=(7, 3, 1, 1) n=2",
+   "pass": true,
+   "info": "d=-0.0067"
+  },
+  {
+   "name": "LEQ (7, 3, 1, 0)=(7, 3, 1, 1) n=3",
+   "pass": true,
+   "info": "d=0.1333"
+  },
+  {
+   "name": "LEQ (7, 3, 1, 0)=(7, 3, 1, 1) n=6",
+   "pass": true,
+   "info": "d=0.0067"
+  },
+  {
+   "name": "LEQ (7, 3, 1, 0)=(7, 3, 1, 2) n=2",
+   "pass": true,
+   "info": "d=0.0000"
+  },
+  {
+   "name": "LEQ (7, 3, 1, 0)=(7, 3, 1, 2) n=3",
+   "pass": true,
+   "info": "d=0.1367"
+  },
+  {
+   "name": "LEQ (7, 3, 1, 0)=(7, 3, 1, 2) n=6",
+   "pass": true,
+   "info": "d=0.0533"
+  }
+ ],
+ "teeth": [
+  {
+   "name": "T1 wrong-twist TK-0",
+   "bites": true,
+   "mismatches": 26
+  },
+  {
+   "name": "T2 mass-blind",
+   "bites": true,
+   "cell": [
+    3,
+    2,
+    1,
+    0
+   ],
+   "n": 7,
+   "mutant": 1.5,
+   "mc": 0.85,
+   "se": 0.05468568339871815
+  },
+  {
+   "name": "T3 letter-blind (2,2) c=0 n=2",
+   "bites": true,
+   "cell": [
+    3,
+    2,
+    2,
+    0
+   ],
+   "n": 2,
+   "mutant": 1.75,
+   "mc": 2.0,
+   "se": 0.0
+  },
+  {
+   "name": "T4 tame-blind",
+   "bites": true,
+   "cell": [
+    3,
+    2,
+    1,
+    0
+   ],
+   "n": 2,
+   "mutant": 0.75,
+   "mc": 1.0466666666666666,
+   "se": 0.05776848680407728
+  }
+ ],
+ "mc": [
+  {
+   "cell": [
+    3,
+    2,
+    1,
+    0
+   ],
+   "n": 2,
+   "nsamp": 300,
+   "hist": {
+    "0": 143,
+    "2": 157
+   },
+   "retries": 0
+  },
+  {
+   "cell": [
+    3,
+    2,
+    1,
+    0
+   ],
+   "n": 3,
+   "nsamp": 300,
+   "hist": {
+    "0": 113,
+    "1": 144,
+    "3": 43
+   },
+   "retries": 0
+  },
+  {
+   "cell": [
+    3,
+    2,
+    1,
+    0
+   ],
+   "n": 4,
+   "nsamp": 300,
+   "hist": {
+    "1": 102,
+    "0": 116,
+    "2": 69,
+    "4": 13
+   },
+   "retries": 0
+  },
+  {
+   "cell": [
+    3,
+    2,
+    1,
+    0
+   ],
+   "n": 5,
+   "nsamp": 300,
+   "hist": {
+    "0": 109,
+    "1": 125,
+    "2": 48,
+    "3": 18
+   },
+   "retries": 0
+  },
+  {
+   "cell": [
+    3,
+    2,
+    1,
+    0
+   ],
+   "n": 6,
+   "nsamp": 300,
+   "hist": {
+    "1": 108,
+    "0": 115,
+    "2": 55,
+    "3": 19,
+    "4": 3
+   },
+   "retries": 0
+  },
+  {
+   "cell": [
+    3,
+    2,
+    1,
+    0
+   ],
+   "n": 7,
+   "nsamp": 300,
+   "hist": {
+    "1": 94,
+    "0": 135,
+    "2": 57,
+    "3": 10,
+    "5": 1,
+    "4": 3
+   },
+   "retries": 0
+  },
+  {
+   "cell": [
+    3,
+    2,
+    1,
+    1
+   ],
+   "n": 2,
+   "nsamp": 300,
+   "hist": {
+    "2": 164,
+    "0": 136
+   },
+   "retries": 0
+  },
+  {
+   "cell": [
+    3,
+    2,
+    1,
+    1
+   ],
+   "n": 3,
+   "nsamp": 300,
+   "hist": {
+    "0": 132,
+    "1": 119,
+    "3": 49
+   },
+   "retries": 0
+  },
+  {
+   "cell": [
+    3,
+    2,
+    1,
+    1
+   ],
+   "n": 4,
+   "nsamp": 300,
+   "hist": {
+    "2": 58,
+    "0": 125,
+    "1": 108,
+    "4": 9
+   },
+   "retries": 0
+  },
+  {
+   "cell": [
+    3,
+    2,
+    1,
+    1
+   ],
+   "n": 5,
+   "nsamp": 300,
+   "hist": {
+    "2": 50,
+    "1": 118,
+    "0": 114,
+    "3": 17,
+    "5": 1
+   },
+   "retries": 0
+  },
+  {
+   "cell": [
+    3,
+    2,
+    1,
+    1
+   ],
+   "n": 6,
+   "nsamp": 300,
+   "hist": {
+    "2": 51,
+    "1": 107,
+    "0": 114,
+    "3": 26,
+    "4": 2
+   },
+   "retries": 0
+  },
+  {
+   "cell": [
+    3,
+    2,
+    1,
+    1
+   ],
+   "n": 7,
+   "nsamp": 300,
+   "hist": {
+    "0": 123,
+    "1": 109,
+    "2": 51,
+    "3": 15,
+    "5": 1,
+    "4": 1
+   },
+   "retries": 0
+  },
+  {
+   "cell": [
+    3,
+    1,
+    2,
+    0
+   ],
+   "n": 2,
+   "nsamp": 300,
+   "hist": {
+    "2": 238,
+    "0": 62
+   },
+   "retries": 0
+  },
+  {
+   "cell": [
+    3,
+    1,
+    2,
+    0
+   ],
+   "n": 3,
+   "nsamp": 300,
+   "hist": {
+    "3": 124,
+    "0": 110,
+    "1": 66
+   },
+   "retries": 0
+  },
+  {
+   "cell": [
+    3,
+    1,
+    2,
+    0
+   ],
+   "n": 4,
+   "nsamp": 300,
+   "hist": {
+    "1": 98,
+    "2": 40,
+    "0": 94,
+    "4": 68
+   },
+   "retries": 0
+  },
+  {
+   "cell": [
+    3,
+    1,
+    2,
+    0
+   ],
+   "n": 5,
+   "nsamp": 300,
+   "hist": {
+    "0": 103,
+    "2": 74,
+    "1": 82,
+    "5": 18,
+    "3": 23
+   },
+   "retries": 0
+  },
+  {
+   "cell": [
+    3,
+    1,
+    2,
+    0
+   ],
+   "n": 6,
+   "nsamp": 300,
+   "hist": {
+    "1": 60,
+    "0": 115,
+    "6": 6,
+    "2": 68,
+    "3": 42,
+    "4": 9
+   },
+   "retries": 0
+  },
+  {
+   "cell": [
+    3,
+    1,
+    2,
+    0
+   ],
+   "n": 7,
+   "nsamp": 300,
+   "hist": {
+    "2": 66,
+    "0": 107,
+    "1": 78,
+    "4": 22,
+    "3": 23,
+    "5": 1,
+    "7": 3
+   },
+   "retries": 0
+  },
+  {
+   "cell": [
+    3,
+    1,
+    3,
+    0
+   ],
+   "n": 2,
+   "nsamp": 300,
+   "hist": {
+    "0": 188,
+    "2": 112
+   },
+   "retries": 0
+  },
+  {
+   "cell": [
+    3,
+    1,
+    3,
+    0
+   ],
+   "n": 3,
+   "nsamp": 300,
+   "hist": {
+    "1": 171,
+    "3": 111,
+    "0": 18
+   },
+   "retries": 0
+  },
+  {
+   "cell": [
+    3,
+    1,
+    3,
+    0
+   ],
+   "n": 4,
+   "nsamp": 300,
+   "hist": {
+    "2": 53,
+    "0": 136,
+    "4": 88,
+    "1": 23
+   },
+   "retries": 0
+  },
+  {
+   "cell": [
+    3,
+    1,
+    3,
+    0
+   ],
+   "n": 5,
+   "nsamp": 300,
+   "hist": {
+    "1": 120,
+    "0": 83,
+    "5": 25,
+    "3": 71,
+    "2": 1
+   },
+   "retries": 0
+  },
+  {
+   "cell": [
+    3,
+    1,
+    3,
+    0
+   ],
+   "n": 6,
+   "nsamp": 300,
+   "hist": {
+    "0": 113,
+    "3": 11,
+    "1": 74,
+    "4": 45,
+    "2": 42,
+    "6": 15
+   },
+   "retries": 0
+  },
+  {
+   "cell": [
+    3,
+    1,
+    3,
+    0
+   ],
+   "n": 7,
+   "nsamp": 300,
+   "hist": {
+    "3": 46,
+    "0": 87,
+    "1": 104,
+    "2": 23,
+    "4": 12,
+    "5": 16,
+    "7": 12
+   },
+   "retries": 0
+  },
+  {
+   "cell": [
+    3,
+    2,
+    2,
+    0
+   ],
+   "n": 2,
+   "nsamp": 300,
+   "hist": {
+    "2": 300
+   },
+   "retries": 0
+  },
+  {
+   "cell": [
+    3,
+    2,
+    2,
+    0
+   ],
+   "n": 3,
+   "nsamp": 300,
+   "hist": {
+    "0": 115,
+    "3": 185
+   },
+   "retries": 0
+  },
+  {
+   "cell": [
+    3,
+    2,
+    2,
+    0
+   ],
+   "n": 4,
+   "nsamp": 300,
+   "hist": {
+    "4": 107,
+    "0": 87,
+    "1": 106
+   },
+   "retries": 0
+  },
+  {
+   "cell": [
+    3,
+    2,
+    2,
+    0
+   ],
+   "n": 5,
+   "nsamp": 300,
+   "hist": {
+    "0": 63,
+    "1": 69,
+    "2": 120,
+    "5": 48
+   },
+   "retries": 0
+  },
+  {
+   "cell": [
+    3,
+    2,
+    2,
+    0
+   ],
+   "n": 6,
+   "nsamp": 300,
+   "hist": {
+    "0": 84,
+    "2": 77,
+    "3": 47,
+    "6": 32,
+    "1": 60
+   },
+   "retries": 0
+  },
+  {
+   "cell": [
+    3,
+    2,
+    2,
+    0
+   ],
+   "n": 7,
+   "nsamp": 300,
+   "hist": {
+    "4": 38,
+    "0": 70,
+    "2": 64,
+    "3": 42,
+    "1": 76,
+    "7": 10
+   },
+   "retries": 0
+  },
+  {
+   "cell": [
+    3,
+    2,
+    2,
+    1
+   ],
+   "n": 2,
+   "nsamp": 300,
+   "hist": {
+    "2": 228,
+    "0": 72
+   },
+   "retries": 0
+  },
+  {
+   "cell": [
+    3,
+    2,
+    2,
+    1
+   ],
+   "n": 3,
+   "nsamp": 300,
+   "hist": {
+    "3": 124,
+    "0": 110,
+    "1": 66
+   },
+   "retries": 0
+  },
+  {
+   "cell": [
+    3,
+    2,
+    2,
+    1
+   ],
+   "n": 4,
+   "nsamp": 300,
+   "hist": {
+    "0": 88,
+    "4": 56,
+    "1": 117,
+    "2": 39
+   },
+   "retries": 0
+  },
+  {
+   "cell": [
+    3,
+    2,
+    2,
+    1
+   ],
+   "n": 5,
+   "nsamp": 300,
+   "hist": {
+    "1": 84,
+    "2": 91,
+    "5": 26,
+    "0": 81,
+    "3": 18
+   },
+   "retries": 0
+  },
+  {
+   "cell": [
+    3,
+    2,
+    2,
+    1
+   ],
+   "n": 6,
+   "nsamp": 300,
+   "hist": {
+    "2": 53,
+    "3": 55,
+    "1": 91,
+    "0": 82,
+    "6": 11,
+    "4": 8
+   },
+   "retries": 0
+  },
+  {
+   "cell": [
+    3,
+    2,
+    2,
+    1
+   ],
+   "n": 7,
+   "nsamp": 300,
+   "hist": {
+    "1": 75,
+    "4": 21,
+    "0": 102,
+    "5": 4,
+    "2": 64,
+    "3": 33,
+    "7": 1
+   },
+   "retries": 0
+  },
+  {
+   "cell": [
+    3,
+    4,
+    1,
+    0
+   ],
+   "n": 2,
+   "nsamp": 300,
+   "hist": {
+    "2": 152,
+    "0": 148
+   },
+   "retries": 0
+  },
+  {
+   "cell": [
+    3,
+    4,
+    1,
+    0
+   ],
+   "n": 3,
+   "nsamp": 300,
+   "hist": {
+    "1": 132,
+    "0": 129,
+    "3": 39
+   },
+   "retries": 0
+  },
+  {
+   "cell": [
+    3,
+    4,
+    1,
+    0
+   ],
+   "n": 4,
+   "nsamp": 300,
+   "hist": {
+    "1": 99,
+    "2": 71,
+    "0": 121,
+    "4": 9
+   },
+   "retries": 0
+  },
+  {
+   "cell": [
+    3,
+    4,
+    1,
+    0
+   ],
+   "n": 5,
+   "nsamp": 300,
+   "hist": {
+    "1": 113,
+    "2": 51,
+    "0": 108,
+    "3": 27,
+    "5": 1
+   },
+   "retries": 0
+  },
+  {
+   "cell": [
+    3,
+    4,
+    1,
+    0
+   ],
+   "n": 6,
+   "nsamp": 300,
+   "hist": {
+    "0": 110,
+    "1": 107,
+    "2": 58,
+    "3": 18,
+    "4": 6,
+    "6": 1
+   },
+   "retries": 0
+  },
+  {
+   "cell": [
+    3,
+    4,
+    1,
+    0
+   ],
+   "n": 7,
+   "nsamp": 300,
+   "hist": {
+    "2": 57,
+    "1": 105,
+    "0": 116,
+    "3": 19,
+    "4": 2,
+    "5": 1
+   },
+   "retries": 0
+  },
+  {
+   "cell": [
+    5,
+    2,
+    1,
+    0
+   ],
+   "n": 2,
+   "nsamp": 300,
+   "hist": {
+    "2": 149,
+    "0": 151
+   },
+   "retries": 0
+  },
+  {
+   "cell": [
+    5,
+    2,
+    1,
+    0
+   ],
+   "n": 3,
+   "nsamp": 300,
+   "hist": {
+    "0": 115,
+    "3": 50,
+    "1": 135
+   },
+   "retries": 0
+  },
+  {
+   "cell": [
+    5,
+    2,
+    1,
+    0
+   ],
+   "n": 6,
+   "nsamp": 300,
+   "hist": {
+    "1": 115,
+    "0": 104,
+    "2": 63,
+    "3": 10,
+    "4": 8
+   },
+   "retries": 0
+  },
+  {
+   "cell": [
+    5,
+    2,
+    1,
+    1
+   ],
+   "n": 2,
+   "nsamp": 300,
+   "hist": {
+    "2": 163,
+    "0": 137
+   },
+   "retries": 0
+  },
+  {
+   "cell": [
+    5,
+    2,
+    1,
+    1
+   ],
+   "n": 3,
+   "nsamp": 300,
+   "hist": {
+    "0": 96,
+    "3": 51,
+    "1": 153
+   },
+   "retries": 0
+  },
+  {
+   "cell": [
+    5,
+    2,
+    1,
+    1
+   ],
+   "n": 6,
+   "nsamp": 300,
+   "hist": {
+    "1": 115,
+    "0": 107,
+    "3": 15,
+    "4": 5,
+    "2": 58
+   },
+   "retries": 0
+  },
+  {
+   "cell": [
+    5,
+    3,
+    1,
+    0
+   ],
+   "n": 2,
+   "nsamp": 300,
+   "hist": {
+    "2": 127,
+    "0": 173
+   },
+   "retries": 0
+  },
+  {
+   "cell": [
+    5,
+    3,
+    1,
+    0
+   ],
+   "n": 3,
+   "nsamp": 300,
+   "hist": {
+    "0": 91,
+    "1": 187,
+    "3": 22
+   },
+   "retries": 0
+  },
+  {
+   "cell": [
+    5,
+    3,
+    1,
+    0
+   ],
+   "n": 6,
+   "nsamp": 300,
+   "hist": {
+    "1": 116,
+    "0": 122,
+    "2": 50,
+    "4": 3,
+    "3": 9
+   },
+   "retries": 0
+  },
+  {
+   "cell": [
+    5,
+    1,
+    2,
+    0
+   ],
+   "n": 2,
+   "nsamp": 300,
+   "hist": {
+    "2": 249,
+    "0": 51
+   },
+   "retries": 0
+  },
+  {
+   "cell": [
+    5,
+    1,
+    2,
+    0
+   ],
+   "n": 3,
+   "nsamp": 300,
+   "hist": {
+    "3": 151,
+    "1": 42,
+    "0": 107
+   },
+   "retries": 0
+  },
+  {
+   "cell": [
+    5,
+    1,
+    2,
+    0
+   ],
+   "n": 6,
+   "nsamp": 300,
+   "hist": {
+    "0": 74,
+    "1": 76,
+    "6": 10,
+    "3": 54,
+    "2": 72,
+    "4": 14
+   },
+   "retries": 0
+  },
+  {
+   "cell": [
+    7,
+    3,
+    1,
+    0
+   ],
+   "n": 2,
+   "nsamp": 300,
+   "hist": {
+    "2": 130,
+    "0": 170
+   },
+   "retries": 0
+  },
+  {
+   "cell": [
+    7,
+    3,
+    1,
+    0
+   ],
+   "n": 3,
+   "nsamp": 300,
+   "hist": {
+    "0": 89,
+    "1": 168,
+    "3": 43
+   },
+   "retries": 0
+  },
+  {
+   "cell": [
+    7,
+    3,
+    1,
+    0
+   ],
+   "n": 6,
+   "nsamp": 300,
+   "hist": {
+    "2": 55,
+    "1": 113,
+    "0": 115,
+    "3": 15,
+    "4": 2
+   },
+   "retries": 0
+  },
+  {
+   "cell": [
+    7,
+    3,
+    1,
+    1
+   ],
+   "n": 2,
+   "nsamp": 300,
+   "hist": {
+    "0": 169,
+    "2": 131
+   },
+   "retries": 0
+  },
+  {
+   "cell": [
+    7,
+    3,
+    1,
+    1
+   ],
+   "n": 3,
+   "nsamp": 300,
+   "hist": {
+    "0": 103,
+    "1": 167,
+    "3": 30
+   },
+   "retries": 0
+  },
+  {
+   "cell": [
+    7,
+    3,
+    1,
+    1
+   ],
+   "n": 6,
+   "nsamp": 300,
+   "hist": {
+    "1": 112,
+    "2": 58,
+    "0": 116,
+    "4": 4,
+    "3": 10
+   },
+   "retries": 0
+  },
+  {
+   "cell": [
+    7,
+    3,
+    1,
+    2
+   ],
+   "n": 2,
+   "nsamp": 300,
+   "hist": {
+    "2": 130,
+    "0": 170
+   },
+   "retries": 0
+  },
+  {
+   "cell": [
+    7,
+    3,
+    1,
+    2
+   ],
+   "n": 3,
+   "nsamp": 300,
+   "hist": {
+    "1": 145,
+    "3": 37,
+    "0": 118
+   },
+   "retries": 0
+  },
+  {
+   "cell": [
+    7,
+    3,
+    1,
+    2
+   ],
+   "n": 6,
+   "nsamp": 300,
+   "hist": {
+    "1": 113,
+    "0": 124,
+    "3": 11,
+    "6": 1,
+    "2": 48,
+    "4": 3
+   },
+   "retries": 0
+  },
+  {
+   "cell": [
+    7,
+    1,
+    2,
+    0
+   ],
+   "n": 2,
+   "nsamp": 300,
+   "hist": {
+    "2": 271,
+    "0": 29
+   },
+   "retries": 0
+  },
+  {
+   "cell": [
+    7,
+    1,
+    2,
+    0
+   ],
+   "n": 3,
+   "nsamp": 300,
+   "hist": {
+    "0": 108,
+    "3": 162,
+    "1": 30
+   },
+   "retries": 0
+  },
+  {
+   "cell": [
+    7,
+    1,
+    2,
+    0
+   ],
+   "n": 6,
+   "nsamp": 300,
+   "hist": {
+    "0": 77,
+    "2": 65,
+    "1": 67,
+    "6": 14,
+    "3": 70,
+    "4": 7
+   },
+   "retries": 0
+  },
+  {
+   "cell": [
+    7,
+    2,
+    1,
+    0
+   ],
+   "n": 2,
+   "nsamp": 300,
+   "hist": {
+    "2": 154,
+    "0": 146
+   },
+   "retries": 0
+  },
+  {
+   "cell": [
+    7,
+    2,
+    1,
+    0
+   ],
+   "n": 3,
+   "nsamp": 300,
+   "hist": {
+    "1": 152,
+    "0": 93,
+    "3": 55
+   },
+   "retries": 0
+  },
+  {
+   "cell": [
+    7,
+    2,
+    1,
+    0
+   ],
+   "n": 6,
+   "nsamp": 300,
+   "hist": {
+    "1": 105,
+    "0": 119,
+    "2": 55,
+    "4": 3,
+    "3": 18
+   },
+   "retries": 0
+  }
+ ],
+ "prereg": {
+  "p3_e2_f1_c0": {
+   "mean_n2_exact": "1",
+   "mean_n3_exact": "114/121",
+   "mass_sum_proj": "4/3",
+   "mean_limit_monic": "1"
+  },
+  "p3_e2_f1_c1": {
+   "mean_n2_exact": "1",
+   "mean_n3_exact": "114/121",
+   "mass_sum_proj": "4/3",
+   "mean_limit_monic": "1"
+  },
+  "p3_e1_f2_c0": {
+   "mean_n2_exact": "3/2",
+   "mean_n3_exact": "357/242",
+   "mass_sum_proj": "2",
+   "mean_limit_monic": "3/2"
+  },
+  "p3_e1_f3_c0": {
+   "mean_n2_exact": "3/4",
+   "mean_n3_exact": "795/484",
+   "mass_sum_proj": "2",
+   "mean_limit_monic": "3/2"
+  },
+  "p3_e2_f2_c0": {
+   "mean_n2_exact": "2",
+   "mean_n3_exact": "225/121",
+   "mass_sum_proj": "25/9",
+   "mean_limit_monic": "25/12"
+  },
+  "p3_e2_f2_c1": {
+   "mean_n2_exact": "3/2",
+   "mean_n3_exact": "357/242",
+   "mass_sum_proj": "19/9",
+   "mean_limit_monic": "19/12"
+  },
+  "p3_e4_f1_c0": {
+   "mean_n2_exact": "1",
+   "mean_n3_exact": "114/121",
+   "mass_sum_proj": "37/27",
+   "mean_limit_monic": "37/36"
+  },
+  "p5_e2_f1_c0": {
+   "mean_n2_exact": "1",
+   "mean_n3_exact": "760/781",
+   "mass_sum_proj": "6/5",
+   "mean_limit_monic": "1"
+  },
+  "p5_e2_f1_c1": {
+   "mean_n2_exact": "1",
+   "mean_n3_exact": "760/781",
+   "mass_sum_proj": "6/5",
+   "mean_limit_monic": "1"
+  },
+  "p5_e3_f1_c0": {
+   "mean_n2_exact": "5/6",
+   "mean_n3_exact": "4061/4686",
+   "mass_sum_proj": "26/25",
+   "mean_limit_monic": "13/15"
+  },
+  "p5_e1_f2_c0": {
+   "mean_n2_exact": "5/3",
+   "mean_n3_exact": "3890/2343",
+   "mass_sum_proj": "2",
+   "mean_limit_monic": "5/3"
+  },
+  "p7_e3_f1_c0": {
+   "mean_n2_exact": "7/8",
+   "mean_n3_exact": "20007/22408",
+   "mass_sum_proj": "50/49",
+   "mean_limit_monic": "25/28"
+  },
+  "p7_e3_f1_c1": {
+   "mean_n2_exact": "7/8",
+   "mean_n3_exact": "20007/22408",
+   "mass_sum_proj": "50/49",
+   "mean_limit_monic": "25/28"
+  },
+  "p7_e3_f1_c2": {
+   "mean_n2_exact": "7/8",
+   "mean_n3_exact": "20007/22408",
+   "mass_sum_proj": "50/49",
+   "mean_limit_monic": "25/28"
+  },
+  "p7_e1_f2_c0": {
+   "mean_n2_exact": "7/4",
+   "mean_n3_exact": "19579/11204",
+   "mass_sum_proj": "2",
+   "mean_limit_monic": "7/4"
+  },
+  "p7_e2_f1_c0": {
+   "mean_n2_exact": "1",
+   "mean_n3_exact": "2758/2801",
+   "mass_sum_proj": "8/7",
+   "mean_limit_monic": "1"
+  },
+  "_prereg_notes": [
+   "P1 TK0: brute #Hom == TK-0 formula on the full roster incl. zero cases",
+   "P2 TKQ: MC(n=2) within 5 sigma of mean_n2_exact at every cell; X in {0,2} only",
+   "P3 N3: MC(n=3) within 5 sigma of mean_n3_exact at every cell",
+   "P4 DIP: at p=3 (2,1) cells, E(2)-E(3) > 0 at 3.5 sigma joint; E(7) > E(3) at 2 sigma",
+   "P5 LIM: |MC(n_max) - mean_limit_monic| < max(5 sigma, 0.04*(1+E)) at every cell (consistency band)",
+   "P6 SPLIT: (2,2,c=0) minus (2,2,c=1) at p=3: exact 1/2 at n=2 (5 sigma); > 0.25 at n=7 (5 sigma)",
+   "P7 LEQ: twist-partner cells ((2,1,0)vs(2,1,1) p=3,5; (3,1,c) p=7) have equal means, 5 sigma, all n",
+   "P8 TEETH: T1 wrong-twist TK-0, T2 mass-blind, T3 letter-blind (2,2), T4 tame-blind all bite"
+  ]
+ },
+ "summary": {
+  "checks": 207,
+  "fails": 5,
+  "teeth": 4,
+  "bites": 4,
+  "elapsed_s": 0.8,
+  "smoke": true
+ }
+}
