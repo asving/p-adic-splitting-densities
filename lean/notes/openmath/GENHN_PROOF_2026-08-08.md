@@ -169,7 +169,11 @@ machine row (GENIND-BOX-3 inherited).
 > (v) [THE LAW] consequently the stage read IS the (μ, K)-cluster
 > read in dv-units at the S-node, ragged-window-corrected: every
 > stage count law = THEOREM W-12.A's cell law with census field
-> F_{Q^{f₁}} and ladder density e₁ — "(e₁, f₁)-re-based" — and the
+> F_{Q^{f₁}} and ladder density e₁ — "(e₁, f₁)-re-based" **[e2-E2
+> 2026-08-09: away from the f₁ ≥ 2 boundary band, whose pins are
+> censused Q^{comp(m)} − 1 per pin (comp(m) = the pin slot's
+> in-window F_Q-dimension), not by the re-based field — ERRATUM E2
+> after this theorem]** — and the
 > stage's own history grammar is THEOREM GENIND.A over K inside the
 > stage (α/β/CS species, self-similar). (CS-2): the stage bracket is
 > GENIND-2(b) inside the stage,
@@ -187,6 +191,46 @@ machine row (GENIND-BOX-3 inherited).
 > μ = 3 (this battery, GN-REFINE3); (v)'s count content follows from
 > (i)–(iv) + GENIND @ pin; its σ content is GENHN.C at μ = 2 and
 > [GENHN-HE] at μ ≥ 3.**
+
+> **[e2] ERRATUM E2 2026-08-09 (GENHN.A(v)'s census clause at f₁ ≥ 2
+> band pins — the comp-weighted census made explicit). Queued at the
+> GENH4-r2 fold (ledger 0089f9b); tagged repair per the [r1]
+> mechanism (GENHN at 0/2, unaccepted); sealed battery runner and
+> artifacts UNTOUCHED — every battery row has f₁ = 1, where
+> comp(m) ≡ 1 = f₁ and the two censuses coincide
+> (Q^{comp} − 1 = |K| − 1 = q − 1).**
+>
+> **ORIGINAL (GENHN.A(v), sealed text):** "every stage count law =
+> THEOREM W-12.A's cell law with census field F_{Q^{f₁}} and ladder
+> density e₁ — '(e₁, f₁)-re-based'" — SILENT on the f₁ ≥ 2 boundary
+> band (GENHN-3(a)/(b): the heights whose K-slot has only part of
+> its F_Q-components in window).
+>
+> **CORRECTION (the added clause, DERIVED in this note's own frame —
+> not transcribed).** By GENHN-2, a height-m K-slot is f₁
+> F_Q-independent components. At band heights only
+> comp(m) := #(in-window F_Q-components of the height-m slot),
+> 1 ≤ comp(m) < f₁, are readable (the value is; the full K-residue
+> is not), so a RAM/2SIDED-type entry pin at height m is censused by
+> its nonzero READABLE data only:
+>
+>     census per band pin = Q^{comp(m)} − 1 ,   NOT |K| − 1 = Q^{f₁} − 1;
+>
+> away from the band comp(m) = f₁ and the displayed re-based census
+> |K| − 1 is correct. Consistency instance (GENH4's (1,2,2) genre:
+> Q = q, f₁ = 2, band N ≤ m ≤ N+k−1 with comp = 1): census q − 1 —
+> exactly the [r2] corrected display "q^{comp}−1 per RAM and per
+> 2SIDED pin", whose r3 remark scopes the same mnemonic "away from
+> the genre-F boundary band ... not by the re-based field". HONESTY
+> (grade of the general form): the band clause follows from the slot
+> model (i)–(iii) at (v)'s own grade, machine-checked only at the
+> (1,2,2) instance (GENH4's committed keys); no f₁ ≥ 2 STAGE row is
+> machine-exercised (GENHN-ERR-1's geography, none live below
+> n = 8). The same scoping reads onto this note's other
+> "(e₁, f₁)-re-based" echoes (title line, one-breath paragraph,
+> S6.2's assembly sentence) — tagged once, here. SOURCE: GENH4 PE2
+> CRITICAL 1 (the [r2] census correction) + PE3 REMARK A (the
+> away-from-the-band scoping), at GENH4's frozen pin 4b0d946.
 
 > **THEOREM GENHN.C (σ-decision at EVERY μ = 2 stage — the (H-e)
 > instance family, PROVED).** At every decided leaf of every μ = 2
