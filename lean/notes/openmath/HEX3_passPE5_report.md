@@ -250,8 +250,24 @@ states/s). Protocol: validate on committed rows first, then extend.
   drain 0.
 * **Never-instantiated (q,N) cells:** (8,4): u = 287,232 (first live
   k-term at q = 8); (9,4): u = 578,097; **(16,3): u = 65,536 = 16⁴ — the
-  first q = 16 instance anywhere**; (16,4): [PENDING — run in flight,
-  68.7B states, the first q = 16 row with a live k-term].
+  first q = 16 instance anywhere**; (16,4): [run in flight at report
+  close, 68.7B states, the first q = 16 row with a live k-term;
+  preregistered prediction u = 17,698,816 = 16⁶ + 15·16³·15·R(1);
+  result appended below when it lands].
+* **Second wave (run while the above completed):** (Fqt,3,8):
+  u = 7,357,797 on 10,460,353,203 states (depth +2 beyond the battery's
+  q = 3 window; 12 keys, k = 2 with M = 2 live); (5,5): u = 450,625
+  (depth +1 at q = 5); (5,6): [in flight; prediction u = 22,225,625];
+  (7,4): u = 129,997 (new cell, live k-term); (11,4): u = 1,904,661
+  (2.36B states, new cell); **(13,3): u = 28,561 and (13,4):
+  u = 5,143,177 (10.6B states) — the first equal-characteristic q = 13
+  instances anywhere** (the corpus's q = 13 rows were ℤ_p-only), giving
+  a NEW characteristic-independence pair beyond the battery's 17:
+  my (Fqt,13,3) u == the committed (Zp,13,3) u_measured (28,561)
+  exactly; (25,3): u = 390,625 = 25⁴ and (27,3): u = 531,441 = 27⁴
+  (first N = 3 instances at q = 25, 27). Every row: u == the law (both
+  forms), species == S5.1 both directions, partition exact, DECIDED
+  drain 0. Cumulative fresh-route states this pass: ~36B, all exact.
 * *Disclosure (own-bug, caught by my own validation, note untouched):*
   my first GF(4) invocation passed p = 4 (non-prime) instead of
   (p,d) = (2,2), silently building Z/4-flavored tables; the validation
@@ -270,7 +286,7 @@ at q = 3, N = 6 at q = 4) and at new prime-power cells ((8,4), (9,4),
 (16,3)). Structural bonus: the reader's own invariants (at most ONE
 repeated-root side per read state, always on a width-comparable side —
 the S2 partition's uniqueness) were hard asserts in my C reader and
-never fired across ~11.5B states read, depths no instrument had touched. **Counter stays 0/2 per protocol; r4 owed on m1 + m2, then
+never fired across ~11.8B states read, depths no instrument had touched. **Counter stays 0/2 per protocol; r4 owed on m1 + m2, then
 PE6 is the next pass.** Per-protocol note for the adjudicator: both
 findings are inherited-phrasing corrections that W-12's own arc already
 priced ("owed at HEX3's own arc"); if r4 lands as the two one-clause
