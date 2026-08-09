@@ -14597,3 +14597,46 @@ coherent-vs-naive flip at THREE new geographies incl. non-prime
 q=4 by construction — PARI sided with the coherent read at each.
 1/2; rider (one line) then PE4 = the attempt that completes the
 ENTIRE chain dependency closure.
+
+---
+
+## B3 COMPLETE (wgxkkttax): GENTOW-6 — TWO MORE BOXES CLOSED (mixed-side tie PROVED-VIA-CITE; attainment at μ₂=2 with the unit-square reason) · HETOW PE1 = 1 CRITICAL (the wrap-cocycle seam at η≠1 — battery was gauge-blind; repair shape machine-validated; GENHN T(b)′ display erratum candidate) · GENTOW2 PE1 re-validated — WAVE 27: HETOW r1 + GENHN dated append + GENTOW2 r1 (the PDF leg) — 2026-08-09
+
+GENTOW-6 (…59ea785 → 5fb8fd7): GENTOW4-BOX-1 PROVED-VIA-CITE (FGMN
+Thm 2.8 + Cor 4.7(3) + Cor 4.4(4) through the GENTOW2
+dictionary/shear + an INDEPENDENT corpus leg — the double-derivation
+standard); GENTOW4-BOX-2's budget half PROVED (the block lies on
+GENTOW-1's full-side locus; ledger half parked honestly);
+GENTOW3-BOX-1 PROVED at μ₂=2 (CERT-TOP: the digit is a unit SQUARE
+— why the machine never saw vanishing); sub-residues GENTOW6-BOX-1
+(μ₂≥3 attainment) + BOX-2 (ledger) + BOX-3 (regime-3
+classification), all attainment/count-grade, σ/read unaffected.
+Battery 401/0, 4/4 teeth, first μ₂*=3 reads + first e₁=3 and odd-p
+certs. PE1 targets self-flagged incl. the PDF-provenance leg.
+
+HETOW PE1 (5f821dc): F-1 CRITICAL — HETOW-1's slot-residue r̃ vs
+minpoly-of-β r̃ diverge by η^(−W(t)) (Q(k) non-additive); at η≠1
+frames the displayed Φ₂ is NOT the composed carrier
+(machine-confirmed: frame X reads σ={(4,1)} displayed vs {(2,2)}
+corrected = PARI; wrap-corrected key ĉ₀ ↦ lift(c₀η) fixes it, menu
+members all in-menu). ROOT CAUSE UPSTREAM: GENHN-T(b)′'s display
+(erratum candidate on the ACCEPTED note — dated append). The sealed
+battery was BLIND (both frames η=1) — the gauge axis missing from
+BOX-3 (F-3). F-2 GAP: the carry estimate's tail-into-B_t accounting
+(the verifier re-derived the fix — the moved piece's "exactly" is
+right, the stationary tail piece needs the display). FRESH ROUTE:
+FIRST η≠1 tower contact anywhere (43/43 dual-oracle) + first f₁=2
+composed carrier (n=24). HELD: everything else incl. both menus +
+the termination row. r1 owed with the machine-validated repair.
+
+GENTOW2 PE1 re-validated by the resume (verdict unchanged 0C+3G+3m;
+citation FAITHFUL; the B-2 adjudication sharpened: disclosed ≠
+derived — B-2 is not derived anywhere in the corpus, honest
+conditionality).
+
+WAVE 27: HETOW r1 (the wrap-corrected key formalized + the tail
+accounting + BOX-3's gauge axis + minors; the GENHN T(b)′ dated
+append rides it) + GENTOW2 r1 (THE PDF-PROVENANCE LEG — fetch arXiv
+1305.0775v3 and verify the consumed passages — + the B-2 derivation-
+or-honest-box + the fallback clause fix + minors). HE3 PE4 (wave
+26) still in flight.
