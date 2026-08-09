@@ -13419,3 +13419,62 @@ with the standing BCFG-cite embargo). Grade 0/2; its hostile arc
 joins the queue. Wave-4 status at this fold: GENH4 r3 LANDED
 (4b0d946, trichotomy re-derived not transcribed); GENIND r2 +
 HE7 PE2 still in flight.
+
+---
+
+## ★ WAVE 4 FOLDED (wx8c548bb, 3/3): HE7 PE2 CLEAN — THE ARC PROGRAM'S FIRST CLEAN PASS, HE7-BOX-1 0/2 → 1/2 · GENIND r2 COMPLETE (LEMMA GENIND-6 mixed-opening transport PROVED, supp 2,128,163/0) · GENH4 r3 COMPLETE — WAVE 5: HE7 r3(minors)+PE3 = THE ACCEPTANCE ATTEMPT + GENIND PE3 + GENH4 PE4 — 2026-08-09
+
+**HE7 PE2 (reports 235cc22…8f5f2a6): CLEAN — 0 CRITICAL, 0 GAP,
+3 MINOR (+2 remarks). THE COUNT STARTS: 1/2.** The never-attacked
+§S5.8 survived a full adversarial re-derivation: (S5.8.1) re-derived
+exactly; the hunted failure region (ε₀>0 with small ε₁) proved EMPTY
+(HE6-0 forces ε₁ ≥ ℓD′ε₀); clause (c) audited at 7/11 items;
+HE7-13 shown key-free (no per-iterate (LIFT₂) re-proof needed); the
+42-recount independently confirmed. Minors (all one-sentence-scale):
+F-1 HE7-12(d) needs W ≠ 0 stated (true in any chain via HE7-13;
+W = 0 lands via §S5 anyway); F-2 HE7-8's infinite-chain sentence
+overreaches at mid-chain peels (pigeonhole sentence owed; vacuous at
+every certified degree, 0 mid-chain peels in 46 firings); F-3 the
+B2 "210/210" quantitative half VACUOUS on the δ=∞ stratum for 41/42
+members — undisclosed (mathematically trivial there). Machine: 7/7
+md5 pins, isolated re-run bit-identical-ex-timing. FRESH ROUTE
+(6th distinct): constructed α-refine family at ℓ=1, d_r=2,
+K₂=F_{p²} — FIRST d_r ≥ 2 exercise of HE7-12/13 anywhere, 634/634
+PARI, first 2-STEP refine chains (HE7-12(d) fold live), lazy-
+dictionary tooth caught 580, + 1,056-config exact polytope leg at
+d_r=3/f₁∈{2,3}. COUNTER POLICY (per the weld-annex precedent,
+HMENU3 ANNEX A): minors-only ⟹ the count HOLDS at 1/2 through a
+dated [r3] minor-repair round; PE3 verifies the [r3] text; any
+GAP-or-worse at PE3 resets to 0/2.
+
+**GENIND r2 (2abf419 → ad6f31d → 52fb6ff).** PE2-G1 CLOSED WITH THE
+LEMMA: new §S4.3 LEMMA GENIND-6 (mixed-opening transport) — (a)
+GENIND-3's split applies verbatim with composite blocks contributing
+slope-mass like pieces + per-coefficient certified windows; (b)
+permanence extended (blocks never re-merge); (c) the locus FIBERS as
+letter census × q^affine × Π children × Π stage spaces, ONTO with
+CONSTANT q-power fiber (stage-window count independent of child
+states, J-D0 absorbing twists); (d) read/menu/drain composition with
+(d)'s stage clauses consuming [GENIND-H] exactly as (CS-1) does —
+NO NEW CONDITIONALITY. Supp leg genindr2_supp.py GREEN 2,128,163
+checks/0 violations: fibration EXHAUSTIVE at three cells (incl.
+524,288 = 1,024 × 512 at (2,6,6)), PARI read-composition 360/360,
+3 teeth fired. BONUS (surfaced by its own tooth, proved + disclosed):
+Bezout-sharp windows one deeper than the division ledger at u₁/u₃;
+instrument lesson (truncation-artifact stability ≠ certification)
+recorded. PE2-G2/m1 landed (re-pin BOTH halves named; standing rule
+adopted in-text). 0/2; PE3 attempts the first clean.
+
+**GENH4 r3 (4b0d946, +80/−17 note-only).** Trichotomy RE-DERIVED
+from GENH4-3(i) (not transcribed): (a) N > 2w either parity →
+2SIDED; (b) N ≤ 2w odd → RAM(N); (c) N ≤ 2w even → UND. Checked
+against every committed counter-key incl. the refuting cell (the
+defective order predicts 512/0 vs artifact 128/384) + an equal-char
+twin row. Mnemonic scoped; stack refreshed with the as-of standing
+disclosure. 0/2; PE4 attempts the first clean.
+
+**WAVE 5 (dispatched this entry): HE7 r3 (three one-sentence minor
+repairs, count holds 1/2) THEN HE7 PE3 — IF CLEAN: 2/2 = THE FIRST
+STAGE-ONE ACCEPTANCE, freezing HE7_PROOF; + GENIND PE3 + GENH4 PE4
+(each a first-clean attempt). TAMEK folded at 415424e (its arc
+queued).**
