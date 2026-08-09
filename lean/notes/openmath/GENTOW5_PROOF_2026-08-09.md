@@ -668,13 +668,17 @@ e = 32, f = 1 (RAM leaf at the odd top height). Machine forms:
   prime with (e, f) = (32, 1) and nfeltval ladder (16, 40, 84, 170,
   341). Budgeted with timeout; infeasibility disclosed, not fatal
   (P-B4 is the exact witness either way).
-* T-B1 (tooth, the even-height mutant AT the node): f32m := Phi_4^2
-  - 2^20 Phi_1 (height 340 = 2*E_4 exactly, gcd(340, 2) != 1): the
-  witness ladder must BREAK (some resultant entry differs from the
-  RAM prediction with 341 -> 340) and factorpadic must NOT return a
-  single e = 32 factor — weak-form disjunctive tooth, disclosed as
-  such (the mutant's true continuation is a further tower, not
-  predicted here).
+* T-B1 (tooth, the even-height mutant AT the node — STRONG FORM,
+  hand-derived before the seal): f32m := Phi_4^2 - 2^20 Phi_1
+  (height 340 = 2*E_4 exactly, gcd(340, 2) != 1). Derivation
+  (pre-seal, disclosed): f32m = Phi_3^4 - 512 Phi_2 Phi_3^2 +
+  2^16(Phi_2^2 - 16 Phi_1) = Phi_3 * (Phi_3^3 - 512 Phi_2 Phi_3 +
+  2^16) since Phi_2^2 - 16 Phi_1 = Phi_3 — the node-height digit
+  hits the key relation exactly and the mutant COLLAPSES INTO THE
+  DRAIN: Phi_3 | f32m over Z. Machine form: remainder(f32m, Phi_3)
+  = 0, hence Res(f32m, Phi_3) = 0 (ladder entry infinite != 170)
+  and the single-(e = 32)-factor read is refuted without PARI. The
+  gcd != 1 proviso is machine-load-bearing at depth 4.
 
 ### S4.3 Run record (VERDICT — appended from committed artifacts
 ### after the sealed run; PENDING at seal time)
