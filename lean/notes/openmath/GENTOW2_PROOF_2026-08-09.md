@@ -2,7 +2,10 @@
 # intermediate one-sidedness DISCHARGED BY FAITHFUL CITE
 # (FGMN Theorem 6.3 + Corollary 6.4), 2026-08-09
 
-STATUS SKELETON — sections land in per-section commits.
+**STATUS: COMPOSED, item (6)(α) PROVED-VIA-CITE (THEOREM GENTOW2-A +
+LEMMA GENTOW2-B), battery GREEN (41 checks/0 violations, teeth T1 +
+T2′ fired; T2 = disclosed failed design). Grade 0/2 (attempt; hostile
+arc later). Unit: GENTOW-2, BOX-CLOSURE campaign.**
 
 Charge (BOX-CLOSURE item (6), LITERATURE-FIRST): the r3 T(b)″
 attempt (commit 08ec526, GENHN_PROOF S9.1 [GENHN-TOW-1] item (6))
@@ -366,8 +369,40 @@ reduces to the SAME acceptance state as items (1)–(5): no residue
 special to depth ≥ 3 remains open beyond them.
 ## S8. MACHINE BATTERY (gentow2_checks.py): 5 committed + 2 NEW
 
-**SEAL STATE: PENDING** — verdict lands in the second seal commit,
-read off the run artifacts only. Runner:
+**SEAL STATE: VERDICT (read off the run artifacts).**
+
+* **Sealed run** (gentow2_checks_output.txt, runner as sealed at
+  commit c33f10e): **40 scored checks, 0 violations** — every pin
+  table, one-sidedness, on-side residual support, and Bareiss
+  resultant valuation EXACT on the A-route, and every PARI sig +
+  nfeltval intermediate triple EXACT on the B-route, at W1, W2,
+  W3–W5, N1, N2. TOOTH T1 FIRED (the floor-breaching recipe u₃ = 9
+  < 10 is flagged NOT one-sided — pin (3,2) below the chord —
+  machine-coupling (α)'s theorem to the (β) floor hypothesis).
+  **TOOTH T2 FAILED AS DESIGNED** (machine sig [(8,1)], predicted
+  [(4,1),(4,1)]): the design mis-read Lemma 5.3 — R = (y+1)² is a
+  prime POWER (one residual ideal), and FGMN Thm 6.6 splits only
+  across DISTINCT (λ, L) pairs, so non-key does NOT imply reducible;
+  Φ₂² − 64x is irreducible with e = 8 and the tower simply refines
+  further. As-sealed verdict: RED on the tooth criterion, with all
+  40 scored checks green. Disclosed, kept as a record row.
+* **Corrected tooth T2′** (preregistered before ITS first run,
+  commit after the disclosure; run artifact
+  gentow2_checks_output_run2.txt): at the N1 profile K₂ = F₄, the
+  residual y² + y + 1 = (y+ω)(y+ω²) SPLITS, so
+  Φ₂b² − 8xΦ₂b − 128 has a ONE-SIDED full-support polygon yet must
+  factor [(2,2),(2,2)] — and DID: T2′ FIRED. Hypothesis (ii)'s
+  irreducibility-over-K₂ is machine-load-bearing; the polygon side
+  alone certifies nothing.
+* **Re-run verdict: GREEN — 41 checks, 0 violations, teeth T1 + T2′
+  both fired** (T2 recorded, not scored).
+* New-witness yields: N2 is the FIRST machine witness of the
+  f₃ ≥ 2 K₂-digit branch (the gap PE3 remark R1 disclosed as
+  machine-unwitnessed anywhere); N1 is the first depth-3 contact at
+  an f₂ = 2 tower (K₂ = F₄), residual ψ₂² = T⁴ + T² + 1 read off
+  the machine side exactly as Cor 6.4 predicts.
+
+Runner:
 verification/openmath/gentow2_checks.py, preregistered predictions in
 its module docstring (P-W1/P-W2/P-W3/4/5/P-N1/P-N2 + TOOTH-T1/T2),
 written BEFORE the first full run. Witness inventory: the 5 committed

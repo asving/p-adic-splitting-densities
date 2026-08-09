@@ -1,0 +1,30 @@
+== GENTOW-2 battery (A-route exact + B-route PARI) ==
+-- W1 --
+  A-route: pins/side/support/resultants OK ({0: 10, 2: 7, 4: 0}, [0, 4], (4, 10, 21))
+-- W2 --
+  A-route: pins/side/support/resultants OK ({0: 10, 1: 8, 2: 7, 4: 0}, [0, 4], (4, 10, 23))
+-- N1 --
+  A-route: pins/side/support/resultants OK ({0: 12, 1: 11, 2: 6, 3: 4, 4: 0}, [0, 2, 4], (4, 12, 26))
+-- N2 --
+  A-route: pins/side/support/resultants OK ({0: 10, 1: 10, 2: 6, 3: 3, 4: 0}, [0, 4], (4, 10, 22))
+-- W3 (leaf) --
+  A-route resultants: (20, 42, 85)
+-- W4 (leaf) --
+  A-route resultants: (20, 42, 93)
+-- W5 (leaf) --
+  A-route resultants: (20, 42, 179)
+-- TOOTH T1: pins {0: 9, 1: 7, 2: 7, 3: 2, 4: 0} -> one_sided=False (must be False)
+-- TOOTH T2p A-route: pins {0: 14, 1: 7, 2: 0} one-sided, FULL on-side support
+== B-route (PARI/gp): 9 jobs ==
+  W1 PARI: sig [(8, 1)], nfeltval(x,Phi',Phi2)=[4, 10, 21] (e,f)=[8, 1]
+  W2 PARI: sig [(8, 1)], nfeltval(x,Phi',Phi2)=[4, 10, 23] (e,f)=[8, 1]
+  N1 PARI: sig [(4, 2)], nfeltval(x,Phi',Phi2)=[2, 6, 13] (e,f)=[4, 2]
+  N2 PARI: sig [(4, 2)], nfeltval(x,Phi',Phi2)=[2, 5, 11] (e,f)=[4, 2]
+  W3 PARI: sig [(16, 1)], nfeltval(x,Phi',Phi2)=[8, 20, 42] (e,f)=[16, 1]
+  W4 PARI: sig [(16, 1)], nfeltval(x,Phi',Phi2)=[8, 20, 42] (e,f)=[16, 1]
+  W5 PARI: sig [(8, 1), (8, 1)]
+-- RECORD T2 (disclosed failed design, not scored): sig [(8, 1)] (the sealed prediction [(4,1),(4,1)] was a Lemma-5.3 mis-read; (y+1)^2 is a prime power)
+-- TOOTH T2p: sig [(2, 2), (2, 2)] (must be [(2,2),(2,2)])
+== VERDICT ==
+checks: 41, violations: 0, teeth: {'T1': True, 'T2p': True}
+GENTOW2 battery: GREEN
