@@ -1855,3 +1855,74 @@ machine-surfaced extraction-certified perimeter (S11.F) — a
 sharpening, not a defect, of the window ledger. Grade box
 (GENHN-BOX-1) unchanged: attempt 0/2, no hostile arc yet; nothing
 here upgrades the conditionality display of THEOREM GENHN.B.
+
+---
+
+### Dated corrections (2026-08-09, post-PE3)
+
+*Discipline (the HEX3 post-PE6 minors-only precedent; charge bar =
+nothing GAP-or-worse is CLEAN): PE3 returned CLEAN — 0 CRITICAL +
+0 GAP + 2 MINOR (`GENHN_passPE3_report.md` @ 7a058c8, byte-frozen
+at md5 5ea120909ad8c007bbf57aee9c15c475) — so the clean count set
+there (0/2 → 1/2) HOLDS AT 1/2 and this is a dated append only: the
+body above (lines 1–1857, byte-identical beadeeb → this append;
+pre-append file md5 c38f52834879f76d618b1709146a3991 is the prefix)
+is byte-untouched, and the sealed runners/artifacts stay frozen
+(PE3's fresh instrument `verification/openmath/genhn_pe3_fresh.py`,
+md5 f70d3d564ffe04337b2f3cb7cd136550, GREEN 176/0 on its first full
+run, is the report's leg, cited here read-only). Two corrections,
+one per PE3 MINOR.*
+
+**Correction 1 (PE3 F-1 — item (6)(α)'s mechanism attribution).**
+[GENHN-TOW-1] item (6)(α)'s sentence "TRUE at the witness by an
+EXACT CARRY CANCELLATION" (body L1423–1424) over-attributes: the
+displayed cancellation arithmetic is correct (re-verified at PE3),
+but the cancellation is witness-specific arithmetic, NOT the
+mechanism the one-sidedness rides. Read the sentence as: **"TRUE at
+the witness because the carry terms CLEAR the side (at the witness
+they also cancel exactly — witness arithmetic, not the mechanism):
+the would-be surviving b = 1 term 16Φ′ sits at dv 8 > 15/2 = the
+side height at b = 1 (a b = 1 pin has integer dv against a
+half-integral side height, so it cannot sit ON this side), and the
+one-sidedness rides the carry CONSTANT 32 landing exactly on the
+side endpoint (0, 10) — without it Φ′ | Φ₃."** Refuting witness for
+the cancellation-as-mechanism reading (PE3 FR3, quoted from the
+report @ 7a058c8; the derived data RE-VERIFIED by PARI/gp at this
+append — development identity exact, (e, f) = (8, 1), nfeltval
+triple and leaf σ as cited): the SECOND iterated key
+Φ₃ = Φ₂² − 16xΦ′ (u₃ = 23 = 4·4 + 2·1 + 5·1, n̂₂(23) = 16xΦ′,
+gcd(23, 2) = 1, κ₃ = 23/2 > 8) keeps its carry UNCANCELLED —
+development Φ′⁴ − 8xΦ′² + (16 − 16x)Φ′ + 32, dv-pins
+(0,10), (1,8), (2,7), (4,0) — and is STILL one-sided of slope
+5/2 = κ₂ with residual T² + 1 = ψ₂², carrier (8, 1), the full
+intermediate ascent data (v_pr(x), v_pr(Φ′), v_pr(Φ₂)) =
+(4, 10, 23) exact by nfeltval, and its n = 16 leaf RAM(93) →
+{(16,1)} PARI-exact on both routes. Consequence for a T(b)″ prover:
+the general (α) target is the side-clearing bookkeeping (carry
+terms clearing the side with the constant landing exactly), NOT
+"the carries cancel exactly at general genres" — the latter is
+FALSE as a general lemma (FR3 is a valid iterated key where they do
+not cancel). The box's bottom line stands unchanged: one-sidedness
+at general genres is genuine Okutsu-optimality content, unproved
+here; item (6) remains OPEN; no σ or count is priced through it.
+
+**Correction 2 (PE3 F-2 — the "full inner sides" scope word at the
+three residual echo sites).** The passPE2-F2 scope word reached 3
+of 4 echo sites at r3; the three residual same-species sites
+(enumerated, not quantified) are read with the scope word attached
+here: (i) **S9.1 [GENHN-TOW-1] preamble** (L1383–1386): read "the
+corrected leaf read with inner-μ₂ = 2 σ" as "the corrected leaf
+read with inner-μ₂ = 2 σ on a FULL inner side only (e₂f₂μ₂ = μ₁ —
+(iii)'s proved perimeter; partial sides are the box's own item (4),
+six lines below)". (ii) **the GENHN.B [r3] depth-split sentence**
+(L311–312): read "T(b)′ is ONE composition step, so it carries the
+DEPTH-2 towers" with its conditionality-display twin's
+parenthetical (L367) attached — "(item (4) where the inner side is
+partial)". (iii) **the [r2] title-line rider** (L53–58): read "its
+carrier is the COMPOSED KEY (LEMMA GENHN-T(b)′, S8 annex)" with the
+r3 depth split attached — T(b)′ is ONE composition step (the
+depth-2 towers, full inner sides); at depth ≥ 3 the carrier is
+item (6)'s unproved iteration, and "survives" (= not refuted)
+remains accurate. Per PE3, none of the three sites carries a
+quantifier and each is disambiguated within its own display; these
+riders align the wording with the r3 scope.
