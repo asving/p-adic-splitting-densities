@@ -34,8 +34,8 @@ STATUS TABLE (updated per section as composed):
 | (2) | LEMMA GENTOW5-C ((SLOT_i) for the tower ladder) | PROVED at annex-template grade (S2.3) |
 | (2) | LEMMA GENTOW5-D (Step-0 carry monotonicity is level-agnostic) | PROVED (S2.4) |
 | (2) | THEOREM GENTOW5-B (general-depth composition) | PROVED with named pins (S3) |
-| (2) | depth-4 witness n = 32 q = 2 | GREEN: ladder 16/40/84/170/341 exact, both routes (S4) |
-| battery | gentow5_checks.py | GREEN 208 checks / 0 violations, 5/5 teeth (S5) |
+| (2) | depth-4 witness n = 32 q = 2 | constructed; verdict PENDING seal run (S4) |
+| battery | gentow5_checks.py | PENDING (sealed, verdict by second commit) (S5) |
 
 ## S0. SETTING (one-pass restate; GENTOW-1 S0 + HE7-2' names)
 
@@ -130,9 +130,10 @@ GENTOW2_PROOF S2 — are multiplicative by Cor 4.7(3) [Q8 @ GENTOW2].
 Let gamma_j := the coherent per-height residue of C_j(x0) (the
 GENHN-2'/S4 digit read against n2hat((mu2-j)lam)). Then
 
-    c_j = iota(gamma_j) * theta_{mu2-j},
+    c_j = iota(gamma_j) * theta_{mu2-j}^{-1},
     theta_t := [n2hat(lam)(x0)]^t * [n2hat(t*lam)(x0)]^{-1}
-             = iota(vartheta_t),  vartheta_t in K2^x FIXED,
+             = iota(vartheta_t),  vartheta_t in K2^x FIXED
+    (theta_0 = theta_1 = 1; equivalently gamma_j = c_j*vartheta_{mu2-j}),
 
 with vartheta_t independent of x0 and of the polynomial read, given
 by the telescoping vartheta_{t+1} = vartheta_t * res(tau(t*lam, lam))
@@ -184,11 +185,10 @@ twist-blind, letters re-coordinatize).
 
 Setting as in S0 (the GENTOW-2 event), with the residual hypothesis
 read in the multiplicative convention: R_N(T) = (T - w)^{mu2} in
-k(L2)[T], where w := [lift(s; lam)(x0)] * N^{-1} (the N-class of the
-prescribed height-lam lift; by GENHN-2' and LEMMA GENTOW5-A1, w =
-iota(s) times the fixed height-lam unit — the same convention on
-both sides, which is what "the lift realizes the residual's root"
-means; coherence, not invariance, per HE7 ANNEX R R1.2 item 3).
+k(L2)[T], where w := [lift(s; lam)(x0)] * N^{-1} = iota(s) ON THE
+NOSE (theta_1 = 1: at the single height lam the two conventions
+coincide, so the lift's digit IS the root's coordinate — coherence,
+not invariance, per HE7 ANNEX R R1.2 item 3).
 Set what := -lift(s; lam), Phi2+ := Phi2 + what, and let C_k+ be the
 Phi2+-development coefficients of f. Then for every k < mu2:
 
@@ -618,8 +618,70 @@ ladder over; no count law at depth >= 3 is claimed measured.
 
 ## S4. THE DEPTH-4 WITNESS (n = 32 over q = 2)
 
-(to be filled: the minimal chain u = 5, 21, 85, 341; construction;
-predictions; run record)
+### S4.1 The minimal chain (u_{i+1} = 4u_i + 1 — every floor tight)
+
+q = 2, h = 1, all stages (e_i, f_i) = (2, 1), all psi_i = y - 1
+(K_i = F_2 throughout — the minimal alphabet; properness l_i = 2).
+The floor chain u_{i+1} > e_{i+1}E_i = 4u_i admits the MINIMAL odd
+solutions u_{i+1} = 4u_i + 1 from u_1 = h = 1:
+
+    u = (1,) 5, 21, 85, 341;   E_i = 2u_i = (2,) 10, 42, 170;
+    dv_i = 2^i v;  D_i = 2^i.
+
+Keys by THE RECIPE (each khat = nhat_i(u_{i+1}), digit 1; S2.2's
+recursion solves):
+
+    Phi_1 = x^2 - 2
+    Phi_2 = Phi_1^2 - 4x            (nhat_1(5)  = 4x)
+    Phi_3 = Phi_2^2 - 16 Phi_1      (nhat_2(21) = 16 Phi_1)
+    Phi_4 = Phi_3^2 - 256 Phi_2     (nhat_3(85) = 256 Phi_2)
+
+(Phi_2, Phi_3 are the committed W1 objects of GENTOW2; Phi_4 is
+NEW — the first depth-4 key anywhere in the program.) The degree-32
+member, one more tight rung (m* = 4*341/4... the top height
+m* > e*E_4 = 340, minimal odd 341 on dv_4):
+
+    f32 := Phi_4^2 - 2^16 Phi_3     (nhat_4(341) = 2^16 Phi_3),
+
+deg 32 = the first-live depth-4 degree (S2.1's arithmetic 2^{r+1}).
+
+### S4.2 Preregistered predictions (sealed in the battery docstring)
+
+By THEOREM GENTOW5-B (b)+(e) every root xi of f32 carries the EXACT
+ladder v(x) = 1/2, v(Phi_1) = 5/4, v(Phi_2) = 21/8, v(Phi_3) =
+85/16, v(Phi_4) = 341/32; f32 is irreducible over Q_2 with
+e = 32, f = 1 (RAM leaf at the odd top height). Machine forms:
+* P-B4 (RESULTANT LADDER, exact-integer — the "nfeltval-only"
+  route, PARI-free): v_2(Res(f32, g)) = 32*v(g(xi)) for g = x,
+  Phi_1, Phi_2, Phi_3, Phi_4 -> (16, 40, 84, 170, 341); and at the
+  depth-4 KEY itself: v_2(Res(Phi_4, g)) -> (8, 20, 42, 85).
+* P-B3 (ONE-SIDEDNESS AT EVERY LEVEL — Cor 6.4's display, exact):
+  the Phi_j-adic polygons of Phi_{i+1} and f32 are one-sided of the
+  predicted slopes (5, 21, 85/2, 341/2 at the top reads; chords
+  with on-chord support ONLY at the char-2-surviving binomial spots
+  {0, l...}: e.g. Phi_1-adic Phi_4 on-chord at j in {0, 8} only,
+  Phi_2-adic Phi_4 at j in {0, 4} only — (y+1)^{2^k} = y^{2^k}+1).
+* P-B1/B2 (grammar arithmetic): floor chain tight; every recipe
+  side term at height E_{i+1} exactly.
+* P-C (PARI leg, DETACHED): factorpadic(f32, 2) returns ONE factor
+  of degree 32; nfinit([f32,[2]]) + idealprimedec gives a single
+  prime with (e, f) = (32, 1) and nfeltval ladder (16, 40, 84, 170,
+  341). Budgeted with timeout; infeasibility disclosed, not fatal
+  (P-B4 is the exact witness either way).
+* T-B1 (tooth, the even-height mutant AT the node): f32m := Phi_4^2
+  - 2^20 Phi_1 (height 340 = 2*E_4 exactly, gcd(340, 2) != 1): the
+  witness ladder must BREAK (some resultant entry differs from the
+  RAM prediction with 341 -> 340) and factorpadic must NOT return a
+  single e = 32 factor — weak-form disjunctive tooth, disclosed as
+  such (the mutant's true continuation is a further tower, not
+  predicted here).
+
+### S4.3 Run record (VERDICT — appended from committed artifacts
+### after the sealed run; PENDING at seal time)
+
+**PENDING.** Nothing here is filled before the sealed run per the
+two-commit discipline; the verdict paragraph is appended verbatim
+from the committed output artifacts in the second commit.
 
 ## S5. MACHINE LEG (gentow5_checks.py, two-commit seal)
 
