@@ -13841,3 +13841,51 @@ check and corrected with disclosure. 0/2; PE6 attempts first clean.
 correction + 7′(a) + minors) + GENIND PE6 + HE7-FINALIZE (3 dated
 one-liners) & SITE-REFRESH PREP (draft only; orchestrator reviews
 and pushes per standing policy).**
+
+---
+
+## WAVE 11 FOLDED (w9t7t56my, 3/3): GENH4 ANNEX R2 COMPLETE ((c′) PROVED at key level — stronger than the fallback) · GENIND PE6 = 0C+1G+1m (FIFTH record round — the SUPPLIER PINS are the disease; r6 = the re-pin round) BUT the fresh route REALIZED the f-first genre (corpus-first, 2.1M states, the 6k law CONFIRMED BY CONSTRUCTION) · HE7 FULLY FROZEN (ca3754d) + SITE DRAFT READY (push deferred pending TAMEK-QX) — WAVE 12: GENH4 ANNEX-PASS #2 + GENIND r6 — 2026-08-09
+
+**GENH4 ANNEX R2 (760d20f).** GAP-1: both false within-stratum
+displays WITHDRAWN with the transport error displayed (dv(A₁′)
+forced, dv(A₀′) capped by the surviving band letter); the corrected
+(c′) PROVED — key-level cap-uniqueness via band-zero witnesses,
+which EVERY leaf key contains, shape-only where 2w > N (the u₀
+parity construction), coset-count/trace existence at 2w = N; the
+verifier's FR4/FR5 legs cited at pins, no new computation needed.
+All four minors + both remarks landed. Stack 0/2; pass #2 next.
+
+**GENIND PE6 (265a562 → ad1bd98 → f7f45f1): 0C + 1 GAP + 1 MINOR.**
+PE6-G1: C14's [r5 sweep] rewrite "none moved from its pin" FALSE at
+FIVE of eight S9.3 suppliers — W-12 pinned at r2 vs THREE repair
+rounds (incl. its PE4 CRITICAL repair), HEX3 +2 rounds, HMENU3/W-11
+since ACCEPTED, QSCOUT22 +annex. FIFTH consecutive record round;
+the r5 sweep matched this sentence and rewrote it into a
+still-false form. DIAGNOSIS: the disease is the STALE PIN SET, not
+the sentences — r6 is the SUPPLIER RE-PIN ROUND (re-pin all eight
+at current HEADs with per-supplier fired-clause tables; the PE6
+verifier already traced consumption survival at every clause — W-12's
+CRITICAL was in S3.2, GENIND consumes S3.4/S2.4/S2.5/L0/L1/D/A, n=3
+firing survives per W-12 r5's own supply table). PE6-m1: three
+stale arc parentheticals → dated appends. THE FRESH ROUTE (the
+pass's triumph): the same-side f-first genre — disclosed at r5 as
+machine-unrealized corpus-wide — CONSTRUCTED and swept: 2,097,152
+exhaustive at (2,6,8) + first-visible N=7 + floor + k=2 + q=3 all
+six letter slices + Fqt mirrors = 2,132,082/0; the r5 6k entry law
+CONFIRMED BY CONSTRUCTION; both distinct-side cells incl. the
+never-realized f-first-STEEPER cap regime; 35 mechanism-free σ
+lifts. ALL FIVE committed legs re-run green (first pass to do so).
+0/2; r6 owed.
+
+**HE7 (ca3754d): FULLY FROZEN** — the three dated one-liners landed
+as the final micro-annex; BOX-1 closes the arc. SITE DRAFT
+(ec5f0b2, 320 lines; website repo confirmed untouched at 6e21f5d):
+reviewed by the orchestrator — HOLD THE PUSH until TAMEK-QX lands
+(Asvin's evidence-hierarchy directive: the draft's TAMEK paragraph
+cites the 17 MC ties; if TIER 1 lands the paragraph upgrades to
+exact-rational-identity language). Push = orchestrator, after the
+TAMEK-QX fold.
+
+**WAVE 12 (dispatched this entry): GENH4 ANNEX-PASS #2 (post-R2
+first-clean attempt) + GENIND r6 (the supplier re-pin round).
+TAMEK-QX in flight.**
