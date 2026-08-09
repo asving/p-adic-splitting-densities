@@ -14640,3 +14640,16 @@ append rides it) + GENTOW2 r1 (THE PDF-PROVENANCE LEG — fetch arXiv
 1305.0775v3 and verify the consumed passages — + the B-2 derivation-
 or-honest-box + the fallback clause fix + minors). HE3 PE4 (wave
 26) still in flight.
+
+---
+
+## B4 FOLDED (wrddn4fpj, 2/2): HETOW r1 (wrap-corrected key formalized; cocycle derived; tail accounting re-derived; GENHN dated erratum 59c1966 byte-frozen; gauge tooth 3/3) · GENTOW2 r1 (PDF-VERIFIED at the strongest grade — local PDF == fresh arXiv fetch bit-identical md5 da846c82, 15/15 statements visually verified w/ provenance table; B-2 partially derived via LEMMA GENTOW2-B′ + honest first-made-here residue; true transformation law replaces the false clause) — NEXT: HETOW PE2 + GENTOW2 PE2 — 2026-08-09
+
+The corrected key: Φ₂ := Φ′^{e₂f₂} − Σ_t L_{(f₂−t)u₂}(c_t·η^{W(t)})·Φ′^{e₂t},
+W(t) = ⌊(f₂−t)·i(u₂)/e₁⌋ — r̃ := minpoly(β) as the SOLE definition
+with the slot-residue characterization proved AT the corrected key.
+Supp GREEN 29 gp + 15 exact, dual routes, 2 new η≠1 frames incl.
+first e₁=3 wrap + first composed-(3,2) menu. GENTOW2's F2 honesty:
+GENTOW5-A1 checked and CANNOT supply the cross-frame unit
+(repo-internal) — the derivation honestly stops at B′; the B-2
+residue stands disclosed, machine-supported at 10 witnesses.
