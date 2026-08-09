@@ -1448,15 +1448,54 @@ degree-by-degree while the SCAFFOLD stays uniform in n.
   f669cb0 / verdict c16c717 / r1 ba0d1a4 / r2 99f1813 (arc 0/2, PE2
   adjudicated + r2, PE3 owed) — the reduction, the order-1 leaves at
   every degree, the [r1 F3] refine taxonomy, the (1²) frontier law.
+  [r6, PE6-G1 + PE6-m1, dated append + RE-PIN, git-log-checked at
+  commit time: the parenthetical above was true when written (08-08
+  10:16) and went stale across THREE undisclosed W12 repair rounds —
+  r3 b17238a (PE3 GAP: undecided(n,q,N) σ-pinned to BOX-7's
+  notion), r4 d2d91b7/5728258 (PE4 F1 **CRITICAL** repaired: S3.2's
+  b₂ = 0 witness pair; plus the (A1) σ-LABELING clause + the FIRING
+  CHECK at all suppliers), r5 be4a1dc/ee17210 (PE5 GAP + 3m; the
+  HM3.C (A0) supply re-derived at the disc ≠ 0 form). **NEW PIN =
+  r5 HEAD be4a1dc/ee17210** (arc 0/2; runner + artifacts byte-frozen
+  at seal f669cb0 throughout, per each repair's own commit).
+  Consumption verdict SURVIVES — S16 table row 1: zero S3.2 cites in
+  this note (grep executed this round); W-12.D re-read at the new
+  pin and re-matched to Step 5, quoted at S16.]
 * **THEOREM W-11(n = 2)** @ seal 7020ceb / r2 31506b3 / PE3 CLEAN
   839b735 (counter 1/2 — the first clean pass) — through W12-L0 and
-  R(M).
+  R(M). [r6, PE6-m1 dated append, git-log-checked at commit time:
+  **ACCEPTED 2/2** @ 35e6545 (08-08 10:53, PE3 + PE4 clean;
+  append-only acceptance annotation, body byte-frozen since r2
+  31506b3). **NEW PIN = 35e6545.** Consumption verdict SURVIVES —
+  S16 table row 4: an honest strengthening, zero content diff to
+  the consumed body.]
 * **HEX3 (H-1..H-4, HEX3.A/B/C)** @ seal e3f3459 / verdict 671a126 /
   r1 2580f12 — the n = 3 transport instances, u₃(M), the committed
-  species tables (GT-N3TIE's target).
+  species tables (GT-N3TIE's target). [r6, PE6-G1 dated append +
+  RE-PIN, git-log-checked at commit time: two repair rounds after
+  the r1 pin — r2 a707430 (08-08 12:13: never-measured census
+  11 → 12 pairs; S8.2's k = 1 mass regains its (1 − q^{−(N−3)})
+  factor), r3 b6a1d69 (17:53: the S8.2 W-12.B consistency clause
+  conditionalized on the open HEX3-BOX-1 tail-σ lemma). **NEW PIN =
+  r3 HEAD b6a1d69** (arc counter 0/2; runner + artifacts byte-frozen
+  at seal e3f3459 throughout). Consumption verdict SURVIVES — S16
+  table row 2: both corrected items are S8.2/census records this
+  note never cites; the consumed species tie is at the md5-frozen
+  `hex3_checks_results.json` ce6f4116, GT-PIN re-verified 5/5 this
+  round.]
 * **HMENU3 (HM3-1..4, HM3.A/B/C/D)** @ seal 64d3ff9 / verdict 625fa49
   (0/2, PE1 = 0C+1G+1m @ f4f7b03, r1 owed) — the two-phase chain
   template, the raw-key dictionary, the n = 3 bracket instance.
+  [r6, PE6-G1 + PE6-m1, dated append + RE-PIN, git-log-checked at
+  commit time: the "r1 owed" parenthetical went stale through r1
+  3235e1b, r2 e1280be, **ACCEPTED 2/2** @ 050425d (08-08 12:44), and
+  **ANNEX A** @ 19c0285 (20:27: HM3.C's (A0) quantifier corrected to
+  the disc ≠ 0 form at two sites, accepted body byte-frozen). **NEW
+  PIN = accepted body 050425d + ANNEX A 19c0285.** Consumption
+  verdict SURVIVES — S16 table row 3: ANNEX A corrects the
+  quantifier exactly TO the disc ≠ 0 form this note's S5.2
+  certificate-transport argument and S6 Step 4's exact-complement
+  cite consume.]
 * **LEMMA J-D0** @ 1642275/9387eb1 — the count-gauge-blindness frame
   (S7's letter-blindness; the char-tally legs corroborate again).
 * **GRTJC W-6..W-9 (ACCEPTED 2/2 @ 83f47f4; JC-F1/JC-F2 [r1/r2])** —
@@ -1466,12 +1505,30 @@ degree-by-degree while the SCAFFOLD stays uniform in n.
   S7.1's (CS-1..3) pricing only.
 * **QSCOUT22** @ 240a56c (skeleton) — the (2,2) empirical instrument;
   S7.3's predictions target its table; nothing consumed from it.
+  [r6, PE6-G1 dated append + RE-PIN, git-log-checked at commit time:
+  the skeleton pin predates the scout's own arc — seal 970197d,
+  VERDICT dd67cda (08-08 10:00, GREEN 7,614,473/0), L3-correction
+  annex fcaf268 (14:23; the genre-E UND display's h = 1 slip, the
+  same slip GENH4-BOX-7 discloses). **NEW PIN = verdict dd67cda +
+  annex fcaf268.** Consumption verdict trivially SURVIVES — S16
+  table row 5: nothing was or is consumed; S7.3's prediction targets
+  are the committed artifacts @ dd67cda, byte-fixed.]
 * **GENHN (THEOREM GENHN.A(iv)(v) + LEMMA GENHN-3 + S6.2)**
   @ 850e77e [r3, PE3-m4: consumed since r1/r2, omitted from this
   stack until now] — A(iv) (the stage node floor κ ≥ S_b + 1) inside
   LEMMA GENIND-6(b); A(v) (the ragged-window-corrected stage read)
   at (CS-1); LEMMA GENHN-3 (ragged-band confinement) at (CS-1) and
   Step 4; S6.2 (the ghost × letter reconciliation) at (CS-2).
+  [r6, as-of disclosure, git-log-checked at commit time: note HEAD
+  = 850e77e, THE PIN, unmoved — but THREE errata are QUEUED against
+  the GENHN arc, unexecuted (ledger: PROJECT_STATE 2026-08-09
+  append, "GENHN's erratum queue now 3 items (UND phrasing;
+  comp-weighting; A(i) transport)" — the third is the Codex-GENH4
+  F3 filing this bullet's GENH4 neighbor already discloses).
+  Per-clause check at ledger granularity: none of the three names
+  A(iv), A(v), GENHN-3, or S6.2 — the four clauses consumed here —
+  and A(i) is uncited in this note; the next dated append owes
+  their execution disclosure. S16 table row 6.]
 * **GENH4 (THEOREM GENH4.A/B + GENH4-1F, the Q22-L1/L3 package)**
   @ r3 4b0d946 [r3, PE3-G1 + PE3-m4: re-pinned at the actual repair
   HEAD; arc since: PE4 CLEAN @ e15308d, its count 1/2] [r4, dated
@@ -1499,7 +1556,24 @@ degree-by-degree while the SCAFFOLD stays uniform in n.
   annex material this note never cites; and GENIND consumes
   GENHN.A(iv)(v)/GENHN-3/S6.2, not the A(i) clause of F3's queued
   erratum. GENH4 note HEAD at this commit = b10a5a7; GENHN note
-  HEAD = 850e77e, the pin above, unmoved] —
+  HEAD = 850e77e, the pin above, unmoved] [r6, dated append,
+  git-log-checked at commit time: AFTER r5 (07:06:56) the GENH4
+  annex arc moved twice — annex-pass #1 NOT CLEAN (0C + 1G + 4m
+  @ a8dec16, fresh leg fed3cff: GAP-1 = ANNEX R R2's N-even
+  band-pinned leg machine-refuted, a clause this note never cites;
+  the W-12.D-consumed supply clause (b) was re-derived CLEAN in the
+  same pass) and its repair **ANNEX R2** @ 760d20f (07:41: the
+  refuted legs WITHDRAWN, clause (c) restated as (c') at key level,
+  explicitly unconsumed — "W-12.D consumes (b) only" per its own
+  commit record). **NEW PIN = accepted body 4b0d946 (byte-frozen;
+  3-way md5 prefix checks at baf05ed/b10a5a7/760d20f) + annex stack
+  through R2 @ 760d20f**; the annex-stack count is 0/2 with its
+  pass #2 in flight this wave (not landed at this commit).
+  Consumption verdict SURVIVES — S16 table row 7: none of the annex
+  findings touches THEOREM GENH4.A/B, GENH4-1F, or the
+  comp-weighted census consumed here; GENH4.B re-read at the
+  accepted body and re-matched to the Step 4 use-site, quoted at
+  S16] —
   the
   (CS-EXACT) n = 4 de facto discharge geography (drain =
   GENH4.B/Q22-L3, menu = GENH4.A/Q22-L1 + GENH4-1F, comp-weighted
@@ -2038,11 +2112,23 @@ against the repo/artifacts BEFORE being kept; verdicts listed).**
   still GENHN's note HEAD; GENH4: r3-era sentences stand as dated
   records, and the stack gains the [r4] dated append (ACCEPTED 2/2
   @ 11dbd23, annex @ baf05ed, accepted body byte-frozen = the
-  4b0d946 pin). Of the remaining pinned suppliers enumerated in
-  S9.3's stack (W-12, W-11, HEX3, HMENU3, J-D0, GRTJC, WELDMASTER /
-  DULEMMA / [W12-H], QSCOUT22): each git-log-checked at commit time,
-  none moved from its pin [r5 sweep: was "No other supplier note
-  moved since its pin" — scoped to the enumerated stack].
+  4b0d946 pin). [r6, PE6-G1: this item's close — "Of the remaining
+  pinned suppliers enumerated in S9.3's stack (W-12, W-11, HEX3,
+  HMENU3, J-D0, GRTJC, WELDMASTER / DULEMMA / [W12-H], QSCOUT22):
+  each git-log-checked at commit time, none moved from its pin
+  [r5 sweep: was 'No other supplier note moved since its pin' —
+  scoped to the enumerated stack]" — was FALSE at FIVE of the
+  enumerated suppliers (W-12: three repair rounds beyond the pin
+  incl. the PE4 F1 CRITICAL repair; HEX3: two rounds; HMENU3:
+  accepted + ANNEX A; W-11: accepted; QSCOUT22: verdict + L3
+  annex), refuted by the git log at both the r4 and r5 commit
+  times: the per-supplier git-log check the sentence asserts was
+  not executed. REPLACED by S16's PER-SUPPLIER FIRED-CLAUSE TABLE —
+  one row per supplier with its own pins, movement, consumed
+  clauses, and evidence; no summary sentence — and the S9.3 pins
+  refreshed to the suppliers' current HEADs with [r6] dated
+  appends. The five prior stale sentences of this defect class:
+  PE2-G2 → PE3-G1 → PE4-G1 → PE5-G1 → PE6-G1.]
 
 **Count: 14 claim groups audited; 4 FALSE → fixed (C1, C3, C4, C5),
 1 half-true → rescoped (C2), 9 verified and kept (C6–C14).**
