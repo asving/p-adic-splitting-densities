@@ -1,0 +1,108 @@
+{
+ "p3_e2_f1_c0": {
+  "mean_n2_exact": "1",
+  "mean_n3_exact": "114/121",
+  "mass_sum_proj": "4/3",
+  "mean_limit_monic": "1"
+ },
+ "p3_e2_f1_c1": {
+  "mean_n2_exact": "1",
+  "mean_n3_exact": "114/121",
+  "mass_sum_proj": "4/3",
+  "mean_limit_monic": "1"
+ },
+ "p3_e1_f2_c0": {
+  "mean_n2_exact": "3/2",
+  "mean_n3_exact": "357/242",
+  "mass_sum_proj": "2",
+  "mean_limit_monic": "3/2"
+ },
+ "p3_e1_f3_c0": {
+  "mean_n2_exact": "3/4",
+  "mean_n3_exact": "795/484",
+  "mass_sum_proj": "2",
+  "mean_limit_monic": "3/2"
+ },
+ "p3_e2_f2_c0": {
+  "mean_n2_exact": "2",
+  "mean_n3_exact": "225/121",
+  "mass_sum_proj": "25/9",
+  "mean_limit_monic": "25/12"
+ },
+ "p3_e2_f2_c1": {
+  "mean_n2_exact": "3/2",
+  "mean_n3_exact": "357/242",
+  "mass_sum_proj": "19/9",
+  "mean_limit_monic": "19/12"
+ },
+ "p3_e4_f1_c0": {
+  "mean_n2_exact": "1",
+  "mean_n3_exact": "114/121",
+  "mass_sum_proj": "37/27",
+  "mean_limit_monic": "37/36"
+ },
+ "p5_e2_f1_c0": {
+  "mean_n2_exact": "1",
+  "mean_n3_exact": "760/781",
+  "mass_sum_proj": "6/5",
+  "mean_limit_monic": "1"
+ },
+ "p5_e2_f1_c1": {
+  "mean_n2_exact": "1",
+  "mean_n3_exact": "760/781",
+  "mass_sum_proj": "6/5",
+  "mean_limit_monic": "1"
+ },
+ "p5_e3_f1_c0": {
+  "mean_n2_exact": "5/6",
+  "mean_n3_exact": "4061/4686",
+  "mass_sum_proj": "26/25",
+  "mean_limit_monic": "13/15"
+ },
+ "p5_e1_f2_c0": {
+  "mean_n2_exact": "5/3",
+  "mean_n3_exact": "3890/2343",
+  "mass_sum_proj": "2",
+  "mean_limit_monic": "5/3"
+ },
+ "p7_e3_f1_c0": {
+  "mean_n2_exact": "7/8",
+  "mean_n3_exact": "20007/22408",
+  "mass_sum_proj": "50/49",
+  "mean_limit_monic": "25/28"
+ },
+ "p7_e3_f1_c1": {
+  "mean_n2_exact": "7/8",
+  "mean_n3_exact": "20007/22408",
+  "mass_sum_proj": "50/49",
+  "mean_limit_monic": "25/28"
+ },
+ "p7_e3_f1_c2": {
+  "mean_n2_exact": "7/8",
+  "mean_n3_exact": "20007/22408",
+  "mass_sum_proj": "50/49",
+  "mean_limit_monic": "25/28"
+ },
+ "p7_e1_f2_c0": {
+  "mean_n2_exact": "7/4",
+  "mean_n3_exact": "19579/11204",
+  "mass_sum_proj": "2",
+  "mean_limit_monic": "7/4"
+ },
+ "p7_e2_f1_c0": {
+  "mean_n2_exact": "1",
+  "mean_n3_exact": "2758/2801",
+  "mass_sum_proj": "8/7",
+  "mean_limit_monic": "1"
+ },
+ "_prereg_notes": [
+  "P1 TK0: brute #Hom == TK-0 formula on the full roster incl. zero cases",
+  "P2 TKQ: MC(n=2) within 5 sigma of mean_n2_exact at every cell; X in {0,2} only",
+  "P3 N3: MC(n=3) within 5 sigma of mean_n3_exact at every cell",
+  "P4 DIP: at p=3 (2,1) cells, E(2)-E(3) > 0 at 3.5 sigma joint; E(7) > E(3) at 2 sigma",
+  "P5 LIM: |MC(n_max) - mean_limit_monic| < max(5 sigma, 0.04*(1+E)) at every cell (consistency band)",
+  "P6 SPLIT: (2,2,c=0) minus (2,2,c=1) at p=3: exact 1/2 at n=2 (5 sigma); > 0.25 at n=7 (5 sigma)",
+  "P7 LEQ: twist-partner cells ((2,1,0)vs(2,1,1) p=3,5; (3,1,c) p=7) have equal means, 5 sigma, all n",
+  "P8 TEETH: T1 wrong-twist TK-0, T2 mass-blind, T3 letter-blind (2,2), T4 tame-blind all bite"
+ ]
+}
