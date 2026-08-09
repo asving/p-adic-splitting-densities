@@ -2546,3 +2546,200 @@ No count law, theorem clause, consumption verdict, or frozen number
 is touched by this append. [GENIND-H] at n ≥ 4 remains the displayed
 OPEN box — the acceptance freezes the reduction and its record, not
 the box.
+
+---
+
+## ANNEX R (2026-08-09, post-ratification; CODEX F1-F6)
+
+**Provenance and scope.** The ratification sweep's Codex leg
+(`CODEX_GENINDRAT_2026-08-09.md`, session
+019fe5fe-39b0-7ff3-806d-4f578bcdb292, gpt-5.6-sol at HIGH, fresh
+context, read-only) returned **6 findings — RATIFICATION OUTCOME:
+CHALLENGE** at adjudication: F3 (CONFIRMED GAP, the heaviest — the
+vanishing rate consumed but not supplied by the displayed P(k)), F1
+(CONFIRMED GAP with disclosure overlap — GENIND-6(c)'s onto/constant-
+fiber missing its unit-pivot step), F2 (CONFIRMED GAP — the window-1
+scope leak), F4 (CONFIRMED, regraded MINOR at this note, GAP at the
+PE8 acceptance report — its §4.1 monotonicity display is false), F5
+(CONFIRMED, regraded MINOR display — the CS4-F floor), F6 (CONFIRMED,
+regraded MINOR wording — the stage-level reading of the converse).
+This annex executes the fold note's S4 repair queue R1–R6 in order.
+The accepted text above is BYTE-FROZEN: full file before this append
+= 158,427 bytes, md5 `eefcf6584bbb0917875e77c9fcab7a9e` (2,548
+lines), verified identical before and after; within it the
+PE8-verified body freeze (lines 1–2464 md5 `14fa6afc…`) was
+re-executed this round and matches. Machine support: the ADDITIVE leg
+`verification/openmath/genind_annexr_supp.py` + committed output
+(commit f5271e4; checks A–I, GREEN; py md5 `42fd603e…`, output md5
+`d938ad82…`); the sealed runner + artifacts are untouched (the runner
+is consulted READ-ONLY at its two CS4-F gate lines). Honesty of
+grade: this annex is a post-ratification append and has NOT itself
+been through a hostile pass; each repair below RE-DERIVES from the
+note's own lemmas and quotes the finding it cures.
+
+### R1 (CODEX F3, the heaviest): the vanishing rate — P(k)'s fourth member pinned to the rate-carrying species + the bounded/growing-M_l split displayed
+
+**R1.0 The defect, exactly.** S5.2's vanishing bullet consumes a rate:
+
+> "vanishing: u/Q^{m(N−1)} → 0 by induction (head Q^{−(N−1)};
+> α-terms geometric; β-terms lose at least one child's full mass by
+> the IH bound — each contributes O(poly(N)·Q^{−(N−c)}) relative
+> mass)"
+
+while THEOREM GENIND.B's displayed package supplies only
+
+> "P(k) := {… + exact-complement (A2)}"
+
+and W-12's (A2) is a bare o(1) (r(N)/q^{nN} → 0 — Codex's instance:
+1/log(M+1) is o(1) with no exponential rate). Codex F3's two halves,
+both confirmed at adjudication: (i) "exact" supplies a VALUE, not a
+rate — the displayed fourth member does not carry the O(poly·Q^{−·})
+the bullet consumes; (ii) a capped child window M_l = N − D_l can
+stay BOUNDED while the genre depth D_l grows with N, and there the
+child's own M_l → ∞ vanishing cannot be applied — those β-terms
+vanish only through the route prefactor, and no bounded-vs-growing
+split was displayed. GENIND-BOX-4 priced the bookkeeping compression;
+the finding is sharper: a consumed HYPOTHESIS component absent from
+the display. This section supplies both halves from the note's own
+machinery.
+
+**R1.1 The rate-carrying species, grounded at m = 2 (derivation
+displayed).** At m = 2 the recursion of S5.2 closes without β-terms:
+by GENIND-1's grammar a repeated linear e = 1 factor at m = 2 spans
+the whole polygon at integer slope — that is α — and the partition
+(1,1) is separable (DEC); no continuing child exists below degree
+2·d, and m = 2 < 4 excludes CS (S5.1). So the first-step recursion
+degenerates to head + α:
+
+    u(N) = Q^{N−1} + Σ_{k ≥ 1, 2k ≤ N−1} (Q−1)·Q^k · u(N−2k),
+    u(1) = 1   (the window-1 boundary: R3's rider below),
+
+writing u := u_{2,d}, Q := q^d, c(2) = 1. Telescope (re-derived here,
+the W-11 R-recursion move): subtracting the k ↦ k+1 re-indexed sum,
+
+    u(N) = Q^{N−1} − Q^{N−2} + Q²·u(N−2)   (N ≥ 3),
+
+and iterating from u(1) = 1, u(2) = Q gives the CLOSED FORMS
+
+    u(2ℓ)   = ℓ·Q^{2ℓ−1} − (ℓ−1)·Q^{2ℓ−2},
+    u(2ℓ+1) = (ℓ+1)·Q^{2ℓ} − ℓ·Q^{2ℓ−1},
+
+equivalently u(M) = Q^{M−1} + ⌊(M−1)/2⌋·(Q−1)·Q^{M−2} — which is
+LETTER-FOR-LETTER the committed R(M) displayed inside THEOREM HEX3.A
+(the W-11 supply consumed there). Machine (leg A, B): the closed
+forms solve the recursion symbolically in Q at N = 2..14 and equal
+R(M) at M = 1..14. Rate (leg C): u(N) ≤ N·Q^{N−1}, i.e.
+
+    u(N)/Q^{2(N−1)} ≤ N·Q^{−(N−1)}
+
+at N = 2..14, Q ∈ {2,3,4,5,8,9} — coefficient POLYNOMIAL (degree 1)
+in the window, deficit LINEAR in the window. The n = 3 instance is
+already displayed at the supplier: THEOREM HEX3.A's exact law (a
+⌊(N−1)/3⌋-term q-power sum with the same R(M) coefficients) with
+THEOREM HEX3.B's rate u ≤ N·q^{2N−2}, undecided/q^{3N} ≤ (1+N)q^{−N}.
+
+**The species pin (the fourth member's rider).** Read P(k)'s fourth
+member "exact-complement (A2)" WITH the species the proved instances
+exhibit — for each consumed cluster system (μ, d) at window M:
+
+> **(A2-RATE)** the conservative complement u_{μ,d}(M) is an exact
+> finite sum of signed q-power terms whose term count and
+> coefficients are polynomially bounded in M; in particular there
+> are constants (K, B, c) depending on (μ, d) only with
+>
+>     u_{μ,d}(M) / Q^{μ(M−1)} ≤ K·M^B·Q^{−(M−c)}.
+>
+> Instances: (μ, d) = (2, d): K = 1, B = 1, c = 1 (the closed forms
+> above, machine legs A–C); the n = 3 systems: HEX3.B as displayed;
+> n = 4, 5: the battery's exact first-step recursions (GT-BDRAIN,
+> GENIND-BOX-4's compensating instrument) realize the exact species
+> pointwise at the sealed windows.
+
+This is a strengthening of the DISPLAY, not of the truth: the m = 2
+and n = 3 members already sit in the species at their proved pins,
+and the induction below PROPAGATES the rate clause, so the package
+that closes under GENIND.B's strong induction is P(k)-with-(A2-RATE).
+
+**R1.2 ANNEX-LEMMA GENIND-C1 (the β-term estimate; the two-regime
+split).** Fix (m, d), window N, and a β-genre per GENIND-3's
+hypothesis with children (μ_l, k_l), depths
+D_l = min_j (v(a_j) + j·k_l) and windows M_l = N − D_l; write
+T_l = Q^{μ_l(M_l−1)} for the child totals and u_l = u_{μ_l,d}(M_l).
+Then:
+(i) [route prefactor] the genre's relative mass obeys
+ρ_g ≤ Q^{−(D_l−1)} for EACH child index l: the j = 0 term of the min
+gives D_l ≤ v(a₀), so the genre lies inside {v(a₀) ≥ D_l}, whose
+relative mass is exactly Q^{−(D_l−1)} (π-levels 1..D_l−1 of a₀
+pinned to zero — d·(D_l−1) q-digits; level 0 is pinned in every
+state). Machine (leg E): the committed loci obey it — M6's displayed
+law (q−1)²q^{6N−17} gives ρ = (q−1)²q^{−11} ≤ q^{−3} (D = 4) at
+q = 2,3,4,5; PSTEEP3 (2,5): 2^{−7} ≤ 2^{−2} (D = 3); PSTEEP4 (2,6):
+2^{−11} ≤ 2^{−3} (D = 4).
+(ii) [composition through the fibration] the genre's contribution to
+u_{m,d}(N) is (prefactor count)·[Π_l T_l − Π_l (T_l − u_l)] —
+GENIND-3(c)'s product fibration (onto, constant fiber) with "the
+frame is conservative-undecided iff some child is". Bounding the
+inclusion–exclusion by the UNION BOUND (leg F: the difference
+Σ_l u_l·Π_{j≠l}T_j − [ΠT − Π(T−u)] expands with nonnegative
+coefficients in (u_l, T_l − u_l) at r = 2, 3 — no exactness is
+needed for the BOUND direction; see R6), the relative contribution
+is ≤ ρ_g · Σ_l u_l/T_l.
+(iii) [the two regimes — both O(poly(N)·Q^{−(N−c)})] Fix any
+threshold c₀ ≥ 1 and split on the child window:
+  * GROWING (M_l > c₀): the child's (A2-RATE) at its strictly lower
+    degree μ_l·d < m·d ((IH), degree descent GENIND-1(iii)) gives
+    u_l/T_l ≤ K·M_l^B·Q^{−(M_l−c)}; with (i),
+    contribution_l ≤ K·N^B·Q^{−(D_l−1)−(M_l−c)} =
+    K·N^B·Q^{−(N−c−1)} — the exponents COMPOSE EXACTLY because
+    D_l + M_l = N (leg D verifies the identity from the hull data at
+    all six committed extractions: M6, TWOCHILD A/B, PSTEEP3,
+    PSTEEP4, SS6).
+  * BOUNDED (M_l ≤ c₀): the child limit is never invoked; the
+    trivial u_l/T_l ≤ 1 and (i) alone give
+    contribution_l ≤ Q^{−(D_l−1)} = Q^{−(N−M_l−1)} ≤ Q^{−(N−c₀−1)}
+    — the route prefactor carries the whole rate, which is Codex's
+    bounded-M_l half, now displayed.
+(iv) [genre count] a β-genre's datum at window N is a partition
+arrangement of m (finitely many types for fixed m) plus one integer
+slope per side, each slope ≤ v(a₀) ≤ N−1: at most p̃(m)·N^m live
+genres — polynomial in N of degree ≤ m. Summing (ii)–(iii) over
+children and (iv) over genres: the recursion's β-part contributes
+≤ m·p̃(m)·K·N^{m+B}·Q^{−(N−c′−1)} relative mass, c′ = max(c, c₀) —
+exactly the consumed sentence's O(poly(N)·Q^{−(N−c)}), now DERIVED
+from the displayed (A2-RATE) + GENIND-3's fibration + the depth
+identity. ∎
+
+**R1.3 ANNEX-THEOREM GENIND.C′ (the vanishing clause, quantitative
+form — the induction closed).** For the simple slice of each (m, d):
+there are (K, B, c) with u^{simple}_{m,d}(N)/Q^{m(N−1)} ≤
+K·N^B·Q^{−(N−c)} at every window N ≥ 1. *Proof (lexicographic
+induction on (degree m·d, window N), the S5.2 recursion's own
+shape).* Head: Q^{(m−1)(N−1)}/Q^{m(N−1)} = Q^{−(N−1)}. α-term k
+(same degree, window N−mk < N): the α(k) locus's relative mass
+factor is (Q−1)Q^{−k·m(m+1)/2} (GENIND.A(I)); against the window
+induction's bound at N−mk the exponents recompose to
+(Q−1)Q^{−k·c(m)}·[K(N−mk)^B·Q^{−(N−c)}], and Σ_{k≥1}(Q−1)Q^{−k·c(m)}
+≤ 1 for c(m) ≥ 1: the α-sum is ≤ K·(N−m)^B·Q^{−(N−c)}. β-terms:
+GENIND-C1 gives ≤ m·p̃(m)·K'·N^{m+B'}·Q^{−(N−c'−1)} with the
+children's constants (degree induction). Choosing B = m + B' + 1 and
+K large enough that K·[N^B − (N−m)^B] dominates the head + β
+coefficients (a degree-(B−1) polynomial inequality, satisfiable
+since N^B − (N−m)^B has positive leading coefficient m·B·N^{B−1}),
+the three legs sum to ≤ K·N^B·Q^{−(N−c)}: the induction closes. The
+m = 2 closed forms realize (K, B, c) = (1, 1, 1) — the ansatz is
+sharp at the ground instance. ∎
+
+**R1.4 What moves, what does not.** GENIND.C's vanishing bullet now
+reads through (A2-RATE) + GENIND-C1 + GENIND.C′ — the consumed rate
+is supplied by the DISPLAYED hypothesis and the displayed two-regime
+estimate; the α/head legs were never in question. No committed
+number, count law, or supplier verdict moves: the n ≤ 3 suppliers
+(W-11, HEX3.A/B) already carried the species at their pins, and the
+n = 4, 5 exact recursions are stronger than the bound at those
+degrees (GENIND-BOX-4's own sentence). GENIND-BOX-4's pricing of the
+per-genre expansion STANDS for what remains compressed (the
+per-genre prefactor ledgers); the box's sharpened defect — the
+hypothesis-WIRING gap Codex named — is cured by this section.
+Step 4's simple part consumes GENIND.C′ verbatim in place of the
+bare bullet; the CS legs keep their [GENIND-H]/(CS-EXACT)
+conditionality unchanged.
