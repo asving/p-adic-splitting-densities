@@ -386,7 +386,17 @@ shallower co-block.) The reduction of the primitive frame is
 ȳ^{μ_l}·(a cofactor coprime to ȳ): same-side co-blocks appear at
 their SHIFTED residues z′ − ẑ_l ≠ 0 (decided pieces as separable
 factors, same-side co-CHILDREN as repeated factors
-(ȳ − (z′ − ẑ_l))^{μ}); co-blocks STEEPER than k_l all collapse to
+(ȳ − (z′ − ẑ_l))^{μ} [r5, PE5-m2: within GENIND-3's own scope —
+repeated factors all linear on e = 1 sides — these two are the only
+same-side co-block types; under GENIND-6(a)'s VERBATIM consumption
+of this step at MIXED frames a third occurs: same-side COMPOSITE
+blocks as repeated NON-linear factors ψ(ȳ + ẑ_l)^{μ_b} (first
+visible at the same-side f-first genre, n = 6, N ≥ 7 — S4.3's
+grammar), coprime to ȳ because ψ, irreducible of degree ≥ 2 over
+F_Q, has no F_Q-root, so ψ(ẑ_l) ≠ 0 — the case GENIND-6(a)'s own
+coprimality gloss "co-blocks on the same side have distinct
+residual roots/factors" already carries, per the PE5 report]);
+co-blocks STEEPER than k_l all collapse to
 the single nonzero residue −ẑ_l (their letters leave the
 reduction); co-blocks SHALLOWER than k_l leave the reduction
 entirely by degree drop (each contributes deg_b·s_b to the content
@@ -523,11 +533,41 @@ has no slot for a co-evolving child system — the S5.3 embedded
 co-pieces are all DECIDED (static). PE2 constructed the first live
 instance at n = 6. Degree budget: a child consumes ≥ 2 abscissas and
 a composite block ≥ 4 (S5.1), so mixed genres need m ≥ 6; at m = 6
-the budget is tight — exactly ONE (2, d) child on its own e = 1 side
-at slope k and ONE block with e·μ·deg ψ = 4, no decided pieces. The
+the budget is tight — exactly ONE (2, d) child at integer slope k
+and ONE composite block with e·μ·deg ψ = 4, no decided pieces
+[r5, PE5-G1/PE5-m1: the sealed-through-r4 text here continued "The
 first-visible genre (all others sit at deeper visibility floors —
 k ≥ 2, stage-steeper arrangements, and the f-first ψ²-block variants
-enter at v(a₀) = 2k + 2h ≥ 6, i.e. N ≥ 7) is PE2's:
+enter at v(a₀) = 2k + 2h ≥ 6, i.e. N ≥ 7) is PE2's" — FALSE at its
+last-listed subject: an f-first ψ²-block (e = 1, deg ψ = 2, μ = 2)
+spans 4 abscissas at INTEGER slope h, so its slope-mass is 4h, not
+2h, and the displayed chain "2k + 2h ≥ 6" reads 4 ≥ 6 at the f-first
+minimum k = h = 1; the sentence also sat outside all nine of r4's
+record-audit grep patterns (key phrase hyphenated "first-visible",
+claim verb "enter at") — see S15]. The complete m = 6 mixed grammar,
+entry heights re-derived from the polygon geometry (v(a₀) = Σ_sides
+length × slope, Gauss additivity), has exactly THREE arrangement
+families — the two composite types are (e, deg ψ, μ) = (2, 1, 2)
+and (1, 2, 2), the only solutions of e·μ·deg ψ = 4 with μ ≥ 2 and
+e·deg ψ ≥ 2 (S5.1's necessity cases) — and every cell other than
+M6's enters at v(a₀) ≥ 6:
+
+* **child + E-block** ((2, 1, 2); slope h/2, h odd — never the
+  child's side, half-integer vs integer slope): enters at
+  v(a₀) = 2k + 2h. The UNIQUE cell < 6 is (k, h) = (1, 1) — genre
+  M6 below, v(a₀) = 4; k ≥ 2 gives ≥ 6, and the stage-steeper
+  arrangement (h/2 > k, i.e. h ≥ 2k + 1) gives ≥ 8.
+* **child + f-first ψ²-block** ((1, 2, 2); integer slope h)
+  SAME-SIDE: k = h forced — one slope-k side of length 6, residual
+  (y − w)²·ψ(y)² — enters at v(a₀) = 6k ≥ 6 (= 6 at k = 1: the
+  f-first family's N ≥ 7 minimum).
+* **child + f-first ψ²-block DISTINCT-SIDE** (h ≠ k): enters at
+  v(a₀) = 2k + 4h ≥ 8 (minimum at (k, h) = (2, 1)).
+
+No other arrangement fits the 2 + 4 = 6 abscissa budget. So every
+non-M6 mixed genre enters at v(a₀) ≥ 6, i.e. N ≥ 7, and the
+first-visible mixed genre — uniquely, at v(a₀) = 4, N = 5 — is
+PE2's:
 
 > **genre M6** at (q, m, d) = (q, 6, 1): hull (0,4)–(2,2)–(6,0);
 > left side [0, 2] slope 1, e = 1, residual c(y−w)² — a (2, 1)
