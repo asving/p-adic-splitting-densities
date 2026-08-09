@@ -3,7 +3,17 @@
 
 **2026-08-09 — COMPLETE at attempt grade 0/2 (hostile arc owed).
 Unit: GENTOW-1. Composed in per-section commits; machine leg
-sealed-then-verdict (S5).**
+sealed-then-verdict (S5).
+[ARC — passPE1 2026-08-09: NOT CLEAN, 1 GAP + 2 MINOR
+(GENTOW1_passPE1_report.md @ 606e85c); counter stays 0/2.
+GT1-r1 repair round 2026-08-09 (this commit): F-1 dated gauge
+annex — the corrected chat_t := lift(c_t·eta^{W(t)}) display
+pinned at the S0/S2/S3/S6 consumption sites (S7.1, per GENHN
+erratum 59c1966 + HETOW [r1]); m-1 P-1 SCORED GREEN 20/0
+(gentow1_r1_p1.py, S7.2); m-2 GENTOW-BOX-1 retirement
+back-pointer (S6). Sealed machine artifacts BYTE-UNTOUCHED;
+statements unchanged (manifest S7.4). Grade stays 0/2; PE2
+next.]**
 
 CHARGE (Asvin directive, ledger 2026-08-09: prove the boxes; a box
 survives only after genuine attempts fail): PROVE [GENHN-TOW-1] items
@@ -36,7 +46,13 @@ Inner CS event on the level-1 stage read: side of dv-slope kappa2 =
 u2/e2 (gcd(u2,e2)=1, u2 > e2*D'h by the [r1] node floor), residual
 psi2^{mu2} over K = F_{Q^{f1}}, f2 = deg psi2, FULL side e2f2mu2 =
 mu1. Composed key Phi2 = Phi'^{e2f2} - Sum_{t<f2} chat_t
-n(u2(f2-t)) Phi'^{e2t}, monic, deg D2 = D'e2f2. Composed ladder
+n(u2(f2-t)) Phi'^{e2t}, monic, deg D2 = D'e2f2. [GT1-r1 GAUGE PIN
+(dated annex S7.1): chat_t := lift(c_t·eta^{W(t)}) with W(t) =
+floor((f2−t)·i(u2)/e1) — the CORRECTED display per GENHN's dated
+erratum 59c1966 (at f1 >= 2 per digit: the exact-height (LIFT)
+output L_{(f2−t)u2}(c_t·eta^{W(t)})), NOT the gauge-naive plain
+lift of c_t; at eta = 1 the two coincide. This pin governs chat_t
+at its uses below (S2 Steps 0/1/5, S3).] Composed ladder
 dv2 = e1e2*v. Composed basis {x^a Phi'^b : a<D', b<e2f2}; slot
 (a,b) at dv2-offset w(a,b) := a*e2h + b*u2; GENHN-2' (accepted
 annex): dv2(A(x0)) = min(e1e2*v(c_{a,b}) + w(a,b)) EXACTLY on the
@@ -171,7 +187,10 @@ reduction moves are weight-monotone:
   n(u2(f2−t)) Phi'^{e2t}; each lift term has weight
   e2*u2(f2−t) + e2t*u2 = E2 = wt(Phi'^{e2f2}) (n(m) = x^i pi^a with
   e1*a + ih = m has weight e2*m) — preserved; the Phi2-part at
-  weight E2 exactly.
+  weight E2 exactly. [GT1-r1: chat_t = the corrected lifts (S0 pin,
+  S7.1); this display is VALUE-BLIND — it prices heights only, and
+  lift(c_t·eta^{W(t)}) and lift(c_t) sit at the same height, so
+  Step 0 is unchanged under the gauge correction.]
 Hence: expansions of one polynomial on the level-1 grid and on the
 composed grid are related by weight-nondecreasing rewriting in
 both directions (Phi2 = Phi'^{e2f2} − (weight-E2 lift terms) for
@@ -187,7 +206,11 @@ Phi2's level-1 development is one-sided of slope kappa2 with
 residual psi2: slots at weight >= E2, the weight-E2 graded layer =
 psi2's coefficients at the side lattice (the T(b)' display; at
 f1 >= 2 the literal development differs from the display only
-strictly above the side — the [r2] parenthetical). Multiplicativity
+strictly above the side — the [r2] parenthetical). [GT1-r1: read AT
+THE CORRECTED KEY (S0 pin, S7.1) — the erratum's scope clause:
+T(b)'(i)'s carrier/slot/residual mechanism holds at the corrected
+key; at the gauge-naive key the weight-E2 layer is c_t·eta^{−W(t)},
+NOT psi2's coefficients, and this step fails at eta != 1.] Multiplicativity
 of side residuals (graded layer of a product = product of graded
 layers, as in (i)'s proof): Phi2^{mu2} has slots at weight
 >= mu2*E2 with weight-mu2*E2 layer psi2^{mu2}, and every
@@ -239,7 +262,13 @@ exactly ((T1),(T12)); the height-E2 residue under the coherent
 height-E2 normalizer is (unit)·psi2(eta2(x0)) — the S4 cocycle
 enters every term identically, exactly (i)'s side-residual
 computation — and psi2(eta2(x0)) = 0 (T22). Ultrametric:
-dv2(Phi2(x0)) > E2. ∎
+dv2(Phi2(x0)) > E2. ∎ [GT1-r1: "the residue is
+(unit)·psi2(eta2(x0))" holds at the CORRECTED chat_t (S0 pin,
+S7.1); at the gauge-naive lifts the term-t residue carries the
+extra factor eta^{−W(t)}-bar and the sum is NOT psi2(eta2(x0)) —
+(d) then FAILS at eta != 1: machine-confirmed, nfeltval(Phi2^N) =
+3·pr.e EXACTLY at 20/20 scored prime rows of the fresh frame F1
+(S7.1).]
 
 **COROLLARY GENTOW-1.1 (the depth->=3 node floor — [GENHN-TOW-1]
 item (6)(beta)'s missing provenance).** Every side of the composed
@@ -283,8 +312,9 @@ Sum_{t<f2} s_t eta2^t (s_t ∈ K), lift(s; m) := Sum over the f1f2
 within-class monomials x^{i+e1r} Phi'^{b+e2t} at height m with
 O-digit coefficients realizing the components in the coherent
 normalization (the same S4-cocycle convention as the entry lifts
-chat_t); deg lift < D2 always (x-exponents < e1f1 = D',
-Phi'-exponents < e2f2).
+chat_t [GT1-r1: = the CORRECTED convention — the S0 pin's
+eta^{W}-corrected lifts, S7.1]); deg lift < D2 always
+(x-exponents < e1f1 = D', Phi'-exponents < e2f2).
 
 **LEMMA GENTOW-2 (refine transfer at the composed key).** Set
 Phi2+ := Phi2 + what, what := −lift(s; lam). Then:
@@ -523,7 +553,12 @@ the battery's refine rows are pointwise re-division checks with no
 formula consulted. An elementary general-mu2 carry display would
 retire this box exactly as GENH4-S5's would retire GENHN-BOX-2.
 Note mu2 >= 3 towers first live at n = e1f1·e2f2·mu2 >= 2·2·3 = 12
-with sigma behind [GENHN-HE(mu2)] regardless.
+with sigma behind [GENHN-HE(mu2)] regardless. [GT1-r1 back-pointer
+(PE1 m-2): GENTOW5 S1.5 (grade 0/2, hostile arc owed) RETIRES this
+box as a mathematical box with the residue grade-only — read the
+retirement THERE with its stated 0/2 conditionality — and since
+GENTOW-2 layer 3's image clause consumes layer 1, at mu2 >= 3 the
+BIJECTION inherits the graded-frame conditionality too.]
 
 **GENTOW-BOX-2 (machine coverage).** Rows exercise: mu2 = 2 only;
 f1 = 1 outer keys only (D' = 2); q ∈ {2, 3}; e2 ∈ {1, 2, 3},
@@ -535,12 +570,123 @@ genhnr2_supp SUPP-C and stay with item (6)).
 
 **GRADE: 0/2 (attempt; composed this session, no hostile arc).**
 Conditionality stack: consumes LEMMA GENHN-T(b)' (i)/(ii)/(iii)
-(GENHN accepted 2/2 at PE4), the [r1] node floor u2 > e2D'h
-(GENHN-1 erratum, inside the accepted text), S4's coherent
-normalizers, and — at mu2 >= 3 only — the graded frame
-(GENTOW-BOX-1). Machine leg = S5 (this unit's sealed battery).
+(GENHN accepted 2/2 at PE4) [GT1-r1: AT THE CORRECTED KEY — the
+GENHN dated gauge erratum 59c1966 (chat_t := lift(c_t·eta^{W(t)}),
+from HETOW PE1 F-1) is a pinned consumption of this note, dated
+annex S7.1], the [r1] node floor u2 > e2D'h (GENHN-1 erratum,
+inside the accepted text), S4's coherent normalizers, and — at
+mu2 >= 3 only — the graded frame (GENTOW-BOX-1). Machine leg = S5
+(this unit's sealed battery) [GT1-r1: + the P-1 supplement and the
+PE1 fresh route, S7.2].
 
 **Consumption path (not executed here):** discharge of items
 (1)/(2)/(5) into GENHN_PROOF's [GENHN-TOW-1] box text is the
 orchestrator's dated consumption update after this note's own
 hostile arc; GENHN_PROOF is byte-untouched by this unit.
+
+## S7. [GT1-r1] PE1 REPAIR RECORD + THE DATED GAUGE ANNEX
+## (2026-08-09, post-passPE1)
+
+PE1 verdict (GENTOW1_passPE1_report.md @ 606e85c): NOT CLEAN —
+1 GAP (F-1) + 2 MINOR (m-1, m-2); counter stays 0/2. This section
+is the r1 repair round. Tag convention: this round's edits are
+marked [GT1-r1] (bare [r1] in the body refers, as before, to
+GENHN-1's node-floor erratum). Sealed machine artifacts
+(gentow1_checks.py, gentow1_checks_output.txt, gentow1_pe1_fresh.py,
+gentow1_pe1_fresh_output.txt) are BYTE-UNTOUCHED by this round.
+
+### S7.1 THE DATED GAUGE ANNEX (F-1 repair): the corrected chat_t
+### display, pinned
+
+**The seam.** This note's verdict commit (5eca905, 08-09 15:16)
+predates the GENHN dated erratum (59c1966, 08-09 20:13, provoked by
+HETOW PE1 F-1), which established that LEMMA GENHN-T(b)''s original
+DISPLAY of the composed key's lift coefficients — chat_t = a plain
+lift of psi2's coefficient c_t — is GAUGE-NAIVE: the normalizer
+monomials are not multiplicative (nhat(u2)^{f2−t} =
+nhat((f2−t)u2)·(x^{e1}/pi^h)^{W(t)}), so the plain lift's
+coherent-normalizer slot residue is c_t·eta^{−W(t)}, not c_t. The
+note as composed consumed the pre-erratum display and carried no
+gauge annex — PE1's F-1.
+
+**THE PINNED CORRECTED DISPLAY (per erratum 59c1966 + HETOW [r1]):**
+
+    chat_t := lift(c_t·eta^{W(t)}),
+    W(t)   := floor((f2−t)·i(u2)/e1)
+
+(i(u2) = the x-exponent of nhat(u2); at f1 >= 2 per digit: the
+exact-height (LIFT) output L_{(f2−t)u2}(c_t·eta^{W(t)}), the
+HETOW [r1] F-4 no-overflow form). At eta = 1 — and at any frame
+where each c_t·(eta^{W(t)} − 1) = 0 — corrected = naive. Site pins
+placed this round (grep "chat" + the T(b)'-display consumptions):
+the S0 key display (the governing pin), S2 Step 0 (Phi'-carry;
+value-blind, unchanged), S2 Step 1 (graded layer read at the
+corrected key), S2 Step 5 (the value-LIVE site: the residue
+computation), S3's K2-digit lift convention, and the S6
+conditionality stack. LEMMA GENTOW-1 Steps 1/3/5 and LEMMA
+GENTOW-2's frame consume "graded layer of Phi2 = psi2 under the
+coherent normalizers" — true at the CORRECTED key (the erratum's
+scope clause: T(b)''s carrier/slot/sigma mechanism holds there).
+
+**Wrap-immunity of this note's own content (two independent legs,
+both already on record at PE1).** The BUDGETS/WINDOWS/FLOORS are
+valuation-level: (leg 1) the PE1 verifier re-derived Step 0
+independently and recorded it VALUE-BLIND — "heights only ...
+wrap-immune, unaffected by F-1" (report, clean charge 1; the S0/S2
+displays price heights, and the corrected and naive lifts sit at
+the same height); (leg 2) the PE1 fresh route
+(gentow1_pe1_fresh.py @ 6993b7c, sealed 9e9d994) — GREEN 373
+checks / 0 violations over its two frames — ran the program's
+FIRST eta != 1 budget frame, F1: p = 3, Phi' = x^2−6, eta = 2,
+(e2,f2) = (1,2), K2 = F9, AT THE CORRECTED KEY:
+floors, entry gate, strict-above, node pins, field floor, refine
+transport ((14,7) -> (19,11), q = 3 both pins), sigma {(4,2)} both
+oracles. What is gauge-LIVE is the FRAME (key normalization,
+residual, sigma): at the gauge-naive key the fresh route's teeth
+fired — ef(Phi2^N) = {(4,1)} != {(2,2)} (degenerate twisted
+residual (T−1)^2), field floor (d) FAILS exactly (nfeltval = 3·pr.e
+at 20/20 scored prime rows, no psi-cancellation), naive-box members
+sigma {(8,1)} != {(4,2)}.
+
+**eta = 1 battery blindness (disclosed).** The five committed
+S1/S5 families sit at eta = 1 (q = 2 with Phi' = x^2−2; q = 3 with
+Phi' = x^2−3), where the naive and corrected displays coincide —
+the sealed battery is structurally blind to this seam (add this to
+GENTOW-BOX-2's coverage reading). The eta != 1 machine coverage is
+the fresh route's F1 frame plus the erratum's own frame X +
+hetowr1_supp.py's three frames.
+
+### S7.2 (m-1 repair): the sealed P-1 prediction, SCORED
+
+P-1 was sealed in the runner docstring (982abe7) but no runner row
+scored the BASE keys' ef (GP-EF's 8 rows are the refined keys; S5's
+per-prediction list starts at P-2 — the honest no-row state at
+PE1). Scored this round by supplement `gentow1_r1_p1.py` (output
+`gentow1_r1_p1_output.txt`; base keys transcribed from S1's table,
+decorrelated from the sealed constructors): GREEN, 20 checks /
+0 violations — the five base keys factorpadic-irreducible (one row,
+multiplicity 1, degree D2), ONE prime with (e,f) = (e1e2, f1f2) =
+(4,1)/(4,1)/(2,2)/(6,1)/(2,2), and the P-1 valuation normalizations
+exact (e1·v(x) = h·pr.e; e1e2·v(Phi') = u2·pr.e). Disclosure: the
+scoring is post-hoc to the seal (prediction sealed 08-09, scored at
+r1); the fresh route had already scored the base-key ef directly at
+the eta != 1 frame (ef(Phi2^C) = {(2,2)}, F1).
+
+### S7.3 (m-2 repair): executed as the one-sentence [GT1-r1]
+### back-pointer in S6's GENTOW-BOX-1 paragraph.
+
+### S7.4 EDIT MANIFEST (for PE2's diff)
+
+Body state before this round: md5
+dc99fc250094a4db96c66c8aa93c3187 = the PE1 target (verdict commit
+5eca905). [GT1-r1] edit sites: (1) header ARC line; (2) S0 gauge
+pin at the key display; (3) S2 Step 0 Phi'-carry pin; (4) S2
+Step 1 corrected-key pin; (5) S2 Step 5 value-live pin; (6) S3
+lift-convention pin; (7) S6 GENTOW-BOX-1 back-pointer sentence;
+(8) S6 conditionality-stack erratum pin + machine-leg pointer;
+(9) this S7. Edit shape: [GT1-r1]-bracketed INSERTIONS plus this
+S7 — checkable as `git diff 5eca905..HEAD` on this file; the
+statement displays of LEMMA GENTOW-1, LEMMA GENTOW-2, LEMMA
+GENTOW-5, and COR GENTOW-1.1 sit outside the inserted brackets
+(the pins fix the consumed chat_t reading; the floors, bounds, and
+clause texts are the composed ones). Grade stays 0/2; PE2 next.
