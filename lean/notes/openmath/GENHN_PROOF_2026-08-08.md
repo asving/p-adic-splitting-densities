@@ -2,7 +2,12 @@
 
 **Unit:** GENHN (the general [GENIND-H(n)] composer; the charge: turn
 GENH4's n = 4 discharge into the genre-generic theorem at every n —
-ledger 970022b). **Attempt grade 0/2** (composed; no hostile arc).
+ledger 970022b). **Attempt grade 0/2** (composed; no hostile arc)
+**[r2 2026-08-09: passPE1 ran NOT CLEAN — 2 CRITICAL (F1 the
+GENHN-T(b) tower-leaf refutation; F2 the GENHN-1 budget display) +
+1 GAP (F3) + 2 MINOR; all five repaired this round at [r2] tags
+(T(b)′ proved at S8's annex; supp machine leg genhnr2_supp.py
+147/0). Clean count stays 0/2; PE2 next]**.
 **Instrument:** sealed two-commit battery
 `verification/openmath/genhn_checks.py` — the genre classification
 machine-checked at n = 5 AND n = 6 (fresh general-residual reader,
@@ -746,6 +751,62 @@ the never-consulted band — first measured (QSCOUT22), then a ledger
 > GAP 1 + PE3 MINOR 1; corrected display = GENH4 r3, frozen pin
 > 4b0d946 (accepted body, byte-frozen).
 
+> **[r2] ANNEX 2026-08-09 (the f₁ ≥ 3 band transport DERIVED —
+> discharging passPE1 F3; E2's readability parenthetical scoped to
+> the FIRST band height). E1's corrected sentence claimed the r3
+> trichotomy at every μ = 2, f₁ ≥ 2 genre on (1,2)-shaped authority
+> only; the two-deep band's value-instability (an out-of-window
+> lower-t digit under a computed deeper value) was unhandled. The
+> derivation, in this note's own slot model:**
+>
+> Setting: μ = 2, e₁ = 1 (dv = v, integer slope k = h; the e₁ ≥ 2
+> mixed genres stay OUTSIDE, as E1's exclusion list already
+> scopes). A coordinate's height-m slot assembles the f₁ components
+> res(a_t at v = m − tk)·η^t, t = 0..f₁−1; component t is in-window
+> iff m − tk ≤ N − 1. Heights m ≤ N − 1 are FULLY readable; the
+> band is [N, N + (f₁−1)k − 1] with 1 ≤ comp(m) < f₁.
+> (1) VALUE STABILITY AT m = N. Every unread digit lives at height
+> ≥ N (component t unread ⟹ v(a_t) ≥ N ⟹ height ≥ N + tk ≥ N).
+> At the FIRST band height N the unread data can therefore only
+> JOIN the height-N residue on the complementary basis elements
+> {η^t : t out-of-window}; by GENHN-2's independence a nonzero
+> readable part Σ_{t in-window} res(a_t)η^t cannot be cancelled by
+> any assignment of the unread components: dv₀ = N EXACTLY, for
+> every lift. The full K-residue at N is NOT determined.
+> (2) THE TRICHOTOMY TRANSPORTS VERBATIM AT m = N (band read =
+> readable part nonzero at N, all readable data below N zero;
+> w := dv(A₁)):
+>     (a) N > 2w, either parity → DECIDED 2SIDED: every lift has
+>         u ≥ N > 2w (all determined digits below N vanish) — the
+>         S7 SPLTAIL logic; σ = {(e₁,f₁)} ×2 needs only u > 2w.
+>     (b) N ≤ 2w, N odd → DECIDED RAM(N): by (1) u = N for every
+>         lift; parity consumes no residue.
+>     (c) N ≤ 2w, N even → UND: the 2SIDED-vs-INERT decision at
+>         the halved height needs the FULL K-residue at N, which
+>         comp(N) < f₁ withholds — conservative drain.
+> Census: by (1) the band-pin census at N is Q^{comp(N)} − 1
+> (nonzero READABLE data only) — exactly E2's clause.
+> (3) DEEPER BAND HEIGHTS ARE VALUE-UNSTABLE (the undercut,
+> handled by DRAIN). A first readable-nonzero at m > N leaves
+> u ∈ [N, m] undetermined: an unread component-t digit at any
+> height in [N, m) (e.g. the class-0 digit at exactly N) undercuts
+> the computed m. NO trichotomy is claimed at m > N; those states
+> exit UND conservatively. E2's parenthetical "(the value is
+> [readable]; the full K-residue is not)" is hereby SCOPED to the
+> first band height — at deeper band heights neither is readable.
+> (4) INSTANCES + MACHINE. At (1,2,2), k = 1 the band is the
+> single height N and (1)–(3) collapse to GENH4-CAP(F) r3 (the
+> prior authority). At (1,3,2) — first live f₁ = 3, comp(N) = 2,
+> comp(N+1) = 1 — passPE1's fresh legs adjudicate (2) + the census
+> EXHAUSTIVELY: N = 7 (32,768 states: RAM(7) = 3·2¹³ = (Q²−1)·2¹³,
+> UND = 2¹³) and N = 8 (2,097,152 states: RAM(7) = 7·2¹⁸ =
+> (Q³−1)·2¹⁸ full-slot census below the band, UND = 2¹⁸), plus
+> 36/36 band-RAM PARI jobs at {(2,3)} incl. out-of-window
+> perturbations — machine contact cited, the derivation above is
+> the authority. E1's transport sentence is accordingly UPGRADED
+> from (1,2)-authority to derived at (μ = 2, e₁ = 1, f₁ ≥ 2).
+> SOURCE: passPE1 F3 (GAP) + FR-A/FR-B.
+
 ## S6. THE REFINE TRANSFER (GENHN.A(iv)) AND THE BRACKET (CS-2)
 
 ### S6.1 LEMMA GENHN-4 (refine transfer at general (e₁, f₁, μ))
@@ -862,7 +923,11 @@ place of a key root: only (T1)/(T2) enter). The block has degree
 quadratic over L):
 
 * **stage-RAM (u odd, u ≤ 2w).** One-side Y-polygon: v(Y) = u/(2e₁)
-  with u odd ⟹ 2e₁ | e(L); with (T2): e·f ≥ 2e₁f₁ = block degree ⟹
+  with u odd ⟹ 2e₁ | e(L) **[r2 2026-08-09: WITH (T1) — v(Y) alone
+  gives only (2e₁/gcd(u, e₁)) | e(L) when gcd(u, e₁) > 1 (e.g.
+  e₁ = 3, u = 9: 2 | e only); gcd(u, e₁) is odd (u odd), so
+  lcm(e₁, 2e₁/gcd(u, e₁)) = 2e₁ — the value-group argument needs
+  both facts. passPE1 F4]**; with (T2): e·f ≥ 2e₁f₁ = block degree ⟹
   ONE factor, e = 2e₁, f = f₁: σ-block {(2e₁, f₁)}.
 * **stage-2SIDED (u > 2w).** v(Y) ∈ {w/e₁·½·…} — two exact values
   w/(e₁)−… (in dv-halves: w and u−w, distinct). Norm count: the
@@ -1387,6 +1452,22 @@ suppliers is GENIND S16's fired-clause table @ dcc20bb:**
   this date: GENIND 1/2 (accepting), GENH4 DONE (2/2 frozen), THIS
   NOTE PE1 next; W-12 PE6 and the HEX3/HMENU3 lines as pinned
   above.**
+* **[r2] ARC LINE UPDATE 2026-08-09.** passPE1 ran (report
+  `GENHN_passPE1_report.md`): NOT CLEAN — F1 CRITICAL refuted
+  LEMMA GENHN-T(b) at n = 8 tower leaves (the program's first
+  displayed-lemma refutation), F2 CRITICAL the GENHN-1 budget
+  display, F3 GAP the f₁ ≥ 3 band transport, F4/F5 minor. THIS
+  round ([r2] tags, commits at the r2 fold): T(b)′ stated and
+  PROVED with machine leg `genhnr2_supp.py` (147/0, 3 teeth, first
+  tower leaf coverage incl. an f₂ = 2 genre and 3-stage n = 16);
+  F2 display corrected + consumption audit; F3 derived (E1
+  upgraded); F4/F5 one-line riders. CONSEQUENCE: GENHN.B's
+  conditionality now carries [GENHN-TOW-1] at n ≥ 8 (n ≤ 7
+  unchanged); consumers with n ≥ 8 instances (GENIND's (CS-1)/
+  (CS-2) citations, the S9.2 endgame list, PROJECT_STATE's
+  uniformity display) inherit that box — cross-note status is the
+  orchestrator's fold, flagged here. Clean count 0/2 → 0/2; PE2
+  next.
 
 ## S11. THE SEALED BATTERY (sealed at commit 1; predictions
 preregistered BEFORE the first full run)
@@ -1522,7 +1603,13 @@ byte-unchanged).** Full run 2 completed end-to-end — 2,223,050
 checks with ZERO mathematical violations, all five teeth (fired
 2/2/2/2/1 across rows), certified σ 0-bad on every ANSWERED job,
 and the diagnostic tails exactly as S11.F predicts (V p=2:
-1,216 uncertified jobs / 350 mismatches; V p=3: 241/58; all
+1,216 uncertified jobs / 350 mismatches **[r2 2026-08-09
+reconciliation vs S12 P9's 349 (passPE1 F5): run 2's 350 counts
+one of the 4 gp precision-misses below — a tail job scored None —
+as a mismatch; the retry-laddered scoring run 3 answers it and
+reproduces 349 deterministically (passPE1's isolated re-run
+concurs). 350 = 349 + 1 None; no tail row changed]**; V p=3:
+241/58; all
 full-side legs 0/0) — but went RED on ONE oracle-infrastructure
 seam: 4 of the 20,800 V p=2 gp jobs got no answer
 (`idealprimedec: precision too low in get_norm` inside the pinned
