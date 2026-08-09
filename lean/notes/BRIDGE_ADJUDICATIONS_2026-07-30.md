@@ -14673,3 +14673,25 @@ machine-run for the first time. Rider verified; body byte-frozen.
 **Nineteen accepted texts. The scoreboard's honest remainder: the
 seven tower notes' arcs + three count-grade sub-boxes + the
 distribution arcs + the ratification sweep.**
+
+---
+
+## B5 FOLDED (w3g6wps19, 2/2): HETOW PE2 CLEAN → 1/2 (the σ-BLIND seam face surfaced — letter-clause teeth are the load-bearing ones) · GENTOW2 PE2 = 2 GAP inside the r1-new B′ (citation core HELD 16/16) — B6: HETOW rider → PE3 (tower-σ acceptance attempt) + GENTOW2 r2 — 2026-08-09
+
+HETOW PE2 (7151fd8 → 67cbab2): CLEAN — 3 minors (the F-2
+robustness exemplar's corner; the "non-linear W" mechanism sentence
+false at f₂=2 where the true pin is W(f₂−1)=0 monic; the BOX-3
+multi-wrap axis omission — mooted by frame V). FRESH: 5 disjoint
+frames — FIRST multi-wrap (f₂=3, W=(1,1,0), ord(η)=6), ord 5/8,
+first η≠1×e₂=2, first η≠1×f₁=2 two-digit LIFT, first non-prime q=4
+— 20/20 dual-route; frame V's σ-BLIND finding: naive σ == carrier σ
+while ψ₂(η₂(ξ)) ≠ 0 — ONLY the letter clause detects the break.
+GENTOW2 PE2 (090f501 → aff457c): 0C+2G+2m, both GAPs in [r1]'s B′
+(F1: the z₂ identification — canonical z₂ = η₂·z₁^(−⌊ℓ₁u₂/e₁⌋)
+derived from PDF Def 3.12/eq (9)/Prop 1.15; the record letter-blind
+at f₁=1 q=2; B′ SURVIVES under the canonical identification; F2:
+the h-step out of B-1's deg < D₂ scope at the record's own frame —
+repair sketched: divide by Φ₂ + Lemma 3.17). The citation core
+HELD: 16/16 provenance rows re-verified by independent PDF page
+reads; the fetch reproduced bit-identically; first f₃=3 witnesses
+anywhere + the digit-only-separation tooth. B6 dispatched.
