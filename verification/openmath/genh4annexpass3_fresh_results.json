@@ -1,0 +1,28 @@
+{
+ "checks": {
+  "FL1": {
+   "agree": 38,
+   "n": 38,
+   "ok": 38
+  },
+  "FL2": {
+   "members": 27,
+   "of": 27,
+   "teeth": 2
+  },
+  "FL3": {
+   "agree": 48,
+   "degenerate": {
+    "p1": 1,
+    "p3": 1,
+    "p6": 1
+   },
+   "inert": 15,
+   "n": 48,
+   "ram": 8,
+   "u7": 8
+  }
+ },
+ "elapsed_s": 0.3,
+ "violations": []
+}

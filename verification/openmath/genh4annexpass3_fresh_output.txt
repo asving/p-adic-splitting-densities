@@ -1,0 +1,13 @@
+=== FL1: (2,19,4) k=4 SPLTAIL(9), 2w=18<19; dual PARI oracles ===
+FL1: 38/38 sigma as predicted (36 members {(1,2),(1,2)} + 2 teeth {(2,2)}); oracle agreement 38/38; floors/caps clean
+=== FL2: (4,11,2) equal-char F4[[t]], FRESH instrument ===
+FL2 self-tests T1/T2/T3: exact
+FL2: 27/27 members separable with (F16,F4) roots = (4,0) -> relative sigma {(1,2),(1,2)} over F4((t)) [consumed clause GENH4-7'(b), first equal-char non-prime-q exercise]
+FL2 teeth (wrong floor b0@9 -> RAM(9), ramified): 2/2 FIRED
+=== FL3: (5,6,1) 2w=N=6, dual PARI oracles on the (c')(ii) geography ===
+FL3 note: p1-u6-d4 reads ((2, 2),) (degenerate-digit slot)
+FL3 note: p3-u6-d3 reads ((2, 2),) (degenerate-digit slot)
+FL3 note: p6-u6-d1 reads ((2, 2),) (degenerate-digit slot)
+FL3: oracle agreement 48/48; u7 2SIDED 8/8; RAM teeth 8/8; inert {(1,4)} witnesses at u=2w: 15 (>=1 predicted); degenerate reads: {'p1': 1, 'p3': 1, 'p6': 1}
+
+VERDICT: GREEN (0 violations), 0.3 s
