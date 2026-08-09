@@ -1,0 +1,14 @@
+== LEG A: f1 = 3 sigma rows (first of the arc) ==
+  Z_2 SPLIT-FROB members=10 sigma_pred=((2, 3), (2, 3)) PARI_agree=10
+  Z_2 INERT2     members=10 sigma_pred=((2, 6),) PARI_agree=10
+  Z_3 SPLIT-FROB members=10 sigma_pred=((2, 3), (2, 3)) PARI_agree=10
+  Z_3 INERT2     members=10 sigma_pred=((2, 6),) PARI_agree=10
+== LEG B: coset certificate at q(k) = 3, frame (2,2,5)/Z_3 ==
+  k=7: i0=1 T=[0] q=3  members=7942  realized=[(0, 1), (0, 2)]
+  k=15: i0=1 T=[0, 1] q=7  members=2028  realized=[(0, 1), (0, 2), (1, 0), (1, 1), (1, 2), (2, 0), (2, 1), (2, 2)]
+== LEG C: RIDER identity res(varpi^k/n(k)) = eta^{q(k)}, k=0..16 ==
+  all k in 0..16: OK
+
+NOTES: {'PE3-READ': 40, 'PE3-SIG': 40, 'PE3-COSET': 7942, 'PE3-FULL': 2028, 'PE3-RIDER': 17}
+VIOLATIONS: 0
+2.5s
