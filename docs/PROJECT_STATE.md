@@ -3351,3 +3351,25 @@ MEANWHILE: GENH4's annex COMPLETE (baf05ed; ANNEX-LEMMA GENH4-7,
 byte-freeze 3-way); GENIND PE4 NOT CLEAN (0C+2G: the r3 regime
 sentences false at steeper-decided-piece genres + the pre-cap window
 survived r3 in proof step (1) — r4 with a full-sweep record audit).
+
+**2026-08-09 DATED APPEND #4 — HE7's CHALLENGE DISCHARGED AT ANNEX
+GRADE + FIRST LEVEL-≥3 MACHINE COVERAGE; GENH4's RATIFICATION ALSO
+CHALLENGE (annex round owed).** HE7 ANNEX R (f3ca2f1/f2fbcf0): the
+Codex CRITICAL repaired IN FULL — ANNEX-DEF HE7-2′ (base = ϖ-powers
+by definition; recursion for i ≥ 1; cocycle tower τ_i with fixed
+K_i^×-residues), (SLOT_i)/(LIFT_i) re-proved with the displayed
+cocycle, HE7.D/HE7.B(ii) re-proved, twist-blindness = a 7-item
+audit; AND the n=16 probe is GREEN — the FIRST machine σ at level
+≥ 3 anywhere: 79 members, μ=8→μ₂=4→μ₃=2, corrected-chain σ == PARI
+79/79, deep-letter tooth 18/79 flips. GENIND r4 full-sweep complete
+(4a482b5/a2000fb: 15 window sites classified, 0 uncapped survivors;
+14 record-claim groups checked, 4 false rewritten; S14 = PE5's
+checklist). CODEX GENH4 RAT = CHALLENGE (5c8d2fd): F2 CONFIRMED GAP
+on the consumed F-SPLTAIL σ-supply slice (k ≥ 2, N ≥ 4k+3, zero
+machine exercise; conclusion TRUE via the annex's own floor
+inequalities); F3 frame GAP (R non-maximal, display-scope, GENHN.A(i)
+erratum queued); F1 REFUTED-as-CRITICAL (artifact check); F4 scoped;
+F5 regraded. No sealed number moves anywhere. Wave 9: GENH4 ANNEX R
+(+ first k ≥ 2 deep-window machine leg) + GENIND PE5 + the scoped
+hostile pass on HE7's annex stack. GENHN's erratum queue now 3 items
+(UND phrasing; comp-weighting; A(i) transport).

@@ -13671,3 +13671,60 @@ annexes; R1 = the corrected recursion PROVED + a first targeted
 n=16 machine probe if feasible) + GENIND r4 (full-sweep method) +
 CODEX GENH4 ratification (the sweep continues). After wave 8:
 scoped hostile pass on HE7's annexes; site refresh.**
+
+---
+
+## WAVE 8 FOLDED (wwf3hvjx5, 3/3): HE7 ANNEX R — THE CRITICAL REPAIRED IN FULL + FIRST n=16/LEVEL-3 MACHINE COVERAGE (79/79 PARI, deep-letter tooth 18/79) · GENIND r4 FULL-SWEEP (0 uncapped survivors; 4 false record claims rewritten) · CODEX GENH4 RAT = CHALLENGE (F2 GAP on the consumed σ-supply slice; F1 REFUTED by artifact check) — WAVE 9: GENH4 ANNEX R + GENIND PE5 + HE7 ANNEX-STACK HOSTILE PASS — 2026-08-09
+
+**HE7 ANNEX R (f3ca2f1 + f2fbcf0): R1 PROVED, no open box.**
+HE7-2′ re-bases the recursion (n₁ := ϖ-powers is a DEFINITION;
+recursion at i ≥ 1; letters Λ_i, cocycle τ_i a Λ-monomial with
+FIXED K_i^×-residue; levels 1–2 reproduce §S1 byte-for-byte;
+τ₂ = Λ₁^c recovers the CONVENTION — first multi-letter twist at
+level 3 = n ≥ 16, exactly where Codex said the display broke).
+(SLOT_i)/(LIFT_i) re-proved with explicit twist units; HE7.D +
+HE7.B(ii) re-proved; the annotation discharged AT ANNEX GRADE
+(unpassed, disclosed). THE PROBE: he7rannex_supp.py — 79 members
+at n=16, the full μ=8→μ₂=4→μ₃=2 ladder read FORWARD, σ == PARI
+79/79, 0 violations, 2.6 s; 18/79 σ-flips when the deep letter is
+dropped (F1's substance MACHINE-LOAD-BEARING); 19 one-step level-3
+α-refines via R1-c's inverse twist. Disclosed: ℤ_p only; g₂=1 so
+within-class units invisible (K₃ = F_{p²} not constructed). R2–R5
+landed (gcd dichotomy via HE6R1-3 verbatim; necessary-direction
+rider; item-(7) inventory; punctured-subspace rider).
+
+**GENIND r4 (4a482b5 + a2000fb): the full-sweep method executed.**
+Step (1) rewritten to DERIVE the capped window (content route);
+the false parenthetical replaced by the true trichotomy (co-children
+REPEATED at shifted residues; steeper collapse; shallower leave);
+the echo in GENIND-6(a)'s proof also fixed. Sweep: 15 window-site
+classes (11 correct, 2 agnostic, 2 DEFECTIVE → fixed, 0 uncapped
+survivors); 14 record-claim groups (4 FALSE → rewritten, 1 rescoped,
+9 verified with evidence lines); tag-set story verified; S14 = the
+inventory PE5 will use as its checklist. 0/2; PE5 next.
+
+**CODEX GENH4 RAT (57c9811 → f96ba28 scaffold-pre-read → 12d6461 →
+5c8d2fd; 12 min, 86,127 tok, window 1%→2%): CHALLENGE.** F2
+CONFIRMED GAP-as-stated ON A CONSUMED CLAUSE: ANNEX-LEMMA
+GENH4-7(b)'s gloss pins boundary-band digits that law_F frees —
+the F-SPLTAIL σ-supply leg of THEOREM GENH4.C is gapped as written
+on the k ≥ 2 ∧ N ≥ 4k+3 deep-window slice (ZERO machine exercise
+there); conclusion TRUE via the annex's own floors (v(a₀) ≥ N ∧
+v(a₁)+k ≥ N+1). F3 CONFIRMED GAP display/frame scope: R = Ô[x]/(φ)
+is NOT a DVR (non-maximal at all F k ≥ 1 and E h ≥ 3); all consumed
+facts live in L/O_L; count/σ/density untouched; GENHN.A(i)
+transport erratum QUEUED (GENHN's third). F4 GAP scoped to the
+unconsumed cap-sharpness clause. F1 REFUTED as CRITICAL (committed
+JSON partitions 2²⁰ exactly; term-of-art + undisplayed remainder =
+MINOR). F5 regraded MINOR. Codex's fresh sympy leg re-verified
+Σ R_τ = 1 + all 22 anchors + E[#roots]. DECORRELATION BOTH WAYS:
+Codex dominated the scaffold on F2/F3/F4 (the scaffold repeated the
+annex's own band-digit error); the artifact check killed Codex's
+CRITICAL. Repair queue R1–R5 in the fold note.
+
+**WAVE 9 (dispatched this entry): GENH4-ANNEX-R (F2's corrected
+σ-supply + FIRST k ≥ 2 deep-window machine leg + F3 frame erratum +
+minors) + GENIND PE5 (first-clean attempt, S14 checklist) +
+HE7-ANNEX-PASS (scoped hostile pass on ANNEX F-1 + ANNEX R — the
+annex stack is unpassed; body 2/2 not at stake, the annexes need
+their own clean). Site refresh next. GENHN erratum queue: 3 items.**
