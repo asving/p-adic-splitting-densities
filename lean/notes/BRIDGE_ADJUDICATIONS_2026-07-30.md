@@ -14430,3 +14430,26 @@ machinery propagated back + F2's S→D′h at every display + F3-F8;
 consumer-trace table mandatory) + HE6R1 r1 (the two one-liners +
 minors). Box wave B1 still in flight (GENTOW-2's STEP-1 = FGMN
 Thm 6.3/Cor 6.4 LOCATED).**
+
+---
+
+## ★★ BOX WAVE B1 FOLDED (wd32nuzqa, 3/3 — THREE PROOFS): item (1)+(5)+(6β) PROVED (GENTOW1) · item (6α) PROVED-VIA-FGMN-CITE (GENTOW2) · [GENHN-HE-at-towers] = LITERAL INSTANCE (HETOW, zero σ-residue) — WAVE B2: items (3)+(4)+GENTOW-BOX-1+the level-r grammar — 2026-08-09
+
+Full details in the notes (GENTOW1_PROOF/GENTOW2_PROOF/
+HETOW_RECON, all 2026-08-09, all attempt grade 0/2 — their own arcs
+queue behind the closure arcs). Highlights for the record: the
+budget display transports VERBATIM one level up (the tower is the
+same mathematics at re-based data — the per-center-transport
+intuition validated at the composed frame); the FGMN cite is the
+first load-bearing external citation of the campaign (faithfulness
+paragraph + 10 verbatim quotes + the normalization shear
+displayed); HETOW's bridge = the overflow-carry argument (every
+f₁ ≥ 2 carry raises slot value by exactly u₂ − e₂D′h > 0, so
+HE7-12 — the slot-domination lemma born in HE7's OWN challenge
+repair — transports the entire §S5 package to towers: the Codex
+challenge's repair is now load-bearing for the box campaign).
+GENTOW1's consumption honesty: it consumes the [r1] node floor via
+ACCEPTED GENHN, not HE3 — the HE3 criticals do not touch it
+(stack named in its S6). NEW SUB-BOX: GENTOW-BOX-1 (the composed
+graded frame at general μ₂ — wave B2). REMAINING for n ≥ 8:
+(3), (4), GENTOW-BOX-1; n ≥ 32 adds the level-r grammar.

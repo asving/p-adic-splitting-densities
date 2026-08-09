@@ -3502,3 +3502,28 @@ THE CONDITIONALITY: n ≤ 7 unconditional at the arc bar; n ≥ 8 =
 the A-boxes now under the BOX-CLOSURE CAMPAIGN (wave B1 in flight:
 GENTOW-1/GENTOW-2-FGMN/HE-TOW) per Asvin's prove-don't-sorry
 directive. Then: simplification → Lean.
+
+**2026-08-09 DATED APPEND #11 — BOX WAVE B1: THREE PROOFS, ZERO
+SURRENDERS.** GENTOW1 (5eca905-era): [GENHN-TOW-1] item (1)
+composed budgets PROVED (the r2-F2 level-1 display verbatim under
+(D′h, ih, e₁) ↦ (E₂, w(a,b), e₁e₂)) + COR GENTOW-1.1 discharges
+item (6)(β) with a SHARPER constant than conjectured; item (5)
+window ledger PROVED; item (2) proved at μ₂=2 (general μ₂ → new
+honest sub-box GENTOW-BOX-1, the composed graded frame); battery
+1,128/0, 5/5 teeth. GENTOW2 (2b19fbc): item (6)(α) PROVED-VIA-CITE
+— FGMN Cor 6.4 + Thm 6.3 (one-sided N_i(F) at EVERY level,
+ψ-power residuals) at the verified local numbering, THEOREM
+GENTOW2-A + bridge LEMMA GENTOW2-B with provisos displayed; depth
+≥ 4 explicitly not claimed (needs the level-r ladder grammar);
+first f₃≥2 machine witness; the T2 tooth failed-as-designed and was
+honestly redisclosed/resealed. HETOW (its note): [GENHN-HE(μ≥3)]-
+AT-TOWERS = LITERAL INSTANCE of frozen HE7 at full sides — three
+bridge lemmas PROVED, none boxed (the overflow carries clear T₂ by
+the node floor, so HE7-12 transports the whole package); minimal
+live degree n=12 derived; 1,200/0, 300/300 PARI — first μ₂≥3 tower
+σ anywhere. **THE n ≥ 8 CONDITIONALITY AFTER B1: items (3)
+faithfulness geography + (4) partial sides + GENTOW-BOX-1
+(general-μ₂ refine) [n ≥ 8]; nothing further through n ≤ 31; the
+level-r grammar at n ≥ 32 — plus the three new notes' own arcs
+(all 0/2). Wave B2 dispatched at (3), (4), GENTOW-BOX-1 + the
+grammar attempt.**
