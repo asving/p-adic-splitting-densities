@@ -480,7 +480,11 @@ type-preserving bijection), LETTERS are twisted.
 > in-window value ≥ e₁N and tying none below it; conversely all
 > in-window slot digits agree across lifts. For f₁ ≥ 2 the boundary
 > band (value readable, K-residue needing an out-of-window
-> component) exits UND exactly as GENH4-CAP(F). (b) The class-i slot
+> component) is adjudicated as GENH4-CAP(F) **[e2-E1 2026-08-09:
+> as CORRECTED at GENH4 r3 (frozen pin 4b0d946) — the band read is a
+> trichotomy of which ONLY the even branch exits UND; the sealed
+> "exits UND exactly as" transcribed the pre-r2 phrasing — ERRATUM E1
+> below]**. (b) The class-i slot
 > string of a coordinate ends at e₁(N−1) + ih: RAGGED across
 > classes; the band beyond min-class end is free depth on every
 > leaf locus. (c) Every digit consulted by a readable event sits
@@ -498,6 +502,43 @@ The OB-a resolution, genre-generically: the coherent object is the
 e₁-fold cover (the full integer dv-ladder), raggedness confined to
 the never-consulted band — first measured (QSCOUT22), then a ledger
 (GENH4), now a one-congruence lemma.
+
+> **[e2] ERRATUM E1 2026-08-09 (LEMMA GENHN-3(a)'s band-exit clause —
+> the pre-r2 GENH4-CAP(F) phrasing). Queued at the GENH4-r2 fold
+> (ledger 0089f9b); GENHN is at attempt grade 0/2 (unaccepted), so
+> this is a tagged repair per the [r1] mechanism; the sealed battery
+> runner and artifacts are UNTOUCHED — every battery row has f₁ = 1,
+> where the f₁ ≥ 2 band clause is vacuous.**
+>
+> **ORIGINAL (S5, GENHN-3(a), sealed text):** "For f₁ ≥ 2 the
+> boundary band (value readable, K-residue needing an out-of-window
+> component) exits UND exactly as GENH4-CAP(F)."
+>
+> **CORRECTION.** "Exits UND" transcribes GENH4-CAP(F)'s PRE-r2
+> phrasing (the sealed parenthetical "the reader's dv0 = N → UND
+> exit", found FALSE at GENH4 PE2 GAP 1 and repaired through PE3
+> MINOR 1). The corrected rule — GENH4 r3 at its FROZEN PIN 4b0d946,
+> re-derived there from GENH4-3(i)'s hull partition, checked against
+> the committed counter-keys (2SIDED(3,4) = 384 vs RAM(7) = 128 at
+> (Zp,2,7,k1); 2SIDED(3,5) = 1,536 vs UND = 1,024 at even-N
+> (Zp,2,8,k1)) — is a TRICHOTOMY with pairwise-disjoint antecedents
+> at the band read dv0 = N (w := dv(A₁)):
+>
+>     (a) N > 2w, either parity  → DECIDED 2SIDED(w, N−w);
+>     (b) N ≤ 2w, N odd          → DECIDED RAM(N);
+>     (c) N ≤ 2w, N even         → UND.
+>
+> Only branch (c) exits UND. The sentence is CONDITIONALIZED: at the
+> μ = 2, f₁ ≥ 2 genre the band read follows exactly this r3
+> trichotomy (GENH4-CAP(F)'s own frame, (e₁, f₁) = (1, 2)); at
+> f₁ ≥ 2 genres beyond it (μ ≥ 3, or e₁ ≥ 2 mixed — no battery row,
+> first live n ≥ 8) this note claims the LIFT-STABILITY content of
+> (a) only and NO band-adjudication display — that surface sits with
+> the S9 boxes. GENH4.B's two-term genre-F drainage display (the
+> even-N band term), which S6.3 consumes at pin, is the μ = 2
+> instance of the corrected rule and is unchanged. SOURCE: GENH4 PE2
+> GAP 1 + PE3 MINOR 1; corrected display = GENH4 r3, frozen pin
+> 4b0d946 (accepted body, byte-frozen).
 
 ## S6. THE REFINE TRANSFER (GENHN.A(iv)) AND THE BRACKET (CS-2)
 
