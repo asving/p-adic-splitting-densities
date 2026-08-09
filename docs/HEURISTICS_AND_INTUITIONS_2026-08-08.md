@@ -119,6 +119,21 @@ also traceable in the ledger (lean/notes/BRIDGE_ADJUDICATIONS_2026-07-30.md)
    and commit; the ledger is append-only and the orchestrator's own
    errors go in it (the transposed annex, the refuted criterion guess).
 
+7. **The evidence hierarchy for q-uniform claims (Asvin's directive
+   2026-08-09, instantiated by TAMEKQX).** Symbolic rational identity >
+   exact-at-q ties at enough prime powers with an a-priori degree bound
+   (Cauchy-determined) ≈ q-adic 1/q-expansion to depth num+den+1 from
+   finite codimension-graded configuration counts (equivalent by the
+   Padé/vanishing-at-∞ argument) >> archimedean/MC coincidence, which is
+   NEVER law-grade: two candidate laws for the same quantity routinely
+   differ by O(q^{−large}) — invisible at any affordable σ — and TAMEKQX
+   supplied a live specimen: a wrong closed form off the truth by
+   q²/((q+1)Φ₅) survived comparison with individual sealed MC cells and
+   died only under exact stratum counting. MC's remaining roles: support
+   detection, refutation at O(1) separations (CONJ-MEAN), and phenomena
+   with no exact route yet. Where a menu/recursion double computation is
+   available, run it symbolically — it costs less than the sampling.
+
 ## C. Standing next steps (Asvin's directives, 2026-08-08 late)
 
 1. **When the arcs pass: SIMPLIFICATION CAMPAIGN** — agents charged to
