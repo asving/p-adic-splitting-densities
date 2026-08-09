@@ -1,0 +1,56 @@
+== GENTOW2 passPE3 FRESH ROUTE (p = 3 letter-live, z2 != 1: frames LV1/LV2) ==
+-- A-route (exact integer arithmetic, local v3) --
+  LV1 v3 Res(PHI2, x) = 4
+  LV1 v3 Res(PHI2, PH) = 22
+  LV1 v3 Res(PHI2, x^2-3) = 8
+  LV1 v3 Res(PHI2, x^2+3) = 8
+  LV1 v3 Res(PHI2, x^4-9) = 16
+  LV1 v3 Res(PHI2, x^10-243) = 40
+  LV1 v3 Res(PHI2, x^12+729) = 62
+  LV2 v3 Res(PHI2, x) = 4
+  LV2 v3 Res(PHI2, PH) = 22
+  LV2 v3 Res(PHI2, x^2-3) = 8
+  LV2 v3 Res(PHI2, x^2+3) = 8
+  LV2 v3 Res(PHI2, x^4-9) = 16
+  LV2 v3 Res(PHI2, x^10-243) = 40
+  LV2 v3 Res(PHI2, x^12+729) = 62
+-- B-route (PARI/gp: nfmodpr residues in F9) --
+  gp stderr tail:   ***   Warning: new stack size = 64000000 (61.035 Mbytes).
+
+  LV1 EF: got 4 2 (pred 4 2)
+  LV1 ETA_IS_1: got 1 (pred 1)
+  LV1 FORMULA: got 1 (pred 1)
+  LV1 NFAC: got 1 (pred 1)
+  LV1 NPR: got 1 (pred 1)
+  LV1 TOOTH_ETA_NE_Z2: got 1 (pred 1)
+  LV1 V10: got 20 (pred 20)
+  LV1 V12: got 31 (pred 31)
+  LV1 V2M3: got 4 (pred 4)
+  LV1 V2P3: got 4 (pred 4)
+  LV1 V4M9: got 8 (pred 8)
+  LV1 VPH: got 11 (pred 11)
+  LV1 VX: got 2 (pred 2)
+  LV1 Z1NE1: got 1 (pred 1)
+  LV1 Z1REL: got 1 (pred 1)
+  LV1 Z2_IS_MZ1: got 1 (pred 1)
+  LV1 Z2_NE_1: got 1 (pred 1)
+  LV2 EF: got 4 2 (pred 4 2)
+  LV2 ETA_IS_M1: got 1 (pred 1)
+  LV2 FORMULA: got 1 (pred 1)
+  LV2 NFAC: got 1 (pred 1)
+  LV2 NPR: got 1 (pred 1)
+  LV2 TOOTH_ETA_NE_Z2: got 1 (pred 1)
+  LV2 V10: got 20 (pred 20)
+  LV2 V12: got 31 (pred 31)
+  LV2 V2M3: got 4 (pred 4)
+  LV2 V2P3: got 4 (pred 4)
+  LV2 V4M9: got 8 (pred 8)
+  LV2 VPH: got 11 (pred 11)
+  LV2 VX: got 2 (pred 2)
+  LV2 Z1NE1: got 1 (pred 1)
+  LV2 Z1REL: got 1 (pred 1)
+  LV2 Z2_IS_Z1: got 1 (pred 1)
+  LV2 Z2_NE_1: got 1 (pred 1)
+== passPE3 FRESH-ROUTE VERDICT ==
+checks: 50, violations: 0
+GENTOW2 passPE3 fresh route: GREEN
