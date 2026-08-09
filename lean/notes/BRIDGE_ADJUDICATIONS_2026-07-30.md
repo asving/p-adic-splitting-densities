@@ -13557,3 +13557,14 @@ QUEUED BEHIND THE WAVE: site refresh (standing policy — the
 composed-complete milestone + first acceptances warrant it); Codex
 ratification sweep (window reset; HE7-post-annex first, then
 W-MULT-DCX leg, r40c/VC40c).**
+
+---
+
+## WAVE 6 PARTIAL (ws2xarixt, storm again — 1/3): GENIND r3 COMPLETE (d3ef66d — capped window formula M_l = N − D_l, D_l = μ_l·k_l + Σ_b deg_b·min(s_b,k_l), derived 3 routes, runner-concordant at source line 630ff; pin-check done AT COMMIT TIME this round) · HE7 ANNEX + GENH4 PE5 killed by 529s — SINGLE RESUME ISSUED — 2026-08-09
+
+GENIND: all 6 PE3 findings repaired in one note-only commit; grade
+0/2, PE4 attempts the first clean. The r3 unit executed the
+commit-time pin rule correctly this round (GENH4 HEAD 4b0d946
+verified at commit; PE4 CLEAN e15308d disclosed). RESUME:
+wf_78e3bb07-57a via scriptPath (GENIND r3 replays cached; HE7-ANNEX
++ GENH4-PE5 run live).
