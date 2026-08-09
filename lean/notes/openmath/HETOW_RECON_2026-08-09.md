@@ -533,3 +533,72 @@ violations.**
 **GRADE: attempt stays 0/2** (the [r1] repair round does not score);
 passPE2 next. The PE1 sealed artifacts and the S5/S6 battery record
 are byte-untouched by this round.
+
+---
+
+### Dated corrections (2026-08-09, post-PE2)
+
+*Source: `HETOW_passPE2_report.md` @ 67cbab2 — verdict CLEAN
+(0C/0G/3m). Per the arc the tower σ-closure counter moved 0/2 →
+**1/2 and HOLDS THERE**: these three cures are dated appends to
+MINOR findings, not a scoring round; one further clean pass on a
+fresh surface is still required. The [r1] body above is BYTE-FROZEN
+— each correction below supersedes its quoted sentence of record.*
+
+**C-A (cures PE2 F-A — LEMMA HETOW-2's F-2 paragraph, §S2).** Two
+sentences corrected. (i) The exemplar in "If a slot coefficient is
+instead presented with x-degree ≥ D′ (e.g. a plain product ĉ_t·n̂ of
+a degree-≤ D′−1 lift by the x-monomial …)" is WITHDRAWN: at f₁ ≥ 2 a
+degree-< D′ lift times n̂(k) has exact-height-k part spanning one
+η-digit (the other digits' heights differ by e₁h-multiples), so it
+does not carry residue c_t and sits outside the paragraph's own
+premise "the unreduced coefficient's [residue] = r̃'s t-coefficient";
+the paragraph's scope is presentations of the CORRECTED key's (LIFT)
+coefficient augmented by above-height junk of x-degree ≥ D′. (ii) The
+closing "Either way LEMMA HE7-12 [r2, r3] applies" is RE-SCOPED to
+the (LIFT)-slot form this note's consumers actually feed to HE7-12 —
+the F-4 branch, **w = 0**: at the (e₂ = 1, t = f₂−1) corner a
+junk-augmented coefficient's moved piece x^{r′}π^{·}Φ′ lands at slot
+e₂t + 1 = e₂f₂, the LEADING slot, so w would acquire an
+x-degree-≥ D″ term and HE7-12's hypothesis "deg w < D″" (HE7_PROOF
+§S5.8) fails there. The accounting core stands: value monotone, raise
+exactly u₂ − e₂D′h, residue unchanged via the Ô[x] identity —
+machine-exact at frame R with r′ = e₁−2 maximal. PE2's consumer
+trace found the two in-repo consumers (HETOW.A(i); the GENHN dated
+erratum's display) both pinned to the (LIFT) form — neither reaches
+the withdrawn exemplar or the corner.
+
+**C-B (cures PE2 F-B — the §S2 preamble's mechanism sentence; the
+σ-BLIND seam face recorded).** The sentence "W(t) is non-linear in t,
+so no K₂^×-rescale absorbs it" is CORRECTED: at f₂ = 2 (t ∈ {0,1} —
+frames X/Z/W, the r1 machine contacts) any W is affine and the quoted
+reason is empty there; the operative pin at those frames is
+**W(f₂−1) = ⌊i(u₂)/e₁⌋ = 0 against the monic normalization** — a
+rescale λ^{−f₂}r̃(λZ) matching the naive residues needs η^{−W(t)} =
+λ^{t−f₂}, and t = f₂−1 with c_{f₂−1} ≠ 0 forces λ = 1. When
+c_{f₂−1} = 0 an affine wrap CAN be a rescale (e.g. ψ₂ = Z² − c₀ with
+η a square), leaving the naive slot polynomial irreducible; at f₂ ≥ 3
+the non-affinity mechanism is live (frame V: W = (1,1,0)). At frames
+X/Z/W the sentence's conclusion follows from the W(f₂−1) = 0 pin, so
+the [r1] records stand. **σ-BLIND record (PE2 frame V: p = 7,
+f₂ = 3, ord(η) = 6):** the gauge-naive key's PARI σ = {(2,3)} = the
+carrier's σ on both oracle routes, while nfmodpr shows ψ₂(η₂(ξ)) ≠ 0
+at the naive key's roots — a wrap seam with zero σ symptom at this
+frame. The LETTER clause (ψ₂(η₂(ξ)) = 0, HETOW-1(b)/T(b)′(i)) is the
+load-bearing detector; a σ-shaped regression tooth
+("σ(naive) ≠ σ(corrected)", the shape of §S7's G2) is insufficient
+by itself — ported to a frame like V it passes on the broken key.
+
+**C-C (cures PE2 F-C — HETOW-BOX-3 [r1] gains the multi-wrap axis).**
+Appended to BOX-3's NOT-exercised list: **f₂ ≥ 3 multi-wrap frames**
+(two or more live η^{W(t)} units, W genuinely non-affine — the
+t-dependence of the [r1] prescription itself), omitted at [r1] while
+the three supp frames sit at f₂ = 2 with a single wrap unit. Mooted
+in substance by the PE2 fresh route and cited as machine contact:
+**frame V** (p = 7, f₂ = 3, W = (1,1,0), ord(η) = 6;
+`hetow_pe2_fresh.py` artifacts @ 67cbab2) ran GREEN on dual PARI
+routes — corrected key σ = {(2,3)}, slot residues = minpoly(β) =
+Z³+5Z²+4Z+5 exactly, both W-telescoping identities (heights 6 and 9)
+exact, μ₂ = 2 trichotomy 8/8, forced μ₂ = 3 {(6,3)} row. The axis is
+now a disclosed row with first contact on record rather than an
+omission.
