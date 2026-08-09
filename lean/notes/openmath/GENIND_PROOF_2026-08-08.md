@@ -2462,3 +2462,45 @@ as-of verdicts stand.]
 
 **Grade: stays 0/2. The consecutive-clean count has NOT started; PE7
 (a fresh hostile pass) attempts the first clean.**
+
+---
+
+### Dated corrections (2026-08-09, post-PE7)
+
+Provenance: passPE7 hostile verification (report
+`GENIND_passPE7_report.md`, verdict commit 380bc66: 0 CRITICAL +
+0 GAP + 3 MINOR; the 2-clean count stands at 1/2). Three wording
+corrections to the r6 record, each original standing in place as a
+dated record per the note's convention; no count law, theorem
+clause, consumption verdict, or frozen number is touched by this
+annex, and the note text above this annex is byte-identical to
+993935d.
+
+* **[PE7-m1] S9.3 W-12 bullet (L1480–1481) + S16 row 1 — the "zero
+  S3.2 cites" grep claim, wording corrected:** `grep "S3.2"` on
+  this note at r6 returns FOUR string hits (L1474, L1480, L2354,
+  L2427; re-executed this round), the four being r6's own
+  disclosure sentences about W12's PE4 repair, none of the four a
+  CONSUMING cite of W12 S3.2's content — read both sentences as
+  "zero S3.2 cites outside this round's own disclosure sentences
+  (grep: 4 string hits, all four disclosure)"; the consumption
+  verdict is unchanged.
+* **[PE7-m2] S9.3 GENHN bullet (L1547–1548) + S16 row 6 — the
+  consumed-surface inventory completed:** beyond the four listed
+  clauses (A(iv), A(v), GENHN-3, S6.2), this note leans on GENHN at
+  three further sites — the GENHN S11.F schema cite at the
+  GENIND-6(a) proof (L684), the GENHN S6.3 display cite at S6
+  Step 4 (L1094), and the embedded-genre echo at the GENIND-6(a)
+  statement (L623: "the sibling-Hensel-loss composition GENHN
+  already displays") — screen future GENHN errata against the seven
+  sites, not four; the SURVIVES verdict is unchanged (at ledger
+  granularity the three queued errata name no clause, the same
+  evidence covering the three added sites).
+* **[PE7-m3] S16 row 1 — "[GENHN-HE(μ ≥ 3)] … the box this note
+  already displays," locality corrected:** the string "GENHN-HE"
+  occurs at r6 only inside S16 itself (grep: L2354, L2397; this
+  annex adds disclosure-only mentions) — the note displays no box
+  by that name; the μ ≥ 3 stage-law content rides inside
+  [GENIND-H] — read the row-1 clause as "the exact open box this
+  note's [GENIND-H] display already carries," the phrasing S16's
+  own re-verification paragraph (L2397–2398) already uses.
