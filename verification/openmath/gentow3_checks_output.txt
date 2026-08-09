@@ -1,0 +1,24 @@
+=== GENTOW-3 battery (item (3): faithfulness geography) seal 2026-08-09 ===
+== FAM-A5: E2=10 delta=1 THETA=(21,11) entry band top 20 ==
+  FAM-A5 Phi2^mu2 self-shadow pins: [21, None] (THETA = [21, 11])
+== FAM-A7: E2=14 delta=3 THETA=(31,17) entry band top 28 ==
+  FAM-A7 Phi2^mu2 self-shadow pins: [31, None] (THETA = [31, 17])
+== FAM-B: E2=6 delta=1 THETA=(13,7) entry band top 12 ==
+  FAM-B Phi2^mu2 self-shadow pins: [13, 7] (THETA = [13, 7])
+== FAM-C: E2=21 delta=1 THETA=(43,22) entry band top 42 ==
+  FAM-C Phi2^mu2 self-shadow pins: [43, None] (THETA = [43, 22])
+== FAM-D: E2=6 delta=1 THETA=(13,7) entry band top 12 ==
+  FAM-D Phi2^mu2 self-shadow pins: [None, None] (THETA = [13, 7])
+== FAM-D x-free sweep: 12 members, 0 discrepancies: True ==
+== FAM-A7 faithful leaf band [29, 30] < THETA_0 = 31 ==
+  A5-DEEP: honest tRAM(207) vs shadow tRAM(21), sigma agree by parity luck; first divergence at 21 = THETA_0
+== PE1 anchors: shadow pins vs honest pins (THETA_0 = 21) ==
+  PE1 row 0: honest (25, 14, 'tRAM') / shadow (21, 14, 'tRAM') / first divergence 21
+  PE1 row 1: honest (21, 14, 'tRAM') / shadow (28, 14, 'tINERT') / first divergence 21
+  PE1 row 2: honest (21, 14, 'tRAM') / shadow (30, 14, 't2SIDED') / first divergence 21
+== PARI leg: 6 jobs ==
+tooth T-THRESH-UP fired x4
+tooth T-BAND-EDGE fired x1
+tooth T-SHADOW-REG fired x1
+=== VERDICT: GREEN -- 582 checks, 0 violations (0.1s) ===
+tally: {'FLOOR': 274, 'ENTRY': 274, 'SHARP': 11, 'LABEL': 6, 'XFREE': 3, 'BAND': 2, 'PE1': 3, 'GP-SIG': 6, 'TEETH': 3}
