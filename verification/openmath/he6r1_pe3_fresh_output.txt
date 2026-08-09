@@ -1,0 +1,8 @@
+C3 p=3 u2=19 r=Z^2+0Z+1: members 41 ok 41 bad 0 disc0 0
+C3 p=5 u2=19 r=Z^2+0Z+2: members 41 ok 41 bad 0 disc0 0
+C3 p=7 u2=20 r=Z^2+1Z+3: members 40 ok 40 bad 0 disc0 0
+C3 p=5 u2=20 r=Z^2+1Z+1: members 40 ok 40 bad 0 disc0 0
+TS p=3 r=Z^2+0Z+1: members 42 ok 42 bad 0 disc0 0
+TS p=5 r=Z^2+0Z+2: members 42 ok 42 bad 0 disc0 0
+TOTALS {"members": 246, "pari": 246, "agree": 246, "disc0": 0} tooth {"tested": 8, "refuted": 8} violations 0 secs 3.4
+EXIT=0
