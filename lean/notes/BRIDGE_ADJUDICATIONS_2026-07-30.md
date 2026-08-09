@@ -14540,3 +14540,17 @@ PE1) — NEXT firing per single-resume policy; (2) GENTOW2 r1 must
 include the PDF-provenance leg (fetch arXiv 1305.0775v3, verify
 the consumed passages against the local print — the honest cure
 for F1) + the F2 derivation + the F3 clause fix.
+
+## STORM CONTINUES (wave-24 resume w343riuk6 killed again — 2 consecutive) — STAND DOWN PER PROTOCOL — 2026-08-09 ~17:20 UTC
+
+PENDING SET (watchdog: ONE resume per firing, in this order):
+(1) wave 24 — Workflow({scriptPath: ".../arc-wave-24-wf_d76586b4-616.js",
+resumeFromRunId: "wf_d76586b4-616"}) — HE3 r2 + HE6R1 PE3
+(acceptance attempt), rider cached; (2) B3 —
+Workflow({scriptPath: ".../box-wave-b3-wf_c7f83ea4-855.js",
+resumeFromRunId: "wf_c7f83ea4-855"}) — GENTOW-6 finish (S2/S3
+committed) + HETOW PE1, GENTOW2-PE1 cached. All state committed;
+no uncommitted work at risk. Board stable: 7 chain notes 2/2 ·
+HE6R1 1/2 (rider landed) · HE3 0/2 (r2 pending) · boxes: all
+majors proved at attempt grade, GENTOW-6 mid-flight, 6 new-note
+arcs open (GENTOW2 at 0/2 post-PE1).
