@@ -2743,3 +2743,121 @@ hypothesis-WIRING gap Codex named — is cured by this section.
 Step 4's simple part consumes GENIND.C′ verbatim in place of the
 bare bullet; the CS legs keep their [GENIND-H]/(CS-EXACT)
 conditionality unchanged.
+
+### R2 (CODEX F1): the unit-pivot step — GENIND-6(c)'s onto/constant-fiber condition displayed at schema level
+
+**R2.0 The finding, quoted (F1, CONFIRMED GAP, disclosure overlap).**
+
+> "GENIND-6(c)'s onto-with-constant-fiber is carried by 'triangular
+> with exact budget floors' + 'the same S2.2 slot bookkeeping' — and
+> triangularity alone does NOT give surjectivity/constant fibers
+> over truncated DVRs (Codex's valid toy: (x, y) ↦ (x, (x+π)y)
+> mod π², triangular, fiber collapses at x = 0). The missing
+> displayed step is the unit-pivot condition (the division ledger's
+> pivots are units because the extracted factors are MONIC — true,
+> used, never displayed as the load-bearing condition)."
+
+The same sentence pattern is consumed at GENIND-3 step (3) ("the
+fiber count per genre is the S2.2 slot count…"), so the rider
+covers both sites.
+
+**R2.1 The rider (schema level).** In GENIND-6(c)'s coordinate map
+and GENIND-3 step (3)'s fiber sentence, read "triangular" as
+**triangular with UNIT pivots**: in a coordinate order realizing the
+triangular structure, each solved output slot is
+c·(its input slot) + (a function of strictly earlier input slots)
+with pivot c a unit of that slot's truncated ring O/π^w. Unit pivots
+are what license the S2.2 slot bookkeeping: back-substitution solves
+any target slot by slot (input = c⁻¹·(target − earlier-part), c⁻¹
+existing because units of O/π^w invert), so the map is ONTO; and the
+fiber over every target is exactly the free slots (each
+pinned/priced slot solved uniquely, each free slot unconstrained) —
+a target-independent q-power. Without unit pivots both conclusions
+fail, and Codex's toy is the exact failure shape: (x, y) ↦
+(x, (x+π)y) mod π² is triangular, but at x ∈ (π) the pivot x + π is
+a non-unit and the y-fiber collapses.
+
+**R2.2 Why the pivots here ARE units (re-derived from the displayed
+mechanisms; the ledger species of GENIND-3 steps (1)–(3) /
+GENIND-6(a)(c), enumerated).**
+* RECENTER ledgers (GENIND-2(a), consumed at step (1) and
+  GENIND-6(a)): the update of the Φ-adic coordinates under
+  x ↦ x + s is the binomial matrix, displayed at S3 as "triangular
+  with unit diagonal" — the diagonal entries are the binomials
+  C(j, j) = 1. Pivot = 1.
+* SCALE/CONTENT moves (x = π^k y; divide by π^D): digit-slot
+  RELABELINGS (window shifts with the ghost-slot bookkeeping of
+  GENIND-2(a)) — no slot is multiplied inside its ring; no pivot
+  arises.
+* DIVISION ledgers (step (2)'s Hensel split; GENIND-6(a)'s "monic
+  cofactor with PER-COEFFICIENT certified windows (the triangular
+  division ledger)"): every division row divides BY A MONIC factor —
+  the frame f is monic (S1's states) and the extracted blocks are
+  monic (W12-S2.1's monic-factor form; GENIND-6(a)). Long division
+  by a monic divisor determines each new cofactor coefficient with
+  the divisor's LEADING coefficient as the pivot, = 1. The
+  non-unit-lead cofactor of the shallower-co-block case (step (1))
+  is never a divisor in any ledger row — it is an OUTPUT whose lead
+  carries the dropped content.
+* LETTER scalings: multiplication by the co-blocks' unit values
+  (W12-L1(b) product form / J-D0) — units by that lemma's own
+  computation.
+So each ledger row's pivot is the literal unit 1 (or a W12-L1(b)
+unit): MONICITY is the load-bearing condition, now displayed. The
+toy's pivot x + π is the lead of a non-monic multiplier — a shape
+the displayed species exclude.
+
+**R2.3 Verification.** Machine leg G (genind_annexr_supp.py @
+f5271e4, GREEN): over ℤ/4, (x+2)·y is bijective in y iff x is odd
+(a unit) — the toy's collapse — while the monic-pivot form (1+2x)·y
+is bijective at every x. Instance contact for (c)'s count: the
+committed EXHAUSTIVE onto-with-constant-fiber enumerations at M6
+(S4.3 machine record: fibers {512} = q⁹ / {128} = q⁷ at every
+enumerable window) — a non-unit pivot would surface there as a
+fiber-size split, the signature those runs exclude at their windows.
+Scope honesty: the rider displays the condition and its supply; the
+per-genre ledgers remain compressed per the S4.3 honesty box, and
+the multi-block hostile targets it names stay named.
+
+### R3 (CODEX F2): the window-1 convention rider
+
+**R3.0 The finding, quoted (F2, CONFIRMED GAP — scope leak).**
+
+> "the S1 convention states 'window N ≥ 2', yet GENIND-2(a)'s
+> α-transport invokes the same system at window N − mk = 1 (first
+> at m = 2, N = 3, k = 1 — Codex's instance, admissible since
+> mk = 2 ≤ N−1), and GENIND-6's M6 ledger consumes a degree-2 child
+> at window 1 ('the child DRAINS instantly'). … neither GENIND-2
+> nor (IH) formally supplies it."
+
+**R3.1 The convention rider.** Extend S1's cluster-system
+conventions and the P-package reading to **window N = 1**, whose
+content is FORCED by S1's own definitions read at N = 1:
+* states: a_j ∈ (O/π¹)[x]_{<d} with ā_j = 0 forces every a_j = 0 —
+  exactly q^{dm(N−1)} = q⁰ = 1 state;
+* read: a₀ = 0 gives v(a₀) ≥ 1 = N, so the conservative read exits
+  UNDECIDED before consulting any digit — DRAIN;
+  u_{m,d}(1) = total = 1;
+* grammar coherence: DRAIN's locus law q^{d(m−1)(N−1)} = 1 = the
+  whole space; α needs mk ≤ N−1 = 0 (none); DEC/β/CS need a polygon,
+  i.e. v(a₀) < N (none) — of the five events exactly one is
+  inhabited;
+* the window-1 package: menu = {DRAIN} (exact; (A1)-admissible with
+  count 1 = q⁰), (A0) vacuous (no decided leaves), complement
+  u = total exactly.
+Scope of application, enumerated — window-1 systems arise in this
+note only as TRANSPORT TARGETS (S1's ambient window stays ≥ 2):
+(a) GENIND-2(a)'s α(k) endpoint mk = N−1, first at
+(m, N, k) = (2, 3, 1); (b) GENIND-3/GENIND-6 child extractions at
+M_l = 1 — the M6 ledger at N = 5 ("the child DRAINS instantly — its
+entry datum is the whole certified content" is this rider's content
+verbatim at that instance); (c) the S5.2 recursion's boundary
+u(1) = 1, consumed by R1.1's telescope (whose closed form
+u(2ℓ+1) = (ℓ+1)Q^{2ℓ} − ℓQ^{2ℓ−1} returns 1 at ℓ = 0 — coherent
+both ways).
+
+**R3.2 Verification.** Machine leg I (@ f5271e4, GREEN):
+(m, Q) ∈ {2, 3, 4} × {2, 3, 4} — 1 state, v(a₀) ≥ 1 = N, DRAIN,
+u(1) = total = 1. Decorrelated leg: the adjudication's row 2 records
+Codex's sympy re-solve of the S5.2 recursion under exactly this
+boundary (m = 2 closed forms exact at N = 2..12).
