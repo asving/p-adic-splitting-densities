@@ -1,0 +1,14 @@
+{
+ "checks": {
+  "FR1-keys": 9,
+  "FR2A-members": 48,
+  "FR2B-members": 48,
+  "FR2T-fired": 4,
+  "FR3-cells": 54,
+  "FR4-members": 30,
+  "FR5-members": 9
+ },
+ "elapsed_s": 0.3,
+ "verdict": "GREEN",
+ "violations": 0
+}
