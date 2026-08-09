@@ -14150,3 +14150,57 @@ ANNEX R1–R6 + HEX3 r4 → PE6 (sequential). W-12's dated re-anchor
 rides the GENIND-annex agent's housekeeping. The next site refresh
 carries the refutation + the W-12 acceptance TOGETHER (honesty
 pair).**
+
+---
+
+## WAVE 16 FOLDED (wmk9wgm1k, 3/4 + partial): GENHN r2 — T(b)′ PROVED (the refutation repaired with the σ-composition formula SURVIVING at composed pins; [GENHN-TOW-1] boxed honestly; first 3-stage n=16 machine σ) · HEX3 PE6 CLEAN → 1/2 (ORCHESTRATOR ADJUDICATION: the charge bar stands) · GENIND ANNEX R1 landed pre-casualty (server error; resume dispatched) — 2026-08-09
+
+**GENHN r2 (7b504ba → d16869c → 7650b20 → 438608a → 9636b7e):
+T(b)′ PROVED.** The corrected lemma: composed carrier forcing chain
+(consuming the [r1] node floor), the composed slot lemma GENHN-2′
+(exact valuations on the composed basis {x^aΦ′^b}, one K₂-digit per
+height), the leaf read = the Φ₂-development of f ITSELF with
+inner-μ₂=2 σ PROVED — and the conceptual dividend: the composition
+formula (e,f) ↦ (e₁e₂e_s, f₁f₂f_s) SURVIVES, at the COMPOSED pins;
+what died was only the stage-shadow read, now identified precisely
+as the coefficientwise mod-Φ′ projection with a displayed
+faithfulness inequality (faithful at the entry band — why T(a)
+survives — generically unfaithful at leaf depth — why T(b) broke).
+Corrected labels: the PE1 instances RAM(25)/RAM(21)/RAM(21), all
+{(8,1)}; 35/38 supp rows pin-diverge from the shadow. HONEST BOX
+[GENHN-TOW-1]: entry budgets, inner refine transfer, faithfulness
+geography, partial sides, window ledger. F2's TRUE budget formula
+derived (floor base = side height ceil'd at the abscissa; pin = +1
+per digit, not +h) — ties the note's own S2 lists to the battery
+exponents at all three checked genres. F3's band transport DERIVED
+at the first band height (value-stable by η-independence); deeper
+heights honestly routed to UND drain. Supp GREEN 147/0 incl. the 4
+refuted instances as regression teeth, the FIRST f₂=2 tower genre,
+and THREE 3-stage n=16 instances exact. CONSEQUENCE: P(n) at n ≥ 8
+now rests on [GENHN-HE(μ≥3)] ∪ [GENHN-TOW-1] ∪ S9 boxes ∪ the arc
+stack — PROJECT_STATE's annotation resolves to this (the refuted
+leg is REPAIRED AT ATTEMPT GRADE, boxes displayed). 0/2; PE2 next.
+
+**HEX3 PE6 (b363e23 → d9c5ef8): CLEAN under the charge bar — 0C,
+0G, 2 MINOR; the verifier displayed the convention fork honestly.
+ORCHESTRATOR ADJUDICATION: the CHARGE BAR (nothing GAP-or-worse =
+CLEAN) is the standing convention** — it has been in every verifier
+charge since wave 4 and graded the HE7/GENH4/GENIND/W-12
+acceptances; GENH4's PE3 (1 minor, read NOT-CLEAN) predates it and
+stands as graded under the then-convention; no retroactive
+regrades. HEX3 → 1/2. The minors (the BOX-1 mechanism gloss false
+at 100% of one committed row's drains — open-box display only; the
+r4 arc-record miss) → rider owed before PE7. The fresh route was
+the arc's first PARI/σ leg: the W-12 (A2)/σ-pin handoff end-to-end
+at the wild cell (ℤ_p, q=3): 58,158 oracle lifts, 0 violations,
+27/27 species ambiguity confirmed mechanism-free.
+
+**GENIND ANNEX: R1 LANDED pre-casualty (a1525ea + f5271e4)** — the
+heavy item: P(k)'s fourth member pinned to the rate-carrying
+species, ANNEX-LEMMA GENIND-C1 (the β-term two-regime estimate),
+ANNEX-THEOREM GENIND.C′ closing the quantitative induction; machine
+leg GREEN (the m=2 closed forms solve S5.2 symbolically, == the
+W-11/HEX3 R(M) — a three-note tie). Server error killed R2–R6 + the
+W-12 re-anchor — RESUME dispatched with the added housekeeping: the
+GENHN-movement dated append on GENIND (its n ≥ 8 leg now names
+[GENHN-TOW-1]).
