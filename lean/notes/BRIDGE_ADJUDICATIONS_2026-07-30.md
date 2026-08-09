@@ -14708,3 +14708,24 @@ CRITICAL on a gauge-blind battery → r1 formalized the corrected key
 η-letter family has now been hunted at ord 4/5/6/8/12, e₁ up to 4,
 f₂ up to 4 — every σ-carrying display in the tower stack is
 letter-audited. B7 dispatched.
+
+---
+
+## B7 FOLDED (wcsxkn5i7, 3/3): HETOW acceptance record landed · GENTOW2 PE3 CLEAN → 1/2 (first z₂ ≠ 1 letter contacts, opposite-direction tooth) · GENTOW1 PE1 = 1 GAP (the gauge seam — verdict predated the GENHN erratum; corrected reading survives; Step 0 wrap-immune; COR 1.1 tight) — B8: GENTOW1 r1 + GENTOW2 rider → PE4 + GENTOW5 PE1 — 2026-08-09
+
+GENTOW2 PE3 (92ac16b): the canonical formula re-derived from the
+PDF independently; the h-step repair walked in full (the e₃=1
+y-degree contradiction verified at the trace incl. the corrected
+17/2); LV1/LV2 = the first z₂ ≠ 1 contacts (z₂ = −z₁ with η₂ = 1;
+η₂ = −1 with z₂ = z₁ — both letters nontrivial and distinct,
+50/0 dual-oracle). Minors: a denominator-clearing bridge undisplayed;
+a stale STATUS bracket. 1/2; rider then PE4. GENTOW1 PE1 (606e85c):
+F-1 GAP — the note consumed T(b)′'s gauge-naive ĉ_t display
+(verdict 15:16 vs erratum 20:13; the timing-race genus); at η ≠ 1
+the naive key fails GENTOW-1(d) EXACTLY at 20/20 primes; the
+CORRECTED-key reading survives every clause; repair = dated gauge
+annex + erratum pin. Step 0 re-derived VALUE-BLIND (wrap-immune —
+GENTOW5's level-agnosticity claim scoped correctly: GENTOW5-D
+re-proves it, no overreach); COR 1.1's sharper constant REAL and
+TIGHT (the extremal slope realized). Fresh: first η≠1 tower-entry
+budget frame + first e₁=3 frame, 373/0. B8 dispatched.
