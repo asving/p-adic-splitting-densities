@@ -1,0 +1,9 @@
+PARI stack size set to 1073741824 bytes, maximum size set to 1073741824
+W0: 10141 exact checks, multiletter thetas 600
+W1 F-1: 96 members, triple-oracle agree 96, committed rows matched 8/8
+W1 R: 79 members, committed sigma matched 79, triple-oracle agree 79; M-1 recount: corrected 47 + tooth 55 = total 102 (committed record said 102); corrected refines 19
+W1 secs 7.1
+W2: 48 members, o1 48, o2 48, o3 48, deep flips 14, mixed-parked 17, parked-persist 18, pure-refine 11, 5.4 s
+W2 sigma genres: {'((8, 1), (8, 2))': 10, '((8, 1), (16, 1))': 12, '((24, 1),)': 12, '((8, 3),)': 6, '((8, 1), (8, 1), (8, 1))': 8}
+checks: {"W0-theta-multiletter": 600, "W0b-paperwalk-exact": 1, "W1-F1-triple-agree": 96, "W1-R-discard": 1, "W1-R-triple-agree": 79, "W2-deep-flip": 14, "W2-ladder": 48, "W2-mixed-parked": 17, "W2-o1-agree": 48, "W2-o2-agree": 48, "W2-o3-agree": 48, "W2-parked-persist": 18, "W2-pure-refine": 11, "o2-wild-degreeonly": 3, "o3-wild-skip": 3}
+VERDICT GREEN — 12.7 s, 0 violations
