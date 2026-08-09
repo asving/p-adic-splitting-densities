@@ -250,15 +250,21 @@ states/s). Protocol: validate on committed rows first, then extend.
   drain 0.
 * **Never-instantiated (q,N) cells:** (8,4): u = 287,232 (first live
   k-term at q = 8); (9,4): u = 578,097; **(16,3): u = 65,536 = 16⁴ — the
-  first q = 16 instance anywhere**; (16,4): [run in flight at report
-  close, 68.7B states, the first q = 16 row with a live k-term;
-  preregistered prediction u = 17,698,816 = 16⁶ + 15·16³·15·R(1);
-  result appended below when it lands].
+  first q = 16 instance anywhere**; **(16,4): u = 17,698,816 —
+  LANDED at exactly the preregistered value** (16⁶ + 15·16³·15·R(1);
+  predicted in the committed report body BEFORE the run finished,
+  commit 7e3185c): 68,719,476,736 states — the largest exact
+  enumeration in this corpus — with ALPHA(1) = (61440, 61440) and
+  FULL11SQ(1) = (860160, 860160), both == S5.1, the first q = 16 row
+  with live k-terms.
 * **Second wave (run while the above completed):** (Fqt,3,8):
   u = 7,357,797 on 10,460,353,203 states (depth +2 beyond the battery's
   q = 3 window; 12 keys, k = 2 with M = 2 live); (5,5): u = 450,625
-  (depth +1 at q = 5); (5,6): [in flight; prediction u = 22,225,625];
-  (7,4): u = 129,997 (new cell, live k-term); (11,4): u = 1,904,661
+  (depth +1 at q = 5); (5,6): [in flight; prediction u = 12,555,625 —
+  the earlier committed figure 22,225,625 was this verifier's own
+  arithmetic slip, corrected from the law before the run finished];
+  (7,4): u = 129,997 (new cell, live k-term); (7,5): u = 6,456,289
+  on 13,841,287,201 states (depth +2 at q = 7); (11,4): u = 1,904,661
   (2.36B states, new cell); **(13,3): u = 28,561 and (13,4):
   u = 5,143,177 (10.6B states) — the first equal-characteristic q = 13
   instances anywhere** (the corpus's q = 13 rows were ℤ_p-only), giving
