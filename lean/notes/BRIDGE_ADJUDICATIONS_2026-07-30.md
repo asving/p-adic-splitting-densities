@@ -14316,3 +14316,31 @@ THROUGH THE 2-CLEAN BAR — the arc program's chain phase closes and
 the SIMPLIFICATION CAMPAIGN (Asvin's pipeline) opens, with the
 distribution arcs + annex-stack passes + Codex legs continuing in
 parallel.**
+
+---
+
+## ASVIN DIRECTIVE (2026-08-09, verbatim intent): "if the uniformity theorem in general depends on these boxes, then we should prove the boxes and not take them as typed sorry's unless there seems no possible path towards a proof after some trying" — THE BOX-CLOSURE CAMPAIGN OPENS
+
+Re-prioritization: the chain's A-boxes ([GENHN-TOW-1] items (1)–(6)
++ [GENHN-HE(μ≥3)]-at-towers) are PROOF TARGETS, not formalization
+sorries; a typed sorry is the last resort after genuine attempts.
+This slots BETWEEN the arc program (wave 20's chain-completion
+attempts, running) and the simplify→formalize pipeline. CAMPAIGN
+PLAN (examples-first per the standing method): wave B1 = (1)
+GENTOW-1: items (1)+(2)+(5) — the method-transfer package (composed
+entry budgets, inner refine transfer, composed window ledger) — new
+note, constructed tower families first, sealed battery; (2)
+GENTOW-2: item (6) LITERATURE-FIRST — the obstruction is
+Okutsu-optimality content and FGMN (1305.0775, locally verified
+numbering) is CITABLE under the goal (only 2212.00294 excluded); if
+the one-sidedness statement is a known Okutsu-types theorem:
+faithful-cite + derive; else attempt from the r3 residue; box only
+after both fail; (3) HE-TOW: [GENHN-HE(μ≥3)]-at-towers via the
+HE6R1-RECONCILIATION PATTERN — the ladder may apply verbatim at the
+composed carrier (tail-eating: σ at the tower stage = the re-based
+stage-resolvent read; HE7's ladder is (e,f)-agnostic on its face) —
+prove literal-instance or box the exact residue, PARI battery at
+constructed inner-μ₂ ≥ 3 tower instances. Wave B2 (after B1): items
+(3) faithfulness geography + (4) partial inner sides (they consume
+B1's budgets). New notes, NOT edits to GENHN (its PE4 runs
+concurrently; discharge lands later as dated consumption updates).
