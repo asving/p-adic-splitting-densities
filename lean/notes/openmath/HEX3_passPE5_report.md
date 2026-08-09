@@ -260,9 +260,11 @@ states/s). Protocol: validate on committed rows first, then extend.
 * **Second wave (run while the above completed):** (Fqt,3,8):
   u = 7,357,797 on 10,460,353,203 states (depth +2 beyond the battery's
   q = 3 window; 12 keys, k = 2 with M = 2 live); (5,5): u = 450,625
-  (depth +1 at q = 5); (5,6): [in flight; prediction u = 12,555,625 —
-  the earlier committed figure 22,225,625 was this verifier's own
-  arithmetic slip, corrected from the law before the run finished];
+  (depth +1 at q = 5); (5,6): u = 12,555,625 on
+  30,517,578,125 states — LANDED at the corrected prediction (the
+  earlier committed figure 22,225,625 was this verifier's own
+  arithmetic slip, corrected from the law before the run finished;
+  6 keys, all exact);
   (7,4): u = 129,997 (new cell, live k-term); (7,5): u = 6,456,289
   on 13,841,287,201 states (depth +2 at q = 7); (11,4): u = 1,904,661
   (2.36B states, new cell); **(13,3): u = 28,561 and (13,4):
@@ -273,7 +275,12 @@ states/s). Protocol: validate on committed rows first, then extend.
   exactly; (25,3): u = 390,625 = 25⁴ and (27,3): u = 531,441 = 27⁴
   (first N = 3 instances at q = 25, 27). Every row: u == the law (both
   forms), species == S5.1 both directions, partition exact, DECIDED
-  drain 0. Cumulative fresh-route states this pass: ~36B, all exact.
+  drain 0. Cumulative fresh-route states this pass: ~149B across 27
+  rows (8 validation + 19 new cells), all exact, zero mismatches.
+
+*Grade line:* PE5 = NOT CLEAN 0C+0G+2m; counter stays 0/2; r4 owed
+(two one-clause phrasing fixes: the S0 L80–81 disc ≠ 0 restriction +
+the L438 parenthetical), then PE6.
 * *Disclosure (own-bug, caught by my own validation, note untouched):*
   my first GF(4) invocation passed p = 4 (non-prime) instead of
   (p,d) = (2,2), silently building Z/4-flavored tables; the validation
@@ -298,5 +305,7 @@ findings are inherited-phrasing corrections that W-12's own arc already
 priced ("owed at HEX3's own arc"); if r4 lands as the two one-clause
 fixes above, nothing else in the note is known-unmined to this verifier.
 
-*(Appendix — pending rows: (Fqt,2,12) and (Fqt,16,4) results appended
-below when the detached runs complete.)*
+*(All detached runs completed and folded in above; no pending rows.
+Fresh-route artifacts: /tmp/hex3_pe5_fresh/{reader.c, compare.py,
+tie_json.py, out_*.txt}; isolated battery re-run:
+/tmp/hex3_pe5_run/full_run.log.)*
