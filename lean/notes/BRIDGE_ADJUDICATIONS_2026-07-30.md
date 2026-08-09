@@ -14695,3 +14695,16 @@ repair sketched: divide by Φ₂ + Lemma 3.17). The citation core
 HELD: 16/16 provenance rows re-verified by independent PDF page
 reads; the fetch reproduced bit-identically; first f₃=3 witnesses
 anywhere + the digit-only-separation tooth. B6 dispatched.
+
+---
+
+## ★ B6 FOLDED (wksgnkfud): HETOW ACCEPTED 2/2 — THE TOWER σ-CLOSURE THROUGH THE BAR · GENTOW2 r2 complete (canonical letter formula; e₃=1 corner CLOSED; first letter-live contact) — B7: HETOW acceptance rider + GENTOW2 PE3 + GENTOW1 PE1 — 2026-08-09
+
+Details in the PE3 report (5b6db24) + PROJECT_STATE append #15. The
+arc's shape for the record: seal → PE1 found the wrap-cocycle
+CRITICAL on a gauge-blind battery → r1 formalized the corrected key
+→ PE2 clean with the σ-BLIND discovery (letter teeth load-bearing)
+→ PE3 clean with wrap-immunity and gauge-invariance PROVED. The
+η-letter family has now been hunted at ord 4/5/6/8/12, e₁ up to 4,
+f₂ up to 4 — every σ-carrying display in the tower stack is
+letter-audited. B7 dispatched.

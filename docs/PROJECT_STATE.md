@@ -3584,3 +3584,23 @@ owed) + three attainment/count-grade sub-boxes (σ/read unaffected).
 NEXT per Asvin's pipeline: finish the tower arcs → site refresh
 (the closure milestone) → distribution arcs + Codex ratification
 sweep → SIMPLIFICATION CAMPAIGN → stage two (Lean).
+
+**2026-08-09 DATED APPEND #15 — HETOW ACCEPTED 2/2 (PE3 CLEAN
+5b6db24): THE TOWER σ-CLOSURE IS THROUGH THE BAR** — the n ≥ 8
+tower-stage σ-story complete at acceptance grade (inheriting min
+over the accepted {GENHN, HE6, HE7, HE3} per its status header).
+The acceptance pass: HETOW-3 re-proved end-to-end; the termination
+arithmetic proved GAUGE-INVARIANT (the wrap correction moves
+residue letters only); the letter clause re-derived at multi-wrap
+(the per-t telescope cancellation); fresh frames at ord(η)=12 /
+f₂=4 (first W=2) / e₁=4, incl. a second σ-BLIND face where the
+letter tooth is the only detector. One minor (a coverage-row
+citation) rides the acceptance record. GENTOW2 r2 complete
+(c7c4416/d56e439/100d1ea): the canonical letter formula
+z₂ = η₂·z₁^(−⌊ℓ₁u₂/e₁⌋) landed with 3 new PDF-verified rows; the
+h-step repaired with the e₃=1 corner CLOSED (y-degree
+contradiction); first letter-live f₁=2 contact (z₂ = 1 = η₂·z₁⁻⁴
+exact, tooth fired). Tower-arc board: HETOW 2/2 ✓ · GENTOW2 0/2
+(PE3 next, letter-live foothold committed) · GENTOW1/3/4/5/6 arcs
+owed. Then: distribution arcs, ratification sweep, site refresh,
+SIMPLIFICATION → Lean.
