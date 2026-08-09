@@ -3,9 +3,9 @@
 # (GENTOW4-BOX-2), and the attainment certificate (GENTOW3-BOX-1),
 # 2026-08-09
 
-**STATUS: SKELETON (per-section commits follow). Unit: GENTOW-6,
-BOX-CLOSURE campaign residue wave. Grade 0/2 (attempt; hostile arc
-owed).**
+**STATUS: COMPLETE (sealed battery GREEN 401/0, 4/4 teeth). Unit:
+GENTOW-6, BOX-CLOSURE campaign residue wave. Grade 0/2 (attempt;
+hostile arc owed).**
 
 Charge (three targets, priority order): (1) GENTOW4-BOX-1 — the
 mixed-side tie mu2*(r) = m_r, literature-first (FGMN residual
@@ -31,10 +31,10 @@ gentow4_checks.py + gentow3_checks.py (imported additively).
 
 | target | statement | status |
 |---|---|---|
-| (1) mixed-side tie | LEMMA GENTOW-6.1 (S1) | TBD |
-| (2) block budgets | LEMMA GENTOW-6.2 + COR GENTOW-6.2C (S2) | TBD |
-| (3) attainment | THEOREM GENTOW-6.3 (S3) | TBD |
-| battery | gentow6_checks.py (S4) | TBD |
+| (1) mixed-side tie | LEMMA GENTOW-6.1 (S1) | PROVED-VIA-CITE (FGMN Thm 2.8 + Cor 4.7(3) + Cor 4.4(4)) + corpus leg; GENTOW4-BOX-1 closed |
+| (2) block budgets | LEMMA GENTOW-6.2 + COR GENTOW-6.2C (S2) | PROVED (budget half; ledger half = GENTOW6-BOX-2) |
+| (3) attainment | THEOREM GENTOW-6.3 (S3) | PROVED at mu2 = 2 (CERT-TOP unconditional; regimes 3/4 displayed; mu2 >= 3 = GENTOW6-BOX-1) |
+| battery | gentow6_checks.py (S4) | GREEN 401/0, 4/4 teeth, PARI-adjudicated |
 
 ## S1. LEMMA GENTOW-6.1 (the mixed-side multiplicity tie) —
 ## PROVED-VIA-CITE + independent corpus derivation
@@ -475,6 +475,66 @@ fix = the same height-46 perturbation as the constructed rows).
   (valuation off-by-one), T-ODDP (p = 2-only mutant), T-SHEXACT
   (regime-4 ⟹ member-faithful over-claim).
 
-**RESULTS (commit 2): PENDING — full run after the seal.**
+**RESULTS (commit 2): GREEN — 401 checks, 0 violations, 4/4 teeth
+(T-TIE-CONST x22, T-CERT-V x7, T-ODDP x2, T-SHEXACT x1), 36 PARI
+jobs, 0.4 s.** Artifact: `gentow6_checks_output.txt`. Highlights,
+each as predicted at seal: all four tie profiles realized with
+mu2*(r) = m_r class-by-class (incl. the first mu2* = 3 reads) and
+PARI nodev6 degree sums = D2·m_r; every exact block factor showed
+the single-side psi2^{mu2*} polygon, in-budget digits, sharp RAM
+node, and p_j − c_g = p_j^S on the >T2 hull; the seven certificate
+digits landed at 16/64/4/64/64/324/81 — each v = 2a_{t*}, height =
+THETA = the pin (GEN-P3's unit 4 ≡ 1 mod 3: odd-p attainment);
+FAM-E/FAM-D self-shadows identically zero; E-ENTRY honest
+tRAM(31) = PARI [(12,1)], shadow DRAIN, divergence displayed at
+31 ≥ THETA_0 = 29.
 
-## S5. HONEST RESIDUE + GRADE BOX — TBD
+## S5. HONEST RESIDUE + GRADE BOX
+
+**Consumption summary.** GENTOW4-BOX-1 CLOSED (LEMMA GENTOW-6.1,
+proved-via-cite + independent corpus leg, S1). GENTOW4-BOX-2's
+BUDGET half CLOSED (LEMMA GENTOW-6.2 + COR 6.2C, S2).
+GENTOW3-BOX-1 CLOSED AT mu2 = 2 as THEOREM GENTOW-6.3(b)(c) (the
+regime-2 certificate now unconditional; the four battery families
+proved to sit in regime 2, explaining the machine's 4/4).
+
+**Residue boxes (named, honest).**
+* **GENTOW6-BOX-1 (mu2 >= 3 attainment).** THEOREM 6.3 is scoped
+  to mu2 = 2. At mu2 >= 3 the source layer has k-fold products
+  (multinomial coefficients != 1 off the diagonal appear at the
+  top pair only through (t*,...,t*), coefficient 1 again — the
+  diagonal argument LOOKS uniform) but the Y-bookkeeping of (a)
+  needs the k-extraction ledger re-derived; not claimed.
+* **GENTOW6-BOX-2 (the count LEDGER at partial sides).** From S2:
+  the product-measure count of the f-locus per window (pricing
+  (f_S, g) ↦ f_S·g) — open already at FULL sides (GENTOW-1's
+  count-law remark), not a partial-side novelty.
+* **GENTOW6-BOX-3 (regime-3 classification).** Which non-x-free,
+  no-top-overflow members diverge, and exact THETA-attainment via
+  entry drivers: displayed only (E-ENTRY witness; the pair-sum
+  digit display of the quadrichotomy clause (3)); no theorem.
+* **Cite conditionality (S1).** Step II rests on the FGMN local
+  print at verified layout lines through GENTOW2's dictionary +
+  shear (its faithfulness map, incl. the psi2 = R_2(phi_3) row);
+  the repo-side (MULT) leg is displayed as corroboration but the
+  cite carries the load. GENTOW2's own arc grade applies upstream.
+* **Machine scope.** All tie/block rows live on the FAM-P5
+  geography (f1 = 1, e1 = 2, l = 2, deg r = 1 classes; f2 = 2
+  pure-power ties only via B2's P2). A mixed side with a deg-2
+  irreducible factor (l·deg r = 4) was NOT machine-exercised —
+  S1's proof does not distinguish, but the record says so.
+
+**Record sentences (no universal quantifiers).** The battery's
+401 checks passed with 0 violations on the constructed rows named
+in S4; the tie held on each measured class row including the
+mu2* = 3 and transposed-profile rows; the seven certificate rows
+attained THETA exactly at the predicted slot and valuation; the
+two regime-4 self-shadows vanished identically; the E-ENTRY row's
+shadow read flipped while PARI confirmed the honest sigma.
+
+**GRADE: 0/2 (attempt).** Hostile arc owed (PE1+). The S1 cite leg
+wants a PDF-provenance re-verification in its own pass (GENTOW2's
+pattern); S3's proof of (a)/(b) is new combinatorial prose —
+the natural PE1 targets are the Y-monotonicity step ("every
+division/recarry step lowers Y-exponent by >= e2") and the
+secondary-extraction clause of (a).

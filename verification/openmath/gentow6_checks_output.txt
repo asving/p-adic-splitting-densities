@@ -1,0 +1,20 @@
+=== GENTOW-6 battery (tie / block / attainment) seal 2026-08-09 ===
+== LEG-1/LEG-2: the tie + the block layer (FAM-P5 geo) ==
+== LEG-3: CERT-TOP self-shadow rows ==
+  FAM-A5: cert slot (0, 1) digit 16 (v=4) at height 21 = THETA_0; pins (21, None)
+  FAM-A7: cert slot (0, 1) digit 64 (v=6) at height 31 = THETA_0; pins (31, None)
+  FAM-B: cert slot (0, 1) digit 4 (v=2) at height 7 = THETA_1; pins (13, 7)
+  FAM-C: cert slot (0, 1) digit 64 (v=6) at height 43 = THETA_0; pins (43, None)
+  GEN-R2X: cert slot (1, 1) digit 64 (v=6) at height 49 = THETA_0; pins (49, None)
+  GEN-P3: cert slot (0, 1) digit 324 (v=4) at height 21 = THETA_0; pins (21, None)
+  GEN-P3b: cert slot (0, 1) digit 81 (v=4) at height 21 = THETA_0; pins (21, None)
+== LEG-3: regime-4 exactness + E-ENTRY ==
+  FAM-E: self-shadow identically zero
+  FAM-D: self-shadow identically zero
+  E-ENTRY: honest (31, 16, 'tRAM') / shadow (None, 16, 'DRAIN') / first divergence 31 (THETA_0 = 29)
+== PARI leg: 36 jobs ==
+tooth T-TIE-CONST fired x22
+tooth T-CERT-V fired x7
+tooth T-ODDP fired x2
+tooth T-SHEXACT fired x1
+=== VERDICT: GREEN -- 401 checks, 0 violations (0.4s) ===
