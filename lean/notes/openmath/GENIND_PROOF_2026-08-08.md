@@ -2986,3 +2986,69 @@ itself been through a hostile pass. The 2/2 acceptance attaches to
 the frozen body; the annex carries the ratification fold's
 CHALLENGE disposition (CODEX_GENINDRAT_2026-08-09.md S4) with the
 queue now landed.
+
+---
+
+### Dated supplier-movement record (2026-08-09): GENHN errata E1–E3 EXECUTED + GENHN r2 — the n ≥ 8 leg gains [GENHN-TOW-1]
+
+**Owed disclosure discharged (S16 row 6: "execution disclosure owed
+at the next dated append").** GENHN's three queued errata are
+EXECUTED: E1 @ bc1b996 (LEMMA GENHN-3(a)'s f₁ ≥ 2 band-exit clause
+conditionalized to the GENH4-r3 trichotomy), E2 @ 961d0ff
+(GENHN.A(v)'s census clause gains the comp-weighted band clause,
+Q^{comp}−1 per band pin), E3 @ 46bf675 (the stage-ring carrier at
+GENHN.A(i)/S3.1 restated in L/O_L), plus the S10 box refresh
+@ 58b1080 — all 2026-08-09, before GENHN's PE1.
+
+**New movement: GENHN r2 (its PE1 repair round).** GENHN's PE1
+hostile pass REFUTED LEMMA GENHN-T(b); r2 landed the repair —
+@ d16869c (T(b) WITHDRAWN; **LEMMA GENHN-T(b)′ stated AND PROVED**;
+the **new box [GENHN-TOW-1]** (entry budgets, inner refine,
+faithfulness geography, partial sides, composed window); GENHN.B's
+tower clause + EXACTLY display restated honestly — **n ≤ 7 as
+sealed; n ≥ 8 adds TOW-1**), @ 7650b20 (LEMMA GENHN-1's budget
+display corrected; the node floor (μ−j)S+1 RE-DERIVED from the true
+floors, standing), @ 438608a (band transport derived at the E1
+annex; S7 stage-RAM rider; run reconciliation; arc line: 0/2 stays,
+PE2 next), @ 9636b7e (T(b)′ statement rigor parenthetical).
+
+**Consumption verdicts at ledger granularity (the seven PE7-m2
+sites, screened against the 850e77e → HEAD diff this round):**
+* GENHN.A(iv), consumed at GENIND-6(b) (the stage node floor
+  S_b + 1): clause text not in the diff; its node-floor arithmetic
+  was re-derived and STANDS at 7650b20 — SURVIVES.
+* GENHN.A(v), consumed at (CS-1)/S7.1: E2 ADDS the comp-weighted
+  band census — the exact form this note's Step 4 already consumes
+  in its r2-corrected sentence ("q^{comp}−1 per RAM/2SIDED pin") —
+  alignment, SURVIVES.
+* LEMMA GENHN-3, consumed at (CS-1) + S6 Step 4 (ragged-band
+  CONFINEMENT at the discharged genres): E1 conditionalizes the
+  f₁ ≥ 2 band-EXIT phrasing; the discharged genres consumed here
+  are f₁ = 1 — SURVIVES.
+* S6.2, consumed at (CS-2): E2's tag reaches its assembly
+  sentence's census factor, the same alignment as A(v) — SURVIVES.
+* The three PE7-m2 cites (S11.F @ this note's L684; S6.3 @ L1094;
+  the GENIND-6(a) statement echo @ L623): none named by the
+  E1–E3/r2 commit set (diff-grep, this round); S6.3's display is
+  consumed here WITH the genre-F granularity caveat Step 4 already
+  carries — SURVIVE.
+
+**THE CONDITIONALITY MOVEMENT (this record's point).** S16 row 1's
+firing geography names GENHN.C at μ = 2 stages with n ≥ 6 =
+[GENHN-HE(μ ≥ 3)] (read per PE7-m3: the content rides inside
+[GENIND-H]'s display). After T(b)'s refutation and T(b)′'s proof,
+GENHN.B carries its tower clause at n ≥ 8 through the boxed
+[GENHN-TOW-1]. Accordingly, read THIS note's conditionality at
+n ≥ 8 as: **[GENIND-H(n)] + [GENHN-HE(μ ≥ 3)] + [GENHN-TOW-1]** —
+the n ≥ 8 leg rests on [GENHN-TOW-1] IN ADDITION TO
+[GENHN-HE(μ ≥ 3)], per GENHN.B's restated clause; at n ≤ 7 nothing
+moves (sealed grade, the same clause). No count law, theorem
+clause, consumption verdict at n ≤ 7, or frozen number of this note
+moves — the movement is conditionality bookkeeping at the open
+frontier.
+
+**Pins (git log at THIS commit).** GENHN note HEAD = 9636b7e (arc
+0/2, its PE2 next — a consumer flag GENHN's own S10 carries);
+supplier movement since this note's last pin 850e77e = exactly the
+eight commits enumerated above (E1–E3, 58b1080, r2 ×4). Byte-freeze
+re-verified at this commit: lines 1–2548 md5 eefcf658.
