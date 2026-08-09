@@ -1,9 +1,9 @@
 # GENTOW-3: THE FAITHFULNESS GEOGRAPHY ([GENHN-TOW-1] item (3))
 ## When the stage-shadow read agrees with the composed read
 
-**2026-08-09 — SKELETON (sections filled per-commit; machine leg
-sealed-then-verdict). Unit: GENTOW-3, BOX-CLOSURE campaign wave B1.
-Grade target: 0/2 (attempt; hostile arc owed).**
+**2026-08-09 — COMPLETE at attempt grade 0/2 (hostile arc owed).
+Unit: GENTOW-3, BOX-CLOSURE campaign wave B1. Machine leg
+sealed-then-verdict (S5): GREEN 582/0, 3/3 teeth.**
 
 CHARGE: characterize EXACTLY when the stage-shadow read (T(b)'(iv):
 the coefficientwise mod-Phi' projection G-hat_j(theta, Y)) agrees
@@ -28,7 +28,7 @@ ledger, the constant E2 = e2f2u2); machine: gentow1_checks.py
 | (a) per-height criterion | THEOREM GENTOW-3 (S2) | PROVED |
 | (b) T(a) event-band survival | COR GENTOW-3.C (S3) | PROVED |
 | (c) leaf failure quantified | S4 (PE1 anchors = first violation) | DONE |
-| battery | gentow3_checks.py (S5) | GREEN 1,032/0, 3/3 teeth |
+| battery | gentow3_checks.py (S5) | GREEN 582/0, 3/3 teeth |
 
 ## S0. THE ONE CONSTANT AND THE THRESHOLD (announced up front)
 
@@ -46,7 +46,46 @@ first leaf height IS the threshold (the PE1 geography, 21 = 20+1);
 at delta >= 2 a faithful leaf band of width delta − 1 exists
 (FAM-A7: pins 29, 30 faithful; first violation 31).
 
-## S1. THE EXAMPLE TABLES (examples-first) — filled at verdict
+## S1. THE EXAMPLE TABLES (examples-first; the law read off, then
+## proved in S2)
+
+The five GENTOW-1 families (imported additively from
+gentow1_checks.py; genre data there), with the new constants and
+the measured self-shadow pins (machine output of 2026-08-09):
+
+| family | genre | E2 | δ | Θ_0 | Θ_1 | entry top | Φ2² self-shadow pins |
+|---|---|---|---|---|---|---|---|
+| FAM-A5 | (2,1,4)→(2,1,2)/Q2 | 10 | 1 | 21 | 11 | 20 | (21, —) |
+| FAM-A7 | (2,1,4)→(2,1,2)/Q2 | 14 | 3 | 31 | 17 | 28 | (31, —) |
+| FAM-B | (2,1,4)→(1,2,2)/Q2 | 6 | 1 | 13 | 7 | 12 | (13, 7) |
+| FAM-C | (2,1,6)→(3,1,2)/Q2 | 21 | 1 | 43 | 22 | 42 | (43, —) |
+| FAM-D | (2,1,4)→(1,2,2)/Q3 | 6 | 1 | 13 | 7 | 12 | x-free: (—, —) |
+
+READ OFF (then proved): (i) the key power Phi2^{mu2} — honest read
+DRAIN — casts a nonzero shadow whose pin lands at Θ_j EXACTLY at
+every non-x-free family (the shadow's fake content = the key's own
+Phi'-branch, invisible to the quotient); (ii) FAM-B touches BOTH
+coordinates (its lift −2x·Phi' is x-ful at the Y^{e2t}-step);
+(iii) FAM-D's lift −27 is x-free and its shadow is EXACT on a
+12-member sweep — the geography has identically-faithful genres;
+(iv) the entry band top mu2·E2 sits δ below Θ_0 at every family.
+
+**THE DIVERGENCE TABLE (PE1 anchors + the new band rows; honest =
+composed read, shadow = stage read; PARI = both-route σ truth):**
+
+    PE1-0 G=Y⁴+16Y+96      honest tRAM(25,14) shadow tRAM(21,14)
+          first divergence 21 = Θ_0; σ both {(8,1)} = parity luck
+    PE1-1 G=Y⁴+16Y³+32Y²+96 honest tRAM(21,14) shadow tINERT(28,14)
+          first divergence 21; shadow prices {(4,2)}, PARI {(8,1)}
+    PE1-2 G=..+224          honest tRAM(21,14) shadow t2SIDED(30,14)
+          first divergence 21; shadow prices {(4,1)²}, PARI {(8,1)}
+    A5-DEEP Phi2²+2⁵⁰xPhi'  honest tRAM(207) shadow tRAM(21)
+          divergence 21; σ both {(8,1)} — the parity-luck genre
+    A7-BAND29 Phi2²+32xPhi' p_0 = 29 < Θ_0 = 31: shadow = honest
+          tRAM(29), PARI {(8,1)} — a FAITHFUL LEAF (leaf depth is
+          not automatically unfaithful; the criterion is the height)
+    A7-BAND30 Phi2²+128x+4Phi'Phi2  pins (30,15), both < Θ: shadow
+          = honest tINERT, PARI {(4,2)} — faithful at Θ_0 − 1
 
 ## S2. THEOREM GENTOW-3 (the per-height criterion)
 
