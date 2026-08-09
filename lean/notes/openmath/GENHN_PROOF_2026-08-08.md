@@ -490,7 +490,11 @@ e₁ ≥ 2 — proved directly here, not consumed.
 >
 >     v(a_{j,i}) ≥ ⌈(μ−j)h + (e₁ − i)h/e₁⌉⁺   (A_j = Σ_i a_{j,i}x^i,
 >     0 ≤ i < D′, with ⁺ = +1 at the entry-pinned lattice slots,
->     i.e. the floor is the entry height with pins consumed),
+>     i.e. the floor is the entry height with pins consumed)
+>     **[r2 2026-08-09: THIS DISPLAY IS FALSE at every checked genre
+>     including f₁ = 1 (passPE1 F2) — the correct base is the SIDE
+>     HEIGHT at the slot's abscissa; see the [r2] ERRATUM annex
+>     below the [r1] annex]**,
 >
 > total = the entry exponent of W-12.A's law for the genre (no
 > over/undercount), and the stage-initial node is
@@ -559,6 +563,69 @@ ERRATUM annex immediately below]**.
 > here. The law's FORM is unaffected (it is stated as the cluster read AT THE
 > NODE, whatever the node height is), no f₁ ≥ 2 stage genre is machine-
 > exercised, and none is live below n = 8.
+
+> **[r2] ERRATUM 2026-08-09 (LEMMA GENHN-1's per-coordinate budget
+> display — the floor base is the SIDE HEIGHT at the slot's
+> abscissa). Source: passPE1 F2 (CRITICAL, display-scope; count
+> content intact elsewhere — S2's lists, the laws, and the sealed
+> runner's gen_* constructions all use the truth). Tagged repair
+> per the [r1] mechanism; sealed battery untouched.**
+>
+> **ORIGINAL (the boxed display, tagged above):**
+> v(a_{j,i}) ≥ ⌈(μ−j)h + (e₁ − i)h/e₁⌉⁺.
+>
+> **CORRECTED DISPLAY.** The opening-locus floor of the digit
+> coordinate a_{j,i} (abscissa jD′ + i of the entry polygon) is the
+> entry side's height there, ceiled to the digit grid, plus one
+> consumed digit at each entry pin:
+>
+>     v(a_{j,i}) ≥ ⌈((μ−j)D′ − i)·h / e₁⌉ + [pin],
+>     [pin] = 1 iff jD′ + i is an e₁-lattice point whose entry
+>     (residual) digit is consumed — NOT +h,
+>
+> the side of slope h/e₁ through (μD′, 0) evaluated at jD′ + i.
+> The old base (μ−j)h + (e₁−i)h/e₁ = ((μ−j+1)e₁ − i)h/e₁ is the
+> side height ONE KEY-DEGREE too high: at f₁ = 1 (D′ = e₁) it
+> exceeds the truth by exactly h at every slot; at f₁ ≥ 2 by more
+> ((μ−j)e₁(f₁−1)h/e₁ + h). With the old floors the lemma's own
+> clause "total = the entry exponent (no over/undercount)" fails
+> at every checked genre — the display contradicted the statement
+> it sits in.
+>
+> **INSTANCE CHECKS (all data internal to this note + its sealed
+> artifacts):**
+> * E3 = (2,1,3), h = 1: corrected floors (4,3,3,2,2,1), total 15
+>   = S2's entry heights (3h,(5h+1)/2,2h,(3h+1)/2,h,(h+1)/2) + 3
+>   pins = the battery exponent (P6: E3(1) = 512 = 2^{6·4−15}).
+>   Old display: (4,4,3,3,2,2), total 18 ✗.
+> * E31 = (3,1,2), h = 1: corrected (3,2,2,2,1,1), total 11 (P5:
+>   8,192 = 2^{6·4−11}). Old: total 15 ✗.
+> * GENH4 genre E = (2,1,2): corrected (2h+1, ⌈3h/2⌉, h+1, ⌈h/2⌉),
+>   h = 1: (3,2,2,1), total 8 = law_E's exponent
+>   (law_E(2,5,1) = 4,096 = 2^{4·5−8}). Old: total 10 ✗.
+> * NODE RE-DERIVATION (the [r1]/GENHN-ERR-1 seam, arithmetic side
+>   settled at f₁ = 1): from the TRUE floors, dv(A_j) =
+>   min_i(e₁·v(a_{j,i}) + ih) computes to (μ−j)e₁h + 1 = (μ−j)S+1
+>   at f₁ = 1 (min at i = 1: e₁⌈((μ−j)e₁−1)h/e₁⌉ + h) — the
+>   battery-verified node; from the OLD floors it would compute
+>   (μ−j)S + h + 1-ish, contradicting every battery row. At f₁ ≥ 2
+>   the [r1] D′h node stands; GENHN-ERR-1's S-vs-D′h display
+>   residue is otherwise unchanged.
+>
+> **CONSUMPTION AUDIT (every site of the old formula).** (1) The
+> boxed display itself — corrected here, tagged inline. (2) The
+> proof's node parenthetical "e₁⌈(μ−j)h + (e₁−i)h/e₁⌉ + ih ≥
+> e₁(μ−j)h + 1" — already flagged by [r1] at f₁ ≥ 2; now read with
+> the corrected base: e₁⌈((μ−j)D′−i)h/e₁⌉ + ih ≥ (μ−j)D′h + 1 at
+> the unpinned slots, equality realized (the f₁ = 1 case displayed
+> above). (3) No other site: the proof's budget/cancellation text
+> and S2's realizability lists are keyed to the entry heights (the
+> TRUE floors); the sealed runner's gen_E3/gen_E31 use
+> ceil-div TRUE floors (passPE1's tautology audit — battery
+> decorrelated from the false display); GENHN.A(i)'s "explicit
+> budget floors" phrase carries no formula. Downstream consumers
+> (future f-first count units, GENH5-DENS mechanics, Lean
+> fan-outs) must transcribe THIS display, not the sealed one.
 
 **Prehistory/embedding composition (consumed).** Prehistory chains
 compose by GENIND-1(ii) at general m (@ pin); embedded genres (the
