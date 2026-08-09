@@ -1,0 +1,27 @@
+== GENTOW2 r2 LETTER-LIVE PROBE (frame LP1: f1 = 2, z1 in F4\F2) ==
+-- A-route (exact integer arithmetic) --
+  v2 Res(PHI2, x) = 4
+  v2 Res(PHI2, PH) = 18
+  v2 Res(PHI2, x^2-2) = 8
+  v2 Res(PHI2, x^6-8) = 26
+  v2 Res(PHI2, x^8-16) = 32
+-- B-route (PARI/gp: nfmodpr residues in F4) --
+  gp stderr tail:   ***   Warning: new stack size = 64000000 (61.035 Mbytes).
+
+  NFAC: got 1 (pred 1)
+  NPR: got 1 (pred 1)
+  EF: got 4 2 (pred 4 2)
+  VX: got 2 (pred 2)
+  VPH: got 9 (pred 9)
+  V22: got 4 (pred 4)
+  V68: got 13 (pred 13)
+  V816: got 16 (pred 16)
+  Z1NE1: got 1 (pred 1)
+  Z1REL: got 1 (pred 1)
+  ETA_IS_Z1: got 1 (pred 1)
+  Z2_IS_1: got 1 (pred 1)
+  FORMULA: got 1 (pred 1)
+  TOOTH_ETA_NE_Z2: got 1 (pred 1)
+== r2 LETTER-PROBE VERDICT ==
+checks: 21, violations: 0
+GENTOW2 r2 letter probe: GREEN

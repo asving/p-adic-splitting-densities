@@ -819,5 +819,80 @@ output — zero diffs under verification/openmath/ in the r1 commits).
   "e₄-level data" label retired; witness denominator recomputed
   (ν(Φ₂) = 21/8 → e₃ = 2). This commit.
 
-Grade: attempt 0/2 unchanged. Next: PE2 (second hostile pass) on
-the repaired note.
+Grade: attempt 0/2 unchanged after r1. Next: PE2 (second hostile
+pass) on the repaired note.
+
+## S10. [r2] PE2 REPAIR RECORD (2026-08-09)
+
+Verifier: GENTOW2_passPE2_report.md (commit aff457c). Verdict
+there: NOT CLEAN — 0 CRITICAL, 2 GAP (both inside the [r1]-new
+LEMMA GENTOW2-B′), 2 MINOR; 16/16 provenance rows, the theorem
+chain, the machine legs, and the f₃ = 3 fresh route HELD. Charge
+honored this round: the canonical formula was RE-DERIVED from the
+PDF (not copied from the report), the three F1 sources were
+PDF-verified by the two-leg method and added as S6.1 rows 17–19,
+and the F2 repair was re-derived at the record's own N1 grade-7
+frame. Sealed machine artifacts byte-untouched (zero diffs under
+verification/openmath/ for the sealed files in the r2 commits);
+machine support this round is ADDITIVE only.
+
+* **F1 (GAP, the "(η₂ ↔ z₂)" identification parenthetical) →
+  CURED.** The identification B′ consumes is restated as the
+  canonical evaluation isomorphism (Prop 1.15(1)/(2), PDF p.7 —
+  FGMN's own §3.2 identification sentence, p.15), at both of its
+  use sites ((R-repo); the R_{3,0}(ẑ_d) = d step). The
+  mis-attribution to T(b)′(iii) is corrected (T(b)′(iii) supplies
+  only the repo-side lift existence + read — no FGMN contact).
+  The LETTER FORMULA z₂ = η₂·z₁^{−⌊ℓ₁u₂/e₁⌋} is derived in S5.1
+  from Def 3.12 + eq (9)/§3.2 data + §3.3 + Prop 1.15 (S6.1 rows
+  17–19, PDF-verified pp.7/15/16 + p.17 z_i pins); at the S2
+  witness z₂ = η₂·z₁^{−2}. Propagated: the S2 ψ₂-row and the S4
+  clause-(c) bullet now state "equal up to the z₁-twist, on the
+  nose when the twist fixes ψ₂"; the S4 consumption note carries
+  the single-embedding robustness of "η₂(ξ) is a repo-ψ₂-root".
+  Letter-blindness disclosed (honesty box + S5.1): the 13 standing
+  witnesses sit at f₁ = 1 over q = 2 (z₁ = 1). B′ SURVIVAL under
+  the canonical identification re-derived in S5.1 consequences
+  (iii). This commit.
+* **F2 (GAP, B-1 applied outside its deg < D₂ scope in B′'s
+  h-step) → CURED, corner CLOSED.** The h-step now divides the
+  lift product by Φ₂ (ẑ_d·n̂₂(β̂) = qΦ₂ + ρ, deg ρ < m₃): digit(ρ)
+  = d via the Φ₂-root evaluation, B-1 applies to g − ρ in scope,
+  and the qΦ₂ term dies by Lemma 3.17 after the strictness
+  ν(qΦ₂) > β — leg e₃ ≥ 2 by the value group (λ₃ ∉ Γ₂), leg
+  e₃ = 1 by a y-degree contradiction (Cor 4.7(2) + eq (14) put
+  R_{3,β}(qΦ₂) at y-degree 1 with nonzero coefficient inside a
+  y-degree-0 identity). The e₃ = 1 unit-q corner the report
+  flagged as unfenced is thereby CLOSED, not fenced. Worked trace
+  at the N1 grade-7 frame (q = 2, ρ = 4xΦ′ + 4Φ′ + 16) with the
+  report-sketch arithmetic slip corrected (dv₂(2Φ₂b) = 17/2, not
+  9; inequality unaffected). This commit.
+* **F3 (MINOR, u-direction slip) → CURED**: the fallback clause's
+  hypothesis now reads in B′(3)'s direction (ε-normalized =
+  u·repo). This commit.
+* **F4 (MINOR, B′(4) scope conflation) → CURED**: B′(4) restated
+  per-grade with the consumed scope (u(β_t) = 1 at used grades)
+  separated from B-2's stated scope. This commit.
+* **[r2] MACHINE LEG (additive; the PE2 report's disclosed PE3
+  fresh-route need): LETTER-LIVE PROBE GREEN — 21 checks, 0
+  violations, first run under seal.** Runner
+  verification/openmath/gentow2_r2_letter_probe.py (sealed at
+  commit d56e439 with preregistered predictions; no smoke run),
+  output gentow2_r2_letter_probe_output.txt. Frame LP1 = the
+  record's first f₁ = 2 contact (base slope 1/2, ψ₁ = y² + y + 1,
+  Φ′_LP1 = x⁴ + 2x² + 4, Φ₂_LP1 = Φ′² − 8x³, (e, f) = (4, 2)
+  confirmed): the LETTER FORMULA fired LIVE — z₁ ∈ F₄∖F₂
+  (z₁² + z₁ + 1 = 0), η₂ = z₁, z₂ = 1 = η₂·z₁^{−4} at
+  ⌊ℓ₁u₂/e₁⌋ = ⌊9/2⌋ = 4 — and the TOOTH fired: η₂ ≠ z₂, i.e. the
+  pre-repair "η₂ ↔ z₂" parenthetical is machine-refuted at LP1
+  while the canonical formula holds exactly. Dual routes: exact
+  integer v₂-resultants (4, 18, 8, 26, 32) + the polynomial
+  identity x⁶ − 8 = (x² − 2)Φ′_LP1 (an exact-algebra proof of
+  z₂ = 1) on the A-side, PARI factorpadic/idealprimedec/nfeltval/
+  nfmodpr on the B-side.
+
+Grade: attempt 0/2 unchanged (the counter starts only on a CLEAN
+pass; PE2 was NOT CLEAN). Next: PE3 (hostile pass on the
+r2-repaired note; the letter-live geography now has a committed
+machine foothold at LP1, and HETOW's frame-Y/R family remains the
+candidate for a deeper letter-live route).
