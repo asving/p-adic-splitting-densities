@@ -1926,3 +1926,53 @@ item (6)'s unproved iteration, and "survives" (= not refuted)
 remains accurate. Per PE3, none of the three sites carries a
 quantifier and each is disambiguated within its own display; these
 riders align the wording with the r3 scope.
+
+---
+
+### Dated acceptance record + correction (2026-08-09, post-PE4)
+
+*Discipline (the HEX3 minors-only precedent; the CLEAN bar = nothing at
+GAP-or-worse): this is a dated append only. The body (lines 1–1857,
+prefix md5 c38f52834879f76d618b1709146a3991) and the post-PE3 dated
+corrections above are byte-untouched (pre-append file md5
+8c6d2291b9b9b8baa57f490a8f79fa09 is this append's prefix); the sealed
+runners and artifacts stay frozen at their pins.*
+
+**ACCEPTANCE (2/2).** passPE3 returned CLEAN — 0 CRITICAL + 0 GAP +
+2 MINOR (`GENHN_passPE3_report.md` @ 7a058c8, byte-frozen md5
+5ea120909ad8c007bbf57aee9c15c475; clean count 0/2 → 1/2). passPE4
+returned CLEAN — 0 CRITICAL + 0 GAP + 1 MINOR
+(`GENHN_passPE4_report.md` @ 6053c3d, byte-frozen at md5
+ec64f3616a04e96fa0e2381e1656ff3a; its fresh leg
+`verification/openmath/genhn_pe4_fresh.py` GREEN 145 checks / 0
+violations on its first full run, first f₁ = 4 / comp = 3 / F₁₆
+contact; the five prior instruments re-run isolated GREEN, the sealed
+battery at 2,223,050 checks / 0 violations). Clean count 1/2 → **2/2:
+GENHN is ACCEPTED — the text is FROZEN, dated appends only from
+here** (this line carries the counter past the title box's round-dated
+0/2 and the post-PE3 append's 1/2). The arc in one breath: LEMMA
+GENHN-T(b) REFUTED at PE1 → T(b)′ PROVED at r2 → T(b)′ HELD at fresh
+configs through PE2, PE3 and PE4.
+
+**Correction (PE4 F-1 — the [r1] GENHN-ERR-1 residue clause "none is
+live below n = 8", echoed at [e2]-E2).** The clause (RESIDUE
+paragraph, body L609–611: "no f₁ ≥ 2 stage genre is machine-exercised,
+and none is live below n = 8"; echo at [e2]-E2, L251–253) conflates
+"mixed" with "f₁ ≥ 2" and contradicts S2's own realizability list —
+re-verified against the body at this append: genre F = (1,2,2) is an
+f₁ = 2 stage genre live at n = 4 (e₁f₁μ = 4) with machine contact
+(GENH4's committed genre-F keys, consumed at pin by this note;
+[e2]-E2's own consistency instance IS that genre), and the f-first
+siblings F3 = (1,2,3) / E13 = (1,3,2) are first live at n = 6
+(e₁f₁μ = 6; S2's floors display, visibility-floored beyond the
+battery's sweep windows at N ≥ 7 — GENHN-BOX-3). Read the clause at
+both sites as: **"no row of THIS battery exercises an f₁ ≥ 2 stage
+genre (passPE4's design audit: the battery's rows are f₁ = 1 rows);
+MIXED e₁, f₁ ≥ 2 genres first live at n = 8 (first (2,2,2) — S2); the
+f-first genres (1,2,2)/(1,2,3)/(1,3,2) are live at n = 4/6/6, and
+their S-keyed display re-read remains OWED with the residue
+(GENHN-ERR-1 stays unsettled exactly as displayed)."** The correction
+is a scope re-reading only: the law's node form ("the cluster read AT
+THE NODE, whatever the node height is"), the [r1] corrected node
+D′h + 1 (machine-confirmed at (1,3,2) by PE1), and the σ dictionary
+are byte-untouched by it.
