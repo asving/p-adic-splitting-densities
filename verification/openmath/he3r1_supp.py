@@ -32,7 +32,16 @@ P4  LEMMA HE3-1L EXACT-SET CHECK at (1,2,1): for kappa in {0,1,2,3} the
     enumerated realized residues res(C(theta)/n(kappa)(theta)) equal the
     displayed span over T(kappa) (kappa = 0: F_3^x only; kappa >= 1 =
     (D'-1)h: all of F_9^x).
-HE3-1a is asserted at every test key used (sympy integer resultants).
+HE3-1a is asserted at every test key used (exact integer resultants via
+Sylvester + fraction-free Bareiss, the sealed battery's route; no sympy —
+[r2 2026-08-09, PE2 F-4: the earlier docstring line said "sympy", a slip;
+the code below never imported it]).
+CAVEAT [r2 2026-08-09, PE2 F-4]: P4 computes the "realized residues" BY the
+slot-digit extraction the lemma itself derives (c0/c1 read off C's slots),
+so P4 verifies the T(kappa) bookkeeping of LEMMA HE3-1L, NOT the residue
+arithmetic — it is quasi-tautological as a residue check. The decorrelated
+residue leg is he3_pe2fresh.py FR-C (PARI nfeltval heights + nfmodpr
+residues at (2,2,1), kappa = 0..5, no slot formula), committed at PE2.
 """
 import json, subprocess, sys
 from fractions import Fraction
