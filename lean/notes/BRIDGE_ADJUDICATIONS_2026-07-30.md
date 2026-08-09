@@ -13955,3 +13955,27 @@ with verbatim clause quotes (W-12.D @ ee17210 clause-for-clause;
 GENH4.B @ 4b0d946 byte-identical incl. the two-term genre-F form).
 3/3 dated appends; C14 corrected in place. NO MATHEMATICAL EVENT.
 0/2; PE7 attempts the first clean on a fresh pin set.
+
+---
+
+## SITE REFRESH PUSHED (asving.github.io @ 59e7fc0; a26867f applier + 59e7fc0 orchestrator amendment) — the standing public-exposition policy executed at the composed-complete + first-acceptances milestone — 2026-08-09
+
+Applied per the reviewed draft (ec5f0b2): dateline + one headline
+sentence (composition grade explicitly "strictly below accepted");
+four dated story paragraphs (the chain; the acceptances incl. the
+HE7 challenge-cycle told as "annotated, not revoked"; the
+distribution suite with the double honesty flag — attempt grade,
+NO novelty claimed, faithful-cite owed; TAMEK with the TAMEK-QX
+upgrade: 32/32 exact ℚ(q) identities, the Kac–Rice third route,
+the 17 MC ties retired under the evidence hierarchy); new stage-5
+panel with the grade vocabulary defined once and "proved (note)"
+reserved for accepted texts; paper.html milestone section +
+caveated Bhargava–Cremona–Fisher–Gajović source entry (transcription
+caveat, no title asserted); story.json synced. Applier ran the
+grep audits (zero novelty claims, zero bare acronym cites) + a
+Codex fresh-reader pass (129 findings, ~13 genuine confusables
+fixed, caveats intact). ORCHESTRATOR REVIEW caught one staleness
+pre-push: the GENH4 annex-stack sentences (drafted pre-R2) said
+"repair still owed" — amended to the as-of-push truth (repair
+landed, one clean pass, mid-arc) in all three files (59e7fc0).
+Website repo: 6e21f5d → 59e7fc0, pushed.
