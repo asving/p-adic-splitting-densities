@@ -1,0 +1,32 @@
+== FR-1: gauge-seam probe at DEF GENTOW5-1's recipe (p=3, eta=2) ==
+NF=1 DEGS=[4]
+SIG=[[2, 2]]
+LADP1=3
+ok  - FR1: corrected key single deg-4 factor
+ok  - FR1: corrected key sigma = (2,2) -- the carrier
+ok  - FR1: corrected key nfeltval(Phi1) = 3 (= 2*u2/2)
+NF=1 DEGS=[4]
+SIG=[[4, 1]]
+ok  - FR1-TOOTH: naive (note-displayed) key is NOT the (2,2) carrier -- GENTOW5-B(a)/(b) fail at the displayed recipe
+== FR-2: slack-floor depth-3 chain q=2 (u=7,31, top 125) ==
+ok  - FR2: resultant ladder [8, 28, 62, 125] == [8,28,62,125]
+ok  - FR2: Phi3 ladder [4, 14, 31] == [4,14,31]
+NF=1 DEGS=[16]
+SIG=[[16, 1]]
+LAD=[8, 28, 62, 125]
+ok  - FR2: f16 irreducible over Q_2
+ok  - FR2: sigma = (16,1)
+ok  - FR2: PARI nfeltval ladder exact (dual route)
+NF=2 DEGS=[2, 6]
+SIG=[[2, 1], [6, 1]]
+ok  - FR2-TOOTH: floor-breach u3'=27<28 caught (res v2=27, sig line above)
+== FR-3: p=3 tight depth-3 chain (u=5,21, top 85) ==
+ok  - FR3: resultant ladder [8, 20, 42, 85] == [8,20,42,85]
+ok  - FR3: Phi3 ladder [4, 10, 21] == [4,10,21]
+NF=1 DEGS=[16]
+SIG=[[16, 1]]
+LAD=[8, 20, 42, 85]
+ok  - FR3: f16 irreducible over Q_3
+ok  - FR3: sigma = (16,1)
+ok  - FR3: PARI nfeltval ladder exact (dual route)
+== FRESH VERDICT: 15 checks, 0 violations ==
