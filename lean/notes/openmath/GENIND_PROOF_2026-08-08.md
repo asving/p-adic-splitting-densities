@@ -154,8 +154,14 @@ product (W12-S2.1). Write c(m) := m(m−1)/2.
 >   stage bracket (the stage's own refine aggregation), (CS-3) the
 >   order-≥2 σ-decision theorem ((H-e), = (A0) at the stage's leaves),
 >   **[r1, PE1-G1: and (CS-EXACT) the EXACTNESS clause — the stage
->   menu and stage drain that (CS-1)+(CS-2) deliver are EXACT, one
->   closed-form q-power family per stratum, not asymptotic bounds.
+>   menu and stage drain that (CS-1)+(CS-2) deliver are EXACT: one
+>   exact closed form per stratum, a FINITE SUM of q-powers [r2,
+>   PE2-m1: not always a single q-power — GENH4.B's genre-F law at
+>   even N is a TWO-term sum (the CAP(F) boundary band), so the r1
+>   gloss "one closed-form q-power family per stratum" was satisfiable
+>   only at a finer granularity than the stratum it names; Step 4's
+>   inclusion–exclusion consumes exact finite closed forms, which
+>   finite q-power sums are], not asymptotic bounds.
 >   This clause is load-bearing, not decorative: P(n)'s fourth member
 >   is the exact-COMPLEMENT (A2), and the induction CONSUMES it at
 >   higher degrees — S5.2's drainage bullet runs inclusion–exclusion
@@ -587,13 +593,33 @@ bound-only stage laws the first-step recursion at n′ degrades to an
 inequality and P(n′)'s fourth member fails (the verifier's
 n = 8-through-a-degree-4-child scenario), i.e. the induction would
 not propagate the very member it assumed. Discharge geography,
-honestly: at n = 4 the clause is supplied DE FACTO by GENH4
-(@ dff23f8) — THEOREM GENH4.B (= Q22-L3) delivers the stage drain as
-ONE exact q-power per (center, entry, history) stratum — and GENHN
-S6.3 (@ 850e77e) displays the same "one exact q-power per stratum"
-shape at general genres; at general n, (CS-EXACT) remains a
-HYPOTHESIS on the box, which is exactly what [GENIND-H] is for — no
-claim of general discharge is made.]**
+honestly [r2, PE2-G2 + PE2-m1: re-pinned, split into its two halves,
+and the timing race disclosed]: at n = 4 the clause is supplied DE
+FACTO by GENH4 @ r2 (fd35416 note + 5279a11 supp leg) — the DRAIN
+half by THEOREM GENH4.B (= Q22-L3), one exact closed form per
+(center, entry, history) stratum (a single q-power off the boundary
+band; a TWO-term q-power sum at genre-F even N, GENH4-CAP(F)'s own
+display — the r1 gloss "ONE exact q-power" overstated the
+granularity), and the MENU half by THEOREM GENH4.A (= Q22-L1) +
+GENH4-1F (per GENH4.D's own package: CS-1 = GENIND-4 + GENH4-1F +
+GENH4-2/-3/-4), with the census factor in its r2-corrected
+comp-weighted form (q^{comp}−1 per RAM/2SIDED pin, NOT Q−1 at
+genre-F boundary-band pins). TIMING DISCLOSURE: the r1 text cited
+GENH4 @ dff23f8 and named only GENH4.B — but the clause needs both
+halves, and at that pin GENH4.A's census display carried a
+ledger-adjudicated CRITICAL (GENH4 passPE2 2618e9b at 23:01:28,
+folded 0089f9b at 23:07:17, BEFORE GENIND r1 landed at 23:18:53 =
+66200f2; the cure fd35416 landed at 23:19:42, 49 seconds AFTER r1 —
+uncitable at r1, but the adjudicated defect was on the ledger and
+went undisclosed). Standing rule applied from this repair on: pin
+suppliers at their repair HEAD and disclose any adjudicated,
+not-yet-repaired findings at the pin. GENHN S6.3 (@ 850e77e)
+displays the same shape at general genres (its header phrase "one
+exact q-power per stratum" carries the same genre-F granularity
+caveat when consumed here: read it as one exact FINITE q-power SUM
+per stratum); at general n, (CS-EXACT) remains a HYPOTHESIS on the
+box, which is exactly what [GENIND-H] is for — no claim of general
+discharge is made.]**
 
 *Step 5 (fire W-12.D).* P(n)'s (A0)+(A1)+(A2) are W-12.D's
 hypotheses at degree n: THEOREM W-12.D (PROVED, @ pin) yields one
@@ -660,14 +686,21 @@ index E = e (the new denominator), stage residue field K
   ([W12-H](H-e)): separable stage residuals ⟹ σ-decided with (e·E,
   f·[K-ext]) read off, for ALL disc ≠ 0 lifts — (A0) at the stage.
 * **(CS-EXACT) the exactness clause [r1, PE1-G1]** — the stage menu
-  and stage drain delivered by (CS-1)+(CS-2) are EXACT: one
-  closed-form q-power family per stratum, not asymptotic bounds. A
-  genuine fourth member, consumed by GENIND.B Step 4 (see its [r1]
-  record: the induction propagates P(n)'s exact-complement (A2)
-  member only through exact stage laws). De facto discharge at
-  n = 4: THEOREM GENH4.B (= Q22-L3, GENH4 @ dff23f8), one exact
-  q-power per (center, entry, history) stratum; at general n this
-  clause is a hypothesis on the box — not claimed discharged.
+  and stage drain delivered by (CS-1)+(CS-2) are EXACT: one exact
+  closed form per stratum — a finite sum of q-powers [r2, PE2-m1:
+  two terms at GENH4's genre-F even-N CAP(F) band, one term
+  elsewhere; the r1 gloss "one closed-form q-power family" named too
+  coarse a stratum], not asymptotic bounds. A genuine fourth member,
+  consumed by GENIND.B Step 4 (see its [r1] record: the induction
+  propagates P(n)'s exact-complement (A2) member only through exact
+  stage laws). De facto discharge at n = 4 [r2, PE2-G2: re-pinned at
+  GENH4 r2 = fd35416 + 5279a11, BOTH halves named — drain = THEOREM
+  GENH4.B (= Q22-L3), menu = THEOREM GENH4.A (= Q22-L1) + GENH4-1F
+  with the r2-corrected comp-weighted census; the r1 cite @ dff23f8
+  named only the drain half and sat on a pin whose menu half carried
+  a then-adjudicated, undisclosed CRITICAL — full timing disclosure
+  at Step 4's [r2] record]; at general n this clause is a hypothesis
+  on the box — not claimed discharged.
 
 **Where the carry corpus delivers (the displayed mechanism).** The
 stage slot claim in (CS-1) — one K-digit per (abscissa, v′-height) —
