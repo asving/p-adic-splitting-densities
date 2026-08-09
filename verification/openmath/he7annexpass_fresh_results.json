@@ -1,0 +1,31 @@
+{
+ "rows": [],
+ "checks": {
+  "Q0-exact": 44328,
+  "Q1-ladder": 96,
+  "decided-lin": 127,
+  "Q2-sigma-agree": 96,
+  "decided-split": 62,
+  "decided-irr": 35,
+  "Q3-vartheta-flip": 48,
+  "Q5-lift3-contract": 34,
+  "refine3": 34,
+  "Q4-refine-fired": 32
+ },
+ "viol": [],
+ "secs": 3.6,
+ "summary": {
+  "members": 96,
+  "pari_agree": 96,
+  "vartheta_flips": 48,
+  "refines3": 34,
+  "sigmas": {
+   "((8, 2),)": 47,
+   "((4, 2), (4, 2))": 31,
+   "((4, 4),)": 18
+  },
+  "q0_exact": 44328,
+  "violations": 0
+ },
+ "verdict": "GREEN"
+}
