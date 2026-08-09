@@ -498,10 +498,10 @@ sides.
 ## S6-VERDICT (commit 2, from the committed artifacts): **GREEN — 1,740 checks, 0 violations, 6/6 teeth**
 
 **Artifacts.** `gentow4_checks_output.txt` (committed); sealed
-runner @ commit 1 = 2aa5b16, md5 98cdd4a4e5a47f1434bfd... (full
-md5 printed in the artifact: 98cdd4a4e5a47f1434bfd — see line 2 of
-the output; no post-seal edit — verdict-run md5 IDENTICAL to the
-sealed file). Runtime ~5 s + PARI (371 gp jobs).
+runner @ commit 1 = 2aa5b16, md5
+98cdd4a4e5a47f1434bdf8ca5a1c4b4c (printed at artifact line 2; no
+post-seal edit — the verdict-run md5 is IDENTICAL to the sealed
+file). Runtime ~5 s + PARI (371 gp jobs).
 
 **Totals.** 117 members (P1 25 incl. PE2P-0, P2 24, P3 22, P5 22,
 P6 24), 0 dropped, 117 reader-decided, 117 sigma comparisons on
