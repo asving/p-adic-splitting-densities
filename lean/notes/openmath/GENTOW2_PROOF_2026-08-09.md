@@ -60,7 +60,7 @@ FGMN chain for the depth-2 tower's terminal valuation ν:
 | level-1 key Φ′ | φ₂ | Φ′ = x² − 2 |
 | composed key Φ₂ | φ₃ | Φ₂ = Φ′² − 4x |
 | iterated key Φ₃ | the key φ ∈ KP(ν), φ ≁_ν φ₃ | Φ₃ = Φ₂² − 16Φ′ |
-| ψ₂ (residual of Φ₂'s Φ′-read) | ψ₂ = R₂(φ₃) (Cor 5.6(2)) | T + 1 |
+| ψ₂ (residual of Φ₂'s Φ′-read, = minpoly(η₂)) | FGMN ψ₂ = R₂(φ₃) = minpoly(z₂) (Cor 5.6(2)); canonically z₂ = η₂·z₁^{−⌊ℓ₁u₂/e₁⌋} (S5.1 LETTER FORMULA) [r2, PE2 F1: equal to the repo ψ₂ up to the z₁-twist; on the nose when z₁^{⌊ℓ₁u₂/e₁⌋} = 1, e.g. f₁ = 1 over q = 2] | T + 1 (f₁ = 1, q = 2 ⟹ z₁ = 1: twist trivial) |
 | ψ₃ (stage-3 residual) | the prescribed ψ, R₃(Φ₃) = ψ | T − 1 |
 | repo e₂, f₂ | FGMN e₂ = denom(e(µ₁)λ₂), f₂ = deg ψ₂ | 2, 1 |
 | repo e₃, f₃ | FGMN (e₃, f₃): e₃ = e(µ₃)/e(µ₂) = denom. data of the λ₃-augmentation, f₃ = deg ψ₃ = [F₄:F₃]; the pair with m₄ = e₃f₃m₃ per eq (9) (PDF pp.15–16) — deg Φ₃ = m₄. [r1, PE1 F6: the pre-repair label "e₄-level data" named the F₄ residue-field LEVEL and was undefined; witness re-derivation: ν(Φ₂) = 21/8, denom 8 = e(µ₃) over e(µ₂) = 4 gives e₃ = 2] | 2, 1 |
@@ -231,9 +231,16 @@ Its conclusions, instantiated:
     ℓ₂ = e₂f₂ℓ₃ (the "in particular" of [Q10]) and ℓ₃ = deg Φ₃/deg Φ₂
     = e₃f₃ (from (23) at i = 3), so ℓ₂ = e₂f₂e₃f₃.
   • (23) at i = 3, residual part: R₂(Φ₃) = ψ₂^{ℓ₃} = ψ₂^{e₃f₃},
-    where FGMN's ψ₂ = R₂(φ₃) is the repo ψ₂ by Cor 5.6(2) — clause
-    (c). (Consistency: FGMN Cor 4.4(4) gives deg R₂(Φ₃) =
-    (s′−s)/e₂ = ℓ₂/e₂ = f₂e₃f₃ = deg(ψ₂^{e₃f₃}). ✓)
+    where FGMN's ψ₂ = R₂(φ₃) = minpoly(z₂) (Cor 5.6(2)) is the
+    z₁^{⌊ℓ₁u₂/e₁⌋}-twist of the repo ψ₂ = minpoly(η₂) — S5.1's
+    LETTER FORMULA z₂ = η₂·z₁^{−⌊ℓ₁u₂/e₁⌋} [r2, PE2 F1: the
+    pre-repair "is the repo ψ₂" is on the nose exactly when the
+    twist fixes ψ₂, e.g. z₁ = 1 at f₁ = 1 over q = 2 — true at
+    the S2 witness and at the 13 standing machine witnesses] —
+    clause (c) in the twist-aware form; the consumption note
+    below carries it through T(b)′. (Consistency: FGMN Cor 4.4(4)
+    gives deg R₂(Φ₃) = (s′−s)/e₂ = ℓ₂/e₂ = f₂e₃f₃ =
+    deg(ψ₂^{e₃f₃}) — the twist preserves the degree f₂. ✓)
   • the middle clause "µ(φᵢ) = v(φᵢ(θ))" at i = 1, 2, 3: v(x(ξ)) =
     ν(x) = λ₁, v(Φ′(ξ)) = ν(Φ′) = w₂ + λ₂ = u₂/e(µ₂) = u₂/(e₁e₂),
     v(Φ₂(ξ)) = ν(Φ₂) = w₃ + λ₃ — clause (d). (These hold for each
@@ -248,7 +255,16 @@ r3 T(b)″ ascent needed at a Φ₃-root ξ ("v(Φ′(ξ)) = u₂/(e₁e₂) exa
 with η₂(ξ) a ψ₂-root, the input (ii)'s slot lemma needs at ξ" —
 GENHN_PROOF S9.1 item (6)(α), L1419–1423): the residual power
 ψ₂^{e₃f₃} has no root besides ψ₂'s, so the level-2 residual class
-η₂(ξ) read through T(b)′(ii)'s slot lemma is a ψ₂-root. The PE3-F1
+η₂(ξ) read through T(b)′(ii)'s slot lemma is a ψ₂-root. [r2, PE2
+F1 — letter-twist robustness of this consumption: FGMN's clause is
+in the z₂-letter, the repo consumption in the η₂-letter, and the
+two differ by S5.1's LETTER FORMULA (z₂ = η₂·z₁^{−⌊ℓ₁u₂/e₁⌋}).
+Both ride the ONE field embedding σ: F₃ → k(L₃) that the level-3
+leaf read fixes: η₂ = z₂·z₁^{⌊ℓ₁u₂/e₁⌋} in F₃ is by definition a
+root of the repo ψ₂ = minpoly(η₂), and η₂(ξ) = σ(η₂), so "η₂(ξ)
+is a repo-ψ₂-root" holds with ψ₂'s coefficients read through the
+same σ — no clause of GENTOW2-A consumes an equality of the two
+letters.] The PE3-F1
 correction's mechanism attribution ("the carry terms CLEAR the side")
 is now a THEOREM, not bookkeeping: Cor 6.4 forces every pin strictly
 above the side except the on-side residue pattern of ψ₂^{e₃f₃}.
@@ -323,6 +339,13 @@ B-route factorizations were predicted with u ≡ 1, including the
 F₄ × f₃ = 2 corner pair F2/F3 where flipping one digit flips
 irreducible ↔ split — twist families u that would alter those
 verdicts at the tested grades are excluded by that record.
+[r2] Scope disclosure (PE2 F1's letter-blindness point): the 13
+witnesses standing at PE2 (those 10 + the 3 PE2-fresh f₃ = 3 ones)
+each sit at f₁ = 1 over q = 2, where z₁ = 1 — the record supports
+u ≡ 1 on letter-dead geography only. The first letter-live machine
+contact is the r2 probe (gentow2_r2_letter_probe.py, S10), which
+tests S5.1's LETTER FORMULA itself at f₁ = 2 (z₁ ∈ F₄∖F₂), not
+B-2.
 
 (B-2-fallback, the TRUE transformation law) [r1: the pre-repair
 clause — a fixed-unit discrepancy acts by "ψ₃ ↦ y ↦ εy
@@ -334,7 +357,12 @@ grade-covariant pattern; the two agree only at f₃ ≤ 1), and
 irreducibility can die: over K₂ = F₄, ψ₃ = y² + ωy + 1 is
 irreducible while the δ = ω twist y² + ω²y + ω has the root y = 1
 (PE1 F3's counter-instance).] Corrected clause: if a future audit
-finds repo digit = u(β)·(ε-normalized digit) with u ≢ 1 — fixed OR
+finds ε-normalized digit = u(β)·(repo digit) — B′(3)'s own
+direction, R_{3,β}(g) = u(β)·digit(g) [r2, PE2 F3: the pre-repair
+hypothesis wrote the INVERSE convention (repo = u·ε-normalized);
+harmless in substance since u ranges over arbitrary unit families
+and c_t ↦ u^{−1}c_t absorbs either reading, but the box now
+matches the lemma it cites] — with u ≢ 1 — fixed OR
 grade-varying (the latter is the ϑ-cocycle mode of GENTOW5-A1's
 repo-internal dictionary, GENTOW-4's η₂-cocycle finding) — then by
 LEMMA GENTOW2-B′(5) the recipe at digit string (c_t) realizes
@@ -365,8 +393,20 @@ exact grade ν(g) = β:
   (R-repo)  digit(g) := res(g(x₀)/n̂₂(β̂)(x₀)) ∈ k(L2) ≅ K₂ — the
             GENHN-2′ coherent read against the ladder normalizer
             n̂₂(β̂) = π^a x^i Φ′^b at dv₂-height β̂ = e(µ₂)β,
-            through T(b)′(iii)'s residue-field identification
-            k(L2) ≅ F₃ (η₂ ↔ z₂).
+            through the CANONICAL EVALUATION identification
+            k(L2) ≅ F₃ [r2, PE2 F1]: Prop 1.15(1)/(2) (PDF p.7,
+            S6.1 row 17) — F₃ := Im(∆₂ → ∆₃) ≅ F_{φ₃} = k(L2) by
+            g + P₀⁺ ↦ res(g(x₀)), x₀ a Φ₂-root; FGMN make this
+            identification themselves at §3.2 (PDF p.15: "By
+            Proposition 1.15, Fᵢ is a field which may be
+            identified with the residue class field F_{φᵢ}"). The
+            pre-repair parenthetical here — "T(b)′(iii)'s
+            identification (η₂ ↔ z₂)" — was wrong on both legs:
+            T(b)′(iii) defines the repo leaf read and the repo
+            field K₂ = F_Q(η, η₂) with no FGMN contact, and under
+            the canonical identification the LETTERS do not
+            correspond in general — the letter formula below gives
+            z₂ = η₂·z₁^{−⌊ℓ₁u₂/e₁⌋}.
 
 **LEMMA GENTOW2-B′.** There is a unit u(β) ∈ K₂^× = F₃^*,
 depending only on the grade β (not on g, not on x₀), namely
@@ -375,7 +415,14 @@ grade β:
 
   (3)  R_{3,β}(g) = u(β) · digit(g).
 
-Consequently: (4) B-2 ⟺ u(β) = 1 at each grade the recipe uses;
+Consequently: (4) per grade β: (the repo read = the ε₂-normalized
+coordinate on the Φ₂-free elements of exact grade β) ⟺ u(β) = 1
+— B-2 as stated quantifies this over its per-grade families, and
+the recipe consumes it only at its used grades β_t, so the
+CONSUMED form of B-2 is u(β_t) = 1 there [r2, PE2 F4: the
+pre-repair "(4) B-2 ⟺ u(β) = 1 at each grade the recipe uses"
+conflated B-2's stated scope with the consumed scope; the
+honest-residue paragraph below already carried the consumed form];
 and (5) with arbitrary u, GENTOW2-B's sum gives R_{3,α}(Φ₃) =
 y^{f₃} − Σ_{t<f₃} u(β_t)·c_t y^t (the honesty box's transformation
 law).
@@ -384,18 +431,62 @@ law).
 (B-1) and single-pin N₃-polygon {(0, β̂/e(µ₂))}, so R_{3,β}(n̂₂) ≠ 0
 by Cor 4.4(1) [L1089 region, PDF p.21]. Now take g with digit d :=
 digit(g) ∈ K₂^× and let ẑ_d be a grade-0 ladder lift of d (grade-0
-lifts exist and read to d: T(b)′(iii), accepted). The element
-h := g − ẑ_d·n̂₂(β̂) has repo digit 0 at grade β, hence ν(h) > β by
-B-1's no-cancellation clause — h ∈ P_β^+(µ₃) — so R_{3,β}(h) = 0
-by Lemma 3.17 [L982, PDF p.19, [r1]-added cite]. Additivity (Cor
-4.7(1) [Q8]) then gives R_{3,β}(g) = R_{3,β}(ẑ_d·n̂₂(β̂)), and
-multiplicativity at a grade-0 factor (Cor 4.7(2) [Q8], β′ = 0 ∈ Γ₂)
-factors it as R_{3,0}(ẑ_d)·R_{3,β}(n̂₂(β̂)). Finally R_{3,0}(ẑ_d)
-= d: the grade-0 degree-0 read is the F₃-algebra residue (Thm 4.8
-[L1136, PDF p.22, [r1]-added cite]) and the repo-vs-FGMN match of
-grade-0 reads IS the accepted residue-field identification
-(T(b)′(iii): η₂ ↔ z₂, level-1 letter ↔ z₁ — the clause the
-pre-repair B-2 pointer legitimately covered). Hence R_{3,β}(g) =
+lifts exist and read to d: T(b)′(iii), accepted — a repo-internal
+supply, no FGMN contact). [r2, PE2 F2 — the pre-repair step applied
+B-1 to h := g − ẑ_d·n̂₂(β̂) directly, outside B-1's deg < D₂
+scope: deg(ẑ_d·n̂₂(β̂)) reaches m₃ = D₂ at the record's own N1
+frame (worked trace below). Repaired h-step:] Divide the lift
+product by Φ₂:
+
+    ẑ_d·n̂₂(β̂) = q·Φ₂ + ρ,   deg ρ < m₃,   deg q ≤ m₃ − 2
+
+(both factors have deg ≤ m₃ − 1). Then:
+
+  (h-i) digit(ρ) = d and ν(ρ) = β exactly: x₀ is a Φ₂-root, so
+        evaluation kills the qΦ₂ term — ρ(x₀) = ẑ_d(x₀)·n̂₂(β̂)(x₀)
+        — hence res(ρ(x₀)/n̂₂(β̂)(x₀)) = res(ẑ_d(x₀)) = d ≠ 0, and
+        B-1 (deg ρ < D₂: IN scope) turns the nonzero read into
+        ν(ρ) = µ₂(ρ) = β exact.
+  (h-ii) ν(qΦ₂) ≥ β: qΦ₂ = ẑ_d·n̂₂(β̂) − ρ, a difference of two
+        elements of ν-value β.
+  (h-iii) ν(qΦ₂) > β STRICTLY, so R_{3,β}(qΦ₂) = 0 by Lemma 3.17
+        [L982, PDF p.19, [r1]-added cite]. Two legs (q ≠ 0 WLOG,
+        else the term is absent). Leg e₃ ≥ 2: ν(qΦ₂) = ν(q) + w₃
+        + λ₃ with ν(q) = µ₂(q) ∈ Γ₂ (deg q < m₃, Φ₂-free, Prop
+        1.9) and w₃ ∈ Γ₂ but λ₃ ∉ Γ₂ (gcd(h₃, e₃) = 1, e₃ ≥ 2),
+        so ν(qΦ₂) ∉ Γ₂ ∋ β and (h-ii)'s ≥ sharpens to >. Leg
+        e₃ = 1 — the unit-q corner PE2 F2 flagged as unfenced,
+        CLOSED here rather than fenced: suppose ν(qΦ₂) = β.
+        Additivity gives R_{3,β}(ẑ_d·n̂₂(β̂)) = R_{3,β}(ρ) +
+        R_{3,β}(qΦ₂). The left side and R_{3,β}(ρ) have y-degree
+        0 (a grade-0 × single-pin product, resp. a deg < m₃
+        single-point-polygon element — Cor 4.4(3)); but Cor
+        4.7(2) at the Γ₂-graded factor q plus eq (14) [Q7] give
+        R_{3,β}(qΦ₂) = R_{3,ν(q)}(q)·R_{3,w₃+λ₃}(Φ₂) =
+        R_{3,ν(q)}(q)·y^{⌊1/e₃⌋} = R_{3,ν(q)}(q)·y at e₃ = 1,
+        of y-degree exactly 1 with coefficient R_{3,ν(q)}(q) ≠ 0
+        (Cor 4.4(1): exact grade, single-point polygon). A
+        y-degree-0 identity cannot carry a nonzero y-linear term:
+        contradiction, hence ν(qΦ₂) > β at e₃ = 1 too.
+  (h-iv) B-1, now in scope: h′ := g − ρ has deg < D₂ and repo
+        digit d − d = 0 at grade β (by (h-i)), hence ν(h′) > β by
+        B-1's no-cancellation clause — h′ ∈ P_β^+(µ₃) — so
+        R_{3,β}(h′) = 0 by Lemma 3.17.
+
+Additivity (Cor 4.7(1) [Q8], twice: g = h′ + ρ and ẑ_d·n̂₂(β̂) =
+qΦ₂ + ρ, with (h-iv) and (h-iii) killing the h′ and qΦ₂ terms)
+gives R_{3,β}(g) = R_{3,β}(ρ) = R_{3,β}(ẑ_d·n̂₂(β̂)), and
+multiplicativity at a grade-0 factor (Cor 4.7(2) [Q8], β′ = 0 ∈ Γ₂
+— Cor 4.7 carries no degree hypothesis, so the deg = m₃ product is
+legitimate HERE, unlike in B-1) factors it as
+R_{3,0}(ẑ_d)·R_{3,β}(n̂₂(β̂)). Finally R_{3,0}(ẑ_d) = d: the
+grade-0 degree-0 read is the F₃-algebra residue (Thm 4.8 [L1136,
+PDF p.22, [r1]-added cite]), and under the canonical evaluation
+identification (Prop 1.15(1), the (R-repo) display) that residue
+IS res(ẑ_d(x₀)) = d — no letter correspondence enters [r2, PE2
+F1: the pre-repair sentence attributed this step to "T(b)′(iii):
+η₂ ↔ z₂", wrong on both legs — see (R-repo) and the letter
+formula below]. Hence R_{3,β}(g) =
 d·u(β) = u(β)·digit(g). x₀-freeness of u is by inspection: u(β) =
 R_{3,β}(n̂₂(β̂)) never sees x₀. (4): the recipe's k̂_t has digit
 c_t by construction (a K₂-digit lift), so R_{3,β_t}(k̂_t) =
@@ -403,6 +494,76 @@ u(β_t)c_t, and B-2's on-the-nose form is exactly u(β_t) = 1. (5):
 substitute into the Cor-4.7(1) sum of GENTOW2-B's proof;
 non-emptiness of each grade is Cor 3.3 [L647, PDF p.12, [r1]-added
 cite] or the ladder itself. ∎
+
+*[r2] Worked trace of the repaired h-step at the frame PE2 F2
+exhibited (N1, K₂ = F₄, grade β̂ = 7 — the PE1-digit-table grade).*
+Frame data recomputed this round: Φ′ = x² − 2 (w₂ = 1, λ₂ = 1/2,
+µ₂(Φ′) = 3/2), Φ₂b = Φ′² − 2xΦ′ − 8 (m₃ = 4, w₃ = 3, λ₃ = 1/4,
+e₃ = 2, e(µ₂) = 2, Γ₂ = ½ℤ). ẑ_{η₂} = xΦ′/4 (ν = 1/2 + 3/2 − 2 =
+0; the minimal grade-0 monomial lift of an F₄∖F₂ class there),
+n̂₂(7) = 8x (dv₂ = 2(3 + 1/2) = 7), product = 2x²Φ′ of deg 4 = m₃
+— B-1 inapplicable as written, the PE2 finding. Division:
+2x²Φ′ = 2·Φ₂b + (4xΦ′ + 4Φ′ + 16), so q = 2, ρ = 4xΦ′ + 4Φ′ + 16,
+deg ρ = 3 < 4 ✓. (h-i): dv₂-pins of ρ — 4Φ′ ↦ 7 (the single
+on-grade monomial), 4xΦ′ ↦ 8, 16 ↦ 8 — so ν(ρ) = 7/2 = β exact;
+digit(ρ) = res(4Φ′(x₀)/(8x₀)) = res(ẑ_{η₂}(x₀))·res(2/x₀²) =
+d·z₁^{−1} = d (this frame: z₁ = 1, and independently x₀² = 2 +
+O(v > 1) forces res(x₀²/2) = 1 — note the z₁-power surfacing in a
+digit comparison, the F1 letter mechanism in miniature). (h-iii),
+e₃ = 2 leg: ν(2Φ₂b) = 1 + 13/4 = 17/4 ∉ Γ₂, dv₂ = 17/2 > 7 ✓
+strict. [The PE2 report's sketch wrote "dv₂(2Φ₂b) = 2 + 7 = 9";
+recomputed here dv₂(Φ₂b) = e(µ₂)(w₃ + λ₃) = 2·(13/4) = 13/2 — its
+9 should be 17/2; the inequality 17/2 > 7 holds and the repair is
+unaffected.] (h-iv): h′ = g − ρ, deg < 4, digit 0, B-1 in scope. ✓
+
+*The letter formula ([r2] — PE2 F1's canonical identification).*
+Under the (R-repo) evaluation identification the two level-2
+letters are related by an explicit z₁-twist, derived from the PDF
+data (sources PDF-verified this round, S6.1 rows 17–19):
+
+    z₂ = η₂ · z₁^{−⌊ℓ₁u₂/e₁⌋}      (LETTER FORMULA)
+
+*Derivation.* FGMN's letter is z₂ := the image of y₂ = H_{µ₂}(γ₂)
+under ∆₂ → ∆₃ (PDF p.17 display), where γ₂ = φ₂^{e₂}π₂^{−u₂} with
+u₂ := e₂V₂ + h₂ (Def 3.12, p.16: γᵢ = (Φᵢ)^{eᵢ}(πᵢ)^{−hᵢ},
+Φᵢ = φᵢπᵢ^{−Vᵢ}; the §3.2 data V₂ = e(µ₁)w₂, h₂ = e(µ₂)λ₂ with
+eq (9), pp.15–16, give e₂V₂ + h₂ = e(µ₂)(w₂ + λ₂) = the S2
+dictionary's u₂ = dv₂(Φ′)), and π₂ = Φ₁^{ℓ₁}π^{ℓ′₁} = x^{ℓ₁}π^{ℓ′₁}
+(§3.3, p.16: ℓ₁h₁ + ℓ′₁e₁ = 1, 0 ≤ ℓ₁ < e₁; Φ₁ = x since V₁ =
+e(µ₀)µ₀(x) = 0). Under Prop 1.15(1) (p.7) the class evaluates:
+z₂ = res(γ₂(x₀)) = res(Φ′(x₀)^{e₂}/π₂(x₀)^{u₂}). The repo letter
+is η₂ = res(Φ′(x₀)^{e₂}/n̂(u₂)(x₀)) with n̂(u₂) = x^iπ^a the
+letter-free ladder normalizer at dv₁-height u₂, 0 ≤ i < e₁
+(T(b)′(i) normal form). The ratio n̂(u₂)/π₂^{u₂} = x^{i−ℓ₁u₂}
+π^{a−ℓ′₁u₂} is a value-0 monomial, and a value-0 monomial
+x^{e₁k}π^{−h₁k} = γ₁^k has residue z₁^k (γ₁ = x^{e₁}π^{−h₁},
+Def 3.12 at i = 1). Both n̂(u₂) and π₂^{u₂} sit at dv₁-height u₂
+(dv₁(π₂) = ℓ₁h₁ + ℓ′₁e₁ = 1), so ih₁ ≡ ℓ₁h₁u₂ mod e₁, i.e.
+i ≡ ℓ₁u₂ mod e₁ (gcd(h₁, e₁) = 1); with 0 ≤ i < e₁ this pins
+k = (i − ℓ₁u₂)/e₁ = −⌊ℓ₁u₂/e₁⌋. Multiplying the two residues
+gives the display. ∎ At the S2 witness (e₁ = 2, h₁ = 1, u₂ = 5,
+ℓ₁ = 1 ⟹ π₂ = x; i = 1, a = 2): z₂ = η₂·z₁^{−2}.
+
+*Consequences ([r2]).* (i) FGMN's ψ₂ = minpoly(z₂) is the
+z₁^{⌊ℓ₁u₂/e₁⌋}-twist of the repo ψ₂ = minpoly(η₂); the two agree
+on the nose exactly when the twist fixes ψ₂ — in particular when
+z₁^{⌊ℓ₁u₂/e₁⌋} = 1 (e.g. ℓ₁ = 0, or f₁ = 1 over q = 2 which
+forces z₁ = 1). (ii) LETTER-BLINDNESS of the record, stated
+honestly: the 13 machine witnesses standing at PE2 (5 committed +
+2 battery-new + 3 PE1-fresh + 3 PE2-fresh) each sit at f₁ = 1
+over q = 2, where z₁ = 1 and the twist is invisible — the record
+could not have caught the pre-repair "η₂ ↔ z₂" parenthetical; the
+r2 probe (S10, gentow2_r2_letter_probe.py) is the first
+letter-live (f₁ = 2, z₁ ∈ F₄∖F₂) machine contact and tests the
+LETTER FORMULA itself at a frame where the twist acts. (iii) B′
+SURVIVES the canonical identification (re-derived this round, per
+the PE2 charge): the lemma's statement and proof consume only the
+evaluation identification — never a letter correspondence — at
+exactly two sites (the (R-repo) display and the R_{3,0}(ẑ_d) = d
+step), both now labeled Prop 1.15; u(β), (3), (4), (5) and the
+x₀-/g-freeness inspection stand as displayed. The downstream
+consumption "η₂(ξ) is a ψ₂-root" survives the twist by the S4
+consumption note's [r2] clause (single-embedding coherence).
 
 *What remains new (the honest B-2 residue).* Pinning u ≡ 1 is a
 cross-frame comparison: by Thm 4.2's normal form H_µ(g) =
@@ -471,6 +632,9 @@ with the S3 quote/instantiated use.
 | 14 | Cor 3.3 (S5.1 [r1] cite) | 12 | L647 | MATCH |
 | 15 | Lemma 3.17 (S5.1 [r1] cite) | 19 | L982 | MATCH |
 | 16 | Thm 4.8 (S5.1 [r1] cite) | 22 | L1136 | MATCH |
+| 17 | Prop 1.15 (S5.1 [r2] identification + letter formula) | 7 | L340–344 | MATCH |
+| 18 | Def 3.12 + §3.3 ℓᵢ, ℓ′ᵢ data (S5.1 [r2] letter formula) | 16 | L813–821 | MATCH |
+| 19 | eq (9) + §3.2 data defs (S5.1 [r2] letter formula; S2 (e₃,f₃) row) | 15–16 | L785–806 | MATCH |
 
 Supporting pins also PDF-verified on the same pass: Prop 1.9 (p.6),
 Lemma 2.4 (p.9), Def 3.1 + display (4) (p.12), the §3.2 numerical
@@ -478,6 +642,13 @@ data table (pp.15–16), the N_i/R_{i,α} operator definitions + eq
 (12) (p.17), Def 3.15 (the ε_i(α) constants) + Def 3.16 (p.18),
 Def 3.18 + j₀ formula (p.19), the §6 header (bottom of p.27 —
 layout L1433; the pre-repair pin "L1434" was off by one, PE1 F5).
+[r2] Rows 17–19 were added in the PE2 repair round and verified by
+the SAME two-leg method (fresh visual reads of PDF pp.7, 15, 16,
+17 against the layout pins), together with three [r2] supporting
+pins: the z_i/ψ_i definition display + y_i = H_{µ_i}(γ_i) (p.17,
+L855–863), Lemma 3.13 (µᵢ(γᵢ) = 0, µᵢ(πᵢ₊₁) = 1/e(µᵢ); p.16,
+L836–840), and §3.2's own Prop-1.15 identification sentence ("Fᵢ
+... may be identified with the residue class field F_{φᵢ}", p.15).
 
 **Statements consumed** (each quoted verbatim in S3): Lemma 1.11,
 Cor 1.13, Def 5.2, Lemma 5.3, Cor 4.4, Cor 4.7, Cor 4.12 (+ its
@@ -485,7 +656,10 @@ proof's construction), Prop 5.7 + eq (14), Cor 5.6, Thm 5.8 (proof
 display only, used as an argument-schema on our concrete Φ₃, not as
 a statement), Thm 6.3, Cor 6.4. [r1] Added by the S5.1 derivation
 (LEMMA GENTOW2-B′): Cor 3.3, Lemma 3.17, Thm 4.8 — each
-PDF-verified, rows 14–16 of S6.1.
+PDF-verified, rows 14–16 of S6.1. [r2] Added by the S5.1 canonical
+identification + LETTER FORMULA (PE2 F1): Prop 1.15, Def 3.12
+(+ §3.3's ℓᵢ, ℓ′ᵢ), eq (9) with the §3.2 data definitions — each
+PDF-verified, rows 17–19 of S6.1.
 
 **Hypothesis audit** (why each FGMN hypothesis holds at our
 instance): (H-a) v discrete, K_v complete: v = v_p on ℚ. (H-b) ν
