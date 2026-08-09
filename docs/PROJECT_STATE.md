@@ -3329,3 +3329,25 @@ exhibited 48/48), so the per-class wiring is load-bearing; first
 machine σ at n=16/μ₂=4 (96/96 PARI). GENIND at 0/2, r3 complete
 (capped window), PE4 next. Codex ratification of frozen HE7 now
 unblocked.
+
+**2026-08-09 DATED APPEND #3 — CODEX RATIFICATION OF HE7: CHALLENGE
+(acceptance ANNOTATED, body stays frozen).** The first decorrelated-
+model check on an accepted text confirmed 5/5 findings, both heavy
+ones from the free hunt on surfaces no Fable pass audited: F1
+CRITICAL — DEF HE7-2's normalizer recursion is incompatible with its
+own "n₁ = ϖ-powers" base, breaking the PROOF DISPLAY of THEOREM
+HE7.D / COROLLARY HE7.B(ii) (level ≥ 3, first live n ≥ 16, zero
+machine coverage); the level-2 core (§S1–S5/S7/S8, HE7.A/A′/C,
+HE7.B(i) n ≤ 15, every sealed number) NEVER consumes DEF HE7-2 and
+is untouched; Codex derived the repair (re-base n₁ := ϖ-powers +
+carry cocycle via τ_t; conclusions twist-blind). F2 GAP-as-stated
+(the Ψ∤f_S convention's equivalence needs the gcd dichotomy; TRUE
+with HE6R1-3's verbatim argument; arc precedent grades this MINOR —
+**Asvin adjudicates the grade**; the repair lands either way).
+F3–F5 minors. Repairs R1–R5 land as dated annexes (wave 8); a
+scoped hostile pass on the annexes follows. Fold note:
+lean/notes/openmath/CODEX_HE7RAT_2026-08-09.md (9c80577).
+MEANWHILE: GENH4's annex COMPLETE (baf05ed; ANNEX-LEMMA GENH4-7,
+byte-freeze 3-way); GENIND PE4 NOT CLEAN (0C+2G: the r3 regime
+sentences false at steeper-decided-piece genres + the pre-cap window
+survived r3 in proof step (1) — r4 with a full-sweep record audit).

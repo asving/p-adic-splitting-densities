@@ -13619,3 +13619,55 @@ HE7-CODEX-RAT (the ratification sweep OPENS on the frozen HE7+annex;
 window reset, CODEX_WMULTDCX pattern). Site refresh queued next
 (two acceptances + composed-complete = the milestone the standing
 policy names).**
+
+---
+
+## WAVE 7 FOLDED (woi337e4b, 3/3): CODEX HE7 RATIFICATION = CHALLENGE (F1 CRITICAL at level ≥ 3, level-2 core untouched, repair derived; F2 grade → ASVIN) · GENH4 ANNEX COMPLETE (ANNEX-LEMMA GENH4-7) · GENIND PE4 = 0C+2G (r3 incomplete — the pre-cap window survived in proof step (1)) — WAVE 8: HE7 R1–R5 ANNEXES + GENIND r4 (full-sweep) + CODEX GENH4 RATIFICATION — 2026-08-09
+
+**CODEX HE7 RAT (brief 853b479, scaffold 7574f0c pre-read, verdict
+9c80577; gpt-5.6-sol HIGH, 7.5 min, 74,685 tok, window 1%→1%).**
+5/5 findings CONFIRMED on my own verification; all four CHARGED
+surfaces CLEAN; both heavy finds free-hunt. F1 CRITICAL: DEF HE7-2's
+recursion n_{i+1}(k) = n_i(m)Φ_i^s contradicts "n₁ = ϖ-powers"
+((e₁,h)=(2,3), k=3: x-degree s(k) < e₁ vs i₀k — impossible
+regardless of n₀); scope = §S6/HE7.D/HE7.B(ii) ONLY (level ≥ 3,
+n ≥ 16, no machine coverage); level-2 core never consumes it;
+repair derived + conclusions twist-blind. F2 GAP-as-stated: the
+convention's "Ψ ∤ f_S ⟺ dv₂ < ∞ ∀ρ" needs gcd ∈ {1, Ψ} (HE6R1-3's
+orbit argument, verbatim); TRUE; arc precedent (PE2 F-1) grades
+MINOR — FLAGGED FOR ASVIN (repair identical either way). F3
+regraded wording-MINOR (only the proved direction consumed); F4 =
+the scaffold's exact prediction; F5 wording. OUTCOME: CHALLENGE —
+acceptance ANNOTATED, body frozen, R1–R5 as dated annexes, scoped
+hostile pass on the annexes after. DECORRELATION VERDICT: the
+Codex leg found in 7.5 minutes what seven same-family routes
+missed — the ratification sweep is load-bearing, continue it on
+every accepted note.
+
+**GENIND PE4 (51bd1bc/ade9bac): 0C + 2 GAP.** G1: r3's
+regime-inventory sentences FALSE — steeper-decided-PIECE genres put
+the disagreeing regime INSIDE the sealed roster ((2,5,n3) and
+(2,6,n4), exhaustively verified); THIRD consecutive
+record-integrity-class finding. G2: the pre-cap uniform window
+"N − m·k_l" SURVIVED r3 in S4.1 proof step (1) (consumed verbatim
+by GENIND-6(a)) — contradicts the note's OWN corrected ledgers,
+degenerates to window −1 at live instances. The capped formula
+itself + the min_j equivalence CONFIRMED (identity; no
+counter-configuration). Fresh route: FIRST 3-child 3-slope genre +
+FIRST n=8 composite instance (6,507/0); all three committed legs
+re-run (first pass to do so). r4 owed WITH A DIFFERENT METHOD (the
+repair loop must break): grep-driven exhaustive inventory of EVERY
+window-formula site and EVERY record/regime sentence,
+machine-check each record claim before writing it.
+
+**GENH4 ANNEX (cceca77 → e945734 → baf05ed):** complete, 3-way
+byte-freeze; ANNEX-LEMMA GENH4-7 (the F-SPLTAIL σ-label with the
+two-lift uniqueness witness, feeding W-12.D's clause); the supp
+run STRENGTHENED its own prereg (refined-history propagation caught,
+hand-derived, disclosed). GENH4 = ACCEPTED 2/2 + annex.
+
+**WAVE 8 (dispatched this entry): HE7-RANNEX (R1–R5 as dated
+annexes; R1 = the corrected recursion PROVED + a first targeted
+n=16 machine probe if feasible) + GENIND r4 (full-sweep method) +
+CODEX GENH4 ratification (the sweep continues). After wave 8:
+scoped hostile pass on HE7's annexes; site refresh.**
