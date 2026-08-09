@@ -1,0 +1,9 @@
+PARI stack size set to 1073741824 bytes, maximum size set to 1073741824
+HE7 passPE3 fresh route: f1 = 2 / e1 = 1 constructed family
+row p=3 u=5: members 160 agree 160 refines 32 peels 16 {'frac': 32, 'int-split': 32, 'int-rep': 32, 'int-inert': 32, '2sides': 16, 'peel': 16}
+row p=3 u=7: members 160 agree 160 refines 32 peels 16 {'frac': 32, 'int-split': 32, 'int-rep': 32, 'int-inert': 32, '2sides': 16, 'peel': 16}
+row p=5 u=5: members 240 agree 240 refines 48 peels 24 {'frac': 48, 'int-split': 48, 'int-rep': 48, 'int-inert': 48, '2sides': 24, 'peel': 24}
+row p=5 u=7: members 220 agree 220 refines 44 peels 22 {'frac': 44, 'int-split': 44, 'int-rep': 44, 'int-inert': 44, '2sides': 22, 'peel': 22}
+TOTAL members 780, PARI agree 780, violations 0, teeth {'twist-flips': 155, 'twist-caught': 155, 'lazy-diff': 150, 'lazy-caught': 150, 'proper-s-members': 580}, 8.6s
+genre alphabet: {'((4, 2),)': 300, '((2, 2), (2, 2))': 318, '((2, 4),)': 162}
+VERDICT: GREEN

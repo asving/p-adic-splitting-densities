@@ -1,0 +1,86 @@
+{
+ "checks": {
+  "P2-level1-ok": 780
+ },
+ "genres": {
+  "((2, 2), (2, 2))": 318,
+  "((2, 4),)": 162,
+  "((4, 2),)": 300
+ },
+ "rows": [
+  {
+   "agree": 160,
+   "genres": {
+    "2sides": 16,
+    "frac": 32,
+    "int-inert": 32,
+    "int-rep": 32,
+    "int-split": 32,
+    "peel": 16
+   },
+   "members": 160,
+   "p": 3,
+   "peels": 16,
+   "refines": 32,
+   "u": 5
+  },
+  {
+   "agree": 160,
+   "genres": {
+    "2sides": 16,
+    "frac": 32,
+    "int-inert": 32,
+    "int-rep": 32,
+    "int-split": 32,
+    "peel": 16
+   },
+   "members": 160,
+   "p": 3,
+   "peels": 16,
+   "refines": 32,
+   "u": 7
+  },
+  {
+   "agree": 240,
+   "genres": {
+    "2sides": 24,
+    "frac": 48,
+    "int-inert": 48,
+    "int-rep": 48,
+    "int-split": 48,
+    "peel": 24
+   },
+   "members": 240,
+   "p": 5,
+   "peels": 24,
+   "refines": 48,
+   "u": 5
+  },
+  {
+   "agree": 220,
+   "genres": {
+    "2sides": 22,
+    "frac": 44,
+    "int-inert": 44,
+    "int-rep": 44,
+    "int-split": 44,
+    "peel": 22
+   },
+   "members": 220,
+   "p": 5,
+   "peels": 22,
+   "refines": 44,
+   "u": 7
+  }
+ ],
+ "secs": 8.6,
+ "teeth": {
+  "lazy-caught": 150,
+  "lazy-diff": 150,
+  "proper-s-members": 580,
+  "twist-caught": 155,
+  "twist-flips": 155
+ },
+ "verdict": "GREEN",
+ "viol": []
+}

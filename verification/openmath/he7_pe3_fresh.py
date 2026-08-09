@@ -202,11 +202,11 @@ class Frame:
             if m >= 1 and vp(b1, self.p) == m - 1 else 0
         return (g0, g1)
 
-    def slots2(self, C):
+    def slots2(self, C, nslots=2):  # [post-seal repair, disclosed]
         """occupied Phi'-slot values 2*dv1(c_s) + s*u, s = 0,1 (deg C < 4)."""
-        cs = development(C, self.Phi, 2)
+        cs = development(C, self.Phi, nslots)
         return [(s, 2 * self.dv1(cs[s]) + s * self.u)
-                for s in range(2) if self.dv1(cs[s]) < BIG]
+                for s in range(nslots) if self.dv1(cs[s]) < BIG]
 
     def dv2(self, C):
         sv = self.slots2(C)
@@ -426,7 +426,7 @@ def main():
             for s in s_values(p, Fq, rng):
                 fr = Frame(p, u, s)
                 # frame check: Psi's occupied slots all exactly at T2
-                if any(v != fr.T2 for _, v in fr.slots2(fr.Psi0)):
+                if any(v != fr.T2 for _, v in fr.slots2(fr.Psi0, 3)):
                     viol('Psi slot geometry', {'p': p, 'u': u})
                 for seed in range(2):
                     for tag, f in gen_members(fr, rng):
