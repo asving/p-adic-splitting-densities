@@ -210,11 +210,185 @@ here.
 
 ## S3. LEMMA GENTOW-2 (inner refine transfer; item (2))
 
-[statement + proof: see S3 commit]
+**Setting (the composed-alpha event = the transported inner refine).**
+f ∈ 𝒯 whose composed polygon (j, p_j) is one side of integer
+dv2-slope lam > E2 with residual (T − s)^{mu2} over K2, s ∈ K2^×
+(the composed frame's stage-alpha event; by GENTOW-1(c) any
+composed side has slope > E2, so lam >= E2 + 1 automatically — the
+composed floor plays S6.1's "kappa > S′"). LADDER NORMALIZERS
+(the r3 mechanism's n̂₂, now with provenance): n2hat(m) :=
+pi^{a0} x^i Phi'^b, i < e1, b < e2, e1e2*a0 + i*e2h + b*u2 = m —
+the (i,b)-pair is unique per residue class mod e1e2 (two-step
+separation) and a0 >= 0 whenever m > E2 (since u2 > e2D'h forces
+E2 >= (e1−1)e2h + (e2−1)u2 + 1). K2-DIGIT LIFT: for s =
+Sum_{t<f2} s_t eta2^t (s_t ∈ K), lift(s; m) := Sum over the f1f2
+within-class monomials x^{i+e1r} Phi'^{b+e2t} at height m with
+O-digit coefficients realizing the components in the coherent
+normalization (the same S4-cocycle convention as the entry lifts
+chat_t); deg lift < D2 always (x-exponents < e1f1 = D',
+Phi'-exponents < e2f2).
+
+**LEMMA GENTOW-2 (refine transfer at the composed key).** Set
+Phi2+ := Phi2 + what, what := −lift(s; lam). Then:
+(i) [INVARIANTS] Phi2+ keeps every T(b)' key invariant: monic of
+degree D2; level-1 development one-sided of slope kappa2 with
+residual psi2 and side digits byte-unchanged (what's slots sit at
+weight lam > E2, strictly above the key's side); x-polygon one
+side of slope h/e1 (what's x-heights >= lam − (e2f2−1)(u2−e2D'h)
+> dv2(x^{D2})); hence the (i)-forcing chain reruns verbatim:
+Phi2+ irreducible with carrier (e1e2, f1f2), and GENTOW-1 +
+GENHN-2' hold verbatim at Phi2+.
+(ii) [THE KILLS] in the Phi2+-development of f the mu2 event pins
+die: p_j+ > (mu2−j)*lam for every j < mu2.
+(iii) [TRIANGULARITY + BIJECTION] (digits at Phi2) ↦ (digits at
+Phi2+) is triangular (new digit = old digit + strictly-lower-height
+data), bijecting the event slice onto the lam-floored node box;
+|K2| − 1 letter choices of s per step.
+(iv) [TRANSPORTED EVENT DATA — the inner refine read back] for a
+deeper member g in the Phi2+-frame (pins above the lam-node), the
+OLD-key read of g exhibits exactly the alpha-event: pin
+p_j(old) = (mu2−j)*lam with residue binom(mu2, j)(−s̄)^{mu2−j}
+(coherent normalization, wrap units included) at every j with
+p ∤ binom(mu2, j), the other coordinates strictly above — at
+mu2 = 2, q = 2 the j = 1 pin vanishes (2s = 0) and the event is
+carried by p_0 = 2*lam alone; at q = 3 both pins show. Heights
+transport by dv2 = e2*dv and residues by the eta2-dictionary —
+the inner-stage (LIFT)-move data is exactly recoverable from the
+composed frame.
+
+*Proof.*
+(i) what's slots sit at dv2-height lam > E2 while the key's
+level-1 side and residual live at weight E2: strictly-above
+additions change neither (GENTOW-1 Step 0/Step 1 grammar). The
+x-side: a weight-lam grid monomial with Phi'-exponent b has
+x-height lam − b(u2 − e2D'h) >= lam − (e2f2−1)(u2−e2D'h) >
+E2 − (e2f2−1)(u2 − e2D'h) = u2 + (e2f2−1)e2D'h > e2f2*e2D'h =
+dv2(x^{D2}): strictly above the x-side through (D2, 0), constant
+term untouched. With the side data identical, (i)'s forcing chain
+gives the same carrier; GENHN-2'/GENTOW-1 depend only on these
+invariants. ∎(i)
+(ii)+(iii) — three layers, GENHN-4 one level up:
+* LAYER 1 (graded kills). GENHN-2' makes the composed slot model
+  pointwise faithful (one K2-digit per dv2-height, slot-min =
+  valuation), so the graded computation happens in gr(O_{L2}) —
+  one K2-line per height, with wrap units x0^{e1} =
+  (eta-unit)·pi^h, Phi'(x0)^{e2} = (eta2-unit)·n(u2)(x0) and the
+  normalizer cocycle n2hat(m)·n2hat(m') = (wrap unit in
+  K2^×)·n2hat(m+m'): the units enter the residual assembly and
+  the carry products IDENTICALLY (the S4 computation with the
+  second wrap adjoined), so the development transforms by the
+  substitution T ↦ T + s̄ on the residual polynomial:
+  (T − s)^{mu2} ↦ T^{mu2} — all mu2 pins die. The identity is a
+  substitution identity, binomial-free, both characteristics
+  (GENHN-4 layer 1 verbatim). GRADE NOTE (honesty): at mu2 = 2
+  this is verified pointwise-elementarily by the battery's refine
+  rows (actual polynomial re-division, no formula — the
+  GN-REFINE3 pattern; 8 rows across all five families, q ∈ {2,3},
+  monomial and Phi'-flavored and two-monomial K2-digit
+  normalizers); at general mu2 layer 1 consumes the composed
+  graded frame exactly as GENHN-4 layer 1 consumed W-9's —
+  GENHN-BOX-2's disclosure pattern one level up, named in S6.
+* LAYER 2 (corrections land strictly deeper, in-window). The
+  non-graded corrections are (a) the products what^{i−j}·C_i
+  beyond their exact-height parts: dv2 >= (i−j)lam + (mu2−i)lam
+  + 1 = (mu2−j)lam + 1 (each factor exceeds its side height only
+  in correction terms; exact-height products ARE layer 1); (b)
+  the x- and Phi'-degree overflows of what·C_i reduced mod Phi2+:
+  by carry monotonicity (GENTOW-1 Step 0 — the x-carry priced by
+  Phi''s side, the Phi'-carry priced by Phi2's side, the
+  Phi2+-recarry weight-graded) every overflow lands at weight >=
+  its raw weight: in-window positions, moving upward only
+  (LEMMA GENTOW-5(c)(d)). THE LEVEL-2 NOVELTY sits exactly here:
+  at level 1 one carry (x) priced by one side (Phi''s); here two
+  carries priced by the two sides — both displays are Step 0.
+* LAYER 3 (bijectivity). Triangular by layers 1–2; image inside
+  the lam-floored node {p_j+ > (mu2−j)lam} by (ii); onto by
+  cardinality: slot strings are key-independent (GENHN-2' at
+  Phi2+ via (i)), the mu2 pinned digits are the event data and
+  the remaining slots biject. ∎(ii),(iii)
+(iv) Write the Phi2-development of g by substituting Phi2+ =
+Phi2 + what into g = Sum C_i+ (Phi2+)^i: coordinate j receives
+Sum_{i >= j} binom(i, j) what^{i−j} C_i+ plus weight-raised
+carries; the minimal-height term is binom(mu2, j) what^{mu2−j}
+from C_{mu2}+ = 1, at dv2 = (mu2−j)lam with residue
+binom(mu2,j)(−s̄)^{mu2−j}·(wraps); every C_i+ (i < mu2)
+contribution sits at dv2 > (mu2−i)lam + (i−j)lam = (mu2−j)lam
+(pins above the lam-node). At p | binom(mu2, j) the pin datum
+vanishes and the coordinate sits strictly above — the
+characteristic-sensitive display of the level-1 refine, now at
+the composed key. ∎
 
 ## S4. LEMMA GENTOW-5 (composed window ledger; item (5))
 
-[statement + proof: see S4 commit]
+**LEMMA GENTOW-5 (caps, raggedness, consultation, content — GENHN-3
+at dv2).** Window N (ambient coefficients known mod pi^N). On 𝒯,
+per coordinate C_j:
+(a) [CAP + FIRST-BAND] a computed dv2-value is LIFT-STABLE iff
+< e1e2*N: an out-of-window O-digit at v = N in the (0,0)-class
+gives dv2 = e1e2*N, undercutting every computed value >= e1e2*N
+and tying none below it; all in-window slot digits agree across
+lifts (by (e)'s triangularity mod pi^N). At f1f2 >= 2, at the
+FIRST band height m = e1e2*N exactly: every unread digit lives at
+height >= e1e2*N and joins the height-m residue only on
+complementary K2-flavors, so by GENHN-2''s independence a nonzero
+readable part cannot be cancelled: the VALUE is exact for every
+lift while the full K2-residue is not determined — the level-1
+f1 >= 3 band annex's clause (1) transported verbatim with
+(f1, eta) ↦ (f1f2, (eta, eta2)). Deeper band heights are
+value-unstable (the undercut); no trichotomy is claimed there
+(conservative drain), exactly as the annex's (3).
+(b) [RAGGED STRINGS] the class-(a,b) slot string of C_j ends at
+e1e2*(N−1) + w(a,b): ragged across the e1e2 height-classes (each
+residue mod e1e2 realized exactly once in the (i < e1, b < e2)
+range — two-step separation); WITHIN one dv2-height the K2-digit's
+f1f2 component O-digits die at different lift-depths (the
+within-digit band — new at level 2 for e2 >= 2, where it mixes the
+eta- and eta2-flavors).
+(c) [CONSULTATION] every digit consulted by a readable event sits
+strictly inside its class string: a consulted height m satisfies
+m < e1e2*N and m ≡ w(a,b) (mod e1e2), hence m <= e1e2*(N−1) +
+w(a,b) — one congruence, GENHN-3(c) verbatim on the dv2-ladder.
+(d) [UPWARD CARRIES] along composed chains (GENTOW-2 refines),
+every update determines new digits at height d from old digits at
+heights <= d (GENTOW-2 layer 2 = Step-0 carry monotonicity): deep
+composed histories never consult the ragged band; per-node laws
+uniform below the caps.
+(e) [CAPPED-WINDOW CONTENT IDENTITY] the composed digit map is
+triangular-unimodular over Ô (GENTOW-1(b)), so it induces a
+BIJECTION (f mod pi^N, monic deg n) ↔ (composed digits c_{j,a,b}
+mod pi^N): the certified windows at Phi2 — every decided composed
+read at heights < e1e2*N is a function of the window data, the
+budget/count display of GENTOW-1(b) is exact per window, and
+counts computed in composed digits equal counts computed on
+ambient coefficients (the GENIND capped-window content identity at
+the composed frame).
+
+*Proof.* (a) Undercut instance: the class-(0,0) digit at v = N has
+height e1e2*N and every unread digit has v >= N, hence height
+>= e1e2*N + w >= e1e2*N: values below the cap can neither move nor
+tie; in-window stability is (e) mod pi^N. First-band: the unread
+components at height exactly e1e2*N occupy the complementary
+flavors {eta^r eta2^t : (r,t) out-of-window at m}; GENHN-2''s
+tower-basis independence (the K-components along {eta2^t} each
+force res = 0) says a nonzero readable combination survives any
+assignment of the unread flavors. (b) v <= N−1 ⟺ height <=
+e1e2*(N−1) + w(a,b); class surjectivity is GENTOW-1 Step 4's CRT
+display. (c) the congruence line. (d) GENTOW-2 layer 2. (e)
+c_{j,a,b} = (f's coefficient at x-degree jD2 + bD' + a) + an
+Ô-combination of strictly higher-degree coefficients (GENTOW-1
+Step 3): unipotent over Ô, hence bijective mod pi^N. ∎
+
+**Scope remark (honest).** (i) The BAND ADJUDICATION (which band
+reads exit UND vs decide — the GENH4-CAP(F)/r3 trichotomy one
+level up) is claimed here ONLY in the transported first-band form
+(a); a composed band trichotomy display with census would be the
+analogue of the [r2] f1 >= 3 annex's (2) and is NOT derived — it
+was not part of item (5)'s box text (which asks for GENHN-3 +
+BOX-4 at dv2). (ii) BOX-4's extraction seams concern EMBEDDED
+genres; the tower's first-live shape is full-side (the tower block
+IS f), so the extraction-certification layer is vacuous here;
+partial inner sides — where extraction seams would return — are
+[GENHN-TOW-1] item (4), untouched.
 
 ## S5. MACHINE LEG (sealed battery, two-commit discipline)
 
