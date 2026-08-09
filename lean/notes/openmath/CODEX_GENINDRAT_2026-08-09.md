@@ -62,4 +62,117 @@ PE8 §4.1's hand re-derivation); (5) free hunt.
   N = 2..12; (v) the bracket generating function A₁/(1−A₁) coefficient =
   (Q−1)Q^{(c+1)μ−1} exact at c ∈ {1,3,6,10} (m = 2..5), μ = 1..4.
 
-## S1. VERDICT — PENDING (this section appended at fold, from the delivered pass)
+## S1. VERDICT (orchestrator adjudication, not Codex's self-grade)
+
+**Run completed:** exited 10:14:18 UTC (≈ 6.5 min, 87,777 tokens); raw final
+message extracted to `/tmp/genindrat_raw.txt` and reproduced verbatim in the
+appendix. codex-limits: 2% before, 3% after.
+
+**Codex returned 6 findings (0 CRITICAL + 6 GAP-classified). After
+independent re-derivation of every claim against the repo, the sealed
+runner, and my pre-verdict key: ALL 6 CONFIRMED as real defects at their
+quoted sites, with 3 regraded in severity (F4 scoped to the PE8 acceptance
+artifact; F5 regraded MINOR-display by the arc's own PE1-M3 precedent +
+the runner gate; F6 regraded MINOR/wording with the consumed clause
+unaffected). The charged attack surfaces split: attack 1 (grammar) came
+back CLEAN with the PE8 disjointness proof ratified; attacks 2, 3, 4 each
+produced a confirmed finding exactly where the charge pointed (F1, F2+F3,
+F4).**
+
+**RATIFICATION OUTCOME: CHALLENGE** (confirmed GAP-or-worse exists on
+consumed proof surfaces — the acceptance is annotated; Asvin decides).
+The three heavy confirmed items:
+
+- **F3 (CONFIRMED, GAP — the heaviest):** GENIND.C/S5.2's vanishing clause
+  attributes the β-term decay to "the IH bound — each contributes
+  O(poly(N)·Q^{−(N−c)}) relative mass", but P(k) as displayed carries NO
+  rate: its fourth member is "exact-complement (A2)" with the species of
+  the exact form unpinned, and W-12's (A2) itself asks only r(N)/q^{nN} → 0
+  (an o(1) with no rate — Codex's 1/log(M+1) instance). Sharper half:
+  capped child windows M_l = N − D_l can stay BOUNDED while the genre
+  depth D_l grows with N, so the child's own M_l → ∞ vanishing cannot be
+  applied there — those β-terms vanish only through the route prefactor,
+  and the note displays no bounded-vs-growing-M_l split. Overlap disclosed:
+  GENIND-BOX-4 prices the β-bookkeeping compression, but the
+  hypothesis-WIRING defect (a rate consumed that the displayed P(k) does
+  not supply) is sharper than the box's own pricing. Repair: pin P(k)'s
+  fourth member to the proved instances' species (finite q-power sums,
+  coefficients poly in the window — the species my fold leg verified at
+  m = 2: u(2ℓ) = ℓQ^{2ℓ−1} − (ℓ−1)Q^{2ℓ−2} solves the recursion exactly,
+  N = 2..12) + display the two-regime split with prefactors.
+- **F1 (CONFIRMED, GAP, disclosure-overlap):** GENIND-6(c)'s
+  onto-with-constant-fiber is carried by "triangular with exact budget
+  floors" + "the same S2.2 slot bookkeeping" — and triangularity alone
+  does NOT give surjectivity/constant fibers over truncated DVRs (Codex's
+  valid toy: (x, y) ↦ (x, (x+π)y) mod π², triangular, fiber collapses at
+  x = 0). The missing displayed step is the unit-pivot condition (the
+  division ledger's pivots are units because the extracted factors are
+  MONIC — true, used, never displayed as the load-bearing condition). The
+  S4.3 honesty box + GENIND-BOX-2 disclose the per-genre ledger
+  compression, so this is GAP-as-disclosed SHARPENED, not a new surface;
+  machine exercise exists only at M6/SS6/M7T/THREECHILD/N8MIX.
+- **F2 (CONFIRMED, GAP — scope leak, trivially repairable):** the S1
+  convention states "window N ≥ 2", yet GENIND-2(a)'s α-transport invokes
+  the same system at window N − mk = 1 (first at m = 2, N = 3, k = 1 —
+  Codex's instance, admissible since mk = 2 ≤ N−1), and GENIND-6's M6
+  ledger consumes a degree-2 child at window 1 ("the child DRAINS
+  instantly"). The window-1 case is mathematically forced (one state,
+  instant drain, u(1) = total = 1 — my sympy leg validates the S5.2
+  recursion under exactly that extension) but sits OUTSIDE the stated
+  conventions and outside P(2)/P(3) as stated: neither GENIND-2 nor (IH)
+  formally supplies it. Repair: one convention rider extending systems and
+  packages to N = 1, or a split-off terminal case.
+
+The three regraded items: **F4** (the PE8 acceptance report's §4.1
+non-monotonicity display is FALSE — ∂/∂u₁ = T₂ − u₂ ≥ 0, machine-checked,
+and ΠT − Π(T−u) is coordinatewise increasing so upper bounds DO propagate
+to bounds; PREREGISTERED in my scaffold before the run and confirmed by
+Codex independently — the NOTE's own r1 sentences ("an identity only if
+those u's are exact"; P(n)'s fourth member fails under bounds) remain true
+as stated, so the defect sits in the acceptance artifact's elaboration,
+not the accepted text: MINOR at the note, GAP at the PE8 report);
+**F5** (CS4-F(k)'s displayed law omits its visibility floor 4k ≤ N−1 at
+BOTH display sites (S5.3 and GENIND.A(IV)) while its sibling CS4-E
+carries the floor from PE1-M3 — at (q,N,k) = (2,2,1) the display returns
+2^{−6} against a true locus of 0; the sealed runner GATES on it
+(`while 4 * k <= N - 1`, runner lines 709/869), so display-only: MINOR by
+the arc's own PE1-M3 precedent — a seven-pass parallel-display miss);
+**F6** (S5.1's sufficiency proof establishes the DEGREE-level criterion
+"CS occurs at degree n iff n ≥ 4" — the consumed content — but the
+converse sentence "m ≥ 4 realizes CS" read at STAGE level (an m-key
+cluster for arbitrary m > 5) is not established by the displayed padding
+(whose stage carries 4 keys) or the S5.3 embedded genres (displayed at
+m = 5 only): MINOR/wording, no consumer breaks).
+
+No committed number, no count law, no σ-dictionary, and no supplier
+consumption verdict moves. The five-event grammar + partition + α/DRAIN
+locus laws were independently re-verified by my own fresh exhaustive leg
+this pass (7 rows, (m, q, N) up to (4, 3, 4): partition exact, DRAIN law
+exact, α laws exact, CS exactly at m = 4 with E4(1) = 16 at (2,3) and
+13,122 at (3,4) — matching S11's P-3 — and zero CS at m ∈ {2, 3, 5} rows
+below their floors).
+
+## S2. The findings, transcribed + adjudicated (Codex's numbering; raw quotes in the appendix)
+
+| # | Codex finding (compressed) | Codex class | adjudication |
+|---|---|---|---|
+| 1 | GENIND-6(c)'s ONTO-with-constant-fiber rests on "triangular" + slot bookkeeping; triangularity does not imply surjectivity/constant fibers over truncated rings (toy: (x,y) ↦ (x,(x+π)y) mod π²); only the M6 ledger is displayed | GAP | **CONFIRMED — GAP as stated, with disclosure overlap flagged.** The toy counterexample is valid; the missing displayed condition is unit pivots (true via monic extracted factors, used silently). The S4.3 honesty box + GENIND-BOX-2 already price the per-genre ledger compression and name multi-block genres as hostile targets — so this sharpens a disclosed box rather than opening a new surface. Consumed at S6 Step 2/4's mixed buckets (whose stage clauses are [GENIND-H]-conditional regardless). Repair: display the unit-pivot/monic-division argument at schema level |
+| 2 | The recursion leaves its stated window domain: conventions say N ≥ 2, but α-transport reaches window N − mk = 1 (first at m = 2, N = 3, k = 1) and M6's child enters at window 1; P(2)/P(3) are stated for N ≥ 2, so (IH) does not formally supply the consumed read | GAP | **CONFIRMED — GAP (scope leak).** Both instances verified (S1 L117 "window N ≥ 2"; M6 ledger L753 "the child window is 1"; the α instance is admissible at mk = N−1). Mathematically forced extension (window-1 system = 1 state, drains; u(1) = 1) — my sympy leg re-solved the S5.2 recursion with exactly that boundary, closed forms exact N = 2..12 — but the stated packages do not carry it. Repair: a convention rider (N ≥ 1 with the degenerate reading) or a split terminal case at M_l = 1 |
+| 3 | GENIND.C's vanishing invokes "the IH bound … O(poly(N)·Q^{−(N−c)})" — a rate P(k) does not supply ((A2) is bare o(1); exactness supplies a value, not a rate); capped windows M_l = N − D_l can stay bounded as N grows, where the child's limit does not apply and no prefactor split is displayed | GAP | **CONFIRMED — GAP, the heaviest.** Quotes verified (S5.2 vanishing bullet; GENIND.B's package line; W-12 (A2) at the pasted pin). Both halves right: the rate is derivable ONLY under an unpinned species reading of "exact-complement" (the proved n ≤ 3 instances' finite q-power-sum species), and the bounded-M_l β-regime genuinely needs the route-prefactor split (deep entries are rare — the mass is in the prefactor, not the child limit), which is not displayed. GENIND-BOX-4 overlap disclosed both ways: the box prices "bookkeeping displayed, not expanded", the finding shows a consumed RATE not in the displayed hypothesis — sharper than the box. Repair: pin the species in P(k)'s fourth member + display the two-regime estimate |
+| 4 | PE8 §4.1's necessity rationale is false: ∂F/∂u₁ = T₂ − u₂ ≥ 0 (claimed non-monotonicity wrong); 1 − Π(1 − u_i/T_i) is coordinatewise increasing; upper bounds + union bound suffice for W-12's (A2); exactness needed only for the stronger exact-complement member | GAP | **CONFIRMED — scoped to the PE8 ACCEPTANCE ARTIFACT (PASTE G), regraded MINOR at the note.** PREREGISTERED: my scaffold P-4 filed this exact arithmetic before the run and my sympy leg confirmed ∂/∂u₁ = T₂ − u₂ (independent double-kill: two decorrelated models found the same false display). The NOTE's own sentences survive: "an identity only if those u's are exact" is true (identity ≠ bound), and P(n)'s fourth member — the exact complement, deliberately stronger than W-12's (A2) — genuinely fails under bound-only inputs. What falls is the acceptance pass's elaboration of WHY, i.e. a defect in the PE8 report's clean-charge for the very surface it accepted. Repair: a dated note on the PE8 report + one clarifying sentence at Step 4's [r1] record separating identity-propagation from bound-propagation |
+| 5 | CS4-F(k)'s law (q(q−1)/2)·q^{4N−10k−4} displayed without its visibility floor 4k ≤ N−1 at S5.3 AND GENIND.A(IV); at (2,2,1) the display returns 2^{−6}, true locus 0; the sibling CS4-E carries its floor explicitly | GAP | **CONFIRMED — regraded MINOR (display).** Verified at both sites; the sealed runner gates the F4 predictor on `while 4 * k <= N - 1` (runner lines 709–710, 869), so every committed number is unaffected — display-only, the EXACT defect species as PE1-M3 (which added the floor to CS4-E and was graded MINOR); seven passes missed the parallel display. Repair: attach the floor at both sites |
+| 6 | S5.1's sufficiency (padding + QRT-G2) proves degree-level existence only; the converse "m ≥ 4 realizes CS" at stage level (arbitrary m-key clusters) is not established — the padded construction's stage carries 4 keys | GAP | **CONFIRMED — regraded MINOR (wording overreach, consumed clause unaffected).** Correct reading of the proof: padding realizes CS at every DEGREE n ≥ 4 (the theorem's "Therefore" sentence, which is what n ≤ 3 composite-freeness + the [GENIND-H] geography consume); embedded genres are displayed at m = 5 only, so the stage-level reading of "conversely m ≥ 4 realizes CS" is unproved as displayed (likely true via general-m embedded genres, not shown). Nothing consumes the stage-level converse. Repair: weaken the sentence to the degree-level statement or display the general-m embedded genre |
+
+**CHECKED CLEAN (Codex, corroborated against my pre-verdict key + fresh
+machine leg):** the five-event disjointness/completeness pair INCLUDING
+the PE8 §4.3 proof (priority order re-derived; repeated-linear on e ≥ 2 =
+CS not α; e = 1 repeated-nonlinear = CS; mixed polygons CS by the
+existential; no orphan/double membership — my exhaustive leg: partition
+exact on 7 rows); DRAIN-first hull exactness incl. the v(a₀) = N−1 edge;
+α locus laws at small char (its (2,2,3,1) and (2,3,4,1) hand counts = my
+exhaustive leg's row values); the α-bracket arithmetic; β degree descent
+incl. repeated partitions (μ_l < m strictly); capped windows confined to
+1 ≤ M_l ≤ N−1 (with the M_l = 1 endpoint being F2); the ≥ 4-key CS
+minimum both cases; CS4-F and CS5-V1E2 exponent arithmetic on their
+proper domains; GENIND-4's expansion, budgets, and (4h+1, 2h+1) node; the
+I-E identity itself (16³ − 12³ = 2368 re-verified).
