@@ -49,7 +49,24 @@ PREREGISTERED PREDICTIONS (sealed before first full run):
    e3=1, R = y^2+1 = (y+1)^2 reducible): PARI must give TWO factors
    [(4,1),(4,1)] — key-hood needs Lemma 5.3's irreducibility, the
    polygon side alone does not certify.
-VERDICT: GREEN iff 0 violations on scored checks AND both teeth fire.
+ [POST-SEAL DISCLOSURE, 2026-08-09, after the first full run:]
+ TOOTH-T2 FAILED AS DESIGNED — machine sig [(8,1)]: the design
+   mis-read Lemma 5.3. R = (y+1)^2 is a PRIME POWER (one residual
+   ideal L, multiplicity 2); FGMN Thm 6.6 splits g only across
+   DISTINCT (lambda, L) pairs, so non-key does NOT imply reducible
+   (Phi2^2-64x is irreducible, e=8 — the tower refines further).
+   T2 is retained above as the sealed negative record; its run line
+   stays as a disclosed RECORD (not scored, not a tooth).
+ TOOTH-T2' (the corrected tooth, prereg BEFORE its first run): at
+   the N1 profile (K2 = F4), Phi3t2p = Phi2b^2 - 8x*Phi2b - 128
+   (kappa3 = 7 > 6 floor, pins (2,0),(1,7),(0,14) ALL on one side,
+   residual y^2+y+1 which over F4 = (y+w)(y+w^2) SPLITS): the
+   Phi2b-polygon is one-sided with full on-side support, yet PARI
+   must give TWO factors [(2,2),(2,2)] — hypothesis (ii)'s
+   irreducibility-over-K2 is load-bearing, the polygon side alone
+   does not certify (the corrected reading of Lemma 5.3/Thm 6.6).
+VERDICT: GREEN iff 0 violations on scored checks AND teeth T1 and
+T2' fire (T2 = disclosed failed design, recorded not scored).
 Written 2026-08-09 by GENTOW-2 (BOX-CLOSURE campaign); independent of
 genhnr2_supp.py (no imports; committed artifacts untouched).
 """
@@ -214,6 +231,7 @@ PHI3D = padd(padd(pmul(PHI2, PHI2),
 PHI3T1 = padd(padd(pmul(PHI2, PHI2),
                    pmul(pmul([-2], PHI1), PHI2)), [0, -16])
 PHI3T2 = padd(pmul(PHI2, PHI2), [0, -64])
+PHI3T2P = padd(padd(pmul(PHI2B, PHI2B), pmul([0, -8], PHI2B)), [-128])
 W3 = padd(pmul(PHI3A, PHI3A), pmul([256], PHI2))
 W4 = padd(pmul(PHI3A, PHI3A), pmul([512], PHI2))
 W5 = padd(padd(pmul(PHI3A, PHI3A), pmul(pmul([0, 512], PHI3A), [1])),
@@ -323,6 +341,13 @@ def main():
     say('-- TOOTH T1: pins %s -> one_sided=%s (must be False)'
         % (pinsT1, osT1))
     gp_jobs.append((PHI3T2, PHI2, False))
+    pinsT2P = phi_pins(list(PHI3T2P), PHI2B, dv2_N1)
+    osT2P, JT2P = side_check(pinsT2P, 2, 14)
+    chk(osT2P and JT2P == {0, 1, 2},
+        'T2p A-route side/support %s %s' % (osT2P, sorted(JT2P)))
+    say('-- TOOTH T2p A-route: pins %s one-sided, FULL on-side support'
+        % pinsT2P)
+    gp_jobs.append((PHI3T2P, PHI2B, False))
     say('== B-route (PARI/gp): %d jobs ==' % len(gp_jobs))
     sigs, trips = run_gp(gp_jobs)
     allw = WITNESSES + [(t, f, None, None, None, None, None, None, None,
@@ -340,9 +365,13 @@ def main():
                 % (tag, sigs.get(i), got[:3], got[3:]))
         else:
             say('  %s PARI: sig %s' % (tag, sigs.get(i)))
-    t2 = sigs.get(len(gp_jobs) - 1)
-    TEETH['T2'] = (t2 == [(4, 1), (4, 1)])
-    say('-- TOOTH T2: sig %s (must be [(4,1),(4,1)])' % t2)
+    t2 = sigs.get(len(gp_jobs) - 2)
+    say('-- RECORD T2 (disclosed failed design, not scored): sig %s '
+        '(the sealed prediction [(4,1),(4,1)] was a Lemma-5.3 '
+        'mis-read; (y+1)^2 is a prime power)' % t2)
+    t2p = sigs.get(len(gp_jobs) - 1)
+    TEETH['T2p'] = (t2p == [(2, 2), (2, 2)])
+    say('-- TOOTH T2p: sig %s (must be [(2,2),(2,2)])' % t2p)
     say('== VERDICT ==')
     say('checks: %d, violations: %d, teeth: %s'
         % (NCHK[0], len(VIOL), TEETH))
