@@ -2504,3 +2504,45 @@ annex, and the note text above this annex is byte-identical to
   [GENIND-H] — read the row-1 clause as "the exact open box this
   note's [GENIND-H] display already carries," the phrasing S16's
   own re-verification paragraph (L2397–2398) already uses.
+
+---
+
+### Dated acceptance record (2026-08-09, post-PE8)
+
+**GENIND IS ACCEPTED 2/2; the text is FROZEN — dated appends only.**
+PE7 (hostile, fresh context, first d ≥ 2 + n = 10 route) adjudicated
+CLEAN — 0 CRITICAL + 0 GAP + 3 MINOR (report
+`GENIND_passPE7_report.md`, verdict commit 380bc66); its three MINORs
+were cured by the dated corrections annex above (landed b653858). PE8
+(hostile, fresh context, the acceptance attempt: non-prime base
+q ∈ {4, 8, 9} + the n = 12 double-composite + the symbolic parametric
+inclusion–exclusion) adjudicated CLEAN — 0 CRITICAL + 0 GAP + 1 MINOR
+(report `GENIND_passPE8_report.md`, verdict commit 3f5bafc). The
+2-clean count completed 1/2 → 2/2. PE8 re-verified the body's
+byte-freeze (lines 1–2464 md5 14fa6afc == 993935d, the post-PE7 annex
+purely additive). Arc: seal c3212cc → PE1..PE8 → r1..r6 → post-PE7
+rider → this record. Per PE8's verdict line, the three leaders of the
+uniformity-theorem chain (HE7, GENH4, GENIND) are now each through
+the 2-clean bar.
+
+**PE8-m1 cure (PE8's one MINOR, the stale-arc class PE6-m1 named):
+the two arc-state lines inside the frozen region are SUPERSEDED by
+this append.** Both sit in the byte-frozen body and could not be
+edited in place; each reads as of r6, two passes stale at acceptance —
+quoted verbatim:
+
+* Header arc line, L49–50: "the clean count has NOT started — PE7
+  attempts the first clean)." — superseded: the count ran 0/2 → 1/2
+  (PE7 CLEAN, 380bc66) → 2/2 (PE8 CLEAN, 3f5bafc); ACCEPTED.
+* GENIND-BOX-5 arc close, L1414–1415: "— the clean count has NOT
+  started;" — superseded the same way.
+
+(The per-round grade closes — e.g. the r6 record's L2463–2464 "Grade:
+stays 0/2. The consecutive-clean count has NOT started; PE7 (a fresh
+hostile pass) attempts the first clean." — are round-dated records,
+correct as of their rounds; this append is the current state.)
+
+No count law, theorem clause, consumption verdict, or frozen number
+is touched by this append. [GENIND-H] at n ≥ 4 remains the displayed
+OPEN box — the acceptance freezes the reduction and its record, not
+the box.
