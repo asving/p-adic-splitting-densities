@@ -7,7 +7,17 @@ ledger 970022b). **Attempt grade 0/2** (composed; no hostile arc)
 GENHN-T(b) tower-leaf refutation; F2 the GENHN-1 budget display) +
 1 GAP (F3) + 2 MINOR; all five repaired this round at [r2] tags
 (T(b)′ proved at S8's annex; supp machine leg genhnr2_supp.py
-147/0). Clean count stays 0/2; PE2 next]**.
+147/0). Clean count stays 0/2; PE2 next]**
+**[r3 2026-08-09: passPE2 ran NOT CLEAN — 0 CRITICAL + 2 GAP (F1
+the depth-≥ 3 iterated composition unboxed; F2 the (CS-3) rider
+over-cover) + 2 MINOR (F3/F4); T(b)′ (i)–(iv) itself HELD against
+re-derivation + a fresh instrument (genhn_pe2_fresh.py, 219/0, 4
+teeth). The four findings repaired this round at [r3] tags: F1
+BOXED as [GENHN-TOW-1] item (6) after a T(b)″ attempt whose exact
+obstruction is displayed there, with GENHN.B's tower displays now
+naming the depth split (n ∈ {8..15} depth-2; n ≥ 16 adds item
+(6)); F2 rider scoped to full inner sides; F3/F4 inline
+corrections. Clean count stays 0/2; PE3 next]**.
 **Instrument:** sealed two-commit battery
 `verification/openmath/genhn_checks.py` — the genre classification
 machine-checked at n = 5 AND n = 6 (fresh general-residual reader,
@@ -1573,6 +1583,43 @@ suppliers is GENIND S16's fired-clause table @ dcc20bb:**
   uniformity display) inherit that box — cross-note status is the
   orchestrator's fold, flagged here. Clean count 0/2 → 0/2; PE2
   next.
+* **[r3] ARC LINE UPDATE 2026-08-09.** passPE2 ran (report
+  `GENHN_passPE2_report.md`, 701c7b1): NOT CLEAN — 0 CRITICAL +
+  2 GAP + 2 MINOR. LEMMA GENHN-T(b)′ (i)–(iv) HELD against
+  re-derivation and against a fresh instrument
+  (`genhn_pe2_fresh.py`, GREEN 219/0, 4 teeth, incl. first
+  outer-f₁ = 2 tower genres, first 2-stage dictionary contact,
+  the η₂-cocycle adjudication, and Q = 4 tower legs); both GAPs
+  were coverage defects of the r2 DISPLAYS around the held
+  lemma. THIS round ([r3] tags): F1 — the depth-≥ 3 iterated key
+  composition (first live n = 16) BOXED as [GENHN-TOW-1] item
+  (6): the iterated ladder-normalizer and key data are DERIVED
+  there (n̂₂(m) = π^a x^i Φ′^b; Φ₃ = Φ₂^{e₃f₃} − Σ k̂_tΦ₂^{e₃t};
+  witnesses n̂₂(21) = 16Φ′, Φ₃ = Φ₂² − 16Φ′) and a T(b)″ was
+  honestly ATTEMPTED — its two open steps are displayed in the
+  item (the intermediate-development one-sidedness, true at the
+  witness by an exact carry cancellation, unproved in general;
+  the depth-≥ 3 node floor's provenance, riding item (1)); the
+  GENHN.B tower clause and corrected-conditionality display now
+  name the depth split (n ∈ {8, …, 15}: depth-2, T(b)′'s one
+  step + items (1)–(5); n ≥ 16: item (6) joins). F2 — the (CS-3)
+  rider scoped to FULL inner sides ((iii)'s proved perimeter);
+  partial-side inner μ₂ = 2 leaves (first live n = 10) ride item
+  (4), with the passPE2 n = 10 witness and the reader's loud
+  refusal cited at the rider. F3 — the budget erratum's f₁ ≥ 2
+  magnitude parenthetical sign corrected (old − correct =
+  h(1 − (μ−j)(f₁−1)); genre-F instance re-derived). F4 — the
+  (iv) divergence tally denominator corrected to 35/35 compared
+  rows (the 3 SUPP-C 3-stage rows have no stage read). Machine
+  support: ADDITIVE citations only (SUPP-C's three 3-stage
+  n = 16 instances at the existing pins 51154c95…/664036bc…;
+  the passPE2 fresh-instrument pins 4a28246e…/10b685b0…); sealed
+  runners and artifacts byte-untouched; the item-(6) witness
+  arithmetic (Φ₃'s carry cancellation, the dv-pins, the F3 sign)
+  re-computed at this repair, not transcribed. Consumers:
+  GENIND's n ≥ 8 conditionality line inherits the refined
+  n ≥ 10 / n ≥ 16 scoping — orchestrator's fold, flagged here.
+  Clean count 0/2 → 0/2; PE3 next.
 
 ## S11. THE SEALED BATTERY (sealed at commit 1; predictions
 preregistered BEFORE the first full run)
