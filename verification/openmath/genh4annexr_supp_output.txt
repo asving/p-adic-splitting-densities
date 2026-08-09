@@ -1,0 +1,10 @@
+C0 (report only): genh4annex_supp.py md5 bcb874982d2cea9a43b43e57c0e73a06
+C0 pins: 5 verified
+C1 (R1): pre2 row partitions 2^20 EXACTLY: 4 law-kind keys (sum 655360) + VTX 131072 (=2^17, forced) + L1TAIL 262144 (=2^18, forced); remainder 393216
+C2 (R2): k=2 SPLTAIL empty at N=9,10, first live at N=11 (SPLTAIL(5) only); committed (2,9,2) has none; all 4 committed F-SPLTAIL keys are k=1 (zero k>=2 exercise before this leg)
+C3 (R3): SEALED law_F(2,11,2) SPLTAIL(5) = 24576 = 3*2^12*2 (deep0 = 2 = q^(k-1)); fresh S6 typing ties the full table key-for-key (9 keys); node mass 2^20 exact; the OLD-gloss (band-pinned) family = 12288 = HALF: a strict subfamily, count-refuted
+C4 (R4): all 24576 leaf members enumerated: dv(A1) = 5 on all; GENH4-7pr floor (u_state >= 11 > 10 = 2w) holds on ALL; the band-nonzero HALF (12288) violates the OLD gloss hypothesis (v(a1) >= 11), 0 violate the corrected floor (characteristic-blind digit layer)
+C5 (R5): 96 char-0 lifts (24 states x 4 lifts; 48 band-zero + 48 band-NONZERO members incl. A0=0 corner and u=N=11 lifts): PARI sigma == {(1,2),(1,2)} on all (0 bad) -- the label is constant across the free band digit
+C6 (R6): 96 char-p (F_2[[t]]) members: disc != 0 (exact gcd) and EXACTLY 4 roots in F_4[[t]], 0 in F_2[[t]] on all (0 bad): two unramified conjugate quadratic pairs, the {(1,2),(1,2)} read -- FIRST char-p sigma contact for F-SPLTAIL
+C7 (R7) TOOTH: 2 wrong-floor mutants (beta0 digit at position 9 < N: u = 9 odd <= 2w = 10 -> RAM(9)): char-0 PARI sigma = {(2,2)} != SPLTAIL label; char-p 0 roots in F_4[[t]] != 4: FIRED 4/4 -- the GENH4-7pr floor is load-bearing
+VERDICT: GREEN (0 violations) 0.4s
