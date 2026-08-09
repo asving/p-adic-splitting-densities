@@ -1004,6 +1004,44 @@ with no weld face; GENHN.A(iv) at μ ≥ 3 adds ONE accepted weld face
 family [GENHN-HE(μ ≥ 3)]. No axiom anywhere; grade = composition
 0/2.**
 
+**[e2] S10 REFRESH 2026-08-09 (dated append at the erratum round;
+as-of the wave-13 fold 606821e + this round's own commits,
+per-commit-timestamp rule). Supplier movements since the pins above
+— enumerated statuses only; the consumed-clause audit for the shared
+suppliers is GENIND S16's fired-clause table @ dcc20bb:**
+* **GENH4: ACCEPTED 2/2, FULLY FROZEN.** Accepted body byte-frozen
+  at r3 4b0d946; annex stack (ANNEX PE5 baf05ed, ANNEX R b10a5a7 =
+  the Codex CHALLENGE 5c8d2fd discharge, ANNEX R2 760d20f, dated
+  corrections 6568114) itself accepted 2/2 at annexpass3 7f27065.
+  Consumed here: law_E/law_F @ runner md5 pin ee8024b7…432f
+  (byte-untouched through the whole arc) + the μ = 2 instances. The
+  three GENH4-side corrections that LAND on this note are executed
+  as this round's errata: E1 (GENHN-3(a) band exit, r3 trichotomy @
+  4b0d946), E2 (GENHN.A(v) comp-weighted band census, [r2] display
+  re-derived), E3 (GENHN.A(i)/S3.1 L/O_L carrier, ANNEX R R3).
+* **HE7: ACCEPTED 2/2, FULLY FROZEN** (final dated corrections
+  ca3754d; body prefix md5 732af1e1, dated appends only). Not a
+  supplier of this note's count laws; its D′h remark is consumed by
+  the [r1] erratum (S3.2 annex) as recorded there.
+* **GENIND: 1/2** — PE7 CLEAN @ 380bc66 + post-PE7 micro-annex
+  b653858 (byte-freeze verified there); acceptance attempt
+  dispatched at wave 14. Its r6 supplier re-pin round (dcc20bb)
+  walked THIS note's consumed surface (7 cite sites, completed at
+  the micro-annex) and reports SURVIVES at 850e77e — the [r1]/[e2]
+  repairs touch none of the 7 consumed sentences' count content.
+* **W-12: r5 @ be4a1dc/ee17210 (0/2), PE6 dispatched (wave 14).**
+  HEX3: r3 @ b6a1d69 (0/2). HMENU3: ACCEPTED @ 050425d + ANNEX A
+  19c0285. W-11, GRTJC, SIGMALAW, J-D0, DULEMMA, QSCOUT22: pins
+  unmoved as listed above.
+* **ARC LINE (honest).** With HE7 and GENH4 through both bars, and
+  the three queued errata (E1/E2/E3) now executed, **GENHN's OWN PE1
+  IS UNBLOCKED**: this note stands at 0/2 (composed, [r1] + [e2]
+  tagged repairs, no hostile pass yet) and is next in the
+  hostile-arc queue. S9.2 item 6's arc list reads accordingly at
+  this date: GENIND 1/2 (accepting), GENH4 DONE (2/2 frozen), THIS
+  NOTE PE1 next; W-12 PE6 and the HEX3/HMENU3 lines as pinned
+  above.**
+
 ## S11. THE SEALED BATTERY (sealed at commit 1; predictions
 preregistered BEFORE the first full run)
 
