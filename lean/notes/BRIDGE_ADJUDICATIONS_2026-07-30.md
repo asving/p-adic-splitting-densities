@@ -14204,3 +14204,18 @@ W-11/HEX3 R(M) — a three-note tie). Server error killed R2–R6 + the
 W-12 re-anchor — RESUME dispatched with the added housekeeping: the
 GENHN-movement dated append on GENIND (its n ≥ 8 leg now names
 [GENHN-TOW-1]).
+
+---
+
+## WAVE 16 RESUME COMPLETE (wwb8dpzum): GENIND ANNEX R FULLY EXECUTED (R1–R6 + close + the GENHN-movement append: n ≥ 8 conditionality = [GENIND-H] + [GENHN-HE(μ≥3)] + [GENHN-TOW-1]; 7 PE7-m2 sites screened vs the GENHN diff, all SURVIVE) + W-12 RE-ANCHOR LANDED — WAVE 17: HEX3 rider → PE7 (acceptance attempt) + GENHN PE2 + HE6 PE2 — 2026-08-09
+
+Annex highlights: R2's unit-pivot rider RE-DERIVED (pivots = 1 by
+binomial unit diagonal + monic-divisor structure — Codex's toy was
+exactly the non-unit failure shape); R6 refutes the PE8 report's
+own §4.1 non-monotonicity remark (∂F/∂u₁ = T₂−u₂ ≥ 0, symbolic
+leg) — the report stays untouched, the notice rides the annex.
+Byte-freeze discipline: the accepted body's md5 verified at EVERY
+commit (4×). The GENIND annex stack is honestly disclosed
+NOT-hostile-passed (its scoped pass queues behind the chain notes).
+Board: HE7/GENH4/GENIND/W-12 frozen-accepted · HEX3 1/2 (rider
+owed) · GENHN 0/2 post-r2 · HE6 0/2 · distribution arcs 0/2.
