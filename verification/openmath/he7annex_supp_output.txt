@@ -1,0 +1,12 @@
+PARI stack size set to 1073741824 bytes, maximum size set to 1073741824
+HE7 ANNEX F-1 supp: two repeated classes + mu2=4 refines (n=16)
+row p=5 s=1 lam2=11: members 12 agree 12 l3 0 kinds {'A': 6, 'B': 4, 'C': 2} sig {'((4, 1), (4, 1), (8, 1))': 2, '((8, 1), (8, 1))': 4, '((4, 2), (8, 1))': 1, '((4, 1), (12, 1))': 3, '((16, 1),)': 2}
+row p=5 s=1 lam2=12: members 12 agree 12 l3 0 kinds {'A': 6, 'B': 4, 'C': 2} sig {'((4, 2), (8, 1))': 2, '((8, 1), (8, 1))': 3, '((4, 1), (4, 1), (8, 1))': 2, '((4, 1), (12, 1))': 4, '((16, 1),)': 1}
+row p=5 s=2 lam2=11: members 12 agree 12 l3 0 kinds {'A': 6, 'B': 4, 'C': 2} sig {'((8, 1), (8, 1))': 4, '((4, 1), (4, 1), (8, 1))': 1, '((4, 2), (8, 1))': 1, '((4, 1), (12, 1))': 5, '((16, 1),)': 1}
+row p=5 s=2 lam2=12: members 12 agree 12 l3 0 kinds {'A': 6, 'B': 4, 'C': 2} sig {'((8, 1), (8, 1))': 7, '((4, 1), (12, 1))': 4, '((16, 1),)': 1}
+row p=7 s=1 lam2=11: members 12 agree 12 l3 0 kinds {'A': 6, 'B': 4, 'C': 2} sig {'((8, 1), (8, 1))': 3, '((4, 1), (4, 1), (8, 1))': 2, '((4, 1), (4, 1), (4, 2))': 1, '((4, 2), (8, 1))': 1, '((4, 1), (12, 1))': 3, '((16, 1),)': 2}
+row p=7 s=1 lam2=12: members 12 agree 12 l3 0 kinds {'A': 6, 'B': 4, 'C': 2} sig {'((4, 2), (8, 1))': 1, '((4, 1), (4, 1), (8, 1))': 5, '((8, 1), (8, 1))': 1, '((4, 2), (4, 2))': 1, '((4, 1), (12, 1))': 2, '((16, 1),)': 2}
+row p=7 s=2 lam2=11: members 12 agree 12 l3 0 kinds {'A': 6, 'B': 4, 'C': 2} sig {'((8, 1), (8, 1))': 5, '((4, 2), (8, 1))': 1, '((4, 1), (4, 1), (8, 1))': 2, '((4, 1), (12, 1))': 3, '((16, 1),)': 1}
+row p=7 s=2 lam2=12: members 12 agree 12 l3 0 kinds {'A': 6, 'B': 4, 'C': 2} sig {'((4, 1), (4, 1), (4, 2))': 1, '((8, 1), (8, 1))': 5, '((4, 1), (12, 1))': 4, '((16, 1),)': 2}
+TOTAL 96 members, 96 agree, 0 L3-skips, checks {'top-node-exact': 96, 'refine': 148, 'P2-parked-exact': 128, 'P2B-persist': 132, 'decided-simple': 164, 'P1-pari-agree': 96, 'P4-naive-cycle-caught': 48, 'decided-simple-at-top': 32, 'P5-pure-no-survivor': 16}, violations 0, 3.5s
+VERDICT: GREEN
