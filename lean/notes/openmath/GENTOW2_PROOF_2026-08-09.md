@@ -5,7 +5,13 @@
 **STATUS: COMPOSED, item (6)(α) PROVED-VIA-CITE (THEOREM GENTOW2-A +
 LEMMA GENTOW2-B), battery GREEN (41 checks/0 violations, teeth T1 +
 T2′ fired; T2 = disclosed failed design). Grade 0/2 (attempt; hostile
-arc later). Unit: GENTOW-2, BOX-CLOSURE campaign.**
+arc later). Unit: GENTOW-2, BOX-CLOSURE campaign.
+[r1 2026-08-09, post-PE1 repair round: F1 PDF-provenance leg CLOSED
+(S6.1 table; arXiv fetch bit-identical), F2 B-2 partially derived +
+honestly re-attributed (LEMMA GENTOW2-B′, S5.1), F3 fallback clause
+corrected to the true transformation law, F4/F5/F6 minors cured;
+record in S9. Sealed machine artifacts untouched. Grade stays 0/2;
+PE2 next.]**
 
 Charge (BOX-CLOSURE item (6), LITERATURE-FIRST): the r3 T(b)″
 attempt (commit 08ec526, GENHN_PROOF S9.1 [GENHN-TOW-1] item (6))
@@ -57,7 +63,7 @@ FGMN chain for the depth-2 tower's terminal valuation ν:
 | ψ₂ (residual of Φ₂'s Φ′-read) | ψ₂ = R₂(φ₃) (Cor 5.6(2)) | T + 1 |
 | ψ₃ (stage-3 residual) | the prescribed ψ, R₃(Φ₃) = ψ | T − 1 |
 | repo e₂, f₂ | FGMN e₂ = denom(e(µ₁)λ₂), f₂ = deg ψ₂ | 2, 1 |
-| repo e₃, f₃ | FGMN e₄-level data of [ν;(Φ₃-side)] | 2, 1 |
+| repo e₃, f₃ | FGMN (e₃, f₃): e₃ = e(µ₃)/e(µ₂) = denom. data of the λ₃-augmentation, f₃ = deg ψ₃ = [F₄:F₃]; the pair with m₄ = e₃f₃m₃ per eq (9) (PDF pp.15–16) — deg Φ₃ = m₄. [r1, PE1 F6: the pre-repair label "e₄-level data" named the F₄ residue-field LEVEL and was undefined; witness re-derivation: ν(Φ₂) = 21/8, denom 8 = e(µ₃) over e(µ₂) = 4 gives e₃ = 2] | 2, 1 |
 | u₂ = dv₂(Φ′) | e(µ₂)(w₂ + λ₂), w₂ = µ₁(φ₂) | 5 |
 | v(Φ′(ξ)) = u₂/(e₁e₂) | µ(φ₂) = w₂ + λ₂ (Cor 6.4) | 5/4 |
 | κ₂ (repo Φ′-side slope) | e(µ₁)(w₂ + λ₂) | 5/2 |
@@ -210,6 +216,9 @@ hence Φ₃ ∈ P, a prime polynomial in FGMN's Definition 6.1 sense.
 were both allowed the degrees would still differ (ψ₃ ≠ 1), but under
 the properness proviso e₃f₃ ≥ 2 we simply have deg Φ₃ > deg Φ₂, and
 in all cases R₃(Φ₃) ≠ R₃(Φ₂), so Φ₃ ≁_ν Φ₂ by Prop 5.7 (2)⇔(3) [Q7].
+[r1, PE1 F4] Prop 5.7 requires BOTH arguments in KP(ν): Φ₃ ∈ KP(ν)
+by (a) above, and Φ₂ = φ₃ ∈ KP(ν) by Lemma 5.3(1) [Q4] — deg φ₃ =
+m₃ and φ₃ ∼_ν φ₃ (reflexivity of ∼_ν).
 
 *(b)+(c)+(d) The cite fires.* Apply Theorem 6.3 [Q9] with F = φ =
 Φ₃, µ = ν: F = φ, so φ |_ν F holds (the proof's opening line, quoted
@@ -589,3 +598,52 @@ triples). Teeth: T1 = a floor-breaching recipe (u₃ = 9 < 10) whose
 Φ′-development must be flagged NOT one-sided (machine-couples (α) to
 the (β) floor); T2 = a reducible-residual recipe (R = (y+1)²) that
 must factor [(4,1),(4,1)] — the polygon side alone must NOT certify.
+
+## S9. [r1] PE1 REPAIR RECORD (2026-08-09)
+
+Verifier: GENTOW2_passPE1_report.md (commit 61daa69; target blob at
+531c212). Charge honored: repairs RE-DERIVED (the PDF pages were
+re-read visually; the B′ bridge and the F6 row were recomputed at
+the witness), sealed machine artifacts byte-untouched this round
+(gentow2_checks.py, both run outputs, gentow2_pe1_fresh.py + its
+output — zero diffs under verification/openmath/ in the r1 commits).
+
+* **F1 (GAP, provenance over-claim) → CURED at the strongest
+  available grade.** The actual arXiv paper was fetched
+  (https://arxiv.org/pdf/1305.0775v3, 2026-08-09) and found
+  BIT-IDENTICAL to the local docs/references PDF (md5
+  da846c82f1fcb619cefb3feb8164191e, 518,522 bytes, both). The 12
+  consumed statements + eq (14) were then each verified against the
+  rendered PDF pages — content AND numbering — by a visual read
+  decorrelated from the pdftotext layout extraction: 13/13 MATCH
+  (table S6.1), plus 3 [r1]-added cites (rows 14–16) and 8
+  supporting pins. The three ledger-claim sentences (S1, S3, S6)
+  now state the true method and scope. Commit 1e091d1.
+* **F2 (GAP, B-2 provenance pointer) → CURED: partially derived +
+  honestly re-attributed.** New LEMMA GENTOW2-B′ (S5.1) derives
+  from accepted corpus (B-1 + T(b)′(iii) + Cor 4.7/Lemma 3.17/
+  Thm 4.8): repo digit and FGMN ε₂-coordinate agree up to an
+  x₀-free, g-free unit family u(β) = R₃,β(n̂₂(β̂)). B-2's residue
+  — u = 1 at the grades used — is re-attributed as FIRST MADE IN
+  THIS NOTE, disclosed-not-derived, with its machine support stated
+  as support. GENTOW5-A1 checked and shown repo-internal (its ϑ_t
+  compares two repo conventions; it cannot supply the cross-frame
+  u). Commit dd44d20.
+* **F3 (GAP, false fallback clause) → CURED.** The y ↦ εy sentence
+  is deleted; the corrected clause displays the true transformation
+  law (B′(5): R = y^{f₃} − Σ u(β_t)c_t y^t), the digit
+  re-parameterization c_t ↦ u(β_t)^{−1}c_t that keeps GENTOW2-A
+  and its consumers intact under BOTH discrepancy modes (fixed and
+  grade-varying/cocycle), the verifier's F₄ counter-instance, and
+  the f₃ ≤ 1 scope where the old clause was right. Commit dd44d20.
+* **F4 (MINOR) → CURED**: Φ₂ = φ₃ ∈ KP(ν) via Lemma 5.3(1) added
+  where Prop 5.7 fires (S4). This commit.
+* **F5 (MINOR) → CURED**: §6-header pin corrected L1434 → L1433
+  (PDF p.27). Commit 1e091d1.
+* **F6 (MINOR) → CURED**: the S2 (e₃, f₃) row now defines its
+  target — FGMN (e₃, f₃) with m₄ = e₃f₃m₃ (eq (9)); the undefined
+  "e₄-level data" label retired; witness denominator recomputed
+  (ν(Φ₂) = 21/8 → e₃ = 2). This commit.
+
+Grade: attempt 0/2 unchanged. Next: PE2 (second hostile pass) on
+the repaired note.
