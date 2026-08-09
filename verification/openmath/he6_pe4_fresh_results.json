@@ -1,0 +1,1014 @@
+{
+ "frames": [
+  {
+   "d": -1,
+   "p": 3,
+   "rows": [
+    {
+     "m": 0,
+     "cfg": "FROBSPLIT",
+     "pert": "base",
+     "int": true,
+     "sig": [
+      [
+       4,
+       1
+      ],
+      [
+       4,
+       1
+      ]
+     ],
+     "ctrl": [
+      [
+       4,
+       2
+      ]
+     ]
+    },
+    {
+     "m": 1,
+     "cfg": "FROBSPLIT",
+     "pert": "P1",
+     "int": true,
+     "sig": [
+      [
+       4,
+       1
+      ],
+      [
+       4,
+       1
+      ]
+     ],
+     "ctrl": [
+      [
+       4,
+       2
+      ]
+     ]
+    },
+    {
+     "m": 2,
+     "cfg": "FROBSPLIT",
+     "pert": "P2",
+     "int": false,
+     "sig": [
+      [
+       4,
+       1
+      ],
+      [
+       4,
+       1
+      ]
+     ],
+     "ctrl": null
+    },
+    {
+     "m": 3,
+     "cfg": "FROBSPLIT",
+     "pert": "P3",
+     "int": false,
+     "sig": [
+      [
+       4,
+       1
+      ],
+      [
+       4,
+       1
+      ]
+     ],
+     "ctrl": null
+    },
+    {
+     "m": 4,
+     "cfg": "FROBSPLIT",
+     "pert": "P4",
+     "int": true,
+     "sig": [
+      [
+       4,
+       1
+      ],
+      [
+       4,
+       1
+      ]
+     ],
+     "ctrl": [
+      [
+       4,
+       2
+      ]
+     ]
+    },
+    {
+     "m": 5,
+     "cfg": "FROBSPLIT",
+     "pert": "P5",
+     "int": false,
+     "sig": [
+      [
+       4,
+       1
+      ],
+      [
+       4,
+       1
+      ]
+     ],
+     "ctrl": null
+    },
+    {
+     "m": 6,
+     "cfg": "FROBSPLIT",
+     "pert": "P6",
+     "int": true,
+     "sig": [
+      [
+       4,
+       1
+      ],
+      [
+       4,
+       1
+      ]
+     ],
+     "ctrl": [
+      [
+       4,
+       2
+      ]
+     ]
+    },
+    {
+     "m": 7,
+     "cfg": "FROBSPLIT",
+     "pert": "P7",
+     "int": false,
+     "sig": [
+      [
+       4,
+       1
+      ],
+      [
+       4,
+       1
+      ]
+     ],
+     "ctrl": null
+    },
+    {
+     "m": 8,
+     "cfg": "FROBSPLIT",
+     "pert": "P8",
+     "int": true,
+     "sig": [
+      [
+       4,
+       1
+      ],
+      [
+       4,
+       1
+      ]
+     ],
+     "ctrl": [
+      [
+       4,
+       2
+      ]
+     ]
+    },
+    {
+     "m": 9,
+     "cfg": "FROBSPLIT",
+     "pert": "P9",
+     "int": false,
+     "sig": [
+      [
+       4,
+       1
+      ],
+      [
+       4,
+       1
+      ]
+     ],
+     "ctrl": null
+    },
+    {
+     "m": 10,
+     "cfg": "SPLITMIX",
+     "pert": "base",
+     "int": false,
+     "sig": [
+      [
+       4,
+       1
+      ],
+      [
+       4,
+       1
+      ]
+     ],
+     "ctrl": null
+    },
+    {
+     "m": 11,
+     "cfg": "SPLITMIX",
+     "pert": "P1",
+     "int": false,
+     "sig": [
+      [
+       4,
+       1
+      ],
+      [
+       4,
+       1
+      ]
+     ],
+     "ctrl": null
+    },
+    {
+     "m": 12,
+     "cfg": "SPLITMIX",
+     "pert": "P2",
+     "int": false,
+     "sig": [
+      [
+       4,
+       1
+      ],
+      [
+       4,
+       1
+      ]
+     ],
+     "ctrl": null
+    },
+    {
+     "m": 13,
+     "cfg": "SPLITMIX",
+     "pert": "P3",
+     "int": false,
+     "sig": [
+      [
+       4,
+       1
+      ],
+      [
+       4,
+       1
+      ]
+     ],
+     "ctrl": null
+    },
+    {
+     "m": 14,
+     "cfg": "SPLITMIX",
+     "pert": "P4",
+     "int": false,
+     "sig": [
+      [
+       4,
+       1
+      ],
+      [
+       4,
+       1
+      ]
+     ],
+     "ctrl": null
+    },
+    {
+     "m": 15,
+     "cfg": "SPLITMIX",
+     "pert": "P5",
+     "int": false,
+     "sig": [
+      [
+       4,
+       1
+      ],
+      [
+       4,
+       1
+      ]
+     ],
+     "ctrl": null
+    },
+    {
+     "m": 16,
+     "cfg": "SPLITMIX",
+     "pert": "P6",
+     "int": false,
+     "sig": [
+      [
+       4,
+       1
+      ],
+      [
+       4,
+       1
+      ]
+     ],
+     "ctrl": null
+    },
+    {
+     "m": 17,
+     "cfg": "SPLITMIX",
+     "pert": "P7",
+     "int": false,
+     "sig": [
+      [
+       4,
+       1
+      ],
+      [
+       4,
+       1
+      ]
+     ],
+     "ctrl": null
+    },
+    {
+     "m": 18,
+     "cfg": "SPLITMIX",
+     "pert": "P8",
+     "int": false,
+     "sig": [
+      [
+       4,
+       1
+      ],
+      [
+       4,
+       1
+      ]
+     ],
+     "ctrl": null
+    },
+    {
+     "m": 19,
+     "cfg": "SPLITMIX",
+     "pert": "P9",
+     "int": false,
+     "sig": [
+      [
+       4,
+       1
+      ],
+      [
+       4,
+       1
+      ]
+     ],
+     "ctrl": null
+    },
+    {
+     "m": 20,
+     "cfg": "INERT2",
+     "pert": "base",
+     "int": false,
+     "sig": [
+      [
+       4,
+       2
+      ]
+     ],
+     "ctrl": null
+    },
+    {
+     "m": 21,
+     "cfg": "INERT2",
+     "pert": "P1",
+     "int": false,
+     "sig": [
+      [
+       4,
+       2
+      ]
+     ],
+     "ctrl": null
+    },
+    {
+     "m": 22,
+     "cfg": "INERT2",
+     "pert": "P2",
+     "int": false,
+     "sig": [
+      [
+       4,
+       2
+      ]
+     ],
+     "ctrl": null
+    },
+    {
+     "m": 23,
+     "cfg": "INERT2",
+     "pert": "P3",
+     "int": false,
+     "sig": [
+      [
+       4,
+       2
+      ]
+     ],
+     "ctrl": null
+    },
+    {
+     "m": 24,
+     "cfg": "INERT2",
+     "pert": "P4",
+     "int": false,
+     "sig": [
+      [
+       4,
+       2
+      ]
+     ],
+     "ctrl": null
+    },
+    {
+     "m": 25,
+     "cfg": "INERT2",
+     "pert": "P5",
+     "int": false,
+     "sig": [
+      [
+       4,
+       2
+      ]
+     ],
+     "ctrl": null
+    },
+    {
+     "m": 26,
+     "cfg": "INERT2",
+     "pert": "P6",
+     "int": false,
+     "sig": [
+      [
+       4,
+       2
+      ]
+     ],
+     "ctrl": null
+    },
+    {
+     "m": 27,
+     "cfg": "INERT2",
+     "pert": "P7",
+     "int": false,
+     "sig": [
+      [
+       4,
+       2
+      ]
+     ],
+     "ctrl": null
+    },
+    {
+     "m": 28,
+     "cfg": "INERT2",
+     "pert": "P8",
+     "int": false,
+     "sig": [
+      [
+       4,
+       2
+      ]
+     ],
+     "ctrl": null
+    },
+    {
+     "m": 29,
+     "cfg": "INERT2",
+     "pert": "P9",
+     "int": false,
+     "sig": [
+      [
+       4,
+       2
+      ]
+     ],
+     "ctrl": null
+    }
+   ]
+  },
+  {
+   "d": 2,
+   "p": 5,
+   "rows": [
+    {
+     "m": 0,
+     "cfg": "FROBSPLIT",
+     "pert": "base",
+     "int": true,
+     "sig": [
+      [
+       4,
+       1
+      ],
+      [
+       4,
+       1
+      ]
+     ],
+     "ctrl": [
+      [
+       4,
+       2
+      ]
+     ]
+    },
+    {
+     "m": 1,
+     "cfg": "FROBSPLIT",
+     "pert": "P1",
+     "int": true,
+     "sig": [
+      [
+       4,
+       1
+      ],
+      [
+       4,
+       1
+      ]
+     ],
+     "ctrl": [
+      [
+       4,
+       2
+      ]
+     ]
+    },
+    {
+     "m": 2,
+     "cfg": "FROBSPLIT",
+     "pert": "P2",
+     "int": false,
+     "sig": [
+      [
+       4,
+       1
+      ],
+      [
+       4,
+       1
+      ]
+     ],
+     "ctrl": null
+    },
+    {
+     "m": 3,
+     "cfg": "FROBSPLIT",
+     "pert": "P3",
+     "int": false,
+     "sig": [
+      [
+       4,
+       1
+      ],
+      [
+       4,
+       1
+      ]
+     ],
+     "ctrl": null
+    },
+    {
+     "m": 4,
+     "cfg": "FROBSPLIT",
+     "pert": "P4",
+     "int": true,
+     "sig": [
+      [
+       4,
+       1
+      ],
+      [
+       4,
+       1
+      ]
+     ],
+     "ctrl": [
+      [
+       4,
+       2
+      ]
+     ]
+    },
+    {
+     "m": 5,
+     "cfg": "FROBSPLIT",
+     "pert": "P5",
+     "int": false,
+     "sig": [
+      [
+       4,
+       1
+      ],
+      [
+       4,
+       1
+      ]
+     ],
+     "ctrl": null
+    },
+    {
+     "m": 6,
+     "cfg": "FROBSPLIT",
+     "pert": "P6",
+     "int": true,
+     "sig": [
+      [
+       4,
+       1
+      ],
+      [
+       4,
+       1
+      ]
+     ],
+     "ctrl": [
+      [
+       4,
+       2
+      ]
+     ]
+    },
+    {
+     "m": 7,
+     "cfg": "FROBSPLIT",
+     "pert": "P7",
+     "int": false,
+     "sig": [
+      [
+       4,
+       1
+      ],
+      [
+       4,
+       1
+      ]
+     ],
+     "ctrl": null
+    },
+    {
+     "m": 8,
+     "cfg": "FROBSPLIT",
+     "pert": "P8",
+     "int": true,
+     "sig": [
+      [
+       4,
+       1
+      ],
+      [
+       4,
+       1
+      ]
+     ],
+     "ctrl": [
+      [
+       4,
+       2
+      ]
+     ]
+    },
+    {
+     "m": 9,
+     "cfg": "FROBSPLIT",
+     "pert": "P9",
+     "int": false,
+     "sig": [
+      [
+       4,
+       1
+      ],
+      [
+       4,
+       1
+      ]
+     ],
+     "ctrl": null
+    },
+    {
+     "m": 10,
+     "cfg": "SPLITMIX",
+     "pert": "base",
+     "int": false,
+     "sig": [
+      [
+       4,
+       1
+      ],
+      [
+       4,
+       1
+      ]
+     ],
+     "ctrl": null
+    },
+    {
+     "m": 11,
+     "cfg": "SPLITMIX",
+     "pert": "P1",
+     "int": false,
+     "sig": [
+      [
+       4,
+       1
+      ],
+      [
+       4,
+       1
+      ]
+     ],
+     "ctrl": null
+    },
+    {
+     "m": 12,
+     "cfg": "SPLITMIX",
+     "pert": "P2",
+     "int": false,
+     "sig": [
+      [
+       4,
+       1
+      ],
+      [
+       4,
+       1
+      ]
+     ],
+     "ctrl": null
+    },
+    {
+     "m": 13,
+     "cfg": "SPLITMIX",
+     "pert": "P3",
+     "int": false,
+     "sig": [
+      [
+       4,
+       1
+      ],
+      [
+       4,
+       1
+      ]
+     ],
+     "ctrl": null
+    },
+    {
+     "m": 14,
+     "cfg": "SPLITMIX",
+     "pert": "P4",
+     "int": false,
+     "sig": [
+      [
+       4,
+       1
+      ],
+      [
+       4,
+       1
+      ]
+     ],
+     "ctrl": null
+    },
+    {
+     "m": 15,
+     "cfg": "SPLITMIX",
+     "pert": "P5",
+     "int": false,
+     "sig": [
+      [
+       4,
+       1
+      ],
+      [
+       4,
+       1
+      ]
+     ],
+     "ctrl": null
+    },
+    {
+     "m": 16,
+     "cfg": "SPLITMIX",
+     "pert": "P6",
+     "int": false,
+     "sig": [
+      [
+       4,
+       1
+      ],
+      [
+       4,
+       1
+      ]
+     ],
+     "ctrl": null
+    },
+    {
+     "m": 17,
+     "cfg": "SPLITMIX",
+     "pert": "P7",
+     "int": false,
+     "sig": [
+      [
+       4,
+       1
+      ],
+      [
+       4,
+       1
+      ]
+     ],
+     "ctrl": null
+    },
+    {
+     "m": 18,
+     "cfg": "SPLITMIX",
+     "pert": "P8",
+     "int": false,
+     "sig": [
+      [
+       4,
+       1
+      ],
+      [
+       4,
+       1
+      ]
+     ],
+     "ctrl": null
+    },
+    {
+     "m": 19,
+     "cfg": "SPLITMIX",
+     "pert": "P9",
+     "int": false,
+     "sig": [
+      [
+       4,
+       1
+      ],
+      [
+       4,
+       1
+      ]
+     ],
+     "ctrl": null
+    },
+    {
+     "m": 20,
+     "cfg": "INERT2",
+     "pert": "base",
+     "int": false,
+     "sig": [
+      [
+       4,
+       2
+      ]
+     ],
+     "ctrl": null
+    },
+    {
+     "m": 21,
+     "cfg": "INERT2",
+     "pert": "P1",
+     "int": false,
+     "sig": [
+      [
+       4,
+       2
+      ]
+     ],
+     "ctrl": null
+    },
+    {
+     "m": 22,
+     "cfg": "INERT2",
+     "pert": "P2",
+     "int": false,
+     "sig": [
+      [
+       4,
+       2
+      ]
+     ],
+     "ctrl": null
+    },
+    {
+     "m": 23,
+     "cfg": "INERT2",
+     "pert": "P3",
+     "int": false,
+     "sig": [
+      [
+       4,
+       2
+      ]
+     ],
+     "ctrl": null
+    },
+    {
+     "m": 24,
+     "cfg": "INERT2",
+     "pert": "P4",
+     "int": false,
+     "sig": [
+      [
+       4,
+       2
+      ]
+     ],
+     "ctrl": null
+    },
+    {
+     "m": 25,
+     "cfg": "INERT2",
+     "pert": "P5",
+     "int": false,
+     "sig": [
+      [
+       4,
+       2
+      ]
+     ],
+     "ctrl": null
+    },
+    {
+     "m": 26,
+     "cfg": "INERT2",
+     "pert": "P6",
+     "int": false,
+     "sig": [
+      [
+       4,
+       2
+      ]
+     ],
+     "ctrl": null
+    },
+    {
+     "m": 27,
+     "cfg": "INERT2",
+     "pert": "P7",
+     "int": false,
+     "sig": [
+      [
+       4,
+       2
+      ]
+     ],
+     "ctrl": null
+    },
+    {
+     "m": 28,
+     "cfg": "INERT2",
+     "pert": "P8",
+     "int": false,
+     "sig": [
+      [
+       4,
+       2
+      ]
+     ],
+     "ctrl": null
+    },
+    {
+     "m": 29,
+     "cfg": "INERT2",
+     "pert": "P9",
+     "int": false,
+     "sig": [
+      [
+       4,
+       2
+      ]
+     ],
+     "ctrl": null
+    }
+   ]
+  }
+ ],
+ "violations": 0,
+ "teeth": {
+  "T-BASEFIELD": 10,
+  "T-PLANTDICT": 40,
+  "T-BADPERT": true
+ },
+ "pari_jobs": 70,
+ "secs": 1.4
+}

@@ -1,0 +1,7 @@
+== frame d=-1 p=3 (base residue field F_9) ==
+frame done: 30 members scored
+== frame d=2 p=5 (base residue field F_25) ==
+frame done: 30 members scored
+TEETH: all fired (BASEFIELD 10/10, PLANTDICT 40/40, BADPERT True)
+TOTAL: 70 PARI jobs, 0 violations, 1.4 s
+VERDICT: GREEN
