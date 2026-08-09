@@ -363,6 +363,12 @@ sides, (c) the unit-scaling of letters when several pieces split at
 once. The pointwise machine leg is designed so that an error in ANY
 of (a)–(c) at n ≤ 5 surfaces as an integer mismatch.
 
+**[r2, PE2-G1] Scope note.** GENIND-3's hypothesis ("repeated factors
+all linear on e = 1 sides") excludes polygons that ALSO carry a
+composite block — those states are classified CS, and their
+transport (this fibration COMPOSED with the stage fibration over the
+same polygon) is LEMMA GENIND-6 (S4.3), first live at n = 6.
+
 ### S4.2 LEMMA GENIND-0 ((A1) product stability)
 
 > **LEMMA GENIND-0.** Finite products, finite disjoint unions, and
@@ -388,6 +394,192 @@ finitely many pairs. ν = the region's dominating form, affine. ∎
 (Consumed by S6 wherever a β-family multiplies lower menus; the n = 2
 instance is W-12 S3.4's own 2SIDED handling, the n = 3 instances are
 HM3.B's B-families.)
+
+### S4.3 LEMMA GENIND-6 (the mixed-opening transport) [r2, PE2-G1]
+
+**The gap this closes.** A state can open a composite stage AND carry
+a coexisting repeated-linear e = 1 child on another side of the same
+polygon. Such a state is classified CS (GENIND-1(i): any factor with
+e·deg ψ ≥ 2 wins the classification), but its TRANSPORT fell between
+two displayed scopes: GENIND-3 excludes it by definition ("repeated
+factors all linear on e = 1 sides"), and (CS-1)'s fibration display
+has no slot for a co-evolving child system — the S5.3 embedded
+co-pieces are all DECIDED (static). PE2 constructed the first live
+instance at n = 6. Degree budget: a child consumes ≥ 2 abscissas and
+a composite block ≥ 4 (S5.1), so mixed genres need m ≥ 6; at m = 6
+the budget is tight — exactly ONE (2, d) child on its own e = 1 side
+at slope k and ONE block with e·μ·deg ψ = 4, no decided pieces. The
+first-visible genre (all others sit at deeper visibility floors —
+k ≥ 2, stage-steeper arrangements, and the f-first ψ²-block variants
+enter at v(a₀) = 2k + 2h ≥ 6, i.e. N ≥ 7) is PE2's:
+
+> **genre M6** at (q, m, d) = (q, 6, 1): hull (0,4)–(2,2)–(6,0);
+> left side [0, 2] slope 1, e = 1, residual c(y−w)² — a (2, 1)
+> β-child entering at depth 1; right side [2, 6] slope 1/2 (h = 1,
+> e = 2), residual (y−z)² with c = z² the shared vertex unit — a
+> composite stage (m′, D′, E, K) = (2, 1·2, 2, F_q). Locus law
+> (q−1)²·q^{6N−17}, visible iff 4 ≤ N−1.
+
+> **LEMMA GENIND-6 (mixed-opening transport).** Fix a CS genre at the
+> (m, d, N) system whose polygon/residual datum comprises β-children
+> (μ_l, d) on e = 1 sides at integer slopes k_l, composite blocks
+> (ψ_b, μ_b) with e_b·deg ψ_b ≥ 2 on their sides, and decided pieces.
+> Then:
+> **(a) [SPLIT]** GENIND-3's steps (1)–(2) apply VERBATIM — they are
+> factor-generic: the recenter-and-scale extraction at an e = 1 side
+> followed by the Hensel split (LEMMA W12-S2.1 at the scaled frame,
+> monic-factor form with non-unit-lead cofactor) consults ONLY the
+> coprimality of the reduction blocks, never the separability or
+> linearity of the repeated factors. Iterating over the children
+> extracts each as a (μ_l, d) cluster state at the SAME explicit
+> window M_l = N − (μ_l k_l + Σ_{other blocks} deg·slope-mass at
+> S_l's scale) as in GENIND-3 — composite blocks contribute their
+> slope-mass exactly like decided pieces — and leaves each composite
+> block as a monic cofactor with PER-COEFFICIENT certified windows
+> (the triangular division ledger; the sibling-Hensel-loss
+> composition GENHN already displays for embedded genres, "N ↦ N −
+> (sibling Hensel loss) coordinate-wise").
+> **(b) [PERMANENCE, extended]** GENIND-1(iii)'s valuation argument
+> covers the mixed frame: every separation valuation between two
+> blocks is ≤ min of their slopes; every post-opening move inside a
+> child sits at depth > k_l (GENIND-1(iii) verbatim), and every
+> post-opening move inside a stage block sits at ambient depth
+> κ/e_b ≥ (S_b + 1)/e_b > h_b/e_b = that block's slope (stage refines
+> recenter the key by dv-depth-κ monomials with κ ≥ S_b + 1 — the
+> stage node floor, GENHN.A(iv) @ 850e77e). Hence blocks never
+> re-merge, and each block's continuing read is a function of that
+> block's own state alone.
+> **(c) [FIBRATION/PRODUCT]** the genre's locus fibers as
+>
+>     (letter census) × q^{affine} × Π_l [(μ_l, d) system at M_l]
+>                                  × Π_b [stage state space at the
+>                                         certified windows],
+>
+> ONTO the full product with CONSTANT q-power fiber: the coordinate
+> map is the triangular division ledger of (a), so the counted
+> measure is the PRODUCT measure — in particular the stage-window
+> count is INDEPENDENT of the child-system states and vice versa,
+> with the letter unit-scalings absorbed by J-D0 letter-blindness
+> (W12-L1(b) product form), exactly as in GENIND-3 step (3).
+> **(d) [READ + MENU/DRAIN COMPOSITION]** by (b) the frame's
+> continuing read is the tuple of the blocks' own reads: children
+> read as their own (μ_l, d, M_l) systems ((IH), history-resolved,
+> β3 entry mechanism); stage blocks read as their stage systems per
+> (CS-1) = GENHN.A(v) ragged-window-corrected AT the certified
+> windows; pieces are Ore-decided. Hence menu = GENIND-0 product of
+> the children's (IH) menus × the stage menus ((CS-1)+(CS-2)) ×
+> piece censuses; the frame is conservative-undecided iff SOME block
+> is (inclusion–exclusion prices it: children's u's exact by (IH)
+> member 4, stage drains exact by (CS-EXACT)); at all-decided leaves
+> σ = ⊎_l σ_l ⊎_b σ_b ⊎ pieces ((CS-3) at the stages).
+> **Conditionality: (a)–(c) are unconditional at GENIND-3's schema
+> grade; (d)'s stage clauses consume [GENIND-H] at the stage genres
+> — the same conditionality as (CS-1) itself, no more.**
+
+*Proof.* (a) Re-read GENIND-3's proof: step (1) (recenter + scale,
+GENIND-2(a) mechanics) and step (2) (Hensel split at the scaled
+frame) nowhere consult the type of the residual factors — the split
+needs the child block's reduction ȳ^{μ_l} (after recentering) to be
+coprime to the co-blocks' reduction, which holds because co-blocks
+on the same side have distinct residual roots/factors and blocks on
+other sides sit at their own slopes (shallower blocks contribute the
+content drop / degree-dropped cofactor — the monic-factor Hensel
+form, already listed among this note's classical suppliers). The
+window bookkeeping is the same content computation D = min_j
+(v(a_j) + j·k_l), M_l = N − D, with every co-block contributing its
+slope-mass to D regardless of type. The cofactor's per-coefficient
+certified windows are the triangular division f/g: each u_j is a_·
+minus products of known-window terms whose valuation floors (the
+genre budgets) push the error terms deeper — an explicit affine
+ledger per genre, exactly the GENHN S11.F computation.
+(b) The separation valuation between roots of distinct blocks is
+min(slope, slope′) (distinct sides) or the common slope (same side,
+distinct residual factors) — in every case ≤ each block's own slope.
+Child-internal moves are deeper than k_l ≥ its slope (GENIND-1(iii)).
+Stage-internal moves: a stage refine at dv-depth κ ≥ S_b + 1 =
+e_b h_b + 1 moves the key at ambient valuation κ/e_b > h_b ≥
+h_b/e_b; deeper stage nodes only increase κ. So no move inside any
+block ever reaches any separation digit: blocks never re-merge, and
+W12-L1(b)'s computation (letters move by the co-blocks' unit values;
+hulls, lattice points, residual types do not move) gives each
+block's continuing read as its own.
+(c) By (a) the map (state digits) → (children's digits at M_l,
+cofactors' digits at certified windows, fiber digits) is triangular
+with exact budget floors; surjectivity with constant q-power fiber
+is the same S2.2 slot bookkeeping as GENIND-3's fiber count, and
+J-D0 lifts the count over the letter twists.
+(d) is the composition of (b)'s read decomposition with the blocks'
+own packages: (IH) at children (their entry data enter the history
+key by the β3 mechanism), [GENIND-H]'s (CS-1)+(CS-2)+(CS-3)+(CS-EXACT)
+at stage blocks, Ore at pieces. ∎
+
+**The M6 worked ledger (the first-live instance, derived BY HAND
+before any machine run; q arbitrary, both characteristics).** Write
+f = g·u, g = the child block (monic, degree 2, roots of valuation 1),
+u = the stage block (monic, degree 4, roots of valuation 1/2).
+* CHILD: the (factor-generic) scale-then-Hensel extraction at k = 1
+  has D = min_j(v(a_j) + j) = 4 (attained at j = 0 and the vertex
+  j = 2), so the child is a full (2, 1, N−4) cluster state — window
+  M = N − (2·1 + 4·(1/2)) = N − 4, the GENIND-3 formula with the
+  stage block contributing slope-mass 2.
+* STAGE: the division ledger certifies u's coefficients at the
+  RAGGED windows (u₀, u₁, u₂, u₃) mod (π^{N−1}, π^{N−2}, π^{N−2},
+  π^{N−3}) — e.g. u₃ = a₅ − g₁ with g₁ known mod π^{N−3}; u₀ = a₂ −
+  g₀u₂ − g₁u₁ with every error term of valuation ≥ N−1 by the entry
+  budgets — carrying the stage-entry budgets v(u₀) = 2 with
+  digit₂(u₀) = z², v(u₁) ≥ 2, digit₁(u₂) = −2z (so v(u₂) ≥ 2 in
+  char 2, = 1 at odd q), v(u₃) ≥ 1: the embedded CS4-E(h = 1) stage
+  entry at its sibling-loss-corrected windows.
+* STAGE, SHARP (the Bezout refinement — surfaced by this leg's own
+  armed tooth, instrument arc disclosed in the machine record): the
+  adjugate solve of u·Δg ≡ δ mod g bounds the factor perturbation by
+  Δg₁, Δg₀ ≥ N−2 because v(r₁) ≥ 2 is FORCED by the stage budget
+  v(u₁) ≥ 2 (r = u mod g, every q, both characteristics); pushing
+  Δg through the division ledger gives the SHARP certified windows
+  **(u₀, u₁, u₂, u₃) mod (π^{N−1}, π^{N−1}, π^{N−2}, π^{N−2})** —
+  one deeper at u₁ and u₃ than the plain division ledger — and these
+  are sharp: one further digit (u₀ → π^N or u₂ → π^{N−1}) is
+  lift-UNSTABLE (machine: the T1 tooth).
+* FIBRATION: free-digit accounting — locus (q−1)²q^{6N−17}; child
+  space q^{2(N−5)}; stage space q^{4(N−5)+4} per letter pair at the
+  division-ledger windows (q^{4(N−5)+6} at the sharp windows); so
+  the fiber exponent is **9 at the ledger windows, 7 at the sharp
+  windows — both N-independent**: the locus fibers as (q−1)² ×
+  q^{fiber} × [child space] × [stage space], verified at BOTH window
+  sets.
+* READ COMPOSITION at the first window pair: at N = 5 the child
+  window is 1 — the child DRAINS instantly (its entry datum is the
+  whole certified content), so every M6 state at N = 5 is
+  conservative-undecided through the child leg regardless of the
+  stage; at N = 6 the child window is 2 and the child leg splits
+  DRAIN (v(b₀) ≥ 2) / DECIDED σ_child = {(2,1)} (v(b₀) = 1), the
+  latter composing with the stage read as (d) displays.
+
+**Machine record (genindr2_supp.py — ADDITIVE leg; sealed runner
+md5-pinned e7ca150b, imported read-only; artifacts byte-frozen).**
+[MACHINE-RECORD-PLACEHOLDER]
+
+**Honesty box (the GENIND-6 grade).** (a)–(c) are proved at exactly
+GENIND-3's schema grade — the per-genre certified-window ledgers are
+mechanical affine computations, compressed here as GENIND-3
+compresses its per-route ledgers (S4.1 honesty note; HEX3-BOX-2
+pricing), with the M6 instance's ledger displayed IN FULL and
+machine-checked exhaustively at its first two visible windows.
+Clause (d) is a COMPOSITION statement: its stage-side content is
+[GENIND-H]'s, not discharged here; its child-side content
+(σ-composition through the split) is machine-checked mechanism-free
+(PARI) at M6. At M6 the sharpness question is SETTLED both ways (the
+sharp windows displayed above, the one-deeper tooth firing); at
+GENERAL mixed genres only the certified DIRECTION is claimed —
+counts consume only that direction. A hostile pass should attack:
+(i) the certified-window ledger at genres with ≥ 2 stage blocks or
+a stage block STEEPER than a child (first live n ≥ 7 arrangements —
+no machine instance here); (ii) the Bezout refinement's budget
+input v(r₁) ≥ 2 at other genres (here it follows from v(u₁) ≥ 2 +
+v(u₂g₁) ≥ 2; a genre where the stage budgets are weaker would lose
+the refinement, not the ledger); (iii) the odd-q pins (the battery's
+q = 3 slice is the only odd-q machine point of this leg); (iv) the
+instrument lesson in the machine record (stability vs determinism).
 
 ## S5. THE COMPOSITE-STAGE CRITERION (THEOREM GENIND.A(IV)) and the simple-stage layer
 
@@ -552,7 +744,12 @@ events exit into [GENIND-H]'s stages, whose (CS-1)+(CS-2) supply the
 stage's own resolved menu and (CS-3) its σ/(A0). Aggregating: the
 α-prefixes by GENIND-2(b)'s bracket (a finite relabeling per family,
 HM3-BOX-5's pedantry inherited); the β-genres by GENIND-0 products of
-the children's finite (A1) menus; the CS stages by [GENIND-H]. Every
+the children's finite (A1) menus; the CS stages by [GENIND-H]; the
+MIXED CS genres (a stage with coexisting β-children on the same
+polygon, first live at n = 6) by LEMMA GENIND-6(c)(d) [r2, PE2-G1]:
+GENIND-0 products of the stage menus ((CS-1)+(CS-2)) WITH the
+children's (IH) menus and the piece censuses — the bucket the r1
+text's two-bucket sentence did not license. Every
 family's data is a single q-polynomial expression by construction
 (slot counts + censuses; J-D0's frame) — q- and characteristic-
 uniform. Disjointness: the deterministic read keys partition
@@ -578,7 +775,12 @@ ragged window; their confinement below every consulted height at
 the discharged genres is LEMMA GENHN-3 (GENHN @ 850e77e)]; the
 CS-internal part: (CS-1)+(CS-2) resolve each stage into its own
 decided menu + drain, with the stage drains vanishing by the same
-telescoping run inside the stage ([GENIND-H]'s content). Summing:
+telescoping run inside the stage ([GENIND-H]'s content); at the
+MIXED CS genres the drain composes across the blocks by LEMMA
+GENIND-6(d) [r2, PE2-G1] — the frame is undecided iff some block is,
+inclusion–exclusion over (children's u's: exact by (IH) member 4) ×
+(stage drains: exact by (CS-EXACT)), the composition the r1
+inventory had no lemma for. Summing:
 r(N)/q^{nN} → 0, with the same exact-complement sharpening HM3.C
 S5.3 achieved at n = 3. **[r1, PE1-G1: the sealed text hedged this
 last clause "wherever the stage laws are exact" — a hedge the box's
@@ -659,7 +861,13 @@ index E = e (the new denominator), stage residue field K
   the form the discharger proves: GENHN.A(v) @ 850e77e reads "the
   stage read IS the (μ, K)-cluster read in dv-units at the S-node,
   ragged-window-corrected", with the band confined by LEMMA GENHN-3.
-  The sealed statement omitted the correction.]
+  The sealed statement omitted the correction.] [r2, PE2-G1: at
+  MIXED openings — the polygon also carrying β-children — this
+  fibration COMPOSES with the child product over the same polygon:
+  the display gains the factor Π_l [(μ_l, d) child system at M_l],
+  with the stage-window count independent of the child states —
+  LEMMA GENIND-6 (S4.3), whose clause (d) also supplies the σ/drain
+  composition. The sealed display had no child-system slot.]
 * **(CS-2) the stage bracket** — the stage's own α-aggregation:
   b_{m′,K}(μ″) = (|K|−1)·|K|^{(c(m′)+1)μ″−1} in stage units, i.e.
   GENIND-2(b) run inside the stage. NORMALIZATION DECLARED [r1,
