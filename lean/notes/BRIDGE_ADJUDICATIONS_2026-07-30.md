@@ -13889,3 +13889,36 @@ TAMEK-QX fold.
 **WAVE 12 (dispatched this entry): GENH4 ANNEX-PASS #2 (post-R2
 first-clean attempt) + GENIND r6 (the supplier re-pin round).
 TAMEK-QX in flight.**
+
+---
+
+## TAMEK-QX COMPLETE (w45wpau6g; Asvin's evidence directive executed): TIER-1 32/32 EXACT ℚ(q) IDENTITIES (menus vs recursion, k ≤ 4, f = 2,3, n ≤ 5) · LETTER-BLINDNESS PROVED · THIRD ROUTE (p-adic Kac–Rice) TIES THE MEAN · MC RETIRED TO CONSISTENCY-GRADE · a live specimen of the directive caught in-unit — 2026-08-09
+
+TKQX-0 PROVED (one line): unramified K ⟹ #Hom(L,K) = f′·[f′|f]·
+[e′=1] — X_K is SHAPE-ONLY, all residue characteristics. TIER 1:
+all 32 (f,k,n) cells EQUAL as rational functions (sympy exact);
+menu grades disclosed per source (n=3 rides ACCEPTED HMENU3; n=5
+rides the BCFGTIE quintic table, discovered to be the PROJECTIVE
+model — machine-verified via its K=F mean ≡ 1 — tied through the
+gate-checked projective conversion); Tier 1 HONESTLY STOPS at n=5
+(no committed menu tables at n=6,7 — only type counts). The S4.R
+closed form re-derived symbolically; THE 17 MC TIES RETIRED to
+consistency-grade (dated append, directive quoted, frozen lines
+untouched). TIER 2: the q-adic protocol written with the truth-side
+denominator bound HONESTLY BOXED (TKQX-BOX-2, rides the uniformity
+theorem's rational-form clause); live instance = the f=2 mean via
+p-adic KAC–RICE graded by conjugate-collision codimension — a THIRD
+route independent of recursion AND menus — exact symbolic tie +
+depth-15 truncated-strata expansion tie; bonus conceptual read:
+stabilization at n = 2f = "min-poly degree f + two free
+coefficients". Second moment resisted at one explicit integral —
+TKQX-BOX-1 (the sanctioned fallback). Battery 48/0 + 3/3 teeth,
+ZERO Monte Carlo. THE LIVE SPECIMEN: the unit's own first Kac–Rice
+derivation carried an Abel-formula bug whose wrong form differs
+from truth by q²/((q+1)Φ₅) ≈ 0.019 at q=3 — NEAR-INVISIBLE TO THE
+SEALED MC, caught by an independent exact diagnostic and disclosed.
+Asvin's rule (evidence hierarchy, now HEURISTICS §B.7) validated
+inside the very unit that implemented it. Note TAMEKQX 0/2; commits
+b99daa7…18bc55c. SITE PUSH UNBLOCKED: the TAMEK paragraph upgrades
+to exact-identity language — applier dispatched (works in the site
+repo, commits locally, does NOT push; orchestrator reviews + pushes).
