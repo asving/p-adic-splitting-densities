@@ -137,12 +137,154 @@ generically at leaf depth" — but the denominator should be 35.
 
 ## CLEAN CHARGES (attacked and held)
 
-(section filled below)
+1. **T(b)′(i) forcing chain, at the [r1]-floor boundary.**
+   Re-derived: each lift-term monomial clears Φ₂'s side with gap
+   (f₂−t)(u₂ − e₂D′h)/e₁ > 0 — needing EXACTLY u₂ > e₂D′h, the
+   [r1] node floor (arithmetic checked from e₁a + ih = u₂(f₂−t)
+   and Φ′^{e₂t}'s side g ≥ (e₂tD′−c)h/e₁); the T-polygon step,
+   gcd(u₂,e₂) = 1 exactness, and the value-group/residue forcing
+   ⟨1/e₁, u₂/(e₁e₂)⟩ = (1/(e₁e₂))ℤ, [K(η₂):K] = f₂, ef ≤ D₂ all
+   check. Machine (PE2-K): the five composed keys — A(u₂=5),
+   A(u₂=7), B(κ₂=3), and the FIRST outer-f₁ = 2 keys F1a/F1b —
+   each irreducible with (e,f) = (e₁e₂, f₁f₂) and
+   v_L(Φ′(ξ)) = u₂ EXACT by nfeltval; u₂ = 5 at e₂D′h = 4 IS the
+   boundary instance the dispatch asked for.
+2. **T(b)′(ii) GENHN-2′ exactness.** The two-step class separation
+   re-derived (mod e₂ kills b-ties via gcd(u₂,e₂) = 1; per-t the
+   a-class is forced via gcd(h,e₁) = 1; ≤ f₁f₂ tying monomials;
+   K-components of the η₂-split force each residue 0). Machine
+   (PE2-S): 72 direct slot-min-vs-nfeltval legs (random +
+   tie-constructed) at genre A and at the f₁ = 2 genre F1b — the
+   FIRST direct (ii) contact (supp touched (ii) only through
+   pins); wrong-offset control mismatched 7/72 (T-SLOT tooth).
+3. **T(b)′(iii) σ-composition at μ₂ = 2.** S7-at-composed-data
+   re-derived, including the F4-rider point one level up:
+   lcm(e₁e₂, 2e₁e₂/gcd(p₀, e₁e₂)) = 2e₁e₂ since gcd is odd.
+   Machine (PE2-D, 27 instances + perturbations, PARI both routes):
+   the branches with ZERO prior 2-stage TRUE-read contact all
+   confirmed — composed-INERT {(4,2)} and composed-2SIDED
+   {(4,1),(4,1)} at genre A; RAM/INERT/SPLIT/2SIDED at the first
+   outer-f₁ = 2 tower genres (1,2,4)→(2,1,2), keys ψ₂ = T−1 AND
+   the η-letter key ψ₂ = T−η ({(4,2)}/{(2,4)}/{(2,2)}²); the
+   η₂-COCYCLE division at odd w ADJUDICATED (F1b-COCY: naive read
+   without the η₂-division says tSPLIT, the note's read says
+   tINERT, PARI: {(2,4)} — T-COCYCLE tooth); swapped-dictionary
+   tooth T-DICT fired.
+4. **T(b)′(iv)'s faithfulness "iff" at the tie edge.** Attack
+   constructed: a discrepancy class tying the composed slot-min
+   with cancelling residue (shadow pin rises, reads disagree) —
+   WITHDRAWN: the antecedent requires "weakly above BOTH reads'
+   slot-min", and the risen shadow min breaks it; slot digits of
+   the assembled discrepancy live at distinct heights (GENHN-2′),
+   so no self-cancellation case survives. The clause is sound as
+   displayed.
+5. **The f₁ ≥ 2 overflow parenthetical (9636b7e).** Re-derived:
+   an x-degree-D′ carry moves (level e₂t, dv₀) ↦ (e₂t+1,
+   dv₀ − D′h), and above-the-side is exactly u₂/e₂ > D′h — the
+   [r1] floor again; side and residual untouched.
+6. **F2's repair (the corrected budget display).** Re-derived at
+   E3 (floors (4,3,3,2,2,1), total 15), E31 ((3,2,2,2,1,1), 11),
+   GENH4-E ((2h+1,⌈3h/2⌉,h+1,⌈h/2⌉), 8 at h=1), and freshly at
+   genre F (1,2,2) ((4h,3h,2h,h) bases) — side height at abscissa
+   jD′+i, ceiled, +1 per consumed pin, matching S2's lists and
+   the battery exponents; grep-audit of old-formula sites clean
+   (F3 above concerns only the erratum's own commentary).
+7. **F3's repair (the band-transport derivation).** Checked: (1)
+   unread digits sit at heights ≥ N and join height N only on the
+   complementary η-basis (comp(N) at (1,3,2)/k=1 is 2, at N+1 is
+   1 — recomputed); (2) the trichotomy transports at m = N with
+   the census Q^{comp(N)}−1; (3) deeper band heights honestly
+   drain (the undercut is real); the E2 parenthetical scoping and
+   the upgrade sentence's scope (μ = 2, e₁ = 1, f₁ ≥ 2) match the
+   derivation's actual perimeter.
+8. **F4/F5 riders.** The S7 rider's arithmetic verified
+   (2e₁/gcd(u,e₁) alone at e₁ = 3, u = 9 gives 2; lcm with (T1)
+   restores 6 = 2e₁; gcd odd since u odd); the 349/350
+   reconciliation is consistent with PE1's forensics (350 = 349 +
+   1 gp-miss None) and the isolated battery re-run of THIS pass
+   reproduces 1,216/349 deterministically.
+9. **[GENHN-TOW-1] honesty at items (1)–(5).** Item (4)
+   load-bearing and honest: the PE2-P partial-side member is
+   refused by the corrected reader (non-monic composed
+   development) and its PARI σ {(2,1),(4,1),(4,1)} is priced by
+   no r2 display — the box's claim that this case is OPEN is
+   accurate (the box INVENTORY defect is F1, an item missing, not
+   a false item). Items (1)/(2)/(3)/(5) checked as genuinely
+   unconsumed by T(b)′'s proof text.
+10. **First non-prime-q tower contact (PE2-Q).** Genre (2,1,4)→
+    (2,1,2) over the 2-inert quadratic base ℚ(ω) (residue F₄,
+    Q = 4, ω-letters), absolute degree 16 via rnfequation:
+    RAM {(8,2)}, INERT {(4,4)}, SPLIT {(4,2),(4,2)},
+    2SIDED {(4,2),(4,2)} — 4/4 exact, including the first
+    composed-level SPLIT-vs-INERT residual decision over a
+    non-prime residue field.
 
 ## MACHINE LEG (integrity) + FRESH ROUTE
 
-(section filled below)
+* **Pins:** 7/7 md5 match S11.A (runner-as-run 637427dc…, and the
+  five supplier pins), plus artifacts dd9edbea…/7d4a3e86… and the
+  supp pair (genhnr2_supp.py 51154c95…, output 664036bc…).
+* **Sealed battery isolated re-run** (fresh dir, 24-module import
+  closure): **GREEN — 2,223,050 checks / 0 violations, teeth
+  2/2/2/2/1, 448.8 s**; results JSON content-identical to the
+  committed artifact (0 field diffs, elapsed included); output txt
+  differs in exactly two per-family timing figures; the V p=2
+  diagnostic tail 1,216/349 reproduced (F5's reconciliation
+  machine-confirmed on this pass's own run).
+* **genhnr2_supp.py isolated re-run** (fresh dir, no local
+  imports): exit 0, output BIT-IDENTICAL to the committed artifact
+  (md5 664036bc), GREEN 147/0, teeth ×5/×2/×13.
+* **Tautology audit of the supp:** scored checks compare the
+  corrected reader (own division + slot code) against PARI on two
+  independent oracle routes; the stage-shadow read enters only as
+  refuted control/teeth; SUPP-A0 pins are cross-checked against
+  PE1's hand values; the genre-A INERT branch's hard-coded
+  T²+T+1 is forced (F₂ digits at u = 2w make both residues 1 —
+  re-derived); genre-B's tDBL guard is unreachable (attaining
+  flavors cannot cancel) — dead code, harmless. Non-tautological.
+* **Fresh instrument** `verification/openmath/genhn_pe2_fresh.py`
+  (independent: own readers, no battery/supp imports; PARI via
+  nfinit/idealprimedec/nfeltval + factorpadic route 2 + rnfequation
+  for the ℚ(ω) legs): **GREEN — 219 checks / 0 violations
+  (PE2-K 5, PE2-S 72, PE2-D 119, PE2-P 3, PE2-Q 16), 4/4 teeth
+  (T-DICT, T-SLOT, T-COCYCLE, T-PARSE)**; artifact
+  `genhn_pe2_fresh_output.txt`. Disclosure: the instrument ran
+  GREEN on its first full run (no reseal events).
+* **Fresh-route disjointness:** supp swept outer-f₁ = 1 genres
+  ((2,1,4)→(2,1,2) u₂ ∈ {5,7}, (2,1,4)→(1,2,2)) with TRUE-read
+  decided rows tRAM only at 2 stages; PE1's legs were the (1,3,2)
+  sweeps + the four refuted (2,1,4) instances; the battery had no
+  tower leaf rows. THIS pass's territory: outer-f₁ = 2 tower
+  genres (1,2,4)→(2,1,2) with both rational and η-letter keys
+  (first f₁ ≥ 2 OUTER stage under a tower), first 2-stage
+  composed-INERT/2SIDED/SPLIT dictionary contact, first direct
+  GENHN-2′ exactness legs, the η₂-cocycle adjudication, a
+  partial-side n = 10 member (box item (4) witness), and the
+  first non-prime-q (Q = 4) tower legs. Not attempted: d ≥ 2
+  ambient towers beyond the ℚ(ω) base change (the Q = 4 legs ARE
+  the base-change case), deeper f₂ = 2 outer-f₁ = 2 mixes
+  (K₂ = F₁₆) — disclosed.
 
 ## GRADE LINE
 
-(section filled below)
+**passPE2 = NOT CLEAN under the charge bar: CRITICAL ×0, GAP ×2
+(F1 the depth-≥ 3 iterated composition missing from [GENHN-TOW-1]'s
+five items while GENHN.B claims the amended list correct at n ≥ 8 —
+live at n ≥ 16 only; F2 the (CS-3) rider's "every tower leaf with
+inner μ₂ = 2" vs (iii)'s full-side perimeter — live at n ≥ 10,
+loud-failure mitigation noted), MINOR ×2 (F3 the budget erratum's
+f₁ ≥ 2 sign-flipped magnitude parenthetical; F4 the 35/38
+denominator). Clean count 0/2 → stays 0/2.** What this pass
+POSITIVELY establishes: LEMMA GENHN-T(b)′ (i)–(iv) held against
+re-derivation and against every constructed instance at four fresh
+genre families incl. Q = 4 — the r2's new mathematics is real; both
+GAPs are one-sentence-scale display cures (a sixth box item + two
+scope parentheticals), n ∈ {8, 9} is unaffected by either, and
+n ≤ 7 is untouched by every finding of this pass. Repair scope by
+clause: (F1) one [GENHN-TOW-1] item (the composed-key ITERATION:
+carrier/slot/read at level ≥ 3) + the GENHN.B display's n ≥ 16
+word; (F2) scope parenthetical at the (CS-3) rider (and its echo in
+the T(b)′ annex's (iii) sentence if desired); (F3)/(F4) one-line
+corrections inside [r2] blocks. Consumers to notify: GENIND's
+n ≥ 8 conditionality line (fe0ed6c) inherits F1/F2's refined
+scoping (n ≥ 10 / n ≥ 16) — orchestrator's fold.
