@@ -1,0 +1,13 @@
+=== LEG A: ell = 3 side family over Z_5, lam = 7/3, mu = 6
+  SPLIT12 base: flat/excess + height OK (gen=84)
+  SPLIT14 base: flat/excess + height OK (gen=84)
+  INERT base: flat/excess + height OK (gen=84)
+  sigma census: {'SPLIT12': {'((6, 1), (6, 1))': 13}, 'SPLIT14': {'((6, 1), (6, 1))': 13}, 'INERT': {'((6, 2),)': 13}}
+=== LEG B: HE6-1L exact-set at (e1,f1,h) = (2,2,3), O = Z_3
+  frame: primes=1 ef=2 2  eta=y eta^2=2 eta^-1=2*y
+  k=3 members/realized: 162 2 ; realized set: ['2*y', 'y']
+  displayed span F_3^x = {1, 2}; twisted coset {eta, 2eta} ~ {y, 2*(y)}
+  CONFIRMED: realized set disjoint from the displayed span {1,2}
+  C = x residue: 2*y   (claim +q predicts eta = y; -q predicts eta^-1 = 2*y)
+  k=9 realized count: 8 (expect 8 = all of F_9^x)
+VIOLATIONS: 0   5.4s
