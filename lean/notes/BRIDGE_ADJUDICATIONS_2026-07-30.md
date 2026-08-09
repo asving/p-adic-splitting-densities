@@ -14286,3 +14286,33 @@ covers the correction — the fold-box line itself gets a one-line
 dated append, wave 19's rider). Board: FIVE frozen/accepted ·
 GENHN 0/2 (PE3) · HE6 0/2 (PE3) · distribution arcs + GENIND
 annex-pass + Codex W-MULT-DCX/r40c/VC40c queued.
+
+---
+
+## WAVE 19 COMPLETE (wjf0f4f48 + resume wqd21z28g): GENHN PE3 CLEAN → 1/2 · HE6 PE3 CLEAN (0/0/0) → 1/2 — BOTH REMAINING CHAIN ARCS AT MATCH POINT — WAVE 20: GENHN rider → PE4 + HE6 PE4 (THE CHAIN-COMPLETION ATTEMPTS) — 2026-08-09
+
+**GENHN PE3 (5864605 → 5ad578e → 7a058c8): CLEAN — 0C, 0G, 2 MINOR.**
+The minors: item (6)(α)'s "exact carry cancellation" over-attributes
+the mechanism (the verifier CONSTRUCTED a second iterated key with
+UNCANCELLED carry that is still one-sided — refining the box's
+guidance for a future T(b)″ prover; the box's bottom line stands)
++ the PE2-F2 scope word reached 3 of 4 echo sites (residues
+enumerated, each loud-at-use). r3 verified item by item (the
+witness data re-computed BY HAND). FRESH ROUTE: first e₂=3 tower
+genre; p=3 tower σ with the η₂-letter (square/non-square
+PARI-adjudicated); second depth-3 key; T-FLOOR FIRED (a below-floor
+member reads {(2,1),(10,1)} vs the naive {(12,1)} — (iii)'s
+perimeter is load-bearing, machine-witnessed). Battery + all
+instrument re-runs green/bit-identical.
+
+**HE6 PE3 (9f02ad4): CLEAN 0/0/0** (folded above; obs-1's HE7-side
+cosmetic line rides the GENHN-rider agent's housekeeping; obs-2
+resolved by db0001a pre-verdict — a read race, noted).
+
+**WAVE 20 (dispatched): GENHN rider (2 minors + HE7 obs-1 line) →
+GENHN PE4 (acceptance attempt) + HE6 PE4 (acceptance attempt). IF
+BOTH LAND: EVERY NAMED BOX OF THE UNIFORMITY THEOREM CHAIN IS
+THROUGH THE 2-CLEAN BAR — the arc program's chain phase closes and
+the SIMPLIFICATION CAMPAIGN (Asvin's pipeline) opens, with the
+distribution arcs + annex-stack passes + Codex legs continuing in
+parallel.**
