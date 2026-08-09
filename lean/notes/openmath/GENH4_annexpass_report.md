@@ -166,3 +166,237 @@ clause (c)'s proof is wholly replaced (old two-lift witnesses
 withdrawn, re-proof delegated to R2) — a reader trusting "everything
 else unchanged" mis-inventories what moved. The replacement itself is
 stated correctly in R1.0/R2; cosmetic display defect of the header.
+
+### Remarks (no grade)
+
+* **Remark 1 (R3's consumption-audit sentence).** "S7's resolvent
+  chain … all run in L/O_L verbatim" is loose: S7's Y-trichotomy runs
+  in the QUARTIC root field base(θ_F), not in L = Frac(R); the facts
+  consumed there are covered by S7's own displayed transport
+  ((F) v(θ) = k, res(θπ^{−k}) a root of ψ) plus the R6 rider (the
+  GENH4-2 cite is to the proof, not the stated scope). The part of S7
+  that genuinely lives in L — the norm identity Π_{η:φ(η)=0} F(η) at
+  the KEY's roots — is correctly covered. No consumer breaks.
+* **Remark 2 (R2's char-2 inert-existence at 2w = N).** Re-derived
+  and SOUND: trace transitivity Tr_{F_{q²}/F₂}(c d₀/S₁²) =
+  Tr_{F_q/F₂}(d₀·τ) with τ = Tr_{F_{q²}/F_q}(c/S₁²) (d₀ ∈ F_q pulls
+  through), squaring = Frobenius bijection on F_{q²}^× so S₁² sweeps
+  it, Tr_{F_{q²}/F_q} vanishes on only q of q² elements so τ ≠ 0
+  members exist, and a nonzero F₂-functional on F_q attains 1. The
+  honest-scope sentence (τ-degenerate members; key granularity) is
+  correctly scoped.
+
+## S2. Clean charges (each attacked, none broke)
+
+1. **ANNEX-LEMMA GENH4-7'(b) — the consumed F-SPLTAIL supply —
+   re-derived from scratch (charge 1).** The leaf-sense floors
+   (v(a₀) ≥ N; v(a₁)+k ≥ N+1 with a₁-positions ≤ N−k vanishing) with
+   the k−1 band digits FREE: every potentially nonzero letter of
+   A₀^lift sits at v₁-height ≥ N — a₀ state digits are zero to N−1
+   and lift digits sit at positions ≥ N; a₁ band digits sit at
+   heights N+1 … N+k−1 ≥ N+1; a₁ lift digits at heights ≥ N+k. The
+   attack "can a band digit LOWER u_lift below N via cancellation in
+   A₀^lift?" fails structurally: valuation = lowest height with
+   nonzero letter; there IS no letter below height N to cancel into,
+   cross-height contributions of θ's deeper unit digits only move
+   mass UPWARD, and within a height the F_{q²}-letter d₁ȳ + d₀
+   vanishes iff both components do ({1, ȳ} F_q-independent, ψ
+   irreducible — GENH4-2(F), both characteristics). So u_lift ≥ N for
+   EVERY band completion and EVERY lift; 2w < N gives GENH4-3(ii)'s
+   antecedent at every lift; w is lift-stable (w ≤ (N−1)/2 < N,
+   letter at comp-2 height); S7's 2SIDED F-leg consumes only
+   (v(A₁(θ)) = w, v(A₀(θ)) = u > 2w) → σ = {(1,2),(1,2)}.
+   **The A₀ = 0 corner via F = φ(φ + A₁):** φ + A₁ keeps the S2.1
+   genre-F invariants — v(a₀-comp) ≥ w > 2k keeps v(p₀+a₀) = 2k
+   exact with the same residue, v(a₁-comp) ≥ w−k > k keeps the
+   residue pair, so ψ is unchanged and irreducible: both quadratics
+   have f = 2 roots; disc ≠ 0 (the clause's antecedent) gives
+   coprimality: σ = {(1,2),(1,2)}. CLEAN — and exercised fresh at
+   TWO new cells (S4: first k = 3, first odd-q k ≥ 2), 96 + 96 + the
+   annex leg's 96 + 24,576 enumerated, zero violations anywhere.
+2. **The (a) clause's "u_lift ≤ m at a band-nonzero member" —
+   direction and consumption (charge 2).** Direction CORRECT: the
+   height-m letter has d₁ ≠ 0 (the band digit), and d₁ȳ + d₀ ≠ 0 for
+   every d₀ since ȳ ∉ F_q — the letter cannot be killed by the free
+   a₀ digit, so v ≤ m (an upper CAP on u_lift, as consumed). R2
+   consumes it in exactly this direction (band-pinned m ≤ 2w kills
+   u > 2w lifts — Codex's (2,9,5) instance). Machine: FR2A/FR2B
+   verified u ≤ m on every band-nonzero fresh member (valuation
+   layer). CLEAN (modulo MINOR-1's separate realizability nit).
+3. **R1.0's self-contradiction display of old GENH4-7.** Verified:
+   "a₁-positions ≤ N−1 all vanish" gives v(a₁) ≥ N i.e.
+   v(a₁)+k ≥ N+k, strictly stronger than the proof's floor N+1 —
+   the two bold clauses do contradict each other exactly as ANNEX R
+   quotes them; the counted leaf (law_F's deep0 = q^{k−1}) matches
+   the WEAK reading. CLEAN.
+4. **R1.1 supersession of 7(b) by 7'(b) (charge 5).** The supersession
+   IS stated — R1.1 re-points THEOREM GENH4.C's F-SPLTAIL leg
+   ("now reads ANNEX-LEMMA GENH4-7'(b) in place of GENH4-7(b)"), and
+   the What-does-not-move box names "GENH4-7's hypothesis sentence
+   (superseded by GENH4-7', conclusion identical)". Grep audit of
+   every "GENH4-7" site in the repo: the remaining old-form citations
+   (PE5 annex riders at lines 1236/1262/1335/1472) sit INSIDE the
+   byte-frozen PE5 text that ANNEX R may not edit, and all cite the
+   CONCLUSION of (b), which is byte-identical between 7 and 7'; sites
+   outside the note (GENIND S14, PROJECT_STATE, the scaffold) are
+   records, not consumers. The W-12.D chain routes through GENH4.C's
+   F-SPLTAIL leg = S7's bullet = 7'(b) after R1.1 — one re-point
+   covers the one consumption path. CLEAN (MINOR-4 is the header's
+   own inventory sentence, not a supersession hole).
+5. **R3's L/O_L frame restatement — three ridered sentences verified
+   against what the proofs consume (charge 3).** (i) S2.1's E bullet
+   "R is a complete DVR": restated facts e = 2, f = 1, v(θ) = h/2,
+   value group ½ℤ, O_L/m_L = F_q, res(θ²π^{−h}) = z — re-derived
+   (polygon single side (0,h)–(2,0), h odd; θ² = −p₁θ − p₀ with
+   v(p₁θ) ≥ h + 1/2 > h = v(p₀), residue −(−z) = z); these are
+   EXACTLY the inputs of GENH4-2(E)'s parity proof and S3's
+   normalizer residue — no silent strengthening (nothing consumed
+   R-module structure; the censuses are O[x]-coefficient counts).
+   (ii) S2.1's F bullet: e = 1, f = 2, v(θ) = k, ℤ, F_{q²} = F_q(ȳ),
+   res(θπ^{−k}) = ȳ — re-derived (u² + (p₁π^{−k})u + p₀π^{−2k} = 0
+   reduces to ψ(ū) = 0, ψ irreducible); exactly GENH4-2(F)'s and
+   S3's inputs. (iii) The gr sentence re-aimed at gr(O_L): the body
+   itself says "cited as frame; everything below is proved directly"
+   — zero consumption. The non-maximality witnesses check:
+   R/2R ≅ F₂[ε]/(ε²) at x²+2x+4 (θ² ≡ 0 mod 2, θ ∉ 2R); genre E
+   h ≥ 3 m_R non-principal (v(γ) = 1 forces v(c) = h/2−1 ∉ ℤ);
+   R = O_L exactly at E h = 1. CLEAN (Remark 1 on the S7 sweep).
+6. **R4's F true-unit table.** Verified against S7: opening w, u ✓
+   (v₁ units); RAM v(Y) = u/2 already true-unit ✓ (that
+   half-integrality IS the e-even mechanism); 2SIDED {w, u−w} ✓
+   (two-side polygon slopes); INERT v(Y) = dμ with n₂ = π^{dμ} ✓
+   (S3's F line). σ conclusions scale-blind ✓. CLEAN.
+7. **R5's pre2 six-key partition.** Hand re-derived from the floored
+   box (floors 9/7/5/3, free digits 2+4+6+8): VTX = 1·2³·2⁶·2⁸ =
+   2¹⁷ (B₀ 9-digit 0, 10-digit forced 1 at q = 2; B₁ 7-digit forced),
+   L1TAIL = 2^{4+6+8} = 2¹⁸ (B₀ window-zero); 655,360 + 2¹⁷ + 2¹⁸ =
+   2²⁰ exact; LAW_KINDS definition matches the sealed runner line
+   299. Machine-tied (C1, isolated re-run). CLEAN.
+8. **ANNEX PE5 A2 (the 2u norm).** Re-derived: genre F roots η of φ
+   have v(A₀(η)) = u each (GENH4-2 at v(η) = k), two roots →
+   v(Nm) = 2u; the halved and unhalved balances both give
+   j(2w−u) = 2(2w−u) → j = 2; the mixed form j = 9 at (3,7)
+   self-alarms. Machine: C4 5/5 two-route v₂(Res) = 14 = 2u. CLEAN.
+9. **ANNEX PE5 A3 (the "− extra…" closure).** Re-derived
+   symbolically: (1−r)(1 + r + r²)/(1−r³) = 1 gives
+   q²/Φ₂ + 1/Φ₂ + q/Φ₂ = 1; even-dμ split (q−2)/(2q) + 1/2 + 1/q = 1;
+   aggregation ×Φ₂/(q²+q) reproduces ν₂'s (q/(q+1), 1/(2(q+1)),
+   1/(2(q+1))). The extra is 0 by partition of unity. CLEAN.
+10. **ANNEX PE5 A1's committed refutation + riders.** The three
+    ridered display sentences quoted verbatim and unedited ✓; the
+    wrong-cap tables re-derived by my own independent law typing
+    (S4 FR3 ties the committed rows 15/16 cells key-for-key inside
+    the 54-cell grid); the disclosed smoke catch (refined-history
+    propagation) verified as exactly the diff cceca77 → e945734
+    (mismatch tables + one decided-key guard + docstring — nothing
+    else moved). CLEAN.
+
+## S3. Machine legs (pins + isolated re-runs + instrument audit) — charge 6
+
+**Pins, all verified at HEAD (2026-08-09).** The 5 sealed-artifact
+md5s in BOTH scripts' PINS dicts match the committed files
+(genh4_checks.py ee8024b7, output 9e6ca9b3, results cbcff562,
+qscout22_checks.py cb885663, qscout22_results 6c2441a1). Byte-freezes:
+body+PE5 md5 a584cb3e verified 3-way (baf05ed = b10a5a7 = HEAD,
+first 89,530 bytes); r3 body 09af7f78 at 4b0d946. Script seals:
+genh4annexr_supp.py at 6272cd4 == HEAD (d1d5288f — sealed BEFORE its
+run, as claimed); genh4annex_supp.py seal cceca77 (3a3ca794) →
+repaired e945734 == HEAD (bcb87498), diff verified = exactly the
+disclosed C3 repair. Committed artifact md5s match the annex records
+(PE5: 713a0a3b/37d0650e; R: c1ed4a7f/f26186fd).
+
+**Isolated re-runs** (fresh /tmp sandbox, pinned artifacts + traced
+transitive imports copied in; nothing sealed touched):
+* PE5 leg `genh4annex_supp.py`: GREEN, exit 0, artifacts
+  **BIT-IDENTICAL** to committed (713a0a3b / 37d0650e).
+* R leg `genh4annexr_supp.py`: GREEN, exit 0, 0 violations; leaf
+  diff vs committed = **elapsed-only** (0.4s → 0.5s in both files).
+
+**Instrument audit (the two charged questions).**
+* *Is C3's "old-gloss family = HALF" independently derivable?* YES,
+  two independent legs: the annex leg's own C4 ENUMERATES all 24,576
+  leaf members and counts the old-hypothesis violators digit-by-digit
+  (n_oldviol = 12,288, a loop count, not the hardcoded law ratio);
+  and this pass's fresh typing (S4 FR1/FR3) re-derives the leaf =
+  3·2¹²·q^{k−1} independently, giving old-gloss/leaf = q^{1−k}
+  (exactly HALF only at q = 2, k = 2 — at the fresh k = 3 cell the
+  old-gloss family would be a QUARTER, 3·2¹⁷ of 3·2¹⁹).
+* *Is the char-p Panayi leg independent of the char-0 leg?* YES:
+  char 0 = PARI factorpadic + nfinit/idealprimedec (external
+  library); char p = an in-script F₄[[t]] digit recursion sharing no
+  code with it. Logic audited line-by-line: the char-2 derivative
+  dbar[j] = f_{j+1} for j even is correct; simple residue roots
+  count 1 by Hensel; multiple roots recurse on F(r + tx) with the
+  correct binomial-mod-2 table; termination guarded by
+  separability (fp_disc_nonzero = exact pseudo-remainder gcd over
+  F₂[t], char-2 derivative c₃x² + c₁ correct). The read
+  (r4, r2) = (4, 0) ⟺ {(1,2),(1,2)} is sound: 4 roots in unramified
+  F₄[[t]] with none in F₂[[t]] forces two conjugate quadratic
+  unramified factors given disc ≠ 0 ({(1,4)} would put roots in
+  F₁₆ not F₄; any (1,1) factor would put one in F₂[[t]]; ramified
+  factors contribute 0).
+
+## S4. Fresh route — `genh4annexpass_fresh.py`, GREEN, 0 violations (final run exit 0)
+
+Route chosen to differ from both annex legs (which ran (2,11,2) and
+k = 1 rows): committed with artifacts alongside this report.
+* **FR1 (first k = 3 cell EVER):** independent typing of the
+  S6.1/S6.3 genre-F law at (2,15,3): no SPLTAIL at N = 13/14, first
+  live at N = 15 = 4k+3 with SPLTAIL(7) = 1,572,864 = 3·2¹⁷·4,
+  deep0 = 4 = q^{k−1} (TWO free band digits, heights 16/17), node
+  mass 2²⁶ exact; the SEALED law_F(2,15,3) ties my typing
+  key-for-key (first k = 3 exercise of the sealed runner anywhere).
+* **FR2 (σ at two fresh cells, PARI):** (2,15,3) SPLTAIL(7), key
+  x²+8x+64: 48 members (3 pins × 4 band values — the first
+  multi-digit band — × 4 lifts incl. A₀ = 0 corner and u = N = 15):
+  48/48 σ = {(1,2),(1,2)}; (3,11,2) SPLTAIL(5), key x²+9x+162
+  (ψ = y²+y+2 irred over F₃): 48 members (first odd-q k ≥ 2
+  exercise): 48/48. GENH4-7'(a)'s two inequalities (u ≥ N;
+  u ≤ m at band-nonzero) checked on every member at the valuation
+  layer. TEETH 4/4: wrong-floor mutants (b₀@13 resp. b₀@9, with and
+  without a band digit) flip to RAM σ = {(2,2)}.
+* **FR3 (the deep0 identity + grid):** band-slot count ≡ k−1 on the
+  grid q ∈ {2,3,5} × k ∈ {1,2,3} × N ∈ 4k+1..4k+6 (54 cells); fresh
+  typing == sealed law_F key-for-key on ALL 54; first-live boundary
+  (SPLTAIL nonempty iff N ≥ 4k+3) exact; all 72 SPLTAIL keys carry
+  the q^{k−1} factor. (Threshold note: the k−1 count holds for
+  N ≥ 4k; below that the band truncates — relevant to MINOR-1.)
+* **FR4 (GAP-1's machine leg):** 24/24 band-pinned lifts across
+  (2,8,2) w = 6 and (2,10,2) w = 7 read σ = {(2,2)} CONSTANT; the 6
+  refine-path u = 10 lifts at (2,10,2) — where R2's refine-deeper
+  display predicts 2SIDED′(6,7) σ = {(1,2),(1,2)} — read {(2,2)}
+  6/6; band-zero contrast members of the SAME keys 6/6
+  {(1,2),(1,2)} (the key-level pair that keeps (c) alive).
+* **FR5 (the Codex F4 cell, R2's N-odd leg):** (2,9,2) w = 5,
+  band-pinned m = 10 = 2w: RAM(9) lift {(2,2)} vs u = 10
+  separable-read lifts decided {(1,2),(1,2)}/{(1,4)} on 9/9 — R2's
+  repaired N-odd witness CONFIRMED at the exact Codex instance.
+* **Disclosures (this leg's own smokes, in the docstring):** (i) the
+  first launch had two buggy cell-A teeth IN THIS SCRIPT (A₀ encoded
+  as x¹³ instead of the coefficient pair) — fixed; FR1–FR3 were
+  GREEN unchanged. (ii) the first FR4 build violated the entry
+  budget (b₀@8 at (2,8,2)) — PARI returned non-F shapes, which is
+  itself the structural half of GAP-1; construction corrected to
+  in-budget lifts, predictions preregistered in the docstring before
+  any FR4/FR5 output existed.
+
+## S5. Grade line
+
+**NOT CLEAN at annex scope: 0 CRITICAL + 1 GAP (GAP-1, ANNEX R R2's
+N-even band-pinned per-stratum leg — machine-refuted display,
+unconsumed clause) + 4 MINOR + 2 remarks. The annex stack does NOT
+take its first clean mark: the annex-acceptance count stays 0/2.**
+What this pass does establish: the CHALLENGE's consumed surface is
+now solid — GENH4-7'(b) (the W-12.D F-SPLTAIL supply) survived a
+full hostile re-derivation plus two fresh cells (first k = 3, first
+odd-q k ≥ 2, 96/96 + 96/96 with teeth), the R1/R3/R4/R5 repairs and
+both PE5 items verified clean, both machine legs reproduce isolated
+(one bit-identical, one elapsed-only), and every pin/freeze holds.
+The frozen body's ACCEPTED 2/2 is untouched. Owed for the next annex
+round: a dated R2 correction — scope the N-even band-pinned
+differing-pair claim to key-level (cross-stratum) witnesses, fix
+GENH4-7'(a)'s realizability parenthetical to N ≥ 4k+1 (or to the
+SPLTAIL-live range), and the three quantifier/display nits (MINOR
+2–4). Report artifacts: `verification/openmath/genh4annexpass_fresh.py`
++ output/results (committed); isolated re-run sandbox in /tmp
+(session-local).
