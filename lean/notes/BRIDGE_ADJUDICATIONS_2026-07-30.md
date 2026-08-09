@@ -13309,3 +13309,74 @@ slope-increase DERIVED, + F-2/F-3/F-4 + remark disclosures).
 A clean pass at GENIND PE2 or GENH4 PE3 would be the arc program's
 FIRST 1/2 on the induction spine. TAMEK (wtec9cy9u) still in
 flight.**
+
+---
+
+## WAVE 3 FOLDED (wmwxo4ioa, 3/3): GENIND PE2 = 0C+2G+1m (NEW REAL GAP at n=6 — mixed CS+β-child openings uncovered by any displayed lemma) · GENH4 PE3 = 0C+0G+1m (ONE two-token display slip from the first clean pass) · HE7 r2 COMPLETE (LEMMA HE7-12 SLOT-DOMINATION proved + HE7-13 slope-increase derived) — WAVE 4: GENIND r2 + GENH4 r3 + HE7 PE2 — 2026-08-09
+
+**GENIND PE2 (report 50db400): UNREFUTED, NOT CLEAN — 0C, 2 GAP,
+1 MINOR.** PE2-G1 (the substantive one): mixed CS+β-child openings
+— FIRST LIVE AT n=6 — fall between GENIND-3's scope ("repeated
+factors all linear on e=1 sides") and (CS-1)'s fibration display
+(no child-system factor); NO displayed lemma licenses the
+stage × child product transport. The verifier CONSTRUCTED the
+instance ((q,m,N)=(2,6,5), hull (0,4)–(2,2)–(6,0), locus
+(q−1)²q^13) and verified all 8,192 states are CS-with-child with
+0 deviants — the transport is TRUE numerically; the LEMMA is owed.
+Invisible at n ≤ 5, hence unseen by every prior pass — exactly the
+depth-graded blindness the fresh-route rule exists to break.
+PE2-G2 (process): the n=4 de facto discharge cites GENH4 @ dff23f8,
+whose MENU half carried the then-adjudicated census CRITICAL
+(GENIND r1 landed 23:18, GENH4 r2 23:19 — a one-minute stale-pin
+race in the parallel wave); conclusion survives via GENH4 r2,
+uncited. NEW STANDING RULE: repairs citing suppliers pin the
+supplier at ITS repair HEAD and disclose adjudicated-unrepaired
+findings at the pin. PE2-m1: "ONE exact q-power per stratum" too
+coarse at genre-F even N (two-term CAP(F)). Machine: runner
+four-way md5-identical; isolated re-run bit-identical. FRESH ROUTE:
+first n=6 census (266,240 states vs hand-preregistered laws EXACT,
+incl. the corpus's FIRST e₁=3 genre) + first n=6 PARI oracle
+(4,944/0 at wild p=2) + symbolic GENIND-2(b) at m=6,7. 0/2; r2 owed.
+
+**GENH4 PE3 (reports a011533/3b88321): 0 CRITICAL, 0 GAP, 1 MINOR
+(+2 remarks) — the closest approach yet to a clean pass.** THE
+MINOR: r2's trichotomy has overlapping antecedents — "ODD N →
+DECIDED RAM(N)" omits the one-side condition u ≤ 2w; false on the
+committed 384-member 2SIDED(3,4) stratum. Recoverable in-note
+(GENH4-3(i)'s "else (ii)"); runner and ALL numbers correct; a
+two-token repair. PROCESS LESSON (ledgered as standing): the
+defective sentence was INHERITED VERBATIM from PE2's own GAP-1
+phrasing — verifier reports are unverified text; REPAIRS MUST
+RE-DERIVE from the note's lemmas, never transcribe the verifier's
+sentence. Remarks: the "Equivalently: W-12.A cell law" mnemonic
+unscoped at band pins; a 49-second stale stack line. Charges
+otherwise survive: census concordant everywhere incl. product
+algebra; W-12 re-pin byte-faithful; supp leg non-tautological.
+FRESH ROUTE: raw equal-characteristic walkers at TWO never-measured
+cells (262,144 + 156,250 members, keys == committed KEY-FOR-KEY,
+both armed counter-hypotheses FIRED) + mechanism-free σ-density at
+the WILD primes p=2,3 (300k samples, χ² = 5.30/5.35, exactly the
+eleven types). 0/2; r3 owed (two-token) then PE4.
+
+**HE7 r2 (1811605 + 83ced80).** F-1 CLOSED with NEW MATH: §S5.8
+LEMMA HE7-12 (SLOT-DOMINATION) — for any perturbation w with slot
+value ν > T₂: off-disk invariance with the S5.8.1 inequality,
+on-disk exactness, the WHOLE §S5 package verbatim for Ψ−w by the
+same proofs, and clause (d) CHAINS FOLD (Σw_i is one instance —
+every refine iterate covered at once); LEMMA HE7-13 derives the
+strict slope increase via residue-match. Refine display aligned to
+the lift form (the product form did not guarantee deg < D″, which
+HE7-12 needs — caught during wiring). F-2 (ε₁ split), F-3 (integer
+floors), F-4 ((LIFT_{i−1})) all landed; remarks disclosed in §S11.
+BONUS RECOUNT: the frozen refine histograms sum to 42, not the
+PE1 prose's "41" — corrected with disclosure, no frozen number
+moved. New leg he7r2_supp.py: all 42 refine-path members, slot
+geometry 42/42, S5.8.1 inequality 210/210 on 5 strata, slope
+increase 42/42, 0 violations. 0/2 post-r2; PE2 starts the count.
+
+**WAVE 4 (dispatched this entry): GENIND r2 (the transport LEMMA —
+real math, prove it; + the stale-pin disclosure + granularity) +
+GENH4 r3 (two-token + remark scoping; re-derive from GENH4-3(i),
+NOT from the PE3 sentence) + HE7 PE2 (clean-count attempt; prime
+surface = the never-attacked §S5.8). TAMEK v3 (wx03dfg69) in
+flight.**
