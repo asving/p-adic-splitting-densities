@@ -1747,3 +1747,216 @@ regimes agree — see S14].**
 
 **Grade: stays 0/2. The consecutive-clean count has NOT started; PE4
 (a fresh hostile pass) attempts the first clean.**
+
+## S14. [r4] REPAIR RECORD (PE4 adjudication; a FULL-SWEEP AUDIT, not a spot repair — S11 stays frozen at its seal; S4.1/S13 corrected in place where their own sentences were the findings)
+
+**Arc.** Hostile pass PE4 (fresh context, the corpus's first
+mixed-cap and n = 8 routes; report `GENIND_passPE4_report.md`
+@ ade9bac) adjudicated 0 CRITICAL + 2 GAP + 0 MINOR. Both GAPs are
+prose of the r3 repair itself; PE4-G1 is the arc's THIRD consecutive
+record-integrity defect (class PE2-G2 → PE3-G1 → PE4-G1: a
+repo-checkable factual sentence in a repair record, false against
+the repo). Three consecutive spot repairs each left such a defect,
+so this r4 is executed as a FULL-SWEEP audit: (1) an exhaustive
+inventory of every site that displays or consumes a window formula,
+each classified and every uncapped survivor fixed; (2) a
+claim-by-claim audit of every record/regime/inventory sentence,
+each machine- or artifact-checked before being kept; (3) a
+consistency pass over the whole [r1][r2][r3][r4] tag set. Minimality
+contract on the mathematics; the sweep is the method. The sealed
+runner (`genind_checks.py`, md5 e7ca150b), its committed artifacts,
+the r2 supp leg, and PE3's fresh leg are all BYTE-FROZEN (md5s
+re-verified at commit time: e7ca150b / 7335fc16·63b7413a·6c93f29c /
+fce9cb08·2075dd28·360eb239). NO r4 machine leg was added — every
+fresh number cited below is PE4's own committed leg
+(`genind_pe4_fresh.py` + output + results @ 51bd1bc, md5
+aa2b9af8/1a29a9c1/e5493312, GREEN 6,507 checks / 0 violations).
+
+* **PE4-G2 → proof step (1) rewritten (S4.1; + the S4.3 echo).** The
+  r3 corrected GENIND-3's STATEMENT to the capped
+  D_l = μ_l·k_l + Σ_b deg_b·min(s_b, k_l) = min_j(v(a_j) + j·k_l)
+  but left the PROOF's step (1) displaying the pre-cap uniform
+  window "N − m·k_l" — contradicting the statement, the note's own
+  M6 ledger (N−4 vs N−6), and degenerating to window −1 at live
+  instances (M6 at N = 5, TWOCHILD child A at N = 7) — and
+  GENIND-6(a) consumes steps (1)–(2) "VERBATIM". Step (1) now
+  derives the capped window by the content route: per-root content
+  min(v(ρ − ẑ_l π^{k_l}), k_l) sums to D_l; the primitive scaled
+  frame carries RAGGED certified precisions π^{N + j·k_l − D_l},
+  binding at j = 0, i.e. a window-M_l = window-(N − D_l) frame; the
+  old N − m·k_l is displayed as what it is — a true uniform floor
+  (D_l ≤ m·k_l), NOT the extraction window. The false reduction
+  parenthetical ("separable factors with the other letters as
+  roots… at their own slopes") is replaced by the true trichotomy:
+  same-side co-blocks at shifted residues z′ − ẑ_l (pieces
+  separable, co-children repeated), steeper co-blocks collapsed to
+  the single residue −ẑ_l, shallower co-blocks out of the reduction
+  by degree drop; no co-block sits at its own slope. The same false
+  clause's image in GENIND-6's proof of (a) ("blocks on other sides
+  sit at their own slopes") is corrected identically; GENIND-6(a)'s
+  VERBATIM consumption now reads the corrected step. Corroboration
+  (PE4's, cited): the statement's formula held at THREECHILD
+  (windows (1,3,7), the first mixed cap, C-box bijection 4,096) and
+  N8MIX (n = 8); the "equivalently min_j" clause is an identity
+  (PE4 §2, re-derived).
+* **PE4-G1 → the regime inventory restated to the machine-verified
+  claim (S4.1 statement bracket + TWOCHILD parenthetical +
+  concordance paragraph; S13 two sentences).** Five [r4] corrections,
+  each quoting its false original in place. The TRUE inventory, now
+  displayed at the S4.1 concordance paragraph: the disagreeing
+  regime (a co-block STEEPER than the extracted child) occurs
+  INSIDE the sealed roster via steeper decided PIECES — PSTEEP3 at
+  the (2,5) n = 3 control row (32 states, capped window 2 vs
+  uncapped 1) and PSTEEP4 at (2,6) n = 4 (512 states, 2 vs 1) —
+  exhaustively adjudicated by PE4 FR-1 (ONTO 4 × 8 resp. 8 × 64,
+  DEC/DRAIN 16/16 resp. 256/256, lift-certified; uncapped would
+  force one class and 100% child-drain), states the sealed GT-BETA
+  itself processed at the capped windows since the seal. The
+  concordance CONCLUSION stands unchanged (the runner was always
+  capped; no committed number moves); what changes is only WHY it
+  holds.
+
+**THE FULL-SWEEP WINDOW-SITE INVENTORY (sweep leg 1; grep targets
+"M_l", "window", "N −", "window-(N", "W − D", "min_j" over the whole
+note at this commit; every display or consumption site listed).**
+Classification: CAPPED (displays/implements the [r3] formula),
+α-CORRECT (N − mk at an α-transport, where the extraction is the
+whole cluster and D = m·k exactly — the cap is degenerate, the
+display right), AGNOSTIC (a different window mechanism: stage
+division ledgers, dv-units, ragged stage bands — no child-extraction
+cap in scope), or DEFECTIVE → FIXED:
+
+1. Header [r3]/[r4] arc lines — record, CAPPED. ✓
+2. S1 GENIND.A(II) "same (m, d) system at window N − mk" —
+   α-CORRECT. ✓
+3. S3 LEMMA GENIND-2(a)(b) statement + proof (σ_k windows, ghost
+   zones {≥ N − jk}, window condition mμ ≤ N−1) — α-CORRECT. ✓
+4. S4.1 LEMMA GENIND-3 STATEMENT — CAPPED [r3]. ✓
+5. S4.1 GENIND-3 proof step (1) — WAS the pre-cap "N − m·k_l" +
+   false reduction parenthetical — DEFECTIVE → FIXED [r4, PE4-G2].
+6. S4.1 [r3] honesty note (root-sum derivation; TWOCHILD N−4/N−6;
+   PSTEEP capped windows) — CAPPED. ✓
+7. S4.3 LEMMA GENIND-6(a) STATEMENT ("the SAME explicit window
+   M_l = N − (μ_l k_l + Σ deg·min(own slope, k_l))") — CAPPED [r3];
+   its "steps (1)–(2) VERBATIM" now consumes the corrected step
+   (checked: the (a) statement, the (a) proof gloss, and step (1)
+   display the same D_l). ✓
+8. S4.3 proof of (a) ("D = min_j(v(a_j) + j·k_l) … CAPPED slope-mass
+   … regardless of type") — CAPPED [r3]; its coprimality clause
+   "blocks on other sides sit at their own slopes" — DEFECTIVE
+   (false frame description; true conclusion) → FIXED [r4].
+9. S4.3 M6 worked ledger (D = min_j(v(a_j)+j) = 4, M = N−4, regime
+   label "capped = uncapped at M6") — CAPPED; hand-recheck
+   min(4, 2+2, 6) = 4. ✓
+10. S4.3 honesty box (i) SS6 [r3, PE3-m2] ("child extraction at the
+    capped window N−6") — CAPPED; hand-recheck D = 2·1 +
+    4·min(3/2, 1) = 6 (uncapped would say 8). ✓
+11. S5.2 drainage recursion u_{m,d}(N−mk) in the α-term —
+    α-CORRECT. ✓
+12. S6 Step 2 / Step 4 / S7.1 (CS-1) rider — cite M_l / GENIND-6
+    abstractly, inheriting whatever S4.1/S4.3 display; every
+    inherited display now CAPPED. ✓
+13. S7.1–S7.4 stage windows (certified division-ledger windows,
+    dv-units, ragged bands, GENIND-4 budgets, OB-a) — AGNOSTIC
+    (stage mechanism, disjoint from the child-extraction cap). ✓
+14. S10 runner description ("β children by c = k scaling
+    (D = weighted min) + monic Hensel extraction at window W − D")
+    — CAPPED; matches `extract_child` (md5 e7ca150b), which
+    implements D = min_j(v(a_j) + j·k) literally. ✓
+15. S13 [r3] PE3-G2 record (the capped formula + TWOCHILD windows)
+    — CAPPED (its two regime sentences were PE4-G1, fixed). ✓
+
+**Count: 15 site classes; 11 capped/correct as found, 2 agnostic
+(stage mechanisms), 2 DEFECTIVE (sites 5, 8) — both fixed at [r4].
+Uncapped survivors after this sweep: NONE.**
+
+**THE RECORD-CLAIM AUDIT (sweep leg 2; grep targets "every sealed",
+"all sealed", "true at every", "invisible", "first live", "first
+visible", "beyond every", "never", "no prior" — every hit checked
+against the repo/artifacts BEFORE being kept; verdicts listed).**
+
+* C1 S4.1 bracket "(true at every sealed instance)" — FALSE →
+  FIXED [r4]. Evidence: sealed ROWS[3] ∋ (2,5), ROWS[4] ∋ (2,6)
+  (runner source, md5 e7ca150b); PSTEEP3/PSTEEP4 live there
+  (v(a₀) = 4 ≤ 4 resp. 5 ≤ 5); PE4 FR-1 exhaustive (32 + 512
+  states).
+* C2 S4.1 TWOCHILD "beyond every sealed window — why three passes
+  … could not see it" — HALF-TRUE → RESCOPED [r4]. The GENRE (first
+  visible N = 7) is beyond every sealed full-sweep window (max
+  N = 6) and every constructed leg's scaled window; the inference
+  (regime invisible to the battery) was FALSE.
+* C3 S4.1 concordance "at every sealed instance (all in the
+  agreeing regime …)" — FALSE → FIXED [r4] (evidence as C1).
+* C4 S13 "invisible at n ≤ 6 first-visible windows" — FALSE →
+  FIXED [r4]: the disagreeing regime is first visible at N = 5,
+  n = 3 (PSTEEP3), inside the sealed roster.
+* C5 S13 "every sealed genre sits in the agreeing regime" — FALSE →
+  FIXED [r4] (evidence as C1).
+* C6 "mixed genres first live at n = 6" (S4.3 scope note, S6
+  Step 2, S12) — TRUE, KEPT. Evidence: the degree budget (child
+  ≥ 2 abscissas + composite block ≥ 4, S4.3) + the machine instance
+  M6 at n = 6.
+* C7 S4.3 honesty box [r3, PE3-m2]: stage-steeper live at n = 6
+  first visible N ≥ 9; ≥ 2 stage blocks degree-deep (≥ 8 abscissas)
+  — TRUE, KEPT. Evidence: SS6 hull v(a₀) = 8 ⟹ N ≥ 9; PE3 FR-C
+  machine instance at (2,9)/(3,9); abscissa budget 2·4 = 8.
+* C8 S5.3 "CS5-V4E2 first visible at N = 8" — TRUE, KEPT. Evidence:
+  v₀ = v₄ + 2h ≥ 1 + 2·(2v₄+1)|_{v₄=1} = 7 ⟹ N ≥ 8; corroborated
+  by S11 P-3 (V4E2 ABSENT at (·,2,5,n5) as predicted).
+* C9 S5.3 "CS5-V1E1-(2²) first visible N = 7" — TRUE, KEPT
+  (headroom 5k+1 ≤ N−1 at k = 1).
+* C10 S5.1 "the n ≤ 3 program never consulted [W12-H]" — TRUE,
+  KEPT. Evidence: the composite-free theorem (S5.1) + GT-CRIT zero
+  CS events on all four n = 3 rows (S11 P-8).
+* C11 GENIND-BOX-3 "the arguments never use d = 1" — a proof-audit
+  claim, already disclosed in the same box as machine-uncorroborated
+  beyond the w12 order-1 instances; PE4 §2 left it as disclosed.
+  KEPT with its hedge.
+* C12 S11 "Every never-measured spot EXACT" — verdict record,
+  matches the committed artifacts; re-verified by PE4's isolated
+  re-run of the sealed battery (163,536/0, leaf-diff = elapsed
+  only). KEPT.
+* C13 The mathematical "never" claims (GENIND-1(iii) no-re-merge,
+  GENIND-2(a) ghost non-contamination, GENIND-6(a)/(b)
+  factor-genericity and no-re-merge, the S4.3 instrument lesson) —
+  lemma content or normative, machine-corroborated pointwise
+  (GT-ALPHA/GT-BETA, supp, PE3/PE4 fresh legs), attacked across
+  PE1–PE4 and held. KEPT.
+* C14 The as-of pin sentences (S9.3): re-checked against the git
+  log AT COMMIT TIME per the standing rule — GENHN pin 850e77e is
+  still GENHN's note HEAD; GENH4: r3-era sentences stand as dated
+  records, and the stack gains the [r4] dated append (ACCEPTED 2/2
+  @ 11dbd23, annex @ baf05ed, accepted body byte-frozen = the
+  4b0d946 pin). No other supplier note moved since its pin.
+
+**Count: 14 claim groups audited; 4 FALSE → fixed (C1, C3, C4, C5),
+1 half-true → rescoped (C2), 9 verified and kept (C6–C14).**
+
+**TAG-SET CONSISTENCY (sweep leg 3).** The arc story each record now
+tells, checked round by round: seal → PE1 (0C+3G+4m) → [r1] (header
++ BOX-5 + inline tags; what r1 missed — the mixed-opening transport
+hole, the granularity, its own GENH4 pin — caught by PE2, recorded
+at S12); [r2] (S12; what r2 missed — its own pin-check sentence
+FALSE, the uncapped M_l statement display — caught by PE3, recorded
+at S13 with S12 corrected in place); [r3] (S13; what r3 missed — the
+statement repair not propagated into proof step (1), and its own
+regime-inventory sentences FALSE — caught by PE4, recorded HERE with
+S4.1/S13 corrected in place); [r4] (this record; the full-sweep
+method is the structural answer to three consecutive
+record-integrity defects — what r4 may itself have missed is PE5's
+to find, with this inventory as its checklist). Checked: every [rN]
+tag in the body cites the finding it repairs; no round's record
+contradicts another's; S11 remains frozen at its seal; the three
+grade lines (S12, S13, S14) form the monotone arc 0/2 → 0/2 → 0/2
+with the clean count never started.
+
+**No frozen number moved; no sealed or committed artifact touched
+(all eight md5 pins re-verified at commit time, listed in the Arc
+paragraph). The capped formula, every count law, every committed
+number, and the conditionality display stand exactly as at r3 —
+this round changed PROSE: one proof step now derives what its
+statement says, and every inventory sentence now says only what the
+repo can verify.**
+
+**Grade: stays 0/2. The consecutive-clean count has NOT started; PE5
+(a fresh hostile pass) attempts the first clean.**
