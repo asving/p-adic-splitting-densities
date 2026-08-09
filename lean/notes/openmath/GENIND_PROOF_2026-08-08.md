@@ -12,7 +12,13 @@ adjudicated UNREFUTED NOT CLEAN, 0 CRITICAL + 2 GAP + 1 MINOR —
 [r2]-tagged: LEMMA GENIND-6 at S4.3 (PE2-G1, the mixed-opening
 transport, with the additive supp leg §S12) + the (CS-EXACT)
 discharge re-pin/disclosure (PE2-G2) + the granularity gloss
-(PE2-m1); the clean count has NOT started — PE3 attempts it).
+(PE2-m1); hostile pass PE3 adjudicated UNREFUTED NOT CLEAN,
+0 CRITICAL + 2 GAP + 4 MINOR — `GENIND_passPE3_report.md` @ f89b565
+— r3 repairs applied in place, [r3]-tagged: the capped M_l window
+display (PE3-G2, S4.1 + S4.3) + the GENH4 re-pin corrected with the
+pin-check violation disclosed (PE3-G1, Step 4/S7.1/S12/S13) + the
+four MINOR records; the clean count has NOT started — PE4 attempts
+the first clean).
 **Instrument:**
 sealed two-commit battery `verification/openmath/genind_checks.py` —
 the two-species classification machine-checked at n = 4 AND n = 5 on
@@ -317,9 +323,18 @@ Q = q^d (roster limit: the battery exercises d = 1 plus one (m, d) =
 >
 >     Π_l [ the (μ_l, d) cluster system at window M_l ],
 >
-> M_l = N − (Σ_j μ_j k_j + Σ_pieces deg·slope-mass of the frame at
-> S_l's scale) — the explicit affine window of the scale-then-Hensel
-> extraction at the child's frame — with fiber = (letter census of the
+> M_l = N − D_l, **D_l = μ_l·k_l + Σ_{other blocks b} deg_b·min(s_b, k_l)**
+> (s_b = block b's slope: every co-block — child, composite stage, or
+> decided piece — contributes its slope-mass CAPPED at the extracted
+> child's slope k_l; equivalently D_l = min_j (v(a_j) + j·k_l), the
+> content of the scaled frame) — the explicit affine window of the
+> scale-then-Hensel extraction at the child's frame [r3, PE3-G2:
+> display corrected — the sealed display charged every co-block its
+> OWN slope-mass (Σ_j μ_j k_j + Σ_pieces deg·slope-mass), which
+> equals D_l iff every co-block sits at slope ≤ k_l (true at every
+> sealed instance) and is FALSE for the shallower child at
+> distinct-slope multi-child genres; see the honesty note below] —
+> with fiber = (letter census of the
 > genre: vertex units, child letters z_l, decided-piece residual
 > letters) × Q^{(affine exponent in the genre parameters)}: the free
 > digits of the decided pieces and the ghost digits of the scalings.
@@ -368,6 +383,32 @@ genres, (b) the M_l window bookkeeping when children sit on different
 sides, (c) the unit-scaling of letters when several pieces split at
 once. The pointwise machine leg is designed so that an error in ANY
 of (a)–(c) at n ≤ 5 surfaces as an integer mismatch.
+
+**[r3, PE3-G2] The (b)-attack landed — the window display corrected
+above.** PE3 executed exactly attack (b) (children on different
+sides) and the sealed display's literal reading FELL: derivation —
+after recentering and scaling x = π^{k_l}·y, each linear factor
+(π^{k_l}y − ρ) of the monic frame has content min(v(ρ), k_l), so the
+extraction's content is D_l = Σ_roots min(v(ρ), k_l) = μ_l k_l +
+Σ_{other blocks} deg·min(own slope, k_l) — co-blocks STEEPER than the
+extracted child are capped at k_l, and the sealed display (own
+slope-mass, uncapped) overcharges exactly there. Counter-genre
+TWOCHILD at (q, 4, 1): hull (0,6)–(2,2)–(4,0), child A on [0,2] at
+slope 2, child B on [2,4] at slope 1, first visible N = 7 (beyond
+every sealed window — why three passes and the battery could not see
+it). True child-B window N − (2·1 + 2·min(2,1)) = N−4; the old
+display said N−6. Machine (genind_pe3_fresh, committed @ f89b565):
+ALL 2,048 states at (2,7) and ALL 177,147 at (3,7) extract child B at
+N−4, fibering ONTO the full 16-/81-class child space with constant
+fiber q⁷ — impossible at window N−6 (the child space would be one
+class); lift-stability 80 × 5 + 60 × 4 certifies N−4 as content. The
+steeper child A extracts at N−6, where both readings agree (the
+control). CONCORDANCE: the sealed runner's `extract_child` always
+computed D = min_j (v(a_j) + j·k) — the capped value — so no machine
+artifact or committed number moves; the defect was the display
+alone, silently corrected by the mechanics at every sealed instance
+(all in the agreeing regime: every co-block shallower than or at the
+extracted child's slope).
 
 **[r2, PE2-G1] Scope note.** GENIND-3's hypothesis ("repeated factors
 all linear on e = 1 sides") excludes polygons that ALSO carry a
@@ -438,9 +479,11 @@ enter at v(a₀) = 2k + 2h ≥ 6, i.e. N ≥ 7) is PE2's:
 > coprimality of the reduction blocks, never the separability or
 > linearity of the repeated factors. Iterating over the children
 > extracts each as a (μ_l, d) cluster state at the SAME explicit
-> window M_l = N − (μ_l k_l + Σ_{other blocks} deg·slope-mass at
-> S_l's scale) as in GENIND-3 — composite blocks contribute their
-> slope-mass exactly like decided pieces — and leaves each composite
+> window M_l = N − (μ_l k_l + Σ_{other blocks} deg·min(own slope,
+> k_l)) as in GENIND-3 [r3, PE3-G2: capped, as corrected at S4.1 —
+> the sealed echo here inherited the uncapped display] — composite
+> blocks contribute their capped slope-mass exactly like decided
+> pieces — and leaves each composite
 > block as a monic cofactor with PER-COEFFICIENT certified windows
 > (the triangular division ledger; the sibling-Hensel-loss
 > composition GENHN already displays for embedded genres, "N ↦ N −
@@ -493,7 +536,8 @@ content drop / degree-dropped cofactor — the monic-factor Hensel
 form, already listed among this note's classical suppliers). The
 window bookkeeping is the same content computation D = min_j
 (v(a_j) + j·k_l), M_l = N − D, with every co-block contributing its
-slope-mass to D regardless of type. The cofactor's per-coefficient
+CAPPED slope-mass deg·min(own slope, k_l) to D regardless of type
+[r3, PE3-G2]. The cofactor's per-coefficient
 certified windows are the triangular division f/g: each u_j is a_·
 minus products of known-window terms whose valuation floors (the
 genre budgets) push the error terms deeper — an explicit affine
@@ -527,7 +571,9 @@ u = the stage block (monic, degree 4, roots of valuation 1/2).
   has D = min_j(v(a_j) + j) = 4 (attained at j = 0 and the vertex
   j = 2), so the child is a full (2, 1, N−4) cluster state — window
   M = N − (2·1 + 4·(1/2)) = N − 4, the GENIND-3 formula with the
-  stage block contributing slope-mass 2.
+  stage block contributing capped slope-mass 4·min(1/2, 1) = 2
+  [r3, PE3-G2: capped = uncapped at M6 — the stage (slope 1/2) is
+  SHALLOWER than the child (slope 1), the agreeing regime].
 * STAGE: the division ledger certifies u's coefficients at the
   RAGGED windows (u₀, u₁, u₂, u₃) mod (π^{N−1}, π^{N−2}, π^{N−2},
   π^{N−3}) — e.g. u₃ = a₅ − g₁ with g₁ known mod π^{N−3}; u₀ = a₂ −
@@ -543,9 +589,19 @@ u = the stage block (monic, degree 4, roots of valuation 1/2).
   v(u₁) ≥ 2 (r = u mod g, every q, both characteristics); pushing
   Δg through the division ledger gives the SHARP certified windows
   **(u₀, u₁, u₂, u₃) mod (π^{N−1}, π^{N−1}, π^{N−2}, π^{N−2})** —
-  one deeper at u₁ and u₃ than the plain division ledger — and these
-  are sharp: one further digit (u₀ → π^N or u₂ → π^{N−1}) is
-  lift-UNSTABLE (machine: the T1 tooth).
+  one deeper at u₁ and u₃ than the plain division ledger — and
+  sharp as the evidence supports [r3, PE3-m3: the T1 tooth deepens
+  u₀ AND u₂ jointly, so it certifies the DISJUNCTION "u₀ → π^N or
+  u₂ → π^{N−1} is lift-UNSTABLE" — true as worded; PE3's
+  per-coefficient split resolves it: u₂-only-deeper fires everywhere
+  (39/40, 39/40, 40/40 at (2,6)/(2,5)/(3,5)); u₀-only-deeper fires
+  at odd q (40/40 at (3,5)) but is lift-STABLE at p = 2 (0/40 at
+  BOTH (2,6) and (2,5)) — parity-dependent, per the Bezout
+  first-order bound: at p = 2 the char-2 budget v(u₂) ≥ 2 puts every
+  Δu₀ term at ≥ N, while at odd q the term Δg₀·u₂ = (N−2) + 1 = N−1
+  bites. So u₂'s window is sharp at every tested point; u₀'s is
+  sharp at odd q and certified-but-possibly-not-sharp at p = 2 —
+  counts consume only the certified direction].
 * FIBRATION: free-digit accounting — locus (q−1)²q^{6N−17}; child
   space q^{2(N−5)}; stage space q^{4(N−5)+4} per letter pair at the
   division-ledger windows (q^{4(N−5)+6} at the sharp windows); so
@@ -570,9 +626,17 @@ byte-frozen). GREEN: 2,128,163 checks, 0 violations, 357.7 s.**
   (2, 6): 524,288 ONTO 4 × 256 / fibers {512} AND 4 × 1024 / {128};
   (3, 5) full (z, w) = (1,1) letter slice: 1,594,323 ONTO 1 × 81 /
   fibers {19,683} = q⁹ AND 1 × 729 / {2,187} = q⁷ — the odd-q pins
-  live (digit₁(u₂) = −2z ≠ 0, v(u₂) = 1). Every member classifies to
-  the M6 key with the child side present; every stage cofactor hits
-  the entry budgets exactly.
+  live (digit₁(u₂) = −2z ≠ 0, v(u₂) = 1). [r3, PE3-m1] Coverage as
+  actually run: at (2,5) and (2,6) every member classifies to the M6
+  key with the child side present (reader ON); the (3,6,5)
+  letter-slice block ran reader-OFF (`do_read=False`) — checked
+  there: child side present on every member + every stage cofactor
+  hits the entry budgets exactly, NOT the full key classification
+  (the sealed sentence "every member classifies to the M6 key"
+  overstated the q = 3 instrument). The q = 3 reader-ON hole is
+  closed at the HARDER genre by PE3's fresh leg: 300 M7T members at
+  (3,6) with the reader ON, all CS at the stable key
+  (genind_pe3_fresh FR-A).
 * CERTIFICATION (exact-factor lift-stability: factors Hensel-lifted
   to each independent random lift's FULL precision, truncations
   compared — see the instrument arc below): stable at BOTH displayed
@@ -620,9 +684,18 @@ Clause (d) is a COMPOSITION statement: its stage-side content is
 sharp windows displayed above, the one-deeper tooth firing); at
 GENERAL mixed genres only the certified DIRECTION is claimed —
 counts consume only that direction. A hostile pass should attack:
-(i) the certified-window ledger at genres with ≥ 2 stage blocks or
-a stage block STEEPER than a child (first live n ≥ 7 arrangements —
-no machine instance here); (ii) the Bezout refinement's budget
+(i) the certified-window ledger at genres with ≥ 2 stage blocks
+(not live at n ≤ 7: two composite blocks consume ≥ 8 abscissas,
+S5.1) or a stage block STEEPER than a child [r3, PE3-m2: the sealed
+line said "first live n ≥ 7 arrangements — no machine instance
+here"; the stage-steeper case is live already at n = 6 —
+window-deep (first visible N ≥ 9), not degree-deep — and is now
+machine-realized by PE3's fresh leg: genre SS6 at (q, 6, 1), hull
+(0,8)–(4,2)–(6,0), stage [0,4] at slope 3/2 STEEPER than the child
+[4,6] at slope 1, 250 + 120 members at (2,9)/(3,9), all CS, child
+extraction at the capped window N−6, stage budgets exact, certified
+windows lift-stable (genind_pe3_fresh FR-C); this note's own machine
+leg still carries no instance]; (ii) the Bezout refinement's budget
 input v(r₁) ≥ 2 at other genres (here it follows from v(u₁) ≥ 2 +
 v(u₂g₁) ≥ 2; a genre where the stage budgets are weaker would lose
 the refinement, not the ledger); (iii) the odd-q pins (the battery's
@@ -806,7 +879,10 @@ of P(n).
 
 *Step 3 (A0).* Order-1 leaves: Ore at the terminal frame + window
 coherence (S5.2 bullet). CS leaves: (CS-3) = (H-e). Products: σ and
-certificates compose branchwise (W12-S2.1, GENIND-3). 
+certificates compose branchwise (W12-S2.1, GENIND-3); at MIXED
+CS+child frames the σ-composition routes through LEMMA GENIND-6(d)
+(σ = ⊎_l σ_l ⊎_b σ_b ⊎ pieces) [r3, PE3-m4: the wiring Steps 2 and 4
+already carry, added here]. 
 
 *Step 4 (A2).* r(N) = conservative drains + window-boundary (tail)
 families + the CS stages' RAGGED BANDS [r1, PE1-G2: (CS-1)'s
@@ -844,8 +920,17 @@ inequality and P(n′)'s fourth member fails (the verifier's
 n = 8-through-a-degree-4-child scenario), i.e. the induction would
 not propagate the very member it assumed. Discharge geography,
 honestly [r2, PE2-G2 + PE2-m1: re-pinned, split into its two halves,
-and the timing race disclosed]: at n = 4 the clause is supplied DE
-FACTO by GENH4 @ r2 (fd35416 note + 5279a11 supp leg) — the DRAIN
+and the timing race disclosed] [r3, PE3-G1: re-pinned again at
+GENH4's ACTUAL repair HEAD r3 = 4b0d946 (note-only; the dv0 = N
+trichotomy restated with pairwise-disjoint antecedents, the W-12.A
+mnemonic scoped, the stack box refreshed — display-only for
+everything consumed here, PE3's full-diff verification; the UND
+count GENH4.B rests on is identical across fd35416 → 4b0d946);
+GENH4's arc since: passPE4 CLEAN @ e15308d, 0C + 0G + 0m + 2
+remarks, its 2-clean count 1/2 — no adjudicated unrepaired finding
+at the r3 pin]: at n = 4 the clause is supplied DE
+FACTO by GENH4 @ r3 (4b0d946; laws as at fd35416 note + 5279a11
+supp leg) — the DRAIN
 half by THEOREM GENH4.B (= Q22-L3), one exact closed form per
 (center, entry, history) stratum (a single q-power off the boundary
 band; a TWO-term q-power sum at genre-F even N, GENH4-CAP(F)'s own
@@ -863,7 +948,10 @@ folded 0089f9b at 23:07:17, BEFORE GENIND r1 landed at 23:18:53 =
 uncitable at r1, but the adjudicated defect was on the ledger and
 went undisclosed). Standing rule applied from this repair on: pin
 suppliers at their repair HEAD and disclose any adjudicated,
-not-yet-repaired findings at the pin. GENHN S6.3 (@ 850e77e)
+not-yet-repaired findings at the pin — AS A COMMIT-TIME ACTION
+against the git log, not a composition-time recollection [r3,
+PE3-G1: the r2 text violated the rule in the very repair that
+adopted it — see S12/S13]. GENHN S6.3 (@ 850e77e)
 displays the same shape at general genres (its header phrase "one
 exact q-power per stratum" carries the same genre-F granularity
 caveat when consumed here: read it as one exact FINITE q-power SUM
@@ -949,7 +1037,10 @@ index E = e (the new denominator), stage residue field K
   coarse a stratum], not asymptotic bounds. A genuine fourth member,
   consumed by GENIND.B Step 4 (see its [r1] record: the induction
   propagates P(n)'s exact-complement (A2) member only through exact
-  stage laws). De facto discharge at n = 4 [r2, PE2-G2: re-pinned at
+  stage laws). De facto discharge at n = 4 [r3, PE3-G1: pin advanced
+  to GENH4 r3 = 4b0d946 (display-only diff for these consumptions;
+  PE4 CLEAN e15308d, 1/2) — see Step 4's [r3] record] [r2, PE2-G2:
+  re-pinned at
   GENH4 r2 = fd35416 + 5279a11, BOTH halves named — drain = THEOREM
   GENH4.B (= Q22-L3), menu = THEOREM GENH4.A (= Q22-L1) + GENH4-1F
   with the r2-corrected comp-weighted census; the r1 cite @ dff23f8
@@ -1147,8 +1238,14 @@ degree-by-degree while the SCAFFOLD stays uniform in n.
   (report @ 50db400), r2 repairs applied in place ([r2] tags:
   GENIND-6 + re-pin/disclosure + granularity; sealed runner +
   artifacts byte-frozen, untouched; the r2 machine support is the
-  ADDITIVE leg genindr2_supp.py, §S12) — the clean count has NOT
-  started;
+  ADDITIVE leg genindr2_supp.py, §S12); PE3 (hostile, fresh context,
+  first n ≥ 7 route) adjudicated 0C + 2G + 4m (report @ f89b565), r3
+  repairs applied in place ([r3] tags: the capped M_l window display
+  + the GENH4 re-pin with the pin-check violation disclosed + the
+  four MINOR records; sealed runner + artifacts + the r2 supp leg
+  byte-frozen, untouched; PE3's fresh leg genind_pe3_fresh.* is the
+  verifier's committed artifact, cited, not this note's) — the clean
+  count has NOT started;
   every supplier consumed at the pins of S10's PIN family; the
   full-degree corollary inherits the MINIMUM grade over
   {W-11, W-12, HEX3, HMENU3 arcs, this note, and — at n ≥ 4 —
@@ -1221,6 +1318,18 @@ degree-by-degree while the SCAFFOLD stays uniform in n.
   S7.1's (CS-1..3) pricing only.
 * **QSCOUT22** @ 240a56c (skeleton) — the (2,2) empirical instrument;
   S7.3's predictions target its table; nothing consumed from it.
+* **GENHN (THEOREM GENHN.A(iv)(v) + LEMMA GENHN-3 + S6.2)**
+  @ 850e77e [r3, PE3-m4: consumed since r1/r2, omitted from this
+  stack until now] — A(iv) (the stage node floor κ ≥ S_b + 1) inside
+  LEMMA GENIND-6(b); A(v) (the ragged-window-corrected stage read)
+  at (CS-1); LEMMA GENHN-3 (ragged-band confinement) at (CS-1) and
+  Step 4; S6.2 (the ghost × letter reconciliation) at (CS-2).
+* **GENH4 (THEOREM GENH4.A/B + GENH4-1F, the Q22-L1/L3 package)**
+  @ r3 4b0d946 [r3, PE3-G1 + PE3-m4: re-pinned at the actual repair
+  HEAD; arc since: PE4 CLEAN @ e15308d, its count 1/2] — the
+  (CS-EXACT) n = 4 de facto discharge geography (drain =
+  GENH4.B/Q22-L3, menu = GENH4.A/Q22-L1 + GENH4-1F, comp-weighted
+  census), Step 4 + S7.1 only.
 * **Classical:** Hensel (coprime + monic-factor lifting), Ore/GMN
   order-1, lower-hull geometry, generating functions.
 
@@ -1418,7 +1527,13 @@ BYTE-FROZEN — the r2 machine support is the ADDITIVE leg
   [GENIND-H] exactly as (CS-1) does.
 * **PE2-G2 → Step 4 + S7.1 [r2] re-pin + disclosure.** The
   (CS-EXACT) n = 4 de facto discharge now cites GENH4 @ r2
-  (fd35416 + 5279a11; no GENH4 r3 existed at this commit — checked)
+  (fd35416 + 5279a11; the r2 text here also asserted "no GENH4 r3
+  existed at this commit — checked" — [r3, PE3-G1]: that sentence
+  was FALSE; GENH4 r3 = 4b0d946 landed 00:50:10, 10–45 minutes
+  BEFORE all three r2 commits (01:00:35 / 01:21:44 / 01:35:30), and
+  at the pinned r2 there WAS an adjudicated not-yet-repaired finding
+  (GENH4 passPE3's MINOR 1, the dv0 = N trichotomy, adjudicated
+  00:24:06) — corrected at S13, re-pinned at r3 in Step 4/S7.1/S9.3)
   with BOTH halves named (drain GENH4.B, menu GENH4.A + GENH4-1F,
   r2 comp-weighted census), and the 49-second timing race at the r1
   pin dff23f8 is disclosed in full at Step 4. Standing rule adopted:
@@ -1443,4 +1558,92 @@ truncation-artifact diagnosis → exact-factor redesign) disclosed in
 the leg's docstring and S4.3's machine record.
 
 **Grade: stays 0/2. The consecutive-clean count has NOT started; PE3
+(a fresh hostile pass) attempts the first clean.**
+
+## S13. [r3] REPAIR RECORD (PE3 adjudication; appended at r3 — S11 stays frozen at its seal, S12 corrected in place where its own sentence was the finding)
+
+**Arc.** Hostile pass PE3 (fresh context, the corpus's first n ≥ 7
+route; report `GENIND_passPE3_report.md` @ f89b565) adjudicated
+0 CRITICAL + 2 GAP + 4 MINOR. This r3 repairs exactly those findings,
+[r3]-tagged, minimality contract; the sealed runner
+(`genind_checks.py`, md5 e7ca150b), its committed artifacts, and the
+r2 supp leg (`genindr2_supp.py` + output + results) are all
+BYTE-FROZEN — no machine leg was added at r3; the machine evidence
+cited below is PE3's own committed fresh leg
+(`verification/openmath/genind_pe3_fresh.py` + output + results
+@ f89b565: GREEN, 705,133 checks, 0 violations).
+
+* **PE3-G2 (the mathematical one) → the capped window formula.**
+  GENIND-3's M_l display (inherited verbatim by GENIND-6(a)) charged
+  every co-block its OWN slope-mass — false under its literal
+  reading at multi-child genres with DISTINCT slopes. Corrected
+  display (re-derived from the polygon geometry: the content of the
+  scaled monic frame is the root-sum Σ min(v(ρ), k_l)):
+  **M_l = N − D_l, D_l = μ_l·k_l + Σ_{other blocks} deg·min(own
+  slope, k_l)** — co-blocks contribute their slope-mass CAPPED at
+  the extracted child's slope; equivalently D_l = min_j (v(a_j) +
+  j·k_l). Corrected at S4.1 (statement + new honesty-note
+  paragraph), S4.3 GENIND-6(a) ("the SAME explicit window" echo),
+  the proof of (a)'s gloss, and the M6 ledger (which sits in the
+  capped = uncapped agreeing regime, now said so). Adjudicating
+  instance: TWOCHILD (hull (0,6)–(2,2)–(4,0), children at slopes 2
+  and 1) — true child-B window N−4, old display N−6, machine-refuted
+  on ALL 2,048 (2,7) + 177,147 (3,7) states with the capped window
+  lift-stable (80 × 5 + 60 × 4). CONCORDANCE: the sealed runner's
+  `extract_child` ALWAYS implemented the capped value (D = weighted
+  min), so every sealed and committed number stands unchanged — the
+  defect was display-only, invisible at n ≤ 6 first-visible windows.
+* **PE3-G1 → the pin-check corrected, the violation disclosed.** The
+  r2 sentence "no GENH4 r3 existed at this commit — checked" (S12)
+  was FALSE: GENH4 r3 = 4b0d946 landed 2026-08-09 00:50:10, before
+  every r2 commit (2abf419 01:00:35, ad6f31d 01:21:44, 52fb6ff
+  01:35:30), and the pinned r2 carried an adjudicated
+  not-yet-repaired finding (GENH4 passPE3's MINOR 1 @ 3b88321
+  00:24:06 — the dv0 = N trichotomy, in exactly the CAP(F)
+  neighborhood the (CS-EXACT) gloss cites). This is the PE2-G2
+  defect class (stale pin + undisclosed adjudicated finding at the
+  pin) REPRODUCED IN THE REPAIR THAT ADOPTED THE RULE — the ledger
+  (435a473) already carries the lesson: pin checks are a COMMIT-TIME
+  action against the git log, not a composition-time recollection;
+  the rule is so restated at Step 4. Re-pin executed at GENH4's
+  CURRENT repair HEAD r3 = 4b0d946 (Step 4, S7.1, S9.3, S12
+  corrected in place): the fd35416 → 4b0d946 diff is display-only
+  for everything GENIND consumes (THEOREM GENH4.A/B statements,
+  the two-term CAP(F) law, the comp-weighted census, GENH4.D's
+  package all untouched; the UND count identical — PE3's full-diff
+  verification, § its finding 1). Also disclosed: GENH4's arc since
+  the pin — passPE4 CLEAN @ e15308d (0C + 0G + 0m + 2 remarks; its
+  2-clean count 0/2 → 1/2); no adjudicated unrepaired finding sits
+  at the r3 pin as of this commit (checked against the git log at
+  commit time: GENH4 note HEAD = 4b0d946, latest GENH4 adjudication
+  = e15308d CLEAN).
+* **PE3-m1 → instrument coverage.** S4.3's machine record no longer
+  claims the M6-key classification at the (3,6,5) block (reader OFF,
+  `do_read=False`): corrected to sides + budgets there, reader-ON
+  key classification at (2,5)/(2,6), with the q = 3 reader-ON
+  evidence now cited from PE3's FR-A (300 M7T members at (3,6)).
+* **PE3-m2 → honesty-box scope.** "first live n ≥ 7 arrangements"
+  corrected: stage-STEEPER-than-child is live at n = 6 (window-deep,
+  N ≥ 9) and is machine-realized (SS6 at (2,9)/(3,9), PE3 FR-C);
+  ≥ 2 stage blocks stays degree-deep (≥ 8 abscissas).
+* **PE3-m3 → sharpness restated as supported.** The M6 sharp-window
+  bullet now states the DISJUNCTION the T1 tooth certifies plus
+  PE3's per-coefficient split: u₂-only fires everywhere; u₀-only
+  fires at odd q and is lift-STABLE at p = 2 (0/40 at (2,6) AND
+  (2,5)) — parity-dependent per the Bezout first-order bound; u₀'s
+  p = 2 window is certified-but-possibly-not-sharp. Counts consume
+  only the certified direction (unchanged).
+* **PE3-m4 → bookkeeping.** S9.3's conditionality stack gains the
+  GENHN @ 850e77e and GENH4 @ r3 consumption bullets (present inline
+  since r1/r2, absent from the roster); S6 Step 3 gains the mixed-σ
+  wiring through GENIND-6(d) (Steps 2/4 already carried it).
+
+**No frozen number moved; no sealed artifact touched (byte-frozen,
+re-verifiable: runner md5 e7ca150b; supp triple per S12). The
+corrected formula changes NO committed instance — every sealed genre
+sits in the agreeing regime (co-blocks shallower than or at the
+extracted child's slope), and the runner always computed the capped
+value.**
+
+**Grade: stays 0/2. The consecutive-clean count has NOT started; PE4
 (a fresh hostile pass) attempts the first clean.**
