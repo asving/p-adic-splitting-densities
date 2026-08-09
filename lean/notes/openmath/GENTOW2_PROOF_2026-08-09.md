@@ -287,21 +287,129 @@ Summing: R_{3,α}(Φ₃) = y^{f₃} − Σ c_t y^t = ψ₃, and since
 ψ₃(0) = −c₀ ≠ 0 we get R₃(Φ₃) = R_{3,α}(Φ₃) = ψ₃ (Def 3.18,
 L994–1000, j₀ = 0). ∎
 
-*Honesty box for GENTOW2-B.* Two repo-side identifications carry
-this proof and are consumed AS ACCEPTED CORPUS, not re-proved here:
+*Honesty box for GENTOW2-B [r1 REWRITTEN — PE1 F2 (provenance) +
+F3 (false fallback clause) cured].* Two repo-side identifications
+carry this proof:
+
 (B-1) the dv₂ ladder value of a deg < D₂ ladder element equals its
-µ₂-value (GENHN-2′'s two-step class separation — LEMMA GENHN-T(b)′
-(ii), S8 annex, accepted); (B-2) the repo's K₂-digit alphabet is the
-ε₂-normalized F₃-coordinate of FGMN's Def 3.16 (this is the [W-2]
-graded-dictionary identification at level 2, the same one T(b)′'s
-proof already uses to read residuals; if a future audit finds the
-repo digit differs from the ε-normalized digit by a fixed unit, the
-recipe's c_t simply re-parameterizes — ψ₃ changes by the
-substitution y ↦ εy, staying monic-irreducible of the same degree
-after renormalization, and every clause of GENTOW2-A survives
-verbatim since GENTOW2-A takes (ii) R_ν(Φ₃) = irreducible-with-
-nonzero-constant as its only residual input). Neither identification
-touches the FGMN citation itself.
+µ₂-value, exactly, with digit-0 meaning strictly-above (GENHN-2′'s
+two-step class separation + no-cancellation — LEMMA GENHN-T(b)′
+(ii), S8 annex, accepted corpus).
+
+(B-2) the repo K₂-digit of a Φ₂-free ladder element equals the
+ε₂-normalized F₃-coordinate of FGMN's Def 3.16 at its grade, ON THE
+NOSE. [r1] Provenance restated: this identification is FIRST MADE
+IN THIS NOTE. The pre-repair pointer ("the [W-2] graded-dictionary
+identification at level 2, the same one T(b)′'s proof already
+uses") was wrong on both legs — GRTW2's dictionary targets a
+different source text and GENHN/T(b)′ has no Def-3.16 contact (PE1
+F2). What the accepted corpus DOES derive is now separated out as
+LEMMA GENTOW2-B′ (S5.1): B-2 holds UP TO an x₀-free, g-free unit
+family u(β) ∈ K₂^× (u(β) = the FGMN coordinate of the repo ladder
+normalizer at grade β); the residue "u(β) = 1 at each grade the
+recipe uses" is the genuinely new content, consumed DISCLOSED-NOT-
+DERIVED. Machine support (support, not proof): the sealed battery
+(41/0) + the PE1 fresh route (20/0) sit at 10 witnesses whose
+B-route factorizations were predicted with u ≡ 1, including the
+F₄ × f₃ = 2 corner pair F2/F3 where flipping one digit flips
+irreducible ↔ split — twist families u that would alter those
+verdicts at the tested grades are excluded by that record.
+
+(B-2-fallback, the TRUE transformation law) [r1: the pre-repair
+clause — a fixed-unit discrepancy acts by "ψ₃ ↦ y ↦ εy
+substitution" and "every clause of GENTOW2-A survives verbatim" —
+was FALSE at f₃ ≥ 2: a fixed δ multiplies every non-leading digit,
+giving R = y^{f₃} − δ·Σ c_t y^t, which is not a y ↦ εy
+substitution (that one scales coefficient t by ε^{t−f₃}, the
+grade-covariant pattern; the two agree only at f₃ ≤ 1), and
+irreducibility can die: over K₂ = F₄, ψ₃ = y² + ωy + 1 is
+irreducible while the δ = ω twist y² + ω²y + ω has the root y = 1
+(PE1 F3's counter-instance).] Corrected clause: if a future audit
+finds repo digit = u(β)·(ε-normalized digit) with u ≢ 1 — fixed OR
+grade-varying (the latter is the ϑ-cocycle mode of GENTOW5-A1's
+repo-internal dictionary, GENTOW-4's η₂-cocycle finding) — then by
+LEMMA GENTOW2-B′(5) the recipe at digit string (c_t) realizes
+R_ν(Φ₃) = y^{f₃} − Σ u(β_t)c_t y^t. Since u is x₀-free and the
+digit string is freely prescribable, re-parameterizing c_t ↦
+u(β_t)^{−1}c_t realizes any admissible target ψ₃ (monic
+irreducible, ψ₃(0) ≠ 0, degree f₃): THEOREM GENTOW2-A is untouched
+(it consumes only hypothesis (ii), never a digit string), LEMMA
+GENTOW2-B survives with the re-parameterized prescription, and the
+only casualty of u ≢ 1 would be the cosmetic claim that the repo
+digit string spells ψ₃'s coefficients. At f₃ ≤ 1 no
+re-parameterization is even needed for clause survival: y − δc₀
+stays monic irreducible with nonzero constant.
+
+Neither identification touches the FGMN citation itself.
+
+### S5.1 [r1] LEMMA GENTOW2-B′ — what the corpus derives toward
+### B-2 (the graded-frame computation PE1 F2 asked for)
+
+Fix a grade β ∈ Γ₂ (so s₃(β) = 0: eq (12) at i = 3 with
+gcd(h₃, e₃) = 1 forces s ≡ 0, the S5 abscissa bookkeeping). Two
+reads are in play on Φ₂-free elements g (deg g < m₃ = deg Φ₂) of
+exact grade ν(g) = β:
+
+  (R-FGMN)  R_{3,β}(g) ∈ F₃ = K₂ — Def 3.16 at i = 3, single
+            j = 0 term: R_{3,β}(g) = ε₂(β)·R_{2,β}(g)(z₂), the
+            ε₂-normalized coordinate;
+  (R-repo)  digit(g) := res(g(x₀)/n̂₂(β̂)(x₀)) ∈ k(L2) ≅ K₂ — the
+            GENHN-2′ coherent read against the ladder normalizer
+            n̂₂(β̂) = π^a x^i Φ′^b at dv₂-height β̂ = e(µ₂)β,
+            through T(b)′(iii)'s residue-field identification
+            k(L2) ≅ F₃ (η₂ ↔ z₂).
+
+**LEMMA GENTOW2-B′.** There is a unit u(β) ∈ K₂^× = F₃^*,
+depending only on the grade β (not on g, not on x₀), namely
+u(β) := R_{3,β}(n̂₂(β̂)), such that for each Φ₂-free g of exact
+grade β:
+
+  (3)  R_{3,β}(g) = u(β) · digit(g).
+
+Consequently: (4) B-2 ⟺ u(β) = 1 at each grade the recipe uses;
+and (5) with arbitrary u, GENTOW2-B's sum gives R_{3,α}(Φ₃) =
+y^{f₃} − Σ_{t<f₃} u(β_t)·c_t y^t (the honesty box's transformation
+law).
+
+*Proof.* u(β) ≠ 0: the ladder monomial n̂₂(β̂) has exact grade β
+(B-1) and single-pin N₃-polygon {(0, β̂/e(µ₂))}, so R_{3,β}(n̂₂) ≠ 0
+by Cor 4.4(1) [L1089 region, PDF p.21]. Now take g with digit d :=
+digit(g) ∈ K₂^× and let ẑ_d be a grade-0 ladder lift of d (grade-0
+lifts exist and read to d: T(b)′(iii), accepted). The element
+h := g − ẑ_d·n̂₂(β̂) has repo digit 0 at grade β, hence ν(h) > β by
+B-1's no-cancellation clause — h ∈ P_β^+(µ₃) — so R_{3,β}(h) = 0
+by Lemma 3.17 [L982, PDF p.19, [r1]-added cite]. Additivity (Cor
+4.7(1) [Q8]) then gives R_{3,β}(g) = R_{3,β}(ẑ_d·n̂₂(β̂)), and
+multiplicativity at a grade-0 factor (Cor 4.7(2) [Q8], β′ = 0 ∈ Γ₂)
+factors it as R_{3,0}(ẑ_d)·R_{3,β}(n̂₂(β̂)). Finally R_{3,0}(ẑ_d)
+= d: the grade-0 degree-0 read is the F₃-algebra residue (Thm 4.8
+[L1136, PDF p.22, [r1]-added cite]) and the repo-vs-FGMN match of
+grade-0 reads IS the accepted residue-field identification
+(T(b)′(iii): η₂ ↔ z₂, level-1 letter ↔ z₁ — the clause the
+pre-repair B-2 pointer legitimately covered). Hence R_{3,β}(g) =
+d·u(β) = u(β)·digit(g). x₀-freeness of u is by inspection: u(β) =
+R_{3,β}(n̂₂(β̂)) never sees x₀. (4): the recipe's k̂_t has digit
+c_t by construction (a K₂-digit lift), so R_{3,β_t}(k̂_t) =
+u(β_t)c_t, and B-2's on-the-nose form is exactly u(β_t) = 1. (5):
+substitute into the Cor-4.7(1) sum of GENTOW2-B's proof;
+non-emptiness of each grade is Cor 3.3 [L647, PDF p.12, [r1]-added
+cite] or the ladder itself. ∎
+
+*What remains new (the honest B-2 residue).* Pinning u ≡ 1 is a
+cross-frame comparison: by Thm 4.2's normal form H_µ(g) =
+x₃^{s}p₃^{u}R_{3,β}(g)(y₃), u(β) is the coordinate of the repo
+ladder monomial π^a x^i Φ′^b in FGMN's canonical homogeneous frame
+x₃, p₃, y₃ — an explicit z₁, z₂-monomial per grade, computable
+grade-by-grade but not computed anywhere in the corpus. GENTOW5's
+LEMMA GENTOW5-A1 does NOT supply it: its fixed-unit ϑ_t dictionary
+compares two REPO conventions (per-height coherent digits vs the
+multiplicative side residual), both built on the same ladder
+normalizers — a repo-internal cocycle, not the cross-frame unit
+u(β). The derivation therefore stops at (3)–(5), which is enough
+to make every consumer of GENTOW2-A robust to u ≢ 1 (see the
+corrected fallback clause); u ≡ 1 itself stands as this note's own
+disclosed identification, machine-supported as recorded in the
+honesty box.
 
 ## S6. FAITHFULNESS PARAGRAPH (AXIOM_FAITHFULNESS discipline)
 
@@ -351,6 +459,9 @@ with the S3 quote/instantiated use.
 | 11 | Thm 5.8 + degree-forcing display [Q6] | 25 | L1296–1302 | MATCH |
 | 12 | Thm 6.3 + proof opening [Q9] | 28 | L1458–1465 | MATCH |
 | 13 | Cor 6.4 + eq (23) [Q10] | 29 | L1523–1527 | MATCH |
+| 14 | Cor 3.3 (S5.1 [r1] cite) | 12 | L647 | MATCH |
+| 15 | Lemma 3.17 (S5.1 [r1] cite) | 19 | L982 | MATCH |
+| 16 | Thm 4.8 (S5.1 [r1] cite) | 22 | L1136 | MATCH |
 
 Supporting pins also PDF-verified on the same pass: Prop 1.9 (p.6),
 Lemma 2.4 (p.9), Def 3.1 + display (4) (p.12), the §3.2 numerical
@@ -363,7 +474,9 @@ layout L1433; the pre-repair pin "L1434" was off by one, PE1 F5).
 Cor 1.13, Def 5.2, Lemma 5.3, Cor 4.4, Cor 4.7, Cor 4.12 (+ its
 proof's construction), Prop 5.7 + eq (14), Cor 5.6, Thm 5.8 (proof
 display only, used as an argument-schema on our concrete Φ₃, not as
-a statement), Thm 6.3, Cor 6.4.
+a statement), Thm 6.3, Cor 6.4. [r1] Added by the S5.1 derivation
+(LEMMA GENTOW2-B′): Cor 3.3, Lemma 3.17, Thm 4.8 — each
+PDF-verified, rows 14–16 of S6.1.
 
 **Hypothesis audit** (why each FGMN hypothesis holds at our
 instance): (H-a) v discrete, K_v complete: v = v_p on ℚ. (H-b) ν
