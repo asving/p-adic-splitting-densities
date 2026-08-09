@@ -26,8 +26,19 @@ spot repair), [r4]-tagged: GENIND-3's proof step (1) rewritten to
 the capped content window with the corrected reduction parenthetical
 (PE4-G2, S4.1 + the S4.3 proof-of-(a) echo) + the regime inventory
 restated to the machine-verified claim (PE4-G1, S4.1 statement
-bracket + honesty note + S13); the clean count has NOT started —
-PE5 attempts the first clean).
+bracket + honesty note + S13); hostile pass PE5 adjudicated
+UNREFUTED NOT CLEAN, 0 CRITICAL + 1 GAP + 2 MINOR —
+`GENIND_passPE5_report.md` @ bd9bce1 — r5 repairs applied in place
+(§S15), [r5]-tagged, implementing the STANDING RULE (ledger
+b94c9af: record sentences may not quantify universally — enumerated
+or pattern-scoped only): the false f-first entry law fixed with the
+m = 6 mixed grammar enumerated (PE5-G1/PE5-m1, S4.3), S14's two
+universal-coverage sentences rescoped to their executed pattern
+scope with PE5's outside-scope witness displayed (PE5-G1), the
+same-side COMPOSITE case added to step (1)'s enumeration (PE5-m2,
+S4.1), a 7-rewrite universal-sentence sweep, and the corrupt
+PE4-results pin transcription corrected (e549331a); the clean
+count has NOT started — PE6 attempts the first clean).
 **Instrument:**
 sealed two-commit battery `verification/openmath/genind_checks.py` —
 the two-species classification machine-checked at n = 4 AND n = 5 on
@@ -478,7 +489,12 @@ D = 4 → window 1; 32 states) and PSTEEP4 at the (2,6) n = 4 row
 (hull (0,5)–(1,3)–(4,0): capped D = 4 → window 2, uncapped 5 → 1;
 512 states). Both cells were adjudicated EXHAUSTIVELY by PE4's
 committed fresh leg (`verification/openmath/genind_pe4_fresh.py` +
-output + results @ 51bd1bc, md5 aa2b9af8/1a29a9c1/e5493312, GREEN
+output + results @ 51bd1bc, md5 aa2b9af8/1a29a9c1/e549331a [r5:
+the r4 text here read "e5493312" — a transcription typo of the
+results-JSON md5 inherited from the PE4 report's own listing; the
+file is byte-identical (md5 e549331a…) at its landing commit
+51bd1bc and at this commit, git-show-verified both — the ARTIFACT
+never moved, only the quoted prefix was corrupt; see S15], GREEN
 6,507/0): every state extracts at the CAPPED window, fibering ONTO
 4 × fiber 8 resp. 8 × 64 child classes with verdict splits DEC/DRAIN
 16/16 resp. 256/256 — where the uncapped window would force a single
@@ -1367,7 +1383,17 @@ degree-by-degree while the SCAFFOLD stays uniform in n.
   artifacts + the r2 supp leg byte-frozen, untouched; no r4 machine
   leg — the machine evidence cited is PE4's committed fresh leg
   genind_pe4_fresh.*, the verifier's artifact, cited, not this
-  note's) — the clean count has NOT started;
+  note's); PE5 (hostile, fresh context, first n ≥ 9 route +
+  the same-side co-children leg + the steeper-piece scan)
+  adjudicated 0C + 1G + 2m (report @ bd9bce1), r5 repairs applied
+  in place AS THE STANDING-RULE ROUND (§S15; [r5] tags: the f-first
+  entry law + the S14 coverage rescopes + the step-(1) same-side
+  composite case + the universal-sentence sweep + the PE4-results
+  pin correction; sealed runner + artifacts + all prior legs
+  byte-frozen, untouched; no r5 machine leg — the machine evidence
+  cited is PE5's committed fresh leg genind_pe5_fresh.*, the
+  verifier's artifact, cited, not this note's) — the clean count
+  has NOT started;
   every supplier consumed at the pins of S10's PIN family; the
   full-degree corollary inherits the MINIMUM grade over
   {W-11, W-12, HEX3, HMENU3 arcs, this note, and — at n ≥ 4 —
@@ -1456,7 +1482,24 @@ degree-by-degree while the SCAFFOLD stays uniform in n.
   annex = the 2 display MINORs + ANNEX-LEMMA GENH4-7, none touching
   the GENH4.A/B laws consumed here); no adjudicated unrepaired
   finding at the pin — an honest strengthening of the (CS-EXACT)
-  n = 4 de facto discharge, which now cites an ACCEPTED supplier] —
+  n = 4 de facto discharge, which now cites an ACCEPTED supplier]
+  [r5, dated append, checked against the git log at commit time:
+  AFTER r4 landed (05:34/05:38), the Codex GENH4 ratification pass
+  adjudicated CHALLENGE @ 5c8d2fd (06:00:22; F1/F5 MINOR, F2 GAP on
+  post-acceptance ANNEX-LEMMA GENH4-7, F3 display-scope with a
+  GENHN.A(i) transport erratum owed, F4 scoped to a sharpness
+  clause) — so S14's C14 and the [r4] append above were TRUE at
+  their commit time and this bullet gains the disclosure at the
+  next dated append, per the standing rule. ANNEX R (the CHALLENGE
+  repair) applied @ b10a5a7, accepted body byte-frozen (md5
+  a584cb3e 3-way verified per that commit). None of the CHALLENGE
+  findings touches a clause consumed here: this discharge cites
+  THEOREM GENH4.A/B + GENH4-1F + the comp-weighted census
+  ("eleven densities untouched" per the adjudication); GENH4-7 is
+  annex material this note never cites; and GENIND consumes
+  GENHN.A(iv)(v)/GENHN-3/S6.2, not the A(i) clause of F3's queued
+  erratum. GENH4 note HEAD at this commit = b10a5a7; GENHN note
+  HEAD = 850e77e, the pin above, unmoved] —
   the
   (CS-EXACT) n = 4 de facto discharge geography (drain =
   GENH4.B/Q22-L3, menu = GENH4.A/Q22-L1 + GENH4-1F, comp-weighted
@@ -1674,8 +1717,11 @@ BYTE-FROZEN — the r2 machine support is the ADDITIVE leg
   to "one exact closed form per stratum — a finite sum of q-powers
   (two-term at GENH4's genre-F even-N CAP(F) band)" at the S1 box,
   Step 4, and S7.1; S7.4 and S9.1 already carried the correct
-  "exact per-stratum closed forms/laws" granularity (checked — no
-  other consumer of the one-term form).
+  "exact per-stratum closed forms/laws" granularity (checked by
+  grep for the one-term phrasing: its consumer sites were the S1
+  box, Step 4, and S7.1, all corrected here [r5 sweep: was
+  "checked — no other consumer of the one-term form" — rescoped to
+  the executed grep and its enumerated hits]).
 
 **Machine.** `genindr2_supp.py` GREEN: **2,128,163 checks,
 0 violations, 357.7 s**; fibration exhaustive at (2,6,5) 8,192 /
@@ -1797,12 +1843,27 @@ prose of the r3 repair itself; PE4-G1 is the arc's THIRD consecutive
 record-integrity defect (class PE2-G2 → PE3-G1 → PE4-G1: a
 repo-checkable factual sentence in a repair record, false against
 the repo). Three consecutive spot repairs each left such a defect,
-so this r4 is executed as a FULL-SWEEP audit: (1) an exhaustive
-inventory of every site that displays or consumes a window formula,
-each classified and every uncapped survivor fixed; (2) a
-claim-by-claim audit of every record/regime/inventory sentence,
-each machine- or artifact-checked before being kept; (3) a
-consistency pass over the whole [r1][r2][r3][r4] tag set. Minimality
+so this r4 is executed as a FULL-SWEEP audit [r5, PE5-G1: this
+paragraph's two coverage sentences RESCOPED to their executed
+pattern scope — the sealed-at-r4 originals read "(1) an exhaustive
+inventory of every site that displays or consumes a window formula
+…" and "(2) a claim-by-claim audit of every record/regime/inventory
+sentence …", and PE5 refuted the second universal by concrete
+witness (the residual sentence below); per the standing rule
+(ledger b94c9af) record sentences may not quantify universally]:
+(1) an inventory of the window-formula sites matched by the six
+disclosed grep targets "M_l", "window", "N −", "window-(N",
+"W − D", "min_j" (sweep leg 1 below) — 15 site classes, each
+classified, both defective sites fixed; (2) a claim-by-claim audit
+of the record/regime/inventory sentences matched by the nine
+disclosed grep targets listed at sweep leg 2 below, grouped as
+claim groups C1–C14, each machine- or artifact-checked before
+being kept; (3) a consistency pass over the whole [r1][r2][r3][r4]
+tag set. Demonstrated residual OUTSIDE that pattern scope (PE5's
+witness): the S4.3 first-visible inventory sentence — key phrase
+hyphenated ("first-visible"), claim verb "enter at" — matched NONE
+of the nine patterns, was never audited, and carried a FALSE
+f-first entry law (fixed at [r5]: S4.3, S15). Minimality
 contract on the mathematics; the sweep is the method. The sealed
 runner (`genind_checks.py`, md5 e7ca150b), its committed artifacts,
 the r2 supp leg, and PE3's fresh leg are all BYTE-FROZEN (md5s
@@ -1810,7 +1871,10 @@ re-verified at commit time: e7ca150b / 7335fc16·63b7413a·6c93f29c /
 fce9cb08·2075dd28·360eb239). NO r4 machine leg was added — every
 fresh number cited below is PE4's own committed leg
 (`genind_pe4_fresh.py` + output + results @ 51bd1bc, md5
-aa2b9af8/1a29a9c1/e5493312, GREEN 6,507 checks / 0 violations).
+aa2b9af8/1a29a9c1/e549331a [r5: was "e5493312", a transcription
+typo inherited from the PE4 report — the file itself is
+byte-identical since 51bd1bc; see the S4.1 bracket and S15],
+GREEN 6,507 checks / 0 violations).
 
 * **PE4-G2 → proof step (1) rewritten (S4.1; + the S4.3 echo).** The
   r3 corrected GENIND-3's STATEMENT to the capped
@@ -1858,7 +1922,10 @@ aa2b9af8/1a29a9c1/e5493312, GREEN 6,507 checks / 0 violations).
 
 **THE FULL-SWEEP WINDOW-SITE INVENTORY (sweep leg 1; grep targets
 "M_l", "window", "N −", "window-(N", "W − D", "min_j" over the whole
-note at this commit; every display or consumption site listed).**
+note at this commit; every site matched by those six targets listed
+[r5 sweep: was "every display or consumption site listed" —
+rescoped to the executed patterns; PE5's independent miss-hunt
+found no window-formula site outside these 15 classes]).**
 Classification: CAPPED (displays/implements the [r3] formula),
 α-CORRECT (N − mk at an α-transport, where the extraction is the
 whole cluster and D = m·k exactly — the cap is degenerate, the
@@ -1908,7 +1975,11 @@ cap in scope), or DEFECTIVE → FIXED:
 
 **Count: 15 site classes; 11 capped/correct as found, 2 agnostic
 (stage mechanisms), 2 DEFECTIVE (sites 5, 8) — both fixed at [r4].
-Uncapped survivors after this sweep: NONE.**
+Uncapped survivors among these 15 site classes: NONE [r5 sweep:
+was "after this sweep: NONE" — scoped to the enumerated classes;
+corroboration outside the patterns is PE5's independent sweep
+("no window-formula site outside S14's 15 classes"), a verifier
+artifact, cited not claimed].**
 
 **THE RECORD-CLAIM AUDIT (sweep leg 2; grep targets "every sealed",
 "all sealed", "true at every", "invisible", "first live", "first
@@ -1967,7 +2038,11 @@ against the repo/artifacts BEFORE being kept; verdicts listed).**
   still GENHN's note HEAD; GENH4: r3-era sentences stand as dated
   records, and the stack gains the [r4] dated append (ACCEPTED 2/2
   @ 11dbd23, annex @ baf05ed, accepted body byte-frozen = the
-  4b0d946 pin). No other supplier note moved since its pin.
+  4b0d946 pin). Of the remaining pinned suppliers enumerated in
+  S9.3's stack (W-12, W-11, HEX3, HMENU3, J-D0, GRTJC, WELDMASTER /
+  DULEMMA / [W12-H], QSCOUT22): each git-log-checked at commit time,
+  none moved from its pin [r5 sweep: was "No other supplier note
+  moved since its pin" — scoped to the enumerated stack].
 
 **Count: 14 claim groups audited; 4 FALSE → fixed (C1, C3, C4, C5),
 1 half-true → rescoped (C2), 9 verified and kept (C6–C14).**
@@ -1984,19 +2059,152 @@ regime-inventory sentences FALSE — caught by PE4, recorded HERE with
 S4.1/S13 corrected in place); [r4] (this record; the full-sweep
 method is the structural answer to three consecutive
 record-integrity defects — what r4 may itself have missed is PE5's
-to find, with this inventory as its checklist). Checked: every [rN]
-tag in the body cites the finding it repairs; no round's record
-contradicts another's; S11 remains frozen at its seal; the three
-grade lines (S12, S13, S14) form the monotone arc 0/2 → 0/2 → 0/2
-with the clean count never started.
+to find, with this inventory as its checklist). Checked: each tag
+surfaced by grepping the four patterns "[r1]" "[r2]" "[r3]" "[r4]"
+over the body cites the finding it repairs [r5 sweep: was "every
+[rN] tag in the body" — rescoped to the executed grep]; among the
+four records (header arc line, S12, S13, S14) no record contradicts
+another; S11 remains frozen at its seal; the three grade lines
+(S12, S13, S14) form the monotone arc 0/2 → 0/2 → 0/2 with the
+clean count never started.
 
 **No frozen number moved; no sealed or committed artifact touched
 (all eight md5 pins re-verified at commit time, listed in the Arc
 paragraph). The capped formula, every count law, every committed
 number, and the conditionality display stand exactly as at r3 —
 this round changed PROSE: one proof step now derives what its
-statement says, and every inventory sentence now says only what the
-repo can verify.**
+statement says, and the inventory sentences within the nine-pattern
+scope (claim groups C1–C14 above) now say only what the repo can
+verify [r5, PE5-G1: the sealed-at-r4 close read "and every
+inventory sentence now says only what the repo can verify" — FALSE
+outside the pattern scope: PE5's witness, the S4.3 hyphenated
+"first-visible" sentence, matched none of the nine patterns and its
+f-first entry law was refuted by the repo; fixed at [r5], and the
+universal register itself is now banned by the standing rule
+(ledger b94c9af) — see S15].**
 
 **Grade: stays 0/2. The consecutive-clean count has NOT started; PE5
+(a fresh hostile pass) attempts the first clean.**
+
+## S15. [r5] REPAIR RECORD (PE5 adjudication; the STANDING-RULE round — S11 stays frozen at its seal; S4.3/S4.1/S14/S12 corrected in place where their own sentences were the findings)
+
+**Arc.** Hostile pass PE5 (fresh context, the corpus's first n ≥ 9
+route + the same-side co-children leg + the systematic steeper-piece
+scan; report `GENIND_passPE5_report.md` @ 29ad62f/74e9004/bd9bce1)
+adjudicated 0 CRITICAL + 1 GAP + 2 MINOR. The GAP is the arc's
+FOURTH consecutive record-integrity finding (PE2-G2 → PE3-G1 →
+PE4-G1 → PE5-G1), landed inside the full-sweep record built as the
+structural answer to the class. This r5 therefore implements **THE
+STANDING RULE (ledger b94c9af): RECORD SENTENCES MAY NOT QUANTIFY
+UNIVERSALLY.** "Every X was checked / all Y are Z / no W exists"
+record claims are BANNED; a record states an ENUMERATED list with
+evidence ("checked: [explicit list]") or a PATTERN-SCOPED claim
+("among the sites matched by patterns P1–P9: …"). A theorem may
+quantify; a RECORD may not. Minimality contract: the PE5 charges +
+the universal-sentence sweep below; no machine leg added — every
+fresh number cited is PE5's committed leg (`genind_pe5_fresh.py` +
+output + results @ bd9bce1, GREEN 109,146 checks / 0 violations).
+
+* **PE5-G1 → S14's two universal-coverage sentences RESCOPED
+  enumeratively; the false f-first entry law FIXED (S14 Arc ¶ +
+  closing ¶; S4.3).** The r4 sweep's coverage sentences ("a
+  claim-by-claim audit of every record/regime/inventory sentence",
+  "every inventory sentence now says only what the repo can
+  verify") were FALSE by PE5's concrete witness: the S4.3
+  first-visible inventory sentence — key phrase hyphenated, claim
+  verb "enter at" — matched none of the nine disclosed leg-2 grep
+  patterns, was never audited, and displayed a false f-first entry
+  law. Both S14 sentences now name their exact executed scope (the
+  six leg-1 targets; the nine leg-2 targets grouped as C1–C14) and
+  display the witness as the demonstrated residual, quoting the
+  false originals in place. At S4.3 the law itself is fixed with
+  the m = 6 mixed grammar re-derived from the entry geometry
+  (v(a₀) = Σ_sides length × slope): the f-first ψ²-block (e = 1,
+  deg ψ = 2, μ = 2) has slope-mass 4h, so the SAME-SIDE variant
+  (k = h forced, one slope-k side of length 6, residual
+  (y − w)²ψ(y)²) enters at **v(a₀) = 6k** (= 6 at k = 1) and the
+  DISTINCT-SIDE variants at **2k + 4h ≥ 8** — never the old
+  "2k + 2h", which reads 4 ≥ 6 at k = h = 1. The CONCLUSION (every
+  non-M6 mixed genre enters at v(a₀) ≥ 6, i.e. N ≥ 7; M6 uniquely
+  first-visible at N = 5) was TRUE and is KEPT, now supported by
+  the enumerated three-family grammar (child+E 2k+2h with unique
+  sub-6 cell (1,1) = M6; child+F same-side 6k; child+F
+  distinct-side 2k+4h; the two composite types (2,1,2)/(1,2,2) are
+  the only solutions of e·μ·deg ψ = 4 with μ ≥ 2, e·deg ψ ≥ 2 —
+  S5.1's necessity cases). Geometry cross-checked against PE5's
+  committed artifacts: NINEMIX's hull (0,11)–(1,8)–(3,4)–(5,2)–(9,0)
+  realizes the Gauss-additive entry height 11 = 1·3 + 2·2 + 2·1 +
+  4·(1/2) at n = 9, and SAMESIDE's single side (0,4)–(4,0) realizes
+  the same-side entry height 4 = length 4 × slope 1 on 59,049
+  exhaustive states. HONEST LIMIT: the same-side f-first genre
+  itself (the 6k law's genre) remains machine-unrealized
+  corpus-wide — the law above is proved geometry, not yet a
+  machine-exercised cell.
+* **PE5-m1 → rides the PE5-G1 fix** (the S4.3 display itself; same
+  edit, quoted original preserved in the [r5] bracket).
+* **PE5-m2 → step (1)'s same-side enumeration completed at the
+  consumption site (S4.1).** The [r4] parenthetical (pieces
+  separable / co-children repeated) was complete within GENIND-3's
+  own scope but under-inclusive under GENIND-6(a)'s VERBATIM
+  consumption at mixed frames: same-side COMPOSITE blocks appear as
+  repeated NON-linear factors ψ(ȳ + ẑ_l)^{μ_b} — coprime to ȳ
+  since ψ, irreducible of degree ≥ 2 over F_Q, has no F_Q-root
+  (ψ(ẑ_l) ≠ 0) — the case GENIND-6(a)'s own gloss "co-blocks on
+  the same side have distinct residual roots/factors" already
+  carried (per the PE5 report, which verified coprimality via that
+  gloss). Now displayed in the parenthetical, [r5]-tagged.
+* **BONUS (surfaced by this round's commit-time pin
+  re-verification): the PE4-leg results pin was a corrupt
+  transcription.** The r4 text (S4.1 concordance + S14 Arc) quoted
+  the `genind_pe4_fresh_results.json` md5 as "e5493312", inherited
+  verbatim from the PE4 report (and repeated by the PE5 report's
+  pin list). The file's actual md5 is **e549331a** — byte-identical
+  at its landing commit 51bd1bc and at this commit
+  (git-show-verified both, so the ARTIFACT never moved; the quoted
+  prefix was wrong in all three documents). Both note sites fixed
+  in place, [r5]-tagged; the two verifier reports are their
+  authors' committed artifacts and stay untouched, their shared
+  typo disclosed here — an instance of exactly the
+  pin-transcription corruption class the standing rule's
+  enumerate-with-evidence discipline exists to catch.
+
+**THE UNIVERSAL-SENTENCE SWEEP (this round's sweep; grep patterns
+"every ", "all ", "no other", "none ", " never " over the whole note
+at this commit, adjudicated in RECORD/INVENTORY contexts only —
+lemma/theorem content may quantify).** Found at variance with the
+standing rule and REWRITTEN in place ([r5 sweep]-tagged, each
+quoting its original): (1) S14 leg-1 header "every display or
+consumption site listed" → every site matched by the six targets;
+(2) S14 leg-1 count "Uncapped survivors after this sweep: NONE" →
+scoped to the 15 enumerated site classes, PE5's independent
+outside-pattern sweep cited as verifier corroboration; (3) S14 C14
+"No other supplier note moved since its pin" → the S9.3 stack's
+remaining pins enumerated, each git-log-checked; (4) S14 leg-3
+"every [rN] tag in the body" → scoped to the executed four-pattern
+grep; (5) S12 PE2-m1 "(checked — no other consumer of the one-term
+form)" → the executed grep and its enumerated consumer sites. Plus
+the two PE5-G1-charged S14 sentences above (7 rewrites total).
+Adjudicated and KEPT (already rule-compliant): quantifiers ranging
+over ENUMERATED or artifact-pinned sets ("all eight md5 pins …
+listed", "before every r2 commit (2abf419/ad6f31d/52fb6ff)", S13's
+"every sealed and committed number stands unchanged" = the
+byte-frozen md5-pinned artifact set); S10/S11's per-family
+quantifiers (they range over the sealed runner's explicit rosters
+with committed artifacts; S11 is in any case FROZEN at its seal);
+leg-2's "every hit checked" (already pattern-scoped — PE5 itself
+adjudicated the hit-level claim TRUE); and the mathematical "never"
+claims (C13's class: lemma content, not records).
+
+**Byte-freeze at this commit (enumerated, re-verified by md5sum):**
+sealed runner e7ca150b; r2 supp triple 7335fc16/63b7413a/6c93f29c;
+PE3 fresh triple fce9cb08/2075dd28/360eb239; PE4 fresh triple
+aa2b9af8/1a29a9c1/e549331a (the corrected pin, see the BONUS item);
+PE5 fresh triple 6ef3132e/a0452521/bdc04c4d — 13 md5s, no committed
+artifact touched by this round. As-of pins checked against the git
+log at commit time: GENHN note HEAD = 850e77e (the S9.3 pin,
+unmoved); GENH4 note HEAD = b10a5a7 (the post-r4 Codex CHALLENGE @
+5c8d2fd + ANNEX R disclosure added as the [r5] dated append at
+S9.3's GENH4 bullet — no consumed clause touched).
+
+**Grade: stays 0/2. The consecutive-clean count has NOT started; PE6
 (a fresh hostile pass) attempts the first clean.**
