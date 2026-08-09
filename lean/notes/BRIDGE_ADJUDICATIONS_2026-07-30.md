@@ -14275,3 +14275,14 @@ traced). FRESH ROUTE: the FIRST ℓ=3 label battery (deg 12 over ℤ₅,
 HE7's F-1 dated append with the non-propagation trace) + GENHN r3 +
 HE6 r2. Then PE3s. The distribution arcs + the GENIND annex-stack
 pass queue behind the chain notes.**
+
+---
+
+## WAVE 18 FOLDED (wg7lpqf2e, 3/3): RIDERS LANDED (HEX3 acceptance record w/ exact crossovers; HE7 coset-display correction w/ 4-site non-propagation) · GENHN r3 (T(b)″ honestly attempted → BOXED item (6): the one hole = Φ′-development one-sidedness, unproved Okutsu-optimality content; depth split displayed n∈{8..15} vs n≥16) · HE6 r2 (coset display verified at the frame: q(3)=1 predicts η⁻¹·F₃^× == realized; record repaired w/ the 4-fact disclosure) — WAVE 19: GENHN PE3 + HE6 PE3 + HE7 fold-box one-liner — 2026-08-09
+
+Residue tracked: HE7's fold-box "verbatim" wording (the HE6-1L
+copy is now display-divergent post-r2; HE7's dated append 5da0552
+covers the correction — the fold-box line itself gets a one-line
+dated append, wave 19's rider). Board: FIVE frozen/accepted ·
+GENHN 0/2 (PE3) · HE6 0/2 (PE3) · distribution arcs + GENIND
+annex-pass + Codex W-MULT-DCX/r40c/VC40c queued.
