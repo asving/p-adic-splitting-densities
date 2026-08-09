@@ -1,0 +1,7 @@
+== FRAME p=3 c=2 K=F_9 r=Z^2+(0, 0)Z+(1, 1) K2=F_81 Psi=(1053)*x^0+(243)*x^1+(-36)*x^2+(1)*x^4
+   members 186 ({'A0': 80, 'A1': 79, 'B': 20, 'P': 6, 'PSI': 1})  refine-set-aside 1  PARI agree 186 mismatch 0 disc0 0
+== FRAME p=3 c=2 K=F_9 r=Z^2+(0, 1)Z+(0, 1) K2=F_81 Psi=(324)*x^0+(81)*x^1+(-36)*x^2+(9)*x^3+(1)*x^4
+   members 186 ({'A0': 80, 'A1': 79, 'B': 20, 'P': 6, 'PSI': 1})  refine-set-aside 1  PARI agree 186 mismatch 0 disc0 0
+== FRAME p=5 c=2 K=F_25 r=Z^2+(0, 1)Z+(0, 1) K2=F_625 Psi=(2500)*x^0+(1875)*x^1+(-100)*x^2+(25)*x^3+(1)*x^4
+   members 115 ({'A0': 48, 'A1': 48, 'B': 12, 'P': 6, 'PSI': 1})  refine-set-aside 0  PARI agree 115 mismatch 0 disc0 0
+TOTAL violations: 0  secs: 2.7
