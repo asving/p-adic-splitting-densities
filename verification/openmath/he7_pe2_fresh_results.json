@@ -1,0 +1,67 @@
+{
+ "checks": {
+  "C0-read-confirms": 634,
+  "C1-slot-geometry": 634,
+  "C2-offdisk": 3170,
+  "C3-strict-slope": 634,
+  "C4-sigma-PARI": 634,
+  "T1-wrong-residue-flat": 634
+ },
+ "examples": [
+  {
+   "dv2res_post": 60,
+   "dv2res_pre": 56,
+   "lam2": 7,
+   "p": 3,
+   "refines": 1,
+   "s2": [
+    0,
+    1
+   ],
+   "sigma": "((4, 2),)",
+   "u": 3
+  },
+  {
+   "dv2res_post": 60,
+   "dv2res_pre": 56,
+   "lam2": 7,
+   "p": 3,
+   "refines": 1,
+   "s2": [
+    0,
+    1
+   ],
+   "sigma": "((4, 2),)",
+   "u": 3
+  },
+  {
+   "dv2res_post": 64,
+   "dv2res_pre": 56,
+   "lam2": 7,
+   "p": 3,
+   "refines": 1,
+   "s2": [
+    0,
+    1
+   ],
+   "sigma": "((2, 2), (2, 2))",
+   "u": 3
+  }
+ ],
+ "genres": {
+  "((2, 2), (2, 2))": 54,
+  "((2, 4),)": 38,
+  "((4, 2),)": 542
+ },
+ "lazy_caught": 580,
+ "members": 634,
+ "polytope": 1056,
+ "proper_s2": 520,
+ "refine_hist": {
+  "1": 630,
+  "2": 4
+ },
+ "secs": 5.2,
+ "ties": 524,
+ "viol": []
+}

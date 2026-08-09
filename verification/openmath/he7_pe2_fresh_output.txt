@@ -1,0 +1,10 @@
+PARI stack size set to 1073741824 bytes, maximum size set to 1073741824
+HE7 passPE2 FRESH ROUTE — a CONSTRUCTED alpha-refine family at the
+ p=3 done (1.0s)
+ p=5 done (5.2s)
+MEMBERS 634  checks {'C0-read-confirms': 634, 'C1-slot-geometry': 634, 'C2-offdisk': 3170, 'C3-strict-slope': 634, 'T1-wrong-residue-flat': 634, 'C4-sigma-PARI': 634}
+genres {'((4, 2),)': 542, '((2, 2), (2, 2))': 54, '((2, 4),)': 38}  refine_hist {1: 630, 2: 4}  ties 524  proper-extension s2 520
+T2 lazy-dictionary caught by PARI on 580 members
+P6 polytope configs verified: 1056
+VIOLATIONS: 0
+5.2s
