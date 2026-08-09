@@ -230,10 +230,134 @@ GENTOW3-BOX-1. (3) Everything is per-coordinate and in-window;
 the window interaction is GENTOW-5(a)'s cap (consulted heights
 also < e1e2·N) — orthogonal, composes by min.
 
-## S3. COROLLARY GENTOW-3.C (T(a) event-band survival) — S3 commit
+## S3. COROLLARY GENTOW-3.C (T(a)'s event-band survival AS A
+## THEOREM — the item-(3) parenthetical discharged)
 
-## S4. THE LEAF-DEPTH FAILURE QUANTIFIED (PE1 anchors) — S4 commit
+**COROLLARY GENTOW-3.C.** On 𝒯, the inner CS event's data — the
+level-1 side (J, dv(A_J)) with residual psi2^{mu2}, i.e. the datum
+T(a) detects and T(b)' consumes — is read identically by the stage
+shadow and the composed frame, at EVERY genre, with margin δ:
+(1) the level-1 coefficients A_J have degree < D', so the mod-Phi'
+projection is the identity on them: the entry read is
+discrepancy-free outright; (2) recast at the composed frame
+(GENTOW-1(a)'s entry gate), the event data occupies dv2-heights
+≤ (mu2−j)E2 per coordinate — the inner side's height range — and
+(mu2−j)E2 = Θ_j − δ < Θ_j: THEOREM GENTOW-3(ii) gives digit
+agreement on the whole band, for every genre (δ ≥ 1 is the [r1]
+node floor, unconditional on 𝒯). Hence the sentence in
+GENHN-T(b)'(iv) — "this inequality HOLDS at the entry/event band"
+— previously machine-verified at the PE1 instances and the P8
+witness only, is now a THEOREM: [GENHN-TOW-1] item (3)'s
+parenthetical ("T(a)'s event-band survival as a theorem") is
+discharged. Machine face: the ENTRY tally (274 checks — every
+member of every family, including the members whose leaf reads
+diverge, has zero discrepancy at heights ≤ (mu2−j)E2). ∎
 
-## S5. MACHINE LEG (sealed battery gentow3_checks.py) — verdict
+## S4. THE LEAF-DEPTH FAILURE QUANTIFIED (which height fails
+## first — the PE1 anchors as the criterion's first violation)
 
-## S6. HONEST RESIDUE + GRADE BOX — final commit
+The composed node floor (GENTOW-1(c)) puts leaf pins at
+p_j ≥ (mu2−j)E2 + 1; the threshold sits at Θ_j = (mu2−j)E2 + δ.
+Three regimes, all machine-anchored:
+
+* **δ = 1 (u2 = e2D'h + 1 — the PE1 geography).** Θ_j = the node
+  floor: the FIRST leaf height is already unfaithful. FAM-A5:
+  Θ_0 = 21; the PE1 instances' first divergence is 21 on each of
+  the three rows — the refuted dv2 = 21-vs-28/30 undercuts (and
+  the row-0 fake-21) are EXACTLY the criterion's first violation.
+  "Fails generically at leaf depth" is sharp here: no faithful
+  leaf band exists.
+* **δ ≥ 2.** A faithful leaf band of width δ − 1 exists:
+  [(mu2−j)E2 + 1, Θ_j − 1]. FAM-A7 (δ = 3): pins 29 and 30 are
+  decided LEAF reads on which shadow = honest with PARI-confirmed
+  σ (A7-BAND rows) — leaf depth alone does not break the shadow;
+  the first violation is Θ_0 = 31, where the supp sweep's
+  stage-INERT(36)-vs-true-RAM(31) row (GENHN_PROOF S8 [r2] annex)
+  sits exactly.
+* **x-free genres.** No violation at any height (FAM-D sweep) —
+  T(b)'s stage algebra is retroactively EXACT there; its
+  refutation was a statement about the x-ful genres.
+
+The count-law meaning: strata priced through shadow pins are
+mislabeled exactly on the members whose deciding heights reach
+Θ_j — at δ = 1 that is the entire leaf population (all three PE1
+σ-strata corrections), at δ ≥ 2 only the deeper tail, at x-free
+genres none.
+
+## S5. MACHINE LEG (sealed battery, two-commit discipline)
+
+INSTRUMENT: `verification/openmath/gentow3_checks.py`, sealed at
+commit 5ac0d80 (predictions P-1..P-7 + 3 teeth in the docstring
+BEFORE the first full run; design smoke disclosed there: the A5
+self-shadow row and PE1 row-2 shadow pin, both matching the hand
+derivation; two pre-seal instrument fixes made before sealing —
+the A5-DEEP construction had double-added Phi2^{mu2}, and the PE1
+shadow-label wants were tightened to tINERT/t2SIDED from the hand
+computation). Runner md5 at the verdict run:
+7cf3a7b8a580d6b9893d8e62f94464e2 — BIT-IDENTICAL to seal; no
+post-seal edit of any kind.
+
+VERDICT RUN (this repo, 2026-08-09, output
+`gentow3_checks_output.txt` md5 926cd05f):
+
+    GREEN — 582 checks, 0 violations, 3/3 teeth.
+    Tally: FLOOR 274, ENTRY 274, SHARP 11, LABEL 6, XFREE 3,
+    BAND 2, PE1 3, GP-SIG 6, TEETH 3.
+
+Per prediction: P-1 (FLOOR, 274): every discrepancy height on 110
+members (nec + real + anchors, five families) clears Θ_j. P-2
+(SHARP): self-shadow pins landed at the preregistered Θ values
+(A5/A7/C: 21/31/43 at j = 0 only; B: 13 AND 7 — both
+coordinates); A5-DEEP honest tRAM(207) vs shadow tRAM(21), PARI
+{(8,1)}. P-3 (XFREE): FAM-D lift coefficients x-free, 12-member
+sweep zero discrepancies, self-shadow DRAIN. P-4 (ENTRY, 274):
+zero discrepancy inside the entry band on every member. P-5
+(BAND): A7 rows at 29 (tRAM) and (30,15) (tINERT) shadow = honest,
+PARI {(8,1)}/{(4,2)}. P-6 (LABEL, 6): members with pins below Θ
+have identical labels+σ. P-7 (PE1): honest (25,14)/(21,14)/(21,14)
+tRAM vs shadow (21,14) tRAM/(28,14) tINERT/(30,14) t2SIDED, first
+divergence 21 = Θ_0 on each, PARI {(8,1)} ×3. TEETH: T-THRESH-UP
+x4 (the Θ+1 mutant is killed by each self-shadow row —
+disagreement AT Θ); T-BAND-EDGE x1 (the Θ−1 mutant calls height
+30 unfaithful; agreement + PARI refute it); T-SHADOW-REG x1 (the
+shadow reproduces the refuted stage pins and its priced σ differs
+from PARI on rows 1–2).
+
+## S6. HONEST RESIDUE + GRADE BOX
+
+**What stays open in [GENHN-TOW-1] (untouched here):** items (4)
+(partial inner sides — 𝒯 here is FULL-side; every S2–S4 statement
+is scoped to it) and (6)(alpha) at its GENTOW-2 grade; item (3)'s
+box text asked for the faithfulness geography — delivered above —
+with the two named residues below.
+
+**GENTOW3-BOX-1 (attainment certificate).** THEOREM GENTOW-3(iv)'s
+sharpness rests on a per-genre non-cancellation certificate (the
+key power's height-Θ K2-digit ≠ 0), decided by finite arithmetic
+and machine-checked at the five families; a genre-general
+non-vanishing proof, and battery witnesses for entry-digit-driven
+overflows at genres where the key self-power stays below D' in x,
+are NOT delivered. The floor/faithful-band/x-free clauses
+(i)–(iii) — the criterion itself — are general.
+
+**GENTOW3-BOX-2 (machine coverage).** Rows exercise mu2 = 2, f1 =
+1 outer keys, q ∈ {2,3}, e2 ∈ {1,2,3}, f2 ∈ {1,2}, depth 2, d = 1
+ambients — GENTOW-BOX-2's geography verbatim (the same imported
+families). The S2 proof is uniform in (e1, f1, e2, f2, mu2, q, h);
+the gap is machine-side.
+
+**GRADE: 0/2 (attempt; composed this session, no hostile arc).**
+Conditionality stack: consumes LEMMA GENHN-T(b)' (i)–(iv) — (iii)
+enters through the σ-dictionary the battery's labels price —
+(GENHN accepted 2/2 at PE4), LEMMA GENTOW-1 (Step 0 carry
+monotonicity, budgets, node floors) and LEMMA GENTOW-5 at
+GENTOW-1's 0/2 grade, the [r1] node floor u2 > e2D'h, and S4's
+coherent normalizers. Machine leg = S5 (this unit's sealed
+battery; PARI cross-checks on 6 σ rows).
+
+**Consumption path (not executed here):** the item-(3) discharge
+into GENHN_PROOF's [GENHN-TOW-1] box text — and the (iv)
+sentence's upgrade from "machine-verified" to "theorem
+(GENTOW-3.C)" — is the orchestrator's dated consumption update
+after this note's own hostile arc; GENHN_PROOF and the GENTOW-1/2
+notes are byte-untouched by this unit.
