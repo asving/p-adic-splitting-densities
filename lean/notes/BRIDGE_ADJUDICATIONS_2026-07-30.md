@@ -14389,3 +14389,44 @@ owed: GENHN 1 line, HE6 2 lines — wave 21's rider.
 
 **WAVE 21 (dispatched): rider (GENHN + HE6 acceptance records +
 minor cures) + HE3 PE1 + HE6R1 PE1.**
+
+---
+
+## WAVE 21 FOLDED (wokinlwty, 3/3): RIDERS LANDED · HE3 PE1 = 2 CRITICAL AT f₁≥2 (the base note's first pass; frozen consumers SAFE; on-locus μ≤3 survives the repair) · HE6R1 PE1 = 2 GAP (its own convention, unapplied to its own lemma) — WAVE 22: HE3 r1 + HE6R1 r1 — 2026-08-09
+
+**HE3 PE1 (7950ee4): 2C + 4G + 2m.** F1 CRITICAL: the μ≤3 peel
+letter-lift at f₁≥2 reaches only F_Q ⊊ K — K∖F_Q-rational residual
+roots cannot be peeled as displayed; "UNCONDITIONAL for μ≤3"
+over-claimed at f₁≥2 (= HE6's struck (LIFT) genus, never propagated
+back; the corrected HE6-1L/coset machinery is the repair template).
+F2 CRITICAL: the S = e₁h thresholds false at f₁≥2 (PARI
+counter-instances: κ=2>S=1 keys split/ramify against the display);
+f₁=1 — the battery world — unaffected; ON-LOCUS μ≤3 CONCLUSIONS
+SURVIVE the S→D′h repair (the verifier verified this before
+grading). CONSUMER SAFETY TRACED: HE6's frozen text consumes
+HE6-0″ (the guarded form) — SAFE; F4's overconsumption is
+HE3-internal. F5: two mutually-canceling false displays (|S|=D′m
+survives via the direct route). F6-F8 as listed. FRESH ROUTE
+produced the counter-instances + a 13/13 on-locus f₁=2 μ=3
+dictionary sweep + 15/15 non-prime q=9 ties. The lesson: the
+ladder's BASE was the least-verified link exactly because its
+descendants got all the attention — the closure-arc discipline
+exists for this.
+
+**HE6R1 PE1 (9e132e8 → 598582b): 0C + 2G + 5m.** F-1: LEMMA
+HE6R1-2 omits Ψ ∤ f_S — the note's OWN discovery (HE6R1-F2) not
+applied to its own lemma; the battery's 12 Ψ|f members violate the
+display exactly by the missing block; one-line repair (peel first).
+F-2: overconsumption of HE7-7′(b) at f vs f_S (true by the same
+key-free proof — the Codex-F6 genus one level up). NON-PROPAGATING
+at HEAD (HE7's standing convention guards the one frozen consumer).
+FRESH ROUTE: first-ever peel∘refine composition (n=12, μ₂=3 —
+HE7-BOX-5's named hole, 128/128) + a third characteristic pair
+(278/278). The 5 sealed exceptions reproduced independently by
+direct gp.
+
+**WAVE 22 (dispatched): HE3 r1 (F1 via the HE6-corrected coset
+machinery propagated back + F2's S→D′h at every display + F3-F8;
+consumer-trace table mandatory) + HE6R1 r1 (the two one-liners +
+minors). Box wave B1 still in flight (GENTOW-2's STEP-1 = FGMN
+Thm 6.3/Cor 6.4 LOCATED).**
