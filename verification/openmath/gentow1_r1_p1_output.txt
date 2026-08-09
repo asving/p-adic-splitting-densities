@@ -1,0 +1,6 @@
+FAM-A5: factorpadic 1 row x1 deg 4; 1 prime (e,f)=(4,1); v(x)=2 v(Phi1)=5 [all as P-1]
+FAM-A7: factorpadic 1 row x1 deg 4; 1 prime (e,f)=(4,1); v(x)=2 v(Phi1)=7 [all as P-1]
+FAM-B: factorpadic 1 row x1 deg 4; 1 prime (e,f)=(2,2); v(x)=1 v(Phi1)=3 [all as P-1]
+FAM-C: factorpadic 1 row x1 deg 6; 1 prime (e,f)=(6,1); v(x)=3 v(Phi1)=7 [all as P-1]
+FAM-D: factorpadic 1 row x1 deg 4; 1 prime (e,f)=(2,2); v(x)=1 v(Phi1)=3 [all as P-1]
+P-1 SCORED: 20 checks, 0 violations -- GREEN
