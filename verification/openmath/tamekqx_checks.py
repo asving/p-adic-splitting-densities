@@ -37,6 +37,19 @@ module's positive Symbol('q'), so the difference could not cancel. Repair = bind
 sympify locals to the module symbol (one line, manifestly non-predicate; no
 predicate, weight, menu row, or recursion coefficient touched). Run 2 is the
 scoring run; run-1 log kept as tamekqx_run1_aborted.log.
+ARC INTEGRITY (run 2 completed exit 1, log tamekqx_run2.log, disclosed): 37/47
+PASS. ALL 24 n<=4 identity cells EQUAL (both f, all k) + P3 both rows + all 3
+teeth. The 10 FAILs decompose into three INSTRUMENT errors, repaired as r2a/r2b/
+r2c (tagged at their sites): r2a -- the 8 n=5 cells compared the committed
+QUINTIC menu (PROJECTIVE model; its K=F mean is exactly 1, machine-verified)
+against the MONIC recursion: model-key error in menu consumption; n=5 now runs
+projective-vs-projective via proj_pgf (+ new sanity gate R-sanity-proj). r2b --
+P4's sealed closed form had piece2 exponent q^{-4} for q^{-2} (transcription slip
+vs the [proto] scratch record). r2c -- P5-KR-n3's sealed TARGET was the
+ramified-quad dip anchor 1-Phi6/Phi5 pasted in error for the unramified-quad n=3
+anchor. No menu row, recursion coefficient, P_mj, or tooth was touched. Run 3 =
+the scoring run for the repaired rows; the 24 clean n<=4 cells stand from run 2
+and must reproduce.
 """
 import json, os, sys, time, ast
 sys.setrecursionlimit(10000)
@@ -196,6 +209,27 @@ def moments_from_pgf(Fn, kmax):
     """E[X^k] for k=1..kmax from a t-poly law."""
     return [sp.cancel(sum((sp.Integer(r)**k) * c for r, c in enumerate(Fn))) for k in range(1, kmax+1)]
 
+def proj_pgf(f, n):
+    """PROJECTIVE-model law F^p_n(t) for X_K over P^1 (uniform degree-n divisor):
+    b_n F^p_n = sum_j q^{n-j} F_{n-j} phi_j  (MOMENTS Cor 2.2 generalized: the
+    infinity point of P^1 is one more RATIONAL residue point, its cluster the
+    delta=1 species phi^{(f)}_j at the same (f, q) context).
+    [run-2 repair r2a: the committed quintic menu is the PROJECTIVE model (its
+    K=F mean is exactly 1, verified); the sealed P2 n=5 cells compared it against
+    the MONIC recursion -- a model-key transcription error in menu CONSUMPTION,
+    not a defect of either source. n=5 comparisons now run projective-vs-projective.]"""
+    F = Fvec(f, q, n)
+    acc = [sp.Integer(0)]
+    for j in range(0, n+1):
+        phi_j = [sp.Integer(0)]
+        for i in range(0, j+1):
+            pm = P_mj(q, j, i)
+            if pm != 0:
+                phi_j = padd(phi_j, pscal(pm, F[i]))
+        acc = padd(acc, pscal(q**(n-j), pmul(F[n-j], phi_j)))
+    bn = sp.cancel((q**(n+1) - 1)/(q - 1))
+    return pscal(sp.cancel(1/bn), acc)
+
 # ---------------------------------------------------------------------------
 # MENU ROUTE: certified factorization-type menus, grades disclosed in the note
 # ---------------------------------------------------------------------------
@@ -251,10 +285,13 @@ def J4_closed(w):
 
 def E_quad_n4_closed():
     # sum_w q^{-2w} J4(w) assembled from geometric pieces (t := q^-2):
-    #   J4(w) = 1 - (1-t)[ q^{-1}(1-q^{-3w})/(1-q^{-3}) + q^{-3w} q^{-4}/(1-q^{-4}) ]
+    #   J4(w) = 1 - (1-t)[ q^{-1}(1-q^{-3w})/(1-q^{-3}) + q^{-3w} q^{-2}/(1-q^{-4}) ]
+    # [run-2 repair r2b: piece2 = q^w t^w q^{-2(w+1)}/(1-t q^{-2}) = q^{-3w} q^{-2}/(1-q^{-4});
+    #  the sealed form had q^{-4}, a transcription slip vs the [proto] scratch record
+    #  (J(0)=q^2/(q^2+1), J(1)=0.6999 at q=3, assembly 1.408256 = 852/605).]
     tt = q**-2
     c1 = (1-tt)*q**-1/(1-q**-3)
-    c2 = (1-tt)*q**-4/(1-q**-4)
+    c2 = (1-tt)*q**-2/(1-q**-4)
     S = geo(q**-2)*(1 - c1) + c1*geo(q**-5) - c2*geo(q**-5)
     return sp.cancel((1 - 1/q) * S)
 
@@ -298,19 +335,24 @@ def main():
     check("R-sanity-mean", all(is_zero(moments_from_pgf(F1[n], 1)[0] - q/(q+1)) for n in (2,3,4)),
           "E_n = q/(q+1)")
 
-    # P2: the 32 cells, and P3 rows
+    # P2: the 32 cells, and P3 rows. Models: menus n=2,3,4 MONIC; n=5 PROJECTIVE (r2a).
     NMAX = 5
+    # r2a sanity gate: projective conversion reproduces E^p = 1 at K = F
+    Fp1 = proj_pgf(1, 5)
+    check("R-sanity-proj", is_zero(moments_from_pgf(Fp1, 1)[0] - 1), "K=F projective mean = 1 at n=5")
     verdict_table = {}
     for f in (2, 3):
         FK = Fvec(f, q, NMAX)
         for n in range(2, NMAX+1):
-            rec = moments_from_pgf(FK[n], 4)
+            model = "proj" if n == 5 else "monic"
+            law = proj_pgf(f, n) if n == 5 else FK[n]
+            rec = moments_from_pgf(law, 4)
             for k in (1, 2, 3, 4):
                 men = menu_moment(menus[n], f, k)
                 ok = is_zero(men - rec[k-1])
                 verdict_table["f%d_k%d_n%d" % (f, k, n)] = "EQUAL" if ok else "MISMATCH"
                 check("P2-f%d-k%d-n%d" % (f, k, n), ok,
-                      "" if ok else "menu=%s recur=%s" % (sp.cancel(men), sp.cancel(rec[k-1])))
+                      model if ok else "%s menu=%s recur=%s" % (model, sp.cancel(men), sp.cancel(rec[k-1])))
         if f == 2:
             m4 = moments_from_pgf(FK[4], 1)[0]
             m5 = moments_from_pgf(FK[5], 1)[0]
@@ -333,7 +375,11 @@ def main():
 
     # P5: small-n KR legs
     check("P5-KR-n2", is_zero(q/(q+1) + E_quad_n2_closed() - 2*q/(q+1)), "TK-Q reproduced")
-    check("P5-KR-n3", is_zero(q/(q+1) + E_quad_n3_closed() - (1 - (q**2-q+1)/Phi5)), "dip anchor reproduced")
+    # [run-2 repair r2c: the sealed target was 1 - Phi6/Phi5 -- that is TAMEK S3's
+    #  RAMIFIED-quad dip anchor, pasted in error; the unramified-quad n=3 anchor is
+    #  q/(q+1) + 2 R_{(1,2)(1,1)} = q/(q+1) + q^3(q^2+q+1)/((q+1)Phi5) (= 357/242 at q=3).]
+    anchor3 = q/(q+1) + q**3*(q**2+q+1)/((q+1)*Phi5)
+    check("P5-KR-n3", is_zero(q/(q+1) + E_quad_n3_closed() - anchor3), "unram n=3 anchor reproduced")
 
     # P6: teeth
     bites = 0
