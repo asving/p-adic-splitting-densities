@@ -896,3 +896,64 @@ pass; PE2 was NOT CLEAN). Next: PE3 (hostile pass on the
 r2-repaired note; the letter-live geography now has a committed
 machine foothold at LP1, and HETOW's frame-Y/R family remains the
 candidate for a deeper letter-live route).
+
+### Dated corrections (2026-08-09, post-PE3)
+
+*Source: `GENTOW2_passPE3_report.md` @ 92ac16b — verdict CLEAN
+(0 CRITICAL, 0 GAP, 2 MINOR); the r2 surfaces (LETTER FORMULA,
+h-step corner, LP1 probe) held under independent re-derivation, and
+the PE3 fresh route (first z₂ ≠ 1 letter-live contacts, p = 3/F₉)
+came back 50/0 GREEN first-run-under-seal. Per the arc the item-(6)
+acceptance counter moved 0/2 → **1/2 and HOLDS AT 1/2**: the two
+cures below are dated appends to MINOR findings, not a scoring
+round; one further clean pass on a fresh surface is required for
+acceptance. The body above is BYTE-FROZEN — each correction below
+supersedes its referenced text of record. Sealed machine artifacts
+untouched by this append.*
+
+**C-m1 (cures PE3 [m1] — the implicit evaluation-extension line in
+the S5.1 letter-formula derivation).** The derivation's first
+display ("Under Prop 1.15(1) (p.7) the class evaluates: z₂ =
+res(γ₂(x₀)) = res(Φ′(x₀)^{e₂}/π₂(x₀)^{u₂})") applies Prop 1.15(1)
+— stated for POLYNOMIAL classes g + P₀⁺ ↦ g(θ) + m_φ — to the
+rational class of γ₂ = Φ′^{e₂}π₂^{−u₂}. The denominator-clearing
+bridge, now displayed: pick a polynomial representative b of the
+letter class, H_{µ₂}(b) = y₂, i.e. (clearing the monomial
+denominator) µ₂(b·π₂^{u₂} − Φ′^{e₂}) > µ₂(Φ′^{e₂}) = e₂(w₂ + λ₂).
+Evaluating at the Φ₂-root x₀ with v ≥ µ₂ on polynomials gives
+v(b(x₀)π₂(x₀)^{u₂} − Φ′(x₀)^{e₂}) > e₂(w₂ + λ₂); the denominator's
+value is EXACT and stable, v(π₂(x₀)) = 1/e(µ₁) (Lemma 3.13(1), the
+[r2] supporting pin, PDF L836–840; dv₁(π₂) = 1), so v(π₂(x₀)^{u₂})
+= u₂/e(µ₁) = e(µ₂)(w₂ + λ₂)/e(µ₁) = e₂(w₂ + λ₂) exactly (e(µ₂) =
+e₂·e(µ₁), §3.2 data). Dividing: v(b(x₀) − γ₂(x₀)) > e₂(w₂ + λ₂) −
+e₂(w₂ + λ₂) = 0, hence res(b(x₀)) = res(γ₂(x₀)), and Prop 1.15(1)
+applied to the polynomial b yields the display. The γ₁^k residue
+step admits the same line verbatim with denominator a monomial in
+π₂ and π at exact values (v(π) = 1, π a base uniformizer — no
+stability input needed there). PE3 checked this line goes through
+([m1]); the formula's conclusion is additionally machine-true at
+LP1 and at both LV frames. The two other identification use-sites
+((R-repo); the R_{3,0}(ẑ_d) = d step) apply Prop 1.15/Thm 4.8 to
+polynomial classes and need no bridge.
+
+**C-m2 (cures PE3 [m2] — the STATUS header's arc bracket, stale at
+r2).** The header's closing bracket ("[r1 …; record in S9 … Grade
+stays 0/2; PE2 next.]") is SUPERSEDED by the arc through r2/PE3:
+
+> [r1 2026-08-09, post-PE1 repair round: F1 PDF-provenance leg
+> CLOSED, F2 B-2 partially derived + honestly re-attributed (LEMMA
+> GENTOW2-B′, S5.1), F3 fallback clause corrected, F4/F5/F6 minors
+> cured; record in S9. Grade stays 0/2.]
+> [r2 2026-08-09, post-PE2 repair round: F1 canonical
+> identification CURED — Prop 1.15 evaluation isomorphism + S5.1
+> LETTER FORMULA z₂ = η₂·z₁^{−⌊ℓ₁u₂/e₁⌋} (S6.1 rows 17–19); F2
+> h-step CURED with the e₃ = 1 corner CLOSED; F3/F4 minors cured;
+> LETTER-LIVE PROBE LP1 GREEN 21/0 (first f₁ = 2 contact; TOOTH
+> η₂ ≠ z₂ machine-refutes the pre-repair parenthetical); record in
+> S10. Grade stays 0/2.]
+> [PE3 2026-08-09: CLEAN — 0C/0G/2m (report @ 92ac16b); fresh route
+> 50/0 GREEN, first z₂ ≠ 1 letter-live contacts (p = 3/F₉, teeth on
+> both frames, direction opposite to LP1); acceptance counter
+> 0/2 → 1/2, HOLDS AT 1/2; the 2 MINORs cured in this dated
+> section. Next: acceptance attempt (second clean pass on a fresh
+> surface).]
