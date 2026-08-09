@@ -471,7 +471,150 @@ weight-nondecreasing by the same displays. ∎
 
 ## S3. THEOREM GENTOW5-B (the general-depth composition theorem)
 
-(to be filled)
+**Statement.** Fix a base (Q; h) and a depth-r tower datum per DEF
+GENTOW5-1: stage data (e_i, f_i, psi_i) with properness l_i >= 2
+(i >= 2), heights u_i satisfying the floor chain u_{i+1} >
+e_{i+1} E_i, keys Phi_1, ..., Phi_r built by THE RECIPE, and the
+terminal inductive valuation nu_r (the MacLane chain mu_0 -(x,
+lam_1)-> mu_1 -(Phi_1, lam_2)-> ... -> mu_r = nu_r in FGMN
+coordinates, the GENTOW2 S2 dictionary at every level). Then, by
+induction on i < r:
+
+(a) [KEY CERTIFICATE, level-general] Phi_{i+1} is a key polynomial
+for nu_i and a PRIME polynomial (monic, O-coefficients, irreducible
+over K_v), with R_{nu_i}(Phi_{i+1}) = psi_{i+1}.
+(b) [ONE-SIDEDNESS AT EVERY LEVEL — the FGMN cite, arbitrary chain
+length] for every j <= i+1, the level-(j-1) polygon N_j(Phi_{i+1})
+is one-sided of slope -lam_j with residual R_{j-1}(Phi_{i+1}) =
+psi_{j-1}^{l_j ... l_{i+1}}, and every root xi of Phi_{i+1} has the
+EXACT intermediate values v(Phi_{j-1}(xi)) = u_j / ehat_j — i.e.
+xi in P_{i+1}: the recipe's roots ARE depth-(i+1) node points.
+(c) [BUDGETS AT LEVEL i+1 — GENTOW-1 re-based] the level-(i+1)
+tower-entry locus T_{i+1} (monic f of degree n = mu * D_{i+1} whose
+level-(i+1) stage read exhibits the full side of slope
+kappa_{i+2} := u_{i+2}/e_{i+2} with residual psi_{i+2}^{mu}) is
+weight-characterized: f in T_{i+1} iff every slot of f -
+Phi_{i+1}^{mu} clears weight mu*E_{i+1} + 1, with the per-slot digit
+floors, the fibration, the node pins p_j >= (mu-j)E_{i+1} + 1, and
+the field floor dv_{i+1}(Phi_{i+1}(xi)) > E_{i+1}, exactly as in
+LEMMA GENTOW-1 (a)-(d).
+(d) [REFINE TRANSFER AT LEVEL i+1, GENERAL mu] at a composed event
+of integer dv_{i+1}-slope lam > E_{i+1} with residual (T-s)^{mu}
+(multiplicative convention), the refine Phi_{i+1}+ := Phi_{i+1} -
+lift_{i+1}(s; lam) kills the mu pins and bijects onto the
+lam-floored node — THEOREM GENTOW5-A's statement with 2 -> i+1.
+(e) [NODE-FLOOR COROLLARY = the floor chain's provenance] every
+side of the level-(i+1) composed polygon of an f in T_{i+1} has
+dv-slope > E_{i+1} > dv_{i+1}(x^{D_{i+1}}); hence the NEXT stage's
+height obeys u_{i+2} > e_{i+2} E_{i+1} automatically at tower
+leaves — the induction feeds itself (COR GENTOW-1.1 at every level).
+
+**Proof.**
+
+*(a) — GENTOW2-A's proof with r+1 for 4.* GENTOW2 S7 already
+recorded that THEOREM GENTOW2-A's proof pattern is level-uniform
+("Cor 6.4 is proved for chains of any length r, and the
+recipe/bridge argument reads verbatim with r+1 in place of 4
+PROVIDED the level-r analogues of (B-1)/(B-2) are proved"). The two
+provisos are now supplied:
+  (B-1 at level i) the dv_i ladder value of a deg < D_i ladder
+  element equals its mu_i-value — this is LEMMA GENTOW5-C's
+  (SLOT_i) value clause (exactness of the slot minimum), which
+  identifies the grid minimum with the inductive-valuation value on
+  deg < D_i polynomials at level-i points; at i <= 2 it is the
+  accepted GENHN-2/2'.
+  (B-2 at level i) the K_i-digit alphabet is FGMN's Def 3.16
+  epsilon-normalized coordinate up to a fixed unit — as in GENTOW2-B's
+  honesty box, a fixed-unit mismatch only re-parameterizes psi_{i+1}
+  (y -> epsilon*y), preserving monic-irreducible-of-degree-f_{i+1}
+  and every clause consumed; the robustness argument is verbatim.
+With (B-1)/(B-2), LEMMA GENTOW2-B's proof runs at level i:
+additivity (Cor 4.7(1) [Q8]) + eq (14) [Q7] give
+R_{nu_i}(Phi_{i+1}) = y^{f_{i+1}} - Sum c_t y^t = psi_{i+1}; the
+degree-forcing display [Q6] + Lemma 5.3(2) [Q4] certify
+Phi_{i+1} in KP(nu_i); Lemma 1.11 [Q1] + Cor 1.13 [Q2] give prime.
+Non-equivalence to the previous key: R(Phi_{i+1}) = psi_{i+1} != 1 =
+R(Phi_i) by eq (14), Prop 5.7 [Q7]. ∎(a)
+
+*(b) — the cite fires at arbitrary r.* Theorem 6.3 [Q9] with
+F = phi = Phi_{i+1}, mu = nu_i (F = phi so phi |_mu F); Corollary
+6.4 [Q10] with the length-(i+1) chain: its quantifier is "for any
+1 <= j <= r" — THE ONE-SIDEDNESS IS LEVEL-GENERAL IN THE SOURCE;
+no per-level work remains. Its display (23) gives the residual
+powers R_{j-1}(F) = psi_{j-1}^{l_j...} and the middle clause
+mu(phi_j) = v(phi_j(theta)) gives the exact intermediate values at
+every root — with the psi_{j}-root residue classes from the
+residual power (no root besides psi_j's, the GENTOW2-A consumption
+note verbatim), every root lies in P_{i+1}. The repo polygon =
+FGMN polygon under the S2 shear (GENTOW2 S2, level-general as an
+affine map per level). ∎(b)
+
+*(c) — GENTOW-1's Steps 0-5 with the substitution table
+(D', e2, u2, E2, GENHN-2') -> (D_{i+1} composition data, e_{i+2},
+u_{i+2}, E_{i+1} -> E_{i+2}, (SLOT_{i+1})).* The audit of each step
+for level-blindness:
+  Step 0 = LEMMA GENTOW5-D (proved level-agnostic; the ONLY
+  level-sensitive content was the carry pricing, now uniform).
+  Step 1 (the key power's own development): R_{nu}(Phi_{i+2}^{mu}) =
+  psi_{i+2}^{mu} by multiplicativity Cor 4.7(3) [Q8] — cleaner than
+  the level-2 hand display; slots at weight >= mu*E_{i+2} with the
+  graded layer psi-power by (b) + LEMMA GENTOW5-D's grid
+  translation.
+  Step 2 (realizability): digits above floors put every slot of
+  g := f - Phi_{i+2}^{mu}... (level i+2 per the statement's (c) at
+  i+1 — indices as displayed) above the side; the level-(i+1) stage
+  read then shows the full side with residual psi^{mu} exactly
+  ((SLOT_{i+1}) + Step 1). THE DEEPER READS: rather than the
+  level-2 x-polygon display, run the entry ladder bottom-up: at
+  level j (j <= i), given xi forced to P_j, the level-j read of f
+  has pins = Phi_{i+2}^{mu}'s (g strictly above, by GENTOW5-D both
+  grids agree on "above"), whose side residual is the psi_j-power
+  of (b)+Cor 4.7(3); the zero-sum 0 = f(xi) forces the level-j side
+  polynomial to vanish at the next residue class, i.e. the class is
+  a psi_j-root: xi in P_{j+1}. Induction up to j = i+1, then Thm
+  6.3 fires on each prime factor (v(Phi_{i+1}(theta)) > nu(Phi_{i+1})
+  read off the top side) and Cor 6.4 pins the factor's data. [This
+  replaces GENTOW-1 Step 2's outer-grammar display, which does not
+  transpose as one line; the ladder argument is the classical
+  Ore/Montes ascent and each rung is one (SLOT_j) read.]
+  Step 3 (necessity + fibration): verbatim — lattice-digit
+  cancellation to one digit higher, off-lattice strictly above,
+  Step 0 conversion, triangularity via monic division unipotent in
+  the x-filtration (a composition of i+2 monic divisions now — the
+  same unipotence).
+  Step 4 (node): (SLOT_{i+1}) reads p_j as the slot-min; equality
+  realized in every residue class mod ehat_{i+2} by the ITERATED
+  class separation (the CRT solve now runs down the recursion:
+  choose b_{i+1} mod e_{i+2}, then descend — DEF GENTOW5-1's
+  uniqueness clause).
+  Step 5 (field floor): every recipe side term at dv-height
+  E_{i+2} exactly, common coherent normalizer, residue assembles to
+  (unit)*psi_{i+2}(class) = 0, ultrametric strict — verbatim with
+  the S1.2 cocycle in place of the level-2 wraps. ∎(c)
+*(d)* — S1's proof is level-blind: LEMMA GENTOW5-A0 holds at any
+leaf field; LEMMA GENTOW5-A1's cocycle computation is S2.3's step
+(3) (the tau_i letter monomial); layer 2 = LEMMA GENTOW5-D + the
+flow-up pricing lam > E_{i+1} (the floor); layer 3 as in GENTOW-2.
+∎(d)
+*(e)* — COR GENTOW-1.1's two-line convexity argument with E_2 ->
+E_{i+1}: pins >= (mu-j)E_{i+1} + 1 with right endpoint (mu, 0)
+force every side slope > E_{i+1}; and E_{i+1} = e_{i+1}f_{i+1}
+u_{i+1} > e_{i+1}f_{i+1} e_{i+1} E_i >= dv_{i+1}(x^{D_{i+1}}) =
+D_{i+1} * (ehat_{i+1}/e1) h by telescoping the floor chain down to
+E_1 = D_1 h. ∎(e)
+
+**What the induction consumes, per rung (the honest pin stack).**
+Accepted 2/2: T(b)'(i)/(ii)/(iii) + GENHN-2/2' + S4 normalizers
+(rungs i <= 2). Cited at verified numbering: FGMN [Q1]-[Q10]
+(level-general by their own quantifiers; faithfulness per GENTOW2
+S6, unchanged). Grade 0/2: GENTOW-1 (budgets pattern), GENTOW-2
+(refine pattern), GENTOW2-A/B (cite pattern), THIS NOTE. ANNEX
+GRADE (unpassed): HE7 ANNEX R's R1-b/R1-c ARGUMENT, consumed at
+rungs i >= 3 through LEMMA GENTOW5-C (the proof is reproduced
+tower-side, but its correctness precedent is the annex's — named,
+not hidden). The depth->=4 region has machine contact ONLY through
+S4's witness (one exact instance) + HE7 R1.3's level-3 leg one
+ladder over; no count law at depth >= 3 is claimed measured.
 
 ## S4. THE DEPTH-4 WITNESS (n = 32 over q = 2)
 
