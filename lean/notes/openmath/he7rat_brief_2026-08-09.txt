@@ -1,0 +1,2425 @@
+ADVERSARIAL VERIFICATION CHARGE — HE7 RATIFICATION PASS (post-acceptance, decorrelated model)
+
+You are a hostile mathematical verifier with zero prior stake in this document. You CANNOT read any files: everything you need is pasted below, self-contained. The target note has already been ACCEPTED after three same-family hostile passes (PE1/PE2/PE3, a different instance of the same model family); YOU are the decorrelated second opinion, attacking what those passes may share blind spots on. Your only deliverable is a numbered list of findings.
+
+PROTOCOL (strict):
+- QUOTE-AND-CLASSIFY, FIX NOTHING. For each finding: (1) verbatim quote of the offending passage, (2) classification, (3) the precise mathematical failure, with a concrete counterexample or counter-configuration wherever possible.
+- Classifications: CRITICAL ERROR (breaks the logical chain; conclusions depending on it are unproven) / JUSTIFICATION GAP (the step's conclusion may be true but the given argument does not establish it) / MINOR (display, hygiene, disclosure).
+- If a step is correct, do not praise it; move on. If you verify a charged item and it survives, say "CHECKED CLEAN" in one line with the reason.
+- Do NOT trust the note's own cross-references: when the note says "verbatim with the substitution" or "the same proof", CHECK the claimed transfer against the pasted level-1 source.
+- The mathematics: O a complete DVR, v extended to an algebraic closure; Newton polygons of developments in powers of keys; label classes of roots; everything elementary valuation theory over the residue field. No Montes/Ore machinery is permitted to the note, and none is needed to attack it.
+
+DOCUMENT UNDER REVIEW: "HE7" (PASTE A below, in full, including its post-acceptance ANNEX F-1). It proves (SLOT₂)/(LIFT₂) (level-2 slot and lift lemmas), transfers an entire level-1 package (PASTE B) one level up (§S5), wires a level ladder (§S6), proves termination (§S7), and closes a program box at n = 8 (§S8). It consumes: PASTE B (the level-1 lemmas of HE6, including LEMMA HE6-1L = the corrected (LIFT)), PASTE C (three reconciliation lemmas HE6R1-1/2/3), PASTE D (LEMMA GENHN-2, the level-1 SLOT LEMMA, with its residue clause and twist paragraph). Treat PASTE B/C/D statements as GIVEN (they carry their own acceptance arcs) — but flag any OVERCONSUMPTION: a use in PASTE A that the pasted statement does not license.
+
+ATTACK ORDER (mandatory; then free hunt):
+
+(1) LEMMA HE7-12 (§S5.8), clause (c) — the 11-item audit that licenses the whole §S5 package at the refined key Ψ^(w) = Ψ − w. Prior passes audited items 2, 3, 4, 5, 6, 8, 11 of the eleven numbered items in the proof of clause (c). YOUR TARGETS ARE THE FOUR NEVER-AUDITED ITEMS: item (1) ("(SLOT₂)/(LIFT₂) never mention Ψ — key-free"), item (7) ("LEMMA HE7-6 is about level-1 labels — key-free; LEMMA HE6R1-2's read consumes only the HE7-7/7′ analogues"), item (9) ("LEMMA HE7-11 needs only Ψ^(w) ∈ O[x] with Galois-fixed coefficients and g-fixed n₂"), item (10) ("The class-size sandwich composes (4), (8), (9) as in §S5.7"). For each: re-open the ACTUAL proof it points at (pasted in §S5 / PASTE B / PASTE C) and check the key-freeness / verbatim-transfer claim line by line. In particular: does LEMMA HE7-10's proof (consumed by the sandwich, item 10) survive with Ψ^(w) in place of Ψ — its test polynomial Ψ₂ is built from powers of THE KEY, so which clause of HE7-12 licenses HE7-7/HE7-7′ at Ψ^(w)-based test polynomials? Does HE6R1-2's proof (PASTE C), which invokes LEMMA HE6-4/HE6-2′ at level 1 and (LIFT₂)/HE7-7/HE7-7′ at level 2, remain available at the refined key with the same wiring?
+
+(2) ANNEX-LEMMA HE7-13′ (ANNEX F-1), clause (a) — the block-factor construction f_S = Π_{(λ,r)} f_{λ,r}. The §S5 lemmas it consumes (HE7-5, HE7-6's argument, HE7-9, HE7-10, HE7-11, COROLLARY HE7-7″) were stated and proved in a context where THEOREM HE7.A(2) carries a separability hypothesis on R_{λ₂}. The annex asserts (with reasons) that none of their proofs use separability. Verify this against the pasted §S5 proofs, one lemma at a time, at an INSEPARABLE R_λ: (i) does COROLLARY HE7-7″'s label partition need R_{λ₂} separable (its own closing sentence mentions separability — is that a hypothesis or a remark)? (ii) does LEMMA HE7-10's nonemptiness argument (strict excess on the ξ-side vs the ρ-side sum) use separability or multiplicity-1 anywhere? (iii) the residual claim R^(C) = c·r^k for the block: re-derive it; does the argument that every irreducible factor r′ of R^(C) equals r really only need LEMMA HE7-10 applied to f_C, and is LEMMA HE7-10 applicable to f_C (is f_C's polygon/residual data of the required form)? (iv) the claimed arithmetic k = L_C/(ℓ₂·deg r) ∈ ℤ and the trichotomy routing. Also check clause (c)'s translated-label claim (r₂^τ irreducible, degree preserved) and clause (e)'s residue computation.
+
+(3) The δ₂ = κ₂ boundary in LEMMA HE7-7's proof (§S5.3 Step 2) and its analogues (LEMMA HE7-7′(a), the HE7-10 wiring): the argument "If δ₂ > κ₂ the minimum is attained only at t = 0, if δ₂ < κ₂ only at t = d₂; either way dv₂(Ψ₂(ξ)) < ∞, contradicting Ψ₂(ξ) = 0. So δ₂ = κ₂." Check BOTH directions at the boundary: (i) δ₂ > κ₂ needs the t = 0 term to be present and nonzero — where is C₀ ≠ 0 guaranteed (r₂(0) ≠ 0 gives c_{2,0} ≠ 0, but is the (LIFT₂) polynomial C₀ then nonzero AND of exact slot value d₂u₂ at ξ)? (ii) δ₂ < κ₂ relies on the monic top term; check the case δ₂ = ∞ (ξ a root of Ψ — can a root of Ψ₂ be a root of Ψ?). (iii) is "attained only at t = 0 (resp. d₂)" actually a UNIQUE-minimum claim (some middle C_t may vanish; does uniqueness at an endpoint survive arbitrary vanishing patterns)? (iv) In Step 2's residue assembly, the twist algebra: re-derive res(τ_t) = β_ξ^{c_t} from the §S1 CONVENTION's cocycle display, and check the exponent bookkeeping c_t := (s(d₂u₂ − tu₂) + t·s(u₂) − s(d₂u₂))/ℓ ∈ ℤ (is it an integer? sign conventions consistent between DEFINITION HE7-3, §S1, and Step 2's collection?).
+
+(4) §S7 (TERMINATION, THEOREM HE7.C [r1]): the claim that the pre-r1 proof is "reused verbatim with ℓ ≥ 2 replaced by ℓd_r ≥ 2". Re-derive both displays (L_λ ≥ ℓ·m·d_r = m(ℓd_r) ≥ 4 and μ₂ ≤ deg R_λ/d_r ≤ μ/(ℓd_r) ≤ μ/2) from the pasted LEMMA HE6-3(b)/HE7-9 counting laws, then hunt §S7's OTHER steps for hidden uses of ℓ ≥ 2 that the substitution does not cure: the treatment of α-refines interleaved with jumps, the "every other step strictly decreases μ" claim (does a peel, a block split, or a stage-α recentering strictly decrease the RELEVANT μ at the level where it happens?), the J ≤ log₂μ − 1 iteration (μ_J ≥ 4 vs μ_{i+1} ≤ μ_i/2 — off-by-one?), and the n = 8 / n = 16 specializations.
+
+(5) FREE HUNT over the whole of PASTE A, prioritizing: §S6's induction (DEFINITION HE7-2's recursion — is the level-(i+1) frame's gcd condition gcd(u_i, ℓ_i) = 1 available at every level? is the twist convention consistently levelled?), §S4.2's sharpness set W₂, §S8's dictionary, the interaction of the §S1 CONVENTION (Ψ ∤ f_S) with the annex's per-block reading, and any statement whose hypotheses its consumers do not visibly satisfy.
+
+FORMAT OF YOUR REPORT: numbered findings, each with verbatim quote + classification + failure mechanism (+ counterexample if you have one); then a CHECKED CLEAN list (one line per surviving charged item); then a one-paragraph verdict. Nothing else.
+
+================================================================================
+PASTE A — THE DOCUMENT UNDER REVIEW (HE7_PROOF_2026-08-08.md, in full, byte-verbatim, including ANNEX F-1)
+================================================================================
+# HE7 — **HE6-BOX-1 CLOSED**: (LIFT₂) and (SLOT₂) PROVED (with the level-1 (LIFT) threshold CORRECTED), the whole level ladder proved by ONE induction, and the ladder proved to **TERMINATE** (depth ≤ log₂n − 2; at n = 8 exactly one level, μ₂ = 2) — so the level-2 read decides σ on the three-σ family that certified the box
+
+**Unit:** HE7 (the two final lemmas of the uniformity program).
+**Status:** complete at commit 2. Statements §S1–S2; proofs §S3–S8; battery
+§S10 (runner sealed at commit 1 with preregistered P1–P5 and six teeth,
+`verification/openmath/he7_checks.py`); verdict §S11 (**GREEN, 0 violations,
+6/6 teeth, 1,335/1,335 PARI agreements** — **[r1]** on the Ψ ∤ f_S stratum;
+the remaining 8 of 1,587 members are the peel stratum, decided in the r1 leg
+below, so 1,587/1,587 net). Level-2 frame §S1; (SLOT₂) §S3;
+(LIFT₂) §S4 (with **FINDING HE7-F1**, HE6's level-1 (LIFT) over-stated —
+non-propagating); the transfer audit §S5 (every HE6 §S3–S6 lemma one level
+up, including the ONE genuinely new estimate, §S5.3); the level ladder at
+**every** level by one induction §S6; **TERMINATION** §S7; the n = 8 closure
+and THEOREM HE7.A §S8; COROLLARY HE7.B and the boxes §S9; battery §S10;
+verdict §S11. **Attempt grade 0/2** — no hostile pass has run on this note.
+
+**[r1] 2026-08-08 REPAIR ROUND (post-HE6R1).** The reconciliation note
+`HE6R1_RECON_2026-08-08.md` (verdict 850e77e) returned two findings against
+THIS note, both applied here, every site tagged `[r1]`:
+**FINDING HE6R1-F1** — THEOREM HE7.A(3)'s trichotomy and THEOREM HE7.C's jump
+condition repeat HE6.B's four-case enumeration error one level up (a repeated
+level-2 factor of degree ≥ 2 at ℓ₂ = 1 admits no α-refine); reworded to the
+widened box with **identical bounds** (LEMMA HE6R1-1), non-propagation at
+n ≤ 15 re-derived independently in §S2 and §S7.
+**FINDING HE6R1-F2** — the hypothesis **Ψ ∤ f_S** was never stated (the
+level-2 analogue of Codex PE1 finding 2's Φ′ ∤ f); added as a §S1 CONVENTION
+with the peel of **LEMMA HE6R1-3**, and displayed at every consumption site
+(THEOREM HE7.A, COROLLARY HE7-7″, §S5.5, §S8's dictionary).
+Also folded: HE6 §S1's (LIFT) is now **LEMMA HE6-1L [r1]** (HE6's R3 adopted
+LEMMA HE7-L1 verbatim), so this note's level-1 consumption is a citation
+rather than a correction — the use-site threshold check is displayed in §S4.3.
+The runner and artifacts of §S10/§S11 are **BYTE-FROZEN at seal 1956151**; the
+Ψ | f_S stratum they already isolate (8 of 1,587 members, status
+`DEGENERATE-key-divides`) is decided by the peel in the additive
+post-seal leg `verification/openmath/he7r1_supp.py` (§S11 [r1]: 8/8 decided,
+2/2 PARI on σ(f) AND 2/2 PARI on σ(Ψ)). **Attempt grade stays 0/2 post-r1** —
+a repair round does not upgrade an arc, and the r1 text owes a fresh hostile
+pass.
+
+---
+
+## S0. WHAT THIS UNIT CONSUMES
+
+* **HE6 @ 1f5a417** (`lean/notes/openmath/HE6_PROOF_2026-08-08.md`) —
+  DEFINITION HE6-1 (the enlarged test family Ψ_{κ,r}), LEMMA HE6-0 (disk
+  criterion), LEMMA HE6-0′ (local forcing), LEMMA HE6-1 (the ξ-side),
+  LEMMA HE6-2 / HE6-2′ (the two evaluation displays), COROLLARY HE6-2″,
+  LEMMA HE6-3 (slope counts, (SEP)-free), LEMMA HE6-4 (nonemptiness),
+  LEMMA HE6-5 (Galois equivariance), THEOREM HE6.A, and the ϖ-convention of
+  §S1. **HE6-BOX-1 (§S7.1) and its exact residue (§S7.2) are this unit's
+  problem statement.**
+* **[r1] HE6 @ r1 + HE6R1_RECON @ 850e77e** — HE6 §S1's (LIFT) is now
+  **LEMMA HE6-1L [r1]**, which is LEMMA HE7-L1 of §S4.1 verbatim (HE6's repair
+  R3 adopted this note's form), so the level-1 lift is CITED here, not
+  corrected; and three reconciliation lemmas are consumed: **LEMMA HE6R1-1**
+  (the widened jump condition, HE7.C's bounds — §S2, §S7),
+  **LEMMA HE6R1-2** (block projection: μ₂, the level-2 sides and the residual
+  radical are computable from f at a PROPER block, without exhibiting f_S —
+  §S5.5, and it supersedes HE7-BOX-4 in read form), **LEMMA HE6R1-3** (the
+  level-2 peel at Ψ | f_S — §S1 CONVENTION, §S5.5, §S8).
+* **GENHN @ HEAD** — LEMMA GENHN-2 (**THE SLOT LEMMA**) as the ladder's base
+  case, and its "twist (letters only)" paragraph (the normalizer cocycle is
+  a letter twist; counts are twist-blind). GENHN.C's §S7 case analysis is
+  consumed **as an argument template only**, and only at §S8: every input it
+  uses is re-supplied at level 2 by this note.
+* **HE3 @ 7a95449** — DEFINITION 1/2 (stage resolvent, polygon, labels,
+  decided leaves); the elementary convex duality (★) of HE3-3 step 1.
+* **Classical only** — resultant symmetry, the ultrametric inequality,
+  uniqueness (hence Galois invariance) of the extension of v to K̄₀,
+  completeness of O, integral closedness of O, and the existence of
+  irreducibles of every degree over a finite field.
+* **NOT consumed (deliberate, inherited from HE6).** (a) **No base change.**
+  (b) **No Ore theorem, no Montes/GMN index theorem, no higher-order
+  residual-polynomial operator, no theorem of the product** — the FGMN
+  citation targets displayed in HE6 §S7.3 are *not* used; this note replaces
+  them with the induction of §S6. (c) **No irreducibility of any test
+  polynomial**, at any level. (d) GENHN-4 (refine transfer), hence no W-9
+  graded weld face.
+
+---
+
+## S1. THE LEVEL-2 FRAME (all of it in x-coordinates over the ORIGINAL O)
+
+Inherited from HE6 §S1: O a complete DVR, π a uniformizer, v(π) = 1,
+K₀ = Frac(O), residue field F_Q, both characteristics, v extended uniquely
+to K̄₀. Φ′ ∈ O[x] monic irreducible of degree D′ = e₁f₁, all roots of
+v = h/e₁ with gcd(h, e₁) = 1; dv := e₁v; ψ ∈ F_Q[T] irreducible of degree
+f₁; K := F_Q(η_θ) ≅ F_{Q^{f₁}} with η_θ = res(θ^{e₁}π^{−h}); for a (T1)/(T2)
+point ξ, ι_ξ : K → k̄ is the F_Q-embedding η_θ ↦ η_ξ. ϖ := x^{i₀}π^{a₀} with
+i₀h + e₁a₀ = 1, 0 ≤ i₀ < e₁, so dv(ϖ(ξ)) = 1 exactly at every (T1)/(T2)
+point. f is monic on the genre-G opening locus with disc f ≠ 0.
+
+> **DEFINITION HE7-1 (the level-2 datum).** A pair (λ, r) with
+> λ = u/ℓ ∈ ℚ in lowest terms, λ > D′h, and r ∈ K[Z] monic irreducible with
+> r(0) ≠ 0, d_r := deg r. Attached objects:
+>
+> * **the order-2 key** Ψ := Ψ_{λ,r} of DEFINITION HE6-1, monic of degree
+>   **D″ := D′ℓd_r**; *never assumed irreducible*;
+> * **the level-2 value** **dv₂ := ℓ·dv = e₁ℓ·v**;
+> * **the level-2 residue field** **K₂ := K[Z]/(r) = K(β) ≅ F_{Q^{f₁d_r}}**;
+> * **the level-2 disk threshold** **T₂ := ℓd_r·u = ℓ²d_r·λ**;
+> * **a level-2 point** = a ξ ∈ K̄₀ with (T1), (T2), dv(Φ′(ξ)) = λ and
+>   ι_ξ(r)(β_ξ) = 0, where β_ξ := res(Φ′(ξ)^ℓ/ϖ(ξ)^u);
+> * **the level-2 transport** ι_ξ^{(2)} : K₂ → k̄, the ι_ξ-semilinear
+>   embedding with β ↦ β_ξ (well defined because β_ξ is a root of the
+>   irreducible ι_ξ(r));
+> * **the level-2 normalizer system** **n₂(k) := ϖ^{m(k)}Φ′^{s(k)}** where
+>   ℓ·m(k) + s(k)·u = k with 0 ≤ s(k) < ℓ — possible and unique because
+>   gcd(u, ℓ) = 1. At every level-2 point, dv₂(n₂(k)(ξ)) = k EXACTLY.
+
+The substitution table that makes every HE6 statement transfer is
+
+    (e₁, f₁, h, D′, Φ′, dv, ϖ, K, D′h)  ↦  (ℓ, d_r, u, ℓd_r, Ψ, dv₂, n₂(1), K₂, T₂),
+
+and it is exact: D′ = e₁f₁ ↦ ℓd_r = D″/D′, D′h ↦ ℓd_r·u = T₂,
+gcd(h, e₁) = 1 ↦ gcd(u, ℓ) = 1, deg ψ = f₁ ↦ deg r = d_r.
+
+> **CONVENTION (the level-2 twist is REAL — HE6's twist-free convention is
+> NOT available one level up).** At level 1 HE6 could take all normalizers to
+> be powers of the single element ϖ, killing the cocycle. At level 2 the
+> normalizers ϖ^{m}Φ′^{s} genuinely mix two generators, and
+>
+>     n₂(k)·n₂(k′) / n₂(k+k′) = (Φ′^{ℓ}/ϖ^{u})^{c},
+>     c := ( s(k) + s(k′) − s(k+k′) ) / ℓ  ∈ ℤ,
+>
+> whose residue at a level-2 point ξ is **β_ξ^{c}** — a nonzero element of
+> ι_ξ^{(2)}(K₂). Consequently every level-2 residual polynomial is defined
+> only relative to a FIXED choice of n₂, and changing the choice multiplies
+> its coefficients by explicit powers of β. **Every statement used below is
+> twist-invariant** (vanishing/non-vanishing at a residue, degree, and the
+> multiset of irreducible factors up to K₂^×-scaling), which is GENHN's
+> "counts are twist-blind, letters are twisted" (J-D0) at level 2. The
+> battery's reader carries the twist explicitly, and tooth **HE7-T-BADTWIST**
+> shows that dropping it mispredicts σ — so this is not a bookkeeping remark.
+
+> **CONVENTION [r1, HE6R1-F2] (the standing level-2 hypothesis: Ψ ∤ f_S).**
+> Throughout §S2–S8, **Ψ ∤ f_S** — equivalently the Ψ-development's constant
+> coefficient A₀^{(2)} ≠ 0, equivalently dv₂(Ψ(ρ)) < ∞ at every root ρ of f_S.
+> *This is not a restriction: if Ψ | f_S then* **LEMMA HE6R1-3 (the level-2
+> peel)** *gives gcd(f_S, Ψ) = Ψ with Ψ IRREDUCIBLE over O of degree D″ and*
+>
+>     e(Ψ) = e₁ℓ ,      f(Ψ) = f₁d_r ,
+>
+> *a SIMPLE factor (disc f_S ≠ 0), so f_S = Ψ·f_S′ with Ψ ∤ f_S′, every root
+> of f_S′ still a level-2 point, and every statement below applied to f_S′
+> with μ₂ − 1 in place of μ₂; the peel happens at most once.* Without the
+> convention a root ρ of f_S with Ψ(ρ) = 0 has dv₂(Ψ(ρ)) = ∞ and carries NO
+> finite level-2 label, so COROLLARY HE7-7″ fails, P₂ loses its j = 0 pin and
+> THEOREM HE7.A(1)'s Σ_{λ₂}L_{λ₂} = μ₂ is false — the exact level-2 analogue
+> of the Φ′ | f stratum at level 1 (HE6's §S1 CONVENTION [r1], Codex PE1
+> finding 2). This was found BY the machine: HE7's own sealed battery isolates
+> the stratum as status `DEGENERATE-key-divides` (8 of 1,587 members) and the
+> reconciliation note named it FINDING HE6R1-F2; the post-seal leg
+> `he7r1_supp.py` decides all 8 by the peel (§S11 [r1]).
+
+The two lemmas HE6 §S7.2 named as its exact residue, stated here in full.
+
+> **(SLOT₂) [PROVED, §S3].** Let C ∈ O[x] with deg C < D″ and let
+> C = Σ_{s<ℓd_r} c_s·Φ′^{s} (deg c_s < D′) be its Φ′-development. Then at
+> **every** level-2 point ξ,
+>
+>     dv₂(C(ξ)) = min_{s<ℓd_r} ( ℓ·dv(c_s) + s·u )   EXACTLY,
+>
+> where dv(c_s) := min_{i<D′}(e₁v(c_{s,i}) + ih) is the level-1 slot value.
+> Moreover: (a) the minimising s all lie in ONE class mod ℓ; (b) writing that
+> class as s₀ + ℓt (t < d_r) and m₀ := m(k), s₀ := s(k) for k the minimum,
+> the residue is
+>
+>     res( C(ξ)/n₂(k)(ξ) ) = ι_ξ^{(2)}( Σ_{t<d_r} γ_t·β^{t} ) ≠ 0,
+>     γ_t := res( c_{s₀+ℓt}(θ)/ϖ(θ)^{m₀−tu} ) ∈ K,
+>
+> an element of K₂ depending on C and k only (not on ξ). (c) For an
+> ARBITRARY ξ ∈ K̄₀ the inequality
+> dv₂(C(ξ)) ≥ min_s( ℓ·dv_ξ(c_s) + s·ℓ·dv(Φ′(ξ)) ) holds, with
+> dv_ξ(c) := min_i(e₁v(c_i) + i·dv(ξ)).
+
+> **(LIFT₂) [PROVED, §S4].** Let k ∈ ℤ and put s₀ := s(k), m₀ := m(k). If
+>
+>     m₀ ≥ (d_r − 1)·u + (D′ − 1)·h                                    (†₂)
+>
+> then for **every** c ∈ K₂ there is C ∈ O[x] with deg C < D″, level-2 slot
+> value exactly k (for c ≠ 0), and level-2 residue
+> res(C(ξ)/n₂(k)(ξ)) = ι_ξ^{(2)}(c) at every level-2 point ξ. A k-uniform
+> sufficient condition is
+>
+>     k ≥ (ℓd_r − 1)·u + ℓ·(D′ − 1)·h.                                 (‡₂)
+>
+> Both bounds are satisfied with room to spare wherever this note uses
+> (LIFT₂) (§S4.3). The hypothesis (†₂) is **not removable**: §S4.2 exhibits
+> heights at which the residue map is not surjective, and tooth
+> HE7-T-LIFT2SHARP verifies the exact reachable set by enumeration.
+
+---
+
+## S2. THE STATEMENTS PROVED HERE
+
+> **THEOREM HE7.A (THE LEVEL-2 READ DECIDES — HE6.A one level up).** Let
+> (λ, r) be a level-2 datum arising as a label of f (LEMMA HE6-2″), let
+> S := S_{λ,r} be its label class and f_S ∈ O[x] the monic factor of f with
+> root set S (LEMMA HE7-6), **with Ψ ∤ f_S** (§S1 CONVENTION [r1]; if Ψ | f_S,
+> peel by LEMMA HE6R1-3 first and read f_S′ at μ₂ − 1). Put
+> μ₂ := deg f_S / D″ ∈ ℤ_{≥1} and let
+> f_S = Ψ^{μ₂} + Σ_{j<μ₂}A_j^{(2)}Ψ^{j} be the Ψ-development,
+> P₂ := lower hull of {(j, dv₂(A_j^{(2)}))}_{j ≤ μ₂}. Then:
+>
+> 1. every side of P₂ has slope λ₂ > T₂, and Σ_{λ₂} L_{λ₂} = μ₂;
+> 2. for every slope λ₂ = u₂/ℓ₂ of P₂ with **separable** level-2 residual
+>    R_{λ₂} ∈ K₂[Z] and every monic irreducible r₂ | R_{λ₂},
+>
+>        |S_{λ₂,r₂}| = D″·ℓ₂·deg r₂ ,
+>
+>    and S_{λ₂,r₂} is the root set of a single monic irreducible factor of f
+>    over O with
+>
+>        e = e₁·ℓ·ℓ₂ ,      f = f₁·d_r·deg r₂ ;
+>
+> 3. **[r1, HE6R1-F1 — the widened trichotomy]** at a slope λ₂ = u₂/ℓ₂ whose
+>    residual R_{λ₂} has a repeated irreducible factor r₂ of multiplicity
+>    m₂ ≥ 2, split on the product **ℓ₂·deg r₂** (NOT on ℓ₂ alone):
+>    if **ℓ₂·deg r₂ = 1** (so ℓ₂ = 1, λ₂ ∈ ℤ and r₂ = Z − s₂ with s₂ ∈ K₂
+>    **K₂-rational**) the level-2 α-refine Ψ ↦ Ψ − w exists — (LIFT₂)
+>    supplies w at height λ₂ with residue s₂ **because s₂ ∈ K₂** — and the
+>    refine chain is FINITE (LEMMA HE7-8), so the read continues — **[r2,
+>    HE7-PE1 F-1]** the read AT the refined key Ψ − w (and at every iterate
+>    Ψ − W of the chain) is licensed by **LEMMA HE7-12** (§S5.8): dv₂(w) =
+>    λ₂ > T₂, so the whole §S5 package and clauses (1)(2) hold verbatim at
+>    the refined key, and the strict slope increase λ₂^{(0)} < λ₂^{(1)} < ⋯
+>    that LEMMA HE7-8 consumes is **LEMMA HE7-13**, derived, not assumed;
+>    if **ℓ₂·deg r₂ ≥ 2** the read
+>    passes to level 3, which is the same statement one level further up
+>    (THEOREM HE7.D) and cannot occur unless μ₂ ≥ 4 (THEOREM HE7.C [r1]).
+>    *The pre-r1 text split on ℓ₂ = 1 vs ℓ₂ ≥ 2 and so claimed an α-refine at
+>    (ℓ₂, deg r₂) = (1, ≥ 2), where NO ŝ₂ exists: its residue would have to be
+>    a root β₂ of r₂, and β₂ ∈ K₂(β₂) ∖ K₂ is not a value of (LIFT₂). This is
+>    HE6.B's enumeration error one level up (FINDING HE6R1-F1).*
+>    **Non-propagation at μ₂ ≤ 3 (re-derived here, not transcribed).** The
+>    mis-stated branch and the level-3 branch both need a repeated r₂ with
+>    m₂ ≥ 2 and ℓ₂·deg r₂ ≥ 2, hence a side of length
+>    L_{λ₂} = ℓ₂·deg R_{λ₂} ≥ ℓ₂·m₂·deg r₂ = m₂·(ℓ₂ deg r₂) ≥ 2·2 = 4, hence
+>    **μ₂ ≥ Σ_{λ₂}L_{λ₂} ≥ 4** by clause (1). So at every μ₂ ≤ 3 — in
+>    particular at every n ≤ 15 (COROLLARY HE7.B(i): D′ ≥ 2 gives
+>    μ ≤ ⌊n/D′⌋ ≤ 7 and THEOREM HE7.C gives μ₂ ≤ μ/2 ≤ 7/2, hence
+>    **μ₂ ≤ ⌊μ/2⌋ ≤ 3 since μ₂ ∈ ℤ_{≥1}** — [r2, HE7-PE1 F-3] the pre-r2
+>    display "μ₂ ≤ μ/2 ≤ 3" is false at μ = 7 without the integer floor;
+>    ⌊7/2⌋ = 3, so the conclusion is unchanged) and at n = 8 (μ₂ = 2) —
+>    clause (3)'s
+>    only live case is ℓ₂·deg r₂ = 1, where the old and new statements
+>    coincide: §S8's dictionary and the n = 8 closure are untouched.
+>
+> The proof uses **no base change, no irreducibility of Ψ, and no order-≥2
+> citation**.
+
+> **THEOREM HE7.C [r1] (TERMINATION — the ladder is FINITE at every n).** A
+> node requiring a level jump — **a side of slope λ = u/ℓ carrying a repeated
+> irreducible residual factor r (multiplicity m ≥ 2) with ℓ·deg r ≥ 2**, which
+> is exactly HE6-BOX-1's configuration in its WIDENED form (COROLLARY HE6.B
+> [r1]: the complement of "separable residual, or repeated only at a
+> K-rational linear factor at an integer slope"; the pre-r1 condition
+> "ℓ ≥ 2" omitted the ℓ = 1, deg r ≥ 2 branch) — satisfies μ ≥ 4, and the
+> level-2 problem it opens has
+>
+>     μ₂ ≤ μ / (ℓ·d_r) ≤ μ/2 .
+>
+> Hence the number J of level jumps in any history satisfies
+> **J ≤ log₂ μ − 1 ≤ log₂ n − 2**; interleaved α-refines are finite
+> (LEMMA HE7-8) and every other step strictly decreases μ. In particular:
+> **at n = 8 (μ = 4, D′ = 2) there is exactly ONE jump, and the level-2
+> problem has μ₂ = 2 — level 3 is degenerate. The first n at which a level-3
+> object can be needed is n = 16.**
+>
+> **[r1] The widening costs NOTHING in the bounds** (= LEMMA HE6R1-1): both
+> displays only ever use the product ℓ·d_r ≥ 2 — the first as
+> L_λ ≥ ℓ·m·d_r = m(ℓd_r) ≥ 4, the second as μ₂ ≤ deg R_λ/d_r ≤ μ/(ℓd_r) —
+> and ℓ·d_r ≥ 2 IS the widened box's defining inequality, supplied by both of
+> its branches (ℓ ≥ 2 with d_r ≥ 1, and ℓ = 1 with d_r ≥ 2). So J, the n = 8
+> verdict and the n = 16 threshold are literally unchanged; the pre-r1 proof
+> of the bounds is reused verbatim with "ℓ ≥ 2" replaced by "ℓd_r ≥ 2" (§S7).
+
+> **COROLLARY HE7.B (HE6-BOX-1 CLOSES; the program consequence, stated at
+> the grade the composition supports).** (i) At every leaf whose history's
+> boxed nodes all have μ₂ = deg f_S/D″ ≤ 3 — sufficiently μ ≤ 7 (THEOREM
+> HE7.C: μ₂ ≤ μ/2 ≤ 7/2 with μ₂ ∈ ℤ, so μ₂ ≤ ⌊7/2⌋ = 3 [r2, HE7-PE1 F-3]),
+> hence at **every** leaf of every degree **n ≤ 15** (n ≤ 15 forces
+> μ ≤ ⌊n/D′⌋ ≤ ⌊15/2⌋ = 7 since D′ ≥ 2 at a composite stage and μ ∈ ℤ
+> [r2]), and at every one of HE6-BOX-1's machine-certified live
+> configurations (n = 8) — the σ-decision holds: THEOREM HE7.A + THEOREM
+> HE7.C decide σ with no base change and no order-≥2 citation, so
+> **[GENHN-HE(μ)] holds at EVERY leaf at those degrees** and HE6's
+> COROLLARY HE6.B loses its exclusion clause there — **[r1]** the exclusion
+> clause being the WIDENED one (COROLLARY HE6.B [r1]), whose ℓ = 1 /
+> deg r ≥ 2 branch §S1–S6 decides as a LITERAL instance (HE6R1_RECON §S3.2,
+> ten items checked), and the boxed node's level-2 starting data (μ₂, the
+> level-2 sides, the residual up to its radical) being read off f by
+> **LEMMA HE6R1-2** when the block is PROPER — the configuration that first
+> occurs at μ ≥ 5, i.e. n ≥ 10, hence inside this clause's own region.
+> (ii) At every degree, the
+> same conclusion holds with the level-i lemmas of THEOREM HE7.D in place of
+> the level-2 ones; THEOREM HE7.D is proved by the induction of §S6, whose
+> inductive step is exactly §S3–S5 with the substitution table, so (ii) is
+> complete **modulo the arc grade of this note** (§S9). Consequently
+> **[GENHN-HE(μ)] holds at every leaf**, HE6-BOX-1 is discharged, and through
+> HE6.B + GENIND.B + W-12.D the uniformity theorem's conditional stack
+> reduces to **arc grades + the named hardening boxes** — no open piece of
+> mathematics remains in the σ-decision chain. **This is a composition
+> claim at attempt grade 0/2, not an acceptance claim** (§S9).
+
+> **THEOREM HE7.D (the ladder at every level).** The level-0 datum
+> (Φ_0 = x, w_0 = v, ℓ_0 = e₁, g_0 = f₁, u_0 = h, K_0 = F_Q) and the
+> recursion of DEFINITION HE7-2 generate, at every level i ≥ 0, objects
+> (Φ_i, w_i, ℓ_i, g_i, u_i, K_i, T_i, n_i) for which (SLOT_i), (LIFT_i), the
+> disk criterion, the two evaluation displays, the slope counts, the
+> nonemptiness certificate, Galois equivariance and the class-size theorem
+> all hold, with the SAME proofs. Level 1 is GENHN-2 + HE6 §S3–S6; level 2 is
+> §S3–S5 of this note; the inductive step is §S6.
+
+---
+
+## S3. (SLOT₂): PROOF
+
+Let ξ be a level-2 point and C = Σ_{s<ℓd_r}c_sΦ′^{s} with deg c_s < D′
+(unique, since deg C < D′ℓd_r and Φ′ is monic of degree D′).
+
+**Step 1 (the term values, exactly).** ξ satisfies (T1)/(T2), so the level-1
+SLOT LEMMA (GENHN-2) gives dv(c_s(ξ)) = dv(c_s) EXACTLY for every s, hence
+dv₂(c_s(ξ)) = ℓ·dv(c_s). Also dv₂(Φ′(ξ)) = ℓ·dv(Φ′(ξ)) = ℓλ = u. Therefore
+
+    dv₂( c_s(ξ)·Φ′(ξ)^{s} ) = ℓ·dv(c_s) + s·u   EXACTLY, for every s.   (S3.1)
+
+**Step 2 (class separation — no cross-class ties).** ℓ·dv(c_s) + s·u ≡ s·u
+(mod ℓ), and s ↦ s·u mod ℓ is a bijection of ℤ/ℓ because gcd(u, ℓ) = 1.
+Hence two slots s ≢ s′ (mod ℓ) have term values in distinct classes mod ℓ, so
+they are never equal. The minimum of (S3.1) is therefore attained inside a
+single class s₀ + ℓ·{0,…,d_r−1} — **exactly ℓ classes of exactly d_r slots
+each**, the (e₁, f₁) pattern of GENHN-2 with (e₁, f₁) ↦ (ℓ, d_r).
+
+**Step 3 (within-class: the residue, and no cancellation).** Let k be the
+minimum, s₀ = s(k), m₀ = m(k), and write the class slots as s₀ + ℓt,
+t < d_r. A slot attains iff ℓ·dv(c_{s₀+ℓt}) + (s₀+ℓt)u = k, i.e. iff
+dv(c_{s₀+ℓt}) = m₀ − tu (recall ℓm₀ + s₀u = k). Divide the attaining terms by
+n₂(k)(ξ) = ϖ(ξ)^{m₀}Φ′(ξ)^{s₀}; since ϖ^{m₀} = ϖ^{m₀−tu}·ϖ^{tu},
+
+    c_{s₀+ℓt}(ξ)Φ′(ξ)^{s₀+ℓt} / n₂(k)(ξ)
+        = [ c_{s₀+ℓt}(ξ)/ϖ(ξ)^{m₀−tu} ] · [ Φ′(ξ)^{ℓ}/ϖ(ξ)^{u} ]^{t} .  (S3.2)
+
+The first bracket has dv = 0 and, by the residue clause of GENHN-2 together
+with the transport identity (the residue at ξ of a level-1 slot is the
+ι_ξ-image of the residue at θ — HE6-1 Step 2), residue ι_ξ(γ_t) with
+γ_t = res(c_{s₀+ℓt}(θ)/ϖ(θ)^{m₀−tu}) ∈ K; γ_t ≠ 0 exactly for the attaining
+t. The second bracket has residue β_ξ^{t}. Summing over the class,
+
+    res( C(ξ)/n₂(k)(ξ) ) = Σ_{t<d_r} ι_ξ(γ_t)·β_ξ^{t}
+                         = ι_ξ^{(2)}( Σ_{t<d_r} γ_t β^{t} ).            (S3.3)
+
+Now r is irreducible over K of degree d_r, so **{1, β, …, β^{d_r−1}} is a
+K-basis of K₂**; since the γ_t lie in K and at least one attaining γ_t is
+nonzero, the sum (S3.3) is **nonzero**. Hence dv₂(C(ξ)) equals the minimum
+exactly — there is no cancellation to be had — and the residue is the stated
+element of K₂, which depends only on (C, k). Clause (c) is the ultrametric
+inequality applied twice (to the Φ′-development and then inside each c_s),
+with no exactness claimed. ∎
+
+**Remark (what makes this work, and why it is not circular).** Two facts,
+and only two: gcd(u, ℓ) = 1 separates the ℓ classes (the level-2 analogue of
+"dv ≡ ih mod e₁ separates the e₁ classes"), and r irreducible of degree d_r
+makes the d_r within-class residues K-independent (the level-2 analogue of
+"{1, η, …, η^{f₁−1}} are F_Q-independent because deg ψ = f₁"). **Neither
+requires Ψ irreducible.** That is precisely why the level-2 machinery is
+available where HE3's stage-CS route was not: HE3 needed the *resolvent over
+a stage ring* (hence a DVR, hence irreducibility), whereas (SLOT₂) is a
+statement about the values and residues of polynomials in x evaluated at
+points of K̄₀.
+
+---
+
+## S4. (LIFT₂): PROOF, SHARPNESS, AND THE LEVEL-1 CORRECTION
+
+### S4.1 The level-1 statement, corrected (FINDING HE7-F1)
+
+> **LEMMA HE7-L1 ((LIFT), corrected).** Fix k ∈ ℤ_{≥0} and let i₀ = i₀(k) be
+> the unique 0 ≤ i₀ < e₁ with i₀h ≡ k (mod e₁). The set of residues realised
+> as res(C(θ)/ϖ(θ)^{k}) by C ∈ O[x] with deg C < D′ and dv(C) = k is
+>
+>     { Σ_{t ∈ T(k)} c_t·η_θ^{t} : c_t ∈ F_Q, not all 0 },
+>     T(k) := { t < f₁ : k ≥ (i₀ + e₁t)·h } ,
+>
+> and it is ALL of K^× iff T(k) = {0, …, f₁−1} iff
+> **k ≥ (i₀(k) + e₁(f₁−1))·h**; a k-uniform sufficient condition is
+> **k ≥ (D′−1)h**. If T(k) = ∅ the height k is not attained at all.
+>
+> **[r1] FOLD: this statement is now HE6's own.** HE6's repair R3 struck
+> §S1's (LIFT) and adopted LEMMA HE7-L1 **verbatim** as **LEMMA HE6-1L [r1]**
+> (HE6_PROOF §S1), so at level 1 this note CITES rather than corrects: read
+> "LEMMA HE7-L1" below as "LEMMA HE6-1L = LEMMA HE7-L1". Two riders travel
+> with the fold. (a) HE6-1L's RIDER records that the residue is read after
+> dividing by ϖ^k, not by the canonical normalizer n(k) = x^iπ^a, the two
+> differing by the fixed element η_θ^{q} ∈ K^×; **this note uses ϖ-powers at
+> level 1 throughout** (the level-2 normalizers are n₂(k) = ϖ^{m(k)}Φ′^{s(k)},
+> whose level-1 part is a ϖ-power), so the twist of the rider never enters
+> and the γ_t of (SLOT₂)(b) are exactly HE6-1L's residues. (b) Codex PE1
+> finding 4 and FINDING HE7-F1 are ONE defect found twice; HE6-1L cites both
+> finders and carries the sharper (per-height) threshold, which is the form
+> used here.
+
+*Proof.* dv(C) = min_i(e₁v(a_i) + ih) with i < D′ = e₁f₁. The slot i
+contributes at height k iff e₁v(a_i) = k − ih ≥ 0 with v(a_i) ∈ ℤ_{≥0}, which
+forces i ≡ i₀ (mod e₁) and k ≥ ih. The class-i₀ slots are i₀ + e₁t,
+t < f₁; the attainable ones are exactly T(k), and by GENHN-2 the residue at
+height k is Σ_{t}res(a_{i₀+e₁t})η_θ^{t} with res(a_{i₀+e₁t}) ranging freely
+over F_Q for t ∈ T(k) and forced to 0 otherwise. Surjectivity onto K needs all
+f₁ coefficients free, i.e. T(k) full, i.e. k ≥ (i₀ + e₁(f₁−1))h; and
+max_k (i₀(k) + e₁(f₁−1))h = (e₁−1+e₁f₁−e₁)h = (D′−1)h. ∎
+
+> **FINDING HE7-F1 (on HE6 §S1's (LIFT), classification: statement
+> over-reach, NON-PROPAGATING).** HE6 states (LIFT) as "for every c ∈ K^× and
+> every k ∈ ℤ_{≥0} there is C ∈ O[x] with deg C < D′, dv(C) = k and
+> res(C(θ)/ϖ(θ)^k) = c". As written this is **false**: at
+> (e₁, f₁, h) = (3, 1, 2) the height k = 1 is attained by no C at all
+> (attainable heights are {3a + 2i : a ≥ 0, i < 3} = {0,2,3,4,5,…}); at
+> (e₁, f₁, h) = (2, 2, 1) the heights k = 0 and k = 1 realise only
+> F_Q ⊊ K. **No HE6 theorem is affected:** every use of (LIFT) in HE6 is at
+> k = (d−t)u with t < d and u = ℓκ > ℓD′h ≥ D′h > (D′−1)h (DEFINITION HE6-1
+> requires κ > D′h), and the t = d coefficient is B_d := 1 (height 0, residue
+> 1 ∈ F_Q, no lift needed). The corrected hypothesis **k ≥ (D′−1)h** should be
+> appended to HE6 §S1's (LIFT); this note uses only the corrected form. The
+> finding is machine-confirmed by tooth HE7-T-LIFT2SHARP, which computes the
+> reachable sets by enumeration in five frames.
+> **[r1] DISCHARGED at the source:** HE6's r1 round applied exactly this
+> repair (R3) — (LIFT) struck, LEMMA HE6-1L [r1] installed in its place — so
+> the finding is closed, not merely recorded, and HE6's own non-propagation
+> check is the one displayed above.
+
+### S4.2 (LIFT₂): proof and sharpness
+
+*Proof of (LIFT₂).* Let k, s₀ = s(k), m₀ = m(k) with (†₂), and let c ∈ K₂.
+Expand c = Σ_{t<d_r}γ_tβ^{t} in the K-basis {β^t} (unique). For each t with
+γ_t ≠ 0 put m_t := m₀ − tu; then m_t ≥ m₀ − (d_r−1)u ≥ (D′−1)h by (†₂), so
+LEMMA HE7-L1 supplies c_{s₀+ℓt} ∈ O[x] with deg < D′, dv(c_{s₀+ℓt}) = m_t and
+res(c_{s₀+ℓt}(θ)/ϖ(θ)^{m_t}) = γ_t. Set c_{s} := 0 for all other s and
+C := Σ_s c_sΦ′^{s}; then deg C < D′ℓd_r = D″. By construction
+ℓ·dv(c_{s₀+ℓt}) + (s₀+ℓt)u = ℓm_t + s₀u + ℓtu = ℓm₀ + s₀u = k for every t
+with γ_t ≠ 0, and the omitted slots contribute +∞, so by (SLOT₂) the level-2
+slot value is exactly k and the residue is ι_ξ^{(2)}(Σ_tγ_tβ^t) =
+ι_ξ^{(2)}(c). For (‡₂): m₀ = (k − s₀u)/ℓ ≥ (k − (ℓ−1)u)/ℓ, and
+k ≥ (ℓd_r−1)u + ℓ(D′−1)h gives m₀ ≥ (d_r−1)u + (D′−1)h = (†₂). ∎
+
+**Sharpness (the exact reachable set).** Running the same bookkeeping without
+(†₂): the level-2 heights at which ALL of K₂ is reachable are exactly
+
+    W₂ = { k : m(k) − t·u ∈ W₁ for every t < d_r },
+    W₁ = { k : k ≥ (i₀(k) + e₁(f₁−1))h }   (LEMMA HE7-L1),
+
+so (†₂)/(‡₂) are sufficient but not necessary, and below them the failure is
+genuine (a proper subgroup-coset of K₂ is reached, or the height is not
+attained at all). Tooth **HE7-T-LIFT2SHARP** computes W₁ and W₂ exhaustively
+in ten frames and checks both halves: every k above the closed-form threshold
+IS surjective, and some k below it is NOT.
+
+**The recursion behind the threshold.** Writing bound_i for the level-i
+uniform threshold, the proof gives
+
+    bound_{i+1} = (ℓ_i g_i − 1)·u_i + ℓ_i·bound_i ,    bound_0 = 0,
+
+i.e. bound₁ = (D′−1)h and bound₂ = (ℓd_r−1)u + ℓ(D′−1)h — one formula for the
+whole ladder (§S6).
+
+### S4.3 Every use of (LIFT₂) in this note satisfies (‡₂)
+
+The level-2 test family (DEFINITION HE7-3 below) needs level-2 residues at
+heights (d₂−t)u₂ with t < d₂ and κ₂ = u₂/ℓ₂ > T₂, so
+u₂ = ℓ₂κ₂ > ℓ₂T₂ ≥ T₂ = ℓd_r·u. Then
+
+    (ℓd_r − 1)u + ℓ(D′−1)h < (ℓd_r − 1)u + u = ℓd_r·u ≤ u₂ ≤ (d₂−t)u₂ ,
+
+using ℓ(D′−1)h < ℓD′h < ℓλ = u (the DEFINITION HE6-1 hypothesis λ > D′h).
+The level-2 α-refine of THEOREM HE7.A(3) needs a lift at height λ₂ > T₂, and
+the same chain applies. So **(‡₂) never binds where it is used** — the
+threshold is a statement-hygiene item, not an obstruction. (At the machine's
+frame D′ = 2, f₁ = d_r = 1 it is vacuous, which is why HE6's battery could
+not see FINDING HE7-F1: tooth HE7-T-LIFT2SHARP runs in frames with f₁ ≥ 2 and
+d_r ≥ 2 on purpose.)
+
+**[r1] THE USE-SITE CHECK AGAINST THE CORRECTED LEVEL-1 THRESHOLD (displayed).**
+(‡₂) is the level-2 statement; what the fold of LEMMA HE6-1L makes newly
+checkable is the LEVEL-1 lift calls hidden inside the proof of (LIFT₂), which
+invoke HE6-1L at the d_r within-class heights m_t := m₀ − t·u (t < d_r) and
+therefore need **m_t ≥ (D′−1)h** — HE6-1L's uniform threshold — at every use
+site, not merely (‡₂). Every use site of this note has k > T₂ = ℓd_r·u
+(§S4.3's chain: k = (d₂−t)u₂ ≥ u₂ > ℓ₂T₂ ≥ T₂ for the test family, and
+k = λ₂ > T₂ for the α-refine of THEOREM HE7.A(3)). Since 0 ≤ s₀ = s(k) ≤ ℓ−1
+and ℓm₀ + s₀u = k,
+
+    m₀ = (k − s₀u)/ℓ ≥ (k − (ℓ−1)u)/ℓ > (ℓd_r·u − (ℓ−1)u)/ℓ
+       = (d_r − 1)u + u/ℓ = (d_r − 1)u + λ ,
+
+and hence for every t < d_r
+
+    m_t = m₀ − t·u ≥ m₀ − (d_r−1)u > λ > D′h > (D′−1)h ,
+    margin  m_t − (D′−1)h > λ − (D′−1)h > D′h − (D′−1)h = h ≥ 1 .
+
+So every level-1 call sits **strictly more than h above** HE6-1L's uniform
+threshold, a fortiori above its sharp per-height threshold
+(i₀(m_t) + e₁(f₁−1))h ≤ (D′−1)h; in particular T(m_t) is full, so the height
+is attained AND the residue map onto K is surjective — neither of HE6-1L's two
+failure modes (proper subgroup-coset, unattained height) can occur at a use
+site. At **ℓ = 1** the same check reads (‡₂) ≡ (†₂): m₀ = k > T₂ = d_r·λ, so
+m_t > d_rλ − (d_r−1)λ = λ > (D′−1)h with the identical margin — which is the
+HE6R1 reconciliation's §S3.2 item-2 verification, re-derived here rather than
+transcribed. **Verdict: the r1-corrected level-1 threshold is satisfied with
+margin > h at every §S4.3 use site, so no statement of this note moves.**
+
+---
+
+## S5. THE TRANSFER AUDIT: HE6 §S3–S6, ONE LEVEL UP
+
+Each item states what is needed at level 2, and whether it transfers
+verbatim, needs a short new argument, or needs a genuinely new estimate.
+**Exactly one item is in the third class (§S5.3).**
+
+> **DEFINITION HE7-3 (the level-2 test family; the residues carry the
+> INVERSE TWIST).** For κ₂ = u₂/ℓ₂ ∈ ℚ in lowest terms with κ₂ > T₂, and
+> r₂ = Z^{d₂} + Σ_{t<d₂}c_{2,t}Z^{t} ∈ K₂[Z] monic irreducible with
+> r₂(0) ≠ 0, let c_t := (s(d₂u₂ − tu₂) + t·s(u₂) − s(d₂u₂))/ℓ be the twist
+> exponents of §S1 at m₁ := d₂u₂, and choose by (LIFT₂) polynomials
+> C_t ∈ O[x] with deg C_t < D″, level-2 slot value (d₂−t)u₂ and level-2
+> residue
+>
+>     res( C_t(ξ)/n₂((d₂−t)u₂)(ξ) ) = ι_ξ^{(2)}( c_{2,t}·β^{c_{d₂} − c_t} )
+>
+> (C_t := 0 if c_{2,t} = 0) — legitimate because β^{c_{d₂}−c_t} ∈ K₂^× and
+> (LIFT₂) realises every element of K₂ — and set
+>
+>     Ψ₂ := Ψ^{ℓ₂d₂} + Σ_{t<d₂} C_t·Ψ^{ℓ₂ t}  ∈ O[x],
+>
+> monic of degree D″ℓ₂d₂ (each C_tΨ^{ℓ₂t} has degree ≤ (D″−1) + D″ℓ₂t <
+> D″ℓ₂d₂). Never assumed irreducible.
+
+### S5.1 The disk criterion (HE6-0 one level up) — ALREADY PROVED IN HE6
+
+> **LEMMA HE7-4.** For every ξ ∈ K̄₀,
+> dv₂(Ψ(ξ)) = ℓ²d_r·min(dv(Φ′(ξ)), λ) + ℓ·ε(ξ) with ε(ξ) > 0 iff
+> dv(Φ′(ξ)) = λ and ι_ξ(r)(β_ξ) = 0. Hence **dv₂(Ψ(ξ)) > T₂ iff ξ is a
+> level-2 point**, and dv₂(Ψ(ξ)) ≤ T₂ otherwise.
+
+*Proof.* For ξ satisfying (T1)/(T2) this is LEMMA HE6-2 multiplied by ℓ. For
+ξ failing (T1) or (T2), LEMMA HE6-0 gives δ := dv(Φ′(ξ)) = D′min(dv ξ, h) ≤
+D′h < λ and LEMMA HE6-1 Step 1 gives dv(Ψ(ξ)) = ℓd_r·δ, i.e. the same
+formula with min(δ,λ) = δ and ε = 0. ∎ *(No new work: the level-2 disk
+criterion is HE6's own §S3.3 Step 1 plus §S4, read in dv₂.)*
+
+### S5.2 The local forcing (HE6-0′ one level up)
+
+> **LEMMA HE7-5.** If ρ is a root of f whose level-2 label is (λ₂, r₂) with
+> λ₂ = u₂/ℓ₂ in lowest terms, then e₁ℓℓ₂ | e(L_ρ) and f₁d_rd_{r₂} | f(L_ρ);
+> hence [L_ρ : K₀] ≥ D″ℓ₂d_{r₂}.
+
+*Proof.* e₁ℓ | e(L_ρ) and f₁d_r | f(L_ρ) by LEMMA HE6-0′ at the level-1
+label. Write e(L_ρ) = e₁ℓe″. Since v(Ψ(ρ)) = λ₂/(e₁ℓ) = u₂/(e₁ℓℓ₂) must lie
+in (1/e(L_ρ))ℤ, we get u₂e″/ℓ₂ ∈ ℤ, and gcd(u₂, ℓ₂) = 1 forces ℓ₂ | e″. For
+the residue degree: ϖ(ρ), Φ′(ρ) ∈ L_ρ^×, so n₂(k)(ρ) ∈ L_ρ^× for every k;
+hence Ψ(ρ)^{ℓ₂}/n₂(u₂)(ρ) is a unit of O_{L_ρ} and its residue β₂ lies in
+k_{L_ρ}. Also ι_ρ^{(2)}(K₂) ⊆ k_{L_ρ} (η_ρ, β_ρ ∈ k_{L_ρ} by HE6-0′'s
+proof). β₂ is a root of the irreducible ι_ρ^{(2)}(r₂) ∈ ι_ρ^{(2)}(K₂)[Z], so
+[ι_ρ^{(2)}(K₂)(β₂) : F_Q] = f₁d_rd_{r₂} divides f(L_ρ). ∎
+
+### S5.3 The ξ-side (HE6-1 one level up) — THE ONE GENUINELY NEW ESTIMATE
+
+> **LEMMA HE7-7 (the level-2 ξ-side).** Every root ξ of Ψ₂ is a level-2 point
+> with dv₂(Ψ(ξ)) = κ₂ and ι_ξ^{(2)}(r₂)(β₂,ξ) = 0, where
+> β₂,ξ := res(Ψ(ξ)^{ℓ₂}/n₂(u₂)(ξ)). No irreducibility of Ψ or Ψ₂ is used.
+
+*Proof.* Write Ψ₂ = Σ_{t≤d₂}C_tΨ^{ℓ₂t} with C_{d₂} := 1, and set
+δ := dv(Φ′(ξ)), δ₂ := dv₂(Ψ(ξ)).
+
+**Step 1 (ξ lies in the Ψ-disk).** Suppose not; by LEMMA HE7-4, δ₂ ≤ T₂ < κ₂.
+We show the t = d₂ term is the unique strict minimum, so Ψ₂(ξ) ≠ 0. The
+t = d₂ term has dv₂ = ℓ₂d₂δ₂, so it suffices that for every t < d₂
+
+    dv₂(C_t(ξ)) > ℓ₂(d₂ − t)·δ₂ .                                     (S5.1)
+
+Introduce the two **offsets**
+
+    ε₀ := ( h − dv(ξ) )^{+} ,        ε₁ := ( u − ℓδ )^{+} = ℓ(λ − δ)^{+},
+
+and note (LEMMA HE6-0) that δ = D′·min(dv ξ, h), so
+
+    if ε₀ > 0 :  δ = D′(h − ε₀) and ε₁ = ℓ(λ − D′h) + ℓD′ε₀ > 0 ;
+    if ε₀ = 0 :  ε₁ = ℓ(λ − δ)⁺ — either ε₁ > 0 (δ < λ) or
+                 ε₁ = 0 (δ ≥ λ).                                     (S5.2)
+
+**[r2, HE7-PE1 F-2]** The pre-r2 display claimed at ε₀ = 0 the dichotomy
+"ε₁ ≥ ℓ(λ − D′h) > 0 unless δ ≥ λ, in which case ε₁ = 0" — false in the
+middle band D′h < δ < λ (e.g. (e₁,f₁,h) = (2,1,1), λ = 5/2, δ = 9/4:
+ε₁ = 1/2 < 1 = ℓ(λ − D′h)). The split actually consumed below (and by
+(S5.8.1)'s case analysis) is only **ε₁ > 0 vs ε₁ = 0**, which the
+corrected display supplies; the ε₀ > 0 branch below uses the first
+(unchanged) clause. No other step of this note consumed the false half
+(§S6's cascade uses δ_j < λ_j ⟹ ε_j > 0, also the corrected form).
+
+By the ultrametric inequality applied inside each level-1 coefficient
+(HE6-1 Step 1's estimate) and then to the Φ′-development ((SLOT₂)(c)),
+writing C_t = Σ_s c_{t,s}Φ′^{s},
+
+    dv₂(C_t(ξ)) ≥ min_s ( ℓ·dv_ξ(c_{t,s}) + s·ℓδ )
+               ≥ min_s ( ℓ·dv(c_{t,s}) + s·u ) − (ℓd_r − 1)·ε₁ − ℓ(D′−1)·ε₀
+               = ℓ₂(d₂ − t)·κ₂ − (ℓd_r − 1)ε₁ − ℓ(D′−1)ε₀ ,            (S5.3)
+
+using s ≤ ℓd_r − 1 for the ε₁-loss and i ≤ D′−1 for the ε₀-loss, and
+(LIFT₂)'s prescription dv₂(C_t) = (d₂−t)u₂ = ℓ₂(d₂−t)κ₂ for the last step.
+Also, by LEMMA HE7-4, δ₂ = ℓd_r(ℓδ) = ℓd_r(u − ε₁) = T₂ − ℓd_r·ε₁ when
+ε₁ > 0, and δ₂ = T₂ when ε₁ = 0 (δ ≥ λ, no excess since ξ is not a level-2
+point). Substituting into (S5.1) and using ℓ₂(d₂−t) ≥ 1:
+
+    dv₂(C_t(ξ)) − ℓ₂(d₂−t)δ₂
+      ≥ ℓ₂(d₂−t)(κ₂ − T₂) + ℓ₂(d₂−t)·ℓd_r·ε₁ − (ℓd_r − 1)ε₁ − ℓ(D′−1)ε₀
+      ≥ (κ₂ − T₂) + [ℓd_r − (ℓd_r − 1)]·ε₁ − ℓ(D′−1)ε₀
+      = (κ₂ − T₂) + ε₁ − ℓ(D′−1)ε₀
+      = (κ₂ − T₂) + ℓ(λ − D′h) + ℓD′ε₀ − ℓ(D′−1)ε₀     [by (S5.2), ε₀ > 0]
+      = (κ₂ − T₂) + ℓ(λ − D′h) + ℓ·ε₀   > 0 ,
+
+and in the two remaining cases: ε₀ = 0 < ε₁ gives (κ₂−T₂) + ε₁ > 0; and
+ε₀ = ε₁ = 0 (i.e. δ ≥ λ with ξ not a level-2 point) gives (κ₂−T₂) > 0. In
+every case (S5.1) is STRICT. Hence every root of Ψ₂ is a level-2 point.
+
+**Step 2 (the height and the residue).** Now (SLOT₂) applies at ξ:
+dv₂(C_t(ξ)) = (d₂−t)u₂ exactly, and the term t of Ψ₂(ξ) has
+dv₂ = (d₂−t)u₂ + ℓ₂tδ₂ = ℓ₂[(d₂−t)κ₂ + tδ₂]. If δ₂ > κ₂ the minimum is
+attained only at t = 0, if δ₂ < κ₂ only at t = d₂; either way
+dv₂(Ψ₂(ξ)) < ∞, contradicting Ψ₂(ξ) = 0. So δ₂ = κ₂. Then every term has
+dv₂ = ℓ₂d₂κ₂; dividing by n₂(d₂u₂)(ξ) and collecting, term t becomes
+[C_t(ξ)/n₂((d₂−t)u₂)(ξ)]·[Ψ(ξ)^{ℓ₂}/n₂(u₂)(ξ)]^{t}·τ_t with
+res(τ_t) = β_ξ^{c_t} the explicit twist of §S1, so
+
+    0 = res( Ψ₂(ξ)/n₂(d₂u₂)(ξ) )
+      = Σ_t ι_ξ^{(2)}( c_{2,t}·β^{c_{d₂}−c_t}·β^{c_t} )·β₂,ξ^{t}
+      = ι_ξ^{(2)}( β^{c_{d₂}} )·ι_ξ^{(2)}(r₂)(β₂,ξ) ,
+
+the middle step by DEFINITION HE7-3's **inverse-twisted** prescription; since
+β^{c_{d₂}} ≠ 0, ι_ξ^{(2)}(r₂)(β₂,ξ) = 0. ∎
+
+**Remark (the inverse twist is load-bearing, and the machine found it).** An
+earlier draft of DEFINITION HE7-3 prescribed res(C_t) = c_{2,t} outright. That
+builds the test polynomial of the TWISTED residual Σ_tc_{2,t}β^{c_t}Z^t
+instead of r₂ — and the twisted polynomial need not be irreducible, so its
+roots can carry the node's own label and the flat identity of LEMMA HE7-9
+acquires a spurious excess. The battery's HE7-GEN2 leg registered exactly
+that (excess 4 at ℤ_5, s = 2, κ₂ = 21/2 with r₂ of degree 2: measured 340 vs
+flat 336) and vanished on the corrected definition. At s = 1 — HE6's own
+configuration, where β = s = 1 — the twist is invisible, which is why no
+earlier unit of this program could have seen it.
+
+**Remark (this is the only place where a NEW inequality was needed).** HE6's
+Step 1 had one offset (ε = h − dv(ξ)); at level 2 there are two (ε₀ and ε₁),
+and the estimate closes because the GAIN's coefficient on each offset exceeds
+the DEFICIT's: ℓd_r vs ℓd_r − 1 on ε₁, and ℓD′ vs ℓ(D′−1) on ε₀. That
+pattern is exactly what makes the general induction of §S6 go through.
+
+### S5.4 The two evaluation displays (HE6-2, HE6-2′ one level up)
+
+> **LEMMA HE7-7′.** (a) For any level-2 point ξ with δ₂ := dv₂(Ψ(ξ)) and
+> β₂ := res(Ψ(ξ)^{ℓ₂}/n₂(u₂)(ξ)) when defined,
+> dv₂(Ψ₂(ξ)) = ℓ₂d₂·min(δ₂, κ₂) + ε₂(ξ) with ε₂(ξ) > 0 ⟺ δ₂ = κ₂ and
+> ι_ξ^{(2)}(r₂)(β₂) = 0. (b) For any level-2 point ξ with dv₂(Ψ(ξ)) = κ₂,
+> dv₂(f_S(ξ)) = h_{F₂}(κ₂) + δ(ξ) where h_{F₂}(κ₂) := min_j(dv₂(A_j^{(2)}) +
+> jκ₂) and δ(ξ) > 0 ⟺ κ₂ is a slope λ₂ of P₂ and ι_ξ^{(2)}(R_{λ₂})(β₂) = 0.
+
+*Proof.* Verbatim HE6 §S4 with (SLOT₂) in place of the SLOT LEMMA, dv₂ in
+place of dv, n₂ in place of ϖ-powers, and the twist of §S1 carried through
+the residual assembly exactly as in Step 2 above. The only clause needing a
+word: in (b) the attaining j on a λ₂-line satisfy j ≡ j₁ (mod ℓ₂) because
+the line height m₁ − λ₂(j−j₁) is an integer only then — same congruence
+argument, with gcd(u₂, ℓ₂) = 1. ∎ *(Transfers; no new inequality.)*
+
+> **COROLLARY HE7-7″ [r1] (the level-2 label of a root; HE6-2″ one level up).**
+> **Assume Ψ ∤ f_S** (§S1 CONVENTION [r1]; this is the hypothesis FINDING
+> HE6R1-F2 found missing — at a root ρ with Ψ(ρ) = 0 one has
+> dv₂(Ψ(ρ)) = ∞, which is a slope of nothing, and the corollary's conclusion
+> is simply false for that ρ; peel by LEMMA HE6R1-3 first).
+> For ρ a root of f_S, dv₂(f_S(ρ)) = ∞ forces the excess in HE7-7′(b) to be
+> infinite, hence **λ₂(ρ) := dv₂(Ψ(ρ)) is a slope of P₂ and
+> ι_ρ^{(2)}(R_{λ₂})(β₂,ρ) = 0** — the level-2 label of ρ, well defined
+> because R_{λ₂} is a fixed element of K₂[Z] once the n₂ convention is fixed.
+> This is what makes the classes S_{λ₂,r₂} of THEOREM HE7.A(2) partition the
+> slope's roots when R_{λ₂} is separable.
+
+### S5.5 The block factor: reducing the general case to "the block is
+### everything"
+
+> **LEMMA HE7-6 (the block factor).** S = S_{λ,r} is the root set of a monic
+> factor f_S ∈ O[x] of f, and D″ | deg f_S.
+
+*Proof.* Every root of f has a well-defined level-1 label (COROLLARY
+HE6-2″), and S is the set of roots with label (λ, r); S is Galois-stable
+(LEMMA HE6-5). Hence f_S := Π_{ρ∈S}(x − ρ) has coefficients fixed by
+Gal(K̄₀/K₀), i.e. in K₀, and integral over O (each ρ has v(ρ) = h/e₁ ≥ 0),
+so f_S ∈ O[x] since O is integrally closed; f_S | f because f is separable
+(disc f ≠ 0) and its roots are simple. For the divisibility: each Galois
+orbit inside S has size [L_ρ:K₀] = e(L_ρ)f(L_ρ), and e₁ℓ | e(L_ρ),
+f₁d_r | f(L_ρ) (LEMMA HE6-0′), so D″ = (e₁ℓ)(f₁d_r) divides every orbit
+size, hence divides deg f_S. ∎
+
+Consequently we may and do run all level-2 lemmas on **f_S** rather than f:
+then every root of the polynomial under consideration is a level-2 point,
+f_S = Ψ^{μ₂} + Σ_{j<μ₂}A_j^{(2)}Ψ^{j} has top Ψ-coefficient 1 (monic by
+monic), and the level-2 configuration is *structurally identical* to the
+level-1 one (where f = Φ′^{μ} + … had top coefficient 1). This is what
+removes the "principal part" bookkeeping that a general Montes-style
+treatment needs; it is also the step that HE3's stage-CS route could not
+take, because there the inner object was the resolvent over R, whose roots
+are not roots of f. **Here f_S's roots ARE roots of f, so class sizes
+transport by construction.**
+
+**[r1] TWO ADDITIONS THE RECONCILIATION SUPPLIES AT THIS EXACT STEP.**
+*(a) The stratum this reduction silently excluded (FINDING HE6R1-F2).* The
+sentence "every root of the polynomial under consideration is a level-2 point"
+is true, but a root ρ with Ψ(ρ) = 0 is a level-2 point with dv₂(Ψ(ρ)) = ∞: the
+Ψ-development then has A₀^{(2)} = 0, P₂ loses its j = 0 pin, and
+Σ_{λ₂}L_{λ₂} = μ₂ (THEOREM HE7.A(1)) fails by the missing block. The §S1
+CONVENTION [r1] excludes it and **LEMMA HE6R1-3** disposes of it: Ψ is then
+irreducible over O of degree D″ with (e, f) = (e₁ℓ, f₁d_r), a simple factor,
+and one peels f_S = Ψ·f_S′ once, running everything on f_S′ at μ₂ − 1.
+*(b) How the level-2 read STARTS when the block is PROPER (LEMMA HE6R1-2).*
+This subsection reduces to f_S but does not exhibit it: at a non-separable
+R_λ the HE6.A sandwich leaves slack D′ℓΣ_r(m_r−1)d_r, so deg f_S — hence
+μ₂ = deg f_S/D″ — is not pinned by HE6 + HE7 alone (first live at μ ≥ 5, i.e.
+n ≥ 10, inside COROLLARY HE7.B(i)'s region). **LEMMA HE6R1-2** closes it:
+with g := f/f_S one has r ∤ R_λ^{(g)}, hence dv₂(g(ξ)) = c_g is CONSTANT over
+level-2 points, hence h_{F₂,f}(κ₂) = h_{F₂,f_S}(κ₂) + c_g for every rational
+κ₂ > T₂ — so the > T₂ part of P₂(f) is P₂(f_S) translated: same breakpoints,
+slopes and lengths, giving μ₂ = Σ_{λ₂ > T₂}L_{λ₂}(f) and |S_{λ,r}| = D″μ₂
+**read off f**, with R_{λ₂}^{f} and R_{λ₂}^{f_S} of equal degree and equal
+radical (equal outright when separable). Every consumer below may therefore
+take μ₂, the level-2 sides and the residual from f itself.
+
+### S5.6 Slope counts and nonemptiness (HE6-3, HE6-4 one level up)
+
+> **LEMMA HE7-9 (level-2 slope counts, (SEP)-free).** With
+> n_{λ₂} := #{ρ : f_S(ρ) = 0, dv₂(Ψ(ρ)) = λ₂}: (a) P₂ has no slope ≤ T₂;
+> (b) n_{λ₂} = D″·L_{λ₂} for every slope λ₂ of P₂.
+>
+> **LEMMA HE7-10 (level-2 nonemptiness).** For every slope λ₂ of P₂ and every
+> monic irreducible r₂ | R_{λ₂}, the class S_{λ₂,r₂} is NONEMPTY.
+
+*Proof.* The resultant symmetry
+Σ_{ρ}dv₂(g(ρ)) = e₁ℓ·v(±Res(f_S, g)) = Σ_{ξ:g(ξ)=0}dv₂(f_S(ξ)) holds for
+monic g ∈ O[x] because dv₂ = e₁ℓ·v is a positive multiple of v (**(RES₂)**).
+Fix r₂,₀ ∈ K₂[Z] irreducible of degree μ₂+1 (finite fields have
+irreducibles of every degree; deg r₂,₀ > μ₂ ≥ deg R_{λ₂} for every side, so
+r₂,₀ never divides a level-2 residual, and r₂,₀(0) ≠ 0). For each rational
+κ₂ > T₂ form Ψ₂ := Ψ₂,{κ₂,r₂,₀} (DEFINITION HE7-3, available by (LIFT₂) —
+§S4.3). Then LEMMA HE7-7 gives, for every root ξ of Ψ₂,
+dv₂(Ψ(ξ)) = κ₂ and ι^{(2)}(r₂,₀)(β₂) = 0, so LEMMA HE7-7′(b) gives
+dv₂(f_S(ξ)) = h_{F₂}(κ₂) exactly (no excess: β₂'s minimal polynomial over
+ι^{(2)}(K₂) has degree > deg R_{λ₂}); and LEMMA HE7-7′(a) gives
+dv₂(Ψ₂(ρ)) = ℓ₂(μ₂+1)·min(λ₂(ρ), κ₂) for every root ρ of f_S. Hence for
+every rational κ₂ > T₂
+
+    (†₂-count)   Σ_{λ₂} n_{λ₂}·min(λ₂, κ₂) = D″·h_{F₂}(κ₂)
+                                            = D″·Σ_{λ₂}L_{λ₂}·min(λ₂, κ₂),
+
+the last step being HE3-3's convex duality (★), valid verbatim at rational
+κ₂. Both clauses now follow by HE6-3's own argument: sampling κ₂ in
+(T₂, λ₂,min) forces the constant term to vanish and kills every slope ≤ T₂
+(clause (a)); sampling κ₂ in each gap (λ₂,i, λ₂,i+1) — always nonempty in ℚ —
+and eliminating from the largest slope down gives n_{λ₂} = D″L_{λ₂}
+(clause (b)). For LEMMA HE7-10, take Ψ₂ := Ψ₂,{λ₂,r₂} with r₂ | R_{λ₂}: the
+ξ-side of (RES₂) is now **strictly** greater than deg(Ψ₂)·h_{F₂}(λ₂) (every
+root ξ has ι^{(2)}(R_{λ₂})(β₂) = 0, so LEMMA HE7-7′(b) gives strict excess),
+while the ρ-side equals deg(Ψ₂)·h_{F₂}(λ₂) + Σ_{ρ∈S_{λ₂,r₂}}ε₂(ρ) by
+LEMMA HE7-7′(a) + LEMMA HE7-9 + (★). Comparing, the sum over S_{λ₂,r₂} is
+positive with every term positive, so the set is nonempty. ∎
+*(Transfers verbatim; the ONLY inputs beyond HE6's own §S5 are (SLOT₂),
+(LIFT₂), LEMMA HE7-6 and (RES₂).)*
+
+### S5.7 Galois equivariance and the class-size theorem (HE6-5, HE6.A)
+
+> **LEMMA HE7-11.** For g ∈ Gal(K̄₀/K₀) and ρ ∈ S with level-2 label
+> (λ₂, r₂), the root gρ has level-2 label (λ₂, r₂) — the same r₂ ∈ K₂[Z].
+
+*Proof.* Ψ ∈ O[x] and each n₂(k) is a Laurent monomial in ϖ and Φ′, all with
+g-fixed coefficients; v is g-invariant. So dv₂(Ψ(gρ)) = λ₂ and
+β₂,gρ = ḡ(β₂,ρ) with ḡ ∈ Gal(k̄/F_Q) the induced residue automorphism. By
+LEMMA HE6-5, ι_{gρ} = ḡ∘ι_ρ; since β_{gρ} = ḡ(β_ρ), also
+**ι^{(2)}_{gρ} = ḡ∘ι^{(2)}_ρ** (both are the ι_{gρ}-semilinear embedding
+K₂ → k̄ sending β ↦ β_{gρ}). Hence
+ι^{(2)}_{gρ}(r₂)(β₂,gρ) = ḡ(ι^{(2)}_ρ(r₂)(β₂,ρ)) = 0. ∎
+
+*Proof of THEOREM HE7.A(1)(2).* (1) is LEMMA HE7-9(a) plus
+Σ_{λ₂}n_{λ₂} = deg f_S = D″μ₂ with n_{λ₂} = D″L_{λ₂}. (2) is HE6 §S6.2
+verbatim with the substitution: the classes S_{λ₂,r₂} partition the slope's
+roots (R_{λ₂} separable), Σ_{r₂}|S_{λ₂,r₂}| = n_{λ₂} = D″L_{λ₂} =
+Σ_{r₂}D″ℓ₂deg r₂; each class is nonempty (LEMMA HE7-10) and Galois-stable
+(LEMMA HE7-11) with every member of degree ≥ D″ℓ₂deg r₂ over K₀ (LEMMA
+HE7-5), so |S_{λ₂,r₂}| ≥ D″ℓ₂deg r₂; the sandwich forces equality, each
+class is a single Galois orbit, i.e. the root set of one monic irreducible
+factor of f_S (hence of f) of that degree; and e ≥ e₁ℓℓ₂, f ≥ f₁d_rd_{r₂}
+with ef = D″ℓ₂d_{r₂} = (e₁ℓℓ₂)(f₁d_rd_{r₂}) forces equality on both. ∎
+
+### S5.8 [r2, HE7-PE1 F-1] The refined-key package (SLOT-DOMINATION), and
+### the strict slope increase along the refine chain
+
+The pre-r2 text applied THEOREM HE7.A and the §S5 package to the REFINED
+key Ψ − w after an α-refine (HE7.A(3), §S8 row 5, inside LEMMA HE7-8's
+hypothesis) without a displayed lemma: Ψ − w is not of DEFINITION HE6-1's
+form, and §S5's proofs cite HE6-1/HE6-2 for the literal family Ψ_{κ,r}.
+The two lemmas below close that gap. The mechanism is **slot domination**:
+every occupied Φ′-slot of Ψ sits at slot value exactly T₂ (DEFINITION
+HE6-1: the slot s = ℓt carries dv(B_t) = (d_r−t)u, so its value is
+ℓ(d_r−t)u + ℓtu = T₂, and the monic top slot ℓd_r has value ℓd_r·u = T₂),
+while every occupied slot of the refine increment w sits at value
+≥ dv₂(w) > T₂ — strictly above the line.
+
+> **LEMMA HE7-12 [r2] (SLOT-DOMINATION — the §S5 package survives every
+> above-the-line perturbation of the key).** Let (λ, r) be a level-2 datum
+> with key Ψ (DEFINITION HE7-1), and let w ∈ O[x], w ≠ 0, with deg w < D″
+> and level-2 slot value ν := dv₂(w) = min_{s<ℓd_r}(ℓ·dv(c_s) + s·u) > T₂
+> (w = Σ_s c_sΦ′^{s} its Φ′-development). Put Ψ^{(w)} := Ψ − w, monic of
+> degree D″. Then, **with the level-2 point set of DEFINITION HE7-1
+> unchanged** (it is defined by level-1 data, not by the key):
+>
+> (a) *(off-disk invariance)* for every ξ ∈ K̄₀ that is NOT a level-2
+> point, with δ := dv(Φ′(ξ)), ε₀ := (h − dv ξ)⁺, ε₁ := (u − ℓδ)⁺,
+>
+>     dv₂(w(ξ)) − dv₂(Ψ(ξ)) ≥ (ν − T₂) + ε₁ − ℓ(D′−1)ε₀ > 0 ,      (S5.8.1)
+>
+> hence dv₂(Ψ^{(w)}(ξ)) = dv₂(Ψ(ξ)) = ℓ²d_r·min(δ, λ) = T₂ − ℓd_r·ε₁ —
+> the SAME off-disk value formula as LEMMA HE7-4's;
+>
+> (b) *(on-disk)* at every level-2 point ξ, dv₂(w(ξ)) = ν exactly with
+> residue res(w(ξ)/n₂(ν)(ξ)) = ι_ξ^{(2)}(c_w) for a fixed c_w ∈ K₂^×
+> independent of ξ ((SLOT₂) applied to w), and dv₂(Ψ^{(w)}(ξ)) > T₂; with
+> (a): **dv₂(Ψ^{(w)}(ξ)) > T₂ iff ξ is a level-2 point** — the disk
+> criterion holds for Ψ^{(w)};
+>
+> (c) *(the package)* every statement of §S5 and THEOREM HE7.A(1)(2) —
+> LEMMA HE7-4 (in the form (a)+(b)), LEMMA HE7-5, DEFINITION HE7-3's test
+> family, LEMMA HE7-7, LEMMA HE7-7′, COROLLARY HE7-7″, LEMMA HE7-6,
+> LEMMA HE7-9, LEMMA HE7-10, LEMMA HE7-11, the class-size sandwich, the
+> §S1 CONVENTION with LEMMA HE6R1-3's peel, and LEMMA HE6R1-2's read —
+> holds VERBATIM with Ψ^{(w)} in place of Ψ (same λ, r, dv₂, n₂, K₂, T₂,
+> ι^{(2)}; labels and residues now read on Ψ^{(w)}), by the SAME proofs;
+>
+> (d) *(chains fold into one application)* if w₁, …, w_j each have degree
+> < D″ and slot value > T₂ then W := w₁ + ⋯ + w_j has deg W < D″ and
+> dv₂(W) ≥ min_i dv₂(w_i) > T₂ (the slot-min is ultrametric slotwise), so
+> every iterate Ψ − W of a refine chain is covered by ONE instance of
+> (a)–(c). **[r3, HE7-PE2 F-1]** (a)–(c) also hypothesize **W ≠ 0**, and
+> (d) supplies it: in a refine chain the values dv₂(w_i) are pairwise
+> DISTINCT (they are the strictly increasing slopes λ₂^{(0)} < λ₂^{(1)} <
+> ⋯ of LEMMA HE7-13, inductively available at each step — the two lemmas
+> induct together along the chain, the base W = w₁ being a single nonzero
+> (LIFT₂) polynomial), so the slot-min is attained by the least-slope
+> increment ALONE and dv₂(W) = min_i dv₂(w_i) < ∞ EXACTLY (ultrametric
+> equality at a uniquely attained min), whence W ≠ 0. And at W = 0
+> (excluded in a chain by the above, but allowed by the ≥-bound alone)
+> the iterate is Ψ itself and §S5 applies directly — exactly the
+> "W = 0 or as in LEMMA HE7-12(d)" split that LEMMA HE7-13's statement
+> already makes.
+
+*Proof.* **(a).** By (SLOT₂)(c), dv₂(w(ξ)) ≥ min_s(ℓ·dv_ξ(c_s) + s·ℓδ).
+Each level-1 coefficient loses at most (D′−1)ε₀: dv_ξ(c) =
+min_i(e₁v(c_i) + i·dv ξ) ≥ min_i(e₁v(c_i) + ih) − (D′−1)(h − dv ξ)⁺ =
+dv(c) − (D′−1)ε₀ (i ≤ D′−1; if dv ξ ≥ h there is no loss). Each slot
+factor loses at most (ℓd_r−1)ε₁: s·ℓδ = su − s(u − ℓδ) ≥ su − (ℓd_r−1)ε₁
+(s ≤ ℓd_r−1; if ℓδ ≥ u there is no loss). Hence
+
+    dv₂(w(ξ)) ≥ ν − (ℓd_r − 1)ε₁ − ℓ(D′−1)ε₀ .
+
+For Ψ, LEMMA HE7-4 at a non-level-2 point gives ε(ξ) = 0, so
+dv₂(Ψ(ξ)) = ℓ²d_r·min(δ, λ) = ℓd_r·min(ℓδ, u) = ℓd_r(u − ε₁) =
+T₂ − ℓd_r·ε₁ (also when ε₁ = 0, where it is T₂). Subtracting gives
+(S5.8.1)'s displayed bound. Positivity, by the case split of (S5.2) [r2]
+on ε₁ at ε₀ = 0: if ε₀ > 0 then LEMMA HE6-0 gives δ = D′(h − ε₀), so
+ε₁ = ℓ(λ − D′h) + ℓD′ε₀ and ε₁ − ℓ(D′−1)ε₀ = ℓ(λ − D′h) + ℓε₀ > 0; if
+ε₀ = 0 and ε₁ > 0 the bound is (ν − T₂) + ε₁ > 0; if ε₀ = ε₁ = 0 it is
+ν − T₂ > 0. In every case dv₂(w(ξ)) > dv₂(Ψ(ξ)), so the ultrametric gives
+dv₂(Ψ^{(w)}(ξ)) = dv₂(Ψ(ξ)) exactly.
+
+**(b).** (SLOT₂) applies to w (deg w < D″, w ≠ 0): dv₂(w(ξ)) = ν exactly
+with the stated residue, ν > T₂; and dv₂(Ψ(ξ)) > T₂ (LEMMA HE7-4), so
+dv₂(Ψ^{(w)}(ξ)) ≥ min(dv₂(Ψ(ξ)), ν) > T₂.
+
+**(c)** is an audit of every use the §S3–S5 proofs make of the key.
+(1) (SLOT₂)/(LIFT₂) never mention Ψ — they are statements about C ∈ O[x]
+with deg C < D″, the Φ′-slots and the level-2 points, all key-free.
+(2) DEFINITION HE7-3's test family is built from (LIFT₂)-coefficients C_t
+(functions of Φ′ and ϖ only, unchanged) and powers of the key; replace
+Ψ by Ψ^{(w)} throughout. (3) LEMMA HE7-4 for Ψ^{(w)} is exactly (a)+(b) —
+and these two clauses (the off-disk value formula and the disk criterion)
+are the only two facts §S5 ever consumes from HE7-4. (4) LEMMA HE7-5's
+proof uses only v(Ψ(ρ)) ∈ (1/e(L_ρ))ℤ and the unit residue of
+Ψ(ρ)^{ℓ₂}/n₂(u₂)(ρ) — no property of the key's form; run it on Ψ^{(w)}
+verbatim. (5) LEMMA HE7-7 Step 1's estimate (S5.3) is about the C_t
+(unchanged); the key enters only through δ₂ := dv₂(key(ξ)) and its
+off-disk formula δ₂ = T₂ − ℓd_r·ε₁, supplied by (a); Step 2 consumes
+(SLOT₂) at the C_t, the n₂-twist algebra (key-free) and the δ₂ ⋚ κ₂
+dichotomy — verbatim. (6) LEMMA HE7-7′/COROLLARY HE7-7″: the developments
+in powers of the monic degree-D″ polynomial Ψ^{(w)} have coefficients of
+degree < D″, so (SLOT₂) applies to them; the congruence argument uses
+gcd(u₂, ℓ₂) = 1 only. (7) LEMMA HE7-6 is about level-1 labels — key-free;
+LEMMA HE6R1-2's read consumes only the HE7-7/7′ analogues, items (5)–(6).
+(8) LEMMA HE7-9/HE7-10 consume (RES₂) (key-free), the test family at
+Ψ^{(w)} (item 2), items (5)–(6), (★), and an irreducible r₂,₀ of degree
+μ₂+1 (key-free). (9) LEMMA HE7-11 needs only Ψ^{(w)} ∈ O[x] with
+Galois-fixed coefficients and g-fixed n₂ — both hold. (10) The class-size
+sandwich composes (4), (8), (9) as in §S5.7. (11) The §S1 CONVENTION and
+the peel at Ψ^{(w)}: LEMMA HE6R1-3's proof needs "every root of the key
+is a level-2 point" — a root ξ of Ψ^{(w)} has dv₂(Ψ^{(w)}(ξ)) = ∞ > T₂,
+so ξ is a level-2 point by (b)'s disk criterion; Galois stability,
+integral closedness of O and disc ≠ 0 are key-free; and deg Ψ^{(w)} = D″
+with e ≥ e₁ℓ, f ≥ f₁d_r forces (e, f) = (e₁ℓ, f₁d_r) by the same
+sandwich.
+
+**(d).** The Φ′-development of a sum is the sum of the developments, and
+on each level-1 coefficient dv is ultrametric, so each slot value of W is
+≥ the min of the w_i's slot values at that slot; taking mins,
+dv₂(W) ≥ min_i dv₂(w_i) > T₂. ∎
+
+> **LEMMA HE7-13 [r2] (the strict slope increase along the refine chain —
+> DERIVED, not assumed).** Let Ψ̃ = Ψ − W with W = 0 or as in LEMMA
+> HE7-12(d), let f_S satisfy the standing convention at Ψ̃ (Ψ̃ ∤ f_S), and
+> suppose the polygon of f_S with respect to Ψ̃ is the single side of
+> integer slope λ₂ > T₂ with residual R₂ = (Z − s₂)^{μ₂}, s₂ ∈ K₂^×
+> (the α-refine configuration: ℓ₂ = 1, the endpoint j = 0 attains, so
+> s₂ ≠ 0). Let w be a (LIFT₂) polynomial at height λ₂ with residue s₂
+> (it exists: λ₂ > T₂ satisfies (‡₂) by §S4.3) and Ψ̃^{(1)} := Ψ̃ − w.
+> Then EVERY root ρ of f_S has
+>
+>     dv₂(Ψ̃^{(1)}(ρ)) > λ₂    (possibly = ∞) ,                     (S5.8.2)
+>
+> and hence every slope of the polygon of f_S with respect to Ψ̃^{(1)}
+> (after the peel of LEMMA HE6R1-3 at Ψ̃^{(1)}, if it fires) is > λ₂. In
+> particular, along any α-refine chain of the read the slopes satisfy
+> λ₂^{(0)} < λ₂^{(1)} < ⋯ strictly — LEMMA HE7-8's hypothesis is the
+> read's actual configuration, derived.
+
+*Proof.* By the package at Ψ̃ (LEMMA HE7-12(c); §S5 itself when W = 0),
+every root ρ of f_S is a level-2 point carrying a label on Ψ̃. The single
+side has length μ₂, so LEMMA HE7-9(b) at Ψ̃ gives n_{λ₂} = D″L_{λ₂} =
+D″μ₂ = deg f_S: EVERY root ρ has dv₂(Ψ̃(ρ)) = λ₂, and COROLLARY HE7-7″ at
+Ψ̃ gives ι_ρ^{(2)}(R₂)(β₂,ρ) = 0 with β₂,ρ = res(Ψ̃(ρ)/n₂(λ₂)(ρ)) (ℓ₂ = 1,
+u₂ = λ₂). Since R₂ = (Z − s₂)^{μ₂} has the single root s₂,
+β₂,ρ = ι_ρ^{(2)}(s₂). By (LIFT₂)'s defining clause, dv₂(w(ρ)) = λ₂ with
+res(w(ρ)/n₂(λ₂)(ρ)) = ι_ρ^{(2)}(s₂). So Ψ̃^{(1)}(ρ) = Ψ̃(ρ) − w(ρ) is a
+difference of two elements of the same dv₂ and the SAME residue, whence
+(S5.8.2). For the polygon: dv₂(W + w) ≥ min(dv₂(W), λ₂) > T₂ (LEMMA
+HE7-12(d)), so the package holds at Ψ̃^{(1)}, and LEMMA HE7-9(b) at
+Ψ̃^{(1)} says each slope λ₂′ of the new polygon carries D″L_{λ₂′} > 0
+roots with dv₂(Ψ̃^{(1)}(ρ)) = λ₂′; by (S5.8.2) every such λ₂′ > λ₂. If
+instead Ψ̃^{(1)} | f_S, the peel (available at Ψ̃^{(1)} by LEMMA
+HE7-12(c) item 11) removes one factor Ψ̃^{(1)} and shifts the development
+by one block (§S5.5), leaving the same conclusion for f_S′. ∎
+
+**Machine confirmation (additive leg `he7r2_supp.py`, §S11 [r2]).** On ALL
+42 refine-path members of the sealed enumeration (re-generated
+member-for-member; the frozen artifact's refine histograms sum to 42):
+slot geometry — Ψ's occupied slots all at exactly T₂, w's slot-min exactly
+λ₂ > T₂ — 42/42; the off-disk inequality (S5.8.1) and invariance
+conclusion, in resultant-sum form on five off-disk strata covering all
+three offset cases (δ = ∞; δ > λ; δ ∈ (D′h, λ) — the (S5.2) [r2] middle
+band, ε₁ = 1/2; ε₀ = 1; δ = λ with wrong residue) — 210/210 ([r3]: the
+δ = ∞ INEQUALITY half is vacuous on 41 of the 42 — Φ′ | w at odd λ₂;
+invariance still checked on all — see §S11's [r3] disclosure); the strict
+slope increase (S5.8.2) with dv₂-resultants (pre-refine
+Σ_ρ dv₂(Ψ(ρ)) = 8λ₂ exactly, post-refine strictly greater) AND the
+LEMMA HE7-9(b) count identity Σ_ρ dv₂(Ψ^{(1)}(ρ)) = D″·Σ L·λ₂′ **at the
+refined key** — 42/42; 0 violations. Two concrete configurations (ℤ₃,
+s = 1, λ = 5/2, T₂ = 10, λ₂ = 11, s₂ = 1): Ψ's occupied slots
+{(s=0, 10), (s=2, 10)}, w's single slot (s=1, 11); member A:
+Σ dv₂(Ψ(ρ)) = 88 = 8·11 → Σ dv₂(Ψ^{(1)}(ρ)) = 92 = 4·(2·23/2), new slope
+23/2 > 11; member B: 88 → 96 = 4·(2·12), new slope 12 > 11.
+
+---
+
+## S6. THE LADDER AT EVERY LEVEL (THEOREM HE7.D)
+
+> **DEFINITION HE7-2 (level datum, and the level recursion).** A level-i
+> datum is a tuple 𝔇_i = (Φ_i, D_i, w_i, ℓ_i, g_i, u_i, K_i, K_{i+1}, 𝒫_i)
+> with Φ_i ∈ O[x] monic of degree D_i, w_i = c_i·v a positive rational
+> multiple of v (integer-valued on the relevant elements), ℓ_i ≥ 1, g_i ≥ 1,
+> u_i ∈ ℤ with gcd(u_i, ℓ_i) = 1, finite fields K_i ⊆ K_{i+1} with
+> [K_{i+1} : K_i] = g_i, a set 𝒫_i ⊆ K̄₀ of level-i points, and
+>
+>     L_i := ℓ_i g_i ,   D_{i+1} := D_i L_i ,   w_{i+1} := ℓ_i·w_i ,
+>     λ_i := u_i/ℓ_i ,   T_{i+1} := L_i·u_i ,   Φ_{i+1} := key of DEF HE7-3,
+>     n_{i+1}(k) := n_i(m)·Φ_i^{s}  with ℓ_i m + s u_i = k, 0 ≤ s < ℓ_i,
+>     𝒫_{i+1} := { ξ ∈ 𝒫_i : w_{i+1}(Φ_i(ξ)) = u_i, ι^{(i)}_ξ(r_i)(β_{i,ξ}) = 0 },
+>
+> subject to the **node condition λ_i > T_i** (for i ≥ 1) and r_i ∈ K_i[Z]
+> monic irreducible of degree g_i. The level-0 datum is
+> 𝔇_0 = (x, 1, v, e₁, f₁, h, F_Q, K, K̄₀) with T_0 := 0, and then D_1 = D′,
+> w_1 = dv, T_1 = D′h, n_1 = ϖ-powers: **level 1 is HE6's frame, level 2 is
+> §S1's.**
+
+> **THEOREM HE7.D.** At every level i ≥ 0 the following hold, with the proofs
+> of §S3–S5 read through DEFINITION HE7-2:
+> (SLOT_i) the slot-min at level i+1 is exact with nonzero residue in K_{i+1};
+> (LIFT_i) surjectivity above bound_{i+1} = (L_i − 1)u_i + ℓ_i·bound_i
+> (bound_0 = 0); the disk criterion; both evaluation displays; the block
+> factor; the slope counts; nonemptiness; Galois equivariance; and the
+> class-size theorem with
+>
+>     e = e₁·ℓ_1···ℓ_i·ℓ_{i+1} ,      f = f₁·g_1···g_i·g_{i+1} .
+
+*Proof (the inductive step).* Assume the package at levels ≤ i.
+
+**(SLOT).** §S3 verbatim: the ℓ_i classes of L_i = ℓ_ig_i slots separate
+because gcd(u_i, ℓ_i) = 1 (Step 2), the g_i within-class residues are
+K_i-independent because r_i is irreducible of degree g_i (Step 3), and the
+term values are exact by (SLOT_{i−1}) at level i (Step 1). Nothing else
+enters.
+
+**(LIFT).** §S4.2 verbatim, with LEMMA HE7-L1 replaced by (LIFT_{i−1}): the
+within-class heights are m₀ − t·u_i for t < g_i, and each needs a level-i
+full-residue height, giving bound_{i+1} = (L_i − 1)u_i + ℓ_i·bound_i.
+
+**(the disk criterion, both displays, the block factor, the slope counts,
+nonemptiness, Galois equivariance, the class-size theorem).** §S5.1, S5.4,
+S5.5, S5.6, S5.7 verbatim; each consumes only (SLOT), (LIFT), the ultrametric
+inequality, (RES_i) (a positive multiple of v), (★), the finite-field
+existence of irreducibles of every degree, Galois invariance of v, and
+completeness/integral-closedness of O — all level-independent.
+
+**(the ξ-side, §S5.3).** This is the only step whose inequality must be
+re-derived, and it closes by the following recursion. For arbitrary
+ξ ∈ K̄₀ set δ_j := w_j(Φ_j(ξ)), ε_j := (u_j − ℓ_jδ_j)^{+} and let Δ_j be the
+level-j deficit function, i.e. the largest loss in the level-j slot bound at
+ξ:
+
+    Δ_0 := 0 ,      Δ_{j+1} = (L_j − 1)·ε_j + ℓ_j·Δ_j                  (S6.1)
+
+(this is exactly (S5.3)'s two-term loss at j = 1, and the same estimate at
+every j: s ≤ L_j − 1 costs (L_j−1)ε_j, and each level-j coefficient loses at
+most Δ_j, scaled by ℓ_j when passing from w_j to w_{j+1}). Also, if ξ is not
+a level-(j+1) point then the disk criterion gives
+δ_{j+1} = T_{j+1} − L_j·ε_j when ε_j > 0 and δ_{j+1} ≤ T_{j+1} when ε_j = 0.
+Put ρ_j := ε_j − ℓ_j·Δ_j. Then, exactly as in §S5.3,
+
+    dv-excess of the t < d term over the t = d term
+        ≥ (κ_{i+1} − T_{i+1}) + ρ_i ,                                  (S6.2)
+
+and the recursion (S6.1) plus the node condition λ_j > T_j give
+
+    ρ_j ≥ ℓ_j·[ (λ_j − T_j) + ρ_{j−1} ] ,   ρ_0 = ε_0 ≥ 0 ,            (S6.3)
+
+hence ρ_j ≥ 0 for all j, with ρ_j > 0 as soon as some ε_{j'} > 0
+(j' ≤ j). Since κ_{i+1} > T_{i+1}, (S6.2) is strictly positive in every case,
+so the t = d term is the unique minimum and no root of the level-(i+1) test
+polynomial lies outside the level-(i+1) disk. ∎
+
+**[r1] Both r1 items are level-generic, so the induction carries them.**
+(i) *The convention.* At level i the package is run on the block factor of
+the level-i label class, and it needs **Φ_{i+1} ∤ f_S^{(i)}** for the same
+reason (a root of the key has w_{i+1}(Φ_{i+1}(ρ)) = ∞ and no finite
+level-(i+1) label). LEMMA HE6R1-3's proof uses only: every root of the key is
+a level-(i+1) point, hence D_{i+1} | its local degree (the local forcing,
+LEMMA HE7-5 at level i); Galois stability + integral closedness of O; and
+disc ≠ 0 for simplicity. All three are in the level-i package, so the peel
+exists at every level, drops μ_{i+1} by 1, and fires at most once per level.
+(ii) *The jump condition.* LEMMA HE6R1-1 is stated at every level: a node
+jumps iff its side carries a repeated irreducible r_i with
+**ℓ_i·deg r_i ≥ 2**, the α-refine case being ℓ_i = deg r_i = 1 (where
+**(LIFT_{i−1})** supplies the recentring constant because its residue lies
+in K_i — (LIFT_{i−1})'s residues lie in K_{(i−1)+1} = K_i by THEOREM
+HE7.D's indexing; **[r2, HE7-PE1 F-4]** the pre-r2 text wrote (LIFT_i),
+whose residues lie in K_{i+1}, an off-by-one in the citation only. The
+level-2 instance reads the same after the fix: the level-2 node's refine
+is i = 2, and (LIFT_{i−1}) = (LIFT_1) = (LIFT₂), with residues in K₂,
+exactly as THEOREM HE7.A(3) displays). Nothing in
+§S6's inductive step is sensitive to which of the two branches supplies
+ℓ_i·deg r_i ≥ 2. (iii) *Several distinct repeated factors at one node.* Then
+the classification above is applied **per distinct factor**, each with its own
+block, by LEMMA HE6R1-2 — whose proof likewise consumes only items in the
+per-level package ((LIFT_i), the two evaluation displays, the slope counts,
+nonemptiness, and the level-i analogue of LEMMA HE6-4), so it transfers by the
+substitution table exactly like every other §S5 item. **The level-i
+restatements of HE6R1-1/2/3 are not separately displayed here**; they are
+transfers of the same kind §S6 already performs, and they inherit HE7-BOX-1's
+grade together with the three lemmas themselves.
+
+**Where the ladder's finiteness comes from.** Nothing above bounds i; §S7
+does.
+
+---
+
+## S7. TERMINATION
+
+> **LEMMA HE7-8 ((REF-TERM) — α-refine chains are FINITE, characteristic-free).**
+> Let 𝔇 be a level datum with key Ψ, μ₂ ≥ 2, and suppose the read performs an
+> infinite chain of α-refines, i.e. keys Ψ^{(0)} = Ψ,
+> Ψ^{(j+1)} = Ψ^{(j)} − w_j with dv₂(w_j) = λ₂^{(j)} and
+> λ₂^{(0)} < λ₂^{(1)} < ⋯ **integers** (an α-refine happens only at ℓ₂ = 1,
+> where the slope is an integer, so a strictly increasing chain of slopes
+> tends to ∞), each step at a node whose polygon is the single side of length
+> μ₂ with residual (Z − s_j)^{μ₂}. Then f_S is a perfect μ₂-th power in
+> O[x] — contradicting disc f_S ≠ 0. Hence every α-refine chain is finite.
+> **The argument needs no "binomial kill"** (GENHN-4/GENHN.A(iv)): the node
+> condition dv₂(A_m^{(2,j)}) ≥ (μ₂−m)λ₂^{(j)} at each step, plus
+> λ₂^{(j)} → ∞, is all that is used.
+> **[r2, HE7-PE1 F-1] The hypothesis set is the read's ACTUAL
+> configuration, derived rather than presumed:** the polygon and residual
+> of f_S at every iterate Ψ^{(j)} are well defined and read by the §S5
+> package at the refined key — LEMMA HE7-12 (§S5.8) applies with
+> W = w_0 + ⋯ + w_{j−1}, dv₂(W) > T₂ — and the strictly increasing slope
+> clause λ₂^{(0)} < λ₂^{(1)} < ⋯ is LEMMA HE7-13, so an infinite chain of
+> the read really has the properties this lemma refutes.
+> **[r3, HE7-PE2 F-2] Peels interleaving the chain:** the sentence above
+> fixes ONE (f_S, μ₂) along the whole chain, but a MID-chain peel (LEMMA
+> HE6R1-3, routed inside LEMMA HE7-13) replaces f_S by f_S′ and drops μ₂
+> by exactly 1 (§S5.5; §S6(i)'s display). Pigeonhole: μ₂ = 1 is decided,
+> so at most μ₂ − 1 peels ever fire, and an infinite chain has an
+> infinite constant-μ₂ tail on a fixed f_S^{(seg)} | f_S (separable, as
+> f_S is) — to which the lemma's argument applies verbatim. At μ₂ = 2,
+> every machine-certified degree, the corner is vacuous: a peel forces
+> μ₂′ = 1 and ENDS the chain (the sealed record's 42 refine firings are
+> all one-step, zero mid-chain peels).
+
+*Proof.* At the node of Ψ^{(j)} the polygon is the single side
+(0, μ₂λ₂^{(j)})–(μ₂, 0), so dv₂(A_m^{(2,j)}) ≥ (μ₂ − m)λ₂^{(j)} for every
+m < μ₂, and after recentering all these values strictly increase; since
+λ₂^{(j)} → ∞, dv₂(A_m^{(2,j)}) → ∞ for every m < μ₂. Now dv₂(A) → ∞ forces
+the Φ′-development coefficients of A, hence its O-coefficients, to converge
+π-adically to 0 (by (SLOT₂): dv₂(A) = min_s(ℓ dv(c_s) + su), so every
+dv(c_s) → ∞, so every v of every O-coefficient → ∞). The partial sums
+W_j := Σ_{j'≤j}w_{j'} therefore converge in the (complete) O-module of
+polynomials of degree < D″ to some W, and Ψ^{(j)} → Ψ − W coefficientwise.
+Passing to the limit in f_S = (Ψ^{(j)})^{μ₂} + Σ_{m<μ₂}A_m^{(2,j)}(Ψ^{(j)})^{m}
+gives f_S = (Ψ − W)^{μ₂} in O[x] (the A-terms vanish in the limit). With
+μ₂ ≥ 2 this makes disc f_S = 0. ∎
+
+*(Note that this argument is uniform in the characteristic — it does not use
+2 ∈ O^×, so it covers the equal-characteristic-2 Artin–Schreier corner where
+the naive "disc = A₁² − 4A₀ is refine-invariant" bound degenerates. That
+corner is the one W-12's r4 repair identified as the program's standard trap;
+it is handled here by completeness rather than by the discriminant.)*
+
+*Proof of THEOREM HE7.C [r1].* A node needs a level jump exactly in
+HE6-BOX-1's WIDENED configuration: a side of slope λ = u/ℓ carrying a repeated
+irreducible residual factor r of **multiplicity m ≥ 2** with
+**ℓ·d_r ≥ 2** (d_r = deg r). *That this is exactly the jump set is the
+four-case enumeration of COROLLARY HE6.B [r1]: a separable residual is decided
+by THEOREM HE6.A at every ℓ; a repeated K-rational linear factor at an integer
+slope (ℓ = d_r = 1) is decided by HE3's stage-α recentering, an α-refine; the
+complement is a repeated irreducible r with ℓ·d_r ≥ 2 — the pre-r1 condition
+"ℓ ≥ 2" dropped its ℓ = 1, d_r ≥ 2 half (FINDING HE6R1-F1). Both displays
+below use only the product ℓ·d_r ≥ 2, so they are unchanged: this is
+LEMMA HE6R1-1.* Then
+
+    μ ≥ L_λ = ℓ·deg R_λ ≥ ℓ·m·d_r = m·(ℓ·d_r) ≥ 2·2 = 4 ,
+
+so **μ ≥ 4** at every jump. The level-2 problem is f_S with
+μ₂ = deg f_S/D″ = |S_{λ,r}|/(D′ℓd_r) ≤ n_λ/(D′ℓd_r) = D′L_λ/(D′ℓd_r) =
+deg R_λ/d_r ≤ μ/(ℓd_r) ≤ μ/2 (LEMMA HE6-3(b) for n_λ = D′L_λ; the
+multiplicity-weighted exact value |S_{λ,r}| = D′ℓ·m·d_r is **not needed** —
+the upper bound suffices). Iterating: if jumps occur at levels 1..J then
+μ_i ≥ 4 for i ≤ J and μ_J ≤ μ/2^{J−1}, so 4 ≤ μ/2^{J−1}, i.e.
+**J ≤ log₂ μ − 1**; with μ ≤ n/D′ ≤ n/2 this is **J ≤ log₂ n − 2**. Every
+non-jump step either strictly decreases μ (a decided split) or is an α-refine
+(finite, LEMMA HE7-8) or terminates the branch (μ = 1: a single irreducible
+factor of the current key's degree, σ read off). Hence the read is a finite
+tree. At n = 8: D′ ≥ 2 and μ ≥ 4 force D′ = 2, μ = 4, so J ≤ 1 and the one
+jump lands at μ₂ ≤ 4/(ℓd_r) = 4/2 = **2** — a level-3 jump would need
+μ₂ ≥ 4, impossible. **[r1]** The "μ₂ ≥ 4" here is the widened condition's own
+bound, re-derived at level 2: a level-3 jump needs a repeated level-2
+irreducible r₂ with m₂ ≥ 2 and ℓ₂·deg r₂ ≥ 2, hence
+L_{λ₂} ≥ m₂(ℓ₂ deg r₂) ≥ 4, hence μ₂ ≥ 4 (THEOREM HE7.A(1)) — so the widening
+does not open a level-3 door at μ₂ ≤ 3, and the mis-stated α-refine branch of
+the pre-r1 HE7.A(3) is likewise vacuous there. The first degree at which J = 2
+is possible is n = D′μ with μ ≥ 8, i.e. **n = 16**. ∎
+
+---
+
+## S8. THE n = 8 CLOSURE (the box's live configurations)
+
+At HE6-BOX-1's first bite — D′ = 2, (e₁,f₁,h) = (2,1,1), Φ′ = x²−π, μ = 4,
+deg f = 8, λ = u/2 with u odd, R_λ = (Z−s)², so ℓ = 2, d_r = 1, m = 2,
+D″ = 4, K₂ = K = F_q, T₂ = 2u — the block is everything (|S| = D′L_λ = 8), so
+f_S = f and μ₂ = 2. THEOREM HE7.C says no level 3 is reachable. THEOREM
+HE7.A therefore decides σ, and the possible level-2 configurations at μ₂ = 2
+are exhaustively:
+
+    level-2 polygon                        (ℓ₂, d_{r₂})   e = 4ℓ₂ , f = d_{r₂}   σ
+    ---------------------------------------------------------------------------------
+    one side, length 2, λ₂ ∉ ℤ             (2, 1)         (8, 1)                 {(8,1)}
+    one side, length 2, λ₂ ∈ ℤ, R₂ inert   (1, 2)         (4, 2)                 {(4,2)}
+    one side, length 2, λ₂ ∈ ℤ, R₂ split   (1, 1)×2       (4,1),(4,1)            {(4,1),(4,1)}
+    two sides of length 1                  (1, 1)×2       (4,1),(4,1)            {(4,1),(4,1)}
+    one side, λ₂ ∈ ℤ, R₂ = (Z−s₂)²         α-refine (LEMMAS HE7-12/13 + HE7-8 [r2]) → one of the above
+    [r1] Ψ | f (A₀^{(2)} = 0, no j = 0 pin) PEEL (LEMMA HE6R1-3): (4,1) ⊔ (4,1) {(4,1),(4,1)}
+
+**[r2, HE7-PE1 F-1] The fifth row's "→ one of the above" is now displayed
+mathematics, not a pointer:** after the refine the four polygon rows (and,
+if Ψ^{(1)} | f, the sixth row's peel) are read AT THE REFINED KEY, which
+LEMMA HE7-12 (§S5.8) licenses — the §S5 package and THEOREM HE7.A(1)(2)
+hold verbatim at Ψ − w since dv₂(w) = λ₂ > T₂ — and the re-read lands at a
+strictly larger slope by LEMMA HE7-13, so the loop terminates (LEMMA
+HE7-8). The sealed battery takes this path on 42 members (all decided,
+§S11 [r2]).
+
+**[r1] THE FIFTH ROW (FINDING HE6R1-F2) — why the exhaustive claim needed it,
+and why the alphabet does not change.** The four polygon rows above all presume
+a finite j = 0 pin, i.e. Ψ ∤ f; the stratum Ψ | f is a fifth case, and it is
+NOT empty at n = 8 (HE7's own sealed battery isolates 8 of 1,587 members there
+as status `DEGENERATE-key-divides`). It is decided by the peel: LEMMA HE6R1-3
+gives Ψ irreducible over O of degree D″ = 4 with
+(e, f) = (e₁ℓ, f₁d_r) = (4, 1), a simple factor, so f = Ψ·f′ with Ψ ∤ f′,
+deg f′ = 4 = D″ and μ₂′ = 1 — and at μ₂′ = 1 every root of f′ is a level-2
+point, so D″ = 4 divides its local degree (LEMMA HE6-0′), forcing f′
+irreducible with (e, f) = (e₁ℓℓ₂, f₁d_r·deg r₂) = (4, 1). Hence
+**σ = {(4,1), (4,1)}**, already the third letter of the table: the three-σ
+alphabet and the "no fourth value possible" claim survive verbatim. Machine
+confirmation in this very frame (additive post-seal leg `he7r1_supp.py`, §S11
+[r1]): 8/8 peels exact with A₁^{(2)} ≠ 0 (one peel only), 8/8 peeled reads
+σ(f′) = {(4,1)}, and PARI `factorpadic` agrees on both halves —
+**2/2 on σ(f) = {(4,1),(4,1)} and 2/2 on σ(Ψ) = {(4,1)}**, the latter a direct
+oracle test of the peel's irreducibility-and-letter claim.
+
+**These three σ are exactly the three values HE6's tooth HE6-T-CASEB
+observed** on members with identical outer data — {(8,1)}, {(4,2)},
+{(4,1),(4,1)} — with no fourth value possible. So the level-2 read is not
+merely *a* deeper read: it is the read whose output alphabet is precisely the
+observed σ-alphabet of the undecided family, and P1 of the battery tests
+that it picks the right letter **member by member against PARI**.
+
+> **THEOREM HE7.A′ [r1] (the bite, unconditionally).** At every member of the
+> n = 8 box configuration with disc f ≠ 0, σ(f) is decided by the level-2
+> read of §S1–S5 — **after one peel (LEMMA HE6R1-3) on the Ψ | f stratum** —
+> with the five-row dictionary above; the argument uses no base
+> change, no irreducibility of Ψ **as a hypothesis** (on the peel stratum
+> irreducibility of Ψ is a CONCLUSION, not an assumption), and no order-≥2
+> citation. In particular HE6-BOX-1's machine-certified live configurations
+> are all decided, the peel stratum included.
+
+**Relation to GENHN.C.** At μ₂ = 2 the level-2 read is a quadratic resolvent
+read, so THEOREM HE7.A′ can equivalently be obtained by re-running GENHN.C's
+§S7 trichotomy one level up. Every input GENHN.C's proof consumes is supplied
+here at level 2: (T1)/(T2) at level 2 = the level-2 point condition +
+LEMMA HE7-5; exact dv of the resolvent coefficients = (SLOT₂); the norm count
+= (RES₂) + LEMMA HE7-9; the one refine step of stage-SPLITEQ = the level-2
+α-refine (LEMMA HE7-8, available by (LIFT₂)). We do not *cite* GENHN.C at
+level 2 — its statement is about a stage over a DVR, and Ψ is not known
+irreducible — we re-derive the same five cases from THEOREM HE7.A. The
+agreement of the two routes is an internal decorrelation, exactly as HE6
+§S6.4 was for μ ≤ 3.
+
+---
+
+## S9. HONEST STATUS, AND THE BOXES
+
+**What is proved here, with no residue.** (SLOT₂) §S3; (LIFT₂) §S4 (and the
+corrected level-1 (LIFT), LEMMA HE7-L1); the level-2 transfer of every HE6
+§S3–S6 lemma §S5, including the one new estimate §S5.3 and the block-factor
+reduction §S5.5; **[r2] the refined-key package and the derived strict
+slope increase §S5.8 (LEMMAS HE7-12/HE7-13 — PE1 FINDING F-1's gap,
+closed)**; the level-i package by induction §S6; (REF-TERM) §S7;
+TERMINATION §S7; the n = 8 closure §S8.
+
+**What HE6 §S7.2 got right, and one thing it under-counted.** Right: the two
+named lemmas are exactly the missing inputs for the *slot algebra*, and the
+substitution table is exact. Under-counted: three items beyond (LIFT₂) and
+(SLOT₂) are needed and were not named — (a) the ξ-side Step-1 inequality
+needs a genuinely new two-offset estimate (§S5.3); (b) the general case needs
+the block-factor reduction (§S5.5) to avoid principal-part bookkeeping — and
+this is the step whose absence was HE3-BOX-6's original defect; (c) the
+recursion needs the α-refine termination (§S7), which HE6 did not mention.
+All three are proved here, so the residue is closed, not moved.
+**[r1] TWO MORE ITEMS this note itself under-counted, both supplied by the
+reconciliation and neither open mathematics:** (d) the block-factor reduction
+(§S5.5) does not by itself pin μ₂ when the block is PROPER — **LEMMA HE6R1-2**
+does, in read form off f (which also supersedes HE7-BOX-4's declined count);
+(e) the reduction to f_S needs **Ψ ∤ f_S**, absent here and supplied by the
+§S1 CONVENTION [r1] with **LEMMA HE6R1-3**'s peel (FINDING HE6R1-F2). Both were
+found by composing this note against HE6 r1, i.e. by the reconciliation, not by
+a reading of this note alone.
+
+> **HE7-BOX-1 (arc grade) [r1].** Attempt grade **0/2** — no hostile pass has
+> run on this note, and the r1 round does not upgrade it (a repair round never
+> does): the r1 text — the widened HE7.A(3)/HE7.C, the Ψ ∤ f_S convention, the
+> §S4.3 use-site display and §S8's fifth row — owes a fresh hostile pass, as do
+> the three consumed reconciliation lemmas (HE6R1-1/2/3), which have never been
+> attacked. Every consequence inherits the minimum over its suppliers
+> {GENHN 0/2 post-r1 erratum (battery GREEN), HE6 0/2 post-r1 (battery GREEN),
+> HE6R1 0/2 (battery GREEN), HE3 1/2 at μ ≤ 3, GENIND 0/2, W-12 0/2,
+> classical}. COROLLARY HE7.B is therefore a
+> **composition claim at 0/2**, not an acceptance.
+> **[r2] PE1 HAS NOW RUN (report `HE7_passPE1_report.md`): 0 CRITICAL,
+> 1 GAP (F-1, the refined-key read), 3 MINOR (F-2/F-3/F-4), machine leg
+> bit-identical GREEN + a fresh n = 12 peel family 2,552/2,552.** This r2
+> round repairs all four findings (F-1 by LEMMAS HE7-12/HE7-13, §S5.8,
+> wired at HE7.A(3), LEMMA HE7-8 and §S8 row 5; F-2/F-3/F-4 at their
+> displays) and adds the additive leg `he7r2_supp.py` (§S11 [r2]). A repair
+> round never upgrades the grade: **attempt grade stays 0/2**, and the
+> 2-clean count starts only at the next fresh hostile pass (PE2) on the
+> post-r2 text.
+> **[r3] PE2 HAS NOW RUN (report `HE7_passPE2_report.md`): CLEAN — 0
+> CRITICAL, 0 GAP, 3 MINOR + 2 remarks; machine leg bit-identical GREEN,
+> plus a fresh 634-member ℓ = 1, d_r = 2 (K₂ = F_{p²}) α-refine family,
+> σ == PARI 634/634, with the first 2-step refine chains — so the 2-clean
+> count STARTS: attempt grade 0/2 → 1/2.** This r3 round applies the
+> three MINORs (F-1 at LEMMA HE7-12(d); F-2 at LEMMA HE7-8's [r2] box;
+> F-3 plus remarks R-a/R-b as §S11 [r3] disclosures) — display and
+> disclosure scale only, no statement or frozen number moved — so per the
+> minors-only precedent (HMENU3-ANNEX-A; ledger fold b3c05be) the count
+> **HOLDS at 1/2**; acceptance (2/2) needs one more fresh hostile pass
+> (PE3) on the post-r3 text.
+> **HE7-BOX-2 (machine coverage).** The battery exercises D′ = 2,
+> (e₁,f₁) = (2,1), h = 1, μ = 4, d_r = 1 (so K₂ = K = F_p), λ ∈ {5/2, 7/2},
+> q ∈ {3,5,7} in char 0 and q ∈ {3,5} in char p. NOT exercised by machine:
+> d_r ≥ 2 (K₂ a proper extension — the twist and the within-class basis then
+> have length ≥ 2), f₁ ≥ 2 stage genres, μ ≥ 5, level 3 (unreachable below
+> n = 16 by THEOREM HE7.C, hence not exercisable at these degrees), and
+> embedded genres. The proofs are uniform in all of these; the (LIFT₂)
+> threshold leg (P3) *is* run in frames with f₁ ≥ 2 and d_r ≥ 2 precisely
+> because the σ rows cannot reach them.
+> **[r1] PARTLY DISCHARGED by a sibling battery.** The d_r ≥ 2 σ-coverage hole
+> named here is now exercised — not by this note's frozen runner but by
+> HE6R1's own leg (`he6r1_checks.py`): ℓ = 1, d_r = 2, K₂ = F_{p²}, μ = 4,
+> μ₂ = 2, λ ∈ {3,5}, q ∈ {3,5,7} char 0 and {3,5} char p, 944 members with
+> 677/682 PARI agreements and ZERO mis-decisions, the 5 non-agreements being
+> exactly the Ψ | f_S peel stratum. So the residue-direction mechanism of
+> (SLOT₂) and the d_r ≥ 2 (LIFT₂) threshold are both machine-exercised; what
+> stays unexercised anywhere is d_r ≥ 3, f₁ ≥ 2 stage genres, μ ≥ 5 (hence
+> proper blocks — LEMMA HE6R1-2's own configuration is proof-only) and
+> level 3.
+> **HE7-BOX-3 (oracle asymmetry).** PARI `factorpadic` exists only on the
+> ℤ_p side, so the char-p rows are scored against the reader plus the
+> resultant identities. Inherited from HE6-BOX-4.
+> **HE7-BOX-4 (the multiplicity–principal-length link, DELIBERATELY NOT
+> CLAIMED).** We do not prove |S_{λ,r}| = D′ℓ·m_r·d_r (the exact
+> multiplicity-weighted class size, i.e. Montes' theorem of the product at
+> the node). It is not needed: σ-decision uses only the level-2 polygon of
+> the actual f_S, and TERMINATION uses only the upper bound
+> μ₂ ≤ deg R_λ/d_r. The exact link is a COUNT-side question (it is what one
+> would need to predict μ₂ from level-1 data alone, e.g. for a closed-form
+> density at a boxed node) and is boxed here.
+> **[r1] SUPERSEDED IN READ FORM.** The gap this box leaves — μ₂ and
+> |S_{λ,r}| unpinned when the block is proper — is closed by
+> **LEMMA HE6R1-2(b)(c)**: |S_{λ,r}| = D″·μ₂ with μ₂ = Σ_{λ₂>T₂}L_{λ₂}(f) read
+> off f, and per distinct factor |S_{λ,r_i}| = D′ℓd_{r_i}·μ₂^{(i)}. The
+> multiplicities m_{r_i} are never consulted, so the closed form
+> D′ℓ·m_r·d_r stays unproved and unneeded — the box survives only as the
+> COUNT-side (density-from-level-1-data) question it names.
+> **[r1] HE7-BOX-5 (the peel stratum's coverage).** The Ψ | f_S stratum is
+> decided by LEMMA HE6R1-3 and machine-confirmed at n = 8 (8/8 peels, 2/2 PARI
+> on σ(f), 2/2 PARI on σ(Ψ); §S11 [r1]) and at HE6R1's ℓ = 1, d_r = 2 frame
+> (12/12, 5/5 PARI). Not exercised: a peel at μ₂ ≥ 3, and a peel at a PROPER
+> block (both need μ ≥ 5, i.e. n ≥ 10). The lemma's proof is uniform in both.
+
+---
+
+## S10. THE BATTERY (`verification/openmath/he7_checks.py`)
+
+**Instrument.** Exact integer (and exact F_p[t]) Sylvester–Bareiss
+resultants; a fresh **level-2 reader** built literally from §S1 (Ψ-adic
+development of f; dv₂ from the Φ′-development slot-min; the level-2 polygon;
+the level-2 residual assembled WITH the explicit β-power twist; factorization
+over K₂; the THEOREM HE7.A dictionary; the level-2 α-refine of LEMMA HE7-8
+with a bounded loop); PARI `sig(f,p) = factorpadic + idealprimedec` as the
+independent σ oracle on the char-0 rows. Members are HE6's own enumeration —
+perturbations strictly above the λ-line — so every member of a row has the
+SAME outer data and only the deeper digits move. **The instrument reuses
+HE6's rings, resultants, level-1 reader and member enumerator by import, so
+the level-1 leg is byte-identical to the sealed HE6 code.**
+
+**Rows.** (e₁,f₁,h) = (2,1,1), Φ′ = x²−π, μ = 4, deg f = 8, ALPHA2
+(R_λ = (Z−s)², the HE6-BOX-1 node): ℤ_3, ℤ_5, ℤ_7 at λ = 5/2, ℤ_5 at
+λ = 7/2, F_3[[t]] and F_5[[t]] at λ = 5/2.
+
+**Legs (preregistered as P1–P5 in the runner docstring).** HE7-READ2/HE7-SIG2
+(P1: the level-2 read vs PARI, member by member, on the three-σ family) ·
+HE7-SLOT2 (P2: v(Res(f,C)) = 2·dv₂(C) for C of degree < D″, both level-2
+classes) · HE7-LIFT1/HE7-LIFT2 (P3: the exact reachable sets W₁, W₂ vs the
+closed-form thresholds, ten frames) · HE7-GEN2 (P4: the level-2 flat
+resultant identity at rational level-2 heights) · HE7-SEP2 (P5: strict excess
+exactly at the level-2 labels).
+
+**Teeth.** HE7-T-CASEB-SEP (the headline: ≥ 3 distinct PARI σ inside ONE
+constant-outer-data family, all predicted) · HE7-T-WITHHOLD · HE7-T-RANK ·
+HE7-T-LIFT2SHARP (FINDING HE7-F1 machine-confirmed) · HE7-T-BADTWIST ·
+HE7-T-SLOT2TIE.
+
+**Results — see §S11.**
+
+**[r1] BYTE-FREEZE + one additive leg.** `he7_checks.py` and its two artifacts
+are **byte-frozen at seal 1956151**: no predicate, row or number of §S10/§S11
+was touched by the r1 round. The one machine addition is
+`verification/openmath/he7r1_supp.py`, which *imports* the sealed runner,
+reproduces its enumeration member-for-member, and checks LEMMA HE6R1-3's peel
+on the 8 members the sealed reader left undecided (§S11 [r1]).
+
+---
+
+## S11. VERDICT (from the committed artifacts)
+
+**GREEN — 0 violations, ALL SIX TEETH FIRED, 191.8 s.** Artifacts
+`he7_checks_output.txt` (md5 b2d095a2556a…), `he7_checks_results.json`
+(f5bedab2ecda…), runner-as-run `he7_checks.py` (688adbe88447…). Totals:
+**1,587 members** over thirteen rows (nine ℤ_p rows with the PARI oracle,
+four F_p[[t]] rows without it) · **1,335 PARI σ jobs** · **12,632 (SLOT₂)
+exactness identities** · **4,259 level-2 flat identities** · **191 + 5
+strict/infinite-excess (nonemptiness) certificates** · ten (LIFT)/(LIFT₂)
+frames verified exhaustively.
+
+**[r1] HOW TO READ THESE TOTALS AFTER FINDING HE6R1-F2.** The artifacts are
+byte-frozen (seal 1956151) and no number below changes; what changes is the
+scope sentence attached to them. Of the 1,587 members, **1,579 are on the
+Ψ ∤ f_S stratum** (reader status `OK`) and **8 are the Ψ | f_S stratum**
+(status `DEGENERATE-key-divides`, i.e. A₀^{(2)} = 0), which the sealed reader
+skipped without emitting a σ — 2 of them on a PARI row, which is exactly why
+one row reads members 124 / PARI 122 in Q1's table while every other row has
+PARI = members (209+243+161+125+**122**+150+105+115+105 = 1,335). So Q1's
+1,335/1,335 is the σ verdict **on the Ψ ∤ f_S stratum**, which is precisely the
+stratum the r1 statements now name. Distribution of the 8: ℤ₃ λ=5/2 s=2 → 2,
+F₃[[t]] λ=5/2 s=1 → 3, F₅[[t]] λ=5/2 s=1 → 2, F₅[[t]] λ=5/2 s=3 → 1.
+
+**[r1] THE PEEL LEG (additive, post-seal): the 8 are DECIDED, and PARI agrees
+on both halves.** `verification/openmath/he7r1_supp.py` imports the sealed
+runner, reproduces its member enumeration exactly (1,587 members, the same 8
+by row), and per degenerate member checks: **A1** A₀^{(2)} = 0 and
+Ψ·(Ψ + A₁^{(2)}) = f exactly in O[x] — **8/8**; **A2** A₁^{(2)} ≠ 0, so
+Ψ ∤ f′ and the peel happens ONCE — **8/8**; **A3** the sealed reader on
+f′ = Ψ + A₁^{(2)} returns status OK with σ(f′) = {(4,1)} at μ₂′ = 1 —
+**8/8**; **A4** PARI `factorpadic`: σ(f) = {(4,1),(4,1)} — **2/2** (the two
+char-0 members); **A5** PARI: **σ(Ψ) = {(4,1)}** — **2/2**, a direct oracle
+test of LEMMA HE6R1-3's *irreducibility of Ψ over O of degree D″ with
+(e,f) = (e₁ℓ, f₁d_r)*, which no textual argument of this note supplies.
+0 violations, 3.3 s; artifacts `he7r1_supp_output.txt`,
+`he7r1_supp_results.json` (pins: `he7_checks.py` 688adbe88447,
+`he7_checks_results.json` f5bedab2ecda, `he6_checks.py` 321fa4d4990e).
+**Net over the two legs: 1,587/1,587 members decided, 1,337 PARI σ(f) jobs
+(1,335 sealed + 2 peel) with 0 mis-decisions, plus 2 PARI σ(Ψ) jobs.**
+
+**[r2] THE SLOT-DOMINATION LEG (additive, post-PE1):
+`verification/openmath/he7r2_supp.py`** imports the sealed runner,
+reproduces its member enumeration exactly, isolates the refine-path
+members, and checks LEMMA HE7-12/HE7-13's displayed inequalities per
+member: **B1** slot geometry (Ψ's occupied Φ′-slots all exactly at T₂;
+w's slot-min exactly λ₂ > T₂; (LIFT₂) contract res₂(w, λ₂) = s₂) —
+**42/42**; **B2** the off-disk inequality (S5.8.1) in resultant-sum form
+plus the invariance conclusion dv₂-Res(g, Ψ^{(1)}) = dv₂-Res(g, Ψ), on
+five off-disk strata per member covering all three offset cases of the
+lemma (δ = ∞; δ > λ; the (S5.2) [r2] middle band δ ∈ (D′h, λ) with
+ε₁ = 1/2; ε₀ = 1; δ = λ with wrong residue) — **210/210**; **B3** the
+strict slope increase (S5.8.2): Σ_ρ dv₂(Ψ(ρ)) = 8λ₂ exactly pre-refine,
+strictly greater post-refine, every recomputed post-refine slope > λ₂,
+and the LEMMA HE7-9(b) count identity **at the refined key** — **42/42**;
+**B4** the pre-refine residual is (Z − s₂)² — **42/42**; **B5** per-row
+refine recount == the frozen artifact — **13/13 rows**. 0 violations,
+3.8 s; artifacts `he7r2_supp_output.txt`, `he7r2_supp_results.json`
+(pins: `he7_checks.py` 688adbe88447, `he7_checks_results.json`
+f5bedab2ecda, `he6_checks.py` 321fa4d4990e, `he7r1_supp.py`
+24ece42e4538).
+
+**[r2] FOUR DISCLOSURES ON THE SEALED INSTRUMENT (byte-frozen, so
+disclosed here rather than edited; PE1 remarks R-a/R-b/R-c + one
+recount).** (1) *Refine recount:* the frozen `he7_checks_results.json`
+refine histograms sum to **42** refine-firing members, not the 41 stated
+in Q1's sentence below — a display slip of the note (the artifact was
+always 42); the r2 leg re-enumerates and checks all 42. (2) *Stale
+self-comment (R-a):* `he7_checks.py` line 140 reads "WIP = False # commit
+1 sealed this True (smoke only); commit 2 flips it" — git shows the
+runner byte-identical between seal 1956151 and verdict 4c42f9d, i.e. WIP
+was already False at the seal and no in-history flip occurred; the smoke
+record in the docstring is the honest preregistration record, the comment
+is stale about itself and CANNOT be edited (byte-freeze). (3) *Silent
+PARI-drop guard (R-b):* `run_row` skips a PARI job that fails to parse
+(`if g is None: continue`) without raising a violation; audited over the
+sealed artifacts — every row has PARI = read-OK members (the one 124/122
+row is exactly the 2 key-divides members, which never reach the oracle),
+so **zero drops occurred**. (4) *Redundant degenerate test (R-c):* the
+reader's `any(v >= BIG for v in dv2s[:mu2]) and dv2s[0] >= BIG` is
+equivalent to its second conjunct — harmless, disclosed.
+
+**[r3, HE7-PE2] THREE FURTHER DISCLOSURES ON THE FROZEN r2 LEG (PE2's
+F-3 plus remarks R-a/R-b; instrument byte-frozen, so disclosed rather
+than edited).** (1) *B2's δ = ∞ coverage (F-3):* on the δ = ∞ stratum
+(g = Φ′) the QUANTITATIVE half of (S5.8.1) sits behind the guard
+`a_w < BIG` and is vacuous whenever Φ′ | w — at this frame (u odd, ℓ = 2,
+d_r = 1) exactly when λ₂ is odd, where s₀ = 1 — i.e. on **41 of the 42**
+members (λ₂ histogram re-counted at r3: 11 × 38, 12 × 1, 15 × 3; the one
+λ₂ = 12 member exercises it). Mathematically trivial there: Φ′ | w gives
+w(ξ) = 0 at every δ = ∞ point, so off-disk invariance is IMMEDIATE — and
+the invariance half WAS genuinely checked on all 42. Honest reading:
+"210/210" is 210 stratum passes, of which the δ = ∞ inequality instance
+was TESTED on 1; PE2's fresh leg re-verified this stratum non-vacuously
+(Res(Φ′, w) ≠ 0 on the majority of its 634 d_r = 2 members, all green).
+(2) *(R-a) B3's peel-guard skip:* the HE7-9(b) identity is skipped when
+the refined key divides f (`dv2s1[0] < BIG`); the skip never fired (all
+42 post-refine resultants finite; PE2's identical fresh-leg guard never
+fired on 634) and B3's strict-increase half runs regardless —
+DISPOSITION: disclosed; no repair is possible on a frozen instrument and
+none is needed. (3) *(R-b) B1's same-instrument coupling:* the (LIFT₂)
+contract on the sealed `lift2` is verified through `dv2`/`res2` from the
+same module — DISPOSITION: accepted; decorrelation is supplied by PE2's
+independent instrument (`he7_pe2_fresh.py`, no he6/he7 import), which
+re-implements both sides and agrees 634/634.
+
+**Q1 (HE7-READ2 / HE7-SIG2 — P1 confirmed; THE HEADLINE) ✓ 1,335 PARI jobs,
+1,335 agree, 0 mismatch.** On the HE6-BOX-1 node (ALPHA2: ℓ = 2,
+R_λ = (Z−s)², one label class of size 8 = deg f, σ UNDECIDED by the outer
+data), the level-2 read predicts σ **member by member** and PARI
+`factorpadic` confirms every prediction, on nine rows and both letters
+s = 1 (twist trivial) and s ∈ {2,3} (twist live):
+
+    row                     s   members  PARI  agree  {(8,1)}  {(4,2)}  {(4,1),(4,1)}
+    Z_3  λ=5/2              1     209     209   209     161      31         17
+    Z_5  λ=5/2              1     243     243   243     219      14         10
+    Z_7  λ=5/2              1     161     161   161     144      11          6
+    Z_5  λ=7/2              1     125     125   125     105      10         10
+    Z_3  λ=5/2  twist live  2     124     122   122     102      10         10
+    Z_5  λ=5/2  twist live  2     150     150   150     135      13          2
+    Z_5  λ=5/2  twist live  3     105     105   105      84      11         10
+    Z_7  λ=5/2  twist live  3     115     115   115      99       8          8
+    Z_5  λ=7/2  twist live  2     105     105   105      88       8          9
+    F_3[[t]] λ=5/2          1      79       0     —       61      13          2
+    F_3[[t]] λ=5/2  twist   2      57       0     —       47       5          5
+    F_5[[t]] λ=5/2          1      57       0     —       45       7          3
+    F_5[[t]] λ=5/2  twist   3      57       0     —       49       5          2
+
+All three σ values occur on every row, exactly the three outputs of THEOREM
+HE7.A's μ₂ = 2 dictionary (§S8), and no fourth value ever appears. The
+level-2 α-refine of LEMMA HE7-8 fired on **42** members ([r2] recount from
+the frozen artifact's refine histograms; the pre-r2 sentence said 41 — a
+prose slip, see the [r2] disclosures above) and terminated in
+**one** step every time — (REF-TERM) in action, never approaching the bound.
+
+**Q2 (HE7-SLOT2 — P2 confirmed) ✓ 0 violations in 12,632 checks:**
+v(Res(f, C)) = 2·dv₂(C) EXACTLY for C ∈ O[x] of degree < D″ = 4 exercising
+both level-2 classes mod ℓ, in both characteristics. Since the two classes
+have opposite parity, any within-class cancellation or cross-class tie would
+break this identity; it is the machine form of (SLOT₂)'s exactness clause.
+
+**Q3 (HE7-LIFT1 / HE7-LIFT2 — P3 confirmed, and FINDING HE7-F1
+machine-confirmed) ✓** The reachable-height sets computed by exhaustive
+enumeration match the closed forms of LEMMA HE7-L1 and (LIFT₂) in all ten
+frames: every k above the threshold is surjective (5/5 level-1, 5/5 level-2),
+and below it surjectivity genuinely fails —
+
+    level 1 (e₁,f₁,h)  (D′−1)h   k < thr NOT surjective   k not attained at all
+    (3,1,2)               4              {1}                      {1}
+    (2,2,1)               3             {0,1}                      —
+    (3,2,1)               5            {0,1,2}                     —
+    (2,1,3)               3              {1}                      {1}
+    (2,3,1)               5           {0,1,2,3}                    —
+
+    level 2 (e₁,f₁,h,ℓ,d_r,u)     thr₂    #k < thr₂ NOT surjective
+    (2,1,1,2,1,5)                   7               2
+    (2,1,1,2,2,5)                  17              12
+    (2,2,1,2,2,7)                  27              21
+    (3,1,2,2,3,13)                 73              60
+    (1,2,1,3,2,11)                 58              46
+
+So HE6 §S1's unqualified (LIFT) is refuted as stated (the (3,1,2) row: the
+height k = 1 is attained by **no** C at all), the corrected threshold is
+exactly right, and both are invisible at the battery's σ frame
+(f₁ = d_r = 1), which is why FINDING HE7-F1 required a dedicated leg.
+
+**Q4/Q5 (HE7-GEN2 / HE7-SEP2 — P4, P5 confirmed) ✓** 0 violations in 4,259
+level-2 flat identities ℓe₁·v(Res(f, Ψ₂)) = D″ℓ₂d₂·h_{F₂}(κ₂) at rational
+LEVEL-2 heights κ₂ = u₂/ℓ₂ > T₂ with ℓ₂ ∈ {1,2,3} — heights no element of
+the LEVEL-1 stage ring can occupy — and 191 STRICT excesses (plus 5 infinite
+ones, where the test polynomial reproduces a factor of f) exactly at the
+level-2 labels. This is HE6's own P1/P2 pair one level up, i.e. the machine
+form of LEMMA HE7-9 and LEMMA HE7-10.
+
+**Q6 (teeth: 6/6 FIRED).**
+* **HE7-T-CASEB-SEP ✓ (the box certificate turned into a separation
+  certificate)** three distinct PARI σ inside ONE family of identical outer
+  data, and the level-2 read predicts all 8/8.
+* **HE7-T-RANK ✓** the outer read gives one label class of size 8 with three
+  σ compatible; the level-2 read gives exactly one per member, 8/8 == PARI.
+* **HE7-T-WITHHOLD ✓** with one side's level-2 residual withheld the reader
+  reports UNDETERMINED — it does not silently accept.
+* **HE7-T-LIFT2SHARP ✓** the two tables of Q3.
+* **HE7-T-BADTWIST ✓ 21 (p, s, member) reads CHANGE when the β-power twist
+  is dropped, while the TWISTED read == PARI on 480/480** (and 83 further
+  flips across the full rows). Examples: at p = 3, s = 2 the untwisted read
+  says {(4,1),(4,1)} where the truth is {(4,2)}, and {(4,2)} where the truth
+  is {(8,1)}. **The level-2 normalizer cocycle is machine-load-bearing** —
+  and it is invisible at s = 1, HE6's own configuration.
+* **HE7-T-SLOT2TIE ✓** at gcd(u, ℓ) ≠ 1 the ℓ level-2 classes share heights,
+  so the slot-min is not exact and no level-2 residue is well defined —
+  DEFINITION HE7-1's gcd hypothesis is load-bearing.
+
+**What the machine leg establishes** (instrument grade, not acceptance): that
+the level-2 read of §S1–S5 **decides σ on the exact family HE6 certified as
+undecidable from the outer data**, against an independent oracle, on 1,335
+octics with 0 exceptions **on the Ψ ∤ f_S stratum** ([r1]: the remaining 8
+members are the peel stratum, decided by the additive leg — 8/8, with PARI
+agreeing 2/2 on σ(f) and 2/2 on σ(Ψ)), in both characteristics and at both
+trivial and nontrivial twist; that (SLOT₂)'s exactness holds on 12,632
+instances; that
+(LIFT₂)'s threshold is exactly the closed form, in frames the σ rows cannot
+reach; that LEMMA HE7-9/HE7-10's identities hold at fractional LEVEL-2
+heights on 4,259 instances; that the α-refine terminates (42 firings [r2
+recount], always
+one step); and that two hypotheses — the twist and gcd(u, ℓ) = 1 — are
+load-bearing rather than decorative. Box HE7-BOX-1 unchanged: **attempt grade
+0/2, no hostile arc has run**; nothing here upgrades the conditionality
+display of COROLLARY HE7.B.
+
+---
+
+## ANNEX F-1 (2026-08-09, post-acceptance; PE3 F-1) — the mixed-residual rider: ANNEX-LEMMA HE7-13′ (the refine acts PER CLASS), the block reading of HE7.A(3)/§S6(iii), and the R-a disposition. The frozen accepted body above is NOT edited.
+
+**Provenance and scope.** HE7 was **ACCEPTED 2/2** at PE3 (report
+`HE7_passPE3_report.md`, commit 111ac7f): 0 CRITICAL, 0 GAP, 1 MINOR —
+FINDING F-1, with remark R-a folded into it. The accepted text is
+byte-frozen; per the report's closing sentence the owed repair is this
+dated annex (the HMENU3 ANNEX-A pattern: appended, dated, nothing above
+edited). The annex covers exactly PE3 F-1 plus the folded R-a remark and
+NOTHING else. Honesty of grade: the annex text itself is a
+post-acceptance append and has NOT been through a hostile pass; what it
+formalizes is the per-class continuation the PE3 verifier derived and
+machine-verified at the defect's exact configuration (144/144 PARI,
+artifacts committed at b574f25), plus the additive annex leg below.
+
+**The defect (as found at PE3).** THEOREM HE7.A(3) [r2] fires the
+α-refine at any slope λ₂ = u₂/ℓ₂ whose residual R_{λ₂} has a repeated
+irreducible factor r₂ with ℓ₂·deg r₂ = 1 — including MIXED residuals
+(the repeated linear factor shares its side with other classes, e.g.
+R_{λ₂} = (Z−a)²(Z−b), b ≠ a), first live at μ₂ = 3, i.e. n = 12, inside
+COROLLARY HE7.B(i)'s n = 12–15 sub-region, and vacuous at every
+machine-certified degree (μ₂ = 2 forces pure). But the lemmas the wiring
+cites there have pure-node hypotheses: LEMMA HE7-13 supposes "the single
+side of integer slope λ₂ … with residual R₂ = (Z − s₂)^{μ₂}", and LEMMA
+HE7-8's chain hypothesis likewise. HE7-13's conclusion-as-stated is
+genuinely FALSE at mixed nodes: PE3's constructed counter-instance
+(p, u, s, λ₂) = (5, 5, 1, 11), R₂ = (Z−1)²(Z−2), pins
+(0,33),(1,23),(2,11),(3,0), has post-refine polygon (0,34),(2,11),(3,0)
+— **the λ₂ = 11 side SURVIVES the refine**, carrying the b = 2 class
+(PARI σ = {(4,1),(8,1)}, the (4,1) factor = the undisturbed b-class).
+And §S6(iii)'s per-block sentence names only "several distinct REPEATED
+factors at one node", not a repeated factor mixed with simple ones.
+
+**The two display sentences this annex riders (named exactly; neither is
+edited).**
+
+1. **THEOREM HE7.A(3), the [r2, HE7-PE1 F-1] wiring sentence** ("the
+   read AT the refined key Ψ − w (and at every iterate Ψ − W of the
+   chain) is licensed by **LEMMA HE7-12** (§S5.8) … and the strict slope
+   increase λ₂^{(0)} < λ₂^{(1)} < ⋯ that LEMMA HE7-8 consumes is
+   **LEMMA HE7-13**, derived, not assumed"). **Read as:** at a PURE node
+   (R_{λ₂} a power of Z − s₂ on a single side) — verbatim. At a MIXED
+   node, the citation routes through ANNEX-LEMMA HE7-13′ below: the node
+   is first split into its class blocks (clause (a)); the refine is the
+   α-refine OF THE REPEATED CLASS'S OWN BLOCK, whose node IS pure, so
+   LEMMAS HE7-12/HE7-13/HE7-8 apply to it verbatim; every other class is
+   read at its own block.
+2. **§S6(iii)'s block sentence** ("*Several distinct repeated factors at
+   one node.* Then the classification above is applied **per distinct
+   factor**, each with its own block, by LEMMA HE6R1-2"). **Read as:**
+   "per distinct factor, REPEATED OR NOT — mixed nodes included";
+   ANNEX-LEMMA HE7-13′(a) is the displayed level-2 form of that block
+   split (proved from HE7-6/HE7-9/HE7-10/HE7-11, i.e. inside the §S5
+   package, so it transfers level-i by §S6's substitution table exactly
+   like every other §S5 item).
+
+LEMMA HE7-8's [r2] box ("the hypothesis set is the read's ACTUAL
+configuration, derived") and LEMMA HE7-12(d)'s [r3] parenthetical (the
+pairwise-distinct dv₂(w_i)) inherit the same reading: through HE7-13′
+their justifications route per block, where the displayed arguments
+apply verbatim (see "wiring" below). No other display is touched.
+
+> **ANNEX-LEMMA HE7-13′ (mixed residual nodes: the block split, and the
+> per-class effect of one α-refine).** Let Ψ̃ = Ψ − W with W = 0 or as in
+> LEMMA HE7-12(d), and let f_S satisfy the standing convention at Ψ̃
+> (Ψ̃ ∤ f_S), all roots level-2 points. Write P₂ for the polygon of f_S
+> with respect to Ψ̃, and for each side of slope λ = u₂/ℓ₂ and each
+> distinct monic irreducible r | R_λ let
+>
+>     C_{λ,r} := { ρ : f_S(ρ) = 0, dv₂(Ψ̃(ρ)) = λ,
+>                  ι_ρ^{(2)}(r)(β_{2,ρ}) = 0 }
+>
+> (the level-2 label classes of COROLLARY HE7-7″; they partition the
+> roots of f_S, since the label's factor is the minimal polynomial of
+> β_{2,ρ} over ι^{(2)}(K₂)). Then:
+>
+> (a) *(the block split: a mixed node is a bouquet of PURE nodes)* each
+> C_{λ,r} is nonempty (LEMMA HE7-10), Galois-stable (LEMMA HE7-11), and
+> is the root set of a monic block factor f_{λ,r} ∈ O[x] with
+> f_S = Π_{(λ,r)} f_{λ,r} and D″ℓ₂·deg r | deg f_{λ,r} (LEMMA HE7-6's
+> argument with LEMMA HE7-5's forcing); the polygon of f_{λ,r} with
+> respect to Ψ̃ is the SINGLE side of slope λ, of length
+> L_{λ,r} := deg f_{λ,r}/D″, with Σ_{r | R_λ} L_{λ,r} = L_λ; and the
+> residual of f_{λ,r} is c·r^{k} with c ∈ K₂^× and
+> k = L_{λ,r}/(ℓ₂·deg r) ∈ ℤ_{≥1} — a single irreducible power. In
+> particular THEOREM HE7.A's trichotomy applies to each block at its own
+> (pure) node: at k = 1 the block's residual is separable (K₂ is a
+> finite field) and HE7.A(2) decides the class, |C_{λ,r}| = D″ℓ₂ deg r,
+> one irreducible factor of f with e = e₁ℓℓ₂, f = f₁d_r·deg r; at k ≥ 2
+> with ℓ₂·deg r = 1 the block is the α-refine configuration and LEMMAS
+> HE7-12/HE7-13/HE7-8 apply to it AS DISPLAYED; at k ≥ 2 with
+> ℓ₂·deg r ≥ 2 the block passes to level 3, and the μ₂ ≥ 4 gate is
+> unchanged: L_{λ,r} = k·ℓ₂ deg r ≥ 4, so μ₂ ≥ L_λ ≥ L_{λ,r} ≥ 4.
+>
+> Now fix a side of INTEGER slope λ₂ (ℓ₂ = 1) whose residual factors as
+> R_{λ₂} = (Z − s₂)^{m₂}·R̂₂ with m₂ ≥ 2 and R̂₂(s₂) ≠ 0; s₂ ∈ K₂^×
+> (s₂ ∈ K₂ since the factor is linear; s₂ ≠ 0 because the side's left
+> endpoint is a vertex of P₂, so it attains and R_{λ₂}(0) ≠ 0 — the same
+> mechanism as LEMMA HE7-13's "the endpoint j = 0 attains"). Let w be a
+> (LIFT₂) polynomial at height λ₂ with residue s₂ (it exists: λ₂ > T₂
+> satisfies (‡₂) by §S4.3) and Ψ̃^{(1)} := Ψ̃ − w (covered by LEMMA
+> HE7-12 with W + w, per (d)). Then, per class:
+>
+> (b) *(the refined class jumps — LEMMA HE7-13's conclusion, held by the
+> refined class alone)* every ρ ∈ C_{λ₂, Z−s₂} has
+> dv₂(Ψ̃^{(1)}(ρ)) > λ₂ (possibly = ∞);
+>
+> (c) *(companion classes on the same side persist EXACTLY, labels
+> translated)* every ρ ∈ C_{λ₂,r₂} with r₂ ≠ Z − s₂ has
+> dv₂(Ψ̃^{(1)}(ρ)) = λ₂ exactly, with residue
+> β^{(1)}_{2,ρ} = β_{2,ρ} − ι_ρ^{(2)}(s₂) ≠ 0; its label at Ψ̃^{(1)} is
+> (λ₂, r₂^τ) with r₂^τ(Z) := r₂(Z + s₂), monic irreducible of the SAME
+> degree — so the λ₂ side SURVIVES the refine (this is exactly PE3's
+> counter-instance to the pure-node conclusion), carrying the same
+> companion classes;
+>
+> (d) *(strictly lower sides are untouched exactly)* every root with
+> dv₂(Ψ̃(ρ)) = λ < λ₂ has dv₂(Ψ̃^{(1)}(ρ)) = λ exactly with the SAME
+> residue, hence the same label;
+>
+> (e) *(steeper sides collapse onto λ₂)* every root with
+> dv₂(Ψ̃(ρ)) = λ > λ₂ has dv₂(Ψ̃^{(1)}(ρ)) = λ₂ exactly with residue
+> −ι_ρ^{(2)}(s₂), i.e. label (λ₂, Z + s₂) at Ψ̃^{(1)}. (The per-block
+> wiring below never fires this clause — a block's refine happens at its
+> own single side, with nothing steeper in the block; (e) is what
+> governs, and refutes, the naive whole-f_S continuation.)
+
+*Proof.* Throughout, the §S5 package holds at Ψ̃ (LEMMA HE7-12(c); §S5
+itself when W = 0), so COROLLARY HE7-7″ gives every root of f_S its
+label, and — the one evaluation fact all four refine clauses share — by
+(LIFT₂)'s defining clause, at EVERY level-2 point ρ,
+
+    dv₂(w(ρ)) = λ₂  exactly, with res(w(ρ)/n₂(λ₂)(ρ)) = ι_ρ^{(2)}(s₂).
+
+(The PE3 charge asked that "the simple class's slots are untouched by w"
+be checked against LEMMA HE7-12's off-disk clause (a). Checked, and the
+mechanism is NOT slot disjointness: w moves the value landscape at every
+level-2 point equally — clause (a) governs only NON-level-2 points ξ,
+where it keeps dv₂(Ψ̃^{(1)}(ξ)) = dv₂(Ψ̃(ξ)) and hence the disk
+criterion. What protects the companion classes on-disk is RESIDUE
+SEPARATION, clause (c)'s calculation below: same value, different
+residue.)
+
+**(a).** The classes partition the roots (each root has exactly one
+label: its label factor is the minimal polynomial over K₂ of its residue
+root, via the field embedding ι_ρ^{(2)}). Each C = C_{λ,r} is
+Galois-stable by LEMMA HE7-11 — whose proof (an equivariance computation
+on Ψ̃, n₂ and ι) nowhere uses separability of R_λ — so
+f_C := Π_{ρ∈C}(x − ρ) has K₀-coefficients, integral over O, hence lies
+in O[x] and divides the separable f_S: LEMMA HE7-6's argument verbatim.
+Each Galois orbit in C has size e(L_ρ)f(L_ρ) with e₁ℓℓ₂ | e and
+f₁d_r·deg r | f (LEMMA HE7-5, whose proof consumes only the value group
+and the unit residue at ρ — no separability), so D″ℓ₂·deg r divides
+deg f_C. The reduction of §S5.5 applies to f_C exactly as to f_S (monic
+O-factor of f, every root a level-2 point, Ψ̃ ∤ f_C since Ψ̃ ∤ f_S), so
+LEMMAS HE7-9/HE7-10 and COROLLARY HE7-7″ run on f_C: every root of f_C
+has dv₂(Ψ̃(ρ)) = λ, and by LEMMA HE7-9(b) every slope of f_C's polygon
+carries D″·(its length) > 0 roots — so λ is the ONLY slope: the single
+side, of length L_C = deg f_C/D″ (LEMMA HE7-9(a) + THEOREM HE7.A(1)'s
+arithmetic on f_C give λ > T₂ and Σ_{slopes} L = L_C). Side lengths add:
+n_λ(f_S) = Σ_{r | R_λ}|C_{λ,r}| (the partition) with n_λ(f_S) = D″L_λ
+and |C_{λ,r}| = n_λ(f_{λ,r}) = D″L_{λ,r} (LEMMA HE7-9(b) on each), so
+Σ_r L_{λ,r} = L_λ. The residual: let R^{(C)} be the residual of f_C at
+its side. By LEMMA HE7-10 on f_C, every monic irreducible r′ | R^{(C)}
+has a nonempty class among f_C's roots, i.e. some ρ ∈ C has
+ι_ρ^{(2)}(r′)(β_{2,ρ}) = 0; but ι_ρ^{(2)}(r)(β_{2,ρ}) = 0 too, and both
+r, r′ are monic irreducible over K₂, i.e. both map to THE minimal
+polynomial of β_{2,ρ} over ι_ρ^{(2)}(K₂) — so r′ = r. Hence
+R^{(C)} = c·r^{k}; its degree is L_C/ℓ₂ (side of length L_C, slope
+denominator ℓ₂), so k = L_C/(ℓ₂·deg r) ∈ ℤ_{≥1}; c ≠ 0 is the top
+coefficient (the side's right endpoint is a vertex, so it attains). For
+the trichotomy sentence: at k = 1, R^{(C)} = c·r is separable
+(irreducible over the perfect field K₂) and THEOREM HE7.A(2) applies to
+f_C at Ψ̃ verbatim, giving the class size and the letters (LEMMA HE7-13's
+proof already notes its own hypothesis is insensitive to the
+normalization constant c, consuming only the residual's root set — the
+same is true of HE7.A(2)'s proof, which consumes r through its roots and
+degree); at k ≥ 2, ℓ₂ deg r = 1, the block's node is single-side,
+integer-slope, residual a pure power of Z − s with s ∈ K₂^× — LEMMA
+HE7-13's hypothesis EXACTLY (with the block's own μ₂ = L_C = k); at
+k ≥ 2, ℓ₂ deg r ≥ 2, the displayed level-3 branch of THEOREM HE7.A(3)
+applies to the block, and its gate is the displayed arithmetic:
+L_{λ,r} = k·ℓ₂ deg r ≥ 4 forces μ₂ = Σ_λ L_λ ≥ L_λ ≥ L_{λ,r} ≥ 4, so
+the μ₂ ≤ 3 non-propagation of HE7.A(3) — hence COROLLARY HE7.B(i)'s
+n ≤ 15 coverage — is unchanged by the block reduction.
+
+**(b).** ρ ∈ C_{λ₂,Z−s₂} means dv₂(Ψ̃(ρ)) = λ₂ with residue
+β_{2,ρ} = ι_ρ^{(2)}(s₂) (the minimal-polynomial reading of the label).
+So Ψ̃^{(1)}(ρ) = Ψ̃(ρ) − w(ρ) is a difference of two elements of the same
+dv₂ and the SAME residue — LEMMA HE7-13's own mechanism, per root —
+whence dv₂(Ψ̃^{(1)}(ρ)) > λ₂. ∎(b)
+
+**(c).** Here dv₂(Ψ̃(ρ)) = λ₂ with β_{2,ρ} ≠ ι_ρ^{(2)}(s₂) (the labels
+Z − s₂ and r₂ are distinct irreducibles, so their root sets are
+disjoint). Residues at a fixed height are additive (they are reductions
+of the n₂(λ₂)(ρ)-quotients), so Ψ̃^{(1)}(ρ)/n₂(λ₂)(ρ) has residue
+β_{2,ρ} − ι_ρ^{(2)}(s₂) ≠ 0, which forces dv₂(Ψ̃^{(1)}(ρ)) = λ₂ EXACTLY
+with that residue. The new label factor: ι_ρ^{(2)}(r₂)(β_{2,ρ}) = 0
+gives ι_ρ^{(2)}(r₂^τ)(β_{2,ρ} − ι_ρ^{(2)}(s₂)) =
+ι_ρ^{(2)}(r₂)(β_{2,ρ}) = 0 with r₂^τ(Z) = r₂(Z + s₂) monic irreducible
+of degree deg r₂ (translation is a K₂[Z]-automorphism), i.e. r₂^τ is the
+minimal polynomial of the new residue root: the label at Ψ̃^{(1)} is
+(λ₂, r₂^τ). Since these roots keep dv₂ = λ₂ and the package holds at
+Ψ̃^{(1)} (LEMMA HE7-12(c)(d) with W + w), LEMMA HE7-9(b) at Ψ̃^{(1)} puts
+them on a λ₂ side of the new polygon — the side survives. ∎(c)
+
+**(d).** dv₂(Ψ̃(ρ)) = λ < λ₂ = dv₂(w(ρ)): the ultrametric min is
+uniquely attained, so dv₂(Ψ̃^{(1)}(ρ)) = λ exactly; and w(ρ)/n₂(λ)(ρ)
+has strictly positive value, residue 0, so the residue at height λ is
+unchanged: β^{(1)}_{2,ρ} = β_{2,ρ}, same label. ∎(d)
+
+**(e).** dv₂(Ψ̃(ρ)) = λ > λ₂ = dv₂(w(ρ)): now Ψ̃(ρ)/n₂(λ₂)(ρ) has
+residue 0 and w(ρ)/n₂(λ₂)(ρ) has residue ι_ρ^{(2)}(s₂) ≠ 0, so
+dv₂(Ψ̃^{(1)}(ρ)) = λ₂ exactly with residue −ι_ρ^{(2)}(s₂), whose minimal
+polynomial is Z + s₂. ∎
+
+**The wiring (how HE7.A(3)'s continuation reads at a mixed node).** At
+any node whose polygon has several sides or whose side residual has
+several distinct factors, split per clause (a) and continue PER BLOCK;
+each block's node is pure, so every displayed lemma applies verbatim
+there — HE7.A(2) at exponent 1; the α-refine with LEMMAS
+HE7-12/HE7-13/HE7-8 at a repeated K₂-rational linear power (the refine
+being an operation on the BLOCK's read: the block's next node is again
+read, split if mixed, and so on); the level-3 branch at
+ℓ₂·deg r ≥ 2. Three consequences, each inherited rather than new:
+
+* *Termination.* Along any path of this recursion the moves are: SPLIT
+  (≥ 2 blocks, so each block's degree strictly drops), PEEL (degree
+  drops by D″; at most μ₂ − 1 ever fire, the [r3] pigeonhole at LEMMA
+  HE7-8), REFINE (degree fixed; the refined-at slope strictly increases
+  — LEMMA HE7-13 at the pure node gives every next-polygon slope > λ₂,
+  and a subsequent block's single side IS one of those slopes), DECIDE /
+  LEVEL-3 (terminal for this ladder; level 3 is THEOREM HE7.D's problem,
+  gated at μ₂ ≥ 4 as shown in (a)). An infinite path therefore has an
+  infinite all-refine tail on a fixed polynomial at pure single-side
+  nodes with strictly increasing integer slopes — LEMMA HE7-8's
+  hypothesis set, derived, and refuted by LEMMA HE7-8 as displayed. So
+  the [r2] box on LEMMA HE7-8 ("the hypothesis set is the read's ACTUAL
+  configuration") now holds at mixed nodes too, THROUGH the block route.
+* *W ≠ 0 (LEMMA HE7-12(d) [r3]).* Along any path the increments'
+  values dv₂(w_i) are the refined-at slopes of THAT path, strictly
+  increasing by the previous bullet — pairwise distinct, so the [r3]
+  ultrametric-equality argument applies verbatim. (Distinct blocks'
+  chains live at DIFFERENT keys and never mix increments.)
+* *The naive whole-f_S continuation is REFUTED, not merely unproved.*
+  Clause (e) shows a refine drags every steeper class down to λ₂ with
+  residue −ι(s₂). At ONE repeated class per side (all 144 PE3-probe
+  members) the sequential whole-key route never revisits λ₂ and
+  coincides with the block route; at TWO repeated classes on one side
+  (R_{λ₂} = (Z−a)²(Z−b)², first live at μ₂ = 4) the sequential route
+  oscillates FOREVER between the two classes at the same slope λ₂ (each
+  class's decided position is dragged back by the other's refine — the
+  annex leg's T4 tooth exhibits the cycle). The per-class discipline is
+  load-bearing, not stylistic.
+
+**Remark R-a's disposition (folded per the PE3 report).** A SIMPLE
+factor r₂′ of an inseparable R_{λ₂} — decided by neither HE7.A(2)
+(whole-residual separability hypothesis) nor HE7.A(3) (which speaks of
+the repeated factor) — is decided at its own block by clause (a): the
+block's residual is c·r₂′^{k}, and at k = 1 (every machine-observed
+case) THEOREM HE7.A(2) applies to the block AT THE CURRENT KEY, no
+refine needed — "the simple class's side persists" is clause (c), and
+its persistence is bookkeeping, not a prerequisite: the block never sees
+w at all.
+
+**Honesty box (BOX-4-adjacent; what this annex does NOT claim).** The
+link between the multiplicity m of r in R_{λ₂}(f_S) and the block
+exponent k (equivalently the block length L_{λ,r} = k·ℓ₂ deg r) is NOT
+claimed — it is HE7-BOX-4's declined product link one step over
+(residual multiplicativity over the block factorization would give
+k = m; the note declines the family). The read never consults m: it
+computes each block's own node and applies the trichotomy THERE, and
+every emitted letter is unconditionally correct (an HE7.A(2) instance at
+its own key, licensed by LEMMA HE7-12(c)); the exponent question affects
+only WHICH branch fires. Machine: k = m at every observed member (the
+144 PE3-probe members and the annex leg below; e.g. the parked
+(Z−(b−a))² side at the annex configurations — exponent 2 = multiplicity
+2). Likewise not claimed: L_{C_{λ₂,Z−s₂}} ≥ 2 — if the repeated class's
+block has length 1 it is separable-decided and no refine fires there,
+harmlessly.
+
+**Machine record.**
+
+1. *The PE3 probe (committed at b574f25, cited as this annex's primary
+   machine record):* `verification/openmath/he7_pe3_probe12.py` — 144
+   members (96 mixed (Z−a)²(Z−b) nodes at μ₂ = 3, n = 12, plus 48 pure
+   cubes), derived top-first continuation, **σ == PARI 144/144, 0
+   violations**, first machine contact of any μ₂ ≥ 3 refine, 2-step
+   chains included; the counter-instance to the pure-node conclusion
+   recorded. Re-run for this annex in an isolated sandbox
+   (`/tmp/he7_annex_sandbox`, committed artifacts untouched):
+   **bit-identical GREEN — 144/144, results-JSON leaf-diff vs the
+   committed artifact EMPTY (even the 5.3 s timing leaf reproduced);
+   artifact md5s at annex time: runner 61d9f81cea79…, results
+   dfd9fe2342b8…, output 710a31d1ca28… — all byte-frozen.**
+2. *The annex leg (additive, new file; every sealed artifact
+   byte-frozen):* `verification/openmath/he7annex_supp.py`, the first
+   machine contact of TWO repeated classes at one side and of any
+   μ₂ = 4 (n = 16) refine. Frame = the sealed battery's (2,1,1),
+   Φ′ = x² − p, u = 5, T₂ = 10; deg f = 16, μ₂ = 4; p ∈ {5,7},
+   s ∈ {1,2}, λ₂ ∈ {11,12}. Configurations: (A) R₂ = (Z−a)²(Z−b)²
+   (two repeated classes), read by the PER-CLASS route — each class
+   refined from the node's OWN key Ψ̃ (thread a: Ψ̃ − w_a; thread b:
+   Ψ̃ − w_b), each thread continued on its own > λ₂ sides (the block's
+   data read off f_S itself: the parked classes sit at dv₂ = λ₂
+   exactly, contributing a constant to h_{F₂} above λ₂ — LEMMA
+   HE6R1-2's translation mechanism); (B) R₂ = (Z−a)³(Z−b) (repeated
+   class of multiplicity 3 + parked simple, one-thread sequential —
+   the probe's mechanism at μ₂ = 4); (C) pure controls (Z−a)⁴.
+   Preregistered predictions: **P1** σ == PARI member-by-member, both
+   configurations + controls; **P2** at each thread's entry refine the
+   λ₂ side persists with the translated residual EXACTLY (clause (c):
+   config A: c(Z−(b−a))² of length 2 at thread a, symmetrically at
+   thread b; config B: c(Z−(b−a)) of length 1 at the final chain key);
+   **P3** per-thread refined-at slopes strictly increase (clause (b) +
+   LEMMA HE7-13 at the pure sub-nodes); **P4 (tooth)** the naive
+   single-key sequential route (the probe's own selection rule) FAILS
+   on every config-A member — refine-cap hit with the λ₂ slope
+   revisited (the cycle of clause (e)); **P5 (tooth)** on pure controls
+   the λ₂ side does NOT survive (LEMMA HE7-13 as displayed) — the
+   mixed/pure boundary is real. Verdict to be appended below from the
+   committed artifacts after the sealed run.
+
+   **[run record, 2026-08-09, from the committed artifacts] GREEN — 96
+   members, σ == PARI 96/96, 0 violations, 0 level-3 skips, 3.5 s**
+   (`he7annex_supp_output.txt`, `he7annex_supp_results.json`): 48
+   config A + 32 config B + 16 pure controls over the 8 rows; 148
+   refines; the first machine σ at n = 16 (letters include {(16,1)},
+   {(4,1),(12,1)}, {(8,1),(8,1)}, {(4,2),(4,2)}). Predictions: **P1 ✓**
+   96/96 with Σef = 16; **P2 ✓** 128/128 thread-entry parked residuals
+   EXACT (config A: the monic (Z−(b−a))² of length 2 at BOTH threads;
+   config B: (Z−(b−a)) of length 1), plus 132 persistent clause-(c)
+   checks green along the chains; **P3 ✓** 0 floor violations across
+   all 148 refines; **P4 ✓ 48/48 — the naive single-key route CYCLES
+   on every two-repeated-class member** (cap 24 hit with every refine
+   stuck at λ₂; the disclosed smoke member: 24 of 24 refines at λ₂);
+   **P5 ✓** 16/16 pure controls lose the λ₂ side (LEMMA HE7-13 as
+   displayed) while every mixed member RETAINS it. The R-a route fired
+   32× (config B's simple class decided at the ORIGINAL key, before
+   any refine — "the block never sees w"). Disclosures: the sealed
+   smoke found no logic defect; ONE pre-run instrument change is
+   disclosed in the runner docstring (the σ oracle's nfinit p-maximal
+   hint for deg-16 tractability; both oracles cross-checked identical
+   on the smoke member); the exponent observation k = m held on every
+   member (the honesty box's disclosure line).
+
+**HE7-BOX-1 (arc record) — dated APPEND (2026-08-09).** This line
+continues the [r1]/[r2]/[r3] record inside HE7-BOX-1 (§S9); under the
+acceptance freeze it cannot be inserted there, so it lives here:
+**PE3 HAS NOW RUN (report `HE7_passPE3_report.md`, 111ac7f): CLEAN — 0
+CRITICAL, 0 GAP, 1 MINOR (F-1, this annex's subject; R-a folded);
+machine leg bit-identical GREEN plus two fresh legs (780/780 f₁ = 2
+unramified family; 144/144 mixed-residual probe). The 2-clean count
+completed 1/2 → 2/2: HE7 IS ACCEPTED — the first stage-one note through
+the hostile-arc bar. The text is frozen at the accepted body; this
+dated annex discharges the owed F-1 rider (ANNEX-LEMMA HE7-13′ +
+the block reading of HE7.A(3)/§S6(iii) + the R-a disposition), edits
+nothing above, and moves no sealed number.**
+
+**What does not move.** Every displayed statement and proof of the
+frozen body; every sealed artifact and pin of §S10/§S11 (byte-frozen
+md5s re-verified above); THEOREM HE7.A at pure nodes and everywhere at
+μ₂ ≤ 2 (mixed nodes need μ₂ ≥ 3); the n = 8 closure §S8 (μ₂ = 2, all
+nodes pure — the dictionary is untouched); COROLLARY HE7.B's grade
+sentences; THEOREM HE7.C/HE7.D and the μ₂ ≥ 4 level-3 gate (re-derived
+per block in clause (a) with the same arithmetic); every box HE7-BOX-1…5
+as written, HE7-BOX-4 in particular (this annex leans on its declined
+link NOWHERE, per the honesty box).
+
+================================================================================
+PASTE B — CONSUMED LEVEL-1 STATEMENTS (HE6_PROOF_2026-08-08.md §S1 + §S3 heads, verbatim lines 55-200: frame, the two standing conventions, the STRUCK (LIFT) + LEMMA HE6-1L [r1] + RIDER + NON-PROPAGATION, DEFINITION HE6-1, LEMMA HE6-0'' (the SLOT form), LEMMAS HE6-0/0'/1/2/2')
+================================================================================
+
+## S1. FRAME, CONVENTIONS, STATEMENTS
+
+O a complete DVR, π a uniformizer, v(π) = 1, K₀ = Frac(O), residue field
+F_Q, both characteristics; v extended (uniquely) to a fixed algebraic
+closure K̄₀. Φ′ ∈ O[x] monic irreducible of degree D′ = e₁f₁ with roots of
+v = h/e₁, gcd(h,e₁) = 1; ψ ∈ F_Q[T] irreducible of degree f₁ with root
+η_θ := res(θ^{e₁}π^{−h}) for θ a root of Φ′; K := F_Q(η_θ) ≅ F_{Q^{f₁}};
+dv := e₁v. For a (T1)/(T2) point ξ write **ι_ξ : K → k̄** for the
+F_Q-embedding η_θ ↦ η_ξ (well defined by (T2)), and L_ξ := K₀(ξ).
+
+> **CONVENTION [r1] (the two standing hypotheses on f — R2/F2 and R6/F7).**
+> Throughout, **disc f ≠ 0** (f separable) and **Φ′ ∤ f**, equivalently
+> **A₀ ≠ 0** (no root of f is a root of Φ′). *The second is not a
+> restriction: if A₀ = 0 then Φ′ | f, and disc f ≠ 0 forces f = Φ′·f̃ with
+> Φ′ ∤ f̃; the peeled factor Φ′ is irreducible of degree D′ and contributes
+> the KNOWN σ-block (e₁, f₁), while f̃ is again monic with all roots
+> (T1)/(T2) points, disc f̃ ≠ 0 and μ̃ = μ − 1, so every statement below is
+> applied to f̃.* Without this convention a root ρ with Φ′(ρ) = 0 has
+> dv(Φ′(ρ)) = ∞ and carries NO finite side label, and then the sum over
+> finite labels in (†) of §S5 is not exhaustive, Σ_λ L_λ = μ fails, and
+> HE6-3's elimination loses its premise — Codex PE1 finding 2's
+> counterexample f = Φ′(Φ′ + π²) at Φ′ = x − π, where the displayed (†)
+> reads κ = 2κ on 1 < κ < 2. (The alternative repair, an ∞-label column
+> n_∞ = D′L_∞ with L_∞ := μ − Σ_λ L_λ, also works — see the r1 record — but
+> the peel is cleaner and is what is adopted.)
+
+f monic on the genre-G opening locus, f = Φ′^μ + Σ_{j<μ}A_jΦ′^j with
+deg A_j < D′, dv(A_j) := min_i(e₁v(a_{j,i}) + ih); F(Y) := Y^μ +
+Σ_j A_j(θ)Y^j; P(F) := lower hull of {(j, dv(A_j))}_{j≤μ} (dv(A_μ) = 0);
+sides have dv-slope λ = u/ℓ in lowest terms and length L_λ = ℓd_λ.
+
+> **CONVENTION (ϖ-normalizers: twist-free).** Fix once and for all
+> ϖ := x^{i₀}π^{a₀} with i₀h + e₁a₀ = 1 and 0 ≤ i₀ < e₁ (possible since
+> gcd(h,e₁) = 1). **[r1, R7/F8]** a₀ may be NEGATIVE (e.g. (e₁,h) = (2,3)
+> gives i₀ = 1, a₀ = −1, ϖ = xπ^{−1}), so **ϖ ∈ K₀[x], not O[x]** — its
+> coefficients are Galois-fixed, which is all that is ever used (§S6.1).
+> Then dv(ϖ(ξ)) = 1 EXACTLY at every (T1)/(T2) point ξ, and
+> every normalizer used below is a power ϖ^k. Because they are powers of ONE
+> element, the normalizer cocycle is trivial: **HE3's twist constants ẑ^{fl}
+> do not occur anywhere in this note**, and all residual polynomials are
+> defined relative to this one convention. For the side with left endpoint
+> (j₁, m₁), slope λ = u/ℓ, length ℓd:
+>
+>     R_λ(Z) := Σ_{t=0}^{d} res( A_{j₁+tℓ}(θ)/ϖ(θ)^{m₁−tu} ) Z^t ∈ K[Z],
+>
+> the coefficient being 0 whenever the pin at j₁+tℓ lies strictly above the
+> λ-line. So R_λ has degree d and R_λ(0) ≠ 0, and its variable Z is the class
+> of y^ℓ/ϖ^u.
+
+> ~~**(LIFT)** For every c ∈ K^× and every k ∈ ℤ_{≥0} there is C ∈ O[x]
+> with deg C < D′, dv(C) = k, and res(C(θ)/ϖ(θ)^k) = c.~~
+> **[r1, R3] STRUCK — FALSE as stated**, found independently twice: Codex
+> PE1 finding 4 (at (e₁,f₁,h) = (1,2,1), k = 0 only F_Q ⊊ K is reached) and
+> HE7's FINDING HE7-F1 (at (3,1,2) the height k = 1 is attained by no C at
+> all). Replaced by HE7's sharper form, which satisfies both finders'
+> counter-instances and gives the EXACT reachable set:
+>
+> **LEMMA HE6-1L [r1] ((LIFT), corrected = LEMMA HE7-L1).** Fix k ∈ ℤ_{≥0}
+> and let i₀ = i₀(k) be the unique 0 ≤ i₀ < e₁ with i₀h ≡ k (mod e₁). The
+> set of residues realised as res(C(θ)/ϖ(θ)^k) by C ∈ O[x] with deg C < D′
+> and dv(C) = k is
+>
+>     { Σ_{t ∈ T(k)} c_t·η_θ^{t} : c_t ∈ F_Q, not all 0 },
+>     T(k) := { t < f₁ : k ≥ (i₀ + e₁t)·h } ,
+>
+> which is ALL of K^× iff T(k) = {0,…,f₁−1} iff **k ≥ (i₀(k) + e₁(f₁−1))h**;
+> a k-uniform sufficient condition is **k ≥ (D′−1)h**; if T(k) = ∅ the
+> height k is not attained at all. *(Proof: HE7 §S4.1. Codex's general
+> failure condition "k < (i(k) + e₁(f₁−1))h" IS this threshold — the two
+> findings name ONE defect, and HE7's is the sharper statement, so it is the
+> one adopted; both finders are cited.)*
+>
+> **RIDER [r1, R3 second half].** The residue above is read after dividing by
+> ϖ^k, not by the canonical height-k normalizer n(k) = x^{i}π^{a}; the two
+> differ by ϖ(θ)^k/n(k)(θ) = (θ^{e₁}π^{−h})^{q} = η_θ^{q}, where i₀k = i+qe₁
+> and a₀k − a = −qh. This is a FIXED nonzero element of K, universal in C and
+> ι_ξ-transportable, so every statement below about vanishing, non-vanishing,
+> degrees and surjectivity is unaffected.
+>
+> **NON-PROPAGATION (checked).** Every use of (LIFT) in this note is at
+> k = (d−t)u with t < d and u = ℓκ > ℓD′h ≥ D′h > (D′−1)h (DEFINITION HE6-1
+> requires κ > D′h), and the t = d coefficient is B_d := 1 (height 0,
+> residue 1, no lift needed). So all f₁ slots are available at every use and
+> no theorem of this note changes.
+
+> **DEFINITION HE6-1 (THE ENLARGED TEST FAMILY).** Let κ = u/ℓ ∈ ℚ in lowest
+> terms with κ > D′h, and let r = Z^{d} + Σ_{t<d}c_tZ^t ∈ K[Z] be monic
+> irreducible with r(0) ≠ 0. Choose, by (LIFT), B_t ∈ O[x] with
+> deg B_t < D′, dv(B_t) = (d−t)u and res(B_t(θ)/ϖ(θ)^{(d−t)u}) = c_t (and
+> B_t := 0 if c_t = 0), and set
+>
+>     Ψ_{κ,r} := Φ′^{ℓd} + Σ_{t<d} B_t·Φ′^{ℓt}  ∈ O[x],
+>
+> monic of degree D″ := D′ℓd (each B_tΦ′^{ℓt} has degree < D′ℓd). For ℓ = 1
+> this is HE3's recentered-key family enlarged in DEGREE; for ℓ ≥ 2 it is a
+> test polynomial sitting at a **FRACTIONAL** dv-height — the height that
+> HE3-BOX-6 correctly observed no element of the stage ring can reach. In
+> Montes' language these are the order-2 keys; nothing below uses that fact.
+
+> **LEMMA HE6-0″ [r1, R5/F6] (THE SLOT LEMMA at (T1)/(T2) POINTS — the form
+> this note actually consumes).** Let A = Σ_{i<D′}a_ix^i with a_i ∈ O and let
+> ξ be ANY point of K̄₀ satisfying (T1) and (T2). Then
+> dv(A(ξ)) = min_i(e₁v(a_i) + ih) EXACTLY, and the residue of the attaining
+> class, read after division by ϖ(ξ)^{dv(A)}, is ι_ξ(γ)·η_ξ^{q} where
+> γ = Σ_t res(a_{i₀+e₁t})η_θ^{t} ∈ K is the level-1 slot residue at θ and
+> η_ξ^{q} is the RIDER's universal twist. *Proof: GENHN-2's proof uses (T1)
+> only to separate the e₁ classes (e₁v(a_i) + ih ≡ ih mod e₁, and
+> i ↦ ih mod e₁ is a bijection of ℤ/e₁ because gcd(h,e₁) = 1) and (T2) only
+> to make {1, η_ξ, …, η_ξ^{f₁−1}} F_Q-independent (η_ξ is a root of the
+> irreducible ψ of degree f₁); it never uses Φ′(ξ) = 0. ∎* **Codex PE1
+> finding 6 is the observation that GENHN-2 as PASTED is stated at roots θ of
+> Φ′ only, while this note applies it at roots of f and at roots of the
+> (generally reducible) test polynomials — an overconsumption cured by this
+> restatement.**
+
+> **LEMMA HE6-0 (the disk criterion).** For ξ ∈ K̄₀ put dv(ξ) := e₁v(ξ). If
+> (T1)/(T2) hold at ξ then dv(Φ′(ξ)) > D′h; otherwise
+> dv(Φ′(ξ)) = D′·min(dv(ξ), h) ≤ D′h.
+
+> **LEMMA HE6-0′ (the local forcing — HE3-0′ REPAIRED at ℓ ≥ 2).** If a root
+> ρ of f has label (λ, r) with λ = u/ℓ in lowest terms and d_r = deg r, then
+> e₁ℓ | e(L_ρ) and f₁d_r | f(L_ρ); hence [L_ρ : K₀] ≥ D′ℓd_r. (HE3-0′ read
+> the residue off y_ρ/n(λ)(ρ), which does not exist for ℓ ≥ 2; the correct
+> reading is y_ρ^ℓ/ϖ(ρ)^u, which does.)
+
+> **LEMMA HE6-1 (the ξ-side: EVERY root of a test polynomial carries the
+> intended label).** Every root ξ of Ψ_{κ,r} satisfies (T1)/(T2),
+> dv(Φ′(ξ)) = κ, and ι_ξ(r)(β_ξ) = 0 where β_ξ := res(Φ′(ξ)^ℓ/ϖ(ξ)^u).
+> **No irreducibility of Ψ_{κ,r} is claimed or used.**
+
+> **LEMMA HE6-2 (the ρ-side evaluation: the family SEPARATES labels).** Let ξ
+> be any (T1)/(T2) point, δ := dv(Φ′(ξ)), and — when δ has denominator
+> dividing ℓ — β := res(Φ′(ξ)^ℓ/ϖ(ξ)^u). Then
+>
+>     dv(Ψ_{κ,r}(ξ)) = ℓd·min(δ, κ) + ε(ξ),
+>     ε(ξ) > 0  ⟺  δ = κ and ι_ξ(r)(β) = 0.
+>
+> In particular, for a root ρ of f with label (λ_ρ, r_ρ): ε(ρ) > 0 iff
+> (λ_ρ, r_ρ) = (κ, r). **One test polynomial per label, and each sees exactly
+> its own class.**
+
+> **LEMMA HE6-2′ (the f-side evaluation at a test point).** For any
+> (T1)/(T2) point ξ with dv(Φ′(ξ)) = κ and β_ξ as above,
+> dv(f(ξ)) = h_F(κ) + δ(ξ) where h_F(κ) := min_j(dv(A_j) + jκ) and
+> δ(ξ) > 0 ⟺ κ is a slope λ of P(F) and ι_ξ(R_λ)(β_ξ) = 0.
+
+================================================================================
+PASTE C — THE THREE RECONCILIATION LEMMAS (HE6R1_RECON_2026-08-08.md §S3.3-S3.4b, verbatim lines 226-410: LEMMA HE6R1-1 + proof, LEMMA HE6R1-2 + proof + consequences, FINDING HE6R1-F2 + LEMMA HE6R1-3 + proof)
+================================================================================
+### S3.3 The descent step and TERMINATION: LEMMA HE6R1-1, and the erratum the widening forces on HE7
+
+HE7's THEOREM HE7.C states the jump condition as "a side with **ℓ ≥ 2**
+carrying a residual factor of multiplicity ≥ 2 — exactly HE6-BOX-1's
+configuration", and THEOREM HE7.A(3)'s trichotomy splits on ℓ₂ = 1 vs
+ℓ₂ ≥ 2 alone. Both **repeat HE6.B's enumeration error one level up**: at
+ℓ₂ = 1 with a repeated factor of degree d_{r₂} ≥ 2 the level-2 α-refine
+Ψ ↦ Ψ − ŝ₂n₂(λ₂) does **not** exist, because ŝ₂ would need residue
+β₂ ∈ K₂(β₂) ∖ K₂.
+
+> **FINDING HE6R1-F1 (on HE7 §S2, classification: statement over-reach at
+> the jump condition; NON-PROPAGATING at n ≤ 15).** THEOREM HE7.A(3)'s
+> "at a slope with a repeated residual factor and ℓ₂ = 1 the level-2
+> α-refine exists" is false when the repeated factor has degree ≥ 2, and
+> THEOREM HE7.C's jump condition ("ℓ ≥ 2") is correspondingly too narrow.
+> Both are repaired by LEMMA HE6R1-1 with **identical bounds**. The finding
+> does not propagate at the degrees HE7 claims: an ambiguity needs a
+> repeated level-2 factor with ℓ₂d_{r₂} ≥ 2, hence L_{λ₂} ≥ 4, hence
+> **μ₂ ≥ 4** — impossible at HE7's own μ₂ ≤ 3 scope (and at n = 8, where
+> μ₂ = 2), so §S8's dictionary and the n = 8 closure are untouched.
+
+> **LEMMA HE6R1-1 (the widened jump condition descends, with HE7.C's
+> bounds).** At any level i, a node requires a level jump exactly when its
+> side carries a repeated irreducible residual factor r_i (multiplicity
+> m ≥ 2) with **ℓ_i·deg r_i ≥ 2**; the complementary repeated case
+> (ℓ_i = deg r_i = 1) is an α-refine, finite by LEMMA HE7-8. At every jump:
+>
+>     μ_i ≥ L_{λ_i} ≥ m·ℓ_i·deg r_i ≥ 2·2 = 4 ,
+>     μ_{i+1} ≤ deg R_{λ_i}/deg r_i ≤ μ_i/(ℓ_i·deg r_i) ≤ μ_i/2 .
+>
+> Hence the number J of level jumps in any history satisfies
+> **J ≤ log₂ μ − 1 ≤ log₂ n − 2**, exactly as in THEOREM HE7.C; at n = 8
+> there is one jump with μ₂ ≤ 2, and the first degree admitting two jumps is
+> n = 16.
+
+*Proof.* The jump condition: HE6.A decides a separable residual at every ℓ;
+HE3's stage-α decides a repeated K-rational linear factor at an integer
+slope (HE6 §S6.3, unchanged by r1); the complement is exactly a repeated
+irreducible r with ℓ·deg r ≥ 2 (§S2's enumeration). The two displays are
+then HE7.C's own computations with "ℓ ≥ 2" replaced by "ℓ·d_r ≥ 2": the
+first because L_λ = ℓ·deg R_λ ≥ ℓ·m·d_r = m(ℓd_r) ≥ 4, the second because
+μ₂ = deg f_S/D″ ≤ n_λ/(D′ℓd_r) = D′L_λ/(D′ℓd_r) = deg R_λ/d_r ≤ μ/(ℓd_r),
+using LEMMA HE6-3(b) (n_λ = D′L_λ, (SEP)-free) for the middle step and
+ℓd_r ≥ 2 for the last. Iterating gives 4 ≤ μ_J ≤ μ/2^{J−1}. Every non-jump
+step either strictly decreases μ, or is an α-refine (finite, LEMMA HE7-8),
+or terminates the branch at μ = 1. ∎
+
+**Both branches of the widened box supply the descent factor ℓd_r ≥ 2 —
+(iv) as ℓ ≥ 2 with d_r ≥ 1, (ii) as d_r ≥ 2 with ℓ = 1 — so the widening
+costs nothing in the termination bound.** That is the reconciliation's
+structural punchline: the inequality that makes the ladder finite is the
+same inequality that defines the widened box.
+
+### S3.4 LEMMA HE6R1-2 (BLOCK PROJECTION) — the composition item the widening surfaced, PROVED
+
+The widening prompted the check "how does the level-2 read START?", and
+that exposed a gap that is not about ℓ at all. THEOREM HE7.A is stated about
+the block factor f_S and puts μ₂ := deg f_S/D″; HE7-BOX-4 declines to prove
+the multiplicity-weighted class size |S_{λ,r}| = D′ℓ·m_r·d_r on the ground
+that "σ-decision uses only the level-2 polygon of the actual f_S". But when
+the block is **proper** (R_λ has another distinct factor, or P(F) has
+another side), f_S is not exhibited by the read and deg f_S is not pinned by
+HE6+HE7: at a non-separable R_λ the HE6.A sandwich has slack
+D′ℓΣ_r(m_r−1)d_r. First live configuration: a boxed node with a proper
+block needs μ ≥ 5, i.e. n ≥ 10 — inside the region COROLLARY HE7.B(i)
+claims. The following lemma closes it.
+
+> **LEMMA HE6R1-2 (block projection).** Let f be monic on the opening locus
+> with disc f ≠ 0 and Φ′ ∤ f, let (λ, r) be a level-1 label of f, S = S_{λ,r},
+> f_S the block factor (LEMMA HE7-6) and g := f/f_S ∈ O[x]. Then:
+>
+> **(a)** r ∤ R_λ^{(g)}, the λ-residual of g's own Φ′-development; hence for
+> **every** level-2 point ξ, dv₂(g(ξ)) = ℓ·h_{F_g}(λ) — a constant c_g
+> depending on (g, λ) only.
+>
+> **(b)** For every rational κ₂ > T₂, h_{F₂,f}(κ₂) = h_{F₂,f_S}(κ₂) + c_g,
+> where h_{F₂,·} is the level-2 support function of the Ψ-adic development.
+> Consequently the part of the level-2 polygon P₂(f) with slope > T₂ is the
+> part of P₂(f_S) translated by c_g: same breakpoints, same slopes λ₂, same
+> lengths L_{λ₂} — so
+>
+>     μ₂ = Σ_{λ₂ > T₂} L_{λ₂}(f)   and   |S_{λ,r}| = D″·μ₂
+>
+> are **computable from f**, without exhibiting f_S.
+>
+> **(c)** At every such side, R_{λ₂}^{f} and R_{λ₂}^{f_S} have the same
+> degree L_{λ₂}/ℓ₂ and the same monic irreducible factors (same radical);
+> in particular one is separable iff the other is, and in the separable case
+> **they are equal**, so THEOREM HE7.A(2) may be applied with the residual
+> read off f.
+
+*Proof.* **(a)** g is monic in O[x] (monic division by f_S), g \| f, all
+roots of g are roots of f hence (T1)/(T2) points, and disc g ≠ 0. Suppose
+r \| R_λ^{(g)}. LEMMA HE6-4 applied to g (its proof needs only (RES),
+LEMMA HE6-1/HE6-2/HE6-2′ and LEMMA HE6-3 for g, all available for any such
+g) gives a root of g with level-1 label (λ, r) — contradicting that S
+collects **all** roots of f with that label and S ∩ roots(g) = ∅. So
+r ∤ R_λ^{(g)}. Now let ξ be a level-2 point: dv(Φ′(ξ)) = λ and β_ξ is a root
+of ι_ξ(r), so ι_ξ(r) is β_ξ's minimal polynomial over ι_ξ(K), and
+ι_ξ(R_λ^{(g)})(β_ξ) ≠ 0 because r ∤ R_λ^{(g)}. LEMMA HE6-2′ applied to g
+therefore gives dv(g(ξ)) = h_{F_g}(λ) with **no excess**, i.e.
+dv₂(g(ξ)) = ℓ·h_{F_g}(λ) =: c_g for every level-2 point ξ. ✔
+
+**(b)** Fix a rational κ₂ > T₂ and let r₂,₀ ∈ K₂[Z] be monic irreducible of
+degree > max(deg f/D″, μ₂) with r₂,₀(0) ≠ 0 (finite fields have
+irreducibles of every degree). By (LIFT₂) — available at κ₂ > T₂, §S3.2
+item 2 — form Ψ₂ := Ψ₂,{κ₂,r₂,₀}; by LEMMA HE7-7 every root ξ of Ψ₂ is a
+level-2 point with dv₂(Ψ(ξ)) = κ₂ and β₂,ξ of minimal-polynomial degree
+> the degree of any level-2 residual of f or of f_S, so LEMMA HE7-7′(b)
+gives dv₂(f(ξ)) = h_{F₂,f}(κ₂) and dv₂(f_S(ξ)) = h_{F₂,f_S}(κ₂), both with
+no excess. Since valuations add along f = f_S·g and dv₂(g(ξ)) = c_g by (a),
+h_{F₂,f}(κ₂) = h_{F₂,f_S}(κ₂) + c_g. Both sides are concave piecewise-linear
+in κ₂ with breakpoints at the polygon slopes; two such functions differing
+by a constant on (T₂, ∞) have the same breakpoints and the same slopes
+there, i.e. the same sides with the same lengths. LEMMA HE7-9(a) says every
+side of P₂(f_S) has slope > T₂ and THEOREM HE7.A(1) that their lengths sum
+to μ₂; hence Σ_{λ₂ > T₂}L_{λ₂}(f) = μ₂ and deg f_S = D″μ₂. ✔
+
+**(c)** Degrees: L_{λ₂}(f) = L_{λ₂}(f_S) by (b), and deg R_{λ₂} = L_{λ₂}/ℓ₂
+in both cases. Factors: let r₂ ∈ K₂[Z] be monic irreducible with r₂(0) ≠ 0
+and form Ψ₂ := Ψ₂,{λ₂,r₂}. Every root ξ is a level-2 point at height λ₂
+whose β₂,ξ has minimal polynomial ι^{(2)}_ξ(r₂). For such ξ,
+dv₂(f(ξ)) = h_{F₂,f}(λ₂) + δ_f(ξ) and dv₂(f_S(ξ)) = h_{F₂,f_S}(λ₂) + δ_S(ξ)
+(LEMMA HE7-7′(b)); subtracting (a) and (b) gives δ_f(ξ) = δ_S(ξ). Hence
+ι^{(2)}_ξ(R^f_{λ₂})(β₂,ξ) = 0 ⟺ ι^{(2)}_ξ(R^{f_S}_{λ₂})(β₂,ξ) = 0, i.e.
+r₂ \| R^f_{λ₂} ⟺ r₂ \| R^{f_S}_{λ₂} (a field embedding transports
+divisibility, and β₂,ξ's minimal polynomial is ι(r₂)). As r₂ was arbitrary,
+the radicals coincide; with equal degrees, separability of one forces
+separability and equality of both. ∎
+
+**Consequences (why this completes the composition).** (1) At a boxed node
+the read starts from f alone: μ₂ and the level-2 sides come from
+LEMMA HE6R1-2(b), the residual up to its radical from (c). (2) At a
+**non-separable** R_λ with several distinct factors, each distinct factor's
+class size is pinned by running (b) for that factor's key:
+|S_{λ,r_i}| = D′ℓd_{r_i}·μ₂^{(i)} — so **HE7-BOX-4's count is available in
+READ form** (not as the closed form D′ℓm_rd_r, which stays unproved and
+unneeded), and the multiplicities m_{r_i} are never consulted: the read
+descends into every distinct factor's block and each descent terminates by
+LEMMA HE6R1-1. (3) Since the level-2 residual of f agrees with f_S's
+whenever it is separable, THEOREM HE7.A(2) applies with data read off f.
+
+### S3.4b LEMMA HE6R1-3 (THE LEVEL-2 PEEL) — found BY THE MACHINE, and it is Codex F2 one level up
+
+The sealed battery reported 12 non-decisions out of 944 members (status
+BADTOTAL: the reader's block sizes did not sum to deg f). Diagnosis: at those
+members **dv₂(A_0^{(2)}) = ∞, i.e. Ψ | f** — the level-2 polygon loses its
+j = 0 pin and one block goes missing. This is the **exact level-2 analogue of
+Codex PE1 finding 2** (the Φ′ | f stratum at level 1, repaired at level 1 by
+R2): HE7 never states the hypothesis Ψ ∤ f_S, without which
+COROLLARY HE7-7″ has roots with no finite level-2 label.
+
+> **FINDING HE6R1-F2 (on HE7 §S1/§S2/§S5.5, classification: MISSING
+> HYPOTHESIS; repairable in one line, machine-discovered).** THEOREM HE7.A
+> and COROLLARY HE7-7″ require **Ψ ∤ f_S**. Without it the Ψ-development's
+> constant coefficient vanishes and roots shared with Ψ carry dv₂(Ψ(ρ)) = ∞,
+> exactly as Φ′ | f breaks HE3-0(iii) at level 1. Repair: LEMMA HE6R1-3.
+
+> **LEMMA HE6R1-3 (the level-2 peel).** Suppose Ψ | f_S. Then
+> g₀ := gcd(f_S, Ψ) **equals Ψ**, Ψ is IRREDUCIBLE over O of degree D″, and
+> it is a simple factor of f_S with
+>
+>     e(Ψ) = e₁ℓ ,    f(Ψ) = f₁d_r .
+>
+> Consequently f_S = Ψ·f_S′ with **Ψ ∤ f_S′**, every root of f_S′ is still a
+> level-2 point, and THEOREM HE7.A applies to f_S′ with μ₂ − 1 in place of
+> μ₂. The peel terminates (μ₂ drops by 1 each time, and in fact at most once).
+
+*Proof.* Every root ξ of g₀ is a root of Ψ = Ψ_{λ,r}, hence a level-2 point
+with level-1 label (λ, r) (LEMMA HE6-1), so LEMMA HE6-0′ gives
+[L_ξ : K₀] ≥ (e₁ℓ)(f₁d_r) = D″. Since f_S ∈ O[x] and its root set is
+Galois-stable, g₀ ∈ O[x] is Galois-stable too, so it contains ξ's whole orbit:
+deg g₀ ≥ D″. But g₀ | Ψ gives deg g₀ ≤ deg Ψ = D″. Hence deg g₀ = D″, g₀ = Ψ,
+and Ψ is a single Galois orbit, i.e. irreducible, with e ≥ e₁ℓ, f ≥ f₁d_r and
+ef = D″ = (e₁ℓ)(f₁d_r), forcing equality on both. Simplicity and Ψ ∤ f_S′
+follow from disc f_S ≠ 0 (a second Ψ-factor would repeat roots). ∎
+
+**Machine confirmation.** The post-seal supplementary leg
+(`verification/openmath/he6r1_supp.py`, item (A)) applies this peel to all 12
+degenerate members: **12/12 decided, and all 5 PARI-checkable ones AGREE**,
+each with exactly one peel and σ = {(2,2),(2,2)} = {(e₁ℓ, f₁d_r)} ⊔ {the
+level-2 block of f_S′} — the lemma's prediction, member by member.
+
+### S3.5 RECONCILIATION VERDICT
+
+
+================================================================================
+PASTE D — LEMMA GENHN-2, THE LEVEL-1 SLOT LEMMA (GENHN_PROOF_2026-08-08.md, verbatim lines 405-485: the consumption audit, the statement, the proof, and the twist paragraph)
+================================================================================
+> — the ψ-cancellation argument), hence every side of the stage polygon
+> P(F) has dv-slope > D′h (LEMMA HE6-3(a), which PROVES this with no (SEP)
+> hypothesis), hence every pin (j, dv(A_j)) lies strictly above the line of
+> slope D′h through (μ, 0): dv(A_j) > (μ−j)D′h, i.e. ≥ (μ−j)D′h + 1 because
+> dv is ℤ-valued on the A_j. See also this note's own §S3.1 remark in HE6
+> ("why D′h and not S = e₁h").
+>
+> **CONSUMPTION AUDIT.** HE6 and HE7 consume **LEMMA GENHN-2** (the SLOT
+> LEMMA) and HE3-0's locus, never GENHN-1's node display, so nothing in the
+> σ-decision chain propagates this erratum; HE6's f₁ ≥ 2 σ-prediction
+> {(2,2),(2,2)} at genre (1,2,4) is proof-only and rests on HE6's own D′h
+> remark. **RESIDUE (GENHN-ERR-1, named honestly):** whether GENHN's own
+> f₁ ≥ 2 count-side displays that substitute the numeric value S = e₁h for
+> the node height (the (μ,K)-cluster read "at the S-node", and any entry-
+> exponent arithmetic keyed to it) need re-reading with D′h is NOT settled
+> here. The law's FORM is unaffected (it is stated as the cluster read AT THE
+> NODE, whatever the node height is), no f₁ ≥ 2 stage genre is machine-
+> exercised, and none is live below n = 8.
+
+**Prehistory/embedding composition (consumed).** Prehistory chains
+compose by GENIND-1(ii) at general m (@ pin); embedded genres (the
+frame = stage × siblings) compose by LEMMA GENIND-3's
+scale-then-Hensel fibration (@ pin), the sibling fiber multiplying
+the stage law — the n = 5 instances (V1E2: sibling fiber
+q^{N−(5h+1)/2} − 1 = the split root's Newton-determined digit count;
+V4E2: fiber (q−1)q^{N−5v₄−1}) are derived in S11's preregistration
+and machine-checked (GN-STAGE2).
+
+## S4. SLOTS AND NO-CANCELLATION (GENHN.A(ii))
+
+> **LEMMA GENHN-2.** Let A = Σ_{i<D′} a_i x^i, a_i ∈ O (any
+> coordinate A_j). Then
+>
+>     dv(A(θ)) = min_i (e₁·v(a_i) + i·h)   EXACTLY,
+>
+> for every root θ of Φ′ and every lift; the minimum's residue class
+> mod e₁ is i·h mod e₁ (distinct for distinct i mod e₁ since
+> gcd(h, e₁) = 1), and at a within-class tie among i, i+e₁, …,
+> i+e₁(f₁−1) the residue is Σ_t res(a_{i+e₁t}θ^{i}·(θ^{e₁}π^{−h})^t
+> π^{ht})-normalized = Σ_t res(a_{i+e₁t})·η^t ≠ 0 because
+> {1, η, …, η^{f₁−1}} are F_Q-independent (deg ψ = f₁). Hence each
+> A_j carries exactly ONE K-digit slot per integer dv-height — the
+> slot's K-digit assembling the f₁ within-class O-digits — and the
+> formal slot-min IS the valuation of the class of A in R: the
+> graded read transcribed pointwise. Across classes there are no
+> ties (distinct residues mod e₁): this is JC-LOAD's no-cancellation
+> holding BY CLASS SEPARATION + RESIDUE-FIELD INDEPENDENCE —
+> elementary, hence not consumed. W-9's dim_K 𝒜(T) = E = e₁ is this
+> statement's graded shadow (cited as frame).
+
+*Proof.* Ultrametric equality when all candidate values are
+attained at distinct heights; distinct classes never tie (dv ≡ ih
+mod e₁). Within a class, divide by the attaining monomial
+θ^iπ^{v}: the competing residues are res(a_{i+e₁t})·η^t, and a
+vanishing F_Q-combination of 1, η, …, η^{f₁−1} with some nonzero
+coefficient contradicts [F_Q(η) : F_Q] = f₁. Residue of the slot =
+that combination — one K-digit. The e₁ = 2, f₁ = 1 instance is
+GENH4-2(E) (parity); e₁ = 1, f₁ = 2 is GENH4-2(F); e₁ = 3, f₁ = 1
+is the E31 three-class computation (machine: the E31 rows). ∎
+
+**The twist (letters only).** Normalizers: for each dv-height m pick
+n(m) := x^{i(m)}π^{a(m)} with i(m)·h + e₁·a(m) = m, 0 ≤ i(m) < e₁.
+Products wrap through θ^{e₁} = (unit lift)·π^h: n(κ)^t =
+ẑ^{fl}·n(tκ) with the explicit integer fl = the wrap count — W-9's
+cocycle, literal. Side residuals assembled with coherent
+normalizers are therefore z-power-twisted slot digits (the S6
+computation and the battery's readers implement exactly this);
+counts are twist-blind (J-D0: (digits) ↦ (twisted digits) is a
+type-preserving bijection), LETTERS are twisted.
+
+## S5. THE WINDOW LEDGER (GENHN.A(iii))
+
+> **LEMMA GENHN-3 (caps, raggedness, consultation).** (a) A computed
+> dv-value is LIFT-STABLE iff < e₁N: an out-of-window O-digit at
+> height v = N in class i = 0 gives dv = e₁N, undercutting every
+> in-window value ≥ e₁N and tying none below it; conversely all
+> in-window slot digits agree across lifts. For f₁ ≥ 2 the boundary
+> band (value readable, K-residue needing an out-of-window
+> component) exits UND exactly as GENH4-CAP(F). (b) The class-i slot
+> string of a coordinate ends at e₁(N−1) + ih: RAGGED across
+> classes; the band beyond min-class end is free depth on every
+
+END OF BRIEF. Deliver your report now, per the charge at the top.
