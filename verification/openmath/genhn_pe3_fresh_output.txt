@@ -1,0 +1,13 @@
+== FR1: e2 = 3 tower genre (2,1,6)->(3,1,2) /Q2, u2 = 7 ==
+== FR2: p = 3 tower genre (2,1,4)->(1,2,2), K2 = F9 ==
+== FR3: item (6) probe, u3 = 23 (Phi3 = Phi2A^2 - 16xPhi') ==
+  Phi3 Phi'-dev dv-pins: [10, 8, 7, None, 0] (b = 0..4)
+  leaf level-2 dv2(D): [46, 35, 27, None]
+  146 gp jobs total
+  gp stderr tail:   ***   Warning: new maximum stack size = 2000003072 (1907.352 Mbytes).
+  *** nfinit: Warning: increasing stack size to 16000000.
+  *** nfinit: Warning: increasing stack size to 16000000.
+
+  T-FLOOR: below-floor member PARI = [[2, 1], [10, 1]] (naive dict {(12,1)}) -> FIRED
+  teeth: {'T-SLOT-E3': 18, 'T-FLOOR': 1, 'T-DICT-F9': 2}
+=== VERDICT: GREEN -- checks {'FR1-D': 32, 'FR2-D': 40, 'FR3-sym': 5, 'FR3-D': 12, 'FR1-K': 3, 'FR1-S': 40, 'TEETH': 2, 'FR2-K': 3, 'FR2-S': 36, 'FR3-K': 3} (total 176), 0 violations (10.2s) ===
