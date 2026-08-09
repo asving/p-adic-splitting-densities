@@ -1,0 +1,298 @@
+{
+ "unit": "TAMEKQX",
+ "checks": [
+  {
+   "name": "P1-foot-n2",
+   "ok": true,
+   "detail": "sum R_tau = 1"
+  },
+  {
+   "name": "P1-foot-n3",
+   "ok": true,
+   "detail": "sum R_tau = 1"
+  },
+  {
+   "name": "P1-foot-n4",
+   "ok": true,
+   "detail": "sum R_tau = 1"
+  },
+  {
+   "name": "P1-foot-n5",
+   "ok": true,
+   "detail": "sum R_tau = 1"
+  },
+  {
+   "name": "R-sanity-F2",
+   "ok": true,
+   "detail": "F_2 = (qt^2+q+2)/(2(q+1))"
+  },
+  {
+   "name": "R-sanity-mean",
+   "ok": true,
+   "detail": "E_n = q/(q+1)"
+  },
+  {
+   "name": "R-sanity-proj",
+   "ok": true,
+   "detail": "K=F projective mean = 1 at n=5"
+  },
+  {
+   "name": "P2-f2-k1-n2",
+   "ok": true,
+   "detail": "monic"
+  },
+  {
+   "name": "P2-f2-k2-n2",
+   "ok": true,
+   "detail": "monic"
+  },
+  {
+   "name": "P2-f2-k3-n2",
+   "ok": true,
+   "detail": "monic"
+  },
+  {
+   "name": "P2-f2-k4-n2",
+   "ok": true,
+   "detail": "monic"
+  },
+  {
+   "name": "P2-f2-k1-n3",
+   "ok": true,
+   "detail": "monic"
+  },
+  {
+   "name": "P2-f2-k2-n3",
+   "ok": true,
+   "detail": "monic"
+  },
+  {
+   "name": "P2-f2-k3-n3",
+   "ok": true,
+   "detail": "monic"
+  },
+  {
+   "name": "P2-f2-k4-n3",
+   "ok": true,
+   "detail": "monic"
+  },
+  {
+   "name": "P2-f2-k1-n4",
+   "ok": true,
+   "detail": "monic"
+  },
+  {
+   "name": "P2-f2-k2-n4",
+   "ok": true,
+   "detail": "monic"
+  },
+  {
+   "name": "P2-f2-k3-n4",
+   "ok": true,
+   "detail": "monic"
+  },
+  {
+   "name": "P2-f2-k4-n4",
+   "ok": true,
+   "detail": "monic"
+  },
+  {
+   "name": "P2-f2-k1-n5",
+   "ok": true,
+   "detail": "proj"
+  },
+  {
+   "name": "P2-f2-k2-n5",
+   "ok": true,
+   "detail": "proj"
+  },
+  {
+   "name": "P2-f2-k3-n5",
+   "ok": true,
+   "detail": "proj"
+  },
+  {
+   "name": "P2-f2-k4-n5",
+   "ok": true,
+   "detail": "proj"
+  },
+  {
+   "name": "P3-S4R-n4",
+   "ok": true,
+   "detail": "E(4) = S4.R closed form"
+  },
+  {
+   "name": "P3-S4R-n5",
+   "ok": true,
+   "detail": "E(5) = S4.R closed form"
+  },
+  {
+   "name": "P2-f3-k1-n2",
+   "ok": true,
+   "detail": "monic"
+  },
+  {
+   "name": "P2-f3-k2-n2",
+   "ok": true,
+   "detail": "monic"
+  },
+  {
+   "name": "P2-f3-k3-n2",
+   "ok": true,
+   "detail": "monic"
+  },
+  {
+   "name": "P2-f3-k4-n2",
+   "ok": true,
+   "detail": "monic"
+  },
+  {
+   "name": "P2-f3-k1-n3",
+   "ok": true,
+   "detail": "monic"
+  },
+  {
+   "name": "P2-f3-k2-n3",
+   "ok": true,
+   "detail": "monic"
+  },
+  {
+   "name": "P2-f3-k3-n3",
+   "ok": true,
+   "detail": "monic"
+  },
+  {
+   "name": "P2-f3-k4-n3",
+   "ok": true,
+   "detail": "monic"
+  },
+  {
+   "name": "P2-f3-k1-n4",
+   "ok": true,
+   "detail": "monic"
+  },
+  {
+   "name": "P2-f3-k2-n4",
+   "ok": true,
+   "detail": "monic"
+  },
+  {
+   "name": "P2-f3-k3-n4",
+   "ok": true,
+   "detail": "monic"
+  },
+  {
+   "name": "P2-f3-k4-n4",
+   "ok": true,
+   "detail": "monic"
+  },
+  {
+   "name": "P2-f3-k1-n5",
+   "ok": true,
+   "detail": "proj"
+  },
+  {
+   "name": "P2-f3-k2-n5",
+   "ok": true,
+   "detail": "proj"
+  },
+  {
+   "name": "P2-f3-k3-n5",
+   "ok": true,
+   "detail": "proj"
+  },
+  {
+   "name": "P2-f3-k4-n5",
+   "ok": true,
+   "detail": "proj"
+  },
+  {
+   "name": "P4-KR-S4R",
+   "ok": true,
+   "detail": "Kac-Rice E[X_K](n>=4) == S4.R"
+  },
+  {
+   "name": "P4-KR-depth15",
+   "ok": true,
+   "detail": "1/q-expansion agrees to depth 15 (num+den+1 = 15; strata w<=8, vals<=16)"
+  },
+  {
+   "name": "P5-KR-n2",
+   "ok": true,
+   "detail": "TK-Q reproduced"
+  },
+  {
+   "name": "P5-KR-n3",
+   "ok": true,
+   "detail": "unram n=3 anchor reproduced"
+  },
+  {
+   "name": "P6-T1",
+   "ok": true,
+   "detail": "wrong-weight mutant breaks 6 cells"
+  },
+  {
+   "name": "P6-T2",
+   "ok": true,
+   "detail": "swapped n=3 menu rows break f=2 k=1 n=3"
+  },
+  {
+   "name": "P6-T3",
+   "ok": true,
+   "detail": "delta=f block dropped breaks f=2 k=1 n=2"
+  }
+ ],
+ "fails": 0,
+ "teeth": [
+  {
+   "name": "T1-wrong-weight",
+   "bites": 6
+  },
+  {
+   "name": "T2-swapped-rows",
+   "bites": 1
+  },
+  {
+   "name": "T3-block-drop",
+   "bites": 1
+  }
+ ],
+ "S4R_mean_f2": "(2*q**7 + 2*q**6 + 3*q**5 + 2*q**4 + 3*q**3 + q**2 + q)/(q**7 + 2*q**6 + 3*q**5 + 4*q**4 + 4*q**3 + 3*q**2 + 2*q + 1)",
+ "KR_depth_series": "-3*x**15 + 2*x**14 - 2*x**13 + 3*x**12 - 2*x**11 - x**9 + 3*x**8 - 2*x**7 + x**6 - 3*x**5 + 4*x**4 - 2*x**3 + x**2 - 2*x + 2",
+ "verdict_table": {
+  "f2_k1_n2": "EQUAL",
+  "f2_k2_n2": "EQUAL",
+  "f2_k3_n2": "EQUAL",
+  "f2_k4_n2": "EQUAL",
+  "f2_k1_n3": "EQUAL",
+  "f2_k2_n3": "EQUAL",
+  "f2_k3_n3": "EQUAL",
+  "f2_k4_n3": "EQUAL",
+  "f2_k1_n4": "EQUAL",
+  "f2_k2_n4": "EQUAL",
+  "f2_k3_n4": "EQUAL",
+  "f2_k4_n4": "EQUAL",
+  "f2_k1_n5": "EQUAL",
+  "f2_k2_n5": "EQUAL",
+  "f2_k3_n5": "EQUAL",
+  "f2_k4_n5": "EQUAL",
+  "f3_k1_n2": "EQUAL",
+  "f3_k2_n2": "EQUAL",
+  "f3_k3_n2": "EQUAL",
+  "f3_k4_n2": "EQUAL",
+  "f3_k1_n3": "EQUAL",
+  "f3_k2_n3": "EQUAL",
+  "f3_k3_n3": "EQUAL",
+  "f3_k4_n3": "EQUAL",
+  "f3_k1_n4": "EQUAL",
+  "f3_k2_n4": "EQUAL",
+  "f3_k3_n4": "EQUAL",
+  "f3_k4_n4": "EQUAL",
+  "f3_k1_n5": "EQUAL",
+  "f3_k2_n5": "EQUAL",
+  "f3_k3_n5": "EQUAL",
+  "f3_k4_n5": "EQUAL"
+ },
+ "elapsed_s": 65.0,
+ "verdict": "GREEN"
+}

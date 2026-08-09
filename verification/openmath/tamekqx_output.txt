@@ -1,0 +1,49 @@
+[    0.1s] menus loaded: n=2:3 rows, n=3:5 rows, n=4:11 rows, n=5:17 rows
+[    0.1s] PASS  P1-foot-n2  sum R_tau = 1
+[    0.1s] PASS  P1-foot-n3  sum R_tau = 1
+[    1.9s] PASS  P1-foot-n4  sum R_tau = 1
+[    5.8s] PASS  P1-foot-n5  sum R_tau = 1
+[    7.5s] PASS  R-sanity-F2  F_2 = (qt^2+q+2)/(2(q+1))
+[    7.7s] PASS  R-sanity-mean  E_n = q/(q+1)
+[   17.2s] PASS  R-sanity-proj  K=F projective mean = 1 at n=5
+[   26.3s] PASS  P2-f2-k1-n2  monic
+[   26.3s] PASS  P2-f2-k2-n2  monic
+[   26.3s] PASS  P2-f2-k3-n2  monic
+[   26.3s] PASS  P2-f2-k4-n2  monic
+[   26.3s] PASS  P2-f2-k1-n3  monic
+[   26.3s] PASS  P2-f2-k2-n3  monic
+[   26.3s] PASS  P2-f2-k3-n3  monic
+[   26.4s] PASS  P2-f2-k4-n3  monic
+[   27.1s] PASS  P2-f2-k1-n4  monic
+[   27.3s] PASS  P2-f2-k2-n4  monic
+[   27.4s] PASS  P2-f2-k3-n4  monic
+[   27.6s] PASS  P2-f2-k4-n4  monic
+[   34.1s] PASS  P2-f2-k1-n5  proj
+[   36.2s] PASS  P2-f2-k2-n5  proj
+[   38.2s] PASS  P2-f2-k3-n5  proj
+[   40.3s] PASS  P2-f2-k4-n5  proj
+[   41.2s] PASS  P3-S4R-n4  E(4) = S4.R closed form
+[   41.2s] PASS  P3-S4R-n5  E(5) = S4.R closed form
+[   49.7s] PASS  P2-f3-k1-n2  monic
+[   49.7s] PASS  P2-f3-k2-n2  monic
+[   49.7s] PASS  P2-f3-k3-n2  monic
+[   49.7s] PASS  P2-f3-k4-n2  monic
+[   49.7s] PASS  P2-f3-k1-n3  monic
+[   49.7s] PASS  P2-f3-k2-n3  monic
+[   49.7s] PASS  P2-f3-k3-n3  monic
+[   49.7s] PASS  P2-f3-k4-n3  monic
+[   50.0s] PASS  P2-f3-k1-n4  monic
+[   50.0s] PASS  P2-f3-k2-n4  monic
+[   50.0s] PASS  P2-f3-k3-n4  monic
+[   50.1s] PASS  P2-f3-k4-n4  monic
+[   54.2s] PASS  P2-f3-k1-n5  proj
+[   55.5s] PASS  P2-f3-k2-n5  proj
+[   56.9s] PASS  P2-f3-k3-n5  proj
+[   58.3s] PASS  P2-f3-k4-n5  proj
+[   58.4s] PASS  P4-KR-S4R  Kac-Rice E[X_K](n>=4) == S4.R
+[   63.7s] PASS  P4-KR-depth15  1/q-expansion agrees to depth 15 (num+den+1 = 15; strata w<=8, vals<=16)
+[   63.7s] PASS  P5-KR-n2  TK-Q reproduced
+[   63.7s] PASS  P5-KR-n3  unram n=3 anchor reproduced
+[   64.8s] PASS  P6-T1  wrong-weight mutant breaks 6 cells
+[   64.9s] PASS  P6-T2  swapped n=3 menu rows break f=2 k=1 n=3
+[   65.0s] PASS  P6-T3  delta=f block dropped breaks f=2 k=1 n=2
