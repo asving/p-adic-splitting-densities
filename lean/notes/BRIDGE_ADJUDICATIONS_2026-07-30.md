@@ -14578,3 +14578,22 @@ the coboundary statement in its place; the witness re-derived
 (naive (Z−1)² phantom vs coherent irreducible, PARI-confirmed);
 the node argument's attainment displayed with the no-circularity
 clause; frozen-pin audit clean. 0/2; PE3 next.
+
+---
+
+## WAVE 25 FOLDED (wc2hob6cq, 2/2): HE3 PE3 CLEAN → 1/2 (the last closure note at match point) · riders landed (HE6R1 acceptance record 06971c3; HE7 cocycle line fe58946) — WAVE 26: HE3 rider → PE4 (THE CLOSURE-COMPLETION ATTEMPT) — 2026-08-09
+
+HE3 PE3 (6d3187b → c40cbf0): CLEAN — 0C/0G/1m (the §S1 starved-
+corner list inexact under both readings — the true corner is
+{(2,1),(3,1)}, with (4,1) omitted under one reading and (2,2)
+unreachable under the other; fence conservative, nothing moves).
+The [r2] machinery held under attack: W(k) re-derived with
+integrality PROVED (via h⁻¹ mod e₁), the coboundary cancellations
+verified by direct computation at both identity sites, the witness
+recomputed to the digit, the μ ≤ 3 enumeration verified EXHAUSTIVE,
+no-circularity consumer-by-consumer. FRESH: the starved-corner
+family itself (a depth-2 ALPHA cascade at K^× = {1}!) + the
+coherent-vs-naive flip at THREE new geographies incl. non-prime
+q=4 by construction — PARI sided with the coherent read at each.
+1/2; rider (one line) then PE4 = the attempt that completes the
+ENTIRE chain dependency closure.
