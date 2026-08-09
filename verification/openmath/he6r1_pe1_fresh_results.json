@@ -1,0 +1,62 @@
+{
+ "legA": {
+  "11": {
+   "members": 139,
+   "decided": 139,
+   "pari_jobs": 139,
+   "agree": 139,
+   "mismatch": 0,
+   "sig": {
+    "((4, 2),)": 125,
+    "((2, 2), (2, 2))": 6,
+    "((2, 4),)": 8
+   },
+   "secs": 53.1
+  },
+  "13": {
+   "members": 139,
+   "decided": 139,
+   "pari_jobs": 139,
+   "agree": 139,
+   "mismatch": 0,
+   "sig": {
+    "((4, 2),)": 131,
+    "((2, 2), (2, 2))": 4,
+    "((2, 4),)": 4
+   },
+   "secs": 67.3
+  }
+ },
+ "legB": {
+  "3": {
+   "members": 32,
+   "peels": 32,
+   "members_with_refine": 32,
+   "agree": 32,
+   "mismatch": 0,
+   "sig": {
+    "((2, 2), (4, 2))": 16,
+    "((2, 2), (2, 2), (2, 2))": 16
+   },
+   "secs": 1.2
+  },
+  "5": {
+   "members": 96,
+   "peels": 96,
+   "members_with_refine": 96,
+   "agree": 96,
+   "mismatch": 0,
+   "sig": {
+    "((2, 2), (4, 2))": 48,
+    "((2, 2), (2, 2), (2, 2))": 48
+   },
+   "secs": 9.2
+  }
+ },
+ "viol": [],
+ "pins": {
+  "he6r1_checks.py": "7112f7c738ed13fb352f96849da1d309",
+  "he6_checks.py": "321fa4d4990eef67ff6a20f375c32366",
+  "he6r1_supp.py": "79da51dcd40535da82effb2e347b7f18"
+ }
+}
