@@ -2861,3 +2861,128 @@ both ways).
 u(1) = total = 1. Decorrelated leg: the adjudication's row 2 records
 Codex's sympy re-solve of the S5.2 recursion under exactly this
 boundary (m = 2 closed forms exact at N = 2..12).
+
+### R4 (CODEX F5): the CS4-F visibility floor — display erratum at S5.3 + GENIND.A(IV)
+
+**R4.0 The finding, quoted (F5, CONFIRMED, regraded MINOR display).**
+
+> "CS4-F(k)'s law (q(q−1)/2)·q^{4N−10k−4} displayed without its
+> visibility floor 4k ≤ N−1 at S5.3 AND GENIND.A(IV); at (2,2,1)
+> the display returns 2^{−6}, true locus 0; the sibling CS4-E
+> carries its floor explicitly."
+
+**R4.1 The erratum, floor re-derived.** Read BOTH displays — S5.3's
+CS4-F(k) entry and GENIND.A(IV)'s first-instances clause ("the
+f-first genre FULL(k)-(2²)…") — WITH the floor: **CS4-F(k) has
+VISIBILITY FLOOR 4k ≤ N−1.** Derivation (the same one PE1-M3 ran
+for the E-sibling's 2h ≤ N−1): the genre's heights are
+(4k, 3k, 2k, k) (S5.3's own display), so v(a₀) = 4k on the locus;
+the keying fires DRAIN first at v(a₀) ≥ N (GENIND.A(I)), so the
+genre is inhabited iff 4k ≤ N−1. At (q, N, k) = (2, 2, 1) the
+unfloored display returns (2·1/2)·2^{8−10−4} = 2^{−6} — a
+NON-INTEGER against a true locus of 0.
+
+**R4.2 Committed numbers unaffected — the gate lines cited.** The
+sealed runner gates its genre-F predictor on exactly the floor:
+`while 4 * k <= N - 1:` at **genind_checks.py lines 709 and 869**
+(md5-pinned e7ca150b, consulted read-only). Machine leg H
+(@ f5271e4, GREEN): both gate lines verified verbatim in the pinned
+file; (2,2,1) gated to 0 where the bare display says 2^{−6};
+(2,5,1) above the floor with law 2^{20−10−4} = 2⁶ = 64.
+Display-only, the exact defect species as PE1-M3 — the E-law's
+existing floor sentence at S5.3 stands unchanged.
+
+### R5 (CODEX F6): the converse read at degree level — one rider
+
+**R5.0 The finding, quoted (F6, CONFIRMED, regraded MINOR wording).**
+
+> "S5.1's sufficiency (padding + QRT-G2) proves degree-level
+> existence only; the converse 'm ≥ 4 realizes CS' at stage level
+> (arbitrary m-key clusters) is not established — the padded
+> construction's stage carries 4 keys."
+
+**R5.1 The rider.** Read GENIND.A(IV)'s converse clause
+("conversely m ≥ 4 realizes CS with positive locus at every q") at
+DEGREE level: **every degree n ≥ 4 realizes a CS event with
+positive locus at every q, both characteristics** — which is what
+S5.1's sufficiency proof delivers (re-derived check: the padding
+block is coprime to the center and separable at level 0, hence a
+DECIDED piece — the padded state's CS event is the QRT-G2(h;(1²))
+stage's, and that stage carries exactly 4 keys at every n). The
+STAGE-level parse — for each m ≥ 4, an m-KEY stage itself opening a
+CS event with positive locus — is NOT claimed by this note.
+Displayed stage-level instances exist at m = 4 (the QRT genres are
+the 4-key system's own), m = 5 (S5.3's embedded genres), and m = 6
+(S4.3's M6/SS6, machine-realized); at general m the stage-level
+statement is left unclaimed (the adjudication marks it likely true
+via general-m embedded genres, not shown). Consumers of (IV),
+re-walked at the three consuming sites this round: S5.2's
+positive-density sentence (a degree-level realization — the quartic
+e-first entry mass), S6's conditionality geography (n ≤ 3 vacuity =
+the necessity half), S7.4's finite enumerability (the necessity
+half). None consumes the stage-level parse.
+
+**R5.2 Verification.** The three-site consumer walk above; the
+m = 4, 5, 6 instances' committed laws (W-12 S2.5 pin; S5.3's
+tables; S4.3's machine record).
+
+### R6 (CODEX F4): the PE8-report notice + identity-vs-bound separated at Step 4's [r1] record
+
+**R6.0 The finding, quoted (F4, CONFIRMED, scoped to the PE8
+acceptance artifact, regraded MINOR at this note).**
+
+> "PE8 §4.1's necessity rationale is false: ∂F/∂u₁ = T₂ − u₂ ≥ 0
+> (claimed non-monotonicity wrong); 1 − Π(1 − u_i/T_i) is
+> coordinatewise increasing; upper bounds + union bound suffice for
+> W-12's (A2); exactness needed only for the stronger
+> exact-complement member."
+
+**R6.1 The notice (the report itself stays untouched — its author's
+artifact per the standing rule; the notice lives here and at the
+ledger).** GENIND_passPE8_report.md §4.1 (its L176–178) writes "the
+r = 2 case u₁T₂ + T₁u₂ − u₁u₂ is already not monotone in u₁ once
+u₂ > T₂ − u₂" — FALSE: ∂/∂u₁(u₁T₂ + T₁u₂ − u₁u₂) = T₂ − u₂ ≥ 0
+identically on the admissible domain u₂ ≤ T₂. More: at r = 2, 3,
+∂/∂u_i[Π_j T_j − Π_j(T_j − u_j)] = Π_{j≠i}(T_j − u_j) ≥ 0 — the
+composed undecided mass is coordinatewise NONDECREASING in the
+child u's, so upper bounds on children DO propagate to an upper
+bound on the frame, and the union bound Σ_i u_i·Π_{j≠i}T_j
+dominates it. The defect sits in the acceptance report's
+elaboration of WHY (CS-EXACT) is needed, not in this note's
+accepted text.
+
+**R6.2 The separation (a dated rider on Step 4's frozen [r1]
+record).** The record's load-bearing sentences STAND ("an identity
+only if those u's are exact" — true; P(n)'s fourth member fails
+under bound-only inputs — true, the member is an equality). The
+rider: **(CS-EXACT) is required because the induction propagates
+the exact-complement IDENTITY (P's fourth member — the
+inclusion–exclusion as an equality), NOT because bounds fail to
+propagate: upper bounds propagate by monotonicity + union bound
+(R6.1), which is exactly the mechanism GENIND-C1(ii) (R1.2 above)
+uses for the vanishing-rate BOUND. The two consumers want different
+strengths; only the identity consumer needs (CS-EXACT).** This
+discharges R1.2(ii)'s "see R6" pointer.
+
+**R6.3 Verification.** Machine leg F (@ f5271e4, GREEN, symbolic):
+dF/du₁ = T₂ − u₂; ∂G/∂u_i = Π_{j≠i}(T_j − u_j) at r = 2, 3; the
+union-bound dominance certificates (UB − G with nonnegative
+coefficients in (u_i, T_i − u_i)). Decorrelation record: the fold's
+scaffold P-4 PREREGISTERED the same arithmetic before the run and
+its sympy leg confirmed it — two decorrelated models, same kill.
+
+### ANNEX R — close (2026-08-09)
+
+The S4 repair queue is EXECUTED in full: R1 (F3) @ a1525ea +
+machine leg f5271e4; R2–R6 in this append stack. Byte-freezes at
+the close: accepted body + pre-annex appends lines 1–2548 md5
+eefcf658 (re-verified at each annex commit); the R1 annex slice
+(lines 2549–2745) byte-identical to a1525ea's; machine leg pinned
+42fd603e (py) / d938ad82 (output); sealed runner e7ca150b and every
+sealed artifact untouched. Grade honesty: this annex cures the six
+adjudicated findings by display riders, one erratum, and the R1
+derivations at the accepted text's own grade; the annex has NOT
+itself been through a hostile pass. The 2/2 acceptance attaches to
+the frozen body; the annex carries the ratification fold's
+CHALLENGE disposition (CODEX_GENINDRAT_2026-08-09.md S4) with the
+queue now landed.
