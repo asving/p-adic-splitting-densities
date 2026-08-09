@@ -1,0 +1,12 @@
+C0 pins: 5/5 verified
+C1 row 15 = consF Zp q=2 N=7 k=1: 9 keys, 16384 members
+C1 row 16 = consF Zp q=2 N=8 k=1: 10 keys, 262144 members
+C1 row 19 = consF Fqt q=2 N=7 k=1: 9 keys, 16384 members
+C1 (P1): committed SPLTAIL(3)-only rows as predicted
+C2 (P2): own S6.1/S6.3 law == committed rows 15/16/19 key-for-key (9 + 10 keys)
+C3 (P3): wrong-cap w<N table == the PE5 failure-scenario numbers exactly (+ the refined-history propagation, disclosed); mismatch set == SPLTAIL/UND keys ONLY, both histories, no decided key moves; masses conserved (row16: 514+510=1024 empty-history, 1542+1530=3072 @(3,); row15: 2+126=128, 6+378=384)
+C4 (P4): 5 explicit 2SIDED(3,4) members at (Zp,2,7,k1): v2(Res(F,phi)) = 14 = 2u on all, two routes agree; halved/unhalved balances give j = 2; the mixed form gives j = 9 (impossible, self-alarming)
+C5 (P5): 21 SPLTAIL(3) lifts (3 states x 7 lifts incl. A0=0 corner): sigma == {(1,2),(1,2)} on all (0 bad); + 5 2SIDED members
+C5-T tooth: w=4 hidden-A0 state, lift u=7 -> ((2, 2),) vs lift u=9 -> ((1, 2), (1, 2)): FIRED (no single label lift-sound at 2w >= N)
+C6 (P6): five-mass closure coefficientwise [2,2,2] == 2*Phi2; ladder forms + mu_E == nu2 fractions exact at 7 points; extra-token tooth FIRED (any extra breaks the partition): S9.2's "- extra..." == 0, 2SIDED mass is EXACTLY 1/Phi2
+VERDICT: GREEN (0 violations) 0.1s

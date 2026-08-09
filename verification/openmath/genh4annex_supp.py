@@ -26,7 +26,20 @@ P3 (the WRONG-cap refutation, MINOR 1): the same recursion with the
    (masses conserved: 514 + 510 = the committed 1,024), and at
    (Zp,2,7,k1): SPLTAIL(4) = 96, SPLTAIL(5) = 24, SPLTAIL(6) = 6,
    UND = 2 (2 + 126 = 128); the mismatch set vs the committed rows is
-   EXACTLY {SPLTAIL(w): 2w >= N} + {UND@()} and nothing else.
+   EXACTLY the SPLTAIL/UND keys and nothing else (no decided
+   RAM/2SIDED/SPLITEQ/INERT key moves).
+   [DISCLOSED smoke catch, first sealed run cceca77: the sealed
+   prereg scoped the mismatch set to the EMPTY history; the run
+   caught the wrong cap propagating into the refined (3,)-history
+   node as well -- still SPLTAIL/UND keys only, values hand-derived
+   before this repair: row 16 @(3,): SPLTAIL(4..7) =
+   1,152/288/72/18, UND = 1,542 (1,530 + 1,542 = committed 3,072);
+   row 15 @(3,): SPLTAIL(4..6) = 288/72/18, UND = 6 (378 + 6 =
+   committed 384).  Instrument-side prereg miss (set scoping), not a
+   law defect; the refutation is STRENGTHENED (the misread cap also
+   corrupts refined histories).  One repair: the expected mismatch
+   tables below now carry both histories; verdict from the repaired
+   fresh run.]
 P4 (MINOR 2, v(Res) = 2u at genre F): explicit 2SIDED(3,4) members at
    (Zp,2,7,k1) with key phi = x^2+2x+4 (v(p1)=1>=k, v(p0)=2=2k exact,
    residue pair psi = y^2+y+1): every member has
@@ -333,9 +346,18 @@ def main():
     exp_wrong = {
         16: {((), 'SPLTAIL', (4,)): 384, ((), 'SPLTAIL', (5,)): 96,
              ((), 'SPLTAIL', (6,)): 24, ((), 'SPLTAIL', (7,)): 6,
-             ((), 'UND', ()): 514},
+             ((), 'UND', ()): 514,
+             ((3,), 'SPLTAIL', (4,)): 1152,
+             ((3,), 'SPLTAIL', (5,)): 288,
+             ((3,), 'SPLTAIL', (6,)): 72,
+             ((3,), 'SPLTAIL', (7,)): 18,
+             ((3,), 'UND', ()): 1542},
         15: {((), 'SPLTAIL', (4,)): 96, ((), 'SPLTAIL', (5,)): 24,
-             ((), 'SPLTAIL', (6,)): 6, ((), 'UND', ()): 2},
+             ((), 'SPLTAIL', (6,)): 6, ((), 'UND', ()): 2,
+             ((3,), 'SPLTAIL', (4,)): 288,
+             ((3,), 'SPLTAIL', (5,)): 72,
+             ((3,), 'SPLTAIL', (6,)): 18,
+             ((3,), 'UND', ()): 6},
     }
     for i, wrong in ((16, wrong16), (15, wrong15)):
         for kk, want in exp_wrong[i].items():
@@ -350,9 +372,15 @@ def main():
         if mism != want_mism:
             viol('C3', 'row %d mismatch set %s != %s' %
                  (i, sorted(mism), sorted(want_mism)))
+        if any(kk[1] not in ('SPLTAIL', 'UND') for kk in mism):
+            viol('C3', 'row %d: a DECIDED key moved: %s' %
+                 (i, sorted(mism)))
     say('C3 (P3): wrong-cap w<N table == the PE5 failure-scenario '
-        'numbers exactly; mismatch set == {SPLTAIL(2w>=N), UND} only; '
-        'masses conserved (row16: 514+510=1024, row15: 2+126=128)')
+        'numbers exactly (+ the refined-history propagation, '
+        'disclosed); mismatch set == SPLTAIL/UND keys ONLY, both '
+        'histories, no decided key moves; masses conserved '
+        '(row16: 514+510=1024 empty-history, 1542+1530=3072 @(3,); '
+        'row15: 2+126=128, 6+378=384)')
     results['checks']['C3-wrongcap'] = sum(len(v) for v in
                                            exp_wrong.values()) + 4
 

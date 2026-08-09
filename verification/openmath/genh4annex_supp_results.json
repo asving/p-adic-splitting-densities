@@ -1,0 +1,14 @@
+{
+ "checks": {
+  "C0-pins": 5,
+  "C1-rows": 3,
+  "C2-keys": 28,
+  "C3-wrongcap": 22,
+  "C4-members": 5,
+  "C5-lifts": 23,
+  "C6-points": 7
+ },
+ "elapsed_s": 0.1,
+ "verdict": "GREEN",
+ "violations": 0
+}
