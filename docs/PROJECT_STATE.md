@@ -3553,3 +3553,15 @@ candidate; read/σ unaffected), GENTOW4-BOX-2 (partial-side count
 layer) — wave B3 — plus the SIX new notes' hostile arcs (all 0/2).
 The σ/read chain at every n now rests on PROVED statements at
 attempt grade or better.
+
+**2026-08-09 DATED APPEND #13 — HE6R1 ACCEPTED 2/2 (PE3 CLEAN
+9aa0cc6; fresh route = first ℓ₂=3 genre incl. the wild p=3|e corner,
+246/246 dual-oracle).** Eight of the nine closure notes are through
+the bar; ONLY HE3 remains (r2 complete at 5babe16 — the coherent
+ϖ-convention pinned at DEF 1 with the phantom-refine witness
+re-derived, the §S1 node argument replaced by the Ψ-comparison
+route with attainment displayed; PE3 next). Minor riders owed:
+HE6R1 ×3 (incl. the cocycle-exponent line-value wrinkle, whose cure
+is also owed at HE7's 263cef0 copy — the F-1 mechanism: the correct
+argument is the pin height m₁, exact at ℓ=1 everywhere consumed).
+Box campaign: B3 resume dispatched (GENTOW-6 finish + HETOW PE1).

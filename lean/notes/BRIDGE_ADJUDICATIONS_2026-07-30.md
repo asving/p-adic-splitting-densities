@@ -14554,3 +14554,27 @@ no uncommitted work at risk. Board stable: 7 chain notes 2/2 ·
 HE6R1 1/2 (rider landed) · HE3 0/2 (r2 pending) · boxes: all
 majors proved at attempt grade, GENTOW-6 mid-flight, 6 new-note
 arcs open (GENTOW2 at 0/2 post-PE1).
+
+---
+
+## ★ WAVE 24 COMPLETE (resume wqi4sq948): HE6R1 ACCEPTED 2/2 (eighth closure note through) · HE3 r2 COMPLETE (coherent convention pinned; Ψ-comparison node route) — WAVE 25: riders + HE3 PE3 + B3 RESUME — 2026-08-09
+
+HE6R1 PE3 (48f4dad → 9aa0cc6): CLEAN — 0C/0G/3m. §S2's four-case +
+n ≤ 7 chain owned end-to-end; the [r2]-era timeline verified to the
+minute; HE6R1-1 == HE7.C [r1] character-for-character; the 21
+sealed exceptions reproduced with their mechanisms read from code.
+Minors: the annex rider's cocycle exponent takes a LINE VALUE
+(non-integer off the first side at ℓ₂ ≥ 2; correct argument = the
+pin height m₁; exact at ℓ=1 everywhere consumed; same wrinkle at
+HE7's 263cef0 line — cure owed both places); one NON-conservative
+stale grade ("HE3 at 1/2" — truth 0/2; BOX-1's corrected minimum
+prices the chain correctly); a finding-number collision. FRESH:
+first ℓ₂=3 genre (degree 12, r³ residual) at 4 frames incl. WILD
+p=3|e, 246/246 both oracles. **ACCEPTED 2/2.** HE3 r2 (b78e56a,
+79b604c, f045ee4, 5aca99b, 5babe16): 5/5 — DEF 1's construction
+pinned to the coherent normalizer class with the non-affine wrap
+formula W(k) displayed; the false invariance sentence STRUCK with
+the coboundary statement in its place; the witness re-derived
+(naive (Z−1)² phantom vs coherent irreducible, PARI-confirmed);
+the node argument's attainment displayed with the no-circularity
+clause; frozen-pin audit clean. 0/2; PE3 next.
