@@ -14493,3 +14493,30 @@ citation deserves the earliest hostile review). Note GENTOW5's
 grade-honesty: depth ≥ 3 capped at annex grade via the HE7 ANNEX R
 pin — the cap lifts when HE7's annex-stack acceptance (2/2, done)
 is folded into the pin wording at GENTOW5's arc.
+
+---
+
+## WAVE 23 FOLDED (wvukc3qlx, 2/2): HE6R1 PE2 CLEAN → 1/2 (487/487 non-prime-q first) · HE3 PE2 = 2 GAP + 3m (the coherent-convention display owed; chain sound under it, machine-adjudicated) — WAVE 24: HE3 r2 + HE6R1 rider → PE3 (acceptance attempt) — 2026-08-09
+
+HE3 PE2 (6d0ff09): F-1 the R_λ construction unpinned — the naive
+untwisted read produces a PHANTOM refine at a constructed (3;2,2,2;1)
+member while the coherent ϖ-convention read matches PARI ({(2,4)},
+peel 0 at all 8 letters) — the chain is SOUND under the
+HE6-CONVENTION/GENHN-§S4 twisted reading (wraps verified to form a
+coboundary); HE3 never displays it → r2 displays the convention.
+F-2: the §S1 node re-derivation's roots→slopes step is a
+non-sequitur (attainment missing); the correct Ψ-comparison route
+exists, undisplayed; fenced by GENHN [r1]'s independent consumption.
+Minors: a retired-carrier cite; supp P4 quasi-tautological
+(disclosed); the N1 demo geography (the PE2 fresh leg itself ran
+the true (2,1) geography — cite it). CLEAN: HE3-1L's cancellation
+GENUINELY PROVED (boundary verified); all six re-keyed sites; the
+N1 supplement; HE3-5; HE3-6; the consumer trace accurate. FRESH:
+first-ever e₁≥2∧f₁≥2 rows (7/7 PARI incl. degree-12 μ=3).
+
+HE6R1 PE2 (2118e59): CLEAN — 4 minors (an unflagged verbatim echo
+of PE1-F-3's falsified clause inside frozen HE7 §S5.5 L731 — dated
+line owed there, consumers scale-invariant; the ℓ≥2 cocycle-unit
+β^{c₁} omission in the scalar identification; stale cross-grades,
+conservative direction; the tag-convention precision). 1/2; rider
+then PE3 = the acceptance attempt.
