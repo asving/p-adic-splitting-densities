@@ -1,0 +1,80 @@
+A. m=2 closed forms vs the S5.2 recursion (symbolic, N=2..14)
+  [ok] A N=2 diff=0
+  [ok] A N=3 diff=0
+  [ok] A N=4 diff=0
+  [ok] A N=5 diff=0
+  [ok] A N=6 diff=0
+  [ok] A N=7 diff=0
+  [ok] A N=8 diff=0
+  [ok] A N=9 diff=0
+  [ok] A N=10 diff=0
+  [ok] A N=11 diff=0
+  [ok] A N=12 diff=0
+  [ok] A N=13 diff=0
+  [ok] A N=14 diff=0
+B. closed forms == W-11/HEX3.A's R(M) (M=1..14)
+  [ok] B M=1 diff=0
+  [ok] B M=2 diff=0
+  [ok] B M=3 diff=0
+  [ok] B M=4 diff=0
+  [ok] B M=5 diff=0
+  [ok] B M=6 diff=0
+  [ok] B M=7 diff=0
+  [ok] B M=8 diff=0
+  [ok] B M=9 diff=0
+  [ok] B M=10 diff=0
+  [ok] B M=11 diff=0
+  [ok] B M=12 diff=0
+  [ok] B M=13 diff=0
+  [ok] B M=14 diff=0
+C. rate u(N) <= N*Q^(N-1), N=2..14, Q in {2,3,4,5,8,9}
+  [ok] C Q=2 
+  [ok] C Q=3 
+  [ok] C Q=4 
+  [ok] C Q=5 
+  [ok] C Q=8 
+  [ok] C Q=9 
+D. D_l + M_l = N via D = min_j(v(a_j)+j*k) at committed hulls
+  [ok] D M6 child D=4 expect 4 (M=N-4, D+M=N)
+  [ok] D TWOCHILD A D=6 expect 6 (M=N-6, D+M=N)
+  [ok] D TWOCHILD B D=4 expect 4 (M=N-4, D+M=N)
+  [ok] D PSTEEP3 D=3 expect 3 (M=N-3, D+M=N)
+  [ok] D PSTEEP4 D=4 expect 4 (M=N-4, D+M=N)
+  [ok] D SS6 child D=6 expect 6 (M=N-6, D+M=N)
+E. route-prefactor bound rho <= Q^-(D-1)
+  [ok] E M6 q=2 rho=1/2048 vs Q^-3
+  [ok] E M6 q=3 rho=4/177147 vs Q^-3
+  [ok] E M6 q=4 rho=9/4194304 vs Q^-3
+  [ok] E M6 q=5 rho=16/48828125 vs Q^-3
+  [ok] E PSTEEP3 (2,5) 2^-7 vs 2^-2 (D=3)
+  [ok] E PSTEEP4 (2,6) 2^-11 vs 2^-3 (D=4)
+F. monotonicity + union bound (symbolic)
+  [ok] F dF/du1 = T2-u2 
+  [ok] F r=2 dG/du1 
+  [ok] F r=2 dG/du2 
+  [ok] F r=2 union bound UB-G=u1*u2
+  [ok] F r=3 dG/du1 
+  [ok] F r=3 dG/du2 
+  [ok] F r=3 dG/du3 
+  [ok] F r=3 union bound UB-G=s1*u2*u3 + s2*u1*u3 + s3*u1*u2 + 2*u1*u2*u3
+G. the F1 toy: non-unit pivot collapses, unit pivot does not
+  [ok] G toy collapse pattern (x+2)y bijective iff x unit
+  [ok] G unit pivot bijective (1+2x)y always bijective
+H. CS4-F floor
+  [ok] H (2,2,1) display non-integer 1/64, true locus 0
+  [ok] H (2,2,1) floor 4k<=N-1 fails: gated to 0
+  [ok] H (2,5,1) visible floor holds, law 2^6
+  [ok] H runner gate L709 'while 4 * k <= N - 1:'
+  [ok] H runner gate L869 'while 4 * k <= N - 1:'
+I. window-1 system
+  [ok] I m=2 Q=2 1 state (all a_j=0), v(a_0)>=1=N: DRAIN; u(1)=total=1
+  [ok] I m=2 Q=3 1 state (all a_j=0), v(a_0)>=1=N: DRAIN; u(1)=total=1
+  [ok] I m=2 Q=4 1 state (all a_j=0), v(a_0)>=1=N: DRAIN; u(1)=total=1
+  [ok] I m=3 Q=2 1 state (all a_j=0), v(a_0)>=1=N: DRAIN; u(1)=total=1
+  [ok] I m=3 Q=3 1 state (all a_j=0), v(a_0)>=1=N: DRAIN; u(1)=total=1
+  [ok] I m=3 Q=4 1 state (all a_j=0), v(a_0)>=1=N: DRAIN; u(1)=total=1
+  [ok] I m=4 Q=2 1 state (all a_j=0), v(a_0)>=1=N: DRAIN; u(1)=total=1
+  [ok] I m=4 Q=3 1 state (all a_j=0), v(a_0)>=1=N: DRAIN; u(1)=total=1
+  [ok] I m=4 Q=4 1 state (all a_j=0), v(a_0)>=1=N: DRAIN; u(1)=total=1
+
+GREEN: all checks passed
