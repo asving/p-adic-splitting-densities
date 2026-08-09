@@ -13507,3 +13507,53 @@ disclosed (λ₂ hist re-counted 38/1/3); count HOLDS 1/2 per the
 annex precedent. THE ACCEPTANCE ATTEMPT (PE3) died to the storm
 pre-launch; GENH4 PE4 likewise. RESUME: wf_a822f8ad-be1 via
 scriptPath (GENIND PE3 + HE7 r3 replay cached; PE3/PE4 run live).
+
+---
+
+## ★★ WAVE 5 COMPLETE (resume w4zzqtigp, 4/4): HE7 ACCEPTED 2/2 — THE FIRST STAGE-ONE NOTE THROUGH THE BAR (text frozen; F-1 annex owed) · GENH4 PE4 PERFECTLY CLEAN (0C+0G+0m, count 1/2; FIRST non-prime-q cells) · GENIND PE3 folded earlier — WAVE 6: HE7 ANNEX + GENIND r3 + GENH4 PE5 (acceptance attempt #2) — 2026-08-09
+
+**HE7 PE3 (111ac7f): CLEAN — 0C, 0G, 1 MINOR (+1 remark) ⟹
+ACCEPTED 2/2.** The acceptance pass verified the r3 repairs (W ≠ 0
+joint induction well-founded, re-derived two levels down; pigeonhole
+sound; λ₂ histogram independently regenerated), re-ran the FULL
+sealed battery + both supp legs bit-identical, and ran TWO fresh
+routes: (1) the f₁=2/e₁=1 unramified-level-1 family — HE7-BOX-2's
+LAST named σ-genre hole — 780/780 PARI with both teeth caught
+(155/155, 150/150); (2) an n=12 μ₂=3 mixed-residual probe (first
+μ₂ ≥ 3 refines ever) 144/144 PARI. THE MINOR (F-1): HE7.A(3)'s
+α-refine wiring cites HE7-13/HE7-8 at MIXED residual nodes
+((Z−a)²(Z−b) at one slope) their pure-power hypotheses exclude;
+HE7-13's conclusion-as-stated FALSE there (constructed
+counter-instance: post-refine polygon retains the λ₂=11 side
+carrying the simple class); first live μ₂=3/n=12, vacuous at every
+certified degree; downstream σ verified 144/144 AT the defect
+region; in-toolkit repair (per-class rider). ORCHESTRATOR
+ADJUDICATION: MINOR grade upheld on the arc's own precedent (PE2
+F-2, same defect class: statement over-broad in a region no
+consumer uses, conclusion machine-verified there) — ACCEPTANCE
+STANDS, with the F-1 rider applied IMMEDIATELY as a dated ANNEX
+(the HMENU3-ANNEX-A pattern: accepted bytes unchanged, annex +
+verification appended, disclosed here). Codex ratification queued
+post-annex.
+
+**GENH4 PE4 (35b8d27 → e15308d): CLEAN — 0C, 0G, 0 MINOR (+2
+remarks) ⟹ 1/2.** The only pass in the program's history with ZERO
+findings at any tier. The r3 trichotomy re-derived + checked at ALL
+committed cells (own checker 134/0 over both JSONs); the R_(2,2)
+and R_(1,4) assemblies re-walked end-to-end symbolically. FRESH
+ROUTE: (A) the FIRST non-prime-q cells ever measured — (F₄[[t]],
+N=5) full row 24,576 raw members with both pre-r2 counters fired,
+and (F₄,N=7) with F₁₆ censuses 105/120/15 = the displayed forms at
+Q=16; (B) a NEW ℚ(q) identity (E[#irred quadratic factors] from
+five R_τ ≡ a conductor-stratified classical closed form, symbolic).
+The "all prime powers q" claim now has its first non-prime witness.
+PE5 = the acceptance attempt.
+
+**WAVE 6 (dispatched this entry): HE7-ANNEX-F1 (dated append, frozen
+bytes untouched, rider verified against the 144-member probe) +
+GENIND r3 (the capped-window formula at GENIND-3/GENIND-6(a) + the
+pin-check disclosure + 4 minors) + GENH4 PE5 (acceptance attempt).
+QUEUED BEHIND THE WAVE: site refresh (standing policy — the
+composed-complete milestone + first acceptances warrant it); Codex
+ratification sweep (window reset; HE7-post-annex first, then
+W-MULT-DCX leg, r40c/VC40c).**

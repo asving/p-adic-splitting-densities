@@ -3299,3 +3299,18 @@ numbering) owed. STAGE TWO (Lean, modulo literature except
 2212.00294) OPENS when the arcs stabilize per the standing
 math-first-formalize-when-stable directive.
 
+
+**2026-08-09 DATED APPEND — THE ARC PROGRAM'S FIRST ACCEPTANCE:
+HE7_PROOF ACCEPTED 2/2** (PE2 CLEAN 8f5f2a6 → r3 minors e0c0240 →
+PE3 CLEAN 111ac7f; seven distinct verification routes over its arc,
+final two = the first f₁=2 σ-genre family 780/780 PARI + an n=12
+μ₂=3 mixed-residual probe 144/144). Text FROZEN, dated appends only.
+One annex obligation rides (PE3 F-1, graded MINOR on the PE2-F-2
+precedent: HE7-13's wording over-broad at mixed residual nodes,
+μ₂ ≥ 3 first live n=12; downstream σ verified 144/144 PARI at the
+defect's own region; per-class rider = the HMENU3-ANNEX-A pattern).
+GENH4 at 1/2 (PE4 CLEAN e15308d, ZERO findings; first non-prime-q
+cells ever measured — F₄/F₁₆ censuses exact). GENIND at 0/2 (r3
+owed: the capped-window formula). Board + arc history:
+lean/notes/BRIDGE_ADJUDICATIONS_2026-07-30.md. Codex ratification
+of the frozen HE7 queued post-annex.
