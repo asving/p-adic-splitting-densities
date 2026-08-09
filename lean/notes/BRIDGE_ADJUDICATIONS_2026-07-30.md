@@ -14653,3 +14653,23 @@ first e₁=3 wrap + first composed-(3,2) menu. GENTOW2's F2 honesty:
 GENTOW5-A1 checked and CANNOT supply the cross-frame unit
 (repo-internal) — the derivation honestly stops at B′; the B-2
 residue stands disclosed, machine-supported at 10 witnesses.
+
+---
+
+## ★★★★★★ WAVE 26 COMPLETE (wq9324t8b): HE3 ACCEPTED 2/2 — THE DEPENDENCY CLOSURE IS COMPLETE AT THE BAR (nine of nine) — 2026-08-09
+
+HE3 PE4 (0c16b6a → 66136f9): CLEAN — 0C/0G/2m (a sub-case header;
+a display locality — both one-line dated appends at leisure). The
+never-owned surfaces held: the μ=2 dictionaries re-derived +
+machine-tied at first-ever (4,1)@ℤ₃ and (2,3)@ℤ₂ frames; the (SEP)
+apparatus re-derived AND run as an inversion (det-1 solve on
+measured Ψ); HE3-4's composite walked end-to-end with a NEW
+anchor-consistency computation (β_ρ is exactly a root of the [r2]
+coherent assembly — no residual seam); the wrap seam adjudicated
+in BOTH flip directions (naive INERT-read splits, naive SPLIT-read
+goes inert — PARI with the coherent read both times); the battery's
+check families audited at code level; the starved (2,2) corner
+machine-run for the first time. Rider verified; body byte-frozen.
+**Nineteen accepted texts. The scoreboard's honest remainder: the
+seven tower notes' arcs + three count-grade sub-boxes + the
+distribution arcs + the ratification sweep.**

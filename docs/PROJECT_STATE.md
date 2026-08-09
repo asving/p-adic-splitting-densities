@@ -3565,3 +3565,22 @@ HE6R1 ×3 (incl. the cocycle-exponent line-value wrinkle, whose cure
 is also owed at HE7's 263cef0 copy — the F-1 mechanism: the correct
 argument is the pin height m₁, exact at ℓ=1 everywhere consumed).
 Box campaign: B3 resume dispatched (GENTOW-6 finish + HETOW PE1).
+
+**2026-08-09 DATED APPEND #14 — ★★★★★★ THE CHAIN'S DEPENDENCY
+CLOSURE IS COMPLETE AT THE BAR: HE3 ACCEPTED 2/2 (PE4 CLEAN
+66136f9).** ALL NINE closure notes through two consecutive clean
+fresh-context hostile passes: W-12.D · GENIND.B · GENH4 · GENHN ·
+HEX3 · HE6 · HE7 · HE6R1 · HE3 — on top of the six weld notes +
+W-11 + HMENU3 + SIGMALAW accepted earlier (19 accepted texts).
+Three survived Codex challenge-discharge cycles; one
+(GENHN) survived a full refute-repair-accept arc on its own tower
+lemma; HE3's arc repaired two CRITICALs found on its FIRST pass
+after its descendants were already frozen (the base-note lesson).
+THE CONDITIONALITY NOW: n ≤ 7 unconditional at the bar; n ≥ 8 =
+the tower notes (GENTOW1–6, HETOW — the box-closure campaign's
+proofs, at attempt grade with arcs in progress: HETOW r1 done +
+PE2 running, GENTOW2 r1 done + PE2 running, GENTOW1/3/4/5/6 arcs
+owed) + three attainment/count-grade sub-boxes (σ/read unaffected).
+NEXT per Asvin's pipeline: finish the tower arcs → site refresh
+(the closure milestone) → distribution arcs + Codex ratification
+sweep → SIMPLIFICATION CAMPAIGN → stage two (Lean).
