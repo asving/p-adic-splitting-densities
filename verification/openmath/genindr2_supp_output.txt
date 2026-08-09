@@ -1,0 +1,20 @@
+genindr2_supp: LEMMA GENIND-6 (mixed-opening transport) leg
+sealed runner md5 e7ca150b1b5cb13ad4f3350ac776aca2 VERIFIED; artifacts untouched
+-- B1-fib-q2N5 [coarse windows]: locus 8192; ONTO 1 x 16 product; fibers [512] (= q^9); 1.3s
+-- B1-fib-q2N5 [sharp windows]: locus 8192; ONTO 1 x 64 product; fibers [128] (= q^7); 1.3s
+-- B2-fib-q2N6 [coarse windows]: locus 524288; ONTO 4 x 256 product; fibers [512] (= q^9); 97.4s
+-- B2-fib-q2N6 [sharp windows]: locus 524288; ONTO 4 x 1024 product; fibers [128] (= q^7); 97.4s
+-- B3-fib-q3N5 [coarse windows]: locus 1594323; ONTO 1 x 81 product; fibers [19683] (= q^9); 357.0s
+-- B3-fib-q3N5 [sharp windows]: locus 1594323; ONTO 1 x 729 product; fibers [2187] (= q^7); 357.0s
+-- B3 note: odd-q pins live (digit_1(u2) = -2z = 1, v(u2) = 1)
+-- B1-stab-q2N5: 80 states x 6 lifts exact-factor-STABLE at both displayed window sets (coarse + sharp)
+-- B2-stab-q2N6: 80 states x 6 lifts exact-factor-STABLE at both displayed window sets (coarse + sharp)
+-- B3-stab-q3N5: 60 states x 5 lifts exact-factor-STABLE at both displayed window sets (coarse + sharp)
+-- B4-class-q2N7: 400 sampled states all classify to the M6 key
+-- B4-stab-q2N7: 300 states x 4 lifts exact-factor-STABLE at both displayed window sets (coarse + sharp)
+-- B5-pari-q2N6: 120 child-DEC states x 3 lifts: val-1 block = ONE RAMIFIED QUADRATIC every time (T4 counter-prediction refuted 360/360); stage block degree 4 every time
+-- B5-pari-q2N6: drain-honesty diagnostic (ungated): child-DRAIN val-1 shapes across lifts: [[('lin1', 'lin1'), ('ram2',)], [('lin1', 'lin1'), ('ram2',)], [('lin1', 'lin1'), ('ram2',)], [('lin1', 'lin1'), ('ram2',)], [('lin1', 'lin1'), ('ram2',)], [('lin1', 'lin1'), ('ram2',)], [('lin1', 'lin1'), ('ram2',)], [('lin1', 'lin1'), ('ram2',)]]
+-- T1-deepwindow-q2N6: TOOTH FIRED: 38/40 states exact-factor-UNSTABLE one window deeper than sharp (sharpness confirmed)
+-- T1-deepwindow-q3N5: TOOTH FIRED: 40/40 states exact-factor-UNSTABLE one window deeper than sharp (sharpness confirmed)
+-- T2-pin: TOOTH FIRED 20/20 (corrupted vertex pin exits the genre signature)
+== GREEN: 2128163 checks, 0 violations, 357.7s ==

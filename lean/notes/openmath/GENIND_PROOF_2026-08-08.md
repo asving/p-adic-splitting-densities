@@ -6,8 +6,14 @@ inductive argument! Exhilarating, lets keep going!" — ledger 66057f4).
 **Attempt grade 0/2** (composed; hostile pass PE1 adjudicated
 UNREFUTED NOT CLEAN, 0 CRITICAL + 3 GAP + 4 MINOR, all three GAPs at
 the GENIND.B ↔ [GENIND-H] seam — `GENIND_passPE1_report.md`
-@ 4259a93; r1 repairs applied in place, [r1]-tagged; the clean count
-has NOT started). **Instrument:**
+@ 4259a93; r1 repairs applied in place, [r1]-tagged; hostile pass PE2
+adjudicated UNREFUTED NOT CLEAN, 0 CRITICAL + 2 GAP + 1 MINOR —
+`GENIND_passPE2_report.md` @ 50db400 — r2 repairs applied in place,
+[r2]-tagged: LEMMA GENIND-6 at S4.3 (PE2-G1, the mixed-opening
+transport, with the additive supp leg §S12) + the (CS-EXACT)
+discharge re-pin/disclosure (PE2-G2) + the granularity gloss
+(PE2-m1); the clean count has NOT started — PE3 attempts it).
+**Instrument:**
 sealed two-commit battery `verification/openmath/genind_checks.py` —
 the two-species classification machine-checked at n = 4 AND n = 5 on
 targeted rosters (full-sweep rows where the state space permits;
@@ -556,8 +562,50 @@ u = the stage block (monic, degree 4, roots of valuation 1/2).
   latter composing with the stage read as (d) displays.
 
 **Machine record (genindr2_supp.py — ADDITIVE leg; sealed runner
-md5-pinned e7ca150b, imported read-only; artifacts byte-frozen).**
-[MACHINE-RECORD-PLACEHOLDER]
+md5-pinned e7ca150b, imported read-only; sealed artifacts
+byte-frozen). GREEN: 2,128,163 checks, 0 violations, 357.7 s.**
+* FIBRATION, exhaustive at every enumerable window of the genre:
+  (q, N) = (2, 5): 8,192 states ONTO 1 × 16 (coarse windows, fibers
+  {512} = q⁹) AND 1 × 64 (sharp windows, fibers {128} = q⁷);
+  (2, 6): 524,288 ONTO 4 × 256 / fibers {512} AND 4 × 1024 / {128};
+  (3, 5) full (z, w) = (1,1) letter slice: 1,594,323 ONTO 1 × 81 /
+  fibers {19,683} = q⁹ AND 1 × 729 / {2,187} = q⁷ — the odd-q pins
+  live (digit₁(u₂) = −2z ≠ 0, v(u₂) = 1). Every member classifies to
+  the M6 key with the child side present; every stage cofactor hits
+  the entry budgets exactly.
+* CERTIFICATION (exact-factor lift-stability: factors Hensel-lifted
+  to each independent random lift's FULL precision, truncations
+  compared — see the instrument arc below): stable at BOTH displayed
+  window sets, 80 × 6 lifts (2,5), 80 × 6 (2,6), 60 × 5 (3,5),
+  300 × 4 at the sampled beyond-enumeration window (2,7) (+ 400
+  sampled (2,7) states all classifying to the M6 key).
+* READ COMPOSITION, mechanism-free (PARI factorpadic at p = 2,
+  N = 6): 120 child-DECIDED states × 3 disc ≠ 0 lifts — the val-1
+  block is ONE RAMIFIED QUADRATIC (= σ_child {(2,1)} composed into
+  the ambient) in 360/360, and the val-1/2 stage block has degree 4
+  on every lift; drain-honesty diagnostic (ungated): all 8 sampled
+  child-DRAIN states realize ≥ 2 distinct val-1 σ-shapes across
+  lifts ({two linears} and {ramified quadratic}) — the conservative
+  drain is genuinely undecided data.
+* TEETH (all fired): T1 sharpness — one window deeper than the
+  sharp set is exact-factor-UNSTABLE on 38/40 states at (2,6) and
+  40/40 at (3,5); T2 — corrupting the vertex pin digit₂(a₂) exits
+  the genre signature 20/20; T4 — the counter-prediction "σ_child
+  unramified (1,2)" refuted by every PARI sample (360/360).
+* INSTRUMENT ARC (disclosed; full narrative in the leg's
+  docstring): run 1 of this leg went RED on ITS OWN TOOTH — the
+  tooth "u₃ one deeper than the division ledger must be unstable"
+  did not fire (sole RED item; every mathematical check green).
+  Diagnosis: (i) the division-ledger u₃ window is certified but NOT
+  sharp (the Bezout refinement above — a real mathematical finding
+  the tooth surfaced); (ii) run 1's stability test measured
+  ALGORITHM DETERMINISM, not certification (a truncating extraction
+  reproduces its own zero-filled deep digits on every lift). The
+  test was redesigned to compare exact factors of independent lifts
+  (this version), under which the sharp windows are stable and the
+  one-deeper tooth fires. Corpus lesson: certified-window claims
+  must be tested against exact factors of INDEPENDENT lifts, never
+  against a truncating extraction's own reproducibility.
 
 **Honesty box (the GENIND-6 grade).** (a)–(c) are proved at exactly
 GENIND-3's schema grade — the per-genre certified-window ledgers are
@@ -1094,8 +1142,13 @@ degree-by-degree while the SCAFFOLD stays uniform in n.
 * **GENIND-BOX-5 (grades).** 0/2; PE1 (hostile, fresh context)
   adjudicated 0C + 3G + 4m, all three GAPs at the single GENIND.B ↔
   [GENIND-H] seam, r1 repairs applied in place ([r1] tags; report
-  @ 4259a93; runner + artifacts byte-frozen, untouched) — the clean
-  count has NOT started;
+  @ 4259a93; runner + artifacts byte-frozen, untouched); PE2
+  (hostile, fresh context, n = 6 route) adjudicated 0C + 2G + 1m
+  (report @ 50db400), r2 repairs applied in place ([r2] tags:
+  GENIND-6 + re-pin/disclosure + granularity; sealed runner +
+  artifacts byte-frozen, untouched; the r2 machine support is the
+  ADDITIVE leg genindr2_supp.py, §S12) — the clean count has NOT
+  started;
   every supplier consumed at the pins of S10's PIN family; the
   full-degree corollary inherits the MINIMUM grade over
   {W-11, W-12, HEX3, HMENU3 arcs, this note, and — at n ≥ 4 —
@@ -1337,3 +1390,57 @@ grades; at n ≤ 3 it is the proved chain. CANDIDATE GENIND-5 (the
 (OB-a)/(OB-b)/(OB-c)/(OB-d), with LEMMA GENIND-4 (the fibration +
 the ℤ/2 slot grading) PROVED and its predictions handed to QSCOUT22.
 Attempt 0/2; the hostile arc has not begun.
+
+## S12. [r2] REPAIR RECORD (PE2 adjudication; appended at r2 — S11 above stays frozen at its seal)
+
+**Arc.** Hostile pass PE2 (fresh context, the corpus's first n = 6
+route; report `GENIND_passPE2_report.md` @ 50db400) adjudicated
+0 CRITICAL + 2 GAP + 1 MINOR. This r2 repairs exactly those findings,
+[r2]-tagged, minimality contract; the sealed runner
+(`genind_checks.py`, md5 e7ca150b) and its committed artifacts are
+BYTE-FROZEN — the r2 machine support is the ADDITIVE leg
+`verification/openmath/genindr2_supp.py` (+ output + results JSON).
+
+* **PE2-G1 (the mathematical one) → LEMMA GENIND-6 (S4.3).** Mixed
+  CS+β-child openings — a composite stage whose polygon also carries
+  a repeated-linear e = 1 child, first live at n = 6 — fell between
+  GENIND-3's stated scope and (CS-1)'s displayed fibration. GENIND-6
+  states and proves the transport (split factor-genericity +
+  permanence extended to CS frames + fibration/product with
+  stage-count independence + read/menu/drain composition), derived
+  from GENIND-2/3's own machinery + GENHN.A(iv)(v) @ 850e77e — with
+  the verifier's constructed instance M6 at (2,6,5)/(2,6,6)/(3,5)
+  as the exhaustively machine-checked worked ledger, INCLUDING the
+  sharp certified windows its own tooth surfaced. Wired at S4.1
+  (scope note), S6 Step 2 (mixed menu bucket), S6 Step 4 (mixed
+  drain composition), S7.1 ((CS-1) rider). Conditional structure
+  unchanged: the stage-side clauses of GENIND-6(d) consume
+  [GENIND-H] exactly as (CS-1) does.
+* **PE2-G2 → Step 4 + S7.1 [r2] re-pin + disclosure.** The
+  (CS-EXACT) n = 4 de facto discharge now cites GENH4 @ r2
+  (fd35416 + 5279a11; no GENH4 r3 existed at this commit — checked)
+  with BOTH halves named (drain GENH4.B, menu GENH4.A + GENH4-1F,
+  r2 comp-weighted census), and the 49-second timing race at the r1
+  pin dff23f8 is disclosed in full at Step 4. Standing rule adopted:
+  pin suppliers at their repair HEAD and disclose any adjudicated,
+  not-yet-repaired findings at the pin.
+* **PE2-m1 → granularity.** "ONE exact q-power per stratum" corrected
+  to "one exact closed form per stratum — a finite sum of q-powers
+  (two-term at GENH4's genre-F even-N CAP(F) band)" at the S1 box,
+  Step 4, and S7.1; S7.4 and S9.1 already carried the correct
+  "exact per-stratum closed forms/laws" granularity (checked — no
+  other consumer of the one-term form).
+
+**Machine.** `genindr2_supp.py` GREEN: **2,128,163 checks,
+0 violations, 357.7 s**; fibration exhaustive at (2,6,5) 8,192 /
+(2,6,6) 524,288 / (3,6,5)-slice 1,594,323 states, constant fibers
+q⁹ (ledger windows) and q⁷ (sharp windows), onto both products;
+exact-factor certification stable at all displayed windows incl.
+sampled (2,6,7); PARI read-composition 360/360; teeth T1 (sharpness,
+38/40 + 40/40), T2 (pin, 20/20), T4 (PARI counter-prediction,
+360/360) all FIRED. Instrument arc (run-1 RED on its own tooth →
+truncation-artifact diagnosis → exact-factor redesign) disclosed in
+the leg's docstring and S4.3's machine record.
+
+**Grade: stays 0/2. The consecutive-clean count has NOT started; PE3
+(a fresh hostile pass) attempts the first clean.**

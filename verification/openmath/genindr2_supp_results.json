@@ -1,0 +1,21 @@
+{
+ "blocks": {},
+ "checks_total": 2128163,
+ "elapsed_s": 357.7,
+ "runner_md5": "e7ca150b1b5cb13ad4f3350ac776aca2",
+ "tallies": {
+  "B1-fib-q2N5": 8192,
+  "B1-stab-q2N5": 80,
+  "B2-fib-q2N6": 524288,
+  "B2-stab-q2N6": 80,
+  "B3-fib-q3N5": 1594323,
+  "B3-stab-q3N5": 60,
+  "B4-class-q2N7": 400,
+  "B4-stab-q2N7": 300,
+  "B5-pari-q2N6-lift": 360,
+  "T1-deepwindow-q2N6": 40,
+  "T1-deepwindow-q3N5": 40
+ },
+ "verdict": "GREEN",
+ "violations": []
+}
