@@ -14028,3 +14028,54 @@ first since r5) + GENHN ERRATUM ROUND (the 3 queued: GENHN-3(a)
 "exits UND" conditionalization; GENHN.A(v) comp-weighting clause;
 GENHN.A(i) transport/non-maximality erratum — then GENHN PE1 can
 run).**
+
+---
+
+## ★★★★ WAVE 14 FOLDED (w52thvf70, 4/4): GENIND ACCEPTED 2/2 — ALL THREE CHAIN LEADERS THROUGH THE BAR · W-12 PE6 CLEAN (THE REDUCTION AT 1/2) · GENHN ERRATA COMPLETE (PE1 UNBLOCKED) — WAVE 15: W-12 rider → PE7 (ACCEPTANCE ATTEMPT) + GENHN PE1 + HEX3 PE5 + CODEX GENIND RATIFICATION — 2026-08-09
+
+**GENIND PE8 (3f5bafc): CLEAN — 0C, 0G, 1 MINOR (stale arc lines
+inside the frozen region; dated-append cure, wave 15's rider) + 2
+remarks (R1: the W-11-vs-GENIND undecided-mass ledgers reconciled
+EXACTLY — the difference IS HM3.C's DBL bracket; R2: the m=3
+same-side β(2,1) I-E term hand-derived + machine-tied).** The
+never-owned surfaces all held: S5.2 I-E re-derived + realized at 3
+children; GENIND-0/C solved; α/CS disjointness PROVED; base-case
+use-sites faithful. Rider verified 3/3. Fresh route (10th
+distinct): q=4/8/9 exhaustive + n=12 double-composite (PARI
+composition witnesses at both primes) + symbolic I-E to r=8 + first
+m=6 contact — 3,171,585/0, 6/6 teeth. Seven isolated re-runs 7/7.
+**GENIND FROZEN. The theorem chain's three leaders: HE7 ✓ GENH4 ✓
+GENIND ✓.**
+
+**W-12 PE6 (132d521 → ef258fe): CLEAN — 0C, 0G, 1 MINOR (the r5
+sweep's own-grep record misses 3 in-scope hits, each verified
+harmless — the GENIND-class record defect; dated append owed) + 3
+remarks (stale-as-histories supplier lines). ALL eleven r5 passages
+walked against cited files; the (A1) σ-LABELING clause vs its THREE
+consumers (GENH4.C verbatim incl. both dictionaries; GENIND Step 5;
+[GENHN-HE]'s identical disc≠0 quantifier) = NO DAYLIGHT; Step 4's
+repaired bounds + Steps 1–3 telescoping re-derived from scratch.
+FRESH ROUTE: symbolic telescoping identities at every N ∈ [2,30]
+(116/116 incl. per-τ deficit closed forms); first non-prime-q
+firing exercise (q = 4,8,9,25, own GF tables, 180/0); two
+ADVERSARIAL BUNDLES at (A1)'s boundary — the relabeled-RAM bundle
+keeps Σ=1 and fails exactly the μ_τ tie, excluded precisely by the
+clause (the clause is load-bearing, machine-witnessed). Sixth
+isolated re-run 3,232,506/0. 1/2; PE7 = the acceptance attempt.
+
+**GENHN ERRATA (bc1b996 → 961d0ff → 46bf675 → 58b1080).** E1 the
+band-exit trichotomy conditionalized at the frozen GENH4 pin; E2
+the comp-weighted census clause DERIVED re-based from GENHN-2's
+slot model (band pins Q^{comp(m)}−1 with comp = in-window
+F_Q-dimension; recovers GENH4's instance exactly; honesty clause on
+machine contact); E3 the stage-ring carrier restated in L/O_L with
+transported non-maximality witnesses + enumerated ridered sites.
+Box refreshed enumeratively. 0/2; PE1 UNBLOCKED.
+
+**WAVE 15 (dispatched this entry): riders (GENIND acceptance
+append + W-12 record append) → W-12 PE7 (acceptance attempt — if
+clean, THE REDUCTION joins the leaders) + GENHN PE1 (first hostile
+pass) + HEX3 PE5 (arc resumes post-r3) + CODEX GENIND RATIFICATION
+(the sweep's third leg; both prior legs returned CHALLENGE and both
+challenges were discharged with new mathematics — the sweep is
+load-bearing).**

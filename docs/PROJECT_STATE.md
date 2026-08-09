@@ -3409,3 +3409,26 @@ GENIND's own laws (2,068,533/0). Board: HE7 + GENH4 fully frozen;
 GENIND 1/2 (micro-rider then PE8 = acceptance attempt); then
 W-12/HEX3/GENHN/HE6 + the distribution arcs. Site refreshed and
 pushed at 59e7fc0.
+
+**2026-08-09 DATED APPEND #7 — ★★★ ALL THREE CHAIN LEADERS THROUGH
+THE BAR: GENIND ACCEPTED 2/2 (PE8 CLEAN 3f5bafc)** — HE7 (frozen,
+challenge discharged) ∘ GENH4 (frozen, challenge discharged) ∘
+GENIND (accepted; one dated arc-line append owed, PE8-m1). PE8
+owned the never-attacked surfaces: S5.2's inclusion–exclusion
+re-derived by hand AND realized live at 3 children; GENIND-0/
+GENIND.C closed forms solved; the α/CS disjointness PROVED (unique
+irreducible factorization; the self-similar e≥2 case IS CS4-E);
+the W-11/HMENU3 base-case use-sites verified faithful. Fresh route:
+FIRST non-prime base q (4/8/9, exhaustive to 9^16 states), FIRST
+n=12 double-composite instance, FIRST m=6 cluster contact —
+3,171,585/0. SAME WAVE: W-12 PE6 CLEAN (0/2 → 1/2; the (A1)
+σ-labelling clause vs all three consumers = NO DAYLIGHT, verified
+verbatim; Step 4 both bounds + the telescoping re-derived; fresh
+route = symbolic telescoping at every N ∈ [2,30] + first
+non-prime-q firing + two adversarial bundles at (A1)'s boundary
+excluded exactly by the clause) and GENHN's 3-erratum round landed
+(bc1b996/961d0ff/46bf675/58b1080 — PE1 unblocked). The chain's
+conditionality now rests on: W-12 (1/2!), HEX3 (0/2), GENHN (0/2,
+PE1 next), HE6 (0/2) + the displayed open frontier boxes. The
+simplify→formalize pipeline (Asvin's directive) opens when these
+stabilize.
