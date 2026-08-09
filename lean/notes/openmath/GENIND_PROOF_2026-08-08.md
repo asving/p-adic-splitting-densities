@@ -17,8 +17,17 @@ discharge re-pin/disclosure (PE2-G2) + the granularity gloss
 — r3 repairs applied in place, [r3]-tagged: the capped M_l window
 display (PE3-G2, S4.1 + S4.3) + the GENH4 re-pin corrected with the
 pin-check violation disclosed (PE3-G1, Step 4/S7.1/S12/S13) + the
-four MINOR records; the clean count has NOT started — PE4 attempts
-the first clean).
+four MINOR records; hostile pass PE4 adjudicated UNREFUTED NOT
+CLEAN, 0 CRITICAL + 2 GAP + 0 MINOR — `GENIND_passPE4_report.md`
+@ ade9bac — r4 repairs applied in place as a FULL-SWEEP audit (§S14:
+exhaustive window-site inventory + record-claim audit, the arc's
+third consecutive record-integrity defect answered by method, not
+spot repair), [r4]-tagged: GENIND-3's proof step (1) rewritten to
+the capped content window with the corrected reduction parenthetical
+(PE4-G2, S4.1 + the S4.3 proof-of-(a) echo) + the regime inventory
+restated to the machine-verified claim (PE4-G1, S4.1 statement
+bracket + honesty note + S13); the clean count has NOT started —
+PE5 attempts the first clean).
 **Instrument:**
 sealed two-commit battery `verification/openmath/genind_checks.py` —
 the two-species classification machine-checked at n = 4 AND n = 5 on
@@ -331,9 +340,13 @@ Q = q^d (roster limit: the battery exercises d = 1 plus one (m, d) =
 > scale-then-Hensel extraction at the child's frame [r3, PE3-G2:
 > display corrected — the sealed display charged every co-block its
 > OWN slope-mass (Σ_j μ_j k_j + Σ_pieces deg·slope-mass), which
-> equals D_l iff every co-block sits at slope ≤ k_l (true at every
-> sealed instance) and is FALSE for the shallower child at
-> distinct-slope multi-child genres; see the honesty note below] —
+> equals D_l iff every co-block sits at slope ≤ k_l [r4, PE4-G1: the
+> r3 bracket glossed this condition "(true at every sealed
+> instance)" — FALSE: steeper DECIDED PIECES violate it INSIDE the
+> sealed roster, at the (2,5) n = 3 control row and the (2,6) n = 4
+> row — see the honesty note below] and is FALSE for the shallower
+> child at distinct-slope multi-child genres; see the honesty note
+> below] —
 > with fiber = (letter census of the
 > genre: vertex units, child letters z_l, decided-piece residual
 > letters) × Q^{(affine exponent in the genre parameters)}: the free
@@ -346,12 +359,40 @@ Q = q^d (roster limit: the battery exercises d = 1 plus one (m, d) =
 
 *Proof (schema; instance-proved, machine-checked pointwise).* Three
 steps, each the general form of an n = 3 route: (1) RECENTER +
-SCALE: for the side S_l of slope k_l (integer, e = 1), recenter at
-the child's residual root (ẑ_l π^{k_l}) and scale x = π^{k_l}y: by
-GENIND-2(a)'s mechanics the frame becomes a window-(N − m·k_l)
-level-0 frame whose reduction is ȳ^{μ_l}·(separable factors with the
-other letters as roots — the other children sit at valuation 0 of
-this frame if on the same side, at their own slopes otherwise).
+SCALE + NORMALIZE BY CONTENT [r4, PE4-G2: this step rewritten — the
+sealed-through-r3 text displayed the pre-cap uniform window
+"N − m·k_l", contradicting the corrected statement above and the
+note's own M6 ledger (N−4, not N−6) and degenerating at live
+instances (M6 at N = 5: window −1 against the ledger's 1; TWOCHILD
+child A at N = 7: 7 − 8 = −1 against the live extraction at 1); its
+reduction parenthetical ("separable factors with the other letters
+as roots… at their own slopes") was false at distinct-slope genres]:
+for the side S_l of slope k_l (integer, e = 1), recenter at the
+child's residual root (ẑ_l π^{k_l}) and scale x = π^{k_l}y. Each
+linear factor of the monic frame contributes content
+min(v(ρ − ẑ_l π^{k_l}), k_l) to f(π^{k_l}(y + ẑ_l)), so the total
+content is exactly D_l = μ_l k_l + Σ_b deg_b·min(s_b, k_l) =
+min_j(v(a_j) + j·k_l) — the statement's formula. Coefficient j of
+the substituted frame is determined mod π^{N + j·k_l} (GENIND-2(a)'s
+triangular-update mechanics: the a_{i≥j} enter it with the factor
+π^{ik_l}), so the primitive frame π^{−D_l}·f(π^{k_l}(y + ẑ_l)) is a
+level-0 frame with RAGGED certified coefficient precisions
+π^{N + j·k_l − D_l}, binding at the constant coefficient j = 0: a
+window-(N − D_l) = window-M_l frame. (The old uniform floor
+N − m·k_l is a true lower bound on every coefficient's precision —
+D_l ≤ m·k_l via the monic j = m term — but it is NOT the extraction
+window, and it undersells M_l strictly at every genre with a
+shallower co-block.) The reduction of the primitive frame is
+ȳ^{μ_l}·(a cofactor coprime to ȳ): same-side co-blocks appear at
+their SHIFTED residues z′ − ẑ_l ≠ 0 (decided pieces as separable
+factors, same-side co-CHILDREN as repeated factors
+(ȳ − (z′ − ẑ_l))^{μ}); co-blocks STEEPER than k_l all collapse to
+the single nonzero residue −ẑ_l (their letters leave the
+reduction); co-blocks SHALLOWER than k_l leave the reduction
+entirely by degree drop (each contributes deg_b·s_b to the content
+and drops the reduction's degree by deg_b — the monic-factor Hensel
+form with non-unit-lead cofactor). In the scaled frame NO co-block
+sits at its own slope.
 (2) HENSEL SPLIT: LEMMA W12-S2.1 at the scaled frame splits the state
 into the product of its branch states — the child (μ_l, d) blocks and
 the decided pieces — bijectively with multiplicative count transport;
@@ -394,21 +435,49 @@ extraction's content is D_l = Σ_roots min(v(ρ), k_l) = μ_l k_l +
 extracted child are capped at k_l, and the sealed display (own
 slope-mass, uncapped) overcharges exactly there. Counter-genre
 TWOCHILD at (q, 4, 1): hull (0,6)–(2,2)–(4,0), child A on [0,2] at
-slope 2, child B on [2,4] at slope 1, first visible N = 7 (beyond
-every sealed window — why three passes and the battery could not see
-it). True child-B window N − (2·1 + 2·min(2,1)) = N−4; the old
+slope 2, child B on [2,4] at slope 1, first visible N = 7 — beyond
+every sealed full-sweep window [r4, PE4-G1: the r3 parenthetical
+continued "why three passes and the battery could not see it" —
+FALSE as an inventory claim: the GENRE TWOCHILD is beyond the sealed
+windows, but the disagreeing REGIME (a co-block steeper than the
+extracted child) is NOT — steeper decided pieces realize it inside
+the sealed roster (the concordance paragraph below), so the uncapped
+display was refutable against sealed data since the seal; what no
+pass executed there was the display-vs-runner comparison]. True
+child-B window N − (2·1 + 2·min(2,1)) = N−4; the old
 display said N−6. Machine (genind_pe3_fresh, committed @ f89b565):
 ALL 2,048 states at (2,7) and ALL 177,147 at (3,7) extract child B at
 N−4, fibering ONTO the full 16-/81-class child space with constant
 fiber q⁷ — impossible at window N−6 (the child space would be one
 class); lift-stability 80 × 5 + 60 × 4 certifies N−4 as content. The
 steeper child A extracts at N−6, where both readings agree (the
-control). CONCORDANCE: the sealed runner's `extract_child` always
-computed D = min_j (v(a_j) + j·k) — the capped value — so no machine
-artifact or committed number moves; the defect was the display
-alone, silently corrected by the mechanics at every sealed instance
-(all in the agreeing regime: every co-block shallower than or at the
-extracted child's slope).
+control). CONCORDANCE [r4, PE4-G1: restated — the r3 text here
+closed "at every sealed instance (all in the agreeing regime: every
+co-block shallower than or at the extracted child's slope)", which
+is FALSE]: the sealed runner's `extract_child` always computed
+D = min_j (v(a_j) + j·k) — the capped value — so no machine artifact
+or committed number moves; the defect was the display alone,
+silently corrected by the mechanics. NOT because the sealed roster
+sits in the agreeing regime: the disagreeing regime occurs INSIDE
+the sealed roster via steeper DECIDED PIECES (a piece needs one
+abscissa where a second child needs two) — PSTEEP3 at the (2,5)
+n = 3 CONTROL row (hull (0,4)–(1,2)–(3,0): decided piece on [0,1] at
+slope 2 over the (2,1)-child on [1,3] at slope 1; live, v(a₀) = 4 ≤
+N−1; capped D = 2·1 + 1·min(2,1) = 3 → child window 2, uncapped
+D = 4 → window 1; 32 states) and PSTEEP4 at the (2,6) n = 4 row
+(hull (0,5)–(1,3)–(4,0): capped D = 4 → window 2, uncapped 5 → 1;
+512 states). Both cells were adjudicated EXHAUSTIVELY by PE4's
+committed fresh leg (`verification/openmath/genind_pe4_fresh.py` +
+output + results @ 51bd1bc, md5 aa2b9af8/1a29a9c1/e5493312, GREEN
+6,507/0): every state extracts at the CAPPED window, fibering ONTO
+4 × fiber 8 resp. 8 × 64 child classes with verdict splits DEC/DRAIN
+16/16 resp. 256/256 — where the uncapped window would force a single
+child class and 100% instant child-drain — plus a 972-state odd-q
+companion at (3,5) n = 3 (off-roster; odd-q pins live). The sealed
+battery's GT-BETA processed exactly these states at the capped
+windows since the seal (`run_row` beta-checks every BOTHER member,
+`do_beta_pointwise=True` on all rows): concordance holds because the
+runner was ALWAYS capped, not because the regimes agree.
 
 **[r2, PE2-G1] Scope note.** GENIND-3's hypothesis ("repeated factors
 all linear on e = 1 sides") excludes polygons that ALSO carry a
@@ -531,9 +600,15 @@ frame) nowhere consult the type of the residual factors — the split
 needs the child block's reduction ȳ^{μ_l} (after recentering) to be
 coprime to the co-blocks' reduction, which holds because co-blocks
 on the same side have distinct residual roots/factors and blocks on
-other sides sit at their own slopes (shallower blocks contribute the
-content drop / degree-dropped cofactor — the monic-factor Hensel
-form, already listed among this note's classical suppliers). The
+other sides reduce coprime to ȳ or leave the reduction: STEEPER
+blocks collapse to the single nonzero residue −ẑ_l, SHALLOWER blocks
+contribute the content drop / degree-dropped cofactor (the
+monic-factor Hensel form, already listed among this note's classical
+suppliers) [r4, PE4-G2 echo: the r3-era clause "blocks on other
+sides sit at their own slopes" was the step-(1) defect's image here —
+no co-block sits at its own slope in the scaled frame; the
+coprimality CONCLUSION was and is right, per the corrected step
+(1)]. The
 window bookkeeping is the same content computation D = min_j
 (v(a_j) + j·k_l), M_l = N − D, with every co-block contributing its
 CAPPED slope-mass deg·min(own slope, k_l) to D regardless of type
@@ -1244,8 +1319,15 @@ degree-by-degree while the SCAFFOLD stays uniform in n.
   + the GENH4 re-pin with the pin-check violation disclosed + the
   four MINOR records; sealed runner + artifacts + the r2 supp leg
   byte-frozen, untouched; PE3's fresh leg genind_pe3_fresh.* is the
-  verifier's committed artifact, cited, not this note's) — the clean
-  count has NOT started;
+  verifier's committed artifact, cited, not this note's); PE4
+  (hostile, fresh context, first mixed-cap + n = 8 route) adjudicated
+  0C + 2G + 0m (report @ ade9bac), r4 repairs applied in place AS A
+  FULL-SWEEP AUDIT (§S14; [r4] tags: step (1) rewritten to the capped
+  content window + the regime inventory restated; sealed runner +
+  artifacts + the r2 supp leg byte-frozen, untouched; no r4 machine
+  leg — the machine evidence cited is PE4's committed fresh leg
+  genind_pe4_fresh.*, the verifier's artifact, cited, not this
+  note's) — the clean count has NOT started;
   every supplier consumed at the pins of S10's PIN family; the
   full-degree corollary inherits the MINIMUM grade over
   {W-11, W-12, HEX3, HMENU3 arcs, this note, and — at n ≥ 4 —
@@ -1326,7 +1408,16 @@ degree-by-degree while the SCAFFOLD stays uniform in n.
   Step 4; S6.2 (the ghost × letter reconciliation) at (CS-2).
 * **GENH4 (THEOREM GENH4.A/B + GENH4-1F, the Q22-L1/L3 package)**
   @ r3 4b0d946 [r3, PE3-G1 + PE3-m4: re-pinned at the actual repair
-  HEAD; arc since: PE4 CLEAN @ e15308d, its count 1/2] — the
+  HEAD; arc since: PE4 CLEAN @ e15308d, its count 1/2] [r4, dated
+  append, checked against the git log at commit time: GENH4 is now
+  ACCEPTED 2/2 — passPE5 CLEAN @ 11dbd23 (0C + 0G + 2 display
+  MINORs) with the post-acceptance annex @ baf05ed (accepted body
+  byte-frozen = this r3 pin 4b0d946, 3-way md5-verified per baf05ed;
+  annex = the 2 display MINORs + ANNEX-LEMMA GENH4-7, none touching
+  the GENH4.A/B laws consumed here); no adjudicated unrepaired
+  finding at the pin — an honest strengthening of the (CS-EXACT)
+  n = 4 de facto discharge, which now cites an ACCEPTED supplier] —
+  the
   (CS-EXACT) n = 4 de facto discharge geography (drain =
   GENH4.B/Q22-L3, menu = GENH4.A/Q22-L1 + GENH4-1F, comp-weighted
   census), Step 4 + S7.1 only.
@@ -1592,7 +1683,11 @@ cited below is PE3's own committed fresh leg
   lift-stable (80 × 5 + 60 × 4). CONCORDANCE: the sealed runner's
   `extract_child` ALWAYS implemented the capped value (D = weighted
   min), so every sealed and committed number stands unchanged — the
-  defect was display-only, invisible at n ≤ 6 first-visible windows.
+  defect was display-only [r4, PE4-G1: the r3 record's closing gloss
+  here, "invisible at n ≤ 6 first-visible windows", was FALSE — the
+  disagreeing regime is first visible at N = 5, n = 3, inside the
+  sealed roster (PSTEEP3 at the (2,5) control row); see S14 and the
+  S4.1 concordance paragraph].
 * **PE3-G1 → the pin-check corrected, the violation disclosed.** The
   r2 sentence "no GENH4 r3 existed at this commit — checked" (S12)
   was FALSE: GENH4 r3 = 4b0d946 landed 2026-08-09 00:50:10, before
@@ -1640,10 +1735,15 @@ cited below is PE3's own committed fresh leg
 
 **No frozen number moved; no sealed artifact touched (byte-frozen,
 re-verifiable: runner md5 e7ca150b; supp triple per S12). The
-corrected formula changes NO committed instance — every sealed genre
-sits in the agreeing regime (co-blocks shallower than or at the
-extracted child's slope), and the runner always computed the capped
-value.**
+corrected formula changes NO committed instance — the runner always
+computed the capped value [r4, PE4-G1: this r3 sentence also claimed
+"every sealed genre sits in the agreeing regime (co-blocks shallower
+than or at the extracted child's slope)" — FALSE: steeper-decided-
+piece genres put the disagreeing regime inside the sealed roster
+((2,5,n3) 32 states; (2,6,n4) 512 states), machine-verified
+exhaustively by PE4's FR-1 (genind_pe4_fresh.* @ 51bd1bc);
+concordance holds because the runner was capped, not because the
+regimes agree — see S14].**
 
 **Grade: stays 0/2. The consecutive-clean count has NOT started; PE4
 (a fresh hostile pass) attempts the first clean.**
