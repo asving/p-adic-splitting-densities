@@ -13478,3 +13478,32 @@ repairs, count holds 1/2) THEN HE7 PE3 — IF CLEAN: 2/2 = THE FIRST
 STAGE-ONE ACCEPTANCE, freezing HE7_PROOF; + GENIND PE3 + GENH4 PE4
 (each a first-clean attempt). TAMEK folded at 415424e (its arc
 queued).**
+
+---
+
+## WAVE 5 PARTIAL (w58kscrjg, 529 STORM RETURNED — 2/4): GENIND PE3 = 0C+2G+4m (NOT clean; r3 owed) · HE7 r3 LANDED (e0c0240, count HOLDS 1/2) · HE7 PE3 (THE ACCEPTANCE ATTEMPT) + GENH4 PE4 KILLED BY 529s — SINGLE RESUME ISSUED — 2026-08-09
+
+GENIND PE3 (f89b565): PE3-G1 — the r2 re-pin's "no GENH4 r3 existed
+— checked" is FALSE (r3 landed 10 min before the r2 commits); the
+disclosure rule violated IN THE REPAIR THAT ADOPTS IT (the PE2-G2
+defect class reproduced one round later); consumption survives
+(the diff is display-only for everything GENIND consumes) — but the
+lesson is sharp: PIN CHECKS ARE A COMMIT-TIME ACTION, not a
+composition-time one. PE3-G2 — GENIND-3's M_l window display
+(inherited by GENIND-6(a)) false at multi-child DISTINCT-SLOPE
+genres: true window = capped μ_j·min(k_j,k_l); constructed TWOCHILD
+first visible at N=7 (beyond every sealed window), machine-refuted
+both characteristics; the sealed runner always implemented the
+capped value (display-vs-implementation again). GENIND-6's
+MATHEMATICS HELD (all four clauses re-derived; fiber constancy
+unbroken at 3 new genres). Fresh route: FIRST n ≥ 7 composite
+evidence (M7T with a (3,1)-child, 524,288 exhaustive; SS6
+stage-steeper realized; five symbolic fiber identities; 705,133/0).
+r3 owed: one disclosure sentence + ONE FORMULA (the capped window)
++ four minor sentences.
+
+HE7 r3 (e0c0240): W≠0 discharged, pigeonhole tail, δ=∞ coverage
+disclosed (λ₂ hist re-counted 38/1/3); count HOLDS 1/2 per the
+annex precedent. THE ACCEPTANCE ATTEMPT (PE3) died to the storm
+pre-launch; GENH4 PE4 likewise. RESUME: wf_a822f8ad-be1 via
+scriptPath (GENIND PE3 + HE7 r3 replay cached; PE3/PE4 run live).
