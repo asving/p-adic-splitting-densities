@@ -14344,3 +14344,48 @@ constructed inner-μ₂ ≥ 3 tower instances. Wave B2 (after B1): items
 (3) faithfulness geography + (4) partial inner sides (they consume
 B1's budgets). New notes, NOT edits to GENHN (its PE4 runs
 concurrently; discharge lands later as dated consumption updates).
+
+---
+
+## ★★★★★ WAVE 20 FOLDED (whrik4twm): GENHN ACCEPTED 2/2 + HE6 ACCEPTED 2/2 — THE CHAIN COMPLETE AT THE ARC BAR — WAVE 21: acceptance riders + HE3 PE1 + HE6R1 PE1 (the closure arcs) · BOX WAVE B1 RUNNING — 2026-08-09
+
+**GENHN PE4 (6053c3d): CLEAN — 0C/0G/1m ⟹ ACCEPTED 2/2, frozen.**
+The minor: an [r1]-era residue clause's "none live below n=8"
+contradicts the note's own realizability list (genre F (1,2,2) live
+at n=4) — one dated-append line, cure text supplied. FRESH ROUTE:
+first f₁=4 genre ever ((1,4,2)/F₁₆ — GENHN-2 exhaustive 15-subset
+tie census; the dictionary at a 4th genre, both oracles, the F₁₆
+trace criterion PARI-adjudicated); first comp=3 band contact; the
+THIRD iterated key + the FIRST depth-3 floor demonstration (a
+below-locus leaf reads {(4,1),(12,1)} vs naive {(16,1)} — item
+(6)(β) corroborated; feeds GENTOW-2). ALL FIVE prior instruments
+re-run green. The refuted→repaired→accepted tower story is complete:
+T(b) refuted at PE1, T(b)′ proved at r2, held at PE2/PE3/PE4.
+
+**HE6 PE4 (0644559 → b99f6b0 → 7ca97c9): CLEAN — 0C/0G/2m ⟹
+ACCEPTED 2/2, frozen.** The definitions layer audited item-by-item
+AND rebuilt hostile by machine; the middle lemmas re-derived in
+full; the recon's literal-instance statement byte-stable at what
+frozen HE7 consumes; the 8-route non-propagation inventory now
+fully at-site verified across the arc. Minors: a §S9 headline
+"1,385 members" matching no aggregation of the committed artifacts
+(never audited by 3 prior passes — the fresh-eyes rule again) + an
+HE6-2 guard broader than its domain (all consumers protected).
+FRESH ROUTE = the disclosed arc-wide hole CLOSED: first
+non-prime-q BASE oracle leg (unramified bases ℚ₉/ℚ₂₅, relative
+nffactor/rnfequation/idealprimedec oracle) — σ dictionary 60/60,
+T-BASEFIELD tooth 10/10 (identical bytes score differently over
+the two bases — the base-dependence is real and the reader tracks
+it).
+
+**THE SCOREBOARD: 7 primary chain notes at 2/2** (HE7, GENH4,
+GENIND, W-12, HEX3, GENHN, HE6) + the weld corpus (6 notes) + W-11
++ HMENU3 + SIGMALAW accepted earlier = 16 accepted texts. The
+dependency closure's remaining arcs: HE3 (μ ≤ 3 ladder base, 0/2)
++ HE6R1 (the reconciliation note, 0/2) — wave 21 — plus the
+distribution arcs (not chain-blocking). The A-boxes are the
+box-closure campaign's targets (B1 in flight). Acceptance riders
+owed: GENHN 1 line, HE6 2 lines — wave 21's rider.
+
+**WAVE 21 (dispatched): rider (GENHN + HE6 acceptance records +
+minor cures) + HE3 PE1 + HE6R1 PE1.**

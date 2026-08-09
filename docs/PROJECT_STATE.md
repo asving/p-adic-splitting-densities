@@ -3481,3 +3481,24 @@ twist-invariant clauses; lands identically on HE7's FROZEN L1 copy
 fact by isolated re-runs) — r2 owed. Board: FIVE frozen/accepted
 (HE7, GENH4, GENIND, W-12, HEX3) · GENHN 0/2 (r3) · HE6 0/2 (r2) ·
 distribution arcs queued.
+
+**2026-08-09 DATED APPEND #10 — ★★★★★ THE UNIFORMITY THEOREM CHAIN
+IS THROUGH THE 2-CLEAN BAR: GENHN ACCEPTED 2/2 (PE4 CLEAN 6053c3d)
++ HE6 ACCEPTED 2/2 (PE4 CLEAN 7ca97c9).** All seven primary chain
+notes now frozen/accepted: W-12.D (the reduction) ∘ GENIND.B (the
+induction) ∘ GENH4 (P(4)) ∘ GENHN (the general stage laws, incl.
+the refuted-and-repaired tower lemma T(b)′) ∘ HEX3 (n=3
+exhaustiveness) ∘ HE6 ∘ HE7 (the σ-ladder) — each through two
+consecutive clean fresh-context hostile passes, three of them
+additionally through Codex challenge-discharge cycles. GENHN's
+acceptance pass ran the FIRST f₁=4 genre and first comp=3 band
+contact + the first depth-3 floor demonstration (corroborating box
+item (6)(β)); HE6's CLOSED the arc's last disclosed hole (first
+non-prime-q BASE oracle leg: ℚ₉/ℚ₂₅ relative oracle, 60/60
+dictionary + base-field tooth 10/10). REMAINING before the chain's
+dependency closure is fully arced: HE3 + HE6R1 (arcs dispatched,
+wave 21) and the acceptance riders (3 minors total, dated appends).
+THE CONDITIONALITY: n ≤ 7 unconditional at the arc bar; n ≥ 8 =
+the A-boxes now under the BOX-CLOSURE CAMPAIGN (wave B1 in flight:
+GENTOW-1/GENTOW-2-FGMN/HE-TOW) per Asvin's prove-don't-sorry
+directive. Then: simplification → Lean.
