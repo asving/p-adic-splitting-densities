@@ -1,0 +1,10 @@
+=== GENTOW1 passPE1 fresh route (sealed) ===
+== F1 (eta != 1 gauge frame) ==
+== F2 (e1 = 3, e2 = 2; e1e2 = 6) ==
+== PARI leg: 32 jobs ==
+  gp stderr tail:   ***   Warning: new maximum stack size = 4000002048 (3814.699 Mbytes).
+
+  [tooth] F1NV0 naive-member sigma [(8, 1)] != [(4, 2)]
+  [tooth] F1NV1 naive-member sigma [(8, 1)] != [(4, 2)]
+teeth: {'GAUGE-NODE': 20, 'GAUGE-SIGMA': 2, 'REFWRONG': 2}
+=== VERDICT: GREEN -- 373 checks, 0 violations (1.0s) ===

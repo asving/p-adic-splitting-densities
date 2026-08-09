@@ -69,6 +69,16 @@ PREREGISTERED PREDICTIONS (sealed before the run):
 VERDICT: GREEN iff 0 violations and both gauge teeth fire.
 NOT RUN (disclosed): non-prime q (d = 2 ambient) -- rnf cost; the
 mu2 >= 3 rows (GENTOW-BOX-1 scope, unchanged).
+RUN-1 REDISCLOSURE (instrument error, mine not the note's): the F2
+SPLTAIL row's C1 was transcribed 8x^2*Phi' (v = 3, height 6*3 + 11 =
+29), not the height-15 normalizer 2x*Phi' (w(1,1) = 9, v = 1) -- the
+constructed pins were (32, 29), for which the {(6,1)}x2 prediction
+does not apply (and PARI read the true (32,29)-class value {(12,1)},
+consistent with tRAM... p0 = 32 even, u < 2w: undecided-at-my-desk;
+unscored).  Fixed to 2x*Phi'; prediction unchanged: pins (32, 15),
+sigma {(6,1),(6,1)}.  Every other row of run 1 was green, including
+all gauge teeth (GAUGE-NODE x20, GAUGE-SIGMA x2 with naive-member
+sigma {(8,1)}, REFWRONG x2).
 """
 import random
 import subprocess
@@ -456,7 +466,7 @@ def run_f2():
     JOBS.append('print("F2EQ.s2 ", sig2(%s, 2))' % pstr(anchor))
     META['F2EQ.s2'] = ('pairs', [(12, 1)], 'FR-P7 anchor route2')
     fS = padd(padd(pmul(F2.PHI2, F2.PHI2),
-                   pmul(pmul([0, 0, 8], P2F), F2.PHI2)), [0, 32])
+                   pmul(pmul([0, 2], P2F), F2.PHI2)), [0, 32])
     pins, _ = F2.read_pins(fS, F2.PHI2)
     chk(pins == [32, 15], 'F2 SPLTAIL pins %s want [32, 15]' % (pins,))
     JOBS.append('print("F2SP.s1 ", sig1(%s, 2))' % pstr(fS))
