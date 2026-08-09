@@ -14079,3 +14079,74 @@ pass) + HEX3 PE5 (arc resumes post-r3) + CODEX GENIND RATIFICATION
 (the sweep's third leg; both prior legs returned CHALLENGE and both
 challenges were discharged with new mathematics — the sweep is
 load-bearing).**
+
+---
+
+## ★★★★ / ⚠ WAVE 15 FOLDED (wnf8fhni3, 5/5): W-12 ACCEPTED 2/2 — FOUR CHAIN NOTES FROZEN · GENHN PE1 = THE FIRST DISPLAYED-LEMMA REFUTATION (T(b) at n≥8; corrected read identified; count laws mispriced) · HEX3 2 minors from clean · CODEX GENIND = CHALLENGE (0C, 6/6, R1–R6) — WAVE 16: GENHN r2 (THE REPAIR, real math) + GENIND ANNEX + HEX3 r4→PE6 — 2026-08-09
+
+**W-12 PE7 (40e3be3 → fa3acb2): CLEAN — 0C, 0G, 1 MINOR (the PE6-m1
+dated record's GENHN line-anchors went stale between the errata
+landing and the record's commit — the as-of race again; one dated
+re-anchor owed) + 3 remarks. FRESH ROUTE (7th): μ_τ independent of
+the whole apparatus — (i) disc-square-class Haar (odd q incl.
+non-prime 9, 25) == R_τ exact; (ii) exact 2-adic strata == (1/3,
+1/3, 1/3) + a 180/180 PARI dictionary tooth; (iii) FIRST equal-char
+Artin–Schreier strata (q=2,4); (iv) THE ENVELOPE PROBE — a
+10³-slower envelope delivers the same R_τ (the proof consumes no
+rate; the displayed rate is convenience) and demoting SEP-INERT
+breaks (A2) with deficit exactly (q−1)/(2q). Seventh isolated
+re-run 3,232,506/0. **W-12 FROZEN. The chain: W-12.D ✓ ∘ GENIND.B ✓
+∘ GENH4 ✓ ∘ HE7 ✓ — conditionality narrows to HEX3/GENHN/HE6 + the
+frontier boxes.**
+
+**GENHN PE1 (e06e449 + 7b6ccb1): NOT CLEAN — 2 CRITICAL + 1 GAP +
+2 MINOR (+4 remarks). F1 = THE PROGRAM'S FIRST REFUTATION OF A
+DISPLAYED LEMMA:** GENHN-T(b) refuted at the leaf level (n=8
+constructed members f=G(x²−2): note-frame inner read {(4,2)} /
+{(4,1),(4,1)} vs PARI {(8,1)} both oracles, 4 refuted jobs;
+mechanism: the composed slot basis {1,x,Φ′,xΦ′} has Φ′-classes the
+stage algebra kills — the honest Φ₂ = Φ′²−4x development of f
+carries 16Φ′ at dv₂=21, undercutting the stage-algebra pins;
+CORRECTED READ = inner-RAM(21) → {(8,1)}, PARI 3/3; even the
+"agreeing" instance has the wrong leaf label — the tower COUNT
+laws are also mispriced). SURVIVES: T(a), the event level,
+P(5)–P(7), GENHN.C. BREAKS: S8(b), GENHN.B's tower clause at
+n ≥ 8. F2 CRITICAL display-scope: GENHN-1's budget formula false
+at every checked genre INCLUDING the battery's own f₁=1 rows (the
+sealed runner uses the true floors — display-vs-implementation at
+CRITICAL grade). F3 GAP: [e2]-E1's trichotomy transport to f₁ ≥ 3
+underived — machine-ADJUDICATED TRUE at (1,3,2) (exhaustive, both
+windows). FRESH ROUTE: first f₁ ≥ 2 stage rows (F₈ exhaustive,
+first comp=2 census contact), first tower σ legs (→ F1), GENHN.C
+dictionary PARI-confirmed. Battery re-run 2,223,050/0 — and the
+battery NEVER COVERED towers at the leaf-read level (the refuted
+surface was machine-dark; the fresh-route rule found it). r2 = THE
+REPAIR: prove the corrected tower lemma, re-derive the tower count
+laws, fix F2's display, close F3.
+
+**HEX3 PE5: 0C + 0G + 2 MINOR** (the W-12-r4-owed "every lift"
+phrasing at L80–81 — fix "every disc ≠ 0 lift"; the L438 category
+slip — blast radius INSIDE HEX3 = ZERO, verified). The r3 slope
+re-derived + confirmed; the order-9 recurrence re-derived from the
+closed form; 11 species entries hand-verified; the GENIND tie
+re-hashed. ~36B cumulative states across the fresh rows (first
+eq-char q=13, (3,8) at 10.46B exact). r4 = two one-clause fixes,
+then PE6.
+
+**CODEX GENIND RAT (b835644 + cd5b0f4; scaffold pre-read):
+CHALLENGE — 6/6 CONFIRMED, 0 CRITICAL.** Heaviest: F3 GAP —
+GENIND.C's vanishing rate is not supplied by the displayed P(k)
+members (the bounded-M_l regime undisplayed); F1 GAP (GENIND-6(c)'s
+triangular-implies-onto needs the undisplayed unit-pivot step); F2
+GAP (window-1 scope leak); F4 scoped to the PE8 acceptance
+artifact (Codex + the scaffold's preregistered key = an independent
+double-kill); F5/F6 minors. Repair queue R1–R6 as dated annexes on
+the accepted text (the HE7/GENH4 pattern). Codex window ~3%.
+
+**WAVE 16 (dispatched this entry): GENHN r2 (the corrected tower
+lemma — REAL MATHEMATICS, the biggest repair of the program; +
+F2's budget display + F3's f₁ ≥ 3 transport + minors) + GENIND
+ANNEX R1–R6 + HEX3 r4 → PE6 (sequential). W-12's dated re-anchor
+rides the GENIND-annex agent's housekeeping. The next site refresh
+carries the refutation + the W-12 acceptance TOGETHER (honesty
+pair).**

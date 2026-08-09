@@ -3432,3 +3432,32 @@ conditionality now rests on: W-12 (1/2!), HEX3 (0/2), GENHN (0/2,
 PE1 next), HE6 (0/2) + the displayed open frontier boxes. The
 simplify→formalize pipeline (Asvin's directive) opens when these
 stabilize.
+
+**2026-08-09 DATED APPEND #8 — W-12 ACCEPTED 2/2 (THE REDUCTION
+FROZEN; PE7 CLEAN fa3acb2) *AND* THE PROGRAM'S FIRST REFUTATION OF
+A DISPLAYED LEMMA: GENHN-T(b) (tower composition) REFUTED at the
+leaf level (GENHN PE1, e06e449/7b6ccb1).** W-12's acceptance route
+computed μ_τ INDEPENDENTLY of the note's entire apparatus for the
+first time (disc-square-class Haar at odd q incl. 9/25; exact
+2-adic strata at the wild prime; FIRST equal-char-2 Artin–Schreier
+strata; + the envelope probe: an ε-degraded bundle delivers the
+same R_τ — the proof consumes NO decay rate). Four names frozen:
+HE7 ∘ GENH4 ∘ GENIND ∘ W-12. **THE REFUTATION (honest annotation
+on the composed-complete claim):** constructed n=8 tower members
+where the note-frame inner read (stage-algebra division, Φ′=0)
+predicts {(4,2)} / {(4,1),(4,1)} vs PARI {(8,1)} on BOTH oracles;
+mechanism exact (the composed slot basis's Φ′-classes undercut the
+stage-algebra pins); the CORRECTED read (Φ₂-development of f
+itself) matches PARI 3/3 — but the tower COUNT laws are also
+mispriced (leaf labels shift, RAM(21) vs true RAM(25)). SCOPE:
+T(a)/event level, P(5)–P(7), GENHN.C, and everything below n=8
+SURVIVE; GENHN.B's tower clause ("EXACTLY") is FALSE AS DISPLAYED
+at n ≥ 8. THE CHAIN'S STATUS: composed-complete stands ANNOTATED —
+the n ≥ 8 tower leg's stage-law box is refuted-as-stated with a
+corrected read identified and a repair round (GENHN r2, real
+mathematics: prove the corrected tower lemma + re-derive the tower
+count laws) dispatched in wave 16. Also this wave: HEX3 PE5 nearly
+clean (2 one-clause minors, r4 owed); CODEX GENIND ratification =
+CHALLENGE (6/6 confirmed, 0 CRITICAL, heaviest = the GENIND.C
+vanishing-rate supply gap; annex queue R1–R6). The next site
+refresh must carry the refutation + the W-12 acceptance together.
