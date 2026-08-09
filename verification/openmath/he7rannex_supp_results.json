@@ -1,0 +1,1415 @@
+{
+ "rows": [
+  {
+   "kind": "K1",
+   "p": 5,
+   "s": 2,
+   "u2": 21,
+   "s2": 1,
+   "sigma": [
+    [
+     16,
+     1
+    ]
+   ],
+   "pari_ok": true,
+   "nref": 0,
+   "naive_flip": false
+  },
+  {
+   "kind": "K2",
+   "p": 5,
+   "s": 2,
+   "u2": 21,
+   "s2": 1,
+   "sigma": [
+    [
+     8,
+     2
+    ]
+   ],
+   "pari_ok": true,
+   "nref": 0,
+   "naive_flip": true
+  },
+  {
+   "kind": "K2",
+   "p": 5,
+   "s": 2,
+   "u2": 21,
+   "s2": 1,
+   "sigma": [
+    [
+     8,
+     2
+    ]
+   ],
+   "pari_ok": true,
+   "nref": 0,
+   "naive_flip": true
+  },
+  {
+   "kind": "K2R",
+   "p": 5,
+   "s": 2,
+   "u2": 21,
+   "s2": 1,
+   "sigma": [
+    [
+     8,
+     2
+    ]
+   ],
+   "pari_ok": true,
+   "nref": 1,
+   "naive_flip": false
+  },
+  {
+   "kind": "K3",
+   "p": 5,
+   "s": 2,
+   "u2": 21,
+   "s2": 1,
+   "sigma": [
+    [
+     8,
+     1
+    ],
+    [
+     8,
+     1
+    ]
+   ],
+   "pari_ok": true,
+   "nref": 0,
+   "naive_flip": false
+  },
+  {
+   "kind": "K1",
+   "p": 5,
+   "s": 2,
+   "u2": 21,
+   "s2": 2,
+   "sigma": [
+    [
+     16,
+     1
+    ]
+   ],
+   "pari_ok": true,
+   "nref": 0,
+   "naive_flip": false
+  },
+  {
+   "kind": "K2",
+   "p": 5,
+   "s": 2,
+   "u2": 21,
+   "s2": 2,
+   "sigma": [
+    [
+     8,
+     1
+    ],
+    [
+     8,
+     1
+    ]
+   ],
+   "pari_ok": true,
+   "nref": 0,
+   "naive_flip": false
+  },
+  {
+   "kind": "K2",
+   "p": 5,
+   "s": 2,
+   "u2": 21,
+   "s2": 2,
+   "sigma": [
+    [
+     8,
+     2
+    ]
+   ],
+   "pari_ok": true,
+   "nref": 0,
+   "naive_flip": false
+  },
+  {
+   "kind": "K2R",
+   "p": 5,
+   "s": 2,
+   "u2": 21,
+   "s2": 2,
+   "sigma": [
+    [
+     16,
+     1
+    ]
+   ],
+   "pari_ok": true,
+   "nref": 1,
+   "naive_flip": true
+  },
+  {
+   "kind": "K3",
+   "p": 5,
+   "s": 2,
+   "u2": 21,
+   "s2": 2,
+   "sigma": [
+    [
+     8,
+     1
+    ],
+    [
+     8,
+     1
+    ]
+   ],
+   "pari_ok": true,
+   "nref": 0,
+   "naive_flip": false
+  },
+  {
+   "kind": "K1",
+   "p": 5,
+   "s": 2,
+   "u2": 23,
+   "s2": 1,
+   "sigma": [
+    [
+     16,
+     1
+    ]
+   ],
+   "pari_ok": true,
+   "nref": 0,
+   "naive_flip": false
+  },
+  {
+   "kind": "K2",
+   "p": 5,
+   "s": 2,
+   "u2": 23,
+   "s2": 1,
+   "sigma": [
+    [
+     16,
+     1
+    ]
+   ],
+   "pari_ok": true,
+   "nref": 1,
+   "naive_flip": false
+  },
+  {
+   "kind": "K2",
+   "p": 5,
+   "s": 2,
+   "u2": 23,
+   "s2": 1,
+   "sigma": [
+    [
+     8,
+     1
+    ],
+    [
+     8,
+     1
+    ]
+   ],
+   "pari_ok": true,
+   "nref": 0,
+   "naive_flip": false
+  },
+  {
+   "kind": "K2R",
+   "p": 5,
+   "s": 2,
+   "u2": 23,
+   "s2": 1,
+   "sigma": [
+    [
+     16,
+     1
+    ]
+   ],
+   "pari_ok": true,
+   "nref": 1,
+   "naive_flip": false
+  },
+  {
+   "kind": "K3",
+   "p": 5,
+   "s": 2,
+   "u2": 23,
+   "s2": 1,
+   "sigma": [
+    [
+     8,
+     1
+    ],
+    [
+     8,
+     1
+    ]
+   ],
+   "pari_ok": true,
+   "nref": 0,
+   "naive_flip": false
+  },
+  {
+   "kind": "K1",
+   "p": 5,
+   "s": 2,
+   "u2": 23,
+   "s2": 2,
+   "sigma": [
+    [
+     16,
+     1
+    ]
+   ],
+   "pari_ok": true,
+   "nref": 0,
+   "naive_flip": false
+  },
+  {
+   "kind": "K2",
+   "p": 5,
+   "s": 2,
+   "u2": 23,
+   "s2": 2,
+   "sigma": [
+    [
+     8,
+     1
+    ],
+    [
+     8,
+     1
+    ]
+   ],
+   "pari_ok": true,
+   "nref": 0,
+   "naive_flip": false
+  },
+  {
+   "kind": "K2",
+   "p": 5,
+   "s": 2,
+   "u2": 23,
+   "s2": 2,
+   "sigma": [
+    [
+     8,
+     2
+    ]
+   ],
+   "pari_ok": true,
+   "nref": 0,
+   "naive_flip": true
+  },
+  {
+   "kind": "K2R",
+   "p": 5,
+   "s": 2,
+   "u2": 23,
+   "s2": 2,
+   "sigma": [
+    [
+     16,
+     1
+    ]
+   ],
+   "pari_ok": true,
+   "nref": 1,
+   "naive_flip": false
+  },
+  {
+   "kind": "K3",
+   "p": 5,
+   "s": 2,
+   "u2": 23,
+   "s2": 2,
+   "sigma": [
+    [
+     8,
+     1
+    ],
+    [
+     8,
+     1
+    ]
+   ],
+   "pari_ok": true,
+   "nref": 0,
+   "naive_flip": false
+  },
+  {
+   "kind": "K1",
+   "p": 5,
+   "s": 3,
+   "u2": 21,
+   "s2": 1,
+   "sigma": [
+    [
+     16,
+     1
+    ]
+   ],
+   "pari_ok": true,
+   "nref": 0,
+   "naive_flip": false
+  },
+  {
+   "kind": "K2",
+   "p": 5,
+   "s": 3,
+   "u2": 21,
+   "s2": 1,
+   "sigma": [
+    [
+     8,
+     1
+    ],
+    [
+     8,
+     1
+    ]
+   ],
+   "pari_ok": true,
+   "nref": 0,
+   "naive_flip": false
+  },
+  {
+   "kind": "K2",
+   "p": 5,
+   "s": 3,
+   "u2": 21,
+   "s2": 1,
+   "sigma": [
+    [
+     8,
+     2
+    ]
+   ],
+   "pari_ok": true,
+   "nref": 0,
+   "naive_flip": false
+  },
+  {
+   "kind": "K2R",
+   "p": 5,
+   "s": 3,
+   "u2": 21,
+   "s2": 1,
+   "sigma": [
+    [
+     16,
+     1
+    ]
+   ],
+   "pari_ok": true,
+   "nref": 1,
+   "naive_flip": true
+  },
+  {
+   "kind": "K3",
+   "p": 5,
+   "s": 3,
+   "u2": 21,
+   "s2": 1,
+   "sigma": [
+    [
+     8,
+     1
+    ],
+    [
+     8,
+     1
+    ]
+   ],
+   "pari_ok": true,
+   "nref": 0,
+   "naive_flip": false
+  },
+  {
+   "kind": "K1",
+   "p": 5,
+   "s": 3,
+   "u2": 21,
+   "s2": 2,
+   "sigma": [
+    [
+     16,
+     1
+    ]
+   ],
+   "pari_ok": true,
+   "nref": 0,
+   "naive_flip": false
+  },
+  {
+   "kind": "K2",
+   "p": 5,
+   "s": 3,
+   "u2": 21,
+   "s2": 2,
+   "sigma": [
+    [
+     8,
+     1
+    ],
+    [
+     8,
+     1
+    ]
+   ],
+   "pari_ok": true,
+   "nref": 0,
+   "naive_flip": true
+  },
+  {
+   "kind": "K2",
+   "p": 5,
+   "s": 3,
+   "u2": 21,
+   "s2": 2,
+   "sigma": [
+    [
+     8,
+     2
+    ]
+   ],
+   "pari_ok": true,
+   "nref": 0,
+   "naive_flip": false
+  },
+  {
+   "kind": "K2R",
+   "p": 5,
+   "s": 3,
+   "u2": 21,
+   "s2": 2,
+   "sigma": [
+    [
+     8,
+     1
+    ],
+    [
+     8,
+     1
+    ]
+   ],
+   "pari_ok": true,
+   "nref": 1,
+   "naive_flip": false
+  },
+  {
+   "kind": "K3",
+   "p": 5,
+   "s": 3,
+   "u2": 21,
+   "s2": 2,
+   "sigma": [
+    [
+     8,
+     1
+    ],
+    [
+     8,
+     1
+    ]
+   ],
+   "pari_ok": true,
+   "nref": 0,
+   "naive_flip": false
+  },
+  {
+   "kind": "K1",
+   "p": 5,
+   "s": 3,
+   "u2": 23,
+   "s2": 1,
+   "sigma": [
+    [
+     16,
+     1
+    ]
+   ],
+   "pari_ok": true,
+   "nref": 0,
+   "naive_flip": false
+  },
+  {
+   "kind": "K2",
+   "p": 5,
+   "s": 3,
+   "u2": 23,
+   "s2": 1,
+   "sigma": [
+    [
+     16,
+     1
+    ]
+   ],
+   "pari_ok": true,
+   "nref": 1,
+   "naive_flip": false
+  },
+  {
+   "kind": "K2",
+   "p": 5,
+   "s": 3,
+   "u2": 23,
+   "s2": 1,
+   "sigma": [
+    [
+     8,
+     2
+    ]
+   ],
+   "pari_ok": true,
+   "nref": 0,
+   "naive_flip": true
+  },
+  {
+   "kind": "K3",
+   "p": 5,
+   "s": 3,
+   "u2": 23,
+   "s2": 1,
+   "sigma": [
+    [
+     8,
+     1
+    ],
+    [
+     8,
+     1
+    ]
+   ],
+   "pari_ok": true,
+   "nref": 0,
+   "naive_flip": false
+  },
+  {
+   "kind": "K1",
+   "p": 5,
+   "s": 3,
+   "u2": 23,
+   "s2": 2,
+   "sigma": [
+    [
+     16,
+     1
+    ]
+   ],
+   "pari_ok": true,
+   "nref": 0,
+   "naive_flip": false
+  },
+  {
+   "kind": "K2",
+   "p": 5,
+   "s": 3,
+   "u2": 23,
+   "s2": 2,
+   "sigma": [
+    [
+     8,
+     2
+    ]
+   ],
+   "pari_ok": true,
+   "nref": 0,
+   "naive_flip": false
+  },
+  {
+   "kind": "K2",
+   "p": 5,
+   "s": 3,
+   "u2": 23,
+   "s2": 2,
+   "sigma": [
+    [
+     8,
+     2
+    ]
+   ],
+   "pari_ok": true,
+   "nref": 0,
+   "naive_flip": true
+  },
+  {
+   "kind": "K2R",
+   "p": 5,
+   "s": 3,
+   "u2": 23,
+   "s2": 2,
+   "sigma": [
+    [
+     16,
+     1
+    ]
+   ],
+   "pari_ok": true,
+   "nref": 1,
+   "naive_flip": false
+  },
+  {
+   "kind": "K3",
+   "p": 5,
+   "s": 3,
+   "u2": 23,
+   "s2": 2,
+   "sigma": [
+    [
+     8,
+     1
+    ],
+    [
+     8,
+     1
+    ]
+   ],
+   "pari_ok": true,
+   "nref": 0,
+   "naive_flip": false
+  },
+  {
+   "kind": "K1",
+   "p": 7,
+   "s": 2,
+   "u2": 21,
+   "s2": 1,
+   "sigma": [
+    [
+     16,
+     1
+    ]
+   ],
+   "pari_ok": true,
+   "nref": 0,
+   "naive_flip": false
+  },
+  {
+   "kind": "K2",
+   "p": 7,
+   "s": 2,
+   "u2": 21,
+   "s2": 1,
+   "sigma": [
+    [
+     8,
+     2
+    ]
+   ],
+   "pari_ok": true,
+   "nref": 0,
+   "naive_flip": false
+  },
+  {
+   "kind": "K2",
+   "p": 7,
+   "s": 2,
+   "u2": 21,
+   "s2": 1,
+   "sigma": [
+    [
+     16,
+     1
+    ]
+   ],
+   "pari_ok": true,
+   "nref": 1,
+   "naive_flip": false
+  },
+  {
+   "kind": "K2R",
+   "p": 7,
+   "s": 2,
+   "u2": 21,
+   "s2": 1,
+   "sigma": [
+    [
+     16,
+     1
+    ]
+   ],
+   "pari_ok": true,
+   "nref": 1,
+   "naive_flip": true
+  },
+  {
+   "kind": "K3",
+   "p": 7,
+   "s": 2,
+   "u2": 21,
+   "s2": 1,
+   "sigma": [
+    [
+     8,
+     1
+    ],
+    [
+     8,
+     1
+    ]
+   ],
+   "pari_ok": true,
+   "nref": 0,
+   "naive_flip": false
+  },
+  {
+   "kind": "K1",
+   "p": 7,
+   "s": 2,
+   "u2": 21,
+   "s2": 2,
+   "sigma": [
+    [
+     16,
+     1
+    ]
+   ],
+   "pari_ok": true,
+   "nref": 0,
+   "naive_flip": false
+  },
+  {
+   "kind": "K2",
+   "p": 7,
+   "s": 2,
+   "u2": 21,
+   "s2": 2,
+   "sigma": [
+    [
+     8,
+     1
+    ],
+    [
+     8,
+     1
+    ]
+   ],
+   "pari_ok": true,
+   "nref": 0,
+   "naive_flip": false
+  },
+  {
+   "kind": "K2",
+   "p": 7,
+   "s": 2,
+   "u2": 21,
+   "s2": 2,
+   "sigma": [
+    [
+     8,
+     1
+    ],
+    [
+     8,
+     1
+    ]
+   ],
+   "pari_ok": true,
+   "nref": 0,
+   "naive_flip": true
+  },
+  {
+   "kind": "K2R",
+   "p": 7,
+   "s": 2,
+   "u2": 21,
+   "s2": 2,
+   "sigma": [
+    [
+     16,
+     1
+    ]
+   ],
+   "pari_ok": true,
+   "nref": 1,
+   "naive_flip": true
+  },
+  {
+   "kind": "K3",
+   "p": 7,
+   "s": 2,
+   "u2": 21,
+   "s2": 2,
+   "sigma": [
+    [
+     8,
+     1
+    ],
+    [
+     8,
+     1
+    ]
+   ],
+   "pari_ok": true,
+   "nref": 0,
+   "naive_flip": false
+  },
+  {
+   "kind": "K1",
+   "p": 7,
+   "s": 2,
+   "u2": 23,
+   "s2": 1,
+   "sigma": [
+    [
+     16,
+     1
+    ]
+   ],
+   "pari_ok": true,
+   "nref": 0,
+   "naive_flip": false
+  },
+  {
+   "kind": "K2",
+   "p": 7,
+   "s": 2,
+   "u2": 23,
+   "s2": 1,
+   "sigma": [
+    [
+     8,
+     1
+    ],
+    [
+     8,
+     1
+    ]
+   ],
+   "pari_ok": true,
+   "nref": 0,
+   "naive_flip": false
+  },
+  {
+   "kind": "K2",
+   "p": 7,
+   "s": 2,
+   "u2": 23,
+   "s2": 1,
+   "sigma": [
+    [
+     8,
+     1
+    ],
+    [
+     8,
+     1
+    ]
+   ],
+   "pari_ok": true,
+   "nref": 0,
+   "naive_flip": false
+  },
+  {
+   "kind": "K2R",
+   "p": 7,
+   "s": 2,
+   "u2": 23,
+   "s2": 1,
+   "sigma": [
+    [
+     16,
+     1
+    ]
+   ],
+   "pari_ok": true,
+   "nref": 1,
+   "naive_flip": true
+  },
+  {
+   "kind": "K3",
+   "p": 7,
+   "s": 2,
+   "u2": 23,
+   "s2": 1,
+   "sigma": [
+    [
+     8,
+     1
+    ],
+    [
+     8,
+     1
+    ]
+   ],
+   "pari_ok": true,
+   "nref": 0,
+   "naive_flip": false
+  },
+  {
+   "kind": "K1",
+   "p": 7,
+   "s": 2,
+   "u2": 23,
+   "s2": 2,
+   "sigma": [
+    [
+     16,
+     1
+    ]
+   ],
+   "pari_ok": true,
+   "nref": 0,
+   "naive_flip": false
+  },
+  {
+   "kind": "K2",
+   "p": 7,
+   "s": 2,
+   "u2": 23,
+   "s2": 2,
+   "sigma": [
+    [
+     8,
+     2
+    ]
+   ],
+   "pari_ok": true,
+   "nref": 0,
+   "naive_flip": true
+  },
+  {
+   "kind": "K2",
+   "p": 7,
+   "s": 2,
+   "u2": 23,
+   "s2": 2,
+   "sigma": [
+    [
+     8,
+     1
+    ],
+    [
+     8,
+     1
+    ]
+   ],
+   "pari_ok": true,
+   "nref": 0,
+   "naive_flip": false
+  },
+  {
+   "kind": "K2R",
+   "p": 7,
+   "s": 2,
+   "u2": 23,
+   "s2": 2,
+   "sigma": [
+    [
+     16,
+     1
+    ]
+   ],
+   "pari_ok": true,
+   "nref": 1,
+   "naive_flip": false
+  },
+  {
+   "kind": "K3",
+   "p": 7,
+   "s": 2,
+   "u2": 23,
+   "s2": 2,
+   "sigma": [
+    [
+     8,
+     1
+    ],
+    [
+     8,
+     1
+    ]
+   ],
+   "pari_ok": true,
+   "nref": 0,
+   "naive_flip": false
+  },
+  {
+   "kind": "K1",
+   "p": 7,
+   "s": 3,
+   "u2": 21,
+   "s2": 1,
+   "sigma": [
+    [
+     16,
+     1
+    ]
+   ],
+   "pari_ok": true,
+   "nref": 0,
+   "naive_flip": false
+  },
+  {
+   "kind": "K2",
+   "p": 7,
+   "s": 3,
+   "u2": 21,
+   "s2": 1,
+   "sigma": [
+    [
+     8,
+     2
+    ]
+   ],
+   "pari_ok": true,
+   "nref": 0,
+   "naive_flip": true
+  },
+  {
+   "kind": "K2",
+   "p": 7,
+   "s": 3,
+   "u2": 21,
+   "s2": 1,
+   "sigma": [
+    [
+     8,
+     1
+    ],
+    [
+     8,
+     1
+    ]
+   ],
+   "pari_ok": true,
+   "nref": 0,
+   "naive_flip": false
+  },
+  {
+   "kind": "K2R",
+   "p": 7,
+   "s": 3,
+   "u2": 21,
+   "s2": 1,
+   "sigma": [
+    [
+     16,
+     1
+    ]
+   ],
+   "pari_ok": true,
+   "nref": 1,
+   "naive_flip": false
+  },
+  {
+   "kind": "K3",
+   "p": 7,
+   "s": 3,
+   "u2": 21,
+   "s2": 1,
+   "sigma": [
+    [
+     8,
+     1
+    ],
+    [
+     8,
+     1
+    ]
+   ],
+   "pari_ok": true,
+   "nref": 0,
+   "naive_flip": false
+  },
+  {
+   "kind": "K1",
+   "p": 7,
+   "s": 3,
+   "u2": 21,
+   "s2": 2,
+   "sigma": [
+    [
+     16,
+     1
+    ]
+   ],
+   "pari_ok": true,
+   "nref": 0,
+   "naive_flip": false
+  },
+  {
+   "kind": "K2",
+   "p": 7,
+   "s": 3,
+   "u2": 21,
+   "s2": 2,
+   "sigma": [
+    [
+     8,
+     1
+    ],
+    [
+     8,
+     1
+    ]
+   ],
+   "pari_ok": true,
+   "nref": 1,
+   "naive_flip": false
+  },
+  {
+   "kind": "K2",
+   "p": 7,
+   "s": 3,
+   "u2": 21,
+   "s2": 2,
+   "sigma": [
+    [
+     8,
+     2
+    ]
+   ],
+   "pari_ok": true,
+   "nref": 0,
+   "naive_flip": false
+  },
+  {
+   "kind": "K2R",
+   "p": 7,
+   "s": 3,
+   "u2": 21,
+   "s2": 2,
+   "sigma": [
+    [
+     16,
+     1
+    ]
+   ],
+   "pari_ok": true,
+   "nref": 1,
+   "naive_flip": true
+  },
+  {
+   "kind": "K3",
+   "p": 7,
+   "s": 3,
+   "u2": 21,
+   "s2": 2,
+   "sigma": [
+    [
+     8,
+     1
+    ],
+    [
+     8,
+     1
+    ]
+   ],
+   "pari_ok": true,
+   "nref": 0,
+   "naive_flip": false
+  },
+  {
+   "kind": "K1",
+   "p": 7,
+   "s": 3,
+   "u2": 23,
+   "s2": 1,
+   "sigma": [
+    [
+     16,
+     1
+    ]
+   ],
+   "pari_ok": true,
+   "nref": 0,
+   "naive_flip": false
+  },
+  {
+   "kind": "K2",
+   "p": 7,
+   "s": 3,
+   "u2": 23,
+   "s2": 1,
+   "sigma": [
+    [
+     8,
+     1
+    ],
+    [
+     8,
+     1
+    ]
+   ],
+   "pari_ok": true,
+   "nref": 0,
+   "naive_flip": false
+  },
+  {
+   "kind": "K2",
+   "p": 7,
+   "s": 3,
+   "u2": 23,
+   "s2": 1,
+   "sigma": [
+    [
+     8,
+     2
+    ]
+   ],
+   "pari_ok": true,
+   "nref": 0,
+   "naive_flip": false
+  },
+  {
+   "kind": "K2R",
+   "p": 7,
+   "s": 3,
+   "u2": 23,
+   "s2": 1,
+   "sigma": [
+    [
+     16,
+     1
+    ]
+   ],
+   "pari_ok": true,
+   "nref": 1,
+   "naive_flip": true
+  },
+  {
+   "kind": "K3",
+   "p": 7,
+   "s": 3,
+   "u2": 23,
+   "s2": 1,
+   "sigma": [
+    [
+     8,
+     1
+    ],
+    [
+     8,
+     1
+    ]
+   ],
+   "pari_ok": true,
+   "nref": 0,
+   "naive_flip": false
+  },
+  {
+   "kind": "K1",
+   "p": 7,
+   "s": 3,
+   "u2": 23,
+   "s2": 2,
+   "sigma": [
+    [
+     16,
+     1
+    ]
+   ],
+   "pari_ok": true,
+   "nref": 0,
+   "naive_flip": false
+  },
+  {
+   "kind": "K2",
+   "p": 7,
+   "s": 3,
+   "u2": 23,
+   "s2": 2,
+   "sigma": [
+    [
+     8,
+     2
+    ]
+   ],
+   "pari_ok": true,
+   "nref": 0,
+   "naive_flip": true
+  },
+  {
+   "kind": "K2",
+   "p": 7,
+   "s": 3,
+   "u2": 23,
+   "s2": 2,
+   "sigma": [
+    [
+     8,
+     1
+    ],
+    [
+     8,
+     1
+    ]
+   ],
+   "pari_ok": true,
+   "nref": 0,
+   "naive_flip": false
+  },
+  {
+   "kind": "K2R",
+   "p": 7,
+   "s": 3,
+   "u2": 23,
+   "s2": 2,
+   "sigma": [
+    [
+     16,
+     1
+    ]
+   ],
+   "pari_ok": true,
+   "nref": 1,
+   "naive_flip": true
+  },
+  {
+   "kind": "K3",
+   "p": 7,
+   "s": 3,
+   "u2": 23,
+   "s2": 2,
+   "sigma": [
+    [
+     8,
+     1
+    ],
+    [
+     8,
+     1
+    ]
+   ],
+   "pari_ok": true,
+   "nref": 0,
+   "naive_flip": false
+  }
+ ],
+ "checks": {
+  "P1-ladder": 79,
+  "P2-sigma-agree": 79,
+  "deep-letter-fired": 102,
+  "refine3": 34,
+  "P3-naive-flip": 18,
+  "disc0-discard": 1
+ },
+ "viol": [],
+ "secs": 2.6,
+ "summary": {
+  "members": 79,
+  "pari_agree": 79,
+  "naive_flips": 18,
+  "refines3": 19,
+  "sigmas": {
+   "((16, 1),)": 32,
+   "((8, 2),)": 16,
+   "((8, 1), (8, 1))": 31
+  },
+  "violations": 0
+ },
+ "verdict": "GREEN"
+}

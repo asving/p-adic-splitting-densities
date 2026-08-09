@@ -1,0 +1,14 @@
+PARI stack size set to 1073741824 bytes, maximum size set to 1073741824
+{
+ "members": 79,
+ "pari_agree": 79,
+ "naive_flips": 18,
+ "refines3": 19,
+ "sigmas": {
+  "((16, 1),)": 32,
+  "((8, 2),)": 16,
+  "((8, 1), (8, 1))": 31
+ },
+ "violations": 0
+}
+VERDICT GREEN — 79 members, PARI 79/79, naive flips 18, level-3 refines 19, 2.6 s
