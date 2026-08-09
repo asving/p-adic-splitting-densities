@@ -1,0 +1,2042 @@
+ADVERSARIAL VERIFICATION CHARGE — GENH4 RATIFICATION PASS (post-acceptance, decorrelated model)
+
+You are a hostile mathematical verifier in a fresh context. Your blind spots
+decorrelate from the authors'. The document below (PASTE A) is an ACCEPTED
+proof note from a program computing p-adic splitting densities: it was graded
+CLEAN twice (PE4, PE5) by same-family verifiers and is now byte-frozen, with a
+post-acceptance ANNEX (included). Your job is a RATIFICATION pass: attack the
+frozen text as a different model. Seven same-family passes may share blind
+spots; you are the decorrelated check.
+
+THE VERIFIER PROTOCOL (strict):
+- QUOTE AND CLASSIFY. FIX NOTHING. For each finding: (1) the verbatim quote of
+  the offending passage (short), (2) a classification — CRITICAL ERROR (breaks
+  the logical chain; conclusions depending on it are unproved) / JUSTIFICATION
+  GAP (the conclusion may still be true, but the step is not justified as
+  written) / MINOR (wording, notation, bookkeeping; no consumer breaks) —
+  and (3) the exact failure: what goes wrong, with the concrete instance or
+  counter-instance if you have one.
+- Do NOT rewrite proofs, do NOT propose repairs beyond one line naming what a
+  repair would need, do NOT grade generously. If a step is fine, do not
+  manufacture a finding. Report checked-clean surfaces explicitly at the end.
+- Arithmetic and algebra: recompute, do not trust. Small-q instances (q = 2, 3)
+  are cheap — use them.
+- The note's own machine record (committed artifacts, md5 pins) is NOT
+  available to you; treat committed numbers quoted in the note as claims the
+  TEXT must be consistent with, and attack internal inconsistencies between
+  displayed laws and displayed numbers.
+
+WHAT THE NOTE PROVES (frame, 5 lines). Degree-4 (quartic) splitting densities
+over a local field O with residue F_q. At n = 4 two "composite stage" genres
+exist: E (totally ramified quadratic key, value index E = 2, residue K = F_q)
+and F (unramified quadratic key, K = F_{q²}). The note proves the stage count
+law (THEOREM GENH4.A), refine transfer (LEMMA GENH4-4), drainage (THEOREM
+GENH4.B), and σ-decision (THEOREM GENH4.C); these discharge a box
+[GENIND-H(4)] in an induction (GENIND.B), which fires P(4), and THEOREM W-12.D
+(PASTE B) then yields the eleven exact quartic densities R_τ(q) displayed in
+S9.4. PASTE B–E give the consumed statements verbatim at their pins: W-12.D
+with its (A0)/(A1)/σ-labelling hypotheses (PASTE B, at its r5 text), the cubic
+suppliers HM3.D (PASTE C), the general composite-stage law GENHN.A/GENHN.C
+(PASTE D — a LATER note generalizing this one; use it only as a cross-check,
+findings must land on PASTE A or on a PASTE A–PASTE B consumption mismatch),
+and the scout note's candidate lemmas Q22-L1/L2/L3 (PASTE E).
+
+MANDATED ATTACK ORDER (spend your effort in this order):
+(1) THEOREM GENH4.A's census algebra at the E/F seam: the [r2] comp-weighted
+    correction (census q^{comp}−1 per RAM and per 2SIDED pin; comp = 1 on the
+    genre-F boundary band N ≤ m ≤ N+k−1, comp = 2 below) — does the corrected
+    clause propagate CONSISTENTLY through every displayed product (S1's law,
+    S6.1's leaf table incl. the genre-F gloss, S6.3's drainage forms, the
+    committed numbers quoted in the note: e.g. RAM(5) = 2,117,682 = 21·(q−1)·q⁵
+    at (q,N,k) = (7,5,1); UND = 352,947 = 21·q^{N+2k−2})? Check mass
+    conservation by hand at a small cell (q = 2, k = 1, N = 5 or 7): do the
+    displayed leaf laws + UND sum to q^{#free slots} over a node?
+(2) THEOREM GENH4.C's σ-labelling SUPPLY argument: W-12.D's (A1) [r4]
+    σ-labelling clause (PASTE B) demands each core family carry a label σ_F
+    with EVERY disc ≠ 0 lift of EVERY member σ-decided at σ_F. Does GENH4.C +
+    the S1 dictionary + the ANNEX's GENH4-7(b) (the F-side SPLTAIL label)
+    actually produce that, BOTH characteristics (char 2 included), for every
+    leaf family the n = 4 menu fires — including SPLTAIL at genre F (the
+    ANNEX derivation) and SPLITEQ (the one-more-refine-step argument)? Attack
+    the S7 bullets one by one: RAM (the 4|e(L) step), 2SIDED (the norm/j = 2
+    step — note the ANNEX A2 unit correction), SPLITEQ (char 2: R₂′(s₁) = S₁
+    ≠ 0 forced by '11' separability — check), INERT (residue-degree step),
+    SPLTAIL (E and F).
+(3) The LEVEL-0 assembly of the eleven R_τ (S9.3): the f̄-factorization shapes
+    and censuses {1111: C(q,4), 11·2̄: C(q,2)n₂, 2̄2̄′: C(n₂,2), 1·3̄: q·n₃,
+    4̄: n₄; 2·11: qC(q−1,2), 2·2̄: qn₂, 2·2: C(q,2), 3·1: q(q−1), 4: q,
+    2̄²: n₂} with n_d = #monic irreducibles of degree d over F_q. Verify
+    Σ censuses = q⁴ at q = 2 and q = 3 BY HAND. Check for double-counting or
+    omission at the (2,2)-vs-(1,1,2) boundary (a double root at one point plus
+    two distinct simple roots vs two double roots etc.), and that each shape's
+    block-vector assignment (ν₂, ν₂^{(2)}, ν₃, ν₄, μ_F, decided pieces) is the
+    right one. Sanity-check one full density: does R_{(2,1)²} = q²/(2(q+1)²Φ₂)
+    evaluate to 2/63 at q = 2 as the anchor list claims, and is the shape
+    algebra that produces it (2·2 shape: C(q,2) → ν₂⊗ν₂ etc.) correct?
+(4) ANNEX-LEMMA GENH4-7's clause (c) two-lift witness: at 2w ≥ N, are the two
+    exhibited lifts (u_lift = N landing RAM/even-N-residual vs u_lift > 2w
+    landing 2SIDED) both actually REALIZABLE from the same hidden state, and
+    do they genuinely force different σ (check the odd-N RAM(N) leg: N odd
+    needs N ≤ 2w — consistent with 2w ≥ N?; check u_lift > 2w realizable:
+    are enough out-of-window digits free?). Also clause (a)'s v₁ min-formula
+    (no cancellation) and clause (b)'s appeal to lift-stability.
+(5) FREE HUNT. Anything: the S2 ring invariants and their maintenance (S5),
+    LEMMA GENH4-2's parity argument at h even?? (h is odd by genre E entry —
+    is that used consistently?), GENH4-CAP's undercut construction, the S4
+    trichotomy's disjointness after two rounds of repair ([r2]/[r3] — the
+    note's own arc found overlapping antecedents twice), LEMMA GENH4-6's
+    liveness inequalities, S6.2's bracket telescoping, S9.2's μ_E derivation
+    and the ANNEX A3 closure, the drainage exponent bookkeeping in S6.3
+    (⌊N/2⌋ forms), any internal inconsistency between the [r2]/[r3] repair
+    layers and the frozen sealed text they annotate, any inconsistency
+    between PASTE A's claims about its suppliers and the suppliers' actual
+    text (PASTE B–E).
+
+FORMAT OF YOUR REPORT:
+Numbered findings, most severe first, each: verbatim quote → classification →
+failure (concrete). Then a CHECKED CLEAN list (surfaces you verified and
+found sound, one line each). Then a one-paragraph verdict: does the document
+survive ratification (CLEAN / findings that challenge the acceptance)?
+
+================================================================================
+PASTE A — the full accepted note, byte-verbatim, incl. ANNEX PE5
+(lean/notes/openmath/GENH4_PROOF_2026-08-08.md, frozen body at r3 = 4b0d946,
+annex committed e945734/baf05ed; ACCEPTED 2/2 at PE5 11dbd23)
+================================================================================
+# GENH4 — [GENIND-H(4)] DISCHARGED AT BOTH QUARTIC GENRES: the (2,2) composite-stage laws PROVED (Q22-L1 count law, Q22-L2 refine transfer, Q22-L3 drainage — with Q22-L3's sealed display corrected at h > 1), the σ-decision (H-e) instance proved by the resolvent method, OB-a/OB-b/OB-c/OB-d all closed, P-D settled as UNREACHABLE at n = 4 (proof, not absence-of-evidence) — and COROLLARY GENH4.D: P(4) FIRES, the ELEVEN exact quartic densities R_τ(q) displayed with the triple tie, conditional exactly on the displayed arc-grade stack
+
+**Unit:** GENH4, the [GENIND-H(4)] prover (charge: turn GENIND's one box
+into theorems at the two n = 4 composite genres; ledger 4682bcf).
+**Attempt grade 0/2** (composed; no hostile arc). **Instrument:** sealed
+two-commit battery `verification/openmath/genh4_checks.py` — every
+proved lemma machine-keyed on the QSCOUT22 roster by md5-pinned
+committed artifacts + fresh never-measured rows (q = 7 entries, deep
+h = 5, k = 2, depth-2 prehistory, an odd-q even-dμ genre-F stratum, a
+fresh full sweep) + a pointwise refine-transfer leg (the carry formula
+checked member by member) + PARI σ legs + the symbolic density engine
+(partition of unity, the β₄ tie, Σ_τ R_τ = 1) + ≥ 3 teeth. Verdict
+§S13, appended at commit 2 FROM the committed artifacts.
+
+**What GENH4 is (one breath).** THEOREM GENIND.B (@ 4682bcf) reduced
+full uniformity to the per-genre composite-stage package [GENIND-H]:
+(CS-1) stage transport, (CS-2) stage bracket, (CS-3) σ-decision. At
+n = 4 the only composite genres are E (e-first, key x² − ẑπ^h, value
+index E = 2, K = F_q) and F (f-first, key = lift of ψ, E = 1,
+K = F_{q²}) — QSCOUT22 (@ dd67cda) measured both exactly and handed
+three candidate lemmas. THIS note proves them: the stage read IS the
+W-11 n = 2 system transported to the stage ring O[x]/(φ₂) — genre E on
+the parity-interleaved doubled ladder (OB-a: the ragged window ledger
+written; the coherent object is the e₁-fold cover, as the ladder
+density predicted), genre F on the integer ladder with the F_{q²}
+alphabet (OB-d: the census re-base proved) — with the graded read
+transcribed pointwise in print coordinates (OB-b: the refine carry
+computed exactly; the z̄-twist cancels against the key's constant
+term — W-9's cocycle made literal and then made elementary), and σ
+decided at every stage leaf by the resolvent method (OB-c: the (H-e)
+INSTANCE at these two stages proved outright, for every disc ≠ 0
+lift). Consequence: [GENIND-H(4)] is DISCHARGED; P(4) fires through
+GENIND.B; W-12.D yields the eleven exact quartic densities.
+
+---
+
+## S0. RECONCILIATION (the box, the measurements, this note's charge)
+
+* **GENIND @ 4682bcf** (verdict 4984004): the induction scaffold;
+  LEMMA GENIND-4 (the E-genre stage fibration + budgets + ℤ/2 slot
+  grading + node C(4h+1, 2h+1)) PROVED; CANDIDATE GENIND-5 boxed at
+  OB-a (ragged dv-window coherence), OB-b (graded-read pointwise
+  transcription), OB-c ((H-e) σ-decision), OB-d (genre F).
+* **QSCOUT22 @ dd67cda** (seal 970197d): the exact empirical table —
+  23 rows, 7.6M quartics, 0 violations; P-A (J-D0 at order 2), P-B
+  (E = ladder density), P-C (alphabet squares) HOLD; P-D untested;
+  candidate lemmas Q22-L1/L2/L3 with the lift-stability caps as part
+  of the correct statement.
+* **This note** proves Q22-L1/L2/L3 at both genres (THEOREMS GENH4.A,
+  LEMMA GENH4-4/Q22-L2, THEOREM GENH4.B), the σ-decision (THEOREM
+  GENH4.C), and P-D's resolution (LEMMA GENH4-6: unreachable at
+  n = 4); then COROLLARY GENH4.D (P(4) + densities).
+* **Division from the weld corpus (honesty display).** W-9's twisted
+  algebra, JC-LOAD/W-8's no-cancellation, and J-D0's letter-blindness
+  are the MECHANISM this note instantiates — but every count-load-
+  bearing input is RE-PROVED elementarily at this stage (parity
+  no-cancellation, F_q-independence of {1, ȳ}, the explicit twist
+  cancellation), so no weld face sits inside any count law below.
+  DULEMMA (@ f819f26, ∂u ≡ 1 on perimeter e_m ≥ 2): the E-stage HAS
+  e_m = E = 2, so DULEMMA's perimeter INCLUDES it (applicability
+  checked as charged) — but it is NOT consumed (the multiplicativity
+  used is the exact valuation of the stage ring, proved in S2); genre
+  F has e_m = 1, off DULEMMA's proved perimeter — also not consumed.
+
+**Conventions.** As QSCOUT22 S1/S2 = W-12 S1: O a complete DVR,
+residue F_q, both characteristics; window N; quadruple-center
+recentered coordinates f = x⁴ + B₃x³ + B₂x² + B₁x + B₀, v(B_j) ≥ 1;
+counts per center. Conservative tails; canonical digit-lift letters in
+φ₂ (the W-2/LIFTCORNER seam NOT consumed; histories convention-keyed).
+Genre E entry: level-1 polygon one side slope h/2 (h odd), residual
+(y − z)², z ∈ F_q^×; key φ₂ = x² − ẑπ^h; per-center entry volume
+(q−1)q^{4N−5h−3} (W-12 S2.5, PROVED). Genre F entry: integer slope k,
+residual ψ(y)², ψ irreducible quadratic; key φ₂ = x² + ĉ₁π^k x +
+ĉ₀π^{2k}; entry volume ((q²−q)/2)·q^{4N−10k−4} (W-12.A instance,
+PROVED at the w12 seal). [r2, PE2 Remark 1: ADMISSIBILITY floors,
+previously unstated — genre E requires **N ≥ 2h+1** (v(B₀) = 2h exact
+needs that digit in window), genre F requires **N ≥ 4k+1** (v(B₀) =
+4k exact); below these the displayed slot-count/entry-exponent forms
+fail (e.g. at (N,k) = (4,1) the true slot count is 3 but 4N−10k−4 =
+2). Every roster row satisfies them, (Zp,7,5,k1) and (Zp,2,11,h5) at
+equality.] dv := 2v₁ (genre E, doubled units); genre F
+uses integer v₁-units. Prehistory: (1⁴)@k chains per LEMMA Q22-A.
+
+## S1. STATEMENTS
+
+> **THEOREM GENH4.A (the composite count law = Q22-L1, PROVED).** For
+> every prime power q, both characteristics, every window N, both
+> genres G ∈ {E, F}, every prehistory chain r = (k₁ < ⋯ < k_r), entry
+> parameter (h resp. k) admissible over the chain (admissible: the S0
+> entry floors N ≥ 2h+1 resp. N ≥ 4k+1, deepened along the chain
+> [r2, PE2 Remark 1 — previously undefined]), stage history
+> H₂ = (dμ₁ < ⋯ < dμ_t), and leaf ℓ with parameters: the per-center
+> count of quartics with exactly this key equals the four-slot model:
+>
+>     count = (q−1)^r · L_G^t · C_ℓ(q^{f₁}) · q^{X},
+>
+> L_E = q−1, L_F = q²−1; C_ℓ = the residual census over F_{q^{f₁}}
+> (f₁ = 1 for E, 2 for F): (Q−1)(Q−2)/2 for SPLITEQ, Q(Q−1)/2 for
+> INERT, **q^{comp}−1 per RAM and per 2SIDED pin** [r2] — comp = the
+> pinned slot's F_q-dimension (S2.3): identically 1 at genre E (every
+> slot is one F_q-digit; the factor is q−1 = Q−1), and at genre F
+> comp(m) = 2 at pin height m ≤ N−1 (the factor is q²−1 = Q−1) but
+> comp(m) = 1 on the boundary band N ≤ m ≤ N+k−1 (a single in-window
+> F_q-digit: census q−1, NOT Q−1) — and 1 for tails; X = #(free
+> digit slots above the key's pins on the two stage strings), an
+> explicit affine function of (N, h/k, leaf params) on each stratum
+> (S6 displays the strings; the closed forms per leaf are S6's
+> table). The counts are HISTORY-FLOOR-INDEPENDENT (the per-node laws
+> do not depend on H₂ except through the (q^{f₁·e₁}−1)-letter
+> factors), q- and characteristic-uniform, and lift-stable below the
+> caps (dv < 2N for E; v₁ ≤ N with the v₁ = N residual band excluded,
+> for F). Equivalently: W-12.A's cell law with (e₁, f₁)-re-based
+> inputs — census field F_{q^{f₁}}, ladder density e₁ — away from
+> the genre-F boundary band, whose pins are censused
+> q^{comp}−1 = q−1 by the [r2] clause above, not by the re-based
+> field [r3, PE3 remark].
+
+**[r2 2026-08-08 (PE2 CRITICAL 1) — the census clause corrected.** The
+sealed display read "Q−1 for RAM and per 2SIDED pin": FALSE at genre-F
+boundary-band pins (comp(m) = 1, N ≤ m ≤ N+k−1), where the in-window
+datum is a single F_q-digit and the census is q−1, not Q−1 = q²−1 —
+refuted by committed keys at q = 2, 3, 5, 7 in both characteristics
+(e.g. consF (Zp,7,5,k1) RAM(5) = 2,117,682 = 21·(q−1)·q⁵, this note's
+own preregistered P-3 value; the sealed display gives 16,941,456, and
+no exponent choice reconciles it). Display-level only: the runner
+always implemented the comp-weighted form (`ex0 = q ** comp(dv0) − 1`,
+likewise `q ** comp(dv1) − 1` at the w-pin), S6.3's UND display and
+P-3 always used the correct factor, and every committed number is
+correct — no machine number, no density conclusion moves. Verification
+of the corrected clause (PE2's independent ledger-closure recount):
+under the comp-weighted census, mass conservation — Σ(leaves) +
+Σ(refine children) = q^{#free slots} at every node — CLOSES in
+**216/216 genre-F cases** (q ∈ {2,3,4,5,7,8,9,11,13} × k ∈ {1,2,3} ×
+N ∈ [4k+1, 4k+8]) and **288/288 genre-E cases**; under the sealed
+display it FAILS in 40 of 50 scanned (q, N, k), overcounting the entry
+locus by up to a factor q.]**
+
+> **LEMMA GENH4-4 (the stage refine transfer = Q22-L2, PROVED).** At a
+> stage refine event (depth dμ, letter s a root of the separable-free
+> residual square): the refine locus maps by an explicit
+> triangular-with-carry digit bijection ONTO the floored fresh node
+> {dv(A₁) > dμ, dv(A₀) > 2dμ} of the recentered key — both genres,
+> both characteristics, the carry landing at parities/heights disjoint
+> from the killed pins, and the lift-stability caps preserved. The
+> chain iterates: after H₂ the state in current-key coordinates is
+> exactly the floored node, and letters multiply ((q^{f₁}−1)^t... —
+> precisely L_G^t as in GENH4.A).
+
+> **THEOREM GENH4.B (composite drainage = Q22-L3, PROVED — with the
+> sealed display CORRECTED).** Per center, per entry, per history
+> H₂ (any t ≥ 0, any prehistory r): the σ-undecided (conservative)
+> count is ONE exact q-power, INDEPENDENT of H₂ and of the prehistory
+> depths (only the letter factors move):
+>
+>     genre E:  UND(h; H₂) = (q−1)^{r+t} · q^{N+h−1}   per center;
+>     aggregate over H₂ and letters: (q−1)^{r+1} · q^{2N−h−2}.
+>     genre F:  UND(k; H₂) = (q²−1)^t (q−1)^r ·
+>                [ q^{2⌊N/2⌋+2k−1}  +  1_{2|N}·(q−1)·q^{N+2k−1} ]
+>     per (ψ, H₂) — the second term is the readable-value/unreadable-
+>     residual band at dv0 = N (GENH4-CAP(F)), present at even N
+>     only; at odd N the law is the single q-power q^{N+2k−2}
+>     (S6.3 displays both terms slot-by-slot).
+>
+> **CORRECTION disclosed:** QSCOUT22 S6/S8 quoted the genre-E law as
+> (q−1)q^{N+(h−1)/2}; that is the h = 1 instance only. At h = 3 the
+> committed artifact (`qscout22_results.json` @ dd67cda, row consE Zp
+> q=2 N=7 h=3) reads UND = 512 = (q−1)q^{N+h−1}, not 256. The law
+> proved here matches the committed table on every row; the quoted
+> display was the scout note's summary slip, not a measurement error.
+
+> **THEOREM GENH4.C (σ-decision at the (2,2) stages — the (H-e)
+> INSTANCE, PROVED).** At every decided stage leaf of either genre
+> (any history, any window), EVERY lift with disc ≠ 0 has the σ
+> claimed by the leaf dictionary:
+>   E: RAM ↦ {(4,1)}, 2SIDED/SPLITEQ/SPLTAIL ↦ {(2,1),(2,1)},
+>      INERT ↦ {(2,2)};
+>   F: RAM ↦ {(2,2)}, 2SIDED/SPLITEQ/SPLTAIL ↦ {(1,2),(1,2)},
+>      INERT ↦ {(1,4)}.
+> This is (A0) at the stage — the [W12-H](H-e) hypothesis PROVED at
+> the two genres (m′, D′, E, K) ∈ {(2,2,2,F_q), (2,2,1,F_{q²})}. The
+> GENERAL (H-e) (higher m′/D′) remains open (S10 box).
+
+> **COROLLARY GENH4.D ([GENIND-H(4)] discharged; P(4); THE QUARTIC
+> DENSITIES).** (i) The package {(CS-1), (CS-2), (CS-3)} holds at
+> every composite-stage genre realizable at degree ≤ 4 (= E and F,
+> incl. behind prehistory/α/β prefixes — genre-completeness by LEMMA
+> Q22-A + GENIND S5.1/S5.3, consumed at pin): CS-1 = GENIND-4 +
+> GENH4-1F + GENH4-2/-3/-4; CS-2 = the stage bracket, proved in S6.2
+> ((q−1)q^{δ−1} per dv-advance δ for E — GENIND-5's (q−1)q^{2μ−1} in
+> v₁-units — and (q²−1)(q²)^{μ−1} for F: one macroscopic rate
+> q^{e₁f₁Δμ} = q^{deg φ₂·Δμ}); CS-3 = THEOREM GENH4.C. Hence
+> [GENIND-H(4)] is DISCHARGED and THEOREM GENIND.B fires P(4): the
+> degree-4 package (hMenu-4)+(hExhaust-4) holds, conditional exactly
+> on the S11 arc-grade stack. (ii) THEOREM W-12.D then yields one
+> R_τ(q) ∈ ℚ(q) per quartic splitting type at every prime power, both
+> characteristics, wild primes included, Σ_τ R_τ = 1 — the ELEVEN
+> densities displayed in S9 with the triple tie (symbolic Σ = 1 +
+> engine assembly against the md5-pinned β₄ + finite-window partial
+> sums bracketed by the proved drainage).
+
+**Obstruction scoreboard: OB-a PROVED (S4), OB-b PROVED (S3 + S5's
+carry computation), OB-c PROVED (S7), OB-d PROVED (S2's GENH4-1F +
+the F-legs of S3–S6). P-D settled: UNREACHABLE at n = 4 (S8).**
+
+## S2. THE STAGE RING AND THE SLOT GEOMETRY (CS-1's carrier; OB-d's fibration)
+
+### S2.1 The stage ring R = O[x]/(φ₂)
+
+Fix a genre and a current key φ = x² + p₁x + p₀ (entry: E: p₁ = 0,
+p₀ = −ẑπ^h; F: p₁ = ĉ₁π^k, p₀ = ĉ₀π^{2k}; refinements update p as in
+S5, preserving the invariants below). Let R := Ô[x]/(φ) = Ô[θ] over
+the O-lift (all digit statements then truncate to the window).
+
+* **Genre E invariants:** v(p₀) = h exact with res(p₀π^{−h}) = −z;
+  v(p₁) ≥ (h+1)/2. Then φ's own polygon is the single side
+  (0,h)–(2,0) (p₁ strictly above), so φ is irreducible, R is a
+  complete DVR, totally ramified quadratic: v(θ) = h/2, value group
+  ½ℤ (dv := 2v makes it ℤ — the doubled units), residue field
+  K = F_q, and res(θ²π^{−h}) = z. E = e(R/O) = 2 = the ladder
+  densification.
+* **Genre F invariants:** v(p₁) ≥ k with res-pair, v(p₀) = 2k,
+  residual ψ irreducible. θ = π^k·u with u a unit whose residue
+  ȳ := res(θπ^{−k}) is a root of ψ: R is an unramified-over-the-
+  ladder DVR: v(θ) = k ∈ ℤ, value group ℤ, residue field
+  K = F_{q²} = F_q(ȳ). f₁ = 2 = the alphabet squaring.
+
+R's associated graded IS COROLLARY W-9's twisted algebra K^c[ℤ/E]
+(one K-line per dv-height; E lines per old v-unit) — cited as frame;
+everything below is proved directly in R.
+
+### S2.2 The development fibration (E: GENIND-4 consumed; F: proved here)
+
+Monic division f = φ² + A₁φ + A₀ (A₁ = α₁x + α₀, A₀ = β₁x + β₀) is a
+bijection onto coordinate tuples. **LEMMA GENIND-4 (@ 4682bcf,
+PROVED)**: on the E(h, z) entry locus this is a triangular digit
+bijection with budgets v(α₁) ≥ (h+1)/2, v(α₀) ≥ h+1, v(β₁) ≥
+(3h+1)/2, v(β₀) ≥ 2h+1 — total 4N−5h−3 = the entry exponent, and the
+stage-initial node is {dv(A₀) ≥ 4h+1, dv(A₁) ≥ 2h+1}.
+
+> **LEMMA GENH4-1F (the genre-F fibration).** On the F(k, ψ) entry
+> locus, the development coordinates satisfy the triangular relations
+>
+>     B₃ = 2p₁ + α₁,  B₂ = p₁² + 2p₀ + α₁p₁ + α₀,
+>     B₁ = 2p₁p₀ + α₁p₀ + α₀p₁ + β₁,  B₀ = p₀² + α₀p₀ + β₀,
+>
+> and (B₃,B₂,B₁,B₀) ↦ (α₁,α₀,β₁,β₀) is a digit bijection from the
+> entry locus onto the budget space v(α₁) ≥ k+1, v(α₀) ≥ 2k+1,
+> v(β₁) ≥ 3k+1, v(β₀) ≥ 4k+1 — total (N−k−1)+(N−2k−1)+(N−3k−1)+
+> (N−4k−1) = 4N−10k−4, EXACTLY the entry exponent (no over/undercount)
+> — and the stage-initial node is {v₁(A₁) ≥ 2k+1, v₁(A₀) ≥ 4k+1} =
+> the W-11 node C(2S+1, S+1) at S = 2k in v₁-units.
+
+*Proof.* The relations are the expansion of φ² + A₁φ + A₀.
+Triangularity (α₁ from B₃; then α₀ from B₂; then β₁, β₀) gives
+bijectivity coordinate by coordinate. Budgets: the entry pins are
+B₃ = 2ĉ₁π^k + t₃, B₂ = (ĉ₁²+2ĉ₀)π^{2k} + t₂ (up to lift-carries of
+v ≥ 2k+1), B₁ = 2ĉ₁ĉ₀π^{3k} + t₁, B₀ = ĉ₀²π^{4k} + t₀ with
+v(t_j) ≥ (4−j)k+1; each pinned digit cancels against the p-terms
+(e.g. α₀ = B₂ − p₁² − 2p₀ − α₁p₁: the 2k-digit reads
+(c₁²+2c₀) − c₁² − 2c₀ = 0; α₁p₁ has v ≥ 2k+1), leaving exactly the
+stated floors; both characteristics (at p = 2 the pins 2ĉ₁π^k etc.
+degenerate, the budgets do not — the cancellations are universal
+identities). Node: v₁(A₁) = min(v(α₁)+k, v(α₀)) ≥ 2k+1;
+v₁(A₀) ≥ min(3k+1+k, 4k+1) = 4k+1. ∎
+
+**Prehistory composition (consumed).** The (1⁴)@k recentering is the
+α(k) event of the (4,1) cluster: LEMMA GENIND-1(ii) (@ 4682bcf,
+PROVED at general m) gives, per letter, a bijection of the (1⁴)@k
+slice onto the floor set {v(B_j) ≥ (4−j)k+1} — the floored fresh law
+with one (q−1) factor per step; chains compose. (QSCOUT22's Q22-PRE
+family checked this pointwise; the battery's fresh depth-2 chain row
+extends it.)
+
+### S2.3 The slot strings and the caps
+
+Over the window, the four coordinates carry digit slots at dv-heights
+(genre E; budgets at entry, floors rise along the chain):
+
+    A₁:  odd  dv = 2v(α₁)+h,  v(α₁) ∈ [(h+1)/2, N−1]  → 2h+1 … 2N−2+h
+         even dv = 2v(α₀),    v(α₀) ∈ [h+1, N−1]      → 2h+2 … 2N−2
+    A₀:  odd  dv = 2v(β₁)+h,  v(β₁) ∈ [(3h+1)/2, N−1] → 4h+1 … 2N−2+h
+         even dv = 2v(β₀),    v(β₀) ∈ [2h+1, N−1]     → 4h+2 … 2N−2
+
+Both strings cover EVERY integer of their ranges below 2N−1 — the
+half-integer (E = 2) ladder realized in full (QSCOUT22's P-B, now
+structural) — and are RAGGED above: odd slots run h beyond the even
+end 2N−2; the band {2N ≤ dv ≤ 2N−2+h} holds exactly (h−1)/2 odd slots
+per string (empty at h = 1). Genre F: one slot per integer v₁-height
+m, of F_q-dimension comp(m) = 2 for m ≤ N−1 (the pair (digit_{m−k}(a₁-
+part), digit_m(a₀-part)) read as an F_{q²}-letter) and 1 for
+N ≤ m ≤ N+k−1 (the a₁-component only — the boundary band):
+A₁: m ∈ [2k+1, N+k−1]; A₀: m ∈ [4k+1, N+k−1].
+
+> **LEMMA GENH4-CAP (lift-stability boundary).** (E) A window-computed
+> dv-value is LIFT-STABLE iff < 2N: any lift agrees there; a computed
+> value ≥ 2N (in the ragged band or beyond) can be undercut by an
+> out-of-window even digit (a lift's β₀/α₀ digit at height N gives
+> dv = 2N, even, undercutting every odd band value > 2N and tying
+> none — parities distinct). (F) v₁-values are lift-stable iff ≤ N;
+> the VALUE N is stable (attained by the in-window a₁-component at
+> height N−k ≤ N−1) but its RESIDUAL PAIR needs the a₀-digit at
+> height N — out of window: readable value, unreadable residual.
+> **[r2, PE2 GAP 1; antecedents made disjoint at r3, PE3 MINOR 1: the
+> sealed parenthetical "(the reader's dv0 = N → UND exit)" was FALSE
+> as stated; the r2 restatement then transcribed the PE2 verifier's
+> own clause "ODD N → DECIDED RAM(N)" with its one-side condition
+> dropped, so {N odd} overlapped {N > 2w} with conflicting
+> conclusions. Re-derived from LEMMA GENH4-3's hull partition — its
+> (i) reads "(needs u ≤ 2w: one side; else (ii))", and S7's RAM
+> bullet is "(u odd, u ≤ 2w)" — the reader's exits at dv0 = N are a
+> trichotomy with PAIRWISE-DISJOINT antecedents (w := dv(A₁)):
+> (a) N > 2w, EITHER parity → DECIDED 2SIDED(w, N−w) (two-side hull,
+> shape-only); (b) N ≤ 2w, N ODD → DECIDED RAM(N) (the one-side
+> shape and the stable value suffice, no residual consulted);
+> (c) N ≤ 2w, N EVEN (N = 2dμ) → UND, the integer-slope read that
+> would consume the out-of-window residual pair — as THEOREM GENH4.B
+> displays ("present at even N only") and the runner implements (its
+> dv0 = N → UND branch sits inside the even branch). Checked [r3]
+> against every committed boundary key: (b): RAM(5) = 2,117,682 at
+> (Zp,7,5,k1) — 86% of that row; N = 5 ≤ 2w holds throughout
+> (w ≥ 2k+1 = 3 at that cell), so (a) is unrealizable there,
+> matching the row's key set {RAM(5), UND}. (a) vs (b) at
+> (Zp,2,7,k1), empty history: 2SIDED(3,4) = 384 (N = 7 odd > 2w = 6
+> → (a)) against RAM(7) = 128 (w ≥ 4 → (b)); the r2 clause order
+> predicts 512/0 — refuted by the committed artifact. (a) vs (c) at
+> (Zp,2,8,k1): 2SIDED(3,5) = 1,536 (N = 8 EVEN > 2w = 6 → DECIDED by
+> (a)) against UND = 1,024 (N ≤ 2w → (c); the two-term 512 + 512
+> law).]**
+> Hence the model's hidden-class
+> pricing (band slots free, never pinned) is FORCED by lift
+> well-posedness, and is part of the correct statement of Q22-L1/L2
+> exactly as the scout disclosed. ∎ (proof in the display: the
+> undercut construction + parity; both ring types)
+
+## S3. THE GRADED VALUE LEMMA (OB-b DISCHARGED, value layer)
+
+> **LEMMA GENH4-2 (no-cancellation, pointwise).** Let A = a·x + b with
+> a, b ∈ O (a coordinate pair of A₁ or A₀). Then:
+> (E) v(A(θ)) = min(v(a) + h/2, v(b)) EXACTLY — the min is uniquely
+> attained (2v(a)+h odd, 2v(b) even: distinct parities, no ties), so
+> dv(A) := min(2v(a)+h, 2v(b)) equals 2·v(A(θ)) for every root θ of
+> the key and every lift; the residual digit at dv(A) is the digit of
+> the unique attaining coordinate. This is JC-LOAD's no-cancellation
+> warrant holding BY PARITY — elementary, hence not consumed.
+> (F) v(A(θ)) = min(v(a) + k, v(b)); at a tie m the residue is
+> res(a)·ȳ + res(b) ≠ 0 because {1, ȳ} are F_q-independent (ψ
+> irreducible) — the slot is ONE F_{q²}-digit, zero iff both
+> components vanish. No cancellation by residue-field independence.
+>
+> Consequently the stage read's formal dv (the reader's min-formula)
+> IS the valuation of R = O[θ] evaluated at the class of A — the
+> graded read of W-8/JC-LOAD transcribed pointwise onto
+> (α₁, α₀, β₁, β₀), which is OB-b's demanded transcription at the
+> value layer (the residual layer is S5's carry computation).
+
+*Proof.* Ultrametric equality when the two values differ; they differ
+by parity (E) since h is odd. F: if v(aθ+b) > m at a tie, then
+res(a)ȳ + res(b) = 0 with res(a) ≠ 0 forces ȳ ∈ F_q, contradicting
+deg ψ = 2. Residuals: divide by the attaining monomial and reduce. ∎
+
+**The twisted normalizer (the letter twist, proved).** For a one-side
+stage polygon at dv-slope dμ (E), the normalizer is n₂ = π^{dμ/2}
+(dμ even) or n₂ = x·π^{(dμ−h)/2} (dμ odd; v(n₂(θ)) = dμ/2 both). From
+θ² = −p₁θ − p₀ and the S2.1 invariants: res(n₂(θ)²π^{−dμ}) = 1 (even)
+or z (odd). Hence the normalized residual equation of the stage state
+is T² + S₁T + S₀^eff with S₀^eff = S₀ (dμ even) or z̄^{−1}S₀ (dμ odd)
+— the z̄-twist of QSCOUT22 S4 DERIVED (it is res(θ²π^{−h}) = z
+surfacing: W-9's cocycle value); S₁ carries no twist (the odd-slot
+normalizer is the same x-monomial). Counts are twist-blind
+((S₁, S₀) ↦ (S₁, z̄S₀) is a type-preserving bijection — J-D0's
+mechanism, literal at order 2); LETTERS are twisted. Genre F: the
+normalizer is π^{dμ}, no twist; residuals are the F_{q²} pair-digits.
+
+## S4. THE STAGE TRICHOTOMY + THE RAGGED-WINDOW LEDGER (OB-a DISCHARGED)
+
+> **LEMMA GENH4-3.** At any stage state with lift-stable u := dv(A₀),
+> w := dv(A₁) above the current floors: exactly one of
+> (i) u odd → stage-RAM(u) (needs u ≤ 2w: one side; else (ii));
+> (ii) u > 2w → stage-2SIDED(w, u−w);
+> (iii) u = 2dμ ≤ 2w → integer stage slope: residual T² + S₁T +
+> S₀^eff over K, censused '11' (SPLITEQ) / '2' (INERT) / '1sq'
+> (REFINE at depth dμ, K^×-letter);
+> plus the conservative exits (A₀ hidden: SPLTAIL if w < N-cap else
+> UND; F's EVEN u = N ≤ 2w → UND [r2, PE2 GAP 1; r3, PE3 MINOR 1 —
+> first-match order per GENH4-3(i)'s own "else (ii)": u = N > 2w
+> (either parity) is decided 2SIDED(w, N−w); else odd u = N (≤ 2w)
+> is decided RAM(N); both shape-only — GENH4-CAP(F) as corrected at
+> r3]). Every digit CONSULTED by any
+> event sits strictly inside its coordinate's window, at BOTH
+> parities:
+>   E: even consulted heights ≤ 2N−2 = the even window end; odd
+>   consulted heights ≤ 2N−1 ≤ 2N−2+h = the odd window end (h ≥ 1) —
+>   the H-2(i) inequality re-run on the ragged window: the consulted
+>   ceiling (the cap 2N) lands below BOTH parities' ends, so no
+>   event ever reads a ragged-band digit;
+>   F: consulted positions ≤ N−1 in both components for every
+>   readable event (u < N, or u = N read shape-only through the
+>   in-window a₁-component at position N−k ≤ N−1 [r2]; only the EVEN
+>   u = N residual read is out of window and exits UND by GENH4-CAP).
+> The band digits are free on every leaf locus (priced as the hidden
+> factor q^{deep}); window coherence holds along chains because every
+> S5 update determines new digits at height d from old digits at
+> heights ≤ d (carries move upward only, both ring types).
+
+*Proof.* Partition: (i)/(ii)/(iii) are the three hull positions of
+{(0,u),(1,w),(2,0)} exactly as W-11 S2.1, in dv-units (denominator
+e₂ = 2 ⟺ u odd, by GENH4-2's parity). Consulted digits: RAM/2SIDED
+consult the exact-value digits at u (and w): u ≤ 2N−1 readable ⟹
+positions (u−h)/2 ≤ N−1 resp. u/2 ≤ N−1; SPLITEQ/INERT/REFINE consult
+S₁ at dμ ≤ N−1 and S₀ at 2dμ ≤ 2N−2: positions ≤ N−1. Ghost bound:
+consulted heights along a chain are bounded by the current readable
+dv0 < 2N (the stage analogue of "hull heights ≤ (m−j)(N−1)/m"; here
+m = 2 and the binding constraint is the cap itself), strictly below
+2N−2+h and, for even parity, at positions ≤ N−1 exactly. The update
+claim is S5's triangularity. ∎
+
+**The OB-a resolution in one line: the coherent object is the e₁-fold
+cover (the full integer dv-ladder), and the raggedness is confined to
+the never-consulted hidden band — measured first (QSCOUT22's ladder
+density and cap disclosures), now a ledger.**
+
+## S5. THE REFINE TRANSFER WITH CARRY (Q22-L2 PROVED; OB-b's residual layer)
+
+*Proof of LEMMA GENH4-4.* Refine at depth dμ, letter s (a K^×-root of
+the '1sq' residual: (T − s)², i.e. S₁ = −2s, S₀^eff = s²). Set
+w := ŝ·n₂ and φ′ := φ − w; then
+
+    f = φ′² + (A₁ + 2w + C)·φ′ + (A₀ + λ − C·(p₁′x + p₀′)),
+
+where w² + A₁w = C·x² + λ (λ = the linear remainder; C = 0 when
+deg w = 0). Case dμ even (E; n₂ = π^{dμ/2}, deg w = 0): NO CARRY
+(C = 0), A₁′ = A₁ + 2w, A₀′ = A₀ + A₁w + w²: the dμ-digit of A₁′ is
+S₁ + 2s = 0; the 2dμ-digit of A₀′ is S₀ + S₁s + s² = R₂(s) = 0; all
+other contributions strictly deeper. Case dμ odd (E; n₂ = xπ^{(dμ−h)/2}):
+C = ŝ²π^{dμ−h} + α₁ŝπ^{(dμ−h)/2} ≠ 0 — THE CARRY, an even-parity
+(degree-0) contribution: 2v(C) ≥ min(2dμ−2h, 2v(α₁)+dμ−h) > dμ (using
+dμ ≥ 2h+1 and the budget v(α₁) ≥ (h+1)/2) — the carry lands at even
+heights STRICTLY ABOVE the odd-parity pin it could have threatened:
+JC-LOAD's no-cancellation, by parity, in print coordinates. The kills:
+A₁′'s dμ-digit (odd slot) = S₁ + 2s = 0 (the carry cannot reach it —
+disjoint parity); A₀′'s 2dμ-digit (even slot) collects THREE terms:
+S₀ (its own), +zs² from −C·p₀′ (the carry times the key's constant
+term: −ŝ²π^{dμ−h}·(−ẑπ^h)), and −2zs² from the α₁-component of −C·p₀′
+(nonzero only when the S₁-slot is attained): total S₀ + zs² − 2zs² =
+S₀ − zs² = z(s² − s²)·… = 0 since S₀ = z·s² ('1sq' with the twist) —
+**the z̄-twist cancels exactly against the carry × the key constant:
+W-9's cocycle multiplication computed in coordinates and equal to
+zero on the pin. In char 2 the same total reads S₀ + zs² = 2zs² = 0.**
+This is OB-b's residual-layer transcription: the graded identity
+res_{2dμ}(A₀′) = R₂(s) = 0, res_{dμ}(A₁′) = R₂′(s) = 0, verified
+digit-by-digit with the carry displayed. Genre F (letter S = s_ay +
+s_b ∈ F_{q²}^×; w = ŝ_aπ^{dμ−k}x + ŝ_bπ^{dμ}): identical computation
+with the wrap through x² = φ′ − p₁′x − p₀′ replacing the z-twist by
+the ψ-relation ȳ² = −c₁ȳ − c₀: the pair-digit kills are the
+components of R₂(S) = 0 and R₂′(S) = 0 in F_{q²} (the battery's
+GH-REFINE leg checks the one-step formulas POINTWISE, both genres).
+All correction terms sit at strictly greater dv and at in-window
+positions (upward carries), so the map is triangular on the digit
+space above the pins: injective, image inside the floored node
+{dv(A₁′) > dμ, dv(A₀′) > 2dμ}, and ONTO by cardinality: the refine
+slice fixes the two pinned digits and frees exactly the slots above
+dμ resp. 2dμ — the same count as the node (slot strings are
+key-independent, S2.3). Floors/caps preserved; letters: q^{f₁}−1
+choices of s per step... = L_G. Iterating over H₂ gives the chain
+statement. ∎
+
+**Invariant maintenance (used above, proved by the same display):**
+along any chain, v(p₀) = h exact with residue −z and v(p₁) ≥ (h+1)/2
+(E; refine adds ŝπ^{dμ/2} with dμ/2 ≥ h+1 to p₀, or ŝπ^{(dμ−h)/2}
+with (dμ−h)/2 ≥ (h+1)/2 to p₁); v(p₀) = 2k exact with residue-pair ψ
+and v(p₁) ≥ k similarly (F). Hence S2.1's ring invariants — and with
+them GENH4-2/-3 — hold at EVERY node of every history.
+
+## S6. ASSEMBLY: THE COUNT LAW, THE BRACKET, THE DRAINAGE
+
+### S6.1 Proof of THEOREM GENH4.A
+
+By GENIND-4/GENH4-1F + prehistory composition (S2.2), the entry locus
+is the budget digit space with (q−1)^r·(entry census) letters. By
+GENH4-2/-3, each stage event is a pin/census condition on the slot
+strings; by GENH4-4, each refine step re-enters the floored node
+bijectively with L_G letters. Hence the count per full key = (letter
+factors) × (leaf census over K) × q^{#free slots}: free slots = all
+string positions neither structurally below a floor nor pinned by the
+leaf, INCLUDING the hidden band (GENH4-CAP): exactly the four-slot
+model's law, term for term. Floor-independence: a leaf's pins are
+"slots strictly between the floor and the leaf position vanish, leaf
+digits censused, higher slots free" — the count does not reference
+the floor (slots below it do not exist), so per-(H₂, leaf) laws
+depend on H₂ only through L_G^t. The X-exponents per leaf (strings of
+S2.3; E, per (center, entry letter), history-free form):
+
+    RAM(u), u odd:      (q−1)·q^{#A₀ slots > u  +  #A₁ slots s: 2s > u}
+    2SIDED(w, u−w):     (q−1)²·q^{#A₀ > u + #A₁ > w}
+    SPLITEQ(dμ):        ((q−1)(q−2)/2)·q^{#A₀ > 2dμ + #A₁ > dμ}
+    INERT(dμ):          (q(q−1)/2)·q^{#A₀ > 2dμ + #A₁ > dμ}
+    SPLTAIL(w), w < N:  (q−1)·q^{(h−1)/2 + #A₁ > w}
+    UND:                q^{(h−1)/2 + #A₁ ≥ N}
+
+(#·counts on the S2.3 strings, evaluated as affine functions of
+(N, h, param) on each parity stratum; genre F identically with
+comp-weighted exponents AND comp-weighted pin censuses —
+q^{comp(m)}−1 per RAM/2SIDED pin, i.e. q−1 at boundary-band pin
+heights m ≥ N [r2: the sealed parenthetical declared only the
+EXPONENTS comp-weighted; PE2 CRITICAL 1, see the S1 correction] —
+with the F_{q²} censuses at the even-dμ residual events.) Each is
+manifestly ONE
+q-polynomial, characteristic-blind (the censuses' loci differ across
+characteristics, their counts do not — W-11 S2.1's table over K),
+letter-blind (S3's twist bijection): Q22-L1 as displayed, = W-12.A's
+cell law with census field F_{q^{f₁}} and ladder density e₁ — away
+from the boundary band, where the pin census is q^{comp}−1 = q−1
+(the [r2] clause of S1) [r3, PE3 remark]. ∎
+
+### S6.2 The stage bracket ((CS-2) displayed and proved)
+
+Aggregating S6.1 over histories at a fixed leaf: Σ_{H₂ ⊆ ladder ∩
+(node, leaf)} L_G^{|H₂|} = Π_{ladder points p below the leaf}
+(1 + L_G) = (q^{f₁})^{#ladder points below} — genre E: q^{δ} over the
+δ consecutive INTEGER dv-points available (density e₁ = 2 per
+v₁-unit); as a per-advance bracket this is exactly GENIND-5's
+b_stage(μ) = (q−1)q^{2μ−1} in v₁-units (the last step carries the
+(q−1), the interior points telescope: 1 + Σ(q−1)q^{j−1} = q^{δ});
+genre F: (q²−1)(q²)^{μ−1}. One macroscopic rate q^{e₁f₁·Δμ} =
+q^{deg φ₂·Δμ}, two microscopic mechanisms (density vs alphabet) —
+QSCOUT22's S8 paragraph, now a theorem. ∎
+
+### S6.3 Proof of THEOREM GENH4.B (drainage)
+
+Genre E, per (center, entry letter, H₂): UND = A₀ all-readable-zero ×
+A₁ free only at ≥ N: count = q^{deep₀}·q^{#A₁ slots ≥ N} with
+deep₀ = (h−1)/2 (the band) and #A₁ ≥ N = ⌊(N+h)/2⌋ + ⌊N/2⌋ − …
+= N + (h−1)/2 (both parities, h odd — the two floors' parity
+bookkeeping cancels): total q^{N+h−1}, floor-independent. Letters:
+(q−1)^{r+t}. Aggregate over H₂ (ladder {2h+1, …, N−1}, size N−1−2h)
+and the entry letter: (q−1)^{r+1}·q^{N+h−1}·q^{N−1−2h} =
+(q−1)^{r+1}q^{2N−h−2}. Genre F: per (ψ, H₂): deep₀ = q^{k−1} (the
+boundary band of A₀), main factor q^{Σ comp(s): s ∈ A₁, 2s ≥ N} =
+q^{2⌊N/2⌋+k}; plus, at even N only, the readable-value/unreadable-
+residual band term (q−1)·q^{2}·q^{Σcomp(s): s ∈ A₁, s > N/2}·q^{k−1}
+(dμ = N/2: value stable, S₀-pair out of window — GENH4-CAP(F)). At
+odd N: the single q-power q^{N+2k−2}·… = q^{k−1}·q^{N−1+k} =
+q^{N+2k−2}. All verified against the committed table (S1's correction
+box: (2,7,3) → 512 = 2^{N+h−1}; (2,8,1) F → 1024 = 512 + 512, the
+even-N two-term law; (3,5,1) → 486·(q−1)^t ladder). ∎
+
+## S7. PROOF OF THEOREM GENH4.C (σ by the resolvent method — OB-c)
+
+Fix any disc ≠ 0 lift F ∈ O[x] of a decided-leaf member, any root θ
+of F, L := Q_p-analogue(θ) (the fraction field of O extended; both
+characteristics). All leaf data consumed below are lift-stable
+(GENH4-CAP), so every lift shares them. Two facts used throughout:
+(E) every root has v(θ) = h/2 (the level-1 polygon is the exact
+single side — its pins are in-window), so e(L) is even; (F) every
+root has v(θ) = k and res(θπ^{−k}) = a root of ψ, so F_{q²} ⊆ k_L and
+f(L) is even. Let Y := φ^(t)(θ) (the current key evaluated at θ; the
+S5 chain keeps the state exact at every node). Then
+
+    Y² + A₁(θ)·Y + A₀(θ) = 0,
+
+with v(A₁(θ)) = w/2, v(A₀(θ)) = u/2 EXACTLY (GENH4-2; dv-units
+halved; genre F: w, u in v₁ = v units). The Y-trichotomy (classical
+ultrametric analysis of a quadratic over the complete field L):
+
+* **RAM (u odd, u ≤ 2w).** One-side Y-polygon: v(Y) = u/4 (E: v-units
+  u/4 with u odd ⟹ denominator 4 ⟹ 4 | e(L) ⟹ [L:base] = 4: f
+  irreducible, σ = {(4,1)}. F: v(Y) = u/2, u odd ⟹ 2 | e(L); with
+  f(L) ≥ 2: e·f = 4 ⟹ σ = {(2,2)}).
+* **2SIDED (u > 2w).** v(Y) ∈ {w/2, (u−w)/2}, distinct. The norm
+  count: Π_θ φ(θ) = Res(F, φ) = Π_{η: φ(η)=0} F(η) = Nm_R(A₀), of
+  valuation u (both genres, using GENH4-2 at the key's own roots η,
+  which satisfy the same v/residue facts); if j roots sit at w/2:
+  j·w/2 + (4−j)(u−w)/2 = u forces j = 2. If F were irreducible its
+  four roots would be conjugate and v(φ(θ)) Galois-invariant —
+  contradiction. E: no root lies in the base (v = h/2 ∉ ℤ) ⟹ two
+  quadratic factors, each with roots at v = h/2: e = 2, f = 1:
+  σ = {(2,1),(2,1)}. F: two quadratic factors, each with residue ȳ in
+  its residue field: f = 2, e = 1: σ = {(1,2),(1,2)}. (disc ≠ 0 ⟹
+  the two factors are coprime; the multiset is as displayed.)
+* **SPLTAIL.** A₀ window-zero, w < cap: EVERY lift has u_lift ≥ 2N >
+  2w (E; GENH4-CAP's undercut floor) — a 2SIDED configuration for
+  every lift, including the A₀ = 0 corner (F = φ·(φ + A₁): both
+  factors have the S2.1 one-side polygon: same σ): σ as 2SIDED. ∎
+* **SPLITEQ ('11', roots s₁ ≠ s₂).** ONE MORE REFINE STEP decides it:
+  apply the S5 recentering with letter s₁ (a root — the kill needs
+  only R₂(s₁) = 0): the new state has dv(A₀′) > 2dμ and dv(A₁′) = dμ
+  EXACTLY with digit R₂′(s₁) = s₁ − s₂ ≠ 0 (char 2: = S₁ ≠ 0, forced
+  by '11' separability): a 2SIDED configuration for every lift —
+  σ = {(2,1),(2,1)} (E) / {(1,2),(1,2)} (F) by the previous bullet.
+  (Hensel at the stage, executed as one refine step.)
+* **INERT ('2', R₂ irreducible over K).** v(Y) = dμ/2 (one-side
+  polygon at the boundary) and Ȳ := res(Y/n₂(θ)) is a root of
+  T² + S₁T + S₀^eff = R₂ (S3's twisted-normalizer computation — the
+  reader's twist convention derived, not assumed). Ȳ ∈ k_L: E:
+  [F_q(Ȳ):F_q] = 2 ⟹ f(L) ≥ 2, with e(L) ≥ 2: [L:base] = 4,
+  σ = {(2,2)}; F: [F_q(Ȳ):F_q] = 4 (R₂ irreducible over F_{q²}) ⟹
+  f(L) ≥ 4: σ = {(1,4)}. ∎
+
+Every case used only lift-stable data ⟹ (A0)-strong at the stage.
+This proves (H-e) AT THESE TWO GENRES; the general (H-e) is untouched
+(S10-BOX-2). [machine: GH-SIGMA — PARI per member on fresh rows incl.
+q = 7, deep h = 5, k = 2; plus the 35,380 committed oracle checks
+consumed at pin.]
+
+## S8. LEMMA GENH4-6 (P-D SETTLED: the dead-slot cascade is UNREACHABLE at n = 4)
+
+> **LEMMA GENH4-6.** At every reachable refine event of either genre —
+> any window N, any entry (h resp. k), any prehistory, any history —
+> the S₁ residual slot is LIVE (a genuine coordinate digit exists at
+> its position). Hence the '1sq' census is exactly q^{f₁}−1 of
+> Q(Q−1) unit-pairs at every node (refine rate 1/Q, Q = q^{f₁}), in
+> BOTH characteristics, and QSCOUT22's P-D configuration (dead S₁
+> slot forcing (T² + S₀) ≡ square at q even — the forced cascade) is
+> UNREALIZABLE at the quartic (2,2) stages. P-D was untestable
+> in-roster because it is VACUOUS at n = 4 — a theorem, not a
+> coverage gap. Its content, if any, lives at higher-degree stages
+> (S10-BOX-4).
+
+*Proof.* Readable refine depths satisfy dμ ≤ N−1 (E; cap 2dμ < 2N)
+resp. dμ ≤ ⌈N/2⌉−1 (F; 2dμ < N), and dμ > floor ≥ 2h resp. 2k. E,
+dμ odd: the S₁ position (dμ−h)/2 lies in [(h+1)/2, N−1] ⟺
+2h+1 ≤ dμ ≤ 2N−2+h — both hold. E, dμ even: position dμ/2 ∈
+[h+1, N−1] ⟺ 2h+2 ≤ dμ ≤ 2N−2 — both hold. F: the a₀-component
+position dμ ≤ N−1 holds (dμ < N/2); the a₁-component position
+dμ−k ∈ [k+1, N−1] holds (dμ ≥ 2k+1). The slot strings are
+key-independent (S2.3) and floors only rise, so this covers every
+node of every history, and prehistory only deepens the entry floors.
+With the slot live, S₁ is a free digit and the census is the W-11
+residual table over K (counts characteristic-blind). ∎
+
+**The char-2 structure that P-D pointed at, exhibited in vitro
+(machine leg GH-PD) — with TWO smoke-caught corrections, disclosed.**
+At q even, '1sq' ⟺ S₁ = 0 (Artin–Schreier degeneration: T² + S₀ is
+always a square in char 2; checked POINTWISE on every refine event of
+the char-2 walker rows). On the CONSTRUCTED sub-locus {A₁ ≡ 0}, in
+EQUAL characteristic 2, every even-dv0 read is forced to '1sq' — the
+cascade P-D described, realized by conditioning rather than by slot
+death — BUT the naive claim "no SPLITEQ/INERT ever on the locus" is
+FALSE, twice over, and this unit's own smoke caught both:
+(i) in MIXED characteristic 2 the refine update's +2w term revives A₁
+at dv + 2e₀ (2 ≠ 0), and (ii) even in EQUAL characteristic 2 an
+ODD-dμ refine's CARRY C = wc² revives A₁ at the even height
+2(dμ − h) — the W-9 cocycle itself is the escape hatch from the
+cascade. The TRUE forced statement, machine-checked: in char 2 no
+SPLITEQ/INERT key on the locus carries an all-even (or empty) H₂ —
+the cascade is forced exactly along the carry-free even ladder —
+while at odd q SPLITEQ/INERT with all-even H₂ exist (the
+characteristic separator; the split is by the square-class of
+−S₀^eff). Battery: the (h, N, dμ)-grid liveness scan + the pointwise
+AS-degeneration + the cascade loci at (Fqt,2,7,h1) and (Zp,3,5,h1).
+
+## S9. COROLLARY GENH4.D — P(4) AND THE ELEVEN QUARTIC DENSITIES
+
+### S9.1 The discharge and the firing
+
+[GENIND-H(4)] asks (CS-1)/(CS-2)/(CS-3) at every genre realizable at
+degree ≤ 4. Genre-completeness: LEMMA Q22-A (the composite entry
+classification at the quadruple center) + THEOREM GENIND.A(IV) with
+S5.3's grammar (deeper CS openings inherit the same two genres
+through the α/β transports, self-similarly; machine-enforced both
+directions at the GENIND and QSCOUT22 seals). CS-1 = S2–S5; CS-2 =
+S6.2; CS-3 = S7. **[GENIND-H(4)] DISCHARGED.** THEOREM GENIND.B at
+n = 4 (with the proved P(2), P(3)) yields P(4): the history-resolved
+exact menu + finite (A1) aggregate menu + (A0) + exact-complement
+(A2) at degree 4 — hence (hMenu-4)+(hExhaust-4) — conditional exactly
+on the S11 stack (no new hypothesis enters).
+
+### S9.2 The block vectors (limit conditional σ-distributions)
+
+Write ν for "conditional σ-distribution of a cluster block, N → ∞";
+each is node-self-similar (the per-node fractions are
+floor-independent — S6.1), so entering at any refine locus gives the
+same vector. From the proved menus:
+
+* **ν₂ (DBL, W-11):** ram {(2,1)}: q/(q+1); split {(1,1)²}:
+  1/(2(q+1)); inert {(1,2)}: 1/(2(q+1)).
+* **ν₂^{(2)} (DBLQ, the (m,d) = (2,2) cluster = W-11 over Q = q²,
+  GENIND-1/2/3 at d = 2):** {(2,2)}: Q/(Q+1); {(1,2)²}: 1/(2(Q+1));
+  {(1,4)}: 1/(2(Q+1)).
+* **ν₃ (TRP, HMENU3 @ pins):** q³·T_τ of HM3.D S5.5 = the engine's
+  β₃ term for term. [r2, PE2 MINOR 1: within the SEALED battery this
+  identity was engine-internal — the runner DEFINES nu3 = ENG.beta(3),
+  no dcheck. Now EXECUTED in an additive supplementary leg
+  (`genh4r2_supp.py`, the he7r1_supp.py precedent; the sealed runner
+  and its artifacts byte-untouched): T_τ derived from the ACCEPTED
+  HMENU3 note's displays alone (the five R_τ of HM3.D, the S5.5
+  per-center block densities, elementary level-0 censuses) by
+  inverting R_τ = SEP_τ + (q−1)·c²_{τ″} + q·T_τ, then q³·T_τ ≡ β₃(τ)
+  checked term for term against the md5-pinned engine: **GREEN, 0
+  violations** — Σ_τ T_τ = q^{−3} symbolic, the five ties symbolic
+  AND exact at q = 2, 3, 5, 7, 11, key sets exactly equal, tooth
+  (corrupted DBL route) fired. Artifacts: genh4r2_supp_output.txt md5
+  8ce5faa8843f1bc0c88dd3658f412d9c, genh4r2_supp_results.json md5
+  c966d3115229e0f12798e054be9940ed.]
+* **μ_E (THE E-STAGE VECTOR, from S6):** the stage is W-11 on the
+  full integer dv-ladder, so the same generating-function aggregation
+  as W-11 S2.4/S2.5 gives, conditional on entry: RAM-mass
+  q²/(q²+q+1), SPLITEQ (q−2)/(2(q²+q+1)), INERT q/(2(q²+q+1)),
+  2SIDED 1/(q²+q+1) − extra…, REFINE 1/(q²+q+1); summing the refine
+  geometric series (×(q²+q+1)/(q²+q)):
+  **μ_E = ( {(4,1)}: q/(q+1); {(2,1),(2,1)}: 1/(2(q+1));
+  {(2,2)}: 1/(2(q+1)) )** — EXACTLY ν₂'s fractions with the stage
+  σ-dictionary: the (2,2) stage is W-11 in dv-units at the density
+  level too.
+* **μ_F (THE F-STAGE VECTOR):** the same in Q = q²:
+  **( {(2,2)}: q²/(q²+1); {(1,2)²}: 1/(2(q²+1));
+  {(1,4)}: 1/(2(q²+1)) )** = ν₂^{(2)}'s fractions (two different
+  keys, one conditional law — the f-then-e and the level-0-d = 2
+  routes to the same three σ's at the same densities).
+
+### S9.3 The quartic-cluster vector ν₄ and the level-0 assembly
+
+ν₄ = the conditional σ-distribution of the quadruple-center block:
+the depth-0 exact-polygon families (one-side: RAM4 / G2(h;λ) incl.
+(q−1)·μ_E at λ = (1²) / FULL(k;λ₄) with the s4-census incl. the
+D-tags' child re-entries D211 → ν₂⊎{(1,1)²}, D2Q → ν₂⊎{(1,2)},
+D22 → ν₂⊗ν₂, D31 → ν₃⊎{(1,1)}, F → μ_F, D4 → the prehistory
+self-loop; two-side and three-side vertex families with per-side
+outcomes: odd-drop length-2 side → {(2,1)}, even-drop →
+'11'/'2'/'1sq' → {(1,1)²}/{(1,2)}/ν₂; length-3 side → {(3,1)} or the
+cubic censuses with (1,1²) → {(1,1)}⊎ν₂ and (1³) → ν₃; four simple
+sides → {(1,1)⁴}), each family's mass = S_T·q^{4−Σ⌈P(j)⌉−L} (W-12.A
+in density form) summed geometrically over its slope parameters —
+solved for the self-loop: ν₄ = (Σ events)/(1 − Σ_k (q−1)q^{−10k}).
+The full enumeration is executed SYMBOLICALLY in the sealed engine
+(exact sympy over the symbol q; every family's closed form is in the
+runner's `nu4_families` with this note's table as the spec), with
+three independent checks: (a) partition of unity Σ(masses) = 1
+symbolically; (b) **ν₄ ≡ β₄** — the md5-pinned
+`om_density_engine.py`'s quartic cluster law, derived by the DIFFERENT
+route (the Igusa-cell fixpoint recursion (R)) and reconciled against
+the BCFG literature distribution through n = 5/6 (`reconcile_om_bcfg`)
+— term by term over all cluster σ-types; (c) the finite-N partial
+sums (S9.4). Level-0: the eleven R_τ(q) = Σ over the f̄-factorization
+shapes (census/q⁴ each) of the products of block vectors and decided
+pieces — the shapes and censuses: distinct {1111: C(q,4), 11·2̄:
+C(q,2)n₂, 2̄2̄′: C(n₂,2), 1·3̄: q·n₃, 4̄: n₄}, with multiplicity
+{2·11: qC(q−1,2) → ν₂⊎{(1,1)²}, 2·2̄: qn₂ → ν₂⊎{(1,2)}, 2·2:
+C(q,2) → ν₂⊗ν₂, 3·1: q(q−1) → ν₃⊎{(1,1)}, 4: q → ν₄, 2̄²: n₂ →
+ν₂^{(2)}} (n_d = #monic irreducibles of degree d; Σ censuses = q⁴,
+asserted).
+
+### S9.4 THE ELEVEN QUARTIC DENSITIES (the display; triple-tied)
+
+Derived by the S9.2–S9.3 assembly, executed symbolically at the seal
+(the sealed run re-verifies every line). With Φ₂ := q²+q+1,
+Φ₃ := q⁶+q³+1, Φ₅ := q⁴+q³+q²+q+1:
+
+    R_{(1,1)⁴}        = q⁶(q⁸−2q⁷+q⁶+2q⁵−q⁴+2q³+q²−2q+1) / (24(q+1)²Φ₂Φ₃Φ₅)
+    R_{(1,1)²(1,2)}   = q⁶(q⁸+2q⁷+3q⁶+2q⁵+q⁴+2q³+3q²+2q+1) / (4(q+1)²Φ₂Φ₃Φ₅)
+    R_{(1,1)²(2,1)}   = q³(q¹⁰+q⁸+3q⁷+q⁶+q⁵+3q⁴+2q³+2q²+2q+1) / (2(q+1)²Φ₂Φ₃Φ₅)
+    R_{(1,1)(1,3)}    = q⁶(q+1)²(q²−q+1) / (3Φ₃Φ₅)
+    R_{(1,1)(3,1)}    = q(q⁹+2q⁷+q⁶+q⁵+2q⁴+2q³+q²+q+1) / (Φ₂Φ₃Φ₅)
+    R_{(1,2)²}        = q⁶(q⁶+q⁵−2q³+q+1) / (8(q+1)²(q²+1)Φ₂Φ₃)
+    R_{(1,2)(2,1)}    = q³(q⁶+q⁵+q⁴+q+1) / (2(q+1)²Φ₂Φ₃)
+    R_{(1,4)}         = q⁶Φ₅ / (4(q²+1)Φ₂Φ₃)
+    R_{(2,1)²}        = q² / (2(q+1)²Φ₂)
+    R_{(2,2)}         = q²(q⁷+q⁶+q⁴+q³+2q²+q+1) / (2(q+1)(q²+1)Φ₂Φ₃)
+    R_{(4,1)}         = (q⁶+q⁵+q³+q+1) / ((q+1)Φ₂Φ₃)
+
+    Σ_τ R_τ = 1 exactly (symbolic, and as exact rationals at
+    q = 2, 3, 5). Anchors: q = 2: (344/142569, 13072/142569,
+    7348/142569, 576/2263, 1838/15841, 664/22995, 460/4599,
+    496/2555, 2/63, 454/7665, 107/1533); q = 3: (821097/152417408,
+    10043433/76208704, 1983555/38104352, 27216/91597, 75774/1190761,
+    336069/6298240, 28539/314912, 88209/393640, 9/416, 13707/393640,
+    1003/39364) — in the order listed above.
+
+### S9.4b The ties (what "triple-tied" means, exactly)
+
+1. **Symbolic:** partition of unity of the ν₄ family table; level-0
+   census Σ = q⁴; Σ_τ R_τ = 1 — all as identities in ℚ(q) (GH-DENS).
+2. **Engine:** ν₄ ≡ β₄ term by term (the md5-pinned
+   `om_density_engine`'s quartic cluster law, derived by ITS OWN
+   Igusa-cell fixpoint recursion and reconciled against BCFG through
+   n = 5/6); likewise ν₂ ≡ β₂, ν₂^{(2)} ≡ β₂-scaled, μ_E ≡ ν₂'s
+   fractions, μ_F ≡ ν₂^{(2)}'s. Visible instance: R_{(4,1)} =
+   β₄({(4,1)})/q³ — the quadruple cluster is the ONLY source of
+   {(4,1)}, the n = 4 analogue of HM3.D's R_τ = q³β₃(τ) observation.
+   Classical spot identity **[commit-2 display addition, computed
+   between seal and verdict; no sealed text changed]**: Σ_τ #{(1,1)
+   parts of τ}·R_τ = q/(q+1) exactly at the anchors — the expected
+   root count, the same value as at n = 2, 3 (HM3.D's E[#roots]
+   display, degree-stable).
+3. **Finite windows:** on every full-sweep row (committed + fresh),
+   per τ: resolved_τ(N) ≤ ν₄(τ)·q^{4(N−1)} ≤ resolved_τ(N) +
+   unresolved(N) as exact integers (the partial sums of ν₄'s series
+   vs the measured decided masses — a theorem given S6, so any
+   failure refutes the assembly), plus the committed PARI σ legs.
+
+## S10. HONEST BOXES
+
+* **GENH4-BOX-1 (grades).** 0/2, composed this session, NO hostile
+  arc yet. COROLLARY GENH4.D inherits the MINIMUM grade over the S11
+  stack: {W-11 (accepted, counter 2/2), W-12 (0/2, PE arc live), HEX3
+  (0/2, r1), HMENU3 (0/2, PE2 next), GENIND (0/2, unopened), QSCOUT22
+  (instrument), this note (0/2)}. P(4) is a CONDITIONAL STRUCTURE at
+  exactly that stack — displayed, not upgraded. [r1 2026-08-08 (PE1
+  minor S10-BOX-1): the sealed "HMENU3 (0/2, PE2 next)" cell was
+  stale AT COMPOSE — HMENU3 passPE2 (af988ee) and its r2 (e1280be)
+  pre-date this note's skeleton; the correct compose-time display was
+  "(0/2, r2, PE3 next)". Stack refreshed to NOW against git: HMENU3
+  since ACCEPTED 2/2 (PE3 CLEAN 7e5026a + PE4 CLEAN 6249166; fold
+  050425d); HEX3 at r2 a707430 (PE2 0C+1G+1m f60348b), PE3 CLEAN
+  fca1a97, counter 1/2, PE4 = the accepting attempt; W-12 body
+  unchanged at r2 99f1813, counter 0/2, PE3 launched (first attempt a
+  recorded casualty, 8c984db; re-running); W-11 still ACCEPTED 2/2
+  (fold 35e6545); GENIND still unopened; this note now at PE1
+  0C+0G+1m (263a36f; the one minor = this cell), counter 0/2, r1 =
+  this repair, PE2 next. Every supplier motion since seal STRENGTHENED
+  the stack (PE1's observation); the minimum grade over the stack is
+  unchanged, so P(4)'s conditionality display is unaffected.]
+  **[r2 2026-08-08 (PE2 MINOR 2): the r1 "refreshed to NOW" display
+  aged again in two cells, one of them optimistically. (i) HEX3:
+  "PE4 = the accepting attempt" did NOT happen — HEX3 PE4 landed NOT
+  CLEAN (34a946b, 0C+0G+1m), the counter RESET 1/2 → 0/2, and HEX3 r3
+  landed (b6a1d69); HEX3 now 0/2. (ii) W-12: now at r5
+  (be4a1dc/ee17210) after PE3 → r3 → PE4 (1 CRITICAL) → r4 → PE5 →
+  r5, counter 0/2 — load-bearing for this note's W-12.D pin, repaired
+  at the S11 [r2] re-pin. (iii) GENIND: no longer unopened — passPE1
+  adjudicated (4259a93, 0C+3G+4m, UNREFUTED), r1 dispatched, counter
+  0/2. Unchanged: HMENU3 ACCEPTED 2/2 (its post-acceptance ANNEX A
+  19c0285 corrects HM3.C's (A0) quantifier to the disc ≠ 0 form —
+  ruled harmless at W-12's n = 3 firing row, and this note never
+  cites the corrected sentence); W-11 ACCEPTED 2/2; this note now at
+  r2 (PE2 1C+2G+2m @ 2618e9b, all display-level, no frozen number
+  moved). The MINIMUM grade over the stack is unchanged at 0/2, so
+  P(4)'s conditionality display is unaffected — the r1 disposition,
+  for partly different reasons.]**
+  **[r3 2026-08-09 (PE3 REMARK B): stack re-refreshed against git at
+  THIS repair's commit (HEAD cc20066). (i) GENIND: the r2 cell "r1
+  dispatched" was already stale AT COMMIT by 49 seconds (GENIND r1
+  66200f2 landed 23:18:53; fd35416 committed 23:19:42 — the two
+  repairs ran concurrently in one wave); since then GENIND passPE2
+  adjudicated NOT CLEAN 0C+2G+1m (50db400 — the first live n = 6
+  gap, mixed CS+β-child openings, plus the r1-cite geography of THIS
+  note's r2 timing), r2 dispatched at the wave-4 fold (4dbba60),
+  counter 0/2. (ii) HEX3: unchanged at r3 (b6a1d69), 0/2. (iii)
+  W-12: unchanged at r5 (be4a1dc/ee17210), 0/2. (iv) HMENU3 ACCEPTED
+  2/2 (+ ANNEX A) and W-11 ACCEPTED 2/2, unchanged. (v) This note:
+  PE3 NOT CLEAN 0C+0G+1m (a011533/3b88321), r3 = this repair, PE4
+  next, counter 0/2. Minimum grade over the stack unchanged at 0/2;
+  P(4)'s conditionality display unaffected. STANDING DISCLOSURE
+  [r3]: every stack line in this box is AS-OF ITS COMMIT TIMESTAMP —
+  supplier arcs run concurrently in the same waves, so any stack
+  display can be stale within write-to-commit latency (three
+  photo-finishes on this arc: PE1's minor, PE2's MINOR 2, PE3's
+  REMARK B); currency is guaranteed by the verifier's own
+  verdict-time git refresh, not by any frozen display.]**
+* **GENH4-BOX-2 ((H-e) scope).** THEOREM GENH4.C proves the (H-e)
+  INSTANCE at the two n = 4 genres only. The general (H-e) — higher
+  key degree, higher m′, E > 2, deeper residue towers — remains
+  [W12-H]'s open box; the n = 5 embedded genres (GENIND S5.3) are NOT
+  discharged here: **P(5) does NOT fire from this note** (its
+  stage-2 genres are (2,2)-shaped and the S7 method is built to
+  transport, but the transport is future work, not a claim).
+* **GENH4-BOX-3 (d ≥ 2 / prime powers).** The DBLQ vector ν₂^{(2)}
+  consumes GENIND-1/2/3 at d = 2 (proved at general (m, d), but
+  GENIND-BOX-3 discloses thin machine coverage there); this battery
+  adds a d = 2-relevant fresh full row and the ψ-census ties; genre-F
+  rows at q = 4 remain unbuilt (F₁₆ kit — QSCOUT22 Q22-BOX-3
+  inherited); prime-power-q composite rows rest on the proofs'
+  uniformity + the supplier batteries.
+* **GENH4-BOX-4 (P-D's residual content).** GENH4-6 kills P-D at
+  n = 4 only. At stages with m′ ≥ 3 or E ≥ 3 slot misalignment is not
+  ruled out; P-D stands as an open flag for the [GENIND-H(n ≥ 5)]
+  program.
+* **GENH4-BOX-5 (conventions).** Conservative tails (UND is an upper
+  bound for the σ-residue — exact as counted); canonical-lift letter
+  convention (W-2/LIFTCORNER seam NOT consumed; histories are
+  convention-keyed exactly as QSCOUT22 discloses); reader
+  reimplementation seams: the fresh rows are read by the md5-PINNED
+  QSCOUT22 reader (GREEN + PARI-tied at its seal) — this note's
+  battery contributes independent LAWS, fresh territory, the
+  pointwise transfer leg, and PARI, not a fresh reader.
+* **GENH4-BOX-6 (the density engine's role).** β₄ is derived by the
+  engine's own recursion — an INDEPENDENT route, but 'independent'
+  means decorrelated method, not accepted-arc supplier; the density
+  display's proof content is S9.2–S9.3 over THIS note's laws + the
+  pinned suppliers; the β₄ tie and BCFG reconciliation are
+  corroboration legs.
+* **GENH4-BOX-7 (Q22-L3 display slip).** The scout note's quoted
+  genre-E UND law is wrong at h > 1 (S1 correction box; committed
+  artifact decides). Fold obligation: QSCOUT22's next repair round
+  should annex the corrected law; nothing else in that note consumed
+  it (checked: the S6/S8 mentions are the only sites; the runner's
+  model — the sealed predictor — always had it right).
+
+## S11. CONSUMERS + CONDITIONALITY STACK (as-of pins)
+
+* **GENIND** @ 4682bcf (verdict 4984004; 0/2): GENIND-1(ii) (m = 4
+  prehistory), GENIND-4 (the E fibration), GENIND.B (the induction
+  consuming this discharge), the criterion + genre grammar.
+* **QSCOUT22** @ dd67cda (seal 970197d; instrument): the empirical
+  table this note's laws are keyed to; Q22-A entry classification;
+  the committed artifacts (results JSON md5
+  6c2441a12cf52ffd43055de912a4affe, runner md5
+  cb885663dd4ef6dfda9c28a67c1a076e) consumed as the roster tie.
+* **W-12.A/S2.5/W12-L0/L1 + W-12.D** @ w12 seal f669cb0/r2 99f1813
+  (0/2, PE3 owed): entry-volume laws, the cell calculus, the
+  reduction that P(4) fires. [r1 2026-08-08: arc now — body unchanged
+  at r2 99f1813, counter 0/2; PE3 launched, first attempt a recorded
+  casualty (died mid-response; record 8c984db), re-running.]
+  **[r2 2026-08-08 (PE2 GAP 2) — W-12.D RE-PINNED at W-12's current
+  text, r5 be4a1dc/ee17210 (arc since the r2 pin: PE3 c9c5c0e
+  0C+1G+1m → r3 b17238a/b8dfe62 → PE4 26689da **1 CRITICAL**+2G+2m →
+  r4 d2d91b7/5728258 → PE5 c3e2f8e 0C+1G+3m → r5; counter 0/2). The
+  stale pin was INSUFFICIENT by W-12's own later adjudication: W-12
+  PE4's GAP 1 showed the r2-pinned (A0)+(A1) never assert that
+  core-family members are σ-DECIDED with σ = σ_F, which Step 4's
+  lower bound needs (explicit degenerate one-family counter-instance
+  with R_split = 1 ≠ μ_split) — the cure is the **σ-LABELING clause**
+  added to (A1) at W-12 r4 ("each with a splitting type σ_F … such
+  that every disc ≠ 0 lift of every member has σ = σ_F"), post-pin
+  and previously uncited here. FIRED-CLAUSE CHECK (the check r1
+  performed for HEX3, owed here too): the added clause is SUPPLIED at
+  n = 4 — W-12's own [r4] FIRING CHECK carries an explicit n = 4 row
+  ruling it "**SUPPLIED.** THEOREM GENH4.C … the dictionary IS the
+  σ_F assignment, and the quantifier is over every lift of every leaf
+  member" (W12_PROOF_2026-08-08.md, firing table), matching S7's
+  closing "(A0)-strong at the stage". No conclusion moves; the
+  theorem GENH4.D(ii) fires is now the sufficient revision at the
+  current pin.]**
+* **W-11** @ 7020ceb/r2 31506b3, PE3 CLEAN 839b735 + PE4 CLEAN
+  16d12e1 (ACCEPTED 2/2): the n = 2 system every stage transports.
+* **HEX3 / HMENU3** @ e3f3459/671a126/2580f12 and 64d3ff9/625fa49
+  (0/2 arcs live): ν₃, the n = 3 package P(3), the telescoping
+  template. [r1 2026-08-08: arcs now — HMENU3 ACCEPTED 2/2 (PE3 CLEAN
+  7e5026a + PE4 CLEAN 6249166; fold 050425d; the consumed pins
+  64d3ff9/625fa49 unchanged); HEX3 at r2 a707430 (PE2 0C+1G+1m
+  f60348b), PE3 CLEAN fca1a97, counter 1/2. Fired-clause check on the
+  HEX3 aging (PE1 Remark 1: HEX3 passPE2 landed 2.5 min AFTER this
+  note's seal): what this note consumes at the r1-2580f12 pin — the
+  ν₃/P(3) conclusions — is untouched by HEX3-PE2's findings (its gap
+  is HEX3's own never-measured-census bookkeeping, corrected at HEX3
+  r2; its minor an S8.2 aside this note never cites); HEX3 PE3 CLEAN
+  only corroborates.]
+* **GRTJC W-6..W-9 + JC-LOAD/W-8 (ACCEPTED 2/2 @ 83f47f4), J-D0 @
+  9387eb1, DULEMMA @ f819f26, WELDMASTER/[W12-H] @ pins:** the
+  MECHANISM frame (S0's division: no count law consumes them; S3/S5
+  re-prove the needed instances elementarily; DULEMMA applicability
+  checked — E-stage on-perimeter (e_m = 2), not consumed).
+* **om_density_engine.py** @ md5 7240a916060c360d4433ca8a802d315d +
+  `reconcile_om_bcfg.py` (committed): β₄/β₃/β₂ ties (corroboration
+  leg only — BOX-6).
+* **Classical:** Hensel, Ore order-1, ultrametric quadratic analysis,
+  Artin–Schreier/square-class censuses over F_q and F_{q²}.
+
+**One line: THEOREMS GENH4.A/B/C + LEMMAS GENH4-1F/-2/-CAP/-3/-4/-6
+rest on {GENIND-4/GENIND-1(ii) @ pin, W-12.A entry laws @ pin, W-11
+system @ accepted pin, classical}; COROLLARY GENH4.D adds GENIND.B +
+W-12.D + P(2)/P(3) @ pins. No axiom, no weld face inside any count
+law; grade = composition 0/2.**
+
+## S12. THE SEALED BATTERY (two-commit; verdict from artifacts)
+
+**Runner:** `verification/openmath/genh4_checks.py`. Exact integer /
+exact sympy arithmetic; deterministic; PARI/GP subprocess (GH-SIGMA
+only). Imports (md5-pinned, frozen): qscout22_checks (the reader +
+FExt + irred_quads; the MODEL functions are NOT called — this note's
+laws are re-implemented from S6 as `law_E`/`law_F`), w10_checks
+(rings), w12_checks (hull/censuses/GP kit), om_density_engine (β's),
+qscout22_results.json (the roster tie).
+
+**Families:**
+* GH-PIN [NONE] — 6 md5 pins (runner qscout22 cb885663…, results JSON
+  6c2441a…, output txt 378a12b3…, w10 a9c34244, w12 7dc040d9, engine
+  7240a916).
+* GH-JSONTIE [SAME] — MY law evaluator (fresh code from S6's closed
+  forms) reproduces EVERY composite key count (genres E and F, all
+  prehistories/histories/leaves) in the committed qscout22_results
+  JSON, all 23 rows, BOTH directions; order-1/W12TIE keys re-derived
+  from my own W-12.A transcription likewise.
+* GH-FRESH [SAME] — fresh never-measured rows, pinned reader vs my
+  laws, both directions: consE (Zp,7,3,h1) [first q = 7 composite
+  entries], (Fqt,5,4,h1), (Fqt,3,5,h1), (Zp,2,11,h5) [deep entry
+  h = 5 — first ever]; consF (Zp,7,5,k1), (Zp,2,9,k2) [first k = 2];
+  FULL sweep (Fqt,5,3) [fresh full row: partition + all laws].
+  GH-CROSS (a fresh (Zp,2,7) 16.7M full sweep to cross-check the
+  committed cons rows) was considered and DROPPED for runtime
+  budget — disclosed here and in the runner docstring; the cons rows
+  remain tied through the model both directions + PARI.
+* GH-PRE2 [SAME] — depth-2 prehistory constructed row (Zp,2,11,
+  pre=(1,2), E at h = 5): the (q−1)² floored-fresh law at r = 2.
+* GH-REFINE [SAME] — the GENH4-4 one-step formulas POINTWISE: every
+  refine event on consE (Zp,2,6,h1) + (Fqt,2,6,h1) and consF
+  (Zp,2,7,k1): recompute the new development by my S5 formulas
+  (incl. the carry and the twist-kill) and compare digit-by-digit
+  with the pinned reader's divide_by_quad after recentering; assert
+  the two pins die and the floored-node bijection (count both sides).
+* GH-FEVEN [SAME] — the odd-q even-dμ genre-F stratum (QSCOUT22's
+  disclosed deviation (ii)): constructed sub-locus {v₁(A₀) ≥ 2dμ}
+  at (Zp,3,7,k1), built THROUGH the GENH4-1F development map
+  (validating it constructively), read, compared to my conditioned
+  law; F_{q²} = F₉ censuses live here.
+* GH-PD [SAME] — (a) the GENH4-6 liveness inequalities scanned over
+  1 ≤ h ≤ 15, N ≤ 40, all readable dμ (integer check of the lemma);
+  (b) '1sq' ⟺ S₁ = 0 at q even, pointwise on every refine event of
+  the char-2 fresh/committed-tie rows; (c) the in-vitro cascade:
+  {A₁ ≡ 0} sub-locus at (Fqt,2,7,h1) and (Zp,3,5,h1): char 2 must
+  yield ZERO SPLITEQ/INERT keys (forced cascade), q = 3 must yield
+  both (the separator).
+* GH-UND [SAME] — THEOREM GENH4.B's closed forms vs every UND key
+  (committed JSON + all fresh rows), incl. the h = 3 correction value
+  512 and the even-N two-term F law; aggregates.
+* GH-BRACKET [SYM] — S6.2: Σ_{H⊆D}L^{|H|} = q^{f₁|D|} integer
+  identities (E and F ladders, ranges) + aggregated-vs-resolved key
+  sums on the committed rows (aggregate over H₂ = bracket × per-node
+  law, every leaf family).
+* GH-DENS [SYM/IND] — S9: partition of unity for ν₄'s family table
+  (symbolic q); ν₄ ≡ β₄, μ_F ≡ ν₂^{(2)}-fractions, μ_E ≡ ν₂-fractions,
+  ν₂/ν₃ ties (engine, md5-pinned) [r2, PE2 MINOR 1 — precisely: the
+  ν₂/ν₂^{(2)} ties are dchecks in this sealed battery; ν₃ is
+  DEFINITIONAL here (nu3 = ENG.beta(3), no dcheck) and its tie is
+  executed in the ADDITIVE leg genh4r2_supp.py (GREEN) — see S9.2];
+  level-0 census Σ = q⁴; the ELEVEN
+  R_τ with Σ_τ R_τ = 1 symbolic; anchors at q = 2,3,5; partial-sum
+  sandwich per τ on full-sweep rows (committed (Zp,2,5),(Zp,2,6),
+  (Zp,3,4),(Fqt,3,4) + fresh (Fqt,5,3)): decided_τ ≤ R_τq^{4N} ≤
+  decided_τ + UND, exact rationals, and the truncated-series
+  equality where the menu is window-complete.
+* GH-SIGMA [IND] — PARI factorpadic σ per decided composite member,
+  sampled: fresh (Zp,7,3,h1)E, (Zp,7,5,k1)F, (Zp,2,11,h5)E,
+  (Zp,2,9,k2)F, (Zp,2,11)pre2 — never-oracled territory (q = 7
+  composite stages; h = 5; k = 2; r = 2).
+
+**Teeth (each must fire ≥ 1 or RED):**
+* GH-T-LAT — my law_E corrupted to the integer-only dv ladder must
+  mismatch on every E row (committed + fresh).
+* GH-T-CEN — INERT census q(q−1)/2 → q(q−1) must mismatch on every
+  INERT-realizing row.
+* GH-T-ALPH — law_F censuses over F_q instead of F_{q²} must mismatch
+  on every even-dμ-realizing F row INCLUDING the new odd-q GH-FEVEN
+  row (the tooth QSCOUT22 could only arm at q = 2).
+* GH-T-SIG — F-RAM σ flipped {(2,2)} → {(1,4)} must be caught by
+  PARI on the fresh F oracle rows.
+* GH-T-DENS — μ_E corrupted to the integer-ladder aggregation must
+  break BOTH the β₄ tie and Σ_τ R_τ = 1.
+
+**PRE-SEAL SMOKE (disclosed).** Developed and debugged with
+`--smoke`: GH-PIN + the FULL GH-JSONTIE (all 23 committed rows) +
+fresh consE (Zp,7,3,1) + consF (Zp,2,9,2) + GH-REFINE (Zp,2,6,1;
+10,752 refine events, 0 formula violations) + GH-PD + GH-DENS
+symbolic + oracle (2,055 scored, 0 bad). Final smoke GREEN, 17.4 s,
+all five teeth fired. THREE smoke-caught corrections folded in BEFORE
+the seal and disclosed: (i) the in-vitro cascade claim scoped to the
+all-even-H₂ ladder (S8 — the mixed-char +2w revival AND the
+equal-char carry revival both caught by smoke runs 1–2); (ii) sympy
+Sum→Piecewise replaced by explicit geometric closed forms (no math
+change; the partition-of-unity identity adjudicates them); (iii) the
+smoke cascade row moved from Zp (mixed) to Fqt (equal char). The
+S9.4 density block was computed by the smoke run and pasted verbatim
+into this note at the seal. No full-roster run before the seal.
+
+**Preregistered predictions P-1..P-9:**
+
+* P-1 [NONE] GH-PIN 0/6.
+* P-2 [SAME] GH-JSONTIE 0 violations over all 23 committed rows
+  (481 law-key checks at smoke; same count expected).
+* P-3 [SAME] GH-FRESH/GH-PRE2 0 violations; never-measured spot
+  values (computed from the S6 laws, pre-run): consE (Zp,2,11,h5):
+  total 2¹⁶ = 65,536 with EXACTLY TWO keys — RAM(21) = 32,768 and
+  UND = 32,768 = q^{N+h−1} (the deep-entry stratum drains HALF: the
+  stage ladder {2h+1,…,N−1} is EMPTY at N = 2h+1); consF (Zp,7,5,k1):
+  total 21·7⁶ = 2,470,629, keys RAM(5) = 2,117,682 and UND = 352,947
+  = 21·q^{N+2k−2} (odd-N single-power law); consE (Fqt,3,5,h1):
+  total 2·3¹² = 1,062,882; (Fqt,5,4,h1): 4·5⁸ = 1,562,500;
+  consE (Zp,7,3,h1): 14,406 = (q−1)q³·q^{...} split RAM(5) =
+  (q−1)²q³ = 12,348 + UND = (q−1)q³ = 2,058; pre2 (Zp,2,11,(1,2)):
+  2²⁰ members, law keys EXACTLY {E-RAM(21) = 32,768, E-UND = 32,768,
+  G2(5,'2') = 65,536, RAM4(9) = 524,288}; GH-FEVEN (Zp,3,7,k1,f0=5):
+  3·3¹² = 1,594,323 members, 8 keys incl. F-SPLITEQ(3)/INERT(3) at
+  the F₉ censuses 28/36.
+* P-4 [SAME] GH-REFINE 0 pointwise failures; every refine event's
+  carry lands above the pin; bijection counts equal.
+* P-5 [SAME] GH-FEVEN 0 violations; even-dμ = 3 keys realized at
+  q = 3 with F₉ censuses 28/36/8 (SPLITEQ/INERT/refine letters).
+* P-6 [SAME] GH-PD: liveness scan 0 dead slots; char-2 '1sq' ⟺
+  S₁ = 0 exact; cascade locus: 0 SPLITEQ/INERT keys at q = 2, both
+  present at q = 3.
+* P-7 [SAME] GH-UND 0 violations (incl. the 512 at (2,7,3));
+  GH-BRACKET all identities exact.
+* P-8 [SYM/IND] GH-DENS: partition of unity holds; ν₄ ≡ β₄; Σ_τ = 1;
+  all sandwiches hold.
+* P-9 [IND] GH-SIGMA 0 bad; teeth all fire.
+* Falsifiers: a GH-JSONTIE mismatch with the committed table refutes
+  THEOREM GENH4.A as stated (diagnose the slot strings first); a
+  GH-REFINE pointwise failure refutes LEMMA GENH4-4 (the carry
+  computation — OB-b reopens); a GH-UND mismatch refutes GENH4.B; a
+  PARI σ mismatch refutes GENH4.C (OB-c reopens); a ν₄/β₄ or Σ ≠ 1
+  failure refutes the S9 assembly (P(4)'s density display, not the
+  stage laws); a dead tooth voids the battery, not the theorems.
+
+**VERDICT: PENDING — commit 1 seals this note + the runner; commit 2
+appends §S13 from `genh4_checks_output.txt` / `genh4_checks_results
+.json`.**
+
+## S13. VERDICT (commits 2–3 — from the committed artifacts)
+
+### S13.1 Run 1 (the sealed runner, single fresh run): RED — ONE
+violation, INSTRUMENT-SIDE, diagnosed exactly
+
+**RED, 1,102.2 s, exactly ONE violation in 245,694 checks** — and it
+is a defect of THIS battery's fresh-row GENERATOR, not of any law:
+the GH-FEVEN constructed row enumerated β₁ at floor f0−k = 4 instead
+of f0−k+1 = 5 (a v₁-floor needs BOTH components of the pair-slot
+above the same v₁-height), so the built locus was the asymmetric box
+{v(β₁) ≥ 4, v(β₀) ≥ 6} (3^{14} members — 3× the SEALED P-3
+prediction 1,594,323, which was computed from the correct floor and
+was right) rather than {v₁(A₀) > 5}. Quantitative closure of the
+diagnosis (from the committed run-1 artifacts): the single
+mismatching key is F-RAM(5), obs = 3,188,646 = 3ψ·(q−1)·q³·q⁹
+[r1 2026-08-08, notation (PE1 Remark 2): "3ψ" = the 3 CHOICES of ψ
+(the F₉ irreducible-quadratic census (q²−q)/2 = 3 at q = 3) — a
+count multiplicity, not a factor named ψ; i.e. obs = 3·(q−1)·q¹²] —
+EXACTLY the β₁-component-only attainment of value 5 that the
+mis-floored box admits ((q−1) = the freed β₁ digit at position 4;
+q³ = the A₀ slots above 5; q⁹ = the A₁ slots with 2s > 5) — and ALL
+EIGHT other keys of the row match the sealed f0 = 5 law exactly
+(they also match the f0 = 4 law: dv0 ≥ 6 keys are floor-insensitive
+there, closing the consistency check). Everything else in the
+battery: **ZERO violations** — GH-PIN 6/0, GH-JSONTIE 481/0 (all 23
+committed rows), GH-FRESH 54/0 (every never-measured spot at its
+preregistered value incl. the (2,11,h5) two-key half-drained
+stratum, the q = 7 rows, k = 2), GH-PRE2 5/0 (the (q−1)² depth-2
+law), GH-REFINE 192,000/0 (21,504 + 768 refine events, the carry
+formulas pointwise, walker ≡ pinned reader on every member),
+GH-PD 46,590/0 (liveness scan + AS-degeneration + both cascade rows:
+char-2 all-even-H₂ leaves = RAM/UND only; q = 3 realizes
+SPLITEQ/INERT at all-even H₂ — the separator), GH-UND 92/0,
+GH-BRACKET 157/0, GH-DENS 115/0 (partition of unity, ν₄ ≡ β₄,
+μ_E/μ_F identities, Σ_τ R_τ = 1 symbolic + anchors, all sandwiches),
+GH-SIGMA 6,185/0 (PARI, incl. 4,130 q = 7 F-RAM members). Teeth:
+LAT 19, CEN 14, ALPH 4, SIG 2, DENS 1 — all fired. Artifacts of run
+1 committed at commit 2; per P-11's own falsifier grammar a
+generator defect voids the ROW, not the theorems — but the battery
+verdict is honestly RED as run.
+
+**Repair (commit 2, one line + this section):** the β₁ floor
+corrected to f0−k+1 in `run_feven` (comment marks the site); no law
+code, no note statement, no other row touched. Commit 3 = the full
+fresh re-run's verdict below.
+
+### S13.2 Run 2 (repaired runner, full fresh run): GREEN
+
+**GREEN. 947.5 s, exit 0, single fresh run, ZERO violations in every
+family, all five teeth fired.** GH-PIN 6/0 · GH-JSONTIE 481/0 ·
+GH-FRESH 54/0 · GH-PRE2 5/0 · GH-REFINE 192,000/0 · GH-FEVEN 8/0
+(the repaired row: 1,594,323 members = EXACTLY the sealed P-3
+prediction, 8 keys, F₉ censuses live at odd q) · GH-PD 46,590/0 ·
+GH-UND 92/0 · GH-BRACKET 157/0 · GH-DENS 115/0 · GH-SIGMA 6,185/0.
+Teeth: LAT 19 · CEN 14 · ALPH 4 · SIG 2 · DENS 1. Artifacts:
+`genh4_checks_output.txt` (md5 9e6ca9b3b83aa9902ddef379f72db741),
+`genh4_checks_results.json` (md5 cbcff562132f82e302d95a017318075c);
+runner md5 ee8024b7a500220a6408dab373d7432f = commit-2's repaired
+text (one line from the seal). All non-FEVEN results byte-agree with
+run 1's committed artifacts (same counts every family; timing only).
+
+**Consequence for the grade box.** THEOREMS GENH4.A/B/C and LEMMAS
+GENH4-1F/-2/-CAP/-3/-4/-6 stand as composed, machine-corroborated:
+Q22-L1/L2/L3 PROVED at both genres, OB-a/OB-b/OB-c/OB-d closed, P-D
+settled unreachable at n = 4. **[GENIND-H(4)] is DISCHARGED**;
+THEOREM GENIND.B fires P(4); COROLLARY GENH4.D's eleven quartic
+densities stand with the triple tie (Σ_τ R_τ = 1 symbolic; ν₄ ≡ β₄;
+finite-window sandwiches on 9 full-sweep rows), conditional exactly
+on the S11 arc-grade stack. n = 5's embedded CS genres remain OPEN
+(GENH4-BOX-2). Attempt 0/2; the hostile arc has not begun. [r1
+2026-08-08: the arc has now begun — PE1 NOT CLEAN 0C+0G+1m (263a36f;
+the minor = the S10-BOX-1 stale HMENU3 cell, repaired at this r1; the
+two remarks addressed at S11/S13.1); arc: composed → seal 121d9ab →
+RED 3eb1667 → GREEN 4b5c085 → PE1 263a36f → r1 (this, note-only);
+counter 0/2; PE2 next.] [r2 2026-08-08: PE2 NOT CLEAN 1C+2G+2m
+(2618e9b). The CRITICAL — S1's census clause at genre-F boundary-band
+pins — is DISPLAY-level: the runner and every frozen number were
+correct (PE2's isolated full re-run: GREEN, 245,693/0, results-JSON
+leaf-diff vs committed = the elapsed-time leaf only). r2 = this
+repair, note-only plus ONE additive machine leg: S1/S6.1 census
+display comp-weighted with PE2's 216/216 (F) + 288/288 (E) ledger
+closure displayed as verification; the dv0 = N exit trichotomy
+corrected at GENH4-CAP(F) + S4 (GAP 1); W-12.D re-pinned at W-12 r5
+with the σ-labeling fired-clause check displayed (GAP 2, S11);
+S10-BOX-1 stack refreshed to HEAD (MINOR 2); the ν₃ tie EXECUTED
+additively (genh4r2_supp.py GREEN; sealed runner + artifacts
+byte-untouched — MINOR 1); admissibility floors N ≥ 2h+1 / N ≥ 4k+1
+stated at S0/S1 (Remark 1). Arc: … → PE1 263a36f → r1 dff23f8 → PE2
+2618e9b → r2 (this). Counter 0/2; PE3 next.] [r3 2026-08-09: PE3
+NOT CLEAN 0C+0G+1m +2 remarks (a011533/3b88321) — every r2 repair
+verified in SUBSTANCE (census concordant at all four sites, no
+silent Q−1 consumer; trichotomy CONTENT right; W-12.D re-pin sound;
+supp leg non-tautological; two fresh-territory instruments:
+equal-characteristic walkers at (Fqt,2,8,1)/(Fqt,5,5,1) key-for-key
+with the committed Zp rows, and mechanism-free wild-prime σ-density
+at p = 2, 3). The MINOR: the r2 trichotomy DISPLAY's antecedents
+overlapped — the RAM clause dropped its one-side condition u ≤ 2w,
+transcribed from the PE2 verifier's own sentence (lesson ledgered:
+re-derive, never transcribe a verifier's phrasing). r3 = this
+repair, note-only, three items: the trichotomy restated with
+pairwise-disjoint antecedents at GENH4-CAP(F) + S4, re-derived from
+GENH4-3(i)/S7's RAM bullet and checked against the committed
+counter-keys (2SIDED(3,4) = 384 and RAM(7) = 128-not-512 at
+(Zp,2,7,k1); RAM(5) = 2,117,682; 2SIDED(3,5) = 1,536 vs UND = 1,024
+at even N) (MINOR 1); the W-12.A-mnemonic scoped away from the
+boundary band at S1 + S6.1 (REMARK A); S10-BOX-1 re-refreshed to
+HEAD with the standing as-of disclosure (REMARK B). Sealed runner +
+artifacts byte-untouched; no frozen number moves. Arc: … → PE2
+2618e9b → r2 fd35416/5279a11 → PE3 a011533/3b88321 → r3 (this).
+Counter 0/2; PE4 attempts the clean count.]
+
+## ANNEX PE5 (2026-08-09, post-acceptance) — the two display MINORs and the S9.2 remark: the genre-F SPLTAIL cap 2w < N with its σ-inequality (MINOR 1), the per-genre norm valuation at S7's 2SIDED bullet (MINOR 2), and the closure of the dangling "− extra…" token (REMARK). The frozen accepted body above is NOT edited.
+
+**Provenance and scope.** GENH4 was **ACCEPTED 2/2** at PE5 (report
+`GENH4_passPE5_report.md`, commit 11dbd23): 0 CRITICAL, 0 GAP, 2 MINOR
+(+1 remark) — the second stage-one note through the hostile-arc bar,
+after HE7. The accepted text is byte-frozen at r3 (4b0d946 = HEAD, md5
+`09af7f78c34a779ea092738164f1795c`); per the report's grade line the
+owed repair is this dated annex (the HE7 ANNEX F-1 pattern: appended,
+dated, nothing above edited). It covers exactly PE5 MINOR 1 + MINOR 2
+plus the S9.2 remark and NOTHING else. Honesty of grade: the annex
+text itself is a post-acceptance append and has NOT been through a
+hostile pass; what it displays is content every pass verified in
+substance (PE2 ruled the SPLTAIL/UND boundary right in note and
+runner; PE5 re-derived both items and the closure), verified here
+against the committed artifacts plus one additive machine leg
+(`genh4annex_supp.py`, GREEN, record below). No statement, frozen
+number, or conclusion moves.
+
+### A1. MINOR 1 — the genre-F SPLTAIL cap is 2w < N, not w < N
+
+**The defect (as found at PE5).** The true and implemented genre-F
+SPLTAIL cap is **2w < N** (w = dv(A₁) in v₁ = v units; sealed runner
+`law_F`: `if 2 * dv1 < N`; sealed fresh-row reader:
+`if dv1 is not None and 2 * dv1 < N`) — but it is DISPLAYED nowhere:
+the two display sentences below read naturally as w < N at genre F,
+which is refuted by the committed rows. Additionally, S7's SPLTAIL
+bullet displays the σ-decision inequality for genre E only; the F
+instance is derived here (ANNEX-LEMMA GENH4-7(b)) — it is the
+one-line step on which the F-SPLTAIL σ-label {(1,2),(1,2)} rests,
+a committed key class consumed by W-12.D's σ-labelling clause at
+n = 4.
+
+**The three display sentences this annex riders (named exactly;
+none is edited).**
+
+1. **LEMMA GENH4-3 (S4):** "plus the conservative exits (A₀ hidden:
+   SPLTAIL if **w < N-cap** else UND; …)". **Read as:** the "N-cap"
+   is the genre's hidden-A₀ lift-stability floor u_floor measured
+   against 2w — SPLTAIL iff **2w < u_floor**, with u_floor = 2N
+   (genre E, dv-units: GENH4-CAP(E)'s undercut floor) and u_floor = N
+   (genre F, v₁-units: GENH4-CAP(F)'s window floor). At E this is
+   w < N as S6.1 displays; at F it is **2w < N** — NOT w < N.
+2. **S6.1's leaf row + gloss:** "SPLTAIL(w), w < N:
+   (q−1)·q^{(h−1)/2 + #A₁ > w}" with "genre F identically with
+   comp-weighted exponents AND comp-weighted pin censuses". **Read
+   as:** "identically" transfers the LAW SHAPE (pin census ×
+   free-slot power × band factor); the w-RANGE transfers by the
+   uniform rule of rider 1, i.e. genre F: 2w < N, with the UND
+   complement freeing A₁ exactly at the slots 2s ≥ N.
+3. **S7's SPLTAIL bullet:** "A₀ window-zero, w < cap: EVERY lift has
+   u_lift ≥ 2N > 2w (E; GENH4-CAP's undercut floor) — a 2SIDED
+   configuration for every lift, including the A₀ = 0 corner …: σ as
+   2SIDED. ∎". **Read as:** at genre F the displayed inequality's
+   instance is **u_lift ≥ N > 2w** (ANNEX-LEMMA GENH4-7(b) below);
+   the rest of the bullet (the 2SIDED reduction, the A₀ = 0 corner
+   via F = φ·(φ + A₁)) applies verbatim.
+
+**In-note derivation of the cap (why 2w < N was always recoverable).**
+S6.3's genre-F UND law carries the complement explicitly: "main
+factor q^{Σ comp(s): s ∈ A₁, **2s ≥ N**}" — UND frees A₁ exactly at
+the slots with 2s ≥ N, so the SPLTAIL range is its complement
+2w < N; THEOREM GENH4.B's committed verification box ((2,8,1) F →
+1024 = 512 + 512) prices exactly this partition. The reason the cap
+is 2w < N and nothing else:
+
+> **ANNEX-LEMMA GENH4-7 (the genre-F SPLTAIL cap and σ-inequality).**
+> At a genre-F stage state with A₀ hidden (every in-window A₀ digit
+> zero: a₀-positions ≤ N−1 and a₁-positions ≤ N−1 all vanish) and
+> pin dv(A₁) = w:
+> (a) every lift has u_lift := v₁(A₀^lift) ≥ N, and u_lift = N is
+> realizable (the a₀-component digit at position N, the first
+> out-of-window position; for k ≥ 2 also the free boundary-band
+> a₁ digits);
+> (b) if 2w < N then EVERY disc ≠ 0 lift has u_lift ≥ N > 2w, hence
+> sits in GENH4-3(ii)'s 2SIDED(w, u_lift − w) position — including
+> the A₀ = 0 corner via F = φ·(φ + A₁) — and by S7's 2SIDED bullet
+> (F leg) has σ = {(1,2),(1,2)}: the S1 dictionary's F-SPLTAIL label,
+> (A0)-strong;
+> (c) if 2w ≥ N, NO single label is lift-sound: the u_lift = N lift
+> of (a) has u_lift ≤ 2w and lands in the r3 trichotomy's decided
+> legs (odd N → RAM(N): σ = {(2,2)}) or the out-of-window residual
+> read (even N), while any lift with u_lift > 2w is 2SIDED:
+> σ = {(1,2),(1,2)} — two lifts of the SAME state with DIFFERENT σ.
+> Hence 2w < N is the UNIQUE lift-sound cap, and the reader's UND
+> exit at 2w ≥ N is forced, not conservative slack.
+
+*Proof.* (a) A₀ = a₁x + a₀ has v₁(A₀) = min(v(a₀), v(a₁) + k) with
+the ψ-genericity of GENH4-2 preventing cancellation (S2.1's ring
+invariants, maintained along chains by S5). Hidden means every
+in-window position vanishes: v(a₀) ≥ N (a₀-positions ≤ N−1) and
+v(a₁) + k ≥ N + 1 (a₁-positions ≤ N−1); lift digits at the
+out-of-window positions are free, so u_lift ≥ N with equality
+realizable through a₀ at position N (and, for k ≥ 2, through the
+free band digits the deep₀ factor prices). (b) u_lift ≥ N > 2w is
+GENH4-3(ii)'s antecedent u > 2w at every lift; all data consumed are
+lift-stable (GENH4-CAP(F)), so S7's 2SIDED bullet applies to every
+lift; at A₀ = 0 both factors of φ·(φ + A₁) carry the S2.1 one-side
+polygon — the bullet's own corner sentence. (c) The two lifts are
+exhibited: u_lift = N ≤ 2w falls to GENH4-CAP(F)'s r3 trichotomy —
+at odd N the RAM(N) leg (σ = {(2,2)} by S7's F-RAM bullet), at even
+N the dv0 = N residual read that GENH4-CAP(F) rules out of window
+(different deep lifts realize different residual classes, hence
+different σ); a lift with u_lift > 2w — realizable, the
+out-of-window digits are free — is 2SIDED. {(2,2)} ≠
+{(1,2),(1,2)} and the even-N residual σ's vary, so no constant label
+covers all lifts. ∎
+
+**The committed refutation of the wrong reading (machine, C1–C3 of
+the annex leg).** At the committed (Zp,2,8,k1) row (qscout22 row 16,
+artifact md5 6c2441a1…, pin-verified): the misread cap w < N
+predicts SPLTAIL(4) = 384, SPLTAIL(5) = 96, SPLTAIL(6) = 24,
+SPLTAIL(7) = 6 and UND = 514 — against the committed
+**SPLTAIL(3)-only = 1,536 and UND = 1,024** (the wrong cap
+redistributes the committed UND: 514 + 510 = 1,024). Same at
+(Zp,2,7,k1) (row 15: wrong SPLTAIL(4..6) = 96/24/6, UND = 2 vs
+committed 128) and at the equal-characteristic (Fqt,2,7,k1) (row 19
+≡ row 15). The annex leg re-derived the full law fresh from
+S6.1/S6.3 (tie: key-for-key on all three rows) and found the wrong
+cap ALSO corrupts the refined (3,)-histories (row 16 @(3,):
+SPLTAIL(4..7) = 1,152/288/72/18, UND 3,072 → 1,542 — hand-derived,
+then machine-confirmed; disclosed as a widening of the sealed
+prereg's mismatch scope). Every mismatching key is a SPLTAIL/UND
+key; NO decided RAM/2SIDED/SPLITEQ/INERT count moves.
+
+**The σ-labelling consequence (what W-12.D consumes).** S7's proof
+of THEOREM GENH4.C is total at genre E and at five of the six F
+bullets as displayed; the F-SPLTAIL leg is ANNEX-LEMMA GENH4-7(b)
+above. With it, the committed F-SPLTAIL key class (SPLTAIL(3) =
+384/1,536/384 at rows 15/16/19) carries the σ_F = {(1,2),(1,2)}
+label the S11 firing-table row supplies to W-12.D's σ-labelling
+clause at n = 4 — every disc ≠ 0 lift of every member, both ring
+types. Machine contact (annex leg C5, fresh): 21/21 constructed
+lifts of (Zp,2,7,k1) SPLTAIL(3) states (three A₁ shapes × seven
+lifts, A₀ = 0 corner included) scored σ = {(1,2),(1,2)} by PARI;
+the 2w ≥ N tooth fired (GENH4-7(c)'s two lifts exhibited: w = 4
+hidden state, u_lift = 7 → {(2,2)} vs u_lift = 9 → {(1,2),(1,2)}).
+
+### A2. MINOR 2 — the norm valuation at S7's 2SIDED bullet is per-genre: u in E's halved units, 2u in F's declared v-units
+
+**The display sentence this annex riders (named exactly; not
+edited).** S7's 2SIDED bullet: "The norm count: Π_θ φ(θ) =
+Res(F, φ) = Π_{η: φ(η)=0} F(η) = Nm_R(A₀), **of valuation u (both
+genres**, using GENH4-2 at the key's own roots η, which satisfy the
+same v/residue facts); if j roots sit at w/2: j·w/2 + (4−j)(u−w)/2 =
+u forces j = 2." **Read as:** the norm identity chain is exact as
+displayed (F ≡ A₀ mod φ, so F(η) = A₀(η) at the key's two roots η);
+the VALUATION tag "u (both genres)" is stated in E's halved units
+throughout. Per genre, in each genre's own declared units (S7
+declares "genre F: w, u in v₁ = v units"):
+
+* **Genre E:** v(A₀(η)) = u/2 at each of the two roots (GENH4-2,
+  dv-units halved) ⟹ v(Nm_R(A₀)) = u. The display is exact.
+* **Genre F:** v(A₀(η)) = u at each of the two roots (v₁ = v units)
+  ⟹ v(Nm_R(A₀)) = **2u** — the display's "u" is false at F in the
+  declared units, by exactly the factor 2.
+
+**Why the displayed balance was self-consistent (no number moved).**
+The displayed equation j·w/2 + (4−j)(u−w)/2 = u is the consistently
+HALVED form: halved root-values (v(Y) ∈ {w/2, (u−w)/2}, the bullet's
+own list) balanced against the halved norm valuation u. In F's
+declared units the equation is j·w + (4−j)(u−w) = 2u — the same
+equation multiplied by 2 — and both give j(2w−u) = 2(2w−u), j = 2
+(u ≠ 2w). So j = 2, the Galois-invariance step, and the σ
+conclusion {(2,1),(2,1)}/{(1,2),(1,2)} are all unaffected: the
+defect is the prose tag, not the computation. Self-alarm: a reader
+mixing the units (unhalved values, unhalved-but-u norm) solves
+j·w + (4−j)(u−w) = u and gets j = (4w−3u)/(2w−u) = 9 at
+(w,u) = (3,7) — impossible for 4 roots, so the misreading announces
+itself rather than mislabeling silently.
+
+**The committed instance (machine, annex leg C4).** At the committed
+2SIDED(3,4) of (Zp,2,7,k1) (row 15, count 384): w = 3, u = 7, and
+v(Res(F,φ)) = j·w + (4−j)(u−w) = 2·3 + 2·4 = **14 = 2u**. Exhibited
+on five explicit members over the key φ = x² + 2x + 4 (v(p₁) = 1 ≥
+k, v(p₀) = 2 = 2k exact, residue pair ψ = y² + y + 1 — S2.1's
+invariants): v₂(Res(F,φ)) = 14 on all five, by two independent
+routes (6×6 Sylvester determinant; reduction mod φ + the quadratic
+norm α²p₀ − αβp₁ + β²), and PARI scores σ = {(1,2),(1,2)} on every
+member. The balance display's j = 2 is machine-tied at the same
+members.
+
+### A3. REMARK — S9.2's dangling "− extra…" token: the 2SIDED mass is EXACTLY 1/(q²+q+1)
+
+**The display token (named exactly; not edited).** S9.2's μ_E
+bullet: "RAM-mass q²/(q²+q+1), SPLITEQ (q−2)/(2(q²+q+1)), INERT
+q/(2(q²+q+1)), **2SIDED 1/(q²+q+1) − extra…**, REFINE 1/(q²+q+1)".
+**Closure:** the token "− extra…" is an editing remnant; the extra
+is **0**. Write Φ₂ := q² + q + 1 and r := 1/q. The per-node masses
+on the full integer dv-ladder (u = dv(A₀), w = dv(A₁), digits
+uniform, self-similar node):
+
+    RAM     = Σ_{i≥1} (1−r)r^{2i−2}·r^{i−1} = (1−r)/(1−r³)   = q²/Φ₂
+    2SIDED  = Σ_{j≥1} (1−r)r^{j−1}·r^{2j}   = (1−r)r²/(1−r³) = 1/Φ₂
+    even-dμ = (1−r)r/(1−r³) = q/Φ₂, split by the K-census over the
+              q(q−1) unit pairs: SPLITEQ (q−2)/(2q) → (q−2)/(2Φ₂),
+              INERT 1/2 → q/(2Φ₂), REFINE 1/q → 1/Φ₂
+
+and the closure is coefficientwise over the common denominator 2Φ₂:
+
+    2q² + (q−2) + q + 2 + 2 = 2q² + 2q + 2 = 2Φ₂  ⟹  Σ = 1.
+
+Any positive "extra" subtracted from the 2SIDED mass would break
+the partition of unity — self-alarming (the annex leg's tooth:
+extra = r⁴ breaks Σ = 1 at every q). Downstream is untouched: the
+refine aggregation × Φ₂/(q² + q) gives exactly the displayed
+μ_E = ( {(4,1)}: q/(q+1); {(2,1),(2,1)}: 1/(2(q+1));
+{(2,2)}: 1/(2(q+1)) ) = ν₂'s fractions — machine-tied at GH-DENS in
+the sealed battery, re-derived from scratch by PE5's charge 2, and
+re-checked in the annex leg (C6: closed forms + aggregation exact at
+7 points q, all numerator degrees < 7, so 7 points decide each
+identity). SPLTAIL and UND are window-boundary leaves (they vanish
+in the N → ∞ per-node limit) and correctly do not appear in the
+vector.
+
+### A4. Machine record (additive leg; every sealed artifact byte-frozen)
+
+`verification/openmath/genh4annex_supp.py` — sealed with
+preregistered predictions P1–P6 at cceca77 (BEFORE the run), run
+fresh, repaired once with disclosure, re-run fresh: **GREEN, 0
+violations, 0.1 s + PARI** (`genh4annex_supp_output.txt` md5
+713a0a3b…, `genh4annex_supp_results.json` md5 37d0650e…, committed
+e945734). C0: 5/5 md5 pins verified (sealed runner + both sealed
+GENH4 artifacts + qscout22 runner/results). C1 (P1): the committed
+rows 15/16/19 read exactly as this annex states. C2 (P2): a fresh
+typing of the S6.1/S6.3 genre-F recursion ties all three rows
+key-for-key. C3 (P3): the wrong-cap table equals PE5's
+failure-scenario numbers exactly, masses conserved, mismatch set =
+SPLTAIL/UND keys only. **Disclosed smoke catch:** the sealed prereg
+scoped C3's mismatch set to the empty history; the first run (RED,
+2 instrument-side violations) caught the wrong cap propagating into
+the refined (3,)-history keys as well — values hand-derived before
+the one-line repair (row 16 @(3,): 1,152/288/72/18 + UND 1,542,
+closing to the committed 3,072; row 15 @(3,): 288/72/18 + UND 6,
+closing to 384), then machine-confirmed; the refutation of the
+misread cap is thereby STRENGTHENED, and no decided key moves under
+it. C4 (P4) and C5 (P5): as displayed in A2/A1 (five 2SIDED members
+two-route exact; 21/21 SPLTAIL lifts + the 2w ≥ N two-lift tooth
+FIRED). C6 (P6): the closure, the aggregation, and the extra-token
+tooth FIRED. σ-oracle: the same GP sig routine as the sealed
+battery's GH-SIGMA (nfinit/idealprimedec per p-adic factor).
+
+**GENH4-BOX-1 (arc record) — dated APPEND (2026-08-09).** This line
+continues the [r1]/[r2]/[r3] record of S10-BOX-1/S13; under the
+acceptance freeze it cannot be inserted there, so it lives here:
+**PE4 (e15308d) and PE5 (11dbd23, `GENH4_passPE5_report.md`) HAVE
+NOW RUN: PE4 CLEAN (1/2); PE5 CLEAN — 0 CRITICAL, 0 GAP, 2 MINOR
+(+1 remark), machine leg bit-identical GREEN (isolated re-run
+245,693/0, leaf-diff = elapsed only) plus a fresh q = 9 route. The
+2-clean count completed 1/2 → 2/2: GENH4 IS ACCEPTED — the second
+stage-one note through the hostile-arc bar. The text is frozen at
+r3 4b0d946; this dated annex discharges the owed MINOR 1 + MINOR 2
+riders and closes the S9.2 remark, edits nothing above, and moves
+no sealed number. Conditionality is unchanged: exactly the S11
+arc-grade stack (minimum grade 0/2 at verdict time: W-12, HEX3,
+GENIND live — PE5 charge 4).**
+
+**What does not move.** Every displayed statement, proof, and frozen
+number of the accepted body; the sealed runner and artifacts (md5
+pins re-verified, C0); the committed key tables (the annex leg reads
+them, never writes); THEOREM GENH4.A/B and the count laws (the cap
+was always 2w < N in every committed number and in S6.3's
+complement); THEOREM GENH4.C's dictionary and the W-12.D supply (the
+labels were always right — the annex ADDS the displayed F-inequality
+GENH4-7(b), it does not correct a label); the eleven densities, the
+triple tie, and the S11 conditionality stack; GENH4-BOX-2 (n = 5's
+embedded CS genres stay OPEN). The E-side displays (w < N at S6.1,
+u_lift ≥ 2N at S7) are exact as written — MINOR 1 is the genre-F
+transfer only.
+
+================================================================================
+PASTE B — THEOREM W-12.D + its (A0)/(A1)/(A2) hypotheses with the [r4]
+σ-labelling clause and firing table, byte-verbatim at the CURRENT (r5) text
+this note's S11 [r2] re-pin consumes (W12_PROOF_2026-08-08.md @ r5
+be4a1dc/ee17210, lines 253-460)
+================================================================================
+>       undecided(3, q, N) = (q−1)·q^{2N−1} + U₃^TRP(q, N),
+>
+>   where the first term — the σ-undecided mass of the double-root ⊗
+>   simple-root level-0 stratum — is EXACT AND PROVED (LEMMA W12-L1
+>   transporting W-11's exact per-center law q^{N−1}), and
+>   q^N ≤ U₃^TRP(q, N) ≤ q^{3N−2} (the triple-center stratum: lower
+>   bound by the constructed ambiguous species S3.2, upper bound = the
+>   whole TRP stratum, trivial). The EXACT U₃^TRP law is NOT derived:
+>   W12-BOX-3 displays its obstruction (the two-species n = 3 node
+>   calculus with reduced-window DBL re-entry), and the battery MEASURES
+>   it under a disclosed convention, EXPLORATORY grade. hExhaust at
+>   n = 3 is therefore NOT claimed; what is proved is the exact DBL
+>   drainage term + both bounds.
+>
+> **(iii) [THEOREM W-12.D — THE REDUCTION THEOREM] PROVED,
+> unconditional as a reduction.** Fix n and suppose, at every prime
+> power q simultaneously:
+>   (A0) [lift well-posedness] every window-decided member of a core
+>        family has ALL its disc ≠ 0 O-lifts of the read's type
+>        **[r4, PE4 F2(i): "the read's type" = the family's label σ_F —
+>        the reading that (A1)'s new σ-clause now fixes; under the r3 pin,
+>        read as the member's OWN forced σ this clause is a tautology,
+>        see the [r4] F2 record]**;
+>   (A1) [exact core menu] there is a FINITE list of core families F —
+>        each with a splitting type σ_F **[r4, PE4 F2: and such that
+>        EVERY member of every class (F, x) is σ-DECIDED in the S1
+>        Conventions' pinned lift-certification sense, with forced
+>        σ = σ_F — the σ-LABELING clause; this is what Step 4's lower
+>        bound consumes, and (A0) is then its (retained) well-posedness
+>        restatement]**, a parameter set
+>        P_F ⊆ ℤ^{d_F}_{≥0} that is a finite union of shifted products
+>        of arithmetic progressions, an affine visibility threshold
+>        ν_F, and a density law dens_F(x) = c_F(q)·q^{−ℓ_F(x)} with
+>        ℓ_F affine with strictly positive parameter coefficients —
+>        such that for every window N the classes (F, x) with x visible
+>        (ν_F(x) ≤ N) are PAIRWISE DISJOINT sets of window-N
+>        polynomials, each of EXACT count dens_F(x)·q^{nN}, with all
+>        data (families, c_F, ℓ_F, P_F, ν_F) independent of q and of
+>        the characteristic;
+>   (A2) [drainage of the rest] r(N)/q^{nN} → 0, where r(N) := q^{nN} −
+>        Σ_{F, x visible at N} count(F, x) — everything not in a
+>        visible core family: the σ-undecided residue AND any
+>        window-boundary (tail) families.
+> THEN for every splitting type τ of degree n:
+>
+>     R_τ(q) := Σ_{F: σ_F = τ} Σ_{x ∈ P_F} c_F(q)·q^{−ℓ_F(x)}
+>
+> converges to ONE rational function in ℚ(q); it equals the N → ∞
+> limit of the decided-τ window mass AND the Haar splitting density
+> μ_τ; it is the SAME expression at every prime power q, both
+> characteristics, wild primes included; and Σ_τ R_τ(q) = 1.
+> GRADE: PROVED (S3.4) as an unconditional reduction. At n = 2 its
+> hypotheses are W-11's theorems — with the SPLIT-TAIL boundary family
+> routed through (A2), see S3.4 — and it FIRES UNCONDITIONALLY,
+> re-deriving split = inert = q/(2(q+1)), ram = 1/(q+1): the first
+> unconditional instance of the GOAL's statement shape. At n = 3 the
+> conditionality is exactly {(hMenu-3): the TRP refinement-family menu,
+> W12-BOX-2} + {(hExhaust-3): the U₃^TRP upper bound, W12-BOX-3 — the
+> other two legs of r(3,N), the σ-undecided DBL term AND the
+> transported DBL SPLIT-TAIL boundary families (mass
+> ⌊(N−1)/2⌋(q−1)²q^{2N−2}), are PROVED vanishing, S3.1 + S3.4 [r2]}.
+> At n ≥ 4: those plus [W12-H] at composite stages (W12-BOX-1).
+>
+> **GRADE SUMMARY: (iii) PROVED as stated; (i) PROVED at the order-1
+> layer of every degree (+ the named instances machine-sealed),
+> CONDITIONAL at orders ≥ 2 on the displayed [W12-H]; (ii) theorem at
+> n = 2 (consumed), exact-DBL-term + bounds at n = 3 (W-12.C PROVED as
+> stated), precise conjecture in general. Attempt 0/2.**
+
+**[r1] F1 REPAIR RECORD (PE1 @ 2b47711, FINDING 1 CRITICAL,
+display-level).** The W-12.A display as sealed ran the product over
+{i : m_i ≥ 2} only, omitting the simple-branch factor
+Π_{i: m_i=1} q^{d_i(N−1)} — false for every shape with at least one
+simple branch — while the S2 proof establishes the CORRECTED law all
+along (S2.1's explicit simple-branch count q^{d_i(N−1)} each,
+assembled in S2.3): the display and the cell clause above are now
+ALIGNED TO THE PROOF, nothing re-proved. Verified against both PE1
+counter-instances during this repair: (a) SEP-SPLIT at n = 2 (two
+simple branches) — the corrected display gives C₀·q^{2(N−1)} =
+((q²−q)/2)·q^{2N−2} = W-11(ii)'s SEP law exactly (the sealed display
+gave the N-free C₀ alone); (b) DBL RAM(1) at (Zp, q = 2, N = 5) — the
+corrected display gives C₀·q^{N−1}·(q−1)q^{2N−3} =
+q(q−1)·q^{N−1}·(q−1)q^{2N−3} = 2·16·128 = 4096 == the committed artifact
+`w12_checks_results.json` row (Zp,2,5) dbl_keys[('RAM',(1,),())],
+re-read from the committed JSON this repair (the sealed display gave
+256, short by exactly the simple-branch fiber q^{N−1} = 16 that LEMMA
+W12-L1(c) carries correctly). The corrected dens_T =
+C₀(q)·q^{−Σ_{i:m_i=1} d_i}·Π_{i:m_i≥2}[S_T·q^{−d_i(Σ_{j<m_i}⌈P_i(j)⌉
++ L_i)}] is N-free, restoring the statement's own "dens_T ∈ ℚ(q) is
+shape-only" clause (internally contradicted by the sealed display).
+Ledger note: the 97122f2 adjudication entry transcribed the faulty
+display; it is ALREADY CORRECTED ledger-side
+(BRIDGE_ADJUDICATIONS_2026-07-30.md erratum block @ a0290f9) — this is
+the note-side pointer.
+
+**[r3] F1 REPAIR RECORD (PE3 @ c9c5c0e, FINDING 1 JUSTIFICATION GAP —
+the computed ambiguity; display-level σ-pin).** As sealed(+r1+r2) the
+statement complex carried TWO non-equivalent definitions of CONJECTURE
+W-12.B's load-bearing quantity: S1's read-anchored sentence (whose
+"the read's σ" is undefined on a tail member — the S1 read description
+specifies no tail-certification rule — so that parse counts EVERY tail
+member undecided) vs W12-BOX-7's lift-certification "Decided" (the
+window digits force one σ across all disc ≠ 0 lifts). The two coincide
+at n = 2 ONLY because THEOREM W-11 proved its read certifies
+SPLIT-TAIL, and can disagree only on deep-tail TRP members (BOX-7's
+own fence); the [r3] pin — at the S1 definition and in the W-12.B
+bullet — selects BOX-7's notion, the one every PROVED and
+machine-checked surface already uses; nothing is re-proved. THE
+REJECTED PARSE'S PRICE (the PE3 verifier's computation, kept as the
+honest record of what the ambiguity would have cost): under the
+read-anchored/conservative parse undecided(3, q, N) contains the full
+conservative residue U₃^conv = q·u(q, N) (THEOREM HEX3.A, consumed by
+the BOX-3 annex), whose normalized mass q·u(q, N)·q^{−2N} DIVERGES
+linearly in N — the verifier's own transcription of HEX3.A (tied to
+all 23 committed U₃ values, 0 mismatches) evaluates at q = 2 to 0.50
+(N = 3) → 0.86 (N = 10) → 2.53 (N = 50) → 8.78 (N = 200), asymptotic
+slope 1/24 — so NO c₃(q) exists and W-12.B is FALSE at n = 3 under
+that parse; even THEOREM W-12.C's displayed DBL constant (q−1)q^{2N−1}
+would inflate by the transported SPLIT-TAIL boundary mass
+⌊(N−1)/2⌋(q−1)²q^{2N−2} (σ-DECIDED split-certified under the pin,
+undecided under the rejected parse). CONSUMING-SURFACE SWEEP (this
+repair; grep over every σ-DECIDED / σ-undecided / undecided /
+UNDECIDED surface of the note + the downstream citers): (a) consumers
+of the PINNED (BOX-7) notion, all consistent — THEOREM W-12.C's
+identity and the battery's dbl_undecided == (q−1)q^{2N−1} (W-11's
+certification-inclusive convention transported through W12-L1/W12-L0:
+S2.6, S2.7, S3.1, S7 W12-DRAIN3), the BOX-3 annex's bracket quantity
+U₃^σ, LEMMA W12-S2.1's branchwise decidedness and S2.3's decided
+shapes (Ore leaves), S3.4's (A2) routing (the transported SPLIT-TAIL
+boundary families enter r(N) as "σ-DECIDED split-certified"
+N-dependent mass — the certification named in the display), and HEX3
+§S8.2's downstream corroboration remark (it routes the N-linear
+conservative mass to (A2)'s boundary families — the pinned parse);
+(b) parse-ROBUST surfaces (valid under BOTH notions) — LEMMA
+W12-S3.2's species and S3.3's general-n lower bound prove
+lift-DISAGREEMENT, and the decided-leaf statements ([W12-H](H-e) here
+and at GENIND's cite) have the read deciding AND certifying at once;
+(c) disclosed-convention MEASUREMENT surfaces (the conservative reader
+named explicitly, no σ-decidedness claim ridden) — the U₃^TRP
+EXPLORATORY battery row, the W12-ORACLE three-genre warrants (incl.
+the MINOR 1 sentence repaired in S7 below), and S3.4's conv-UNDECIDED
+tail parenthetical. NO surface consumes the rejected read-anchored
+parse (the Dfloor unit's σ-decided is its own self-contained
+every-lift definition, not a consumer of this display); the runner
+stays byte-frozen at seal f669cb0 — its docstring discloses the
+conservative convention as a MEASUREMENT convention, correct as
+sealed.
+
+**[r4] F2 REPAIR RECORD (PE4 @ 26689da, FINDING 2 JUSTIFICATION GAP —
+the missing σ-labeling hypothesis; display-level).** As
+sealed(+r1+r2+r3), (A0)+(A1) attached σ_F to each core family as DATA
+and never said the family's members HAVE type σ_F, nor that they are
+σ-DECIDED at all: (A1) gave counts and disjointness only, and (A0) was
+conditioned on "every **window-decided** member" while Step 4's lower
+bound needs the conclusion for EVERY member of every visible core class
+(D_τ counts them all). Under the r3 pin (A0)'s "the read's type" reads
+as the member's own forced σ, making it the tautology "for every
+decided member, all disc ≠ 0 lifts have the σ they all have". THE
+DEGENERATE INSTANCE that the sealed hypotheses admit (PE4's, verified
+here): n = 2, any q, ONE family F = all window-N monic quadratics with
+d_F = 0, ℓ_F ≡ 0, ν_F ≡ 0, c_F = 1, and label σ_F := split. (A1) as
+sealed holds (a single class per window, exact count 1·q^{2N},
+disjointness trivial, all data q- and characteristic-free); (A2) holds
+with r(N) ≡ 0; (A0) as sealed holds tautologously. The conclusion then
+gives R_split = 1, R_inert = R_ram = 0 — Σ_τ R_τ = 1 ✓ — while
+μ_split = q/(2(q+1)) ≠ 1, so the theorem's "it equals … the Haar
+splitting density μ_τ" clause is FALSE at that instance. The [r4]
+σ-LABELING clause excludes it exactly: that F contains σ-undecided
+members (W-11(iii)'s q^N residue) and members with forced σ = inert
+(SEP-INERT), so NO σ_F satisfies the clause. Nothing is re-proved: the
+intended reading was always S2.3's ("σ-DECIDED with σ read off the
+shape alone, and (A0)-strongly"), which is why the proof was morally
+fine and no corpus conclusion moves.
+
+*FIRING CHECK (the charge: does every instance the corpus actually
+fires supply the new clause? — verified against the supplier notes at
+this repair, clause by clause).*
+
+| firing | families | the σ-labeling clause, at the supplier |
+|---|---|---|
+| **n = 2** (S3.4, fires unconditionally) | W-11's SEVEN-row menu, of which the six core families enter (A1); SPLIT-TAIL routes through (A2) | **SUPPLIED.** W-11(i) is a table whose third column IS σ per row (split/inert/ram) and whose header states the rows are "the decided leaves of the n = 2 read"; W-11(iii) makes {rows of (i)} ⊎ {σ-undecided residue} a PARTITION of all q^{2N} — so every member of every core class is decided, with σ = the row's label. Pinned (all disc ≠ 0 lifts) strength: S2.3's Ore/Hensel certification at the separable residual, the leg S3.4 already cites as "(A0) by W-11's decidedness (+ its sealed double-lift oracle leg)" |
+| **n = 3** (HMENU3 COROLLARY HM3.D) | the 33-family cubic core menu (3 level-0 separable + 4 DBL-transported + THEOREM HM3.B's TRP families) | ~~**SUPPLIED VERBATIM.**~~ **SUPPLIED AT THE disc ≠ 0 FORM — which is the form (A1) needs [r5, PE5 F1].** THEOREM HM3.C reads, byte-faithfully (HMENU3_PROOF_2026-08-08.md L216–219): "(A0): every menu member is conservative-DECIDED — all consulted data in-window with separable residuals — so Ore certifies EVERY lift (W-12 S2.3 at the terminal frame; W12-L1(c) transports the DBL certificates); **σ_F = the leaf table**". **What this row vouches for is the TRUE reading, and the only one consumed:** every menu member is conservative-DECIDED, and **every disc ≠ 0 lift** of every member has σ = the leaf table's entry — decidedness for every member AND the label identification at the W12-BOX-7-pinned (disc ≠ 0) quantifier, which IS precisely the clause. That form follows from HM3.C's decidedness content through S2.3 POST-[r4] (the surviving, correctly restricted sentence) plus W12-L1(c) for the DBL transports. **HM3.C's *phrasing* ("EVERY lift", unrestricted) carries the same over-claim [r4]'s MINOR 2 struck from this note's own S2.3:** it is FALSE in equal characteristic 3 at the in-window b₁ = b₂ = 0 members of a TRP-RAM3(h) family with 3∤h, where the lift F = y³ + b₀ (v(b₀) = h) has F′ ≡ 0, hence disc = 0 and no σ at all — and HM3.C's cited warrant for the sentence IS the pre-[r4] S2.3 text, so the defect is INHERITED from the shared S2.3-era phrasing, not independently generated. **The n = 3 firing SURVIVES unchanged** (nothing in (A1)'s clause, in Step 4, or in COROLLARY HM3.D quantifies over disc = 0 lifts). The HMENU3-side correction is the dated **[r5] NOTICE at ANNEX 2** below (drafted verbatim at `lean/notes/openmath/HMENU3_annex_draft_r5.md`), together with the m2 blast-radius sweep recorded there |
+| **n = 4** (GENH4 COROLLARY GENH4.D(ii)) | the degree-4 menu of [GENIND-H(4)] | **SUPPLIED.** THEOREM GENH4.C: "At every decided stage leaf of either genre (any history, any window), EVERY lift with disc ≠ 0 has the σ claimed by the leaf dictionary" + the explicit dictionary (E: RAM ↦ {(4,1)}, 2SIDED/SPLITEQ/SPLTAIL ↦ {(2,1),(2,1)}, INERT ↦ {(2,2)}; F: {(2,2)}/{(1,2),(1,2)}/{(1,4)}) — the dictionary IS the σ_F assignment, and the quantifier is over every lift of every leaf member |
+| **n = 5** (GENHN, "P(5) FIRES OUTRIGHT") | every n = 5 genre (all μ = 2) | **SUPPLIED.** THEOREM GENHN.C: "At every decided leaf of every μ = 2 stage genre (all e₁ ≥ 1, f₁ ≥ 1 with e₁f₁ ≥ 2, all Q, both characteristics, any history, any window), EVERY lift with disc ≠ 0 has the σ claimed by the leaf dictionary" (stage-RAM ↦ {(2e₁, f₁)}, stage-2SIDED/SPLITEQ/SPLTAIL ↦ {(e₁,f₁),(e₁,f₁)}, stage-INERT ↦ {(e₁, 2f₁)}), with "(A0)-strong at every μ = 2 stage leaf" recorded at the end of its proof |
+| **n ≥ 6** (GENHN's P(n)) | μ ≥ 3 stage leaves appear | **NOT supplied — and openly so:** the clause at μ ≥ 3 leaves IS the named open box [GENHN-HE(μ ≥ 3)] ("σ-decision at stage leaves of multiplicity μ ≥ 3, first live n = 6"). So the strengthening hides nothing: it names, at W-12.D's own hypothesis, the one thing that program already owes |
+
+*STEP-4 RE-CHECK (does the proof now consume only the clause as
+stated?).* Steps 1–3 use no σ-notion (Step 3 needs only that each
+family HAS a label, so the Σ_τ D_τ sum counts each family once —
+(A1) data). Step 4 lower bound: consumes exactly the clause (display
+above). Step 4 upper bound: a type-τ F with disc ≠ 0 truncating into a
+visible core class (F, x) forces σ_F = τ, because F is a disc ≠ 0 lift
+of its own truncation and the clause says every such lift has type
+σ_F — same clause, applied at F. Krasner-openness, the τ-partition of
+the étale locus and the disc = 0 null set are classical and displayed.
+No other σ-statement enters, and (A2) is untouched.
+
+**[r4] F1/F3/m1/m2/R-1 INDEX (PE4 @ 26689da).** F1 (CRITICAL, the
+inseparable witness at S3.2's b₂ = 0 sub-species) is repaired AT THE
+SITE with its own [r4] record after LEMMA W12-S3.2; F3 at §S10 P-6;
+m1 at W12-BOX-7 (§S6); m2 at S2.3; R-1 (the pin's totality) at the S1
+Conventions above.
+
+The design honors the uniformity directive: the degree-by-degree crawl
+is quarantined into instances-as-evidence; the GENERAL claims are
+W-12.A (one proof for all degrees at order 1) and W-12.D (one proof for
+all n), so the remaining distance to "one R_τ ∈ ℚ(q) per splitting type
+at all primes" is exactly the displayed boxes — named, not hand-waved.
+
+================================================================================
+PASTE C — the cubic supplier: COROLLARY HM3.D statement + the S5.5 assembly
+(the displays GENH4 S9.2's ν₃ tie is derived from), byte-verbatim
+(HMENU3_PROOF_2026-08-08.md, ACCEPTED 2/2; lines 225-270 and 469-496)
+================================================================================
+>
+> **GRADE: HM3.A/B/C composed at attempt 0/2, machine-sealed on 41
+> rows both characteristics with the σ-leg PARI-oracled on every
+> deep-decided member of four rows. The exact σ-side residue law
+> stays open at HEX3-BOX-1 (not needed here — S5.4).**
+>
+> **COROLLARY HM3.D (THE UNIFORM CUBIC DENSITIES; W-12.D fires at
+> n = 3).** Assuming exactly the displayed conditionality stack (S9:
+> W-12.D as proved @ its 0/2 arc — post-r2 99f1813 as of this repair
+> [r2 m2: re-verified against git at r2 — no W12 PE3 has run],
+> PE3 next [r1, PE1 FINDING 1: the sealed "0/2-post-r1 arc" was stale
+> at seal time — W12 PE2 (NOT CLEAN 0C+3G+2m, 1be15d2) had landed 26
+> minutes before the seal 64d3ff9; see S9 bullet 1 for the
+> fired-clause check]; W-11 @ its accepted pins **[r2 m2: since
+> ACCEPTED at 2/2 — PE3 CLEAN 839b735 + PE4 CLEAN 16d12e1, fold
+> 35e6545]**;
+> W-12.A/C + W12-L0/L1 @ the w12 seal; HEX3 @ 0/2 **post-r1 2580f12,
+> PE2 next; fired-clause record at HM3-BOX-2 [r2 m2]**; this note
+> @ 0/2),
+> for every prime power q and BOTH characteristics, wild primes
+> included, the cubic splitting densities are (Φ := q⁴+q³+q²+q+1):
+>
+>     R_{(1,1)³}        = q³(q²−q+1) / (6(q+1)Φ)      [split]
+>     R_{(1,2),(1,1)}   = q³(q²+q+1) / (2(q+1)Φ)      [quadratic inert × linear]
+>     R_{(1,3)}         = q³(q+1) / (3Φ)              [cubic inert]
+>     R_{(2,1),(1,1)}   = q(q³+q+1) / ((q+1)Φ)        [partially ramified;
+>                                                      wild at p = 2]
+>     R_{(3,1)}         = (q²+1) / Φ                  [totally ramified;
+>                                                      wild at p = 3]
+>
+>     Σ_τ R_τ = 1  (exactly);  each R_τ = μ_τ, the Haar splitting
+>     density, and = the N → ∞ decided window mass (W-12.D Steps 2–4).
+>
+> Numerical anchors: q = 2: (4/93, 28/93, 8/31, 22/93, 5/31);
+> q = 3: (63/968, 351/968, 36/121, 93/484, 10/121). Independent tie:
+> the five forms equal the MONIC level-0 assembly of the repo's
+> symbolic OM-density engine's cluster laws β(2)/β(3)
+> (`verification/om_density_engine.py`, md5-pinned) — the same β's
+> whose projective assembly is reconciled exactly against the BCFG
+> literature distribution through n = 5/6 (`reconcile_om_bcfg.py`,
+> committed) — and E[#roots] = R_split·3 + R_{(1,2),(1,1)} +
+> R_{(2,1),(1,1)} = q/(q+1). EXPLORATORY observation (no proof
+> claimed): the three unramified densities satisfy R_τ = q³·β₃(τ).
+
+## S2. LEMMA HM3-1 (raw-tree structure: the two-phase chain)
+
+[... S5.1-S5.4 omitted ...]
+### S5.5 COROLLARY HM3.D — the assembly
+
+W-12.D's Steps 1–4 (PROVED, unconditional as a reduction) applied to
+the S5.1 menu: R_τ = Σ_F Σ_{x∈P_F} dens_F(x), absolutely convergent
+geometric sums. Executed (machine: HM3-RTAU, exact symbolic):
+
+* per-center n = 2 block densities Σ A_L/q^{2M}: RAM 1/(q(q+1)),
+  2SIDED 1/(q³(q+1)), SPLITEQ (q−2)/(2q³(q+1)), INERTDEEP
+  1/(2q²(q+1)) — total q^{−2} exactly (the n = 2 menu is
+  density-exhaustive; equals the engine's β(2) after ×q²).
+* TRP: T_τ = (T⁰_τ + β_τ)·(q⁶−1)/(q⁶−q), where T⁰_τ = the Group-I
+  series, the amplifier is Σ_m b(m)q^{−9m}·q^{6m}-summed (LEMMA
+  HM3-4: 1 + (q−1)/(q⁶−q) inverse-geometric = (q⁶−1)/(q⁶−q)), and
+  β_τ = c²_{τ′}·(q−1)²q²/((q⁶−1)(q³−1)) collects the three routes
+  (β1 + β2 + β3 = (q−1)(q−2) + (q−1) + (q−1)²/(q³−1) over q(q⁶−1)).
+  Σ_τ T_τ = q^{−3} exactly; q³·T_τ = β₃(τ), the engine's triple
+  cluster law, term for term.
+* whole space: R_τ = SEP_τ + (q−1)·c²_{τ″} + q·T_τ — the displayed
+  five forms; Σ_τ R_τ = (q−1)/q + (q−1)/q² + 1/q² = 1. ∎
+
+Conditionality: exactly the S9 stack — no new hypothesis. The wild
+strata are inside the same laws (RAM3/deep-RAM3 at p = 3;
+LINRAM2/RAM2LIN/β-RAM at p = 2), PARI-oracled at p = 2, 3 including
+the WILD DEEP members ((Zp,3,5): 972 deep-RAM3 members = wild totally
+ramified cubics behind a refinement step — all confirmed {(3,1)}).
+
+## S6. HONEST BOXES
+
+
+================================================================================
+PASTE D — the LATER generalization (cross-check only; composed AFTER PASTE A):
+THEOREM GENHN.A incl. clause (v), THEOREM GENHN.C, LEMMA GENHN-T, THEOREM
+GENHN.B head (GENHN_PROOF_2026-08-08.md lines 133-240)
+================================================================================
+> mixed e₁, f₁ ≥ 2 and stage towers first live at n = 8.
+
+> **THEOREM GENHN.A (the general composite-stage law; clause-graded).**
+> Fix a genre G = (Q; e₁, f₁, μ; h, entry). Over the opening locus
+> (priced by W-12.A at the ambient — PROVED at every degree, @ pin),
+> with Φ′ the entry key (degree D′ = e₁f₁) and R := Ô[x]/(Φ′):
+> (i) [FIBRATION — proved] R is a complete DVR with e(R/O) = e₁,
+> f(R/O) = f₁, K = F_{Q^{f₁}}; the Φ′-adic development
+> f = Φ′^μ + Σ_{j<μ} A_j Φ′^j (deg A_j < D′) is a triangular digit
+> bijection from the opening coordinates onto explicit budget floors
+> whose total equals the entry exponent (no over/undercount), and the
+> stage-initial node is {dv(A_j) ≥ (μ−j)·S + 1} with S := e₁h **[r1
+> 2026-08-08: CORRECTED at f₁ ≥ 2 to {dv(A_j) ≥ (μ−j)·D′h + 1},
+> D′h = f₁S — see the ERRATUM annex after LEMMA GENHN-1; the two agree
+> exactly at f₁ = 1, which is every battery row and every first-live
+> case]** — the α-node of the (μ, K) system in dv-units.
+> (ii) [SLOTS + NO-CANCELLATION — proved] each A_j carries exactly ONE
+> K-digit slot per integer dv-height (the e₁ residue classes mod e₁
+> separate the x-coordinates; within a class, {1, η, …, η^{f₁−1}}
+> (η = res(θ^{e₁}π^{−h})) are F_Q-independent): dv(A_j(θ)) is the
+> slot-min EXACTLY, for every root θ and every lift — W-9's
+> dim_K 𝒜(T) = E made literal and re-proved elementarily.
+> (iii) [WINDOW LEDGER — proved] computed dv-values are lift-stable
+> iff < e₁N; every digit consulted by a readable event lies strictly
+> inside its coordinate's window in every residue class; the ragged
+> band (per-class string ends beyond e₁(N−1)) is never consulted and
+> is priced as free depth; carries move upward only.
+> (iv) [REFINE TRANSFER — proved via the graded computation, the
+> W-9 frame disclosed] a stage refine at depth κ, letter s ∈ K^×,
+> recenters Φ′ ↦ Φ′ + w (w = ŝ·n(κ), the dv-κ normalizer monomial)
+> by a triangular-with-carry digit bijection onto the floored node
+> {dv(A_j) > (μ−j)κ}: the μ pinned digits die by the binomial
+> identity R(T + s)-coefficients = 0 computed in the graded algebra
+> (the carry × key-constant cancellations of GENH4 S5 at general
+> (e₁, f₁, μ)), all corrections land strictly deeper and in-window;
+> letters multiply (|K|−1 per step).
+> (v) [THE LAW] consequently the stage read IS the (μ, K)-cluster
+> read in dv-units at the S-node, ragged-window-corrected: every
+> stage count law = THEOREM W-12.A's cell law with census field
+> F_{Q^{f₁}} and ladder density e₁ — "(e₁, f₁)-re-based" — and the
+> stage's own history grammar is THEOREM GENIND.A over K inside the
+> stage (α/β/CS species, self-similar). (CS-2): the stage bracket is
+> GENIND-2(b) inside the stage,
+>
+>     b_{μ,K}(κ) = (|K|−1)·|K|^{(c(μ)+1)κ−1},  c(μ) = μ(μ−1)/2,
+>
+> in stage dv-slope units — at μ = 2 this is GENH4's ladder
+> telescoping after separating the ghost fiber |K|^κ:
+> (|K|−1)|K|^{2κ−1} = |K|^κ · (|K|−1)|K|^{κ−1} — generalizing
+> GENIND-5's (q−1)q^{2μ−1} to (q^{f₁}−1)q^{f₁(2κ−1)} at general
+> (e₁, f₁).
+> **GRADE: (i)–(iii) PROVED at general (e₁, f₁, μ) (S3–S5); (iv)
+> proved with the graded-frame consumption disclosed (S6) and
+> machine-checked pointwise at μ = 2 (GENH4 @ pin, elementary) and
+> μ = 3 (this battery, GN-REFINE3); (v)'s count content follows from
+> (i)–(iv) + GENIND @ pin; its σ content is GENHN.C at μ = 2 and
+> [GENHN-HE] at μ ≥ 3.**
+
+> **THEOREM GENHN.C (σ-decision at EVERY μ = 2 stage — the (H-e)
+> instance family, PROVED).** At every decided leaf of every μ = 2
+> stage genre (all e₁ ≥ 1, f₁ ≥ 1 with e₁f₁ ≥ 2, all Q, both
+> characteristics, any history, any window), EVERY lift with
+> disc ≠ 0 has the σ claimed by the leaf dictionary:
+>
+>     stage-RAM        ↦ {(2e₁·e_A, f₁·f_A)} = {(2e₁, f₁)}-block
+>     stage-2SIDED / SPLITEQ / SPLTAIL ↦ {(e₁, f₁), (e₁, f₁)}
+>     stage-INERT      ↦ {(e₁, 2f₁)}
+>
+> (blocks relative to the ambient; compose with the ambient's own
+> (e, f) at towers). Proof by the resolvent method: the quadratic
+> Y² + A₁(θ)Y + A₀(θ) = 0 over L with the two transported facts
+> e₁ | e(L) and f₁ | f(L). At n = 4 this is THEOREM GENH4.C verbatim;
+> n = 5's genres are covered OUTRIGHT.
+
+> **LEMMA GENHN-T (stage towers: criterion + composition).**
+> (a) [criterion — proved] a stage's own read admits a composite
+> opening (a TOWER event) iff the stage multiplicity satisfies μ ≥ 4
+> (GENIND.A(IV) applied inside the stage); hence towers exist at
+> degree n iff n ≥ (e₁f₁)·μ ≥ 2·4 = 8. n = 8 = 2·2·2 is the first
+> live instance ((e₁f₁) = 2, μ = 4, inner (e₂f₂) = 2, μ₂ = 2);
+> n = 4..7 are tower-free.
+> (b) [composition — proved at GENHN.A's grade] the inner opening
+> re-bases RELATIVE TO the outer stage: inner ladder density e₂ over
+> the outer dv-ladder (total e₁e₂ over the base), inner census field
+> K₂ = F_{|K|^{f₂}} = F_{Q^{f₁f₂}}: (e, f)-re-basing COMPOSES
+> MULTIPLICATIVELY, and σ-dictionaries compose as
+> (e, f) ↦ (e₁e₂·e_s, f₁f₂·f_s). No new mechanism: this is GENHN.A
+> applied to the outer stage system (which clause (v) exhibits as a
+> cluster system over K), inheriting exactly GENHN.A's clause grades
+> at each level; the letter layer composes by the cocycle products
+> whose coherence grammar is SIGMALAW's (EC-q) ladder (@ accepted
+> pin; counts stay twist-free by J-D0).
+
+> **THEOREM GENHN.B (the assembly: [GENIND-H(n)] for all n, modulo
+> ONE box family).** Assume the S10 supplier stack @ pins. Then for
+> every n and every composite-stage genre realizable at degree ≤ n:
+> (CS-1) and (CS-2) hold (THEOREM GENHN.CLASS + GENHN.A(i)–(v),
+> towers included via LEMMA GENHN-T), and (CS-3) holds at every
+> μ = 2 genre (THEOREM GENHN.C). The ONLY unproved clause anywhere
+> in [GENIND-H(n)], for every n, is:
+>
+>     [GENHN-HE(μ)] , μ ≥ 3:  σ-decision at stage leaves of
+>     multiplicity μ ≥ 3 (first live n = 6),
+>
+> plus the displayed compression/coverage boxes (S9). CONSEQUENTLY,
+> through THEOREM GENIND.B and THEOREM W-12.D:
+> * **P(5) FIRES OUTRIGHT** (every n = 5 genre has μ = 2): the exact
+>   quintic densities R_τ(q) ∈ ℚ(q), wild primes included, are now
+
+================================================================================
+PASTE E — the scout instrument's candidate lemmas Q22-L1/L2/L3 that PASTE A
+proves, + their measured grades + the orchestrator ANNEX correcting Q22-L3's
+fitted law (QSCOUT22_2026-08-08.md lines 245-268, 331-346, 350-352)
+================================================================================
+bracket, with the E-density doubling (P-B) — Q22-E both directions.
+(c) The twisted-algebra dimension E: P-B's reading (density, not
+multiplier) vs any count multiplier E — the odd-dv keys separate them.
+(d) The tame-law boundary: W-12.A's form survives with (census field,
+lattice density) re-based at the level-1 data (P-C) — Q22-F.
+
+## S6. CANDIDATE LEMMA STATEMENTS (for GENIND; grades at commit 2)
+
+* **Q22-L1 (composite count law, quartic (2,2) instance).** At every
+  composite key of genre G ∈ {E, F} with entry parameter (h resp. k),
+  history H₂, leaf ℓ: count per center = (q−1)^{r+t_E}·(q²−1)^{t_F}·
+  C_ℓ(q^{f₁})·q^{X} with X affine in (N, h/k, ΣH₂) — census over
+  F_{q^{f₁}}, lattice exponent with density e₁ — i.e. W-12.A's
+  cell law with (e₁, f₁)-re-based inputs.
+* **Q22-L2 (order-2 refinement transfer).** The level-2 refine locus at
+  depth dμ maps measure-isomorphically onto the floored fresh node —
+  the W-11 S2.3 transfer one level up (the GENIND induction step).
+* **Q22-L3 (drainage of the composite stratum).** The σ-undecided mass
+  of each composite entry stratum is EXACTLY the UND-key law (one
+  q-power per entry), the n = 4 composite contribution to hExhaust-4.
+
+## S7. HONEST BOXES
+
+* **Q22-BOX-1 (σ-resolution ≠ proof).** The reader's σ at composite
+[...]
+**Candidate lemma grades (S6).** Q22-L1: measured law, EXACT on all
+rows (389 + 40 checks), status CONJECTURE with machine-exact instance
+support — the GENIND target. Q22-L2 (refinement/prehistory transfer):
+the model's floor-transfer reproduced every refined and prehistory
+key (16 PRE checks; depth ≤ 4); status CONJECTURE, proof owed by
+GENIND (W-11 S2.3's argument one level up; the smoke-disclosed
+lift-stability caps are part of the correct statement). Q22-L3 (UND
+law): measured EXACT per entry (e.g. genre E per center
+(q−1)q^{N+(h−1)/2}); CONJECTURE.
+
+**Deviations disclosed.** (i) S2's roster prose said "1-in-8 sample"
+for the constructive oracle legs; the sealed runner's authoritative
+steps are 4–1024 by row (largest rows sampled thinner) — prose
+approximation, no post-seal change. (ii) The even-dμ genre-F keys
+(where T-ALPH bites) are realized only at q = 2 in-roster (odd-q
+would need N ≥ 7 at 3^{14}+ members) — the F_{q²}-census evidence at
+[...]
+---
+
+> **[ANNEX 2026-08-08, orchestrator — the Q22-L3 fitted-law correction, owed since ledger 970022b]** This instrument note's fitted genre-E drainage law "(q−1)q^{N+(h−1)/2} per center" is the h=1 INSTANCE of the true law, not the general form. GENH4 (GENH4_PROOF_2026-08-08.md, THEOREM GENH4.C-side; seal 121d9ab, verdict 4b5c085) proved the general E-genre law: (q−1)^{r+1+t}·q^{N+h−1} per (entry, H₂), aggregate (q−1)^{r+1}q^{2N−h−2} — and the COMMITTED ARTIFACT of this note decided the discrepancy (512, not 256, at (2,7,h=3); recounted independently by GENH4's PE1, report 263a36f). The scout's measurements stand; only the fitted extrapolation beyond h=1 is corrected. Q22-L1/L2 are PROVED as stated (GENH4.A / GENH4-4); Q22-L3 is PROVED in the corrected form. The P-D caveat is SETTLED as a theorem (GENH4-6: cascade unreachable at n=4).**
