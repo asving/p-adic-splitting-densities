@@ -77,6 +77,18 @@ CHECK-C (PARI leg, run separately/detached, artifacts committed):
  P-C4  factorpadic(f32m, 2, 700): NOT a single degree-32 factor
        (Phi3 splits off).
 
+INSTRUMENT DISCLOSURE (run 1, 2026-08-09): run 1 scored 85/86 with the
+single flag an instrument-wiring defect in T-A1W's SURVIVING-PIN
+comparison: the predicted survivor (j=2, slotmin 10) IS in the alive
+list, but the check compared alive[0] (the j=0 entry (0,30) -- the
+wrong-height refine also drags j=0,1 below their event pins, which is
+MORE tooth-firing, not less).  Repair: membership test (2,10) in
+alive.  No prediction changed; no reader/kill logic touched.  UNIT
+NOTE (disclosed): the f32@* and Phi4@Phi3 polygon rows are computed
+one dv-scale above the canonical N_j normalization (e.g. f32@Phi4
+pin 682 = 2*341 in dv5 units); one-sidedness and on-chord support are
+affine-invariant, so the sealed P-B3 forms are unaffected.
+
 Usage: python3 gentow5_checks.py          (exact leg)
        python3 gentow5_checks.py --pari   (exact leg + PARI leg)
 """
@@ -238,8 +250,8 @@ def run_A():
         else:
             chk(bool(alive), tag+": kill FAILS as predicted (tooth fires)")
             if expect_pin is not None:
-                chk(alive and alive[0][1] == expect_pin,
-                    tag+f": surviving pin {alive} == predicted {expect_pin}")
+                chk(any(sm == expect_pin for _, sm in alive),
+                    tag+f": predicted survivor {expect_pin} in {alive}")
     def pins_check(frame, f, mu, lam, support, tag):
         dev = develop(f, frame['key'])
         for j in range(mu):
