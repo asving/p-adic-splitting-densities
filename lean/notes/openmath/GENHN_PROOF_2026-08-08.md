@@ -297,7 +297,16 @@ machine row (GENIND-BOX-3 inherited).
 > towers included via LEMMA GENHN-T **[r2 2026-08-09: read GENHN-T(a)
 > + GENHN-T(b)′ (the S8 annex); at TOWER genres — first live n = 8 —
 > the (CS-1)/(CS-2) content holds at T(b)′'s grade with the composed
-> entry budgets and inner refine transfer BOXED as [GENHN-TOW-1]]**),
+> entry budgets and inner refine transfer BOXED as [GENHN-TOW-1]
+> [r3 2026-08-09 (passPE2 F1): with the DEPTH SPLIT named — T(b)′
+> is ONE composition step, so it carries the DEPTH-2 towers, and by
+> the R1 arithmetic (a third stage forces μ₁ ≥ e₂f₂μ₂ ≥ 8, hence
+> n ≥ D′μ₁ ≥ 16) depth 2 exhausts the tower genres at
+> n ∈ {8, …, 15}; at n ≥ 16 the ITERATED (depth-≥ 3) composition
+> additionally rides [GENHN-TOW-1] item (6) — the composed key Φ₂
+> fails T(b)′'s own re-entry hypotheses (residual the power
+> ψ^{e₂f₂}, normalizers Φ′-polynomials), so no displayed authority
+> prices a Φ₃-carrier without item (6)]]**),
 > and (CS-3) holds at every
 > μ = 2 genre (THEOREM GENHN.C **[r2: and at every tower leaf with
 > inner μ₂ = 2 by GENHN-T(b)′(iii) [r3 2026-08-09 (passPE2 F2):
@@ -334,11 +343,22 @@ machine row (GENIND-BOX-3 inherited).
 >   free) the display stands as sealed; at n ≥ 8 P(n) rests on
 >   {[GENHN-HE(μ ≥ 3)]} ∪ {[GENHN-TOW-1] (S9.1: composed entry
 >   budgets, inner refine transfer, faithfulness geography, partial
->   inner sides, composed window ledger)} ∪ {S9 boxes} ∪ {arc stack},
->   with the tower LEAF READ and inner-μ₂ = 2 σ now carried by the
+>   inner sides, composed window ledger **[r3 2026-08-09 (passPE2
+>   F1): + item (6), the iterated depth-≥ 3 key composition — the
+>   r2 parenthetical named five items and was INCOMPLETE at
+>   n ≥ 16]**)} ∪ {S9 boxes} ∪ {arc stack},
+>   with the tower LEAF READ and inner-μ₂ = 2 σ **[r3: full inner
+>   sides — passPE2 F2]** now carried by the
 >   PROVED LEMMA GENHN-T(b)′ (S8 annex) instead of the refuted
 >   T(b). The sealed word "EXACTLY" was FALSE at n ≥ 8 (passPE1 F1);
->   it is correct for the amended list.]**
+>   it is correct for the amended list **[r3: read with the depth
+>   split — at n ∈ {8, …, 15} the tower genres are depth-2 (R1
+>   arithmetic) and T(b)′ + items (1)–(5) carry the tower clause
+>   (item (4) where the inner side is partial); at n ≥ 16 item (6)
+>   joins the list. Against the r2 FIVE-item list the sentence
+>   "correct for the amended list" was itself over-reaching at
+>   n ≥ 16 (passPE2 F1); it is stated here against the six-item
+>   box]**.]**
 > The program's remaining open surface is the S9 list — short, named,
 > and per-item attackable.
 
@@ -1364,7 +1384,51 @@ evaluation-faithful (the mechanism is derived in the annex).]**
   the PE1 instances + the P8 witness); (4) PARTIAL inner sides
   (e₂f₂μ₂ < μ₁: the inner sibling split at the composed level);
   (5) the composed WINDOW/certification ledger (GENHN-3 + BOX-4 at
-  dv₂). First live n = 8; empty at n ≤ 7. Inner μ₂ ≥ 3 σ is NOT
+  dv₂); (6) **[r3 2026-08-09 (passPE2 F1)] the ITERATED key
+  composition (depth ≥ 3; first live n = 16 — the R1 arithmetic: a
+  third stage forces μ₁ ≥ e₂f₂μ₂ ≥ 8, hence n ≥ D′μ₁ ≥ 16).**
+  T(b)′ is ONE composition step and does NOT self-apply: its
+  setting requires a key whose x-polygon residual is IRREDUCIBLE
+  and whose normalizers are the MONOMIALS n̂(m) = x^iπ^a (i < e₁),
+  while the composed key Φ₂ re-enters with residual the POWER
+  ψ^{e₂f₂} ((i)'s proof) and with dv₂-ladder normalizers that are
+  Φ′-POLYNOMIALS. What the iteration IS (re-derived at this repair
+  from the r2 mechanism, matching the supp's 3-stage construction):
+  the level-2 normalizers are the LADDER MONOMIALS n̂₂(m) =
+  π^a x^i Φ′^b (i < e₁, b < e₂), unique in that range per
+  dv₂-height m = a·e₁e₂ + i·e₂h + b·u₂ by GENHN-2′'s two-step
+  class separation — witness n̂₂(21) = 16Φ′ (a = 4, i = 0, b = 1;
+  the supp runner's n₂(21), genhnr2_supp.py 51154c95… L388–389);
+  the level-3 key is Φ₃ := Φ₂^{e₃f₃} − Σ_{t<f₃} k̂_t·Φ₂^{e₃t} with
+  k̂_t a dv₂-height-u₃(f₃−t) ladder lift of the ψ₃-coefficient
+  c_t ∈ K₂ (K₂-digit lifts need (ii)'s slot grammar, not
+  x-monomial lifts — the third re-entry change); witness Φ₃ =
+  Φ₂² − 16Φ′ (ψ₃ = T−1, u₃ = 21). A T(b)″ — the iterated
+  carrier/slot/read at depth ≥ 3 — was ATTEMPTED at this repair
+  and develops one precise hole plus one inherited dependency,
+  both displayed: (α) the level-by-level ascent that forces a
+  Φ₃-root ξ's intermediate data — v(Φ′(ξ)) = u₂/(e₁e₂) exact with
+  η₂(ξ) a ψ₂-root, the input (ii)'s slot lemma needs at ξ — needs
+  the Φ′-adic development of Φ₃ to be ONE-SIDED of
+  slope κ₂ with residual a ψ₂-power. TRUE at the witness by an
+  EXACT CARRY CANCELLATION — Φ₃ = Φ′⁴ − 8xΦ′² + 16x² − 16Φ′, and
+  the x-overflow carry 16x² = 16Φ′ + 32 kills the −16Φ′ term
+  exactly: Φ₃ = Φ′⁴ − 8xΦ′² + 32 (re-computed at this repair),
+  dv-pins (4,0) and (0,10) on the side, (2,7) strictly above
+  (side height 5), one side of slope 5/2 = κ₂, residual
+  T² + 1 = ψ₂² over F₂ — but the genre-general carry-cancellation
+  bookkeeping is genuine Okutsu-optimality content, unproved
+  here; (β) the iterated node floor κ₃ > dv₂(x^{D₂}) (21/2 > 8 at
+  the witness) has no proved provenance at depth ≥ 3 — its level-2
+  analogue was the [r1] node floor, proved from GENHN-1's entry
+  budgets, and the depth-3 analogue rides item (1)'s composed
+  entry budgets. Machine evidence: the supp leg's three
+  parse-gated 3-stage n = 16 instances (SUPP-C) are EXACT vs PARI
+  on both routes ({(16,1)}/{(16,1)}/{(8,1),(8,1)}; output
+  664036bc…) — the iterated read is machine-witnessed TRUE at the
+  first live degree, and unproved. Items (1)–(5) first live
+  n = 8; item (6) first live n = 16; the box is empty at n ≤ 7.
+  Inner μ₂ ≥ 3 σ is NOT
   here — it is [GENHN-HE(μ₂)].
 
 ### S9.2 THE REMAINING OPEN SURFACE (the program's endgame
@@ -1383,8 +1447,11 @@ MATHEMATICS (new theorems needed):
 2b. **[r2] [GENHN-TOW-1]** — the composed-key tower residue (S9.1
    box): composed entry budgets + inner refine transfer +
    faithfulness geography + partial inner sides + composed window
-   ledger; load-bearing for P(n) at n ≥ 8 ONLY (empty at n ≤ 7);
-   the leaf read itself and inner-μ₂ = 2 σ are PROVED
+   ledger **[r3 2026-08-09 (passPE2 F1): + the iterated depth-≥ 3
+   key composition (item (6), first live n = 16)]**; load-bearing
+   for P(n) at n ≥ 8 ONLY (empty at n ≤ 7);
+   the leaf read itself and inner-μ₂ = 2 σ **[r3: full inner
+   sides (passPE2 F2); partial sides are item (4)]** are PROVED
    (LEMMA GENHN-T(b)′, S8 annex).
 
 COMPRESSIONS TO EXPAND (proved-as-schema, per-genre ledgers owed on
