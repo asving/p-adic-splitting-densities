@@ -1,0 +1,16 @@
+GENTOW-4 battery, 2026-08-09 16:04:12
+runner md5: 98cdd4a4e5a47f1434bdf8ca5a1c4b4c
+FAM-P1: 25 members queued
+FAM-P2: 24 members queued
+FAM-P3: 22 members queued
+FAM-P5: 22 members queued
+FAM-P6: 24 members queued
+c_g odd on 71 rows; withhold 10; wrongkey 22; windows 15
+running gp (371 jobs)...
+  gp stderr tail:   ***   Warning: new maximum stack size = 4000002048 (3814.699 Mbytes).
+
+NOCG flips PARI-killed: 49
+NOTWIST (eta2-cocycle) flips: 8
+
+TOTAL: 1740 checks, 0 violations, 4.9 s
+VERDICT: GREEN

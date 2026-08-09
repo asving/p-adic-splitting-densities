@@ -350,6 +350,29 @@ a label OF f in THEOREM HE7.A's sense.
 > translation-invariant. A reader using f-level pin parity is
 > wrong exactly on odd-c_g members — tooth T-NOCG.
 
+**REMARK (coherent digits — machine-surfaced at the pre-seal
+smoke, derivation displayed).** S3(v)'s residual tests consume the
+residuals in HE7's COHERENT normalization; RAW slot residues are
+NOT them when the class letter eta2 != 1. At (e2, f2) = (2, 1),
+u2 odd: the wrap Phi'(x0)^2 = eta2·nhat(u2)(x0)·(1 + small) makes
+the height-0 monomial ratio x^{Δa} pi^{Δv} Phi'^{Δb} have residue
+eta2^{Δb/2} (Δb is forced even; the x- and pi-relations have
+residue 1 at f1 = 1), so the coherent digit at coordinate j of an
+integer-slope [0,2]-read is
+
+    delta_j = r_j · eta2^{(b_j − B_j)/2},
+    N_j := n2hat(c_g)·n2hat(lam)^{2−j},  B_j = b-exponent of N_j,
+
+with r_j, b_j the raw residue and Phi'-exponent of the attaining
+slot. Feeding r_j instead of delta_j flips INERT/SPLIT exactly on
+eta2 != 1 members: FAM-P5 (psi2 = T+1 over F_3, eta2 = 2) exposed
+12 such flips against PARI at the smoke; q = 2 families and
+eta2 = 1 rows are structurally blind to the defect. The corrected
+reader is the sealed one; the defect is preserved as tooth
+T-6 NOTWIST. (This is HETOW's T-BADTWIST phenomenon at the
+partial-side read — the S4-normalizer cocycle is machine-load-
+bearing here too.)
+
 ## S5. PE2-P VERIFIED EXACTLY
 
 Hand computation (S1's table, re-derived; machine row PE2P-0 in
@@ -420,7 +443,10 @@ refuses every member — the loud failure stays loud); T-2 NOCG
 must kill every flip); T-3 SIBDROP (tower-class-only sigma != PARI
 on every member); T-4 WITHHOLD (psi2 withheld -> UNDETERMINED, no
 guess); T-5 WRONGKEY (FAM-P5 cross-key probe: the (T+1)-class read
-with the (T−1)-class's key must NOT reproduce the block data).
+with the (T−1)-class's key must NOT reproduce the block data);
+T-6 NOTWIST (added pre-seal from the disclosed smoke finding, S4
+remark: dropping the eta2-cocycle correction must flip INERT/SPLIT
+on eta2 != 1 members, every flip PARI-killed).
 
 **VERDICT — appended at commit 2 from the committed artifacts: see
 the "S6-VERDICT" block at the end of this file.**
@@ -466,3 +492,64 @@ GENHN.B (CS-3) partial-side rider (passPE2 F2's cure) can, after
 acceptance, cite THEOREM GENTOW-4.A(v) for inner-mu2 = 2 partial
 leaves at pure-power sides — with GENTOW4-BOX-1 named at mixed
 sides.
+
+---
+
+## S6-VERDICT (commit 2, from the committed artifacts): **GREEN — 1,740 checks, 0 violations, 6/6 teeth**
+
+**Artifacts.** `gentow4_checks_output.txt` (committed); sealed
+runner @ commit 1 = 2aa5b16, md5 98cdd4a4e5a47f1434bfd... (full
+md5 printed in the artifact: 98cdd4a4e5a47f1434bfd — see line 2 of
+the output; no post-seal edit — verdict-run md5 IDENTICAL to the
+sealed file). Runtime ~5 s + PARI (371 gp jobs).
+
+**Totals.** 117 members (P1 25 incl. PE2P-0, P2 24, P3 22, P5 22,
+P6 24), 0 dropped, 117 reader-decided, 117 sigma comparisons on
+PARI route 1 + subsample on route 2, per-factor valuation rows via
+nodev6 on every member. **1,740 checks, 0 violations.**
+
+* **P-1 ✓** every member parsed to its family target (partial
+  inner side present; hull exact; residual classes as designed).
+* **P-2 ✓ (HEADLINE)** every member DECIDED by the S3/S4 reader
+  and sigma = PARI exactly, both routes where run; PE2P-0
+  reproduced the witness {(2,1),(4,1),(4,1)} — the box's
+  protected instance now has a proved, machine-checked read.
+* **P-3 ✓** mu2* = 2 = mu2 on every pure-side tower class; on the
+  MIXED family P5, mu2* = 2 at the repeated class and (4,1)-content
+  at the simple class on every member (empirical tie only —
+  GENTOW4-BOX-1 unchanged).
+* **P-4 ✓** >T2 initial segment = [0, mu2*] with c_g at the right
+  endpoint; GENTOW-1(c) floors cleared through the projection on
+  every row; c_g ODD on 71 tower reads (P1/P2/P3 flanks) and EVEN
+  on 46 (P5/P6) — both parities live.
+* **P-5 ✓** per factor per prime: class rows dv2(Phi2) > E2
+  STRICT with class degrees summing to D2·mu2* = 8; companion
+  rows = E2 exactly on steeper/same flanks and < E2 on P6's
+  shallow flank; dv2(Phi') = u2 exact on class rows.
+* **P-6 ✓** 15 members x 2 random p^14-lifts: reads identical.
+* **P-7 ✓** every DBL row's refine chain (inside the reader, key
+  Phi2 − s·n2hat(lam), the coherent s) terminated decided,
+  PARI-exact.
+* **TEETH 6/6 FIRED:** T-1 FULLREAD (117/117 refused by the monic
+  reader); T-2 NOCG (49 parity flips, every one PARI-killed — the
+  c_g-translation is machine-load-bearing); T-3 SIBDROP (117/117);
+  T-4 WITHHOLD (UNDETERMINED, 0 guesses); T-5 WRONGKEY (22/22 P5
+  probes: wrong key never reproduces the block datum; incl. the
+  key | f peel corner); T-6 NOTWIST (8 INERT/SPLIT flips without
+  the eta2-cocycle correction, every one PARI-killed — the S4
+  coherence is load-bearing, S4 remark).
+
+**Diagnostic census (non-sealed one-off, labeled):** every family
+realized its FULL preregistered menu — P1: {(2,1)}∪{(8,1)} x12 /
+{(4,2)} x6 / {(4,1)}² x7; P2: {(2,1)}∪{(4,2)} x20 / {(2,4)} x2 /
+{(2,2)}² x2; P3: 13/2/7; P5: {(4,1)}∪ 10/6/6; P6: {(6,1)}∪ 11/8/5.
+
+**What the leg establishes** (instrument grade, not acceptance):
+the first machine contact anywhere with [GENHN-TOW-1] item (4) —
+partial-side tower members at 3 genres, q ∈ {2,3}, e2 ∈ {1,2},
+f2 ∈ {1,2}, mixed sides, both sibling flanks — is GREEN against
+an independent oracle, with the block decomposition, the HE6R1-2
+projection (c_g), and the per-block HE7.A trichotomy executed
+exactly as THEOREM GENTOW-4.A displays, and with three
+load-bearing seams (c_g-translation, label-keying, eta2-cocycle)
+each guarded by a fired tooth.
