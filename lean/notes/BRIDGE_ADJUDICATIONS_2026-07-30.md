@@ -14453,3 +14453,27 @@ ACCEPTED GENHN, not HE3 — the HE3 criticals do not touch it
 (stack named in its S6). NEW SUB-BOX: GENTOW-BOX-1 (the composed
 graded frame at general μ₂ — wave B2). REMAINING for n ≥ 8:
 (3), (4), GENTOW-BOX-1; n ≥ 32 adds the level-r grammar.
+
+---
+
+## WAVE 22 FOLDED (wbii49k4i, 2/2): HE3 r1 COMPLETE (LEMMA HE3-1L derived — the coset factor is a ϖ-read artifact that CANCELS in the n(κ)-read; both CRITICALs repaired; a SELF-FOUND N1 defect closed; consumers all SAFE) · HE6R1 r1 COMPLETE (7/7, incl. the honest P1 re-score "FAILED AS PREREGISTERED — DIAGNOSED AND CURED POST-SEAL") — WAVE 23: HE3 PE2 + HE6R1 PE2 — 2026-08-09
+
+HE3 r1 (3320039 → 34de897 → dbfc496 → ccb7e9a): F1 repaired via
+NEW LEMMA HE3-1L (exact reachable set = the T(κ)-span; full K^×
+iff κ ≥ (i₀+e₁(f₁−1))h — every test height κ > D′h reaches every
+letter; verified at the PE1 F₉ counter-instance {1,i,−i}); F2's
+S→D′h at every display with the counter-instances recorded;
+F3 DISCHARGED by new LEMMA HE3-6 (level-1 equivariance, the HE6-5
+template); N1 (self-found, beyond PE1): the three-consecutive-
+integer-slopes silence at (Q,f₁)=(2,1), closed by a
+recenter-then-invert supplement. Headline re-scoped honestly
+(μ ≤ 3 unconditional survives WITH the corrected machinery; μ ≥ 4
+= HE3-BOX-6; "does NOT upgrade the grade"). Consumer trace:
+HE6/HE7/GENHN SAFE (HE6's stricter usage VALIDATED by the repair);
+GENIND no consumption site. Supp GREEN (P1–P4 incl. f₁=3 at F₂₇
+with the 26-letter peel profile); honest coverage note: e₁ ≥ 2 ∧
+f₁ ≥ 2 rows owed. HE6R1 r1 (71c7457 → 8cbfaa2 → 57700f3): all 7
+applied under the [r1′] tag convention (collision-free, stated);
+the F-2 rider proves HE7-7′(b) at general Ψ-coprime evaluands
+keyed to frozen §S5.8's evaluand-blind mechanism. Both 0/2;
+PE2s dispatched (wave 23). B2 in flight.
