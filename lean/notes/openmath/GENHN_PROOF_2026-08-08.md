@@ -300,7 +300,18 @@ machine row (GENIND-BOX-3 inherited).
 > entry budgets and inner refine transfer BOXED as [GENHN-TOW-1]]**),
 > and (CS-3) holds at every
 > μ = 2 genre (THEOREM GENHN.C **[r2: and at every tower leaf with
-> inner μ₂ = 2 by GENHN-T(b)′(iii); inner μ₂ ≥ 3 sits in
+> inner μ₂ = 2 by GENHN-T(b)′(iii) [r3 2026-08-09 (passPE2 F2):
+> on a FULL inner side only (e₂f₂μ₂ = μ₁ — (iii)'s proved
+> perimeter; the r2 rider as written over-covered). PARTIAL-side
+> inner μ₂ = 2 leaves (e₂f₂μ₂ < μ₁, first live n = 10) ride
+> [GENHN-TOW-1] item (4), not (iii) — the passPE2 witness (PE2-P):
+> the n = 10 member f = Φ′⁵ + 4Φ′⁴ + 32Φ′ + 64x of genre (2,1,5)
+> over ℚ₂ (Φ′ = x² − 2), level-1 polygon (0,13)–(1,10)–(5,0) with
+> a slope-5/2 inner side of length 4 < μ₁ = 5 carrying (T+1)² —
+> an inner μ₂ = 2 event on a partial side; the corrected reader
+> REFUSES it loudly (the Φ₂-development of f is not
+> monic-of-length-μ₂) and no proved display prices its σ (PARI
+> {(2,1),(4,1),(4,1)})]; inner μ₂ ≥ 3 sits in
 > [GENHN-HE]]**). The ONLY unproved clause anywhere
 > in [GENIND-H(n)], for every n **[r2: ≤ 7; at n ≥ 8 add
 > [GENHN-TOW-1]]**, is:
