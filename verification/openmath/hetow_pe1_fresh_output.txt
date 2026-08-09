@@ -1,0 +1,114 @@
+HETOW passPE1 fresh route (eta != 1 + f1 = 2), p = 3
+Phi2_naive = (90)*x^0+(-18)*x^1+(-12)*x^2+(3)*x^3+(1)*x^4
+Phi2_coh   = (144)*x^0+(-18)*x^1+(-12)*x^2+(3)*x^3+(1)*x^4
+killed(naive) Z^2+2Z+1   killed(coh) Z^2+2Z+2   minpoly(beta) Z^2+2Z+2
+  FL2-rtilde-two-defs          ok  slot-residues (2, 2) vs minpoly (2, 2)
+  FL2-rtilde-nontrivial-twist  ok  r-tilde = Z^2+2Z+2 != psi2 = Z^2+Z+2 (the eta-twist is visible)
+  FL2-naive-degenerate         ok  naive killed poly (Z+1)^2: beta rational, (T2_2) fails at face value
+43 gp jobs (both routes on all) ...
+  FL1-coh-routes-agree         ok  ((2, 2),) vs ((2, 2),)
+  FL1-coh                      ok  sigma = ((2, 2),)
+  FL1-naive-routes-agree       ok  ((4, 1),) vs ((4, 1),)
+  FL1-naive                    ok  sigma = ((4, 1),)
+  FL3-ONE21-routes-agree       ok  ((6, 2),) vs ((6, 2),)
+  FL3-ONE21                    ok  sigma = ((6, 2),)
+  FL3-ONE21-routes-agree       ok  ((2, 2), (2, 4)) vs ((2, 2), (2, 4))
+  FL3-ONE21                    ok  sigma = ((2, 2), (2, 4))
+  FL3-ONE21-routes-agree       ok  ((2, 2), (2, 2), (2, 2)) vs ((2, 2), (2, 2), (2, 2))
+  FL3-ONE21                    ok  sigma = ((2, 2), (2, 2), (2, 2))
+  FL3-ONE21-routes-agree       ok  ((2, 2), (2, 4)) vs ((2, 2), (2, 4))
+  FL3-ONE21                    ok  sigma = ((2, 2), (2, 4))
+  FL3-ONE21-routes-agree       ok  ((2, 2), (2, 2), (2, 2)) vs ((2, 2), (2, 2), (2, 2))
+  FL3-ONE21                    ok  sigma = ((2, 2), (2, 2), (2, 2))
+  FL3-ONE21-routes-agree       ok  ((2, 2), (4, 2)) vs ((2, 2), (4, 2))
+  FL3-ONE21                    ok  sigma = ((2, 2), (4, 2))
+  FL3-ONE21-routes-agree       ok  ((2, 2), (2, 4)) vs ((2, 2), (2, 4))
+  FL3-ONE21                    ok  sigma = ((2, 2), (2, 4))
+  FL3-ONE21-routes-agree       ok  ((2, 6),) vs ((2, 6),)
+  FL3-ONE21                    ok  sigma = ((2, 6),)
+  FL3-ONE21-routes-agree       ok  ((2, 2), (2, 4)) vs ((2, 2), (2, 4))
+  FL3-ONE21                    ok  sigma = ((2, 2), (2, 4))
+  FL3-ONE21-routes-agree       ok  ((2, 6),) vs ((2, 6),)
+  FL3-ONE21                    ok  sigma = ((2, 6),)
+  FL3-ONE21-routes-agree       ok  ((2, 2), (2, 4)) vs ((2, 2), (2, 4))
+  FL3-ONE21                    ok  sigma = ((2, 2), (2, 4))
+  FL3-ONE21-routes-agree       ok  ((2, 2), (2, 4)) vs ((2, 2), (2, 4))
+  FL3-ONE21                    ok  sigma = ((2, 2), (2, 4))
+  FL3-ONE21-routes-agree       ok  ((6, 2),) vs ((6, 2),)
+  FL3-ONE21                    ok  sigma = ((6, 2),)
+  FL3-ONE21-routes-agree       ok  ((2, 2), (2, 4)) vs ((2, 2), (2, 4))
+  FL3-ONE21                    ok  sigma = ((2, 2), (2, 4))
+  FL3-ONE21-routes-agree       ok  ((2, 6),) vs ((2, 6),)
+  FL3-ONE21                    ok  sigma = ((2, 6),)
+  FL3-ONE21-routes-agree       ok  ((2, 2), (2, 4)) vs ((2, 2), (2, 4))
+  FL3-ONE21                    ok  sigma = ((2, 2), (2, 4))
+  FL3-ONE21-routes-agree       ok  ((2, 6),) vs ((2, 6),)
+  FL3-ONE21                    ok  sigma = ((2, 6),)
+  FL3-ONE21-routes-agree       ok  ((2, 6),) vs ((2, 6),)
+  FL3-ONE21                    ok  sigma = ((2, 6),)
+  FL3-ONE21-routes-agree       ok  ((2, 2), (2, 4)) vs ((2, 2), (2, 4))
+  FL3-ONE21                    ok  sigma = ((2, 2), (2, 4))
+  FL3-ONE21-routes-agree       ok  ((2, 6),) vs ((2, 6),)
+  FL3-ONE21                    ok  sigma = ((2, 6),)
+  FL3-ONE21-routes-agree       ok  ((2, 2), (2, 2), (2, 2)) vs ((2, 2), (2, 2), (2, 2))
+  FL3-ONE21                    ok  sigma = ((2, 2), (2, 2), (2, 2))
+  FL3-ONE21-routes-agree       ok  ((2, 2), (2, 4)) vs ((2, 2), (2, 4))
+  FL3-ONE21                    ok  sigma = ((2, 2), (2, 4))
+  FL3-ONE21-routes-agree       ok  ((2, 2), (2, 4)) vs ((2, 2), (2, 4))
+  FL3-ONE21                    ok  sigma = ((2, 2), (2, 4))
+  FL3-ONE21-routes-agree       ok  ((2, 2), (2, 4)) vs ((2, 2), (2, 4))
+  FL3-ONE21                    ok  sigma = ((2, 2), (2, 4))
+  FL3-3RAM-routes-agree        ok  ((6, 2),) vs ((6, 2),)
+  FL3-3RAM                     ok  sigma = ((6, 2),)
+  FL3-3RAM-routes-agree        ok  ((6, 2),) vs ((6, 2),)
+  FL3-3RAM                     ok  sigma = ((6, 2),)
+  FL3-3RAM-routes-agree        ok  ((6, 2),) vs ((6, 2),)
+  FL3-3RAM                     ok  sigma = ((6, 2),)
+  FL3-3RAM-routes-agree        ok  ((6, 2),) vs ((6, 2),)
+  FL3-3RAM                     ok  sigma = ((6, 2),)
+  FL3-2+1-routes-agree         ok  ((2, 2), (4, 2)) vs ((2, 2), (4, 2))
+  FL3-2+1                      ok  sigma = ((2, 2), (4, 2))
+  FL3-2+1-routes-agree         ok  ((2, 2), (4, 2)) vs ((2, 2), (4, 2))
+  FL3-2+1                      ok  sigma = ((2, 2), (4, 2))
+  FL3-2+1-routes-agree         ok  ((2, 2), (4, 2)) vs ((2, 2), (4, 2))
+  FL3-2+1                      ok  sigma = ((2, 2), (4, 2))
+  FL3-2+1-routes-agree         ok  ((2, 2), (4, 2)) vs ((2, 2), (4, 2))
+  FL3-2+1                      ok  sigma = ((2, 2), (4, 2))
+  FL3-NAIVEKEY-routes-agree    ok  ((2, 1), (2, 1), (2, 2), (4, 1)) vs ((2, 1), (2, 1), (2, 2), (4, 1))
+  FL3-NAIVEKEY                 INFO sigma = ((2, 1), (2, 1), (2, 2), (4, 1))  in-menu = False
+  FL3-NAIVEKEY-routes-agree    ok  ((2, 1), (4, 1), (6, 1)) vs ((2, 1), (4, 1), (6, 1))
+  FL3-NAIVEKEY                 INFO sigma = ((2, 1), (4, 1), (6, 1))  in-menu = False
+  FL4-key-routes-agree         ok  ((4, 2),) vs ((4, 2),)
+  FL4-key                      ok  sigma = ((4, 2),)
+  FL4-12-2-routes-agree        ok  ((12, 2),) vs ((12, 2),)
+  FL4-12-2                     ok  sigma = ((12, 2),)
+  FL4-int-slope-routes-agree   ok  ((12, 2),) vs ((12, 2),)
+  FL4-int-slope                ok  sigma = ((12, 2),)
+  FL4-int-slope-routes-agree   ok  ((12, 2),) vs ((12, 2),)
+  FL4-int-slope                ok  sigma = ((12, 2),)
+  FL4-int-slope-routes-agree   ok  ((12, 2),) vs ((12, 2),)
+  FL4-int-slope                ok  sigma = ((12, 2),)
+  FL4-int-slope-routes-agree   ok  ((12, 2),) vs ((12, 2),)
+  FL4-int-slope                ok  sigma = ((12, 2),)
+  FL4-int-slope-routes-agree   ok  ((4, 2), (4, 2), (4, 2)) vs ((4, 2), (4, 2), (4, 2))
+  FL4-int-slope                ok  sigma = ((4, 2), (4, 2), (4, 2))
+
+census:
+   FL1-coh:((2, 2),)                                    1
+   FL1-naive:((4, 1),)                                  1
+   FL3-2+1:((2, 2), (4, 2))                             4
+   FL3-3RAM:((6, 2),)                                   4
+   FL3-NAIVEKEY:((2, 1), (2, 1), (2, 2), (4, 1))        1
+   FL3-NAIVEKEY:((2, 1), (4, 1), (6, 1))                1
+   FL3-ONE21:((2, 2), (2, 2), (2, 2))                   3
+   FL3-ONE21:((2, 2), (2, 4))                           12
+   FL3-ONE21:((2, 2), (4, 2))                           1
+   FL3-ONE21:((2, 6),)                                  6
+   FL3-ONE21:((6, 2),)                                  2
+   FL4-12-2:((12, 2),)                                  1
+   FL4-int-slope:((12, 2),)                             4
+   FL4-int-slope:((4, 2), (4, 2), (4, 2))               1
+   FL4-key:((4, 2),)                                    1
+
+TOTAL jobs 43 violations 0 (39.6s)
+VERDICT: GREEN
