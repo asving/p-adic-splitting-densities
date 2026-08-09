@@ -14219,3 +14219,59 @@ commit (4×). The GENIND annex stack is honestly disclosed
 NOT-hostile-passed (its scoped pass queues behind the chain notes).
 Board: HE7/GENH4/GENIND/W-12 frozen-accepted · HEX3 1/2 (rider
 owed) · GENHN 0/2 post-r2 · HE6 0/2 · distribution arcs 0/2.
+
+---
+
+## ★ WAVE 17 FOLDED (w5a6bq8rm, 4/4): HEX3 ACCEPTED 2/2 (FIFTH) · GENHN PE2 = T(b)′ HELD, 2 coverage GAPs (r3 owed) · HE6 PE2 = the η-twist display GAP (non-propagating; HE7-L1 dated append owed) + a record GAP — WAVE 18: riders (HEX3 ×2 + HE7 F-1 append) + GENHN r3 + HE6 r2 — 2026-08-09
+
+**HEX3 PE7 (237c753): CLEAN — 0C, 0G, 2 MINOR ⟹ ACCEPTED 2/2,
+frozen.** The never-owned R(M) law verified faithful to W12-L0's
+frozen bytes with the exit dichotomy re-derived first-principles;
+the drain typology confirmed against every committed row (46 rows,
+172 keys, 0 violations); the HMENU3 interface aligned at the
+frozen disc≠0 quantifier. Minors: a "tail half of (hMenu-3)"
+residence mis-attribution (refuted by TWO frozen texts) + the
+rider's unscoped "DOMINANT" superlative (true at every measured
+row, FALSE as N→∞ by the note's own Θ(N/q) excess — the record
+rule catching an innocent-looking superlative). Two one-line dated
+appends owed. FRESH ROUTE: an own W-11 block reader (C + Python,
+from spec, not from code) — R(M) direct at 53 cells, ~2.9B states,
+0 violations, first-ever rows at q = 7/11/13/25, double the prior
+depth at q=2.
+
+**GENHN PE2 (ccf45de → 701c7b1): NOT CLEAN — 0C + 2 GAP + 2m; the
+r2 mathematics SURVIVED.** T(b)′ attacked at all four clauses and
+held (boundary instances at u₂ = e₂D′h+1 exact; the composed-basis
+exactness verified by 72 direct nfeltval legs; first outer-f₁=2
+tower genres; first 2-stage composed dictionary contact; first
+non-prime-q tower Q=4; the η₂-cocycle division adjudicated). The
+GAPs: F1 — depth ≥ 3 iterated composition (n=16) is neither proved
+by the one-step T(b)′ (Φ₂ fails its own re-entry hypotheses —
+supp's n₂(21)=16Φ′ is the witness) nor named in [GENHN-TOW-1], yet
+GENHN.B claims the amended list correct at n ≥ 8; n ∈ {8..15}
+unaffected. F2 — the (CS-3) rider over-covers (full-inner-side
+only; constructed n=10 partial-side witness, PARI-refuted; the
+reader refuses it loudly; box item (4) protects the display). F3
+the erratum's magnitude parenthetical sign; F4 the 35/38→35/35
+denominator. r3 = box-or-prove depth ≥ 3 + scope the rider + the
+two minors.
+
+**HE6 PE2 (404dae1): NOT CLEAN — 0C + 2 GAP + 3m.** F-1
+(PARI-CONFIRMED): HE6-1L [r1,R3]'s reachable-set display omits the
+normalizer twist η^(−q(k)) — at a constructed (2,2,3) frame the
+realized ϖ-read set {η, 2η} is DISJOINT from the displayed F₃^× —
+NON-PROPAGATING (all 8 consumption routes traced: only the
+twist-invariant fullness/emptiness clauses are consumed; every
+prior verification sat at q(k)=0 frames); LANDS IDENTICALLY ON
+FROZEN HE7-L1 → dated append owed on HE7 (its arc checked fullness
+only). F-2: the §S9 runner-as-run hash matches NO repo object +
+a 9-min undisclosed post-run mtime + the wrong freeze anchor —
+cured in fact by this pass's byte-identical isolated re-runs; the
+record defect stands. F-3: HE6-0″'s twist sign inverted (harmless,
+traced). FRESH ROUTE: the FIRST ℓ=3 label battery (deg 12 over ℤ₅,
+39/39 PARI) + the f₁=2 fractional-height certificate. r2 owed.
+
+**WAVE 18 (dispatched this entry): RIDERS (HEX3's two dated lines +
+HE7's F-1 dated append with the non-propagation trace) + GENHN r3 +
+HE6 r2. Then PE3s. The distribution arcs + the GENIND annex-stack
+pass queue behind the chain notes.**

@@ -3461,3 +3461,23 @@ clean (2 one-clause minors, r4 owed); CODEX GENIND ratification =
 CHALLENGE (6/6 confirmed, 0 CRITICAL, heaviest = the GENIND.C
 vanishing-rate supply gap; annex queue R1–R6). The next site
 refresh must carry the refutation + the W-12 acceptance together.
+
+**2026-08-09 DATED APPEND #9 — HEX3 ACCEPTED 2/2 (the FIFTH chain
+note; PE7 CLEAN 237c753 — fresh route: an own-built W-11 block
+reader from spec, R(M) at 53 cells / ~2.9B states / 0 violations
+incl. first rows at q = 7, 11, 13, 25).** The chain's conditionality
+narrows to GENHN + HE6 + the frontier boxes. GENHN PE2: T(b)′'s new
+mathematics HELD under attack (the forcing-chain boundary, the
+composed-basis exactness, the σ-composition, the faithfulness
+inequality all re-derived); 2 GAPs are r2 COVERAGE defects — depth
+≥ 3 iterated composition (first live n=16) neither proved nor boxed,
+and the (CS-3) rider over-covers (full-inner-side only; an n=10
+partial-side witness constructed; the box protects the display) —
+r3 owed. HE6 PE2: 2 GAPs — the HE6-1L reachable-set display omits
+the normalizer twist η^(−q(k)) (PARI-confirmed at a constructed
+frame; NON-PROPAGATING — all 8 consumption routes use
+twist-invariant clauses; lands identically on HE7's FROZEN L1 copy
+→ dated append owed there) + a runner-hash record defect (cured in
+fact by isolated re-runs) — r2 owed. Board: FIVE frozen/accepted
+(HE7, GENH4, GENIND, W-12, HEX3) · GENHN 0/2 (r3) · HE6 0/2 (r2) ·
+distribution arcs queued.
