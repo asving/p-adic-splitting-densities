@@ -3373,3 +3373,20 @@ F5 regraded. No sealed number moves anywhere. Wave 9: GENH4 ANNEX R
 (+ first k ≥ 2 deep-window machine leg) + GENIND PE5 + the scoped
 hostile pass on HE7's annex stack. GENHN's erratum queue now 3 items
 (UND phrasing; comp-weighting; A(i) transport).
+
+**2026-08-09 DATED APPEND #5 — THE FIRST CHALLENGE-TO-DISCHARGE
+CYCLE CLOSES: HE7's ANNEX STACK ACCEPTED 2/2** (annex-pass #1 CLEAN
+4a613d8 → #2 CLEAN a472155). HE7 is now fully frozen INCLUDING
+annexes: body 2/2, Codex CHALLENGE discharged with the corrected
+recursion machine-verified at n=16 (79/79), n=24/μ₃=3 (48/48,
+first anywhere), K₃=F_{p²} (ϑ-tooth 48/96), and a TRIPLE-ORACLE leg
+(factorpadic + non-PARI sympy vs the shared oracle) killing the
+last shared blind spot. Owed: 3 dated one-liner rewords (in wave
+11). GENH4's annex stack: NOT clean at pass #1 (a8dec16) — 1 GAP in
+the UNCONSUMED cap-sharpness clause (N-even band-pinned leg false,
+machine-refuted 6/6; the W-12.D-consumed supply clause (b) fully
+re-derived CLEAN; key-level conclusion survives) + 4 minors; annex
+repair in wave 11. GENIND r5 complete (f30e0fa/9f2da0f: enumerative
+records standing rule applied — 7 universal sentences rewritten;
+the f-first law corrected; bonus md5-typo caught at commit-time pin
+check); PE6 attempts the first clean.

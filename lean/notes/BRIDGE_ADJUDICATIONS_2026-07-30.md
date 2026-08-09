@@ -13789,3 +13789,55 @@ records rewrite + the f-first law fix + m2, SMALL) + HE7 ANNEX-PASS
 #2 (stack acceptance attempt) + GENH4 ANNEX-PASS #1 (scoped, stack
 1st clean attempt). Then: site refresh; the W-12/HEX3/GENHN arcs;
 Codex W-MULT-DCX + r40c/VC40c legs.**
+
+---
+
+## ★★★ WAVE 10 FOLDED (w5ck6zazm, 3/3): HE7 ANNEX STACK ACCEPTED 2/2 — THE CODEX CHALLENGE FULLY DISCHARGED (first complete cycle: accept → challenge → repair-with-new-math → re-verify → accept) · GENH4 ANNEX PASS #1 = 1 GAP (unconsumed clause) + 4m · GENIND r5 COMPLETE — WAVE 11: GENH4 ANNEX-R2 + GENIND PE6 + HE7 one-liners & SITE-REFRESH PREP — 2026-08-09
+
+**HE7 ANNEX-PASS #2 (a472155): CLEAN (2 new MINORs, both one-line
+rewords; pass-1's M-1 machine-recounted 47+55=102 and ruled
+non-blocking).** Charged surfaces: R1-b's residue sum walked on
+paper at level 3 AND level 4 (two independent derivations agree);
+R1-d delivers the frozen conclusion strings; the F-1↔R interplay
+coherent both directions; the SHARED-ORACLE blind spot confirmed as
+fact then KILLED by measurement — W1 triple oracle (factorpadic
+ROUND4 + non-PARI sympy disc-parity vs pari_sigma16) 96/96 + 79/79.
+FRESH ROUTE W2: n=24, μ₃=3, p∈{3,11} — first machine contact of
+MIXED LEVEL-3 NODES (HE7-13′ ∘ HE7-2′ composed: 17 parked companion
+residuals EXACT), σ 48/48 on all three oracles, deep-letter tooth
+14/48; + 10,141 level-4 symbolic checks. M-A: the run record says
+"factorpadic" but the stack's oracle is pari_sigma16 — one reword.
+M-B: HE7.D's "same proofs" twin sentences need the named rider §S6
+got — one line. OWED: 3 dated one-liners (M-1, M-A, M-B), wave 11.
+
+**GENH4 ANNEX-PASS #1 (6cb147b → fed3cff → a8dec16): NOT CLEAN —
+1 GAP + 4 MINOR, stack stays 0/2.** GAP-1 (UNCONSUMED clause):
+ANNEX R's R2 re-proof of clause (c), the N-even band-pinned leg, is
+FALSE — machine-refuted at (2,10,2): 6/6 PARI σ={(2,2)} against the
+display's fresh-2SIDED′ claim (GENH4-4's onto-freedom mis-transported
+to the key-pinned lift family); at (2,8,2) the "Lift 2" read is
+structurally unrealizable. KEY-LEVEL (c) SURVIVES via band-zero
+contrast members 6/6; W-12.D consumes (b) ONLY, and (b) was fully
+re-derived CLEAN (the band-digit cancellation attack fails
+structurally). Minors: 7′(a) realizability needs N ≥ 4k+1; the
+char-odd degenerate digit S₀=S₁²/4; the 0-line case; the header
+"everything else unchanged". FRESH ROUTE: first k=3 cell ever
+((2,15,3), 1,572,864 members tied key-for-key), first odd-q k≥2,
+54-cell grid tie, + the GAP's own counter-instance legs. Repair
+wording prescribed by the verifier (scope (c)'s claim to key-level
+cross-stratum witnesses). Annex-R2 owed.
+
+**GENIND r5 (f30e0fa + 9f2da0f).** Enumerative-records rule applied:
+the 2 charged S14 sentences + 5 more found by the sweep = 7
+rewrites, all quoting their false originals; the f-first entry law
+corrected (same-side 6k / distinct-side 2k+4h, derived from entry
+geometry, cross-checked vs the PE5 artifacts; honest limit: the
+same-side f-first genre remains machine-unrealized corpus-wide);
+same-side composite blocks added to step (1); BONUS: a pin
+transcription typo (e5493312 → e549331a) caught by the commit-time
+check and corrected with disclosure. 0/2; PE6 attempts first clean.
+
+**WAVE 11 (dispatched this entry): GENH4-ANNEX-R2 (the dated R2
+correction + 7′(a) + minors) + GENIND PE6 + HE7-FINALIZE (3 dated
+one-liners) & SITE-REFRESH PREP (draft only; orchestrator reviews
+and pushes per standing policy).**
