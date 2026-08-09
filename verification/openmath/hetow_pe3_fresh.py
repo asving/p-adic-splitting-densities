@@ -73,6 +73,24 @@ PREREGISTERED PREDICTIONS (scored; any miss = RED):
  coset jobs are route-1 only (disclosed).  SMOKE record: exact legs
  E1-E3 smoke-run before the gp battery (HETOWPE3_SMOKE=1); no gp
  sigma/letter/coset/member result seen before seal.
+ [INSTRUMENT ERRATA, disclosed post-seal 2026-08-09 (two gp input-
+ line-plumbing defects; zero predictions or derived values touched;
+ same class as PE1's disclosed parisize stack fix):
+ (1) the sealed GP_HDR put default(parisize, ...) and the sig
+ definitions on ONE input line; gp's stack-resize discards the rest
+ of its input line, so run 1's gp leg died with KeyError before ANY
+ scored gp value was produced.  Fix: newline after default(...).
+ (2) after fix (1), the two brace-body definitions sig1/sig2 still
+ shared one input line, which gp mis-parses (sig1 printed as a
+ closure instead of being applied); run 2 scored the letter jobs
+ [[1,0]]/[[0,1]]/[[1,0]]/[[0,1],[0,1]] and the coset job [1,1,1,1]
+ GREEN (all at their sealed predictions) and, of the sigma layer,
+ only sig2 (factor/Q route) values printed -- each equal to its
+ sealed prediction ([[2,4]] x2, [[4,2]], [[2,1],[2,3]],
+ [[4,1],[4,1]], [[4,4]], [[2,4],[2,4]], [[2,8]]); the route-1 slots
+ were the closure text, tallied as 18 plumbing violations.  Fix:
+ newline between the definitions.  The committed run is the first
+ with BOTH routes live.]
 VERDICT: GREEN iff 0 violations."""
 import json, os, subprocess, time
 
@@ -191,20 +209,20 @@ def exact_legs():
         check('E3-diverge-%s' % fr.name, kc != kn, '%s vs %s' % (kc, kn))
 
 # ------------------------------------------------------------ gp leg
-GP_HDR = ('default(parisize, 2000000000);'
+GP_HDR = ('default(parisize, 2000000000);\n'
           'sig1(f, p) = { my(fa = factorpadic(f, p, 60), out = List()); '
           ' for(i = 1, matsize(fa)[1], '
           '  my(g = Pol(apply(centerlift, Vec(fa[i,1]))), '
           '  nf = nfinit([g, [p]]), dec = idealprimedec(nf, p)); '
           '  if(#dec != 1, error("KRASNER")); '
           '  for(m = 1, fa[i,2], listput(out, [dec[1].e, dec[1].f]))); '
-          ' vecsort(Vec(out)) }; '
+          ' vecsort(Vec(out)) };\n'
           'sig2(f, p) = { my(fa = factor(f), out = List()); '
           ' for(i = 1, matsize(fa)[1], my(nf = nfinit([fa[i,1], [p]]), '
           '  dec = idealprimedec(nf, p)); '
           '  for(m = 1, fa[i,2], for(j = 1, #dec, '
           '   listput(out, [dec[j].e, dec[j].f])))); '
-          ' vecsort(Vec(out)) }; ')
+          ' vecsort(Vec(out)) };\n')
 
 def run_gp(script):
     r = subprocess.run(['gp', '-q'], input=script.encode(),

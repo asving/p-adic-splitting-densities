@@ -1,0 +1,38 @@
+HETOW passPE3 fresh route: frames M1/M2 (p=13 ord12 f2=4 triple-wrap) + N (e1=4) + letters + cosets + M2 members
+  E1-W-two-ways-M1                     ok  Q-route (2, 1, 1, 0) vs floor (2, 1, 1, 0) vs pred (2, 1, 1, 0)
+  E1-W-two-ways-N                      ok  Q-route (1, 0) vs floor (1, 0) vs pred (1, 0)
+  E2-coh-slotres-eq-rt-M1              ok  [4, 8, 6, 5] vs rt [4, 8, 6, 5]
+  E3-naive-slotres-eq-N-M1             ok  [1, 4, 3, 5] vs N [1, 4, 3, 5]
+  E3-diverge-M1                        ok  [4, 8, 6, 5] vs [1, 4, 3, 5]
+  E2-coh-slotres-eq-rt-M2              ok  [8, 8, 6, 11] vs rt [8, 8, 6, 11]
+  E3-naive-slotres-eq-N-M2             ok  [2, 4, 3, 11] vs N [2, 4, 3, 11]
+  E3-diverge-M2                        ok  [8, 8, 6, 11] vs [2, 4, 3, 11]
+  E2-coh-slotres-eq-rt-N               ok  [4, 3] vs rt [4, 3]
+  E3-naive-slotres-eq-N-N              ok  [2, 3] vs N [2, 3]
+  E3-diverge-N                         ok  [4, 3] vs [2, 3]
+  G1-coh-M1-routes-agree               ok  [[2, 4]] vs [[2, 4]]
+  G1-coh-M1                            ok  sigma = [[2, 4]] (pred [[2,4]])
+  G1-coh-M2-routes-agree               ok  [[2, 4]] vs [[2, 4]]
+  G1-coh-M2                            ok  sigma = [[2, 4]] (pred [[2,4]])
+  G1-coh-N-routes-agree                ok  [[4, 2]] vs [[4, 2]]
+  G1-coh-N                             ok  sigma = [[4, 2]] (pred [[4,2]])
+  G2-TOOTH-naive-M1-routes-agree       ok  [[2, 1], [2, 3]] vs [[2, 1], [2, 3]]
+  G2-TOOTH-naive-M1                    ok  sigma = [[2, 1], [2, 3]] (pred [[2,1],[2,3]])
+  G2-naive-M2-SIGMABLIND-routes-agree  ok  [[2, 4]] vs [[2, 4]]
+  G2-naive-M2-SIGMABLIND               ok  sigma = [[2, 4]] (pred [[2,4]])
+  G2-TOOTH-naive-N-routes-agree        ok  [[4, 1], [4, 1]] vs [[4, 1], [4, 1]]
+  G2-TOOTH-naive-N                     ok  sigma = [[4, 1], [4, 1]] (pred [[4,1],[4,1]])
+  G3-RAM-M2-routes-agree               ok  [[4, 4]] vs [[4, 4]]
+  G3-RAM-M2                            ok  sigma = [[4, 4]] (pred [[4,4]])
+  G3-SPLITEQ-M2-routes-agree           ok  [[2, 4], [2, 4]] vs [[2, 4], [2, 4]]
+  G3-SPLITEQ-M2                        ok  sigma = [[2, 4], [2, 4]] (pred [[2,4],[2,4]])
+  G3-INERT-M2-routes-agree             ok  [[2, 8]] vs [[2, 8]]
+  G3-INERT-M2                          ok  sigma = [[2, 8]] (pred [[2,8]])
+  G2L-M2-coh                           ok  [[1, 0]] (pred [[1, 0]])
+  G2L-M2-naive                         ok  [[0, 1]] (pred [[0, 1]])
+  G2L-N-coh                            ok  [[1, 0]] (pred [[1, 0]])
+  G2L-N-naive                          ok  [[0, 1], [0, 1]] (pred [[0, 1], [0, 1]])
+  G2C-cosets-M2                        ok  [1, 1, 1, 1] (pred all-1: res(n(k)(x)/x^k) == eta^{-Q(k)} = 7, 5, 9, 12 at k = 3, 6, 9, 12)
+
+TOTAL violations 0 (0.3s)
+VERDICT: GREEN
