@@ -196,7 +196,87 @@ leg is displayed but the cite alone carries the load (GENTOW2's
 pattern). No claim is made at sides of f with kappa <= D'h (none
 exist: GENTOW-4.1(a)).
 
-## S2. LEMMA GENTOW-6.2 (the block budget layer) — TBD
+## S2. LEMMA GENTOW-6.2 (the block budget layer — GENTOW4-BOX-2's
+## budget display)
+
+GENTOW-1's budget/fibration lemma is proved on the FULL-side locus
+𝒯 (one side, residual psi2^{mu2}). GENTOW4-BOX-2 records that the
+partial-side geography had no budget display. The prompt of the box
+resolves exactly as expected: the bouquet makes each block a
+full-side instance one level in, so GENTOW-1 fires AT THE BLOCK
+verbatim with mu2 ↦ mu2*, and COR GENTOW-4.C's projection makes the
+display visible on f's own pins.
+
+> **LEMMA GENTOW-6.2 (block entry membership).** In the S1 setting,
+> fix the inner class S = C_{kappa2,psi2} (l·f2 >= 2, composed key
+> Phi2, E2 = e2f2u2), let f_S be its block factor and mu2* = m_{psi2}
+> its composed length (S1). Then f_S lies on GENTOW-1's tower-entry
+> locus 𝒯* := 𝒯(Q; e1, f1, mu1* ; h; Phi'; u2, e2, psi2, mu2*) with
+> mu1* := e2f2·mu2* — the FULL-side locus at the block genre: f_S is
+> monic of degree mu2*·D2 on the genre-G opening locus with
+> disc f_S != 0, and its level-1 polygon is ONE side of slope kappa2
+> from (0, mu1*·kappa2) to (mu1*, 0) with twist-coherent residual
+> psi2^{mu2*} exactly.
+>
+> *Proof.* Monic, degree D2·mu2* = D'·mu1*: S1 Step I + LEMMA
+> HE6R1-2(b). Opening locus + disc != 0: rootwise/divisor-inherited
+> from f. Single side of slope kappa2, length mu1*, residual
+> monic = psi2^{mu2*}: S1 Step I with r = psi2, k_{psi2} = m_{psi2}
+> = mu2* (S1 Step III). Twist coherence: the block residual is
+> computed in the same coherent S4 normalization as f's (Step I
+> reads it through the same normalizers). Endpoints: right endpoint
+> (mu1*, 0) is the monic top; left endpoint (0, mu1*·kappa2) is on
+> the side since the polygon has no other side. ∎
+
+> **COROLLARY GENTOW-6.2C (the budget display at the block + its
+> projection).** With LEMMA GENTOW-6.2, the following hold VERBATIM
+> at f_S — LEMMA GENTOW-1(a)(b)(c)(d), COROLLARY GENTOW-1.1, LEMMA
+> GENTOW-2 (at its stated scope), LEMMA GENTOW-5 — each with
+> mu2 ↦ mu2*, i.e.:
+> (a) [BUDGETS] in f_S = Phi2^{mu2*} + Sum_{j<mu2*} C_j^S Phi2^j,
+> the composed digits obey
+>
+>     v(c^S_{j,a,b}) >= ceil( ((mu2*−j)E2 − w(a,b)) / (e1e2) ) + [pin],
+>     [pin] = 1 iff e1e2 | (mu2*−j)E2 − w(a,b) >= 0
+>
+> — GENTOW-1(a)'s display with the block side height (mu2*−j)E2;
+> (b) [FIBRATION] f_S ↦ (c^S_{j,a,b}) bijects the block locus onto
+> the budget box; per window N the free-O-digit count is
+> Sum_{j,a,b} (N − floor*(j,a,b)) — the COUNT layer at the block;
+> (c) [NODE + FIELD FLOORS] p_j^S >= (mu2*−j)E2 + 1 (sharp), and
+> dv2(Phi2(x0)) > E2 at every root x0 of f_S;
+> (d) [PROJECTION VISIBILITY] via COR GENTOW-4.C (c_g-translation),
+> (a)+(c) display on f's own pins: wherever (j, p_j) lies on the
+> >T2 initial segment of P2(f), p_j − c_g clears the (a)/(c) floors
+> — the budget test runs on f without exhibiting f_S; and the block
+> window ledger (GENTOW-5 at f_S) caps consulted block heights at
+> e1e2·N − c_g when read through f's window-N data.
+>
+> *Proof.* (a)–(c): GENTOW-1 and GENTOW-5's proofs are stated for
+> an arbitrary member of 𝒯 at its genre; LEMMA GENTOW-6.2 puts f_S
+> in 𝒯* and the constants (u2, e2, f2, E2, w(a,b), dv2) are those
+> of the class — only mu2 is re-instantiated. (d): COR GENTOW-4.C
+> proved p_j^S = p_j − c_g on the >T2 hull and already transported
+> the node floors; the budget floors (a) transport by the same
+> displayed equality; the window shift: a block digit consulted at
+> block height m corresponds through HE6R1-2(b) to f-data at height
+> m + c_g, and f's window-N cap is e1e2·N (GENTOW-5(a) at f), so
+> the block read is lift-stable below e1e2·N − c_g. ∎
+
+**What GENTOW4-BOX-2 asked beyond this, honestly parked.** The box
+names "budget/count LAWS on the partial-side locus" — the display
+above supplies the budget/count layer PER BLOCK (and per class,
+each at its own key, by the same instantiation). What is NOT
+delivered: the product-measure ledger for the f-locus itself — the
+count of f's per window as a product over (class boxes) x (sibling
+data), which requires pricing the multiplication map
+(f_S, g) ↦ f_S·g on ambient windows (a Jacobian/content identity).
+That counting seam was already open at FULL sides (GENTOW-1's
+count-law remark: "the per-genre tower count LEDGERS ... a counting
+unit NOT executed here") and is not specific to partial sides; it
+stays named as GENTOW6-BOX-2 (S5). The box's BUDGET half is closed
+by the display above; the LEDGER half was never a partial-side
+novelty.
 
 ## S3. THEOREM GENTOW-6.3 (the attainment certificate) — TBD
 
