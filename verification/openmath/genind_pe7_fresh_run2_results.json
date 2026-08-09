@@ -1,0 +1,16 @@
+{
+ "unit": "GENIND passPE7 fresh route (2,5) cluster: n=10, Q=32",
+ "legA_counts": {
+  "RAM": 1015808,
+  "DRAIN": 1024,
+  "ALPHA": 992,
+  "S55": 14880,
+  "I10": 15872
+ },
+ "checks": 2068507,
+ "violations": [
+  "P4 DRAIN-deep honesty: shapes {((2, 5),)}",
+  "P4 ALPHA honesty: shapes {((2, 5),)}"
+ ],
+ "elapsed_s": 2.0
+}

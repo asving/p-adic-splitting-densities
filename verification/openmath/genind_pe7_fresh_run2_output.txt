@@ -1,0 +1,14 @@
+LEG A GREEN {'RAM': 1015808, 'DRAIN': 1024, 'ALPHA': 992, 'S55': 14880, 'I10': 15872}
+LEG B GREEN: ONTO 31x1024, fiber 32, RAM 984064 DRAIN 31744
+LEG C GREEN: bracket identity mu=1..4 at Q=32
+PARI stack size set to 268435456 bytes, maximum size set to 268435456
+P4 RAM 30/30 == [(2, 5)]
+P4 S55 30/30 == [(1, 5), (1, 5)]
+P4 I10 30/30 == [(1, 10)]
+P4 TOWER 20/20 == [(2,5)]
+P4 DRAIN-b1nz 24/24 == [(1,5),(1,5)] (tail sigma-constant)
+VIOLATION: P4 DRAIN-deep honesty: shapes {((2, 5),)}
+P4 DRAIN-deep-honesty shapes observed: [((2, 5),)]
+VIOLATION: P4 ALPHA honesty: shapes {((2, 5),)}
+P4 ALPHA-honesty shapes observed: [((2, 5),)]
+TOTAL checks=2068507 violations=2 elapsed=2.0s

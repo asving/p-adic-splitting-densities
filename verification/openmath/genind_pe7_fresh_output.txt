@@ -1,0 +1,12 @@
+LEG A GREEN {'RAM': 1015808, 'DRAIN': 1024, 'ALPHA': 992, 'S55': 14880, 'I10': 15872}
+LEG B GREEN: ONTO 31x1024, fiber 32, RAM 984064 DRAIN 31744
+LEG C GREEN: bracket identity mu=1..4 at Q=32
+PARI stack size set to 268435456 bytes, maximum size set to 268435456
+P4 RAM 30/30 == [(2, 5)]
+P4 S55 30/30 == [(1, 5), (1, 5)]
+P4 I10 30/30 == [(1, 10)]
+P4 TOWER 20/20 == [(2,5)]
+P4 DRAIN-b1nz 24/24 == [(1,5),(1,5)] (tail sigma-constant)
+P4 DRAIN-deep 4 states x 3 constructed lifts: 3 shapes each
+P4 ALPHA 4 states x 3 constructed lifts: 3 shapes each
+TOTAL checks=2068533 violations=0 elapsed=1.8s
