@@ -14,10 +14,13 @@ iterated key Φ₃ = Φ₂^{e₃f₃} − Σ_t k̂_t Φ₂^{e₃t}) and left ONE
 (α): the Φ′-adic development of Φ₃ is ONE-SIDED of slope κ₂ with
 residual a ψ₂-power — true at the constructed witnesses, unproved.
 This note discharges (α) from the local FGMN print
-(docs/references/fgmn_residual_ideals_1305.0775v3_layout.txt,
-numbering verified at ledger 63091ce; the source is arXiv
-1305.0775v3, Fernández–Guàrdia–Montes–Nart, "Residual ideals of
-MacLane valuations" — NOT the excluded 2212.00294).
+(docs/references/fgmn_residual_ideals_1305.0775v3_layout.txt; [r1]
+provenance: the 12 consumed statements + eq (14) verified against
+the arXiv v3 PDF itself by visual page read — 13-row table in S6.1,
+local PDF bit-identical to arXiv's serving copy, fetch disclosed
+there; the source is arXiv 1305.0775v3, Fernández–Guàrdia–Montes–
+Nart, "Residual ideals of MacLane valuations" — NOT the excluded
+2212.00294).
 
 ## S1. STEP-1 VERDICT: the FGMN theorem EXISTS
 
@@ -77,8 +80,14 @@ pins (4,0),(2,7),(0,10) ↦ (4,4),(2,11/2),(0,5).)
 
 ## S3. VERBATIM QUOTES AT THE VERIFIED NUMBERING
 
-All quotes from docs/references/fgmn_residual_ideals_1305.0775v3_layout.txt
-(print numbering verified at ledger 63091ce); Lxxxx = layout line.
+All quotes from docs/references/fgmn_residual_ideals_1305.0775v3_layout.txt;
+Lxxxx = layout line. [r1] Numbering AND statement content of each
+quote below re-verified directly against the arXiv v3 PDF (visual
+page read, decorrelated from the pdftotext extraction the layout
+pins live in) — per-statement table in S6.1. The pre-repair pointer
+"numbering verified at ledger 63091ce" over-claimed: that ledger
+entry was local-extraction-only and covered GRTJC's cite set (only
+Cor 4.7 + eq (14) overlap this note's) — PE1 finding F1, cured here.
 
 **[Q1] Lemma 1.11 (L275).** "Every φ ∈ KP(µ) is irreducible in Kv [x]."
 
@@ -152,7 +161,8 @@ as in S2's dictionary: µ₀ →(x, λ₁) µ₁ →(Φ′, λ₂) µ₂ →(Φ�
 an optimal MacLane chain (deg x < deg Φ′ < deg Φ₂ — the tower's
 stages are proper, e₂f₂ ≥ 2 in repo names). Base field K = ℚ (or a
 number field), v = the p-adic valuation, K_v complete discrete —
-FGMN's standing setting (their §6 header, L1434).
+FGMN's standing setting (their §6 header, L1433, PDF p.27 [r1: pin
+corrected from L1434, PE1 F5]).
 
 **THEOREM GENTOW2-A.** Let ψ₃ ∈ F₃[y] = K₂[y] be monic irreducible
 of degree f₃ ≥ 1 with ψ₃(0) ≠ 0, and let e₃ ≥ 1 be given with
@@ -298,9 +308,56 @@ touches the FGMN citation itself.
 **Source.** Fernández, Guàrdia, Montes, Nart, "Residual ideals of
 MacLane valuations", arXiv:1305.0775v3
 (published J. Algebra 427 (2015) 30–75); local print
-docs/references/fgmn_residual_ideals_1305.0775v3_layout.txt,
-numbering verified against the arXiv v3 PDF at ledger 63091ce. NOT
+docs/references/fgmn_residual_ideals_1305.0775v3_layout.txt. NOT
 the excluded 2212.00294; no statement from 2212.00294 is consumed.
+
+[r1] The pre-repair sentence here read "numbering verified against
+the arXiv v3 PDF at ledger 63091ce" — an over-claim on both method
+and scope (PE1 F1): ledger 63091ce's check was against the LOCAL
+TEXT EXTRACTION (its own disclosed caveat), and its scope was
+GRTJC's cite set, of which only Cor 4.7 and eq (14) overlap this
+note's. The corrected provenance is S6.1 below, which closes the
+PDF leg directly.
+
+### S6.1 [r1] PDF-PROVENANCE TABLE (the r1 repair of PE1 F1)
+
+**Method.** (i) Identity: docs/references/
+fgmn_residual_ideals_1305.0775v3.pdf (md5
+da846c82f1fcb619cefb3feb8164191e, sha256
+651b0cef64e6aea11526965d3ef7879d69ce7c0a31af497978c3e6192f615f35,
+518,522 bytes) was compared 2026-08-09 against a fresh fetch of
+https://arxiv.org/pdf/1305.0775v3 — BIT-IDENTICAL (same md5, same
+size); PDF page 1 carries the stamp "arXiv:1305.0775v3 [math.NT]
+26 Jul 2013" and the title/author block. (ii) Statement check: each
+row below was read VISUALLY off the rendered PDF page (Read-tool
+page extraction) and compared against the S3 quote — a leg
+decorrelated from the pdftotext layout extraction that the Lxxxx
+pins index (the extraction-corruption rule's independent leg).
+Verdict vocabulary: MATCH = statement content AND numbering agree
+with the S3 quote/instantiated use.
+
+| # | statement (S3 tag) | PDF page | layout pin | verdict |
+|---|---|---|---|---|
+| 1 | Lemma 1.11 [Q1] | 6 | L275 | MATCH |
+| 2 | Cor 1.13 [Q2] | 7 | L315 | MATCH |
+| 3 | Def 5.2 [Q3] | 24 | L1238–1239 | MATCH |
+| 4 | Lemma 5.3 [Q4] | 24 | L1240–1244 | MATCH |
+| 5 | Cor 4.4 (item 4 used) | 21 | L1089 | MATCH |
+| 6 | Cor 4.7 [Q8] | 21–22 | L1121–1126 | MATCH |
+| 7 | Cor 4.12 + proof constr. [Q5] | 22 | L1161–1166 | MATCH (incl. the print's "degre" typo, visually present in the PDF) |
+| 8 | Prop 5.7 [Q7] | 25 | L1276–1281 | MATCH |
+| 9 | eq (14) [Q7] | 19 | L1004 | MATCH |
+| 10 | Cor 5.6 | 24 | L1263–1265 | MATCH |
+| 11 | Thm 5.8 + degree-forcing display [Q6] | 25 | L1296–1302 | MATCH |
+| 12 | Thm 6.3 + proof opening [Q9] | 28 | L1458–1465 | MATCH |
+| 13 | Cor 6.4 + eq (23) [Q10] | 29 | L1523–1527 | MATCH |
+
+Supporting pins also PDF-verified on the same pass: Prop 1.9 (p.6),
+Lemma 2.4 (p.9), Def 3.1 + display (4) (p.12), the §3.2 numerical
+data table (pp.15–16), the N_i/R_{i,α} operator definitions + eq
+(12) (p.17), Def 3.15 (the ε_i(α) constants) + Def 3.16 (p.18),
+Def 3.18 + j₀ formula (p.19), the §6 header (bottom of p.27 —
+layout L1433; the pre-repair pin "L1434" was off by one, PE1 F5).
 
 **Statements consumed** (each quoted verbatim in S3): Lemma 1.11,
 Cor 1.13, Def 5.2, Lemma 5.3, Cor 4.4, Cor 4.7, Cor 4.12 (+ its
