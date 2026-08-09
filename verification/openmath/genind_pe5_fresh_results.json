@@ -1,0 +1,21 @@
+{
+ "elapsed_s": 28.5,
+ "n_checks": 109146,
+ "tally": {
+  "FRA-box-q2": 256,
+  "FRA-box-q3": 81,
+  "FRA-nm-q2": 200,
+  "FRA-nm-q3": 120,
+  "FRA-pari-q2": 15,
+  "FRA-pari-q3": 10,
+  "FRA-tooth": 10,
+  "FRB-pari": 25,
+  "FRB-sameside": 59049,
+  "FRC-C1": 128,
+  "FRC-C1q3": 100,
+  "FRC-C2": 16384,
+  "FRC-C3": 32768
+ },
+ "verdict": "GREEN",
+ "violations": []
+}

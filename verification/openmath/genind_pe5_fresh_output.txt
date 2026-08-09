@@ -1,0 +1,33 @@
+GENIND passPE5 FRESH ROUTE (NINEMIX n=9 + SAMESIDE + STEEPSCAN)
+sealed runner md5 e7ca150b1b5cb13ad4f3350ac776aca2 VERIFIED; imported read-only
+-- FRA-nm-q2: top event = (('CS', ('CSOTHER', 9, (5, 9), 2, 1, 2, 1)),)
+-- FRA-nm-q2: 200 samples, windows (2,5) exact [0.1s]
+-- FRA-nm-q3: top event = (('CS', ('CSOTHER', 9, (5, 9), 2, 1, 2, 1)),)
+-- FRA-nm-q3: 120 samples, windows (2,5) exact [0.1s]
+-- FRA-box-q2: 256 box members -> 256 distinct classes (want 256) [0.2s]
+-- FRA-box-q3: 81 box members -> 81 distinct classes (want 81) [0.2s]
+  ***   Warning: new maximum stack size = 536870912 (512.000 Mbytes).
+-- FRA-pari-q2: 15 lifts, partition {3:1,2:2,1:2,1/2:4} exact [0.2s]
+-- FRA-pari-q3: 10 lifts, partition {3:1,2:2,1:2,1/2:4} exact [0.2s]
+-- FRA-tooth: TOOTH FIRED 10/10 (corrupted (3,4) vertex pin exits the genre)
+-- FRB-sameside: 59,049 exhaustive; ONTO 9x9 fiber 729; DEC/DRAIN {'DEC': 26244, 'DRAIN': 32805}; trichotomy same-side leg exact [19.4s]
+-- FRB-pari: 25 fully-DEC lifts -> two ramified quadratics each (sigma {(2,1),(2,1)}) [19.5s]
+-- FRC-C1: 128 exhaustive; Wc=3; ONTO 16 fiber 8; DEC 80 / DRAIN 48 [19.5s]
+-- FRC-C2: 16384 exhaustive; Wc=4; ONTO 64 fiber 256; DEC 13312 / DRAIN 3072 [23.1s]
+-- FRC-C3: 32768 exhaustive; Wc=2; ONTO 4 fiber 8192; DEC 16384 / DRAIN 16384 [28.5s]
+-- FRC-C1q3: 100 samples, odd-q pin live, Wc=3 exact [28.5s]
+
+  FRA-box-q2     256
+  FRA-box-q3     81
+  FRA-nm-q2      200
+  FRA-nm-q3      120
+  FRA-pari-q2    15
+  FRA-pari-q3    10
+  FRA-tooth      10
+  FRB-pari       25
+  FRB-sameside   59049
+  FRC-C1         128
+  FRC-C1q3       100
+  FRC-C2         16384
+  FRC-C3         32768
+VERDICT: GREEN — 109146 checks, 0 violations, 28.5 s
