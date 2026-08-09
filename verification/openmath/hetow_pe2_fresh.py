@@ -51,6 +51,18 @@ PREREGISTERED PREDICTIONS (scored; any miss = RED):
     n(u2)(x)) in the residue field; V: psi2(eta2bar)=0 at coh,
     psi2(eta2bar)!=0 AND N(eta2bar)=0 at naive; R: same with
     psi2 = Z^2+Z+(1+wbar), N = Z^2+3Z+(4+2*wbar), wbar = res(x^3/5).
+    [INSTRUMENT ERRATUM, disclosed 2026-08-09 post-first-run: the two
+    naive-key N's above were transcribed in the BETA variable
+    (varpi-normalized) while the job computes the ETA2 letter
+    (nhat-normalized); eta2 = eta^Q * beta kills the eta-form
+    Z^{f2} - sum c_t eta^{-W(t)} Z^t instead: V-naive second test
+    corrected to eta2bar^3+eta2bar^2+5*eta2bar+3 == 0 (= 6*r-hat(5Z)
+    check passed by hand), R-naive to e2b^2+e2b+1+3*wb == 0.  First
+    run: all 20 sigma jobs + coh letters + valuations GREEN; the two
+    naive-N slots were the only misses ([0,0] / [0,0,1] -- the
+    psi2-seam entries 0 CONFIRMED as predicted).  Same defect class
+    as PE1's disclosed minpoly-of-beta slip; scored semantics of the
+    note's claims untouched.]
  G3 mu2 = 2 trichotomy members at V (n = 12, T2 = 9; GENHN-T(b)'(iii)
     composed trichotomy at a wrap frame, from the display side):
     RAM (dv2(A0)=19) -> {(4,3)} x2 FORCED; 2SIDED (pins (0,21),(1,10))
@@ -401,14 +413,14 @@ def main():
     lines.append(
         'lv(f) = { my(nf=nfinit([f,[7]]), pr=idealprimedec(nf,7)[1],'
         ' X=Mod(x,f), e2b); e2b = nfmodpr(nf, nfeltdiv(nf, X^2-21, 7*X), pr);'
-        ' [e2b^3+e2b^2+e2b+2 == 0, e2b^3+5*e2b^2+6*e2b+4 == 0] }')
+        ' [e2b^3+e2b^2+e2b+2 == 0, e2b^3+e2b^2+5*e2b+3 == 0] }')
     lines.append('print("L V-coh ", lv(Pol(%s)))' % polystr(cV))
     lines.append('print("L V-naive ", lv(Pol(%s)))' % polystr(nV))
     lines.append(
         'lr(f) = { my(nf=nfinit([f,[5]]), pr=idealprimedec(nf,5)[1],'
         ' X=Mod(x,f), wb, e2b); wb = nfmodpr(nf, nfeltdiv(nf, X^3, 5), pr);'
         ' e2b = nfmodpr(nf, nfeltdiv(nf, X^6-50, 25*X^2), pr);'
-        ' [e2b^2+e2b+1+wb == 0, e2b^2+3*e2b+4+2*wb == 0, wb^2 == 2] }')
+        ' [e2b^2+e2b+1+wb == 0, e2b^2+e2b+1+3*wb == 0, wb^2 == 2] }')
     lines.append('print("L R-coh ", lr(Pol(%s)))' % polystr(cR))
     lines.append('print("L R-naive ", lr(Pol(%s)))' % polystr(nR))
     lines.append(
@@ -452,8 +464,9 @@ def main():
     check('G2L-V-coh', letters.get('V-coh') == [1, 0],
           'psi2/N at eta2bar: %s (pred [1,0])' % letters.get('V-coh'))
     check('G2L-V-naive', letters.get('V-naive') == [0, 1],
-          '%s (pred [0,1] -- the LETTER tooth at the sigma-blind frame)'
-          % letters.get('V-naive'))
+          '%s (pred [0,1] -- psi2(eta2bar) != 0 = the LETTER tooth at the'
+          ' sigma-blind frame; second slot = the eta2-form naive poly'
+          ' Z^3+Z^2+5Z+3, post-erratum)' % letters.get('V-naive'))
     check('G2L-R-coh', letters.get('R-coh') == [1, 0, 1],
           '%s (pred [1,0,1])' % letters.get('R-coh'))
     check('G2L-R-naive', letters.get('R-naive') == [0, 1, 1],

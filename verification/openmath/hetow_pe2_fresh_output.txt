@@ -1,0 +1,98 @@
+HETOW passPE2 fresh route: 4 new wrap frames (V f2=3, U ord5, S e2=2, R f1=2) + letters + F-2 + slot ties
+frame V: naive = (33957)*x^0+(-30527)*x^1+(-735)*x^2+(1764)*x^3+(-63)*x^4+(-42)*x^5+(1)*x^6
+frame V: coh   = (19551)*x^0+(-20923)*x^1+(-49)*x^2+(1764)*x^3+(-63)*x^4+(-42)*x^5+(1)*x^6
+  E1-W-two-ways-V                    ok  Q(9)-3Q(3) = 1 vs floor = 1
+  E1-W1-two-ways-V                   ok  Q(6)-2Q(3) = 1
+  killed(naive) (4, 6, 5)  killed(coh) (5, 4, 5)  minpoly(beta) (5, 4, 5)
+  E2-coh-eq-minpoly-V                ok  (5, 4, 5) vs (5, 4, 5)
+  E2-twist-real-V                    ok  minpoly (5, 4, 5) != psi2 (2, 1, 1)
+  E3-naive-diverges-V                ok  naive (4, 6, 5) vs minpoly (5, 4, 5)
+  E23-prereg-V                       ok  prereg coh (5, 4, 5) naive (4, 6, 5)
+frame U: naive = (-8228)*x^0+(3630)*x^1+(-66)*x^2+(-110)*x^3+(1)*x^4
+frame U: coh   = (-12221)*x^0+(3630)*x^1+(-66)*x^2+(-110)*x^3+(1)*x^4
+  E1-W-two-ways-U                    ok  Q(6)-2Q(3) = 1 vs floor = 1
+  killed(naive) (3, 4)  killed(coh) (9, 4)  minpoly(beta) (9, 4)
+  E2-coh-eq-minpoly-U                ok  (9, 4) vs (9, 4)
+  E2-twist-real-U                    ok  minpoly (9, 4) != psi2 (4, 1)
+  E3-naive-diverges-U                ok  naive (3, 4) vs minpoly (9, 4)
+  E23-prereg-U                       ok  prereg coh (9, 4) naive (3, 4)
+frame S: naive = (1053)*x^0+(-648)*x^1+(-864)*x^2+(216)*x^3+(216)*x^4+(-18)*x^5+(-24)*x^6+(1)*x^8
+frame S: coh   = (810)*x^0+(-648)*x^1+(-864)*x^2+(216)*x^3+(216)*x^4+(-18)*x^5+(-24)*x^6+(1)*x^8
+  E1-W-two-ways-S                    ok  Q(10)-2Q(5) = 1 vs floor = 1
+  killed(naive) (1, 1)  killed(coh) (2, 1)  minpoly(beta) (2, 1)
+  E2-coh-eq-minpoly-S                ok  (2, 1) vs (2, 1)
+  E3-naive-diverges-S                ok  naive (1, 1) vs minpoly (2, 1)
+  E23-prereg-S                       ok  prereg coh (2, 1) naive (1, 1)
+frame R: naive = (2500)*x^0+(-12500)*x^1+(5000)*x^2+(-2500)*x^4+(-100)*x^6+(-100)*x^8+(1)*x^12
+frame R: coh   = (2500)*x^0+(-9375)*x^1+(5000)*x^2+(-2500)*x^4+(-100)*x^6+(-100)*x^8+(1)*x^12
+  E1-W-two-ways-R                    ok  Q(16)-2Q(8) = 1 vs floor = 1
+  killed(naive) ((4, 2), (3, 0))  killed(coh) ((4, 4), (3, 0))  minpoly(beta) ((4, 4), (3, 0))
+  E2-coh-eq-minpoly-R                ok  ((4, 4), (3, 0)) vs ((4, 4), (3, 0))
+  E2-twist-real-R                    ok  minpoly ((4, 4), (3, 0)) != psi2 ((1, 1), (1, 0))
+  E3-naive-diverges-R                ok  naive ((4, 2), (3, 0)) vs minpoly ((4, 4), (3, 0))
+  E23-prereg-R                       ok  prereg coh ((4, 4), (3, 0)) naive ((4, 2), (3, 0))
+  G1-coh-V-routes-agree              ok  ((2, 3),) vs ((2, 3),)
+  G1-coh-V                           ok  sigma = ((2, 3),)
+  G1-coh-U-routes-agree              ok  ((2, 2),) vs ((2, 2),)
+  G1-coh-U                           ok  sigma = ((2, 2),)
+  G1-coh-S-routes-agree              ok  ((4, 2),) vs ((4, 2),)
+  G1-coh-S                           ok  sigma = ((4, 2),)
+  G1-coh-R-routes-agree              ok  ((3, 4),) vs ((3, 4),)
+  G1-coh-R                           ok  sigma = ((3, 4),)
+  G2-naive-V-SIGMABLIND-routes-agree ok  ((2, 3),) vs ((2, 3),)
+  G2-naive-V-SIGMABLIND              ok  sigma = ((2, 3),)
+  G2-TOOTH-naive-U-routes-agree      ok  ((2, 1), (2, 1)) vs ((2, 1), (2, 1))
+  G2-TOOTH-naive-U                   ok  sigma = ((2, 1), (2, 1))
+  G2-TOOTH-naive-S-routes-agree      ok  ((8, 1),) vs ((8, 1),)
+  G2-TOOTH-naive-S                   ok  sigma = ((8, 1),) (INFO)
+  G2-TOOTH-naive-R-routes-agree      ok  ((3, 2), (3, 2)) vs ((3, 2), (3, 2))
+  G2-TOOTH-naive-R                   ok  sigma = ((3, 2), (3, 2))
+  G3-RAM-routes-agree                ok  ((4, 3),) vs ((4, 3),)
+  G3-RAM                             ok  sigma = ((4, 3),)
+  G3-RAM-routes-agree                ok  ((4, 3),) vs ((4, 3),)
+  G3-RAM                             ok  sigma = ((4, 3),)
+  G3-2SIDED-routes-agree             ok  ((2, 3), (2, 3)) vs ((2, 3), (2, 3))
+  G3-2SIDED                          ok  sigma = ((2, 3), (2, 3))
+  G3-2SIDED-routes-agree             ok  ((2, 3), (2, 3)) vs ((2, 3), (2, 3))
+  G3-2SIDED                          ok  sigma = ((2, 3), (2, 3))
+  G3-INERTFAM-routes-agree           ok  ((2, 6),) vs ((2, 6),)
+  G3-INERTFAM                        ok  sigma = ((2, 6),)
+  G3-INERTFAM-routes-agree           ok  ((2, 6),) vs ((2, 6),)
+  G3-INERTFAM                        ok  sigma = ((2, 6),)
+  G3-INERTFAM-routes-agree           ok  ((2, 3), (2, 3)) vs ((2, 3), (2, 3))
+  G3-INERTFAM                        ok  sigma = ((2, 3), (2, 3))
+  G3-INERTFAM-routes-agree           ok  ((2, 3), (2, 3)) vs ((2, 3), (2, 3))
+  G3-INERTFAM                        ok  sigma = ((2, 3), (2, 3))
+  G3-3RAM-routes-agree               ok  ((6, 3),) vs ((6, 3),)
+  G3-3RAM                            ok  sigma = ((6, 3),)
+  G4-RAM-routes-agree                ok  ((8, 2),) vs ((8, 2),)
+  G4-RAM                             ok  sigma = ((8, 2),)
+  G4-INT-routes-agree                ok  ((4, 4),) vs ((4, 4),)
+  G4-INT                             ok  sigma = ((4, 4),)
+  G4-INT-routes-agree                ok  ((4, 4),) vs ((4, 4),)
+  G4-INT                             ok  sigma = ((4, 4),)
+  G2L-V-coh                          ok  psi2/N at eta2bar: [1, 0] (pred [1,0])
+  G2L-V-naive                        ok  [0, 1] (pred [0,1] -- psi2(eta2bar) != 0 = the LETTER tooth at the sigma-blind frame; second slot = the eta2-form naive poly Z^3+Z^2+5Z+3, post-erratum)
+  G2L-R-coh                          ok  [1, 0, 1] (pred [1,0,1])
+  G2L-R-naive                        ok  [0, 1, 1] (pred [0,1,1])
+  G5G6-R-valuations                  ok  [3, 4, 1, 8, 7, 9, 16, 16, 16, 16] (pred [3,4,1,8,7,9,16,16,16,16])
+
+census:
+   G1-coh-R:((3, 4),)                                       1
+   G1-coh-S:((4, 2),)                                       1
+   G1-coh-U:((2, 2),)                                       1
+   G1-coh-V:((2, 3),)                                       1
+   G2-TOOTH-naive-R:((3, 2), (3, 2))                        1
+   G2-TOOTH-naive-S:((8, 1),)                               1
+   G2-TOOTH-naive-U:((2, 1), (2, 1))                        1
+   G2-naive-V-SIGMABLIND:((2, 3),)                          1
+   G3-2SIDED:((2, 3), (2, 3))                               2
+   G3-3RAM:((6, 3),)                                        1
+   G3-INERTFAM:((2, 3), (2, 3))                             2
+   G3-INERTFAM:((2, 6),)                                    2
+   G3-RAM:((4, 3),)                                         2
+   G4-INT:((4, 4),)                                         2
+   G4-RAM:((8, 2),)                                         1
+
+TOTAL gp sigma jobs 20 + 4 letter + 1 val-block; violations 0 (131.5s)
+VERDICT: GREEN

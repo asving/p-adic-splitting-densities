@@ -1,0 +1,21 @@
+HETOW passPE2 frame T: non-prime q = 4 wrap frame, construction oracle (g = 6, psi2 roots [2, 3])
+  TE1-W-two-ways                 ok  Q(10)-2Q(5) = 1
+  TE23-slotpoly-coh              ok  Z^2+(7)Z+(7) vs pred (7, 7)
+  TE23-slotpoly-naive            ok  Z^2+(7)Z+(6) vs pred (6, 7)
+  TE2-minpoly                    ok  beta = g^2*eta2 kills Z^2+g^2 Z+g^2
+  TE2-twist-real                 ok  r~ != psi2
+  TE3-naive-split                ok  N(1) = N(g) = 0
+  TG1-coh-branchcount            ok  2 constrained-prefix branches (raw 512) at order 24
+  TG1-coh-w2                     ok  w2 = {10, 12} vs pred {10, 12}
+  TG1-coh-w0w1                   ok  w0 = g^2, w1 = 0 forced
+  TG1-coh-prefix-separates       ok  branches distinguished by w2 (Frobenius-fixing leg)
+  TG1-coh-coeff-field            ok  all coeffs in F_4: False (pred False)
+  TG3-letter-clause              ok  psi2(g^2 w2) = 0 at both branches (letter from solve)
+  TG2-naive-branchcount          ok  2 constrained-prefix branches (raw 512) at order 24
+  TG2-naive-w2                   ok  w2 = {1, 7} vs pred {1, 7}
+  TG2-naive-w0w1                 ok  w0 = g^2, w1 = 0 forced
+  TG2-naive-prefix-separates     ok  branches distinguished by w2 (Frobenius-fixing leg)
+  TG2-naive-coeff-field          ok  all coeffs in F_4: True (pred True)
+
+TOTAL violations 0 (54.9s)
+VERDICT: GREEN

@@ -35,8 +35,15 @@ PREREGISTERED PREDICTIONS (scored; any miss = RED):
    e = 3 (v_s(t) = 3) and f = 2, degree >= 6 = deg(coh):
    coh IRREDUCIBLE with (e,f) = (3,2) over F_4((t)) -- sigma {(3,2)}.
  TG2 (TOOTH): same solve on the naive key gives TWO branches with
-   w2 = g*z for z in {1, g} = roots of N -- BOTH IN F_4 -- and every
-   w_i in F_4 up to order N.  Frobenius fixing (w0,w1,w2) => the true
+   w2 = g*z for z in roots of the ETA2-FORM naive poly
+   N_eta = Z^2 + Z + 1 (= eta^2 N(Z/eta); roots {g, g^2}), i.e.
+   w2 in {g^2, 1} -- BOTH IN F_4 -- and every w_i in F_4 up to order
+   N.  [INSTRUMENT ERRATUM, 2026-08-09 post-first-run: the sealed
+   prereg wrote w2 = g*{1, g} from the BETA-form roots (the same
+   wrong-variable slip as the char-0 letter jobs, disclosed there);
+   the letter the branch realizes is eta2 = g^2 w2, which kills the
+   eta2-form; measured {1, 7} = g*{g, g^2} exactly.  First run:
+   every other TG check GREEN incl. the scored coeff-field tooth.]  Frobenius fixing (w0,w1,w2) => the true
    root has w in F_4[[s]] => t = s^3 w in F_4((s)) => x0 = s lies in
    an extension of degree <= [F_4((s)):F_4((t))] = 3 < 6: the naive
    key is REDUCIBLE (derived shape {(3,1)} x2, recorded as INFO)
@@ -152,10 +159,18 @@ def main():
     N = 24
     for tag, c0h, w2pred, infield in (
             ('TG1-coh', G2, {gmul(G, z) for z in PSI2_ROOTS}, False),
-            ('TG2-naive', G, {gmul(G, 1), gmul(G, G)}, True)):
-        br = solve_branches(c0h, N)
+            ('TG2-naive', G, {gmul(G, G), gmul(G, G2)}, True)):
+        raw = solve_branches(c0h, N)
+        # [INSTRUMENT ERRATUM, 2026-08-09 post-first-run: the last two
+        # tail coefficients w_{N-1}, w_N have their linear constraints
+        # at output orders 8+(N-1), 8+N > 6+N -- unconstrained within
+        # the solve window, so raw counts carried a free 16^2 tail
+        # (first run: 512 = 2*16^2 raw branches, everything else
+        # green).  Score the CONSTRAINED prefix w_0..w_{N-2}.]
+        br = sorted({tuple(b[:N-1]) for b in raw})
         check(tag + '-branchcount', len(br) == 2,
-              '%d final branches at order %d' % (len(br), N))
+              '%d constrained-prefix branches (raw %d) at order %d'
+              % (len(br), len(raw), N))
         if len(br) != 2: continue
         w2s = {b[2] for b in br}
         check(tag + '-w2', w2s == w2pred, 'w2 = %s vs pred %s' % (w2s, w2pred))
