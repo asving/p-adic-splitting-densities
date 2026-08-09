@@ -14520,3 +14520,23 @@ line owed there, consumers scale-invariant; the ℓ≥2 cocycle-unit
 β^{c₁} omission in the scalar identification; stale cross-grades,
 conservative direction; the tag-convention precision). 1/2; rider
 then PE3 = the acceptance attempt.
+
+---
+
+## 529 STORM (wave 24 + B3 partial casualties) — SINGLE RESUME ISSUED (wave 24: HE3 r2 + HE6R1 PE3; rider cached) — PENDING SET — 2026-08-09 ~17:00 UTC
+
+Survivors committed: HE6R1 rider a57c486 + HE7 dated line 263cef0
+(count HOLDS 1/2); GENTOW-6's S2+S3 (d9aed78/a564f2f — the
+GENTOW4-BOX-2 budget half + the attainment quadrichotomy);
+GENTOW2 PE1 61daa69 (0C+3G+3m: THE CITATION FAITHFUL — 10/10
+character-exact, map holds, tooth fired — but F1: the Thm 6.3/
+Cor 6.4 numbering has NO PDF-verified leg, the ledger's check was
+local-extraction-only and GRTJC-scoped; F2: the B-2 identification
+is FIRST made in GENTOW2, its "accepted corpus" pointer
+unsubstantiated; F3: the fixed-unit fallback false at f₃ ≥ 2 with
+a displayed counter-instance). PENDING: (1) resume B3
+(wf_c7f83ea4-855: GENTOW-6 finishes from committed S2/S3 + HETOW
+PE1) — NEXT firing per single-resume policy; (2) GENTOW2 r1 must
+include the PDF-provenance leg (fetch arXiv 1305.0775v3, verify
+the consumed passages against the local print — the honest cure
+for F1) + the F2 derivation + the F3 clause fix.
