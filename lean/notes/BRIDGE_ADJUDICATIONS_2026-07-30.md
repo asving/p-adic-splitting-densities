@@ -15215,3 +15215,48 @@ codomain member, the unit-square's other corner). If all three land
 CLEAN: **the tower campaign closes at 7/7** and the n ≥ 8 leg of the
 uniformity theorem rests entirely on accepted texts + the three named
 count-grade sub-boxes.
+
+## B16 FOLD (2026-08-10) — ★★★ THE TOWER CAMPAIGN CLOSES AT 7/7 ★★★
+
+All three acceptance attempts CLEAN. **GENTOW3 ACCEPTED 2/2** (PE5
+0633c6a3: 0 GAP, 0 MINOR — the arc program's first zero-finding pass;
+fresh route FR5X = δ=9, largest anywhere, × e₂=2 at both μ₂=2 AND
+μ₂=3 — first μ₂=3 × e₂>1 leg; the certificate's THIRD configuration
+measured (attained / slack / identically-zero shadow), named as data
+for the BOX-1 residue; the cancelled-clause and existential-clause
+each gained their second measured frame). **GENTOW4 ACCEPTED 2/2**
+(PE3 f0874ff9: 0C/0G/2m; the five rider folds re-derived and
+confirmed; COR GENTOW-4.C re-derived — it carries EXACTLY what
+GENTOW6's cap lemma displays as consumed, so the conditional cite CAN
+UPGRADE; fresh route: FR-3B = the first THREE-BLOCK partial member
+anywhere, gauge-live, three simultaneous ties, 9/9 naive collapses;
+FR-Q = the first f₂=4 frame anywhere with the MERGED tooth — naive
+key byte-identical to the corrected key yet μ₂*=0, the third
+carrier-but-wrong-datum instance; minors m-i = a one-clause 4.C
+citation fix (the equality also rides (c)'s residual display —
+machine-witnessed TRUE), m-ii = a one-sided-check disclosure).
+**GENTOW6 ACCEPTED 2/2** (PE3 ed5ed51f: 0C/0G/1m; the cap lemma
+re-walked as a system with BLOCK-STAB redundancy ADJUDICATED harmless;
+the PE2-F-2 codomain bracket found EXACT and sharper than the
+verifier's own form (n mod D₂ ≠ D₂−1); fresh route: the FIRST
+GAUGE-LIVE TIE anywhere (Q3, η=2 — the η-blind residual grows a root
+at 1 and breaks the profile: the tooth) + the rider codomain at two
+fresh grids + the first η≠1 certificate row at the (0, e₂f₂−1)
+corner; minor F-1 = the BOX-4 "no machine contact" line now stale in
+the conservative direction — rides the acceptance fold).
+
+**BOARD: HETOW ✓ GENTOW1 ✓ GENTOW2 ✓ GENTOW3 ✓ GENTOW4 ✓ GENTOW5 ✓
+GENTOW6 ✓ — SEVEN OF SEVEN.** The n ≥ 8 tower leg of the uniformity
+theorem now rests entirely on ACCEPTED texts, with the residue named:
+the three count-grade sub-boxes (GENTOW6-BOX-1 μ₂≥3 attainment /
+BOX-2 ledger half / BOX-3 regime-3 classification) + BOX-4's
+battery-grade ask. Cross-arc totals for the tower campaign: 7 arcs,
+19 hostile passes, 8 repair rounds, 5 riders, 1 Codex batch (3
+verdicts, 11 findings, 5 REAL → all repaired incl. TWO PROVED lemmas
+HETOW-4 and the 𝒯-free cap lemma), ~30 instrument firsts. Owed at
+B17: the three acceptance riders (records + m-i/m-ii, the F-1
+bracket, and the 4.C conditionality UPGRADE now that GENTOW4 is
+accepted), Codex batch #2 (GENTOW3/4/5/6 as-built + the
+discharge-confirmation of HETOW-4 + GENTOW1 R2), site refresh #2
+(draft for orchestrator review), then the sub-boxes + the
+distribution arcs + the GENIND annex pass.
