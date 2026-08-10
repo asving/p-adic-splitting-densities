@@ -15141,3 +15141,56 @@ consumer walk; machine leg either way; minors F-3/5/6) → passPE2
 (charged to independently re-derive the cap lemma if proved, stress
 it at an unused partial-side member, audit conditional cites; fresh
 candidate: an f₁ ≥ 2 boundary TOOTH from outside the pinned scope).
+
+## B15 FOLD (2026-08-10) — the sweep: three CLEANs, three counters at 1/2; the cap lemma PROVED
+
+GENTOW5 acceptance rider (a803a2ce/43b42e9c): the dated record landed;
+the three PE5 minors folded at source (the index-0 scope bracket with
+T₁'s fresh TRUE instantiation recorded; the (B-2) i=1 line verified at
+GENTOW2 HEAD 33f8620; the (LIFT_i) token re-derived from HE7 ANNEX R1-c);
+byte-freeze chain prefix-verified end to end.
+
+GENTOW3 PE4 (b6a43963): **CLEAN 0G/1m → 1/2.** The r3 one-sided
+sentence re-derived from S2 (if-direction PROVED; the grep walk over
+every "exactly/iff" attainment site found no surviving only-if);
+consumers walked incl. GENTOW5-at-ACCEPTED (no consumption gained).
+Fresh route FR4-E22 = FIRST e₂ > 1 leg and first e₂f₂ = 4 frame
+anywhere (Θ=(59,31); certificate live at both coordinates; δ=3 band
+faithful at 57 AND 58) — GREEN 208/0 on the FIRST run, run-2
+bit-identical. m-1: the r3 adoption cites the PE3 report without an
+in-note artifact md5 pin (traceability only; W values replicated).
+
+GENTOW4 PE2 (80280b66): **CLEAN 0C/0G/5m → 1/2.** The four-site annex
+re-derived (site (b)'s restated-HETOW-2 consumption walked: w=0 LIFT
+membership at any f₁; site (d) instance-witnessed at three frames).
+Fresh route: FR-T = first NON-LINEAR wrap profile anywhere (f₂=3,
+W=(1,1,0)) with the first carrier-but-wrong-datum tooth (the λ=2
+rescaled-datum key is a carrier {(2,3)} yet reads μ₂*=0); FR-C = first
+gauge-live two-block compound. GREEN 93/0 dual-PARI. Minors m-A..m-E
+(the HE7-13′ routing sentence; the fullness-row recount dissonance;
+the S8.4 manifest wording; the FR-M sep-check ~15 vacuous rows
+disclosed-safe; the BOX-4 supplier-stack staleness — conservative).
+
+GENTOW6 PE2 (161e8ce1): **CLEAN 0C/0G/2m → 1/2.** F-2 adjudicated
+**REPAIRED-PROVED**: r1 PROVED the 𝒯-free cap lemma rather than
+re-scoping — triangular unimodularity (pure division algebra) + both
+band-1 directions (below-cap digits keep valuation; unread digits drop
+only to exactly N, never below) + the c_g-correspondence, with the COR
+GENTOW-4.C conditionality DISPLAYED at both consumption points
+(GENTOW4 at arc grade — honest conditional cite); the verifier
+re-derived it independently and stressed it GREEN at a deg-18
+partial-side member the repair never used (first six-b-slot grid);
+caplemma instrument 303/0 bit-identical in isolation. The f₁=1 scope
+pin validated FROM OUTSIDE: first f₁=2/η≠1 frames — the sealed (c)
+conclusion FAILS while its hypothesis holds (the predicted boundary
+break, fired as a tooth ×2), and the annex's (b′) certificate exact.
+First f₂=3 mixed-side class (tie exact, sibling excluded at the
+floors). Minors: two stale summary sites (pre-r1 scope wording);
+the 6.4(a) bijection codomain over-statement at D₂ ∤ n (no consumer).
+
+Board: HETOW ✓ · GENTOW1 ✓ · GENTOW2 ✓ · GENTOW5 ✓ · GENTOW3 1/2 ·
+GENTOW4 1/2 · GENTOW6 1/2. B16 = three rider→ACCEPTANCE chains
+(minors-only folds HOLD the counters); if all three land CLEAN the
+tower campaign closes at 7/7. Then: the Codex batch
+(discharge-confirmation + new acceptances + W-MULT-DCX), site refresh
+#2, the GENTOW6 count-grade sub-boxes, the distribution arcs.
