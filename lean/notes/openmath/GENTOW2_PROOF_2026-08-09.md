@@ -11,7 +11,18 @@ arc later). Unit: GENTOW-2, BOX-CLOSURE campaign.
 honestly re-attributed (LEMMA GENTOW2-B′, S5.1), F3 fallback clause
 corrected to the true transformation law, F4/F5/F6 minors cured;
 record in S9. Sealed machine artifacts untouched. Grade stays 0/2;
-PE2 next.]**
+PE2 next.]
+[r2 → PE3 → rider arc: see C-m2's superseding bracket in the dated
+corrections section.]
+[r3 2026-08-10, post-PE4 repair round (report @ 2f95be6, NOT CLEAN:
+1 GAP + 1 MINOR): F1 B-2 REFUTED at letter-live grades by the PE4
+machine contact and FLIPPED to the measured cocycle form — LEMMA
+GENTOW2-B restated via the multiplicative prescription, u ↔ ϑ
+adjudicated as LEMMA GENTOW2-B″ (S5.2, PROVED); F2 Lemma 3.13(1)
+folded into the consumed inventory. ACCEPTANCE COUNTER RESET:
+1/2 → 0/2 (the PE3 clean pass is spent; two consecutive clean
+passes required from here). Record in S11. Sealed machine
+artifacts untouched. Grade stays 0/2 (attempt); PE5 next.]**
 
 Charge (BOX-CLOSURE item (6), LITERATURE-FIRST): the r3 T(b)″
 attempt (commit 08ec526, GENHN_PROOF S9.1 [GENHN-TOW-1] item (6))
@@ -863,6 +874,9 @@ with the S3 quote/instantiated use.
 | 17 | Prop 1.15 (S5.1 [r2] identification + letter formula) | 7 | L340–344 | MATCH |
 | 18 | Def 3.12 + §3.3 ℓᵢ, ℓ′ᵢ data (S5.1 [r2] letter formula) | 16 | L813–821 | MATCH |
 | 19 | eq (9) + §3.2 data defs (S5.1 [r2] letter formula; S2 (e₃,f₃) row) | 15–16 | L785–806 | MATCH |
+| 20 | Lemma 3.13(1) (rider C-m1 bridge; [r3] elevated to consumed — PE4 F2) | 16 | L836–840 | MATCH |
+| 21 | Def 1.8 (S5.2 [r3] B″ proof: the φ-expansion minimum defines ν) | 5 | L250–255 | MATCH |
+| 22 | Prop 1.9(2) (S5 proof + S5.2(iii): Φ₂-free ⟹ ν = µ₂; [r3] inventory) | 6 | L258–261 | MATCH |
 
 Supporting pins also PDF-verified on the same pass: Prop 1.9 (p.6),
 Lemma 2.4 (p.9), Def 3.1 + display (4) (p.12), the §3.2 numerical
@@ -887,7 +901,21 @@ a statement), Thm 6.3, Cor 6.4. [r1] Added by the S5.1 derivation
 PDF-verified, rows 14–16 of S6.1. [r2] Added by the S5.1 canonical
 identification + LETTER FORMULA (PE2 F1): Prop 1.15, Def 3.12
 (+ §3.3's ℓᵢ, ℓ′ᵢ), eq (9) with the §3.2 data definitions — each
-PDF-verified, rows 17–19 of S6.1.
+PDF-verified, rows 17–19 of S6.1. [r3] Added (PE4 F2 + the B″
+derivation): Lemma 3.13(1) — ELEVATED from the [r2] supporting-pin
+paragraph to consumed status, the rider C-m1 having made its exact
+stable value v(π₂(x₀)) = 1/e(µ₁) load-bearing in the
+denominator-clearing bridge; re-verified this round by the two-leg
+method (layout L836–840 + a fresh visual read of PDF p.16: the
+displayed clause µᵢ(πᵢ₊₁) = 1/e(µᵢ) is exactly what C-m1 consumes
+at i = 1) — row 20. Def 1.8 (the augmented valuation is DEFINED by
+the φ-expansion minimum), consumed by S5.2's B″ step (ii) —
+two-leg verified (layout L250–255 + fresh visual read of PDF p.5)
+— row 21. Prop 1.9(2) (Φ₂-free elements have ν = µ₂), already
+cited inline by the S5 proof and reused at S5.2(iii) but absent
+from this list — same F2 species of inventory drift, folded now
+rather than flagged (two-leg verified: layout L258–261 + fresh
+visual read of PDF p.6) — row 22.
 
 **Hypothesis audit** (why each FGMN hypothesis holds at our
 instance): (H-a) v discrete, K_v complete: v = v_p on ℚ. (H-b) ν
@@ -1186,3 +1214,74 @@ stays 0/2; PE2 next.]") is SUPERSEDED by the arc through r2/PE3:
 > 0/2 → 1/2, HOLDS AT 1/2; the 2 MINORs cured in this dated
 > section. Next: acceptance attempt (second clean pass on a fresh
 > surface).]
+
+## S11. [r3] PE4 REPAIR RECORD (2026-08-10)
+
+*Source: `GENTOW2_passPE4_report.md` @ 2f95be6 — verdict NOT CLEAN
+(0 CRITICAL, 1 GAP, 1 MINOR). The acceptance attempt's fresh route
+(the first letters × depth contact anywhere: depth-3 recipe frames
+LD1/LD2/LD3 on the letter-live LP1 tower, f₁ = 2, z₁ ∈ F₄∖F₂)
+machine-refuted B-2 at letter-live grades — the tooth bit exactly
+where the [r2] scope disclosure said the record was blind. THEOREM
+GENTOW2-A took the same contact 100% green (27/27 A-route incl.
+the twist certificates; PE4 §E). **ACCEPTANCE COUNTER: 1/2 → 0/2 —
+the consecutive-clean streak breaks at the PE4 pass; nothing is
+banked; acceptance requires two consecutive clean passes from
+here.** Sealed machine artifacts BYTE-UNTOUCHED this round; the
+PE4 fresh/decode artifacts are cited at their committed pins, not
+re-run. Repairs RE-DERIVED (the γ-calculus, the LD cocycle values,
+and the B″ proof were recomputed fresh this round, then checked
+against the decode pins), not transcribed.*
+
+* **F1 (GAP — B-2 machine-refuted at letter-live grades; LEMMA
+  GENTOW2-B's conclusion false as stated there) → CURED BY
+  FLIP-AND-DERIVE, this round's four commits.** (i) Honesty box:
+  the (B-2) entry flipped from the ON-THE-NOSE assertion to
+  REFUTED + the MEASURED COCYCLE FORM u(β_t) = ϑ(t)·w^{f₃−t};
+  the 13-witness letter-dead record kept as correctly-disclosed
+  history (accurate as dated — PE4 §S; re-read through B″ it
+  supports ϑ = 1 at its own tested slots and was structurally w-
+  and z₁-blind). (ii) LEMMA GENTOW2-B RESTATED (S5): conclusion =
+  the (B-law) transformation law (B′(5)) + the MULTIPLICATIVE-
+  CONVENTION prescription c_t = ϑ(t)^{−1}a_t realizing R_ν(Φ₃) =
+  ψ₃^{(w)} = w^{f₃}ψ₃(y/w), an admissible GENTOW2-A(ii) residual;
+  the proof's false step now consumes B′(3)+(4) + B″, all DERIVED.
+  (iii) The u ↔ ϑ identity the report asked adjudicated: PROVED as
+  LEMMA GENTOW2-B″ (S5.2) — u's entire per-grade variation is the
+  repo-internal n̂₂-cocycle ϑ (letter-valued via the γ-calculus);
+  the honest cross-frame residue collapses to the ONE
+  slot-independent unit w = R_{3,κ̄}(n̂₂(u₃)), consumer-invisible
+  (grade-covariant substitution). Verified at the PE4 numbers:
+  ϑ(0) = z₂^{−1}z₁^{−5} = z₁ at LP1, matching the decode COC pin
+  res(n̂₂(19)²/n̂₂(38)) = z₁² = ϑ(0)^{−1} and the realized
+  residuals MP1/MP2 (LD1 y²+z₁y+z₁, LD2 y²+z₁y+1); LD3 has the
+  single trivial slot (f₃ = 1). The S5.1 residue paragraph
+  re-scoped: "GENTOW5-A1 cannot supply u(β)" survives only for w;
+  whether ϑ equals GENTOW5-A1's ϑ_t is left to that in-flight arc,
+  unconsumed here. (iv) Propagation: S1 bridge sentence, S5
+  section header, S4 in-particular clause + consumption note (now
+  carrying the PE4 GENTOW2-A-untouched citation), S6
+  direction-of-fit. No new runner: the sealed decode probe already
+  machine-checks the ϑ-prescription at the PE4 frames (MULT/COC/MP
+  pins), and B″'s w-leg is machine-invisible by construction.
+* **F2 (MINOR — rider C-m1 elevates Lemma 3.13(1); S6 consumed
+  list omitted it) → CURED.** Folded into the consumed list, S6.1
+  row 20, re-verified by the two-leg method this round (layout
+  L836–840 + fresh visual read of PDF p.16). Same-species
+  inventory adds while the drawer was open: Def 1.8 (B″'s
+  expansion-minimum cite, row 21, PDF p.5 fresh visual read) and
+  Prop 1.9(2) (long cited inline by the S5 proof, row 22, PDF p.6
+  fresh visual read).
+* **What this round does NOT claim:** no letter-dead universal for
+  ϑ (its letter monomial is computed per grade pair by the
+  γ-calculus; the LD frames measured z₁, the 13-witness record's
+  green B-routes bound it to 1 at their own tested slots only);
+  no computation of w (a level-3 letter-formula-style derivation,
+  open); no depth ≥ 4 extension; the (β)-floor still rides item
+  (1) via COR GENTOW-1.1 (in-flight).
+
+Grade: attempt 0/2 unchanged; acceptance counter 0/2 (reset at
+PE4, recorded above). Next: PE5 (hostile pass on the r3-repaired
+note; candidate fresh surfaces — a letter-live frame with z₂ ≠ 1
+where ϑ's γ₂-component acts, the B″ proof itself, and the S5.2
+adjudication scoping).
