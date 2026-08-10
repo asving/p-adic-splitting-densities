@@ -252,8 +252,7 @@ Kn = PHI2^4 - 512*PHIP*PHI2^2 - 262144*PHIP^2;
 F = factorpadic(Ks, 2, 400);
 print("WFP nfac=", matsize(F)[1], " deg=", poldegree(F[1,1]));
 Fn = factorpadic(Kn, 2, 400);
-print("WNAIVE nfac=", matsize(Fn)[1], " degs=",
-      vector(matsize(Fn)[1], i, poldegree(Fn[i,1])));
+print("WNAIVE nfac=", matsize(Fn)[1], " degs=", vector(matsize(Fn)[1], i, poldegree(Fn[i,1])));
 K = nfinit([Ks, [2]]);
 prs = idealprimedec(K, 2);
 print("WNPR ", #prs);
@@ -362,8 +361,7 @@ print("DFP nfac=", matsize(F)[1], " deg=", poldegree(F[1,1]));
 F4 = factorpadic(Phi4, 2, 400);
 print("DP4 nfac=", matsize(F4)[1], " deg=", poldegree(F4[1,1]));
 Fm = factorpadic(f64m, 2, 3000);
-print("DFM nfac=", matsize(Fm)[1], " degs=",
-      vecsort(vector(matsize(Fm)[1], i, poldegree(Fm[i,1]))));
+print("DFM nfac=", matsize(Fm)[1], " degs=", vecsort(vector(matsize(Fm)[1], i, poldegree(Fm[i,1]))));
 print("GPDDONE");
 """
 
