@@ -1,0 +1,29 @@
+=== GENTOW3 passPE1 FRESH ROUTE (own primitives) ===
+== FR-P1 self-shadows ==
+  FR-M3 self-shadow: ShC = [[64], [0, 40], [12]] pins [12, 7, 4] THETA [10, 7, 4]
+  FR-D5 self-shadow: ShC = [[-512, 0, 256], []] pins [41, None] THETA [41, 23]
+  FR-GL self-shadow: ShC = [[2916, 2916, -486], [-54, -27, 9]] pins [13, 7] THETA [13, 7]
+== FR-P5 battery digit replication ==
+  FAM-A5 self-shadow: ShC = [[-32, 0, 16], []] pins [21, None] THETA [21, 11]
+  FAM-A7 self-shadow: ShC = [[-128, 0, 64], []] pins [31, None] THETA [31, 17]
+  FAM-C self-shadow: ShC = [[-128, 0, 64], []] pins [43, None] THETA [43, 22]
+  FAM-B self-shadow: ShC = [[-128, 64, 64], [-8, 8, 4]] pins [13, 7] THETA [13, 7]
+  FAM-D self-shadow: ShC = [[], []] pins [None, None] THETA [13, 7]
+== FR-P2 floor sweeps ==
+  FR-M3 floor sweep: 30 members (3 gate-checked)
+  FR-D5 floor sweep: 30 members (3 gate-checked)
+  FR-GL floor sweep: 30 members (3 gate-checked)
+== FR-D5 band rows (faithful band [37, 40], THETA_0 41) ==
+  !! VIOLATION BAND: D5-B40 shadow (40, 19, 't2SIDED') != honest (40, 19, 't2SIDED') or mindiff [41, 24] < 41
+  cancel41: honest tRAM(41) vs shadow j=0 IDENTICALLY 0
+  add41: honest pin 41, shadow pin 45, mindiff 41
+  FR-M3 cancel7: honest p_1 = 7 = THETA_1, shadow p_1 = 8 (blind), mindiff 7
+  FR-GL anchor13: honest p_0 = 13 = THETA_0 (tRAM), shadow pin 13, digits DIFFER at 13 (mindiff 13)
+== PARI leg: 8 jobs ==
+  gp stderr tail:   ***   Warning: new maximum stack size = 2000003072 (1907.352 Mbytes).
+
+tooth T-F-UP fired x10
+tooth T-F-DOWN fired x1
+tooth T-F-CANCEL fired x1
+=== VERDICT: RED -- 485 checks, 1 violations (0.1s) ===
+tally: {'SELF': 33, 'GATE': 9, 'FLOOR': 210, 'ENTRY': 210, 'BAND': 6, 'CANCEL': 5, 'ADD': 1, 'GP': 8, 'TEETH': 3}
