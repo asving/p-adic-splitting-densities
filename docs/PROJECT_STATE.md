@@ -3675,3 +3675,25 @@ member; cure = one certificate-scoping pass; core theorem untouched.
 Queued: the Codex discharge-confirmation leg (HETOW-4 + R2 repairs).
 B14: GENTOW5 rider→PE5 + GENTOW3 r2→PE3 + the GENTOW4 and GENTOW6
 arcs open.
+
+**2026-08-10 DATED APPEND #19 — GENTOW5 ACCEPTED 2/2: FOUR OF SEVEN
+TOWER NOTES THROUGH THE BAR; ALL SEVEN ARCS NOW OPEN OR CLOSED** —
+GENTOW5 (the level-r grammar + the depth-4/5/6 tower witnesses, incl.
+the ψ^{(w)} re-scope and the corrected lift display) accepted at PE4
++ PE5 consecutive CLEANs; its acceptance pass delivered the first
+full odd-p properly-mixed mid-stage tower and the first μ=3 stage
+read anywhere in the program. The last two arcs opened NOT CLEAN with
+surviving cores: GENTOW4 (partial sides) — the gauge seam confirmed
+at four sites (now 7/7 on tower first-passes; every tower note's
+verdict predated the wrap erratum), fresh route delivered the first
+gauge-live partial side and the first two-block member; GENTOW6
+(mixed-side tie + CERT-TOP) — the gauge seam at CRITICAL grade (the
+6.3 scalar reading breaks at f₁ ≥ 2) PLUS a genuine supplier gap:
+COR 6.2C(d) consumes the GENTOW1 window-stability lemma at a
+partial-side member where it is only proved for full sides — repair
+is prove-first (a 𝒯-free cap lemma) per the standing box directive.
+GENTOW3's r2 over-corrected into a false only-if (a constructed
+member fails at Θ₀ at a certificate-cancelled coordinate); one-siding
+owed. Tower board: HETOW ✓ GENTOW1 ✓ GENTOW2 ✓ GENTOW5 ✓ · GENTOW3/4/6
+at 0/2 with named one-round repairs (+ the F-2 lemma). B15 = the
+three repair→pass chains + the GENTOW5 acceptance rider.
