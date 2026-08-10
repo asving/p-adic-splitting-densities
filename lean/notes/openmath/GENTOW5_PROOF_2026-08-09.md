@@ -494,21 +494,51 @@ is consumed (that stronger claim is false — HE7-T-BADTWIST).
 ### S2.4 LEMMA GENTOW5-D (Step-0 carry monotonicity is
 ### level-agnostic — the charge's check, answered YES)
 
-**Weight.** On monomials M = pi^v x^{a} Phi_1^{J_1} ... Phi_i^{J_i}
+**Weight. [GT5-r1 — PE1 F-3: the top-grid term is now DEFINED.]**
+On monomials M = pi^v x^{a} Phi_1^{J_1} ... Phi_i^{J_i}
 (exponents unbounded) define
 
     wt_i(M) := ehat_i*v + a*(ehat_i/e1)h
                + Sum_{j<i} J_j * (ehat_i/ehat_{j+1}) u_{j+1}
-               + J_i * E-part as applicable at the top grid.
+               + J_i * E_i,
 
-**Statement.** For every level i, the i reduction moves — the
+i.e. the TOP variable Phi_i carries weight E_i = e_i f_i u_i per
+unit exponent — the in-datum lower bound (dv_i(Phi_i(xi)) > E_i on
+the tower locus by the field floor, vs the EXACT interior values
+dv_i(Phi_j(xi)) = (ehat_i/ehat_{j+1})u_{j+1} for j < i); the
+pre-repair display left this term as an undefined "E-part". Note
+wt_i consumes NO data beyond the depth-i datum: u_{i+1} does not
+appear.
+
+**Statement [GT5-r1 restated — strictness weakened to what the
+induction needs].** For every level i, the i reduction moves — the
 x-carry (a >= D_1) and the Phi_j-carries (J_j >= l_{j+1}, j < i) —
-are wt_i-nondecreasing; lift-generated terms preserve weight
-exactly; the key-part of each carry strictly raises it. Hence
-"all slots at weight >= W" is the same condition on every grid of
-the tower (the two-directional rewriting closes), and per-slot
-weight arithmetic converts to the digit floors verbatim as in
-GENTOW-1 Step 0.
+are wt_i-NONDECREASING; lift-generated terms preserve weight
+exactly; the key-part of each INTERIOR carry (the x-carry and the
+Phi_j-carries with j < i-1) strictly raises it, while the TOP
+carry's key-part (j = i-1: key-part Phi_i at weight E_i =
+wt(Phi_{i-1}^{l_i})) PRESERVES it exactly. Hence "all slots at
+weight >= W" is the same condition on every grid of the tower (the
+two-directional rewriting closes), and per-slot weight arithmetic
+converts to the digit floors verbatim as in GENTOW-1 Step 0.
+[GT5-r1 consumer note: nondecreasing is all any named consumer of
+this lemma uses (GENTOW5-A Step B's grid translation, S3(c) Steps
+0/3, S3(d)); the strict FLOW-UP pricing there comes from lam > E
+separately, never from this lemma's strict clause. The pre-repair
+blanket "the key-part of each carry strictly raises it" was FALSE
+at the top carry — and contradicted the lemma's own i = 2
+instance: GENTOW1_PROOF S2 Step 0 prices the Phi_2-part "at weight
+E2 exactly" (PRESERVED). Under this restatement the i = 2 instance
+IS the top-carry case verbatim: at i = 2 the only Phi_j-carry is
+j = 1 = i-1, the top carry, key-part Phi_2 at weight E_2 —
+GENTOW-1's Step 0 display recovered, contradiction resolved.
+Failure mode fenced, worked at the S4 witness chain's grid 4
+(u = (1,5,21,85), E_4 = 170): the top carry Phi_3^2 = Phi_4 +
+2^8*Phi_2 has wt_4(Phi_3^2) = 2*(ehat_4/ehat_4)*u_4 = 2*85 = 170,
+Phi_4-part = E_4 = 170, and lift-part wt(2^8*Phi_2) = 16*8 + 2*21
+= 170 — all three EQUAL: any downstream lean on top-carry
+strictness would be unsound; none exists in this note (checked at
+PE1 and re-checked this round).]
 
 *Proof (the two displays, uniform in j).*
 * x-carry: x^{D_1} = Phi_1 + tail, tail monomials x^c pi^g with
@@ -520,20 +550,38 @@ GENTOW-1 Step 0.
   Phi_j^{e_{j+1}t}; each lift term has wt =
   (ehat_i/ehat_{j+1}) [e_{j+1} u_{j+1}... ] — compute:
   khat_t's monomials all sit at dv_j-height u_{j+1}(f_{j+1}-t)
-  exactly (single-height lifts, DEF GENTOW5-1), contributing
+  exactly (single-height lifts, DEF GENTOW5-1 — [GT5-r1] the gauge
+  pin's vartheta twist is a residue unit, so the corrected khat_t
+  sits at the SAME heights: this display is value-blind, the
+  GENTOW1 [GT1-r1] Step-0 immunity verbatim), contributing
   (ehat_i/ehat_{j+1}) e_{j+1} u_{j+1}(f_{j+1}-t) +
   e_{j+1} t (ehat_i/ehat_{j+1}) u_{j+1} = (ehat_i/ehat_{j+1})
-  E_{j+1} = wt(Phi_j^{l_{j+1}}) — PRESERVED exactly; the
-  Phi_{j+1}-part has wt = (ehat_i/ehat_{j+2}) u_{j+2} >
-  (ehat_i/ehat_{j+2}) e_{j+2} E_{j+1} = (ehat_i/ehat_{j+1}) E_{j+1}
-  — STRICT by the floor chain at j+1.
+  E_{j+1} = wt(Phi_j^{l_{j+1}}) — PRESERVED exactly; the key-part
+  splits [GT5-r1]:
+    - INTERIOR (j <= i-2): the Phi_{j+1}-part has wt =
+      (ehat_i/ehat_{j+2}) u_{j+2} > (ehat_i/ehat_{j+2}) e_{j+2}
+      E_{j+1} = (ehat_i/ehat_{j+1}) E_{j+1} — STRICT by floor rung
+      j+1 (u_{j+2} > e_{j+2}E_{j+1}), which is IN-DATUM since
+      j+2 <= i;
+    - TOP (j = i-1): the Phi_i-part has wt = E_i = l_i u_i =
+      wt(Phi_{i-1}^{l_i}) — PRESERVED exactly, NO floor rung
+      consumed (the pre-repair uniform pricing read the top
+      key-part at u_{i+1}/e_{i+1}: non-integer, and at the top grid
+      of a depth-r tower rung r references u_{r+1} = EVENT data
+      outside the statement's floor chain — PE1 F-3's audit; the
+      repair prices it at the defined weight E_i instead).
 The only inputs are (INV-j): the recipe keys' side terms at exact
-height E_{j+1} (DEF GENTOW5-1's construction) and (FLOOR-j):
-u_{j+1} > e_{j+1} E_j. Both are level-uniform; GENTOW-1's Step 0 is
-the i = 2 instance ("two carries priced by two sides" becomes "i
-carries priced by i sides", each the same two lines). The converse
-rewriting (Phi_{j+1} = Phi_j^{l_{j+1}} - weight-E_{j+1} lifts) is
-weight-nondecreasing by the same displays. ∎
+height E_{j+1} (DEF GENTOW5-1's construction, gauge-pin-stable) and
+(FLOOR-j): u_{j+1} > e_{j+1} E_j, consumed at rungs 1 (x-carry)
+through i-1 (deepest interior carry) — all inside the depth-i
+datum. Both are level-uniform; GENTOW-1's Step 0 is the i = 2
+instance ("two carries priced by two sides" becomes "i carries
+priced by i sides", each the same two lines) — at i = 2 the sole
+Phi_j-carry is the TOP carry j = 1, priced PRESERVED at E_2, which
+is GENTOW1 S2 Step 0's own display ("the Phi2-part at weight E2
+exactly"). The converse rewriting (Phi_{j+1} = Phi_j^{l_{j+1}} -
+weight-E_{j+1} lifts) is weight-nondecreasing by the same
+displays. ∎
 
 ## S3. THEOREM GENTOW5-B (the general-depth composition theorem)
 
