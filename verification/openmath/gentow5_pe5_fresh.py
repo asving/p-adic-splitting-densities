@@ -93,6 +93,18 @@ T-2 TOOTH (floor breach at stage 3): Phi_3m = Phi_2^2 - 5^8*x*Phi_1
   != 82.
 
 gp NOTE: single-line prints only (the documented gp-stdin trap).
+
+RUN-1 DISCLOSURE (2026-08-10, committed before re-run): run 1 died
+at the P-RK row with my own protective assert "tie in dv read" —
+the run-1 dv reader took a min over RAW x-monomial heights, and
+f24@Phi_2's C_0 = -5^14*Phi_1 = -5^14 x^2 + 5^15 has a raw-monomial
+TIE (60 = 60) that only the Phi_1-LADDER-basis read resolves (true
+dv_2 = 61 — the note's own class-separation point, GENHN-2'). The
+12 checks that printed before the crash were ALL PASS; no
+mathematical prediction is changed by this repair; dvcoef now
+develops each coefficient in the Phi_1 basis (monomial heights
+s*(v5 + a/2 + 5b/4), tie-assert retained). Run-1 record kept at
+gentow5_pe5_fresh_output_run1_RED.txt.
 """
 import subprocess, sys
 from fractions import Fraction as F
@@ -175,9 +187,17 @@ def chk(name, ok):
     CH.append((name, bool(ok)))
     print(("PASS" if ok else "FAIL"), "-", name)
 
-# dv of coefficient poly (deg <= 1 in x) evaluated at a v(x)=1/2 point, scale dv = s*v
+# dv of a coefficient poly (deg < 8) at a node point (v(x)=1/2,
+# v(Phi_1)=5/4), scale dv = s*v — read in the Phi_1 LADDER basis
+# (run-1 repair: raw x-monomial reads tie under cancellation;
+# the ladder basis is the note's own class-separation frame)
 def dvcoef(c, s):
-    vals = [F(s)*(v5int(a) + F(j,2)) for j,a in enumerate(c) if a != 0]
+    if norm(c) == [0]: return None
+    vals = []
+    for b, cb in enumerate(pdev(c, P1)):
+        for a, co in enumerate(cb):
+            if co != 0:
+                vals.append(F(s) * (v5int(co) + F(a, 2) + b * F(5, 4)))
     if not vals: return None
     assert len(set(vals)) == len(vals), "tie in dv read"
     return min(vals)

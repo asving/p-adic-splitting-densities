@@ -1,0 +1,21 @@
+PASS - T1 pins [4,4,2,inf,0]
+PASS - T1 one side + j=1 above (4 > 3)
+PASS - T1 residual y^2+3y+1 == psi_1^2 mod 5
+PASS - T1 box slot -25x at weight 5 = 2E_1+1
+PASS - Phi_2 stage pins [20,inf,inf,inf,0] support {0,4}
+PASS - Phi_2 residual y^2+3 == psi_2 mod 5
+PASS - f24 pins [60,56,inf,inf,40,...,20,...,0]
+PASS - f24 ONE side, j=1 strictly above (56 > 55)
+PASS - f24 residual digits (1,4,2,2)
+PASS - residual == (y^2-2)^3 mod 5 coefficient-for-coefficient
+PASS - f24 box: single slot at weight 61 = 3E_2+1
+Traceback (most recent call last):
+  File "/data/users/asvin/math-and-lean/p-adic-splitting-densities/verification/openmath/gentow5_pe5_fresh.py", line 235, in <module>
+    pRK = pins(f24, P2, 4)
+  File "/data/users/asvin/math-and-lean/p-adic-splitting-densities/verification/openmath/gentow5_pe5_fresh.py", line 186, in pins
+    return [dvcoef(c, s) for c in pdev(f, base)]
+  File "/data/users/asvin/math-and-lean/p-adic-splitting-densities/verification/openmath/gentow5_pe5_fresh.py", line 186, in <listcomp>
+    return [dvcoef(c, s) for c in pdev(f, base)]
+  File "/data/users/asvin/math-and-lean/p-adic-splitting-densities/verification/openmath/gentow5_pe5_fresh.py", line 182, in dvcoef
+    assert len(set(vals)) == len(vals), "tie in dv read"
+AssertionError: tie in dv read
