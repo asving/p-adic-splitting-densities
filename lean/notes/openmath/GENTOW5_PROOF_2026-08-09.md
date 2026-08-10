@@ -343,11 +343,58 @@ K_0 := F_Q, K_i := F_{Q^{f_1...f_i}}.
   by beta_i -> beta_{i,xi} — ANNEX-DEF HE7-2''s attached objects,
   tower-instantiated.
 
-* **K_i-digit lifts.** For c in K_i and height m, lift_i(c; m) :=
-  the sum of the f_1...f_i within-class monomials x^{i0+e1 r}
-  Phi_1^{b_1 + e_2 t_1} ... at height m with O-digit coefficients
-  realizing c in the coherent normalization (deg < D_i always);
-  at i = 2 this is GENTOW-2's lift(s; m).
+* **K_i-digit lifts. [GT5-r2 CORRECTED DISPLAY — PE2 F-2: the
+  composed display bound the base exponents (i0, b_j) to
+  nhat_i(m)'s and stepped only x and Phi_j; at seam-live heights
+  the stepped monomial's compensating pi-exponent goes NON-INTEGER
+  and the displayed flavor DOES NOT EXIST. The corrected display
+  RE-SOLVES the base per flavor.]** For c in K_i and height m, the
+  f_1 f_2 ... f_i within-class FLAVOR MONOMIALS at height m are
+
+      M_{r,t}(m) := nhat_i(m - Delta(r,t)) * x^{e_1 r} *
+                    Phi_1^{e_2 t_1} ... Phi_{i-1}^{e_i t_{i-1}},
+      Delta(r,t) := e_1 r * (ehat_i/e_1) h
+                    + Sum_{j<i} e_{j+1} t_j (ehat_i/ehat_{j+1})
+                      u_{j+1},
+
+  indexed by 0 <= r < f_1, 0 <= t_j < f_{j+1} (a flavor is absent
+  when nhat_i(m - Delta(r,t)) has no ladder solution). Each
+  M_{r,t}(m) sits at dv_i-height m EXACTLY, and its exponents stay
+  in ladder range (x-exponent i0' + e_1 r < e_1 f_1 = D_1 since
+  i0' < e_1; Phi_j-exponent b_j' + e_{j+1} t_j < e_{j+1} f_{j+1} =
+  l_{j+1} since b_j' < e_{j+1}), so deg M_{r,t} < D_i. Then
+
+      lift_i(c; m) := Sum_{r,t} d_{r,t} * M_{r,t}(m),
+
+  O-digit coefficients d_{r,t} realizing c in the coherent
+  normalization (res((lift_i(c; m)/nhat_i(m))(xi)) =
+  iota^{(i)}(c)); existence/freeness is LEMMA GENTOW5-C's (LIFT_i)
+  clause, and the derivation IS the class-separation lemma: within
+  the height-m class mod ehat_i the slots differ by the steps
+  e_1 r, e_{j+1} t_j, each slot's base is the normalizer of the
+  COMPLEMENTARY height m - Delta(r,t) — NOT nhat_i(m)'s base — and
+  the flavor residues res((M_{r,t}(m)/nhat_i(m))(xi)) are the
+  FIXED letter units of the tau_i-cocycle (S2.3 step (3)), so the
+  d_{r,t} are the inverse-twisted K_{i-1}-expansion digits of c.
+  VERIFICATION AT PE2's FR-A (p = 3, e_1 = 2, h = 1, e_2 = 1,
+  u_2 = 3; m = 14, nhat_2(14) = 3^7): the t_1 = 1 flavor is
+  M_{0,(1)}(14) = nhat_2(14 - 3) * Phi_1 = 3^5 * x * Phi_1
+  (nhat_2(11) = 3^5 x — the x-exponent RE-SOLVES 0 -> 1); the
+  composed fixed-base display demanded pi-exponent (14 - 0 - 3)/2
+  = 11/2, NO such monomial. Machine row: check FA1-LIFT
+  (gentow5_pe2_fresh.py @ 40f313a, 22/0) asserts the fixed-base
+  flavor's non-existence AND the green chain runs on the re-solved
+  member 3^5*x*Phi_1 = FR-A's khat_0. At i = 2 the corrected
+  display is the family GENTOW-2's lift(s; m) INTENDED and the
+  committed instruments implement (the sealed battery's A-3
+  eta2-flavor lift 4*Phi' is a re-solved member); GENTOW1 S3's
+  fixed-base READING of its lift display fails the same way at
+  seam-live heights — a display-level defect there, flagged for
+  that note's own arc, not consumed here. Ripple (checked): the
+  recipe's khat_t and S2.4's value-blind leg read HEIGHTS only —
+  each M_{r,t}(m) sits at height m exactly, unchanged; (LIFT_i)'s
+  bound arithmetic and deg < D_i are as displayed; no other
+  consumer in this note reads the flavor bases.
 
 * **THE COMPOSED KEY RECIPE (the charge's display). [GT5-r1 GAUGE
   PIN — the governing pin of the r1 round; PE1 F-1 CRITICAL].**
