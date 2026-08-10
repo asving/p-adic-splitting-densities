@@ -15048,3 +15048,73 @@ PDF; CERT-TOP unit-square; the three count-grade boxes' fences audited;
 the PE6 walk's "twist absorbed as unit rescaling" claim re-verified at
 the displays). All seven tower arcs will then be open or closed —
 none unopened.
+
+## B14 FOLD (2026-08-10) — GENTOW5 ACCEPTED 2/2 (4 of 7); the gauge seam completes 7/7; GENTOW6 surfaces a supplier gap
+
+GENTOW5 PE5 (18900e03): **CLEAN 0C/0G/3m — ACCEPTED 2/2** (PE4 b22b37b
++ PE5 consecutive). The (c)↔GENTOW-1 seam BINDS at the R2 layer (first
+post-R2 adjudication: R2a's clip inherited by reference; R2c's
+three-band unconsumed by this note); the four-layer dated text walked
+with no unbracketed truth change. Fresh route GREEN 40/0: FIRST full
+odd-p proper-(2,2)-mid-stage tower to depth 3+4 (p=5); FIRST μ=3
+(c)-read anywhere (residual (y²−2)³ mod 5); the rider's unclaimed-T₁
+instance instantiated TRUE; the retired (i+2)-pairing killed at a
+third geometry. SEVEN isolated re-runs bit-identical. Minors riding
+the acceptance record: PE5-F-1 (the blanket induction leaves (a)/(b)/
+(d) index-0 formally in scope; (a)'s w₀ dereferences the undefined
+n̂₀ — unconsumed, one-clause scope fix), PE5-F-2 (the (B-2) discharge's
+level list omits i=1; content lives in accepted GENTOW2-A(c)),
+PE5-F-3 (a bound-display typo).
+
+GENTOW3 PE3 (a1c181d): NOT CLEAN 1G/1m, counter 0/2. F-1: the r2
+rewrite OVER-CORRECTED — "fails AT Θ_j exactly at the coordinates
+carrying (iv)'s certificate" asserts an only-if S2 never proves and
+which is FALSE: constructed member f = Φ₂³+2xΦ₂²+8Φ₂+64 at FR-M3
+fails at exactly Θ₀ at the certificate-CANCELLED coordinate via the
+entry-digit overflow the note's own scope remark (2) names (32 gated
+variants, dual-oracle). The (iv) pin, δ=1 bullet, and count-law
+rewrites are all correct and survive. Cure = ONE-SIDE the S0 sentence
+(key-power scope). m-A: the S7.6 Φ′/Φ₂ label swap. Fresh route
+451/0: FR3-B7 (δ=7, largest anywhere) — FIRST live interior-j
+certificate (both slots at Θ₁; digit matches GENTOW6's CERT-TOP
+display); width-6 faithful band sampled; first violations at exactly
+43.
+
+GENTOW4 PE1 (8ae71864): NOT CLEAN 1G(CONFIRMED)/2m, counter 0/2 — the
+arc opened. F-1 = the gauge seam at FOUR sites (S0's key display;
+4.1(c)'s "HETOW-2 verbatim" reading onto the pre-[r1] form; BOX-3
+repeating the uniformity sentence HETOW [r1] withdrew; the S4 remark's
+f₁=1-vs-η=1 scope error) — machine-refuted at a partial side (naive
+σ {(4,1)} ≠ carrier {(2,2)}; the naive development's >T₂ segment
+EMPTY, the class invisible). Battery structurally blind (q=3 families
+η=1). m-1 (an enumeration says three, lists two), m-2 (a tooth kills
+a hand-assembled wrong-σ, not a mutant-reader run — undisclosed).
+Fresh route GREEN 93/0: FR-G = first gauge-live partial side anywhere
+(corrected key PARI-exact, three gauge teeth fired); FR-M = first
+TWO-BLOCK member in any tower battery (tie at two pure-power sides
+simultaneously, cross-block mass absorption exact). Repair = the
+sibling-pattern dated gauge annex (sites a–d).
+
+GENTOW6 PE1 (cd74ef6f): NOT CLEAN 1C/1G/4m, counter 0/2 — the last
+arc opened; the gauge seam is now **7/7 on tower first-passes**. F-1
+CRITICAL (gauge/f₁): THEOREM 6.3's "at any tower genre" reads ĉ_t as
+x-free scalars — at f₁ ≥ 2 the corrected lifts are x-ful, so (c)'s
+no-overflow hypothesis auto-holds while its conclusion is false
+whenever some c_t·η^{W(t)} ∉ F_Q; CERT-TOP (b) is VACUOUS at f₁ ≥ 2
+and survives at its honest f₁=1 scope; S5's "GENTOW3-BOX-1 CLOSED at
+μ₂=2" silently spans f₁ ≥ 2. F-2 GAP (the supplier seam): COR 6.2C(d)
+cites "GENTOW-5(a) at f" with f a PARTIAL-side member — GENTOW-5 (the
+GENTOW1 lemma) is proved on 𝒯 (full side) ONLY; the in-window-
+stability half has NO PROVED SUPPLIER at f. Box fences all HONEST
+(BOX-2 with F-2's window-cap claim sitting unfenced beside it). F-4
+closed the Thm 2.8 attribution itself (PDF p.10 visual read, verbatim
+match). Fresh route GREEN 22/0: first (2,2)-profile mixed side with
+live sibling; first f₂=5 / first b*=0 quotient-transfer-corner
+certificate — 6.3(b)'s corner mechanics exact. Repair = f₁=1 scope
+pin + gauge annex + F-2 either re-scoped to full-side members or the
+𝒯-free cap lemma PROVED (prove-first per the standing directive).
+
+Board: HETOW ✓ · GENTOW1 ✓ · GENTOW2 ✓ · **GENTOW5 ✓** (4/7) ·
+GENTOW3 0/2 (r3 = one-siding) · GENTOW4 0/2 (r1 = gauge annex) ·
+GENTOW6 0/2 (r1 = scope pin + annex + the F-2 supplier repair).
+B15: GENTOW5 acceptance rider + r3→PE4 + r1→PE2 ×2.
