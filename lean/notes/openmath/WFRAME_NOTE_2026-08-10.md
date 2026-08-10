@@ -237,10 +237,16 @@ Instruments: gentow2_pe6_fresh.py (seal ade1727; run-1 68/1 RED kept
 as committed, the miss a disclosed verifier-instrument literal;
 run-2 GREEN 68/0 @ dfbc938) and gentow5_pe3_fresh.py (run-1 RED 48/2
 kept, one gp-stdin print defect; run-2 GREEN 48/0). Towers: LP1
-(Φ′ = x²−2; e₁ = 2, f₁ = 2, z₁ live with z₁²+z₁+1 = 0; e₂ = 2,
+(Φ′ = x⁴+2x²+4; e₁ = 2, f₁ = 2, z₁ live with z₁²+z₁+1 = 0; e₂ = 2,
 f₂ = 1, z₂ = 1; u₂ = 9, V₂ = 4, e(µ₂) = 4) and GB (Φ′ = x²−2;
 e₁ = 2, f₁ = 1, z₁ = 1; e₂ = 2, f₂ = 2, z₂ live; u₂ = 5, V₂ = 2,
-e(µ₂) = 4).
+e(µ₂) = 4). [r1 REPAIR, PE1 F-1: this row previously misstated
+LP1's Φ′ as x²−2 — GB's value leaked; the committed sources fix
+Φ′_LP1 = x⁴+2x²+4 (GENTOW2_PROOF @ 33f86204 ~L1140;
+gentow2_pe4_fresh.py; gentow2_pe6_fresh.py). Row sanity rule,
+binding on future appends: deg Φ′ = e₁f₁ (LP1: e₁f₁ = 4 forces
+degree 4; GB: e₁f₁ = 2), so the misstatement was internally
+detectable from the row's own stage data.]
 
 **The rows (7 measured primes across 5 keys on 2 towers):**
 
