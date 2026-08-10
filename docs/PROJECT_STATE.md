@@ -3724,3 +3724,37 @@ refresh #2 (drafted for orchestrator review), then the sub-boxes, the
 distribution arcs (BCFGTIE/MOMENTS/TAMEK/TAMEKQX), the GENIND annex
 pass — then Asvin's pipeline: SIMPLIFICATION CAMPAIGN → stage two
 (Lean, modulo literature except 2212.00294).
+
+**2026-08-10 DATED APPEND #21 — B18: BOX-1 PROVED (THEOREM GENTOW-6.5)
++ BOX-4 DISCHARGED; THE SIMPLIFICATION BLUEPRINT DELIVERED** — the
+four-item sub-box residue shrinks to two. GENTOW-6.5 (f₁=1): the
+k-extraction ledger with the B*+1 Y-ceiling and unique equality case;
+the top coordinate j* with graded digit binom(m,2)·ĉ²·π^{2a}·wrap —
+attainment on the floor iff p ∤ binom(m,2), with the honest
+cancellation clause (the box's own "(t*,…,t*) coefficient 1" guess
+REFUTED against PE5's committed 12288 = 3·4096); ShC_j ≡ 0 above j*;
+shadow-exactness. FR5X's measured j=0 slack now DERIVED exactly (p=2
+kills the binomial; the same assembly attains at p=3 — measured).
+Machine 459/0 at 7 frames incl. three new m ≥ 3 frames; note at 0/2,
+hostile arc owed. BOX-4's battery row RUN (265/0, four x-ful f₁=2/η≠1
+rows, cert digits and pins exact) — 6.3′ loses its machine-unexercised
+fence. Remaining sub-boxes: BOX-2 (ledger half) + BOX-3 (regime-3, one
+m above 6.5's classification) + the f₁≥2 × μ₂≥3 compound (prose).
+GENIND ANNEX R passed its first scoped hostile read UNREFUTED but NOT
+CLEAN (annex 0/2): one GAP — the closure sentence pins the vanishing
+rate on the FULL complement while the annex theorem proves the simple
+slice; the CS-drain all-window rate is supplied nowhere displayed;
+repair owed (the body's 2/2 acceptance is untouched). THE
+SIMPLIFICATION BLUEPRINT (docs/SIMPLIFICATION_BLUEPRINT_2026-08-10.md,
+343 lines): five targets ranked by revision-scope-reduction — T1
+gauge-cocycle (one lemma absorbs 7 per-note gauge annexes), T2
+σ-ladder master statement, T3 the cocycle-telescope trio (B″ +
+HETOW-4 + the cap lemma = one shape), T4 the certificate witness
+unification, T5 the w-frame definition note — plus four graded
+second-generation probes (SG-2: GENHN-4 from WELDMASTER+JD0 alone
+would retire ~6,900 lines from stage-two scope). Proposed first wave:
+S-0 (the statement ledger — the byte-tracking instrument enforcing
+"a simplification never weakens a statement") + S-1 (T1 through the
+full bar) + S-7 (the SG-2 probe). Codex batch #2's external runs died
+uncollected (briefs committed, seal intact) — relaunch queued at B19
+with the blueprint plan-pass added as a sixth brief.
