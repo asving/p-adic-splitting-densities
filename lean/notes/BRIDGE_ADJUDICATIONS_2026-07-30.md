@@ -15829,3 +15829,16 @@ storm's third hour). It joins the pending set at PRIORITY 1:
 the B25 resume + a fresh Agent for the anchor (its prompt is in this
 session's record; the watchdog resumes B25 only — the anchor
 redispatches at the next orchestrator turn).
+
+**STAND-DOWN #2 (2026-08-10 21:15 UTC)** — the watchdog's resume of
+B25 died INSTANTLY (6/6 to 529s in 30 seconds, zero tool calls, zero
+tokens — even the cached SG2 return failed; the workflow API path is
+saturated). Third dead attempt on this pending set. HARD stand-down:
+no further launches until the next watchdog firing at the earliest;
+if that one also dies instantly, skip one full cycle before the next
+try. The pending set is unchanged and loses nothing by waiting:
+(1) T1 r1(F-1)→PE2, (2) WI PE2 acceptance, (3) WFRAME PE2 legs 2-3,
+(4) T3-CODEX, (5) SG2 already complete (cached content safe in the
+repo at 95fb071a). Orchestrator-side work (local Lean, ledger, docs)
+remains available — the stage-two anchor landed through this same
+storm at 14b74341.
