@@ -22,7 +22,19 @@ the S4 count-law rewritten to carry (iv)'s per-coordinate
 certificate hypothesis; "touched coordinate(s)" pinned to the
 certificate reading in the (iv) statement (S7.6). Sealed machine
 artifacts BYTE-UNTOUCHED (md5s re-verified, S7.6). Grade stays
-0/2; PE3 next.]**
+0/2; PE3 next.]
+[ARC — passPE3 2026-08-10: NOT CLEAN, 1 GAP + 1 MINOR
+(GENTOW3_passPE3_report.md @ a1c181d); counter stays 0/2.
+GT3-r3 repair round 2026-08-10 (this commit): F-1 one-siding —
+the S0 geography clause's r2 "exactly" (an only-if S2 never
+proves, refuted by the measured W witness member at FR-M3
+j = 0) dropped for the proved direction: certificate ->
+failure AT THETA_j, attained by the key power's own shadow;
+where the digit cancels only the KEY POWER's first divergence
+provably sits strictly above THETA_j. m-A: S7.6 FR-M3 record
+Phi'/Phi2 label fix (constants unaffected). Sealed machine
+artifacts BYTE-UNTOUCHED (all nine md5s re-verified). Grade
+stays 0/2; PE4 next.]**
 
 CHARGE: characterize EXACTLY when the stage-shadow read (T(b)'(iv):
 the coefficientwise mod-Phi' projection G-hat_j(theta, Y)) agrees
@@ -57,16 +69,28 @@ ledger, the constant E2 = e2f2u2); machine: gentow1_checks.py
 THE GEOGRAPHY (proved in S2): the stage-shadow read is
 digit-faithful at every consulted dv2-height < THETA_j; at a
 non-x-free genre it can first fail no earlier than THETA_j, and
-it fails AT THETA_j exactly at the coordinates carrying (iv)'s
-certificate (the key power's assembled height-THETA_j K2-digit
-does not cancel — GENTOW3-BOX-1): there the floor is attained by
-the key power's own shadow [GT3-r2: certificate-scoped; the
-composed clause asserted attainment certificate-free at "overflow
-genres" (a term defined nowhere) and is REFUTED where the digit
-cancels — measured FR-M3 (mu2 = 3): self-shadow pins [12, 7, 4]
-vs THETA [10, 7, 4], slack at j = 0, attained at j = 1, 2 —
-S7.6]; at x-free genres (every lift coefficient of the
-composed key an x-free monomial) it is faithful at EVERY height.
+at the coordinates carrying (iv)'s certificate (the key power's
+assembled height-THETA_j K2-digit does not cancel —
+GENTOW3-BOX-1) it DOES fail at THETA_j: there the floor is
+attained by the key power's own shadow. Where the digit cancels,
+what is proved is only that the KEY POWER's own first divergence
+sits strictly above THETA_j (measured FR-M3 (mu2 = 3):
+self-shadow pins [12, 7, 4] vs THETA [10, 7, 4], slack at j = 0,
+attained at j = 1, 2 — S7.6); other members can still fail at
+exactly THETA_j there, through scope remark (2)'s
+entry-digit-driven overflows — priced by the same Step-2 ledger
+at the same floor, and measured: the member
+f = Phi2³ + 2x·Phi2² + 8·Phi2 + 64 at FR-M3 j = 0 has first
+disagreeing height exactly 10 = THETA_0, the shadow undercutting
+the honest deciding vertex (0,12) -> (0,10)
+(GENTOW3_passPE3_report.md @ a1c181d, the W rows) [GT3-r2: certificate-scoped — the composed clause asserted
+attainment certificate-free at "overflow genres", a term defined
+nowhere; S7.6. GT3-r3: one-sided — the r2 form's "fails AT
+THETA_j exactly at the coordinates carrying (iv)'s certificate"
+claimed an only-if that S2's attainment analysis (key-power-
+scoped) never proves and the measured W member refutes]; at
+x-free genres (every lift coefficient of the composed key an
+x-free monomial) it is faithful at EVERY height.
 The entry band (heights <= (mu2−j)E2) sits below THETA_j with
 margin delta at every genre — T(a)'s survival. At delta = 1 the
 first leaf height IS the threshold (the PE1 geography, 21 = 20+1);
@@ -673,7 +697,10 @@ now carries the certificate pin in the statement.
 **Verification against the refuting instances (both committed;
 the corrected sentences are TRUE on each):**
 * FR-M3 slack (gentow3_pe1_fresh.py + output, S7.5 md5s; p = 2,
-  Phi' = x² − 2x − 2, e2 = f2 = 1, u2 = 3, mu2 = 3, delta = 1,
+  Phi' = x² − 2, Phi2 = x² − 2x − 2 [GT3-r3 m-A: the r2 record
+  handed Phi2's polynomial to Phi'; in the pinned instrument
+  P12 = x² − 2 is Phi' and Phi2 = Phi' − 2x — every derived
+  constant unaffected], e2 = f2 = 1, u2 = 3, mu2 = 3, delta = 1,
   E2 = 3, THETA = [10, 7, 4]): self-shadow ShC = [[64], [0, 40],
   [12]], pins [12, 7, 4] — the height-10 digit at j = 0 CANCELS
   (certificate fails at (FR-M3, 0)). Corrected S0 asserts slack
