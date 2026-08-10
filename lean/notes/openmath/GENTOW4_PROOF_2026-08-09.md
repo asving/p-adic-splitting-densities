@@ -647,3 +647,160 @@ projection (c_g), and the per-block HE7.A trichotomy executed
 exactly as THEOREM GENTOW-4.A displays, and with three
 load-bearing seams (c_g-translation, label-keying, eta2-cocycle)
 each guarded by a fired tooth.
+
+---
+
+## S8. [GT4-r1] PE1 REPAIR RECORD + THE DATED GAUGE ANNEX
+## (2026-08-10, post-passPE1)
+
+PE1 verdict (GENTOW4_passPE1_report.md @ 8ae71864): NOT CLEAN —
+1 GAP (F-1, the gauge seam at four sites, machine-refuted at an
+eta != 1, f2 = 2 partial-side frame) + 2 MINOR (m-1 the S2
+fullness count; m-2 the T-2 even-p0 branch); counter stays 0/2.
+This section is the r1 repair round; this round's edits are marked
+[GT4-r1] (bare [r1] in the body refers, as before, to GENHN-1's
+node-floor erratum; [r1 2026-08-09] on HETOW cites = HETOW's own
+repair round). Sealed machine artifacts (gentow4_checks.py +
+output; the PE1 fresh instrument gentow4_pe1_fresh.py + output)
+are BYTE-UNTOUCHED by this round (md5s S8.4).
+
+### S8.1 THE DATED GAUGE ANNEX (F-1 repair): the corrected chat_t
+### pinned + the restated-bridge supply audit + two machine rows
+
+**The seam.** This note was composed, sealed, and verdicted
+2026-08-09 15:39–16:06 (c8da214 -> 2aa5b16 -> c21b59e/c43505d) —
+BEFORE the GENHN dated gauge erratum (59c1966, 08-09 20:13,
+provoked by HETOW PE1 F-1) and HETOW's [r1] wrap-correction
+(5335ae3): LEMMA GENHN-T(b)''s original display of the composed
+key's lift coefficients — chat_t = a plain lift of psi2's
+coefficient c_t — is GAUGE-NAIVE. The normalizer monomials are not
+multiplicative: nhat(u2)^{f2−t} = nhat((f2−t)u2)·
+(x^{e1}/pi^h)^{W(t)} with W(t) = floor((f2−t)·i(u2)/e1), so the
+plain lift's coherent-normalizer slot residue is c_t·eta^{−W(t)},
+not c_t; the corrected lifts absorb the wrap factor (the S0 pin).
+The note as composed transcribed the naive display at S0, consumed
+the pre-[r1] HETOW-1/2 at 4.1(c)/S3, claimed BOX-3 uniformity with
+no eta axis, and mis-attributed the S4 remark's residue-1
+x-relation to f1 = 1. All four sites carry [GT4-r1] pins this
+round; the corrected display itself is S0's (re-derived there from
+the wrap cocycle, not transcribed).
+
+**The restated-bridge supply audit (what 4.1(b)/(c) consume,
+checked this round against HETOW_RECON's [r1 2026-08-09] restated
+forms).** (1) 4.1(c) consumes "Phi2 = Psi_{kappa2,rtilde} − w with
+w = 0 or dv2(w) > T2" plus the transported package. The RESTATED
+LEMMA HETOW-2 supplies exactly this at the wrap-corrected key —
+and more strongly: under the (LIFT)-slot coefficient form the
+membership is LITERAL (w = 0, at any f1); its "hence" clause hands
+over the §S5 package, THEOREM HE7.A(1)(2), the refine package
+(HE7-12/13, HE7-8), and the §S1 CONVENTION with HE6R1-3's peel —
+every item on 4.1(c)'s list except LEMMA HE6R1-2 + RIDER and ANNEX
+HE7-13', which 4.1(c)'s own proof supplies through HE7-12(c)'s
+transport; that argument reads only the conclusion Phi2 = Psi − w
+and is key-shape-blind, so it fires unchanged at the corrected
+key. (2) 4.1(b) consumes the restated LEMMA HETOW-1's clauses
+(a)+(b), with psi2(0) != 0 supplied by 4.1(b)'s own
+endpoint-vertex argument in place of HETOW-1(a)'s full-side step;
+clause (b) — the locus identification — is POINTWISE (single
+height normalized, no product of normalizers), hence wrap-free and
+unchanged by the restatement. (3) The slot-residue reading (the
+restated clause (c)) is true AT THE CORRECTED KEY ONLY — it is the
+clause the naive display broke, and it is what GENTOW-4.A(ii)/
+(iii)'s residual reads consume through HE6R1-2. Net: with the S0
+pin in force, LEMMA GENTOW-4.1, THEOREM GENTOW-4.A, LEMMA
+GENTOW-4.2, and COR GENTOW-4.C read at the wrap-corrected key with
+no other change; at the naive key FR-G (below) refutes 4.1(c)'s
+key clause (naive sigma {(4,1)} != carrier {(2,2)}), (ii)'s
+deg f_S = D2·mu2* display (naive mu2* = 0 against deg f_S = 8),
+and GENTOW-1(d)'s floor transport (nfeltval = E2 exactly).
+
+**THE MACHINE ROWS (adopted from the PE1 fresh route,
+`gentow4_pe1_fresh.py` md5 5dc455dd7d2feb8bca79dbfb59c2d83b /
+output dac5110c0c9933d66d827a2d2f695281, committed @ 8ae71864:
+GREEN, 93 checks / 0 violations, dual PARI routes — frame data and
+numbers RE-VERIFIED this round against the committed instrument
+and output).**
+
+* **FR-G — the first gauge-live partial side in any leg of this
+  unit (eta != 1, f2 = 2; no battery family has eta != 1).**
+  p = 3, Phi' = x^2−6 (genre (2,1,5), h = 1, eta = 2), inner
+  (e2,f2) = (1,2), u2 = 3, psi2 = Z^2+Z+2, mu2 = 2 on side [1,5]
+  of slope 3 — PARTIAL (4 < mu1 = 5), sibling g = x^2−15 at slope
+  4. Hand re-derivation of the keys this round: i(3) = 1, so
+  (W(0), W(1)) = (1, 0); c_0 = −2 ≡ 1, c_0·eta^{W(0)} = 2,
+  −2·nhat(6) = −2·27 = −54; the t = 1 term is gauge-blind
+  (−2·3x·Phi'). CORRECTED key Phi'^2 − 6x·Phi' − 54; NAIVE (the
+  composed S0 display) = same − 27. Committed numbers: sigma(naive
+  key) = {(4,1)} != {(2,2)} = sigma(corrected key) = the
+  f1f2-carrier; both members (2SIDED and RAM block shapes times g)
+  read at the corrected key with mu2* = 2, c_g = 3, floors cleared
+  (pins (0,18),(1,10),(2,3) resp. (0,16),(2,3)), verdicts 2SIDED /
+  RAM, sigma = PARI both routes ({(2,1),(2,2),(2,2)} /
+  {(2,1),(4,2)}); at the NAIVE key both members' hulls
+  ((0,15)–(2,3)) have slope EXACTLY T2 = 6 — empty >T2 initial
+  segment, mu2* = 0, the tower class invisible; field floor:
+  corrected class rows 2·8 = 16, 2·7 = 14 > 12 = E2·e and
+  2·13 = 26 > 24, naive rows 2·6 = 12 and 2·12 = 24 exactly = E2·e
+  — GENTOW-1(d)'s separator collapses at the naive key.
+* **FR-M — the first TWO-BLOCK partial member in any tower battery
+  (q = 2, eta = eta2 = 1: gauge-clean, pure partial-side-geometry
+  stress).** p = 2, Phi' = x^2−2, mu1 = 9, n = 18, hull
+  (0,28)–(1,24)–(5,10)–(9,0): side A [1,5] slope 7/2 carrying
+  (T+1)^2 (u2 = 7, key Phi'^2−8x, E2 = 14), side B [5,9] slope 5/2
+  carrying (T+1)^2 (u2 = 5, key Phi'^2−4x, E2 = 10), sibling
+  x^2−6 at slope 4 — event length 4 vs mu1 = 9 (the battery's max
+  mu1 is 7). Three label combos (RAM/2SIDED, 2SIDED/INERT,
+  INERT/RAM): both classes read through THEIR OWN keys with
+  mu2* = 2 (LEMMA GENTOW-4.2's tie at TWO pure-power sides
+  simultaneously — first exercise), c_g^A = 27 and c_g^B = 25 on
+  all three members (each class's c_g absorbs the other block's
+  mass plus the sibling's: 20 + 7 and 20 + 5), floors cleared at
+  both E2's, per-class trichotomy = design, sigma = PARI both
+  routes (sig_A ∪ sig_B ∪ {(2,1)}), per-key nfeltval class-degree
+  sums 8 = D2·mu2* at BOTH keys per member. GENTOW-4.A(iv)'s "a
+  repeated co-class is ITSELF a tower class, read by this same
+  theorem" at first machine contact.
+
+**Battery blindness (disclosed).** All five sealed families sit at
+eta = 1 (P1/P2/P6: q = 2, Phi' = x^2−2, where eta = 1 forcibly —
+P2 the only f2 = 2 family; P3/P5: Phi' = x^2−3 over Q3, eta =
+res(x^2/3) = 1, and f2 = 1 anyway — verified at the sealed
+runner's PA/PB constants this round): the seal is structurally
+blind to the gauge seam. eta != 1 coverage on record: FR-G above
+plus the erratum lineage (frame X @ 59c1966/5f821dc;
+hetowr1_supp.py frames X/Z/W). No eta != 1 coh() row (the S4
+residual-digit read) exists in any leg yet — FR-G's members decide
+on slopes alone by design.
+
+### S8.2 (m-1 repair): executed in place at the S2 sentence —
+### recounted from HETOW_RECON S1's table: TWO lemma-level places
+### (HETOW-1's r-row; HETOW-3 wholesale), spanning five table rows.
+
+### S8.3 (m-2 repair): executed in place at the S6-VERDICT T-2
+### row — the even-p0 direction's wrong-sigma is a hand-assembled
+### representative INERT (sealed runner L871–878), not a
+### mutant-reader run; kills PARI-adjudicated in both directions.
+
+### S8.4 EDIT MANIFEST (for PE2's diff)
+
+Body state before this round: md5 5272bb855a4cbd6f445aaf18a47b2bb3
+(31,014 bytes) = the PE1 target (note last touched c43505d; HEAD
+d7ddf2e at round start). [GT4-r1] edit sites: (1) header ARC
+paragraph; (2) S0 gauge pin at the key display [site a]; (3) S2
+fullness-count correction [m-1]; (4) S2 audit re-check bracket
+[site b]; (5) S2 LEMMA GENTOW-4.1(c) restated-HETOW-2 re-point
+[site b]; (6) S3 rtilde re-definition bracket [site b]; (7) S4
+remark parenthetical correction + scope pin [site d]; (8) S7
+GENTOW4-BOX-3 eta-gauge withdrawal [site c]; (9) S6-VERDICT T-2
+disclosure [m-2]; (10) this S8. Edit shape: [GT4-r1]-bracketed
+INSERTIONS plus this S8 — checkable as `git diff d7ddf2e..HEAD` on
+this file; the statement displays of THEOREM GENTOW-4.A, LEMMA
+GENTOW-4.2, and COR GENTOW-4.C sit outside the brackets; LEMMA
+GENTOW-4.1's (c) clause and the S2 count sentence carry bracketed
+insertions with the composed text standing. Sealed machine
+artifacts BYTE-FROZEN, md5s verified before and after this round:
+gentow4_checks.py 98cdd4a4e5a47f1434bdf8ca5a1c4b4c (= sealed
+commit 2aa5b16 = artifact line 2), gentow4_checks_output.txt
+58f353056f276a53d297fdf8d66423af, gentow4_pe1_fresh.py
+5dc455dd7d2feb8bca79dbfb59c2d83b, gentow4_pe1_fresh_output.txt
+dac5110c0c9933d66d827a2d2f695281. Grade stays 0/2; PE2 next.
