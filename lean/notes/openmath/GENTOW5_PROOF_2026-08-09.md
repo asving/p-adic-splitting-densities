@@ -52,7 +52,7 @@ STATUS TABLE (updated per section as composed):
 | (2) | DEF GENTOW5-1 (level-r ladder grammar) | STATED (S2.1) |
 | (2) | LEMMA GENTOW5-C ((SLOT_i) for the tower ladder) | PROVED at annex-template grade (S2.3) |
 | (2) | LEMMA GENTOW5-D (Step-0 carry monotonicity is level-agnostic) | PROVED (S2.4) |
-| (2) | THEOREM GENTOW5-B (general-depth composition) | PROVED with named pins (S3) |
+| (2) | THEOREM GENTOW5-B (general-depth composition) | PROVED with named pins (S3) [GT5-r2: (a) at the twisted residual psi^{(w_i)}; w_i = 1 open] |
 | (2) | depth-4 witness n = 32 q = 2 | GREEN: ladder (16,40,84,170,341) exact, resultant + PARI routes (S4.3) |
 | battery | gentow5_checks.py | GREEN 92 checks / 0 violations, 5/5 teeth-and-flags as predicted (S5) |
 
@@ -367,8 +367,10 @@ K_0 := F_Q, K_i := F_{Q^{f_1...f_i}}.
   vartheta_{i,s+1} = vartheta_{i,s} * res(tau_i(s*u_{i+1}, u_{i+1})).
   [GT5-r1 derivation, NOT a transcription. Why the twist: grouping
   the recipe in Phi_i-slots, the slot-t MULTIPLICATIVE residual
-  coefficient (S1.2's convention — the one the side residual and
-  FGMN's R-operators read) is res(khat_t / nhat_i(u_{i+1})^{f-t}) =
+  coefficient (S1.2's convention — the side residual's read;
+  [GT5-r2] per the landed GENTOW2 r3 B-law the FGMN R-read differs
+  from it by the cross-frame unit w_i per grade — the S3(a)
+  re-scope) is res(khat_t / nhat_i(u_{i+1})^{f-t}) =
   digit(khat_t) * res(nhat_i((f-t)u_{i+1}) / nhat_i(u_{i+1})^{f-t})
   = digit(khat_t) * vartheta_{i,f-t}^{-1} (f := f_{i+1}); for that
   coefficient to equal psi_{i+1}'s c_t, the prescribed COHERENT
@@ -604,15 +606,47 @@ lam_1)-> mu_1 -(Phi_1, lam_2)-> ... -> mu_r = nu_r in FGMN
 coordinates, the GENTOW2 S2 dictionary at every level). Then, by
 induction on i < r:
 
-(a) [KEY CERTIFICATE, level-general] Phi_{i+1} is a key polynomial
-for nu_i and a PRIME polynomial (monic, O-coefficients, irreducible
-over K_v), with R_{nu_i}(Phi_{i+1}) = psi_{i+1}.
+(a) [KEY CERTIFICATE, level-general — GT5-r2 RE-SCOPED (PE2 F-1):
+the realized residual is the w-TWISTED form] Phi_{i+1} is a key
+polynomial for nu_i and a PRIME polynomial (monic, O-coefficients,
+irreducible over K_v), with
+
+    R_{nu_i}(Phi_{i+1}) = psi_{i+1}^{(w_i)}
+                        := w_i^{f_{i+1}} * psi_{i+1}(y / w_i),
+
+where w_i := R_{i+1,kbar_i}(nhat_i(u_{i+1})) in K_i^x is the single
+slot-independent CROSS-FRAME UNIT of the landed GENTOW2 r3 B-law
+(kbar_i := u_{i+1}/e(mu_i), the top slot's grade; at i = 2 this is
+LEMMA GENTOW2-B [r3 RESTATED] + LEMMA GENTOW2-B'''s w verbatim,
+GENTOW2_PROOF S5 @ d798529). psi_{i+1}^{(w_i)} is
+GENTOW2-A-ADMISSIBLE at each value of w_i — monic irreducible of
+degree f_{i+1} with nonzero constant term (y -> w*y is a
+substitution automorphism; B'' + the PE5 verification "psi_3^{(w)}
+is verifiably admissible for every w in K_2^x",
+GENTOW2_passPE5_report @ 75923bc) — and GENTOW2-A's hypothesis (ii)
+quantifier accepts it (its consumption note: "GENTOW2-A consumes
+only hypothesis (ii) with an admissible residual"; w acts by the
+grade-covariant substitution y -> wy, factor patterns preserved).
+THE w_i = 1 CASE IS OPEN: w_i is the uncomputed cross-frame unit
+("not computed anywhere in the corpus" — GENTOW2 S5), and
+verdict-level machine data is w-blind, so no committed run
+discriminates it; R_{nu_i}(Phi_{i+1}) = psi_{i+1} on the nose is
+NOT claimed. sigma, values, degrees, irreducibility, and the
+REPO-side residue classes are w-blind — checked per consumer in
+the [GT5-r2] walk after (e).
 (b) [ONE-SIDEDNESS AT EVERY LEVEL — the FGMN cite, arbitrary chain
 length] for every j <= i+1, the level-(j-1) polygon N_j(Phi_{i+1})
 is one-sided of slope -lam_j with residual R_{j-1}(Phi_{i+1}) =
 psi_{j-1}^{l_j ... l_{i+1}}, and every root xi of Phi_{i+1} has the
 EXACT intermediate values v(Phi_{j-1}(xi)) = u_j / ehat_j — i.e.
 xi in P_{i+1}: the recipe's roots ARE depth-(i+1) node points.
+[GT5-r2 rider (PE2 F-1(iii)): each psi in the residual display
+reads at ITS level's twisted form per the re-scoped (a) — the FGMN
+residual powers inherit the per-level w-twists (psi^{(w)}-powers).
+The exact-value clause and the P_{i+1} clause are w-blind: P_{i+1}
+is defined by REPO residue classes, and the FGMN class is w times
+the repo class (B''), so a psi^{(w)}-root FGMN-side IS a psi-root
+repo-side — FR-A's machine leg carried psi_3 exactly repo-side.]
 (c) [BUDGETS AT LEVEL i+1 — GENTOW-1 re-based] the level-(i+1)
 tower-entry locus T_{i+1} (monic f of degree n = mu * D_{i+1} whose
 level-(i+1) stage read exhibits the full side of slope
@@ -664,35 +698,56 @@ provisos are now supplied:
   the divide-by-Phi_2 h-step + Lemma 3.17); at i >= 3 the same
   derivation transports with (SLOT_i) = LEMMA GENTOW5-C in place of
   B-1 (per-grade shape and x0-freeness carry; the transport rides
-  the S2.3 annex-precedent pin). The discharge of (a) then uses
-  B'(5)'s TRUE transformation law, not any eps-substitution: the
-  recipe at digit string (c_t) realizes R_{nu_i}(Phi_{i+1}) =
-  y^{f_{i+1}} - Sum_t u_i(beta_t) c_t y^t; since u_i is x0-free and
-  the digit string is freely prescribable ((LIFT_i)), the
-  re-parameterized prescription c_t -> u_i(beta_t)^{-1} c_t
-  realizes the TARGET psi_{i+1} exactly — monic irreducible of
-  degree f_{i+1} with nonzero constant term, every clause consumed
-  downstream intact. Honest conditionality, named: what is consumed
-  is B'(3)'s per-grade-unit COMPARISON SHAPE (derived at i = 2,
-  transported at i >= 3), never B-2 on-the-nose (u = 1), which is
-  FALSE at letter-live grades. [In-flight pin, checked at this
-  commit: GENTOW2 r3 — flipping B-2 to its cocycle form u(beta) =
-  the vartheta-telescope unit, i.e. FGMN R-read = the repo
-  MULTIPLICATIVE read, which PE4's decode leg confirmed at 14/0 —
-  is DISPATCHED in this same wave (ledger B9, 87a7b61) and NOT YET
-  LANDED at GENTOW2_PROOF HEAD = 7532acb as of this commit. If r3
-  lands the cocycle form, the S2.1 gauge-corrected recipe realizes
-  psi_{i+1} with NO re-parameterization (its vartheta twist IS the
-  u-family); the discharge above does not wait for it — arbitrary
-  x0-free u suffices.]
+  the S2.3 annex-precedent pin). [GT5-r2 — PE2 F-1: the discharge
+  is REWRITTEN at the LANDED GENTOW2 r3 law (117b2c0..d798529),
+  which this round is the first repair that can read; the r1
+  discharge's re-parameterized key c_t -> u_i(beta_t)^{-1}c_t is
+  NOT the statement's pinned key (the digits differ by w-powers),
+  so the pinned key's residual is computed directly.] The landed
+  B-law (LEMMA GENTOW2-B [r3 RESTATED] + LEMMA GENTOW2-B'' at
+  i = 2; transported to i >= 3 on the same S2.3 annex-precedent
+  ride, per-grade shape and x0-freeness carrying as above):
+
+      u_i(beta_t) = theta_i(t) * w_i^{f_{i+1}-t},
+      theta_i(t) := res(nhat_i(u_{i+1}(f_{i+1}-t)) /
+                        nhat_i(u_{i+1})^{f_{i+1}-t}),
+      w_i := R_{i+1,kbar_i}(nhat_i(u_{i+1})) in K_i^x,
+
+  and theta_i(t) = vartheta_{i,f_{i+1}-t}^{-1} — the definitions
+  are RECIPROCAL (S2.1's vartheta_{i,s} = res(nhat_i(u)^s /
+  nhat_i(su)); same monomial quotient, inverse read). At the
+  S2.1-pinned digit string — the statement's OWN keys, coherent
+  digit c_t * vartheta_{i,f_{i+1}-t} — the B-law residual
+  coefficient at y^t is therefore
+
+      u_i(beta_t) * (c_t * vartheta_{i,f_{i+1}-t})
+        = theta_i(t) * w_i^{f_{i+1}-t} * c_t * theta_i(t)^{-1}
+        = c_t * w_i^{f_{i+1}-t},
+
+  i.e. R_{nu_i}(Phi_{i+1}) = y^{f_{i+1}} - Sum_t c_t
+  w_i^{f_{i+1}-t} y^t = w_i^{f_{i+1}} psi_{i+1}(y/w_i) =
+  psi_{i+1}^{(w_i)}: the vartheta twist cancels the theta LEG
+  ONLY; the w-leg SURVIVES. This is the re-scoped (a) — the same
+  consumption shape GENTOW2's own r3 took (its S4 in-particular
+  clause re-scoped to "consumption AT psi_3^{(w)}", acdf97a).
+  Honest conditionality, named: what is consumed is the landed
+  cocycle law (measured to its theta leg at PE4's decode 14/0 and
+  derived as B''), never B-2 on-the-nose (u = 1), which is FALSE
+  at letter-live grades; the w-leg is UNMEASURED (w-blind verdict
+  data) and w_i = 1 is OPEN. (The alternative prescription
+  c_t -> u_i(beta_t)^{-1}c_t would realize psi_{i+1} on the nose
+  but builds a DIFFERENT key from the pinned recipe, and w_i being
+  uncomputed it is not repo-constructible; the statement stays at
+  the pinned key and the twisted residual.)
 With (B-1)/(B-2 as corrected), LEMMA GENTOW2-B's proof runs at
-level i on the re-parameterized prescription: additivity
-(Cor 4.7(1) [Q8]) + eq (14) [Q7] give
-R_{nu_i}(Phi_{i+1}) = y^{f_{i+1}} - Sum c_t y^t = psi_{i+1}; the
+level i on the pinned prescription: additivity (Cor 4.7(1) [Q8]) +
+eq (14) [Q7] give R_{nu_i}(Phi_{i+1}) = y^{f_{i+1}} - Sum c_t
+w_i^{f_{i+1}-t} y^t = psi_{i+1}^{(w_i)} as displayed; the
 degree-forcing display [Q6] + Lemma 5.3(2) [Q4] certify
-Phi_{i+1} in KP(nu_i); Lemma 1.11 [Q1] + Cor 1.13 [Q2] give prime.
-Non-equivalence to the previous key: R(Phi_{i+1}) = psi_{i+1} != 1 =
-R(Phi_i) by eq (14), Prop 5.7 [Q7]. ∎(a)
+Phi_{i+1} in KP(nu_i) (admissibility of psi^{(w)} at each w — the
+statement's (a) clause); Lemma 1.11 [Q1] + Cor 1.13 [Q2] give
+prime. Non-equivalence to the previous key: R(Phi_{i+1}) =
+psi_{i+1}^{(w_i)} != 1 = R(Phi_i) by eq (14), Prop 5.7 [Q7]. ∎(a)
 
 *(b) — the cite fires at arbitrary r.* Theorem 6.3 [Q9] with
 F = phi = Phi_{i+1}, mu = nu_i (F = phi so phi |_mu F); Corollary
@@ -703,7 +758,11 @@ powers R_{j-1}(F) = psi_{j-1}^{l_j...} and the middle clause
 mu(phi_j) = v(phi_j(theta)) gives the exact intermediate values at
 every root — with the psi_{j}-root residue classes from the
 residual power (no root besides psi_j's, the GENTOW2-A consumption
-note verbatim), every root lies in P_{i+1}. The repo polygon =
+note verbatim), every root lies in P_{i+1}. [GT5-r2: with the
+re-scope the FGMN residual powers are psi^{(w)}-powers, whose roots
+are w times the psi-roots; the repo transport divides by that w
+(B''), so the P_{i+1} membership — a REPO-class condition — is as
+stated. Statement rider + consumer walk below.] The repo polygon =
 FGMN polygon under the S2 shear (GENTOW2 S2, level-general as an
 affine map per level). ∎(b)
 
@@ -760,6 +819,39 @@ force every side slope > E_{i+1}; and E_{i+1} = e_{i+1}f_{i+1}
 u_{i+1} > e_{i+1}f_{i+1} e_{i+1} E_i >= dv_{i+1}(x^{D_{i+1}}) =
 D_{i+1} * (ehat_{i+1}/e1) h by telescoping the floor chain down to
 E_1 = D_1 h. ∎(e)
+
+**[GT5-r2] THE RE-SCOPE'S CONSUMER WALK (PE2 F-1 ripple — checked
+per consumer, no blanket claim).** Consumers of (a)/(b) inside this
+note, each read against the twisted residual psi^{(w_i)}:
+* (b)'s cite legs (Thm 6.3 [Q9] / Cor 6.4 [Q10]): consume
+  Phi_{i+1} in KP(nu_i) + prime + the chain data — an ADMISSIBLE
+  residual suffices (the (a) admissibility clause); the residual
+  DISPLAYS inherit the per-level twists — carried by the (b) rider,
+  no on-the-nose psi identification consumed.
+* (b)'s P_{i+1} clause: a REPO-class condition; FGMN class = w *
+  repo class (B''), so it reads THROUGH the twist unchanged.
+  Machine leg: FR-A's corrected key carried the psi_3-class
+  repo-side exactly (gentow5_pe2_fresh.py, 22/0).
+* (c)'s budgets: T_{i+1} is DEFINED by the repo stage read
+  (multiplicative convention) — weights, digit floors, fibration,
+  node pins, field floor are value/repo-class data. Step 1's FGMN
+  read becomes R_{nu}(Phi_{i+2}^{mu}) = (psi_{i+2}^{(w_{i+1})})^{mu}
+  (Cor 4.7(3)); its repo-side translation is psi_{i+2}^{mu} by the
+  SAME per-grade w-dictionary applied at the power — the repo-side
+  clauses of (c) are w-blind. Step 2's ladder ascent consumes
+  repo-side (SLOT_j) reads; w never enters.
+* (d)'s refine transfer: THEOREM GENTOW5-A is stated and proved in
+  the multiplicative (repo) convention throughout — w-free.
+* (e)'s node floor: value arithmetic only — w-blind.
+* The S4 witness: K_i = F_2 at each rung, so K_i^x = {1} and
+  w_i = 1 trivially — the witness does not discriminate the w-leg
+  (recorded with the seam axis in S6's coverage box).
+* sigma / degrees / irreducibility / factor patterns: y -> w*y is
+  a substitution automorphism of K_i[y], factor patterns preserved
+  at each w (B''; PE5's admissibility verification) — w-blind.
+* External consumers: none executed (S6's consumption path is
+  candidates only); any future consumption of (a)/(b) must ride
+  the w-annotation.
 
 **What the induction consumes, per rung (the honest pin stack).**
 Accepted 2/2: T(b)'(i)/(ii)/(iii) + GENHN-2/2' + S4 normalizers
@@ -956,6 +1048,9 @@ exhibited). The run also reproduced the 86 exact checks unchanged.
 * TARGET 2: DEF GENTOW5-1 + LEMMAS GENTOW5-C/D + THEOREM GENTOW5-B —
   the level-r ladder grammar and the general-depth composition
   theorem, with the depth-4 witness EXACT on two independent routes.
+  [GT5-r2: (a) holds at the TWISTED residual psi_{i+1}^{(w_i)}
+  (GENTOW2-A-admissible at each w_i); w_i = 1 — the on-the-nose
+  psi_{i+1} — is OPEN, the uncomputed cross-frame unit.]
 
 **Named conditionality stack (per consumer):**
 * Accepted 2/2: LEMMA GENHN-T(b)'(i)/(ii)/(iii), GENHN-2/2', the S4
@@ -1059,8 +1154,20 @@ the 87a7b61-era file, the PE1 target state).
   That form is an INSTANCE of the per-grade x0-free family the
   S3(a) discharge consumes (theta(t) grade-indexed, w fixed), and
   its theta leg is the S2.1 pin's vartheta mechanism one level
-  down — consistent both ways; the S3(a) text stands as written on
-  arbitrary x0-free u, r3's remaining commits notwithstanding.
+  down. [GT5-r2 CORRECTION (PE2 F-1): the clause "consistent both
+  ways; the S3(a) text stands as written" that closed this bullet
+  was WRONG at the w-leg, as was this section's in-flight sentence
+  "realizes psi_{i+1} with NO re-parameterization (its vartheta
+  twist IS the u-family)": the vartheta twist cancels theta(t)
+  ONLY, and the landed law's second leg w^{f_3-t} survives — at
+  the pinned recipe the realized residual is psi_{i+1}^{(w_i)},
+  not psi_{i+1} (open unless w_i = 1, the uncomputed cross-frame
+  unit). The PRECISE statement: (i) the landed u IS an instance of
+  the per-grade x0-free family, so the r1 discharge's EXISTENCE
+  leg stands; (ii) the r1 discharge's re-parameterized key is NOT
+  the statement's pinned key (digits differ by w-powers), so (a)
+  at the pinned key required the r2 re-scope to psi^{(w_i)} —
+  S3(a) as rewritten this round.]
 * **F-3 (GAP) -> REPAIRED in S2.4.** Top-grid weight DEFINED
   (Phi_i at E_i); strict clause restricted to interior carries
   (rungs 1..i-1, in-datum); top carry priced PRESERVED — the i = 2
