@@ -14876,3 +14876,58 @@ tower acceptances (HETOW, GENTOW1, GENTOW2) to the decorrelated model,
 scaffold-before-content, per-note outcome ∈ {RATIFIED,
 RATIFIED-WITH-ANNEX, CHALLENGE}, findings ledger-adjudicated. GENTOW4/6
 arcs open at B13.
+
+## B12 FOLD (2026-08-10) — the Codex tower verdicts + two arcs at NOT CLEAN
+
+CODEX TOWER-RAT (record CODEX_TOWERRAT_2026-08-10.md, final 8ccd25d;
+116,767 Codex tokens, window 3% → 3%): GENTOW2 **RATIFIED-WITH-ANNEX**
+(4 minors → hygiene batch R3; 21 checked clean incl. B″ (i)–(iv)
+non-circular + the FGMN use-sites + ψ^{(w)} admissibility). HETOW
+**CHALLENGE**: F-1 REAL (the S1 normalizer row asserts σ-content
+twist-invariance without the formula; HE7.A(2)/(3) routing predicates
+are letter-sensitive) → repair charge TOWERRAT-R1 = HETOW-4, a B″-style
+n̂₂/n₂ cocycle bridge lemma; F-2 display-only (T(b)′ cite line); F-3
+artifact (row annotation). GENTOW1 **CHALLENGE**: R2a (free-count
+display needs the max(0,·) clip — false at N < max floor, in-scope
+instance verified), R2b (ONTO-by-cardinality under-specified — the
+finite sets never defined), R2c (LIFT-STABLE "iff < e₁e₂N" contradicts
+its own first-band value-exactness at the cap → three-band restate),
+F-4 minor wording. Acceptances stand ANNOTATED, none revoked. The
+pre-verdict scaffold hit GENTOW1-F2 and HETOW-F1's location exactly.
+Riders leg (earlier in wave): GENTOW2 acceptance record + the
+w-disclosure dated; GENTOW5 w-note; the GENTOW1-S3 flag adjudicated YES
+→ dated display correction 4e81a57 (consumers interface-only, truth
+values unchanged).
+
+GENTOW5 PE3 (39c36aa): NOT CLEAN 0C/1G/2m, counter 0/2. PE3-F-1 GAP:
+THEOREM GENTOW5-B(c) conflates stages i+1/i+2 — the entry-read clause
+(κ_{i+2}, ψ_{i+2}^μ) sits one level above its own degree/weight/pin
+clauses (μD_{i+1}, μE_{i+1}+1); the note's OWN witness f32 instantiates
+the counter-instance (P-B3: residual degree 1 = ψ₅, not ψ₅²). Repair =
+ONE CLAUSE (read clause → level-i / κ_{i+1} / ψ_{i+1}^μ); (d)/(e)/DEF
+consume the sound half. F-2/F-3 minors (two stale "uncomputed"
+sentences; a consumer-walk pointer). CLEAN charges held: the ψ^{(w)}
+re-scope discharge, 5 consumers re-verified, the corrected lift display
+re-derived (Δ(r,t) exact at FR-A and GA3). Fresh route landmark: first
+w-LIVE contact with GENTOW5's displays at GA3★ (7th measured prime,
+w = z₂ ≠ 1, first (8,4) carrier geometry, ψ₃^{(w)}(Y) = 0 ON THE NOSE —
+the re-scoped (a) verified live; NOSE tooth fired) + first depth-5/6
+contact (f64, six-rung ladder exact, drain tooth exact). Disclosed
+run-1 RED kept (gp-stdin print defect, verifier-side).
+
+GENTOW3 PE1 (3101cf5): NOT CLEAN 1G/3m, counter 0/2 — the arc opened.
+F-1 GAP = the gauge seam AGAIN (5th note): the x-free genre
+definition's "equivalently i(u₂(f₂−t))=0" clause FALSE at f₁ ≥ 2 inside
+BOX-2's claimed f₁-uniformity (verdict d90db6d predates erratum
+59c1966); Θ_j core + faithful band + attainment + COR 3.C all SURVIVED
+independent re-derivation; fresh route 485/0 (first μ₂=3 anywhere with
+first measured SLACK at j=0; cancel41 identically-zero leg; first η≠1
+contact at the corrected key). m-1 attribution, m-2 (110 vs 137 member
+count), m-3 (T-SHADOW-REG dead-code leg). Cure = GT1-r1-shape dated
+gauge annex + three record corrections.
+
+REPAIR QUEUE (B13): GENTOW5 r3 (one-clause (c) re-index + 2 one-liners)
+→ PE4; GENTOW3 r1 (gauge annex + 3 records) → PE2; HETOW TOWERRAT-R1
+(the HETOW-4 cocycle lemma) + F-2 cite + F-3 row; GENTOW1 R2a/b/c + F-4
++ GENTOW2 R3 hygiene (dated corrections on frozen texts, re-derived
+never transcribed). GENTOW4/6 arcs open at B14.
