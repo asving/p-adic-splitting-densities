@@ -15842,3 +15842,26 @@ try. The pending set is unchanged and loses nothing by waiting:
 repo at 95fb071a). Orchestrator-side work (local Lean, ledger, docs)
 remains available — the stage-two anchor landed through this same
 storm at 14b74341.
+
+**ASVIN NIGHT DIRECTIVES EXECUTED (2026-08-10 ~21:30)** — (1) LEAN:
+palindromicity dropped from both stage-2 targets per review;
+recompiled GREEN exit 0 (dbf129e2); his remaining caveat = the
+DEFINITION-AUDIT unit (FactorizationType/countingDensity/
+DensityFoundation vs the informal objects), queued named. (2)
+TIGHTNESS: "not even a small lemma can be left unproven ... either
+cited to standard literature (minus my paper) or proven!" — the
+TIGHTNESS CENSUS unit queued at TOP fleet priority (sweep every
+fenced/open/conditional item; in-cone items become proof/cite units;
+known candidates to classify: the S8.1 member half, OPEN-2 u1=w₁,
+OPEN-3 derived w-law, T1's item-9, the [GENTOW5-W(i)] fence — now
+nearly discharged at 1/2 — and every capstone-hypothesis analogue in
+the informal corpus). (3) CODEX-FOR-NOW during the storm + the
+try-to-prove rule for high-leverage numerically-verified lemmas —
+**the X-LEMMA PROOF ATTEMPT LAUNCHED on the external path** (brief
+/tmp/xlemma_brief.txt, 22,282 chars = the SG2 self-contained
+materials + the probe's X characterization + the prove-it charge
+with machine-plan and honesty requirements; runner detached, output
+/tmp/xlemma_output.log; collect at next turn). Pending set for the
+Fable API's return, priority order: TIGHTNESS CENSUS, then T1
+r1→PE2 / WI PE2 / WFRAME PE2 / T3, then the definition-audit unit.
+Asvin back in the morning.
