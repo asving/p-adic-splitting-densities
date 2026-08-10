@@ -228,7 +228,10 @@ NONZERO whenever the assembled K2-digit does not cancel — the
 per-genre CERTIFICATE, decided by one finite computation
 (machine-checked: A5/A7/C touch j = 0 with digits 16Phi'/64Phi'/
 64Phi' at 21/31/43; B touches BOTH: ShC_1 = 4Phi' + 8x at 7,
-ShC_0 = 64Phi' + 64x at 13). Deep perturbation f = Phi2^{mu2} + g
+ShC_0 = 64Phi' + 64x at 13) [GT3-r1 attribution: "machine-checked"
+= the PINS (the sealed SHARP want-lists), which are the
+certificate; the digit VALUES were hand-derived at composition and
+gained machine legs at PE1 — S7.2]. Deep perturbation f = Phi2^{mu2} + g
 (g in-budget with slots at heights > THETA_j, disc ≠ 0): both
 reads shift by the SAME g-digits (linearity of both divisions in
 f), so the divergence at THETA_j persists while the honest read
@@ -325,7 +328,11 @@ VERDICT RUN (this repo, 2026-08-09, output
     BAND 2, PE1 3, GP-SIG 6, TEETH 3.
 
 Per prediction: P-1 (FLOOR, 274): every discrepancy height on 110
-members (nec + real + anchors, five families) clears Θ_j. P-2
+members (nec + real + anchors, five families) clears Θ_j [GT3-r1
+census correction: the true count is 137 member_check calls =
+274/2 — 5 × (14 nec + 12 real + 1 anchor) + 2 A7-BAND rows; "110"
+undercounted (omitted the 20 perturbation variants, 5 anchors, 2
+band rows) — S7.3]. P-2
 (SHARP): self-shadow pins landed at the preregistered Θ values
 (A5/A7/C: 21/31/43 at j = 0 only; B: 13 AND 7 — both
 coordinates); A5-DEEP honest tRAM(207) vs shadow tRAM(21), PARI
@@ -341,7 +348,12 @@ x4 (the Θ+1 mutant is killed by each self-shadow row —
 disagreement AT Θ); T-BAND-EDGE x1 (the Θ−1 mutant calls height
 30 unfaithful; agreement + PARI refute it); T-SHADOW-REG x1 (the
 shadow reproduces the refuted stage pins and its priced σ differs
-from PARI on rows 1–2).
+from PARI on rows 1–2) [GT3-r1 disclosure: the σ-comparison branch
+in the sealed runner is DEAD CODE (gentow3_checks.py L398–399, a
+literal `pass`); the tooth fires on pins + labels matching the
+preregistered wants alone; the σ-difference is ENTAILED by the
+machine-checked labels through the accepted (iii) dictionary, not
+compared in-code — S7.4].
 
 ## S6. HONEST RESIDUE + GRADE BOX
 
@@ -511,3 +523,49 @@ PARI-exact, shadow pin also 13 with a DIFFERENT digit (mindiff
 At the gauge-NAIVE key this frame is not even a carrier (σ
 {(4,1)}, erratum 59c1966) — the row is meaningful only at the
 corrected key.
+
+### S7.2 (m-1 repair): the (iv) certificate's digit-value
+### attribution, corrected
+
+The sealed instrument machine-checks the PINS — the SHARP
+want-lists [21, None] / [31, None] / [13, 7] / [43, None] at
+A5/A7/B/C, i.e. self-shadow nonzeroness AT THETA, which IS the
+(iv) certificate. The digit VALUES displayed in S2's (iv)
+parenthetical (16Phi'/64Phi'/64Phi' at 21/31/43; B: ShC_1 =
+4Phi' + 8x at 7, ShC_0 = 64Phi' + 64x at 13) were HAND-DERIVED at
+composition — they appear in no sealed machine output. At PE1 the
+values gained two legs: (leg 1) the verifier's independent
+division walks (report m-1: each value confirmed by hand); (leg 2)
+the fresh instrument's FR-P5 battery-digit replication rows, exact
+polynomial equality (output: A5 [−32, 0, 16] = 16Phi'; A7 and C
+[−128, 0, 64] = 64Phi'; B [−128, 64, 64] = 64Phi' + 64x and
+[−8, 8, 4] = 4Phi' + 8x; D DRAIN). Attribution now: pins = the
+sealed leg; digit values = the PE1 walk + the FR-P5 replication.
+
+### S7.3 (m-2 repair): the P-1 record census, 110 -> 137
+
+Re-counted from the FLOOR battery's code paths at this round:
+member_check calls = 5 families × (14 nec [10 bases + 4
+deep-perturbation variants at i ≡ 0 mod 3, per nec_members] + 12
+real + 1 anchor) + 2 A7-BAND rows = 137; × 2 coordinates = 274
+FLOOR checks = the sealed tally. "110" counted nec-bases + real
+only (50 + 60), omitting the 20 perturbation variants, the 5
+anchors, and the 2 band rows despite naming anchors. Conservative
+direction — more was checked than the sentence claimed. The S5
+sentence carries the in-place [GT3-r1] correction.
+
+### S7.4 (m-3 repair): T-SHADOW-REG's σ-leg disclosed as dead code
+
+In the sealed runner the σ-comparison branch is a literal `pass`
+(gentow3_checks.py L398–399: `if i > 0 and rs[3] is not None and
+rs[3] != [(8, 1)]: pass`); the tooth fires on honest/shadow labels
++ pins matching the preregistered wants alone. The σ-difference in
+the S5 tooth description is ENTAILED by machine-checked facts —
+the shadow labels tINERT/t2SIDED force priced σ {(4,2)}/{(4,1)²}
+through the accepted (iii) dictionary, against PARI-checked
+{(8,1)} on PE1 rows 1–2 — but the comparison itself is not
+executed in-code. The sealed runner stays byte-frozen; the
+disclosure lives at the S5 tooth row and here. (Related report
+observation, no finding: the ENTRY tally 274 is entailed by FLOOR
+274 given delta >= 1 — honest as COR 3.C's machine face, not
+independent evidence.)
