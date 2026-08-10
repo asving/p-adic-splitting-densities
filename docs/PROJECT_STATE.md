@@ -3758,3 +3758,36 @@ S-0 (the statement ledger — the byte-tracking instrument enforcing
 full bar) + S-7 (the SG-2 probe). Codex batch #2's external runs died
 uncollected (briefs committed, seal intact) — relaunch queued at B19
 with the blueprint plan-pass added as a sixth brief.
+
+**2026-08-10 DATED APPEND #22 — CORRECTION TO #21 (machine-refuted
+summary sentences) + B19 fold: all three sub-box theorems in hand;
+the 6.5 arc opens with a real statement catch** — Two sentences in
+append #21 are corrected against the GENTOW6-BOXES passPE1 verdict
+(3ae577e8): (i) #21's "attainment on the floor iff p ∤ binom(m,2)"
+over-summarized THEOREM GENTOW-6.5(b) — the theorem claims the IF
+direction only, and the verifier's constructed frame BP3 (p=3,
+p | binom(3,2)) REFUTES the only-if: the certificate slot cancels in
+grade yet attainment holds through a different branch. The record of
+record: attainment on the floor IF p ∤ binom(m,2); when p | binom,
+attainment may still occur (BP3) or fail (FR5X at p=2) — the appends'
+iff is withdrawn. (ii) #21's "unique equality case" inherits PE1's
+F-1 CRITICAL: 6.5(a)'s equality-case sentence is FALSE at
+e₂(f₂−t*)=1 geometries with k·i_{t*} ≥ (k−1)D′ (constructed frame
+CE3; clauses (b1)/(c)/(d) survive) — repair in flight (scope the
+clause or display the k ≥ 3 exception). B19's remaining fold:
+**GENTOW-6.6 PROVED (BOX-2 CLOSED at the box's ask)** — the window
+count ledger via Sylvester–Jacobian pricing, fibers exactly q^c,
+c_J = μ₂*m′D₂E₂/(e₁e₂) via residual separation; 576/0 with exact
+enumeration at two avatars (4,782,969 pairs → 3¹² images, all fibers
+9). **GENTOW-6.7 + COROLLARY 6.7C′ (BOX-3: key-power half PROVED at
+μ₂=2; member half = the S8.1 displayed obstruction)** — the χ
+pair-sum criterion; the unit's OWN sealed 6.7C law was refuted by
+its RED run and re-derived via the K2-adic descent multiplicity
+(6.7D) as 2·binom(m,3)·ĉ³π^{3a₀} — reproducing the FR5X
+three-configuration target; 215/0, six teeth ×3. GENIND annex pass 2
+CLEAN → **1/2** (ANNEX-LEMMA GENIND-C2 sound; the n=4 scenario dead
+three ways). Codex TOWERRAT2 RUN A complete: GENTOW5 as-built =
+CHALLENGE (adjudication at B20); runs B–F relaunching. Sub-box
+high-water: every named box now carries a proved theorem or a
+displayed obstruction; the open surface is the GENTOW6_BOXES note's
+own hostile arc (0/2, r1 owed) + the S8.1 member half.
