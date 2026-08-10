@@ -118,15 +118,28 @@ consumed; also machine-checked as the dual route P-DUAL, S4).
 >
 >     Y <= e2 f2 (m - k) + e2 Sum t + e <= B* + 1 ,
 >
-> with Y = B* + 1 forcing (k, multiset, e, steps) =
-> (2, {t*, t*}, 1, 0).
+> with Y = B* + 1 forcing zero division steps, the all-t* multiset
+> {t*, ..., t*}, and e = k - 1. When e2(f2 - t*) >= 2 this pins
+> (k, multiset, e, steps) = (2, {t*, t*}, 1, 0); at e2(f2 - t*) = 1
+> geometries every k >= 3 with k i_{t*} >= (k - 1) D' contributes a
+> further equality branch (k, {t*, ..., t*}, k - 1, 0), and each
+> such branch lands at x-slot <= k i_{t*} - (k - 1) D' < a* (each
+> extraction consumes exactly D' of x-degree; i_{t*} < D') at
+> weight m E2 + (k - 1) delta >= m E2 + 2 delta, strictly above the
+> height-THETA_{j*} graded layer. [r1 2026-08-10: sentence
+> corrected per passPE1 F-1 — the sealed sentence forced
+> (2, {t*, t*}, 1, 0) unconditionally; refuted at the
+> e2(f2 - t*) = 1 frame CE3 (S11), where the k = 3 all-t* source
+> -8 x^6 Y^3 extracts twice to -8 Y^{B*+1} at x-slot 0 != a* = 1.]
 >
 > (b) [CERT-TOP-m] If 2 i_{t*} >= D', the height-THETA_{j*} graded
 > digit of ShC_{j*} at slot (a*, b*) is EXACTLY
 >
 >     binom(m,2) * (chat_{t*})^2 * pi^{2 a_{t*}} * (wrap unit) ,
 >
-> assembled from the unique branch of (a)'s equality case. Hence:
+> assembled from the unique GRADED-LAYER branch of (a)'s equality
+> census (the k = 2 diagonal; (a)'s k >= 3 equality branches, when
+> they exist, sit above the layer and off the slot). Hence:
 > (b1) if p does NOT divide binom(m,2) = m(m-1)/2: the digit is
 > nonzero in the residue field — the shadow diverges from DRAIN at
 > EXACTLY THETA_{j*} at coordinate j*, on the floor (attainment);
@@ -194,9 +207,26 @@ has
     Y <= entry(mu) + e <= e2 f2 (m-k) + k e2 t* + (k-1)
        = B* + 1 - (k - 2)(e2 (f2 - t*) - 1)  <=  B* + 1
 
-(k >= 2; e2(f2 - t*) >= 1 since t* < f2), with Y = B* + 1 forcing
-k = 2, e = 1, and e2 Sum t = 2 e2 t*, i.e. the diagonal multiset
-{t*, t*} (t <= t* termwise). The iterated exact division of Delta
+(k >= 2; e2(f2 - t*) >= 1 since t* < f2). Exactly:
+
+    (B* + 1) - (e2 f2 (m-k) + e2 Sum t + e)
+       = (k-2)(e2(f2-t*) - 1) + e2(k t* - Sum t) + (k-1-e) ,
+
+three non-negative terms (k >= 2; t <= t* termwise; e <= k - 1),
+and division steps only subtract further. So Y = B* + 1 forces
+zero division steps, Sum t = k t* (the all-t* multiset), e = k - 1,
+and (k-2)(e2(f2-t*) - 1) = 0. At e2(f2 - t*) >= 2 that pins the
+diagonal pair (k, multiset, e, steps) = (2, {t*, t*}, 1, 0); at
+e2(f2 - t*) = 1 every k >= 3 whose extraction budget allows
+e = k - 1 (Step II: (k-1) D' <= Sum i = k i_{t*}) contributes too.
+Each such k >= 3 branch spends exactly D' of x-degree per
+extraction (tail steps spend more), so it terminates at x-slot
+<= k i_{t*} - (k-1) D' < 2 i_{t*} - D' = a* (the gap is
+(k-2)(D' - i_{t*}) > 0 since i_{t*} <= e1 - 1 < D'), and its
+weight is m E2 + (k-1) delta >= m E2 + 2 delta, strictly above
+the height-THETA_{j*} graded layer (weight m E2 + delta, Step IV).
+[r1 2026-08-10: census corrected per passPE1 F-1 — the sealed
+sentence forced k = 2 unconditionally; refuted at CE3 (S11).] The iterated exact division of Delta
 by K2 (monic in Y of degree e2 f2) routes each monomial either
 through the top term (Y^N lands at coordinate floor(N / e2 f2),
 in-coordinate slot b = N mod e2 f2, coefficient unchanged) or
@@ -219,7 +249,12 @@ at general mu2) prices every branch at weight m E2 + (number of
 extractions) * delta, so the layer carries e = 1 branches with
 every other step weight-exact. A height-THETA branch landing at
 slot (a*, b*) of coordinate j* has Y = j* e2 f2 + b* = B* + 1: by
-(a)'s equality case it is the diagonal pair source {t*, t*} with
+(a)'s corrected equality census it is an all-t* source with
+e = k - 1 and no division steps, and the k >= 3 members (live only
+at e2(f2 - t*) = 1) are excluded twice over — their weight
+m E2 + (k-1) delta >= m E2 + 2 delta sits strictly above the
+graded layer, and their x-slot <= k i_{t*} - (k-1) D' < a* misses
+the slot — leaving the diagonal pair source {t*, t*} with
 its single extraction and no division steps. Its source monomial —
 x-position 2 i_{t*}, Y-position B*, coefficient binom(m,2)
 (-chat_{t*})^2 pi^{2 a_{t*}} = binom(m,2) chat_{t*}^2 pi^{2 a_{t*}}
@@ -242,12 +277,14 @@ iff p | binom(m,2). If p does not divide it: nonzero digit at
 exactly the floor height (GENTOW-3(i) forbids anything lower):
 divergence at exactly THETA_{j*} — (b1). If p | binom(m,2): the
 graded layer at that slot is zero and slot content, if any, sits
-strictly above — (b2). Branches at the same Y = B* + 1 do not
-exist besides this one (equality case); same-height branches at
-other Y land at other slots; multi-extraction branches (k >= 3
-sources with e = 2 can reach Y = B* + 1 only when e2(f2 - t*) = 1)
-cost >= 2 delta of weight and sit strictly above the graded layer —
-they cannot touch the height-THETA digit. ∎(b)
+strictly above — (b2). Branches at the same Y = B* + 1 besides
+this one are exactly (a)'s k >= 3 equality branches (live only at
+e2(f2 - t*) = 1, with e = k - 1 >= 2): they cost (k-1) delta >=
+2 delta of weight, sit strictly above the graded layer, and land
+at x-slot < a* — doubly clear of the height-THETA digit (at CE3
+the -8 Y^{B*+1} branch measures v = 3 at height THETA_{j*} + delta
+and x-slot 0 — S11); same-height branches at other Y land at
+other slots. ∎(b)
 
 **Step V (tail/source pairs cancel exactly; (d)).** Within Delta,
 each source mu contributes the pair (its e = 0 iterated-tail
