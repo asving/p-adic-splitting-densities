@@ -103,13 +103,124 @@ in §2 is stated in this frame.
 
 ## §2. THE BASIC LAWS (each PROVED in the accepted corpus; source labeled)
 
-(filled in commit 2)
+Every law below is a QUOTE-WITH-RECAP of an accepted statement: the
+proof lives in the source note; the recap shows only the one-line
+algebra a reader needs to use the law. Source labels are S-0 ledger
+rows (note, label, md5-8) or R.1(a) span pins. Nothing here extends
+any source statement's quantifier.
+
+**LAW W-A (admissibility transport).** For ψ ∈ K_i[y] monic
+irreducible of degree f with ψ(0) ≠ 0 and any unit w ∈ K_i^×, the
+twist ψ^{(w)} = w^f ψ(y/w) is monic irreducible of degree f with
+ψ^{(w)}(0) = w^f ψ(0) ≠ 0; more generally y ↦ wy is a K_i-algebra
+automorphism of K_i[y] (composed with the monic renormalization), so
+ψ ↦ ψ^{(w)} preserves the entire irreducible-factor pattern (factor
+degrees and multiplicities). Hence ψ^{(w)} is
+GENTOW2-A-ADMISSIBLE at each value of w.
+*Source:* the parenthetical proof inside LEMMA GENTOW2-B [r3
+RESTATED] (S-0 row GENTOW2 #2, md5-8 `8a00bf44`, L303–340 @
+33f86204: "the substitution y ↦ wy preserves monicity after the
+renormalization displayed, irreducibility, degree, and the nonzero
+constant"); quoted level-generally by GENTOW5-B(a) with the PE5
+verification sentence "ψ₃^{(w)} is verifiably admissible for every
+w in K₂^×" (span pin: GENTOW5_PROOF @ b0e5c648 L780–796;
+GENTOW2_passPE5_report @ 75923bc).
+
+**LAW W-B (the cocycle factorization — the u ↔ ϑ,w adjudication,
+i = 2).** In GENTOW2-B's recipe geometry (slots t < f₃, slot grades
+β_t = u₃(f₃−t)/e(µ₂)), B′'s per-grade unit family factors as
+
+    (6)   u(β_t) = ϑ(t) · w^{f₃−t},     w := R_{3,κ̄}(n̂₂(u₃)),
+
+with ϑ = DEF W-3's cocycle and w DEF W-1's single slot-independent
+unit. *Source:* LEMMA GENTOW2-B″ (S-0 row GENTOW2 #4, md5-8
+`d4c8b885`, L729–738 @ 33f86204); the unit family u(β) itself is
+LEMMA GENTOW2-B′ (row #3, `bae471b0`, L518–538). Proof: B″'s
+(i)–(iv) (Cor 4.7(2) peeling, Def 1.8 expansion minimum, the j ≥ 1
+y-degree kill, the j = 0 digit-1 read) — GENTOW2 S5.2, re-walked
+clean at PE5/PE6.
+
+**LAW W-C (the B-law and the ψ^{(w)} realization, i = 2).** The
+recipe key Φ₃ = Φ₂^{e₃f₃} − Σ_{t<f₃} k̂_t Φ₂^{e₃t} with digit string
+(c_t) realizes
+
+    R_ν(Φ₃) = y^{f₃} − Σ_{t<f₃} ϑ(t) w^{f₃−t} c_t y^t,
+
+and the MULTIPLICATIVE-CONVENTION prescription c_t := ϑ(t)^{−1}a_t
+against a target ψ₃ = y^{f₃} − Σ a_t y^t (monic irreducible,
+ψ₃(0) ≠ 0) realizes R_ν(Φ₃) = w^{f₃}ψ₃(y/w) = ψ₃^{(w)} — DEF W-2's
+twist at DEF W-1's w. The unadjusted per-height prescription
+(c_t = a_t) realizes ψ₃ itself iff u(β_t) = 1 at each used slot
+(REFUTED letter-live; §4 row R-5). *Source:* LEMMA GENTOW2-B [r3
+RESTATED] (row GENTOW2 #2, `8a00bf44`); one-line algebra:
+u(β_t)c_t = ϑ(t)w^{f₃−t}·ϑ(t)^{−1}a_t = a_t w^{f₃−t}, and
+y^{f₃} − Σ a_t w^{f₃−t} y^t = w^{f₃}ψ₃(y/w).
+
+**LAW W-D (consumer invisibility — w never reaches a verdict).**
+THEOREM GENTOW2-A consumes only its hypothesis (ii) with an
+admissible residual — never a digit string, never the untwisted ψ —
+and by LAW W-A the twist preserves factor patterns; so every
+GENTOW2-A output clause (σ, exact values, degrees, prime-split
+verdicts, repo-side residue classes) is w-BLIND: unchanged under
+w ↦ (any unit). Consequently verdict-level machine data can measure
+ϑ but structurally cannot measure w (why §4's record required the
+canonical frame). *Source:* THEOREM GENTOW2-A (row GENTOW2 #1,
+`5d1ae5f0`, L187–219) + the B″ consequence sentence ("with P's
+irreducible-factor pattern for every value of w", inside row #4) +
+GENTOW2's S4 consumption note as quoted by PE6 §C; GENTOW5's
+per-consumer walk (span pin L816–819 @ b0e5c648: "σ, values,
+degrees, irreducibility, and the REPO-side residue classes are
+w-blind — checked per consumer in the [GT5-r2] walk").
+
+**LAW W-E (letter values and forced trivialities of ϑ).** At i = 2:
+ϑ(t) is x₀-free and letter-valued — a z₁^j z₂^k monomial with
+grade-determined exponents (the γ-calculus: the defining ratio is a
+value-0 Laurent monomial in π, x, Φ′, and value-0 monomials form
+exactly ⟨γ₁, γ₂⟩ with res(γ₁(x₀)) = z₁, res(γ₂(x₀)) = z₂); hence
+ϑ(t) = 1 at any slot whose letter monomial is trivial (in
+particular wherever z₁ = z₂ = 1, the letter-dead geography); and
+ϑ(f₃−1) = 1 always (the defining ratio is trivial at the top slot).
+At f₃ = 1 the single slot is the top slot, so no cocycle is live.
+*Source:* the γ-calculus paragraph of GENTOW2 S5.2 (proof preamble
+of row GENTOW2 #4; span pin GENTOW2_PROOF @ 33f86204 L715–727).
+NOTE the asymmetry, which is this note's central caution: LAW W-E
+is proved for ϑ. The analogous letter-valuedness of the w-AVATAR
+(the measured object of §4) rides an interpretation leg with one
+DESCRIPTIVE-status row (§4 preamble); no law of this section
+computes w.
 
 ---
 
-## §3. THE LEVEL LADDER (what holds at which i)
+## §3. THE LEVEL LADDER (what holds at which i — the net position
+## after GENTOW5 S11.2 + S11.3)
 
-(filled in commit 2)
+* **i = 2 — UNCONDITIONAL.** LAW W-B/W-C verbatim (the landed
+  GENTOW2 r3 B-law; ledger rows GENTOW2 #2/#3/#4). This is the ONE
+  level at which the single-w form is proved.
+* **i = 1 — SHAPE PROVED, TIE OPEN.** The proved form (GENTOW5
+  S11.3's dated re-scope, span pin @ b0e5c648 L1955–1957):
+
+      R_{ν₁}(Φ₂) = ψ₂^{(u1)},  u1 ∈ K₁^× a FIXED
+      z₁-letter-power unit (the letter formula's species);
+      the tie u1 = w₁ = R_{2,κ̄₁}(n̂₁(u₂)) is OPEN.
+
+  The species comes from GENTOW2-A(c)'s letter-formula content
+  (z₂ = η₂·z₁^{−⌊ℓ₁u₂/e₁⌋}); the derivation never evaluates the
+  residue R_{2,κ̄₁}(n̂₁(u₂)), so it cannot identify u1 with the
+  pinned w₁ (different units give different residual polynomials).
+* **i ≥ 3 — OPEN BEHIND [GENTOW5-W(i)].** Proved by GENTOW5's own
+  sections: per-grade FIXEDNESS of u_i(β) (the τ_i-cocycle letter
+  computation), x₀-freeness and g-freeness, and the reciprocity
+  ϑ_i(t) = ϑ̄_{i,f_{i+1}−t}^{−1} (S2.1's monomial quotient, inverse
+  read). NOT proved: the single-w geometric form
+
+      [GENTOW5-W(i)]   u_i(β_t) = ϑ_i(t) · w_i^{f_{i+1}−t},
+                       w_i = R_{i+1,κ̄_i}(n̂_i(u_{i+1})),
+
+  which per-grade fixedness underdetermines (fixed families exist
+  that fit no single w) — GENTOW2-B″'s computation run at level i,
+  reproduced nowhere. §5 fences it with its exact conditional
+  scope. *Source:* GENTOW5 S11.2 (span pin @ b0e5c648 L1888–1933).
 
 ---
 
