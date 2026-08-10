@@ -1,0 +1,9 @@
+== LEG A: (2,2) mixed side + live sibling (out of battery) ==
+  class s=1: mu2* = 2 (composed hull [(0, 51), (2, 25), (4, 5)])
+  class s=2: mu2* = 2 (composed hull [(0, 58), (2, 25), (4, 5)])
+  gp: ['disc 1', 'fac 2 5 5', 'fac 8 20 33', 'fac 8 26 20']
+== LEG B: CERT-TOP corner (e2,f2)=(1,5), b*=0 (out of battery) ==
+  psi2 = T^5 + 1 T^2 + 1 T + 2 (irreducible /F3)
+  ShC_0 pin 31 slots [(31, 0, 1, 14), (31, 0, 3, 11), (31, 1, 0, 15), (31, 1, 2, 12)]
+  ShC_1 pin 16 slots [(16, 0, 0, 8)]
+=== FRESH VERDICT: GREEN -- 22 checks, 0 violations ===
