@@ -15809,3 +15809,23 @@ its ground truth re-pinned at the pipeline's turn. The Lean unit
 blueprint itself waits (per math-first-formalize-when-stable + the
 owner's pipeline) for the T1–T5 outcomes so it maps the COMPRESSED
 statement set — the S-0 ledger's 166 rows are its interface draft.
+
+**STAGE-TWO OPENING, STATUS (2026-08-10 ~20:00)** — (1) the AxChk
+trusted-base re-pin COMPLETED GREEN (exit 0, log
+/tmp/axchk_baseline_20260810.log): the capstones' footprints verify —
+'OM.RealInstanceV2.montes_unconditional' and the RealInstanceW twin
+depend on exactly [propext, Classical.choice, Quot.sound]; the
+declared cited axioms appear only where declared (the
+SerreLocalFields integral-closure axiom on its measure-route list);
+746 footprint lines printed clean. THE FORMALIZATION SUBSTRATE IS
+VERIFIED GREEN at the stage-two turn. (2) the STAGE-TWO ANCHOR unit
+(the compiling sorry-fenced Lean statement of the general-degree
+uniformity theorem at lean/LeanUrat/Stage2/UniformityTarget.lean —
+the simplification-independent first Lean unit, statements being
+frozen by the S-0 tripwire) was dispatched and KILLED by 529s (the
+storm's third hour). It joins the pending set at PRIORITY 1:
+(1) STAGE2 anchor unit, (2) T1 r1(F-1)→PE2, (3) WI PE2 acceptance,
+(4) WFRAME PE2 legs 2-3, (5) T3-CODEX. Revival: the watchdog, via
+the B25 resume + a fresh Agent for the anchor (its prompt is in this
+session's record; the watchdog resumes B25 only — the anchor
+redispatches at the next orchestrator turn).
