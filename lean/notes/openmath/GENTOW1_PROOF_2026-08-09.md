@@ -690,3 +690,42 @@ statement displays of LEMMA GENTOW-1, LEMMA GENTOW-2, LEMMA
 GENTOW-5, and COR GENTOW-1.1 sit outside the inserted brackets
 (the pins fix the consumed chat_t reading; the floors, bounds, and
 clause texts are the composed ones). Grade stays 0/2; PE2 next.
+
+### Dated correction (2026-08-10, post-PE2)
+
+PE2 came back CLEAN (0C/0G/1m; report `GENTOW1_passPE2_report.md`
+@ 1e99926); the acceptance counter moved 0/2 -> 1/2 and HOLDS at
+1/2 through this correction (append-only, no content of the
+verified body touched). The one MINOR (m-1): S7.1's eta != 1
+coverage sentence above ("the fresh route's F1 frame plus the
+erratum's own frame X + hetowr1_supp.py's three frames") reads as
+a five-item frame list — it conflates INSTRUMENT LEGS with
+DISTINCT FRAMES. Corrected reading: the distinct eta != 1 frames
+on record at r1 number THREE, reached by three instruments, with
+frame X a single genre datum counted ONCE:
+
+1. **X = PE1's F1 = hetowr1_supp.py's first frame** (one frame,
+   three instrument legs): p = 3, Phi' = x^2−6, e1 = 2, eta = 2
+   (ord 2), (e2,f2) = (1,2), u2 = 3, psi2 = Z^2+Z+2,
+   (W(0),W(1)) = (1,0). Legs: the PE1 fresh route
+   `gentow1_pe1_fresh.py` (sealed 9e9d994; 373/0) as F1; the
+   GENHN erratum 59c1966's frame-X machine confirmation
+   (5f821dc); `hetowr1_supp.py` frame X.
+2. **Z** (`hetowr1_supp.py` only): p = 5, Phi' = x^2−10, e1 = 2,
+   eta = 2 with ord(eta) = 4, (e2,f2) = (1,2), u2 = 3,
+   psi2 = Z^2+Z+1, (W(0),W(1)) = (1,0).
+3. **W** (`hetowr1_supp.py` only): p = 5, Phi' = x^3−10, e1 = 3,
+   eta = 2, (e2,f2) = (1,2), u2 = 5, psi2 = Z^2+Z+1,
+   (W(0),W(1)) = (1,0).
+
+Instrument legs != frames: three instruments, three distinct
+frames — not five. Seam-diversity caveat carried from the PE2
+report: the three enumerated frames sit at i(u2) = 1 with
+W(0) = 1, W(1) = 0 (X, Z, and W alike per the pins above); a
+gauge-live frame at i(u2) >= 2 or W(0) >= 2 remains uncovered
+machine-side. The wrap-immunity legs the annex leans on (PE1's
+Step 0 value-blind re-derivation; F1 at 373/0) are unaffected by
+this count repair. BYTE-FREEZE: pre-append body md5 c2f4f3d1
+(c2f4f3d148b1ab94c5f9f95aa01de139) = commit 477b1b1, 38,204
+bytes, re-verified by prefix after the append; sealed artifacts
+byte-untouched; statement displays untouched.
