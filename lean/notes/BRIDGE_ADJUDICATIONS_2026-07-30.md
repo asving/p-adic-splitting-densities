@@ -15194,3 +15194,24 @@ GENTOW4 1/2 · GENTOW6 1/2. B16 = three rider→ACCEPTANCE chains
 tower campaign closes at 7/7. Then: the Codex batch
 (discharge-confirmation + new acceptances + W-MULT-DCX), site refresh
 #2, the GENTOW6 count-grade sub-boxes, the distribution arcs.
+
+**B16 DISPATCHED (2026-08-10, wf_bfda606b-464)** — recorded
+post-dispatch. Three rider→ACCEPTANCE chains (all riders minors-only,
+counters HOLD at 1/2): (1) GENTOW3 rider (the r3 adoption's md5 pins +
+manifest line) → passPE5 acceptance attempt (surfaces: the five-layer
+certificate story end-to-end; T(a)'s supplier stack at today's grades;
+the slack/attainment pattern across the arc's frames; fresh candidates:
+non-prime q, δ-extreme × e₂>1, μ₂=3 × certificate-live). (2) GENTOW4
+rider (the five PE2 minors re-derived) → passPE3 acceptance attempt
+(surfaces: COR GENTOW-4.C re-derived against the cap lemma's displayed
+consumption — this acceptance would upgrade GENTOW6's conditionality;
+fresh candidates: a three-block member, f₂ ≥ 4, gauge-live ×
+non-linear-wrap live read). (3) GENTOW6 rider (the two stale summary
+sites re-scoped to the pin; the 6.4(a) codomain corrected) → passPE3
+acceptance attempt (surfaces: the cap lemma as a system + the
+BLOCK-STAB redundancy adjudication; the box fences at acceptance;
+fresh candidates: the gauge-live tie — PE2's own suggestion, a D₂ ∤ n
+codomain member, the unit-square's other corner). If all three land
+CLEAN: **the tower campaign closes at 7/7** and the n ≥ 8 leg of the
+uniformity theorem rests entirely on accepted texts + the three named
+count-grade sub-boxes.
