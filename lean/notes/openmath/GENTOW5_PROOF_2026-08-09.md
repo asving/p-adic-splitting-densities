@@ -475,11 +475,17 @@ prescribe the level-i digits INVERSE-twisted by vartheta_t^{-1}
 ((LIFT_{i-1}) supplies them one level down; base = the level-1/2
 lift lemmas, accepted); the bound arithmetic never sees residues.
 **Grade honesty:** this is HE7 ANNEX R's R1-b/R1-c argument
-transported onto the tower ladder — the annex is POST-RATIFICATION,
-UNPASSED (annex grade); the transport itself (the four-clause
+transported onto the tower ladder — [GT5-r1 DATED FOLD 2026-08-10,
+orchestrator-authorized (ledger B8, 87a7b61): the annex stack is
+now ACCEPTED 2/2 (annexpass CLEAN 4a613d8 -> annexpass2 CLEAN
+a472155, "the annex stack is ACCEPTED 2/2"; the HETOW acceptance
+record e38df9f consumes it); the composition-time wording
+"POST-RATIFICATION, UNPASSED (annex grade)" is superseded in the
+CONSERVATIVE direction — the pin claimed weaker support than the
+truth]; the transport itself (the four-clause
 instantiation table above) is this note's, and the base cases i <= 2
 rest only on accepted corpus. Every i >= 3 consumer below carries
-this annex-grade pin explicitly. ∎
+this pin explicitly, now at the acceptance grade. ∎
 
 *Remark (HE7 base vs tower base).* HE7-2''s n_1 = varpi-powers and
 our n1hat differ per height by the fixed wrap letter (both are
@@ -760,11 +766,12 @@ Accepted 2/2: T(b)'(i)/(ii)/(iii) + GENHN-2/2' + S4 normalizers
 (rungs i <= 2). Cited at verified numbering: FGMN [Q1]-[Q10]
 (level-general by their own quantifiers; faithfulness per GENTOW2
 S6, unchanged). Grade 0/2: GENTOW-1 (budgets pattern), GENTOW-2
-(refine pattern), GENTOW2-A/B (cite pattern), THIS NOTE. ANNEX
-GRADE (unpassed): HE7 ANNEX R's R1-b/R1-c ARGUMENT, consumed at
+(refine pattern), GENTOW2-A/B (cite pattern), THIS NOTE. HE7 ANNEX
+R's R1-b/R1-c ARGUMENT, consumed at
 rungs i >= 3 through LEMMA GENTOW5-C (the proof is reproduced
 tower-side, but its correctness precedent is the annex's — named,
-not hidden). The depth->=4 region has machine contact ONLY through
+not hidden) [GT5-r1 dated fold: ACCEPTED 2/2 since a472155; see the
+S2.3 fold]. The depth->=4 region has machine contact ONLY through
 S4's witness (one exact instance) + HE7 R1.3's level-3 leg one
 ladder over; no count law at depth >= 3 is claimed measured.
 
@@ -789,7 +796,18 @@ recursion solves):
     Phi_4 = Phi_3^2 - 256 Phi_2     (nhat_3(85) = 256 Phi_2)
 
 (Phi_2, Phi_3 are the committed W1 objects of GENTOW2; Phi_4 is
-NEW — the first depth-4 key anywhere in the program.) The degree-32
+NEW — the first depth-4 key anywhere in the program.)
+[GT5-r1 SEAM RE-CHECK (PE1 F-1's charge): this witness chain is
+GAUGE-SEAM-BLIND on two INDEPENDENT grounds — (i) K_i = F_2 at
+every level, so every letter (eta, beta_j) = 1 and vartheta is
+identically 1; (ii) every stage has f_{i+1} = 1, so the recipe's
+only slot is t = 0 with s = f - t = 1 and vartheta_{i,1} = 1 BY
+DEFINITION, letters notwithstanding. Corrected = naive khat at
+every rung; the displayed keys Phi_2/Phi_3/Phi_4 and f32 ARE the
+gauge-corrected recipe's outputs unchanged, and the committed
+sealed artifacts stand as-is. The witness therefore verifies
+NOTHING about the seam — the seam-live machine leg is the PE1
+fresh instrument's FR-1 frame, cited at the S2.1 pin.] The degree-32
 member, one more tight rung (m* = 4*341/4... the top height
 m* > e*E_4 = 340, minimal odd 341 on dv_4):
 
@@ -818,8 +836,17 @@ e = 32, f = 1 (RAM leaf at the odd top height). Machine forms:
 * P-C (PARI leg, DETACHED): factorpadic(f32, 2) returns ONE factor
   of degree 32; nfinit([f32,[2]]) + idealprimedec gives a single
   prime with (e, f) = (32, 1) and nfeltval ladder (16, 40, 84, 170,
-  341). Budgeted with timeout; infeasibility disclosed, not fatal
-  (P-B4 is the exact witness either way).
+  341). Budgeted with timeout; infeasibility disclosed, not fatal.
+  [GT5-r1 wording correction (PE1 F-6): the composition-time
+  parenthetical "(P-B4 is the exact witness either way)" OVERSTATED
+  the PARI-free route's standalone strength — v_2(Res(f32, g))
+  certifies the SUM over roots of v(g(xi)) (equal to 32*v(g(xi))
+  per root only GIVEN one prime over 2); the per-root ladder needs
+  the single-prime read, which is the PARI leg (C1/C2) or polygon
+  theory under witness. As RUN, C1/C2 came back GREEN, so the
+  composed two-route record of S4.3/S5 is sound as claimed; only
+  the counterfactual "either way" clause was wrong, and it is
+  hereby withdrawn.]
 * T-B1 (tooth, the even-height mutant AT the node — STRONG FORM,
   hand-derived before the seal): f32m := Phi_4^2 - 2^20 Phi_1
   (height 340 = 2*E_4 exactly, gcd(340, 2) != 1). Derivation
@@ -903,7 +930,14 @@ PARI leg (detached; verdict from the committed artifact
 nfeltval route — matching P-B4's integer-resultant route rung for
 rung); `C3a nfactors=1 deg=4 / e=4 f=1` and `C3b nfactors=1 deg=4 /
 e=4 f=1` (P-C3: the refined keys of rows A-1 and A-2/A-4 keep
-carrier at q = 2 and q = 3); `C4 nfactors=2 degs=[8, 24]` (P-C4:
+carrier at q = 2 and q = 3) [GT5-r1 instrument-strength disclosure
+(PE1 F-5): the sealed chk lines machine-assert only `C3a
+nfactors=1` + a deg=4 occurrence and `C3b nfactors=1`; the e = 4
+values (and C3b's deg) are PRINTED to the committed artifact and
+human-verified in the quoted lines here, not chk-asserted — the
+sealed runner is byte-frozen, so the gap is recorded rather than
+retro-patched; any future battery revision should assert e and deg
+on both rows]; `C4 nfactors=2 degs=[8, 24]` (P-C4:
 the node-height mutant is NOT a single factor — the degree-8 piece
 is the drain factor Phi_3 that T-B1's exact division already
 exhibited). The run also reproduced the 86 exact checks unchanged.
@@ -931,11 +965,19 @@ exhibited). The run also reproduced the 86 exact checks unchanged.
   one-sidedness at every depth; faithfulness audit GENTOW2 S6).
 * Grade 0/2 (same campaign, hostile arcs owed): GENTOW-1, GENTOW-2
   layers 2-3, GENTOW2-A/B, THIS NOTE.
-* ANNEX GRADE (post-ratification, unpassed): HE7 ANNEX R's
-  R1-a/R1-b/R1-c ARGUMENT — consumed at rungs i >= 3 through LEMMA
-  GENTOW5-C (reproved tower-side, but the argument's precedent and
-  its only hostile-adjacent scrutiny live in the annex). THE GRADE
-  CAP FOR DEPTH >= 3 CLAIMS IS THIS PIN plus this note's arc.
+* HE7 ANNEX R's R1-a/R1-b/R1-c ARGUMENT — consumed at rungs i >= 3
+  through LEMMA GENTOW5-C (reproved tower-side, but the argument's
+  precedent and its hostile scrutiny live in the annex).
+  [GT5-r1 DATED FOLD 2026-08-10 (PE1 F-4; orchestrator-authorized,
+  ledger B8 87a7b61): the annex stack is ACCEPTED 2/2 — annexpass
+  CLEAN 1/2 (4a613d8), annexpass2 CLEAN "the annex stack is
+  ACCEPTED 2/2" (a472155); the HETOW acceptance record (e38df9f)
+  consumes it. The composition-time cap sentence ("THE GRADE CAP
+  FOR DEPTH >= 3 CLAIMS IS THIS PIN plus this note's arc") is
+  LIFTED to the acceptance grade on the annex leg: the remaining
+  depth >= 3 grade cap is this note's own arc plus the campaign-0/2
+  notes it consumes (GENTOW-1/-2, GENTOW2-A/B) — the annex pin no
+  longer caps below acceptance.]
 * Machine coverage (GENTOW5-BOX-A): CHECK-A exercises mu2 in {2,3},
   q in {2,3}, K2 in {F2, F3, F4}, e2 in {1,2}, f2 in {1,2}, d = 1,
   depth 2; CHECK-B exercises ONE depth-4 chain (all-(2,1) stages,
@@ -944,7 +986,19 @@ exhibited). The run also reproduced the 86 exact checks unchanged.
   direction (theta vs theta^{-1}) is machine-tested only up to
   self-inverse units (F3; disclosed at T-A4W) — an F5-frame or
   F4-live-twist row would pin it; proof-side the direction is
-  S1.2's derivation.
+  S1.2's derivation. [GT5-r1 THE SEAM AXIS (PE1 F-1's coverage
+  finding — the axis this box omitted at composition): the
+  committed battery is GAUGE-SEAM-BLIND BY CONSTRUCTION. CHECK-B is
+  q = 2 with every f_i = 1 (vartheta trivialized twice over — S4.1
+  re-check); CHECK-A's only eta != 1 frame (A-2/A-4, p = 3,
+  eta = 2) has f2 = 1, where W = 0 and naive = corrected. No
+  committed row exercises the recipe at a letter-live frame with
+  f_stage >= 2. The seam-live row that exists is the PE1 fresh
+  instrument's FR-1 (gentow5_pe1_fresh.py + artifact @ 0160b94,
+  15/0: corrected key = carrier sigma (2,2) + exact ladder; naive
+  key sigma {(4,1)} — the tooth). A letter-live recipe row inside
+  this note's OWN battery remains a named gap (sealed runner
+  byte-frozen; the fresh instrument is the current coverage).]
 
 **What stays OPEN (not claimed):** tower COUNT laws at depth >= 3
 (no ledger, no measurement); partial inner sides ([GENHN-TOW-1] item
@@ -959,3 +1013,58 @@ note and S6 GENTOW-BOX-1, GENHN_PROOF's GENHN-BOX-2 and
 depth->=4 bullet are candidates for the orchestrator's dated
 consumption updates after this note's own hostile arc; the four
 source notes are byte-untouched by this unit.
+
+## S7. [GT5-r1] PE1 REPAIR RECORD (2026-08-10, post-passPE1)
+
+PE1 verdict (GENTOW5_passPE1_report.md @ 0160b94): NOT CLEAN —
+1 CRITICAL (F-1) + 2 GAP (F-2, F-3) + 3 MINOR (F-4, F-5, F-6);
+counter stays 0/2. This section is the r1 repair round. Tag
+convention: this round's edits are marked [GT5-r1]; bare [r1] in
+the body refers, as composed, to GENHN-1's node-floor erratum.
+Sealed machine artifacts BYTE-FROZEN at their committed md5s
+(gentow5_checks.py 5fa684c7..., gentow5_output_exact.txt
+dc499a49..., gentow5_output_full.txt 839a8660...); no runner
+edited, no re-run. Pre-r1 note body md5 02deb7e0 (43,779 bytes =
+the 87a7b61-era file, the PE1 target state).
+
+* **F-1 (CRITICAL) -> REPAIRED at the S2.1 GAUGE PIN.** The recipe's
+  khat_t is pinned to the gauge-corrected form khat_t :=
+  lift_i(c_t * vartheta_{i,f_{i+1}-t}; u_{i+1}(f_{i+1}-t)),
+  vartheta_{i,s} the S1.2/S2.3 telescope unit — RE-DERIVED in the
+  building direction from LEMMA GENTOW5-A1's dictionary (this
+  note's own reading-direction machinery, applied where the
+  composed display failed to); the level-2 specialization
+  reproduces GENHN erratum 59c1966's chat_t = lift(c_t*eta^{W(t)})
+  by the x-wrap count vartheta_{1,s} = eta^{floor(s*i(u_2)/e1)}.
+  Machine leg: the PE1 fresh frame FR-1 (cited at the pin, artifact
+  @ 0160b94). Ripple pins: S3 statement (keys = corrected recipe),
+  S2.4 (value-blind), S4.1 (witness seam-blind on two grounds),
+  S6 coverage box (the seam axis added). No fresh frames composed:
+  FR-1 suffices as the seam-live verification, per the charge.
+* **F-2 (GAP) -> REPAIRED in S3(a).** The y -> eps*y fallback
+  (deleted as false at its source, GENTOW2 r1 dd44d20) is replaced
+  by GENTOW2-B'(3)/(5)'s per-grade-unit law with the
+  re-parameterization discharge; B-2 on-the-nose is named
+  machine-REFUTED at letter-live grades (GENTOW2 PE4 @ 2f95be6) and
+  is NOT consumed. In-flight pin at commit time: GENTOW2 r3
+  (cocycle flip) dispatched in ledger B9 (87a7b61), NOT landed at
+  GENTOW2 HEAD = 7532acb when this round committed; the discharge
+  here does not wait on it.
+* **F-3 (GAP) -> REPAIRED in S2.4.** Top-grid weight DEFINED
+  (Phi_i at E_i); strict clause restricted to interior carries
+  (rungs 1..i-1, in-datum); top carry priced PRESERVED — the i = 2
+  instance now matches GENTOW1 S2 Step 0 verbatim; grid-4 equality
+  instance worked (170 = 170 = 170).
+* **F-4 (MINOR) -> FOLDED (orchestrator-authorized, ledger B8
+  87a7b61).** HE7 ANNEX R pin lifted to ACCEPTED 2/2 (4a613d8 ->
+  a472155; HETOW acceptance e38df9f consumes it) at S2.3, the S3
+  pin stack, and the S6 cap sentence.
+* **F-5 (MINOR) -> DISCLOSED at S5's C3 lines** (chk asserts
+  nfactors only; e/deg human-verified from the artifact; runner
+  byte-frozen).
+* **F-6 (MINOR) -> WITHDRAWN at S4.2 P-C** (the "either way"
+  clause; the as-run two-route record stands).
+
+Grade: 0/2 UNCHANGED (this is a repair round, not a pass); PE2
+next. TARGET 1 (GENTOW5-A/A0/A1) was not at stake and is untouched
+beyond the pins named here.
