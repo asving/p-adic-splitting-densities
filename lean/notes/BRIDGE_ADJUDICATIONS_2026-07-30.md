@@ -15342,3 +15342,49 @@ survives). SIMPLIFICATION BLUEPRINT COMPLETE (6fc4efeb, 343 lines: the
 26-text DAG, five ranked compression targets, four graded second-gen
 candidates, Lean-readiness, a 9-unit campaign plan). GENTOW6 boxes
 unit still running; full B18 fold on the wave notification.
+
+## B18 FOLD (2026-08-10) — BOX-1 PROVED, BOX-4 DISCHARGED, the blueprint delivered + B19 DISPATCH RECORD
+
+B18 (wf_5b74eb87-ede, 3/3): (1) **GENTOW6-BOX-1 PROVED at f₁=1** as
+THEOREM GENTOW-6.5 (GENTOW6_BOXES_2026-08-10.md, verdict a646c7c9):
+the k-extraction ledger/Y-ceiling B*+1 with unique equality case; j*
+= (m−2)+⌊(2e₂t*+1)/e₂f₂⌋ with graded digit binom(m,2)·ĉ²·π^{2a}·wrap
+— attainment on the floor iff p ∤ binom(m,2) with the honest
+cancellation clause; the box's own "(t*,…,t*) coefficient 1" guess
+REFUTED against PE5's committed 12288 = 3·4096; obs-1's three
+configurations = (b1)/(b2)+S3/(c); FR5X's measured j=0 slack DERIVED
+(the binomial dies at p=2, attains at p=3 — measured at P33). Sealed
+2ae94ded, run-2 GREEN 459/0, 4 tooth families exact, run-1 RED kept.
+0/2, arc owed. **BOX-4 DISCHARGED-battery** (90b23648/b1b6aa61,
+265/0): four x-ful f₁=2/η≠1 rows, cert digits 64/64/256/256 at pins
+= Θ₀ exact; 6.3′'s machine-unexercised fence retired; pure appends
+on the frozen note prefix-verified. Residue: BOX-2 + BOX-3 + the
+f₁≥2×μ₂≥3 prose compound. (2) GENIND ANNEX pass 1 (4c89666f):
+UNREFUTED/NOT CLEAN 0C/1G/2m — GAP-1 the full-vs-simple complement
+seam (C′ proves the simple slice; the CS-drain all-window rate
+undisplayed; failure scenario at n=4 deficit slope < 1); R2–R6 clean;
+fresh leg 25/26 with both teeth caught. (3) the SIMPLIFICATION
+BLUEPRINT (6fc4efeb, 343 lines): T1 gauge-cocycle (absorbs 7 gauge
+annexes) > T2 σ-ladder master > T3 cocycle-telescope trio > T4
+certificate witness > T5 w-frame note; SG-1..4 graded probes (SG-2
+would retire ~6,900 lines from stage-two scope); first wave S-0
+statement ledger + S-1 (T1 through the bar) + S-7 (SG-2 probe).
+Codex batch #2 found DEAD-UNCOLLECTED (briefs+seal intact, no
+outputs, no live processes) — relaunch queued.
+
+**B19 DISPATCHED (wf_f9df6852-6df)**, recorded post-dispatch, five
+agents: (1) GENIND annex r1 (GAP-1 PROVE-FIRST: derive the CS-drain
+all-window rate from the body's machinery with the n=4 failure
+scenario as the test case, else honest re-scope + named box; c ≥
+c′+1 displayed; enumerative rewrites) → annex pass 2 (stress at the
+failure scenario + one unused instance; fresh route candidates n=6
+(5,d)-contact, r=6). (2) GENTOW6-BOXES passPE1 — the 6.5 arc opens
+(re-derive j* + the graded digit; the cancellation clause both
+directions; fresh candidates m=6/7, p=3 m=4 where 3 | binom(4,2),
+second f₂ geometry). (3) BOX-2/BOX-3 prove-first from 6.5's ledger
+machinery (BOX-3 = the j < j* classification one m up; FR5X's three
+configurations as the empirical target). (4) Codex relaunch:
+TOWERRAT2 A–E sequentially with in-agent collection + RUN F = the
+blueprint plan-pass (T2's statement-design risk the headline
+surface). Simplification wave S-0/S-1/S-7 launches at B20 after the
+plan-pass verdicts.
