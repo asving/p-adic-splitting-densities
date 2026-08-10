@@ -248,7 +248,9 @@ binding on future appends: deg Φ′ = e₁f₁ (LP1: e₁f₁ = 4 forces
 degree 4; GB: e₁f₁ = 2), so the misstatement was internally
 detectable from the row's own stage data.]
 
-**The rows (7 measured primes across 5 keys on 2 towers):**
+**The rows (7 measured primes across 5 keys on 2 towers at
+composition; R-7 appended 2026-08-10 per §8's append rule — now 8
+primes, 6 keys):**
 
 | row | frame (tower; e₃,f₃,u₃) | primes | w-avatar | companion facts |
 |---|---|---|---|---|
@@ -257,10 +259,16 @@ detectable from the row's own stage data.]
 | R-3 | GA1 (GB; 1,2,21) | 2 | z₂² ≠ 1 (each) | ϑ(0) = z₂²; u(β₀) measured = 1 = ϑ(0)·w² |
 | R-4 | GA3 (GB; 2,2,41) | 2 | z₂ ≠ 1 (each) | u(β₀) measured = z₂ — the first letter-valued canonical unit on record; vs R-3: u₃-discrimination fired |
 | R-6 | GA3\* (GB; 2,2,41; NEW key, target ψ₃ = y²−y−z₂) | 1 | z₂ ≠ 1 | the 7th prime, first carrier-(8,4) geometry; PSIW: ψ₃^{(w)}(Y) = 0 ON THE NOSE at measured w ≠ 1 (GENTOW5-B(a) as re-scoped, verified); NOSE tooth fired: ψ₃(Y) ≠ 0; naive twin (untwisted prescription = the committed GA3 key) splits [16,16] |
+| R-7 [appended 2026-08-10, r1] | GF29 (GB; 1,2,29; NEW key, target ψ₃ = y²+y+z₂) | 1 | z₂ ≠ 1 | the 8th prime (PE1 fresh leg; κ₃ = 29 > floor 20, no committed key uses u₃ = 29); avatar ≠ z₂² = R-3's GA1 value on the SAME tower — a third u₃-discrimination pair; ϑ(0) = z₂², u(β₀) = z₂, B″(6) closed with all three residues measured at an ACTUAL prime; PSIW on the nose; NOSE tooth fired; naive twin realizes the split y²+z₂y+z₂² → TWO primes (4,2) vs the LAW key's ONE (4,4) — a verdict-level naive-twin kill; the twin's two primes carry the SAME avatar z₂ (DEF W-1's key-independence of w observed live) |
 
 Sources: R-1..R-4 = GENTOW2_passPE6_report §E (@ deba21bd,
 L245–295); R-6 = GENTOW5_passPE3_report §S4 LEG W (@ 39c36aa2,
-L270–292).
+L270–292); R-7 = WFRAME_passPE1_report addendum (verdict @
+3db65096; predictions preregistered @ 63890e5e BEFORE the run),
+instrument wframe_pe1_fresh.py (runner md5 15935529; run-1 RED
+28/3 kept as committed — all 3 misses the verifier instrument's
+own lattice-letter sign slips, diagnosed in-file, both gp routes
+already green; run-2 GREEN 31/0, output md5 3e45cc3e).
 
 **R-5 (the refutation record that forced this frame — PE4,
 RED-by-design, kept).** At LD2 (LP1; e₃ = 1, f₃ = 2, u₃ = 19; digit
@@ -272,15 +280,25 @@ seal 23def87, output kept as-is); decode probe GREEN 14/0
 (gentow2_pe4_decode.py). This is the machine event that killed the
 old B-2 and created DEF W-4's frame.
 
-**Enumerated consequences (this record, no further).** (i) w ≡ 1 is
-dead at each of the 7 measured primes. (ii) "w constant per tower"
-is dead twice over (R-1 vs R-2; R-3 vs R-4). (iii) The measured
-avatars equal the S5.2 γ-calculus hand values at each of the 4
-frames (exponent-lattice splits, re-verified by §7's instrument).
-(iv) B″(6) is closed w-inclusively at the 3 slots where all three
-residues were independently measured (R-1, R-3, R-4). (v) The
-record does NOT decide w at unmeasured frames, unmeasured u₃, or
-levels i ≠ 2 (GENTOW5's dated-note wording, adopted verbatim).
+**Enumerated consequences (this record, no further).** (i) The
+measured w-AVATAR is ≠ 1 at each of the 8 measured primes. [r1,
+PE1 F-4: the subject is the avatar — the reading "w ≠ 1" rides the
+row-23 DESCRIPTIVE leg disclosed in this section's preamble, not
+upgraded here; that leg can gap, and the first avatar ≠ w geography
+was MEASURED at level 3 by the WI arc's LW3 frame (w₃ = 1 with
+avatar 2, gap unit 2; GENTOW5_WI_2026-08-10.md @ ec30256c, filed to
+OPEN-3's row-23 gate). No such gap is measured at this record's
+level-2 frames.] (ii) "w constant per tower" is dead twice over at
+avatar level (R-1 vs R-2; R-3 vs R-4; R-7 vs R-3 adds a third
+pair). (iii) The measured avatars equal the S5.2 γ-calculus hand
+values at each of the 4 frames (exponent-lattice splits,
+re-verified by §7's instrument) and at R-7's frame GF29
+(re-verified by the PE1 fresh instrument). (iv) B″(6) is closed
+w-inclusively at the 3 slots where all three residues were
+independently measured (R-1, R-3, R-4), and at R-7's slot with all
+three residues measured live at the 8th prime. (v) The record does
+NOT decide w at unmeasured frames, unmeasured u₃, or levels i ≠ 2
+(GENTOW5's dated-note wording, adopted verbatim).
 
 **Frame-equivalence legs (R.2 S-4: old-frame ⟺ w-inclusive reading
 for each transferred fact).**
@@ -303,7 +321,10 @@ for each transferred fact).**
   in §7.)
 
 **The F19 rule (binding on every consumer of this note).** The
-measured w ≠ 1 instances are UNCONDITIONAL records. A named
+measured avatar ≠ 1 instances are UNCONDITIONAL records ([r1, PE1
+F-4]: the rule's subject is the measured object, the w-avatar; its
+w-reading rides the row-23 leg exactly as consequence (i) states).
+A named
 w-hypothesis (e.g. "assume w_i = 1") may condition only statements
 whose accepted forms already depend on the dichotomy; and no
 consumption check may show an absorbed statement GAINING a
@@ -324,7 +345,12 @@ displays at the same indices. NOT conditional (w-blind): σ, exact
 values, degrees, irreducibility transport, repo-side residue
 classes and P-membership, (c)'s budgets, (d), (e). The committed
 depth-4 witness is w-trivial (K_i = F₂ there), so the machine record
-does not discriminate this fence.
+does not discriminate this fence. [As-of 2026-08-10, r1 (PE1 F-3):
+[GENTOW5-W(i)] is now PROVED at attempt grade —
+GENTOW5_WI_2026-08-10.md @ ec30256c, its arc at 1/2 after a CLEAN
+first hostile pass; not yet ACCEPTED (2/2), so this note's
+accepted-corpus rule keeps the fence up, and OPEN-1's conditional
+scope reads as-of that note.]
 
 **OPEN-2 — the u1 = w₁ tie at i = 1.** The proved i = 1 shape is
 ψ₂^{(u1)} with u1 a fixed z₁-letter-power unit (species from the
@@ -445,8 +471,16 @@ slot ϑ(0) ≠ 1). What it checks, per its preregistered docstring:
 value-0 + lattice split + letter value ≠ 1 of the w-avatar at 4
 frames (against §4's committed values); ϑ(0)/ϑ(top) at the 3
 f₃ = 2 frames (against the decode/PE5 pins); LAW W-B's identity (6)
-at slot 0 with all three residues independently recomputed (LD1/GA1:
-1 = ϑ(0)·w²; GA3: z₂ = z₂²·z₂²); LAW W-A/W-C's substitution algebra
+at slot 0 with all three residues recomputed from frame data (LD1/GA1:
+1 = ϑ(0)·w²; GA3: z₂ = z₂²·z₂²) — [r1, PE1 F-2] within THIS
+instrument the three residues are computed from the same monomial
+vectors, so r_u0 = r_θ + 2·r_w holds IDENTICALLY and the IDY rows
+are consistency closures, not independent physics (the caveat the
+PE6 SOURCE, gentow2_pe6_fresh.py, itself discloses); the
+independence lives in that source's per-prime measurements at
+actual primes, and the discriminating content here is the
+U0/TH0/WAVA comparisons against the PE6-measured pins; LAW
+W-A/W-C's substitution algebra
 in F₄ against the PE6/PE4-decode/PE3 realized-residual pins (LD1,
 LD2, GA1, GA3\*), including pattern preservation at an irreducible
 frame AND a split frame; and the LD2 law-vs-nose contrast (the law
@@ -469,8 +503,9 @@ exit 0** (`wframe_note_checks_output.txt`, md5
 prediction met: the 4 w-avatar splits and letter values (z₁, z₁²,
 z₂², z₂ — each ≠ 1), the 3 ϑ(0) pins + 3 top-slot trivialities +
 the LD3 f₃ = 1 degeneracy, the 3 IDY closures of LAW W-B(6) at
-slot 0 with independently recomputed u(β₀)-avatars (LD1/GA1: 1;
-GA3: z₂), and the 4 F₄ substitution pins of LAW W-A/W-C (LD1
+slot 0 with recomputed u(β₀)-avatars (LD1/GA1: 1; GA3: z₂ —
+entailed closures per the F-2 caveat above; the live-physics
+closure is R-7's, measured at an actual prime), and the 4 F₄ substitution pins of LAW W-A/W-C (LD1
 irreducible-pattern, GA1 split-pattern with root map, LD2
 law-vs-nose contrast, GA3\* ψ^{(w)} irreducible) — with T-W1
 confirming w := 1 breaks the GA3 closure, T-CONST confirming
@@ -500,6 +535,12 @@ changed, 0 deleted (the note ADDED, changed nothing).
   tripwire stays green — §7); the [GENTOW5-W(i)] fence and the
   u1 = w₁ tie (live, §5); the row-23 DESCRIPTIVE status and its
   two-leg elevation obligation (GENTOW2 rider; gate for OPEN-3).
+* **r1 repair (2026-08-10, post-PE1 @ 3db65096):** F-1 GAP folded
+  (§4's Φ′_LP1 datum corrected to x⁴+2x²+4 + the deg Φ′ = e₁f₁
+  sanity rule); F-2/F-4 wording folded (§7 IDY entailment caveat;
+  §4 consequence (i)/F19 re-keyed to the avatar); F-3 as-of line
+  added to OPEN-1; R-7 (GF29, the 8th prime) appended to §4 per
+  this section's append rule. Sealed artifacts untouched.
 * **Grade line:** this note is grade 0/2 (RCT unit T5, FABLE arm);
   the 2-clean hostile arc follows. It consumes ACCEPTED texts only
   (GENTOW2 2/2 @ PE6; GENTOW5 2/2-annotated with its S11 repairs)
