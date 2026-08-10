@@ -1,0 +1,7 @@
+== FRAME H1: q = 4 (f1 = 2 outer), first non-prime-q ==
+== FRAME H2: gauge-live (f2 = 2, eta = 2) x mu2 = 3 ==
+== gp oracle batch (30 jobs) ==
+  gp stderr tail:   ***   Warning: new maximum stack size = 2000003072 (1907.352 Mbytes).
+
+check tally: {'H1-GATE': 8, 'H1-FLOOR': 8, 'H1-ANCH': 2, 'H1-REF': 3, 'H1-REFWRONG': 2, 'H1-MUT': 1, 'H2-GATE': 6, 'H2-FLOOR': 6, 'H2-ANCH': 2, 'H2-BELOW': 1, 'H2-REF': 3, 'H2-REFWRONG': 2, 'H2-WIN': 6, 'H2-MAXRAG': 1, 'H2-UNDERCUT': 1, 'GP-SIG': 16, 'GP-NODE': 17}
+=== VERDICT: GREEN -- 85 checks, 0 violations ===
