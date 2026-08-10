@@ -1036,7 +1036,7 @@ measured v = 20; the four preregistered kill counts were exact.
 
 ### S9.2 BOX-3 leg — gentow6_box3_regime3.py
 
-Sealed at commit 82a51147+1 (seal md5 17fecec4, docstring
+Sealed at commit b6fb54ec (seal md5 17fecec4, docstring
 preregistered, no pre-seal run; imports the COMMITTED
 gentow6_box1_mu3.py engine, md5 c98cb423 asserted at import).
 **RUN 1 RED — 5 violations, ALL on the corollary's j*-1 rows
