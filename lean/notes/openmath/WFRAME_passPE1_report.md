@@ -170,11 +170,55 @@ W-C/W-A predict realized residual ψ₃^{(z₂)} = y²+z₂y+1 (irreducible
 predicts y²+z₂y+z₂² = (y+1)(y+z₂²) → TWO primes (4,2): a
 verdict-level discrimination. PARI leg (gp, dual routes factorpadic +
 idealprimedec/nfmodpr): see wframe_pe1_fresh_output.txt — results
-recorded in the addendum below after the run.
+in the addendum below.
+
+## ADDENDUM — FRESH-LEG RESULT (GF29, run after the (1 of 2) commit)
+
+Instrument `verification/openmath/wframe_pe1_fresh.py` (own poly
+arithmetic + own F₄ tables + gp dual routes; no committed-runner
+code). Predictions were already sealed in this report's (1 of 2)
+commit 63890e5e before any run.
+
+**Run 1 — RED 28/3, kept** (`wframe_pe1_fresh_output_run1.txt`, md5
+0189b034): all 3 misses in MY OWN L1 lattice-split assertions — a
+verifier-instrument sign slip (asserted the letter exponent −k where
+the PE6 convention letter is z1^j z2^k with exponent k itself; e.g.
+(58,6,−28) = −6·γ1 −14·γ2 → z2^{−14} = z2, and −14 ≡ 1 mod 3 as
+hand-derived). Both gp routes were ALREADY fully green in run 1 —
+every preregistered measured value met; the miss was assertion
+transcription only. Fix = 3 sign flips, diagnosed in-file.
+
+**Run 2 — GREEN 31/0, exit 0** (`wframe_pe1_fresh_output.txt`, md5
+3e45cc3e; runner md5 15935529). The measured record at the NEW
+geography (8th prime, u₃ = 29 on GB, no committed key uses it):
+* LAW key Φ₃: factorpadic ONE factor deg 16; idealprimedec ONE prime
+  (e,f) = (4,4) — exactly the LAW W-C/W-A prediction. Naive twin:
+  TWO factors deg 8; TWO primes (4,2) each — the verdict-level
+  discrimination fired (a naive-twin KILL at a fresh frame).
+* w-avatar MEASURED = z₂ ≠ 1 at the new prime (and ≠ z₂² = the
+  committed GA1 avatar, same tower — a NEW u₃-discrimination pair
+  beyond §4's two). ϑ(0) = z₂² (LAW W-E letter value live),
+  u(β₀) = z₂, and LAW W-B(6) closed with all three residues measured
+  at an ACTUAL prime (live physics — cf. F-2's caution about the
+  note-instrument's in-house IDY rows).
+* LAW W-C's PSIW: ψ₃^{(w)}(Y) = 0 on the nose at the measured w;
+  NOSE: ψ₃(Y) ≠ 0 (untwisted read refuted at the fresh frame too).
+* Bonus not in the note's record: the w-avatar at the twin key's two
+  primes equals the SAME z₂ — DEF W-1's key-independence of w
+  observed live (w is frame data, not key data).
+* v(π₃) = 1 at e = 4 (Lemma 3.13(1) leg), z₁ = 1 / z₂ live letter
+  pattern as committed for GB.
+
+Net: LAWS W-A, W-B, W-C, W-E all verified LIVE at a frame in no
+committed record; 2+ laws live requirement met with margin. The
+fresh leg found no defect in the note's laws or record values.
 
 ## GRADE LINE
 
 Attempt grade for the arc: **0/2 stands; pass NOT CLEAN (1 GAP: F-1;
 3 MINOR: F-2/F-3/F-4).** The GAP is a one-line data repair in §4, not
-a law or ladder defect; no CRITICAL anywhere; the machine leg and the
-fresh frame both GREEN on the note's laws.
+a law or ladder defect; no CRITICAL anywhere; the machine leg
+(isolated re-run bit-identical, 47/0, teeth 4/4) and the fresh frame
+GF29 (31/0 run 2; both gp routes green from run 1) both GREEN on the
+note's laws. The bar for pass 2: fold F-1 (and optionally F-2/F-4
+wording) first.
