@@ -46,9 +46,10 @@ consumption check. G-1 is adjudicated DISPLAY-ONLY (MINOR).
   The invariance clause is scored separately (P-J2b) and is green.
 - **Check-count audit:** hand count of chk() sites reproduces 85 exactly
   (SEC-A 20, SEC-B 21, SEC-C 12, SEC-D 12, SEC-E 4, SEC-F 13, SEC-G 3).
-- **Tautology audit:** two rows are literal-vs-literal (F-3 below); the X3
-  slot-poly rows are near-constant but check real arithmetic facts; every other
-  row compares a computed object against an independent preregistered value.
+- **Tautology audit:** two rows are literal-vs-literal (F-3 below); the second
+  X3 slot-poly row is constant arithmetic but expresses a real fact (naive slot
+  poly degenerate at Z = −1); the remaining 82 rows compare computed objects
+  against preregistered values.
 - **F4-JOINT arithmetic re-derived by hand** (quadratic + μ=3 legs): W(t), ϑ, the
   three (LIFT) outputs, corrected/naive digits, both mult residuals, Θ, B-units,
   canonical coefficients (ω,ω²,1), canonical residual (y+ω)³ = w³ψ(y/w) — all
@@ -179,17 +180,20 @@ C1-level-2; B-law orientation: T1's Θ_i(t) has the SAME fraction orientation as
 GENTOW2's ϑ(t) — n̂(su)/n̂(u)^s — and ledger item 3 pins the inversion against
 ϑ_{i,s}; LP/LD decode rows L780–800 match SEC-D and M2 exactly, incl. the
 lattice split (1,−5,2) = 1·(−9,0,2)+5·(2,−1,0) and LD1/LD2 residuals).
-**Completeness:** each annex's normative gauge sentences trace to a mapped row;
-the unabsorbed remainders (GENTOW1 budgets/floors, GENTOW4 counts/separators,
-GENTOW6 6.3′ (a′)–(c′) bodies, B″'s proof mechanism) are exactly the ledger-6
-disclaimers plus the G-2 obligation. No orphan annex sentence found beyond
-these disclosed remainders.
+**Completeness:** the normative gauge sentences swept (the erratum display, the
+wrap/Q laws, the corrected-key pins, the x-free clause, the I_t repair, the
+letter formula, the B-law, the LP/LD decode rows) each trace to a mapped row;
+the unabsorbed remainders found (GENTOW1 budgets/floors, GENTOW4
+counts/separators, GENTOW6 6.3′ (a′)–(c′) bodies, B″'s proof mechanism) are the
+ledger-6 disclaimers plus the G-2 obligation. No orphan annex sentence surfaced
+in this sweep beyond those disclosed remainders.
 
 ### §6. Fresh route (frames not in the note's plan nor the annex batteries)
 
-Script: /tmp/t1_fresh/t1_passpe1_fresh.py (fresh-composed this pass; output
-committed inline below). Three legs, exact arithmetic, dual oracles on the
-p-adic leg:
+Script: `verification/openmath/t1_gauge_pe1_fresh.py` (fresh-composed this
+pass, md5 7ba79d7544946dcf1cfa6cc5b5f461f5; output
+`t1_gauge_pe1_fresh_output.txt` md5 5e2c1be8b2f117b69da0701709d285a5). Three
+legs, exact arithmetic, dual oracles on the p-adic leg:
 
 - **FV-A (exponent core, (e₁,h) = (5,3), f₁ = 3, u = 7; u₂-sweep 1..40):**
   wrap/product/Q at a,b ∈ [0,60]; ϑ-law by three routes; C1-level-2 exponent
@@ -210,8 +214,44 @@ RESULT (run after seal of this section): see §6R below.
 
 ### §6R. Fresh-route results
 
-PENDING — filled by the run.
+**GREEN — 26 checks, 0 violations, exit 0** (single run, gp + python3, exact).
 
-### §7. Grade line
+- FV-A: A1–A5 green. Wrap/product/Q hold at (5,3) for a,b ∈ [0,60]; the three
+  ϑ routes agree for s ≤ 30 at u = 7; the C1-level-2 exponent identity holds at
+  each u₂ in [1,40]; the C4 support/height/x-free classification holds
+  exhaustively at f₁ = 3 over the in-clearance digit supports, m ≤ 60.
+- FV-B: B1–B8 green, 8 R-models as predicted (cube map bijective on F₉^×, one
+  model per R(π) choice; w took 8 distinct values). In each model: B-law
+  R(n̂(su)) = Θ(t)w^s, slot reads = c_t·w^s, canonical residual coefficientwise
+  = w³ψ(y/w). ψ (letter-live coefficients g, 2+t, 1+2t) is IRREDUCIBLE over F₉
+  and its factor-degree multiset [3] is invariant across the 8 w-twists — own
+  exhaustive factorization, PARI factor-over-F₉ agreeing.
+- FV-C: C1–C6 green, dual routes bit-agreeing and factorpadic stable at
+  N = 20/30/40. Corrected key σ = {(2,2)}, nfeltval rows [[2,2,3]]
+  (v_P(Φ′) = u₂ = 3 — the C1/C2 height pin at a fresh prime). Naive key
+  σ = {(2,1),(2,1)} — EXACTLY the preregistered new-genre signature derived
+  from C3-dictionary (naive mult residual Z²+Z+1 splits with distinct roots
+  {2,4} mod 7, so the naive key SPLITS instead of ramifying — a defect mode no
+  annex battery exhibits). The gauge tooth fired (C6: corrected ≠ naive sigma).
 
-PENDING — filled at close.
+Conclusions exercised live at fresh frames: C1 (level-2 sweep + height pin),
+C2 (three-route ϑ + corrected key at p = 7), C3 (dictionary + B-law over the
+8-model family + the naive-split prediction), C4 (f₁ = 3), C5 ((5,3) core) —
+the ≥ 2-conclusions-live bar exceeded.
+
+### §7. As-of states read + grade line
+
+As-of: T1 note read at HEAD (this pass's parent cf28bcef); GENTOW5-W(i) read as
+PROVED at attempt grade 1/2 (ec30256c, PE1 CLEAN 884edd2c) — consumed by T1 only
+as brief supporting-context [S1] with accepted-corpus pins; WFRAME read at 0/2
+(note + passPE1 report with its F-1 GAP, which sits in WFRAME §S4 tower data,
+NOT in the [S2] definitions T1's brief consumed); T1 itself declares no
+consumption of either parallel arc (F-6 records the undeclared [S2] edge).
+
+**Pass 1 verdict: NOT CLEAN — 0 CRITICAL, 1 GAP (F-1 = G-2 confirmed), 5 MINOR
+(F-2..F-6). Counter stays attempt 0/2.** The GAP is an interface/consumption
+obligation, not a refuted claim: C1–C5 survived independent re-derivation and
+two machine legs (sealed 85/1-as-preregistered; fresh 26/0). Repair path for
+the arc: pin a level-general FGMN citation (or a level-general proof) for
+carrier item 9, or annotate rows A7/2, A5/2, S1/2 as conditional; plus the four
+mechanical MINORs.

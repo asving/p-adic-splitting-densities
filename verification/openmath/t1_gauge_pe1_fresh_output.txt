@@ -1,0 +1,8 @@
+FV-A: (e1,h)=(5,3) exponent core + C1 sweep + C4 f1=3
+FV-B: F9 carrier, e1=3,h=1,u=5,f=3 — B-law over all R-models
+  psi factor degrees over F9: [3] (invariant across 8 w-twists)
+FV-C: p=7 gauge-live tower, dual PARI oracles
+  raw: {'CQ': '[[2, 2]]', 'NQ': '[[2, 1], [2, 1]]', 'CP20': '[[2, 2]]', 'NP20': '[[2, 1], [2, 1]]', 'CP30': '[[2, 2]]', 'NP30': '[[2, 1], [2, 1]]', 'CP40': '[[2, 2]]', 'NP40': '[[2, 1], [2, 1]]', 'KV': '[[2, 2, 3]]'}
+
+TOTAL: 26 checks, 0 violations
+VERDICT: GREEN
