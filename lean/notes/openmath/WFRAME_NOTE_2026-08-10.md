@@ -429,7 +429,31 @@ sources themselves declare.
 
 ## §7. MACHINE LEG (sealed instrument, two-commit seal)
 
-(instrument seal + verdict, commits 5–6)
+**Instrument:** `verification/openmath/wframe_note_checks.py` — fresh
+A-route code (exact Fraction values, integer exponent-lattice splits,
+F₄ polynomial algebra; no PARI, no committed-runner code reuse),
+re-verifying this note's displayed laws at the committed frames LD1,
+LD3, GA1, GA3 plus the GA3\* record polynomial. Joint frame per R.3:
+LD1 (f₁ = 2 with z₁ ∈ F₄∖F₂, AND measured w ≠ 1, AND letter-live
+slot ϑ(0) ≠ 1). What it checks, per its preregistered docstring:
+value-0 + lattice split + letter value ≠ 1 of the w-avatar at 4
+frames (against §4's committed values); ϑ(0)/ϑ(top) at the 3
+f₃ = 2 frames (against the decode/PE5 pins); LAW W-B's identity (6)
+at slot 0 with all three residues independently recomputed (LD1/GA1:
+1 = ϑ(0)·w²; GA3: z₂ = z₂²·z₂²); LAW W-A/W-C's substitution algebra
+in F₄ against the PE6/PE4-decode/PE3 realized-residual pins (LD1,
+LD2, GA1, GA3\*), including pattern preservation at an irreducible
+frame AND a split frame; and the LD2 law-vs-nose contrast (the law
+predicts the PE4-measured single (4,4) prime; the nose predicts the
+refuted split). Four teeth, each of which must BITE: T-W1 (w := 1
+breaks IDY at GA3), T-CONST (per-tower constancy false twice),
+T-NOSE (the nose prediction differs from the measured pattern at
+LD2), T-GAMMA (a perturbed γ₂ lattice vector breaks the LD1 split).
+
+**Seal:** this section + the runner committed BEFORE the first run
+(predictions in the docstring; RED runs will be kept as-is with
+diagnosis). **Verdict:** PENDING at seal time — folded below from
+the artifacts after the run.
 
 ---
 
