@@ -1667,3 +1667,75 @@ not a pass). The statement fence: no theorem statement weakened —
 the PE4-F-1 bracket records the scope the r3 proof already had;
 the PE4-F-2 bracket corrects a display inside a repair record.
 PE5 next.
+
+### Dated acceptance record (2026-08-10, post-PE5)
+
+**GENTOW5 IS ACCEPTED 2/2** — passPE4 CLEAN (0 CRITICAL + 0 GAP +
+2 MINOR, GENTOW5_passPE4_report.md @ b22b37b; counter 0/2 -> 1/2)
+followed by passPE5 CLEAN (0 CRITICAL + 0 GAP + 3 MINOR,
+GENTOW5_passPE5_report.md @ 18900e03; counter 1/2 -> 2/2): two
+consecutive clean hostile passes, the standing acceptance bar.
+**THE NOTE IS FROZEN AT THIS RECORD: dated appends and dated
+brackets only; statement displays and sealed artifacts stay
+byte-untouched.**
+
+The arc in one breath: seal (2026-08-09) -> PE1 (1C+2G+3m) -> r1
+(the GAUGE PIN: vartheta-twisted khat_t, machine-caught at the
+letter-live FR-1) -> PE2 (0C+2G+2m) -> r2 (the psi^{(w_i)}
+re-scope on the landed GENTOW2 r3 B-law + the per-flavor lift
+re-solve) -> PE3 (0C+1G+2m) -> r3 (the (c) entry-read RE-INDEXED
+to the uniform GENTOW-1 transport; the composed (i+2)-pairing
+killed by the residual-degree count and at committed rows) -> PE4
+CLEAN (2 minors; counter 1/2) -> rider (both minors folded; f32
+canonical dev machine-checked 7/7) -> PE5 CLEAN (3 minors;
+counter 2/2 — the (c) <-> GENTOW-1 seam adjudicated BINDING at
+the post-R2a/b/c GENTOW1 HEAD 4caf0fb; fresh route GREEN 40/0
+with the first mu = 3 (c)-read anywhere and the first odd-p
+proper-(2,2) mid-stage tower at depths 3 and 4).
+
+This append's companion fold (commit "GENTOW5 dated acceptance
+record (commit 1/2)") folded PE5's three MINORs at source as
+dated [acceptance fold] brackets, each RE-DERIVED from the note's
+own lemmas and the primary sources, not transcribed from the
+report:
+* PE5-F-1 -> the S3 statement header gains the INDEX-0 SCOPE
+  bracket, completing the post-PE4 rider's (c)/(e) scoping to
+  the clause list (a)/(b)/(d): (a)/(b) are claimed at i >= 1
+  ((a)@0's display dereferences nhat_0, not a DEF object — the
+  index-0 content is the accepted chain data, T(b)' setting +
+  GENTOW2 S2 dictionary; (b)@0 reduces to the j = 1 leg, the
+  same accepted datum); (d)@0 IS claimed, via S1.4(ii)'s level-1
+  rider; Phi_1 is named the DEF-datum (recipe-built keys =
+  Phi_2, ..., Phi_r); T_1 stays unclaimed, with PE5's fresh TRUE
+  instantiation (f4 over p = 5) recorded in the conservative
+  direction.
+* PE5-F-2 -> the (B-2) discharge's level lists gain their i = 1
+  line: the accepted GENTOW2-A(c) letter-formula content,
+  verified at source this fold (GENTOW2_PROOF @ HEAD 33f8620:
+  Cor 5.6(2) + S5.1's LETTER FORMULA z_2 = eta_2 *
+  z_1^{-floor(l_1 u_2/e_1)} + the R3-4 disambiguation fence),
+  with the i = 1 KP-membership leg at Lemma 5.3(1) [Q4] (the
+  GENTOW2 [r1] F4-cure); an exponent-level tie of the w_1
+  display to the letter formula is NOT claimed.
+* PE5-F-3 -> S2.3's (LIFT_i) bound recursion's truncated token
+  restored: e_{i+1}*bound_i, re-derived from ANNEX-THEOREM
+  R1-c's displayed recursion plus the lemma's own step-(1)
+  height split (grep-scoped: no numeric bound_i consumer in the
+  note).
+
+BYTE-FREEZE LEDGER (this round): pre-fold body md5 85efc5b4
+(85efc5b445aa2d738301338c6075e118; 1,592 lines, 90,017 bytes) =
+the rider state @ cc7c944; the three fold brackets landed
+insertions-only (+77/-0; prefix through the first insertion
+byte-identical, md5 e9c5a20d at L561; commit a803a2ce), giving
+post-fold body md5 4292d8c8 (4292d8c86d58389ce91d38cb2aa759b7;
+1,669 lines, 94,765 bytes); this record is a PURE APPEND on that
+body, verified by prefix md5 after the append. Sealed artifacts
+byte-frozen, md5s re-verified this round: gentow5_checks.py
+5fa684c7..., gentow5_output_exact.txt dc499a49...,
+gentow5_output_full.txt 839a8660...; the rider helper
+gentow5_rider_f32dev.py 81bbb5db... untouched; no runner edited,
+no re-run.
+
+Grade after this record: **ACCEPTED 2/2**. Dated appends only
+beyond this line.
