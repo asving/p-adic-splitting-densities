@@ -1,0 +1,257 @@
+HETOW-4 bridge battery (TOWERRAT-R1): frames X, Z, S
+--- frame X (p=3, e1=2, e2=1, u2=3, eta=2)
+  P-A-identity-X                     ok  k = 1..60
+  key = (144)*x^0+(-18)*x^1+(-12)*x^2+(3)*x^3+(1)*x^4
+  P-B-X-INT7-c1=0-f1                 ok  tau(H0)=2 delta=2
+  P-C-X-INT7-c1=0-f1                 ok  route SEP sigma ((2, 2), (2, 2))
+  P-E-bracket-X-INT7-c1=0-f1         ok  c_t = [0, 0, 0]
+    INT7-c1=0-f1       taus [2, 2, 1] route SEP
+  P-B-X-INT7-c1=0-2f1                ok  tau(H0)=2 delta=2
+  P-C-X-INT7-c1=0-2f1                ok  route SEP sigma ((2, 2), (2, 2))
+  P-E-bracket-X-INT7-c1=0-2f1        ok  c_t = [0, 0, 0]
+    INT7-c1=0-2f1      taus [2, 2, 1] route SEP
+  P-B-X-INT7-c1=0-f2                 ok  tau(H0)=2 delta=2
+  P-C-X-INT7-c1=0-f2                 ok  route SEP sigma ((2, 4),)
+  P-E-bracket-X-INT7-c1=0-f2         ok  c_t = [0, 0, 0]
+    INT7-c1=0-f2       taus [2, 2, 1] route SEP
+  P-B-X-INT7-c1=1-f1                 ok  tau(H0)=2 delta=2
+  P-C-X-INT7-c1=1-f1                 ok  route SEP sigma ((2, 2), (2, 2))
+  P-E-bracket-X-INT7-c1=1-f1         ok  c_t = [0, 0, 0]
+    INT7-c1=1-f1       taus [2, 2, 1] route SEP
+  P-B-X-INT7-c1=1-2f1                ok  tau(H0)=2 delta=2
+  P-C-X-INT7-c1=1-2f1                ok  route REFINE sigma None
+  P-E-bracket-X-INT7-c1=1-2f1        ok  c_t = [0, 0, 0]
+    INT7-c1=1-2f1      taus [2, 2, 1] route REFINE
+  P-B-X-INT7-c1=1-f2                 ok  tau(H0)=2 delta=2
+  P-C-X-INT7-c1=1-f2                 ok  route SEP sigma ((2, 2), (2, 2))
+  P-E-bracket-X-INT7-c1=1-f2         ok  c_t = [0, 0, 0]
+    INT7-c1=1-f2       taus [2, 2, 1] route SEP
+  P-B-X-INT7-c1=2-f1                 ok  tau(H0)=2 delta=2
+  P-C-X-INT7-c1=2-f1                 ok  route SEP sigma ((2, 2), (2, 2))
+  P-E-bracket-X-INT7-c1=2-f1         ok  c_t = [0, 0, 0]
+    INT7-c1=2-f1       taus [2, 2, 1] route SEP
+  P-B-X-INT7-c1=2-2f1                ok  tau(H0)=2 delta=2
+  P-C-X-INT7-c1=2-2f1                ok  route REFINE sigma None
+  P-E-bracket-X-INT7-c1=2-2f1        ok  c_t = [0, 0, 0]
+    INT7-c1=2-2f1      taus [2, 2, 1] route REFINE
+  P-B-X-INT7-c1=2-f2                 ok  tau(H0)=2 delta=2
+  P-C-X-INT7-c1=2-f2                 ok  route SEP sigma ((2, 2), (2, 2))
+  P-E-bracket-X-INT7-c1=2-f2         ok  c_t = [0, 0, 0]
+    INT7-c1=2-f2       taus [2, 2, 1] route SEP
+  P-B-X-HALF15-c=1                   ok  tau(H0)=2 delta=2
+  P-C-X-HALF15-c=1                   ok  route SEP sigma ((4, 2),)
+  P-E-bracket-X-HALF15-c=1           ok  c_t = [0, 0]
+    HALF15-c=1         taus [2, 1] route SEP
+  P-B-X-HALF15-c=2                   ok  tau(H0)=2 delta=2
+  P-C-X-HALF15-c=2                   ok  route SEP sigma ((4, 2),)
+  P-E-bracket-X-HALF15-c=2           ok  c_t = [0, 0]
+    HALF15-c=2         taus [2, 1] route SEP
+  P-B-X-MU3-20                       ok  tau(H0)=1 delta=1
+  P-C-X-MU3-20                       ok  route SEP sigma ((6, 2),)
+  P-E-bracket-X-MU3-20               ok  c_t = [0, 0]
+    MU3-20             taus [1, 1] route SEP
+  P-B-X-MU3-INT7-111                 ok  tau(H0)=1 delta=2
+  P-C-X-MU3-INT7-111                 ok  route SEP sigma ((2, 6),)
+  P-E-bracket-X-MU3-INT7-111         ok  c_t = [0, 0, 0, 0]
+    MU3-INT7-111       taus [1, 2, 2, 1] route SEP
+  P-B-X-MU3-INT7-201                 ok  tau(H0)=1 delta=2
+  P-C-X-MU3-INT7-201                 ok  route SEP sigma ((2, 2), (2, 4))
+  P-E-bracket-X-MU3-INT7-201         ok  c_t = [0, 0, 0, 0]
+    MU3-INT7-201       taus [1, 2, 2, 1] route SEP
+  P-B-X-MU3-INT7-012                 ok  tau(H0)=1 delta=2
+  P-C-X-MU3-INT7-012                 ok  route SEP sigma ((2, 6),)
+  P-E-bracket-X-MU3-INT7-012         ok  c_t = [0, 0, 0, 0]
+    MU3-INT7-012       taus [1, 2, 2, 1] route SEP
+  realized routing classes: ['REFINE', 'SEP-IRRED', 'SEP-SPLIT']
+  P-C-coverage-X                     ok  ['REFINE', 'SEP-IRRED', 'SEP-SPLIT']
+  P-D-T-RAW-X                        ok  a non-geometric raw tau-string occurred
+--- frame Z (p=5, e1=2, e2=1, u2=3, eta=2)
+  P-A-identity-Z                     ok  k = 1..60
+  key = (350)*x^0+(-50)*x^1+(-20)*x^2+(5)*x^3+(1)*x^4
+  P-B-Z-INT7-c1=0-f1                 ok  tau(H0)=2 delta=2
+  P-C-Z-INT7-c1=0-f1                 ok  route SEP sigma ((2, 2), (2, 2))
+  P-E-bracket-Z-INT7-c1=0-f1         ok  c_t = [0, 0, 0]
+    INT7-c1=0-f1       taus [2, 2, 1] route SEP
+  P-B-Z-INT7-c1=0-2f1                ok  tau(H0)=2 delta=2
+  P-C-Z-INT7-c1=0-2f1                ok  route SEP sigma ((2, 2), (2, 2))
+  P-E-bracket-Z-INT7-c1=0-2f1        ok  c_t = [0, 0, 0]
+    INT7-c1=0-2f1      taus [2, 2, 1] route SEP
+  P-B-Z-INT7-c1=0-f2                 ok  tau(H0)=2 delta=2
+  P-C-Z-INT7-c1=0-f2                 ok  route SEP sigma ((2, 2), (2, 2))
+  P-E-bracket-Z-INT7-c1=0-f2         ok  c_t = [0, 0, 0]
+    INT7-c1=0-f2       taus [2, 2, 1] route SEP
+  P-B-Z-INT7-c1=1-f1                 ok  tau(H0)=2 delta=2
+  P-C-Z-INT7-c1=1-f1                 ok  route SEP sigma ((2, 2), (2, 2))
+  P-E-bracket-Z-INT7-c1=1-f1         ok  c_t = [0, 0, 0]
+    INT7-c1=1-f1       taus [2, 2, 1] route SEP
+  P-B-Z-INT7-c1=1-2f1                ok  tau(H0)=2 delta=2
+  P-C-Z-INT7-c1=1-2f1                ok  route SEP sigma ((2, 2), (2, 2))
+  P-E-bracket-Z-INT7-c1=1-2f1        ok  c_t = [0, 0, 0]
+    INT7-c1=1-2f1      taus [2, 2, 1] route SEP
+  P-B-Z-INT7-c1=1-f2                 ok  tau(H0)=2 delta=2
+  P-C-Z-INT7-c1=1-f2                 ok  route SEP sigma ((2, 2), (2, 2))
+  P-E-bracket-Z-INT7-c1=1-f2         ok  c_t = [0, 0, 0]
+    INT7-c1=1-f2       taus [2, 2, 1] route SEP
+  P-B-Z-INT7-c1=2-f1                 ok  tau(H0)=2 delta=2
+  P-C-Z-INT7-c1=2-f1                 ok  route SEP sigma ((2, 2), (2, 2))
+  P-E-bracket-Z-INT7-c1=2-f1         ok  c_t = [0, 0, 0]
+    INT7-c1=2-f1       taus [2, 2, 1] route SEP
+  P-B-Z-INT7-c1=2-2f1                ok  tau(H0)=2 delta=2
+  P-C-Z-INT7-c1=2-2f1                ok  route REFINE sigma None
+  P-E-bracket-Z-INT7-c1=2-2f1        ok  c_t = [0, 0, 0]
+    INT7-c1=2-2f1      taus [2, 2, 1] route REFINE
+  P-B-Z-INT7-c1=2-f2                 ok  tau(H0)=2 delta=2
+  P-C-Z-INT7-c1=2-f2                 ok  route SEP sigma ((2, 4),)
+  P-E-bracket-Z-INT7-c1=2-f2         ok  c_t = [0, 0, 0]
+    INT7-c1=2-f2       taus [2, 2, 1] route SEP
+  P-B-Z-INT7-c1=1-3f1                ok  tau(H0)=2 delta=2
+  P-C-Z-INT7-c1=1-3f1                ok  route REFINE sigma None
+  P-E-bracket-Z-INT7-c1=1-3f1        ok  c_t = [0, 0, 0]
+    INT7-c1=1-3f1      taus [2, 2, 1] route REFINE
+  P-B-Z-HALF15-c=1                   ok  tau(H0)=2 delta=2
+  P-C-Z-HALF15-c=1                   ok  route SEP sigma ((4, 2),)
+  P-E-bracket-Z-HALF15-c=1           ok  c_t = [0, 0]
+    HALF15-c=1         taus [2, 1] route SEP
+  P-B-Z-HALF15-c=2                   ok  tau(H0)=2 delta=2
+  P-C-Z-HALF15-c=2                   ok  route SEP sigma ((4, 2),)
+  P-E-bracket-Z-HALF15-c=2           ok  c_t = [0, 0]
+    HALF15-c=2         taus [2, 1] route SEP
+  P-B-Z-MU3-20                       ok  tau(H0)=4 delta=4
+  P-C-Z-MU3-20                       ok  route SEP sigma ((6, 2),)
+  P-E-bracket-Z-MU3-20               ok  c_t = [0, 0]
+    MU3-20             taus [4, 1] route SEP
+  P-B-Z-MU3-INT7-111                 ok  tau(H0)=4 delta=2
+  P-C-Z-MU3-INT7-111                 ok  route SEP sigma ((2, 2), (2, 4))
+  P-E-bracket-Z-MU3-INT7-111         ok  c_t = [0, 0, 0, 0]
+    MU3-INT7-111       taus [4, 2, 2, 1] route SEP
+  P-B-Z-MU3-INT7-201                 ok  tau(H0)=4 delta=2
+  P-C-Z-MU3-INT7-201                 ok  route SEP sigma ((2, 2), (2, 4))
+  P-E-bracket-Z-MU3-INT7-201         ok  c_t = [0, 0, 0, 0]
+    MU3-INT7-201       taus [4, 2, 2, 1] route SEP
+  P-B-Z-MU3-INT7-012                 ok  tau(H0)=4 delta=2
+  P-C-Z-MU3-INT7-012                 ok  route SEP sigma ((2, 2), (2, 4))
+  P-E-bracket-Z-MU3-INT7-012         ok  c_t = [0, 0, 0, 0]
+    MU3-INT7-012       taus [4, 2, 2, 1] route SEP
+  realized routing classes: ['REFINE', 'SEP-IRRED', 'SEP-SPLIT']
+  P-C-coverage-Z                     ok  ['REFINE', 'SEP-IRRED', 'SEP-SPLIT']
+  P-D-T-RAW-Z                        ok  a non-geometric raw tau-string occurred
+--- frame S (p=3, e1=2, e2=2, u2=5, eta=2)
+  P-A-identity-S                     ok  k = 1..60
+  key = (810)*x^0+(-648)*x^1+(-864)*x^2+(216)*x^3+(216)*x^4+(-18)*x^5+(-24)*x^6+(1)*x^8
+  P-B-S-INT21-c1=0-f                 ok  tau(H0)=1 delta=1
+  P-C-S-INT21-c1=0-f                 ok  route SEP sigma ((4, 2), (4, 2))
+  P-E-bracket-S-INT21-c1=0-f         ok  c_t = [0, 1, 1]
+    INT21-c1=0-f       taus [1, 1, 1] route SEP
+  P-B-S-INT21-c1=0-2f                ok  tau(H0)=1 delta=1
+  P-C-S-INT21-c1=0-2f                ok  route SEP sigma ((4, 2), (4, 2))
+  P-E-bracket-S-INT21-c1=0-2f        ok  c_t = [0, 1, 1]
+    INT21-c1=0-2f      taus [1, 1, 1] route SEP
+  P-B-S-INT21-c1=0-x                 ok  tau(H0)=1 delta=1
+  P-C-S-INT21-c1=0-x                 ok  route SEP sigma ((4, 4),)
+  P-E-bracket-S-INT21-c1=0-x         ok  c_t = [0, 1, 1]
+    INT21-c1=0-x       taus [1, 1, 1] route SEP
+  P-B-S-INT21-c1=1-f                 ok  tau(H0)=1 delta=1
+  P-C-S-INT21-c1=1-f                 ok  route REFINE sigma None
+  P-E-bracket-S-INT21-c1=1-f         ok  c_t = [0, 1, 1]
+    INT21-c1=1-f       taus [1, 1, 1] route REFINE
+  P-B-S-INT21-c1=1-2f                ok  tau(H0)=1 delta=1
+  P-C-S-INT21-c1=1-2f                ok  route SEP sigma ((4, 2), (4, 2))
+  P-E-bracket-S-INT21-c1=1-2f        ok  c_t = [0, 1, 1]
+    INT21-c1=1-2f      taus [1, 1, 1] route SEP
+  P-B-S-INT21-c1=1-x                 ok  tau(H0)=1 delta=1
+  P-C-S-INT21-c1=1-x                 ok  route SEP sigma ((4, 4),)
+  P-E-bracket-S-INT21-c1=1-x         ok  c_t = [0, 1, 1]
+    INT21-c1=1-x       taus [1, 1, 1] route SEP
+  P-B-S-INT21-c1=2-f                 ok  tau(H0)=1 delta=1
+  P-C-S-INT21-c1=2-f                 ok  route REFINE sigma None
+  P-E-bracket-S-INT21-c1=2-f         ok  c_t = [0, 1, 1]
+    INT21-c1=2-f       taus [1, 1, 1] route REFINE
+  P-B-S-HALF43-c=1                   ok  tau(H0)=2 delta=2
+  P-C-S-HALF43-c=1                   ok  route SEP sigma ((8, 2),)
+  P-E-bracket-S-HALF43-c=1           ok  c_t = [0, 0]
+    HALF43-c=1         taus [2, 1] route SEP
+  P-B-S-HALF43-c=2                   ok  tau(H0)=2 delta=2
+  P-C-S-HALF43-c=2                   ok  route SEP sigma ((8, 2),)
+  P-E-bracket-S-HALF43-c=2           ok  c_t = [0, 0]
+    HALF43-c=2         taus [2, 1] route SEP
+  realized routing classes: ['REFINE', 'SEP-IRRED', 'SEP-SPLIT']
+  P-D-RAWEQ-INT21-S                  ok  INT21 letter-dead as derived
+  P-D-RAWLIVE-HALF43-S               ok  tau(43) = 2
+37 gp jobs ...
+  G0-key-X-routes                    ok  ((2, 2),) vs ((2, 2),)
+  G0-key-X                           ok  sigma = ((2, 2),)
+  SIGMA-X-INT7-c1=0-f1-routes        ok  ((2, 2), (2, 2)) vs ((2, 2), (2, 2))
+  SIGMA-X-INT7-c1=0-f1               ok  sigma = ((2, 2), (2, 2))
+  SIGMA-X-INT7-c1=0-2f1-routes       ok  ((2, 2), (2, 2)) vs ((2, 2), (2, 2))
+  SIGMA-X-INT7-c1=0-2f1              ok  sigma = ((2, 2), (2, 2))
+  SIGMA-X-INT7-c1=0-f2-routes        ok  ((2, 4),) vs ((2, 4),)
+  SIGMA-X-INT7-c1=0-f2               ok  sigma = ((2, 4),)
+  SIGMA-X-INT7-c1=1-f1-routes        ok  ((2, 2), (2, 2)) vs ((2, 2), (2, 2))
+  SIGMA-X-INT7-c1=1-f1               ok  sigma = ((2, 2), (2, 2))
+  SIGMA-X-INT7-c1=1-f2-routes        ok  ((2, 2), (2, 2)) vs ((2, 2), (2, 2))
+  SIGMA-X-INT7-c1=1-f2               ok  sigma = ((2, 2), (2, 2))
+  SIGMA-X-INT7-c1=2-f1-routes        ok  ((2, 2), (2, 2)) vs ((2, 2), (2, 2))
+  SIGMA-X-INT7-c1=2-f1               ok  sigma = ((2, 2), (2, 2))
+  SIGMA-X-INT7-c1=2-f2-routes        ok  ((2, 2), (2, 2)) vs ((2, 2), (2, 2))
+  SIGMA-X-INT7-c1=2-f2               ok  sigma = ((2, 2), (2, 2))
+  SIGMA-X-HALF15-c=1-routes          ok  ((4, 2),) vs ((4, 2),)
+  SIGMA-X-HALF15-c=1                 ok  sigma = ((4, 2),)
+  SIGMA-X-HALF15-c=2-routes          ok  ((4, 2),) vs ((4, 2),)
+  SIGMA-X-HALF15-c=2                 ok  sigma = ((4, 2),)
+  SIGMA-X-MU3-20-routes              ok  ((6, 2),) vs ((6, 2),)
+  SIGMA-X-MU3-20                     ok  sigma = ((6, 2),)
+  SIGMA-X-MU3-INT7-111-routes        ok  ((2, 6),) vs ((2, 6),)
+  SIGMA-X-MU3-INT7-111               ok  sigma = ((2, 6),)
+  SIGMA-X-MU3-INT7-201-routes        ok  ((2, 2), (2, 4)) vs ((2, 2), (2, 4))
+  SIGMA-X-MU3-INT7-201               ok  sigma = ((2, 2), (2, 4))
+  SIGMA-X-MU3-INT7-012-routes        ok  ((2, 6),) vs ((2, 6),)
+  SIGMA-X-MU3-INT7-012               ok  sigma = ((2, 6),)
+  G0-key-Z-routes                    ok  ((2, 2),) vs ((2, 2),)
+  G0-key-Z                           ok  sigma = ((2, 2),)
+  SIGMA-Z-INT7-c1=0-f1-routes        ok  ((2, 2), (2, 2)) vs ((2, 2), (2, 2))
+  SIGMA-Z-INT7-c1=0-f1               ok  sigma = ((2, 2), (2, 2))
+  SIGMA-Z-INT7-c1=0-2f1-routes       ok  ((2, 2), (2, 2)) vs ((2, 2), (2, 2))
+  SIGMA-Z-INT7-c1=0-2f1              ok  sigma = ((2, 2), (2, 2))
+  SIGMA-Z-INT7-c1=0-f2-routes        ok  ((2, 2), (2, 2)) vs ((2, 2), (2, 2))
+  SIGMA-Z-INT7-c1=0-f2               ok  sigma = ((2, 2), (2, 2))
+  SIGMA-Z-INT7-c1=1-f1-routes        ok  ((2, 2), (2, 2)) vs ((2, 2), (2, 2))
+  SIGMA-Z-INT7-c1=1-f1               ok  sigma = ((2, 2), (2, 2))
+  SIGMA-Z-INT7-c1=1-2f1-routes       ok  ((2, 2), (2, 2)) vs ((2, 2), (2, 2))
+  SIGMA-Z-INT7-c1=1-2f1              ok  sigma = ((2, 2), (2, 2))
+  SIGMA-Z-INT7-c1=1-f2-routes        ok  ((2, 2), (2, 2)) vs ((2, 2), (2, 2))
+  SIGMA-Z-INT7-c1=1-f2               ok  sigma = ((2, 2), (2, 2))
+  SIGMA-Z-INT7-c1=2-f1-routes        ok  ((2, 2), (2, 2)) vs ((2, 2), (2, 2))
+  SIGMA-Z-INT7-c1=2-f1               ok  sigma = ((2, 2), (2, 2))
+  SIGMA-Z-INT7-c1=2-f2-routes        ok  ((2, 4),) vs ((2, 4),)
+  SIGMA-Z-INT7-c1=2-f2               ok  sigma = ((2, 4),)
+  SIGMA-Z-HALF15-c=1-routes          ok  ((4, 2),) vs ((4, 2),)
+  SIGMA-Z-HALF15-c=1                 ok  sigma = ((4, 2),)
+  SIGMA-Z-HALF15-c=2-routes          ok  ((4, 2),) vs ((4, 2),)
+  SIGMA-Z-HALF15-c=2                 ok  sigma = ((4, 2),)
+  SIGMA-Z-MU3-20-routes              ok  ((6, 2),) vs ((6, 2),)
+  SIGMA-Z-MU3-20                     ok  sigma = ((6, 2),)
+  SIGMA-Z-MU3-INT7-111-routes        ok  ((2, 2), (2, 4)) vs ((2, 2), (2, 4))
+  SIGMA-Z-MU3-INT7-111               ok  sigma = ((2, 2), (2, 4))
+  SIGMA-Z-MU3-INT7-201-routes        ok  ((2, 2), (2, 4)) vs ((2, 2), (2, 4))
+  SIGMA-Z-MU3-INT7-201               ok  sigma = ((2, 2), (2, 4))
+  SIGMA-Z-MU3-INT7-012-routes        ok  ((2, 2), (2, 4)) vs ((2, 2), (2, 4))
+  SIGMA-Z-MU3-INT7-012               ok  sigma = ((2, 2), (2, 4))
+  G0-key-S-routes                    ok  ((4, 2),) vs ((4, 2),)
+  G0-key-S                           ok  sigma = ((4, 2),)
+  SIGMA-S-INT21-c1=0-f-routes        ok  ((4, 2), (4, 2)) vs ((4, 2), (4, 2))
+  SIGMA-S-INT21-c1=0-f               ok  sigma = ((4, 2), (4, 2))
+  SIGMA-S-INT21-c1=0-2f-routes       ok  ((4, 2), (4, 2)) vs ((4, 2), (4, 2))
+  SIGMA-S-INT21-c1=0-2f              ok  sigma = ((4, 2), (4, 2))
+  SIGMA-S-INT21-c1=0-x-routes        ok  ((4, 4),) vs ((4, 4),)
+  SIGMA-S-INT21-c1=0-x               ok  sigma = ((4, 4),)
+  SIGMA-S-INT21-c1=1-2f-routes       ok  ((4, 2), (4, 2)) vs ((4, 2), (4, 2))
+  SIGMA-S-INT21-c1=1-2f              ok  sigma = ((4, 2), (4, 2))
+  SIGMA-S-INT21-c1=1-x-routes        ok  ((4, 4),) vs ((4, 4),)
+  SIGMA-S-INT21-c1=1-x               ok  sigma = ((4, 4),)
+  SIGMA-S-HALF43-c=1-routes          ok  ((8, 2),) vs ((8, 2),)
+  SIGMA-S-HALF43-c=1                 ok  sigma = ((8, 2),)
+  SIGMA-S-HALF43-c=2-routes          ok  ((8, 2),) vs ((8, 2),)
+  SIGMA-S-HALF43-c=2                 ok  sigma = ((8, 2),)
+
+TOTAL violations 0 (21.9s)
+VERDICT: GREEN
