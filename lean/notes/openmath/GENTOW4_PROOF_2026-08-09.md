@@ -20,6 +20,16 @@ NOCG's even-p0 branch disclosed at the S6-VERDICT row. Edits
 [GT4-r1]-bracketed; sealed artifacts BYTE-FROZEN (md5s S8.4).
 Grade stays 0/2.**
 
+**ARC (post-PE2, 2026-08-10): passPE2 (GENTOW4_passPE2_report.md
+@ 80280b66) returned CLEAN — 0 CRITICAL, 0 GAP, 5 MINOR; counter
+0/2 -> 1/2, the arc's first clean pass. The five minors are folded
+as dated [rider (post-PE2)] brackets at their sites (S8.1 x2,
+S3(iii), S8.4, S7 BOX-4) + the S9 record — each RE-DERIVED from
+the note's own lemmas, the primary sources, and the committed
+artifacts, not transcribed from the report. Sealed artifacts stay
+BYTE-FROZEN (the four S8.4 md5s re-verified this fold). Counter
+HOLDS at 1/2; a rider is not a pass. PE3 next.**
+
 Charge: [GENHN-TOW-1] item (4) — the inner CS event occupies only
 PART of the (J, dv(A_J))-polygon: e2f2·mu2 < mu1, because the
 polygon has other sides and/or the event side carries other
@@ -582,6 +592,17 @@ the "S6-VERDICT" block at the end of this file.**
   HE7-13' (HE7 accepted 2/2; annex F-1 post-acceptance), LEMMA
   HE6-3/HE6-4 + THEOREM HE6.A (HE6 accepted, r1/r2 applied),
   GENTOW-1 (0/2). Every consequence inherits the MINIMUM grade.
+  [rider (post-PE2, 2026-08-10; m-E): supplier grades refreshed
+  from the arc records (the refresh PE1's sibling-lesson (6)
+  assigned to the r1 annex, omitted there): HETOW-1/2 — HETOW
+  ACCEPTED 2/2 (HETOW_RECON's dated acceptance, counter 1/2 ->
+  2/2 at its PE3); GENTOW-1 — ACCEPTED 2/2 (GENTOW1_PROOF's
+  dated record @ 4aff731, standing through its post-acceptance
+  R2a/b/c rounds); HE6R1 — ACCEPTED 2/2 (its post-PE3 dated
+  record, 2026-08-09). The composed line's 0/2s were stale in
+  the CONSERVATIVE direction (understated supplier grades). This
+  note's own grade after PE2: counter 1/2, one clean pass on
+  record.]
 
 **Consumption path (not executed here):** [GENHN-TOW-1] item (4)'s
 box text in GENHN_PROOF is the orchestrator's dated consumption
@@ -748,7 +769,21 @@ and GENTOW-1(d)'s floor transport (nfeltval = E2 exactly).
 output dac5110c0c9933d66d827a2d2f695281, committed @ 8ae71864:
 GREEN, 93 checks / 0 violations, dual PARI routes — frame data and
 numbers RE-VERIFIED this round against the committed instrument
-and output).**
+and output).** [rider (post-PE2, 2026-08-10; m-D): the raw
+"93 checks" count is PADDED — in the instrument's FR-M nfeltval
+loop the else-branch check `chk(tag, 4*v_ <= E2*e_, 'sep')` tests
+the very inequality that selected the branch, so it can never
+fire. Recounted this fold by an instrumented isolated /tmp copy
+(sealed file untouched; run reproduced GREEN 93/0): EXACTLY 14 of
+the 93 are such vacuous 'sep' confirmations (the non-class rows
+across FR-M's 3 members x 2 keys), so the falsifiable count is
+79. The separator's substance is unaffected: the class side is
+tested strictly (ncls accumulates only at 4*v_ > E2*e_), and a
+misclassified non-class row moves the class degree sum off 8 =
+D2·mu2*, which the 6 degree-sum checks (3 members x 2 keys) test
+bidirectionally. The numbers this annex quotes from those rows
+(sigma, pins, c_g, keyvals, degree sums) are measured quantities,
+not products of the padded checks.]
 
 * **FR-G — the first gauge-live partial side in any leg of this
   unit (eta != 1, f2 = 2; no battery family has eta != 1).**
@@ -848,3 +883,63 @@ commit 2aa5b16 = artifact line 2), gentow4_checks_output.txt
 58f353056f276a53d297fdf8d66423af, gentow4_pe1_fresh.py
 5dc455dd7d2feb8bca79dbfb59c2d83b, gentow4_pe1_fresh_output.txt
 dac5110c0c9933d66d827a2d2f695281. Grade stays 0/2; PE2 next.
+
+## S9. [rider] POST-PE2 FOLD (2026-08-10, minors-only round)
+
+PE2 verdict (GENTOW4_passPE2_report.md @ 80280b66): CLEAN — 0
+CRITICAL, 0 GAP, 5 MINOR; counter 0/2 -> 1/2, the arc's first
+clean pass. The r1 gauge annex survived independent re-derivation
+at all four sites; the corrected-key mechanism held at two fresh
+geometries (PE2's FR-T, the first non-linear wrap profile
+W = (1,1,0), and FR-C, the first gauge-live two-block compound;
+its instrument gentow4_pe2_fresh.py md5 b4d795cb… / output
+8e404c4c…, committed). This fold applies the five minors as dated
+[rider (post-PE2)] brackets at their sites — each RE-DERIVED from
+the note's own lemmas, the primary sources, and the committed
+artifacts, not transcribed from the report. No repair round owed;
+none of the five moves a conclusion.
+
+* **m-A -> CORRECTED at the S8.1 supply audit.** The two-item
+  routing sentence misattributed HE7-13''s supply to HE7-12(c)'s
+  transport. Verified at source: HE7-12(c)'s displayed list
+  (HE7_PROOF §S5.8) carries "LEMMA HE6R1-2's read" — that leg is
+  right — but not HE7-13' (ANNEX F-1 postdates it). The bracket
+  states the true route: HE7-13' is stated at "Psi-tilde = Psi − W
+  with W = 0 or as in LEMMA HE7-12(d)", and the restated HETOW-2's
+  w = 0 (LIFT)-slot conclusion puts Phi2 in its hypothesis class
+  at W = 0 directly. Conclusion unchanged.
+* **m-B -> RECONCILED at S3(iii).** "The three fullness rows" vs
+  the S2 [GT4-r1] five-row recount: both re-verified against
+  HETOW_RECON's S1 table. Three rows are replaced as (iii) names
+  them (r-row + label row by 4.1(a)(b); f_S/mu2 row by (ii)); the
+  two others (Psi ∤ f_S peel row, level-1 Phi' ∤ f frame row) are
+  discharged by 4.1(d)'s peels via the theorem's "after the S2
+  peels" preamble. No row undischarged.
+* **m-C -> CORRECTED at the S8.4 manifest.** The edit-shape
+  sentence said "insertions with the composed text standing";
+  re-checked `git diff d7ddf2e..eb526a0d` (265+/14−): TWO sites
+  were corrected in place (the S2 count word THREE -> TWO; the S4
+  parenthetical's f1 = 1 clause), both originals preserved inside
+  their [GT4-r1] brackets. The bracket names them.
+* **m-D -> DISCLOSED at the S8.1 machine rows.** The adopted "93
+  checks" count is padded: the FR-M else-branch 'sep' check tests
+  its own branch condition. Recounted by an instrumented isolated
+  /tmp copy this fold (sealed file untouched; GREEN 93/0
+  reproduced): EXACTLY 14 vacuous 'sep' confirmations, 79
+  falsifiable. Substance carried by the strict class-side tests +
+  the 6 class-degree-sum checks (8 = D2·mu2* per member per key).
+* **m-E -> REFRESHED at S7 BOX-4.** The supplier stack's stale
+  0/2s re-dated from the arc records: HETOW ACCEPTED 2/2,
+  GENTOW-1 ACCEPTED 2/2 (standing through R2a/b/c), HE6R1
+  ACCEPTED 2/2 — the staleness was conservative (understated
+  grades). The refresh PE1's sibling-lesson (6) had assigned to
+  the r1 annex lands here.
+
+Sealed artifacts BYTE-FROZEN: the four S8.4 md5s
+(gentow4_checks.py 98cdd4a4…, gentow4_checks_output.txt
+58f35305…, gentow4_pe1_fresh.py 5dc455dd…,
+gentow4_pe1_fresh_output.txt dac5110c…) re-verified before and
+after this fold; no runner edited, no committed artifact re-run
+in place. The statement fence: no theorem statement touched —
+every bracket sits in proof prose, audit records, or boxes.
+Counter HOLDS at 1/2 (a rider is not a pass). PE3 next.
