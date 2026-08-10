@@ -66,6 +66,25 @@ coverage box carries the seam axis, no w row). Repair record S9;
 sealed artifacts BYTE-FROZEN (md5s re-verified this round).
 Grade stays 0/2.]**
 
+**[ARC — passPE4 2026-08-10: CLEAN, 0 CRITICAL + 0 GAP + 2 MINOR
+(GENTOW5_passPE4_report.md @ b22b37b); counter 0/2 -> 1/2 — the
+arc's first clean pass. Rider fold (post-PE4, this commit series;
+minors only, no repair round owed): PE4-F-1 the (c)/(e) induction
+scope STATED at the statement's (c) clause — indices i >= 1 only
+(entry loci T_2..T_r; base = the index-1 GENTOW-1 instance, steps
+enter at Phi_{i+2}); the index-0 instance T_1 is NOT claimed and
+not consumed (DEF GENTOW5-1's floor-chain rung 1 rides the
+accepted [r1] node floor directly, S2.1 — re-verified; grep audit
+found no other index-0 instantiation). PE4-F-2 the S9 f32 digit
+expansion COMPLETED to the canonical Phi_3-adic dev: Phi_2^2 =
+Phi_3 + 16 Phi_1 cancels the -2^16 Phi_3 term, giving f32 =
+Phi_3^4 - 512 Phi_2 Phi_3^2 + 2^20 Phi_1 (C_1 = 0 = the quoted
+p_1 = inf), machine-checked by exact integer arithmetic against
+the committed artifact pins (gentow5_rider_f32dev.py) —
+conclusions invariant. Rider record S10; sealed artifacts
+BYTE-FROZEN (md5s 5fa684c7/dc499a49/839a8660 re-verified this
+fold). Counter 1/2; PE5 next.]**
+
 CHARGE: (1) PROVE or box-with-obstruction GENTOW-BOX-1 — LEMMA
 GENTOW-2 layer 1 at general mu2 (the composed graded frame;
 GENTOW1_PROOF S3/S6). (2) THE LEVEL-r LADDER GRAMMAR: the normalizer
@@ -790,7 +809,23 @@ every slot of f - Phi_{i+1}^{mu} clears weight mu*E_{i+1} + 1,
 with the per-slot digit floors, the fibration, the node pins
 p_j >= (mu-j)E_{i+1} + 1, and the field floor
 dv_{i+1}(Phi_{i+1}(xi)) > E_{i+1}, exactly as in LEMMA GENTOW-1
-(a)-(d).
+(a)-(d). [rider (post-PE4, 2026-08-10; PE4-F-1): SCOPE — clause
+(c), and clause (e) whose proof consumes (c)'s pins at the same
+index, are claimed at induction indices i >= 1 only (the entry
+loci T_2, ..., T_r): the proof's base is GENTOW-1 = the index-1
+instance and each step enters at Phi_{i+2} (proving index i+1 from
+index-i data, i = 1..r-2), so the blanket header's index 0 is not
+covered and is NOT claimed. The index-0 instance (T_1: level-0
+read, slope kappa_1 = u_1/e_1, residual psi_1^{mu}, box vs
+Phi_1^{mu} at mu*E_1 + 1 — level-1 entry-budget territory one
+level below GENTOW-1) is also not consumed by this note: DEF
+GENTOW5-1's floor-chain rung 1 rides the accepted [r1] node floor
+u_2 > e_2 E_1 = e_2 D'h directly (S2.1's provenance sentence,
+re-verified this round), not (e) at index 0; S2.4's Phi_1-part
+weight bound consumes that same DEF hypothesis; and a grep audit
+this round found no other sentence instantiating (c) or (e) at
+index 0 (no T_1, kappa_1, or level-0 read appears outside this
+bracket). Left unclaimed rather than cited.]
 (d) [REFINE TRANSFER AT LEVEL i+1, GENERAL mu] at a composed event
 of integer dv_{i+1}-slope lam > E_{i+1} with residual (T-s)^{mu}
 (multiplicative convention), the refine Phi_{i+1}+ := Phi_{i+1} -
@@ -1451,7 +1486,24 @@ commits, 0160b94 / 40f313a / 9f0eca7); no runner edited, no re-run.
   re-derived by hand this round from the digit expansions f32 =
   Phi_3^4 - 512 Phi_2 Phi_3^2 - 2^16 Phi_3 + 2^16 Phi_2^2 and
   Phi_4 = Phi_2^4 - 32 Phi_1 Phi_2^2 + 1024x (after Phi_1^2 =
-  Phi_2 + 4x): f32@Phi3 (pins [340,inf,186,inf,0]: one
+  Phi_2 + 4x) [rider (post-PE4, 2026-08-10; PE4-F-2): the f32
+  display above is a true identity but HALFWAY reduced — its
+  constant slot 2^16 Phi_2^2 has degree 8 = deg Phi_3, not a legal
+  Phi_3-adic digit. Completing with the key relation Phi_2^2 =
+  Phi_3 + 16 Phi_1 (the Phi_3-analogue of the Phi_1^2 = Phi_2 + 4x
+  parenthetical) rewrites 2^16 Phi_2^2 = 2^16 Phi_3 + 2^20 Phi_1,
+  and the +2^16 Phi_3 term CANCELS the -2^16 Phi_3 term: the
+  CANONICAL dev is f32 = Phi_3^4 - 512 Phi_2 Phi_3^2 + 2^20 Phi_1,
+  slots C_3 = C_1 = 0 (the quoted p_1 = p_3 = inf) and C_0 =
+  2^20 Phi_1 at dv_4 = 16*(20 + 5/4) = 340. Re-derived and
+  machine-checked this fold by exact integer polynomial arithmetic
+  (gentow5_rider_f32dev.py: halfway identity TRUE, completion
+  relation exact, canonical slot degrees (4, 2) < 8, pins
+  reproduced against the committed artifact row "f32@Phi3: pins
+  [340, 'inf', 186, 'inf', 0]", gentow5_output_exact.txt
+  byte-frozen at dc499a49). Conclusions invariant: one
+  kappa_4-side, on-chord support {0,4}, residual psi_4^2, box
+  341 = 2E_4+1 unchanged.]: f32@Phi3 (pins [340,inf,186,inf,0]: one
   kappa_4-side, j=2 digit 186 strictly above the chord 170,
   on-chord support {0,4}, residual y^2+1 = (y-1)^2 = psi_4^2 in
   F_2) and Phi4@Phi2 (pins [84,inf,50,inf,0]: one kappa_3-side,
@@ -1485,3 +1537,56 @@ Grade: 0/2 UNCHANGED (repair round, not a pass). TARGET 1
 round; the r2 repairs, the w-note rider, LEMMA GENTOW5-D, and
 (a)/(b)/(d)/(e) all survived PE3's attack and are untouched
 beyond the three sites named here.
+
+## S10. [rider] POST-PE4 FOLD (2026-08-10, minors-only round)
+
+PE4 verdict (GENTOW5_passPE4_report.md @ b22b37b): CLEAN — 0
+CRITICAL + 0 GAP + 2 MINOR; counter 0/2 -> 1/2, the arc's first
+clean pass. This fold applies the two minors as dated [rider]
+brackets (no repair round owed; both are display hygiene at the
+r3 repair's edges, neither moves a conclusion). Both fixes were
+RE-DERIVED from the note's own lemmas and the committed artifacts,
+not transcribed from the report. Sealed artifacts BYTE-FROZEN
+(gentow5_checks.py 5fa684c7..., gentow5_output_exact.txt
+dc499a49..., gentow5_output_full.txt 839a8660... — md5s
+re-verified this fold); no runner edited, no re-run.
+
+* **PE4-F-1 (MINOR) -> SCOPED at the statement's (c) clause.**
+  The blanket header "by induction on i < r" left (c)'s index-0
+  instance (T_1, level-0 read) formally in scope while the r3
+  coverage sentence names indices 1..r-1. The rider bracket
+  states the honest scope: (c) — and (e), whose proof consumes
+  (c)'s pins at the same index — are claimed at i >= 1 only
+  (entry loci T_2..T_r; base = the index-1 GENTOW-1 instance,
+  steps enter at Phi_{i+2} for i = 1..r-2). Verified at source
+  this fold: DEF GENTOW5-1's floor-chain rung 1 rides the
+  accepted [r1] node floor u_2 > e_2 E_1 = e_2 D'h directly
+  (S2.1's provenance sentence), NOT (e)@index-0; S2.4's
+  Phi_1-part weight bound consumes that same DEF hypothesis; a
+  grep audit (T_1 / kappa_1 / psi_1^mu / level-0 read) found no
+  other sentence instantiating (c) or (e) at index 0. T_1 is
+  left unclaimed rather than cited.
+* **PE4-F-2 (MINOR) -> COMPLETED at S9's f32 display.** The
+  displayed f32 digit expansion was a true identity but halfway
+  reduced (constant slot 2^16 Phi_2^2 of degree 8 = deg Phi_3 —
+  not a legal Phi_3-adic digit). Re-derived this fold: Phi_2^2 =
+  Phi_3 + 16 Phi_1 (the defining relation of Phi_3) completes the
+  reduction and the resulting +2^16 Phi_3 cancels the -2^16 Phi_3
+  term, giving the canonical dev f32 = Phi_3^4 - 512 Phi_2
+  Phi_3^2 + 2^20 Phi_1 (C_3 = C_1 = 0, C_0 at dv_4 = 340).
+  Machine leg (new helper, committed this fold):
+  gentow5_rider_f32dev.py — exact integer polynomial arithmetic,
+  7 checks / 0 violations: halfway identity, completion relation,
+  canonical dev, slot legality (degrees 4, 2 < 8), pins (340,
+  inf, 186, inf, 0) = the committed artifact row f32@Phi3
+  (gentow5_output_exact.txt, byte-frozen at dc499a49), strict
+  j = 2 chord clearance (186 > 170), and the Phi_4@Phi_2 display
+  confirmed already-canonical. Conclusions invariant: one
+  kappa_4-side, on-chord support {0,4}, residual psi_4^2, box
+  341 = 2E_4+1.
+
+Grade after this fold: counter 1/2 (PE4's verdict; a rider is
+not a pass). The statement fence: no theorem statement weakened —
+the PE4-F-1 bracket records the scope the r3 proof already had;
+the PE4-F-2 bracket corrects a display inside a repair record.
+PE5 next.

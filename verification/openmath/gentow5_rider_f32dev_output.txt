@@ -1,0 +1,8 @@
+PASS - halfway identity exact
+PASS - Phi_2^2 == Phi_3 + 16 Phi_1
+PASS - canonical dev f32 == Phi_3^4 - 512 Phi_2 Phi_3^2 + 2^20 Phi_1
+PASS - slot degrees (C_2, C_0) = (4, 2) < 8
+PASS - pins (340, inf, 186, inf, 0) reproduced
+PASS - j = 2 clearance: 186 > chord 170
+PASS - Phi_4 == Phi_2^4 - 32 Phi_1 Phi_2^2 + 1024x (canonical)
+7/7 checks passed, 0 violations
