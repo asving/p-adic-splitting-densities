@@ -1,0 +1,21 @@
+== PIN genh4_checks.py ee8024b7
+== PF1 walker-fresh rows
+  [consE Zp q=2 N=12 h=5] 1048576 members, 8 keys (18.4s)
+  row E q=2 N=12 h=5? h=5: entry 1048576 UND 131072 M*=2 (committed-law tie 131072 EXACT)
+  [consE Zp q=5 N=4 h=1] 1562500 members, 9 keys (22.5s)
+  row E q=5 N=4 h=5? h=1: entry 1562500 UND 12500 M*=2 (committed-law tie 12500 EXACT)
+  [consE Zp q=2 N=13 h=5] 16777216 members, 22 keys (288.1s)
+  row E q=2 N=13 h=5? h=5: entry 16777216 UND 524288 M*=4 (committed-law tie 524288 EXACT)
+  PF1 pair (h=5) N 12->13: ratio 0.25 slope 2.00
+== PF2 union bound r=6 (sympy)
+  PF2: 57 monomials, all nonneg OK
+== PF3 rate inequality over the CS inventory (L <= 12)
+  PF3: 28 inventory shapes checked
+== PF4 CS5-V4E2 composed grid (the unused instance)
+== PF5 Q = 6, 10 algebra corner (exact ints)
+== TEETH
+  TF-PAIR FIRED: fake slope-1 pair ratio 0.5 > cap 0.3536
+  TF-LAW FIRED: corrupted exponent 262144 != measured 131072
+== VERDICT
+checks: PF1-P1 3 PF1-SILENT 1 PF1-SLOPE 1 PF2-DG 6 PF2-UB 1 PF3 56 PF4 111 PF5-CF 50 PF5-SP 50 PIN 1
+GREEN: 0 violations, 0 dead teeth (329.3s)
