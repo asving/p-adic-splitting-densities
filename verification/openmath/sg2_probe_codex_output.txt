@@ -1,0 +1,60 @@
+1. VERDICT: NEEDS-X
+
+X is the following **universal stage-recentering lemma**:
+
+> For every GENHN stage-\(\alpha\) event and every \((e_1,f_1,\mu,\kappa)\), the stage filtration is identified with an (M3) scored \(B_n\)-stratum, with all relevant slots inside the (M2) perimeter, and the recentering \(\Phi'\mapsto\Phi'+w\) induces, in coherent normalized graded coordinates,
+> \[
+> \operatorname{res}_{(\mu-j)\kappa}(A^{\mathrm{new}}_j)
+>   =[T^j]\,R(T+s)\qquad(0\le j\le\mu).
+> \]
+> Equivalently, the cocycle factors from multiplying
+> \(w^{\,i-j}A_i\) agree term-by-term with the twist factors used to assemble the stage residual polynomial.
+
+This must include unrestricted collision/mod-wrap cases and all stages, not merely WELD-M’s scored/perimeter subrange.
+
+2. PER-LAYER VERDICTS
+
+- **Layer 1 — graded kills:** NOT DERIVABLE from M0–M4 + WM-COB + GENHN-2: M3 supplies a tower-level twisted algebra only on its scored stratum, but no universal stage re-instantiation or recentering/substitution identity.
+- **Layer 2 — correction strictness:** DERIVABLE from M0, GENHN-2, GENHN-3(c)(d), and classical filtered-ring arithmetic.
+- **Layer 3 — bijectivity and count:** DERIVABLE CONDITIONAL ON layer 1, using GENHN-2, GENHN-3(d), J-D0, and finite triangular-map/cardinality facts.
+
+4. EXACT OBSTRUCTION
+
+There are two inseparable gaps in layer 1.
+
+First, there is a perimeter mismatch. GENHN-4 ranges over **all** stage-\(\alpha\) events at arbitrary \((e_1,f_1,\mu)\). M3 applies only to the \([ILN]^\dagger\) scored stratum. M2 retains level, collision, and mod-wrap fences. Nothing in M0–M4 asserts that every GENHN stage event:
+
+- determines a new admissible principal-read tower/type in WELD-M’s domain;
+- has its stage node coordinates identified with the relevant \(B_n\)-coordinates;
+- belongs to the scored stratum; or
+- satisfies the M2 slot conditions at every node height.
+
+The required re-instantiation would take the truncated/augmented type at stage \(\alpha\), use \(\Phi'\) as its admissible representative, identify its \(d_v\)-graded coefficient lines with the weld’s \(B_n\)-coordinates, and prove that the event is scored and inside every applicable slot fence. M0 merely identifies division chains **after** such an instantiation; it does not provide it.
+
+Second, even on a scored event, M3 states the multiplication algebra but not how the specific recentering acts on stage residual coordinates. Neither M2 nor M4 says that \(\Phi'\mapsto\Phi'+w\) becomes \(T\mapsto T+s\), coefficient by coefficient, with precisely the same \(z^{\mathrm{fl}}\)-factors in:
+
+1. the products \(w^{i-j}A_i\), and
+2. the normalized residual assembly.
+
+M4’s representative covariance only gives a character-system action; it is not the required additive-translation formula.
+
+WM-COB does not repair this. It gauges away the inner factor \(\prod_j z_j^{D_j}\), but leaves \(\bar z^\delta\), and it does not identify the residual variable or prove translation covariance. J-D0 then shows that counts are insensitive to unit gauges and carry values; it cannot infer the event-level vanishing
+\[
+R(T+s)=T^\mu
+\]
+for the actual recentered coefficients. Count-blindness cannot substitute for the missing coefficient identity.
+
+Thus M3 contains the right ambient algebraic scent, but its stated face does not contain the stage-level action needed to make the \(\mu\) pins die.
+
+5. CHECKED-CLEAN
+
+- GENHN-2 recovers one \(K\)-slot per integral \(d_v\)-height and identifies the formal slot minimum with the actual valuation.
+- Its normalizer formula records the relevant wrap powers, but does not itself prove their coefficientwise compatibility with recentering at general \(\mu\).
+- Once the leading graded terms vanish, ordinary filtered arithmetic gives the \(+1\) strictness of all correction terms.
+- GENHN-3(c)(d) places those corrections inside the finite windows and ensures that carries move only upward.
+- The digit transformation is then triangular with unit diagonal, hence injective.
+- GENHN-2 supplies the equal free-slot cardinalities; therefore image containment implies surjectivity.
+- J-D0 justifies gauge/twist blindness of the resulting counts.
+- The factor \(|K|-1\) follows directly from \(s\in K^\times\).
+
+Therefore the sole substantive residue is the universal stage-level twisted recentering identity, together with proof that every GENHN event lies within the weld clauses’ stated perimeter.
