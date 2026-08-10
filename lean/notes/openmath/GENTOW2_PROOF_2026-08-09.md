@@ -501,7 +501,10 @@ the recipe consumes it only at its used grades β_t, so the
 CONSUMED form of B-2 is u(β_t) = 1 there [r2, PE2 F4: the
 pre-repair "(4) B-2 ⟺ u(β) = 1 at each grade the recipe uses"
 conflated B-2's stated scope with the consumed scope; the
-honest-residue paragraph below already carried the consumed form];
+honest-residue paragraph below already carried the consumed form]
+[r3: that consumed form u(β_t) = 1 is now machine-REFUTED at
+letter-live grades (PE4 LD2, honesty box) and the restated lemma
+no longer consumes it — it consumes (3)+(5) here and B″ (S5.2)];
 and (5) with arbitrary u, GENTOW2-B's sum gives R_{3,α}(Φ₃) =
 y^{f₃} − Σ_{t<f₃} u(β_t)·c_t y^t (the honesty box's transformation
 law).
@@ -644,21 +647,150 @@ x₀-/g-freeness inspection stand as displayed. The downstream
 consumption "η₂(ξ) is a ψ₂-root" survives the twist by the S4
 consumption note's [r2] clause (single-embedding coherence).
 
-*What remains new (the honest B-2 residue).* Pinning u ≡ 1 is a
-cross-frame comparison: by Thm 4.2's normal form H_µ(g) =
-x₃^{s}p₃^{u}R_{3,β}(g)(y₃), u(β) is the coordinate of the repo
-ladder monomial π^a x^i Φ′^b in FGMN's canonical homogeneous frame
-x₃, p₃, y₃ — an explicit z₁, z₂-monomial per grade, computable
-grade-by-grade but not computed anywhere in the corpus. GENTOW5's
-LEMMA GENTOW5-A1 does NOT supply it: its fixed-unit ϑ_t dictionary
-compares two REPO conventions (per-height coherent digits vs the
-multiplicative side residual), both built on the same ladder
-normalizers — a repo-internal cocycle, not the cross-frame unit
-u(β). The derivation therefore stops at (3)–(5), which is enough
-to make every consumer of GENTOW2-A robust to u ≢ 1 (see the
-corrected fallback clause); u ≡ 1 itself stands as this note's own
-disclosed identification, machine-supported as recorded in the
-honesty box.
+*What remains cross-frame (the honest residue) [r3 RE-SCOPED — the
+pre-PE4 version of this paragraph overclaimed underivability; PE4
+[F1] flagged the tension, B″ resolves it].* u(β)'s per-grade
+VARIATION is repo-derivable after all: LEMMA GENTOW2-B″ (S5.2)
+proves u(β_t) = ϑ(t)·w^{f₃−t} with ϑ(t) the repo-internal
+n̂₂-cocycle — exactly the SPECIES this paragraph previously
+contrasted away ("per-height coherent digits vs the multiplicative
+side residual, both built on the same ladder normalizers"); the
+PE4-measured values (u₁, u₀) = (1, z₁) at the LD grades are
+(ϑ(1), ϑ(0)), w-quotiented by the decode frame. What remains
+genuinely cross-frame is the SINGLE slot-independent unit
+w = u(κ̄): by Thm 4.2's normal form H_µ(g) =
+x₃^{s}p₃^{u}R_{3,β}(g)(y₃), it is the coordinate of the one repo
+ladder monomial n̂₂(u₃) in FGMN's canonical homogeneous frame
+x₃, p₃, y₃ — an explicit z₁, z₂-monomial, computable by a level-3
+letter-formula-style derivation but not computed anywhere in the
+corpus — and w is CONSUMER-INVISIBLE (it acts by the
+grade-covariant substitution y ↦ wy, preserving factor patterns;
+GENTOW2-A consumes only hypothesis (ii) with an admissible
+residual, and ψ₃^{(w)} is admissible). The pre-repair sentence
+"GENTOW5's LEMMA GENTOW5-A1 does NOT supply it" survives only for
+w; as a claim about the grade-variation it was WRONG. Whether ϑ
+literally coincides with GENTOW5-A1's ϑ_t (that note's arc is in
+flight) is left to that arc — nothing here consumes the
+correspondence. u ≡ 1 (= B-2 on the nose) is REFUTED letter-live
+(honesty box) and is consumed NOWHERE in the repaired note.
+
+### S5.2 [r3] LEMMA GENTOW2-B″ — the u ↔ ϑ adjudication (PE4 F1):
+### B′'s unit family IS the repo n̂₂-cocycle, up to ONE
+### slot-independent unit
+
+Setting: the recipe geometry of GENTOW2-B (slots t < f₃; slot
+grades β_t := u₃(f₃−t)/e(µ₂) ∈ Γ₂, s₃(β_t) = 0 as in S5.1's
+opening; κ̄ := β_{f₃−1} = u₃/e(µ₂) the top slot's grade). Define
+
+  ϑ(t) := res((n̂₂(u₃(f₃−t)) / n̂₂(u₃)^{f₃−t})(x₀)) ∈ K₂^×.
+
+*γ-calculus (ϑ is x₀-free and letter-valued).* The ratio is a
+value-0 Laurent monomial in π, x, Φ′, and the value-0 Laurent
+monomials x^i π^a Φ′^b form exactly the group ⟨γ₁, γ₂⟩: value 0
+reads ih₁e₂ + ae₁e₂ + bu₂ = 0 after clearing e₁e₂; mod e₂ this
+forces bu₂ ≡ bh₂ ≡ 0 (u₂ = e₂V₂ + h₂, gcd(h₂, e₂) = 1), so e₂ | b;
+dividing by γ₂^{b/e₂} (γ₂ = Φ′^{e₂}π₂^{−u₂}, an x,π,Φ′-monomial by
+§3.3) leaves a value-0 x^{i′}π^{a′}, which is γ₁^{i′/e₁} (e₁ | i′
+from gcd(h₁, e₁) = 1). Residues under the evaluation
+identification: res(γ₁(x₀)) = z₁ and res(γ₂(x₀)) = z₂ — Def 3.12 +
+Prop 1.15 through the rider C-m1 denominator-clearing line, exact
+stable denominators, no new input. Hence ϑ(t) = z₁^j z₂^k for
+grade-determined integers j, k: x₀-free, letter-valued, equal to 1
+wherever that letter monomial is trivial; and ϑ(f₃−1) = 1.
+
+**LEMMA GENTOW2-B″.** For each slot t < f₃, with w := u(κ̄) =
+R_{3,κ̄}(n̂₂(u₃)):
+
+  (6)  u(β_t) = ϑ(t) · w^{f₃−t}.
+
+Consequently in the (B-law) sum (B′(5)): R_{3,α}(Φ₃) = y^{f₃} −
+Σ ϑ(t)w^{f₃−t}c_t y^t = w^{f₃}·P(y/w) with P(y) := y^{f₃} −
+Σ ϑ(t)c_t y^t — the realized residual is the w-substitution
+conjugate of the MULTIPLICATIVE-convention polynomial P, with P's
+irreducible-factor pattern for every value of w.
+
+*Proof.* Fix t, write d := f₃ − t ≥ 1, N := n̂₂(u₃),
+M := n̂₂(u₃d): ladder monomials, deg < m₃, single-point N₃-polygon,
+exact grades κ̄ resp. β_t (B-1). Let ẑ be a grade-0 ladder lift of
+ϑ(t) (T(b)′(iii) supply, deg < m₃) and set G := ẑ·N^d, exact grade
+β_t.
+
+(i) R_{3,β_t}(G) = ϑ(t)·w^d, a y-degree-0 scalar: iterate Cor
+4.7(2) [Q8] (no degree hypothesis — the B′ proof's own precedent;
+at each peel the split-off factor's grade, κ̄ resp. 0, lies in Γ₂)
+to get R_{3,β_t}(G) = R_{3,0}(ẑ)·R_{3,κ̄}(N)^d; R_{3,0}(ẑ) = ϑ(t)
+by Thm 4.8 + Prop 1.15 (the B′ proof's grade-0 step verbatim), and
+R_{3,κ̄}(N) = u(κ̄) = w by S5.1's definition of u; each factor is a
+y-degree-0 scalar (deg < m₃, single-point polygon — Cor 4.4(3)),
+hence so is the product.
+
+(ii) Φ₂-adic expansion G = Σ_{j≥0} Q_j Φ₂^j, deg Q_j < m₃. By Def
+1.8 (ν = µ₃ = [µ₂; (Φ₂, λ₃)] is DEFINED by the expansion minimum
+µ′(g) = min_s µ′(g_sφ^s); PDF p.5, layout L250–255, [r3]-added
+cite, S6.1 row 21): ν(G) = min_j ν(Q_jΦ₂^j) = β_t, so every term
+has ν ≥ β_t and Cor 4.7(1) [Q8] gives R_{3,β_t}(G) =
+Σ_j R_{3,β_t}(Q_jΦ₂^j).
+
+(iii) Every j ≥ 1 term contributes 0 at y-degree 0: if
+ν(Q_jΦ₂^j) > β_t it dies by Lemma 3.17; if = β_t then — the S5.1
+h-iii dichotomy verbatim — either e₃ ∤ j, impossible since
+ν(Q_j) ∈ Γ₂ (deg < m₃, Φ₂-free, Prop 1.9) while jλ₃ ∉ Γ₂ would put
+the value outside Γ₂ ∋ β_t, or e₃ | j and Cor 4.7(2) + eq (14)
+[Q7] place R_{3,β_t}(Q_jΦ₂^j) = R_{3,ν(Q_j)}(Q_j)·y^{j/e₃} at
+y-degree ≥ 1.
+
+(iv) The j = 0 term: Φ₂(x₀) = 0 gives G(x₀) = Q₀(x₀), so
+digit(Q₀) = digit(G) = res(ẑ(x₀))·res((N^d/M)(x₀)) =
+ϑ(t)·ϑ(t)^{−1} = 1 ≠ 0; B-1 (deg Q₀ < m₃ = D₂, IN scope) gives
+ν(Q₀) = β_t exact, and B′(3) (S5.1, in scope: Φ₂-free, deg < m₃,
+exact grade) gives R_{3,β_t}(Q₀) = u(β_t)·digit(Q₀) = u(β_t),
+y-degree 0.
+
+Equating the y-degree-0 parts of (i) and (ii)–(iv):
+ϑ(t)·w^d = u(β_t). ∎
+
+*Machine verification at the PE4 frames (decode-probe pins CITED
+at their seals, not re-run: gentow2_pe4_decode.py +
+gentow2_pe4_decode_output.txt, GREEN 14/0 first-run-under-its-
+seal).* LP1 stage-3, e₃ = 1, f₃ = 2, u₃ = κ₃ = 19: N = n̂₂(19) =
+4xΦ′, M = n̂₂(38) = 512x. γ-calculus RE-DERIVED this round:
+N²/M = 16x²Φ′²/(512x) = xΦ′²/32 = γ₂·γ₁⁵ — γ₁ = x²/2, γ₂ = Φ′²/x⁹
+(ℓ₁ = 1, ℓ′₁ = 0, u₂ = 9, e₂ = 2), exponent-lattice split:
+xΦ′²/32 ↦ (i,a,b) = (1,−5,2) = 1·(−9,0,2) + 5·(2,−1,0) — so
+ϑ(0)⁻¹ = res(N²/M) = z₂·z₁⁵ = z₂z₁² and ϑ(0) = z₂^{−1}z₁^{−5} =
+z₁ at LP1 (z₂ = 1 by the r2 probe; z₁³ = 1). Machine pin: decode COC = res(n̂₂(19)²/n̂₂(38)) = z₁² =
+ϑ(0)^{−1}, exact at both frames ✓. ϑ(1) = 1 (top slot). Realized
+residuals predicted by (6): P = y² + ϑ(1)c₁y + ϑ(0)c₀ =
+y² + z₁y + z₁c₀ — LD1 (c₀ = 1): y²+z₁y+z₁ ✓ decode MP1; LD2
+(c₀ = z₁²): y²+z₁y+z₁³ = y²+z₁y+1 ✓ decode MP2 (LD2 realized LD1's
+per-height prescription — the PE4 signature). The decode MULT
+checks (multiplicative digits (z₁, z₁) at LD1, (z₁, 1) at LD2) are
+the statement "realized = P" verbatim. LD3 (e₃ = 2, f₃ = 1,
+κ₃ = 37/2): a single slot t = 0 at d = 1, so ϑ(0) = 1 — no cocycle
+live at f₃ = 1, consistent with LD3 GREEN and with the fallback
+clause's f₃ ≤ 1 remark. The PE4-measured "(u₁, u₀) = (1, z₁) in
+the Φ₂/n̂₂(19)-read frame" is exactly (ϑ(1), ϑ(0)): that read
+frame is the w-conjugate frame, so it measures ϑ — the u ↔ ϑ VALUE
+coincidence the PE4 report flagged is identity (6) with w
+quotiented out, not an accident.
+
+*Adjudication of the u ↔ ϑ identity (the PE4 [F1] repair charge).*
+(a) YES, derivably: u's entire per-grade VARIATION is the
+repo-internal cocycle ϑ — identity (6), proved above at every
+recipe slot, no letter-dead restriction. (b) B-2's genuinely
+cross-frame content collapses from a per-grade family to the ONE
+unit w = R_{3,κ̄}(n̂₂(u₃)) per slot geometry, and w is
+consumer-invisible: factor patterns and prime splits are
+w-invariant, and GENTOW2-A consumes hypothesis (ii) with an
+admissible residual (ψ₃^{(w)} qualifies). (c) B-2 itself (u ≡ 1 at
+used slots) stays REFUTED: it would force ϑ(0)w² = 1 AND
+ϑ(1)w = 1 at LD2's geometry, i.e. z₁w² = 1 = w, impossible; the
+machine verdict (single prime against the prescribed split) is the
+realized witness. (d) Whether ϑ literally coincides with
+GENTOW5-A1's ϑ_t dictionary unit is NOT adjudicated here (that
+note's hostile arc is in flight; nothing here consumes the
+correspondence) — what is settled is that a repo-internal cocycle
+of exactly that species carries u's grade-variation.
 
 ## S6. FAITHFULNESS PARAGRAPH (AXIOM_FAITHFULNESS discipline)
 
