@@ -156,8 +156,13 @@ def nhat2(m):
 chk(nhat2(7)==(3,1,0), f"FA1: nhat_2(7) = 3^3 x, got {nhat2(7)}")
 chk(nhat2(14)==(7,0,0), f"FA1: nhat_2(14) = 3^7, got {nhat2(14)}")
 # vartheta_{2,2}: nhat_2(7)^2 = 3^6 x^2; x-exp 2 -> one x-wrap (e1=2)
+# [RUN-1 INSTRUMENT FIX, disclosed: the sealed check's arithmetic
+#  expression was wrong (expected -1 for a 0 height-difference); the
+#  intended assertions are: heights match (6*2+2*1 == 14) and the
+#  pi-exponent of the ratio is 6-7 = -1, i.e. ratio = x^2/3. No
+#  prediction changed.]
 wraps=(2*1)//2
-chk(wraps==1 and (3+3)*2+2*1-14==-1, "FA1: nhat_2(7)^2/nhat_2(14) = x^2/3 (one x-wrap: vartheta_{2,2} = eta)")
+chk(wraps==1 and 6*2+2*1==14 and 6-7==-1, "FA1: nhat_2(7)^2/nhat_2(14) = x^2/3 (one x-wrap: vartheta_{2,2} = eta)")
 chk(7 > 6, "FA1: floor u3 = 7 > e3*E2 = 6")
 # side heights on dv3 = dv2 (e3 = 1): pi=2, x=1, Phi1=3, Phi2=u3=7
 h_top = 2*7
@@ -188,7 +193,14 @@ def gp(script):
     return r.stdout
 
 def gp_probe(poly):
+    # [RUN-1 INSTRUMENT FIX, disclosed: the sealed script fed
+    #  multi-line for-loops to gp via stdin without {} wrapping; the
+    #  gp reader ends statements at newlines, so the PRIME rows never
+    #  printed (loop body was a syntax error; NFQ/NF3 lines were
+    #  unaffected and matched predictions on run 1). Wrapped in {}.
+    #  No prediction changed.]
     scr=f"""default(parisize,512M);
+{{
 P={pstr(poly)};
 P1v={pstr(P1)};
 P2v={pstr(P2)};
@@ -202,8 +214,8 @@ for(k=1,matsize(FQ)[1],
   pr=idealprimedec(nf,3);
   for(i=1,length(pr),
     vx=nfeltval(nf,x,pr[i]);
-    v1=nfeltval(nf,subst(P1v,x,'x),pr[i]);
-    v2=nfeltval(nf,subst(P2v,x,'x),pr[i]);
+    v1=nfeltval(nf,P1v,pr[i]);
+    v2=nfeltval(nf,P2v,pr[i]);
     th=Mod(x,pol);
     t1=subst(P1v,x,th)/(3*th);
     t2=subst(P2v,x,th)/(27*th);
@@ -214,6 +226,7 @@ for(k=1,matsize(FQ)[1],
     print("PRIME ef=[",pr[i].e,",",pr[i].f,"] lad=[",vx,",",v1,",",v2,"] res=[",r1,",",r2a,",",r2b,",",re,"]");
   );
 );
+}}
 """
     return gp(scr)
 

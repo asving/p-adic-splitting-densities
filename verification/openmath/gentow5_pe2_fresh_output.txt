@@ -1,0 +1,29 @@
+ok  - FA0: psi3 = y^2-y-eta2 rootless in F_9 (irreducible), roots=[]
+ok  - FA0: twisted y^2-y-2eta2 splits with roots {2+2eta2, 2+eta2}, got [(2, 1), (2, 2)]
+ok  - FA1: nhat_2(7) = 3^3 x, got (3, 1, 0)
+ok  - FA1: nhat_2(14) = 3^7, got (7, 0, 0)
+VIOLATION: FA1: nhat_2(7)^2/nhat_2(14) = x^2/3 (one x-wrap: vartheta_{2,2} = eta)
+ok  - FA1: floor u3 = 7 > e3*E2 = 6
+ok  - FA1: all P3 side terms at dv3-height E3 = 14 (14,14,14)
+ok  - FA1-LIFT: strict fixed-i0 family flavor t=1 at height 14 has pi-exponent 11/2 (NON-INTEGER: no such monomial; the realized member re-solves i0 -> 1)
+ok  - FA2: corrected key resultant ladder v3 = [4, 12, 28] == [4, 12, 28]
+ok  - FA6: naive key resultant ladder v3 = [4, 12, 28] == [4, 12, 28]
+== FA-3/FA-4: corrected key P3corr = Phi2^2 - 27x*Phi2 - 243x*Phi1 ==
+NFQ=1
+NF3=1 DEGS3=[8]
+ok  - FA3: corrected key ONE deg-8 factor over Q_3
+VIOLATION: FA3: corrected sigma = {(2,4)} — the seam-live depth-3 carrier
+VIOLATION: FA3: nfeltval ladder (x,Phi1,Phi2) = (1,3,7) exact
+VIOLATION: FA4: val(t1^2+t1+2) >= 1 — beta1 is a psi2-root
+VIOLATION: FA4: val(t2^2-t2-t1) >= 1 — beta2 IS a psi3-root (the i=2 gauge pin verified LIVE)
+VIOLATION: FA4: val(t2^2-t2-2t1) = 0 — twisted residual NOT carried by corrected key
+VIOLATION: FA4: val(x^2/3 - 2) >= 1 — eta = 2 confirmed at the leaf
+== FA-5: naive key P3naiv = Phi2^2 - 27x*Phi2 - 486x*Phi1 (TOOTH) ==
+NFQ=1
+NF3=2 DEGS3=[4, 4]
+VIOLATION: FA5-TOOTH: naive sigma = {(2,2),(2,2)} != {(2,4)} — GENTOW5-B(a)/(b) FAIL at the gauge-naive recipe at i = 2
+VIOLATION: FA5: per-branch nfeltval ladder (1,3,7) exact (values seam-blind)
+VIOLATION: FA5: per-branch beta1 is a psi2-root
+VIOLATION: FA5: per-branch val(t2^2-t2-2t1) >= 1 — the vartheta^{-1}-TWISTED residual IS carried by the naive key
+VIOLATION: FA5: per-branch val(t2^2-t2-t1) = 0 — psi3 NOT carried by the naive key
+== PE2 FRESH VERDICT: 10 checks, 12 violations ==
