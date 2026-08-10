@@ -640,3 +640,83 @@ gentow3_pe1_fresh_output.txt 94160b22ca919276d61a2ed4f5d374d5,
 gentow3_pe1_fresh_output_run1_RED.txt
 485946fc773f7d57289f3731d2e51de2, import base gentow1_checks.py
 6df4b213ed0aab6afa37ac7b418540aa. Grade stays 0/2; PE2 next.
+
+## S7.6 [GT3-r2] PE2 REPAIR RECORD: THE CERTIFICATE SCOPING
+## (2026-08-10, post-passPE2)
+
+PE2 verdict (GENTOW3_passPE2_report.md @ c048154): NOT CLEAN — 1
+GAP (F-1: three record sentences — the S0 geography clause, the
+S4 δ = 1 bullet, the S4 count-law — asserted per-coordinate
+attainment/mislabeling CERTIFICATE-FREE, plus "touched
+coordinate(s)" undefined in the (iv) statement); counter stays
+0/2. This round's edits are marked [GT3-r2].
+
+**The re-derivation (from this note's own S2 (iv) proof and
+GENTOW3-BOX-1, per the repair rule — not from the report's
+wording).** Step 2 proves the FLOOR unconditionally. The (iv)
+proof then exhibits the MINIMAL candidate branch — a single
+Phi'-extraction, height THETA_j — and proves its digit "NONZERO
+whenever the assembled K2-digit does not cancel": BOX-1's
+per-genre, per-coordinate non-cancellation certificate. So what
+the theorem PROVES is attainment AT THETA_j at exactly the
+certificate-carrying coordinates; where the assembled digit
+cancels, (i) still floors the discrepancy but its first height
+sits strictly ABOVE THETA_j. Member granularity is governed by
+(ii)'s one-sided law alone: faithful when every consulted height
+is below THETA_j; above it, corruption further requires the
+divergent digit present on the member AND consulted at the
+pricing granularity. The three composed sentences asserted the
+unconditional/biconditional forms; each is rewritten in place to
+the certificate-scoped form, and (iv)'s "touched coordinate(s)"
+now carries the certificate pin in the statement.
+
+**Verification against the refuting instances (both committed;
+the corrected sentences are TRUE on each):**
+* FR-M3 slack (gentow3_pe1_fresh.py + output, S7.5 md5s; p = 2,
+  Phi' = x² − 2x − 2, e2 = f2 = 1, u2 = 3, mu2 = 3, delta = 1,
+  E2 = 3, THETA = [10, 7, 4]): self-shadow ShC = [[64], [0, 40],
+  [12]], pins [12, 7, 4] — the height-10 digit at j = 0 CANCELS
+  (certificate fails at (FR-M3, 0)). Corrected S0 asserts slack
+  at j = 0 and attainment at j = 1, 2: as measured.
+* The count-law counter-member (gentow3_pe2_fresh.py, adopted
+  from the PE2 fresh route: runner md5 55208bafd08835e38003c2ec
+  2b28a138, output 06b4bddfe14fdea5aaed262d72c0fd2b GREEN 149/0
+  3/3 teeth, run-1 RED kept 3ca64bd4733e32c1819d98ca32b800ac —
+  four misses all one disclosed gp-harness literal): f = Phi2³ +
+  32 at FR-M3 — 32 = pi⁵ at slot height 10 = THETA_0, x-free
+  monomial, zero own division discrepancy; honest pins [10, ∞,
+  ∞] decided (slope 10/3); shadow pins [10, 7, 4] with the fake
+  pins strictly ABOVE the deciding edge: hulls IDENTICAL, vertex
+  digit IDENTICAL, PARI σ {(6,1)} on both routes. A δ = 1 decided
+  leaf AT THETA_0, faithful — the corrected S4 sentences hold on
+  it (THETA-reaching is necessary, not sufficient).
+
+**Non-vacuity check (a genuine attainment row):** FAM-A5
+(gentow3_checks_output.txt, S7.5 md5: self-shadow pins [21, None]
+= THETA_0 = 21, certificate holds at j = 0) — corrected S0 still
+asserts failure AT 21 there, the corrected δ = 1 bullet still
+prices the three PE1 rows' first divergence at 21, and the
+corrected count-law still prices the PE1-1/PE1-2 σ-corrections.
+Nothing became vacuous.
+
+**Consumer walk (the three sentences).** GENTOW6_PROOF S3 — the
+one downstream consumer of (iv)-adjacent content — consumes
+THEOREM GENTOW-3(i) and BOX-1's certificate FRAMING ("clause
+(iv)'s ATTAINMENT rested on a per-genre certificate"): already
+certificate-conditional; none of the three sentences is cited.
+docs/PROJECT_STATE.md append #12 records this unit through
+floor/band/x-free + "the PE1 refutations = the criterion's first
+violations exactly" — no overclaim carried (append #13 already
+logs the PE2 finding). BRIDGE_ADJUDICATIONS cites GENTOW3-BOX-1
+as residue only. No consumer edit owed.
+
+**Manifest.** [GT3-r2] edit sites: (1) header ARC line; (2) S0
+geography clause (also retires the undefined "overflow genres");
+(3) S2 THEOREM (iv) statement pin ("touched" = the certificate
+sense — a definition pin inside the statement, per the r2 charge;
+it is the reading the (iv) proof supports, no weakening); (4) S4
+δ = 1 bullet; (5) S4 count-law paragraph; (6) this S7.6.
+Checkable as git diff on this file. Sealed machine artifacts
+BYTE-FROZEN: all six S7.5 md5s re-verified at this round; the
+three adopted PE2-fresh artifacts are committed and md5-pinned
+above. Grade stays 0/2; PE3 next.
