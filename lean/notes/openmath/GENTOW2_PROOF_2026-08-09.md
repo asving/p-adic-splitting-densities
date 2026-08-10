@@ -272,16 +272,44 @@ above the side except the on-side residue pattern of ψ₂^{e₃f₃}.
 ## S5. LEMMA GENTOW2-B (the bridge clause): the T(b)″ recipe
 ## satisfies R_ν(Φ₃) = ψ₃
 
-**LEMMA GENTOW2-B.** Let ψ₃ = y^{f₃} − Σ_{t<f₃} c_t y^t ∈ K₂[y]
-(monic, c_t ∈ K₂ = F₃), and let the recipe data be as in the r3 box:
+**LEMMA GENTOW2-B [r3 RESTATED — PE4 F1: the pre-repair conclusion
+"R_ν(Φ₃) = ψ₃" for the PER-HEIGHT digit string is machine-refuted
+at letter-live frames (LD2, honesty box); the lemma now carries the
+MEASURED transformation law and the prescription that realizes any
+admissible target].** Let the recipe data be as in the r3 box:
 k̂_t ∈ K[x] with deg k̂_t < deg Φ₂, dv₂-height u₃(f₃ − t), and
-K₂-digit residual class c_t (a GENHN-2′ ladder lift; k̂_t = 0 when
-c_t = 0), where u₃ = e₃·κ₃, gcd-normalized so the pins (e₃t,
-u₃(f₃−t)) lie on the line through (e₃f₃, 0) of dv₂-slope κ₃, with
-κ₃ > e₂f₂u₂ (equivalently λ₃ := κ₃/(e₁e₂) − ν_{µ₂}(Φ₂)... > 0; the
-positivity is the [r1]-style node-floor arithmetic, here an explicit
-HYPOTHESIS). Then Φ₃ := Φ₂^{e₃f₃} − Σ_{t<f₃} k̂_t Φ₂^{e₃t} satisfies
-R_ν(Φ₃) = ψ₃.
+K₂-digit residual class c_t ∈ K₂ = F₃ (a GENHN-2′ ladder lift;
+k̂_t = 0 when c_t = 0, c₀ ≠ 0), where u₃ = e₃·κ₃, gcd-normalized so
+the pins (e₃t, u₃(f₃−t)) lie on the line through (e₃f₃, 0) of
+dv₂-slope κ₃, with κ₃ > e₂f₂u₂ (equivalently λ₃ := κ₃/(e₁e₂) −
+ν_{µ₂}(Φ₂)... > 0; the positivity is the [r1]-style node-floor
+arithmetic, here an explicit HYPOTHESIS). Then Φ₃ := Φ₂^{e₃f₃} −
+Σ_{t<f₃} k̂_t Φ₂^{e₃t} satisfies
+
+  (B-law)  R_ν(Φ₃) = y^{f₃} − Σ_{t<f₃} u(β_t)·c_t·y^t,
+           u(β_t) = ϑ(t)·w^{f₃−t},
+
+where u(β_t) := R_{3,β_t}(n̂₂(u₃(f₃−t))) is B′'s per-grade unit
+(S5.1), ϑ(t) := res((n̂₂(u₃(f₃−t))/n̂₂(u₃)^{f₃−t})(x₀)) is the
+repo-derivable n̂₂-cocycle (grade-determined, x₀-free, a z₁^j z₂^k
+letter monomial — LEMMA GENTOW2-B″, S5.2; ϑ(f₃−1) = 1), and
+w := R_{3,κ̄}(n̂₂(u₃)) ∈ K₂^× is a single slot-independent unit
+(κ̄ := u₃/e(µ₂), the top slot's grade). Consequently, given a
+TARGET ψ₃ = y^{f₃} − Σ_{t<f₃} a_t y^t ∈ K₂[y] monic irreducible
+with ψ₃(0) ≠ 0, the MULTIPLICATIVE-CONVENTION prescription
+c_t := ϑ(t)^{−1}·a_t realizes
+
+  R_ν(Φ₃) = w^{f₃}·ψ₃(y/w) =: ψ₃^{(w)},
+
+monic irreducible of degree f₃ with ψ₃^{(w)}(0) = w^{f₃}ψ₃(0) ≠ 0
+(the substitution y ↦ wy preserves monicity after the
+renormalization displayed, irreducibility, degree, and the nonzero
+constant) — an ADMISSIBLE residual, so the recipe realizes
+THEOREM GENTOW2-A's hypothesis (ii) with residual ψ₃^{(w)} for any
+admissible target ψ₃. The unadjusted PER-HEIGHT prescription
+(c_t = a_t) realizes ψ₃ itself iff u(β_t) = 1 at each used slot —
+holding at each letter-dead slot the standing record tested, and
+failing at PE4's letter-live LD2 (honesty box below).
 
 **Proof.** Write α := e₃f₃(w₃... (FGMN: α = e_r f(w_r + λ_r) with
 e_r = e₃, f = f₃, w_r = w₃ = µ₂(Φ₂), λ_r = λ₃). Each term lies in
@@ -303,14 +331,18 @@ bookkeeping s_j = s(α) + je₃ with s(α) = 0 places the t-th
 contribution at y^t). Here R_{3,β}(k̂_t) ∈ F₃ is the degree-0
 residual of a polynomial of degree < deg Φ₂ = m₃ whose N₃-polygon is
 the single point (0, β): by Definition 3.16 (L916–923) its value is
-the K₂-digit class of k̂_t up to the unit constant ε₂(β) ∈ F₃* —
-and the repo's "K₂-digit lift with class c_t" is DEFINED through the
-same graded read (T(b)′(ii)'s slot grammar = GENHN-2′, accepted
-2026-08-09 corpus), i.e. the recipe prescribes the digit in the
-ε-normalized coordinate, making R_{3,β}(k̂_t) = c_t on the nose.
-Summing: R_{3,α}(Φ₃) = y^{f₃} − Σ c_t y^t = ψ₃, and since
-ψ₃(0) = −c₀ ≠ 0 we get R₃(Φ₃) = R_{3,α}(Φ₃) = ψ₃ (Def 3.18,
-L994–1000, j₀ = 0). ∎
+the K₂-digit class of k̂_t up to the unit constant ε₂(β) ∈ F₃*.
+[r3 — the pre-repair step identified that value with c_t ON THE
+NOSE (= B-2), machine-refuted at LD2; corrected step:] By LEMMA
+GENTOW2-B′(3)+(4) (S5.1, derived from the accepted corpus), with
+β = β_t the slot's grade: R_{3,β_t}(k̂_t) = u(β_t)·digit(k̂_t) =
+u(β_t)·c_t, the recipe's k̂_t having repo digit c_t by construction.
+Summing: R_{3,α}(Φ₃) = y^{f₃} − Σ u(β_t)c_t y^t — the (B-law) —
+and LEMMA GENTOW2-B″ (S5.2) factors u(β_t) = ϑ(t)·w^{f₃−t}. With
+the multiplicative prescription c_t = ϑ(t)^{−1}a_t the sum is
+y^{f₃} − Σ a_t w^{f₃−t} y^t = w^{f₃}ψ₃(y/w) = ψ₃^{(w)}. Since the
+constant term u(β₀)c₀ ≠ 0 (u a unit, c₀ ≠ 0) we get R₃(Φ₃) =
+R_{3,α}(Φ₃) (Def 3.18, L994–1000, j₀ = 0). ∎
 
 *Honesty box for GENTOW2-B [r1 REWRITTEN — PE1 F2 (provenance) +
 F3 (false fallback clause) cured].* Two repo-side identifications
@@ -321,33 +353,80 @@ carry this proof:
 two-step class separation + no-cancellation — LEMMA GENHN-T(b)′
 (ii), S8 annex, accepted corpus).
 
-(B-2) the repo K₂-digit of a Φ₂-free ladder element equals the
-ε₂-normalized F₃-coordinate of FGMN's Def 3.16 at its grade, ON THE
-NOSE. [r1] Provenance restated: this identification is FIRST MADE
-IN THIS NOTE. The pre-repair pointer ("the [W-2] graded-dictionary
+(B-2) [r3 REFUTED AT LETTER-LIVE GRADES, REPLACED BY THE MEASURED
+COCYCLE FORM — PE4 F1, machine]. The identification this box
+asserted through PE3 — "the repo K₂-digit of a Φ₂-free ladder
+element equals the ε₂-normalized F₃-coordinate of FGMN's Def 3.16
+at its grade, ON THE NOSE" — is FALSE at letter-live grades: at the
+first letters × depth contact (LP1 tower, stage-3 recipe e₃ = 1,
+f₃ = 2, κ₃ = 19; z₁ ∈ F₄∖F₂), frame LD2's per-height digit string
+(z₁, z₁²), prescribing the SPLIT ψ₃ = y²+z₁y+z₁² = (y+1)(y+z₁²),
+realized a SINGLE (4,4) prime with realized residual y²+z₁y+1
+(sealed fresh route RED 62/9, each of the 9 misses a
+B-2-on-the-nose prediction — runner gentow2_pe4_fresh.py, seal
+23def87, output kept as-is; decode probe gentow2_pe4_decode.py
+GREEN 14/0 first-run-under-its-seal; PE4 report §E/[F1]). What
+replaces the assertion — DERIVED in S5.1 + S5.2 from the accepted
+corpus, not asserted: B′(3)'s per-grade unit at the recipe's used
+slots factors as
+
+    u(β_t) = ϑ(t) · w^{f₃−t}          (LEMMA GENTOW2-B″, S5.2)
+
+where ϑ(t) := res((n̂₂(u₃(f₃−t))/n̂₂(u₃)^{f₃−t})(x₀)) is the
+repo-internal n̂₂-COCYCLE — grade-determined, x₀-free, and
+LETTER-VALUED: a z₁^j z₂^k monomial by S5.2's γ-calculus; at the
+PE4 frames ϑ(0) = z₂^{−1}z₁^{−5} = z₁ (LP1 has z₂ = 1), matching
+the machine pin res(n̂₂(19)²/n̂₂(38)) = z₁² = ϑ(0)^{−1} (decode COC
+checks, both frames) — and w := R_{3,κ̄}(n̂₂(u₃)) ∈ K₂^× is a
+SINGLE slot-independent unit, the honest cross-frame residue
+(consumer-invisible: it acts by the grade-covariant substitution
+y ↦ wy, which preserves irreducibility and factor degrees; not
+computed anywhere in the corpus — see S5.1's re-scoped residue
+paragraph). Verdict-level machine data (prime-split patterns) is
+w-blind and constrains ϑ only: the standing 13-witness record's
+green B-routes support ϑ = 1 at each of its own tested slots, and
+LD1/LD2 measure ϑ(0) = z₁ ≠ 1 letter-live. The recipe-grammar
+consequence is LEMMA GENTOW2-B as RESTATED above (the
+multiplicative-convention prescription); the per-height on-the-nose
+reading survives only where the slot's letter monomial is trivial.
+[r1] Provenance history (stands as dated): the on-the-nose
+identification was FIRST MADE IN THIS NOTE. The pre-repair pointer ("the [W-2] graded-dictionary
 identification at level 2, the same one T(b)′'s proof already
 uses") was wrong on both legs — GRTW2's dictionary targets a
 different source text and GENHN/T(b)′ has no Def-3.16 contact (PE1
 F2). What the accepted corpus DOES derive is now separated out as
 LEMMA GENTOW2-B′ (S5.1): B-2 holds UP TO an x₀-free, g-free unit
 family u(β) ∈ K₂^× (u(β) = the FGMN coordinate of the repo ladder
-normalizer at grade β); the residue "u(β) = 1 at each grade the
-recipe uses" is the genuinely new content, consumed DISCLOSED-NOT-
-DERIVED. Machine support (support, not proof): the sealed battery
-(41/0) + the PE1 fresh route (20/0) sit at 10 witnesses whose
-B-route factorizations were predicted with u ≡ 1, including the
+normalizer at grade β). [r3] The residue "u(β) = 1 at each grade
+the recipe uses", consumed DISCLOSED-NOT-DERIVED through PE3, is
+now REFUTED (LD2, above) and is CONSUMED NOWHERE: the restated
+lemma consumes only B′(3)–(5) + B″, all derived. Machine-support
+history (accurate as dated, per PE4 §S): the sealed battery (41/0)
++ the PE1 fresh route (20/0) sit at 10 witnesses whose B-route
+factorizations were predicted with u ≡ 1, including the
 F₄ × f₃ = 2 corner pair F2/F3 where flipping one digit flips
 irreducible ↔ split — twist families u that would alter those
-verdicts at the tested grades are excluded by that record.
-[r2] Scope disclosure (PE2 F1's letter-blindness point): the 13
-witnesses standing at PE2 (those 10 + the 3 PE2-fresh f₃ = 3 ones)
-each sit at f₁ = 1 over q = 2, where z₁ = 1 — the record supports
-u ≡ 1 on letter-dead geography only. The first letter-live machine
-contact is the r2 probe (gentow2_r2_letter_probe.py, S10), which
-tests S5.1's LETTER FORMULA itself at f₁ = 2 (z₁ ∈ F₄∖F₂), not
-B-2.
+verdicts at the tested grades are excluded by that record; [r3]
+read via B″, that record supports ϑ = 1 at those tested slots and
+was structurally w-blind and z₁-blind (letter-dead).
+[r2] Scope disclosure (PE2 F1's letter-blindness point — PROVED
+PRESCIENT by PE4 [F1], which found the box's scope warning
+load-bearing, not boilerplate): the 13 witnesses standing at PE2
+(those 10 + the 3 PE2-fresh f₃ = 3 ones) each sit at f₁ = 1 over
+q = 2, where z₁ = 1 — the record supports u ≡ 1 on letter-dead
+geography only. The first letter-live machine contact is the r2
+probe (gentow2_r2_letter_probe.py, S10), which tests S5.1's LETTER
+FORMULA itself at f₁ = 2 (z₁ ∈ F₄∖F₂), not B-2; the first
+letter-live B-2 contact is PE4's LD1/LD2 — the tooth that bit.
 
-(B-2-fallback, the TRUE transformation law) [r1: the pre-repair
+(B-2-fallback, the TRUE transformation law) [r3: THE FALLBACK
+FIRED — PE4's LD2 realized exactly this clause's u ≢ 1
+grade-varying (ϑ-cocycle) mode, and the clause's survival analysis
+(re-parameterization c_t ↦ u(β_t)^{−1}c_t; GENTOW2-A untouched) is
+now PROMOTED into the restated LEMMA GENTOW2-B above and made
+effective by B″ (S5.2), which computes the needed u(β_t) up to the
+consumer-invisible w. Kept below as composed, the record of the r1
+correction.] [r1: the pre-repair
 clause — a fixed-unit discrepancy acts by "ψ₃ ↦ y ↦ εy
 substitution" and "every clause of GENTOW2-A survives verbatim" —
 was FALSE at f₃ ≥ 2: a fixed δ multiplies every non-leading digit,
