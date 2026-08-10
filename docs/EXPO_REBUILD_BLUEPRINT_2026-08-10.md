@@ -270,3 +270,53 @@ re-read §C2 against the draft) and after E-5 (whole-page pass; then Asvin
 sign-off before any push, per the standing public-exposition rule). Sequential
 units; composers get the 64k staged-write rules; commits per section, prefix
 "EXPO rebuild". Total ~6–7 composer sessions once S-1/S-6 verdicts are in.
+
+---
+
+## Asvin review notes (2026-08-10) — BINDING on every E-unit
+
+The blueprint's arc is approved ("the outline looks much better"), with
+five directives the execution units must follow:
+
+**R1 — AUDIENCE, firmly.** Lines like "the measure theory is spent"
+feel off because they answer a question no reading mathematician is
+asking — the proof is p-adic, the measure theory is old hat, and the
+observation mattered only for the LEAN status (mathlib's p-adic
+measure-theory gaps). Rule: Lean-motivated observations are BANNED
+from the mathematician-facing spine; they live in the single boundary
+section and nowhere else. Test at the gate: for each aside, ask "would
+a mathematician reading the mathematics want this here?" — if it is
+about our verification stack, it is not exposition.
+
+**R2 — ONE IDEA PER PARAGRAPH.** The old draft's paragraphs were too
+long. Hard rule; the per-section gate checks paragraph scope.
+
+**R3 — VISUAL LANGUAGE.** Illustrate the proof's shape where possible,
+non-rigorously: the reduction/expansion structure, the induction's
+recursion, the ladder's descent as pictures. Natural candidates:
+Newton polygons (genuinely visual objects — draw them for the worked
+quartic); the chain as a small labeled DAG; the two-species induction
+as a branching sketch; μ-descent as a staircase. New task E-7: design
+a small diagram vocabulary (inline SVG), 4–6 figures, each teaching
+one C2/C3 node.
+
+**R4 — COPYWRITING QA.** The old draft had text spilling out of
+expandable boxes. Each E-unit's gate includes a rendering check
+(overflow, wrapping, mobile width) on every box it touches.
+
+**R5 — THE NAME BUDGET (the most important design decision).** Naming
+rule, verbatim intent: if something is referred to often or is
+load-bearing mentally, it MUST be named; but every name has a price,
+so names are RATIONED. The design task, before E-1 drafts a word:
+produce the NAME LEDGER — the short list of crucial innovations that
+earn names (candidate budget, to be argued line by line: the
+*type/key* pair from Montes (inherited standard names, cheap), the
+*ladder* (the strict-descent structure — ours, load-bearing), the
+*certificate* (the touched-coordinate witness), the *carry* (the
+difficulty engine), possibly the *tower* and *w*; target ≤ 7 total
+new-to-the-reader names). EVERYTHING ELSE goes unnamed and gets
+scaffolding instead: re-described in place at each use ("the unit
+measuring how the two frames disagree" rather than a symbol),
+because an unnamed object will not stick and must not be leaned on.
+The name ledger is an orchestrator+Asvin review artifact — it ships
+with E-1 for sign-off.
