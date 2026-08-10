@@ -340,7 +340,20 @@ a label OF f in THEOREM HE7.A's sense.
 > HETOW_RECON's S1 table with the three fullness rows replaced by
 > GENTOW-4.1(a)(b) (datum + label rows) and by (ii) here (the
 > f_S/mu2 row: mu2* := deg f_S/D2 is HE7.A's own mu2, now READ
-> from f); the dictionary display is HE7.A(2)'s with (l, d_r) =
+> from f) [rider (post-PE2, 2026-08-10; m-B): "the three fullness
+> rows" reconciled with the S2 [GT4-r1] FIVE-row recount, both
+> re-verified against HETOW_RECON's S1 table this fold. The five
+> fullness-consuming rows are HETOW-1's r-row plus HETOW-3's four
+> (the §S1-CONVENTION Psi ∤ f_S peel row, the label row, the
+> f_S/mu2 row, the level-1 Phi' ∤ f frame row). THREE are replaced
+> as named here: the r-row and the label row by 4.1(a)(b), the
+> f_S/mu2 row by (ii). The remaining TWO — the Psi ∤ f_S peel row
+> and the Phi' ∤ f frame row — are discharged by 4.1(d)'s peels,
+> in force at this theorem by its preamble ("after the S2 peels":
+> Phi' ∤ f and Phi2 ∤ f assumed, and Phi2 ∤ f_S <=> Phi2 ∤ f per
+> the (ii) proof's peel equivalence). No row is undischarged; the
+> counts describe different partitions of the same five rows];
+> the dictionary display is HE7.A(2)'s with (l, d_r) =
 > (e2, f2). (iv): the same instantiation at the other data; at
 > mu2* = 1 the single side has L = 1, hence l2 = 1, deg R_{lambda2}
 > = 1: HE7.A(2) gives one factor (e1·l·1, f1·d_r·1); the
@@ -698,7 +711,23 @@ every item on 4.1(c)'s list except LEMMA HE6R1-2 + RIDER and ANNEX
 HE7-13', which 4.1(c)'s own proof supplies through HE7-12(c)'s
 transport; that argument reads only the conclusion Phi2 = Psi − w
 and is key-shape-blind, so it fires unchanged at the corrected
-key. (2) 4.1(b) consumes the restated LEMMA HETOW-1's clauses
+key. [rider (post-PE2, 2026-08-10; m-A): the two-item routing
+above is MISATTRIBUTED for the second item; re-derived at source
+this fold. LEMMA HE6R1-2 + RIDER: correctly routed — "LEMMA
+HE6R1-2's read" is ON LEMMA HE7-12(c)'s displayed transport list
+(HE7_PROOF §S5.8, verified verbatim this fold), and 4.1(c)'s
+proof walks exactly that consumption. ANNEX HE7-13': NOT on
+HE7-12(c)'s displayed list (the annex postdates it: ANNEX F-1 is
+2026-08-09), and 4.1(c)'s proof body never mentions it. Its
+supply is by ITS OWN STATEMENT FORM: HE7-13' is stated at
+"Psi-tilde = Psi − W with W = 0 or as in LEMMA HE7-12(d)"
+(HE7_PROOF ANNEX F-1), and the restated LEMMA HETOW-2 gives
+Phi2 = Psi with w = 0 under the (LIFT)-slot form at any f1 — Phi2
+is literally in HE7-13''s hypothesis class at W = 0. This is the
+route the preceding "reads only the conclusion Phi2 = Psi − w"
+clause already half-states; the conclusion (4.1(c)'s full
+consumption supplied at the corrected key) is unchanged.]
+(2) 4.1(b) consumes the restated LEMMA HETOW-1's clauses
 (a)+(b), with psi2(0) != 0 supplied by 4.1(b)'s own
 endpoint-vertex argument in place of HETOW-1(a)'s full-side step;
 clause (b) — the locus identification — is POINTWISE (single
@@ -797,7 +826,22 @@ INSERTIONS plus this S8 — checkable as `git diff d7ddf2e..HEAD` on
 this file; the statement displays of THEOREM GENTOW-4.A, LEMMA
 GENTOW-4.2, and COR GENTOW-4.C sit outside the brackets; LEMMA
 GENTOW-4.1's (c) clause and the S2 count sentence carry bracketed
-insertions with the composed text standing. Sealed machine
+insertions with the composed text standing. [rider (post-PE2,
+2026-08-10; m-C): the shape sentence is imprecise — re-checked
+`git diff d7ddf2e..eb526a0d` on this file this fold (265
+insertions, 14 deletions). At TWO disclosed sites the composed
+text did NOT stand and was corrected IN PLACE: (1) the S2 count
+word ("exactly THREE places" -> "exactly TWO places", the
+composed "THREE" preserved inside the [GT4-r1 (m-1)] bracket);
+(2) the S4 remark's parenthetical (the composed "(Δb is forced
+even; the x- and pi-relations have residue 1 at f1 = 1)" ->
+the corrected two-clause form, the bracket recording that the
+composed text said "at f1 = 1"). All 14 deletion lines sit at
+the manifest's disclosed sites (line re-wraps at bracket
+insertions plus these two rewrites); both original wordings are
+preserved inside their brackets, so the edits are auditable; at
+4.1(c) and every other site the composed text stands. Statement
+displays untouched, re-verified.] Sealed machine
 artifacts BYTE-FROZEN, md5s verified before and after this round:
 gentow4_checks.py 98cdd4a4e5a47f1434bdf8ca5a1c4b4c (= sealed
 commit 2aa5b16 = artifact line 2), gentow4_checks_output.txt
