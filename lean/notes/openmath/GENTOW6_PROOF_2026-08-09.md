@@ -312,6 +312,19 @@ display visible on f's own pins.
 > delivers exactly this display (the c_g-correspondence riding
 > HE6R1-2(b) + COR GENTOW-4.C, the latter cited at GENTOW4's 0/2
 > attempt grade — conditional, named).]
+>
+> [ACCEPTANCE UPGRADE 2026-08-10: the conditionality named above
+> is DISCHARGED — GENTOW4 IS ACCEPTED 2/2 (passPE2 CLEAN @
+> 80280b66 + passPE3 CLEAN @ f0874ff9). PE3's verified 4.C
+> surface carries exactly what this display consumes: c_g =
+> p_{mu2*} via right-endpoint vertex attainment ((mu2*, 0) + c_g
+> is a slope-transition vertex of P2(f), hence an attained pin),
+> and the node floors via GENTOW-1(a)(c) at f_S, whose
+> 𝒯-membership at the block genre (Q; e1, f1, e2f2·mu2*; h) with
+> the same (u2, e2, psi2) is re-derived there
+> (GENTOW4_passPE3_report.md @ f0874ff9, the "COR GENTOW-4.C vs
+> GENTOW6's cap lemma" surface). The dated 0/2 display above
+> STAYS as arc history; this line dates its discharge.]
 
 **What GENTOW4-BOX-2 asked beyond this, honestly parked.** The box
 names "budget/count LAWS on the partial-side locus" — the display
@@ -638,6 +651,27 @@ GENTOW6-BOX-4.]
   some c_t·eta^{W(t)} not in F_Q) = the box's ask; until it runs,
   6.3' is prose-only.
 
+  [acceptance fold (post-PE3) 2026-08-10, F-1 — the "NO machine
+  contact" sentence above DATED: true at its [GT6-r1] writing,
+  stale at HEAD in the conservative direction. Since r1 the arc
+  has verifier-leg machine contact on both named axes, verified
+  at the committed instruments themselves: gentow6_pe2_fresh.py
+  (md5 061639c3, @ 55fb9074) LEG A runs the first f1 = 2 /
+  eta != 1 frames (Q2, Phi' = x⁴ + 2x² + 4: e1 = 2, f1 = 2,
+  eta = res(x²/2) with eta² + eta + 1 = 0, K = F_4; corrected
+  lifts for c_0 = eta and c_0 = 1 + eta; 6.3'(b')'s certificate
+  display exact at both, divergence at THETA_0 = 37 on the
+  floor), and gentow6_pe3_fresh.py (md5 0ef76baa) runs the first
+  eta != 1 / f1 = 1 gauge-live frames (Q3, Phi' = x² − 6,
+  eta = 2: the tie leg plus the certificate row at the
+  (0, e2f2−1) corner, digit 81c², height 21 = THETA_0). The
+  sentence understates evidence; no conclusion rested on it.
+  GENTOW6-BOX-4 STAYS OPEN, its ask unchanged and still unrun:
+  a SEALED BATTERY-grade x-ful-digit certificate row — the
+  verifier legs above are hostile-arc instruments exercising the
+  6.3'(b') display, not rows of this note's sealed apparatus —
+  so 6.3' keeps its prose-only grading in the note's own terms.]
+
 **Record sentences (no universal quantifiers).** The battery's
 401 checks passed with 0 violations on the constructed rows named
 in S4; the tie held on each measured class row including the
@@ -802,6 +836,18 @@ sealed THEOREM GENTOW-6.3 text stays byte-governing at f1 = 1,
 where its proof was verified correct by PE1's re-derivation and
 fresh corner witness.
 
+[acceptance fold (post-PE3) 2026-08-10, F-1 — the "NO machine
+contact" sentence above DATED: true at [GT6-r1], stale at HEAD in
+the conservative direction. The arc's verifier legs have since
+exercised both axes — PE2's first f1 = 2 / eta != 1 frames, with
+6.3'(b')'s certificate display exact at two x-ful digit data
+(gentow6_pe2_fresh.py md5 061639c3), and PE3's first eta != 1
+gauge-live tie + certificate frames (gentow6_pe3_fresh.py md5
+0ef76baa); frame data in the dated S5 BOX-4 bracket. 6.3' keeps
+its prose-only grading in the note's own terms: GENTOW6-BOX-4's
+ask is a SEALED BATTERY-grade row, still unrun; the box stays
+OPEN.]
+
 ### S6.2 THE 𝒯-FREE CAP LEMMA (F-2, prove-first) — LEMMA
 ### GENTOW-6.4 + machine leg
 
@@ -889,6 +935,18 @@ therefore extends off 𝒯; its budget-box/fibration clause does not
 > e1e2·N − c_g. (c_g = p_{mu2*} is itself a computed value, stable
 > whenever any consulted block height exists: m >= 0 gives
 > c_g <= m + c_g < e1e2·N.)
+>
+> [ACCEPTANCE UPGRADE 2026-08-10 on (c)'s "(the latter at
+> GENTOW4's 0/2 attempt grade, conditional)": GENTOW4 IS ACCEPTED
+> 2/2 (passPE2 CLEAN @ 80280b66 + passPE3 CLEAN @ f0874ff9), and
+> its passPE3 verified COR GENTOW-4.C against this lemma's exact
+> consumption — the pin translation p_j^S = p_j − c_g held as an
+> EQUATION vs explicit f_S at the consulted hull abscissas of 11
+> members (interior j = 1 included), and c_g = p_{mu2*} was
+> re-derived at the right-endpoint vertex
+> (GENTOW4_passPE3_report.md @ f0874ff9, the
+> conditionality-upgrade surface). The conditional display stays
+> byte-untouched as arc history; this line dates its discharge.]
 >
 > *Proof.* (a) The division-algebra display above: each monic
 > division is Ô-linear and degree-filtration triangular with unit
