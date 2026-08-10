@@ -76,7 +76,9 @@ on stdin; nohup + fresh per-run pidfiles, launched sequentially):
 - RUN A (GENTOW5): DONE — raw output
   `verification/openmath/towerrat2_runA_gentow5_output.txt` (151,962
   bytes, 62,186 tokens); OUTCOME: CHALLENGE
-- RUN B (GENTOW3): PENDING
+- RUN B (GENTOW3): DONE — raw output
+  `verification/openmath/towerrat2_runB_gentow3_output.txt` (6,297
+  bytes, md5 32751d5d); OUTCOME: CHALLENGE
 - RUN C (GENTOW4): PENDING
 - RUN D (GENTOW6): PENDING
 - RUN E (discharge): PENDING
@@ -179,7 +181,76 @@ the S3(a) i ≥ 3 transport are OPEN pending repairs.
 
 ## S3. RUN B — GENTOW3: Codex findings + adjudication
 
-PENDING.
+**Codex outcome: CHALLENGE** (2 findings, both JUSTIFICATION GAP; 16
+CHECKED CLEAN lines covering the threshold floor, feed-forward and
+recarry, entry-driven overflows, the strict-inequality/leaf-width
+arithmetic, the r3 one-siding, certificate scoping, the one-sided
+count-law, the gauge annex, FR-GL scope, BOX-2 status, the tables,
+the event band, the PE1 anchors, digit attribution, the FR-M3/W
+measurements, and the dead sigma-leg). Raw output:
+`verification/openmath/towerrat2_runB_gentow3_output.txt`.
+Adjudication reads GENTOW3_PROOF at HEAD (203f7c04 body, commit
+b0e5c648's tree).
+
+**B-F1 (Codex: GAP).** Quote: "both reads shift by the SAME g-digits
+(linearity of both divisions in f), so the divergence at THETA_j
+persists" (clause (iv), deep perturbations). Codex: linearity gives
+(Sh-C)(f0+g) = (Sh-C)(f0) + (Sh-C)(g), not Sh(g) = C(g); the
+height-THETA_j digit can cancel unless the g-leg's THETA_j-digit
+vanishes or differs, which neither "in-budget", slots above THETA_j,
+nor disc != 0 supplies; FR-M3's g_W (honest j = 0 coordinate zero,
+shadow ShC_0 = 32 at exactly THETA_0 = 10) shows honest depth does
+not force identical shifts.
+**ADJUDICATION: REAL (gap as classified).** The sentence infers
+same-shift from linearity — linearity does not give it, and the
+note's own committed FR-M3 W row exhibits differing shifts. The
+conclusion nonetheless FOLLOWS from the note's own Steps 0-2 run on
+g with the box margin: in-budget (the GENTOW-1(a) box, slots of g at
+weight >= mu2 E2 + 1) cascades through the LINEAR, weight-monotone
+Step-1 ledger to Ghat_j(g) >= (mu2-j)E2 + 1 and through Step 2's
+k*delta branch pricing to (Sh-C)(g) supported at heights >=
+THETA_j + 1 — strictly above the floor — so the correctly-used
+linearity pins the THETA_j-digit of (Sh-C)(f) to the certificate
+digit. Boundary confirmation: g_W's slots sit at weight 9 < 10 =
+mu2 E2 + 1 (OUTSIDE the box) and its discrepancy lands at exactly
+THETA_0 — the measured row sits on the repaired hypothesis boundary.
+REPAIR LANDED: GENTOW3_PROOF S8.1 [GT3-r4] (dated supersession;
+same-shift inference withdrawn, persistence re-derived, pair
+construction re-read).
+
+**B-F2 (Codex: GAP).** Quote: "The shadow read at heights >= THETA_j
+is NOT a function of the honest data" (clause (iv) close). Codex:
+with the key fixed, the full honest composed tuple determines f, and
+the stage-shadow algorithm is deterministic in f — so the shadow IS
+a function of the full honest data; the proof's examples show only
+coarser non-determinations; literally read, the sentence is false.
+**ADJUDICATION: REAL (gap as classified).** The Phi2-adic
+development is unique, so identical full honest data forces
+identical f, hence identical shadow — the unscoped sentence
+overclaims. What the committed instances DO witness: the PE1 triple
+varies the shadow at fixed honest sigma (verdict-level honest
+output), and the S8.1 pair construction gives identical shadow data
+with different honest reads. REPAIR LANDED: GENTOW3_PROOF S8.2
+[GT3-r4] (dated supersession; the sentence scoped to the honest
+read's verdict-level OUTPUT, with the full-data determinism stated
+as the fence; no stronger truncation scope claimed).
+
+**RUN B verdict: CHALLENGE STANDS — acceptance ANNOTATED (not
+revoked), 2/2 findings adjudicated REAL at GAP severity, both
+repairs LANDED in this unit (GENTOW3_PROOF S8, pure append verified,
+prefix-48,738 md5 203f7c04 intact).** The floor (i)/(ii)/(iii)
+core, the certificate scoping, and the count-law were CHECKED CLEAN
+by the same run and stand untouched; the two GAPs were both
+(iv)-adjacent display sentences of the kind the five same-model
+passes read past.
+
+**[dated note, 2026-08-10] RUN A repairs LANDED:** GENTOW5_PROOF S11
+[GT5-r4] (commits 7c43bb24 + b0e5c648, pure appends verified) — A-F1
+direction corrected + closure withdrawn + S3(c) Step 2 re-derived
+one-directionally (isolated re-check gentow5_af1_direction_check.py
+GREEN 8/0); A-F2 fenced to the named open lemma [GENTOW5-W(i)];
+A-F3 re-scoped to the fold's shape (tie OPEN at i = 1); A-F4 m-range
+bracket; A-F5 (b)-display re-index.
 
 ## S4. RUN C — GENTOW4: Codex findings + adjudication
 

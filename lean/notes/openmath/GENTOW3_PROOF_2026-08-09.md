@@ -876,3 +876,102 @@ stderr line); no runner edited, no re-run this round.
 
 Grade after this record: **ACCEPTED 2/2**. Dated appends and
 dated brackets only from here.
+
+## S8. [GT3-r4] CODEX TOWERRAT2 RUN B REPAIRS (2026-08-10 — dated
+## append; acceptance 2/2 stands ANNOTATED, per the batch charter)
+
+Provenance: decorrelated-model adversarial RUN B (record
+CODEX_TOWERRAT2_2026-08-10.md S3; raw log
+verification/openmath/towerrat2_runB_gentow3_output.txt, md5
+32751d5d, 6,297 B; outcome CHALLENGE — 2 JUSTIFICATION GAPs, 16
+CHECKED-CLEAN lines), adjudicated 2/2 REAL at their stated severity.
+Both corrections are RE-DERIVED from this note's own Steps 0-2 and
+the committed FR-M3 artifacts, not transcribed from the verifier;
+the note is frozen, so both land as dated corrections BY SUPERSESSION
+(the superseded sentences stay byte-intact above and read as
+corrected here). Ledger with prefix md5s at the end.
+
+### S8.1 [B-F1, GAP] Clause (iv)'s deep-perturbation persistence:
+### the same-shift inference WITHDRAWN, persistence RE-DERIVED from
+### the note's own margin ledger
+
+**Superseded inference (quoted).** "both reads shift by the SAME
+g-digits (linearity of both divisions in f), so the divergence at
+THETA_j persists" — WITHDRAWN as an inference: linearity gives
+(Sh - C)(f0 + g) = (Sh - C)(f0) + (Sh - C)(g), not Sh(g) = C(g),
+and honest depth of g does not make the two shifts identical (the
+committed FR-M3 W member: honest C_0 = 0 while ShC_0 = 32 with first
+discrepancy exactly THETA_0 = 10 — gentow3_pe3_fresh.py @ bde31247,
+output @ 3ce4128a).
+
+**The corrected derivation (this note's Steps 0-2, run on g).** Read
+"in-budget" at the GENTOW-1(a) box this corpus defines: every
+composed slot of g clears weight mu2*E2 + 1. Then:
+(1) the level-1 development of g carries the same floor: expanding
+    Phi2 = Phi'^{e2f2} - lifts is Step 0's Phi'-carry display read
+    at its PRESERVED rung (the Phi2-part at E2 exactly; this
+    two-grid window has no interior rung, so no descent loss —
+    contrast GENTOW5 S11.1, the sibling repair);
+(2) Step 1's ledger is LINEAR in F and weight-monotone (its own
+    sentences): from g-terms at wt >= mu2*E2 + 1, every term of
+    Ghat_j(g) sits at wt >= (mu2 - j)E2 + 1;
+(3) Step 2's branch pricing adds k*delta with k >= 1 on every
+    discrepancy branch (and the recarry legs price identically with
+    the same +1 riding along): the difference Sh(g) - C(g) at
+    coordinate j is supported at wt >= (mu2 - j)E2 + 1 + delta =
+    THETA_j + 1; GENHN-2''s exact height conversion turns this into:
+    every disagreeing height of g's two reads is >= THETA_j + 1,
+    STRICTLY above the floor.
+Linearity, correctly used, then gives: the height-THETA_j digit of
+(Sh - C)(f0 + g) equals the key power's assembled certificate digit
+— nonzero at the certificate-touched coordinates — so the divergence
+at THETA_j PERSISTS for every in-budget g; the trailing pair
+construction reads accordingly (vary g in-budget with slots above
+the consulted shadow heights: shadow reads coincide, honest leaves
+differ). Boundary confirmation from the committed instruments: the
+FR-M3 W member's g_W = 2x*Phi2^2 + 8*Phi2 has slot weights 9, 9 <
+10 = mu2*E2 + 1 — OUTSIDE the box — and its discrepancy lands at
+exactly THETA_0 = 10; the corrected law puts in-budget
+g-discrepancies at >= 11 at j = 0, so the measured row sits exactly
+on the repaired hypothesis boundary, refuting nothing. The
+parenthetical hypothesis "(slots at heights > THETA_j)" is NOT
+consumed by the corrected derivation; the box hypothesis is the
+operative one.
+
+### S8.2 [B-F2, GAP] The (iv) close "NOT a function of the honest
+### data": SCOPED to what the committed instances witness
+
+**Superseded sentence (quoted).** "The shadow read at heights >=
+THETA_j is NOT a function of the honest data." Literally read, this
+is FALSE: the full honest composed data — the key together with the
+digit strings C_j of f = Phi2^{mu2} + Sum_j C_j Phi2^j (the Phi2-adic
+development is unique) — determine f, and the stage-shadow division
+is a deterministic function of f; so the shadow IS a function of the
+FULL honest data.
+
+**Corrected sentence (the scope the note's instances prove).** The
+shadow read's content at heights >= THETA_j is not a function of the
+honest read's OUTPUT — the verdict-level data (pins, deciding
+residues, sigma, labels) that the sub-THETA faithful band (ii)
+determines: the committed PE1 triple varies the shadow read at fixed
+honest sigma, and conversely the S8.1 pair construction gives
+members with identical shadow data and different honest reads (the
+two directions the (iv) proof's own examples supply). No committed
+pair witnesses a stronger truncation scope (e.g. fixed full
+sub-THETA digit bands with varying shadow), and none is claimed.
+
+### S8.3 [GT3-r4] BYTE-FREEZE + APPEND LEDGER
+
+Pre-append state: post-acceptance body md5 203f7c04
+(203f7c04fa8499853509e33524bab77f; 878 lines, 48,738 bytes); this
+section is a PURE APPEND on it (prefix-48,738 md5 re-verified at
+commit, recorded in the commit message). Sealed machine artifacts
+BYTE-FROZEN and untouched this round (the eleven pinned md5s of
+S7.5/S7.6/S7.7 stand; the S8.1 boundary confirmation re-reads the
+committed gentow3_pe3_fresh artifacts, no re-run). Statement
+displays above stay byte-intact; both corrections are dated
+supersessions of two (iv)-adjacent sentences. Grade: ACCEPTED 2/2
+stands, ANNOTATED by RUN B; S8.1/S8.2 discharge the adjudication's
+repair charges in full — the floor/band/x-free core, the
+certificate scoping, and the count-law were CHECKED CLEAN by the
+same run (16 lines) and are untouched.

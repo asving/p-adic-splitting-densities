@@ -1,0 +1,65 @@
+1. **Verbatim quote:** “Deep perturbation \(f = \Phi2^{\mu2} + g\) (\(g\) in-budget with slots at heights \(> \Theta_j\), disc \(\ne 0\)): both reads shift by the SAME \(g\)-digits (linearity of both divisions in \(f\)), so the divergence at \(\Theta_j\) persists…”
+
+   **Classification:** JUSTIFICATION GAP.
+
+   **Failure:** Linearity gives
+   \[
+   \operatorname{Sh}(f_0+g)-C(f_0+g)
+   =(\operatorname{Sh}(f_0)-C(f_0))+(\operatorname{Sh}(g)-C(g)),
+   \]
+   not \(\operatorname{Sh}(g)=C(g)\). Thus the height-\(\Theta_j\) digit can cancel unless the note proves
+   \[
+   (\operatorname{Sh}(g)-C(g))_{\Theta_j}=0
+   \quad\text{or at least}\quad
+   \ne-(\operatorname{Sh}(f_0)-C(f_0))_{\Theta_j}.
+   \]
+   Neither “in-budget,” honest slots above \(\Theta_j\), nor \(\operatorname{disc}(f)\ne0\) supplies that conclusion. The note’s own FR-M3 construction exposes the missing implication: for
+   \(g_W=2x\Phi2^2+8\Phi2\), the honest \(j=0\) coefficient is zero, hence has pin \(+\infty>\Theta_0\), while the shadow has \(ShC_0=32\) and first discrepancy exactly \(\Theta_0=10\). Therefore honest depth at coordinate \(j\) does not imply that the perturbation shifts the two reads identically there. If “all coordinates are deep” is intended to prevent this, a corresponding filtered-linearity lemma is absent.
+
+2. **Verbatim quote:** “The shadow read at heights \(\ge \Theta_j\) is NOT a function of the honest data.”
+
+   **Classification:** JUSTIFICATION GAP.
+
+   **Failure:** Under the note’s own Setting, the full honest data are the composed coefficients
+   \[
+   f=\Phi2^{\mu2}+\sum_{j<\mu2}C_j\Phi2^j.
+   \]
+   With the key fixed, this tuple uniquely determines \(f\), and the stage-shadow algorithm then deterministically determines every \(ShC_j\). Thus the shadow is necessarily a function of the full honest composed data. The proof supplies only the reverse-direction example—“identical shadow data and different honest reads”—and examples with fixed honest \(\sigma\), which show at most that the shadow is not determined by a coarse honest label or truncated pricing datum. They do not prove the displayed claim about “the honest data.” The claim needs an explicit truncation/coarsening scope; literally read, it is false.
+
+## Checked-clean charges
+
+- **CHECKED CLEAN — threshold floor:** Step 1 prices every term of \(\widehat G_j\), including terms produced using entry digits, at \(B_j=(\mu_2-j)E_2\); replacing one \(x^{D'}\)-block by a \(\Phi'\)-branch changes its price by \(u_2-e_2D'h=\delta\), giving \(B_j+\delta=\Theta_j\).
+
+- **CHECKED CLEAN — feed-forward and recarry:** Multiplication by a key coefficient spends one \(E_2\)-step while moving the coordinate index, and at least one \(\Phi'\)-extraction contributes \(\delta\); hence receiving coordinate \(j\) remains priced at least \((\mu_2-j)E_2+\delta\).
+
+- **CHECKED CLEAN — entry-driven overflows:** The Step-1 bound applies to all \(\widehat G_j\)-terms, not merely the key power’s self-shadow. Step 2 therefore proves the same lower floor for member-specific entry overflows, though not their non-cancellation.
+
+- **CHECKED CLEAN — strict inequalities:** At \(\delta=1\), the node floor \(B_j+1\) equals \(\Theta_j\) and is outside the protected band \(m<\Theta_j\). For \(\delta\ge2\), the protected leaf heights \(B_j+1,\ldots,\Theta_j-1\) number exactly \(\delta-1\).
+
+- **CHECKED CLEAN — r3 one-siding:** Live S0/S2/S4 language asserts certificate \(\Rightarrow\) key-power attainment, while cancellation yields only key-power slack; it permits other members to fail at the same threshold. No live member-level only-if remains.
+
+- **CHECKED CLEAN — certificate scoping:** “Touched coordinate(s)” is explicitly defined by non-cancellation of the assembled height-\(\Theta_j\) key-power digit at every live consumer.
+
+- **CHECKED CLEAN — count-law:** It is now one-sided: consulting a height at least \(\Theta_j\) is necessary but not sufficient for corruption. The \(\delta-1\) band arithmetic and the cited faithful/unfaithful rows agree with that formulation.
+
+- **CHECKED CLEAN — gauge annex:** The corrected coefficient \(\widehat c_t=\operatorname{lift}(c_t\eta^{W(t)})\) is consistently made operative. The \(i(m_t)=0\) shortcut is restricted to \(f_1=1\); no live \(f_1\ge2\) claim consumes it.
+
+- **CHECKED CLEAN — FR-GL scope:** FR-GL tests the \(\eta\ne1\) seam only at \(f_1=1\), exactly as disclosed; it is not offered as \(f_1\ge2\) classification coverage.
+
+- **CHECKED CLEAN — BOX-2 status:** The proof-uniformity claim is separated from the admitted two-axis machine-coverage gap. No proof step consumes BOX-2 as evidence.
+
+- **CHECKED CLEAN — tables:** The A5/A7/B/C/D values, entry tops, thresholds, faithful A7 band, and certificate-coordinate dashes are consistent with the stated criterion.
+
+- **CHECKED CLEAN — event band:** Its top height \(B_j=(\mu_2-j)E_2\) satisfies \(B_j=\Theta_j-\delta<\Theta_j\), so the entire closed band \(m\le B_j\), including its top, is protected.
+
+- **CHECKED CLEAN — PE1 anchors:** For A5, the entry top is \(20\), \(\Theta_0=21\), and the displayed \(16\Phi'\) shadow digit occurs at 21; all three PE1 rows therefore first diverge at the first unprotected height.
+
+- **CHECKED CLEAN — digit attribution:** S7.2 correctly distinguishes sealed-machine pin checks from the later hand and replication checks of the displayed polynomial values.
+
+- **CHECKED CLEAN — FR-M3/W measurements:** Self-shadow pins \([12,7,4]\) versus \([10,7,4]\) exhibit allowed slack at \(j=0\), while the W member’s failure at 10 is allowed member-specific attainment at a key-power-cancelled coordinate.
+
+- **CHECKED CLEAN — dead \(\sigma\)-leg:** S7.4 plainly discloses that the runner does not compare \(\sigma\) in that branch; no proof relies on such an executed comparison.
+
+The central floor, faithful-band, certificate one-siding, event-band corollary, and leaf-width arithmetic survive. However, theorem clause (iv) still claims persistence under deep perturbations using an invalid linearity inference, and it makes an unscoped non-functionality assertion that is false for the full composed read. Both are GAP-level defects even though they do not overturn clauses (i)–(iii).
+
+OUTCOME: CHALLENGE
