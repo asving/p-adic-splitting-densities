@@ -1285,3 +1285,70 @@ PE4, recorded above). Next: PE5 (hostile pass on the r3-repaired
 note; candidate fresh surfaces — a letter-live frame with z₂ ≠ 1
 where ϑ's γ₂-component acts, the B″ proof itself, and the S5.2
 adjudication scoping).
+
+### Dated corrections (2026-08-10, post-PE5)
+
+**PE5 outcome (recorded here; S11's grade line above predates PE5
+and stands as dated).** PE5 came back CLEAN (0C/0G/2m; report
+`GENTOW2_passPE5_report.md` @ 75923bc): the acceptance counter
+moved **0/2 -> 1/2**. LEMMA GENTOW2-B'' survived independent
+re-derivation AND its first gamma2-live machine contact (fresh
+route GREEN 91/0 first-run-under-seal, seal a4b4495, output
+committed as-is at 0e816e8: tower GB with z2 = eta2 in F4\F2,
+direct cocycle measurement theta(0) = z2^2, opposite-direction
+teeth GA1/GA2, top-slot pin GA4, first e3 = 2 x cocycle-live frame
+GA3). The two MINORs are cured below by dated append; the body
+above is byte-frozen (zero deletions).
+
+**m1 CURE — the three B'-consumption lists unified.** The [r3]
+text carries three mutually inconsistent consumption lists for the
+restated LEMMA GENTOW2-B, quoted:
+
+1. Honesty box, (B-2) paragraph (S5): "the restated lemma
+   consumes only B'(3)-(5) + B'', all derived."
+2. S5.1 [r3] bracket at clause (4): "the restated lemma no longer
+   consumes it — it consumes (3)+(5) here and B'' (S5.2)."
+3. S11 item (ii): "the proof's false step now consumes
+   B'(3)+(4) + B'', all DERIVED."
+
+A fourth site, the S5 proof's corrected step, cites "By LEMMA
+GENTOW2-B'(3)+(4) (S5.1, ...): R_{3,beta_t}(khat_t) =
+u(beta_t)*digit(khat_t)" — a step that uses (3) alone. UNIFIED
+READING (per PE5's adjudication, [m1] + repair guidance (i); this
+reading GOVERNS over the four quoted forms): **the true
+consumption of the S5 proof's corrected step is B'(3) + B''.**
+Clause (5) is the summation display itself — re-derived inside the
+S5 proof from Cor 4.7 additivity, a restatement rather than a
+dependency; clause (4) (the per-grade u = 1 equivalence, the form
+r3 stopped consuming at the refuted slots) is consumed at exactly
+one surviving site, the restated lemma's final per-height-iff
+sentence ("The unadjusted PER-HEIGHT prescription (c_t = a_t)
+realizes psi3 itself iff u(beta_t) = 1 at each used slot").
+Clauses (3), (4), (5) are each DERIVED in S5.1 — the inconsistency
+was dependency-inventory drift, with no mathematical content at
+stake; the failure mode PE5 named (a future round deleting or
+restating B'(4) as unconsumed per S5.1's list while the iff
+sentence still cites it) is closed by this unification.
+
+**m2 CURE — the two descriptive FGMN cites inventoried.** S6.1's
+table body above is byte-frozen; rows 23-24 are ADDED here by
+dated append, with the PE5 pass's own verification cited:
+
+| # | statement | use sites (status) | verification |
+|---|---|---|---|
+| 23 | Thm 4.2 normal form / eq (16): H_mu(g) = phi_r(alpha)*R_{r,alpha}(g)(y_r), phi_r(alpha) = x_r^{s(alpha)}*p_r^{u(alpha)} | S5.1 re-scoped residue paragraph ("by Thm 4.2's normal form H_mu(g) = x3^s p3^u R_{3,beta}(g)(y3)") — DESCRIPTIVE ONLY: says what w IS; no lemma conclusion consumes it (w's unit-hood comes from Cor 4.4(1) in B''s proof) | PE5 pass's own content check, report finding [m2](a): layout L1028-1030 + the eq (16) display, "content-accurate" |
+| 24 | Thm 6.6 (primes split across DISTINCT (lambda, L) pairs; with Lemma 5.3(2) = row 4 this is the "#primes = #distinct residual factors" verdict surface) | honesty-box sentence "Verdict-level machine data (prime-split patterns) is w-blind and constrains theta only" (implicit ride); explicit prose at S8's T2 disclosure — RECORD-INTERPRETATION, not a proof step | PDF-verified as a citation surface in PE4's [F1] walk (PE4 report: "FGMN additivity + eq (14) + Lemma 5.3(2)/Thm 6.6 (all PDF-verified citation surfaces)"); re-walked at PE5 A3 |
+
+Status disclosure: rows 23-24 enter at DESCRIPTIVE /
+record-interpretation status, not consumed status — the S5 / S5.1
+/ S5.2 proofs do not rest on either; a future round elevating
+either cite to consumed status owes the S6.1 two-leg method
+(layout pin + fresh visual read) at that point, per the
+faithfulness standard rows 20-22 met.
+
+BYTE-FREEZE: pre-append body md5 399017ac
+(399017ac32aac64e14c2bff5083c2c4d) = commit d798529, 78,190 bytes,
+re-verified by prefix after this append; edit shape append-only;
+sealed artifacts and statement displays byte-untouched (the m1
+unification is a governing dated reading, zero edits to the three
+quoted sites).
