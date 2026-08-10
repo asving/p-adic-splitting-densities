@@ -709,7 +709,19 @@ THE w_i = 1 CASE IS OPEN: w_i is the uncomputed cross-frame unit
 ("not computed anywhere in the corpus" — GENTOW2 S5), and
 verdict-level machine data is w-blind, so no committed run
 discriminates it; R_{nu_i}(Phi_{i+1}) = psi_{i+1} on the nose is
-NOT claimed. sigma, values, degrees, irreducibility, and the
+NOT claimed. [DATED NOTE (2026-08-10, post-GENTOW2-PE6): GENTOW2's
+PE6 pass MEASURED w for the first time (fresh route GREEN 68/0,
+seal ade1727; report GENTOW2_passPE6_report.md @ deba21b, GENTOW2
+ACCEPTED 2/2 there): w-avatar = z_1 (LD1), z_1^2 (LD3), z_2^2
+(GA1), z_2 (GA3) — != 1 at each of the 6 measured primes across
+the 4 frames, and u_3-DEPENDENT within each tower. On the measured
+record the open w_i = 1 case is NOT the generic one: the
+psi^{(w)} form of this clause is the operative one. The quoted
+"not computed anywhere in the corpus" is dated by GENTOW2's
+post-PE6 acceptance record — measured at 4 frames; the closed-form
+letter derivation of w stays open, and the measured record does
+not decide w_i at unmeasured frames or levels i > 2.] sigma,
+values, degrees, irreducibility, and the
 REPO-side residue classes are w-blind — checked per consumer in
 the [GT5-r2] walk after (e).
 (b) [ONE-SIDEDNESS AT EVERY LEVEL — the FGMN cite, arbitrary chain
