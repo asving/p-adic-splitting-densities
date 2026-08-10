@@ -1045,9 +1045,26 @@ PARI claims about an unstated p-adic lift.
 With \(w=\omega\), the FGMN residual is
 \[
 \psi^{(w)}(y)
- =y^2+\omega y+\omega.
+ =y^2+\omega y+1.
 \]
 It is irreducible, as required by gauge-invariance.
+
+[T1 r1 2026-08-10 REPAIR (passPE1 F-2 = tech gap G-1): the composed
+text displayed \(\psi^{(w)}=y^2+\omega y+\omega\) here — a copy-slip
+(the wrong value coincides with the LD1 residual in M2's LP/LD frame,
+where that value is correct). Corrected above per the note's OWN
+(C3-three-reads) definition: \(\psi^{(w)}=w^2\psi(y/w)\) at
+\(\psi=y^2+y+\omega\), \(w=\omega\) gives slot coefficients
+\((c_1w,\,c_0w^2)=(\omega,\,\omega^3)=(\omega,1)\), i.e.
+\(y^2+\omega y+1\). Machine-adjudicated: sealed row P-J2 preregistered
+the composed value AS WRITTEN and went RED computing
+\(y^2+\omega y+1\); the invariance clause is separately scored green
+(P-J2b — both candidates irreducible over \(\mathbf F_4\)).
+Display-only per the passPE1 adjudication: the \(\mu=3\) leg computes
+the same operation correctly (\((y+\omega)^3\)), and no tooth,
+absorption row, or other display consumes the wrong value. The sealed
+instrument + output artifacts stay byte-frozen (the P-J2 RED remains
+the honest record of the slip).]
 
 #### Frame F4-JOINT: \(\mu=3\) three-digit test
 
@@ -1359,6 +1376,27 @@ even if all positive tests pass.
 (sealed @ 921a8547) run once; artifacts
 `verification/openmath/t1_gauge_checks_output.txt`. **85 checks,
 1 violation, exit 1 — VERDICT: RED, kept with diagnosis.**
+
+[T1 r1 2026-08-10 REPAIR (passPE1 F-3): honest scored count. Two of
+the 85 rows are literal-vs-literal (instrument lines 287–288, the
+SEC-B "formal sigma corr"/"formal sigma naive" rows: `[(2,4)] ==
+[(2,2*2)]` and `sorted([(2,2),(2,2)]) == [(2,2*1)]*2`) — green by
+construction, so the computed-vs-preregistered scored surface is
+**83 rows**, not 85. The substantive content those two rows notate
+(rc irreducible / rn splits) is independently scored two rows above
+them in the same SEC-B block. The sealed instrument and output stay
+byte-frozen; this bracket is the count disclosure.]
+
+[T1 r1 2026-08-10 REPAIR (passPE1 F-5): T-4 as coded is weaker than
+the composed tooth. Composed tooth 4 (M3) requires the canonical
+three-digit coefficient vector to cease to equal (ω,ω²,1); the sealed
+instrument scores only the s = 2 B-unit signature (`buw == 1 != W`)
+and leaves `canw` (instrument line 416) computed but never scored —
+dead code. The tooth DID fire on the B-unit signature, but the
+vector-level clause is unexercised: an implementation bug confined to
+the other two slots' canonical coefficients would not be caught by
+T-4 as coded. Disclosed here against the machine table; the sealed
+artifacts stay byte-frozen.]
 
 **The one red row is the preregistered-expected one.** P-J2: the
 composed note's M2 predicts ψ^{(w)} = y² + ωy + ω at the F4-JOINT
