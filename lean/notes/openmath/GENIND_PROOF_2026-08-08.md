@@ -3233,3 +3233,62 @@ c′ is degree-induction data). MINOR-2: both record sentences
 rewritten enumeratively at their sites (R1.4: the five consulted
 displays named; close: the four consulted pins + the five annex
 commits named). No further annex sentence was touched in r1.2/r1.3.
+
+**Machine record (2026-08-10, commit 2 — FROM the committed artifacts
+`genind_annexr1_output.txt` / `genind_annexr1_results.json`; single
+run, no check edited after any output was seen).**
+* Pins: genh4_checks.py ee8024b7 (the sealed GENH4 battery walker,
+  imported read-only; its own per-row law checks — GH-FRESH
+  volume/law ties, GH-UND, GH-BRACKET — ran live at all 12 fresh rows
+  and flagged nothing at any of the 12); genh4_checks_results.json
+  cbcff562; genind_checks.py e7ca150b. 144 preregistered checks
+  (PIN 4 + P1 11 + P2 9 + P3 7 + P4 112 + P5 1): 143 GREEN, 1
+  flagged (adjudicated below); both teeth FIRED.
+* **P1 GREEN 11/0** — the window bound UND ≤ entry·M★·|K|^{−(M★−1)}
+  at all 11 scored fresh rows (the 12th, F q=3 N=6, is
+  floor-adjacent M★ = 1: disclosed, not scored).
+* **P2 GREEN 9/0** — the species bound at (K,B,c) = (1,1,2) at every
+  swept (q,N); margins 10²–10⁴.
+* **P3 6-of-7 + the headline numbers** — genre E's measured
+  window-deficit slope is EXACTLY 2.00 at every consecutive pair:
+  q=2 h=1, UND_rel 2^{−7} → 2^{−9} → 2^{−11} → 2^{−13} at
+  N = 4→5→6→7; q=2 h=3 at 8→9; q=3 h=1 ratio 3^{−2} at 4→5 — the
+  lemma's slope-≥2 claim measured on the nose, slope < 1 excluded
+  with a full q^{±1} margin at 5 of the 7 pairs and q^{±1/2} at the
+  flagged one. **The 1 flagged line (F q=2 k=1, N 7→8: ratio 0.5 =
+  single-step slope 1.00 > the preregistered cap q^{−3/2}) is an
+  INSTRUMENT CAP LITERAL, adjudicated NOT a counter-instance:** the
+  odd→even step is exactly where GENH4.B's committed TWO-term even-N
+  display lands (the CAP(F) boundary band (q−1)q^{N+2k−1} — the same
+  granularity the box's (CS-EXACT) [r2, PE2-m1] correction names).
+  The run's own next step measures slope 3.00 (8→9: ratio 0.125);
+  the parity-PAIRED run data give UND_rel 2^{−15} → 2^{−19} over
+  N = 7→9, i.e. slope 2.00 per step; and the committed und_F law
+  closes it by hand (decorrelated leg): the main term
+  q^{2⌊N/2⌋+2k−1} steps by q²·q⁰ on alternating parities and the
+  even-N extra term is q^{−3N+12k+3+N mod 2} in relative mass —
+  per-stratum paired slope 3.00. The preregistered SINGLE-step cap
+  was miscalibrated for genre F's parity band; no BOUND check
+  (P1/P2) fails at any of the 12 rows. The instrument's own strict
+  gate therefore printed RED (1 violation, script exit 1); artifacts
+  kept byte-frozen as run, per the run-1-RED precedent.
+* **P4 GREEN 112/0** — the CS5-V1E2 entry identity (sympy) + the
+  composed n = 5 drain bound on the grid q ∈ {2,3,7}, N ≤ 40.
+* **P5 GREEN 1/0** — C1(iii)'s D + M = N exponent composition
+  (sympy).
+* **Both teeth FIRED**: T-SLOPE — the pass report's failure scenario
+  made flesh, a fabricated slope-1/2 n = 4 E-drain (262,144) violates
+  the P1 bound (65,536) at (2,7,1); T-WIN — the mis-derived window
+  2N−2−2h is refuted by the committed deep row (Zp,2,11,h=5):
+  UND 32,768 vs wrong-window bound 1,280.
+
+**r1 grade line.** GAP-1's PROVE-FIRST charge LANDED: the CS-drain
+rate is DERIVED (GENIND-C2, conditional on (CS-1) only — within the
+box the closure sentence's theorem already assumes, de facto at
+n = 4), not re-scoped; the n = 4 machine instances measure the
+derived slope-2 mechanism exactly, and the failure scenario (an
+n = 4 CS drain at window-deficit slope < 1) is excluded by P1 at 11
+scored rows, by the measured slopes at 7 ratio pairs, and by the
+fired T-SLOPE tooth. MINOR-1 and MINOR-2 executed inline. The annex
+stack remains 0/2 — this r1 answers the ANNEX R pass and queues for
+its own scoped hostile pass behind the chain notes.

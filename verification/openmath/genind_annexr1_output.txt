@@ -1,0 +1,59 @@
+== C2-PIN
+  ee8024b7 genh4_checks.py
+  cbcff562 genh4_checks_results.json
+  e7ca150b genind_checks.py
+== fresh rows (pinned GENH4 walker, read-only)
+  [consE Zp q=2 N=4 h=1] 256 members, 8 keys (0.0s)
+  row E q=2 N=4 h=1: entry 256 UND 32 M*=2
+  [consE Zp q=2 N=5 h=1] 4096 members, 22 keys (0.1s)
+  row E q=2 N=5 h=1: entry 4096 UND 128 M*=4
+  [consE Zp q=2 N=6 h=1] 65536 members, 52 keys (0.9s)
+  row E q=2 N=6 h=1: entry 65536 UND 512 M*=6
+  [consE Zp q=2 N=7 h=1] 1048576 members, 114 keys (14.6s)
+  row E q=2 N=7 h=1: entry 1048576 UND 2048 M*=8
+  [consE Zp q=2 N=8 h=3] 16384 members, 8 keys (0.2s)
+  row E q=2 N=8 h=3: entry 16384 UND 2048 M*=2
+  [consE Zp q=2 N=9 h=3] 262144 members, 22 keys (4.1s)
+  row E q=2 N=9 h=3: entry 262144 UND 8192 M*=4
+  [consE Zp q=3 N=4 h=1] 13122 members, 9 keys (0.2s)
+  row E q=3 N=4 h=1: entry 13122 UND 486 M*=2
+  [consE Zp q=3 N=5 h=1] 1062882 members, 25 keys (14.4s)
+  row E q=3 N=5 h=1: entry 1062882 UND 4374 M*=4
+  [consF Zp q=2 N=7 k=1] 16384 members, 9 keys (0.5s)
+  row F q=2 N=7 k=1: entry 16384 UND 512 M*=2
+  [consF Zp q=2 N=8 k=1] 262144 members, 10 keys (7.7s)
+  row F q=2 N=8 k=1: entry 262144 UND 4096 M*=3
+  [consF Zp q=2 N=9 k=1] 4194304 members, 25 keys (125.6s)
+  row F q=2 N=9 k=1: entry 4194304 UND 8192 M*=4
+  [consF Zp q=3 N=6 k=1] 177147 members, 2 keys (7.4s)
+  row F q=3 N=6 k=1: entry 177147 UND 19683 M*=1
+== C2-P1 window bound
+  P1 F q=3 N=6: FLOOR-ADJACENT (M*<=1), not scored
+== C2-P2 species bound per (q,N)
+  P2 q=2 N=4: swept UND_rel 7.812e-03 vs N*q^-(N-2) 1.000e+00
+  P2 q=2 N=5: swept UND_rel 1.953e-03 vs N*q^-(N-2) 6.250e-01
+  P2 q=2 N=6: swept UND_rel 4.883e-04 vs N*q^-(N-2) 3.750e-01
+  P2 q=2 N=7: swept UND_rel 1.526e-04 vs N*q^-(N-2) 2.188e-01
+  P2 q=2 N=8: swept UND_rel 2.289e-05 vs N*q^-(N-2) 1.250e-01
+  P2 q=2 N=9: swept UND_rel 3.815e-06 vs N*q^-(N-2) 7.031e-02
+  P2 q=3 N=4: swept UND_rel 9.145e-04 vs N*q^-(N-2) 4.444e-01
+  P2 q=3 N=5: swept UND_rel 1.016e-04 vs N*q^-(N-2) 1.852e-01
+  P2 q=3 N=6: swept UND_rel 5.645e-06 vs N*q^-(N-2) 7.407e-02
+== C2-P3 slope (the scenario-killer)
+  P3 E q=2 h=1 N 4->5: ratio 0.25 (measured slope 2.00; cap q^-1.5=0.3536)
+  P3 E q=2 h=1 N 5->6: ratio 0.25 (measured slope 2.00; cap q^-1.5=0.3536)
+  P3 E q=2 h=1 N 6->7: ratio 0.25 (measured slope 2.00; cap q^-1.5=0.3536)
+  P3 E q=2 h=3 N 8->9: ratio 0.25 (measured slope 2.00; cap q^-1.5=0.3536)
+  P3 E q=3 h=1 N 4->5: ratio 0.1111 (measured slope 2.00; cap q^-1.5=0.1925)
+  P3 F q=2 k=1 N 7->8: ratio 0.5 (measured slope 1.00; cap q^-1.5=0.3536)
+  VIOLATION [C2-P3] F,2,7->8: ratio 0.5 > 0.3536 (slope <= 1.5 NOT excluded)
+  P3 F q=2 k=1 N 8->9: ratio 0.125 (measured slope 3.00; cap q^-1.5=0.3536)
+== C2-P4 n=5 geography (CS5-V1E2), sympy + grid
+== C2-P5 C1(iii) composition identity
+== TEETH
+  T-SLOPE FIRED: fake slope-1/2 drain 262144 > P1 bound 65536.0
+  T-WIN FIRED: committed (2,11,5) UND 32768 > wrong-window bound 1280.0 (M*wrong=10)
+== VERDICT
+checks: C2-PIN 4/0 C2-P1 11/0 C2-P2 9/0 C2-P3 7/1 C2-P4 112/0 C2-P5 1/0
+teeth:  T-SLOPE 1 T-WIN 1
+RED: 1 violations, 0 dead teeth (176.1s)
