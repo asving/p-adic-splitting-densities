@@ -61,26 +61,29 @@ any run; no pre-seal smoke; run-1 RED kept + disclosed if any):
  P-R3E ShC_1 = {(0,0): 648} exact (chi = 8*81: v = 4), graded-16
    NONZERO, pin 16 = THETA_1; ShC_0 = {(2,1): 14580, (1,2): 3888,
    (3,0): 34992} exact, pin 31, graded-31 NONZERO at all three.
- P-C34 P34 ShC_1 slot (1,1) = 11664 = (C(4,2)-C(4,3))*8*729 exact,
-   graded height-31 = THETA_1 NONZERO, pin(ShC_1) = 31 (rest of the
-   coordinate recorded, not want-checked; predicted (0,0): 104976).
- P-C35 P35 ShC_2 slot (1,1) ABSENT (C(5,2) = C(5,3): the INTEGRAL
-   m = 5 degeneration), graded height-31 = THETA_2 digit ZERO at
-   every populated slot, pin(ShC_2) = 32 (the k=4 e=2 branch at
-   (0,0), predicted value 524880).
- P-C36 P36 ShC_3 slot (1,1) = -29160 = (C(6,2)-C(6,3))*8*729 exact
-   (v = 6), graded height-31 = THETA_3 NONZERO, pin(ShC_3) = 31 —
-   attainment at j*-1 = 3 at p = 3 WHILE the top coordinate
-   cancels (3 | C(6,2) = 15): ShC_4 = {(0,1): 4860} exact with
-   graded height-21 = THETA_4 digit ZERO (v = 5 > 4), pin(ShC_4)
-   = 25; ShC_5 = {} (6.5(c)).
+ P-C34 [corrected of record, 6.7C'] P34 ShC_1 slot (1,1) = 46656 =
+   2*C(4,3)*8*729 exact, graded height-31 = THETA_1 NONZERO,
+   pin(ShC_1) = 31 (rest of the coordinate recorded; run-1
+   measured (0,0): 104976 = C(4,4)*18^4, matching the k=4 e=2
+   branch prediction).
+ P-C35 [corrected] P35 ShC_2 slot (1,1) = 116640 = 2*C(5,3)*8*729
+   exact (v = 6, 20 a 3-unit), graded height-31 = THETA_2 NONZERO,
+   pin(ShC_2) = 31 (the (0,0) slot recorded; run-1 measured
+   524880 = C(5,4)*18^4 as predicted).
+ P-C36 [corrected] P36 ShC_3 slot (1,1) = 233280 = 2*C(6,3)*8*729
+   exact (v = 6, 40 a 3-unit), graded height-31 = THETA_3 NONZERO,
+   pin(ShC_3) = 31 — attainment at j*-1 = 3 at p = 3 WHILE the top
+   coordinate cancels (3 | C(6,2) = 15): ShC_4 = {(0,1): 4860}
+   exact with graded height-21 = THETA_4 digit ZERO (v = 5 > 4),
+   pin(ShC_4) = 25; ShC_5 = {} (6.5(c)).
  P-CBAT committed 6.5-battery vectors reproduced bit-exactly:
    X3 [{(1,1): 524288} pin 91, {(0,1): 12288} pin 61, {}];
    A53 [{(1,1): 128} pin 35, {(0,1): 48} pin 21, {}];
    P33 [{(1,1): 11664} pin 31, {(0,1): 972} pin 25, {}] — and the
-   6.7C closed form (C(m,2)-C(m,3))*chat^3*p^{3a0} EQUALS the
-   measured j*-1 slot at X3 (2*2^18 = 524288), A53 (2*2^6 = 128),
-   P33/P34 (2*8*729 = 11664), P36 (-5*8*729 = -29160).
+   6.7C' closed form 2*C(m,3)*chat^3*p^{3a0} EQUALS the measured
+   j*-1 slot at X3 (2*2^18 = 524288), A53 (2*2^6 = 128), P33
+   (2*8*729 = 11664), P34 (8*5832 = 46656), P35 (20*5832), P36
+   (40*5832 = 233280).
  P-FLOOR every frame, every member (self + 2 perturbed per new
    frame), every j: mindiff_j None or >= THETA_j.
  P-PARI factorpadic carriers {(3,2)} R3A/R3B, {(4,2)} R3C,
@@ -97,11 +100,36 @@ TEETH (kill counts asserted):
    3 kills; blind at R3B/R3C (mutant = truth there).
  T-CVAL v*-1 at the attained s*-slots (R3B, R3C, R3E): 3 kills.
  T-M5SUM corollary mutant coefficient C(m,2)+C(m,3): wrong value
-   at X3 (4*2^18) and P34 (10*5832), predicts CONTENT at P35's
-   (1,1) (20 != 0) and 204120 at P36: 4 kills.
+   at X3 (4*2^18), P34 (10*5832) and P36 (35*5832): 3 kills; BLIND
+   at P35 (10+10 = 20 = 2*C(5,3) coincidentally — disclosed).
+ T-OLDLAW the seal's refuted C(m,2)-C(m,3) display as a mutant:
+   wrong value at P34 (2*5832) and P36 (-5*5832), predicts an
+   ABSENT (1,1) at P35: 3 kills; BLIND at m = 3 frames (the two
+   laws coincide there — which is how the seal slipped).
  T-PARITY mutant "the graded j*-1 digit sits at the even slot
    (1,0)" — graded read at (1,0) must be zero at X3-j0, P34-j1,
    P36-j3: 3 kills.
+
+RUN-1 RED DISCLOSURE (5 violations, THEOREM-FACING, artifact kept
+at gentow6_box3_regime3_output_run1_RED.txt md5 c07980ad, sealed
+instrument md5 17fecec4 @ commit after 82a51147): the seal's
+corollary rows P-C34/35/36 + CFORM carried COROLLARY 6.7C's
+binom(m,2)-binom(m,3) coefficient; the instrument measured
+46656/116640/233280 = (8/20/40)*5832 at the three (1,1) slots —
+the hand ledger had priced the pair branch's descent as ONE step
+of coefficient chat*nhat, but the iterated K2-division at T = {0}
+is the K2-adic binomial (LEMMA GENTOW-6.7D in the note): descent
+from entry coordinate r to coordinate j carries multiplicity
+binom(r, j); the corrected law (pair (m-2)*C(m,2) minus triple
+C(m,3)) = 2*C(m,3) reproduces every measured value and coincides
+with the refuted law at m = 3 (multiplicity 1) — which is why the
+committed FR5X/A53/P33 rows could not catch it. The m = 5
+"integral degeneration" is WITHDRAWN; p = 2 | 2*C(m,3) explains
+the X3/A53 slack rows uniformly. NO regime-3 (6.7) want changed:
+the R3A-R3E rows, battery reproductions, floors, triple-route,
+teeth T-TOPPAIR/T-CHI/T-CVAL/T-PARITY and PARI rows were GREEN on
+run 1. Corrections in this repair: P-C34/35/36 wants, CFORM,
+T-M5SUM (4 -> 3 kills + P35 blind), NEW tooth T-OLDLAW (3 kills).
 """
 import hashlib, os, random, subprocess, sys
 
@@ -257,26 +285,27 @@ for name, j, d, pw, greads in WANT:
         chk('GRADED', grd(name, j, a, b, H) == gw,
             '%s j%d (%d,%d)@%d graded want %s' % (name, j, a, b, H, gw))
 
-# corollary slot-scoped rows
+# corollary slot-scoped rows [wants corrected to 6.7C', see the
+# RUN-1 RED DISCLOSURE in the docstring]
 c34 = slot('P34', 1)
-chk('C34', c34.get((1, 1)) == 11664 and pin('P34', 1) == 31
+chk('C34', c34.get((1, 1)) == 46656 and pin('P34', 1) == 31
     and grd('P34', 1, 1, 1, 31), 'P34 j1 %s pin %s' % (c34, pin('P34', 1)))
 print('RECORD P34 ShC_1 full: %s' % c34)
 c35 = slot('P35', 2)
-chk('C35', (1, 1) not in c35 and pin('P35', 2) == 32 and
-    all(not FR['P35'].graded_nonzero(SH['P35'][2], a, b, 31)
-        for (a, b) in c35), 'P35 j2 %s pin %s' % (c35, pin('P35', 2)))
+chk('C35', c35.get((1, 1)) == 116640 and pin('P35', 2) == 31
+    and grd('P35', 2, 1, 1, 31), 'P35 j2 %s pin %s' % (c35, pin('P35', 2)))
 print('RECORD P35 ShC_2 full: %s' % c35)
 c36 = slot('P36', 3)
-chk('C36', c36.get((1, 1)) == -29160 and pin('P36', 3) == 31
+chk('C36', c36.get((1, 1)) == 233280 and pin('P36', 3) == 31
     and grd('P36', 3, 1, 1, 31), 'P36 j3 %s pin %s' % (c36, pin('P36', 3)))
 print('RECORD P36 ShC_3 full: %s' % c36)
-# the closed form ties
+# the closed form ties (6.7C': 2*C(m,3)*chat^3*pi^{3a0})
 chk('CFORM', slot('X3', 0).get((1, 1)) == 2 * 2**18
     and slot('A53', 0).get((1, 1)) == 2 * 2**6
     and slot('P33', 0).get((1, 1)) == 2 * 8 * 729
-    and c34.get((1, 1)) == 2 * 8 * 729
-    and c36.get((1, 1)) == -5 * 8 * 729, 'closed-form ties')
+    and c34.get((1, 1)) == 2 * 4 * 8 * 729
+    and c35.get((1, 1)) == 2 * 10 * 8 * 729
+    and c36.get((1, 1)) == 2 * 20 * 8 * 729, 'closed-form ties')
 
 # ---------- floors on perturbed members ------------------------------
 GP_DISC = []
@@ -321,8 +350,11 @@ tooth('T-CVAL', B1.vp(slot('R3C', 0)[(0, 1)], 2) != 3, 'R3C')
 tooth('T-CVAL', B1.vp(slot('R3E', 1)[(0, 0)], 3) != 3, 'R3E')
 tooth('T-M5SUM', slot('X3', 0).get((1, 1)) != 4 * 2**18, 'X3')
 tooth('T-M5SUM', c34.get((1, 1)) != 10 * 5832, 'P34')
-tooth('T-M5SUM', (1, 1) not in c35, 'P35')
 tooth('T-M5SUM', c36.get((1, 1)) != 35 * 5832, 'P36')
+# blind row disclosed: at P35 the sum mutant coincides (10+10 = 20)
+tooth('T-OLDLAW', c34.get((1, 1)) != 2 * 5832, 'P34')
+tooth('T-OLDLAW', c35.get((1, 1)) is not None, 'P35')
+tooth('T-OLDLAW', c36.get((1, 1)) != -5 * 5832, 'P36')
 tooth('T-PARITY', not grd('X3', 0, 1, 0, 87), 'X3')
 tooth('T-PARITY', not grd('P34', 1, 1, 0, 31), 'P34')
 tooth('T-PARITY', not grd('P36', 3, 1, 0, 31), 'P36')
@@ -366,6 +398,7 @@ for name, _ in GP_DISC:
 print('== SUMMARY == checks %d violations %d' % (NCHK, NVIO))
 print('KILLS %s' % sorted(KILLS.items()))
 ok = (KILLS.get('T-TOPPAIR', 0) == 3 and KILLS.get('T-CHI', 0) == 3
-      and KILLS.get('T-CVAL', 0) == 3 and KILLS.get('T-M5SUM', 0) == 4
+      and KILLS.get('T-CVAL', 0) == 3 and KILLS.get('T-M5SUM', 0) == 3
+      and KILLS.get('T-OLDLAW', 0) == 3
       and KILLS.get('T-PARITY', 0) == 3)
 print('VERDICT %s' % ('GREEN' if (NVIO == 0 and ok) else 'RED'))
