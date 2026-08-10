@@ -3697,3 +3697,30 @@ member fails at Θ₀ at a certificate-cancelled coordinate); one-siding
 owed. Tower board: HETOW ✓ GENTOW1 ✓ GENTOW2 ✓ GENTOW5 ✓ · GENTOW3/4/6
 at 0/2 with named one-round repairs (+ the F-2 lemma). B15 = the
 three repair→pass chains + the GENTOW5 acceptance rider.
+
+**2026-08-10 DATED APPEND #20 — ★★★ THE TOWER CAMPAIGN CLOSES AT 7/7:
+EVERY TOWER NOTE ACCEPTED 2/2 ★★★** — B16 fold. GENTOW3 (the
+faithfulness threshold Θ_j; accepted on a ZERO-finding pass, the arc
+program's first), GENTOW4 (partial sides via bouquet + block
+projection; acceptance fresh route delivered the first three-block
+member and the first f₂=4 frame with the merged-key tooth), and
+GENTOW6 (the mixed-side tie + CERT-TOP; acceptance fresh route
+delivered the first gauge-live tie anywhere) all through the bar —
+joining HETOW, GENTOW1, GENTOW2, GENTOW5. **The n ≥ 8 tower leg of
+the uniformity theorem now rests entirely on accepted texts.** The
+named residue: the three count-grade sub-boxes (GENTOW6-BOX-1 μ₂≥3
+attainment, BOX-2 the ledger half, BOX-3 regime-3 classification) +
+BOX-4's battery-grade ask — count-grade refinements, not correctness
+conditions on the tie. Campaign totals: 7 arcs, 19 hostile passes, 8
+repair rounds, 1 Codex challenge batch (5 REAL findings, all repaired,
+TWO NEW PROVED LEMMAS: HETOW-4 and the 𝒯-free cap lemma), the gauge
+seam caught on 7/7 first passes (the erratum timing), ~30 instrument
+firsts. Combined with append #14 (the chain closure at n ≤ 7), the
+FULL uniformity theorem's proof corpus is now accepted-текст-complete
+at the 2-clean bar modulo the named count-grade sub-boxes and the
+standing capstone conditionality. NEXT: acceptance riders + Codex
+batch #2 (the four new acceptances + discharge-confirmation) + site
+refresh #2 (drafted for orchestrator review), then the sub-boxes, the
+distribution arcs (BCFGTIE/MOMENTS/TAMEK/TAMEKQX), the GENIND annex
+pass — then Asvin's pipeline: SIMPLIFICATION CAMPAIGN → stage two
+(Lean, modulo literature except 2212.00294).
