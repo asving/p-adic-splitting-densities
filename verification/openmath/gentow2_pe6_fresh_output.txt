@@ -1,0 +1,72 @@
+  ok: LD1_W RATIO0 value-0 exact
+  ok: LD1_W LATTICE split == ((-2, -9),)
+  ok: LD1_T0 RATIO0 value-0 exact
+  ok: LD1_T0 LATTICE split == ((-5, -1),)
+  ok: LD1_U0 RATIO0 value-0 exact
+  ok: LD1_U0 LATTICE split == ((-9, -19),)
+  ok: LD3_W RATIO0 value-0 exact
+  ok: LD3_W LATTICE split == ((-7, -18),)
+  ok: GA1_W RATIO0 value-0 exact
+  ok: GA1_W LATTICE split == ((-4, -10),)
+  ok: GA1_T0 RATIO0 value-0 exact
+  ok: GA1_T0 LATTICE split == ((-2, -1),)
+  ok: GA1_U0 RATIO0 value-0 exact
+  ok: GA1_U0 LATTICE split == ((-10, -21),)
+  ok: GA3_W RATIO0 value-0 exact
+  ok: GA3_W LATTICE split == ((-9, -20),)
+  ok: GA3_T0 RATIO0 value-0 exact
+  ok: GA3_T0 LATTICE split == ((-2, -1),)
+  ok: GA3_U0 RATIO0 value-0 exact
+  ok: GA3_U0 LATTICE split == ((-20, -41),)
+  ok: DEGS 16/16/16/32
+  ok: LD1 RES x v2 = 8
+  ok: LD1 RES PHIP v2 = 36
+  ok: LD1 RES PHI2 v2 = 76
+  ok: LD3 RES x v2 = 8
+  ok: LD3 RES PHIP v2 = 36
+  ok: LD3 RES PHI2 v2 = 74
+  ok: GA1 RES x v2 = 8
+  ok: GA1 RES PHIP v2 = 20
+  ok: GA1 RES PHI2 v2 = 84
+  ok: GA3 RES x v2 = 16
+  ok: GA3 RES PHIP v2 = 40
+  ok: GA3 RES PHI2 v2 = 164
+gp stderr: ***   Warning: new stack size = 512000000 (488.281 Mbytes).
+  ok: gp completed
+  ok: NPR 1/1/2/2
+  ok: LD1 EF (4,4)
+  ok: LD3 EF (8,2)
+  ok: GA1 EF (4,2) x2
+  ok: GA3 EF (8,2) x2
+  ok: LD1 VALS (2,9,19)
+  ok: LD3 VALS (4,18,37)
+  ok: GA1 VALS (2,5,21) x2
+  ok: GA3 VALS (4,10,41) x2
+  ok: LD1 v(pi3) = 1/4 exact (scaled 1)
+  ok: LD3 v(pi3) = 1/4 exact (scaled 2)
+  ok: GA1 v(pi3) = 1/4 exact x2
+  ok: GA3 v(pi3) = 1/4 exact x2
+  ok: LP1 z1 LIVE (psi1-root, != 1) both frames
+  ok: LP1 z2 == 1 both frames (char-2: 1 is NOT a psi2-root)
+  ok: GB z1 == 1 all primes
+  ok: GB z2 LIVE (psi2-root, != 1) all primes
+  ok: LD1 w != 1  << FIRST w MEASUREMENT
+  ok: LD1 w == z1 (not z1^2)
+  ok: LD3 w != 1
+  ok: LD3 w == z1^2 (not z1) << u3-dependence
+  ok: GA1 w != 1 x2
+  ok: GA1 w == z2^2 (not z2) x2
+  ok: GA3 w != 1 x2
+  ok: GA3 w == z2 (not z2^2) x2 << u3-dependence, e3 = 2 frame
+  ok: LD1 theta(0) == z1 (decode pin re-met)
+VIOLATION: LD1 u(beta_0) == 1 CANONICAL FRAME
+  ok: LD1 B″(6): u0 = theta0*w^2 closed
+  ok: GA1 theta(0) == z2^2 x2
+  ok: GA1 u(beta_0) == 1 x2
+  ok: GA1 B″(6) closed x2
+  ok: GA3 theta(0) == z2^2 x2
+  ok: GA3 u(beta_0) == z2 x2 (!= 1: the first letter-valued CANONICAL unit measured)
+  ok: GA3 B″(6) closed x2
+== passPE6 FRESH-ROUTE VERDICT ==
+checks: 68, violations: 1
+GENTOW2 passPE6 fresh route: RED
