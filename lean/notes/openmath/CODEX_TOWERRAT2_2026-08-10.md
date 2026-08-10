@@ -80,7 +80,9 @@ on stdin; nohup + fresh per-run pidfiles, launched sequentially):
   `verification/openmath/towerrat2_runB_gentow3_output.txt` (6,297
   bytes, md5 32751d5d); OUTCOME: CHALLENGE
 - RUN C (GENTOW4): PENDING
-- RUN D (GENTOW6): PENDING
+- RUN D (GENTOW6): DONE — raw output
+  `verification/openmath/towerrat2_runD_gentow6_output.txt` (111,376
+  bytes, md5 149b156b, 41,142 tokens); OUTCOME: CHALLENGE
 - RUN E (discharge): PENDING
 
 ## S1. VERDICT SUMMARY (orchestrator adjudication, not Codex self-grade)
@@ -258,7 +260,86 @@ PENDING.
 
 ## S5. RUN D — GENTOW6: Codex findings + adjudication
 
-PENDING.
+**Codex outcome: CHALLENGE** (2 findings: 1 justification gap, 1
+minor; 15 CHECKED CLEAN lines covering the 6.1 tie's three steps
+incl. the FGMN unit bookkeeping and the totality leg, the 6.2/6.2C
+block layer and its boxed ledger half, the 6.3 scope pin + CERT-TOP
+arithmetic, the 6.4(a) corrected codomain incl. the FRAME-F 3-slot
+count, the 6.4(b) congruence, the battery-claim restrictions, and
+the box fences). Raw output:
+`verification/openmath/towerrat2_runD_gentow6_output.txt` (111,376
+B, md5 149b156b, 41,142 tokens).
+
+**Snapshot provenance (governs this adjudication).** RUN D's PASTE A
+is the note body at commit 1194b1a4 (post-PE2-rider) — byte-diff
+against that commit's file leaves one trailing blank line. The brief
+was sealed before PE3, so the paste PRE-dates the acceptance fold
+15965106 and the two box appends b1b6aa61/3d7fc37b. Adjudication
+reads GENTOW6_PROOF at HEAD (md5 ced0e318); freeze chain re-verified
+this unit: HEAD prefix-64,756 B = 6e0489fb (post-fold body), HEAD
+prefix-67,448 B = 157b16ad (frozen acceptance body) — appends-only.
+
+**D-F1 (Codex: JUSTIFICATION GAP).** Quote: "Neither LEMMA
+GENTOW-6.4(c) nor COROLLARY GENTOW-6.2C(d) states COR GENTOW-4.C's
+hypothesis or verifies it for the chosen partial-side class. Merely
+calling a supplier 'conditional' does not turn the unconditional
+displayed conclusions … into proved assertions. Formally, the cited
+result supplies H⇒E, while both consumers use E without establishing
+H."
+**ADJUDICATION: RESOLVED-ALREADY (commit 15965106), with an ARTIFACT
+component on the H⇒E framing.** (i) ARTIFACT component: the
+"conditional" the snapshot names is GENTOW4's 0/2 attempt GRADE (the
+supplier note pre-ratification), not an unstated mathematical
+hypothesis — COR GENTOW-4.C (GENTOW4 S4) is stated inside
+GENTOW-4.A(ii)'s setting, and its one positional clause ("wherever
+(j, p_j) lies on the >T2 hull") appears inline in 6.2C(d)'s own
+display; there is no omitted implication hypothesis H to leave
+undischarged. (ii) The substance that WAS real at the snapshot —
+unconditional displays riding a not-yet-ratified supplier — was
+repaired before RUN D returned: commit 15965106 landed dated
+ACCEPTANCE UPGRADE brackets at exactly the two consumption points
+the finding names (the S2 (d)-rider bracket, HEAD L316–327; the
+6.4(c) bracket, HEAD L939–949): GENTOW4 IS ACCEPTED 2/2 (passPE2
+CLEAN @ 80280b66 + passPE3 CLEAN @ f0874ff9), and GENTOW4's passPE3
+verified 4.C against this exact consumption surface — the pin
+translation p_j^S = p_j − c_g tested as an EQUATION vs explicit f_S
+at the consulted hull abscissas of 11 members (interior j = 1
+included), c_g = p_{mu2*} re-derived at the right-endpoint vertex,
+f_S's 𝒯-membership at the block genre re-derived
+(GENTOW4_passPE3_report.md @ f0874ff9). D-F1's repair pre-exists
+this run; the decorrelated model independently re-derived the
+acceptance fold's own upgrade target.
+
+**D-F2 (Codex: MINOR).** Quote: "PASTE B records committed PE2 fresh
+frames with f₁=2, η≠1, and exact checks of 6.3′(b′). Thus these
+HEAD-level evidence censuses ['NO machine contact anywhere in this
+note's arc'] are false in the conservative direction."
+**ADJUDICATION: RESOLVED-ALREADY (commit 15965106; strengthened by
+b1b6aa61).** The two sentences the finding quotes (the S5 BOX-4 row;
+S6.1's honest-status paragraph) each carry at HEAD the dated
+acceptance-fold F-1 bracket (HEAD L654–673 and L839–849) dating them
+as true at their [GT6-r1] writing and stale at HEAD in the
+conservative direction, citing the instruments by md5
+(gentow6_pe2_fresh.py 061639c3 — the first f1 = 2 / eta != 1 frames,
+6.3'(b') exact at two x-ful digit data; gentow6_pe3_fresh.py
+0ef76baa — the first eta != 1 gauge-live frames). Codex's own
+reading ("false in the conservative direction"; the box may stay
+open) matches the fold's bracket. Since the fold, BOX-4's ask itself
+ran: gentow6_box4_row.py GREEN 265/0 at four x-ful certificate rows
+— GENTOW6-BOX-4 DISCHARGED as a dated append (commit b1b6aa61, HEAD
+L1249–1265). D-F2's repair pre-exists this run.
+
+**RUN D verdict: CHALLENGE ADJUDICATED — D-F1 RESOLVED-ALREADY
+(15965106; ARTIFACT component on the H⇒E reading) and D-F2
+RESOLVED-ALREADY (15965106 + b1b6aa61); the correcting commits
+post-date the sealed paste snapshot (1194b1a4) and pre-date this
+adjudication; repair charges from this run: none owed beyond the
+pre-existing brackets. The acceptance stands ANNOTATED with this
+record.** Convergence note: the decorrelated model's two findings
+land on the same two texts the acceptance fold had already targeted
+(the 4.C conditionality upgrade; the F-1 census dating) — a
+decorrelated confirmation that those were the right two repairs,
+and, unlike RUNs A/B, a run whose challenge dissolves at HEAD.
 
 ## S6. RUN E — discharge confirmation: Codex verdicts + adjudication
 
