@@ -121,13 +121,10 @@ unified lemma is, what it ABSORBS, what gets SHORTER, and the RE-VERIFY scope.
   passes (appends #17–#20: the notes predated the wrap erratum) — the same fact,
   re-proved in seven local coordinate systems, drifted seven times. A future
   letter-layer erratum currently ripples through 7 notes; after T1, through 1.
-- **SHORTER.** Each tower note's gauge annex becomes "instance of GAUGE-COCYCLE
-  at (e₁,f₁,u₂,…)" — one displayed substitution per note. Est. net removal
-  ~600–900 lines of per-note derivation across the seven.
-- **RE-VERIFY.** The new lemma: full 2-clean arc + sealed battery (frames must
-  include the recorded first-instances: q=4 letters, η≠1, f₁=2 letter-live,
-  μ₂=3, w≠1). Plus seven consumption checks (§5 protocol): GAUGE-COCYCLE ⟹ each
-  absorbed annex's statement, byte-identical per the S-0 ledger.
+- **SHORTER / RE-VERIFY.** Each gauge annex → one displayed substitution
+  (~600–900 lines net removal across the seven). New lemma: full 2-clean arc +
+  sealed battery (frames must include the recorded first-instances: q=4 letters,
+  η≠1, f₁=2 letter-live, μ₂=3, w≠1) + seven consumption checks (§5.3).
 
 ### T2 — THE σ-LADDER MASTER INSTANCE (HE7.A at a general carrier) — RANK 2
 
@@ -146,13 +143,11 @@ unified lemma is, what it ABSORBS, what gets SHORTER, and the RE-VERIFY scope.
   observation (HE7 §S6 + heuristics §C1) promoted to the corpus level. Risk: the
   general-carrier statement must carry HE6's test-family hypotheses abstractly —
   a real statement-design task, not a transcription.
-- **SHORTER.** HE6R1's §on-instance and HETOW's §S3 instantiation map become the
-  worked examples of one definition; GENTOW4's per-block argument drops its
-  re-derivation. The σ-chain's Lean surface shrinks from 4 bridge layers to
-  1 abstract theorem + instance records.
-- **RE-VERIFY.** The master statement is NEW (highest statement-design risk of
-  the five): plan-level adversarial pass (Codex) BEFORE composing; then the full
-  2-clean arc; five consumption checks.
+- **SHORTER / RE-VERIFY.** HE6R1's and HETOW's instantiation maps become worked
+  examples of one definition; the σ-chain's Lean surface shrinks from 4 bridge
+  layers to 1 theorem + instance records. The master statement is NEW (highest
+  statement-design risk of the five): Codex plan-level adversarial pass BEFORE
+  composing, then the full 2-clean arc + five consumption checks.
 
 ### T3 — LEMMA COCYCLE-TELESCOPE (one shape for B″ / HETOW-4 / the cap) — RANK 3
 
