@@ -1,0 +1,443 @@
+# GENTOW6 SUB-BOX UNIT: GENTOW6-BOX-1 (mu2 >= 3 attainment) +
+# GENTOW6-BOX-4 (the f1 >= 2 x-ful-digit sealed battery row),
+# 2026-08-10
+
+**STATUS: composed this session; machine legs pending (two-commit
+seals below). Grade 0/2 (attempt; hostile arc owed). Prove-first
+per the standing directive: BOX-1 is attempted as a THEOREM, not
+re-boxed.**
+
+Charge (two legs): (1) GENTOW6-BOX-1 — THEOREM GENTOW-6.3 is
+scoped to mu2 = 2; derive and prove the mu2 >= 3 attainment
+statement or display the exact obstruction; machine leg at >= 3
+frames including FR5X's geometry and a new mu2 = 3 frame. (2)
+GENTOW6-BOX-4 — the box's ask verbatim (GENTOW6_PROOF S5): "First
+x-ful-digit certificate row (an f1 >= 2 genre with some
+c_t*eta^{W(t)} not in F_Q) = the box's ask; until it runs, 6.3' is
+prose-only", at SEALED BATTERY grade (the PE2/PE3 instruments are
+hostile-arc verifier legs, not sealed apparatus).
+
+Sources consumed (never edited): GENTOW6_PROOF_2026-08-09.md at
+HEAD (FROZEN; THEOREM GENTOW-6.3 + its GT6-r1 f1 = 1 scope pin,
+ANNEX-THEOREM GENTOW-6.3' (S6.1), the S5 boxes), GENTOW3_PROOF
+(THEOREM GENTOW-3 Steps 0-2 — the weight ledger and the k*delta
+extraction pricing, stated and proved at GENERAL mu2 on 𝒯; the
+functoriality sentence identifying the shadow with the reduced
+two-variable division), GENTOW1_PROOF (Step 0 carry monotonicity),
+GENHN erratum 59c1966 (corrected chat_t), GENTOW3_passPE5_report.md
+@ 0633c6a3 (obs-1: the three measured certificate configurations at
+FR5X; the FR5X-3 measured vector G = [2^19*x*Y, 12288*Y, 0], pins
+[91, 61, None]); machine: gentow6_pe2_fresh.py (md5
+061639c322dfd98a48dc399f07e6dd04, committed PE2 leg — LEG-2 imports
+it), gentow3_pe5_fresh.py's committed FR5X values as cross-pins.
+
+## STATUS TABLE
+
+| leg | statement | status |
+|---|---|---|
+| (1) BOX-1 | THEOREM GENTOW-6.5 (S2) | PROVED at f1 = 1 (proof below); machine leg S4 |
+| (2) BOX-4 | sealed battery row (S5) | instrument S5; discharge pending the run |
+
+## S1. WHAT BOX-1 ACTUALLY ASKS, AND WHAT THE DATA ALREADY SAYS
+
+**The box (GENTOW6_PROOF S5, verbatim core).** "THEOREM 6.3 is
+scoped to mu2 = 2. At mu2 >= 3 the source layer has k-fold products
+(multinomial coefficients != 1 off the diagonal appear at the top
+pair only through (t*,...,t*), coefficient 1 again — the diagonal
+argument LOOKS uniform) but the Y-bookkeeping of (a) needs the
+k-extraction ledger re-derived; not claimed."
+
+**The box's parenthetical guess is REFUTED by accepted data.** The
+top height-THETA branch at mu2 = m >= 3 is NOT a (t*,...,t*)
+m-fold product with coefficient 1: it is the DIAGONAL PAIR
+{t*, t*} tensored with m-2 leading factors, and its multinomial
+coefficient is binom(m,2) = m(m-1)/2. GENTOW3-PE5's accepted FR5X-3
+measurement shows exactly this: the attained coordinate's digit is
+12288 = 3 * 4096 = binom(3,2) * (the mu2 = 2 digit chat^2 pi^{2a}),
+at the SAME height 61 but at coordinate j = 1, not j = 0. The
+binomial is the whole new phenomenon: it can VANISH mod p, and then
+the top-slot certificate cancels — an arithmetic condition on
+(p, m) that has no mu2 = 2 shadow (binom(2,2)... binom(m,2) at
+m = 2 is 1, killing no residue).
+
+**obs-1's three configurations are the statement's shape.**
+GENTOW3-PE5 obs-1 measured, at FR5X (mu2 = 2 and 3), three distinct
+certificate configurations: ATTAINED (FR5X-3 at j = 1, height 61 =
+THETA_1), SLACK (FR5X-3 at j = 0: the height-87 = THETA_0 digit
+bit-measured ZERO, pin 91), IDENTICALLY-ZERO (FR5X-3 at j = 2;
+FR5X-2 at j = 1). A correct mu2 >= 3 attainment theorem must
+therefore be TOP-COORDINATE-scoped: it claims attainment at ONE
+coordinate j* (with an explicit p-condition), proves the
+coordinates above j* identically zero, and leaves the coordinates
+below j* as displayed genre arithmetic (their assembly is
+multi-branch and can cancel — S3 derives FR5X-3's j = 0 slack
+exactly). All three measured configurations become the three
+clauses (b), (c), and the S3 display.
+
+## S2. THEOREM GENTOW-6.5 (mu2-general attainment at the top
+## coordinate, f1 = 1)
+
+**Setting (GENTOW-6.3's, restated for one pass; f1 = 1 so D' = e1
+and the corrected chat_t lifts are scalar monomials).** Tower genre
+(Q; e1, 1, mu1; h), key Phi' (deg D' = e1), inner data (u2, e2, f2),
+E2 = e2 f2 u2, delta = u2 - e2 D' h >= 1, THETA_j = (m - j) E2 +
+delta at mu2 = m; K2(x, Y) = Y^{e2 f2} - Sum_{t in T} chat_t
+pi^{a_t} x^{i_t} Y^{e2 t}, T = {t < f2 : chat_t != 0} (0 in T),
+t* = max T, all chat_t units, e1 a_t + i_t h = u2(f2 - t) with
+0 <= i_t < e1; slot height of a digit c at (a, b) is
+e1 e2 * v(c) + w(a, b), w(a, b) = a e2 h + b u2. Self-shadow
+object: f = Phi2^m, m = mu2 >= 2; honest composed read DRAIN
+(C_j = 0, j < m); shadow ShC_j = [Ghat_j mod Phi'] where Ghat_j is
+the exact two-variable division chain of F = dev(Phi2^m) by K2
+(functoriality of monic division — GENTOW-3 S2's setting sentence,
+consumed; also machine-checked as the dual route P-DUAL, S4).
+
+**Named constants.**
+
+    B* := e2 f2 (m - 2) + 2 e2 t*      (the top pair Y-exponent)
+    j* := floor((B* + 1) / (e2 f2)) = (m - 2) + floor((2 e2 t* + 1)/(e2 f2))
+    b* := (2 e2 t* + 1) mod (e2 f2)
+    a* := 2 i_{t*} - D'                 (when 2 i_{t*} >= D')
+
+> **THEOREM GENTOW-6.5.** For f = Phi2^m (m >= 2) at any f1 = 1
+> tower genre, at the corrected chat_t:
+>
+> (a) [k-EXTRACTION LEDGER + Y-CEILING] Every monomial of F =
+> dev(Phi2^m) = CARRY(K2(x,Y)^m) traces to a k-multiset source
+> {t_1, ..., t_k} of lift factors (0 <= k <= m) at entry position
+> (x^{Sum i_{t_kappa}}, Y^{e2 f2 (m-k) + e2 Sum t_kappa}), source
+> coefficient (-1)^k M {m choose the multiset} Prod chat pi^{Sum a},
+> with e dev-extractions (each raising Y by exactly 1 and costing
+> delta of weight; e <= floor(Sum i / D') <= k - 1). Division steps
+> only LOWER the Y-exponent (by e2(f2 - s) >= e2(f2 - t*) > 0 per
+> step, s in T) and the terminal reduction mod Phi' is Y-neutral
+> (in R = O[x]/(Phi') extracted content is killed, never promoted).
+> Consequently every branch of every ShC_j satisfies
+>
+>     Y <= e2 f2 (m - k) + e2 Sum t + e <= B* + 1 ,
+>
+> with Y = B* + 1 forcing (k, multiset, e, steps) =
+> (2, {t*, t*}, 1, 0).
+>
+> (b) [CERT-TOP-m] If 2 i_{t*} >= D', the height-THETA_{j*} graded
+> digit of ShC_{j*} at slot (a*, b*) is EXACTLY
+>
+>     binom(m,2) * (chat_{t*})^2 * pi^{2 a_{t*}} * (wrap unit) ,
+>
+> assembled from the unique branch of (a)'s equality case. Hence:
+> (b1) if p does NOT divide binom(m,2) = m(m-1)/2: the digit is
+> nonzero in the residue field — the shadow diverges from DRAIN at
+> EXACTLY THETA_{j*} at coordinate j*, on the floor (attainment);
+> (b2) if p | binom(m,2): the height-THETA_{j*} digit at (a*, b*)
+> is ZERO — the top-slot certificate CANCELS, and any content at
+> that slot sits strictly above the floor. No attainment is claimed
+> under (b2).
+>
+> (c) [ABOVE-TOP VANISHING] ShC_j == 0 identically (every height)
+> for every coordinate j > j*. (Unconditional — no overflow
+> hypothesis.)
+>
+> (d) [NO-OVERFLOW EXACTNESS] If m * max_{t in T} i_t < D', then
+> F = K2^m term by term and ShC_j = C_j = 0: the key-power witness
+> is shadow-exact.
+>
+> At m = 2 these specialize to the sealed THEOREM GENTOW-6.3:
+> (b1) is 6.3(b) verbatim (binom(m,2) = m(m-1)/2 = 1 at m = 2 —
+> no p-condition survives, which is WHY the mu2 = 2 theorem needed
+> none, "no binomial coefficient, no characteristic condition" as
+> 6.3(b)'s proof says); (b2) is
+> empty at m = 2; (c) is the battery's measured ShC_1 = 0 rows
+> (A5/A7/C, GEN-R2X/P3/P3b pins (THETA_0, None)); (d)'s hypothesis
+> 2 max i_t < D' is 6.3(c)'s "i_t + i_{t'} < D' for every pair"
+> verbatim (the pair maximum is the diagonal).
+
+*Proof.*
+
+**Step I (source census — weight m E2, exact).** Every term of K2
+has weight E2 exactly (side terms of the key; GENTOW-3 Step 1,
+consumed), so every monomial of the multinomial expansion of K2^m
+sits at weight m E2 exactly. A monomial chooses the leading term
+Y^{e2 f2} from m - k factors and lift terms t_1, ..., t_k from the
+rest: position (x^{Sum i}, Y^{e2 f2 (m-k) + e2 Sum t}), coefficient
+(-1)^k * (the multinomial count of the multiset) * Prod_kappa
+chat_{t_kappa} pi^{a_{t_kappa}}. Since f1 = 1, each i_t <= e1 - 1 <
+D', so k <= 1 monomials have x-degree < D' and never overflow:
+x-overflowing sources have k >= 2.
+
+**Step II (the CARRY = dev bookkeeping).** F = dev(Phi2^m) is
+obtained from K2^m by iterating the x-carry x^{D'} = Y + tail
+(tail = x^{D'} - Phi' as an x-polynomial of degree < D', evaluated
+at Y = Phi' this is an identity; GENTOW-1 Step 0's split, consumed:
+tail branches at weight >= parent with equality exactly on the
+key's side terms, the Y-branch at parent + delta exactly). Each
+extraction consumes exactly D' of x-degree and tail steps strictly
+lower x-degree, so a source of x-degree I admits at most
+floor(I / D') extractions along any branch; with I = Sum i <=
+k(e1 - 1) < k D' this gives e <= k - 1. Entry Y-exponents of F's
+monomials are therefore e2 f2 (m-k) + e2 Sum t + e with those
+constraints.
+
+**Step III (reduction to Delta; the Y-ceiling).** Set Delta :=
+F - K2^m. The exact division is O[x]-linear in the dividend, and
+the iterated division of K2^m by K2 is exact with Ghat_j = 0 for
+every j < m; hence Ghat_j(F) = Ghat_j(Delta) for j < m — ONLY
+Delta's monomials feed the shadow coordinates. Delta =
+Sum_{overflowing sources mu} (CARRY(mu) - mu), and by Step I every
+overflowing source has k >= 2. Per source, CARRY(mu)'s branches
+split as: extracted branches (e >= 1) at Y = entry(mu) + e, and
+the single e = 0 iterated-tail branch (in-grid) at Y = entry(mu);
+the -mu term also sits at Y = entry(mu). So every Delta-monomial
+has
+
+    Y <= entry(mu) + e <= e2 f2 (m-k) + k e2 t* + (k-1)
+       = B* + 1 - (k - 2)(e2 (f2 - t*) - 1)  <=  B* + 1
+
+(k >= 2; e2(f2 - t*) >= 1 since t* < f2), with Y = B* + 1 forcing
+k = 2, e = 1, and e2 Sum t = 2 e2 t*, i.e. the diagonal multiset
+{t*, t*} (t <= t* termwise). The iterated exact division of Delta
+by K2 (monic in Y of degree e2 f2) routes each monomial either
+through the top term (Y^N lands at coordinate floor(N / e2 f2),
+in-coordinate slot b = N mod e2 f2, coefficient unchanged) or
+through a lift term of K2 (Y-change -e2(f2 - s) < 0, coefficient
+multiplied by that lift coefficient, weight floor preserved —
+GENTOW-3 Step 1's weight-monotone division, consumed); no step
+raises Y. The terminal reduction ShC_j = [Ghat_j mod Phi']
+substitutes x^{D'} |-> tail inside coefficients: in R the Phi'-part
+of an x-overflow is ZERO (Phi' = 0 in R) — the reduction is the
+pure iterated tail route and never promotes content to a higher b.
+This proves (a), and (c) follows: coordinate-j content needs
+Y >= j e2 f2, and j > j* gives j e2 f2 >= (j* + 1) e2 f2 > B* + 1
+(definition of floor as an integer inequality) — no Delta-branch
+reaches any height there. No overflow hypothesis was used: with no
+overflowing source, Delta = 0 outright.
+
+**Step IV (the unique top branch and its digit = (b)).** At the
+height-THETA_{j*} graded layer, GENTOW-3 Step 2's ledger (accepted
+at general mu2) prices every branch at weight m E2 + (number of
+extractions) * delta, so the layer carries e = 1 branches with
+every other step weight-exact. A height-THETA branch landing at
+slot (a*, b*) of coordinate j* has Y = j* e2 f2 + b* = B* + 1: by
+(a)'s equality case it is the diagonal pair source {t*, t*} with
+its single extraction and no division steps. Its source monomial —
+x-position 2 i_{t*}, Y-position B*, coefficient binom(m,2)
+(-chat_{t*})^2 pi^{2 a_{t*}} = binom(m,2) chat_{t*}^2 pi^{2 a_{t*}}
+— is UNIQUE at that (x, Y)-position among all sources: a k = 2
+non-diagonal multiset at Y-position B* would need t + t' = 2 t*
+with t, t' <= t*, forcing the diagonal; a k >= 3 multiset there
+would need f2 (k - 2) = Sum t - 2 t* <= (k - 2) t*, i.e. f2 <= t*,
+contradiction. Its carry: 2 i_{t*} < 2 D' (i < e1 = D' twice), so
+the first rewrite's Y-branch has coefficient exactly 1 and x-part
+a* = 2 i_{t*} - D' < D', in-grid — the branch terminates with ONE
+extraction; the parallel tail branches carry e = 0 (Step V). Direct
+route through the division (zero steps): coordinate j*, slot b*,
+coefficient unchanged; weight m E2 + delta reads at coordinate j*
+as height (m - j*) E2 + delta = THETA_{j*}; the coherent normalizer
+contributes its wrap unit (GENTOW-6.3(b)'s clause, unchanged). So
+the graded digit at (a*, b*) at height THETA_{j*} is binom(m,2)
+chat_{t*}^2 pi^{2 a_{t*}} (wrap unit) exactly. chat_{t*}, the wrap,
+and pi^{2a} normalization are units, so the residue digit is zero
+iff p | binom(m,2). If p does not divide it: nonzero digit at
+exactly the floor height (GENTOW-3(i) forbids anything lower):
+divergence at exactly THETA_{j*} — (b1). If p | binom(m,2): the
+graded layer at that slot is zero and slot content, if any, sits
+strictly above — (b2). Branches at the same Y = B* + 1 do not
+exist besides this one (equality case); same-height branches at
+other Y land at other slots; multi-extraction branches (k >= 3
+sources with e = 2 can reach Y = B* + 1 only when e2(f2 - t*) = 1)
+cost >= 2 delta of weight and sit strictly above the graded layer —
+they cannot touch the height-THETA digit. ∎(b)
+
+**Step V (tail/source pairs cancel exactly; (d)).** Within Delta,
+each source mu contributes the pair (its e = 0 iterated-tail
+branch, -mu), both at the same Y-position. Division routes depend
+on Y alone and are coefficient-linear, so the two members of the
+pair arrive at every Ghat_j at the same slots, carrying (tail
+image of mu's coefficient) and (-mu's coefficient) respectively;
+the terminal reduction mod Phi' maps -mu's coefficient to exactly
+minus the iterated tail image (the reduction IS the iterated tail
+substitution): the pair cancels coefficientwise in every ShC_j.
+Every surviving ShC-monomial therefore traces to an EXTRACTED
+branch (e >= 1) — this is the sealed 6.3(a)'s "tail-only routes
+are shared by both reads and cancel", re-derived m-generally. For
+(d): if m * max i_t < D', every monomial of K2^m has x-degree
+Sum i <= k max i <= m max i < D': no source overflows, CARRY is
+the identity, F = K2^m, the exact division has Ghat_j = 0 for
+j < m, and ShC_j = 0 = C_j. ∎
+
+**COROLLARY GENTOW-6.5C (obs-1 explained).** At FR5X (p = 2,
+e2 = 2, f2 = 1, t* = 0, i_0 = 1, a_0 = 6, chat = 1, D' = 2,
+delta = 9, E2 = 26): (i) m = 2: j* = 0, digit binom(2,2)... = 1 *
+2^{12} = 4096 at (0,1), height 61 = THETA_0, ShC_1 == 0 — the
+measured [4096*Y, 0]. (ii) m = 3: j* = 1, digit binom(3,2) * 4096
+= 12288 at (0,1) of coordinate 1, height 61 = THETA_1 (p = 2 does
+not divide 3): attainment; ShC_2 == 0; coordinate 0 is below j*
+and its assembly cancels at the graded layer (S3): slack with pin
+91. The measured [2^19*x*Y, 12288*Y, 0] realizes all three
+configurations of one theorem. ∎
+
+## S3. THE LOWER COORDINATES (j < j*): DISPLAYED GENRE ARITHMETIC,
+## NOT A THEOREM CLAUSE — obs-1's SLACK derived exactly
+
+Below j*, height-THETA_j content assembles from SEVERAL branches
+(direct k >= 3 extractions and division-stepped pair branches meet
+at the same slots) and its vanishing is genre arithmetic — the
+mu2 >= 3 analogue of the sealed quadrichotomy's regime-(3) display.
+Worked at FR5X-3, coordinate 0, slot (1,1) (the measured slack):
+
+* the TRIPLE direct branch: source (-chat nhat)^3 with multinomial
+  binom(3,3) = 1: -(2^6 x)^3 = -2^18 x^3 at Y^0; x^3 = x*x^2
+  extracts once (3 < 2 D') to -2^18 x at Y^1, slot (1,1), v = 18,
+  height 4*18 + w(1,1) = 72 + 15 = 87 = THETA_0;
+* the STEPPED PAIR branch: the top branch's content binom(3,2) *
+  4096 at Y^3 takes one division step through the lift term -64x
+  (Y-change -2, coefficient * 64x, sign + from subtracting
+  quotient*K2): +3 * 2^18 x at Y^1, same slot (1,1), same height 87.
+
+Assembly: (-1 + 3) * 2^18 x = +2^19 x — the graded height-87 digit
+is (-1 + 3) mod 2 = 0: CANCELLED (p = 2 kills the pair-minus-triple
+arithmetic), and the slot VALUE 2^19 x sits at height 91. This IS
+obs-1's measured slack row (G_0 = 2^19 x Y, pin 91 > 87 = THETA_0),
+now derived from the ledger. The general j < j* classification
+(which genres cancel at which lower coordinates) is finite
+arithmetic per (genre, m, j), displayed only — it extends
+GENTOW6-BOX-3's regime-3 fence to mu2 >= 3 and is NOT claimed as a
+theorem; obs-1 shows it is genuinely conditional (the same genre
+attains at j* while cancelling at j = 0).
+
+**ANNEX-REMARK GENTOW-6.5' (f1-general form; prose grade).** At
+f1 >= 2 read the corrected lifts as (LIFT) shapes (GENTOW6_PROOF
+S6.1) and replace, exactly as ANNEX-THEOREM GENTOW-6.3' does at
+m = 2: the census runs over MONOMIAL k-multisets (one monomial from
+each chosen digit's x-support {i_t + e1 r : lambda_{t,r} != 0});
+I_t := i_t + e1 r_max(t); the top slot is (2 I_{t*} - D', b*) at
+coordinate j* under 2 I_{t*} >= D', with digit binom(m,2) *
+lift(lambda_{t*,r*})^2 * pi^{2(a_{t*} - r* h)} * (wrap unit) — the
+same three localized deltas as 6.3' ((i) Y-uniqueness is x-shape-
+blind, (ii) max-forces-diagonal on the monomial pair (r*, r*),
+(iii) the digit a unit multiple with the SAME binom(m,2) residue
+condition — Step II's extraction count e <= floor(Sum I / D') <=
+k - 1 survives since each lift monomial has x-degree <= I_t <=
+D' - 1). Grade: prose at this note's 0/2, riding accepted 6.3'
+(itself machine-contacted at m = 2 only — S5's row); no m >= 3
+f1 >= 2 machine contact exists anywhere; named honestly, not
+claimed beyond the display.
+
+## S4. MACHINE LEG — BOX-1 (gentow6_box1_mu3.py, two-commit seal)
+
+Runner: `verification/openmath/gentow6_box1_mu3.py` — self-
+contained integer-exact primitives (own code; no import of any
+sealed runner). SEVEN frames on FOUR geometries:
+
+    X3  = FR5X geometry (Q2, Phi' = x^2-2, e2 = 2, f2 = 1, u2 = 13,
+          Phi2 = Phi'^2 - 64x) at mu2 = 3   [obs-1's geometry]
+    X4  = same at mu2 = 4                    [p | binom(4,2) = 6]
+    A53 = FAM-A5 genre (u2 = 5, Phi2 = Phi'^2 - 4x) at mu2 = 3
+    B3  = FAM-B genre (Q2, e2 = 1, f2 = 2, u2 = 3, T = {0,1},
+          t* = 1, Phi2 = Phi'^2 - 2x Phi' - 8) at mu2 = 3
+          [the f2 >= 2 / t* > 0 / j* = m-1 axis]
+    P33/P34/P35 = GEN-P3 genre (Q3, Phi' = x^2-3, u2 = 5,
+          Phi2 = Phi'^2 - 18x, chat = 2) at mu2 = 3, 4, 5
+          [odd p; p | binom(3,2) and p | binom(4,2) both live]
+
+DUAL ORACLES: (R) the reduced division route (coefficients reduced
+mod Phi' at every step — the shadow's own definition) vs (E) the
+EXACT two-variable division with one terminal reduction (the
+proof's Step III object) — bit-equality of every slot dict is the
+functoriality face of the proof, checked per frame and per member;
+plus PARI/gp decorrelation rows (factorpadic carriers, poldisc).
+
+PREREGISTERED PREDICTIONS (sealed in the runner docstring at
+commit 1, before the first run) — P-DUAL, P-X3 (the committed PE5
+vector {(1,1): 2^19}@j0 / {(0,1): 12288}@j1 / 0@j2, pins
+[91, 61, None], graded 87-digit zero at (1,1)@j0, graded 61-digit
+nonzero at (0,1)@j1), P-X4 (v((0,1)@j2) = 13 exactly: graded
+THETA_2 = 61 digit ZERO, 65-digit nonzero; pin(ShC_2) = 65;
+ShC_3 == 0), P-A53 (v((0,1)@j1) = 4, pin 21 = THETA_1, ShC_2 == 0),
+P-B3 (v((0,1)@j2) = 2 AND v((1,0)@j2) = 3 — TWO slots at height
+7 = THETA_2; pin(ShC_2) = 7), P-P33/P-P34 (graded THETA digit at
+the top slot ZERO — binom(3,2) and binom(4,2) both = 0 mod 3),
+P-P35 (v((0,1)@j3) = 4, pin 21, ShC_4 == 0; binom(5,2) = 10 a
+3-unit), P-FLOOR (every frame, every j: pin(ShC_j) >= THETA_j or
+None), P-TOP (ShC_j == 0 at every j > j* per frame), P-PERS (deep
+in-budget perturbations above THETA keep every mindiff_j), P-PARI
+(carriers {(4,1)} at X/P3 geometries, {(2,2)} at B; poldisc != 0
+on perturbed members). TEETH: T-ALLM (mutant "attainment whenever
+2 i_{t*} >= D', every m" — must die at X4/P33/P34), T-COEF (mutant
+coefficient m for binom(m,2) — must die at X4 (v = 14 vs 13) and
+P34 (4 a 3-unit vs 6 = 0)), T-VAL (v* - 1 mutant at the four
+attainment frames), T-TOPZ (mutant "content above j*" at the six
+frames with j* < mu2 - 1).
+
+RESULTS: [to be filled at the verdict commit, from the artifacts]
+
+## S5. BOX-4 — THE SEALED BATTERY-GRADE x-FUL-DIGIT CERTIFICATE ROW
+## (gentow6_box4_row.py, two-commit seal)
+
+**The box's ask (GENTOW6_PROOF S5 + the post-PE3 fold, verbatim
+scope).** A SEALED BATTERY-grade certificate row at an f1 >= 2
+genre with some c_t eta^{W(t)} not in F_Q — the PE2/PE3 fresh
+instruments exercised 6.3'(b')'s display as hostile-arc verifier
+legs, so the box stayed OPEN pending a row of the note's own
+sealed apparatus.
+
+Runner: `verification/openmath/gentow6_box4_row.py`, importing the
+COMMITTED gentow6_pe2_fresh.py (md5 of record
+061639c322dfd98a48dc399f07e6dd04, never edited) for its integer
+primitives + gp bridge, plus its own dual R/E shadow routes as in
+S4. Geometry (PE2's LEG A, reused): Q2, Phi' = x^4 + 2x^2 + 4
+(e1 = 2, f1 = 2, h = 1, D' = 4; eta = res(x^2/2), eta^2 + eta + 1
+= 0, K = F_4). FOUR rows at mu2 = 2:
+
+    R1 = u2 = 9,  c_0 = eta:    Phi2 = Phi'^2 - 8x^3   [PE2 reprod.]
+    R2 = u2 = 9,  c_0 = 1+eta:  Phi2 = Phi'^2 - 8x^3 - 16x  [PE2 r.]
+    R3 = u2 = 11, c_0 = eta:    Phi2 = Phi'^2 - 16x^3  [NEW ROW]
+    R4 = u2 = 11, c_0 = 1+eta:  Phi2 = Phi'^2 - 16x^3 - 32x [NEW]
+
+R3/R4 constants (hand ledger, preregistered): nhat(11): i_0 = 1,
+a_0 = 5; W(0) = 0; lambda(eta) = (0,1), lambda(1+eta) = (1,1);
+I_0 = 3, 2 I_0 = 6 >= D'; E2 = 22, delta = 3, THETA_0 = 47;
+w(a, b) = 2a + 11b. 6.3'(b') certificate: slot (a*, b*) = (2, 1)
+at j* = 0, digit lift(lambda_{0,1})^2 * 2^{2(5-1)} = 256, v = 8,
+height 4*8 + w(2,1) = 47 = THETA_0 — divergence EXACTLY on the
+floor. Predicted full vectors (ledger-derived pre-seal): R3:
+ShC_0 = {(2,1): 256, (0,1): -512}; R4: ShC_0 = {(2,1): 256,
+(0,1): 512} (the mixed monomial pair (r,r') = (0,1) of the single
+digit t = 0 feeds (0,1) with opposite-sign tail routing, the
+x^4-overflow +1024 Y against the x^6 chain's -512 Y); R1/R2: PE2's
+committed {(2,1): 64, (0,1): -128} / {(2,1): 64, (0,1): 128};
+honest read DRAIN at all four; pins = THETA_0 exactly at all four;
+ShC_1 == 0 at all four (the (c)-face: B* + 1 = 1 < 2 = e2 f2).
+PERTURBATION SWEEP: 10 deep in-budget perturbations per row keep
+mindiff_0. PARI: dev cross-check per row (gp divrem), factorpadic:
+Phi' one factor (4, f 2); each Phi2 one factor deg 8; poldisc != 0
+on perturbed rows. TEETH: T-F1EVAL (the f1 = 1-evaluation mutant —
+reads the digit as chat pi^a x^i, i_0 = 1: predicts NO overflow
+(2 i_0 = 2 < 4 = D') hence shadow-exactness: must die at ALL FOUR
+rows), T-VAL2 (v* - 1 at the certificate slot, 4 rows), T-SLOT
+(mutant b* = 0: the slot (a*, 0) graded read must NOT carry the
+certificate).
+
+RESULTS: [to be filled at the verdict commit, from the artifacts]
+
+## S6. RESIDUE + GRADE BOX
+
+* **Delivered (pending machine verdicts):** BOX-1 = THEOREM
+  GENTOW-6.5, PROVED at f1 = 1 (the box's k-extraction ledger =
+  clause (a); the attainment claim = (b1) with the binom(m,2)
+  p-condition the box's own parenthetical missed; obs-1's three
+  configurations = (b1)/(b2)+S3/(c)). BOX-4 = the sealed
+  battery-grade x-ful-digit row, R1-R4.
+* **NOT delivered / named:** the j < j* lower-coordinate
+  classification at mu2 >= 3 (S3 display only — genre arithmetic,
+  extends GENTOW6-BOX-3's fence; no new box needed: it is BOX-3's
+  geography one m up); the f1 >= 2 x mu2 >= 3 compound (ANNEX-
+  REMARK 6.5', prose only, no machine contact — a NEW honest fence
+  since BOX-4's leg is mu2 = 2).
+* **Statement fence:** no sealed display of GENTOW6_PROOF is
+  edited; this note is a separate instrument + the frozen note
+  gains only dated appends.
+
+**GRADE: 0/2 (attempt).** Hostile arc owed. Natural PE1 targets:
+Step III's linearity reduction (Ghat_j(F) = Ghat_j(Delta)), Step
+IV's uniqueness-at-the-slot, the S3 sign conventions, and the R3/R4
+hand ledgers.
