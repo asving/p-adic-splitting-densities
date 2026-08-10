@@ -536,9 +536,12 @@ THEOREM GENTOW-6.6 (the window count ledger pricing (f_S, g) ↦
 f_S·g, the box's own Jacobian/content identity, PROVED with an
 explicit N_0) + S8 = THEOREM GENTOW-6.7 (regime-3 top-slot
 classification at mu2 = 2) with COROLLARY-THEOREM GENTOW-6.7C (the
-j*-1 band one m up — the (binom(m,2) - binom(m,3)) law). Machine
-legs S9 (two sealed runners, two-commit each). Grade of the append:
-0/2 (attempt; hostile arc owed), riding the frozen notes it cites.**
+j*-1 band one m up — the 2 binom(m,3) law of record, 6.7C'; the
+seal's binom(m,2) - binom(m,3) display was REFUTED BY THE
+INSTRUMENT at m >= 4 and corrected via the descent-multiplicity
+LEMMA 6.7D — see the dated block in S8). Machine legs S9 (two
+sealed runners, two-commit each). Grade of the append: 0/2
+(attempt; hostile arc owed), riding the frozen notes it cites.**
 
 ## S7. GENTOW6-BOX-2 — THE COUNT LEDGER (THEOREM GENTOW-6.6)
 
@@ -931,6 +934,59 @@ note, 0/2) — both ride their notes' grades. The 6.7C geography
 class is f2 = 1, i_0 = 1, e1 = 2 EXACTLY as stated; deeper bands
 (j* - 2 and below) assemble three or more branches (k = 4 tail-
 carry routes enter) and stay displayed, not claimed.
+
+[**RUN-1 CORRECTION (dated 2026-08-10, THEOREM-FACING; the sealed
+instrument caught it — artifact gentow6_box3_regime3_output_run1_
+RED.txt).** COROLLARY-THEOREM 6.7C's displayed coefficient
+binom(m,2) - binom(m,3) is FALSE at m >= 4: the instrument
+measured the (1,1) slot values 46656 = 8 x 5832 (P34, m = 4),
+116640 = 20 x 5832 (P35), 233280 = 40 x 5832 (P36) against the
+display's 2/0/-5 multiples — the display's m = 5 "integral
+degeneration" clause (iii) and the m-instantiations (iv) are
+WITHDRAWN. Root cause, re-derived from this note's own objects
+(not transcribed): the (ii)-display priced the pair branch's
+descent as ONE division step of coefficient chat nhat, but at
+T = {0} the iterated K2-division has the closed K2-adic form
+
+    LEMMA GENTOW-6.7D (descent multiplicity). K2 = Y^{e2} -
+    chat nhat (f2 = 1) gives, exactly,
+    Y^{e2 r + b} = Sum_j binom(r, j) (chat nhat)^{r-j} K2^j Y^b
+    (0 <= b < e2): a monomial entering at coordinate r reaches
+    coordinate j with multiplicity binom(r, j) and factor
+    (chat nhat)^{r-j}, each such route weight-exact (nhat's term
+    carries weight E2 = wt(Y^{e2})). Proof: Y^{e2} = K2 +
+    chat nhat and the binomial theorem; the expansion IS the
+    iterated exact division. ∎
+
+    At mu2 = 2 every descent has r - j <= 1 with r <= 1, so
+    binom(r, j) = 1 — THEOREM 6.7's displays are untouched (and
+    measured GREEN); at m = 3 likewise binom(1, 0) = 1, which is
+    why the committed FR5X/A53/P33 rows could not catch the slip.
+
+**COROLLARY-THEOREM GENTOW-6.7C' (statement of record, supersedes
+(ii)-(iv)).** In 6.7C's setting the (1,1) slot of ShC_{m-3} has
+one-extraction value EXACTLY
+
+    [ binom(m,2) binom(m-2, m-3) - binom(m,3) binom(m-3, m-3) ]
+      · chat^3 pi^{3 a_0} x  =  2 binom(m,3) · chat^3 pi^{3a_0} x
+
+(pair branch: extracted at Y^{2m-3} = Y^{2(m-2)} Y, descends
+r = m-2 to j = m-3 with multiplicity m-2 and one factor chat nhat;
+triple branch: enters at Y^{2(m-3)} Y directly, multiplicity 1;
+census (i) unchanged), and the graded THETA_{m-3} digit is
+2 binom(m,3) · c-bar^3 · (wrap unit): attainment at coordinate
+m-3 exactly on the floor iff p does NOT divide 2 binom(m,3).
+Since 2 binom(m,3) >= 2, there is NO integral degeneration; at
+p = 2 the slot cancels in grade at EVERY m (the factor 2) — the
+X3/A53 measured slack rows; at p = 3: 2 binom(m,3) is a unit at
+m = 3, 4, 5, 6 except none (v_3(2binom(m,3)) = 0 there):
+attainment at P33/P34/P35/P36, measured. The corrected law
+reproduces every measured value including the committed m = 3
+rows (both laws coincide at m = 3). ∎
+
+The three FR5X configurations re-read: attained at j* (6.5(b1)),
+slack at j*-1 BECAUSE p = 2 | 2 binom(m,3) (not because of a
+binomial difference), identically-zero above j* (6.5(c)).]
 
 ## S9. MACHINE LEGS (BOX-2 + BOX-3), TWO-COMMIT SEALS
 

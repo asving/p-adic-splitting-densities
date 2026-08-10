@@ -1,0 +1,11 @@
+VIOLATION [C34] P34 j1 {(0, 0): 104976, (1, 1): 46656} pin 31
+RECORD P34 ShC_1 full: {(0, 0): 104976, (1, 1): 46656}
+VIOLATION [C35] P35 j2 {(0, 0): 524880, (1, 1): 116640} pin 31
+RECORD P35 ShC_2 full: {(0, 0): 524880, (1, 1): 116640}
+VIOLATION [C36] P36 j3 {(0, 0): 1574640, (1, 1): 233280} pin 31
+RECORD P36 ShC_3 full: {(0, 0): 1574640, (1, 1): 233280}
+VIOLATION [CFORM] closed-form ties
+VIOLATION [TEETH] tooth T-M5SUM NOT killed: P35
+== SUMMARY == checks 213 violations 5
+KILLS [('T-CHI', 3), ('T-CVAL', 3), ('T-M5SUM', 3), ('T-PARITY', 3), ('T-TOPPAIR', 3)]
+VERDICT RED
