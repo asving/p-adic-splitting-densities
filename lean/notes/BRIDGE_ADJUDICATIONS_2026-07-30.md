@@ -15620,3 +15620,54 @@ the GENTOW5 Codex repairs; (4) RCT unit S-1-T1-gauge-cocycle [CODEX,
 hard] — brief composed + codex run FOREGROUND in-lifetime + lab-tech
 transcription, under the R.2 S-1a gate + R.1 three-leg checks + R.3
 joint-frame battery.
+
+## B23 FOLD (2026-08-10, complete after cached resume) — the box campaign FULLY through the bar; [GENTOW5-W(i)] PROVED; the RCT's first round all in
+
+GENTOW6-BOXES PE4 (d3aad11a): **CLEAN 0C/0G/1m — ACCEPTED 2/2** (PE3
++ PE4 consecutive). All three virgin faces verified live: 6.7E
+multi-entry linearity exact at p=5/7 with hand-derived merge
+multiplicities; 6.6(d) at a REAL three-class p=5 tower (the rider's
+k=c+1 boundary case's first live instance; N₀ nondecreasing measured
+21→42; fibers q^c exact per step); the first double-kill frame m=7
+(p=7 | 21 AND | 70, both grade-kills exact, the withdrawn-law tooth
+died). RED-kept run-1 (one verifier gp want; repair added a genuine
+irreducible p=7 genre). The box-closure campaign's LAST note is
+through the bar.
+
+THE PROVER RCT ROUND 1, all three units complete:
+- **W(i)/FABLE (hard): PROVED** — [GENTOW5-W(i)] at every i ≥ 3,
+  byte-matching the fenced display; proof = B″'s four steps at level
+  i (peel via Cor 4.7(2); y-degree kill; the digit read via the
+  accepted τ_i-cocycle + (SLOT) + the S11.2 B′-family); the grade-0
+  lift eliminated so the two i=2-only inputs are OUT of the
+  footprint; GENTOW5's fence-conditional scope discharges onto it.
+  Machine 60/0; depth-4/5/6 witness ladders reproduced EXACTLY; NEW
+  frame LW3 = the first letter-live level-3 contact (the i=3 display
+  verified at both slots, ψ₄^{(w)}(Y)=0 on the nose). Bonus: first
+  measured avatar ≠ w geography, filed to WFRAME OPEN-3.
+  (GENTOW5_WI_2026-08-10.md, ec30256c; 0/2, arc owed.)
+- **T5/FABLE (routine): composed** (fold B23 supra; 0/2, arc owed).
+- **T1/CODEX (hard): composed** — brief 69,956 chars (all 7 annexes
+  verbatim); gpt-5.6-sol high, ONE foreground call, 6m02s, 46,892
+  tokens, complete without continuation. S-1a gate MET: five theorem
+  conclusions + an 18-site absorption map over all seven annexes;
+  Codex's own plan included the R.3 joint frame (F4-JOINT: f₁=2 ∧
+  η=ω ∧ w=ω ∧ μ=3). Machine: 85 checks / 1 violation = Codex's own
+  ψ^{(w)} display slip (P-J2), which the lab-tech PRE-REGISTERED as
+  expected-RED at the seal (caught by computation before the run);
+  4/4 teeth fired; PARI dual routes green; the GENTOW4 regression
+  93/0. Gaps RECORDED not fixed (G-1 the slip; G-2 a consumption
+  question on R-multiplicativity; further per the unit log).
+  (T1_GAUGE_COCYCLE_2026-08-10.md; 0/2, arc owed.)
+
+EARLY RCT OBSERVATIONS (qualitative, n=1 per cell, recorded not
+inferred): the CODEX arm's wall-time (6 min compose) is an order
+cheaper than a FABLE composer (~40 min); its one arithmetic slip was
+caught by the tech's machine leg BEFORE the run (the workflow's
+division of labor functioning); the FABLE hard unit delivered a
+genuinely open lemma with a new machine-contact frame. The arcs
+adjudicate quality; no conclusions yet.
+
+**B24 DISPATCHING**: the three RCT arcs open — WFRAME PE1, GENTOW5_WI
+PE1, T1 PE1 (the recorded gaps as charged surfaces; the W(i) proof as
+as-of context everywhere).
