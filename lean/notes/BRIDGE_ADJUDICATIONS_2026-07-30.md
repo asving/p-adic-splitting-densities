@@ -14955,3 +14955,73 @@ T(b)′ cite + the disc row; GENTOW1 R2a (clipped free-count re-derived)
 / R2b (the ONTO sets defined) / R2c (LIFT-STABLE three-band) + F-4;
 GENTOW2 R3 hygiene ×4; repair-completion block appended to the
 TOWERRAT record. GENTOW4/6 arcs open at B14.
+
+## B13 FOLD (2026-08-10) — GENTOW5 at 1/2; HETOW-4 PROVED (the twist is a cocycle, and it telescopes); GENTOW3 catches the certificate seam
+
+GENTOW5 PE4 (b22b37b): **CLEAN 0C/0G/2m — counter 0/2 → 1/2.** The r3
+(c)-repair re-derived as the uniform GENTOW-1 transport; the corrected
+residual-degree count exact both ways; all four witness rows re-derived
+by hand; **(c) HOLDS at depth 5/6** (f64@Φ₄: support {0,4}, residual
+ψ₅², box 1365 = 2E₅+1) while the retired clause fails there again.
+Fresh route = the arc's first defect-free first run (70/0, seal
+891de3a): first proper (e,f)=(2,2)-stage (c)-read (f16: first
+deg-ψ>1 read; OLD clause killed at the new f₂=2 geometry); first
+(16,2)-leaf witness with dual ladders exact; residual CONTENT leg at
+p=3 ((y²−y−1)² mod 3, unfakeable by support). FIVE isolated re-runs
+bit-identical incl. the first isolated re-run of PE3's own instrument.
+Minors: PE4-F-1 (the S3 induction sentence leaves (c)'s index-0
+instance formally in scope while coverage proves 1..r−1 — one-clause
+scope fix, unconsumed edge) + PE4-F-2 (S9's f32 digit expansion
+halfway reduced: completing Φ₂² = Φ₃+16Φ₁ reaches the canonical dev,
+machine-confirmed; conclusions invariant). MINORS-ONLY → the counter
+HOLDS (HMENU3-ANNEX-A precedent); rider then PE5 = the acceptance
+attempt. Disclosure: GENTOW1 read at 4e81a57 (pre-R2); (c) cites
+GENTOW-1 by reference so it inherits R2a automatically.
+
+GENTOW3 PE2 (c048154): NOT CLEAN — 1 GAP, counter 0/2. F-1: THREE
+record sentences state attainment CERTIFICATE-FREE (S0 "fails AT Θ_j
+(attained by the key power's own shadow)"; S4 δ=1 "the FIRST leaf
+height is already unfaithful"; the S4 count-law "at δ=1 that is the
+entire leaf population") — refuted by the committed FR-M3 measurement
+(self-shadow [12,7,4] vs Θ [10,7,4]: no failure at Θ₀) AND by this
+pass's constructed member f = Φ₂³+32 (a δ=1 decided leaf AT Θ₀ = the
+node floor, hulls + vertex digits identical both reads — Θ-reaching
+yet NOT mislabeled); (iv)'s "touched coordinate(s)" now has a measured
+instance separating its readings (plain reading FALSE at FR-M3 j=0;
+certificate reading correct per the (iv) proof + BOX-1). Cure = ONE
+certificate-scoping pass (S0 + S4 ×2 + the (iv) pin), re-derived from
+the (iv) proof and GENTOW3-BOX-1; theorem (i)–(iii),
+(iv)-under-certificate, COR 3.C untouched. The r1 gauge annex
+CONFIRMED by independent re-derivation; the mid-pass GENTOW1
+three-band restatement adjudicated in-flight (GENTOW3 consumes only
+the strict-below-cap Band 1, preserved verbatim — not a finding).
+Fresh route (149/0 run-2; run-1 RED kept, 4 verifier-harness misses
+disclosed): FR2-C1 = first μ₂=3 × η≠1 compound anywhere — ATTAINED at
+all three coordinates, so FR-M3's j=0 slack is per-frame, not a μ₂=3
+artifact; δ=0 corner proven x-free-trivializing at f₁=1.
+
+TOWERRAT REPAIRS (completion record fe406d5): **LEMMA HETOW-4 PROVED**
+(append 7fb8823, seal 3f23b88, verdict 9ee7c92) — the honest answer to
+Codex F-1: the normalizer twist τ(k) = η^{−Q(m(k))} does NOT cancel
+per height (the coboundary defect is a genuine cocycle, not a
+character) — BUT the assembled residuals TELESCOPE: ρ_t =
+ρ̂_t·τ(H₀)·δ^{−t}, so R = τ(H₀)·R̂(Z/δ) with δ = τ(u₃) — exactly the
+J-D0-covered species; separability, (deg,mult) multisets, ℓ₂·deg r₂,
+s₂ = δŝ₂, and the α-refine chain all transport. Machine: 203 checks /
+37 dual-route gp jobs / 0 violations at frames X, Z, S; the sealed
+supp instrument isolation-re-run first (29/0, md5 unchanged). HETOW's
+gap annotation DISCHARGED at note grade. GENTOW1 R2a (clipped display
+of record Σmax(0, N−floor); Codex instance −20 → 0 cured; clip-inactive
+rows unchanged) / R2b (DOM_N/COD_N defined; ONTO by exact enumeration
+16→16 at A5-R1) / R2c (GENTOW-5(a) three-band: 7 stable / 8 = cap
+value-exact-residue-flips / 14 vs 11 at FAM-B N=4; gentow1_r2_units.py
+41 checks GREEN) + F-4, commits 28f0bf3/4caf0fb. GENTOW2 R3 hygiene ×4
+(33f8620). Pre-append freezes prefix-verified on all four files.
+QUEUED Codex leg: the discharge-confirmation pass (HETOW-4 + R2a/b/c
+back to Codex) — batch with the next ratification round.
+
+Board: HETOW 2/2 ✓ (challenge discharged) · GENTOW1 2/2 ✓ (R2 landed)
+· GENTOW2 2/2 ✓ · GENTOW5 1/2 (rider + PE5 = acceptance attempt) ·
+GENTOW3 0/2 (r2 = the certificate-scoping pass → PE3) · GENTOW4/6
+arcs open at B14 — B14: GENTOW5 rider→PE5 + GENTOW3 r2→PE3 + GENTOW4
+PE1 + GENTOW6 PE1.
