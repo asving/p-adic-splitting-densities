@@ -237,21 +237,29 @@ chk("NF3=1 DEGS3=[8]" in out, "FA3: corrected key ONE deg-8 factor over Q_3")
 chk(out.count("PRIME ef=[2,4]")==1, "FA3: corrected sigma = {(2,4)} — the seam-live depth-3 carrier")
 chk("lad=[1,3,7]" in out, "FA3: nfeltval ladder (x,Phi1,Phi2) = (1,3,7) exact")
 import re as _re
-m=_re.search(r"PRIME ef=\[2,4\] lad=\[1,3,7\] res=\[(\d+),(\d+),(\d+),(\d+)\]",out)
-chk(m is not None and int(m.group(1))>=1, "FA4: val(t1^2+t1+2) >= 1 — beta1 is a psi2-root")
-chk(m is not None and int(m.group(2))>=1, "FA4: val(t2^2-t2-t1) >= 1 — beta2 IS a psi3-root (the i=2 gauge pin verified LIVE)")
-chk(m is not None and int(m.group(3))==0, "FA4: val(t2^2-t2-2t1) = 0 — twisted residual NOT carried by corrected key")
-chk(m is not None and int(m.group(4))>=1, "FA4: val(x^2/3 - 2) >= 1 — eta = 2 confirmed at the leaf")
+# [RUN-2 INSTRUMENT FIX, disclosed: the sealed regex read \d+ only;
+#  PARI prints +oo where the element is exactly 0 (r2a at the
+#  corrected key IS the key identity P3corr(th)/(729 th^2) = 0, and
+#  r2b at the naive key likewise) — +oo satisfies the sealed ">= 1"
+#  predictions a fortiori. Parser now maps +oo -> a large int. No
+#  prediction changed.]
+def _v(s): return 10**9 if s=="+oo" else int(s)
+_pat=r"res=\[(\+oo|\d+),(\+oo|\d+),(\+oo|\d+),(\+oo|\d+)\]"
+m=_re.search(r"PRIME ef=\[2,4\] lad=\[1,3,7\] "+_pat,out)
+chk(m is not None and _v(m.group(1))>=1, "FA4: val(t1^2+t1+2) >= 1 — beta1 is a psi2-root")
+chk(m is not None and _v(m.group(2))>=1, "FA4: val(t2^2-t2-t1) >= 1 — beta2 IS a psi3-root (the i=2 gauge pin verified LIVE)")
+chk(m is not None and _v(m.group(3))==0, "FA4: val(t2^2-t2-2t1) = 0 — twisted residual NOT carried by corrected key")
+chk(m is not None and _v(m.group(4))>=1, "FA4: val(x^2/3 - 2) >= 1 — eta = 2 confirmed at the leaf")
 
 print("== FA-5: naive key P3naiv = Phi2^2 - 27x*Phi2 - 486x*Phi1 (TOOTH) ==")
 outn=gp_probe(P3naiv)
 print(outn.strip())
 chk(outn.count("PRIME ef=[2,2]")==2 and "PRIME ef=[2,4]" not in outn, "FA5-TOOTH: naive sigma = {(2,2),(2,2)} != {(2,4)} — GENTOW5-B(a)/(b) FAIL at the gauge-naive recipe at i = 2")
 chk(outn.count("lad=[1,3,7]")==2, "FA5: per-branch nfeltval ladder (1,3,7) exact (values seam-blind)")
-mm=_re.findall(r"PRIME ef=\[2,2\] lad=\[1,3,7\] res=\[(\d+),(\d+),(\d+),(\d+)\]",outn)
-chk(len(mm)==2 and all(int(a)>=1 for a,b,c,d in mm), "FA5: per-branch beta1 is a psi2-root")
-chk(len(mm)==2 and all(int(c)>=1 for a,b,c,d in mm), "FA5: per-branch val(t2^2-t2-2t1) >= 1 — the vartheta^{-1}-TWISTED residual IS carried by the naive key")
-chk(len(mm)==2 and all(int(b)==0 for a,b,c,d in mm), "FA5: per-branch val(t2^2-t2-t1) = 0 — psi3 NOT carried by the naive key")
+mm=_re.findall(r"PRIME ef=\[2,2\] lad=\[1,3,7\] "+_pat,outn)
+chk(len(mm)==2 and all(_v(a)>=1 for a,b,c,d in mm), "FA5: per-branch beta1 is a psi2-root")
+chk(len(mm)==2 and all(_v(c)>=1 for a,b,c,d in mm), "FA5: per-branch val(t2^2-t2-2t1) >= 1 — the vartheta^{-1}-TWISTED residual IS carried by the naive key")
+chk(len(mm)==2 and all(_v(b)==0 for a,b,c,d in mm), "FA5: per-branch val(t2^2-t2-t1) = 0 — psi3 NOT carried by the naive key")
 
 print(f"== PE2 FRESH VERDICT: {OK[0]} checks, {BAD[0]} violations ==")
 sys.exit(1 if BAD[0] else 0)
