@@ -11,9 +11,25 @@ isolated re-run, tautology audit. Fresh route: disjoint from GF29 and
 the committed record.
 
 ## Findings ledger (running)
-- F-1: PENDING
+- F-2′ (MINOR): §5 counts not swept by the r1 R-7 adoption (OPEN-3
+  "7-prime record"/"4 frames"; OPEN-4 "7 measured primes" —
+  source-dated but un-bracketed). No false claim; undercounts only.
 - Machine leg: PENDING
 - Fresh route: PENDING
+
+**Resume note (session 2, same pass).** The session that committed
+"1 of 3" (ee9a2d5f) died before the machine leg. This session
+re-verified its surface-1 claims from the sources before resuming
+(hostile discipline: nothing inherited unchecked): Φ′_LP1 =
+x⁴+2x²+4 re-confirmed at GENTOW2_PROOF ~L1140 + pe4 L18 + pe6 L50;
+the w-language grep re-run at HEAD (15 sites) and the classification
+re-checked site-by-site — consequence (i)/F19 avatar-keyed, R-6's
+"at measured w != 1" is PE3 LEG W's own sentence (L286 verified),
+OPEN-4's "7 measured primes" is GENTOW5's [GT5-r3 DATED] wording
+(L1321–22 verified), §7's joint-frame phrase is the byte-frozen
+docstring; the LW3 citation re-verified against GENTOW5_WI ("avatar
+w_av = 2 = w_3 * (gap unit 2)", L454). All held; F-2′ stands as the
+one residual.
 
 ## Verification log (running)
 
