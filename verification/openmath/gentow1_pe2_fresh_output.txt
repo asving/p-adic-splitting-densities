@@ -1,0 +1,24 @@
+=== GENTOW1 passPE2 fresh route (seal 2026-08-10) ===
+== FRAME G1 (eta != 1 x e2 = 2; mu2 = 2) ==
+  floors match the hand table (8 slots)
+  anchor pins [21, None]
+  8 NEC members (incl. 2 deep-perturbed) checked
+  straddle: PB1(v=5,lattice) FAILS [dv(A0) = 12 want 20/e2]; PB3(v=5,off) pins [22, None]; PB2(v=6=floor) pins [24, None] (auto-bump 20+4)
+  [diag] PB0 (residual-violating, polygon-blind): gate=None (expected None -- disclosed gate scope)
+  refine: old [22, 11] -> new [23, 12]
+  tooth wrong-height read [22, 11] (pin alive)
+  tooth wrong-residue read [22, 11] (pin alive)
+== FRAME G2 (mu2 = 3 first contact; eta != 1) ==
+  floors match the hand table (12 slots)
+  anchor pins [31, None, None]
+  6 NEC members (incl. 2 deep-perturbed) checked
+  BN3 tooth: digit AT wt 30 -> gate 'dv(A0) = 17 want 30/e2'
+  mu2=3 refine: old [33, 23, 14] (hand-derived (33, 23, 14)) -> new [37, None, None]
+  tooth wrong-height read [33, 23, 14] (p0 = 33 alive)
+  tooth wrong-residue read [33, 23, 14] (p0 = 33 alive)
+== PARI leg: 26 jobs ==
+  gp stderr tail:   ***   Warning: new maximum stack size = 4000002048 (3814.699 Mbytes).
+
+  [diag] PB0.dg sigma [[4, 2]] (unscored)
+teeth: {'PIN-STRADDLE': 1, 'BN3': 1, 'REFWRONG1': 1, 'REFWRONG2': 1}
+=== VERDICT: GREEN -- 181 checks, 0 violations (6.2s) ===
