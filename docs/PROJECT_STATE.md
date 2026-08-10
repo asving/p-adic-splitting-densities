@@ -3780,7 +3780,18 @@ count ledger via Sylvester–Jacobian pricing, fibers exactly q^c,
 c_J = μ₂*m′D₂E₂/(e₁e₂) via residual separation; 576/0 with exact
 enumeration at two avatars (4,782,969 pairs → 3¹² images, all fibers
 9). **GENTOW-6.7 + COROLLARY 6.7C′ (BOX-3: key-power half PROVED at
-μ₂=2; member half = the S8.1 displayed obstruction)** — the χ
+μ₂=2; member half = the S8.1 displayed obstruction)** [r2
+2026-08-10, passPE2 F-1: the S8.1 obstruction display is
+WITHDRAWN and OVERTURNED — LEMMA GENTOW-6.7E (in-budget entry
+branches read ≥ Θ_j + δ, so the exactly-Θ graded layer is
+genre-constant) makes the exactly-Θ member half GENRE-DECIDABLE on
+the locus; the contrast pair exists only below the budget floors
+(constructed: R3F (c,c′)=(−162,9) at (49,28) vs the key power's
+(46,25); (81,9) shadow-exact); sealed leg
+gentow6_r2_memberpair.py 441/0, teeth 1/2/2, isolated re-run
+bit-identical; open member residue = the ABOVE-floor divergence
+classification (E-ENTRY vs key-power diverge-vs-not, one genre)]
+— the χ
 pair-sum criterion; the unit's OWN sealed 6.7C law was refuted by
 its RED run and re-derived via the K2-adic descent multiplicity
 (6.7D) as 2·binom(m,3)·ĉ³π^{3a₀} — reproducing the FR5X
@@ -3790,4 +3801,6 @@ three ways). Codex TOWERRAT2 RUN A complete: GENTOW5 as-built =
 CHALLENGE (adjudication at B20); runs B–F relaunching. Sub-box
 high-water: every named box now carries a proved theorem or a
 displayed obstruction; the open surface is the GENTOW6_BOXES note's
-own hostile arc (0/2, r1 owed) + the S8.1 member half.
+own hostile arc (0/2, r1 + r2 repair rounds landed, passes resume)
++ the S8.1 member half's above-floor residue (its exactly-Θ half
+closed by 6.7E, r2).

@@ -921,6 +921,58 @@ perturbation rows holding their floors) already witness both
 behaviors INSIDE one genre. That is the exact obstruction to a
 theorem-shaped classification of ask (ii); it stays displayed.
 
+[**r2 CORRECTION (dated 2026-08-10, passPE2 F-1; the paragraph
+above is kept visible, its witness citation and its conclusion are
+both WITHDRAWN).** The cited pair is CROSS-genre (E-ENTRY lives at
+FAM-E; the S9 perturbation rows at R3A-R3E/P-frames/X3/A53), and
+the attempted repair-by-construction OVERTURNED the display: the
+same-genre exactly-THETA contrast pair provably does NOT exist,
+because for in-genre members the branch game never reaches the
+floor. Re-derived from this note's own ledger (6.5 Steps I-II +
+the entry pricing above):
+
+    LEMMA GENTOW-6.7E (entry-branch floor gap; mu2 = 2, f1 = 1,
+    any f2, any p, delta >= 1). Let f = Phi2^2 + C_1 Phi2 + C_0
+    have every digit ON or ABOVE the GENTOW-1(b) budget floors
+    (= the genre locus; digit c at coordinate j', slot (a, b) has
+    ee v(c) + w(a, b) >= THETA_{j'}, ee = D' e2). Member
+    discrepancy is LINEAR in the entries (division is linear;
+    C_0 is in-grid and untouched), and every entry-driven
+    discrepancy term is the entry digit times weight-EXACT
+    division emissions (the lift identity e1 a_t + i_t h =
+    u2(f2 - t) is precisely the dv2-weight tie of the side) times
+    e >= 1 extractions, each costing +delta = u2 - e2 D' h > 0.
+    Reading at coordinate j (total weight minus j E2, the entry's
+    j' co-factors carrying E2 each): height = (entry pin) +
+    (j' - j) E2 + delta e >= THETA_{j'} + (j' - j) E2 + delta =
+    THETA_j + delta > THETA_j. So the member's height-THETA_j
+    graded discrepancy layer EQUALS the key power's at every
+    coordinate. ∎
+
+    COROLLARY (genre-uniformity of exact attainment). On the
+    locus, "the shadow diverges from DRAIN at EXACTLY THETA_j at
+    coordinate j" holds for a member iff it holds for f = Phi2^2:
+    a GENRE invariant, decided by THEOREM 6.7's chi criterion +
+    the displayed cascade digits. Ask (ii)'s exactly-THETA half is
+    genre-decidable — the OPPOSITE of the withdrawn obstruction.
+
+What per-member congruences DO govern is the ABOVE-floor seam:
+whether a member diverges at all, and at what height > THETA_j
+(both branch value and height move with the entry residues and
+depths — E-ENTRY at 31 > 29 vs the FAM-E key power's diff == 0,
+the measured diverge-vs-not pair INSIDE one genre; that residual
+member classification stays displayed, not claimed). The contrast
+pair WAS constructed — BELOW the budget floors, where LEMMA
+6.7E's infeasibility gate opens (killing R3F's two live ShC_1
+graded slots needs v(c) <= 4 < 6 = the (2,1) floor): at R3F
+geometry, entries (c, c') at slots (2,1)/(1,2) of coordinate 1
+give the graded system (2 - eps - eps', -2 eps - eps') mod 3,
+solved by (eps, eps') = (1, 1): the pair (c, c') = (-162, 9)
+diverges at mindiff = (49, 28), strictly ABOVE both floors, vs
+the key power's exactly-(46, 25) — and the exact solve
+(c, c') = (81, 9) is SHADOW-EXACT (diff == 0 at both
+coordinates). Machine leg: S12 (441/0, sealed, run 1 green).]
+
 > **COROLLARY-THEOREM GENTOW-6.7C (the j* - 1 band one m up: the
 > binomial-difference law).** Fix a tower genre with f1 = 1,
 > f2 = 1, e2 = 2, e1 = D' = 2, i_0 = 1 (so T = {0}, u2 = 2 a_0 + h
@@ -1190,7 +1242,17 @@ and produced the 6.7D/6.7C' correction.
   membership is cut by per-member congruences on free digits — the
   two measured behaviors inside one genre (E-ENTRY above-floor
   DRAIN vs the floor-holding perturbation rows) witness that no
-  genre-level trichotomy can decide it.
+  genre-level trichotomy can decide it. [r2 (passPE2 F-1): this
+  verdict sentence is WITHDRAWN — the cited pair is cross-genre,
+  and LEMMA 6.7E (S8.1 r2 block) proves the reverse: on the genre
+  locus the exactly-THETA half of the member ask IS genre-decided
+  (by 6.7's chi + the cascade digits, uniform over members —
+  machine leg S12: 36 in-budget R3F/R3G rows, 0 defectors). What
+  stays OPEN of the member half is the ABOVE-floor classification
+  (which members diverge at all, and where): per-member
+  congruences, displayed via E-ENTRY (31 > 29) vs the FAM-E key
+  power (diff == 0) — a measured diverge-vs-not pair inside one
+  genre — and via S12's below-floor constructed rows.]
 * **Grade: 0/2 (attempt).** Hostile arc owed. Natural PE1 targets:
   6.6(c)'s fiber argument and N_0 arithmetic, 6.6(d)'s separation
   lemma normalization, 6.7(b)'s "no other branch" fence at
@@ -1318,3 +1380,104 @@ output (2d8d617a), REDs, and the pe1_fresh pair — untouched;
 re-verified by md5 before commit. **Grade after this round: 0/2
 (the repair round does not count toward acceptance; hostile
 passes resume on the repaired text).**
+
+---
+
+# APPEND (GENTOW6-BOXES r2 REPAIR unit, 2026-08-10): passPE2 REPAIR
+# ROUND — F-1 (GAP) RESOLVED BY OVERTURN (LEMMA 6.7E: the in-genre
+# exactly-THETA contrast pair is IMPOSSIBLE; the pair constructed
+# below the floors), F-2/F-3 MINORS LANDED
+
+## S12. THE r2 REPAIR ROUND (verdict passPE2 = NOT CLEAN, 1 GAP +
+## 2 MINOR; grade STAYS 0/2)
+
+**F-1 (GAP, the S8.1/S10 witness pair) — RESOLVED, and the display
+OVERTURNED.** The charge was PROVE-FIRST: construct a same-genre
+exactly-THETA contrast pair. The construction attempt, run through
+this note's own entry-pricing ledger, produced instead LEMMA
+GENTOW-6.7E (S8.1 r2 block): in-genre entry branches read at
+height >= THETA_j + delta at every coordinate, so the exactly-
+THETA graded layer is genre-constant and NO in-genre contrast pair
+exists — the withdrawn sentence's conclusion was not just
+mis-witnessed but false. The pair exists exactly where the lemma's
+gate opens, BELOW the budget floors: the graded 2x2 system at
+R3F's coordinate-1 slots is infeasible in-budget (needs
+v(c) <= 4 < 6 = floor) and solvable at depth 4. S8.1 and S10 carry
+dated correction blocks; the residual member ask (above-floor
+divergence classification) stays open and displayed.
+
+**Machine leg (gentow6_r2_memberpair.py, two-commit seal).** Seal
+095b083e @ 463f2b3d (docstring preregistered: hand ledgers for the
+self rows, ROW-A/B, COMBO-R3F/R3G, W2/W3/W4, E-ENTRY, E21, E20,
+NOFLOW; law-keyed wants for the in-budget sweep; disclosed
+pre-seal smoke = the copied engine on the committed CE4 SELF row
+only). Engine = the committed pe2_fresh Fr2 division engine
+(source md5 d05ec293 asserted at run time), extended with member
+reads; oracles per row: dual R/E division, the substitution
+identity sum_j GhatE_j(x, Phi') Phi2^j == f - Phi2^m in one
+variable, honest divmod reconstruction, per-coordinate floors.
+**RUN 1 GREEN — 441 checks, 0 violations, teeth kill counts EXACT
+(T-OBSTR 1, T-NODELTA 2, T-BELOW 2); isolated re-run in a fresh
+/tmp scratch BIT-IDENTICAL (output md5 a1d9090c).** Highlights,
+each a preregistered want:
+
+* SELF-R3F mindiff = (46, 25) = THETA exactly (the attaining
+  member, committed dicts reproduced); ROW-W4 (c, c') = (-162, 9)
+  BELOW-floor member: mindiff = (49, 28) — the constructed
+  exactly-THETA contrast pair, same genre GEOMETRY, out-of-locus;
+  ROW-W3 (81, 9): diff == 0 at both coordinates (a shadow-EXACT
+  member — the solved congruence system cancels every slot value
+  exactly, five independent zero identities);
+* the 40-row in-budget sweep (R3F/R3G overflow-capable slots
+  (1,b)/(2,b), all unit residues, two depths above each floor,
+  plus the FAM-E slots): R3F/R3G rows measured mindiff = (46, 25)
+  on each of the 36 swept rows (24 R3F + 12 R3G) — 0 defectors
+  (T-OBSTR's kill); the 4 FAM-E rows measured mindiff_j == None
+  or >= THETA_j + delta (LEMMA 6.7E's gap, live at delta = 1);
+* E-ENTRY reproduced on the fresh member engine: diff_0 =
+  {(0,1): -16}, mindiff_0 = 31 = THETA_0 + r + delta with r = 1
+  (the shadow (0,1) slot drained, the committed label flip);
+  ROW-E21 mindiff = (32, 18): the dropped carry CASCADES, both
+  legs at THETA_j + r + delta (T-NODELTA's kills at 31 != 30 and
+  18 != 17); ROW-E20's pins 31/37/43 display the branch height
+  moving linearly with v(c) — ABOVE the floor, the honest content
+  of the withdrawn sentence; ROW-NOFLOW diff == 0 (with E-ENTRY:
+  the diverge-vs-not pair measured INSIDE one genre).
+
+**F-2 (MINOR) — LANDED** at the 6.7C' header and body [r2
+brackets]: the supersession scope now covers (i)'s branch-pricing
+parenthetical (refuted by LEMMA 6.7D at m >= 4: multiplicity
+m - 2, measured 46656 = 8 x 5832 at P34); (i)'s parity clause and
+two-source census stand.
+
+**F-3 (MINOR) — LANDED** at 6.6(d) [r2 bracket]: the multi-class
+iteration's product box gets (H1) derived from (b) (ball images
+are cosets of lattices containing pi^{k+c} O^d, hence unions of
+pi^{k+c}-balls, H' = k + c), (H2)/(H3) re-established per step,
+and the per-step N_0 growth displayed (sufficient, not sharp).
+
+**Record sentences (no universal quantifiers).** The r2 battery's
+441 checks passed with 0 violations on the rows named in S12; the
+five preregistered kill counts were exact; the 36 swept in-budget
+R3F/R3G rows each measured mindiff = (46, 25); the below-floor
+rows W4 and W3 measured (49, 28) and (None, None) as
+preregistered; the eight preregistered exact diff dicts (ROW-A,
+ROW-B, both COMBOs, W2, W3, W4, E-ENTRY) matched slot by slot on
+run 1.
+
+**Conditionality (named).** LEMMA 6.7E consumes the lift weight
+tie (6.5 Step I), the +delta extraction price (6.5 Step II /
+GENTOW-1 Step 4), linearity of the division, and the GENTOW-1(b)
+budget-floor reading of the genre locus — all at this note's or
+their notes' recorded grades; delta >= 1 is the tower setting's
+standing positivity. The lemma is NEW theorem-grade text landing
+at 0/2: the resumed hostile passes should stress it (natural
+targets: the weight-tie step for multi-lift emissions, the
+j > j' landing case, and the locus = budget-box identification).
+
+Sealed artifacts BYTE-FROZEN this round, re-verified by md5
+before commit: box1 c98cb423/0a4cd16f, box2 a840024f/091ce8a1,
+box3 72383f91/a122d9ca, box4 9d6e16cc/2d8d617a, pe1_fresh
+fae8bc99/b377850b, pe2_fresh d05ec293/1065c391, GENTOW6_PROOF
+head-1197 157b16ad. **Grade after this round: 0/2 (repair rounds
+do not count; hostile passes resume on the repaired text).**
