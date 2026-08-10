@@ -1884,3 +1884,146 @@ nothing outside the note's own pin stack. A grep audit this round
 ("same condition on every grid", "two-directional", "both grids
 agree") finds the withdrawn closure consumed at S3(c) Step 2's
 parenthetical and nowhere else in the body above.
+
+### S11.2 [A-F2, GAP] The i >= 3 B''-transport: the ride citation
+### FENCED to what this note's own sections prove
+
+**Superseded reading (quoted).** S3(a)'s (B-2) leg: "at i >= 3 the
+same derivation transports with (SLOT_i) = LEMMA GENTOW5-C in place
+of B-1" and "transported to i >= 3 on the same S2.3 annex-precedent
+ride". As consumption of the MONOMIAL LAW those sentences overclaim:
+the ride carries (SLOT_i)/(LIFT_i) counting statements, not
+GENTOW2-B'''s normalizer-cocycle monomial computation.
+
+**What IS proved, per level (the accepted GENTOW2 consumption-walk
+shape):**
+* i = 2 — VERBATIM: the landed GENTOW2 r3 B-law (LEMMA GENTOW2-B
+  [r3 RESTATED] + LEMMA GENTOW2-B'' @ d798529), u_2(beta_t) =
+  theta_2(t) * w_2^{f_3 - t} with the single cross-frame unit w_2 —
+  the level this note's (a)/(B-2) display cites at source.
+* i >= 3 — PROVED by this note's own sections: per-grade FIXEDNESS
+  of u_i(beta) (S2.3 step (3)'s tau_i-cocycle letter computation:
+  each grade's unit is a fixed K_i^x-value), x0-freeness and
+  g-freeness (the (SLOT_i) value clause), and the definitional
+  reciprocity theta_i(t) = vartheta_{i,f_{i+1}-t}^{-1} (S2.1's same
+  monomial quotient, inverse read). NOT PROVED at i >= 3: the
+  single-w geometric form
+
+      [GENTOW5-W(i)]   u_i(beta_t) = theta_i(t) * w_i^{f_{i+1}-t},
+                       w_i = R_{i+1,kbar_i}(nhat_i(u_{i+1})),
+
+  which per-grade fixedness underdetermines (fixed families exist
+  that fit no single w) — this is GENTOW2-B'''s computation run at
+  level i, which this note does not reproduce. [GENTOW5-W(i)] is
+  hereby an OPEN transported lemma, the honest-sorry analogue.
+**Scope of the fence (what rides on [GENTOW5-W(i)] at i >= 3 and
+what does not).** Conditional on it: clause (a)'s realized-residual
+display psi_{i+1}^{(w_i)} AND the (a)-certificate legs that consume
+that form (KP membership via admissibility of psi^{(w)}, prime,
+non-equivalence), and with them (b)'s FGMN-side residual DISPLAYS at
+i >= 3 (the (b)-cite enters through (a)'s certificate at the same
+index). Not conditional (the [GT5-r2] per-consumer walk, unchanged):
+sigma, values, degrees, irreducibility transport, the repo-side
+residue classes and P-membership clauses, (c)'s budgets, (d), (e) —
+w-blind there. At i = 2 the display is unconditional (the landed
+law); at i = 1 see S11.3. The S4 depth-4 witness is w-trivial
+(K_i = F_2), so the machine record does not discriminate this fence
+— disclosed at S6's coverage box already.
+
+### S11.3 [A-F3, GAP] (a)@i=1: the pinned-w_1 display RE-SCOPED to
+### the fold's own discharged shape
+
+**The two sentences in tension (quoted).** The statement's (a)
+displays R_{nu_i}(Phi_{i+1}) = psi_{i+1}^{(w_i)} at the pinned
+w_i = R_{i+1,kbar_i}(nhat_i(u_{i+1})), claimed at i >= 1; the
+PE5-F-2 acceptance fold discharges the i = 1 line at the shape "a
+psi_2^{(u)} with u a fixed z_1-letter power" and closes "an
+exponent-level tie of the w_1 display to the letter formula is NOT
+claimed."
+
+**Adjudicated from the fold's own scope bracket: the DISCLAIMER is
+right; the statement's i = 1 instance is corrected.** The fold's
+derivation is GENTOW2-A(c)'s letter-formula content (z_2 = eta_2 *
+z_1^{-floor(l_1 u_2/e_1)}): it pins the SPECIES of the twist unit (a
+fixed z_1-letter power) and never evaluates the residue
+R_{2,kbar_1}(nhat_1(u_2)) — so it cannot identify the unit with the
+pinned w_1, and different units give different residual polynomials
+(the twist acts on coefficients grade-by-grade). Dated statement
+correction (honest re-scope, standing authority): clause (a) AT
+i = 1 reads
+
+    R_{nu_1}(Phi_2) = psi_2^{(u1)},  u1 in K_1^x a FIXED
+    z_1-letter-power unit (the letter formula's species);
+    the tie u1 = w_1 = R_{2,kbar_1}(nhat_1(u_2)) is OPEN.
+
+Consumers: the fold's grep audit (zero instantiations of the w_1
+display against the letter formula; no consumer on the record read
+needs the tie) re-verified this round. Net position after
+S11.2 + S11.3: the pinned-w_i form is unconditionally realized at
+i = 2 exactly; at i = 1 the shape is proved with the tie open; at
+i >= 3 the form is open behind [GENTOW5-W(i)].
+
+### S11.4 [A-F4, MINOR] The lift_i(c; m) display gains its m-range
+
+Dated bracket on the S2.2 K_i-digit-lifts display: the flavor
+display and the realization sentence ("O-digit coefficients d_{r,t}
+realizing c") read AT HEIGHTS m IN (LIFT_i)'S VALIDITY RANGE —
+k-uniformly above the bound_{i+1} recursion of LEMMA GENTOW5-C,
+whose (LIFT_i) clause the display's existence/freeness sentence
+already cites. Unrestricted m is overbroad: below the range a flavor
+can fail integrality (at i = 1, e_1 = 2, f_1 = 2, h = 1, m = 0 the
+r = 1 flavor's base nhat_1(-2) demands pi^{-1} — no such monomial in
+O[x]; the "flavor is absent when nhat_i(m - Delta(r,t)) has no
+ladder solution" proviso already excludes negative-height bases, and
+the m-range bracket makes the realization claim's scope match it).
+Consumers unchanged: the recipe's khat_t heights and the floor chain
+sit in-range per the lemma's own bound arithmetic.
+
+### S11.5 [A-F5, MINOR] Clause (b)'s residual display RE-INDEXED
+
+Dated bracket on the statement's (b): the residual display
+"R_{j-1}(Phi_{i+1}) = psi_{j-1}^{l_j ... l_{i+1}}" dereferences
+psi_0 at j = 1 and fails the residual-degree count. Corrected, in
+this note's stage numbering:
+
+    R_{j-1}(Phi_{i+1}) = psi_j^{l_{j+1} ... l_{i+1}}
+    (1 <= j <= i+1; empty product = 1 at j = i+1),
+
+re-derived from the note's own rows: the level-(j-1) polygon of
+Phi_{i+1} has length l_j...l_{i+1}, and one full side of slope
+lam_j (gcd(u_j, e_j) = 1) carries residual degree
+l_j...l_{i+1}/e_j = f_j * l_{j+1}...l_{i+1} = deg of the corrected
+display (the composed display's degree f_{j-1}*l_j...l_{i+1} fails
+this count); checked at the committed rows — the j = 1 leg (level-0
+read, residue class a psi_1-root: psi_1, exponent l_2...l_{i+1}
+consistent), the top leg j = i+1 (level-i read, residual psi_{i+1}
+of degree f_{i+1}), and P-B3's Phi_4@Phi_2 (level-2 read, j = 3:
+psi_3^{l_4} = (y-1)^2, measured residual degree 2, S10). The (b)
+proof's citation line "R_{j-1}(F) = psi_{j-1}^{l_j...}" transcribes
+[Q10]'s display (23) in the source's own numbering; the consumed
+content (one-sidedness, exact intermediate values, root classes) is
+index-convention-blind, and no psi_0 is consumed anywhere in the
+proof. [Per S11.2, at i >= 3 the psi symbols in this display read at
+their levels' twisted forms per the re-scoped (a), now behind
+[GENTOW5-W(i)].]
+
+### S11.6 [GT5-r4] BYTE-FREEZE + APPEND LEDGER
+
+Pre-append state: post-acceptance body @ 43b42e9c, md5 d9e6b5ba
+(d9e6b5ba069c19eb5f528b03c1807f14; 1,741 lines, 98,509 bytes).
+Commit 1 (S11 head + S11.1): PURE APPEND, prefix-98,509 md5
+re-verified d9e6b5ba; post state md5 0b850dda (1,886 lines, 106,419
+bytes); machine leg gentow5_af1_direction_check.py md5 82acd3d2
+(output 503279ef, GREEN 8 checks / 0 violations, exit 0). Commit 2
+(S11.2-S11.6): PURE APPEND on that state, prefix-106,419 md5
+re-verified at commit (recorded in the commit message). Sealed
+artifacts untouched this round: gentow5_checks.py 5fa684c7...,
+gentow5_output_exact.txt dc499a49..., gentow5_output_full.txt
+839a8660..., gentow5_rider_f32dev.py 81bbb5db... — no runner edited,
+no sealed re-run. Statement displays above stay byte-intact;
+corrections are by dated supersession (S11.1 direction + closure,
+S11.3 (a)@i=1 re-scope, S11.5 (b) re-index) and dated fences (S11.2
+[GENTOW5-W(i)], S11.4 m-range). Grade: ACCEPTED 2/2 stands, ANNOTATED
+by RUN A; the repairs above discharge the adjudication's charges
+A-F1/A-F3/A-F4/A-F5 in full and convert A-F2 into the named open
+lemma [GENTOW5-W(i)].
