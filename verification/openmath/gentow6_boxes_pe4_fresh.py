@@ -149,6 +149,38 @@ TEETH (mutants that MUST die; kill counts EXACT, total 20):
  T-RESSUM3 AV3 step-2 constant = c_gh = 1 alone: 1 kill.
  T-RESSUM5 RT3 step-2 constant = 10 (one pair only): 1 kill.
  T-CJ11    RT3 pair constant c+1 = 11: 1 kill.
+
+RUN-1 RED (2026-08-10, kept at gentow6_boxes_pe4_fresh_output_run1_
+RED.txt md5 5183fc78): 454 checks, ONE violation = the verifier's
+own gp want 'factorpadic(Phi2_R7F) single degree-9 factor'. gp
+measured TWO factors (deg 3 + 6): the R7F residual z^3 - z^2 - z - 1
+has the SIMPLE root z = 3 mod 7 (R'(3) = 20 != 0), so the invented
+key SPLITS over Q7 — R7F is a FORMAL-LEDGER frame, not a field
+point; every ledger want on R7F (key dicts, chi digit, MC/SE2/ME7
+ediffs, floors, teeth) was GREEN on run 1, as the division ledger is
+residual-blind. Repair (no theorem-facing want changed, one
+instrument want corrected + one frame ADDED): (i) the R7F gp want
+now asserts the measured split carrier (2 factors, first deg 3),
+disclosed as formal; (ii) NEW frame R7G = R7F with chat_2 = 2
+(residual z^3 - 2z^2 - z - 1, no roots mod 7 -> irreducible; gp
+want: single degree-9 factor) — a GENUINE p=7 regime-3 genre point
+carrying the same multi-crossing face, all wants hand-derived
+fresh: chi = 2*chat_1*chat_2 = 4; ShC_1 = {(0,1): 4*7^3 = 1372,
+(1,0): 9*7^4 = 21609} (the {1,1}-pair 7^4 + the s*-branch quotient
+emission 4*7^3*14 = 8*7^4), graded-13 = {(0,1): 4, (1,0): 2};
+MC-G (entry (1,(2,0), 7^4)): ediff_1 = {(0,0): -2*7^5}, ediff_0 =
+{(1,2): -5*7^6, (2,1): -2*7^7, (0,0): -2*7^9} (the multi-crossing
+merge is now -5*49c = t=1-direct (-49c) + t=2-emission (-196c): the
+merge multiplicity MOVES with the unit, 1 + chat_2^2*(14^2/7^2)/4
+... = 1 + 4); SE2-G (entry (1,(1,1), 2*7^3)): ediff_1 =
+{(0,0): -2*7^5}, ediff_0 = {(1,2): -4*7^6, (2,1): -2*7^7,
+(0,0): -2*7^9}; ME7-G = both: linearity + pins/graded == key;
+T-CHI7G (chi = 0 mutant): 1 kill. NOTE also disclosed: M5's
+residual z^2 - z - 1 = (z-3)^2 mod 5 (repeated root — gp
+nonetheless measures Phi2_M5 irreducible, single deg-4: repeated
+residual factors do NOT force splitting); FAMB2/B3/B4/CE3 (z^2+z+1
+irred mod 2), X3, M7K (f2 = 1), and R7G carry the genuine-genre
+contact. Total kills now 21.
 """
 import subprocess, sys, random
 from fractions import Fraction
@@ -562,6 +594,43 @@ chk('ME7', m1 == dadd(c1, d1) and m0 == dadd(c0, d0), 'LINEARITY R7F')
 chk('ME7', pin(ME7[1], R7F) == 13 and graded(ME7[1], R7F, 13) == gR)
 floors_ok(ME7, R7F, 'ME7')
 floors_ok(MC, R7F, 'MC')
+
+# --- R7G: the GENUINE p=7 regime-3 genre (run-2 addition, disclosed;
+# chat_2 = 2 -> residual z^3 - 2z^2 - z - 1 irreducible mod 7) ---
+R7G = Frame('R7G', 7, [-7, 0, 0, 1], 1, 1, 3, 4,
+            {2: (2, 1, 1), 1: (1, 2, 2), 0: (1, 4, 0)}, 2)
+kG = run_member(R7G, [], 'R7Gkey')
+chk('R7GKEY', kG[1] == {(0, 1): 4 * 7 ** 3, (1, 0): 9 * 7 ** 4},
+    'ShC_1 %s' % kG[1])
+chk('R7GKEY', pin(kG[1], R7G) == 13)
+gG = graded(kG[1], R7G, 13)
+chk('R7GKEY', gG == {(0, 1): 4, (1, 0): 2}, 'graded13 %s' % gG)
+chk('R7GKEY', all(b <= 1 for (a, b) in kG[1]), '6.7(a) b-fence')
+kill('T-CHI7G', graded(kG[1], R7G, 13) == {}, 'chi=0 mutant')
+floors_ok(kG, R7G, 'R7Gkey')
+print('RECORD R7Gkey ShC_0 = %s (pin %s)'
+      % (sorted(kG[0].items()), pin(kG[0], R7G)))
+
+MCG = run_member(R7G, [(1, 2, 0, 7 ** 4)], 'MCG')
+e1G, e0G = dsub(MCG[1], kG[1]), dsub(MCG[0], kG[0])
+chk('MCG', e1G == {(0, 0): -2 * 7 ** 5}, 'ediff_1 %s' % e1G)
+chk('MCG', e0G == {(1, 2): -5 * 7 ** 6, (2, 1): -2 * 7 ** 7,
+                   (0, 0): -2 * 7 ** 9},
+    'ediff_0 (merge -5 = -1 - 4, unit-moved) %s' % e0G)
+chk('MCG', (pin(e0G, R7G), pin(e1G, R7G)) == (27, 15))
+chk('MCG', pin(MCG[1], R7G) == 13 and graded(MCG[1], R7G, 13) == gG)
+SE2G = run_member(R7G, [(1, 1, 1, 2 * 7 ** 3)], 'SE2G')
+f1G, f0G = dsub(SE2G[1], kG[1]), dsub(SE2G[0], kG[0])
+chk('SE2G', f1G == {(0, 0): -2 * 7 ** 5}, 'ediff_1 %s' % f1G)
+chk('SE2G', f0G == {(1, 2): -4 * 7 ** 6, (2, 1): -2 * 7 ** 7,
+                    (0, 0): -2 * 7 ** 9}, 'ediff_0 %s' % f0G)
+ME7G = run_member(R7G, [(1, 2, 0, 7 ** 4), (1, 1, 1, 2 * 7 ** 3)],
+                  'ME7G')
+chk('ME7G', dsub(ME7G[1], kG[1]) == dadd(e1G, f1G)
+    and dsub(ME7G[0], kG[0]) == dadd(e0G, f0G), 'LINEARITY R7G')
+chk('ME7G', pin(ME7G[1], R7G) == 13 and graded(ME7G[1], R7G, 13) == gG)
+floors_ok(ME7G, R7G, 'ME7G')
+floors_ok(MCG, R7G, 'MCG')
 floors_ok(ME, M5, 'ME')
 floors_ok(kR7, R7F, 'R7Fkey')
 floors_ok(kM5, M5, 'M5key')
@@ -873,11 +942,14 @@ def gp_pol(f):
         or '0'
 
 
-for fr, dg in [(M5, 4), (R7F, 9), (M7K, 4)]:
+for fr, sig in [(M5, ['1', '4']), (R7F, ['2', '3']), (M7K, ['1', '4']),
+                (R7G, ['1', '9'])]:
+    # R7F want CORRECTED at run 2 (run-1 RED, disclosed in docstring):
+    # the invented R7F key SPLITS (residual root z=3 mod 7) — formal
+    # ledger frame; R7G is the genuine irreducible p=7 genre.
     o = gp('f=factorpadic(%s,%d,25); print(matsize(f)[1]," ",'
            'poldegree(f[1,1]))' % (gp_pol(fr.PHI2), fr.p))
-    chk('GP', o.split() == ['1', str(dg)],
-        'factorpadic %s: %s' % (fr.name, o))
+    chk('GP', o.split() == sig, 'factorpadic %s: %s' % (fr.name, o))
 f1, f2 = draw_block(1), draw_block(2)
 for (u, w) in [(f1, f2), (pmul(f1, f2), draw_block(3))]:
     o = gp('print(abs(polresultant(%s,%s)))' % (gp_pol(u), gp_pol(w)))
@@ -892,7 +964,8 @@ print('KILLS %s' % sorted(KILLS.items()))
 want_kills = {'T-NODELTA5': 2, 'T-CROSS': 1, 'T-C0': 1, 'T-BELOW5': 2,
               'T-CHI7': 1, 'T-NODELTA7': 2, 'T-TOP7': 1, 'T-OLDLAW7': 1,
               'T-BAND7': 1, 'T-B2F2': 1, 'T-NOJ3': 2, 'T-FIB1': 2,
-              'T-RESSUM3': 1, 'T-RESSUM5': 1, 'T-CJ11': 1}
+              'T-RESSUM3': 1, 'T-RESSUM5': 1, 'T-CJ11': 1,
+              'T-CHI7G': 1}
 print('KILLCOUNTS %s' % ('EXACT' if KILLS == want_kills else
                          'MISMATCH want %s' % sorted(want_kills.items())))
 print('VERDICT %s' % ('GREEN' if NVIO == 0 and KILLS == want_kills

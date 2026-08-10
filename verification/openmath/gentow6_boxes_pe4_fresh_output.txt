@@ -1,0 +1,14 @@
+RECORD R7Fkey ShC_0 = [((0, 1), 4117715), ((1, 0), 17294403), ((2, 2), 84035)] (pin 25)
+RECORD R7Gkey ShC_0 = [((0, 1), 10706059), ((1, 0), 51883209), ((2, 2), 369754)] (pin 25)
+RECORD M7K ShC_0 pin 71 dict [((0, 0), 52109235133134368), ((0, 1), 1395783083923242), ((1, 1), 1063453778227232)]
+RECORD M7K ShC_1 pin 62 dict [((0, 1), 75960984159088), ((1, 0), 550717135153388), ((1, 1), 8816899947037)]
+RECORD M7K ShC_2 pin 55 dict [((0, 0), 16277353748376), ((0, 1), 96889010407), ((1, 1), 332190892824)]
+RECORD M7K ShC_3 pin 45 dict [((0, 1), 5649504980), ((1, 0), 33614554631)]
+RECORD B4 ShC_3 = [((0, 0), 16), ((0, 1), 24), ((1, 0), 112)]
+RECORD B4 ShC_2 (f2>=2 band, EXPLORATORY) = [((0, 0), 768), ((0, 1), 1024), ((1, 0), 2432), ((1, 1), 96)] pin 14
+RECORD B4 ShC_1/0 pins 22 26
+RECORD AV3 EXPLORATORY cubic image at N=7 (below N_0^(2)): 6561
+== SUMMARY == checks 509 violations 0
+KILLS [('T-B2F2', 1), ('T-BAND7', 1), ('T-BELOW5', 2), ('T-C0', 1), ('T-CHI7', 1), ('T-CHI7G', 1), ('T-CJ11', 1), ('T-CROSS', 1), ('T-FIB1', 2), ('T-NODELTA5', 2), ('T-NODELTA7', 2), ('T-NOJ3', 2), ('T-OLDLAW7', 1), ('T-RESSUM3', 1), ('T-RESSUM5', 1), ('T-TOP7', 1)]
+KILLCOUNTS EXACT
+VERDICT GREEN
