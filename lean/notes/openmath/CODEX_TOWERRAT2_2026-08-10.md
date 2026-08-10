@@ -256,7 +256,77 @@ bracket; A-F5 (b)-display re-index.
 
 ## S4. RUN C — GENTOW4: Codex findings + adjudication
 
-PENDING.
+**Codex outcome: RATIFIED-WITH-ANNEX** (2 findings, both MINOR; 13
+CHECKED CLEAN lines covering the bouquet/fullness repair, the
+proper-block hypothesis — the only-side-single-factor configuration
+is arithmetically impossible at a partial side, since full width
+would force mu1 = e2·deg R_{kappa2} = e2f2·mu2 against PARTIAL —
+c_g constancy from ultrametric label separation, the block-level
+HE7.A hypothesis re-verification at f_S, the PE2-P dictionary
+{(2,1),(4,1),(4,1)}, the pure-power-only tie consumption, the
+witness translation arithmetic ((0,28)-(1,16)-(2,5), mu2* = 2,
+c_g = 5, block pins (23,11,0), floors 21/11 with j = 1 exact), the
+gauge-annex supply audit, the no-overflow weight form W(t) =
+floor((f2−t)i(u2)/e1), the T(b)'(iii) refusal (deg f = 10 != 8 =
+mu2·D2), the S1/S3 laws, the machine disclosures, and the honesty
+boxes). Tokens 39,969. Raw output:
+`verification/openmath/towerrat2_runC_gentow4_output.txt` (105,802
+B, md5 aad9fab1). Adjudication reads GENTOW4_PROOF at HEAD
+(pre-annex body md5 bf7e60d6, 1037 lines).
+
+**C-F1 (Codex: MINOR).** Quote (THEOREM GENTOW-4.A(ii) display):
+"(length M = floor(n/D2) >= mu2, top coefficient NOT monic — the
+partial-side signature)". Codex: "top coefficient NOT monic" is
+false under either natural reading — at PE2-P itself C_2 = Phi' + 4
+= x^2 + 2 is monic, and the "= 1" reading is not forced by
+partiality (e2f2 | mu1 with e2f2·mu2 < mu1 gives C_M = 1); "the
+actual partial-side signature is failure of length mu2".
+**ADJUDICATION: REAL (display defect at MINOR grade).** Re-derived
+from the note's own displays: the 4.A proof itself carries the
+correct form ("the top coefficient C_M has deg n − M·D2 < D2" —
+monicity of C_M follows from f and Phi2 monic through the defining
+division), the S1 battery table displays the monic C_2 = Phi' + 4
+at PE2-P, and the S0 refusal criterion is already the length form
+(deg f = 10 != mu2·D2 = 8). The parenthetical mis-transcribes S0's
+signature into the theorem display; the two adjacent consumers
+(GENHN-2''s deg-bound read; the T(b)'(iii) refusal) key on the
+corrected content, not on the parenthetical. **REPAIR LANDED:**
+GENTOW4_PROOF `[TOWERRAT2-C annex, 2026-08-10]` — dated PURE append
+@ 73b93fd0 (prefix 59,061 B md5 bf7e60d6 re-verified byte-identical
+to the pre-append HEAD). Display of record: C_M monic of degree
+n − M·D2 < D2, the constant 1 exactly when D2 | n; signature of
+record: n > mu2·D2 (the development is not monic-of-length-mu2).
+
+**C-F2 (Codex: MINOR).** Quote: "**STATUS: COMPOSED ... Grade 0/2
+(attempt; hostile arc owed)**" and "This note's own grade after
+PE2: counter 1/2, one clean pass on record" (BOX-4), read against
+the in-file post-PE3 acceptance material — "the document's internal
+grade metadata conflicts with its incorporated acceptance history.
+This is a stale disclosure only; it does not affect a theorem or
+inference."
+**ADJUDICATION: ARTIFACT (of the freeze discipline) — REBUTTAL, no
+repair.** The header STATUS/ARC paragraphs and the BOX-4 row are
+the frozen historical layer, each dated with its then-current
+counter; the grade of record lives in the terminal dated acceptance
+record (GENTOW4_PROOF L991: "GENTOW4 IS ACCEPTED 2/2 ... THE NOTE
+IS FROZEN AT THIS RECORD: dated appends and dated brackets only",
+closing line "Grade after this record: ACCEPTED 2/2"), which the
+pasted document carried and the finding itself acknowledges reading.
+Rewriting the header grade would breach the byte-freeze ledger that
+the acceptance record pins (pre-fold body md5 eeb50557 / post-fold
+f96e23d0). The layering matches the sibling accepted notes:
+HETOW_RECON's and GENTOW1_PROOF's headers likewise stand at their
+as-composed "attempt grade 0/2" with acceptance recorded in dated
+appends. Codex's own MINOR grading ("stale disclosure only")
+concurs that no inference is touched; the [TOWERRAT2-C annex]
+provenance block now also names the acceptance record as governing.
+
+**RUN C verdict: RATIFIED-WITH-ANNEX STANDS — the 2/2 acceptance
+untouched; C-F1 REAL (display MINOR) repaired by dated pure append
+@ 73b93fd0; C-F2 ARTIFACT rebutted (freeze-layer convention). The
+five charged attack lanes (bouquet + block projection, per-block
+HE7.A instances, tie + 4.C arithmetic, gauge annex, free hunt)
+returned in 13 CHECKED CLEAN lines with no GAP-or-worse finding.**
 
 ## S5. RUN D — GENTOW6: Codex findings + adjudication
 
@@ -343,7 +413,63 @@ and, unlike RUNs A/B, a run whose challenge dissolves at HEAD.
 
 ## S6. RUN E — discharge confirmation: Codex verdicts + adjudication
 
-PENDING.
+**Codex outcome line: "OUTCOMES: DISCHARGED,DISCHARGED,DISCHARGED,
+DISCHARGED,DISCHARGED,DISCHARGED,DISCHARGED"** — seven verdicts,
+one per batch-1 finding (HETOW F-1/2/3; GENTOW1 F-1/2/3/4), with
+zero INSUFFICIENT and zero NEW-ISSUE among the seven. Tokens
+23,829. Raw output:
+`verification/openmath/towerrat2_runE_discharge_output.txt`
+(66,403 B, md5 f86dab8a); the streamed and final verdict blocks in
+the log diff line-identical.
+
+**The one-to-one map onto batch #1's five REAL findings** (verified
+against `CODEX_TOWERRAT_2026-08-10.md` S2/S3 adjudications and the
+run's own PASTE B/C provenance blocks):
+
+| batch-1 finding (its adjudication) | repair | run E § | verdict |
+|---|---|---|---|
+| HETOW F-1 (REAL, the confirmed gap) | LEMMA HETOW-4, the n̂₂/n₂ normalizer bridge | 1 | DISCHARGED |
+| GENTOW1 F-1 (REAL, unclipped free-count) | R2a: max(0, N − floor) clip | 4 | DISCHARGED |
+| GENTOW1 F-2 (REAL, ONTO cardinality) | R2b: DOM_N/COD_N clipped-count bijection | 5 | DISCHARGED |
+| GENTOW1 F-3 (REAL, cap-iff self-contradiction) | R2c: THREE-BAND restatement | 6 | DISCHARGED |
+| GENTOW1 F-4 (REAL MINOR, "constant term untouched") | F-4: the X-side-digit correction | 7 | DISCHARGED |
+
+The map is one-to-one as charged: five REAL findings, five distinct
+run E sections, five DISCHARGED verdicts. The remaining two run E
+sections cover HETOW's sub-REAL items and also returned DISCHARGED:
+§2 = HETOW F-2 (batch-1: REAL AS DISPLAY, substance licensed → the
+cite annex), §3 = HETOW F-3 (batch-1: ARTIFACT in substance → the
+row annotation). Those two verdicts confirm the annex/annotation
+readings close their findings' mechanisms; they sit outside the
+five-REAL map and revise no batch-1 adjudication.
+
+**Caveats Codex attached (four recorded; each sits below verdict
+grade):**
+- **HETOW F-1 (§1):** no reservation — the ratio display
+  n̂₂(k)/n₂(k) = (x^{e1}/pi^h)^{−Q(m(k))}, the assembled-residual
+  rescaling R_{lambda2}(Z) = tau(H0)·R̂_{lambda2}(Z/delta), the
+  letter transport s₂ = delta·ŝ₂, and the cocycle were re-derived;
+  the machine rows (the non-geometric (2,2,1) string over F_3, the
+  nonconstant-ratio (1,2,2,1)) judged internally coherent.
+- **GENTOW1 F-2 / R2b (§5):** the equal-cardinality argument is
+  accepted "including ragged windows interpreted through admitting
+  full completions" — an interpretive convention Codex adopted,
+  consistent with the repair's own DOM_N/COD_N definitions.
+- **GENTOW1 F-3 / R2c (§6):** approval recorded for the co-repair:
+  "The repair also correctly changes 'undercutting at >=' to
+  'undercutting at >'".
+- **GENTOW1 F-4 (§7):** the discharged invariant is the WEAKER one
+  — the literal constant coefficient does move (−8 → −24 in the
+  quoted row: "it is plainly not unchanged"); what survives is the
+  height-6 X-side initial form, "precisely the weaker invariant
+  used by GENTOW-2(i)".
+
+**RUN E verdict: batch #1's discharge CONFIRMED — the five REAL
+findings' repairs each DISCHARGED by the decorrelated model, the
+two HETOW sub-REAL items likewise; HETOW's challenge annotation
+stands DISCHARGED-at-grade (per HETOW_RECON's dated append) and
+GENTOW1's R2a/b/c + F-4 corrections stand confirmed as governing
+readings. No repair drew INSUFFICIENT or NEW-ISSUE.**
 
 ## S7. Scaffold match record
 
