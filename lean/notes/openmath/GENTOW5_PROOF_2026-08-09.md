@@ -737,15 +737,37 @@ The exact-value clause and the P_{i+1} clause are w-blind: P_{i+1}
 is defined by REPO residue classes, and the FGMN class is w times
 the repo class (B''), so a psi^{(w)}-root FGMN-side IS a psi-root
 repo-side — FR-A's machine leg carried psi_3 exactly repo-side.]
-(c) [BUDGETS AT LEVEL i+1 — GENTOW-1 re-based] the level-(i+1)
-tower-entry locus T_{i+1} (monic f of degree n = mu * D_{i+1} whose
-level-(i+1) stage read exhibits the full side of slope
-kappa_{i+2} := u_{i+2}/e_{i+2} with residual psi_{i+2}^{mu}) is
-weight-characterized: f in T_{i+1} iff every slot of f -
-Phi_{i+1}^{mu} clears weight mu*E_{i+1} + 1, with the per-slot digit
-floors, the fibration, the node pins p_j >= (mu-j)E_{i+1} + 1, and
-the field floor dv_{i+1}(Phi_{i+1}(xi)) > E_{i+1}, exactly as in
-LEMMA GENTOW-1 (a)-(d).
+(c) [BUDGETS AT LEVEL i+1 — GENTOW-1 re-based. GT5-r3 RE-INDEXED
+(PE3 F-1): the composed display paired these (i+1)-anchored
+degree/weight/pin/floor clauses with an (i+2)-anchored entry-read
+clause ("level-(i+1) read, slope kappa_{i+2}, residual
+psi_{i+2}^{mu}"). That pairing fails the residual-degree count —
+the level-(i+1) polygon of a deg-(mu*D_{i+1}) f has length mu, so
+a full kappa_{i+2}-side (gcd(u_{i+2}, e_{i+2}) = 1) carries
+residual degree mu/e_{i+2}, while deg psi_{i+2}^{mu} = mu*f_{i+2};
+equality forces e_{i+2}f_{i+2} = 1, which DEF GENTOW5-1's
+properness l >= 2 excludes — and is refuted at the committed
+witness rows P-B3 f32@Phi4 and Phi4@Phi3 (one kappa_5-side /
+kappa_4-side of residual DEGREE 1 = psi_5 / psi_4, not the mu-th
+power, while the weight box holds at 341 = 2E_4+1 / 85 = 2E_3+1).
+The read clause below is the uniform GENTOW-1 transport 2 -> i+1
+(the template anchors its read one level BELOW the key, with all
+stage data the KEY'S OWN: level-1 read, kappa_2, psi_2^{mu2}, box
+vs Phi_2^{mu2} at mu2*E_2+1); GENTOW-1 is the i = 1 instance
+verbatim, and the corrected pairing VERIFIES at the committed
+rows f32@Phi3 and Phi4@Phi2 (one side at kappa_4 / kappa_3,
+on-chord support {0,4}, residual (y-1)^2 = psi^2 by the char-2
+binomial).] the level-(i+1) tower-entry locus T_{i+1} (monic f of
+degree n = mu * D_{i+1} whose level-i stage read exhibits the full
+side of slope kappa_{i+1} := u_{i+1}/e_{i+1} with residual
+psi_{i+1}^{mu} — the Phi_i-adic polygon of length mu * l_{i+1},
+one side, residual degree mu*l_{i+1}/e_{i+1} = mu*f_{i+1} =
+deg psi_{i+1}^{mu}) is weight-characterized: f in T_{i+1} iff
+every slot of f - Phi_{i+1}^{mu} clears weight mu*E_{i+1} + 1,
+with the per-slot digit floors, the fibration, the node pins
+p_j >= (mu-j)E_{i+1} + 1, and the field floor
+dv_{i+1}(Phi_{i+1}(xi)) > E_{i+1}, exactly as in LEMMA GENTOW-1
+(a)-(d).
 (d) [REFINE TRANSFER AT LEVEL i+1, GENERAL mu] at a composed event
 of integer dv_{i+1}-slope lam > E_{i+1} with residual (T-s)^{mu}
 (multiplicative convention), the refine Phi_{i+1}+ := Phi_{i+1} -
@@ -858,7 +880,16 @@ affine map per level). ∎(b)
 
 *(c) — GENTOW-1's Steps 0-5 with the substitution table
 (D', e2, u2, E2, GENHN-2') -> (D_{i+1} composition data, e_{i+2},
-u_{i+2}, E_{i+1} -> E_{i+2}, (SLOT_{i+1})).* The audit of each step
+u_{i+2}, E_{i+2}, (SLOT_{i+1})). [GT5-r3 (PE3 F-1): the table and
+the step displays below sit at ONE anchoring — the entered stage
+Phi_{i+2} (the composed table's garbled "E_{i+1} -> E_{i+2}" entry
+resolved to E_{i+2}). At that anchoring they prove the re-indexed
+statement (c) AT INDEX i+1: T_{i+2} = level-(i+1) read, slope
+kappa_{i+2}, residual psi_{i+2}^{mu}, box vs Phi_{i+2}^{mu} at
+mu*E_{i+2}+1 — consuming (b) at Phi_{i+2} and (SLOT_{i+1}),
+step-(i+1) data of the same induction; with GENTOW-1 as the
+index-1 instance verbatim, indices 1..r-1 are covered.]* The
+audit of each step
 for level-blindness:
   Step 0 = LEMMA GENTOW5-D (proved level-agnostic; the ONLY
   level-sensitive content was the carry pricing, now uniform).
@@ -868,8 +899,11 @@ for level-blindness:
   graded layer psi-power by (b) + LEMMA GENTOW5-D's grid
   translation.
   Step 2 (realizability): digits above floors put every slot of
-  g := f - Phi_{i+2}^{mu}... (level i+2 per the statement's (c) at
-  i+1 — indices as displayed) above the side; the level-(i+1) stage
+  g := f - Phi_{i+2}^{mu}... (the ENTERED stage i+2 throughout —
+  this display proves the statement's (c) at index i+1, per the
+  [GT5-r3] table note; the composed parenthetical here resolved
+  the index shift the wrong way, toward the refuted mixed display)
+  above the side; the level-(i+1) stage
   read then shows the full side with residual psi^{mu} exactly
   ((SLOT_{i+1}) + Step 1). THE DEEPER READS: rather than the
   level-2 x-polygon display, run the entry ladder bottom-up: at
