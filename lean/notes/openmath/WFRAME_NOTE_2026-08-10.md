@@ -226,13 +226,125 @@ computes w.
 
 ## §4. THE MEASUREMENT RECORD (enumerative; no universal claims)
 
-(filled in commit 3)
+**What "measured" means here.** The measured object is the w-AVATAR
+res((n̂₂(u₃)/π₃^{u₃})(ξ)) at a specific prime of a committed frame
+(π₃ the Def 3.12 uniformizer). The interpretation leg avatar =
+R_{3,κ̄}(n̂₂(u₃)) = w rides Thm 4.2/eq (16) (GENTOW2 S6.1 row 23,
+DESCRIPTIVE status) + Lemma 3.13(1) (row 20, consumed) +
+GENTOW2-A(d)'s exact values through a C-m1-style bridge — disclosed
+in the measuring runner's docstring and carried here unchanged.
+Instruments: gentow2_pe6_fresh.py (seal ade1727; run-1 68/1 RED kept
+as committed, the miss a disclosed verifier-instrument literal;
+run-2 GREEN 68/0 @ dfbc938) and gentow5_pe3_fresh.py (run-1 RED 48/2
+kept, one gp-stdin print defect; run-2 GREEN 48/0). Towers: LP1
+(Φ′ = x²−2; e₁ = 2, f₁ = 2, z₁ live with z₁²+z₁+1 = 0; e₂ = 2,
+f₂ = 1, z₂ = 1; u₂ = 9, V₂ = 4, e(µ₂) = 4) and GB (Φ′ = x²−2;
+e₁ = 2, f₁ = 1, z₁ = 1; e₂ = 2, f₂ = 2, z₂ live; u₂ = 5, V₂ = 2,
+e(µ₂) = 4).
+
+**The rows (7 measured primes across 5 keys on 2 towers):**
+
+| row | frame (tower; e₃,f₃,u₃) | primes | w-avatar | companion facts |
+|---|---|---|---|---|
+| R-1 | LD1 (LP1; 1,2,19) | 1 | z₁ ≠ 1 | ϑ(0) = z₁; u(β₀) measured = 1 = ϑ(0)·w² — B″(6) closed with 3 independent measurements |
+| R-2 | LD3 (LP1; 2,1,37) | 1 | z₁² ≠ 1 | vs R-1: same tower, different u₃ ⟹ different w |
+| R-3 | GA1 (GB; 1,2,21) | 2 | z₂² ≠ 1 (each) | ϑ(0) = z₂²; u(β₀) measured = 1 = ϑ(0)·w² |
+| R-4 | GA3 (GB; 2,2,41) | 2 | z₂ ≠ 1 (each) | u(β₀) measured = z₂ — the first letter-valued canonical unit on record; vs R-3: u₃-discrimination fired |
+| R-6 | GA3\* (GB; 2,2,41; NEW key, target ψ₃ = y²−y−z₂) | 1 | z₂ ≠ 1 | the 7th prime, first carrier-(8,4) geometry; PSIW: ψ₃^{(w)}(Y) = 0 ON THE NOSE at measured w ≠ 1 (GENTOW5-B(a) as re-scoped, verified); NOSE tooth fired: ψ₃(Y) ≠ 0; naive twin (untwisted prescription = the committed GA3 key) splits [16,16] |
+
+Sources: R-1..R-4 = GENTOW2_passPE6_report §E (@ deba21bd,
+L245–295); R-6 = GENTOW5_passPE3_report §S4 LEG W (@ 39c36aa2,
+L270–292).
+
+**R-5 (the refutation record that forced this frame — PE4,
+RED-by-design, kept).** At LD2 (LP1; e₃ = 1, f₃ = 2, u₃ = 19; digit
+string (z₁, z₁²)), the PER-HEIGHT prescription for the split target
+ψ₃ = y²+z₁y+z₁² = (y+1)(y+z₁²) realized a SINGLE (4,4) prime with
+realized residual y²+z₁y+1: sealed fresh route RED 62/9, each of
+the 9 misses a B-2-on-the-nose prediction (gentow2_pe4_fresh.py,
+seal 23def87, output kept as-is); decode probe GREEN 14/0
+(gentow2_pe4_decode.py). This is the machine event that killed the
+old B-2 and created DEF W-4's frame.
+
+**Enumerated consequences (this record, no further).** (i) w ≡ 1 is
+dead at each of the 7 measured primes. (ii) "w constant per tower"
+is dead twice over (R-1 vs R-2; R-3 vs R-4). (iii) The measured
+avatars equal the S5.2 γ-calculus hand values at each of the 4
+frames (exponent-lattice splits, re-verified by §7's instrument).
+(iv) B″(6) is closed w-inclusively at the 3 slots where all three
+residues were independently measured (R-1, R-3, R-4). (v) The
+record does NOT decide w at unmeasured frames, unmeasured u₃, or
+levels i ≠ 2 (GENTOW5's dated-note wording, adopted verbatim).
+
+**Frame-equivalence legs (R.2 S-4: old-frame ⟺ w-inclusive reading
+for each transferred fact).**
+* *The w ≠ 1 rows (R-1..R-4, R-6).* Old frame = the pass reports'
+  sentences ("w-avatar = z₁/z₁²/z₂²/z₂ ... ≠ 1"). w-inclusive frame
+  = the same sentences: DEF W-1 is byte-identical to the object the
+  passes measured (the same defining display R_{3,κ̄}(n̂₂(u₃))), so
+  the transfer is the identity; the one frame-sensitive step
+  (avatar ↔ w, row-23 descriptive leg) is INSIDE the source record
+  and is carried with its disclosed status, not upgraded here.
+* *PSIW at GA3\* (R-6).* GENTOW5-B(a) as re-scoped was BORN in the
+  w-inclusive frame (its display is ψ_{i+1}^{(w_i)}); old-frame and
+  w-inclusive readings coincide by inspection of the display.
+* *The PE4 refutation (R-5).* Old frame: "B-2 on-the-nose is FALSE
+  at letter-live grades." w-inclusive frame: LAW W-C's iff — the
+  per-height prescription realizes ψ₃ iff u(β_t) = 1 at each used
+  slot — makes R-5 the instance u(β₀) = ϑ(0)·w² = z₁·z₁² read
+  against the LD2 digits; equivalence via LAW W-B. (The two
+  readings agree that the realized residual is y²+z₁y+1; checked
+  in §7.)
+
+**The F19 rule (binding on every consumer of this note).** The
+measured w ≠ 1 instances are UNCONDITIONAL records. A named
+w-hypothesis (e.g. "assume w_i = 1") may condition only statements
+whose accepted forms already depend on the dichotomy; and no
+consumption check may show an absorbed statement GAINING a
+w-hypothesis. In particular nothing in §5's open items
+conditionalizes any row of this section.
 
 ---
 
 ## §5. OPEN ITEMS, FENCED
 
-(filled in commit 3)
+**OPEN-1 — [GENTOW5-W(i)], the single-w form at i ≥ 3.** Statement
+and status exactly as GENTOW5 S11.2 (span pin @ b0e5c648
+L1888–1933; displayed in §3). Conditional on it at i ≥ 3: clause
+(a)'s realized-residual display ψ_{i+1}^{(w_i)}, the (a)-certificate
+legs that consume that form (KP membership via ψ^{(w)}
+admissibility, prime, non-equivalence), and (b)'s FGMN-side residual
+displays at the same indices. NOT conditional (w-blind): σ, exact
+values, degrees, irreducibility transport, repo-side residue
+classes and P-membership, (c)'s budgets, (d), (e). The committed
+depth-4 witness is w-trivial (K_i = F₂ there), so the machine record
+does not discriminate this fence.
+
+**OPEN-2 — the u1 = w₁ tie at i = 1.** The proved i = 1 shape is
+ψ₂^{(u1)} with u1 a fixed z₁-letter-power unit (species from the
+letter formula); the tie u1 = w₁ = R_{2,κ̄₁}(n̂₁(u₂)) is OPEN
+(GENTOW5 S11.3, span pin @ b0e5c648 L1933–1964). The fold's grep
+audit found zero consumers needing the tie; it stays a
+statement-level open item, not a load-bearing gap.
+
+**OPEN-3 — a derived w-law (closed form, and avatar = w at theorem
+strength).** No closed-form letter derivation of w as a function of
+(tower, level, u_{i+1}) is claimed anywhere in the accepted corpus;
+the 7-prime record measures w at its frames and no further. The
+exact missing leg for elevating §4's hand-value agreement to a
+THEOREM about w: the interpretation identity avatar =
+R_{3,κ̄}(n̂₂(u₃)) rides GENTOW2 S6.1 row 23 at DESCRIPTIVE status —
+row 23's two-leg elevation obligation (stated in GENTOW2's rider) is
+the gate. Until then, "w's avatar is a letter monomial" is a
+measured pattern at 4 frames, not a law; §2 LAW W-E deliberately
+covers ϑ only.
+
+**OPEN-4 — w = 1 as a question, correctly housed.** On the measured
+record the open w_i = 1 case is NOT the generic one (GENTOW5's dated
+note): at the 7 measured primes w ≠ 1. The question "is w = 1
+somewhere / at which geographies" remains open exactly where OPEN-3
+is open; per the F19 rule it conditionalizes nothing in §4, and per
+DEF W-4 no statement of this note reads ψ^{(w)} as ψ pending it.
 
 ---
 
