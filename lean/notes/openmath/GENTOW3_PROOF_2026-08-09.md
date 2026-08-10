@@ -569,3 +569,27 @@ disclosure lives at the S5 tooth row and here. (Related report
 observation, no finding: the ENTRY tally 274 is entailed by FLOOR
 274 given delta >= 1 — honest as COR 3.C's machine face, not
 independent evidence.)
+
+### S7.5 EDIT MANIFEST (for PE2's diff)
+
+Body state before this round: md5 8664269e723c7779538f25329490c06d
+= the PE1 target (verdict commit d90db6d). [GT3-r1] edit sites:
+(1) header ARC line; (2) S2 Setting gauge pin at the Phi2 display;
+(3) S2 x-free-definition scope pin; (4) S2 (iv) attribution pin;
+(5) S5 P-1 census correction; (6) S5 T-SHADOW-REG disclosure;
+(7) S6 GENTOW3-BOX-2 honest-status rider; (8) S6
+conditionality-stack corrected-key pin; (9) this S7. Edit shape:
+[GT3-r1]-bracketed INSERTIONS plus this S7 — checkable as
+`git diff d90db6d..HEAD` on this file; the statement displays of
+THEOREM GENTOW-3 (i)–(iv), COR GENTOW-3.C, and the S0/S1/S3/S4
+texts sit outside the inserted brackets (the pins fix the consumed
+chat_t reading and the classification test's scope; the floors,
+thresholds, and clause texts are the composed ones). Sealed
+machine artifacts BYTE-FROZEN, md5s verified before and after this
+round: gentow3_checks.py 7cf3a7b8a580d6b9893d8e62f94464e2,
+gentow3_checks_output.txt 926cd05f4be21a24e66b84c325ce679e,
+gentow3_pe1_fresh.py 35ad32aab60f5c4fbb09cd6b69ae6c18,
+gentow3_pe1_fresh_output.txt 94160b22ca919276d61a2ed4f5d374d5,
+gentow3_pe1_fresh_output_run1_RED.txt
+485946fc773f7d57289f3731d2e51de2, import base gentow1_checks.py
+6df4b213ed0aab6afa37ac7b418540aa. Grade stays 0/2; PE2 next.
