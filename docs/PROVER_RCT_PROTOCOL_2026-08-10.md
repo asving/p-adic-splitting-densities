@@ -82,13 +82,13 @@ and this is recorded rather than patched.
 
 | unit | difficulty (pre-tagged) | sha256 first hex | arm | dispatched | outcome |
 |---|---|---|---|---|---|
-| S-1-T1-gauge-cocycle | hard | 3 | CODEX | pending (plan-revision gate) | |
+| S-1-T1-gauge-cocycle | hard | 3 | CODEX | B23 2026-08-10 | |
 | S-7-SG2-probe | frontier | b | CODEX | pending | |
 | T2-sigma-ladder-master | frontier | 6 | FABLE | pending | |
 | T3-cocycle-telescope | hard | f | CODEX | pending | |
 | T4-certificate-witness | hard | f | CODEX | pending | |
-| T5-w-frame-note | routine | e | FABLE | pending | |
-| GENTOW5-W-i-lemma | hard | 2 | FABLE | pending | |
+| T5-w-frame-note | routine | e | FABLE | B23 2026-08-10 | |
+| GENTOW5-W-i-lemma | hard | 2 | FABLE | B23 2026-08-10 | |
 | S8.1-member-half | frontier | 7 | CODEX | pending | |
 | GENH5-DENS-aggregation | hard | 2 | FABLE | pending | |
 

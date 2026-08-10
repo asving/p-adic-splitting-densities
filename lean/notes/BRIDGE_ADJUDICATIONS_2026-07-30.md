@@ -15583,3 +15583,40 @@ with the explicit S-1 verdict (cleared / blocked-on-X); (4) the
 BOXES rider (2 minors) → passPE4 = THE ACCEPTANCE ATTEMPT (surfaces:
 6.7E's multi-entry face, 6.6(d) at a real three-class frame, the
 6.7C′ band at f₂ ≥ 2, the four-theorem note as one system).
+
+## B22 FOLD (2026-08-10) — the batch closes; the plan revision CLEARS S-1; the RCT's first round dispatches
+
+TOWERRAT2 COMPLETE (record CODEX_TOWERRAT2_2026-08-10.md S4–S6): RUN C
+(GENTOW4) = **RATIFIED-WITH-ANNEX** (1 REAL display minor repaired by
+dated append — the C_M monic display + the n > μ₂·D₂ signature of
+record; 1 ARTIFACT rebutted — the frozen-header convention governs).
+RUN E = **DISCHARGED ×7, 0 INSUFFICIENT** — every batch-1 REAL finding's
+repair confirmed by the model that found it (HETOW-4; R2a/b/c; the
+side-digit correction), caveats recorded (R2c's ≥→> co-repair approved;
+F-4 discharged at the weaker invariant). RUN D (GENTOW6) = CHALLENGE
+**DISSOLVED AT HEAD**: both findings RESOLVED-ALREADY by the
+acceptance-fold commits post-dating the sealed snapshot — the
+decorrelated model independently re-derived the fold's own two repair
+targets (convergence, recorded); zero repairs owed, note byte-untouched.
+RUN F = 40 findings, **37 REAL / 3 ARTIFACT** → "## Plan revision 1"
+(R.1–R.5, f4afcb88): consumption checks upgraded to THREE-LEG
+(statement / provenance / definition-audit), skeleton gates (S-1a
+first-commit gate: 3 conclusions ≠ carrier fields + site-level
+absorption map + a Codex statement pass), the joint-frame battery rule
+(f₁=2 ∧ w≠1 ∧ live wrap), SG-2's payoff SPLIT into two branches
+(prove-WELDMASTER vs axiomatize-faces — ASVIN'S CHOICE, surfaced),
+pricing fixes; no target withdrawn. **S-1 VERDICT: CLEARED TO LAUNCH**
+(conditional on the S-1a gate + three-leg checks + joint battery).
+BOXES: the post-PE3 rider landed 3/3 (de3855f8); the PE4 acceptance
+verifier died to a server error mid-response (no report file) —
+relaunching fresh.
+
+**B23 DISPATCHED**, recorded post-dispatch: (1) GENTOW6-BOXES passPE4
+relaunch (the acceptance attempt, note at HEAD with the rider). THE
+PROVER RCT's FIRST ROUND (protocol c870ed5d, ledger rows updated):
+(2) RCT unit T5-w-frame-note [FABLE, routine]; (3) RCT unit
+GENTOW5-W-i-lemma [FABLE, hard] — the i ≥ 3 monomial form fenced at
+the GENTOW5 Codex repairs; (4) RCT unit S-1-T1-gauge-cocycle [CODEX,
+hard] — brief composed + codex run FOREGROUND in-lifetime + lab-tech
+transcription, under the R.2 S-1a gate + R.1 three-leg checks + R.3
+joint-frame battery.
