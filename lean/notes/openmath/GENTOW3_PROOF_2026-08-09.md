@@ -13,7 +13,16 @@ GENTOW3-BOX-2 honest status, FR-GL adopted as the eta != 1 machine
 row (S7.1); m-1 digit-value attribution (S7.2); m-2 P-1 census
 110 -> 137 (S7.3); m-3 T-SHADOW-REG sigma-leg disclosure (S7.4).
 Sealed machine artifacts BYTE-UNTOUCHED (md5s, S7.5). Grade stays
-0/2; PE2 next.]**
+0/2; PE2 next.]
+[ARC — passPE2 2026-08-10: NOT CLEAN, 1 GAP
+(GENTOW3_passPE2_report.md @ c048154); counter stays 0/2.
+GT3-r2 repair round 2026-08-10 (this commit): F-1 certificate
+scoping — the S0 geography clause, the S4 delta = 1 bullet, and
+the S4 count-law rewritten to carry (iv)'s per-coordinate
+certificate hypothesis; "touched coordinate(s)" pinned to the
+certificate reading in the (iv) statement (S7.6). Sealed machine
+artifacts BYTE-UNTOUCHED (md5s re-verified, S7.6). Grade stays
+0/2; PE3 next.]**
 
 CHARGE: characterize EXACTLY when the stage-shadow read (T(b)'(iv):
 the coefficientwise mod-Phi' projection G-hat_j(theta, Y)) agrees
@@ -46,9 +55,17 @@ ledger, the constant E2 = e2f2u2); machine: gentow1_checks.py
     THETA_j := (mu2 − j)·E2 + delta     (per composed coordinate j)
 
 THE GEOGRAPHY (proved in S2): the stage-shadow read is
-digit-faithful at every consulted dv2-height < THETA_j; at
-overflow genres it fails AT THETA_j (attained by the key power's
-own shadow); at x-free genres (every lift coefficient of the
+digit-faithful at every consulted dv2-height < THETA_j; at a
+non-x-free genre it can first fail no earlier than THETA_j, and
+it fails AT THETA_j exactly at the coordinates carrying (iv)'s
+certificate (the key power's assembled height-THETA_j K2-digit
+does not cancel — GENTOW3-BOX-1): there the floor is attained by
+the key power's own shadow [GT3-r2: certificate-scoped; the
+composed clause asserted attainment certificate-free at "overflow
+genres" (a term defined nowhere) and is REFUTED where the digit
+cancels — measured FR-M3 (mu2 = 3): self-shadow pins [12, 7, 4]
+vs THETA [10, 7, 4], slack at j = 0, attained at j = 1, 2 —
+S7.6]; at x-free genres (every lift coefficient of the
 composed key an x-free monomial) it is faithful at EVERY height.
 The entry band (heights <= (mu2−j)E2) sits below THETA_j with
 margin delta at every genre — T(a)'s survival. At delta = 1 the
@@ -150,7 +167,15 @@ whose key power's self-overflow is non-cancelling (certificate
 below; machine-checked at FAM-A5/A7/B/C), the floor is ATTAINED:
 f = Phi2^{mu2} has composed read DRAIN (C_j = 0) while its shadow
 read carries a nonzero digit at exactly THETA_j at the touched
-coordinate(s) — and deep perturbations (disc ≠ 0) keep the
+coordinate(s) [GT3-r2 PIN: "touched" is the CERTIFICATE sense —
+coordinate j is touched iff the key power's assembled
+height-THETA_j K2-digit (the proof's single-Phi'-extraction sum)
+does not cancel, i.e. GENTOW3-BOX-1's certificate holds at
+(genre, j); NOT the weaker "ShC_j ≠ 0" — a measured frame
+separates the two readings (FR-M3 j = 0: ShC_0 = 64 ≠ 0 with pin
+12 while the height-THETA_0 = 10 digit cancels), and (iv) is true
+under the certificate reading only — S7.6] — and deep
+perturbations (disc ≠ 0) keep the
 divergence. The shadow read at heights ≥ THETA_j is NOT a function
 of the honest data.
 
