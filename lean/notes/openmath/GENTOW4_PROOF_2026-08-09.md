@@ -1035,3 +1035,54 @@ prefix md5 after the append. Sealed artifacts byte-frozen at PE3
 
 Grade after this record: **ACCEPTED 2/2**. Dated appends and
 dated brackets only from here.
+
+### [TOWERRAT2-C annex, 2026-08-10] Dated correction: the 4.A(ii)
+### "top coefficient NOT monic" parenthetical SUPERSEDED
+
+*Provenance: post-acceptance decorrelated ratification run C
+(CODEX_TOWERRAT2_2026-08-10.md S4; session
+019feb4c-3781-7ac2-96bc-40639ca426eb, model gpt-5.6-sol, outcome
+RATIFIED-WITH-ANNEX, 2 MINOR). Annex finding C-1 adjudicated REAL
+(display defect, MINOR) -> this correction, re-derived from this
+note's own displays; annex finding C-2 adjudicated ARTIFACT (the
+header grade lines are the frozen historical layer; the dated
+acceptance record above governs — see the S4 rebuttal there). The
+acceptance (2/2) is untouched. This is a PURE dated append on the
+frozen body: pre-append full-file md5
+bf7e60d640f36365dac83979d1b6ea63 (1037 lines), re-verified as the
+byte prefix after the append.*
+
+**The defect, exactly.** THEOREM GENTOW-4.A(ii)'s display carries
+the parenthetical "(length M = floor(n/D2) >= mu2, top coefficient
+NOT monic — the partial-side signature)". The "top coefficient NOT
+monic" clause is false as written: f monic (S0 frame) and Phi2
+monic of degree D2 force, through the division algorithm that
+defines the Phi2-development, C_M monic of degree n − M·D2 — the
+4.A proof itself carries the correct form ("the top coefficient
+C_M has deg n − M·D2 < D2"). The note's own headline witness
+refutes the parenthetical in place: at PE2-P, C_2 = Phi' + 4 =
+x^2 + 2 (S1 battery table) — monic. Nor does the weaker reading
+"C_M is not the constant 1" serve as a partial-side signature: a
+partial datum with e2f2 | mu1 — e.g. (e2f2, mu2, mu1) = (2, 2, 6),
+so that e2f2·mu2 = 4 < 6 = mu1 and n = D'mu1 = 3·D2 — has exact
+division and C_M = 1.
+
+**Display of record (supersedes the parenthetical only; the
+surrounding (ii) clause is unchanged):**
+
+    (length M = floor(n/D2) >= mu2; C_M monic of degree
+     n − M·D2 < D2, the constant 1 exactly when D2 | n; the
+     partial-side signature is n > mu2·D2 — the development is
+     not monic-of-length-mu2, S0's refusal criterion)
+
+Re-derivation from the note's own frame: PARTIAL means
+e2f2·mu2 < mu1, i.e. n = D'mu1 > D'e2f2·mu2 = D2·mu2, and
+M = floor(mu1/e2f2) >= mu2 follows. The two consumers adjacent to
+the parenthetical key on the corrected content, not on the
+superseded clause: GENHN-2''s pin read consumes the degree bounds
+(deg C_j < D2 at j < M; deg C_M = n − M·D2 < D2, the 4.A proof
+display), and the corrected T(b)'(iii) reader's refusal (S0,
+exercised at PE2-P) keys on deg f = 10 != mu2·D2 = 8 — the
+n > mu2·D2 form. The correction touches a parenthetical gloss,
+not a hypothesis or conclusion clause of 4.A(ii); sealed
+artifacts stay byte-frozen (no runner touched, no re-run).
