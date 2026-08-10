@@ -3655,3 +3655,23 @@ anywhere; first measured slack at j=0). Tower board: 3/7 accepted
 repair charges) · GENTOW3 0/2 · GENTOW5 0/2 · GENTOW4/6 unopened.
 B13 = the repair wave (r3/r1/TOWERRAT-R1/R2/R3), then GENTOW4/6 at
 B14.
+
+**2026-08-10 DATED APPEND #18 — THE CODEX CHALLENGES DISCHARGED AT
+NOTE GRADE; GENTOW5 AT 1/2 (B13 fold)** — LEMMA HETOW-4 PROVED (the
+missing normalizer bridge Codex demanded): the honest content is that
+the twist does NOT cancel per height — τ(k) = η^{−Q(m(k))} is a
+genuine cocycle, not a character — but the assembled residuals
+telescope to ρ_t = ρ̂_t·τ(H₀)·δ^{−t}, i.e. R = τ(H₀)·R̂(Z/δ), exactly
+the J-D0-covered species; verified 203 checks / 37 dual-route gp jobs
+/ 0 violations at three committed frames. GENTOW1's three Codex
+repairs landed machine-verified (the clipped count display, the ONTO
+sets defined with exact 16→16 enumeration, LIFT-STABLE three-band).
+GENTOW5 PE4 CLEAN → **1/2** (the corrected (c) verified up to depth
+5/6; two display minors ride — minors HOLD the counter); its PE5 is
+the acceptance attempt. GENTOW3 PE2 NOT CLEAN: the CERTIFICATE seam —
+three record sentences claim attainment certificate-free, refuted by
+the measured FR-M3 slack and a constructed Θ-reaching-but-faithful
+member; cure = one certificate-scoping pass; core theorem untouched.
+Queued: the Codex discharge-confirmation leg (HETOW-4 + R2 repairs).
+B14: GENTOW5 rider→PE5 + GENTOW3 r2→PE3 + the GENTOW4 and GENTOW6
+arcs open.
