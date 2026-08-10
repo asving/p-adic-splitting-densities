@@ -771,7 +771,22 @@ after step s, step s+1 runs (c) at k_{s+1} = max(c_{s+1} + 1,
 max(H_s, H_block)) and needs depth N_0^{(s+1)} = c_{s+1} +
 max(c_{s+1}, max(H_s, H_block)) + 1; the final N_0 of the bouquet
 is the LAST step's value, a sufficient depth (fence (iii) extends
-verbatim: not claimed sharp).] ∎
+verbatim: not claimed sharp).] [rider (post-PE3, 2026-08-10; F-2):
+the step-domination line behind "the LAST step's value". Write
+M_s for the (H1) cell depth entering step s (M_1 = H_block,
+M_{s+1} = max(H_s, H_block), per the (H1)-from-(b) derivation
+above), so k_s = max(c_s + 1, M_s), N_0^{(s)} = c_s +
+max(c_s, M_s) + 1, H_s = k_s + c_s. In both k-cases,
+H_s >= N_0^{(s)} - 1: at k_s = c_s + 1 (i.e. c_s + 1 >= M_s),
+H_s = 2c_s + 1 while max(c_s, M_s) <= c_s + 1 gives
+N_0^{(s)} <= 2c_s + 2; at k_s = M_s (i.e. M_s >= c_s + 1),
+H_s = M_s + c_s = N_0^{(s)} - 1 exactly. Hence N_0^{(s+1)} =
+c_{s+1} + max(c_{s+1}, M_{s+1}) + 1 >= M_{s+1} + 1 >= H_s + 1
+>= N_0^{(s)} (c_{s+1} >= 0, a sum of v(Res) constants each
+priced positive by GENTOW-6.6a): N_0 is NONDECREASING along the
+bouquet, so any N at or above the last step's N_0 sits inside
+each earlier step's (c)-range — the last step's value is a
+sufficient depth for the whole iteration.] ∎
 
 **Honest fences.** (i) The theorem prices the MULTIPLICATION; it
 does not aggregate cells over genres/keys (GENH5-DENS geography —
