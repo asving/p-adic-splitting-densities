@@ -166,10 +166,19 @@ consumed here rests on the overclaims (COR 3.C consumes (i)/(ii)).
    free-count display; BUT LEMMA GENTOW-5(a) (GENTOW1 L414) IS the
    LIFT-STABLE clause, and GENTOW3's remark (3) consumes its CAP
    ("consulted heights also < e1e2·N"). The three-band restatement
-   by the parallel Codex-repair unit has NOT landed at this read.
-   WATCH (not a finding today): when it lands, re-check that the
-   cap inequality survives; if the cap moves, S2 remark (3) and
-   the S6 stack sentence need a re-point.
+   LANDED MID-PASS (TOWERRAT-R2, 4caf0fb: BAND 1 below-cap
+   stable / BAND 2 at-cap value-exact-residue-undetermined at
+   f1f2 >= 2 / BAND 3 above-cap unstable; the sealed "iff <
+   e1e2*N" only-if direction refuted at FAM-B value 8 = cap).
+   ADJUDICATED at the restated text (GENTOW1 L919-955): GENTOW3's
+   consumption is the strict-below-cap direction ONLY (Band 1 +
+   clause (c)'s consultation congruence, both of which R2c's
+   consumer sentence explicitly preserves: "consumers ((c)'s
+   congruence, (d)'s carries, the readable-event consultation)
+   ride heights and band-1/2 residue-determinacy as before");
+   GENTOW3 nowhere uses the refuted only-if direction, and the
+   R2a free-count clip touches nothing GENTOW3 cites. NOT a
+   finding -- the consumption survives the repair verbatim.
 4. **r1 manifest verified.** Pre-round body md5 8664269e
    re-computed from d90db6d = the manifest's value; the r1 diff's
    touched lines are the nine listed sites; the THEOREM (i)–(iv) /
