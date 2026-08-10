@@ -411,16 +411,31 @@ residuals in HE7's COHERENT normalization; RAW slot residues are
 NOT them when the class letter eta2 != 1. At (e2, f2) = (2, 1),
 u2 odd: the wrap Phi'(x0)^2 = eta2·nhat(u2)(x0)·(1 + small) makes
 the height-0 monomial ratio x^{Δa} pi^{Δv} Phi'^{Δb} have residue
-eta2^{Δb/2} (Δb is forced even; the x- and pi-relations have
-residue 1 at f1 = 1), so the coherent digit at coordinate j of an
-integer-slope [0,2]-read is
+eta2^{Δb/2} (Δb is forced even; the pi-relation has residue 1, and
+the x-relation x^{e1} = eta·pi^h·(1 + small) has residue eta — so
+this step, and the display below, are derived AT eta = 1 [GT4-r1:
+the composed parenthetical said "at f1 = 1", which is FALSE — f1 =
+1 does not force eta = 1]), so the coherent digit at coordinate j
+of an integer-slope [0,2]-read is
 
     delta_j = r_j · eta2^{(b_j − B_j)/2},
     N_j := n2hat(c_g)·n2hat(lam)^{2−j},  B_j = b-exponent of N_j,
 
 with r_j, b_j the raw residue and Phi'-exponent of the attaining
-slot. Feeding r_j instead of delta_j flips INERT/SPLIT exactly on
-eta2 != 1 members: FAM-P5 (psi2 = T+1 over F_3, eta2 = 2) exposed
+slot. [GT4-r1 SCOPE (S8): the display — and the sealed coh() — is
+derived at eta = 1, which covers the whole battery (q = 2
+forcibly; the q = 3 families' Phi' = x^2−3 has eta = res(x^2/3) =
+1) but NOT every f1 = 1 frame. At eta != 1 each b-wrap Phi'^2 ->
+eta2·nhat(u2) introduces x-exponent i(u2), and reducing the
+accumulated x-exponents through the x-relation contributes
+eta-powers the display omits — the same cocycle that corrects
+chat_t (S0 pin). What holds at f1 = 1, eta != 1 is the SLOPE layer
+of S3(v): FR-G's committed members (eta = 2, S8) are decided
+2SIDED and RAM at the corrected key, PARI-exact, consuming no
+residual digits; no machine row in any leg yet exercises coh() at
+eta != 1.] Feeding r_j instead of delta_j flips INERT/SPLIT
+exactly on eta2 != 1 members: FAM-P5 (psi2 = T+1 over F_3,
+eta2 = 2) exposed
 12 such flips against PARI at the smoke; q = 2 families and
 eta2 = 1 rows are structurally blind to the defect. The corrected
 reader is the sealed one; the defect is preserved as tooth
@@ -529,7 +544,23 @@ the "S6-VERDICT" block at the end of this file.**
   HETOW does at full sides); f1 = 1 outer keys; q in {2,3}; e2 in
   {1,2}; depth 2; d = 1 ambients. The S2–S4 proofs are uniform in
   all of these (S3(iii) is stated at any mu2*); the gap is
-  machine-side, named.
+  machine-side, named. [GT4-r1: the axis list above omitted the
+  ETA-GAUGE axis (eta = res(x^{e1}/pi^h)), and "uniform in all of
+  these" is WITHDRAWN (HETOW [r1] F-3's precedent). Honest status:
+  the S2–S4 statements and proofs hold AT THE WRAP-CORRECTED KEY
+  of the S0 pin — at the gauge-naive display, 4.1(c)'s key clause,
+  (ii)'s deg f_S = D2·mu2* display, and GENTOW-1(d)'s floor
+  transport FAIL at eta != 1, f2 = 2 frames (S8's FR-G: naive-key
+  sigma {(4,1)} != carrier {(2,2)}; naive mu2* = 0 with the class
+  invisible; nfeltval = E2 exactly) — and the S4 remark's
+  coherent-digit display is eta = 1-scoped (its own pin). The
+  sealed battery cannot see this axis: all five families sit at
+  eta = 1 (P1/P2/P6 at q = 2, forcibly — P2 the only f2 = 2
+  family; P3/P5 at Phi' = x^2−3 with eta = 1, f2 = 1 anyway).
+  eta != 1 coverage on record: FR-G (S8) + the erratum lineage
+  (frame X @ 59c1966; hetowr1_supp.py frames X/Z/W). Named
+  machine-side gaps now: no f1 >= 2 row, no eta != 1 coh() row,
+  depth 2 only.]
 * **GENTOW4-BOX-4 (grade).** 0/2 attempt, composed this session,
   no hostile arc. Conditionality stack: LEMMA GENHN-T(b)'(i)(ii)
   + the [r1] node floor (GENHN accepted 2/2 at PE4), HETOW-1/2
@@ -587,7 +618,15 @@ nodev6 on every member. **1,740 checks, 0 violations.**
   PARI-exact.
 * **TEETH 6/6 FIRED:** T-1 FULLREAD (117/117 refused by the monic
   reader); T-2 NOCG (49 parity flips, every one PARI-killed — the
-  c_g-translation is machine-load-bearing); T-3 SIBDROP (117/117);
+  c_g-translation is machine-load-bearing) [GT4-r1 DISCLOSURE
+  (m-2), from the sealed runner L871–878: the flips split by
+  direction — on odd-p0/even-(p0−cg) rows the wrong sigma is the
+  parity rule's own forced RAM output (2e1e2, f1f2); on
+  even-p0/odd-(p0−cg) rows the parity rule says non-RAM without
+  determining WHICH, and the runner emits INERT (e1e2, 2f1f2) as a
+  HAND-ASSEMBLED representative wrong-sigma, not a mutant-reader
+  run through the trichotomy; the 49 kills are PARI-adjudicated in
+  both directions]; T-3 SIBDROP (117/117);
   T-4 WITHHOLD (UNDETERMINED, 0 guesses); T-5 WRONGKEY (22/22 P5
   probes: wrong key never reproduces the block datum; incl. the
   key | f peel corner); T-6 NOTWIST (8 INERT/SPLIT flips without
