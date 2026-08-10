@@ -1,0 +1,1129 @@
+Reading additional input from stdin...
+OpenAI Codex v0.145.0
+--------
+workdir: /data/users/asvin/math-and-lean/p-adic-splitting-densities
+model: gpt-5.6-sol
+provider: openai
+approval: never
+sandbox: workspace-write [workdir, /tmp, $TMPDIR]
+reasoning effort: none
+reasoning summaries: none
+session id: 019feb4f-c3cd-71a3-bffd-b57c2572456e
+--------
+user
+DISCHARGE-CONFIRMATION CHARGE — batch #1 repairs (post-ratification, decorrelated model)
+
+You are a hostile mathematical verifier with zero prior stake, confirming REPAIRS. You CANNOT read files: everything needed is pasted below, self-contained. Background: two accepted proof notes (HETOW — a tower instantiation of a frozen level-2 theorem HE7.A; GENTOW1 — composed entry budgets/refine transfer/window ledger at a composed key Phi2) were attacked by a decorrelated ratification run (batch #1). That run produced 3 findings on HETOW (graded JUSTIFICATION GAP by the verifier) and 4 on GENTOW1 (2 CRITICAL + 1 GAP + 1 MINOR by the verifier). Repairs were then appended to each note as dated corrections. YOUR CHARGE: for each original finding, judge whether the pasted repair DISCHARGES it — nothing else. FIX NOTHING; add no new attack surfaces beyond what each repair itself introduces (a repair that introduces a NEW error is a NEW-ISSUE).
+
+PROTOCOL (strict):
+- Work finding-by-finding: (1) restate the original finding in one sentence, (2) quote the repair's operative display, (3) verify the repair's own mathematics (re-derive its displays; check its claimed counter-instances and machine rows for internal consistency), (4) verdict.
+- Verdict vocabulary, one per finding: DISCHARGED (the repair fully answers the finding's mechanism) / INSUFFICIENT (the repair answers part; state exactly what remains — quote the un-answered mechanism) / NEW-ISSUE (the repair introduces a defect of its own; state it with a concrete counter-configuration).
+- The repairs are APPEND-ONLY corrections governing the reading of frozen sealed displays; do not demand edits to the frozen body — judge whether the appended reading + lemmas close the finding's mechanism.
+- Setting for HETOW: complete DVR O, uniformizer pi, residue K = F_Q; level-1 key Phi' (deg D' = e1f1), letter eta = res(x^{e1}/pi^h); two normalizer systems at the composed level: n2(k) = varpi^{m(k)} Phi'^{s(k)} (HE7's, varpi = x^{i0}pi^{a0}) vs nhat2(k) = x^i pi^a Phi'^b (the tower ladder, i < e1, b < e2, e1e2a + ie2h + bu2 = k); Q(k) = floor(i0*k/e1); wrap1(a,b) = floor((i(a)+i(b))/e1). Datum (kappa2 = u2/e2, rtilde), K2 = K(eta2).
+- Setting for GENTOW1: grid monomials pi^v x^a Phi'^b, weights wt = e1e2*v + a*e2h + b*u2, E2 = e2f2u2; windows N (data mod pi^{N} per slot string); floors from LEMMA GENTOW-1(a); the refine transfer's triangular map at Phi2+ = Phi2 - lift(s;lam).
+- FORMAT: seven numbered sections (HETOW F-1, F-2, F-3; GENTOW1 F-1, F-2, F-3, F-4), each ending "VERDICT: DISCHARGED" / "VERDICT: INSUFFICIENT — <what remains>" / "VERDICT: NEW-ISSUE — <the defect>"; then a one-paragraph summary; final line exactly "OUTCOMES: <F1>,<F2>,<F3>,<G1>,<G2>,<G3>,<G4>" with the seven verdict words in that order.
+
+================================================================================
+PASTE A — THE ORIGINAL FINDINGS (batch #1 verifier output, verbatim: HETOW run then GENTOW1 run)
+================================================================================
+### A.1 HETOW run (session 019fe985-2c4b-7fc0-9885-5e558447502d)
+
+```
+1. > “unit-residue discrepancy in K₂^× only; σ-content twist-invariant per HE7 §S1 CONVENTION (J-D0)”
+   >
+   > “(residues: same content, letters related by HETOW-1's unit)”
+   >
+   > “GENHN-T(b)′'s composed pins/polygon/residuals ARE THEOREM HE7.A's P₂ data at that datum”
+
+   **Classification: JUSTIFICATION GAP.**
+
+   A coefficientwise discrepancy by elements of \(K_2^\times\) is not, by itself, a twist under which residual factorization is invariant. HE7 fixes
+   \[
+   n_2(k)=\varpi^{m(k)}\Phi'^{s(k)}
+   \]
+   and controls the explicit \(\beta\)-cocycle of that system. GENHN instead uses monomials \(\widehat n_2(k)=\pi^a x^i\Phi'^b\). HETOW never computes
+   \[
+   \operatorname{res}\!\left(\widehat n_2(k)/n_2(k)\right)
+   \]
+   along an arbitrary level-2 side, nor proves that the resulting coefficient factors form the geometric variable-rescaling prescribed by HE7’s convention. Merely observing that each ratio lies in \(K_2^\times\) is insufficient: over \(\mathbf F_3\), \(Z^2+1\) is irreducible, whereas independently multiplying its constant coefficient by the unit \(2\) gives
+   \[
+   Z^2+2=(Z-1)(Z+1).
+   \]
+   Thus arbitrary unit discrepancies can alter degrees, multiplicities, and the separable/repeated branch.
+
+   HETOW-1 translates only the initial letter
+   \[
+   \beta=\eta^{-Q(u_2)}\eta_2
+   \]
+   and the slots defining the composed key. It supplies no coefficientwise translation for the later residual polynomials \(R_{\lambda_2}\) of arbitrary \(A_j^{(2)}\). This matters precisely in HETOW.A(ii)–(iii): a repeated \(K_2\)-rational linear factor consumes its actual root \(s_2\) to choose the lift \(w\) and continue the refine chain. The pointwise proof of HETOW-1(b) does not translate those later \(s_2\)-letters. Consequently the coordinate-free HE7 decision may remain true, but the asserted literal identification with GENHN’s residual data is not established.
+
+2. > “| level-1 frame: f monic, disc f ≠ 0, Φ′ ∤ f | Φ′ ∤ f automatic at a full side | **HETOW-3(a)** ✓ |”
+   >
+   > “A root x₀ has dv(Φ′(x₀)) = a slope of the polygon (COROLLARY HE6-2″); the only slope is κ₂; … So every root carries the label (κ₂, r̃); \(|roots| = deg f\), \(f_S=f\) …”
+
+   **Classification: JUSTIFICATION GAP.**
+
+   The check column establishes only \(\Phi'\nmid f\). It does not establish \(\operatorname{disc}(f)\ne0\), and the HETOW-3(b) proof then uses the separability consequence \(|\operatorname{roots}(f)|=\deg f\).
+
+   This omission is not automatic from the displayed full-side conditions. For example, take \(\mathcal O=\mathbf Z_5\),
+   \[
+   e_1=2,\quad f_1=h=1,\quad D'=2,\quad \Phi'=x^2-5,
+   \]
+   and put
+   \[
+   \Phi_2=\Phi'^2-5^2x,\qquad f=\Phi_2^3.
+   \]
+   In the reduced \(\Phi'\)-development, the finite pins include
+   \[
+   (0,15),(1,13),(2,10),(3,8),(4,5),(6,0),
+   \]
+   whose lower hull is the full side of slope \(5/2>D'h=2\). Its residual is \((Z-1)^3\), so it has
+   \[
+   (e_2,f_2,\mu_2)=(2,1,3),\qquad \mu_1=6,
+   \]
+   and \(A_0=-5^7x\ne0\), hence \(\Phi'\nmid f\). Nevertheless \(\operatorname{disc}(f)=0\), and its distinct-root set is the root set of the degree-four polynomial \(\Phi_2\), not a set of cardinality \(\deg f=12\). Thus HETOW-3(b), \(f_S=f\), and the application of HE7.A do not follow from the hypotheses actually checked in S1. If “outer genre” is intended to import separability, that import is not stated or verified in the self-contained instantiation table.
+
+3. > “| level-2 point: (T1),(T2), dv(Φ′(ξ)) = λ, ι(r)(βξ) = 0 | tower-node locus: (T1),(T2),(T1₂),(T2₂) | HETOW-1(b): … hence the tower-node locus IS the level-2 point set … |”
+   >
+   > “A root x₀ has dv(Φ′(x₀)) = a slope of the polygon … the only slope is κ₂ … So every root carries the label \((κ₂,r̃)\).”
+
+   **Classification: JUSTIFICATION GAP.**
+
+   HETOW-1(b) proves the translation of the final two conditions:
+   \[
+   dv(\Phi'(x_0))=\kappa_2,\qquad
+   \widetilde r(\beta_{x_0})=0
+   \Longleftrightarrow
+   \psi_2(\eta_2(x_0))=0.
+   \]
+   It does not prove that every root of \(f\) satisfies the inherited base-frame conditions (T1) and (T2). The table places (T1),(T2) into the definition of “tower-node locus” and then cites that locus as their verification; HETOW-3(b) derives only the Newton slope and residual label. A full \(\Phi'\)-side controls \(dv(\Phi'(x_0))\) and its side residue, not membership in an independently prescribed opening disk. Hence the equality “tower-node locus IS the level-2 point set,” and especially the subsequent assertion that every root lies in it, requires an unstated inheritance result from the outer label block.
+
+CHECKED CLEAN — The wrap identity and \(Q\)-cocycle have the correct sign:
+\(\widehat n(a)\widehat n(b)=\widehat n(a+b)(x^{e_1}/\pi^h)^{\mathrm{wrap}}\) and \(Q(a+b)=Q(a)+Q(b)+\mathrm{wrap}\).
+
+CHECKED CLEAN — Multi-wrap telescoping is valid: the sum of all intermediate carries is \(\lfloor q\,i(u_2)/e_1\rfloor\), so a single \(W(t)\) correctly represents the accumulated carries.
+
+CHECKED CLEAN — HETOW-1(c)’s exponent cancellation is correct:
+\(W(t)-Q((f_2-t)u_2)=-(f_2-t)Q(u_2)\).
+
+CHECKED CLEAN — The valuation part of (SLOT2) re-derives exactly as
+\[
+\min_{i,s}\bigl(e_1e_2v(c_{i,s})+i e_2h+s u_2\bigr).
+\]
+The unresolved issue is its residue-letter transfer, recorded in Finding 1.
+
+CHECKED CLEAN — For the actually consumed corrected \((\mathrm{LIFT})\)-slot construction, every coefficient is already reduced and \(w=0\); the dated C-A rider correctly prevents consumption of the defective leading-slot overflow generalization.
+
+CHECKED CLEAN — In the auxiliary carry calculation, moved material gains exactly \(u_2-e_2D'h>0\), stationary material never decreases in value, and the ultrametric pointwise residue equality is valid when the moved summand has strictly greater value.
+
+CHECKED CLEAN — HE7.C licenses the tower entry as a jump: the outer side carries \(\psi_2^{\mu_2}\) with multiplicity at least \(2\) and \(e_2f_2\ge2\), and full-side equality coheres with \(\mu_2\le\mu_1/(e_2f_2)\).
+
+CHECKED CLEAN — The termination arithmetic is correct:
+\[
+\mu_1\ge\mu_2e_2f_2,\qquad
+J\le\log_2\mu_1-1\le\log_2n-2.
+\]
+
+CHECKED CLEAN — The minimal live-degree calculation is correct:
+\(D'\ge2\), \(e_2f_2\ge2\), and \(\mu_2\ge3\) give \(n\ge12\), with equality exactly at \((D',e_2f_2,\mu_2)=(2,2,3)\).
+
+CHECKED CLEAN — At \(n=12\), integrality gives \(J\le1\); the existing tower entry supplies one jump, while \(\mu_2=3\) excludes a second jump because HE7.A(3) requires side length at least \(4\).
+
+CHECKED CLEAN — HETOW-3(a) is valid: a finite attained left endpoint gives \(A_0\ne0\), and the reduced \(\Phi'\)-development then gives \(\Phi'\nmid f\).
+
+CHECKED CLEAN — Conditional on the missing base-frame and locus hypotheses, the full-side Newton-polygon argument does put every root on slope \(\kappa_2\), and a residual with the sole irreducible factor \(\widetilde r\) gives the asserted label.
+
+CHECKED CLEAN — The \(\mu_2=2\) trichotomy and both displayed \(\mu_2=3\) sigma menus have the correct degree accounting.
+
+The wrap repair, multi-wrap algebra, termination bounds, and minimal-degree claim survive. Ratification nevertheless fails because the central “literal instance” transfer does not establish the later residual-letter transformation, and the block identification \(f_S=f\) consumes base-frame/separability and opening-locus hypotheses that the table does not actually discharge.
+
+OUTCOME: CHALLENGE
+```
+
+
+### A.2 GENTOW1 run (session 019fe98a-19ed-7400-8b02-46117f9dd15b)
+
+```
+1. Quote: “per window N the free-O-digit count is Sum_{j,a,b} (N − floor(j,a,b)).”
+
+   Classification: CRITICAL ERROR.
+
+   The formula omits truncation at zero. Coefficients lie in \(\mathcal O\), so a slot whose required floor \(L\ge N\) contributes zero free digits modulo \(\pi^N\), not \(N-L<0\).
+
+   Concrete counter-configuration requested in the charge: take
+   \[
+   \mu_2=2,\quad e_1=f_1=e_2=1,\quad f_2=2,\quad h=1,\quad u_2=2.
+   \]
+   Then \(D'=1\), \(e_2f_2=2\), \(E_2=4\), and \(w(0,b)=2b\). The four floors are
+   \[
+   9,\ 7,\ 5,\ 3
+   \]
+   for \((j,b)=(0,0),(0,1),(1,0),(1,1)\). At \(N=1\), the displayed sum is
+   \[
+   (1-9)+(1-7)+(1-5)+(1-3)=-20,
+   \]
+   while the actual budget box modulo \(\pi\) has exactly one string: all four coefficients are zero. Thus the exact per-window count asserted in GENTOW-1(b), and consumed again in GENTOW-5(e), is false unless an unstated large-\(N\) hypothesis is imposed. This also deprives GENTOW-2 layer 3 of its advertised unrestricted per-window cardinality input.
+
+2. Quote: “onto by cardinality: slot strings are key-independent (GENHN-2' at Phi2+ via (i)), the mu2 pinned digits are the event data and the remaining slots biject.”
+
+   Classification: JUSTIFICATION GAP.
+
+   For fixed \(s\) and \(N\), the two sets that must be compared are:
+
+   - the reductions modulo \(\pi^N\) of old-key arrays for which, at \(H_j=(\mu_2-j)\lambda\), every lower \(K_2\)-height digit is zero and the height-\(H_j\) digit equals the prescribed coefficient of \((T-s)^{\mu_2}\), including prescribed zero coefficients;
+   - the reductions modulo \(\pi^N\) of new-key arrays for which all digits through height \(H_j\) are zero.
+
+   Because a \(K_2\)-digit has ragged \(\mathcal O\)-components, these must technically be defined as truncated strings admitting full completions. The proof defines neither finite set and supplies no clipped count. On full infinite slot strings, equal cardinality plus injectivity does not imply surjectivity; a proper subset may have the same infinite cardinality. On finite windows, the only explicit count supplied is the false formula identified in finding 1.
+
+   There is no intrinsic counter-count in the charged small case: after using clipped counts, both sides fix the same visible components. For the parameters in finding 1 and \(N=1\), both projected sets are singletons. Thus the ONTO conclusion may be true, but the stated cardinality argument does not establish it for every window.
+
+3. Quote: “a computed dv2-value is LIFT-STABLE iff < e1e2*N” and, later in the same clause, “at the FIRST band height m = e1e2*N exactly: … the VALUE is exact for every lift”.
+
+   Classification: CRITICAL ERROR.
+
+   These assertions directly contradict one another. The first-band independence mechanism itself supplies counterexamples to the “iff”.
+
+   Use the parameters from finding 1 and take \(N=5\). In coordinate \(j=1\), the slot \(b=1\) has budget floor \(3\). Set
+   \[
+   c_{1,0,1}=\pi^3\cdot\text{unit}
+   \]
+   and all other perturbation slots to zero. Its height is
+   \[
+   3+w(0,1)=3+2=5=e_1e_2N.
+   \]
+   The unread \(b=0\) coefficient beginning at valuation \(N=5\) also has height \(5\), but it occupies the \(1\)-flavor, whereas the readable term occupies the \(\eta_2\)-flavor in \(K_2/K\). Tower-basis independence prevents cancellation. Hence the value is \(5\) for every lift: it is lift-stable but is not \(<e_1e_2N\).
+
+   The proof’s related phrase “undercutting every computed value \(\ge e_1e_2N\)” also fails at equality: an unread term at the cap ties rather than undercuts. The below-cap implication survives, but the stated biconditional in LEMMA GENTOW-5(a) is false.
+
+4. Quote: “strictly above the x-side through (D2, 0), constant term untouched.”
+
+   Classification: MINOR.
+
+   The constant term need not be literally untouched. The document’s own B-R2 example has
+   \[
+   \operatorname{lift}(s;\lambda)=16+4x\Phi',
+   \]
+   so \(\Phi_2^+=\Phi_2-\operatorname{lift}(s;\lambda)\) changes the constant coefficient by \(-16\). What remains untouched is the constant-term side digit or initial form, because the change lies strictly above the side. The invariant argument only needs that weaker statement.
+
+CHECKED CLEAN — The event slice constrains residual equalities, not merely valuations: for every \(j\), its height-\(H_j\) \(K_2\)-digit is prescribed, with a zero prescription when the relevant binomial coefficient vanishes.
+
+CHECKED CLEAN — In the small \(\mu_2=2,\ e_1=f_1=1,\ e_2f_2=2\) case, properly clipped old-event and new-node counts agree; no genuine counter-count exists.
+
+CHECKED CLEAN — “new digit = old digit + strictly-lower-height data” has unit diagonal and gives recursive injectivity over the residue-digit alphabet; monic key division also gives an ambient unipotent map over \(\mathcal O\).
+
+CHECKED CLEAN — GENTOW-5(c)’s congruence bound is valid with literal \(w(a,b)\): writing \(w=qk+r\), \(q=e_1e_2\), gives \(m\le q(N-1)+r\le q(N-1)+w\).
+
+CHECKED CLEAN — GENTOW-5(d) does not conflate two unrelated quantities: slot weight is precisely the composed digit height, so weight-nondecreasing carries imply that an output at height \(d\) uses old digits only at heights \(\le d\).
+
+CHECKED CLEAN — The first-band tower-basis argument is coherent even when \(e_2\ge2\): the products \(\eta^r\eta_2^t\) form successive independent component directions, so complementary unread flavors cannot cancel a nonzero readable component.
+
+CHECKED CLEAN — The budget pin guard causes no negative-corner error because
+\[
+w(a,b)<u_2+(e_2f_2-1)u_2=E_2,
+\]
+while \((\mu_2-j)E_2\ge E_2\); hence the guarded difference is always positive.
+
+CHECKED CLEAN — Step 0’s \(n(m)=x^i\pi^a\) merely reuses \(a\) as a local dummy variable: its arithmetic
+\[
+e_1e_2a+i e_2h=e_2(e_1a+ih)=e_2m
+\]
+is correct.
+
+CHECKED CLEAN — Both Step-0 carries are weight-monotone: the \(x\)-tail is priced by the \(\Phi'\)-side, and every corrected \(\Phi'\)-carry lift has weight exactly \(E_2\).
+
+CHECKED CLEAN — Equality of a coherent \(K_2\)-residue digit implies equality of every basis component modulo \(\pi\); subtracting therefore raises each component by one \(\pi\)-power and its weight by \(e_1e_2\).
+
+CHECKED CLEAN — The corollary’s convexity direction is correct: for a lower hull with endpoint \((\mu_2,0)\), the rightmost positive slope magnitude is \(\min_j p_j/(\mu_2-j)\), and slopes can only increase moving left.
+
+CHECKED CLEAN — GENTOW-2(i)’s arithmetic follows from \(\lambda>E_2\) and \(u_2>e_2D'h\), yielding a strict height above \(D_2e_2h\).
+
+CHECKED CLEAN — GENTOW-2(iv) handles \(p\mid\binom{\mu_2}{j}\) correctly: the leading graded coefficient is then zero, while all \(i<\mu_2\) contributions are strictly above the node height.
+
+CHECKED CLEAN — Step 4’s CRT construction reaches every residue modulo \(e_1e_2\) with \(b<e_2\) and \(a<e_1\); its restricted ranges are sufficient.
+
+CHECKED CLEAN — The corrected \(\widehat c_t\) convention is present at every value-sensitive use identified in the note; no remaining clause visibly consumes the gauge-naive residue formula.
+
+CHECKED CLEAN — GENTOW-5(e)’s ambient coefficient-to-composed-coordinate map is genuinely unipotent over \(\mathcal O\) and therefore bijective modulo \(\pi^N\); the failure is the subsequent unrestricted budget count, not the ambient change of coordinates.
+
+The central valuation and carry arithmetic survives, as do the residual-event correspondence and triangular injectivity. Nevertheless, the note contains a false unrestricted window-count formula, an explicit contradiction in the cap theorem, and an incomplete finite-cardinality argument for ONTO. Those are GAP-or-worse defects in stated lemmas, so post-acceptance ratification cannot stand.
+
+OUTCOME: CHALLENGE
+```
+
+
+================================================================================
+PASTE B — THE HETOW REPAIRS (dated append to HETOW_RECON_2026-08-09.md, byte-verbatim: LEMMA HETOW-4 + F-2 cite annex + F-3 row annotation)
+================================================================================
+### Dated append (2026-08-10, TOWERRAT-R1 + two annexes): LEMMA
+### HETOW-4 — the n̂₂/n₂ normalizer bridge, PROVED; the S1 J-D0 row
+### superseded
+
+*Provenance: the post-acceptance decorrelated ratification run
+(`CODEX_TOWERRAT_2026-08-10.md` §S2, session
+019fe985-2c4b-7fc0-9885-5e558447502d, outcome CHALLENGE, 3 GAP):
+F-1 adjudicated REAL (the confirmed gap) → repaired by LEMMA
+HETOW-4 below; F-2 REAL as display → the cite annex; F-3 artifact
+in substance → the row annotation. The 2/2 acceptance stands
+ANNOTATED, now with the annotation DISCHARGED at this note's own
+grade; the body above stays BYTE-FROZEN — this append GOVERNS the
+S1 rows it names. Every derivation below is from this note's own
+lemmas + the frozen HE7 §S1/§S5.3, not from the verifier's text.*
+
+**THE GAP, exactly.** The S1 normalizer row justified the n̂₂-vs-n₂
+discrepancy by "unit-residue discrepancy in K₂^× only; σ-content
+twist-invariant per HE7 §S1 CONVENTION (J-D0)". HE7's CONVENTION
+covers changes of normalizer WITHIN its ϖ-Φ′-monomial family
+(there the ratio at grade k is forced to be (Φ′^{ℓ}/ϖ^{u})^{c},
+residue β^{c}); the tower ladder monomial n̂₂(k) = x^{i}π^{a}Φ′^{b}
+is NOT in that family, and THEOREM HE7.A(2)/(3)'s routing
+predicates (separability of R_{λ₂}; the repeated factor's
+K₂-rational letter s₂, consumed by (LIFT₂)) are letter-sensitive —
+an arbitrary per-height unit twist can change them. The missing
+lemma computes the ratio's residue exactly and shows what it
+contributes: the twist does NOT cancel per height (the raw
+pin-residue strings of the two systems genuinely differ,
+non-geometrically); it cancels in the ASSEMBLED residuals, whose
+comparison is a single global unit times a K^×-rescale — the
+species HE7's J-D0 display does cover — and both routing
+predicates transport.
+
+> **LEMMA HETOW-4 (the normalizer bridge).** Notation of §S1/§S2
+> ([r1] preamble: ϖ = x^{i₀}π^{a₀}, n̂(k) = x^{i(k)}π^{a(k)},
+> Q(k) = (i₀k − i(k))/e₁ = ⌊i₀k/e₁⌋, wrap₁(a,b) :=
+> ⌊(i(a)+i(b))/e₁⌋; letter η; datum (κ₂ = u₂/e₂, r̃),
+> K₂ = K(η₂) = K(β), β = η^{−Q(u₂)}η₂ per HETOW-1). For k ∈ ℤ put
+> s(k) := k·u₂^{−1} mod e₂ ∈ [0, e₂), m(k) := (k − s(k)u₂)/e₂;
+> n₂(k) := ϖ^{m(k)}Φ′^{s(k)} (HE7 §S1) and n̂₂(k) :=
+> x^{i}π^{a}Φ′^{b} the tower ladder monomial (i < e₁, b < e₂,
+> e₁e₂a + ie₂h + bu₂ = k; a ∈ ℤ, Laurent). Then:
+>
+> (a) [THE RATIO IS A GRADE-DETERMINED WRAP-LETTER MONOMIAL]
+> b = s(k) and x^{i}π^{a} = n̂(m(k)), so, as Laurent monomials,
+>
+>     n̂₂(k)/n₂(k) = n̂(m(k))/ϖ^{m(k)} = (x^{e₁}/π^{h})^{−Q(m(k))},
+>
+> and at every point ξ of the tower-node locus
+> res(n̂₂(k)(ξ)/n₂(k)(ξ)) = η_ξ^{−Q(m(k))} = ι_ξ(τ(k)), where
+> τ(k) := η^{−Q(m(k))} ∈ K^×.
+>
+> (b) [τ IS A COCYCLE, NOT A CHARACTER] with w₂ :=
+> ⌊(s(k)+s(k′))/e₂⌋ ∈ {0,1},
+>
+>     τ(k)·τ(k′)/τ(k+k′)
+>       = η^{ wrap₁(m(k), m(k′)) + w₂·( Q(u₂) + wrap₁(m(k)+m(k′), u₂) ) },
+>
+> the two-floor wrap-cocycle. In particular the per-height twist is
+> neither constant nor geometric in general, and the RAW (bracket-
+> free) pin-residue strings of the two systems differ wherever some
+> τ(H) ≠ 1.
+>
+> (c) [ASSEMBLED RESIDUALS: THE BRACKETS TELESCOPE THE TWIST INTO
+> THE COVERED SPECIES] Let a side of P₂ have slope λ₂ = u₃/ℓ₂
+> (lowest terms), lattice heights H_t = H₀ − t·u₃, t = 0..d. Each
+> system assembles its side residual WITH ITS OWN cocycle bracket
+> (HE7: §S5.3 Step 2's τ_t with res(τ_t) = β^{c_t}; tower: the S4
+> coherent-normalizer wrap units, GENTOW-2(iv)'s "coherent
+> normalization, wrap units included"), so the t-coefficient is
+> res(A_{j(t)}·N(u₃)^{t}/N(H₀)) with N = n₂ resp. n̂₂. Hence, with
+> δ := τ(u₃) ∈ K^×,
+>
+>     ρ_t = ρ̂_t · τ(H₀) · δ^{−t} ,   i.e.   R_{λ₂}(Z) = τ(H₀) · R̂_{λ₂}(Z/δ) ,
+>
+> and the side letters match the rescale: β₂,ξ =
+> res(Φ₂(ξ)^{ℓ₂}/n₂(u₃)(ξ)) = ι_ξ(δ)·ẑ_ξ.
+>
+> (d) [ROUTING TRANSPORT] Under (c): R_{λ₂} separable ⟺ R̂_{λ₂}
+> separable; the multisets of (degree, multiplicity) over
+> irreducible factors are equal, via the degree-preserving
+> bijection r̂₂(Z) ↦ r₂(Z) := δ^{deg r̂₂}·r̂₂(Z/δ) (monic); hence
+> HE7.A(2)'s dictionary (e, f) = (e₁e₂ℓ₂, f₁f₂·deg r₂) and
+> HE7.A(3)'s branch predicate ℓ₂·deg r₂ ∈ {1, ≥2} read identically
+> in the two systems; at the α-refine branch the repeated roots
+> satisfy s₂ = δ·ŝ₂ (δ ∈ K^× ⊂ K₂, so K₂-rational together), and
+> ONE w ∈ O[x] realizes both prescriptions — its residues in the
+> two systems differ by exactly ι(δ) at grade λ₂, which is (a) at
+> k = λ₂ — so the refined key Φ₂ − w and every iterate of the
+> finite chain (LEMMA HE7-8/12/13) are system-independent
+> polynomials.
+
+*Proof.* (a) From e₁e₂a + ie₂h + bu₂ = k: mod e₂, bu₂ ≡ k with
+0 ≤ b < e₂ and gcd(u₂, e₂) = 1 forces b = s(k); then
+e₁a + ih = (k − s(k)u₂)/e₂ = m(k) with 0 ≤ i < e₁ is the level-1
+ladder equation at height m(k), so i = i(m(k)), a = a(m(k))
+(gcd(h, e₁) = 1). The ratio n̂(m)/ϖ^{m} = x^{i(m)−i₀m}π^{a(m)−a₀m}
+has x-exponent −e₁Q(m) (definition of Q) and dv = 0, forcing
+π-exponent +hQ(m)·(1/1): the display. Residue: res(ξ^{e₁}/π^{h}) =
+η_ξ at every (T1)/(T2) point — the §S2 [r1] preamble's wrap letter.
+(b) m(k+k′) = m(k) + m(k′) + u₂w₂ (the s-carry), then apply the
+preamble's Q(a+b) = Q(a) + Q(b) + wrap₁(a,b) twice. (c) The bracket
+in each system is τ_t^{N} := N(H_t)·N(u₃)^{t}/N(H₀) (HE7 §S5.3
+Step 2's display, and the same collection pattern at the tower
+carrier), so the assembled coefficient telescopes to
+res(A·N(u₃)^{t}/N(H₀)); the two systems' coefficients then differ
+by res((n₂(u₃)/n̂₂(u₃))^{t}·(n̂₂(H₀)/n₂(H₀))) = τ(H₀)·δ^{−t} by (a);
+the letter display is (a) at k = u₃. (d) Z ↦ Z/δ with δ ∈ K^× is a
+K₂-algebra automorphism of K₂[Z] up to the global unit: it
+preserves irreducibility, degrees, multiplicities, and maps the
+root ŝ to δŝ; the branch predicates and the dictionary consume
+only these invariants plus K₂-membership of repeated roots, all
+preserved (δ ∈ K^×). The refine clause is (a) at grade λ₂. ∎
+
+**What the machine adds (all committed).** (i) The sealed supp
+instrument `hetowr1_supp.py` re-ran in isolation 2026-08-10:
+29 gp jobs, 0 violations, GREEN, output content-identical to the
+committed artifact except the runtime stamp (21.4s vs 21.3s);
+`hetowr1_supp_results.json` md5 58f1ce0c unchanged. (ii) Fresh
+sealed leg `hetow_r2_hetow4.py` (seal commit with preregistered
+predictions + derived constants; runner md5 40495654, output
+ab7d5b66, results d189fe0b): **GREEN — 203 checks, 37 gp jobs
+dual-route, 0 violations** at the committed frames X, Z
+(η-letter-live, e₂ = 1) and S (e₂ = 2, bracket-live): P-A identity
+leg (a) at k = 1..60 per frame; P-B bridge (c) exact at every
+scored side (X/Z INT7: τ(H₀) = 2, δ = 2; X/Z HALF15: δ = 2; μ₂ = 3
+sides included); P-C routing transport (d) with realized coverage
+SEP-IRRED + SEP-SPLIT + REFINE at each of X, Z, S and every
+SEP member's dictionary σ = PARI on dual routes; P-D the honesty
+tooth T-RAW FIRED at X and Z (raw τ-strings (2,2,1) at the λ₂ = 7
+sides and (1,2,2,1) at μ₂ = 3, non-geometric — the per-height
+non-cancellation is machine-real), with frame S's INT21 side
+letter-dead (τ ≡ 1, Q even) and HALF43 side letter-LIVE
+(τ(43) = 2, Q(19) = 9 odd) exactly as derived; P-E HE7's own
+bracket res(τ_t) = β^{c_t} cross-checked, including live c_1 = 1
+rows at S.
+
+**Supersession (the S1 rows, re-read).** The S1 normalizer row's
+justification cell now reads: "discrepancy = the wrap-letter
+monomial with residue η^{−Q(m(k))} (HETOW-4(a)); σ-content
+transported by HETOW-4(c)(d) — a global unit × K^×-rescale at the
+ASSEMBLED residuals, the J-D0-covered species; NOT per-height
+invariant (HETOW-4(b), tooth T-RAW)". The (SLOT₂) row's
+parenthetical "(residues: same content, letters related by
+HETOW-1's unit)" is re-read the same way: same content AFTER the
+brackets, with the per-height comparison given by τ. THEOREM
+HETOW.A(i)'s final clause ("GENHN-T(b)′'s composed
+pins/polygon/residuals ARE THEOREM HE7.A's P₂ data") now carries
+its exact content: pins and polygon are shared verbatim
+(valuation-only rows, untouched by the challenge), and the
+composed residuals are the δ-rescale of HE7.A's with every
+HE7.A(2)/(3) routing decision and every α-refine chain identical
+(HETOW-4(d)). The CODEX_TOWERRAT §S6 gap annotation on
+HETOW.A(i)'s final clause is DISCHARGED at this note's grade.
+
+**F-2 annex (the all-roots transport cite, at HETOW-3(b)).**
+HETOW-3(b)'s "every root of f on the opening locus is a level-2
+point" consumes the T(b)′ setting's all-roots transport, displayed
+in the ACCEPTED GENTOW1 note (Step 4, quoted): "All roots x₀ of
+f ∈ 𝒯 are tower-node points: the full inner side forces
+v(Φ′(x₀)) = u₂/(e₁e₂) exactly with η₂(x₀) a ψ₂-root — T(b)′(iii)'s
+(T1′)/(T2′) transport, consumed." This cite is hereby attached at
+HETOW-3(b)'s use site (annex-grade; the lemma statement is
+unchanged).
+
+**F-3 annex (the S1 level-1 frame row, annotated).** The row
+"f monic, disc f ≠ 0, Φ′ ∤ f | Φ′ ∤ f automatic at a full side |
+HETOW-3(a) ✓" discharges only Φ′ ∤ f; "f monic" and "disc f ≠ 0"
+are the consumed T(b)′ setting's INHERITED frame data (the σ
+program is posed over separable f; S1's header imports the setting
+"verbatim GENHN-T(b)′"), not new obligations — the ✓ column is
+scoped to the Φ′ ∤ f entry. An inseparable f sits outside the
+consumed setting.
+
+BYTE-FREEZE: pre-append body md5 254d1765
+(254d176563c21bf2261699f9138e18b5) = commit e38df9f, 41,452 bytes,
+re-verified by prefix after this append; edit shape append-only;
+statement displays of HETOW-1/2/3/A and all sealed artifacts
+byte-untouched.
+
+================================================================================
+PASTE C — THE GENTOW1 REPAIRS (dated corrections appended to GENTOW1_PROOF_2026-08-09.md, byte-verbatim: R2a/R2b/R2c + F-4)
+================================================================================
+### Dated corrections (2026-08-10, TOWERRAT-R2a/b/c + F-4 — the
+### post-acceptance decorrelated ratification batch, applied)
+
+*Provenance: the Codex ratification run on the frozen accepted note
+(`CODEX_TOWERRAT_2026-08-10.md` §S3, session
+019fe98a-19ed-7400-8b02-46117f9dd15b, outcome CHALLENGE; the two
+Codex-CRITICALs adjudicated GAP-with-repair — no CONCLUSION of
+GENTOW-1/2/5 was refuted). The 2/2 acceptance stands; the body is
+BYTE-FROZEN; each correction below GOVERNS the reading of its
+quoted display. Each repair is re-derived from this note's own
+Steps. Machine leg: `gentow1_r2_units.py` (md5 b625e5be, output
+bcb27efd) — GREEN, 41 checks, 14 gp jobs, 0 violations.*
+
+**R2a (LEMMA GENTOW-1(b): the free-count display gains its clip).**
+Sealed display, quoted: "per window N the free-O-digit count is
+Sum_{j,a,b} (N − floor(j,a,b))". **Display of record:**
+
+    free-O-digit count per window N = Σ_{j,a,b} max(0, N − floor(j,a,b)).
+
+Re-derivation from (b)'s own fibration: the slot (j,a,b) string's
+in-window digits sit at v ∈ {0,…,N−1} and are free exactly at
+v ≥ floor(j,a,b), so the count is #{v : floor ≤ v < N} =
+max(0, N − floor) — never negative; the sealed form is false
+whenever N < floor at some slot. Counter-instance (re-derived, in
+scope): μ₂ = 2, e₁ = f₁ = e₂ = 1, f₂ = 2, h = 1, u₂ = 2 (node
+floor 2 > e₂D′h = 1 ✓, gcd ✓): (a)'s display gives floors
+(9, 7, 5, 3); at N = 1 the sealed sum is −20 while the budget box
+mod π is the single all-zero string — 0 free digits, the clipped
+value (runner row UA-codex-N1). At the committed battery rows the
+clip is INACTIVE and the values are unchanged: FAM-A5 (floors
+[6,5,4,4 | 3,3,2,1]) and FAM-B ([7,6,5,5 | 4,3,2,2]), both
+re-derived from (a)'s display and equal to the S1 tables, satisfy
+Σ(N − floor) = Σ max(0, N − floor) at N = maxfloor and
+maxfloor + 2 (rows UA-A5/UA-B-clip-inactive), diverging at N = 3
+(rows UA-*-clip-active-N3). CONSUMER RE-SCOPE: LEMMA GENTOW-5(e)'s
+sentence "the budget/count display of GENTOW-1(b) is exact per
+window" reads AT the clipped display (equivalently: exact as
+sealed for N ≥ max floor).
+
+**R2b (LEMMA GENTOW-2(iii) layer 3: ONTO by cardinality — the two
+finite sets, defined; the counting lemma, stated).** The sealed
+layer-3 sentence asserted "onto by cardinality" with neither set
+defined. Definitions of record, per window N (all data mod π^N),
+for the event (λ, s) with H_j := (μ₂ − j)λ:
+
+* **DOM_N** (the event slice at the OLD key Φ₂): per coordinate
+  j < μ₂, in-window digits at heights ≤ H_j are ZERO except the
+  height-H_j K₂-digit, which EQUALS the prescribed
+  binom(μ₂,j)(−s̄)^{μ₂−j} in the coherent normalization (a ZERO
+  prescription where p | binom(μ₂,j)); heights > H_j free. (The
+  entry floors sit at heights ≤ (μ₂−j)E₂ < H_j since λ > E₂, so
+  𝒯-membership is subsumed.)
+* **COD_N** (the λ-floored node box at the NEW key Φ₂⁺): per
+  coordinate j, in-window digits at heights ≤ H_j ZERO; free above.
+
+**Counting lemma.** |DOM_N| = |COD_N| =
+q^{Σ_{j,a,b} max(0, N − floor_λ(j,a,b))}, with floor_λ(j,a,b) :=
+#{v ≥ 0 : e₁e₂v + w(a,b) ≤ H_j} — the SAME clipped exponent on
+both sides, because the free positions are the same height set
+(heights > H_j, in-window) in both frames, and DOM_N's prescribed
+data are FIXED values, not free digits. ONTO, properly: the
+triangular map is height-preserving (layer 2: new digit = old
+digit + strictly-lower-height data), hence well-defined on window
+classes; injective (unit diagonal); maps DOM_N into COD_N (the
+kills, (ii)); and an injection between finite sets of equal
+cardinality is a bijection. The full-string bijection is the
+inverse limit of the window bijections over N. Machine contact
+(the clause's first contact by ENUMERATION, not counting): the
+A5-R1 battery row (λ = 13, s = 1, Φ₂⁺ = Φ₂ − 4Φ′, N = 4) — 16
+DOM members map to 16 DISTINCT window images covering the COD box
+EXACTLY (runner rows UB-count-16/UB-onto).
+
+**R2c (LEMMA GENTOW-5(a): the cap clause restated THREE-BAND).**
+Sealed clause, quoted: "a computed dv2-value is LIFT-STABLE iff
+< e1e2*N" — its only-if direction contradicts the same clause's
+first-band sentence (value exact AT the cap). **Statement of
+record (supersedes the iff; each band derived from the clause's
+own mechanisms):**
+
+* **BAND 1 (m < e₁e₂N):** every computed dv₂-value m is
+  LIFT-STABLE, value and deciding digits — in-window digits agree
+  across lifts ((e) triangularity) and every unread digit sits at
+  height ≥ e₁e₂N > m: it can neither move nor tie the value.
+* **BAND 2 (m = e₁e₂N):** when the height-m readable residue has a
+  nonzero component on a flavor complementary to the unread ones
+  (available at f₁f₂ ≥ 2), the VALUE m is exact for every lift
+  (GENHN-2′ tower-basis independence) while the full K₂-residue is
+  NOT determined (the unread flavors are free); at f₁f₂ = 1 no
+  stability is claimed. An at-cap value is thus stable WITHOUT
+  being < e₁e₂N — the sealed iff fails exactly here, and the
+  sealed proof phrase "undercutting every computed value ≥ e₁e₂N"
+  is re-scoped to STRICT >: at equality the unread digit TIES.
+* **BAND 3 (m > e₁e₂N):** value-unstable — an unread (0,0)-class
+  digit at v = N undercuts; conservative drain, no trichotomy
+  claimed (as the sealed clause already said).
+
+No proof content changes: the sealed first-band paragraph already
+carried bands 1–2; consumers ((c)'s congruence, (d)'s carries, the
+readable-event consultation) ride heights and band-1/2
+residue-determinacy as before. Machine contact per band at FAM-B
+(N = 4, cap = 8; runner U-C): band 1 — value 7 stable across six
+𝒯-preserving lifts (slot-arithmetic AND PARI nfeltval, rows
+UC-BAND1-*); band 2 — value 8 = cap exact across the six lifts
+while the height-8 (0,0)-flavor digit flips between lifts L0 and
+LC1-1 (rows UC-BAND2-*: value exact, residue undetermined — the
+sealed iff's machine counter-instance); band 3 — values 14 vs 11
+across two lifts (rows UC-BAND3-*). Battery cross-cites: the
+sealed WINDOW rows (P-7, below-cap) sit in band 1; T-UNDERCUT ×2
+sit in band 3.
+
+**F-4 (GENTOW-2(i) proof wording: "constant term untouched").**
+Sealed sentence, quoted: "strictly above the x-side through
+(D2, 0), constant term untouched". The constant COEFFICIENT can
+change — the note's own B-R2 row has lift(s;λ) = 16 + 4xΦ′, so
+Φ₂⁺ = Φ₂ − lift shifts the constant by −16. Reading of record:
+what is untouched is the constant term's X-SIDE DIGIT (its
+exact-side initial form): what's x-degree-0 contribution sits at
+dv₂-height λ > E₂ ≥ (the x-side height at abscissa 0), strictly
+above the side, so the side through (D₂, 0) and its side digits
+are unchanged — which is all the (i)-invariance argument consumes
+(at B-R2: constant −8 − 16 = −24; the exact-height-6 side digit is
+untouched, the −16 sits at height 8).
+
+BYTE-FREEZE: pre-append body md5 29908cb4
+(29908cb47cfc4e8a82ae8adad23889d3) = commit 4e81a57, 46,567 bytes,
+re-verified by prefix after this append; edit shape append-only;
+statement displays of LEMMA GENTOW-1/2/5 and COR GENTOW-1.1 and
+all sealed artifacts byte-untouched — these corrections GOVERN
+their quoted sentences' readings.
+
+================================================================================
+PASTE D — CONSUMED HE7 STATEMENTS (context for judging the HETOW repairs; byte-verbatim excerpts, same paste as batch #1's brief)
+================================================================================
+> **DEFINITION HE7-1 (the level-2 datum).** A pair (λ, r) with
+> λ = u/ℓ ∈ ℚ in lowest terms, λ > D′h, and r ∈ K[Z] monic irreducible with
+> r(0) ≠ 0, d_r := deg r. Attached objects:
+>
+> * **the order-2 key** Ψ := Ψ_{λ,r} of DEFINITION HE6-1, monic of degree
+>   **D″ := D′ℓd_r**; *never assumed irreducible*;
+> * **the level-2 value** **dv₂ := ℓ·dv = e₁ℓ·v**;
+> * **the level-2 residue field** **K₂ := K[Z]/(r) = K(β) ≅ F_{Q^{f₁d_r}}**;
+> * **the level-2 disk threshold** **T₂ := ℓd_r·u = ℓ²d_r·λ**;
+> * **a level-2 point** = a ξ ∈ K̄₀ with (T1), (T2), dv(Φ′(ξ)) = λ and
+>   ι_ξ(r)(β_ξ) = 0, where β_ξ := res(Φ′(ξ)^ℓ/ϖ(ξ)^u);
+> * **the level-2 transport** ι_ξ^{(2)} : K₂ → k̄, the ι_ξ-semilinear
+>   embedding with β ↦ β_ξ (well defined because β_ξ is a root of the
+>   irreducible ι_ξ(r));
+> * **the level-2 normalizer system** **n₂(k) := ϖ^{m(k)}Φ′^{s(k)}** where
+>   ℓ·m(k) + s(k)·u = k with 0 ≤ s(k) < ℓ — possible and unique because
+>   gcd(u, ℓ) = 1. At every level-2 point, dv₂(n₂(k)(ξ)) = k EXACTLY.
+
+The substitution table that makes every HE6 statement transfer is
+
+    (e₁, f₁, h, D′, Φ′, dv, ϖ, K, D′h)  ↦  (ℓ, d_r, u, ℓd_r, Ψ, dv₂, n₂(1), K₂, T₂),
+
+and it is exact: D′ = e₁f₁ ↦ ℓd_r = D″/D′, D′h ↦ ℓd_r·u = T₂,
+gcd(h, e₁) = 1 ↦ gcd(u, ℓ) = 1, deg ψ = f₁ ↦ deg r = d_r.
+
+> **CONVENTION (the level-2 twist is REAL — HE6's twist-free convention is
+> NOT available one level up).** At level 1 HE6 could take all normalizers to
+> be powers of the single element ϖ, killing the cocycle. At level 2 the
+> normalizers ϖ^{m}Φ′^{s} genuinely mix two generators, and
+>
+>     n₂(k)·n₂(k′) / n₂(k+k′) = (Φ′^{ℓ}/ϖ^{u})^{c},
+>     c := ( s(k) + s(k′) − s(k+k′) ) / ℓ  ∈ ℤ,
+>
+> whose residue at a level-2 point ξ is **β_ξ^{c}** — a nonzero element of
+> ι_ξ^{(2)}(K₂). Consequently every level-2 residual polynomial is defined
+> only relative to a FIXED choice of n₂, and changing the choice multiplies
+> its coefficients by explicit powers of β. **Every statement used below is
+> twist-invariant** (vanishing/non-vanishing at a residue, degree, and the
+> multiset of irreducible factors up to K₂^×-scaling), which is GENHN's
+> "counts are twist-blind, letters are twisted" (J-D0) at level 2. The
+> battery's reader carries the twist explicitly, and tooth **HE7-T-BADTWIST**
+> shows that dropping it mispredicts σ — so this is not a bookkeeping remark.
+
+> **THEOREM HE7.A (THE LEVEL-2 READ DECIDES — HE6.A one level up).** Let
+> (λ, r) be a level-2 datum arising as a label of f (LEMMA HE6-2″), let
+> S := S_{λ,r} be its label class and f_S ∈ O[x] the monic factor of f with
+> root set S (LEMMA HE7-6), **with Ψ ∤ f_S** (§S1 CONVENTION [r1]; if Ψ | f_S,
+> peel by LEMMA HE6R1-3 first and read f_S′ at μ₂ − 1). Put
+> μ₂ := deg f_S / D″ ∈ ℤ_{≥1} and let
+> f_S = Ψ^{μ₂} + Σ_{j<μ₂}A_j^{(2)}Ψ^{j} be the Ψ-development,
+> P₂ := lower hull of {(j, dv₂(A_j^{(2)}))}_{j ≤ μ₂}. Then:
+>
+> 1. every side of P₂ has slope λ₂ > T₂, and Σ_{λ₂} L_{λ₂} = μ₂;
+> 2. for every slope λ₂ = u₂/ℓ₂ of P₂ with **separable** level-2 residual
+>    R_{λ₂} ∈ K₂[Z] and every monic irreducible r₂ | R_{λ₂},
+>
+>        |S_{λ₂,r₂}| = D″·ℓ₂·deg r₂ ,
+>
+>    and S_{λ₂,r₂} is the root set of a single monic irreducible factor of f
+>    over O with
+>
+>        e = e₁·ℓ·ℓ₂ ,      f = f₁·d_r·deg r₂ ;
+>
+> 3. **[r1, HE6R1-F1 — the widened trichotomy]** at a slope λ₂ = u₂/ℓ₂ whose
+>    residual R_{λ₂} has a repeated irreducible factor r₂ of multiplicity
+>    m₂ ≥ 2, split on the product **ℓ₂·deg r₂** (NOT on ℓ₂ alone):
+>    if **ℓ₂·deg r₂ = 1** (so ℓ₂ = 1, λ₂ ∈ ℤ and r₂ = Z − s₂ with s₂ ∈ K₂
+>    **K₂-rational**) the level-2 α-refine Ψ ↦ Ψ − w exists — (LIFT₂)
+>    supplies w at height λ₂ with residue s₂ **because s₂ ∈ K₂** — and the
+>    refine chain is FINITE (LEMMA HE7-8), so the read continues — **[r2,
+>    HE7-PE1 F-1]** the read AT the refined key Ψ − w (and at every iterate
+>    Ψ − W of the chain) is licensed by **LEMMA HE7-12** (§S5.8): dv₂(w) =
+>    λ₂ > T₂, so the whole §S5 package and clauses (1)(2) hold verbatim at
+>    the refined key, and the strict slope increase λ₂^{(0)} < λ₂^{(1)} < ⋯
+>    that LEMMA HE7-8 consumes is **LEMMA HE7-13**, derived, not assumed;
+>    if **ℓ₂·deg r₂ ≥ 2** the read
+>    passes to level 3, which is the same statement one level further up
+>    (THEOREM HE7.D) and cannot occur unless μ₂ ≥ 4 (THEOREM HE7.C [r1]).
+>    *The pre-r1 text split on ℓ₂ = 1 vs ℓ₂ ≥ 2 and so claimed an α-refine at
+>    (ℓ₂, deg r₂) = (1, ≥ 2), where NO ŝ₂ exists: its residue would have to be
+>    a root β₂ of r₂, and β₂ ∈ K₂(β₂) ∖ K₂ is not a value of (LIFT₂). This is
+>    HE6.B's enumeration error one level up (FINDING HE6R1-F1).*
+>    **Non-propagation at μ₂ ≤ 3 (re-derived here, not transcribed).** The
+>    mis-stated branch and the level-3 branch both need a repeated r₂ with
+>    m₂ ≥ 2 and ℓ₂·deg r₂ ≥ 2, hence a side of length
+>    L_{λ₂} = ℓ₂·deg R_{λ₂} ≥ ℓ₂·m₂·deg r₂ = m₂·(ℓ₂ deg r₂) ≥ 2·2 = 4, hence
+>    **μ₂ ≥ Σ_{λ₂}L_{λ₂} ≥ 4** by clause (1). So at every μ₂ ≤ 3 — in
+>    particular at every n ≤ 15 (COROLLARY HE7.B(i): D′ ≥ 2 gives
+>    μ ≤ ⌊n/D′⌋ ≤ 7 and THEOREM HE7.C gives μ₂ ≤ μ/2 ≤ 7/2, hence
+>    **μ₂ ≤ ⌊μ/2⌋ ≤ 3 since μ₂ ∈ ℤ_{≥1}** — [r2, HE7-PE1 F-3] the pre-r2
+>    display "μ₂ ≤ μ/2 ≤ 3" is false at μ = 7 without the integer floor;
+>    ⌊7/2⌋ = 3, so the conclusion is unchanged) and at n = 8 (μ₂ = 2) —
+>    clause (3)'s
+>    only live case is ℓ₂·deg r₂ = 1, where the old and new statements
+>    coincide: §S8's dictionary and the n = 8 closure are untouched.
+>
+> The proof uses **no base change, no irreducibility of Ψ, and no order-≥2
+> citation**.
+
+> **THEOREM HE7.C [r1] (TERMINATION — the ladder is FINITE at every n).** A
+> node requiring a level jump — **a side of slope λ = u/ℓ carrying a repeated
+> irreducible residual factor r (multiplicity m ≥ 2) with ℓ·deg r ≥ 2**, which
+> is exactly HE6-BOX-1's configuration in its WIDENED form (COROLLARY HE6.B
+> [r1]: the complement of "separable residual, or repeated only at a
+> K-rational linear factor at an integer slope"; the pre-r1 condition
+> "ℓ ≥ 2" omitted the ℓ = 1, deg r ≥ 2 branch) — satisfies μ ≥ 4, and the
+> level-2 problem it opens has
+>
+>     μ₂ ≤ μ / (ℓ·d_r) ≤ μ/2 .
+>
+> Hence the number J of level jumps in any history satisfies
+> **J ≤ log₂ μ − 1 ≤ log₂ n − 2**; interleaved α-refines are finite
+> (LEMMA HE7-8) and every other step strictly decreases μ. In particular:
+> **at n = 8 (μ = 4, D′ = 2) there is exactly ONE jump, and the level-2
+> problem has μ₂ = 2 — level 3 is degenerate. The first n at which a level-3
+> object can be needed is n = 16.**
+>
+> **[r1] The widening costs NOTHING in the bounds** (= LEMMA HE6R1-1): both
+> displays only ever use the product ℓ·d_r ≥ 2 — the first as
+> L_λ ≥ ℓ·m·d_r = m(ℓd_r) ≥ 4, the second as μ₂ ≤ deg R_λ/d_r ≤ μ/(ℓd_r) —
+> and ℓ·d_r ≥ 2 IS the widened box's defining inequality, supplied by both of
+> its branches (ℓ ≥ 2 with d_r ≥ 1, and ℓ = 1 with d_r ≥ 2). So J, the n = 8
+> verdict and the n = 16 threshold are literally unchanged; the pre-r1 proof
+> of the bounds is reused verbatim with "ℓ ≥ 2" replaced by "ℓd_r ≥ 2" (§S7).
+
+> **COROLLARY HE7.B (HE6-BOX-1 CLOSES; the program consequence, stated at
+> the grade the composition supports).** (i) At every leaf whose history's
+> boxed nodes all have μ₂ = deg f_S/D″ ≤ 3 — sufficiently μ ≤ 7 (THEOREM
+> HE7.C: μ₂ ≤ μ/2 ≤ 7/2 with μ₂ ∈ ℤ, so μ₂ ≤ ⌊7/2⌋ = 3 [r2, HE7-PE1 F-3]),
+> hence at **every** leaf of every degree **n ≤ 15** (n ≤ 15 forces
+> μ ≤ ⌊n/D′⌋ ≤ ⌊15/2⌋ = 7 since D′ ≥ 2 at a composite stage and μ ∈ ℤ
+> [r2]), and at every one of HE6-BOX-1's machine-certified live
+> configurations (n = 8) — the σ-decision holds: THEOREM HE7.A + THEOREM
+> HE7.C decide σ with no base change and no order-≥2 citation, so
+> **[GENHN-HE(μ)] holds at EVERY leaf at those degrees** and HE6's
+> COROLLARY HE6.B loses its exclusion clause there — **[r1]** the exclusion
+> clause being the WIDENED one (COROLLARY HE6.B [r1]), whose ℓ = 1 /
+> deg r ≥ 2 branch §S1–S6 decides as a LITERAL instance (HE6R1_RECON §S3.2,
+> ten items checked), and the boxed node's level-2 starting data (μ₂, the
+> level-2 sides, the residual up to its radical) being read off f by
+> **LEMMA HE6R1-2** when the block is PROPER — the configuration that first
+> occurs at μ ≥ 5, i.e. n ≥ 10, hence inside this clause's own region.
+> (ii) At every degree, the
+> same conclusion holds with the level-i lemmas of THEOREM HE7.D in place of
+> the level-2 ones; THEOREM HE7.D is proved by the induction of §S6, whose
+> inductive step is exactly §S3–S5 with the substitution table, so (ii) is
+> complete **modulo the arc grade of this note** (§S9). Consequently
+> **[GENHN-HE(μ)] holds at every leaf**, HE6-BOX-1 is discharged, and through
+> HE6.B + GENIND.B + W-12.D the uniformity theorem's conditional stack
+> reduces to **arc grades + the named hardening boxes** — no open piece of
+> mathematics remains in the σ-decision chain. **This is a composition
+> claim at attempt grade 0/2, not an acceptance claim** (§S9).
+
+> **THEOREM HE7.D (the ladder at every level).** The level-0 datum
+> (Φ_0 = x, w_0 = v, ℓ_0 = e₁, g_0 = f₁, u_0 = h, K_0 = F_Q) and the
+> recursion of DEFINITION HE7-2 generate, at every level i ≥ 0, objects
+> (Φ_i, w_i, ℓ_i, g_i, u_i, K_i, T_i, n_i) for which (SLOT_i), (LIFT_i), the
+> disk criterion, the two evaluation displays, the slope counts, the
+> nonemptiness certificate, Galois equivariance and the class-size theorem
+> all hold, with the SAME proofs. Level 1 is GENHN-2 + HE6 §S3–S6; level 2 is
+> §S3–S5 of this note; the inductive step is §S6.
+warning: Codex could not find bubblewrap on PATH. Install bubblewrap with your OS package manager. See the sandbox prerequisites: https://developers.openai.com/codex/concepts/sandboxing#prerequisites. Codex will use the bundled bubblewrap in the meantime.
+codex
+1. HETOW F-1
+
+Original finding: The note had not shown that the tower normalizers \(\widehat n_2(k)\) and HE7 normalizers \(n_2(k)\) induce a legitimate geometric transformation of arbitrary assembled residual polynomials, including repeated-root letters used by refinement.
+
+Operative repair:
+
+> \[
+> \widehat n_2(k)/n_2(k)
+> =\widehat n(m(k))/\varpi^{m(k)}
+> =(x^{e_1}/\pi^h)^{-Q(m(k))}
+> \]
+>
+> and
+>
+> \[
+> R_{\lambda_2}(Z)
+> =\tau(H_0)\,\widehat R_{\lambda_2}(Z/\delta),
+> \qquad
+> \delta=\tau(u_3)\in K^\times,
+> \]
+>
+> with
+>
+> \[
+> r_2(Z)=\delta^{\deg\widehat r_2}\widehat r_2(Z/\delta),
+> \qquad
+> s_2=\delta\widehat s_2.
+> \]
+
+Verification: Reducing the ladder equation modulo \(e_2\) gives \(b=s(k)\); division by \(e_2\) then gives \(e_1a+ih=m(k)\), hence \(x^i\pi^a=\widehat n(m(k))\). Since \(i(m)-i_0m=-e_1Q(m)\), equality of level-1 weights forces \(a(m)-a_0m=hQ(m)\), proving the ratio display and residue \(\tau(k)=\eta^{-Q(m(k))}\).
+
+For assembled coefficient \(t\),
+\[
+\rho_t=\operatorname{res}\!\left(A_{j(t)}
+\frac{n_2(u_3)^t}{n_2(H_0)}\right),\qquad
+\widehat\rho_t=\operatorname{res}\!\left(A_{j(t)}
+\frac{\widehat n_2(u_3)^t}{\widehat n_2(H_0)}\right).
+\]
+Therefore
+\[
+\frac{\rho_t}{\widehat\rho_t}
+=\tau(H_0)\tau(u_3)^{-t}
+=\tau(H_0)\delta^{-t},
+\]
+which proves the polynomial rescaling. Substitution \(Z\mapsto Z/\delta\) preserves separability, irreducibility, degrees, and multiplicities. It sends a root \(\widehat s_2\) to \(\delta\widehat s_2\), so the repeated \(K_2\)-rational letter and the common lift \(w\) transport correctly.
+
+The stated cocycle also follows from
+\[
+m(k+k')=m(k)+m(k')+u_2w_2
+\]
+and two applications of the \(Q\)-carry identity. The machine examples are internally coherent: over \(\mathbf F_3\), \((2,2,1)\) is non-geometric because \(2^2\ne2\cdot1\), and \((1,2,2,1)\) has nonconstant successive ratios. Thus the repair correctly distinguishes raw pin strings from assembled residuals.
+
+VERDICT: DISCHARGED
+
+2. HETOW F-2
+
+Original finding: The instantiation checked only \(\Phi'\nmid f\), while HE7.A and the claim \(|\operatorname{roots}(f)|=\deg f\) also require the inherited separability condition \(\operatorname{disc}(f)\ne0\).
+
+Operative repair:
+
+> “\(f\) monic” and “\(\operatorname{disc}f\ne0\)” are the consumed \(T(b)'\) setting’s INHERITED frame data (the \(\sigma\) program is posed over separable \(f\); S1’s header imports the setting “verbatim GENHN-\(T(b)'\)”).
+
+Verification: This explicitly supplies the premise whose absence caused the finding. For a monic polynomial over the characteristic-zero fraction field of a DVR,
+\[
+\operatorname{disc}(f)\ne0
+\iff f\ \text{is separable}
+\iff |\operatorname{roots}(f)|=\deg f
+\]
+in an algebraic closure. The verifier’s example \(f=\Phi_2^3\) has repeated roots and therefore discriminant zero, so it is now explicitly outside the imported setting. HETOW-3(a) remains responsible only for \(\Phi'\nmid f\), exactly as the corrected row says.
+
+VERDICT: DISCHARGED
+
+3. HETOW F-3
+
+Original finding: The full \(\Phi'\)-side proved the new slope and residual label but did not itself show that every root satisfies the inherited opening conditions (T1) and (T2).
+
+Operative repair:
+
+> “All roots \(x_0\) of \(f\in\mathcal T\) are tower-node points: the full inner side forces
+> \[
+> v(\Phi'(x_0))=u_2/(e_1e_2)
+> \]
+> exactly with \(\eta_2(x_0)\) a \(\psi_2\)-root — \(T(b)'(iii)\)’s (T1′)/(T2′) transport, consumed.”
+
+Verification: Since \(dv=e_1v\),
+\[
+v(\Phi'(x_0))=\frac{u_2}{e_1e_2}
+\quad\Longleftrightarrow\quad
+dv(\Phi'(x_0))=\frac{u_2}{e_2}=\kappa_2,
+\]
+so the valuation normalization matches HETOW. The cited all-roots transport expressly supplies (T1)/(T2), while the full side supplies the slope and \(\psi_2(\eta_2(x_0))=0\). HETOW-1(b) then translates this last equation to
+\[
+\widetilde r(\beta_{x_0})=0.
+\]
+Thus the annex supplies precisely the inherited opening-locus implication that the original proof had left unstated.
+
+VERDICT: DISCHARGED
+
+4. GENTOW1 F-1
+
+Original finding: The per-window digit count used \(N-L\) without clipping, producing negative “numbers of free digits” when a slot floor \(L\ge N\).
+
+Operative repair:
+
+> \[
+> \text{free-\(\mathcal O\)-digit count per window \(N\)}
+> =\sum_{j,a,b}\max(0,N-\operatorname{floor}(j,a,b)).
+> \]
+
+Verification: A slot contributes valuations
+\[
+v\in\{0,\ldots,N-1\},\qquad v\ge L,
+\]
+whose cardinality is exactly \(\max(0,N-L)\). For the supplied counter-instance with floors \(9,7,5,3\) and \(N=1\), every contribution is zero, so the corrected count is \(0\), corresponding to the unique all-zero string. The frozen formula gives
+\[
+(1-9)+(1-7)+(1-5)+(1-3)=-20,
+\]
+as claimed. When \(N\) is at least the maximum floor, the maximum is inactive, so the cited old battery counts remain unchanged.
+
+VERDICT: DISCHARGED
+
+5. GENTOW1 F-2
+
+Original finding: Surjectivity had been inferred from unspecified cardinalities of infinite string sets, without defining finite truncated event/node sets or supplying a valid clipped count.
+
+Operative repair:
+
+> \[
+> |\mathrm{DOM}_N|=|\mathrm{COD}_N|
+> =q^{\sum_{j,a,b}\max(0,N-\operatorname{floor}_\lambda(j,a,b))},
+> \]
+>
+> where
+>
+> \[
+> \operatorname{floor}_\lambda(j,a,b)
+> :=\#\{v\ge0:e_1e_2v+w(a,b)\le H_j\}.
+> \]
+
+Verification: For a fixed slot, \(\operatorname{floor}_\lambda\) counts its positions at heights at most \(H_j\). Among the \(N\) positions \(0\le v<N\), the remaining free positions therefore number
+\[
+\max(0,N-\operatorname{floor}_\lambda).
+\]
+In \(\mathrm{DOM}_N\), the digits through \(H_j\) are fixed to prescribed values; in \(\mathrm{COD}_N\), the same visible positions are fixed to zero. Fixed nonzero, fixed zero, and prescribed-zero boundary data all contribute the same number—zero—of free digits. Thus both finite sets have the displayed cardinality, including ragged windows interpreted through admitting full completions.
+
+The triangular transformation has unit diagonal, maps the event conditions to the node conditions, and is well-defined modulo \(\pi^N\); hence it gives an injection
+\[
+\mathrm{DOM}_N\hookrightarrow\mathrm{COD}_N.
+\]
+Equal finite cardinalities make it bijective. Compatibility of these window maps yields the full-string inverse-limit bijection. The enumeration row “16 distinct images in a 16-element codomain” is internally consistent with this argument and directly verifies that tested window.
+
+VERDICT: DISCHARGED
+
+6. GENTOW1 F-3
+
+Original finding: The claimed biconditional “lift-stable iff \(m<e_1e_2N\)” contradicted stable values at the cap \(m=e_1e_2N\).
+
+Operative repair:
+
+> **BAND 1:** \(m<e_1e_2N\): value and deciding digits are lift-stable.
+>
+> **BAND 2:** \(m=e_1e_2N\): a nonzero readable component complementary to all unread flavors makes the value exact for every lift, although the full residue is undetermined.
+>
+> **BAND 3:** \(m>e_1e_2N\): an unread \((0,0)\)-class digit at \(v=N\) undercuts.
+
+Verification: Below the cap, every unread contribution has strictly greater height, so it can neither cancel nor tie the deciding term. At the cap, unread terms may tie, but tower-basis independence prevents them from canceling a nonzero readable component in a complementary flavor. Thus the value can be stable at equality although the full residue changes.
+
+In the original counter-instance, \(e_1e_2=1\), \(N=5\), and
+\[
+v(c_{1,0,1})+w(0,1)=3+2=5=e_1e_2N.
+\]
+The readable term is in the \(\eta_2\)-flavor while the unread \(b=0\) term is in the \(1\)-flavor, so the value remains \(5\) for every lift. This is exactly Band 2. Above the cap, an unread \(v=N\), \((0,0)\)-slot has height \(e_1e_2N<m\) and can undercut. The repair also correctly changes “undercutting at \(\ge\)” to “undercutting at \(>\).”
+
+VERDICT: DISCHARGED
+
+7. GENTOW1 F-4
+
+Original finding: The refine lift can alter the literal constant coefficient, so “constant term untouched” was false; only its side initial form remains unchanged.
+
+Operative repair:
+
+> “what is untouched is the constant term’s X-SIDE DIGIT (its exact-side initial form)”
+
+Verification: In the supplied row,
+\[
+\operatorname{lift}(s;\lambda)=16+4x\Phi',
+\qquad
+\Phi_2^+=\Phi_2-\operatorname{lift}(s;\lambda),
+\]
+so a constant coefficient \(-8\) becomes \(-24\); it is plainly not unchanged. But the added contribution \(-16\) has height \(8\), strictly above the constant-position side height \(6\). Therefore it does not change the height-\(6\) initial form or the lower side through \((D_2,0)\). This is precisely the weaker invariant used by GENTOW-2(i).
+
+VERDICT: DISCHARGED
+
+All seven repairs address their respective original mechanisms. HETOW now computes the normalizer ratio and proves geometric transport at the assembled-residual level, while explicitly importing separability and the all-roots opening-locus transport. GENTOW1 supplies the necessary clipped count, a valid finite-window surjectivity argument, a consistent three-band cap statement, and the correct side-digit interpretation of the changing constant coefficient.
+
+OUTCOMES: DISCHARGED,DISCHARGED,DISCHARGED,DISCHARGED,DISCHARGED,DISCHARGED,DISCHARGED
+tokens used
+23,829
+1. HETOW F-1
+
+Original finding: The note had not shown that the tower normalizers \(\widehat n_2(k)\) and HE7 normalizers \(n_2(k)\) induce a legitimate geometric transformation of arbitrary assembled residual polynomials, including repeated-root letters used by refinement.
+
+Operative repair:
+
+> \[
+> \widehat n_2(k)/n_2(k)
+> =\widehat n(m(k))/\varpi^{m(k)}
+> =(x^{e_1}/\pi^h)^{-Q(m(k))}
+> \]
+>
+> and
+>
+> \[
+> R_{\lambda_2}(Z)
+> =\tau(H_0)\,\widehat R_{\lambda_2}(Z/\delta),
+> \qquad
+> \delta=\tau(u_3)\in K^\times,
+> \]
+>
+> with
+>
+> \[
+> r_2(Z)=\delta^{\deg\widehat r_2}\widehat r_2(Z/\delta),
+> \qquad
+> s_2=\delta\widehat s_2.
+> \]
+
+Verification: Reducing the ladder equation modulo \(e_2\) gives \(b=s(k)\); division by \(e_2\) then gives \(e_1a+ih=m(k)\), hence \(x^i\pi^a=\widehat n(m(k))\). Since \(i(m)-i_0m=-e_1Q(m)\), equality of level-1 weights forces \(a(m)-a_0m=hQ(m)\), proving the ratio display and residue \(\tau(k)=\eta^{-Q(m(k))}\).
+
+For assembled coefficient \(t\),
+\[
+\rho_t=\operatorname{res}\!\left(A_{j(t)}
+\frac{n_2(u_3)^t}{n_2(H_0)}\right),\qquad
+\widehat\rho_t=\operatorname{res}\!\left(A_{j(t)}
+\frac{\widehat n_2(u_3)^t}{\widehat n_2(H_0)}\right).
+\]
+Therefore
+\[
+\frac{\rho_t}{\widehat\rho_t}
+=\tau(H_0)\tau(u_3)^{-t}
+=\tau(H_0)\delta^{-t},
+\]
+which proves the polynomial rescaling. Substitution \(Z\mapsto Z/\delta\) preserves separability, irreducibility, degrees, and multiplicities. It sends a root \(\widehat s_2\) to \(\delta\widehat s_2\), so the repeated \(K_2\)-rational letter and the common lift \(w\) transport correctly.
+
+The stated cocycle also follows from
+\[
+m(k+k')=m(k)+m(k')+u_2w_2
+\]
+and two applications of the \(Q\)-carry identity. The machine examples are internally coherent: over \(\mathbf F_3\), \((2,2,1)\) is non-geometric because \(2^2\ne2\cdot1\), and \((1,2,2,1)\) has nonconstant successive ratios. Thus the repair correctly distinguishes raw pin strings from assembled residuals.
+
+VERDICT: DISCHARGED
+
+2. HETOW F-2
+
+Original finding: The instantiation checked only \(\Phi'\nmid f\), while HE7.A and the claim \(|\operatorname{roots}(f)|=\deg f\) also require the inherited separability condition \(\operatorname{disc}(f)\ne0\).
+
+Operative repair:
+
+> “\(f\) monic” and “\(\operatorname{disc}f\ne0\)” are the consumed \(T(b)'\) setting’s INHERITED frame data (the \(\sigma\) program is posed over separable \(f\); S1’s header imports the setting “verbatim GENHN-\(T(b)'\)”).
+
+Verification: This explicitly supplies the premise whose absence caused the finding. For a monic polynomial over the characteristic-zero fraction field of a DVR,
+\[
+\operatorname{disc}(f)\ne0
+\iff f\ \text{is separable}
+\iff |\operatorname{roots}(f)|=\deg f
+\]
+in an algebraic closure. The verifier’s example \(f=\Phi_2^3\) has repeated roots and therefore discriminant zero, so it is now explicitly outside the imported setting. HETOW-3(a) remains responsible only for \(\Phi'\nmid f\), exactly as the corrected row says.
+
+VERDICT: DISCHARGED
+
+3. HETOW F-3
+
+Original finding: The full \(\Phi'\)-side proved the new slope and residual label but did not itself show that every root satisfies the inherited opening conditions (T1) and (T2).
+
+Operative repair:
+
+> “All roots \(x_0\) of \(f\in\mathcal T\) are tower-node points: the full inner side forces
+> \[
+> v(\Phi'(x_0))=u_2/(e_1e_2)
+> \]
+> exactly with \(\eta_2(x_0)\) a \(\psi_2\)-root — \(T(b)'(iii)\)’s (T1′)/(T2′) transport, consumed.”
+
+Verification: Since \(dv=e_1v\),
+\[
+v(\Phi'(x_0))=\frac{u_2}{e_1e_2}
+\quad\Longleftrightarrow\quad
+dv(\Phi'(x_0))=\frac{u_2}{e_2}=\kappa_2,
+\]
+so the valuation normalization matches HETOW. The cited all-roots transport expressly supplies (T1)/(T2), while the full side supplies the slope and \(\psi_2(\eta_2(x_0))=0\). HETOW-1(b) then translates this last equation to
+\[
+\widetilde r(\beta_{x_0})=0.
+\]
+Thus the annex supplies precisely the inherited opening-locus implication that the original proof had left unstated.
+
+VERDICT: DISCHARGED
+
+4. GENTOW1 F-1
+
+Original finding: The per-window digit count used \(N-L\) without clipping, producing negative “numbers of free digits” when a slot floor \(L\ge N\).
+
+Operative repair:
+
+> \[
+> \text{free-\(\mathcal O\)-digit count per window \(N\)}
+> =\sum_{j,a,b}\max(0,N-\operatorname{floor}(j,a,b)).
+> \]
+
+Verification: A slot contributes valuations
+\[
+v\in\{0,\ldots,N-1\},\qquad v\ge L,
+\]
+whose cardinality is exactly \(\max(0,N-L)\). For the supplied counter-instance with floors \(9,7,5,3\) and \(N=1\), every contribution is zero, so the corrected count is \(0\), corresponding to the unique all-zero string. The frozen formula gives
+\[
+(1-9)+(1-7)+(1-5)+(1-3)=-20,
+\]
+as claimed. When \(N\) is at least the maximum floor, the maximum is inactive, so the cited old battery counts remain unchanged.
+
+VERDICT: DISCHARGED
+
+5. GENTOW1 F-2
+
+Original finding: Surjectivity had been inferred from unspecified cardinalities of infinite string sets, without defining finite truncated event/node sets or supplying a valid clipped count.
+
+Operative repair:
+
+> \[
+> |\mathrm{DOM}_N|=|\mathrm{COD}_N|
+> =q^{\sum_{j,a,b}\max(0,N-\operatorname{floor}_\lambda(j,a,b))},
+> \]
+>
+> where
+>
+> \[
+> \operatorname{floor}_\lambda(j,a,b)
+> :=\#\{v\ge0:e_1e_2v+w(a,b)\le H_j\}.
+> \]
+
+Verification: For a fixed slot, \(\operatorname{floor}_\lambda\) counts its positions at heights at most \(H_j\). Among the \(N\) positions \(0\le v<N\), the remaining free positions therefore number
+\[
+\max(0,N-\operatorname{floor}_\lambda).
+\]
+In \(\mathrm{DOM}_N\), the digits through \(H_j\) are fixed to prescribed values; in \(\mathrm{COD}_N\), the same visible positions are fixed to zero. Fixed nonzero, fixed zero, and prescribed-zero boundary data all contribute the same number—zero—of free digits. Thus both finite sets have the displayed cardinality, including ragged windows interpreted through admitting full completions.
+
+The triangular transformation has unit diagonal, maps the event conditions to the node conditions, and is well-defined modulo \(\pi^N\); hence it gives an injection
+\[
+\mathrm{DOM}_N\hookrightarrow\mathrm{COD}_N.
+\]
+Equal finite cardinalities make it bijective. Compatibility of these window maps yields the full-string inverse-limit bijection. The enumeration row “16 distinct images in a 16-element codomain” is internally consistent with this argument and directly verifies that tested window.
+
+VERDICT: DISCHARGED
+
+6. GENTOW1 F-3
+
+Original finding: The claimed biconditional “lift-stable iff \(m<e_1e_2N\)” contradicted stable values at the cap \(m=e_1e_2N\).
+
+Operative repair:
+
+> **BAND 1:** \(m<e_1e_2N\): value and deciding digits are lift-stable.
+>
+> **BAND 2:** \(m=e_1e_2N\): a nonzero readable component complementary to all unread flavors makes the value exact for every lift, although the full residue is undetermined.
+>
+> **BAND 3:** \(m>e_1e_2N\): an unread \((0,0)\)-class digit at \(v=N\) undercuts.
+
+Verification: Below the cap, every unread contribution has strictly greater height, so it can neither cancel nor tie the deciding term. At the cap, unread terms may tie, but tower-basis independence prevents them from canceling a nonzero readable component in a complementary flavor. Thus the value can be stable at equality although the full residue changes.
+
+In the original counter-instance, \(e_1e_2=1\), \(N=5\), and
+\[
+v(c_{1,0,1})+w(0,1)=3+2=5=e_1e_2N.
+\]
+The readable term is in the \(\eta_2\)-flavor while the unread \(b=0\) term is in the \(1\)-flavor, so the value remains \(5\) for every lift. This is exactly Band 2. Above the cap, an unread \(v=N\), \((0,0)\)-slot has height \(e_1e_2N<m\) and can undercut. The repair also correctly changes “undercutting at \(\ge\)” to “undercutting at \(>\).”
+
+VERDICT: DISCHARGED
+
+7. GENTOW1 F-4
+
+Original finding: The refine lift can alter the literal constant coefficient, so “constant term untouched” was false; only its side initial form remains unchanged.
+
+Operative repair:
+
+> “what is untouched is the constant term’s X-SIDE DIGIT (its exact-side initial form)”
+
+Verification: In the supplied row,
+\[
+\operatorname{lift}(s;\lambda)=16+4x\Phi',
+\qquad
+\Phi_2^+=\Phi_2-\operatorname{lift}(s;\lambda),
+\]
+so a constant coefficient \(-8\) becomes \(-24\); it is plainly not unchanged. But the added contribution \(-16\) has height \(8\), strictly above the constant-position side height \(6\). Therefore it does not change the height-\(6\) initial form or the lower side through \((D_2,0)\). This is precisely the weaker invariant used by GENTOW-2(i).
+
+VERDICT: DISCHARGED
+
+All seven repairs address their respective original mechanisms. HETOW now computes the normalizer ratio and proves geometric transport at the assembled-residual level, while explicitly importing separability and the all-roots opening-locus transport. GENTOW1 supplies the necessary clipped count, a valid finite-window surjectivity argument, a consistent three-band cap statement, and the correct side-digit interpretation of the changing constant coefficient.
+
+OUTCOMES: DISCHARGED,DISCHARGED,DISCHARGED,DISCHARGED,DISCHARGED,DISCHARGED,DISCHARGED
