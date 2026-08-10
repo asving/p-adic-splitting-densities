@@ -15314,3 +15314,31 @@ gauge/ϑ-cocycle unification candidate, second-generation proof
 sketches honestly graded, Lean-readiness notes, the campaign plan;
 Asvin-facing, Protocol H). Board note: letter-thread entry 11 posted
 (w8 inputs in; the trade still gates on Asvin's blessing).
+
+**SITE REFRESH #2 PUSHED (2026-08-10, asving.github.io @ 6796783)** —
+the corpus-at-the-bar milestone live: headline replaced with the
+accepted-text-complete sentence (defined inline, never abbreviated),
+story gains the closure + tower paragraphs, chain node badge flipped
+st-meas → st-note WITH the caveat sentence, NEW tower node with the
+sub-boxes enumerated, amber panel dated append (explicitly NOT a Lean
+event), paper gains the dated entry + boundary paragraph + the FGMN
+source with the caveated pattern. Orchestrator review applied post-
+Codex: the #113 catch fixed at ALL 7 sites ("four count-grade
+sub-boxes (…, one battery-grade ask)" was internally contradictory →
+"four named sub-boxes (three count-grade, one battery-grade)" family,
+story.json mirror synced + parses); the §394 "mid-arc as of this
+update" gained the since-closed pointer matching §400's treatment;
+"page-verified" kept (defined by its second occurrence). Grep gates
+PASS (no novelty claims; BCFG only with transcription; accepted ↔
+not-machine-checked within two sentences). Codex fresh-reader: 153
+findings, 9 genuine catches fixed by the applier (the "machine-checked"
+dilution at 4 sites the most load-bearing), rest minimal-context
+artifacts.
+
+B18 pulse (pre-fold): GENIND ANNEX R pass DONE (4c89666f) — UNREFUTED,
+NOT CLEAN 0C/1G/2m, annex 0/2, repair owed (GAP-1 = the full-vs-simple
+complement seam at R1.1's closure sentence; the F3 cure itself
+survives). SIMPLIFICATION BLUEPRINT COMPLETE (6fc4efeb, 343 lines: the
+26-text DAG, five ranked compression targets, four graded second-gen
+candidates, Lean-readiness, a 9-unit campaign plan). GENTOW6 boxes
+unit still running; full B18 fold on the wave notification.
