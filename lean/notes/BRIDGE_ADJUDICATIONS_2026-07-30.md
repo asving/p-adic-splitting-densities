@@ -14813,3 +14813,47 @@ corrected to the re-solved family the instruments implement (derive from
 class separation; verify at FR-A height-14; cite the FA1-LIFT row), F-3
 the i=1 empty-rung edge, F-4 the seam-live × e≥2 compound coverage row.
 Single-wave throttle in force; GENTOW3/4/6 arcs open at B12.
+
+## B11 FOLD (2026-08-10) — GENTOW2 ACCEPTED 2/2; the first w measurement
+
+GENTOW2 PE6 (deba21b): CLEAN 0C/0G/1m — **ACCEPTED 2/2** (PE5 75923bc +
+PE6 consecutive). The B″ complex walked as ONE system (statement → proof
+→ LD/GB pins → honesty box → w-disclosure): no daylight. ψ₃^{(w)}
+consumer walk: GENTOW5 r2 consumes the B-law verbatim at i=2 (its ϑ =
+GENTOW2's ϑ; i≥3 fenced to GENTOW5's own arc); GENTOW6's depth-2 tie is
+w-free (twist absorbed as unit rescaling). The PE4 RED-by-design
+instrument's permanent record verified exactly framed (62/9 exit-1
+byte-equal, violation rows keyed to B-2-predicted prime counts). FRESH
+ROUTE = the program's FIRST w-DETECTING PROBE (seal ade1727): run-1
+68/1 RED KEPT (miss = instrument literal, U01 second column
+non-discriminating at z₂=1; diagnosed 72a3f29), one-literal repair
+disclosed 891fd96, run-2 GREEN 68/0 dfbc938. MEASURED: w-avatar = z₁
+(LD1), z₁² (LD3), z₂² (GA1), z₂ (GA3) — ≠ 1 at all 6 primes of 4
+frames, u₃-dependent within each tower; GA3's u(β₀) = z₂ is the first
+letter-valued canonical unit; first Lemma 3.13(1) pin v(π₃(ξ)) =
+1/e(µ₂) at Φ₃-roots. Machine leg: 14/14 pins, tautology audit NEGATIVE
+(first), 6/6 isolated re-runs bit-identical. m-1 MINOR (rider m1 quote
+inventory omits the fifth consumption-list site, body L938) rides the
+acceptance record. Rider suggestions adopted as B12 charges: (i) fold
+m-1; (ii) date GENTOW2's "w not computed anywhere" disclosure against
+the PE6 data; (iii) GENTOW5's arc reads w ≠ 1 before PE3.
+
+GENTOW5 r2 (d37221e / f900dff / 2d26c1a): F-1 GENTOW5-B(a) RE-SCOPED to
+the w-twisted realized residual ψ_{i+1}^{(w_i)} := w^{f}·ψ(y/w) with
+admissibility cited to B″ + PE5's every-w verification; w=1 stated OPEN;
+per-consumer ripple walk added (σ/values/repo-classes w-blind; displays
+carry the twist rider). F-2 the lift display corrected to the per-flavor
+base re-solve M_{r,t}(m) = n̂_i(m − Δ(r,t))·x^{e₁r}Φ₁^{…}, derived from
+GENTOW5-C class separation, verified at FR-A m=14 (the old display
+demanded π-exponent 11/2 — no monomial; the corrected flavor =
+3⁵·x·Φ₁ = FR-A's k̂₀, FA1-LIFT row 22/0). F-3 the i=1 empty-rung edge
+stated (the x-carry IS the top carry). F-4 the seam-live × e_stage ≥ 2
+compound named as machine-untouched (battery e-trivial at live stages).
+CROSS-NOTE FLAG raised by r2: GENTOW1 S3's fixed-base reading — needs
+adjudication against the corrected display (GENTOW1 is FROZEN; vehicle =
+dated append if real). Grade 0/2, PE3 next.
+
+Board: HETOW 2/2 ✓ · GENTOW1 2/2 ✓ · GENTOW2 2/2 ✓ · GENTOW5 0/2 (PE3)
+· GENTOW3/4/6 arcs to open · Codex tower-RAT batch (HETOW + GENTOW1 +
+GENTOW2) now due. B12: GENTOW2 acceptance rider + GENTOW1-S3 flag
+adjudication → GENTOW5 PE3; GENTOW3 PE1; the Codex RAT unit.
