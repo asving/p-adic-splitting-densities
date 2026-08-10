@@ -14729,3 +14729,28 @@ GENTOW5's level-agnosticity claim scoped correctly: GENTOW5-D
 re-proves it, no overreach); COR 1.1's sharper constant REAL and
 TIGHT (the extremal slope realized). Fresh: first η≠1 tower-entry
 budget frame + first e₁=3 frame, 373/0. B8 dispatched.
+
+---
+
+## B8 FOLDED (wxfa5yphl, 4/4): GENTOW1 r1 complete (gauge annex + stronger-option P-1 scorer) · GENTOW2 PE4 BREAKS THE COUNTER 1/2 → 0/2 (B-2 machine-refuted at the FIRST letters×depth contact; GENTOW2-A untouched, 100% green there) · GENTOW5 PE1 = 1C (the gauge seam, FOURTH note — the 4.5h timing race) + the top-grid weight GAP — B9: GENTOW2 r3 + GENTOW5 r1 + GENTOW1 PE2 — 2026-08-10
+
+The GENTOW2 reset is the bar working: the box's scope disclosure
+was prescient (letter-dead record honestly flagged) while its "ON
+THE NOSE" assertion was false — found only when the acceptance
+pass combined the two axes (letters × depth) no prior route had.
+The cocycle is machine-exact (res(n̂₂(19)²/n̂₂(38)) = z₁²); the
+repair lives inside B′(5)'s own machinery (flip B-2 to the measured
+cocycle form). GENTOW5's F-1: DEF GENTOW5-1 carries the gauge-naive
+recipe (machine-refuted at frame X; TARGET 1 survives —
+reading-direction); F-2 consumes the fallback GENTOW2's r1 deleted
+as false; F-3 the top-grid weight (induction closes weakened; no
+consumer on the false strictness); F-4 the HE7-ANNEX-R pin now
+stale CONSERVATIVELY — the annex stack's 2/2 lifts the depth ≥ 3
+grade cap (the r1 lands the dated fold with the acceptance cite,
+authorized here). GENTOW5's fresh route: first SLACK-floor depth-3
+chain (the all-tight witness's blind axis) + first p=3 depth-3
+chain, both exact on dual routes. GAUGE-SEAM TALLY: 4 notes
+(HETOW, GENHN-display, GENTOW1, GENTOW5), every catch by the
+timing-race mechanism, every content-survival via wrap-immunity of
+valuation-level quantities — the corpus's gauge structure is now
+the best-audited thing in it.
