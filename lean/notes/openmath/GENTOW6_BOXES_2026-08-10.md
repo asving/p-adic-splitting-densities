@@ -1512,3 +1512,56 @@ box3 72383f91/a122d9ca, box4 9d6e16cc/2d8d617a, pe1_fresh
 fae8bc99/b377850b, pe2_fresh d05ec293/1065c391, GENTOW6_PROOF
 head-1197 157b16ad. **Grade after this round: 0/2 (repair rounds
 do not count; hostile passes resume on the repaired text).**
+
+---
+
+# APPEND (GENTOW6-BOXES rider unit, post-PE3, 2026-08-10):
+# MINORS-ONLY FOLD — F-1/F-2 LANDED AS DATED [rider] BRACKETS
+
+## S13. [rider] POST-PE3 FOLD (2026-08-10, minors-only round)
+
+PE3 verdict (GENTOW6_BOXES_passPE3_report.md @ 16771f7f): CLEAN —
+0 CRITICAL, 0 GAP, 2 MINOR; the counter moved 0/2 -> 1/2, the
+arc's first clean pass. The r2 F-1 outcome (LEMMA GENTOW-6.7E +
+the below-floor contrast pair + the S8.1/S10 overturn blocks)
+survived source re-derivation and an independent third-prime
+(p = 5) replication (442/0, bit-identical re-run). This fold
+applies the two minors as dated [rider (post-PE3)] brackets at
+their sites — each RE-DERIVED from the note's own lemmas and
+displays, not transcribed from the report. No repair round owed;
+neither bracket moves a theorem, a measurement, or a verdict
+sentence of record.
+
+* **F-1 -> LANDED at the S8 "Honest scope split" clause (ii)**
+  (the third ripple site of the r2-overturned display, after
+  S8.1 and S10): the clause is bracketed to the ABOVE-floor
+  residual. Re-derived: LEMMA 6.7E prices in-locus entry-driven
+  discrepancy terms at height >= THETA_j + delta > THETA_j, so
+  exact-THETA attainment is genre-decided (THEOREM 6.7's chi
+  criterion) — the clause's "NOT proved here" / "no genre-level
+  statement" / S8.1-obstruction pointer now read only at the
+  above-floor member residual; the E-ENTRY sentence survives
+  verbatim as that residual's witness.
+* **F-2 -> LANDED at the 6.6(d) r2 bracket**: the one-line
+  step-domination display. Re-derived from the bracket's own
+  bookkeeping (k_s = max(c_s + 1, M_s), H_s = k_s + c_s from
+  (b)'s ball-image lattice): H_s >= N_0^{(s)} - 1 in both
+  k-cases, hence N_0^{(s+1)} >= H_s + 1 >= N_0^{(s)} — N_0
+  NONDECREASING along the bouquet, the last step's value a
+  sufficient depth for the iterated (c) invocations.
+
+**Record sentences (no universal quantifiers).** The two rider
+brackets are sentence-preserving insertions: the sentences at the
+two sites survive with only line re-wrapping at the seams (no
+word of the r2/original text deleted or altered). The ten sealed
+artifact md5 pairs named in this note's S12 list plus the PE3
+instruments (pe3_fresh 4cd7439c / output 4bdf5283) and the
+GENTOW6_PROOF head-1197 prefix (157b16ad) were re-verified
+matching before this fold's first commit.
+
+**Grade after this round: 1/2 (PE3's counter stands; rider
+rounds do not count toward acceptance). The next hostile pass
+runs on this text at a fresh geometry — PE3's named targets:
+6.7E's multi-entry (two-slot, mixed-j') face, the 6.6(d)
+multi-class iteration at a real three-class frame, the 6.7C'
+band at an f2 >= 2 geography.**
