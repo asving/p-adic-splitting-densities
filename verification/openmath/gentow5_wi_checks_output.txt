@@ -1,0 +1,95 @@
+== [GENTOW5-W(i)] sealed instrument ==
+-- A: nhat recursion --
+  ok: P-A1 nhat_1(5) = 4x
+  ok: P-A1 nhat_2(21) = 16 Phi_1
+  ok: P-A1 nhat_3(85) = 256 Phi_2
+  ok: P-A1 nhat_4(341) = 2^16 Phi_3
+  ok: P-A1 nhat_5(1365) = 2^32 Phi_4
+  ok: P-A2 LW3 nhat_1(5) = 9x
+  ok: P-A2 LW3 nhat_2(21) = 81 Phi_1
+  ok: P-A2 LW3 nhat_3(43) = 3 x Phi_1 Phi_2
+  ok: P-A2 LW3 nhat_3(86) = 3^9 x Phi_1
+-- A3: lattice split, theta_3(0) --
+  ok: P-A3 M/N^2 = gamma_1^-1 gamma_2^-1 gamma_3^-1 (split [-1, -1, -1])
+  ok: P-A3 theta_3(0) = 2 in F_3^x (letter-LIVE)
+  ok: P-A3 vartheta_{3,2} * theta_3(0) = 1
+-- B: committed depth-4/5/6 witnesses (exact) --
+  ok: P-A1 Phi_3 = Phi_2^2 - nhat_2(21) (recipe = recursion)
+  ok: P-A1 f32 = Phi_4^2 - nhat_4(341)
+  ok: P-B1 v2(Res(Phi4,x)) = 8
+  ok: P-B1 v2(Res(Phi4,Phi1)) = 20
+  ok: P-B1 v2(Res(Phi4,Phi2)) = 42
+  ok: P-B1 v2(Res(Phi4,Phi3)) = 85
+  ok: P-B1 v2(Res(f32,x)) = 16
+  ok: P-B1 v2(Res(f32,Phi1)) = 40
+  ok: P-B1 v2(Res(f32,Phi2)) = 84
+  ok: P-B1 v2(Res(f32,Phi3)) = 170
+  ok: P-B1 v2(Res(f32,Phi4)) = 341
+  ok: P-B1 v2(Res(f64,x)) = 32
+  ok: P-B1 v2(Res(f64,Phi1)) = 80
+  ok: P-B1 v2(Res(f64,Phi2)) = 168
+  ok: P-B1 v2(Res(f64,Phi3)) = 340
+  ok: P-B1 v2(Res(f64,Phi4)) = 682
+  ok: P-B1 v2(Res(f64,f32)) = 1365
+  ok: P-B2 TOOTH Res(f32m, Phi_3) == 0 (drain)
+  ok: P-B2 TOOTH Res(f64m, Phi_4) == 0 (drain)
+-- C: LW3 exact resultant ladders --
+  ok: P-A2 nhat_3(43) poly = 3 x Phi_1 Phi_2
+  ok: P-C1 Phi_4LW deg 16 monic
+  ok: P-C1 v3(Res(Phi4LW,x)) = 8
+  ok: P-C1 v3(Res(Phi4n,x)) = 8 (gauge-blind)
+  ok: P-C1 v3(Res(Phi4LW,Phi1)) = 20
+  ok: P-C1 v3(Res(Phi4n,Phi1)) = 20 (gauge-blind)
+  ok: P-C1 v3(Res(Phi4LW,Phi2)) = 42
+  ok: P-C1 v3(Res(Phi4n,Phi2)) = 42 (gauge-blind)
+  ok: P-C1 v3(Res(Phi4LW,Phi3)) = 86
+  ok: P-C1 v3(Res(Phi4n,Phi3)) = 86 (gauge-blind)
+-- D: PARI leg (LW3 law + teeth) --
+C-FP 1 16
+C-NPR 1
+C-EF 8 2
+C-VALS 4 10 21 43
+C-G1 1
+C-G2 1
+C-G3 1
+C-PI4V 1
+C-YGEN 1
+C-WSTAR 1
+C-LAWI1 1
+C-LAWI2 1
+C-TI 1
+C-T5 1
+C-NOSE 1
+C-WAV 2
+C-T0 1
+C-IDY 1
+C-DISC 2 vs 1 gap 1
+N-FP 1 16
+N-EF 1 16 1
+N-KILL 1
+N-V3 86
+GPDONE
+  ok: P-D1 factorpadic: 1 deg-16 factor
+  ok: P-D1 single prime over 3
+  ok: P-D1 (e,f) = (8,2)
+  ok: P-D1' nfeltval ladder (4,10,21,43)
+  ok: P-D1 v(pi_4) = 1/8 (scaled: 1)
+  ok: P-D2 C-G1 letter = 2
+  ok: P-D2 C-G2 letter = 2
+  ok: P-D2 C-G3 letter = 2
+  ok: P-D3' Y generates F_9 (Y^3 != Y)
+  ok: P-D3' w* = tr(Y) in F_3^x = {1,2}
+  MEASURED w* = 1 (intrinsic w = u_3(kbar); recorded)
+  ok: P-D3' LAW-I1 norm(Y) = 2 tr(Y)^2  [u_3(beta_0) = theta_3(0) u_3(beta_1)^2, theta live]
+  ok: P-D3' LAW-I2 psi_4^{(w*)}(Y) = 0 (single-w display)
+  ok: P-D4' TOOTH psi_4^{(w')}(Y) != 0
+  ok: P-D5 TOOTH u_3(beta_0) != u_3(beta_1)^2 (theta-free law dead)
+  ok: P-D6' TOOTH nose (conditional)
+  MEASURED w_av = 2 (avatar; row-23 record)
+  ok: P-D8 T0 = res(nhat_3(86)/nhat_3(43)^2) = 2 (lattice x-pin)
+  ok: P-D8 IDY U0 = T0 * w_av^2 (avatar-side cocycle closure)
+  RECORD row-23 gap: 2 vs 1 gap 1
+  ok: P-D7' naive twin: one deg-16 factor
+  ok: P-D7' TOOTH naive twin VERDICT KILL: (e,f) != (8,2) (measured N-EF: 1 16 1)
+  RECORD naive twin nfeltval(Phi_3) = 86
+== SUMMARY: 60 checks, 0 violations ==
