@@ -1,0 +1,69 @@
+  LD1 dv1 pins (18, 14, 10, 5, 0)
+  LD1 dv2 pins (38, 19, 0)
+  LD1 v2 Res = 8 (pred 8)
+  LD1 v2 Res = 36 (pred 36)
+  LD1 v2 Res = 76 (pred 76)
+  LD1 v2 Res = 152 (pred 152)
+  LD1 v2 Res = 148 (pred 148)
+  LD1 v2 Res = 144 (pred 144)
+  LD1 v2 Res = 144 (pred 144)
+  LD1 v2 Res = 144 (pred 144)
+  LD2 dv1 pins (18, 14, 10, 5, 0)
+  LD2 dv2 pins (38, 19, 0)
+  LD2 v2 Res = 8 (pred 8)
+  LD2 v2 Res = 36 (pred 36)
+  LD2 v2 Res = 76 (pred 76)
+  LD2 v2 Res = 152 (pred 152)
+  LD2 v2 Res = 148 (pred 148)
+  LD2 v2 Res = 144 (pred 144)
+  LD2 v2 Res = 144 (pred 144)
+  LD3 dv1 pins (18, 14, 11, None, 0)
+  LD3 dv2 pins (37, None, 0)
+  LD3 v2 Res = 8 (pred 8)
+  LD3 v2 Res = 36 (pred 36)
+  LD3 v2 Res = 74 (pred 74)
+  LD3 v2 Res = 148 (pred 148)
+  LD3 v2 Res = 144 (pred 144)
+  LD3 v2 Res = 144 (pred 144)
+-- gp output --
+  LD1 NFAC 1 DEGS [16]
+  LD1 NQFAC 1
+  LD1 EF 4 4
+  LD1 VALS 2 9 19
+  LD1 R1OK 1
+  LD1 ETA2 1
+  LD1 PSI3 0
+  LD1 DEEP 1
+  LD1 DPH 1
+  LD1 DMU 1
+  LD1 NPR 1
+  LD2 NFAC 1 DEGS [16]
+  LD2 NQFAC 1
+  LD2 EF 4 4
+  LD2 VALS 2 9 19
+  LD2 R1OK 1
+  LD2 ETA2 1
+  LD2 PSI3 0
+  LD2 ROOT BAD
+  LD2 NPR 1
+  LD3 NFAC 1 DEGS [16]
+  LD3 NQFAC 1
+  LD3 EF 8 2
+  LD3 VALS 4 18 37
+  LD3 R1OK 1
+  LD3 ETA2 1
+  LD3 PSI3 1
+  LD3 NPR 1
+gp stderr: ***   Warning: new stack size = 256000000 (244.141 Mbytes).
+VIOLATION: LD2 splits 8+8 (psi3 split /F4) — TOOTH FIRED
+VIOLATION: prime counts 1/2/1
+VIOLATION: LD2 (e,f) = (4,2) x2
+VIOLATION: LD2 nfeltval (2,9,19) x2
+VIOLATION: z1 live in every residue field
+VIOLATION: eta2(xi) = z1: the psi2-root consumption read
+VIOLATION: LD1 slot read is a psi3-root (letter coefficient)
+VIOLATION: LD2 slot reads are psi3-roots x2
+VIOLATION: LD2 distinct psi3-roots {1, z1^2} across the two primes
+== passPE4 FRESH-ROUTE VERDICT ==
+checks: 62, violations: 9
+GENTOW2 passPE4 fresh route: RED
