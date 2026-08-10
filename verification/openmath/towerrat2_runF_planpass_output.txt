@@ -1,0 +1,1112 @@
+Reading additional input from stdin...
+OpenAI Codex v0.145.0
+--------
+workdir: /data/users/asvin/math-and-lean/p-adic-splitting-densities
+model: gpt-5.6-sol
+provider: openai
+approval: never
+sandbox: workspace-write [workdir, /tmp, $TMPDIR]
+reasoning effort: none
+reasoning summaries: none
+session id: 019feb51-8246-7e40-9f9a-7ac4286180a6
+--------
+user
+ADVERSARIAL PLAN REVIEW CHARGE — SIMPLIFICATION BLUEPRINT (design-stage, decorrelated model)
+
+You are a fresh, technically sophisticated reader with zero prior stake, reviewing a CAMPAIGN PLAN (design only — no proofs are performed in the document; every referenced accepted text stays byte-frozen). You CANNOT read files: the full plan is pasted below, self-contained. Deliverable: a numbered list of findings; FIX NOTHING.
+
+CHARGE (strict):
+Adversarial plan review by a fresh technically-sophisticated reader: for each of T1-T5 and SG-1-4 and the S-0/S-1/S-7 first wave, attack the DESIGN — statement-design risks (especially T2's master-statement), hidden coupling between targets, anything whose "revision scope" is underestimated, any way the statement-ledger S-0 fails to catch a weakened statement; numbered list; fix nothing.
+
+PROTOCOL:
+- Each finding: (1) the verbatim quote of the plan text under attack, (2) a classification from {DESIGN-RISK (the plan as written can produce a wrong or weakened artifact), UNDERESTIMATE (scope/cost/coupling priced too low), BLIND-SPOT (a failure mode the plan's verification protocol cannot catch), MINOR (wording/bookkeeping)}, (3) the precise failure mechanism, with a concrete scenario wherever possible.
+- Cover EVERY one of: T1, T2, T3, T4, T5, SG-1, SG-2, SG-3, SG-4, S-0, S-1, S-7. If an item survives your attack, say "CHECKED CLEAN: <item>" in one line with the reason.
+- Special attention mandated: (a) T2's master-statement design (the general-carrier HE7.A restatement) — every way an abstract carrier signature can silently weaken the five absorbed instances; (b) hidden coupling BETWEEN targets (e.g. T1's frame feeding T5, S-1 gating S-4/S-8) that the unit ordering does not price; (c) the S-0 statement ledger — every way a weakened statement can pass an md5-match consumption check (statement moved, re-quantified elsewhere, hypothesis relocated into a definition, scope pinned in surrounding prose the ledger does not hash); (d) any "revision scope" or "re-verify" estimate that is underestimated given the plan's own dependency DAG.
+- You are reviewing the PLAN, not the underlying mathematics; do not re-verify the 26 accepted texts. Take their acceptance as given frame data.
+
+FORMAT: numbered findings (verbatim quote + classification + failure mechanism + scenario); then the CHECKED CLEAN list (one line per surviving charged item); then a one-paragraph overall assessment of the plan's soundness as a plan; final line exactly "OUTCOME: PLAN-SOUND" or "OUTCOME: PLAN-SOUND-WITH-FINDINGS" or "OUTCOME: PLAN-DEFECTIVE".
+
+================================================================================
+PASTE A — THE PLAN UNDER REVIEW (docs/SIMPLIFICATION_BLUEPRINT_2026-08-10.md, in full, byte-verbatim)
+================================================================================
+# SIMPLIFICATION CAMPAIGN BLUEPRINT — 2026-08-10
+
+**Unit:** SIMPLIFICATION-BLUEPRINT (pipeline stage 1.5 kickoff; Asvin's standing
+directive: when the hostile arcs pass → compress the proof, hunt the
+second-generation short proof — THEN stage two = Lean modulo literature except
+arXiv:2212.00294). **Status:** DESIGN ONLY. No compression is performed here; no
+accepted text is touched; every accepted text stays byte-frozen. **Sources:**
+PROJECT_STATE dated appends #14–#20 · HEURISTICS_AND_INTUITIONS_2026-08-08 §C1 ·
+the corpus notes' STATUS headers at HEAD · SITE_REFRESH2_DRAFT_2026-08-10 §0.
+
+**The verdict up front.** The corpus is 26 texts, ~38,200 lines. Five compression
+targets are real and rank cleanly by Asvin's criterion (revision-scope-reduction
+— how many notes a future erratum would ripple through):
+
+1. **T1 the gauge/ϑ cocycle lemma** — one letter-layer lemma absorbs the wrap/
+   gauge annexes of the seven tower notes; the gauge seam produced findings on
+   the seven tower first passes (appends #17–#20), i.e. this exact fact is
+   currently proved seven times in seven local coordinate systems.
+2. **T2 the σ-ladder master instance** — HETOW and GENTOW4 already prove their σ
+   reads are LITERAL INSTANCES of THEOREM HE7.A; inverting that (state HE7.A once
+   at a general carrier) turns five notes' bridge layers into instances.
+3. **T3 the cocycle-telescope lemma** — GENTOW2-B″, HETOW-4, and GENTOW-6.4 (the
+   𝒯-free cap) are three proofs of one telescoping-cocycle-monomial shape.
+4. **T4 the certificate witness lemma** — GENTOW3's Θ_j threshold and GENTOW6's
+   CERT-TOP share the touched-coordinate witness; one definition + one lemma.
+5. **T5 the w-frame note** — define the cross-frame unit w and ψ^{(w)} once, in
+   the w-inclusive canonical frame; the per-note riders become instances.
+
+Two second-generation routes could bypass whole notes (§3): the literal-instance
+cascade (T2 pushed to the whole σ-chain) and the weld one-face consumption
+(retiring three junction notes from the load-bearing path). Both are graded
+speculation with named cheap probes. **Proposed first wave: S-0 (the statement
+ledger — the byte-tracking instrument) + S-1 (T1 through the full 2-clean bar).**
+
+---
+
+## 1. THE CORPUS MAP (26 texts, dependency DAG)
+
+All files in `lean/notes/openmath/`, suffix `_2026-08-08.md` unless dated
+otherwise. Grade: 25 texts ACCEPTED 2/2 at the hostile bar; JD0 is PROVED grade
+(machine 68,523/0; sub-bar — the one exception, flagged where consumed).
+"←" = consumes. Sizes in lines.
+
+### 1.1 The carry/weld layer (8 texts, 11,942 lines) — letters, gauge, transport
+
+| Text | Lines | Role (one line) |
+|---|---|---|
+| LIFTCORNER | 1,481 | NR-1 lift-orbit corner ((ITER-LAW-LIFT) at g₀=1∧δ₁=1); supplier to W-2's cap. |
+| GRTW2 | 1,440 | W-2 the lift junction: admissible representative + (ξ,w) unit covariance + ψ-transport. ← LIFTCORNER. |
+| GRTJA | 943 | J-A the dictionary junction: type→tower data, four operator equalities, covariance-corrected residual tie. ← GRTW2. |
+| GRTJB | 3,161 | J-B the tree junction: expansion + polygon identities, division-step correspondence, (C-READ) transport, ε-carry collapse. ← GRTW2, GRTJA. |
+| GRTJC | 2,807 | J-C the carry-algebra junction: graded target exists, TC-3 load-bearing iff δ ≥ g_m, anchor-transport Ψ, cocycle semantics. |
+| WELDMASTER | 1,092 | The consolidation: four junctions = faces of ONE anchored graded transport (M0–M4); canonical gauge c = z̄^δ·∂Ẽ; one-perimeter fence. ← all four junctions. |
+| JD0 | 385 | Count gauge-blindness: stratum counts see the SHAPE, never the letters. [PROVED grade, sub-bar.] |
+| SIGMALAW | 633 | The Σ-LAW: per-coordinate ledger identity at every level; sign = the ξ-composite. ← GRTW2. |
+
+### 1.2 The menu/reduction chain, n ≤ 7 (7 texts, 12,900 lines) — counts
+
+| Text | Lines | Role |
+|---|---|---|
+| W11 | 719 | n=2 complete decided menu (7 families) + exact drainage q^{−N}; hExhaust as a theorem at n=2. ← JD0. |
+| W12 | 1,995 | W-12.A order-1 shape-generic count law at all degrees; **THEOREM W-12.D (the reduction): menus + drainage ⟹ one R_τ ∈ ℚ(q) per splitting type, wild included**. ← W11 pattern, JD0. |
+| HMENU3 | 952 | (hMenu-3): the 33-family cubic menu; W-12.D fires at n=3. ← W12. |
+| HEX3 | 969 | (hExhaust-3): the exact U₃ law by per-center transport; n=3 drainage. ← W12. |
+| GENIND | 3,054 | The two-species induction (α self-similar / β partition-fracture); (hMenu-n)+(hExhaust-n) scaffold; composite criterion = ≥4 keys (n ≥ 4). ← W12.A, HMENU3/HEX3 as base. |
+| GENH4 | 2,173 | [GENIND-H(4)] discharged at both quartic genres (Q22-L1/L2/L3); the four-step method; 11 quartic densities. ← GENIND, weld faces. |
+| GENHN | 2,038 | The general composite-stage law: genre classification FINITE+UNIFORM; every stage = W-12.A (e₁,f₁)-re-based; towers ⟺ μ ≥ 4 ⟺ n ≥ 8. ← GENH4's method, W-9 graded weld face via GENHN-4. |
+
+### 1.3 The σ-ladder, n ≤ 7 (4 texts, 6,177 lines) — the wild read
+
+| Text | Lines | Role |
+|---|---|---|
+| HE3 | 1,618 | The stage-σ recursion: σ at a μ-stage = label read of the degree-μ stage resolvent over the stage ring; [GENHN-HE(μ≥3)] closed at μ ≤ 3. ← GENHN interfaces; deliberately weld-face-minimal (§S0). |
+| HE6 | 1,047 | The enlarged test family at fractional heights pins label class sizes at ℓ ≥ 2 sides, base-change-free. ← HE3. |
+| HE7 | 2,652 | (SLOT₂)/(LIFT₂); the whole level ladder by ONE induction; TERMINATION depth ≤ log₂n − 2. ← HE6. |
+| HE6R1 | 860 | The reconciliation: HE7 covers the widened HE6 box as a LITERAL INSTANCE; composition lemmas HE6R1-1/2/3; two errata on HE7. ← HE6, HE7. |
+
+### 1.4 The tower leg, n ≥ 8 (7 texts, 8,160 lines) — composed carriers
+
+| Text | Lines | Role |
+|---|---|---|
+| HETOW (…-09) | 834 | Tower-stage σ read = LITERAL INSTANCE of HE7.A at the composed carrier; bridges HETOW-1/2/3 + HETOW-4 (normalizer, the Codex-demanded cocycle bridge). ← GENHN, HE7 frozen, HE6R1. |
+| GENTOW1 (…-09) | 975 | Items (1)(2)(5): composed budgets E₂ = e₂f₂u₂, inner refine transfer, window ledger, depth-3 floor. ← GENHN. |
+| GENTOW2 (…-09) | 1,498 | Item (6α) via the PDF-verified FGMN cite; LEMMA B″ u(β_t) = ϑ(t)·w^{f₃−t}; the canonical letter formula z₂ = η₂·z₁^{−⌊ℓ₁u₂/e₁⌋}. ← GENTOW1, FGMN. |
+| GENTOW3 (…-09) | 878 | Item (3) the faithfulness geography: threshold Θ_j = (μ₂−j)E₂ + δ; touched-coordinate certificate. ← GENTOW1. |
+| GENTOW4 (…-09) | 1,037 | Item (4) partial inner sides = level-1 block split + HE6R1-2 projection + per-block literal HE7.A instances. ← HE6R1, HE7, GENTOW1. |
+| GENTOW5 (…-09) | 1,741 | The composed graded frame at general μ₂ + the level-r grammar (depth ≥ 4); ψ^{(w)} re-scope; depth-4/5/6 witnesses. ← GENTOW1/2. |
+| GENTOW6 (…-09) | 1,197 | The mixed-side tie + CERT-TOP + LEMMA GENTOW-6.4 (the 𝒯-free window cap); residues = count-grade BOX-1/2/3 (+BOX-4 battery ask). ← GENTOW1/3/4. |
+
+**DAG summary.** Three load-bearing spines meet at W-12.D: (i) the COUNT spine
+W11 → W12 → {HMENU3, HEX3} → GENIND → GENH4 → GENHN → GENTOW1/2/3/5/6, fed by
+the weld layer through TWO faces (JD0 count-blindness; the W-9 graded face via
+GENHN-4); (ii) the σ spine HE3 → HE6 → HE7 → HE6R1 → HETOW → GENTOW4, which
+consumes strictly fewer weld faces (HE3 §S0: GENHN-4/W-9 deliberately NOT
+inherited); (iii) the LETTER layer (GRTW2/WELDMASTER gauge + SIGMALAW + the
+tower notes' ϑ/wrap formulas), which never enters counts (JD0) and enters σ only
+through canonical-frame choices — the layer T1 unifies.
+
+---
+
+## 2. COMPRESSION TARGETS, ranked by revision-scope-reduction
+
+Ranking criterion (Asvin's): how much future-revision surface one unified lemma
+removes — measured as (notes whose local arguments become instances) × (the
+demonstrated frequency of errata in that layer). Each target lists WHAT the
+unified lemma is, what it ABSORBS, what gets SHORTER, and the RE-VERIFY scope.
+
+### T1 — LEMMA GAUGE-COCYCLE (the ϑ/wrap recursion, stated once) — RANK 1
+
+- **WHAT.** One lemma on the composed tower's letter layer: the canonical letter
+  recursion z_{i+1} = η_{i+1}·z_i^{−⌊ℓ_i u_{i+1}/e_i⌋} (GENTOW2's formula), its
+  wrap correction W(t) = ⌊(f₂−t)·i(u₂)/e₁⌋ (HETOW [r1]), and gauge-invariance of
+  reads under it — proved once in the w-inclusive canonical frame, as a cocycle
+  statement over the composed carrier (the WELDMASTER gauge c = z̄^δ·∂Ẽ
+  specialized to towers).
+- **ABSORBS (enumerated, 7 sites).** HETOW's [r1] ϖ-wrap seam repair; GENTOW1's
+  gauge annex; GENTOW2's canonical-letter derivation; GENTOW3's gauge annex;
+  GENTOW4's four-site gauge annex; GENTOW5's frame normalization; GENTOW6's
+  gauge annex ([r] repair of the 6.3 scalar reading at f₁ ≥ 2).
+- **WHY RANK 1.** The gauge seam produced findings on the seven tower first
+  passes (appends #17–#20: the notes predated the wrap erratum) — the same fact,
+  re-proved in seven local coordinate systems, drifted seven times. A future
+  letter-layer erratum currently ripples through 7 notes; after T1, through 1.
+- **SHORTER / RE-VERIFY.** Each gauge annex → one displayed substitution
+  (~600–900 lines net removal across the seven). New lemma: full 2-clean arc +
+  sealed battery (frames must include the recorded first-instances: q=4 letters,
+  η≠1, f₁=2 letter-live, μ₂=3, w≠1) + seven consumption checks (§5.3).
+
+### T2 — THE σ-LADDER MASTER INSTANCE (HE7.A at a general carrier) — RANK 2
+
+- **WHAT.** Restate THEOREM HE7.A once over an abstract carrier (a complete DVR
+  stage ring with the ladder data: sides, residuals, test family, termination
+  measure), so that the existing instantiations become instances of ONE theorem.
+- **ABSORBS (enumerated, 5 sites).** HE6R1's reconciliation (HE7 covers the
+  widened box branch "as a LITERAL INSTANCE"); HETOW.A (tower σ read = literal
+  HE7.A instance, bridges HETOW-1/2/3/4 becoming the carrier-checking clauses);
+  GENTOW4's per-block literal HE7.A instances; HE3.A's recursion step (the
+  degree-μ stage resolvent read = the base instance); HE6's ℓ ≥ 2 branch (via
+  HE6R1's own reduction).
+- **WHY RANK 2.** Two accepted notes (HE6R1, HETOW) already PROVE the
+  instance-hood — the mathematics is done; what's missing is the inversion:
+  state once, instantiate five times. This is the "the ladder is ONE induction"
+  observation (HE7 §S6 + heuristics §C1) promoted to the corpus level. Risk: the
+  general-carrier statement must carry HE6's test-family hypotheses abstractly —
+  a real statement-design task, not a transcription.
+- **SHORTER / RE-VERIFY.** HE6R1's and HETOW's instantiation maps become worked
+  examples of one definition; the σ-chain's Lean surface shrinks from 4 bridge
+  layers to 1 theorem + instance records. The master statement is NEW (highest
+  statement-design risk of the five): Codex plan-level adversarial pass BEFORE
+  composing, then the full 2-clean arc + five consumption checks.
+
+### T3 — LEMMA COCYCLE-TELESCOPE (one shape for B″ / HETOW-4 / the cap) — RANK 3
+
+- **WHAT.** One lemma: a cocycle-weighted product along a tower height ladder
+  telescopes to (boundary value) × (monomial in the gauge letter) — the common
+  shape of GENTOW2-B″ (u(β_t) = ϑ(t)·w^{f₃−t}), HETOW-4 (ρ_t = ρ̂_t·τ(H₀)·δ^{−t},
+  i.e. R = τ(H₀)·R̂(Z/δ) — "exactly the J-D0-covered species"), and
+  GENTOW-6.4 (the 𝒯-free window cap).
+- **ABSORBS.** Three separately-proved telescopes; both Codex-challenge repair
+  lemmas (HETOW-4, the 𝒯-free cap) land as instances rather than one-off
+  patches.
+- **SHORTER.** Three proofs → one proof + three two-line instantiations.
+- **RE-VERIFY.** 2-clean arc; three consumption checks; battery re-uses the
+  committed HETOW-4 frames (203 checks / 37 dual-route gp jobs) as regression.
+
+### T4 — THE CERTIFICATE WITNESS (Θ_j threshold + CERT-TOP unified) — RANK 4
+
+- **WHAT.** One definition (touched coordinate, certificate sense — GENTOW3's
+  GT3-r2 pin) + one attainment lemma covering GENTOW3's faithfulness threshold
+  Θ_j = (μ₂−j)E₂ + δ and GENTOW6's CERT-TOP.
+- **ABSORBS.** Two certificate machineries; also gives the four count-grade
+  sub-boxes (GENTOW6-BOX-1/2/3, BOX-4) ONE home — they are refinements of this
+  lemma's count side, so their eventual closure revises one text.
+- **SHORTER.** GENTOW6's CERT-TOP section becomes an instance; the sub-box
+  ledger consolidates.
+- **RE-VERIFY.** 2-clean arc; two consumption checks; the GENTOW3 acceptance
+  battery frames (incl. FR-M3 measured slack) re-run as regression.
+
+### T5 — THE w-FRAME NOTE (ψ^{(w)} and the cross-frame unit w, once) — RANK 5
+
+- **WHAT.** One short note defining the cross-frame unit w and the w-twisted
+  realized residual ψ^{(w)} in the w-inclusive canonical frame, with the
+  measured record attached (GENTOW2-PE6: w ≠ 1 at 6 primes / 4 frames, avatars
+  z₁, z₁², z₂², z₂; GENTOW5-PE3: ψ₃^{(w)}(Y) = 0 on the nose at a 7th prime).
+- **ABSORBS.** GENTOW5's ψ^{(w)} re-scope machinery + the w-facts currently
+  scattered across GENTOW2/GENTOW5 pass records; the owed "w ≠ 1 as-of note"
+  (append #16) lands here instead of as another rider.
+- **SHORTER.** Rider scatter → one citable definition. The w = 1 question stays
+  honestly open and gets its one named home.
+- **RE-VERIFY.** Light: mostly definitional + record consolidation; 2-clean arc
+  at reduced size; no absorbed statement changes.
+
+**Not targets (deliberate).** (a) The four count-grade sub-boxes: open refinement
+work, not compression — they ride T4's home but are a separate track. (b) The
+distribution suite (BCFGTIE/MOMENTS/TAMEK/TAMEKQX): outside the 26-text corpus,
+arcs not yet run. (c) The weld notes themselves: accepted and byte-frozen;
+compression of their CONSUMPTION is SG-2 below, not a rewrite of the notes.
+
+---
+
+## 3. SECOND-GENERATION PROOF CANDIDATES (sketch level; graded honestly)
+
+### SG-1 — The literal-instance cascade (T2 pushed to its limit). GRADE:
+**supported speculation** (two instance proofs exist in accepted texts). If T2's
+carrier-general HE7.A lands, the second-generation σ-story is ONE theorem + one
+recursion (HE3.A) + instance records — the notes HE6, HE7, HE6R1, HETOW, and
+GENTOW4's read layer become history/instances. Probe: draft the carrier
+signature and check it against HE6's fractional-height test family FIRST (the
+one hypothesis family that resists abstraction; HE6's base-change-free property
+is the thing to preserve). Failure mode: the carrier signature bloats to
+re-encode each note's frame, and nothing is shorter.
+
+### SG-2 — Weld one-face consumption. GRADE: **speculation with a recorded
+scent.** HE3 §S0 records that the σ-chain does NOT inherit the W-9 graded weld
+face (GENHN-4 is count-side only), i.e. the weld enters the theorem through TWO
+faces: JD0 (count blindness) and GENHN-4/W-9 (digit-space bijection). Question:
+can GENHN-4 be re-derived from WELDMASTER's M0–M4 transport + JD0 alone? If
+yes, the load-bearing weld surface = WELDMASTER + JD0 (~1,500 lines), and
+GRTJA/GRTJB/GRTJC (~6,900 lines) retire to suppliers-of-WELDMASTER — a huge
+stage-two scope cut, since Lean would formalize the consumed faces only. Probe:
+one session tracing GENHN-4's proof inputs against WELDMASTER's M2/M3 faces.
+
+### SG-3 — The ϑ-cocycle view of the two-species induction. GRADE: **pure
+speculation.** GENIND's α-bracket ((Q−1)Q^{(m(m−1)/2+1)μ−1}) and β-partition
+product might both fall out of one cocycle-weighted per-center transport (the
+T1 lemma applied at every event type), collapsing the five-event case analysis
+(DRAIN / order-1 / α / β / composite-opening) to one transport with parameter
+regimes. Probe (examples-first, per the standing directive): re-derive HMENU3's
+33-family menu from the candidate unified form on the committed exact tables —
+read the case split off the table before believing it dissolves.
+
+### SG-4 — Letters-vs-depth splits made uniform by the w-inclusive frame. GRADE:
+**speculation with one data point.** GENTOW2-PE6 closed B″(6) in the w-inclusive
+canonical frame after the letters×depth refutation killed the old B-2. If T1+T5
+land, re-examine the letters-vs-depth case splits in GENTOW2/GENTOW5 for
+frame-artifacts: a split that exists only because the frame wasn't w-inclusive
+dissolves. Probe rides SG-3's battery.
+
+**Honesty line.** None of SG-1–4 is owed by the accepted corpus; each is a bet
+that could shorten stage two. The blueprint schedules probes, not commitments.
+
+---
+
+## 4. LEAN-READINESS NOTES (per target; stage-two shapes)
+
+Standing frame: stage two = Lean modulo literature (declared axioms with
+faithfulness entries per docs/AXIOM_FAITHFULNESS.md), arXiv:2212.00294 EXCLUDED
+everywhere. Three kernel-checked seed files are banked
+(verification/openmath/{ja_pe6,w2_pe5,wm_pe9}_lean_leg.lean). The capstone
+pattern to imitate: MontesV2's abstract spine + real instance (abstract data
+structure, gates, instance-keyed non-vacuity witnesses).
+
+- **T1 GAUGE-COCYCLE.** Best Lean shape in the batch: an algebraic identity over
+  an abstract graded unit structure (commutative ring + distinguished unit +
+  ⌊·⌋ exponent arithmetic over ℤ/ℚ — omega/ring territory), stated as a cocycle
+  law, no literature cite. Formalize the LEMMA, not the seven annexes; each
+  annex's Lean form is `GaugeCocycle.instance_at (params)`.
+- **T2 σ-LADDER MASTER.** The carrier abstraction IS the Lean design: a
+  structure `LadderCarrier` (stage ring, sides, residuals, test family,
+  termination measure) + one theorem, instances for base/composed carriers.
+  Highest design risk → write the Lean signature AT COMPOSE TIME (the informal
+  statement and the structure should be born together; that is the readiness
+  test). No new cite: HE3 §S0 records the Montes/GMN order-≥2 cite deliberately
+  NOT consumed (resultant identity + ultrametric read suffice).
+- **T3 COCYCLE-TELESCOPE.** Finset.prod telescope over a height ladder —
+  mechanical Lean once stated; no cite.
+- **T4 CERTIFICATE WITNESS.** Digit/threshold combinatorics over ℕ (Θ_j
+  arithmetic, touched-coordinate predicate is decidable) — decide/omega
+  friendly; no cite. Formalizing this early also fences the four count-grade
+  sub-boxes as explicit hypotheses rather than prose residues.
+- **T5 w-FRAME.** Definitional; one structure + the measured record as
+  instance-keyed facts. The w = 1 open question becomes a named hypothesis, the
+  honest-`sorry` analogue at statement level.
+- **Load-bearing literature (enumerated).** FGMN Thm 6.3 + Cor 6.4 (GENTOW2's
+  item 6α; PDF-verified cite — the ONE new axiom candidate stage two must
+  declare, with a faithfulness entry and semantic-guardian pass per the axiom
+  policy). Standing allowed axioms: GMN index theorem, Denef–Igusa cell
+  recursion (measure route). NOT allowed: 2212.00294 (excluded by directive);
+  the retired DCD tame-FE axiom stays a hypothesis (htameFE).
+- **Ordering consequence.** T1/T3/T4 are Lean-cheap and revision-hot — compress
+  first, formalize early. T2 is Lean-expensive but is the difference between
+  formalizing 4 bridge layers and 1 theorem: its compose-time Lean signature is
+  the cheapest insurance in the plan. SG-2, if the probe lands, cuts ~6,900
+  lines of junction notes from stage-two scope — highest leverage, most
+  uncertain.
+
+---
+
+## 5. THE CAMPAIGN PLAN (units, order, verification protocol)
+
+### 5.1 Unit list (sizes = composer sessions; arcs per the standing bar)
+
+| Unit | Content | Size | Depends on |
+|---|---|---|---|
+| S-0 | STATEMENT LEDGER: extract every named theorem/lemma statement of the 26 texts, md5 + commit pin per statement — the byte-tracking instrument | 1 session, machine | — |
+| S-1 | T1 GAUGE-COCYCLE: compose + sealed battery + 2-clean arc + 7 consumption checks | 1 composer + ~3 arc sessions | S-0 |
+| S-2 | T3 COCYCLE-TELESCOPE: compose + arc + 3 consumption checks | 1 + 2 | S-0 (S-1 helpful, not gating) |
+| S-3 | T4 CERTIFICATE WITNESS: compose + arc + 2 consumption checks | 1 + 2 | S-0 |
+| S-4 | T5 w-FRAME note (folds the owed w≠1 as-of note) | 1 + 1 | S-1 (the frame) |
+| S-5 | T2 design probe: carrier signature draft + Codex plan-level adversarial pass + Lean signature sketch | 1 session | S-0 |
+| S-6 | T2 σ-LADDER MASTER: compose + arc + 5 consumption checks | 2 + 3 | S-5 verdict |
+| S-7 | SG-2 probe: trace GENHN-4 against WELDMASTER M0–M4 + JD0 | 1 session | — |
+| S-8 | SG-3/SG-4 probe battery (examples-first, sealed two-commit) | 1 + run | S-1 |
+
+### 5.2 Order
+
+S-0 first (everything keys off it). Then S-1 (rank 1, and its frame feeds
+S-4/S-8). S-2/S-3 next, sequential per the fleet throttle. S-5 early and cheap —
+its verdict gates the biggest unit (S-6). S-7 anytime (independent, one
+session). S-8 after S-1. Second-generation composition (beyond probes) is NOT
+scheduled: it enters only on a probe verdict, re-ranked by this section's
+criterion.
+
+### 5.3 Verification protocol (the non-negotiables)
+
+1. **Compressed proofs re-enter the 2-clean bar.** Every S-unit note takes the
+   full hostile arc: two consecutive clean fresh-context passes, model-diverse
+   verifiers, fresh route per pass, findings → minimal repair → counter resets.
+2. **Sealed instruments, two-commit.** Each battery: runner + preregistered
+   predictions/teeth committed BEFORE the run; verdict from the artifacts.
+   Regression legs re-run the absorbed notes' committed frames unmodified.
+3. **A simplification NEVER weakens a statement.** For each absorbed argument, a
+   CONSUMPTION CHECK: display "new lemma ⟹ absorbed statement," where the
+   absorbed statement is byte-identical to the accepted text per the S-0 ledger
+   (md5 match required). A consumption check failing = the unit is wrong, not
+   the corpus.
+4. **Accepted texts stay byte-frozen.** Compression lands as NEW notes; the
+   accepted notes get dated appends only ("absorbed by S-k as instance …"),
+   after the S-unit is itself accepted 2/2.
+5. **Record rule.** Enumerative/pattern-scoped record sentences only; counts
+   with unit and commit; evidence-class labels on cross-note quotes.
+6. **Grade vocabulary.** An S-unit before its arc closes is attempt grade; the
+   corpus milestone ("accepted-text-complete") is NOT restated as covering the
+   new notes until each is accepted.
+
+### 5.4 What stage two consumes from this campaign
+
+The Lean blueprint (stage two's first unit) keys off the POST-compression
+corpus: the S-0 ledger + accepted S-units replace per-note formalization
+targets wherever a consumption check landed. If only S-1/S-2/S-3 land, stage
+two already drops ~12 per-note argument sites; if S-6 lands, the σ-chain
+formalizes as one theorem + instances; if S-7's probe lands, the junction notes
+leave the load-bearing set.
+warning: Codex could not find bubblewrap on PATH. Install bubblewrap with your OS package manager. See the sandbox prerequisites: https://developers.openai.com/codex/concepts/sandboxing#prerequisites. Codex will use the bundled bubblewrap in the meantime.
+codex
+1. **T1 packages three non-equivalent obligations as though they were one lemma.**
+
+   > “One lemma on the composed tower's letter layer: the canonical letter recursion … its wrap correction … and gauge-invariance of reads under it — proved once … as a cocycle statement over the composed carrier”
+
+   **Classification: DESIGN-RISK**
+
+   The recursion, wrap correction, and invariance of reads have different logical shapes: an equality defining successive letters, an integer/floor identity, and an invariance theorem about an observation map. A single “cocycle statement” can silently absorb them by making the latter two fields or hypotheses of a carrier rather than conclusions. For example, a `TowerCarrier` could require `read (gauge x) = read x`; the resulting theorem would instantiate smoothly but would no longer prove the gauge-invariance currently established in each annex.
+
+2. **T1’s claimed seven-site reduction undercounts distinct consumption obligations.**
+
+   > “ABSORBS (enumerated, 7 sites). … GENTOW4's four-site gauge annex”
+
+   > “New lemma: … + seven consumption checks”
+
+   **Classification: UNDERESTIMATE**
+
+   “Seven sites” means seven notes, not seven statements or arguments. GENTOW4 alone is described as having four sites, while the other annexes may each expose several named or locally scoped consequences. One check per note can prove a convenient umbrella statement while missing a subordinate conclusion. The plan has not mapped absorbed propositions to checks, so “7” is not justified by its own inventory.
+
+3. **T1’s revision-scope metric ignores its new downstream centrality.**
+
+   > “A future letter-layer erratum currently ripples through 7 notes; after T1, through 1.”
+
+   > “Then S-1 (rank 1, and its frame feeds S-4/S-8).”
+
+   **Classification: UNDERESTIMATE**
+
+   After consolidation, an erratum may require revising T1, all affected instance maps or consumption checks, T5, and the SG-3/SG-4 probes or resulting proofs. The accepted notes remain frozen, so their dated absorption appends may also become stale. The revision surface changes form; it does not literally become one note.
+
+4. **T1’s regression battery is not shown to cover the cross-product of its parameters.**
+
+   > “frames must include the recorded first-instances: q=4 letters, η≠1, f₁=2 letter-live, μ₂=3, w≠1”
+
+   **Classification: BLIND-SPOT**
+
+   “Include” can mean that different frames witness the listed properties separately. A defect occurring only when, for example, `f₁=2`, `w≠1`, and a nontrivial wrap occur simultaneously can pass. Nothing requires pairwise or joint coverage, nor connects each consumed annex’s hypotheses to a battery frame.
+
+5. **T2’s proposed carrier can turn theorem content into structure assumptions.**
+
+   > “a structure `LadderCarrier` (stage ring, sides, residuals, test family, termination measure) + one theorem”
+
+   **Classification: DESIGN-RISK**
+
+   The boundary between carrier data, carrier laws, and theorem conclusions is unspecified. Any difficult fact—existence of suitable sides, compatibility of residual maps, coverage of the test family, strict descent of the termination measure, or correctness of the label read—can be placed into the structure. All five instance records could then typecheck while the “master theorem” proves strictly less than an absorbed theorem. Consumption checks do not prevent this if the instance construction imports the absorbed theorem to discharge the new field, making the abstraction circular.
+
+6. **T2 does not require conservative, independently constructible carrier instances.**
+
+   > “so that the existing instantiations become instances of ONE theorem”
+
+   > “HETOW-1/2/3/4 becoming the carrier-checking clauses”
+
+   **Classification: DESIGN-RISK**
+
+   A valid master-statement design needs each instance to be constructible from facts logically prior to the absorbed result. The plan never imposes that constraint. A concrete failure is an HETOW carrier field stating the HETOW-4 normalization identity, discharged by citing HETOW-4; the master then “implies” HETOW.A only because the old bridge theorem has been smuggled into the instance.
+
+7. **T2 may weaken uniformity by allowing instance-specific carrier types.**
+
+   > “Restate THEOREM HE7.A once over an abstract carrier”
+
+   > “instances for base/composed carriers”
+
+   **Classification: DESIGN-RISK**
+
+   Five bespoke structures can encode five different side sets, residual notions, indexing domains, or admissibility predicates. A polymorphic theorem over those structures then supplies syntactic reuse without a common mathematical assertion. In particular, uniform quantification over stages or blocks can be replaced by a carrier whose underlying type already contains only the admissible stages or one selected block.
+
+8. **T2 can lose HE6’s base-change-free strength while preserving pointwise instances.**
+
+   > “the general-carrier statement must carry HE6's test-family hypotheses abstractly”
+
+   > “check it against HE6's fractional-height test family FIRST … HE6's base-change-free property is the thing to preserve”
+
+   **Classification: DESIGN-RISK**
+
+   “Carry hypotheses abstractly” does not say whether the test family and its witnesses must be defined over the original base. The carrier could include an extension ring or a preselected root as data. Each fractional-height test would then exist, but only after base change, weakening HE6’s uniform base-change-free theorem while retaining similar displayed conclusions.
+
+9. **T2 can weaken termination by reifying a certificate rather than proving descent.**
+
+   > “with the ladder data: sides, residuals, test family, termination measure”
+
+   > “the whole level ladder by ONE induction; TERMINATION depth ≤ log₂n − 2”
+
+   **Classification: DESIGN-RISK**
+
+   If “termination measure” includes a proof of well-founded descent or a bounded trace as carrier data, the generalized theorem no longer derives the depth bound. Alternatively, if the carrier merely assumes termination, it may omit the explicit `≤ log₂ n − 2` uniform bound. Either form can instantiate all finite accepted examples while weakening HE7’s master conclusion.
+
+10. **T2 can lose coherence between residuals, sides, labels, and test families.**
+
+    > “a complete DVR stage ring with the ladder data: sides, residuals, test family, termination measure”
+
+    **Classification: DESIGN-RISK**
+
+    Merely listing components does not enforce that they arise from the same stage construction or commute with projection, block splitting, and composition. A carrier could supply unrelated residual maps that happen to return the desired labels. The theorem would then be true for an over-permissive synthetic interface but would not express the original ladder mechanism.
+
+11. **T2 can weaken quantifier order and parameter uniformity.**
+
+    > “HE3.A's recursion step … HE6's ℓ ≥ 2 branch … GENTOW4's per-block literal HE7.A instances”
+
+    **Classification: DESIGN-RISK**
+
+    The five sources appear to quantify over different indices—stage degree, height, side, block, and tower parameters. An abstract carrier can silently replace “for every parameter, one construction works uniformly” by “for every parameter, there exists a carrier,” or even by “given a carrier containing chosen witnesses.” Those statements admit the same individual instance examples but differ in uniformity and downstream composability.
+
+12. **T2’s five consumption checks cannot detect circular proofs without provenance checks.**
+
+    > “full 2-clean arc + five consumption checks”
+
+    **Classification: BLIND-SPOT**
+
+    A consumption check establishes an implication in the assembled environment, not that the implication avoids the absorbed theorem. If old HE6R1, HETOW, or HE7 results remain available, an instance proof or bridge can cite the very statement it is said to replace. Two hostile passes and an MD5 comparison do not detect dependency cycles unless proof-term/import provenance is audited.
+
+13. **T2’s compression estimate omits the cost of changing downstream signatures.**
+
+    > “the σ-chain's Lean surface shrinks from 4 bridge layers to 1 theorem + instance records”
+
+    **Classification: UNDERESTIMATE**
+
+    Generalizing HE7.A changes the types consumed by HE6R1, HETOW, GENTOW4, and potentially HE3/HE6. Projection lemmas, coercions, block-index conversions, termination measures, non-vacuity witnesses, and literature-faithfulness entries may all move. “One theorem + instance records” prices only the visible theorem count, not the interface migration demanded by the dependency DAG.
+
+14. **T3 identifies a verbal shape, not a demonstrated common statement signature.**
+
+    > “the common shape of GENTOW2-B″ … HETOW-4 … and GENTOW-6.4”
+
+    **Classification: DESIGN-RISK**
+
+    The examples involve respectively a height-indexed unit formula, a polynomial substitution/normalizer identity, and a window cap. They may require different monoids, actions, index orientations, boundary conventions, or side conditions. A sufficiently abstract “telescope” can cover all three only by accepting each desired endpoint equation as an input, yielding a vacuous unification.
+
+15. **T3’s regression plan is biased toward only one of its three consumers.**
+
+    > “battery re-uses the committed HETOW-4 frames (203 checks / 37 dual-route gp jobs) as regression”
+
+    **Classification: BLIND-SPOT**
+
+    HETOW-4-heavy tests cannot establish preservation of GENTOW2-B″’s `ϑ(t)·w^{f₃−t}` indexing or GENTOW-6.4’s 𝒯-free cap and window hypotheses. Three textual consumption checks may catch statement mismatch, but the advertised battery does not test the distinct boundary and degeneracy cases of all three instantiations.
+
+16. **T4 conflates witness attainment with the stronger threshold and count-box conclusions.**
+
+    > “one attainment lemma covering GENTOW3's faithfulness threshold … and GENTOW6's CERT-TOP”
+
+    > “also gives the four count-grade sub-boxes … ONE home — they are refinements of this lemma's count side”
+
+    **Classification: DESIGN-RISK**
+
+    A touched-coordinate witness may establish existence or attainment without proving the quantitative threshold formula, uniqueness, faithfulness, or count refinements. Calling the boxes “refinements” does not establish that they share hypotheses or derive from one count-side interface. The unified lemma could preserve CERT-TOP while weakening the threshold’s uniformity, or vice versa.
+
+17. **T4 understates its dependency and future revision surface.**
+
+    > “RE-VERIFY. 2-clean arc; two consumption checks”
+
+    > “their eventual closure revises one text”
+
+    **Classification: UNDERESTIMATE**
+
+    T4 is intended to become the home of four open sub-boxes and is consumed from both GENTOW3 and GENTOW6, which themselves feed later tower conclusions. Closing BOX-4 or changing the certificate definition can require updates to the unified note, both instance maps, box hypotheses, regressions, and Lean consumers. “Two checks” and “one text” do not reflect that fan-out.
+
+18. **T5 is not merely definitional if it changes the canonical frame and records nontrivial evidence.**
+
+    > “RE-VERIFY. Light: mostly definitional + record consolidation; 2-clean arc at reduced size; no absorbed statement changes.”
+
+    > “defining the cross-frame unit w and the w-twisted realized residual ψ^{(w)} in the w-inclusive canonical frame”
+
+    **Classification: UNDERESTIMATE**
+
+    Moving a definition into a new canonical frame changes coercions, normalization equalities, and the interpretation of existing occurrences. The attached facts `w ≠ 1` and `ψ₃^{(w)}(Y)=0` are propositions with instance scope, not mere record formatting. Their transfer requires frame-equivalence and provenance checks, especially because T5 depends on T1’s frame.
+
+19. **T5’s “open question” formulation risks changing a proposition into an assumption.**
+
+    > “The w = 1 open question becomes a named hypothesis, the honest-`sorry` analogue at statement level.”
+
+    **Classification: DESIGN-RISK**
+
+    A named hypothesis can make downstream statements conditional on `w=1`, `w≠1`, or decidability of the case, depending on its precise formulation. That can silently weaken unconditional statements currently supported by measured `w≠1` instances. Describing it as a `sorry` analogue is particularly hazardous: unresolved mathematics can migrate into the interface and make the new note appear complete.
+
+20. **SG-1 mistakes archival replacement for logical simplification.**
+
+    > “the notes HE6, HE7, HE6R1, HETOW, and GENTOW4's read layer become history/instances”
+
+    **Classification: DESIGN-RISK**
+
+    Unless carrier instances are proved without importing those notes’ substantive results, the notes remain proof suppliers. Labeling them “history” can cause stage two to omit necessary formal proofs. The failure mode is especially direct for HE7: the generalized theorem may simply be HE7 repackaged, while HE6R1 and HETOW remain necessary to construct its instances.
+
+21. **SG-1’s success criterion is only syntactic size.**
+
+    > “Failure mode: the carrier signature bloats to re-encode each note's frame, and nothing is shorter.”
+
+    **Classification: BLIND-SPOT**
+
+    A compact signature can still be logically weak, circular, non-uniform, or semantically incoherent. Conversely, a large but conservative interface may be sound. The probe checks HE6 first and watches bloat, but it does not require a field-by-field implication ledger, independent instance construction, or preservation of quantifier order for all five consumers.
+
+22. **SG-2’s proposed retirement of supplier notes is incompatible with proving WELDMASTER unless its proof is axiomatized.**
+
+    > “GRTJA/GRTJB/GRTJC … retire to suppliers-of-WELDMASTER”
+
+    > “Lean would formalize the consumed faces only”
+
+    **Classification: DESIGN-RISK**
+
+    If WELDMASTER is to be kernel-proved, its suppliers—or replacement proofs of their content—remain required. If WELDMASTER is declared as an axiom so only its faces are consumed, that expands the literature/axiom policy beyond the enumerated allowed axioms. The plan does not distinguish “not downstream-consumed” from “not needed to prove the upstream theorem.”
+
+23. **SG-2 tests dependence of one theorem but draws a whole-path retirement conclusion.**
+
+    > “Probe: one session tracing GENHN-4's proof inputs against WELDMASTER's M2/M3 faces.”
+
+    > “If yes, the load-bearing weld surface = WELDMASTER + JD0”
+
+    **Classification: UNDERESTIMATE**
+
+    Tracing GENHN-4 alone does not establish that no other theorem, definition, non-vacuity witness, or semantic-faithfulness obligation consumes GRTJA/B/C. Nor does it prove that M2/M3 expose enough data without the junction definitions. A 6,900-line scope removal needs a corpus-wide dependency and proof-provenance audit, not one proof-input session.
+
+24. **SG-3 contradicts the plan’s declared separation between letters and counts.**
+
+    > “the T1 lemma applied at every event type”
+
+    > “the LETTER layer … never enters counts (JD0)”
+
+    **Classification: DESIGN-RISK**
+
+    GENIND’s α/β formulas are count-side, while T1 is explicitly a letter-layer lemma invisible to counts. To make T1 generate those formulas, SG-3 must either enrich T1 with count transport—expanding T1’s scope—or weaken JD0’s blindness claim. The plan does not price this architectural change or say which boundary is expected to move.
+
+25. **SG-3’s example-first probe cannot validate dissolution of the general case split.**
+
+    > “re-derive HMENU3's 33-family menu from the candidate unified form on the committed exact tables”
+
+    **Classification: BLIND-SPOT**
+
+    Agreement on the cubic table can result from finite interpolation or a formulation specialized to the base case. It cannot show that the five regimes collapse uniformly for arbitrary degree, especially where GENIND’s composite-opening criterion begins only at `n ≥ 4`. The probe lacks a generality or non-overfitting check.
+
+26. **SG-4 has no independent test oracle.**
+
+    > “Probe rides SG-3's battery.”
+
+    **Classification: BLIND-SPOT**
+
+    SG-3 tests reconstruction of count menus, whereas SG-4 concerns whether letters-versus-depth splits disappear under a frame change in GENTOW2/GENTOW5. A shared battery can pass the menu predictions while never exercising the old split’s exceptional cases. The two speculative claims require separately preregistered failure criteria.
+
+27. **S-0 indexes only named statements, while the campaign absorbs arguments and annexes.**
+
+    > “extract every named theorem/lemma statement of the 26 texts”
+
+    > “For each absorbed argument, a CONSUMPTION CHECK”
+
+    **Classification: BLIND-SPOT**
+
+    Local claims, displayed equations, scope riders, definition clauses, annex conclusions, and prose-bound restrictions need not be named theorems or lemmas. Such material can be absorbed or weakened without any ledger entry. This is acute for T1’s gauge annexes and T5’s pass-record facts.
+
+28. **S-0 hashes bytes but not the statement’s binding context.**
+
+    > “md5 + commit pin per statement”
+
+    > “the absorbed statement is byte-identical to the accepted text per the S-0 ledger”
+
+    **Classification: BLIND-SPOT**
+
+    Identical statement text can mean something different after namespace changes, altered notation, changed implicit variables, different local instances, or relocated definitions. For example, `∀ x, Read x = …` may hash identically while `Read`, the carrier type, or a section variable is resolved differently. A byte hash of the extracted span does not preserve elaborated semantics.
+
+29. **S-0 permits re-quantification outside the hashed span.**
+
+    > “display ‘new lemma ⟹ absorbed statement,’ where the absorbed statement is byte-identical”
+
+    **Classification: BLIND-SPOT**
+
+    The display can place extra binders or assumptions before the quoted statement: “for a fixed admissible carrier `C` satisfying completeness and termination, [byte-identical statement].” The quoted body matches MD5, but a formerly universal theorem has become conditional or restricted. The same failure occurs when an existential witness is fixed in surrounding prose.
+
+30. **S-0 permits hypotheses to migrate into definitions or typeclasses.**
+
+    > “the absorbed statement is byte-identical to the accepted text per the S-0 ledger”
+
+    **Classification: BLIND-SPOT**
+
+    A new definition of “carrier,” “side,” “test family,” “canonical frame,” or “touched coordinate” can include exactly the property that was formerly proved. The consumed statement remains byte-identical but ranges over a narrower subtype. This is the central danger for T2 and T4, and hashing cannot detect it.
+
+31. **S-0 does not hash prose that fixes scope and interpretation.**
+
+    > “extract every named theorem/lemma statement”
+
+    **Classification: BLIND-SPOT**
+
+    Surrounding prose may specify that a theorem is base-change-free, uniform in all primes, includes wild cases, uses the original frame, or excludes a citation. If those constraints are not within the extracted statement span, a new consumption check can match the statement bytes while dropping them. The plan itself relies repeatedly on such prose-level properties.
+
+32. **S-0’s commit pin becomes ambiguous once allowed appends are made.**
+
+    > “md5 + commit pin per statement”
+
+    > “the accepted notes get dated appends only”
+
+    **Classification: MINOR**
+
+    An append changes the file and repository commit without changing the statement. The plan does not say whether the ledger remains pinned to the pre-append commit, receives a new file-level pin, or records both. Without a policy, later checks can incorrectly report staleness or silently re-extract from a newer context.
+
+33. **MD5 is an unnecessarily weak identity mechanism for an adversarial ledger.**
+
+    > “md5 match required”
+
+    **Classification: BLIND-SPOT**
+
+    MD5 is collision-broken. Accidental collision is negligible, but this is explicitly an adversarial verification instrument and statements are text under repository control. More importantly, the plan treats an MD5 match as semantic protection when it supplies only weak byte identity. A collision or extraction-boundary manipulation could pass the mandatory check.
+
+34. **S-1 is scheduled before the plan has resolved the abstraction hazard shared with T2 and T5.**
+
+    > “S-1 | T1 GAUGE-COCYCLE: compose …”
+
+    > “proved once in the w-inclusive canonical frame, as a cocycle statement over the composed carrier”
+
+    **Classification: UNDERESTIMATE**
+
+    T1 already needs a composed-carrier and canonical-frame design, and its output defines the frame consumed by T5 and SG-4. Yet only T2 receives a dedicated design probe and compose-time Lean signature. A faulty T1 carrier boundary propagates immediately into S-4 and S-8, so treating S-1 as one composer session understates its statement-design work.
+
+35. **S-1’s seven checks do not gate downstream work on semantic, rather than textual, preservation.**
+
+    > “Then S-1 … its frame feeds S-4/S-8.”
+
+    > “A consumption check failing = the unit is wrong”
+
+    **Classification: DESIGN-RISK**
+
+    S-4 and S-8 are gated only on S-1 landing, while S-1’s checks can pass through narrowed carrier definitions or imported old lemmas. Thus downstream units can build on a formally accepted but weakened frame abstraction. The ordering amplifies S-0’s blind spots instead of containing them.
+
+36. **S-7’s declared independence omits dependence on the ledger and on formalization policy.**
+
+    > “S-7 | SG-2 probe … | 1 session | —”
+
+    > “S-7 anytime (independent, one session).”
+
+    **Classification: UNDERESTIMATE**
+
+    The probe compares exact proof inputs and supports a future claim that notes leave the load-bearing set. That requires stable statement identities, definition provenance, and a decision about whether WELDMASTER is proved or axiomatized. Those are respectively tied to S-0 and stage-two axiom policy. It is operationally runnable anytime, but its advertised conclusion is not independent.
+
+37. **The verification protocol does not require freshness from the absorbed proofs.**
+
+    > “model-diverse verifiers, fresh route per pass”
+
+    > “display ‘new lemma ⟹ absorbed statement’”
+
+    **Classification: BLIND-SPOT**
+
+    “Fresh route” describes reviewer behavior, not the dependency graph of the proof artifact. A new note may import or quote an absorbed result inside its carrier construction or consumption proof. Reviewers can independently verify a circular implication unless they are required to inspect imports and proof provenance.
+
+38. **The protocol allows absorption appends to overstate what was preserved.**
+
+    > “the accepted notes get dated appends only (‘absorbed by S-k as instance …’)”
+
+    **Classification: DESIGN-RISK**
+
+    The append is made after unit acceptance, but acceptance relies on the deficient ledger and consumption protocol. An umbrella statement may be preserved while an unnamed rider, uniformity clause, or construction method is not. The append can therefore record full “instance” status more strongly than the actual check establishes.
+
+39. **The stage-two replacement rule magnifies any single false-positive consumption check.**
+
+    > “accepted S-units replace per-note formalization targets wherever a consumption check landed”
+
+    **Classification: DESIGN-RISK**
+
+    A consumption check can land using extra hypotheses, restricted carrier definitions, or circular citations. Stage two then drops the original target, removing the very source that would expose the missing obligation. This turns a ledger blind spot into an irreversible scope omission rather than a local documentation defect.
+
+40. **The plan’s line-count savings are not aligned with its own dependency DAG.**
+
+    > “If only S-1/S-2/S-3 land, stage two already drops ~12 per-note argument sites”
+
+    > “if S-7's probe lands, the junction notes leave the load-bearing set”
+
+    **Classification: UNDERESTIMATE**
+
+    Replacing argument sites does not remove the need to formalize definitions, instance construction, compatibility lemmas, upstream proofs, or non-vacuity evidence. Likewise, a downstream theorem ceasing to cite a junction note does not remove that note if it proves WELDMASTER. The plan repeatedly equates fewer consumption sites with less total formalization without pricing upstream proof dependencies.
+
+### CHECKED CLEAN
+
+No charged item is checked clean: each of T1, T2, T3, T4, T5, SG-1, SG-2, SG-3, SG-4, S-0, S-1, and S-7 has at least one design-level failure mode identified above.
+
+Overall, the blueprint has a clear corpus map, explicit sequencing, honest speculation grades, and a serious regression discipline, but its central preservation mechanism proves byte identity of selected text rather than semantic conservativity. That defect is especially dangerous for T2, where abstract structures can internalize conclusions, narrow quantifiers, hide base changes, or create circular instances while all five checks appear to pass. Because stage two is instructed to discard per-note targets based on those checks, the blind spot can produce a genuinely weakened artifact and an incomplete formalization scope. The underestimated coupling around T1/T5/SG-3/SG-4 and the unsupported retirement inference in SG-2/S-7 compound the problem.
+
+OUTCOME: PLAN-DEFECTIVE
+tokens used
+16,217
+1. **T1 packages three non-equivalent obligations as though they were one lemma.**
+
+   > “One lemma on the composed tower's letter layer: the canonical letter recursion … its wrap correction … and gauge-invariance of reads under it — proved once … as a cocycle statement over the composed carrier”
+
+   **Classification: DESIGN-RISK**
+
+   The recursion, wrap correction, and invariance of reads have different logical shapes: an equality defining successive letters, an integer/floor identity, and an invariance theorem about an observation map. A single “cocycle statement” can silently absorb them by making the latter two fields or hypotheses of a carrier rather than conclusions. For example, a `TowerCarrier` could require `read (gauge x) = read x`; the resulting theorem would instantiate smoothly but would no longer prove the gauge-invariance currently established in each annex.
+
+2. **T1’s claimed seven-site reduction undercounts distinct consumption obligations.**
+
+   > “ABSORBS (enumerated, 7 sites). … GENTOW4's four-site gauge annex”
+
+   > “New lemma: … + seven consumption checks”
+
+   **Classification: UNDERESTIMATE**
+
+   “Seven sites” means seven notes, not seven statements or arguments. GENTOW4 alone is described as having four sites, while the other annexes may each expose several named or locally scoped consequences. One check per note can prove a convenient umbrella statement while missing a subordinate conclusion. The plan has not mapped absorbed propositions to checks, so “7” is not justified by its own inventory.
+
+3. **T1’s revision-scope metric ignores its new downstream centrality.**
+
+   > “A future letter-layer erratum currently ripples through 7 notes; after T1, through 1.”
+
+   > “Then S-1 (rank 1, and its frame feeds S-4/S-8).”
+
+   **Classification: UNDERESTIMATE**
+
+   After consolidation, an erratum may require revising T1, all affected instance maps or consumption checks, T5, and the SG-3/SG-4 probes or resulting proofs. The accepted notes remain frozen, so their dated absorption appends may also become stale. The revision surface changes form; it does not literally become one note.
+
+4. **T1’s regression battery is not shown to cover the cross-product of its parameters.**
+
+   > “frames must include the recorded first-instances: q=4 letters, η≠1, f₁=2 letter-live, μ₂=3, w≠1”
+
+   **Classification: BLIND-SPOT**
+
+   “Include” can mean that different frames witness the listed properties separately. A defect occurring only when, for example, `f₁=2`, `w≠1`, and a nontrivial wrap occur simultaneously can pass. Nothing requires pairwise or joint coverage, nor connects each consumed annex’s hypotheses to a battery frame.
+
+5. **T2’s proposed carrier can turn theorem content into structure assumptions.**
+
+   > “a structure `LadderCarrier` (stage ring, sides, residuals, test family, termination measure) + one theorem”
+
+   **Classification: DESIGN-RISK**
+
+   The boundary between carrier data, carrier laws, and theorem conclusions is unspecified. Any difficult fact—existence of suitable sides, compatibility of residual maps, coverage of the test family, strict descent of the termination measure, or correctness of the label read—can be placed into the structure. All five instance records could then typecheck while the “master theorem” proves strictly less than an absorbed theorem. Consumption checks do not prevent this if the instance construction imports the absorbed theorem to discharge the new field, making the abstraction circular.
+
+6. **T2 does not require conservative, independently constructible carrier instances.**
+
+   > “so that the existing instantiations become instances of ONE theorem”
+
+   > “HETOW-1/2/3/4 becoming the carrier-checking clauses”
+
+   **Classification: DESIGN-RISK**
+
+   A valid master-statement design needs each instance to be constructible from facts logically prior to the absorbed result. The plan never imposes that constraint. A concrete failure is an HETOW carrier field stating the HETOW-4 normalization identity, discharged by citing HETOW-4; the master then “implies” HETOW.A only because the old bridge theorem has been smuggled into the instance.
+
+7. **T2 may weaken uniformity by allowing instance-specific carrier types.**
+
+   > “Restate THEOREM HE7.A once over an abstract carrier”
+
+   > “instances for base/composed carriers”
+
+   **Classification: DESIGN-RISK**
+
+   Five bespoke structures can encode five different side sets, residual notions, indexing domains, or admissibility predicates. A polymorphic theorem over those structures then supplies syntactic reuse without a common mathematical assertion. In particular, uniform quantification over stages or blocks can be replaced by a carrier whose underlying type already contains only the admissible stages or one selected block.
+
+8. **T2 can lose HE6’s base-change-free strength while preserving pointwise instances.**
+
+   > “the general-carrier statement must carry HE6's test-family hypotheses abstractly”
+
+   > “check it against HE6's fractional-height test family FIRST … HE6's base-change-free property is the thing to preserve”
+
+   **Classification: DESIGN-RISK**
+
+   “Carry hypotheses abstractly” does not say whether the test family and its witnesses must be defined over the original base. The carrier could include an extension ring or a preselected root as data. Each fractional-height test would then exist, but only after base change, weakening HE6’s uniform base-change-free theorem while retaining similar displayed conclusions.
+
+9. **T2 can weaken termination by reifying a certificate rather than proving descent.**
+
+   > “with the ladder data: sides, residuals, test family, termination measure”
+
+   > “the whole level ladder by ONE induction; TERMINATION depth ≤ log₂n − 2”
+
+   **Classification: DESIGN-RISK**
+
+   If “termination measure” includes a proof of well-founded descent or a bounded trace as carrier data, the generalized theorem no longer derives the depth bound. Alternatively, if the carrier merely assumes termination, it may omit the explicit `≤ log₂ n − 2` uniform bound. Either form can instantiate all finite accepted examples while weakening HE7’s master conclusion.
+
+10. **T2 can lose coherence between residuals, sides, labels, and test families.**
+
+    > “a complete DVR stage ring with the ladder data: sides, residuals, test family, termination measure”
+
+    **Classification: DESIGN-RISK**
+
+    Merely listing components does not enforce that they arise from the same stage construction or commute with projection, block splitting, and composition. A carrier could supply unrelated residual maps that happen to return the desired labels. The theorem would then be true for an over-permissive synthetic interface but would not express the original ladder mechanism.
+
+11. **T2 can weaken quantifier order and parameter uniformity.**
+
+    > “HE3.A's recursion step … HE6's ℓ ≥ 2 branch … GENTOW4's per-block literal HE7.A instances”
+
+    **Classification: DESIGN-RISK**
+
+    The five sources appear to quantify over different indices—stage degree, height, side, block, and tower parameters. An abstract carrier can silently replace “for every parameter, one construction works uniformly” by “for every parameter, there exists a carrier,” or even by “given a carrier containing chosen witnesses.” Those statements admit the same individual instance examples but differ in uniformity and downstream composability.
+
+12. **T2’s five consumption checks cannot detect circular proofs without provenance checks.**
+
+    > “full 2-clean arc + five consumption checks”
+
+    **Classification: BLIND-SPOT**
+
+    A consumption check establishes an implication in the assembled environment, not that the implication avoids the absorbed theorem. If old HE6R1, HETOW, or HE7 results remain available, an instance proof or bridge can cite the very statement it is said to replace. Two hostile passes and an MD5 comparison do not detect dependency cycles unless proof-term/import provenance is audited.
+
+13. **T2’s compression estimate omits the cost of changing downstream signatures.**
+
+    > “the σ-chain's Lean surface shrinks from 4 bridge layers to 1 theorem + instance records”
+
+    **Classification: UNDERESTIMATE**
+
+    Generalizing HE7.A changes the types consumed by HE6R1, HETOW, GENTOW4, and potentially HE3/HE6. Projection lemmas, coercions, block-index conversions, termination measures, non-vacuity witnesses, and literature-faithfulness entries may all move. “One theorem + instance records” prices only the visible theorem count, not the interface migration demanded by the dependency DAG.
+
+14. **T3 identifies a verbal shape, not a demonstrated common statement signature.**
+
+    > “the common shape of GENTOW2-B″ … HETOW-4 … and GENTOW-6.4”
+
+    **Classification: DESIGN-RISK**
+
+    The examples involve respectively a height-indexed unit formula, a polynomial substitution/normalizer identity, and a window cap. They may require different monoids, actions, index orientations, boundary conventions, or side conditions. A sufficiently abstract “telescope” can cover all three only by accepting each desired endpoint equation as an input, yielding a vacuous unification.
+
+15. **T3’s regression plan is biased toward only one of its three consumers.**
+
+    > “battery re-uses the committed HETOW-4 frames (203 checks / 37 dual-route gp jobs) as regression”
+
+    **Classification: BLIND-SPOT**
+
+    HETOW-4-heavy tests cannot establish preservation of GENTOW2-B″’s `ϑ(t)·w^{f₃−t}` indexing or GENTOW-6.4’s 𝒯-free cap and window hypotheses. Three textual consumption checks may catch statement mismatch, but the advertised battery does not test the distinct boundary and degeneracy cases of all three instantiations.
+
+16. **T4 conflates witness attainment with the stronger threshold and count-box conclusions.**
+
+    > “one attainment lemma covering GENTOW3's faithfulness threshold … and GENTOW6's CERT-TOP”
+
+    > “also gives the four count-grade sub-boxes … ONE home — they are refinements of this lemma's count side”
+
+    **Classification: DESIGN-RISK**
+
+    A touched-coordinate witness may establish existence or attainment without proving the quantitative threshold formula, uniqueness, faithfulness, or count refinements. Calling the boxes “refinements” does not establish that they share hypotheses or derive from one count-side interface. The unified lemma could preserve CERT-TOP while weakening the threshold’s uniformity, or vice versa.
+
+17. **T4 understates its dependency and future revision surface.**
+
+    > “RE-VERIFY. 2-clean arc; two consumption checks”
+
+    > “their eventual closure revises one text”
+
+    **Classification: UNDERESTIMATE**
+
+    T4 is intended to become the home of four open sub-boxes and is consumed from both GENTOW3 and GENTOW6, which themselves feed later tower conclusions. Closing BOX-4 or changing the certificate definition can require updates to the unified note, both instance maps, box hypotheses, regressions, and Lean consumers. “Two checks” and “one text” do not reflect that fan-out.
+
+18. **T5 is not merely definitional if it changes the canonical frame and records nontrivial evidence.**
+
+    > “RE-VERIFY. Light: mostly definitional + record consolidation; 2-clean arc at reduced size; no absorbed statement changes.”
+
+    > “defining the cross-frame unit w and the w-twisted realized residual ψ^{(w)} in the w-inclusive canonical frame”
+
+    **Classification: UNDERESTIMATE**
+
+    Moving a definition into a new canonical frame changes coercions, normalization equalities, and the interpretation of existing occurrences. The attached facts `w ≠ 1` and `ψ₃^{(w)}(Y)=0` are propositions with instance scope, not mere record formatting. Their transfer requires frame-equivalence and provenance checks, especially because T5 depends on T1’s frame.
+
+19. **T5’s “open question” formulation risks changing a proposition into an assumption.**
+
+    > “The w = 1 open question becomes a named hypothesis, the honest-`sorry` analogue at statement level.”
+
+    **Classification: DESIGN-RISK**
+
+    A named hypothesis can make downstream statements conditional on `w=1`, `w≠1`, or decidability of the case, depending on its precise formulation. That can silently weaken unconditional statements currently supported by measured `w≠1` instances. Describing it as a `sorry` analogue is particularly hazardous: unresolved mathematics can migrate into the interface and make the new note appear complete.
+
+20. **SG-1 mistakes archival replacement for logical simplification.**
+
+    > “the notes HE6, HE7, HE6R1, HETOW, and GENTOW4's read layer become history/instances”
+
+    **Classification: DESIGN-RISK**
+
+    Unless carrier instances are proved without importing those notes’ substantive results, the notes remain proof suppliers. Labeling them “history” can cause stage two to omit necessary formal proofs. The failure mode is especially direct for HE7: the generalized theorem may simply be HE7 repackaged, while HE6R1 and HETOW remain necessary to construct its instances.
+
+21. **SG-1’s success criterion is only syntactic size.**
+
+    > “Failure mode: the carrier signature bloats to re-encode each note's frame, and nothing is shorter.”
+
+    **Classification: BLIND-SPOT**
+
+    A compact signature can still be logically weak, circular, non-uniform, or semantically incoherent. Conversely, a large but conservative interface may be sound. The probe checks HE6 first and watches bloat, but it does not require a field-by-field implication ledger, independent instance construction, or preservation of quantifier order for all five consumers.
+
+22. **SG-2’s proposed retirement of supplier notes is incompatible with proving WELDMASTER unless its proof is axiomatized.**
+
+    > “GRTJA/GRTJB/GRTJC … retire to suppliers-of-WELDMASTER”
+
+    > “Lean would formalize the consumed faces only”
+
+    **Classification: DESIGN-RISK**
+
+    If WELDMASTER is to be kernel-proved, its suppliers—or replacement proofs of their content—remain required. If WELDMASTER is declared as an axiom so only its faces are consumed, that expands the literature/axiom policy beyond the enumerated allowed axioms. The plan does not distinguish “not downstream-consumed” from “not needed to prove the upstream theorem.”
+
+23. **SG-2 tests dependence of one theorem but draws a whole-path retirement conclusion.**
+
+    > “Probe: one session tracing GENHN-4's proof inputs against WELDMASTER's M2/M3 faces.”
+
+    > “If yes, the load-bearing weld surface = WELDMASTER + JD0”
+
+    **Classification: UNDERESTIMATE**
+
+    Tracing GENHN-4 alone does not establish that no other theorem, definition, non-vacuity witness, or semantic-faithfulness obligation consumes GRTJA/B/C. Nor does it prove that M2/M3 expose enough data without the junction definitions. A 6,900-line scope removal needs a corpus-wide dependency and proof-provenance audit, not one proof-input session.
+
+24. **SG-3 contradicts the plan’s declared separation between letters and counts.**
+
+    > “the T1 lemma applied at every event type”
+
+    > “the LETTER layer … never enters counts (JD0)”
+
+    **Classification: DESIGN-RISK**
+
+    GENIND’s α/β formulas are count-side, while T1 is explicitly a letter-layer lemma invisible to counts. To make T1 generate those formulas, SG-3 must either enrich T1 with count transport—expanding T1’s scope—or weaken JD0’s blindness claim. The plan does not price this architectural change or say which boundary is expected to move.
+
+25. **SG-3’s example-first probe cannot validate dissolution of the general case split.**
+
+    > “re-derive HMENU3's 33-family menu from the candidate unified form on the committed exact tables”
+
+    **Classification: BLIND-SPOT**
+
+    Agreement on the cubic table can result from finite interpolation or a formulation specialized to the base case. It cannot show that the five regimes collapse uniformly for arbitrary degree, especially where GENIND’s composite-opening criterion begins only at `n ≥ 4`. The probe lacks a generality or non-overfitting check.
+
+26. **SG-4 has no independent test oracle.**
+
+    > “Probe rides SG-3's battery.”
+
+    **Classification: BLIND-SPOT**
+
+    SG-3 tests reconstruction of count menus, whereas SG-4 concerns whether letters-versus-depth splits disappear under a frame change in GENTOW2/GENTOW5. A shared battery can pass the menu predictions while never exercising the old split’s exceptional cases. The two speculative claims require separately preregistered failure criteria.
+
+27. **S-0 indexes only named statements, while the campaign absorbs arguments and annexes.**
+
+    > “extract every named theorem/lemma statement of the 26 texts”
+
+    > “For each absorbed argument, a CONSUMPTION CHECK”
+
+    **Classification: BLIND-SPOT**
+
+    Local claims, displayed equations, scope riders, definition clauses, annex conclusions, and prose-bound restrictions need not be named theorems or lemmas. Such material can be absorbed or weakened without any ledger entry. This is acute for T1’s gauge annexes and T5’s pass-record facts.
+
+28. **S-0 hashes bytes but not the statement’s binding context.**
+
+    > “md5 + commit pin per statement”
+
+    > “the absorbed statement is byte-identical to the accepted text per the S-0 ledger”
+
+    **Classification: BLIND-SPOT**
+
+    Identical statement text can mean something different after namespace changes, altered notation, changed implicit variables, different local instances, or relocated definitions. For example, `∀ x, Read x = …` may hash identically while `Read`, the carrier type, or a section variable is resolved differently. A byte hash of the extracted span does not preserve elaborated semantics.
+
+29. **S-0 permits re-quantification outside the hashed span.**
+
+    > “display ‘new lemma ⟹ absorbed statement,’ where the absorbed statement is byte-identical”
+
+    **Classification: BLIND-SPOT**
+
+    The display can place extra binders or assumptions before the quoted statement: “for a fixed admissible carrier `C` satisfying completeness and termination, [byte-identical statement].” The quoted body matches MD5, but a formerly universal theorem has become conditional or restricted. The same failure occurs when an existential witness is fixed in surrounding prose.
+
+30. **S-0 permits hypotheses to migrate into definitions or typeclasses.**
+
+    > “the absorbed statement is byte-identical to the accepted text per the S-0 ledger”
+
+    **Classification: BLIND-SPOT**
+
+    A new definition of “carrier,” “side,” “test family,” “canonical frame,” or “touched coordinate” can include exactly the property that was formerly proved. The consumed statement remains byte-identical but ranges over a narrower subtype. This is the central danger for T2 and T4, and hashing cannot detect it.
+
+31. **S-0 does not hash prose that fixes scope and interpretation.**
+
+    > “extract every named theorem/lemma statement”
+
+    **Classification: BLIND-SPOT**
+
+    Surrounding prose may specify that a theorem is base-change-free, uniform in all primes, includes wild cases, uses the original frame, or excludes a citation. If those constraints are not within the extracted statement span, a new consumption check can match the statement bytes while dropping them. The plan itself relies repeatedly on such prose-level properties.
+
+32. **S-0’s commit pin becomes ambiguous once allowed appends are made.**
+
+    > “md5 + commit pin per statement”
+
+    > “the accepted notes get dated appends only”
+
+    **Classification: MINOR**
+
+    An append changes the file and repository commit without changing the statement. The plan does not say whether the ledger remains pinned to the pre-append commit, receives a new file-level pin, or records both. Without a policy, later checks can incorrectly report staleness or silently re-extract from a newer context.
+
+33. **MD5 is an unnecessarily weak identity mechanism for an adversarial ledger.**
+
+    > “md5 match required”
+
+    **Classification: BLIND-SPOT**
+
+    MD5 is collision-broken. Accidental collision is negligible, but this is explicitly an adversarial verification instrument and statements are text under repository control. More importantly, the plan treats an MD5 match as semantic protection when it supplies only weak byte identity. A collision or extraction-boundary manipulation could pass the mandatory check.
+
+34. **S-1 is scheduled before the plan has resolved the abstraction hazard shared with T2 and T5.**
+
+    > “S-1 | T1 GAUGE-COCYCLE: compose …”
+
+    > “proved once in the w-inclusive canonical frame, as a cocycle statement over the composed carrier”
+
+    **Classification: UNDERESTIMATE**
+
+    T1 already needs a composed-carrier and canonical-frame design, and its output defines the frame consumed by T5 and SG-4. Yet only T2 receives a dedicated design probe and compose-time Lean signature. A faulty T1 carrier boundary propagates immediately into S-4 and S-8, so treating S-1 as one composer session understates its statement-design work.
+
+35. **S-1’s seven checks do not gate downstream work on semantic, rather than textual, preservation.**
+
+    > “Then S-1 … its frame feeds S-4/S-8.”
+
+    > “A consumption check failing = the unit is wrong”
+
+    **Classification: DESIGN-RISK**
+
+    S-4 and S-8 are gated only on S-1 landing, while S-1’s checks can pass through narrowed carrier definitions or imported old lemmas. Thus downstream units can build on a formally accepted but weakened frame abstraction. The ordering amplifies S-0’s blind spots instead of containing them.
+
+36. **S-7’s declared independence omits dependence on the ledger and on formalization policy.**
+
+    > “S-7 | SG-2 probe … | 1 session | —”
+
+    > “S-7 anytime (independent, one session).”
+
+    **Classification: UNDERESTIMATE**
+
+    The probe compares exact proof inputs and supports a future claim that notes leave the load-bearing set. That requires stable statement identities, definition provenance, and a decision about whether WELDMASTER is proved or axiomatized. Those are respectively tied to S-0 and stage-two axiom policy. It is operationally runnable anytime, but its advertised conclusion is not independent.
+
+37. **The verification protocol does not require freshness from the absorbed proofs.**
+
+    > “model-diverse verifiers, fresh route per pass”
+
+    > “display ‘new lemma ⟹ absorbed statement’”
+
+    **Classification: BLIND-SPOT**
+
+    “Fresh route” describes reviewer behavior, not the dependency graph of the proof artifact. A new note may import or quote an absorbed result inside its carrier construction or consumption proof. Reviewers can independently verify a circular implication unless they are required to inspect imports and proof provenance.
+
+38. **The protocol allows absorption appends to overstate what was preserved.**
+
+    > “the accepted notes get dated appends only (‘absorbed by S-k as instance …’)”
+
+    **Classification: DESIGN-RISK**
+
+    The append is made after unit acceptance, but acceptance relies on the deficient ledger and consumption protocol. An umbrella statement may be preserved while an unnamed rider, uniformity clause, or construction method is not. The append can therefore record full “instance” status more strongly than the actual check establishes.
+
+39. **The stage-two replacement rule magnifies any single false-positive consumption check.**
+
+    > “accepted S-units replace per-note formalization targets wherever a consumption check landed”
+
+    **Classification: DESIGN-RISK**
+
+    A consumption check can land using extra hypotheses, restricted carrier definitions, or circular citations. Stage two then drops the original target, removing the very source that would expose the missing obligation. This turns a ledger blind spot into an irreversible scope omission rather than a local documentation defect.
+
+40. **The plan’s line-count savings are not aligned with its own dependency DAG.**
+
+    > “If only S-1/S-2/S-3 land, stage two already drops ~12 per-note argument sites”
+
+    > “if S-7's probe lands, the junction notes leave the load-bearing set”
+
+    **Classification: UNDERESTIMATE**
+
+    Replacing argument sites does not remove the need to formalize definitions, instance construction, compatibility lemmas, upstream proofs, or non-vacuity evidence. Likewise, a downstream theorem ceasing to cite a junction note does not remove that note if it proves WELDMASTER. The plan repeatedly equates fewer consumption sites with less total formalization without pricing upstream proof dependencies.
+
+### CHECKED CLEAN
+
+No charged item is checked clean: each of T1, T2, T3, T4, T5, SG-1, SG-2, SG-3, SG-4, S-0, S-1, and S-7 has at least one design-level failure mode identified above.
+
+Overall, the blueprint has a clear corpus map, explicit sequencing, honest speculation grades, and a serious regression discipline, but its central preservation mechanism proves byte identity of selected text rather than semantic conservativity. That defect is especially dangerous for T2, where abstract structures can internalize conclusions, narrow quantifiers, hide base changes, or create circular instances while all five checks appear to pass. Because stage two is instructed to discard per-note targets based on those checks, the blind spot can produce a genuinely weakened artifact and an incomplete formalization scope. The underestimated coupling around T1/T5/SG-3/SG-4 and the unsupported retirement inference in SG-2/S-7 compound the problem.
+
+OUTCOME: PLAN-DEFECTIVE
