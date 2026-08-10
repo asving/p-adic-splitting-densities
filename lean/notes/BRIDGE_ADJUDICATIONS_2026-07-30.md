@@ -15783,3 +15783,15 @@ not swept by R-7). The storm window has passed; the watchdog's single
 resume SPENT at 19:36 (wf_ed60bf55-51b: SG2 cached; T1-r1/T1-PE2/
 WFRAME-PE2/WI-PE2/T3 re-run — resumed units verify predecessor
 commits per the standing practice, never redo them).
+
+**STAND-DOWN (2026-08-10 ~19:45 UTC)** — the 19:36 resume of B25 died
+the same way (5/6 to repeated 529s inside ~8 min; SG2 cached-returned;
+no new checkpoints beyond 768c1f51/ee9a2d5f). TWO consecutive dead
+attempts on the same pending set ⇒ stand down per the storm rule. NO
+further resumes this session-turn; the next watchdog firing (or a
+calmer window / Asvin's word) revives via
+Workflow({scriptPath: workflows/scripts/box-wave-b25-wf_ed60bf55-51b.js,
+resumeFromRunId: "wf_ed60bf55-51b"}). Pending set unchanged: T1 r1
+(F-1 item-9 only — minors already landed) → T1 PE2; WI PE2 acceptance;
+WFRAME PE2 (skeleton committed, legs 2-3 owed); T3-CODEX composition.
+Everything durable is committed; the storm costs time, not work.
