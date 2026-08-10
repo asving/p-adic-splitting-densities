@@ -1352,3 +1352,74 @@ re-verified by prefix after this append; edit shape append-only;
 sealed artifacts and statement displays byte-untouched (the m1
 unification is a governing dated reading, zero edits to the three
 quoted sites).
+
+### Dated acceptance record (2026-08-10, post-PE6)
+
+**ACCEPTANCE 2/2 — GENTOW2 IS ACCEPTED.** PE6 came back CLEAN
+(0C/0G/1m; report `GENTOW2_passPE6_report.md` @ deba21b): the
+acceptance counter closed 1/2 -> **2/2** on two consecutive clean
+passes — PE5 @ 75923bc + PE6 @ deba21b — the note through the bar
+on its SECOND count (the PE3 clean was spent at the PE4 reset).
+The note is FROZEN as of this record: dated appends only;
+statement displays and sealed artifacts byte-fixed. The arc in one
+breath: seal -> PE1 -> r1 -> PE2 -> r2 -> PE3 CLEAN -> rider ->
+PE4 BROKE B-2 at the letters x depth contact (counter reset 0/2)
+-> r3 re-derived B'' -> PE5 CLEAN restart -> rider -> PE6 CLEAN.
+
+**PE6 [m-1] FOLD — the FIFTH consumption-list site named.** The
+post-PE5 rider's m1 unification above declared its governing
+reading "over the four quoted forms"; PE6 found a fifth occurrence
+un-named: the S6 direction-of-fit sentence (body L938), quoted:
+"The repo-side inputs — B-1 and [r3] the derived unit laws
+B′(3)–(5)/B″ (B-2 itself refuted and consumed nowhere) — enter
+only the bridge LEMMA GENTOW2-B". FOLD: the governing reading —
+**the S5 proof's corrected step consumes B′(3) + B″** — governs
+over FIVE quoted forms: the rider's four plus this S6 sentence
+(content identical to quoted form 1, the honesty box's
+"(3)–(5) + B″", and resolved identically by the unification).
+PE6's grep census pins the five list sites at body
+L365/L431/L535/L938/L1248, with the restated lemma's final
+per-height-iff sentence as B′(4)'s sole surviving consumer. Zero
+edits to the S6 sentence (byte-frozen).
+
+**w-DISCLOSURE DATED (bracket-riders; the three frozen sentences
+stay byte-untouched and each now carries the dated bracket
+below).** PE6's fresh route MEASURED w — the first w measurement
+in the corpus (runner `verification/openmath/gentow2_pe6_fresh.py`,
+seal ade1727; run-1 68/1 RED kept as committed with the disclosed
+verifier-instrument literal, diagnostic 72a3f29 / disclosure
+891fd96; run-2 GREEN 68/0 @ dfbc938). MEASURED DATA: w-avatar =
+z₁ (LD1, u₃ = 19), z₁² (LD3, u₃ = 37), z₂² (GA1, u₃ = 21),
+z₂ (GA3, u₃ = 41) — ≠ 1 at each of the 6 measured primes across
+the 4 frames, and u₃-DEPENDENT within each tower (both
+discrimination pairs fired: w-constant-per-tower and w ≡ 1 are
+killed on the measured record). The dated bracket, riding each of
+the three frozen "w not computed" sentences:
+
+* S5 honesty-box region (body L411–413), "not computed anywhere in
+  the corpus — see S5.1's re-scoped residue paragraph" —
+  [2026-08-10: now MEASURED at 4 frames, data above; ≠ 1 at each
+  measured prime].
+* S5.1 re-scoped residue paragraph (body L692–694), "an explicit
+  z₁, z₂-monomial, computable by a level-3 letter-formula-style
+  derivation but not computed anywhere in the corpus" —
+  [2026-08-10: measured (not derived) at 4 frames; the closed-form
+  letter derivation stays open].
+* S11 not-claim list (body L1279–1280), "no computation of w (a
+  level-3 letter-formula-style derivation, open)" — [2026-08-10:
+  the derivation stays open; the MEASUREMENT now exists — values
+  above, PE6 @ deba21b].
+
+Scope note (honest): PE6 measured w at 4 frames / 6 primes; the
+level-3 letter-formula derivation of w in closed form remains
+open, and the measured record does not decide w at unmeasured
+frames. GENTOW5's arc reads this data before its next pass (its
+w_i = 1-open clause carries the matching dated note; see that
+note's S3(a) post-PE6 bracket).
+
+BYTE-FREEZE: pre-append body md5 8fce60f8
+(8fce60f8992ab7b3964c5a65aec38cc5), 82,457 bytes (the post-PE5
+rider state, rider commit 188b894, unchanged through PE6),
+re-verified by prefix after this append; edit shape append-only;
+the five consumption-list sites, the three w-sentences, and the
+sealed artifacts byte-untouched.
