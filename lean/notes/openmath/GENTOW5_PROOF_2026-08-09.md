@@ -560,6 +560,21 @@ mod e_{i+1} between Phi_i-slots and mod ehat_{i+1} overall.
 (l_{i+1}-1)u_{i+1} + e...*bound_i, every K_{i+1}-residue at height k
 is realized by some C with deg < D_{i+1} (inverse-twisted digits).
 
+[acceptance fold 2026-08-10 (PE5-F-3): the bound display's truncated
+token "e..." reads e_{i+1} — bound_{i+1} = (l_{i+1}-1)u_{i+1} +
+e_{i+1}*bound_i. Re-derived at the primary source, not restored from
+memory: ANNEX-THEOREM R1-c displays the recursion bound_{i+1} :=
+(L_i - 1)u_i + l_i*bound_i with L_i = l_i g_i the stage size and l_i
+the ramification multiplier (HE7_PROOF ANNEX R; its arithmetic line
+m_0 = (k - s_0 u_i)/l_i >= (g_i - 1)u_i + bound_i), and in this
+lemma's tower names the step-(1) height split is k = e_{i+1}*m +
+b*u_{i+1} with b <= l_{i+1} - 1 (slots b < e_{i+1}f_{i+1}), so the
+slot term saturates at (l_{i+1}-1)u_{i+1} and the level-i threshold
+scales by the ramification factor e_{i+1}. Grep-scoped this fold:
+bound_i appears in this note only at this statement display — no
+numeric consumption site found (the proof's own remark: the bound
+arithmetic never sees residues).]
+
 **Proof: ANNEX-THEOREM R1-b/R1-c's proofs, re-based.** The HE7
 ANNEX R proofs consume exactly four clauses of their level-i datum:
 (a) values exact one level down ((SLOT_{i-1}), our induction
@@ -725,6 +740,43 @@ terminal inductive valuation nu_r (the MacLane chain mu_0 -(x,
 lam_1)-> mu_1 -(Phi_1, lam_2)-> ... -> mu_r = nu_r in FGMN
 coordinates, the GENTOW2 S2 dictionary at every level). Then, by
 induction on i < r:
+
+[acceptance fold 2026-08-10 (PE5-F-1) — INDEX-0 SCOPE for
+(a)/(b)/(d), completing the post-PE4 rider's (c)/(e) scoping to the
+clause list. The blanket header's index i = 0 is claimed for (d)
+ONLY; (a) and (b), like (c) and (e), are claimed at induction
+indices i >= 1. Per clause, derived from this note's own displays:
+(a) at i = 0 is NOT claimed — its display dereferences w_0 =
+R_{1,kbar_0}(nhat_0(u_1)), and nhat_0 is not a DEF GENTOW5-1 object
+(the normalizer recursion bases at n1hat; nhat_i exists at i >= 1),
+so the twisted form is not well-formed at index 0. The index-0
+content — Phi_1 monic, prime, a key with its untwisted level-1
+residual — is the accepted chain DATUM, not this induction's
+output: Phi_1 := Phi' is the DEF-datum (S2.1 — so "keys Phi_1, ...,
+Phi_r built by THE RECIPE" reads honestly as Phi_2, ..., Phi_r
+recipe-built over the datum Phi_1; the recipe consumes nhat_i at
+i >= 1), carried with its S3.1/E3 invariants by the accepted T(b)'
+setting and placed in the MacLane chain by the GENTOW2 S2
+dictionary — the pin stack's accepted rungs i <= 2. (b) at i = 0 is
+NOT claimed by this proof (the (b)-cite enters through (a)'s
+certificate at the same index: Thm 6.3 consumes Phi_{i+1} in
+KP(nu_i) + prime, Cor 6.4 the non-equivalence step); its index-0
+instance reduces to the j = 1 leg — the one-sided level-0 read of
+Phi_1 at slope kappa_1 = u_1/e_1 = h/e_1 with the root clause
+v(x(xi)) = u_1/ehat_1 exact (Phi_0 read as x) and the residue class
+a psi_1-root, i.e. the P_1 clause of S2.1's node locus — and that
+content is the same accepted outer-stage datum (T(b)''s setting
+line: key Phi' with its S3.1/E3 invariants). (d) at i = 0 IS
+claimed and covered: its display is well-formed at index 0 (lift_1,
+dv_1, E_1 are DEF objects) and the instance is S1.4(ii)'s level-1
+rider — the S1.1-S1.3 argument one level down (GENHN-2 in place of
+GENHN-2', GENHN-4's landed layers in place of GENTOW-2's; accepted
+corpus). The index-0 entry locus T_1 stays unclaimed per the (c)
+rider below; the PE5 fresh route instantiated it TRUE at one frame
+(f4 = Phi_1^2 - 25x over p = 5: level-0 read one side of kappa_1 =
+1/2, residual (y-1)^2 = psi_1^2 mod 5, box at 5 = 2E_1 + 1 —
+gentow5_pe5_fresh.py, GREEN 40/0), so leaving it unclaimed costs
+the note nothing at the checked frame.]
 
 (a) [KEY CERTIFICATE, level-general — GT5-r2 RE-SCOPED (PE2 F-1):
 the realized residual is the w-TWISTED form] Phi_{i+1} is a key
@@ -915,6 +967,31 @@ provisos are now supplied:
   what remains not repo-DERIVABLE is a closed-form w_i-law at
   unmeasured frames/levels, so the pinned-key + twisted-residual
   statement stands unchanged.]
+  [acceptance fold 2026-08-10 (PE5-F-2) — the i = 1 line of the
+  level lists above (both run "at i = 2 ...; at i >= 3 ...",
+  silent at i = 1, the first index the header claims for (a)).
+  The i = 1 discharge, verified at source this fold
+  (GENTOW2_PROOF @ HEAD 33f8620): the level-1 instance of the
+  FGMN/repo residual dictionary is the ACCEPTED GENTOW2-A(c)
+  letter-formula content — its [r2] twist-aware form displays
+  FGMN's psi_2 = R_2(phi_3) = minpoly(z_2) (Cor 5.6(2)) as the
+  z_1-letter twist of the repo psi_2 = minpoly(eta_2) via S5.1's
+  LETTER FORMULA z_2 = eta_2 * z_1^{-floor(l_1 u_2/e_1)} (the
+  GENTOW2 R3-4 line fences the two psi_2 symbols), i.e. the two
+  level-2 letters differ by the FIXED unit z_1^{floor(l_1 u_2/e_1)}
+  in K_1^x — a per-grade, x_0-free fixed-letter-power unit of
+  exactly the species this discharge transports (a psi_2^{(u)}
+  with u a fixed z_1-letter power, the psi^{(w)} shape (a)@i=1
+  realizes); and the i = 1 KP-membership leg rides the
+  residual-free degree route, Lemma 5.3(1) [Q4] (the GENTOW2 [r1]
+  F4-cure: the lower key in KP(nu) by degree + reflexivity, no
+  residual computed). Grep-scoped this fold: no sentence of this
+  note instantiates the w_1 display against the letter formula
+  ("w_1" and "letter formula" have zero hits in the pre-fold
+  body), so this line is a citation completion at the accepted
+  source's form — an exponent-level tie of the w_1 display to the
+  letter formula is NOT claimed (no consumer on the record read
+  needs it).]
 With (B-1)/(B-2 as corrected), LEMMA GENTOW2-B's proof runs at
 level i on the pinned prescription: additivity (Cor 4.7(1) [Q8]) +
 eq (14) [Q7] give R_{nu_i}(Phi_{i+1}) = y^{f_{i+1}} - Sum c_t
