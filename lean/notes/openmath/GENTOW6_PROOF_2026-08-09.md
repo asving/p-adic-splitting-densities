@@ -1144,3 +1144,54 @@ PE2-F-1 brackets record the scope the r1 pin already established;
 the PE2-F-2 bracket corrects (a)'s codomain to what its own proof
 delivers, strengthening nothing downstream. PE3 = the acceptance
 attempt.
+
+### Dated acceptance record (2026-08-10, post-PE3)
+
+**GENTOW6 IS ACCEPTED 2/2** — passPE2 CLEAN (0 CRITICAL + 0 GAP +
+2 MINOR, GENTOW6_passPE2_report.md @ 161e8ce1; counter 0/2 -> 1/2)
+followed by passPE3 CLEAN (0 CRITICAL + 0 GAP + 1 MINOR,
+GENTOW6_passPE3_report.md @ ed5ed51f; counter 1/2 -> 2/2): two
+consecutive clean hostile passes, the standing acceptance bar.
+**THE NOTE IS FROZEN AT THIS RECORD: dated appends and dated
+brackets only; statement displays and sealed artifacts stay
+byte-untouched.**
+
+The arc in one breath: seal @ 59ea785/5fb8fd7 (2026-08-09;
+machine leg sealed-then-verdict GREEN 401/0) -> PE1 NOT CLEAN
+1C+1G+4m @ cd74ef6f -> r1 @ 3b6bf5ce (the theorem-head SCOPE PIN
+at f1 = 1 + the gauge annex + LEMMA GENTOW-6.4, the 𝒯-free cap
+lemma, prove-first) -> PE2 CLEAN 2m @ 161e8ce1 (first f1 = 2 /
+eta != 1 frames anywhere in this arc; the sealed-(c) boundary
+break predicted by the r1 pin measured from OUTSIDE) -> post-PE2
+rider @ e7a6b8c2/1194b1a4 (PE2-F-1 the two summary sites
+re-scoped to the pin; PE2-F-2 the 6.4(a) codomain corrected to
+what its own triangular display delivers, with the SHARPER
+condition n mod D2 != D2 − 1 and the new helper
+gentow6_rider_codomain.py GREEN 24/0) -> PE3 CLEAN 1m @ ed5ed51f
+(fresh route GREEN 61/0, 6/6 teeth: the FIRST gauge-live tie
+anywhere — Q3, Phi' = x² − 6, eta = 2, R_coh(f) = (T+1)²(T²+1)
+exact at the hand-derived wrap, with T-GAUGE killing the
+eta-blind read — plus the rider codomain at above-top counts 1
+and 5 and the first eta != 1 certificate row at the
+(0, e2f2−1) corner, height 21 = THETA_0 exact; run-1 RED kept, a
+verifier-side prereg slip). PE3's single minor (F-1, the stale
+"no machine contact" sentences) is folded at source in this
+round's companion commit, which also lands the 4.C ACCEPTANCE
+UPGRADE lines at the cap lemma's two dated conditionality points
+(GENTOW4 ACCEPTED 2/2 @ f0874ff9); the dated displays stay as
+arc history.
+
+BYTE-FREEZE LEDGER (this round): pre-fold body md5
+11b7b6b67f91aaf8bec1481a56f1a54a (1,088 lines) = the rider state
+@ 1194b1a4, the exact text passPE3 verified; the four fold/upgrade
+brackets landed insertions-only (+58/-0; prefix through the first
+insertion, L314, byte-identical, md5 8e30f26a; commit 15965106),
+giving post-fold body md5 6e0489fbcaff25bab8042bc8ec749bbd (1,146
+lines); this record is a PURE APPEND on that body, verified by
+prefix md5 after the append. Sealed artifacts byte-frozen at PE3
+(the six S6.4 md5s + rider artifacts re-verified there; five
+isolated re-runs GREEN, four bit-identical); no runner edited, no
+re-run this round.
+
+Grade after this record: **ACCEPTED 2/2**. Dated appends and
+dated brackets only from here.
