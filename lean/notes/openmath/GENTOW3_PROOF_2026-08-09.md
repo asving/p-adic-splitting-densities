@@ -309,12 +309,22 @@ p_j ≥ (mu2−j)E2 + 1; the threshold sits at Θ_j = (mu2−j)E2 + δ.
 Three regimes, all machine-anchored:
 
 * **δ = 1 (u2 = e2D'h + 1 — the PE1 geography).** Θ_j = the node
-  floor: the FIRST leaf height is already unfaithful. FAM-A5:
-  Θ_0 = 21; the PE1 instances' first divergence is 21 on each of
-  the three rows — the refuted dv2 = 21-vs-28/30 undercuts (and
-  the row-0 fake-21) are EXACTLY the criterion's first violation.
-  "Fails generically at leaf depth" is sharp here: no faithful
-  leaf band exists.
+  floor: (ii)'s faithful leaf band is EMPTY (width δ − 1 = 0), no
+  leaf height is criterion-protected, and at a coordinate carrying
+  (iv)'s certificate the key power's own shadow diverges at the
+  FIRST leaf height itself [GT3-r2: certificate-scoped; the
+  composed "the FIRST leaf height is already unfaithful" is
+  REFUTED as a per-member δ = 1 claim — S7.6]. FAM-A5 (certificate
+  machine-checked at j = 0): Θ_0 = 21; the PE1 instances' first
+  divergence is 21 on each of the three rows — the refuted
+  dv2 = 21-vs-28/30 undercuts (and the row-0 fake-21) are EXACTLY
+  the criterion's first violation. "Fails generically at leaf
+  depth" is sharp here in the BAND sense only: a Θ-reaching
+  decided leaf can still read faithfully when the discrepancy
+  digits it would consult vanish or sit off its hull (measured:
+  FR-M3, δ = 1, certificate cancelled at j = 0 — f = Phi2³ + 32
+  decides at pin 10 = Θ_0 with hulls and vertex digits identical
+  on both reads, PARI σ {(6,1)} on both routes — S7.6).
 * **δ ≥ 2.** A faithful leaf band of width δ − 1 exists:
   [(mu2−j)E2 + 1, Θ_j − 1]. FAM-A7 (δ = 3): pins 29 and 30 are
   decided LEAF reads on which shadow = honest with PARI-confirmed
@@ -326,11 +336,23 @@ Three regimes, all machine-anchored:
   T(b)'s stage algebra is retroactively EXACT there; its
   refutation was a statement about the x-ful genres.
 
-The count-law meaning: strata priced through shadow pins are
-mislabeled exactly on the members whose deciding heights reach
-Θ_j — at δ = 1 that is the entire leaf population (all three PE1
-σ-strata corrections), at δ ≥ 2 only the deeper tail, at x-free
-genres none.
+The count-law meaning [GT3-r2 rewrite: the composed biconditional
+("mislabeled exactly on … the entire leaf population") is REFUTED
+by measurement in both directions — S7.6]: strata priced through
+shadow pins can be corrupted ONLY on members with a consulted
+height ≥ Θ_j — (ii)'s one-sided law. At δ = 1 the node floor
+itself sits at Θ_j, so this protection excludes no leaf stratum;
+at δ ≥ 2 it protects the width-(δ−1) leaf band; at x-free genres
+the discrepancy is zero and nothing is corrupted. Reaching Θ_j is
+NECESSARY, not sufficient: actual mislabeling further needs the
+divergent digit PRESENT on the member and CONSULTED at the
+pricing granularity. Measured instances: the PE1-1/PE1-2 σ-strata
+corrections (shadow prices {(4,2)}/{(4,1)²} vs PARI {(8,1)}) and
+A7's first violation at 31. Measured non-instances: FR-M3's
+f = Phi2³ + 32 (decided AT Θ_0 = 10; hulls and vertex digits
+identical on both reads — faithful) and the S1 table's own PE1-0
+row (first divergence 21 = Θ_0, σ both {(8,1)} = parity luck —
+pin-corrupted, σ-stratum intact).
 
 ## S5. MACHINE LEG (sealed battery, two-commit discipline)
 
