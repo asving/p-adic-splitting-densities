@@ -166,11 +166,21 @@ class Frame(object):
         return a * self.e2 * self.h + b * self.u2
 
     def digits(self, f, wrong_slot=0):
-        """slot map: {(j,a,b): (coeff, slotdeg)}."""
+        """slot map on the FULL grid: {(j,a,b): (coeff, slotdeg)},
+        zero slots included (run-1 RED fix (ii): absent slots were
+        invisible to the diagonal scan)."""
+        nn = len(f) - 1
+        M = nn // self.D2
+        e2f2 = self.e2 * self.f2
+        devP = dev(f, self.PHI2)
+        devP += [[]] * (M + 1 - len(devP))
         out = {}
-        for j, C in enumerate(dev(f, self.PHI2)):
-            for b, B in enumerate(dev(C, self.PHI1)):
-                for a, c in enumerate(B):
+        for j, C in enumerate(devP):
+            devB = dev(C, self.PHI1)
+            devB += [[]] * (e2f2 - len(devB))
+            for b, B in enumerate(devB):
+                Bp = list(B) + [0] * (self.D1 - len(B))
+                for a, c in enumerate(Bp):
                     sd = j * self.D2 + b * self.D1 + a + wrong_slot
                     out[(j, a, b)] = (c, sd)
         return out
@@ -192,7 +202,8 @@ class Frame(object):
 def build_frames():
     # FRAME-P (partial, p=3)
     PHI1 = [-3, 0, 1]
-    PHI2 = padd(pmul(PHI1, PHI1), [9, -9])          # Phi'^2 - 9x
+    PHI2 = padd(pmul(PHI1, PHI1), [0, -9])          # Phi'^2 - 9x
+    # (run-1 RED fix (i): the literal [9,-9] had built Phi'^2-9x+9)
     fS = padd(pmul(PHI2, PHI2), pmul([81], PHI1))    # Phi2^2 + 81*Phi'
     f = pmul(fS, padd(PHI1, [-27]))                  # * (Phi' - 27)
     FP = Frame('FRAME-P', 3, PHI1, 1, 2, 2, 1, 5, PHI2,

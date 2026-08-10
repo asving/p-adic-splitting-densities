@@ -1,0 +1,5 @@
+--- FRAME-P: deg f = 10, D2 = 4, c_g = 5, pins [26, 16, 5]
+--- FRAME-P2: deg f = 10, D2 = 4, c_g = 3, pins [16, None, 3]
+--- FRAME-F: deg f = 8, D2 = 4, c_g = 0, pins [13, None, 0]
+teeth: T-CAP fired x3, T-TRI fired x28
+=== VERDICT: GREEN -- 303 checks, 0 violations ===

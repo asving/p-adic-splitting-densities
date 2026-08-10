@@ -901,12 +901,28 @@ P-E VAC (the F-1 vacuity inequality 2(e1−1) < e1·f1 scanned over
 the (e1, f1) box [1..12]x[2..12], enumerative). Teeth: T-TRI (a
 wrong slot-degree formula must fail P-A's diagonal), T-CAP (a
 mutant asserting band-3 stability must be killed by P-D).
-**RESULTS: PENDING — filled at the verdict commit from the
-artifacts (runner sealed first with hand-derived preregistered
-pins in the docstring: FRAME-P (p_0, p_2) = (26, 5) with p_0 =
-2E2 + 1 + c_g and p_2 = c_g = 5; FRAME-P2 (16, 3); FRAME-F
-(13, 0); undercut target = e1e2·N exactly, below-cap pins held on
-the same lift).**
+**RESULTS (verdict commit; seal 14329683, run-1 RED kept at
+e803c21d): run 2 GREEN — 303 checks, 0 violations, 2/2 teeth
+(T-TRI x28, T-CAP x3), exit 0; isolated re-run BIT-IDENTICAL.**
+Artifact: `gentow6_r1_caplemma_output.txt`; md5s in S6.4. Run 1
+RED (303/34, artifact kept: gentow6_r1_caplemma_output_run1_RED.
+txt) = two INSTRUMENT defects, both hand-traced before repair, NO
+prediction changed: (i) a FRAME-P key literal built Phi'^2−9x+9;
+(ii) the digit dict omitted zero slots, blinding the TRI diagonal
+scan to perturbations that populate an absent slot — the hand
+trace at FRAME-F d = 2 showed the LEMMA's diagonal holding
+exactly (slot (0,0,1) digit 0 -> 1 = eps) while the dict lacked
+the key. Run-2 highlights, each preregistered: TRI diagonal exact
+at every scanned degree x eps on all three frames (incl. the
+partial-side tail slots above mu2*·D2); window congruence and
+in-window digit stability on every lift; pins (26, 16, 5) at
+FRAME-P (p_0 = 2E2+1+c_g, p_2 = c_g — the hull pins through the
+projection) and (16, —, 3) / (13, —, 0) at FRAME-P2/F, all stable
+below the cap; the undercut lift moved p_0 to EXACTLY e1e2·N
+(24/12/12) on each frame while every below-cap pin held; the
+vacuity inequality 2(e1−1) < e1·f1 passed at all 132 scanned
+(e1, f1) pairs, f1 >= 2. LEMMA GENTOW-6.4's checkable faces hold
+at two partial-side members and one 𝒯-consistency member.
 
 ### S6.3 MINOR REPAIRS + THE F-4 CLOSURE RECORD
 
@@ -950,8 +966,12 @@ gentow6_checks.py 121e5c4a95a19692db7910b9ffedfd6e ·
 gentow6_checks_output.txt 1bcb950618de39f26fe8e0c298abb783 ·
 gentow6_pe1_fresh.py 59fe76cefd36e4ffc8688adfd8e5f01e ·
 gentow6_pe1_fresh_output.txt 9de61325ef9b07dd2f52954d9d3e3f12.
-New r1 artifacts (this round): gentow6_r1_caplemma.py +
-gentow6_r1_caplemma_output.txt — md5s recorded here at the verdict
-commit: PENDING.
+New r1 artifacts (this round): gentow6_r1_caplemma.py md5
+bf953a8ff0ef925d5be711fbbe60a418 (sealed 640b31ff at 14329683;
+post-run-1 instrument repair disclosed in S6.2 and in the RED
+commit e803c21d) · gentow6_r1_caplemma_output.txt md5
+fa9d7bf8cf2975539df63c4c166031d7 (GREEN 303/0, exit 0, isolated
+re-run bit-identical) · gentow6_r1_caplemma_output_run1_RED.txt
+(the kept RED artifact).
 
 **GRADE AFTER r1: 0/2 (unchanged).** The arc resumes at PE2.
