@@ -14754,3 +14754,20 @@ chain, both exact on dual routes. GAUGE-SEAM TALLY: 4 notes
 timing-race mechanism, every content-survival via wrap-immunity of
 valuation-level quantities — the corpus's gauge structure is now
 the best-audited thing in it.
+
+---
+
+## B9 FOLDED (w03g8ks3h, 3/3): GENTOW2 r3 (B-2 flipped + NEW LEMMA B″ PROVED: u(β_t) = ϑ(t)·w^{f₃−t}, the grade-variation IS the repo cocycle) · GENTOW5 r1 (the general level-i ϑ recursion derived; HE7 pin folded to 2/2) · GENTOW1 PE2 CLEAN → 1/2 (pin-straddle tooth; FIRST μ₂=3 contact; the verifier's own RED honestly promoted to a load-bearing demonstration) — B10: GENTOW1 rider → PE3 (acceptance attempt) + GENTOW2 PE5 + GENTOW5 PE2 — 2026-08-10
+
+The B″ adjudication is the wave's mathematical dividend: the unit
+family that broke the acceptance is now a PROVED formula (the
+n̂₂-cocycle, letter-valued by a γ-calculus, times ONE cross-frame
+unit w that is consumer-invisible); the "13 letter-dead witnesses"
+history stands as correctly-disclosed. GENTOW5's corrected recipe
+displays ϑ_{i,s} := res(n̂_i(u_{i+1})^s / n̂_i(su_{i+1})) with the
+erratum's η^{W} recovered at i=1 — the gauge structure is now ONE
+recursion at every level. GENTOW1's S2 Step-5 value-LIVE site
+re-derived at the corrected key (the cocycle floor identity makes
+every term carry the SAME unit — the pin substantive, not
+cosmetic). Board: HETOW 2/2 ✓ · GENTOW1 1/2 · GENTOW2 0/2 (reset,
+r3 done) · GENTOW5 0/2 (r1 done) · GENTOW3/4/6 arcs still to open.
