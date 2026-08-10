@@ -843,3 +843,133 @@ BYTE-FREEZE: pre-append body md5 06ee4edb
 re-verified by prefix after this append; edit shape append-only;
 the S3 display sentence itself stays byte-frozen — this dated
 correction GOVERNS its reading.
+
+### Dated corrections (2026-08-10, TOWERRAT-R2a/b/c + F-4 — the
+### post-acceptance decorrelated ratification batch, applied)
+
+*Provenance: the Codex ratification run on the frozen accepted note
+(`CODEX_TOWERRAT_2026-08-10.md` §S3, session
+019fe98a-19ed-7400-8b02-46117f9dd15b, outcome CHALLENGE; the two
+Codex-CRITICALs adjudicated GAP-with-repair — no CONCLUSION of
+GENTOW-1/2/5 was refuted). The 2/2 acceptance stands; the body is
+BYTE-FROZEN; each correction below GOVERNS the reading of its
+quoted display. Each repair is re-derived from this note's own
+Steps. Machine leg: `gentow1_r2_units.py` (md5 b625e5be, output
+bcb27efd) — GREEN, 41 checks, 14 gp jobs, 0 violations.*
+
+**R2a (LEMMA GENTOW-1(b): the free-count display gains its clip).**
+Sealed display, quoted: "per window N the free-O-digit count is
+Sum_{j,a,b} (N − floor(j,a,b))". **Display of record:**
+
+    free-O-digit count per window N = Σ_{j,a,b} max(0, N − floor(j,a,b)).
+
+Re-derivation from (b)'s own fibration: the slot (j,a,b) string's
+in-window digits sit at v ∈ {0,…,N−1} and are free exactly at
+v ≥ floor(j,a,b), so the count is #{v : floor ≤ v < N} =
+max(0, N − floor) — never negative; the sealed form is false
+whenever N < floor at some slot. Counter-instance (re-derived, in
+scope): μ₂ = 2, e₁ = f₁ = e₂ = 1, f₂ = 2, h = 1, u₂ = 2 (node
+floor 2 > e₂D′h = 1 ✓, gcd ✓): (a)'s display gives floors
+(9, 7, 5, 3); at N = 1 the sealed sum is −20 while the budget box
+mod π is the single all-zero string — 0 free digits, the clipped
+value (runner row UA-codex-N1). At the committed battery rows the
+clip is INACTIVE and the values are unchanged: FAM-A5 (floors
+[6,5,4,4 | 3,3,2,1]) and FAM-B ([7,6,5,5 | 4,3,2,2]), both
+re-derived from (a)'s display and equal to the S1 tables, satisfy
+Σ(N − floor) = Σ max(0, N − floor) at N = maxfloor and
+maxfloor + 2 (rows UA-A5/UA-B-clip-inactive), diverging at N = 3
+(rows UA-*-clip-active-N3). CONSUMER RE-SCOPE: LEMMA GENTOW-5(e)'s
+sentence "the budget/count display of GENTOW-1(b) is exact per
+window" reads AT the clipped display (equivalently: exact as
+sealed for N ≥ max floor).
+
+**R2b (LEMMA GENTOW-2(iii) layer 3: ONTO by cardinality — the two
+finite sets, defined; the counting lemma, stated).** The sealed
+layer-3 sentence asserted "onto by cardinality" with neither set
+defined. Definitions of record, per window N (all data mod π^N),
+for the event (λ, s) with H_j := (μ₂ − j)λ:
+
+* **DOM_N** (the event slice at the OLD key Φ₂): per coordinate
+  j < μ₂, in-window digits at heights ≤ H_j are ZERO except the
+  height-H_j K₂-digit, which EQUALS the prescribed
+  binom(μ₂,j)(−s̄)^{μ₂−j} in the coherent normalization (a ZERO
+  prescription where p | binom(μ₂,j)); heights > H_j free. (The
+  entry floors sit at heights ≤ (μ₂−j)E₂ < H_j since λ > E₂, so
+  𝒯-membership is subsumed.)
+* **COD_N** (the λ-floored node box at the NEW key Φ₂⁺): per
+  coordinate j, in-window digits at heights ≤ H_j ZERO; free above.
+
+**Counting lemma.** |DOM_N| = |COD_N| =
+q^{Σ_{j,a,b} max(0, N − floor_λ(j,a,b))}, with floor_λ(j,a,b) :=
+#{v ≥ 0 : e₁e₂v + w(a,b) ≤ H_j} — the SAME clipped exponent on
+both sides, because the free positions are the same height set
+(heights > H_j, in-window) in both frames, and DOM_N's prescribed
+data are FIXED values, not free digits. ONTO, properly: the
+triangular map is height-preserving (layer 2: new digit = old
+digit + strictly-lower-height data), hence well-defined on window
+classes; injective (unit diagonal); maps DOM_N into COD_N (the
+kills, (ii)); and an injection between finite sets of equal
+cardinality is a bijection. The full-string bijection is the
+inverse limit of the window bijections over N. Machine contact
+(the clause's first contact by ENUMERATION, not counting): the
+A5-R1 battery row (λ = 13, s = 1, Φ₂⁺ = Φ₂ − 4Φ′, N = 4) — 16
+DOM members map to 16 DISTINCT window images covering the COD box
+EXACTLY (runner rows UB-count-16/UB-onto).
+
+**R2c (LEMMA GENTOW-5(a): the cap clause restated THREE-BAND).**
+Sealed clause, quoted: "a computed dv2-value is LIFT-STABLE iff
+< e1e2*N" — its only-if direction contradicts the same clause's
+first-band sentence (value exact AT the cap). **Statement of
+record (supersedes the iff; each band derived from the clause's
+own mechanisms):**
+
+* **BAND 1 (m < e₁e₂N):** every computed dv₂-value m is
+  LIFT-STABLE, value and deciding digits — in-window digits agree
+  across lifts ((e) triangularity) and every unread digit sits at
+  height ≥ e₁e₂N > m: it can neither move nor tie the value.
+* **BAND 2 (m = e₁e₂N):** when the height-m readable residue has a
+  nonzero component on a flavor complementary to the unread ones
+  (available at f₁f₂ ≥ 2), the VALUE m is exact for every lift
+  (GENHN-2′ tower-basis independence) while the full K₂-residue is
+  NOT determined (the unread flavors are free); at f₁f₂ = 1 no
+  stability is claimed. An at-cap value is thus stable WITHOUT
+  being < e₁e₂N — the sealed iff fails exactly here, and the
+  sealed proof phrase "undercutting every computed value ≥ e₁e₂N"
+  is re-scoped to STRICT >: at equality the unread digit TIES.
+* **BAND 3 (m > e₁e₂N):** value-unstable — an unread (0,0)-class
+  digit at v = N undercuts; conservative drain, no trichotomy
+  claimed (as the sealed clause already said).
+
+No proof content changes: the sealed first-band paragraph already
+carried bands 1–2; consumers ((c)'s congruence, (d)'s carries, the
+readable-event consultation) ride heights and band-1/2
+residue-determinacy as before. Machine contact per band at FAM-B
+(N = 4, cap = 8; runner U-C): band 1 — value 7 stable across six
+𝒯-preserving lifts (slot-arithmetic AND PARI nfeltval, rows
+UC-BAND1-*); band 2 — value 8 = cap exact across the six lifts
+while the height-8 (0,0)-flavor digit flips between lifts L0 and
+LC1-1 (rows UC-BAND2-*: value exact, residue undetermined — the
+sealed iff's machine counter-instance); band 3 — values 14 vs 11
+across two lifts (rows UC-BAND3-*). Battery cross-cites: the
+sealed WINDOW rows (P-7, below-cap) sit in band 1; T-UNDERCUT ×2
+sit in band 3.
+
+**F-4 (GENTOW-2(i) proof wording: "constant term untouched").**
+Sealed sentence, quoted: "strictly above the x-side through
+(D2, 0), constant term untouched". The constant COEFFICIENT can
+change — the note's own B-R2 row has lift(s;λ) = 16 + 4xΦ′, so
+Φ₂⁺ = Φ₂ − lift shifts the constant by −16. Reading of record:
+what is untouched is the constant term's X-SIDE DIGIT (its
+exact-side initial form): what's x-degree-0 contribution sits at
+dv₂-height λ > E₂ ≥ (the x-side height at abscissa 0), strictly
+above the side, so the side through (D₂, 0) and its side digits
+are unchanged — which is all the (i)-invariance argument consumes
+(at B-R2: constant −8 − 16 = −24; the exact-height-6 side digit is
+untouched, the −16 sits at height 8).
+
+BYTE-FREEZE: pre-append body md5 29908cb4
+(29908cb47cfc4e8a82ae8adad23889d3) = commit 4e81a57, 46,567 bytes,
+re-verified by prefix after this append; edit shape append-only;
+statement displays of LEMMA GENTOW-1/2/5 and COR GENTOW-1.1 and
+all sealed artifacts byte-untouched — these corrections GOVERN
+their quoted sentences' readings.
