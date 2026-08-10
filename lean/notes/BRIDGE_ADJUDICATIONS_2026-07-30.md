@@ -15025,3 +15025,26 @@ Board: HETOW 2/2 ✓ (challenge discharged) · GENTOW1 2/2 ✓ (R2 landed)
 GENTOW3 0/2 (r2 = the certificate-scoping pass → PE3) · GENTOW4/6
 arcs open at B14 — B14: GENTOW5 rider→PE5 + GENTOW3 r2→PE3 + GENTOW4
 PE1 + GENTOW6 PE1.
+
+**B14 DISPATCHED (2026-08-10, wf_0dd1255b-dbc)** — recorded
+post-dispatch. Six agents in four chains: (1) GENTOW5 rider (the two
+PE4 minors: the index-0 scope sentence derived honest; the f32 dev
+completed to canonical — minors-only, counter HOLDS at 1/2) → GENTOW5
+passPE5, THE ACCEPTANCE ATTEMPT (surfaces: the four-repair-round system
+as one text; the (c)↔GENTOW-1-three-band citation seam — R2c landed
+after r3; fresh route candidates: a full odd-p proper-stage tower, a
+μ₂=3 entry, the index-0 scope stress). (2) GENTOW3 r2 (the
+certificate-scoping pass on the three refuted attainment sentences +
+the (iv) touched-coordinates pin, re-derived from the (iv) proof +
+BOX-1, checked at both refuting instances AND at a genuine attainment
+row for non-vacuity) → GENTOW3 passPE3 (surfaces: the scoping
+re-derived; the count-law consumers under the new reading; fresh route
+candidates: δ>5, a certificate-live interior-j frame, e₂>1). (3)
+GENTOW4 passPE1 — the arc opens (partial sides via bouquet + block
+projection; charged with the six sibling lessons incl. the gauge seam
+6/6, ψ^{(w)}, certificates, stage conflation). (4) GENTOW6 passPE1 —
+the last arc opens (the mixed-side tie cite verified against the FGMN
+PDF; CERT-TOP unit-square; the three count-grade boxes' fences audited;
+the PE6 walk's "twist absorbed as unit rescaling" claim re-verified at
+the displays). All seven tower arcs will then be open or closed —
+none unopened.
