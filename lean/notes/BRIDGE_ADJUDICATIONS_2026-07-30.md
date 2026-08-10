@@ -15444,3 +15444,17 @@ launches (plan-independent): every named statement in the 26-text
 corpus md5-pinned with a --check tripwire; the "a simplification
 never weakens a statement" enforcement instrument. S-1 (the
 gauge-cocycle unification) holds for RUN F's plan verdict.
+
+**STORM CASUALTY (2026-08-10 ~09:20 UTC, confirmed live by Asvin: "api
+error wave incoming!")** — B20 (wf_58636481-058) killed 4/4 by repeated
+529s ~4 min in, before first checkpoints (no partial commits; nothing
+cached). The storm also took the harness Bash classifier down at ~09:27
+(one ledger write lost and retried). PENDING SET, priority order: (1)
+GENTOW6-BOXES r1 → PE2, (2) Codex collect-A + runs B–F (RUN A's log is
+safe on disk at /tmp/towerrat2_runA_rl1786348261.log, 151,962 B), (3)
+S-0 statement ledger. DECISION: the single resume is HELD rather than
+spent into the storm peak (classifier outage = the storm is active
+now); the bi-hourly watchdog revives from this line via
+Workflow({scriptPath: workflows/scripts/box-wave-b20-wf_58636481-058.js,
+resumeFromRunId: "wf_58636481-058"}). If the watchdog's resume also
+dies: stand down, next firing.
