@@ -243,3 +243,106 @@ dissolves. Probe rides SG-3's battery.
 
 **Honesty line.** None of SG-1–4 is owed by the accepted corpus; each is a bet
 that could shorten stage two. The blueprint schedules probes, not commitments.
+
+---
+
+## 4. LEAN-READINESS NOTES (per target; stage-two shapes)
+
+Standing frame: stage two = Lean modulo literature (declared axioms with
+faithfulness entries per docs/AXIOM_FAITHFULNESS.md), arXiv:2212.00294 EXCLUDED
+everywhere. Three kernel-checked seed files are banked
+(verification/openmath/{ja_pe6,w2_pe5,wm_pe9}_lean_leg.lean). The capstone
+pattern to imitate: MontesV2's abstract spine + real instance (abstract data
+structure, gates, instance-keyed non-vacuity witnesses).
+
+- **T1 GAUGE-COCYCLE.** Best Lean shape in the batch: an algebraic identity over
+  an abstract graded unit structure (commutative ring + distinguished unit +
+  ⌊·⌋ exponent arithmetic over ℤ/ℚ — omega/ring territory), stated as a cocycle
+  law, no literature cite. Formalize the LEMMA, not the seven annexes; each
+  annex's Lean form is `GaugeCocycle.instance_at (params)`.
+- **T2 σ-LADDER MASTER.** The carrier abstraction IS the Lean design: a
+  structure `LadderCarrier` (stage ring, sides, residuals, test family,
+  termination measure) + one theorem, instances for base/composed carriers.
+  Highest design risk → write the Lean signature AT COMPOSE TIME (the informal
+  statement and the structure should be born together; that is the readiness
+  test). No new cite: HE3 §S0 records the Montes/GMN order-≥2 cite deliberately
+  NOT consumed (resultant identity + ultrametric read suffice).
+- **T3 COCYCLE-TELESCOPE.** Finset.prod telescope over a height ladder —
+  mechanical Lean once stated; no cite.
+- **T4 CERTIFICATE WITNESS.** Digit/threshold combinatorics over ℕ (Θ_j
+  arithmetic, touched-coordinate predicate is decidable) — decide/omega
+  friendly; no cite. Formalizing this early also fences the four count-grade
+  sub-boxes as explicit hypotheses rather than prose residues.
+- **T5 w-FRAME.** Definitional; one structure + the measured record as
+  instance-keyed facts. The w = 1 open question becomes a named hypothesis, the
+  honest-`sorry` analogue at statement level.
+- **Load-bearing literature (enumerated).** FGMN Thm 6.3 + Cor 6.4 (GENTOW2's
+  item 6α; PDF-verified cite — the ONE new axiom candidate stage two must
+  declare, with a faithfulness entry and semantic-guardian pass per the axiom
+  policy). Standing allowed axioms: GMN index theorem, Denef–Igusa cell
+  recursion (measure route). NOT allowed: 2212.00294 (excluded by directive);
+  the retired DCD tame-FE axiom stays a hypothesis (htameFE).
+- **Ordering consequence.** T1/T3/T4 are Lean-cheap and revision-hot — compress
+  first, formalize early. T2 is Lean-expensive but is the difference between
+  formalizing 4 bridge layers and 1 theorem: its compose-time Lean signature is
+  the cheapest insurance in the plan. SG-2, if the probe lands, cuts ~6,900
+  lines of junction notes from stage-two scope — highest leverage, most
+  uncertain.
+
+---
+
+## 5. THE CAMPAIGN PLAN (units, order, verification protocol)
+
+### 5.1 Unit list (sizes = composer sessions; arcs per the standing bar)
+
+| Unit | Content | Size | Depends on |
+|---|---|---|---|
+| S-0 | STATEMENT LEDGER: extract every named theorem/lemma statement of the 26 texts, md5 + commit pin per statement — the byte-tracking instrument | 1 session, machine | — |
+| S-1 | T1 GAUGE-COCYCLE: compose + sealed battery + 2-clean arc + 7 consumption checks | 1 composer + ~3 arc sessions | S-0 |
+| S-2 | T3 COCYCLE-TELESCOPE: compose + arc + 3 consumption checks | 1 + 2 | S-0 (S-1 helpful, not gating) |
+| S-3 | T4 CERTIFICATE WITNESS: compose + arc + 2 consumption checks | 1 + 2 | S-0 |
+| S-4 | T5 w-FRAME note (folds the owed w≠1 as-of note) | 1 + 1 | S-1 (the frame) |
+| S-5 | T2 design probe: carrier signature draft + Codex plan-level adversarial pass + Lean signature sketch | 1 session | S-0 |
+| S-6 | T2 σ-LADDER MASTER: compose + arc + 5 consumption checks | 2 + 3 | S-5 verdict |
+| S-7 | SG-2 probe: trace GENHN-4 against WELDMASTER M0–M4 + JD0 | 1 session | — |
+| S-8 | SG-3/SG-4 probe battery (examples-first, sealed two-commit) | 1 + run | S-1 |
+
+### 5.2 Order
+
+S-0 first (everything keys off it). Then S-1 (rank 1, and its frame feeds
+S-4/S-8). S-2/S-3 next, sequential per the fleet throttle. S-5 early and cheap —
+its verdict gates the biggest unit (S-6). S-7 anytime (independent, one
+session). S-8 after S-1. Second-generation composition (beyond probes) is NOT
+scheduled: it enters only on a probe verdict, re-ranked by this section's
+criterion.
+
+### 5.3 Verification protocol (the non-negotiables)
+
+1. **Compressed proofs re-enter the 2-clean bar.** Every S-unit note takes the
+   full hostile arc: two consecutive clean fresh-context passes, model-diverse
+   verifiers, fresh route per pass, findings → minimal repair → counter resets.
+2. **Sealed instruments, two-commit.** Each battery: runner + preregistered
+   predictions/teeth committed BEFORE the run; verdict from the artifacts.
+   Regression legs re-run the absorbed notes' committed frames unmodified.
+3. **A simplification NEVER weakens a statement.** For each absorbed argument, a
+   CONSUMPTION CHECK: display "new lemma ⟹ absorbed statement," where the
+   absorbed statement is byte-identical to the accepted text per the S-0 ledger
+   (md5 match required). A consumption check failing = the unit is wrong, not
+   the corpus.
+4. **Accepted texts stay byte-frozen.** Compression lands as NEW notes; the
+   accepted notes get dated appends only ("absorbed by S-k as instance …"),
+   after the S-unit is itself accepted 2/2.
+5. **Record rule.** Enumerative/pattern-scoped record sentences only; counts
+   with unit and commit; evidence-class labels on cross-note quotes.
+6. **Grade vocabulary.** An S-unit before its arc closes is attempt grade; the
+   corpus milestone ("accepted-text-complete") is NOT restated as covering the
+   new notes until each is accepted.
+
+### 5.4 What stage two consumes from this campaign
+
+The Lean blueprint (stage two's first unit) keys off the POST-compression
+corpus: the S-0 ledger + accepted S-units replace per-note formalization
+targets wherever a consumption check landed. If only S-1/S-2/S-3 land, stage
+two already drops ~12 per-note argument sites; if S-6 lands, the σ-chain
+formalizes as one theorem + instances; if S-7's probe lands, the junction notes
+leave the load-bearing set.
