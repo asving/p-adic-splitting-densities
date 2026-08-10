@@ -5,6 +5,25 @@
 BOX-CLOSURE campaign wave B1. Grade target 0/2 (attempt; hostile arc
 owed).**
 
+**[ARC — passPE1 2026-08-09: NOT CLEAN, 1 CRITICAL + 2 GAP + 3 MINOR
+(GENTOW5_passPE1_report.md @ 0160b94); counter stays 0/2. GT5-r1
+repair round 2026-08-10 (this commit series): F-1 the dated GAUGE PIN
+on DEF GENTOW5-1's key recipe — khat_t := lift_i(c_t ·
+vartheta_{i,f_{i+1}-t}; ·), the level-i telescope-twist form derived
+from the level-2 erratum (GENHN 59c1966 + HETOW [r1]; GENTOW1
+[GT1-r1] precedent), machine-verified at the PE1 fresh frame FR-1
+(S2.1 pin); F-2 S3(a)'s (B-2) leg re-based on GENTOW2-B'(5)'s true
+transformation law (the y -> eps*y fallback is deleted-as-false at
+its source; B-2 on-the-nose is machine-REFUTED at letter-live grades,
+GENTOW2 PE4 @ 2f95be6; GENTOW2 r3 cocycle flip IN-FLIGHT at this
+commit); F-3 LEMMA GENTOW5-D's top-grid weight DEFINED (E-part = E_i)
+with strictness restricted to interior carries (the i = 2 instance
+now matches GENTOW1 Step 0 verbatim); F-4 the HE7 ANNEX R pin folded
+to ACCEPTED 2/2 (a472155; orchestrator-authorized, ledger B8
+87a7b61); F-5/F-6 instrument-strength + wording disclosures. Repair
+record S7; sealed artifacts BYTE-FROZEN. Grade stays 0/2; PE2
+next.]**
+
 CHARGE: (1) PROVE or box-with-obstruction GENTOW-BOX-1 — LEMMA
 GENTOW-2 layer 1 at general mu2 (the composed graded frame;
 GENTOW1_PROOF S3/S6). (2) THE LEVEL-r LADDER GRAMMAR: the normalizer
@@ -330,18 +349,65 @@ K_0 := F_Q, K_i := F_{Q^{f_1...f_i}}.
   realizing c in the coherent normalization (deg < D_i always);
   at i = 2 this is GENTOW-2's lift(s; m).
 
-* **THE COMPOSED KEY RECIPE (the charge's display).** Given stage
-  data (e_{i+1}, f_{i+1}) and monic irreducible psi_{i+1} =
-  y^{f_{i+1}} - Sum_{t<f_{i+1}} c_t y^t over K_i with c_0 != 0:
+* **THE COMPOSED KEY RECIPE (the charge's display). [GT5-r1 GAUGE
+  PIN — the governing pin of the r1 round; PE1 F-1 CRITICAL].**
+  Given stage data (e_{i+1}, f_{i+1}) and monic irreducible
+  psi_{i+1} = y^{f_{i+1}} - Sum_{t<f_{i+1}} c_t y^t over K_i with
+  c_0 != 0:
 
       Phi_{i+1} := Phi_i^{e_{i+1} f_{i+1}}
                    - Sum_{t < f_{i+1}} khat_t * Phi_i^{e_{i+1} t},
-      khat_t := lift_i(c_t; u_{i+1}(f_{i+1} - t))   (0 if c_t = 0),
+      khat_t := lift_i(c_t * vartheta_{i, f_{i+1}-t};
+                       u_{i+1}(f_{i+1} - t))        (0 if c_t = 0),
 
-  monic of degree D_{i+1}; every side term at dv_{i+1}-height
+  where vartheta_{i,s} := res(nhat_i(u_{i+1})^s / nhat_i(s*u_{i+1}))
+  in K_i^x is the FIXED telescope unit of the tau_i-cocycle (S1.2's
+  vartheta and S2.3 step (3), run at level i and heights multiples
+  of u_{i+1}): vartheta_{i,0} = vartheta_{i,1} = 1,
+  vartheta_{i,s+1} = vartheta_{i,s} * res(tau_i(s*u_{i+1}, u_{i+1})).
+  [GT5-r1 derivation, NOT a transcription. Why the twist: grouping
+  the recipe in Phi_i-slots, the slot-t MULTIPLICATIVE residual
+  coefficient (S1.2's convention — the one the side residual and
+  FGMN's R-operators read) is res(khat_t / nhat_i(u_{i+1})^{f-t}) =
+  digit(khat_t) * res(nhat_i((f-t)u_{i+1}) / nhat_i(u_{i+1})^{f-t})
+  = digit(khat_t) * vartheta_{i,f-t}^{-1} (f := f_{i+1}); for that
+  coefficient to equal psi_{i+1}'s c_t, the prescribed COHERENT
+  digit must be c_t * vartheta_{i,f-t} — LEMMA GENTOW5-A1's
+  dictionary gamma = c * vartheta, applied in the BUILDING
+  direction. The plain lift lift_i(c_t; ·) is the GAUGE-NAIVE form:
+  its multiplicative coefficient is c_t * vartheta^{-1}, wrong
+  wherever the letters are live. Level-2 recovery: n1hat monomials
+  are pi^a x^{i0}; multiplying s copies of n1hat(u_2) accumulates
+  x-exponent s*i(u_2), reduced to ladder range by
+  floor(s*i(u_2)/e1) x-wraps x^{e1} = pi^h * (x^{e1}/pi^h), so
+  vartheta_{1,s} = eta^{floor(s*i(u_2)/e1)}; at s = f_2 - t this is
+  EXACTLY the GENHN dated erratum's corrected chat_t :=
+  lift(c_t*eta^{W(t)}), W(t) = floor((f_2-t)*i(u_2)/e1) (erratum
+  59c1966, provoked by HETOW PE1 F-1; pinned at GENTOW1 by
+  [GT1-r1] 477b1b1). At i >= 2, vartheta_{i,s} is the fixed letter
+  monomial in eta, beta_1, ..., beta_{i-1} through iota^{(i)}
+  (S2.3 step (3)'s computation). At any frame where each
+  c_t * (vartheta_{i,f-t} - 1) = 0 — in particular all letters = 1,
+  or f_{i+1} = 1 (only s = 1 occurs, vartheta_{i,1} = 1) —
+  corrected = naive. MACHINE VERIFICATION at a letter-live frame
+  (the PE1 fresh instrument gentow5_pe1_fresh.py @ 0160b94, FR-1:
+  p = 3, Phi_1 = x^2 - 6, eta = 2, (e_2,f_2) = (1,2), u_2 = 3,
+  psi_2 = y^2 + y + 2, i(u_2) = 1 so W(1) = 0, W(0) = 1): the
+  corrected key Phi_1^2 - 6x*Phi_1 - 54 is the carrier — sigma =
+  (2,2), nfeltval(Phi_1) = 3 exact; the gauge-naive key
+  Phi_1^2 - 6x*Phi_1 - 27 has sigma = {(4,1)} with degenerate
+  residual (y-1)^2 — THEOREM GENTOW5-B (a)/(b) fail at the naive
+  display there. This pin governs khat_t at its uses below (S2.4's
+  INV-j heights — value-blind, see there; S3's statement + (a),
+  (b), (c) Step 5, (d); S4.1's witness keys — seam-blind, see
+  there).]
+  Monic of degree D_{i+1}; every side term at dv_{i+1}-height
   E_{i+1} exactly (e_{i+1} * u_{i+1}(f_{i+1}-t) + e_{i+1} t u_{i+1}
-  = E_{i+1}; the top term e_{i+1} f_{i+1} u_{i+1} = E_{i+1}).
-  At i = 1 this is T(b)''s Phi2; at i = 2 the r3 box's Phi3.
+  = E_{i+1}; the top term e_{i+1} f_{i+1} u_{i+1} = E_{i+1} — the
+  vartheta twist is a residue-level unit, height-blind).
+  At i = 1 this is T(b)''s Phi2 AT ITS ERRATUM-CORRECTED DISPLAY
+  (59c1966), NOT the gauge-naive original; at i = 2 the r3 box's
+  Phi3 with vartheta_2-corrected digits.
 
 * **The depth-(i+1) node locus P_{i+1}** := roots xi with
   v(x(xi)) = h/e1 exactly, eta(xi) a psi_1-root, and inductively
