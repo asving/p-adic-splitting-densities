@@ -14931,3 +14931,27 @@ REPAIR QUEUE (B13): GENTOW5 r3 (one-clause (c) re-index + 2 one-liners)
 (the HETOW-4 cocycle lemma) + F-2 cite + F-3 row; GENTOW1 R2a/b/c + F-4
 + GENTOW2 R3 hygiene (dated corrections on frozen texts, re-derived
 never transcribed). GENTOW4/6 arcs open at B14.
+
+**B13 DISPATCHED (2026-08-10, wf_9e83479a-bc4)** — recorded post-dispatch.
+The repair wave, five agents in three chains: (1) GENTOW5 r3 (the
+one-clause (c) stage re-index re-derived from Steps 1–2 and checked
+against BOTH witnesses incl. the f32 counter-instance; the two stale
+"uncomputed" brackets; the consumer-walk pointer) → GENTOW5 passPE4
+(surfaces: the (c)-repair re-derived independently + checked at f64
+depth-5/6; the (c)-consumers; the three-repair-round system coherence;
+fresh route candidates: a (c)-stress frame at e_{i+2} > 1 — the exact
+miscounted axis — and/or a second w-live tower). (2) GENTOW3 r1 (the
+dated gauge annex in the GT1-r1 shape: corrected key pinned, the x-free
+equivalence's honest scope re-derived, BOX-2's f₁-uniformity walked
+under the primary definition, FR-GL adopted as the annex machine row; +
+3 record corrections) → GENTOW3 passPE2 (surfaces: stress the annex's
+scope claim at f₁ ≥ 2 × η ≠ 1; the FR-M3 j=0 SLACK vs every attainment
+sentence; the GENTOW1 LIFT-STABLE/free-count consumption check against
+the parallel R2 restatement; fresh route candidates: δ=0 corner, μ₂=3 ×
+η≠1 compound, j at top boundary). (3) TOWERRAT repairs on the three
+frozen notes: HETOW-4 PROVED as a B″-template n̂₂/n₂ cocycle bridge
+(with the honest out: if the twist does NOT cancel, ledger it) + the
+T(b)′ cite + the disc row; GENTOW1 R2a (clipped free-count re-derived)
+/ R2b (the ONTO sets defined) / R2c (LIFT-STABLE three-band) + F-4;
+GENTOW2 R3 hygiene ×4; repair-completion block appended to the
+TOWERRAT record. GENTOW4/6 arcs open at B14.
