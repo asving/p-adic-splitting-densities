@@ -3804,3 +3804,28 @@ displayed obstruction; the open surface is the GENTOW6_BOXES note's
 own hostile arc (0/2, r1 + r2 repair rounds landed, passes resume)
 + the S8.1 member half's above-floor residue (its exactly-Θ half
 closed by 6.7E, r2).
+
+**2026-08-10 DATED APPEND #23 — GENTOW6-BOXES ACCEPTED 2/2: THE
+BOX-CLOSURE CAMPAIGN IS FULLY THROUGH THE BAR; THE SIMPLIFICATION
+CAMPAIGN AND THE PROVER RCT ARE LIVE** — the sub-box theorems' own
+note (GENTOW-6.5 the attainment ledger, 6.6 the window-count ledger,
+6.7/6.7C′/6.7E the regime classification, the BOX-4 discharge)
+accepted at PE3+PE4 consecutive cleans; the acceptance pass verified
+all three never-touched faces live (6.7E's multi-entry linearity as
+an exact dict identity at p=5/7; 6.6(d) at a real three-class tower —
+the rider's k=c+1 case's first live instance, fibers q^c exact per
+step; the first double-kill frame m=7 with p=7 dividing both
+binomials). WITH THIS, EVERY NAMED RESIDUE ITEM OF THE UNIFORMITY
+CORPUS IS EITHER PROVED-AND-ACCEPTED OR A DISPLAYED OBSTRUCTION
+(S8.1's member half — the one honest open, now witnessed by LEMMA
+6.7E's same-genre-geometry pair). Codex batch 2 closed: GENTOW4
+ratified-with-annex; GENTOW6's challenge dissolved at HEAD with
+convergence; discharge ×7 confirms every batch-1 repair; the plan
+revision (37 real findings folded) cleared S-1. THE PROVER RCT
+(protocol c870ed5d, Asvin-directed): first round live — T5/FABLE
+COMPLETE (the w-frame note, 502 lines, 47/0 under seal, teeth 4/4,
+statement-ledger green), W(i)/FABLE + T1/CODEX storm-killed
+pre-checkpoint and resumed. NEXT: the RCT round's arcs, the remaining
+compression targets per the revised plan, the exposition E-units
+(post-simplification wording), the distribution arcs, then Lean
+stage two.
