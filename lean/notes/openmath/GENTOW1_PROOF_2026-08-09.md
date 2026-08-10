@@ -729,3 +729,39 @@ this count repair. BYTE-FREEZE: pre-append body md5 c2f4f3d1
 (c2f4f3d148b1ab94c5f9f95aa01de139) = commit 477b1b1, 38,204
 bytes, re-verified by prefix after the append; sealed artifacts
 byte-untouched; statement displays untouched.
+
+### Dated acceptance record + correction (2026-08-10, post-PE3)
+
+**ACCEPTANCE.** PE2 CLEAN (0C/0G/1m; report `GENTOW1_passPE2_report.md`
+@ 1e99926) + PE3 CLEAN (0C/0G/1m; report `GENTOW1_passPE3_report.md`
+@ 4aff731): the acceptance counter closed 1/2 -> **2/2 — ACCEPTED**.
+The note is FROZEN as of this record; dated appends only. The arc in
+one breath: the gauge consumption at PE1 (F-1 — the note consumed the
+pre-erratum gauge-naive chat_t display) -> the r1 gauge annex (S7.1,
+the corrected key `chat_t := lift(c_t*eta^{W(t)})` pinned at the nine
+manifest sites) -> two consecutive cleans (PE2 @ 1e99926, PE3 @
+4aff731). PE3 additionally re-derived the ONTO cardinality argument
+and GENTOW-5(c)/(d) on its own paper and ran a fresh route GREEN
+85/0 (sealed 4ccc8c5: H1 first non-prime-q frame, q = 4; H2 first
+gauge-live x mu2 = 3 frame).
+
+**PE3 m-1 CURE (the seam-diversity sentence).** The post-PE2 dated
+correction above states "the three enumerated frames sit at
+i(u2) = 1 with W(0) = 1, W(1) = 0 (X, Z, and W alike per the pins
+above)" — the i(u2) leg is FALSE at frame W. Verified at the
+`hetowr1_supp.py` source: `def i(self, k): return k % self.e1`
+(line 102) with frame W's constructor
+`FW = Frame('W', 5, 3, [-10, 0, 0, 1], 2, 5, -1, -1, ((3, 2),))`
+(line 155), i.e. e1 = 3, u2 = 5, so **i(u2) = 5 mod 3 = 2** at
+frame W (frames X and Z: u2 = 3, e1 = 2, i(u2) = 1). The
+(W(0),W(1)) = (1,0) pins stand: W(0) = floor(2*2/3) = 1 at frame W
+(NOT floor(2*1/3) = 0 — do not consume i(u2) = 1 in frame-W wrap
+arithmetic). Corrected caveat: frame W IS a machine-covered
+gauge-live i(u2) = 2 datum, so the i(u2) >= 2 axis is NOT uncovered;
+**the honest residual uncovered seam axis is W(0) >= 2 only**. The
+slip's direction was conservative (coverage understated); statement
+displays and sealed artifacts byte-untouched by this append.
+
+BYTE-FREEZE: pre-append body md5 3b204e4a
+(3b204e4a08f11249c3bb901a6773872e) = commit 0bb7610, 40,228 bytes,
+re-verified by prefix after this append; edit shape append-only.
