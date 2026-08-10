@@ -1,0 +1,77 @@
+== LEG W (GA3*), A-route ==
+  ok: W-A1 nhat2(41) = 2^9 x^0 PHIP^1 height exact
+  ok: W-A1 nhat2(82) = 2^20 x^1 PHIP^0 height exact
+  ok: W-A1 nhat2(72) = 2^18 x^0 PHIP^0 height exact
+  ok: W-A1 nhat2(31) = 2^6 x^1 PHIP^1 height exact
+  ok: W-A2 fixed-base t1=1 flavor at 82 demands pi-exp 35/2 (none)
+  ok: W-A2 fixed-base t1=1 flavor at 41 demands pi-exp 13/2 (none)
+  ok: W-A2 re-solved members 2^18*PHIP^2 (82), 64x*PHIP^3 (41) exact
+  ok: W-A3 vartheta_{2,2} ratio PHIP^2/4x value-0, split (2,1) -> z2
+  ok: W-A4 W-ratio 512x^82/PHIP^40 value-0, split (-9,-20) -> z2
+  ok: W-A5 Phi3s deg 32 monic
+  ok: W-A5 side heights all E3 = 164
+  ok: W-A6 RES x v2 = 16
+  ok: W-A6 RES PHIP v2 = 40
+  ok: W-A6 RES PHI2 v2 = 164
+== LEG W (GA3*), B-route (PARI) ==
+WFP nfac=1 deg=32
+WNAIVE nfac=2 degs=[16, 16]
+WNPR 1
+WEF 8 4
+WVALS 4 10 41
+WPI3V 2
+WR1 1
+WR2PAT 1 1
+WT0 1
+WW 1 1 1
+WB 1 1
+WY 1
+WPSIW 1
+WNOSE 1
+WMULT0 1
+GPWDONE
+  ok: W-B1 Phi3s one factor deg 32
+  ok: W-B10 naive twin (= committed GA3 key) splits [16,16]
+  ok: W-B2 one prime
+  ok: W-B2 e=8 f=4
+  ok: W-B3 ladder (4,10,41) exact
+  ok: W-B3 v(pi3) = 2 = e/4 (Lemma 3.13(1))
+  ok: W-B4 z1 dead (r1 == 1)
+  ok: W-B4 r2 = z2 live (order 3)
+  ok: W-B5 THETA0 == r2^2 (theta-leg at the new prime)
+  ok: W-B6 w-avatar == r2 (= z2), != 1, != r2^2
+  ok: W-B7 repo class B: psi3(B) == 0, B not in F4
+  ok: W-B8i Y == W*B (closure, disclosed)
+  ok: W-B8ii GENTOW5-B(a) re-scoped: psi3^{(w)}(Y) == 0
+  ok: W-B8iii NOSE TOOTH: psi3(Y) != 0 at measured w
+  ok: W-B9 MULT0 == r2 (vartheta cancellation at e3=2)
+== LEG D5, A-route ==
+  ok: D-A1 nhat5(1365) = 2^32 * Phi4 (b4=1, b3=b2=b1=0, i0=0, a=32)
+  ok: D-A1 dv6-height of 2^32*Phi4 = 2048 + 682 = 2730 = 2*1365
+  ok: D-A1 1365 = minimal odd > 2*E5 = 1364
+  ok: D-A2 f64 deg 64 monic
+  ok: D-A2 E6 = 2730 side arithmetic
+  ok: D-A4 TOOTH f64m == Phi4*(Phi4^3 - 2^17 Phi3 Phi4 + 2^32) exact
+  ok: D-A4 Res(f64m, Phi4) == 0
+  ok: D-A3 RES f64 vs x v2 = 32
+  ok: D-A3 RES f64 vs Phi1 v2 = 80
+  ok: D-A3 RES f64 vs Phi2 v2 = 168
+  ok: D-A3 RES f64 vs Phi3 v2 = 340
+  ok: D-A3 RES f64 vs Phi4 v2 = 682
+  ok: D-A3 RES f64 vs f32 v2 = 1365
+== LEG D5, B-route (PARI) ==
+DFP nfac=1 deg=64
+DP4 nfac=1 deg=16
+DFM nfac=2 degs=[16, 48]
+GPDDONE
+  ok: D-B1 f64 ONE factor deg 64 (irreducible /Q_2)
+  ok: D-B2 Phi4 ONE factor deg 16
+  ok: D-B3 f64m splits: >= 2 factors, deg-16 drain present, sum 64
+DNPR 1
+DEF 64 1
+DLAD [32, 80, 168, 340, 682, 1365]
+GPD4DONE
+  ok: D-B4 one prime over 2
+  ok: D-B4 e=64 f=1
+  ok: D-B4 nfeltval ladder exact at depth 6
+== PE3 FRESH VERDICT: 48 checks, 0 violations ==
