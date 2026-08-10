@@ -15388,3 +15388,59 @@ TOWERRAT2 A–E sequentially with in-agent collection + RUN F = the
 blueprint plan-pass (T2's statement-design risk the headline
 surface). Simplification wave S-0/S-1/S-7 launches at B20 after the
 plan-pass verdicts.
+
+## B19 FOLD (2026-08-10) — annex 1/2; all sub-boxes theorem-ized; the 6.5 arc catches a real statement defect + B20 DISPATCH
+
+GENIND ANNEX pass 2 (a379720b): **CLEAN 0C/0G/3m → annex 1/2.**
+ANNEX-LEMMA GENIND-C2 adjudicated PROVE-FIRST LANDED AND SOUND
+(re-derived from the body's own S7.2/S7.3/S5.1 displays; the n=4
+slope-<1 scenario dead THREE ways — derivation, committed-law
+prediction of all 11 fresh tallies, measurement). Fresh 280/0 with
+first h=5 + first q=5 rows, committed-law ties exact. Minors:
+seal-¶ miscount 10-vs-11; a short census in R1.4's own cure; the
+C2(iii) rate comparison's undisplayed (L+1)/2 ≥ e·degψ + ½ margin.
+
+GENTOW6-BOXES PE1 (3ae577e8): NOT CLEAN 1C/1G/2m, 0/2. F-1 CRITICAL:
+6.5(a)'s "Y = B*+1 forces (2,{t*,t*},1,0)" FALSE at e₂(f₂−t*)=1
+with k·i_{t*} ≥ (k−1)D′ — constructed CE3 measures the k=3 branch at
+x-slot 0 ≠ a*; (b1)/(c)/(d) survive. F-2 GAP: the two dated appends'
+"attainment iff p ∤ binom" — the theorem claims IF only; constructed
+BP3 (p=3 | binom(3,2)) attains through a different branch. THE
+RIPPLE INCLUDED PROJECT_STATE #21's own sentences — corrected by the
+orchestrator as append #22 (the record discipline applied to the
+orchestrator's summary, second instance this campaign). Fresh route
+141/0 at 8 frames incl. first m=6/7 rows, new p=3 kill at m=6, first
+p=5 kill/attainment pair. Repair surface narrow.
+
+BOX-2/3 unit: **THEOREM GENTOW-6.6 — BOX-2 CLOSED at the box's ask**
+(Sylvester–Jacobian pricing, |det dm| = |Res|ₚ, fibers exactly q^c,
+c_J = μ₂*m′D₂E₂/(e₁e₂) via residual-separation 6.6a; 576/0; exact
+enumeration 4,782,969 → 3¹² images all fibers 9; named not-delivered:
+GENH5-DENS genre aggregation). **THEOREM GENTOW-6.7 + COR 6.7C′ —
+BOX-3 key-power half PROVED at μ₂=2, member half = S8.1 displayed
+obstruction**; the unit's own sealed 6.7C law was REFUTED by its RED
+run (5 violations at m ≥ 4) and RE-DERIVED via LEMMA 6.7D (K2-adic
+descent multiplicity) as 2·binom(m,3)·ĉ³π^{3a₀} — the m=5
+degeneration withdrawn, p=2 always-slack explains FR5X/A53; 215/0,
+six teeth ×3; the seal→RED→repair→GREEN chain all committed.
+
+CODEX TOWERRAT2: RUN A completed (GENTOW5 as-built = **CHALLENGE**,
+log 151,962 B, adjudication owed); the workflow unit armed watchers
+and ended — runs B–F never launched (second orphaning). B20's unit
+carries a HARD in-lifetime collection rule (foreground timeout
+launches).
+
+**B20 DISPATCHED (wf_58636481-058)**, recorded post-dispatch: (1)
+GENTOW6-BOXES r1 (the (a) equality clause re-derived — scope to
+e₂(f₂−t*) ≥ 2 or display the k ≥ 3 x-slot-displacement exception;
+the appends' iff → forward; CE3/BP3 adopted as battery rows) → passPE2
+(the r1 + FIRST hostile read of 6.6 and 6.7/6.7C′ — the S7/S8
+sections landed parallel to PE1 and are unread; fresh candidates:
+a second e₂(f₂−t*)=1 frame, 6.6 at m′=2, 6.7C′ at m=6 with
+p=5 | binom(6,3)). (2) the Codex collect+run unit (adjudicate A;
+launch B/C/D/E/F foreground-blocking, commit per run). (3) **S-0 THE
+STATEMENT LEDGER** — the simplification campaign's first unit
+launches (plan-independent): every named statement in the 26-text
+corpus md5-pinned with a --check tripwire; the "a simplification
+never weakens a statement" enforcement instrument. S-1 (the
+gauge-cocycle unification) holds for RUN F's plan verdict.
