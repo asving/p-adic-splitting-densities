@@ -525,3 +525,187 @@ the four rows.
 Step III's linearity reduction (Ghat_j(F) = Ghat_j(Delta)), Step
 IV's uniqueness-at-the-slot, the S3 sign conventions, and the R3/R4
 hand ledgers.
+
+---
+
+# APPEND (same unit family, new agent): GENTOW6-BOX-2 (the count
+# ledger) + GENTOW6-BOX-3 (regime-3 classification), 2026-08-10
+
+**STATUS (this append): BOTH BOXES PROVE-FIRST DELIVERED — S7 =
+THEOREM GENTOW-6.6 (the window count ledger pricing (f_S, g) ↦
+f_S·g, the box's own Jacobian/content identity, PROVED with an
+explicit N_0) + S8 = THEOREM GENTOW-6.7 (regime-3 top-slot
+classification at mu2 = 2) with COROLLARY-THEOREM GENTOW-6.7C (the
+j*-1 band one m up — the (binom(m,2) - binom(m,3)) law). Machine
+legs S9 (two sealed runners, two-commit each). Grade of the append:
+0/2 (attempt; hostile arc owed), riding the frozen notes it cites.**
+
+## S7. GENTOW6-BOX-2 — THE COUNT LEDGER (THEOREM GENTOW-6.6)
+
+**The box verbatim (GENTOW6_PROOF S5).** "GENTOW6-BOX-2 (the count
+LEDGER at partial sides). From S2: the product-measure count of the
+f-locus per window (pricing (f_S, g) ↦ f_S·g) — open already at
+FULL sides (GENTOW-1's count-law remark), not a partial-side
+novelty." S2's parked sentence sharpens the ask: "the count of f's
+per window as a product over (class boxes) x (sibling data), which
+requires pricing the multiplication map (f_S, g) ↦ f_S·g on ambient
+windows (a Jacobian/content identity)."
+
+**What is proved here.** Exactly that pricing: the Jacobian of the
+multiplication map IS the Sylvester matrix, its content is the
+resultant, the resultant valuation is a GENRE CONSTANT c_J on the
+box pair (residual separation), and for explicit window depths the
+per-window count of the product locus is the product of the
+GENTOW-1(b) clipped box counts divided by q^{c_J}. What is NOT
+claimed: the GENH5-DENS-style per-genre AGGREGATION over keys and
+genres (summing cells to densities) — a different seam, named in
+S10; at a one-class (full-side) locus there is no product to price
+and the ledger is GENTOW-1(b) + its R2a clip verbatim.
+
+**Setting.** O = the ring of integers of the base local field Q of
+the genre, pi its uniformizer, q = |O/pi|, v = the valuation with
+v(pi) = 1. Monic polynomials of degree d are identified with
+coefficient vectors in O^d. For a compact open B ⊆ O^d, the
+window-N count is #(B mod pi^N) := the number of pi^N-classes
+meeting B. HYPOTHESES on a pair of "boxes" B_S (degree d_S), B_g
+(degree d_g), d := d_S + d_g:
+
+* (H1) [CELLS] each box is a union of pi^H-balls in its coefficient
+  space (one H for both). [The bouquet budget boxes qualify with
+  H = the max digit floor: GENTOW-1(b)'s composed-digit coordinates
+  are triangular-unimodular in the coefficients — a bijection of
+  O^{d} that is 1-Lipschitz with 1-Lipschitz inverse, hence
+  carrying pi^N-classes to pi^N-classes and cells to cells.]
+* (H2) [SEPARATION] v(Res(u, w)) = c, one finite constant, for
+  every (u, w) ∈ B_S x B_g.
+* (H3) [INJECTIVITY] (u, w) ↦ u·w is injective on B_S x B_g.
+
+> **THEOREM GENTOW-6.6 (the window count ledger).** Under (H1)-(H3),
+> with m(u, w) := u·w (monic, degree d):
+>
+> (a) [SYLVESTER-JACOBIAN] the derivative of m at (u, w) is the
+> O-linear map (alpha, beta) ↦ u·beta + w·alpha (deg alpha < d_S,
+> deg beta < d_g); its matrix in the monomial bases is the
+> Sylvester matrix Syl(u, w), so det(dm) = ±Res(u, w) and
+> |det dm| = q^{-c} on the box pair. The elementary divisors
+> pi^{e_1}, ..., pi^{e_d} of dm satisfy Sum e_i = c, each e_i <= c,
+> hence dm(O^d) ⊇ pi^c O^d.
+>
+> (b) [BALL IMAGE] for k >= c + 1 and (u, w) in the box pair:
+>
+>     m((u, w) + pi^k O^d) = u·w + dm_{(u,w)}(pi^k O^d)
+>
+> exactly — an affine coset containing u·w + pi^{k+c} O^d, of
+> measure q^{-dk-c}.
+>
+> (c) [LEDGER] for N >= N_0 := c + max(c, H) + 1:
+>
+>     #(m(B_S x B_g) mod pi^N)
+>         = q^{-c} · #(B_S mod pi^N) · #(B_g mod pi^N),
+>
+> and each fiber of the window map (pairs mod pi^N over one image
+> class) has exactly q^c members.
+>
+> (d) [BOUQUET INSTANTIATION — the box's geography] at a two-class
+> partial-side geography (S1/S2's setting: level-1 polygon one side
+> of slope kappa2, twist-coherent residual psi2^{mu2*} · r^{m'},
+> psi2 != r irreducible), take B_S := the GENTOW-6.2 block budget
+> box at the psi2-block genre (LEMMA GENTOW-1(a)(b) floors at
+> mu2 ↦ mu2*), B_g := the same at the r-class genre (mu2 ↦ m',
+> key Phi2' of the r-class). Then (H2) holds with the closed form
+>
+>     c = c_J := mu2* · m' · D2 · E2 / (e1 e2)
+>       [ = deg(f_S) · m' E2/(e1e2) = deg(g) · mu2* E2/(e1e2),
+>         an integer: c_J = mu2* m' f1 f2^2 e2 u2 ],
+>
+> (H3) holds, and with the bouquet factorization (every locus
+> member factors into box members: LEMMA GENTOW-6.2 + HE6R1-2(b),
+> at their notes' grades) the partial-side locus L satisfies, for
+> N >= N_0:
+>
+>     #(L mod pi^N) = q^{ Sum_{S-box slots} max(0, N - floor)
+>                       + Sum_{g-box slots} max(0, N - floor) - c_J }.
+>
+> Multi-class bouquets iterate pairwise (Res is multiplicative in
+> each argument, so the constants ADD over class pairs).
+
+*Proof.*
+
+**(a).** m is bilinear plus the base point: m(u + alpha, w + beta)
+= uw + (u beta + w alpha) + alpha·beta; the linear part in the
+monomial bases x^i·(coefficient columns) is precisely the classical
+Sylvester layout (columns = shifts x^i·u, x^j·w), whose determinant
+is ±Res(u, w) — the Sylvester identity. |det| = q^{-c} by (H2).
+The elementary divisor sum is v(det) = c and each single divisor is
+at most the sum since all are >= 0. dm(O^d) ⊇ pi^c O^d follows
+slotwise from the Smith normal form. ∎(a)
+
+**(b).** (⊇) Given target uw + dm(z), z ∈ pi^k O^d: solve
+m((u,w) + x) = uw + dm(z) for x ∈ pi^k O^d by Newton iteration
+x_0 := z, x_{n+1} := z - dm^{-1}(Q(x_n)) where Q(alpha, beta) :=
+alpha·beta is the quadratic part and dm^{-1} denotes a choice of
+preimage with ||dm^{-1}(y)|| <= q^c ||y|| (Smith form; possible for
+y ∈ dm(O^d), and Q(x) ∈ pi^{2k}O^d ⊆ pi^{k+c+1}O^d ⊆ dm(pi^{k+1}O^d)
+since 2k >= k + c + 1). The iteration is a contraction on pi^k O^d
+(successive differences shrink by q^{-(k-c)} <= q^{-1} per step:
+||Q(x_n) - Q(x_{n-1})|| <= q^{-k}||x_n - x_{n-1}||, then dm^{-1}
+costs q^c), so it converges in the complete lattice to an exact
+solution. (⊆) m((u,w) + x) - uw = dm(x) + Q(x) ∈ dm(pi^k O^d) +
+pi^{2k} O^d = dm(pi^k O^d) by the same containment. The coset
+contains uw + pi^{k+c}O^d by (a)'s last clause scaled by pi^k, and
+its measure is |det dm| · q^{-dk}. ∎(b)
+
+**(c).** Set k := max(c + 1, H). By (H1) the box pair is a disjoint
+union of P_k := #(B_S mod pi^k) · #(B_g mod pi^k) balls of radius
+pi^k. By (b) each ball maps ONTO an affine coset of measure
+q^{-dk-c}; by (H3) these images are pairwise disjoint. For
+N >= k + c each coset is a union of pi^N-balls (it contains a
+pi^{k+c}-ball around each member, and is a coset of a lattice
+⊇ pi^{k+c}O^d ⊇ pi^N O^d), numbering q^{dN} · q^{-dk-c} each. So
+#(image mod pi^N) = P_k · q^{d(N-k) - c} = q^{-c} · #(B_S mod pi^N)
+· #(B_g mod pi^N), the last step because above depth k every
+pi^k-class of a box splits into exactly q^{d_box(N-k)} classes
+(balls). FIBERS: fix an image class F = f + pi^N O^d (inside one
+ball-image coset, uniquely, by disjointness). m is 1-Lipschitz
+(integral polynomial), so m^{-1}(F) ∩ (the ball) is pi^N-saturated,
+and it is carried bijectively onto F by m with the coset's constant
+scaling; its measure is q^{-dN} · q^{+c} (inverse Jacobian), hence
+it meets exactly q^c pi^N-classes. ∎(c)
+
+**(d).** THE SEPARATION LEMMA (GENTOW-6.6a): for f_S ∈ B_S, g ∈
+B_g, and any root x0 of f_S: v(g(x0)) = m' E2 / (e1 e2). Proof: x0
+is a tower-node point of the genre (full inner side at the block —
+LEMMA GENTOW-6.2 puts f_S on 𝒯* and GENTOW-1 Step 4 reads
+v(Phi'(x0)) = u2/(e1e2) with eta2(x0) a psi2-root). Evaluate g
+through its level-1 read g = Sum_J A_J Phi'^J: every side slot
+ties at value mu1' u2/(e1e2) (side of slope kappa2 = u2/e2 in
+dv-heights, J-term value (mu1'-J)u2/(e1e2) + J u2/(e1e2)), slots
+above the side sit strictly higher, and the height-graded sum of
+the tied side terms is (coherent unit) · r^{m'}(eta2(x0)) — the
+same coherent-normalizer side-residual computation as GENTOW-1(d),
+one class over. Since r != psi2 are distinct irreducibles and
+eta2(x0) is a psi2-root, r^{m'}(eta2(x0)) != 0 in the residue
+field: the ultrametric minimum is attained exactly once in grade,
+so v(g(x0)) = mu1' u2/(e1e2) = m' E2/(e1e2), constant across both
+boxes. Then v(Res(f_S, g)) = Sum over the deg(f_S) = mu2* D2 roots
+= c_J, and the displayed symmetric/integral forms are arithmetic
+(D2 = e2 f2 e1 f1, E2 = e2 f2 u2). (H3): a common root of f_S and
+g would carry an eta2-residue killing both psi2 and r —
+impossible; so in u·w = u'·w' the root multiset splits by residual
+class, forcing u = u' (monic with the same roots with multiplicity)
+and w = w'. Injectivity across distinct pairs with the same
+product: the same argument. The ledger display then composes (c)
+with GENTOW-1(b)'s clipped counts (R2a form) at each box, both
+clips inactive at N >= N_0 >= H. For multi-class: multiply blocks
+in one at a time; at each step the "sibling" is a product of
+blocks, its evaluation constant at a fixed root class is the SUM
+of the per-class constants (v(g g')(x0) = v(g(x0)) + v(g'(x0)),
+each priced by the lemma), which is Res-multiplicativity. ∎
+
+**Honest fences.** (i) The theorem prices the MULTIPLICATION; it
+does not aggregate cells over genres/keys (GENH5-DENS geography —
+named residue, S10). (ii) (d) consumes LEMMA GENTOW-6.2 (this
+arc), COR GENTOW-4.C's discharge (GENTOW4 ACCEPTED 2/2), HE6R1-2(b)
+and GENTOW-1(a)(b)(d)+R2a (GENTOW1 ACCEPTED 2/2) at their recorded
+grades. (iii) N_0 is a sufficient depth, not claimed sharp; below
+N_0 the machine leg records exploratory rows without wants.
