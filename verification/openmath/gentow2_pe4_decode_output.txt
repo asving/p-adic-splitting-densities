@@ -1,0 +1,18 @@
+  LD1 MP1 1
+  LD1 MP2 0
+  LD1 DEEP 1
+  LD1 MULT1 1
+  LD1 MULT0R1 1
+  LD1 MULT0ONE 0
+  LD1 COC 1
+  LD2 MP1 0
+  LD2 MP2 1
+  LD2 DEEP 1
+  LD2 MULT1 1
+  LD2 MULT0R1 0
+  LD2 MULT0ONE 1
+  LD2 COC 1
+gp stderr: ***   Warning: new stack size = 256000000 (244.141 Mbytes).
+== passPE4 DECODE VERDICT ==
+checks: 14, violations: 0
+GENTOW2 passPE4 decode: GREEN
