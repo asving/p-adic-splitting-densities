@@ -103,6 +103,25 @@ VERDICT: GREEN iff 0 violations and all four teeth fire
 NOT RUN (disclosed): non-prime q (f1 >= 2 / d = 2 ambient -- rnf
 cost, same disclosure as PE1); gauge-LIVE f2 >= 2 rows (covered at
 PE1 F1 + erratum frame X + hetowr1_supp, all committed GREEN).
+RUN-1 REDISCLOSURE (instrument erratum, MINE not the note's; run 1
+was RED 181/2, both violations on the SAME instrument prediction):
+the sealed PB3 sigma {(4,2)} was derived from the RAW slot residue
+(Y^2 = -1 inert over F3); at u = 22 == 2 mod 4 the sigma-decision
+needs the COHERENT residual with the wrap unit -- n2hat(11)^2 vs
+n2hat(22) carries xPhi'^2/27 ~ x^2/3 -> eta = 2, so the equation is
+Y^2 = -(1*eta^{-1})... = -2 = 1 = a SQUARE over F3: SPLIT, sigma =
+{(4,1),(4,1)} -- which is exactly what BOTH PARI routes measured.
+PB2 (class (0,0): n2hat(12)^2 = n2hat(24), NO wrap) was green as
+sealed.  The error is precisely a violation of GENTOW-2(iv)'s
+'coherent normalization, WRAP UNITS INCLUDED' clause -- run 1 is a
+live machine demonstration that the note's wrap-unit clause is
+LOAD-BEARING at eta != 1 (an unplanned tooth: the wrap-naive
+sigma-dictionary gives the wrong answer, PARI both routes agree
+against it).  Every other row of run 1 was green: all four teeth,
+all floors/pins/gates, the mu2 = 3 refine EXACTLY at the hand pins
+(33, 23, 14) -> (37, None, None), all node-oracle rows strict.
+Fixed: PB3 want = {(4,1),(4,1)} with the wrap-corrected derivation.
+No other change.
 Written 2026-08-10 by the GENTOW1 passPE2 hostile verifier.
 """
 import subprocess
@@ -455,7 +474,7 @@ def run_g1():
     ok3, _ = G1.floors_ok(d3)
     chk(e3r is None and p3 == [22, None] and ok3,
         'PB3 gate %r pins %s floors %s' % (e3r, p3, ok3))
-    gp_sig('PB3', G1, PB3, [(4, 2)], PHI2G1)
+    gp_sig('PB3', G1, PB3, [(4, 1), (4, 1)], PHI2G1)
     PB2 = padd(pmul(PHI2G1, PHI2G1), [729])
     e2r = G1.gate(PB2)
     p2, d2 = G1.read_pins(PB2, PHI2G1)
