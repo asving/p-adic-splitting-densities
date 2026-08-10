@@ -102,3 +102,22 @@ lost for these nine. The coin being deterministic, arm-blindness was
 always weak; the promised ORDER was still broken and is recorded.
 Units added later: tag first, then compute the arm.
 
+
+## Amendment 1 (2026-08-10, owner directive)
+
+Asvin, after round 1's results (verbatim intent): "Lets use codex for
+the hard math for a while then, and see how it goes."
+
+- HARD and FRONTIER tier units are assigned **CODEX by directive** for
+  an observational period — the §2 randomization is SUSPENDED for
+  those tiers (the trial becomes observational there; §4 outcomes are
+  still recorded identically, and the arc stays arm-blind).
+- ROUTINE tier units keep the §2 coin (preserving a randomized strand).
+- Ledger flips under this amendment: T2-sigma-ladder-master
+  (FABLE → CODEX), GENH5-DENS-aggregation (FABLE → CODEX). Reason
+  column: owner directive, this amendment.
+- The CODEX-arm workflow is unchanged (self-contained brief; one
+  foreground high-effort call; lab-tech transcription with no content
+  alteration; gaps recorded as data; the 2-clean Fable arc judges).
+- Revisit trigger: when the arcs have judged ≥3 CODEX-arm hard units,
+  fold the comparison and re-decide with Asvin.
