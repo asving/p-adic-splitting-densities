@@ -15671,3 +15671,20 @@ adjudicate quality; no conclusions yet.
 **B24 DISPATCHING**: the three RCT arcs open — WFRAME PE1, GENTOW5_WI
 PE1, T1 PE1 (the recorded gaps as charged surfaces; the W(i) proof as
 as-of context everywhere).
+
+**B24 PARTIAL FOLD + RESUME (2026-08-10)** — GENTOW5-WI passPE1
+(884edd2c): **CLEAN 0C/0G/4m → 1/2.** The four B″ steps re-derived at
+level i with the j ≥ 1 y-degree kill confirmed LEVEL-UNIFORM (only
+gcd(h,e)=1 + the Γ_i group structure; the e=1 branch covered); the
+footprint-elimination claim verified direct with its resting point
+disclosed; clause (b)'s w-blindness confirmed at source (no
+circularity). Fresh route = the FIRST i=4 LETTER-LIVE CONTACT anywhere
+(FR4: p=3, Φ₅ of degree 32, ladder (8,20,42,85,171); ϑ₄(0)=2 live;
+ψ₅^{(w₄)}(Y) = 0 on the nose; 15/0 with the verifier's own
+subresultant-PRS integers bit-equal to gp). The open lemma that gated
+GENTOW5's i ≥ 3 scope is now one clean pass from acceptance. WFRAME
+PE1 + T1 PE1 died to a server-error flurry (second flurry today);
+cached resume spent — WI returns cached, the two verifiers re-run.
+RCT Amendment 1 in force (cf28bcef): hard/frontier → CODEX by owner
+directive, observational; T2 + GENH5-DENS flipped; B25 (T3-CODEX +
+SG2-CODEX) HOLDS until the flurry passes and B24 completes.
