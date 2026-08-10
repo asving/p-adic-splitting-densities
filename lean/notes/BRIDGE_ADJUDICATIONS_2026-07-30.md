@@ -15795,3 +15795,17 @@ resumeFromRunId: "wf_ed60bf55-51b"}). Pending set unchanged: T1 r1
 (F-1 item-9 only — minors already landed) → T1 PE2; WI PE2 acceptance;
 WFRAME PE2 (skeleton committed, legs 2-3 owed); T3-CODEX composition.
 Everything durable is committed; the storm costs time, not work.
+
+**STAGE-TWO READINESS PROBE (2026-08-10 ~19:50, storm-proof local
+job)** — the Lean trusted-base axiom check (lake env lean
+LeanUrat/AxChk_baseline.lean) launched as a local CPU job (zero
+Anthropic API; log /tmp/axchk_baseline_20260810.log). Purpose: stage
+two (the formalization, per the goal's second clause) begins on a
+verified-green substrate — the capstone footprints
+{propext, Classical.choice, Quot.sound} + the declared cited axioms
+must be unchanged since the last capstone-path work before any new
+Lean units land. This is the formalization stage's first artifact:
+its ground truth re-pinned at the pipeline's turn. The Lean unit
+blueprint itself waits (per math-first-formalize-when-stable + the
+owner's pipeline) for the T1–T5 outcomes so it maps the COMPRESSED
+statement set — the S-0 ledger's 166 rows are its interface draft.
