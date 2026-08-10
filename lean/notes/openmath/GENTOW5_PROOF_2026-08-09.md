@@ -43,6 +43,29 @@ committed rows leave it machine-untouched — honest row). Repair
 record S8; sealed artifacts BYTE-FROZEN. Grade stays 0/2; PE3
 next.]**
 
+**[ARC — passPE3 2026-08-10: NOT CLEAN, 0 CRITICAL + 1 GAP + 2
+MINOR (GENTOW5_passPE3_report.md @ 39c36aa); counter stays 0/2.
+GT5-r3 repair round 2026-08-10 (this commit series): F-1 THEOREM
+GENTOW5-B(c)'s entry-read clause RE-INDEXED to the uniform
+GENTOW-1 transport 2 -> i+1 (level-i stage read, slope kappa_{i+1}
+:= u_{i+1}/e_{i+1}, residual psi_{i+1}^{mu} — the SAME anchoring
+as the degree/weight/pin/floor clauses; the composed (i+2)-read
+pairing fails the residual-degree count, mu/e_{i+2} vs
+mu*f_{i+2}, and is refuted at the committed P-B3 rows f32@Phi4 +
+Phi4@Phi3, while the corrected pairing VERIFIES at the committed
+rows f32@Phi3 + Phi4@Phi2); the (c)-proof's substitution table +
+Step-2 parenthetical re-anchored at the entered stage Phi_{i+2}
+(the displays prove (c) at index i+1; GENTOW-1 = the index-1 base;
+(d)/(e)/DEF's floor-chain provenance consume the (i+1)-anchored
+half — re-verified unbroken). F-2 the two standalone stale
+"uncomputed" sentences DATED (S6 TARGET-2 bullet + the (a)-proof
+parenthetical; w measured at 7 primes: PE6's 6 + PE3 leg W's
+GA3* carrier prime). F-3 the consumer walk's S4-witness pointer
+corrected (w-triviality lives at S6's TARGET-2 rider; the
+coverage box carries the seam axis, no w row). Repair record S9;
+sealed artifacts BYTE-FROZEN (md5s re-verified this round).
+Grade stays 0/2.]**
+
 CHARGE: (1) PROVE or box-with-obstruction GENTOW-BOX-1 — LEMMA
 GENTOW-2 layer 1 at general mu2 (the composed graded frame;
 GENTOW1_PROOF S3/S6). (2) THE LEVEL-r LADDER GRAMMAR: the normalizer
@@ -850,7 +873,13 @@ provisos are now supplied:
   c_t -> u_i(beta_t)^{-1}c_t would realize psi_{i+1} on the nose
   but builds a DIFFERENT key from the pinned recipe, and w_i being
   uncomputed it is not repo-constructible; the statement stays at
-  the pinned key and the twisted residual.)
+  the pinned key and the twisted residual.) [GT5-r3 DATED
+  2026-08-10 (PE3 F-2): "uncomputed" is dated at the measured
+  record — w is measured at the 7 PE6/PE3-measured primes (so an
+  untwisted key is numerically constructible AT those frames);
+  what remains not repo-DERIVABLE is a closed-form w_i-law at
+  unmeasured frames/levels, so the pinned-key + twisted-residual
+  statement stands unchanged.]
 With (B-1)/(B-2 as corrected), LEMMA GENTOW2-B's proof runs at
 level i on the pinned prescription: additivity (Cor 4.7(1) [Q8]) +
 eq (14) [Q7] give R_{nu_i}(Phi_{i+1}) = y^{f_{i+1}} - Sum c_t
@@ -969,7 +998,9 @@ note, each read against the twisted residual psi^{(w_i)}:
 * (e)'s node floor: value arithmetic only — w-blind.
 * The S4 witness: K_i = F_2 at each rung, so K_i^x = {1} and
   w_i = 1 trivially — the witness does not discriminate the w-leg
-  (recorded with the seam axis in S6's coverage box).
+  (its w-triviality is recorded at S6's TARGET-2 bullet's [GT5-r2]
+  rider; the coverage box tracks the SEAM axis — S4.1's re-check —
+  and carries no w row) [GT5-r3 pointer corrected, PE3 F-3].
 * sigma / degrees / irreducibility / factor patterns: y -> w*y is
   a substitution automorphism of K_i[y], factor patterns preserved
   at each w (B''; PE5's admissibility verification) — w-blind.
@@ -1175,6 +1206,12 @@ exhibited). The run also reproduced the 86 exact checks unchanged.
   [GT5-r2: (a) holds at the TWISTED residual psi_{i+1}^{(w_i)}
   (GENTOW2-A-admissible at each w_i); w_i = 1 — the on-the-nose
   psi_{i+1} — is OPEN, the uncomputed cross-frame unit.]
+  [GT5-r3 DATED 2026-08-10 (PE3 F-2): "uncomputed" is dated — w is
+  MEASURED != 1 at the 7 measured primes (GENTOW2 PE6's 6 across
+  LD1/LD3/GA1/GA3 + the PE3 fresh leg W's carrier-(8,4) prime at
+  GA3*, where psi_3^{(w)}(Y) = 0 held on the nose at w = z2);
+  the closed-form w-law and unmeasured frames/levels stay open —
+  see the S3(a) dated note.]
 
 **Named conditionality stack (per consumer):**
 * Accepted 2/2: LEMMA GENHN-T(b)'(i)/(ii)/(iii), GENHN-2/2', the S4
@@ -1382,3 +1419,69 @@ commits, 0160b94 / 40f313a); no runner edited, no re-run.
 Grade: 0/2 UNCHANGED (repair round, not a pass); PE3 next.
 TARGET 1 (GENTOW5-A/A0/A1) was not at stake at PE2 and is
 untouched this round.
+
+## S9. [GT5-r3] PE3 REPAIR RECORD (2026-08-10, post-passPE3)
+
+PE3 verdict (GENTOW5_passPE3_report.md @ 39c36aa): NOT CLEAN — 0
+CRITICAL + 1 GAP (PE3-F-1) + 2 MINOR (PE3-F-2, PE3-F-3); counter
+stays 0/2. This section is the r3 repair round; this round's edits
+are tagged [GT5-r3]. Sealed machine artifacts BYTE-FROZEN, md5s
+re-verified this round (gentow5_checks.py 5fa684c7...,
+gentow5_output_exact.txt dc499a49..., gentow5_output_full.txt
+839a8660...; the PE1/PE2/PE3 fresh instruments live at their own
+commits, 0160b94 / 40f313a / 9f0eca7); no runner edited, no re-run.
+
+* **PE3-F-1 (GAP) -> RE-INDEXED at S3(c).** The entry-read clause
+  is RE-DERIVED as the uniform GENTOW-1 transport 2 -> i+1: the
+  template (GENTOW1_PROOF S2, re-read at source this round)
+  anchors its read one level BELOW the key with all stage data the
+  KEY'S OWN (level-1 read, kappa_2 = u_2/e_2, psi_2^{mu2}, box vs
+  Phi_2^{mu2} at mu2*E_2+1, pins (mu2-j)E_2+1, floor dv_2(Phi_2) >
+  E_2), so T_{i+1}'s read clause is "level-i stage read, slope
+  kappa_{i+1}, residual psi_{i+1}^{mu}" — the anchoring the
+  display's degree/weight/pin/floor half already had; GENTOW-1 is
+  the i = 1 instance verbatim. The composed (i+2)-read pairing is
+  killed by the residual-degree count (level-(i+1) polygon length
+  mu, full kappa_{i+2}-side residual degree mu/e_{i+2} vs deg
+  psi_{i+2}^{mu} = mu*f_{i+2}: forces l_{i+2} = 1, improper) and
+  refuted at the committed P-B3 rows f32@Phi4 (pins [682,inf,0]:
+  kappa_5-side, residual degree 1 = psi_5, box 341 = 2E_4+1 holds)
+  and Phi4@Phi3 (pins [170,inf,0]: same shape, box 85 = 2E_3+1).
+  The corrected pairing VERIFIES at both committed witnesses,
+  re-derived by hand this round from the digit expansions f32 =
+  Phi_3^4 - 512 Phi_2 Phi_3^2 - 2^16 Phi_3 + 2^16 Phi_2^2 and
+  Phi_4 = Phi_2^4 - 32 Phi_1 Phi_2^2 + 1024x (after Phi_1^2 =
+  Phi_2 + 4x): f32@Phi3 (pins [340,inf,186,inf,0]: one
+  kappa_4-side, j=2 digit 186 strictly above the chord 170,
+  on-chord support {0,4}, residual y^2+1 = (y-1)^2 = psi_4^2 in
+  F_2) and Phi4@Phi2 (pins [84,inf,50,inf,0]: one kappa_3-side,
+  support {0,4}, residual psi_3^2) — LHS and RHS both hold at
+  each. Proof side: the (c)-proof's substitution table entry
+  "E_{i+1} -> E_{i+2}" resolved to E_{i+2} and the Step-2
+  parenthetical re-anchored — the step displays sit uniformly at
+  the entered stage Phi_{i+2} and prove the corrected (c) at index
+  i+1, consuming (b) at Phi_{i+2} + (SLOT_{i+1}) (step-(i+1) data
+  of the same induction); with the index-1 base, indices 1..r-1
+  are covered. Consumers re-verified: (e) consumes the pins +
+  box at E_{i+1} (the sound half) and its conclusion u_{i+2} >
+  e_{i+2}E_{i+1} matches DEF GENTOW5-1's floor-chain provenance
+  one index down; (d) is self-contained (GENTOW5-A's pattern);
+  the S4 witness consumes (b)+(e); no sentence in the note
+  consumes the retired (i+2)-read pairing.
+* **PE3-F-2 (MINOR) -> DATED at both flank sites.** One dated
+  bracket each at the S6 TARGET-2 bullet and the (a)-proof
+  parenthetical: w is measured at the 7 measured primes (GENTOW2
+  PE6's 6 across LD1/LD3/GA1/GA3 + PE3 leg W's carrier-(8,4)
+  prime at GA3*); the w_i = 1-OPEN claims themselves stand
+  (closed-form law + unmeasured frames/levels), per the S3(a)
+  dated note.
+* **PE3-F-3 (MINOR) -> POINTER CORRECTED at the consumer walk.**
+  The S4-witness bullet now points the w-triviality record at
+  S6's TARGET-2 [GT5-r2] rider; the coverage box carries the seam
+  axis (S4.1's re-check) and no w row.
+
+Grade: 0/2 UNCHANGED (repair round, not a pass). TARGET 1
+(GENTOW5-A/A0/A1) was not at stake at PE3 and is untouched this
+round; the r2 repairs, the w-note rider, LEMMA GENTOW5-D, and
+(a)/(b)/(d)/(e) all survived PE3's attack and are untouched
+beyond the three sites named here.
