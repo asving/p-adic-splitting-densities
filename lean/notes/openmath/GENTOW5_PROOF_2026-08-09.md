@@ -805,8 +805,8 @@ only slot is t = 0 with s = f - t = 1 and vartheta_{i,1} = 1 BY
 DEFINITION, letters notwithstanding. Corrected = naive khat at
 every rung; the displayed keys Phi_2/Phi_3/Phi_4 and f32 ARE the
 gauge-corrected recipe's outputs unchanged, and the committed
-sealed artifacts stand as-is. The witness therefore verifies
-NOTHING about the seam — the seam-live machine leg is the PE1
+sealed artifacts stand as-is. The witness therefore does not
+discriminate the seam — the seam-live machine leg is the PE1
 fresh instrument's FR-1 frame, cited at the S2.1 pin.] The degree-32
 member, one more tight rung (m* = 4*341/4... the top height
 m* > e*E_4 = 340, minimal odd 341 on dv_4):
@@ -1048,8 +1048,19 @@ the 87a7b61-era file, the PE1 target state).
   machine-REFUTED at letter-live grades (GENTOW2 PE4 @ 2f95be6) and
   is NOT consumed. In-flight pin at commit time: GENTOW2 r3
   (cocycle flip) dispatched in ledger B9 (87a7b61), NOT landed at
-  GENTOW2 HEAD = 7532acb when this round committed; the discharge
-  here does not wait on it.
+  GENTOW2 HEAD = 7532acb when this round's commit 2 (014f517)
+  pinned it; the discharge here does not wait on it. MID-ROUND
+  UPDATE (dated, this round's commit 5): GENTOW2 r3 commit 1/4
+  landed at 117b2c0 while this round was committing — B-2 flipped
+  to the cocycle form u(beta_t) = theta(t)*w^{f3-t} (theta the
+  repo-derivable nhat2-cocycle, letter-valued; w a single
+  cross-frame unit; LEMMA GENTOW2-B restated via the multiplicative
+  prescription c_t = theta(t)^{-1}*a_t, per its commit message).
+  That form is an INSTANCE of the per-grade x0-free family the
+  S3(a) discharge consumes (theta(t) grade-indexed, w fixed), and
+  its theta leg is the S2.1 pin's vartheta mechanism one level
+  down — consistent both ways; the S3(a) text stands as written on
+  arbitrary x0-free u, r3's remaining commits notwithstanding.
 * **F-3 (GAP) -> REPAIRED in S2.4.** Top-grid weight DEFINED
   (Phi_i at E_i); strict clause restricted to interior carries
   (rungs 1..i-1, in-datum); top carry priced PRESERVED — the i = 2
