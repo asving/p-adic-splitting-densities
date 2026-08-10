@@ -14796,3 +14796,20 @@ FR-A = the first seam-live depth-3 chain anywhere (first live ϑ at
 i ≥ 2; the naive tooth fired AT i=2). Board: HETOW 2/2 ✓ ·
 GENTOW1 2/2 ✓ · GENTOW2 1/2 · GENTOW5 0/2 (r2) · GENTOW3/4/6 arcs
 to open.
+
+**B11 DISPATCHED (2026-08-10, wf_eba7356f-80b)** — recorded post-dispatch
+(the record rule applied to the orchestrator). Three units: (1) riders —
+GENTOW1 dated acceptance record + the frame-W i(u₂) m-1 cure at source;
+GENTOW2 post-PE5 corrections (B′-consumption lists unified; the 2
+descriptive FGMN cites inventoried) — sequentially feeding (2) GENTOW2
+passPE6, THE ACCEPTANCE ATTEMPT at 1/2 (surfaces: the B″/B-flipped complex
+as one chain; the ψ^{(w)} quantifier through consumers with the as-of rule;
+the PE4 RED-by-design instrument's permanent record; free hunt; fresh route
+= a w-detecting probe and/or an e₃≥2 × γ₂-live × f₃≥2 triple frame). In
+parallel (3) GENTOW5 r2 per the PE2 report's named shapes: F-1 the ψ^{(w)}
+re-scope of GENTOW5-B(a) (cite B″ + the PE5 admissibility verification;
+w=1 stated open; per-consumer ripple check), F-2 the lift-flavor display
+corrected to the re-solved family the instruments implement (derive from
+class separation; verify at FR-A height-14; cite the FA1-LIFT row), F-3
+the i=1 empty-rung edge, F-4 the seam-live × e≥2 compound coverage row.
+Single-wave throttle in force; GENTOW3/4/6 arcs open at B12.
