@@ -874,16 +874,21 @@ the seal commit. Three frames, two of them PARTIAL-SIDE members
 (off 𝒯, non-monic composed top / deg n > mu2*·D2):
 * FRAME-P (partial, p = 3): Phi' = x²−3 (e1 = 2, f1 = 1, h = 1),
   e2 = 2, f2 = 1, u2 = 5, psi2 = T−1, Phi2 = Phi'² − 9x (D2 = 4,
-  E2 = 10); f = (Phi2² + 3^6)·(Phi' − 27), deg 10 (block RAM
-  anchor at floor 6; sibling side slope 6; c_g = 5 — the PE2-P
-  value at a fresh member).
+  E2 = 10); f = (Phi2² + 81·Phi')·(Phi' − 27), deg 10 (block RAM
+  anchor 3^4 at slot (0,0,1), height 16 + 5 = 21 = 2E2 + 1 sharp;
+  sibling side at dv2(Phi') = 12; c_g = 5 — the PE2-P value at a
+  fresh member). [Pre-seal fix, disclosed: the commit-1 draft
+  carried 3^6 at slot (0,0,0) — in-budget (floor 6) but at height
+  24, NOT the sharp anchor its P-C prediction priced; corrected
+  from the hand ledger before the runner's first run.]
 * FRAME-P2 (partial, p = 2, f2 = 2 so within-coordinate b-slots
   live): the FAM-B genre Phi2 = Phi'² − 2x·Phi' − 8 (Phi' = x²−2,
-  e2 = 1, f2 = 2, u2 = 3, E2 = 6); f = (Phi2² + 2^7)·(Phi' − 8),
-  deg 10, c_g = 3.
+  e2 = 1, f2 = 2, u2 = 3, E2 = 6); f = (Phi2² + 2^6·x)·(Phi' − 8),
+  deg 10, sharp anchor 2^6·x at (0,1,0) (height 13 = 2E2 + 1),
+  c_g = 3. [Same pre-seal fix species as FRAME-P, same disclosure.]
 * FRAME-F (full-side consistency): the FAM-B genre, f = Phi2² +
-  2^7 on 𝒯 — LEMMA GENTOW-6.4 must reproduce GENTOW-5(a)'s band-1
-  behavior where both apply.
+  2^6·x on 𝒯 — LEMMA GENTOW-6.4 must reproduce GENTOW-5(a)'s
+  band-1 behavior where both apply.
 Checks per frame: P-A TRI (perturb [f]_d at each degree d: digits
 at slot degrees > d byte-unchanged, digit at slot degree d shifted
 by exactly the perturbation); P-B WIN (random pi^N-lifts: all
@@ -898,9 +903,10 @@ wrong slot-degree formula must fail P-A's diagonal), T-CAP (a
 mutant asserting band-3 stability must be killed by P-D).
 **RESULTS: PENDING — filled at the verdict commit from the
 artifacts (runner sealed first with hand-derived preregistered
-pins in the docstring: FRAME-P p = (26, ?, 5) with p_0 = 2E2 + 1
-+ c_g = 26 and c_g = 5; FRAME-P2 c_g = 3; undercut target =
-e1e2·N exactly).**
+pins in the docstring: FRAME-P (p_0, p_2) = (26, 5) with p_0 =
+2E2 + 1 + c_g and p_2 = c_g = 5; FRAME-P2 (16, 3); FRAME-F
+(13, 0); undercut target = e1e2·N exactly, below-cap pins held on
+the same lift).**
 
 ### S6.3 MINOR REPAIRS + THE F-4 CLOSURE RECORD
 
