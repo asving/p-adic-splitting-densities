@@ -295,15 +295,19 @@ def gp_sigma(f, p):
     pol = '+'.join('(%d)*x^%d' % (c, i) for i, c in enumerate(f)
                    if c) or '0'
     src = ("default(parisizemax, 2000000000);\n"
-           "my(fa = factor(" + pol + "), out = List());\n"
-           "for (i = 1, matsize(fa)[1],\n"
-           "  my(g = fa[i, 1]);\n"
-           "  if (poldegree(g) == 1, listput(out, [1, 1]),\n"
-           "    my(nf = nfinit([g, [" + str(p) + "]]),"
-           " dec = idealprimedec(nf, " + str(p) + "));\n"
-           "    for (j = 1, #dec,"
+           "sig(f, p) = {\n"
+           "  my(fa = factor(f), out = List());\n"
+           "  for (i = 1, matsize(fa)[1],\n"
+           "    my(g = fa[i, 1]);\n"
+           "    if (poldegree(g) == 1, listput(out, [1, 1]),\n"
+           "      my(nf = nfinit([g, [p]]),"
+           " dec = idealprimedec(nf, p));\n"
+           "      for (j = 1, #dec,"
            " listput(out, [dec[j].e, dec[j].f]))));\n"
-           "print(\"SIG \", vecsort(Vec(out)));\nquit\n")
+           "  vecsort(Vec(out))\n"
+           "}\n"
+           "print(\"SIG \", sig(" + pol + ", " + str(p) + "));\n"
+           "quit\n")
     out = subprocess.run(['gp', '-q', '-f'], input=src,
                          capture_output=True, text=True, timeout=900)
     m = re.search(r'SIG (.*)', out.stdout)

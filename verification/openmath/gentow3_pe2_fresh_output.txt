@@ -1,0 +1,18 @@
+=== GENTOW-3 passPE2 fresh route (2026-08-10) ===
+FR2-C1: D2=4 E2=6 delta=1 THETA=[19, 13, 7]
+  P2-1 self-shadow pins [19, 13, 7] = THETA [19, 13, 7] (attained x3), values match hand derivation
+  P2-2 FR-GL (mu2=2) replicated: ShC_0 = -486Phi'+2916x, ShC_1 = 9Phi'-27x, pins [13, 7]
+  P2-3 FR-M3 f = Phi2^3+32: leaf decided at pin 10 = THETA_0 (node floor); hulls identical [(0, 10), (3, 0)], vertex digit identical ((0, 0, 1),); mindiff [12, 7, 4] -- the shadow read equals the honest read on every consulted datum: NOT mislabeled, yet its deciding height reaches THETA_0 at delta = 1
+  P2-3 PARI sigma: [(6, 1)] = {(6,1)} -- honest read tRAM(10) confirmed; both routes priced it identically
+  P2-4 f = Phi2^3 + 3^9: faithful at 18 = THETA_0 - 1 (hulls + vertex digits identical; fakes at (1,13),(2,7) above the edge)
+  P2-5 f = Phi2^3 + 3^10: shadow hull [(0, 19), (3, 0)] (fake pin 19 undercuts the honest pin 20) vs honest [(0, 20), (3, 0)] -- mislabeled leaf, floor respected (mindiff [19, 13, 7])
+  P2-5 PARI sigma: [(6, 2)] = {(6,2)} (honest truth; the shadow hull would misprice it)
+  P2-6 floor sweep: 120 coordinate checks, floor + entry margin hold
+  P2-7 PARI: corrected key sigma [(2, 2)] = {(2,2)} = (e1e2, f1f2) carrier; gauge-NAIVE key sigma [(4, 1)] = {(4,1)} NOT a carrier -- the compound frame is meaningful only at the corrected key (erratum 59c1966)
+  P2-8 j = mu2 top: both routes carry the monic 1 (trivial agreement; the theorem correctly scopes j < mu2)
+  P2-9 delta = 0 corner: i(m_t) = 0 across the whole grid (delta = 0 => u2 = e2*D'*h == 0 mod e1) -- at f1 = 1 every delta = 0 genre is x-free, the geography trivializes; the corner is fenced by [r1] AND carries no attainment content at f1 = 1
+tooth T2-UP fired x3 (THETA+1 mutant killed at all three attained pins)
+tooth T2-DOWN fired (THETA-1 mutant refuted: the height-18 digit is faithful, first divergence 19)
+tooth T2-CL fired (the "entire delta = 1 leaf population mislabeled" reading killed by the correctly-read THETA-reaching leaf member)
+=== VERDICT: GREEN -- 149 checks, 0 violations ===
+tally: {'SELF': 6, 'REP': 2, 'CL': 6, 'GP': 4, 'BAND': 3, 'DIV': 2, 'FLOOR': 120, 'TOP': 2, 'D0': 1, 'TEETH': 3}  teeth: 3/3
