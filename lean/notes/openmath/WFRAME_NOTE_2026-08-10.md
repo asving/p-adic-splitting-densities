@@ -452,8 +452,27 @@ LD2), T-GAMMA (a perturbed γ₂ lattice vector breaks the LD1 split).
 
 **Seal:** this section + the runner committed BEFORE the first run
 (predictions in the docstring; RED runs will be kept as-is with
-diagnosis). **Verdict:** PENDING at seal time — folded below from
-the artifacts after the run.
+diagnosis). Seal commit 2840d78c; runner md5
+e9495dfcbf866baef09bea60f70d0dbc.
+
+**Verdict (from the artifacts, 2026-08-10).** First run under the
+seal: **GREEN — 47 checks / 0 violations; teeth 4/4 BITE, 0 duds;
+exit 0** (`wframe_note_checks_output.txt`, md5
+470d157b1cff29f31e06cb27e22fe715). Isolated re-run from a fresh
+/tmp copy: BIT-IDENTICAL output, exit 0. Every preregistered
+prediction met: the 4 w-avatar splits and letter values (z₁, z₁²,
+z₂², z₂ — each ≠ 1), the 3 ϑ(0) pins + 3 top-slot trivialities +
+the LD3 f₃ = 1 degeneracy, the 3 IDY closures of LAW W-B(6) at
+slot 0 with independently recomputed u(β₀)-avatars (LD1/GA1: 1;
+GA3: z₂), and the 4 F₄ substitution pins of LAW W-A/W-C (LD1
+irreducible-pattern, GA1 split-pattern with root map, LD2
+law-vs-nose contrast, GA3\* ψ^{(w)} irreducible) — with T-W1
+confirming w := 1 breaks the GA3 closure, T-CONST confirming
+per-tower constancy fails twice, T-NOSE confirming the nose
+prediction contradicts the measured LD2 pattern, and T-GAMMA
+confirming lattice-vector sensitivity. `statement_ledger.py
+--check` at this commit: GREEN — 166 baseline statements, 0
+changed, 0 deleted (the note ADDED, changed nothing).
 
 ---
 

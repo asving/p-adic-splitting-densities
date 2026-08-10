@@ -1,0 +1,53 @@
+CHECK LD1.WVAL                           PASS ratio=(77, 2, -18) val=0
+CHECK LD1.WSPLIT                         PASS (j,k)=(-2, -9)
+CHECK LD1.WAVA                           PASS avatar=z1^1
+CHECK LD1.WNE1                           PASS w-avatar != 1
+CHECK LD3.WVAL                           PASS ratio=(148, 7, -36) val=0
+CHECK LD3.WSPLIT                         PASS (j,k)=(-7, -18)
+CHECK LD3.WAVA                           PASS avatar=z1^2
+CHECK LD3.WNE1                           PASS w-avatar != 1
+CHECK GA1.WVAL                           PASS ratio=(42, 4, -20) val=0
+CHECK GA1.WSPLIT                         PASS (j,k)=(-4, -10)
+CHECK GA1.WAVA                           PASS avatar=z2^2
+CHECK GA1.WNE1                           PASS w-avatar != 1
+CHECK GA3.WVAL                           PASS ratio=(82, 9, -40) val=0
+CHECK GA3.WSPLIT                         PASS (j,k)=(-9, -20)
+CHECK GA3.WAVA                           PASS avatar=z2^1
+CHECK GA3.WNE1                           PASS w-avatar != 1
+CHECK LD1.THVAL                          PASS ratio=(-1, 5, -2)
+CHECK LD1.TH0                            PASS theta(0)=z1^1 (j,k)=(-5, -1)
+CHECK LD1.THTOP                          PASS theta(top)=1
+CHECK GA1.THVAL                          PASS ratio=(1, 2, -2)
+CHECK GA1.TH0                            PASS theta(0)=z2^2 (j,k)=(-2, -1)
+CHECK GA1.THTOP                          PASS theta(top)=1
+CHECK GA3.THVAL                          PASS ratio=(1, 2, -2)
+CHECK GA3.TH0                            PASS theta(0)=z2^2 (j,k)=(-2, -1)
+CHECK GA3.THTOP                          PASS theta(top)=1
+CHECK LD3.THTRIV                         PASS single slot = top: no cocycle live
+CHECK LD1.U0VAL                          PASS ratio=(153, 9, -38)
+CHECK LD1.U0                             PASS u(b0)=z1^0
+CHECK LD1.IDY                            PASS u(b0)==theta0*w^2: 0==0 mod 3
+CHECK GA1.U0VAL                          PASS ratio=(85, 10, -42)
+CHECK GA1.U0                             PASS u(b0)=z2^0
+CHECK GA1.IDY                            PASS u(b0)==theta0*w^2: 0==0 mod 3
+CHECK GA3.U0VAL                          PASS ratio=(165, 20, -82)
+CHECK GA3.U0                             PASS u(b0)=z2^1
+CHECK GA3.IDY                            PASS u(b0)==theta0*w^2: 1==1 mod 3
+CHECK LD1.SUB                            PASS w^2P(y/w)=[1, 3, 1] pin=[1,3,1]
+CHECK LD1.MONIC                          PASS monic, const != 0
+CHECK LD1.IRRPAT                         PASS pattern preserved (irr)
+CHECK LD2.REAL                           PASS realized=[1, 2, 1] pin=[1,2,1] (decode MP2)
+CHECK LD2.MEASIRR                        PASS measured pattern: ONE (4,4) prime = irr
+CHECK LD2.NOSESPLIT                      PASS nose target splits (y+1)(y+z^2)
+CHECK GA1.SUB                            PASS w^2P(y/w)=[2, 3, 1] pin=[2,3,1]
+CHECK GA1.SPLITPAT                       PASS pattern preserved (split)
+CHECK GA1.ROOTMAP                        PASS roots scale by w
+CHECK GA3s.SUB                           PASS psi^{(w)}=[1, 2, 1] pin=[1,2,1]
+CHECK GA3s.IRRPAT                        PASS ONE (8,4) prime = irr, both
+CHECK GA3s.CONST                         PASS const = w^2*psi(0) != 0
+TOOTH T-W1         BITES w:=1 at GA3: theta0*1 = z2^2 != z2 = u(b0)
+TOOTH T-CONST      BITES w constant-per-tower FALSE twice
+TOOTH T-NOSE       BITES nose split-prediction != measured irreducible at LD2
+TOOTH T-GAMMA      BITES perturbed gamma2 breaks the LD1 split
+checks: 47, violations: 0; teeth: 4, duds: 0
+VERDICT: GREEN
