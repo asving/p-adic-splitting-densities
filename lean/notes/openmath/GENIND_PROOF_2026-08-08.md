@@ -2659,13 +2659,29 @@ This is a strengthening of the DISPLAY, not of the truth: the m = 2
 and n = 3 members already sit in the species at their proved pins,
 and the induction below PROPAGATES the rate clause, so the package
 that closes under GENIND.B's strong induction is P(k)-with-(A2-RATE).
+[ar1 2026-08-10, GAP-1 repair: as sealed, this closure sentence
+exceeded its displayed support — GENIND.C′ below proves the rate for
+the SIMPLE slice only, while (A2-RATE) as displayed pins the FULL
+complement, whose CS-stratum drain component (first consumed with
+CS-bearing (4, d) children at n = 5, C1(iii)'s GROWING regime) had no
+displayed all-window rate. The leg is now supplied: ANNEX-LEMMA
+GENIND-C2 (the r1 append below) derives the CS-drain rate from the
+displayed entry pricing + (CS-1)'s stage-window slot geometry, at
+window-deficit slope ≥ 2 — under (CS-1) alone, a clause of the same
+[GENIND-H] the strong induction already assumes (de facto discharged
+at n = 4). Read the closure sentence WITH that split: simple part by
+GENIND.C′ unconditionally; CS-drain part by GENIND-C2 given (CS-1);
+every displayed consumer of S5.2's vanishing bullet needs only the
+simple part.]
 
 **R1.2 ANNEX-LEMMA GENIND-C1 (the β-term estimate; the two-regime
 split).** Fix (m, d), window N, and a β-genre per GENIND-3's
 hypothesis with children (μ_l, k_l), depths
 D_l = min_j (v(a_j) + j·k_l) and windows M_l = N − D_l; write
-T_l = Q^{μ_l(M_l−1)} for the child totals and u_l = u_{μ_l,d}(M_l).
-Then:
+T_l = Q^{μ_l(M_l−1)} for the child totals and u_l = u_{μ_l,d}(M_l)
+[ar1 2026-08-10: the FULL complement, as written — its rate member is
+supplied by GENIND.C′ (simple part) + ANNEX-LEMMA GENIND-C2 (CS-drain
+part, under (CS-1); the r1 append below)]. Then:
 (i) [route prefactor] the genre's relative mass obeys
 ρ_g ≤ Q^{−(D_l−1)} for EACH child index l: the j = 0 term of the min
 gives D_l ≤ v(a₀), so the genre lies inside {v(a₀) ≥ D_l}, whose
@@ -2721,7 +2737,13 @@ induction's bound at N−mk the exponents recompose to
 (Q−1)Q^{−k·c(m)}·[K(N−mk)^B·Q^{−(N−c)}], and Σ_{k≥1}(Q−1)Q^{−k·c(m)}
 ≤ 1 for c(m) ≥ 1: the α-sum is ≤ K·(N−m)^B·Q^{−(N−c)}. β-terms:
 GENIND-C1 gives ≤ m·p̃(m)·K'·N^{m+B'}·Q^{−(N−c'−1)} with the
-children's constants (degree induction). Choosing B = m + B' + 1 and
+children's constants (degree induction). Choosing **c := c′ + 1**
+[ar1 2026-08-10, MINOR-1: the c-choice displayed at source — c′ =
+max(children's c, c₀) is degree-induction data, so no circularity;
+with c = c′ + 1 the β-leg's Q^{−(N−c′−1)} = Q^{−(N−c)} EXACTLY, and
+c ≥ c₀ + 1 ≥ 2 ≥ 1 absorbs the head leg (Q^{−(N−1)} ≤ Q^{−(N−c)} iff
+c ≥ 1); the α-leg re-enters at the same degree with this same c, the
+window induction's own constant], B = m + B' + 1 and
 K large enough that K·[N^B − (N−m)^B] dominates the head + β
 coefficients (a degree-(B−1) polynomial inequality, satisfiable
 since N^B − (N−m)^B has positive leading coefficient m·B·N^{B−1}),
@@ -2732,8 +2754,15 @@ sharp at the ground instance. ∎
 **R1.4 What moves, what does not.** GENIND.C's vanishing bullet now
 reads through (A2-RATE) + GENIND-C1 + GENIND.C′ — the consumed rate
 is supplied by the DISPLAYED hypothesis and the displayed two-regime
-estimate; the α/head legs were never in question. No committed
-number, count law, or supplier verdict moves: the n ≤ 3 suppliers
+estimate; the α/head legs were never in question. Of the five
+committed displays this section consults — W-11's R(M), HEX3.A's
+exact law, HEX3.B's rate, the GT-BDRAIN n = 4, 5 first-step
+recursions, and GENIND-BOX-4's pricing sentence — none is rewritten
+here [ar1 2026-08-10, MINOR-2: the sealed sentence ("No committed
+number, count law, or supplier verdict moves") quantified with no
+scope pointer, the record species the note's own r5
+enumerative-records policy was adopted against; this enumeration
+replaces it]: the n ≤ 3 suppliers
 (W-11, HEX3.A/B) already carried the species at their pins, and the
 n = 4, 5 exact recursions are stronger than the bound at those
 degrees (GENIND-BOX-4's own sentence). GENIND-BOX-4's pricing of the
@@ -2742,7 +2771,10 @@ per-genre prefactor ledgers); the box's sharpened defect — the
 hypothesis-WIRING gap Codex named — is cured by this section.
 Step 4's simple part consumes GENIND.C′ verbatim in place of the
 bare bullet; the CS legs keep their [GENIND-H]/(CS-EXACT)
-conditionality unchanged.
+conditionality unchanged [ar1 2026-08-10: for menu + exactness — the
+CS legs' RATE is now supplied separately by ANNEX-LEMMA GENIND-C2
+under (CS-1) alone (the r1 append below); (CS-EXACT) supplies
+exactness, not a rate, per R6.2's identity-vs-bound separation].
 
 ### R2 (CODEX F1): the unit-pivot step — GENIND-6(c)'s onto/constant-fiber condition displayed at schema level
 
@@ -2977,9 +3009,17 @@ The S4 repair queue is EXECUTED in full: R1 (F3) @ a1525ea +
 machine leg f5271e4; R2–R6 in this append stack. Byte-freezes at
 the close: accepted body + pre-annex appends lines 1–2548 md5
 eefcf658 (re-verified at each annex commit); the R1 annex slice
-(lines 2549–2745) byte-identical to a1525ea's; machine leg pinned
-42fd603e (py) / d938ad82 (output); sealed runner e7ca150b and every
-sealed artifact untouched. Grade honesty: this annex cures the six
+(lines 2549–2745) byte-identical to a1525ea's; the pinned artifacts
+this annex consults are exactly four — genind_checks.py e7ca150b
+(read-only at its two gate lines), genind_annexr_supp.py 42fd603e +
+its committed output d938ad82 (the additive leg), and this note's own
+bytes 1–2548 eefcf658 — each verified at its pin at this close
+[ar1 2026-08-10, MINOR-2: the sealed clause "sealed runner e7ca150b
+and every sealed artifact untouched" quantified without enumeration,
+against the note's own r5 policy; this enumeration replaces it. The
+annex's five commits — a1525ea2, 31c6723d, 98ac7bb0, fe0ed6c0
+(note-only) and f5271e4 (the supp pair) — touch no file beyond this
+note and that pair]. Grade honesty: this annex cures the six
 adjudicated findings by display riders, one erratum, and the R1
 derivations at the accepted text's own grade; the annex has NOT
 itself been through a hostile pass. The 2/2 acceptance attaches to
@@ -3052,3 +3092,144 @@ frontier.
 supplier movement since this note's last pin 850e77e = exactly the
 eight commits enumerated above (E1–E3, 58b1080, r2 ×4). Byte-freeze
 re-verified at this commit: lines 1–2548 md5 eefcf658.
+
+---
+
+## ANNEX R — r1 (2026-08-10; the ANNEX R hostile pass's repair queue)
+
+**Provenance and scope.** The annex stack's scoped hostile pass
+(`GENIND_ANNEXR_pass_report.md`, 2026-08-10) returned **UNREFUTED,
+NOT CLEAN: 0 CRITICAL + 1 GAP + 2 MINOR** — GAP-1 = the
+full-vs-simple complement seam at R1.1's closure sentence; MINOR-1 =
+R1.3's undisplayed c-choice; MINOR-2 = two non-enumerative universal
+record sentences (close + R1.4). This r1 executes all three. The
+accepted body stays byte-frozen (lines 1–2548 md5 eefcf658,
+re-verified at this commit); the ANNEX R text above is edited at
+exactly five [ar1 2026-08-10]-tagged sites — the R1.1 closure rider,
+the R1.2 u_l rider, the R1.3 c-choice, the R1.4 enumeration, the
+close enumeration — plus one rider at R1.4's CS sentence below;
+every other annex line is unchanged. Repairs are RE-DERIVED from the
+note's own lemmas (GENIND-4's budgets, S7.1/S7.3's slot geometry,
+S5.1's criterion arithmetic, S5.3's entry tables, W-11's R(M) tie,
+R6.1's monotonicity); no verifier sentence is transcribed. Annex
+stack stays 0/2.
+
+### r1.1 (GAP-1): ANNEX-LEMMA GENIND-C2 — the CS-drain rate
+
+**The defect, exactly.** GENIND.C′ (R1.3) proves the (A2-RATE) decay
+for the SIMPLE slice; (A2-RATE) as displayed (R1.1) pins the FULL
+complement u_{μ,d}(M). The difference — the mass that enters a CS
+event and stays conservative-undecided, the CS-STRATUM DRAIN — had
+exactness ((CS-EXACT)) but no displayed all-window rate, while
+GENIND-C1(iii)'s GROWING regime consumes the full member's rate at
+(4, d) children from n = 5 on. The entry mass alone cannot supply it:
+the CS entry loci have POSITIVE relative density (S5.2's own
+sentence), so the decay must come from inside the stage.
+
+> **ANNEX-LEMMA GENIND-C2 (the CS-drain rate; conditional on (CS-1)
+> only).** Fix (m, d) with m·d ≥ 4, window N, and a CS genre of the
+> S5.2 recursion's inventory: entry-height datum with v(a₀) = H on
+> the opening locus (the DRAIN-first key height; visibility floor
+> H ≤ N−1, R4's species), stage data (μ, e, ψ, E = e, K,
+> |K| = q^{d·deg ψ}) per S7.1. Assume, of [GENIND-H]'s clauses,
+> **(CS-1) only** — the stage count isomorphism with its slot
+> geometry (one K-digit per (abscissa, v′-height), E slots per
+> v-unit: COROLLARY W-9/JC-F1's dim_K 𝒜(T) = E; ragged-corrected
+> below the uniform threshold). Then the genre's conservative-drain
+> contribution to u_{m,d}(N) obeys the (A2-RATE) species. Precisely:
+>
+> (i) [stage window supply] the stage read is a (μ, K)-cluster read
+> at stage window M★ ≥ E·(N−1−H): every consulted slot string runs
+> from its node height (deepest = E·H) to the uniform boundary
+> E·(N−1) in v′-units; the visibility floor H ≤ N−1 is exactly
+> M★ ≥ 0. Instances: the (2,2)-E stage — GENIND-4's node
+> C(4h+1, 2h+1) in dv-units against S7.3's uniform boundary 2N−2,
+> H = 2h, so M★ = 2N−2−4h (the stage-α(2h) transported window, the
+> W-11 shape); genre F — H = 4k, v′ = v, M★ = N−1−4k over K = F_{q²}.
+>
+> (ii) [stage drain rate] at μ ≤ 3 the stage read is CS-FREE (S5.1's
+> criterion AT the stage: CS needs ≥ 4 keys and the stage has μ), so
+> GENIND.C′ applies to the whole stage complement: stage-drain
+> fraction ≤ K★·M★^{B★}·|K|^{−(M★−c★)}. At μ ≥ 4 (first possible at
+> m ≥ e·μ·deg ψ ≥ 8) recurse this lemma jointly with C′: the stage's
+> product-degree μ·(d·deg ψ) ≤ m·d (S5.1's side-length arithmetic
+> m ≥ e·μ·deg ψ) and its window M★ < N — CS legs enter GENIND.C′'s
+> lexicographic (degree, window) induction exactly as α-legs do.
+>
+> (iii) [composition at slope ≥ 2] drain contribution ≤ (entry
+> relative mass ρ) × (stage drain fraction): decided split-off pieces
+> contribute no drain, and at MIXED genres (stage + β-children
+> coexisting, first at n = 6) the frame drain composes by
+> GENIND-6(d)'s inclusion–exclusion, bounded by the union bound as in
+> GENIND-C1(ii) — bounds propagate by R6.2's separation, no
+> (CS-EXACT) needed. In original q-units,
+> |K|^{−(M★−c★)} ≤ q^{−(e·d·deg ψ)·(N−1−H)+O(1)} with
+> **e·deg ψ ≥ 2 — the CS-DEFINING inequality (S5.1's necessity
+> arithmetic)**: a composite stage certifies at least TWO q-digits
+> per remaining window unit. The entry mass ρ decays geometrically in
+> H (the entry laws are order-1 W-12.A-priced shapes: S5.3's tables
+> at n = 4, 5; S5.2's exactly-known entry mass at general n), so the
+> height sum converges and the genre count is ≤ p̃(m)·N^m
+> (GENIND-C1(iv)'s species). Summing:
+>
+>     CS-drain part of u_{m,d}(N)/Q^{m(N−1)} ≤ K_c·N^{B_c}·q^{−(N−c_c)},
+>
+> with window-deficit slope ≥ 2 where the stage window is live and
+> ≥ 5/2 from the entry mass alone at floor-adjacent strata (E:
+> ρ = (q−1)q^{1−5h} at 2h ≥ N−2; F: (q(q−1)/2)q^{−10k} at
+> 4k ≥ N−2) — the crossover is the visibility floor. In particular
+> an n = 4 CS drain at window-deficit slope < 1 is excluded twice
+> over. ∎
+
+**Displayed instances (n = 4, 5 — the degrees C1 first consumes).**
+* CS4-E(h): ρ = (q−1)q^{1−5h}, M★ = 2N−2−4h, |K| = q: composed
+  contribution ≤ poly(N)·q^{−(2N+h)+O(1)} — h-sum geometric.
+* CS4-F(k): ρ = (q(q−1)/2)·q^{−10k}, M★ = N−1−4k, |K| = q²: composed
+  ≤ poly(N)·q^{−(2N+2k)+O(1)}.
+* CS5-V1E2(h): entry_rel = (q−1)q^{2−(15h+1)/2}·(1−q^{−(N−(5h+1)/2)})
+  — constant-order in N (the S5.2 positive-density display; the
+  fifth root's headroom fiber is a DECIDED piece) — times the same
+  (2,2)-E stage at M★ = 2N−2−4h: composed ≤ poly(N)·q^{−2N+O(h)};
+  the N-decay comes entirely from inside the stage. CS5-V4E2 and the
+  S5.3 siblings: same composition species (entry geometric in its
+  height data × a (2,2)-type stage), displayed by the table.
+
+**Conditionality, honestly.** GENIND-C2 consumes (CS-1) ONLY — not
+(CS-2), not (CS-3), not (CS-EXACT) (rate is a bound; R6.2). At n = 4,
+(CS-1) is de facto discharged (GENH4 @ r3 4b0d946 per Step 4's [r3]
+record: GENIND-4 + GENH4-1F + GENH4-2/-3/-4), so u_{4,d}'s FULL
+(A2-RATE) — the member C1(iii) consumes at n = 5 — rides pinned
+theorems. At n ≥ 5 the CS-drain leg is conditional on (CS-1) ⊂
+[GENIND-H(n)], the box GENIND.B's reduction ALREADY assumes: the
+closure sentence "P(k)-with-(A2-RATE) closes under GENIND.B's strong
+induction" now holds at the theorem's own conditionality, with no
+new hypothesis. Rider on R1.4's last sentence: the CS legs keep
+[GENIND-H]/(CS-EXACT) for menu + exactness; their RATE is GENIND-C2
+under (CS-1) alone.
+
+**Machine leg (two-commit seal; PENDING at this commit).**
+`verification/openmath/genind_annexr1_checks.py`, sealed UNRUN with
+preregistered checks P1 (per-stratum window bound
+UND ≤ entry·M★·|K|^{−(M★−1)} at 10 scored fresh rows), P2 (species
+bound at (K,B,c) = (1,1,2) per swept (q,N)), P3 (slope: consecutive-N
+relative-drain ratio ≤ q^{−3/2} — kills slope ≤ 1; expected ≈ q^{−3}),
+P4 (the CS5-V1E2 entry identity + composed n = 5 bound, sympy + grid
+to N = 40), P5 (C1(iii)'s D+M = N composition identity, sympy), and
+teeth T-SLOPE (a fabricated slope-1/2 n = 4 drain — the pass report's
+failure scenario made flesh — must violate P1) and T-WIN (a
+mis-derived stage window 2N−2−2h must be refuted by the committed
+deep row (Zp, 2, 11, h = 5) of the GENH4 battery). Fresh rows are
+walked by the PINNED GENH4 sealed walker (read-only; its own per-row
+checks stay live and must stay silent), roster E: q=2 h=1 N=4..7,
+q=2 h=3 N=8..9, q=3 h=1 N=4..5; F: q=2 k=1 N=7..9, q=3 k=1 N=6
+(floor-adjacent, P2 only). Verdict from committed artifacts at
+commit 2.
+
+### r1.2 (MINOR-1) and r1.3 (MINOR-2): executed inline
+
+MINOR-1: the c-choice c := c′ + 1 displayed at source in R1.3 (the
+β-leg exponent absorbed exactly; head leg at c ≥ 1; no circularity —
+c′ is degree-induction data). MINOR-2: both record sentences
+rewritten enumeratively at their sites (R1.4: the five consulted
+displays named; close: the four consulted pins + the five annex
+commits named). No further annex sentence was touched in r1.2/r1.3.
