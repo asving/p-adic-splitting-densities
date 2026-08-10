@@ -1,0 +1,39 @@
+--- FRAME-P: deg f = 10, D2 = 4, c_g = 5, pins [24, 16, 5]
+VIOLATION: FRAME-P TRI-diag  d=3 eps=1
+VIOLATION: FRAME-P TRI-diag  d=3 eps=9
+VIOLATION: FRAME-P TRI-diag  d=5 eps=1
+VIOLATION: FRAME-P TRI-diag  d=5 eps=9
+VIOLATION: FRAME-P TRI-diag  d=6 eps=1
+VIOLATION: FRAME-P TRI-diag  d=6 eps=9
+VIOLATION: FRAME-P TRI-diag  d=7 eps=1
+VIOLATION: FRAME-P TRI-diag  d=7 eps=9
+VIOLATION: FRAME-P TRI-diag  d=9 eps=1
+VIOLATION: FRAME-P TRI-diag  d=9 eps=9
+VIOLATION: FRAME-P PIN-pred j=0 (24 == 26)
+VIOLATION: FRAME-P UND-hit p_0 -> 26 == cap 24
+--- FRAME-P2: deg f = 10, D2 = 4, c_g = 3, pins [16, None, 3]
+VIOLATION: FRAME-P2 TRI-diag  d=4 eps=1
+VIOLATION: FRAME-P2 TRI-diag  d=4 eps=4
+VIOLATION: FRAME-P2 TRI-diag  d=5 eps=1
+VIOLATION: FRAME-P2 TRI-diag  d=5 eps=4
+VIOLATION: FRAME-P2 TRI-diag  d=6 eps=1
+VIOLATION: FRAME-P2 TRI-diag  d=6 eps=4
+VIOLATION: FRAME-P2 TRI-diag  d=7 eps=1
+VIOLATION: FRAME-P2 TRI-diag  d=7 eps=4
+VIOLATION: FRAME-P2 TRI-diag  d=9 eps=1
+VIOLATION: FRAME-P2 TRI-diag  d=9 eps=4
+--- FRAME-F: deg f = 8, D2 = 4, c_g = 0, pins [13, None, 0]
+VIOLATION: FRAME-F TRI-diag  d=2 eps=1
+VIOLATION: FRAME-F TRI-diag  d=2 eps=4
+VIOLATION: FRAME-F TRI-diag  d=3 eps=1
+VIOLATION: FRAME-F TRI-diag  d=3 eps=4
+VIOLATION: FRAME-F TRI-diag  d=4 eps=1
+VIOLATION: FRAME-F TRI-diag  d=4 eps=4
+VIOLATION: FRAME-F TRI-diag  d=5 eps=1
+VIOLATION: FRAME-F TRI-diag  d=5 eps=4
+VIOLATION: FRAME-F TRI-diag  d=6 eps=1
+VIOLATION: FRAME-F TRI-diag  d=6 eps=4
+VIOLATION: FRAME-F TRI-diag  d=7 eps=1
+VIOLATION: FRAME-F TRI-diag  d=7 eps=4
+teeth: T-CAP fired x3, T-TRI fired x28
+=== VERDICT: RED -- 303 checks, 34 violations ===
