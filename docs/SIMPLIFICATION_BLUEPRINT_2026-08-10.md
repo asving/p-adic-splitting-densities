@@ -341,3 +341,70 @@ targets wherever a consumption check landed. If only S-1/S-2/S-3 land, stage
 two already drops ~12 per-note argument sites; if S-6 lands, the σ-chain
 formalizes as one theorem + instances; if S-7's probe lands, the junction notes
 leave the load-bearing set.
+
+---
+
+## Plan revision 1 (2026-08-10, post plan-pass)
+
+**Provenance.** Run F (the Codex adversarial plan review, log
+`verification/openmath/towerrat2_runF_planpass_output.txt`, commit 3fb99af6)
+returned 40 numbered findings and OUTCOME: PLAN-DEFECTIVE; no charged item
+was checked clean. This section adjudicates the 40 findings (REAL = the plan
+defect exists / ARTIFACT = the critique dissolves against the repo's actual
+artifacts) and lands the revision. Adjudication context the reviewer lacked:
+**S-0 is BUILT**, not planned — `docs/STATEMENT_LEDGER_2026-08-10.md` +
+`verification/openmath/statement_ledger.py`, sealed f8bd49dd, baseline-green
+7e2b38df: 166 statements over the 26 texts, md5 + line range + note commit
+per row, declared normalization, validated teeth (token-change fires exit 1),
+(note,label) matching robust to dated appends, and an enumerated residue
+class of un-rowed `**(`-display lines per note (ledger §S3 item 3). S-0
+findings are adjudicated against that instrument.
+
+### R.0 Adjudication (40 findings; disposition keys R.1–R.4 below)
+
+| F# | Verdict | One-line adjudication → disposition |
+|---|---|---|
+| 1 | REAL | T1's three conclusions (recursion / wrap / read-invariance) could slide into carrier fields → R.2 skeleton gate S-1a |
+| 2 | REAL | checks were priced per note, not per absorbed site (GENTOW4 = 4 sites) → R.2: per-site absorption map |
+| 3 | REAL (wording) | "ripples through 1" overstates; instance maps stay revision sites → R.4 pricing fix |
+| 4 | REAL | listed first-instances could be witnessed in separate frames; joint defects escape → R.3 joint-frame rule |
+| 5 | REAL | carrier fields can internalize HE7.A conclusions → R.2 S-5 gate (fields-vs-conclusions ledger) |
+| 6 | REAL | instances not required to be constructible prior to the absorbed theorem → R.1 provenance leg |
+| 7 | REAL | bespoke per-instance carrier types would fake the unification → R.2 S-5 gate (one signature first) |
+| 8 | REAL | base-change-free-ness of HE6's test family not pinned in the carrier → R.2 S-5 gate (own-ring witnesses) |
+| 9 | REAL | termination measure as data could assume what HE7 proves (depth ≤ log₂n − 2) → R.2 S-5 gate (bound = conclusion) |
+| 10 | REAL | component coherence laws (projection/split/composition) unstated → R.2 S-5 gate |
+| 11 | REAL | quantifier order/uniformity can silently weaken at the carrier → R.2 S-5 gate (prefix display) + R.1(a) |
+| 12 | REAL | consumption checks blind to circular citation of the absorbed theorem → R.1 provenance leg (the central fix) |
+| 13 | REAL (pricing) | T2's downstream interface migration unpriced → R.4 |
+| 14 | REAL | T3's common shape asserted verbally, no side-by-side signature → R.2 S-2 gate (withdraw tooth) |
+| 15 | REAL | T3 regression battery HETOW-4-only → R.3 |
+| 16 | REAL | T4 witness attainment ≠ threshold formula + CERT-TOP; conclusions must be displayed separately → R.2 |
+| 17 | REAL (pricing) | BOX closures re-open T4's arc; declare the trigger → R.2/R.4 |
+| 18 | REAL | T5 transfers propositions across frames; "light" underprices frame-equivalence legs → R.2 S-4 re-scope |
+| 19 | REAL | a named w-hypothesis could conditionalize statements the measured w≠1 records support → R.2 S-4 rule |
+| 20 | REAL | SG-1 "history" status needs non-circular instance construction → R.1(b) applied to the probe |
+| 21 | REAL | SG-1 success criterion syntactic-only → folded into F20's fix (implication ledger) |
+| 22 | REAL | SG-2 retirement conflicts with proving WELDMASTER; two branches must be declared → R.4 |
+| 23 | REAL | one-theorem trace cannot ground whole-path retirement → R.4 probe re-scope |
+| 24 | REAL | SG-3 must declare which side of the JD0 letters/counts boundary moves → R.4 |
+| 25 | ARTIFACT | the plan grades SG-3 pure speculation and probes are scents, not validators (§3 honesty line; §5.3-1 re-bars any composition) |
+| 26 | REAL | SG-4 riding SG-3's menu battery never exercises the letters×depth splits → R.3 |
+| 27 | REAL (partially defused) | un-rowed displays exist, but the BUILT ledger enumerates the residue class per note → R.1(a) span-pin rule |
+| 28 | REAL | md5 of a span does not pin the ambient definitions the span reads in → R.1(c) |
+| 29 | REAL | binders/hypotheses prefixed OUTSIDE the hashed span restrict a universal statement → R.1(a) closed-display rule |
+| 30 | REAL | hypothesis migration into new definitions defeats the byte check → R.1(c) definition audit |
+| 31 | REAL | scope-fixing prose (base-change-free, wild-inclusive) sits outside rowed spans → R.1(a) prose pins |
+| 32 | ARTIFACT | the built instrument matches by (note,label), tolerates appends, and documents the re-pin rule (ledger §S3-5, §S5) |
+| 33 | ARTIFACT | md5 here is a drift tripwire inside a git-frozen corpus, not a security boundary; a collision needs repo control, which defeats any hash; the semantic kernel of the worry is F28–31 (adjudicated REAL) |
+| 34 | REAL | T1 carries the same statement-design hazard as T2 but had no design gate → R.2 S-1a (the S-1 gate) |
+| 35 | REAL | S-4/S-8 gated on S-1 "landing", not on semantic legs green → R.1 downstream-gating rule |
+| 36 | REAL (wording) | S-7 runs anytime but its VERDICT carries ledger + axiom-policy conditionality → R.4 |
+| 37 | REAL | "fresh route" constrains reviewers, not the proof artifact's dependency graph → R.1(b) |
+| 38 | REAL | absorption appends could overstate; template pinned to checked ledger rows → R.1 append rule |
+| 39 | REAL | stage-two replacement magnifies a false-positive check → R.1 §5.4 amendment |
+| 40 | REAL (pricing) | consumption-site counts stated as formalization-scope cuts → R.4 |
+
+**Tally: 37 REAL (of which 5 wording/pricing grade), 3 ARTIFACT (25, 32, 33).**
+The 37 REAL defects group into four revision blocks; none withdraws a target,
+none reorders the unit list. The blocks strengthen gates and re-scope claims.
