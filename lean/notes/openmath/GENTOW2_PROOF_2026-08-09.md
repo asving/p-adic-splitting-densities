@@ -41,8 +41,11 @@ argument displayed inside the proof of **Theorem 5.8** (itself fed by
 **Corollary 4.12**, whose construction g = φ_r^{e_r f} + g₀ IS the
 recipe's shape). One bridge clause is repo-side and is proved below
 from the accepted corpus (S5): the recipe's level-3 residual read
-R_ν(Φ₃) = ψ₃, which is GENHN-2′'s digit grammar + FGMN's additivity
-(Cor 4.7(1)) + eq (14). No FGMN statement is stretched: the quotes,
+[r3: R_ν(Φ₃) = ψ₃^{(w)}, the target up to the consumer-invisible
+w-substitution, under the multiplicative prescription — the naked
+per-height form R_ν(Φ₃) = ψ₃ was machine-refuted at letter-live
+grades, PE4 F1/honesty box] — GENHN-2′'s digit grammar + FGMN's
+additivity (Cor 4.7(1)) + eq (14) + the S5.1/S5.2 unit laws. No FGMN statement is stretched: the quotes,
 the instantiation map, and the faithfulness paragraph are below.
 
 ## S2. THE TOWER ↔ MACLANE-CHAIN DICTIONARY
@@ -181,7 +184,12 @@ with
 
 — in particular the T(b)″-recipe polynomial Φ₃ = Φ₂^{e₃f₃} −
 Σ_{t<f₃} k̂_t Φ₂^{e₃t}, which satisfies (i) by construction and (ii)
-by LEMMA GENTOW2-B (S5). Then:
+by LEMMA GENTOW2-B (S5) [r3: as RESTATED — under the multiplicative
+prescription c_t = ϑ(t)^{−1}a_t the realized residual is ψ₃^{(w)} =
+w^{f₃}ψ₃(y/w), admissible, and the theorem is consumed AT ψ₃^{(w)};
+the pre-repair per-height reading realized ψ₃ itself only where
+u(β_t) = 1 at the used slots (letter-dead tested geography), and is
+refuted letter-live — PE4 F1, honesty box]. Then:
 
   (a) Φ₃ ∈ KP(ν), and Φ₃ is a PRIME POLYNOMIAL: monic, coefficients
       in O_v, irreducible in K_v[x];
@@ -264,13 +272,22 @@ leaf read fixes: η₂ = z₂·z₁^{⌊ℓ₁u₂/e₁⌋} in F₃ is by defini
 root of the repo ψ₂ = minpoly(η₂), and η₂(ξ) = σ(η₂), so "η₂(ξ)
 is a repo-ψ₂-root" holds with ψ₂'s coefficients read through the
 same σ — no clause of GENTOW2-A consumes an equality of the two
-letters.] The PE3-F1
+letters.] [r3 — B-2-flip robustness of this consumption, per the
+PE4 record: THEOREM GENTOW2-A consumes only hypothesis (ii) with
+an admissible residual, never a digit string, so the B-2 flip does
+not touch it; at the same PE4 contact that refuted B-2, every
+GENTOW2-A clause check ran GREEN — 27/27 A-route at LD1/LD2/LD3
+incl. the clause-(c) letter-twist certificates {152,148,144,144,
+144}, η₂-read = z₁ at 4/4 primes, and the exact value triples
+(clause (d)) — PE4 report §E/[F1], "THEOREM GENTOW2-A UNTOUCHED".]
+The PE3-F1
 correction's mechanism attribution ("the carry terms CLEAR the side")
 is now a THEOREM, not bookkeeping: Cor 6.4 forces every pin strictly
 above the side except the on-side residue pattern of ψ₂^{e₃f₃}.
 
-## S5. LEMMA GENTOW2-B (the bridge clause): the T(b)″ recipe
-## satisfies R_ν(Φ₃) = ψ₃
+## S5. LEMMA GENTOW2-B (the bridge clause) [r3 RESTATED]: the
+## T(b)″ recipe satisfies R_ν(Φ₃) = ψ₃^{(w)} under the
+## multiplicative prescription (per-height form refuted at PE4)
 
 **LEMMA GENTOW2-B [r3 RESTATED — PE4 F1: the pre-repair conclusion
 "R_ν(Φ₃) = ψ₃" for the PER-HEIGHT digit string is machine-refuted
@@ -889,9 +906,10 @@ collapsing).
 
 **Direction of fit.** The citation is consumed in the DEDUCTIVE
 direction only: FGMN theorem → our instance. No repo lemma is used
-to justify an FGMN statement. The two repo-side inputs (B-1)/(B-2)
-enter only the bridge LEMMA GENTOW2-B (the recipe realizes (ii)),
-never the citation's own hypotheses.
+to justify an FGMN statement. The repo-side inputs — B-1 and [r3]
+the derived unit laws B′(3)–(5)/B″ (B-2 itself refuted and consumed
+nowhere) — enter only the bridge LEMMA GENTOW2-B (the recipe
+realizes (ii) at ψ₃^{(w)}), never the citation's own hypotheses.
 
 **What the cite does NOT give.** (i) It does not price any σ or
 count: it feeds T(b)″'s ascent inputs only. (ii) It does not supply
