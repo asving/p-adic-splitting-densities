@@ -15743,3 +15743,30 @@ RCT-T3-CODEX (the cocycle-telescope lemma over FOUR sources now — B″,
 HETOW-4, the cap lemma, + WI's level-i form; per-instance
 re-derivation required). (5) RCT-SG2-CODEX (the GENHN-4-from-
 WELDMASTER+J-D0 feasibility probe; branch-neutral verdict per R.4).
+
+**STORM CASUALTY #3 (2026-08-10 ~17:20, Asvin: "still api wave?" —
+YES)** — B25 lost 5/6 to 529s/server errors minutes after dispatch;
+the sole survivor was SG2-CODEX (its heavy compute was external).
+**SG-2 PROBE VERDICT (95fb071a), substantive: NEEDS-X** — GENHN-4 is
+NOT re-derivable from WELDMASTER (M0)–(M4) + WM-COB + J-D0 as stated:
+layer 1 (the graded kills) is missing from the weld's faces; layers
+2–3 recoverable from GENHN-2/3 + J-D0 + classical facts. THE X, named
+precisely: a universal stage-recentering lemma with two inseparable
+halves — (i) perimeter re-instantiation (nothing in M0–M4 identifies
+an arbitrary stage-α event with a scored (M3) stratum inside (M2)'s
+slot fences), (ii) the additive action (no face gives Φ′ ↦ Φ′+w as
+T ↦ T+s coefficient-for-coefficient; M4 is character covariance, not
+translation; J-D0 is count-blind). Matches GENHN-BOX-2's own wanted
+carry display + the perimeter clause the box does not name. The
+~6,900-line retirement is NOT free; the price is now one named lemma.
+BRANCH DECISION FOR ASVIN (revision R.4): prove the X-lemma (the
+retirement prize) vs axiomatize the consumed faces (cheap, keeps the
+junction notes as Lean citations).
+
+PENDING SET (storm hold, priority order): (1) T1 r1 → PE2 (the item-9
+prove-first lead via WI), (2) WI PE2 acceptance attempt, (3) WFRAME
+PE2, (4) RCT-T3-CODEX composition. Resume via
+Workflow({scriptPath: workflows/scripts/box-wave-b25-wf_ed60bf55-51b.js,
+resumeFromRunId: "wf_ed60bf55-51b"}) — SG2 returns cached. HELD per
+the stand-down rule (fresh 5/6 kill = the storm is hot); revival =
+next watchdog firing or a calmer window.
