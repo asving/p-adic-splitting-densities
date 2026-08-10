@@ -121,7 +121,7 @@ consumed; also machine-checked as the dual route P-DUAL, S4).
 > with Y = B* + 1 forcing zero division steps, the all-t* multiset
 > {t*, ..., t*}, and e = k - 1. When e2(f2 - t*) >= 2 this pins
 > (k, multiset, e, steps) = (2, {t*, t*}, 1, 0); at e2(f2 - t*) = 1
-> geometries every k >= 3 with k i_{t*} >= (k - 1) D' contributes a
+> geometries every 3 <= k <= m with k i_{t*} >= (k - 1) D' contributes a
 > further equality branch (k, {t*, ..., t*}, k - 1, 0), and each
 > such branch lands at x-slot <= k i_{t*} - (k - 1) D' < a* (each
 > extraction consumes exactly D' of x-degree; i_{t*} < D') at
@@ -217,7 +217,7 @@ and division steps only subtract further. So Y = B* + 1 forces
 zero division steps, Sum t = k t* (the all-t* multiset), e = k - 1,
 and (k-2)(e2(f2-t*) - 1) = 0. At e2(f2 - t*) >= 2 that pins the
 diagonal pair (k, multiset, e, steps) = (2, {t*, t*}, 1, 0); at
-e2(f2 - t*) = 1 every k >= 3 whose extraction budget allows
+e2(f2 - t*) = 1 every 3 <= k <= m whose extraction budget allows
 e = k - 1 (Step II: (k-1) D' <= Sum i = k i_{t*}) contributes too.
 Each such k >= 3 branch spends exactly D' of x-degree per
 extraction (tail steps spend more), so it terminates at x-slot
@@ -1192,7 +1192,7 @@ e2(k t* - Sum t) + (k-1-e) plus the division-step losses — all
 non-negative — so equality forces zero division steps, the all-t*
 multiset, e = k - 1, AND (k-2)(e2(f2-t*) - 1) = 0. The k = 2 pin
 is therefore CORRECT exactly when e2(f2 - t*) >= 2 and FALSE in
-general at e2(f2 - t*) = 1, where every k >= 3 with
+general at e2(f2 - t*) = 1, where every 3 <= k <= m with
 k i_{t*} >= (k-1) D' (Step II's extraction budget) contributes an
 equality branch; each such branch spends exactly D' of x-degree
 per extraction (tail steps spend more), landing at x-slot <=
