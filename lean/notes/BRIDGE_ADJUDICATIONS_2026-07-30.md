@@ -15278,3 +15278,39 @@ vocabulary, the residue named; orchestrator reviews + pushes — the
 unit does NOT touch the website repo). W-MULT-DCX stays queued for a
 later Codex leg. After B17: the count-grade sub-boxes + the
 distribution arcs + the GENIND annex pass, then SIMPLIFICATION → Lean.
+
+## B17 FOLD (2026-08-10, partial — Codex runs still executing) + B18 DISPATCH RECORD
+
+B17 riders unit COMPLETE (5 commits): GENTOW3 acceptance record
+607fc694 (obs-1's third certificate configuration recorded as data
+for GENTOW3-BOX-1, numbers re-verified at the committed output);
+GENTOW4 folds bee0b56a + record 4545b4d7 (m-i re-derived at
+HE6R1_RECON S3.4 — (b) carries hull+vertex equality, (c)'s scalar
+display carries side-interior attainment; m-ii verified at
+keyval_checks L281–300); GENTOW6 folds 15965106 + record 232e9d01
+(BOX-4 sentences dated against the arc's actual machine contacts,
+BOX-4 STAYS OPEN with the battery-grade ask; THE 4.C UPGRADE landed
+at both cap-lemma conditionality points, discharge dated to GENTOW4's
+acceptance). All seven tower notes now FROZEN with dated acceptance
+records. Site refresh #2 draft COMPLETE (SITE_REFRESH2_DRAFT
+_2026-08-10.md @ 4468b6e4; honest-badge vocabulary verified in the
+delta; one orchestrator decision flagged — the stage-5 chain-node
+badge flip vs text-only). CODEX BATCH #2: seal e2531f23 + skeleton
+245a4376 committed BEFORE any output (the two-commit discipline on
+the ratification itself); five runs executing externally; the unit
+left a monitor to re-invoke on completion — verdicts fold when they
+land.
+
+B18 DISPATCHED (wf_5b74eb87-ede), recorded post-dispatch, per the
+/goal stop-hook's push into the post-closure queue (B17's remaining
+load is external, so the throttle admits it): (1) the GENTOW6 SUB-BOX
+unit — BOX-1 (μ₂ ≥ 3 attainment) attempted PROVE-FIRST with obs-1's
+third-configuration data + BOX-4's battery-grade row actually RUN;
+(2) the GENIND ANNEX R scoped hostile pass (the chain record's one
+unpassed annex stack); (3) the SIMPLIFICATION CAMPAIGN BLUEPRINT
+(docs/SIMPLIFICATION_BLUEPRINT_2026-08-10.md — the corpus DAG,
+compression targets ranked by revision-scope-reduction incl. the
+gauge/ϑ-cocycle unification candidate, second-generation proof
+sketches honestly graded, Lean-readiness notes, the campaign plan;
+Asvin-facing, Protocol H). Board note: letter-thread entry 11 posted
+(w8 inputs in; the trade still gates on Asvin's blessing).
