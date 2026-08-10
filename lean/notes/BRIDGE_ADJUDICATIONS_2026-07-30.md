@@ -15260,3 +15260,21 @@ accepted), Codex batch #2 (GENTOW3/4/5/6 as-built + the
 discharge-confirmation of HETOW-4 + GENTOW1 R2), site refresh #2
 (draft for orchestrator review), then the sub-boxes + the
 distribution arcs + the GENIND annex pass.
+
+**B17 DISPATCHED (2026-08-10, wf_e07d8e62-95e)** — recorded
+post-dispatch. Three units: (1) the acceptance riders — GENTOW3's
+record (with PE5's obs-1 third-certificate-configuration data named
+for the BOX-1 residue), GENTOW4's record + the two PE3 minors folded
+at source, GENTOW6's record + the BOX-4 staleness bracket + THE 4.C
+CONDITIONALITY UPGRADE (the cap lemma's displayed conditionality gains
+its dated discharge line — GENTOW4 accepted at f0874ff9 whose PE3
+verified 4.C carries exactly the displayed consumption). (2) CODEX
+BATCH #2 — five sequential runs: GENTOW5/3/4/6 as-built ratifications
++ the discharge-confirmation of batch #1's repairs (HETOW-4 + GENTOW1
+R2a/b/c; per-finding outcome ∈ {DISCHARGED, INSUFFICIENT, NEW-ISSUE});
+record to CODEX_TOWERRAT2_2026-08-10.md, findings ledger-adjudicated.
+(3) the SITE REFRESH #2 DRAFT (delta-text only, honest badge
+vocabulary, the residue named; orchestrator reviews + pushes — the
+unit does NOT touch the website repo). W-MULT-DCX stays queued for a
+later Codex leg. After B17: the count-grade sub-boxes + the
+distribution arcs + the GENIND annex pass, then SIMPLIFICATION → Lean.
