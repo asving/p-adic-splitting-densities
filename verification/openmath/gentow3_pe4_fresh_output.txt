@@ -1,0 +1,31 @@
+== P4-1 SELF-E22 ==
+  self-shadow pins [59, 31] = THETA; cert digit at 59: {(0, 1): 1, (1, 3): 1}; at 31: {(0, 1): 1}
+== P4-2/3 BAND (delta = 3: faithful leaf band [57, 58]) ==
+  B57: pins 57 both reads, mindiff [59, 31], hull [(0, 57), (2, 0)]
+  B58: pins 58 both reads, mindiff [59, 31], hull [(0, 58), (2, 0)]
+== P4-4 DIV67 (undercut at the new frame) ==
+  D67: honest pin 67 -> shadow 59 = THETA_0; mindiff [59, 31]
+== P4-5 CANCEL (shadow coordinate identically zero) ==
+  CANCEL: honest pin 59 decided vs shadow C_0 == 0 (prices a Phi2-split); mindiff [59, 31]
+== P4-6 FLOOR/ENTRY sweep (40 seeded gated members) ==
+  40 members x 2 coords: FLOOR + ENTRY clean
+== P4-7 REP: FR-M3 on this pass's primitives ==
+  key power: pins [12, 7, 4] vs THETA [10,7,4]; height-10 digit at j=0 CANCELLED
+  W-A: shadow pins [10, 6, 3], mindiff [10, 9, 4] (10 = THETA_0 at the cancelled coordinate)
+  W-B: shadow pins [10, 6, 3], mindiff [10, 9, 4] (10 = THETA_0 at the cancelled coordinate)
+== P4-8 GP carriers + all sigma jobs ==
+== GP leg: 7 jobs ==
+  GP B57: [(8, 2)] (want [(8, 2)])
+  GP B58: [(8, 2)] (want [(8, 2)])
+  GP CAN: [(8, 2)] (want [(8, 2)])
+  GP D67: [(8, 2)] (want [(8, 2)])
+  GP P2E22: [(4, 2)] (want [(4, 2)])
+  GP P2M3: [(2, 1)] (want [(2, 1)])
+  GP WB: [(2, 1), (2, 2)] (want [(2, 1), (2, 2)])
+== TEETH (all fed by values MEASURED in this run) ==
+  T4-UP: THETA+1 mutant killed 6/6 times (measured content AT THETA violates the mutant floor)
+  T4-DOWN: THETA-1 mutant refuted: measured self-shadow digit at 58 is ZERO; B57/B58 faithful at 57/58; every measured first divergence sits at exactly 59
+  T4-BICOND: measured cert digit at 10 ZERO at FR-M3 j=0 AND W-A/W-B measured failing at exactly 10: the r2 only-if is dead on this leg too
+
+=== VERDICT: GREEN -- 208 checks, 0 violations, teeth 3/3 ===
+tally: {'SELF': 6, 'BAND': 10, 'DIV': 4, 'CANCEL': 5, 'FLOOR': 80, 'ENTRY': 80, 'REP': 13, 'GP': 7, 'TEETH': 3}
