@@ -15724,3 +15724,22 @@ PENDING (storm hold, priority order): (1) the WFRAME/T1 repair wave
 (one-liner + item-9 pin + minors) → their pass-2s; (2) WI pass 2
 (acceptance attempt at 1/2); (3) B25 = T3-CODEX + SG2-CODEX
 compositions. Watchdog revives from this line.
+
+**B25 DISPATCHED (2026-08-10, wf_ed60bf55-51b)** — post-canary (WFRAME
+r1 landed green through the storm tail: the LP1 datum re-derived with
+the in-row sanity rule deg Φ′ = e₁f₁, GF29 adopted as row R-7, all
+minors folded, --check green at 9d157fda/520491ad). Five agents: (1)
+T1 r1 (the item-9 GAP with the PROVE-FIRST lead — [GENTOW5-W(i)]'s
+level-general τ_i machinery may BE the missing supplier; else the
+three rows annotated honestly; + 5 minors) → T1 passPE2 (the item-9
+resolution re-derived; 5 different absorption sites; fresh candidates:
+the telescope at W non-monotone, composite Q, a delete-simulate annex
+test). (2) WFRAME passPE2 (the r1 folds; the record table row-wise
+under the new sanity rule; a 9th prime fresh). (3) WI passPE2 = THE
+ACCEPTANCE ATTEMPT (the composition of the four steps as one argument;
+the S11.2 resting point re-derived; the consumers-to-be; fresh
+candidates: i=3 at p ≥ 5, the e_{i+1} > 1 untested axis). (4)
+RCT-T3-CODEX (the cocycle-telescope lemma over FOUR sources now — B″,
+HETOW-4, the cap lemma, + WI's level-i form; per-instance
+re-derivation required). (5) RCT-SG2-CODEX (the GENHN-4-from-
+WELDMASTER+J-D0 feasibility probe; branch-neutral verdict per R.4).
