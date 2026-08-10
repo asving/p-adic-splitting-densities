@@ -1,0 +1,6 @@
+RECORD P34 ShC_1 full: {(0, 0): 104976, (1, 1): 46656}
+RECORD P35 ShC_2 full: {(0, 0): 524880, (1, 1): 116640}
+RECORD P36 ShC_3 full: {(0, 0): 1574640, (1, 1): 233280}
+== SUMMARY == checks 215 violations 0
+KILLS [('T-CHI', 3), ('T-CVAL', 3), ('T-M5SUM', 3), ('T-OLDLAW', 3), ('T-PARITY', 3), ('T-TOPPAIR', 3)]
+VERDICT GREEN

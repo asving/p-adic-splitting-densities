@@ -1033,3 +1033,92 @@ named in S9.1; the L1-N5 enumeration counted 531441 images with
 every measured fiber equal to 9; the L2 enumerations matched
 2^{3N-6} at the three windows run; the 60 T1 resultant rows each
 measured v = 20; the four preregistered kill counts were exact.
+
+### S9.2 BOX-3 leg — gentow6_box3_regime3.py
+
+Sealed at commit 82a51147+1 (seal md5 17fecec4, docstring
+preregistered, no pre-seal run; imports the COMMITTED
+gentow6_box1_mu3.py engine, md5 c98cb423 asserted at import).
+**RUN 1 RED — 5 violations, ALL on the corollary's j*-1 rows
+(P34/P35/P36 + CFORM + one T-M5SUM row), THEOREM-FACING: the seal's
+6.7C display refuted, artifact kept (md5 c07980ad), correction =
+LEMMA GENTOW-6.7D + COROLLARY 6.7C' (the dated S8 block). RUN 2
+(repaired wants, md5 72383f91) GREEN — 215 checks, 0 violations,
+teeth kill counts EXACT (T-TOPPAIR 3, T-CHI 3, T-CVAL 3, T-M5SUM 3,
+T-OLDLAW 3, T-PARITY 3); isolated re-run in a fresh /tmp scratch
+BIT-IDENTICAL (output md5 a122d9ca).** The regime-3 rows needed NO
+repair: on run 1 the R3A-R3E slot dicts, pins, graded flags, the
+battery reproductions, floors, triple-route equalities, PARI rows,
+and four of six teeth were already GREEN. Highlights, each a
+run-2 want:
+
+* THEOREM 6.7's faces, one frame each: (b2) at p = 2 — R3A's
+  s*-slot {(0,0): 16} sits one grade up (chi = 2 = 0 mod 2, pin 12
+  > THETA_1 = 9) while its j0 CASCADE attains ({(1,1): 48} graded
+  nonzero at 17 = THETA_0: the s = 0 diagonal survives one
+  coordinate down); (b1) at p = 3 — R3B's {(0,0): 108} exactly on
+  the floor (pin 9 = THETA_1) with the INTEGRAL (1,1) cancellation
+  (+324x - 324x = 0) and the (2,0) = -1944 graded attainment at
+  j0; (a) — R3C's ShC_1 == {} identically above s* = 0 with
+  {(0,1): 16} on the floor at j0; the TWO-PAIR slot at odd p —
+  R3D (units 1,1,1: chi = 1 + 2 = 0 mod 3, cancel, pin 20 > 16)
+  vs R3E (units 2,2,1: chi = 4 + 4 = 2 mod 3, attain, pin
+  16 = THETA_1), identical geometry, one unit flipped: genre
+  arithmetic in the literal sense;
+* the corrected corollary law measured EXACTLY at four m-values:
+  (1,1) slot values 524288/128/11664 (m = 3, both laws), 46656
+  (m = 4), 116640 (m = 5 — the withdrawn degeneration's slot is
+  PRESENT and attained at p = 3), 233280 (m = 6, attained at
+  j*-1 = 3 while the top coordinate cancels at 3 | binom(6,2));
+  the recorded companion slots (0,0) matched the k = 4 e = 2
+  branch predictions 104976/524880/1574640 from the seal;
+* the committed 6.5-battery vectors X3/A53/P33 reproduced
+  bit-exactly (the required battery frame), P36's ShC_4 =
+  {(0,1): 4860} with graded-21 zero (p = 3 | binom(6,2), the
+  6.5(b2) face at m = 6) and ShC_5 == {};
+* 20 perturbation rows held their floors; triple-route (committed
+  R/E + this file's fresh route F) slot-identical on the ten
+  self-shadows; PARI carriers {(3,2)}/{(3,2)}/{(4,2)}/{(4,3)}/
+  {(4,3)}/{(4,1)} and three nonzero poldiscs.
+
+**Record sentences (no universal quantifiers).** The run-2 battery's
+215 checks passed with 0 violations on the ten frames named in
+S9.2; the six preregistered kill counts were exact; the five s*-slot
+values 16, 108, 16, 243, 648 each measured at the predicted
+valuation and graded flag; the four corollary slots measured the
+2 binom(m,3) multiples 46656, 116640, 233280 and the m = 3 trio;
+the run-1 RED's five violations were confined to the corollary rows
+and produced the 6.7D/6.7C' correction.
+
+## S10. VERDICTS + RESIDUE (this append)
+
+* **GENTOW6-BOX-2: CLOSED at its own ask.** The box's parenthetical
+  defines the ask — "pricing (f_S, g) ↦ f_S·g on ambient windows (a
+  Jacobian/content identity)" — and THEOREM GENTOW-6.6 delivers it:
+  Sylvester-Jacobian (a), the separation constant c_J with closed
+  form at the bouquet geography (b/d), the per-window product
+  ledger with explicit N_0 and fiber law (c), machine leg GREEN
+  576/0 with the ledger ENUMERATED exact at two avatar frames and
+  the pricing verified at the FAM-P5 bouquet frame. NOT delivered
+  (named, not this box's parenthetical): the GENH5-DENS-style
+  aggregation of cells over genres/keys.
+* **GENTOW6-BOX-3: the KEY-POWER half CLOSED (mu2 = 2) as THEOREM
+  GENTOW-6.7 (chi-criterion, b1/b2 + ceiling + specialization),
+  machine leg GREEN at five new regime-3 genres; the one-m-up lead
+  delivered as LEMMA 6.7D + COROLLARY-THEOREM 6.7C' (the
+  2 binom(m,3) law of record, instrument-corrected), reproducing
+  the FR5X three-configuration target as 6.5(b1)/6.7C'-at-p=2/
+  6.5(c). The MEMBER half (entry-driver exact-THETA classification)
+  stays OPEN with the obstruction DISPLAYED (S8.1): exactly-THETA
+  membership is cut by per-member congruences on free digits — the
+  two measured behaviors inside one genre (E-ENTRY above-floor
+  DRAIN vs the floor-holding perturbation rows) witness that no
+  genre-level trichotomy can decide it.
+* **Grade: 0/2 (attempt).** Hostile arc owed. Natural PE1 targets:
+  6.6(c)'s fiber argument and N_0 arithmetic, 6.6(d)'s separation
+  lemma normalization, 6.7(b)'s "no other branch" fence at
+  e2(f2-t*) = 1, the 6.7D consumption inside 6.7C', and the R3D/E
+  hand ledgers.
+* **Statement fence:** GENTOW6_PROOF stays frozen; this note's S8
+  keeps the refuted 6.7C display visible under its dated
+  correction block (6.7C' governs).
