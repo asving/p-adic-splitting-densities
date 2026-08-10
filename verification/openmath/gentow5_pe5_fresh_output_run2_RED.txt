@@ -1,0 +1,59 @@
+PASS - T1 pins [4,4,2,inf,0]
+PASS - T1 one side + j=1 above (4 > 3)
+PASS - T1 residual y^2+3y+1 == psi_1^2 mod 5
+PASS - T1 box slot -25x at weight 5 = 2E_1+1
+PASS - Phi_2 stage pins [20,inf,inf,inf,0] support {0,4}
+PASS - Phi_2 residual y^2+3 == psi_2 mod 5
+PASS - f24 pins [60,56,inf,inf,40,...,20,...,0]
+PASS - f24 ONE side, j=1 strictly above (56 > 55)
+PASS - f24 residual digits (1,4,2,2)
+PASS - residual == (y^2-2)^3 mod 5 coefficient-for-coefficient
+PASS - f24 box: single slot at weight 61 = 3E_2+1
+PASS - RETIRED KILL: f24@Phi_2 pins [61,inf,inf,0], slope 61/3 != 41/2, residual deg 1 != 3
+PASS - TOOTH f24x p_1 = 54 < 55 (side breaks)
+PASS - TOOTH f24x hull vertices {0,1,12}
+PASS - TOOTH Phi_3m p_1 = 34 < 35 (floor breach breaks the side)
+PASS - TOOTH Phi_3m hull vertices {0,1,8}
+PASS - RES f4 v5 = (2, 5)
+PASS - RES Phi_2 v5 = (4, 10)
+PASS - RES Phi_3 v5 = (8, 20, 82)
+PASS - RES f32p v5 = (16, 40, 164, 330)
+PASS - RES f24 v5 = (12, 30, 122)
+PASS - RES f24x TOOTH v5 = (12, 30, 118)
+PASS - RES Phi_3m TOOTH v5 = (8, 20, 78)
+FAIL - PARI f4 factorpadic degs [4]
+  [f4 degs raw: [4]~]
+PASS - PARI f4 one prime (e,f)=(4, 1)
+PASS - PARI f4 nfeltval ladder (2, 5)
+  [f4 pr raw: 1 4 1
+[2, 5]]
+FAIL - PARI Phi_2 factorpadic degs [8]
+  [Phi_2 degs raw: [8]~]
+PASS - PARI Phi_2 one prime (e,f)=(4, 2)
+PASS - PARI Phi_2 nfeltval ladder (2, 5)
+  [Phi_2 pr raw: 1 4 2
+[2, 5]]
+FAIL - PARI Phi_3 factorpadic degs [16]
+  [Phi_3 degs raw: [16]~]
+PASS - PARI Phi_3 one prime (e,f)=(8, 2)
+PASS - PARI Phi_3 nfeltval ladder (4, 10, 41)
+  [Phi_3 pr raw: 1 8 2
+[4, 10, 41]]
+FAIL - PARI f32p factorpadic degs [32]
+  [f32p degs raw: [32]~]
+PASS - PARI f32p one prime (e,f)=(16, 2)
+PASS - PARI f32p nfeltval ladder (8, 20, 82, 165)
+  [f32p pr raw: 1 16 2
+[8, 20, 82, 165]]
+FAIL - PARI f24 factorpadic degs [24]
+  [f24 degs raw: [24]~]
+PASS - PARI f24 one prime (e,f)=(12, 2)
+PASS - PARI f24 nfeltval ladder (6, 15, 61)
+  [f24 pr raw: 1 12 2
+[6, 15, 61]]
+FAIL - PARI f24x TOOTH factorpadic degs [2, 22]
+  [f24x TOOTH degs raw: [2, 22]~]
+FAIL - PARI Phi_3m TOOTH factorpadic degs [2, 14]
+  [Phi_3m TOOTH degs raw: [2, 14]~]
+== PE5 FRESH VERDICT: 40 checks, 7 violations ==
+VIOLATION count: 7

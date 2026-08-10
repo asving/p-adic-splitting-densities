@@ -105,6 +105,16 @@ mathematical prediction is changed by this repair; dvcoef now
 develops each coefficient in the Phi_1 basis (monomial heights
 s*(v5 + a/2 + 5b/4), tie-assert retained). Run-1 record kept at
 gentow5_pe5_fresh_output_run1_RED.txt.
+
+RUN-2 DISCLOSURE (2026-08-10, committed before re-run): run 2 came
+back 33/40 with 7 violations, ALL SEVEN the same parser literal —
+gp prints column vectors with a trailing "~" ("[24]~") and my
+expected-string comparison missed it; every raw factorpadic value
+printed on run 2 MATCHES its prediction exactly (incl. both teeth
+[2, 22] and [2, 14]), and all nf/ladder/RES/pin checks were PASS.
+Comparison re-written as integer-list parse (strip "~"); no
+prediction changed. Run-2 record kept at
+gentow5_pe5_fresh_output_run2_RED.txt.
 """
 import subprocess, sys
 from fractions import Fraction as F
@@ -285,7 +295,8 @@ def gp(cmd, timeout=600):
 def parileg(name, f, ladder, exp_degs, exp_ef=None, exp_val=None):
     fp = gppoly(f)
     out = gp(f"F={fp}; fa=factorpadic(F,5,100); print(apply(poldegree, Vec(fa[,1])~))")
-    chk(f"PARI {name} factorpadic degs {exp_degs}", out == str(exp_degs).replace(" ", ", ").replace(",,", ","))
+    got = sorted(int(t) for t in out.strip().rstrip("~").strip("[]").split(",") if t.strip())
+    chk(f"PARI {name} factorpadic degs {exp_degs}", got == sorted(exp_degs))
     print(f"  [{name} degs raw: {out}]")
     if exp_ef is not None:
         lad = ",".join(gppoly(g) for g in ladder)
