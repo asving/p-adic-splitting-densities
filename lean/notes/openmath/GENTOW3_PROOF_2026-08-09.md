@@ -3,7 +3,17 @@
 
 **2026-08-09 — COMPLETE at attempt grade 0/2 (hostile arc owed).
 Unit: GENTOW-3, BOX-CLOSURE campaign wave B1. Machine leg
-sealed-then-verdict (S5): GREEN 582/0, 3/3 teeth.**
+sealed-then-verdict (S5): GREEN 582/0, 3/3 teeth.
+[ARC — passPE1 2026-08-10: NOT CLEAN, 1 GAP + 3 MINOR
+(GENTOW3_passPE1_report.md @ 3101cf5); counter stays 0/2.
+GT3-r1 repair round 2026-08-10 (this commit): F-1 dated gauge
+annex — chat_t := lift(c_t·eta^{W(t)}) pinned per GENHN erratum
+59c1966, the x-free "equivalently" clause re-scoped (f1 = 1 only),
+GENTOW3-BOX-2 honest status, FR-GL adopted as the eta != 1 machine
+row (S7.1); m-1 digit-value attribution (S7.2); m-2 P-1 census
+110 -> 137 (S7.3); m-3 T-SHADOW-REG sigma-leg disclosure (S7.4).
+Sealed machine artifacts BYTE-UNTOUCHED (md5s, S7.5). Grade stays
+0/2; PE2 next.]**
 
 CHARGE: characterize EXACTLY when the stage-shadow read (T(b)'(iv):
 the coefficientwise mod-Phi' projection G-hat_j(theta, Y)) agrees
@@ -92,7 +102,11 @@ composed read, shadow = stage read; PARI = both-route σ truth):**
 **Setting (T(b)' + GENTOW-1 S0, restated for one pass).** Tower
 locus 𝒯 (full inner side e2f2mu2 = mu1): outer genre
 (Q; e1, f1, mu1; h), key Phi' (deg D' = e1f1), inner slope
-kappa2 = u2/e2, composed key Phi2 (deg D2), dv2 = e1e2·v, slot
+kappa2 = u2/e2, composed key Phi2 (deg D2) [GT3-r1 GAUGE PIN
+(dated annex S7.1): Phi2's lift coefficients read chat_t :=
+lift(c_t·eta^{W(t)}), W(t) = floor((f2−t)·i(u2)/e1), per GENHN
+erratum 59c1966 — NOT the gauge-naive plain lift of c_t; at
+eta = 1 (all five S1 families) the two coincide], dv2 = e1e2·v, slot
 offsets w(a,b) = a·e2h + b·u2, E2 = e2f2u2. THE TWO READS at
 member f ∈ 𝒯, per composed coordinate j < mu2:
 * COMPOSED (honest): C_j from f = Phi2^{mu2} + Σ C_j Phi2^j in
@@ -107,7 +121,13 @@ member f ∈ 𝒯, per composed coordinate j < mu2:
 
 X-FREE GENRES: call the genre x-free iff every lift coefficient
 ĉ_t·n̂(u2(f2−t)) of Phi2 (t < f2, ĉ_t ≠ 0) is an x-free monomial
-π^a — equivalently i(u2(f2−t)) = 0, i.e. e1 | u2(f2−t)·h⁻¹-class;
+π^a — equivalently i(u2(f2−t)) = 0, i.e. e1 | u2(f2−t)·h⁻¹-class
+[GT3-r1: the "equivalently" reduction holds at f1 = 1 ONLY (there
+chat_t is a constant); at f1 >= 2 it is FALSE in general — the
+exact scope is re-derived in S7.1 (i-test AND c_t·eta^{W(t)} ∈
+F_Q). The PRIMARY clause — every lift coefficient an x-free
+monomial, read at the corrected chat_t — is the operative
+definition at every f1 and is what (iii)'s proof consumes];
 witness FAM-D: Phi2 = (x²−3)² + 27, lift = −27 = π³-flavor.
 
 **THEOREM GENTOW-3 (the faithfulness geography).** Set
@@ -344,12 +364,23 @@ are NOT delivered. The floor/faithful-band/x-free clauses
 1 outer keys, q ∈ {2,3}, e2 ∈ {1,2,3}, f2 ∈ {1,2}, depth 2, d = 1
 ambients — GENTOW-BOX-2's geography verbatim (the same imported
 families). The S2 proof is uniform in (e1, f1, e2, f2, mu2, q, h);
-the gap is machine-side.
+the gap is machine-side. [GT3-r1 HONEST STATUS (S7.1): the
+uniformity claim holds for the S2 PROOF under the PRIMARY x-free
+definition read at the corrected key; the displayed i-test
+reduction is f1 = 1-scoped, so as composed the gap was NOT
+machine-side only. The machine gap is two-axis: the five committed
+families sit at f1 = 1 AND eta = 1 (Phi' = x^2−2 over Q2, x^2−3
+over Q3 — naive = corrected there), so the sealed battery is
+structurally blind to the gauge seam; the eta != 1 coverage is the
+adopted FR-GL row (S7.1); f1 >= 2 classification rows exist
+nowhere yet.]
 
 **GRADE: 0/2 (attempt; composed this session, no hostile arc).**
 Conditionality stack: consumes LEMMA GENHN-T(b)' (i)–(iv) — (iii)
 enters through the σ-dictionary the battery's labels price —
-(GENHN accepted 2/2 at PE4), LEMMA GENTOW-1 (Step 0 carry
+(GENHN accepted 2/2 at PE4) [GT3-r1: AT THE CORRECTED KEY — the
+erratum 59c1966 scope clause: T(b)''s carrier/slot/σ mechanism
+holds there; S7.1], LEMMA GENTOW-1 (Step 0 carry
 monotonicity, budgets, node floors) and LEMMA GENTOW-5 at
 GENTOW-1's 0/2 grade, the [r1] node floor u2 > e2D'h, and S4's
 coherent normalizers. Machine leg = S5 (this unit's sealed
@@ -361,3 +392,122 @@ sentence's upgrade from "machine-verified" to "theorem
 (GENTOW-3.C)" — is the orchestrator's dated consumption update
 after this note's own hostile arc; GENHN_PROOF and the GENTOW-1/2
 notes are byte-untouched by this unit.
+
+## S7. [GT3-r1] PE1 REPAIR RECORD + THE DATED GAUGE ANNEX
+## (2026-08-10, post-passPE1)
+
+PE1 verdict (GENTOW3_passPE1_report.md @ 3101cf5): NOT CLEAN —
+1 GAP (F-1, the gauge seam at the x-free definition) + 3 MINOR
+(m-1 digit-value attribution, m-2 P-1 census, m-3 T-SHADOW-REG's
+dead σ-leg); counter stays 0/2. This section is the r1 repair
+round; this round's edits are marked [GT3-r1] ([r1] bare in the
+body refers, as before, to GENHN-1's node-floor erratum). Sealed
+machine artifacts (gentow3_checks.py + output; the PE1 fresh
+instrument gentow3_pe1_fresh.py + both outputs; the import base
+gentow1_checks.py) are BYTE-UNTOUCHED by this round (md5s S7.5).
+
+### S7.1 THE DATED GAUGE ANNEX (F-1 repair): the corrected chat_t
+### pinned + the x-free equivalence re-scoped
+
+**The seam.** This note's verdict commit (d90db6d, 08-09 15:53)
+predates the GENHN dated gauge erratum (59c1966, 08-09 20:13):
+LEMMA GENHN-T(b)''s original display of the composed key's lift
+coefficients — chat_t = a plain lift of psi2's coefficient c_t —
+is GAUGE-NAIVE; the normalizer monomials are not multiplicative
+(nhat(u2)^{f2−t} = nhat((f2−t)u2)·(x^{e1}/π^h)^{W(t)}), so the
+plain lift's coherent-normalizer slot residue is c_t·eta^{−W(t)},
+not c_t. The note as composed consumed the pre-erratum display and
+carried no gauge pin; its one VALUE-LIVE chat_t site is the S2
+x-free genre definition, whose displayed "equivalently" clause is
+moreover false at f1 >= 2 on its own terms (below).
+
+**THE PINNED CORRECTED DISPLAY (per erratum 59c1966; = GENTOW1's
+S7.1 pin):**
+
+    chat_t := lift(c_t·eta^{W(t)}),
+    W(t)   := floor((f2−t)·i(u2)/e1)
+
+(eta = the level-1 stage residue of x^{e1}/π^h, K = F_Q(eta);
+i(m) = the x-exponent of nhat(m), 0 <= i(m) < e1; at f1 >= 2 per
+digit the exact-height (LIFT) output L_{(f2−t)u2}(c_t·eta^{W(t)}),
+the HETOW [r1] F-4 no-overflow form). At eta = 1 — and at any
+frame where each c_t·(eta^{W(t)} − 1) = 0 — corrected = naive.
+This pin governs chat_t at its S2 uses: the Setting's Phi2/K2
+displays, Step 0's Phi'-carry lifts (value-blind — heights
+unchanged), the (iii)/(iv) coefficient values, and the x-free
+classification.
+
+**The x-free equivalence RE-DERIVED (the correct scope).** Write
+m_t := u2(f2−t) and nhat(m) = π^{(m−i(m)h)/e1}·x^{i(m)}. Since
+{1, eta, ..., eta^{f1−1}} is an F_Q-basis of K and eta's lift is
+(x^{e1}/π^h)-shaped, the height-m_t lift of c = Σ_{r<f1}
+lambda_r·eta^r ∈ K is L_{m_t}(c) = nhat(m_t)·Σ_r
+lift(lambda_r)·(x^{e1}/π^h)^r: its x-support is
+{i(m_t) + e1·r : lambda_r ≠ 0} — pairwise-distinct exponents, all
+< D' = e1f1 (no overflow, no cancellation). Hence, per t with
+c_t ≠ 0, at the corrected key:
+
+    chat_t·nhat(m_t) is an x-free monomial π^a
+        <=>  i(m_t) = 0  AND  c_t·eta^{W(t)} ∈ F_Q.
+
+SCOPE. At f1 = 1 (K = F_Q) the second clause is automatic and the
+displayed "equivalently i(u2(f2−t)) = 0" is CORRECT — every S1/S5
+battery family and each of the three PE1 fresh frames sits there.
+At f1 >= 2 the display is FALSE in general: the i-test is
+necessary, not sufficient — it declares x-free any genre whose
+normalizers are x-free while some chat_t is x-ful
+(c_t·eta^{W(t)} ∉ F_Q, x-exponents e1·r, r >= 1). eta = 1 does NOT
+restore the equivalence at f1 >= 2 (the second clause then reads
+c_t ∈ F_Q, i.e. psi2 ∈ F_Q[Z] — not automatic when K ⊋ F_Q); what
+eta = 1 buys is only corrected = naive. THE PRIMARY CLAUSE —
+"every lift coefficient chat_t·nhat(u2(f2−t)) an x-free monomial",
+read at the CORRECTED chat_t — is the operative definition at
+every f1: it is exactly what THEOREM GENTOW-3(iii)'s proof
+consumes (x-free K2-coefficients => the division's coefficient
+arithmetic never leaves x-degree < D' => reduction mod Phi' is the
+identity), and (iii) so read needs no f1 restriction. The
+displayed i-test survives as the f1 = 1 evaluation of the primary
+clause, nothing more.
+
+**BOX-2's f1-uniformity claim walked under the primary definition
+(the honest status).** Step 0 and Steps 1–2 of the S2 proof are
+weight-level and value-blind — corrected and naive lifts sit at
+the same heights ((f2−t)u2 per digit) — so clauses (i)/(ii) and
+their proofs are gauge-immune and uniform in f1 as claimed;
+(iii)'s proof is correct at every f1 under the primary definition
+(above); (iv)'s certificate framework is general with certificates
+machine-checked at the five f1 = 1 families only (GENTOW3-BOX-1,
+unchanged). What sat FALSE inside the claimed uniform scope was
+the classification TEST: the "equivalently" reduction is an
+f1 = 1 fact. HONEST STATUS: BOX-2's sentence "the gap is
+machine-side" was wrong as composed — the S2 PROOF is uniform
+under the primary definition at the corrected key, the displayed
+i-test is f1 = 1-scoped, and the machine gap is two-axis (all five
+families at f1 = 1 AND eta = 1: the sealed battery is structurally
+blind to the gauge seam; no f1 >= 2 classification row exists in
+any leg yet). The in-place [GT3-r1] rider at GENTOW3-BOX-2 carries
+this reading.
+
+**THE MACHINE ROW (adopted from the PE1 fresh route): FR-GL — this
+note's first eta != 1 contact, at the corrected key, attainment at
+BOTH coordinates.** Source: gentow3_pe1_fresh.py + outputs @
+3101cf5 (run 2 GREEN 485/0, runner md5 35ad32aa, output md5
+94160b22; run 1 RED 485/1 KEPT, md5 485946fc — the one miss a
+disclosed instrument literal, no prediction changed). Frame
+(verified at this round against the committed instrument L17–21/
+L368–369/L511–546 and its output, slot heights re-derived by
+hand): p = 3, Phi' = x²−6 (e1 = 2, f1 = 1, h = 1, eta = 2),
+(e2, f2) = (1, 2), u2 = 3, K2 = F9, CORRECTED key Phi2 =
+Phi'² + 3x·Phi' + 108 (the HETOW frame-X key; note W(0) = 1 with
+i(6) = 0 — a lift coefficient whose normalizer is x-free and whose
+VALUE is gauge-live: naive 54 vs corrected 108), delta = 1,
+E2 = 6, THETA = (13, 7). Rows: self-shadow ShC_0 = −486·Phi' +
+2916x (both slots at dv2 = 2·5+3 = 2·6+1 = 13 = THETA_0), ShC_1 =
+9·Phi' − 27x (both slots at 2·2+3 = 2·3+1 = 7 = THETA_1) — the
+floor ATTAINED at both coordinates, each digit two-flavored
+(f2 = 2); anchor13 (f = Phi2² + 729x): honest tRAM(13), σ {(4,2)}
+PARI-exact, shadow pin also 13 with a DIFFERENT digit (mindiff
+13); carrier fact ef(Phi2) = {(2,2)} = (e1e2, f1f2) PARI-checked.
+At the gauge-NAIVE key this frame is not even a carrier (σ
+{(4,1)}, erratum 59c1966) — the row is meaningful only at the
+corrected key.
