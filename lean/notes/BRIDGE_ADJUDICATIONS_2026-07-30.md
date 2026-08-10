@@ -15529,3 +15529,57 @@ corrected inequality direction + the S3(c) consumption walk; the two
 GAP brackets; two minors) + RUN B's collection and adjudication
 (GENTOW3 dated repairs if bounded). C/D/E/F adjudication dispatches
 when the runner finishes.
+
+## B21 FOLD (2026-08-10) — BOXES note at 1/2 (LEMMA 6.7E lands); GENTOW5's CRITICAL repaired with the consumer re-derived; RUN B adjudicated + B22 DISPATCH
+
+GENTOW6-BOXES PE3 (16771f7f): **CLEAN 0C/0G/2m → 1/2.** The r2 F-1
+outcome was construction AND rewrite: **LEMMA 6.7E** re-derived
+independently from the note's own ledger (the corollary's iff sound —
+above-Θ terms cannot alter a graded digit); genre honesty confirmed
+at source (the note claims same-genre GEOMETRY, out-of-locus — never
+in-genre); 6.7(b1) cross-pins the frame (χ·π^a = 2·3⁶ = 1458 matches
+the measured slot exactly). Fresh route = third-prime replication:
+NEW genres R5E/R5F over Q₅ + a 6.6/6.7 joint face, **442/0 run 1**,
+isolated re-run bit-identical, the p=5 twist exact (coefficient-5
+slots promoted; floor attained through the coefficient-3 slot),
+v₅(Res) = 63 constant on 9 pairs. Minors: the S8 scope-split clause
+(ii) = a third ripple site of the overturned display (bracket owed);
+the 6.6(d) step-domination line TRUE but underived. Rider + PE4
+ACCEPTANCE attempt dispatched in B22.
+
+GENTOW5 CODEX REPAIRS (7c43bb24/b0e5c648): the CRITICAL repaired —
+the corrected S2.4 direction (weight-NONINCREASING: preserved exactly
+at the top rung, STRICTLY LOWERED at each interior rung — the note's
+own worked grid-4 instance carries it) + the broken consumer S3(c)
+Step 2 walked: the parenthetical was the one broken consumer; the
+ladder's conclusion SURVIVES on a re-derived one-directional route
+(S11.1.1–.3: descent floor from (b)+(SLOT); the ρ-ladder monotonicity
+= the floor chain; the +1 margin survives descent); machine leg 8/0
+(the 85→84 drop = the rung-3 margin; 170 preserved; witness ρ =
+(0,1/8,1/8)). A-F2 FENCED (i=2 verbatim law; i ≥ 3 = named open
+lemma [GENTOW5-W(i)]); A-F3 re-scoped to ψ₂^(u1) with the u1 = w₁
+tie OPEN (the fold's disclaimer adjudicated right); 2 minors folded.
+RUN B (GENTOW3 = CHALLENGE) adjudicated (515089d7): B-F1 REAL
+REPAIRED (the same-shift-from-linearity claim withdrawn; persistence
+re-derived via the in-budget box margin cascade), B-F2 REAL REPAIRED
+(scoped to verdict-level output); 16 checked-clean. All freezes
+pure-append verified.
+
+ORCHESTRATOR RUNNER COMPLETE (10:58): RUN C (GENTOW4) =
+**RATIFIED-WITH-ANNEX** (batch 2's first non-challenge); RUN D
+(GENTOW6) = **CHALLENGE** (111,376 B); RUN E (batch-1 discharge
+confirmation) = **DISCHARGED ×5** — Codex certifies every batch-1
+repair including HETOW-4 and the R2 corrections; RUN F (the
+simplification blueprint plan-pass) = **PLAN-DEFECTIVE** — S-1 HOLDS
+until the revision lands.
+
+**B22 DISPATCHED (wf_2adcd3c0-600)**, recorded post-dispatch: (1)
+C+E adjudication (the annex findings vs GENTOW4 at HEAD; the ×5
+discharge mapping verified); (2) RUN D adjudication (every finding
+vs GENTOW6_PROOF at HEAD — findings against since-corrected text =
+RESOLVED-ALREADY with the correcting commit cited); (3) RUN F
+adjudication + THE PLAN REVISION as a dated blueprint section, ending
+with the explicit S-1 verdict (cleared / blocked-on-X); (4) the
+BOXES rider (2 minors) → passPE4 = THE ACCEPTANCE ATTEMPT (surfaces:
+6.7E's multi-entry face, 6.6(d) at a real three-class frame, the
+6.7C′ band at f₂ ≥ 2, the four-theorem note as one system).
