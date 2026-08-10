@@ -14771,3 +14771,28 @@ re-derived at the corrected key (the cocycle floor identity makes
 every term carry the SAME unit — the pin substantive, not
 cosmetic). Board: HETOW 2/2 ✓ · GENTOW1 1/2 · GENTOW2 0/2 (reset,
 r3 done) · GENTOW5 0/2 (r1 done) · GENTOW3/4/6 arcs still to open.
+
+---
+
+## ★ B10 FOLDED (wzp5esb1p, 4/4): GENTOW1 ACCEPTED 2/2 (items (1)(5)(6β) through the bar; FIRST non-prime-q frame in the program) · GENTOW2 PE5 CLEAN → 1/2 restart (first γ₂-live contact; teeth bit FOR B″) · GENTOW5 PE2 = 2G (the ψ^{(w)} cross-note consistency + the lift-flavor display; first seam-live depth-3 chain) — B11: riders + GENTOW5 r2 + GENTOW2 PE6 — 2026-08-10
+
+GENTOW1 PE3 (4aff731): CLEAN 0C/0G/1m — ACCEPTED. The ONTO
+cardinality re-derived with an independent second route; the table-
+generation audit found the formula-echo pincered by decorrelated
+legs; fresh H1 = q=4 with the F₄ letter ω live in ψ₂ AND the refine
+normalizer; H2 = gauge-live × μ₂=3 with the coherent residue
+cross-checked via the η-cocycle. GENTOW2 PE5 (75923bc): B″
+re-derived independently; ψ^{(w)}-admissibility verified for EVERY
+w; the GB tower's direct cocycle measurement res(n̂₂(2u₃)/n̂₂(u₃)²)
+= z₂² ≠ 1 — the γ₂ leg finally ACTS, and both opposite-direction
+teeth bit FOR the lemma. GENTOW5 PE2 (40f313a): F-1 the w-leg —
+GENTOW5-B(a) realizes ψ^{(w)} at the pinned recipe (unproven at ψ
+unless w=1); repair = the ψ^{(w)} re-scope (GENTOW2-A's quantifier
+already accepts it; blast radius contained — σ/values w-blind).
+F-2 the lift-flavor display undefined-as-displayed exactly on the
+repair's own geography (the instruments implement the re-solved
+family, machine-green — display catches up to implementation).
+FR-A = the first seam-live depth-3 chain anywhere (first live ϑ at
+i ≥ 2; the naive tooth fired AT i=2). Board: HETOW 2/2 ✓ ·
+GENTOW1 2/2 ✓ · GENTOW2 1/2 · GENTOW5 0/2 (r2) · GENTOW3/4/6 arcs
+to open.
