@@ -15118,3 +15118,26 @@ Board: HETOW ✓ · GENTOW1 ✓ · GENTOW2 ✓ · **GENTOW5 ✓** (4/7) ·
 GENTOW3 0/2 (r3 = one-siding) · GENTOW4 0/2 (r1 = gauge annex) ·
 GENTOW6 0/2 (r1 = scope pin + annex + the F-2 supplier repair).
 B15: GENTOW5 acceptance rider + r3→PE4 + r1→PE2 ×2.
+
+**B15 DISPATCHED (2026-08-10, wf_71373e30-a29)** — recorded
+post-dispatch. Seven agents, four chains: (1) GENTOW5 acceptance rider
+(the dated record + the three PE5 minors folded at source, incl. the
+index-0 scope derivation and the i=1 discharge line citing accepted
+GENTOW2-A(c)). (2) GENTOW3 r3 (the S0 sentence ONE-SIDED — re-derived
+from S2 + scope remark (2) + BOX-1, verified at all four instances:
+the slack, the faithful member, the refuting member, an attainment
+row; + the Φ′/Φ₂ label) → passPE4 (surfaces: the if-direction actually
+proved?; residual only-if readings elsewhere; fresh candidates: e₂>1
+first, multi-coordinate live certificate, q=4). (3) GENTOW4 r1 (the
+four-site gauge annex re-derived from 59c1966 + HETOW [r1]; FR-G/FR-M
+adopted as annex rows; 2 minors) → passPE2 (surfaces: site (b)'s
+post-restatement consumption walk, site (d) at a constructed f₁=1 ×
+η≠1 instance; fresh candidates: the gauge-live two-block compound).
+(4) GENTOW6 r1 (THE HEAVY UNIT: the f₁=1 scope pin + gauge annex from
+GENTOW3 S7.1; F-2 PROVE-FIRST — attempt the 𝒯-free cap lemma via
+GENTOW-1(b) triangularity with GENTOW4 citable only as displayed
+attempt-grade conditional, else re-scope COR 6.2C(d) with the
+consumer walk; machine leg either way; minors F-3/5/6) → passPE2
+(charged to independently re-derive the cap lemma if proved, stress
+it at an unused partial-side member, audit conditional cites; fresh
+candidate: an f₁ ≥ 2 boundary TOOTH from outside the pinned scope).
