@@ -16,7 +16,7 @@ statements and are flagged for Asvin's review BEFORE any unit targets them
 
 **WHAT THE TARGET SAYS.** The informal theorem (accepted-text-complete at the
 2-clean bar, PROJECT_STATE appends #14–#23): for every degree n and splitting
-type σ of degree n there is ONE rational law — a palindromic pair of polynomials
+type σ of degree n there is ONE rational law — a pair of polynomials
 (num, den) — such that at EVERY prime p (including wild), the density of monic
 degree-n polynomials over ℤ_p with type σ equals num(p)/den(p). The existing
 machine-checked capstone (`OM.RealInstanceV2.montes_unconditional`) is the
@@ -69,13 +69,13 @@ structure RealInstanceAt (q n : ℕ) where
   faithful : True
 
 /-- **THE STAGE-2 TARGET (the general-degree uniformity theorem, decided
-density).** One palindromic rational law per (n, σ), valid at every prime
+density).** One rational law per (n, σ), valid at every prime
 carrying a real instance, conditional per instance on the tame functional
 equation — the general form of `montes_unconditional`'s conclusion. The full
 (exhaustive) tie is `uniformity_target_exhaustive` below. -/
 theorem uniformity_target
     (n : ℕ) (hn : 0 < n) (σ : FactorizationType) (hσ : σ.degree = n) :
-    ∃ (num den : Polynomial ℚ), den ≠ 0 ∧ IsPalindromic num den ∧
+    ∃ (num den : Polynomial ℚ), den ≠ 0 ∧
       ∀ (q : ℕ) (_ : 1 < q) (R : RealInstanceAt q n),
         TameFunctionalEquation R.foundation n σ →
           den.eval (q : ℚ) ≠ 0 ∧
@@ -89,7 +89,7 @@ vanishes as `N → ∞`. `undecidedCount` is the model's field, as at the commit
 prime. -/
 theorem uniformity_target_exhaustive
     (n : ℕ) (hn : 0 < n) (σ : FactorizationType) (hσ : σ.degree = n) :
-    ∃ (num den : Polynomial ℚ), den ≠ 0 ∧ IsPalindromic num den ∧
+    ∃ (num den : Polynomial ℚ), den ≠ 0 ∧
       ∀ (q : ℕ) (_ : 1 < q) (R : RealInstanceAt q n),
         TameFunctionalEquation R.foundation n σ →
         Filter.Tendsto
@@ -100,3 +100,9 @@ theorem uniformity_target_exhaustive
   sorry
 
 end LeanUrat.Stage2
+
+/- Statement revision note (2026-08-10, per Asvin's review): palindromicity
+DROPPED from both targets — "it might be cleaner not to mention the
+palindromicity at all and simply to prove uniformity at all primes"; the
+palindromy content remains a capstone-level fact at the committed instance
+(montes_unconditional) and is not part of the stage-2 target. -/

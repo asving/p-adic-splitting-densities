@@ -121,3 +121,30 @@ the hard math for a while then, and see how it goes."
   alteration; gaps recorded as data; the 2-clean Fable arc judges).
 - Revisit trigger: when the arcs have judged ≥3 CODEX-arm hard units,
   fold the comparison and re-decide with Asvin.
+
+## Amendment 2 (2026-08-10 night, owner directives before signing off)
+
+Asvin, verbatim intent: (1) "For the lean statement ... cleaner not to
+mention the palindromicity at all and simply to prove uniformity at all
+primes ... Otherwise, the lean statement looks correct (modulo making
+sure that factorization type, counting density etc are actually defined
+correctly)." — EXECUTED: palindromicity dropped from both targets
+(recompiled green); a DEFINITION-AUDIT unit (FactorizationType /
+countingDensity / DensityFoundation vs the informal objects) is queued
+as a named stage-two unit. (2) "the math proof ... should be tight
+completely, not even a small lemma can be left unproven ... either
+cited to standard literature (minus my paper) or proven!" — the
+TIGHTNESS CENSUS unit is queued at top fleet priority: sweep the
+accepted corpus for every fenced/open/conditional item; classify
+in-cone (consumed by the uniformity theorem — MUST be proved or cited)
+vs out-of-cone (side quests); every in-cone item becomes a proof/cite
+unit. (3) "since fable is struggling we can use codex for now ...
+if there are any lemmas that seem to simplify the proof a lot but need
+to be proven, we should try to prove them if they seem within reach
+and are verified numerically/on examples/fit in with our intuition" —
+CODEX-FOR-NOW: during Anthropic-API storms, Codex may take composition
+AND storm-time work generally (the external path is unaffected); and
+the X-LEMMA (the universal stage-recentering lemma, SG-2's named
+price) is EXACTLY the described case (large simplification ~6,900
+lines; matches GENHN-BOX-2's own wanted display = fits intuition) —
+its proof attempt dispatches to Codex immediately.
