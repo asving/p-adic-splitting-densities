@@ -1,0 +1,31 @@
+P1a. closed forms solve the SUM recursion, symbolic N=2..40
+  [ok] P1a N=2..40 symbolic bad=[]
+P1b. exact-int oracle at Q=7, Q=27 (out-of-battery), N=2..40
+  [ok] P1b Q=7 bad=[]
+  [ok] P1b Q=27 bad=[]
+P2. rate u(N) <= N*Q^(N-1) at Q in {7,27}, N=2..40
+  [ok] P2 Q=7 bad=[]
+  [ok] P2 Q=27 bad=[]
+P3. R1.3 alpha recomposition wiring (m=2..6) + tooth
+  [ok] P3 m=2 recompose m(m+1)/2 - m = 1 = c(m)
+  [ok] P3 m=3 recompose m(m+1)/2 - m = 3 = c(m)
+  [ok] P3 m=4 recompose m(m+1)/2 - m = 6 = c(m)
+  [ok] P3 m=5 recompose m(m+1)/2 - m = 10 = c(m)
+  [ok] P3 m=6 recompose m(m+1)/2 - m = 15 = c(m)
+  [VIOLATION] P3 sum closed form sum=(Q - 1)*Sum(Q**(-c*k), (k, 1, oo))
+  [ok] P3 sum c=1 Q=7 <= 1 =1 (EQUALITY, m=2 sharp)
+  [ok] P3 sum c=1 Q=27 <= 1 =1 (EQUALITY, m=2 sharp)
+  [ok] P3 sum c=2 Q=7 <= 1 =1/8
+  [ok] P3 sum c=3 Q=27 <= 1 =1/757
+  [ok] P3 TOOTH c=0 diverges 50 terms already 300
+P4. C1(ii)/R6 arithmetic at r=4,5 (supp leg stopped at r=3)
+  [ok] P4 r=4 dG/du_i 
+  [ok] P4 r=4 UB-G nonneg 11 monomials
+  [ok] P4 r=5 dG/du_i 
+  [ok] P4 r=5 UB-G nonneg 26 monomials
+P5. CS4-F floor at fresh points + gate-expression agreement
+  [ok] P5 (3,6,2) unfloored display INTEGER display=3 (integer! T-P5)
+  [ok] P5 (3,6,2) floor gates to 0 4k=8 > N-1=5
+  [ok] P5 (2,9,2) visible + law law 2^12 = 4096
+
+RED: 1 violations
