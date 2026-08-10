@@ -709,3 +709,225 @@ arc), COR GENTOW-4.C's discharge (GENTOW4 ACCEPTED 2/2), HE6R1-2(b)
 and GENTOW-1(a)(b)(d)+R2a (GENTOW1 ACCEPTED 2/2) at their recorded
 grades. (iii) N_0 is a sufficient depth, not claimed sharp; below
 N_0 the machine leg records exploratory rows without wants.
+
+## S8. GENTOW6-BOX-3 — REGIME-3 CLASSIFICATION (THEOREM GENTOW-6.7)
+## + THE j*-1 BAND ONE m UP (COROLLARY-THEOREM GENTOW-6.7C)
+
+**The box verbatim (GENTOW6_PROOF S5).** "GENTOW6-BOX-3 (regime-3
+classification). Which non-x-free, no-top-overflow members diverge,
+and exact THETA-attainment via entry drivers: displayed only
+(E-ENTRY witness; the pair-sum digit display of the quadrichotomy
+clause (3)); no theorem." The S6 residue of this note's first
+append adds the lead consumed here: the j < j* lower-coordinate
+classification at mu2 >= 3 "is BOX-3's geography one m up."
+
+**Honest scope split.** The box bundles two asks. (i) The KEY-POWER
+regime-3 classification (the quadrichotomy clause (3) pair-sum
+display made a theorem): PROVED below as THEOREM GENTOW-6.7, with
+the attainment criterion the residue of an explicit pair sum chi —
+and its m-up extension at the first lower coordinate PROVED at a
+named geography class as COROLLARY-THEOREM GENTOW-6.7C. (ii) The
+MEMBER classification (entry drivers: which members f = Phi2^2 +
+Sum C_j Phi2^j attain exactly THETA) is NOT proved here: the
+E-ENTRY witness already shows a member whose entry branch lands
+ABOVE the floor (31 > 29) and DRAINS the shadow; the entry-pair
+single-extraction ledger (entry digit c at (j', a, b) crossing lift
+t, overflow iff a + i_t >= D', digit -c chat_t (unit) at Y-exponent
+b + e2 t + (j'-1) e2 f2 + 1) prices each branch, but a member's
+graded assembly mixes FREE digits at arbitrary depths — the
+classification is per-member finite arithmetic with no genre-level
+statement; the obstruction is displayed at S8.1 below. Box verdict
+in S10.
+
+**Setting = GENTOW-6.3's (S2 above), mu2 = 2, f1 = 1, corrected
+chat_t.** Recall: T = {t < f2 : chat_t != 0}, t* = max T, lift data
+(i_t, a_t) with e1 a_t + i_t h = u2 (f2 - t), D' = e1, pair source
+census (GENTOW-6.3(a)): the height-THETA graded discrepancy layer
+is single-extraction branches, one per x-overflowing pair
+(i_t + i_{t'} >= D'). REGIME 3: some pair overflows and
+2 i_{t*} < D' (forces f2 >= 2 and t < t' mixing).
+
+**Named objects.**
+
+    s*    := max { t + t' : (t,t') in T^2, i_t + i_{t'} >= D' }
+    j*3   := floor((e2 s* + 1) / (e2 f2)),  b*3 := (e2 s* + 1) mod e2 f2
+    I(s*) := { i_t + i_{t'} : t + t' = s*, i_t + i_{t'} >= D' }
+    a(s*, I) := (u2 (2 f2 - s*) - I h) / e1   [an integer: sum the
+                two defining identities e1 a + i h = u2(f2 - t)]
+    chi(s*, I) := Sum_{t <= t', t + t' = s*, i_t + i_{t'} = I}
+                  (2 - delta_{tt'}) c-bar_t c-bar_{t'}   in K
+                  [c-bar = residue of the corrected chat]
+
+> **THEOREM GENTOW-6.7 (regime-3 classification at the top overflow
+> coordinate; mu2 = 2, f1 = 1).** For f = Phi2^2 at a regime-3
+> genre:
+>
+> (a) [CEILING] every discrepancy branch has Y-exponent
+> <= e2 s* + 1, with equality exactly for the zero-division-step
+> extracted branches of the overflowing pairs with t + t' = s*.
+> Consequently ShC_j == 0 identically for every j > j*3, and the
+> slots of ShC_{j*3} with b > b*3 are empty.
+>
+> (b) [TOP-SLOT DIGITS] for each I in I(s*), the height-THETA_{j*3}
+> graded digit of ShC_{j*3} at slot (I - D', b*3) is
+>
+>     chi(s*, I) · pi^{a(s*, I)} · (wrap unit),
+>
+> read as: the slot's height-THETA graded component has residue
+> chi(s*, I) times the shared unit. Hence
+> (b1) if chi(s*, I) != 0 in K for some I in I(s*): the shadow
+> diverges from DRAIN at EXACTLY THETA_{j*3} at coordinate j*3
+> (GENTOW-3(i) floors it; the digit attains it);
+> (b2) if chi(s*, I) = 0 for every I in I(s*): the height-THETA
+> graded layer at every s*-slot is ZERO and any content there sits
+> strictly above the floor. No attainment is claimed at the s*-
+> slots; the lower-s slots assemble multiple branches (direct
+> lower-s pairs + division-stepped descendants of the s*-branches)
+> and their vanishing is displayed genre arithmetic per slot —
+> the S3 cascade, machine-measured at both faces in S9.
+>
+> (c) [SPECIALIZATION] regime 2 is the degenerate case s* = 2t*,
+> I(s*) = {2 i_{t*}} with the single diagonal pair: chi = c-bar_{t*}^2
+> != 0 unconditionally — THEOREM GENTOW-6.3(b) verbatim, which is
+> WHY no residue condition appears there. At f2 = 1 regime 3 is
+> empty (T = {0}: the only pair is the diagonal).
+
+*Proof.* (a) By 6.3(a) (consumed; its proof is the mu2 = 2 case of
+6.5 Steps I-III above), discrepancy content traces to extracted
+branches of x-overflowing pair sources; a pair (t, t') enters at
+Y-exponent e2(t + t'), one extraction raises it by exactly 1
+(i_t + i_{t'} <= 2e1 - 2 < 2D': single rewrite), and every
+division/recarry step strictly lowers Y (by e2(f2 - s) >= 1,
+s in T). Overflowing pairs have t + t' <= s* by definition of s*,
+so Y <= e2 s* + 1 with equality forcing t + t' = s* and zero
+steps. Pairs with t + t' > s* exist only as NON-overflowing
+sources: in-grid, tail-route-only, shared by both reads and
+cancelled (6.3(a)'s last clause). Coordinate j content requires
+some slot Y = j e2 f2 + b >= j e2 f2; for j > j*3,
+j e2 f2 >= (j*3 + 1) e2 f2 > e2 s* + 1 by the floor definition —
+empty; at j = j*3, b > b*3 likewise exceeds the ceiling. ∎(a)
+(b) Fix I in I(s*). The sources entering at position
+(x^I, Y^{e2 s*}) are exactly the pairs {t, t'} with t + t' = s*
+and i_t + i_{t'} = I; each carries source coefficient
+(2 - delta_{tt'}) chat_t chat_{t'} pi^{a_t + a_{t'}} with
+a_t + a_{t'} = a(s*, I) SHARED across the slot (the weight
+identity: e1(a_t + a_{t'}) + I h = u2(2f2 - s*)). The single
+extraction has Phi'-branch coefficient exactly 1 and in-grid
+x-part x^{I - D'} (I - D' < D'); zero division steps reach
+coordinate j*3 slot (I - D', b*3) directly with coefficient
+unchanged and the coherent normalizer's wrap unit (6.3(b)'s
+clause). By (a)'s equality case no other branch reaches Y-exponent
+e2 s* + 1; branches at the same height but other Y land at other
+slots; and the graded digit at height THETA_{j*3} reads the
+coefficient sum's residue at valuation a(s*, I): the terms whose
+integer coefficient (2 - delta) is a p-unit contribute their
+residues, terms with p | (2 - delta) sit one grade up — both
+exactly captured by chi(s*, I) computed in K. If some chi != 0:
+nonzero graded digit at height THETA_{j*3}, and GENTOW-3(i)
+(consumed, at its arc grade) forbids discrepancy content below
+THETA: divergence exactly on the floor, coordinate j*3 — (b1). If
+all chi = 0: each s*-slot's graded THETA-layer vanishes and its
+value (if any) has valuation > a(s*, I) — (b2). ∎(b)
+(c) Arithmetic of the definitions; at 2 i_{t*} >= D' the maximum
+s* = 2t* is attained by the diagonal (t <= t* termwise), I = 2
+i_{t*} is its only element, delta_{tt'} = 1, chi = c-bar^2, a
+product of units in the field K. ∎
+
+**S8.1 (the member/entry-driver half: the displayed obstruction).**
+For members, the same ledger prices each entry x lift overflow
+branch at weight (entry digit weight) + E2 (j' - 1 co-factors
+priced separately) + delta, and the E-ENTRY witness (GENTOW6_PROOF
+S4: f_E = Phi2^2 + 4x^2 Phi2 + 16 Phi' at FAM-E) realizes the
+branch that lands at the C_0 slot and CANCELS it (shadow DRAIN,
+divergence displayed at 31 >= THETA_0 = 29, NOT on the floor).
+Whether a member attains EXACTLY THETA_j depends on the residues
+and depths of ITS free entry digits (the branch height moves
+linearly with v(c)), so the class of exactly-THETA members is cut
+by per-member congruences, not by genre data alone: a genre-level
+trichotomy would have to quantify over the free budget box, and
+the two measured members (E-ENTRY above the floor; the S9
+perturbation rows holding their floors) already witness both
+behaviors INSIDE one genre. That is the exact obstruction to a
+theorem-shaped classification of ask (ii); it stays displayed.
+
+> **COROLLARY-THEOREM GENTOW-6.7C (the j* - 1 band one m up: the
+> binomial-difference law).** Fix a tower genre with f1 = 1,
+> f2 = 1, e2 = 2, e1 = D' = 2, i_0 = 1 (so T = {0}, u2 = 2 a_0 + h
+> odd, chat := chat_0, any p, any h with gcd(h, e1) = 1 — the
+> FR5X / FAM-A5 / GEN-P3 geography class), and f = Phi2^m, m >= 3.
+> Then at coordinate j* - 1 = m - 3 (one below THEOREM GENTOW-6.5's
+> top coordinate):
+>
+> (i) the discrepancy branches with one extraction (the
+> height-THETA graded layer's population, 6.5 Step IV) have ODD
+> Y-exponent; the band's odd slot is Y = 2m - 5, i.e. slot
+> (a, b) = (1, 1) of ShC_{m-3}, and it receives EXACTLY TWO
+> branches: the k = 3 direct branch (source multinomial
+> binom(m,3), coefficient -binom(m,3) chat^3 pi^{3 a_0} x after
+> extraction) and the k = 2 top branch after ONE division step
+> (+binom(m,2) chat^3 pi^{3 a_0} x);
+>
+> (ii) the slot's total one-extraction value is therefore
+>
+>     ( binom(m,2) - binom(m,3) ) · chat^3 · pi^{3 a_0} · x
+>     [ note binom(m,2) - binom(m,3) = binom(m,2)(5 - m)/3 ],
+>
+> and the height-THETA_{m-3} graded digit of ShC_{m-3} at (1,1) is
+> its residue times the wrap unit: the shadow diverges from DRAIN
+> exactly on the floor at coordinate m - 3 iff
+> p does NOT divide binom(m,2) - binom(m,3);
+>
+> (iii) at m = 5 the integer coefficient is ZERO (binom(5,2) =
+> binom(5,3) = 10): the two branches cancel IDENTICALLY (every p,
+> every unit chat) and the (1,1) slot carries no one-extraction
+> content at all;
+>
+> (iv) instantiations: m = 3: coefficient 2 — cancels iff p = 2
+> (obs-1's FR5X-3 j = 0 slack, and A53's measured 128-at-pin-35;
+> attained at GEN-P3, the measured 11664-at-31); m = 4:
+> coefficient 2; m = 5: zero; m = 6: coefficient -5 — cancels iff
+> p = 5, so attainment RETURNS at p = 2 and p = 3 one coordinate
+> below a top coordinate that itself cancels at p = 3
+> (binom(6,2) = 15). The three FR5X configurations (attained /
+> slack / identically-zero) are clauses 6.5(b1) at j*, 6.7C(ii) at
+> j* - 1 with p | 2, and 6.5(c) above j*, of one ledger.
+>
+> *Proof.* At this genre class every source is a k-multiset of the
+> single digit t = 0: entry position (x^k, Y^{2(m-k)}), coefficient
+> (-1)^k binom(m,k) chat^k pi^{k a_0}; every division step is
+> through the single lift term (Y-change -e2 f2 = -2, coefficient
+> times +chat pi^{a_0} x); every extraction raises Y by 1 and
+> consumes x^2. So along any branch Y ≡ e (the extraction count)
+> mod 2: the graded (weight m E2 + delta, e = 1) population sits at
+> odd Y — (i)'s parity clause. Band m - 3 means Y in
+> {2m - 6, 2m - 5}; odd member 2m - 5. One-extraction branches
+> reaching it: k-source, one extraction, s steps: Y = 2(m - k) + 1
+> - 2s = 2m - 5 gives k + s = 3 with k >= 2 (x-overflow needs
+> x^k, k >= D' = 2; e <= floor(k/2) limits nothing here): (k, s) =
+> (3, 0) and (2, 1). Their x-slots: k = 3: x^3 extracts once
+> (3 < 2D') to x^1, no steps: slot (1,1); k = 2: x^2 extracts to
+> x^0, one step multiplies by chat pi^{a_0} x: slot (1,1) — the
+> same slot, and the pi-powers match (3 a_0 both). Signs: the
+> k = 3 source carries (-1)^3 = -1; the k = 2 source (+1) and the
+> division step emits MINUS the quotient times the lift term
+> -chat nhat, i.e. +chat pi^{a_0} x per step. Total = (ii)'s
+> display; the weight ledger (6.5 Step IV) puts both branches at
+> m E2 + delta exactly, reading at coordinate m - 3 as height
+> THETA_{m-3}, and 6.5's Step V cancels the tail/source pairs, so
+> the slot's graded THETA-layer is exactly the displayed residue
+> times the wrap unit. Attainment as in 6.7(b1) via GENTOW-3(i).
+> Multi-extraction branches have e >= 2, weight >= m E2 + 2 delta
+> (above the graded layer) AND even-or-higher parity displacement:
+> e = 2 branches sit at EVEN Y (never at (1,1)-type slots of this
+> class); e = 3 branches (k = 6) land at Y = 2(m - 6) + 3 with at
+> most floor(k/2) extractions — a different band. So the (1,1)
+> slot value is EXACTLY (ii)'s display: (iii) is the m = 5
+> degeneration, integrally zero. (iv) is arithmetic + the cited
+> committed measurements. ∎
+
+**Conditionality (named).** 6.7 consumes THEOREM GENTOW-6.3(a) and
+GENTOW-3(i); 6.7C consumes THEOREM GENTOW-6.5 Steps I-V (this
+note, 0/2) — both ride their notes' grades. The 6.7C geography
+class is f2 = 1, i_0 = 1, e1 = 2 EXACTLY as stated; deeper bands
+(j* - 2 and below) assemble three or more branches (k = 4 tail-
+carry routes enter) and stay displayed, not claimed.
