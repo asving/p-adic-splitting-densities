@@ -650,3 +650,185 @@ G4-RAM {(8,2)} (1 member, dual routes agree) and G4-INT {(4,4)}
 {{(8,2)},{(4,4)},{(4,2),(4,2)}}, run total 0 violations. The row's
 μ₂ ≥ 3 face (first live n = 24) has no machine contact and stays on
 the NOT-exercised list.
+
+---
+
+### Dated append (2026-08-10, TOWERRAT-R1 + two annexes): LEMMA
+### HETOW-4 — the n̂₂/n₂ normalizer bridge, PROVED; the S1 J-D0 row
+### superseded
+
+*Provenance: the post-acceptance decorrelated ratification run
+(`CODEX_TOWERRAT_2026-08-10.md` §S2, session
+019fe985-2c4b-7fc0-9885-5e558447502d, outcome CHALLENGE, 3 GAP):
+F-1 adjudicated REAL (the confirmed gap) → repaired by LEMMA
+HETOW-4 below; F-2 REAL as display → the cite annex; F-3 artifact
+in substance → the row annotation. The 2/2 acceptance stands
+ANNOTATED, now with the annotation DISCHARGED at this note's own
+grade; the body above stays BYTE-FROZEN — this append GOVERNS the
+S1 rows it names. Every derivation below is from this note's own
+lemmas + the frozen HE7 §S1/§S5.3, not from the verifier's text.*
+
+**THE GAP, exactly.** The S1 normalizer row justified the n̂₂-vs-n₂
+discrepancy by "unit-residue discrepancy in K₂^× only; σ-content
+twist-invariant per HE7 §S1 CONVENTION (J-D0)". HE7's CONVENTION
+covers changes of normalizer WITHIN its ϖ-Φ′-monomial family
+(there the ratio at grade k is forced to be (Φ′^{ℓ}/ϖ^{u})^{c},
+residue β^{c}); the tower ladder monomial n̂₂(k) = x^{i}π^{a}Φ′^{b}
+is NOT in that family, and THEOREM HE7.A(2)/(3)'s routing
+predicates (separability of R_{λ₂}; the repeated factor's
+K₂-rational letter s₂, consumed by (LIFT₂)) are letter-sensitive —
+an arbitrary per-height unit twist can change them. The missing
+lemma computes the ratio's residue exactly and shows what it
+contributes: the twist does NOT cancel per height (the raw
+pin-residue strings of the two systems genuinely differ,
+non-geometrically); it cancels in the ASSEMBLED residuals, whose
+comparison is a single global unit times a K^×-rescale — the
+species HE7's J-D0 display does cover — and both routing
+predicates transport.
+
+> **LEMMA HETOW-4 (the normalizer bridge).** Notation of §S1/§S2
+> ([r1] preamble: ϖ = x^{i₀}π^{a₀}, n̂(k) = x^{i(k)}π^{a(k)},
+> Q(k) = (i₀k − i(k))/e₁ = ⌊i₀k/e₁⌋, wrap₁(a,b) :=
+> ⌊(i(a)+i(b))/e₁⌋; letter η; datum (κ₂ = u₂/e₂, r̃),
+> K₂ = K(η₂) = K(β), β = η^{−Q(u₂)}η₂ per HETOW-1). For k ∈ ℤ put
+> s(k) := k·u₂^{−1} mod e₂ ∈ [0, e₂), m(k) := (k − s(k)u₂)/e₂;
+> n₂(k) := ϖ^{m(k)}Φ′^{s(k)} (HE7 §S1) and n̂₂(k) :=
+> x^{i}π^{a}Φ′^{b} the tower ladder monomial (i < e₁, b < e₂,
+> e₁e₂a + ie₂h + bu₂ = k; a ∈ ℤ, Laurent). Then:
+>
+> (a) [THE RATIO IS A GRADE-DETERMINED WRAP-LETTER MONOMIAL]
+> b = s(k) and x^{i}π^{a} = n̂(m(k)), so, as Laurent monomials,
+>
+>     n̂₂(k)/n₂(k) = n̂(m(k))/ϖ^{m(k)} = (x^{e₁}/π^{h})^{−Q(m(k))},
+>
+> and at every point ξ of the tower-node locus
+> res(n̂₂(k)(ξ)/n₂(k)(ξ)) = η_ξ^{−Q(m(k))} = ι_ξ(τ(k)), where
+> τ(k) := η^{−Q(m(k))} ∈ K^×.
+>
+> (b) [τ IS A COCYCLE, NOT A CHARACTER] with w₂ :=
+> ⌊(s(k)+s(k′))/e₂⌋ ∈ {0,1},
+>
+>     τ(k)·τ(k′)/τ(k+k′)
+>       = η^{ wrap₁(m(k), m(k′)) + w₂·( Q(u₂) + wrap₁(m(k)+m(k′), u₂) ) },
+>
+> the two-floor wrap-cocycle. In particular the per-height twist is
+> neither constant nor geometric in general, and the RAW (bracket-
+> free) pin-residue strings of the two systems differ wherever some
+> τ(H) ≠ 1.
+>
+> (c) [ASSEMBLED RESIDUALS: THE BRACKETS TELESCOPE THE TWIST INTO
+> THE COVERED SPECIES] Let a side of P₂ have slope λ₂ = u₃/ℓ₂
+> (lowest terms), lattice heights H_t = H₀ − t·u₃, t = 0..d. Each
+> system assembles its side residual WITH ITS OWN cocycle bracket
+> (HE7: §S5.3 Step 2's τ_t with res(τ_t) = β^{c_t}; tower: the S4
+> coherent-normalizer wrap units, GENTOW-2(iv)'s "coherent
+> normalization, wrap units included"), so the t-coefficient is
+> res(A_{j(t)}·N(u₃)^{t}/N(H₀)) with N = n₂ resp. n̂₂. Hence, with
+> δ := τ(u₃) ∈ K^×,
+>
+>     ρ_t = ρ̂_t · τ(H₀) · δ^{−t} ,   i.e.   R_{λ₂}(Z) = τ(H₀) · R̂_{λ₂}(Z/δ) ,
+>
+> and the side letters match the rescale: β₂,ξ =
+> res(Φ₂(ξ)^{ℓ₂}/n₂(u₃)(ξ)) = ι_ξ(δ)·ẑ_ξ.
+>
+> (d) [ROUTING TRANSPORT] Under (c): R_{λ₂} separable ⟺ R̂_{λ₂}
+> separable; the multisets of (degree, multiplicity) over
+> irreducible factors are equal, via the degree-preserving
+> bijection r̂₂(Z) ↦ r₂(Z) := δ^{deg r̂₂}·r̂₂(Z/δ) (monic); hence
+> HE7.A(2)'s dictionary (e, f) = (e₁e₂ℓ₂, f₁f₂·deg r₂) and
+> HE7.A(3)'s branch predicate ℓ₂·deg r₂ ∈ {1, ≥2} read identically
+> in the two systems; at the α-refine branch the repeated roots
+> satisfy s₂ = δ·ŝ₂ (δ ∈ K^× ⊂ K₂, so K₂-rational together), and
+> ONE w ∈ O[x] realizes both prescriptions — its residues in the
+> two systems differ by exactly ι(δ) at grade λ₂, which is (a) at
+> k = λ₂ — so the refined key Φ₂ − w and every iterate of the
+> finite chain (LEMMA HE7-8/12/13) are system-independent
+> polynomials.
+
+*Proof.* (a) From e₁e₂a + ie₂h + bu₂ = k: mod e₂, bu₂ ≡ k with
+0 ≤ b < e₂ and gcd(u₂, e₂) = 1 forces b = s(k); then
+e₁a + ih = (k − s(k)u₂)/e₂ = m(k) with 0 ≤ i < e₁ is the level-1
+ladder equation at height m(k), so i = i(m(k)), a = a(m(k))
+(gcd(h, e₁) = 1). The ratio n̂(m)/ϖ^{m} = x^{i(m)−i₀m}π^{a(m)−a₀m}
+has x-exponent −e₁Q(m) (definition of Q) and dv = 0, forcing
+π-exponent +hQ(m)·(1/1): the display. Residue: res(ξ^{e₁}/π^{h}) =
+η_ξ at every (T1)/(T2) point — the §S2 [r1] preamble's wrap letter.
+(b) m(k+k′) = m(k) + m(k′) + u₂w₂ (the s-carry), then apply the
+preamble's Q(a+b) = Q(a) + Q(b) + wrap₁(a,b) twice. (c) The bracket
+in each system is τ_t^{N} := N(H_t)·N(u₃)^{t}/N(H₀) (HE7 §S5.3
+Step 2's display, and the same collection pattern at the tower
+carrier), so the assembled coefficient telescopes to
+res(A·N(u₃)^{t}/N(H₀)); the two systems' coefficients then differ
+by res((n₂(u₃)/n̂₂(u₃))^{t}·(n̂₂(H₀)/n₂(H₀))) = τ(H₀)·δ^{−t} by (a);
+the letter display is (a) at k = u₃. (d) Z ↦ Z/δ with δ ∈ K^× is a
+K₂-algebra automorphism of K₂[Z] up to the global unit: it
+preserves irreducibility, degrees, multiplicities, and maps the
+root ŝ to δŝ; the branch predicates and the dictionary consume
+only these invariants plus K₂-membership of repeated roots, all
+preserved (δ ∈ K^×). The refine clause is (a) at grade λ₂. ∎
+
+**What the machine adds (all committed).** (i) The sealed supp
+instrument `hetowr1_supp.py` re-ran in isolation 2026-08-10:
+29 gp jobs, 0 violations, GREEN, output content-identical to the
+committed artifact except the runtime stamp (21.4s vs 21.3s);
+`hetowr1_supp_results.json` md5 58f1ce0c unchanged. (ii) Fresh
+sealed leg `hetow_r2_hetow4.py` (seal commit with preregistered
+predictions + derived constants; runner md5 40495654, output
+ab7d5b66, results d189fe0b): **GREEN — 203 checks, 37 gp jobs
+dual-route, 0 violations** at the committed frames X, Z
+(η-letter-live, e₂ = 1) and S (e₂ = 2, bracket-live): P-A identity
+leg (a) at k = 1..60 per frame; P-B bridge (c) exact at every
+scored side (X/Z INT7: τ(H₀) = 2, δ = 2; X/Z HALF15: δ = 2; μ₂ = 3
+sides included); P-C routing transport (d) with realized coverage
+SEP-IRRED + SEP-SPLIT + REFINE at each of X, Z, S and every
+SEP member's dictionary σ = PARI on dual routes; P-D the honesty
+tooth T-RAW FIRED at X and Z (raw τ-strings (2,2,1) at the λ₂ = 7
+sides and (1,2,2,1) at μ₂ = 3, non-geometric — the per-height
+non-cancellation is machine-real), with frame S's INT21 side
+letter-dead (τ ≡ 1, Q even) and HALF43 side letter-LIVE
+(τ(43) = 2, Q(19) = 9 odd) exactly as derived; P-E HE7's own
+bracket res(τ_t) = β^{c_t} cross-checked, including live c_1 = 1
+rows at S.
+
+**Supersession (the S1 rows, re-read).** The S1 normalizer row's
+justification cell now reads: "discrepancy = the wrap-letter
+monomial with residue η^{−Q(m(k))} (HETOW-4(a)); σ-content
+transported by HETOW-4(c)(d) — a global unit × K^×-rescale at the
+ASSEMBLED residuals, the J-D0-covered species; NOT per-height
+invariant (HETOW-4(b), tooth T-RAW)". The (SLOT₂) row's
+parenthetical "(residues: same content, letters related by
+HETOW-1's unit)" is re-read the same way: same content AFTER the
+brackets, with the per-height comparison given by τ. THEOREM
+HETOW.A(i)'s final clause ("GENHN-T(b)′'s composed
+pins/polygon/residuals ARE THEOREM HE7.A's P₂ data") now carries
+its exact content: pins and polygon are shared verbatim
+(valuation-only rows, untouched by the challenge), and the
+composed residuals are the δ-rescale of HE7.A's with every
+HE7.A(2)/(3) routing decision and every α-refine chain identical
+(HETOW-4(d)). The CODEX_TOWERRAT §S6 gap annotation on
+HETOW.A(i)'s final clause is DISCHARGED at this note's grade.
+
+**F-2 annex (the all-roots transport cite, at HETOW-3(b)).**
+HETOW-3(b)'s "every root of f on the opening locus is a level-2
+point" consumes the T(b)′ setting's all-roots transport, displayed
+in the ACCEPTED GENTOW1 note (Step 4, quoted): "All roots x₀ of
+f ∈ 𝒯 are tower-node points: the full inner side forces
+v(Φ′(x₀)) = u₂/(e₁e₂) exactly with η₂(x₀) a ψ₂-root — T(b)′(iii)'s
+(T1′)/(T2′) transport, consumed." This cite is hereby attached at
+HETOW-3(b)'s use site (annex-grade; the lemma statement is
+unchanged).
+
+**F-3 annex (the S1 level-1 frame row, annotated).** The row
+"f monic, disc f ≠ 0, Φ′ ∤ f | Φ′ ∤ f automatic at a full side |
+HETOW-3(a) ✓" discharges only Φ′ ∤ f; "f monic" and "disc f ≠ 0"
+are the consumed T(b)′ setting's INHERITED frame data (the σ
+program is posed over separable f; S1's header imports the setting
+"verbatim GENHN-T(b)′"), not new obligations — the ✓ column is
+scoped to the Φ′ ∤ f entry. An inseparable f sits outside the
+consumed setting.
+
+BYTE-FREEZE: pre-append body md5 254d1765
+(254d176563c21bf2261699f9138e18b5) = commit e38df9f, 41,452 bytes,
+re-verified by prefix after this append; edit shape append-only;
+statement displays of HETOW-1/2/3/A and all sealed artifacts
+byte-untouched.
