@@ -1,0 +1,21 @@
+  ok: Phi5 deg 32 monic
+  own Res(Phi5,x): v3 = 16
+  own Res(Phi5,Phi1): v3 = 40
+  own Res(Phi5,Phi2): v3 = 84
+  own Res(Phi5,Phi3): v3 = 170
+  own Res(Phi5,Phi4): v3 = 342
+  ok: FR-3 own-PRS ladder v3 = (16,40,84,170,342)
+  ok: FR-3 DUAL: gp polresultant ints == own PRS ints (bit-equal)
+  ok: FR-1 factorpadic: ONE deg-32 factor
+  ok: FR-1 single prime over 3
+  ok: FR-1 (e,f) = (16,2)
+  ok: FR-2 nfeltval ladder (8,20,42,85,171)
+  ok: FR-4 letters (2,2,2,1)
+  ok: FR-4 T0 = theta_4(0) = 2 (LIVE at i=4)
+  ok: FR-5 Y generates F_9
+  ok: FR-5 w4 = tr(Y) in {1,2} (measured: 1)
+  ok: FR-5 LAW norm(Y) = 2*w4^2 = theta_4(0)*w4^2
+  ok: FR-5 LAW psi_5^{(w4)}(Y) = 0
+  ok: FR-6 TOOTH psi_5^{(w')}(Y) != 0
+  ok: FR-6 TOOTH norm != tr^2 (theta-free dead at i=4)
+== FRESH SUMMARY: 15 checks, 0 violations ==
