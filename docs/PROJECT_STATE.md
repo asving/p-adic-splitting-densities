@@ -3829,3 +3829,31 @@ pre-checkpoint and resumed. NEXT: the RCT round's arcs, the remaining
 compression targets per the revised plan, the exposition E-units
 (post-simplification wording), the distribution arcs, then Lean
 stage two.
+
+**2026-08-10 DATED APPEND #24 — STAGE TWO OPENS: THE LEAN ANCHOR
+STATEMENT LANDED (review requested)** — the first formalization
+artifact: lean/LeanUrat/Stage2/UniformityTarget.lean, COMPILING
+(lake env lean exit 0; exactly two sorry-warnings, the two target
+bodies), sorry-fenced OUTSIDE the trusted capstone import graph per
+the E-phase precedent, written by the orchestrator during the API
+storm (all delegated launches were dying to 529s; the substrate
+AxChk had just re-verified GREEN — capstones Lean-core exactly).
+WHAT IT STATES: `uniformity_target` — for every degree n > 0 and
+type σ of degree n, there exist ONE palindromic pair (num, den) of
+rational polynomials, den ≠ 0, such that at EVERY q > 1 carrying a
+real instance bundle `RealInstanceAt q n` (counting model + Montes
+data + tame foundation + the goal_theorem_montes bridge), the tame
+functional equation at that instance implies den(q) ≠ 0 and
+countingDensity σ = num(q)/den(q) — i.e. the uniformity content
+proper: one law, all primes, the density tie per instance.
+`uniformity_target_exhaustive` adds the drainage hypothesis
+(undecidedCount N / q^{nN} → 0) for the full-density tie, mirroring
+montes_unconditional_exhaustive. HONESTY FLAGS IN THE FILE: the
+bundle's `faithful` field is a True-placeholder — the per-prime
+realness gates (the general RealInstanceV2Gates analogue) are a
+NAMED stage-two unit, and the docstring declares any theorem-strength
+consumption of the bundle before that unit ILLEGITIMATE. REVIEW
+REQUESTED (trust boundary: statements are where errors hide): Asvin
+on the two statements + the bundle's fields, before units target
+them. The statement_ledger --check stays green (the file is Lean;
+the 166 informal pins untouched).
