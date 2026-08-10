@@ -987,3 +987,51 @@ after this fold; no runner edited, no committed artifact re-run
 in place. The statement fence: no theorem statement touched —
 every bracket sits in proof prose, audit records, or boxes.
 Counter HOLDS at 1/2 (a rider is not a pass). PE3 next.
+
+### Dated acceptance record (2026-08-10, post-PE3)
+
+**GENTOW4 IS ACCEPTED 2/2** — passPE2 CLEAN (0 CRITICAL + 0 GAP +
+5 MINOR, GENTOW4_passPE2_report.md @ 80280b66; counter 0/2 -> 1/2)
+followed by passPE3 CLEAN (0 CRITICAL + 0 GAP + 2 MINOR,
+GENTOW4_passPE3_report.md @ f0874ff9; counter 1/2 -> 2/2): two
+consecutive clean hostile passes, the standing acceptance bar.
+**THE NOTE IS FROZEN AT THIS RECORD: dated appends and dated
+brackets only; statement displays and sealed artifacts stay
+byte-untouched.**
+
+The arc in one breath: seal (2026-08-09; machine leg
+sealed-then-verdict, S6) -> PE1 NOT CLEAN 1G+2m @ 8ae71864 (the
+GAUGE SEAM at four sites) -> r1 @ aa92a9d4/abd25133/eb526a0d (the
+dated gauge annex S8: corrected chat_t pinned at S0, 4.1(c)/S3
+re-pointed at the [r1]-restated HETOW-1/2 with the supply audit,
+BOX-3's eta-gauge axis, the S4 remark re-scoped to eta = 1;
+FR-G/FR-M adopted) -> PE2 CLEAN 5m @ 80280b66 (FR-T the first
+non-linear wrap profile W = (1,1,0) + FR-C the first gauge-live
+two-block compound) -> post-PE2 rider @ a6587325/6e1a0f8c (the
+five minors m-A..m-E folded at source, S9) -> PE3 CLEAN 2m @
+f0874ff9 (FR-3B the first THREE-BLOCK partial member anywhere,
+gauge-live, c_g = 39/37/27 with three simultaneous 4.2 ties +
+FR-Q the first f2 = 4 frame, W = (2,1,1,0), where the naive and
+carrier-but-wrong-datum teeth MERGE and mu2* = 0 still kills the
+naive read; the 4.C pin display tested as an EQUATION against
+explicit f_S at 11 members; the single run RED = the verifier's
+own disclosed KBN side-bet, a third carrier-but-wrong-datum
+instance). The two PE3 minors are folded at source in this
+round's companion commit ([acceptance fold (post-PE3)] brackets
+at the 4.C proof line and the S9 head — m-i the completed
+(b)+(c) citation, m-ii the one-sided class-mass disclosure);
+neither moves a conclusion.
+
+BYTE-FREEZE LEDGER (this round): pre-fold body md5
+eeb505576d990b1409f826acf54159ca (945 lines) = the rider state @
+6e1a0f8c, the exact text passPE3 verified; the two fold brackets
+landed insertions-only (+44/-0; prefix through the first
+insertion, L423, byte-identical, md5 57fbeb69; commit bee0b56a),
+giving post-fold body md5 f96e23d01b194c49a04e513eda3cf3e0 (989
+lines); this record is a PURE APPEND on that body, verified by
+prefix md5 after the append. Sealed artifacts byte-frozen at PE3
+(six seal md5s + three isolated re-runs bit-exact, per the report
+@ f0874ff9); no runner edited, no re-run this round.
+
+Grade after this record: **ACCEPTED 2/2**. Dated appends and
+dated brackets only from here.
