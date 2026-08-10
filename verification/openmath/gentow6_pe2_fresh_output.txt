@@ -1,0 +1,2 @@
+teeth: T-NAIVE fired x2, T-SLOT fired x18
+=== PE2 FRESH VERDICT: GREEN -- 213 checks, 0 violations ===

@@ -1,0 +1,23 @@
+# RUN 1 (RED) — transcript-captured TAIL only (the verifier piped
+# run 1 through `tail -25` and did not save full stdout; the run
+# ABORTED at the LEG B side-location assert, so everything after
+# the eight LEG A violations is the traceback). Pre-repair
+# instrument; see the RUN-1 DISCLOSURE in gentow6_pe2_fresh.py.
+VIOLATION: A-simple dev(Phi2^2) matches hand ledger
+VIOLATION: A-simple shadow Ghat_1 = 0
+VIOLATION: A-simple ShC_0 slots match
+VIOLATION: A-simple PARI dev oracle match
+VIOLATION: A-rich dev(Phi2^2) matches hand ledger
+VIOLATION: A-rich shadow Ghat_1 = 0
+VIOLATION: A-rich ShC_0 slots match
+VIOLATION: A-rich PARI dev oracle match
+Traceback (most recent call last):
+  File ".../gentow6_pe2_fresh.py", line 589, in <module>
+    main()
+  File ".../gentow6_pe2_fresh.py", line 579, in main
+    leg_b()
+  File ".../gentow6_pe2_fresh.py", line 436, in leg_b
+    Rf = side_residual(FB, 0, 8, 26, 5, 2)
+  File ".../gentow6_pe2_fresh.py", line 352, in side_residual
+    assert d == h, "point below claimed side"
+AssertionError: point below claimed side
