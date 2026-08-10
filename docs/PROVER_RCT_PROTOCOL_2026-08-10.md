@@ -82,4 +82,23 @@ and this is recorded rather than patched.
 
 | unit | difficulty (pre-tagged) | sha256 first hex | arm | dispatched | outcome |
 |---|---|---|---|---|---|
+| S-1-T1-gauge-cocycle | hard | 3 | CODEX | pending (plan-revision gate) | |
+| S-7-SG2-probe | frontier | b | CODEX | pending | |
+| T2-sigma-ladder-master | frontier | 6 | FABLE | pending | |
+| T3-cocycle-telescope | hard | f | CODEX | pending | |
+| T4-certificate-witness | hard | f | CODEX | pending | |
+| T5-w-frame-note | routine | e | FABLE | pending | |
+| GENTOW5-W-i-lemma | hard | 2 | FABLE | pending | |
+| S8.1-member-half | frontier | 7 | CODEX | pending | |
+| GENH5-DENS-aggregation | hard | 2 | FABLE | pending | |
+
+**Protocol deviation, disclosed (2026-08-10, minutes after sealing):**
+the orchestrator PREVIEWED all nine arms above before recording
+difficulty tags — the §2/§6 ordering (tag before arm lookup) was
+violated for these nine rows. Mitigation: the difficulty tags above
+were recorded immediately after, in this same commit, before any unit
+ran — so tags still precede all outcomes, but tag-blindness to arm is
+lost for these nine. The coin being deterministic, arm-blindness was
+always weak; the promised ORDER was still broken and is recorded.
+Units added later: tag first, then compute the arm.
 
