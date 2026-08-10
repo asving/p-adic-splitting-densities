@@ -1,0 +1,49 @@
+GENTOW1 R2 supplement: U-A / U-B / U-C
+U-A (R2a): the clip
+  UA-codex-floors                    ok  [9, 7, 5, 3]
+  UA-codex-N1                        ok  (-20, 0, 1)
+  UA-A5-floors                       ok  [6, 5, 4, 4, 3, 3, 2, 1]
+  UA-A5-clip-inactive-N6             ok  sum = 20
+  UA-A5-clip-inactive-N8             ok  sum = 36
+  UA-A5-clip-active-N3               ok  -4 vs 3
+  UA-B-floors                        ok  [7, 6, 5, 5, 4, 3, 2, 2]
+  UA-B-clip-inactive-N7              ok  sum = 22
+  UA-B-clip-inactive-N9              ok  sum = 38
+  UA-B-clip-active-N3                ok  -10 vs 2
+U-B (R2b): ONTO at the A5-R1 row (lam = 13, N = 4)
+  UB-count-16                        ok  floors [7, 7, 6, 5, 4, 3, 3, 2]
+  UB-onto                            ok  16 distinct window images of 16 = full box
+U-C (R2c): the three bands at FAM-B (N = 4, cap = 8)
+  UC-BAND1-L0-slotmin                ok  slot-min 7
+  UC-BAND1-LC1-1-slotmin             ok  slot-min 7
+  UC-BAND1-LC1-x-slotmin             ok  slot-min 7
+  UC-BAND1-LC1-xF-slotmin            ok  slot-min 7
+  UC-BAND1-LC1-x3-slotmin            ok  slot-min 7
+  UC-BAND1-LC0-slotmin               ok  slot-min 7
+  UC-BAND2-L0-slotmin                ok  slot-min 8
+  UC-BAND2-LC1-1-slotmin             ok  slot-min 8
+  UC-BAND2-LC1-x-slotmin             ok  slot-min 8
+  UC-BAND2-LC1-xF-slotmin            ok  slot-min 8
+  UC-BAND2-LC1-x3-slotmin            ok  slot-min 8
+  UC-BAND2-LC0-slotmin               ok  slot-min 8
+  UC-BAND3-L0-slotmin                ok  slot-min 14
+  UC-BAND3-LC1-x3-slotmin            ok  slot-min 11
+  UC-BAND2-residue-moves             ok  (0,0)-flavor digit at height 8: {'L0': 0, 'LC1-1': 1}
+14 gp jobs ...
+  UC-BAND1-L0-pari                   ok  dv2 = 7 at [(2, 7)]
+  UC-BAND1-LC1-1-pari                ok  dv2 = 7 at [(2, 7)]
+  UC-BAND1-LC1-x-pari                ok  dv2 = 7 at [(2, 7)]
+  UC-BAND1-LC1-xF-pari               ok  dv2 = 7 at [(2, 7)]
+  UC-BAND1-LC1-x3-pari               ok  dv2 = 7 at [(2, 7)]
+  UC-BAND1-LC0-pari                  ok  dv2 = 7 at [(2, 7), (2, 7)]
+  UC-BAND2-L0-pari                   ok  dv2 = 8 at [(2, 8)]
+  UC-BAND2-LC1-1-pari                ok  dv2 = 8 at [(4, 16)]
+  UC-BAND2-LC1-x-pari                ok  dv2 = 8 at [(2, 8), (2, 8)]
+  UC-BAND2-LC1-xF-pari               ok  dv2 = 8 at [(2, 8)]
+  UC-BAND2-LC1-x3-pari               ok  dv2 = 8 at [(2, 8)]
+  UC-BAND2-LC0-pari                  ok  dv2 = 8 at [(2, 8)]
+  UC-BAND3-L0-pari                   ok  dv2 = 14 at [(4, 28)]
+  UC-BAND3-LC1-x3-pari               ok  dv2 = 11 at [(4, 22)]
+
+TOTAL violations 0 (0.1s)
+VERDICT: GREEN
