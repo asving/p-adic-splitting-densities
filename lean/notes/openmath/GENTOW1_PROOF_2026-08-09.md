@@ -765,3 +765,81 @@ displays and sealed artifacts byte-untouched by this append.
 BYTE-FREEZE: pre-append body md5 3b204e4a
 (3b204e4a08f11249c3bb901a6773872e) = commit 0bb7610, 40,228 bytes,
 re-verified by prefix after this append; edit shape append-only.
+
+### Dated correction (2026-08-10, post-GENTOW5-r2): the S3 K2-digit
+### lift display corrected to the per-flavor base re-solve
+
+**Provenance.** GENTOW5's r2 (PE2 F-2) corrected ITS lift display
+and flagged this note's S3 for the same defect ("GENTOW1 S3's
+fixed-base READING of its lift display fails the same way at
+seam-live heights — a display-level defect there, flagged for that
+note's own arc"; GENTOW5_PROOF_2026-08-09.md S2, machine row
+FA1-LIFT, gentow5_pe2_fresh.py @ 40f313a, 22/0). Adjudicated this
+round; honest statement-repair under standing authority.
+
+**THE DEFECT (display-level, machine-witnessed at GENTOW5's
+FR-A).** S3's setting sentence, quoted: "K2-DIGIT LIFT: for s =
+Sum_{t<f2} s_t eta2^t (s_t ∈ K), lift(s; m) := Sum over the f1f2
+within-class monomials x^{i+e1r} Phi'^{b+e2t} at height m with
+O-digit coefficients realizing the components in the coherent
+normalization". With (i, b) bound to n2hat(m)'s base exponents
+(the sentence's only antecedent) this is the FIXED-BASE display:
+base solved once at m, steps e1r, e2t added, pi-exponent left to
+compensate. At seam-live heights the compensating pi-exponent goes
+NON-INTEGER and the displayed flavor DOES NOT EXIST. Counter-
+instance (GENTOW5 PE2's frame FR-A: p = 3, e1 = 2, h = 1, e2 = 1,
+u2 = 3; m = 14, n2hat(14) = 3^7): the t = 1 flavor as displayed
+demands pi-exponent (14 − 3)/2 = 11/2 — no such monomial; machine
+row FA1-LIFT asserts the fixed-base flavor's non-existence AND
+runs the green chain on the re-solved member 3^5·x·Phi_1 =
+n2hat(11)·Phi_1 (the x-exponent re-solves 0 -> 1).
+
+**THE CORRECTED DISPLAY (the base RE-SOLVES per flavor).**
+
+    lift(s; m) := Sum_{r,t} d_{r,t} · M_{r,t}(m),
+    M_{r,t}(m)  := n2hat(m − Delta(r,t)) · x^{e1·r} · Phi'^{e2·t},
+    Delta(r,t)  := e1e2h·r + e2u2·t,
+
+indexed 0 <= r < f1, 0 <= t < f2 (a flavor is absent when
+n2hat(m − Delta(r,t)) has no ladder solution), with O-digit
+coefficients d_{r,t} realizing the components of s in the coherent
+normalization — GENTOW5's [GT5-r2] corrected display at i = 2
+(Delta specialized by ehat_2 = e1e2; dv2(x) = e2h, dv2(Phi') =
+u2). Each M_{r,t}(m) sits at dv2-height m EXACTLY (n2hat
+contributes m − Delta(r,t); x^{e1r} adds e1e2h·r; Phi'^{e2t} adds
+e2u2·t), and the exponents stay in ladder range (x-exponent
+i′ + e1r < e1f1 = D′ since i′ < e1; Phi'-exponent b′ + e2t < e2f2
+since b′ < e2, the re-solved base exponents), so the frozen
+sentence "deg lift < D2 always" stands as written.
+
+**ADJUDICATION (what S3 actually consumes; checked at each use
+site this round).** The correction changes the truth value of the
+DISPLAY SENTENCE ONLY — as written it names f1f2 monomials of the
+fixed-base exponent pattern "at height m", and at seam-live
+heights no such monomials exist (FR-A above). The consuming
+sentences read lift/what through interface properties the
+corrected display preserves: (1) height-lam exactness [proof (i)
+"what's slots sit at dv2-height lam > E2"; (iv)'s minimal-height
+term at (mu2−j)lam]; (2) deg lift < D2 with Phi'-exponents < e2f2
+[proof (i)'s x-side bound is parameterized by (weight,
+Phi'-exponent) only — "a weight-lam grid monomial with
+Phi'-exponent b has x-height lam − b(u2 − e2D'h)" — pattern-free];
+(3) the coherent-normalization residue realization [layer 1's
+substitution T ↦ T + s̄; (iv)'s residue binom(mu2,j)(−s̄)^{mu2−j}];
+(4) O-digit freeness of the flavors [(iii)'s triangularity/
+bijection and "|K2| − 1 letter choices" — supplied under the
+corrected display by the class-separation derivation, GENTOW5-C's
+(LIFT_i) clause at i = 2]. The battery's eight refine rows
+(A5-R1/A5-R2/A7-R1/B-R1/B-R2/C-R1/D-R1/D-R2) re-divided ACTUAL
+polynomials PARI-exact — the machine objects were the true
+(re-solved) monomials, e.g. B-R2's two-monomial lift 16 + 4xPhi'
+carrying the re-solved x-exponent; no sealed artifact or row is
+touched. Truth values of LEMMA GENTOW-2's clauses (i)–(iv), their
+proof sentences, and S4's ledger sentences: UNCHANGED by this
+correction.
+
+BYTE-FREEZE: pre-append body md5 06ee4edb
+(06ee4edb86527692f82902a497646e88) = commit 31388f4, 42,255 bytes,
+re-verified by prefix after this append; edit shape append-only;
+the S3 display sentence itself stays byte-frozen — this dated
+correction GOVERNS its reading.
