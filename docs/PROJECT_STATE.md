@@ -3604,3 +3604,30 @@ exact, tooth fired). Tower-arc board: HETOW 2/2 ✓ · GENTOW2 0/2
 (PE3 next, letter-live foothold committed) · GENTOW1/3/4/5/6 arcs
 owed. Then: distribution arcs, ratification sweep, site refresh,
 SIMPLIFICATION → Lean.
+
+**2026-08-10 DATED APPEND #16 — GENTOW1 + GENTOW2 BOTH ACCEPTED
+2/2: TOWER ITEMS (1)(5)(6β) AND (6α) THROUGH THE BAR** — B10/B11
+folds. GENTOW1 (composed budgets E₂=e₂f₂u₂, the window ledger, the
+depth-3 floor): PE2 CLEAN 1e99926 + PE3 CLEAN 4aff731, acceptance
+record 31388f4 with the frame-W i(u₂)=2 minor cured at source;
+first non-prime-q frame (q=4, F₄ letters) and first gauge-live ×
+μ₂=3 frame live in its fresh routes. GENTOW2 (item 6α via the
+PDF-verified FGMN cite; LEMMA B″ u(β_t)=ϑ(t)·w^{f₃−t}): PE5 CLEAN
+75923bc + PE6 CLEAN deba21b — accepted on the SECOND count after
+PE4's letters×depth refutation of the old B-2 forced the B″
+re-derivation. PE6's fresh route = the program's FIRST w
+MEASUREMENT: the cross-frame unit w ≠ 1 at all 6 primes of 4
+frames (avatars z₁, z₁², z₂², z₂ — u₃-dependent within towers);
+B″(6) closed in the w-inclusive canonical frame; one instrument
+literal repaired mid-route with full disclosure (68/1 RED kept →
+68/0 GREEN). GENTOW5 r2 complete (d37221e/f900dff/2d26c1a):
+GENTOW5-B(a) re-scoped to the w-twisted realized residual ψ^{(w)}
+(GENTOW2-A's quantifier accepts it; w=1 honestly open — and PE6's
+data now says w≠1 is the generic case), the lift display corrected
+to the re-solved per-flavor base re-solve (verified at FR-A m=14:
+3⁵·x·Φ₁), i=1 empty-rung edge + seam-live×e≥2 compound row named.
+Tower board: HETOW ✓ · GENTOW1 ✓ · GENTOW2 ✓ (3 of 7 accepted) ·
+GENTOW5 0/2 (PE3 next, w≠1 as-of note owed) · GENTOW3/4/6 arcs to
+open. Codex ratification of the three tower acceptances now
+batched and due. Then: distribution arcs, site refresh #2,
+SIMPLIFICATION → Lean.
