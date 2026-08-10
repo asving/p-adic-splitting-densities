@@ -3631,3 +3631,27 @@ GENTOW5 0/2 (PE3 next, w≠1 as-of note owed) · GENTOW3/4/6 arcs to
 open. Codex ratification of the three tower acceptances now
 batched and due. Then: distribution arcs, site refresh #2,
 SIMPLIFICATION → Lean.
+
+**2026-08-10 DATED APPEND #17 — THE CODEX TOWER VERDICTS + TWO ARCS
+OPENED AT 0/2 (B12 fold)** — the decorrelated model ratified the tower
+batch: GENTOW2 RATIFIED-WITH-ANNEX (21 checked clean; 4 hygiene
+minors); HETOW and GENTOW1 CHALLENGE — five findings adjudicated REAL
+(HETOW: the σ-content twist-invariance row needs its formula → the
+HETOW-4 cocycle bridge lemma, B″-template; GENTOW1: the free-count
+display needs a max(0,·) clip, ONTO-by-cardinality needs its finite
+sets defined, LIFT-STABLE restated three-band). Acceptances stand
+ANNOTATED (standing vocabulary: never revoked; the record shows the
+challenge and its repair). GENTOW5 PE3 NOT CLEAN (the (c) clause
+conflates stages i+1/i+2 — one-clause repair; its own witness f32 is
+the counter-instance) but the fresh route delivered the program's
+first w-LIVE verification: at a 7th measured prime, the re-scoped
+ψ^{(w)} certificate holds ON THE NOSE (ψ₃^{(w)}(Y)=0, naive tooth
+fired), plus the first depth-5/6 machine contact (f64, six-rung
+ladder exact). GENTOW3 PE1 NOT CLEAN (the gauge seam's 5th
+appearance — the note predates the erratum) with the Θ_j core
+SURVIVING re-derivation + a 485/0 fresh route (first μ₂=3 frame
+anywhere; first measured slack at j=0). Tower board: 3/7 accepted
+(HETOW, GENTOW1, GENTOW2 — first two now carrying Codex-challenge
+repair charges) · GENTOW3 0/2 · GENTOW5 0/2 · GENTOW4/6 unopened.
+B13 = the repair wave (r3/r1/TOWERRAT-R1/R2/R3), then GENTOW4/6 at
+B14.
