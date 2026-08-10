@@ -931,3 +931,49 @@ note, 0/2) — both ride their notes' grades. The 6.7C geography
 class is f2 = 1, i_0 = 1, e1 = 2 EXACTLY as stated; deeper bands
 (j* - 2 and below) assemble three or more branches (k = 4 tail-
 carry routes enter) and stay displayed, not claimed.
+
+## S9. MACHINE LEGS (BOX-2 + BOX-3), TWO-COMMIT SEALS
+
+### S9.1 BOX-2 leg — gentow6_box2_ledger.py
+
+Sealed at commit 82a51147 (runner md5 a840024f, docstring
+preregistered, no pre-seal run). **RUN 1 GREEN — 576 checks, 0
+violations, teeth kill counts EXACT (T-NOJ 4, T-FIB1 4, T-RESC 1,
+T-CEN 4); isolated re-run in a fresh /tmp scratch BIT-IDENTICAL
+(output md5 091ce8a1).** No RED run: run 1 is the verdict run.
+Highlights, each preregistered:
+
+* the Sylvester-determinant = resultant identity held at 100 + 100
+  + 60 sampled box pairs (Bareiss det vs the Euclidean-remainder
+  oracle, two in-file algorithms), with |gp polresultant| matching
+  on the 12 gp rows;
+* v(Res) measured CONSTANT at the predicted separation constants:
+  2 (L1, p = 3 same-side distinct-residual avatar), 1 (L2, p = 2
+  distinct-slope avatar), 20 = c_J = mu2* m' D2 E2/(e1e2) at the
+  FAM-P5 bouquet frame (60/60 pairs, box digits drawn to depth 12);
+* Smith profiles: divisor-valuation sums = c_J with every divisor
+  <= c_J (the dm(O^d) >= pi^c lattice clause), 3 pairs per frame;
+* THE LEDGER BY FULL ENUMERATION: L1 at N = 5: 4,782,969 pairs ->
+  image EXACTLY 3^12 = 531441 = q^{-2} x pairs, every fiber
+  EXACTLY 9 = q^{c_J}, image set == the census congruence cell
+  (500/500 sampled cell members attained); L2 at N = 4, 5, 6:
+  images 2^6/2^9/2^12 = 2^{3N-6}, fibers all 2, cell equality
+  (300/300 at N = 6); EXPLORATORY rows below N_0 (disclosed as
+  no-want rows at seal): L1 N = 3, 4 measured 81 and 6561 — the
+  ledger value 3^{4N-8} already exact BELOW the theorem's
+  conservative N_0 = 5;
+* window stability at the tower frame: f' = f_S g + 3^45 x^7
+  Newton-refactored through the Sylvester system to f_S' g' == f'
+  mod 3^90 with f_S' == f_S mod 3^25 and both factors back inside
+  their GENTOW-1(a) budget boxes (floors [6,5,4,4|3,3,2,1] and
+  [3,3,2,1], computed from the display and matching the hand pins);
+* the T1 pair's product read the single side (0,15)->(6,0) at
+  level 1; factorpadic put each key in one degree-4 factor;
+  poldisc != 0.
+
+**Record sentences (no universal quantifiers).** The battery's 576
+checks passed with 0 violations on the three constructed frames
+named in S9.1; the L1-N5 enumeration counted 531441 images with
+every measured fiber equal to 9; the L2 enumerations matched
+2^{3N-6} at the three windows run; the 60 T1 resultant rows each
+measured v = 20; the four preregistered kill counts were exact.

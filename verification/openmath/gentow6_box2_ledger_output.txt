@@ -1,0 +1,8 @@
+== L1 avatar (p=3, c_J=2) ==
+L1 EXPLORATORY N=3: pairs 729 image 81 (3^4 slots free)
+L1 EXPLORATORY N=4: pairs 59049 image 6561 (3^8 slots free)
+== L2 avatar (p=2, c_J=1) ==
+== T1 tower (FAM-P5 bouquet shape, c_J=20) ==
+== SUMMARY == checks 576 violations 0
+KILLS [('T-CEN', 4), ('T-FIB1', 4), ('T-NOJ', 4), ('T-RESC', 1)]
+VERDICT GREEN
