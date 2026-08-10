@@ -3716,7 +3716,7 @@ repair rounds, 1 Codex challenge batch (5 REAL findings, all repaired,
 TWO NEW PROVED LEMMAS: HETOW-4 and the 𝒯-free cap lemma), the gauge
 seam caught on 7/7 first passes (the erratum timing), ~30 instrument
 firsts. Combined with append #14 (the chain closure at n ≤ 7), the
-FULL uniformity theorem's proof corpus is now accepted-текст-complete
+FULL uniformity theorem's proof corpus is now accepted-text-complete
 at the 2-clean bar modulo the named count-grade sub-boxes and the
 standing capstone conditionality. NEXT: acceptance riders + Codex
 batch #2 (the four new acceptances + discharge-confirmation) + site
