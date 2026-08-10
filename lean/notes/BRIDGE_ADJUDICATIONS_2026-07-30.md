@@ -14857,3 +14857,22 @@ Board: HETOW 2/2 ✓ · GENTOW1 2/2 ✓ · GENTOW2 2/2 ✓ · GENTOW5 0/2 (PE3)
 · GENTOW3/4/6 arcs to open · Codex tower-RAT batch (HETOW + GENTOW1 +
 GENTOW2) now due. B12: GENTOW2 acceptance rider + GENTOW1-S3 flag
 adjudication → GENTOW5 PE3; GENTOW3 PE1; the Codex RAT unit.
+
+**B12 DISPATCHED (2026-08-10, wf_d08dd66d-09c)** — recorded post-dispatch.
+Four units: (1) riders — GENTOW2 dated acceptance record + PE6 m-1 fold +
+the w-disclosure dated against the PE6 measurements; the GENTOW5 w≠1
+as-of note; the GENTOW1-S3 fixed-base flag ADJUDICATED (dated correction
+append iff a frozen sentence's truth value changes) — feeding sequentially
+(2) GENTOW5 passPE3 (surfaces: the r2 repairs as a system with an
+independent re-derivation of the corrected lift display + Δ(r,t)
+bookkeeping; the level-r grammar + depth-4 witness ladder as the unwalked
+remainder; fresh route candidates: a w-LIVE frame importing PE6's
+measured frames, and/or a depth-4 machine contact). In parallel (3)
+GENTOW3 passPE1 — the arc OPENS on the faithfulness threshold
+Θ_j=(μ₂−j)E₂+δ + T(a)-as-theorem (charged with the sibling-arc lessons:
+gauge-naive displays, ψ vs ψ^{(w)} consumption, supplier arc-status
+census, tautology audit); and (4) the CODEX TOWER-RAT batch — the three
+tower acceptances (HETOW, GENTOW1, GENTOW2) to the decorrelated model,
+scaffold-before-content, per-note outcome ∈ {RATIFIED,
+RATIFIED-WITH-ANNEX, CHALLENGE}, findings ledger-adjudicated. GENTOW4/6
+arcs open at B13.
