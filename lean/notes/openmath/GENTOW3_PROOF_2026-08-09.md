@@ -813,3 +813,66 @@ Sealed machine artifacts BYTE-FROZEN at this fold: the eleven
 pinned md5s (S7.5's six, S7.6's three PE2-fresh, the two
 PE3-fresh above) re-computed and matching at HEAD. Counter 1/2
 (passPE4 CLEAN @ b6a43963); PE5 next.
+
+### Dated acceptance record (2026-08-10, post-PE5)
+
+**GENTOW3 IS ACCEPTED 2/2** — passPE4 CLEAN (0 CRITICAL + 0 GAP +
+1 MINOR, GENTOW3_passPE4_report.md @ b6a43963; counter 0/2 -> 1/2)
+followed by passPE5 CLEAN (0 CRITICAL + 0 GAP + 0 MINOR — ZERO
+findings, GENTOW3_passPE5_report.md @ 0633c6a3; counter 1/2 ->
+2/2): two consecutive clean hostile passes, the standing
+acceptance bar. **THE NOTE IS FROZEN AT THIS RECORD: dated appends
+and dated brackets only; statement displays and sealed artifacts
+stay byte-untouched.**
+
+The arc in one breath: seal (2026-08-09; S5 machine leg GREEN
+582/0) -> PE1 NOT CLEAN 1G+3m @ 3101cf5 (the GAUGE:
+chat_t := lift(c_t·eta^{W(t)}) missing) -> r1 @ e1a8dfe (the dated
+gauge annex per GENHN erratum 59c1966 + GENTOW3-BOX-2's honest
+status + FR-GL adopted as the eta != 1 row) -> PE2 NOT CLEAN 1G @
+c048154 (the CERTIFICATE SEAM: the S0/S4 geography sentences ran
+ahead of (iv)'s per-coordinate certificate hypothesis) -> r2 @
+0d09d65 (S0 clause + S4 delta = 1 bullet + S4 count-law rewritten
+to carry the certificate hypothesis) -> PE3 NOT CLEAN 1G+1m @
+a1c181d (r2's OVER-CORRECTION: the inserted "exactly" only-if,
+refuted by the measured W member at FR-M3) -> r3 @ 8165208 (the
+ONE-SIDING: the proved if-direction kept; the member-failure
+clause made existential and measured) -> PE4 CLEAN 0G+1m @
+b6a43963, the arc's first clean pass -> rider @ d6b409ce (S7.7
+manifest + the adopted W artifact pins) -> PE5 CLEAN 0 GAP +
+0 MINOR @ 0633c6a3.
+
+**PE5 obs-1 recorded as data (the THIRD certificate
+configuration; named for the GENTOW3-BOX-1 residue).** At PE5's
+fresh frame FR5X (p = 2, Phi' = x²−2, e2 = 2, f2 = 1, delta = 9 —
+the largest delta in any leg of this arc — run at mu2 = 2 AND
+mu2 = 3; instrument gentow3_pe5_fresh.py md5 9acab757, output
+fc4f8d55, GREEN 287/0, verdict @ 2c8bb507), the key power's
+self-shadow rows read off the committed output (lines 2 and 4):
+mu2 = 2: G = [4096·Y, 0], pins [61, None] — ATTAINED at
+61 = THETA_0, j = 1 IDENTICALLY ZERO; mu2 = 3: G = [2^19·xY,
+12288·Y, 0], pins [91, 61, None] vs THETA [87, 61, 35] — SLACK at
+j = 0 (the height-87 digit cancels, the first divergence sits
+strictly above THETA_0), ATTAINED at j = 1, IDENTICALLY ZERO at
+j = 2. The identically-zero shadow coordinate is a stronger
+failure form than FR-M3's cancelled-digit-with-slack (S7.7's
+measured member): the coordinate is untouched vacuously, which is
+exactly how the (iv) certificate pin classifies it; the sealed
+battery's own docstring already records ShC_1 = 0 at the A5/A7/C
+rows (the S1 table's "—" entries, same genre shape). Data point
+for GENTOW3-BOX-1: this arc has now MEASURED three certificate
+configurations — attained, slack, identically zero — and a
+genre-general certificate law (BOX-1's open ask) has these three
+measured cases to decide among (report: GENTOW3_passPE5_report.md
+obs-1 @ 0633c6a3). BOX-1 stays OPEN.
+
+BYTE-FREEZE LEDGER (this round): pre-append body md5
+1e753d199950bc591a95962686f25ed3 (815 lines) = the rider state @
+d6b409ce; this record is a PURE APPEND on that body, verified by
+prefix md5 after the append. Sealed artifacts byte-frozen: the
+eleven S7.5/S7.6/S7.7 pinned md5s re-verified at PE5 (report S
+machine leg, four isolated re-runs bit-identical + the known gp
+stderr line); no runner edited, no re-run this round.
+
+Grade after this record: **ACCEPTED 2/2**. Dated appends and
+dated brackets only from here.
