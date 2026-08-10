@@ -540,7 +540,11 @@ weight-nondecreasing by the same displays. ∎
 **Statement.** Fix a base (Q; h) and a depth-r tower datum per DEF
 GENTOW5-1: stage data (e_i, f_i, psi_i) with properness l_i >= 2
 (i >= 2), heights u_i satisfying the floor chain u_{i+1} >
-e_{i+1} E_i, keys Phi_1, ..., Phi_r built by THE RECIPE, and the
+e_{i+1} E_i, keys Phi_1, ..., Phi_r built by THE RECIPE [GT5-r1: in
+its GAUGE-CORRECTED form — the S2.1 pin's vartheta-twisted khat_t;
+every clause below reads AT that form, and (a)/(b) are FALSE at the
+gauge-naive display on letter-live frames (PE1 FR-1's machine
+counter-instance, quoted at the S2.1 pin)], and the
 terminal inductive valuation nu_r (the MacLane chain mu_0 -(x,
 lam_1)-> mu_1 -(Phi_1, lam_2)-> ... -> mu_r = nu_r in FGMN
 coordinates, the GENTOW2 S2 dictionary at every level). Then, by
@@ -589,13 +593,47 @@ provisos are now supplied:
   identifies the grid minimum with the inductive-valuation value on
   deg < D_i polynomials at level-i points; at i <= 2 it is the
   accepted GENHN-2/2'.
-  (B-2 at level i) the K_i-digit alphabet is FGMN's Def 3.16
-  epsilon-normalized coordinate up to a fixed unit — as in GENTOW2-B's
-  honesty box, a fixed-unit mismatch only re-parameterizes psi_{i+1}
-  (y -> epsilon*y), preserving monic-irreducible-of-degree-f_{i+1}
-  and every clause consumed; the robustness argument is verbatim.
-With (B-1)/(B-2), LEMMA GENTOW2-B's proof runs at level i:
-additivity (Cor 4.7(1) [Q8]) + eq (14) [Q7] give
+  (B-2 at level i) [GT5-r1 REWRITTEN — PE1 F-2. The pre-repair
+  clause here consumed the y -> eps*y fallback, which GENTOW2 r1
+  (dd44d20) DELETED AS FALSE at f >= 2 (a fixed-unit twist scales
+  every non-leading digit uniformly, not grade-covariantly; the
+  displayed F4 counter-instance kills irreducibility transfer), and
+  asserted a fixed-unit form of B-2 that GENTOW2 PE4 (2f95be6) has
+  since machine-REFUTED at letter-live grades: the measured unit
+  family is GRADE-VARYING (u = 1 at grade 19, z1 at grade 38 on the
+  LP1 tower; cocycle res(nhat2(19)^2/nhat2(38)) = z1^2 exact). The
+  corrected leg:] the repo K_i-digit read and FGMN's Def 3.16
+  epsilon-normalized coordinate agree up to a per-grade,
+  x0-free and g-free unit family u_i(beta) in K_i^x — at i = 2 this
+  is LEMMA GENTOW2-B'(3) (S5.1 there, [r1]/[r2] state: u(beta) :=
+  R_{3,beta}(nhat_2(beta-hat)), DERIVED from B-1 no-cancellation +
+  the divide-by-Phi_2 h-step + Lemma 3.17); at i >= 3 the same
+  derivation transports with (SLOT_i) = LEMMA GENTOW5-C in place of
+  B-1 (per-grade shape and x0-freeness carry; the transport rides
+  the S2.3 annex-precedent pin). The discharge of (a) then uses
+  B'(5)'s TRUE transformation law, not any eps-substitution: the
+  recipe at digit string (c_t) realizes R_{nu_i}(Phi_{i+1}) =
+  y^{f_{i+1}} - Sum_t u_i(beta_t) c_t y^t; since u_i is x0-free and
+  the digit string is freely prescribable ((LIFT_i)), the
+  re-parameterized prescription c_t -> u_i(beta_t)^{-1} c_t
+  realizes the TARGET psi_{i+1} exactly — monic irreducible of
+  degree f_{i+1} with nonzero constant term, every clause consumed
+  downstream intact. Honest conditionality, named: what is consumed
+  is B'(3)'s per-grade-unit COMPARISON SHAPE (derived at i = 2,
+  transported at i >= 3), never B-2 on-the-nose (u = 1), which is
+  FALSE at letter-live grades. [In-flight pin, checked at this
+  commit: GENTOW2 r3 — flipping B-2 to its cocycle form u(beta) =
+  the vartheta-telescope unit, i.e. FGMN R-read = the repo
+  MULTIPLICATIVE read, which PE4's decode leg confirmed at 14/0 —
+  is DISPATCHED in this same wave (ledger B9, 87a7b61) and NOT YET
+  LANDED at GENTOW2_PROOF HEAD = 7532acb as of this commit. If r3
+  lands the cocycle form, the S2.1 gauge-corrected recipe realizes
+  psi_{i+1} with NO re-parameterization (its vartheta twist IS the
+  u-family); the discharge above does not wait for it — arbitrary
+  x0-free u suffices.]
+With (B-1)/(B-2 as corrected), LEMMA GENTOW2-B's proof runs at
+level i on the re-parameterized prescription: additivity
+(Cor 4.7(1) [Q8]) + eq (14) [Q7] give
 R_{nu_i}(Phi_{i+1}) = y^{f_{i+1}} - Sum c_t y^t = psi_{i+1}; the
 degree-forcing display [Q6] + Lemma 5.3(2) [Q4] certify
 Phi_{i+1} in KP(nu_i); Lemma 1.11 [Q1] + Cor 1.13 [Q2] give prime.
