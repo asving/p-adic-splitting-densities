@@ -19,11 +19,30 @@ FIVE displayed theorem conclusions (C1 letter recursion; C2 wrap cocycle /
 telescope / corrected key; C3 read dictionary + B-law + gauge-invariance;
 C4 exact-height lift shape + x-free criterion; C5 Q-bookkeeping) — the
 gate's ≥ 3 met; the carrier-rule audit sentence is displayed in §1.
-(ii) Absorption map: 18 site rows over the seven annexes (GENTOW4 = 4
-sites, as required) + 2 supporting-context rows (GENTOW5). (iii) The R.3
+(ii) Absorption map: 17 site rows over the seven annexes (GENTOW4 = 4
+sites, as required) + 2 supporting-context rows (GENTOW5) = 19 table
+rows. [T1 r1 2026-08-10 REPAIR (passPE1 F-4): the original tech record
+said "18 site rows"; hand recount of the §3 table gives A1:2 A2:2 A3:2
+A4:2 A5:4 A6:2 A7:3 = 17 annex-site rows, + 2 supporting rows = 19 —
+the composed "18" matches neither the annex-site count nor the total.
+Gate consequences unchanged: ≥ 3 conclusions and GENTOW4 = 4 sites
+both hold on the recount.] (iii) The R.3
 joint frame (f₁ = 2 ∧ w ≠ 1 ∧ live wrap): PRESENT in the composed plan as
 frame F4-JOINT (also η = ω ≠ 1 and a μ = 3 three-digit leg) — no
 tech-added leg was needed.
+
+**[T1 r1 2026-08-10 REPAIR (passPE1 F-6)] Parallel-note definitions
+dependence, DECLARED.** The brief's [S2] block hands the composer DEF
+W-1/W-2 (the carrier unit w_i; ψ^{(w)}(y) := w^f ψ(y/w)) as restated in
+WFRAME_NOTE_2026-08-10.md — a parallel RCT arc, grade 0/2 as of this
+repair — and those definitions surface in the composed text as carrier
+items 9–10 and (C3-three-reads). The dependence is defs-only: both [S2]
+definitions carry accepted-corpus span pins (GENTOW2 @ 33f86204,
+GENTOW5 @ b0e5c648), and WFRAME's own passPE1 GAP sat in its §S4 tower
+data (the LP1 Φ′ datum, repaired at 9d157fda), not in the [S2]
+definitions. This declaration is the mutual-consumption edge the tech
+header omitted: if WFRAME's arc revises DEF W-1/W-2, this note's
+carrier drifts, and this edge is what catches it.
 
 **TECH-RECORDED GAPS (recorded, NOT fixed — they are the arc's data).**
 - **G-1 (computational slip in M2, F4-JOINT quadratic test).** The
