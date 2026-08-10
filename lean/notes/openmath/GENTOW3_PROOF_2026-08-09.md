@@ -34,7 +34,17 @@ where the digit cancels only the KEY POWER's first divergence
 provably sits strictly above THETA_j. m-A: S7.6 FR-M3 record
 Phi'/Phi2 label fix (constants unaffected). Sealed machine
 artifacts BYTE-UNTOUCHED (all nine md5s re-verified). Grade
-stays 0/2; PE4 next.]**
+stays 0/2; PE4 next.]
+[ARC — passPE4 2026-08-10: CLEAN, 0 GAP + 1 MINOR
+(GENTOW3_passPE4_report.md @ b6a43963); counter 0/2 -> 1/2 — the
+arc's first clean pass. Rider fold (post-PE4, this commit; minors
+only, no repair round owed): m-1 traceability — the S0
+W-measurement cite gains the PE3-fresh artifact md5 pins (runner
+bde31247, output 3ce4128a; re-computed against the committed
+artifacts at this fold) and the [GT3-r3] round gains its numbered
+manifest + adoption record (S7.7), matching the r1/S7.5 and
+r2/S7.6 format. Sealed artifacts BYTE-FROZEN (the eleven pinned
+md5s re-verified this fold). Counter 1/2; PE5 next.]**
 
 CHARGE: characterize EXACTLY when the stage-shadow read (T(b)'(iv):
 the coefficientwise mod-Phi' projection G-hat_j(theta, Y)) agrees
@@ -83,7 +93,9 @@ at the same floor, and measured: the member
 f = Phi2³ + 2x·Phi2² + 8·Phi2 + 64 at FR-M3 j = 0 has first
 disagreeing height exactly 10 = THETA_0, the shadow undercutting
 the honest deciding vertex (0,12) -> (0,10)
-(GENTOW3_passPE3_report.md @ a1c181d, the W rows) [GT3-r2: certificate-scoped — the composed clause asserted
+(gentow3_pe3_fresh.py, runner md5 bde31247, output md5 3ce4128a —
+sealed @ 16a729bd, adopted at GENTOW3_passPE3_report.md @ a1c181d,
+the W rows; r3 manifest S7.7) [GT3-r2: certificate-scoped — the composed clause asserted
 attainment certificate-free at "overflow genres", a term defined
 nowhere; S7.6. GT3-r3: one-sided — the r2 form's "fails AT
 THETA_j exactly at the coordinates carrying (iv)'s certificate"
@@ -747,3 +759,57 @@ Checkable as git diff on this file. Sealed machine artifacts
 BYTE-FROZEN: all six S7.5 md5s re-verified at this round; the
 three adopted PE2-fresh artifacts are committed and md5-pinned
 above. Grade stays 0/2; PE3 next.
+
+## S7.7 [GT3-r3] PE3 REPAIR RECORD: THE ONE-SIDING — MANIFEST +
+## THE ADOPTED W MEASUREMENT (record added at the post-PE4 rider
+## fold, 2026-08-10; PE4 m-1)
+
+PE3 verdict (GENTOW3_passPE3_report.md @ a1c181d): NOT CLEAN — 1
+GAP (F-1: the r2 S0 clause's "fails AT THETA_j exactly at the
+coordinates carrying (iv)'s certificate" claimed an only-if S2's
+key-power-scoped attainment analysis never proves, refuted by the
+measured W witness member) + 1 MINOR (m-A: the S7.6 FR-M3 record
+handed Phi2's polynomial to Phi'); counter stays 0/2. The r3
+round (landed at 8165208) shipped its record in the header ARC
+paragraph plus two inline brackets but no numbered section and no
+in-note artifact pins for the adopted W measurement; passPE4
+(CLEAN, 0 GAP + 1 MINOR, counter 0/2 -> 1/2; report @ b6a43963)
+flagged the traceability hole as its m-1. This S7.7 is that fold
+— record-discipline only; no S0/S2/S4/S7.6 claim re-adjudicated.
+
+**[GT3-r3] edit manifest** (checkable as `git diff
+a1c181d..8165208` on this file — 3 hunks, 39 insertions / 12
+deletions, verified at this fold): (1) header ARC block (the
+PE3/r3 paragraph); (2) the S0 geography clause — the r2 "exactly
+... certificate" only-if dropped for the proved if-direction,
+plus the existential, measured member-failure clause; (3) the
+S7.6 FR-M3 record bullet (m-A Phi'/Phi2 label fix, derived
+constants unchanged). The THEOREM GENTOW-3 (i)–(iv) and COR
+GENTOW-3.C statement displays appear in no deleted or inserted
+line of that diff.
+
+**THE ADOPTED W MEASUREMENT (artifact pins).** Instrument:
+gentow3_pe3_fresh.py, md5 bde312470601ede13338691573cfb96f;
+output gentow3_pe3_fresh_output.txt, md5
+3ce4128ad44b360ecc8cea762b12af69 (sealed pre-run @ 16a729bd,
+verdict @ a1c181d; output verdict line: GREEN — 451 checks, 0
+violations, teeth 3/3). Both md5s re-computed against the
+committed files at this fold. Re-derived from the pinned runner
+itself (not from any report sentence): at FR-M3 (p = 2, Phi' =
+x²−2, Phi2 = Phi'−2x, mu2 = 3, THETA = [10,7,4]) the runner
+builds gW = 2x·Phi2² + 8·Phi2 and checks W-A = Phi2³ + gW and
+W-B = W-A + 64 (runner L410–417, fkM = Phi2³ at L378); the
+machine-checked want-lists (L418–431, GREEN in the pinned
+output): W-B honest pins [12,6,3], shadow pins [10,6,3], ShC_0 =
+96 vs C_0 = 64, mindiff [10,9,4] — first disagreeing height at
+j = 0 EXACTLY 10 = THETA_0, the shadow undercutting the honest
+deciding vertex (0,12) -> (0,10) (output L6); W-A likewise
+mindiff_0 = 10 (honest pin None at j = 0, ShC_0 = 32, C_0 = 0);
+witness census 32 gated members with mindiff_0 = 10 (output L7).
+W-B is the S0 clause's measured member; the S0 cite now carries
+the two md5 pins in place.
+
+Sealed machine artifacts BYTE-FROZEN at this fold: the eleven
+pinned md5s (S7.5's six, S7.6's three PE2-fresh, the two
+PE3-fresh above) re-computed and matching at HEAD. Counter 1/2
+(passPE4 CLEAN @ b6a43963); PE5 next.
