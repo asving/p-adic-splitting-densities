@@ -1205,13 +1205,33 @@ dated brackets only from here.
 THEOREM GENTOW-6.5 (GENTOW6_BOXES_2026-08-10.md S2, at that note's
 0/2 attempt grade, hostile arc owed there): the box's k-extraction
 ledger is clause (a) (the Y-ceiling B* + 1 = e2f2(mu2-2) + 2e2t*
-+ 1 over every branch, with the unique equality case), and the
++ 1 over every branch, with the unique equality case [r1 dated
+bracket, 2026-08-10, GENTOW6-BOXES r1 per passPE1 F-1 (3ae577e8):
+"unique" holds exactly when e2(f2 - t*) >= 2; at e2(f2 - t*) = 1
+the equality census also carries k >= 3 all-t* branches whenever
+k i_{t*} >= (k-1) D', each landing at x-slot < a* at weight >=
+mu2 E2 + 2 delta — the boxes note's S2/Step III carry the
+corrected census and the witness frame CE3]), and the
 attainment claim is (b1) at the TOP coordinate j* = (mu2-2) +
 floor((2e2t*+1)/(e2f2)) — the height-THETA_{j*} graded digit at
 the certificate slot is binom(mu2,2)*chat_{t*}^2*pi^{2a_{t*}}*
 (wrap unit): attainment on the floor iff p does not divide
 binom(mu2,2), with (b2) the honest cancellation clause when
-p | binom(mu2,2). This box's own parenthetical ("(t*,...,t*),
+p | binom(mu2,2). [r1 dated bracket, 2026-08-10, GENTOW6-BOXES r1
+per passPE1 F-2 (3ae577e8): the "iff" is WITHDRAWN — the theorem
+proves the IF direction only. (b2) cancels the graded digit at
+the CERTIFICATE slot and prices no other slot of coordinate j*,
+and the converse is FALSE, not merely unproved: at BP3 (Q3,
+Phi' = x^2 - 3, Phi2 = Phi'^2 - 3x Phi' - 27, m = 3,
+p = 3 | binom(3,2)) the certificate slot (0,1)@j2 = 27 cancels in
+grade (height 9 > THETA_2 = 7) yet slot (1,0)@j2 = 135 carries a
+graded floor digit 5, a 3-unit: pin = THETA_2, attainment ON the
+floor with p | binom(m,2) — while FR5X at m = 4, p = 2 fails
+attainment (pin 65 > THETA_2 = 61): the converse is
+genre-dependent both ways. Read: attainment on the floor IF
+p does not divide binom(mu2,2). Machine leg
+gentow6_boxes_pe1_fresh.py (md5 fae8bc99), re-run bit-identical
+at the r1 round; PROJECT_STATE #22 carries the same correction.] This box's own parenthetical ("(t*,...,t*),
 coefficient 1 again") is REFUTED: the top branch is the diagonal
 PAIR with coefficient binom(mu2,2), and GENTOW3-PE5's accepted
 FR5X-3 measurement 12288 = 3 * 4096 already carried the law.
