@@ -15770,3 +15770,16 @@ Workflow({scriptPath: workflows/scripts/box-wave-b25-wf_ed60bf55-51b.js,
 resumeFromRunId: "wf_ed60bf55-51b"}) — SG2 returns cached. HELD per
 the stand-down rule (fresh 5/6 kill = the storm is hot); revival =
 next watchdog firing or a calmer window.
+
+**Addendum to casualty #3 (19:35 UTC)** — the failure notifications
+arrived ~2h DELAYED; on inspection the killed agents left real
+checkpoints (survival discipline paying): T1 r1's minors FULLY folded
+(768c1f51 "minors 2 of 2": the ψ^{(w)} copy-slip re-derived from the
+note's own C3-reads; the honest 83-row count; the T-4 weakness +
+dead-code disclosure) and WFRAME PE2's skeleton + r1-fold
+verifications landed (ee9a2d5f: the LP1 datum HOLDS vs 3 sources; the
+sanity rule green row-wise; a residual MINOR F-2' spotted — S5 counts
+not swept by R-7). The storm window has passed; the watchdog's single
+resume SPENT at 19:36 (wf_ed60bf55-51b: SG2 cached; T1-r1/T1-PE2/
+WFRAME-PE2/WI-PE2/T3 re-run — resumed units verify predecessor
+commits per the standing practice, never redo them).
