@@ -24,6 +24,25 @@ to ACCEPTED 2/2 (a472155; orchestrator-authorized, ledger B8
 record S7; sealed artifacts BYTE-FROZEN. Grade stays 0/2; PE2
 next.]**
 
+**[ARC — passPE2 2026-08-10: NOT CLEAN, 0 CRITICAL + 2 GAP + 2
+MINOR (GENTOW5_passPE2_report.md @ 40f313a); counter stays 0/2.
+GT5-r2 repair round 2026-08-10 (this commit series): F-1 THEOREM
+GENTOW5-B(a) RE-SCOPED to the twisted residual psi_{i+1}^{(w_i)}
+(the GENTOW2-A-admissible form; the landed GENTOW2 r3 B-law's
+theta leg cancels against the S2.1 vartheta twist, the w-leg
+survives; w_i = 1 OPEN — the uncomputed cross-frame unit), with
+the per-consumer ripple walk after S3(e) and the S7 "consistent
+both ways" correction; F-2 DEF GENTOW5-1's K_i-digit lift display
+CORRECTED to the per-flavor base re-solve (the fixed-base display
+has no monomial at FR-A's height 14 — pi-exponent 11/2; the
+re-solved member 3^5*x*Phi_1 is the machine-green object,
+FA1-LIFT); F-3 LEMMA GENTOW5-D's i = 1 edge stated (the x-carry IS
+the top carry there; the rung range empty; unconsumed); F-4 the
+seam-live x e_stage >= 2 compound named in the coverage box (the
+committed rows leave it machine-untouched — honest row). Repair
+record S8; sealed artifacts BYTE-FROZEN. Grade stays 0/2; PE3
+next.]**
+
 CHARGE: (1) PROVE or box-with-obstruction GENTOW-BOX-1 — LEMMA
 GENTOW-2 layer 1 at general mu2 (the composed graded frame;
 GENTOW1_PROOF S3/S6). (2) THE LEVEL-r LADDER GRAMMAR: the normalizer
@@ -569,10 +588,18 @@ appear.
 induction needs].** For every level i, the i reduction moves — the
 x-carry (a >= D_1) and the Phi_j-carries (J_j >= l_{j+1}, j < i) —
 are wt_i-NONDECREASING; lift-generated terms preserve weight
-exactly; the key-part of each INTERIOR carry (the x-carry and the
-Phi_j-carries with j < i-1) strictly raises it, while the TOP
-carry's key-part (j = i-1: key-part Phi_i at weight E_i =
-wt(Phi_{i-1}^{l_i})) PRESERVES it exactly. Hence "all slots at
+exactly; the key-part of each INTERIOR carry (the x-carry WHEN
+i >= 2, and the Phi_j-carries with j < i-1) strictly raises it,
+while the TOP carry's key-part (j = i-1: key-part Phi_i at weight
+E_i = wt(Phi_{i-1}^{l_i})) PRESERVES it exactly. [GT5-r2 — PE2
+F-3, the i = 1 edge: at i = 1 the ONLY move is the x-carry and it
+IS the top carry (j = 0 = i-1): key-part Phi_1 at wt_1(Phi_1) =
+E_1 = D_1 h = wt_1(x^{D_1}) — PRESERVED, not strict; and the
+proof's rung range "1 (x-carry) through i-1" is EMPTY there (no
+floor rung consumed — the x-carry's strict pricing would reference
+u_2, out-of-datum at depth 1, the same disease [GT5-r1] cured at
+the top grid). Unconsumed edge: the named consumers instantiate
+i >= 2 (GENTOW5-A Step B at i = 2; S3(c)/(d) at i + 2 >= 3).] Hence "all slots at
 weight >= W" is the same condition on every grid of the tower (the
 two-directional rewriting closes), and per-slot weight arithmetic
 converts to the digit floors verbatim as in GENTOW-1 Step 0.
@@ -600,7 +627,10 @@ PE1 and re-checked this round).]
   g >= (D_1 - c)h/e1 (Phi_1's one side): tail wt >=
   (ehat_i/e1) D_1 h = wt(x^{D_1}), equality on the side lattice;
   Phi_1-part wt = (ehat_i/ehat_2) u_2 > (ehat_i/ehat_2) e_2 E_1 =
-  (ehat_i/e1) D_1 h — STRICT by the floor chain at j = 1.
+  (ehat_i/e1) D_1 h — STRICT by the floor chain at j = 1 [GT5-r2:
+  this pricing reads rung 1 (u_2), in-datum only when i >= 2; at
+  i = 1 Phi_1 is the TOP variable, priced at wt_1(Phi_1) = E_1 =
+  wt_1(x^{D_1}) — PRESERVED, the statement's edge clause].
 * Phi_j-carry: Phi_j^{l_{j+1}} = Phi_{j+1} + Sum_t khat_t
   Phi_j^{e_{j+1}t}; each lift term has wt =
   (ehat_i/ehat_{j+1}) [e_{j+1} u_{j+1}... ] — compute:
@@ -628,8 +658,9 @@ PE1 and re-checked this round).]
 The only inputs are (INV-j): the recipe keys' side terms at exact
 height E_{j+1} (DEF GENTOW5-1's construction, gauge-pin-stable) and
 (FLOOR-j): u_{j+1} > e_{j+1} E_j, consumed at rungs 1 (x-carry)
-through i-1 (deepest interior carry) — all inside the depth-i
-datum. Both are level-uniform; GENTOW-1's Step 0 is the i = 2
+through i-1 (deepest interior carry; the range is EMPTY at i = 1,
+where no rung is consumed — the [GT5-r2] edge clause) — all inside
+the depth-i datum. Both are level-uniform; GENTOW-1's Step 0 is the i = 2
 instance ("two carries priced by two sides" becomes "i carries
 priced by i sides", each the same two lines) — at i = 2 the sole
 Phi_j-carry is the TOP carry j = 1, priced PRESERVED at E_2, which
@@ -1141,6 +1172,17 @@ exhibited). The run also reproduced the 86 exact checks unchanged.
   key sigma {(4,1)} — the tooth). A letter-live recipe row inside
   this note's OWN battery remains a named gap (sealed runner
   byte-frozen; the fresh instrument is the current coverage).]
+  [GT5-r2 THE COMPOUND ROW (PE2 F-4): seam-live x e_stage >= 2.
+  The seam-live machine contact that exists is e-TRIVIAL at the
+  live stage — FR-1 has e_2 = 1, and PE2's FR-A (the first
+  seam-live depth-3 chain) has e_2 = e_3 = 1 — while the committed
+  battery is seam-blind (above); the program's committed rows thus
+  leave the compound (vartheta live x e_{i+1} >= 2) with NO machine
+  contact. That compound is where the multiplicative slot
+  convention reads THROUGH the mod-e_{i+1} class separation (S2.3
+  step (3)). Proof-side the S2.3 derivation is uniform in e_{i+1};
+  this row is a coverage fact — an honest named gap, coverage-box
+  precision only.]
 
 **What stays OPEN (not claimed):** tower COUNT laws at depth >= 3
 (no ledger, no measurement); partial inner sides ([GENHN-TOW-1] item
@@ -1203,9 +1245,10 @@ the 87a7b61-era file, the PE1 target state).
   its theta leg is the S2.1 pin's vartheta mechanism one level
   down. [GT5-r2 CORRECTION (PE2 F-1): the clause "consistent both
   ways; the S3(a) text stands as written" that closed this bullet
-  was WRONG at the w-leg, as was this section's in-flight sentence
-  "realizes psi_{i+1} with NO re-parameterization (its vartheta
-  twist IS the u-family)": the vartheta twist cancels theta(t)
+  was WRONG at the w-leg, as was the S3(a) in-flight pin's
+  sentence (removed at the r2 rewrite there) "realizes psi_{i+1}
+  with NO re-parameterization (its vartheta twist IS the
+  u-family)": the vartheta twist cancels theta(t)
   ONLY, and the landed law's second leg w^{f_3-t} survives — at
   the pinned recipe the realized residual is psi_{i+1}^{(w_i)},
   not psi_{i+1} (open unless w_i = 1, the uncomputed cross-frame
@@ -1233,3 +1276,63 @@ the 87a7b61-era file, the PE1 target state).
 Grade: 0/2 UNCHANGED (this is a repair round, not a pass); PE2
 next. TARGET 1 (GENTOW5-A/A0/A1) was not at stake and is untouched
 beyond the pins named here.
+
+## S8. [GT5-r2] PE2 REPAIR RECORD (2026-08-10, post-passPE2)
+
+PE2 verdict (GENTOW5_passPE2_report.md @ 40f313a): NOT CLEAN — 0
+CRITICAL + 2 GAP (PE2-F-1, PE2-F-2) + 2 MINOR (PE2-F-3, PE2-F-4);
+counter stays 0/2. This section is the r2 repair round; this
+round's edits are tagged [GT5-r2]. Sealed machine artifacts
+BYTE-FROZEN at their committed md5s (gentow5_checks.py 5fa684c7...,
+gentow5_output_exact.txt dc499a49..., gentow5_output_full.txt
+839a8660...; the PE1/PE2 fresh instruments live at their own
+commits, 0160b94 / 40f313a); no runner edited, no re-run.
+
+* **PE2-F-1 (GAP) -> RE-SCOPED at S3(a).** THEOREM GENTOW5-B(a)
+  now reads: the pinned recipe realizes R_{nu_i}(Phi_{i+1}) =
+  psi_{i+1}^{(w_i)} := w_i^{f_{i+1}} psi_{i+1}(y/w_i) — the landed
+  GENTOW2 r3 B-law (u_i(beta_t) = theta_i(t) w_i^{f_{i+1}-t};
+  LEMMA GENTOW2-B [r3 RESTATED] + B'' @ d798529) applied at the
+  S2.1 digits: theta_i(t) = vartheta_{i,f_{i+1}-t}^{-1} cancels
+  the vartheta twist, the w-leg survives. Admissibility at each
+  w_i: B'' + the PE5 verification (GENTOW2_passPE5_report @
+  75923bc); GENTOW2-A's hypothesis (ii) quantifier accepts the
+  twisted form — the same re-scope GENTOW2's own S4 consumer took
+  (acdf97a). w_i = 1 stated OPEN (the uncomputed cross-frame
+  unit; verdict-level machine data w-blind). Ripple: the
+  [GT5-r2] consumer walk after S3(e) checks (b)'s cite legs,
+  (b)'s P_{i+1} clause (repo classes; FR-A's psi_3 row), (c)'s
+  repo-side stage read, (d), (e), the S4 witness (w_i = 1
+  trivially at K_i = F_2), and the sigma/degree/irreducibility
+  data — per consumer; (b) gains the per-level twist rider; the
+  S2.1 FGMN-R-read parenthetical fixed. S7's "consistent both
+  ways" corrected in place to the two-clause statement (the
+  instance leg stands; the no-re-parameterization identification
+  was false at the w-leg).
+* **PE2-F-2 (GAP) -> CORRECTED at S2.1's lift display.**
+  lift_i(c; m) re-displayed as the per-flavor base re-solve:
+  flavor monomials M_{r,t}(m) = nhat_i(m - Delta(r,t)) * (step
+  monomial), derived from LEMMA GENTOW5-C's class separation
+  (flavor residues = the tau_i-cocycle letter units;
+  inverse-twisted digits). Verified at FR-A's numbers: the
+  fixed-base t_1 = 1 flavor at m = 14 demands pi-exponent 11/2 —
+  no monomial; the re-solved member 3^5*x*Phi_1 = FR-A's khat_0.
+  Machine row FA1-LIFT (gentow5_pe2_fresh.py @ 40f313a, 22/0).
+  Ripple pins: heights and deg < D_i unchanged (khat_t + S2.4
+  read heights only); GENTOW1 S3's fixed-base reading flagged for
+  that note's own arc, not consumed here.
+* **PE2-F-3 (MINOR) -> STATED at S2.4.** The i = 1 edge: the
+  x-carry IS the top carry (j = 0 = i-1), key-part Phi_1
+  PRESERVED at E_1 = D_1 h = wt_1(x^{D_1}); the rung range
+  1..i-1 is EMPTY there; the strict clause now reads "the x-carry
+  when i >= 2". Unconsumed edge (named consumers at i >= 2).
+* **PE2-F-4 (MINOR) -> NAMED at S6's coverage box.** The compound
+  seam-live x e_stage >= 2: the existing seam-live rows (FR-1,
+  FR-A) are e-trivial at the live stage and the committed battery
+  is seam-blind, so the compound has no machine contact in the
+  program's committed rows — honest uncovered row; proof-side
+  uniform (S2.3 step (3)).
+
+Grade: 0/2 UNCHANGED (repair round, not a pass); PE3 next.
+TARGET 1 (GENTOW5-A/A0/A1) was not at stake at PE2 and is
+untouched this round.
