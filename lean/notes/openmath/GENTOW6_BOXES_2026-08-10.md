@@ -754,7 +754,24 @@ clips inactive at N >= N_0 >= H. For multi-class: multiply blocks
 in one at a time; at each step the "sibling" is a product of
 blocks, its evaluation constant at a fixed root class is the SUM
 of the per-class constants (v(g g')(x0) = v(g(x0)) + v(g'(x0)),
-each priced by the lemma), which is Res-multiplicativity. ∎
+each priced by the lemma), which is Res-multiplicativity. [r2
+(passPE2 F-3): each iteration step re-enters (c) with the PRODUCT
+box as one factor, so that box's hypotheses need re-establishing.
+(H1) for the product box is derivable from (b): each ball image is
+an affine coset of a lattice containing pi^{k+c} O^d, hence a
+union of pi^{k+c}-balls, so the step's image box satisfies (H1)
+with H' = k + c of the completed step. (H2) for (next block,
+product) is the evaluation-constant SUM just displayed; (H3) is
+the same residual-splitting argument (the product's roots carry
+the earlier classes' residues, each != the next block's psi2).
+The depth bookkeeping GROWS per step: with c_s the step's pair
+constant (the sum of the new block's constants against every
+earlier block) and H_s := k_s + c_s the product box's cell depth
+after step s, step s+1 runs (c) at k_{s+1} = max(c_{s+1} + 1,
+max(H_s, H_block)) and needs depth N_0^{(s+1)} = c_{s+1} +
+max(c_{s+1}, max(H_s, H_block)) + 1; the final N_0 of the bouquet
+is the LAST step's value, a sufficient depth (fence (iii) extends
+verbatim: not claimed sharp).] ∎
 
 **Honest fences.** (i) The theorem prices the MULTIPLICATION; it
 does not aggregate cells over genres/keys (GENH5-DENS geography —
@@ -1015,8 +1032,15 @@ T = {0} the iterated K2-division has the closed K2-adic form
     why the committed FR5X/A53/P33 rows could not catch the slip.
 
 **COROLLARY-THEOREM GENTOW-6.7C' (statement of record, supersedes
-(ii)-(iv)).** In 6.7C's setting the (1,1) slot of ShC_{m-3} has
-one-extraction value EXACTLY
+(ii)-(iv) AND (i)'s branch-pricing parenthetical [r2, passPE2 F-2:
+(i)'s "+binom(m,2) chat^3 pi^{3 a_0} x" prices the pair branch's
+descent as ONE division step — exactly what LEMMA 6.7D refutes at
+m >= 4 (the pair branch descends with multiplicity m-2; measured
+46656 = 8 x 5832 at P34 against the parenthetical's 2 x 5832), so
+the pricing parenthetical is superseded with (ii)-(iv); (i)'s
+parity clause and its two-source census stand]).** In 6.7C's
+setting the (1,1) slot of ShC_{m-3} has one-extraction value
+EXACTLY
 
     [ binom(m,2) binom(m-2, m-3) - binom(m,3) binom(m-3, m-3) ]
       · chat^3 pi^{3 a_0} x  =  2 binom(m,3) · chat^3 pi^{3a_0} x
@@ -1024,7 +1048,9 @@ one-extraction value EXACTLY
 (pair branch: extracted at Y^{2m-3} = Y^{2(m-2)} Y, descends
 r = m-2 to j = m-3 with multiplicity m-2 and one factor chat nhat;
 triple branch: enters at Y^{2(m-3)} Y directly, multiplicity 1;
-census (i) unchanged), and the graded THETA_{m-3} digit is
+census (i) unchanged in its parity/two-source content — (i)'s
+pricing parenthetical is superseded, per the header scope [r2]),
+and the graded THETA_{m-3} digit is
 2 binom(m,3) · c-bar^3 · (wrap unit): attainment at coordinate
 m-3 exactly on the floor iff p does NOT divide 2 binom(m,3).
 Since 2 binom(m,3) >= 2, there is NO integral degeneration; at
