@@ -350,7 +350,80 @@ DEF W-4 no statement of this note reads ψ^{(w)} as ψ pending it.
 
 ## §6. CONSUMPTION — three-leg checks per R.1
 
-(filled in commit 4)
+**The absorbed-statement census (10 items).** Rowed (S-0 ledger,
+note GENTOW2_PROOF @ 33f86204): A-1 THEOREM GENTOW2-A (row #1,
+`5d1ae5f0`, L187–219); A-2 LEMMA GENTOW2-B [r3 RESTATED] (row #2,
+`8a00bf44`, L303–340); A-3 LEMMA GENTOW2-B′ (row #3, `bae471b0`,
+L518–538); A-4 LEMMA GENTOW2-B″ (row #4, `d4c8b885`, L729–738).
+Span-pinned (no ledger row; R.1(a) span-pin rule, byte-frozen
+sources): A-5 THEOREM GENTOW5-B(a) as re-scoped, incl. the w_i
+display and the w-blind consumer walk (GENTOW5_PROOF @ b0e5c648,
+L780–819); A-6 the [GENTOW5-W(i)] fence (same file, S11.2,
+L1888–1932); A-7 the (a)@i=1 re-scope with the open u1 = w₁ tie
+(S11.3, L1933–1964); A-8 the six-prime w-measurement record
+(GENTOW2_passPE6_report @ deba21bd, §E, L245–295); A-9 the GA3\*
+seventh-prime + PSIW record (GENTOW5_passPE3_report @ 39c36aa2, §S4
+LEG W, L270–292); A-10 the PE4 refutation record as folded into
+GENTOW2's honesty box (GENTOW2_PROOF @ 33f86204, B-2 clause,
+L384–448). Scope-fixing prose pinned with them: GENTOW2's S5.2
+γ-calculus preamble (L715–727), consumed by LAW W-E.
+
+**Leg (a) — STATEMENT.** Each rowed statement is consumed at its
+ledger md5 (the four md5-8 values above; `statement_ledger.py
+--check` green at this note's final commit — §7). Closed as
+displayed: this note prefixes NO binder, hypothesis, or
+fixed-witness clause to any absorbed statement — §2's laws quote
+the source displays at source generality, and where this note
+narrows (LAW W-B/W-C carry "i = 2" in their names) the narrowing is
+the SOURCE's own scope, not a new hypothesis. Span-pinned items are
+consumed at (commit, line-range) with their quoted sentences
+appearing in §2–§5 verbatim or with declared ASCII↔Unicode letter
+transliteration only.
+
+**Leg (b) — PROVENANCE.** This note constructs no new lemma and no
+new instance: every §2 law is a quote-with-recap whose proof inputs
+are the SOURCE note's own enumerated inputs (GENTOW2 S5/S5.1/S5.2's
+FGMN quote stack + GENHN-2′ for A-2/A-3/A-4; GENTOW2-A's own stack
+for A-1; GENTOW5's [Q1]–[Q10] stack for A-5). No absorbed statement
+appears as a proof input to any other absorbed statement THROUGH
+THIS NOTE (the recap of LAW W-C's algebra uses only A-2's own
+display; §4's rows cite runner artifacts, not §2's laws; §7's
+instrument re-derives from frame data, citing no law as input).
+Grep-auditable: the note's citation list is exactly
+{GENTOW2 #1–#4, the six span pins, the sealed runner artifacts};
+no self-citation cycles are constructible from a one-page census.
+
+**Leg (c) — DEFINITION AUDIT (each new definition against the
+frozen notion, at source quantifier generality).**
+* DEF W-1 vs GENTOW2's w and GENTOW5's w_i: the defining expression
+  R_{i+1,κ̄_i}(n̂_i(u_{i+1})) is symbol-identical to both sources
+  (GENTOW2 at i = 2; GENTOW5's level-i display). NOTHING is built
+  in: not w ≠ 1 (§4 is record, not definition), not
+  letter-valuedness (OPEN-3), not any frame restriction. Defining
+  w_i at general i commits to no law at general i — §3 keeps the
+  law's level ladder.
+* DEF W-2 vs GENTOW2's ψ₃^{(w)} and GENTOW5's ψ_{i+1}^{(w_i)}: same
+  expression; the coefficientwise form is a one-line expansion
+  displayed in §1. Admissibility (irreducibility etc.) is LAW W-A's
+  CONCLUSION, not a definitional restriction — ψ^{(w)} is defined
+  for every monic ψ with ψ(0) ≠ 0, matching the sources' usage
+  sites.
+* DEF W-3 vs GENTOW2's ϑ(t): same expression, generalized in INDEX
+  NOTATION only (ϑ_i, matching GENTOW5's theta_i which PE6 §C
+  checked symbol-by-symbol against GENTOW2's). Letter-valuedness is
+  LAW W-E's conclusion at i = 2, not built in.
+* DEF W-4 is a reading CONVENTION (no mathematical content): it
+  re-binds no absorbed statement in a new ambient frame — §2's laws
+  are quoted with their own frames, and DEF W-4 only names the
+  frame they already use.
+
+**The F19 audit (no absorbed statement gains a w-hypothesis).**
+Checked item-by-item over A-1..A-10: each is consumed at its source
+conditionality; no display in this note attaches "assume w = 1",
+"assume w ≠ 1", or any w-quantifier to an absorbed statement. The
+only w-conditionality anywhere is the SOURCE-carried fence scope of
+A-6/A-7 (reproduced in §5 with its own source pins), which the
+sources themselves declare.
 
 ---
 
@@ -360,6 +433,27 @@ DEF W-4 no statement of this note reads ψ^{(w)} as ψ pending it.
 
 ---
 
-## §8. AS-OF LEDGER
+## §8. AS-OF LEDGER (what this note dates, what it lands, what it
+## leaves untouched)
 
-(filled in commit 4)
+* **Landed here:** the owed "w ≠ 1 as-of note" (blueprint append
+  #16) — §4 is its single home; future w measurements append to §4
+  as dated rows rather than new riders.
+* **Dated (sources stay byte-frozen; this section is the standing
+  cross-reference):** GENTOW2's honesty-box sentence "not computed
+  anywhere in the corpus" — TRUE AS DATED (pre-PE6), dated by the
+  PE6 §E measurement (A-8); GENTOW5's body sentences "w_i = 1 IS
+  OPEN" / "the uncomputed cross-frame unit" — dated by GENTOW5's own
+  [GT5-r3 DATED 2026-08-10] bracket and by A-8/A-9; on the measured
+  record the ψ^{(w)} form is the operative reading (GENTOW5's dated
+  note, adopted).
+* **Left untouched:** every absorbed statement's bytes (the S-0
+  tripwire stays green — §7); the [GENTOW5-W(i)] fence and the
+  u1 = w₁ tie (live, §5); the row-23 DESCRIPTIVE status and its
+  two-leg elevation obligation (GENTOW2 rider; gate for OPEN-3).
+* **Grade line:** this note is grade 0/2 (RCT unit T5, FABLE arm);
+  the 2-clean hostile arc follows. It consumes ACCEPTED texts only
+  (GENTOW2 2/2 @ PE6; GENTOW5 2/2-annotated with its S11 repairs)
+  plus committed, sealed pass-record artifacts cited at their
+  seals. Nothing in this note upgrades any source's grade or
+  status.
