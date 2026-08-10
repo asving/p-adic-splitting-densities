@@ -807,8 +807,24 @@ t, overflow iff a + i_t >= D', digit -c chat_t (unit) at Y-exponent
 b + e2 t + (j'-1) e2 f2 + 1) prices each branch, but a member's
 graded assembly mixes FREE digits at arbitrary depths — the
 classification is per-member finite arithmetic with no genre-level
-statement; the obstruction is displayed at S8.1 below. Box verdict
-in S10.
+statement; the obstruction is displayed at S8.1 below. [rider
+(post-PE3, 2026-08-10; F-1): clause (ii) now reads ONLY at the
+ABOVE-floor residual — the same scope the S8.1 and S10 correction
+blocks carry. After the r2 round the exactly-THETA half of the
+member ask IS proved in this note: LEMMA GENTOW-6.7E (S8.1 r2
+block) prices every in-locus entry-driven discrepancy term at
+height >= THETA_j + delta > THETA_j, so a locus member's
+height-THETA_j graded layer EQUALS the key power's and exact
+attainment is genre-decided by THEOREM 6.7's chi criterion — a
+genre-level statement. The obstruction this clause points to is
+kept visible at S8.1 but WITHDRAWN and OVERTURNED by its dated r2
+correction block. What clause (ii) still describes is the
+above-floor member classification (whether a member diverges at
+all, and at what height > THETA_j): that residual IS per-member
+finite arithmetic on the free entry digits, displayed and not
+claimed — the E-ENTRY sentence above (branch above the floor,
+31 > 29, shadow drained) is its witness and survives verbatim.]
+Box verdict in S10.
 
 **Setting = GENTOW-6.3's (S2 above), mu2 = 2, f1 = 1, corrected
 chat_t.** Recall: T = {t < f2 : chat_t != 0}, t* = max T, lift data
