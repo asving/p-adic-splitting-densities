@@ -665,3 +665,87 @@ The four findings are confined to an unsupported non-load-bearing generalization
 
 OUTCOME: RATIFIED-WITH-ANNEX
 ```
+
+---
+
+## S7. REPAIR-COMPLETION RECORD (2026-08-10, appended by the TOWERRAT
+## REPAIR unit — per-finding outcome)
+
+All three legs executed as dated appends/corrections on the FROZEN
+notes (pure-append verified by prefix md5 before each commit; statement
+displays byte-untouched; the appends govern their quoted sentences).
+Re-derivation discipline held: every repair derived from the notes' own
+lemmas + the frozen primary sources (HE7 §S1/§S5.3, GENHN/T(b)′, FGMN),
+none transcribed from the verifier's text.
+
+**HETOW (TOWERRAT-R1 + F-2 + F-3) — commits 3f23b88 (seal) / 9ee7c92
+(verdict) / 7fb8823 (append).**
+- **F-1 → REPAIRED (the substantive charge).** LEMMA HETOW-4 (the
+  normalizer bridge) PROVED as a dated append: (a) n̂₂(k)/n₂(k) =
+  n̂(m(k))/ϖ^{m(k)} = (x^{e₁}/π^h)^{−Q(m(k))}, residue the wrap letter
+  τ(k) = η^{−Q(m(k))} ∈ K^×; (b) τ is a two-floor cocycle, NOT a
+  character — the honest answer to "does the twist cancel?": NOT per
+  height (the raw pin-residue strings differ, non-geometrically —
+  tooth T-RAW machine-fired at frames X and Z); (c) the ASSEMBLED
+  residuals (each with its own cocycle bracket, HE7 §S5.3 Step 2 /
+  GENTOW-2(iv)) telescope to R = τ(H₀)·R̂(Z/δ), δ = τ(u₃) — a global
+  unit × K^×-rescale, the J-D0-covered species; (d) both routing
+  predicates of HE7.A(2)/(3) and the α-refine chain transport
+  (s₂ = δŝ₂; one w serves both systems). The §S6 gap annotation on
+  HETOW.A(i)'s final clause is DISCHARGED at the note's grade.
+  Machine: sealed `hetow_r2_hetow4.py` GREEN — 203 checks, 37 dual-
+  route gp jobs, 0 violations at frames X, Z (η-letter live) and S
+  (e₂ = 2, bracket live: c_1 = 1 rows; HALF43 letter-live τ(43) = 2);
+  sealed-instrument isolation re-run first: `hetowr1_supp.py` 29 jobs
+  / 0 violations, output content-identical modulo the runtime stamp,
+  results.json md5 58f1ce0c unchanged.
+- **F-2 → REPAIRED (display).** The GENTOW1-Step-4 all-roots
+  transport cite attached at HETOW-3(b)'s use site (same append).
+- **F-3 → REPAIRED (annotation).** The S1 level-1 frame row annotated:
+  monic + disc ≠ 0 = inherited T(b)′ frame data; the ✓ scoped to
+  Φ′ ∤ f (same append).
+
+**GENTOW1 (TOWERRAT-R2a/b/c + F-4) — commits 28f0bf3 (supplement) /
+4caf0fb (corrections).**
+- **R2a → REPAIRED.** GENTOW-1(b)'s display of record gains the clip
+  Σ max(0, N − floor); GENTOW-5(e)'s exactness re-scoped to it.
+  Verified at the challenge instance (floors (9,7,5,3); N = 1: sealed
+  −20 vs true 0 free digits, box = 1 string) AND at battery rows
+  FAM-A5 + FAM-B (floor tables re-derived = the committed S1 tables;
+  clip inactive at N ≥ max floor, values unchanged).
+- **R2b → REPAIRED.** DOM_N / COD_N defined with the shared clipped
+  counting formula q^{Σ max(0, N − floor_λ)}; equal-cardinality lemma
+  stated properly (fixed prescriptions ≠ free digits; height-
+  preserving triangular injection; inverse limit over windows).
+  Machine: ONTO verified by EXACT ENUMERATION at the A5-R1 battery
+  row (λ = 13, N = 4): 16 event members → 16 distinct images = the
+  full λ-floored box.
+- **R2c → REPAIRED.** GENTOW-5(a) restated THREE-BAND (below cap:
+  stable; at cap: value exact / K₂-residue undetermined at f₁f₂ ≥ 2;
+  above: unstable; "undercutting ≥ cap" re-scoped strict — ties at
+  equality). Each band machine-checked at FAM-B (N = 4, cap 8): band
+  1 value 7 stable across 6 lifts (slot-arith + PARI); band 2 value
+  8 = cap exact across 6 lifts with the (0,0)-flavor digit flipping
+  between two lifts — the sealed iff's counter-instance live; band 3
+  values 14 vs 11. Runner `gentow1_r2_units.py` GREEN 41 checks / 14
+  gp jobs / 0 violations.
+- **F-4 → REPAIRED.** "constant term untouched" → the constant term's
+  x-side digit (the change sits strictly above the x-side; B-R2's own
+  −16 shift displayed).
+
+**GENTOW2 (TOWERRAT-R3, hygiene batch) — commit 33f8620.**
+- **F-1 → REPAIRED:** the "not optimality" clause STRUCK ([Q10] asks
+  for a chain "as in (4)" = the optimal chain; the audit row itself
+  derives optimality).
+- **F-2 → REPAIRED:** digit(G) fenced to res(G(x₀)/M(x₀)) at B″(iv);
+  B-1/B′(3) applied only to Q₀ (in scope).
+- **F-3 → REPAIRED:** the truncated α display completed:
+  α := e₃f₃(w₃ + λ₃).
+- **F-4 → REPAIRED:** ψ₂^{FGMN} = minpoly(z₂) vs ψ₂^{repo} =
+  minpoly(η₂) disambiguation line, fencing the two S4 sites.
+
+Acceptance state after the batch: all three notes remain ACCEPTED 2/2;
+HETOW's challenge annotation is now DISCHARGED-at-grade by HETOW-4;
+GENTOW1's three GAP-with-repair items and GENTOW2's four annex items
+are closed as above. Every repair verified pure-append (prefix md5s
+e27b97f2 / 254d1765 / 29908cb4 re-checked post-append).
