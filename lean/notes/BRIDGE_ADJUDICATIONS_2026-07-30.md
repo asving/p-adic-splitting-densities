@@ -15481,3 +15481,51 @@ F's S-0 critiques adjudicated against the artifact as built).
 Pipeline confirmed with Asvin this morning: simplification next → the
 site writeup in parallel with the Lean wave; the writable-now E-units
 and S-1 launch after RUN F's plan verdict.
+
+## B20′ FOLD (2026-08-10) + B21 DISPATCH RECORD
+
+GENTOW6-BOXES PE2 (15c764c4): NOT CLEAN 1G/2m, 0/2 — but the
+substance held: **THEOREM 6.6 CLEAN on first hostile read** (|det dm|
+= ±Res re-derived; fiber-q^c verified; N₀ sufficient with the
+necessity fence explicit; LEMMA 6.6a sound at m′ > 1 — machine at
+m′=2: v(Res) = 40 = c_J on 13 rows, triple-route), **THEOREM
+6.7/6.7C′ CLEAN on first read** (χ complete at μ₂=2 — no 6.5-style
+exception possible at k ≤ 2; the refute→6.7D→6.7C′ chain honest;
+6.7C′'s own iff SOUND with the parity fence machine-checked both
+directions at p=5), the r1 repair CLEAN at a second constructed
+geometry. F-1 GAP: the S8.1/S10 witness-pair citation is
+CROSS-GENRE (E-ENTRY at FAM-E vs the perturbation rows elsewhere) —
+no same-genre exactly-Θ contrast pair exists in the committed
+corpus; load-bearing for the S10 member-half verdict. F-2/F-3
+one-liners. Fresh route 142/0 (CE4/CE5 on the equality-exception
+axis incl. the first two-k exception frame; Q54/Q56 first
+p | 2binom(m,3) kills; R3F/R3G new genres; RES-M2). No theorem
+statement or sealed measurement touched by any finding.
+
+CODEX TOWERRAT2 (partial): RUN A collected + adjudicated (eeac45f6):
+**GENTOW5 = CHALLENGE, 5/5 REAL** — 1 CRITICAL (the S2.4
+converse-rewriting sentence reads the note's own strict floor-rung
+inequality BACKWARDS, 85→84 at the depth-4 witness; consumed by
+S3(c) Step 2's grid-agreement), 2 GAP (the i ≥ 3 B″-transport ride
+citation; the (a)@i=1 pinned-w₁ vs fold-disclaimer tie), 2 display;
+acceptance ANNOTATED, repairs charged. RUN B completed on disk
+(GENTOW3 = CHALLENGE, 6,297 B) — adjudication at B21. The B20′ unit
+orphaned again after launching B (third instance) — the remaining
+runs C/D/E/F now execute under an ORCHESTRATOR-OWNED detached
+sequential runner (/tmp/towerrat2_orch_runner.sh, launched 10:51,
+RUN C live; logs /tmp/towerrat2_orch_run{C,D,E,F}.log; progress
+/tmp/towerrat2_orch_progress.txt). NOTE: another user's codex job
+runs on this box (a matroid-window audit) — strictly untouched.
+
+**B21 DISPATCHED (wf_cafb9a3e-515)**, recorded post-dispatch: (1)
+GENTOW6-BOXES r2 (F-1 PROVE-FIRST: construct a same-genre exactly-Θ
+contrast pair, else the honest re-write of S8.1/S10 to what the
+corpus witnesses; + the two one-liners) → passPE3 (the construction's
+genre identity re-derived; the S10 verdict vs all four theorems'
+final state; fresh candidates: an independent same-genre pair at a
+different genre, a 6.6/6.7 joint odd-p frame). (2) the CODEX-CHALLENGE
+repair unit — GENTOW5's five dated corrections (the CRITICAL's
+corrected inequality direction + the S3(c) consumption walk; the two
+GAP brackets; two minors) + RUN B's collection and adjudication
+(GENTOW3 dated repairs if bounded). C/D/E/F adjudication dispatches
+when the runner finishes.
