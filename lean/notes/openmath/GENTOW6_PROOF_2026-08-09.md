@@ -7,6 +7,17 @@
 GENTOW-6, BOX-CLOSURE campaign residue wave. Grade 0/2 (attempt;
 hostile arc owed).**
 
+**[GT6-r1] ARC: passPE1 (GENTOW6_passPE1_report.md @ cd74ef6f,
+2026-08-10) = NOT CLEAN — 1 CRITICAL (F-1, gauge/f1 scope at
+THEOREM 6.3's genre quantifier) + 1 GAP (F-2, GENTOW-5(a) consumed
+at f off its proved 𝒯 scope) + 4 MINOR. This round is the r1
+repair: the dated gauge annex + f1 = 1 scope pin + the f1-general
+re-derivation ANNEX-THEOREM 6.3′ (S6.1); the 𝒯-free cap LEMMA
+GENTOW-6.4, machine-verified at three frames incl. two
+partial-side members (S6.2); minors F-3/F-5/F-6 + the F-4 closure
+record (S6.3). Sealed machine artifacts BYTE-FROZEN (md5s
+re-verified, S6.4). Grade stays 0/2.**
+
 Charge (three targets, priority order): (1) GENTOW4-BOX-1 — the
 mixed-side tie mu2*(r) = m_r, literature-first (FGMN residual
 multiplicativity; GENTOW2's faithful-cite pattern) or via HE7's
@@ -19,7 +30,10 @@ Sources consumed (never edited): GENTOW4_PROOF (S0 setting, THEOREM
 GENTOW-4.A, LEMMA GENTOW-4.2, COR GENTOW-4.C), GENTOW3_PROOF
 (THEOREM GENTOW-3, S0 constants delta/THETA), GENTOW1_PROOF (LEMMA
 GENTOW-1, Step 0, LEMMA GENTOW-5, E2), GENTOW2_PROOF (the cite
-pattern + the tower<->MacLane dictionary + shear), HE7_PROOF (LEMMAS
+pattern + the tower<->MacLane dictionary + shear) [GT6-r1, PE1
+F-5(i): the GENTOW1 item list gains COROLLARY GENTOW-1.1 and LEMMA
+GENTOW-2 (at its stated scope) — both fired by COR GENTOW-6.2C's
+display and unitemized as sealed], HE7_PROOF (LEMMAS
 HE7-5/6/9/10/11, ANNEX-LEMMA HE7-13'(a)), HE6_PROOF (LEMMAS
 HE6-3/HE6-4/HE6-5), HE6R1_RECON (LEMMA HE6R1-2(a)(b)(c) + RIDER),
 the FGMN local print
@@ -185,7 +199,12 @@ FGMN's chain has one more link and Cor 4.7(3) holds verbatim) tie
 k = the multiplicity of r in R_lambda at HE7-13'(a)'s level-2
 blocks; this is HE7-BOX-4's content — NOT consumed by anything
 here, flagged for HE7's own ledger (its consumption is the
-orchestrator's, not this unit's).
+orchestrator's, not this unit's). [GT6-r1 (PE1 F-6): re-fenced —
+the sentence is a SKETCH, not a result: the level-2 transport (one
+more FGMN chain link; the level-2 coherent normalization) is
+UNEXECUTED here, so "this is HE7-BOX-4's content" reads "this is
+the shape of an argument that WOULD close HE7-BOX-4"; nothing in
+this note or its consumers relies on it.]
 
 **Scope remark (honest).** Step I consumes LEMMA HE6-3/HE6-4 at
 f_C, which need f_C monic on the opening locus with disc f_C != 0
@@ -262,6 +281,17 @@ display visible on f's own pins.
 > block height m corresponds through HE6R1-2(b) to f-data at height
 > m + c_g, and f's window-N cap is e1e2·N (GENTOW-5(a) at f), so
 > the block read is lift-stable below e1e2·N − c_g. ∎
+>
+> [GT6-r1 SUPPLIER REPAIR (PE1 F-2, GAP): "GENTOW-5(a) at f" is
+> out of GENTOW-5's proved scope — LEMMA GENTOW-5 is stated and
+> proved on 𝒯 (GENTOW1 S4), and f here is a partial-side member,
+> not on 𝒯. The citation of record for (d)'s window sentence is
+> now LEMMA GENTOW-6.4 (S6.2): the 𝒯-free window cap at the
+> composed digits, proved from the division algebra alone and
+> machine-verified at partial-side members; its clause (c)
+> delivers exactly this display (the c_g-correspondence riding
+> HE6R1-2(b) + COR GENTOW-4.C, the latter cited at GENTOW4's 0/2
+> attempt grade — conditional, named).]
 
 **What GENTOW4-BOX-2 asked beyond this, honestly parked.** The box
 names "budget/count LAWS on the partial-side locus" — the display
@@ -286,8 +316,18 @@ Phi2 = Phi'^{e2f2} − Sum_{t in T} chat_t·nhat(u2(f2−t))·Phi'^{e2t},
 T := {t < f2 : chat_t != 0} (nonempty: Phi2 irreducible needs the
 t = 0 term, 0 in T), nhat(m) = pi^{a_m} x^{i_m} with
 e1·a_m + i_m·h = m, 0 <= i_m < e1. Write i_t := i_{u2(f2−t)},
-a_t := a_{u2(f2−t)}, and t* := max T. X-FREE genre ⟺ i_t = 0 for
-every t in T (GENTOW-3's definition). delta = u2 − e2D'h,
+a_t := a_{u2(f2−t)}, and t* := max T. [GT6-r1 GAUGE PIN (dated
+annex S6.1; erratum 59c1966 = GENTOW1/GENTOW3 S7.1 pins): chat_t
+:= lift(c_t·eta^{W(t)}), W(t) = floor((f2−t)·i(u2)/e1); at f1 >= 2
+the digit-t lift term is the exact-height (LIFT) output with
+x-support {i_t + e1·r : lambda_{t,r} != 0} — NOT scalar·monomial.
+The sealed S3 text below reads chat_t as x-free scalars: that
+reading is the f1 = 1 evaluation; scope pin + the f1-general form
+are S6.1.] X-FREE genre ⟺ i_t = 0 for
+every t in T (GENTOW-3's definition) [GT6-r1: the i-test is the
+f1 = 1 evaluation of GENTOW3 S7.1's primary clause; at f1 >= 2 the
+operative definition is the primary clause, = I_t = 0 for every t
+(S6.1)]. delta = u2 − e2D'h,
 THETA_j = (mu2−j)E2 + delta. The self-shadow object: f = Phi2^{mu2},
 honest composed read C_j = 0 (DRAIN); shadow read ShC_j from the
 K2-division of F = the level-1 development of Phi2^{mu2} over
@@ -300,6 +340,18 @@ and boxed where it is not (S5).
 
 > **THEOREM GENTOW-6.3 (attainment at mu2 = 2, every genre).** For
 > f = Phi2^2 at any tower genre:
+>
+> [GT6-r1 SCOPE PIN (PE1 F-1, CRITICAL): "every genre"/"any tower
+> genre" reads AT f1 = 1, at the corrected chat_t. At f1 >= 2 the
+> displays below read the lift coefficients as x-free scalars and
+> are NOT proved as written: (c)'s hypothesis auto-holds at every
+> f1 >= 2 genre (i_t + i_{t'} <= 2e1−2 < 2e1 <= e1f1 = D') while
+> its conclusion can fail at an x-ful digit; (b) is VACUOUS there
+> (2i_{t*} <= 2e1−2 < D': hypothesis unsatisfiable — true but
+> empty); (a)'s pair census is the r = r' = 0 sub-census of the
+> corrected (LIFT) shape. The f1-general form (a')/(b')/(c') with
+> I_t := i_t + e1·r_max(t) is ANNEX-THEOREM GENTOW-6.3' (S6.1),
+> machine-unexercised at f1 >= 2 (GENTOW6-BOX-4).]
 >
 > (a) [SOURCE CLASSIFICATION] the height-THETA graded layer of the
 > discrepancy (ShC_j − C_j over the composed grid) is a sum of
@@ -421,6 +473,12 @@ and boxed where it is not (S5).
 > certificate vanish: their certificate digit is a unit square
 > times pi^{2a}, and a field kills no unit.
 >
+> [GT6-r1: the quadrichotomy and its regime BOUNDARIES are the
+> f1 = 1 evaluation (the same scope pin as the theorem head);
+> regime (1)'s x-free test is exactly the clause GENTOW3 S7.1
+> proved f1 = 1-only. The f1-general quadrichotomy (I_t for i_t)
+> is S6.1's QUADRICHOTOMY'.]
+>
 > **Machine face of (b) at the four families (predicted, verified
 > S4):** A5: (chat,a,i) = (1,2,1), digit 16Phi' (v=4) at (j*,b*) =
 > (0,1), THETA_0 = 21. A7: (1,3,1) ⟹ 64Phi' at 31. C: (1,3,1) ⟹
@@ -477,7 +535,14 @@ fix = the same height-46 perturbation as the constructed rows).
 
 **RESULTS (commit 2): GREEN — 401 checks, 0 violations, 4/4 teeth
 (T-TIE-CONST x22, T-CERT-V x7, T-ODDP x2, T-SHEXACT x1), 36 PARI
-jobs, 0.4 s.** Artifact: `gentow6_checks_output.txt`. Highlights,
+jobs, 0.4 s.** Artifact: `gentow6_checks_output.txt`. [GT6-r1 seal
+pins (PE1 F-5(ii)): runner gentow6_checks.py md5
+121e5c4a95a19692db7910b9ffedfd6e (seal commit 59ea785), output
+gentow6_checks_output.txt md5 1bcb950618de39f26fe8e0c298abb783
+(verdict commit 5fb8fd7); both re-verified byte-identical at this
+round — a stray in-place re-run had touched only the output's
+timing suffix in the working tree and was reverted to the
+committed bytes before any r1 edit.] Highlights,
 each as predicted at seal: all four tie profiles realized with
 mu2*(r) = m_r class-by-class (incl. the first mu2* = 3 reads) and
 PARI nodev6 degree sums = D2·m_r; every exact block factor showed
@@ -496,7 +561,13 @@ proved-via-cite + independent corpus leg, S1). GENTOW4-BOX-2's
 BUDGET half CLOSED (LEMMA GENTOW-6.2 + COR 6.2C, S2).
 GENTOW3-BOX-1 CLOSED AT mu2 = 2 as THEOREM GENTOW-6.3(b)(c) (the
 regime-2 certificate now unconditional; the four battery families
-proved to sit in regime 2, explaining the machine's 4/4).
+proved to sit in regime 2, explaining the machine's 4/4). [GT6-r1
+(PE1 F-1): AT f1 = 1 as sealed — the sealed sentence silently
+included f1 >= 2 genres where 6.3 as displayed delivers nothing
+(GENTOW3-BOX-1's ask was genre-general). The f1-general derivation
+is ANNEX-THEOREM GENTOW-6.3' (S6.1): prose grade at this note's
+0/2, machine-unexercised at f1 >= 2 — that machine leg is
+GENTOW6-BOX-4.]
 
 **Residue boxes (named, honest).**
 * **GENTOW6-BOX-1 (mu2 >= 3 attainment).** THEOREM 6.3 is scoped
@@ -523,6 +594,25 @@ proved to sit in regime 2, explaining the machine's 4/4).
   pure-power ties only via B2's P2). A mixed side with a deg-2
   irreducible factor (l·deg r = 4) was NOT machine-exercised —
   S1's proof does not distinguish, but the record says so.
+  [GT6-r1 GAUGE AXIS (PE1 F-3): every frame in all three legs sits
+  at f1 = 1 AND eta = 1 — verified this round against the family
+  constructors: PHI1 ∈ {x²−2 (A5/A7/B/C, Q2), x³−2 (FAM-E/GEN-R2X,
+  Q2), x²−3 (FAM-P5 geography/GEN-P3/GEN-P3b/FAM-D, Q3)}, each a
+  binomial whose stage residue x^{e1}/pi is ≡ 1 — so the sealed
+  battery is structurally blind to the gauge seam (corrected =
+  naive at every row) and to every f1 >= 2 phenomenon (S6.1,
+  GENTOW6-BOX-4). Exposed but unexercised faces at eta != 1:
+  S1 Step I's monicity/normalizer clauses and the S3 digit VALUES
+  (the tie itself is scalar-robust — Step III's UFD match absorbs
+  units into gamma*). No sealed sentence is falsified by this row;
+  the fence was under-disclosed.]
+* **GENTOW6-BOX-4 (the f1 >= 2 / eta != 1 machine leg).** [GT6-r1]
+  ANNEX-THEOREM GENTOW-6.3' (S6.1) and the corrected-lift readings
+  above have NO machine contact anywhere in this note's arc: no
+  f1 >= 2 frame, no eta != 1 frame, exists in any leg (sealed or
+  fresh). First x-ful-digit certificate row (an f1 >= 2 genre with
+  some c_t·eta^{W(t)} not in F_Q) = the box's ask; until it runs,
+  6.3' is prose-only.
 
 **Record sentences (no universal quantifiers).** The battery's
 401 checks passed with 0 violations on the constructed rows named
@@ -538,3 +628,324 @@ pattern); S3's proof of (a)/(b) is new combinatorial prose —
 the natural PE1 targets are the Y-monotonicity step ("every
 division/recarry step lowers Y-exponent by >= e2") and the
 secondary-extraction clause of (a).
+
+## S6. [GT6-r1] PE1 REPAIR RECORD (2026-08-10, post-passPE1)
+
+PE1 verdict (GENTOW6_passPE1_report.md @ cd74ef6f): NOT CLEAN —
+1 CRITICAL (F-1, the gauge/f1 seam at THEOREM 6.3's genre
+quantifier) + 1 GAP (F-2, GENTOW-5(a) consumed at f out of its
+proved 𝒯 scope) + 4 MINOR; counter stays 0/2. This section is the
+r1 repair round; edits are marked [GT6-r1]. Every repair below is
+RE-DERIVED from this note's own lemmas and the primary sources
+(erratum 59c1966; GENTOW1 S7.1; GENTOW3 S7.1; GENTOW-1 Step 3;
+GENTOW-5's proof; GENTOW-4.A/4.C), never transcribed from the
+verifier's sentences. Sealed machine artifacts BYTE-FROZEN (S6.4).
+
+### S6.1 THE DATED GAUGE ANNEX + THE f1 = 1 SCOPE PIN (F-1) +
+### ANNEX-THEOREM GENTOW-6.3'
+
+**The seam.** All five GENTOW6 commits (9f88663 16:30 -> 5fb8fd7
+19:48, 2026-08-09) predate the GENHN dated gauge erratum 59c1966
+(2026-08-09 20:13); the S3 setting was restated from GENTOW-3
+S0/S2 with the lift coefficients chat_t read as plain scalar
+lifts, and both sibling notes that setting descends from have
+since gained the pin (GENTOW1 S7.1, GENTOW3 S7.1). The pinned
+corrected display (= the erratum's; now the S3 pin):
+
+    chat_t := lift(c_t·eta^{W(t)}),
+    W(t)   := floor((f2−t)·i(u2)/e1)
+
+(eta = the level-1 stage residue of x^{e1}/pi^h, K = F_Q(eta));
+at f1 >= 2 the digit-t lift term is the exact-height (LIFT)
+output (GENTOW3 S7.1's shape; m_t := u2(f2−t)):
+
+    L_{m_t}(c_t·eta^{W(t)})
+      = Sum_{r < f1} lift(lambda_{t,r})·pi^{a_t − r·h}·x^{i_t + e1·r},
+    where  c_t·eta^{W(t)} = Sum_r lambda_{t,r}·eta^r  over F_Q
+
+— x-support {i_t + e1·r : lambda_{t,r} != 0}, pairwise-distinct
+exponents, all < D' = e1f1; every monomial at height m_t exactly;
+integral (a_t − rh >= 0: u2 > e2D'h >= e1f1·h and i_t < e1 give
+a_t = (m_t − i_t·h)/e1 > f1·h − h >= r·h). Define
+
+    I_t := i_t + e1·r_max(t),  r_max(t) := max{r : lambda_{t,r} != 0}
+
+— the TOP x-exponent of the digit-t lift. At f1 = 1: I_t = i_t.
+The digit is an x-free monomial iff I_t = 0 iff (i_t = 0 AND
+c_t·eta^{W(t)} in F_Q) — GENTOW3 S7.1's primary clause.
+
+**Why the sealed 6.3 is an f1 = 1 theorem (re-derived).** The
+sealed proofs of (a)/(b)/(c) expand K2(x,Y)^2 with each lift term
+ONE monomial chat_t·pi^{a_t}x^{i_t} — at f1 >= 2 that is the r = 0
+shadow of the (LIFT) shape. On its own terms:
+* (c)'s hypothesis "i_t + i_{t'} < D' for every pair" is AUTO-TRUE
+  at every f1 >= 2 genre: i_t + i_{t'} <= 2(e1−1) < 2e1 <= e1f1 =
+  D'. Its conclusion can nonetheless fail: at f1 = 2 any digit
+  with lambda_{t,1} != 0 puts the (t,t) monomial pair at x-degree
+  2(i_t + e1) >= 2e1 = D' with coefficient lift(lambda_{t,1})^2·
+  pi^{2(a_t−h)} — a unit multiple: an x-carry fires and
+  "dev(Phi2^2) = K2^2 term by term" is false. A hypothesis that
+  auto-holds while the conclusion can fail = the CRITICAL.
+* (b)'s hypothesis 2i_{t*} >= D' is UNSATISFIABLE at f1 >= 2
+  (2i_{t*} <= 2e1−2 < 2e1 <= e1f1 = D'; the inequality is also
+  machine-scanned this round — S6.2's P-E row): (b) is VACUOUSLY
+  true there, not false; CERT-TOP's honest scope is f1 = 1, and
+  regime 2 as sealed is an f1 = 1 phenomenon.
+* (a)'s pair census (one x-degree i_t + i_{t'} per pair (t,t'))
+  is the r = r' = 0 sub-census; at f1 >= 2 the weight-2E2 source
+  layer is indexed by MONOMIAL pairs.
+
+**ANNEX-THEOREM GENTOW-6.3' (attainment at mu2 = 2, f1-general at
+the corrected lifts).** For f = Phi2^2 at any tower genre, reading
+Phi2 at the corrected chat_t:
+
+(a') [SOURCE CLASSIFICATION] the sealed (a) holds with the census
+per monomial pair: the weight-2E2 monomials of x-degree >= D' are
+the products of lift monomials, one from digit t and one from
+digit t', with x-degree (i_t + e1·r) + (i_{t'} + e1·r') >= D' and
+lambda_{t,r}·lambda_{t',r'} != 0, entering at two-variable
+position (x^{(i_t+e1r)+(i_{t'}+e1r')}, Y^{e2(t+t')}). The k = 1
+single terms −2·L_{m_t} have every monomial at x-degree <= I_t <=
+D' − 1 (the support bound above): they never overflow. Each
+overflowing product has x-degree < 2D' (each factor < D'), so a
+single extraction lands in-grid. Everything else in the sealed
+(a)'s proof is monomial-shape-blind and applies verbatim: the
+weight ledger prices HEIGHTS only and each corrected-lift monomial
+sits at height m_t exactly (GENTOW-1 Step 0's [GT1-r1] value-blind
+reading); division/recarry emissions change the Y-exponent by
+−e2f2 + e2s (s in T) independently of the emitted term's x-shape;
+secondary extractions still cost delta each; tail-only routes
+still cancel between the two reads.
+
+(b') [CERT-TOP'] if 2·I_{t*} >= D' (t* = max T), the composed slot
+at (x^{2I_{t*}−D'}, Y^{2e2t*+1}) — coordinate j* =
+floor((2e2t*+1)/(e2f2)), slot b* = (2e2t*+1) mod e2f2, a* =
+2I_{t*} − D' < D' — receives EXACTLY ONE height-THETA branch, of
+digit
+
+    lift(lambda_{t*,r*})^2 · pi^{2(a_{t*} − r*·h)} · (wrap unit),
+    r* := r_max(t*),   v = 2(a_{t*} − r*·h),
+
+nonzero in K2. Derivation deltas against the sealed (b), each
+localized: (i) the Y-uniqueness argument is UNCHANGED — a
+height-THETA branch reaching Y-exponent B*+1 = 2e2t*+1 forces zero
+division steps and the (t*,t*) source, an argument pricing
+Y-exponents and step deficits only (x-shape never enters). (ii)
+within the (t*,t*) product, the top x-degree 2I_{t*} is attained
+only by the diagonal monomial pair (r,r') = (r*,r*) — r, r' <= r*
+forces equality, the same max-forces-diagonal argument the sealed
+(b) runs on t + t' = 2t*; non-top monomial pairs sit at x-degrees
+2i_{t*} + e1(r+r'), which differ from 2I_{t*} by nonzero multiples
+of e1 and extract (when they overflow) to DISTINCT slots. (iii)
+the digit: multinomial coefficient 1 (diagonal), pair coefficient
+lift(lambda_{t*,r*})^2·pi^{2(a_{t*}−r*h)} (a unit square times the
+pi-power), one extraction of Phi'-branch coefficient exactly 1
+(2I_{t*} < 2D'), times the coherent normalizer's wrap unit — a
+unit multiple of pi^{2(a_{t*}−r*h)}, and a field kills no unit.
+Height bookkeeping identical: weight 2E2 + delta at coordinate j*
+reads at THETA_{j*}. At f1 = 1 (r* = 0, lift(lambda_{t*,0}) =
+chat_{t*}) this is the sealed (b) verbatim.
+
+(c') [NO-OVERFLOW EXACTNESS] if I_t + I_{t'} < D' for every pair
+(t,t') in T^2 (equivalently 2·max_t I_t < D'), every monomial
+product in the expansion of Phi2^2 keeps x-degree < D' (pair
+products at x-degree <= I_t + I_{t'}; single terms <= I_t; the
+leading term x-free), so dev(Phi2^2) = K2(x,Y)^2 with in-grid
+coefficients and ShC_j = C_j = 0 — the key-power witness is
+shadow-EXACT. At f1 = 1 this is the sealed (c).
+
+QUADRICHOTOMY' (the f1-general boundaries): the sealed regimes
+with I_t in place of i_t — (1) x-free ⟺ I_t = 0 for every t (=
+the S7.1 primary clause) ⟹ faithful at every height, via THEOREM
+GENTOW-3(iii), which GT3-r1 re-derived as f1-uniform under the
+primary definition; (2') 2I_{t*} >= D' ⟹ attainment by (b')
+— divergence generic at leaf depth; (3') some overflowing monomial
+pair but 2I_{t*} < D': the maximal-position digit is a CONVOLUTION
+sum over the monomial pairs landing there — a genre arithmetic
+condition, displayed only (GENTOW6-BOX-3's fence extends to it);
+(4') no overflowing monomial pair, non-x-free ⟹ key-power
+shadow-EXACT, entry-driven divergence only. At f1 = 1 each regime
+specializes to the sealed one.
+
+**Honest status of 6.3'.** A prose derivation at this note's 0/2
+attempt grade, riding (i) GENTOW3 S7.1's (LIFT) shape (a GT3-r1
+repair, PE-adjudicated in GENTOW3's arc), (ii) the sealed 6.3
+proof's shape-blind ledger steps, with the three localized deltas
+displayed above. NO machine contact: every battery and fresh frame
+in this note's arc is f1 = 1 and eta = 1 (S5 fence [GT6-r1] row);
+the first x-ful-digit certificate row is GENTOW6-BOX-4's ask. The
+sealed THEOREM GENTOW-6.3 text stays byte-governing at f1 = 1,
+where its proof was verified correct by PE1's re-derivation and
+fresh corner witness.
+
+### S6.2 THE 𝒯-FREE CAP LEMMA (F-2, prove-first) — LEMMA
+### GENTOW-6.4 + machine leg
+
+**The seam.** COR GENTOW-6.2C(d)'s window sentence cited
+"GENTOW-5(a) at f" with f a partial-side member; LEMMA GENTOW-5 is
+stated and proved ON 𝒯 (GENTOW1 S4) — the full-side locus, which
+the partial-side f is not on. The undercut half of the cap never
+consumed 𝒯; the in-window-stability half rode GENTOW-5(e) ->
+GENTOW-1(b), both stated on 𝒯. Per the standing prove-first
+directive the missing supplier is PROVED here, not re-scoped.
+
+**Triangularity is division algebra, not locus geometry.**
+Re-derived from GENTOW-1 Step 3's own mechanism: for a FIXED monic
+key (Phi2 of degree D2; then Phi' of degree D' inside each
+coordinate), division with remainder by a monic polynomial is
+Ô-linear in the dividend, and each output coefficient at x-degree
+d equals the dividend's degree-d coefficient plus an
+Ô-combination of dividend coefficients at degrees STRICTLY ABOVE d
+— each reduction step of the division subtracts (current top
+coefficient)·x^{deg−D}·(key), touching only strictly lower degrees
+with Ô-multiples of that top coefficient. The composed digit map
+iterates finitely many such divisions. NOTHING about the dividend
+beyond monicity enters; 𝒯 enters GENTOW-1 Step 3 only downstream,
+at the residual-cancellation step that identifies the IMAGE of 𝒯
+with the budget box. GENTOW-1(b)'s triangular-unimodular clause
+therefore extends off 𝒯; its budget-box/fibration clause does not
+(and is not claimed to).
+
+> **LEMMA GENTOW-6.4 (the 𝒯-free window cap at the composed
+> digits).** Fix the genre data and the composed key Phi2 (S1's
+> setting; corrected lifts). Let f in Ô[x] be monic of ANY degree
+> n >= 1 — no locus hypothesis; in particular any S1 partial-side
+> member — with composed digits c_{j,a,b} (j <= M := floor(n/D2),
+> a < D', b < e2f2; slot degree jD2 + bD' + a; slot dv2-height
+> e1e2·v(c_{j,a,b}) + w(a,b), w(a,b) = a·e2h + b·u2). Then:
+> (a) [TRIANGULARITY, 𝒯-FREE] f ↦ (c_{j,a,b}) is
+> triangular-unimodular in the x-degree filtration:
+>
+>     c_{j,a,b} = [f]_{jD2+bD'+a} + an Ô-combination of [f]_{d'},
+>                 d' > jD2 + bD' + a,
+>
+> and induces, per window N, a bijection (monic f of degree n mod
+> pi^N) <-> (digit tuples mod pi^N, top digit pinned to 1).
+> (b) [BAND-1 CAP, 𝒯-FREE] across ambient window-N lifts of f:
+> every digit with v < N agrees in value and residue; every unread
+> digit (v >= N) sits at dv2-height >= e1e2·N; hence every value
+> computed as a minimum of slot heights that lands < e1e2·N — in
+> particular each pin p_j read by GENHN-2' as the slot-min, which
+> is available at partial sides (GENTOW-4.A(ii)'s proof) — is
+> LIFT-STABLE, and the (0,0)-class digit at v = N realizes the
+> undercut at exactly e1e2·N (GENTOW-5(a)'s instance, locus-free).
+> (c) [THE BLOCK CAP THROUGH THE PROJECTION] in the S1 setting at
+> the inner class S: COR GENTOW-6.2C(d)'s budget test reads block
+> values from f's own pins/digits via (block value at block height
+> m) = (f-value at height m + c_g) − c_g (HE6R1-2(b) + COR
+> GENTOW-4.C — the latter at GENTOW4's 0/2 attempt grade,
+> conditional). By (b), whenever m + c_g < e1e2·N the f-side value
+> is lift-stable; so the block read is lift-stable below
+> e1e2·N − c_g. (c_g = p_{mu2*} is itself a computed value, stable
+> whenever any consulted block height exists: m >= 0 gives
+> c_g <= m + c_g < e1e2·N.)
+>
+> *Proof.* (a) The division-algebra display above: each monic
+> division is Ô-linear and degree-filtration triangular with unit
+> diagonal; a finite composition of such maps is too; unit
+> diagonal gives bijectivity mod pi^N, with the monic top pinned
+> to 1 on both sides. (b) For an in-window digit, c ≡ c' mod pi^N
+> with v(c) < N forces v(c') = v(c) and the same height
+> contribution; unread digits have height e1e2·v + w(a,b) >=
+> e1e2·N (w >= 0); the ultrametric minimum over heights < e1e2·N
+> is therefore computed from stable data only, and no unread digit
+> can move or tie it; the undercut instance is the (0,0)-slot
+> digit at v = N, height exactly e1e2·N — nothing in this
+> paragraph consumed 𝒯 (it is GENTOW-5(a)'s own band-1 mechanism,
+> run without the locus). (c) substitute (b) into the displayed
+> c_g-correspondence. ∎
+
+**What this repairs, and what it does not.** COR GENTOW-6.2C(d)'s
+window sentence now has a proved supplier at exactly its
+consumption point (citation of record: LEMMA GENTOW-6.4(c),
+superseding "GENTOW-5(a) at f"; the in-place [GT6-r1] rider at (d)
+carries this). NOT extended off 𝒯: GENTOW-5's clauses (b)/(c)/(d),
+(e)'s budget-box image identification (genuinely 𝒯-scoped; 6.2C
+consumes it only at f_S, which LEMMA GENTOW-6.2 puts on 𝒯* — in
+scope), and (a)'s at-cap first-band flavor clause (band 2) — COR
+6.2C(d) consumes only the below-cap band, so nothing narrows.
+Consumers unchanged: the (d) display reads verbatim as sealed.
+
+**Machine leg (fresh instrument, two-commit seal).** Runner:
+`verification/openmath/gentow6_r1_caplemma.py` — self-contained
+(integer-exact monic division; NO import of any sealed runner),
+predictions P-A..P-E + 2 teeth preregistered in the docstring at
+the seal commit. Three frames, two of them PARTIAL-SIDE members
+(off 𝒯, non-monic composed top / deg n > mu2*·D2):
+* FRAME-P (partial, p = 3): Phi' = x²−3 (e1 = 2, f1 = 1, h = 1),
+  e2 = 2, f2 = 1, u2 = 5, psi2 = T−1, Phi2 = Phi'² − 9x (D2 = 4,
+  E2 = 10); f = (Phi2² + 3^6)·(Phi' − 27), deg 10 (block RAM
+  anchor at floor 6; sibling side slope 6; c_g = 5 — the PE2-P
+  value at a fresh member).
+* FRAME-P2 (partial, p = 2, f2 = 2 so within-coordinate b-slots
+  live): the FAM-B genre Phi2 = Phi'² − 2x·Phi' − 8 (Phi' = x²−2,
+  e2 = 1, f2 = 2, u2 = 3, E2 = 6); f = (Phi2² + 2^7)·(Phi' − 8),
+  deg 10, c_g = 3.
+* FRAME-F (full-side consistency): the FAM-B genre, f = Phi2² +
+  2^7 on 𝒯 — LEMMA GENTOW-6.4 must reproduce GENTOW-5(a)'s band-1
+  behavior where both apply.
+Checks per frame: P-A TRI (perturb [f]_d at each degree d: digits
+at slot degrees > d byte-unchanged, digit at slot degree d shifted
+by exactly the perturbation); P-B WIN (random pi^N-lifts: all
+digits congruent mod pi^N, in-window valuations equal); P-C
+PIN-STAB (slot-min pins p_j, and block pins p_j − c_g at the
+partial frames, identical across lifts below the cap); P-D
+UNDERCUT (the (0,0)-class v = N lift moves a deep value to exactly
+e1e2·N while below-cap values are unchanged on the SAME lift);
+P-E VAC (the F-1 vacuity inequality 2(e1−1) < e1·f1 scanned over
+the (e1, f1) box [1..12]x[2..12], enumerative). Teeth: T-TRI (a
+wrong slot-degree formula must fail P-A's diagonal), T-CAP (a
+mutant asserting band-3 stability must be killed by P-D).
+**RESULTS: PENDING — filled at the verdict commit from the
+artifacts (runner sealed first with hand-derived preregistered
+pins in the docstring: FRAME-P p = (26, ?, 5) with p_0 = 2E2 + 1
++ c_g = 26 and c_g = 5; FRAME-P2 c_g = 3; undercut target =
+e1e2·N exactly).**
+
+### S6.3 MINOR REPAIRS + THE F-4 CLOSURE RECORD
+
+* **F-3 (machine-scope fence, gauge axis):** the S5 Machine-scope
+  bullet gains the [GT6-r1] GAUGE AXIS row (verified this round
+  against the family constructors in the sealed runners: PA =
+  x²−2, PB = x²−3, PE = x³−2 — every frame f1 = 1, eta = 1) and
+  the new GENTOW6-BOX-4 names the missing leg. No sealed sentence
+  was falsified; the fence was under-disclosed.
+* **F-4 (Thm 2.8 provenance): CLOSED BY PE1 ITSELF, recorded.**
+  The pass read PDF p.10 visually: Theorem 2.8's statement is a
+  verbatim MATCH with S1's quote (layout L546; the note's
+  "L543-546" span includes the preceding join-of-sides paragraph,
+  which supports the Minkowski gloss via Cor 2.7); Cor 4.4(4) and
+  Cor 4.7(3) re-confirmed at L1084-1090 / L1121-1134; PDF md5
+  da846c82f1fcb619cefb3feb8164191e. The S0 attribution "numbering
+  verified at GENTOW2's ledger" was an over-attribution for Thm
+  2.8 (GENTOW2's S6.1 table has Cor 4.4/4.7 but not Thm 2.8); with
+  PE1's visual read the leg is now provenance-complete. No note
+  edit needed beyond this record.
+* **F-5:** (i) the S0 sources census gains COROLLARY GENTOW-1.1 +
+  LEMMA GENTOW-2 (in-place rider); (ii) S4 gains the runner/output
+  md5 + seal/verdict commit pins (in-place rider).
+* **F-6:** COR GENTOW-6.1C(c)'s HE7-BOX-4 sentence re-fenced as a
+  SKETCH (in-place rider): the level-2 transport is unexecuted;
+  consumed by nothing.
+
+### S6.4 EDIT MANIFEST + BYTE-FREEZE (for PE2's diff)
+
+[GT6-r1] edit sites in this note: (1) header ARC block; (2) S0
+sources rider (F-5(i)); (3) S3 setting gauge pin + x-free rider;
+(4) THEOREM 6.3 head scope-pin rider (F-1); (5) quadrichotomy
+rider; (6) COR 6.2C(d) supplier rider (F-2); (7) COR 6.1C(c)
+re-fence rider (F-6); (8) S4 seal-pin rider (F-5(ii)); (9) S5
+consumption-line rider + Machine-scope GAUGE AXIS row +
+GENTOW6-BOX-4 (F-1/F-3); (10) this S6. All sealed statement
+displays byte-untouched; riders GOVERN their quoted displays.
+
+Sealed machine artifacts BYTE-FROZEN, md5s re-verified this round:
+gentow6_checks.py 121e5c4a95a19692db7910b9ffedfd6e ·
+gentow6_checks_output.txt 1bcb950618de39f26fe8e0c298abb783 ·
+gentow6_pe1_fresh.py 59fe76cefd36e4ffc8688adfd8e5f01e ·
+gentow6_pe1_fresh_output.txt 9de61325ef9b07dd2f52954d9d3e3f12.
+New r1 artifacts (this round): gentow6_r1_caplemma.py +
+gentow6_r1_caplemma_output.txt — md5s recorded here at the verdict
+commit: PENDING.
+
+**GRADE AFTER r1: 0/2 (unchanged).** The arc resumes at PE2.
