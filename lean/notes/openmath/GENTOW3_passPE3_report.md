@@ -277,20 +277,26 @@ three heights, PARI σ {(4,2)} each), divergence rows at exactly
 43 (cancel-flavor: shadow j = 0 coordinate identically ZERO on a
 member whose honest read is tRAM(43); pin-displacement flavor:
 shadow 45 vs honest 43, σ intact = parity luck at δ = 7),
-replication rows (FR-M3 self-shadow + Φ₂³+32), 160 FLOOR + 160
+replication rows (FR-M3 self-shadow + Φ₂³+32), 195 FLOOR + 195
 ENTRY coordinate checks on gated random members (seeded), and a
 PARI leg (carrier ef {(2,2)} at FR3-B7 + σ on every decided row
-displayed). TEETH: T3-UP (Θ+1 mutant killed at the attained pins
-43/25/10), T3-DOWN (Θ−1 mutant refuted by the faithful band edge
-+ PARI), T3-BICOND (the S0 only-if reading killed by the W-B
-witness at the certificate-cancelled coordinate).
+displayed — all eight jobs at their preregistered exact values).
+TEETH: T3-UP (Θ+1 mutant killed at the attained pins 43/25/10/43,
+×8), T3-DOWN (Θ−1 mutant refuted by height-42 digit agreement on
+all five Θ-adjacent rows + the measured first violations at
+exactly 43 + PARI, ×5), T3-BICOND (the S0 only-if reading killed
+by W-A/W-B at the certificate-cancelled coordinate, ×2).
 
-RESULT: run 1 **GREEN — 380 checks, 0 violations, 3/3 teeth**
-(runner md5 __RUNNER_MD5__, output md5 __OUT_MD5__); run 2
-byte-identical. Design-phase exploration (the witness search and
-the PARI σ pre-computation) disclosed in the runner docstring;
-predictions sealed before the run; no prediction changed
-after seal.
+RESULT (sealed pre-run at 16a729b, predictions P3-1..P3-8 + 3
+teeth in the docstring): run 1 **GREEN — 451 checks, 0
+violations, 3/3 teeth** (runner md5
+bde312470601ede13338691573cfb96f, output md5
+3ce4128ad44b360ecc8cea762b12af69); run 2 BIT-IDENTICAL. Witness
+census: exactly 32 gated members with mindiff_0 = 10 at FR-M3
+(the preregistered design count — the F-1 phenomenon is generic,
+not tuned). Design-phase exploration (the witness search and the
+PARI σ pre-computation) disclosed in the runner docstring; no
+prediction changed after seal.
 
 ## GRADE LINE
 

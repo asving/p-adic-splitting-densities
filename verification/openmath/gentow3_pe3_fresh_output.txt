@@ -1,0 +1,13 @@
+== P3-1 SELF-B7 ==
+  ShC_0 = 2^18*Phi' + 2^21*x (pin 43); ShC_1 = 2^8*Phi' + 2^12*x (pin 25, both slots)
+== P3-2 REP-M3 ==
+== P3-3 REP-P32 ==
+== P3-4 W (entry-driven failure AT THETA_0, certificate-cancelled coordinate) ==
+  W-B: honest deciding vertex (0,12), shadow (0,10) -- first-edge slope 6 -> 4, mislabel AT THETA_0 = 10 where the key-power certificate CANCELS
+  witness census: 32 gated members with mindiff_0 == 10
+== P3-5 BAND-B7 (width-6 faithful leaf band) ==
+== P3-6 DIV-B7 (first violation at exactly 43) ==
+== P3-7 FLOOR/ENTRY sweeps ==
+== GP leg: 8 jobs ==
+teeth: {'T3-UP': 8, 'T3-DOWN': 5, 'T3-BICOND': 2}
+=== VERDICT: GREEN -- 451 checks, 0 violations, teeth 3/3 ===
