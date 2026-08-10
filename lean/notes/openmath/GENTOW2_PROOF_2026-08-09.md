@@ -1423,3 +1423,76 @@ rider state, rider commit 188b894, unchanged through PE6),
 re-verified by prefix after this append; edit shape append-only;
 the five consumption-list sites, the three w-sentences, and the
 sealed artifacts byte-untouched.
+
+### Dated hygiene corrections (2026-08-10, TOWERRAT-R3 — the
+### post-acceptance decorrelated ratification annex, applied)
+
+*Provenance: the Codex ratification batch on the frozen accepted
+note (`CODEX_TOWERRAT_2026-08-10.md` §S4, session
+019fe98f-1e70-7321-9422-de37059d2b46, outcome RATIFIED-WITH-ANNEX,
+4 MINOR, each adjudicated REAL at annex grade). The 2/2 acceptance
+is unrevoked; the body stays BYTE-FROZEN; each item below GOVERNS
+the reading of its quoted sentence. Each repair is re-derived from
+the note's own lemmas and the FGMN citations, not transcribed.*
+
+**R3-1 (the [Q10] scope clause, S6 hypothesis audit row (H-b),
+body L924–925).** Quoted: "— and Cor 6.4 needs only 'a MacLane
+chain', not optimality." **STRUCK** (governing reading: the clause
+is withdrawn). Re-derivation: [Q10] hypothesizes a chain "as in
+(4)", and this note's own S2 dictionary identifies display (4)
+with the OPTIMAL MacLane chain (degrees strictly increasing), so
+the quoted clause outruns the citation. The audit row's license is
+the derivation that PRECEDES the struck clause — stage properness
+(e₂f₂ ≥ 2, e₃f₃ ≥ 2) gives deg x < deg Φ′ < deg Φ₂ strict — and
+the S4 application consumes exactly that optimal chain. Consumer
+check at the (H-b) row: no other sentence of the note cites the
+struck clause.
+
+**R3-2 (the `digit(G)` notation fence, LEMMA GENTOW2-B″ step (iv),
+body L770–775).** S5.1's (R-repo) defines `digit` on Φ₂-free
+elements of degree < m₃ (its opening sentence); G = ẑN^d is
+Φ₂-free of exact grade β_t (step (ii)) but its degree can reach
+≥ m₃ at d ≥ 2, so the token "digit(G)" in the displayed chain
+"digit(Q₀) = digit(G) = res(ẑ(x₀))·res((N^d/M)(x₀))" sits outside
+the definition's scope. Governing reading: "digit(G)" abbreviates
+the normalized evaluation residue res(G(x₀)/M(x₀)) — which is what
+the chain computes (Φ₂(x₀) = 0 gives G(x₀) = Q₀(x₀), an equality
+of evaluations, hence of evaluation residues against the same M).
+B-1 and B′(3) are invoked only on Q₀ (deg Q₀ < m₃, Φ₂-free — in
+scope, as the display's own parenthetical pins); no clause of the
+proof applies B-1 to G.
+
+**R3-3 (the truncated α display, S5 proof opening, body L342).**
+Quoted: "**Proof.** Write α := e₃f₃(w₃...". Completed display:
+
+    α := e₃f₃(w₃ + λ₃).
+
+Re-derivation from the proof's own next sentence: ν(Φ₂^{e₃f₃}) =
+e₃f₃(w₃ + λ₃) = α, and the adjacent parenthetical (FGMN
+α = e_r f(w_r + λ_r) with e_r = e₃, f = f₃, w_r = w₃, λ_r = λ₃)
+instantiates to the same expression; every subsequent use of α in
+S5 computes with it. Typographical truncation; no computation
+changes.
+
+**R3-4 (the ψ₂ symbol overload — the standing disambiguation
+line).** Governing convention for every read of "ψ₂" in this note:
+**ψ₂^{FGMN} := R₂(φ₃) = minpoly(z₂)** (Cor 5.6(2)) and
+**ψ₂^{repo} := minpoly(η₂)** (the repo tower's Φ′-side residual)
+are DISTINCT symbols in general, related by S5.1's LETTER FORMULA
+z₂ = η₂·z₁^{−⌊ℓ₁u₂/e₁⌋} and equal exactly when the z₁-twist fixes
+ψ₂ — the note's own LP1 witness has z₂ = 1 while η₂ = z₁ ≠ 1, so
+their (linear) minimal polynomials differ there. The two S4 sites,
+fenced: (site 1) the Cor 6.4 instantiation display "R₂(Φ₃) =
+ψ₂^{ℓ₃}" (body L252) reads ψ₂ = ψ₂^{FGMN} — the [r2] "twist-aware
+form" bracket there already says so; (site 2) the S4 consumption
+note (body L272–293) consumes the root statement in the REPO
+letter ("η₂(ξ) is a repo-ψ₂-root"), translated through the single
+embedding σ per its [r2] bracket. No consumed inference equates
+the two letters; this line only fences which ψ₂ each display
+names.
+
+BYTE-FREEZE: pre-append body md5 e27b97f2
+(e27b97f2f462d88370190f1aaa52042b) = commit 21293c8, 86,321
+bytes, re-verified by prefix after this append; edit shape
+append-only; statement displays and sealed artifacts
+byte-untouched.
