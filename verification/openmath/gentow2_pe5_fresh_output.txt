@@ -1,0 +1,207 @@
+ok  T PINS PHI2 phi1-adic (4,0),(2,5),(0,10), a3 = a1 = 0
+ok  T RES x v2 = 4
+ok  T RES PHIP v2 = 10
+ok  GA1 K1H dv2 = 21
+ok  GA1 K0H dv2 = 42
+ok  GA1 PHI2ADIC exact shape (monic top, -k1 at 1, -k0 at 0, zero elsewhere)
+ok  GA1 PHI1SIDE one-sided slope 5/2
+ok  GA1 PHI1ON on-line support exactly {0,4,8}
+ok  GA1 RES x v2 = 8
+ok  GA1 RES PHIP v2 = 20
+ok  GA1 RES PHI2 v2 = 84
+ok  GA2 K1H dv2 = 21
+ok  GA2 K0H dv2 = 42
+ok  GA2 PHI2ADIC exact shape (monic top, -k1 at 1, -k0 at 0, zero elsewhere)
+ok  GA2 PHI1SIDE one-sided slope 5/2
+ok  GA2 PHI1ON on-line support exactly {0,4,8}
+ok  GA2 RES x v2 = 8
+ok  GA2 RES PHIP v2 = 20
+ok  GA2 RES PHI2 v2 = 84
+ok  GA4 K1H dv2 = 21
+ok  GA4 K0H dv2 = 42
+ok  GA4 PHI2ADIC exact shape (monic top, -k1 at 1, -k0 at 0, zero elsewhere)
+ok  GA4 PHI1SIDE one-sided slope 5/2
+ok  GA4 PHI1ON on-line support exactly {0,4,8}
+ok  GA4 RES x v2 = 8
+ok  GA4 RES PHIP v2 = 20
+ok  GA4 RES PHI2 v2 = 84
+ok  GA3 K1H dv2 = 41
+ok  GA3 K0H dv2 = 82
+ok  GA3 PHI2ADIC exact shape (monic top, -k1 at 2, -k0 at 0, zero elsewhere)
+ok  GA3 PHI1SIDE one-sided slope 5/2
+ok  GA3 PHI1ON on-line support exactly {0,8,16}
+ok  GA3 RES x v2 = 16
+ok  GA3 RES PHIP v2 = 40
+ok  GA3 RES PHI2 v2 = 164
+  T DEGS [8]
+  T NPR 1
+  T EF 4 2
+  T VALS 2 5
+  T PSI2 1
+  T LIVE 1
+  GA1 DEGS [8, 8]
+  GA1 EF 4 2
+  GA1 VALS 2 5 21
+  GA1 PSI2 1
+  GA1 LIVE 1
+  GA1 COCE2 1
+  GA1 COCNOT1 1
+  GA1 COCNOTE 1
+  GA1 MPA 1
+  GA1 MPB 0
+  GA1 MPC 1
+  GA1 DEEP4 1
+  GA1 RE 0
+  GA1 RE2 1
+  GA1 R1 0
+  GA1 EF 4 2
+  GA1 VALS 2 5 21
+  GA1 PSI2 1
+  GA1 LIVE 1
+  GA1 COCE2 1
+  GA1 COCNOT1 1
+  GA1 COCNOTE 1
+  GA1 MPA 1
+  GA1 MPB 0
+  GA1 MPC 0
+  GA1 DEEP4 1
+  GA1 RE 1
+  GA1 RE2 0
+  GA1 R1 0
+  GA1 NPR 2
+  GA2 DEGS [16]
+  GA2 EF 4 4
+  GA2 VALS 2 5 21
+  GA2 PSI2 1
+  GA2 LIVE 1
+  GA2 COCE2 1
+  GA2 COCNOT1 1
+  GA2 COCNOTE 1
+  GA2 MPA 0
+  GA2 MPB 1
+  GA2 MPC 0
+  GA2 DEEP4 0
+  GA2 RE 0
+  GA2 RE2 0
+  GA2 R1 0
+  GA2 NPR 1
+  GA4 DEGS [8, 8]
+  GA4 EF 4 2
+  GA4 VALS 2 5 21
+  GA4 PSI2 1
+  GA4 LIVE 1
+  GA4 COCE2 1
+  GA4 COCNOT1 1
+  GA4 COCNOTE 1
+  GA4 MPA 0
+  GA4 MPB 0
+  GA4 MPC 1
+  GA4 DEEP4 1
+  GA4 RE 0
+  GA4 RE2 0
+  GA4 R1 1
+  GA4 EF 4 2
+  GA4 VALS 2 5 21
+  GA4 PSI2 1
+  GA4 LIVE 1
+  GA4 COCE2 1
+  GA4 COCNOT1 1
+  GA4 COCNOTE 1
+  GA4 MPA 1
+  GA4 MPB 0
+  GA4 MPC 1
+  GA4 DEEP4 1
+  GA4 RE 0
+  GA4 RE2 1
+  GA4 R1 0
+  GA4 NPR 2
+  GA3 DEGS [16, 16]
+  GA3 EF 8 2
+  GA3 VALS 4 10 41
+  GA3 PSI2 1
+  GA3 LIVE 1
+  GA3 COCE2 1
+  GA3 COCNOT1 1
+  GA3 COCNOTE 1
+  GA3 MPA 1
+  GA3 MPB 0
+  GA3 MPC 1
+  GA3 DEEP4 1
+  GA3 RE 0
+  GA3 RE2 1
+  GA3 R1 0
+  GA3 EF 8 2
+  GA3 VALS 4 10 41
+  GA3 PSI2 1
+  GA3 LIVE 1
+  GA3 COCE2 1
+  GA3 COCNOT1 1
+  GA3 COCNOTE 1
+  GA3 MPA 1
+  GA3 MPB 0
+  GA3 MPC 0
+  GA3 DEEP4 1
+  GA3 RE 1
+  GA3 RE2 0
+  GA3 R1 0
+  GA3 NPR 2
+gp stderr: ***   Warning: new stack size = 512000000 (488.281 Mbytes).
+ok  T DEGS [8]
+ok  T NPR 1
+ok  T EF 4 2
+ok  T VALS 2 5
+ok  T PSI2 psi2-root
+ok  T LIVE z2 != 1
+ok  GA1 DEGS [8,..
+ok  GA1 NPR 2
+ok  GA1 EFS ['4', '2'] x2
+ok  GA1 VALS ['2', '5', '21']
+ok  GA1 PSI2 all primes
+ok  GA1 LIVE all primes
+ok  GA1 COCE2 all primes
+ok  GA1 COCNOT1 all primes
+ok  GA1 COCNOTE all primes
+ok  GA1 MPOWN MPA == 0 all primes
+ok  GA1 MPB != 0 all primes
+ok  GA1 DEEP4 == 1
+ok  GA1 ROOTPAT RE/RE2 = [('0', '1'), ('1', '0')]
+ok  GA2 DEGS [16]..
+ok  GA2 NPR 1
+ok  GA2 EFS ['4', '4'] x1
+ok  GA2 VALS ['2', '5', '21']
+ok  GA2 PSI2 all primes
+ok  GA2 LIVE all primes
+ok  GA2 COCE2 all primes
+ok  GA2 COCNOT1 all primes
+ok  GA2 COCNOTE all primes
+ok  GA2 MPOWN MPB == 0 all primes
+ok  GA2 MPA != 0
+ok  GA2 DEEP4 == 0
+ok  GA2 ROOTPAT RE/RE2 = [('0', '0')]
+ok  GA4 DEGS [8,..
+ok  GA4 NPR 2
+ok  GA4 EFS ['4', '2'] x2
+ok  GA4 VALS ['2', '5', '21']
+ok  GA4 PSI2 all primes
+ok  GA4 LIVE all primes
+ok  GA4 COCE2 all primes
+ok  GA4 COCNOT1 all primes
+ok  GA4 COCNOTE all primes
+ok  GA4 MPOWN MPC == 0 all primes
+ok  GA4 DEEP4 == 1
+ok  GA4 ROOTPAT R1/RE2 = [('0', '1'), ('1', '0')]
+ok  GA3 DEGS [16,..
+ok  GA3 NPR 2
+ok  GA3 EFS ['8', '2'] x2
+ok  GA3 VALS ['4', '10', '41']
+ok  GA3 PSI2 all primes
+ok  GA3 LIVE all primes
+ok  GA3 COCE2 all primes
+ok  GA3 COCNOT1 all primes
+ok  GA3 COCNOTE all primes
+ok  GA3 MPOWN MPA == 0 all primes
+ok  GA3 DEEP4 == 1
+ok  GA3 ROOTPAT RE/RE2 = [('0', '1'), ('1', '0')]
+== passPE5 FRESH-ROUTE VERDICT ==
+checks: 91, violations: 0
+GENTOW2 passPE5 fresh route: GREEN
