@@ -421,6 +421,33 @@ a label OF f in THEOREM HE7.A's sense.
 > all tower-node points; GENTOW-1(a)(c) applied to f_S gives the
 > floors; the projection carries them to f's pins. ∎
 >
+> [acceptance fold (post-PE3) 2026-08-10, m-i — THE CITATION
+> COMPLETED: the displayed pin equality p_j^S = p_j − c_g rides
+> HE6R1-2(b) AND (c). Re-derived at HE6R1_RECON S3.4. What (b)
+> carries: the support-function identity h_{F2,f}(kappa2) =
+> h_{F2,f_S}(kappa2) + c_g on (T2, ∞), so the >T2 hull of P2(f)
+> is the >T2 hull of P2(f_S) translated by c_g (same breakpoints,
+> slopes, lengths) — from (b) alone an on-hull point (j, p_j)
+> yields hull_{f_S}(j) = p_j − c_g <= p_j^S, an INEQUALITY; at
+> hull VERTICES equality follows from (b) plus vertex attainment
+> (a lower-hull vertex is a point of the cloud — 4.1(b)'s
+> mechanism at the level-2 pin set). What (c) carries: at
+> side-INTERIOR hull abscissas (the j = 1 of a one-side mu2* = 2
+> shape) equality rides (c)'s residual scalar display — the
+> assembly closing HE6R1-2(c)'s proof, R^f_{lambda2} =
+> gamma_g·R^{f_S}_{lambda2} with gamma_g ∈ K2^× nonzero by (a):
+> interior hull attainment reads off a nonzero residual
+> coefficient, a K2^×-scalar preserves nonzeroness coefficientwise,
+> so f's interior attainment at j transfers to f_S and the
+> displayed equality holds there too. The (ii) proof already cites
+> the package "HE6R1-2(a)(b)(c) + RIDER"; this bracket completes
+> the one-word "(b)" cite above. Machine contact (cited, PE3's
+> fresh leg @ f0874ff9): the equality tested as an EQUATION
+> against explicit f_S at the hull abscissas of 11 members incl.
+> interior j = 1 at five 2SIDED blocks, 0 violations. No
+> conclusion moves; the floors consequence needs only slopes > T2
+> plus pin integrality, carried by (b) as displayed.]
+>
 > Note the LOAD-BEARING parity flip: the RAM test is p_0^S odd,
 > and c_g need not be even (PE2-P: c_g = 5), so the f-level parity
 > p_0 mod 2 is NOT the block parity. Equivalently (and how S3(v)
@@ -898,6 +925,23 @@ its instrument gentow4_pe2_fresh.py md5 b4d795cb… / output
 the note's own lemmas, the primary sources, and the committed
 artifacts, not transcribed from the report. No repair round owed;
 none of the five moves a conclusion.
+
+[acceptance fold (post-PE3) 2026-08-10, m-ii — INSTRUMENT-STRENGTH
+DISCLOSURE on the adopted PE2 machine rows above: the adopted
+instrument's class-degree-sum check is ONE-SIDED. Verified at the
+committed artifact itself (gentow4_pe2_fresh.py, keyval_checks,
+L281–300): the strict branch accumulates ncls = Sum e_·f_ over
+rows with 2v > E2·e and tests `chk(tag, ncls >= want_sum, …)` — a
+companion row misclassified ABOVE E2 would inflate ncls and still
+pass strict mode. The check is non-vacuous (its collapse branch
+emits a real violation — the m-D genre at one grade milder), and
+the committed output's parsed rows carry exact class masses, so
+the adopted FR-T/FR-C numbers stand; but those "GREEN" rows
+certify class degree-sum >= at strict separators, not ==. The
+sealed instrument's six degree-sum checks (8 = D2·mu2*, the m-D
+bullet below) and PE3's fresh instrument (gentow4_pe3_fresh.py
+L337: `ncls == want_sum`) test the sums TWO-SIDED; the == form is
+the standing shape for future frames.]
 
 * **m-A -> CORRECTED at the S8.1 supply audit.** The two-item
   routing sentence misattributed HE7-13''s supply to HE7-12(c)'s
