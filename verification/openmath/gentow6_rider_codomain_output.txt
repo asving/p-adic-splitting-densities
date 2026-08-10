@@ -1,0 +1,26 @@
+PASS FRAME-P member degree n = 10
+PASS FRAME-P P-R1 slot-degree map bijective onto 0..11
+PASS FRAME-P P-R1 above-top count = D2-1-(n mod D2) = 1
+PASS FRAME-P P-R2 reconstruction exact
+PASS FRAME-P P-R3 above-top digits all 0 (1 slots)
+PASS FRAME-P P-R3 slot-degree-n digit = 1
+PASS FRAME-P P-R4 above-top zeros + top pin FORCED across 20 perturbed members
+PASS FRAME-P T-COD tampered above-top tuple leaves the member set (degree 11 > 10)
+PASS FRAME-P2 member degree n = 10
+PASS FRAME-P2 P-R1 slot-degree map bijective onto 0..11
+PASS FRAME-P2 P-R1 above-top count = D2-1-(n mod D2) = 1
+PASS FRAME-P2 P-R2 reconstruction exact
+PASS FRAME-P2 P-R3 above-top digits all 0 (1 slots)
+PASS FRAME-P2 P-R3 slot-degree-n digit = 1
+PASS FRAME-P2 P-R4 above-top zeros + top pin FORCED across 20 perturbed members
+PASS FRAME-P2 T-COD tampered above-top tuple leaves the member set (degree 11 > 10)
+PASS FRAME-F member degree n = 8
+PASS FRAME-F P-R1 slot-degree map bijective onto 0..11
+PASS FRAME-F P-R1 above-top count = D2-1-(n mod D2) = 3
+PASS FRAME-F P-R2 reconstruction exact
+PASS FRAME-F P-R3 above-top digits all 0 (3 slots)
+PASS FRAME-F P-R3 slot-degree-n digit = 1
+PASS FRAME-F P-R4 above-top zeros + top pin FORCED across 16 perturbed members
+PASS FRAME-F T-COD tampered above-top tuple leaves the member set (degree 9 > 8)
+
+TOTAL 24 checks, 0 violations (tooth T-COD x3 included)

@@ -845,6 +845,32 @@ therefore extends off 𝒯; its budget-box/fibration clause does not
 >
 > and induces, per window N, a bijection (monic f of degree n mod
 > pi^N) <-> (digit tuples mod pi^N, top digit pinned to 1).
+> [rider (post-PE2, 2026-08-10; PE2-F-2): CODOMAIN CORRECTED. The
+> grid has (M+1)·D2 slots at slot degrees 0..(M+1)D2−1 while monic
+> f of degree n has coefficients [f]_0..[f]_n only, so whenever
+> n mod D2 != D2 − 1 the grid carries ABOVE-TOP slots (slot degree
+> > n) — re-derived: this includes D2 | n members (FRAME-F, n = 8:
+> three such slots), not only the D2 ∤ n partial members (FRAME-P/
+> FRAME-P2, n = 10 on 12-slot grids: one each). Their digits are
+> FORCED to 0 by the triangular display itself: c at slot degree
+> d > n equals [f]_d + an Ô-combination of [f]_{d'}, d' > d, and
+> each such coefficient vanishes; the slot-degree-n digit is
+> likewise forced to [f]_n = 1. The bijection is onto (digit
+> tuples mod pi^N SUPPORTED ON SLOT DEGREES <= n, top digit — the
+> slot-degree-n digit — pinned to 1, above-top digits pinned to
+> 0), by the same unit-diagonal triangularity on the n free
+> coordinates (slot degrees < n) — free-coordinate counts now
+> match on both sides. Machine leg (new helper, committed this
+> fold): gentow6_rider_codomain.py — GREEN 24/0 at the three S6.2
+> frames (grid census, exact reconstruction, forced zeros + top
+> pin across 56 perturbed members, tooth T-COD x3: a tuple with a
+> nonzero above-top digit reconstructs off-degree and is NOT in
+> the image). Consumers unchanged, walked this fold: (b)'s proof
+> consumes only the triangular display's Ô-linearity (digit
+> congruence across pi^N-lifts) + heights, (c) substitutes (b),
+> and COR 6.2C(d)'s rider cites 6.4(c) — the bijection/count face
+> is consumed nowhere at HEAD (the block COUNT layer rides
+> GENTOW-1(b) at f_S on 𝒯*, COR 6.2C(b)).]
 > (b) [BAND-1 CAP, 𝒯-FREE] across ambient window-N lifts of f:
 > every digit with v < N agrees in value and residue; every unread
 > digit (v >= N) sits at dv2-height >= e1e2·N; hence every value
@@ -999,3 +1025,64 @@ re-run bit-identical) · gentow6_r1_caplemma_output_run1_RED.txt
 (the kept RED artifact).
 
 **GRADE AFTER r1: 0/2 (unchanged).** The arc resumes at PE2.
+
+### S6.5 [rider] POST-PE2 FOLD (2026-08-10, minors-only round)
+
+PE2 verdict (GENTOW6_passPE2_report.md @ 161e8ce1): CLEAN — 0
+CRITICAL + 0 GAP + 2 MINOR; counter 0/2 -> 1/2, the arc's first
+clean pass (F-2's r1 repair ADJUDICATED REPAIRED-PROVED; the scope
+pin validated from outside by PE2's f1 = 2 boundary tooth). This
+fold applies the two minors as dated [rider] brackets (no repair
+round owed; neither is consumed by anything at HEAD). Both fixes
+were RE-DERIVED from the note's own displays and artifacts, not
+transcribed from the report.
+
+* **PE2-F-1 (MINOR) -> the two stale summary sites re-scoped.**
+  STATUS TABLE row (3) and the S3 section header still read the
+  pre-r1 "genre-general at mu2 = 2" scope with no f1 = 1 pin and
+  no GENTOW6-BOX-4 pointer. Verified at source this fold: the
+  theorem-head GT6-r1 pin (S3) is the governing display — "every
+  genre"/"any tower genre" reads AT f1 = 1 at the corrected
+  chat_t; (b) CERT-TOP is vacuous at f1 >= 2 (2i_{t*} <= 2e1−2 <
+  D'); the f1-general form is ANNEX-6.3' (S6.1),
+  machine-unexercised = GENTOW6-BOX-4. Both summary sites now
+  carry that language by dated bracket; the load-bearing sites
+  (theorem head, quadrichotomy, S5 consumption line, S3 setting)
+  were already pinned at r1 and are untouched.
+* **PE2-F-2 (MINOR) -> LEMMA GENTOW-6.4(a)'s bijection codomain
+  corrected.** The sealed wording maps monic degree-n members
+  onto "digit tuples mod pi^N, top digit pinned to 1" on the full
+  (M+1)·D2-slot grid — an over-count wherever above-top slots
+  (slot degree > n) exist. Re-derived from (a)'s own triangular
+  formula: above-top digits are FORCED to 0, the slot-degree-n
+  digit to 1; corrected codomain = tuples supported on slot
+  degrees <= n with top pinned 1. The exact existence condition
+  is n mod D2 != D2 − 1 — SHARPER than the PE2 report's D2 ∤ n
+  framing (FRAME-F, a D2 | n full-side member, carries three such
+  slots; the D2 ∤ n frames FRAME-P/FRAME-P2 carry one each).
+  Machine leg (new helper, committed this fold):
+  gentow6_rider_codomain.py — self-contained exact integer
+  arithmetic, GREEN 24 checks / 0 violations at the three S6.2
+  frames: grid census (P-R1), exact reconstruction (P-R2), forced
+  zeros + top pin (P-R3), forced across 56 perturbed monic
+  members (P-R4), tooth T-COD x3 (a nonzero above-top digit
+  reconstructs off-degree — not in the image). Consumer walk:
+  COR 6.2C(d)'s chain consumes only (a)'s triangularity + (b)'s
+  band-1 congruence ((b)'s proof re-read this fold: Ô-linearity
+  gives digit congruence across lifts; no bijection face); the
+  count layer at blocks rides GENTOW-1(b) at f_S on 𝒯* (COR
+  6.2C(b)). Nothing narrows; conclusions invariant.
+
+Sealed artifacts BYTE-FROZEN — the six S6.4 md5s re-verified this
+fold (gentow6_checks.py 121e5c4a..., output 1bcb950...,
+pe1_fresh.py 59fe76c..., its output 9de6132..., r1_caplemma.py
+bf953a8..., its output fa9d7bf...); no sealed runner edited, no
+re-run. New rider artifacts: gentow6_rider_codomain.py +
+gentow6_rider_codomain_output.txt (exit 0).
+
+Grade after this fold: counter 1/2 (PE2's verdict; a rider is not
+a pass). The statement fence: no theorem statement weakened — the
+PE2-F-1 brackets record the scope the r1 pin already established;
+the PE2-F-2 bracket corrects (a)'s codomain to what its own proof
+delivers, strengthening nothing downstream. PE3 = the acceptance
+attempt.
