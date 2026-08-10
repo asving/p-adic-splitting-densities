@@ -411,3 +411,17 @@ Verdict-of-record runs are appended below (S5) after the seal commit;
 a --force rebuild regenerates S1-S4 only, so S5 appends must be
 re-attached if the ledger is ever legitimately re-pinned.
 
+## S5. BASELINE-GREEN RUN OF RECORD (commit 2 of 2)
+
+Run at HEAD `f8bd49dd` (the seal commit), 2026-08-10:
+
+```
+CHECK: 166 baseline statements; 0 changed, 0 deleted, 0 added.
+GREEN: every baseline statement byte-stable (normalized).
+exit 0
+```
+
+The tripwire is ARMED from this commit: every S-unit consumption check
+(blueprint S5.3 item 3) must show its absorbed statement md5-identical to
+this ledger, and any CI/manual `--check` run that exits 1 is a
+stop-the-line event for the simplification campaign.
