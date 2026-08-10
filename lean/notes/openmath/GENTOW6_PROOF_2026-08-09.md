@@ -18,6 +18,26 @@ partial-side members (S6.2); minors F-3/F-5/F-6 + the F-4 closure
 record (S6.3). Sealed machine artifacts BYTE-FROZEN (md5s
 re-verified, S6.4). Grade stays 0/2.**
 
+**[ARC — passPE2 2026-08-10: CLEAN, 0 CRITICAL + 0 GAP + 2 MINOR
+(GENTOW6_passPE2_report.md @ 161e8ce1); counter 0/2 -> 1/2 — the
+arc's first clean pass. Rider fold (post-PE2, this commit series;
+minors only, no repair round owed): PE2-F-1 the two stale summary
+sites (STATUS TABLE row (3); S3 section header) re-scoped to the
+r1 pin's f1 = 1 wording, mirroring the theorem-head scope pin
+verified at source; PE2-F-2 LEMMA GENTOW-6.4(a)'s per-window
+bijection codomain CORRECTED by a dated bracket at the display —
+re-derived from (a)'s own triangular formula: above-top slots
+(slot degree > n) are FORCED to 0, the codomain is the tuples
+supported on slot degrees <= n with top pinned 1; exact condition
+for above-top slots = n mod D2 != D2 - 1 (sharper than the
+report's D2 ∤ n framing — FRAME-F, a D2 | n member, carries 3
+such slots); machine leg gentow6_rider_codomain.py GREEN 24/0
+with tooth T-COD x3; COR 6.2C(d)'s chain consumes only (a)'s
+triangularity + (b)'s band-1 congruence — walked, unchanged.
+Sealed artifacts BYTE-FROZEN (six S6.4 md5s re-verified this
+fold). Fold record S6.5; grade 1/2 (PE2's verdict; a rider is not
+a pass); PE3 = the acceptance attempt.]**
+
 Charge (three targets, priority order): (1) GENTOW4-BOX-1 — the
 mixed-side tie mu2*(r) = m_r, literature-first (FGMN residual
 multiplicativity; GENTOW2's faithful-cite pattern) or via HE7's
@@ -47,7 +67,7 @@ gentow4_checks.py + gentow3_checks.py (imported additively).
 |---|---|---|
 | (1) mixed-side tie | LEMMA GENTOW-6.1 (S1) | PROVED-VIA-CITE (FGMN Thm 2.8 + Cor 4.7(3) + Cor 4.4(4)) + corpus leg; GENTOW4-BOX-1 closed |
 | (2) block budgets | LEMMA GENTOW-6.2 + COR GENTOW-6.2C (S2) | PROVED (budget half; ledger half = GENTOW6-BOX-2) |
-| (3) attainment | THEOREM GENTOW-6.3 (S3) | PROVED at mu2 = 2 (CERT-TOP unconditional; regimes 3/4 displayed; mu2 >= 3 = GENTOW6-BOX-1) |
+| (3) attainment | THEOREM GENTOW-6.3 (S3) | PROVED at mu2 = 2, f1 = 1 [rider (post-PE2, 2026-08-10; PE2-F-1): the theorem-head GT6-r1 scope pin governs this row — "every genre" reads AT f1 = 1, at the corrected chat_t; CERT-TOP unconditional at f1 = 1 genres with 2i_{t*} >= D' (vacuous at f1 >= 2); f1 >= 2 = ANNEX-6.3' (S6.1), machine-unexercised = GENTOW6-BOX-4] (regimes 3/4 displayed; mu2 >= 3 = GENTOW6-BOX-1) |
 | battery | gentow6_checks.py (S4) | GREEN 401/0, 4/4 teeth, PARI-adjudicated |
 
 ## S1. LEMMA GENTOW-6.1 (the mixed-side multiplicity tie) —
@@ -309,7 +329,11 @@ by the display above; the LEDGER half was never a partial-side
 novelty.
 
 ## S3. THEOREM GENTOW-6.3 (the attainment certificate — GENTOW3-BOX-1
-## made genre-general at mu2 = 2)
+## made genre-general at mu2 = 2, f1 = 1) [rider (post-PE2,
+## 2026-08-10; PE2-F-1): header re-scoped to the theorem head's
+## GT6-r1 pin — at f1 >= 2 the sealed displays are NOT proved as
+## written; the f1-general form is ANNEX-6.3' (S6.1),
+## machine-unexercised = GENTOW6-BOX-4]
 
 **Setting (GENTOW-3 S0/S2, restated).** Full-side tower genre;
 Phi2 = Phi'^{e2f2} − Sum_{t in T} chat_t·nhat(u2(f2−t))·Phi'^{e2t},
