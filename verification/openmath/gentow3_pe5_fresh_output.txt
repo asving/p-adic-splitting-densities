@@ -1,0 +1,18 @@
+== P5-1 SELF-2 ==
+  G = [4096*Y, 0]; pins [61, None] = [THETA_0, cert-free zero]
+== P5-2 SELF-3 ==
+  G = [2^19*x*Y, 12288*Y, 0]; pins [91, 61, None] vs THETA [87, 61, 35]: SLACK/ATTAINED/ZERO; cert CANCELS at j=0
+== P5-3/P5-4 W5 (entry-driven, THETA_0-exact at the cancelled coordinate) ==
+  W5 mindiff [87, 61, None]; W5B honest vertex (0,97) undercut -> (0,87); the r2 only-if is dead at a second frame
+== P5-5 mu2=2 rows ==
+  DIV undercut (0,65)->(0,61); BANDA/BANDB faithful at 54/60
+== P5-6 FLOOR/ENTRY sweeps (seed 20260810) ==
+  FR5X-2: 30 gated members swept
+  FR5X-3: 20 gated members swept
+== P5-7 REP-M3 ==
+  self [64, 40x, 12] pins [12,7,4]; W-A/W-B mindiff [10,9,4]
+== GP leg: 6 jobs ==
+== TEETH ==
+teeth: T5-UP kills=9 T5-DOWN=True T5-BICOND=True
+tally: [('BAND', 4), ('DIV', 3), ('ENTRY', 120), ('FLOOR', 120), ('GP', 6), ('REP', 11), ('SELF', 11), ('SWEEP', 2), ('TEETH', 3), ('WIT', 7)]
+=== VERDICT: GREEN -- 287 checks, 0 violations ===

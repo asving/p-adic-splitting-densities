@@ -57,6 +57,21 @@ TEETH: T5-UP (THETA+1 mutant killed at >= 6 measured THETA-exact
 Design disclosure: the frame constants and all displayed values above
 were hand-derived (no machine exploration); the only pre-seal machine
 step was a python3 -m py_compile syntax check. No smoke run.
+
+RUN-1 RED DISCLOSURE (2 misses, BOTH my instrument literals, kept at
+gentow3_pe5_fresh_output_run1_RED.txt; no theorem-facing prediction
+changed): (1) BANDA mindiff want was [61, None] — measured [61, 36]:
+my hand-derivation forgot g_1 = 8x*Phi's OWN division discrepancy
+(its x-ful digit meets K2's -64x: one extraction, tail -512 at height
+36 = THETA_1 + 1 >= THETA_1 — the FLOOR holds, the pins/labels stay
+faithful; want corrected to the ledger-derived [61, 36]).
+(2) W5B PARI sigma want was {(4,1),(8,1)} from a 'length-1 integer-
+slope edge => irreducible (4,1)' heuristic; PARI truth is
+{(2,1),(2,1),(8,1)} — the deg-4 slope-26 chunk descends to two
+ramified quadratics. My oracle-side heuristic, not a note claim (no
+note sentence prices W5B's sigma); want corrected to the PARI value.
+The load-bearing W5B checks (honest vertex (0,97), shadow undercut to
+(0,87), mindiff_0 = 87 = THETA_0) were GREEN in run 1 and unchanged.
 """
 import subprocess, random
 
@@ -362,7 +377,7 @@ chk('WIT', X3.pin(ssB[0]) == 87 and mds(X3, hsB, ssB)[0] == 87,
     'W5B shadow pin/mindiff %s %s'
     % (X3.pin(ssB[0]), mds(X3, hsB, ssB)))
 THEXACT.append(('W5B j0', 87, X3.theta(0)))
-gp_sig('W5B', W5B, 2, [(4, 1), (8, 1)])
+gp_sig('W5B', W5B, 2, [(2, 1), (2, 1), (8, 1)])
 say('  W5 mindiff [87, 61, None]; W5B honest vertex (0,97) undercut'
     ' -> (0,87); the r2 only-if is dead at a second frame')
 
@@ -389,7 +404,7 @@ chk('BAND', X2.gate(BANDA), 'BANDA gate')
 hsBA, ssBA = reads(X2, BANDA)
 chk('BAND', pins(X2, hsBA) == [54, 27]
     and [X2.pin(s) for s in ssBA] == [54, 27]
-    and mds(X2, hsBA, ssBA) == [61, None],
+    and mds(X2, hsBA, ssBA) == [61, 36],
     'BANDA %s %s %s' % (pins(X2, hsBA), [X2.pin(s) for s in ssBA],
                         mds(X2, hsBA, ssBA)))
 THEXACT.append(('BANDA j0 mindiff', 61, X2.theta(0)))
