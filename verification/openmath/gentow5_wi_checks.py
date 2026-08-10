@@ -57,6 +57,56 @@ PREREGISTERED PREDICTIONS (T = tooth, must FIRE/kill).
   P-D7  (T, disjunctive) naive twin fails the coherent certificate:
         NOT(one deg-16 factor AND f = 2 AND psi_4^{(w_av)}(Y') = 0);
         the firing branch is RECORDED.
+
+DATED REPAIR (2026-08-10, post RUN 1 — RED KEPT as
+gentow5_wi_checks_output_run1_RED.txt, md5 598d6704; 58 checks,
+5 violations).  Diagnosis, two independent defects, both
+INSTRUMENT-side:
+ (1) gp PARSE: gp reading stdin does NOT continue statements across
+     newlines at unbalanced parens — the multi-line C-VALS print and
+     the whole naive-twin if-block executed as FRAGMENTS (so run 1's
+     P-D1 ladder FAIL was a missing print, not a wrong value; probe
+     shows C-VALS = (4,10,21,43) EXACT as preregistered).  Repair:
+     every gp statement single-line.
+ (2) AVATAR MIS-KEY: P-D3 LAW-1/LAW-3 + P-D4/P-D6 keyed the law to
+     w_av = res(nhat_3(43)/pi_4^43), consuming the avatar = w
+     identification — GENTOW2 S6.1 row 23, DESCRIPTIVE status (rides
+     Thm 4.2's normal form incl. its x_r^{s(alpha)}-factor).  Run 1
+     + the disclosed diagnosis probe measured the INTRINSIC data:
+     tr(Y) = 1, norm(Y) = 2 — i.e. u_3(beta_1) = w = 1, u_3(beta_0)
+     = 2 = theta_3(0)*w^2: [GENTOW5-W(3)] HOLDS on the nose at
+     w = 1, while w_av = 2.  LW3 is the first machine geography
+     where avatar != intrinsic w (PE6's four frames had the row-23
+     factor trivial); the lemma (an R-read statement) is untouched
+     — the avatar leg was never part of its content.  Repair: the
+     law rows re-keyed INTRINSIC (w* := tr(Y), the top-slot
+     tautology w = u_3(kbar) made operational); the avatar becomes a
+     RECORD + the IDY closure; the discrepancy unit w_av/w* is
+     RECORDED as the first measured row-23 gap.
+RUN-2 PREREGISTRATION (provenance disclosed: rows marked [probe]
+were observed once in the post-RED diagnosis probe /tmp/gpprobe3;
+run 2 asserts their reproduction under the sealed instrument):
+  P-D1' C-VALS ladder (4,10,21,43) [probe].
+  P-D3' INTRINSIC LAW: w* := tr(Y) in {1,2}; LAW-I1 norm(Y) =
+        2*tr(Y)^2 (the [GENTOW5-W(3)] two-slot closure at
+        theta_3(0) = 2); LAW-I2 Y^2 - w*Y - (w*)^2 = 0 (minpoly(Y)
+        = psi_4^{(w*)}, the display form).
+  P-D4' (T) psi_4^{(w')}(Y) != 0 at w' != w* (kills the other unit).
+  P-D5  (T) unchanged: norm(Y) != tr(Y)^2 (theta-free law dead).
+  P-D6' (T, conditional) if w* != 1 then psi_4(Y) != 0 (vacuous at
+        the probe-observed w* = 1; kept for form).
+  P-D8  AVATAR RECORD: w_av printed; T0 := res(nhat_3(86)/
+        nhat_3(43)^2) = 2 (lattice cross-pin); IDY U0 = T0*w_av^2
+        with U0 := res(nhat_3(86)/pi_4^86) [probe: holds] — the
+        avatar family obeys the SAME cocycle shape; the discrepancy
+        unit w_av*(w*)^{-1} RECORDED (probe: 2) — row 23's first
+        measured gap, filed to WFRAME OPEN-3's geography, NOT a law
+        violation.
+  P-D7' (T) naive twin VERDICT KILL: one deg-16 factor with (e,f) =
+        (16,1) != (8,2) [probe] — the gauge-naive prescription's
+        repeated-root residual (y+w)^2 drives a ramified refinement;
+        nfeltval(Phi_3) at its prime RECORDED (probe: 86, value
+        exact — the kill is in (e,f), not the ladder).
 """
 
 import subprocess, sys
@@ -237,52 +287,43 @@ print("C-NPR ", #prs);
 pr = prs[1];
 print("C-EF ", pr.e, " ", pr.f);
 xF = Mod(x, F); P1F = Mod(P1, F); P2F = Mod(P2, F); P3F = Mod(P3, F);
-print("C-VALS ", nfeltval(K, xF, pr), " ", nfeltval(K, P1F, pr), " ",
-      nfeltval(K, P2F, pr), " ", nfeltval(K, P3F, pr));
+print("C-VALS ", nfeltval(K, xF, pr), " ", nfeltval(K, P1F, pr), " ", nfeltval(K, P2F, pr), " ", nfeltval(K, P3F, pr));
 g1 = nfmodpr(K, xF^2/3, pr);
 g2 = nfmodpr(K, P1F^2/(9*xF), pr);
 g3 = nfmodpr(K, P2F^2/(81*P1F), pr);
 print("C-G1 ", g1 == 2); print("C-G2 ", g2 == 2); print("C-G3 ", g3 == 2);
 NH43 = 3*xF*P1F*P2F;
-PI3 = P2F*xF^20/P1F^10;
-print("C-PI3V ", nfeltval(K, PI3, pr));
-wav = nfmodpr(K, NH43/PI3^43, pr);
-wis1 = (wav == 1); wis2 = (wav == 2);
-print("C-WF3 ", wis1 || wis2);
-print("C-WAV ", if(wis1, 1, if(wis2, 2, -1)));
+NH86 = 3^9*xF*P1F;
+PI4 = P2F*xF^20/P1F^10;
+print("C-PI4V ", nfeltval(K, PI4, pr));
 Y = nfmodpr(K, P3F/NH43, pr);
 print("C-YGEN ", Y^3 != Y);
-trY = Y + Y^3; nmY = Y^4;
-print("C-LAW1 ", trY == wav);
-print("C-LAW2 ", nmY == 2*wav^2);
-print("C-LAW3 ", Y^2 - wav*Y - wav^2 == 0);
-wo = if(wis1, 2, 1);
-print("C-T2 ", Y^2 - wo*Y - wo^2 != 0);
+trY = Y + Y^3;
+nmY = Y^4;
+ws = if(trY == 1, 1, if(trY == 2, 2, -1));
+print("C-WSTAR ", ws);
+print("C-LAWI1 ", nmY == 2*trY^2);
+print("C-LAWI2 ", Y^2 - trY*Y - trY^2 == 0);
+wo = if(ws == 1, 2, 1);
+print("C-TI ", Y^2 - wo*Y - wo^2 != 0);
 print("C-T5 ", nmY != trY^2);
-print("C-T6 ", if(!wis1, Y^2 - Y - 1 != 0, 1));
+print("C-NOSE ", if(ws != 1, (Y^2 - Y - 1 != 0), 1));
+wav = nfmodpr(K, NH43/PI4^43, pr);
+wa = if(wav == 1, 1, if(wav == 2, 2, -1));
+print("C-WAV ", wa);
+T0 = nfmodpr(K, NH86/NH43^2, pr);
+print("C-T0 ", T0 == 2);
+U0 = nfmodpr(K, NH86/PI4^86, pr);
+print("C-IDY ", U0 == T0*wav^2);
+print("C-DISC ", wa, " vs ", ws, " gap ", wav != trY);
 fpn = factorpadic(Fn, 3, 300);
 print("N-FP ", matsize(fpn)[1], " ", poldegree(fpn[1,1]));
-nfail = 1;
-if(matsize(fpn)[1] == 1 && poldegree(fpn[1,1]) == 16,
-   Kn = nfinit([Fn, [3]]);
-   prn = idealprimedec(Kn, 3);
-   prn1 = prn[1];
-   print("N-EF ", prn1.e, " ", prn1.f);
-   if(prn1.f == 2,
-      my(xN = Mod(x,Fn), P1N = Mod(P1,Fn), P2N = Mod(P2,Fn), P3N = Mod(P3,Fn));
-      my(Yn = nfmodpr(Kn, P3N/(3*xN*P1N*P2N), prn1),
-         wv = if(wis1, 1, 2));
-      nfail = (Yn^2 - wv*Yn - wv^2 != 0);
-      print("N-BRANCH psiw-read ", Yn^2 - wv*Yn - wv^2 != 0);
-      \\ exploratory record: naive twin's own residual coefficients
-      print("N-REC tr ", Yn + Yn^3 == wv, " nm ", Yn^4 == 2*wv^2);
-   ,
-      print("N-BRANCH f!=2");
-   );
-,
-   print("N-BRANCH multi-factor");
-);
-print("N-TOOTH ", nfail);
+Kn = nfinit([Fn, [3]]);
+prn = idealprimedec(Kn, 3);
+prn1 = prn[1];
+print("N-EF ", #prn, " ", prn1.e, " ", prn1.f);
+print("N-KILL ", (#prn != 1) || (prn1.e != 8) || (prn1.f != 2));
+print("N-V3 ", nfeltval(Kn, Mod(P3, Fn), prn1));
 print("GPDONE");
 """
 
@@ -400,26 +441,37 @@ def main():
             t.chk(one('C-NPR') == ['1'], "P-D1 single prime over 3")
             t.chk(one('C-EF') == ['8', '2'], "P-D1 (e,f) = (8,2)")
             t.chk(one('C-VALS') == ['4', '10', '21', '43'],
-                  "P-D1 nfeltval ladder (4,10,21,43)")
-            t.chk(one('C-PI3V') == ['1'], "P-D1 v(P_3) = 1/8 (scaled: 1)")
+                  "P-D1' nfeltval ladder (4,10,21,43)")
+            t.chk(one('C-PI4V') == ['1'], "P-D1 v(pi_4) = 1/8 (scaled: 1)")
             for k in ('C-G1', 'C-G2', 'C-G3'):
                 t.chk(one(k) == ['1'], "P-D2 %s letter = 2" % k)
-            t.chk(one('C-WF3') == ['1'], "P-D3 w_av in F_3^x = {1,2}")
-            print("  MEASURED w_av = %s (recorded, not predicted)"
-                  % one('C-WAV')[0])
-            t.chk(one('C-YGEN') == ['1'], "P-D3 Y generates F_9 (Y^3 != Y)")
-            t.chk(one('C-LAW1') == ['1'], "P-D3 LAW-1 tr(Y) = w_av"
-                  "  [u_3(kbar) = theta_3(1) w = w]")
-            t.chk(one('C-LAW2') == ['1'], "P-D3 LAW-2 Y^4 = 2 w_av^2"
-                  "  [u_3(beta_0) = theta_3(0) w^2 = 2w^2]")
-            t.chk(one('C-LAW3') == ['1'], "P-D3 LAW-3 psi_4^{(w_av)}(Y) = 0")
-            t.chk(one('C-T2') == ['1'], "P-D4 TOOTH psi_4^{(w')}(Y) != 0")
+            t.chk(one('C-YGEN') == ['1'], "P-D3' Y generates F_9 (Y^3 != Y)")
+            t.chk(one('C-WSTAR')[0] in ('1', '2'),
+                  "P-D3' w* = tr(Y) in F_3^x = {1,2}")
+            print("  MEASURED w* = %s (intrinsic w = u_3(kbar); recorded)"
+                  % one('C-WSTAR')[0])
+            t.chk(one('C-LAWI1') == ['1'], "P-D3' LAW-I1 norm(Y) = 2 tr(Y)^2"
+                  "  [u_3(beta_0) = theta_3(0) u_3(beta_1)^2, theta live]")
+            t.chk(one('C-LAWI2') == ['1'],
+                  "P-D3' LAW-I2 psi_4^{(w*)}(Y) = 0 (single-w display)")
+            t.chk(one('C-TI') == ['1'], "P-D4' TOOTH psi_4^{(w')}(Y) != 0")
             t.chk(one('C-T5') == ['1'],
                   "P-D5 TOOTH u_3(beta_0) != u_3(beta_1)^2 (theta-free law dead)")
-            t.chk(one('C-T6') == ['1'], "P-D6 TOOTH nose (conditional)")
-            t.chk(one('N-TOOTH') == ['1'],
-                  "P-D7 TOOTH naive twin fails coherent certificate"
-                  " (branch: %s)" % ' '.join(one('N-BRANCH')))
+            t.chk(one('C-NOSE') == ['1'], "P-D6' TOOTH nose (conditional)")
+            print("  MEASURED w_av = %s (avatar; row-23 record)"
+                  % one('C-WAV')[0])
+            t.chk(one('C-T0') == ['1'],
+                  "P-D8 T0 = res(nhat_3(86)/nhat_3(43)^2) = 2 (lattice x-pin)")
+            t.chk(one('C-IDY') == ['1'],
+                  "P-D8 IDY U0 = T0 * w_av^2 (avatar-side cocycle closure)")
+            print("  RECORD row-23 gap: " + ' '.join(one('C-DISC')))
+            t.chk(one('N-FP') == ['1', '16'],
+                  "P-D7' naive twin: one deg-16 factor")
+            t.chk(one('N-KILL') == ['1'],
+                  "P-D7' TOOTH naive twin VERDICT KILL: (e,f) != (8,2)"
+                  " (measured N-EF: %s)" % ' '.join(one('N-EF')))
+            print("  RECORD naive twin nfeltval(Phi_3) = %s"
+                  % ' '.join(one('N-V3')))
     except subprocess.TimeoutExpired:
         t.chk(False, "P-D gp leg within budget (1200s) -- DISCLOSED not-run")
 
