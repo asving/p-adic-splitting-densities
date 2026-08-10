@@ -7,6 +7,19 @@
 verdict, S6). Unit: GENTOW-4, BOX-CLOSURE campaign wave 22. Grade
 0/2 (attempt; hostile arc owed).**
 
+**GT4-r1 repair round 2026-08-10 (this round): passPE1
+(GENTOW4_passPE1_report.md @ 8ae71864) returned NOT CLEAN — 1 GAP
+(F-1, the gauge seam, four sites) + 2 MINOR; counter stays 0/2.
+F-1 repaired by the dated gauge annex (S8): the corrected chat_t
+pinned at S0, 4.1(c)/S3 re-pointed at the [r1 2026-08-09]-restated
+HETOW-1/2 with the supply audit, GENTOW4-BOX-3 gains the eta-gauge
+axis ("uniform in all of these" withdrawn), the S4 remark re-scoped
+f1 = 1 -> eta = 1; FR-G/FR-M adopted as annex machine rows. m-1:
+the S2 fullness count recounted (TWO lemma-level places). m-2: T-2
+NOCG's even-p0 branch disclosed at the S6-VERDICT row. Edits
+[GT4-r1]-bracketed; sealed artifacts BYTE-FROZEN (md5s S8.4).
+Grade stays 0/2.**
+
 Charge: [GENHN-TOW-1] item (4) — the inner CS event occupies only
 PART of the (J, dv(A_J))-polygon: e2f2·mu2 < mu1, because the
 polygon has other sides and/or the event side carries other
@@ -34,6 +47,20 @@ mu2 >= 2, f2 := deg psi2) with e2·f2 >= 2. PARTIAL:
 e2f2·mu2 < mu1. Composed key (same formula as T(b)'):
 Phi2 := Phi'^{e2f2} − Sum_{t<f2} chat_t·nhat(u2(f2−t))·Phi'^{e2t},
 deg D2 = D'e2f2; dv2 := e1e2·v; T2 = E2 := e2f2·u2 (GENTOW-1 S0).
+[GT4-r1 GAUGE PIN (S8; per erratum 59c1966 + HETOW [r1]):
+
+    chat_t := lift(c_t·eta^{W(t)}),
+    W(t)   := floor((f2−t)·i(u2)/e1)
+
+— the WRAP-CORRECTED lifts (eta = the level-1 stage residue of
+x^{e1}/pi^h; i(m) = the x-exponent of nhat(m); at f1 >= 2 per digit
+the exact-height (LIFT) output L_{(f2−t)u2}(c_t·eta^{W(t)}), the
+HETOW [r1] F-4 no-overflow form). The composed-at display's plain
+lifts chat_t = lift(c_t) are the GAUGE-NAIVE form — a DIFFERENT
+polynomial whenever some c_t·(eta^{W(t)} − 1) != 0; at eta = 1, and
+at any frame where every c_t·(eta^{W(t)} − 1) = 0 (automatic at
+f2 = 1, where W(0) = floor(i(u2)/e1) = 0), corrected = naive. This
+pin governs every Phi2 of S2–S5.]
 
 THE WITNESS (PE2-P, constructed by GENHN's passPE2 verifier; the
 box's protected instance): n = 10, genre (2,1,5) over Q_2,
@@ -108,13 +135,27 @@ machine-visible class separator.
 ## S2. LEMMA GENTOW-4.1 (the partial-side bridge repairs)
 
 HETOW's instantiation map (HETOW_RECON S1, rows verbatim) consumes
-fullness in exactly THREE places: HETOW-1(a)'s psi2(0) != 0 ("at a
-FULL side the left endpoint (0, dv(A_0)) is an attained pin"),
-HETOW-3 wholesale (f_S = f), and nothing else — HETOW-2's proof
+fullness in exactly TWO places [GT4-r1 (m-1): "THREE" recounted
+from the S1 table — two lemma-level places spanning FIVE table
+rows: HETOW-1's r-row (one row), and HETOW-3 across four rows (the
+Psi ∤ f_S peel convention, the label row, the f_S/mu2 row, the
+level-1 Phi' ∤ f frame row); the ladder row's "equality at full
+side" annotation is commentary, not a consumed hypothesis — its
+partial-side analogue is (ii)'s mu2* = deg f_S/D2]: HETOW-1(a)'s
+psi2(0) != 0 ("at a FULL side the left endpoint (0, dv(A_0)) is an
+attained pin"), HETOW-3 wholesale (f_S = f), and nothing else —
+HETOW-2's proof
 consumes only Phi2's own construction, DEFINITION HE6-1's
 deg/dv/residue interfaces, and the node floor u2 > e2D'h, never the
 side's length (checked line by line at this unit; the [r2]
-parenthetical's carry estimate is side-blind). The repairs:
+parenthetical's carry estimate is side-blind). [GT4-r1: the audit
+was performed on the pre-[r1] HETOW-2; re-checked this round at
+the RESTATED HETOW-2 (HETOW_RECON S2 [r1 2026-08-09]) — its proof
+adds the S2 wrap-cocycle preamble (heights add; W(t)
+integer-quantized) and the (LIFT)-slot coefficient form, both
+side-blind, and its carry accounting (F-2) is stated per slot with
+no side-length input: the audit conclusion stands at the corrected
+key.] The repairs:
 
 > **LEMMA GENTOW-4.1.** In the S0 setting (partial side):
 > (a) [floor, every side] every side of P(F) has dv-slope > D'h;
@@ -124,8 +165,13 @@ parenthetical's carry estimate is side-blind). The repairs:
 > psi2(0) != 0, and HETOW-1 holds verbatim with this in place of
 > its full-side endpoint step: (kappa2, rtilde) is a level-2 datum
 > of DEFINITION HE7-1 over the outer frame, and the tower-node
-> locus is its level-2 point set. (c) [key bridge] HETOW-2 holds
-> verbatim: Phi2 = Psi_{kappa2,rtilde} − w with w = 0 or
+> locus is its level-2 point set. (c) [key bridge] HETOW-2
+> [GT4-r1: = the [r1 2026-08-09]-RESTATED HETOW-2, stated at the
+> WRAP-CORRECTED key of the S0 pin — the gauge-naive form was
+> refuted at eta != 1, f2 = 2 frames (S8; FR-G measured the
+> discrepancy AT dv2 = T2 exactly); the restated display supplies
+> Psi-membership with w = 0 under the (LIFT)-slot form at any f1]
+> holds verbatim: Phi2 = Psi_{kappa2,rtilde} − w with w = 0 or
 > dv2(w) > T2, so by LEMMA HE7-12 the §S5 package, THEOREM
 > HE7.A(1)(2), the refine package (HE7-12/13, HE7-8), the §S1
 > CONVENTION with LEMMA HE6R1-3's peel, ANNEX-LEMMA HE7-13', and
@@ -181,7 +227,16 @@ the LABEL CLASS is C_{kappa,r} := the roots x0 of f with
 dv(Phi'(x0)) = kappa whose twist-normalized letter beta_{x0} is a
 root of iota(rtilde_r) (rtilde_r = the pi-bar-normalized twist of
 r, LEMMA HETOW-1 at that side — a level-2 datum by GENTOW-4.1(a),
-(b)). LEMMA HE6-2''/HE6-4 give: the classes partition the roots of
+(b)). [GT4-r1: per the [r1]-restated HETOW-1, rtilde_r has ONE
+definition — the minimal polynomial over K of the twisted letter
+beta = eta_theta^{−Q(u)}·(root of iota(r)), explicitly
+eta^{−Q(u)·d_r}·r(eta^{Q(u)}Z); "the pi-bar-normalized twist"
+names it. Its slot-residue characterization is the restated clause
+(c), proved AT the corrected key only; what this vocabulary and
+4.1(b) consume is the POINTWISE clause (b) — beta_{x0} =
+eta_{x0}^{−Q}·eta2(x0) with rtilde(beta) = 0 <=> psi2(eta2) = 0 —
+which is wrap-free (single-height normalization, no product of
+normalizers) and untouched by the restatement.] LEMMA HE6-2''/HE6-4 give: the classes partition the roots of
 f, every (kappa, r) with r | R_kappa is realized, and the label is
 a label OF f in THEOREM HE7.A's sense.
 
