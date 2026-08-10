@@ -258,7 +258,12 @@ the slot — leaving the diagonal pair source {t*, t*} with
 its single extraction and no division steps. Its source monomial —
 x-position 2 i_{t*}, Y-position B*, coefficient binom(m,2)
 (-chat_{t*})^2 pi^{2 a_{t*}} = binom(m,2) chat_{t*}^2 pi^{2 a_{t*}}
-— is UNIQUE at that (x, Y)-position among all sources: a k = 2
+— is UNIQUE at that (x, Y)-position among all sources: a k = 0
+source sits at Y-position e2 f2 m = B* + 2 e2(f2 - t*) > B*; a
+k = 1 source sits at Y-position B* only when t = 2 t* - f2 lies in
+T (needs 2 t* >= f2), and its x-position i_t <= e1 - 1 < D' <=
+2 i_{t*} ((b)'s hypothesis) misses 2 i_{t*} [r1 2026-08-10: the
+k <= 1 lines added per passPE1 F-3]; a k = 2
 non-diagonal multiset at Y-position B* would need t + t' = 2 t*
 with t, t' <= t*, forcing the diagonal; a k >= 3 multiset there
 would need f2 (k - 2) = Sum t - 2 t* <= (k - 2) t*, i.e. f2 <= t*,
@@ -352,7 +357,12 @@ I_t := i_t + e1 r_max(t); the top slot is (2 I_{t*} - D', b*) at
 coordinate j* under 2 I_{t*} >= D', with digit binom(m,2) *
 lift(lambda_{t*,r*})^2 * pi^{2(a_{t*} - r* h)} * (wrap unit) — the
 same three localized deltas as 6.3' ((i) Y-uniqueness is x-shape-
-blind, (ii) max-forces-diagonal on the monomial pair (r*, r*),
+blind [r1 2026-08-10: as corrected at S2 — at e2(f2 - t*) = 1 the
+Y = B* + 1 census also carries k >= 3 all-t* monomial branches
+whenever k I_{t*} >= (k - 1) D', landing at x-slot <=
+k I_{t*} - (k - 1) D' < 2 I_{t*} - D' (since I_{t*} <= D' - 1) at
+weight >= m E2 + 2 delta, above the graded layer],
+(ii) max-forces-diagonal on the monomial pair (r*, r*),
 (iii) the digit a unit multiple with the SAME binom(m,2) residue
 condition — Step II's extraction count e <= floor(Sum I / D') <=
 k - 1 survives since each lift monomial has x-degree <= I_t <=
@@ -413,8 +423,12 @@ GREEN — 459 checks, 0 violations, teeth kill counts EXACT
 (T-ALLM 3, T-COEF 2, T-VAL 7, T-TOPZ 6); isolated re-run
 BIT-IDENTICAL (fresh /tmp scratch); repaired runner md5 c98cb423,
 output md5 0a4cd16f.** Run-1 RED = 3 INSTRUMENT literals, all
-hand-traced before repair and disclosed in the runner docstring, NO
-theorem-facing want changed: (i) my B3 display-slot want claimed
+hand-traced before repair and disclosed in the runner docstring; no
+CERTIFICATE-slot want changed, and one instrument display-slot want
+was WEAKENED from an exact value to what the ledger licenses
+(valuation + graded digit) [r1 2026-08-10 precision per passPE1
+F-4; the sealed phrasing "NO theorem-facing want changed" left the
+weakening implicit]: (i) my B3 display-slot want claimed
 the value at (1,0)@j2 was the triple branch -8 EXACTLY; measured
 40 = -8 + 48 — at e2(f2 - t*) = 1 a division step lowers Y by one
 and stays INSIDE the coordinate band, so the top branch's stepped
@@ -1159,3 +1173,122 @@ and produced the 6.7D/6.7C' correction.
 * **Statement fence:** GENTOW6_PROOF stays frozen; this note's S8
   keeps the refuted 6.7C display visible under its dated
   correction block (6.7C' governs).
+
+---
+
+# APPEND (GENTOW6-BOXES r1 REPAIR unit, 2026-08-10): passPE1 REPAIR
+# ROUND — F-1 (CRITICAL) REPAIRED IN PLACE, F-3/F-4 MINORS LANDED,
+# F-2 BRACKETED AT THE GENTOW6_PROOF APPEND; CE3 + BP3 ADOPTED
+
+## S11. THE REPAIR ROUND (verdict passPE1 = NOT CLEAN, 3ae577e8;
+## grade STAYS 0/2)
+
+**F-1 (CRITICAL, 6.5(a)'s equality sentence) — REPAIRED, re-derived
+from Step III's own display.** The sealed sentence forced
+(k, multiset, e, steps) = (2, {t*, t*}, 1, 0) at Y = B* + 1
+unconditionally. Re-derivation (Step III, this round): the deficit
+(B* + 1) - (branch Y) decomposes EXACTLY as (k-2)(e2(f2-t*) - 1) +
+e2(k t* - Sum t) + (k-1-e) plus the division-step losses — all
+non-negative — so equality forces zero division steps, the all-t*
+multiset, e = k - 1, AND (k-2)(e2(f2-t*) - 1) = 0. The k = 2 pin
+is therefore CORRECT exactly when e2(f2 - t*) >= 2 and FALSE in
+general at e2(f2 - t*) = 1, where every k >= 3 with
+k i_{t*} >= (k-1) D' (Step II's extraction budget) contributes an
+equality branch; each such branch spends exactly D' of x-degree
+per extraction (tail steps spend more), landing at x-slot <=
+k i_{t*} - (k-1) D' = a* - (k-2)(D' - i_{t*}) < a* (i_{t*} < D'),
+at weight m E2 + (k-1) delta >= m E2 + 2 delta, strictly above the
+height-THETA_{j*} graded layer. Both exception properties are now
+DISPLAYED in (a); Step III carries the deficit identity; Step IV's
+two consumption sites cite the corrected census (the (a*, b*)
+digit claim survives the exception TWICE OVER: weight fence +
+x-slot displacement). Consumer verdicts, walked this round:
+(b1)/(b2) SURVIVE (Step IV as repaired; at CE3 the certificate
+digit 12 = binom(3,2) ĉ² π² measured at (a*, b*) = (1, 1), pin
+12 = THETA_2 — attainment holds THROUGH the exception's presence);
+(c) SURVIVES (consumes only the ceiling Y <= B* + 1, never the
+equality census; CE3 measures ShC_j empty above j* = m - 1
+vacuously, X3/X4 measure it live); (d) SURVIVES (no-overflow gives
+Delta = 0 outright, census-free); S3's display SURVIVES (FR5X has
+e2(f2 - t*) = 2 — the exception is dead there); COROLLARY 6.5C
+SURVIVES (same frame); ANNEX-REMARK 6.5' carries its dated
+bracket (the exception transposes with I_{t*} for i_{t*}).
+
+**Clause verification at three frames (fresh instrument, this
+round's isolated re-run BIT-IDENTICAL, md5 b377850b):**
+
+* CE3 (Q2, Phi' = x^3 - 2, D' = 3; e2 = 1, f2 = 2, t* = 1,
+  i_{t*} = 2, delta = 2, E2 = 10; Phi2 = Phi'^2 - 2x^2 Phi' - 8x,
+  m = 3; B* + 1 = 5, j* = 2, (a*, b*) = (1, 1), THETA_2 = 12):
+  e2(f2 - t*) = 1 and 3 i_{t*} = 6 = 2 D' — the k = 3 exception is
+  LIVE and feasibility-tight. Measured ShC_2 = {(1,1): 12,
+  (0,1): -8, (0,0): 160, (2,0): -32}: the -8 at x-slot 0 =
+  3 i_{t*} - 2 D' < a* = 1, v = 3, height 14 = THETA_2 + delta —
+  exactly the displayed exception branch (3, {t*,t*,t*}, 2, 0);
+  the certificate slot (1,1) holds the graded floor digit 12.
+* X3 (FR5X at m = 3; e2 = 2, f2 = 1, t* = 0): e2(f2 - t*) = 2 >= 2
+  — the repaired clause pins the diagonal pair, agreeing with the
+  sealed sentence; measured ShC_1 = {(0,1): 12288} single-slot,
+  pin 61 = THETA_1 (no second Y = B* + 1 trace, as forced).
+* B3 (FAM-B at m = 3; e2 = 1, f2 = 2, t* = 1, i_{t*} = 1, D' = 2):
+  e2(f2 - t*) = 1 but 3 i_{t*} = 3 < 2 D' = 4 — the exception's
+  FEASIBILITY fence bites: no k >= 3 equality branch exists, and
+  the measured second THETA-slot (1,0) is Step IV's stepped
+  content at Y = B* (a division-step trace, not an equality
+  branch). The clause's two gates (e2(f2 - t*) = 1 AND the budget)
+  are each witnessed separately by CE3 vs B3.
+
+**F-2 (GAP, the dated appends' "iff") — corrected at the ripple
+sites; the boxes note's own (b1)/(b2)/S6 sentences were already
+honest.** Independent re-derivation of the failure: (b2) prices
+ONE slot — the certificate slot (a*, b*) — and says nothing about
+other slots of coordinate j*; a floor-height branch at another
+slot can carry the divergence when p | binom(m,2). BP3 (Q3,
+Phi' = x^2 - 3, D' = 2; e2 = 1, f2 = 2, u2 = 3, t* = 1, i_1 = 1,
+a_1 = 1, delta = 1, E2 = 6; Phi2 = Phi'^2 - 3x Phi' - 27, m = 3,
+p = 3 | binom(3,2) = 3; THETA_2 = 7, (a*, b*) = (0, 1)) measures
+ShC_2 = {(0,1): 27, (1,0): 135}: the certificate slot 27 = 3^3
+sits at height 2*3 + 3 = 9 > 7 (the (b2) kill fires exactly), yet
+(1,0) = 135 = 27*5 sits at height 2*3 + 1 = 7 = THETA_2 with
+graded digit 5, a 3-unit: pin(ShC_2) = 7 — attainment ON the
+floor with p | binom(m,2). Against X4 (p = 2 | binom(4,2), pin
+65 > THETA_2 = 61: attainment FAILS), the converse direction is
+genre-dependent both ways. The record of record: attainment on
+the floor IF p does not divide binom(mu2,2); the iff is WITHDRAWN
+(dated bracket at the GENTOW6_PROOF append; PROJECT_STATE #22
+already carries the orchestrator's correction).
+
+**F-3 (MINOR) — LANDED:** Step IV's source census gains its
+k <= 1 lines (k = 0 sits at Y-position B* + 2 e2(f2 - t*) > B*;
+k = 1 reaches Y-position B* only via t = 2 t* - f2 in T and is
+excluded at the x-position by i_t < D' <= 2 i_{t*}).
+
+**F-4 (MINOR) — LANDED:** S4's run-1 disclosure now states the
+B3 display-slot want was WEAKENED (exact value -> valuation +
+graded digit, what the ledger licenses), certificate-slot wants
+untouched.
+
+**CE3 + BP3 ADOPTED as battery rows (this note's row table).**
+Verification before adoption: the verifier's committed fresh
+instrument (verification/openmath/gentow6_boxes_pe1_fresh.py,
+md5 fae8bc99, committed at 3ae577e8, NO import of any sealed
+runner; dual R/E routes + exact-reconstruction third oracle +
+per-coordinate floors) re-ran this round in an isolated /tmp
+scratch: output BIT-IDENTICAL to the committed
+gentow6_boxes_pe1_fresh_output.txt (md5 b377850b), 141 checks /
+0 violations across its eight frames; the CE3 and BP3 vectors
+above are read from that output and the CE3 full-vector hand
+ledger in the passPE1 report matched it slot by slot. Rows of
+record (both at m = 3, both on the e2(f2 - t*) = 1 axis):
+
+    CE3: ShC_2 = {(1,1): 12, (0,1): -8, (0,0): 160, (2,0): -32},
+         pin 12 = THETA_2  [the F-1 exception witness + (b1) live]
+    BP3: ShC_2 = {(0,1): 27, (1,0): 135},
+         pin  7 = THETA_2  [the F-2 converse refuter; (b2) fires]
+
+Sealed artifacts BYTE-FROZEN this round: gentow6_box1_mu3.py
+(c98cb423) / output (0a4cd16f), gentow6_box4_row.py (9d6e16cc) /
+output (2d8d617a), REDs, and the pe1_fresh pair — untouched;
+re-verified by md5 before commit. **Grade after this round: 0/2
+(the repair round does not count toward acceptance; hostile
+passes resume on the repaired text).**
