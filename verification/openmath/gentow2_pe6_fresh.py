@@ -378,7 +378,13 @@ def main():
           'GA3 w == z2 (not z2^2) x2 << u3-dependence, e3 = 2 frame')
     # THETA0 remeasurements + U0 canonical-frame firsts + identity (6)
     t.chk(has('LD1 T0R1 1 0'), 'LD1 theta(0) == z1 (decode pin re-met)')
-    t.chk(has('LD1 U01 1 0'), 'LD1 u(beta_0) == 1 CANONICAL FRAME')
+    # [run-2 disclosed instrument repair — run-1 miss 1/68: the
+    # expected literal was '1 0', copying the GA-frame semantics of
+    # the second (u0 == r2) column; at LP1 z2 = 1 makes that column
+    # non-discriminating (u0 == r2 <=> u0 == 1), actual line '1 1'
+    # (standalone diagnostic, commit 72a3f29). Physics unchanged.]
+    t.chk(has('LD1 U01 1 1'), 'LD1 u(beta_0) == 1 CANONICAL FRAME'
+          ' (second column non-discriminating at z2 = 1)')
     t.chk(has('LD1 IDY 1'), 'LD1 B″(6): u0 = theta0*w^2 closed')
     t.chk(count('GA1 T0R1 0 1') == 2, 'GA1 theta(0) == z2^2 x2')
     t.chk(count('GA1 U01 1 0') == 2, 'GA1 u(beta_0) == 1 x2')
