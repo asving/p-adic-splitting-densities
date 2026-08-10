@@ -1195,3 +1195,51 @@ re-run this round.
 
 Grade after this record: **ACCEPTED 2/2**. Dated appends and
 dated brackets only from here.
+
+### Dated append (2026-08-10, GENTOW6 SUB-BOX unit; pure append on
+### the frozen body, pre-append md5 157b16adc82f6de4c6a0f65f5f8ffe85,
+### 1,197 lines): GENTOW6-BOX-1 CLOSED AT f1 = 1 + GENTOW6-BOX-4
+### DISCHARGED
+
+**GENTOW6-BOX-1 (mu2 >= 3 attainment): CLOSED AT f1 = 1** by
+THEOREM GENTOW-6.5 (GENTOW6_BOXES_2026-08-10.md S2, at that note's
+0/2 attempt grade, hostile arc owed there): the box's k-extraction
+ledger is clause (a) (the Y-ceiling B* + 1 = e2f2(mu2-2) + 2e2t*
++ 1 over every branch, with the unique equality case), and the
+attainment claim is (b1) at the TOP coordinate j* = (mu2-2) +
+floor((2e2t*+1)/(e2f2)) — the height-THETA_{j*} graded digit at
+the certificate slot is binom(mu2,2)*chat_{t*}^2*pi^{2a_{t*}}*
+(wrap unit): attainment on the floor iff p does not divide
+binom(mu2,2), with (b2) the honest cancellation clause when
+p | binom(mu2,2). This box's own parenthetical ("(t*,...,t*),
+coefficient 1 again") is REFUTED: the top branch is the diagonal
+PAIR with coefficient binom(mu2,2), and GENTOW3-PE5's accepted
+FR5X-3 measurement 12288 = 3 * 4096 already carried the law.
+Clause (c) (ShC_j == 0 above j*) and the S3 lower-coordinate
+display absorb obs-1's identically-zero and slack configurations
+(FR5X-3's j = 0 slack derived exactly: (-1 + 3)*2^18 x, graded
+digit killed at p = 2, pin 91). Machine leg sealed GREEN 459/0
+(4 preregistered teeth at exact kill counts; run-1 RED kept +
+disclosed; seal 2ae94ded, verdict a646c7c9; runner md5 c98cb423,
+output 0a4cd16f). NOT delivered: the j < j* classification at
+mu2 >= 3 (displayed genre arithmetic — BOX-3's geography one m
+up), and the f1 >= 2 x mu2 >= 3 compound (ANNEX-REMARK 6.5'
+there, prose only).
+
+**GENTOW6-BOX-4 (the f1 >= 2 x-ful-digit sealed battery row):
+DISCHARGED.** The box's ask — a SEALED BATTERY-grade x-ful-digit
+certificate row, which the PE2/PE3 verifier legs were explicitly
+not — has run: gentow6_box4_row.py (two-commit seal 90b23648,
+preregistered wants + 3 teeth at exact kill counts, dual R/E
+routes + PARI, 40-member perturbation sweep; run-1 RED = one gp
+format literal, kept + disclosed) GREEN 265/0 at FOUR x-ful rows:
+PE2's two frames at battery grade plus the NEW u2 = 11 pair
+(Phi2 = Phi'^2 - 16x^3 and Phi'^2 - 16x^3 - 32x, c_0 = eta and
+1 + eta at Q2, Phi' = x^4 + 2x^2 + 4), certificate digits
+64/64/256/256 at v = 2(a_0 - r*h), pins = THETA_0 = 37/37/47/47
+exactly on the floor, ShC_1 empty at each row, and the
+f1 = 1-evaluation mutant killed at each row. ANNEX-THEOREM
+GENTOW-6.3' (S6.1) thereby loses its "machine-unexercised at
+f1 >= 2 / prose-only" fence at mu2 = 2; its derivation keeps the
+prose grade of this note's arc. Artifacts: runner md5 9d6e16cc,
+output md5 2d8d617a, verdict commit follows this append.

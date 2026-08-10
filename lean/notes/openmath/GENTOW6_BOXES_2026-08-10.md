@@ -2,10 +2,12 @@
 # GENTOW6-BOX-4 (the f1 >= 2 x-ful-digit sealed battery row),
 # 2026-08-10
 
-**STATUS: composed this session; machine legs pending (two-commit
-seals below). Grade 0/2 (attempt; hostile arc owed). Prove-first
-per the standing directive: BOX-1 is attempted as a THEOREM, not
-re-boxed.**
+**STATUS: COMPLETE — both machine legs GREEN (BOX-1: 459/0 with
+teeth 3/2/7/6 exact, S4; BOX-4: 265/0 with teeth 4/4/4 exact, S5;
+both sealed two-commit, both isolated re-runs bit-identical, both
+run-1 REDs kept + disclosed). Grade 0/2 (attempt; hostile arc
+owed). Prove-first per the standing directive: BOX-1 is attempted
+as a THEOREM, not re-boxed — and PROVED at f1 = 1.**
 
 Charge (two legs): (1) GENTOW6-BOX-1 — THEOREM GENTOW-6.3 is
 scoped to mu2 = 2; derive and prove the mu2 >= 3 attainment
@@ -35,8 +37,8 @@ it), gentow3_pe5_fresh.py's committed FR5X values as cross-pins.
 
 | leg | statement | status |
 |---|---|---|
-| (1) BOX-1 | THEOREM GENTOW-6.5 (S2) | PROVED at f1 = 1 (proof below); machine leg S4 |
-| (2) BOX-4 | sealed battery row (S5) | instrument S5; discharge pending the run |
+| (1) BOX-1 | THEOREM GENTOW-6.5 (S2) | PROVED at f1 = 1; machine leg GREEN 459/0 (S4); box CLOSED at f1 = 1 |
+| (2) BOX-4 | sealed battery rows R1-R4 (S5) | RUN GREEN 265/0; box DISCHARGED (S5) |
 
 ## S1. WHAT BOX-1 ACTUALLY ASKS, AND WHAT THE DATA ALREADY SAYS
 
@@ -449,16 +451,52 @@ rows), T-VAL2 (v* - 1 at the certificate slot, 4 rows), T-SLOT
 (mutant b* = 0: the slot (a*, 0) graded read must NOT carry the
 certificate).
 
-RESULTS: [to be filled at the verdict commit, from the artifacts]
+**RESULTS (verdict commit; seal c0fbd1e4 @ 90b23648, run-1 RED
+kept at gentow6_box4_row_output_run1_RED.txt md5 0269e02e): run 2
+GREEN — 265 checks, 0 violations, teeth kill counts EXACT
+(T-F1EVAL 4, T-VAL2 4, T-SLOT 4); isolated re-run BIT-IDENTICAL;
+repaired runner md5 9d6e16cc, output md5 2d8d617a.** Run-1 RED = a
+single gp want-string literal (my want rendered the zero dev slot
+as [0] where gp's Vecrev(0) prints []; the four DEV jobs mismatched
+on that token with every printed coefficient identical), disclosed
+in the docstring; the 24 QCERT + 8 QDEV + 88 QDUAL + 120 QPERS +
+12 teeth + 9 non-DEV GP checks were GREEN already on run 1; no
+prediction changed. Run-2 highlights, each preregistered: the four
+x-ful-digit certificate rows measured EXACTLY the 6.3'(b') display
+— ShC_0 = {(2,1): 64, (0,1): -128} / {(2,1): 64, (0,1): 128} /
+{(2,1): 256, (0,1): -512} / {(2,1): 256, (0,1): 512} with cert
+digits 64/64/256/256 at v = 6/6/8/8 = 2(a_0 - r* h) and pins
+37/37/47/47 = THETA_0 exactly on the floor (R3/R4 the FIRST
+u2 = 11 x-ful rows anywhere); honest DRAIN and ShC_1 empty at all
+four (the above-top face); dev vectors triple-confirmed (own
+route, the committed pe2.dev path, gp divrem); 40 perturbed
+members held mindiff_0 at the floor with mindiff_1 clean; PARI
+carriers {(2,2)} for Phi' and {(4,2)} for all four Phi2 (R3/R4 new
+keys), four nonzero poldiscs; the f1 = 1-evaluation mutant
+(predicting shadow-exactness from 2 i_0 = 2 < D') died at every
+row.
+
+**GENTOW6-BOX-4 DISCHARGE.** The box's ask — a SEALED
+BATTERY-grade x-ful-digit certificate row — has now RUN: sealed
+apparatus (two-commit seal, preregistered wants, teeth, dual
+oracles, perturbation sweeps), four rows, GREEN. ANNEX-THEOREM
+GENTOW-6.3' loses its "machine-unexercised at f1 >= 2 /
+prose-only" fence at mu2 = 2: its (b') display now has
+sealed-battery machine contact at four x-ful digit data on two
+u2 values. What the discharge does NOT claim: 6.3' remains a prose
+derivation at its note's grade (machine contact is evidence, not
+proof), and the f1 >= 2 x mu2 >= 3 compound (ANNEX-REMARK 6.5')
+stays machine-uncontacted — named in S6.
 
 ## S6. RESIDUE + GRADE BOX
 
-* **Delivered (pending machine verdicts):** BOX-1 = THEOREM
-  GENTOW-6.5, PROVED at f1 = 1 (the box's k-extraction ledger =
-  clause (a); the attainment claim = (b1) with the binom(m,2)
-  p-condition the box's own parenthetical missed; obs-1's three
-  configurations = (b1)/(b2)+S3/(c)). BOX-4 = the sealed
-  battery-grade x-ful-digit row, R1-R4.
+* **Delivered:** BOX-1 = THEOREM GENTOW-6.5, PROVED at f1 = 1
+  (the box's k-extraction ledger = clause (a); the attainment
+  claim = (b1) with the binom(m,2) p-condition the box's own
+  parenthetical missed; obs-1's three configurations =
+  (b1)/(b2)+S3/(c)), machine leg GREEN 459/0 at 7 frames — box
+  CLOSED at f1 = 1. BOX-4 = the sealed battery-grade x-ful-digit
+  rows R1-R4, GREEN 265/0 — box DISCHARGED.
 * **NOT delivered / named:** the j < j* lower-coordinate
   classification at mu2 >= 3 (S3 display only — genre arithmetic,
   extends GENTOW6-BOX-3's fence; no new box needed: it is BOX-3's
@@ -468,6 +506,20 @@ RESULTS: [to be filled at the verdict commit, from the artifacts]
 * **Statement fence:** no sealed display of GENTOW6_PROOF is
   edited; this note is a separate instrument + the frozen note
   gains only dated appends.
+
+**Record sentences (no universal quantifiers).** The BOX-1 battery's
+459 checks passed with 0 violations on the seven constructed frames
+named in S4, with the four preregistered kill counts exact; the
+committed PE5 FR5X-3 vector was reproduced bit-identically on both
+routes; the binom(m,2) digits measured 12288, 24576, 48, 12, 972,
+1944, 3240 at the seven top slots, each at its predicted valuation;
+the three p | binom(m,2) rows cancelled in grade and the four
+p-unit rows attained their floors exactly; the six above-top
+coordinates measured empty. The BOX-4 battery's 265 checks passed
+with 0 violations on the four x-ful rows; the four certificate
+digits 64, 64, 256, 256 sat at v = 6, 6, 8, 8 with pins 37, 37,
+47, 47 on the floor; the f1 = 1-evaluation mutant died at each of
+the four rows.
 
 **GRADE: 0/2 (attempt).** Hostile arc owed. Natural PE1 targets:
 Step III's linearity reduction (Ghat_j(F) = Ghat_j(Delta)), Step

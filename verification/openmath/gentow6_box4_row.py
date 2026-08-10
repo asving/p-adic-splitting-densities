@@ -65,6 +65,17 @@ TEETH (kill counts asserted):
  T-SLOT  mutant certificate slot b* = 0 (Y-exponent 2 e2 t* without
    the extraction's +1): slot (2,0)'s graded THETA_0 digit must be
    ZERO while (2,1)'s is nonzero — 4 kills.
+
+RUN-1 RED DISCLOSURE (4 violations = ONE gp want-string literal,
+RED artifact kept at gentow6_box4_row_output_run1_RED.txt md5
+0269e02e; sealed md5 c0fbd1e4 at 90b23648): my
+raw-job want rendered the zero dev slot as [0], but gp's
+Vecrev(0) prints [] — the four DEV_R* jobs mismatched on that
+single token while every printed coefficient was identical to the
+want. Fix: render empty slots as [] in the want string. All 24
+QCERT, 8 QDEV (python + pe2 echo), 88 QDUAL, 120 QPERS, 12 teeth,
+and the 9 non-DEV GP checks (sig carriers + poldiscs) were GREEN
+on run 1; no prediction changed.
 """
 import random
 import gentow6_pe2_fresh as pe2
@@ -108,7 +119,8 @@ def gp_dev(tag, f, want):
         outs.append('Vecrev(d%d)' % s)
     b1.GP_JOBS.append('%s print("%s ", [%s])'
                       % (src, tag, ','.join(outs)))
-    b1.GP_META[tag] = ('raw', str([list(w) if w else [0] for w in want]))
+    # [run-1 fix, disclosed]: gp Vecrev(0) prints [], not [0]
+    b1.GP_META[tag] = ('raw', str([list(w) for w in want]))
 
 def run_row(F):
     name = F.name

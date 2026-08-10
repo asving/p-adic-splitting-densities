@@ -1,0 +1,14 @@
+== row R1 (u2=9) ==
+== row R2 (u2=9) ==
+== row R3 (u2=11) ==
+== row R4 (u2=11) ==
+== GP leg: 9 jobs ==
+== TALLY ==
+  GP     13
+  QCERT  24
+  QDEV   8
+  QDUAL  88
+  QPERS  120
+  TEETH  12
+  teeth kills: [('T-F1EVAL', 4), ('T-SLOT', 4), ('T-VAL2', 4)]
+RESULT: 265 checks, 0 violations, teeth OK
