@@ -408,3 +408,157 @@ findings are adjudicated against that instrument.
 **Tally: 37 REAL (of which 5 wording/pricing grade), 3 ARTIFACT (25, 32, 33).**
 The 37 REAL defects group into four revision blocks; none withdraws a target,
 none reorders the unit list. The blocks strengthen gates and re-scope claims.
+
+### R.1 The conservativity protocol upgrade (§5.3 item 3 REPLACED)
+[F6, F12, F20, F21, F27–F31, F35, F37, F38, F39]
+
+The md5 leg alone proves byte identity of a span, not conservativity. §5.3
+item 3 now reads: a CONSUMPTION CHECK has **three legs**, and the check
+passes only with the three green.
+
+- **(a) STATEMENT leg** (the old leg, tightened). Display "S-unit lemmas ⟹
+  absorbed statement" with the absorbed statement md5-identical per the S-0
+  ledger AND **closed as displayed**: no binder, hypothesis, or fixed-witness
+  clause may prefix the quoted statement beyond what the frozen note's own
+  span carries (kills the "for a fixed admissible carrier C, [statement]"
+  weakening — the quoted bytes match while the theorem shrinks). Absorbed
+  material with NO ledger row (the T1 gauge annexes and T5 pass-record facts
+  live partly in the ledger §S3-3 residue class of `**(`-display lines) is
+  pinned by (frozen-note commit, line range, verbatim quote) — the notes are
+  byte-frozen at pinned commits, so a span pin is exactly as strong as a row.
+  Scope-fixing prose (base-change-free, wild-inclusive, frame declarations)
+  that the absorbed statement reads under gets the same (commit, line) pin in
+  the absorption map.
+- **(b) PROVENANCE leg.** The check displays the enumerated proof inputs of
+  the new lemma AND of the instance construction; the absorbed statement, and
+  the other statements the same S-unit absorbs, must not appear among them
+  (grep-auditable citation list against the ledger labels). This is what the
+  2-clean arc cannot see: hostile passes verify the implication as displayed;
+  only an input audit sees that the implication cites its own conclusion
+  (e.g. an HETOW carrier field discharged by HETOW.A itself rather than by
+  the HETOW-1/2/3/4 bridge suppliers).
+- **(c) DEFINITION-AUDIT leg.** A NEW definition appearing in a consumption
+  check (carrier, frame, touched coordinate, test family) displays its
+  extension against the frozen note's corresponding notion AT the absorbed
+  statement's quantifier generality — a definition that builds in a formerly
+  proved property narrows the subtype and defeats leg (a) silently.
+  "Hypothesis migrated into a definition" and "statement re-bound in a new
+  ambient frame" become NAMED verifier-charge items in each S-unit arc.
+
+Downstream gating (F35): S-4 and S-8 fire on S-1 **ACCEPTED** — arc 2-clean
+AND the seven checks green on the three legs — not on S-1 merely landing.
+Absorption appends (F38): the dated append names exactly the ledger rows (or
+span pins) whose checks passed, with leg record — no umbrella "absorbed"
+wording. Stage-two replacement (F39, §5.4 amended): a per-note formalization
+target drops only at statement granularity, and only where legs (a)+(b)+(c)
+passed; the note's definitions and its upstream suppliers stay in stage-two
+scope unless a separate audit clears them.
+
+### R.2 Statement-skeleton gates on every compression unit (T2's S-5
+treatment generalized) [F1, F2, F5, F7–F11, F14, F16, F17, F18, F19, F34]
+
+- **S-1 gains a gated first commit, S-1a** (inside the same composer session;
+  committed before the body per the survival discipline): the T1 statement
+  skeleton — carrier data enumerated against **three displayed CONCLUSIONS**
+  (the letter recursion z_{i+1} = η_{i+1}·z_i^{−⌊ℓ_i u_{i+1}/e_i⌋}; the wrap
+  identity W(t) = ⌊(f₂−t)·i(u₂)/e₁⌋; gauge-invariance of reads), with the
+  rule that a conclusion may not re-enter as a carrier field — plus the
+  **absorption map at site granularity**: 7 notes → enumerated absorbed
+  sites (GENTOW4 contributes four), one consumption-check target per SITE
+  (so "seven checks" becomes "the absorption map's site count, fixed at
+  S-1a"). The skeleton takes a Codex statement-level adversarial pass before
+  the body composes. This is T2's compose-time-signature insurance applied
+  to T1, which carries the same abstraction hazard at smaller size.
+- **S-2 (T3) pre-compose gate**: display the three absorbed statements
+  side-by-side from the ledger (GENTOW2-B″, HETOW-4's ρ_t telescope,
+  GENTOW-6.4) with the candidate common signature and the three
+  instantiation maps. Withdrawal tooth: if the signature can only cover the
+  three by taking an endpoint equation as an INPUT, T3 is withdrawn as
+  vacuous unification.
+- **S-3 (T4) re-scope**: the unified lemma displays TWO conclusions — the
+  threshold formula Θ_j = (μ₂−j)E₂ + δ at its ledger quantifier generality,
+  and CERT-TOP — or splits into one definition + two lemmas; witness
+  attainment alone discharges neither. Declared re-open trigger (F17): a
+  closure of BOX-1/2/3/4 re-opens T4's arc (that is the price of giving the
+  boxes one home, and it is the intended trade).
+- **S-4 (T5) re-scope**: "light" is withdrawn. S-4 carries a
+  frame-equivalence leg — for each transferred fact (the six-prime w ≠ 1
+  record, GENTOW5's ψ₃^{(w)}(Y) = 0), display the old-frame ⟺ w-inclusive-
+  frame reading — and the rule (F19): the measured w ≠ 1 instances stay
+  unconditional records; a named w-hypothesis may condition only statements
+  whose accepted forms already depend on the dichotomy, and no consumption
+  check may show an absorbed statement GAINING a w-hypothesis.
+- **S-5 (T2 probe) gate spec, sharpened to five named hazards**: (i) a
+  fields-vs-conclusions ledger — each clause of HE7.A's conclusion appears as
+  a conclusion of the master, none as carrier data; (ii) ONE carrier
+  signature fixed before any instance is drafted, instances differing in
+  data only; (iii) test-family witnesses defined over the carrier's own
+  stage ring — no extension ring or preselected root as carrier data (HE6's
+  base-change-free strength is the preservation target, promoted here from
+  SG-1's probe into S-5's gate); (iv) the termination bound depth ≤ log₂n − 2
+  is a conclusion, with a strictly-decreasing measure PROVED, not supplied;
+  (v) coherence laws (residuals/sides/labels commuting with projection,
+  block split, composition — the laws GENTOW4's per-block and HE6R1's
+  widened-box instances actually use) stated as carrier laws, plus a
+  quantifier-prefix display of the master against each of the five absorbed
+  statements. S-6 launches only on an S-5 verdict green on the five.
+
+### R.3 Battery coverage upgrades [F4, F15, F26]
+
+- **S-1 battery**: the recorded first-instances (q=4 letters, η≠1, f₁=2
+  letter-live, μ₂=3, w≠1) are necessary but not sufficient as separate
+  witnesses; the battery must include JOINT frames — at least one frame with
+  f₁ = 2 ∧ w ≠ 1 ∧ live wrap simultaneously — and a preregistered
+  annex→frame coverage map (each absorbed site names the frame(s) exercising
+  its hypothesis geography).
+- **S-2 battery**: the committed HETOW-4 frames (203 checks / 37 dual-route
+  gp jobs) regression-cover one consumer only; add GENTOW2-B″ frames (the
+  PE6 instruments) and GENTOW-6.4 window-cap frames as preregistered legs.
+- **S-8**: SG-4 gets its OWN preregistered leg — the GENTOW2-PE6
+  letters×depth frames (the geography that killed the old B-2) — rather than
+  riding SG-3's menu-reconstruction battery, which never exercises those
+  splits.
+
+### R.4 Claim re-scopes and honest pricing [F3, F13, F17, F22, F23, F24,
+F36, F40]
+
+- **SG-2 payoff split into two declared branches** (F22): (i) WELDMASTER
+  stays kernel-proved from its suppliers → GRTJA/GRTJB/GRTJC remain in
+  stage-two scope as upstream proofs; the cut is downstream INTERFACE only
+  (formalize the consumed faces as the API). (ii) WELDMASTER's M0–M4 faces
+  enter as declared axioms → the ~6,900-line scope cut is real but buys the
+  full axiom-policy process (published-source citation, faithfulness entry,
+  semantic-guardian pass — the process that has caught two false axioms).
+  The blueprint does not pre-select a branch; S-7's probe informs the
+  choice, Asvin makes it.
+- **S-7's verdict re-scoped** (F23, F36): the probe concludes at most
+  "GENHN-4 is / is not re-derivable from WELDMASTER M0–M4 + JD0". A
+  whole-path retirement claim additionally requires a corpus-wide
+  face-citation audit (grep over the 26 texts against the ledger labels) and
+  the R.4 branch decision. S-7 stays schedulable anytime; its conclusion
+  carries this declared conditionality.
+- **SG-3 boundary declaration** (F24): the probe states up front which side
+  of the JD0 boundary the candidate unified form lives on (count-side
+  transport with cocycle-shaped weights, or an enriched letter layer). An
+  outcome that needs JD0's blindness weakened is an automatic SG-3 failure —
+  JD0 is machine-proved (68,523/0).
+- **Pricing corrections** (F3, F13, F40): §2 T1's "ripples through 7 → 1"
+  becomes "the letter-layer PROOF surface goes 7 → 1; the instance maps
+  remain revision sites of mechanical grade, and T5/SG-4 consume T1's frame."
+  §4 T2 prices the interface migration (instance records, projection/
+  coercion lemmas, non-vacuity witnesses move when HE7.A's type generalizes).
+  §5.4's savings are consumption-SITE counts, not formalization-scope
+  counts; upstream proof obligations are priced under the R.4 SG-2 branches.
+
+### R.5 THE S-1 VERDICT
+
+**S-1 (T1 GAUGE-COCYCLE) is CLEARED TO LAUNCH under this revision.** Its
+stated dependency is satisfied: S-0 is BUILT and baseline-green (166
+statements, tripwire armed, commits f8bd49dd + 7e2b38df). Nothing else must
+land first. The clearance is conditional on S-1 running in the revised form:
+(i) S-1a skeleton gate as the first commit (statement skeleton + site-level
+absorption map + Codex statement pass BEFORE the body); (ii) consumption
+checks on the R.1 three-leg protocol, non-row annex material span-pinned per
+R.1(a); (iii) the R.3 joint-frame battery requirement with the preregistered
+annex→frame coverage map. S-4 and S-8 remain gated on S-1 ACCEPTED in the
+R.1 sense (arc 2-clean + legs green), not on S-1 landing.
