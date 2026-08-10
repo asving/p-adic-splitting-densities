@@ -1,0 +1,10 @@
+CHECK C1-rung3: PASS u4=85 e4*E3=84
+CHECK C2-drop: PASS wt4(Phi3)=85 -> slots 84,84 (side=(ehat4/ehat3)E3=84); drop=1
+CHECK C3-top: PASS 170,170,170
+CHECK C4-forward: PASS min(85,84) >= 84
+CHECK C5-identity: PASS Phi3=[48, -32, -32, 32, 24, -8, -8, 0, 1] == dev=[48, -32, -32, 32, 24, -8, -8, 0, 1]
+CHECK C6-polygon: PASS pins={0: 10, 1: 8, 2: 7, 4: 0} lam=5/2 descmin=10
+CHECK C7-rho: PASS rho={1: '0', 2: '1/8', 3: '1/8'} rung2=True
+CHECK C8-margin: PASS B*=43/4 - rho*M=1/2 = 41/4 > M*lam=10
+
+VERDICT: GREEN — 8 checks, 0 violations

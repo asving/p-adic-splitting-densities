@@ -1739,3 +1739,148 @@ no re-run.
 
 Grade after this record: **ACCEPTED 2/2**. Dated appends only
 beyond this line.
+
+## S11. [GT5-r4] CODEX TOWERRAT2 RUN A REPAIRS (2026-08-10 — dated
+## append; acceptance 2/2 stands ANNOTATED, per the batch charter)
+
+Provenance: decorrelated-model adversarial RUN A (record
+CODEX_TOWERRAT2_2026-08-10.md S2 @ eeac45f6; raw log
+verification/openmath/towerrat2_runA_gentow5_output.txt), adjudicated
+5/5 REAL (1 CRITICAL A-F1 + 2 GAP A-F2/A-F3 + 2 display MINOR
+A-F4/A-F5). Every correction below is RE-DERIVED from this note's own
+displays and the committed artifacts, not transcribed from the
+verifier. The note is frozen: these are dated corrections BY
+SUPERSESSION — the superseded sentences are quoted, stay byte-intact
+above, and read as corrected here. Pure-append discipline: the ledger
+at S11.6 carries the per-commit prefix md5s.
+
+### S11.1 [A-F1, CRITICAL] S2.4's converse-rewriting direction
+### CORRECTED; the two-directional grid closure WITHDRAWN; S3(c)
+### Step 2 re-derived one-directionally
+
+**Superseded sentences (quoted).** S2.4's proof close: "The converse
+rewriting (Phi_{j+1} = Phi_j^{l_{j+1}} - weight-E_{j+1} lifts) is
+weight-nondecreasing by the same displays." — FALSE as written. And
+the statement's consequence clause: "Hence 'all slots at weight >= W'
+is the same condition on every grid of the tower (the two-directional
+rewriting closes)" — WITHDRAWN to the one-directional form below.
+
+**The corrected direction (from S2.4's own displays).** The converse
+rewriting replaces the single slot Phi_{j+1} — priced
+(ehat_i/ehat_{j+2})u_{j+2} at an interior rung (j+1 <= i-1), E_i at
+the top rung (j+1 = i) — by the slots {Phi_j^{l_{j+1}},
+khat_t Phi_j^{e_{j+1}t}}, all of which the Phi_j-carry display prices
+at (ehat_i/ehat_{j+1})E_{j+1} exactly. Hence the converse rewriting
+is weight-NONINCREASING: preserved exactly at the top rung (the
+lemma's own worked grid-4 instance Phi_4 = Phi_3^2 - 2^8 Phi_2, three
+slots at 170), and STRICTLY LOWERED at each interior rung by floor
+rung j+1 ((ehat_i/ehat_{j+2})u_{j+2} > (ehat_i/ehat_{j+1})E_{j+1}) —
+the same rung that makes the forward key-part strict. Witness
+instance (S4.1 chain, ehat_i = 2^i, E_3 = 42; committed ladder @
+dc499a49): grid i = 4, interior rung j+1 = 3: Phi_3 = Phi_2^2 -
+16 Phi_1 trades wt_4(Phi_3) = u_4 = 85 for wt_4(Phi_2^2) = 2*2*21 =
+84 and wt_4(16 Phi_1) = 64 + 20 = 84 = (ehat_4/ehat_3)E_3; the drop
+85 -> 84 is floor rung 3's tight margin (u_4 = 85 > e_4 E_3 = 84).
+Machine leg (ISOLATED repair-round re-check, not a sealed battery):
+gentow5_af1_direction_check.py — GREEN, 8 checks 0 violations (C1
+rung, C2 the 85 -> 84 drop, C3 the 170 top-rung preservation, C4
+forward nondecreasing, C5 the exact Z[x] identity + canonical
+Phi_1-adic development of Phi_3, C6 its level-1 polygon/descmin, C7
+the rho-ladder, C8 the margin instance); md5s at S11.6.
+
+**What survives (one-directional).** The lemma's STATEMENT is
+untouched: forward carry moves are wt_i-nondecreasing, so "all slots
+at weight >= W" propagates from a representation to its
+carry-reductions (the canonical direction). One true remnant of the
+withdrawn closure, used below: the SINGLE-STEP converse at the TOP
+rung (expanding only Phi_i = Phi_{i-1}^{l_i} - lifts, i.e. the
+grid-i <-> level-(i-1)-read translation) preserves slot weights
+exactly — that is the top-rung display read backwards, no floor rung
+consumed.
+
+**Consumption walk (the charged sites, re-audited).**
+* S2.4's consumer note ("nondecreasing is all any named consumer
+  uses") — VERIFIED at GENTOW5-A Step B, S3(c) Steps 0/3, S3(d):
+  each consumes forward reduction and/or (SLOT)-exactness. S3(c)
+  Step 3's necessity leg reads the ENTERED level-(i+1) read against
+  grid-(i+2) slots: that translation expands Phi_{i+2} only — the
+  top rung, weight-preserving (the true remnant), not interior
+  descent.
+* S3(c) Step 1 — SURVIVES: Phi_{i+2}^mu's slots at weight >=
+  mu E_{i+2} come from reducing the mu-fold recipe product by
+  FORWARD carries from side terms at E_{i+2} exactly.
+* S3(c) Step 2's parenthetical "(g strictly above, by GENTOW5-D both
+  grids agree on 'above')" — THE BROKEN CONSUMPTION (the deeper
+  reads at level j <= i sit across interior rungs, where the grids
+  do NOT agree). Superseded by the derivation S11.1.1-S11.1.3; the
+  ladder's conclusion stands on the new route.
+
+**S11.1.1 (descent floor).** Fix the ladder rung j and write
+L_k := l_{j+1}...l_k (L_j := 1), lam := (ehat_j/ehat_{j+1})u_{j+1}.
+For j < k <= i+2, clause (b) at index k-1 ((b)@(i+1) is proved
+before (c) inside the same induction step; k-1 <= i is induction
+data) plus (SLOT_{j-1})-exactness give: the level-j polygon of Phi_k
+is one-sided from (0, L_k lam) to (L_k, 0), and since each pin is
+the slot-min of that coefficient, every slot of the canonical
+Phi_j-adic development of Phi_k satisfies
+
+    (slot weight of the coefficient part) + m*lam >= L_k * lam,
+
+with equality at the monic leading slot ("descmin(Phi_k) =
+L_k lam"). Here coefficient parts are grid-(j-1) monomials, priced
+exactly at level-j points; witness instance: Phi_3's level-1 read
+Phi_1^4 - 8x Phi_1^2 - 16 Phi_1 + 16 x^2, pins (10, 8, 7, -, 0),
+descmin = 10 = L_3 lam (re-check C5/C6).
+
+**S11.1.2 (the rho-ladder = the floor chain).** Scale the box's
+weight functional to level j: price*(Phi_k) :=
+(ehat_j/ehat_{k+1})u_{k+1} for j <= k <= i+1 and price*(Phi_{i+2})
+:= (ehat_j/ehat_{i+2})E_{i+2} (wt_{i+2}'s own top price, scaled);
+x, pi, and Phi_k with k < j at their exact dv_j prices. Set rho_k :=
+price*(Phi_k)/L_k - lam. Then rho_j = 0, and
+
+    rho_k < rho_{k+1} (j <= k <= i)  <=>  u_{k+2} > e_{k+2}E_{k+1}
+                                          (floor rung k+1);
+    rho_{i+2} = rho_{i+1}            (E_{i+2} = l_{i+2}u_{i+2}: the
+                                      top price per Phi_j-degree IS
+                                      the deepest interior one).
+
+So rho* := rho_{i+2} = max_k rho_k, consuming floor rungs j+1..i+1 —
+in-datum. Witness (j = 1, entered stage 3): rho = (0, 1/8, 1/8),
+strictness at rung 2 (21 > 20) — re-check C7.
+
+**S11.1.3 (Step 2's aboveness, one-directional).** Let T be a
+grid-(i+2) slot of g (the (c) box: wt_{i+2}(T) >= mu E_{i+2} + 1;
+scaled, wt*(T) >= mu L_{i+2}(lam + rho*) + ehat_j/ehat_{i+2}).
+Descend T to canonical Phi_j-adic form: the lam-priced weight is
+additive on monomial products, each deep factor Phi_k contributes at
+least L_k lam = price*(Phi_k) - L_k rho_k (S11.1.1), and the
+re-reduction of coefficient products to deg < D_j is by grid-j
+FORWARD carries, nondecreasing also under the lam-pricing (the
+grid-j top carry prices Phi_j at lam > E_j by floor rung j,
+in-datum). With deg_j(T) = Sum_k J_k L_k < mu L_{i+2} =: M (from
+deg g < mu D_{i+2}, D_k = L_k D_j):
+
+    descmin(T) >= wt*(T) - Sum_k J_k L_k rho_k
+               >= wt*(T) - rho* M
+               >= M lam + ehat_j/ehat_{i+2}  >  M lam.
+
+By the ultrametric bound (only a LOWER bound on g's side is
+consumed), every Phi_j-adic coefficient of g satisfies
+dv_j(c_m(xi)) > (M - m) lam at xi in P_j: g's level-j pins sit
+STRICTLY ABOVE Phi_{i+2}^mu's side, whose own pins are (M - m) lam
+on the side ((b) + the power multiplicativity of Step 1,
+(SLOT)-exact). The level-j polygon of f = Phi_{i+2}^mu + g therefore
+carries Phi_{i+2}^mu's side and side residual verbatim — the ladder
+rung's exact need; the ascent proceeds as written, and no
+two-directional grid agreement is consumed anywhere in the repaired
+chain. Margin instance at the witness: 43/4 - 1/2 = 41/4 > 10
+(re-check C8).
+
+**Honest residue.** The repaired Step 2 consumes (b)@(i+1) before
+(c)@(i+1) inside the step (the note's stated order), floor rungs
+j..i+1, (SLOT_{j-1}), and the forward direction of LEMMA GENTOW5-D —
+nothing outside the note's own pin stack. A grep audit this round
+("same condition on every grid", "two-directional", "both grids
+agree") finds the withdrawn closure consumed at S3(c) Step 2's
+parenthetical and nowhere else in the body above.
