@@ -15458,3 +15458,26 @@ now); the bi-hourly watchdog revives from this line via
 Workflow({scriptPath: workflows/scripts/box-wave-b20-wf_58636481-058.js,
 resumeFromRunId: "wf_58636481-058"}). If the watchdog's resume also
 dies: stand down, next firing.
+
+**STORM RECOVERY (2026-08-10 ~10:00 UTC)** — the S-0 CANARY COMPLETED
+GREEN through the storm's tail: verification/openmath/
+statement_ledger.py + baseline (1f9e8ae3/f8bd49dd/7e2b38df) — **166
+named statements md5-pinned across the 26-text corpus** (top: HE7 24,
+HE3 16, HE6 13), skips/ambiguities enumerated (4 unlabeled
+deterministically numbered, 4 spans at the 120-line cap flagged, 10
+plain-bullet recaps listed line-by-line), TEETH verified pre-seal
+(single-token change → CHANGED exit 1; whitespace rewrap → tolerated;
+label rename → DELETED exit 1), baseline GREEN 166/166 at HEAD. The
+"a simplification never weakens a statement" tripwire is LIVE — the
+simplification campaign's enforcement layer exists before its first
+compression unit runs. THE HELD RESUME SPENT on canary-green: B20′
+(wf_c693dddd-2ab) = the two remaining pending-set chains — (1)
+GENTOW6-BOXES r1 → passPE2 (the CE3 equality repair + iff re-scope;
+PE2 = the r1 audit + FIRST hostile read of 6.6 and 6.7/6.7C′; fresh
+candidates m′=2, m=6 with p=5 | binom(6,3), a joint 6.5+6.7 frame),
+(2) the Codex collect+run unit (RUN A's CHALLENGE log committed +
+adjudicated; runs B–F foreground-blocking with per-run commits; RUN
+F's S-0 critiques adjudicated against the artifact as built).
+Pipeline confirmed with Asvin this morning: simplification next → the
+site writeup in parallel with the Lean wave; the writable-now E-units
+and S-1 launch after RUN F's plan verdict.
