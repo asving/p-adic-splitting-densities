@@ -46,7 +46,11 @@ P-A8 class degree sums via resultant valuations: v3(Res(g1,Phi2_L)) = 12,
      degree display, dual oracle.
 P-A9 cross-exclusions EXACT: v3(Res(g1,Phi2_C)) = v3(Res(g2,Phi2_C)) = 20
      (per-root 5 = floor, NOT >); v3(Res(B_C,Phi2_L)) = 20 (per-root 5/2);
-     v3(Res(S,Phi2_L)) = 5, v3(Res(S,Phi2_C)) = 5 (sibling AT the floors).
+     v3(Res(S,Phi2_L)) = 5, v3(Res(S,Phi2_C)) = 10 (sibling AT the floors:
+     per-root 5/2 and 5). [run-1 RED disclosed: the seal wrote the S/Phi2_C
+     TOTAL as 5 -- a verifier-side arithmetic slip (per-root 5 x 2 roots =
+     10); hand-traced 27^4 - 243 = 531198 = 2*3^5*..., per-root floor value
+     5 = E2_C/4 EXACTLY as predicted; exclusion verdict unchanged.]
 T-GAUGE (tooth): the eta-blind residual R_naive(T) = sum d_k T^k (w == 0)
      has R_naive(1) = 0 mod 3 while (psi_L^2 psi_C)(1) = 2 != 0; its
      monicization != (T+1)^2(T^2+1): an eta-blind reader breaks EXACTLY here
@@ -397,8 +401,9 @@ check("A9 v3Res(g2,Phi2_C) = 20 (per-root 5 = floor: OUT)",
       resv(g2, Phi2C) == 20)
 check("A9 v3Res(B_C,Phi2_L) = 20 (per-root 5/2: OUT)",
       resv(BC, Phi2L) == 20)
-check("A9 sibling at the floors: v3Res(S,Phi2_L) = 5, v3Res(S,Phi2_C) = 5",
-      resv(S, Phi2L) == 5 and resv(S, Phi2C) == 5)
+check("A9 sibling at the floors: v3Res(S,Phi2_L) = 5 (per-root 5/2), "
+      "v3Res(S,Phi2_C) = 10 (per-root 5)",
+      resv(S, Phi2L) == 5 and resv(S, Phi2C) == 10)
 
 # ============================ LEG B ============================
 print("== LEG B: LEMMA 6.4 + rider codomain at the fresh member ==")

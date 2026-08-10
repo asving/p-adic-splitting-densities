@@ -1,0 +1,66 @@
+== LEG A: the gauge-live tie (eta = 2, f1 = 1) ==
+PASS A0 deg f = 18
+PASS A1 Phi' irreducible over Q3
+PASS A1 Phi2_L irreducible over Q3
+PASS A1 Phi2_C irreducible over Q3
+PASS A2 level-1 hull = (0,26)-(1,20)-(9,0)
+PASS A3 R(Phi2_L) raw = 2T-1, monic = T+1 (w=ceil: j0=1)
+PASS A3 R(Phi2_C) raw d = (2,0,1), monic = T^2+1 (w=floor: j0=0)
+PASS A3 R(g1) monic = T+1
+PASS A3 R(g2) monic = T+1
+PASS A3 R(B_L) raw d = (2,1,1), monic = (T+1)^2
+PASS A3 R(B_C) raw d = (2,0,1), monic = T^2+1
+PASS A4 w-pattern = (0,0,1,1,2)
+PASS A4 monicized R_coh(f) = (T+1)^2(T^2+1), gamma in {1,2}
+PASS A4 raw digits d = gamma*(1,2,1,1,1)
+PASS T-GAUGE naive residual has root 1 while (psiL^2 psiC)(1) = 2 != 0
+PASS T-GAUGE monicized naive != (T+1)^2(T^2+1)
+PASS A5 pins at Phi2_L = (53,37,25,15,5)
+PASS A5 THE TIE at class L: mu2*(L) = 2 = m_L
+PASS A6 pins at Phi2_C = (49,25,5)
+PASS A6 THE TIE at class C: mu2*(C) = 1 = m_C
+PASS A7 factorpadic degrees {2,4,4,8}
+PASS A7 poldisc(f) != 0
+PASS A8 v3Res(g1,Phi2_L) = 12 (per-root 3 > 2.5: IN)
+PASS A8 v3Res(g2,Phi2_L) = 16 (per-root 4 > 2.5: IN)
+PASS A8 v3Res(B_C,Phi2_C) = 48 (per-root 6 > 5: IN)
+PASS A8 class degree sums: 4+4 = D2_L*m_L, 8 = D2_C*m_C
+PASS A9 v3Res(g1,Phi2_C) = 20 (per-root 5 = floor: OUT)
+PASS A9 v3Res(g2,Phi2_C) = 20 (per-root 5 = floor: OUT)
+PASS A9 v3Res(B_C,Phi2_L) = 20 (per-root 5/2: OUT)
+FAIL A9 sibling at the floors: v3Res(S,Phi2_L) = 5, v3Res(S,Phi2_C) = 5
+== LEG B: LEMMA 6.4 + rider codomain at the fresh member ==
+PASS B1 gridL slot-degree map bijective onto 0..19
+PASS B1 gridL above-top count = D2-1-(18 mod D2) = 1
+PASS B2 gridL reconstruction exact
+PASS B3 gridL above-top digits all 0; slot-degree-18 digit = 1
+PASS T-COD2 gridL tampered above-top tuple reconstructs off-degree
+PASS B1 gridC slot-degree map bijective onto 0..23
+PASS B1 gridC above-top count = D2-1-(18 mod D2) = 5
+PASS B2 gridC reconstruction exact
+PASS B3 gridC above-top digits all 0; slot-degree-18 digit = 1
+PASS T-COD2 gridC tampered above-top tuple reconstructs off-degree
+PASS B4 TRI diagonal exact across 36 perturbed members (grid L)
+PASS B5 8 random 3^3-lifts: digits congruent mod 27
+PASS B5 in-window (v<3) valuations equal on the lifts
+PASS B5 below-cap pin p_4 = 5 stable on the lifts (cap 12)
+PASS B5 undercut f + 27*Phi2_L^3: p_3 15 -> 12 = e1e2*N exactly, p_4 = 5 held
+PASS B5 undercut touches only slot (3,0,0): others byte-identical
+PASS B6 c_g = p_mu2* = 25
+== LEG C: gauge-live certificate at the (0, e2f2-1) corner ==
+PASS C5 c=1: Phi2 = Phi'^2-9x irreducible over Q3 (key)
+PASS C2 c=1: honest read DRAIN (C_0 = C_1 = 0)
+PASS C1 c=1: dev(Phi2^2) = Y^4 - 18cx Y^2 + 81c^2 Y + 486c^2
+PASS C3 c=1: Ghat_2 = 1, Ghat_1 = 0
+PASS C3 c=1: Ghat_0 slot (0,1) digit = 81c^2 = 81, other slots 0
+PASS C4 c=1: v = 4 = 2a_t*, unit = c^2 mod 3 (wrap unit 1), height 16+5 = 21 = THETA_0 EXACT
+PASS T-CERTV2 c=1: swapped slot (1,0) empty; v = 3 mutant and height-22 mutant both fail
+PASS C5 c=2: Phi2 = Phi'^2-18x irreducible over Q3 (key)
+PASS C2 c=2: honest read DRAIN (C_0 = C_1 = 0)
+PASS C1 c=2: dev(Phi2^2) = Y^4 - 18cx Y^2 + 81c^2 Y + 486c^2
+PASS C3 c=2: Ghat_2 = 1, Ghat_1 = 0
+PASS C3 c=2: Ghat_0 slot (0,1) digit = 81c^2 = 324, other slots 0
+PASS C4 c=2: v = 4 = 2a_t*, unit = c^2 mod 3 (wrap unit 1), height 16+5 = 21 = THETA_0 EXACT
+PASS T-CERTV2 c=2: swapped slot (1,0) empty; v = 3 mutant and height-22 mutant both fail
+
+=== PE3 FRESH VERDICT: RED -- 61 checks, 1 violations (teeth: T-GAUGE x2, T-COD2 x2, T-CERTV2 x2) ===
