@@ -15688,3 +15688,39 @@ cached resume spent — WI returns cached, the two verifiers re-run.
 RCT Amendment 1 in force (cf28bcef): hard/frontier → CODEX by owner
 directive, observational; T2 + GENH5-DENS flipped; B25 (T3-CODEX +
 SG2-CODEX) HOLDS until the flurry passes and B24 completes.
+
+## B24 FULL FOLD (2026-08-10) — RCT round 1's arcs all at PE1; STORM HOLD
+
+All three PE1s complete (no casualties on the resume; Asvin flags a
+live API storm — B25 and the repair wave HOLD until it passes).
+- **WI (FABLE, hard): CLEAN → 1/2** (884edd2c; level-uniformity
+  confirmed at the charged step; first i=4 letter-live contact).
+- **WFRAME (FABLE, routine): NOT CLEAN 0C/1G/3m, 0/2** (3db65096).
+  F-1 GAP: §4 misstates LP1's Φ′ (GB's x²−2 leaked; sources fix
+  x⁴+2x²+4) — a false datum in the section chartered as the record's
+  single home; values verified correct; ONE-LINE repair. Fresh route:
+  an 8TH PRIME (GF29, u₃=29, no committed key) — four laws live at
+  uncommitted geography, the verdict-level naive-twin kill, a new
+  u₃-discrimination pair.
+- **T1 (CODEX, hard): NOT CLEAN 0C/1G/5m, 0/2** (80246376). F-1 GAP
+  = G-2 CONFIRMED AND SHARPENED: conclusion C3 consumes carrier item
+  9 (R-multiplicativity + residue agreement) as DATA where the
+  corpus derives it only at i=2 via the Φ₂-adic route; 3 of the
+  absorption map's rows conditional on the undischarged level-general
+  check; 14 of 19 rows item-9-free. The ψ^{(w)} slip adjudicated
+  DISPLAY-ONLY (the correct value re-derivable from the note's own
+  C3/DEF W-2; no consumer). Fresh 26/0 incl. a NEW naive-SPLIT defect
+  genre at p=7. Repair path narrow: pin the level-general item-9
+  citation or annotate the three conditional rows.
+
+RCT SNAPSHOT AT PE1 (hard tier, n=1/arm, recorded not inferred):
+FABLE-hard first pass CLEAN; CODEX-hard first pass 1 consumption-GAP
++ 5 minors with the core five-conclusion structure surviving and its
+own fresh-route genre discovered. Both repairable in one round. The
+routine FABLE unit also drew 1 GAP (a data-transcription leak) — no
+arm is slip-free; the bar catches them all.
+
+PENDING (storm hold, priority order): (1) the WFRAME/T1 repair wave
+(one-liner + item-9 pin + minors) → their pass-2s; (2) WI pass 2
+(acceptance attempt at 1/2); (3) B25 = T3-CODEX + SG2-CODEX
+compositions. Watchdog revives from this line.
