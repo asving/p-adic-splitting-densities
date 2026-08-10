@@ -1,0 +1,92 @@
+== LEG CS-A (p=2, (2,2)-stage u2=7): the (c)-STRESS ==
+  ok: A-KEY Phi2 = Phi1^4-8x*Phi1^2-128 deg 8 
+  ok: A-N1 n1hat(7)=(3,1)->8x 
+  ok: A-N1 n1hat(14)=(7,0)->2^7 
+  ok: A-N2 n2hat(57)=2^12*x*Phi1 
+  ok: A-N3 n3hat(229)=2^21*x*Phi2 
+  ok: A-F16 deg 16 
+  ok: A-F32' deg 32 
+  ok: A-FLOOR u2=7>4 slack 
+  ok: A-FLOOR u3=57>56 tight 
+  ok: A-FLOOR u4=229>228 tight 
+  ok: A-DEV f16 Phi1-dev == hand-derived 7-term display 
+  ok: A-PINS [28,25,23,inf,14,12,9,inf,0] [Fraction(28, 1), Fraction(25, 1), Fraction(23, 1), 'inf', Fraction(14, 1), Fraction(12, 1), Fraction(9, 1), 'inf', Fraction(0, 1)]
+  ok: A-SIDE one side (nothing below chord) 
+  ok: A-SUPP on-chord support == {0,4,8} [0, 4, 8]
+  ok: A-RESIDUAL digits (j=8,4,0)=(1,1,1) -> y^4+y^2+1 == psi2^2 mod 2 (residual = (y^2+y+1)^2 in F_2)
+  ok: A-PSISQ (y^2+y+1)^2 mod 2 == y^4+y^2+1 
+  ok: A-BOX wt2(2^12 x Phi1) = 48+2+7 = 57 == 2*E2+1 
+  ok: A-OLD f16@Phi2 dev == (-2^12xPhi1, 0, 1) 
+  ok: A-OLD pins [57, inf, 0] (dv_2) 
+  ok: A-OLD residual degree (2-0)/e3 = 1 != 2 = deg psi3^mu (old clause killed; = forces e3f3=1) 
+  ok: T-A1 f16m == Phi1^2*(Phi1^2-8x)*(Phi1^4-8xPhi1^2-256) EXACT 
+  ok: T-A1 rem(f16m, Phi1) == 0 
+  ok: T-A1 box slot wt = 4*14 = 56 == 2E2 (even, gcd proviso violated) 
+  ok: T-A1 Res(f16m, Phi1) == 0 
+  ok: T-A2 f16b dev C_0 == 0 (Phi1 | f16b; full-side read collapses) 
+  ok: T-A2 offending slot wt2(2^13 x^2) = 52+4 = 56 < 57 (box FAILS) 
+  ok: T-A2 Res(f16b, Phi1) == 0 
+  ok: A-RES Res(Phi2,x) v2 == 4 (v2=4)
+  ok: A-RES Res(Phi2,Phi1) v2 == 14 (v2=14)
+  ok: A-RES Res(f16,x) v2 == 8 (v2=8)
+  ok: A-RES Res(f16,Phi1) v2 == 28 (v2=28)
+  ok: A-RES Res(f16,Phi2) v2 == 114 (v2=114)
+  ok: A-RES Res(f32',x) v2 == 16 (v2=16)
+  ok: A-RES Res(f32',Phi1) v2 == 56 (v2=56)
+  ok: A-RES Res(f32',Phi2) v2 == 228 (v2=228)
+  ok: A-RES Res(f32',Phi3) v2 == 458 (v2=458)
+== LEG CS-B (p=3, content-live residual) ==
+  ok: B-PSI psi2=y^2-y-1 rootless in F_3 
+  ok: B-N1 n1hat(5)=(2,1)->9x; n1hat(10)=(5,0)->3^5 
+  ok: B-N2 n2hat(41)=3^9*Phi1 (2m+5b=41 -> b=1,m=18; n1hat(18)=(9,0)) 
+  ok: B-F16 deg 16 
+  ok: B-FLOOR u2=5>4; u3=41=2*20+1>40 tight 
+  ok: B-DEV f16_3 Phi1-dev == hand-derived display 
+  ok: B-PINS [20,18,15,inf,10,8,5,inf,0] [Fraction(20, 1), Fraction(18, 1), Fraction(15, 1), 'inf', Fraction(10, 1), Fraction(8, 1), Fraction(5, 1), 'inf', Fraction(0, 1)]
+  ok: B-SIDE one side 
+  ok: B-SUPP on-chord support == {0,2,4,6,8} (ALL lattice slots) [0, 2, 4, 6, 8]
+  ok: B-DIGITS (j=8,6,4,2,0) == (1,1,2,2,1) [1, 1, 2, 2, 1]
+  ok: B-PSISQ (y^2-y-1)^2 mod 3 == y^4+y^3+2y^2+2y+1 == residual (psi2^2=[1, 2, 2, 1, 1])
+  ok: B-BOX wt2(3^9 Phi1) = 36+5 = 41 == 2*E2+1 (E2=20) 
+  ok: B-RES Res(Phi2,x) v3 == 4 (v3=4)
+  ok: B-RES Res(Phi2,Phi1) v3 == 10 (v3=10)
+  ok: B-RES Res(f16_3,x) v3 == 8 (v3=8)
+  ok: B-RES Res(f16_3,Phi1) v3 == 20 (v3=20)
+  ok: B-RES Res(f16_3,Phi2) v3 == 82 (v3=82)
+== PARI LEG ==
+PA-Phi2 nfactors=1 deg1=8
+PA-Phi2 nprimes=1 e=4 f=2
+PA-Phi2 ladder=[2, 7]
+PA-f16 nfactors=1 deg1=16
+PA-f16 nprimes=1 e=8 f=2
+PA-f16 ladder=[4, 14, 57]
+PA-f32p nfactors=1 deg1=32
+PA-f32p nprimes=1 e=16 f=2
+PA-f32p ladder=[8, 28, 114, 229]
+PB-Phi2 nfactors=1 deg1=8
+PB-Phi2 nprimes=1 e=4 f=2
+PB-Phi2 ladder=[2, 5]
+PB-f16 nfactors=1 deg1=16
+PB-f16 nprimes=1 e=8 f=2
+PB-f16 ladder=[4, 10, 41]
+TA1 nfactors=4 degs=[2, 4, 4, 4]
+TA2 nfactors=3 degs=[2, 6, 8]
+
+  ok: PARI PA-Phi2 nfactors=1 deg1=8 
+  ok: PARI PA-Phi2 nprimes=1 e=4 f=2 
+  ok: PARI PA-Phi2 ladder=[2, 7] 
+  ok: PARI PA-f16 nfactors=1 deg1=16 
+  ok: PARI PA-f16 nprimes=1 e=8 f=2 
+  ok: PARI PA-f16 ladder=[4, 14, 57] 
+  ok: PARI PA-f32p nfactors=1 deg1=32 
+  ok: PARI PA-f32p nprimes=1 e=16 f=2 
+  ok: PARI PA-f32p ladder=[8, 28, 114, 229] 
+  ok: PARI PB-Phi2 nfactors=1 deg1=8 
+  ok: PARI PB-Phi2 nprimes=1 e=4 f=2 
+  ok: PARI PB-Phi2 ladder=[2, 5] 
+  ok: PARI PB-f16 nfactors=1 deg1=16 
+  ok: PARI PB-f16 nprimes=1 e=8 f=2 
+  ok: PARI PB-f16 ladder=[4, 10, 41] 
+  ok: PARI TA1 f16m splits (nfactors>1) 
+  ok: PARI TA2 f16b splits (nfactors>1) 
+== PE4 FRESH VERDICT: 70 checks, 0 violations ==
