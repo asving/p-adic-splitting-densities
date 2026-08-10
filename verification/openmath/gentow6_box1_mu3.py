@@ -87,6 +87,32 @@ TEETH (mutant wants that MUST be killed; kill counts asserted):
  T-VAL   v* - 1 at the top slot — 7 kills (one per frame).
  T-TOPZ  "ShC_{j*+1} != 0" — 6 kills (every frame with
    j* + 1 < mu2).
+
+RUN-1 RED DISCLOSURE (3 violations, ALL instrument literals, RED
+artifact kept at gentow6_box1_mu3_output_run1_RED.txt md5 a0fb948d,
+sealed instrument md5 78ac4e82 at commit 2ae94ded; NO theorem-facing
+prediction changed — the certificate slot (0,1) measured 12 EXACT at
+B3, v/graded/pin/TOP0/DUAL/FLOOR all GREEN on run 1):
+ (1) B3 (1,0)@j2 measured 40 = -8 + 48, not my exact-value want -8:
+   at e2(f2 - t*) = 1 (e2 = 1, t* = f2 - 1) a division step lowers
+   Y by ONE, i.e. stays INSIDE the coordinate band — the top
+   branch's stepped content (+48x, v = 4, height 9) lands on the
+   SAME slot as the triple branch (-8x, v = 3, height 7 = THETA_2).
+   Hand-traced: graded height-7 digit = -1 (nonzero, the triple
+   alone), v_2(40) = 3 — exactly the ledger's claim; only the
+   exact-VALUE want at that display slot was wrong (the same
+   e2(f2-t*) = 1 equality case the proof's Step IV fences for
+   multi-extractions). Want corrected to (v = 3, graded-7 nonzero);
+   the certificate slot want stays exact 12.
+ (2)+(3) PD_A53/PD_P35 poldisc = 0: the disc-checked row drew
+   j' >= 2, so g = c p^50 x^alpha Phi2^{j'} shares the factor
+   Phi2^{min(j',2)}... shares Phi2 with f = Phi2^m + g, a repeated
+   factor by construction — poldisc 0 is CORRECT for that member;
+   my job pinned the wrong row. Fixed: the disc row is now the
+   dedicated j' = 0 perturbation (no common factor), which is what
+   P-PARI's separable-member intent was. mindiff/floor checks on
+   the j' >= 1 rows were and stay GREEN (division facts need no
+   separability).
 """
 import subprocess, random
 
@@ -286,13 +312,17 @@ assert (X3.delta, A53.delta, B3.delta, P33.delta) == (9, 1, 1, 1)
 # (frame, j*, top slot dict want, v* want, graded-THETA nonzero want,
 #  mutant-m graded-nonzero want [for T-COEF at cancel rows])
 TOP = [
-    (X3, 1, {(0, 1): 12288}, 12, True),
-    (X4, 2, {(0, 1): 24576}, 13, False),
-    (A53, 1, {(0, 1): 48}, 4, True),
-    (B3, 2, {(0, 1): 12, (1, 0): -8}, 2, True),
-    (P33, 1, {(0, 1): 972}, 5, False),
-    (P34, 2, {(0, 1): 1944}, 5, False),
-    (P35, 3, {(0, 1): 3240}, 4, True),
+    (X3, 1, {(0, 1): 12288}, 12, True, []),
+    (X4, 2, {(0, 1): 24576}, 13, False, []),
+    (A53, 1, {(0, 1): 48}, 4, True, []),
+    # B3 [run-1 corrected want, disclosed above]: cert slot exact 12;
+    # (1,0) = triple branch -8 (graded height-7) + within-band
+    # stepped content at height 9: spec (slot, v want, graded-THETA
+    # nonzero want)
+    (B3, 2, {(0, 1): 12}, 2, True, [((1, 0), 3, True)]),
+    (P33, 1, {(0, 1): 972}, 5, False, []),
+    (P34, 2, {(0, 1): 1944}, 5, False, []),
+    (P35, 3, {(0, 1): 3240}, 4, True, []),
 ]
 # extra exact lower-coordinate wants (S3 displays; binomial-key
 # genres are fully weight-exact so the assembly is the whole value)
@@ -351,7 +381,7 @@ def resolve_gp():
 # ---------- the run ----------------------------------------------------
 random.seed(20260810)
 
-def run_frame(F, jstar, topwant, vstar, graded_want):
+def run_frame(F, jstar, topwant, vstar, graded_want, extra_slots):
     name = F.name
     print('== frame %s (p=%d mu2=%d j*=%d) ==' % (name, F.p, F.mu2, jstar))
     f = ppow(F.PHI2, F.mu2)
@@ -364,8 +394,19 @@ def run_frame(F, jstar, topwant, vstar, graded_want):
             '%s route R != E at j=%d: %s vs %s'
             % (name, j, F.slotdict(sR[j]), F.slotdict(sE[j])))
     top = F.slotdict(sR[jstar])
-    chk('TOPD', top == topwant, '%s ShC_%d = %s want %s'
-        % (name, jstar, top, topwant))
+    want_keys = set(topwant) | set(s for (s, _, _) in extra_slots)
+    chk('TOPD', set(top) == want_keys and
+        all(top.get(s) == topwant[s] for s in topwant),
+        '%s ShC_%d = %s want %s on %s' % (name, jstar, top, topwant,
+                                          sorted(want_keys)))
+    for (s, vw, gw) in extra_slots:
+        cx = top.get(s, 0)
+        chk('TOPD', cx != 0 and vp(cx, F.p) == vw,
+            '%s slot %s v = %s want %d'
+            % (name, s, vp(cx, F.p) if cx else None, vw))
+        gx = F.graded_nonzero(sR[jstar], s[0], s[1], F.theta(jstar))
+        chk('TOPD', gx == gw, '%s slot %s graded THETA = %s want %s'
+            % (name, s, gx, gw))
     (a0, b0) = (0, 1)
     c0 = top.get((a0, b0), 0)
     chk('TOPV', c0 != 0 and vp(c0, F.p) == vstar,
@@ -405,14 +446,15 @@ def run_frame(F, jstar, topwant, vstar, graded_want):
             and selfmd[jstar] > F.theta(jstar),
             '%s cancel row pin_%d = %s not > THETA %d'
             % (name, jstar, selfmd[jstar], F.theta(jstar)))
-    # perturbation persistence rows
+    # perturbation persistence rows (row 0 pinned to j' = 0: the
+    # separable disc-checked member — run-1 fix, disclosed)
     first = True
     for r in range(4):
         c = random.randrange(1, F.p ** 6)
         if c % F.p == 0:
             c += 1
         alpha = random.randrange(F.D2)
-        jp = random.randrange(F.mu2)
+        jp = 0 if r == 0 else random.randrange(F.mu2)
         g = pscale(pmul([0] * alpha + [1], ppow(F.PHI2, jp)),
                    c * F.p ** 50)
         fp = padd(list(f), g)

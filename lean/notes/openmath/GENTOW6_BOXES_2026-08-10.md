@@ -368,7 +368,39 @@ P34 (4 a 3-unit vs 6 = 0)), T-VAL (v* - 1 mutant at the four
 attainment frames), T-TOPZ (mutant "content above j*" at the six
 frames with j* < mu2 - 1).
 
-RESULTS: [to be filled at the verdict commit, from the artifacts]
+**RESULTS (verdict commit; seal 78ac4e82 @ 2ae94ded, run-1 RED
+kept at gentow6_box1_mu3_output_run1_RED.txt md5 a0fb948d): run 2
+GREEN — 459 checks, 0 violations, teeth kill counts EXACT
+(T-ALLM 3, T-COEF 2, T-VAL 7, T-TOPZ 6); isolated re-run
+BIT-IDENTICAL (fresh /tmp scratch); repaired runner md5 c98cb423,
+output md5 0a4cd16f.** Run-1 RED = 3 INSTRUMENT literals, all
+hand-traced before repair and disclosed in the runner docstring, NO
+theorem-facing want changed: (i) my B3 display-slot want claimed
+the value at (1,0)@j2 was the triple branch -8 EXACTLY; measured
+40 = -8 + 48 — at e2(f2 - t*) = 1 a division step lowers Y by one
+and stays INSIDE the coordinate band, so the top branch's stepped
+content (+48x, v = 4, height 9) shares the slot; the graded
+height-7 = THETA_2 digit is -1 (the triple alone) and v_2(40) = 3,
+both exactly the ledger's claim — the corrected want (v = 3,
+graded nonzero) is what the ledger licenses, and the CERTIFICATE
+slot (0,1) measured 12 exact on run 1 already; (ii)+(iii) the two
+poldisc-0 rows had drawn j' >= 2 perturbations (Phi2 a repeated
+factor by construction — poldisc 0 is correct there); the disc row
+is now the dedicated j' = 0 member. Run-2 highlights, each
+preregistered: the committed PE5 FR5X-3 vector reproduced
+bit-exactly on both routes; X4's top slot 24576 with v = 13 (the
+p = 2 | binom(4,2) cancellation, pin 65 = THETA_2 + e1e2); A53's
+48 = 3 * 16 at pin 21; B3's certificate 12 = 3 * 4 at pin 7 with
+the second THETA slot (1,0) graded -1; P33/P34's odd-p
+cancellations (972 = 4*3^5, 1944 = 8*3^5: graded 21-digit zero,
+pins 25) vs P35's return of attainment (3240, v = 4, pin
+21 = THETA_3); P33's j0 attained at 31 with value 11664 = 2^4*3^6
+(the S3 assembly -1+3 = 2 a 3-unit) while A53/X3's j0 cancelled at
+p = 2 (128/524288, pins 35/91); every ShC_j above j* empty at the
+six frames carrying one; routes R and E slot-identical at 125
+coordinate comparisons; floors held at 125 rows; 128 persistence
+checks on 28 perturbed members; 11 PARI jobs GREEN (carriers
+{(4,1)}/{(4,1)}/{(2,2)}/{(4,1)}, four nonzero poldiscs).
 
 ## S5. BOX-4 — THE SEALED BATTERY-GRADE x-FUL-DIGIT CERTIFICATE ROW
 ## (gentow6_box4_row.py, two-commit seal)

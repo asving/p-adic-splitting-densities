@@ -1,0 +1,23 @@
+== frame X3 (p=2 mu2=3 j*=1) ==
+== frame X4 (p=2 mu2=4 j*=2) ==
+== frame A53 (p=2 mu2=3 j*=1) ==
+== frame B3 (p=2 mu2=3 j*=2) ==
+== frame P33 (p=3 mu2=3 j*=1) ==
+== frame P34 (p=3 mu2=4 j*=2) ==
+== frame P35 (p=3 mu2=5 j*=3) ==
+== GP leg: 11 jobs ==
+== TALLY ==
+  DUAL   125
+  FLOOR  125
+  GP     11
+  GRAD   7
+  PERS   128
+  PIN    7
+  SELF   7
+  TEETH  18
+  TOP0   6
+  TOPD   9
+  TOPV   7
+  XTRA   9
+  teeth kills: [('T-ALLM', 3), ('T-COEF', 2), ('T-TOPZ', 6), ('T-VAL', 7)]
+RESULT: 459 checks, 0 violations, teeth OK
