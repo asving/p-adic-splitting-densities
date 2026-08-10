@@ -15865,3 +15865,19 @@ with machine-plan and honesty requirements; runner detached, output
 Fable API's return, priority order: TIGHTNESS CENSUS, then T1
 r1→PE2 / WI PE2 / WFRAME PE2 / T3, then the definition-audit unit.
 Asvin back in the morning.
+
+**X-LEMMA ATTEMPT 1 COLLECTED (22:53 watchdog)** — the Codex run
+completed at 21:29 (6m21s, 45,614 B): **OUTCOME: PARTIAL** — X(ii)
+(the additive action T ↦ T+s coefficient identity) delivered WITH
+verification frames; X(i) (perimeter re-instantiation) blocked
+honestly: the pasted material lacks executable definitions of the
+[ILN]† domain predicate and the scoring predicate (the M3/W-9
+innards were cited-not-pasted in the SG2-derived brief). Raw output
++ brief committed (verification/openmath/xlemma_attempt1_*).
+FOLLOW-UP QUEUED: attempt 2's brief = attempt 1's + the M3/W-9
+scoring-predicate sections pasted verbatim (mechanical assembly);
+plus a Fable adjudication of the X(ii) half (statement fidelity +
+implement the verification frames) when capacity returns. Watchdog
+resume of B25 spent at 22:54 (third attempt; the 21:15 one died
+instantly — if this dies too, skip a full cycle per the hard
+stand-down rule).
