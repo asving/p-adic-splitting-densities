@@ -1333,3 +1333,52 @@ even if all positive tests pass.
    gauge-cocycle lemma and is not proved here.
 
 ---- END VERBATIM COMPOSED TEXT ----
+
+---- TECH VERDICT (commit 2 of 2; from artifacts only) ----
+
+**Sealed run record (2026-08-10).** Instrument `t1_gauge_checks.py`
+(sealed @ 921a8547) run once; artifacts
+`verification/openmath/t1_gauge_checks_output.txt`. **85 checks,
+1 violation, exit 1 — VERDICT: RED, kept with diagnosis.**
+
+**The one red row is the preregistered-expected one.** P-J2: the
+composed note's M2 predicts ψ^{(w)} = y² + ωy + ω at the F4-JOINT
+quadratic (ψ = y² + y + ω, w = ω); the instrument computes
+w^f·ψ(y/w) per the note's OWN definition and gets y² + ωy + 1 —
+exactly tech gap G-1, now machine-confirmed. The invariance CLAUSE
+survives (P-J2b green: the computed ψ^{(w)} is irreducible, matching
+ψ's factor pattern). No other row went red.
+
+**Green rows (enumerated by section).** SEC-A: 20/20 (wrap ∈ {0,1},
+n̂-product identity, C5 Q-bookkeeping at a,b ∈ [0,100]; telescope
+dual-route s ≤ 20; ϑ_{1,s} exponent law — at the 4 (e₁,h) frames
+(2,1),(3,1),(4,3),(5,2)). SEC-B F4-JOINT quadratic: every M2 value
+except P-J2 confirmed (W(t), ϑ, the three (LIFT) outputs with
+exact-height + distinct x-support < D′, corrected/naive digits, both
+mult residuals with the predicted factor patterns). SEC-C μ=3
+three-digit: ϑ=(1,1,ω,ω), Θ=(ω²,ω²,1), digits (1,ω,ω), B-units
+(ω,ω,ω²), canonical coeffs (ω,ω²,1), canonical residual =
+(y+ω)³ = w³ψ(y/w), both naive comparison residuals + root multisets.
+SEC-D LP/LD: the letter formula (η₂ = z₁ = ω at z₂ = 1), the lattice
+split (1,−5,2) = 1·(−9,0,2)+5·(2,−1,0), ϑ_{2,2} = ω², Θ = (ω, 1),
+LD1/LD2 residuals + irreducibility. SEC-E: teeth T-1..T-4 each FIRED
+with the composed signatures (T-2 confirmed sigma-blind: wrong
+residual y²+y+ω² irreducible, caught by coefficient comparison only;
+T-3 read at the note's own C2-recursion base ϑ₀=ϑ₁=1, under which
+Codex's predicted signature ϑ′₂ = 1, vector (1,1,1,ω) is exact).
+SEC-F PARI dual routes (factorpadic 20/30/40 stability + factor/Q →
+nfinit → idealprimedec): σ(X naive) = {(4,1)}, σ(X corr) = {(2,2)},
+σ(FRG naive) = {(4,1)}, σ(FRG corr) = {(2,2)}; nfeltval rows
+[[2,2,3]] on both corrected keys (v(Φ′) = u₂ = 3); the X slot-poly
+finite leg (β = 2η₂ kills Z²+2Z+2; naive (Z+1)² degenerate). SEC-G:
+committed `gentow4_pe1_fresh.py` re-run UNMODIFIED — exit 0,
+"TOTAL: 93 checks, 0 violations", VERDICT: GREEN (discharges the
+composed FR-G member preregistrations: corrected μ₂* = 2, naive
+μ₂* = 0, separator rows).
+
+**Standing for the arc.** The RED is a single M2 display-value defect
+in the composed note (an exact-value slip, invariance clause
+unaffected); the LEMMA's conclusions C1–C5 took no machine hit on any
+scored row. Grade stays attempt 0/2; G-1 (now machine-adjudicated),
+G-2, G-3 are the recorded gaps for the hostile arc + repair pipeline.
+Per the RCT protocol the tech fixed nothing.

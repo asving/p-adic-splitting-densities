@@ -1,0 +1,17 @@
+T1 GAUGE-COCYCLE sealed instrument (CODEX-arm machine plan)
+SEC-A: wrap / telescope / Q-bookkeeping / vartheta exponent
+  SEC-A done
+SEC-B: F4-JOINT quadratic (f1=2, eta=W, w=W, live wrap)
+  VIOLATION J2: computed psi^(w) [1, 2, 1] != preregistered [2, 2, 1] (tech G-1: computed is y^2+Wy+1)
+SEC-C: F4-JOINT mu=3 three-digit test
+SEC-D: LP/LD letter formula + lattice cocycle
+SEC-E: the four planted teeth (each must FIRE)
+SEC-F: PARI dual routes on X and FR-G keys
+  gp stderr tail:   ***   Warning: new stack size = 268435456 (256.000 Mbytes).
+
+SEC-G: committed-instrument regression (gentow4_pe1_fresh.py, UNMODIFIED)
+  regression wall 1.0s exit 0
+
+TOTAL: 85 checks, 1 violations
+  RED ROW: J2: computed psi^(w) [1, 2, 1] != preregistered [2, 2, 1] (tech G-1: computed is y^2+Wy+1)
+VERDICT: RED
