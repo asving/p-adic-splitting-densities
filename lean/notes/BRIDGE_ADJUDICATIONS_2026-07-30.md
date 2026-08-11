@@ -15881,3 +15881,20 @@ implement the verification frames) when capacity returns. Watchdog
 resume of B25 spent at 22:54 (third attempt; the 21:15 one died
 instantly — if this dies too, skip a full cycle per the hard
 stand-down rule).
+
+**MORNING DISPATCH (2026-08-11 ~10:15, Asvin's Amendment 3 regime)** —
+API back; running now: (1) the B25 resume, attempt 5 (T1 r1→PE2, WI
+PE2 acceptance, WFRAME PE2, T3-CODEX; SG2 cached); (2) the TIGHTNESS
+CENSUS (Asvin's top directive — every fenced/open/conditional item
+classified in-cone/out with discharge routes); (3) X-LEMMA ATTEMPT 2
+(external, 77KB brief = attempt 1 + the [ILN]† S0 class + (M3)
+scored-stratum definitions pasted; X(ii) already delivered at attempt
+1); (4) NEW under Amendment 3: the EXTREME-DETAIL LEAN SCOPING run
+(external, 85KB brief = the anchor + gates + Interface + MontesV2
+files verbatim + the S-0 ledger): slice 1 = the RealInstanceAt gates
+unit replacing the faithful placeholder; slice 2 = the ~15 chain-head
+statement fan-out — every unit with Lean-syntax sketches, forced new
+definitions, dependencies, mathlib surface, difficulty tags, and a
+TRANSLATION SPEC detailed enough for lower-powered agents (the
+Opus/Sonnet translation trial follows on its output). Logs:
+/tmp/xlemma2_output.log, /tmp/leanscope_output.log.
