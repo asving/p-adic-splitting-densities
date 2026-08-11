@@ -148,3 +148,26 @@ the X-LEMMA (the universal stage-recentering lemma, SG-2's named
 price) is EXACTLY the described case (large simplification ~6,900
 lines; matches GENHN-BOX-2's own wanted display = fits intuition) —
 its proof attempt dispatches to Codex immediately.
+
+## Amendment 3 (2026-08-11 morning, owner directive)
+
+Asvin, verbatim intent: "For a while, lets use codex (at the highest
+setting) since the api is unsteady. We can set it on the hardest math
+tasks like wholesale simplification attempts or scoping the blueprint
+in extreme detail in order to be formalized. We can also try using
+lower powered claude agents (opus or even sonnet?) for the final steps
+of translating from math to lean once its been detailed enough."
+
+- HARDEST-TIER work → CODEX at the highest available setting
+  (gpt-5.6-sol, model_reasoning_effort=high; the -pro model remains
+  unavailable on this account): wholesale simplification attempts,
+  extreme-detail Lean-blueprint scoping, the X-lemma class of proofs.
+- The MATH→LEAN TRANSLATION layer (implementing Lean units from
+  extreme-detail specs) → LOWER-POWERED CLAUDE AGENTS: trial Opus
+  first, Sonnet on the most mechanical units (the Agent/workflow
+  model-override parameter); each translated unit still gates on
+  compile + the statement-fidelity check vs its spec; outcomes
+  recorded in §6 with arm labels CODEX-HIGH / OPUS-XLATE /
+  SONNET-XLATE.
+- Fable stays on: orchestration, adjudication, repairs (per the
+  standing fixes-stay rule), hostile passes when the API is steady.
