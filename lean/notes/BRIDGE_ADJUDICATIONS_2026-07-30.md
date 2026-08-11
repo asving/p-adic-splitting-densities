@@ -15898,3 +15898,27 @@ definitions, dependencies, mathlib surface, difficulty tags, and a
 TRANSLATION SPEC detailed enough for lower-powered agents (the
 Opus/Sonnet translation trial follows on its output). Logs:
 /tmp/xlemma2_output.log, /tmp/leanscope_output.log.
+
+**AMENDMENT 4 REGIME LIVE (2026-08-11 ~10:30)** — NO Fable subagents
+(orchestrator only); the B25 Fable wave STOPPED on directive. THE
+TIGHTNESS CENSUS DELIVERED FIRST (docs/TIGHTNESS_CENSUS_2026-08-11.md,
+5f824d82): 33 rows + 5 Lean stage-two. **HEADLINE: ZERO in-cone items
+are unproven-and-unattempted mathematics.** IN-CONE (5): DRAIN-N4 (the
+GENIND-C2 annex at 1/2 — the ONLY conditional on the full-density
+tie), WI-LEMMA (1/2), FGMN-MAIN (cite VERIFIED), FGMN-WELD (GRTJC's
+Thm 4.2/4.8/Cor 2.7 cites UNVERIFIED — PDF-verify via the S6.1
+two-leg method), JD0-BAR (sub-bar process grade — needs its 2-clean
+arc or owner sign-off on the 68,523/0 record). SUSPECT (8): the
+sub-box family (S8.1 + P-BINOM + 6.5′-compound), the WELD-FACE-AUDIT
+(revision R.4, never run), JD0-BOX-2, four JB no-leg rows, W2-OPEN-1/2,
+(DMULT-s). OUT (16) incl. the X-lemma (an SG-2 bet, not owed),
+htameFE (palindromy dropped per the statement revision), T2-T4.
+TOP-5 DISCHARGE QUEUE: DRAIN-N4 pass → WI PE2 (running) → FGMN-WELD
+re-verify → WELD-FACE-AUDIT → JD0 arc.
+
+Codex queue runner LIVE (/tmp/codexq_progress.txt): WI-PE2 acceptance
+attempt running as a MODEL-DIVERSE second pass (44.6KB brief: note +
+PE1 report + the consumer appendices; Codex passes count per the
+B-M2/ITERLAW3 precedent). Still running external: X-lemma attempt 2,
+the Lean scoping run. Queue next (briefs to assemble): DRAIN-N4
+annex pass 2, FGMN-WELD cite re-verification, WFRAME PE2, T1 PE2.
