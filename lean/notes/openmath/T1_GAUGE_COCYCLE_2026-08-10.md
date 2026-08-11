@@ -892,6 +892,21 @@ Division by \(e_1\) proves (C5).
 | S1 GENTOW5 | Supporting-context GT5-r1 gauge pin | C2, C3 | The general recipe \(\widehat k_t=\operatorname{lift}_i(c_t\vartheta_{i,f-t};(f-t)u)\) is C2-corrected-lift. |
 | S1 GENTOW5 | Supporting-context dictionary lemma | C3 | \(\gamma=c^{\mathrm{mult}}\vartheta\), with the B-law cocycle using the inverse orientation. |
 
+[T1 r1 2026-08-10 REPAIR (passPE1 F-1) — row annotation. The three
+B-law-consuming rows above — A7 "S5.2 B-law", the C3 half of A5
+"4.1(c)/S3 consumption of bridge lemmas", and S1 "Supporting-context
+dictionary lemma" (its B-law orientation half) — carry the tech
+header's G-2 discharge: the item-9 facts the (C3) proof consumes at
+its B-law sites are supplied level-generally by [GENTOW5-W(i)]
+(GENTOW5_WI_2026-08-10.md @ ec30256c, attempt grade 1/2 — the
+conditionality) at i ≥ 3, and by the accepted LEMMA GENTOW2-B″ at
+i = 2. Full derivation, level coverage, scope honesty (item 9 stays
+carrier data as written), and the LW3 committed-frame verification:
+the G-2 repair bracket in the tech header. If the W(i) arc is
+refuted, these three rows revert to conditional-on-the-open-check.
+This bracket annotates these three rows and claims nothing about
+the table's other rows.]
+
 ## 4. MACHINE PLAN
 
 ### M1. Frames
