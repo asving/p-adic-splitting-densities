@@ -11,3 +11,4 @@ __pycache__/
 
 # editor/superseded backups
 *.bak
+*.pid
