@@ -1,7 +1,10 @@
 # WFRAME passPE2 — hostile verification report (second pass, RCT round 1)
 ## Target: WFRAME_NOTE_2026-08-10.md @ 520491ad (post-r1; PE1 was 0C/1G/3m @ 3db65096) — 2026-08-10
 
-**VERDICT: PENDING (skeleton commit; sections follow).**
+**VERDICT: CLEAN — nothing at GAP-or-worse survives. Grade ⇒ 1/2.**
+(1 MINOR residual F-2′; details + full verification log below,
+fresh-leg headline: the 9th prime MEASURED the first w-avatar = 1
+geography and the note's enumerative discipline held exactly.)
 
 Surfaces this pass: (1) the r1 folds (LP1 row vs sources; avatar
 re-keying completeness — every "w ≠ 1" site; R-7 numbers); (2) the §4
@@ -148,4 +151,98 @@ code; gp dual routes factorpadic + idealprimedec/nfmodpr). RED runs
 will be kept as-is with diagnosis. Result: see addendum below
 (written only after this seal commit).
 
-## GRADE LINE: PENDING
+## ADDENDUM — FRESH-LEG RESULT (LP23, run after the seal commit f4492442)
+
+**Run 1 — GREEN 34/0, exit 0, first try**
+(`wframe_pe2_fresh_output_run1.txt`, md5 40292469; runner md5
+df062a49; isolated re-run from a scratch copy BIT-IDENTICAL, exit
+0). Every preregistered prediction met at the NEW geography (9th
+prime; LP1 at u₃ = 23, in no committed record):
+* **THE HEADLINE: w-avatar MEASURED = 1** at the new prime (nfmodpr
+  route; hand split z₁⁻³ = 1 confirmed) — the FIRST avatar = 1
+  geography on record. This ANSWERS OPEN-4's question ("is w = 1
+  somewhere / at which geographies") affirmatively at a fresh frame
+  and exercises DEF W-1's "w = 1 is a possible value of this
+  definition". It contradicts NOTHING: §4 is enumerative
+  (consequence (i) scoped to the 8 measured primes; consequence (v)
+  explicitly disclaims unmeasured u₃), and OPEN-4's "NOT the
+  generic one" is dated to the then-measured record. An append
+  candidate for §4 per §8's rule (dated row LP23), not a defect —
+  the note's no-universal-quantifier discipline is what SURVIVES
+  this measurement, and is hereby tested live.
+* ϑ(0) MEASURED = z₁ ≠ 1, u(β₀) = z₁: LAW W-E's letter value live
+  at an avatar-dead frame; LAW W-B(6) closed with all three
+  residues measured at an actual prime, in the w = 1 signature
+  u₀ = ϑ(0) (the committed GF29 leg measured the u₀ ≠ ϑ(0) side —
+  the pair now brackets both sides of the dichotomy).
+* LAW W-C both legs: the multiplicative key realized ψ₃ = ψ₃^{(1)}
+  exactly (ONE prime (4,4), factorpadic [16]); the naive twin
+  (c₀ = a₀) realized y²+y+z₁·z₁² = y²+y+1 split → TWO primes (4,2),
+  factorpadic [8,8] — a verdict-level naive-twin kill that is PURE ϑ
+  (w = 1), disjoint in mechanism from every committed kill (all at
+  w ≠ 1); the iff's only-if leg (u(β₀) = z₁ ≠ 1 though w = 1)
+  observed live.
+* Twin's two primes carry avatar 1 and ϑ(0) = z₁ each
+  (key-independence of the frame data at avatar level).
+* v(x), v(Φ′), v(2), v(π₃) = 2, 9, 4, 1 (Lemma 3.13(1) leg);
+  z₁ live / z₂ = 1 letter pattern as committed for LP1.
+Laws live at the fresh frame: W-B, W-C (both legs), W-E — ≥2 met
+with margin. Dual oracles (factorpadic + idealprimedec/nfmodpr)
+agree. Instrument honesty: of the 34 checks, one L2 line is a
+prose-carrier with no discriminating power (`... or True`, the
+"naive fails even at w = 1" note — content carried by the FPADN/YRT
+rows) and the L1 IDY-letters line is an entailed closure exactly as
+the note's folded §7 caveat classifies its own IDY rows; the
+remaining 32 are discriminating. The fresh leg found NO defect in
+the note's laws, fences, or record discipline — it probed the
+note's sharpest edge (the avatar ≠ 1 record vs the w = 1 open case)
+and the note's scoping held exactly.
+
+## SURFACE 3 — the note as one text post-r1
+
+Read end-to-end at HEAD. The r1 folds knit in cleanly: §4's
+preamble bracket, the sanity rule, consequence (i)'s avatar
+re-keying + LW3 rider, the §7 IDY caveat, OPEN-1's as-of line, §8's
+r1 record all cross-reference consistently; the §4 header's "at
+composition ... now 8 primes, 6 keys" counts re-verified (8 = R-1:1
++ R-2:1 + R-3:2 + R-4:2 + R-6:1 + R-7:1; 6 keys = LD1, LD3, GA1,
+GA3, GA3*, GF29). Consequence (ii)'s "dead twice over ... adds a
+third pair" is internally consistent (two pairs at composition,
+third from R-7). The one whole-text residual is F-2′ (§5's
+unswept counts), already filed. Nothing new at GAP-or-worse.
+
+## SURFACE 4 — free hunt
+
+* LAW W-C's iff clause vs the fresh leg: only-if direction now
+  measured live (above) — the clause survives its first w = 1 test.
+* DEF W-4's refutation scope ("REFUTED at letter-live grades"):
+  LP23 is letter-live (ϑ(0) ≠ 1) with w = 1, and the nose
+  prescription indeed still failed there (twin kill) while the nose
+  READ of the law key's residual is valid (ψ^{(1)} = ψ) — the
+  scoping "letter-live grades", not "w ≠ 1 grades", is exactly
+  right. No defect.
+* OPEN-3's gate (row-23 two-leg elevation) untouched by the fresh
+  leg: my avatar measurement rides the same disclosed descriptive
+  leg — consistent with the note's asymmetry caution (§2 W-E).
+* Grep sweep for stray universal quantifiers over the record
+  ("every prime", "all primes", "generic"): the only generic-flavor
+  sentence is OPEN-4's "NOT the generic one", dated + source-keyed
+  (GENTOW5's dated note) — and now bracketed by LP23 as an append
+  candidate. No undated universal found in §4/§5.
+
+## VERDICT
+
+**CLEAN. Grade line: 1/2.** Nothing at GAP-or-worse survives this
+pass. Sole residual: F-2′ (MINOR — §5 OPEN-3/OPEN-4 prime/frame
+counts not swept by the r1 R-7 adoption; no false claim,
+undercounts of the note's own record). Non-finding observations
+for the next fold, per §8's append rule: (1) append LP23 (9th
+prime, avatar = 1) as a dated §4 row — it answers OPEN-4's
+question at one geography and brackets the IDY dichotomy; (2) sweep
+§5's counts (F-2′) in the same fold. The r1 folds all HOLD against
+sources; the §4 table passes the r1-minted sanity rule row-wise;
+the machine leg re-verified bit-identical under the seal; the
+fresh route (sealed predictions, dual oracles, GREEN 34/0 first
+try) found no defect.
+
+## GRADE LINE: **CLEAN ⇒ 1/2** (PE1 0C/1G/3m folded at r1; this pass: 0 CRITICAL, 0 GAP, 1 MINOR residual F-2′)

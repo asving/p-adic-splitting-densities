@@ -1,0 +1,69 @@
+PASS L1 nhat2(23) = 2^3*x*PHIP has dv2-height 23
+PASS L1 nhat2(46) = 2^11*x has dv2-height 46
+PASS L1 c0 lift 2^10*x^3 has dv2-height 46 (law digit)
+PASS L1 c0 lift 2^9*x^5 has dv2-height 46 (naive digit)
+PASS L1 W-AVATAR split (93,3,-22) = (-3, -11) -> z1^{-3} = 1  [HEADLINE: avatar = 1 geography]
+PASS L1 theta(0) split (-1,5,-2) = (-5, -1) -> z1 != 1 (LAW W-E letter value)
+PASS L1 u(beta0) split (185,11,-46) = (-11, -23) -> z1
+PASS L1 IDY letters: z1 = z1 * 1^2 (LAW W-B(6), t=0, the w=1 case)
+PASS L1 law c0 lift letter = z1 (= theta(0)^{-1} a0)
+PASS L1 naive c0 lift letter = z1^2 (= a0)
+PASS L2 LAW W-C: theta0*c0 = z1*z1 = z1^2 -> law key realizes psi3 (= psi3^{(w)} at w = 1)
+PASS L2 twin realizes y^2 + y + z1*z1^2 = y^2 + y + 1
+PASS L2 target psi = y^2+y+z1^2 irreducible /F4 (Tr = 1; admissible)
+PASS L2 twin residual y^2+y+1 SPLITS: roots {z1, z1^2}
+PASS L2 note: naive fails EVEN AT w = 1 because u(b0) = theta0 = z1 != 1 (LAW W-C iff, only-if leg)
+FPADL [16]
+FPADN [8, 8]
+LPL NPR 1
+LPL EF 4 4
+LPL VALS 2 9 4 1
+LPL R1 1 1
+LPL R2 1
+LPL WAVA 1
+LPL TH0 1 1
+LPL U0 1
+LPL IDY 1 1
+LPL PSIW 1
+LPL YF16 1
+LPN NPR 2
+LPN EF 4 2
+LPN VALS 2 9 4 1
+LPN R1 1 1
+LPN R2 1
+LPN WAVA 1
+LPN TH0 1 1
+LPN U0 1
+LPN IDY 1 1
+LPN YRT 1
+LPN EF 4 2
+LPN VALS 2 9 4 1
+LPN R1 1 1
+LPN R2 1
+LPN WAVA 1
+LPN TH0 1 1
+LPN U0 1
+LPN IDY 1 1
+LPN YRT 1
+GPDONE
+PASS L3 gp completed
+PASS L3A LAW key: factorpadic ONE factor deg 16 (single prime)
+PASS L3A twin: factorpadic TWO factors deg 8 (verdict differs)
+PASS L3B LAW key: ONE prime above 2
+PASS L3B LAW key prime (e,f) = (4,4) [preregistered]
+PASS L3B v(x),v(PHIP),v(2),v(pi3) = 2,9,4,1 (Lemma 3.13(1): v(pi3) = e/4)
+PASS L3B z1 letter LIVE: r1 != 1, r1^2+r1+1 = 0
+PASS L3B z2 = 1 on LP1 (letter-dead level 2)
+PASS L3B W-AVATAR MEASURED = 1 at the 9th prime [HEADLINE: first avatar = 1 geography on record; OPEN-4 probed live]
+PASS L3B theta(0) measured = z1 != 1 (LAW W-E letter value live at avatar-dead frame)
+PASS L3B u(beta0) measured = z1 (canonical unit letter-valued, != 1 while w = 1)
+PASS L3B LAW W-B(6): u0 = theta0*w^2 with three residues measured at an ACTUAL prime; u0 == t0 = the w = 1 signature (contrast GF29's u0 != t0)
+PASS L3B LAW W-C: realized residual = psi3 = psi3^{(w)} at w = 1 (nose read VALID exactly here, per DEF W-4's letter-live scoping)
+PASS L3B Y generates F16 over F4 (f3 = 2 residual irreducible)
+PASS L3B twin: TWO primes above 2
+PASS L3B twin primes (e,f) = (4,2) each [preregistered]
+PASS L3B twin primes: w-avatar = 1 there too (DEF W-1 key-independence at avatar level)
+PASS L3B twin primes: theta(0) = z1 at each (theta is frame data)
+PASS L3B twin: Y a root of the split residual y^2+y+1 at each prime (LAW W-C split pattern -- the naive kill is PURE THETA at w = 1)
+checks: 34, violations: 0
+VERDICT: GREEN
