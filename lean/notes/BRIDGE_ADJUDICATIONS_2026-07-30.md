@@ -15966,3 +15966,25 @@ WI pass 3 (with the full consumer paste); X-lemma attempt 3;
 DRAIN-N4 annex pass 2 (the census's #1); FGMN-WELD cite re-verify;
 the Opus/Sonnet translation trial on the unit spec's two most
 mechanical units.
+
+**LEAN-BASE SIMPLIFICATION REVIEW LAUNCHED (2026-08-11 ~10:50, Asvin
+directive: "get codex to look over the current lean base and simplify
+it as much as possible in light of the complete theorem")** — the
+inventory surfaced the scale honestly: **1209 modules**, the bulk
+being campaign scaffolding (MovesD/T/C/X/Sp/S/U/V/Gr, HC1/HC2,
+Kernels, B2D, Scaffold) built incrementally against the evolving
+proof. Brief (152KB): directory-grain inventory + per-module detail
+on the trusted path + the interface layer verbatim (Interface,
+MontesV2, CountingModel, the signed-off Stage2 anchor) + the AxChk
+footprint tail + the complete theorem's five-node shape + the 16-unit
+spec headers. Charge: KEEP/REDESIGN/RETIRE per directory; the design
+decisions the complete theorem now licenses (general-prime instance
+family; measure-route retirement; collapsing the campaign layers into
+libraries keyed to the five-node outline; one gauge/cocycle module =
+Lean-T1; the DensityFoundation/CountingModel split); the target
+module tree mapping the 16 units; the migration plan with per-step
+AxChk safety. HARD INVARIANTS pinned: capstone statements
+byte-identical, footprints unchanged, quarantine-never-delete,
+zero-banked-sorries in the trusted graph. Output →
+/tmp/leansimp_output.log; orchestrator review + Asvin sign-off before
+ANY migration step executes.
