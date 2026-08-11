@@ -171,3 +171,21 @@ of translating from math to lean once its been detailed enough."
   SONNET-XLATE.
 - Fable stays on: orchestration, adjudication, repairs (per the
   standing fixes-stay rule), hostile passes when the API is steady.
+
+## Amendment 4 (2026-08-11, owner directive)
+
+Asvin, verbatim: "lets not use fable at all for now actually - except
+for you. Use codex at the highest setting where you normally would use
+fable. I switched claude code plans to a costlier one while the api
+passes, but I dont want to burn through it."
+
+- NO Fable subagents for now; Fable = the orchestrator only
+  (folds, adjudication, ledgers, brief assembly, small orchestrator-side
+  edits, and this protocol's bookkeeping).
+- Everything that would have been a Fable unit → CODEX at the highest
+  available setting, as self-contained briefs on the external runner.
+  This includes HOSTILE PASSES: model-diverse passes counting toward
+  the 2-clean bar are precedented (B-M2's model-diverse arc; ITERLAW3's
+  PC passes) — Codex passes count, with the model recorded per pass.
+- The B25 Fable wave was STOPPED on receipt of this directive (the
+  tightness census completed before the stop and is delivered).
