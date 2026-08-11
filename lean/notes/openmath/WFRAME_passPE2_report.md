@@ -104,7 +104,24 @@ z₂ = z₂²·z₂⁴⁻² (2+2·1 ≡ 1 mod 3), twist w²ψ(y/w) = y²+z₂y+1
 irreducible /F₄ (0 roots), twin y²+z₂y+z₂² = (y+1)(y+z₂²) via
 1+z₂² = z₂. All EXACT. HOLDS.
 
-**Machine leg.** PENDING (seal md5, isolated re-run, ledger check).
+**Machine leg.** All GREEN, re-verified this session:
+* Seal: `git show 2840d78c:...wframe_note_checks.py | md5sum` =
+  e9495dfcbf866baef09bea60f70d0dbc = working tree; seal commit
+  12:52:39, strictly before the verdict commit 940ee7f3 (12:55);
+  contains runner + §7 prose only (2 files).
+* Isolated re-run from a fresh /tmp copy: exit 0, output md5
+  470d157b1cff29f31e06cb27e22fe715 = the committed
+  wframe_note_checks_output.txt — BIT-IDENTICAL. 47/0, teeth 4/4.
+* PE1 fresh artifacts at HEAD: runner 15935529…, run-2 output
+  3e45cc3e…, run-1 RED 0189b034… — all match §4 R-7's citations.
+* `statement_ledger.py --check` at HEAD: GREEN — 166 baseline, 0
+  changed, 0 deleted, 0 added.
+* Tautology audit (post-r1 delta only; PE1's full audit stands): the
+  instrument's WAVA/TH0/U0 rows compare recomputed splits against
+  hard-coded PRED_* pins (L78–80, the PE6-measured values) — real
+  content; the IDY rows compare U0 vs TH0 + 2·PRED_W exponents
+  (L145–146) — entailed, exactly as the folded §7 caveat now
+  states. The caveat is FAITHFUL to the code.
 
 **Fresh route.** PENDING (design: a 9th prime — the LP1 tower at a
 NEW u₃ = 23, no committed key uses it; predictions to be sealed
