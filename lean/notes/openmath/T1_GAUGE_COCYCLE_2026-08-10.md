@@ -64,6 +64,42 @@ carrier drifts, and this edge is what catches it.
   carrier; whether the FGMN instance discharges item 9 at B″'s
   generality is a consumption-check obligation (R.1 leg (b)/(c)), open
   here. Not a defect of the statement; a named obligation.
+  [T1 r1 2026-08-10 REPAIR (passPE1 F-1 = this G-2): DISCHARGED BY
+  CITATION, conditionally. The companion note GENTOW5_WI_2026-08-10.md
+  proves [GENTOW5-W(i)] at every level i ≥ 3 (@ ec30256c; **attempt
+  grade 1/2** — PE1 CLEAN @ 884edd2c, PE2 in progress at this repair —
+  the conditionality of this discharge). Its statement IS this note's
+  (C3-B-law): its u_i(β_t) = R_{i+1,β_t}(n̂_i((f_{i+1}−t)u_{i+1})) and
+  θ_i(t) = ϑ_{i,f_{i+1}−t}⁻¹ are the same objects, same orientation, as
+  this note's u(β_t) and Θ_i(t) (its S1 vs this note's C3-B-cocycle
+  display). And its proof derives, from level-general sources, exactly
+  the item-9 facts C3's B-law consumes, AT the sites C3 consumes them:
+  (1) multiplicativity on ladder-monomial powers, R(N^d) = R(N)^d =
+  its S2 step (i) peel (Cor 4.7(2) iterated, no degree hypothesis,
+  level-general in FGMN's own quantifier per its S3 leg (b); y-degree-0
+  + nonzero from Cor 4.4(3)/(1) at step (0)'s exact grades); (2) the
+  value-zero read of N^d/M = θ = its S2 step (iv) digit read (the
+  level-i τ_i-cocycle γ-calculus, GENTOW5-C step (3), accepted at
+  level i); (3) the scalar-digit read R(g) = γ·R(M_s) = the accepted
+  (B-2 at level i) factorization R = u·digit (GENTOW5-B proof, on
+  S11.2's proved side). Level coverage: i = 2 is LEMMA GENTOW2-B″
+  itself (accepted corpus @ 33f86204); i ≥ 3 is [GENTOW5-W(i)] at its
+  1/2 grade; the i = 1 tie stays open (WFRAME OPEN-2) and no absorbed
+  B-law site sits there. So the three conditional absorption rows —
+  A7/2 (S5.2 B-law), A5/2 (its C3 half), S1/2 (B-law orientation
+  half) — rest on an accepted i = 2 leg plus the 1/2-grade
+  level-general leg, and REVERT to conditional-on-the-open-check if
+  the W(i) arc is refuted. Scope honesty: W(i) derives the site
+  conclusions directly and never states abstract item 9 over ALL
+  homogeneous initial forms — item 9 stays carrier data of the
+  abstract lemma as written; what is discharged is the consumption
+  obligation at the B-law sites. Committed-frame verification: at
+  W(i)'s letter-live i = 3 frame LW3 (sealed GREEN 60/0, output md5
+  b0a8c3c4), the sealed rows give Θ_3(0) = θ_3(0) = 2 (reciprocity row
+  P-A3) and measure u_3(β_1) = w_3, u_3(β_0) = 2·w_3² (row LAW-I1) —
+  this note's (C3-B-law) at both slots of f_4 = 2, at a level no T1
+  battery reaches, with the θ-leg live (tooth P-D5: the θ-free power
+  law u = w^{f−t} is dead at that frame).]
 - **G-3 (honest scope, recorded by the composer itself).** (C1) is fully
   explicit at level 2 only; the general level gets ρ_i by a terminating
   reduction algorithm with no closed exponent formula (Honesty ledger
