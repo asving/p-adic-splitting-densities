@@ -74,3 +74,66 @@ face-citation audit that would prove it has not run).
 | S-6 | **JB-NOLEG** — GRTJB §0M's four-row NO-LEG open-proviso frontier (rows 4/5/12/22; row 12 = the u ≥ 0 proviso DISCHARGED at deg f < deg Φ_{q+1}, open residue = MEMBERSHIP at the unbounded-degree quantifier — WELDMASTER S4 [r1,F-1] quote; row 4 = the grid/attained-abscissa half). JD0-BOX-1 names row 12 riding only the B(c)-tie, a W-10 leg (W-10 is out, O-13). | fenced (proviso rows) | GRTJB L3159; WELDMASTER S4; JD0 S4. | If S-4 finds a spine consumer: prove the membership residue; else record OUT. | unit/row after S-4 |
 | S-7 | **W2-VALUE** — W2-OPEN-1 (the transported value layer: "instance-confirmed, not proved", 16 towers / 684 groups, GRTW2 §5.3) + W2-OPEN-2 (the chain-level bridging box, §5.2) + W2-BOX-1/(C-coll) (the boundary witness, §3.5). | open (displayed lemmas) | GRTW2 L444, L617, L881. | Same as S-6: S-4 decides; letter layer enters σ only through canonical frames (blueprint DAG). | hard-unit if in |
 | S-8 | **DMULT-S** — the (DMULT-s) EXACT tier (ω ≡ 1) is MEASURED, not cited, and carries only JC-COB's sharp form (JC-BOX-3 [r2,G-1]); the citable tier (DMULT-w) suffices for W-9. | measured-only tier | GRTJC L1985–1990. | If S-4 finds a sharp-form consumer on the spine: prove or cite; else OUT. | unit if in |
+
+---
+
+## §3. OUT-OF-CONE (side quests, compression track, displays, refinements)
+
+| # | Item | Grade | Why out (evidence) |
+|---|---|---|---|
+| O-1 | **X-LEMMA** — the universal stage-recentering lemma (SG-2's named price, SG2_PROBE "NEEDS-X"): X(i) perimeter re-instantiation OPEN — attempt 1 blocked honestly on unpasted [ILN]†/scoring-predicate defs; X(ii) additive action T ↦ T+s DELIVERED at attempt grade with verification frames (BRIDGE_ADJUDICATIONS 2026-08-10 22:53; xlemma_attempt1_*). Attempt-2 brief (M3/W-9 innards pasted) + Fable adjudication of X(ii) queued. | open (attempt 1 PARTIAL) | Blueprint §3 honesty line: "None of SG-1–4 is owed by the accepted corpus." GENHN-4 is proved in accepted GENHN; X buys the ~6,900-line stage-two scope cut, not correctness. |
+| O-2 | **GENHN-BOX-2 carry** — the elementary general-μ carry display (would retire the W-9 face from inside the μ ≥ 3 count laws). | fenced (optional) | GENHN S9.1: "optional-but-hardening"; the face it would retire is accepted 2/2. Same geography as O-1 (SG2 tech note). |
+| O-3 | **T1-UNIT** — the gauge-cocycle compression note: attempt 0/2; open GAP G-2 = C3's B-law consumes carrier item 9 (canonical-residual multiplicativity) as DATA where GENTOW2-B″ derives it via FGMN at i = 2 — an undischarged consumption check (T1_GAUGE_passPE1 header); r1 minors landed (dba05c23, 768c1f51); item-9 repair + PE2 queued (night-directive order). | attempt (0/2, repair in flight) | Compression track: all seven absorbed gauge annexes remain proved in accepted notes; T1 failing costs scope, not the theorem. |
+| O-4 | **WFRAME-UNIT** — the w-frame note: 0/2 post-r1 (PE1 1 GAP repaired @ 9d157fda); PE2 in flight (skeleton ee9a2d5f; residual F-2′ MINOR). Defines/consolidates only; proves no new mathematics (its own header). | attempt (0/2, PE2 in flight) | Consolidation note; every §2 law carries its accepted-source pin. |
+| O-5 | **WFRAME OPEN-2** — the u1 = w₁ tie at i = 1 (the proved i = 1 shape is ψ₂^{(u1)}; the tie to w₁ = R_{2,κ̄₁}(n̂₁(u₂)) is open — GENTOW5 S11.3). | open (statement-level) | WFRAME §5: "the fold's grep audit found zero consumers needing the tie; a statement-level open item, not a load-bearing gap." |
+| O-6 | **WFRAME OPEN-3** — a derived w-law (closed form; avatar = w at theorem strength): gated on GENTOW2 S6.1 row 23's two-leg elevation (row 23/24 at DESCRIPTIVE status — GENTOW2 L1333–1345). | open (measured pattern, 4 frames) | WFRAME §5: §2 LAW W-E deliberately covers ϑ only; no corpus lemma consumes the closed form. |
+| O-7 | **WFRAME OPEN-4** — w = 1 geography (at the 7 measured primes w ≠ 1). | open question | F19 rule: conditionalizes nothing; no statement reads ψ^{(w)} as ψ pending it. |
+| O-8 | **HTAMEFE** — the tame functional equation / palindromy input (Lean hypothesis `htameFE`; the DCD axiom was RETIRED at W4, could not be faithfully retargeted — SEMANTIC_AUDIT_LOG). | hypothesis (certified non-trivial, undischarged) | Amendment 2 dropped palindromicity from the uniformity statement — OUT of this cone; stays the honest named hypothesis on ANY palindromic-law claim (capstone clause; W11-BOX-7 explicitly declines to discharge it). Discharge if ever wanted: prove the FE for the corrected density or find a faithful standard-literature cite. |
+| O-9 | **GENH5-DENS** — the seventeen quintic densities aggregation (GENHN-BOX-5's owed display; table drafted at BCFGTIE S9 at distribution-suite grade; RCT unit pending, CODEX by Amendment 1). | owed display | GENHN S9.2 item 5: "DISPLAYS OWED (mechanical)" — a corollary table, not consumed by the theorem. |
+| O-10 | **TAIL-CERT** — the TRP tail-σ-certification lemma + the exact U₃^σ law + its char-independence (HEX3-BOX-1 = HM3-BOX-1 = W12-BOX-3's residue). | open (refinement) | Drainage consumes only the proved conservative upper bound U₃^conv (exact law, HEX3.A); "the w12 instrument was DESIGNED not to need it" (HEX3 S6). |
+| O-11 | **W10-GEN** — the general W-10 count equality (classifier strata = model counts at every decided shape/order; W10-BOX-1, JD0-BOX-1). | open (separate target) | The spine fires W-12.A/D + GENIND/GENH4/GENHN count laws directly; the classifier tie is the LEAN capstone's order-0 business (proved there). S-4's audit will re-check this OUT call. |
+| O-12 | **SCHEMA-LEDGERS** — GENIND-3's β-route per-genre ledgers at n ≥ 6 multi-child genres + entry-pattern fibers ("proved-as-schema, per-genre ledgers owed on demand" — GENIND-BOX-2, GENHN S9.2 item 3). | fenced (expansion-on-demand) | The schema IS the accepted proof (2/2 with machine legs at n = 4,5 pointwise); the owed object is display expansion, not a missing lemma. |
+| O-13 | **DIST-SUITE** — BCFGTIE / MOMENTS / TAMEK / TAMEKQX (distribution notes: moments tie, etc.). | attempt (arcs not run) | Outside the 26-text corpus (blueprint §2 "Not targets (b)"); corollary suite downstream of the theorem, not upstream. |
+| O-14 | **RIDER-DEBT** — minor acceptance riders owed per appends: HE6R1 ×3 (incl. the cocycle-exponent line-value wrinkle + its cure at HE7's 263cef0 copy — append #13), HE7's 3 dated one-liner rewords (#5), HETOW's coverage-row citation minor (#15), GENIND's PE8-m1 arc-line append (#7), GENTOW2's 4 ratification hygiene minors (#17). Some may have landed in B-wave folds; not re-verified here. | minor (display debt) | MINOR-grade by their own passes' adjudication: none holds a counter, none touches a displayed statement. |
+| O-15 | **COVERAGE-CLASS** — the machine-coverage/oracle-asymmetry disclosure boxes across all notes (HE3-BOX-3/4, HE6-BOX-3/4, HETOW-BOX-3, GENTOW-BOX-2, GENTOW3-BOX-2, GENTOW4-BOX-3, GENHN-BOX-3, GENIND-BOX-3, JC-BOX-1/2, W11-BOX-4, W12-BOX-6, the PARI eq-char asymmetry everywhere). | disclosure (not opens) | Each states "the PROOFS are uniform; the gap is machine-side, named" — evidence-scope records, not unproven lemmas; listed so the census is checkably exhaustive. |
+| O-16 | **T2/T3/T4 compression units** — σ-ladder master instance, cocycle-telescope, certificate witness (+ S-5 probe): RCT ledger pending, CODEX. | not-yet-composed | Compression of PROVED material; consumption checks (R.1 three-leg) are their own gate. |
+
+## §4. THE LEAN CAPSTONE'S CONDITIONALITIES (stage two; informal analogues resolved above)
+
+| # | Item | Grade | Informal analogue / route |
+|---|---|---|---|
+| L-1 | **hExhaust** (Lean hypothesis, `montes_unconditional_exhaustive`; and `uniformity_target_exhaustive`'s drainage hypothesis, append #24) | hypothesis | Informal analogue: proved n = 2 (W11 theorem), n = 3 (HEX3.B), n ≥ 4 = I-1 (annex 1/2). Lean discharge = a named Phase-B/stage-two unit. |
+| L-2 | **htameFE** (Lean hypothesis) | hypothesis | = O-8; out of the uniformity statement by Amendment 2. |
+| L-3 | **GMN + Denef–Igusa axioms** — AX-INDEX (FAITHFUL, narrow) + AX-CELLREC/AX-LEAF (faithfulness entries DRAFT, PENDING ASVIN REVIEW), AX-SERRE-DVR (signed off), AX-GMN-INDEX (statement draft, NOT declared, no consumer) — AXIOM_FAITHFULNESS.md. | cite-allowed (process pending) | Informal cone does NOT consume them: HE3 §S0 records the Montes/GMN order-≥2 cite deliberately NOT consumed (resultant identity + ultrametric read suffice); Denef–Igusa is the measure route only. They gate the LEAN capstone claim. |
+| L-4 | **RealInstanceAt.faithful placeholder** — True-placeholder in Stage2/UniformityTarget.lean; theorem-strength consumption before the gates unit is declared ILLEGITIMATE in-file (append #24). | placeholder | Named stage-two unit (the general RealInstanceV2Gates analogue). |
+| L-5 | **DEFINITION-AUDIT unit** — FactorizationType / countingDensity / DensityFoundation vs the informal objects (Amendment 2, queued). | owed audit | Stage-two named unit; the trust boundary (statements are where errors hide). |
+
+## §5. SUMMARY + THE PRIORITIZED IN-CONE DISCHARGE QUEUE
+
+**Counts.** Total rows: **33** (+5 Lean-capstone stage-two rows tracked
+separately in §4). IN-CONE: **5** (I-1…I-5). IN-CONE-SUSPECT: **8** (S-1…S-8).
+OUT-OF-CONE: **16** (O-1…O-16). Of the 5 in-cone: 2 are arcs at 1/2 already in
+flight (I-1, I-2), 1 is a verified cite owing only its stage-two declaration
+(I-3), 1 is a cite re-verification (I-4), 1 is a process grade (I-5). **Zero
+in-cone items are unproven-and-unattempted mathematics.**
+
+**The queue (priority order):**
+1. **I-1 DRAIN-N4** — finish the GENIND annex arc (1/2 → 2/2): the only
+   conditional input on the full-density tie; one clean pass.
+2. **I-2 WI-LEMMA** — finish GENTOW5_WI PE2 (in flight): drops the last fence
+   under the depth ≥ 4 tower displays (and WFRAME OPEN-1 with it).
+3. **I-4 FGMN-WELD** — PDF-verify GRTJC's FGMN quotes (Thm 4.2/(DMULT-w),
+   Thm 4.8/Cor 4.9, Cor 2.7) at displayed numbering, the GENTOW2 S6.1 two-leg
+   method: kills the last "cited-but-unverified" marker on the cone.
+4. **S-4 WELD-FACE-AUDIT** — the R.4 corpus-wide face-citation audit (one
+   session): converts S-5…S-8 into proved-OUT records or named proof units,
+   and feeds the SG-2 branch decision.
+5. **I-5 JD0-BAR** — run JD0's 2-clean hostile arc (or owner sign-off on the
+   68,523/0 machine grade): the one sub-bar text both count faces ride.
+Then: S-1 S8.1-MEMBER (pending RCT unit, CODEX) with S-2/S-3 as riders;
+I-3's stage-two declaration lands with the Lean blueprint.
+
+**Record rule note.** Every row cites its note + section/line at HEAD;
+grades are the sources' own vocabulary (open / fenced / conditional /
+attempt / cite-unverified / hypothesis / disclosure); no row upgrades or
+downgrades a source grade.
