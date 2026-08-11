@@ -15922,3 +15922,47 @@ PE1 report + the consumer appendices; Codex passes count per the
 B-M2/ITERLAW3 precedent). Still running external: X-lemma attempt 2,
 the Lean scoping run. Queue next (briefs to assemble): DRAIN-N4
 annex pass 2, FGMN-WELD cite re-verification, WFRAME PE2, T1 PE2.
+
+## FOLD (2026-08-11 ~10:40) — the first all-Codex round + the statement sign-off
+
+STATEMENT-GRAIN SIGN-OFF: Asvin confirms the bare (e,f)-multiset
+FactorizationType as the target grain ("that is what we want to
+prove"); finer invariants deliberately deferred. Recorded in the
+anchor file (recompiled green) — the stage-2 statements are now
+REVIEWED AND CONFIRMED.
+
+WI passPE2 (CODEX model-diverse, wipe2_codex_pass_output.txt):
+**NOT CLEAN — 0C/2G/0m, STAYS 1/2.** Adjudications: G-1 REAL — the
+note's ambient setting assumes P_{i+1} ≠ ∅ while the fenced statement
+quantifies over every 3 ≤ i < r unconditionally; an unused assumption
+does not enlarge the theorem; repair = derive nonemptiness at
+permitted levels from DEF GENTOW5-1's tower datum, or scope the
+statement + check the consumers' contexts supply it. G-2 =
+BRIEF-DEFECT (the orchestrator's): the charge promised T1's item-9
+consumer text but did not paste it — the verifier rightly refused to
+check the unpasted; the pass-3 brief carries it. NOTE the pass's
+positive content: the S11.2 resting point independently re-derived
+CLEAN (the (B-2) leg's per-grade fixedness route), and clause (b)'s
+w-blindness confirmed non-inductive. The model-diverse pass caught a
+scope defect the same-family PE1 missed — the decorrelation earning
+its keep on the FABLE arm's product this time.
+
+X-LEMMA ATTEMPT 2 (xlemma_attempt2_codex_output.txt, 102KB, PARTIAL):
+X(ii) stands; X(i) now blocked on FOUR named executable definitions
+(the stage-to-tower map, the B_n coordinates, the scoring predicate,
+the (M2) fences) — attempt 3 = mechanical extraction + paste of
+those four from the weld corpus.
+
+LEAN SCOPING RUN DELIVERED (docs/LEAN_STAGE2_UNITSPEC_CODEX
+_2026-08-11.md, 129KB): **UNITS: 16** — slice 1 (the RealInstanceAt
+gates replacing the faithful placeholder) + slice 2 (the chain-head
+statement fan-out), each with Lean-syntax sketches, forced
+definitions, dependencies, mathlib-gap flags, difficulty tags, and
+TRANSLATION SPECS for the Opus/Sonnet trial. Orchestrator review of
+the unit list next; the trial's first two units follow.
+
+QUEUE (all-Codex per Amendment 4): WI r1 (the nonemptiness scope) →
+WI pass 3 (with the full consumer paste); X-lemma attempt 3;
+DRAIN-N4 annex pass 2 (the census's #1); FGMN-WELD cite re-verify;
+the Opus/Sonnet translation trial on the unit spec's two most
+mechanical units.

@@ -1,0 +1,2709 @@
+Reading additional input from stdin...
+OpenAI Codex v0.145.0
+--------
+workdir: /data/users/asvin/math-and-lean/p-adic-splitting-densities
+model: gpt-5.6-sol
+provider: openai
+approval: never
+sandbox: workspace-write [workdir, /tmp, $TMPDIR]
+reasoning effort: high
+reasoning summaries: none
+session id: 019ff049-c71e-7ac1-a8ae-d32c7d534e72
+--------
+user
+X-LEMMA PROOF ATTEMPT 2 (continuation). Attempt 1 (pasted at the end) proved X(ii) with verification frames but could not address X(i) because the [ILN]† S0-class and scoring-predicate definitions were cited, not pasted. THEY ARE NOW PASTED BELOW. YOUR CHARGE: prove X(i) (the perimeter re-instantiation half), then state the COMBINED X-lemma (both halves) with the full proof, honesty rules as before (display any resisting case; machine plan with predicted exact values + falsifiers; final line OUTCOME: PROVED | PARTIAL | OBSTRUCTED).
+
+=== THE [ILN]-DAGGER CLASS DEFINITIONS (ITERLAWN S0, verbatim) ===
+
+## S0. Setting, statement, status
+
+### S0.1 The (n+1)-read standard-lift harness class (the class pin)
+
+O a DVR with uniformizer π, residue field k₀, valuation w₀ (coefficientwise on
+O[x]; harness instances ℤ₂, ℤ₃, F₂[[t]], F₃[[t]], the proof ring-blind). Fix
+n ≥ 1 and tower data with reads j = 0, …, n:
+
+* Φ₀ ∈ O[x] monic, deg Φ₀ = d₀ ≥ 1, w₀(Φ₀) = 0, reduction irreducible;
+  K₀ := k₀[X]/(φ̄); res and lift as in [IL S0] (ACCEPTED; package pasted in
+  the header: harness tower class, standard-lift, strict superset of §S2's
+  E₂ > 1 pin, all three residuals).
+* Read j (0 ≤ j ≤ n): e_j ≥ 1, h_j ≥ 1, gcd(e_j, h_j) = 1; ψ_j ∈ K_j[y]
+  monic irreducible, deg ψ_j = g_j ≥ 1, ψ_j(0) ≠ 0;
+  K_{j+1} := K_j[z_{j+1}]/(ψ_j). Letters: z₁, …, z_n and the top letter
+  z̄ := z_{n+1}. Normalized Bézout pairs (ℓ_j, ℓ_j′): ℓ_jh_j + ℓ_j′e_j = 1,
+  0 ≤ ℓ_j < e_j (ℓ_j = 0, ℓ_j′ = 1 at e_j = 1).
+* Weights, with the UNIFORMIZING CONVENTION γ₁ := h₀ (so every level speaks
+  one language): γ_{j+1} := e_j·w_jΦ_j + h_j and w_{j+1}Φ_{j+1} :=
+  e_jg_jγ_{j+1} for j ≥ 1; w₁Φ₁ := e₀g₀h₀ = e₀g₀γ₁ (so w_jΦ_j =
+  e_{j−1}g_{j−1}γ_j for ALL j ≥ 1).
+* Lifts: Φ₁ := the STANDARD LIFT of ψ₀ (grb_order2_check :499–507); for
+  1 ≤ m ≤ n−1, Φ_{m+1} := the CANONICAL ε_m-CORRECTED LIFT of ψ_m:
+  Φ_{m+1} = Σ_{k ≤ g_m, ψ_{m,k} ≠ 0} C_k·Φ_m^{e_mk}, C_{g_m} = 1,
+  C_k := realize_m(ε_m((g_m−k)γ_{m+1})^{−1}·ψ_{m,k}, (g_m−k)γ_{m+1}) for
+  k < g_m — the build_Phi2/build_Phi3/build_Phi4 pattern verbatim, one level
+  up each time (well-definedness on the class: Lemma WELL-DEF-(n), S4.1).
+  The top ψ_n needs no lift (the cocycle never consumes Φ_{n+1}).
+* E_{n+1} := e₀e₁⋯e_n. E-positivity: every e_j ≥ 1 individually, NO joint
+  floor (the erratum lesson of [IL] — ACCEPTED 2026-08-03 on the harness
+  tower class, standard-lift, strict superset of DITER_RESTATE §S2's
+  E₂ = e₀e₁ > 1 pin, on-the-nose at E₂ > 1, residuals (ITER-LAW-LIFT) /
+  gr(w₂)-wrapper / orders ≥ 3 in force — applied proactively as in [IL3]
+  S0.1).
+
+The (ITER-LAW-LIFT) residual propagates verbatim to every level: nothing is
+claimed for any non-canonical lawful lift at any level.
+
+### S0.2 Calculus, splits, anchors, cocycle
+
+The calculus is the iterated harness read, defined once per level by the
+mirror recursion (verbatim semantics of the pinned code, as in [IL3] S0.2):
+ε_m(β) := z_m^{ℓ_{m−1}′s − ℓ_{m−1}u} with (s,u) := eq12(β; e_{m−1}, h_{m−1})
+(reading C at every level; ε₁ = harness eps1, ε₂ = eps2, ε₃ = eps3, ε₄ = the
+diagnostic's eps4); w_{m+1}(f) := min_j{e_m·w_m(A_j) + j·γ_{m+1}} over the
+Φ_m-development f = Σ A_jΦ_m^j; the level-(m+1) read at γ := w_{m+1}(f) has
+grid s_{m+1}(γ) + je_m, slot weights γ_j := (γ − (s_{m+1}+je_m)γ_{m+1})/e_m,
+coefficients C_j := ε_m(γ_j)·R_mv(A_{s_{m+1}+je_m}) when the digit is on-line
+(w_m = γ_j exactly), else 0; R_{m+1}v(f) := Σ_j C_j·z_{m+1}^j ∈ K_{m+1};
+**val(f) := R_{n+1}v(f) ∈ K_{n+1}** (harness val₃/val₄/val₅ at n = 2, 3, 4).
+Base facts consumed (as in [IL S1]; ACCEPTED, package pasted in the header —
+harness tower class, standard-lift, superset of §S2's E₂ > 1 pin, three
+residuals): division algorithm in O[x] (Φ monic ⟹ unique developments), w₀ a
+valuation, res additive and vanishing on strict π-excess, q: O[x] → K₀ a ring
+homomorphism.
+
+**The iterated eq-(12-int) split.** For γ ∈ ℤ:
+
+    (s_{n+1}, u_{n+1}) := eq12(γ; e_n, h_n);   β_n(γ) := u_{n+1} − s_{n+1}·w_nΦ_n
+    for j = n, …, 2:  (s_j, u_j) := eq12(β_j; e_{j−1}, h_{j−1});
+                       β_{j−1}(γ) := u_j − s_j·w_{j−1}Φ_{j−1}
+    (s₁, u₁) := eq12(β₁; e₀, h₀)
+    [so γ = e_nβ_n + s_{n+1}γ_{n+1} and β_j = e_{j−1}β_{j−1} + s_jγ_j for all j]
+
+Anchor φ_γ := π^{u₁}·Φ₀^{s₁}·Φ₁^{s₂}·⋯·Φ_n^{s_{n+1}}; window
+W_{n+1} := {γ : u₁(γ) ≥ 0}; cocycle on anchors, for γ, γ′ ∈ W_{n+1}
+(γ+γ′ ∈ W_{n+1} by WINDOW-(n), S2):
+
+    c_{n+1}(γ,γ′) := val(φ_γ·φ_{γ′}) / val(φ_{γ+γ′}).
+
+Pair abbreviations (fixed throughout): s_j := s_j(γ), s_j′ := s_j(γ′),
+s_j″ := s_j(γ+γ′); B_j := β_j(γ)+β_j(γ′), β_j″ := β_j(γ+γ′); the s_j-defect
+:= s_j + s_j′ − s_j″; plain carries δ_j^{pl} := ⌊(s_j+s_j′)/e_{j−1}⌋ ∈ {0,1}
+(j = 1..n+1; the TOP one is δ := δ_{n+1}^{pl}); Γ″ := γ+γ′.
+
+### S0.3 THEOREM (ITER-LAW-n) — the statement, verbatim the recursion of record
+
+**THEOREM (ITER-LAW-n; the L3CONVERGENCE S2 Candidate-2 recursion, verbatim;
+= ITERLAWR_PROBE S6 item 1; unrolled instances: the [IL] display at n = 1
+(ACCEPTED; package pasted in the header — harness tower class, standard-lift,
+strict superset of §S2's E₂ = e₀e₁ > 1 pin, on-the-nose restricted to E₂ > 1,
+three residuals in force), the [IL3] display at n = 2 (attempt grade 0/2), the
+sealed ITERLAW4 display at n = 3).** For all γ, γ′ ∈ W_{n+1}, with
+
+    δ := ⌊(s_{n+1}(γ) + s_{n+1}(γ′))/e_n⌋ ∈ {0,1}          [top carry]
+    S_n := δ·γ_{n+1};                                       [top shift]
+    for j = n, …, 1:
+      D_j     := (s_j-defect + ℓ_{j−1}·S_j)/e_{j−1} ∈ ℤ     [level-j exponent]
+      S_{j−1} := D_j·γ_j + S_j·(ℓ_{j−1}′ − ℓ_{j−1}·w_{j−1}Φ_{j−1})
+                                                  [composed shift; S₀ unused]
+
+it holds that
+
+    c_{n+1}(γ,γ′) = z̄^{δ} · z_n^{D_n} · z_{n−1}^{D_{n−1}} · ⋯ · z₁^{D_1}.
+
+(Convention at j = 1: w₀Φ₀ := 0 and γ₁ = h₀, so S₀ = D₁h₀ + S₁ℓ₀′ — computed
+by the recursion but consumed by nothing.)
+
+**STATUS (the exact grade, per clause and per rung — the point of this
+note).** The theorem is proved BY INDUCTION ON THE RUNG with the level-generic
+step of S4, on the following honest perimeter:
+
+* **Excluded locus:** DCX-(n) := ∪_{m=2}^{n} DCX_m, the per-level
+  double-cascade corners (S4.7: outer bound proved generically; sharp form
+  proved at m = 2 = the [IL3] corner; DCX-(1) = ∅). On DCX-(n) the theorem is
+  conjectural (instance-true at every probed instance, all rungs).
+  **[Errata r1, 2026-08-03, PE-G1: "outer bound proved generically" reads
+  "proved generically (given IH package)" — the S4.7 proof consumes the IH
+  (P-DS) clause; see the S4.7 erratum bracket.]**
+* **Conditionality off DCX-(n):** rung 1 UNCONDITIONAL (= [IL], ACCEPTED
+  2026-08-03 on the harness tower class — standard-lift, strict superset of
+  DITER_RESTATE §S2's E₂ = e₀e₁ > 1 pin, on-the-nose at E₂ > 1; residuals
+  (ITER-LAW-LIFT) at g₀ = 1 ∧ δ₁ = 1 / gr(w₂) wrapper rides the accepted GRB
+  retarget / orders ≥ 3 untouched). Rung 2 = [IL3] at attempt grade (counter 0/2;
+  round 2 completed not-clean on narrow display/naming findings, errata
+  round 2 → round 3 owed). Rung n ≥ 3: conditional on (i) the [IL3] rung-2 package and
+  (ii) the OPEN ENGINE FAMILY (RM-m) for 2 ≤ m ≤ n−1 (S4.6) — the one leg of
+  the generic step that resists; every other leg of the inductive step is
+  proved level-generically in this note.
+* **Unconditional at every rung and on ALL pairs (DCX included):** the entire
+  integer layer — the shift cascade β_j″ = B_j + S_j (all j), D_j-integrality
+  (all j), the (★)-positivity of the shift chain, WINDOW-(n), the slotwise
+  cocycle identity of the displayed constants, ℤ/E_{n+1}-descent of all
+  constants, and the degeneration collapses at integer level (S2, S6).
+
+| clause | grade | where |
+|---|---|---|
+| L1 EQ12-ADD at a general read | ACCEPTED ([IL S2 L1] — harness tower class, standard-lift, strict superset of §S2's E₂ > 1 pin, three residuals in force) | S2 |
+| SHIFT-(n): β_j″ = B_j + S_j for j = n..1 | PROVED, generic, unconditional | S2 |
+| D_j-INT for all j | PROVED, generic, unconditional | S2 |
+| (★)-POS: S_j = 0 or e_jS_j ≥ γ_{j+1} | PROVED, generic, unconditional (NEW display) | S2 |
+| WINDOW-(n) | PROVED, generic, unconditional | S2 |
+| EXP-KIT (a)/(b)/(c), generic in the level | PROVED (re-displayed self-contained) | S3 |
+| TRUNC (the truncation dictionary) | PROVED, generic | S4.0 |
+| REALIZE-(m) + WELL-DEF-(n) (canonical lifts exist; Ĉ-clauses) | PROVED, generic (incl. the (I_m) descent invariant — NEW) | S4.1 |
+| READ-ADD-(m) (additivity + strict-above kill) | PROVED, generic | S4.1 |
+| L6-(n) ANCHOR-VAL = ε-chain, all n | PROVED given only the [IL] base (ACCEPTED on the harness tower class, standard-lift, superset of §S2's E₂ > 1 pin, three residuals; no RM, no DCX) **[attribution (errata r4, 2026-08-03; PE4-F1): + S4.1 at rungs ≥ 2 — the canonical-lift certification (WELL-DEF-(n)/(R1) + C_k existence) consumed via the S0.1 class pin and the S4.2 degree-telescope input; S4.1's m = 1 base rides [IL3]†; rung 1 given [IL] alone]** | S4.2 |
+| the induction package (ITER-PKG-r) | STATED; base r = 1 ACCEPTED, r = 2 = [IL3] 0/2 | S4.3 |
+| CASE-SPLIT-(n) | PROVED, generic (given IH package) | S4.4 |
+| W-MULT-(n) Case I | PROVED, generic (given IH package) | S4.5 |
+| (RM-m) engine: m = 1 | PROVED via [IL3] (e₀ ≥ 2; + e₀ = 1 ∧ d₀ = 1; corner inherited) | S4.6 |
+| (RM-m) engine: 2 ≤ m ≤ n−1 | **OPEN, priced** (THE resisting leg) | S4.6 |
+| W-MULT-(n) Cases II-1/II-2/II-3, off DCX | PROVED generic MODULO (RM-(n−1)) | S4.6 |
+| DCX-(n): outer bound per level | PROVED, generic **(given IH package — errata r1, PE-G1)** | S4.7 |
+| DCX-(n): sharp form + emptiness | m = 2 proved ([IL3]); m ≥ 3 engine-dependent, conjectured e_{m−2} ≥ 3 | S4.7 |
+| W-MULT on DCX-(n) | **OPEN** ((W-MULT-DCX-m) family), instance-true | S4.7 |
+| THE THEOREM, off DCX | proved modulo the S7 ledger (per-rung conditionality above) | S5 |
+| COR-1..COR-5 (with OFF-DCX qualifiers baked in) | S6 | S6 |
+| (INV-n) class, gr(w) wrapper, GMN, general lifts, Lean | NOT TOUCHED (fences) | S9 |
+
+
+=== THE (M3) SCORED-STRATUM CLAUSE (WELDMASTER, verbatim) ===
+
+
+
+=== ATTEMPT 1 IN FULL (brief + output) ===
+
+X-LEMMA PROOF ATTEMPT (the universal stage-recentering lemma) — you are a
+mathematician in a fresh context. Everything needed is pasted below,
+self-contained; you cannot read files.
+
+CONTEXT: a prior probe (also pasted, at the end) established that GENHN-4
+(the junction-consumption step) is NOT derivable from the WELDMASTER faces
+(M0)-(M4) + WM-COB + J-D0 alone: layers 2-3 are recoverable, but layer 1
+(the graded kills) requires exactly one missing lemma, called X below. The
+probe characterized X precisely:
+
+  X (the universal stage-recentering lemma), two inseparable halves:
+  (i) PERIMETER RE-INSTANTIATION: an arbitrary stage-alpha event at
+      (e1, f1, mu, kappa) is identified with a scored (M3) B_n-stratum
+      inside (M2)'s slot fences (what (M0) needs before it can identify
+      division chains);
+  (ii) THE ADDITIVE ACTION: under recentering Phi' -> Phi' + w, the
+      transform acts as T -> T + s coefficient-for-coefficient with
+      matching z^{fl}-twists in both carry products and residual assembly;
+      the coefficient identity res_{(mu-j)kappa}(A_j^new) = [T^j] R(T+s),
+      INCLUDING the collision/mod-wrap cases.
+
+YOUR CHARGE: PROVE X. Owner guidance: this lemma "simplifies the proof a
+lot"; it matches an already-wanted elementary carry display (GENHN-BOX-2),
+so it fits the program's intuition; attempt the full proof. Deliverables,
+in order:
+1. A precise statement of X (both halves), in the pasted materials'
+   notation, with every hypothesis explicit.
+2. THE PROOF, complete: every step justified from the pasted statements or
+   from standard facts (name them precisely — standard literature is
+   citable). If a step resists, do NOT paper over it: display the exact
+   resisting case and downgrade the deliverable to a partial proof + the
+   named residual, honestly.
+3. A MACHINE-VERIFICATION PLAN: 3+ concrete frames (small explicit
+   parameters), the predicted exact values of the X-identity at each
+   (numbers, not shapes), and 2+ planted falsifiers (mutations that must
+   fail). The program verifies numerically before trusting.
+4. End with exactly one line: OUTCOME: PROVED | PARTIAL | OBSTRUCTED.
+
+THE MATERIALS (from the probe's own self-contained brief, then the probe's
+findings):
+
+# SG-2 PROBE BRIEF (RCT unit S-7-SG2-probe, CODEX arm) — 2026-08-10
+
+You are a research mathematician doing an adversarial feasibility probe in
+p-adic Okutsu–Montes/Newton-polygon combinatorics. You see ONLY this brief
+(you cannot read files). All statements below are pasted verbatim from a
+frozen, verified corpus, with (note, commit, line) pins.
+
+## 0. THE QUESTION
+
+A large verified corpus proves splitting-density laws via a "weld": four
+junction theorems tying a harness calculus (Φ-developments, weights, reads)
+to a classifier/print calculus. WELDMASTER packages the four junctions as
+five clauses (M0)–(M4) of ONE transport 𝕋 plus a coboundary theorem WM-COB.
+Separately, LEMMA J-D0 proves count-layer gauge/value blindness. The lemma
+LEMMA GENHN-4 (refine transfer) currently consumes COROLLARY W-9 (a face of
+junction note GRTJC) DIRECTLY as its graded organizing frame (recorded as
+GENHN-BOX-2). PROBE QUESTION (exactly this, no more):
+
+  Is LEMMA GENHN-4 re-derivable from WELDMASTER's clauses (M0)–(M4) +
+  WM-COB + LEMMA J-D0 ALONE (plus GENHN's own internal lemmas GENHN-2,
+  GENHN-3 and classical facts) — i.e. does the weld's one-face consumption
+  through WELDMASTER's stated clauses suffice, WITHOUT any direct citation
+  into the junction notes (GRTJA/GRTJB/GRTJC/GRTW2) beyond what the clause
+  texts themselves state?
+
+You do NOT decide anything about retiring notes or formalization scope.
+Your deliverable is the mathematical verdict only.
+
+## 1. THE TARGET — LEMMA GENHN-4, verbatim
+(GENHN_PROOF_2026-08-08.md @ 59c1966d, L865–921)
+
+Setting: a stage-α event at dv-slope κ (the stage polygon one side
+(0, μκ)–(μ, 0), integer κ > current floor S′, residual (T − s)^μ,
+s ∈ K^×). Recenter Φ′ ↦ Φ′_new := Φ′ + w, w := −ŝ·n(κ)-lift (the
+canonical digit lift; convention-keyed as always).
+
+*The computation, in three layers.*
+1. **Leading graded layer (the kills).** Pass to gr R = the twisted
+   algebra K^c[ℤ/e₁-graded lines] (COROLLARY W-9 @ accepted pin,
+   consumed HERE as the organizing frame — disclosed; GENHN-2 makes
+   the passage pointwise-faithful: one K-slot per height, slot-min =
+   valuation). In gr, the development transforms by the substitution
+   Φ̄′ ↦ Φ̄′ + s̄ on the residual polynomial: the new residual at the
+   node heights is R(T + s) where R(T) = (T − s)^μ, ALL of whose
+   coefficients below degree μ vanish — the μ pins die. The twist
+   powers z^{fl} (S4's cocycle: n(κ)^t = ẑ^{fl_t}n(tκ)) enter both
+   the residual assembly and the carry products IDENTICALLY, so the
+   graded identity holds coefficient for coefficient over K.
+   [...instance reconciliation prose elided...] Both
+   characteristics: the identity R(T+s) = T^μ is binomial-free as
+   stated (it is a substitution identity, not an expansion).
+2. **Correction layer (everything else lands deeper and in-window).**
+   The non-graded corrections — products w^{i−j}A_i and the x-degree
+   overflow of w·A_i reduced mod Φ′ — have dv strictly greater than
+   the pinned heights: dv(w^{i−j}A_i-correction) ≥ (i−j)κ + (μ−i)κ +
+   1 = (μ−j)κ + 1 (each factor exceeds its side height only in the
+   correction terms; the exact-height products ARE layer 1). By
+   LEMMA GENHN-3(c)(d) they land at in-window positions and move
+   upward only.
+3. **Bijectivity.** The map on digit spaces is triangular (each new
+   digit = old digit + strictly-lower-data), injective, image inside
+   the floored node {dv(A_j) > (μ−j)κ}; onto by cardinality: the
+   refine slice fixes the μ pinned digits and frees exactly the
+   slots above the node floors (slot strings are key-independent —
+   GENHN-2), the same count as the node. Letters: |K| − 1 choices of
+   s per step. ∎
+
+Grade note (verbatim): "At μ = 2 the identity was verified pointwise-
+elementarily by GENH4 [...]. At general μ, layer 1 CONSUMES the W-9 graded
+frame (accepted 2/2) rather than re-deriving the carry digit-by-digit".
+
+GENHN-BOX-2 (verbatim, L1331–1339): "LEMMA GENHN-4's layer 1 at μ ≥ 3
+consumes COROLLARY W-9's twisted algebra as the carry bookkeeping (unlike
+GENH4, which re-proved its μ = 2 instances elementarily). [...] An
+elementary general-μ carry display (the GENH4-S5 computation at general
+(e₁, f₁, μ)) would retire this box; until then the count laws at μ ≥ 3
+stand on one accepted weld face."
+
+## 2. ALLOWED INPUT A — WELDMASTER (fdf1d995), THEOREM WELD-M, L284–311
+
+**THEOREM WELD-M.** For every tower T of the [ILN]† S0.1 class realized as
+a principal-read OM type via the dictionary map T(t) (JA-PIN — the DOMAIN
+identification, consumed: every class-pin clause forced by the print's own
+hypotheses, lift clause = W-2), there is ONE transport 𝕋 between the
+harness calculus (Φ-developments, weights w_m, reads R_m v, the ε-kit,
+canonical lifts) and the classifier/print calculus (φ-adic developments,
+v_{m+1}, residual operators, t(i)-twists, GMN keys), with five clauses:
+
+    (M0) [substrate]      𝕋 is the IDENTITY on the underlying division
+         arithmetic: the same canonical division chain by the same monic
+         key at the admissible representative.
+    (M1) [gradings]       𝕋 preserves weights in the sheared frame
+         (w_m = v_{m+1}), and its induced map on polygon/grading data is
+         the explicit affine shear Σ_q(i,u) = (i, e_q·u + h_q·i) — lower
+         hulls to lower hulls, vertex-for-vertex, slope law s ↦ e_q s + h_q.
+    (M2) [reads/operators] 𝕋 acts on packed read data by explicit PER-SLOT
+         z-characters generated by ONE 1-cochain — the S0 weld cochain
+         t_j/ε_j: scalar per slot exactly on the S3 perimeter, exact
+         recursion ((HR-REC) genre) elsewhere. Never slot-independent
+         (JA-BOX-1 inherited verbatim).
+    (M3) [multiplication] 𝕋 transports multiplication up to the carry
+         cocycle: on B_n coordinates the target is the twisted group
+         algebra K^c[ℤ/E] with c = z̄^δ·∏_j z_j^{D_j} on the scored
+         stratum, and harness-val = TC-read.
+    (M4) [covariance]     𝕋 is covariant in the lift/representative
+         choice: changing the representative acts on (M2)–(M3) by the
+         (ξ, w) character system, with ψ-transport making the two chains
+         carry the same type.
+
+Perimeter/conditionality carried by the faces (from the note's face table,
+condensed): (M0) W-2 clause 1's perimeter; byte clause on `P≤q` only.
+(M1) shared-key perimeter `P<q` (one layer at `P≤q`); a u ≥ 0 membership
+residue open at the unbounded-degree quantifier. (M2) per-digit proviso at
+m ≥ 3 / (R-coll); (C-coll) at m ≥ 2; mod-wrap box; PER-SLOT, never scalar.
+(M3) [ILN]† scored stratum; (DMULT-w) CITED / (DMULT-s) MEASURED tier
+split. (M4) scalar closed form on (C-coll) only; W2-OPEN-1 (value layer)
+OPEN. The note's own remark: "WELD-M is an ORGANIZING UMBRELLA [...] What
+each junction note carries BEYOND its face (its closed forms, boundary
+censuses, box systems) remains in that note and is NOT absorbed."
+
+## 3. ALLOWED INPUT B — THEOREM WM-COB (same note, L344–369)
+
+**THEOREM WM-COB.** Let (γ, γ′) be a pair with [ILN]† S0.3 data
+(δ, S_j, D_j) and per-level split weights β_j := β_j(γ), β′_j := β_j(γ′),
+β″_j := β_j(γ+γ′).
+(i) [integer form; unconditional; ALL pairs] For every level j = 1..n:
+    D_j = t_j(β″_j) − t_j(β_j) − t_j(β′_j) =: (∂t_j)(γ, γ′).
+(ii) [field form] In K_j:  z_j^{D_j} = ε_j(β_j)·ε_j(β′_j)·ε_j(β″_j)^{−1}.
+(iii) [composite display; scored stratum] With ∂E(γ,γ′) :=
+E(γ)E(γ′)/E(γ+γ′):  c_{n+1}(γ, γ′) = z̄^δ·(∂E)(γ, γ′).
+"THE ENTIRE INNER FACTOR OF THE ACCEPTED COCYCLE IS A COBOUNDARY [...] The
+outer letter z̄^δ is NOT a coboundary of this cochain."
+
+(THEOREM WM-FENCE, the note's third statement, is the value-layer
+one-perimeter fence — character-triviality specializations (R-coll)/
+(VD-m)/(C-coll). Available if you need it, but it is value-layer.)
+
+## 4. ALLOWED INPUT C — LEMMA J-D0 (JD0_PROOF @ 9387eb1a, L40–57)
+
+The carry gauge: a 1-cochain u : γ ↦ u_γ ∈ K^* acting by anchor rescaling
+a_γ ↦ u_γ·a_γ; action: ledger c(γ,γ′) ↦ c·∂u; slot v ↦ u·v; residual
+R(y) ↦ ξ^{−deg R}·R(ξ·y); positions, δ, D_j, grid abscissas UNCHANGED.
+
+**LEMMA J-D0.** (i) [GAUGE-INVARIANCE] For every decided shape T, every
+prime power q, and every 1-cochain u with unit values, the stratum count of
+T computed through the u-gauged read equals the direct stratum count.
+(ii) [VALUE-BLINDNESS] Any two towers/types with the same shape data
+(d0, (e_j, h_j, g_j)_j) and residual-degree structure have EQUAL stratum
+counts at every q, regardless of their letters and carry cochains.
+Consequence: the stratum count is a function of the SHAPE alone.
+[Proved; perimeter: unit-character gauges; the L3 × L4 count assembly.]
+
+## 5. ALLOWED INPUTS D — GENHN's OWN lemmas (not weld faces; @ 59c1966d)
+
+**LEMMA GENHN-2** (L699–717): A = Σ_{i<D′} a_i x^i, a_i ∈ O. Then
+dv(A(θ)) = min_i (e₁·v(a_i) + i·h) EXACTLY, for every root θ of Φ′ and
+every lift; min's residue class mod e₁ is i·h mod e₁ (distinct for distinct
+i mod e₁, gcd(h,e₁) = 1); within-class ties assemble Σ_t res(a_{i+e₁t})·η^t
+≠ 0 by F_Q-independence of {1, η, ..., η^{f₁−1}}. Each A_j carries exactly
+ONE K-digit slot per integer dv-height; formal slot-min IS the valuation:
+"the graded read transcribed pointwise." (Note: "W-9's dim_K 𝒜(T) = E = e₁
+is this statement's graded shadow (cited as frame)" — GENHN-2 is proved
+elementarily, NOT via the weld.)
+
+The twist paragraph (L731–738, verbatim core): normalizers n(m) :=
+x^{i(m)}π^{a(m)}, i(m)·h + e₁·a(m) = m; products wrap through θ^{e₁} =
+(unit lift)·π^h: n(κ)^t = ẑ^{fl}·n(tκ) with explicit integer fl = the wrap
+count — "W-9's cocycle, literal." Side residuals assembled with coherent
+normalizers are z-power-twisted slot digits; "counts are twist-blind
+(J-D0: (digits) ↦ (twisted digits) is a type-preserving bijection),
+LETTERS are twisted."
+
+**LEMMA GENHN-3** (L741–763): (a) a computed dv-value is lift-stable iff
+< e₁N; (b) class-i slot string ends at e₁(N−1) + ih (ragged); (c) every
+digit consulted by a readable event sits strictly inside its class's
+window (congruence argument); (d) along chains every update determines new
+digits at height d from old digits at heights ≤ d: carries move upward
+only. [All proved elementarily in the note.]
+
+## 6. REFERENCE ONLY — what GENHN-4 currently consumes (NOT an allowed
+input except insofar as (M3)'s clause text carries it)
+
+**COROLLARY W-9** (GRTJC @ 63091cef, L1777–1787): Given W-6, W-7, W-8:
+(i) c_{m+1} descends to ℤ/E × ℤ/E → K^* and is a 2-cocycle (= associativity
+of gr(w)'s multiplication); (ii) its y-degree part δ satisfies the integer
+carry-cocycle identity; (iii) 𝒜(T) is the twisted group algebra K^c[ℤ/E]
+of the abscissa-coset group over the carry cocycle; (iv) the E-fold orbit
+product ζ_T := ∏ c(1,k) is the K-scalar tying anchor product to π-power.
+
+The recorded scent (HE3_PROOF @ its pin, §S0, verbatim): "GENHN.A(iv)/
+LEMMA GENHN-4 is NOT consumed [by HE3], hence the W-9 graded weld face
+(GENHN-BOX-2) is NOT inherited: GENHN-4 is the *digit-space bijection*
+used for COUNT laws; this unit needs only the *valuations and residues* of
+a recentered development."
+
+## 7. YOUR CHARGE
+
+ATTEMPT THE DERIVATION of LEMMA GENHN-4 (all three layers) from inputs
+A + B + C + D + classical facts only. Rules:
+- W-9 may be used ONLY through (M3)'s clause text ("on B_n coordinates the
+  target is the twisted group algebra K^c[ℤ/E] with c = z̄^δ·∏_j z_j^{D_j}
+  on the scored stratum, and harness-val = TC-read") with its scored-
+  stratum perimeter — not through GRTJC's internal content.
+- No input may be cited that itself consumes GENHN-4 (circularity).
+- Perimeter accounting is mandatory: GENHN-4 quantifies over ALL stage-α
+  events at general (e₁, f₁, μ). Say explicitly whether (M3)'s scored
+  stratum + (M2)'s per-slot fences cover that range, or whether the
+  perimeter mismatch is itself the obstruction.
+- Note that GENHN-4 is used at STAGE level (the stage-graded algebra of a
+  stage-α event, slope κ, residual (T−s)^μ) — if (M0)–(M4) speak only of
+  the tower/type transport at the base weld and not of the stage-internal
+  graded frame, say precisely which re-instantiation would be needed.
+
+OUTPUT FORMAT (strict):
+1. VERDICT: one of DERIVABLE / NOT-DERIVABLE / NEEDS-X. If NEEDS-X, state
+   X as a precise mathematical statement (the exact missing content).
+2. PER-LAYER verdicts (layer 1 graded kills; layer 2 correction
+   strictness; layer 3 bijectivity+count), one line each, each naming the
+   inputs (M0..M4, WM-COB, J-D0, GENHN-2, GENHN-3) actually used.
+3. If DERIVABLE: the full proof sketch, numbered steps, each step naming
+   its input label; flag the single most falsifiable step (one that a
+   machine could spot-check on a concrete stage-α event).
+4. If NOT-DERIVABLE or NEEDS-X: the EXACT obstruction — which GENHN-4
+   content is not present in the weld's faces (e.g. the stage-level
+   twisted-algebra structure vs the tower-level K^c[ℤ/E]; the fl-twist
+   cancellation in residual assembly vs carry products; the cardinality
+   count of freed slots) — stated so that a follow-up unit could target
+   exactly it.
+5. CHECKED-CLEAN list: which parts of GENHN-4 ARE clearly recoverable from
+   the allowed inputs, so the residue is minimal.
+No deference: the corpus authors expect you to try to BREAK the hoped-for
+derivation. An honest NOT-DERIVABLE with a sharp obstruction is worth more
+than an optimistic sketch.
+=== THE PROBE'S FULL FINDINGS (verbatim) ===
+# SG-2 PROBE — GENHN-4 vs WELDMASTER (M0)–(M4) + J-D0 (CODEX ARM)
+
+**RCT unit S-7-SG2-probe** (docs/PROVER_RCT_PROTOCOL_2026-08-10.md §3 +
+Amendment 1; assignment ledger row: frontier, first-hex b, CODEX).
+**Blueprint:** docs/SIMPLIFICATION_BLUEPRINT_2026-08-10.md §3 SG-2, as
+re-scoped by Plan revision 1 R.4 (F23/F36): this probe concludes at most
+"GENHN-4 is / is not re-derivable from WELDMASTER M0–M4 + JD0"; it claims
+NOTHING about retiring junction notes, and it is BRANCH-NEUTRAL between
+the two declared R.4 payoff branches (Asvin's choice).
+
+**Run of record.** Brief: `sg2_probe_brief_2026-08-10.md` (233 lines,
+sealed commit 628feeb0 — GENHN-4 verbatim @ 59c1966d L865–921; WELD-M
+@ fdf1d995 L284–311 + face conditionality; WM-COB L344–369; J-D0
+@ 9387eb1a L49–57 + gauge action; GENHN-2/GENHN-3 as allowed non-weld
+inputs; W-9 marked REFERENCE-ONLY, usable solely through (M3)'s clause
+text). ONE foreground call, `codex exec --skip-git-repo-check
+-c model_reasoning_effort=high -`, exit 0, wall 113 s, 13,037 tokens;
+raw output `verification/openmath/sg2_probe_codex_output.txt`
+(md5 ceb96150, commit c0dc1e8e).
+
+---
+
+## THE FEASIBILITY VERDICT (branch-neutral, R.4-scoped)
+
+**NEEDS-X.** On this probe's trace, GENHN-4 is NOT re-derivable from
+WELDMASTER (M0)–(M4) + WM-COB + J-D0 as those clauses are stated: the
+weld's one-face consumption does not suffice for layer 1 (the graded
+kills). Two of GENHN-4's three layers ARE recoverable without any direct
+junction-note citation (layer 2 from GENHN-2 + GENHN-3(c)(d) + classical
+filtered arithmetic; layer 3 from GENHN-2 + GENHN-3(d) + J-D0 +
+triangular-map cardinality, CONDITIONAL on layer 1). The residue X is
+stated precisely below. This verdict informs, and does not make, the R.4
+branch decision; a whole-path retirement claim would additionally
+require the corpus-wide face-citation audit named at R.4 and the branch
+choice — neither is attempted here.
+
+**X (the exact missing content, as returned):** a universal
+stage-recentering lemma — for a stage-α event at data (e₁, f₁, μ, κ),
+(i) the stage filtration is identified with an (M3) scored B_n-stratum
+with the relevant slots inside (M2)'s perimeter, and (ii) the
+recentering Φ′ ↦ Φ′ + w induces, in coherent normalized graded
+coordinates, res_{(μ−j)κ}(A_j^new) = [T^j] R(T+s) for 0 ≤ j ≤ μ —
+equivalently, the cocycle factors from the products w^{i−j}A_i agree
+term-by-term with the twist factors assembling the stage residual
+polynomial — including collision/mod-wrap cases beyond WELD-M's
+scored/perimeter subrange.
+
+## THE OBSTRUCTION (two inseparable layer-1 gaps, per the output)
+
+1. **Perimeter re-instantiation is absent from the faces.** GENHN-4
+   ranges over stage-α events at arbitrary (e₁, f₁, μ); (M3) speaks on
+   the [ILN]† scored stratum and (M2) carries level/collision/mod-wrap
+   fences. No clause of (M0)–(M4) asserts that a stage event determines
+   an admissible principal-read type in WELD-M's domain, identifies
+   stage node coordinates with B_n-coordinates, is scored, or meets
+   (M2)'s slot conditions. (M0) identifies division chains only AFTER
+   such an instantiation.
+2. **The additive recentering action is not a stated face.** (M3) gives
+   the ambient twisted algebra K^c[ℤ/E] but not how Φ′ ↦ Φ′ + w becomes
+   T ↦ T + s coefficient-for-coefficient with matching z^{fl}-factors in
+   both the carry products and the residual assembly. (M4)'s covariance
+   is a character-system action, not the additive-translation formula.
+   WM-COB gauges the inner factor ∏_j z_j^{D_j} but leaves z̄^δ and does
+   not identify the residual variable. J-D0 is count-layer blindness and
+   cannot substitute for the event-level coefficient identity
+   R(T+s) = T^μ.
+
+## CHECKED-CLEAN (recoverable from the allowed inputs; 8 items returned)
+
+GENHN-2's slot-per-height read with slot-min = valuation; the normalizer
+wrap powers as recorded (compatibility at general μ NOT included);
+layer-2 (+1)-strictness once leading terms vanish; GENHN-3(c)(d) window
+placement + upward-only carries; triangularity ⟹ injectivity; equal
+free-slot cardinalities ⟹ surjectivity; J-D0 twist-blindness of the
+resulting counts; the letter factor |K|−1 from s ∈ K^×.
+
+## LAB-TECH RECORD (transcription only; no content altered)
+
+* The verdict, obstruction, and checked-clean sections above transcribe
+  the CODEX output's items 1/2/4/5 with notation matched to the corpus
+  (LaTeX → Unicode); the raw output is committed unedited and is the
+  artifact of record. The output carries no item "3" — the format
+  reserved 3 for a DERIVABLE sketch, which was not claimed.
+* **No machine spot-check owed:** the unit's machine leg fires only on a
+  claimed derivation (feasible-with-sketch); the returned verdict is
+  NEEDS-X, so no sealed spot-check instrument was built. The X-statement
+  is itself machine-checkable (res_{(μ−j)κ}(A_j^new) = [T^j]R(T+s) on
+  concrete stage-α events) and is the natural sealed battery IF a
+  follow-up unit attempts X.
+* Consistency note (tech observation, not adjudication): the NEEDS-X
+  geography matches GENHN-BOX-2's own record — "an elementary general-μ
+  carry display (the GENH4-S5 computation at general (e₁, f₁, μ)) would
+  retire this box" — i.e. the probe's X is the box's known wanted
+  display PLUS the perimeter-instantiation clause the box does not name.
+* Declared conditionality (R.4/F36): this verdict reads the statements
+  at the S-0 ledger pins (628feeb0's brief quotes; ledger baseline
+  7e2b38df) and under the standing axiom policy; it is CODEX-arm
+  composed and awaits the standard arc treatment if consumed further.
+
+## RCT §4 outcome data (recorded at unit close)
+
+(a) rounds: single call, no retry. (b) first-pass profile: n/a (probe,
+not a proof note). (c) instrument: none owed (see above). (e) cost:
+113 s wall, 13,037 tokens, one call. (f) qualitative: the arm consumed a
+233-line fully-pasted brief and returned a structured, perimeter-aware
+obstruction that separates the three layers and names the two missing
+face contents precisely; it neither overclaimed derivability nor padded
+the checked-clean list beyond the allowed inputs.
+
+
+=== ATTEMPT 1 OUTPUT ===
+
+Reading additional input from stdin...
+OpenAI Codex v0.145.0
+--------
+workdir: /data/users/asvin/math-and-lean/p-adic-splitting-densities
+model: gpt-5.6-sol
+provider: openai
+approval: never
+sandbox: workspace-write [workdir, /tmp, $TMPDIR]
+reasoning effort: high
+reasoning summaries: none
+session id: 019fed8e-6e3d-7b21-9a51-0eb2549078ca
+--------
+user
+X-LEMMA PROOF ATTEMPT (the universal stage-recentering lemma) — you are a
+mathematician in a fresh context. Everything needed is pasted below,
+self-contained; you cannot read files.
+
+CONTEXT: a prior probe (also pasted, at the end) established that GENHN-4
+(the junction-consumption step) is NOT derivable from the WELDMASTER faces
+(M0)-(M4) + WM-COB + J-D0 alone: layers 2-3 are recoverable, but layer 1
+(the graded kills) requires exactly one missing lemma, called X below. The
+probe characterized X precisely:
+
+  X (the universal stage-recentering lemma), two inseparable halves:
+  (i) PERIMETER RE-INSTANTIATION: an arbitrary stage-alpha event at
+      (e1, f1, mu, kappa) is identified with a scored (M3) B_n-stratum
+      inside (M2)'s slot fences (what (M0) needs before it can identify
+      division chains);
+  (ii) THE ADDITIVE ACTION: under recentering Phi' -> Phi' + w, the
+      transform acts as T -> T + s coefficient-for-coefficient with
+      matching z^{fl}-twists in both carry products and residual assembly;
+      the coefficient identity res_{(mu-j)kappa}(A_j^new) = [T^j] R(T+s),
+      INCLUDING the collision/mod-wrap cases.
+
+YOUR CHARGE: PROVE X. Owner guidance: this lemma "simplifies the proof a
+lot"; it matches an already-wanted elementary carry display (GENHN-BOX-2),
+so it fits the program's intuition; attempt the full proof. Deliverables,
+in order:
+1. A precise statement of X (both halves), in the pasted materials'
+   notation, with every hypothesis explicit.
+2. THE PROOF, complete: every step justified from the pasted statements or
+   from standard facts (name them precisely — standard literature is
+   citable). If a step resists, do NOT paper over it: display the exact
+   resisting case and downgrade the deliverable to a partial proof + the
+   named residual, honestly.
+3. A MACHINE-VERIFICATION PLAN: 3+ concrete frames (small explicit
+   parameters), the predicted exact values of the X-identity at each
+   (numbers, not shapes), and 2+ planted falsifiers (mutations that must
+   fail). The program verifies numerically before trusting.
+4. End with exactly one line: OUTCOME: PROVED | PARTIAL | OBSTRUCTED.
+
+THE MATERIALS (from the probe's own self-contained brief, then the probe's
+findings):
+
+# SG-2 PROBE BRIEF (RCT unit S-7-SG2-probe, CODEX arm) — 2026-08-10
+
+You are a research mathematician doing an adversarial feasibility probe in
+p-adic Okutsu–Montes/Newton-polygon combinatorics. You see ONLY this brief
+(you cannot read files). All statements below are pasted verbatim from a
+frozen, verified corpus, with (note, commit, line) pins.
+
+## 0. THE QUESTION
+
+A large verified corpus proves splitting-density laws via a "weld": four
+junction theorems tying a harness calculus (Φ-developments, weights, reads)
+to a classifier/print calculus. WELDMASTER packages the four junctions as
+five clauses (M0)–(M4) of ONE transport 𝕋 plus a coboundary theorem WM-COB.
+Separately, LEMMA J-D0 proves count-layer gauge/value blindness. The lemma
+LEMMA GENHN-4 (refine transfer) currently consumes COROLLARY W-9 (a face of
+junction note GRTJC) DIRECTLY as its graded organizing frame (recorded as
+GENHN-BOX-2). PROBE QUESTION (exactly this, no more):
+
+  Is LEMMA GENHN-4 re-derivable from WELDMASTER's clauses (M0)–(M4) +
+  WM-COB + LEMMA J-D0 ALONE (plus GENHN's own internal lemmas GENHN-2,
+  GENHN-3 and classical facts) — i.e. does the weld's one-face consumption
+  through WELDMASTER's stated clauses suffice, WITHOUT any direct citation
+  into the junction notes (GRTJA/GRTJB/GRTJC/GRTW2) beyond what the clause
+  texts themselves state?
+
+You do NOT decide anything about retiring notes or formalization scope.
+Your deliverable is the mathematical verdict only.
+
+## 1. THE TARGET — LEMMA GENHN-4, verbatim
+(GENHN_PROOF_2026-08-08.md @ 59c1966d, L865–921)
+
+Setting: a stage-α event at dv-slope κ (the stage polygon one side
+(0, μκ)–(μ, 0), integer κ > current floor S′, residual (T − s)^μ,
+s ∈ K^×). Recenter Φ′ ↦ Φ′_new := Φ′ + w, w := −ŝ·n(κ)-lift (the
+canonical digit lift; convention-keyed as always).
+
+*The computation, in three layers.*
+1. **Leading graded layer (the kills).** Pass to gr R = the twisted
+   algebra K^c[ℤ/e₁-graded lines] (COROLLARY W-9 @ accepted pin,
+   consumed HERE as the organizing frame — disclosed; GENHN-2 makes
+   the passage pointwise-faithful: one K-slot per height, slot-min =
+   valuation). In gr, the development transforms by the substitution
+   Φ̄′ ↦ Φ̄′ + s̄ on the residual polynomial: the new residual at the
+   node heights is R(T + s) where R(T) = (T − s)^μ, ALL of whose
+   coefficients below degree μ vanish — the μ pins die. The twist
+   powers z^{fl} (S4's cocycle: n(κ)^t = ẑ^{fl_t}n(tκ)) enter both
+   the residual assembly and the carry products IDENTICALLY, so the
+   graded identity holds coefficient for coefficient over K.
+   [...instance reconciliation prose elided...] Both
+   characteristics: the identity R(T+s) = T^μ is binomial-free as
+   stated (it is a substitution identity, not an expansion).
+2. **Correction layer (everything else lands deeper and in-window).**
+   The non-graded corrections — products w^{i−j}A_i and the x-degree
+   overflow of w·A_i reduced mod Φ′ — have dv strictly greater than
+   the pinned heights: dv(w^{i−j}A_i-correction) ≥ (i−j)κ + (μ−i)κ +
+   1 = (μ−j)κ + 1 (each factor exceeds its side height only in the
+   correction terms; the exact-height products ARE layer 1). By
+   LEMMA GENHN-3(c)(d) they land at in-window positions and move
+   upward only.
+3. **Bijectivity.** The map on digit spaces is triangular (each new
+   digit = old digit + strictly-lower-data), injective, image inside
+   the floored node {dv(A_j) > (μ−j)κ}; onto by cardinality: the
+   refine slice fixes the μ pinned digits and frees exactly the
+   slots above the node floors (slot strings are key-independent —
+   GENHN-2), the same count as the node. Letters: |K| − 1 choices of
+   s per step. ∎
+
+Grade note (verbatim): "At μ = 2 the identity was verified pointwise-
+elementarily by GENH4 [...]. At general μ, layer 1 CONSUMES the W-9 graded
+frame (accepted 2/2) rather than re-deriving the carry digit-by-digit".
+
+GENHN-BOX-2 (verbatim, L1331–1339): "LEMMA GENHN-4's layer 1 at μ ≥ 3
+consumes COROLLARY W-9's twisted algebra as the carry bookkeeping (unlike
+GENH4, which re-proved its μ = 2 instances elementarily). [...] An
+elementary general-μ carry display (the GENH4-S5 computation at general
+(e₁, f₁, μ)) would retire this box; until then the count laws at μ ≥ 3
+stand on one accepted weld face."
+
+## 2. ALLOWED INPUT A — WELDMASTER (fdf1d995), THEOREM WELD-M, L284–311
+
+**THEOREM WELD-M.** For every tower T of the [ILN]† S0.1 class realized as
+a principal-read OM type via the dictionary map T(t) (JA-PIN — the DOMAIN
+identification, consumed: every class-pin clause forced by the print's own
+hypotheses, lift clause = W-2), there is ONE transport 𝕋 between the
+harness calculus (Φ-developments, weights w_m, reads R_m v, the ε-kit,
+canonical lifts) and the classifier/print calculus (φ-adic developments,
+v_{m+1}, residual operators, t(i)-twists, GMN keys), with five clauses:
+
+    (M0) [substrate]      𝕋 is the IDENTITY on the underlying division
+         arithmetic: the same canonical division chain by the same monic
+         key at the admissible representative.
+    (M1) [gradings]       𝕋 preserves weights in the sheared frame
+         (w_m = v_{m+1}), and its induced map on polygon/grading data is
+         the explicit affine shear Σ_q(i,u) = (i, e_q·u + h_q·i) — lower
+         hulls to lower hulls, vertex-for-vertex, slope law s ↦ e_q s + h_q.
+    (M2) [reads/operators] 𝕋 acts on packed read data by explicit PER-SLOT
+         z-characters generated by ONE 1-cochain — the S0 weld cochain
+         t_j/ε_j: scalar per slot exactly on the S3 perimeter, exact
+         recursion ((HR-REC) genre) elsewhere. Never slot-independent
+         (JA-BOX-1 inherited verbatim).
+    (M3) [multiplication] 𝕋 transports multiplication up to the carry
+         cocycle: on B_n coordinates the target is the twisted group
+         algebra K^c[ℤ/E] with c = z̄^δ·∏_j z_j^{D_j} on the scored
+         stratum, and harness-val = TC-read.
+    (M4) [covariance]     𝕋 is covariant in the lift/representative
+         choice: changing the representative acts on (M2)–(M3) by the
+         (ξ, w) character system, with ψ-transport making the two chains
+         carry the same type.
+
+Perimeter/conditionality carried by the faces (from the note's face table,
+condensed): (M0) W-2 clause 1's perimeter; byte clause on `P≤q` only.
+(M1) shared-key perimeter `P<q` (one layer at `P≤q`); a u ≥ 0 membership
+residue open at the unbounded-degree quantifier. (M2) per-digit proviso at
+m ≥ 3 / (R-coll); (C-coll) at m ≥ 2; mod-wrap box; PER-SLOT, never scalar.
+(M3) [ILN]† scored stratum; (DMULT-w) CITED / (DMULT-s) MEASURED tier
+split. (M4) scalar closed form on (C-coll) only; W2-OPEN-1 (value layer)
+OPEN. The note's own remark: "WELD-M is an ORGANIZING UMBRELLA [...] What
+each junction note carries BEYOND its face (its closed forms, boundary
+censuses, box systems) remains in that note and is NOT absorbed."
+
+## 3. ALLOWED INPUT B — THEOREM WM-COB (same note, L344–369)
+
+**THEOREM WM-COB.** Let (γ, γ′) be a pair with [ILN]† S0.3 data
+(δ, S_j, D_j) and per-level split weights β_j := β_j(γ), β′_j := β_j(γ′),
+β″_j := β_j(γ+γ′).
+(i) [integer form; unconditional; ALL pairs] For every level j = 1..n:
+    D_j = t_j(β″_j) − t_j(β_j) − t_j(β′_j) =: (∂t_j)(γ, γ′).
+(ii) [field form] In K_j:  z_j^{D_j} = ε_j(β_j)·ε_j(β′_j)·ε_j(β″_j)^{−1}.
+(iii) [composite display; scored stratum] With ∂E(γ,γ′) :=
+E(γ)E(γ′)/E(γ+γ′):  c_{n+1}(γ, γ′) = z̄^δ·(∂E)(γ, γ′).
+"THE ENTIRE INNER FACTOR OF THE ACCEPTED COCYCLE IS A COBOUNDARY [...] The
+outer letter z̄^δ is NOT a coboundary of this cochain."
+
+(THEOREM WM-FENCE, the note's third statement, is the value-layer
+one-perimeter fence — character-triviality specializations (R-coll)/
+(VD-m)/(C-coll). Available if you need it, but it is value-layer.)
+
+## 4. ALLOWED INPUT C — LEMMA J-D0 (JD0_PROOF @ 9387eb1a, L40–57)
+
+The carry gauge: a 1-cochain u : γ ↦ u_γ ∈ K^* acting by anchor rescaling
+a_γ ↦ u_γ·a_γ; action: ledger c(γ,γ′) ↦ c·∂u; slot v ↦ u·v; residual
+R(y) ↦ ξ^{−deg R}·R(ξ·y); positions, δ, D_j, grid abscissas UNCHANGED.
+
+**LEMMA J-D0.** (i) [GAUGE-INVARIANCE] For every decided shape T, every
+prime power q, and every 1-cochain u with unit values, the stratum count of
+T computed through the u-gauged read equals the direct stratum count.
+(ii) [VALUE-BLINDNESS] Any two towers/types with the same shape data
+(d0, (e_j, h_j, g_j)_j) and residual-degree structure have EQUAL stratum
+counts at every q, regardless of their letters and carry cochains.
+Consequence: the stratum count is a function of the SHAPE alone.
+[Proved; perimeter: unit-character gauges; the L3 × L4 count assembly.]
+
+## 5. ALLOWED INPUTS D — GENHN's OWN lemmas (not weld faces; @ 59c1966d)
+
+**LEMMA GENHN-2** (L699–717): A = Σ_{i<D′} a_i x^i, a_i ∈ O. Then
+dv(A(θ)) = min_i (e₁·v(a_i) + i·h) EXACTLY, for every root θ of Φ′ and
+every lift; min's residue class mod e₁ is i·h mod e₁ (distinct for distinct
+i mod e₁, gcd(h,e₁) = 1); within-class ties assemble Σ_t res(a_{i+e₁t})·η^t
+≠ 0 by F_Q-independence of {1, η, ..., η^{f₁−1}}. Each A_j carries exactly
+ONE K-digit slot per integer dv-height; formal slot-min IS the valuation:
+"the graded read transcribed pointwise." (Note: "W-9's dim_K 𝒜(T) = E = e₁
+is this statement's graded shadow (cited as frame)" — GENHN-2 is proved
+elementarily, NOT via the weld.)
+
+The twist paragraph (L731–738, verbatim core): normalizers n(m) :=
+x^{i(m)}π^{a(m)}, i(m)·h + e₁·a(m) = m; products wrap through θ^{e₁} =
+(unit lift)·π^h: n(κ)^t = ẑ^{fl}·n(tκ) with explicit integer fl = the wrap
+count — "W-9's cocycle, literal." Side residuals assembled with coherent
+normalizers are z-power-twisted slot digits; "counts are twist-blind
+(J-D0: (digits) ↦ (twisted digits) is a type-preserving bijection),
+LETTERS are twisted."
+
+**LEMMA GENHN-3** (L741–763): (a) a computed dv-value is lift-stable iff
+< e₁N; (b) class-i slot string ends at e₁(N−1) + ih (ragged); (c) every
+digit consulted by a readable event sits strictly inside its class's
+window (congruence argument); (d) along chains every update determines new
+digits at height d from old digits at heights ≤ d: carries move upward
+only. [All proved elementarily in the note.]
+
+## 6. REFERENCE ONLY — what GENHN-4 currently consumes (NOT an allowed
+input except insofar as (M3)'s clause text carries it)
+
+**COROLLARY W-9** (GRTJC @ 63091cef, L1777–1787): Given W-6, W-7, W-8:
+(i) c_{m+1} descends to ℤ/E × ℤ/E → K^* and is a 2-cocycle (= associativity
+of gr(w)'s multiplication); (ii) its y-degree part δ satisfies the integer
+carry-cocycle identity; (iii) 𝒜(T) is the twisted group algebra K^c[ℤ/E]
+of the abscissa-coset group over the carry cocycle; (iv) the E-fold orbit
+product ζ_T := ∏ c(1,k) is the K-scalar tying anchor product to π-power.
+
+The recorded scent (HE3_PROOF @ its pin, §S0, verbatim): "GENHN.A(iv)/
+LEMMA GENHN-4 is NOT consumed [by HE3], hence the W-9 graded weld face
+(GENHN-BOX-2) is NOT inherited: GENHN-4 is the *digit-space bijection*
+used for COUNT laws; this unit needs only the *valuations and residues* of
+a recentered development."
+
+## 7. YOUR CHARGE
+
+ATTEMPT THE DERIVATION of LEMMA GENHN-4 (all three layers) from inputs
+A + B + C + D + classical facts only. Rules:
+- W-9 may be used ONLY through (M3)'s clause text ("on B_n coordinates the
+  target is the twisted group algebra K^c[ℤ/E] with c = z̄^δ·∏_j z_j^{D_j}
+  on the scored stratum, and harness-val = TC-read") with its scored-
+  stratum perimeter — not through GRTJC's internal content.
+- No input may be cited that itself consumes GENHN-4 (circularity).
+- Perimeter accounting is mandatory: GENHN-4 quantifies over ALL stage-α
+  events at general (e₁, f₁, μ). Say explicitly whether (M3)'s scored
+  stratum + (M2)'s per-slot fences cover that range, or whether the
+  perimeter mismatch is itself the obstruction.
+- Note that GENHN-4 is used at STAGE level (the stage-graded algebra of a
+  stage-α event, slope κ, residual (T−s)^μ) — if (M0)–(M4) speak only of
+  the tower/type transport at the base weld and not of the stage-internal
+  graded frame, say precisely which re-instantiation would be needed.
+
+OUTPUT FORMAT (strict):
+1. VERDICT: one of DERIVABLE / NOT-DERIVABLE / NEEDS-X. If NEEDS-X, state
+   X as a precise mathematical statement (the exact missing content).
+2. PER-LAYER verdicts (layer 1 graded kills; layer 2 correction
+   strictness; layer 3 bijectivity+count), one line each, each naming the
+   inputs (M0..M4, WM-COB, J-D0, GENHN-2, GENHN-3) actually used.
+3. If DERIVABLE: the full proof sketch, numbered steps, each step naming
+   its input label; flag the single most falsifiable step (one that a
+   machine could spot-check on a concrete stage-α event).
+4. If NOT-DERIVABLE or NEEDS-X: the EXACT obstruction — which GENHN-4
+   content is not present in the weld's faces (e.g. the stage-level
+   twisted-algebra structure vs the tower-level K^c[ℤ/E]; the fl-twist
+   cancellation in residual assembly vs carry products; the cardinality
+   count of freed slots) — stated so that a follow-up unit could target
+   exactly it.
+5. CHECKED-CLEAN list: which parts of GENHN-4 ARE clearly recoverable from
+   the allowed inputs, so the residue is minimal.
+No deference: the corpus authors expect you to try to BREAK the hoped-for
+derivation. An honest NOT-DERIVABLE with a sharp obstruction is worth more
+than an optimistic sketch.
+=== THE PROBE'S FULL FINDINGS (verbatim) ===
+# SG-2 PROBE — GENHN-4 vs WELDMASTER (M0)–(M4) + J-D0 (CODEX ARM)
+
+**RCT unit S-7-SG2-probe** (docs/PROVER_RCT_PROTOCOL_2026-08-10.md §3 +
+Amendment 1; assignment ledger row: frontier, first-hex b, CODEX).
+**Blueprint:** docs/SIMPLIFICATION_BLUEPRINT_2026-08-10.md §3 SG-2, as
+re-scoped by Plan revision 1 R.4 (F23/F36): this probe concludes at most
+"GENHN-4 is / is not re-derivable from WELDMASTER M0–M4 + JD0"; it claims
+NOTHING about retiring junction notes, and it is BRANCH-NEUTRAL between
+the two declared R.4 payoff branches (Asvin's choice).
+
+**Run of record.** Brief: `sg2_probe_brief_2026-08-10.md` (233 lines,
+sealed commit 628feeb0 — GENHN-4 verbatim @ 59c1966d L865–921; WELD-M
+@ fdf1d995 L284–311 + face conditionality; WM-COB L344–369; J-D0
+@ 9387eb1a L49–57 + gauge action; GENHN-2/GENHN-3 as allowed non-weld
+inputs; W-9 marked REFERENCE-ONLY, usable solely through (M3)'s clause
+text). ONE foreground call, `codex exec --skip-git-repo-check
+-c model_reasoning_effort=high -`, exit 0, wall 113 s, 13,037 tokens;
+raw output `verification/openmath/sg2_probe_codex_output.txt`
+(md5 ceb96150, commit c0dc1e8e).
+
+---
+
+## THE FEASIBILITY VERDICT (branch-neutral, R.4-scoped)
+
+**NEEDS-X.** On this probe's trace, GENHN-4 is NOT re-derivable from
+WELDMASTER (M0)–(M4) + WM-COB + J-D0 as those clauses are stated: the
+weld's one-face consumption does not suffice for layer 1 (the graded
+kills). Two of GENHN-4's three layers ARE recoverable without any direct
+junction-note citation (layer 2 from GENHN-2 + GENHN-3(c)(d) + classical
+filtered arithmetic; layer 3 from GENHN-2 + GENHN-3(d) + J-D0 +
+triangular-map cardinality, CONDITIONAL on layer 1). The residue X is
+stated precisely below. This verdict informs, and does not make, the R.4
+branch decision; a whole-path retirement claim would additionally
+require the corpus-wide face-citation audit named at R.4 and the branch
+choice — neither is attempted here.
+
+**X (the exact missing content, as returned):** a universal
+stage-recentering lemma — for a stage-α event at data (e₁, f₁, μ, κ),
+(i) the stage filtration is identified with an (M3) scored B_n-stratum
+with the relevant slots inside (M2)'s perimeter, and (ii) the
+recentering Φ′ ↦ Φ′ + w induces, in coherent normalized graded
+coordinates, res_{(μ−j)κ}(A_j^new) = [T^j] R(T+s) for 0 ≤ j ≤ μ —
+equivalently, the cocycle factors from the products w^{i−j}A_i agree
+term-by-term with the twist factors assembling the stage residual
+polynomial — including collision/mod-wrap cases beyond WELD-M's
+scored/perimeter subrange.
+
+## THE OBSTRUCTION (two inseparable layer-1 gaps, per the output)
+
+1. **Perimeter re-instantiation is absent from the faces.** GENHN-4
+   ranges over stage-α events at arbitrary (e₁, f₁, μ); (M3) speaks on
+   the [ILN]† scored stratum and (M2) carries level/collision/mod-wrap
+   fences. No clause of (M0)–(M4) asserts that a stage event determines
+   an admissible principal-read type in WELD-M's domain, identifies
+   stage node coordinates with B_n-coordinates, is scored, or meets
+   (M2)'s slot conditions. (M0) identifies division chains only AFTER
+   such an instantiation.
+2. **The additive recentering action is not a stated face.** (M3) gives
+   the ambient twisted algebra K^c[ℤ/E] but not how Φ′ ↦ Φ′ + w becomes
+   T ↦ T + s coefficient-for-coefficient with matching z^{fl}-factors in
+   both the carry products and the residual assembly. (M4)'s covariance
+   is a character-system action, not the additive-translation formula.
+   WM-COB gauges the inner factor ∏_j z_j^{D_j} but leaves z̄^δ and does
+   not identify the residual variable. J-D0 is count-layer blindness and
+   cannot substitute for the event-level coefficient identity
+   R(T+s) = T^μ.
+
+## CHECKED-CLEAN (recoverable from the allowed inputs; 8 items returned)
+
+GENHN-2's slot-per-height read with slot-min = valuation; the normalizer
+wrap powers as recorded (compatibility at general μ NOT included);
+layer-2 (+1)-strictness once leading terms vanish; GENHN-3(c)(d) window
+placement + upward-only carries; triangularity ⟹ injectivity; equal
+free-slot cardinalities ⟹ surjectivity; J-D0 twist-blindness of the
+resulting counts; the letter factor |K|−1 from s ∈ K^×.
+
+## LAB-TECH RECORD (transcription only; no content altered)
+
+* The verdict, obstruction, and checked-clean sections above transcribe
+  the CODEX output's items 1/2/4/5 with notation matched to the corpus
+  (LaTeX → Unicode); the raw output is committed unedited and is the
+  artifact of record. The output carries no item "3" — the format
+  reserved 3 for a DERIVABLE sketch, which was not claimed.
+* **No machine spot-check owed:** the unit's machine leg fires only on a
+  claimed derivation (feasible-with-sketch); the returned verdict is
+  NEEDS-X, so no sealed spot-check instrument was built. The X-statement
+  is itself machine-checkable (res_{(μ−j)κ}(A_j^new) = [T^j]R(T+s) on
+  concrete stage-α events) and is the natural sealed battery IF a
+  follow-up unit attempts X.
+* Consistency note (tech observation, not adjudication): the NEEDS-X
+  geography matches GENHN-BOX-2's own record — "an elementary general-μ
+  carry display (the GENH4-S5 computation at general (e₁, f₁, μ)) would
+  retire this box" — i.e. the probe's X is the box's known wanted
+  display PLUS the perimeter-instantiation clause the box does not name.
+* Declared conditionality (R.4/F36): this verdict reads the statements
+  at the S-0 ledger pins (628feeb0's brief quotes; ledger baseline
+  7e2b38df) and under the standing axiom policy; it is CODEX-arm
+  composed and awaits the standard arc treatment if consumed further.
+
+## RCT §4 outcome data (recorded at unit close)
+
+(a) rounds: single call, no retry. (b) first-pass profile: n/a (probe,
+not a proof note). (c) instrument: none owed (see above). (e) cost:
+113 s wall, 13,037 tokens, one call. (f) qualitative: the arm consumed a
+233-line fully-pasted brief and returned a structured, perimeter-aware
+obstruction that separates the three layers and names the two missing
+face contents precisely; it neither overclaimed derivability nor padded
+the checked-clean list beyond the allowed inputs.
+warning: Codex could not find bubblewrap on PATH. Install bubblewrap with your OS package manager. See the sandbox prerequisites: https://developers.openai.com/codex/concepts/sandboxing#prerequisites. Codex will use the bundled bubblewrap in the meantime.
+codex
+I’ll push the elementary carry computation as far as the supplied axioms permit, and I’ll separate a genuine algebraic proof from any perimeter assertion that the pasted statements do not define strongly enough to prove.
+codex
+## 1. Precise statement of X
+
+Let \(K\) be the residue field, and let
+
+\[
+(e_1,f_1,\mu,\kappa),\qquad e_1,f_1,\mu\ge 1,\quad \kappa>S'
+\]
+
+be the data of a readable stage-\(\alpha\) event. Let \(\Phi'\) be its monic admissible representative and
+
+\[
+F=\sum_{i=0}^{\mu} A_i(\Phi')^i,\qquad
+d_i=(\mu-i)\kappa ,
+\]
+
+its relevant \(\Phi'\)-development. Assume:
+
+1. \(dv(A_i)\ge d_i\), with a coefficient of valuation \(>d_i\) assigned zero residue at height \(d_i\).
+2. The stage polygon is the single side from \((0,\mu\kappa)\) to \((\mu,0)\).
+3. Its coherently normalized side residual polynomial is
+
+   \[
+   R(T)=\sum_{i=0}^{\mu}r_iT^i=(T-s)^\mu,
+   \qquad s\in K^\times .
+   \]
+4. The normalizers are
+
+   \[
+   n(m)=x^{i(m)}\pi^{a(m)},\qquad i(m)h+e_1a(m)=m,
+   \]
+
+   with \(0\le i(m)<e_1\), and the initial form of \(n(m)\) spans the graded line of height \(m\).
+5. Write
+
+   \[
+   \operatorname{in}(n(a))\operatorname{in}(n(b))
+     =c(a,b)\operatorname{in}(n(a+b)),
+   \]
+
+   where grades are interpreted in the relevant \(B_n\)-coordinate group, including reduction modulo \(E\). Put
+
+   \[
+   n(\kappa)^t=q_t\,n(t\kappa),\qquad
+   q_t=\bar z^{\,fl_t}.
+   \]
+
+   Thus \(q_0=q_1=1\).
+6. If
+
+   \[
+   \operatorname{in}_{d_i}(A_i)=a_i\operatorname{in}(n(d_i)),
+   \]
+
+   define the coherently normalized stage residue by
+
+   \[
+   r_i=\operatorname{res}_{d_i}(A_i)
+      :=\lambda_{\mu,i}a_i,\qquad
+   \lambda_{\mu,i}:=
+      q_i\,c(d_i,i\kappa).
+   \]
+
+   This explicitly incorporates the \(z^{fl}\)-twist used in residual assembly.
+7. Let \(\widehat s\) be the canonical lift of \(s\), set
+
+   \[
+   w=-\widehat s\,n(\kappa)+(\text{terms of }dv>\kappa),
+   \qquad
+   \Phi'_{\rm new}=\Phi'+w,
+   \]
+
+   and let \(A_j^{\rm new}\) be the coefficients obtained by the canonical division chain for the \(\Phi'_{\rm new}\)-development.
+
+Then X asserts both of the following.
+
+**X(i), perimeter re-instantiation.** Every such stage event admits an instance of the WELD-M dictionary: its canonical division chain is the chain in (M0); its node-height slots are the corresponding (M2) slots; its graded coordinates form an (M3) scored \(B_n\)-stratum; and every slot used in the recentering lies within the (M2) perimeter, including all \((R\text{-coll})\), \((C\text{-coll})\), and mod-wrap cases.
+
+**X(ii), additive action.** For every \(0\le j\le\mu\),
+
+\[
+\boxed{\quad
+\operatorname{res}_{(\mu-j)\kappa}(A_j^{\rm new})
+ =[T^j]R(T+s).
+\quad}
+\]
+
+Equivalently, in raw line coordinates,
+
+\[
+\boxed{\quad
+a_j^{\rm new}
+ =\lambda_{\mu,j}^{-1}
+   \sum_{i=j}^{\mu}
+   \binom{i}{j}\lambda_{\mu,i}a_i s^{\,i-j}.
+\quad}
+\]
+
+The formula includes coincident grades and reductions modulo \(E\): all such effects are represented by \(c\), \(q_t=\bar z^{fl_t}\), and \(\lambda_{\mu,i}\).
+
+Since \(R(T)=(T-s)^\mu\), it follows that
+
+\[
+R(T+s)=T^\mu,
+\]
+
+so all residues below degree \(\mu\) vanish.
+
+## 2. Proof attempt
+
+### The cocycle carry identity
+
+Assume first that X(i) supplies the scored stage-level twisted algebra. Because it is the associated graded algebra of commutative division arithmetic, its multiplication is associative and commutative. Consequently \(c\) satisfies the normalized cocycle identity
+
+\[
+c(a,b)c(a+b,d)=c(b,d)c(a,b+d).
+\]
+
+This is the standard equivalence between associativity of a twisted group algebra and the 2-cocycle identity.
+
+Fix \(j\le i\), and put \(r=i-j\). The exact-height part of \((-w)^rA_i\) is
+
+\[
+s^r n(\kappa)^r\cdot a_i n(d_i)
+ =s^ra_iq_r c(r\kappa,d_i)n(d_j),
+\]
+
+because \(d_i+r\kappa=d_j\).
+
+When this contribution is assembled as the degree-\(j\) residual coefficient, it acquires the factor
+
+\[
+\lambda_{\mu,j}=q_jc(d_j,j\kappa).
+\]
+
+The crucial carry identity is therefore
+
+\[
+\lambda_{\mu,j}q_r c(r\kappa,d_i)
+   =\lambda_{\mu,i}. \tag{1}
+\]
+
+Indeed, the left-hand side is the scalar obtained by writing
+
+\[
+\bigl(n(\kappa)^r n(d_i)\bigr)n(\kappa)^j
+\]
+
+in the basis \(n(\mu\kappa)\), whereas the right-hand side is the scalar obtained from
+
+\[
+n(d_i)n(\kappa)^i.
+\]
+
+These are the same product because \(i=r+j\), and multiplication is associative and commutative. Expanding the two products gives (1) explicitly.
+
+This proof uses the full cocycle, including the outer \(\bar z^\delta\). It does not attempt to gauge that factor away. WM-COB is therefore unnecessary for (1); it only explains why the inner factors \(\prod z_j^{D_j}\) form a coboundary.
+
+### Coefficient transformation
+
+In a commutative ring the binomial theorem gives
+
+\[
+(\Phi')^i
+ =(\Phi'_{\rm new}-w)^i
+ =\sum_{j=0}^{i}\binom{i}{j}
+   (\Phi'_{\rm new})^j(-w)^{i-j}.
+\]
+
+Hence the exact-height part of the new coefficient at position \(j\) is the sum over \(i\ge j\) of the exact-height parts of
+
+\[
+\binom{i}{j}(-w)^{i-j}A_i.
+\]
+
+Canonical reductions needed to restore coefficient degree may create carries. Under (M0), the associated-graded calculation uses the same division chain; GENHN-3(d) says those carries move upward only. Terms containing either the higher-\(dv\) part of \(w\) or a higher-\(dv\) part of \(A_i\) have valuation at least
+
+\[
+(i-j)\kappa+d_i+1=d_j+1,
+\]
+
+so they do not affect the residue at \(d_j\). This is the standard initial-form rule for a multiplicative filtration.
+
+Using (1), the normalized residue contributed by index \(i\) is
+
+\[
+\binom{i}{j}s^{i-j}\lambda_{\mu,i}a_i
+ =\binom{i}{j}s^{i-j}r_i.
+\]
+
+Therefore
+
+\[
+\operatorname{res}_{d_j}(A_j^{\rm new})
+ =\sum_{i=j}^{\mu}\binom{i}{j}r_i s^{i-j}
+ =[T^j]R(T+s).
+\]
+
+This proves X(ii), conditional on the stage-level instantiation in X(i).
+
+The proof also covers:
+
+- **Collisions:** terms landing in the same line are added in that line. If they cancel, their sum has zero initial form and the valuation rises, exactly as the coefficient formula predicts.
+- **Mod-wrap:** every wrap is included in \(c\) and \(q_t\); identity (1) follows from associativity after reduction modulo \(E\).
+- **Positive characteristic:** no division by factorials occurs. The displayed binomial coefficients are their images in \(K\), and
+
+  \[
+  ((T+s)-s)^\mu=T^\mu
+  \]
+
+  is a polynomial-substitution identity in every characteristic.
+
+Thus the additive carry calculation itself is complete once the event is licensed to use the relevant twisted graded algebra.
+
+### The resisting half: X(i)
+
+X(i) is not provable from the pasted statements.
+
+WELD-M begins with a tower in the \([ILN]^\dagger\) S0.1 class already realized as a principal-read OM type. Clause (M3) then applies only on its scored \(B_n\)-stratum, while (M2) retains explicit collision and mod-wrap fences.
+
+By contrast, the hypotheses defining the stage event supply only
+
+\[
+(e_1,f_1,\mu,\kappa),\quad
+\Phi',\quad
+dv(A_i)\ge(\mu-i)\kappa,\quad
+R(T)=(T-s)^\mu.
+\]
+
+No supplied implication establishes that:
+
+1. this stage event is a new WELD-M domain object;
+2. its node coordinates are \(B_n\)-coordinates;
+3. the resulting stratum is scored; or
+4. its collision/mod-wrap slots satisfy every (M2) proviso.
+
+Clause (M0) identifies division chains only after such an instance exists; it cannot create the instance. Neither WM-COB nor J-D0 changes domains or slot perimeters.
+
+This is also a formal independence obstruction. One may enlarge the collection of stage events by one event not declared scored, while leaving the class of WELD-M towers and every assertion (M0)–(M4), WM-COB, J-D0, GENHN-2, and GENHN-3 unchanged. All supplied statements remain true, but X(i) is false for the added event. Hence X(i) requires an additional bridge theorem.
+
+The first concrete resisting case is already
+
+\[
+e_1=2,\quad f_1=1,\quad \mu=4,
+\]
+
+with \(\kappa\) odd. Then \(n(\kappa)^2\) wraps modulo \(e_1\), and the \(i=3\) and \(i=4\) contributions to lower new coefficients require mod-wrap multiplication. The pasted faces do not assert that an arbitrary such stage event lies inside the applicable (M2)/(M3) perimeter.
+
+The named residual is therefore:
+
+> **X-PERIM:** Every readable stage-\(\alpha\) event is functorially realized as a scored WELD-M \(B_n\)-stratum, with all node, collision, and mod-wrap slots inside the (M2) perimeter and with (M0) identifying its canonical redivision chain.
+
+Once X-PERIM is supplied, the calculation above proves X(ii) and hence all graded kills.
+
+## 3. Machine-verification plan
+
+Use the explicit normalizer model
+
+\[
+i(m)=m\bmod e_1,\qquad
+c(a,b)=z^{\left\lfloor
+(i(a)+i(b))/e_1
+\right\rfloor},
+\qquad
+q_t=z^{\lfloor t\,i(\kappa)/e_1\rfloor}.
+\]
+
+For every frame, the verifier should:
+
+1. check the cocycle identity for all grades occurring;
+2. compute \(\lambda_{\mu,i}=q_i c(d_i,i\kappa)\);
+3. convert normalized residuals \(r_i\) to raw digits \(a_i=r_i/\lambda_{\mu,i}\);
+4. perform the twisted binomial convolution;
+5. compare \(\lambda_{\mu,j}a_j^{\rm new}\) with \([T^j]R(T+s)\).
+
+### Frame 1: ordinary, characteristic \(5\)
+
+\[
+K=\mathbf F_5,\quad e_1=f_1=1,\quad
+\mu=3,\quad\kappa=1,\quad s=2,\quad z=1.
+\]
+
+Here
+
+\[
+R(T)=(T-2)^3
+ =2+2T+4T^2+T^3.
+\]
+
+Thus
+
+\[
+(r_0,r_1,r_2,r_3)=(2,2,4,1),
+\qquad
+(\lambda_0,\lambda_1,\lambda_2,\lambda_3)=(1,1,1,1).
+\]
+
+Predicted identity:
+
+\[
+\bigl(\operatorname{res}_{3}(A_0^{\rm new}),
+\operatorname{res}_{2}(A_1^{\rm new}),
+\operatorname{res}_{1}(A_2^{\rm new}),
+\operatorname{res}_{0}(A_3^{\rm new})\bigr)
+=(0,0,0,1).
+\]
+
+### Frame 2: repeated mod-wrap
+
+\[
+K=\mathbf F_7,\quad e_1=2,\quad f_1=1,\quad
+\mu=4,\quad\kappa=1,\quad s=2,\quad z=3.
+\]
+
+One obtains
+
+\[
+R(T)=(T-2)^4
+ =2+3T+3T^2+6T^3+T^4,
+\]
+
+\[
+(\lambda_0,\lambda_1,\lambda_2,\lambda_3,\lambda_4)
+ =(1,3,3,2,2),
+\]
+
+and raw digits
+
+\[
+(a_0,a_1,a_2,a_3,a_4)=(2,1,1,3,4).
+\]
+
+The twisted convolution must give
+
+\[
+(a_0^{\rm new},a_1^{\rm new},a_2^{\rm new},
+  a_3^{\rm new},a_4^{\rm new})
+=(0,0,0,0,4).
+\]
+
+After residual normalization, the exact X-values are
+
+\[
+(0,0,0,0,1).
+\]
+
+### Frame 3: collision and characteristic-\(3\) binomial collapse
+
+Let
+
+\[
+K=\mathbf F_9=\mathbf F_3[\alpha]/(\alpha^2+1),
+\quad e_1=3,\quad f_1=2,\quad
+\mu=3,\quad\kappa=2,\quad s=1,\quad z=2.
+\]
+
+All displayed values lie in the prime subfield. Here
+
+\[
+R(T)=(T-1)^3=T^3-1=2+T^3,
+\]
+
+\[
+(\lambda_0,\lambda_1,\lambda_2,\lambda_3)
+=(1,2,1,1),
+\qquad
+(a_0,a_1,a_2,a_3)=(2,0,0,1).
+\]
+
+The exact X-values are again
+
+\[
+(0,0,0,1).
+\]
+
+This simultaneously checks a wrap from \(2+2\) modulo \(3\) and the vanishing of \(\binom31,\binom32\) in characteristic \(3\).
+
+### Planted falsifiers
+
+1. **Delete the carry twists in Frame 2.** Ordinary convolution of the raw vector \((2,1,1,3,4)\) gives
+
+   \[
+   (5,1,3,0,4).
+   \]
+
+   Normalizing afterward gives
+
+   \[
+   (5,3,2,0,1)\ne(0,0,0,0,1).
+   \]
+
+   The checker must reject this mutation.
+
+2. **Reverse the recentering sign in Frame 1.** Replacing \(w=-\widehat s n(\kappa)\) by \(w=+\widehat s n(\kappa)\) produces \(R(T-s)\), namely
+
+   \[
+   (T-4)^3=(T+1)^3
+     =1+3T+3T^2+T^3
+   \]
+
+   in \(\mathbf F_5[T]\). The checker must obtain \((1,3,3,1)\), not \((0,0,0,1)\).
+
+These frames verify X(ii). A verifier for X(i) cannot be built from the pasted material: it additionally needs executable definitions of the \([ILN]^\dagger\) domain predicate, the scoring predicate, the stage-to-\(B_n\) map, and every (M2) collision/mod-wrap fence. It should fail closed when those predicates are unavailable.
+
+OUTCOME: PARTIAL
+tokens used
+13,754
+## 1. Precise statement of X
+
+Let \(K\) be the residue field, and let
+
+\[
+(e_1,f_1,\mu,\kappa),\qquad e_1,f_1,\mu\ge 1,\quad \kappa>S'
+\]
+
+be the data of a readable stage-\(\alpha\) event. Let \(\Phi'\) be its monic admissible representative and
+
+\[
+F=\sum_{i=0}^{\mu} A_i(\Phi')^i,\qquad
+d_i=(\mu-i)\kappa ,
+\]
+
+its relevant \(\Phi'\)-development. Assume:
+
+1. \(dv(A_i)\ge d_i\), with a coefficient of valuation \(>d_i\) assigned zero residue at height \(d_i\).
+2. The stage polygon is the single side from \((0,\mu\kappa)\) to \((\mu,0)\).
+3. Its coherently normalized side residual polynomial is
+
+   \[
+   R(T)=\sum_{i=0}^{\mu}r_iT^i=(T-s)^\mu,
+   \qquad s\in K^\times .
+   \]
+4. The normalizers are
+
+   \[
+   n(m)=x^{i(m)}\pi^{a(m)},\qquad i(m)h+e_1a(m)=m,
+   \]
+
+   with \(0\le i(m)<e_1\), and the initial form of \(n(m)\) spans the graded line of height \(m\).
+5. Write
+
+   \[
+   \operatorname{in}(n(a))\operatorname{in}(n(b))
+     =c(a,b)\operatorname{in}(n(a+b)),
+   \]
+
+   where grades are interpreted in the relevant \(B_n\)-coordinate group, including reduction modulo \(E\). Put
+
+   \[
+   n(\kappa)^t=q_t\,n(t\kappa),\qquad
+   q_t=\bar z^{\,fl_t}.
+   \]
+
+   Thus \(q_0=q_1=1\).
+6. If
+
+   \[
+   \operatorname{in}_{d_i}(A_i)=a_i\operatorname{in}(n(d_i)),
+   \]
+
+   define the coherently normalized stage residue by
+
+   \[
+   r_i=\operatorname{res}_{d_i}(A_i)
+      :=\lambda_{\mu,i}a_i,\qquad
+   \lambda_{\mu,i}:=
+      q_i\,c(d_i,i\kappa).
+   \]
+
+   This explicitly incorporates the \(z^{fl}\)-twist used in residual assembly.
+7. Let \(\widehat s\) be the canonical lift of \(s\), set
+
+   \[
+   w=-\widehat s\,n(\kappa)+(\text{terms of }dv>\kappa),
+   \qquad
+   \Phi'_{\rm new}=\Phi'+w,
+   \]
+
+   and let \(A_j^{\rm new}\) be the coefficients obtained by the canonical division chain for the \(\Phi'_{\rm new}\)-development.
+
+Then X asserts both of the following.
+
+**X(i), perimeter re-instantiation.** Every such stage event admits an instance of the WELD-M dictionary: its canonical division chain is the chain in (M0); its node-height slots are the corresponding (M2) slots; its graded coordinates form an (M3) scored \(B_n\)-stratum; and every slot used in the recentering lies within the (M2) perimeter, including all \((R\text{-coll})\), \((C\text{-coll})\), and mod-wrap cases.
+
+**X(ii), additive action.** For every \(0\le j\le\mu\),
+
+\[
+\boxed{\quad
+\operatorname{res}_{(\mu-j)\kappa}(A_j^{\rm new})
+ =[T^j]R(T+s).
+\quad}
+\]
+
+Equivalently, in raw line coordinates,
+
+\[
+\boxed{\quad
+a_j^{\rm new}
+ =\lambda_{\mu,j}^{-1}
+   \sum_{i=j}^{\mu}
+   \binom{i}{j}\lambda_{\mu,i}a_i s^{\,i-j}.
+\quad}
+\]
+
+The formula includes coincident grades and reductions modulo \(E\): all such effects are represented by \(c\), \(q_t=\bar z^{fl_t}\), and \(\lambda_{\mu,i}\).
+
+Since \(R(T)=(T-s)^\mu\), it follows that
+
+\[
+R(T+s)=T^\mu,
+\]
+
+so all residues below degree \(\mu\) vanish.
+
+## 2. Proof attempt
+
+### The cocycle carry identity
+
+Assume first that X(i) supplies the scored stage-level twisted algebra. Because it is the associated graded algebra of commutative division arithmetic, its multiplication is associative and commutative. Consequently \(c\) satisfies the normalized cocycle identity
+
+\[
+c(a,b)c(a+b,d)=c(b,d)c(a,b+d).
+\]
+
+This is the standard equivalence between associativity of a twisted group algebra and the 2-cocycle identity.
+
+Fix \(j\le i\), and put \(r=i-j\). The exact-height part of \((-w)^rA_i\) is
+
+\[
+s^r n(\kappa)^r\cdot a_i n(d_i)
+ =s^ra_iq_r c(r\kappa,d_i)n(d_j),
+\]
+
+because \(d_i+r\kappa=d_j\).
+
+When this contribution is assembled as the degree-\(j\) residual coefficient, it acquires the factor
+
+\[
+\lambda_{\mu,j}=q_jc(d_j,j\kappa).
+\]
+
+The crucial carry identity is therefore
+
+\[
+\lambda_{\mu,j}q_r c(r\kappa,d_i)
+   =\lambda_{\mu,i}. \tag{1}
+\]
+
+Indeed, the left-hand side is the scalar obtained by writing
+
+\[
+\bigl(n(\kappa)^r n(d_i)\bigr)n(\kappa)^j
+\]
+
+in the basis \(n(\mu\kappa)\), whereas the right-hand side is the scalar obtained from
+
+\[
+n(d_i)n(\kappa)^i.
+\]
+
+These are the same product because \(i=r+j\), and multiplication is associative and commutative. Expanding the two products gives (1) explicitly.
+
+This proof uses the full cocycle, including the outer \(\bar z^\delta\). It does not attempt to gauge that factor away. WM-COB is therefore unnecessary for (1); it only explains why the inner factors \(\prod z_j^{D_j}\) form a coboundary.
+
+### Coefficient transformation
+
+In a commutative ring the binomial theorem gives
+
+\[
+(\Phi')^i
+ =(\Phi'_{\rm new}-w)^i
+ =\sum_{j=0}^{i}\binom{i}{j}
+   (\Phi'_{\rm new})^j(-w)^{i-j}.
+\]
+
+Hence the exact-height part of the new coefficient at position \(j\) is the sum over \(i\ge j\) of the exact-height parts of
+
+\[
+\binom{i}{j}(-w)^{i-j}A_i.
+\]
+
+Canonical reductions needed to restore coefficient degree may create carries. Under (M0), the associated-graded calculation uses the same division chain; GENHN-3(d) says those carries move upward only. Terms containing either the higher-\(dv\) part of \(w\) or a higher-\(dv\) part of \(A_i\) have valuation at least
+
+\[
+(i-j)\kappa+d_i+1=d_j+1,
+\]
+
+so they do not affect the residue at \(d_j\). This is the standard initial-form rule for a multiplicative filtration.
+
+Using (1), the normalized residue contributed by index \(i\) is
+
+\[
+\binom{i}{j}s^{i-j}\lambda_{\mu,i}a_i
+ =\binom{i}{j}s^{i-j}r_i.
+\]
+
+Therefore
+
+\[
+\operatorname{res}_{d_j}(A_j^{\rm new})
+ =\sum_{i=j}^{\mu}\binom{i}{j}r_i s^{i-j}
+ =[T^j]R(T+s).
+\]
+
+This proves X(ii), conditional on the stage-level instantiation in X(i).
+
+The proof also covers:
+
+- **Collisions:** terms landing in the same line are added in that line. If they cancel, their sum has zero initial form and the valuation rises, exactly as the coefficient formula predicts.
+- **Mod-wrap:** every wrap is included in \(c\) and \(q_t\); identity (1) follows from associativity after reduction modulo \(E\).
+- **Positive characteristic:** no division by factorials occurs. The displayed binomial coefficients are their images in \(K\), and
+
+  \[
+  ((T+s)-s)^\mu=T^\mu
+  \]
+
+  is a polynomial-substitution identity in every characteristic.
+
+Thus the additive carry calculation itself is complete once the event is licensed to use the relevant twisted graded algebra.
+
+### The resisting half: X(i)
+
+X(i) is not provable from the pasted statements.
+
+WELD-M begins with a tower in the \([ILN]^\dagger\) S0.1 class already realized as a principal-read OM type. Clause (M3) then applies only on its scored \(B_n\)-stratum, while (M2) retains explicit collision and mod-wrap fences.
+
+By contrast, the hypotheses defining the stage event supply only
+
+\[
+(e_1,f_1,\mu,\kappa),\quad
+\Phi',\quad
+dv(A_i)\ge(\mu-i)\kappa,\quad
+R(T)=(T-s)^\mu.
+\]
+
+No supplied implication establishes that:
+
+1. this stage event is a new WELD-M domain object;
+2. its node coordinates are \(B_n\)-coordinates;
+3. the resulting stratum is scored; or
+4. its collision/mod-wrap slots satisfy every (M2) proviso.
+
+Clause (M0) identifies division chains only after such an instance exists; it cannot create the instance. Neither WM-COB nor J-D0 changes domains or slot perimeters.
+
+This is also a formal independence obstruction. One may enlarge the collection of stage events by one event not declared scored, while leaving the class of WELD-M towers and every assertion (M0)–(M4), WM-COB, J-D0, GENHN-2, and GENHN-3 unchanged. All supplied statements remain true, but X(i) is false for the added event. Hence X(i) requires an additional bridge theorem.
+
+The first concrete resisting case is already
+
+\[
+e_1=2,\quad f_1=1,\quad \mu=4,
+\]
+
+with \(\kappa\) odd. Then \(n(\kappa)^2\) wraps modulo \(e_1\), and the \(i=3\) and \(i=4\) contributions to lower new coefficients require mod-wrap multiplication. The pasted faces do not assert that an arbitrary such stage event lies inside the applicable (M2)/(M3) perimeter.
+
+The named residual is therefore:
+
+> **X-PERIM:** Every readable stage-\(\alpha\) event is functorially realized as a scored WELD-M \(B_n\)-stratum, with all node, collision, and mod-wrap slots inside the (M2) perimeter and with (M0) identifying its canonical redivision chain.
+
+Once X-PERIM is supplied, the calculation above proves X(ii) and hence all graded kills.
+
+## 3. Machine-verification plan
+
+Use the explicit normalizer model
+
+\[
+i(m)=m\bmod e_1,\qquad
+c(a,b)=z^{\left\lfloor
+(i(a)+i(b))/e_1
+\right\rfloor},
+\qquad
+q_t=z^{\lfloor t\,i(\kappa)/e_1\rfloor}.
+\]
+
+For every frame, the verifier should:
+
+1. check the cocycle identity for all grades occurring;
+2. compute \(\lambda_{\mu,i}=q_i c(d_i,i\kappa)\);
+3. convert normalized residuals \(r_i\) to raw digits \(a_i=r_i/\lambda_{\mu,i}\);
+4. perform the twisted binomial convolution;
+5. compare \(\lambda_{\mu,j}a_j^{\rm new}\) with \([T^j]R(T+s)\).
+
+### Frame 1: ordinary, characteristic \(5\)
+
+\[
+K=\mathbf F_5,\quad e_1=f_1=1,\quad
+\mu=3,\quad\kappa=1,\quad s=2,\quad z=1.
+\]
+
+Here
+
+\[
+R(T)=(T-2)^3
+ =2+2T+4T^2+T^3.
+\]
+
+Thus
+
+\[
+(r_0,r_1,r_2,r_3)=(2,2,4,1),
+\qquad
+(\lambda_0,\lambda_1,\lambda_2,\lambda_3)=(1,1,1,1).
+\]
+
+Predicted identity:
+
+\[
+\bigl(\operatorname{res}_{3}(A_0^{\rm new}),
+\operatorname{res}_{2}(A_1^{\rm new}),
+\operatorname{res}_{1}(A_2^{\rm new}),
+\operatorname{res}_{0}(A_3^{\rm new})\bigr)
+=(0,0,0,1).
+\]
+
+### Frame 2: repeated mod-wrap
+
+\[
+K=\mathbf F_7,\quad e_1=2,\quad f_1=1,\quad
+\mu=4,\quad\kappa=1,\quad s=2,\quad z=3.
+\]
+
+One obtains
+
+\[
+R(T)=(T-2)^4
+ =2+3T+3T^2+6T^3+T^4,
+\]
+
+\[
+(\lambda_0,\lambda_1,\lambda_2,\lambda_3,\lambda_4)
+ =(1,3,3,2,2),
+\]
+
+and raw digits
+
+\[
+(a_0,a_1,a_2,a_3,a_4)=(2,1,1,3,4).
+\]
+
+The twisted convolution must give
+
+\[
+(a_0^{\rm new},a_1^{\rm new},a_2^{\rm new},
+  a_3^{\rm new},a_4^{\rm new})
+=(0,0,0,0,4).
+\]
+
+After residual normalization, the exact X-values are
+
+\[
+(0,0,0,0,1).
+\]
+
+### Frame 3: collision and characteristic-\(3\) binomial collapse
+
+Let
+
+\[
+K=\mathbf F_9=\mathbf F_3[\alpha]/(\alpha^2+1),
+\quad e_1=3,\quad f_1=2,\quad
+\mu=3,\quad\kappa=2,\quad s=1,\quad z=2.
+\]
+
+All displayed values lie in the prime subfield. Here
+
+\[
+R(T)=(T-1)^3=T^3-1=2+T^3,
+\]
+
+\[
+(\lambda_0,\lambda_1,\lambda_2,\lambda_3)
+=(1,2,1,1),
+\qquad
+(a_0,a_1,a_2,a_3)=(2,0,0,1).
+\]
+
+The exact X-values are again
+
+\[
+(0,0,0,1).
+\]
+
+This simultaneously checks a wrap from \(2+2\) modulo \(3\) and the vanishing of \(\binom31,\binom32\) in characteristic \(3\).
+
+### Planted falsifiers
+
+1. **Delete the carry twists in Frame 2.** Ordinary convolution of the raw vector \((2,1,1,3,4)\) gives
+
+   \[
+   (5,1,3,0,4).
+   \]
+
+   Normalizing afterward gives
+
+   \[
+   (5,3,2,0,1)\ne(0,0,0,0,1).
+   \]
+
+   The checker must reject this mutation.
+
+2. **Reverse the recentering sign in Frame 1.** Replacing \(w=-\widehat s n(\kappa)\) by \(w=+\widehat s n(\kappa)\) produces \(R(T-s)\), namely
+
+   \[
+   (T-4)^3=(T+1)^3
+     =1+3T+3T^2+T^3
+   \]
+
+   in \(\mathbf F_5[T]\). The checker must obtain \((1,3,3,1)\), not \((0,0,0,1)\).
+
+These frames verify X(ii). A verifier for X(i) cannot be built from the pasted material: it additionally needs executable definitions of the \([ILN]^\dagger\) domain predicate, the scoring predicate, the stage-to-\(B_n\) map, and every (M2) collision/mod-wrap fence. It should fail closed when those predicates are unavailable.
+
+OUTCOME: PARTIAL
+warning: Codex could not find bubblewrap on PATH. Install bubblewrap with your OS package manager. See the sandbox prerequisites: https://developers.openai.com/codex/concepts/sandboxing#prerequisites. Codex will use the bundled bubblewrap in the meantime.
+codex
+I’m checking the new class pin against the exact obligations in X(i). The key issue is whether it now supplies both a stage-to-tower construction and an actual scored-stratum predicate—not merely the domain on which (M3) applies.
+codex
+## Verdict
+
+The new S0 text defines the target \([ILN]^\dagger\) tower class, but it still does not prove X(i). More decisively, the section headed “THE (M3) SCORED-STRATUM CLAUSE” is empty: no definition of \(B_n\), the scoring predicate, the stage-to-\(B_n\) map, or the (M2) fence predicates is present.
+
+Thus X(ii) remains proved conditionally on X(i), while the combined X-lemma remains partial.
+
+## 1. The combined X-lemma
+
+Let \(O\) be a DVR, let \(K\) be the residue field relevant to a readable stage-\(\alpha\) event, and suppose the event has data
+
+\[
+e_1,f_1,\mu\ge 1,\qquad \kappa>S',\qquad s\in K^\times.
+\]
+
+Let \(\Phi'\) be its monic admissible representative and
+
+\[
+F=\sum_{i=0}^{\mu}A_i(\Phi')^i,\qquad d_i=(\mu-i)\kappa.
+\]
+
+Assume:
+
+1. \(dv(A_i)\ge d_i\).
+2. The relevant Newton side is \((0,\mu\kappa)-(\mu,0)\).
+3. Its coherently normalized residual polynomial is
+
+   \[
+   R(T)=\sum_{i=0}^{\mu}r_iT^i=(T-s)^\mu.
+   \]
+
+4. Normalizers \(n(m)\) span the height-\(m\) graded lines and satisfy
+
+   \[
+   \operatorname{in}(n(a))\operatorname{in}(n(b))
+   =c(a,b)\operatorname{in}(n(a+b)),
+   \]
+
+   including reduction modulo the grading period.
+
+5. For \(t\ge0\),
+
+   \[
+   n(\kappa)^t=q_tn(t\kappa),\qquad q_t=\bar z^{fl_t}.
+   \]
+
+6. If
+
+   \[
+   \operatorname{in}_{d_i}(A_i)=a_i\operatorname{in}(n(d_i)),
+   \]
+
+   the coherent residual normalization is
+
+   \[
+   r_i=\lambda_{\mu,i}a_i,\qquad
+   \lambda_{\mu,i}:=q_i\,c(d_i,i\kappa).
+   \]
+
+7. With \(\widehat s\) the canonical lift of \(s\),
+
+   \[
+   w=-\widehat s\,n(\kappa)+w_{>\kappa},
+   \qquad dv(w_{>\kappa})>\kappa,
+   \qquad \Phi'_{\rm new}=\Phi'+w.
+   \]
+
+Write
+
+\[
+F=\sum_{j=0}^{\mu}A_j^{\rm new}(\Phi'_{\rm new})^j
+\]
+
+after canonical redivision.
+
+The intended combined lemma X asserts:
+
+**X(i), perimeter re-instantiation.** The ambient stage event canonically determines a tower of the \([ILN]^\dagger\) S0.1 class and a principal-read realization such that:
+
+- its canonical redivision chain is the chain identified by (M0);
+- its node-height slots are \(B_n\)-slots governed by (M2);
+- the stage lies in the scored stratum required by (M3);
+- every slot used above belongs to the applicable (M2) perimeter, including collision and mod-wrap slots.
+
+**X(ii), additive action.** For every \(0\le j\le\mu\),
+
+\[
+\boxed{
+\operatorname{res}_{(\mu-j)\kappa}(A_j^{\rm new})
+=[T^j]R(T+s)
+}
+\]
+
+or, equivalently,
+
+\[
+\boxed{
+a_j^{\rm new}
+=\lambda_{\mu,j}^{-1}
+\sum_{i=j}^{\mu}
+\binom{i}{j}\lambda_{\mu,i}a_i s^{i-j}.
+}
+\]
+
+In particular, because \(R(T)=(T-s)^\mu\),
+
+\[
+R(T+s)=T^\mu,
+\]
+
+so
+
+\[
+\operatorname{res}_{(\mu-j)\kappa}(A_j^{\rm new})=
+\begin{cases}
+0,&j<\mu,\\
+1,&j=\mu.
+\end{cases}
+\]
+
+## 2. X(i): perimeter re-instantiation
+
+### What the new S0 text establishes
+
+The S0.1 text now precisely describes a possible target object:
+
+- a DVR and initial key \(\Phi_0\);
+- all \(e_j,h_j,g_j,\psi_j,K_j\);
+- normalized Bézout pairs;
+- standard or canonical corrected lifts;
+- the iterated read and split calculus;
+- the cocycle exponents \(\delta,D_j\).
+
+It therefore removes uncertainty about what an \([ILN]^\dagger\) tower is.
+
+It does not, however, construct such a tower from a stage-\(\alpha\) event.
+
+A stage event supplies the local data
+
+\[
+(e_1,f_1,\mu,\kappa,\Phi',A_0,\ldots,A_\mu,R,s).
+\]
+
+An S0.1 object additionally requires, among other things,
+
+\[
+n,\quad \Phi_0,\quad
+(e_j,h_j,\psi_j,g_j,K_j)_{0\le j\le n},
+\quad\Phi_1,\ldots,\Phi_n,
+\]
+
+together with the assertion that each lift is the specified standard or canonical corrected lift. No supplied rule reconstructs these data from the stage event. In particular, no pasted statement identifies the stage parameter \(e_1\) with any specified \(e_j\) or product \(E_{n+1}\).
+
+### The scoring predicate is still absent
+
+The pasted section
+
+> THE (M3) SCORED-STRATUM CLAUSE (WELDMASTER, verbatim)
+
+contains no text beneath its heading. Consequently the following necessary predicates remain undefined:
+
+\[
+B_n,\qquad
+\operatorname{Scored}_n,\qquad
+\operatorname{StageToB}_n,\qquad
+\operatorname{M2Fence}_n.
+\]
+
+S0.3 is an iterated cocycle theorem with a status ledger; it is not a definition of an (M3) scored stratum.
+
+Therefore the desired assertion
+
+\[
+\operatorname{Scored}_n(\operatorname{StageToB}_n(E))
+\]
+
+cannot even be expanded into a proposition from the pasted material.
+
+### The theorem-status perimeter does not fill the gap
+
+S0.3 also explicitly records:
+
+- rung \(2\) at attempt grade \(0/2\);
+- rungs \(n\ge3\) conditional on the rung-2 package and open engines;
+- DCX loci on which W-MULT is open.
+
+Thus even if one guessed a stage-to-tower map, one could not infer that an arbitrary image lies in the proved part of the S0.3 perimeter without the missing scoring and fence predicates.
+
+### Exact resisting case
+
+The first mod-wrap test remains
+
+\[
+e_1=2,\qquad f_1=1,\qquad \mu=4,\qquad \kappa=1.
+\]
+
+Here \(n(\kappa)^2\) wraps in the \(\mathbf Z/2\)-grading, and the contributions from \(A_3\) and \(A_4\) to the lower new coefficients use wrapped products. The supplied S0 definitions explain how a previously supplied tower would calculate carries, but they do not prove that this arbitrary stage event:
+
+1. determines an S0.1 tower;
+2. determines \(B_n\)-coordinates;
+3. satisfies the missing scoring predicate; or
+4. lies within the relevant (M2) mod-wrap fence.
+
+This is a domain obstruction, not a difficult carry computation.
+
+### Formal independence
+
+Add one readable stage event \(E_\ast\) to the universe of stage events, without assigning it a tower realization or declaring it scored. This changes none of:
+
+- S0.1–S0.3;
+- WELD-M on its already-realized domain;
+- WM-COB;
+- J-D0;
+- GENHN-2 or GENHN-3.
+
+All supplied statements remain true, but X(i) fails for \(E_\ast\). Hence X(i) is not a logical consequence of the pasted statements.
+
+The exact remaining lemma is:
+
+> **X-PERIM.** Every readable stage-\(\alpha\) event has a canonical ambient \([ILN]^\dagger\) principal-read realization, together with a defined stage-to-\(B_n\) map whose image satisfies the (M3) scoring predicate and every (M2) slot-fence predicate used by the event.
+
+## 3. X(ii): complete proof conditional on X-PERIM
+
+Assume X-PERIM, so the relevant graded multiplication and canonical division chain are licensed.
+
+For \(j\le i\), put \(r=i-j\). Since
+
+\[
+d_i+r\kappa=d_j,
+\]
+
+the exact-height part of \((-w)^rA_i\) is
+
+\[
+s^ra_i\,n(\kappa)^rn(d_i)
+=s^ra_iq_r c(r\kappa,d_i)n(d_j).
+\]
+
+When this term is assembled in residual degree \(j\), it receives the normalization
+
+\[
+\lambda_{\mu,j}=q_jc(d_j,j\kappa).
+\]
+
+Associativity and commutativity give the carry identity
+
+\[
+\boxed{
+\lambda_{\mu,j}q_r c(r\kappa,d_i)=\lambda_{\mu,i}.
+}
+\tag{1}
+\]
+
+Indeed, the left side is the scalar obtained by normalizing
+
+\[
+\bigl(n(\kappa)^rn(d_i)\bigr)n(\kappa)^j,
+\]
+
+while the right side normalizes
+
+\[
+n(d_i)n(\kappa)^i.
+\]
+
+Since \(i=r+j\), these are the same product. This argument retains every outer \(\bar z^\delta\) factor; WM-COB is not being used to erase it.
+
+Now
+
+\[
+\Phi'=\Phi'_{\rm new}-w,
+\]
+
+so the binomial theorem in a commutative ring gives
+
+\[
+(\Phi')^i
+=\sum_{j=0}^{i}
+\binom{i}{j}(\Phi'_{\rm new})^j(-w)^{i-j}.
+\]
+
+Consequently, before removing terms strictly above height \(d_j\),
+
+\[
+A_j^{\rm new}
+=\sum_{i=j}^{\mu}\binom{i}{j}(-w)^{i-j}A_i.
+\]
+
+Any term using \(w_{>\kappa}\), or an above-line component of \(A_i\), has valuation at least
+
+\[
+(i-j)\kappa+d_i+1=d_j+1.
+\]
+
+By the standard initial-form rule for a multiplicative filtration, such terms have zero residue at height \(d_j\). GENHN-3(c)(d) places them inside the readable windows and says the resulting redivision carries move upward only.
+
+For the exact-height contribution from index \(i\), equation (1) gives normalized residue
+
+\[
+\binom{i}{j}s^{i-j}\lambda_{\mu,i}a_i
+=\binom{i}{j}s^{i-j}r_i.
+\]
+
+Adding the contributions in the height-\(d_j\) graded line,
+
+\[
+\begin{aligned}
+\operatorname{res}_{d_j}(A_j^{\rm new})
+&=\sum_{i=j}^{\mu}
+  \binom{i}{j}r_i s^{i-j}\\
+&=[T^j]R(T+s).
+\end{aligned}
+\]
+
+This includes:
+
+- collisions, because equal-line contributions are added before taking the initial form;
+- cancellation collisions, because a zero sum means the valuation rises;
+- mod-wrap, because every wrap factor occurs in \(q_t\) and \(c\), and (1) follows from associativity after grade reduction;
+- all characteristics, because no factorial is divided by and \(R(T+s)=T^\mu\) is a substitution identity.
+
+Thus X(ii) is proved once X(i) supplies the perimeter license.
+
+## 4. Combined status and consequence
+
+From the current materials one has the conditional theorem
+
+\[
+\boxed{\text{X-PERIM}\Longrightarrow\text{combined X}.}
+\]
+
+Under that condition, the leading graded kills follow from X(ii); GENHN-3 supplies the correction strictness; and GENHN-2, GENHN-3(d), and finite-cardinality triangularity supply the digit-space bijection. J-D0 then makes the resulting counts insensitive to the twist gauge.
+
+What is not proved is the unconditional premise X-PERIM.
+
+## 5. Machine-verification plan
+
+The additive verifier should implement
+
+\[
+i(m)=m\bmod e_1,\qquad
+c(a,b)=z^{\lfloor(i(a)+i(b))/e_1\rfloor},
+\qquad
+q_t=z^{\lfloor t\,i(\kappa)/e_1\rfloor}.
+\]
+
+It should calculate \(\lambda_{\mu,i}\), convert residual digits \(r_i\) to raw digits \(a_i\), perform the twisted convolution, and compare with \(R(T+s)\).
+
+### Frame 1
+
+\[
+K=\mathbf F_5,\quad e_1=f_1=1,\quad
+\mu=3,\quad\kappa=1,\quad s=2,\quad z=1.
+\]
+
+Predictions:
+
+\[
+R(T)=2+2T+4T^2+T^3,
+\]
+
+\[
+(r_0,r_1,r_2,r_3)=(2,2,4,1),
+\]
+
+and
+
+\[
+\bigl(
+\operatorname{res}_3(A_0^{\rm new}),
+\operatorname{res}_2(A_1^{\rm new}),
+\operatorname{res}_1(A_2^{\rm new}),
+\operatorname{res}_0(A_3^{\rm new})
+\bigr)=(0,0,0,1).
+\]
+
+### Frame 2: repeated wrap
+
+\[
+K=\mathbf F_7,\quad e_1=2,\quad f_1=1,\quad
+\mu=4,\quad\kappa=1,\quad s=2,\quad z=3.
+\]
+
+Predictions:
+
+\[
+(r_0,r_1,r_2,r_3,r_4)=(2,3,3,6,1),
+\]
+
+\[
+(\lambda_0,\lambda_1,\lambda_2,\lambda_3,\lambda_4)
+=(1,3,3,2,2),
+\]
+
+\[
+(a_0,a_1,a_2,a_3,a_4)=(2,1,1,3,4),
+\]
+
+\[
+(a_0^{\rm new},a_1^{\rm new},a_2^{\rm new},
+a_3^{\rm new},a_4^{\rm new})=(0,0,0,0,4),
+\]
+
+and normalized output
+
+\[
+(0,0,0,0,1).
+\]
+
+### Frame 3: collision in characteristic \(3\)
+
+\[
+K=\mathbf F_9=\mathbf F_3[\alpha]/(\alpha^2+1),
+\quad e_1=3,\quad f_1=2,\quad
+\mu=3,\quad\kappa=2,\quad s=1,\quad z=2.
+\]
+
+Predictions:
+
+\[
+R(T)=(T-1)^3=2+T^3,
+\]
+
+\[
+(\lambda_0,\lambda_1,\lambda_2,\lambda_3)=(1,2,1,1),
+\]
+
+\[
+(a_0,a_1,a_2,a_3)=(2,0,0,1),
+\]
+
+and normalized output
+
+\[
+(0,0,0,1).
+\]
+
+### Planted falsifiers
+
+1. Delete the carry twists in Frame 2. Ordinary raw convolution gives
+
+   \[
+   (5,1,3,0,4),
+   \]
+
+   whose normalized value is
+
+   \[
+   (5,3,2,0,1)\ne(0,0,0,0,1).
+   \]
+
+2. Reverse the sign of \(w\) in Frame 1. The output becomes the coefficients of
+
+   \[
+   R(T-2)=(T+1)^3
+   =1+3T+3T^2+T^3,
+   \]
+
+   namely
+
+   \[
+   (1,3,3,1)\ne(0,0,0,1).
+   \]
+
+The perimeter verifier must separately evaluate the stage-to-tower map, \(B_n\)-coordinates, scoring predicate, and all (M2) fences. With the present paste its exact expected result is a fail-closed diagnostic: those four definitions are absent, so no honest Boolean membership prediction can be generated.
+
+OUTCOME: PARTIAL
+tokens used
+36,117
+## Verdict
+
+The new S0 text defines the target \([ILN]^\dagger\) tower class, but it still does not prove X(i). More decisively, the section headed “THE (M3) SCORED-STRATUM CLAUSE” is empty: no definition of \(B_n\), the scoring predicate, the stage-to-\(B_n\) map, or the (M2) fence predicates is present.
+
+Thus X(ii) remains proved conditionally on X(i), while the combined X-lemma remains partial.
+
+## 1. The combined X-lemma
+
+Let \(O\) be a DVR, let \(K\) be the residue field relevant to a readable stage-\(\alpha\) event, and suppose the event has data
+
+\[
+e_1,f_1,\mu\ge 1,\qquad \kappa>S',\qquad s\in K^\times.
+\]
+
+Let \(\Phi'\) be its monic admissible representative and
+
+\[
+F=\sum_{i=0}^{\mu}A_i(\Phi')^i,\qquad d_i=(\mu-i)\kappa.
+\]
+
+Assume:
+
+1. \(dv(A_i)\ge d_i\).
+2. The relevant Newton side is \((0,\mu\kappa)-(\mu,0)\).
+3. Its coherently normalized residual polynomial is
+
+   \[
+   R(T)=\sum_{i=0}^{\mu}r_iT^i=(T-s)^\mu.
+   \]
+
+4. Normalizers \(n(m)\) span the height-\(m\) graded lines and satisfy
+
+   \[
+   \operatorname{in}(n(a))\operatorname{in}(n(b))
+   =c(a,b)\operatorname{in}(n(a+b)),
+   \]
+
+   including reduction modulo the grading period.
+
+5. For \(t\ge0\),
+
+   \[
+   n(\kappa)^t=q_tn(t\kappa),\qquad q_t=\bar z^{fl_t}.
+   \]
+
+6. If
+
+   \[
+   \operatorname{in}_{d_i}(A_i)=a_i\operatorname{in}(n(d_i)),
+   \]
+
+   the coherent residual normalization is
+
+   \[
+   r_i=\lambda_{\mu,i}a_i,\qquad
+   \lambda_{\mu,i}:=q_i\,c(d_i,i\kappa).
+   \]
+
+7. With \(\widehat s\) the canonical lift of \(s\),
+
+   \[
+   w=-\widehat s\,n(\kappa)+w_{>\kappa},
+   \qquad dv(w_{>\kappa})>\kappa,
+   \qquad \Phi'_{\rm new}=\Phi'+w.
+   \]
+
+Write
+
+\[
+F=\sum_{j=0}^{\mu}A_j^{\rm new}(\Phi'_{\rm new})^j
+\]
+
+after canonical redivision.
+
+The intended combined lemma X asserts:
+
+**X(i), perimeter re-instantiation.** The ambient stage event canonically determines a tower of the \([ILN]^\dagger\) S0.1 class and a principal-read realization such that:
+
+- its canonical redivision chain is the chain identified by (M0);
+- its node-height slots are \(B_n\)-slots governed by (M2);
+- the stage lies in the scored stratum required by (M3);
+- every slot used above belongs to the applicable (M2) perimeter, including collision and mod-wrap slots.
+
+**X(ii), additive action.** For every \(0\le j\le\mu\),
+
+\[
+\boxed{
+\operatorname{res}_{(\mu-j)\kappa}(A_j^{\rm new})
+=[T^j]R(T+s)
+}
+\]
+
+or, equivalently,
+
+\[
+\boxed{
+a_j^{\rm new}
+=\lambda_{\mu,j}^{-1}
+\sum_{i=j}^{\mu}
+\binom{i}{j}\lambda_{\mu,i}a_i s^{i-j}.
+}
+\]
+
+In particular, because \(R(T)=(T-s)^\mu\),
+
+\[
+R(T+s)=T^\mu,
+\]
+
+so
+
+\[
+\operatorname{res}_{(\mu-j)\kappa}(A_j^{\rm new})=
+\begin{cases}
+0,&j<\mu,\\
+1,&j=\mu.
+\end{cases}
+\]
+
+## 2. X(i): perimeter re-instantiation
+
+### What the new S0 text establishes
+
+The S0.1 text now precisely describes a possible target object:
+
+- a DVR and initial key \(\Phi_0\);
+- all \(e_j,h_j,g_j,\psi_j,K_j\);
+- normalized Bézout pairs;
+- standard or canonical corrected lifts;
+- the iterated read and split calculus;
+- the cocycle exponents \(\delta,D_j\).
+
+It therefore removes uncertainty about what an \([ILN]^\dagger\) tower is.
+
+It does not, however, construct such a tower from a stage-\(\alpha\) event.
+
+A stage event supplies the local data
+
+\[
+(e_1,f_1,\mu,\kappa,\Phi',A_0,\ldots,A_\mu,R,s).
+\]
+
+An S0.1 object additionally requires, among other things,
+
+\[
+n,\quad \Phi_0,\quad
+(e_j,h_j,\psi_j,g_j,K_j)_{0\le j\le n},
+\quad\Phi_1,\ldots,\Phi_n,
+\]
+
+together with the assertion that each lift is the specified standard or canonical corrected lift. No supplied rule reconstructs these data from the stage event. In particular, no pasted statement identifies the stage parameter \(e_1\) with any specified \(e_j\) or product \(E_{n+1}\).
+
+### The scoring predicate is still absent
+
+The pasted section
+
+> THE (M3) SCORED-STRATUM CLAUSE (WELDMASTER, verbatim)
+
+contains no text beneath its heading. Consequently the following necessary predicates remain undefined:
+
+\[
+B_n,\qquad
+\operatorname{Scored}_n,\qquad
+\operatorname{StageToB}_n,\qquad
+\operatorname{M2Fence}_n.
+\]
+
+S0.3 is an iterated cocycle theorem with a status ledger; it is not a definition of an (M3) scored stratum.
+
+Therefore the desired assertion
+
+\[
+\operatorname{Scored}_n(\operatorname{StageToB}_n(E))
+\]
+
+cannot even be expanded into a proposition from the pasted material.
+
+### The theorem-status perimeter does not fill the gap
+
+S0.3 also explicitly records:
+
+- rung \(2\) at attempt grade \(0/2\);
+- rungs \(n\ge3\) conditional on the rung-2 package and open engines;
+- DCX loci on which W-MULT is open.
+
+Thus even if one guessed a stage-to-tower map, one could not infer that an arbitrary image lies in the proved part of the S0.3 perimeter without the missing scoring and fence predicates.
+
+### Exact resisting case
+
+The first mod-wrap test remains
+
+\[
+e_1=2,\qquad f_1=1,\qquad \mu=4,\qquad \kappa=1.
+\]
+
+Here \(n(\kappa)^2\) wraps in the \(\mathbf Z/2\)-grading, and the contributions from \(A_3\) and \(A_4\) to the lower new coefficients use wrapped products. The supplied S0 definitions explain how a previously supplied tower would calculate carries, but they do not prove that this arbitrary stage event:
+
+1. determines an S0.1 tower;
+2. determines \(B_n\)-coordinates;
+3. satisfies the missing scoring predicate; or
+4. lies within the relevant (M2) mod-wrap fence.
+
+This is a domain obstruction, not a difficult carry computation.
+
+### Formal independence
+
+Add one readable stage event \(E_\ast\) to the universe of stage events, without assigning it a tower realization or declaring it scored. This changes none of:
+
+- S0.1–S0.3;
+- WELD-M on its already-realized domain;
+- WM-COB;
+- J-D0;
+- GENHN-2 or GENHN-3.
+
+All supplied statements remain true, but X(i) fails for \(E_\ast\). Hence X(i) is not a logical consequence of the pasted statements.
+
+The exact remaining lemma is:
+
+> **X-PERIM.** Every readable stage-\(\alpha\) event has a canonical ambient \([ILN]^\dagger\) principal-read realization, together with a defined stage-to-\(B_n\) map whose image satisfies the (M3) scoring predicate and every (M2) slot-fence predicate used by the event.
+
+## 3. X(ii): complete proof conditional on X-PERIM
+
+Assume X-PERIM, so the relevant graded multiplication and canonical division chain are licensed.
+
+For \(j\le i\), put \(r=i-j\). Since
+
+\[
+d_i+r\kappa=d_j,
+\]
+
+the exact-height part of \((-w)^rA_i\) is
+
+\[
+s^ra_i\,n(\kappa)^rn(d_i)
+=s^ra_iq_r c(r\kappa,d_i)n(d_j).
+\]
+
+When this term is assembled in residual degree \(j\), it receives the normalization
+
+\[
+\lambda_{\mu,j}=q_jc(d_j,j\kappa).
+\]
+
+Associativity and commutativity give the carry identity
+
+\[
+\boxed{
+\lambda_{\mu,j}q_r c(r\kappa,d_i)=\lambda_{\mu,i}.
+}
+\tag{1}
+\]
+
+Indeed, the left side is the scalar obtained by normalizing
+
+\[
+\bigl(n(\kappa)^rn(d_i)\bigr)n(\kappa)^j,
+\]
+
+while the right side normalizes
+
+\[
+n(d_i)n(\kappa)^i.
+\]
+
+Since \(i=r+j\), these are the same product. This argument retains every outer \(\bar z^\delta\) factor; WM-COB is not being used to erase it.
+
+Now
+
+\[
+\Phi'=\Phi'_{\rm new}-w,
+\]
+
+so the binomial theorem in a commutative ring gives
+
+\[
+(\Phi')^i
+=\sum_{j=0}^{i}
+\binom{i}{j}(\Phi'_{\rm new})^j(-w)^{i-j}.
+\]
+
+Consequently, before removing terms strictly above height \(d_j\),
+
+\[
+A_j^{\rm new}
+=\sum_{i=j}^{\mu}\binom{i}{j}(-w)^{i-j}A_i.
+\]
+
+Any term using \(w_{>\kappa}\), or an above-line component of \(A_i\), has valuation at least
+
+\[
+(i-j)\kappa+d_i+1=d_j+1.
+\]
+
+By the standard initial-form rule for a multiplicative filtration, such terms have zero residue at height \(d_j\). GENHN-3(c)(d) places them inside the readable windows and says the resulting redivision carries move upward only.
+
+For the exact-height contribution from index \(i\), equation (1) gives normalized residue
+
+\[
+\binom{i}{j}s^{i-j}\lambda_{\mu,i}a_i
+=\binom{i}{j}s^{i-j}r_i.
+\]
+
+Adding the contributions in the height-\(d_j\) graded line,
+
+\[
+\begin{aligned}
+\operatorname{res}_{d_j}(A_j^{\rm new})
+&=\sum_{i=j}^{\mu}
+  \binom{i}{j}r_i s^{i-j}\\
+&=[T^j]R(T+s).
+\end{aligned}
+\]
+
+This includes:
+
+- collisions, because equal-line contributions are added before taking the initial form;
+- cancellation collisions, because a zero sum means the valuation rises;
+- mod-wrap, because every wrap factor occurs in \(q_t\) and \(c\), and (1) follows from associativity after grade reduction;
+- all characteristics, because no factorial is divided by and \(R(T+s)=T^\mu\) is a substitution identity.
+
+Thus X(ii) is proved once X(i) supplies the perimeter license.
+
+## 4. Combined status and consequence
+
+From the current materials one has the conditional theorem
+
+\[
+\boxed{\text{X-PERIM}\Longrightarrow\text{combined X}.}
+\]
+
+Under that condition, the leading graded kills follow from X(ii); GENHN-3 supplies the correction strictness; and GENHN-2, GENHN-3(d), and finite-cardinality triangularity supply the digit-space bijection. J-D0 then makes the resulting counts insensitive to the twist gauge.
+
+What is not proved is the unconditional premise X-PERIM.
+
+## 5. Machine-verification plan
+
+The additive verifier should implement
+
+\[
+i(m)=m\bmod e_1,\qquad
+c(a,b)=z^{\lfloor(i(a)+i(b))/e_1\rfloor},
+\qquad
+q_t=z^{\lfloor t\,i(\kappa)/e_1\rfloor}.
+\]
+
+It should calculate \(\lambda_{\mu,i}\), convert residual digits \(r_i\) to raw digits \(a_i\), perform the twisted convolution, and compare with \(R(T+s)\).
+
+### Frame 1
+
+\[
+K=\mathbf F_5,\quad e_1=f_1=1,\quad
+\mu=3,\quad\kappa=1,\quad s=2,\quad z=1.
+\]
+
+Predictions:
+
+\[
+R(T)=2+2T+4T^2+T^3,
+\]
+
+\[
+(r_0,r_1,r_2,r_3)=(2,2,4,1),
+\]
+
+and
+
+\[
+\bigl(
+\operatorname{res}_3(A_0^{\rm new}),
+\operatorname{res}_2(A_1^{\rm new}),
+\operatorname{res}_1(A_2^{\rm new}),
+\operatorname{res}_0(A_3^{\rm new})
+\bigr)=(0,0,0,1).
+\]
+
+### Frame 2: repeated wrap
+
+\[
+K=\mathbf F_7,\quad e_1=2,\quad f_1=1,\quad
+\mu=4,\quad\kappa=1,\quad s=2,\quad z=3.
+\]
+
+Predictions:
+
+\[
+(r_0,r_1,r_2,r_3,r_4)=(2,3,3,6,1),
+\]
+
+\[
+(\lambda_0,\lambda_1,\lambda_2,\lambda_3,\lambda_4)
+=(1,3,3,2,2),
+\]
+
+\[
+(a_0,a_1,a_2,a_3,a_4)=(2,1,1,3,4),
+\]
+
+\[
+(a_0^{\rm new},a_1^{\rm new},a_2^{\rm new},
+a_3^{\rm new},a_4^{\rm new})=(0,0,0,0,4),
+\]
+
+and normalized output
+
+\[
+(0,0,0,0,1).
+\]
+
+### Frame 3: collision in characteristic \(3\)
+
+\[
+K=\mathbf F_9=\mathbf F_3[\alpha]/(\alpha^2+1),
+\quad e_1=3,\quad f_1=2,\quad
+\mu=3,\quad\kappa=2,\quad s=1,\quad z=2.
+\]
+
+Predictions:
+
+\[
+R(T)=(T-1)^3=2+T^3,
+\]
+
+\[
+(\lambda_0,\lambda_1,\lambda_2,\lambda_3)=(1,2,1,1),
+\]
+
+\[
+(a_0,a_1,a_2,a_3)=(2,0,0,1),
+\]
+
+and normalized output
+
+\[
+(0,0,0,1).
+\]
+
+### Planted falsifiers
+
+1. Delete the carry twists in Frame 2. Ordinary raw convolution gives
+
+   \[
+   (5,1,3,0,4),
+   \]
+
+   whose normalized value is
+
+   \[
+   (5,3,2,0,1)\ne(0,0,0,0,1).
+   \]
+
+2. Reverse the sign of \(w\) in Frame 1. The output becomes the coefficients of
+
+   \[
+   R(T-2)=(T+1)^3
+   =1+3T+3T^2+T^3,
+   \]
+
+   namely
+
+   \[
+   (1,3,3,1)\ne(0,0,0,1).
+   \]
+
+The perimeter verifier must separately evaluate the stage-to-tower map, \(B_n\)-coordinates, scoring predicate, and all (M2) fences. With the present paste its exact expected result is a fail-closed diagnostic: those four definitions are absent, so no honest Boolean membership prediction can be generated.
+
+OUTCOME: PARTIAL

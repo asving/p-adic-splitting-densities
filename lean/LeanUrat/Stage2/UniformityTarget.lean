@@ -105,4 +105,9 @@ end LeanUrat.Stage2
 DROPPED from both targets — "it might be cleaner not to mention the
 palindromicity at all and simply to prove uniformity at all primes"; the
 palindromy content remains a capstone-level fact at the committed instance
-(montes_unconditional) and is not part of the stage-2 target. -/
+(montes_unconditional) and is not part of the stage-2 target.
+
+Statement-grain sign-off (2026-08-11, Asvin): the bare (e,f)-multiset
+`FactorizationType` IS the intended target grain — "that is what we want to
+prove"; finer invariants (e.g. discriminant exponents) are possible theorems
+but deliberately deferred. The type definition is confirmed as reviewed. -/
