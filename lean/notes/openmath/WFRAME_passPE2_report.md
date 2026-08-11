@@ -123,8 +123,29 @@ irreducible /F₄ (0 roots), twin y²+z₂y+z₂² = (y+1)(y+z₂²) via
   (L145–146) — entailed, exactly as the folded §7 caveat now
   states. The caveat is FAITHFUL to the code.
 
-**Fresh route.** PENDING (design: a 9th prime — the LP1 tower at a
-NEW u₃ = 23, no committed key uses it; predictions to be sealed
-before the run).
+**Fresh route (SEAL — predictions preregistered BEFORE any run).**
+Frame LP23, disjoint from GF29 and the committed record: the LP1
+tower (Φ′ = x⁴+2x²+4, Φ₂ = Φ′²−8x³, u₂ = 9, π₃ = Φ′/x⁴, heights
+x:2, 2:4, Φ′:9, γ₁ = x²/2, γ₂ = Φ′²/x⁹) with a NEW key at u₃ = 23
+(e₃ = 1, f₃ = 2; κ₃ = 23 > floor 18; committed LP1 keys use 19/37
+only; GENHN's u₃ = 23 is a DIFFERENT tower, dv(Φ′) = 5, no w
+record), target ψ₃ = y²+y+z₁². Hand predictions from the note's own
+laws: n̂₂(23) = 8xΦ′, n̂₂(46) = 2¹¹x; **W-avatar split (93,3,−22) =
+−3γ₁ − 11γ₂ → z₁⁻³ = 1 — the FIRST measured avatar = 1 geography
+(every committed row is ≠ 1; OPEN-4 probed live; DEF W-1's "w = 1
+is a possible value" exercised)**; ϑ(0) split (−1,5,−2) → z₁ ≠ 1
+(LAW W-E live); u(β₀) split (185,11,−46) → z₁; IDY z₁ = z₁·1²
+with the w = 1 signature u₀ = ϑ(0) (contrast GF29's u₀ ≠ ϑ(0));
+law key Φ₂² − 8xΦ′Φ₂ − 2¹⁰x³ (c₀ = ϑ(0)⁻¹a₀ = z₁, lift x²/2-letter)
+realizes ψ₃ irreducible /F₄ → ONE prime (4,4); naive twin
+Φ₂² − 8xΦ′Φ₂ − 2⁹x⁵ (c₀ = a₀ = z₁²) realizes y²+y+z₁·z₁² = y²+y+1
+split → TWO primes (4,2) — a PURE-ϑ naive-twin kill at a w = 1
+frame (LAW W-C's iff, only-if leg: u(β₀) = z₁ ≠ 1 though w = 1);
+avatar = 1 at the twin's two primes too (key-independence). Laws
+live: W-B, W-C, W-E (≥2 met). Instrument
+`verification/openmath/wframe_pe2_fresh.py` (own poly/F₄/lattice
+code; gp dual routes factorpadic + idealprimedec/nfmodpr). RED runs
+will be kept as-is with diagnosis. Result: see addendum below
+(written only after this seal commit).
 
 ## GRADE LINE: PENDING
