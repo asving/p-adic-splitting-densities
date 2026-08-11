@@ -15988,3 +15988,23 @@ byte-identical, footprints unchanged, quarantine-never-delete,
 zero-banked-sorries in the trusted graph. Output →
 /tmp/leansimp_output.log; orchestrator review + Asvin sign-off before
 ANY migration step executes.
+
+**SERVER CRASH + RECOVERY (2026-08-11, ~11:00–21:15 UTC gap)** — the
+host went down mid-afternoon; /tmp wiped. LOSSES: the in-flight
+leansimp run + its brief (only artifact not in-repo; every completed
+result was already committed). DEBRIS cleaned: 28 stale pidfiles + 6
+wrong-cwd error stubs (each verified dead-process/path-error before
+deletion); *.pid now gitignored. LESSON ADOPTED: runner briefs,
+outputs, and progress files live IN-REPO under runs/ from now on —
+never /tmp. ACCOUNT: the unlimited-API window closed again (Asvin);
+**Amendment 4 stays governing** — Codex-high for the work, Fable =
+orchestrator only. LEANSIMP RELAUNCHED 21:17 (brief regenerated
+byte-equivalent from committed sources, 148,894 B, stdin launch,
+runs/leansimp_*). Codex window: 1% (reset Aug 18) — full tank.
+QUEUE after leansimp: X-lemma attempt 3 (extract the four named
+defs — stage-to-tower map, B_n coordinates, scoring predicate, (M2)
+fences — from WELDMASTER/W-9 committed notes; attempts 1+2 outputs
+are committed), WI r1 nonemptiness repair → pass 3 (full consumer
+paste), DRAIN-N4 acceptance pass (census #1), FGMN-WELD cite
+re-verification, the Opus/Sonnet translation trial (gated on the
+leansimp design decisions + Asvin sign-off).

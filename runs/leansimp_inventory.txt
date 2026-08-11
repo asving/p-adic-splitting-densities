@@ -1,0 +1,346 @@
+DIRECTORY SUMMARY (modules / lines / sorries):
+
+## OM: 134 modules, 77287 lines, 204 sorries. Samples:
+  - OM/BlockProduct.lean (676L, s:1): Copyright (c) 2026 Asvin G. All rights reserved. Released under Apache 2.0 license as described in the file LICENSE. Authors: Asvin G
+  - OM/CellCard.lean (2248L, s:0): Copyright (c) 2026 Asvin G. All rights reserved. Released under Apache 2.0 license as described in the file LICENSE. Authors: Asvin G
+  - OM/CellMenu.lean (2675L, s:0): Copyright (c) 2026 Asvin G. All rights reserved. Released under Apache 2.0 license as described in the file LICENSE. Authors: Asvin G
+  - OM/CellPartition.lean (246L, s:1): Copyright (c) 2026 Asvin G. All rights reserved. Released under Apache 2.0 license as described in the file LICENSE. Authors: Asvin G
+  - OM/ChainMenu.lean (1692L, s:1): Copyright (c) 2026 Asvin G. All rights reserved. Released under Apache 2.0 license as described in the file LICENSE. Authors: Asvin G
+  - OM/ChainMenu6.lean (130L, s:1): Copyright (c) 2026 Asvin G. All rights reserved. Released under Apache 2.0 license as described in the file LICENSE. Authors: Asvin G
+  - OM/ChainMenu7.lean (270L, s:1): Copyright (c) 2026 Asvin G. All rights reserved. Released under Apache 2.0 license as described in the file LICENSE. Authors: Asvin G
+  - OM/ChainMenuU.lean (797L, s:1): Copyright (c) 2026 Asvin G. All rights reserved. Released under Apache 2.0 license as described in the file LICENSE. Authors: Asvin G
+
+## Scaffold: 113 modules, 54003 lines, 100 sorries. Samples:
+  - Scaffold/AnchorN2.lean (124L, s:0): Copyright (c) 2026 Asvin G. All rights reserved. Released under Apache 2.0 license as described in the file LICENSE. Authors: Asvin G
+  - Scaffold/AxChk.lean (209L, s:0): Scaffold/AxChk.lean — BP_VI §1.5 axiom-census extension (standalone; NOT imported by anything; `AxChk_baseline.lean` untouched). Gate: `lake env lean 
+  - Scaffold/CorpusBridge.lean (155L, s:0): Copyright (c) 2026 Asvin G. All rights reserved. Released under Apache 2.0 license as described in the file LICENSE. Authors: Asvin G
+  - Scaffold/Hypotheses.lean (320L, s:0): BP_VI §1.1 — the (ROOT-C) hypothesis surface (`Hypotheses.lean`). Units in this file: VI-H0 (module header, below) · VI-H1 (`RootHyps`) · VI-H2 (`Clau
+  - Scaffold/Spine.lean (114L, s:0): Copyright (c) 2026 Asvin G. All rights reserved. Released under Apache 2.0 license as described in the file LICENSE. Authors: Asvin G
+  - Scaffold/DictIII/BasePolyLength.lean (1062L, s:1): Copyright (c) 2026 Asvin G. All rights reserved. Released under Apache 2.0 license as described in the file LICENSE. Authors: Asvin G
+  - Scaffold/DictIII/CU1.lean (2868L, s:26): Copyright (c) 2026 Asvin G. All rights reserved. Released under Apache 2.0 license as described in the file LICENSE. Authors: Asvin G
+  - Scaffold/DictIII/CU2t.lean (1212L, s:1): Copyright (c) 2026 Asvin G. All rights reserved. Released under Apache 2.0 license as described in the file LICENSE. Authors: Asvin G
+
+## HC1: 103 modules, 31679 lines, 60 sorries. Samples:
+  - HC1/C1_LST.lean (72L, s:0): Copyright (c) 2026 Asvin G. All rights reserved. Released under Apache 2.0 license as described in the file LICENSE. Authors: Asvin G
+  - HC1/C2_TYPa.lean (735L, s:0): Copyright (c) 2026 Asvin G. All rights reserved. Released under Apache 2.0 license as described in the file LICENSE. Authors: Asvin G
+  - HC1/C3_TYPb.lean (130L, s:0): Copyright (c) 2026 Asvin G. All rights reserved. Released under Apache 2.0 license as described in the file LICENSE. Authors: Asvin G
+  - HC1/C4_DOM.lean (51L, s:0): Copyright (c) 2026 Asvin G. All rights reserved. Released under Apache 2.0 license as described in the file LICENSE. Authors: Asvin G
+  - HC1/C5_typToClause.lean (165L, s:0): Copyright (c) 2026 Asvin G. All rights reserved. Released under Apache 2.0 license as described in the file LICENSE. Authors: Asvin G
+  - HC1/C6_alphabetCard.lean (829L, s:1): Copyright (c) 2026 Asvin G. All rights reserved. Released under Apache 2.0 license as described in the file LICENSE. Authors: Asvin G
+  - HC1/CL01a_shallowBase.lean (100L, s:1): Copyright (c) 2026 Asvin G. All rights reserved. Released under Apache 2.0 license as described in the file LICENSE. Authors: Asvin G
+  - HC1/CL01b_shallowMove.lean (228L, s:0): Copyright (c) 2026 Asvin G. All rights reserved. Released under Apache 2.0 license as described in the file LICENSE. Authors: Asvin G
+
+## HC2: 66 modules, 20536 lines, 57 sorries. Samples:
+  - HC2/Defs.lean (792L, s:2): Copyright (c) 2026 Asvin G. All rights reserved. Released under Apache 2.0 license as described in the file LICENSE. Authors: Asvin G
+  - HC2/DefsPrime.lean (270L, s:0): Copyright (c) 2026 Asvin G. All rights reserved. Released under Apache 2.0 license as described in the file LICENSE. Authors: Asvin G
+  - HC2/HK03_stageTransHypEmpty.lean (135L, s:1): Copyright (c) 2026 Asvin G. All rights reserved. Released under Apache 2.0 license as described in the file LICENSE. Authors: Asvin G
+  - HC2/HK05_countermodelGate.lean (624L, s:1): Copyright (c) 2026 Asvin G. All rights reserved. Released under Apache 2.0 license as described in the file LICENSE. Authors: Asvin G
+  - HC2/HK11a_vertexTransport.lean (649L, s:0): # HK-11a VERTEX TRANSPORT — the re-pointed HK-11a kernel: the σV-vertex law at the recorded regrade, and its e′ = 1 consumption shape (post-wave unit,
+  - HC2/HK13_bStageCoreP1a.lean (702L, s:2): Copyright (c) 2026 Asvin G. All rights reserved. Released under Apache 2.0 license as described in the file LICENSE. Authors: Asvin G
+  - HC2/HK14_bStageCoreP2.lean (267L, s:1): Copyright (c) 2026 Asvin G. All rights reserved. Released under Apache 2.0 license as described in the file LICENSE. Authors: Asvin G
+  - HC2/HK15_gateChildCarrier.lean (378L, s:2): Copyright (c) 2026 Asvin G. All rights reserved. Released under Apache 2.0 license as described in the file LICENSE. Authors: Asvin G
+
+## MovesU: 95 modules, 18103 lines, 47 sorries. Samples:
+  - MovesU/BridgeA10_digitSum.lean (74L, s:0): Copyright (c) 2026 Asvin G. All rights reserved. Released under Apache 2.0 license as described in the file LICENSE. Authors: Asvin G
+  - MovesU/BridgeA11_boxEquivD.lean (157L, s:0): Copyright (c) 2026 Asvin G. All rights reserved. Released under Apache 2.0 license as described in the file LICENSE. Authors: Asvin G
+  - MovesU/BridgeA12_boxProjCompat.lean (101L, s:0): Copyright (c) 2026 Asvin G. All rights reserved. Released under Apache 2.0 license as described in the file LICENSE. Authors: Asvin G
+  - MovesU/BridgeA8_level0Edge.lean (68L, s:0): Copyright (c) 2026 Asvin G. All rights reserved. Released under Apache 2.0 license as described in the file LICENSE. Authors: Asvin G
+  - MovesU/BridgeA9_boxPolyEquiv.lean (112L, s:0): Copyright (c) 2026 Asvin G. All rights reserved. Released under Apache 2.0 license as described in the file LICENSE. Authors: Asvin G
+  - MovesU/BridgeB15a_r2Neg.lean (3055L, s:1): Copyright (c) 2026 Asvin G. All rights reserved. Released under Apache 2.0 license as described in the file LICENSE. Authors: Asvin G
+  - MovesU/BridgeB1_consumedDeltasSeed.lean (63L, s:0): Copyright (c) 2026 Asvin G. All rights reserved. Released under Apache 2.0 license as described in the file LICENSE. Authors: Asvin G
+  - MovesU/BridgeB2_stateNe.lean (94L, s:1): Copyright (c) 2026 Asvin G. All rights reserved. Released under Apache 2.0 license as described in the file LICENSE. Authors: Asvin G
+
+## MovesV: 128 modules, 17924 lines, 37 sorries. Samples:
+  - MovesV/Defs.lean (1575L, s:2): MovesV/Defs — shared vocabulary for MOVES §V-TABLES (the CTS state space, tables, and the measured theorem CTS-M). E-phase transcription of `lean/note
+  - MovesV/DefsGate.lean (172L, s:0): MovesV/DefsGate — the V.6 sealed data (concrete, decide-native) — §2.I. Concrete data only (no laws): the root/s_blk2 rosters' closed-form polynomials
+  - MovesV/SkeletonFinite.lean (106L, s:2): MovesV unit `skeleton_finite` — SKELETON FINITENESS AT EVERY n. Lean side of O-13 Theorem 1 (letters; = T-4 SP-FIN), per the VERIFIED O-13 leaf `lean/
+  - MovesV/TV_E1.lean (511L, s:0): TV-E1 (BRIDGE BP3, cluster c4; E-phase skeleton) — `measuredOf` DATA BLOCK 1: the shared (V, X, cp)-keyed `MovesS.MeasuredSide` construction over the 
+  - MovesV/TV_E2.lean (138L, s:0): TV-E2 (BRIDGE BP3, cluster c4; E-phase skeleton) — `measuredOf` DATA BLOCK 2: entrance block + activeState + rowVal + THE THREE-CASE kstep RECURSION, 
+  - MovesV/TV_E3.lean (562L, s:0): TV-E3 (BRIDGE BP3, cluster c4; E-phase skeleton) — LedgerIV GROUPS (1)-(2) at the measuredOf witness: xhd_sum / xhd_no_stray / xhd_no_orphan / d4r0. B
+  - MovesV/TV_E4.lean (307L, s:0): TV-E4 (BRIDGE BP3, cluster c4; E-phase skeleton) — LedgerIV GROUPS (3)-(5) at the measuredOf witness: part1 / rep_indep / meas_card. Blueprint: lean/n
+  - MovesV/TV_E5a.lean (196L, s:0): TV-E5a (BRIDGE BP3, cluster c4; E-phase skeleton) — THE no_entry/rowVal VOCABULARY-BRIDGE PROBE GATE (runs BEFORE the TV-E5b prover). Blueprint: lean/
+
+## MovesT: 74 modules, 14305 lines, 59 sorries. Samples:
+  - MovesT/C1_capHen.lean (73L, s:1): Copyright (c) 2026 Asvin G. All rights reserved. Released under Apache 2.0 license as described in the file LICENSE. Authors: Asvin G
+  - MovesT/C2_capIrr.lean (316L, s:0): Copyright (c) 2026 Asvin G. All rights reserved. Released under Apache 2.0 license as described in the file LICENSE. Authors: Asvin G
+  - MovesT/C3_nsLump.lean (41L, s:0): Copyright (c) 2026 Asvin G. All rights reserved. Released under Apache 2.0 license as described in the file LICENSE. Authors: Asvin G
+  - MovesT/C4_nsLadder.lean (42L, s:0): Copyright (c) 2026 Asvin G. All rights reserved. Released under Apache 2.0 license as described in the file LICENSE. Authors: Asvin G
+  - MovesT/C5_nsFree.lean (103L, s:0): Copyright (c) 2026 Asvin G. All rights reserved. Released under Apache 2.0 license as described in the file LICENSE. Authors: Asvin G
+  - MovesT/C6_nsPrice.lean (42L, s:0): Copyright (c) 2026 Asvin G. All rights reserved. Released under Apache 2.0 license as described in the file LICENSE. Authors: Asvin G
+  - MovesT/C7_nsNull.lean (192L, s:0): Copyright (c) 2026 Asvin G. All rights reserved. Released under Apache 2.0 license as described in the file LICENSE. Authors: Asvin G
+  - MovesT/C8_nsTreeBound.lean (33L, s:0): Copyright (c) 2026 Asvin G. All rights reserved. Released under Apache 2.0 license as described in the file LICENSE. Authors: Asvin G
+
+## Moves: 64 modules, 11400 lines, 18 sorries. Samples:
+  - Moves/Defs.lean (282L, s:1): Copyright (c) 2026 Asvin G. All rights reserved. Released under Apache 2.0 license as described in the file LICENSE. Authors: Asvin G
+  - Moves/DefsCore.lean (330L, s:1): Copyright (c) 2026 Asvin G. All rights reserved. Released under Apache 2.0 license as described in the file LICENSE. Authors: Asvin G
+  - Moves/DefsL.lean (263L, s:1): Copyright (c) 2026 Asvin G. All rights reserved. Released under Apache 2.0 license as described in the file LICENSE. Authors: Asvin G
+  - Moves/DefsT.lean (202L, s:1): Copyright (c) 2026 Asvin G. All rights reserved. Released under Apache 2.0 license as described in the file LICENSE. Authors: Asvin G
+  - Moves/L0_FactA_exists.lean (90L, s:0): Copyright (c) 2026 Asvin G. All rights reserved. Released under Apache 2.0 license as described in the file LICENSE. Authors: Asvin G
+  - Moves/L0_FactB_unique.lean (102L, s:0): Copyright (c) 2026 Asvin G. All rights reserved. Released under Apache 2.0 license as described in the file LICENSE. Authors: Asvin G
+  - Moves/L0_GRa.lean (15L, s:0): 
+  - Moves/L0_GRb.lean (17L, s:0): 
+
+## MovesS: 98 modules, 7652 lines, 13 sorries. Samples:
+  - MovesS/ActiveSolve.lean (177L, s:0): Unit U-24a1 `active_solve_meas` (medium) — REDESIGNED (Fable C1; R14): the measured value IS the active-subsystem solve, PER POOL, guards consumed. mo
+  - MovesS/AllActiveCofinite.lean (55L, s:0): Unit U-22b `allActive_cofinite` (medium) — PER-CELL keyed (R45); split (R48). moves_ref: "at all-active primes (cofinitely many — only finitely many p
+  - MovesS/AllActivePrimes.lean (24L, s:0): Unit U-22c `allActive_cofinite_primes` (medium) — the base-prime face, chain hypotheses EXPLICIT (R48 split; Codex#6-3's scope): "cofinitely many BASE
+  - MovesS/BSplitDef.lean (71L, s:1): Unit U-16a1 `bSplit_def` (medium) — the split exit vector, with the summand's def-equation PINNED (Fable G3). moves_ref: "b_e^split(τ)(σ′) := Σ_{o bra
+  - MovesS/Bdy.lean (24L, s:0): Unit U-7a `bdy_edge` (easy) — the (BDY) edge rule. moves_ref: "the ENTERING READ of a block entrance belongs to the ENTRANCE SIDE".
+  - MovesS/BdyMass.lean (24L, s:0): Unit U-7c `bdy_mass_split` (easy) — the (BDY) mass split. moves_ref: "no read omitted, none double-charged".
+  - MovesS/BdyNode.lean (27L, s:0): Unit U-7b `bdy_node_shadow` (easy) — the (BDY) node rule. moves_ref: "the first entrance node ν is BLOCK-side as a STATE INDEX …, while the edge INTO 
+  - MovesS/BlockSolve.lean (66L, s:0): Unit U-16b `blockSolve` (medium) — the triangular bottom-up solve. moves_ref: "blocks solve bottom-up, each b_e^split leg already solved"; body `(1 - 
+
+## MovesD: 61 modules, 6764 lines, 11 sorries. Samples:
+  - MovesD/D0a_topLocus.lean (37L, s:0): Unit D0a.topLocus_laws (MovesD campaign, E-phase) moves_ref: "Z = ⊤: no constraint, vol(⊤) = 1" (§D4-R L6). deps: MovesC.Defs (via Defs). sketch: `pin
+  - MovesD/D0b_thmCtop.lean (49L, s:0): Unit D0b.thmC_top (MovesD campaign, E-phase) moves_ref: "Each NONEMPTY summand is Theorem C(b) with Z = ⊤ on the lift-carrying history η: μ(S(η,⊤)) = 
+  - MovesD/D0c_fiberPos.lean (39L, s:0): Unit D0c.fiber_pos (MovesD campaign, E-phase) moves_ref: "Theorem C(b) gives mass p^{−A(P̂)} > 0" (§D4-R L6 corollary). deps: D0b. difficulty: easy. h
+  - MovesD/D10_sumLaw.lean (54L, s:0): Unit D10.D4R1_SUM (MovesD campaign, E-phase) moves_ref: "Σ_{η ∈ Pref(P̂)} μ(S(η,⊤)) = C_P̂(p)·p^{−A(P̂)} (D4R.1-SUM)" ≡ "N(P̂) is finite, and for EVER
+  - MovesD/D11a_multSum.lean (78L, s:0): Unit D11a.mult_sum (MovesD campaign, E-phase) moves_ref: (double counting — the multiplicity sum equals the fiber-count sum). deps: D2a. sketch: Finty
+  - MovesD/D11b_eventMult.lean (50L, s:0): Unit D11b.event_iff_mult (MovesD campaign, E-phase) moves_ref: "S(P̂,⊤) = {f : mult_P̂(f) ≥ 1}" (L6 corollary). deps: Defs. sketch: iUnion membership 
+  - MovesD/D12_evBound.lean (50L, s:0): Unit D12.D4R1_EV (MovesD campaign, E-phase) moves_ref: "μ(P̂) ≤ C_P̂(p)·p^{−A(P̂)} (D4R.1-EV) by subadditivity" ≡ "(D4R.4-EV) … the union bound within
+  - MovesD/D13_evIff.lean (71L, s:0): Unit D13.D4R1_EV_iff (MovesD campaign, E-phase) moves_ref: "with EQUALITY iff mult_P̂ ≡ 1 on the event … count-equality ⟺ … mult_P̂ ≡ 1 POINTWISE on t
+
+## B2D: 27 modules, 6742 lines, 16 sorries. Samples:
+  - B2D/GR0_readHyps.lean (137L, s:1): Copyright (c) 2026 Asvin G. All rights reserved. Released under Apache 2.0 license as described in the file LICENSE. Authors: Asvin G
+  - B2D/GR0b_suppliers.lean (232L, s:1): Copyright (c) 2026 Asvin G. All rights reserved. Released under Apache 2.0 license as described in the file LICENSE. Authors: Asvin G
+  - B2D/GR1_equalWeights.lean (209L, s:0): Copyright (c) 2026 Asvin G. All rights reserved. Released under Apache 2.0 license as described in the file LICENSE. Authors: Asvin G
+  - B2D/GR2_slotResidual.lean (123L, s:0): Copyright (c) 2026 Asvin G. All rights reserved. Released under Apache 2.0 license as described in the file LICENSE. Authors: Asvin G
+  - B2D/GR3_keyResidual.lean (336L, s:0): Copyright (c) 2026 Asvin G. All rights reserved. Released under Apache 2.0 license as described in the file LICENSE. Authors: Asvin G
+  - B2D/GR4_gradedRead.lean (159L, s:1): Copyright (c) 2026 Asvin G. All rights reserved. Released under Apache 2.0 license as described in the file LICENSE. Authors: Asvin G
+  - B2D/GRDefs.lean (139L, s:2): Copyright (c) 2026 Asvin G. All rights reserved. Released under Apache 2.0 license as described in the file LICENSE. Authors: Asvin G
+  - B2D/HuniProbe.lean (549L, s:0): Copyright (c) 2026 Asvin G. All rights reserved. Released under Apache 2.0 license as described in the file LICENSE. Authors: Asvin G
+
+## (root): 24 modules, 6622 lines, 32 sorries. Samples:
+  - AxChk_baseline.lean (1449L, s:0): 
+  - Basic.lean (1L, s:0): 
+  - CountingModel.lean (359L, s:3): Copyright (c) 2026 Asvin G. All rights reserved. Released under Apache 2.0 license as described in the file LICENSE. Authors: Asvin G
+  - GMNIndex.lean (175L, s:0): Copyright (c) 2026 Asvin G. All rights reserved. Released under Apache 2.0 license as described in the file LICENSE. Authors: Asvin G
+  - Goal.lean (125L, s:1): Copyright (c) 2026 Asvin G. All rights reserved. Released under Apache 2.0 license as described in the file LICENSE. Authors: Asvin G
+  - Interface.lean (411L, s:0): Copyright (c) 2026 Asvin G. All rights reserved. Released under Apache 2.0 license as described in the file LICENSE. Authors: Asvin G
+  - L3.lean (172L, s:11): Copyright (c) 2026 Asvin G. All rights reserved. Released under Apache 2.0 license as described in the file LICENSE. Authors: Asvin G
+  - L3Gauss.lean (258L, s:2): Copyright (c) 2026 Asvin G. All rights reserved. Released under Apache 2.0 license as described in the file LICENSE. Authors: Asvin G
+
+## MovesX: 58 modules, 5412 lines, 7 sorries. Samples:
+  - MovesX/Defs.lean (506L, s:1): Copyright (c) 2026 Asvin G. All rights reserved. Released under Apache 2.0 license as described in the file LICENSE. Authors: Asvin G
+  - MovesX/KE1.lean (119L, s:0): Copyright (c) 2026 Asvin G. All rights reserved. Released under Apache 2.0 license as described in the file LICENSE. Authors: Asvin G
+  - MovesX/KE10.lean (81L, s:2): Copyright (c) 2026 Asvin G. All rights reserved. Released under Apache 2.0 license as described in the file LICENSE. Authors: Asvin G
+  - MovesX/KE2.lean (228L, s:1): Copyright (c) 2026 Asvin G. All rights reserved. Released under Apache 2.0 license as described in the file LICENSE. Authors: Asvin G
+  - MovesX/KE3.lean (146L, s:1): Copyright (c) 2026 Asvin G. All rights reserved. Released under Apache 2.0 license as described in the file LICENSE. Authors: Asvin G
+  - MovesX/KE5.lean (291L, s:1): Copyright (c) 2026 Asvin G. All rights reserved. Released under Apache 2.0 license as described in the file LICENSE. Authors: Asvin G
+  - MovesX/KE6.lean (84L, s:0): Copyright (c) 2026 Asvin G. All rights reserved. Released under Apache 2.0 license as described in the file LICENSE. Authors: Asvin G
+  - MovesX/KE7.lean (119L, s:0): Copyright (c) 2026 Asvin G. All rights reserved. Released under Apache 2.0 license as described in the file LICENSE. Authors: Asvin G
+
+## Kernels: 24 modules, 5170 lines, 11 sorries. Samples:
+  - Kernels/E0Matrix.lean (527L, s:0): Kernels/E0Matrix — BP4-c4 E-phase skeletons for the abstract E0 matrix layer: units KA1, KA2a, KA2b, KA2c, KA3, KA5 (BRIDGE_BP4_KERNELS_2026-07-30.md 
+  - Kernels/E0Route.lean (175L, s:0): Kernels/E0Route — BP4-c4 E-phase skeletons for the TYPED measure route to E0: units KA4a, KA4b (BRIDGE_BP4_KERNELS_2026-07-30.md REV 2, §3.A ROUTE 2 +
+  - Kernels/HmcReduction.lean (122L, s:1): Kernels/HmcReduction — BP4-c2 E-phase skeletons for units KC2a, KC3, KC4 (BRIDGE_BP4_KERNELS_2026-07-30.md REV 2, §3.C + §4 KC; F9 disposition binding
+  - Kernels/KA2d.lean (148L, s:0): Kernels/KA2d — BP4-c2 GATE unit KA2d [CM-first twin of KA2c; SEQUENCED BEFORE the KA2c prover, REV 2 F5] (BRIDGE_BP4_KERNELS_2026-07-30.md REV 2, §4 K
+  - Kernels/KA4c.lean (241L, s:0): Kernels/KA4c — BP4-c7 E-phase skeleton for unit KA4c [ATTEMPT]: the ROUTE-E0 seam — the note-shaped theorem "X.3-drain ⟹ per-pool escape" (the CL-4 co
+  - Kernels/KA6b1.lean (389L, s:0): Kernels/KA6b1 — BP4-c4 E-phase skeleton for unit KA6b1 [NEW id at REV 2 — the F2/F13 split of the retired KA6b]: the finite-field counting layer (pure
+  - Kernels/KA6b2.lean (198L, s:0): Kernels/KA6b2 — BP4-c7 E-phase skeleton for unit KA6b2 [ATTEMPT; NEW id at REV 2 — the F2/F13 split of the retired KA6b]: the window/table seam, THE O
+  - Kernels/KA8.lean (85L, s:0): Kernels/KA8 — BP4-c7 E-phase skeleton for unit KA8: the δ > 1 transport — ESCAPE(E0)/PoolHyp at the base-changed pools from the O_δ theory's own insta
+
+## MovesSp: 71 modules, 4577 lines, 5 sorries. Samples:
+  - MovesSp/Defs.lean (327L, s:1): Copyright (c) 2026 Asvin G. All rights reserved. Released under Apache 2.0 license as described in the file LICENSE. Authors: Asvin G
+  - MovesSp/DefsEnum.lean (147L, s:1): Copyright (c) 2026 Asvin G. All rights reserved. Released under Apache 2.0 license as described in the file LICENSE. Authors: Asvin G
+  - MovesSp/DefsN3.lean (270L, s:1): Copyright (c) 2026 Asvin G. All rights reserved. Released under Apache 2.0 license as described in the file LICENSE. Authors: Asvin G
+  - MovesSp/SP0_memCoherent.lean (21L, s:0): Unit Sp.memCoherent — moves_ref: "the least set … that contains every (G1)–(G4)+(G6)-coherent, (B1)–(B5)-admissible ROOT-stage tuple … (each generated
+  - MovesSp/SP0_reflBudget.lean (25L, s:0): Unit Sp.reflBudget — moves_ref: "(B1)–(B5) are inequalities between INTEGERS attached to shape fields". sketch: as reflCoherent. difficulty: easy.
+  - MovesSp/SP0_reflCoherent.lean (21L, s:0): Unit Sp.reflCoherent — moves_ref: "(G1)–(G6) … A species tuple is GEOMETRICALLY COHERENT iff" (the display). sketch: unfold both; `decide`-friendly Bo
+  - MovesSp/SP0_reflSucc.lean (51L, s:0): Unit Sp.reflSucc [REV 2, F8 — both statements in full] — moves_ref: "SUCC(s) := { s′ ∈ 𝒮_n^raw : D(s′) = e·g·D, w(s′) = g·w, W(s′) = μ, …}" and "(G5) 
+  - MovesSp/SP0_succTerminal.lean (30L, s:0): Unit Sp.succTerminal — moves_ref: "For s ∈ 𝒮_n^raw, the OUTGOING MENU Out(s) ⊆ 𝒮_n^raw ∪ V_term … and SUCC(s) := ∅ for terminal s (selection ⊥)." [REV
+
+## MovesC: 37 modules, 3368 lines, 3 sorries. Samples:
+  - MovesC/C0_coordPrec_trans.lean (13L, s:0): Unit C0.coordPrec_trans — moves_ref: §C.0 the global order ≺ Transitivity of the global order (level ascending, index descending within a level).
+  - MovesC/C0_coordPrec_trichotomy.lean (22L, s:0): Unit C0.coordPrec_trichotomy (moves_ref: §C.0 the global order ≺) ≺ (level ascending, index descending) is a strict linear order on ℕ×ℕ; trichotomy by
+  - MovesC/C0_coordSort.lean (51L, s:0): Unit C0.coordSort — moves_ref: §C.0 'solve in ≺-order': the ≺-SORTED enumeration of the n×N box. Explicit level-major, index-descending chart f j := (
+  - MovesC/C0_digitSystemMass.lean (25L, s:0): Unit C0.digitSystemMass moves_ref: §C.0 BLOCK CONVENTION; D.3(e)(ii)/D.11 count law Specialization of the accepted `L2_P6ii` `DigitSystem` count `|α|^
+  - MovesC/C0_moveMass.lean (20L, s:0): Unit C0.moveMass — moves_ref: §C.2 move maps are global digit-level bijections (Fact A/B): mass preserved. A bijective move `Θ` on the box carries the
+  - MovesC/C0_pinStatus.lean (108L, s:0): Unit C0.pinStatus — moves_ref: §C.0.5 PIN-WELLDEF, rev-9 scope: cardinality AND per-coordinate free/determined STATUS. Two loci with the same solution
+  - MovesC/C0_pinTransport.lean (68L, s:0): Unit C0.pinTransport — moves_ref: §C.0.5 pin-transport corollary: Θ*(E) is a digit system with the same pins. Constructive: D'.pinned := D.pinned; for
+  - MovesC/C0_pinWelldef.lean (127L, s:0): Unit C0.pinWelldef — moves_ref: §C.0.5 PIN-WELLDEF (cardinality half) Same solution set ⟹ same mass (= p^{m−numPinned}); p ≥ 2 (from Fact p.Prime) and
+
+## MovesGr: 22 modules, 1418 lines, 2 sorries. Samples:
+  - MovesGr/Defs.lean (277L, s:1): Copyright (c) 2026 Asvin G. All rights reserved. Released under Apache 2.0 license as described in the file LICENSE. Authors: Asvin G
+  - MovesGr/HeldUnits_L5_cert.lean (63L, s:0): MovesGr HELD-UNIT ROUND (2026-07-27), part 2: the `L5_recTRANSRS` certificate. Companion to `HeldUnits_certs.lean` (which carries the L4-held certific
+  - MovesGr/HeldUnits_certs.lean (91L, s:0): MovesGr HELD-UNIT ROUND (2026-07-27): machine-checked provability certificates + supported fragments for the five held units (`L4_baseStage_exists`, `
+  - MovesGr/L0_deg_add.lean (17L, s:0): 
+  - MovesGr/L0_ge_antitone.lean (16L, s:0): 
+  - MovesGr/L0_gt_le_ge.lean (17L, s:0): 
+  - MovesGr/L0_initialForm_ne_zero.lean (27L, s:0): 
+  - MovesGr/L0_initialForm_zero.lean (20L, s:0): 
+
+## MovesRBase: 9 modules, 410 lines, 1 sorries. Samples:
+  - MovesRBase/Defs.lean (124L, s:1): Copyright (c) 2026 Asvin G. All rights reserved. Released under Apache 2.0 license as described in the file LICENSE. Authors: Asvin G
+  - MovesRBase/MapComp.lean (27L, s:0): Unit R.map_comp (MovesR base layer) [D1's local lemma — no blueprint unit number] moves_ref: blueprint D1 — "Mathlib LACKS … `WittVector.map_comp` (3-
+  - MovesRBase/U12_EQ2law_card.lean (36L, s:0): Unit U12 (MovesR base layer) [EQ2law_card] moves_ref: "(EQ-2)'s displayed consequence '|𝔸_δ| = q_δ^a = |𝔸|^δ' on the pinned domain" — PROVABLE from `c
+  - MovesRBase/U2_Fsub_le.lean (35L, s:0): Unit U2 (MovesR base layer) moves_ref: "nested base changes then compose LITERALLY as subrings" (subfield half). deps: Defs (U1). difficulty: medium. 
+  - MovesRBase/U3_O_le.lean (35L, s:0): Unit U3 (MovesR base layer) moves_ref: "nested base changes then compose LITERALLY as subrings … no per-pair embedding choices". deps: Defs (U1), U2, 
+  - MovesRBase/U41_O_chain.lean (35L, s:0): Unit U41 (MovesR base layer) [O_chain, SETTING-FREE RESTATEMENT — see DEVIATION] moves_ref: "a branch of relative accumulated degree δ″ at ambient O_{
+  - MovesRBase/U4_relExt_comp.lean (31L, s:0): Unit U4 (MovesR base layer) [relExt_comp] moves_ref: "'(O_δ)_{δ′} = O_{δδ′}' is bookkeeping inside W(F̄_p)" — the composition law under the relExt con
+  - MovesRBase/U5_qq_mul.lean (27L, s:0): Unit U5 (MovesR base layer) [qq_mul HALF ONLY] moves_ref: "q_{δ_j} = p^{δ_j} = q_δ^{δ_j^rel}". deps: Defs (U1). difficulty: easy. sketch: `p ^ ((m * δ
+
+## Stage2: 1 modules, 113 lines, 4 sorries. Samples:
+  - Stage2/UniformityTarget.lean (113L, s:4): # STAGE-2 ANCHOR — the general-degree uniformity target (STATEMENT ONLY) **FENCE.** This file is the first artifact of stage two (the formalization of
+
+
+PER-MODULE DETAIL (root + OM/ + Stage2/ — the trusted-path grain):
+AxChk_baseline.lean | 1449L | sorries:0 |  | 
+Basic.lean | 1L | sorries:0 | hello | 
+CountingModel.lean | 359L | sorries:3 | CountingModel, decidedMeasure, undecided, boxMeasure, boxMeasure_eq_one | Copyright (c) 2026 Asvin G. All rights reserved. Released under Apache 2.0 license as described in the file LICENSE. Authors: Asvi
+GMNIndex.lean | 175L | sorries:0 | GmnIndexFinsumFace, face_zero_witness, orderAccounting_of_face, x1aAlignInc_of_face | Copyright (c) 2026 Asvin G. All rights reserved. Released under Apache 2.0 license as described in the file LICENSE. Authors: Asvi
+Goal.lean | 125L | sorries:1 | goal_theorem | Copyright (c) 2026 Asvin G. All rights reserved. Released under Apache 2.0 license as described in the file LICENSE. Authors: Asvi
+Interface.lean | 411L | sorries:0 | FactorizationShape, totalDegree, OMType, NeedsDescent, ResidualEquidistribution | Copyright (c) 2026 Asvin G. All rights reserved. Released under Apache 2.0 license as described in the file LICENSE. Authors: Asvi
+L3.lean | 172L | sorries:11 | irreducible_separable, separable_iff_squarefree, not_separable_iff_not_squarefree, card_degreeLT, monicDegree | Copyright (c) 2026 Asvin G. All rights reserved. Released under Apache 2.0 license as described in the file LICENSE. Authors: Asvi
+L3Gauss.lean | 258L | sorries:2 | moebius_inversion_step, exists_aeval_eq_zero_of_natDegree_dvd, minpoly_monic_irreducible_natDegree_dvd, minpoly_fiber_eq_rootSet, card_rootSet_eq_of_natDegree_dvd | Copyright (c) 2026 Asvin G. All rights reserved. Released under Apache 2.0 license as described in the file LICENSE. Authors: Asvi
+L3Squarefree.lean | 314L | sorries:1 | prod_normalizedFactors_of_monic, natDegree_pos_of_irreducible, exists_sqfree_sq_decomp, count_normalizedFactors_mul_sq, sqfree_sq_decomp_unique | Copyright (c) 2026 Asvin G. All rights reserved. Released under Apache 2.0 license as described in the file LICENSE. Authors: Asvi
+L4.lean | 148L | sorries:3 | LatticePolygon, newtonExponent, newtonVertexCount, bb1Value, columnMeasure | Copyright (c) 2026 Asvin G. All rights reserved. Released under Apache 2.0 license as described in the file LICENSE. Authors: Asvi
+L5fix.lean | 52L | sorries:0 | descentBound, selfLoopExponent, selfLoop_geometric | Copyright (c) 2026 Asvin G. All rights reserved. Released under Apache 2.0 license as described in the file LICENSE. Authors: Asvi
+L6M4.lean | 77L | sorries:0 | sum_clusterVol_rational, density_rational | Copyright (c) 2026 Asvin G. All rights reserved. Released under Apache 2.0 license as described in the file LICENSE. Authors: Asvi
+L7.lean | 252L | sorries:2 | eval_reflect_eq, reflect_ne, isPalindromic_of_agree, ratfunc_agree_of_infinite, tame_to_all_primes | Copyright (c) 2026 Asvin G. All rights reserved. Released under Apache 2.0 license as described in the file LICENSE. Authors: Asvi
+M1.lean | 70L | sorries:0 | projPointCount, projPointCount_mul, projPointCount_pos, projPointCount_one, clusterLaw | Copyright (c) 2026 Asvin G. All rights reserved. Released under Apache 2.0 license as described in the file LICENSE. Authors: Asvi
+MontesAxiom.lean | 485L | sorries:0 | CountCell, countCellCoeff, countPivot, bb1Value_isRational, residualCount_isRational | Copyright (c) 2026 Asvin G. All rights reserved. Released under Apache 2.0 license as described in the file LICENSE. Authors: Asvi
+MontesV2.lean | 265L | sorries:0 | MontesDataV2, isRationalFn_finsetSum, countingDensity_eq_sum_coeff, countingDensity_isRational, goal_theorem_montes | Copyright (c) 2026 Asvin G. All rights reserved. Released under Apache 2.0 license as described in the file LICENSE. Authors: Asvi
+NestedCollapse.lean | 364L | sorries:2 | blockExponent, blockWeight, residueWeight, partitionWeight, nestedRHS | Copyright (c) 2026 Asvin G. All rights reserved. Released under Apache 2.0 license as described in the file LICENSE. Authors: Asvi
+OMInduction.lean | 112L | sorries:1 | clusterVol_isRational | Copyright (c) 2026 Asvin G. All rights reserved. Released under Apache 2.0 license as described in the file LICENSE. Authors: Asvi
+PadicMeasure.lean | 804L | sorries:1 | OMShape, OMCell.Child, OMCell, natCard_Fr, descend_children_of_factors | Copyright (c) 2026 Asvin G. All rights reserved. Released under Apache 2.0 license as described in the file LICENSE. Authors: Asvi
+R1.lean | 41L | sorries:0 | treeDistanceWeight, treeDistanceWeight_values | Copyright (c) 2026 Asvin G. All rights reserved. Released under Apache 2.0 license as described in the file LICENSE. Authors: Asvi
+RatFn.lean | 126L | sorries:1 | IsRationalFn, isRationalFn_const, isRationalFn_id, isRationalFn_qpow, isRationalFn_add | Copyright (c) 2026 Asvin G. All rights reserved. Released under Apache 2.0 license as described in the file LICENSE. Authors: Asvi
+SerreLocalFields.lean | 181L | sorries:1 | integralClosure_isLocalRing, maximalIdeal_liesOver, isLocalRing_integralClosure_adjoinRoot, axiom_nonvacuous | Copyright (c) 2026 Asvin G. All rights reserved. Released under Apache 2.0 license as described in the file LICENSE. Authors: Asvi
+Smoke.lean | 23L | sorries:1 |  | Smoke test: confirm the formalization dev loop works by stating/closing real facts that the uniform-rationality proof depends on. 
+Witness.lean | 358L | sorries:2 | minimalOMShape, witnessFoundation, witnessOMBridge, DensityFoundation_nonempty, OMBridge_nonempty | Copyright (c) 2026 Asvin G. All rights reserved. Released under Apache 2.0 license as described in the file LICENSE. Authors: Asvi
+Stage2/UniformityTarget.lean | 113L | sorries:4 | strength., RealInstanceAt, uniformity_target, uniformity_target_exhaustive | # STAGE-2 ANCHOR — the general-degree uniformity target (STATEMENT ONLY) **FENCE.** This file is the first artifact of stage two (
+OM/BlockProduct.lean | 676L | sorries:1 | patternCell, Saturated, cell_eq_patternCell, patternCell_subset_cell, patternCell_saturated | Copyright (c) 2026 Asvin G. All rights reserved. Released under Apache 2.0 license as described in the file LICENSE. Authors: Asvi
+OM/CellCard.lean | 2248L | sorries:0 | card_sigma_const, forall, card_pi_fiber, card_support_subset, card_supp_split | Copyright (c) 2026 Asvin G. All rights reserved. Released under Apache 2.0 license as described in the file LICENSE. Authors: Asvi
+OM/CellMenu.lean | 2675L | sorries:0 | SlopeLt, MenuPath, chainOK_mem_bounds, chainOK_le, chainOK_zero | Copyright (c) 2026 Asvin G. All rights reserved. Released under Apache 2.0 license as described in the file LICENSE. Authors: Asvi
+OM/CellPartition.lean | 246L | sorries:1 | sideCeilHeight, toSideFace, sideCeilHeight_zero, toSideFace_bb1Value, toSideFace_newtonExponent_pos | Copyright (c) 2026 Asvin G. All rights reserved. Released under Apache 2.0 license as described in the file LICENSE. Authors: Asvi
+OM/ChainMenu.lean | 1692L | sorries:1 | leafOK, leafNeed, one_le_leafNeed, leafType, noRootPairs | Copyright (c) 2026 Asvin G. All rights reserved. Released under Apache 2.0 license as described in the file LICENSE. Authors: Asvi
+OM/ChainMenu6.lean | 130L | sorries:1 | chainShapes0, mem_chainShapes0, omMenu6, omMenu5_subset_omMenu6, mem_omMenu6_cases | Copyright (c) 2026 Asvin G. All rights reserved. Released under Apache 2.0 license as described in the file LICENSE. Authors: Asvi
+OM/ChainMenu7.lean | 270L | sorries:1 | splitUHead, splitULit, headOrd_splitULit, decodeMU, decodeMsU_splitULit | Copyright (c) 2026 Asvin G. All rights reserved. Released under Apache 2.0 license as described in the file LICENSE. Authors: Asvi
+OM/ChainMenuU.lean | 797L | sorries:1 | companion_root, root_pair_vieta, square_of_double_root, root_of_square, square_map_injective | Copyright (c) 2026 Asvin G. All rights reserved. Released under Apache 2.0 license as described in the file LICENSE. Authors: Asvi
+OM/ChildResidualExt.lean | 348L | sorries:3 | pvalWitness, pvalWitness_spec, resUnitResidue, span_p_pow_N_eq_bot, pval_eq_N_iff | Copyright (c) 2026 Asvin G. All rights reserved. Released under Apache 2.0 license as described in the file LICENSE. Authors: Asvi
+OM/ChildResidualLevelDrop.lean | 74L | sorries:1 | childResidualExt_reduce_stable_of_cuts | Copyright (c) 2026 Asvin G. All rights reserved. Released under Apache 2.0 license as described in the file LICENSE. Authors: Asvi
+OM/Classifier.lean | 1881L | sorries:25 | coeffReduce, coeffReduceLE, boxReduce, boxReduceLE, boxCoeffData | Copyright (c) 2026 Asvin G. All rights reserved. Released under Apache 2.0 license as described in the file LICENSE. Authors: Asvi
+OM/ClassifierBridge.lean | 240L | sorries:2 | Tselfloop, Tselfloop_cells_eq, nodeSizeOf_Tselfloop, nodeSizeOf_oneSideShape, cellsOfShapeWF_Tselfloop | Scratch module: the classify1 ↔ B.classify bridge (S3). Namespace LeanUrat.OM.ClassifierBridge. Math-first, no sorry/axiom/native_
+OM/ClassifierBridgeChildful.lean | 1024L | sorries:1 | factorize_factors_empty_of_natDegree_zero, cells_childCtxOfSize, classifyAux_childCtxOfSize, cells_child_node_tree, classifyAux_of_single_descent | Scratch module (S3, CHILDFUL FIBER BRIDGE): the childful analogue of `ClassifierBridgeFiber2.classify_eq_selfloop_iff` — the fiber
+OM/ClassifierBridgeFiber.lean | 1094L | sorries:1 | Tselfloop, ceil_chord_eq, mkSide_selfloop_slope, sideCeilHeight_selfloop, ceilAt_selfloop | Scratch module (S3): the fiber characterization `classify_eq_selfloop_iff`. Namespace LeanUrat.OM.ClassifierBridgeFiber. Math-firs
+OM/ClassifierBridgeFiber2.lean | 963L | sorries:1 | encodeCells_polygon, classify_cells, rootFace_eq_toSideFace_of_classify, toSideFace_v0_eq, toSideFace_length_eq | Scratch module (S3, FINISH): the fiber-bridge finish `classify_eq_selfloop_iff` + discharge + first order-1 density theorem, over 
+OM/ClassifierBridgeMultiSide.lean | 296L | sorries:2 | classify_multiSide_firstSide_projection, inCell_multiSide_imp_firstSide_sideMatch, inCell_multiSide_imp_classify_firstSide, hnode_multiSideProduct_reexport, prod_omCount_eq_blockCardinality_reexport | Scratch module (S3, MULTI-SIDE FIBER BRIDGE): the multi-side `B.classify` fiber characterization and its tie to the product-of-`om
+OM/ClassifierBridgeMultiSide2.lean | 177L | sorries:2 | omDensityMultiSide_stratum_product, rather, omDensityMultiSide_of_sides_of_image_eq, gate_omDensityMultiSide_instance, gate_omDensityMultiSide_fiberCard | Scratch module (S3, MULTI-SIDE DENSITY CLOSURE). Namespace `LeanUrat.OM.ClassifierBridgeMultiSide2`. Math-first, no sorry/axiom/na
+OM/ClassifyGenuineExt.lean | 243L | sorries:2 | classifyGenuineExtAux, classifyGenuineExtAux_unfold, classifyGenuineExtAux_head, classifyGenuineExtAux_head_dr_pos | Copyright (c) 2026 Asvin G. All rights reserved. Released under Apache 2.0 license as described in the file LICENSE. Authors: Asvi
+OM/ConditionalDensity.lean | 224L | sorries:1 | hNodeLimit, SelfLoopHNode, density_eq_engine_conditional, density_eq_engine_tame, hNodeLimit_unramified | ConditionalDensity — THE COMPLETE CONDITIONAL TOP-LEVEL THEOREM (build #49, 2026-07-11). GOAL. Compose the complete top-level cond
+OM/CountingModel.lean | 597L | sorries:1 | toMonicEquiv, boxCoeffEquiv, boxCoeffEquiv_apply, toMonicEquiv_symm_coe, coeffReduce | Copyright (c) 2026 Asvin G. All rights reserved. Released under Apache 2.0 license as described in the file LICENSE. Authors: Asvi
+OM/DecidedOmCountTie.lean | 227L | sorries:0 | omCount_childless_eval, omCount_childless_single, decidedFace, newtonExponent_decidedFace, decidedTc | Copyright (c) 2026 Asvin G. All rights reserved. Released under Apache 2.0 license as described in the file LICENSE. Authors: Asvi
+OM/DecidedOrder1.lean | 228L | sorries:0 | freeExp_eq_add_mul, stratumCount1_decided_density, hnode_decided_order1, decidedOrder1_omCount_tie, gate_density_S2C1 | Copyright (c) 2026 Asvin G. All rights reserved. Released under Apache 2.0 license as described in the file LICENSE. Authors: Asvi
+OM/DescendBijection.lean | 844L | sorries:1 | descendMap, descendInv, descendInv_descendMap, descendMap_descendInv, fourMap_descendMap | Copyright (c) 2026 Asvin G. All rights reserved. Released under Apache 2.0 license as described in the file LICENSE. Authors: Asvi
+OM/DevBijection.lean | 491L | sorries:1 | fourTuple, devMap, devInv, devInv_devMap, devMap_devInv | Copyright (c) 2026 Asvin G. All rights reserved. Released under Apache 2.0 license as described in the file LICENSE. Authors: Asvi
+OM/DevelopTower.lean | 417L | sorries:1 | monicBoxGen, developEquivGen, developEquivGen_symm_val, developTower, developTower_symm_val | Copyright (c) 2026 Asvin G. All rights reserved. Released under Apache 2.0 license as described in the file LICENSE. Authors: Asvi
+OM/Development.lean | 363L | sorries:0 | develop, develop_zero, develop_succ, develop_map, develop_digit_degree | # F-A — the φ-adic development bijection (Restart Lemma, Lemma A, level `N`) Rung F-A of `RESTART_FORMALIZATION_BLUEPRINT.md`, the
+OM/DevelopmentExt.lean | 156L | sorries:4 | developExt, developExt_def, developExt_digit_degree, developExt_digit_natDegree, developExt_reassemble | Copyright (c) 2026 Asvin G. All rights reserved. Released under Apache 2.0 license as described in the file LICENSE. Authors: Asvi
+OM/Discriminant.lean | 426L | sorries:2 | discr_monic_eq_resultant, discr_map_monic, univMonic, univMonic_tail_degree_lt, univMonic_monic | Copyright (c) 2026 Asvin G. All rights reserved. Released under Apache 2.0 license as described in the file LICENSE. Authors: Asvi
+OM/Drainage.lean | 632L | sorries:1 | card_subtype_or_disjoint, IsTail, isTail_iff_dead, card_tail, card_tail_index | Copyright (c) 2026 Asvin G. All rights reserved. Released under Apache 2.0 license as described in the file LICENSE. Authors: Asvi
+OM/FDescentCensus.lean | 236L | sorries:2 | card_base_eq, galoisField_card_eq_q_pow_f, galoisField_card_eq_base_pow, monicCensus_f_eq_q_pow_f, squarefreeCensus_f_eq_q_pow_f | Copyright (c) 2026 Asvin G. All rights reserved. Released under Apache 2.0 license as described in the file LICENSE. Authors: Asvi
+OM/FineCellResultant.lean | 151L | sorries:1 | vResultant_eq_prod_roots_sub, vResultant_eq_prod_cross_pairs, finecell_vResultant_const, finecell_vResultant_const_cross | Copyright (c) 2026 Asvin G. All rights reserved. Released under Apache 2.0 license as described in the file LICENSE. Authors: Asvi
+OM/FullFaithful.lean | 450L | sorries:1 | fiberPred, keyedType, W6FiberOK, keyedType_eq_of_OK, sepCount6_split_eq_card | Copyright (c) 2026 Asvin G. All rights reserved. Released under Apache 2.0 license as described in the file LICENSE. Authors: Asvi
+OM/FullFaithfulGates.lean | 547L | sorries:1 | w6cInertPoly, w6cInertPoly_monic, w6cInertPoly_natDegree, w6cInertPair_mem, w6cSplitPoly | Copyright (c) 2026 Asvin G. All rights reserved. Released under Apache 2.0 license as described in the file LICENSE. Authors: Asvi
+OM/GradedCertificates.lean | 1874L | sorries:1 | imageSet_nil_subset_patternCell, imageSet_nil_saturatedAt, imageSet_singleton, gradedUpgradeAt_one, polyKer_one | Copyright (c) 2026 Asvin G. All rights reserved. Released under Apache 2.0 license as described in the file LICENSE. Authors: Asvi
+OM/GradedGateA.lean | 754L | sorries:1 | aA, aB, aFloA, aFloB, aDepA | Copyright (c) 2026 Asvin G. All rights reserved. Released under Apache 2.0 license as described in the file LICENSE. Authors: Asvi
+OM/GradedHensel.lean | 1248L | sorries:1 | cdiv, cdiv_le_iff, le_w_mul_cdiv, cdiv_zero_left, cdiv_mono | Copyright (c) 2026 Asvin G. All rights reserved. Released under Apache 2.0 license as described in the file LICENSE. Authors: Asvi
+OM/GradedMargin.lean | 53L | sorries:0 | sideFloor_le_sideDepth_of_admissible, sideDepth_add_sideDepth_ge_of_admissible | Copyright (c) 2026 Asvin G. All rights reserved. Released under Apache 2.0 license as described in the file LICENSE. Authors: Asvi
+OM/HNode1.lean | 414L | sorries:1 | censusEquiv, h_node1_single, childShape, h_node1_single_shape, gate_undecided_pattern | Copyright (c) 2026 Asvin G. All rights reserved. Released under Apache 2.0 license as described in the file LICENSE. Authors: Asvi
+OM/HenselCount.lean | 791L | sorries:0 | leftPart, rightPart, polyOf, coeff_polyOf, coeff_polyOf_of_lt | Copyright (c) 2026 Asvin G. All rights reserved. Released under Apache 2.0 license as described in the file LICENSE. Authors: Asvi
+OM/HullStability.lean | 1744L | sorries:3 | npVertices_stable_of_hull_preserved_core | # OM/HullStability — the repaired hull-invariance lemma (banked-sorry attempt unit) TARGET: `Classifier.npVertices_stable_of_hull_
+OM/LevelDrop.lean | 173L | sorries:1 | levelDropCoeff, eval, levelDropHom, levelDropHom_mk, levelDropHom_root | Copyright (c) 2026 Asvin G. All rights reserved. Released under Apache 2.0 license as described in the file LICENSE. Authors: Asvi
+OM/LevelDropResidue.lean | 183L | sorries:2 | resUnitResidue_levelDrop | Copyright (c) 2026 Asvin G. All rights reserved. Released under Apache 2.0 license as described in the file LICENSE. Authors: Asvi
+OM/LevelNCount.lean | 1449L | sorries:27 | stratumCount, shapeFiberCount, shapeFiber_partition, stratumCount_nonneg, coordinateResidue_card_factor | Copyright (c) 2026 Asvin G. All rights reserved. Released under Apache 2.0 license as described in the file LICENSE. Authors: Asvi
+OM/LiftKeyExt.lean | 158L | sorries:2 | resSection, liftKeyExt, liftKeyExt_monic, liftKeyExt_tail_degree_lt, liftKeyExt_natDegree | Copyright (c) 2026 Asvin G. All rights reserved. Released under Apache 2.0 license as described in the file LICENSE. Authors: Asvi
+OM/LimitGlue.lean | 405L | sorries:7 | invPow_tendsto_zero, vertexFactor_tendsto_one, bb1Value_share_tendsto_one, boxVolume_normalized_limit, selfLoopRatio_mem_Ioo | Copyright (c) 2026 Asvin G. All rights reserved. Released under Apache 2.0 license as described in the file LICENSE. Authors: Asvi
+OM/LimitRecurrence.lean | 150L | sorries:1 | vanishing_forcing_tendsto_zero, firstOrder_recurrence_limit, firstOrder_recurrence_limit_err | # First-order recurrence limit with varying (convergent) forcing Blueprint Target D (`RECLIMIT_BLUEPRINT.md`). This is a NEW leaf 
+OM/LimitSpine.lean | 314L | sorries:2 | boxCount_normalized_eq_columnMeasure_prod, boxCount_normalized_eq_bb1Value, nodeMeasure_boxSum_of_spineLimit, nonSelfLoopNorm, nodeTrunc_step_of_rec | Copyright (c) 2026 Asvin G. All rights reserved. Released under Apache 2.0 license as described in the file LICENSE. Authors: Asvi
+OM/LinearFiber.lean | 749L | sorries:0 | not_isUnit_cast_p, not_dvd_of_isUnit, pow_cast_ne_zero, exists_mul_pow_of_pow_mul_eq_zero, pval | Copyright (c) 2026 Asvin G. All rights reserved. Released under Apache 2.0 license as described in the file LICENSE. Authors: Asvi
+OM/MontesAllOrders.lean | 142L | sorries:0 | montes_allorders_of_hnode, montes_allorders_of_hnode_specializes | Copyright (c) 2026 Asvin G. All rights reserved. Released under Apache 2.0 license as described in the file LICENSE. Authors: Asvi
+OM/MultiSlopeMenu.lean | 1577L | sorries:1 | headOrd, cellsAux, multiSideLit, headOrd_multiSideLit, decodePath | Copyright (c) 2026 Asvin G. All rights reserved. Released under Apache 2.0 license as described in the file LICENSE. Authors: Asvi
+OM/Necklace.lean | 267L | sorries:0 | necklaceSum, necklaceSum_nonneg, dvd_necklaceSum, necklaceQ, necklaceQ_nonneg | Copyright (c) 2026 Asvin G. All rights reserved. Released under Apache 2.0 license as described in the file LICENSE. Authors: Asvi
+OM/NewtonPolygon.lean | 828L | sorries:3 | dotQ, pairSlope, pairLine, lineIndex, IsValidLine | # M3 (DRAFT SKELETON) — NewtonPolygon: the lower Newton polygon as a lower convex minorant over ℚ **STATUS: PROVED, LOAD-BEARING (
+OM/OMCountV2.lean | 849L | sorries:0 | FaceAssign, ChildData, NodeConfig, poolPoly, faceMus | Copyright (c) 2026 Asvin G. All rights reserved. Released under Apache 2.0 license as described in the file LICENSE. Authors: Asvi
+OM/OMType.lean | 350L | sorries:1 | ResidueTower, card_Fr, OMType, clusterSize, nodeSizeOf | Copyright (c) 2026 Asvin G. All rights reserved. Released under Apache 2.0 license as described in the file LICENSE. Authors: Asvi
+OM/OmLeafFaithful.lean | 985L | sorries:1 | fiberOf4, fiberOf4_mixed, fiberOf4_old, fiberOf5, fiberOf5_chain | Copyright (c) 2026 Asvin G. All rights reserved. Released under Apache 2.0 license as described in the file LICENSE. Authors: Asvi
+OM/Order0.lean | 169L | sorries:0 | necklacePoly, availPoly, ffPoly, dSList, nodeChoicePoly | Copyright (c) 2026 Asvin G. All rights reserved. Released under Apache 2.0 license as described in the file LICENSE. Authors: Asvi
+OM/Order0Alpha.lean | 560L | sorries:1 | classify_eq_sepShape_iff, buildPoly, buildPoly_coeff_lt, buildPoly_congr, buildPoly_monic | Copyright (c) 2026 Asvin G. All rights reserved. Released under Apache 2.0 license as described in the file LICENSE. Authors: Asvi
+OM/Order0Capstone.lean | 186L | sorries:0 | flatSide, flatFace, sepShape, unramType, sepShapesOf | Copyright (c) 2026 Asvin G. All rights reserved. Released under Apache 2.0 license as described in the file LICENSE. Authors: Asvi
+OM/Order0Classify.lean | 301L | sorries:0 | zmodValuation_zero_iff_castHom_ne_zero, classifyAux_unfold, classifyAux_congr_ctx, classifyAux_of_childless, factors_degreeList_eq_sort | Copyright (c) 2026 Asvin G. All rights reserved. Released under Apache 2.0 license as described in the file LICENSE. Authors: Asvi
+OM/Order0Count.lean | 418L | sorries:1 | necklaceQ_eq_card, card_monicIrreducibleDegree_one, poolSet, avail, card_poolSet | Copyright (c) 2026 Asvin G. All rights reserved. Released under Apache 2.0 license as described in the file LICENSE. Authors: Asvi
+OM/Order0Fact.lean | 137L | sorries:0 | pow_mult_dvd, factor_dvd, mem_factors_iff, mult_eq_one_of_squarefree, factors_eq_normalizedFactors_toFinset | Copyright (c) 2026 Asvin G. All rights reserved. Released under Apache 2.0 license as described in the file LICENSE. Authors: Asvi
+OM/Order0Fiber.lean | 390L | sorries:1 | classifyAux_head_payload, classify_head_payload, npVertices_mem_support, latticePolygon_height0_eq, encodeCells_map_dS | Copyright (c) 2026 Asvin G. All rights reserved. Released under Apache 2.0 license as described in the file LICENSE. Authors: Asvi
+OM/Order0Hull.lean | 282L | sorries:0 | npHeight_flat, hullDots_flat, npVerticesFull_flat, npVertices_of_flat, npSides_of_flat | Copyright (c) 2026 Asvin G. All rights reserved. Released under Apache 2.0 license as described in the file LICENSE. Authors: Asvi
+OM/Order0RealDensity.lean | 314L | sorries:1 | montes_order0_realDensity, montes_order0_certified_density_pos, stratumCount_sepShape_general, montes_order0_perShape_density_general, montes_order0_density_general_prime | Copyright (c) 2026 Asvin G. All rights reserved. Released under Apache 2.0 license as described in the file LICENSE. Authors: Asvi
+OM/Order0Root.lean | 222L | sorries:1 | zero_zero_mem_boxValSupport, n_zero_mem_boxValSupport, boxValSupport_fst_le, rootSide_eq_flat, rootFace_eq_flatFace | Copyright (c) 2026 Asvin G. All rights reserved. Released under Apache 2.0 license as described in the file LICENSE. Authors: Asvi
+OM/OrderTwoContext.lean | 155L | sorries:1 | finite_resField, finrank_resField, fChildCtxExt, clusterSize_fChildCtxExt, card_Fr_fChildCtxExt | Copyright (c) 2026 Asvin G. All rights reserved. Released under Apache 2.0 license as described in the file LICENSE. Authors: Asvi
+OM/OrderTwoContextR.lean | 148L | sorries:2 | fChildCtxExtR, clusterSize_fChildCtxExtR, Rr_fChildCtxExtR_eq_residualPoly | Copyright (c) 2026 Asvin G. All rights reserved. Released under Apache 2.0 license as described in the file LICENSE. Authors: Asvi
+OM/PadicLift.lean | 283L | sorries:1 | toZModPow_surjective, toBox, toBox_map_castHom, zmodValuation, zmodUnitResidue | # BUNDLE 3b — `PadicLift`: classifier pre-build infrastructure B-independent plumbing for the Layer-B classifier (CLASSIFIER_BLUEP
+OM/PadicValuation.lean | 96L | sorries:0 | coeffVal, valuation_eq_zero_of_isUnit, coeffVal_facts, coeffVal_natDegree_of_monic, valSupport | # M2 — PadicValuation: coefficient valuations and the support `Finset` For `f : ℤ_[p][X]` this module exposes the integer-valued c
+OM/PathShape.lean | 471L | sorries:1 | oneSideShape, cellsOfShapeWF_oneSideShape, configsOf_oneSideShape, omCount_oneSideShape_closed, mkCell_volExp_add_freeExp | Scratch module: FIRST S3 constructor increment — the single-side path shape. Namespace LeanUrat.OM.PathShape. Math-first, no sorry
+OM/PathShapeChildful.lean | 506L | sorries:1 | omChildCount_childShape', omChildCount_childShape, oneSideShapeChildful, cellsOfShapeWF_oneSideShapeChildful, omCount_oneSideShapeChildful_closed | Scratch module: CHILDFUL S3 constructor extension — the single-side path shape carrying genuine μ ≥ 2 descent children. Namespace 
+OM/PathShapeMultiSide.lean | 285L | sorries:1 | sideCeilSum, sideCeilSum_sum, sideFactor, multiSideValue, omCount_multiSide_closed | Scratch module: MULTI-SIDE S3 extension — the product-over-sides engine value and its `h_node`. Namespace LeanUrat.OM.PathShapeMul
+OM/PathShapeMultiSideTree.lean | 328L | sorries:1 | subPr, sideSubShape, sideDeg_subPr, ceilAt_pair, ceilSide_subPr | Scratch module: MULTI-SIDE → omDensityV2 connection. Namespace `LeanUrat.OM.PathShapeMultiSideTree`. Math-first, no sorry/axiom/na
+OM/ProductTheorem.lean | 3153L | sorries:2 | dvd_iff_le_zmodValuation, cell_mem_le_zmodValuation, imageSet_subset_concatCell, cell_sideAbove, zmodValuation_mul | Copyright (c) 2026 Asvin G. All rights reserved. Released under Apache 2.0 license as described in the file LICENSE. Authors: Asvi
+OM/QpType.lean | 557L | sorries:1 | LocalFactorData, eOf, fOf, efOf, trivialFactorData | Copyright (c) 2026 Asvin G. All rights reserved. Released under Apache 2.0 license as described in the file LICENSE. Authors: Asvi
+OM/QpTypeChain.lean | 964L | sorries:1 | affLift, affLift_comp, comp_linear_injective, affLift_monic, affLift_natDegree | Copyright (c) 2026 Asvin G. All rights reserved. Released under Apache 2.0 license as described in the file LICENSE. Authors: Asvi
+OM/QpTypeChainAll.lean | 615L | sorries:1 | affine_comp_affine, comp_affine_comp, comp_translate_eq, comp_translate_monic, comp_translate_natDegree | Copyright (c) 2026 Asvin G. All rights reserved. Released under Apache 2.0 license as described in the file LICENSE. Authors: Asvi
+OM/QpTypeChainLeaves.lean | 1160L | sorries:1 | toZMod_eq_val_toZModPow, box_digit_toZMod, toZMod_eq_zero_iff, chainStep_decode, composite_rescale | Copyright (c) 2026 Asvin G. All rights reserved. Released under Apache 2.0 license as described in the file LICENSE. Authors: Asvi
+OM/QpTypeEisenstein.lean | 455L | sorries:1 | isUnit_add_of_mem_maximalIdeal, ef_of_eisenstein, eOf_of_eisenstein, fOf_of_eisenstein, efOf_of_eisenstein | Copyright (c) 2026 Asvin G. All rights reserved. Released under Apache 2.0 license as described in the file LICENSE. Authors: Asvi
+OM/QpTypeH3.lean | 763L | sorries:1 | h3Path, h3Side, h3Shape, sidePairs_h3Path, menuPath_h3 | Copyright (c) 2026 Asvin G. All rights reserved. Released under Apache 2.0 license as described in the file LICENSE. Authors: Asvi
+OM/QpTypeLeafMasters.lean | 680L | sorries:1 | stepDecode_general, isUnit_of_toZMod_ne, valuation_eq_zero_of_toZMod_ne, leafRam_master_irreducible, leafRam_master_forced | Copyright (c) 2026 Asvin G. All rights reserved. Released under Apache 2.0 license as described in the file LICENSE. Authors: Asvi
+OM/QpTypeMixed.lean | 805L | sorries:1 | mixedGatePath, mixedGateSide1, mixedGateSide2, mixedGateSh, sidePairs_mixedGatePath | Copyright (c) 2026 Asvin G. All rights reserved. Released under Apache 2.0 license as described in the file LICENSE. Authors: Asvi
+OM/QpTypeSplitU.lean | 641L | sorries:1 | norm_eq_one_of_toZMod_ne, norm_lt_one_of_toZMod_eq_zero, toZMod_eq_of_norm_sub_lt_one, toZMod_natCast_val, hensel_lift_at_simple_root | Copyright (c) 2026 Asvin G. All rights reserved. Released under Apache 2.0 license as described in the file LICENSE. Authors: Asvi
+OM/QuotientBox.lean | 70L | sorries:0 | ResidueRing, card_residueRing, monicBox, card_monicBox | # M1 — QuotientBox: the level-`N` box count as a finite cardinality (no Haar measure) For the unramified core `K = ℚ_p` we have `O
+OM/RealInstance.lean | 166L | sorries:3 | leafOMTypeOfSize, leafOMType, decode, decode_treeSize, realP | Copyright (c) 2026 Asvin G. All rights reserved. Released under Apache 2.0 license as described in the file LICENSE. Authors: Asvi
+OM/RealInstanceV2.lean | 489L | sorries:0 | stratumCount_level0, unramType_degree, sepShapesOf_eq_empty, realPQ_pos, realP_pow_pos | Copyright (c) 2026 Asvin G. All rights reserved. Released under Apache 2.0 license as described in the file LICENSE. Authors: Asvi
+OM/RealInstanceV2Gates.lean | 228L | sorries:0 | unramType_injective, sepShapesOf_unramType, menuSum_unramType, gate_v2_value_inert2, gate_v2_nonvacuous | Copyright (c) 2026 Asvin G. All rights reserved. Released under Apache 2.0 license as described in the file LICENSE. Authors: Asvi
+OM/RealInstanceV2Prep.lean | 224L | sorries:0 | sepShape_injective, eq_of_mem_sepShapesOf, unramTypeMenu, sum_sepShapesOf, sum_unramTypeMenu_eq_sum_partitions | Copyright (c) 2026 Asvin G. All rights reserved. Released under Apache 2.0 license as described in the file LICENSE. Authors: Asvi
+OM/RealInstanceW.lean | 376L | sorries:1 | omMenuW_eq_empty, hNodeLimit_ramShape, hNodeLimit_omMenuW, omCount_eq_mul_all, totalDecided_le_box_W | Copyright (c) 2026 Asvin G. All rights reserved. Released under Apache 2.0 license as described in the file LICENSE. Authors: Asvi
+OM/RealInstanceW3.lean | 380L | sorries:1 | omMenuW3_eq_empty, hNodeLimit_ramShapeAt, hNodeLimit_omMenuW3, totalDecided_le_box_W3, realMW3 | Copyright (c) 2026 Asvin G. All rights reserved. Released under Apache 2.0 license as described in the file LICENSE. Authors: Asvi
+OM/RealInstanceW3Gates.lean | 211L | sorries:1 | admissibleK_two_three, ramShapeAt_ramType2_one, ramShapeAt_ramType2_three, gate_w3_menu, gate_w3_omCount_H3 | Copyright (c) 2026 Asvin G. All rights reserved. Released under Apache 2.0 license as described in the file LICENSE. Authors: Asvi
+OM/RealInstanceW4.lean | 578L | sorries:1 | omMenu4_eq_empty, typeMenu4_degree, stratumCount4_level0, hNodeLimit_omMenu4, totalDecided_le_box_W4 | Copyright (c) 2026 Asvin G. All rights reserved. Released under Apache 2.0 license as described in the file LICENSE. Authors: Asvi
+OM/RealInstanceW4Gates.lean | 330L | sorries:1 | sigma5, ramType5, mixedOK_sigma5, fSum_sigma5, eVals_sigma5 | Copyright (c) 2026 Asvin G. All rights reserved. Released under Apache 2.0 license as described in the file LICENSE. Authors: Asvi
+OM/RealInstanceW5.lean | 384L | sorries:1 | omMenu5_eq_empty, stratumCount5_level0, hNodeLimit_omMenu5, totalDecided_le_box_W5, mult5 | Copyright (c) 2026 Asvin G. All rights reserved. Released under Apache 2.0 license as described in the file LICENSE. Authors: Asvi
+OM/RealInstanceW5Gates.lean | 296L | sorries:1 | leafOK_ram1, leafOK_ram3, ms1_window, ms11_window, gate_w5_ledger_caseC | Copyright (c) 2026 Asvin G. All rights reserved. Released under Apache 2.0 license as described in the file LICENSE. Authors: Asvi
+OM/RealInstanceWGates.lean | 325L | sorries:1 | omCount_Tselfloop_closed, fSum_ramType2, wShape_ramType2, constERam_ramType2, omMenuW_ramType2 | Copyright (c) 2026 Asvin G. All rights reserved. Released under Apache 2.0 license as described in the file LICENSE. Authors: Asvi
+OM/RecenterBox.lean | 528L | sorries:1 | stairBox, card_stairBox, shiftEquiv, CoordCond, resp_shiftEquiv | Copyright (c) 2026 Asvin G. All rights reserved. Released under Apache 2.0 license as described in the file LICENSE. Authors: Asvi
+OM/ResidualBridge.lean | 225L | sorries:2 | childDigitData, childDigitData_vanish_ge, childDigitData_of_lt, childResidual_eq_range_sum, childResidual_eq_residualPoly | Copyright (c) 2026 Asvin G. All rights reserved. Released under Apache 2.0 license as described in the file LICENSE. Authors: Asvi
+OM/ResidualBridgeExt.lean | 258L | sorries:2 | childDigitDataExt, childDigitDataExt_vanish_ge, childDigitDataExt_of_lt, childResidualExt_eq_range_sum, childResidualExt_eq_residualPoly | Copyright (c) 2026 Asvin G. All rights reserved. Released under Apache 2.0 license as described in the file LICENSE. Authors: Asvi
+OM/ResidualPolynomial.lean | 423L | sorries:1 | residualDeg, residualCoeff, residualPoly, residualPoly_congr, residualPoly_coeff | Copyright (c) 2026 Asvin G. All rights reserved. Released under Apache 2.0 license as described in the file LICENSE. Authors: Asvi
+OM/ResidueCount.lean | 163L | sorries:3 | card_monicDegree, card_squarefreeMonicDegree, nonSquarefreeMonicCount, nonSquarefreeMonicCount_eq_factor, nonSquarefreeMonicCount_eq_residualBoxCount | Copyright (c) 2026 Asvin G. All rights reserved. Released under Apache 2.0 license as described in the file LICENSE. Authors: Asvi
+OM/RestartEquiv.lean | 1109L | sorries:1 | pow_dvd_iff_dvd_val, resp, resp_eq_castHom, resp_add, resp_mul | Copyright (c) 2026 Asvin G. All rights reserved. Released under Apache 2.0 license as described in the file LICENSE. Authors: Asvi
+OM/RestartEquivGenH.lean | 1032L | sorries:1 | FreshClusterPatternGenH, card_freshPatternGenH, cbar, restartPathGenH, restartCellGenH | Copyright (c) 2026 Asvin G. All rights reserved. Released under Apache 2.0 license as described in the file LICENSE. Authors: Asvi
+OM/RphiGenHCount.lean | 639L | sorries:1 | digitEquivFull, digitCoeff, assemble, assemble_eq, digitCoeff_assemble | # B-RING, wave W6a-residual: the per-digit product count for the gapped general-`h` ring Completes wave W6a (`LeanUrat.OM.RphiRing
+OM/RphiRing.lean | 611L | sorries:1 | one_lt_pow_base, neZero_pow_base, nontrivial_base, phi, phi_eq | # B-RING (Phase-B W1): the level-N avatar of `O_L` — `Rphi = ZMod (p^N)[X] ⧸ (φ')` Blueprint: `uniform-rationality/notes/PHASEB_CL
+OM/RphiRingGenH.lean | 431L | sorries:1 | maximalSpan, theta_mem_maximalSpan, pCast_mem_maximalSpan, mem_maximalSpan_iff, pCast_pow_N_eq_zero | # B-RING, wave W6a: the general-`h` local structure of `Rphi = ZMod (p^N)[X] ⧸ (X^e − c·p^h)` Blueprint: `uniform-rationality/note
+OM/SchwartzZippel.lean | 586L | sorries:6 | redHom, redHom_surjective, castHom_fiber_card, fiber_finset_card, card_roots_zmod_ppow_le | # F4 (Stage C) — `SchwartzZippel`: the local-ring root-density lemma (the mathlib GAP) This is **Bundle 0c / Layer F4 part 2** of 
+OM/SelfLoopCensusFiltration.lean | 354L | sorries:4 | selfLoopFloor, selfLoopCell_floor, selfLoopChain_le_floorChain, floorRatio, selfLoop_floor_ratio_uniform | Copyright (c) 2026 Asvin G. All rights reserved. Released under Apache 2.0 license as described in the file LICENSE. Authors: Asvi
+OM/SelfLoopCensusK.lean | 253L | sorries:2 | boxCast, recenterStep, recenterIter, selfLoopChain, selfLoopChain_zero | Copyright (c) 2026 Asvin G. All rights reserved. Released under Apache 2.0 license as described in the file LICENSE. Authors: Asvi
+OM/SelfLoopCensusReduction.lean | 164L | sorries:1 | floorAgg_reduces_to_fixpoint_generalMu, census_reduces_to_fixpoint_generalMu, census_reduction_mu3_value, census_reduction_mu2_child_q2 | Copyright (c) 2026 Asvin G. All rights reserved. Released under Apache 2.0 license as described in the file LICENSE. Authors: Asvi
+OM/SelfLoopCensusVerdict.lean | 338L | sorries:1 | selfLoopVerdict, verdictChain, verdictChain_zero, verdictChain_succ, selfLoopCell_verdict | Copyright (c) 2026 Asvin G. All rights reserved. Released under Apache 2.0 license as described in the file LICENSE. Authors: Asvi
+OM/SelfLoopDensityConnect.lean | 372L | sorries:1 | stratumCount1_selfLoop_eq_fiber, stratumCount1_selfLoop_index, stratumCount1_selfLoop_index_closed, stratumCount1_selfLoop_ratio, stratumCount1_selfLoop_p2 | Copyright (c) 2026 Asvin G. All rights reserved. Released under Apache 2.0 license as described in the file LICENSE. Authors: Asvi
+OM/SelfLoopDepth1.lean | 115L | sorries:1 | selfLoopChain_one_iff, stratumCount1_selfLoop_eq_chain1, stratumCount1_selfLoop_eq_inCell, two_level_census_depth1_stratum | Copyright (c) 2026 Asvin G. All rights reserved. Released under Apache 2.0 license as described in the file LICENSE. Authors: Asvi
+OM/SelfLoopFixpoint.lean | 223L | sorries:1 | selfLoopFixpointValue, selfLoopFixpoint_eq, selfLoopFixpoint_unique, selfLoopFixpoint_eq_limit, selfLoopFixpoint_omChild_q2 | Copyright (c) 2026 Asvin G. All rights reserved. Released under Apache 2.0 license as described in the file LICENSE. Authors: Asvi
+OM/SelfLoopFixpointGeneralMu.lean | 302L | sorries:1 | also, slExposedRatio_3_q2, countPivot_3_q2, EFFSEED3, EFFSEED3_q2 | Copyright (c) 2026 Asvin G. All rights reserved. Released under Apache 2.0 license as described in the file LICENSE. Authors: Asvi
+OM/SelfLoopIterate.lean | 313L | sorries:1 | selfLoopTowerBoxMass, selfLoopTowerExposedMass, boxMass_step, boxMass_xq, exposedMass_step | Copyright (c) 2026 Asvin G. All rights reserved. Released under Apache 2.0 license as described in the file LICENSE. Authors: Asvi
+OM/SelfLoopResum.lean | 315L | sorries:1 | slBoxRatio, slExposedRatio, xqMultiplicity, slRatios_q2, gate_xqMultiplicity_q2 | Copyright (c) 2026 Asvin G. All rights reserved. Released under Apache 2.0 license as described in the file LICENSE. Authors: Asvi
+OM/SelfLoopTower.lean | 1085L | sorries:1 | cp, phi_e1, span_phi_eq, ringIso, ringIso_mk | Copyright (c) 2026 Asvin G. All rights reserved. Released under Apache 2.0 license as described in the file LICENSE. Authors: Asvi
+OM/SeriesAssembly.lean | 2338L | sorries:1 | sum_Icc_eighth, sum_Icc_eighth_le, sum_Icc_eighth_nonneg, sum_Icc_half, sum_Icc_half_le | Copyright (c) 2026 Asvin G. All rights reserved. Released under Apache 2.0 license as described in the file LICENSE. Authors: Asvi
+OM/ShapeCountTie.lean | 1052L | sorries:2 | not_X_dvd_iff, multiset_eq_sum_filter, blockAt, shapeSet, card_shapeSet_prod | # The general residual-shape count tie — `shapeCount = choicePoly.eval` This module proves the **multiplicativity-over-degrees cru
+OM/SparseResultant.lean | 661L | sorries:1 | resultant_X_pow_sub_C_expand, resultant_expand, isNilpotent_p_zmod, det_eq_pow_mul_unit_of_dominant_transversal, det_eq_pow_mul_unit_of_colWeights | Copyright (c) 2026 Asvin G. All rights reserved. Released under Apache 2.0 license as described in the file LICENSE. Authors: Asvi
+OM/StratumOrder1.lean | 207L | sorries:0 | stratumCount1, stratumCount1_eq_cellCard, stratumCount1_eq_closed, tailCount1, cluster_classify1_none_iff | Copyright (c) 2026 Asvin G. All rights reserved. Released under Apache 2.0 license as described in the file LICENSE. Authors: Asvi
+OM/TameRealDensity.lean | 627L | sorries:1 | stratumCount_selfloop_general, hnode_selfloop_general, montes_order1_selfloop_density_general_prime, montes_order1_tame_realDensity, montes_order1_tame_certified_density_pos | Copyright (c) 2026 Asvin G. All rights reserved. Released under Apache 2.0 license as described in the file LICENSE. Authors: Asvi
+OM/Termination.lean | 131L | sorries:1 | treeSize, treeSize_eq_nodeSizeOf, child_size_lt, treeSize_le_degree, cells_descend_omtype | Copyright (c) 2026 Asvin G. All rights reserved. Released under Apache 2.0 license as described in the file LICENSE. Authors: Asvi
+OM/TowerBase.lean | 532L | sorries:1 | TowerBase, B_mul_uniformizer_pow, B_mul_uniformizer_pow_ge, B_mul_c_uniformizer_pow, phiGen | # B-RING, wave TowerBase: the order-`r≥3` tower closure — the coefficient-ring abstraction Blueprint: `uniform-rationality/notes/G
+OM/TowerRestartAbstract.lean | 462L | sorries:1 | FreshClusterPatternAbstract, card_freshPatternAbstract, SlotPatternAbstract, slotPattern_iff_pattern, restartEquivAbstract | Copyright (c) 2026 Asvin G. All rights reserved. Released under Apache 2.0 license as described in the file LICENSE. Authors: Asvi
+OM/TowerRestartGenH.lean | 262L | sorries:1 | censusEquivGenH, two_level_census_genH, childShapeGenH, two_level_census_genH_shape, card_two_level_genH | Copyright (c) 2026 Asvin G. All rights reserved. Released under Apache 2.0 license as described in the file LICENSE. Authors: Asvi
+OM/UniformCapstone.lean | 2047L | sorries:1 | numR, denR, numI, denI, numS | Copyright (c) 2026 Asvin G. All rights reserved. Released under Apache 2.0 license as described in the file LICENSE. Authors: Asvi
+OM/UniformModelN2.lean | 1198L | sorries:1 | pairBoxP, transMapP, transMapP_zero, card_comp_equiv, digit_zero_eq_resp | Copyright (c) 2026 Asvin G. All rights reserved. Released under Apache 2.0 license as described in the file LICENSE. Authors: Asvi
+OM/UniformModelN2Recovery.lean | 107L | sorries:1 | transChainCountP_two, ord0Count_two_eq, chainCountP_two_eq, decidedCountP_two_eq, undecidedCountP_two_eq | Copyright (c) 2026 Asvin G. All rights reserved. Released under Apache 2.0 license as described in the file LICENSE. Authors: Asvi
+OM/UnramifiedBase.lean | 549L | sorries:1 | one_lt_pow_base, neZero_pow_base, nontrivial_base, redHom, Oring | Copyright (c) 2026 Asvin G. All rights reserved. Released under Apache 2.0 license as described in the file LICENSE. Authors: Asvi
+OM/WildMenu.lean | 525L | sorries:1 | fSum, constERam, constERam_fSum_pos, constERam_n_pos, constERam_fSum_dvd | Copyright (c) 2026 Asvin G. All rights reserved. Released under Apache 2.0 license as described in the file LICENSE. Authors: Asvi
+OM/WildMenuPrep.lean | 476L | sorries:1 | constERamTypes, mem_constERamTypes, typeMenuW, typeMenuW_degree, unramTypeMenu_not_constERam | Copyright (c) 2026 Asvin G. All rights reserved. Released under Apache 2.0 license as described in the file LICENSE. Authors: Asvi
+OM/WildMenuW3.lean | 653L | sorries:1 | admissibleK, mem_admissibleK, admissibleK_one, gcd_admissible, wPathAt | Copyright (c) 2026 Asvin G. All rights reserved. Released under Apache 2.0 license as described in the file LICENSE. Authors: Asvi

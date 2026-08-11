@@ -1,0 +1,45 @@
+LEAN-BASE SIMPLIFICATION REVIEW — design decisions in light of the COMPLETE theorem.
+You are a Lean 4 / mathlib architect in a fresh context; you cannot read files —
+everything needed is pasted: (1) a directory-grain inventory of the existing base
+(1209 modules) with per-module detail on the trusted path; (2) the interface layer
+verbatim (Interface.lean, MontesV2.lean, CountingModel.lean, the Stage2 anchor);
+(3) the trusted capstones' axiom-footprint summary; (4) the informal complete
+theorem's shape; (5) the 16-unit stage-two spec headers from a prior scoping run.
+
+CONTEXT: this base was built INCREMENTALLY over weeks against an evolving informal
+proof. The informal proof is NOW COMPLETE and its target statement signed off (the
+Stage2 anchor, pasted). The owner's directive, verbatim: "get codex to look over
+the current lean base and simplify it as much as possible in light of the complete
+theorem we now have. It should be possible to make design decisions which make
+life much simpler in light of the complete theorem."
+
+HARD INVARIANTS (never propose breaking): the trusted capstones
+(OM.RealInstanceV2.montes_unconditional + companions) keep their statements
+byte-identical and their axiom footprints exactly as listed; the quarantine
+convention (retired code moves to lean/quarantine/*.txt with a dated reason,
+never deleted silently); the zero-banked-sorries policy for the trusted graph.
+
+DELIVER, in order:
+1. KEEP / REDESIGN / RETIRE verdict per directory (and per root module where the
+   inventory gives detail), each with a one-line reason tied to the complete
+   theorem's shape. Be aggressive about RETIRE for exploration scaffolding that
+   the complete theorem obsoletes (negation witnesses, dead probes, superseded
+   gates) — retirement means quarantine, so it is reversible.
+2. THE DESIGN DECISIONS (the heart): now that the whole proof is known, what
+   should be DESIGNED DIFFERENTLY? Candidates to evaluate (accept/reject each,
+   plus your own): (a) one general-prime instance family replacing per-prime
+   ad-hoc instances; (b) retiring the measure route (PadicMeasure/Goal) in favor
+   of the counting route, since the capstone rests on counting; (c) collapsing
+   the Moves*/HC*/Kernels campaign layers into a small number of lemma libraries
+   keyed to the informal proof's five-node outline (reduction / induction /
+   stage laws / ladder / towers); (d) a single gauge/cocycle module replacing
+   scattered wrap lemmas (the informal simplification campaign's T1); (e) the
+   DensityFoundation vs CountingModel split — keep or merge.
+3. THE TARGET MODULE TREE for stage two: a concrete directory/file layout,
+   mapping the 16 pasted unit specs onto it, with the trusted path marked.
+4. THE MIGRATION PLAN: ordered steps, each tagged [mechanical/standard/hard],
+   each with its safety check (AxChk after every step touching the trusted path;
+   statement-ledger --check style byte-pins for kept statements).
+5. End with the single line DECISIONS: <count>.
+
+=== (1) THE INVENTORY ===

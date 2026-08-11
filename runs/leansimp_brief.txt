@@ -1,0 +1,1626 @@
+LEAN-BASE SIMPLIFICATION REVIEW — design decisions in light of the COMPLETE theorem.
+You are a Lean 4 / mathlib architect in a fresh context; you cannot read files —
+everything needed is pasted: (1) a directory-grain inventory of the existing base
+(1209 modules) with per-module detail on the trusted path; (2) the interface layer
+verbatim (Interface.lean, MontesV2.lean, CountingModel.lean, the Stage2 anchor);
+(3) the trusted capstones' axiom-footprint summary; (4) the informal complete
+theorem's shape; (5) the 16-unit stage-two spec headers from a prior scoping run.
+
+CONTEXT: this base was built INCREMENTALLY over weeks against an evolving informal
+proof. The informal proof is NOW COMPLETE and its target statement signed off (the
+Stage2 anchor, pasted). The owner's directive, verbatim: "get codex to look over
+the current lean base and simplify it as much as possible in light of the complete
+theorem we now have. It should be possible to make design decisions which make
+life much simpler in light of the complete theorem."
+
+HARD INVARIANTS (never propose breaking): the trusted capstones
+(OM.RealInstanceV2.montes_unconditional + companions) keep their statements
+byte-identical and their axiom footprints exactly as listed; the quarantine
+convention (retired code moves to lean/quarantine/*.txt with a dated reason,
+never deleted silently); the zero-banked-sorries policy for the trusted graph.
+
+DELIVER, in order:
+1. KEEP / REDESIGN / RETIRE verdict per directory (and per root module where the
+   inventory gives detail), each with a one-line reason tied to the complete
+   theorem's shape. Be aggressive about RETIRE for exploration scaffolding that
+   the complete theorem obsoletes (negation witnesses, dead probes, superseded
+   gates) — retirement means quarantine, so it is reversible.
+2. THE DESIGN DECISIONS (the heart): now that the whole proof is known, what
+   should be DESIGNED DIFFERENTLY? Candidates to evaluate (accept/reject each,
+   plus your own): (a) one general-prime instance family replacing per-prime
+   ad-hoc instances; (b) retiring the measure route (PadicMeasure/Goal) in favor
+   of the counting route, since the capstone rests on counting; (c) collapsing
+   the Moves*/HC*/Kernels campaign layers into a small number of lemma libraries
+   keyed to the informal proof's five-node outline (reduction / induction /
+   stage laws / ladder / towers); (d) a single gauge/cocycle module replacing
+   scattered wrap lemmas (the informal simplification campaign's T1); (e) the
+   DensityFoundation vs CountingModel split — keep or merge.
+3. THE TARGET MODULE TREE for stage two: a concrete directory/file layout,
+   mapping the 16 pasted unit specs onto it, with the trusted path marked.
+4. THE MIGRATION PLAN: ordered steps, each tagged [mechanical/standard/hard],
+   each with its safety check (AxChk after every step touching the trusted path;
+   statement-ledger --check style byte-pins for kept statements).
+5. End with the single line DECISIONS: <count>.
+
+=== (1) THE INVENTORY ===
+DIRECTORY SUMMARY (modules / lines / sorries):
+
+## OM: 134 modules, 77287 lines, 204 sorries. Samples:
+  - OM/BlockProduct.lean (676L, s:1): Copyright (c) 2026 Asvin G. All rights reserved. Released under Apache 2.0 license as described in the file LICENSE. Authors: Asvin G
+  - OM/CellCard.lean (2248L, s:0): Copyright (c) 2026 Asvin G. All rights reserved. Released under Apache 2.0 license as described in the file LICENSE. Authors: Asvin G
+  - OM/CellMenu.lean (2675L, s:0): Copyright (c) 2026 Asvin G. All rights reserved. Released under Apache 2.0 license as described in the file LICENSE. Authors: Asvin G
+  - OM/CellPartition.lean (246L, s:1): Copyright (c) 2026 Asvin G. All rights reserved. Released under Apache 2.0 license as described in the file LICENSE. Authors: Asvin G
+  - OM/ChainMenu.lean (1692L, s:1): Copyright (c) 2026 Asvin G. All rights reserved. Released under Apache 2.0 license as described in the file LICENSE. Authors: Asvin G
+  - OM/ChainMenu6.lean (130L, s:1): Copyright (c) 2026 Asvin G. All rights reserved. Released under Apache 2.0 license as described in the file LICENSE. Authors: Asvin G
+  - OM/ChainMenu7.lean (270L, s:1): Copyright (c) 2026 Asvin G. All rights reserved. Released under Apache 2.0 license as described in the file LICENSE. Authors: Asvin G
+  - OM/ChainMenuU.lean (797L, s:1): Copyright (c) 2026 Asvin G. All rights reserved. Released under Apache 2.0 license as described in the file LICENSE. Authors: Asvin G
+
+## Scaffold: 113 modules, 54003 lines, 100 sorries. Samples:
+  - Scaffold/AnchorN2.lean (124L, s:0): Copyright (c) 2026 Asvin G. All rights reserved. Released under Apache 2.0 license as described in the file LICENSE. Authors: Asvin G
+  - Scaffold/AxChk.lean (209L, s:0): Scaffold/AxChk.lean — BP_VI §1.5 axiom-census extension (standalone; NOT imported by anything; `AxChk_baseline.lean` untouched). Gate: `lake env lean 
+  - Scaffold/CorpusBridge.lean (155L, s:0): Copyright (c) 2026 Asvin G. All rights reserved. Released under Apache 2.0 license as described in the file LICENSE. Authors: Asvin G
+  - Scaffold/Hypotheses.lean (320L, s:0): BP_VI §1.1 — the (ROOT-C) hypothesis surface (`Hypotheses.lean`). Units in this file: VI-H0 (module header, below) · VI-H1 (`RootHyps`) · VI-H2 (`Clau
+  - Scaffold/Spine.lean (114L, s:0): Copyright (c) 2026 Asvin G. All rights reserved. Released under Apache 2.0 license as described in the file LICENSE. Authors: Asvin G
+  - Scaffold/DictIII/BasePolyLength.lean (1062L, s:1): Copyright (c) 2026 Asvin G. All rights reserved. Released under Apache 2.0 license as described in the file LICENSE. Authors: Asvin G
+  - Scaffold/DictIII/CU1.lean (2868L, s:26): Copyright (c) 2026 Asvin G. All rights reserved. Released under Apache 2.0 license as described in the file LICENSE. Authors: Asvin G
+  - Scaffold/DictIII/CU2t.lean (1212L, s:1): Copyright (c) 2026 Asvin G. All rights reserved. Released under Apache 2.0 license as described in the file LICENSE. Authors: Asvin G
+
+## HC1: 103 modules, 31679 lines, 60 sorries. Samples:
+  - HC1/C1_LST.lean (72L, s:0): Copyright (c) 2026 Asvin G. All rights reserved. Released under Apache 2.0 license as described in the file LICENSE. Authors: Asvin G
+  - HC1/C2_TYPa.lean (735L, s:0): Copyright (c) 2026 Asvin G. All rights reserved. Released under Apache 2.0 license as described in the file LICENSE. Authors: Asvin G
+  - HC1/C3_TYPb.lean (130L, s:0): Copyright (c) 2026 Asvin G. All rights reserved. Released under Apache 2.0 license as described in the file LICENSE. Authors: Asvin G
+  - HC1/C4_DOM.lean (51L, s:0): Copyright (c) 2026 Asvin G. All rights reserved. Released under Apache 2.0 license as described in the file LICENSE. Authors: Asvin G
+  - HC1/C5_typToClause.lean (165L, s:0): Copyright (c) 2026 Asvin G. All rights reserved. Released under Apache 2.0 license as described in the file LICENSE. Authors: Asvin G
+  - HC1/C6_alphabetCard.lean (829L, s:1): Copyright (c) 2026 Asvin G. All rights reserved. Released under Apache 2.0 license as described in the file LICENSE. Authors: Asvin G
+  - HC1/CL01a_shallowBase.lean (100L, s:1): Copyright (c) 2026 Asvin G. All rights reserved. Released under Apache 2.0 license as described in the file LICENSE. Authors: Asvin G
+  - HC1/CL01b_shallowMove.lean (228L, s:0): Copyright (c) 2026 Asvin G. All rights reserved. Released under Apache 2.0 license as described in the file LICENSE. Authors: Asvin G
+
+## HC2: 66 modules, 20536 lines, 57 sorries. Samples:
+  - HC2/Defs.lean (792L, s:2): Copyright (c) 2026 Asvin G. All rights reserved. Released under Apache 2.0 license as described in the file LICENSE. Authors: Asvin G
+  - HC2/DefsPrime.lean (270L, s:0): Copyright (c) 2026 Asvin G. All rights reserved. Released under Apache 2.0 license as described in the file LICENSE. Authors: Asvin G
+  - HC2/HK03_stageTransHypEmpty.lean (135L, s:1): Copyright (c) 2026 Asvin G. All rights reserved. Released under Apache 2.0 license as described in the file LICENSE. Authors: Asvin G
+  - HC2/HK05_countermodelGate.lean (624L, s:1): Copyright (c) 2026 Asvin G. All rights reserved. Released under Apache 2.0 license as described in the file LICENSE. Authors: Asvin G
+  - HC2/HK11a_vertexTransport.lean (649L, s:0): # HK-11a VERTEX TRANSPORT — the re-pointed HK-11a kernel: the σV-vertex law at the recorded regrade, and its e′ = 1 consumption shape (post-wave unit,
+  - HC2/HK13_bStageCoreP1a.lean (702L, s:2): Copyright (c) 2026 Asvin G. All rights reserved. Released under Apache 2.0 license as described in the file LICENSE. Authors: Asvin G
+  - HC2/HK14_bStageCoreP2.lean (267L, s:1): Copyright (c) 2026 Asvin G. All rights reserved. Released under Apache 2.0 license as described in the file LICENSE. Authors: Asvin G
+  - HC2/HK15_gateChildCarrier.lean (378L, s:2): Copyright (c) 2026 Asvin G. All rights reserved. Released under Apache 2.0 license as described in the file LICENSE. Authors: Asvin G
+
+## MovesU: 95 modules, 18103 lines, 47 sorries. Samples:
+  - MovesU/BridgeA10_digitSum.lean (74L, s:0): Copyright (c) 2026 Asvin G. All rights reserved. Released under Apache 2.0 license as described in the file LICENSE. Authors: Asvin G
+  - MovesU/BridgeA11_boxEquivD.lean (157L, s:0): Copyright (c) 2026 Asvin G. All rights reserved. Released under Apache 2.0 license as described in the file LICENSE. Authors: Asvin G
+  - MovesU/BridgeA12_boxProjCompat.lean (101L, s:0): Copyright (c) 2026 Asvin G. All rights reserved. Released under Apache 2.0 license as described in the file LICENSE. Authors: Asvin G
+  - MovesU/BridgeA8_level0Edge.lean (68L, s:0): Copyright (c) 2026 Asvin G. All rights reserved. Released under Apache 2.0 license as described in the file LICENSE. Authors: Asvin G
+  - MovesU/BridgeA9_boxPolyEquiv.lean (112L, s:0): Copyright (c) 2026 Asvin G. All rights reserved. Released under Apache 2.0 license as described in the file LICENSE. Authors: Asvin G
+  - MovesU/BridgeB15a_r2Neg.lean (3055L, s:1): Copyright (c) 2026 Asvin G. All rights reserved. Released under Apache 2.0 license as described in the file LICENSE. Authors: Asvin G
+  - MovesU/BridgeB1_consumedDeltasSeed.lean (63L, s:0): Copyright (c) 2026 Asvin G. All rights reserved. Released under Apache 2.0 license as described in the file LICENSE. Authors: Asvin G
+  - MovesU/BridgeB2_stateNe.lean (94L, s:1): Copyright (c) 2026 Asvin G. All rights reserved. Released under Apache 2.0 license as described in the file LICENSE. Authors: Asvin G
+
+## MovesV: 128 modules, 17924 lines, 37 sorries. Samples:
+  - MovesV/Defs.lean (1575L, s:2): MovesV/Defs — shared vocabulary for MOVES §V-TABLES (the CTS state space, tables, and the measured theorem CTS-M). E-phase transcription of `lean/note
+  - MovesV/DefsGate.lean (172L, s:0): MovesV/DefsGate — the V.6 sealed data (concrete, decide-native) — §2.I. Concrete data only (no laws): the root/s_blk2 rosters' closed-form polynomials
+  - MovesV/SkeletonFinite.lean (106L, s:2): MovesV unit `skeleton_finite` — SKELETON FINITENESS AT EVERY n. Lean side of O-13 Theorem 1 (letters; = T-4 SP-FIN), per the VERIFIED O-13 leaf `lean/
+  - MovesV/TV_E1.lean (511L, s:0): TV-E1 (BRIDGE BP3, cluster c4; E-phase skeleton) — `measuredOf` DATA BLOCK 1: the shared (V, X, cp)-keyed `MovesS.MeasuredSide` construction over the 
+  - MovesV/TV_E2.lean (138L, s:0): TV-E2 (BRIDGE BP3, cluster c4; E-phase skeleton) — `measuredOf` DATA BLOCK 2: entrance block + activeState + rowVal + THE THREE-CASE kstep RECURSION, 
+  - MovesV/TV_E3.lean (562L, s:0): TV-E3 (BRIDGE BP3, cluster c4; E-phase skeleton) — LedgerIV GROUPS (1)-(2) at the measuredOf witness: xhd_sum / xhd_no_stray / xhd_no_orphan / d4r0. B
+  - MovesV/TV_E4.lean (307L, s:0): TV-E4 (BRIDGE BP3, cluster c4; E-phase skeleton) — LedgerIV GROUPS (3)-(5) at the measuredOf witness: part1 / rep_indep / meas_card. Blueprint: lean/n
+  - MovesV/TV_E5a.lean (196L, s:0): TV-E5a (BRIDGE BP3, cluster c4; E-phase skeleton) — THE no_entry/rowVal VOCABULARY-BRIDGE PROBE GATE (runs BEFORE the TV-E5b prover). Blueprint: lean/
+
+## MovesT: 74 modules, 14305 lines, 59 sorries. Samples:
+  - MovesT/C1_capHen.lean (73L, s:1): Copyright (c) 2026 Asvin G. All rights reserved. Released under Apache 2.0 license as described in the file LICENSE. Authors: Asvin G
+  - MovesT/C2_capIrr.lean (316L, s:0): Copyright (c) 2026 Asvin G. All rights reserved. Released under Apache 2.0 license as described in the file LICENSE. Authors: Asvin G
+  - MovesT/C3_nsLump.lean (41L, s:0): Copyright (c) 2026 Asvin G. All rights reserved. Released under Apache 2.0 license as described in the file LICENSE. Authors: Asvin G
+  - MovesT/C4_nsLadder.lean (42L, s:0): Copyright (c) 2026 Asvin G. All rights reserved. Released under Apache 2.0 license as described in the file LICENSE. Authors: Asvin G
+  - MovesT/C5_nsFree.lean (103L, s:0): Copyright (c) 2026 Asvin G. All rights reserved. Released under Apache 2.0 license as described in the file LICENSE. Authors: Asvin G
+  - MovesT/C6_nsPrice.lean (42L, s:0): Copyright (c) 2026 Asvin G. All rights reserved. Released under Apache 2.0 license as described in the file LICENSE. Authors: Asvin G
+  - MovesT/C7_nsNull.lean (192L, s:0): Copyright (c) 2026 Asvin G. All rights reserved. Released under Apache 2.0 license as described in the file LICENSE. Authors: Asvin G
+  - MovesT/C8_nsTreeBound.lean (33L, s:0): Copyright (c) 2026 Asvin G. All rights reserved. Released under Apache 2.0 license as described in the file LICENSE. Authors: Asvin G
+
+## Moves: 64 modules, 11400 lines, 18 sorries. Samples:
+  - Moves/Defs.lean (282L, s:1): Copyright (c) 2026 Asvin G. All rights reserved. Released under Apache 2.0 license as described in the file LICENSE. Authors: Asvin G
+  - Moves/DefsCore.lean (330L, s:1): Copyright (c) 2026 Asvin G. All rights reserved. Released under Apache 2.0 license as described in the file LICENSE. Authors: Asvin G
+  - Moves/DefsL.lean (263L, s:1): Copyright (c) 2026 Asvin G. All rights reserved. Released under Apache 2.0 license as described in the file LICENSE. Authors: Asvin G
+  - Moves/DefsT.lean (202L, s:1): Copyright (c) 2026 Asvin G. All rights reserved. Released under Apache 2.0 license as described in the file LICENSE. Authors: Asvin G
+  - Moves/L0_FactA_exists.lean (90L, s:0): Copyright (c) 2026 Asvin G. All rights reserved. Released under Apache 2.0 license as described in the file LICENSE. Authors: Asvin G
+  - Moves/L0_FactB_unique.lean (102L, s:0): Copyright (c) 2026 Asvin G. All rights reserved. Released under Apache 2.0 license as described in the file LICENSE. Authors: Asvin G
+  - Moves/L0_GRa.lean (15L, s:0): 
+  - Moves/L0_GRb.lean (17L, s:0): 
+
+## MovesS: 98 modules, 7652 lines, 13 sorries. Samples:
+  - MovesS/ActiveSolve.lean (177L, s:0): Unit U-24a1 `active_solve_meas` (medium) — REDESIGNED (Fable C1; R14): the measured value IS the active-subsystem solve, PER POOL, guards consumed. mo
+  - MovesS/AllActiveCofinite.lean (55L, s:0): Unit U-22b `allActive_cofinite` (medium) — PER-CELL keyed (R45); split (R48). moves_ref: "at all-active primes (cofinitely many — only finitely many p
+  - MovesS/AllActivePrimes.lean (24L, s:0): Unit U-22c `allActive_cofinite_primes` (medium) — the base-prime face, chain hypotheses EXPLICIT (R48 split; Codex#6-3's scope): "cofinitely many BASE
+  - MovesS/BSplitDef.lean (71L, s:1): Unit U-16a1 `bSplit_def` (medium) — the split exit vector, with the summand's def-equation PINNED (Fable G3). moves_ref: "b_e^split(τ)(σ′) := Σ_{o bra
+  - MovesS/Bdy.lean (24L, s:0): Unit U-7a `bdy_edge` (easy) — the (BDY) edge rule. moves_ref: "the ENTERING READ of a block entrance belongs to the ENTRANCE SIDE".
+  - MovesS/BdyMass.lean (24L, s:0): Unit U-7c `bdy_mass_split` (easy) — the (BDY) mass split. moves_ref: "no read omitted, none double-charged".
+  - MovesS/BdyNode.lean (27L, s:0): Unit U-7b `bdy_node_shadow` (easy) — the (BDY) node rule. moves_ref: "the first entrance node ν is BLOCK-side as a STATE INDEX …, while the edge INTO 
+  - MovesS/BlockSolve.lean (66L, s:0): Unit U-16b `blockSolve` (medium) — the triangular bottom-up solve. moves_ref: "blocks solve bottom-up, each b_e^split leg already solved"; body `(1 - 
+
+## MovesD: 61 modules, 6764 lines, 11 sorries. Samples:
+  - MovesD/D0a_topLocus.lean (37L, s:0): Unit D0a.topLocus_laws (MovesD campaign, E-phase) moves_ref: "Z = ⊤: no constraint, vol(⊤) = 1" (§D4-R L6). deps: MovesC.Defs (via Defs). sketch: `pin
+  - MovesD/D0b_thmCtop.lean (49L, s:0): Unit D0b.thmC_top (MovesD campaign, E-phase) moves_ref: "Each NONEMPTY summand is Theorem C(b) with Z = ⊤ on the lift-carrying history η: μ(S(η,⊤)) = 
+  - MovesD/D0c_fiberPos.lean (39L, s:0): Unit D0c.fiber_pos (MovesD campaign, E-phase) moves_ref: "Theorem C(b) gives mass p^{−A(P̂)} > 0" (§D4-R L6 corollary). deps: D0b. difficulty: easy. h
+  - MovesD/D10_sumLaw.lean (54L, s:0): Unit D10.D4R1_SUM (MovesD campaign, E-phase) moves_ref: "Σ_{η ∈ Pref(P̂)} μ(S(η,⊤)) = C_P̂(p)·p^{−A(P̂)} (D4R.1-SUM)" ≡ "N(P̂) is finite, and for EVER
+  - MovesD/D11a_multSum.lean (78L, s:0): Unit D11a.mult_sum (MovesD campaign, E-phase) moves_ref: (double counting — the multiplicity sum equals the fiber-count sum). deps: D2a. sketch: Finty
+  - MovesD/D11b_eventMult.lean (50L, s:0): Unit D11b.event_iff_mult (MovesD campaign, E-phase) moves_ref: "S(P̂,⊤) = {f : mult_P̂(f) ≥ 1}" (L6 corollary). deps: Defs. sketch: iUnion membership 
+  - MovesD/D12_evBound.lean (50L, s:0): Unit D12.D4R1_EV (MovesD campaign, E-phase) moves_ref: "μ(P̂) ≤ C_P̂(p)·p^{−A(P̂)} (D4R.1-EV) by subadditivity" ≡ "(D4R.4-EV) … the union bound within
+  - MovesD/D13_evIff.lean (71L, s:0): Unit D13.D4R1_EV_iff (MovesD campaign, E-phase) moves_ref: "with EQUALITY iff mult_P̂ ≡ 1 on the event … count-equality ⟺ … mult_P̂ ≡ 1 POINTWISE on t
+
+## B2D: 27 modules, 6742 lines, 16 sorries. Samples:
+  - B2D/GR0_readHyps.lean (137L, s:1): Copyright (c) 2026 Asvin G. All rights reserved. Released under Apache 2.0 license as described in the file LICENSE. Authors: Asvin G
+  - B2D/GR0b_suppliers.lean (232L, s:1): Copyright (c) 2026 Asvin G. All rights reserved. Released under Apache 2.0 license as described in the file LICENSE. Authors: Asvin G
+  - B2D/GR1_equalWeights.lean (209L, s:0): Copyright (c) 2026 Asvin G. All rights reserved. Released under Apache 2.0 license as described in the file LICENSE. Authors: Asvin G
+  - B2D/GR2_slotResidual.lean (123L, s:0): Copyright (c) 2026 Asvin G. All rights reserved. Released under Apache 2.0 license as described in the file LICENSE. Authors: Asvin G
+  - B2D/GR3_keyResidual.lean (336L, s:0): Copyright (c) 2026 Asvin G. All rights reserved. Released under Apache 2.0 license as described in the file LICENSE. Authors: Asvin G
+  - B2D/GR4_gradedRead.lean (159L, s:1): Copyright (c) 2026 Asvin G. All rights reserved. Released under Apache 2.0 license as described in the file LICENSE. Authors: Asvin G
+  - B2D/GRDefs.lean (139L, s:2): Copyright (c) 2026 Asvin G. All rights reserved. Released under Apache 2.0 license as described in the file LICENSE. Authors: Asvin G
+  - B2D/HuniProbe.lean (549L, s:0): Copyright (c) 2026 Asvin G. All rights reserved. Released under Apache 2.0 license as described in the file LICENSE. Authors: Asvin G
+
+## (root): 24 modules, 6622 lines, 32 sorries. Samples:
+  - AxChk_baseline.lean (1449L, s:0): 
+  - Basic.lean (1L, s:0): 
+  - CountingModel.lean (359L, s:3): Copyright (c) 2026 Asvin G. All rights reserved. Released under Apache 2.0 license as described in the file LICENSE. Authors: Asvin G
+  - GMNIndex.lean (175L, s:0): Copyright (c) 2026 Asvin G. All rights reserved. Released under Apache 2.0 license as described in the file LICENSE. Authors: Asvin G
+  - Goal.lean (125L, s:1): Copyright (c) 2026 Asvin G. All rights reserved. Released under Apache 2.0 license as described in the file LICENSE. Authors: Asvin G
+  - Interface.lean (411L, s:0): Copyright (c) 2026 Asvin G. All rights reserved. Released under Apache 2.0 license as described in the file LICENSE. Authors: Asvin G
+  - L3.lean (172L, s:11): Copyright (c) 2026 Asvin G. All rights reserved. Released under Apache 2.0 license as described in the file LICENSE. Authors: Asvin G
+  - L3Gauss.lean (258L, s:2): Copyright (c) 2026 Asvin G. All rights reserved. Released under Apache 2.0 license as described in the file LICENSE. Authors: Asvin G
+
+## MovesX: 58 modules, 5412 lines, 7 sorries. Samples:
+  - MovesX/Defs.lean (506L, s:1): Copyright (c) 2026 Asvin G. All rights reserved. Released under Apache 2.0 license as described in the file LICENSE. Authors: Asvin G
+  - MovesX/KE1.lean (119L, s:0): Copyright (c) 2026 Asvin G. All rights reserved. Released under Apache 2.0 license as described in the file LICENSE. Authors: Asvin G
+  - MovesX/KE10.lean (81L, s:2): Copyright (c) 2026 Asvin G. All rights reserved. Released under Apache 2.0 license as described in the file LICENSE. Authors: Asvin G
+  - MovesX/KE2.lean (228L, s:1): Copyright (c) 2026 Asvin G. All rights reserved. Released under Apache 2.0 license as described in the file LICENSE. Authors: Asvin G
+  - MovesX/KE3.lean (146L, s:1): Copyright (c) 2026 Asvin G. All rights reserved. Released under Apache 2.0 license as described in the file LICENSE. Authors: Asvin G
+  - MovesX/KE5.lean (291L, s:1): Copyright (c) 2026 Asvin G. All rights reserved. Released under Apache 2.0 license as described in the file LICENSE. Authors: Asvin G
+  - MovesX/KE6.lean (84L, s:0): Copyright (c) 2026 Asvin G. All rights reserved. Released under Apache 2.0 license as described in the file LICENSE. Authors: Asvin G
+  - MovesX/KE7.lean (119L, s:0): Copyright (c) 2026 Asvin G. All rights reserved. Released under Apache 2.0 license as described in the file LICENSE. Authors: Asvin G
+
+## Kernels: 24 modules, 5170 lines, 11 sorries. Samples:
+  - Kernels/E0Matrix.lean (527L, s:0): Kernels/E0Matrix — BP4-c4 E-phase skeletons for the abstract E0 matrix layer: units KA1, KA2a, KA2b, KA2c, KA3, KA5 (BRIDGE_BP4_KERNELS_2026-07-30.md 
+  - Kernels/E0Route.lean (175L, s:0): Kernels/E0Route — BP4-c4 E-phase skeletons for the TYPED measure route to E0: units KA4a, KA4b (BRIDGE_BP4_KERNELS_2026-07-30.md REV 2, §3.A ROUTE 2 +
+  - Kernels/HmcReduction.lean (122L, s:1): Kernels/HmcReduction — BP4-c2 E-phase skeletons for units KC2a, KC3, KC4 (BRIDGE_BP4_KERNELS_2026-07-30.md REV 2, §3.C + §4 KC; F9 disposition binding
+  - Kernels/KA2d.lean (148L, s:0): Kernels/KA2d — BP4-c2 GATE unit KA2d [CM-first twin of KA2c; SEQUENCED BEFORE the KA2c prover, REV 2 F5] (BRIDGE_BP4_KERNELS_2026-07-30.md REV 2, §4 K
+  - Kernels/KA4c.lean (241L, s:0): Kernels/KA4c — BP4-c7 E-phase skeleton for unit KA4c [ATTEMPT]: the ROUTE-E0 seam — the note-shaped theorem "X.3-drain ⟹ per-pool escape" (the CL-4 co
+  - Kernels/KA6b1.lean (389L, s:0): Kernels/KA6b1 — BP4-c4 E-phase skeleton for unit KA6b1 [NEW id at REV 2 — the F2/F13 split of the retired KA6b]: the finite-field counting layer (pure
+  - Kernels/KA6b2.lean (198L, s:0): Kernels/KA6b2 — BP4-c7 E-phase skeleton for unit KA6b2 [ATTEMPT; NEW id at REV 2 — the F2/F13 split of the retired KA6b]: the window/table seam, THE O
+  - Kernels/KA8.lean (85L, s:0): Kernels/KA8 — BP4-c7 E-phase skeleton for unit KA8: the δ > 1 transport — ESCAPE(E0)/PoolHyp at the base-changed pools from the O_δ theory's own insta
+
+## MovesSp: 71 modules, 4577 lines, 5 sorries. Samples:
+  - MovesSp/Defs.lean (327L, s:1): Copyright (c) 2026 Asvin G. All rights reserved. Released under Apache 2.0 license as described in the file LICENSE. Authors: Asvin G
+  - MovesSp/DefsEnum.lean (147L, s:1): Copyright (c) 2026 Asvin G. All rights reserved. Released under Apache 2.0 license as described in the file LICENSE. Authors: Asvin G
+  - MovesSp/DefsN3.lean (270L, s:1): Copyright (c) 2026 Asvin G. All rights reserved. Released under Apache 2.0 license as described in the file LICENSE. Authors: Asvin G
+  - MovesSp/SP0_memCoherent.lean (21L, s:0): Unit Sp.memCoherent — moves_ref: "the least set … that contains every (G1)–(G4)+(G6)-coherent, (B1)–(B5)-admissible ROOT-stage tuple … (each generated
+  - MovesSp/SP0_reflBudget.lean (25L, s:0): Unit Sp.reflBudget — moves_ref: "(B1)–(B5) are inequalities between INTEGERS attached to shape fields". sketch: as reflCoherent. difficulty: easy.
+  - MovesSp/SP0_reflCoherent.lean (21L, s:0): Unit Sp.reflCoherent — moves_ref: "(G1)–(G6) … A species tuple is GEOMETRICALLY COHERENT iff" (the display). sketch: unfold both; `decide`-friendly Bo
+  - MovesSp/SP0_reflSucc.lean (51L, s:0): Unit Sp.reflSucc [REV 2, F8 — both statements in full] — moves_ref: "SUCC(s) := { s′ ∈ 𝒮_n^raw : D(s′) = e·g·D, w(s′) = g·w, W(s′) = μ, …}" and "(G5) 
+  - MovesSp/SP0_succTerminal.lean (30L, s:0): Unit Sp.succTerminal — moves_ref: "For s ∈ 𝒮_n^raw, the OUTGOING MENU Out(s) ⊆ 𝒮_n^raw ∪ V_term … and SUCC(s) := ∅ for terminal s (selection ⊥)." [REV
+
+## MovesC: 37 modules, 3368 lines, 3 sorries. Samples:
+  - MovesC/C0_coordPrec_trans.lean (13L, s:0): Unit C0.coordPrec_trans — moves_ref: §C.0 the global order ≺ Transitivity of the global order (level ascending, index descending within a level).
+  - MovesC/C0_coordPrec_trichotomy.lean (22L, s:0): Unit C0.coordPrec_trichotomy (moves_ref: §C.0 the global order ≺) ≺ (level ascending, index descending) is a strict linear order on ℕ×ℕ; trichotomy by
+  - MovesC/C0_coordSort.lean (51L, s:0): Unit C0.coordSort — moves_ref: §C.0 'solve in ≺-order': the ≺-SORTED enumeration of the n×N box. Explicit level-major, index-descending chart f j := (
+  - MovesC/C0_digitSystemMass.lean (25L, s:0): Unit C0.digitSystemMass moves_ref: §C.0 BLOCK CONVENTION; D.3(e)(ii)/D.11 count law Specialization of the accepted `L2_P6ii` `DigitSystem` count `|α|^
+  - MovesC/C0_moveMass.lean (20L, s:0): Unit C0.moveMass — moves_ref: §C.2 move maps are global digit-level bijections (Fact A/B): mass preserved. A bijective move `Θ` on the box carries the
+  - MovesC/C0_pinStatus.lean (108L, s:0): Unit C0.pinStatus — moves_ref: §C.0.5 PIN-WELLDEF, rev-9 scope: cardinality AND per-coordinate free/determined STATUS. Two loci with the same solution
+  - MovesC/C0_pinTransport.lean (68L, s:0): Unit C0.pinTransport — moves_ref: §C.0.5 pin-transport corollary: Θ*(E) is a digit system with the same pins. Constructive: D'.pinned := D.pinned; for
+  - MovesC/C0_pinWelldef.lean (127L, s:0): Unit C0.pinWelldef — moves_ref: §C.0.5 PIN-WELLDEF (cardinality half) Same solution set ⟹ same mass (= p^{m−numPinned}); p ≥ 2 (from Fact p.Prime) and
+
+## MovesGr: 22 modules, 1418 lines, 2 sorries. Samples:
+  - MovesGr/Defs.lean (277L, s:1): Copyright (c) 2026 Asvin G. All rights reserved. Released under Apache 2.0 license as described in the file LICENSE. Authors: Asvin G
+  - MovesGr/HeldUnits_L5_cert.lean (63L, s:0): MovesGr HELD-UNIT ROUND (2026-07-27), part 2: the `L5_recTRANSRS` certificate. Companion to `HeldUnits_certs.lean` (which carries the L4-held certific
+  - MovesGr/HeldUnits_certs.lean (91L, s:0): MovesGr HELD-UNIT ROUND (2026-07-27): machine-checked provability certificates + supported fragments for the five held units (`L4_baseStage_exists`, `
+  - MovesGr/L0_deg_add.lean (17L, s:0): 
+  - MovesGr/L0_ge_antitone.lean (16L, s:0): 
+  - MovesGr/L0_gt_le_ge.lean (17L, s:0): 
+  - MovesGr/L0_initialForm_ne_zero.lean (27L, s:0): 
+  - MovesGr/L0_initialForm_zero.lean (20L, s:0): 
+
+## MovesRBase: 9 modules, 410 lines, 1 sorries. Samples:
+  - MovesRBase/Defs.lean (124L, s:1): Copyright (c) 2026 Asvin G. All rights reserved. Released under Apache 2.0 license as described in the file LICENSE. Authors: Asvin G
+  - MovesRBase/MapComp.lean (27L, s:0): Unit R.map_comp (MovesR base layer) [D1's local lemma — no blueprint unit number] moves_ref: blueprint D1 — "Mathlib LACKS … `WittVector.map_comp` (3-
+  - MovesRBase/U12_EQ2law_card.lean (36L, s:0): Unit U12 (MovesR base layer) [EQ2law_card] moves_ref: "(EQ-2)'s displayed consequence '|𝔸_δ| = q_δ^a = |𝔸|^δ' on the pinned domain" — PROVABLE from `c
+  - MovesRBase/U2_Fsub_le.lean (35L, s:0): Unit U2 (MovesR base layer) moves_ref: "nested base changes then compose LITERALLY as subrings" (subfield half). deps: Defs (U1). difficulty: medium. 
+  - MovesRBase/U3_O_le.lean (35L, s:0): Unit U3 (MovesR base layer) moves_ref: "nested base changes then compose LITERALLY as subrings … no per-pair embedding choices". deps: Defs (U1), U2, 
+  - MovesRBase/U41_O_chain.lean (35L, s:0): Unit U41 (MovesR base layer) [O_chain, SETTING-FREE RESTATEMENT — see DEVIATION] moves_ref: "a branch of relative accumulated degree δ″ at ambient O_{
+  - MovesRBase/U4_relExt_comp.lean (31L, s:0): Unit U4 (MovesR base layer) [relExt_comp] moves_ref: "'(O_δ)_{δ′} = O_{δδ′}' is bookkeeping inside W(F̄_p)" — the composition law under the relExt con
+  - MovesRBase/U5_qq_mul.lean (27L, s:0): Unit U5 (MovesR base layer) [qq_mul HALF ONLY] moves_ref: "q_{δ_j} = p^{δ_j} = q_δ^{δ_j^rel}". deps: Defs (U1). difficulty: easy. sketch: `p ^ ((m * δ
+
+## Stage2: 1 modules, 113 lines, 4 sorries. Samples:
+  - Stage2/UniformityTarget.lean (113L, s:4): # STAGE-2 ANCHOR — the general-degree uniformity target (STATEMENT ONLY) **FENCE.** This file is the first artifact of stage two (the formalization of
+
+
+PER-MODULE DETAIL (root + OM/ + Stage2/ — the trusted-path grain):
+AxChk_baseline.lean | 1449L | sorries:0 |  | 
+Basic.lean | 1L | sorries:0 | hello | 
+CountingModel.lean | 359L | sorries:3 | CountingModel, decidedMeasure, undecided, boxMeasure, boxMeasure_eq_one | Copyright (c) 2026 Asvin G. All rights reserved. Released under Apache 2.0 license as described in the file LICENSE. Authors: Asvi
+GMNIndex.lean | 175L | sorries:0 | GmnIndexFinsumFace, face_zero_witness, orderAccounting_of_face, x1aAlignInc_of_face | Copyright (c) 2026 Asvin G. All rights reserved. Released under Apache 2.0 license as described in the file LICENSE. Authors: Asvi
+Goal.lean | 125L | sorries:1 | goal_theorem | Copyright (c) 2026 Asvin G. All rights reserved. Released under Apache 2.0 license as described in the file LICENSE. Authors: Asvi
+Interface.lean | 411L | sorries:0 | FactorizationShape, totalDegree, OMType, NeedsDescent, ResidualEquidistribution | Copyright (c) 2026 Asvin G. All rights reserved. Released under Apache 2.0 license as described in the file LICENSE. Authors: Asvi
+L3.lean | 172L | sorries:11 | irreducible_separable, separable_iff_squarefree, not_separable_iff_not_squarefree, card_degreeLT, monicDegree | Copyright (c) 2026 Asvin G. All rights reserved. Released under Apache 2.0 license as described in the file LICENSE. Authors: Asvi
+L3Gauss.lean | 258L | sorries:2 | moebius_inversion_step, exists_aeval_eq_zero_of_natDegree_dvd, minpoly_monic_irreducible_natDegree_dvd, minpoly_fiber_eq_rootSet, card_rootSet_eq_of_natDegree_dvd | Copyright (c) 2026 Asvin G. All rights reserved. Released under Apache 2.0 license as described in the file LICENSE. Authors: Asvi
+L3Squarefree.lean | 314L | sorries:1 | prod_normalizedFactors_of_monic, natDegree_pos_of_irreducible, exists_sqfree_sq_decomp, count_normalizedFactors_mul_sq, sqfree_sq_decomp_unique | Copyright (c) 2026 Asvin G. All rights reserved. Released under Apache 2.0 license as described in the file LICENSE. Authors: Asvi
+L4.lean | 148L | sorries:3 | LatticePolygon, newtonExponent, newtonVertexCount, bb1Value, columnMeasure | Copyright (c) 2026 Asvin G. All rights reserved. Released under Apache 2.0 license as described in the file LICENSE. Authors: Asvi
+L5fix.lean | 52L | sorries:0 | descentBound, selfLoopExponent, selfLoop_geometric | Copyright (c) 2026 Asvin G. All rights reserved. Released under Apache 2.0 license as described in the file LICENSE. Authors: Asvi
+L6M4.lean | 77L | sorries:0 | sum_clusterVol_rational, density_rational | Copyright (c) 2026 Asvin G. All rights reserved. Released under Apache 2.0 license as described in the file LICENSE. Authors: Asvi
+L7.lean | 252L | sorries:2 | eval_reflect_eq, reflect_ne, isPalindromic_of_agree, ratfunc_agree_of_infinite, tame_to_all_primes | Copyright (c) 2026 Asvin G. All rights reserved. Released under Apache 2.0 license as described in the file LICENSE. Authors: Asvi
+M1.lean | 70L | sorries:0 | projPointCount, projPointCount_mul, projPointCount_pos, projPointCount_one, clusterLaw | Copyright (c) 2026 Asvin G. All rights reserved. Released under Apache 2.0 license as described in the file LICENSE. Authors: Asvi
+MontesAxiom.lean | 485L | sorries:0 | CountCell, countCellCoeff, countPivot, bb1Value_isRational, residualCount_isRational | Copyright (c) 2026 Asvin G. All rights reserved. Released under Apache 2.0 license as described in the file LICENSE. Authors: Asvi
+MontesV2.lean | 265L | sorries:0 | MontesDataV2, isRationalFn_finsetSum, countingDensity_eq_sum_coeff, countingDensity_isRational, goal_theorem_montes | Copyright (c) 2026 Asvin G. All rights reserved. Released under Apache 2.0 license as described in the file LICENSE. Authors: Asvi
+NestedCollapse.lean | 364L | sorries:2 | blockExponent, blockWeight, residueWeight, partitionWeight, nestedRHS | Copyright (c) 2026 Asvin G. All rights reserved. Released under Apache 2.0 license as described in the file LICENSE. Authors: Asvi
+OMInduction.lean | 112L | sorries:1 | clusterVol_isRational | Copyright (c) 2026 Asvin G. All rights reserved. Released under Apache 2.0 license as described in the file LICENSE. Authors: Asvi
+PadicMeasure.lean | 804L | sorries:1 | OMShape, OMCell.Child, OMCell, natCard_Fr, descend_children_of_factors | Copyright (c) 2026 Asvin G. All rights reserved. Released under Apache 2.0 license as described in the file LICENSE. Authors: Asvi
+R1.lean | 41L | sorries:0 | treeDistanceWeight, treeDistanceWeight_values | Copyright (c) 2026 Asvin G. All rights reserved. Released under Apache 2.0 license as described in the file LICENSE. Authors: Asvi
+RatFn.lean | 126L | sorries:1 | IsRationalFn, isRationalFn_const, isRationalFn_id, isRationalFn_qpow, isRationalFn_add | Copyright (c) 2026 Asvin G. All rights reserved. Released under Apache 2.0 license as described in the file LICENSE. Authors: Asvi
+SerreLocalFields.lean | 181L | sorries:1 | integralClosure_isLocalRing, maximalIdeal_liesOver, isLocalRing_integralClosure_adjoinRoot, axiom_nonvacuous | Copyright (c) 2026 Asvin G. All rights reserved. Released under Apache 2.0 license as described in the file LICENSE. Authors: Asvi
+Smoke.lean | 23L | sorries:1 |  | Smoke test: confirm the formalization dev loop works by stating/closing real facts that the uniform-rationality proof depends on. 
+Witness.lean | 358L | sorries:2 | minimalOMShape, witnessFoundation, witnessOMBridge, DensityFoundation_nonempty, OMBridge_nonempty | Copyright (c) 2026 Asvin G. All rights reserved. Released under Apache 2.0 license as described in the file LICENSE. Authors: Asvi
+Stage2/UniformityTarget.lean | 113L | sorries:4 | strength., RealInstanceAt, uniformity_target, uniformity_target_exhaustive | # STAGE-2 ANCHOR — the general-degree uniformity target (STATEMENT ONLY) **FENCE.** This file is the first artifact of stage two (
+OM/BlockProduct.lean | 676L | sorries:1 | patternCell, Saturated, cell_eq_patternCell, patternCell_subset_cell, patternCell_saturated | Copyright (c) 2026 Asvin G. All rights reserved. Released under Apache 2.0 license as described in the file LICENSE. Authors: Asvi
+OM/CellCard.lean | 2248L | sorries:0 | card_sigma_const, forall, card_pi_fiber, card_support_subset, card_supp_split | Copyright (c) 2026 Asvin G. All rights reserved. Released under Apache 2.0 license as described in the file LICENSE. Authors: Asvi
+OM/CellMenu.lean | 2675L | sorries:0 | SlopeLt, MenuPath, chainOK_mem_bounds, chainOK_le, chainOK_zero | Copyright (c) 2026 Asvin G. All rights reserved. Released under Apache 2.0 license as described in the file LICENSE. Authors: Asvi
+OM/CellPartition.lean | 246L | sorries:1 | sideCeilHeight, toSideFace, sideCeilHeight_zero, toSideFace_bb1Value, toSideFace_newtonExponent_pos | Copyright (c) 2026 Asvin G. All rights reserved. Released under Apache 2.0 license as described in the file LICENSE. Authors: Asvi
+OM/ChainMenu.lean | 1692L | sorries:1 | leafOK, leafNeed, one_le_leafNeed, leafType, noRootPairs | Copyright (c) 2026 Asvin G. All rights reserved. Released under Apache 2.0 license as described in the file LICENSE. Authors: Asvi
+OM/ChainMenu6.lean | 130L | sorries:1 | chainShapes0, mem_chainShapes0, omMenu6, omMenu5_subset_omMenu6, mem_omMenu6_cases | Copyright (c) 2026 Asvin G. All rights reserved. Released under Apache 2.0 license as described in the file LICENSE. Authors: Asvi
+OM/ChainMenu7.lean | 270L | sorries:1 | splitUHead, splitULit, headOrd_splitULit, decodeMU, decodeMsU_splitULit | Copyright (c) 2026 Asvin G. All rights reserved. Released under Apache 2.0 license as described in the file LICENSE. Authors: Asvi
+OM/ChainMenuU.lean | 797L | sorries:1 | companion_root, root_pair_vieta, square_of_double_root, root_of_square, square_map_injective | Copyright (c) 2026 Asvin G. All rights reserved. Released under Apache 2.0 license as described in the file LICENSE. Authors: Asvi
+OM/ChildResidualExt.lean | 348L | sorries:3 | pvalWitness, pvalWitness_spec, resUnitResidue, span_p_pow_N_eq_bot, pval_eq_N_iff | Copyright (c) 2026 Asvin G. All rights reserved. Released under Apache 2.0 license as described in the file LICENSE. Authors: Asvi
+OM/ChildResidualLevelDrop.lean | 74L | sorries:1 | childResidualExt_reduce_stable_of_cuts | Copyright (c) 2026 Asvin G. All rights reserved. Released under Apache 2.0 license as described in the file LICENSE. Authors: Asvi
+OM/Classifier.lean | 1881L | sorries:25 | coeffReduce, coeffReduceLE, boxReduce, boxReduceLE, boxCoeffData | Copyright (c) 2026 Asvin G. All rights reserved. Released under Apache 2.0 license as described in the file LICENSE. Authors: Asvi
+OM/ClassifierBridge.lean | 240L | sorries:2 | Tselfloop, Tselfloop_cells_eq, nodeSizeOf_Tselfloop, nodeSizeOf_oneSideShape, cellsOfShapeWF_Tselfloop | Scratch module: the classify1 ↔ B.classify bridge (S3). Namespace LeanUrat.OM.ClassifierBridge. Math-first, no sorry/axiom/native_
+OM/ClassifierBridgeChildful.lean | 1024L | sorries:1 | factorize_factors_empty_of_natDegree_zero, cells_childCtxOfSize, classifyAux_childCtxOfSize, cells_child_node_tree, classifyAux_of_single_descent | Scratch module (S3, CHILDFUL FIBER BRIDGE): the childful analogue of `ClassifierBridgeFiber2.classify_eq_selfloop_iff` — the fiber
+OM/ClassifierBridgeFiber.lean | 1094L | sorries:1 | Tselfloop, ceil_chord_eq, mkSide_selfloop_slope, sideCeilHeight_selfloop, ceilAt_selfloop | Scratch module (S3): the fiber characterization `classify_eq_selfloop_iff`. Namespace LeanUrat.OM.ClassifierBridgeFiber. Math-firs
+OM/ClassifierBridgeFiber2.lean | 963L | sorries:1 | encodeCells_polygon, classify_cells, rootFace_eq_toSideFace_of_classify, toSideFace_v0_eq, toSideFace_length_eq | Scratch module (S3, FINISH): the fiber-bridge finish `classify_eq_selfloop_iff` + discharge + first order-1 density theorem, over 
+OM/ClassifierBridgeMultiSide.lean | 296L | sorries:2 | classify_multiSide_firstSide_projection, inCell_multiSide_imp_firstSide_sideMatch, inCell_multiSide_imp_classify_firstSide, hnode_multiSideProduct_reexport, prod_omCount_eq_blockCardinality_reexport | Scratch module (S3, MULTI-SIDE FIBER BRIDGE): the multi-side `B.classify` fiber characterization and its tie to the product-of-`om
+OM/ClassifierBridgeMultiSide2.lean | 177L | sorries:2 | omDensityMultiSide_stratum_product, rather, omDensityMultiSide_of_sides_of_image_eq, gate_omDensityMultiSide_instance, gate_omDensityMultiSide_fiberCard | Scratch module (S3, MULTI-SIDE DENSITY CLOSURE). Namespace `LeanUrat.OM.ClassifierBridgeMultiSide2`. Math-first, no sorry/axiom/na
+OM/ClassifyGenuineExt.lean | 243L | sorries:2 | classifyGenuineExtAux, classifyGenuineExtAux_unfold, classifyGenuineExtAux_head, classifyGenuineExtAux_head_dr_pos | Copyright (c) 2026 Asvin G. All rights reserved. Released under Apache 2.0 license as described in the file LICENSE. Authors: Asvi
+OM/ConditionalDensity.lean | 224L | sorries:1 | hNodeLimit, SelfLoopHNode, density_eq_engine_conditional, density_eq_engine_tame, hNodeLimit_unramified | ConditionalDensity — THE COMPLETE CONDITIONAL TOP-LEVEL THEOREM (build #49, 2026-07-11). GOAL. Compose the complete top-level cond
+OM/CountingModel.lean | 597L | sorries:1 | toMonicEquiv, boxCoeffEquiv, boxCoeffEquiv_apply, toMonicEquiv_symm_coe, coeffReduce | Copyright (c) 2026 Asvin G. All rights reserved. Released under Apache 2.0 license as described in the file LICENSE. Authors: Asvi
+OM/DecidedOmCountTie.lean | 227L | sorries:0 | omCount_childless_eval, omCount_childless_single, decidedFace, newtonExponent_decidedFace, decidedTc | Copyright (c) 2026 Asvin G. All rights reserved. Released under Apache 2.0 license as described in the file LICENSE. Authors: Asvi
+OM/DecidedOrder1.lean | 228L | sorries:0 | freeExp_eq_add_mul, stratumCount1_decided_density, hnode_decided_order1, decidedOrder1_omCount_tie, gate_density_S2C1 | Copyright (c) 2026 Asvin G. All rights reserved. Released under Apache 2.0 license as described in the file LICENSE. Authors: Asvi
+OM/DescendBijection.lean | 844L | sorries:1 | descendMap, descendInv, descendInv_descendMap, descendMap_descendInv, fourMap_descendMap | Copyright (c) 2026 Asvin G. All rights reserved. Released under Apache 2.0 license as described in the file LICENSE. Authors: Asvi
+OM/DevBijection.lean | 491L | sorries:1 | fourTuple, devMap, devInv, devInv_devMap, devMap_devInv | Copyright (c) 2026 Asvin G. All rights reserved. Released under Apache 2.0 license as described in the file LICENSE. Authors: Asvi
+OM/DevelopTower.lean | 417L | sorries:1 | monicBoxGen, developEquivGen, developEquivGen_symm_val, developTower, developTower_symm_val | Copyright (c) 2026 Asvin G. All rights reserved. Released under Apache 2.0 license as described in the file LICENSE. Authors: Asvi
+OM/Development.lean | 363L | sorries:0 | develop, develop_zero, develop_succ, develop_map, develop_digit_degree | # F-A — the φ-adic development bijection (Restart Lemma, Lemma A, level `N`) Rung F-A of `RESTART_FORMALIZATION_BLUEPRINT.md`, the
+OM/DevelopmentExt.lean | 156L | sorries:4 | developExt, developExt_def, developExt_digit_degree, developExt_digit_natDegree, developExt_reassemble | Copyright (c) 2026 Asvin G. All rights reserved. Released under Apache 2.0 license as described in the file LICENSE. Authors: Asvi
+OM/Discriminant.lean | 426L | sorries:2 | discr_monic_eq_resultant, discr_map_monic, univMonic, univMonic_tail_degree_lt, univMonic_monic | Copyright (c) 2026 Asvin G. All rights reserved. Released under Apache 2.0 license as described in the file LICENSE. Authors: Asvi
+OM/Drainage.lean | 632L | sorries:1 | card_subtype_or_disjoint, IsTail, isTail_iff_dead, card_tail, card_tail_index | Copyright (c) 2026 Asvin G. All rights reserved. Released under Apache 2.0 license as described in the file LICENSE. Authors: Asvi
+OM/FDescentCensus.lean | 236L | sorries:2 | card_base_eq, galoisField_card_eq_q_pow_f, galoisField_card_eq_base_pow, monicCensus_f_eq_q_pow_f, squarefreeCensus_f_eq_q_pow_f | Copyright (c) 2026 Asvin G. All rights reserved. Released under Apache 2.0 license as described in the file LICENSE. Authors: Asvi
+OM/FineCellResultant.lean | 151L | sorries:1 | vResultant_eq_prod_roots_sub, vResultant_eq_prod_cross_pairs, finecell_vResultant_const, finecell_vResultant_const_cross | Copyright (c) 2026 Asvin G. All rights reserved. Released under Apache 2.0 license as described in the file LICENSE. Authors: Asvi
+OM/FullFaithful.lean | 450L | sorries:1 | fiberPred, keyedType, W6FiberOK, keyedType_eq_of_OK, sepCount6_split_eq_card | Copyright (c) 2026 Asvin G. All rights reserved. Released under Apache 2.0 license as described in the file LICENSE. Authors: Asvi
+OM/FullFaithfulGates.lean | 547L | sorries:1 | w6cInertPoly, w6cInertPoly_monic, w6cInertPoly_natDegree, w6cInertPair_mem, w6cSplitPoly | Copyright (c) 2026 Asvin G. All rights reserved. Released under Apache 2.0 license as described in the file LICENSE. Authors: Asvi
+OM/GradedCertificates.lean | 1874L | sorries:1 | imageSet_nil_subset_patternCell, imageSet_nil_saturatedAt, imageSet_singleton, gradedUpgradeAt_one, polyKer_one | Copyright (c) 2026 Asvin G. All rights reserved. Released under Apache 2.0 license as described in the file LICENSE. Authors: Asvi
+OM/GradedGateA.lean | 754L | sorries:1 | aA, aB, aFloA, aFloB, aDepA | Copyright (c) 2026 Asvin G. All rights reserved. Released under Apache 2.0 license as described in the file LICENSE. Authors: Asvi
+OM/GradedHensel.lean | 1248L | sorries:1 | cdiv, cdiv_le_iff, le_w_mul_cdiv, cdiv_zero_left, cdiv_mono | Copyright (c) 2026 Asvin G. All rights reserved. Released under Apache 2.0 license as described in the file LICENSE. Authors: Asvi
+OM/GradedMargin.lean | 53L | sorries:0 | sideFloor_le_sideDepth_of_admissible, sideDepth_add_sideDepth_ge_of_admissible | Copyright (c) 2026 Asvin G. All rights reserved. Released under Apache 2.0 license as described in the file LICENSE. Authors: Asvi
+OM/HNode1.lean | 414L | sorries:1 | censusEquiv, h_node1_single, childShape, h_node1_single_shape, gate_undecided_pattern | Copyright (c) 2026 Asvin G. All rights reserved. Released under Apache 2.0 license as described in the file LICENSE. Authors: Asvi
+OM/HenselCount.lean | 791L | sorries:0 | leftPart, rightPart, polyOf, coeff_polyOf, coeff_polyOf_of_lt | Copyright (c) 2026 Asvin G. All rights reserved. Released under Apache 2.0 license as described in the file LICENSE. Authors: Asvi
+OM/HullStability.lean | 1744L | sorries:3 | npVertices_stable_of_hull_preserved_core | # OM/HullStability — the repaired hull-invariance lemma (banked-sorry attempt unit) TARGET: `Classifier.npVertices_stable_of_hull_
+OM/LevelDrop.lean | 173L | sorries:1 | levelDropCoeff, eval, levelDropHom, levelDropHom_mk, levelDropHom_root | Copyright (c) 2026 Asvin G. All rights reserved. Released under Apache 2.0 license as described in the file LICENSE. Authors: Asvi
+OM/LevelDropResidue.lean | 183L | sorries:2 | resUnitResidue_levelDrop | Copyright (c) 2026 Asvin G. All rights reserved. Released under Apache 2.0 license as described in the file LICENSE. Authors: Asvi
+OM/LevelNCount.lean | 1449L | sorries:27 | stratumCount, shapeFiberCount, shapeFiber_partition, stratumCount_nonneg, coordinateResidue_card_factor | Copyright (c) 2026 Asvin G. All rights reserved. Released under Apache 2.0 license as described in the file LICENSE. Authors: Asvi
+OM/LiftKeyExt.lean | 158L | sorries:2 | resSection, liftKeyExt, liftKeyExt_monic, liftKeyExt_tail_degree_lt, liftKeyExt_natDegree | Copyright (c) 2026 Asvin G. All rights reserved. Released under Apache 2.0 license as described in the file LICENSE. Authors: Asvi
+OM/LimitGlue.lean | 405L | sorries:7 | invPow_tendsto_zero, vertexFactor_tendsto_one, bb1Value_share_tendsto_one, boxVolume_normalized_limit, selfLoopRatio_mem_Ioo | Copyright (c) 2026 Asvin G. All rights reserved. Released under Apache 2.0 license as described in the file LICENSE. Authors: Asvi
+OM/LimitRecurrence.lean | 150L | sorries:1 | vanishing_forcing_tendsto_zero, firstOrder_recurrence_limit, firstOrder_recurrence_limit_err | # First-order recurrence limit with varying (convergent) forcing Blueprint Target D (`RECLIMIT_BLUEPRINT.md`). This is a NEW leaf 
+OM/LimitSpine.lean | 314L | sorries:2 | boxCount_normalized_eq_columnMeasure_prod, boxCount_normalized_eq_bb1Value, nodeMeasure_boxSum_of_spineLimit, nonSelfLoopNorm, nodeTrunc_step_of_rec | Copyright (c) 2026 Asvin G. All rights reserved. Released under Apache 2.0 license as described in the file LICENSE. Authors: Asvi
+OM/LinearFiber.lean | 749L | sorries:0 | not_isUnit_cast_p, not_dvd_of_isUnit, pow_cast_ne_zero, exists_mul_pow_of_pow_mul_eq_zero, pval | Copyright (c) 2026 Asvin G. All rights reserved. Released under Apache 2.0 license as described in the file LICENSE. Authors: Asvi
+OM/MontesAllOrders.lean | 142L | sorries:0 | montes_allorders_of_hnode, montes_allorders_of_hnode_specializes | Copyright (c) 2026 Asvin G. All rights reserved. Released under Apache 2.0 license as described in the file LICENSE. Authors: Asvi
+OM/MultiSlopeMenu.lean | 1577L | sorries:1 | headOrd, cellsAux, multiSideLit, headOrd_multiSideLit, decodePath | Copyright (c) 2026 Asvin G. All rights reserved. Released under Apache 2.0 license as described in the file LICENSE. Authors: Asvi
+OM/Necklace.lean | 267L | sorries:0 | necklaceSum, necklaceSum_nonneg, dvd_necklaceSum, necklaceQ, necklaceQ_nonneg | Copyright (c) 2026 Asvin G. All rights reserved. Released under Apache 2.0 license as described in the file LICENSE. Authors: Asvi
+OM/NewtonPolygon.lean | 828L | sorries:3 | dotQ, pairSlope, pairLine, lineIndex, IsValidLine | # M3 (DRAFT SKELETON) — NewtonPolygon: the lower Newton polygon as a lower convex minorant over ℚ **STATUS: PROVED, LOAD-BEARING (
+OM/OMCountV2.lean | 849L | sorries:0 | FaceAssign, ChildData, NodeConfig, poolPoly, faceMus | Copyright (c) 2026 Asvin G. All rights reserved. Released under Apache 2.0 license as described in the file LICENSE. Authors: Asvi
+OM/OMType.lean | 350L | sorries:1 | ResidueTower, card_Fr, OMType, clusterSize, nodeSizeOf | Copyright (c) 2026 Asvin G. All rights reserved. Released under Apache 2.0 license as described in the file LICENSE. Authors: Asvi
+OM/OmLeafFaithful.lean | 985L | sorries:1 | fiberOf4, fiberOf4_mixed, fiberOf4_old, fiberOf5, fiberOf5_chain | Copyright (c) 2026 Asvin G. All rights reserved. Released under Apache 2.0 license as described in the file LICENSE. Authors: Asvi
+OM/Order0.lean | 169L | sorries:0 | necklacePoly, availPoly, ffPoly, dSList, nodeChoicePoly | Copyright (c) 2026 Asvin G. All rights reserved. Released under Apache 2.0 license as described in the file LICENSE. Authors: Asvi
+OM/Order0Alpha.lean | 560L | sorries:1 | classify_eq_sepShape_iff, buildPoly, buildPoly_coeff_lt, buildPoly_congr, buildPoly_monic | Copyright (c) 2026 Asvin G. All rights reserved. Released under Apache 2.0 license as described in the file LICENSE. Authors: Asvi
+OM/Order0Capstone.lean | 186L | sorries:0 | flatSide, flatFace, sepShape, unramType, sepShapesOf | Copyright (c) 2026 Asvin G. All rights reserved. Released under Apache 2.0 license as described in the file LICENSE. Authors: Asvi
+OM/Order0Classify.lean | 301L | sorries:0 | zmodValuation_zero_iff_castHom_ne_zero, classifyAux_unfold, classifyAux_congr_ctx, classifyAux_of_childless, factors_degreeList_eq_sort | Copyright (c) 2026 Asvin G. All rights reserved. Released under Apache 2.0 license as described in the file LICENSE. Authors: Asvi
+OM/Order0Count.lean | 418L | sorries:1 | necklaceQ_eq_card, card_monicIrreducibleDegree_one, poolSet, avail, card_poolSet | Copyright (c) 2026 Asvin G. All rights reserved. Released under Apache 2.0 license as described in the file LICENSE. Authors: Asvi
+OM/Order0Fact.lean | 137L | sorries:0 | pow_mult_dvd, factor_dvd, mem_factors_iff, mult_eq_one_of_squarefree, factors_eq_normalizedFactors_toFinset | Copyright (c) 2026 Asvin G. All rights reserved. Released under Apache 2.0 license as described in the file LICENSE. Authors: Asvi
+OM/Order0Fiber.lean | 390L | sorries:1 | classifyAux_head_payload, classify_head_payload, npVertices_mem_support, latticePolygon_height0_eq, encodeCells_map_dS | Copyright (c) 2026 Asvin G. All rights reserved. Released under Apache 2.0 license as described in the file LICENSE. Authors: Asvi
+OM/Order0Hull.lean | 282L | sorries:0 | npHeight_flat, hullDots_flat, npVerticesFull_flat, npVertices_of_flat, npSides_of_flat | Copyright (c) 2026 Asvin G. All rights reserved. Released under Apache 2.0 license as described in the file LICENSE. Authors: Asvi
+OM/Order0RealDensity.lean | 314L | sorries:1 | montes_order0_realDensity, montes_order0_certified_density_pos, stratumCount_sepShape_general, montes_order0_perShape_density_general, montes_order0_density_general_prime | Copyright (c) 2026 Asvin G. All rights reserved. Released under Apache 2.0 license as described in the file LICENSE. Authors: Asvi
+OM/Order0Root.lean | 222L | sorries:1 | zero_zero_mem_boxValSupport, n_zero_mem_boxValSupport, boxValSupport_fst_le, rootSide_eq_flat, rootFace_eq_flatFace | Copyright (c) 2026 Asvin G. All rights reserved. Released under Apache 2.0 license as described in the file LICENSE. Authors: Asvi
+OM/OrderTwoContext.lean | 155L | sorries:1 | finite_resField, finrank_resField, fChildCtxExt, clusterSize_fChildCtxExt, card_Fr_fChildCtxExt | Copyright (c) 2026 Asvin G. All rights reserved. Released under Apache 2.0 license as described in the file LICENSE. Authors: Asvi
+OM/OrderTwoContextR.lean | 148L | sorries:2 | fChildCtxExtR, clusterSize_fChildCtxExtR, Rr_fChildCtxExtR_eq_residualPoly | Copyright (c) 2026 Asvin G. All rights reserved. Released under Apache 2.0 license as described in the file LICENSE. Authors: Asvi
+OM/PadicLift.lean | 283L | sorries:1 | toZModPow_surjective, toBox, toBox_map_castHom, zmodValuation, zmodUnitResidue | # BUNDLE 3b — `PadicLift`: classifier pre-build infrastructure B-independent plumbing for the Layer-B classifier (CLASSIFIER_BLUEP
+OM/PadicValuation.lean | 96L | sorries:0 | coeffVal, valuation_eq_zero_of_isUnit, coeffVal_facts, coeffVal_natDegree_of_monic, valSupport | # M2 — PadicValuation: coefficient valuations and the support `Finset` For `f : ℤ_[p][X]` this module exposes the integer-valued c
+OM/PathShape.lean | 471L | sorries:1 | oneSideShape, cellsOfShapeWF_oneSideShape, configsOf_oneSideShape, omCount_oneSideShape_closed, mkCell_volExp_add_freeExp | Scratch module: FIRST S3 constructor increment — the single-side path shape. Namespace LeanUrat.OM.PathShape. Math-first, no sorry
+OM/PathShapeChildful.lean | 506L | sorries:1 | omChildCount_childShape', omChildCount_childShape, oneSideShapeChildful, cellsOfShapeWF_oneSideShapeChildful, omCount_oneSideShapeChildful_closed | Scratch module: CHILDFUL S3 constructor extension — the single-side path shape carrying genuine μ ≥ 2 descent children. Namespace 
+OM/PathShapeMultiSide.lean | 285L | sorries:1 | sideCeilSum, sideCeilSum_sum, sideFactor, multiSideValue, omCount_multiSide_closed | Scratch module: MULTI-SIDE S3 extension — the product-over-sides engine value and its `h_node`. Namespace LeanUrat.OM.PathShapeMul
+OM/PathShapeMultiSideTree.lean | 328L | sorries:1 | subPr, sideSubShape, sideDeg_subPr, ceilAt_pair, ceilSide_subPr | Scratch module: MULTI-SIDE → omDensityV2 connection. Namespace `LeanUrat.OM.PathShapeMultiSideTree`. Math-first, no sorry/axiom/na
+OM/ProductTheorem.lean | 3153L | sorries:2 | dvd_iff_le_zmodValuation, cell_mem_le_zmodValuation, imageSet_subset_concatCell, cell_sideAbove, zmodValuation_mul | Copyright (c) 2026 Asvin G. All rights reserved. Released under Apache 2.0 license as described in the file LICENSE. Authors: Asvi
+OM/QpType.lean | 557L | sorries:1 | LocalFactorData, eOf, fOf, efOf, trivialFactorData | Copyright (c) 2026 Asvin G. All rights reserved. Released under Apache 2.0 license as described in the file LICENSE. Authors: Asvi
+OM/QpTypeChain.lean | 964L | sorries:1 | affLift, affLift_comp, comp_linear_injective, affLift_monic, affLift_natDegree | Copyright (c) 2026 Asvin G. All rights reserved. Released under Apache 2.0 license as described in the file LICENSE. Authors: Asvi
+OM/QpTypeChainAll.lean | 615L | sorries:1 | affine_comp_affine, comp_affine_comp, comp_translate_eq, comp_translate_monic, comp_translate_natDegree | Copyright (c) 2026 Asvin G. All rights reserved. Released under Apache 2.0 license as described in the file LICENSE. Authors: Asvi
+OM/QpTypeChainLeaves.lean | 1160L | sorries:1 | toZMod_eq_val_toZModPow, box_digit_toZMod, toZMod_eq_zero_iff, chainStep_decode, composite_rescale | Copyright (c) 2026 Asvin G. All rights reserved. Released under Apache 2.0 license as described in the file LICENSE. Authors: Asvi
+OM/QpTypeEisenstein.lean | 455L | sorries:1 | isUnit_add_of_mem_maximalIdeal, ef_of_eisenstein, eOf_of_eisenstein, fOf_of_eisenstein, efOf_of_eisenstein | Copyright (c) 2026 Asvin G. All rights reserved. Released under Apache 2.0 license as described in the file LICENSE. Authors: Asvi
+OM/QpTypeH3.lean | 763L | sorries:1 | h3Path, h3Side, h3Shape, sidePairs_h3Path, menuPath_h3 | Copyright (c) 2026 Asvin G. All rights reserved. Released under Apache 2.0 license as described in the file LICENSE. Authors: Asvi
+OM/QpTypeLeafMasters.lean | 680L | sorries:1 | stepDecode_general, isUnit_of_toZMod_ne, valuation_eq_zero_of_toZMod_ne, leafRam_master_irreducible, leafRam_master_forced | Copyright (c) 2026 Asvin G. All rights reserved. Released under Apache 2.0 license as described in the file LICENSE. Authors: Asvi
+OM/QpTypeMixed.lean | 805L | sorries:1 | mixedGatePath, mixedGateSide1, mixedGateSide2, mixedGateSh, sidePairs_mixedGatePath | Copyright (c) 2026 Asvin G. All rights reserved. Released under Apache 2.0 license as described in the file LICENSE. Authors: Asvi
+OM/QpTypeSplitU.lean | 641L | sorries:1 | norm_eq_one_of_toZMod_ne, norm_lt_one_of_toZMod_eq_zero, toZMod_eq_of_norm_sub_lt_one, toZMod_natCast_val, hensel_lift_at_simple_root | Copyright (c) 2026 Asvin G. All rights reserved. Released under Apache 2.0 license as described in the file LICENSE. Authors: Asvi
+OM/QuotientBox.lean | 70L | sorries:0 | ResidueRing, card_residueRing, monicBox, card_monicBox | # M1 — QuotientBox: the level-`N` box count as a finite cardinality (no Haar measure) For the unramified core `K = ℚ_p` we have `O
+OM/RealInstance.lean | 166L | sorries:3 | leafOMTypeOfSize, leafOMType, decode, decode_treeSize, realP | Copyright (c) 2026 Asvin G. All rights reserved. Released under Apache 2.0 license as described in the file LICENSE. Authors: Asvi
+OM/RealInstanceV2.lean | 489L | sorries:0 | stratumCount_level0, unramType_degree, sepShapesOf_eq_empty, realPQ_pos, realP_pow_pos | Copyright (c) 2026 Asvin G. All rights reserved. Released under Apache 2.0 license as described in the file LICENSE. Authors: Asvi
+OM/RealInstanceV2Gates.lean | 228L | sorries:0 | unramType_injective, sepShapesOf_unramType, menuSum_unramType, gate_v2_value_inert2, gate_v2_nonvacuous | Copyright (c) 2026 Asvin G. All rights reserved. Released under Apache 2.0 license as described in the file LICENSE. Authors: Asvi
+OM/RealInstanceV2Prep.lean | 224L | sorries:0 | sepShape_injective, eq_of_mem_sepShapesOf, unramTypeMenu, sum_sepShapesOf, sum_unramTypeMenu_eq_sum_partitions | Copyright (c) 2026 Asvin G. All rights reserved. Released under Apache 2.0 license as described in the file LICENSE. Authors: Asvi
+OM/RealInstanceW.lean | 376L | sorries:1 | omMenuW_eq_empty, hNodeLimit_ramShape, hNodeLimit_omMenuW, omCount_eq_mul_all, totalDecided_le_box_W | Copyright (c) 2026 Asvin G. All rights reserved. Released under Apache 2.0 license as described in the file LICENSE. Authors: Asvi
+OM/RealInstanceW3.lean | 380L | sorries:1 | omMenuW3_eq_empty, hNodeLimit_ramShapeAt, hNodeLimit_omMenuW3, totalDecided_le_box_W3, realMW3 | Copyright (c) 2026 Asvin G. All rights reserved. Released under Apache 2.0 license as described in the file LICENSE. Authors: Asvi
+OM/RealInstanceW3Gates.lean | 211L | sorries:1 | admissibleK_two_three, ramShapeAt_ramType2_one, ramShapeAt_ramType2_three, gate_w3_menu, gate_w3_omCount_H3 | Copyright (c) 2026 Asvin G. All rights reserved. Released under Apache 2.0 license as described in the file LICENSE. Authors: Asvi
+OM/RealInstanceW4.lean | 578L | sorries:1 | omMenu4_eq_empty, typeMenu4_degree, stratumCount4_level0, hNodeLimit_omMenu4, totalDecided_le_box_W4 | Copyright (c) 2026 Asvin G. All rights reserved. Released under Apache 2.0 license as described in the file LICENSE. Authors: Asvi
+OM/RealInstanceW4Gates.lean | 330L | sorries:1 | sigma5, ramType5, mixedOK_sigma5, fSum_sigma5, eVals_sigma5 | Copyright (c) 2026 Asvin G. All rights reserved. Released under Apache 2.0 license as described in the file LICENSE. Authors: Asvi
+OM/RealInstanceW5.lean | 384L | sorries:1 | omMenu5_eq_empty, stratumCount5_level0, hNodeLimit_omMenu5, totalDecided_le_box_W5, mult5 | Copyright (c) 2026 Asvin G. All rights reserved. Released under Apache 2.0 license as described in the file LICENSE. Authors: Asvi
+OM/RealInstanceW5Gates.lean | 296L | sorries:1 | leafOK_ram1, leafOK_ram3, ms1_window, ms11_window, gate_w5_ledger_caseC | Copyright (c) 2026 Asvin G. All rights reserved. Released under Apache 2.0 license as described in the file LICENSE. Authors: Asvi
+OM/RealInstanceWGates.lean | 325L | sorries:1 | omCount_Tselfloop_closed, fSum_ramType2, wShape_ramType2, constERam_ramType2, omMenuW_ramType2 | Copyright (c) 2026 Asvin G. All rights reserved. Released under Apache 2.0 license as described in the file LICENSE. Authors: Asvi
+OM/RecenterBox.lean | 528L | sorries:1 | stairBox, card_stairBox, shiftEquiv, CoordCond, resp_shiftEquiv | Copyright (c) 2026 Asvin G. All rights reserved. Released under Apache 2.0 license as described in the file LICENSE. Authors: Asvi
+OM/ResidualBridge.lean | 225L | sorries:2 | childDigitData, childDigitData_vanish_ge, childDigitData_of_lt, childResidual_eq_range_sum, childResidual_eq_residualPoly | Copyright (c) 2026 Asvin G. All rights reserved. Released under Apache 2.0 license as described in the file LICENSE. Authors: Asvi
+OM/ResidualBridgeExt.lean | 258L | sorries:2 | childDigitDataExt, childDigitDataExt_vanish_ge, childDigitDataExt_of_lt, childResidualExt_eq_range_sum, childResidualExt_eq_residualPoly | Copyright (c) 2026 Asvin G. All rights reserved. Released under Apache 2.0 license as described in the file LICENSE. Authors: Asvi
+OM/ResidualPolynomial.lean | 423L | sorries:1 | residualDeg, residualCoeff, residualPoly, residualPoly_congr, residualPoly_coeff | Copyright (c) 2026 Asvin G. All rights reserved. Released under Apache 2.0 license as described in the file LICENSE. Authors: Asvi
+OM/ResidueCount.lean | 163L | sorries:3 | card_monicDegree, card_squarefreeMonicDegree, nonSquarefreeMonicCount, nonSquarefreeMonicCount_eq_factor, nonSquarefreeMonicCount_eq_residualBoxCount | Copyright (c) 2026 Asvin G. All rights reserved. Released under Apache 2.0 license as described in the file LICENSE. Authors: Asvi
+OM/RestartEquiv.lean | 1109L | sorries:1 | pow_dvd_iff_dvd_val, resp, resp_eq_castHom, resp_add, resp_mul | Copyright (c) 2026 Asvin G. All rights reserved. Released under Apache 2.0 license as described in the file LICENSE. Authors: Asvi
+OM/RestartEquivGenH.lean | 1032L | sorries:1 | FreshClusterPatternGenH, card_freshPatternGenH, cbar, restartPathGenH, restartCellGenH | Copyright (c) 2026 Asvin G. All rights reserved. Released under Apache 2.0 license as described in the file LICENSE. Authors: Asvi
+OM/RphiGenHCount.lean | 639L | sorries:1 | digitEquivFull, digitCoeff, assemble, assemble_eq, digitCoeff_assemble | # B-RING, wave W6a-residual: the per-digit product count for the gapped general-`h` ring Completes wave W6a (`LeanUrat.OM.RphiRing
+OM/RphiRing.lean | 611L | sorries:1 | one_lt_pow_base, neZero_pow_base, nontrivial_base, phi, phi_eq | # B-RING (Phase-B W1): the level-N avatar of `O_L` — `Rphi = ZMod (p^N)[X] ⧸ (φ')` Blueprint: `uniform-rationality/notes/PHASEB_CL
+OM/RphiRingGenH.lean | 431L | sorries:1 | maximalSpan, theta_mem_maximalSpan, pCast_mem_maximalSpan, mem_maximalSpan_iff, pCast_pow_N_eq_zero | # B-RING, wave W6a: the general-`h` local structure of `Rphi = ZMod (p^N)[X] ⧸ (X^e − c·p^h)` Blueprint: `uniform-rationality/note
+OM/SchwartzZippel.lean | 586L | sorries:6 | redHom, redHom_surjective, castHom_fiber_card, fiber_finset_card, card_roots_zmod_ppow_le | # F4 (Stage C) — `SchwartzZippel`: the local-ring root-density lemma (the mathlib GAP) This is **Bundle 0c / Layer F4 part 2** of 
+OM/SelfLoopCensusFiltration.lean | 354L | sorries:4 | selfLoopFloor, selfLoopCell_floor, selfLoopChain_le_floorChain, floorRatio, selfLoop_floor_ratio_uniform | Copyright (c) 2026 Asvin G. All rights reserved. Released under Apache 2.0 license as described in the file LICENSE. Authors: Asvi
+OM/SelfLoopCensusK.lean | 253L | sorries:2 | boxCast, recenterStep, recenterIter, selfLoopChain, selfLoopChain_zero | Copyright (c) 2026 Asvin G. All rights reserved. Released under Apache 2.0 license as described in the file LICENSE. Authors: Asvi
+OM/SelfLoopCensusReduction.lean | 164L | sorries:1 | floorAgg_reduces_to_fixpoint_generalMu, census_reduces_to_fixpoint_generalMu, census_reduction_mu3_value, census_reduction_mu2_child_q2 | Copyright (c) 2026 Asvin G. All rights reserved. Released under Apache 2.0 license as described in the file LICENSE. Authors: Asvi
+OM/SelfLoopCensusVerdict.lean | 338L | sorries:1 | selfLoopVerdict, verdictChain, verdictChain_zero, verdictChain_succ, selfLoopCell_verdict | Copyright (c) 2026 Asvin G. All rights reserved. Released under Apache 2.0 license as described in the file LICENSE. Authors: Asvi
+OM/SelfLoopDensityConnect.lean | 372L | sorries:1 | stratumCount1_selfLoop_eq_fiber, stratumCount1_selfLoop_index, stratumCount1_selfLoop_index_closed, stratumCount1_selfLoop_ratio, stratumCount1_selfLoop_p2 | Copyright (c) 2026 Asvin G. All rights reserved. Released under Apache 2.0 license as described in the file LICENSE. Authors: Asvi
+OM/SelfLoopDepth1.lean | 115L | sorries:1 | selfLoopChain_one_iff, stratumCount1_selfLoop_eq_chain1, stratumCount1_selfLoop_eq_inCell, two_level_census_depth1_stratum | Copyright (c) 2026 Asvin G. All rights reserved. Released under Apache 2.0 license as described in the file LICENSE. Authors: Asvi
+OM/SelfLoopFixpoint.lean | 223L | sorries:1 | selfLoopFixpointValue, selfLoopFixpoint_eq, selfLoopFixpoint_unique, selfLoopFixpoint_eq_limit, selfLoopFixpoint_omChild_q2 | Copyright (c) 2026 Asvin G. All rights reserved. Released under Apache 2.0 license as described in the file LICENSE. Authors: Asvi
+OM/SelfLoopFixpointGeneralMu.lean | 302L | sorries:1 | also, slExposedRatio_3_q2, countPivot_3_q2, EFFSEED3, EFFSEED3_q2 | Copyright (c) 2026 Asvin G. All rights reserved. Released under Apache 2.0 license as described in the file LICENSE. Authors: Asvi
+OM/SelfLoopIterate.lean | 313L | sorries:1 | selfLoopTowerBoxMass, selfLoopTowerExposedMass, boxMass_step, boxMass_xq, exposedMass_step | Copyright (c) 2026 Asvin G. All rights reserved. Released under Apache 2.0 license as described in the file LICENSE. Authors: Asvi
+OM/SelfLoopResum.lean | 315L | sorries:1 | slBoxRatio, slExposedRatio, xqMultiplicity, slRatios_q2, gate_xqMultiplicity_q2 | Copyright (c) 2026 Asvin G. All rights reserved. Released under Apache 2.0 license as described in the file LICENSE. Authors: Asvi
+OM/SelfLoopTower.lean | 1085L | sorries:1 | cp, phi_e1, span_phi_eq, ringIso, ringIso_mk | Copyright (c) 2026 Asvin G. All rights reserved. Released under Apache 2.0 license as described in the file LICENSE. Authors: Asvi
+OM/SeriesAssembly.lean | 2338L | sorries:1 | sum_Icc_eighth, sum_Icc_eighth_le, sum_Icc_eighth_nonneg, sum_Icc_half, sum_Icc_half_le | Copyright (c) 2026 Asvin G. All rights reserved. Released under Apache 2.0 license as described in the file LICENSE. Authors: Asvi
+OM/ShapeCountTie.lean | 1052L | sorries:2 | not_X_dvd_iff, multiset_eq_sum_filter, blockAt, shapeSet, card_shapeSet_prod | # The general residual-shape count tie — `shapeCount = choicePoly.eval` This module proves the **multiplicativity-over-degrees cru
+OM/SparseResultant.lean | 661L | sorries:1 | resultant_X_pow_sub_C_expand, resultant_expand, isNilpotent_p_zmod, det_eq_pow_mul_unit_of_dominant_transversal, det_eq_pow_mul_unit_of_colWeights | Copyright (c) 2026 Asvin G. All rights reserved. Released under Apache 2.0 license as described in the file LICENSE. Authors: Asvi
+OM/StratumOrder1.lean | 207L | sorries:0 | stratumCount1, stratumCount1_eq_cellCard, stratumCount1_eq_closed, tailCount1, cluster_classify1_none_iff | Copyright (c) 2026 Asvin G. All rights reserved. Released under Apache 2.0 license as described in the file LICENSE. Authors: Asvi
+OM/TameRealDensity.lean | 627L | sorries:1 | stratumCount_selfloop_general, hnode_selfloop_general, montes_order1_selfloop_density_general_prime, montes_order1_tame_realDensity, montes_order1_tame_certified_density_pos | Copyright (c) 2026 Asvin G. All rights reserved. Released under Apache 2.0 license as described in the file LICENSE. Authors: Asvi
+OM/Termination.lean | 131L | sorries:1 | treeSize, treeSize_eq_nodeSizeOf, child_size_lt, treeSize_le_degree, cells_descend_omtype | Copyright (c) 2026 Asvin G. All rights reserved. Released under Apache 2.0 license as described in the file LICENSE. Authors: Asvi
+OM/TowerBase.lean | 532L | sorries:1 | TowerBase, B_mul_uniformizer_pow, B_mul_uniformizer_pow_ge, B_mul_c_uniformizer_pow, phiGen | # B-RING, wave TowerBase: the order-`r≥3` tower closure — the coefficient-ring abstraction Blueprint: `uniform-rationality/notes/G
+OM/TowerRestartAbstract.lean | 462L | sorries:1 | FreshClusterPatternAbstract, card_freshPatternAbstract, SlotPatternAbstract, slotPattern_iff_pattern, restartEquivAbstract | Copyright (c) 2026 Asvin G. All rights reserved. Released under Apache 2.0 license as described in the file LICENSE. Authors: Asvi
+OM/TowerRestartGenH.lean | 262L | sorries:1 | censusEquivGenH, two_level_census_genH, childShapeGenH, two_level_census_genH_shape, card_two_level_genH | Copyright (c) 2026 Asvin G. All rights reserved. Released under Apache 2.0 license as described in the file LICENSE. Authors: Asvi
+OM/UniformCapstone.lean | 2047L | sorries:1 | numR, denR, numI, denI, numS | Copyright (c) 2026 Asvin G. All rights reserved. Released under Apache 2.0 license as described in the file LICENSE. Authors: Asvi
+OM/UniformModelN2.lean | 1198L | sorries:1 | pairBoxP, transMapP, transMapP_zero, card_comp_equiv, digit_zero_eq_resp | Copyright (c) 2026 Asvin G. All rights reserved. Released under Apache 2.0 license as described in the file LICENSE. Authors: Asvi
+OM/UniformModelN2Recovery.lean | 107L | sorries:1 | transChainCountP_two, ord0Count_two_eq, chainCountP_two_eq, decidedCountP_two_eq, undecidedCountP_two_eq | Copyright (c) 2026 Asvin G. All rights reserved. Released under Apache 2.0 license as described in the file LICENSE. Authors: Asvi
+OM/UnramifiedBase.lean | 549L | sorries:1 | one_lt_pow_base, neZero_pow_base, nontrivial_base, redHom, Oring | Copyright (c) 2026 Asvin G. All rights reserved. Released under Apache 2.0 license as described in the file LICENSE. Authors: Asvi
+OM/WildMenu.lean | 525L | sorries:1 | fSum, constERam, constERam_fSum_pos, constERam_n_pos, constERam_fSum_dvd | Copyright (c) 2026 Asvin G. All rights reserved. Released under Apache 2.0 license as described in the file LICENSE. Authors: Asvi
+OM/WildMenuPrep.lean | 476L | sorries:1 | constERamTypes, mem_constERamTypes, typeMenuW, typeMenuW_degree, unramTypeMenu_not_constERam | Copyright (c) 2026 Asvin G. All rights reserved. Released under Apache 2.0 license as described in the file LICENSE. Authors: Asvi
+OM/WildMenuW3.lean | 653L | sorries:1 | admissibleK, mem_admissibleK, admissibleK_one, gcd_admissible, wPathAt | Copyright (c) 2026 Asvin G. All rights reserved. Released under Apache 2.0 license as described in the file LICENSE. Authors: Asvi
+=== (2) THE INTERFACE LAYER (verbatim) ===
+--- FILE: lean/LeanUrat/Interface.lean ---
+/-
+Copyright (c) 2026 Asvin G. All rights reserved.
+Released under Apache 2.0 license as described in the file LICENSE.
+Authors: Asvin G
+-/
+import Mathlib
+import LeanUrat.PadicMeasure
+
+/-!
+# LeanUrat.Interface — the axiomatic interface ("stated hypotheses")
+
+This module fixes the **axiomatization boundary** for the formalization of the Goal Theorem
+(uniform rationality of `p`-adic factorization-type densities at all primes; see
+`notes/HUMAN_PROOF.md`). The architecture is "formalize modulo stated hypotheses": everything that
+is already in mathlib is *used* from mathlib and is **not** axiomatized here; everything that the
+proof legitimately *cites* from the literature is encoded here as a `structure`/`class` carrying the
+needed hypotheses, or as a named `axiom`, each with a doc-comment citing its justification.
+
+The boundary, decided minimally (only what later lemmas actually consume):
+
+* **From mathlib (NOT axiomatized).** Finite fields are perfect (`PerfectField.ofFinite`);
+  every irreducible over a perfect field is separable (`PerfectField.separable_of_irreducible`);
+  `Separable ↔ Squarefree` over a perfect field (`PerfectField.separable_iff_squarefree`);
+  polynomial rings, unique factorization (`UniqueFactorizationMonoid`), `degreeLT` and its basis;
+  Haar measure existence and valuations (`MeasureTheory`, `Valuation`); finite-field cardinality
+  arithmetic. These are real mathlib objects; L1–L7 consume them directly.
+
+* **Axiomatized here (legitimately cited).**
+  1. The Guàrdia–Montes–Nart higher-order Okutsu–Montes (OM) structure, distilled to the three
+     `p`-independent structural facts **(I)** finite-field residuals, **(II)** lattice Newton
+     polygons, **(III)** finite repeated-factor descent (`notes/GMN_citations.md §0`).
+  2. The `p`-adic factorization-density / cluster-tree-stratification measure foundations: the
+     density `ρ(n,σ;q)`, the cluster-tree stratification, and the per-stratum Haar volume
+     (`notes/HUMAN_PROOF.md §0`; cf. paper §2–4 / Igusa §7.4).
+
+Everything in §1 below (the OM facts) is `p`-independent: GMN works over an arbitrary complete
+discretely valued field, and the wild/inseparable case is the *generic* case, not an exception.
+The *uniformity / rationality* consequences are **derived** (L2core / BB3-∞), never imported.
+-/
+
+namespace LeanUrat
+
+open Polynomial MeasureTheory
+
+/-! ## 0. Basic combinatorial data shared by the interface -/
+
+/-- A **factorization shape** at a single OM node: a finitely-supported assignment `d ↦ r_d`
+recording the number `r_d` of irreducible factors of degree `d ≥ 1` (counted with multiplicity).
+The total degree is `∑ d • r_d`. This is the object L3 / BB3 counts (`notes/L3_proof.md §2.2`). -/
+structure FactorizationShape where
+  /-- `mult d` is the number of degree-`d` irreducible factors (with multiplicity). -/
+  mult : ℕ → ℕ
+  /-- Only finitely many degrees occur. -/
+  support_finite : (Function.support mult).Finite
+
+namespace FactorizationShape
+
+/-- The total degree `∑_d d · r_d` of a shape. -/
+noncomputable def totalDegree (sh : FactorizationShape) : ℕ :=
+  ∑ d ∈ sh.support_finite.toFinset, d * sh.mult d
+
+end FactorizationShape
+
+/-! ## 1. The Guàrdia–Montes–Nart order-`r` OM structure (the single load-bearing import)
+
+Source: **J. Guàrdia, J. Montes, E. Nart, *Newton polygons of higher order in algebraic number
+theory*, Trans. Amer. Math. Soc. 364 (2012), 361–416 (arXiv:0807.2620v2)**. Pinned theorem numbers
+are in `notes/GMN_citations.md`. We import *only* the three `p`-independent structural facts (I),
+(II), (III); the uniformity consequence is derived, not imported. -/
+
+/-- **GMN order-`r` OM type / cluster node**, carrying exactly the data the cluster recursion
+consumes, with the three `p`-independent structural facts attached as fields.
+
+The base residue field is `Fq` (the residue field `F_q` of the unramified `K/Q_p`). The fields of
+this structure encode:
+
+* **(I) finite-field residuals** (`GMN §2.1` tower, `Def 2.21`): the order-`r` residual polynomial
+  lives in `Fr[y]` with `Fr` a *finite* field, of `p`-independent degree `f₀⋯f_{r-1} ∣ n` over
+  `Fq`. This is the linchpin that lets the finite-field building block L3/BB3 apply verbatim at
+  every order. Encoded by `[Field Fr] [Finite Fr]` and `residualDegree`.
+* **(II) lattice Newton polygon** (`Def 2.3`, `Def 1.1`): the order-`r` polygon `N_r` is a
+  principal/lattice object with `p`-independent combinatorics, recorded by `newtonVertices`
+  (integer lattice vertices). This is what L4/BB1 consumes.
+* **(III) repeated-factor descent** (`Cor 1.20 / 3.8`, `Lemma 3.11(3)`, `Thm 4.18 / Cor 4.19`): a
+  multiplicity-1 residual factor is a leaf; a multiplicity-`≥2` factor descends; descent is
+  triggered *exactly* by a non-separable residual and terminates at finite, `p`-independently
+  bounded order. Encoded by `clusterSize` (strictly decreasing on descent) and `descentBound`. -/
+structure OMType (Fq : Type*) [Field Fq] [Finite Fq] where
+  /-- The OM/Montes order `r ≥ 0` of this node. -/
+  order : ℕ
+  /-- The cluster size `e ≤ n` carried at this node. -/
+  clusterSize : ℕ
+  /-- **(I)** The order-`r` residue field `F_r`. A *finite* field at every order (GMN §2.1). -/
+  Fr : Type*
+  /-- `F_r` is a field … -/
+  [field_Fr : Field Fr]
+  /-- … and is finite (the linchpin of fact (I)). -/
+  [finite_Fr : Finite Fr]
+  /-- The residue degree `f₀⋯f_{r-1}` of `F_r` over `F_q`, a `p`-independent divisor of `n`. -/
+  residualDegree : ℕ
+  /-- **(II)** The integer lattice vertices of the order-`r` Newton polygon `N_r` (fact (II)). -/
+  newtonVertices : List (ℕ × ℕ)
+  /-- **(III)** A `p`-independent bound on the descent depth from this node (GMN Thm 4.18 / Cor
+  4.19): the OM descent of a separable polynomial terminates at finite, `p`-independently bounded
+  order. -/
+  descentBound : ℕ
+
+attribute [instance] OMType.field_Fr OMType.finite_Fr
+
+/-- **(III) — the descent trigger, GMN Lemma 3.11(3), stated as a clean interface predicate.**
+Descent past order `r` is triggered **exactly** when some order-`r` residual polynomial
+`R ∈ F_r[y]` is *non-separable* (equivalently, by finite-field perfectness, *non-squarefree*).
+
+This is the precise locus that L3 counts as `Q_r^{d_r-1}`. We state it as the mathlib predicate
+`¬ R.Separable`; the GMN content is that this predicate is the descent trigger, which we record as
+the *definition* of `NeedsDescent`. (Citation: `notes/GMN_citations.md §2.3`, Lemma 3.11(3).) -/
+def NeedsDescent {Fr : Type*} [Field Fr] (R : Fr[X]) : Prop := ¬ R.Separable
+
+/-- **GMN order-`r` residual-coefficient equidistribution (M6), as a stated hypothesis.**
+Fix an OM node `t`. On the Haar-conditioned cell realizing a given finite-slope side, the order-`r`
+residual polynomial `R_r(g) ∈ F_r[y]` is **Haar-equidistributed over all monic degree-`d_r`
+polynomials over `F_r`**: each fibre has the same conditional measure `|F_r|^{-d_r}`. This converts
+L3's *counts* into L2core's *Haar volumes* at every order.
+
+At order 1 this is L4/BB1 (proved exactly); at order `r` it is derived from the GMN order-`r`
+coordinate description (`notes/M6_lemma.md`). We expose it as the conclusion the recursion uses: a
+uniform conditional probability `condProb` on monic residuals, equal to `(card of the value set) /
+|F_r|^{d_r}`. Citation: `notes/M6_lemma.md`; GMN `Def 2.20–2.21`, `Prop 3.5(4)`. -/
+structure ResidualEquidistribution {Fq : Type*} [Field Fq] [Finite Fq] (t : OMType Fq) where
+  /-- The residual degree `d_r` of the chosen side. -/
+  residualSideDegree : ℕ
+  /-- The conditional Haar probability that the order-`r` residual lands in a given set of
+  monic residual values. -/
+  condProb : Finset t.Fr → ℚ
+  /-- **Equidistribution.** The conditional probability of any value set `S` of monic residuals
+  is `#S / |F_r|^{d_r}` — the uniform measure on `𝔸^{d_r}(F_r)`, the *same* `p`-independent value
+  at every prime (M6 conclusion (1)–(2)). -/
+  uniform : ∀ S : Finset t.Fr,
+    condProb S = (S.card : ℚ) / (Nat.card t.Fr : ℚ) ^ residualSideDegree
+
+/-! ## 2. The `p`-adic factorization-density measure foundations
+
+These encode the measure-theoretic objects of `notes/HUMAN_PROOF.md §0`: the projective/monic
+factorization-type density `ρ(n,σ;q)` (an honest Haar **volume**, not a value-weighted integral),
+the cluster-tree stratification, and the per-stratum Haar volume. Justification: `p`-adic density
+foundations, cf. paper §2–4 / Igusa, *Local Zeta Functions* §7.4. We expose only what L1, L2core,
+L6M4, M1 consume: that the density is a real number in `[0,1]`, that the stratification is a finite
+partition by cluster-tree shape, and that the total mass is `1`. -/
+
+/-- A **factorization type** `σ` of degree `n`: a multiset of pairs `(eᵢ, fᵢ)` (ramification /
+residue data of the irreducible `p`-adic factors) with `∑ eᵢ fᵢ = n` (`notes/HUMAN_PROOF.md §0`). -/
+structure FactorizationType where
+  /-- The multiset of `(e, f)` pairs. -/
+  data : Multiset (ℕ × ℕ)
+
+/-- The degree `n = ∑ eᵢ fᵢ` of a factorization type. -/
+def FactorizationType.degree (σ : FactorizationType) : ℕ :=
+  (σ.data.map (fun p => p.1 * p.2)).sum
+
+/-! ### `ClusterShape` — the cluster-tree / OM-type shape index (ENRICHED, decision 2b)
+
+A **cluster-tree / OM-type shape** `T` is the index of the cluster recursion (a decorated
+Okutsu–Montes tree). For the assembly (L6M4) it is used only as a *decidable index* carrying a
+per-shape volume; its internal data is the decorated tree (nodes recorded as
+`(order, clusterSize, residualDegree)`). Finitely many shapes contribute to each `(n, σ)` by L5fix
+(GMN termination, `p`-independent bound). This object is **distinct** from `FactorizationType`: a
+single type `σ` is realized by *many* shapes `T` (different root configurations), and the per-type
+density is the multiplicity-weighted sum of per-shape volumes (`DensityFoundation.decomposition`).
+
+**ENRICHED (decision 2b, faithful-by-construction).** Besides the count-native slot list `tree`
+(unchanged: it carries the root `(order, clusterSize, residualDegree)` tuple read by
+`M5.nodeSizeOf`/`M6.treeSize`/the decoder), the shape now carries the genuine per-node **cell data**
+`cells : List ShapeCell`, so that the decoder reconstructs the REAL `MontesAxiom.CountCell` list
+faithful-by-construction (NOT the lossy schematic reconstruction the bare `tree` slot would force —
+cf. `OMSTEP_BLUEPRINT.md §6/§7.8`). The `tree` slot stays so the descent measure read-back
+(`treeSize`/`nodeSizeOf` reading `tree.head.2.1`) and every `⟨tree⟩`-based size lemma are unchanged. -/
+mutual
+/-- A **cluster-tree / OM-type shape**: the count-native `tree` slot list PLUS the faithful per-node
+cell payload `cells` (decision 2b). See the section comment above for the full discussion. -/
+structure ClusterShape where
+  /-- Count-native slot encoding of the decorated OM tree (root tuple `(order, clusterSize, dr)`
+  followed by the concatenated child subtrees). Read by `M5.nodeSizeOf`/`M6.treeSize`. -/
+  tree : List (ℕ × ℕ × ℕ)
+  /-- **Faithful per-node cell payload** (decision 2b): the genuine `CountCell` data of every cell of
+  this node, so the decoder is lossless. Empty for a leaf / order-0 shell. -/
+  cells : List ShapeCell
+/-- A faithful per-node OM **cell datum**: the genuine `MontesAxiom.CountCell` data of one OM cell —
+the residual-stratum degree `dS`, the residue-extension degree `δ`, the lattice Newton-polygon face
+`polygon`, and the descent children (each itself a `ClusterShape`). Mirrors `MontesAxiom.CountCell`
+but lives upstream (in `Interface`) so the enriched `ClusterShape` can carry it; the down-stream M7
+reader erases it back to a genuine `CountCell`. -/
+structure ShapeCell where
+  /-- residual-stratum degree `d_S`. -/
+  dS : ℕ
+  /-- residue-extension degree `δ`. -/
+  δ : ℕ
+  /-- the cell's lattice Newton-polygon face. -/
+  polygon : L4.LatticePolygon
+  /-- the descent children of this cell (each a strictly smaller cluster shape). -/
+  children : List ClusterShape
+end
+
+/-- `DecidableEq` for the enriched (recursive, polygon-carrying) `ClusterShape`. The structural
+`deriving` handler does not support recursion through `List` nor the function-typed fields of
+`L4.LatticePolygon`, so the instance is supplied classically (a legitimate `Decidable` instance, not
+an escape hatch). It is `noncomputable`; every consumer of shape-equality in the development is
+already `noncomputable` (the sole exception, `Witness.trivCells`, is marked `noncomputable`). -/
+noncomputable instance : DecidableEq ClusterShape := Classical.decEq _
+
+/-- `DecidableEq` for `ShapeCell` (classical, as for `ClusterShape`). -/
+noncomputable instance : DecidableEq ShapeCell := Classical.decEq _
+
+/-- **The `p`-adic factorization-density foundations, as a stated-hypothesis interface.**
+
+`q` is the residue cardinality (a prime power). `density n σ q` is the **monic/projective
+factorization-type density** `α/ρ(n,σ;q)`: the Haar volume of the locus of degree-`n` forms of type
+`σ`. The fields record exactly the measure-foundational facts L1/L6M4/M1 consume:
+
+* `density_nonneg`: densities are nonnegative (Haar volumes), not value-weighted integrals
+  (load-bearing: at `p=2`, `∫|disc| ≠ volume`; cf. `HUMAN_PROOF §0`).
+
+(C1 docstring fix, `notes/MONTES_AUDIT.md`, 2026-07-02: earlier versions of this docstring advertised
+`density_le_one` (densities in `[0,1]`) and `total_mass` (`∑_σ density = 1`) fields that the structure
+does NOT carry. The structure is intentionally WEAK — it does not pin `density` to be a probability,
+which is exactly why statements about a FREE `F : DensityFoundation` must never be axioms (see
+`TameFunctionalEquation` below, the U1 lesson). If those fields are ever added, re-audit every `∀ F`
+statement.)
+
+Citation: `p`-adic density foundations, cf. paper §2–4 / Igusa §7.4; cluster-tree stratification
+`notes/HUMAN_PROOF.md §0`, L1 `notes/HUMAN_PROOF.md §3`. -/
+structure DensityFoundation where
+  /-- The factorization-type density `ρ(n,σ;q)` (projective), a rational-valued Haar volume indexed
+  by degree `n`, type `σ`, and residue cardinality `q`. -/
+  density : (n : ℕ) → FactorizationType → (q : ℕ) → ℚ
+  /-- The per-**shape** cluster volume `C_T(q)` — the object of the GMN/BB3-∞ boundary
+  (`clusterVolume_rational`). Distinct from the per-type `density`. -/
+  clusterVolume : ClusterShape → ℕ → ℚ
+  /-- The finite set of cluster-tree shapes contributing to `(n, σ)` (finiteness & `p`-independence
+  are L5fix / GMN termination, `notes/L5fix_complete.md`). -/
+  shapes : (n : ℕ) → FactorizationType → Finset ClusterShape
+  /-- The combinatorial multiplicity `m_T(·)` of a shape — a **polynomial** in `q` (a residue-
+  configuration count over `P^1(F_q)`; that it is a *polynomial* in `q` is L3,
+  `notes/L3_proof.md §2`). -/
+  multiplicity : ClusterShape → Polynomial ℚ
+  /-- **Structural decomposition (L1 Hensel-splitting + cluster-tree stratification).** The per-type
+  density is the finite, multiplicity-weighted sum of per-**shape** cluster volumes. This is the
+  honest measure-foundational / recursion-structure content; it is **NOT** a rationality claim
+  (the multiplicities and volumes are arbitrary here). Combined with the per-shape rationality axiom
+  `clusterVolume_rational`, L6M4 *derives* that the density is a uniform rational function of `q`.
+  Citation: `notes/HUMAN_PROOF.md §3` (L1, splitting), §10 (L6M4 assembly). -/
+  decomposition : ∀ (n : ℕ) (σ : FactorizationType), σ.degree = n → ∀ q : ℕ, 1 < q →
+    density n σ q = ∑ T ∈ shapes n σ, (multiplicity T).eval (q : ℚ) * clusterVolume T q
+  /-- Densities are nonnegative (Haar volumes). -/
+  density_nonneg : ∀ n σ q, 0 ≤ density n σ q
+
+/-- **The OM bridge (D1) — the per-shape cluster volume IS a GMN/OM cluster measure.**
+
+This structure is the **structural bridge** (independent-verification defect D1) that ties the
+abstract per-shape `clusterVolume` of a foundation `F` to the A0-faithful GMN/Okutsu–Montes cluster
+measure of `LeanUrat.PadicMeasure`. It is STRUCTURAL — it asserts only that `F.clusterVolume` is
+realized by the FIXED OM cluster measure `PadicMeasure.clusterMeasure` over a decoding
+`decode : ClusterShape → OMShape` of the cluster-tree shapes — and is **NOT** a rationality claim.
+
+Rationality is then a THEOREM (`clusterVolume_rational`, below): the FIXED OM cluster measure
+`PadicMeasure.clusterMeasure` satisfies the Igusa/Denef cell-decomposition axiom
+`PadicMeasure.AX_cellRecursion`, and the proved engine `OMInduction.clusterVol_isRational` (run on
+the proved blocks `T_BB1`, `T_BB3`, `L5fix.selfLoop_geometric`) concludes it is a uniform rational
+function of `q`. The conclusion is never assumed here; only the realization-as-OM-cluster-measure
+(the genuine GMN cluster-tree-stratification content of `notes/BB3_infinity.md`) is.
+
+**Separated out (2026-06-20).** The OM bridge was FACTORED OUT of `DensityFoundation` into this
+separate structure so that the measure-free `DensityFoundation` (and the tame functional equation
+stated about it) no longer drags `PadicMeasure.clusterMeasure` into the footprint. The only-Montes
+Goal theorem (`MontesV2.goal_theorem_montes` — the V2 carrier of the canonical name since W4b,
+2026-07-21; the old-`MontesData` sibling is in `quarantine/MontesData_oldSpine_2026-07-21.lean.txt`)
+routes rationality through the count-native `MontesDataV2.countingDensity_isRational` and never
+references this bridge; the OLD `Goal.goal_theorem`
+still consumes it (the measure route — kept for the historical derivation, NOT only-Montes).
+
+**Soundness note (2026-06-19 fix, preserved).** The bridge ties `clusterVolume` to the SINGLE fixed
+interface object `PadicMeasure.clusterMeasure` (the actual conditional p-adic Haar cluster volume),
+not to a free per-foundation `clusterMeasure` field. With the fixed object, the bridge genuinely
+records that `clusterVolume` IS the p-adic cluster measure the Igusa/Denef axiom factors.
+
+Citation: GMN cluster-tree stratification + Igusa/Denef cell decomposition,
+`notes/BB3_infinity.md` §4 / `notes/MINIMAL_PADIC_AXIOMS.md`. -/
+structure OMBridge (F : DensityFoundation) where
+  /-- The decoding of a cluster-tree shape `T` to its GMN order-`r` OM shape (the cluster-tree
+  stratification: each `ClusterShape` is the data of a decorated OM tree node, decoded to an
+  `OMShape` carrying the finite residue field / lattice polygon / residual). -/
+  decode : ClusterShape → PadicMeasure.OMShape
+  /-- **The bridge (structural, NOT a rationality claim).** The per-shape cluster volume equals the
+  FIXED GMN/OM cluster measure `PadicMeasure.clusterMeasure` of the decoded shape, at every residue
+  cardinality. This records that `clusterVolume` is a genuine p-adic cluster Haar measure (the object
+  the Igusa/Denef cell-decomposition axiom factors), not an arbitrary function. -/
+  clusterVolume_eq_measure :
+    ∀ (T : ClusterShape) (q : ℕ), F.clusterVolume T q = PadicMeasure.clusterMeasure (decode T) q
+
+/-! ## 3. The two cited `p`-independence statements feeding the Goal Theorem — NEITHER is an
+`axiom` any more (section header refreshed 2026-07-30 verify-2 fold-in)
+
+These are the two genuinely-external `p`-independence statements (the "G-A′" import of
+`notes/BB3_infinity.md`, and the tame functional equation H-tame of `notes/HUMAN_PROOF.md §12`).
+They were ORIGINALLY stated as named axioms with explicit citations so that the assembled Goal
+Theorem's dependence on them would be auditable. Both have since left the axiom base, as each
+item's own docstring below records: `clusterVolume_rational` was DE-AXIOMATIZED to a THEOREM
+(2026-06-18, soundness-repaired 2026-06-19, bridge separated 2026-06-20), and
+`TameFunctionalEquation` is a `def`/predicate consumed as an explicit hypothesis by the Goal
+theorems (U1 soundness fix, 2026-07-02). This section contributes ZERO axioms to the trusted
+base. -/
+
+/-- **(G-A′) Per-SHAPE cluster volume is a `p`-independent rational function of `q` — NOW A THEOREM.**
+For every cluster-tree shape `T`, the per-shape cluster volume `C_T(q)` is represented by a single
+`num/den ∈ ℚ(t)` at *every* prime power `q` (all `p`, wild included), at every OM order.
+
+**Scope (the fix for the earlier vacuity bug):** this is about the per-**shape** volume
+`F.clusterVolume T`, NOT the per-**type** density `F.density n σ`. The density's rationality is
+**derived** from this theorem together with `DensityFoundation.decomposition` (the finite
+multiplicity-weighted sum) in `L6M4.density_rational` — it is *not* assumed.
+
+**DE-AXIOMATIZED (2026-06-18, soundness-repaired 2026-06-19; bridge separated 2026-06-20).** This
+was an asserted `axiom` (the historical conclusion-shaped boundary); it is now a **THEOREM**, derived
+from:
+* the OM bridge `B : OMBridge F` fields `decode`/`clusterVolume_eq_measure` (the STRUCTURAL fact —
+  GMN cluster-tree stratification — that `F.clusterVolume` is the FIXED genuine OM cluster Haar
+  measure `PadicMeasure.clusterMeasure`, NOT a rationality claim). The bridge is now a SEPARATE
+  argument (factored out of `DensityFoundation`), so only this OLD measure-route theorem carries it;
+* the Igusa/Denef cell-decomposition axiom `PadicMeasure.AX_cellRecursion`, now stated about the FIXED
+  objects `PadicMeasure.clusterMeasure`/`omPivot` (the load-bearing analytic boundary, a
+  measure-FACTORIZATION identity — and CONSISTENT, witnessed by `PadicMeasure.clusterMeasureModel`,
+  not a rationality claim);
+* the proved engine `OMInduction.clusterVol_isRational` run on the proved blocks (`T_BB1`, `T_BB3`,
+  `L5fix.selfLoop_geometric`, the `RatFn` closure lemmas) and the GMN structural axioms
+  (`omCells`, `descend_size_lt`).
+
+Rationality is therefore **never assumed**; it emerges only through the proved engine applied to the
+measure-factorization axiom. NOTE: the count-native only-Montes path (since W4b 2026-07-21 the V2
+spine: `MontesDataV2.C_isRational` / `MontesDataV2.countingDensity_isRational` in
+`LeanUrat/MontesV2.lean`; the old `Decomposition.coeff_isRational` route is quarantined) does NOT
+use this theorem and carries NONE of these measure
+axioms. Citation: `notes/HUMAN_PROOF.md §8` (L2core / BB3-∞), `notes/BB3_infinity.md`,
+`notes/MINIMAL_PADIC_AXIOMS.md`. -/
+theorem clusterVolume_rational
+    (F : DensityFoundation) (B : OMBridge F) :
+    ∀ T : ClusterShape,
+      ∃ (num den : Polynomial ℚ), den ≠ 0 ∧
+        ∀ q : ℕ, (1 < q) → (den.eval (q : ℚ) ≠ 0) ∧
+          F.clusterVolume T q = num.eval (q : ℚ) / den.eval (q : ℚ) := by
+  intro T
+  -- The decoded shape's FIXED OM cluster measure is a uniform rational function of `q`, by the proved
+  -- engine run on the Igusa/Denef cell-decomposition axiom (`AX_cellRecursion`). This is exactly the
+  -- `IsRationalFn` predicate of `RatFn`, whose unfolding is the existential below.
+  obtain ⟨num, den, hden, h⟩ :=
+    PadicMeasure.clusterMeasure_isRational_of_AX (B.decode T)
+  refine ⟨num, den, hden, fun q hq => ?_⟩
+  obtain ⟨hdenq, hval⟩ := h q hq
+  -- Transport along the structural bridge `clusterVolume T q = clusterMeasure (decode T) q`.
+  exact ⟨hdenq, by rw [B.clusterVolume_eq_measure T q, hval]⟩
+
+/-- **Semantic palindromy of a rational function `num/den`.** `R := num/den` satisfies the
+functional equation `R(1/x) = R(x)` at every `x ≠ 0` where both `R(x)` and `R(1/x)` are defined:
+```
+    ∀ x ≠ 0, den(x) ≠ 0 → den(1/x) ≠ 0 → num(1/x)/den(1/x) = num(x)/den(x).
+```
+This is the FAITHFUL, degree-robust encoding of `R(1/t) = R(t)`. The earlier coefficient-reversal
+encoding `num.reverse * den = num * den.reverse` was DEGREE-BLIND: via `(reverse f).eval x =
+x^(natDegree f)·f.eval(1/x)` it means `x^(deg num − deg den)·R(1/x) = R(x)`, i.e. genuine palindromy
+only when `deg num = deg den` (weight-0); it wrongly REJECTS palindromic `R` of unequal reduced
+degree (e.g. `t/(t²+1)`). Projective densities are weight-0, but that was nowhere enforced, so the
+old clause was an unfaithful statement of the functional equation. (Statement-audit B1, 2026-06-15.) -/
+def IsPalindromic (num den : Polynomial ℚ) : Prop :=
+  ∀ x : ℚ, x ≠ 0 → den.eval x ≠ 0 → den.eval x⁻¹ ≠ 0 →
+    num.eval x⁻¹ / den.eval x⁻¹ = num.eval x / den.eval x
+
+/-- **(H-tame) The tame functional equation, as a `Prop`-valued PREDICATE** (the U1 soundness fix,
+2026-07-02).
+
+`TameFunctionalEquation F n σ` says: at tame primes `q > n` the density `F.density n σ` is represented
+by a single *palindromic* rational function `R^{tame}_σ ∈ ℚ(t)`, `R^{tame}_σ(1/t) = R^{tame}_σ(t)`.
+This is the paper's tame palindromic-weight machinery (§5), untouched by the Prop 5.3 failure; the
+proofs use it only via "infinitely many tame `p`," sufficient for the `ℚ(t)` identity theorem (L7).
+
+**HISTORY / WHY THIS IS A `def`, NOT AN `axiom` (U1, `notes/MONTES_AUDIT.md`).** This statement was
+previously the GLOBAL AXIOM `tame_functionalEquation (F : DensityFoundation) : ∀ n σ, …` quantified
+over an ARBITRARY `F`. That axiom was FALSE-AS-STATED (machine-checked `False`-witness: a legal `F`
+with `density := fun _ _ q => q` satisfies every `DensityFoundation` field but is not palindromic —
+the axiom then forces `x⁻¹ = x`), so every capstone that consumed it rested on an inconsistent base.
+The mathematics (paper §5, Del Corso–Dvornicich (2000), Yin) is a true statement about the REAL
+density `ρ`, not about an arbitrary `DensityFoundation.density`. The sound encoding is therefore:
+
+* this PREDICATE, consumed as an explicit HYPOTHESIS `htame : TameFunctionalEquation F n σ` by the
+  Goal theorems (`Goal.goal_theorem`, and since W4b 2026-07-21 the V2 carriers of the only-Montes
+  names, `MontesV2.goal_theorem_montes` / `MontesV2.goal_theorem_via_montes`) —
+  free-`F` statements carry it conditionally;
+* (RETIRED, W4a 2026-07-21) the interim concrete NAMED-CITE axiom about the REAL count-native
+  density (`OM.M9.realDensity_tame_functionalEquation`) that discharged `htame` for the OLD vacuous
+  capstone is GONE with that capstone (blueprint D4; see
+  `quarantine/RealInstance_oldCapstone_2026-07-21.lean.txt`) — the current capstone
+  `RealInstanceV2.montes_unconditional` consumes this predicate as the explicit HYPOTHESIS
+  `htameFE`, so the trusted base carries NO tame axiom;
+* the coupled non-vacuity witness (`Witness.trivF_tame`) PROVES the predicate outright for the
+  witness bundle (its density is the constant `1`), so the witness instance is now tame-axiom-free.
+
+Citation: `notes/HUMAN_PROOF.md §12` (L7, H-tame); paper §5; Del Corso–Dvornicich (2000), Yin. -/
+def TameFunctionalEquation (F : DensityFoundation) (n : ℕ) (σ : FactorizationType) : Prop :=
+  ∃ (num den : Polynomial ℚ), den ≠ 0 ∧
+    (∀ q : ℕ, q.Prime → n < q → F.density n σ q = num.eval (q : ℚ) / den.eval (q : ℚ)) ∧
+    -- palindromy R(1/t) = R(t), in the FAITHFUL degree-robust semantic form (audit B1):
+    IsPalindromic num den
+
+end LeanUrat
+--- FILE: lean/LeanUrat/MontesV2.lean ---
+/-
+Copyright (c) 2026 Asvin G. All rights reserved.
+Released under Apache 2.0 license as described in the file LICENSE.
+Authors: Asvin G
+-/
+import Mathlib
+import LeanUrat.Interface
+import LeanUrat.RatFn
+import LeanUrat.CountingModel
+import LeanUrat.L7
+
+/-!
+# LeanUrat.MontesV2 — the abstract-coefficient V2 spine (blueprint W1)
+
+This module is **Wave 1 of `notes/M9_REBASE_BLUEPRINT_2026-07-19.md`** (signed off 2026-07-19):
+the ADDITIVE V2 spine that replaces the old `MontesAxiom.MontesData`'s hard-pinned per-node
+coefficient shape (`boxMeasure`/`boxHaarEquidist`/`nodeMeasure_boxSum` — the numerically-REFUTED
+box-sum semantics, blueprint §1) with an ABSTRACT per-shape coefficient (blueprint D2).
+
+Contents:
+* `MontesDataV2` — the minimal abstract-coefficient interface: shape menu + stratum counts +
+  partition + an abstract coefficient `C` with rationality and the per-shape counting limit.
+* `MontesDataV2.countingDensity_eq_sum_coeff` / `countingDensity_isRational` — the V2 siblings of
+  `Decomposition.countingDensity_eq_sum_coeff` / `countingDensity_isRational` (same proofs; the
+  abstraction does the work).
+* `goal_theorem_montes` / `goal_theorem_via_montes` — the V2 siblings of the OLD
+  `Goal.goal_theorem_montes` / `Goal.goal_theorem_via_montes`, verbatim modulo `MontesData →
+  MontesDataV2` and `D.coeff → D.C`. Footprint must be Lean core only. (W4b, 2026-07-21: renamed
+  from `goal_theorem_montes_v2` / `goal_theorem_via_montes_v2` — they now CARRY the canonical
+  names; the old-`MontesData` siblings are retired to
+  `quarantine/MontesData_oldSpine_2026-07-21.lean.txt`.)
+
+This was landed as a LEAF module (W1); as of W4a/W4b it is the ONE capstone spine: the W2 real
+instance `OM/RealInstanceV2.lean` and the ported `Witness.lean` fire the goal theorems below, and
+the old `MontesData` chain is retired.
+-/
+
+set_option linter.style.longLine false
+set_option linter.style.header false
+set_option linter.unusedSectionVars false
+
+namespace LeanUrat.MontesV2
+
+open Polynomial CountingModel RatFn Filter Topology
+
+/-- **The abstract-coefficient Montes data (blueprint D2) — the V2 replacement of
+`MontesAxiom.MontesData`.**
+
+The old `MontesData` froze the ENGINE INTERNALS into the interface: its
+`boxMeasure`/`boxHaarEquidist`/`nodeMeasure_boxSum` fields pinned every instance to the per-node
+box-sum coefficient shape, which the 2026-07 numeric campaign REFUTED (blueprint §1, defects
+D1–D6). The Goal layer never consumed that shape — it only ever consumed the three derived facts
+(the menu-sum decomposition, its rationality, the value tie). `MontesDataV2` therefore carries the
+per-shape coefficient ABSTRACTLY: a function `C` together with (i) its uniform rationality and
+(ii) the per-shape counting limit `stratumCount T N / q^{nN} → C T q`, plus the level-`N`
+partition of the decided count over the shape menu.
+
+⚠ **Statement-fence note (blueprint D2, verbatim intent).** This interface is DELIBERATELY WEAK —
+weaker than the old `MontesData`: it demands no per-node recursion shape, so it is satisfiable by
+degenerate instances (e.g. an empty menu with `C ≡ 0`). That is by design: the semantics are pinned
+at the INSTANCE, not the interface — the corrected real instance sets `C := omCount` (W2), and
+non-vacuity/σ-separation are enforced against the REAL instance by the W3 gates
+(`gate_rootCount_inert2`-style positivity, the O1-reversal σ-separation examples), NOT here.
+Interface-weakening is how vacuity crept in before, so this weakening is flagged for audit
+explicitly; any consumer claiming non-vacuity must cite the instance gates, never this structure. -/
+structure MontesDataV2 (q n : ℕ) (M : CountingModel q n) where
+  /-- For each factorization type `σ`, the finite menu of cluster-tree shapes `T` attached to `σ`
+  (the shapes whose strata make up the level-`N` decided count of type `σ`). -/
+  shapesOf : FactorizationType → Finset ClusterShape
+  /-- The level-`N` stratum count `# S_T^{(N)}` of a shape `T` (the count of level-`N` decided
+  monic cosets realizing the combinatorial shape `T`). A `ℚ`-valued integer count. -/
+  stratumCount : ClusterShape → ℕ → ℚ
+  /-- **PARTITION (`ax:partition`).** At each level `N`, the decided count of type `σ` is the
+  finite sum over the σ-menu of the per-shape stratum counts (each decided coset realizes exactly
+  one shape). -/
+  partition : ∀ (σ : FactorizationType) (N : ℕ),
+    M.decidedCount σ N = ∑ T ∈ shapesOf σ, stratumCount T N
+  /-- **The abstract per-shape coefficient `C T q'`** — the limiting normalized stratum measure of
+  shape `T`, as a function of the residue cardinality `q'`. Carried abstractly (no per-node
+  recursion shape is demanded — blueprint D2); the corrected real instance sets `C := omCount`. -/
+  C : ClusterShape → ℕ → ℚ
+  /-- **Uniform rationality of the abstract coefficient**: each `C T` is one `num/den ∈ ℚ(t)`,
+  denominator nonvanishing at every `q' > 1`, representing `C T q'` there. (For the real instance
+  this is `OMCountV2.omCount_isRational`.) -/
+  C_isRational : ∀ T : ClusterShape, IsRationalFn (fun q' => C T q')
+  /-- **The per-shape counting limit (the value tie).** For every shape on some type's menu, the
+  normalized level-`N` stratum count converges to the abstract coefficient evaluated at THIS
+  model's residue cardinality `q`. (For the real instance these are the `hNodeLimit` legs.) -/
+  stratum_tendsto_C : ∀ (σ : FactorizationType), ∀ T ∈ shapesOf σ,
+    Filter.Tendsto (fun N => stratumCount T N / (q : ℚ) ^ (n * N))
+      Filter.atTop (nhds (C T q))
+
+/-- Finite `Finset`-indexed sums of uniform rational functions are uniform rational functions.
+
+NOTE (deliberate duplication): this is a local re-proof of `OM.Order0.isRationalFn_finsetSum`
+(`OM/Order0Capstone.lean`). Importing that module would drag the heavy `OM/RealInstance` chain
+into this deliberately-light leaf, so the 10-line general closure lemma is re-proved here instead. -/
+theorem isRationalFn_finsetSum {α : Type*} (s : Finset α) (f : α → ℕ → ℚ)
+    (h : ∀ a ∈ s, IsRationalFn (f a)) :
+    IsRationalFn (fun q => ∑ a ∈ s, f a q) := by
+  classical
+  induction s using Finset.induction_on with
+  | empty => simpa using isRationalFn_const 0
+  | insert a s ha ih =>
+      have hfa : IsRationalFn (f a) := h a (Finset.mem_insert_self a s)
+      have hs : IsRationalFn (fun q => ∑ b ∈ s, f b q) :=
+        ih (fun b hb => h b (Finset.mem_insert_of_mem hb))
+      simpa [Finset.sum_insert ha] using isRationalFn_add hfa hs
+
+namespace MontesDataV2
+
+variable {q n : ℕ} {M : CountingModel q n} (D : MontesDataV2 q n M)
+
+/-- **The V2 DECOMPOSITION THEOREM: `countingDensity σ = ∑_{T ∈ shapesOf σ} C T q`** — the sibling
+of `Decomposition.countingDensity_eq_sum_coeff` over `MontesDataV2`. The genuine DECIDED-LIMIT
+density is the finite menu-sum of the abstract per-shape coefficients at this model's `q`. PROVED
+modulo the `MontesDataV2` hypotheses:
+* at each `N`, `decidedMeasure σ N = ∑_T (stratumCount T N / q^{nN})` (`partition` over the box);
+* each summand `→ C T q` (`stratum_tendsto_C`), so the FINITE sum tends to `∑_T C T q`;
+* but `decidedMeasure σ N → countingDensity σ` (`CountingModel.density_isLimit`);
+* limits in `ℚ` are unique.
+No rationality is used. -/
+theorem countingDensity_eq_sum_coeff (σ : FactorizationType) :
+    M.countingDensity σ = ∑ T ∈ D.shapesOf σ, D.C T q := by
+  -- (1) at each level `N`, the decided measure is the menu-sum of normalized stratum counts
+  -- (`partition`, divided by the box `q^{nN}`):
+  have hN : (fun N => M.decidedMeasure σ N)
+      = (fun N => ∑ T ∈ D.shapesOf σ, D.stratumCount T N / (q : ℚ) ^ (n * N)) := by
+    funext N
+    unfold CountingModel.decidedMeasure
+    rw [D.partition σ N, Finset.sum_div]
+  -- (2) each normalized summand tends to `C T q` (`stratum_tendsto_C`), so the finite sum tends
+  -- to the menu-sum of coefficients:
+  have hsum_tendsto :
+      Tendsto (fun N => ∑ T ∈ D.shapesOf σ, D.stratumCount T N / (q : ℚ) ^ (n * N)) atTop
+        (nhds (∑ T ∈ D.shapesOf σ, D.C T q)) :=
+    tendsto_finsetSum (D.shapesOf σ) (fun T hT => D.stratum_tendsto_C σ T hT)
+  -- (3) but the decided measures tend to `countingDensity σ` (`density_isLimit`); limits are unique:
+  have hdec_tendsto :
+      Tendsto (fun N => M.decidedMeasure σ N) atTop (nhds (∑ T ∈ D.shapesOf σ, D.C T q)) := by
+    rw [hN]; exact hsum_tendsto
+  exact tendsto_nhds_unique (M.density_isLimit σ) hdec_tendsto
+
+/-- **The V2 RATIONALITY THEOREM: the menu-sum density function is a uniform rational function of
+`q'`** — the sibling of `Decomposition.countingDensity_isRational` over `MontesDataV2`. Each
+abstract coefficient is rational (`C_isRational`, an interface field here — for the real instance a
+THEOREM, `omCount_isRational`), and `IsRationalFn` is closed under finite `Finset` sums.
+
+Honest scope: this is rationality of the FUNCTION `q' ↦ ∑_T C T q'`; the decomposition theorem
+ties `countingDensity σ` (at this `M`'s `q`) to that function's value at `q`. -/
+theorem countingDensity_isRational (σ : FactorizationType) :
+    IsRationalFn (fun q' => ∑ T ∈ D.shapesOf σ, D.C T q') :=
+  isRationalFn_finsetSum (D.shapesOf σ) (fun T q' => D.C T q') (fun T _ => D.C_isRational T)
+
+end MontesDataV2
+
+/-- **The V2 only-Montes GOAL THEOREM — the sibling of the OLD `Goal.goal_theorem_montes` over
+`MontesDataV2` (blueprint W1, verbatim modulo `MontesData → MontesDataV2`, `D.coeff → D.C`;
+W4b 2026-07-21: renamed from `goal_theorem_montes_v2`, now carrying the canonical name — the
+old-`MontesData` sibling is retired to `quarantine/MontesData_oldSpine_2026-07-21.lean.txt`).**
+
+For a counting model `M`, abstract-coefficient Montes data `D`, a degree-`n` type `σ`, and an
+abstract foundation `F`, GIVEN (i) the honest measure-wall identification `hbridge` (the abstract
+foundation's density coincides with the count-native menu-sum `g_σ := q' ↦ ∑_T C T q'` at every
+`q' > 1` — NOT a rationality or palindromy claim) and (ii) the tame functional equation `htameFE`
+(explicit HYPOTHESIS per the U1 fix — the old global axiom over a free `F` was FALSE-AS-STATED),
+there is a single `num/den ∈ ℚ(t)` with: `den ≠ 0`; uniform rationality of `g_σ` at every
+`q' > 1`; the genuine counting density at THIS model's `q` equal to `num(q)/den(q)`; and
+`IsPalindromic num den` (the faithful semantic `R(1/x) = R(x)`).
+
+The conclusion clauses are IDENTICAL to the old `Goal.goal_theorem_montes`'s; only the hypothesis bundle changed
+(abstract `C` in place of the refuted box-sum `coeff`). Rationality flows through
+`MontesDataV2.countingDensity_isRational`, the value tie through
+`MontesDataV2.countingDensity_eq_sum_coeff`, palindromy through L7's identity-theorem transfer
+(`L7.tame_to_all_primes` + `L7.isPalindromic_of_agree`) — all against the SAME `num/den`.
+
+`#print axioms` must show Lean core ONLY (`propext, Classical.choice, Quot.sound` — see the
+`AxCheck` section below): every Montes/counting/tame input is a HYPOTHESIS, never an axiom. -/
+theorem goal_theorem_montes
+    {q n : ℕ} (M : CountingModel q n) (D : MontesDataV2 q n M)
+    (σ : FactorizationType) (F : DensityFoundation) (hσ : σ.degree = n)
+    -- The honest measure-wall identification: the abstract tame foundation's density coincides
+    -- with the count-native menu-sum `g_σ` at every residue cardinality (NOT a
+    -- rationality/palindromy claim; see docstring):
+    (hbridge : ∀ q' : ℕ, 1 < q' →
+      F.density n σ q' = ∑ T ∈ D.shapesOf σ, D.C T q')
+    -- (U1 fix) the tame functional equation is an explicit HYPOTHESIS (the old global axiom over
+    -- a free `F` was FALSE-AS-STATED; see `Interface.TameFunctionalEquation`):
+    (htameFE : TameFunctionalEquation F n σ) :
+    ∃ (num den : Polynomial ℚ), den ≠ 0 ∧
+      -- (uniform rationality of the count-native density family `g_σ`):
+      (∀ q' : ℕ, 1 < q' → den.eval (q' : ℚ) ≠ 0 ∧
+        (∑ T ∈ D.shapesOf σ, D.C T q') = num.eval (q' : ℚ) / den.eval (q' : ℚ)) ∧
+      -- (the genuine counting density at THIS model's `q` IS that rational function's value):
+      (1 < q → M.countingDensity σ = num.eval (q : ℚ) / den.eval (q : ℚ)) ∧
+      -- (palindromy R(1/t) = R(t), the FAITHFUL semantic form, about the SAME num/den):
+      IsPalindromic num den := by
+  -- (1) RATIONALITY — count-native, abstract-coefficient path:
+  obtain ⟨num, den, hden, hall0⟩ := D.countingDensity_isRational σ
+  -- beta-reduce the `IsRationalFn` lambda so the count-native sum appears literally:
+  have hall : ∀ q' : ℕ, 1 < q' → den.eval (q' : ℚ) ≠ 0 ∧
+      (∑ T ∈ D.shapesOf σ, D.C T q') = num.eval (q' : ℚ) / den.eval (q' : ℚ) := hall0
+  -- (2) The genuine counting density at this model's `q` is `g_σ(q)` (V2 decomposition theorem),
+  -- hence the value of the rational function `num/den` at `q`:
+  have hdensq : 1 < q → M.countingDensity σ = num.eval (q : ℚ) / den.eval (q : ℚ) := by
+    intro hq
+    rw [D.countingDensity_eq_sum_coeff σ]
+    exact (hall q hq).2
+  -- (3) Tame palindromic representative for `F.density n σ` (the H-tame hypothesis):
+  obtain ⟨tnum, tden, htden, htame, hpalin⟩ := htameFE
+  refine ⟨num, den, hden, hall, hdensq, ?_⟩
+  -- (4) `num/den` represents `F.density n σ` at every prime power (via `hbridge` + the count-native
+  -- rationality), so it agrees in ℚ(t) with the tame palindromic `tnum/tden` (L7 identity theorem),
+  -- and the tame functional equation transfers to `num/den` (L7 palindromy transfer):
+  have hF : ∀ q' : ℕ, 1 < q' →
+      den.eval (q' : ℚ) ≠ 0 ∧ F.density n σ q' = num.eval (q' : ℚ) / den.eval (q' : ℚ) := by
+    intro q' hq'
+    obtain ⟨hdenq', hgeq⟩ := hall q' hq'
+    exact ⟨hdenq', by rw [hbridge q' hq', hgeq]⟩
+  have hagree : num * tden = tnum * den :=
+    L7.tame_to_all_primes F n σ hσ num den tnum tden hden htden hF htame
+  exact L7.isPalindromic_of_agree num den tnum tden hden htden hagree hpalin
+
+/-- **The V2 re-based uniformity capstone — the sibling of the OLD `Goal.goal_theorem_via_montes`
+over `MontesDataV2` (blueprint W1, verbatim modulo names; W4b 2026-07-21: renamed from
+`goal_theorem_via_montes_v2`, now carrying the canonical name — the old-`MontesData` sibling is
+retired to `quarantine/MontesData_oldSpine_2026-07-21.lean.txt`).** Produces the `F.density`-shaped conclusion
+(uniform rationality of the per-type density + palindromy), routing rationality through the
+count-native abstract-coefficient pair `(M, D)` plus the honest measure-wall identification
+`hbridge`, with the tame functional equation as the explicit hypothesis `htameFE`.
+
+Proof: obtain the count-native `num/den` (rationality + palindromy) from `goal_theorem_montes`,
+drop its value clause, and rewrite the count-native rationality onto `F.density` via `hbridge`.
+
+`#print axioms` must show Lean core ONLY (see the `AxCheck` section below). -/
+theorem goal_theorem_via_montes
+    {q n : ℕ} (M : CountingModel q n) (D : MontesDataV2 q n M)
+    (F : DensityFoundation) (σ : FactorizationType) (hσ : σ.degree = n)
+    (hbridge : ∀ q' : ℕ, 1 < q' →
+      F.density n σ q' = ∑ T ∈ D.shapesOf σ, D.C T q')
+    -- (U1 fix) the tame functional equation is an explicit HYPOTHESIS (the old global axiom over
+    -- a free `F` was FALSE-AS-STATED; see `Interface.TameFunctionalEquation`):
+    (htameFE : TameFunctionalEquation F n σ) :
+    ∃ (num den : Polynomial ℚ), den ≠ 0 ∧
+      (∀ q' : ℕ, 1 < q' → den.eval (q' : ℚ) ≠ 0 ∧
+        F.density n σ q' = num.eval (q' : ℚ) / den.eval (q' : ℚ)) ∧
+      IsPalindromic num den := by
+  obtain ⟨num, den, hden, hgrat, _hval, hpalin⟩ :=
+    goal_theorem_montes M D σ F hσ hbridge htameFE
+  refine ⟨num, den, hden, fun q' hq' => ?_, hpalin⟩
+  obtain ⟨hdenq', hgeq⟩ := hgrat q' hq'
+  exact ⟨hdenq', by rw [hbridge q' hq', hgeq]⟩
+
+end LeanUrat.MontesV2
+
+section AxCheck
+
+-- The V2 spine (blueprint W1 gate): every footprint below MUST be Lean core only
+-- (`propext, Classical.choice, Quot.sound` — fewer is fine, MORE is a stop-the-line event).
+#print axioms LeanUrat.MontesV2.MontesDataV2.countingDensity_eq_sum_coeff
+#print axioms LeanUrat.MontesV2.MontesDataV2.countingDensity_isRational
+#print axioms LeanUrat.MontesV2.goal_theorem_montes
+#print axioms LeanUrat.MontesV2.goal_theorem_via_montes
+
+end AxCheck
+--- FILE: lean/LeanUrat/CountingModel.lean ---
+/-
+Copyright (c) 2026 Asvin G. All rights reserved.
+Released under Apache 2.0 license as described in the file LICENSE.
+Authors: Asvin G
+-/
+import Mathlib
+import LeanUrat.Interface
+
+/-!
+# LeanUrat.CountingModel — the counting-model density as the level-`N` DECIDED limit
+
+This is the **semantic heart** of the decomposition blueprint
+(`notes/DECOMP_BLUEPRINT.tex` §1, Definition 1, Lemma 1 = `lem:countHaar`). It pins down the one
+care point the project lead flagged: the density is the limit of the level-`N` **DECIDED** counts,
+**not** the trivial box count.
+
+## The care point (read this before changing anything)
+
+The trivial "box" count over `(O_K/p^N)[x]` is
+```
+    #{ f monic of degree n in (O_K/p^N)[x] } / q^{nN}  =  q^{nN}/q^{nN}  =  1,
+```
+because that set is **ALL** monic polynomials. That `1` is NOT the density of any single type `σ`.
+
+The density must use the level-`N` **DECIDED** set: `f` whose factorization type `σ` is *certified*
+by its digits below `p^N` (a Hensel/Newton certificate — every lift of `f` to `O_K[x]` has type
+`σ`). We model the counting data as a `CountingModel` carrying, for each type `σ` and precision `N`:
+
+* `decidedCount σ N` — the number of cosets mod `p^N` **decided** to be type `σ`;
+* `undecidedCount N` — the number of cosets **not yet decided** for ANY type;
+
+and the normalized rationals (denominator `q^{nN}`, the total box count)
+
+* `decidedMeasure σ N := decidedCount σ N / q^{nN}`   — MONOTONE ↑ in `N`, `≤ 1`;
+* `undecided N        := undecidedCount N / q^{nN}`   — `→ 0` (every `f` resolves at finite OM order,
+  M1 termination);
+
+* `countingDensity σ  := lim_{N→∞} decidedMeasure σ N`  — **the DECIDED limit. THIS is the density.**
+
+The genuine constraints carried by `CountingModel` (so the structure is not vacuous):
+
+* `decided_mono`     : `decidedMeasure σ` is monotone nondecreasing (refining a decided coset keeps
+  it decided);
+* `box_partition`    : at each `N`, `∑_σ decidedCount σ N + undecidedCount N = q^{nN}` (the decided
+  and undecided cosets PARTITION the full box — this is where the box count `q^{nN}` lives, as the
+  TOTAL, never as a single type's density);
+* `undecided_tendsto`: `undecided N → 0` (M1 termination, `lem:countHaar`). The bracket lemma then
+  gives a *unique* well-defined limit `countingDensity σ`, sandwiched between `decidedMeasure σ N`
+  and `decidedMeasure σ N + undecided N`.
+
+`countingDensity` is the value the whole development calls `density`; it is the DECIDED limit, NEVER
+the box count. The anti-box statement is recorded explicitly as `box_count_ne_density` /
+`box_is_total_not_density`.
+
+## Status
+
+PROVED (sorry-free). The `CountingModel` *structure* is fully defined with genuine fields.
+`countingDensity` is defined as the decided limit (the `decided_tendsto` field). BOTH bracket
+inequalities are now **PROVED**: `decided_le_density` (lower) from monotonicity + the limit; and
+`density_le_decided_add_undecided` (upper) from the genuine structural counting field `upper_tail`
+(the per-level tail bound `decidedMeasure σ K ≤ decidedMeasure σ N + undecided N` for `K ≥ N`, the
+honest content of `lem:countHaar` — mass certified after level `N` is drawn from the level-`N`
+undecided pool; NOT the conclusion) by passing `K → ∞`. `UndecidedVanishes` (`U_N → 0`, M1
+termination) is carried as a hypothesis (the imported analytic content); the squeeze
+`countingDensity_is_squeezed_limit` then collapses the bracket. The actual `p`-adic coset count that
+realizes a `CountingModel` is the un-constructed measure foundation (mathlib v4.31.0 has no `p`-adic
+Haar measure / no `O_K/p^N` enumeration plumbed in); so this module gives the SEMANTICS and the
+proved bracket, with the count itself recorded via the structure. NO `sorry`, NO `axiom`.
+-/
+
+set_option linter.style.longLine false
+set_option linter.style.header false
+set_option linter.unusedSectionVars false
+
+namespace LeanUrat.CountingModel
+
+open LeanUrat Filter Topology
+
+/-- Classical decidable equality on `FactorizationType`, so `Finset` set-difference `\ {σ}` (used in
+the anti-box statements over the finite type menu) elaborates. -/
+noncomputable instance : DecidableEq FactorizationType := Classical.decEq _
+
+/-- **The counting model of the `p`-adic factorization-type density** at a fixed degree `n`.
+
+This records the level-`N` certified-by-digits count data of `notes/DECOMP_BLUEPRINT.tex` §1
+(Definition `def:count`), together with the genuine elementary-counting constraints that make the
+decided limit well-defined. It deliberately does NOT contain the box count as a per-type number —
+the box count `q^{nN}` appears only as the partition TOTAL (`box_partition`).
+
+* `q` is the residue cardinality (a prime power, `q ≥ 2`); `n` the degree.
+* `decidedCount σ N` = `#{ cosets mod p^N decided to be type σ }` (the level-`N` DECIDED set: every
+  lift has type `σ`). A `ℚ` for arithmetic; it is an integer count.
+* `undecidedCount N` = `#{ cosets not yet decided for ANY type }`.
+The fields below are the honest content of Lemma 1 (`lem:countHaar`). -/
+structure CountingModel (q n : ℕ) where
+  /-- `q ≥ 2` (a residue cardinality / prime power). -/
+  hq : 2 ≤ q
+  /-- `#{cosets mod p^N decided to be type σ}` — the level-`N` CERTIFIED (Hensel/Newton) count, NOT
+  the box count. (`ℚ`-valued for arithmetic; an integer.) -/
+  decidedCount : FactorizationType → ℕ → ℚ
+  /-- `#{cosets not yet decided for ANY type}` — the undecided count at precision `N`. -/
+  undecidedCount : ℕ → ℚ
+  /-- Decided counts are nonnegative. -/
+  decidedCount_nonneg : ∀ σ N, 0 ≤ decidedCount σ N
+  /-- Undecided count is nonnegative. -/
+  undecidedCount_nonneg : ∀ N, 0 ≤ undecidedCount N
+  /-- **The box PARTITION (this is where `q^{nN}` lives — as the TOTAL, never a per-type density).**
+  At each precision `N`, summing the decided counts over the finitely many degree-`n` types `S`
+  (the type menu, supplied) plus the undecided count recovers the full box count `q^{nN}`. So the
+  box count is the sum over ALL types plus undecided — categorically not the count of a single type.
+  `typeMenu` is the finite set of degree-`n` types. -/
+  typeMenu : Finset FactorizationType
+  /-- Only degree-`n` types are in the menu. -/
+  typeMenu_degree : ∀ σ ∈ typeMenu, σ.degree = n
+  /-- Cosets decided to a type not in the menu do not occur (counts vanish off the menu). -/
+  decidedCount_off_menu : ∀ σ N, σ ∉ typeMenu → decidedCount σ N = 0
+  /-- **Box partition.** `∑_{σ ∈ menu} decidedCount σ N  +  undecidedCount N  =  q^{nN}`. -/
+  box_partition : ∀ N, (∑ σ ∈ typeMenu, decidedCount σ N) + undecidedCount N = (q : ℚ) ^ (n * N)
+  /-- **Monotonicity (refining a decided coset keeps it decided).** The decided count, normalized by
+  the box `q^{nN}`, is nondecreasing in `N`. Stated on the normalized measure to avoid `q^{nN}`
+  scaling between levels. -/
+  decided_mono : ∀ σ, Monotone (fun N => decidedCount σ N / (q : ℚ) ^ (n * N))
+  /-- **The decided limit exists IN `ℚ`** (the density is rational). `densityVal σ` is the value the
+  monotone certified measures `decidedMeasure σ N` converge to. `ℚ` has no general suprema
+  (`SupSet ℚ` is not available — `ℚ` is not conditionally complete), so the limit value is carried as
+  data, *constrained* to be the genuine `N→∞` limit by `decided_tendsto`. This is honest: it asserts
+  the limit exists and is rational, exactly what `lem:countHaar` (existence) + the rationality theorem
+  (rationality) deliver — it does NOT assert any closed form. `countingDensity` is DEFINED as this. -/
+  densityVal : FactorizationType → ℚ
+  /-- **`density = the level-`N` DECIDED limit` (the care point, as a structural field).** The
+  certified measures `decidedMeasure σ N = decidedCount σ N / q^{nN}` converge to `densityVal σ`.
+  This is what makes `countingDensity σ` THE decided limit — not the box count, not a finite level.
+  (Existence of the limit is `lem:countHaar`; its value's rationality is the rationality theorem.) -/
+  decided_tendsto : ∀ σ, Filter.Tendsto (fun N => decidedCount σ N / (q : ℚ) ^ (n * N))
+    Filter.atTop (nhds (densityVal σ))
+  /-- **The per-level upper tail bound (`lem:countHaar`, the genuine analytic content of the upper
+  bracket).** For levels `N ≤ K`, the certified measure of `σ` at the deeper level `K` is at most the
+  level-`N` certified measure plus the level-`N` undecided remainder:
+  ```
+      decidedCount σ K / q^{nK}  ≤  decidedCount σ N / q^{nN}  +  undecidedCount N / q^{nN}.
+  ```
+  This is elementary counting content, NOT the conclusion: a coset newly certified to be type `σ`
+  between levels `N` and `K` must have been *undecided* at level `N` (a coset decided at `N` keeps its
+  type, so it was already counted in `decidedCount σ N`'s refinement). Hence the extra certified mass
+  is drawn from the level-`N` undecided pool, bounding the increment by `undecidedCount N / q^{nN}`.
+  This field makes the upper bracket `countingDensity σ ≤ decidedMeasure σ N + undecided N` a PROVED
+  consequence (via `density_le_decided_add_undecided`), with no assertion of the limit's value. -/
+  upper_tail : ∀ (σ : FactorizationType) (N K : ℕ), N ≤ K →
+    decidedCount σ K / (q : ℚ) ^ (n * K)
+      ≤ decidedCount σ N / (q : ℚ) ^ (n * N) + undecidedCount N / (q : ℚ) ^ (n * N)
+
+namespace CountingModel
+
+variable {q n : ℕ} (M : CountingModel q n)
+
+/-- **`decidedMeasure σ N := (#cosets decided to be type σ) / q^{nN}`.** The level-`N` certified
+measure: a rational in `[0,1]`, MONOTONE increasing in `N`. This is the lower bracket `L_N` of
+`lem:countHaar`. -/
+noncomputable def decidedMeasure (σ : FactorizationType) (N : ℕ) : ℚ :=
+  M.decidedCount σ N / (q : ℚ) ^ (n * N)
+
+/-- **`undecided N := (#cosets not yet decided for ANY type) / q^{nN}`.** The bracket width `U_N`.
+By M1 termination `undecided N → 0`. -/
+noncomputable def undecided (N : ℕ) : ℚ :=
+  M.undecidedCount N / (q : ℚ) ^ (n * N)
+
+/-- **`boxMeasure N := (#ALL monic degree-`n` cosets) / q^{nN} = 1`.** The TRIVIAL box count.
+THIS IS NOT THE DENSITY of any type — it is identically `1` (it is all polynomials). Recorded here
+so the anti-box statement `box_is_total_not_density` can refer to it. (Takes the model `M`
+explicitly so it is genuinely an attribute of the counting model, dot-notation usable.) -/
+noncomputable def boxMeasure (_M : CountingModel q n) (_N : ℕ) : ℚ := 1
+
+/-- The box measure is identically `1` (it counts ALL monic degree-`n` polynomials). -/
+theorem boxMeasure_eq_one (N : ℕ) : M.boxMeasure N = 1 := rfl
+
+lemma qpow_pos (M : CountingModel q n) (k : ℕ) : (0 : ℚ) < (q : ℚ) ^ k :=
+  pow_pos (by exact_mod_cast Nat.lt_of_lt_of_le Nat.zero_lt_two M.hq) k
+
+lemma qpow_ne (M : CountingModel q n) (k : ℕ) : (q : ℚ) ^ k ≠ 0 := ne_of_gt (M.qpow_pos k)
+
+/-- **The box decomposes as: (sum of all per-type decided measures) + undecided = 1.**
+This is `box_partition` divided by `q^{nN}`. It is the honest meaning of the box count: `1` is the
+TOTAL over all types plus the undecided remainder — never the density of one type. -/
+theorem decidedMeasure_sum_add_undecided (N : ℕ) :
+    (∑ σ ∈ M.typeMenu, M.decidedMeasure σ N) + M.undecided N = 1 := by
+  have hpow := M.qpow_ne (n * N)
+  unfold decidedMeasure undecided
+  rw [← Finset.sum_div, ← add_div, M.box_partition N]
+  exact div_self hpow
+
+/-- `decidedMeasure σ N` is monotone in `N` (it is exactly the carried `decided_mono`). -/
+theorem decidedMeasure_mono (σ : FactorizationType) : Monotone (M.decidedMeasure σ) :=
+  M.decided_mono σ
+
+/-- `decidedMeasure σ N ≤ 1`: a single type's certified measure is at most the whole box, because the
+other types' decided measures and the undecided remainder are nonnegative and sum (with it) to `1`. -/
+theorem decidedMeasure_le_one (σ : FactorizationType) (N : ℕ) : M.decidedMeasure σ N ≤ 1 := by
+  classical
+  by_cases hσ : σ ∈ M.typeMenu
+  · have hsum := M.decidedMeasure_sum_add_undecided N
+    have hothers : 0 ≤ (∑ τ ∈ M.typeMenu \ {σ}, M.decidedMeasure τ N) := by
+      apply Finset.sum_nonneg
+      intro τ _
+      exact div_nonneg (M.decidedCount_nonneg τ N) (le_of_lt (M.qpow_pos (n * N)))
+    have hund : 0 ≤ M.undecided N :=
+      div_nonneg (M.undecidedCount_nonneg N) (le_of_lt (M.qpow_pos (n * N)))
+    have hsplit : (∑ τ ∈ M.typeMenu, M.decidedMeasure τ N)
+        = M.decidedMeasure σ N + (∑ τ ∈ M.typeMenu \ {σ}, M.decidedMeasure τ N) := by
+      rw [Finset.sdiff_singleton_eq_erase]
+      exact (Finset.add_sum_erase _ _ hσ).symm
+    rw [hsplit] at hsum
+    linarith
+  · -- off the menu the decided count is 0, so the measure is 0 ≤ 1.
+    unfold decidedMeasure
+    rw [M.decidedCount_off_menu σ N hσ, zero_div]
+    norm_num
+
+/-- The undecided measure is nonnegative. -/
+theorem undecided_nonneg (N : ℕ) : 0 ≤ M.undecided N :=
+  div_nonneg (M.undecidedCount_nonneg N) (le_of_lt (M.qpow_pos (n * N)))
+
+/-! ### The DECIDED limit = `countingDensity`, and the bracket
+
+`countingDensity σ` is the limit of the monotone, bounded sequence `decidedMeasure σ`. Monotone +
+bounded-above ⇒ the supremum is the limit. We DEFINE `countingDensity` as that supremum (the decided
+limit). The bracket is then proved; and `U_N → 0` is the carried M1-termination hypothesis under
+which the limit equals the true density. -/
+
+/-- **`countingDensity σ := densityVal σ` — THE DENSITY = the level-`N` DECIDED limit.**
+`densityVal σ` is the carried `ℚ`-value of `lim_{N→∞} decidedMeasure σ N` (the `decided_tendsto`
+field pins it to the genuine limit; `density_isLimit` re-exposes that). It is emphatically NOT the
+box count `boxMeasure ≡ 1`: the box is the partition total over ALL types plus undecided
+(`box_is_total_not_density`). `ℚ` lacks general suprema, so the limit is carried as constrained data
+rather than as a `⨆`; the `decided_tendsto` field is what makes this the actual decided limit. -/
+noncomputable def countingDensity (σ : FactorizationType) : ℚ := M.densityVal σ
+
+/-- **`countingDensity` IS the limit of `decidedMeasure` (`Tendsto`).** This is the structural field
+`decided_tendsto`, re-expressed through `decidedMeasure`/`countingDensity`. So the formal `density`
+denotes the genuine `N→∞` decided limit, not a finite level and not the box. PROVED (= the field). -/
+theorem density_isLimit (σ : FactorizationType) :
+    Tendsto (M.decidedMeasure σ) atTop (𝓝 (M.countingDensity σ)) :=
+  M.decided_tendsto σ
+
+/-- **`decidedMeasure σ N ≤ countingDensity σ` — the LOWER bracket.** Each finite certified measure
+is at most the decided limit, because `decidedMeasure σ` is monotone (`decided_mono`) and converges
+to `countingDensity σ` (`density_isLimit`): a monotone sequence is `≤` its limit. PROVED. -/
+theorem decided_le_density (σ : FactorizationType) (N : ℕ) :
+    M.decidedMeasure σ N ≤ M.countingDensity σ :=
+  (M.decidedMeasure_mono σ).ge_of_tendsto (M.density_isLimit σ) N
+
+/-- **`countingDensity σ ≤ decidedMeasure σ N + undecided N` — the UPPER bracket.** The decided limit
+is at most the level-`N` certified measure plus the undecided remainder. The honest content: at
+EVERY level `K ≥ N` the certified measure satisfies `decidedMeasure σ K ≤ decidedMeasure σ N +
+undecided N` — the extra mass certified between level `N` and level `K` is drawn from the level-`N`
+undecided pool (`lem:countHaar`). Taking `K → ∞` (`density_isLimit`) gives the bound on the limit.
+
+PROVED (no longer a `sorry`): the per-level tail bound `decidedMeasure σ K ≤ decidedMeasure σ N +
+undecided N` for `K ≥ N` is the analytic heart of `lem:countHaar`, now carried as the genuine
+structural field `upper_tail` (elementary counting content: mass certified after level `N` is drawn
+from the level-`N` undecided pool — NOT the conclusion). We take `K → ∞` against `density_isLimit`.
+The same content is also surfaced as the predicate `upperTailBound`, PROVED from the field, and the
+bracket re-derived as `density_le_decided_add_undecided_of_tail`. -/
+theorem density_le_decided_add_undecided (σ : FactorizationType) (N : ℕ) :
+    M.countingDensity σ ≤ M.decidedMeasure σ N + M.undecided N := by
+  -- `decidedMeasure σ → countingDensity σ`, and for every `K ≥ N` the structural field `upper_tail`
+  -- bounds `decidedMeasure σ K` by the fixed value `decidedMeasure σ N + undecided N`; pass to limit.
+  refine le_of_tendsto (M.density_isLimit σ) ?_
+  filter_upwards [Filter.eventually_ge_atTop N] with K hK
+  exact M.upper_tail σ N K hK
+
+/-- **`upperTailBound M`**: for every type `σ` and levels `N ≤ K`, the certified measure at level `K`
+is bounded by the level-`N` certified measure plus the level-`N` undecided remainder. This is the
+honest per-level statement of the upper bracket of `lem:countHaar` (the mass certified after level
+`N` is drawn from the level-`N` undecided pool). It is the M1/counting content; surfaced as a
+predicate. **PROVED** to hold for every `CountingModel` (it is exactly the `upper_tail` field). -/
+def upperTailBound : Prop :=
+  ∀ (σ : FactorizationType) (N K : ℕ), N ≤ K →
+    M.decidedMeasure σ K ≤ M.decidedMeasure σ N + M.undecided N
+
+/-- **Every `CountingModel` satisfies `upperTailBound`** — it is precisely the structural field
+`upper_tail` (re-expressed through `decidedMeasure`/`undecided`). PROVED. -/
+theorem upperTailBound_holds : M.upperTailBound :=
+  M.upper_tail
+
+/-- **The upper bracket, PROVED from `upperTailBound`.** If the per-level tail bound holds, then
+taking `K → ∞` (`density_isLimit`) gives `countingDensity σ ≤ decidedMeasure σ N + undecided N`. So
+the upper bracket follows from the elementary counting fact `upperTailBound`; nothing about the
+limit's value is assumed. -/
+theorem density_le_decided_add_undecided_of_tail (htail : M.upperTailBound)
+    (σ : FactorizationType) (N : ℕ) :
+    M.countingDensity σ ≤ M.decidedMeasure σ N + M.undecided N := by
+  -- the constant-from-N sequence `K ↦ decidedMeasure σ N + undecided N` dominates `decidedMeasure σ`
+  -- eventually (for K ≥ N), and `decidedMeasure σ → countingDensity σ`, so the limit is ≤ the bound.
+  refine le_of_tendsto (M.density_isLimit σ) ?_
+  filter_upwards [Filter.eventually_ge_atTop N] with K hK
+  exact htail σ N K hK
+
+/-! ### The anti-box statements (the care point, recorded as theorems) -/
+
+/-- **THE BOX IS THE TOTAL, NOT THE DENSITY.** The box measure (`≡ 1`) equals the sum of ALL per-type
+decided measures plus the undecided remainder — it is the partition total, never the density of a
+single type. This is the formal record that `density` is NOT the box count. -/
+theorem box_is_total_not_density (N : ℕ) :
+    M.boxMeasure N = (∑ σ ∈ M.typeMenu, M.decidedMeasure σ N) + M.undecided N := by
+  rw [M.boxMeasure_eq_one, M.decidedMeasure_sum_add_undecided N]
+
+/-- **The box count is `1` at every level; the density is the decided limit.** Whenever a type's
+certified measure is strictly below `1` at some level (e.g. there is more than one type, or any
+undecided mass), the box count differs from that type's certified measure — concretely witnessing
+that the density (decided limit) is not the box count. We record the clean separating fact: if the
+menu has another type carrying positive decided measure, or there is undecided mass at level `N`,
+then `decidedMeasure σ N < boxMeasure N`. -/
+theorem decidedMeasure_lt_box_of_other_mass (σ : FactorizationType) (N : ℕ)
+    (hgap : 0 < (∑ τ ∈ M.typeMenu \ {σ}, M.decidedMeasure τ N) + M.undecided N) :
+    M.decidedMeasure σ N < M.boxMeasure N := by
+  classical
+  rw [M.boxMeasure_eq_one]
+  by_cases hσ : σ ∈ M.typeMenu
+  · have hsum := M.decidedMeasure_sum_add_undecided N
+    have hsplit : (∑ τ ∈ M.typeMenu, M.decidedMeasure τ N)
+        = M.decidedMeasure σ N + (∑ τ ∈ M.typeMenu \ {σ}, M.decidedMeasure τ N) := by
+      rw [Finset.sdiff_singleton_eq_erase]
+      exact (Finset.add_sum_erase _ _ hσ).symm
+    rw [hsplit] at hsum
+    linarith
+  · -- off menu σ has measure 0, and the gap forces 0 < 1.
+    have h0 : M.decidedMeasure σ N = 0 := by
+      unfold decidedMeasure; rw [M.decidedCount_off_menu σ N hσ, zero_div]
+    rw [h0]; norm_num
+
+end CountingModel
+
+/-! ## The M1-termination input: `undecided → 0` and the resulting clean limit
+
+We separate out the analytic content of `lem:countHaar` — `undecided N → 0` — as a *predicate* on a
+`CountingModel`, so that the bracket can deliver the limit = true density. This is the M1 termination
+fact: every separable `f` resolves its OM tree at finite order, so the undecided pool drains. It is
+NOT proved here (it is the imported analytic content); it is the hypothesis that, with the bracket,
+pins `countingDensity` as the genuine density and makes the upper bracket tight. -/
+
+/-- **`UndecidedVanishes M`**: the undecided measure tends to `0` (`U_N → 0`, M1 termination,
+`lem:countHaar`). Carried as a hypothesis because it is the imported analytic content (every `f`
+resolves at finite OM order); with the bracket it forces `countingDensity` to be the genuine
+`N→∞` density and the upper bracket to be tight. -/
+def UndecidedVanishes {q n : ℕ} (M : CountingModel q n) : Prop :=
+  Filter.Tendsto M.undecided Filter.atTop (nhds 0)
+
+/-- **The bracket collapses under `UndecidedVanishes`.** If `U_N → 0` then the lower and upper
+brackets squeeze, and `countingDensity σ = lim_N decidedMeasure σ N` is the *unique* value with
+`decidedMeasure σ N ≤ countingDensity σ ≤ decidedMeasure σ N + undecided N` and width `→ 0`.
+We record the consequence that the density is then the *limit* of the UPPER bracket too (both
+brackets converge to `countingDensity σ`). PROVED from `density_isLimit` + the squeeze. -/
+theorem countingDensity_is_squeezed_limit {q n : ℕ} (M : CountingModel q n)
+    (hU : UndecidedVanishes M) (σ : FactorizationType) :
+    Filter.Tendsto (fun N => M.decidedMeasure σ N + M.undecided N) Filter.atTop
+      (nhds (M.countingDensity σ)) := by
+  simpa using (M.density_isLimit σ).add hU
+
+end LeanUrat.CountingModel
+--- FILE: lean/LeanUrat/Stage2/UniformityTarget.lean ---
+/-
+# STAGE-2 ANCHOR — the general-degree uniformity target (STATEMENT ONLY)
+
+**FENCE.** This file is the first artifact of stage two (the formalization of the
+informal accepted corpus, 2026-08-10). It is NOT imported by any module of the
+trusted capstone graph, and it contains exactly one `sorry` — the target theorem's
+body — following the established E-phase precedent (HC1/MovesT campaigns: compiling
+sorry-statements in fenced campaign files; the repo's zero-banked-sorries policy
+governs the trusted corpus, which this file is outside of). `sorryAx` is expected
+in THIS file and nowhere else.
+
+**TRUST BOUNDARY — REVIEW REQUESTED.** Lean checks proofs, not statements; this
+statement and the `RealInstanceAt` parameter bundle below are new formalized
+statements and are flagged for Asvin's review BEFORE any unit targets them
+(docs/PROJECT_STATE.md dated append #24).
+
+**WHAT THE TARGET SAYS.** The informal theorem (accepted-text-complete at the
+2-clean bar, PROJECT_STATE appends #14–#23): for every degree n and splitting
+type σ of degree n there is ONE rational law — a pair of polynomials
+(num, den) — such that at EVERY prime p (including wild), the density of monic
+degree-n polynomials over ℤ_p with type σ equals num(p)/den(p). The existing
+machine-checked capstone (`OM.RealInstanceV2.montes_unconditional`) is the
+instance of this at the single real prime `M9.realP`, for the DECIDED (order-0)
+density, conditional on the tame functional equation; the target below quantifies
+the density tie over an arbitrary real instance family and states the full-density
+version behind the exhaustiveness hypothesis, mirroring
+`montes_unconditional_exhaustive`'s shape.
+
+**PARAMETER PROVENANCE (S-0 ledger sources).** The `RealInstanceAt` bundle
+packages, at an arbitrary prime, exactly the data the real instance supplies at
+`M9.realP`: a counting model + Montes data + a density foundation with the honest
+bridge (`hbridge` of `MontesV2.goal_theorem_montes`), plus the two standing
+conditionalities as explicit hypotheses (the tame functional equation;
+exhaustiveness for the full tie). Its realness conditions (that `model` counts
+actual ℤ_p-polynomial factorizations — the analogue of the RealInstanceV2Gates)
+are recorded as the `faithful` field, stated abstractly here and REVIEW-FLAGGED:
+making `faithful` precise per prime is itself a stage-two unit
+(mirroring `OM/RealInstanceV2Gates.lean`).
+-/
+import LeanUrat.MontesV2
+
+namespace LeanUrat.Stage2
+
+open LeanUrat LeanUrat.MontesV2 LeanUrat.CountingModel Polynomial Filter Topology
+
+/-- The data of a real p-adic counting instance at prime `q`, degree `n`:
+the abstract objects `MontesV2.goal_theorem_montes` consumes, bundled with the
+faithfulness predicate tying the model to genuine ℤ_p counting.
+REVIEW-FLAGGED: `faithful` is an abstract placeholder field here; the per-prime
+realness gates (the general analogue of `OM/RealInstanceV2Gates.lean`) are a
+named stage-two unit and must replace it before this bundle is consumed at
+theorem strength. -/
+structure RealInstanceAt (q n : ℕ) where
+  /-- The counting model (as in `realM2` at the committed prime). -/
+  model : CountingModel q n
+  /-- The Montes data over the model (as in `realD2`). -/
+  data : MontesDataV2 q n model
+  /-- The tame density foundation (as in `realF2`). -/
+  foundation : DensityFoundation
+  /-- The honest measure-wall bridge of `goal_theorem_montes`. -/
+  hbridge : ∀ σ : FactorizationType, ∀ q' : ℕ, 1 < q' →
+    foundation.density n σ q' = ∑ T ∈ data.shapesOf σ, data.C T q'
+  /-- REVIEW-FLAGGED realness placeholder: the model counts monic degree-`n`
+  ℤ_p-polynomial factorizations at the prime `q` (the general
+  `RealInstanceV2Gates` content). Stated as `True` pending the gates unit so
+  that this file compiles as a pure statement anchor; any consumption of
+  `RealInstanceAt` at theorem strength before the gates unit lands is
+  ILLEGITIMATE and the docstring says so. -/
+  faithful : True
+
+/-- **THE STAGE-2 TARGET (the general-degree uniformity theorem, decided
+density).** One rational law per (n, σ), valid at every prime
+carrying a real instance, conditional per instance on the tame functional
+equation — the general form of `montes_unconditional`'s conclusion. The full
+(exhaustive) tie is `uniformity_target_exhaustive` below. -/
+theorem uniformity_target
+    (n : ℕ) (hn : 0 < n) (σ : FactorizationType) (hσ : σ.degree = n) :
+    ∃ (num den : Polynomial ℚ), den ≠ 0 ∧
+      ∀ (q : ℕ) (_ : 1 < q) (R : RealInstanceAt q n),
+        TameFunctionalEquation R.foundation n σ →
+          den.eval (q : ℚ) ≠ 0 ∧
+          R.model.countingDensity σ = num.eval (q : ℚ) / den.eval (q : ℚ) := by
+  sorry
+
+/-- **THE STAGE-2 TARGET, full density.** The same law ties the FULL density at
+every instance additionally satisfying the exhaustiveness (drainage) hypothesis,
+mirroring `montes_unconditional_exhaustive`: the undecided mass at depth `N`
+vanishes as `N → ∞`. `undecidedCount` is the model's field, as at the committed
+prime. -/
+theorem uniformity_target_exhaustive
+    (n : ℕ) (hn : 0 < n) (σ : FactorizationType) (hσ : σ.degree = n) :
+    ∃ (num den : Polynomial ℚ), den ≠ 0 ∧
+      ∀ (q : ℕ) (_ : 1 < q) (R : RealInstanceAt q n),
+        TameFunctionalEquation R.foundation n σ →
+        Filter.Tendsto
+          (fun N => R.model.undecidedCount N / (q : ℚ) ^ (n * N))
+          Filter.atTop (nhds 0) →
+          den.eval (q : ℚ) ≠ 0 ∧
+          R.model.countingDensity σ = num.eval (q : ℚ) / den.eval (q : ℚ) := by
+  sorry
+
+end LeanUrat.Stage2
+
+/- Statement revision note (2026-08-10, per Asvin's review): palindromicity
+DROPPED from both targets — "it might be cleaner not to mention the
+palindromicity at all and simply to prove uniformity at all primes"; the
+palindromy content remains a capstone-level fact at the committed instance
+(montes_unconditional) and is not part of the stage-2 target.
+
+Statement-grain sign-off (2026-08-11, Asvin): the bare (e,f)-multiset
+`FactorizationType` IS the intended target grain — "that is what we want to
+prove"; finer invariants (e.g. discriminant exponents) are possible theorems
+but deliberately deferred. The type definition is confirmed as reviewed. -/
+
+=== (3) AXIOM-FOOTPRINT SUMMARY (AxChk re-pin, 2026-08-10, exit 0) ===
+'LeanUrat.OM.RealInstanceW.montes_unconditional_w' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanUrat.OM.RealInstanceV2.montes_unconditional' depends on axioms: [propext, Classical.choice, Quot.sound]
+Measure-route capstones additionally cite the declared axioms (e.g.
+SerreLocalFields.AX_integralClosure_dvr, PadicMeasure.AX_cellRecursion) — declared,
+cited, faithfulness-audited; they appear ONLY on measure-route footprints.
+
+=== (4) THE COMPLETE INFORMAL THEOREM'S SHAPE ===
+One rational law per (degree n, type sigma): num/den in Q[q], such that at every
+prime p (incl. wild) with a real counting instance, countingDensity sigma =
+num(p)/den(p) (decided density; full density behind drainage). Proof shape, five
+nodes: W-12.D reduction (densities <= menus+drainage) -> GENIND.B two-species
+induction -> GENHN stage laws (finite genres, order-1 law) -> the HE-ladder
+(exhaustiveness [GENHN-HE(mu)]: mu<=3 elementary, mu>=4 via fractional-height
+test keys, strict descent mu' <= mu/2) -> the GENTOW towers (levels i>=3:
+composed budgets, window ledgers, the w-twisted transport, the cap lemma).
+Gauge/wrap: one cocycle layer (corrected key c-hat = lift(c*eta^W); letter
+recursion; the theta recursion) currently scattered across 7 per-note annexes —
+the informal T1 unification is composed and in its arc.
+
+=== (5) THE 16-UNIT STAGE-TWO SPEC (headers) ===
+lack, e.g. p-adic measure gaps); (e) difficulty tag [mechanical /
+# STAGE-2 ANCHOR — the general-degree uniformity target (STATEMENT ONLY)
+# OM/RealInstanceV2Gates — the W3 machine-checked gates (G1 non-vacuity, G2 σ-separation)
+# LeanUrat.Interface — the axiomatic interface ("stated hypotheses")
+# LeanUrat.MontesV2 — the abstract-coefficient V2 spine (blueprint W1)
+# STATEMENT LEDGER — 2026-08-10 (unit S-0)
+## S1. The ledger (one row per statement)
+### LIFTCORNER_2026-08-08.md — commit `fdf1d995`, grade: ACCEPTED 2/2, 4 statements
+### GRTW2_PROOF_2026-08-08.md — commit `a27ed687`, grade: ACCEPTED 2/2, 4 statements
+### GRTJA_PROOF_2026-08-08.md — commit `fdf1d995`, grade: ACCEPTED 2/2, 4 statements
+### GRTJB_PROOF_2026-08-08.md — commit `fdf1d995`, grade: ACCEPTED 2/2, 7 statements
+### GRTJC_PROOF_2026-08-08.md — commit `63091cef`, grade: ACCEPTED 2/2, 11 statements
+### WELDMASTER_2026-08-08.md — commit `fdf1d995`, grade: ACCEPTED 2/2, 3 statements
+### JD0_PROOF_2026-08-08.md — commit `9387eb1a`, grade: PROVED (machine 68,523/0; sub-bar), 1 statements
+### SIGMALAW_PROOF_2026-08-08.md — commit `a27ed687`, grade: ACCEPTED 2/2, 5 statements
+### W11_PROOF_2026-08-08.md — commit `35e65450`, grade: ACCEPTED 2/2, 1 statements
+### W12_PROOF_2026-08-08.md — commit `2fcbd0c7`, grade: ACCEPTED 2/2, 7 statements
+### HMENU3_PROOF_2026-08-08.md — commit `19c02857`, grade: ACCEPTED 2/2, 5 statements
+### HEX3_PROOF_2026-08-08.md — commit `7e29d9e5`, grade: ACCEPTED 2/2, 3 statements
+### GENIND_PROOF_2026-08-08.md — commit `dfd58316`, grade: ACCEPTED 2/2, 8 statements
+### GENH4_PROOF_2026-08-08.md — commit `65681144`, grade: ACCEPTED 2/2, 10 statements
+### GENHN_PROOF_2026-08-08.md — commit `59c1966d`, grade: ACCEPTED 2/2, 9 statements
+### HE3_PROOF_2026-08-08.md — commit `8ba8c878`, grade: ACCEPTED 2/2, 16 statements
+### HE6_PROOF_2026-08-08.md — commit `dc63a84e`, grade: ACCEPTED 2/2, 13 statements
+### HE7_PROOF_2026-08-08.md — commit `fe589460`, grade: ACCEPTED 2/2, 24 statements
+### HE6R1_RECON_2026-08-08.md — commit `06971c36`, grade: ACCEPTED 2/2, 4 statements
+### HETOW_RECON_2026-08-09.md — commit `7fb88236`, grade: ACCEPTED 2/2, 5 statements
+### GENTOW1_PROOF_2026-08-09.md — commit `4caf0fb8`, grade: ACCEPTED 2/2, 4 statements
+### GENTOW2_PROOF_2026-08-09.md — commit `33f86204`, grade: ACCEPTED 2/2, 4 statements
+### GENTOW3_PROOF_2026-08-09.md — commit `607fc694`, grade: ACCEPTED 2/2, 2 statements
+### GENTOW4_PROOF_2026-08-09.md — commit `4545b4d7`, grade: ACCEPTED 2/2, 4 statements
+### GENTOW5_PROOF_2026-08-09.md — commit `43b42e9c`, grade: ACCEPTED 2/2, 2 statements
+### GENTOW6_PROOF_2026-08-09.md — commit `b1b6aa61`, grade: ACCEPTED 2/2, 6 statements
+## S2. Extraction rule (S0-v1, verbatim from the instrument)
+## S3. Ambiguity & skip record (honest; enumerative, no universal claims)
+## S4. Teeth record (instrument validated before seal, 2026-08-10)
+## S5. BASELINE-GREEN RUN OF RECORD (commit 2 of 2)
+## Stop-the-line result
+## Critical divergences
+### D1. The ledger is not the informal corpus
+### D2. `RealInstanceV2Gates` does not define faithfulness
+### D3. The arbitrary-prime parameter is ambiguous
+### D4. The essential counting API is missing
+# Slice 1
+## Unit 1 — `RealInstanceAt` faithfulness gates
+### (a) Lean statement/definition sketch
+### Why the existing gates cannot be copied as fields
+### (b) New definitions forced
+### (c) Dependencies
+### (d) Mathlib surface
+### (e) Difficulty
+### (f) Acceptance test
+### (g) Translation specification
+# Slice 2 — Statement fan-out
+## Unit 2 — THEOREM W-12.A
+## Unit 3 — THEOREM W-12.C
+## Unit 4 — THEOREM W-12.D
+## Unit 5 — THEOREM GENIND.A
+## Unit 6 — THEOREM GENIND.B
+## Unit 7 — THEOREM GENHN.CLASS
