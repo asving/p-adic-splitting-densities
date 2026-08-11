@@ -30,9 +30,9 @@ graded IN-CONE-SUSPECT, never optimistically OUT.
 **Verdict up front.** 33 census rows: 5 IN-CONE (2 are arcs at 1/2 finishing,
 1 is a verified cite needing only its stage-two declaration, 2 are audit-grade
 units), 8 IN-CONE-SUSPECT (the sub-box refinement family + the weld value
-layer, both decidable by one audit unit each), 20 OUT-OF-CONE (compression
-track, displays, refinements, process debt, and the Lean-capstone stage-two
-items listed separately). **No unproven mathematical statement is consumed by
+layer, both decidable by one audit unit each), 16 OUT-OF-CONE (compression
+track, displays, refinements, process debt), plus 5 Lean-capstone stage-two
+rows tracked separately (§4). **No unproven mathematical statement is consumed by
 the theorem at acceptance grade**; the in-cone opens are two 1/2-arcs, one
 cite re-verification, one sub-bar process grade, and one audit.
 
