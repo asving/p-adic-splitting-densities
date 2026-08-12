@@ -9,3 +9,4 @@
 [20:11:49] T4P1 exit 0 (1819 B; VERDICT: FINDINGS | FINDINGS: 1C + 2G + 1m)
 [20:11:49] T5P1 start
 [20:14:04] T5P1 exit 0 (1777 B; VERDICT: NOT CLEAN | FINDINGS: 1C + 0G + 0m)
+[20:14:04] comp5 queue done

@@ -1,3 +1,64 @@
+ARC r5 REPAIR (gpt-5.6-sol high). T1P5 found 0C + 2G + 1m (below) on T1 (below): the C3 scalar-compatibility convention gap (state the graded scalar-covariance convention the ladder reads actually satisfy, or import it as a named supplier fact) and the A2 absorption residue. Derive r5 repairs verbatim-ready. End with: SUMMARY: <n> REAL (repairs delivered)
+
+=== T1P5 ===
+Applying r1–r4, I find no critical error, but two proof/scope gaps and one editorial minor.
+
+1. **GAP — C3’s residual-read assumptions do not entail the canonical slot read.**
+
+   The carrier assumes only that the read is:
+
+   > “multiplicative on the relevant ladder monomials and agrees with residue on value-zero factors.”
+
+   It then asserts:
+
+   > “Consequently a slot with coherent digit \(\Gamma_t\) has canonical read  
+   > \(R_{i+1,\beta_t}(\text{slot }t)=w_i^{f_{i+1}-t}\Theta_i(t)\Gamma_t.\)”
+
+   and the proof says:
+
+   > “Multiplying by a coherent digit proves (C3-canonical-read).”
+
+   Agreement with residue on a value-zero factor \(g\) gives \(R(g)=\operatorname{res}(g)\); it does not imply the scalar-covariance identity
+   \[
+   R(M_sg)=R(M_s)\operatorname{res}(g)
+   \]
+   when \(g=\widehat k_t/\widehat n_i(su)\) is not itself a ladder monomial. Moreover, \(\beta_t\) is merely called “the slot grade”; the required relation \(\beta_t=s\bar\kappa_i\) is not stated. Thus the displayed hypotheses justify the ladder B-unit calculation only under an unstated graded scalar-compatibility convention. The gap propagates to (C3-canonical-read), (C3-three-reads), and the A7 cancellation claim.
+
+2. **GAP — the revised A2 consumption implication still absorbs unstated HETOW structure.**
+
+   A2 claims:
+
+   > “\(\text{T1 (C5-monomial-ratio) + (C5-carry)}
+   > \Longrightarrow
+   > \text{the three pinned HETOW displays}.\)”
+
+   But those displays contain the local objects
+   \[
+   \widehat n_2(k),\ n_2(k),\ m(k),\ Q,\ \tau(k),\ s(k),\ w_2
+   \]
+   and require, among other facts, the first equality
+   \[
+   \frac{\widehat n_2(k)}{n_2(k)}
+   =
+   \frac{\widehat n(m(k))}{\varpi^{m(k)}}
+   \]
+   and the second-level relation governing \(m(k+k')\) and the carry \(w_2\). Neither follows from C5, and these local identities are not stated as hypotheses in the span pin. C5 supplies the base monomial-ratio and \(q\)-carry algebra, but does not by itself imply all three quoted HETOW displays. This violates the exact-span rule introduced by r2.
+
+3. **MINOR — r1 leaves the carrier sentence grammatically detached.**
+
+   R1-1 inserts the \(z_1=\eta\) paragraph immediately after
+   \[
+   K_1=\mathbf F_Q(\eta),
+   \]
+   while the original text continues afterward with:
+
+   > “and chosen basis \(1,\eta,\ldots,\eta^{f_1-1}\).”
+
+   In the resulting text, that phrase is no longer syntactically attached to “fix” or “with.” The intended basis datum remains recoverable, so this is editorial rather than mathematical.
+
+VERDICT: FINDINGS | FINDINGS: 0C + 2G + 1m
+
+=== T1 ===
 # T1 — LEMMA GAUGE-COCYCLE
 
 ## The wrap/\(\vartheta\) recursion, exact lifts, and normalization bridges, stated once
@@ -2390,325 +2451,3 @@ Append to the honesty ledger:
 Add to §6:
 
 > | Added the general stage-key height identity; separated the nonzero exact-height lift contract from the zero-lift convention; and made the weld lint exclude its own specification, quotations, and negated scope fences. | T1P3, 2026-08-12 r4 | Repairs 2 GAP and 1 MINOR findings and types the letter residues, composed-key heights, and vanishing-coefficient branch. |
-
-
----
-
-## r5 (2026-08-12): arc repairs
-
-*(gpt-5.6-sol high, runs/comp5/T1R5_output.log; transcribed unaltered; counter resets.)*
-
-# T1 r5 corrections — 2026-08-12
-
-These edits repair the two proof/scope gaps and one editorial minor found by T1P5.
-
-## R5-1 — State the graded scalar-covariance convention used by C3
-
-In §1.1, replace:
-
-> Assume at the consumed sites that the canonical residual read is multiplicative on the relevant ladder monomials and agrees with residue on value-zero factors. This is a site obligation, not an assertion about every homogeneous initial form.
-
-with:
-
-> At each consumed B-law site, assume the following graded read convention on the displayed ladder elements. If
-> \[
-> N=\widehat n_i(u_{i+1}),
-> \qquad
-> M_s=\widehat n_i(su_{i+1}),
-> \qquad
-> \bar\kappa_i=\frac{u_{i+1}}{e(\mu_i)},
-> \]
-> then
-> \[
-> \boxed{
-> R_{i+1,s\bar\kappa_i}(N^s)
-> =
-> R_{i+1,\bar\kappa_i}(N)^s
-> }
-> \tag{C3-ladder-multiplicativity}
-> \]
-> for every ladder exponent \(s\) used at that site.
->
-> Assume also graded scalar covariance: if \(X\) is one of the consumed homogeneous ladder elements of grade \(\beta\), and \(g\) is a value-zero factor for which \(Xg\) is defined in the same homogeneous slot, then
-> \[
-> \boxed{
-> R_{i+1,\beta}(Xg)
-> =
-> R_{i+1,\beta}(X)\operatorname{res}(g).
-> }
-> \tag{C3-graded-scalar-covariance}
-> \]
-> In grade zero the read agrees with residue on the consumed value-zero factors. These are site obligations, or may be discharged by a named per-grade residual-read supplier; they are not assertions about every homogeneous initial form.
-
-In (C3), replace:
-
-> Let \(\beta_t\) be the slot grade and set
-> \[
-> u(\beta_t)
-> =
-> R_{i+1,\beta_t}
-> \bigl(
-> \widehat n_i((f_{i+1}-t)u_{i+1})
-> \bigr).
-> \]
-
-with:
-
-> Put
-> \[
-> s=f_{i+1}-t
-> \]
-> and define the slot grade by
-> \[
-> \boxed{
-> \beta_t
-> :=
-> s\bar\kappa_i
-> =
-> (f_{i+1}-t)\bar\kappa_i.
-> }
-> \tag{C3-slot-grade}
-> \]
-> Set
-> \[
-> u(\beta_t)
-> =
-> R_{i+1,\beta_t}
-> \bigl(
-> \widehat n_i(su_{i+1})
-> \bigr).
-> \]
-
-Replace:
-
-> At every site where the stated ladder-multiplicativity obligation is discharged,
-
-with:
-
-> At every site where (C3-ladder-multiplicativity) and
-> (C3-graded-scalar-covariance) are discharged,
-
-In §2.3, replace the B-law argument beginning
-
-> At a consumed site, ladder multiplicativity and the value-zero rule give
-
-and ending
-
-> Multiplying by a coherent digit proves (C3-canonical-read).
-
-with:
-
-> At a consumed site, put
-> \[
-> N=\widehat n_i(u),
-> \qquad
-> M_s=\widehat n_i(su),
-> \qquad
-> \beta_t=s\bar\kappa_i.
-> \]
-> By (C3-ladder-multiplicativity),
-> \[
-> R_{i+1,\beta_t}(N^s)
-> =
-> R_{i+1,\bar\kappa_i}(N)^s
-> =
-> w_i^s.
-> \]
-> Since
-> \[
-> N^s
-> =
-> M_s\left(\frac{N^s}{M_s}\right)
-> \]
-> and \(N^s/M_s\) has value zero, graded scalar covariance gives
-> \[
-> \begin{aligned}
-> w_i^s
-> &=
-> R_{i+1,\beta_t}(N^s)\\
-> &=
-> R_{i+1,\beta_t}(M_s)
-> \operatorname{res}\!\left(\frac{N^s}{M_s}\right)\\
-> &=
-> R_{i+1,\beta_t}(M_s)\vartheta_{i,s}.
-> \end{aligned}
-> \]
-> Hence
-> \[
-> R_{i+1,\beta_t}(M_s)
-> =
-> w_i^s\vartheta_{i,s}^{-1}
-> =
-> w_i^s\Theta_i(t),
-> \]
-> which proves (C3-B-law).
->
-> A slot with coherent digit \(\Gamma_t\) is represented, at the consumed read site, as
-> \[
-> M_sg_t,
-> \qquad
-> dv_i(g_t)=0,
-> \qquad
-> \operatorname{res}(g_t)=\Gamma_t.
-> \]
-> A second application of (C3-graded-scalar-covariance) gives
-> \[
-> \begin{aligned}
-> R_{i+1,\beta_t}(M_sg_t)
-> &=
-> R_{i+1,\beta_t}(M_s)\Gamma_t\\
-> &=
-> w_i^s\Theta_i(t)\Gamma_t,
-> \end{aligned}
-> \]
-> proving (C3-canonical-read).
-
-In the supporting-context paragraph following the absorption map, replace:
-
-> The B-law rows consume only ladder-monomial multiplicativity and the value-zero digit read at their stated sites.
-
-with:
-
-> The B-law rows consume (C3-ladder-multiplicativity), the grade identity
-> \(\beta_t=(f_{i+1}-t)\bar\kappa_i\), and
-> (C3-graded-scalar-covariance) for the displayed value-zero factors at their stated sites.
-
-Replace honesty-ledger item 2 with:
-
-> 2. The B-law is conditional on the sitewise graded read facts (C3-ladder-multiplicativity), (C3-slot-grade), and (C3-graded-scalar-covariance). Agreement with residue on isolated value-zero factors is not used as a substitute for scalar covariance, and T1 asserts no multiplicativity theorem for all homogeneous initial forms.
-
-In the A7 B-law residual obligation, replace:
-
-> the accepted GENTOW2-B″ per-grade-unit theorem discharging ladder multiplicativity and the value-zero read
-
-with:
-
-> the accepted GENTOW2-B″ per-grade-unit theorem discharging the slot-grade identity, ladder multiplicativity, and graded scalar covariance for the consumed value-zero factors
-
-## R5-2 — Restore the missing HETOW supplier structure in A2
-
-Immediately before the A2 consumption check, insert:
-
-> **Local supplier interface.** The following data are not defined or proved by C5 and remain part of the accepted HETOW site:
-> \[
-> \boxed{
-> \begin{minipage}{0.88\linewidth}
-> \(\mathrm{(H\!-\!HETOW\!-\!LOCAL)}\): the accepted HETOW construction supplies
-> \[
-> \widehat n_2(k),\quad n_2(k),\quad m(k),\quad Q,\quad
-> \tau(k),\quad s(k),\quad w_2,
-> \]
-> identifies its level-one normalizer and carry function with the C5 objects on the relevant heights,
-> \[
-> \widehat n(m)=n(m),
-> \qquad
-> Q(m)=q(m),
-> \]
-> and proves the local bridge and second-level carry relations
-> \[
-> \frac{\widehat n_2(k)}{n_2(k)}
-> =
-> \frac{\widehat n(m(k))}{\varpi^{m(k)}},
-> \]
-> \[
-> w_2
-> =
-> \left\lfloor
-> \frac{s(k)+s(k')}{e_2}
-> \right\rfloor,
-> \qquad
-> m(k+k')
-> =
-> m(k)+m(k')+w_2u_2.
-> \]
-> It also identifies the local scalar \(\tau(k)\) with the residue of the displayed normalizer ratio:
-> \[
-> \tau(k)
-> =
-> \eta^{-Q(m(k))}.
-> \]
-> These identities are HETOW structure, not consequences of T1.
-> \end{minipage}
-> }
-> \tag{H-HETOW-LOCAL}
-> \]
-
-Replace the A2 consumption check
-
-> \[
-> \boxed{
-> \text{T1 (C5-monomial-ratio) + (C5-carry)}
-> \Longrightarrow
-> \text{the three pinned HETOW displays}.
-> }
-> \]
-
-with:
-
-> \[
-> \boxed{
-> \mathrm{(H\!-\!HETOW\!-\!LOCAL)}
-> +
-> \text{T1 (C5-monomial-ratio) + (C5-carry)}
-> \Longrightarrow
-> \text{the three pinned HETOW displays}.
-> }
-> \]
->
-> Indeed, the supplier bridge followed by (C5-monomial-ratio) gives
-> \[
-> \frac{\widehat n_2(k)}{n_2(k)}
-> =
-> \frac{\widehat n(m(k))}{\varpi^{m(k)}}
-> =
-> \left(\frac{x^{e_1}}{\pi^h}\right)^{-Q(m(k))},
-> \]
-> and taking residues gives the second pinned display. For the third, write
-> \[
-> m=m(k),
-> \qquad
-> m'=m(k').
-> \]
-> The supplier relation
-> \[
-> m(k+k')=m+m'+w_2u_2
-> \]
-> and two applications of (C5-carry) give
-> \[
-> \begin{aligned}
-> Q(m(k+k'))-Q(m)-Q(m')
-> &=
-> \operatorname{wrap}_1(m,m')\\
-> &\quad+
-> w_2\left(
-> Q(u_2)+
-> \operatorname{wrap}_1(m+m',u_2)
-> \right).
-> \end{aligned}
-> \]
-> Substitution of
-> \(\tau(k)=\eta^{-Q(m(k))}\) proves the pinned \(\tau\)-ratio.
->
-> Thus T1 supplies only the level-one monomial-ratio and \(q\)-carry algebra. The bridge from level \(2\), the function \(m\), the second-level carry \(w_2\), and the identification of \(\tau\) remain explicitly imported HETOW facts.
-
-## R5-3 — Reattach the level-one basis sentence
-
-In the integrated application of R1-1, replace the detached text
-
-> and chosen basis \(1,\eta,\ldots,\eta^{f_1-1}\).
-
-with:
-
-> Fix also the chosen \(\mathbf F_Q\)-basis
-> \[
-> 1,\eta,\ldots,\eta^{f_1-1}
-> \]
-> of \(K_1\).
-
-Equivalently, the base-letter paragraph may be placed after the original complete sentence ending with the basis datum. No mathematical content changes.
-
-## Consequential record edit
-
-Add to §6:
-
-> | Stated the graded scalar-covariance and slot-grade conventions used by the C3 ladder reads; imported the missing level-two bridge and carry structure through \(\mathrm{(H\!-\!HETOW\!-\!LOCAL)}\); and reattached the level-one basis sentence. | T1P5, 2026-08-12 r5 | Repairs 2 GAP and 1 MINOR findings without promoting either the sitewise residual-read law or the local HETOW construction to an unconditional T1 theorem. |
