@@ -1338,3 +1338,20 @@ tower.
 ```
 
 This preserves the live \(Z\mapsto Z/2\) comparison test while making its parameters honest: the boundary port uses \(q_{\rm BR}=1\), whereas the comparison port explicitly uses \(q_{\rm CMP}=2\). The newly declared \(H_0=6\) also derives, rather than merely assumes, the scalar \(3=\chi(H_0)\).
+
+
+---
+
+## ACCEPTANCE RECORD (2026-08-12): T3 ACCEPTED 2/2
+
+Arc: composed 2026-08-10 (RCT sol-arm) → revised vs the certified
+seam (comp1 T3R) → pass 1 post-r1... T3P1 0C+1G (the FRAME-C
+comparison-port arithmetic) → r1 applied → T3P2 CLEAN (fresh route)
+→ T3P3 CLEAN (absorption-derivation route). Two consecutive clean
+fresh-context hostile passes: **LEMMA COCYCLE-TELESCOPE is ACCEPTED
+at 2/2** with its three absorptions (GENTOW2-B″, HETOW-4,
+GENTOW-6.4) and one displayed non-instance. Consumption checks (the
+S-2 protocol's three) ride the next queue; the absorbed notes'
+dated "absorbed by S-2" appends land after those pass. Runs of
+record: runs/comp1/T3R_output.log, runs/comp2/T3P1_output.log +
+T3R1, runs/comp3/T3P2_output.log, runs/comp4/T3P3_output.log.
