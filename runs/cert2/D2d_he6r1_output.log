@@ -1,0 +1,9 @@
+1. **DISCHARGED.** The three-clause re-display is mathematically correct. The proof gives \(J\le \log_2\mu-1\); \(D'\ge2\) yields the stage-rooted bound \(J\le\log_2 n-2\); and \(D'=1\) yields the sharp ambient bound \(J\le\log_2 n-1\). The cited consumers are stage-rooted and remain valid.
+
+2. **Not adjudicated.** Prior finding 2 is expressly routed to the scheduled GENHN \(f_1\ge2\) proof unit and therefore remains outside this discharge confirmation.
+
+3. **DISCHARGED.** The correction properly replaces “equality exactly” by “equality only possibly.” Strict or zero slots contribute zero normalized residue, so the complete attaining-term sum remains \(\psi(\eta_\xi)=0\). The cancellation argument and its conclusions survive.
+
+4. **DISCHARGED.** The correction accurately distinguishes the experimentally observed onset \(k=\lambda\) from the sufficient closed-form bound \(k=\lambda+1\) in the tested \(d_r=2\) frames. It withdraws unsupported sharpness without affecting the proved sufficiency result or its consumers.
+
+OUTCOMES: DISCHARGED, DISCHARGED, DISCHARGED
