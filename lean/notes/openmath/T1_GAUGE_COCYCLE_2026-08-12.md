@@ -3454,3 +3454,162 @@ In the \(M2\) row of (C7), add:
 Add to §6:
 
 > | Imported the GENTOW2 bounded coefficient space into the general corrected-key lift contract and made base-ladder nonvanishing an explicit certified-site obligation. | T1P9, 2026-08-12 r8 | Repairs 2 GAP findings: higher-degree higher-value perturbations are excluded, so the composed polynomial retains its monic bounded \(\Phi_i\)-adic shape; and \(w_i\in K_i^\times\), division by \(w_i\), and factor-pattern transport are asserted only where nonvanishing is supplied. |
+
+
+---
+
+## r9 (2026-08-12): provenance + fencing repairs
+
+*(Fable-arm; findings = the model-diverse pass of record; counter resets.)*
+
+# T1 r9 corrections — 2026-08-12
+
+These edits repair the findings of the model-diverse hostile pass of record (0 CRITICAL / 2 GAP / 4 MINOR; all arithmetic and repairs verified): two provenance/fencing gaps (G-1, G-2) and four minors (m-1 through m-4). Every supplier fact cited below was re-verified against the accepted files this round; the greps, ledger lookups, and md5 recomputations are named inline.
+
+## R9-1 (G-1) — Re-attribute the A6 scalar-read pin to HE6 F-1
+
+**Finding G-1.** The r2 A6 row's SPAN PIN attributes the boxed \(\gamma_k(A)\)-definition and \(n(k)\)/\(\varpi\)-read displays to `GENTOW6`, locator `md5=05fc38817b8c75297267bb57089e898f`. Verified this round: that md5 is the ledger's [THEOREM GENTOW-6.3] entry (`runs/comp1/_absorbed_statements.txt`: `GENTOW6_PROOF_2026-08-09.md` @ commit `3d7fc37b`, lines 378–434; recomputed under the R9-5 normalization — it reproduces `05fc38817b8c75297267bb57089e898f` exactly), and the accepted `GENTOW6` contains no \(\gamma_k\) and no \(\varpi\) anywhere (grep: zero occurrences). The pinned scalar-read displays live ONLY in `HE6_PROOF_2026-08-08.md`'s dated correction F-1 (2026-08-12), grep-verified there at the three displays quoted closed below. The r2 md5 pinned a consumer, not the source.
+
+Under **A6 — GENTOW6**, replace the SPAN PIN header sentence
+
+> **SPAN PIN.** Accepted file `GENTOW6`, normalized scalar-read display used by THEOREM GENTOW-6.3 (`md5=05fc38817b8c75297267bb57089e898f`):
+
+with:
+
+> **SPAN PIN (scalar read; provenance HE6 F-1).** Accepted file `HE6_PROOF_2026-08-08.md`, dated correction “F-1 — normalized slot coefficients in LEMMA HE6-0″” (2026-08-12; commit `a5d8eb01`, lines 1061–1113, normalized-span `md5=2c80192d30f82191476b4113e2314dad`). With \(k:=dv(A)\), \(i=i(k)\) the unique integer \(0\le i<e_1\) satisfying \(ih\equiv k\pmod{e_1}\), and \(n(k):=x^i\pi^{(k-ih)/e_1}\), F-1’s displays, quoted closed, are
+> \[
+> \gamma_k(A):=
+> \sum_{\substack{t\ge0\\i+e_1t<D'}}
+> \operatorname{res}\!\left(
+> a_{i+e_1t}\pi^{-(k-(i+e_1t)h)/e_1}
+> \right)\eta_\theta^t\in K,
+> \]
+> \[
+> \operatorname{res}\!\left(\frac{A(\xi)}{n(k)(\xi)}\right)
+> =\iota_\xi(\gamma_k(A)).
+> \]
+> \[
+> \operatorname{res}\!\left(\frac{A(\xi)}{\varpi(\xi)^k}\right)
+> =\iota_\xi(\gamma_k(A))\,\eta_\xi^{-q(k)}.
+> \]
+> The two boxed displays below are exactly these F-1 displays transcribed into T1 notation (\(i(k)\) written for F-1’s \(i\), \(\eta\) for \(\eta_\theta\), the two reads joined into one box). Their provenance is HE6 F-1 and only HE6 F-1: the accepted `GENTOW6` contains no \(\gamma_k(A)\) and no \(\varpi\)-read display anywhere. The locator `md5=05fc38817b8c75297267bb57089e898f` pins THEOREM GENTOW-6.3 — the CONSUMER of the scalar read, retained at the lift pin below — not the source of these displays. In T1 notation the pinned scalar read is:
+
+The two boxed \(\gamma_k(A)\) displays that follow stay byte-unchanged.
+
+In the same row, replace the sentence
+
+> The associated lift pin is
+
+with:
+
+> The associated lift pin — this half IS `GENTOW6`’s own display (S6.1’s exact-height (LIFT) shape; consumer THEOREM GENTOW-6.3, `md5=05fc38817b8c75297267bb57089e898f`), kept as pinned — is
+
+In the A6 consumption check as replaced by R6-1, replace the line
+
+> \text{the pinned GENTOW6 scalar-read and lift formulas,}\\
+
+with:
+
+> \text{the pinned scalar-read (HE6 F-1) and lift (GENTOW6 S6.1) formulas,}\\
+
+No formula changes anywhere in this repair; only provenance.
+
+## R9-2 (G-2) — Fence (C2-vartheta)’s \(K_i^\times\) membership at depth \(i\ge3\)
+
+**Finding G-2.** (C2-vartheta)’s box asserts \(\vartheta_{i,s}\in K_i^\times\) at every level \(i\). The quotient \(\widehat n_i(u_{i+1})^s/\widehat n_i(su_{i+1})\) has value zero — that much is exact-height arithmetic — but at depth \(i\ge3\) nothing in §2.2 proves that its residue lies in the FIELD \(K_i\): it is a value-zero quotient of tower normalizers, exactly the class of object R2-1 conceded needs a supplier when it fenced \(\rho_i\). Proved suppliers exist at \(i\in\{1,2\}\) only. The repair fences the box the way \(\rho_i\) was fenced.
+
+In §1.1 (C2), immediately after (C2-vartheta), insert:
+
+> The membership \(\vartheta_{i,s}\in K_i^\times\) displayed in (C2-vartheta) is proved only at \(i\in\{1,2\}\): at \(i=1\) by direct evaluation ((C2-level-1): \(\vartheta_{1,s}=\eta^{\lfloor s\,i(u_2)/e_1\rfloor}\), a power of \(\eta\in K_1^\times\)); at \(i=2\) by the accepted LEMMA GENTOW2-B\(''\) \(\gamma\)-calculus (S5.2), which writes the value-zero \(\widehat n_2\)-quotient as a letter monomial and specializes it into \(K_2^\times\). At \(i\ge3\), T1 does not prove that the residue lies in \(K_i\). Every consumer at depth \(i\ge3\) must carry the named supplier hypothesis
+> \[
+> \mathrm{(H\!-\!VARTHETA\!-\!RES)}_i:
+> \quad
+> \operatorname{res}\!\left(
+> \frac{\widehat n_i(u_{i+1})^s}
+> {\widehat n_i(su_{i+1})}
+> \right)\in K_i
+> \qquad(s\ge0)
+> \]
+> — the residue of the value-zero tower-normalizer quotient lies in the level-\(i\) residue field: standard MacLane residual specialization, unproved here. Under \(\mathrm{(H\!-\!VARTHETA\!-\!RES)}_i\), value zero makes the residue nonzero, whence \(\vartheta_{i,s}\in K_i^\times\). Without it, at \(i\ge3\) the box asserts a membership T1 does not prove.
+
+In §2.2, immediately after “Taking residues proves the recursion.”, insert:
+
+> At \(i\ge3\), taking residues proves the recursion among the residues; that each \(\vartheta_{i,s}\) lies in \(K_i\) is \(\mathrm{(H\!-\!VARTHETA\!-\!RES)}_i\), not a computation of this proof. At \(i\in\{1,2\}\) the memberships are supplied as displayed in (C2).
+
+In (C3), immediately after the R8-1 insertion following (C3-corrected-lift) (the boxed (C3-corrected-coefficient-bound)), insert:
+
+> At \(i\ge3\), the digit \(c_t\vartheta_{i,f_{i+1}-t}\) fed to \(\operatorname{lift}_i\) is an element of \(K_i\) — so (C3-corrected-lift) type-checks and the corrected composed key (C3-key) is formed — only at a site carrying \(\mathrm{(H\!-\!VARTHETA\!-\!RES)}_i\). At \(i\in\{1,2\}\) the membership is supplied as displayed in (C2). No corrected composed key is asserted at depth \(i\ge3\) without that hypothesis.
+
+In the R4-1 paragraph inserted immediately after (C3-corrected-lift), replace the opening
+
+> Put \(s=f_{i+1}-t\). If \(c_t\ne0\), then
+> \(\vartheta_{i,s}\in K_i^\times\) implies
+> \(c_t\vartheta_{i,s}\ne0\), and the exact-height lift contract gives
+
+with:
+
+> Put \(s=f_{i+1}-t\). At \(i\in\{1,2\}\), and at \(i\ge3\) at a site carrying \(\mathrm{(H\!-\!VARTHETA\!-\!RES)}_i\), one has \(\vartheta_{i,s}\in K_i^\times\); hence if \(c_t\ne0\), then \(c_t\vartheta_{i,s}\ne0\), and the exact-height lift contract gives
+
+## R9-3 (m-1) — Fix the A3 “accepted local \(\gamma_t\)” misattribution
+
+**Finding m-1.** A3’s closing sentence calls \(\gamma_t\) “the accepted local” symbol, implying `GENTOW1` uses it. Verified this round: `GENTOW1` contains no \(\gamma_t\) anywhere (grep: zero occurrences); its corrected-lift pin is \(\widehat c_t:=\operatorname{lift}(c_t\cdot\eta^{W(t)})\) (the S0 pin, dated gauge annex S7.1), and it displays no single closed span carrying A3’s read statement.
+
+Under **A3 — GENTOW1**, replace
+
+> with the closed read statement
+
+with:
+
+> with the read statement — ASSEMBLED, not quoted closed, per the quoted-closed rule of this map’s introduction: its content is assembled from `GENTOW1`’s S0 corrected-lift pin together with the dated gauge annex S7.1, and `GENTOW1` displays no single closed span carrying it —
+
+and replace
+
+> Here the accepted local \(\gamma_t\) is T1’s coherent digit \(\Gamma_t\), not HE6’s \(\gamma_k(A)\).
+
+with:
+
+> The symbol \(\gamma_t\) in the first boxed display is T1’s local abbreviation for its own coherent digit \(\Gamma_t=c_t\eta^{W(t)}\) — read \(\Gamma_t\) for \(\gamma_t\) there. The accepted `GENTOW1` displays no \(\gamma_t\) anywhere; its pin names \(\widehat c_t:=\operatorname{lift}(c_t\cdot\eta^{W(t)})\) (S0 pin, S7.1). As before, \(\Gamma_t\) is distinct from HE6’s \(\gamma_k(A)\).
+
+## R9-4 (m-2) — Scope the A7 SPAN PIN 2 consequence list to the pinned span
+
+**Finding m-2.** The A7 SPAN PIN 2 consequence list includes “preservation of irreducible-factor degrees and multiplicities,” which the pinned LEMMA GENTOW2-B span (`md5=8a00bf44d21f87e878c0be6226b13b61`) does not assert: the span’s preservation parenthetical covers monicity after the displayed renormalization, irreducibility, degree, and the nonzero constant, for its monic irreducible target.
+
+Under **A7 — GENTOW2**, replace
+
+> The pinned consequences are: monicity after the displayed renormalization, preservation of degree and irreducibility, preservation of a nonzero constant term, and preservation of irreducible-factor degrees and multiplicities.
+
+with:
+
+> The pinned consequences — exactly what the pinned span asserts, for its monic irreducible target \(\psi_3\) (the span’s parenthetical: the substitution \(y\mapsto wy\) “preserves monicity after the renormalization displayed, irreducibility, degree, and the nonzero constant”) — are: monicity after the displayed renormalization, and preservation of degree, of irreducibility, and of the nonzero constant term. Preservation of irreducible-factor degrees and multiplicities for a general polynomial is NOT asserted by the pinned span; it is T1’s factor-pattern conclusion (§2.3), asserted only at sites where the accepted GENTOW2-B\('\)/B\(''\) supplier discharges (C3-ladder-nonvanishing) (the R8-2 fence).
+
+## R9-5 (m-3) — Document the md5 pin normalization convention
+
+**Finding m-3.** The map’s `md5=…` locators nowhere state what text they hash, so the pins were not mechanically checkable from the note alone.
+
+In the replacement §3 absorption map, immediately after the introductory blockquote (the paragraph ending “the residual obligation is named explicitly.”), insert:
+
+> **Pin normalization convention (md5).** Every `md5=…` in this map pins a NORMALIZED ONE-LINE STATEMENT SPAN at a declared commit: take the ledger’s line range from the accepted file at the commit declared in the ledger’s section header; strip leading blockquote markers; join the lines into one line; collapse repeated whitespace; trim; md5 the resulting one-line text. The ledger of record is `runs/comp1/_absorbed_statements.txt` (S-0 @ `788bba26`; per-note commits in its section headers, e.g. `GENTOW6_PROOF_2026-08-09.md` @ `3d7fc37b`), reproduced in the T1CC2 brief (`runs/comp1/T1CC2_brief.txt`). Re-verified this round: lines 378–434 of `GENTOW6_PROOF_2026-08-09.md` @ `3d7fc37b` normalize to `md5=05fc38817b8c75297267bb57089e898f`, the ledger’s [THEOREM GENTOW-6.3] entry.
+
+## R9-6 (m-4) — Refresh the stale front-matter status line
+
+**Finding m-4.** The front matter still reads “hostile arc not yet run on this revision”; eight repair rounds (and this ninth) sit below it.
+
+Replace the front-matter line
+
+> **Status:** revised candidate of record; hostile arc not yet run on this revision
+
+with (preserving the trailing two-space markdown line break):
+
+> **Status:** revised candidate of record, under hostile arc — rounds r1–r9 appended below (r1–r8 sol-derived repair rounds; r9 the Fable-arm repairs of the model-diverse pass of record). Clean-pass counter at reset (every repair round resets it); the §7 acceptance gate still owes two consecutive clean hostile passes plus the revised machine battery.
+
+## Consequential record edits
+
+Append to the honesty ledger:
+
+> 20. The A6 scalar-read displays — the \(\gamma_k(A)\) definition and the \(n(k)\)/\(\varpi\)-reads — are HE6 F-1’s displays, transcribed; the accepted `GENTOW6` contains no \(\gamma_k(A)\) and no \(\varpi\)-read display. The locator `md5=05fc38817b8c75297267bb57089e898f` pins THEOREM GENTOW-6.3, the consumer. Every SPAN PIN md5 is a normalized one-line span at a declared commit, per the §3 convention paragraph.
+>
+> 21. \(\vartheta_{i,s}\in K_i^\times\) is proved at \(i\in\{1,2\}\) only. At \(i\ge3\), that membership — and with it the typing of (C3-corrected-lift), the formation of (C3-key), and the nonzero-digit common-height argument — is asserted only at sites carrying \(\mathrm{(H\!-\!VARTHETA\!-\!RES)}_i\).
+
+Add to §6:
+
+> | Re-attributed the A6 scalar-read pin to HE6 F-1 (`GENTOW6` has no \(\gamma_k\)/\(\varpi\) display); fenced (C2-vartheta)’s \(K_i^\times\) membership behind \(\mathrm{(H\!-\!VARTHETA\!-\!RES)}_i\) at depth \(i\ge3\) and threaded the fence through (C3-corrected-lift)/(C3-key)/the R4-1 nonvanishing step; fixed the A3 \(\gamma_t\) naming; scoped the A7 PIN 2 consequence list to the pinned span; documented the md5 pin normalization convention; refreshed the front-matter status line. | model-diverse pass of record, 2026-08-12 r9 (Fable arm) | Repairs 2 GAP and 4 MINOR findings: absorption provenance now names the actual supplier note, and depth-\(\ge3\) residue membership is an explicit named supplier hypothesis rather than an unproved boxed claim. |
