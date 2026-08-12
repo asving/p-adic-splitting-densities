@@ -1479,3 +1479,123 @@ executed at 5054d69 (2026-08-07) as an append-only fold annex on
 cap), then supplemented at adc6cf3 after GRTW2's acceptance (the cap = an
 accepted supplier). Direction: FAVORABLE (license executed; nothing
 further owed on this item).
+
+---
+
+### Dated adjudication (2026-08-12 — sol certification C1/E1: the as-built challenge adjudicated at HEAD)
+
+The sol-5.6 as-built read of this note (gpt-5.6-sol high,
+runs/cert/C1_liftcorner_output.log, 2026-08-12) returned CHALLENGE
+(1 CRITICAL, 2 GAP, 2 MINOR). The E1 certification run (gpt-5.6-sol
+high, runs/cert2/E1_liftcorner_output.log) adjudicated all five:
+finding 2 RESOLVED-ALREADY (the [r4, F4-6] fence), finding 5 ARTIFACT
+(rebutted from the note's own [r3]/[r4] lines), findings 3 and 4 REAL
+with repairs (annexes AC-2, AC-3), and finding 1 OBSTRUCTED with the
+containment annex AC-1 naming the missing lemma (Φ₁-OPACITY) and its
+pre-proof numerical certificate. Everything above this heading is
+byte-untouched by this append. The E1 adjudication, transcribed
+unaltered:
+
+1. OBSTRUCTED — PROP’s higher-rung conclusion is unsupported
+
+The finding stands. TAIL-STAB and READ-EQ prove the level-2 comparison, but nothing in the note proves that ITERLAWN’s rung-\(\ge2\) construction is insensitive to the non-leading coefficients of \(\Phi_1\). The note expressly admits this in `[r4, F4-4]`:
+
+> “an argument this note does not make, and which neither the two formerly cited tables nor ITERLAWN's own r4 erratum supplies”
+
+Thus PROP, S5’s all-\(n\) rider, and FC-2 outrun the proved chain. The missing lemma cannot be derived from the note’s own lemmas because WELL-DEF-\((n)\), the \(C_k\) construction, and the degree telescope are not defined here.
+
+Verbatim-ready containment and obstruction append:
+
+> **[ANNEX 2026-08-12, certifier AC-1 — PROP’S RUNG-\(\ge2\) CENSUS REMAINS OPEN.]** The all-rung force of three earlier sentences is SUSPENDED: PROP’s “the discharge lifts to every rung”, S5’s “ITER-LAW-\(n\) holds for EVERY lawful monic \(\Phi_1\), every \(n\)”, and FC-2’s execution of that rider rewrite. TAIL-STAB, READ-EQ, the THEOREM, COR 1 and COR 2 remain accepted exactly at their displayed 2-read / harness-\(\Phi_1\)-orbit scope.
+>
+> The missing statement is:
+>
+> **\((\Phi_1\)-OPACITY).** Let \(\Phi_1'\) and \(\Phi_1''\) be lawful monic level-1 keys with the same degree, \(w_1\)-value and accepted level-1 base package. For every rung \(n\ge2\), every use of \(\Phi_1\) in ITERLAWN S4.1/WELL-DEF-\((n)\), the \(C_k\)-existence construction and the S4.2 degree telescope factors through monicity, degree, \(w_1\Phi_1\), and the accepted level-1 package; equivalently, replacing \(\Phi_1''\) by \(\Phi_1'\) leaves every rung-\(\ge2\) proof datum and conclusion invariant after the formal identification \((\Phi_1'')^i\leftrightarrow(\Phi_1')^i\).
+>
+> This lemma is NOT proved by the present note. TAIL-STAB and READ-EQ control level-2 developments and reads; they contain no definitions of WELL-DEF-\((n)\), the higher \(C_k\), or the degree telescope from which \((\Phi_1\)-OPACITY) could be derived. The existing facts that the two keys share monicity, degree, \(w_1\), and the level-1 package do not logically exclude a higher-rung operation from inspecting a non-leading coefficient. Consequently the all-rung repair is **OBSTRUCTED pending a proof of \((\Phi_1\)-OPACITY)**. Until then, PROP and the executed S5/FC-2 rider are conditional on that lemma and carry no accepted conclusion.
+>
+> **PRE-PROOF NUMERICAL CERTIFICATE.** Use, without sampling, the 56 S3 orbit towers—48 twisted towers and 8 \(\xi=1\) dense controls—each paired with its same-residue standard lift \(\Phi''\), plus the exact PE1 counter-instance and its standard-lift mate. Run every pair through rungs \(n\in\{2,3,4,5\}\). At each of ITERLAWN S7’s 22 dependency sites record the branch decisions, degrees, valuations, residual coefficients, \(C_k\), telescope terms, and final read/cocycle data. Normalize each polynomial datum to formal \(\Phi_1\)-adic coordinates by replacing \(\Phi_1^i\) with a common symbol \(U^i\) and identifying the shared coefficient fields. The required predicate is equality of the complete normalized records for \(\Phi_1'\) and \(\Phi_1''\), together with an access trace showing that no non-leading coefficient of \(\Phi_1\) reaches a branch condition, valuation, residual coefficient, \(C_k\), telescope bound, or final read except through the opaque formal-power node \(\Phi_1^i\). Required verdict: zero normalized mismatches and zero forbidden coefficient accesses on all 57 tower pairs, all four tested rungs, and all 22 sites. This is an instance certificate only; the universal conclusion still requires a source-level proof of \((\Phi_1\)-OPACITY).
+
+2. RESOLVED-ALREADY — the broader “at any level” reading remains fenced
+
+The finding conflates changing \(\Phi_1\) and propagating that fixed choice through canonical higher rungs with independently choosing a noncanonical \(\Phi_{m+1}\) at a deeper level.
+
+The exact cure is already in `[r4, F4-6]`:
+
+> “**What this note delivers, exactly.** The **\(\Phi_1\) corner** of NR-1”
+
+and:
+
+> “Under the ILNRES S1 ‘at any level’ reading a deeper-level remainder survives. The two readings live in different notes of record, and this unit does not choose between them.”
+
+The acceptance record accepts “this note’s theorems **as fenced**.” FC-1 is explicitly a correction only of “the W-2 cap”; it changes the supplier grade from \(0/2\) to accepted and does not erase the `[r4, F4-6]` scope fence. Therefore the noncanonical-\(\Phi_2\) counter-configuration was already excluded from the discharged scope.
+
+This does not cure finding 1: propagation of a changed \(\Phi_1\) through canonical higher rungs still needs \((\Phi_1\)-OPACITY).
+
+3. REAL — CONTENT must be displayed at its integral-key scope
+
+The displayed wording “For monic \(\Phi\)” is literally too broad. The proof uses integrality of every coefficient of \(\Phi\), not merely monicity.
+
+Verbatim-ready repair:
+
+> **[ANNEX 2026-08-12, certifier AC-2 — CONTENT RE-DISPLAYED AT ITS PROVED-AND-CONSUMED SCOPE.]** The S4 CONTENT display
+>
+> “For monic \(\Phi\), the digits of \(\operatorname{dev}(F,\Phi)\) satisfy \(w_0\)-content \(\ge w_0\)-content\((F)\)”
+>
+> is SUPERSEDED by:
+>
+> **CONTENT (integral-key form).** Let \(\Phi\in\mathcal O[x]\) be monic and \(F\in\mathcal O[x]\). Every coefficient of every digit of \(\operatorname{dev}(F,\Phi)\) has valuation at least \(w_0\text{-content}(F)\).
+>
+> *Proof.* Put \(c=w_0\text{-content}(F)\). During monic long division, assume every coefficient of the current dividend has valuation at least \(c\). Its leading coefficient \(\lambda\) then has \(w_0(\lambda)\ge c\). Because every coefficient of \(\Phi\) lies in \(\mathcal O\), every coefficient of \(\lambda x^i\Phi\) has valuation at least \(c\). Subtracting it preserves that lower bound by the ultrametric inequality. Thus both the quotient coefficients and the remainder coefficients have valuation at least \(c\). Repeating the same division on successive quotients produces the \(\Phi\)-adic development and preserves the bound at every digit. ∎
+>
+> **Consumer sweep.** S4.1 applies CONTENT only to
+> \(a b=r+q\Phi_0\), where \(a,b,\Phi_0\in\mathcal O[x]\) and \(\Phi_0\) is monic. Hence the bounds \(w_0(r),w_0(q)\ge w_0(ab)\), all eight per-digit \(\omega\)-gain bounds, the lexicographic induction, TAIL-STAB, READ-EQ, the THEOREM and both corollaries survive unchanged. No consumer uses CONTENT for a monic polynomial with a nonintegral coefficient. The counterexample \(\Phi=x+p^{-1}\) is excluded precisely because \(\Phi\notin\mathcal O[x]\).
+
+4. REAL — correct the degree comparison in READ-EQ
+
+The literal \(e_0<\deg\Phi'\) fails when \(d_0=1\). The consumed inequality is the degree of the coefficient against the key degree.
+
+Verbatim-ready repair:
+
+> **[ANNEX 2026-08-12, certifier AC-3 — READ-EQ DEGREE CORRECTION.]** In S4.2(a), the clause
+>
+> “with \(s<e_0<\deg\)”
+>
+> is SUPERSEDED by:
+>
+> “with \(s<e_0\); since \(\deg\Phi_0=d_0\) and
+> \(\deg\Phi'=\deg\Phi''=e_0d_0\),
+> \[
+> \deg(\Phi_0^s)=sd_0<e_0d_0=\deg\Phi'=\deg\Phi'',
+> \]
+> so \(\pi^u\Phi_0^s\) is a single key-slot coefficient and the key power is never opened.”
+>
+> **Consumer sweep.** This is exactly the inequality consumed by the anchor and \(\delta_1=0\) parts of READ-EQ. It holds also at \(d_0=1\), where \(\deg\Phi'=e_0\) but \(s<e_0\). The separate \(\delta_1=1\) one-overflow argument is untouched. Therefore READ-EQ, the THEOREM, COR 1 and COR 2 survive unchanged.
+
+5. ARTIFACT — “bit-exactly modulo timing fields” does not claim raw-file identity
+
+The quoted PE9 sentence is not part of the note at HEAD. Moreover, its parenthetical explicitly states the equivalence relation: equality after removing disclosed wall-clock fields.
+
+That is consistent with the note’s corrections:
+
+- `[r3, F-C]`: “identical line-for-line **modulo the `elapsed`/per-block timestamp fields only**”
+- `[r4, F4-3]`: the runner output is “**identical modulo timing fields, not bit-identical**”
+- `[r4]` machine record: the raw output differs at wall-clock lines, while timing normalization gives an empty diff.
+
+The acceptance record itself calls the runner bytes “byte-frozen” and separately calls the children table reproducible; it never asserts that the raw timed runner output is byte-identical. No repair is needed.
+
+*(The adjudication above was produced by the E1 certification run
+(gpt-5.6-sol high, runs/cert2/E1_liftcorner_output.log, 2026-08-12);
+orchestrator verification before transcription — AC-2's division
+proof re-checked (integral Φ keeps every λx^iΦ coefficient at
+valuation ≥ c; ultrametric subtraction preserves the bound; the
+C1 counterexample Φ = x + p^{−1} is excluded by Φ ∉ O[x], and every
+consumer site is in O[x]); AC-3's inequality re-checked
+(s·d₀ < e₀·d₀ = deg Φ′, valid at d₀ = 1 where the sealed e₀ < deg
+failed); the RESOLVED-ALREADY and ARTIFACT rebuttals checked against
+the note's own [r4, F4-6] fence and [r3, F-C]/[r4, F4-3] lines at
+HEAD; AC-1's containment matches the note's own [r4, F4-4] admission,
+and the (Φ₁-OPACITY) statement + 57-pair certificate spec are
+recorded as the proof unit. Transcribed unaltered per the standing
+division of labor. Ledger: row 19 → AC-2/AC-3 folded; OPEN pending
+(Φ₁-OPACITY) + discharge.)*
