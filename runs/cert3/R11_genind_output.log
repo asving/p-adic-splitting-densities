@@ -1,0 +1,261 @@
+### Dated correction (2026-08-12 — GENIND-C2 repair round 2)
+
+**Supersession and scope.** This append supersedes the stage-window assertion in C2(i), the equal-product-degree descent sentence in C2(ii), and the entry-pricing display in C2(iii) of the 2026-08-12 GENIND-C2 correction. The scalar bound \(M^\star\ge e(N-1-H)\) is withdrawn for general embedded and mixed genres: the displayed (CS-1) clause supplies ragged per-coordinate certified windows and permits sibling-Hensel losses, but supplies no inequality pricing those losses. The corrected quantitative clause below is sufficient for every downstream use. Its verification remains a per-genre obligation inside (CS-1).
+
+#### C2-G1 — loss-priced uniform core
+
+Fix a CS genre \(\mathcal G\), put
+
+\[
+Q=q^d,\qquad
+\gamma=\deg\psi,\qquad
+a=e\gamma,\qquad
+L=e\mu\gamma,
+\]
+
+and let \(S\ge L\) be the actual horizontal length of the side carrying the composite block. Let \(H\) be that side’s vertical drop and put
+
+\[
+b_S:=\frac{S+1}{2}.
+\]
+
+From the per-coordinate certified windows supplied by (CS-1), define:
+
+- \(\lambda_{\mathcal G}\): the largest loss, in \(v'\)-height units, caused by the sibling-Hensel division ledger;
+- \(r_{\mathcal G}\): the further number of \(v'\)-height units discarded when the residue-class strings are truncated below their ragged ends;
+- \(\Delta_{\mathcal G}:=\lambda_{\mathcal G}+r_{\mathcal G}\);
+- \(M_{\mathcal G}\): the resulting common uniform stage window;
+- \(C_{\mathcal G}^{\mathrm{extra}}\): the entry codimension, in \(Q\)-digit units, contributed by sibling sides, vertices, split pieces, residual pins, and other conditions beyond the supporting-line price on the \(S\)-long side.
+
+The quantitative stage-transport clause required here is:
+
+\[
+M_{\mathcal G}
+ \ge e(N-1-H)-\Delta_{\mathcal G},                 \tag{CS-1Q.a}
+\]
+
+and
+
+\[
+\gamma\Delta_{\mathcal G}
+ \le C_{\mathcal G}^{\mathrm{extra}}
+   +\left(b_S-a-\frac12\right)H+O_{\mathcal G}(1).
+                                                        \tag{CS-1Q.b}
+\]
+
+Clause (CS-1Q.b) is the explicit price of the ragged boundary and sibling-Hensel losses. It says that every lost \(K\)-digit is paid either by an additional entry condition or by the supporting-line slack beyond the load-bearing coefficient \(a+\tfrac12\).
+
+> **ANNEX-LEMMA GENIND-C2Q (loss-priced core).** Assume (CS-1Q.a–b) for the fixed genre. Then its conservative stage-drain contribution satisfies
+>
+> \[
+> \frac{u^{\mathrm{CS}}_{\mathcal G}(N)}
+>      {Q^{m(N-1)}}
+> \le K_{\mathcal G}N^{B_{\mathcal G}}
+>       Q^{-a(N-1)-H/2+O_{\mathcal G}(1)}.          \tag{C2Q.1}
+> \]
+>
+> Consequently its height sum has the required
+> \(K N^B Q^{-(N-c)}\) form.
+
+*Proof.* The corrected entry count, proved under C2-G3 below, is
+
+\[
+\rho_{\mathcal G}
+ \le Q^{-b_SH-C_{\mathcal G}^{\mathrm{extra}}
+          +O_{\mathcal G}(1)}.                     \tag{C2Q.2}
+\]
+
+On the range where the quantitative stage estimate is invoked, GENIND.C′ over \(K\), with \(|K|=Q^\gamma\), gives
+
+\[
+\delta_{\mathrm{stage}}
+ \le K_\star N^{B_\star}Q^{-\gamma M_{\mathcal G}
+                              +O_{\mathcal G}(1)}.
+\]
+
+By (CS-1Q.a),
+
+\[
+-\gamma M_{\mathcal G}
+ \le-a(N-1-H)+\gamma\Delta_{\mathcal G}.
+\]
+
+Multiplying by (C2Q.2) and applying (CS-1Q.b),
+
+\[
+\begin{aligned}
+\rho_{\mathcal G}\delta_{\mathrm{stage}}
+&\le K_\star N^{B_\star}
+ Q^{-a(N-1)-(b_S-a)H
+      -C_{\mathcal G}^{\mathrm{extra}}
+      +\gamma\Delta_{\mathcal G}
+      +O_{\mathcal G}(1)}\\
+&\le K_\star N^{B_\star}
+ Q^{-a(N-1)-H/2+O_{\mathcal G}(1)}.
+\end{aligned}
+\]
+
+For the floor-adjacent range \(M_{\mathcal G}<M_0\), (CS-1Q.a) gives
+
+\[
+\gamma\Delta_{\mathcal G}
+ >a(N-1-H)-\gamma M_0.
+\]
+
+Combining this with (CS-1Q.b) yields
+
+\[
+b_SH+C_{\mathcal G}^{\mathrm{extra}}
+ \ge a(N-1)+\frac H2-O_{\mathcal G,M_0}(1).
+\]
+
+Thus the trivial stage-drain bound \(1\) gives (C2Q.1) there as well. Finally,
+
+\[
+\sum_{H\ge0}Q^{-H/2}
+ \le (1-2^{-1/2})^{-1},
+\]
+
+and the polynomial genre count of GENIND-C1(iv) absorbs the remaining fixed-degree parameters. ∎
+
+**Certification status.** The standalone CS4-E and CS4-F displays have no sibling loss in their uniform cores and satisfy the calculation directly. The displayed general (CS-1), GENIND-6(a), and GENHN references do not establish (CS-1Q.b) for every embedded or mixed genre: they assert affine per-coordinate windows and boundary routing, but do not relate the resulting loss to entry codimension. Accordingly, “conditional on (CS-1) only” must be replaced by “conditional on (CS-1Q), verified per genre.” A universal discharge for embedded and mixed genres remains obstructed until those affine ledgers are displayed and checked.
+
+**C2-G1 consumer sweep.**
+
+- In GENIND-C2(i), replace \(M^\star\ge e(N-1-H)\) by (CS-1Q.a–b).
+- In C2.1–C2.4, replace the separate entry/window multiplication by ANNEX-LEMMA GENIND-C2Q.
+- In R1.1’s full-complement closure and GENIND-C1(iii)’s growing-window use, read the CS-drain rate as conditional on (CS-1Q), not bare (CS-1).
+- In GENIND.B Step 4 and the GENIND-6(d) mixed-drain union bound, child terms remain supplied by GENIND-C1; stage terms are supplied by GENIND-C2Q.
+- The claims that (CS-2), (CS-3), and (CS-EXACT) are not consumed by this rate bound remain correct.
+- At \(n=4\), the standalone E/F calculations remain valid. No general embedded/mixed discharge is asserted by this append.
+
+#### C2-G2 — well-founded descent by truncation and monotonicity
+
+> **ANNEX-LEMMA GENIND-C2D (window truncation).** Let
+> \(\delta_{\mu,K}(W)\) be the conservative-undecided fraction of a
+> \((\mu,K)\)-cluster system at window \(W\). If \(1\le T\le W\),
+> then
+>
+> \[
+> \delta_{\mu,K}(W)\le\delta_{\mu,K}(T).            \tag{C2D.1}
+> \]
+
+*Proof.* Reduction from window \(W\) to \(T\) has constant fibers. If a truncation were decided at window \(T\), its decision would depend only on digits below \(T\), and the same certificate would decide every lift at window \(W\). Hence every window-\(W\) undecided state lies above a window-\(T\) undecided state. Dividing the resulting cardinality inequality by the two total state counts gives (C2D.1). The same argument applies to a ragged stage after truncation to any common uniform core below all residue-class ends; the discarded boundary slots are constant fiber coordinates. ∎
+
+Use the lexicographic measure
+
+\[
+\mathfrak m=(\text{product degree},\text{window})
+          \in\mathbb N_{>0}\times\mathbb N_{\ge1}.
+\]
+
+For a composite stage, its product degree is
+
+\[
+D'=\mu d\gamma,
+\qquad
+D=md,
+\qquad
+m\ge e\mu\gamma.
+\]
+
+If \(e\ge2\), then
+
+\[
+D'\le D/e<D,
+\]
+
+so the first component decreases. If \(e=1\), then \(D'\le D\). When \(D'<D\), the first component again decreases. In the only remaining case \(e=1\) and \(D'=D\), let \(M_{\mathcal G}\) be the common uniform stage window and set
+
+\[
+T:=\min\{M_{\mathcal G},\,N-1\}.
+\]
+
+Then \(T<N\), and C2D.1 gives
+
+\[
+\delta_{\mu,K}(M_{\mathcal G})
+ \le\delta_{\mu,K}(T).
+\]
+
+The recursive estimate is therefore invoked at
+
+\[
+(D',T)=(D,T)<_{\mathrm{lex}}(D,N).
+\]
+
+No inference \(M^\star<N\) from a lower bound is used. If \(T=1\), the window-1 base case is exactly the R3 convention rider. Moreover, in the equal-degree case \(e=1\),
+
+\[
+e(N-1-H)-\Delta_{\mathcal G}\le N-1,
+\]
+
+so replacing \(M_{\mathcal G}\) by \(T\) preserves the lower bound (CS-1Q.a) needed in C2Q’s exponent calculation.
+
+**C2-G2 consumer sweep.**
+
+- Delete “\(H>0\), hence \(M^\star<N\)” from C2(ii).
+- Replace it by the lexicographic measure and truncation argument above.
+- The \(e\ge2\) degree-descent branch is unchanged.
+- GENIND.C′’s α-window induction and GENIND-C1’s β-child degree descent are unchanged.
+- The joint recursion of GENIND.C′ with GENIND-C2 now has a displayed well-founded measure in every case.
+- No new upper bound on the original ragged stage window is claimed or needed.
+
+#### C2-G3 — entry pricing uses the actual side length
+
+Let the actual side have horizontal length \(S\), vertical drop \(H\), and let the chosen composite residual block occupy length
+
+\[
+L=e\mu\gamma\le S.
+\]
+
+Relative to the side’s right endpoint, its \(S\) coefficient columns have supporting-line heights
+
+\[
+\frac{H}{S},\frac{2H}{S},\ldots,\frac{SH}{S}.
+\]
+
+Therefore the number of forced \(Q\)-digit levels is at least
+
+\[
+\begin{aligned}
+\sum_{r=1}^{S}
+ \left(\left\lceil\frac{rH}{S}\right\rceil-1\right)
+&\ge
+ \sum_{r=1}^{S}\frac{rH}{S}-O_m(1)\\
+&=\frac{S+1}{2}H-O_m(1)\\
+&\ge\frac{L+1}{2}H-O_m(1).                         \tag{C2E.1}
+\end{aligned}
+\]
+
+The \(O_m(1)\) term absorbs the ceiling errors, the already-pinned level-zero digits, and the fixed residual-letter census. Other sides, vertices, sibling blocks, and decided pieces only add conditions. Hence
+
+\[
+\rho_{\mathcal G}
+ \le Q^{-((S+1)/2)H-C_{\mathcal G}^{\mathrm{extra}}
+          +O_m(1)}
+ \le Q^{-((L+1)/2)H-C_{\mathcal G}^{\mathrm{extra}}
+          +O_m(1)}.                                \tag{C2E.2}
+\]
+
+Since \(L=e\mu\gamma\ge2e\gamma=2a\),
+
+\[
+\frac{S+1}{2}-a
+ \ge\frac{L+1}{2}-a
+ \ge\frac12.                                       \tag{C2E.3}
+\]
+
+Thus the domination used in C2Q is valid with the actual side length and is only strengthened when residual siblings share that side.
+
+**C2-G3 consumer sweep.**
+
+- In C2.0, retain \(L=e\mu\gamma\) as the composite-block length, but define the actual entry coefficient as \(b_S=(S+1)/2\).
+- Replace the displayed heights \(rH/L\) by \(rH/S\), \(1\le r\le S\).
+- Replace C2.2 by (C2E.2).
+- In the height-domination step use
+  \(b_S-a\ge(L+1)/2-a\ge1/2\).
+- The CS4-E, CS4-F, and CS5-V1E2 checks have \(S=L=4\), so their displayed exponents do not change.
+- Embedded or same-side mixed genres with \(S>L\) receive a strictly stronger entry bound; no existing count is weakened.
+
+SUMMARY: 2 REAL (repairs delivered) / 1 OBSTRUCTED
