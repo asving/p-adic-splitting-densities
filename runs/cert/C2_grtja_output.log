@@ -1,0 +1,76 @@
+1. Verbatim quote:
+
+> “(iii) ε = the print twist are PROVED unconditionally”
+
+and
+
+> “the harness ε-kit IS the print's t(i)-twist rewritten in eq12-canonical coordinates.”
+
+**CRITICAL.** The proof establishes equality with a canonical minimal-grid exponent, not with the print’s actual Definition-`t(i)` exponent. The note itself distinguishes the actual initial abscissa from the minimal grid representative. Write
+\[
+s_{\mathrm{act}}=s(\beta)+\nu e.
+\]
+At \(u=\beta\),
+\[
+t_{\mathrm{Def}}=\frac{s_{\mathrm{act}}-\ell\beta}{e}
+=\nu-\frac{\ell\beta-s(\beta)}e
+=\nu-t_m(\beta).
+\]
+Hence the actual print factor is
+\[
+z^{t_{\mathrm{Def}}}=z^\nu\,z^{-t_m(\beta)}
+=z^\nu\varepsilon_m(\beta),
+\]
+not \(\varepsilon_m(\beta)\), unless \(z^\nu=1\). A counter-configuration is any attained side beginning one grid period late (\(\nu=1\)) over a residue field where \(z\neq1\). The note explicitly allows such \(\nu\)-shifted supports. Its later JA-RES calculation correctly retains the shift through \(\tau\), but that does not prove the advertised standalone J-A(iii) equality.
+
+2. Verbatim quote:
+
+> “supports and degrees agree slot-for-slot”
+
+**GAP.** Slotwise nonvanishing agrees, but ordinary polynomial degrees need not. The note’s own general formula says
+\[
+Q_A(y)y^\nu=\text{the packed polynomial}.
+\]
+Thus, for \(\nu>0\), the harness packed polynomial has degree \(\deg Q_A+\nu\), whereas the normalized print residual has degree \(\deg Q_A\). Counter-configuration: one attained coefficient at \(s_0=s+e\), so \(\nu=1\); the print residual is constant while the packed residual is a nonzero multiple of \(y\). The later \(\operatorname{ord}_\psi\) conclusion can still survive because \(\psi\neq y\), but the stated degree conclusion does not.
+
+3. Verbatim quote:
+
+> “FALSE as stated at \(m\ge2\) whenever the character \(z_{m-1}^{-iA_{m-1}}\) is nontrivial on the read support”
+
+**GAP.** “Not identically \(1\)” is insufficient to rule out a slot-independent scalar. With single-slot support \(\{i_0\}\) and \(z^{-i_0A}\neq1\),
+\[
+c_{i_0}=(z^{-i_0A})C_{i_0}
+\]
+does have the slot-independent scalar \(c=z^{-i_0A}\). More generally, a multi-slot support contained in one character-value class also has a scalar gauge. The PE8 report silently uses the stronger, correct criterion—“\(\chi\) takes at least two values”—which contradicts the frozen box’s stated criterion.
+
+4. Verbatim quote:
+
+> “(iv) the grid/carry tie is PROVED unconditionally”
+
+and
+
+> “W-4 in full.”
+
+**GAP.** JA-GRID(a)/(b) is explicitly restricted by \(u=(V-sh)/e\ge0\), and the note expressly says downstream harness consumers do not inherit its discharge. Its own counter-configuration
+\[
+(e,h,V)=(2,3,1)
+\]
+gives \(s=1,\ u=-1\), so the print-side \(T\)-point does not exist. Only the congruence/grid identity and the carry clause are unconditional; the print-object identification is not “in full” without the membership/proviso hypothesis.
+
+CHECKED CLEAN — JA-PIN clauses 2–7 follow from the displayed type hypotheses and index transcription.
+
+CHECKED CLEAN — JA-VAL follows by induction from identical key-adic developments on the shared-key perimeter.
+
+CHECKED CLEAN — JA-GRID(c), the single-level carry identity and biconditional, is valid without the disputed print-side existence claim.
+
+CHECKED CLEAN — JA-RES’s conditional per-slot exponent law \(c_i=z^{-iA}C_i\) follows from the displayed VD proviso.
+
+CHECKED CLEAN — The root-inclusive R-coll definition supplies the hypotheses needed for the JA-VDIND induction.
+
+CHECKED CLEAN — JA-VDIND’s forward implication is valid; its cancellation and zero-read converse fences are honestly stated.
+
+CHECKED CLEAN — ORB-EPS and ORB-RES have the stated algebraic covariance under \(\ell\mapsto\ell+\kappa e\).
+
+CHECKED CLEAN — The acceptance annex consistently records favorable supplier-grade motion without silently strengthening the frozen proofs.
+
+OUTCOME: CHALLENGE

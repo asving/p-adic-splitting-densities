@@ -21,3 +21,5 @@
 [09:54:29] D1b_gentow3 exit 0 (1407 B; OUTCOMES: DISCHARGED, INSUFFICIENT)
 [09:54:29] C1_liftcorner start
 [09:58:33] C1_liftcorner exit 0 (3781 B; OUTCOME: CHALLENGE)
+[09:58:33] C2_grtja start
+[10:03:40] C2_grtja exit 0 (3965 B; OUTCOME: CHALLENGE)
