@@ -1498,3 +1498,707 @@ acceptance counter remains 0/2.
 The unresolved conclusion is unchanged; only the stale revision label and its reason are updated.
 
 No source file is touched by r4; all five corrections are dated, verbatim-ready replacements within this note. The acceptance counter remains 0/2; a fresh hostile pass must re-resolve the repaired pins and re-grade the note.
+
+
+---
+
+## r5 (2026-08-12): the membership seam + stale-sentence withdrawal
+
+*(Fable-arm; counter resets.)*
+
+Repairs for the latest hostile pass (0 CRITICAL + 2 GAP + 2 MINOR;
+all seventeen pre-r5 marker pins byte-verified by that pass), plus
+the consumption display its no-finding observation asked to be
+evaluated. Every NEW quote and span pin of this round is
+byte-validated in R5-V at the end; the R4 S5.1 record continues to
+govern the pre-r5 stacks.
+
+### R5-F1 — the member class \(\mathfrak M\) defined on the sources' actual quantification domain (finding F-1, GAP: the membership seam)
+
+**Diagnosis.** T4 quantifies (FLOOR) "for every member" (R2-G1) and
+hypothesizes "suppose that \(f\) is a member" (R2-G2) while never
+defining "member". The corpus displays a hostile reader can bind
+that word to include a disc hypothesis — GENTOW-3(iv)'s own
+deep-perturbation parenthetical, byte-quoted:
+
+```
+(g in-budget with slots at heights > THETA_j, disc ≠ 0): both
+```
+
+[GT3 span 1] — and \(f_{\mathrm{key}}=\Phi_2^{\mu_2}\) FAILS
+\(\operatorname{disc}\ne0\) (a \(\mu_2\)-th power; disc \(=0\)), so
+under that reading T4.2(a)'s proof step "Because
+\(f_{\mathrm{key}}\) is a member" is unfounded. Nor does any
+in-budget hypothesis imply \(\operatorname{disc}\ne0\): at
+\(\mu_2=2\), \(g=2c\Phi_2+c^2\) gives
+\(f_{\mathrm{key}}+g=(\Phi_2+c)^2\) with disc \(=0\), and \(g\) is
+in-budget once \(v(c)\) is large — so R2-G2's "so that
+\(f_{\mathrm{key}}+g\) is a member" is unfounded too. The repair
+defines the member class as the domain the pinned sources actually
+quantify over — a pure coefficient slice carrying NO disc
+hypothesis — and rebinds every load-bearing "member" to it.
+
+**The sources' domain, read off the pinned spans.** GENTOW-3(i) is
+displayed on the tower locus — its setting reads the two divisions
+at
+
+```
+member f ∈ 𝒯, per composed coordinate j < mu2:
+```
+
+[GT3 span 1] — but the only membership fact the (i)/(ii) proof
+consumes is Step 1's weak entry bound, byte-quoted:
+
+```
+On 𝒯 the entry pins lie weakly above the inner side:
+```
+
+\(e_2\cdot dv(A_J)\ge(\mu_1-J)u_2\) [GT3 span 1]. Steps 0–2 consume
+nothing else about the dividend — in particular never
+\(\operatorname{disc}\ne0\) — and the corpus already consumes
+Steps 0–2 at proof strength on objects outside the 𝒯 display:
+pinned S8.1's own derivation is headed
+
+```
+The corrected derivation (this note's Steps 0-2, run on g).
+```
+
+[GT3 span 6], run on \(g\), which is not even monic of degree
+\(n\). The sources also apply the floor to the key power itself —
+
+```
+f = Phi2^{mu2} has composed read DRAIN (C_j = 0) while its shadow
+```
+
+[GT3 span 1, clause (iv)], and
+
+```
+THEOREM GENTOW-3(i) floors every discrepancy at
+```
+
+\(\Theta_j\), said of the self-shadow object \(f=\Phi_2^{\mu_2}\)
+[GT6 span 1, S3 setting] — and to the measured W row, which GT3's
+S0 itself names a member:
+
+```
+f = Phi2³ + 2x·Phi2² + 8·Phi2 + 64 at FR-M3 j = 0 has first
+```
+
+disagreeing height exactly \(10=\Theta_0\) [GT3 span 1]. That W row
+sits at slot weight exactly \(\mu_2E_2\), OUTSIDE the strict
+GENTOW-1(a) box — S8.1's boundary confirmation, byte-quoted:
+
+```
+FR-M3 W member's g_W = 2x*Phi2^2 + 8*Phi2 has slot weights 9, 9 <
+10 = mu2*E2 + 1 — OUTSIDE the box — and its discrepancy lands at
+```
+
+[GT3 span 6]. So the domain the sources actually run the floor on
+is the WEAK affine development slice (slot weights \(\ge\mu_2E_2\)),
+not the strict box (\(\ge\mu_2E_2+1\)): the weak slice contains
+every polynomial the sources apply (i) to — the key power at
+equality, the W row at equality, every box element strictly — and
+membership in it is a pure coefficient condition.
+
+**Insertion (verbatim-ready).** In the R1-G2 replacement for S0,
+replace
+
+```markdown
+The member family lies in the affine slice
+\(C_{\mu_2}(q)=1\), while differences of members with the same
+leading key power lie in \(\mathscr D_{<\mu_2}\).
+```
+
+with:
+
+```markdown
+> **DEFINITION (the member class \(\mathfrak M\)).** Writing
+>
+> \[
+> f=\Phi_2^{\mu_2}+g,\qquad
+> g=\sum_{j<\mu_2}C_j(g)\,\Phi_2^{\,j}\in\mathscr D_{<\mu_2},
+> \qquad
+> C_j(g)=\sum_{a<D',\,b<e_2f_2}c_{j,a,b}\,x^a\Phi'^{\,b}
+> \in\mathscr A_j,
+> \]
+>
+> the member class is the affine development slice
+>
+> \[
+> \mathfrak M:=
+> \Bigl\{\,f=\Phi_2^{\mu_2}+g:\
+> e_1e_2\,v(c_{j,a,b})+w(a,b)\;\ge\;(\mu_2-j)E_2
+> \ \text{whenever}\ c_{j,a,b}\ne0\,\Bigr\}
+> \]
+>
+> — leading digit pinned to \(1\), every lower slot digit weakly
+> at or above the composed side (equivalently: every composed
+> slot of \(g\) has weight \(\ge\mu_2E_2\)). Equivalently at the
+> level-1 read — by the same Step-0 carry conversion that pinned
+> GENTOW-3 S8.1 item (1) runs for its box — the entry pins of
+> \(f\) lie weakly above the inner side,
+> \(e_2\cdot dv(A_J)\ge(\mu_1-J)u_2\): exactly the membership
+> fact, and the only one, that GENTOW-3's Steps 0–2 consume.
+>
+> Membership in \(\mathfrak M\) is a pure coefficient condition
+> on the development digits. It carries NO discriminant
+> hypothesis and no decidedness hypothesis. Everywhere in this
+> note "member" means "element of \(\mathfrak M\)". The member
+> family lies in the affine slice \(C_{\mu_2}(q)=1\), and
+> differences of members with the same leading key power lie in
+> \(\mathscr D_{<\mu_2}\).
+>
+> Three membership facts, each by inspection of the definition:
+>
+> 1. \(f_{\mathrm{key}}=\Phi_2^{\mu_2}\in\mathfrak M\): its lower
+>    development is \(g=0\), so the slot condition is vacuous.
+>    Note \(\operatorname{disc}(f_{\mathrm{key}})=0\): the
+>    sources' floor domain provably contains a disc \(=0\)
+>    element, so no disc hypothesis can be part of membership.
+> 2. In-budget perturbations stay in \(\mathfrak M\): if every
+>    composed slot of \(g\) clears weight \(\mu_2E_2+1\) —
+>    GENTOW-3 S8.1's box, which is STRICTLY inside the membership
+>    floor — then \(f_{\mathrm{key}}+g\in\mathfrak M\), and
+>    \(f+g\in\mathfrak M\) for every \(f\in\mathfrak M\)
+>    (slotwise ultrametric). Pure coefficient arithmetic; no disc
+>    condition is implied, and the \((\Phi_2+c)^2\) example shows
+>    none could be.
+> 3. The measured FR-M3 W member lies in \(\mathfrak M\) at exact
+>    equality (slot weights \(9=\mu_2E_2\)) while sitting OUTSIDE
+>    S8.1's box — which is why the weak slice, and not the box,
+>    is the membership reading: GENTOW-3's S0 names it a member
+>    and records its floor-exact first divergence.
+```
+
+**(FLOOR) displayed on \(\mathfrak M\).** In the R2-G1 replacement,
+replace
+
+```markdown
+> Assume the GENTOW-3 discrepancy floor holds for every member:
+>
+> \[
+> \operatorname{gr}_m(\Delta_j(f))=0
+> \qquad
+> \text{for every member \(f\), every \(j<\mu_2\), and every
+> \(m<\Theta_j\).}
+> \tag{FLOOR}
+> \]
+```
+
+with:
+
+```markdown
+> Assume the GENTOW-3 discrepancy floor on the member class
+> \(\mathfrak M\) (S0):
+>
+> \[
+> \operatorname{gr}_m(\Delta_j(f))=0
+> \qquad
+> \text{for every \(f\in\mathfrak M\), every \(j<\mu_2\), and
+> every \(m<\Theta_j\).}
+> \tag{FLOOR}
+> \]
+```
+
+The supplier cite, exactly: (FLOOR) on \(\mathfrak M\) is
+GENTOW-3(i) read at its Steps 0–2 quantification domain. The (i)
+display —
+
+```
+(i) [FLOOR] every dv2-height at which ShC_j and C_j carry
+```
+
+different slot digits is \(\ge\Theta_j\) [GT3 span 1] — is proved
+from \(\mathfrak M\)'s defining entry bound alone (Step 1, quoted
+above) with every discrepancy branch priced at \(+k\delta\),
+\(k\ge1\), above the source layer (Step 2); no disc hypothesis
+enters, and the S8.1 precedent quoted above licenses consuming
+Steps 0–2 at proof strength. Accordingly, in S3's "Consumed
+facts.", replace
+
+```markdown
+1. GENTOW-3(i) supplies (FLOOR).
+```
+
+with:
+
+```markdown
+1. GENTOW-3(i), read at its Steps 0–2 quantification domain
+   \(\mathfrak M\) (the S0 definition: the Step-1 entry bound is
+   the only membership fact the proof consumes, and pinned S8.1
+   consumes Steps 0–2 at proof strength on \(g\) itself), supplies
+   (FLOOR) on \(\mathfrak M\).
+```
+
+**Rebinding replacements (each verbatim-ready).**
+
+(1) In the R2-G1 proof paragraph, replace
+
+```markdown
+Because \(f_{\mathrm{key}}\) is a member, (FLOOR) specializes to
+```
+
+with
+
+```markdown
+Because \(f_{\mathrm{key}}\in\mathfrak M\) (S0, membership fact 1;
+no disc hypothesis is available or needed), (FLOOR) specializes to
+```
+
+(2) In R2-G2's statement of T4.2(b), replace
+
+```markdown
+> and suppose that \(f\) is a member. If
+```
+
+with
+
+```markdown
+> and suppose \(f\in\mathfrak M\) — a pure coefficient condition
+> (S0). If
+```
+
+and replace
+
+```markdown
+> In particular, if \(g\) satisfies GENTOW-3’s in-budget
+> hypotheses, so that \(f_{\mathrm{key}}+g\) is a member, its
+```
+
+with
+
+```markdown
+> In particular, if \(g\) is in-budget in pinned S8.1's box sense
+> (every composed slot of \(g\) clears weight \(\mu_2E_2+1\)),
+> then \(f=f_{\mathrm{key}}+g\in\mathfrak M\) by S0's membership
+> fact 2 — pure coefficient arithmetic, no disc condition implied
+> or needed — and S8.1's
+```
+
+(3) In R2-G2's proof paragraph, replace
+
+```markdown
+Let \(g\in\mathscr D_{<\mu_2}\) and let
+\(f=f_{\mathrm{key}}+g\) be a member. By the definitions in S0,
+```
+
+with
+
+```markdown
+Let \(g\in\mathscr D_{<\mu_2}\) and let
+\(f=f_{\mathrm{key}}+g\in\mathfrak M\). By the definitions in S0,
+```
+
+and replace
+
+```markdown
+(FLOOR), applied
+to the member \(f\), excludes every lower digit.
+```
+
+with
+
+```markdown
+(FLOOR), applied
+to \(f\in\mathfrak M\), excludes every lower digit.
+```
+
+(4) In the R2-C2 replacement, replace
+
+```markdown
+It is a member, hence belongs to
+\(\mathscr D_{\le\mu_2}\), and its honest lower coordinates
+vanish:
+```
+
+with
+
+```markdown
+It lies in \(\mathfrak M\) (S0, membership fact 1), hence in
+\(\mathscr D_{\le\mu_2}\), and its honest lower coordinates
+vanish:
+```
+
+No other "member" site is load-bearing: with \(\mathfrak M\) the
+weak slice, T4.2(d)'s warning and the S3 instance sentences about
+the W member's entry-driven attainment are true as written (the W
+member IS an element of \(\mathfrak M\), at the boundary).
+
+**Where \(\operatorname{disc}\ne0\) stays.** The sources demand
+disc \(\ne0\) on their σ-read legs, and only there:
+GENTOW-3(iv)'s deep-perturbation parenthetical (byte-quoted in
+the diagnosis) carries it so that the perturbed member's honest
+read is a DECIDED leaf whose σ the trailing-pair construction
+consults, and the GENHN-family σ-decision displays quantify over
+disc \(\ne0\) lifts. T4 consumes none of that σ-content: every
+clause of LEMMA T4.2 is a graded-digit statement, and the supplier
+of its in-budget leg decouples that parenthetical explicitly —
+pinned S8.1, byte-quoted:
+
+```
+consumed by the corrected derivation; the box hypothesis is the
+```
+
+operative one [GT3 span 6: "The parenthetical hypothesis '(slots
+at heights > THETA_j)' is NOT ..."], its digit conclusion being
+
+```
+every disagreeing height of g's two reads is >= THETA_j + 1,
+```
+
+with the box hypothesis
+
+```
+"in-budget" at the GENTOW-1(a) box this corpus defines: every
+```
+
+composed slot of \(g\) clears weight \(\mu_2E_2+1\) — and nothing
+else. So \(\operatorname{disc}\ne0\) is NOT part of
+\(\mathfrak M\) and appears in no digit-floor clause of this note;
+any later consumer that needs a decided-leaf σ must import the
+source's own disc \(\ne0\) hypothesis at that consumption site,
+alongside — not inside — membership.
+
+### R5-F2 — the stale r0 CERT-TOP sentence WITHDRAWN (finding F-2, GAP)
+
+The r0 sentence at S4.1's tail, byte-quoted:
+
+```
+This is GENTOW-6.3(b), CERT-TOP, as a literal exposed-slot instance
+of the certificate-witness lemma.
+```
+
+is **WITHDRAWN** and deleted. It survived r3's replacement span —
+which ended at the displayed \(\Theta_{j^*}\) formula, one
+sentence short — and asserts consumed-instance status on the
+pre-r3 "exposed-slot" (uniqueness-among-single-extractions)
+basis. That contradicts the r3 repair, whose S4.1 text makes the
+T4.2(c) invocation conditional and states that single-extraction
+uniqueness alone leaves `GT6-CERT-TOP` unresolved, and the r4
+status, which records that the invocation "additionally awaits
+the source-owned full-exposure calculation required by r3". The
+governing status of the instance is the r3/r4 language — now
+resolved at the \(f_1=1\) scope, and only there, by R5-63A's
+consumption display below.
+
+### R5-m1 — the boxed compression scoped to the key power (finding m-1, MINOR)
+
+In the composition record, replace the boxed display and its
+trailing sentence, i.e.
+
+```markdown
+\[
+\boxed{
+\text{touched at }j
+\;:\Longleftrightarrow\;
+\omega_j\ne0
+\;\Longrightarrow\;
+\text{first discrepancy at }\Theta_j
+}
+\]
+
+with the converse at the key power supplied by the discrepancy
+floor, and with GENTOW-6’s CERT-TOP serving as an explicit,
+unique-slot proof that \(\omega_{j^*}\ne0\).
+```
+
+with:
+
+```markdown
+\[
+\boxed{
+\text{touched at }j
+\;:\Longleftrightarrow\;
+\omega_j\ne0
+\;\Longleftrightarrow\;
+\nu_j(f_{\mathrm{key}})=\Theta_j
+}
+\]
+
+The first equivalence is DEFINITION T4.1; the second is LEMMA
+T4.2(a) under (FLOOR), and the whole box is a statement about the
+KEY POWER alone: no other member's first discrepancy is
+compressed here (the measured FR-M3 W member attains \(\Theta_0\)
+at a coordinate the key power leaves untouched). Transfer to any
+other member goes only through T4.2(b)'s perturbation hypothesis.
+GENTOW-6's CERT-TOP serves as the source-owned, fully exposed
+assembled-slot proof that \(\omega_{j^*}\ne0\), at its \(f_1=1\)
+scope (R5-63A).
+```
+
+### R5-m2 — \(\mathscr A_j\) defined at its first use (finding m-2, MINOR)
+
+\(\mathscr A_j\) enters undefined at R1-G2's display
+\(C_j,\operatorname{Sh}C_j:\mathscr D_{\le\mu_2}\to\mathscr A_j\).
+The right codomain is NOT the degree-\(<\mu_2D_2\) dividend
+module; it is one coordinate's slot grid, read off LEMMA
+GENTOW-6.4(a)'s own display, byte-quoted:
+
+```
+> a < D', b < e2f2; slot degree jD2 + bD' + a; slot dv2-height
+> e1e2·v(c_{j,a,b}) + w(a,b), w(a,b) = a·e2h + b·u2). Then:
+```
+
+[GT6 NEW span 3; validation in R5-V]. In the R1-G2 replacement for
+S0, insert immediately after the \(\mathscr D_{<\mu_2}\) display:
+
+```markdown
+For each \(j<\mu_2\), let
+
+\[
+\mathscr A_j:=\bigoplus_{a<D',\;b<e_2f_2}
+\widehat{\mathcal O}\cdot x^a\Phi'^{\,b}
+\]
+
+— the module of composed-grid coordinate strings at ONE
+coordinate \(j\): elements \(\sum_{a,b}c_{a,b}x^a\Phi'^{\,b}\)
+with \(a<D'\), \(b<e_2f_2\); as polynomials these have
+\(x\)-degree \(<D_2=\deg\Phi_2\) (one coordinate's grid, not the
+dividend module). The slot \((a,b)\) at digit value \(v\) carries
+\(dv_2\)-height \(e_1e_2\,v+w(a,b)\), with
+\(w(a,b)=a\,e_2h+b\,u_2\), and one \(K_2\)-digit per height by
+GENHN-2′. This is LEMMA GENTOW-6.4(a)'s grid display read at one
+coordinate. Only the grid-and-height display is consumed here:
+6.4(a)'s bijection-codomain face (corrected by the post-PE2 rider
+inside the same pinned span) is consumed nowhere in this note.
+```
+
+(R5-F1's \(\mathfrak M\) definition lands after this insertion in
+the assembled S0 and uses \(\mathscr A_j\) and \(w(a,b)\) as
+defined here.)
+
+**Pin update (the new GT6 span).** LEMMA GENTOW-6.4 lies outside
+the r0–r4 GT6 stack (old span 2 is half-open AT the S6.2 heading).
+In S4's "Marker-delimited source pins, HEAD." list, as repaired by
+R4-C1, replace the four-span GT6 stack with this five-span stack:
+
+```markdown
+1. BEGIN substring  
+   `## S3. THEOREM GENTOW-6.3`  
+   END substring  
+   `## S4. MACHINE LEG`
+
+2. BEGIN substring  
+   `### S6.1 THE DATED GAUGE ANNEX`  
+   END substring  
+   `### S6.2 THE 𝒯-FREE CAP LEMMA`
+
+3. BEGIN substring  
+   `### S6.2 THE 𝒯-FREE CAP LEMMA`  
+   END substring  
+   `> (b) [BAND-1 CAP, 𝒯-FREE] across ambient window-N lifts of f:`
+
+4. BEGIN substring  
+   `**GENTOW6-BOX-1 (mu2 >= 3 attainment): CLOSED AT f1 = 1**`  
+   END substring  
+   `**GENTOW6-BOX-4 (the f1 >= 2 x-ful-digit sealed battery row):`
+
+5. BEGIN substring  
+   `**GENTOW6-BOX-4 (the f1 >= 2 x-ful-digit sealed battery row):`  
+   END substring  
+   `output md5 2d8d617a, verdict commit follows this append.`
+```
+
+New span 3 covers the 𝒯-free triangularity paragraph and LEMMA
+GENTOW-6.4's head and clause (a) with its codomain rider; it is
+half-open at clause (b), which is not consumed. Validation and
+rider audit: R5-V.
+
+### R5-63A — the r3-awaited full-exposure calculation: THEOREM GENTOW-6.3(a) supplies it at \(f_1=1\) (the pass's no-finding observation, answered)
+
+**Verdict: YES at the sealed scope — \(f_1=1\), \(\mu_2=2\),
+\(2i_{t^*}\ge D'\) — and NO elsewhere.**
+
+**What r3 requires.** By S0's full-exposure clause, invoking
+T4.2(c) at `GT6-CERT-TOP` needs a source-owned calculation that,
+after every branch term and every incoming carry and recarry has
+been propagated to the canonical grid, the complete list of
+summands landing in the certificate slot is the displayed
+contribution alone — exclusion across EVERY provenance, not
+uniqueness among single-extraction branches.
+
+**What the already-validated GT6 span 1 proves.** THEOREM
+GENTOW-6.3(a) is a closed clause of the validated span, and it
+classifies the ENTIRE assembled height-\(\Theta\) layer.
+Byte-quoted at its head:
+
+```
+> (a) [SOURCE CLASSIFICATION] the height-THETA graded layer of the
+```
+
+discrepancy (\(\operatorname{Sh}C_j-C_j\) over the composed grid)
+is a sum of single-\(\Phi'\)-extraction branches, one per
+x-overflowing lift pair — and at its close:
+
+```
+> Multi-extraction branches sit at weight >= THETA + delta; tail
+```
+
+(non-extraction) routes are shared by both reads and cancel. The
+clause's own bookkeeping covers the carry and recarry provenances:
+every downstream step of a height-\(\Theta\) branch is tracked —
+
+```
+> division/recarry step emits terms of Y-exponent LOWERED by
+```
+
+\(e_2f_2-e_2s\ge e_2>0\) at the same weight — so carries and
+recarries are not an unaccounted provenance; they are the
+branches' own tracked steps. Everything else either leaves the
+layer (multi-extraction, at \(\ge\Theta+\delta\)) or cancels
+between the two reads (tail routes). Then 6.3(b), in the same
+span, proves the certificate slot
+
+```
+> b* = (2e2t*+1) mod e2f2, a* = 2i_{t*} − D' — receives EXACTLY ONE
+```
+
+height-\(\Theta\) branch, its proof closing the slot against every
+other height-\(\Theta\) branch —
+
+```
+> equality iff zero steps and t + t' = 2t*: the (t*,t*) direct
+```
+
+branch alone, and
+
+```
+> lands at (a*, Y^{B*+1}) by the uniqueness just shown (branches
+```
+
+— with the digit nonzero unconditionally:
+
+```
+A product of units in K2^x: nonzero — no
+```
+
+binomial coefficient, no characteristic condition, no zero
+divisors.
+
+**How this discharges T4.2(c)'s premise at the GT6 instance.** By
+(a), every summand of the assembled height-\(\Theta\) layer of the
+key power's discrepancy — the same object \(\omega\) assembles —
+is a term of some overflowing pair's single-extraction branch
+chain; there is no other provenance left to exclude. By (b), the
+only such term at the canonical position \((a^*,Y^{B^*+1})\) is
+the \((t^*,t^*)\) direct branch. Uniqueness among branch-chain
+terms is therefore uniqueness among ALL summands: the certificate
+slot is FULLY EXPOSED, in S0's r3 sense, by the displayed digit
+\((\widehat c_{t^*})^2\pi^{2a_{t^*}}\cdot(\text{wrap unit})\ne0\).
+T4.2(c) fires: \(\omega_{j^*}\ne0\), \(j^*\) is touched, and
+\(\nu_{j^*}(f_{\mathrm{key}})=\Theta_{j^*}\). S4.1's r3
+conditional ("When that source-owned calculation establishes this
+full exposure ...") is resolved AFFIRMATIVELY at this scope; its
+fail-closed branch ("If the pinned source span establishes
+uniqueness only among single-extraction branches ...") does not
+bite, because 6.3(a) is a classification of the whole layer, not
+a uniqueness claim inside one provenance.
+
+**Scope fences (what is NOT supplied).**
+
+- \(f_1\ge2\): the same span's GT6-r1 scope pin —
+
+  ```
+  > genre" reads AT f1 = 1, at the corrected chat_t. At f1 >= 2 the
+  ```
+
+  displays below "are NOT proved as written" — so S4.2's
+  corrected-lift invocation (ANNEX 6.3′) still awaits ITS OWN
+  full-exposure calculation; no (a)-grade layer classification is
+  sealed at \(f_1\ge2\) (GENTOW6-BOX-4 residue). S4.2's r3
+  conditional language stands unchanged.
+- \(\mu_2\ge3\): S4.3's candidate status is unchanged (R2-G3
+  governs; (6.5-CAND) remains an unassembled candidate).
+- No hostile-pass credit: this is a consumption display added by
+  a repair round; the acceptance counter stays 0/2 and the next
+  hostile pass re-adjudicates it.
+
+**Status refresh.** Replace the governing status block (R4-m2's
+replacement text) with:
+
+```markdown
+**STATUS: R5 TEXT REPAIRED; UNRESOLVED at attempt grade 0/2.**
+No clean hostile pass has been earned. The r5 round defined the
+member class \(\mathfrak M\) on the sources' actual quantification
+domain (pure coefficient slice, no disc hypothesis), withdrew the
+stale r0 CERT-TOP consumption sentence, scoped the boxed
+compression to the key power, defined \(\mathscr A_j\) from
+GENTOW-6.4(a)'s grid display under a new validated span, and added
+the R5-63A consumption display: at \(f_1=1\), \(\mu_2=2\),
+\(2i_{t^*}\ge D'\), THEOREM GENTOW-6.3(a)+(b) supply the
+source-owned full-exposure calculation required by r3, so
+`GT6-CERT-TOP`'s invocation of T4.2(c) is discharged at that scope
+only. The \(f_1\ge2\) annex leg (6.3′) and the \(\mu_2\ge3\)
+candidate still await their own exposure calculations. The
+acceptance counter remains 0/2.
+```
+
+### R5-V — byte-literal validation of the r5 pins and quotes (2026-08-12)
+
+Every quote displayed in a fenced block above and every marker of
+the new span was matched byte-literally (fixed-string) against its
+named HEAD source. Occurrence counts, 1-based lines, 0-based byte
+offsets:
+
+Source `GENTOW3_PROOF_2026-08-09.md`:
+
+| quote (role) | count | line | byte |
+|---|---|---|---|
+| `member f ∈ 𝒯, per composed coordinate j < mu2:` (S2 setting) | 1 | 164 | 8952 |
+| `(i) [FLOOR] every dv2-height at which ShC_j and C_j carry` ((i) display) | 1 | 189 | 10420 |
+| `On 𝒯 the entry pins lie weakly above the inner side:` (Step 1 = \(\mathfrak M\)'s consumption) | 1 | 230 | 12643 |
+| `f = Phi2^{mu2} has composed read DRAIN (C_j = 0) while its shadow` ((iv) at the key power) | 1 | 204 | 11313 |
+| `f = Phi2³ + 2x·Phi2² + 8·Phi2 + 64 at FR-M3 j = 0 has first` (S0's W member) | 1 | 93 | 4921 |
+| `(g in-budget with slots at heights > THETA_j, disc ≠ 0): both` ((iv) σ-leg parenthetical) | 1 | 296 | 16733 |
+| `The corrected derivation (this note's Steps 0-2, run on g).` (S8.1 proof-strength precedent) | 1 | 907 | 50145 |
+| `"in-budget" at the GENTOW-1(a) box this corpus defines: every` (S8.1 box) | 1 | 908 | 50212 |
+| `every disagreeing height of g's two reads is >= THETA_j + 1,` (S8.1 margin) | 1 | 923 | 51137 |
+| `FR-M3 W member's g_W = 2x*Phi2^2 + 8*Phi2 has slot weights 9, 9 <` (S8.1 boundary) | 1 | 932 | 51697 |
+| `10 = mu2*E2 + 1 — OUTSIDE the box — and its discrepancy lands at` (S8.1 boundary) | 1 | 933 | 51763 |
+| `consumed by the corrected derivation; the box hypothesis is the` (S8.1 decoupling) | 1 | 938 | 52077 |
+
+Source `GENTOW6_PROOF_2026-08-09.md`:
+
+| quote (role) | count | line | byte |
+|---|---|---|---|
+| `THEOREM GENTOW-3(i) floors every discrepancy at` (S3 setting at the key power) | 1 | 371 | 20760 |
+| `> (a) [SOURCE CLASSIFICATION] the height-THETA graded layer of the` (6.3(a) head) | 1 | 393 | 21910 |
+| `> division/recarry step emits terms of Y-exponent LOWERED by` (6.3(a) downstream tracking) | 1 | 400 | 22379 |
+| `> Multi-extraction branches sit at weight >= THETA + delta; tail` (6.3(a) close) | 1 | 402 | 22511 |
+| `> b* = (2e2t*+1) mod e2f2, a* = 2i_{t*} − D' — receives EXACTLY ONE` (6.3(b) slot) | 1 | 408 | 22842 |
+| `> equality iff zero steps and t + t' = 2t*: the (t*,t*) direct` (6.3(b) proof) | 1 | 469 | 26344 |
+| `A product of units in K2^x: nonzero — no` (6.3(b) digit) | 1 | 475 | 26723 |
+| `> lands at (a*, Y^{B*+1}) by the uniqueness just shown (branches` (6.3(b) proof close) | 1 | 480 | 27030 |
+| `> genre" reads AT f1 = 1, at the corrected chat_t. At f1 >= 2 the` (GT6-r1 scope pin) | 1 | 382 | 21265 |
+| `### S6.2 THE 𝒯-FREE CAP LEMMA` (span-2 END; NEW span-3 BEGIN) | 1 | 851 | 47646 |
+| `> (b) [BAND-1 CAP, 𝒯-FREE] across ambient window-N lifts of f:` (NEW span-3 END) | 1 | 920 | 51652 |
+| `> a < D', b < e2f2; slot degree jD2 + bD' + a; slot dv2-height` (6.4(a) grid) | 1 | 884 | 49514 |
+| `> e1e2·v(c_{j,a,b}) + w(a,b), w(a,b) = a·e2h + b·u2). Then:` (6.4(a) heights) | 1 | 885 | 49577 |
+
+Every count is exactly 1 (S5 conditions 1–2); every match lies in
+its named source (condition 4). The post-r5 GT6 stack's markers
+occur in strictly increasing byte order
+\(19136<29718<39709<47646<51652<67667<70410<71408\), BEGIN
+preceding END in every pair (conditions 3 and 5); the S6.2 marker
+serves as span-2 END and span-3 BEGIN, as the GT3 stack already
+does with its shared markers. All quotes above lie inside their
+stacks' pinned spans; the S6.2-block quotes lie inside the NEW
+span 3 (bytes 47646–51652).
+
+Rider audit (condition 6), new span 3: the post-PE2 codomain rider
+sits INSIDE the span and corrects LEMMA GENTOW-6.4(a)'s
+bijection-codomain face (above-top slots forced to zero). r5
+consumes only the grid-and-height display, which the rider leaves
+intact and machine-confirms (its grid-census leg); the rider
+itself records that the bijection/count face "is consumed nowhere
+at HEAD", and this note keeps it that way. Nothing after the
+span's END touches 6.4(a)'s grid display (the later dated appends
+are the BOX records for 6.3-family content). For the pre-r5 spans,
+the R4 S5.1 record and the latest pass's 17/17 byte-verification
+govern; no new supersession was found against the quotes above.
+
+This record is a pin-validation and consumption result, not
+hostile-pass credit: the acceptance counter stays 0/2. A fresh
+hostile pass must re-resolve the six-plus-five span stacks,
+re-grade the \(\mathfrak M\) quantification, and re-adjudicate the
+R5-63A consumption display.
