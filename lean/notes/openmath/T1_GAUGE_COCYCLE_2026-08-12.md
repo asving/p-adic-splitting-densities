@@ -2712,3 +2712,267 @@ Equivalently, the base-letter paragraph may be placed after the original complet
 Add to §6:
 
 > | Stated the graded scalar-covariance and slot-grade conventions used by the C3 ladder reads; imported the missing level-two bridge and carry structure through \(\mathrm{(H\!-\!HETOW\!-\!LOCAL)}\); and reattached the level-one basis sentence. | T1P5, 2026-08-12 r5 | Repairs 2 GAP and 1 MINOR findings without promoting either the sitewise residual-read law or the local HETOW construction to an unconditional T1 theorem. |
+
+
+---
+
+## r6 (2026-08-12): arc repairs
+
+*(gpt-5.6-sol high, runs/comp8/T1R6_output.log; transcribed unaltered; counter resets.)*
+
+# T1 r6 corrections — 2026-08-12
+
+These edits repair the two absorption-scope gaps found by T1P7.
+
+## R6-1 — Propagate the zero-lift branch into the A3 and A6 pins
+
+In the replacement §3 absorption map, under **A3 — GENTOW1**, replace the closed read statement
+
+\[
+\boxed{
+dv_1(\widehat k_t)=M_t,
+\qquad
+c_t^{\mathrm{mult}}
+=
+\gamma_t\eta^{-W(t)}
+=
+c_t.
+}
+\]
+
+with:
+
+> The valuation statement is conditional on the coefficient being nonzero:
+> \[
+> \boxed{
+> \begin{aligned}
+> c_t\ne0
+> &\Longrightarrow
+> dv_1(\widehat k_t)=M_t,\\
+> c_t=0
+> &\Longrightarrow
+> \gamma_t=0,\quad
+> \widehat k_t=L_{M_t}(0)=0,\quad
+> dv_1(\widehat k_t)=+\infty.
+> \end{aligned}
+> }
+> \]
+> In both branches, the multiplicative coefficient identity remains
+> \[
+> \boxed{
+> c_t^{\mathrm{mult}}
+> =
+> \gamma_t\eta^{-W(t)}
+> =
+> c_t.
+> }
+> \]
+
+Replace the A3 consumption check
+
+\[
+\boxed{
+\text{T1 (C2-level-1) + (C3-dictionary) + (C6)}
+\Longrightarrow
+\text{the pinned corrected-coefficient display}.
+}
+\]
+
+with:
+
+\[
+\boxed{
+\text{T1 (C2-level-1) + (C3-dictionary)
++ (C3-zero-lift) + (C6)}
+\Longrightarrow
+\text{the re-scoped pinned corrected-coefficient display}.
+}
+\]
+
+Immediately after that display, insert:
+
+> Exact height is consumed only on the nonzero-coefficient branch. A vanishing coefficient produces an absent key term and is governed by
+> \[
+> \operatorname{lift}_1(0;M_t)=0,
+> \qquad
+> dv_1(0)=+\infty.
+> \]
+
+Under **A6 — GENTOW6**, replace:
+
+> with its full displayed support and exact height.
+
+with:
+
+> Its actual \(x\)-support is
+> \[
+> \boxed{
+> \operatorname{Supp}_x L_M(\lambda)
+> =
+> \left\{
+> i(M)+e_1r:
+> 0\le r<f_1,\ \lambda_r\ne0
+> \right\}.
+> }
+> \]
+> Every present summand has exact height \(M\). If
+> \(\lambda\ne0\), then
+> \[
+> dv_1\!\left(L_M(\lambda)\right)=M.
+> \]
+> If \(\lambda=0\), then
+> \[
+> L_M(0)=0,\qquad
+> \operatorname{Supp}_xL_M(0)=\varnothing,\qquad
+> dv_1(L_M(0))=+\infty.
+> \]
+
+Replace the A6 consumption check by:
+
+\[
+\boxed{
+\begin{gathered}
+\text{T1 (C5-gamma) + (C5-normalizer-read)
++ (C5-varpi-read) + (C6-lift)}\\
+\Longrightarrow
+\text{the pinned GENTOW6 scalar-read and lift formulas,}\\
+\text{with exact lift height only for }\lambda\ne0
+\text{ and the displayed zero-lift branch for }\lambda=0.
+\end{gathered}
+}
+\]
+
+## R6-2 — Import and use the binary second-level carry
+
+In the A2 local supplier interface
+\(\mathrm{(H\!-\!HETOW\!-\!LOCAL)}\), replace
+
+\[
+w_2
+=
+\left\lfloor
+\frac{s(k)+s(k')}{e_2}
+\right\rfloor,
+\qquad
+m(k+k')
+=
+m(k)+m(k')+w_2u_2.
+\]
+
+with:
+
+\[
+\boxed{
+0\le s(a)<e_2
+\quad
+\text{for every relevant height }a,
+}
+\]
+
+and
+
+\[
+\boxed{
+w_2
+=
+\left\lfloor
+\frac{s(k)+s(k')}{e_2}
+\right\rfloor
+\in\{0,1\},
+\qquad
+m(k+k')
+=
+m(k)+m(k')+w_2u_2.
+}
+\]
+
+Immediately after these displays, insert:
+
+> The range condition on \(s\), and hence the binary-carry conclusion
+> \(w_2\in\{0,1\}\), are HETOW supplier facts. They are not consequences of T1 or of (C5-carry).
+
+In the A2 consumption proof, replace the paragraph beginning
+
+> The supplier relation
+> \[
+> m(k+k')=m+m'+w_2u_2
+> \]
+> and two applications of (C5-carry) give
+
+through its displayed equality with:
+
+> The supplier relation gives
+> \[
+> m(k+k')=m+m'+w_2u_2,
+> \qquad
+> w_2\in\{0,1\}.
+> \]
+> First, (C5-carry) gives
+> \[
+> Q(m+m')-Q(m)-Q(m')
+> =
+> \operatorname{wrap}_1(m,m').
+> \]
+> If \(w_2=0\), this is already
+> \[
+> Q(m(k+k'))-Q(m)-Q(m').
+> \]
+> If \(w_2=1\), a second application of (C5-carry) gives
+> \[
+> Q(m+m'+u_2)-Q(m+m')
+> =
+> Q(u_2)+
+> \operatorname{wrap}_1(m+m',u_2).
+> \]
+> Combining the two binary cases yields
+> \[
+> \boxed{
+> \begin{aligned}
+> Q(m(k+k'))-Q(m)-Q(m')
+> &=
+> \operatorname{wrap}_1(m,m')\\
+> &\quad+
+> w_2\left(
+> Q(u_2)+
+> \operatorname{wrap}_1(m+m',u_2)
+> \right).
+> \end{aligned}
+> }
+> \]
+> Substitution of
+> \(\tau(k)=\eta^{-Q(m(k))}\) proves the pinned
+> \(\tau\)-ratio.
+>
+> The displayed formula uses the binary-carry supplier fact essentially. No analogous linear-in-\(w_2\) formula is asserted for \(w_2>1\).
+
+Replace the closing A2 scope sentence
+
+> Thus T1 supplies only the level-one monomial-ratio and \(q\)-carry algebra. The bridge from level \(2\), the function \(m\), the second-level carry \(w_2\), and the identification of \(\tau\) remain explicitly imported HETOW facts.
+
+with:
+
+> Thus T1 supplies only the level-one monomial-ratio and \(q\)-carry algebra. The bridge from level \(2\), the function \(m\), the canonical range
+> \(0\le s(a)<e_2\), the resulting binary second-level carry
+> \(w_2\in\{0,1\}\), and the identification of \(\tau\) remain explicitly imported HETOW facts.
+
+## Consequential record edits
+
+Append to the honesty ledger:
+
+> 16. Exact lift height is asserted only for a nonzero digit. In particular, a corrected-key coefficient with \(c_t=0\) is the zero lift, has valuation \(+\infty\), and contributes an empty support rather than a finite-height key term.
+>
+> 17. The pinned A2 HETOW carry formula uses the supplier range
+> \[
+> 0\le s(a)<e_2,
+> \]
+> which makes
+> \[
+> w_2=\left\lfloor
+> \frac{s(k)+s(k')}{e_2}
+> \right\rfloor
+> \]
+> binary. T1 does not assert the displayed linear-in-\(w_2\) formula for a nonbinary carry.
+
+Add to §6:
+
+> | Propagated the zero-lift branch into the A3 and A6 absorption pins, and imported the canonical \(s\)-range and binary second-level carry required by the A2 derivation. | T1P7, 2026-08-12 r6 | Repairs 2 GAP findings: no finite exact height is assigned to a zero coefficient, and the HETOW carry proof now states and uses \(w_2\in\{0,1\}\). |
