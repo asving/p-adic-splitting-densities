@@ -1,0 +1,15 @@
+1. **DISCHARGED.** GENHN-CAP-GEN correctly separates unread cells from readable boundary components. Independence of the \(\eta^t\)-basis prevents cancellation of a nonzero visible part, while potentially undercutting completions drain to `UND`. The completion-invariance rule and \(Q^{\operatorname{comp}(m)}-1\) census are mathematically sound.
+
+2. **DISCHARGED.** The re-display honestly replaces finiteness of genre data with finiteness of parameterized schemas. It matches S2’s proof, accommodates unbounded \(Q,h,N\), and prehistory depths, and preserves the parameterized laws consumed by GENHN.B.
+
+3. **DISCHARGED.** GENHN-LIFT is correct: all exponents are integral, degrees are \(<D'\), every nonzero component has height \(M\), and division by \(n(M)\) produces the prescribed \(K\)-residue. The \(\eta^{W(t)}\) correction cancels the normalizer cocycle, and the clearance estimate validates T(b)′(i).
+
+4. **NEW-ISSUE.** The re-display’s definition of “occupied” is too weak. Having \(a(m)\ge0\) makes \(n(m)=x^i\pi^a\) integral, but does not provide a full \(K\)-digit slot when \(f_1>1\): the \(\eta^s\)-component requires \(a-sh\ge0\). For example, with \((e_1,f_1,h,m)=(1,2,1,0)\), \(n(0)=1\) is integral, yet the \(\eta\)-component would require \(x\pi^{-1}\). A complete \(K\)-slot requires
+\[
+a\ge(f_1-1)h,
+\]
+and, for full window visibility, also \(a\le N-1\). Restricting directly to the consumed domain \(m>D'h\) would avoid this defect.
+
+5. **DISCHARGED.** The residual on a length-\(4\), denominator-\(2\) side has degree \(2\), so \((T-c)^2\) is correct. It agrees with the exhibited \((T-1)^2\) witness and leaves the \(n=8\) threshold intact.
+
+OUTCOMES: DISCHARGED, DISCHARGED, DISCHARGED, NEW-ISSUE, DISCHARGED
