@@ -3,7 +3,7 @@
 ## The wrap/\(\vartheta\) recursion, exact lifts, and normalization bridges, stated once
 
 **RCT unit:** S-1-T1-gauge-cocycle, revision pass S-1, 2026-08-12  
-**Status:** revised candidate of record; hostile arc not yet run on this revision  
+**Status:** revised candidate of record, under hostile arc — repair rounds appended below; THE HIGHEST-NUMBERED r-SECTION GOVERNS; the clean-pass counter and owed passes are recorded in that section.  
 **Supersedes:** the composed 2026-08-10 T1 draft and its inline repair riders
 
 This revision folds the certified 2026-08-12 gauge-seam corrections into the statement rather than leaving them as riders. In particular:
@@ -3640,3 +3640,200 @@ The \(M0\), \(M1\), and \(M4\) rows are unchanged: those fields consume no \(\va
 Add to §6:
 
 > | Propagated \(\mathrm{(H\!-\!VARTHETA\!-\!RES)}_i\) (depth \(i\ge3\)) into (C7)’s \(M2\) and \(M3\) interface rows, completing the r9 fence at the WELD-M-PKG interface. | T1P10, 2026-08-12 r10 (Fable arm) | Repairs 1 GAP finding: the “only as follows” table now carries the depth-\(\ge3\) residue-membership hypothesis on both fields that consume it; formulas C1–C6 and all other rows unchanged. |
+
+
+---
+
+## r11 (2026-08-12): the read codomain + complete M2 fence + permanent status line
+
+*(Fable-arm; counter resets.)*
+
+# T1 r11 corrections — 2026-08-12
+
+These edits repair the findings of the latest Fable hostile pass (0 CRITICAL / 2 GAP / 3 MINOR): the undeclared codomain of the canonical residual read (F-1), the incomplete (C7) \(M2\) fence list (F-2), the twice-stale front-matter status line (m-1), the \(w_2\) symbol collision (m-2), and the undefined grade data plus unsubscripted \(dv\) (m-3). Counter state after this round: the clean-pass counter is RESET (every repair round resets it); the §7 acceptance gate still owes TWO consecutive clean hostile passes; the machine battery, green at its r-early state, is inherited evidence only, pending re-run against the current effective text.
+
+## R11-1 (F-1) — Declare the read codomain: (C3-read-codomain)
+
+**Finding F-1 (GAP).** The canonical residual read \(R_{i+1,\beta}\) has no declared codomain anywhere in the carrier, and r8 infers \(w_i\in K_i^\times\) from nonvanishing alone. The inference is defeated by the initial-form read \(R_{i+1,\beta}(g):=\operatorname{in}(g)\), valued in the graded ring \(\operatorname{gr}(\mu_i)\): it satisfies every displayed read axiom — ladder multiplicativity (initial forms multiply on the single-pin ladder monomials), graded scalar covariance and the grade-zero rule (through the grade-0 identification), \(\operatorname{in}\) of the zero component is \(0\), and (C3-ladder-nonvanishing) (\(\operatorname{in}(N)\ne0\) for \(N\ne0\)) — yet its outputs are grade-\(\beta\) homogeneous elements, not \(K_i\)-scalars. Under that read, “\(w_i\in K_i^\times\)”, the automorphism \(y\mapsto y/w_i\) of \(K_i[y]\), the rescaled key \(\psi_{i+1}^{(w_i)}\), and factor-pattern transport are not even typeable. In particular this mock read PASSES §4.2 check 8 (its base ladder read is nonzero); the battery had no codomain tooth.
+
+In §1.1, immediately after the R8-2 insertion (C3-ladder-nonvanishing), insert:
+
+> At every consumed site, assume additionally that the canonical residual read is scalar-valued on the consumed slices: for every consumed grade \(\beta\), the read carries the consumed grade-\(\beta\) homogeneous elements into the level-\(i\) residue field,
+> \[
+> \boxed{
+> R_{i+1,\beta}\bigl(\text{consumed grade-}\beta\text{ slice}\bigr)
+> \subseteq
+> K_i.
+> }
+> \tag{C3-read-codomain}
+> \]
+> This is an independent site obligation. It does not follow from ladder multiplicativity, graded scalar covariance, the grade-zero residue rule, (C3-zero-read), or (C3-ladder-nonvanishing): the initial-form read \(g\mapsto\operatorname{in}(g)\in\operatorname{gr}(\mu_i)\) satisfies all of them and outputs grade-\(\beta\) homogeneous elements, not \(K_i\)-scalars.
+>
+> At \(i=2\), the accepted GENTOW2 supplier discharges (C3-read-codomain) at its local site: the S5.1 (R-FGMN) display types the read into the field — \(R_{3,\beta}(g)\in F_3=K_2\) (FGMN Def 3.16 at \(i=3\), single \(j=0\) term: \(R_{3,\beta}(g)=\varepsilon_2(\beta)\cdot R_{2,\beta}(g)(z_2)\)) — and LEMMA GENTOW2-B\('\) types its per-grade unit \(u(\beta):=R_{3,\beta}(\widehat n_2(\widehat\beta))\in K_2^\times=F_3^{*}\), with B\(''\) (S5.2) computing the values; both re-verified against the accepted `GENTOW2_PROOF_2026-08-09.md` this round. At \(i\ge3\), (C3-read-codomain) rides the same named level-general residual-read supplier package as (C3-ladder-nonvanishing); T1 does not infer it from the other read axioms.
+
+Replace the R8-2 unit clause
+
+> At every consumed site carrying
+> (C3-ladder-nonvanishing),
+> \[
+> \boxed{w_i\in K_i^\times.}
+> \tag{C3-ladder-unit}
+> \]
+
+with:
+
+> At every consumed site carrying
+> (C3-read-codomain) and (C3-ladder-nonvanishing),
+> \[
+> \boxed{w_i\in K_i^\times.}
+> \tag{C3-ladder-unit}
+> \]
+> The two clauses split the inference: (C3-read-codomain) places \(w_i\in K_i\); (C3-ladder-nonvanishing) makes it nonzero. Neither alone yields a unit.
+
+In the R8-2 insertion before (C3-three-reads), replace the discharge list “(C3-ladder-multiplicativity), (C3-graded-scalar-covariance), (C3-zero-read), and (C3-ladder-nonvanishing)” with “(C3-ladder-multiplicativity), (C3-graded-scalar-covariance), (C3-zero-read), (C3-ladder-nonvanishing), and (C3-read-codomain)”.
+
+In §2.3, replace the R8-2 insertion before the B-law calculation with:
+
+> By (C3-read-codomain),
+> \[
+> w_i
+> =
+> R_{i+1,\bar\kappa_i}(N)\in K_i;
+> \]
+> by (C3-ladder-nonvanishing), \(w_i\ne0\). Hence \(w_i\in K_i^\times\).
+
+In the R8-2 replacement of the final factor-pattern paragraph of §2.3, replace its first sentence
+
+> By (C3-ladder-nonvanishing), \(w_i\) is a unit.
+
+with
+
+> By (C3-read-codomain) and (C3-ladder-nonvanishing), \(w_i\) is a unit of \(K_i\).
+
+and replace its closing sentence with:
+
+> Without (C3-read-codomain), \(y/w_i\) is not defined in \(K_i[y]\); without (C3-ladder-nonvanishing), division by \(w_i\) fails. Neither the automorphism nor the unit-substitution argument is asserted without both.
+
+In the A7 **B-law classification** (as replaced by R8-2), replace
+
+> discharging the slot-grade identity, ladder multiplicativity, graded scalar covariance for the consumed value-zero factors, and
+
+with:
+
+> discharging the slot-grade identity, ladder multiplicativity, graded scalar covariance for the consumed value-zero factors, the field codomain of the read ((R-FGMN): \(R_{3,\beta}(g)\in F_3=K_2\)), and
+
+and replace
+
+> Only after this nonvanishing clause is supplied may T1 regard
+
+with:
+
+> Only after the codomain and nonvanishing clauses are both supplied may T1 regard
+
+In the R8-2 supporting-context paragraph, replace
+
+> The three-read rescaling and factor-pattern conclusion additionally consume
+> (C3-ladder-nonvanishing).
+
+with:
+
+> The three-read rescaling and factor-pattern conclusion additionally consume
+> (C3-read-codomain) and (C3-ladder-nonvanishing).
+
+Append to §4.2:
+
+> 9. **Read codomain.** Instantiate the initial-form mock read \(g\mapsto\operatorname{in}(g)\in\operatorname{gr}(\mu_i)\). Confirm that it passes check 8 (its base ladder read is nonzero) and every other displayed read axiom, and is rejected precisely by (C3-read-codomain): its output at grade \(\bar\kappa_i\) is a positive-grade homogeneous element, not a grade-0/\(K_i\)-scalar. Score that every accepted read output is a \(K_i\)-scalar before any expression containing \(y/w_i\), \(\psi_{i+1}^{(w_i)}\), or \(w_i^{\deg P}\) is accepted.
+
+## R11-2 (F-2) — Complete the (C7) \(M2\) fence list
+
+**Finding F-2 (GAP).** The effective \(M2\) row (the r10 supersession) names only one member of the graded-read bundle — (C3-ladder-nonvanishing) — while \(M2\)’s consumed canonical read and factor-pattern transport rest on all five ((C3-ladder-multiplicativity), (C3-slot-grade), (C3-graded-scalar-covariance), (C3-zero-read), (C3-ladder-nonvanishing)) and now (C3-read-codomain). Under r10’s own standard — the “only as follows” table must be the complete standalone WELD-M-PKG interface — the row must name them all.
+
+In (C7), supersede the \(M2\) row (as superseded by r10) with the following row; it is the r10 row with the complete graded-read fence named, and nothing else changed:
+
+| Package field | T1 datum available to that field |
+|---|---|
+| \(M2\) | The dictionary and canonical read in (C3), plus (C4-origin); support transport only under \(\mathrm{(H\!-\!JA\!-\!RES\!-\!CONJ)}\). The graded-read bundle consumed by the canonical read and its factor-pattern transport is, in full: (C3-ladder-multiplicativity), (C3-slot-grade), (C3-graded-scalar-covariance), (C3-zero-read), (C3-ladder-nonvanishing), and (C3-read-codomain). Corrected-key coefficients additionally use (C3-lift-coefficient-space). At depth \(i\ge3\), the scalars \(\vartheta_{i,s}\), their inverses \(\Theta_i(t)\), and the corrected digits \(c_t\vartheta_{i,f_{i+1}-t}\) are \(K_i\)-scalars only under \(\mathrm{(H\!-\!VARTHETA\!-\!RES)}_i\) \((i\ge3)\). |
+
+The \(M3\) row is confirmed defensible as it stands (its r10 form): its consumed datum — the (C2) cocycle/telescope and the (C3) canonical twist, on the scored stratum — carries the fences that row already names (the scored-stratum fence and \(\mathrm{(H\!-\!VARTHETA\!-\!RES)}_i\) at depth \(i\ge3\)) and does not consume the graded-read bundle. \(M0\), \(M1\), \(M4\) unchanged.
+
+## R11-3 (m-1) — Make the front-matter status line self-maintaining
+
+**Finding m-1 (MINOR).** The front-matter status line went stale AGAIN: the R9-6 replacement (“rounds r1–r9 appended below”) predates r10. Any dated form re-stales at every subsequent round.
+
+Repaired PERMANENTLY, and applied to the front matter IN PLACE this round (the one sanctioned in-place edit of r11; every other repair appends). The line now reads, datelessly:
+
+> **Status:** revised candidate of record, under hostile arc — repair rounds appended below; THE HIGHEST-NUMBERED r-SECTION GOVERNS; the clean-pass counter and owed passes are recorded in that section.
+
+R9-6’s directive form is superseded. No future round can stale this line: every round-dependent fact (counter state, owed passes, battery state) lives in the governing r-section — for this round, in the r11 header paragraph above.
+
+## R11-4 (m-2) — Resolve the \(w_2\) symbol collision: the HETOW carry becomes \(c_2^{\mathrm{HET}}\)
+
+**Finding m-2 (MINOR).** The carrier’s ladder unit \(w_i\) (§1.1; at \(i=2\), \(w_2=R_{3,\bar\kappa_2}(\widehat n_2(u_3))\in K_2^\times\)) collides with the A2/ledger-17 HETOW binary carry \(w_2=\lfloor(s(k)+s(k'))/e_2\rfloor\in\{0,1\}\) — two unrelated objects under one symbol.
+
+Rename, following the note’s own \(\gamma_t/\Gamma_t\) precedent (R9-3): T1’s symbol for the HETOW second-level carry is henceforth \(c_2^{\mathrm{HET}}\).
+
+In A2, replace the framing sentence
+
+> With \(w_2=\lfloor(s(k)+s(k'))/e_2\rfloor\), the pinned carry display is
+
+with:
+
+> With \(c_2^{\mathrm{HET}}=\lfloor(s(k)+s(k'))/e_2\rfloor\) — T1’s symbol for HETOW’s second-level carry; the pinned display below writes \(w_2\) for it, and the pinned span stays byte-unchanged: read \(c_2^{\mathrm{HET}}\) for \(w_2\) there — the pinned carry display is
+
+In every NON-PINNED occurrence in the A2 row and its r6 amendments — the \(\mathrm{(H\!-\!HETOW\!-\!LOCAL)}\) boxed displays as replaced by R6-2, the A2 consumption proof as replaced by R6-2 (including its boxed combined wrap formula, which is T1’s own derivation, not a pin), the range-condition insertion, and the closing scope sentence as replaced by R6-2 — read \(c_2^{\mathrm{HET}}\) for \(w_2\). Pinned spans (md5-pinned or quoted closed from the accepted `HETOW`) stay byte-unchanged under the read-as note above.
+
+Supersede honesty-ledger item 17 with:
+
+> 17. The pinned A2 HETOW carry formula uses the supplier range
+> \[
+> 0\le s(a)<e_2,
+> \]
+> which makes T1’s carry
+> \[
+> c_2^{\mathrm{HET}}=\left\lfloor
+> \frac{s(k)+s(k')}{e_2}
+> \right\rfloor
+> \]
+> binary. T1 does not assert the displayed linear-in-\(c_2^{\mathrm{HET}}\) formula for a nonbinary carry. SYMBOL NOTE: the accepted `HETOW` and the pinned displays write \(w_2\) for this carry; T1 writes \(c_2^{\mathrm{HET}}\) to avoid collision with the carrier’s ladder unit \(w_i\) (whose \(i=2\) instance \(w_2\in K_2^\times\) is unrelated). Precedent: the R9-3 \(\gamma_t/\Gamma_t\) note.
+
+## R11-5 (m-3) — Define the grade data; unsubscripted \(dv\) reads \(dv_1\)
+
+**Finding m-3 (MINOR).** \(\mu_i\), \(e(\mu_i)\), and the group in which the grades \(\beta\), \(\bar\kappa_i\), \(\beta_t\) live are used but never defined; and (C5)/(C6) write unsubscripted \(dv\).
+
+In §1.1, immediately before the paragraph “For a homogeneous slot of height \(su_{i+1}\), distinguish:”, insert:
+
+> **Grade data (definitions).** Throughout, \(\mu_i\) is the level-\(i\) valuation of the MacLane/Okutsu tower, and \(e(\mu_i)\) is its ramification index over the base valuation — cumulative, so \(e(\mu_1)=e_1\) and \(e(\mu_{i+1})=e_{i+1}\,e(\mu_i)\); the per-stage index over \(\mu_{i-1}\) is \(e_i\), not \(e(\mu_i)\). Heights at level \(i\) — the arguments \(m\) of \(\widehat n_i(m)\) and the values of \(dv_i\) — are integers in the normalization \(dv_i=e(\mu_i)\cdot v\), \(v\) the base-normalized valuation. Grades at level \(i\) — the subscripts \(\beta\) of \(R_{i+1,\beta}\), the ladder grade \(\bar\kappa_i=u_{i+1}/e(\mu_i)\), and the slot grades \(\beta_t=(f_{i+1}-t)\bar\kappa_i\) — lie in the grade group
+> \[
+> \Gamma_i=\frac{1}{e(\mu_i)}\mathbb Z,
+> \]
+> with height-to-grade conversion \(\widehat\beta=e(\mu_i)\beta\).
+
+The finding’s sketch read “\(e(\mu_i)\) its ramification index over \(\mu_{i-1}\)”; the definition adopted above is the corpus form instead — cumulative over the base — re-verified this round in the accepted `GENTOW2_PROOF_2026-08-09.md`: \(u_2/e(\mu_2)=u_2/(e_1e_2)\) (so \(e(\mu_2)=e_1e_2\)); \(e_3=e(\mu_3)/e(\mu_2)\); the ladder rows \(dv_1=e(\mu_1)\cdot v\), \(dv_2=e(\mu_2)\cdot v\); \(\Gamma_2=\tfrac12\mathbb Z\) at \(e(\mu_2)=2\). It is this form that the note’s own displays use.
+
+Unsubscripted \(dv\): in the (C5) display, replace
+
+> k=dv(A),
+
+with
+
+> k=dv_1(A),
+
+and in the (C6) display, replace
+
+> dv(L_M(\lambda))=M
+
+with
+
+> dv_1(L_M(\lambda))=M
+
+Reading rule for the r-round texts that quote these spans (R3-2’s two \(k=dv(A)\) displays, R7-2’s \(dv(\widetilde a)=0\), R9-1’s \(k:=dv(A)\)): every unsubscripted \(dv\) is \(dv_1\), the level-1 grid valuation (\(dv_1(x)=h\), \(dv_1(\pi)=e_1\)); quoted-closed and pinned spans stay byte-unchanged under this rule. The level-2 valuation is always written \(dv_2\).
+
+## Consequential record edits
+
+Append to the honesty ledger:
+
+> 22. The canonical residual read is scalar-valued only by the site obligation (C3-read-codomain); no displayed read axiom forces it — the initial-form read into \(\operatorname{gr}(\mu_i)\) is the standing counterexample (§4.2 check 9). \(w_i\in K_i^\times\) requires BOTH (C3-read-codomain) and (C3-ladder-nonvanishing). At \(i=2\) both are supplied by the accepted GENTOW2 package (S5.1 (R-FGMN) and LEMMA GENTOW2-B\('\)/B\(''\)); at \(i\ge3\) both ride the same named level-general residual-read supplier package, unproved here.
+
+Add to §6:
+
+> | Declared the read codomain ((C3-read-codomain)) and threaded it through the \(w_i\) unit inference, the \(y/w_i\) automorphism, \(\psi_{i+1}^{(w_i)}\), the A7 B-law row, and a new §4.2 codomain tooth; completed the (C7) \(M2\) fence list with the full graded-read bundle; made the front-matter status line self-maintaining (in-place edit of record); renamed the HETOW carry to \(c_2^{\mathrm{HET}}\); defined the grade data \(\mu_i\), \(e(\mu_i)\), \(\Gamma_i=\frac{1}{e(\mu_i)}\mathbb Z\) and fixed unsubscripted \(dv\) to \(dv_1\). | Fable hostile pass, 2026-08-12 r11 (Fable arm) | Repairs 2 GAP and 3 MINOR findings: scalar output of the residual read is now an explicit named obligation with a verified \(i=2\) supplier citation rather than an inference from nonvanishing, and the WELD-M-PKG \(M2\) interface names its complete read fence. |
