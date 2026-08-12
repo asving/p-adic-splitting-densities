@@ -1,0 +1,34 @@
+1. **DISCHARGED.** The replacement argument is mathematically sound. The \(\rho_k\) calculation is equivalent to the floor inequalities, the top value satisfies \(\rho_{i+2}=\rho_{i+1}\), and
+   \[
+   \operatorname{descmin}(T)\ge \operatorname{wt}^*(T)-\rho^*M>M\lambda
+   \]
+   proves the required strict aboveness using only forward carries. This removes the false grid-invariance step. It inherits A-F2’s conditionality but introduces no directional error of its own.
+
+2. **INSUFFICIENT.** Naming \([{\rm GENTOW5\!-\!W}(i)]\) as open correctly acknowledges the missing single-\(w_i\) law, but the stated conditionality does not propagate far enough. Without that law, clause (a)’s key-polynomial/prime certificate is conditional; consequently the Corollary 6.4 proof of all of clause (b), including exact values and \(P\)-membership, is conditional. S11.1 and clause (c) then consume (b). “\(w\)-blind” means invariance once a geometric \(w\)-twist exists; it does not prove those conclusions from an arbitrary fixed per-grade unit family.
+
+3. **DISCHARGED.** The corrected \(i=1\) statement claims only
+   \[
+   R_{\nu_1}(\Phi_2)=\psi_2^{(u_1)}
+   \]
+   for the fixed letter-power supplied by \(z_2=\eta_2z_1^{-A}\). Indeed, scaling a root by \(u_1=z_1^{-A}\) changes its monic minimal polynomial to \(u_1^{f_2}\psi_2(y/u_1)\). The unsupported identification \(u_1=w_1\) is explicitly withdrawn and is not consumed.
+
+4. **NEW-ISSUE.** S11.4 uses the wrong rung of the lift bound. The displayed \(\operatorname{lift}_i(c;m)\) realizes \(K_i\) with degree \(<D_i\), so its applicable threshold is the level-\(i\) bound—equivalently the preceding instance of the induction. The stated \(({\rm LIFT}_i)\) above \(\operatorname{bound}_{i+1}\) instead realizes \(K_{i+1}\) with degree \(<D_{i+1}\). Moreover, recipe heights such as \(m=u_{i+1}\) need not exceed
+   \[
+   \operatorname{bound}_{i+1}
+   =(l_{i+1}-1)u_{i+1}+e_{i+1}\operatorname{bound}_i,
+   \]
+   so the assertion that all recipe consumers remain in this newly stated range is generally false.
+
+5. **DISCHARGED.** The corrected formula
+   \[
+   R_{j-1}(\Phi_{i+1})
+   =\psi_j^{\,l_{j+1}\cdots l_{i+1}}
+   \]
+   has degree
+   \[
+   f_jl_{j+1}\cdots l_{i+1}
+   =\frac{l_j\cdots l_{i+1}}{e_j},
+   \]
+   exactly the residual degree of the full side, and it is well-defined at both endpoints \(j=1\) and \(j=i+1\).
+
+OUTCOMES: DISCHARGED, INSUFFICIENT, DISCHARGED, NEW-ISSUE, DISCHARGED
