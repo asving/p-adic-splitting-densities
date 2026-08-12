@@ -4029,3 +4029,28 @@ batteries on import; HITS → full-strength discharge, EMPTY →
 fallback fold). After cert3: fold everything (task #10), then
 cert4 = proof-composition runs on the confirmed numerical tables +
 the T1 arc + S-0 statement-ledger update for today's supersessions.
+
+**2026-08-12 APPEND #30 — CERT4 LIVE: THE PROOF-COMPOSITION ROUND +
+T1 ARC.** State at launch: 22/29 CERTIFIED. cert3 fully folded:
+6-row discharge sweep (GENHN, GRTJC, GRTW2, WELDMASTER, HMENU3, JD0
+certified); GENIND round-2 folded (C2Q loss-priced core, (CS-1Q)
+per-genre conditionality — honest residue: per-genre affine ledgers);
+N1 GREEN (the W-12 all-degree history law CONJECTURED + LAW-CONFIRMED,
+1,196 keys / 0 mismatches, w12_history_law_check.py); N2 = honest
+infeasibility (OPACITY certificate needs site manifest + pair
+serialization → going direct); N3 CONFIRMED (GENHN-COUNT-RERUN table:
+measured = predicted everywhere incl. first mixed-genre contact;
+sealed S-node displays refuted at deep boundary — ERR-1 sharp);
+S1 = revised T1 draft of record (T1_GAUGE_COCYCLE_2026-08-12.md,
+12 tracked changes, arc plan §7). CERT4 QUEUE (runs/cert4/, detached,
+auto-committing): RC1/RC2 one-word re-confirms (GRTJA |χ(S_A)| ≤ 1;
+GENTOW5 ψ_j^{(ω_{j−1})}), RP1 GENIND fresh pass, X1 witness-search
+instrument repair (direct member-check calls), P1/P2/P3 PROOF
+COMPOSITIONS (W-12 history lemma from the confirmed law; LEMMA
+GENHN-COUNT-RERUN; (Φ₁-OPACITY) direct), T1A hostile pass 1 on the
+revised T1. FOLD DISCIPLINE unchanged. On P1/P2 PROVED: fold as dated
+appends → rows 12/15 discharge; on RC/RP clean: rows 20/10/17
+certify. Remaining after that: row 9 (X1 instrument → search →
+fold), row 19 (P3). Then the goal = 29/29 closes modulo any fresh
+findings, and the compression campaign continues (T1 arc pass 2 +
+T2–T5 + S-0 ledger update for today's supersessions).
