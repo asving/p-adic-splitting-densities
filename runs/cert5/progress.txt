@@ -7,3 +7,5 @@
 [14:00:50] TC3_gentow3 exit 0 (333 B; OUTCOMES: DISCHARGED)
 [14:00:50] T1R1 start
 [14:01:24] T1R1 exit 0 (3252 B; SUMMARY: 3 REAL (repairs delivered))
+[14:01:24] P4_rm1 start
+[14:06:10] P4_rm1 exit 0 (8744 B; SUMMARY: LEMMA PROVED)

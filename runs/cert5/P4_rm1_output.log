@@ -1,0 +1,244 @@
+The residual is discharged. The key point is that a same-residue change \(\Delta=\Phi _1'-\Phi _1''\) has strictly excessive \(w_1\)-weight. Dividing the correction term \(Q''\Delta\) by \(\Phi _1'\) changes \(R,Q\), but only above the two consumed weight lines, so the prescribed read is unchanged.
+
+### Dated proof append
+
+> **[ANNEX 2026-08-12, certifier AC-5 — \((RM\text{-}1\text{-TRANSPORT})\) PROVED; THE \((\Phi _1)\)-OPACITY RESIDUAL IS DISCHARGED.]**
+>
+> Let \(\Phi _1'\) and \(\Phi _1''\) be lawful monic level-1 keys with the same residue package at \(g_0=1\). Put
+> \[
+> d:=\deg\Phi _1'=\deg\Phi _1''=e_0d_0,\qquad
+> W:=w_1\Phi _1'=w_1\Phi _1''=e_0h_0,
+> \]
+> and
+> \[
+> \Delta:=\Phi _1'-\Phi _1''.
+> \]
+> For a \(\Phi _0\)-development \(G=\sum_i a_i\Phi _0^i\), write
+> \[
+> \nu(G):=\min_i\{e_0w_0(a_i)+ih_0\}=w_1(G).
+> \]
+>
+> **Strictness of the key difference.** Write
+> \[
+> \Phi _1^\sigma=\Phi _0^{e_0}+\sum_{k<e_0}b_k^\sigma\Phi _0^k,
+> \qquad \sigma\in\{',\,''\}.
+> \]
+> Same residue gives
+> \[
+> w_0(b_0'-b_0'')\ge h_0+1.
+> \]
+> For \(1\le k<e_0\), lawfulness and the ultrametric inequality give
+> \[
+> w_0(b_k'-b_k'')\ge
+> \operatorname{amin}(k)
+> =\left\lceil\frac{(e_0-k)h_0}{e_0}\right\rceil .
+> \]
+> Since \(\gcd(e_0,h_0)=1\), for \(1\le k<e_0\),
+> \[
+> e_0\operatorname{amin}(k)+kh_0\ge e_0h_0+1=W+1.
+> \]
+> The \(k=0\) term has weight at least
+> \(e_0(h_0+1)\ge W+1\). Therefore
+> \[
+> \boxed{\nu(\Delta)\ge W+1.}\tag{T1}
+> \]
+>
+> **Strict DEV-1 consequence.** Let \(K\) be any lawful key of the displayed form and let
+> \[
+> H=A+BK,\qquad \deg A,\deg B<d
+> \]
+> be its monic division. Then
+> \[
+> \boxed{\nu(A)\ge\nu(H),\qquad
+>        \nu(B)\ge\nu(H)-W.}\tag{T2}
+> \]
+>
+> This is the exact weight-content consequence of ITERLAWN’s \(m=1\)
+> DIGIT-SPLIT \(+\) DEV-1 reduction. For completeness, run that displayed
+> reduction on a current term \(a\Phi _0^m\), \(\deg a<d_0\). Substitution of
+> \[
+> \Phi _0^{e_0}=K-\sum_{k<e_0}b_k\Phi _0^k
+> \]
+> emits a quotient term \(a\Phi _0^{m-e_0}\), whose weight is the parent
+> weight minus \(W\). Each lower coefficient product \(ab_k\) has degree
+> \(<2d_0\), so DIGIT-SPLIT gives
+> \[
+> ab_k=r+q\Phi _0,\qquad
+> w_0(r),w_0(q)\ge w_0(a)+w_0(b_k).
+> \]
+> Hence every resulting remainder child has weight at least its parent:
+> \[
+> e_0w_0(r)+(m-e_0+k)h_0
+> \ge e_0w_0(a)+mh_0,
+> \]
+> and the \(q\)-child has an additional \(h_0\). Collisions cannot lower
+> these bounds by the ultrametric inequality.
+>
+> The reduction terminates on the same lexicographic
+> \((m,\deg a)\) measure used by LIFTCORNER’s repaired TAIL-STAB proof.
+> For \(e_0\ge2\), only the top-mid \(q\)-child can preserve \(m\), and then
+> its coefficient degree drops. At \(e_0=1\), the analogous \(b_0\)
+> \(q\)-child can preserve \(m\), but its coefficient degree likewise
+> drops. Thus the DEV-1 reduction is finite, including the flat case needed
+> for the strict-excess correction below. This proves (T2).
+>
+> Now take any nonzero input \(f\) occurring in the construction of
+> ITER-PKG-2, with
+> \[
+> \deg f<d,\qquad
+> \lambda:=w_1(f),\qquad
+> v:=R_{1,\lambda}(f),\qquad
+> \mu:=\lambda+\gamma _2.
+> \]
+> No correspondence between complete primed and double-primed input
+> polynomials is required: apply the established \((RM\text{-}1)\) theorem
+> for \(\Phi _1''\) to this same literal polynomial \(f\). The quantities
+> \(\lambda\) and \(v\) are computed from its \(\Phi _0\)-development and
+> are therefore independent of which level-1 key is later used for
+> division.
+>
+> The correction digit is shared:
+> \[
+> \widehat C_1'
+> =\widehat C_1''
+> =\operatorname{realize}_1(\tau _1,\gamma _2).
+> \]
+> Indeed, AC-4’s \(m=1\) constructor calculation contains no \(\Phi _1\);
+> same residue makes \(z_1,\epsilon _1,\tau _1\) and all field inputs
+> identical.
+>
+> The established \((RM\text{-}1)\) interface for \(\Phi _1''\) supplies
+> \[
+> f\widehat C_1=R''+Q''\Phi _1'',\qquad
+> \deg R'',\deg Q''<d,
+> \]
+> with
+> \[
+> w_1(R'')\ge\mu,\qquad
+> w_1(Q'')\ge\mu-W,
+> \]
+> and
+> \[
+> R_{1,\mu}(R'')=z_1^{\epsilon'}v\tau _1.
+> \tag{T3}
+> \]
+>
+> Put \(H:=Q''\Delta\). DIGIT-SPLIT’s product bound together with (T1)
+> and (T3) gives
+> \[
+> \nu(H)\ge\nu(Q'')+\nu(\Delta)
+> \ge(\mu-W)+(W+1)=\mu+1.
+> \tag{T4}
+> \]
+> Divide \(H\) by \(\Phi _1'\):
+> \[
+> Q''\Delta=A+B\Phi _1',\qquad \deg A,\deg B<d.
+> \]
+> Applying (T2) to (T4),
+> \[
+> w_1(A)\ge\mu+1,\qquad
+> w_1(B)\ge\mu+1-W.
+> \tag{T5}
+> \]
+>
+> Since \(\Phi _1''=\Phi _1'-\Delta\),
+> \[
+> \begin{aligned}
+> f\widehat C_1
+> &=R''+Q''\Phi _1''\\
+> &=R''-Q''\Delta+Q''\Phi _1'\\
+> &=(R''-A)+(Q''-B)\Phi _1'.
+> \end{aligned}
+> \]
+> Define
+> \[
+> \boxed{R':=R''-A,\qquad Q':=Q''-B.}\tag{T6}
+> \]
+> Then the four consumed interface clauses are:
+>
+> 1. **Degree bounds**
+>    \[
+>    \deg R',\deg Q'<d.
+>    \]
+>
+> 2. **Remainder-weight bound**
+>    \[
+>    w_1(R')\ge\min\{w_1(R''),w_1(A)\}\ge\mu.
+>    \]
+>
+> 3. **Quotient-weight bound**
+>    \[
+>    w_1(Q')\ge\min\{w_1(Q''),w_1(B)\}\ge\mu-W.
+>    \]
+>
+> 4. **Prescribed read of the remainder.** Since \(w_1(A)>\mu\),
+>    READ-ADD-\((1)\)’s strict-above kill gives
+>    \[
+>    R_{1,\mu}(R')
+>      =R_{1,\mu}(R''-A)
+>      =R_{1,\mu}(R'')
+>      =z_1^{\epsilon'}v\tau _1.
+>    \]
+>
+> Thus every \((RM\text{-}1)\) input class used in constructing
+> ITER-PKG-2 retains exactly the interface consumed by ITERLAWN S4.6.
+> The argument is uniform in \(f\); it does not require equality or a
+> preselected correspondence between the complete primed and
+> double-primed input records.
+>
+> **Why full proof-data equality is false and unnecessary.** Equations
+> (T5)–(T6) explicitly give
+> \[
+> R'-R''=-A,\qquad Q'-Q''=-B.
+> \]
+> The strictly excessive polynomials \(A,B\) need not vanish. Therefore
+> complete equality of \(R,Q\) is neither proved nor claimed. What is
+> invariant is precisely their degree/weight/read interface.
+>
+> **Consumer sweep.**
+>
+> * **S4.4 CASE-SPLIT-\((2)\):** consumes the accepted ITER-PKG-1
+>   support, degree, weight and read package and makes no division by
+>   \(\Phi _1\). AC-4 and LIFTCORNER’s accepted level-1 comparison already
+>   transport those inputs.
+> * **S4.5 Case I:** makes no \((RM\text{-}1)\) call and is unchanged.
+> * **S4.6 Case II-1:** consumes the two degree bounds, both weight bounds
+>   and the prescribed \(R\)-read. All four are supplied above, so its
+>   on-line \(R\)-slot, strictly-above \(Q\)-slot and
+>   \(\epsilon'\)-carry/canonical-lift cancellation are unchanged.
+> * **S4.6 Case II-2:** the \(E_0\)-call consumes all four clauses; the
+>   \(E_1\)-call consumes the degree and weight clauses only. Both calls
+>   survive. The off-DCX condition is evaluated using the quotient actually
+>   produced on the primed tower; no equality of \(Q'\) and \(Q''\), nor
+>   equality of their zero loci, is required.
+> * **S4.6 Case II-3:** consumes only the degree and weight clauses for the
+>   \(E_1\)-call. Its collision terms remain strictly above the prescribed
+>   line, so READ-ADD kills them exactly as before.
+> * Consequently S4.4–S4.6 construct **ITER-PKG-2 for every lawful
+>   same-residue \(\Phi _1'\)**, on ITERLAWN’s own proved perimeter and
+>   with its existing DCX/\((RM\text{-}m)\) conditionality unchanged.
+> * AC-4 then transports REALIZE, the \(C_k\), canonical higher keys,
+>   WELL-DEF, TRUNC, L6 and the degree telescope. From rung \(3\) onward
+>   ITERLAWN calls only \((RM\text{-}m)\) with \(m\ge2\); those retain
+>   exactly their pre-existing conditional ledger. Hence the induction
+>   climbs from the newly established arbitrary-\(\Phi _1\) ITER-PKG-2.
+> * **LIFTCORNER PROP:** its rung-\(\ge2\) suspension is lifted. The
+>   all-rung propagation now follows at ITERLAWN’s own conditionality.
+> * **LIFTCORNER S5:** the every-\(n\) rider on the \(\Phi _1\) axis is no
+>   longer conditional on \((\Phi _1\)-OPACITY). The fence excluding
+>   independently chosen noncanonical higher keys remains unchanged.
+> * **FC-2:** its executed rider rewrite is reinstated on the \(\Phi _1\)
+>   axis. This does not enlarge ITERLAWN’s DCX, higher-\((RM)\), T-scope or
+>   deeper-noncanonical-lift perimeter.
+> * For an arbitrary residue \(c'\), compare the lawful key with its
+>   same-residue standard mate. LIFTCORNER’s accepted theorem supplies
+>   that standard-mate base package, the present lemma supplies
+>   ITER-PKG-2, and AC-4 supplies the higher constructor/telescope
+>   transport. COR 2’s already fenced \(\chi\)-covariance statement is
+>   unchanged.
+>
+> Therefore AC-1’s final residual and AC-4’s unique obstruction are
+> discharged: coefficient-reading by division is real, but its effect is
+> strictly above every interface line consumed by the rung-2 construction.
+
+SUMMARY: LEMMA PROVED
