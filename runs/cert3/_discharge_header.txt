@@ -1,0 +1,15 @@
+DISCHARGE CONFIRMATION (you are gpt-5.6-sol high — the certifier of record).
+Below: your prior adjudication of this note (whose REAL repairs — dated
+corrections, re-displays, containment annexes — were transcribed by the
+orchestrator as dated appends, byte-unaltered, each with an attribution
+bracket recording the orchestrator's verification), and the note AT HEAD
+including those appends. For each prior finding you adjudicated REAL, in
+order: DISCHARGED (the transcribed repair cures it — verify the mathematics
+of the repair as it stands in the note, not just its presence) /
+INSUFFICIENT (say exactly what remains) / NEW-ISSUE (the repair introduced a
+defect — where). Findings you adjudicated ARTIFACT or RESOLVED-ALREADY are
+settled and out of scope. Where a repair was delivered as OBSTRUCTED-with-
+containment (a suspension annex naming a missing lemma), confirm only that
+the containment as transcribed is honest; the missing lemma is a scheduled
+proof unit and out of scope. End with:
+OUTCOMES: <one word per adjudicated REAL finding, in order, comma-separated>

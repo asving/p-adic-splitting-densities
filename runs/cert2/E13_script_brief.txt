@@ -1,0 +1,208 @@
+OUTPUT A COMPLETE PYTHON SCRIPT (as a single fenced code block, nothing else) implementing the following exact machine-search specification, written by gpt-5.6-sol against the committed GENTOW3 readers in /data/users/asvin/math-and-lean/p-adic-splitting-densities/verification/openmath/. The script will be saved as verification/openmath/gentow3_shadow_search.py and run from the repo root. It must IMPORT the committed reader implementations named in the spec (do not reimplement semantics), use exact arithmetic only, and print: HITS (with the proof certificate per spec) or EMPTY, plus the roster census. Read the committed reader files to get the import surface right.
+
+Deliverables follow. The search is exact-arithmetic and produces a proof certificate if it finds a collision.
+
+## (a) Exact machine search specification
+
+### Reader and arithmetic
+
+Use the note-at-HEAD implementations in:
+
+- [gentow3_checks.py](/data/users/asvin/math-and-lean/p-adic-splitting-densities/verification/openmath/gentow3_checks.py)
+- [gentow3_pe1_fresh.py](/data/users/asvin/math-and-lean/p-adic-splitting-densities/verification/openmath/gentow3_pe1_fresh.py)
+- [gentow3_pe2_fresh.py](/data/users/asvin/math-and-lean/p-adic-splitting-densities/verification/openmath/gentow3_pe2_fresh.py)
+- [gentow3_pe3_fresh.py](/data/users/asvin/math-and-lean/p-adic-splitting-densities/verification/openmath/gentow3_pe3_fresh.py)
+- [gentow3_pe5_fresh.py](/data/users/asvin/math-and-lean/p-adic-splitting-densities/verification/openmath/gentow3_pe5_fresh.py)
+
+All polynomial and residue comparisons must use the reader’s exact integer/finite-field representations. Printed strings, hashes, floating-point values, or label-only equality do not count.
+
+### Roster
+
+Form \(R\) from the following semantic members:
+
+1. The sealed S5 roster:
+
+   - Families, in order: `FAM-A5`, `FAM-A7`, `FAM-B`, `FAM-C`, `FAM-D`.
+   - For each family: the 14 members returned by its committed `nec_members` construction, the 12 committed real members, and its single anchor passed to `member_check`.
+   - Add the two committed A7 band members `A7-BAND29` and `A7-BAND30`.
+
+   Cardinality before semantic deduplication:
+   \[
+   5(14+12+1)+2=137.
+   \]
+
+2. Explicitly include the three PE1 members `PE1-0`, `PE1-1`, and `PE1-2`, even if any already occur among the 137 records. In particular, test `PE1-1` against `PE1-2` first.
+
+3. Add every concrete member \(f\) in the four dated fresh instruments for which the committed code computes both:
+
+   \[
+   C(f)=(C_0,\ldots,C_{\mu_2-1})
+   \quad\text{and}\quad
+   \operatorname{ShC}(f)=(\operatorname{ShC}_0,\ldots,
+   \operatorname{ShC}_{\mu_2-1}).
+   \]
+
+   This includes the named FR-GL, FR-M3, W-A/W-B, gated W-census, and FR5X member rows. Exclude threshold mutants, altered expected-value lists, tooth predicates, carrier-only tests, and other objects that are not input members \(f\).
+
+Deduplicate only exact duplicates with the same frame and identical polynomial \(f\). Retain the source tags for reporting.
+
+A row is eligible only if all four honest verdict fields below are defined. An unavailable \(\sigma\) is not equal to another unavailable \(\sigma\); such a row must be reported as ineligible, not silently assigned `None`.
+
+### Same-frame restriction
+
+Only compare members in exactly the same reader frame. The frame key is the canonical tuple
+
+\[
+\mathcal F=(p,Q,\Phi',e_1,f_1,h,\eta,e_2,f_2,u_2,\mu_2,
+\Phi_2,\text{normalizer/gauge data},N),
+\]
+
+including any reader option affecting slots, residues, labels, or the consultation window. Polynomial and field elements in this key are compared canonically, not textually.
+
+This restriction makes the witness stronger: the collision cannot be explained by changing the genre, key, coordinate count, gauge, or output dictionary.
+
+### Honest-output key
+
+For each eligible record \(r=(\mathcal F,f)\), run the committed composed/honest reader and construct
+
+\[
+H(r)=
+\bigl(
+  P(r),D(r),\Sigma(r),L(r)
+\bigr),
+\]
+
+where:
+
+- \(P(r)\): the entire ordered pin vector, one entry for every composed coordinate. Normalize an absent pin to one distinguished symbol `INF`.
+- \(D(r)\): every deciding residue actually consulted in obtaining the verdict, with coordinate, hull-vertex/edge position, slot height, and multiplicity retained. Canonicalize a finite-field element as its coefficient tuple in the reader’s committed basis.
+- \(\Sigma(r)\): the entire honest \(\sigma\), canonically sorted as a multiset of \((e,f)\) pairs with multiplicities.
+- \(L(r)\): every verdict label returned by the honest reader, in the reader’s fixed order. Do not convert it to a set.
+
+Do not add the complete honest coefficient strings \(C_j\), nondeciding digits, the member polynomial, or its roster tag to \(H\). Those are not part of the claimed verdict-level output.
+
+### Shadow-content value
+
+For each coordinate, expand the committed stage-shadow object on its canonical slot grid:
+
+\[
+\operatorname{ShC}_j
+ =\sum_b \bar g_{j,b}(x)\Phi'^b.
+\]
+
+Define the high-shadow content
+
+\[
+T(r)=
+\left(
+ \left\{(m,a,b,d):
+   m\geq\Theta_j,\;
+   d\neq0,\;
+   d\text{ is the canonical digit of }
+   x^a\Phi'^b\text{ at height }m
+ \right\}
+\right)_{0\leq j<\mu_2}.
+\]
+
+Represent each coordinate as a sorted sparse map keyed by `(height, x_slot, phi_slot)` with canonical residue values. Thus missing entries mean exact zero. Also retain the complete canonical \(\operatorname{ShC}_j\) arrays in the certificate, but compare \(T(r)\) for the S8.2 claim.
+
+### Hit predicate
+
+An unordered pair \(\{r,s\}\) is a hit exactly when:
+
+\[
+\begin{aligned}
+&\mathcal F(r)=\mathcal F(s),\\
+&f_r\neq f_s \quad\text{as exact polynomials},\\
+&H(r)=H(s) \quad\text{field by field},\\
+&T(r)\neq T(s).
+\end{aligned}
+\]
+
+Equivalently in pseudocode:
+
+```text
+for each same-frame pair (r, s), r < s:
+    if exact_polynomial(r.f) == exact_polynomial(s.f):
+        continue
+    if r.pins              != s.pins:              continue
+    if r.deciding_residues != s.deciding_residues: continue
+    if r.honest_sigma      != s.honest_sigma:      continue
+    if r.honest_labels     != s.honest_labels:     continue
+    if r.shadow_at_or_above_theta == s.shadow_at_or_above_theta:
+        continue
+    emit HIT(r, s)
+```
+
+The machine must not accept equality merely because pins, labels, or \(\sigma\) match. In particular, `PE1-1`/`PE1-2` is a candidate, not a pre-certified hit, until the deciding-residue arrays compare equal.
+
+### Required search output
+
+For a hit, print:
+
+- HEAD commit and hashes of every reader used;
+- roster totals and ineligible-row list;
+- both source tags, exact frame key, and exact member polynomials;
+- both complete honest tuples \(H(r),H(s)\);
+- four explicit equality checks for pins, deciding residues, \(\sigma\), and labels;
+- both complete shadow coordinate arrays;
+- both \(T\)-maps;
+- the lexicographically first differing `(coordinate, height, slot)` and its two digits;
+- final verdict `HIT`.
+
+If no hit exists, print roster totals by frame, pair counts tested, ineligible rows, and final verdict `EMPTY`. Rows lacking a defined full honest tuple cannot support `EMPTY`; the output must distinguish “no collision among eligible rows” from incomplete evaluation.
+
+### Why a hit is a complete proof
+
+Suppose shadow content were a function \(F\) of the full verdict-level honest output. A hit supplies
+
+\[
+H(r)=H(s),\qquad T(r)\neq T(s).
+\]
+
+Functionality would give \(T(r)=F(H(r))=F(H(s))=T(s)\), a contradiction. Exact reader evaluation plus the printed first differing digit is therefore a finite proof, not merely statistical evidence.
+
+## (b) Verbatim-ready fallback, activated only after `EMPTY`
+
+```markdown
+## S8.4 [GT3-r5] RESIDUAL D1b SCOPE CORRECTION
+## (2026-08-12 — dated append; activated only after the committed
+## full-output collision search returns EMPTY on its complete roster)
+
+The residual search compared members only within an identical
+committed reader frame and required equality of the ENTIRE
+verdict-level honest output: pins, deciding residues, sigma, and
+labels. It found no pair on the committed roster having that full
+honest-output tuple identical and shadow content different at
+heights >= THETA_j. An EMPTY finite-roster search does not prove
+that no such pair exists on the full tower locus; it shows that
+the committed evidence does not establish the stronger
+full-verdict-output scope.
+
+**S8.2 supersession.** The S8.2 corrected sentence beginning
+"The shadow read's content at heights >= THETA_j is not a
+function of the honest read's OUTPUT" is WITHDRAWN. Its reference
+to the full verdict-level tuple "(pins, deciding residues, sigma,
+labels)" is likewise WITHDRAWN.
+
+**Final corrected claim.** The shadow read's content at heights
+>= THETA_j is not a function of the honest read's sigma.
+
+**Proof from the committed instances.** PE1-0 and PE1-1 have the
+same honest sigma, namely {(8,1)}, while their shadow reads differ:
+PE1-0 has shadow pins (21,14) and label tRAM, whereas PE1-1 has
+shadow pins (28,14) and label tINERT. In particular their shadow
+content differs at coordinate 0 at heights >= THETA_0 = 21.
+Hence equal honest sigma can have different shadow content, so no
+function of honest sigma alone determines that content. The same
+fixed-honest-sigma variation is also visible across the full PE1
+triple. No non-functionality claim for the larger tuple of honest
+pins, deciding residues, sigma, and labels is retained.
+
+This correction changes only S8.2's non-functionality scope.
+S8.1's repaired margin proof, THEOREM GENTOW-3(i)-(iii), the
+certificate-scoped persistence statement, and the accepted
+machine records are untouched.
+```
+
+SUMMARY: SEARCH-SPEC + FALLBACK delivered
