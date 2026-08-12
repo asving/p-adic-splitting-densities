@@ -5,3 +5,5 @@
 [19:34:49] T3P3 exit 0 (1918 B; VERDICT: CLEAN | FINDINGS: 0C + 0G + 0m)
 [19:34:49] T2P1 start
 [19:38:16] T2P1 exit 0 (2833 B; VERDICT: NOT CLEAN | FINDINGS: 1C + 5G + 0m)
+[19:38:16] T4C start
+[19:42:22] T4C exit 0 (470 B; )

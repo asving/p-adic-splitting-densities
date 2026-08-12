@@ -1,0 +1,7 @@
+Blocked by workspace infrastructure; no files were changed.
+
+- `exec_command` aborts because `bubblewrap` is unavailable.
+- `apply_patch` rejects all writes, including a one-line file and `/tmp`.
+- Intended file: `COMPOSITION_S3_T4_CERTIFICATE_WITNESS_2026-08-12.md`.
+
+The complete note was drafted with the unified definition, attainment lemma, two fail-closed instance records, honesty ledger, and 0/2 arc plan. Please restore workspace writes and rerun this request.
