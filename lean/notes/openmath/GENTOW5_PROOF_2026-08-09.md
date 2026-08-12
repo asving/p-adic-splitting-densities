@@ -2294,3 +2294,20 @@ bound — 5>1, 21>7, 85>35, 341>155 vs the failing 5>7 etc.); refine
 consumers correctly use lift_{i+1} at λ > E_{i+1} > bound_{i+1}.
 Transcribed unaltered per the standing division of labor. Ledger:
 row 10 → both residuals repaired, awaiting sol discharge (cert3).)*
+
+
+**Dated corrigendum (2026-08-12, post-D3i — S12.1's residual-twist
+index).** The D3i discharge pass (gpt-5.6-sol high,
+runs/cert3/D3i_gentow5_output.log) adjudicated S12.1 NEW-ISSUE at one
+index: clause (a) at index r supplies the twist w_r for ψ_{r+1}, so
+in clause (b)'s corrected residual display the twist attached to ψ_j
+is INDEXED j−1: ψ₂ carries S11.3's fixed letter-power unit, ψ₃
+carries w₂, and ψ_j carries w_{j−1} for j ≥ 4 — read every
+ψ_j^{(ω_j)} in S12.1's clause (b) as ψ_j^{(ω_{j−1})} with ω₁ = the
+S11.3 unit (the outer ψ₁ leg handled separately as accepted). The
+display as first written demanded w_{n+1} at the top term,
+exceeding the assumed 𝒲_{≤n}. Correspondingly, the dependency chain
+diagram is read under the ambient hypothesis 𝒲_{≤n} as a whole (its
+first arrow consumes [GENTOW5-W(n)] with the earlier instances
+ambient). R-i4 (the lift rung) is unaffected and was DISCHARGED.
+Awaiting sol re-confirmation in the next queue.
