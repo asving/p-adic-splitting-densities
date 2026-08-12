@@ -1,0 +1,61 @@
+1. **GAP — the supplied record does not establish the claimed 2/2 acceptance.**
+
+> “**THIS NOTE IS ACCEPTED at 2/2** — PE9 … CLEAN … and PE10 … CLEAN”
+
+But the supplied PE9 report says:
+
+> “This is the arc’s **FIRST clean pass** … the count starts at **1/2**”
+
+PE8 was explicitly not clean, and no PE10 report is pasted. Thus the second clean pass—its target blob, independence, findings, and claimed 326,206/0 and 106,562/0 legs—cannot be audited. On the provided record, only 1/2 is certified.
+
+2. **GAP — the shear is not lattice-preserving, so JB-VTX(c)’s lattice-data claim does not follow.**
+
+> “a side of print slope −h/e in lowest terms has its **lattice data preserved**: degree d = (abscissa run)/e is the same integer in both frames”
+
+Yet
+
+> “Σ_q : (i,u) ↦ (i,e_q·u+h_q·i)”
+
+has determinant \(e_q\), not \(\pm1\). For \(e_q=2,h_q=1\), the integral edge from \((0,1)\) to \((2,0)\), slope \(-1/2\), maps to the horizontal edge from \((0,2)\) to \((2,2)\). The original edge has primitive horizontal step \(2\); the image has ambient-lattice step \(1\) and contains the additional lattice point \((1,2)\). Abscissa run is preserved, but lattice length/data is not.
+
+Calling \((\text{run})/e\) the “harness grid count” requires the separately asserted attained-grid structure in JB-VTX(d4). That subclaim carries the membership/u≥0 residue and has no machine leg, while matrix row 10 gives JB-VTX(c) neither condition. The conditionality matrix therefore under-fences this part of clause (c).
+
+3. **GAP — W2-C3’s measured-above region is still used by statements labelled PROVED.**
+
+The body uses:
+
+> “W2-C3 chamber off the byte perimeter”
+
+and claims:
+
+> “JB-TREE … **PROVED** (attempt grade)”
+
+But E-2 says W2-C3 is only:
+
+> “proved-to-first-twist (38/44) / **measured above (6/44, riding W2-OPEN-2)**”
+
+Acceptance of the supplier note does not convert its explicitly measured-above box into a proof. Counter-configuration: any of those six above-first-twist transported-chamber instances. The machine observations may hold, but the admissible-representative premise used to identify the tree with the classifier’s division is not proved there. The annex records the re-grade but does not propagate “measured above” into the JB-TREE grade surfaces.
+
+4. **GAP — byte inequality does not justify the repeated claim that the semantic identities are false off-perimeter.**
+
+> “Off that perimeter … (VAL) is then **FALSE, not merely unproved**”
+
+and:
+
+> “off it … clause (a) is **FALSE, not merely unproved**”
+
+Different representative bytes do not imply different induced valuations on the relevant coefficients. At the simplest pointwise counter-configuration, take \(f=1\): its sole digit is \(A_0=1\), and both (VAL) and the shear identity hold independently of all key bytes. More generally, distinct equivalent representatives can agree semantically on lower-degree inputs. If “FALSE” means failure somewhere in the off-perimeter stratum, the pasted note supplies no witness or derivation; if it means failure for every off-perimeter instance, \(f=1\) refutes it.
+
+CHECKED CLEAN — The r8 split of the fused quotation reproduces the two struck source wordings accurately.
+
+CHECKED CLEAN — JB-EPS’s integer cocycle identity follows independently from the floor-cocycle calculation.
+
+CHECKED CLEAN — The four-line proof \(u\ge0\) on \(\mathcal W_m\) is algebraically sound.
+
+CHECKED CLEAN — The pointwise shear, hull/vertex correspondence, slope transformation, and preservation of abscissa run are sound; only the lattice-data extension fails.
+
+CHECKED CLEAN — JB-CREAD’s carry cancellation is valid under its stated hypotheses: (VD-m) at both \(f\) and \(R\), \(v\ne0\), and the quoted [RMG] clauses.
+
+CHECKED CLEAN — The r8 accounting through PE9 supports exactly one clean pass, i.e. 1/2.
+
+OUTCOME: CHALLENGE
