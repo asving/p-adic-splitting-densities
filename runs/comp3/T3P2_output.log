@@ -1,0 +1,41 @@
+Hostile pass 1 is clean. I treated r1’s §8.2 as replacing the original §8.2; the superseded frame parameters are not live text.
+
+- **Circularity — PASS.** “Using (BR4), (BR5), and the imported orientation (T1-THETA)” accurately describes the boundary proof. It uses BR1–BR5 and \(\Theta=\vartheta^{-1}\), never T1’s conditional B-law.
+
+- **Supplier perimeter — PASS.** “The certified level-\(i\) expansion, peel, positive-degree elimination, exact-grade law, and root-evaluation package instantiate (BR1)–(BR5).” Every required source-local ingredient is exposed as a hypothesis; “canonical residual read” hides no additional inference in the proof.
+
+- **Endpoint/orientation — PASS.** The derivation
+  \[
+  w_i^s=U_i(\beta_s)\vartheta_N(s;q)
+  \]
+  precedes cancellation and yields \(U_i=\Theta_Nw_i^s\) with the correct inverse orientation.
+
+- **HETOW comparison — PASS.** Direct division gives
+  \[
+  \rho_t/\widehat\rho_t=\chi(H_0)\chi(q)^{-t}.
+  \]
+  Consequently \(Z\mapsto Z/\delta\), the monic normalization
+  \(\delta^m\widehat r(Z/\delta)\), and the root direction
+  \(\widehat s\mapsto\delta\widehat s\) are all correct. No character law is used.
+
+- **GENTOW5 conditionality — PASS.** The complete consumer chain, including Corollary 6.4, S11.1.1/S11.1.3, clauses (a), (b), (c), and (e), remains under \(\mathcal W_{\le n}\).
+
+- **Twist indexing — PASS.** The live formula is consistently
+  \(\psi_j^{(\omega_{j-1})}\); its endpoints correctly give \(\psi_2\) the S11.3 unit and \(\psi_{n+1}\) the available \(w_n\).
+
+- **Lift rung — PASS.** Recipe lifts use \(\operatorname{lift}_i\) above \(\operatorname{bound}_i\); refine lifts remain separately fenced at rung \(i+1\).
+
+- **GENTOW-6.4 separation — PASS.** The note does not infer triangularity or the shifted cap from \((v+c_g)-c_g=v\), and the E11 riders remain regression-only facts.
+
+- **r1 frame repair — PASS.** With \(q_{\rm BR}=1\), the displayed \(U_s\vartheta_s=w^s\) identities hold in \(\mathbf F_5\). With \(q_{\rm CMP}=2\), \(H_0=6\),
+  \[
+  \delta=\chi(2)=2,\qquad \chi(6)=3,
+  \]
+  so \(R(Z)=3\widehat R(Z/2)\) is derived honestly. The witness
+  \(\chi(1)^2\ne\chi(2)\) keeps the non-character tooth live.
+
+- **Absorption count — PASS.** Only ABS-G2, the grouped HETOW-4 comparison/routing absorption, and ABS-G5W increment the count. GENTOW-6.4 remains a `NON_INSTANCE_REGRESSION`.
+
+This certifies only the requested textual hostile pass; it does not substitute for the revised machine battery or the second independent hostile pass.
+
+VERDICT: CLEAN | FINDINGS: 0C + 0G + 0m
