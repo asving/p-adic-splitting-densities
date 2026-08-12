@@ -4007,3 +4007,25 @@ after the E13 job exits. The three proof units are tasks #6/#7/#9
 with numerical-first recipes. Codex window ~9% used. The
 delegated-authority regime (memory proof-judgment-delegation)
 governs all statement scopes.
+
+**2026-08-12 APPEND #29 (micro) — CERT3 + COMPRESSION KICKOFF LIVE
+(Asvin's directive: finish the corrections, then launch compression,
+all codex).** Runner runs/cert3/runner.sh (detached, auto-committing,
+launched 12:31): D3a–D3j discharge confirmations for the E-wave
+repairs (GRTJA/B/C, GRTW2, WELDMASTER, HMENU3, JD0,
+LIFTCORNER-partial, GENTOW5, GENHN corrigendum) → clean outcomes
+CERTIFY their rows; R11 GENIND-C2 round-2 repair (C2-G1/G2 +
+side-length); N1/N2/N3 proof-unit numerical designs (W-12
+all-degree history law + test script; Φ₁-OPACITY 57-pair
+certificate script; GENHN f₁ ≥ 2 stage-level count script) — the
+directive's certify-numerically-then-prove step, scripts to be
+executed locally by the orchestrator (SystemExit-safe spec loader,
+see verification/openmath/gentow3_shadow_search.py's importer);
+S1 T1-revision (the gauge-cocycle compression draft revised against
+the certified seam: GENHN-LIFT, JA-EPS-CORR, WELD-M-PKG, γ_k) —
+the compression campaign's first unit, arc to follow. ALSO RUNNING
+LOCALLY: the E13 GENTOW3 witness search (readers re-run their
+batteries on import; HITS → full-strength discharge, EMPTY →
+fallback fold). After cert3: fold everything (task #10), then
+cert4 = proof-composition runs on the confirmed numerical tables +
+the T1 arc + S-0 statement-ledger update for today's supersessions.
