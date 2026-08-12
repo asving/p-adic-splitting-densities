@@ -1496,3 +1496,30 @@ BYTE-FREEZE: pre-append body md5 e27b97f2
 bytes, re-verified by prefix after this append; edit shape
 append-only; statement displays and sealed artifacts
 byte-untouched.
+
+
+### Dated absorption append (2026-08-12 — S-2/LEMMA COCYCLE-TELESCOPE)
+
+*Provenance: simplification pass S-2, blueprint protocol
+(`docs/SIMPLIFICATION_BLUEPRINT_2026-08-10.md` §5.3 item 4);
+T3 = `T3_COCYCLE_TELESCOPE_2026-08-12.md`, ACCEPTED 2/2 (T3P2 + T3P3
+clean; runs of record in that note). Edit shape append-only; the body
+above stays BYTE-FROZEN.*
+
+**LEMMA GENTOW2-B″ (S5.2, display (6) with its B-law/rescaling
+corollary) is ABSORBED by S-2's LEMMA COCYCLE-TELESCOPE as the
+instance (ABS-G2)** — T3's boundary-read port (T3-BR) at s = f₃ − t,
+q = u₃, N(q) = n̂₂(u₃), with (BR1)–(BR5) instantiated by this note's
+own peel, expansion, positive-degree elimination, exact constant-digit
+law, and root evaluation (the S5.2 proof's steps (i)–(iv));
+ϑ(t) = Θ_N(s; u₃) and w = R_{3,κ̄}(n̂₂(u₃)) — per the S-2 consumption
+check (runs/comp5/T3CC_output.log, GENTOW2-B″ leg: PASS). The
+absorption is of the CONCLUSION only: the source-local read package
+remains this note's supply, and neither the displayed B-law nor a
+one-w family is an input to the T3 instance (T3 §3's fence). The S5.2
+statement here stays byte-frozen and authoritative; consumers may
+cite either this display (6) or T3's (ABS-G2).
+
+BYTE-FREEZE: pre-append body md5 69b71584e8a74e89479b067f66bfd491, re-verified
+by prefix after this append; edit shape append-only; statement
+displays and sealed artifacts byte-untouched.

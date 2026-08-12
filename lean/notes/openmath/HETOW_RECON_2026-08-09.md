@@ -832,3 +832,33 @@ BYTE-FREEZE: pre-append body md5 254d1765
 re-verified by prefix after this append; edit shape append-only;
 statement displays of HETOW-1/2/3/A and all sealed artifacts
 byte-untouched.
+
+
+### Dated absorption append (2026-08-12 — S-2/LEMMA COCYCLE-TELESCOPE)
+
+*Provenance: simplification pass S-2, blueprint protocol
+(`docs/SIMPLIFICATION_BLUEPRINT_2026-08-10.md` §5.3 item 4);
+T3 = `T3_COCYCLE_TELESCOPE_2026-08-12.md`, ACCEPTED 2/2 (T3P2 + T3P3
+clean; runs of record in that note). Edit shape append-only; the body
+and the 2026-08-10 append above stay BYTE-FROZEN.*
+
+**LEMMA HETOW-4 (the normalizer bridge, TOWERRAT-R1 append above) is
+ABSORBED by S-2's LEMMA COCYCLE-TELESCOPE as the instance (ABS-HE4)
+with coboundary display (HE4-COB)** — T3's two-section comparison port
+at N = n₂, N̂ = n̂₂, q = u₃, δ = τ(u₃), T3's abstract χ renamed to this
+note's τ — per the S-2 consumption check (runs/comp5/T3CC_output.log,
+HETOW-4 leg: PASS). Exact absorption boundary (T3 §4's table): clause
+(c)'s coefficient telescope and polynomial rescaling are fully
+supplied by (T3-BKT) + (T3-CMP); clause (d)'s separability/factor/
+root routing by (T3-ROUTE); clause (b)'s coboundary-comparison shape
+by (T3-COB), its explicit two-floor exponent obtained only after
+substituting this note's floor arithmetic; clause (a)'s ladder
+arithmetic τ(k) = η^{−Q(m(k))}, the common polynomial lift, and
+iterate independence remain source-local — this note's supply. No
+character law for τ is asserted (tooth T-RAW unchanged). The lemma
+statement above stays byte-frozen and authoritative; consumers may
+cite either LEMMA HETOW-4 or T3's (ABS-HE4)/(HE4-COB).
+
+BYTE-FREEZE: pre-append body md5 6ded277db84f9eefb43d46021ba9c7e2, re-verified
+by prefix after this append; edit shape append-only; statement
+displays of HETOW-1/2/3/4/A and all sealed artifacts byte-untouched.
