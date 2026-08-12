@@ -1,0 +1,19 @@
+1. DISCHARGED — R8-1 correctly limits HE3-5 to one consultation and replaces the false uniform bound with recursion over the complete finite read history. The \(f=(\Phi'-C)^3+5^M\) example is valid: its initial residual is \((Z-s)^3\), while recentering produces \(\Phi''^3+5^M\), whose next consultation can require cap \(>M\).
+
+2. DISCHARGED — R8-2 correctly handles splitting of \(\Phi'\) under the chosen unramified extension. Each of the \(f_1\) conjugate degree-\(e_1\) components contributes \(e_1d\) roots, so their union has size
+\[
+f_1e_1d=D'd.
+\]
+Any componentwise slope shift or geometric residual-variable rescaling preserves the \(d\) distinct linear factors and the counted label class; the fixed-\(r\) classes reassemble through the component embeddings as stated.
+
+3. DISCHARGED — when \(D'=1\), translation identifies the stage resolvent with the polynomial itself over \(O\). The ordinary Newton–Hensel read gives terminal factors of degree \(\ell d\) and invariants exactly \((\ell,d)\). Thus the unresolved fractional branch may be restricted to \(D'\ge2\), yielding \(n=D'\mu\ge8\).
+
+4. DISCHARGED — R8-4 makes \(S_r\) well-defined in both cases. For \(\ell\ge2\),
+\[
+dv(y_\rho^\ell)=u=dv(n(u)(\rho)),
+\]
+so the displayed residue exists and agrees with HE3-0(iii)’s repaired lattice normalization.
+
+5. DISCHARGED — R8-5 correctly routes the root-\(\rho\) slot calculation through HE6-0″ while retaining GENHN-2 only at \(\theta\). Matching coherent normalizers gives precisely the transported residual polynomial under \(\iota_\rho\).
+
+OUTCOMES: DISCHARGED, DISCHARGED, DISCHARGED, DISCHARGED, DISCHARGED
