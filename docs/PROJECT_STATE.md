@@ -4054,3 +4054,20 @@ certify. Remaining after that: row 9 (X1 instrument → search →
 fold), row 19 (P3). Then the goal = 29/29 closes modulo any fresh
 findings, and the compression campaign continues (T1 arc pass 2 +
 T2–T5 + S-0 ledger update for today's supersessions).
+
+**2026-08-12 DATED APPEND #31 — THE SOL CERTIFICATION GOAL CLOSES:
+29/29.** TC4 DISCHARGED at 14:10 UTC. Full arc in the ledger's
+goal-closed block (docs/SOL_CERTIFICATION_LEDGER_2026-08-12.md): 69
+sol runs across five waves; every cone note certified end to end;
+four discovered-certified-proved lemmas (W12-HT — W-12.A's full
+order-1 coverage restored; GENHN-COUNT-RERUN — ERR-1 settled, the
+corrected node B = D′h, sealed S-node displays refuted at the deep
+boundary; GENHN-CAP-GEN — the general band projection;
+RM-1-TRANSPORT — the swap correction strictly above every consumed
+interface line, (Φ₁-OPACITY) program complete). NEXT THREADS: (1)
+the compression campaign — T1 pass 2 on the r1-repaired draft, then
+T2–T5 per the blueprint, S-0 statement-ledger update for today's
+dated supersessions first; (2) the disclosed residuals: per-genre
+(CS-1Q) ledgers, ITERLAWN's (RM-m ≥ 2) conditional ledger; (3) the
+parked queue (LEANSIMP steps 2–18 behind Asvin's sign-off, the Lean
+unit trial, exposition E-units). Codex window ~11% used.

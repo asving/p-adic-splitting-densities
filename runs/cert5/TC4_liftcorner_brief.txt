@@ -1,0 +1,602 @@
+TRANSCRIPTION CONFIRMATION (gpt-5.6-sol high). Your P4 run proved the (RM-1) interface lemma; the orchestrator transcribed it as annex AC-5 at LIFTCORNER's tail (byte-unaltered, attribution bracket appended). Confirm AC-5 stands as your proof, discharging AC-1/AC-4 and lifting the PROP/S5/FC-2 suspensions: DISCHARGED / INSUFFICIENT / NEW-ISSUE. End with: OUTCOMES: <one word>
+
+=== LIFTCORNER AT HEAD (the 2026-08-12 annexes) ===
+### Dated adjudication (2026-08-12 — sol certification C1/E1: the as-built challenge adjudicated at HEAD)
+
+The sol-5.6 as-built read of this note (gpt-5.6-sol high,
+runs/cert/C1_liftcorner_output.log, 2026-08-12) returned CHALLENGE
+(1 CRITICAL, 2 GAP, 2 MINOR). The E1 certification run (gpt-5.6-sol
+high, runs/cert2/E1_liftcorner_output.log) adjudicated all five:
+finding 2 RESOLVED-ALREADY (the [r4, F4-6] fence), finding 5 ARTIFACT
+(rebutted from the note's own [r3]/[r4] lines), findings 3 and 4 REAL
+with repairs (annexes AC-2, AC-3), and finding 1 OBSTRUCTED with the
+containment annex AC-1 naming the missing lemma (Φ₁-OPACITY) and its
+pre-proof numerical certificate. Everything above this heading is
+byte-untouched by this append. The E1 adjudication, transcribed
+unaltered:
+
+1. OBSTRUCTED — PROP’s higher-rung conclusion is unsupported
+
+The finding stands. TAIL-STAB and READ-EQ prove the level-2 comparison, but nothing in the note proves that ITERLAWN’s rung-\(\ge2\) construction is insensitive to the non-leading coefficients of \(\Phi_1\). The note expressly admits this in `[r4, F4-4]`:
+
+> “an argument this note does not make, and which neither the two formerly cited tables nor ITERLAWN's own r4 erratum supplies”
+
+Thus PROP, S5’s all-\(n\) rider, and FC-2 outrun the proved chain. The missing lemma cannot be derived from the note’s own lemmas because WELL-DEF-\((n)\), the \(C_k\) construction, and the degree telescope are not defined here.
+
+Verbatim-ready containment and obstruction append:
+
+> **[ANNEX 2026-08-12, certifier AC-1 — PROP’S RUNG-\(\ge2\) CENSUS REMAINS OPEN.]** The all-rung force of three earlier sentences is SUSPENDED: PROP’s “the discharge lifts to every rung”, S5’s “ITER-LAW-\(n\) holds for EVERY lawful monic \(\Phi_1\), every \(n\)”, and FC-2’s execution of that rider rewrite. TAIL-STAB, READ-EQ, the THEOREM, COR 1 and COR 2 remain accepted exactly at their displayed 2-read / harness-\(\Phi_1\)-orbit scope.
+>
+> The missing statement is:
+>
+> **\((\Phi_1\)-OPACITY).** Let \(\Phi_1'\) and \(\Phi_1''\) be lawful monic level-1 keys with the same degree, \(w_1\)-value and accepted level-1 base package. For every rung \(n\ge2\), every use of \(\Phi_1\) in ITERLAWN S4.1/WELL-DEF-\((n)\), the \(C_k\)-existence construction and the S4.2 degree telescope factors through monicity, degree, \(w_1\Phi_1\), and the accepted level-1 package; equivalently, replacing \(\Phi_1''\) by \(\Phi_1'\) leaves every rung-\(\ge2\) proof datum and conclusion invariant after the formal identification \((\Phi_1'')^i\leftrightarrow(\Phi_1')^i\).
+>
+> This lemma is NOT proved by the present note. TAIL-STAB and READ-EQ control level-2 developments and reads; they contain no definitions of WELL-DEF-\((n)\), the higher \(C_k\), or the degree telescope from which \((\Phi_1\)-OPACITY) could be derived. The existing facts that the two keys share monicity, degree, \(w_1\), and the level-1 package do not logically exclude a higher-rung operation from inspecting a non-leading coefficient. Consequently the all-rung repair is **OBSTRUCTED pending a proof of \((\Phi_1\)-OPACITY)**. Until then, PROP and the executed S5/FC-2 rider are conditional on that lemma and carry no accepted conclusion.
+>
+> **PRE-PROOF NUMERICAL CERTIFICATE.** Use, without sampling, the 56 S3 orbit towers—48 twisted towers and 8 \(\xi=1\) dense controls—each paired with its same-residue standard lift \(\Phi''\), plus the exact PE1 counter-instance and its standard-lift mate. Run every pair through rungs \(n\in\{2,3,4,5\}\). At each of ITERLAWN S7’s 22 dependency sites record the branch decisions, degrees, valuations, residual coefficients, \(C_k\), telescope terms, and final read/cocycle data. Normalize each polynomial datum to formal \(\Phi_1\)-adic coordinates by replacing \(\Phi_1^i\) with a common symbol \(U^i\) and identifying the shared coefficient fields. The required predicate is equality of the complete normalized records for \(\Phi_1'\) and \(\Phi_1''\), together with an access trace showing that no non-leading coefficient of \(\Phi_1\) reaches a branch condition, valuation, residual coefficient, \(C_k\), telescope bound, or final read except through the opaque formal-power node \(\Phi_1^i\). Required verdict: zero normalized mismatches and zero forbidden coefficient accesses on all 57 tower pairs, all four tested rungs, and all 22 sites. This is an instance certificate only; the universal conclusion still requires a source-level proof of \((\Phi_1\)-OPACITY).
+
+2. RESOLVED-ALREADY — the broader “at any level” reading remains fenced
+
+The finding conflates changing \(\Phi_1\) and propagating that fixed choice through canonical higher rungs with independently choosing a noncanonical \(\Phi_{m+1}\) at a deeper level.
+
+The exact cure is already in `[r4, F4-6]`:
+
+> “**What this note delivers, exactly.** The **\(\Phi_1\) corner** of NR-1”
+
+and:
+
+> “Under the ILNRES S1 ‘at any level’ reading a deeper-level remainder survives. The two readings live in different notes of record, and this unit does not choose between them.”
+
+The acceptance record accepts “this note’s theorems **as fenced**.” FC-1 is explicitly a correction only of “the W-2 cap”; it changes the supplier grade from \(0/2\) to accepted and does not erase the `[r4, F4-6]` scope fence. Therefore the noncanonical-\(\Phi_2\) counter-configuration was already excluded from the discharged scope.
+
+This does not cure finding 1: propagation of a changed \(\Phi_1\) through canonical higher rungs still needs \((\Phi_1\)-OPACITY).
+
+3. REAL — CONTENT must be displayed at its integral-key scope
+
+The displayed wording “For monic \(\Phi\)” is literally too broad. The proof uses integrality of every coefficient of \(\Phi\), not merely monicity.
+
+Verbatim-ready repair:
+
+> **[ANNEX 2026-08-12, certifier AC-2 — CONTENT RE-DISPLAYED AT ITS PROVED-AND-CONSUMED SCOPE.]** The S4 CONTENT display
+>
+> “For monic \(\Phi\), the digits of \(\operatorname{dev}(F,\Phi)\) satisfy \(w_0\)-content \(\ge w_0\)-content\((F)\)”
+>
+> is SUPERSEDED by:
+>
+> **CONTENT (integral-key form).** Let \(\Phi\in\mathcal O[x]\) be monic and \(F\in\mathcal O[x]\). Every coefficient of every digit of \(\operatorname{dev}(F,\Phi)\) has valuation at least \(w_0\text{-content}(F)\).
+>
+> *Proof.* Put \(c=w_0\text{-content}(F)\). During monic long division, assume every coefficient of the current dividend has valuation at least \(c\). Its leading coefficient \(\lambda\) then has \(w_0(\lambda)\ge c\). Because every coefficient of \(\Phi\) lies in \(\mathcal O\), every coefficient of \(\lambda x^i\Phi\) has valuation at least \(c\). Subtracting it preserves that lower bound by the ultrametric inequality. Thus both the quotient coefficients and the remainder coefficients have valuation at least \(c\). Repeating the same division on successive quotients produces the \(\Phi\)-adic development and preserves the bound at every digit. ∎
+>
+> **Consumer sweep.** S4.1 applies CONTENT only to
+> \(a b=r+q\Phi_0\), where \(a,b,\Phi_0\in\mathcal O[x]\) and \(\Phi_0\) is monic. Hence the bounds \(w_0(r),w_0(q)\ge w_0(ab)\), all eight per-digit \(\omega\)-gain bounds, the lexicographic induction, TAIL-STAB, READ-EQ, the THEOREM and both corollaries survive unchanged. No consumer uses CONTENT for a monic polynomial with a nonintegral coefficient. The counterexample \(\Phi=x+p^{-1}\) is excluded precisely because \(\Phi\notin\mathcal O[x]\).
+
+4. REAL — correct the degree comparison in READ-EQ
+
+The literal \(e_0<\deg\Phi'\) fails when \(d_0=1\). The consumed inequality is the degree of the coefficient against the key degree.
+
+Verbatim-ready repair:
+
+> **[ANNEX 2026-08-12, certifier AC-3 — READ-EQ DEGREE CORRECTION.]** In S4.2(a), the clause
+>
+> “with \(s<e_0<\deg\)”
+>
+> is SUPERSEDED by:
+>
+> “with \(s<e_0\); since \(\deg\Phi_0=d_0\) and
+> \(\deg\Phi'=\deg\Phi''=e_0d_0\),
+> \[
+> \deg(\Phi_0^s)=sd_0<e_0d_0=\deg\Phi'=\deg\Phi'',
+> \]
+> so \(\pi^u\Phi_0^s\) is a single key-slot coefficient and the key power is never opened.”
+>
+> **Consumer sweep.** This is exactly the inequality consumed by the anchor and \(\delta_1=0\) parts of READ-EQ. It holds also at \(d_0=1\), where \(\deg\Phi'=e_0\) but \(s<e_0\). The separate \(\delta_1=1\) one-overflow argument is untouched. Therefore READ-EQ, the THEOREM, COR 1 and COR 2 survive unchanged.
+
+5. ARTIFACT — “bit-exactly modulo timing fields” does not claim raw-file identity
+
+The quoted PE9 sentence is not part of the note at HEAD. Moreover, its parenthetical explicitly states the equivalence relation: equality after removing disclosed wall-clock fields.
+
+That is consistent with the note’s corrections:
+
+- `[r3, F-C]`: “identical line-for-line **modulo the `elapsed`/per-block timestamp fields only**”
+- `[r4, F4-3]`: the runner output is “**identical modulo timing fields, not bit-identical**”
+- `[r4]` machine record: the raw output differs at wall-clock lines, while timing normalization gives an empty diff.
+
+The acceptance record itself calls the runner bytes “byte-frozen” and separately calls the children table reproducible; it never asserts that the raw timed runner output is byte-identical. No repair is needed.
+
+*(The adjudication above was produced by the E1 certification run
+(gpt-5.6-sol high, runs/cert2/E1_liftcorner_output.log, 2026-08-12);
+orchestrator verification before transcription — AC-2's division
+proof re-checked (integral Φ keeps every λx^iΦ coefficient at
+valuation ≥ c; ultrametric subtraction preserves the bound; the
+C1 counterexample Φ = x + p^{−1} is excluded by Φ ∉ O[x], and every
+consumer site is in O[x]); AC-3's inequality re-checked
+(s·d₀ < e₀·d₀ = deg Φ′, valid at d₀ = 1 where the sealed e₀ < deg
+failed); the RESOLVED-ALREADY and ARTIFACT rebuttals checked against
+the note's own [r4, F4-6] fence and [r3, F-C]/[r4, F4-3] lines at
+HEAD; AC-1's containment matches the note's own [r4, F4-4] admission,
+and the (Φ₁-OPACITY) statement + 57-pair certificate spec are
+recorded as the proof unit. Transcribed unaltered per the standing
+division of labor. Ledger: row 19 → AC-2/AC-3 folded; OPEN pending
+(Φ₁-OPACITY) + discharge.)*
+
+---
+
+### Dated source adjudication (2026-08-12 — sol certification P3: (Φ₁-OPACITY) narrowed to the (RM-1) interface)
+
+The P3 certification run (gpt-5.6-sol high,
+runs/cert4/P3_opacity_output.log) adjudicated (Φ₁-OPACITY) directly
+against ITERLAWN's r6 census of record (194 mapped hits): the
+constructor/telescope subgraph is PROVED opaque (the Θ-transport
+sublemma below), and the obstruction survives at exactly one site —
+ITERLAWN S4.6's (RM-1) reduction, which divides by Φ₁ and reads its
+non-leading coefficients. The residual obligation is the (RM-1)
+INTERFACE LEMMA named inside the annex (the four consumed interface
+clauses survive the key swap; full R,Q proof-data equality is the
+wrong statement). Transcribed unaltered:
+
+> **[ANNEX 2026-08-12, certifier AC-4 — \((\Phi _1\)-OPACITY SOURCE ADJUDICATION: CONSTRUCTOR/Telescope SUBGRAPH PROVED; ALL-RUNG LEMMA OBSTRUCTED AT \((RM\text{-}1)\).]**
+>
+> This adjudication uses ITERLAWN’s machine census of record, not the superseded 22-row or 23-row hand tables. The r6 universe is **194 mapped hits on 147 lines**, partitioned as follows:
+>
+> 1. **88** table-row occurrences, duplicates and dated cure-brackets;
+> 2. **21** occurrences in the seven substantive site-families \(F1\)–\(F7\);
+> 3. **53** verification-apparatus occurrences;
+> 4. **8** quotations of external records;
+> 5. **18** non-genre occurrences;
+> 6. **6** positive proof displays.
+>
+> The apparatus, quotation, archive and duplicate classes perform no polynomial operation and therefore cannot inspect a coefficient of \(\Phi _1\). The operative occurrences in the remaining classes reduce to five source-operation classes:
+>
+> * shared numerical and field data: \(e_j,h_j,g_j,\gamma_j,w_j\Phi_j,\psi_j,K_j,z_j,\epsilon_j\);
+> * the recursive realizers \(\operatorname{realize}_m\);
+> * the \(C_k\)-existence and canonical-key construction;
+> * TRUNC, WELL-DEF and the S4.2 degree telescope;
+> * the S4.6 reduction engines \((RM\text{-}m)\).
+>
+> The first four classes are \(\Phi _1\)-opaque in the required formal-power sense. The fifth is not shown opaque and, at \(m=1\), genuinely opens \(\Phi _1\).
+>
+> **Proved sublemma — constructor/telescope opacity.** Let \(\Phi _1'\) and \(\Phi _1''\) be lawful monic level-1 keys having the same residue package, degree, \(w_1\)-value and accepted level-1 data. Fix all remaining tower parameters. In every displayed construction in ITERLAWN S4.1 and S4.2, transport an explicitly displayed \(\Phi _1''\)-normal form by
+> \[
+> \Theta\!\left(\sum_i A_i(\Phi _1'')^i\right)
+>   :=\sum_i\Theta(A_i)(\Phi _1')^i,
+> \]
+> recursively replacing each constructed higher key by its corresponding primed key. Then:
+>
+> 1. \(\Theta(\operatorname{realize}_m''(\tau,\beta))
+>    =\operatorname{realize}_m'(\tau,\beta)\);
+> 2. \(\Theta(C_k'')=C_k'\) for every canonical-lift coefficient;
+> 3. \(\Theta(\Phi _{m+1}'')=\Phi _{m+1}'\);
+> 4. all degree, weight and explicitly constructed single-digit read data in REALIZE-\((m)\), WELL-DEF-\((n)\), TRUNC and L6-\((n)\) agree;
+> 5. the S4.2 degree telescope is identical on the two sides.
+>
+> Here \(\Theta\) is asserted only on the normal forms supplied by the displayed constructions. It is not asserted to commute with arbitrary division or re-development in \(\mathcal O[x]\).
+>
+> *Proof.* Proceed by induction on \(m\).
+>
+> For \(m=1\), the displayed formula
+> \[
+> \operatorname{realize}_1(\tau,\beta)
+>  =\sum_i
+>    \operatorname{realize}_0\!\left(
+>       \epsilon_0(\gamma^{(i)})^{-1}\tau_i,\gamma^{(i)}
+>    \right)\Phi_0^{k_i}
+> \]
+> contains no \(\Phi _1\). Its coordinates \(\tau_i\), slots \(k_i\), weights
+> \(\gamma^{(i)}\), field operations and \(\epsilon\)-factors are shared.
+> Hence the two realizers are literally equal at this level.
+>
+> Assume the assertion below level \(m\). ITERLAWN defines
+> \[
+> \operatorname{realize}_m(\tau,\beta)
+>   =\sum_i
+>      \operatorname{realize}_{m-1}
+>        \!\left(\epsilon_{m-1}(\gamma^{(i)})^{-1}\tau_i,
+>        \gamma^{(i)}\right)\Phi_{m-1}^{k_i}.
+> \]
+> The power-basis coordinates \(\tau_i\), the integers \(k_i\) and
+> \(\gamma^{(i)}\), and the \(\epsilon_{m-1}\)-factors depend only on the
+> shared field/read package. By induction the coefficients correspond, and
+> the final occurrence of \(\Phi_{m-1}\) is an opaque formal power.
+> Therefore the two displayed realizers correspond under \(\Theta\).
+>
+> REALIZE’s clauses (R1)–(R3) do not perform division by a changed key.
+> Clause (R1) uses only
+> \[
+> k_i\le e_{m-1}g_{m-1}-1,\qquad
+> \deg\operatorname{realize}_{m-1}<\deg\Phi_{m-1},
+> \]
+> and
+> \[
+> \deg\Phi_m=e_{m-1}g_{m-1}\deg\Phi_{m-1}.
+> \]
+> Clauses (R2) and (R3) use the already displayed sum as its
+> \(\Phi_{m-1}\)-development: the coefficient-degree bound makes every
+> summand a single legal digit, and distinct \(i\) give distinct slots.
+> Thus no coefficient of \(\Phi_{m-1}\), and hence no non-leading
+> coefficient of \(\Phi _1\), is opened.
+>
+> For \(k<g_m\),
+> \[
+> C_k=\operatorname{realize}_m\!\left(
+>   \epsilon_m((g_m-k)\gamma_{m+1})^{-1}\psi_{m,k},
+>   (g_m-k)\gamma_{m+1}\right).
+> \]
+> Its field input, weight and \(\epsilon_m\)-factor are shared, so the
+> realizer induction gives \(\Theta(C_k'')=C_k'\). Consequently
+> \[
+> \Phi_{m+1}
+>   =\sum_{k\le g_m}C_k\Phi_m^{e_mk},\qquad C_{g_m}=1,
+> \]
+> corresponds term by term. Monicity comes from the top term
+> \(\Phi_m^{e_mg_m}\); every lower term has smaller degree by (R1).
+> This proves equal degree and the WELL-DEF existence claims using only
+> monicity, degree and the shared read package.
+>
+> TRUNC merely discards the top level. On the two towers “identical lifts”
+> must be read as “corresponding lifts under \(\Theta\)”; its split,
+> window and field data are literally shared.
+>
+> Finally, S4.2 uses only
+> \[
+> \deg a=\sum_{j<n}s_{j+1}\deg\Phi_j
+> \le\sum_{j<n}(\deg\Phi_{j+1}-\deg\Phi_j)
+> =\deg\Phi_n-d_0<\deg\Phi_n.
+> \]
+> The degrees and \(s\)-data agree, so this is the same telescope on both
+> towers. It establishes that \(a\) is a single \(\Phi_n\)-digit without
+> opening \(\Phi_n\). Its weight and read then come from the corresponding
+> induction hypothesis. This proves constructor/telescope opacity. ∎
+>
+> **Exact obstruction to the stated all-rung lemma.** ITERLAWN S4.6 contains
+> the load-bearing display
+> \[
+> f\,\widehat C_m=R+Q\Phi_m,\qquad
+> \deg R,\deg Q<\deg\Phi_m,
+> \]
+> with weight bounds and a prescribed read of \(R\). At \(m=1\) this is
+> \[
+> \boxed{\,f\,\widehat C_1=R+Q\Phi_1\,}.
+> \]
+> Its displayed proof status is:
+>
+> > “\(m=1\): PROVED — [IL3] DIGIT-SPLIT + DEV-1 … each coefficient product
+> > splits by DIGIT-SPLIT and reduces by DEV-1.”
+>
+> This reduction genuinely inspects the non-leading coefficients of
+> \(\Phi _1\). In ordinary long division, cancelling a leading term
+> \(\lambda x^t\) subtracts \(\lambda x^{t-d}\Phi _1\); for every \(r<d\)
+> it therefore reads \([x^r]\Phi _1\) and changes the developing remainder
+> by \(-\lambda[x^r]\Phi _1x^{t-d+r}\). In the corner’s \(\Phi _0\)-adic
+> notation the same access is the substitution
+> \[
+> \Phi_0^{e_0}
+>   =\Phi_1-b_0-\sum_{k\ge1}b_k\Phi_0^k,
+> \]
+> which explicitly reads the \(b_0\)-tail and every mid \(b_k\).
+>
+> Algebraically, if
+> \(\Delta=\Phi _1'-\Phi _1''\) and
+> \(F=R''+Q''\Phi _1''\), then
+> \[
+> F=(R''-Q''\Delta)+Q''\Phi _1'.
+> \]
+> Thus the new remainder already contains the non-leading coefficients of
+> \(\Delta\); if its degree is too large, further reductions read them
+> again. Same residue and same \(w_1\)-value can make these new terms
+> strictly above a relevant read line, but do not make them zero and do not
+> make the complete \(R,Q\) data invariant. Formal replacement
+> \((\Phi _1'')^i\leftrightarrow(\Phi _1')^i\) does not remove this
+> difference because \(R\) is a coefficient—the \(U^0\) digit—rather than
+> an opaque key power.
+>
+> This is not bypassed by ITERLAWN’s verified sentence “rung \(\ge3\) steps
+> never consume RM-1.” The all-rung induction must first obtain
+> ITER-PKG-2, the 3-read link. ITERLAWN takes that link from [IL3], and its
+> displayed \(m=1\) engine proof is exactly DIGIT-SPLIT + DEV-1 above.
+> Later transitions call \(RM-m\) with \(m\ge2\), but they cannot climb from
+> an arbitrary \(\Phi _1\) without the rung-2 package.
+>
+> LIFTCORNER’s TAIL-STAB makes an \(RM\)-interface transport plausible:
+> strict-excess terms may be invisible to the particular consumed weight
+> and read clauses. No displayed argument, however, proves that statement
+> for every \(RM\)-1 input \(f\), and TAIL-STAB does not make the complete
+> quotient/remainder records equal. The missing repair is therefore a
+> weaker and accurately scoped lemma:
+>
+> **\((RM\text{-}1\text{-TRANSPORT})\).** Under replacement by a lawful
+> same-residue \(\Phi _1\), the four *consumed interface clauses* of
+> \(RM\)-1—degree bounds, the two weight bounds and the prescribed read of
+> \(R\)—survive for every input class used in constructing ITER-PKG-2.
+>
+> Proving this interface lemma, followed by the S4.4–S4.6 rung-2 package
+> construction, could discharge the all-rung rider. Equality of complete
+> \(R,Q\) proof data should not be required and is generally the wrong
+> statement.
+>
+> **Consumer sweep.**
+>
+> * **LIFTCORNER PROP:** remains SUSPENDED. Constructor/telescope opacity
+>   repairs the S4.1 \(\to\) L6 edge but does not supply arbitrary-\(\Phi _1\)
+>   ITER-PKG-2 across \(RM\)-1.
+> * **LIFTCORNER S5:** its every-\(n\) rider remains conditional on the
+>   missing \(RM\)-1 transport/rung-2 package. TAIL-STAB, READ-EQ, the
+>   THEOREM, COR 1 and COR 2 retain their accepted 2-read scopes.
+> * **FC-2:** its execution of the all-rung rider remains SUSPENDED and must
+>   be read conditionally. The fold’s standard-lift ITERLAWN theorem and
+>   all unrelated accepted conclusions are unchanged.
+> * **ITERLAWN:** S4.1, WELL-DEF-\((n)\), canonical \(C_k\)-existence,
+>   TRUNC and L6-\((n)\) are certified \(\Phi _1\)-opaque in the formal
+>   constructor sense proved above. Its existing standard-lift theorem,
+>   integer layer, EXP-KIT and conditional \(RM\)-ledger are unaffected.
+>
+> Accordingly, AC-1 is narrowed but not discharged: its alleged opacity
+> problem is absent from the constructor/telescope subgraph and survives
+> exactly at the rung-2 \(RM\)-1 reduction interface.
+
+*(Orchestrator verification: the census partition sums to 194
+(88+21+53+8+18+6); the Θ-transport's five clauses ride the same
+block-unitriangular mechanisms verified at P1; the (RM-1) division
+genuinely opens Φ₁ (the m = 1 display f·Ĉ₁ = R + QΦ₁ is proved by
+DIGIT-SPLIT + DEV-1 reduction mod Φ₁ — coefficient-reading is real).
+AC-1 is NARROWED, not discharged. Ledger: row 19 → open on the
+(RM-1) interface lemma only (P4, next queue).)*
+
+---
+
+### Dated proof (2026-08-12 — sol certification P4: the (RM-1) interface lemma; AC-1/AC-4 discharged)
+
+The P4 certification run (gpt-5.6-sol high,
+runs/cert5/P4_rm1_output.log) PROVED the (RM-1) interface lemma AC-4
+demanded. Transcribed unaltered:
+
+> **[ANNEX 2026-08-12, certifier AC-5 — \((RM\text{-}1\text{-TRANSPORT})\) PROVED; THE \((\Phi _1)\)-OPACITY RESIDUAL IS DISCHARGED.]**
+>
+> Let \(\Phi _1'\) and \(\Phi _1''\) be lawful monic level-1 keys with the same residue package at \(g_0=1\). Put
+> \[
+> d:=\deg\Phi _1'=\deg\Phi _1''=e_0d_0,\qquad
+> W:=w_1\Phi _1'=w_1\Phi _1''=e_0h_0,
+> \]
+> and
+> \[
+> \Delta:=\Phi _1'-\Phi _1''.
+> \]
+> For a \(\Phi _0\)-development \(G=\sum_i a_i\Phi _0^i\), write
+> \[
+> \nu(G):=\min_i\{e_0w_0(a_i)+ih_0\}=w_1(G).
+> \]
+>
+> **Strictness of the key difference.** Write
+> \[
+> \Phi _1^\sigma=\Phi _0^{e_0}+\sum_{k<e_0}b_k^\sigma\Phi _0^k,
+> \qquad \sigma\in\{',\,''\}.
+> \]
+> Same residue gives
+> \[
+> w_0(b_0'-b_0'')\ge h_0+1.
+> \]
+> For \(1\le k<e_0\), lawfulness and the ultrametric inequality give
+> \[
+> w_0(b_k'-b_k'')\ge
+> \operatorname{amin}(k)
+> =\left\lceil\frac{(e_0-k)h_0}{e_0}\right\rceil .
+> \]
+> Since \(\gcd(e_0,h_0)=1\), for \(1\le k<e_0\),
+> \[
+> e_0\operatorname{amin}(k)+kh_0\ge e_0h_0+1=W+1.
+> \]
+> The \(k=0\) term has weight at least
+> \(e_0(h_0+1)\ge W+1\). Therefore
+> \[
+> \boxed{\nu(\Delta)\ge W+1.}\tag{T1}
+> \]
+>
+> **Strict DEV-1 consequence.** Let \(K\) be any lawful key of the displayed form and let
+> \[
+> H=A+BK,\qquad \deg A,\deg B<d
+> \]
+> be its monic division. Then
+> \[
+> \boxed{\nu(A)\ge\nu(H),\qquad
+>        \nu(B)\ge\nu(H)-W.}\tag{T2}
+> \]
+>
+> This is the exact weight-content consequence of ITERLAWN’s \(m=1\)
+> DIGIT-SPLIT \(+\) DEV-1 reduction. For completeness, run that displayed
+> reduction on a current term \(a\Phi _0^m\), \(\deg a<d_0\). Substitution of
+> \[
+> \Phi _0^{e_0}=K-\sum_{k<e_0}b_k\Phi _0^k
+> \]
+> emits a quotient term \(a\Phi _0^{m-e_0}\), whose weight is the parent
+> weight minus \(W\). Each lower coefficient product \(ab_k\) has degree
+> \(<2d_0\), so DIGIT-SPLIT gives
+> \[
+> ab_k=r+q\Phi _0,\qquad
+> w_0(r),w_0(q)\ge w_0(a)+w_0(b_k).
+> \]
+> Hence every resulting remainder child has weight at least its parent:
+> \[
+> e_0w_0(r)+(m-e_0+k)h_0
+> \ge e_0w_0(a)+mh_0,
+> \]
+> and the \(q\)-child has an additional \(h_0\). Collisions cannot lower
+> these bounds by the ultrametric inequality.
+>
+> The reduction terminates on the same lexicographic
+> \((m,\deg a)\) measure used by LIFTCORNER’s repaired TAIL-STAB proof.
+> For \(e_0\ge2\), only the top-mid \(q\)-child can preserve \(m\), and then
+> its coefficient degree drops. At \(e_0=1\), the analogous \(b_0\)
+> \(q\)-child can preserve \(m\), but its coefficient degree likewise
+> drops. Thus the DEV-1 reduction is finite, including the flat case needed
+> for the strict-excess correction below. This proves (T2).
+>
+> Now take any nonzero input \(f\) occurring in the construction of
+> ITER-PKG-2, with
+> \[
+> \deg f<d,\qquad
+> \lambda:=w_1(f),\qquad
+> v:=R_{1,\lambda}(f),\qquad
+> \mu:=\lambda+\gamma _2.
+> \]
+> No correspondence between complete primed and double-primed input
+> polynomials is required: apply the established \((RM\text{-}1)\) theorem
+> for \(\Phi _1''\) to this same literal polynomial \(f\). The quantities
+> \(\lambda\) and \(v\) are computed from its \(\Phi _0\)-development and
+> are therefore independent of which level-1 key is later used for
+> division.
+>
+> The correction digit is shared:
+> \[
+> \widehat C_1'
+> =\widehat C_1''
+> =\operatorname{realize}_1(\tau _1,\gamma _2).
+> \]
+> Indeed, AC-4’s \(m=1\) constructor calculation contains no \(\Phi _1\);
+> same residue makes \(z_1,\epsilon _1,\tau _1\) and all field inputs
+> identical.
+>
+> The established \((RM\text{-}1)\) interface for \(\Phi _1''\) supplies
+> \[
+> f\widehat C_1=R''+Q''\Phi _1'',\qquad
+> \deg R'',\deg Q''<d,
+> \]
+> with
+> \[
+> w_1(R'')\ge\mu,\qquad
+> w_1(Q'')\ge\mu-W,
+> \]
+> and
+> \[
+> R_{1,\mu}(R'')=z_1^{\epsilon'}v\tau _1.
+> \tag{T3}
+> \]
+>
+> Put \(H:=Q''\Delta\). DIGIT-SPLIT’s product bound together with (T1)
+> and (T3) gives
+> \[
+> \nu(H)\ge\nu(Q'')+\nu(\Delta)
+> \ge(\mu-W)+(W+1)=\mu+1.
+> \tag{T4}
+> \]
+> Divide \(H\) by \(\Phi _1'\):
+> \[
+> Q''\Delta=A+B\Phi _1',\qquad \deg A,\deg B<d.
+> \]
+> Applying (T2) to (T4),
+> \[
+> w_1(A)\ge\mu+1,\qquad
+> w_1(B)\ge\mu+1-W.
+> \tag{T5}
+> \]
+>
+> Since \(\Phi _1''=\Phi _1'-\Delta\),
+> \[
+> \begin{aligned}
+> f\widehat C_1
+> &=R''+Q''\Phi _1''\\
+> &=R''-Q''\Delta+Q''\Phi _1'\\
+> &=(R''-A)+(Q''-B)\Phi _1'.
+> \end{aligned}
+> \]
+> Define
+> \[
+> \boxed{R':=R''-A,\qquad Q':=Q''-B.}\tag{T6}
+> \]
+> Then the four consumed interface clauses are:
+>
+> 1. **Degree bounds**
+>    \[
+>    \deg R',\deg Q'<d.
+>    \]
+>
+> 2. **Remainder-weight bound**
+>    \[
+>    w_1(R')\ge\min\{w_1(R''),w_1(A)\}\ge\mu.
+>    \]
+>
+> 3. **Quotient-weight bound**
+>    \[
+>    w_1(Q')\ge\min\{w_1(Q''),w_1(B)\}\ge\mu-W.
+>    \]
+>
+> 4. **Prescribed read of the remainder.** Since \(w_1(A)>\mu\),
+>    READ-ADD-\((1)\)’s strict-above kill gives
+>    \[
+>    R_{1,\mu}(R')
+>      =R_{1,\mu}(R''-A)
+>      =R_{1,\mu}(R'')
+>      =z_1^{\epsilon'}v\tau _1.
+>    \]
+>
+> Thus every \((RM\text{-}1)\) input class used in constructing
+> ITER-PKG-2 retains exactly the interface consumed by ITERLAWN S4.6.
+> The argument is uniform in \(f\); it does not require equality or a
+> preselected correspondence between the complete primed and
+> double-primed input records.
+>
+> **Why full proof-data equality is false and unnecessary.** Equations
+> (T5)–(T6) explicitly give
+> \[
+> R'-R''=-A,\qquad Q'-Q''=-B.
+> \]
+> The strictly excessive polynomials \(A,B\) need not vanish. Therefore
+> complete equality of \(R,Q\) is neither proved nor claimed. What is
+> invariant is precisely their degree/weight/read interface.
+>
+> **Consumer sweep.**
+>
+> * **S4.4 CASE-SPLIT-\((2)\):** consumes the accepted ITER-PKG-1
+>   support, degree, weight and read package and makes no division by
+>   \(\Phi _1\). AC-4 and LIFTCORNER’s accepted level-1 comparison already
+>   transport those inputs.
+> * **S4.5 Case I:** makes no \((RM\text{-}1)\) call and is unchanged.
+> * **S4.6 Case II-1:** consumes the two degree bounds, both weight bounds
+>   and the prescribed \(R\)-read. All four are supplied above, so its
+>   on-line \(R\)-slot, strictly-above \(Q\)-slot and
+>   \(\epsilon'\)-carry/canonical-lift cancellation are unchanged.
+> * **S4.6 Case II-2:** the \(E_0\)-call consumes all four clauses; the
+>   \(E_1\)-call consumes the degree and weight clauses only. Both calls
+>   survive. The off-DCX condition is evaluated using the quotient actually
+>   produced on the primed tower; no equality of \(Q'\) and \(Q''\), nor
+>   equality of their zero loci, is required.
+> * **S4.6 Case II-3:** consumes only the degree and weight clauses for the
+>   \(E_1\)-call. Its collision terms remain strictly above the prescribed
+>   line, so READ-ADD kills them exactly as before.
+> * Consequently S4.4–S4.6 construct **ITER-PKG-2 for every lawful
+>   same-residue \(\Phi _1'\)**, on ITERLAWN’s own proved perimeter and
+>   with its existing DCX/\((RM\text{-}m)\) conditionality unchanged.
+> * AC-4 then transports REALIZE, the \(C_k\), canonical higher keys,
+>   WELL-DEF, TRUNC, L6 and the degree telescope. From rung \(3\) onward
+>   ITERLAWN calls only \((RM\text{-}m)\) with \(m\ge2\); those retain
+>   exactly their pre-existing conditional ledger. Hence the induction
+>   climbs from the newly established arbitrary-\(\Phi _1\) ITER-PKG-2.
+> * **LIFTCORNER PROP:** its rung-\(\ge2\) suspension is lifted. The
+>   all-rung propagation now follows at ITERLAWN’s own conditionality.
+> * **LIFTCORNER S5:** the every-\(n\) rider on the \(\Phi _1\) axis is no
+>   longer conditional on \((\Phi _1\)-OPACITY). The fence excluding
+>   independently chosen noncanonical higher keys remains unchanged.
+> * **FC-2:** its executed rider rewrite is reinstated on the \(\Phi _1\)
+>   axis. This does not enlarge ITERLAWN’s DCX, higher-\((RM)\), T-scope or
+>   deeper-noncanonical-lift perimeter.
+> * For an arbitrary residue \(c'\), compare the lawful key with its
+>   same-residue standard mate. LIFTCORNER’s accepted theorem supplies
+>   that standard-mate base package, the present lemma supplies
+>   ITER-PKG-2, and AC-4 supplies the higher constructor/telescope
+>   transport. COR 2’s already fenced \(\chi\)-covariance statement is
+>   unchanged.
+>
+> Therefore AC-1’s final residual and AC-4’s unique obstruction are
+> discharged: coefficient-reading by division is real, but its effect is
+> strictly above every interface line consumed by the rung-2 construction.
+
+*(Orchestrator verification before transcription — (T1)'s strictness
+re-derived (gcd(e₀,h₀) = 1 makes e₀ ∤ (e₀−k)h₀ for 0 < k < e₀, so
+the ceiling adds ≥ 1; the k = 0 term rides the residue pin); the
+(T4) crux re-computed (ν(Q″Δ) ≥ (μ−W) + (W+1) = μ+1 — the swap
+correction lands strictly above the consumed line); the R′ = R″ − A,
+Q′ = Q″ − B bookkeeping checked against (T2); the sweep's rung-≥3
+claim checked against AC-4 (only (RM-m), m ≥ 2, is called there, at
+its existing conditional ledger). The PROP/S5/FC-2 suspensions of
+annex AC-1 are LIFTED as stated. Transcribed unaltered per the
+standing division of labor. Ledger: row 19 → the (Φ₁-OPACITY)
+program is complete (AC-1 containment → AC-4 narrowing → AC-5
+discharge); transcription-confirm owed.)*

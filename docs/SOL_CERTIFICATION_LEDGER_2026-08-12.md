@@ -32,7 +32,7 @@ proof consumes (tightness census + consumption map).
 | 16 | HE3 | CHALLENGE (fresh, R8) | **CERTIFIED 2026-08-12** — A5's 5 repairs folded (incl. LEMMAS HE3-4U + HE3-4D1); D2e: 5/5 DISCHARGED (runs/cert2/D2e_he3_output.log) |
 | 17 | GENIND ANNEX | sol pass found d-factor GAP | **CERTIFIED 2026-08-12** — Q-normalized GENIND-C2 + round-2 (C2Q/C2D/C2E) folded; RP1 fresh pass: STACK-VERDICT RATIFIED (exponent composition, well-founded descent, side pricing all re-checked; the per-genre (CS-1Q) obligation disclosed, not promoted) |
 | 18 | WI ([GENTOW5-W(i)]) | r1 landed; sol PE2 was the challenge | **CERTIFIED 2026-08-12** — R10 pass 3: zero findings on all five charges, sol verdict "CERTIFIED 2/2" (runs/cert/R10_wi_pass3_output.log) |
-| 19 | LIFTCORNER | never sol-read as-built | AC-1..AC-4 folded + discharged (D3h 3/3); P3: constructor/telescope opacity PROVED (Θ-transport sublemma), obstruction NARROWED to ITERLAWN S4.6 (RM-1). Remaining: the (RM-1) interface lemma (P4) |
+| 19 | LIFTCORNER | never sol-read as-built | **CERTIFIED 2026-08-12** — C1 challenge fully cycled: AC-1 containment → AC-2/AC-3 repairs → AC-4 narrowing (constructor/telescope opacity PROVED) → AC-5 the (RM-1)-TRANSPORT lemma (P4); all discharged (D3h 3/3 + TC4); PROP/S5/FC-2 suspensions LIFTED |
 | 20 | GRTJA | never sol-read as-built | **CERTIFIED 2026-08-12** — E2 repairs (JA-EPS-CORR, degree-shift, scalar-gauge criterion, JA-GRID split) DISCHARGED 3/4 at D3a + the |χ(S_A)| ≤ 1 corrigendum DISCHARGED at RC1 |
 | 21 | GRTJB | never sol-read as-built | **CERTIFIED 2026-08-12** — C3 CHALLENGE fully settled: f1 ARTIFACT (2/2 record at HEAD), f3 RESOLVED-ALREADY (E-2 propagation rule), f2+f4 repaired (abscissa-run re-display; NOT-SUPPLIED scoping) and DISCHARGED 2/2 at D3b |
 | 22 | GRTJC | never sol-read as-built (cites now PDF-verified) | **CERTIFIED 2026-08-12** — E4 repairs (W-8 quotient route, JC-RANKMULT, scopings) DISCHARGED 5/5 at D3c |
@@ -47,3 +47,19 @@ proof consumes (tightness census + consumption map).
 Out-of-cone (not goal-gating, per the tightness census): WFRAME, T1, T3,
 SG2, the X-lemma, distribution notes. WELD-FACE-AUDIT rides C6's charge.
 Rows update as runs land; the goal closes when every row reads CERTIFIED.
+
+**GOAL CLOSED 2026-08-12, 14:10 UTC: 29/29 CERTIFIED.** Five runner
+waves (21 + 19 + 15 + 8 + 6 runs), 69 sol certification runs total.
+Every note in the uniformity theorem's cone is sol-5.6-certified end
+to end: as-built read → challenge → orchestrator-verified repair
+transcription → sol discharge confirmation. Four new lemmas were
+discovered, numerically certified, and proved along the way
+(W12-HT; GENHN-COUNT-RERUN; GENHN-CAP-GEN; RM-1-TRANSPORT — plus
+HE3-4U/HE3-4D1, GENIND-C2Q/C2D, JC-RANKMULT, WELD-M-PKG, and the
+E-wave's scoped re-displays). Statement decisions were executed
+under the owner's 2026-08-12 delegated authority (end-to-end-proof
+criterion; certify numerically, then prove). Standing residuals
+OUTSIDE the goal: the per-genre (CS-1Q) affine ledgers (disclosed
+conditionality in GENIND-C2Q); ITERLAWN's pre-existing DCX/(RM-m,
+m ≥ 2) conditional ledger (unchanged by AC-5); the compression
+campaign (T1 arc pass 2 owed; T2–T5; S-0 ledger update).
