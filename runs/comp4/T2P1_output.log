@@ -1,0 +1,17 @@
+Hostile pass result: not clean. No files were modified.
+
+- **C1 — Reducible-key peel is invalid.** The master says: “`Φ ∤ F`” and, otherwise, “gives one simple factor `Φ`.” For reducible monic `Φ`, `gcd(F, Φ)` may be a proper nontrivial factor while `Φ ∤ F`; moreover, `Φ` itself need not be one irreducible factor. Thus the proper/peel dichotomy silently needs key irreducibility or an unrecorded gcd-orbit decomposition. This directly threatens the HE7 first gate.
+
+- **G1 — The first gate is not inspectable.** Although `SigmaLadderCarrier` visibly omits `keyIrreducible`, the supplied sketch leaves `BaseChangeFreeTestFamily`, `SigmaStepData`, and `PeelResult` opaque and provides no Lean HE7 instance constructor. Any could reintroduce `Irreducible C.key`; no generated obligation list exists to establish the claimed “First-gate result.”
+
+- **G2 — The span pins violate their own fail-closed grammar.** HE3 has multiple begin-only spans; HE7 ends one span via “after its wiring paragraph and three bullets”; HETOW uses “ending with its proof”; GENTOW’s acceptance fold is begin-only; HE6 uses `..` instead of the defined `..<`. Therefore the five records are not all mechanically bounded immutable spans.
+
+- **G3 — The proof consumes undeclared test-family capabilities.** S1.6 supplies tests only for actual side factors, but the proof invokes “generic test factors of degree larger than every consumed residual” at every rational height, plus a ρ-side equality/strictness theorem and resultant symmetry. Those capabilities are not fields of the stated package. Conversely, nonemptiness and exhaustion—the advertised outputs of that argument—are already assumed in S1.6.
+
+- **G4 — The five records are not field-by-field instantiations.** Required fields such as finite occupied/lift-height sets with `(OCC)`, cocycle data, complete test certificates, frame/origin obligations, and `step_wf` are omitted from several records. HETOW and GENTOW4 especially inherit these only by prose references. The master also uses inherited invariants `(e_C,f_C)` that do not occur in the carrier tuple or Lean structure.
+
+- **G5 — The original-\(O\) redline is textual but not represented by the signature.** No quotient DVR is explicitly smuggled into the prose instances. However, `CompleteDVRData` supplies neither an embedding `O → K₀`, a fraction-field relation, nor DVR/valuation axioms; `complete` is merely an arbitrary proposition. Consequently the proposed formal gate cannot distinguish the original coefficient DVR from a purported stage ring.
+
+The normalized HE6 digit and `η^{-q(k)}` sign, the genuine `β^c` cocycle, and the explicit residue-label-only quotient `K[Z]/(r)` are internally consistent in the submitted text.
+
+VERDICT: NOT CLEAN | FINDINGS: 1C + 5G + 0m
