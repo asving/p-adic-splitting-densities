@@ -34,9 +34,9 @@ proof consumes (tightness census + consumption map).
 | 18 | WI ([GENTOW5-W(i)]) | r1 landed; sol PE2 was the challenge | **CERTIFIED 2026-08-12** — R10 pass 3: zero findings on all five charges, sol verdict "CERTIFIED 2/2" (runs/cert/R10_wi_pass3_output.log) |
 | 19 | LIFTCORNER | never sol-read as-built | C1 2026-08-12: CHALLENGE — 1 CRITICAL (PROP's owed rung-≥2 clause-(ii) census promoted into the all-level conclusion + S5/FC-2 rewrite), 2 GAP (NR-1 discharge grade vs the live ILNRES fence; CONTENT sub-lemma needs Φ ∈ O[x], counterexample Φ = x+p^{−1}), 2 MINOR. Adjudicate+repair (cert2) |
 | 20 | GRTJA | never sol-read as-built | C2 2026-08-12: CHALLENGE — 1 CRITICAL (J-A(iii) proves the minimal-grid ε, not the print's t(i) exponent: z^{t_Def} = z^ν·ε_m(β), the ν-shifted supports the note allows break the standalone equality), + GAPs. Adjudicate+repair (cert2) |
-| 21 | GRTJB | never sol-read as-built | ratification (C3) |
-| 22 | GRTJC | never sol-read as-built (cites now PDF-verified) | ratification (C4) |
-| 23 | GRTW2 | never sol-read as-built | ratification (C5) |
+| 21 | GRTJB | never sol-read as-built | C3 2026-08-12: CHALLENGE — 3 GAP (2/2 acceptance not auditable from the supplied record — no PE10 report pasted; the shear Σ_q has det e_q ≠ ±1 so JB-VTX(c)'s "lattice data preserved" needs JB-VTX(d4)'s attained-grid subclaim, under-fenced in matrix row 10; W2-C3 measured-above region used by PROVED-labelled statements). Adjudicate+repair (cert2) |
+| 22 | GRTJC | never sol-read as-built (cites now PDF-verified) | C4 2026-08-12: CHALLENGE — 1 CRITICAL (W-8 promotes equality mod ψ_m in the TC-transported ring to polynomial equality in K_m[y]; counter-config at g_m=1, δ=1: deg A = 1 vs deg c̃ < 1 — exactly the JC-LOAD raw-equality failure set). Adjudicate+repair (cert2) |
+| 23 | GRTW2 | never sol-read as-built | C5 2026-08-12: CHALLENGE — 1 CRITICAL (annex #3 records an unsupported closure of W2-OPEN-2's above-r₀ chain claims — the Σ-LAW annex closes only OPEN-2a's forward implication) + GAP (W2-C1's scalar orbit ρ₁² = ρ₀ρ₂ unproved off (C-coll); justified only at m=1/(C-coll)/scanned instances). Adjudicate+repair (cert2) |
 | 24 | WELDMASTER | never sol-read as-built | ratification (C6) |
 | 25 | W-11 | never sol-read as-built | ratification (C7) |
 | 26 | HMENU3 | never sol-read as-built | ratification (C8) |
