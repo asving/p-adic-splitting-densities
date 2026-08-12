@@ -24,7 +24,7 @@ proof consumes (tightness census + consumption map).
 | 8 | GENTOW6 | CERTIFIED (challenge dissolved at HEAD) | — |
 | 9 | GENTOW3 | challenged, repairs LANDED | discharge-confirm (D1) |
 | 10 | GENTOW5 | challenged, repairs LANDED | discharge-confirm (D1) |
-| 11 | HEX3 | RATIFIED-W-ANNEX (fresh) | fold annex minors (A0) |
+| 11 | HEX3 | RATIFIED-W-ANNEX (fresh) | **CERTIFIED 2026-08-12** — A0 adjudicated all 4 annex minors REAL at HEAD; repairs verified + folded as Corrections C–F (note append) |
 | 12 | W-12 | CHALLENGE (fresh, R3) | adjudicate+repair (A1) → discharge |
 | 13 | GENHN | CHALLENGE (fresh, R4) | adjudicate+repair (A2) → discharge |
 | 14 | HE6 | CHALLENGE (fresh, R6) | adjudicate+repair (A3) → discharge |
