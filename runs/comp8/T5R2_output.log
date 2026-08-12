@@ -1,0 +1,79 @@
+# T5 r2 — Notation/supplier repair
+
+Apply after r1. All unlisted text remains unchanged.
+
+## 1. Replace the composition-pass and status lines
+
+```markdown
+**Composition pass:** r2, attempt 0/2, 2026-08-12  
+**Status:** repaired candidate; two clean hostile passes owed  
+```
+
+## 2. In I5, replace the block beginning with `where` before the definition of \(w_i\) through the definition of \(\theta_i(t)\)
+
+```markdown
+The companion’s symbol \(\bar k_i\) and this note’s canonical symbol
+\(\bar\kappa_i\) denote the same normalized slope. Explicitly, throughout
+this instance pin,
+
+\[
+\boxed{
+\bar k_i=\bar\kappa_i
+:=
+\frac{u_{i+1}}{e(\mu_i)}.
+}
+\]
+
+Accordingly, the supplier’s displayed definition is read as
+
+\[
+w_i
+=
+R_{i+1,\bar k_i}
+\bigl(\widehat n_i(u_{i+1})\bigr)
+=
+R_{i+1,\bar\kappa_i}
+\bigl(\widehat n_i(u_{i+1})\bigr),
+\]
+
+which is exactly (WF-w), and
+
+\[
+\theta_i(t)
+=
+\Theta_i(t)
+=
+\vartheta_{i,f_{i+1}-t}^{-1}.
+\]
+
+The first expression for \(w_i\) preserves the supplier’s notation; the
+second is the same expression in the canonical notation of this note.
+No second definition of \(w_i\) is introduced.
+```
+
+## 3. Replace honesty-ledger item 1
+
+```markdown
+1. Every \(w_i\) and \(\psi_{i+1}^{(w_i)}\) here means (WF-w) and
+   (WF-psi). In I5 the supplier notation is explicitly bridged by
+
+   \[
+   \bar k_i=\bar\kappa_i:=\frac{u_{i+1}}{e(\mu_i)}.
+   \]
+
+   Thus the pinned supplier expression is literally the canonical
+   definition after notation identification; riders do not redefine it.
+```
+
+## 4. Replace Pass 1, item 1
+
+```markdown
+1. Check (WF-w) and (WF-psi) literally against T1 C3, and check that I5
+   retains the explicit bridge
+   \(\bar k_i=\bar\kappa_i=u_{i+1}/e(\mu_i)\), so its supplier pin is
+   exactly (WF-w) in the canonical notation.
+```
+
+This repair changes notation only. It leaves all r1 scope restrictions, cumulative hypotheses, supplier ranges, corrected twist indices, and instance records unchanged. Repository span-pin verification was again unavailable because the workspace executor could not launch without `bwrap`; no files were changed.
+
+SUMMARY: 1 REAL (repairs delivered)
