@@ -1,0 +1,41 @@
+VERDICT: DERIVABLE
+
+Verbatim insertion:
+
+```text
+**[r1, 2026-08-12 — P_{i+1}-nonemptiness is derived, not a
+hypothesis.]** For every permitted level 3 <= i < r, DEF GENTOW5-1
+supplies the recipe key Phi_{i+1}; it is a monic polynomial of
+positive degree. Choose a root alpha of Phi_{i+1} in the fixed
+algebraic closure. THEOREM GENTOW5-B clause (b), at index i, gives
+
+    alpha in P_{i+1}.
+
+This use is noncircular: S11.2 expressly places the repo-side
+P-membership clause outside the [GENTOW5-W(i)] fence and classifies
+it as w-blind. Hence P_{i+1} is automatically nonempty for every
+3 <= i < r. Accordingly, S1's words "with P_{i+1} nonempty" record
+a derived fact and impose no additional hypothesis; the lemma
+quantifies unconditionally over every such i, exactly as the fenced
+statement does.
+
+Consumer check: GENTOW5 S11.2 has the required nonemptiness because
+its unconditional clause (b) puts every Phi_{i+1}-root in P_{i+1}.
+WFRAME OPEN-1 inherits the same context: it explicitly lists
+P-membership among the w-blind, nonconditional clauses and points
+to S11.2 for the statement and status. Thus neither consumer needs
+a P_{i+1}-nonemptiness restriction.
+```
+
+Machine check:
+
+```bash
+p="$(git ls-tree -r --name-only b0e5c648 | rg '(^|/)GENTOW5_PROOF[^/]*\.md$' | head -n1)" &&
+test -n "$p" &&
+git show "b0e5c648:$p" | nl -ba |
+sed -n '387,398p;821,833p;1925,1928p'
+```
+
+The three emitted spans should respectively show the tower/recipe data, clause (b)’s `Phi_{i+1}`-root membership in `P_{i+1}`, and S11.2’s declaration that P-membership is nonconditional.
+
+OUTCOME: DERIVABLE

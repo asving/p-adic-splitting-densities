@@ -1,3 +1,5 @@
 [08:00:36] residue queue start
 [08:00:36] R1_drainn4 start
 [08:02:54] R1_drainn4 exit 0 (3010 B; SCOPE: the ANNEX STACK ONLY (R1-R6 + close + the GENHN supplier append)
+[08:02:54] R2_wi_r1 start
+[08:05:32] R2_wi_r1 exit 0 (1595 B; OUTCOME: DERIVABLE)
