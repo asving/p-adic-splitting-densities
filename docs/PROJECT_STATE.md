@@ -3981,3 +3981,29 @@ S ≥ L display), GENHN A(ii)-corrigendum re-confirm, E-run discharge
 confirmations, GENTOW residual confirmations. Proof units parked:
 W-12 all-degree history lemma + GENHN f₁ ≥ 2 count re-run (both
 numerical-first, task list).
+
+**2026-08-12 DATED APPEND #28 — CERT2 DRAINED AND FULLY FOLDED;
+RESUME FROM HERE** — All 19 cert2 runs complete and every output
+verified + folded (commits through this one). LEDGER: 15/29
+CERTIFIED (rows 1–8, 11, 14, 16, 18, 25, 27, 29). EVERY REMAINING
+ROW now has its repairs TRANSCRIBED AT HEAD and awaits exactly one
+of: (i) sol discharge-confirmation — rows 9 (after the E13 search
+resolves), 10, 13 (incl. the A(ii) corrigendum), 17 (GENIND-C2
+round-2 repair FIRST: C2-G1 window transfer from (CS-1) at
+embedded/mixed genres, C2-G2 well-founded descent, side-length
+S ≥ L display), 19–24, 26, 28; (ii) a proof unit — row 12 (W-12
+all-degree order-1 history-transfer lemma), row 15 (GENHN f₁ ≥ 2
+count re-run), row 19 also ((Φ₁-OPACITY), numerical certificate
+spec in the LIFTCORNER AC-1 annex). RUNNING: the E13 exact witness
+search (codex workspace-write, runs/cert2/E13_search_run.log →
+E13_search_output.txt; on HITS fold the certificate + full-strength
+discharge, on EMPTY fold the E13 fallback scope-reduction). CERT3
+RECIPE: re-assemble discharge briefs from the NOW-FOLDED notes
+(same _discharge_header_v2 pattern; one brief per repaired note:
+GRTJA/B/C, GRTW2, WELDMASTER, HMENU3, JD0, LIFTCORNER (AC-2/AC-3
+only — AC-1 waits on the OPACITY unit), GENTOW5, GENHN corrigendum
+re-confirm) + the GENIND-C2 round-2 REPAIR brief; launch detached
+after the E13 job exits. The three proof units are tasks #6/#7/#9
+with numerical-first recipes. Codex window ~9% used. The
+delegated-authority regime (memory proof-judgment-delegation)
+governs all statement scopes.
