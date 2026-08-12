@@ -1,0 +1,63 @@
+All four findings remain live at HEAD. They are localized record/prose defects; none changes a theorem, proof, or machine verdict.
+
+1. REAL — \(\pi^{2a_{t^*}}\) is not a unit
+
+The offending Step IV sentence remains uncorrected. FR5X itself gives \(a_0=6\), hence \(v(2^{12})=12\).
+
+Verbatim-ready repair:
+
+> [**rider correction (post-C11, 2026-08-12; F-1).** In THEOREM GENTOW-6.5 Step IV, the sentence “\(\widehat c_{t^*}\), the wrap, and \(\pi^{2a_{t^*}}\) normalization are units” is CORRECTED as follows:
+>
+> “\(\widehat c_{t^*}\) and the wrap are units; \(\pi^{2a_{t^*}}\) is the prescribed valuation carrier, with valuation \(2a_{t^*}\). After factoring out that prescribed power, the graded coefficient is \(\binom m2\) times a unit. Indeed
+> \[
+> v\!\left(\binom m2\,\widehat c_{t^*}^{\,2}\pi^{2a_{t^*}}
+>          \cdot\mathrm{wrap}\right)
+>   =v\!\left(\binom m2\right)+2a_{t^*},
+> \]
+> because \(v(\widehat c_{t^*})=v(\mathrm{wrap})=0\). Therefore the height-\(\Theta_{j^*}\) residue digit is nonzero exactly when \(p\nmid\binom m2\); when \(p\mid\binom m2\), the coefficient gains positive valuation beyond the prescribed \(2a_{t^*}\) grade.”
+>
+> Consumer sweep: THEOREM 6.5(b1) survives because a \(p\)-unit \(\binom m2\) leaves the normalized graded coefficient a unit; 6.5(b2) survives because \(p\mid\binom m2\) raises the certificate-slot valuation; COROLLARY 6.5C and the S3/S4 numerical rows survive because their displayed powers \(4096,12288,\ldots\) already include the prescribed \(\pi^{2a_{t^*}}\) valuation. No statement display changes.]
+
+2. REAL — the S13 chi-only shorthand is too broad
+
+S13 still says:
+
+> “exact-THETA attainment is genre-decided (THEOREM 6.7's chi criterion)”
+
+But 6.7(b2) explicitly reserves lower-\(s\) cascade slots for additional arithmetic, and R3A exhibits that distinction.
+
+Verbatim-ready repair:
+
+> [**rider correction (post-C11, 2026-08-12; F-2).** In S13’s F-1 bullet, the parenthetical “(THEOREM 6.7’s chi criterion)” is CORRECTED to “(THEOREM 6.7’s chi criterion at the maximal-\(s^*\) slots, together with the displayed cascade digits at lower-\(s\) slots).”
+>
+> Derivation: LEMMA 6.7E proves that every in-locus entry-driven discrepancy lies strictly above \(\Theta_j\), so a member’s height-\(\Theta_j\) layer equals the key power’s and is genre-constant. THEOREM 6.7(b) computes only the maximal-\(s^*\) layer through \(\chi(s^*,I)\); clause 6.7(b2) expressly leaves lower-\(s\) slots to the cascade arithmetic. R3A realizes both statements simultaneously: its maximal-\(s^*\) slot is grade-killed at \(j=1\), while a lower cascade slot attains at \(j=0\).
+>
+> Consumer sweep: S8.1’s corrected corollary and S10’s r2 verdict already use “chi + the displayed cascade digits” and survive verbatim; THEOREM 6.7 is unchanged; LEMMA 6.7E’s genre-uniformity conclusion is unchanged. This correction removes only S13’s stale chi-only shorthand.]
+
+3. REAL — three kill-count fields total five kills
+
+S12 displays exactly three fields:
+
+> `T-OBSTR 1, T-NODELTA 2, T-BELOW 2`
+
+Their values sum to five.
+
+Verbatim-ready repair:
+
+> [**record correction (post-C11, 2026-08-12; F-3).** In S12’s record sentences, “the five preregistered kill counts were exact” is CORRECTED to “the three preregistered kill counts were exact, totaling five kills.” Derivation: the displayed fields are T-OBSTR \(=1\), T-NODELTA \(=2\), and T-BELOW \(=2\), hence three count fields and \(1+2+2=5\) kills. No theorem, machine want, or verdict changes.]
+
+4. REAL — S13’s artifact count should be six, not ten
+
+S12’s final byte-frozen list names six runner/output md5 pairs: box1–box4, pe1_fresh, and pe2_fresh. The proof prefix is listed separately; PE3 adds its own pair in S13.
+
+Verbatim-ready repair:
+
+> [**record correction (post-C11, 2026-08-12; F-4).** In S13’s final record sentence, “The ten sealed artifact md5 pairs named in this note’s S12 list” is CORRECTED to “The six sealed artifact md5 pairs named in S12’s final byte-frozen list.”
+>
+> Derivation: that list contains box1, box2, box3, box4, pe1_fresh, and pe2_fresh — six runner/output pairs. It then names the GENTOW6_PROOF prefix separately, while S13 separately names the PE3 instrument/output pair. Thus the complete corrected sentence is:
+>
+> “The six sealed artifact md5 pairs named in S12’s final byte-frozen list, plus the PE3 instruments (pe3_fresh 4cd7439c / output 4bdf5283) and the GENTOW6_PROOF head-1197 prefix (157b16ad), were re-verified matching before this fold’s first commit.”
+>
+> No digest, machine result, or proof claim changes.]
+
+SUMMARY: 4 REAL (repairs delivered) / 0 RESOLVED-ALREADY / 0 ARTIFACT / 0 OBSTRUCTED
