@@ -1,0 +1,54 @@
+1. GENTOW2-B″ — PASS
+
+- Statement leg: At pin (ABS-G2), with \(s=f_3-t\), \(\vartheta_{\rm G2}(t)=\Theta_N(s;u_3)\), \(w=R_{3,\bar k}(\widehat n_2(u_3))\), and \(U_2(\beta_t)=u(\beta_t)\), T3-BR yields
+  \[
+  u(\beta_t)=\vartheta_{\rm G2}(t)w^{f_3-t},
+  \]
+  followed algebraically by
+  \[
+  y^{f_3}-\sum_{t<f_3}\vartheta_{\rm G2}(t)w^{f_3-t}c_ty^t
+  =w^{f_3}P(y/w).
+  \]
+  This is the closed GENTOW2-B″ subclaim and its factor-pattern transport.
+
+- Provenance: Non-circular. The proof uses T1’s orientation \(\Theta=\vartheta^{-1}\) and the primitive source package BR1–BR5: peel, expansion, positive-degree elimination, exact constant digit, and root evaluation. Neither the B-law endpoint nor a one-\(w\) family is assumed.
+
+- Definition audit: The specialization explicitly identifies \(q,N(sq),\Theta,w,U_2\), and \(s=f_3-t\). No character, value of \(w\), or stronger multiplicativity hypothesis is introduced. No hypothesis migration is visible at the pinned statement.
+
+2. HETOW-4 — PASS, for the stated absorption boundary
+
+- Statement leg: Pin (ABS-HE4) closes the absorbed clause-(c)/(d) block:
+  \[
+  \rho_t=\widehat\rho_t\tau_{\rm H}(H_0)\delta^{-t},
+  \qquad
+  R_{\lambda_2}(Z)=\tau_{\rm H}(H_0)\widehat R_{\lambda_2}(Z/\delta),
+  \]
+  \[
+  r_2(Z)=\delta^{\deg\widehat r_2}\widehat r_2(Z/\delta),
+  \qquad
+  \widehat s_2\mapsto\delta\widehat s_2.
+  \]
+  Pin (HE4-COB) also closes the coboundary-comparison shape. T3 correctly does not claim to supply clause (a), the explicit two-floor exponent, or the common-lift/iteration conclusions.
+
+- Provenance: Non-circular. T3-CMP follows directly from the two coefficient definitions and the pointwise section ratio; T3-ROUTE follows from the invertible scaling \(Z\mapsto Z/\delta\). Source-specific floor arithmetic remains an external input and is not used to manufacture the abstract comparison theorem.
+
+- Definition audit: The pin distinguishes the one-variable ratio
+  \(\tau_{\rm H}(k)=\operatorname{res}(\widehat n_2(k)/n_2(k))\)
+  from the two-variable normalizer cocycles. It explicitly defines
+  \(\delta=\tau_{\rm H}(u_3)\) and \(H_t=H_0-tu_3\). No character law is added, and the source-specific hypotheses remain fenced.
+
+3. GENTOW-6.4 — FAIL
+
+- Statement leg: T3 does not imply an absorbed GENTOW-6.4 statement. Pin (G6-NONINSTANCE) says exactly
+  \[
+  {\rm GENTOW\!-\!6.4}\text{ is not an instance of LEMMA COCYCLE-TELESCOPE}.
+  \]
+  The dependency ledger likewise records its absorbed conclusion as “None.” Pin (G6-PROJECTION) merely describes the source’s operative projection and cap; T3 says that projection equation must be established independently. It is therefore not a consequence of T3.
+
+- Provenance: The proposed absorption has no non-circular provenance. Using (G6-PROJECTION) to obtain GENTOW-6.4 would import the source endpoint itself. T3 expressly says the remaining cancellation \((v+c_g)-c_g=v\) cannot establish triangularity, lift stability, digit control, attainment, or the shifted cap.
+
+- Definition audit: No absorption definitions exist to audit. Moreover, (G6-PROJECTION) is not closed from the quoted material: “block,” “\(f\)-value,” \(c_g\), the reading operation, and its filtration hypotheses are not defined at that pin. Thus this pin cannot be verified as an absorbed closed statement.
+
+The acceptance record’s final sentence is internally inconsistent: it names GENTOW-6.4 as the third absorption, whereas (T3-A0), §5, §6, and the dependency ledger identify \([{\rm GENTOW5\!-\!W}(i)]\) as absorption 3 and GENTOW-6.4 as the displayed non-instance. The requested trio therefore cannot score 3/3.
+
+SUMMARY: 2/3 CHECKS PASS
