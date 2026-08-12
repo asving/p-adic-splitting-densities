@@ -40,3 +40,5 @@ Every mutation must produce exactly the following failure set:
 For `inverse_orientation`, all three canonical slots are evaluated. The `t2` control survives because \(\vartheta_1=1\); the `t1` and `t0` entries must fail.
 
 ## 2. Complete runner
+
+**Re-seal 2026-08-12: two-commit discipline (prereg first, runner child commit, run at runner HEAD).**
