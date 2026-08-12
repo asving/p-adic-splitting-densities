@@ -1,0 +1,3666 @@
+{
+  "fatal": null,
+  "observed": {
+    "all_rows_pass": false,
+    "counts": {
+      "C1": 24,
+      "C2": 48,
+      "C3": 24,
+      "C4": 18,
+      "C5": 12,
+      "C6": 35,
+      "lint": 12,
+      "regression": 23,
+      "seal": 5,
+      "teeth": 12
+    },
+    "counts_match": true,
+    "teeth_complete": true,
+    "total": 213
+  },
+  "prediction": {
+    "expected_counts": {
+      "C1": 24,
+      "C2": 48,
+      "C3": 24,
+      "C4": 18,
+      "C5": 12,
+      "C6": 35,
+      "lint": 12,
+      "regression": 23,
+      "seal": 5,
+      "teeth": 12
+    },
+    "expected_tooth_failures": {
+      "eta_implies_xfree": [
+        "C6.eta1.xfree"
+      ],
+      "gauge_naive": [
+        "C3.F4Q.coherent_vector"
+      ],
+      "he6_bare_residue": [
+        "C5.A.gamma_exact"
+      ],
+      "he6_q_sign": [
+        "C5.A.varpi_read"
+      ],
+      "inverse_orientation": [
+        "regression.F4MU3.canonical.t1",
+        "regression.F4MU3.canonical.t0"
+      ],
+      "lift_boundary_accept": [
+        "C6.boundary_eq.refused"
+      ],
+      "misindexed_telescope": [
+        "C3.F4MU3.theta_vector"
+      ],
+      "origin_drop_nu": [
+        "C4.nu2_nonroot.raw_bridge"
+      ],
+      "origin_iff_nu0": [
+        "C4.nu2_root.equality_criterion"
+      ],
+      "weld_drop_fences": [
+        "lint.M3_scored_stratum",
+        "lint.M4_W2C3_fence"
+      ],
+      "weld_single_map": [
+        "lint.no_single_transport_map"
+      ],
+      "wrong_sign": [
+        "C3.P5.coherent_vector"
+      ]
+    },
+    "expected_total": 213
+  },
+  "rows": [
+    {
+      "got": true,
+      "group": "seal",
+      "name": "seal.git_repository",
+      "pass": true,
+      "want": true
+    },
+    {
+      "got": true,
+      "group": "seal",
+      "name": "seal.committed_blobs",
+      "pass": true,
+      "want": true
+    },
+    {
+      "got": false,
+      "group": "seal",
+      "name": "seal.distinct_commits",
+      "pass": false,
+      "want": true
+    },
+    {
+      "got": false,
+      "group": "seal",
+      "name": "seal.prereg_is_runner_parent",
+      "pass": false,
+      "want": true
+    },
+    {
+      "got": false,
+      "group": "seal",
+      "name": "seal.head_is_runner_commit",
+      "pass": false,
+      "want": true
+    },
+    {
+      "got": {
+        "coefficients": [
+          2
+        ],
+        "field": "F3"
+      },
+      "group": "C1",
+      "name": "C1.P3_WRAP.base_z1",
+      "pass": true,
+      "want": {
+        "coefficients": [
+          2
+        ],
+        "field": "F3"
+      }
+    },
+    {
+      "got": 1,
+      "group": "C1",
+      "name": "C1.P3_WRAP.bezout",
+      "pass": true,
+      "want": 1
+    },
+    {
+      "got": [
+        -2,
+        1
+      ],
+      "group": "C1",
+      "name": "C1.P3_WRAP.quotient_exponents",
+      "pass": true,
+      "want": [
+        -2,
+        1
+      ]
+    },
+    {
+      "got": [
+        {
+          "coefficients": [
+            2
+          ],
+          "field": "F3"
+        },
+        {
+          "coefficients": [
+            2
+          ],
+          "field": "F3"
+        }
+      ],
+      "group": "C1",
+      "name": "C1.P3_WRAP.level2_letter",
+      "pass": true,
+      "want": [
+        {
+          "coefficients": [
+            2
+          ],
+          "field": "F3"
+        },
+        {
+          "coefficients": [
+            2
+          ],
+          "field": "F3"
+        }
+      ]
+    },
+    {
+      "got": {
+        "coefficients": [
+          1
+        ],
+        "field": "F3"
+      },
+      "group": "C1",
+      "name": "C1.P3_ETA1.base_z1",
+      "pass": true,
+      "want": {
+        "coefficients": [
+          1
+        ],
+        "field": "F3"
+      }
+    },
+    {
+      "got": 1,
+      "group": "C1",
+      "name": "C1.P3_ETA1.bezout",
+      "pass": true,
+      "want": 1
+    },
+    {
+      "got": [
+        -2,
+        1
+      ],
+      "group": "C1",
+      "name": "C1.P3_ETA1.quotient_exponents",
+      "pass": true,
+      "want": [
+        -2,
+        1
+      ]
+    },
+    {
+      "got": [
+        {
+          "coefficients": [
+            1
+          ],
+          "field": "F3"
+        },
+        {
+          "coefficients": [
+            1
+          ],
+          "field": "F3"
+        }
+      ],
+      "group": "C1",
+      "name": "C1.P3_ETA1.level2_letter",
+      "pass": true,
+      "want": [
+        {
+          "coefficients": [
+            1
+          ],
+          "field": "F3"
+        },
+        {
+          "coefficients": [
+            1
+          ],
+          "field": "F3"
+        }
+      ]
+    },
+    {
+      "got": {
+        "coefficients": [
+          2
+        ],
+        "field": "F5"
+      },
+      "group": "C1",
+      "name": "C1.P5.base_z1",
+      "pass": true,
+      "want": {
+        "coefficients": [
+          2
+        ],
+        "field": "F5"
+      }
+    },
+    {
+      "got": 1,
+      "group": "C1",
+      "name": "C1.P5.bezout",
+      "pass": true,
+      "want": 1
+    },
+    {
+      "got": [
+        -6,
+        4
+      ],
+      "group": "C1",
+      "name": "C1.P5.quotient_exponents",
+      "pass": true,
+      "want": [
+        -6,
+        4
+      ]
+    },
+    {
+      "got": [
+        {
+          "coefficients": [
+            4
+          ],
+          "field": "F5"
+        },
+        {
+          "coefficients": [
+            4
+          ],
+          "field": "F5"
+        }
+      ],
+      "group": "C1",
+      "name": "C1.P5.level2_letter",
+      "pass": true,
+      "want": [
+        {
+          "coefficients": [
+            4
+          ],
+          "field": "F5"
+        },
+        {
+          "coefficients": [
+            4
+          ],
+          "field": "F5"
+        }
+      ]
+    },
+    {
+      "got": {
+        "coefficients": [
+          4
+        ],
+        "field": "F5"
+      },
+      "group": "C1",
+      "name": "C1.P5_ROOT.base_z1",
+      "pass": true,
+      "want": {
+        "coefficients": [
+          4
+        ],
+        "field": "F5"
+      }
+    },
+    {
+      "got": 1,
+      "group": "C1",
+      "name": "C1.P5_ROOT.bezout",
+      "pass": true,
+      "want": 1
+    },
+    {
+      "got": [
+        -2,
+        1
+      ],
+      "group": "C1",
+      "name": "C1.P5_ROOT.quotient_exponents",
+      "pass": true,
+      "want": [
+        -2,
+        1
+      ]
+    },
+    {
+      "got": [
+        {
+          "coefficients": [
+            4
+          ],
+          "field": "F5"
+        },
+        {
+          "coefficients": [
+            4
+          ],
+          "field": "F5"
+        }
+      ],
+      "group": "C1",
+      "name": "C1.P5_ROOT.level2_letter",
+      "pass": true,
+      "want": [
+        {
+          "coefficients": [
+            4
+          ],
+          "field": "F5"
+        },
+        {
+          "coefficients": [
+            4
+          ],
+          "field": "F5"
+        }
+      ]
+    },
+    {
+      "got": {
+        "coefficients": [
+          0,
+          1
+        ],
+        "field": "F4"
+      },
+      "group": "C1",
+      "name": "C1.F4.base_z1",
+      "pass": true,
+      "want": {
+        "coefficients": [
+          0,
+          1
+        ],
+        "field": "F4"
+      }
+    },
+    {
+      "got": 1,
+      "group": "C1",
+      "name": "C1.F4.bezout",
+      "pass": true,
+      "want": 1
+    },
+    {
+      "got": [
+        -2,
+        1
+      ],
+      "group": "C1",
+      "name": "C1.F4.quotient_exponents",
+      "pass": true,
+      "want": [
+        -2,
+        1
+      ]
+    },
+    {
+      "got": [
+        {
+          "coefficients": [
+            1,
+            1
+          ],
+          "field": "F4"
+        },
+        {
+          "coefficients": [
+            1,
+            1
+          ],
+          "field": "F4"
+        }
+      ],
+      "group": "C1",
+      "name": "C1.F4.level2_letter",
+      "pass": true,
+      "want": [
+        {
+          "coefficients": [
+            1,
+            1
+          ],
+          "field": "F4"
+        },
+        {
+          "coefficients": [
+            1,
+            1
+          ],
+          "field": "F4"
+        }
+      ]
+    },
+    {
+      "got": {
+        "coefficients": [
+          3
+        ],
+        "field": "F7"
+      },
+      "group": "C1",
+      "name": "C1.LP.base_z1",
+      "pass": true,
+      "want": {
+        "coefficients": [
+          3
+        ],
+        "field": "F7"
+      }
+    },
+    {
+      "got": 1,
+      "group": "C1",
+      "name": "C1.LP.bezout",
+      "pass": true,
+      "want": 1
+    },
+    {
+      "got": [
+        -10,
+        4
+      ],
+      "group": "C1",
+      "name": "C1.LP.quotient_exponents",
+      "pass": true,
+      "want": [
+        -10,
+        4
+      ]
+    },
+    {
+      "got": [
+        {
+          "coefficients": [
+            4
+          ],
+          "field": "F7"
+        },
+        {
+          "coefficients": [
+            4
+          ],
+          "field": "F7"
+        }
+      ],
+      "group": "C1",
+      "name": "C1.LP.level2_letter",
+      "pass": true,
+      "want": [
+        {
+          "coefficients": [
+            4
+          ],
+          "field": "F7"
+        },
+        {
+          "coefficients": [
+            4
+          ],
+          "field": "F7"
+        }
+      ]
+    },
+    {
+      "got": true,
+      "group": "C2",
+      "name": "C2.P3_WRAP.normalizer_heights",
+      "pass": true,
+      "want": true
+    },
+    {
+      "got": true,
+      "group": "C2",
+      "name": "C2.P3_WRAP.wrap_identity",
+      "pass": true,
+      "want": true
+    },
+    {
+      "got": true,
+      "group": "C2",
+      "name": "C2.P3_WRAP.wrap_range",
+      "pass": true,
+      "want": true
+    },
+    {
+      "got": true,
+      "group": "C2",
+      "name": "C2.P3_WRAP.cocycle",
+      "pass": true,
+      "want": true
+    },
+    {
+      "got": [
+        {
+          "coefficients": [
+            1
+          ],
+          "field": "F3"
+        },
+        {
+          "coefficients": [
+            1
+          ],
+          "field": "F3"
+        }
+      ],
+      "group": "C2",
+      "name": "C2.P3_WRAP.normalized_endpoints",
+      "pass": true,
+      "want": [
+        {
+          "coefficients": [
+            1
+          ],
+          "field": "F3"
+        },
+        {
+          "coefficients": [
+            1
+          ],
+          "field": "F3"
+        }
+      ]
+    },
+    {
+      "got": true,
+      "group": "C2",
+      "name": "C2.P3_WRAP.theta_recursion",
+      "pass": true,
+      "want": true
+    },
+    {
+      "got": true,
+      "group": "C2",
+      "name": "C2.P3_WRAP.theta_closed_form",
+      "pass": true,
+      "want": true
+    },
+    {
+      "got": true,
+      "group": "C2",
+      "name": "C2.P3_WRAP.q_carry",
+      "pass": true,
+      "want": true
+    },
+    {
+      "got": true,
+      "group": "C2",
+      "name": "C2.P3_ETA1.normalizer_heights",
+      "pass": true,
+      "want": true
+    },
+    {
+      "got": true,
+      "group": "C2",
+      "name": "C2.P3_ETA1.wrap_identity",
+      "pass": true,
+      "want": true
+    },
+    {
+      "got": true,
+      "group": "C2",
+      "name": "C2.P3_ETA1.wrap_range",
+      "pass": true,
+      "want": true
+    },
+    {
+      "got": true,
+      "group": "C2",
+      "name": "C2.P3_ETA1.cocycle",
+      "pass": true,
+      "want": true
+    },
+    {
+      "got": [
+        {
+          "coefficients": [
+            1
+          ],
+          "field": "F3"
+        },
+        {
+          "coefficients": [
+            1
+          ],
+          "field": "F3"
+        }
+      ],
+      "group": "C2",
+      "name": "C2.P3_ETA1.normalized_endpoints",
+      "pass": true,
+      "want": [
+        {
+          "coefficients": [
+            1
+          ],
+          "field": "F3"
+        },
+        {
+          "coefficients": [
+            1
+          ],
+          "field": "F3"
+        }
+      ]
+    },
+    {
+      "got": true,
+      "group": "C2",
+      "name": "C2.P3_ETA1.theta_recursion",
+      "pass": true,
+      "want": true
+    },
+    {
+      "got": true,
+      "group": "C2",
+      "name": "C2.P3_ETA1.theta_closed_form",
+      "pass": true,
+      "want": true
+    },
+    {
+      "got": true,
+      "group": "C2",
+      "name": "C2.P3_ETA1.q_carry",
+      "pass": true,
+      "want": true
+    },
+    {
+      "got": true,
+      "group": "C2",
+      "name": "C2.P5.normalizer_heights",
+      "pass": true,
+      "want": true
+    },
+    {
+      "got": true,
+      "group": "C2",
+      "name": "C2.P5.wrap_identity",
+      "pass": true,
+      "want": true
+    },
+    {
+      "got": true,
+      "group": "C2",
+      "name": "C2.P5.wrap_range",
+      "pass": true,
+      "want": true
+    },
+    {
+      "got": true,
+      "group": "C2",
+      "name": "C2.P5.cocycle",
+      "pass": true,
+      "want": true
+    },
+    {
+      "got": [
+        {
+          "coefficients": [
+            1
+          ],
+          "field": "F5"
+        },
+        {
+          "coefficients": [
+            1
+          ],
+          "field": "F5"
+        }
+      ],
+      "group": "C2",
+      "name": "C2.P5.normalized_endpoints",
+      "pass": true,
+      "want": [
+        {
+          "coefficients": [
+            1
+          ],
+          "field": "F5"
+        },
+        {
+          "coefficients": [
+            1
+          ],
+          "field": "F5"
+        }
+      ]
+    },
+    {
+      "got": true,
+      "group": "C2",
+      "name": "C2.P5.theta_recursion",
+      "pass": true,
+      "want": true
+    },
+    {
+      "got": true,
+      "group": "C2",
+      "name": "C2.P5.theta_closed_form",
+      "pass": true,
+      "want": true
+    },
+    {
+      "got": true,
+      "group": "C2",
+      "name": "C2.P5.q_carry",
+      "pass": true,
+      "want": true
+    },
+    {
+      "got": true,
+      "group": "C2",
+      "name": "C2.P5_ROOT.normalizer_heights",
+      "pass": true,
+      "want": true
+    },
+    {
+      "got": true,
+      "group": "C2",
+      "name": "C2.P5_ROOT.wrap_identity",
+      "pass": true,
+      "want": true
+    },
+    {
+      "got": true,
+      "group": "C2",
+      "name": "C2.P5_ROOT.wrap_range",
+      "pass": true,
+      "want": true
+    },
+    {
+      "got": true,
+      "group": "C2",
+      "name": "C2.P5_ROOT.cocycle",
+      "pass": true,
+      "want": true
+    },
+    {
+      "got": [
+        {
+          "coefficients": [
+            1
+          ],
+          "field": "F5"
+        },
+        {
+          "coefficients": [
+            1
+          ],
+          "field": "F5"
+        }
+      ],
+      "group": "C2",
+      "name": "C2.P5_ROOT.normalized_endpoints",
+      "pass": true,
+      "want": [
+        {
+          "coefficients": [
+            1
+          ],
+          "field": "F5"
+        },
+        {
+          "coefficients": [
+            1
+          ],
+          "field": "F5"
+        }
+      ]
+    },
+    {
+      "got": true,
+      "group": "C2",
+      "name": "C2.P5_ROOT.theta_recursion",
+      "pass": true,
+      "want": true
+    },
+    {
+      "got": true,
+      "group": "C2",
+      "name": "C2.P5_ROOT.theta_closed_form",
+      "pass": true,
+      "want": true
+    },
+    {
+      "got": true,
+      "group": "C2",
+      "name": "C2.P5_ROOT.q_carry",
+      "pass": true,
+      "want": true
+    },
+    {
+      "got": true,
+      "group": "C2",
+      "name": "C2.F4.normalizer_heights",
+      "pass": true,
+      "want": true
+    },
+    {
+      "got": true,
+      "group": "C2",
+      "name": "C2.F4.wrap_identity",
+      "pass": true,
+      "want": true
+    },
+    {
+      "got": true,
+      "group": "C2",
+      "name": "C2.F4.wrap_range",
+      "pass": true,
+      "want": true
+    },
+    {
+      "got": true,
+      "group": "C2",
+      "name": "C2.F4.cocycle",
+      "pass": true,
+      "want": true
+    },
+    {
+      "got": [
+        {
+          "coefficients": [
+            1,
+            0
+          ],
+          "field": "F4"
+        },
+        {
+          "coefficients": [
+            1,
+            0
+          ],
+          "field": "F4"
+        }
+      ],
+      "group": "C2",
+      "name": "C2.F4.normalized_endpoints",
+      "pass": true,
+      "want": [
+        {
+          "coefficients": [
+            1,
+            0
+          ],
+          "field": "F4"
+        },
+        {
+          "coefficients": [
+            1,
+            0
+          ],
+          "field": "F4"
+        }
+      ]
+    },
+    {
+      "got": true,
+      "group": "C2",
+      "name": "C2.F4.theta_recursion",
+      "pass": true,
+      "want": true
+    },
+    {
+      "got": true,
+      "group": "C2",
+      "name": "C2.F4.theta_closed_form",
+      "pass": true,
+      "want": true
+    },
+    {
+      "got": true,
+      "group": "C2",
+      "name": "C2.F4.q_carry",
+      "pass": true,
+      "want": true
+    },
+    {
+      "got": true,
+      "group": "C2",
+      "name": "C2.LP.normalizer_heights",
+      "pass": true,
+      "want": true
+    },
+    {
+      "got": true,
+      "group": "C2",
+      "name": "C2.LP.wrap_identity",
+      "pass": true,
+      "want": true
+    },
+    {
+      "got": true,
+      "group": "C2",
+      "name": "C2.LP.wrap_range",
+      "pass": true,
+      "want": true
+    },
+    {
+      "got": true,
+      "group": "C2",
+      "name": "C2.LP.cocycle",
+      "pass": true,
+      "want": true
+    },
+    {
+      "got": [
+        {
+          "coefficients": [
+            1
+          ],
+          "field": "F7"
+        },
+        {
+          "coefficients": [
+            1
+          ],
+          "field": "F7"
+        }
+      ],
+      "group": "C2",
+      "name": "C2.LP.normalized_endpoints",
+      "pass": true,
+      "want": [
+        {
+          "coefficients": [
+            1
+          ],
+          "field": "F7"
+        },
+        {
+          "coefficients": [
+            1
+          ],
+          "field": "F7"
+        }
+      ]
+    },
+    {
+      "got": true,
+      "group": "C2",
+      "name": "C2.LP.theta_recursion",
+      "pass": true,
+      "want": true
+    },
+    {
+      "got": true,
+      "group": "C2",
+      "name": "C2.LP.theta_closed_form",
+      "pass": true,
+      "want": true
+    },
+    {
+      "got": true,
+      "group": "C2",
+      "name": "C2.LP.q_carry",
+      "pass": true,
+      "want": true
+    },
+    {
+      "got": [
+        {
+          "coefficients": [
+            1
+          ],
+          "field": "F3"
+        },
+        {
+          "coefficients": [
+            1
+          ],
+          "field": "F3"
+        },
+        {
+          "coefficients": [
+            2
+          ],
+          "field": "F3"
+        }
+      ],
+      "group": "C3",
+      "name": "C3.X.theta_vector",
+      "pass": true,
+      "want": [
+        {
+          "coefficients": [
+            1
+          ],
+          "field": "F3"
+        },
+        {
+          "coefficients": [
+            1
+          ],
+          "field": "F3"
+        },
+        {
+          "coefficients": [
+            2
+          ],
+          "field": "F3"
+        }
+      ]
+    },
+    {
+      "got": {
+        "0": {
+          "coefficients": [
+            1
+          ],
+          "field": "F3"
+        },
+        "1": {
+          "coefficients": [
+            0
+          ],
+          "field": "F3"
+        }
+      },
+      "group": "C3",
+      "name": "C3.X.coherent_vector",
+      "pass": true,
+      "want": {
+        "0": {
+          "coefficients": [
+            1
+          ],
+          "field": "F3"
+        },
+        "1": {
+          "coefficients": [
+            0
+          ],
+          "field": "F3"
+        }
+      }
+    },
+    {
+      "got": {
+        "0": {
+          "coefficients": [
+            2
+          ],
+          "field": "F3"
+        },
+        "1": {
+          "coefficients": [
+            0
+          ],
+          "field": "F3"
+        }
+      },
+      "group": "C3",
+      "name": "C3.X.multiplicative_restored",
+      "pass": true,
+      "want": {
+        "0": {
+          "coefficients": [
+            2
+          ],
+          "field": "F3"
+        },
+        "1": {
+          "coefficients": [
+            0
+          ],
+          "field": "F3"
+        }
+      }
+    },
+    {
+      "got": {
+        "0": {
+          "coefficients": [
+            2
+          ],
+          "field": "F3"
+        },
+        "1": {
+          "coefficients": [
+            0
+          ],
+          "field": "F3"
+        }
+      },
+      "group": "C3",
+      "name": "C3.X.canonical_vector",
+      "pass": true,
+      "want": {
+        "0": {
+          "coefficients": [
+            2
+          ],
+          "field": "F3"
+        },
+        "1": {
+          "coefficients": [
+            0
+          ],
+          "field": "F3"
+        }
+      }
+    },
+    {
+      "got": [
+        {
+          "coefficients": [
+            1
+          ],
+          "field": "F3"
+        },
+        {
+          "coefficients": [
+            0
+          ],
+          "field": "F3"
+        },
+        {
+          "coefficients": [
+            1
+          ],
+          "field": "F3"
+        }
+      ],
+      "group": "C3",
+      "name": "C3.X.twisted_coefficients",
+      "pass": true,
+      "want": [
+        {
+          "coefficients": [
+            1
+          ],
+          "field": "F3"
+        },
+        {
+          "coefficients": [
+            0
+          ],
+          "field": "F3"
+        },
+        {
+          "coefficients": [
+            1
+          ],
+          "field": "F3"
+        }
+      ]
+    },
+    {
+      "got": [
+        2
+      ],
+      "group": "C3",
+      "name": "C3.X.factor_pattern",
+      "pass": true,
+      "want": [
+        2
+      ]
+    },
+    {
+      "got": [
+        {
+          "coefficients": [
+            1,
+            0
+          ],
+          "field": "F4"
+        },
+        {
+          "coefficients": [
+            1,
+            0
+          ],
+          "field": "F4"
+        },
+        {
+          "coefficients": [
+            0,
+            1
+          ],
+          "field": "F4"
+        }
+      ],
+      "group": "C3",
+      "name": "C3.F4Q.theta_vector",
+      "pass": true,
+      "want": [
+        {
+          "coefficients": [
+            1,
+            0
+          ],
+          "field": "F4"
+        },
+        {
+          "coefficients": [
+            1,
+            0
+          ],
+          "field": "F4"
+        },
+        {
+          "coefficients": [
+            0,
+            1
+          ],
+          "field": "F4"
+        }
+      ]
+    },
+    {
+      "got": {
+        "0": {
+          "coefficients": [
+            1,
+            1
+          ],
+          "field": "F4"
+        },
+        "1": {
+          "coefficients": [
+            1,
+            0
+          ],
+          "field": "F4"
+        }
+      },
+      "group": "C3",
+      "name": "C3.F4Q.coherent_vector",
+      "pass": true,
+      "want": {
+        "0": {
+          "coefficients": [
+            1,
+            1
+          ],
+          "field": "F4"
+        },
+        "1": {
+          "coefficients": [
+            1,
+            0
+          ],
+          "field": "F4"
+        }
+      }
+    },
+    {
+      "got": {
+        "0": {
+          "coefficients": [
+            0,
+            1
+          ],
+          "field": "F4"
+        },
+        "1": {
+          "coefficients": [
+            1,
+            0
+          ],
+          "field": "F4"
+        }
+      },
+      "group": "C3",
+      "name": "C3.F4Q.multiplicative_restored",
+      "pass": true,
+      "want": {
+        "0": {
+          "coefficients": [
+            0,
+            1
+          ],
+          "field": "F4"
+        },
+        "1": {
+          "coefficients": [
+            1,
+            0
+          ],
+          "field": "F4"
+        }
+      }
+    },
+    {
+      "got": {
+        "0": {
+          "coefficients": [
+            1,
+            0
+          ],
+          "field": "F4"
+        },
+        "1": {
+          "coefficients": [
+            0,
+            1
+          ],
+          "field": "F4"
+        }
+      },
+      "group": "C3",
+      "name": "C3.F4Q.canonical_vector",
+      "pass": true,
+      "want": {
+        "0": {
+          "coefficients": [
+            1,
+            0
+          ],
+          "field": "F4"
+        },
+        "1": {
+          "coefficients": [
+            0,
+            1
+          ],
+          "field": "F4"
+        }
+      }
+    },
+    {
+      "got": [
+        {
+          "coefficients": [
+            1,
+            0
+          ],
+          "field": "F4"
+        },
+        {
+          "coefficients": [
+            0,
+            1
+          ],
+          "field": "F4"
+        },
+        {
+          "coefficients": [
+            1,
+            0
+          ],
+          "field": "F4"
+        }
+      ],
+      "group": "C3",
+      "name": "C3.F4Q.twisted_coefficients",
+      "pass": true,
+      "want": [
+        {
+          "coefficients": [
+            1,
+            0
+          ],
+          "field": "F4"
+        },
+        {
+          "coefficients": [
+            0,
+            1
+          ],
+          "field": "F4"
+        },
+        {
+          "coefficients": [
+            1,
+            0
+          ],
+          "field": "F4"
+        }
+      ]
+    },
+    {
+      "got": [
+        2
+      ],
+      "group": "C3",
+      "name": "C3.F4Q.factor_pattern",
+      "pass": true,
+      "want": [
+        2
+      ]
+    },
+    {
+      "got": [
+        {
+          "coefficients": [
+            1,
+            0
+          ],
+          "field": "F4"
+        },
+        {
+          "coefficients": [
+            1,
+            0
+          ],
+          "field": "F4"
+        },
+        {
+          "coefficients": [
+            0,
+            1
+          ],
+          "field": "F4"
+        },
+        {
+          "coefficients": [
+            0,
+            1
+          ],
+          "field": "F4"
+        }
+      ],
+      "group": "C3",
+      "name": "C3.F4MU3.theta_vector",
+      "pass": true,
+      "want": [
+        {
+          "coefficients": [
+            1,
+            0
+          ],
+          "field": "F4"
+        },
+        {
+          "coefficients": [
+            1,
+            0
+          ],
+          "field": "F4"
+        },
+        {
+          "coefficients": [
+            0,
+            1
+          ],
+          "field": "F4"
+        },
+        {
+          "coefficients": [
+            0,
+            1
+          ],
+          "field": "F4"
+        }
+      ]
+    },
+    {
+      "got": {
+        "0": {
+          "coefficients": [
+            0,
+            1
+          ],
+          "field": "F4"
+        },
+        "1": {
+          "coefficients": [
+            0,
+            1
+          ],
+          "field": "F4"
+        },
+        "2": {
+          "coefficients": [
+            1,
+            0
+          ],
+          "field": "F4"
+        }
+      },
+      "group": "C3",
+      "name": "C3.F4MU3.coherent_vector",
+      "pass": true,
+      "want": {
+        "0": {
+          "coefficients": [
+            0,
+            1
+          ],
+          "field": "F4"
+        },
+        "1": {
+          "coefficients": [
+            0,
+            1
+          ],
+          "field": "F4"
+        },
+        "2": {
+          "coefficients": [
+            1,
+            0
+          ],
+          "field": "F4"
+        }
+      }
+    },
+    {
+      "got": {
+        "0": {
+          "coefficients": [
+            1,
+            0
+          ],
+          "field": "F4"
+        },
+        "1": {
+          "coefficients": [
+            1,
+            0
+          ],
+          "field": "F4"
+        },
+        "2": {
+          "coefficients": [
+            1,
+            0
+          ],
+          "field": "F4"
+        }
+      },
+      "group": "C3",
+      "name": "C3.F4MU3.multiplicative_restored",
+      "pass": true,
+      "want": {
+        "0": {
+          "coefficients": [
+            1,
+            0
+          ],
+          "field": "F4"
+        },
+        "1": {
+          "coefficients": [
+            1,
+            0
+          ],
+          "field": "F4"
+        },
+        "2": {
+          "coefficients": [
+            1,
+            0
+          ],
+          "field": "F4"
+        }
+      }
+    },
+    {
+      "got": {
+        "0": {
+          "coefficients": [
+            1,
+            0
+          ],
+          "field": "F4"
+        },
+        "1": {
+          "coefficients": [
+            1,
+            1
+          ],
+          "field": "F4"
+        },
+        "2": {
+          "coefficients": [
+            0,
+            1
+          ],
+          "field": "F4"
+        }
+      },
+      "group": "C3",
+      "name": "C3.F4MU3.canonical_vector",
+      "pass": true,
+      "want": {
+        "0": {
+          "coefficients": [
+            1,
+            0
+          ],
+          "field": "F4"
+        },
+        "1": {
+          "coefficients": [
+            1,
+            1
+          ],
+          "field": "F4"
+        },
+        "2": {
+          "coefficients": [
+            0,
+            1
+          ],
+          "field": "F4"
+        }
+      }
+    },
+    {
+      "got": [
+        {
+          "coefficients": [
+            1,
+            0
+          ],
+          "field": "F4"
+        },
+        {
+          "coefficients": [
+            1,
+            1
+          ],
+          "field": "F4"
+        },
+        {
+          "coefficients": [
+            0,
+            1
+          ],
+          "field": "F4"
+        },
+        {
+          "coefficients": [
+            1,
+            0
+          ],
+          "field": "F4"
+        }
+      ],
+      "group": "C3",
+      "name": "C3.F4MU3.twisted_coefficients",
+      "pass": true,
+      "want": [
+        {
+          "coefficients": [
+            1,
+            0
+          ],
+          "field": "F4"
+        },
+        {
+          "coefficients": [
+            1,
+            1
+          ],
+          "field": "F4"
+        },
+        {
+          "coefficients": [
+            0,
+            1
+          ],
+          "field": "F4"
+        },
+        {
+          "coefficients": [
+            1,
+            0
+          ],
+          "field": "F4"
+        }
+      ]
+    },
+    {
+      "got": [
+        1,
+        1,
+        1
+      ],
+      "group": "C3",
+      "name": "C3.F4MU3.factor_pattern",
+      "pass": true,
+      "want": [
+        1,
+        1,
+        1
+      ]
+    },
+    {
+      "got": [
+        {
+          "coefficients": [
+            1
+          ],
+          "field": "F5"
+        },
+        {
+          "coefficients": [
+            1
+          ],
+          "field": "F5"
+        },
+        {
+          "coefficients": [
+            2
+          ],
+          "field": "F5"
+        }
+      ],
+      "group": "C3",
+      "name": "C3.P5.theta_vector",
+      "pass": true,
+      "want": [
+        {
+          "coefficients": [
+            1
+          ],
+          "field": "F5"
+        },
+        {
+          "coefficients": [
+            1
+          ],
+          "field": "F5"
+        },
+        {
+          "coefficients": [
+            2
+          ],
+          "field": "F5"
+        }
+      ]
+    },
+    {
+      "got": {
+        "0": {
+          "coefficients": [
+            1
+          ],
+          "field": "F5"
+        },
+        "1": {
+          "coefficients": [
+            2
+          ],
+          "field": "F5"
+        }
+      },
+      "group": "C3",
+      "name": "C3.P5.coherent_vector",
+      "pass": true,
+      "want": {
+        "0": {
+          "coefficients": [
+            1
+          ],
+          "field": "F5"
+        },
+        "1": {
+          "coefficients": [
+            2
+          ],
+          "field": "F5"
+        }
+      }
+    },
+    {
+      "got": {
+        "0": {
+          "coefficients": [
+            3
+          ],
+          "field": "F5"
+        },
+        "1": {
+          "coefficients": [
+            2
+          ],
+          "field": "F5"
+        }
+      },
+      "group": "C3",
+      "name": "C3.P5.multiplicative_restored",
+      "pass": true,
+      "want": {
+        "0": {
+          "coefficients": [
+            3
+          ],
+          "field": "F5"
+        },
+        "1": {
+          "coefficients": [
+            2
+          ],
+          "field": "F5"
+        }
+      }
+    },
+    {
+      "got": {
+        "0": {
+          "coefficients": [
+            2
+          ],
+          "field": "F5"
+        },
+        "1": {
+          "coefficients": [
+            1
+          ],
+          "field": "F5"
+        }
+      },
+      "group": "C3",
+      "name": "C3.P5.canonical_vector",
+      "pass": true,
+      "want": {
+        "0": {
+          "coefficients": [
+            2
+          ],
+          "field": "F5"
+        },
+        "1": {
+          "coefficients": [
+            1
+          ],
+          "field": "F5"
+        }
+      }
+    },
+    {
+      "got": [
+        {
+          "coefficients": [
+            3
+          ],
+          "field": "F5"
+        },
+        {
+          "coefficients": [
+            4
+          ],
+          "field": "F5"
+        },
+        {
+          "coefficients": [
+            1
+          ],
+          "field": "F5"
+        }
+      ],
+      "group": "C3",
+      "name": "C3.P5.twisted_coefficients",
+      "pass": true,
+      "want": [
+        {
+          "coefficients": [
+            3
+          ],
+          "field": "F5"
+        },
+        {
+          "coefficients": [
+            4
+          ],
+          "field": "F5"
+        },
+        {
+          "coefficients": [
+            1
+          ],
+          "field": "F5"
+        }
+      ]
+    },
+    {
+      "got": [
+        1,
+        1
+      ],
+      "group": "C3",
+      "name": "C3.P5.factor_pattern",
+      "pass": true,
+      "want": [
+        1,
+        1
+      ]
+    },
+    {
+      "got": {
+        "coefficients": [
+          2
+        ],
+        "field": "F5"
+      },
+      "group": "C4",
+      "name": "C4.nu0.raw_bridge",
+      "pass": true,
+      "want": {
+        "coefficients": [
+          2
+        ],
+        "field": "F5"
+      }
+    },
+    {
+      "got": true,
+      "group": "C4",
+      "name": "C4.nu0.equality_criterion",
+      "pass": true,
+      "want": true
+    },
+    {
+      "got": [
+        0,
+        2,
+        4
+      ],
+      "group": "C4",
+      "name": "C4.nu0.support_translation",
+      "pass": true,
+      "want": [
+        0,
+        2,
+        4
+      ]
+    },
+    {
+      "got": 4,
+      "group": "C4",
+      "name": "C4.nu0.degree_translation",
+      "pass": true,
+      "want": 4
+    },
+    {
+      "got": {
+        "coefficients": [
+          3
+        ],
+        "field": "F5"
+      },
+      "group": "C4",
+      "name": "C4.nu2_nonroot.raw_bridge",
+      "pass": true,
+      "want": {
+        "coefficients": [
+          3
+        ],
+        "field": "F5"
+      }
+    },
+    {
+      "got": false,
+      "group": "C4",
+      "name": "C4.nu2_nonroot.equality_criterion",
+      "pass": true,
+      "want": false
+    },
+    {
+      "got": [
+        2,
+        3,
+        6
+      ],
+      "group": "C4",
+      "name": "C4.nu2_nonroot.support_translation",
+      "pass": true,
+      "want": [
+        2,
+        3,
+        6
+      ]
+    },
+    {
+      "got": 6,
+      "group": "C4",
+      "name": "C4.nu2_nonroot.degree_translation",
+      "pass": true,
+      "want": 6
+    },
+    {
+      "got": {
+        "coefficients": [
+          1
+        ],
+        "field": "F5"
+      },
+      "group": "C4",
+      "name": "C4.nu2_root.raw_bridge",
+      "pass": true,
+      "want": {
+        "coefficients": [
+          1
+        ],
+        "field": "F5"
+      }
+    },
+    {
+      "got": true,
+      "group": "C4",
+      "name": "C4.nu2_root.equality_criterion",
+      "pass": true,
+      "want": true
+    },
+    {
+      "got": [
+        2,
+        5
+      ],
+      "group": "C4",
+      "name": "C4.nu2_root.support_translation",
+      "pass": true,
+      "want": [
+        2,
+        5
+      ]
+    },
+    {
+      "got": 5,
+      "group": "C4",
+      "name": "C4.nu2_root.degree_translation",
+      "pass": true,
+      "want": 5
+    },
+    {
+      "got": {
+        "coefficients": [
+          0,
+          1
+        ],
+        "field": "F4"
+      },
+      "group": "C4",
+      "name": "C4.nu3_root.raw_bridge",
+      "pass": true,
+      "want": {
+        "coefficients": [
+          0,
+          1
+        ],
+        "field": "F4"
+      }
+    },
+    {
+      "got": true,
+      "group": "C4",
+      "name": "C4.nu3_root.equality_criterion",
+      "pass": true,
+      "want": true
+    },
+    {
+      "got": [
+        3,
+        4,
+        6
+      ],
+      "group": "C4",
+      "name": "C4.nu3_root.support_translation",
+      "pass": true,
+      "want": [
+        3,
+        4,
+        6
+      ]
+    },
+    {
+      "got": 6,
+      "group": "C4",
+      "name": "C4.nu3_root.degree_translation",
+      "pass": true,
+      "want": 6
+    },
+    {
+      "got": 3,
+      "group": "C4",
+      "name": "C4.live_joint.distinct_slots",
+      "pass": true,
+      "want": 3
+    },
+    {
+      "got": {
+        "coefficients": [
+          2
+        ],
+        "field": "F5"
+      },
+      "group": "C4",
+      "name": "C4.live_joint.composition",
+      "pass": true,
+      "want": {
+        "coefficients": [
+          2
+        ],
+        "field": "F5"
+      }
+    },
+    {
+      "got": {
+        "coefficients": [
+          0,
+          1
+        ],
+        "field": "F4"
+      },
+      "group": "C5",
+      "name": "C5.A.gamma_exact",
+      "pass": true,
+      "want": {
+        "coefficients": [
+          0,
+          1
+        ],
+        "field": "F4"
+      }
+    },
+    {
+      "got": {
+        "coefficients": [
+          0,
+          1
+        ],
+        "field": "F4"
+      },
+      "group": "C5",
+      "name": "C5.A.normalizer_read",
+      "pass": true,
+      "want": {
+        "coefficients": [
+          0,
+          1
+        ],
+        "field": "F4"
+      }
+    },
+    {
+      "got": {
+        "coefficients": [
+          1,
+          1
+        ],
+        "field": "F4"
+      },
+      "group": "C5",
+      "name": "C5.A.varpi_read",
+      "pass": true,
+      "want": {
+        "coefficients": [
+          1,
+          1
+        ],
+        "field": "F4"
+      }
+    },
+    {
+      "got": true,
+      "group": "C5",
+      "name": "C5.A.minus_q_sign",
+      "pass": true,
+      "want": true
+    },
+    {
+      "got": true,
+      "group": "C5",
+      "name": "C5.A.bare_residue_rejected",
+      "pass": true,
+      "want": true
+    },
+    {
+      "got": true,
+      "group": "C5",
+      "name": "C5.A.pins_above_zero",
+      "pass": true,
+      "want": true
+    },
+    {
+      "got": {
+        "coefficients": [
+          0,
+          1
+        ],
+        "field": "F4"
+      },
+      "group": "C5",
+      "name": "C5.B.gamma_exact",
+      "pass": true,
+      "want": {
+        "coefficients": [
+          0,
+          1
+        ],
+        "field": "F4"
+      }
+    },
+    {
+      "got": {
+        "coefficients": [
+          0,
+          1
+        ],
+        "field": "F4"
+      },
+      "group": "C5",
+      "name": "C5.B.normalizer_read",
+      "pass": true,
+      "want": {
+        "coefficients": [
+          0,
+          1
+        ],
+        "field": "F4"
+      }
+    },
+    {
+      "got": {
+        "coefficients": [
+          1,
+          1
+        ],
+        "field": "F4"
+      },
+      "group": "C5",
+      "name": "C5.B.varpi_read",
+      "pass": true,
+      "want": {
+        "coefficients": [
+          1,
+          1
+        ],
+        "field": "F4"
+      }
+    },
+    {
+      "got": true,
+      "group": "C5",
+      "name": "C5.B.minus_q_sign",
+      "pass": true,
+      "want": true
+    },
+    {
+      "got": true,
+      "group": "C5",
+      "name": "C5.B.bare_residue_rejected",
+      "pass": true,
+      "want": true
+    },
+    {
+      "got": true,
+      "group": "C5",
+      "name": "C5.B.pins_above_zero",
+      "pass": true,
+      "want": true
+    },
+    {
+      "got": true,
+      "group": "C6",
+      "name": "C6.F4_M5.domain",
+      "pass": true,
+      "want": true
+    },
+    {
+      "got": true,
+      "group": "C6",
+      "name": "C6.F4_M5.integral",
+      "pass": true,
+      "want": true
+    },
+    {
+      "got": true,
+      "group": "C6",
+      "name": "C6.F4_M5.degree",
+      "pass": true,
+      "want": true
+    },
+    {
+      "got": true,
+      "group": "C6",
+      "name": "C6.F4_M5.exact_heights",
+      "pass": true,
+      "want": true
+    },
+    {
+      "got": {
+        "coefficients": [
+          1,
+          1
+        ],
+        "field": "F4"
+      },
+      "group": "C6",
+      "name": "C6.F4_M5.residue",
+      "pass": true,
+      "want": {
+        "coefficients": [
+          1,
+          1
+        ],
+        "field": "F4"
+      }
+    },
+    {
+      "got": false,
+      "group": "C6",
+      "name": "C6.F4_M5.xfree_criterion",
+      "pass": true,
+      "want": false
+    },
+    {
+      "got": true,
+      "group": "C6",
+      "name": "C6.F4_M6.domain",
+      "pass": true,
+      "want": true
+    },
+    {
+      "got": true,
+      "group": "C6",
+      "name": "C6.F4_M6.integral",
+      "pass": true,
+      "want": true
+    },
+    {
+      "got": true,
+      "group": "C6",
+      "name": "C6.F4_M6.degree",
+      "pass": true,
+      "want": true
+    },
+    {
+      "got": true,
+      "group": "C6",
+      "name": "C6.F4_M6.exact_heights",
+      "pass": true,
+      "want": true
+    },
+    {
+      "got": {
+        "coefficients": [
+          1,
+          0
+        ],
+        "field": "F4"
+      },
+      "group": "C6",
+      "name": "C6.F4_M6.residue",
+      "pass": true,
+      "want": {
+        "coefficients": [
+          1,
+          0
+        ],
+        "field": "F4"
+      }
+    },
+    {
+      "got": true,
+      "group": "C6",
+      "name": "C6.F4_M6.xfree_criterion",
+      "pass": true,
+      "want": true
+    },
+    {
+      "got": true,
+      "group": "C6",
+      "name": "C6.F4_M9.domain",
+      "pass": true,
+      "want": true
+    },
+    {
+      "got": true,
+      "group": "C6",
+      "name": "C6.F4_M9.integral",
+      "pass": true,
+      "want": true
+    },
+    {
+      "got": true,
+      "group": "C6",
+      "name": "C6.F4_M9.degree",
+      "pass": true,
+      "want": true
+    },
+    {
+      "got": true,
+      "group": "C6",
+      "name": "C6.F4_M9.exact_heights",
+      "pass": true,
+      "want": true
+    },
+    {
+      "got": {
+        "coefficients": [
+          0,
+          1
+        ],
+        "field": "F4"
+      },
+      "group": "C6",
+      "name": "C6.F4_M9.residue",
+      "pass": true,
+      "want": {
+        "coefficients": [
+          0,
+          1
+        ],
+        "field": "F4"
+      }
+    },
+    {
+      "got": false,
+      "group": "C6",
+      "name": "C6.F4_M9.xfree_criterion",
+      "pass": true,
+      "want": false
+    },
+    {
+      "got": true,
+      "group": "C6",
+      "name": "C6.P3_M4.domain",
+      "pass": true,
+      "want": true
+    },
+    {
+      "got": true,
+      "group": "C6",
+      "name": "C6.P3_M4.integral",
+      "pass": true,
+      "want": true
+    },
+    {
+      "got": true,
+      "group": "C6",
+      "name": "C6.P3_M4.degree",
+      "pass": true,
+      "want": true
+    },
+    {
+      "got": true,
+      "group": "C6",
+      "name": "C6.P3_M4.exact_heights",
+      "pass": true,
+      "want": true
+    },
+    {
+      "got": {
+        "coefficients": [
+          2
+        ],
+        "field": "F3"
+      },
+      "group": "C6",
+      "name": "C6.P3_M4.residue",
+      "pass": true,
+      "want": {
+        "coefficients": [
+          2
+        ],
+        "field": "F3"
+      }
+    },
+    {
+      "got": true,
+      "group": "C6",
+      "name": "C6.P3_M4.xfree_criterion",
+      "pass": true,
+      "want": true
+    },
+    {
+      "got": false,
+      "group": "C6",
+      "name": "C6.low_counterexample.refused",
+      "pass": true,
+      "want": false
+    },
+    {
+      "got": true,
+      "group": "C6",
+      "name": "C6.low_counterexample.no_full_slot_assertion",
+      "pass": true,
+      "want": true
+    },
+    {
+      "got": false,
+      "group": "C6",
+      "name": "C6.boundary_eq.refused",
+      "pass": true,
+      "want": false
+    },
+    {
+      "got": true,
+      "group": "C6",
+      "name": "C6.boundary_eq.no_full_slot_assertion",
+      "pass": true,
+      "want": true
+    },
+    {
+      "got": false,
+      "group": "C6",
+      "name": "C6.boundary_below.refused",
+      "pass": true,
+      "want": false
+    },
+    {
+      "got": true,
+      "group": "C6",
+      "name": "C6.boundary_below.no_full_slot_assertion",
+      "pass": true,
+      "want": true
+    },
+    {
+      "got": true,
+      "group": "C6",
+      "name": "C6.low_counterexample.nonintegral_digit",
+      "pass": true,
+      "want": true
+    },
+    {
+      "got": false,
+      "group": "C6",
+      "name": "C6.eta1.xfree",
+      "pass": true,
+      "want": false
+    },
+    {
+      "got": [
+        {
+          "denominator": 2,
+          "numerator": 3
+        },
+        true
+      ],
+      "group": "C6",
+      "name": "C6.clearance.r1",
+      "pass": true,
+      "want": [
+        {
+          "denominator": 2,
+          "numerator": 3
+        },
+        true
+      ]
+    },
+    {
+      "got": [
+        {
+          "denominator": 1,
+          "numerator": 3
+        },
+        true
+      ],
+      "group": "C6",
+      "name": "C6.clearance.r2",
+      "pass": true,
+      "want": [
+        {
+          "denominator": 1,
+          "numerator": 3
+        },
+        true
+      ]
+    },
+    {
+      "got": [
+        {
+          "denominator": 2,
+          "numerator": 9
+        },
+        true
+      ],
+      "group": "C6",
+      "name": "C6.clearance.r3",
+      "pass": true,
+      "want": [
+        {
+          "denominator": 2,
+          "numerator": 9
+        },
+        true
+      ]
+    },
+    {
+      "got": [
+        {
+          "coefficients": [
+            1
+          ],
+          "field": "F3"
+        },
+        {
+          "coefficients": [
+            0
+          ],
+          "field": "F3"
+        },
+        {
+          "coefficients": [
+            1
+          ],
+          "field": "F3"
+        }
+      ],
+      "group": "regression",
+      "name": "regression.X.corrected_polynomial",
+      "pass": true,
+      "want": [
+        {
+          "coefficients": [
+            1
+          ],
+          "field": "F3"
+        },
+        {
+          "coefficients": [
+            0
+          ],
+          "field": "F3"
+        },
+        {
+          "coefficients": [
+            1
+          ],
+          "field": "F3"
+        }
+      ]
+    },
+    {
+      "got": [
+        {
+          "coefficients": [
+            2
+          ],
+          "field": "F3"
+        },
+        {
+          "coefficients": [
+            0
+          ],
+          "field": "F3"
+        },
+        {
+          "coefficients": [
+            1
+          ],
+          "field": "F3"
+        }
+      ],
+      "group": "regression",
+      "name": "regression.X.naive_polynomial",
+      "pass": true,
+      "want": [
+        {
+          "coefficients": [
+            2
+          ],
+          "field": "F3"
+        },
+        {
+          "coefficients": [
+            0
+          ],
+          "field": "F3"
+        },
+        {
+          "coefficients": [
+            1
+          ],
+          "field": "F3"
+        }
+      ]
+    },
+    {
+      "got": [
+        [
+          2
+        ],
+        [
+          1,
+          1
+        ]
+      ],
+      "group": "regression",
+      "name": "regression.X.split_separation",
+      "pass": true,
+      "want": [
+        [
+          2
+        ],
+        [
+          1,
+          1
+        ]
+      ]
+    },
+    {
+      "got": true,
+      "group": "regression",
+      "name": "regression.FRG.partial_side",
+      "pass": true,
+      "want": true
+    },
+    {
+      "got": 1,
+      "group": "regression",
+      "name": "regression.FRG.separator",
+      "pass": true,
+      "want": 1
+    },
+    {
+      "got": [
+        1,
+        3,
+        4
+      ],
+      "group": "regression",
+      "name": "regression.FRG.partial_not_full",
+      "pass": true,
+      "want": [
+        1,
+        3,
+        4
+      ]
+    },
+    {
+      "got": 5,
+      "group": "regression",
+      "name": "regression.FRG.support_width",
+      "pass": true,
+      "want": 5
+    },
+    {
+      "got": [
+        {
+          "coefficients": [
+            0,
+            1
+          ],
+          "field": "F4"
+        },
+        {
+          "coefficients": [
+            1,
+            0
+          ],
+          "field": "F4"
+        },
+        {
+          "coefficients": [
+            1,
+            0
+          ],
+          "field": "F4"
+        }
+      ],
+      "group": "regression",
+      "name": "regression.F4Q.corrected",
+      "pass": true,
+      "want": [
+        {
+          "coefficients": [
+            0,
+            1
+          ],
+          "field": "F4"
+        },
+        {
+          "coefficients": [
+            1,
+            0
+          ],
+          "field": "F4"
+        },
+        {
+          "coefficients": [
+            1,
+            0
+          ],
+          "field": "F4"
+        }
+      ]
+    },
+    {
+      "got": [
+        {
+          "coefficients": [
+            1,
+            0
+          ],
+          "field": "F4"
+        },
+        {
+          "coefficients": [
+            1,
+            0
+          ],
+          "field": "F4"
+        },
+        {
+          "coefficients": [
+            1,
+            0
+          ],
+          "field": "F4"
+        }
+      ],
+      "group": "regression",
+      "name": "regression.F4Q.naive",
+      "pass": true,
+      "want": [
+        {
+          "coefficients": [
+            1,
+            0
+          ],
+          "field": "F4"
+        },
+        {
+          "coefficients": [
+            1,
+            0
+          ],
+          "field": "F4"
+        },
+        {
+          "coefficients": [
+            1,
+            0
+          ],
+          "field": "F4"
+        }
+      ]
+    },
+    {
+      "got": [
+        {
+          "coefficients": [
+            1,
+            0
+          ],
+          "field": "F4"
+        },
+        {
+          "coefficients": [
+            0,
+            1
+          ],
+          "field": "F4"
+        },
+        {
+          "coefficients": [
+            1,
+            0
+          ],
+          "field": "F4"
+        }
+      ],
+      "group": "regression",
+      "name": "regression.F4Q.psi_twist",
+      "pass": true,
+      "want": [
+        {
+          "coefficients": [
+            1,
+            0
+          ],
+          "field": "F4"
+        },
+        {
+          "coefficients": [
+            0,
+            1
+          ],
+          "field": "F4"
+        },
+        {
+          "coefficients": [
+            1,
+            0
+          ],
+          "field": "F4"
+        }
+      ]
+    },
+    {
+      "got": [
+        [
+          2
+        ],
+        [
+          1,
+          1
+        ]
+      ],
+      "group": "regression",
+      "name": "regression.F4Q.corrected_naive_patterns",
+      "pass": true,
+      "want": [
+        [
+          2
+        ],
+        [
+          1,
+          1
+        ]
+      ]
+    },
+    {
+      "got": [
+        2
+      ],
+      "group": "regression",
+      "name": "regression.F4Q.twist_pattern",
+      "pass": true,
+      "want": [
+        2
+      ]
+    },
+    {
+      "got": [
+        {
+          "coefficients": [
+            1,
+            0
+          ],
+          "field": "F4"
+        },
+        {
+          "coefficients": [
+            1,
+            0
+          ],
+          "field": "F4"
+        },
+        {
+          "coefficients": [
+            0,
+            1
+          ],
+          "field": "F4"
+        },
+        {
+          "coefficients": [
+            0,
+            1
+          ],
+          "field": "F4"
+        }
+      ],
+      "group": "regression",
+      "name": "regression.F4MU3.theta",
+      "pass": true,
+      "want": [
+        {
+          "coefficients": [
+            1,
+            0
+          ],
+          "field": "F4"
+        },
+        {
+          "coefficients": [
+            1,
+            0
+          ],
+          "field": "F4"
+        },
+        {
+          "coefficients": [
+            0,
+            1
+          ],
+          "field": "F4"
+        },
+        {
+          "coefficients": [
+            0,
+            1
+          ],
+          "field": "F4"
+        }
+      ]
+    },
+    {
+      "got": [
+        {
+          "coefficients": [
+            1,
+            0
+          ],
+          "field": "F4"
+        },
+        {
+          "coefficients": [
+            0,
+            1
+          ],
+          "field": "F4"
+        },
+        {
+          "coefficients": [
+            0,
+            1
+          ],
+          "field": "F4"
+        }
+      ],
+      "group": "regression",
+      "name": "regression.F4MU3.gamma",
+      "pass": true,
+      "want": [
+        {
+          "coefficients": [
+            1,
+            0
+          ],
+          "field": "F4"
+        },
+        {
+          "coefficients": [
+            0,
+            1
+          ],
+          "field": "F4"
+        },
+        {
+          "coefficients": [
+            0,
+            1
+          ],
+          "field": "F4"
+        }
+      ]
+    },
+    {
+      "got": [
+        {
+          "coefficients": [
+            0,
+            1
+          ],
+          "field": "F4"
+        },
+        {
+          "coefficients": [
+            0,
+            1
+          ],
+          "field": "F4"
+        },
+        {
+          "coefficients": [
+            1,
+            1
+          ],
+          "field": "F4"
+        }
+      ],
+      "group": "regression",
+      "name": "regression.F4MU3.B_units",
+      "pass": true,
+      "want": [
+        {
+          "coefficients": [
+            0,
+            1
+          ],
+          "field": "F4"
+        },
+        {
+          "coefficients": [
+            0,
+            1
+          ],
+          "field": "F4"
+        },
+        {
+          "coefficients": [
+            1,
+            1
+          ],
+          "field": "F4"
+        }
+      ]
+    },
+    {
+      "got": {
+        "coefficients": [
+          0,
+          1
+        ],
+        "field": "F4"
+      },
+      "group": "regression",
+      "name": "regression.F4MU3.canonical.t2",
+      "pass": true,
+      "want": {
+        "coefficients": [
+          0,
+          1
+        ],
+        "field": "F4"
+      }
+    },
+    {
+      "got": {
+        "coefficients": [
+          1,
+          1
+        ],
+        "field": "F4"
+      },
+      "group": "regression",
+      "name": "regression.F4MU3.canonical.t1",
+      "pass": true,
+      "want": {
+        "coefficients": [
+          1,
+          1
+        ],
+        "field": "F4"
+      }
+    },
+    {
+      "got": {
+        "coefficients": [
+          1,
+          0
+        ],
+        "field": "F4"
+      },
+      "group": "regression",
+      "name": "regression.F4MU3.canonical.t0",
+      "pass": true,
+      "want": {
+        "coefficients": [
+          1,
+          0
+        ],
+        "field": "F4"
+      }
+    },
+    {
+      "got": [
+        {
+          "coefficients": [
+            1,
+            0
+          ],
+          "field": "F4"
+        },
+        {
+          "coefficients": [
+            1,
+            1
+          ],
+          "field": "F4"
+        },
+        {
+          "coefficients": [
+            0,
+            1
+          ],
+          "field": "F4"
+        },
+        {
+          "coefficients": [
+            1,
+            0
+          ],
+          "field": "F4"
+        }
+      ],
+      "group": "regression",
+      "name": "regression.F4MU3.cube",
+      "pass": true,
+      "want": [
+        {
+          "coefficients": [
+            1,
+            0
+          ],
+          "field": "F4"
+        },
+        {
+          "coefficients": [
+            1,
+            1
+          ],
+          "field": "F4"
+        },
+        {
+          "coefficients": [
+            0,
+            1
+          ],
+          "field": "F4"
+        },
+        {
+          "coefficients": [
+            1,
+            0
+          ],
+          "field": "F4"
+        }
+      ]
+    },
+    {
+      "got": [
+        1,
+        1,
+        1
+      ],
+      "group": "regression",
+      "name": "regression.F4MU3.factor_pattern",
+      "pass": true,
+      "want": [
+        1,
+        1,
+        1
+      ]
+    },
+    {
+      "got": {
+        "coefficients": [
+          1
+        ],
+        "field": "F7"
+      },
+      "group": "regression",
+      "name": "regression.LP.level2_letter",
+      "pass": true,
+      "want": {
+        "coefficients": [
+          1
+        ],
+        "field": "F7"
+      }
+    },
+    {
+      "got": {
+        "coefficients": [
+          1
+        ],
+        "field": "F7"
+      },
+      "group": "regression",
+      "name": "regression.LD.inverse_cocycle",
+      "pass": true,
+      "want": {
+        "coefficients": [
+          1
+        ],
+        "field": "F7"
+      }
+    },
+    {
+      "got": -2,
+      "group": "regression",
+      "name": "regression.LD.negative_geography",
+      "pass": true,
+      "want": -2
+    },
+    {
+      "got": true,
+      "group": "lint",
+      "name": "lint.base_z1_defined",
+      "pass": true,
+      "want": true
+    },
+    {
+      "got": true,
+      "group": "lint",
+      "name": "lint.zero_normalizer",
+      "pass": true,
+      "want": true
+    },
+    {
+      "got": true,
+      "group": "lint",
+      "name": "lint.eta1_implies_f1",
+      "pass": true,
+      "want": true
+    },
+    {
+      "got": true,
+      "group": "lint",
+      "name": "lint.positive_wrap_sign",
+      "pass": true,
+      "want": true
+    },
+    {
+      "got": true,
+      "group": "lint",
+      "name": "lint.gamma_has_coefficient_normalizer",
+      "pass": true,
+      "want": true
+    },
+    {
+      "got": true,
+      "group": "lint",
+      "name": "lint.live_domain_strict",
+      "pass": true,
+      "want": true
+    },
+    {
+      "got": true,
+      "group": "lint",
+      "name": "lint.no_single_transport_map",
+      "pass": true,
+      "want": true
+    },
+    {
+      "got": true,
+      "group": "lint",
+      "name": "lint.no_unique_gauge",
+      "pass": true,
+      "want": true
+    },
+    {
+      "got": true,
+      "group": "lint",
+      "name": "lint.no_cross_face_claim",
+      "pass": true,
+      "want": true
+    },
+    {
+      "got": true,
+      "group": "lint",
+      "name": "lint.M3_scored_stratum",
+      "pass": true,
+      "want": true
+    },
+    {
+      "got": true,
+      "group": "lint",
+      "name": "lint.M4_W2C3_fence",
+      "pass": true,
+      "want": true
+    },
+    {
+      "got": true,
+      "group": "lint",
+      "name": "lint.B_law_sitewise_fence",
+      "pass": true,
+      "want": true
+    },
+    {
+      "got": [
+        "C3.F4Q.coherent_vector"
+      ],
+      "group": "teeth",
+      "name": "teeth.gauge_naive.fires_exactly",
+      "pass": true,
+      "want": [
+        "C3.F4Q.coherent_vector"
+      ]
+    },
+    {
+      "got": [
+        "C3.P5.coherent_vector"
+      ],
+      "group": "teeth",
+      "name": "teeth.wrong_sign.fires_exactly",
+      "pass": true,
+      "want": [
+        "C3.P5.coherent_vector"
+      ]
+    },
+    {
+      "got": [
+        "C3.F4MU3.theta_vector"
+      ],
+      "group": "teeth",
+      "name": "teeth.misindexed_telescope.fires_exactly",
+      "pass": true,
+      "want": [
+        "C3.F4MU3.theta_vector"
+      ]
+    },
+    {
+      "got": [
+        "regression.F4MU3.canonical.t0",
+        "regression.F4MU3.canonical.t1"
+      ],
+      "group": "teeth",
+      "name": "teeth.inverse_orientation.fires_exactly",
+      "pass": true,
+      "want": [
+        "regression.F4MU3.canonical.t0",
+        "regression.F4MU3.canonical.t1"
+      ]
+    },
+    {
+      "got": [
+        "C4.nu2_nonroot.raw_bridge"
+      ],
+      "group": "teeth",
+      "name": "teeth.origin_drop_nu.fires_exactly",
+      "pass": true,
+      "want": [
+        "C4.nu2_nonroot.raw_bridge"
+      ]
+    },
+    {
+      "got": [
+        "C4.nu2_root.equality_criterion"
+      ],
+      "group": "teeth",
+      "name": "teeth.origin_iff_nu0.fires_exactly",
+      "pass": true,
+      "want": [
+        "C4.nu2_root.equality_criterion"
+      ]
+    },
+    {
+      "got": [
+        "C5.A.gamma_exact"
+      ],
+      "group": "teeth",
+      "name": "teeth.he6_bare_residue.fires_exactly",
+      "pass": true,
+      "want": [
+        "C5.A.gamma_exact"
+      ]
+    },
+    {
+      "got": [
+        "C5.A.varpi_read"
+      ],
+      "group": "teeth",
+      "name": "teeth.he6_q_sign.fires_exactly",
+      "pass": true,
+      "want": [
+        "C5.A.varpi_read"
+      ]
+    },
+    {
+      "got": [
+        "C6.boundary_eq.refused"
+      ],
+      "group": "teeth",
+      "name": "teeth.lift_boundary_accept.fires_exactly",
+      "pass": true,
+      "want": [
+        "C6.boundary_eq.refused"
+      ]
+    },
+    {
+      "got": [
+        "C6.eta1.xfree"
+      ],
+      "group": "teeth",
+      "name": "teeth.eta_implies_xfree.fires_exactly",
+      "pass": true,
+      "want": [
+        "C6.eta1.xfree"
+      ]
+    },
+    {
+      "got": [
+        "lint.no_single_transport_map"
+      ],
+      "group": "teeth",
+      "name": "teeth.weld_single_map.fires_exactly",
+      "pass": true,
+      "want": [
+        "lint.no_single_transport_map"
+      ]
+    },
+    {
+      "got": [
+        "lint.M3_scored_stratum",
+        "lint.M4_W2C3_fence"
+      ],
+      "group": "teeth",
+      "name": "teeth.weld_drop_fences.fires_exactly",
+      "pass": true,
+      "want": [
+        "lint.M3_scored_stratum",
+        "lint.M4_W2C3_fence"
+      ]
+    }
+  ],
+  "schema": "S-1-T1-gauge-cocycle-battery-v1",
+  "seal": {
+    "head": "90b192e1a51e0f3d957752dbe298a42f2708e1b0",
+    "prereg_commit": "2848258302dba28a2317b3126fa55095f8afea80",
+    "root": "/data/users/asvin/math-and-lean/p-adic-splitting-densities",
+    "runner_commit": "2848258302dba28a2317b3126fa55095f8afea80"
+  },
+  "sha256": {
+    "note": "ec1f4187297928114c942eb774bac519132d90d13e29acbf792c60804e3f834e",
+    "prereg": "9c23fad383f5bfcad14bdba80bbd0ee83c740336f3fa076467138a81fa712e4e",
+    "runner": "ff13e4a699f317b24bfc8ced4e3f6645c500453bb744c1d5d48a2ac28f1e4832"
+  },
+  "tooth_evidence": {
+    "eta_implies_xfree": {
+      "expected_failures": [
+        "C6.eta1.xfree"
+      ],
+      "observed_failures": [
+        "C6.eta1.xfree"
+      ]
+    },
+    "gauge_naive": {
+      "expected_failures": [
+        "C3.F4Q.coherent_vector"
+      ],
+      "observed_failures": [
+        "C3.F4Q.coherent_vector"
+      ]
+    },
+    "he6_bare_residue": {
+      "expected_failures": [
+        "C5.A.gamma_exact"
+      ],
+      "observed_failures": [
+        "C5.A.gamma_exact"
+      ]
+    },
+    "he6_q_sign": {
+      "expected_failures": [
+        "C5.A.varpi_read"
+      ],
+      "observed_failures": [
+        "C5.A.varpi_read"
+      ]
+    },
+    "inverse_orientation": {
+      "expected_failures": [
+        "regression.F4MU3.canonical.t0",
+        "regression.F4MU3.canonical.t1"
+      ],
+      "observed_failures": [
+        "regression.F4MU3.canonical.t0",
+        "regression.F4MU3.canonical.t1"
+      ]
+    },
+    "lift_boundary_accept": {
+      "expected_failures": [
+        "C6.boundary_eq.refused"
+      ],
+      "observed_failures": [
+        "C6.boundary_eq.refused"
+      ]
+    },
+    "misindexed_telescope": {
+      "expected_failures": [
+        "C3.F4MU3.theta_vector"
+      ],
+      "observed_failures": [
+        "C3.F4MU3.theta_vector"
+      ]
+    },
+    "origin_drop_nu": {
+      "expected_failures": [
+        "C4.nu2_nonroot.raw_bridge"
+      ],
+      "observed_failures": [
+        "C4.nu2_nonroot.raw_bridge"
+      ]
+    },
+    "origin_iff_nu0": {
+      "expected_failures": [
+        "C4.nu2_root.equality_criterion"
+      ],
+      "observed_failures": [
+        "C4.nu2_root.equality_criterion"
+      ]
+    },
+    "weld_drop_fences": {
+      "expected_failures": [
+        "lint.M3_scored_stratum",
+        "lint.M4_W2C3_fence"
+      ],
+      "observed_failures": [
+        "lint.M3_scored_stratum",
+        "lint.M4_W2C3_fence"
+      ]
+    },
+    "weld_single_map": {
+      "expected_failures": [
+        "lint.no_single_transport_map"
+      ],
+      "observed_failures": [
+        "lint.no_single_transport_map"
+      ]
+    },
+    "wrong_sign": {
+      "expected_failures": [
+        "C3.P5.coherent_vector"
+      ],
+      "observed_failures": [
+        "C3.P5.coherent_vector"
+      ]
+    }
+  },
+  "verdict": "FAIL"
+}

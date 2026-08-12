@@ -1,0 +1,3540 @@
+PROBE, unit S-7 (you are gpt-5.6-sol high). The blueprint's second-generation
+route SG-2 asks whether the weld junction notes can leave the load-bearing
+path: TRACE GENHN-4 (the refine-transfer lemma, S6 of the GENHN note below)
+against WELDMASTER's five-field package M0–M4 and JD0's count gauge-blindness
+(both below, at their certified 2026-08-12 forms — WELD-M-PKG has NO
+cross-face coherence; JD0's corrected display is count-shape-keyed). Deliver:
+(1) the exact consumption trace — which M-fields and which J-D0 clauses
+GENHN-4's proof actually consumes, display by display;
+(2) whether those consumptions route through T1's exported laws instead (T1
+below), making the junction notes' remaining role supplier-only;
+(3) VERDICT: SG-2 VIABLE (the junction notes leave the load-bearing set,
+with the exact replacement map) | NOT VIABLE (the irreducible consumption).
+
+=== GENHN S6 (GENHN-4) + context ===
+## S6. THE REFINE TRANSFER (GENHN.A(iv)) AND THE BRACKET (CS-2)
+
+### S6.1 LEMMA GENHN-4 (refine transfer at general (e₁, f₁, μ))
+
+Setting: a stage-α event at dv-slope κ (the stage polygon one side
+(0, μκ)–(μ, 0), integer κ > current floor S′, residual (T − s)^μ,
+s ∈ K^×). Recenter Φ′ ↦ Φ′_new := Φ′ + w, w := −ŝ·n(κ)-lift (the
+canonical digit lift; convention-keyed as always).
+
+*The computation, in three layers.*
+1. **Leading graded layer (the kills).** Pass to gr R = the twisted
+   algebra K^c[ℤ/e₁-graded lines] (COROLLARY W-9 @ accepted pin,
+   consumed HERE as the organizing frame — disclosed; GENHN-2 makes
+   the passage pointwise-faithful: one K-slot per height, slot-min =
+   valuation). In gr, the development transforms by the substitution
+   Φ̄′ ↦ Φ̄′ + s̄ on the residual polynomial: the new residual at the
+   node heights is R(T + s) where R(T) = (T − s)^μ, ALL of whose
+   coefficients below degree μ vanish — the μ pins die. The twist
+   powers z^{fl} (S4's cocycle: n(κ)^t = ẑ^{fl_t}n(tκ)) enter both
+   the residual assembly and the carry products IDENTICALLY, so the
+   graded identity holds coefficient for coefficient over K — this
+   is exactly what GENH4 S5 computed by hand at (2,1,2): "the
+   z̄-twist cancels against the key's constant term" is the fl-power
+   bookkeeping at μ = 2, e₁ = 2; and at (1,2,2) the ψ-relation wrap
+   is the f₁-component of the same product rule. Both
+   characteristics: the identity R(T+s) = T^μ is binomial-free as
+   stated (it is a substitution identity, not an expansion).
+2. **Correction layer (everything else lands deeper and in-window).**
+   The non-graded corrections — products w^{i−j}A_i and the x-degree
+   overflow of w·A_i reduced mod Φ′ — have dv strictly greater than
+   the pinned heights: dv(w^{i−j}A_i-correction) ≥ (i−j)κ + (μ−i)κ +
+   1 = (μ−j)κ + 1 (each factor exceeds its side height only in the
+   correction terms; the exact-height products ARE layer 1). By
+   LEMMA GENHN-3(c)(d) they land at in-window positions and move
+   upward only.
+3. **Bijectivity.** The map on digit spaces is triangular (each new
+   digit = old digit + strictly-lower-data), injective, image inside
+   the floored node {dv(A_j) > (μ−j)κ}; onto by cardinality: the
+   refine slice fixes the μ pinned digits and frees exactly the
+   slots above the node floors (slot strings are key-independent —
+   GENHN-2), the same count as the node. Letters: |K| − 1 choices of
+   s per step. ∎
+
+**Grade note (honesty).** At μ = 2 the identity was verified
+pointwise-elementarily by GENH4 (S5, 192,000 refine events, and the
+carry displayed by hand). At general μ, layer 1 CONSUMES the W-9
+graded frame (accepted 2/2) rather than re-deriving the carry
+digit-by-digit; the compensating instrument is GN-REFINE3: every
+stage-α event on the μ = 3 rows is transported by ACTUAL polynomial
+re-division (no formula) and checked to kill exactly the three pins
+and land in the floored node, pointwise. A hostile pass should
+attack layer 2's strictness at mixed (e₁, f₁ ≥ 2) genres (first live
+n = 8, machine-unreachable here — S9 box).
+
+**Invariant maintenance.** Refines add ŝ·n(κ) to the key with
+κ > S′ ≥ e₁h: the key's constant-term valuation f₁h and residual η
+are untouched (the added term sits strictly above the key's own
+side), so S3.1's ring invariants — and with them GENHN-2/-3 — hold
+at every node of every history.
+
+### S6.2 The bracket (CS-2)
+
+By GENHN.A(i)–(iv) the stage system is the (μ, K)-cluster system in
+dv-units at the S-node (ragged-window-corrected). Its own
+α-aggregation is therefore LEMMA GENIND-2(b) @ pin run inside the
+stage verbatim:
+
+    b_{μ,K}(κ) = (|K|−1)·|K|^{(c(μ)+1)κ−1},   c(μ) = μ(μ−1)/2,
+
+per stage-slope-sum κ in dv-units. RECONCILIATION with GENH4 S6.2
+(the μ = 2 display): GENIND's bracket is mass-normalized (it
+includes the ghost fiber |K|^{c(μ)κ} of the α-transport), GENH4's
+ladder telescoping (q−1)q^{δ−1} is the letter-sum with per-node laws
+carrying the floors; they compose as
+(|K|−1)|K|^{2κ−1} = |K|^{κ} · (|K|−1)|K|^{κ−1} (ghost × letters) —
+the two displays are the same law in different normalizations, and
+the (e₁, f₁)-form of GENIND-5's (q−1)q^{2μ−1} is
+(q^{f₁}−1)·q^{f₁(2κ−1)}. One macroscopic rate per ambient v-unit:
+|K|^{e₁·(c(μ)+1)·(v-advance)} — at μ = 2: q^{2e₁f₁Δ}, GENH4's
+q^{e₁f₁Δμ}-per-v₁-half-step, reconciled. [machine: the μ = 3
+bracket exponent c(3)+1 = 4 over K is GENIND's GT-BRACKETID @ pin;
+this battery adds the μ = 3 STAGE realization at the E3 genre.]
+
+### S6.3 Drainage at general genres (GENH4.B's generalization)
+
+Per (entry, history) the conservative exits are slot-string
+computations exactly as GENH4 S6.3: UND = (A₀ all-readable-zero) ×
+(free depth), one exact q-power per stratum, history-dependent only
+through letter factors — the general closed forms are evaluated by
+the slot model (law_Egen in the battery; the e₁ = 3 instances are
+preregistered at never-measured territory). At μ ≥ 3 the stage's
+internal drainage recursion is GENIND.C run inside the stage
+(displayed, same telescoping; its μ ≥ 3 σ-residues sit behind
+[GENHN-HE] exactly as the base case sat behind Ore). No new
+mechanism.
+
+## S7. PROOF OF THEOREM GENHN.C (σ at every μ = 2 stage)
+
+Fix any μ = 2 genre (e₁, f₁ arbitrary, e₁f₁ ≥ 2), any decided stage
+leaf, any lift F ∈ O[x] of a leaf member with disc ≠ 0, any root θ
+of the stage block's factor, L := Frac(O)(θ). Two transported facts
+(both lift-stable by GENHN-3(a), proved exactly as in S3.1 since
+every root of the block shares the key's polygon and residual):
+
+    (T1)  v(θ) = h/e₁, gcd(h, e₁) = 1   ⟹   e₁ | e(L);
+    (T2)  η = res(θ^{e₁}π^{−h}) generates F_{Q^{f₁}} ⊆ k_L
+          ⟹   f₁ | f(L).
+
+Let Y := Φ′^{(t)}(θ) (the current key at θ; S6's chain keeps the
+state exact). Then Y² + A₁(θ)Y + A₀(θ) = 0 with dv(A₁(θ)) = w,
+dv(A₀(θ)) = u EXACTLY (GENHN-2 — which holds verbatim with θ in
+place of a key root: only (T1)/(T2) enter). The block has degree
+2e₁f₁ over the base. The Y-trichotomy (ultrametric analysis of the
+quadratic over L):
+
+* **stage-RAM (u odd, u ≤ 2w).** One-side Y-polygon: v(Y) = u/(2e₁)
+  with u odd ⟹ 2e₁ | e(L) **[r2 2026-08-09: WITH (T1) — v(Y) alone
+  gives only (2e₁/gcd(u, e₁)) | e(L) when gcd(u, e₁) > 1 (e.g.
+  e₁ = 3, u = 9: 2 | e only); gcd(u, e₁) is odd (u odd), so
+  lcm(e₁, 2e₁/gcd(u, e₁)) = 2e₁ — the value-group argument needs
+  both facts. passPE1 F4]**; with (T2): e·f ≥ 2e₁f₁ = block degree ⟹
+  ONE factor, e = 2e₁, f = f₁: σ-block {(2e₁, f₁)}.
+* **stage-2SIDED (u > 2w).** v(Y) ∈ {w/e₁·½·…} — two exact values
+  w/(e₁)−… (in dv-halves: w and u−w, distinct). Norm count: the
+  product of v(Φ′(θᵢ)) over the block's roots equals dv-total u
+  (Res(F_block, Φ′) = ±Nm(A₀), by GENHN-2 at the key's own roots);
+  if the block were irreducible its roots would be conjugate with
+  Galois-invariant v(Φ′(θ)) — contradicted by the two distinct
+  values; j roots at each value with j·w + (2e₁f₁−j)/(2e₁f₁)·…
+  forces the even split j = e₁f₁: two factors, each of degree e₁f₁
+  with (T1)+(T2) forcing e = e₁, f = f₁ on each: {(e₁,f₁),(e₁,f₁)}.
+* **stage-SPLTAIL (A₀ window-hidden, w below the certification
+  bound 2w < e₁N).** Every lift has u_lift ≥ e₁N > 2w (GENHN-3(a)'s
+  undercut floor): a 2SIDED configuration for every lift, including
+  the A₀ = 0 corner (F_block = Φ′(Φ′ + A₁), both factors carrying
+  the key polygon): σ as 2SIDED.
+* **stage-SPLITEQ ('11', roots s₁ ≠ s₂ ∈ K).** One S6 refine step
+  with letter s₁ (the kill needs only R(s₁) = 0) leaves
+  dv(A₁′) = κ exactly with residue s₁ − s₂ ≠ 0 (char 2: = S₁ ≠ 0 by
+  separability) and dv(A₀′) > 2κ: a 2SIDED configuration for every
+  lift — {(e₁, f₁), (e₁, f₁)}. (Hensel at the stage, executed as
+  one refine step.)
+* **stage-INERT ('2', residual irreducible over K).** v(Y) = κ/e₁
+  and Ȳ := res(Y/n(κ)(θ)) is a root of the twisted residual (S4's
+  coherent-normalizer computation): [K(Ȳ) : K] = 2 ⟹
+  [F_Q(Ȳ) : F_Q] = 2f₁ ⟹ f(L) ≥ 2f₁; with (T1) and degree 2e₁f₁:
+  one factor, e = e₁, f = 2f₁: {(e₁, 2f₁)}.
+
+Every case consulted only lift-stable data: (A0)-strong at every
+μ = 2 stage leaf. The (2,1,2)/(1,2,2) instances are THEOREM GENH4.C
+verbatim ({(4,1)}/{(2,1)²}/{(2,2)} and {(2,2)}/{(1,2)²}/{(1,4)});
+the (3,1,2) instance gives {(6,1)}/{(3,1)²}/{(3,2)} — first tested
+here (GN-SIGMA, PARI, wild p = 3 included); (1,3,2) gives
+{(2,3)}/{(1,3)²}/{(1,6)} (visibility-floored, no row — S9 box). ∎
+
+**Remark [r0-battery] (scope: stage data vs ambient window).** The
+theorem's leaf is STAGE data (the A_j digit strings at the stage
+window); "lift-stable" is relative to that data. At EMBEDDED genres
+read through an AMBIENT window N, the stage digits are themselves
+only partially determined by the ambient data — the sibling Hensel
+split loses v(f′(ρ)) digits — so the set of stage leaves CERTIFIED
+by an ambient window is strictly smaller than the stage window
+suggests. This composition fact (machine-surfaced at the smoke run)
+is quantified in GENHN-BOX-4/S11.F; it does not touch this
+theorem's statement or proof.
+
+> **[GENHN-HE(μ ≥ 3)] (THE box; first live n = 6).** At stage
+> leaves of multiplicity μ ≥ 3 (decided by the stage read with
+> separable residuals over K), the σ-decision — every disc ≠ 0 lift
+> factors as the stage dictionary (e₁e_s, f₁f_s) per stage piece —
+> is OPEN. The expected mechanism is this S7 run at degree μ (the
+> norm-count argument needs the case analysis of a degree-μ
+> Y-polygon; equivalently Ore's theorem over the stage ring R),
+> i.e. the same resolvent method one level up; the classical
+> Montes/GMN order-≥2 index theorem is the literature target for a
+> faithful cite. Per-n instance criterion: [GENHN-HE] enters P(n)
+> exactly for the genres with μ ≥ 3 realizable at degree n — none
+> at n ≤ 5; E3/F3 at n = 6, 7; towers add inner instances at
+> n ≥ 8. Machine corroboration (labeled, not proof): GN-SIGMA's E3
+> leg PARI-checks the μ = 3 dictionary on depth-0-decided leaves.
+
+## S8. STAGE TOWERS (LEMMA GENHN-T)
+
+=== WELDMASTER AT HEAD ===
+# WELD MASTER-TRANSPORT — the four junctions as faces of ONE anchored graded transport (M0–M4), the coboundary display c_{n+1} = z̄^δ·∂E (the [ILN]† inner factor IS the coboundary of the eq-12 cochain), and the ONE-PERIMETER fence ((C-coll) / (R-coll) / (VD-m) as three specializations of one character-triviality condition)
+
+**Unit:** WELD MASTER-TRANSPORT COMPOSER (dispatched by the synthesis
+adjudication, ledger 7724c20, from `docs/in-progress/
+WELD_SYNTHESIS_2026-08-05.md` commit f71cd68 §4(i)). **Genre: CONSOLIDATION
+THEOREM note in the LEDGER-Λ genre** (`LEDGERLAMBDA_2026-08-08.md` is the
+model): one theorem whose faces are already-composed notes, consumed at
+their own grades; ONE genuinely new display (S2's coboundary theorem, with
+its complete proof); ONE fence surface (S3). ~~Acceptance counter **0/2** —
+no hostile pass has run on THIS note.~~ ~~**[r1 STATUS — ARC: composed (seal
+b375f42 → verdict 0baeb3b) → PE1 HOSTILE (report df00707: 0 CRITICAL /
+5 JUSTIFICATION GAPS F-1..F-5 + 3 minors F-6..F-8, NOT CLEAN) → r1 (THIS
+ROUND — note-only repair against all eight findings; runner + artifacts
+BYTE-FROZEN, runner md5 6b406f81c250d25f615f715fa9eff474 verified
+unchanged). Counter 0/2; PE2 is the next acceptance attempt.]**~~
+~~**[r2 STATUS (CURRENT; supersedes the struck r1 line) — ARC: composed (seal
+b375f42 → verdict 0baeb3b) → PE1 HOSTILE (df00707: 0C/5G+3m, NOT CLEAN) →
+r1 (90db22d, note-only, all eight findings addressed) → PE2 HOSTILE (report
+1edb104: 0 CRITICAL / 1 JUSTIFICATION GAP + 2 minors, NOT CLEAN — the r1
+diff itself verified CLEAN at source; the gap was pure freshness DRIFT, JB
+r6 landing 35 minutes after WM r1) → r2 (THIS ROUND — the drift repair, done
+as AS-OF COMMIT PINS per the 2026-08-06 standing rule (cross-note quotes
+carry as-of pins; ledger wave fold 2026-08-06c — a pinned quote is never
+falsifiable by sibling drift, only updatable at a fold): [JB] read at
+4c4ee56 (post-r7), [JC] at 3870bc8 (post-r5); plus the F-2 dagger
+round-labels and the F-3 WM-EPS range gloss. Note-only; runner + artifacts
+BYTE-FROZEN, runner md5 6b406f81c250d25f615f715fa9eff474 re-verified
+unchanged). A repair round is NOT a pass: counter 0/2; PE3 is the next
+acceptance attempt.]**~~
+~~**[r3 STATUS (CURRENT; supersedes the struck r2 line) — ARC: composed (seal
+b375f42 → verdict 0baeb3b) → PE1 HOSTILE (df00707: 0C/5G+3m, NOT CLEAN) →
+r1 (90db22d) → PE2 HOSTILE (1edb104: 0C/1G+2m — pure freshness drift, r1
+diff clean at source) → r2 (8f1c1f2, THE PIN ROUND) → PE3 HOSTILE (report
+07acb37: 0 CRITICAL / 0 GAPS / 1 MINOR, NOT CLEAN — the r2 diff itself
+verified substantively EXACT at every site, machine leg byte-identical; the
+one finding = S3(b)'s quotation attribution, semantically nil) → r3 (THIS
+ROUND — the one-line F-1 attribution repair at S3(b), plus PE3 O-1's as-of
+pins on the [JA]/[W2]/[ILN] dagger groups. Note-only; runner + artifacts
+BYTE-FROZEN, runner md5 6b406f81c250d25f615f715fa9eff474 re-verified
+unchanged). A repair round is NOT a pass: counter 0/2; PE4 is the next
+acceptance attempt.]**~~
+~~**[r4 STATUS (CURRENT; supersedes the struck r3 line) — ARC: composed (seal
+b375f42 → verdict 0baeb3b) → PE1 HOSTILE (df00707: 0C/5G+3m, NOT CLEAN) →
+r1 (90db22d) → PE2 HOSTILE (1edb104: 0C/1G+2m — pure freshness drift) →
+r2 (8f1c1f2, THE PIN ROUND) → PE3 HOSTILE (07acb37: 0C/0G/1m) → r3
+(52d40bb, the attribution fix + three O-1 pins) → PE4 HOSTILE (report
+39e1eec, FOURTH attempt: 0 CRITICAL / 0 GAPS / 1 MINOR, NOT CLEAN — the r3
+diff verified correct at every edit site; the conditionality stack survives
+the JB/JC acceptance (83f47f4) with zero misleading sentences, four
+conservative understatements catalogued fold-owed; fresh
+decomposition-route re-proof of WM-COB(i), 17,624/0; the one finding = the
+r3 footer's "closing the unpinned-source drift species" coverage gloss —
+LED-Λ was still an unpinned quoted source) → r4 (THIS ROUND — TWO FIXES:
+(F-1) the LED-Λ† as-of pin (2ad7505) + the r3 footer gloss scoped to the
+three groups r3 actually pinned; (JA-COMPANION, owed by ledger 3626f55)
+WM-FENCE(a)'s (R-coll) range gloss extended ROOT-INCLUSIVELY per JA PE2
+FINDING 1 (report 9040961; 8 machine witnesses at m = 3 ON the
+root-exclusive perimeter with (VD-3) FALSE), consumer check recorded at
+(a): no WM display consumed the root-exclusive range. Note-only; runner +
+artifacts BYTE-FROZEN, runner md5 6b406f81c250d25f615f715fa9eff474
+re-verified unchanged). A repair round is NOT a pass: counter 0/2; PE5 is
+the next acceptance attempt.]**~~
+~~**[r5 STATUS (CURRENT; supersedes the struck r4 line) — ARC: composed (seal
+b375f42 → verdict 0baeb3b) → PE1 HOSTILE (df00707: 0C/5G+3m, NOT CLEAN) →
+r1 (90db22d) → PE2 HOSTILE (1edb104: 0C/1G+2m — pure freshness drift) →
+r2 (8f1c1f2, THE PIN ROUND) → PE3 HOSTILE (07acb37: 0C/0G/1m) → r3
+(52d40bb, the attribution fix + three O-1 pins) → PE4 HOSTILE (39e1eec:
+0C/0G/1m — the LED-Λ pin gap) → r4 (14706f5, the LED-Λ pin + the
+JA-COMPANION root-inclusive extension of WM-FENCE(a)) → PE5 HOSTILE
+(report f97bc78, FIFTH attempt: 0 CRITICAL / 0 GAPS / 1 MINOR, NOT CLEAN
+— the r4 diff verified correct at every edit site, side-by-side consistent
+with the independently written JA r2; consumer check re-verified TRUE by
+an independent 8-site sweep; pin system COMPLETE under a ~45-site quote
+sweep; fresh E-pair-route re-derivation of WM-RHO from WM-COB, 1,344/0;
+the one finding = sealed pre-r4 text: WM-FENCE(a)'s head quote silently
+interpolated "abscissa" into JA-VDIND's display, fused from JA-RES's
+quantifier line — not byte-contiguous at the ce0469a pin, semantically
+nil) → r5 (THIS ROUND — ONE FIX (PE5 F-1): the (a) head quote restored to
+its byte-form at the pin, "= 1 for every attained i", with an [r5]
+bracket in place recording the interpolation's origin; plus PE5 O-1's
+one-line name-list accuracy fix in (a)'s live consumer-check sentence
+((M2)'s citation cell names JA-EPS + JA-RES, not JA-VDIND/JA-EPS).
+Note-only; runner + artifacts BYTE-FROZEN, runner md5
+6b406f81c250d25f615f715fa9eff474 re-verified unchanged). A repair round
+is NOT a pass: counter 0/2; PE6 is the next acceptance attempt.]**~~
+~~**[r6 STATUS (CURRENT; supersedes the struck r5 line) — ARC: composed (seal
+b375f42 → verdict 0baeb3b) → PE1 HOSTILE (df00707: 0C/5G+3m, NOT CLEAN) →
+r1 (90db22d) → PE2 HOSTILE (1edb104: 0C/1G+2m — pure freshness drift) →
+r2 (8f1c1f2, THE PIN ROUND) → PE3 HOSTILE (07acb37: 0C/0G/1m) → r3
+(52d40bb, the attribution fix + three O-1 pins) → PE4 HOSTILE (39e1eec:
+0C/0G/1m — the LED-Λ pin gap) → r4 (14706f5, the LED-Λ pin + the
+JA-COMPANION root-inclusive extension of WM-FENCE(a)) → PE5 HOSTILE
+(f97bc78: 0C/0G/1m — the WM-FENCE(a) head-quote interpolation) → r5
+(f8c2c09, the head-quote byte-form restoration + the O-1 name-list fix) →
+PE6 HOSTILE (report 7c3893f, SIXTH attempt: 0 CRITICAL / 0 GAPS / 2 MINOR,
+NOT CLEAN — the r5 diff verified correct at every edit site; EXHAUSTIVE
+54-span quote sweep, every load-bearing cross-note quote byte-true at its
+pin; fresh σ-section-route re-derivation of WM-CLASS, 10,792/0 on the
+full class-pair grid, both teeth fired, the sealed κ census reproduced
+exactly; the two findings = pre-r1 sealed text, both semantically nil:
+the [ILN]-attributed S2 scope quote compressed from the pin's byte-form,
+two S5 sites; a sentence-initial case change on the JB/SYN "fifth sweep"
+quote) → r6 (THIS ROUND — TWO FIXES: (PE6 F-1) both S5 quote sites
+restored to the ced7dbb byte-form "γ, γ′ ∈ ℤ are arbitrary", [r6]
+brackets in place recording the sealed compressed wording; (PE6 F-2) the
+S3 Consequence-paragraph quote's sentence-initial case restored ("A fifth
+sweep …"), matching [JB] 4c4ee56 line 149 / [SYN] f71cd68 line 131, [r6]
+bracket in place. Note-only; runner + artifacts BYTE-FROZEN, runner md5
+6b406f81c250d25f615f715fa9eff474 re-verified unchanged). A repair round
+is NOT a pass: counter 0/2; PE7 is the next acceptance attempt.]**~~
+**[r7 STATUS (CURRENT; supersedes the struck r6 line) — ARC: composed (seal
+b375f42 → verdict 0baeb3b) → PE1 HOSTILE (df00707: 0C/5G+3m, NOT CLEAN) →
+r1 (90db22d) → PE2 HOSTILE (1edb104: 0C/1G+2m — pure freshness drift) →
+r2 (8f1c1f2, THE PIN ROUND) → PE3 HOSTILE (07acb37: 0C/0G/1m) → r3
+(52d40bb, the attribution fix + three O-1 pins) → PE4 HOSTILE (39e1eec:
+0C/0G/1m — the LED-Λ pin gap) → r4 (14706f5, the LED-Λ pin + the
+JA-COMPANION root-inclusive extension of WM-FENCE(a)) → PE5 HOSTILE
+(f97bc78: 0C/0G/1m — the WM-FENCE(a) head-quote interpolation) → r5
+(f8c2c09, the head-quote byte-form restoration + the O-1 name-list fix) →
+PE6 HOSTILE (7c3893f: 0C/0G/2m — two quote-fidelity slips in sealed text)
+→ r6 (355a14f, both quote sites restored to their pinned byte-forms) →
+PE7 HOSTILE (report 0a2fb54, SEVENTH attempt: CLEAN — 0 CRITICAL / 0 GAPS
+/ 0 MINOR; counter 1/2; ledger 93da1d1; PE8 = the accepting attempt) →
+PE8 HOSTILE (report 8d84d77, EIGHTH attempt: 0 CRITICAL / 1 JUSTIFICATION
+GAP / 0 MINOR, NOT CLEAN — counter RESETS 1/2 → 0/2; the r6-state note
+otherwise verified TRUE at HEAD: the five faces statement-by-statement at
+the pins, two fresh-route re-derivations unused by PE1–PE7 (WM-RHO by the
+proof-step/shift route at integer level, negative γ included; WM-CLASS by
+the cyclic-norm-invariant route), 20,398/0 exit 0, five teeth fired,
+sealed battery byte-identical; THE GAP = sealed S0 setting text, escaped
+all seven passes because it is neither a quote nor consumed by any
+display: the Bézout line declared the minus-form "ℓ_j h_j − ℓ′_j e_j =
+±1 … as pinned (`bez`)", FALSE of the pinned `bez` and of every pinned
+supplier's + display at every read with e > 1, h > 1, realized on the
+note's own roster (reads (3,2) → 7, (2,3) → 5); blast radius NIL — ℓ′
+enters no display except the correct S0.3 transcription) → r7 (THIS
+ROUND — ONE FIX (PE8 F-1): the S0 Bézout line restored to the pinned
+byte-form "ℓ_j h_j + ℓ′_j e_j = 1 (0 ≤ ℓ_j < e_j) as pinned (`bez`)",
+re-verified this round against [ILN] ced7dbb line 157, with an [r7]
+bracket in place recording the sealed minus-form and its roster
+falsification. Note-only; runner + artifacts BYTE-FROZEN, runner md5
+6b406f81c250d25f615f715fa9eff474 re-verified unchanged). A repair round
+is NOT a pass: counter 0/2; PE9 is the next acceptance attempt.]** Author:
+Fable, campaign date 2026-08-08 (wallclock 2026-08-06).
+
+**SCOPE AND FENCES (stated before anything else).**
+
+* **CONSUMPTION-ONLY.** No accepted or committed statement is touched. This
+  note CONSOLIDATES the four junction notes (they become faces of one
+  theorem); it does not edit, bracket, retire, or supersede them.
+  Supersession brackets happen at the NEXT FOLD, never here (the LEDGER-Λ
+  precedent verbatim: "it does not edit, bracket, or retire them").
+* **THE GRADE-CAP SENTENCE.** Every clause below rides the four junction
+  notes at ATTEMPT grade 0/2 each, with their full conditionality ledgers
+  carried verbatim; [ILN]† is the sole ACCEPTED engine input. Nothing here
+  upgrades anything, discharges any open leg, or retires any consumer gate.
+* **The synthesis spot checks (6 families, 7,999 samples, 0 violations on
+  T2A/T2C/T3A/T3E/I4B — WELD_SYNTHESIS Appendix A) are cited as MEASURED
+  SUPPORT ONLY**: a scratch instrument, no seal, no teeth. This note's own
+  sealed battery is S5.
+* **OUT OF SCOPE (queued separately, not attempted):** the a_λ/E(λ)
+  multiplicativity target (synthesis §2.5 — would move (DMULT-s) toward
+  PROVED) and the χ-from-S closed form (synthesis §4(iii)3). The J-D block
+  is untouched (blueprint route per the adjudication; H3's character-count
+  shortcut stays REFUTED).
+
+**Incorporation convention (dagger forms, declared once).**
+**[W2]†** = `GRTW2_PROOF_2026-08-08.md` (attempt 0/2) **[r3, O-1: every
+[W2] quote reads as of 5463f2a (its only commit; all byte-verified true at
+HEAD by PE3)]**: clauses W2-C1/C2/C3,
+the §3.4 (ξ,w) closed form, (C-coll), (HR-REC), W2-BOX-1, W2-OPEN-1 (OPEN).
+**[JA]†** = `GRTJA_PROOF_2026-08-08.md` (post-r1, 0/2) **[r3, O-1: every
+[JA] quote reads as of ce0469a (= JA r1, its last commit; all byte-verified
+true at HEAD by PE3, incl. the F-4 block's JA-EPS quantifier)]**: JA-PIN, JA-VAL,
+JA-EPS, JA-GRID, JA-RES, JA-VDIND, (R-coll), JA-BOX-1..5.
+**[JB]†** = `GRTJB_PROOF_2026-08-08.md` ~~(post-r4, 0/2)~~ **[r1: JB r5 landed
+mid-arc (f9f104e, note-only — the u ≥ 0 partial discharge); the §0M
+frontier census carried in this note is the settled post-r5 one, rows
+4/5/12/22]** **[r2, F-1/F-2: (post-r7, 0/2, as of 4c4ee56) — every [JB]
+citation in this note READS AT THAT COMMIT (as-of pin, the 2026-08-06
+standing rule). Deltas since the r1 bracket: JB r6 (4607824) SPLIT §0M
+row 11 — JB-VTX(d3)'s min tie moved from `P<q` to `P≤q` (column (a2)) —
+carried below at (M1) and (F-a); JB r7 (4c4ee56) restored the
+instance-honest membership relation at column (b) (EQUIVALENT at m = 1;
+re-quoted at S4). The frontier census is UNCHANGED at FOUR (rows
+4/5/12/22) at 4c4ee56, so the r1 bracket's census clause stays true]**:
+JB-DEV, JB-AFF,
+JB-VTX, JB-TREE, LEMMA JB-EPS, JB-CREAD, the §0M conditionality matrix.
+**[JC]†** = `GRTJC_PROOF_2026-08-08.md` ~~(post-r2, 0/2)~~ **[r2, F-2:
+(post-r5, 0/2, as of 3870bc8) — every [JC] citation in this note reads at
+that commit. The struck "(post-r2)" label was already one round stale AT
+the r1 commit (JC r3 = 126c33f, 09:02, predates WM r1's 09:27 — the r1
+round's one freshness miss, PE2 F-2); materiality NIL: PE2's diff scan
+verified r3+r4 leave every WM-consumed face content-stable (alias sweeps,
+JC-LOAD tier re-routes, census records), and r5's deltas (the per-alias
+census table; the FGMN (a)(b) stack completion BY ANNOTATION) were checked
+at the pin this round — the JC-LOC sentence, the (DMULT-w)/(DMULT-s) tier
+split, the §3.3 germ figures, and the §10.2 stack items this note mirrors
+are byte-stable at 3870bc8]**: W-6..W-9, JC-LOC,
+JC-LOAD, JC-PSIKER, JC-F1/JC-F2, the (DMULT-w)/(DMULT-s) tier split, LAW
+JC-CYC. **[ILN]†** = `ITERLAWN_PROOF_2026-08-08.md`, **ACCEPTED**
+(2-clean) **[r3, O-1: every [ILN] quote reads as of ced7dbb (its last
+commit, pre-WM-seal; all byte-verified true at HEAD by PE3)]**: the S0.1 class pin, S0.3 recursion (δ, S_j, D_j), Lemma
+SHIFT-(n) and Lemma D_j-INT ("PROVED, generic, unconditional" — its S2
+scope: γ, γ′ ∈ ℤ arbitrary), the value law c_{n+1} = z̄^δ·∏_j z_j^{D_j} on
+the scored stratum. **[SYN]** = `WELD_SYNTHESIS_2026-08-05.md` (adjudication
+note, f71cd68): the H1/H2 verdicts and derivation sketches this note
+executes. **LED-Λ†** = `LEDGERLAMBDA_2026-08-08.md` (attempt) **[r4, F-1:
+every LED-Λ quote reads as of 2ad7505 (its last commit, pre-WM-seal; the
+header fence's verbatim quote byte-verified true at LED-Λ HEAD by PE4) —
+the fourth and last of PE3 O-1's named unpinned-quote sources]**: genre
+model + the line-face bookkeeping [JB]† already consumes.
+
+**THE EXTRACTION-DECORRELATION LAW, obeyed as follows.** S2's cochain is
+implemented FRESH in the sealed runner (`t(β) = (ℓβ − s)/e` from the raw
+read integers, not imported from any committed eps); the committed engine's
+`Tower.eps` / `Tower.constants` / `Tower.split` enter only as the OTHER leg
+of each comparison. The non-textual leg is
+`verification/openmath/weldmaster_checks.py` (S5) on the FROZEN
+`grt_jc_probe.ROSTER` (29 towers, md5-pinned), two-commit sealed.
+
+## S0. Setting (all consumed; nothing new defined until S1)
+
+Tower T of the [ILN]† S0.1 class with reads (e_j, h_j, g_j), j = 0..n
+(NR = n+1 reads), normalized Bézout ℓ_j h_j + ℓ′_j e_j = 1 (0 ≤ ℓ_j < e_j)
+as pinned (`bez`) **[r7, PE8 F-1: the sealed line (present at b375f42,
+untouched by r1–r6) declared the minus-form "ℓ_j h_j − ℓ′_j e_j = ±1" —
+the PRINT calculus's convention with the print's own different, unpinned
+ℓ′ — which is FALSE of the pinned `bez` at every read with e > 1 and
+h > 1 (ℓh − ℓ′e = 1 − 2ℓ′e ∉ {±1}), falsified on this note's own frozen
+roster: read (3, 2) gives (ℓ, ℓ′) = (2, −1), ℓh − ℓ′e = 7; read (2, 3)
+gives (1, −1), 5 — towers C2D/C3C/C3E/I4A/I4B. The + form restored here
+is the byte-form at every pinned supplier ([ILN] ced7dbb line 157, [W2]
+5463f2a line 76, [JA] ce0469a line 53 — [ILN] re-verified this round)
+and the ONLY convention the S0.3 S-chain display below and the S5
+eps-path gloss consume]**, weights γ_1 = h_0, γ_{j+1} = e_j·w_jΦ_j + h_j,
+W_j := w_jΦ_j = e_{j−1}g_{j−1}γ_j; letters z_j ∈ K_j (units, ψ(0) ≠ 0),
+z̄ := z_{n+1}, K := K_{n+1}; E_0 := 1, E_j := e_0⋯e_{j−1}, E := E_{n+1}. Split
+γ ↦ (s_1..s_{n+1}, u_1) by iterated eq-(12); β_j(γ) = the split's own
+level-j weight; the split abscissa satisfies s_j(γ) = ℓ_{j−1}β_j(γ) mod
+e_{j−1} (eq-12 at read (e_{j−1}, h_{j−1})). [ILN]† S0.3 pair data:
+δ := ⌊(s_{n+1}+s′_{n+1})/e_n⌋, S_n := δγ_{n+1}, and for j = n..1
+
+    D_j := (s_j-defect + ℓ_{j−1}S_j)/e_{j−1},   s_j-defect := s_j + s′_j − s″_j,
+    S_{j−1} := D_jγ_j + S_j·(ℓ′_{j−1} − ℓ_{j−1}W_{j−1}).
+
+**THE WELD COCHAIN (the one new name; content = [JA]†'s JA-EPS).** Per
+level j (read (e_{j−1}, h_{j−1})), for β ∈ ℤ:
+
+    t_j(β) := (ℓ_{j−1}·β − s(β))/e_{j−1} ∈ ℤ,    s(β) := ℓ_{j−1}β mod e_{j−1},
+    ε_j(β)  = z_j^{−t_j(β)}      [r1, F-4: [ILN]† EXP-KIT(a) (EPS-CLOSED),
+                                  β ∈ ℤ UNRESTRICTED — the carrier at every
+                                  argument this note consumes; JA-EPS
+                                  ([JA]† 0/2) cited for the ON-LATTICE
+                                  print identification only],
+    E(γ)   := ∏_{j=1}^{n} ε_j(β_j(γ))             (embedded in K; γ ∈ ℤ),
+    A_j    := ℓ_{j−1}·g_{j−1}·γ_j  (j ≥ 1;  A_j = 0 ⟺ e_{j−1} = 1).
+
+t_j is exactly the print twist exponent in eq12-canonical coordinates
+(JA-EPS's sign convention — the Prop-`construct` CHILD orientation, [JA]†
+§3.2's display; NOT Def-`t(i)`'s opposite sign). Nothing in this note
+re-proves JA-EPS; the field identifications below consume it.
+
+**[r1, F-4 — the citation carrier, verified at source.** [ILN]† EXP-KIT(a)
+(EPS-CLOSED) states, on the eq-(12-int) data of a read (e,h) with β ∈ ℤ
+unrestricted: "(s(β) − ℓβ)/e ∈ ℤ and ε(β) = z^{(s(β)−ℓβ)/e}" — exactly
+ε_j(β) = z_j^{−t_j(β)}, ACCEPTED and unconditional. That is the identity's
+carrier at the off-window/negative arguments this note evaluates ε_j at
+(WM-RHO's "every γ ∈ ℤ", the WM-COB-OFFW legs, WM-CLASS's Ẽ; machine leg
+WM-EPS 615/0 ~~over ranges wider than any lattice~~ **[r2, F-3 — the
+range, stated exactly: WM-EPS samples β ∈ [0, 3e·h + 4) per level (runner
+line 222) — BOUNDED NON-NEGATIVE, so it machine-keys the committed-eps ≡
+z^{−t} tie OFF-LATTICE but NOT at negative arguments; the
+negative-argument sites named in this sentence ride the EXP-KIT PROOF
+(all β ∈ ℤ, the declared carrier) plus the FRESH-cochain legs
+(`Ecoch`/`t_fresh` through `split`: WM-RHO, the OFFW legs), which never
+evaluate `Tower.eps` at negative β]**). JA-EPS's own quantifier
+at [JA]† HEAD is "every β ∈ ℤ in the level-m weight lattice" — it stays
+cited for what it proves: the PRINT identification (t_j = the print twist
+exponent) on 𝒲_m.]**
+
+## S1. THEOREM WELD-M (the master transport; four faces, each a citation)
+
+**THEOREM WELD-M.** For every tower T of the [ILN]† S0.1 class realized as
+a principal-read OM type via the dictionary map T(t) (JA-PIN — the DOMAIN
+identification, consumed: every class-pin clause forced by the print's own
+hypotheses, lift clause = W-2), there is ONE transport 𝕋 between the
+harness calculus (Φ-developments, weights w_m, reads R_m v, the ε-kit,
+canonical lifts) and the classifier/print calculus (φ-adic developments,
+v_{m+1}, residual operators, t(i)-twists, GMN keys), with five clauses:
+
+    (M0) [substrate]      𝕋 is the IDENTITY on the underlying division
+         arithmetic: the same canonical division chain by the same monic
+         key at the admissible representative.
+    (M1) [gradings]       𝕋 preserves weights in the sheared frame
+         (w_m = v_{m+1}), and its induced map on polygon/grading data is
+         the explicit affine shear Σ_q(i,u) = (i, e_q·u + h_q·i) — lower
+         hulls to lower hulls, vertex-for-vertex, slope law s ↦ e_q s + h_q.
+    (M2) [reads/operators] 𝕋 acts on packed read data by explicit PER-SLOT
+         z-characters generated by ONE 1-cochain — the S0 weld cochain
+         t_j/ε_j: scalar per slot exactly on the S3 perimeter, exact
+         recursion ((HR-REC) genre) elsewhere. Never slot-independent
+         (JA-BOX-1 inherited verbatim).
+    (M3) [multiplication] 𝕋 transports multiplication up to the carry
+         cocycle: on B_n coordinates the target is the twisted group
+         algebra K^c[ℤ/E] with c = z̄^δ·∏_j z_j^{D_j} on the scored
+         stratum, and harness-val = TC-read.
+    (M4) [covariance]     𝕋 is covariant in the lift/representative
+         choice: changing the representative acts on (M2)–(M3) by the
+         (ξ, w) character system, with ψ-transport making the two chains
+         carry the same type.
+
+*Proof = the face table.* Each clause IS the cited composed theorem, at
+that theorem's own grade and on its own perimeter; the identifications in
+the middle column are the domain/codomain pins the synthesis adjudicated
+(SUBSUMED-PLUS-SHARPENING at all four junctions, [SYN] §1.2).
+
+| clause | citation (proof of the clause) | identification displayed | conditionality carried verbatim |
+|---|---|---|---|
+| (M0) | **[JB]† JB-DEV(i)** (same division, digit-for-digit) + **[JA]† JA-PIN** clauses 1–7 (domain) + **[W2]† W2-C1** (representative legitimacy) | JA-PIN: T(t) satisfies every class-pin clause except the lift clause (= W-2); the representative is φ_{q+1} := Φ_q^har | W-2 clause 1's perimeter; JB §0M rows 1–2; byte clause on `P≤q` only |
+| (M1) | **[JA]† JA-VAL** (w_m = v_{m+1}) + **[JB]† JB-AFF + JB-VTX** (H(f) = Σ_q(U(f)) vertex-for-vertex; the sheared frame IS the print's own next-level bookkeeping) + **[JA]† JA-GRID** (grid face: eq-(12-int) = T-side initial point; carry = lattice crossing) | the shear Σ_q is the induced affine map on gradings; the read side is horizontal at height w_{q+1}(f) in the sheared frame | shared-key perimeter `P<q`, 0 ≤ q ≤ qcap **[r2, F-1 — SPLIT per [JB] §0M row 11 as of 4c4ee56 (the JB r6 re-fence): `P<q` fences JB-VTX(d1)/(d2) and every other layer of this face; (d3) — the min tie w_{q+1}(f) = v_{q+2}(f), which is JA-VAL at level q+1 — carries the STRICTLY STRONGER `P≤q` (the BYTE-EQUAL CHAIN THROUGH q, column (a2)); bites at q = qcap on the 5 shared_upto < n roster towers (T3A/T3C/T3D/T3E/I4C), where [JB]'s runner gates (d3) at q ≤ shared_upto — its own fence, so the IND leg covers the re-fenced range]**; JA-GRID(a)'s u ≥ 0 proviso (~~undischarged~~ **[r1, F-1 — NARROWED at JB r5: u ≥ 0 PROVED at V ∈ 𝒲_{q+1}; open residue = the membership hypothesis at the unbounded-degree quantifier]**, JB §0M col (b) **[r2: as of 4c4ee56 — col (b) there further displays the m = 1 EQUIVALENCE; re-quoted at S4]**); JB-VTX(d4) NO-LEG rides |
+| (M2) | **[JA]† JA-EPS** (ε_m = z^{−t_m}: the cochain identification) + **JA-RES** (per-slot law c_i = z_{m−1}^{−i·A_{m−1}}·C_i, unconditional at m = 2) + **[W2]† W2-C2/(HR-REC)** (exact recursion; scalar form on (C-coll)) | the ε-kit IS the print's t(i)-twist in eq12-canonical coordinates; all transport characters are ~~values/differences of~~ **generated by [r1, F-3 — aligned with the clause text and S2.3's own fence: the χ-chain at m ≥ 2 and the mod-wrap are NOT reduced to cochain values]** ONE 1-cochain (S2, S3) | JA-RES per-digit proviso at m ≥ 3 / (R-coll); (C-coll) at m ≥ 2; W2-BOX-1 mod-wrap; JA-BOX-1: PER-SLOT, never scalar |
+| (M3) | **[JC]† W-6/W-7/W-8/W-9** (target exists; Ψ iso with inner normalization ∏_{j≤m} z_j^{D_j} on the scored stratum; harness-val = TC-read; K^c[ℤ/E]) | **JC-LOC (the CODOMAIN pin): B = gr(w)[in(π)^{−1}] ≅ gr_{K[x]}(w) — "B *is* the object FGMN's theorems speak about"** **[r2: quote as of 3870bc8]**; 𝒜(T) = the whole transported ring (JC-F2's corrected display) | [ILN]† scored stratum; (DMULT-w) CITED / (DMULT-s) MEASURED tier split; GRB §0 ladder; JC-BOX-2/-4/-8 |
+| (M4) | **[W2]† W2-C2 + §3.4** (the (ξ, w) closed form: ξ_{m+1} = χ_m^{γ_{m+1}}·z_m^{−e_m A_m}, w_{m+1} = χ_m^{−g_mγ_{m+1}}, the χ-chain; print tie z_m^{−A_m} = c₁) + **W2-C3** (ψ-transport: strict representative at every level of the transported chain, no weight/support splits) | the covariance seed is the cochain at the key weight: c₁ = ε_m(W_m) (S3's seed identity); the χ-multiplier = the [ILN]† shift-chain descent operator (byte-identical displays, [W2]† §3.4 rk. 1) | scalar closed form on (C-coll) only (exact law = (HR-REC)); §4.3 ℓ-orbit convention fence; **W2-OPEN-1 (value layer) OPEN — inherited displayed** |
+
+∎ (each row = consumption; no row is re-proved here).
+
+**Remark (what WELD-M is and is not — the honest-content sentence,
+[SYN] §1.3 verbatim in substance).** WELD-M is an ORGANIZING UMBRELLA
+engineered so that the four composed junction theorems are its faces; it
+proves no new instance and discharges no open leg (W2-OPEN-1, the (VD-m)
+strata, (DMULT-s), JB's ~~rows 5/12/22~~ **rows 4/5/12/22 [r1, F-1 — the
+post-r4/r5 census: FOUR NO-LEG open-proviso rows, with rows 4/12 at the
+NARROWED membership residue; the S4 bullet carries [JB]†'s wording
+verbatim]** **[r2: census UNCHANGED at 4c4ee56 (post-r7)]** evidence
+frontier all ride). Its net
+new content is exactly two displays: S2 (the coboundary theorem — the one
+theorem-shaped new item) and S3 (the one-perimeter fence). What each
+junction note carries BEYOND its face (its closed forms, boundary censuses,
+box systems) remains in that note and is NOT absorbed.
+
+## S2. THEOREM WM-COB — the coboundary display (the new 3-line theorem)
+
+**THEOREM WM-COB.** Let (γ, γ′) be a pair with [ILN]† S0.3 data
+(δ, S_j, D_j) and per-level split weights β_j := β_j(γ), β′_j := β_j(γ′),
+β″_j := β_j(γ+γ′).
+
+**(i) [integer form — footprint: [ILN]† SHIFT-(n) + D_j-INT only, both
+unconditional; γ, γ′ ∈ ℤ arbitrary, ALL pairs incl. DCX].** For every
+level j = 1..n:
+
+    D_j  =  t_j(β″_j) − t_j(β_j) − t_j(β′_j)   =: (∂t_j)(γ, γ′).
+
+**(ii) [field form — adds JA-EPS, PROVED in [JA]† at 0/2] [r1, F-4: as a
+field identity of the ε-kit, (ii) rides [ILN]† EXP-KIT(a) (β unrestricted,
+ACCEPTED) — JA-EPS enters only for the PRINT reading of the cochain, on the
+weight lattice; the sealed 0/2 pricing of (ii) was conservative, not
+upgraded here].** In K_j:
+
+    z_j^{D_j} = ε_j(β_j)·ε_j(β′_j)·ε_j(β″_j)^{−1}.
+
+**(iii) [composite display — adds the [ILN]† VALUE LAW, scored stratum].**
+With ∂E(γ,γ′) := E(γ)E(γ′)/E(γ+γ′):
+
+    c_{n+1}(γ, γ′)  =  z̄^δ · (∂E)(γ, γ′).
+
+THE ENTIRE INNER FACTOR OF THE ACCEPTED COCYCLE IS A COBOUNDARY — of the
+composite ε-kit cochain E. The outer letter z̄^δ is NOT a coboundary of
+this cochain (it lives in the NEXT letter; see the residue fence below).
+
+*Proof.* (i) Abbreviate ℓ := ℓ_{j−1}, e := e_{j−1}, s(·) := the level-j
+cochain remainder. Two consumed inputs: (a) the split abscissa tie
+s_j(γ) = s(β_j) (S0: the split computes s_j by eq-12 at β_j, and eq-12's
+abscissa is ℓβ mod e — a definition, not a claim); (b) [ILN]† Lemma
+SHIFT-(n): β″_j = β_j + β′_j + S_j, unconditional. Compute:
+
+    t_j(β_j) + t_j(β′_j) − t_j(β″_j)
+      = [ ℓ(β_j + β′_j − β″_j) − (s(β_j) + s(β′_j) − s(β″_j)) ] / e
+      = [ −ℓ·S_j − s_j-defect ] / e                    [(b), then (a)]
+      = −D_j                                            [S0.3's definition].
+
+Every step is integer arithmetic; t_j(β) ∈ ℤ always (s(β) ≡ ℓβ mod e).
+(ii): raise z_j to (i) and apply ε_j = z_j^{−t_j} ([ILN]† EXP-KIT(a),
+β unrestricted [r1, F-4]; = JA-EPS's identity on the lattice). (iii): multiply
+(ii) over j = 1..n inside K (each ε_j embedded) — the product telescopes to
+∂E — and substitute into the accepted value law c_{n+1} = z̄^δ·∏_j
+z_j^{D_j} on its own stratum. ∎
+
+**Remark (relation to [ILN]†'s integer layer).** The congruence at the
+heart of [ILN]† Lemma D_j-INT (s_j-defect + ℓS_j ≡ 0 mod e via SHIFT) is
+precisely the statement that (∂t_j) is an integer; WM-COB(i) REFINES it by
+identifying WHICH integer: the coboundary of the print-twist cochain at the
+split's own arguments. Nothing in [ILN]† is re-proved or amended; the
+identity gives its integer layer a second, cohomological reading. Note the
+footprint ordering ([SYN] §2.2 LAW-1): (i)–(ii)'s conditionality is
+STRICTLY SMALLER than the cocycle value law's own (no stratum needed).
+
+**The four normalization laws as faces of the one cochain (the [SYN] §2
+dictionary, consumed as displays; grades ride the owning notes).**
+LAW-2 (J-B): LEMMA JB-EPS is WM-COB(i) with S_j ≡ 0 — the PLAIN coboundary
+∂t_m(V,V′) = ε′ = ⌊(s^wt(V)+s^wt(V′))/e⌋; [ILN]†'s restart case (S_j = 0 ⟹
+D_j = δ^pl) is the same face. LAW-3 (J-A): the JA-RES character exponent
+i·A_{m−1} is the cochain's first difference along the key sublattice
+(t_m(V + kW_m) = t_m(V) + kA_m, carry-free since s(W_m) = 0). LAW-4 (W-2):
+the covariance seed c₁ = z_m^{−A_m} = ε_m(W_m) is the cochain at the key
+weight, and the χ-chain multiplier is the [ILN]† shift-chain descent
+operator. LAW-1 is WM-COB itself.
+
+### S2.1 LEMMA WM-RHO (the period constant of the composite cochain)
+
+For every γ ∈ ℤ:  E(γ + E)/E(γ) = ρ_T, the γ-INDEPENDENT constant
+
+    ρ_T := ∏_{j=1}^{n} z_j^{ −ℓ_{j−1}·E_{j−1} }.
+
+*Proof.* γ ↦ γ+E shifts β_n by E/e_n = E_n (top eq-12: s_{n+1} unchanged
+since ℓ_n E ≡ 0 mod e_n, u_{n+1} shifts by E/e_n), and inductively β_j by
+E_j (E_j ≡ 0 mod e_{j−1} keeps every s_j fixed, u_j shifts by E_{j−1}). So
+t_j(β_j + E_j) = t_j(β_j) + ℓ_{j−1}E_{j−1}, and each ε_j picks up the fixed
+factor z_j^{−ℓ_{j−1}E_{j−1}}. ∎ [Machine: WM-RHO.]
+
+### S2.2 COROLLARY WM-CLASS (the cohomological corollary — this EXPLAINS JC-F1)
+
+Let σ : ℤ/E → W be the minimal window section (the engine's
+`window_reps`), Ẽ := E∘σ (a genuine ℤ/E-cochain), and κ(ν,ν′) :=
+(σν + σν′ − σ(ν+ν′))/E ∈ ℤ_{≥0} (the section carry; census S5) **[r1,
+F-8 — the ℤ_{≥0} warrant: integrality is immediate; non-negativity because
+σν + σν′ ∈ W ([ILN]† Lemma WINDOW-(n), PROVED generic unconditional) and σ
+picks the MINIMAL in-window representative of each class (`window_reps`'s
+defining scan), so σ(ν+ν′) ≤ σν + σν′]**. Then
+∂Ẽ = ∂E·ρ_T^{κ} on classes, hence on the scored stratum (where the value
+law holds and c descends to ℤ/E, [JC]† W-9(i)):
+
+    c(ν, ν′) = z̄^{δ(ν,ν′)} · ρ_T^{−κ(ν,ν′)} · (∂Ẽ)(ν,ν′),   i.e.
+    [c] = [ z̄^δ · ρ_T^{−κ} ]   in H²(ℤ/E, K^*).
+
+The full inner word ∏_j z_j^{D_j} is PURE GAUGE: the class of the twisted
+algebra K^c[ℤ/E] = 𝒜(T) is carried by the outer letter z̄ (through δ) and
+the single period constant ρ_T (through the section carry) alone. **This
+explains FINDING JC-F1 cohomologically**: 𝒜(T) ≅ K[v]/(v^E − ζ_T)
+abstractly at every composite stage BECAUSE twisting by a coboundary does
+not change the algebra class — only the outer/period data can obstruct
+cyclicity, and it never does abstractly. It is CONSISTENT with the cyclic
+fence: (CYC) is a property of the anchor-indexed PRESENTATION (the specific
+cochain), and coboundaries are exactly what presentations see and classes
+do not — the fence and the abstract cyclicity are the two sides of "cochain
+vs cohomology class", not a tension. Grade: rides [ILN]† value law + [JC]†
+W-9 (0/2) + WM-COB; display-level, review-owed like every new statement
+here. [Machine: WM-RHO + the κ census; the class identity itself is
+arithmetic from WM-COB + WM-RHO, no separate leg.]
+
+### S2.3 The residue fence (what is NOT a cochain value)
+
+**J-B's C-READ constant c_m = ψ_{m,0} = −z_{m+1} is the OUTER letter, not
+a value of the weld cochain.** The level-≤m cochain generates only
+monomials in z_1..z_m; c_m is the NEXT residual letter — TC-3's defining
+relation at g_m = 1 (ψ_m(z̄) = 0 ⟺ z̄ = −ψ_{m,0}) surfacing as a transport
+constant ([JB]† §5 **[r2: as of 4c4ee56]**; [JC]† §3.3's germ split
+**[r2: figures as of 3870bc8]**: CONFIRMED as value law on all
+27 eligible stages, REFUTED as inner-factor reading, 138/669). Assignment:
+c_m belongs to the z̄^δ family — the part WM-COB(iii) shows is NOT ∂E.
+Likewise the mod-wrap boundary (W2-BOX-1's I4B r = 5 witness) and the
+χ-chain at m ≥ 2 are NOT reduced to cochain values by this note — the wrap
+is where the scalar one-cochain picture fails, and it fails at the SAME
+boundary in all four notes (S3's caveat). FENCED; no claim otherwise.
+
+## S3. THEOREM WM-FENCE — the one-perimeter fence
+
+**Definition (the level-μ transport character family; μ ≥ 1).**
+
+    χ^{(μ)}_i := z_μ^{ −i·A_μ }   (i ∈ ℤ),      A_μ = ℓ_{μ−1}g_{μ−1}γ_μ.
+
+**Seed identities (the fence characters ARE cochain data; both consumed
+proved, [JA]† JA-EPS + W2-L2):** χ^{(μ)}_i = ε_μ(β + i·W_μ)/ε_μ(β) for
+every β (the key-lattice first difference: t_μ(β + iW_μ) = t_μ(β) + iA_μ,
+carry-free); and z_μ^{−A_μ} = ε_μ(W_μ) = c₁, Theorem-`phir`'s constant.
+[Machine: WM-FENCE-XI.]
+
+**(PERIM-μ on S), the one condition:** χ^{(μ)}_i = 1 for every i ∈ S,
+S ⊆ ℤ a set of abscissas. Absolute form: ord(z_μ) | A_μ (then S = ℤ);
+slot-grid form: ord(z_μ) | e_μ·A_μ (then S = e_μℤ). Absolute ⟹ slot-grid;
+the converse fails in general (the honest gap, censused in S5).
+
+**THEOREM WM-FENCE.** The three collapse fences of the weld are three
+specializations of (PERIM):
+
+**(a) [(R-coll), J-A].** JA-VDIND's absolute character-triviality at read
+level m — "z_{m−1}^{i·A_{m−1}} = 1 for every attained i" **[r5, PE5 F-1:
+quote restored to its byte-form at the ce0469a pin (JA-VDIND's display,
+wrap-joined there; byte-identical at [JA] HEAD, re-checked this round).
+The sealed text read "… for every attained abscissa i" — the word
+"abscissa" was interpolated by fusion with THEOREM JA-RES's quantifier
+line ("THEN for every attained abscissa i:"), that phrase's only
+occurrence in [JA]; semantically nil — "attained i" ranges over abscissas
+by JA's own surrounding sentence, and the identification below is
+unchanged]** — IS
+(PERIM-(m−1) on the attained abscissa set of the object). (R-coll) at level
+m is its every-recursion-node form ~~(2 ≤ q ≤ m−1)~~ **(2 ≤ q ≤ m,
+ROOT-INCLUSIVE — the q = m instance is JA-VDIND itself, the condition at
+the head of this clause) [r4, JA-COMPANION per ledger 3626f55 — JA PE2
+FINDING 1 (report 9040961): [JA]† §3.4's own quantifier "2 ≤ q ≤ m−1" (as
+read at the ce0469a pin) OMITS the root instance, and root-exclusively the
+display's "(VD-m) hold at all levels up to m" conclusion is FALSE — 8
+machine witnesses at m = 3 sit ON the root-exclusive perimeter (every
+level-2 node character trivial) with (VD-3) FALSE (T3B/T3F/I4B; e.g. T3B
+deg 6, attained {1}, A₂ = 7), plus 58 at m = 2 where the stated range is
+EMPTY; JA-VDIND itself and the per-slot law STAND (JA PE2's fresh 396/0).
+Root-inclusive, the condition coincides with accepted [JB]'s operative
+fence (root triviality a HYPOTHESIS at every m ≥ 2) — exactly (b) below.
+CONSUMER CHECK (this note): no WM display consumed the root-exclusive
+range — the (M2) face and S3's seed identities ~~cite JA-VDIND/JA-EPS
+directly~~ cite JA-EPS + JA-RES (+ W2-C2) and JA-EPS + W2-L2 directly
+[r5, PE5 O-1: name list corrected to the actual citation cells; JA-VDIND
+is itself cited at this clause's head and inside (c); the operative claim
+— those displays rest on JA primitives that STAND per JA PE2's fresh
+396/0, not on the (R-coll) range — is unchanged and was independently
+re-verified by PE5's 8-site sweep]; (F-b) and this section's
+"Consequence" display read through THIS
+cured clause; the S4 stack carries JA's boxes verbatim at the pin, where
+JA-BOX-2's "evaluated" clause inherits the same slip (recorded here, not
+consumed by any WM display)]**. *Proof: citation — [JA]† §3.4's display is
+this condition verbatim for the node instances 2 ≤ q ≤ m−1, JA-VDIND
+(quoted above) is the root instance; the root inclusion is JA PE2's
+one-line cure.*
+
+**(b) [the (VD-m) proviso, J-B].** JB-CREAD's governing fence consumes
+JA-VDIND verbatim ([JB]† §5's regenerated fence display — the (VD-m) line
+of JB's internal [r3, STEP 2] block, citing [row 21]; §0M row 21's own (c)
+cell is the pointer "YES — the governing fence" **[r3, F-1: attribution
+corrected from "§0M column (c)", where the cell carries the same content in
+paren byte-form; quote + pin unchanged]** **[r2: as of 4c4ee56]**: "at every
+m ≥ 2 a HYPOTHESIS —
+JA-VDIND's ABSOLUTE character-triviality"); hence = (a) = (PERIM) at the
+same attained sets. Unconditional at m ≤ 1 only ((VD-1) = W2-L3). *Proof:
+citation of the r1/F1-repaired fence.*
+
+**(c) [(C-coll), W-2].** (C-coll) demands every interior junction character
+trivial: ξ_Q = 1, ξ_Q = χ_{Q−1}^{γ_Q}·z_{Q−1}^{−e_{Q−1}A_{Q−1}} ([W2]†
+§3.4). AT TRIVIAL LOWER χ-CHAIN (χ_{Q−1} = 1 — e.g. every m = 2 junction,
+where χ_1 := 1):
+
+    ξ_Q = z_{Q−1}^{ −e_{Q−1}·A_{Q−1} } = χ^{(Q−1)}_{e_{Q−1}} = ϑ_Q,
+
+exactly JA-VDIND's slot character ϑ — so (C-coll) at that level is
+(PERIM-(Q−1) on the junction slot grid e_{Q−1}·ℤ): the SLOT-GRID
+specialization (W-2's junction slots sit at s + j·e_{Q−1}; the j-dependent
+character part is ϑ_Q^j). *Proof: read off the §3.4 display at χ = 1; the
+grid statement is [W2]† §3.2's letter-twist sentence.*
+
+**The honest caveat (carried, not erased — [SYN] §1.3's own words).** The
+alignment is exact only MODULO the χ-chain corrections at deeper levels
+(χ_{Q−1} ≠ 1 makes ξ_Q a χ-corrected character, not a bare χ^{(μ)} value)
+and the MOD-WRAP boundary (W2-BOX-1's I4B r = 5 witness: a support-
+invisible interior character re-emerging through monomial reduction). The
+one-perimeter statement does NOT scalarize the wrap; the exact law off the
+perimeter remains (HR-REC) [W-2] / the per-slot recursion [J-A] — and the
+scalar forms of all four notes die together at this same boundary, which is
+the one-perimeter observation seen from the failure side.
+
+**THE THREE-MASTER-FENCE SURFACE (what a consumer of WELD-M carries,
+replacing four per-note fence systems as a READING AID — the four notes'
+own surfaces stay authoritative until the next fold):**
+
+    (F-a) the SHARED-KEY / BYTE perimeter — (M0)'s hypothesis: ~~`P<q` for
+          the (VAL)/(GRID) layers, `P≤q` for the (RES) layer ([JB]† §0M
+          (a1)/(a2))~~ **[r2, F-1 — per [JB]† §0M (a1)/(a2) as of 4c4ee56
+          (row 11 split at JB r6): `P<q` for the (VAL)/(GRID) layers
+          EXCEPT JB-VTX(d3); `P≤q` (the byte-equal chain THROUGH q) for
+          the (RES) layer AND for (d3)'s min tie w_{q+1}(f) = v_{q+2}(f) —
+          a VAL-family tie that is JA-VAL at level q+1, hence needs the
+          byte-equal chain through q; (a2)'s consumer list there: rows 2,
+          5, and row 11's (d3)]**; off it the print frame is a different
+          computation.
+    (F-b) the COLLAPSE perimeter — THIS section's (PERIM) condition at the
+          appropriate abscissa sets ((a)/(b)/(c) above), with the χ-chain
+          and mod-wrap caveat displayed.
+    (F-c) the LITERATURE/CONVENTION fence — (DMULT-w) CITED / (DMULT-s)
+          MEASURED ([JC]† tier split), the unpinned-ℓ orbit convention
+          (JA-BOX-3 / [W2]† §4.3), the FGMN numbering re-verification owed,
+          and ~~the [RMG]/LED-Λ attempt grades where [JB]† consumes them~~
+          **[RMG] at ACCEPTED grade and LED-Λ at ATTEMPT grade, as [JB]†
+          consumes them ([JB]† §4 grade cap: "consuming [RMG] as ACCEPTED
+          and LED-Λ at ATTEMPT grade") [r1, F-7]** **[r2: quote as of
+          4c4ee56]**.
+
+**Consequence for the four notes' fence surfaces.** Each note's collapse
+fence becomes a DERIVABLE DISPLAY of (F-b): (C-coll) = slot-grid (PERIM) +
+χ-corrections; (R-coll) = absolute (PERIM) at recursion nodes **[r4:
+nodes AND root, per (a)'s cured root-inclusive range]**; (VD-m) =
+absolute (PERIM) at attained sets. **No note is edited by this
+consolidation** — the four fence surfaces stand as committed; if a future
+fold brackets them onto (F-b), that fold cites this section. (The campaign
+motivation, recorded: JB's r1–r4 arc exists because per-site fence patching
+did not converge — "A fifth sweep would find a sixth site" **[r6, PE6 F-2:
+sentence-initial case restored to the pins' byte-form — the sentence
+begins with capital "A" at both byte-sites in the pinned corpus, [JB]
+4c4ee56 line 149 and [SYN] f71cd68 line 131; the sealed text's lowercase
+"a fifth sweep …" occurred byte-contiguously at NEITHER pin; semantically
+nil]**; one perimeter
+stated once is the same medicine at campaign level.)
+
+## S4. HONEST GRADE — the full conditionality stack
+
+**One line.**
+`[ILN]† ACCEPTED (SHIFT-(n)/D_j-INT unconditional; value law on the scored
+stratum; residuals (RM-m ≥ 2), (W-MULT-DCX-m), (ITER-LAW-LIFT) [r1, F-5],
+standard-lift) + W-2/J-A/
+J-B/J-C at ATTEMPT 0/2 each (their boxes verbatim: (C-coll)+W2-BOX-1+
+W2-OPEN-1; JA-BOX-1..5+(R-coll); JB §0M incl. rows 4/5/12/22 NO-LEG, 4/12
+at the narrowed membership residue [r1, F-1]; JC's
+(DMULT-w/s) tiers + GRB ladder + JC-BOX-2/4/8 + JC-F1/F2 review-owed) +
+GRB/CARRY-1/D-REAL accepted-conditional (§0 ladder + [T] pins) [r1, F-5] +
+FGMN cites (numbering
+re-verification owed) + LED-Λ attempt ⟹ this note, own arc 0/2.`
+**[r2, F-1/F-2 — the stack's cross-note items read at the as-of pins:
+[JB] 4c4ee56 (post-r7), [JC] 3870bc8 (post-r5).]**
+
+Itemized honesty:
+
+* **Per-claim footprints differ and are displayed at the claim.** WM-COB(i)
+  rides [ILN]† alone (unconditional); (ii) adds JA-EPS ([JA]† 0/2); (iii)
+  adds the value law (scored stratum); WM-CLASS adds [JC]† W-9; WELD-M's
+  faces ride their notes wholesale; WM-FENCE(a)/(b) are citations, (c) is a
+  one-line derivation from [W2]†'s display.
+* **The synthesis spot checks** (7,999/0, 5 towers, 6 families) are
+  MEASURED SUPPORT for S2's dictionary, cited as such — a scratch
+  instrument with no seal and no teeth. This note's own evidence leg is S5.
+* **NOT claimed, NOT discharged, NOT retired:** W2-OPEN-1 (the transported
+  value layer) stays OPEN; the (VD-m) strata stay conditional exactly as
+  [JB]† §0M has them; (DMULT-s) stays MEASURED-only; ~~JB rows 5/12/22 stay
+  NO-LEG~~ **JB's NO-LEG open-proviso frontier stays FOUR ROWS — 4/5/12/22
+  [r1, F-1: the sealed text reproduced [JB]† §0M's STRUCK pre-r4 census at
+  three sites; the r4/F-2 recount added row 4 (JB-DEV(iii)(GRID)'s
+  grid/attained-abscissa half) and JB r5's census amendment NARROWED rows
+  4/12's residue — [JB]† §0M column (b) verbatim: "u ≥ 0 PROVED at
+  V ∈ 𝒲_{q+1}, i.e. DISCHARGED for deg f < deg Φ_{q+1} (§5); open residue
+  = MEMBERSHIP at the unbounded-degree quantifier" — per [JB]† §5's r5
+  split: "membership V ∈ 𝒲_{q+1} holds by definition exactly at
+  deg f < deg Φ_{q+1} — THERE THE PROVISO NOW HOLDS; off that sub-window
+  membership is not established by anything this note consumes, and the
+  proviso is CARRIED as that membership hypothesis". Rows 5 (RES) and 22
+  (v = 0) ride unchanged; nothing here consumed the missing row's content
+  unfenced (the u ≥ 0 rider was carried at (M1)), but the carried census
+  cell was stale]** **[r2, F-1 — AS-OF PINS: both quotes in the r1 bracket
+  above re-verified BYTE-INTACT at [JB] commit 4c4ee56 (post-r7), and the
+  census stays FOUR there (r6's own words: "the census stays FOUR (rows 4,
+  5, 12, 22)" — (d3)'s re-fence carries a key perimeter, not an open
+  proviso). Column (b)'s definition at that commit FURTHER displays the
+  instance-honest relation ([JB]'s [r7, PE7 F-1] bracket, quoted at the
+  pin): "membership implies the needed instance — the sufficiency
+  direction, all any consumer uses; the converse is INSTANCE-DEPENDENT —
+  EQUIVALENT at m = 1 (above), containment possibly strict at m ≥ 2,
+  strictness UNPROVED either way in general (PE6's qualifier, restored)".
+  Sufficiency is all this note's (M1) rider uses, so the carried residue
+  is unchanged in substance — the m = 1 equivalence only says the carried
+  membership hypothesis is NOT strictly stronger there]**; the J3b
+  BLOCKED-ON-CARRIER-TIE gate stands; hExhaust and every
+  Phase-B Lean obligation untouched; the P0 application gate stands. NO
+  consumer retirements: nothing that today cites a junction note may
+  re-point to this note at better grade (there is none to give).
+* **No grade upgrade by composition.** A theorem whose proof is a citation
+  table is exactly as conditional as its worst-cited row.
+* **[r1, F-5 — two stack items restored to [JC]†'s granularity.** The (M3)
+  face consumes W-6..W-9 "with their full conditionality ledgers carried
+  verbatim", so the enumerated stack must carry what [JC]† §10.2 carries on
+  the SAME [ILN] consumption: (1) the **(ITER-LAW-LIFT)** residual — the
+  open lift-transport leg, open exactly at g_0 = 1 ∧ δ_1 = 1, currently the
+  LIFTCORNER arc's subject — now rides in [ILN]†'s residual list above;
+  (2) GRB/CARRY-1/D-REAL's conditionality reads "§0 ladder **+ [T] pins**"
+  ([JC]† §3.3's transcription pins). Both mirrored verbatim from [JC]†
+  §10.2's stack line. **[r2, F-2 — pin: as of 3870bc8. At that commit
+  §10.2's r0/[r1]/[r2] stack displays are ROUND-RECORDS by [JC]'s own
+  [r5, G-2] annotation, with the CURRENT stack = the [r2] tier-split form
+  whose FGMN entry is completed to "FGMN (a)(b) + (DMULT-w) on B …"; both
+  items mirrored here — the (ITER-LAW-LIFT) residual and "§0 ladder +
+  [T] pins" — ride byte-stable in it]**]
+
+## S5. MACHINE BRACKET — weldmaster_checks.py (two-commit seal)
+
+**Runner:** `verification/openmath/weldmaster_checks.py`. Commit 1 = this
+note + the runner, battery UNRUN on the full roster (pre-seal smoke on the
+4-row subset {C2A, C2I, C3A, I4B} disclosed in the docstring: all families
+0 violations, all four teeth firing); commit 2 appends the verdict below
+FROM the committed artifacts (`weldmaster_checks_output.txt` /
+`weldmaster_checks_results.json`).
+
+**Roster:** `grt_jc_probe.ROSTER`, imported FROZEN and md5-pinned (29
+towers: m ≤ 3, NR ≤ 4, p ∈ {2,3,5}, d₀ ≤ 3, wild e_j = p legs incl. p = 5,
+g_j = 2 branching rows, eq-char F_p[[t]] rows, flat legs, I4A/I4B/I4C) —
+the sealed J-C instrument's tower-construction path (`ITL.build_tower`)
+verbatim. ≥ 25 towers incl. wild legs, as charged.
+
+**Decorrelation:** the cochain t is implemented FRESH from raw read
+integers; `Tower.eps`/`Tower.constants`/`Tower.split` are the committed
+engine leg of each comparison; the M1 shear leg uses a FRESH monotone-chain
+lower hull with exact Fraction slopes (its min tie recomputes the engine's
+own weight recursion — disclosed as a sanity leg, not IND).
+
+**[r1, F-2 — WM-SHEAR RECLASSIFIED SAME-COMPUTATION**, per the standing
+evidence-class rule (ledgered 2026-08-06: every machine family carries an
+IND / SAME / NONE label at its prereg row; "re-key"/"independent" claims
+must name the decorrelated computation path) and [JB]†'s taxonomy ("SAME
+… the violation is UNREACHABLE and the leg carries NO information … never
+advertised as a second engine" **[r2: quote as of 4c4ee56]**). Both point sets are the same engine
+numbers: `Upts = (i, wq + i·wPhi[q])` and `Hpts = (i, e[q]·wq +
+i·gam[q+1])` with the same `wq = T.wlev(q, Ai)`, and the engine itself
+defines `gam[q+1] = e_q·wPhi[q] + h_q` — so shearU ≡ Hpts is an arithmetic
+identity of the harness engine, not a harness-vs-print comparison, and
+`hullSU == hullH` cannot fail for any true or false (M1). The residual
+content: hull-commutes-with-shear is [JB]†'s generic two-line LEMMA JB-AFF
+(tower-free), and the min tie is `wlev`'s own defining recursion — also
+same-computation. Consequences, stated plainly: (a) the 804/0 STAYS AS A
+RECORD (it exercises the fresh hull/slope code) but is NO LONGER BILLED as
+(M1) evidence; (b) the sealed row's "M1 re-key" billing and the runner
+docstring's "the IND content is the hull/vertex/slope covariance under the
+fresh shear" are WITHDRAWN as billing (runner BYTE-FROZEN, md5 unchanged —
+the label supersedes the docstring); (c) what (M1) machine evidence
+REMAINS is the junction notes' own legs: [JB]† §0M rows 8–11's genuinely
+IND families (print ordinates `G.vgen`/`G.vkey` vs harness
+`T.wlev`/`T.gam`, 893; fresh lower hulls of BOTH frames + vertex
+bijection; `hull_sides` per-side slope/length; the three min ties) and
+[JA]† JA-VAL's own leg — this battery adds none. **[r2: as of 4c4ee56 —
+the r6 row-11 split leaves its (f) IND cell standing ("IND three tie
+assertions", (d1)/(d3) gated q ≤ shared_upto — (d3)'s own fence, an
+instrument cut for (d1)); rows 8–10 unchanged at `P<q`]**]**
+
+**Families and SEALED PREDICTIONS (any observed count differing from its
+prediction is RED):**
+
+    WM-PIN       md5 pins on iterlawn_pe_reimpl.py + grt_jc_probe.py.
+                                                          PREDICTED 0.
+                 [r1, F-2 class: NONE — an instrument-integrity pin; keys
+                 no mathematical display]
+    WM-EPS       committed eps == z^{−t}, t FRESH (JA-EPS re-keyed).
+                                                          PREDICTED 0.
+                 [r1, F-2 class: IND — committed `Tower.eps` (the ℓ′s−ℓu
+                 exponent path) vs `t_fresh` built from raw read integers]
+    WM-COB-I     WM-COB(i): D_j == ∂t_j, every level, every sampled pair
+                 (dint_ok gate reported).                 PREDICTED 0.
+                 [r1, F-2 class: IND — committed `Tower.constants` (the
+                 [ILN] S0.3 D_j recursion) vs fresh ∂t_j from `t_fresh`]
+    WM-COB-OFFW  the same on off-window pairs (γ−E legs) — the "γ, γ′ ∈ ℤ
+                 are arbitrary" scope of [ILN]† S2.       PREDICTED 0.
+                 [r6, PE6 F-1: quote restored to its byte-form at the
+                 ced7dbb pin — [ILN]'s S2 scope sentence, line 360
+                 ("Throughout S2, γ, γ′ ∈ ℤ are arbitrary (no window
+                 hypothesis needed except in WINDOW-(n) itself)"), its
+                 only occurrence there. The sealed text read "γ,γ′ ∈ ℤ
+                 arbitrary" — compressed ("are" dropped, the comma-space
+                 fused), ZERO byte-contiguous occurrences at the pin;
+                 semantically nil (the scope is exactly as [ILN] declares
+                 it). Same cure at the commit-2 verdict line below]
+                 [r1, F-2 class: IND — the same decorrelated pair of paths
+                 at off-window/negative arguments through `split`]
+    WM-COB-F     WM-COB(ii) in K_j.                       PREDICTED 0.
+                 [r1, F-2 class: IND — cross-path engine-vs-engine:
+                 z_j^{D_j} from `Tower.constants` vs `Tower.eps` products;
+                 the fresh cochain leg enters at (i)/WM-EPS]
+    WM-COB-C     WM-COB(iii): inner == ∂E in the top field AND the full
+                 z̄^δ display.                             PREDICTED 0.
+                 [r1, F-2 class: IND — the engine's D-word
+                 (`Tower.constants`, embedded top) vs ∂E of the FRESH
+                 cochain (`Ecoch`/`t_fresh`)]
+    WM-RHO       LEMMA WM-RHO: E(γ+E)/E(γ) == ρ_T (constant, closed
+                 form); κ census reported for WM-CLASS.   PREDICTED 0.
+                 [r1, F-2 class: IND — fresh-cochain ratio at sampled γ vs
+                 the closed-form word ∏ z^{−ℓE}; γ-independence is itself
+                 the tested content; the engine enters via `split` only]
+    WM-FENCE-XI  seed identities: t(kW) = kA (integers), ε(W) = z^{−A}
+                 (c₁ tie), ε(eW) = z^{−eA} (slot char).   PREDICTED 0.
+                 [r1, F-2 class: IND — committed `Tower.eps` / fresh
+                 `t_fresh` vs the closed-form exponents kA/A/eA from raw
+                 reads; tooth WM-T-XI shows the violation is reachable]
+    WM-FENCE-EQ  brute character triviality == ord-divisibility criteria
+                 (absolute + slot forms); absolute ⟹ slot asserted;
+                 strict-gap census reported.              PREDICTED 0.
+                 [r1, F-2 class: IND — brute multiplicative-order loop in
+                 K_μ vs the arithmetic divisibility criterion]
+    WM-SHEAR     M1 re-key: fresh-hull(Σ_q(U)) == fresh-hull(H)
+                 vertex-for-vertex + slope law + min tie. PREDICTED 0.
+                 [r1, F-2 class: SAME — RECLASSIFIED; the sealed "M1
+                 re-key" billing is WITHDRAWN (shearU ≡ Hpts by the
+                 engine's own gam-definition; see the Decorrelation
+                 block above). Record leg only, not (M1) evidence.]
+
+**Teeth (each must fire ≥ 1 GLOBALLY or the battery is RED):**
+
+    WM-T-SIGN    Def-t(i)-sign cochain must break WM-COB-I.   FIRES ≥ 1.
+    WM-T-DELTA   z̄^{δ+1} must break the composite display.    FIRES ≥ 1.
+    WM-T-SHEAR   garbled shear (h_q+1) must break the vertex law.
+                                                              FIRES ≥ 1.
+    WM-T-XI      A_μ+1 must break the c₁ tie.                 FIRES ≥ 1.
+
+**[VERDICT — appended at commit 2 from the committed artifacts
+(`weldmaster_checks_output.txt` / `weldmaster_checks_results.json`; runner
+md5 6b406f81c250d25f615f715fa9eff474, byte-unchanged seal → verdict).]**
+
+**ALL GREEN — 0 violations across all 10 families, every sealed prediction
+met; all four teeth fired.** The battery: **29/29 roster towers built**
+(NR = 2/3/4; E up to 24; wild p ∈ {2,3,5} legs; d₀ ≤ 3; eq-char rows;
+I4A/I4B/I4C), **7,208 samples total** — WM-PIN 2 (both md5s intact) ·
+WM-EPS 615 · WM-COB-I 1,885 (every level of every dint_ok pair; the
+dint_ok gate never excluded a pair, consistent with D_j-INT) ·
+WM-COB-OFFW 513 (off-window γ−E legs, the "γ, γ′ ∈ ℤ are arbitrary" scope
+**[r6, PE6 F-1: byte-form restored, here and at the families row above —
+the bracket there records the sealed compressed wording]**) ·
+WM-COB-F 1,885 · WM-COB-C 897 (the full z̄^δ·∂E display, top-field
+composite) · WM-RHO 87 (the period constant exact on every sampled γ of
+every tower) · WM-FENCE-XI 349 · WM-FENCE-EQ 171 · WM-SHEAR 804 hulls
+(342 with ≥ 2 vertices — the shear law exercised on genuinely multi-vertex
+polygons) **[r1, F-2: the WM-SHEAR figures stand as a RECORD of the fresh
+hull code, not as (M1) evidence — SAME-computation family, see the
+Decorrelation block]**. Teeth: WM-T-SIGN 374 · WM-T-DELTA 861 ·
+WM-T-SHEAR 514 · WM-T-XI 47 — all ≥ 1~~, battery has teeth on every new
+display~~ **[r1, F-6: the four teeth key WM-COB-I (sign), the composite
+display (δ), the shear, and the c₁ tie — WM-RHO and WM-FENCE-EQ, both new
+displays, carry NO tooth; the sealed S5 teeth list was honest, this
+commit-2 gloss overstated coverage]**. Census
+(reported, not violation-keyed): fence rows **22 absolute-(PERIM) / 9
+SLOT-ONLY / 26 neither** — the 9 slot-only rows are the machine-realized
+honest gap between (C-coll)'s slot-grid form and (R-coll)'s absolute form
+(S3's "the converse fails in general", now instance-backed); κ section-
+carry histogram {0: 292, 1: 87, 2: 18, 3: 37, 4: 6, 5: 9, 6: 2, 7: 6} —
+κ is NOT {0,1}-valued (WM-CLASS correctly makes no such claim). Elapsed
+0.6 s; deterministic, exact arithmetic.
+
+## S6. Claims table, dependency line
+
+| # | claim | status | rests on |
+|---|---|---|---|
+| WM1 | THEOREM WELD-M (M0)–(M4), faces = the four composed junction theorems, identifications displayed | PROVED-BY-CITATION at the cited grades (0/2 each) | [W2]†+[JA]†+[JB]†+[JC]†, [ILN]† |
+| WM2 | WM-COB(i) integer coboundary D_j = ∂t_j | PROVED (complete proof, S2) | [ILN]† SHIFT-(n)+D_j-INT (unconditional) |
+| WM3 | WM-COB(ii) field form | PROVED | WM2 + JA-EPS ([JA]† 0/2) |
+| WM4 | WM-COB(iii) c_{n+1} = z̄^δ·∂E | PROVED on the scored stratum | WM3 + [ILN]† value law |
+| WM5 | LEMMA WM-RHO period constant ρ_T | PROVED (complete proof) | S0 arithmetic |
+| WM6 | COROLLARY WM-CLASS [c] = [z̄^δ·ρ_T^{−κ}]; explains JC-F1 | DISPLAY (review-owed) | WM4+WM5+[JC]† W-9 |
+| WM7 | residue fence: c_m = −z_{m+1} is the outer letter, NOT a cochain value; mod-wrap/χ-chain not reduced | FENCE (displayed) | [JB]† §5, [JC]† §3.3, W2-BOX-1 |
+| WM8 | WM-FENCE (a)/(b): (R-coll), (VD-m) = absolute (PERIM) at attained sets | PROVED-BY-CITATION | [JA]† JA-VDIND, [JB]† §0M(c) |
+| WM9 | WM-FENCE (c): (C-coll) at trivial lower χ = slot-grid (PERIM); caveat carried | PROVED (one line) + caveat | [W2]† §3.2/§3.4/W2-BOX-1 |
+| WM10 | three-master-fence surface (F-a/b/c) as consumer reading aid; four notes' surfaces untouched | DISPLAY + FENCE | S3 |
+| WM11 | machine leg: 10 families + 4 teeth on the frozen 29-tower roster, two-commit sealed | [commit 2] | S5 |
+| WM12 | consumption-only; no retirements; out-of-scope items queued | FENCE | header |
+
+**Dependency line.** [ILN]† (ACCEPTED) ⟶ WM-COB ⟵ JA-EPS ([JA]† 0/2);
+WELD-M ⟵ all four junction notes at 0/2 (the grade cap); WM-CLASS ⟵ [JC]†
+W-9. Downstream (design, not executed): the four hostile ARCS remain the
+campaign's gating work — this note must not displace them; the J-D block
+(J-D0 → W-10 at the (2,1,1) shape → W-11) consumes WM-FENCE's (F-b)-freedom
+observation only through the already-adjudicated (J-D0) route; supersession
+brackets for the four fence surfaces happen at the next fold, citing S3.
+
+— WELD MASTER-TRANSPORT COMPOSER, campaign date 2026-08-08 (wallclock
+2026-08-06).
+
+— r1 REPAIR ROUND against PE1 (report df00707: 0C/5G+3m), wallclock
+2026-08-06. Note-only; runner + artifacts BYTE-FROZEN (runner md5
+6b406f81c250d25f615f715fa9eff474 re-verified this round; `git diff
+verification/` empty). All eight findings addressed in place ([r1, F-n]
+tags). Counter 0/2; PE2 next.
+
+— r2 REPAIR ROUND against PE2 (report 1edb104: 0 CRITICAL / 1 gap —
+freshness DRIFT, not an r1 error — + 2 minors; the r1 diff itself verified
+CLEAN at source), wallclock 2026-08-06. THE PIN ROUND: every [JB]/[JC]
+cross-note reference now carries an AS-OF COMMIT PIN per the 2026-08-06
+standing rule — [JB] at 4c4ee56 (post-r7: the r6 (d3) `P≤q` re-fence
+carried at (M1) and (F-a); the r7 instance-honest m = 1-equivalence
+wording re-quoted at S4; frontier census unchanged at FOUR), [JC] at
+3870bc8 (post-r5) — so sibling drift can no longer falsify this note's
+quotes; only a fold updates pins (F-1). Dagger round-labels dated and
+corrected (F-2); the WM-EPS machine-leg range gloss corrected to the
+runner's exact sampling range (F-3). Note-only; runner + artifacts
+BYTE-FROZEN (runner md5 6b406f81c250d25f615f715fa9eff474 re-verified this
+round; `git diff verification/` empty). Counter 0/2; PE3 next.
+
+— r3 REPAIR ROUND against PE3 (report 07acb37: 0 CRITICAL / 0 GAPS / 1
+MINOR — the r2 diff itself verified substantively EXACT at every site;
+machine leg reproduced byte-identically), wallclock 2026-08-06. ONE FIX
+(F-1): the S3(b) quotation attribution corrected to the quote's true
+byte-site at the pin — [JB]@4c4ee56 §5's regenerated fence display (JB's
+internal [r3, STEP 2] block, the (VD-m) line citing [row 21]) — replacing
+"§0M column (c)", whose cell carries the same content in paren byte-form
+and whose row-21 (c) cell is the pointer "YES — the governing fence";
+quote and pin unchanged. Plus PE3 O-1: as-of pins added to the
+[JA]/[W2]/[ILN] dagger groups (ce0469a / 5463f2a / ced7dbb — every quote
+from these sources byte-verified true at HEAD by PE3), ~~closing the
+unpinned-source drift species going forward~~ **[r4, F-1: closing THREE of
+the FOUR unpinned-quote sources PE3 O-1 named — LED-Λ remained unpinned
+until r4's header pin (2ad7505), so the species closed at r4, not r3]**.
+Note-only; runner + artifacts
+BYTE-FROZEN (runner md5 6b406f81c250d25f615f715fa9eff474 re-verified this
+round; `git diff verification/` empty). Counter 0/2; PE4 next.
+
+— r4 REPAIR ROUND against PE4 (report 39e1eec: 0 CRITICAL / 0 GAPS / 1
+MINOR — the r3 diff verified correct at every edit site; the
+conditionality stack survives the JB/JC acceptance with zero misleading
+sentences; fresh decomposition-route re-proof of WM-COB(i), 17,624/0),
+wallclock 2026-08-06/07. TWO FIXES. (F-1) The LED-Λ† dagger now carries
+its as-of pin — 2ad7505, LEDGERLAMBDA's last commit, pre-WM-seal; the
+header fence's verbatim quote byte-true there and at LED-Λ HEAD (PE4's own
+check, re-verified this round) — the fourth and last of PE3 O-1's named
+unpinned-quote sources; and the r3 footer's "closing the unpinned-source
+drift species going forward" gloss is scoped (struck + bracketed above) to
+the three groups r3 actually pinned. (JA-COMPANION, owed by ledger
+3626f55) WM-FENCE(a)'s (R-coll) range gloss "(2 ≤ q ≤ m−1)" extended
+ROOT-INCLUSIVELY (2 ≤ q ≤ m) per JA PE2 FINDING 1 (report 9040961): the
+root-exclusive range omits the level-m JA-VDIND instance — 8 machine
+witnesses at m = 3 sit ON the perimeter as [JA]† §3.4 defines it with
+(VD-3) FALSE (T3B/T3F/I4B), plus 58 at m = 2 where the range is empty;
+JA-VDIND itself and the per-slot law stand (fresh 396/0). CONSUMER CHECK
+(recorded at (a)): NO WM display consumed the root-exclusive range — the
+(M2) face and S3's seed identities cite JA-VDIND/JA-EPS directly, (F-b)
+and the S3 "Consequence" display read through the cured clause (the
+Consequence line carries its own [r4] tag), and the S4 stack carries JA's
+boxes verbatim at the ce0469a pin, where JA-BOX-2's "evaluated" clause
+inherits the same slip (recorded, not consumed). The [JA] pin ce0469a is
+UNCHANGED — the cure is cited from the PE2 report, not from any post-pin
+JA edit (JA r2 runs in parallel; only a fold updates pins). Note-only;
+runner + artifacts BYTE-FROZEN (runner md5
+6b406f81c250d25f615f715fa9eff474 re-verified this round; this note's
+runner and both sealed artifacts show empty `git diff`; a parallel arc's
+`grt_w2_checks_results.json` working-tree edit is NOT this round's and is
+not staged). Counter 0/2; PE5 next.
+
+— r5 REPAIR ROUND against PE5 (report f97bc78: 0 CRITICAL / 0 GAPS / 1
+MINOR — the r4 diff verified correct at every edit site and side-by-side
+consistent with the independently written JA r2 at 5d95805; consumer
+check re-verified TRUE by an independent 8-site sweep; pin system
+COMPLETE under a ~45-site quote sweep; fresh E-pair-route re-derivation
+of WM-RHO as the (γ, E)-slice of WM-COB, 1,344/0 with both teeth fired),
+wallclock 2026-08-07. ONE FIX (PE5 F-1): WM-FENCE(a)'s head quote —
+sealed text, untouched by r1–r4, escaped four passes — presented as
+JA-VDIND's display the fused string "… = 1 for every attained abscissa
+i", which occurs NOWHERE byte-contiguously in [JA] at the ce0469a pin:
+"abscissa" was interpolated by fusion with THEOREM JA-RES's quantifier
+line ("THEN for every attained abscissa i:"), that phrase's only
+occurrence in [JA]. The quote now reads the pin's byte-form
+"z_{m−1}^{i·A_{m−1}} = 1 for every attained i" (wrap-joined at the pin;
+byte-identical at [JA] HEAD, re-checked this round), with an [r5] bracket
+in place recording the interpolation's origin and preserving the sealed
+wording verbatim — replacement-with-bracket rather than an in-quote
+strike, deliberately: a strike token inside the quotation marks would
+leave the live quote still not byte-true. Semantically nil (PE5's own
+classification: no inference rides the wording). Plus PE5 O-1
+(loose-but-true name list in a LIVE sentence): (a)'s consumer-check line
+"the (M2) face and S3's seed identities cite JA-VDIND/JA-EPS directly"
+corrected (struck + replaced in place) to the actual citation cells —
+(M2) names JA-EPS + JA-RES (+ W2-C2), the seed identities JA-EPS + W2-L2;
+JA-VDIND is itself cited at (a)'s head and inside (c); the operative
+claim (those displays rest on JA primitives that stand per JA PE2's
+fresh 396/0, not on the (R-coll) range) unchanged. The r4 round record
+above carries the same loose phrasing as HISTORY and is untouched.
+Strike census: +2 spans (the r4 STATUS strike + the O-1 strike), 18
+total. Note-only; runner + artifacts BYTE-FROZEN (runner md5
+6b406f81c250d25f615f715fa9eff474 re-verified this round; `git diff` on
+`verification/` empty). Counter 0/2; PE6 next.
+
+— r6 REPAIR ROUND against PE6 (report 7c3893f: 0 CRITICAL / 0 GAPS / 2
+MINOR — the r5 diff verified correct at every edit site; exhaustive
+54-span quote sweep at the seven pins, every load-bearing cross-note
+quote byte-true; fresh σ-section-route WM-CLASS leg 10,792/0 on the full
+class-pair grid, both teeth fired, the sealed κ census reproduced
+exactly), wallclock 2026-08-07. TWO FIXES, both quote-fidelity slips in
+pre-r1 sealed text, both semantically nil (PE6's own classification).
+(PE6 F-1) The [ILN]-attributed S2 scope quote "γ,γ′ ∈ ℤ arbitrary" — two
+S5 sites (the WM-COB-OFFW families row, wrap-split; the commit-2 verdict
+line) — occurs ZERO times byte-contiguously in [ILN] at the ced7dbb pin
+("are" dropped, the comma-space fused). Both sites now read the pin's
+byte-form "γ, γ′ ∈ ℤ are arbitrary" — [ILN]'s S2 scope sentence, line 360
+("Throughout S2, γ, γ′ ∈ ℤ are arbitrary (no window hypothesis needed
+except in WINDOW-(n) itself)"), re-verified this round to occur exactly
+once at the pin — with [r6] brackets in place recording the sealed
+compressed wording: replacement-with-bracket per the r5 precedent (an
+in-quote strike would leave the live quote still not byte-true). (PE6
+F-2) The S3 Consequence-paragraph quote read "a fifth sweep would find a
+sixth site"; the sentence begins with capital "A" at both byte-sites in
+the pinned corpus ([JB] 4c4ee56 line 149; [SYN] f71cd68 line 131 — both
+re-verified this round), so the lowercase form occurred byte-contiguously
+at NEITHER pin. One-character fix: the quote now reads "A fifth sweep
+would find a sixth site", [r6] bracket in place. Strike census: +1 span
+(the r5 STATUS strike), 19 total. Note-only; runner + artifacts
+BYTE-FROZEN (runner md5 6b406f81c250d25f615f715fa9eff474 re-verified this
+round; `git diff` on `verification/` empty). Counter 0/2; PE7 next.
+
+— r7 REPAIR ROUND against PE8 (report 8d84d77: 0 CRITICAL / 1
+JUSTIFICATION GAP / 0 MINOR — the would-be accepting attempt after PE7's
+clean 0a2fb54; counter RESET 1/2 → 0/2; everything else verified TRUE at
+HEAD: the five faces statement-by-statement at the pins, WM-COB / WM-RHO
+/ WM-CLASS / WM-FENCE re-derived by hand, two fresh routes unused by
+PE1–PE7 (the proof-step/shift route at integer level with negative γ; the
+cyclic-norm-invariant route), 20,398/0 exit 0, five teeth fired, sealed
+battery byte-identical), wallclock 2026-08-07. ONE FIX (PE8 F-1): the S0
+setting line's Bézout normalization — sealed text, present at b375f42,
+untouched by r1–r6, escaped all seven prior passes (neither a quote nor
+consumed by any display, so no sweep touched it; PE8 was the first pass
+to machine-check the S0 setting identities themselves) — declared the
+minus-form "ℓ_j h_j − ℓ′_j e_j = ±1 form as pinned (`bez`)". That is the
+PRINT calculus's convention with the print's own (different, unpinned)
+ℓ′; of the pinned `bez` (ℓ ∈ [0, e), ℓh ≡ 1 mod e, ℓ′ = (1 − ℓh)/e) it
+is FALSE at every read with e > 1 and h > 1 (ℓh − ℓ′e = 1 − 2ℓ′e ∉
+{±1}), falsified on this note's own frozen roster: read (3, 2) gives
+(ℓ, ℓ′) = (2, −1) and ℓh − ℓ′e = 7; read (2, 3) gives (1, −1) and 5 —
+towers C2D/C3C/C3E/I4A/I4B carry these reads (PE8's machine check). The
+line now reads the pinned byte-form "normalized Bézout ℓ_j h_j + ℓ′_j
+e_j = 1 (0 ≤ ℓ_j < e_j) as pinned (`bez`)" — re-verified THIS ROUND
+against [ILN] ced7dbb line 157 ("Normalized Bézout pairs (ℓ_j, ℓ_j′):
+ℓ_jh_j + ℓ_j′e_j = 1, 0 ≤ ℓ_j < e_j"), the same + display carried at
+[W2] 5463f2a line 76 and [JA] ce0469a line 53 (both re-extracted this
+round), and the ONLY convention the note's own S0.3 S-chain display and
+S5 eps-path gloss consume — with an [r7] bracket in place recording the
+sealed minus-form and its roster falsification
+(replacement-with-bracket per the r5/r6 precedent: a strike inside the
+setting sentence would leave the live setting still false). Semantically
+nil for every displayed result (PE8's own blast-radius verdict: ℓ′
+enters no display of this note except the correct S0.3 transcription;
+every machine family green under the + convention). Strike census: +1
+span (the r6 STATUS strike), 20 total. Note-only; runner + artifacts
+BYTE-FROZEN (runner md5 6b406f81c250d25f615f715fa9eff474 re-verified
+this round; `git diff` on `verification/` empty). Counter 0/2; PE9 next.
+
+---
+
+## ★ ACCEPTANCE RECORD (orchestrator, 2026-08-07) ★
+
+**THIS NOTE IS ACCEPTED at 2/2** — PE9 (9384083, CLEAN; the 12-theorem
+Lean leg incl. bez_plus and the minus-form falsification; the
+sealed-declaration sweep finding no second convention item) and PE10
+(1f9d82e, CLEAN; the DIRECT-H²/bar-resolution route proving Ẽ is THE
+canonical gauge — constructed from the cocycle alone and forced by
+H¹ = 0 uniqueness — plus the generating-function/lattice-point route for
+WM-COB/WM-RHO; 18,707/0, six teeth). Full arc: composed → PE1 (0C/5G+3m)
+→ r1 (evidence-class labels; the JA-companion) → PE2 (0C/1-drift+2m) →
+r2 (16 as-of pin sites) → PE3 (0C/0G/1m) → r3 → PE4 (0C/0G/1m) → r4 →
+PE5 (0C/0G/1m) → r5 → PE6 (0C/0G/2m) → r6 → PE7 CLEAN → PE8 (0C/1G — the
+eighth-reader Bézout-convention catch) → r7 → PE9 CLEAN → PE10 CLEAN.
+Ten passes, seven repairs. **WHAT IS ACCEPTED**: THEOREM WELD-M (the one
+transport, five faces, citation-table proof over the now-FOUR-accepted
+junction notes + pinned suppliers), WM-COB proved unconditional, WM-RHO,
+WM-CLASS at display grade, PERIM-μ with its three specializations — the
+weld's consolidation, at its displayed conditionality (W2-OPEN-2/OPEN-2a
+carried as the accepted W-2's fenced box; the O-1/fold understatements
+catalogued conservative).
+
+---
+
+## ANNEX (dated appends; the frozen body is not edited)
+
+> **[ANNEX 2026-08-08, orchestrator, fold-carry closure O-1 — the (M4)
+W2-C3 annotation owed since W2 r1.]** The frozen (M4) face row cites
+"**W2-C3** (ψ-transport: strict representative at every level of the
+transported chain, no weight/support splits)" under its as-of pin
+[W2]@5463f2a, and the dagger line bills "**[W2]†** =
+`GRTW2_PROOF_2026-08-08.md` (attempt 0/2)". Per the annotation GRTW2's own
+r1 record left owed to the orchestrator ("at the next ledger fold a dated
+annotation pointing (M4)'s W2-C3 cite at the re-scoped grade
+(proved-to-first-twist / measured-above / W2-OPEN-2) is owed"): wherever
+this note cites W2-C3, the supplier's accepted form governs — GRTW2
+ACCEPTED 2/2 at adc6cf3 (2026-08-07), W2-C3 at its honest grade
+(proved-to-first-twist, 38/44 = 36 derived + 2 instance-warranted;
+MEASURED above), riding **W2-OPEN-2/OPEN-2a as the accepted supplier's
+fenced OPEN box** (accepted AS A BOX, not as a theorem). The pin makes the
+frozen row drift-proof and PE1 adjudicated that the face carries the
+conditionality BY CITATION — nothing is falsified; the supplier's
+acceptance record names this face ("WM's M4 face … now ride[s] an ACCEPTED
+supplier at its fenced scope"). The parallel GRTJB §0M row-15 half of the
+same owed pair was executed at 5054d69 (JB erratum E-2). Direction:
+FAVORABLE on the supplier's status; the grade split itself is a narrowing
+already carried by citation, hereby annotated.
+
+> **[ANNEX 2026-08-08, O-2 — the grown conservative understatements.]**
+The frozen body's supplier billings all understate, in the conservative
+direction, statuses that have since improved. The catalogued sites (PE4's
+four, fold-owed; PE6's stale dagger parentheticals; PE10 observation 2):
+the grade-cap sentence ("Every clause below rides the four junction notes
+at ATTEMPT grade 0/2 each, with their full conditionality ledgers carried
+verbatim; [ILN]† is the sole ACCEPTED engine input"); the S4 one-line
+stack ("W-2/J-A/J-B/J-C at ATTEMPT 0/2 each … ⟹ this note, own arc 0/2");
+the WM1 cell ("PROVED-BY-CITATION at the cited grades (0/2 each)") with
+the WM3/WM6 companion cells; the S6 dependency line ("WELD-M ⟵ all four
+junction notes at 0/2 (the grade cap)"; "the four hostile ARCS remain the
+campaign's gating work"); and the dagger-line parentheticals ("(attempt
+0/2)", "(post-r1, 0/2)", the [JB]†/[JC]† as-of 0/2 labels). As-of truth:
+ALL FOUR junction notes are ACCEPTED at 2/2 — GRTW2 adc6cf3, GRTJA
+17d2a32 (freeze cba309ce @ f131c53), GRTJB + GRTJC 83f47f4 — as is this
+note (66b3498) and the full six-note weld (17d2a32, 2026-08-07); the four
+hostile arcs have all CLOSED. Additionally, the S4 clause "(DMULT-s) stays
+MEASURED-only" is superseded FAVORABLY: (DMULT-s) is PROVED-conditional on
+the measured perimeter ([ILN]† scored stratum, m ≥ 1, e_m ≥ 2) by
+`DULEMMA_PROOF_2026-08-08.md` THEOREM DU (∂u ≡ 1; two-commit seal
+048cf6d/f819f26, adjudicated e3535d5, riding [ILN]†+GRTJC+WELDMASTER as
+accepted plus DU-A/DU-B at 0/2; the e_m = 1 row stays measured,
+off-stratum pairs open). Every quoted billing was true when frozen and is
+now strictly conservative. Direction: FAVORABLE at every site; no display
+moves.
+
+---
+
+### Dated adjudication + corrections (2026-08-12 — sol certification C6/E6: the as-built challenge adjudicated at HEAD)
+
+The sol-5.6 as-built read of this note (gpt-5.6-sol high,
+runs/cert/C6_weldmaster_output.log, 2026-08-12; the WELD-FACE-AUDIT
+charge) returned CHALLENGE (3 GAP + 1 MINOR, no CRITICAL in the
+component formulas). The E6 certification run (gpt-5.6-sol high,
+runs/cert2/E6_weldmaster_output.log) adjudicated F-1/F-2/F-4 REAL
+with the repairs below (THEOREM WELD-M-PKG — the five-field package
+re-display with the record-assembly lemma; the withdrawal of PE10's
+H¹ = 0 uniqueness gloss with the torsor derivation; the WM-FENCE
+consumption scoping) and F-3 RESOLVED-ALREADY (the acceptance
+record's own scope qualifier). Everything above this heading is
+byte-untouched by this append. The E6 adjudication, transcribed
+unaltered:
+
+Adjudication: F-1, F-2, and F-4 are REAL. F-3 is RESOLVED-ALREADY by the acceptance record’s own scope qualifier and the theorem’s explicit clause-level perimeter. No finding is obstructed.
+
+### F-1 — REAL
+
+The frozen theorem asserts a single transport object, but the proof constructs only five heterogeneously typed faces. “ONE” cannot mean uniqueness—the character twist \(\widetilde E\mapsto\widetilde E\eta\) disproves that—and no common map with cross-face compatibility is constructed.
+
+The honest consumed scope is a five-field anchored transport package. The face table proves that package by record assembly.
+
+Verbatim-ready append:
+
+> **[ANNEX 2026-08-12, correction C6 F-1 — WELD-M re-displayed at its proved-and-consumed package scope.]** The frozen S1 wording “there is ONE transport \(\mathbb T\) … with five clauses” is stronger than its citation-table proof: the five cited faces have different source/target types, and the table supplies no additional theorem asserting that they are restrictions of a single map. The accepted live display is therefore:
+>
+> **THEOREM WELD-M-PKG (the anchored five-face transport package).** For every tower \(T\) on the frozen S1 perimeter, there exists one named package
+> \[
+> \mathbf T_T=(\mathbf T_{M0},\mathbf T_{M1},\mathbf T_{M2},
+>              \mathbf T_{M3},\mathbf T_{M4})
+> \]
+> whose fields are exactly the frozen clauses:
+>
+> \[
+> \begin{array}{ll}
+> \mathbf T_{M0}:&\text{the identity of the two canonical division chains;}\\
+> \mathbf T_{M1}:&w_m=v_{m+1}\text{ and the affine shear }
+>                  \Sigma_q(i,u)=(i,e_qu+h_qi),\\
+>                &\text{with the frozen vertex, slope, key and membership fences;}\\
+> \mathbf T_{M2}:&\text{the per-slot read/operator character transport generated by }
+>                  t_j/\varepsilon_j,\\
+>                &\text{with exact recursion off the scalar perimeter;}\\
+> \mathbf T_{M3}:&\text{the multiplication transport to }
+>                  K^c[\mathbb Z/E]\text{ on the scored stratum;}\\
+> \mathbf T_{M4}:&\text{the representative/lift covariance field at W2-C3’s
+>                  accepted fenced scope.}
+> \end{array}
+> \]
+>
+> The shared anchors and identifications are precisely those displayed in the frozen face table: the same tower and canonical division chain, \(w_m=v_{m+1}\), the \(t_j/\varepsilon_j\) seed, harness-val \(=\) TC-read, and the displayed \(\psi\)-transport. No compatibility beyond those displayed ties is asserted.
+>
+> **RECORD-ASSEMBLY LEMMA.** If, for fixed \(T\), the supplier theorems prove the five field propositions \(P_{M0}(T),\ldots,P_{M4}(T)\), then they prove
+> \[
+> P_{M0}(T)\times P_{M1}(T)\times P_{M2}(T)\times
+> P_{M3}(T)\times P_{M4}(T).
+> \]
+> **Proof.** Choose the five cited witnesses and apply the product/record constructor. The frozen face table supplies exactly those five witnesses, at its displayed per-field perimeters. \(\square\)
+>
+> Thus “one” means one named five-field package, not uniqueness and not a further unproved common-map coherence theorem. In particular, if \(\eta:\mathbb Z/E\to K^\ast\) is a character, replacing a gauge \(\widetilde E\) by \(\widetilde E\eta\) may produce a different package with the same \(M3\) coboundary; WELD-M-PKG asserts existence only.
+>
+> **Consumer sweep.**
+>
+> 1. The frozen S1 face table survives verbatim: each row constructs the correspondingly named package field.
+> 2. S6/WM1 survives when read as “WELD-M-PKG, fields (M0)–(M4), proved by citation.”
+> 3. The S6 dependency line survives: the four junction notes supply the five package fields.
+> 4. The acceptance record’s “THEOREM WELD-M” is henceforth the accepted package theorem above; no uniqueness or extra coherence is part of that acceptance.
+> 5. The 2026-08-08 O-1 annex survives because it updates only the \(M4\) field’s W2-C3 scope.
+> 6. DULEMMA’s disclosed consumption survives because it uses only the \(M3\) field and supplies its own DU-A/DU-B argument.
+> 7. No executed consumer disclosed in this note uses a cross-face compatibility theorem; \(M0\), \(M1\), and \(M2\) have no separately identified executed downstream consumption.
+
+### F-2 — REAL
+
+PE10’s \(H^1=0\) uniqueness claim is false for the ordinary trivial coefficient action. Nothing in either dated annex repairs it. This affects only the certification narrative, not WM-CLASS’s proved existence/class identity.
+
+Verbatim-ready append:
+
+> **[ANNEX 2026-08-12, correction C6 F-2 — withdrawal of PE10’s \(H^1=0\) uniqueness gloss.]** In the 2026-08-07 ACCEPTANCE RECORD, the phrase
+>
+> “the DIRECT-\(H^2\)/bar-resolution route proving \(\widetilde E\) is THE canonical gauge — constructed from the cocycle alone and forced by \(H^1=0\) uniqueness”
+>
+> is withdrawn and replaced by:
+>
+> “the DIRECT-\(H^2\)/bar-resolution route independently re-verifying the WM-CLASS cohomology-class identity; the displayed gauge is the explicit section gauge \(\widetilde E=E\circ\sigma\), determined relative to the already fixed weld cochain \(E\) and minimal-window section \(\sigma\), with no uniqueness-from-\(H^1\) claim.”
+>
+> **Derivation of the correction.** With the trivial action on \(K^\ast\),
+> \[
+> H^1(\mathbb Z/E,K^\ast)
+>   =\operatorname{Hom}(\mathbb Z/E,K^\ast)
+>   =\mu_E(K),
+> \]
+> which need not vanish. If \(F\) and \(G\) are two gauges with
+> \(\partial F=\partial G\), put \(\eta=F/G\). Then
+> \[
+> 1=\frac{\partial F}{\partial G}
+>   =\partial\eta,\qquad
+> \frac{\eta(\nu)\eta(\nu')}{\eta(\nu+\nu')}=1,
+> \]
+> so \(\eta\) is a character. Conversely, for every character \(\eta\),
+> \[
+> \partial(F\eta)=(\partial F)(\partial\eta)=\partial F.
+> \]
+> Hence gauges with a fixed coboundary form a torsor under
+> \(\operatorname{Hom}(\mathbb Z/E,K^\ast)\), rather than being unique. For
+> \(E=2\) and \(K=\mathbf F_5\), the character
+> \(\eta(\nu)=(-1)^\nu\) is already a nontrivial witness.
+>
+> WM-CLASS itself is unchanged: its proof uses the explicitly defined
+> \(\widetilde E=E\circ\sigma\), WM-RHO, and
+> \[
+> \partial\widetilde E=\partial E\cdot\rho_T^\kappa,
+> \]
+> and requires neither reconstruction from \(c\) alone nor uniqueness.
+>
+> **Consumer sweep.** WM-CLASS’s display and S6/WM6 survive unchanged.
+> DULEMMA’s use of the coboundary identity survives unchanged. WELD-M-PKG’s
+> \(M3\) field asserts no gauge uniqueness. PE10’s corrected route remains
+> an independent verification of the class identity only.
+
+### F-3 — RESOLVED-ALREADY
+
+The isolated shorthand is poor, but HEAD expressly prevents it from granting unconditional scope to clause (iii).
+
+The exact cure occurs in the same dated acceptance paragraph:
+
+> “the weld’s consolidation, **at its displayed conditionality**”
+
+The displayed conditionality is unambiguous:
+
+> “**(iii) [composite display — adds the [ILN]† VALUE LAW, scored stratum].**”
+
+and S6 repeats:
+
+> “WM4 | WM-COB(iii) \(c_{n+1}=\bar z^\delta\cdot\partial E\) | **PROVED on the scored stratum**”
+
+The 2026-08-08 O-2 annex additionally records DULEMMA’s consumed perimeter as:
+
+> “the measured perimeter (**[ILN]† scored stratum**, \(m\ge1\), \(e_m\ge2\)) … off-stratum pairs open”
+
+Thus “WM-COB proved unconditional” is globally qualified by “at its displayed conditionality”: clauses (i)–(ii) are arbitrary-pair identities, while clause (iii) remains scored-stratum-only. It supplies no off-stratum downstream grant.
+
+### F-4 — REAL
+
+WM-FENCE proves a criterion for fixed data, not freedom to alter the data until the criterion holds. The phrase “WM-FENCE’s (F-b)-freedom observation” therefore misattributes any required existence or variation theorem. The “through J-D0” qualification limits the blast radius but does not cure the attribution.
+
+Verbatim-ready append:
+
+> **[ANNEX 2026-08-12, correction C6 F-4 — J-D consumes an F-b criterion, not freedom supplied by WM-FENCE.]** The frozen S6 downstream-design clause
+>
+> “the J-D block … consumes WM-FENCE’s (F-b)-freedom observation only through the already-adjudicated (J-D0) route”
+>
+> is replaced by:
+>
+> “the J-D block (J-D0 \(\to\) W-10 at the \((2,1,1)\) shape \(\to\) W-11) may consume WM-FENCE only as the fixed-data (F-b) character-triviality criterion, and only through the already-adjudicated J-D0 route. WM-FENCE supplies no freedom or existence theorem for varying \(z_\mu\), \(A_\mu\), the attained set, or the representative. Any such choice or variation required by J-D must be proved by J-D0 independently.”
+>
+> **Derivation.** For the fixed data, WM-FENCE proves exactly
+> \[
+> \chi_i^{(\mu)}=1\ \forall i\in\mathbb Z
+> \iff \operatorname{ord}(z_\mu)\mid A_\mu
+> \]
+> in the absolute form, and
+> \[
+> \chi_i^{(\mu)}=1\ \forall i\in e_\mu\mathbb Z
+> \iff \operatorname{ord}(z_\mu)\mid e_\mu A_\mu
+> \]
+> in the slot-grid form. Neither display contains an existential
+> quantifier over the fixed inputs. For example, with
+> \(K_\mu=\mathbf F_5\), \(z_\mu=2\), \(\operatorname{ord}(z_\mu)=4\),
+> \(A_\mu=1\), and attained set containing \(1\),
+> \[
+> \chi^{(\mu)}_1=2^{-1}\ne1,
+> \]
+> so absolute PERIM fails, and WM-FENCE specifies no operation that changes
+> this datum.
+>
+> **Consumer sweep.** WM-FENCE(a), (b), and (c), including the
+> root-inclusive repair and the \(\chi\)-chain/mod-wrap caveats, survive
+> unchanged. The correction touches only the unexecuted S6 J-D design
+> sentence. No executed downstream consumption identified at HEAD relies
+> on an WM-FENCE freedom theorem. A future J-D proof must cite J-D0 for any
+> required existence or variation and WM-FENCE only to test the resulting
+> character-triviality condition.
+
+*(The adjudication above was produced by the E6 certification run
+(gpt-5.6-sol high, runs/cert2/E6_weldmaster_output.log, 2026-08-12);
+orchestrator verification before transcription — F-1: the package
+re-display matches the frozen face table's five heterogeneously
+typed rows, and the η-gauge instance (Ẽη has the same M3 coboundary)
+refutes uniqueness, so existence-of-package is the honest scope; the
+consumer sweep's key claim (DULEMMA consumes only the M3 field; no
+executed consumer uses cross-face compatibility) is sol's read of
+the note's own disclosure lines. F-2: the torsor derivation
+re-checked (H¹(ℤ/E, K*) = Hom = μ_E(K); ∂(Fη) = ∂F for characters η;
+gauges with fixed coboundary form a Hom-torsor — at E = 2, K = F₅
+the character η(ν) = (−1)^ν is nontrivial, exactly the C6 witness).
+F-4: WM-FENCE's two displayed criteria re-read — both are fixed-data
+iff-statements with no existential quantifier, and the F₅ instance
+(z = 2, ord 4, A = 1: χ₁ = 2^{−1} ≠ 1) confirms no freedom is
+supplied. Transcribed unaltered per the standing division of labor.
+Ledger: row 24 → three repairs folded, awaiting sol discharge
+(cert3).)*
+
+=== JD0 AT HEAD ===
+# JD0 — LEMMA J-D0 (COUNT GAUGE-BLINDNESS): the classifier stratum counts are invariant under the carry gauge and blind to the entire value layer — counts see the SHAPE, never the letters; the mechanism of uniformity-in-q where the carry class dies
+
+**Unit:** J-D0, the S-priced opener of the J-D block (the last uncomposed weld
+block), per WELD_SYNTHESIS_2026-08-05 §3.2/§4(ii) and the standing FRONTIER
+order (J-D0 → W-10 at the (2,1,1) shape → W-11). **Attempt grade 0/2**
+(composed; the hostile arc has not begun). **Instrument:** sealed two-commit
+battery `verification/openmath/jd0_checks.py` (37 towers = the frozen 29-row
+J-C roster + the out-of-roster p = 7 genre + the constructed same-shape
+pairs); verdict section §S8, appended at commit 2 FROM the committed
+artifacts.
+
+**Provenance of the salvage:** the J-D dimension shortcut (character/orbit
+counting of 𝒜(T)) was REFUTED with an explicit witness (WELD_SYNTHESIS §3.1:
+dim is q-independent, counts are q-rational of unbounded data — already the
+machine-checked order-0 instance separates them). J-D0 is the salvage that
+survived: not "counts = dimensions" but "counts and dimensions are blind to
+the same layer."
+
+---
+
+## S0. STATEMENT
+
+Fix a decided OM shape (type skeleton) T of order m: the degree d0 of the
+level-0 factor and the read triples (e_j, h_j, g_j), j = 0..m, together with
+the residual-degree structure they induce — |K_j| = q^{d0·g_0···g_{j−1}}, the
+residue fields where the level-j residual data live. The letters z_j (the
+realized residual roots) and the carry cochain c (the [ILN]† value ledger) of
+any tower REALIZING T are NOT part of the shape.
+
+**The stratum count.** The count that L2core's per-cell coefficient consumes,
+at each truncation window: the product over levels of
+
+    L3_j  =  the residual-factorization count over F_{r_j}, r_j = |K_j|
+             (the census of residual data of the prescribed degree/type
+              at level j — the universal residue-shape polynomial genre)
+    ×  the L4 lattice q-power  q^{±B}, B = the lattice exponent
+             (the count of digit positions pinned/freed by the polygon
+              side and its grid — integer position data).
+
+**The carry gauge.** A 1-cochain u : γ ↦ u_γ ∈ K^* acting by anchor
+rescaling a_γ ↦ u_γ·a_γ. Its full documented action:
+
+    ledger:    c(γ,γ′)  ↦  c(γ,γ′) · u_γ u_{γ′} u_{γ+γ′}^{−1}   (= c·∂u)
+    slot:      v        ↦  u·v          (unit character, per read slot)
+    residual:  R(y)     ↦  ξ^{−deg R} · R(ξ·y)   (JA-RES geometric
+               character; the (ξ,w) overall unit dies in monic form)
+    positions, δ, D_j, grid abscissas:  UNCHANGED.
+
+> **LEMMA J-D0.** (i) [GAUGE-INVARIANCE] For every decided shape T, every
+> prime power q, and every 1-cochain u with unit values, the stratum count of
+> T computed through the u-gauged read equals the direct stratum count.
+> (ii) [VALUE-BLINDNESS] Any two towers/types with the same shape data
+> (d0, (e_j, h_j, g_j)_j) and residual-degree structure have EQUAL stratum
+> counts at every q, regardless of their letters and carry cochains.
+> Consequence: the stratum count is a function of the SHAPE alone — per
+> shape a single expression in q, the same at tame and wild primes.
+>
+> **GRADE: PROVED on the stated perimeter (unit-character gauges; the
+> L3 × L4 assembly; honest boxes S4), consuming the supplier stack S7 at the
+> grades listed there. Attempt 0/2.**
+
+---
+
+## S1. WHY THIS IS THE LEMMA THAT MATTERS (one paragraph)
+
+The weld's hard open fences — (VD-m), (C-coll), (R-coll), (DMULT-s), the
+one-perimeter character-triviality condition PERIM-μ of WELDMASTER §S3 — are
+ALL value-layer fences: they condition on which unit characters are trivial.
+J-D0 says count-layer statements never see that layer. So W-10 (the J-D2
+count equality, the density bridge's counting leg) escapes the collapse
+perimeter ENTIRELY: its hypotheses reduce to the proved/priced integer-grid
+faces plus classical residual censuses (WELD_SYNTHESIS §3.2). That is the
+single most consequential simplification the synthesis found for J-D.
+
+## S2. PROOF
+
+### S2.1 Leg L4 — positions are gauge-fixed and value-free
+
+**(a) Units do not move valuations.** u_γ has w-value 0, and w is a
+valuation on the graded layer (V1/V2 — the GD-2 spine, consumed at GRTJB's
+ACCEPTED grade through W-3's development/polygon tie): w(u_γ·a_γ) = w(a_γ).
+Every abscissa and ordinate the polygon, the grid, or the development
+consumes is therefore unchanged by the gauge.
+[machine: JD0-COB checks (1) and (3) — gauged anchors sit at their lines;
+gauged anchor products sit at the sum line.]
+
+**(b) The integer carry layer is split-only.** WM-COB(i):
+D_j = t_j(β″_j) − t_j(β_j) − t_j(β′_j) = (∂t_j)(γ,γ′) — computed from the
+eq-12 splits alone, integers in, integers out; likewise δ (the [ILN]† S0.3
+outer count). No letter value enters. Citation note: WM-COB(i)'s footprint is
+[ILN]† SHIFT-(n) + D_j-INT ONLY, both unconditional and ACCEPTED — the
+WELDMASTER note that displays the identity is itself at arc 1/2, but this
+clause rides the accepted [ILN]† layer, not the WM arc.
+[machine: recorded per scored pair (`int_layer_sample`), not scored — the
+split-only property is definitional in the engine.]
+
+**(c) The lattice exponent is shape-only.** B is a function of grid
+positions: the grid = T-side abscissas (JA-GRID — GRTJA, arc 1/2, priced),
+the vertex-for-vertex polygon with slope/length/degree preserved (JB-VTX —
+GRTJB, ACCEPTED 2/2), the same-division transfer (JB-DEV — GRTJB, ACCEPTED).
+By (a) the gauge does not move these positions; by (b) the integer carry
+data they generate are split-only. Hence B(T) is fixed by the shape and
+unchanged under any unit gauge.
+
+**(d) The gauge moves the ledger by exactly a coboundary.** With gauged
+anchors a′_γ = u_γ·a_γ, the carry constant transforms as
+c′(γ,γ′) = c(γ,γ′)·u_γ u_{γ′} u_{γ+γ′}^{−1} = (c·∂u)(γ,γ′): gauging moves
+WITHIN the cohomology class; the class's integer layer is (b); the positions
+are (a). So "carry gauge" is well-named: it is the coboundary action.
+[machine: JD0-COB check (4), exact equality in K_top on every scored pair.]
+
+### S2.2 Leg L3 — slot counts are gauge-fixed and value-free
+
+**(e) The gauge acts on each slot as a unit character.** Through the
+harness, the read of a u-gauged anchor is u·(the direct read) — a bijection
+of the slot's value space K_j.
+[machine: JD0-COB check (2); plus the fuzz leg (5): higher-w junk in the
+representative changes neither position nor read — the read consumes only
+the line.]
+
+**(f) The induced action on residual polynomials preserves factorization
+type POINTWISE.** The slot character acts on the level-j residual polynomial
+by the variable rescaling σ_ξ : R(y) ↦ ξ^{−deg R}·R(ξ·y) (JA-RES's
+z^{−iA}·C_i slot form; the overall unit (ξ,w) is killed by monic
+normalization). σ_ξ extends the identity of K_j to a degree-preserving
+K_j-algebra automorphism of K_j[y]; automorphisms carry factorizations to
+factorizations, so deg, monicity, irreducibility, ψ(0) ≠ 0, and the full
+factorization-degree multiset are preserved for EVERY R — not merely in
+census. Consequently σ_ξ permutes the letter menu (monic irreducibles of
+degree g_j with nonzero constant) and fixes every type census and the menu
+cardinality.
+[machine: JD0-L3 — full enumeration of every monic R of degree D ≤ 3 over
+every roster level field (capped |K|^D ≤ 20000): pointwise type equality,
+bijectivity of the gauged family, census equality, menu-count equality.]
+
+**(g) Hence every L3_j count is gauge-invariant.** The stratum's residual
+condition at level j is SHAPE data — a factorization-degree/type condition
+on the slot value. By (f) the gauge preserves the condition pointwise, so
+the direct and gauged strata are equal AS SETS slotwise; a fortiori the
+counts agree. (More generally, any slot-wise bijection preserving the
+condition preserves the count; the unit character does both. A bijection
+NOT preserving the condition breaks counts — the NONCHAR tooth.)
+
+### S2.3 Assembly and clause (ii)
+
+Clause (i): the assembled count = ∏_j L3_j × q^{±B}; (c) fixes the exponent
+leg, (g) fixes each census leg. ∎(i)
+
+Clause (ii): let T, T′ have equal shape data. The assembly consumes ONLY:
+positions and integer carry data — by (b)/(c) functions of the splits, i.e.
+of (e_j, h_j)-data, equal for T, T′; and censuses over the K_j — the number
+of monic polynomials of degree D with factorization type λ over F_r depends
+only on r (the universal S_λ(q) polynomials; classical), and
+r_j = q^{d0·g_0···g_{j−1}} is fixed by the residual-degree structure. The
+letters z_j and the carry values c(γ,γ′) appear at NO point of the
+assembly. ∎(ii)
+[machine: JD0-BLIND — three constructed same-shape pairs whose letters
+provably differ (different tuples; on two pairs even different
+multiplicative orders): full stratum-count records equal across each pair,
+including the realized polygon integer records (a genuine check that the
+engine's positions do not leak values); the different-shape control pair
+must differ — the SHAPE tooth.]
+
+### S2.4 The algebra-level shadow (ACCEPTED input, displayed)
+
+GRTJC W-9(iii) + JC-F1 [ACCEPTED 2/2]: at every composite stage the carry
+algebra is the twisted group algebra K^c[ℤ/E] and
+
+    𝒜(T) ≅ K[v]/(v^E − ζ_T),   dim_K 𝒜(T) = E   — independent of c.
+
+Dimension is carry-blind; twisting by a coboundary gives an isomorphic
+twisted algebra (K^{c·∂u}[ℤ/E] ≅ K^c[ℤ/E], basis rescale [γ] ↦ u_γ·[γ]).
+And WM-COB(iii) [display owned by WELDMASTER, arc 1/2; value law on its
+scored stratum]: the ENTIRE inner factor of the accepted cocycle is ∂E — a
+coboundary of the ε-kit cochain. So at the algebra level the value layer
+contributes nothing gauge-stable except the outer letter z̄^δ — and its
+EXPONENT δ is integer/split data, already counted in the shape. J-D0 is the
+count-level statement of the same death: what the gauge can move, counts
+cannot see; what counts see (positions, δ, degree structure), the gauge
+cannot move.
+
+## S3. CONSEQUENCE — the uniformity-in-q mechanism at wild primes
+
+Counts of decided strata are shape-only (S2.3), so per shape the count is
+ONE expression in q — the L3 universal residue-shape polynomials times a
+q-power with shape-determined exponent — valid at every residue
+characteristic, wild included. Everything the wild carry layer could
+contribute (letters, cochain values, the realization of its H² class)
+enters the classifier only through the gauge orbit, and counts are constant
+on gauge orbits.
+
+This is the counting-side face of the interpretation note's H-B verdict
+(HIGHLEVEL_INTERPRETATION_2026-08-07 §2, MEASURED): the wild part of the
+carry class DIES over finite residue fields (all-wild classes trivial on
+T3A/T2A; the tame ℤ/2 class survives on T2C). J-D0 prices both halves: the
+wild death is harmless to densities because counts never consumed the class's
+value realization in the first place; the tame survivor enters counts only
+through the integer δ (position data), never through the letter z̄^δ.
+
+And it is the lemma under H-C's positioning sentence (§3.2 there): **"Haar
+volume is carry-gauge-invariant; the discriminant exponent is not."** The
+corpus's own separator (HUMAN_PROOF §0: ∫|disc| = 7/12 ≠ 2/3 at p = 2 while
+the volume is the uniform q/(q+1)) is exactly a functional that PRICES the
+carries (v(disc) pays the wild different letter-by-letter), re-importing the
+value layer that volume quotients out. The class of integrals the carry
+algebra uniformizes = bounded functions factoring through the type map with
+p-free weights — i.e. through the shape, i.e. through what J-D0 proves
+gauge-blind. H-C supplied the vocabulary; this note supplies the lemma.
+
+## S4. HONEST BOXES (where the derivation stops)
+
+* **JD0-BOX-1 (J-D0 is not W-10).** Nothing here proves the count EQUALITY
+  "classifier stratum count = model-side count from (e_j,h_j,g_j) through
+  the welded read" (W-10, M-priced). J-D0 deletes W-10's value-layer
+  hypotheses — the collapse perimeter ((VD-m), (C-coll), (R-coll),
+  (DMULT-s), PERIM-μ) drops out of the count equality's conditionality —
+  but the B(c)-tie to the welded grid still owes JB row 12's u ≥ 0 proviso
+  leg and rides JA-GRID at GRTJA's arc grade.
+* **JD0-BOX-2 (the gauge-form warrant).** That the weld's ENTIRE conditional
+  value dictionary acts by slot-wise unit characters is the synthesis §3.2
+  reading of JA-RES [GRTJA, 1/2], the (ξ,w) covariance family [GRTW2,
+  ACCEPTED], and the ℓ-orbit rescalings ORB-RES [J-A]. J-D0's proof covers
+  unit-character gauges; any value layer NOT of that form is outside the
+  perimeter — and the NONCHAR tooth displays the failure mode (an additive
+  slot shift is a bijection that breaks type preservation, hence counts).
+* **JD0-BOX-3 (the menu is untouched).** WHICH decided shapes exist — the
+  omMenu growth beyond order 0, hExhaust, drainage — is Phase-B. J-D0
+  counts within a shape; it never enumerates shapes.
+* **JD0-BOX-4 (assembly identification).** That the L3 × L4 assembly IS
+  L2core's per-cell coefficient at all orders is L2core's own verified
+  content (exact instances through OM order 4; BB3 counts exact over 8
+  fields) — consumed, not re-proved. J-D0's invariance applies to the
+  assembly as displayed in S0.
+* **JD0-BOX-5 (F₂ degeneracy).** Over K_j = F₂ the unit group is trivial:
+  clause (i) is vacuous at such levels (the battery census reports them;
+  the representative-independence content — re-realized anchors, fuzz
+  blindness — is still checked there). Clause (ii) is NOT vacuous at F₂.
+* **JD0-BOX-6 (wild decidedness warrant).** That "decided shape" is
+  well-posed at wild composite stages — strata do not collapse under the
+  read — is the no-cancellation/level-detection warrant JC-PSIKER(iii) +
+  JC-LOAD, consumed from GRTJC [ACCEPTED] as warrant, exactly as the
+  blueprint's O-1 clause routes it. J-D0 adds no leg to it.
+
+## S5. THE ORDER-0 LEAN TIE (displayed anchor, degenerate instance)
+
+The machine-checked capstone's order-0 count identity
+(`lean/LeanUrat/OM/RealInstanceV2.lean`, `realF2`):
+
+    density m σ q'  :=  ∑_{T ∈ omMenu m σ} omCount T q'
+
+with `omCount : shape → ℕ → ℚ` — the evaluator's SIGNATURE takes the shape
+and q′ only: no letter, no cochain, no tower argument exists to vary. So at
+order 0 clause (ii) holds BY TYPE (definitionally), and clause (i) is empty
+(E = 1, no carries). Displays: `omCount_sepShape_eq_rootCount` (the count as
+a root census — the L3 leg at order 0), the non-vacuity gates
+`gate3_inert_q2` (value 1/4 at n = 2 inert, q′ = 2) and the split ≠ inert
+separation at q′ = 3 (`OM/RealInstanceV2Gates.lean`). The Lean tie is the
+degenerate instance of J-D0 — an anchor for what the order-≥ 1 statement
+must degenerate TO, not evidence for it.
+
+## S6. CONSUMERS
+
+1. **W-10 — OPENS at the (2,1,1) Eisenstein shape.** Its first row: d0 = 1,
+   one read (2,1,1); stratum count (q−1)/q³ = [L3: the residual unit choice,
+   q−1 values] × [L4: v(a₁) ≥ 1 pins one digit, v(a₀) = 1 pins position and
+   frees the unit slot — q-power q^{−3} in density normalization]
+   (WELD_SYNTHESIS §3.1 display). By J-D0 the W-10 equality at this and
+   every decided shape carries NO value-layer hypothesis: its obligations
+   are the integer-grid faces (JA-GRID, JB-VTX(d) — with JB row 12's
+   proviso) + the classical L3 census + the JC warrant (BOX-6).
+2. **W-11** (menu tie, Phase-B) — consumes J-D0(ii) to key the grown menu
+   by shape data alone.
+3. **W-12 / J-D1** — downstream composition; untouched here.
+4. **H-C positioning** — "carry-gauge-invariance of volume" upgraded from
+   vocabulary to lemma (S3); the public-facing uniformity story should cite
+   J-D0 as the mechanism where the cohomology class dies.
+5. **Fence bookkeeping** — count-layer consumers need not carry PERIM-μ /
+   (C-coll)/(R-coll)/(VD-m); this deletes the fence-patching genre from the
+   J-D block entirely.
+
+## S7. CONDITIONALITY STACK
+
+Accepted suppliers (the FOUR weld acceptances + the engine):
+* **[ILN]†** (ACCEPTED): SHIFT-(n), D_j-INT, EXP-KIT(a) — the integer/
+  cochain layer feeding S2.1(b).
+* **GRTJB** (ACCEPTED 2/2): JB-VTX vertex-for-vertex polygon, JB-DEV
+  same-division — the position faces S2.1(a)/(c); row 12's u ≥ 0 proviso
+  carried where B-ties are consumed (BOX-1).
+* **GRTJC** (ACCEPTED 2/2): W-9 + JC-F1 (dim K^c[ℤ/E] = E, the algebra
+  shadow S2.4); JC-PSIKER(iii)/JC-LOAD (the wild decidedness warrant,
+  BOX-6).
+* **GRTW2** (ACCEPTED 2/2): the (ξ,w) covariance family — part of the gauge
+  dictionary (BOX-2); anchor re-choice legitimacy rides the accepted lift
+  covariance (with **LIFTCORNER** [ACCEPTED 2/2] as its corner cap).
+
+Priced non-accepted suppliers:
+* **GRTJA** (arc 1/2): JA-RES slot-character form; JA-GRID grid = T-side
+  abscissas. J-D0 consumes both AT THAT GRADE (BOX-2, S2.1(c)).
+* **WELDMASTER** (arc 1/2): WM-COB display ownership; clause (i) cited at
+  its [ILN]†-only footprint (unconditional), clause (iii) at the WM arc
+  grade (S2.4 only, not load-bearing for S2.1–S2.3).
+* **H-B / H-C** (interpretation note): MEASURED verdicts, cited as
+  interpretation in S3 — no proof weight anywhere in S2.
+
+## S8. THE SEALED BATTERY (two-commit; verdict from artifacts)
+
+**Runner:** `verification/openmath/jd0_checks.py`. **Roster:** the frozen
+29-row J-C roster (md5-pinned imports) + the OUT-OF-ROSTER p = 7 genre
+(J7A wild (7,1,1); J7B d0 = 2, F₄₉, wild top (7,3,1); J7C g₀ = 2 → F₄₉) +
+the constructed same-shape pair members (P1B; P2A/P2B; P3A/P3B) — 37
+towers. Families JD0-PIN / JD0-L3 / JD0-COB / JD0-STRAT / JD0-BLIND and
+teeth JD0-T-NONCHAR / JD0-T-NONUNIT / JD0-T-COB / JD0-T-SHAPE as specified
+in the runner docstring (the note's S2 machine-leg brackets map to them).
+Same-shape pairs and their letter separations: (C2A, P1B) — letters
+X̄ vs X̄² in F₄; (P2A, P2B) — p = 7 wild (7,2,1), letters −1 (ord 2) vs −3
+(ord 3); (P3A, P3B) — p = 3 depth-2 wild, letters 2 (ord 2) vs 1 (trivial).
+Negative control: (C2A, C2B) — different shapes, records MUST differ.
+Gauges are seeded-deterministic, nontrivial wherever the unit group allows
+(census reported; F₂ rows disclosed per BOX-5). PRE-SEAL SMOKE DISCLOSED:
+developed against {C2A, C2I, C2B, J7A, P2A, P2B}; on the smoke rows all
+families 0 violations, all four teeth fired. No full run before the seal.
+
+**PREREGISTERED PREDICTIONS (commit 1):**
+* P-1: JD0-PIN — 0 violations (frozen imports unmoved).
+* P-2: JD0-L3 — 0 violations on ALL towers, levels, degrees (pointwise type
+  preservation, bijectivity, census equality, menu equality), including
+  every p = 7 field and every wild-read level.
+* P-3: JD0-COB — 0 violations: gauged positions exact, character action
+  exact, coboundary law c′ = c·∂u exact in K_top on every scored pair, fuzz
+  blindness exact; ≥ 1 scored pair on every tower.
+* P-4: JD0-STRAT — all 37 towers: assembled count record (direct) =
+  (gauged).
+* P-5: JD0-BLIND — all three same-shape pairs: letters verified DIFFERENT,
+  full count records EQUAL (including realized polygon integer records);
+  the (C2A, C2B) control differs.
+* P-6: all four teeth fire ≥ 1 globally.
+* P-7 (falsifiers, blueprint break-analysis order): a pointwise JD0-L3
+  violation at a wild level refutes S2.2(f); a position move under a unit
+  gauge refutes S2.1(a) and the lemma; a blind-pair mismatch in the polygon
+  records means the engine's positions leak values — diagnose as an
+  upstream weld error FIRST (GRT_WELD_BLUEPRINT S4's J-D row).
+
+**VERDICT: PENDING — commit 1 seals this note + the unrun runner; commit 2
+appends the verdict from `jd0_checks_output.txt` /
+`jd0_checks_results.json`.**
+
+---
+
+## S9. VERDICT (commit 2 — from the committed artifacts)
+
+**GREEN. 37/37 towers, 68,523 checks, 0 violations in every family, all
+four teeth fired, zero skips.** Artifacts: `jd0_checks_output.txt` (md5
+01f5c79509cf3bba8a24569abff081c7), `jd0_checks_results.json` (md5
+6fbc1f03a88bbd5408927bfb8324d415); runner byte-identical to the sealed
+commit; elapsed 77.4 s.
+
+Prediction scorecard (all seven confirmed):
+* P-1 ✓ JD0-PIN 0/2 — frozen imports unmoved.
+* P-2 ✓ JD0-L3 0/60,950 — pointwise type preservation, bijectivity, census
+  and menu equality on every enumerated family, including all five p = 7
+  rows (J7A/J7B/J7C/P2A/P2B) and every wild-read level; 252 residual-gauge
+  levels nontrivial, 57 trivial (F₂/unit-group-1 levels, per BOX-5).
+* P-3 ✓ JD0-COB 0/7,527 — gauged positions exact, character action exact,
+  c′ = c·∂u exact in K_top on every scored pair (≥ 6 pairs per tower, no
+  realize/pair skips), fuzz blindness exact.
+* P-4 ✓ JD0-STRAT 0/37 — assembled count record (direct) = (gauged) on all
+  37 towers; 36/37 with residue-nontrivial gauges (the one residue-trivial
+  row is C4A, the all-F₂ tower, exactly the BOX-5 disclosure).
+* P-5 ✓ JD0-BLIND 0/7 — all three same-shape pairs: letters verified
+  DIFFERENT from the artifacts (C2A/P1B: z₁ = X̄ vs X̄² = X̄+1, both ord 3 —
+  same order, different element, the finest separation; P2A/P2B: ord 2 vs
+  ord 3; P3A/P3B: ord 2 vs the TRIVIAL letter), full stratum-count records
+  EQUAL across each pair including the realized polygon integer records.
+* P-6 ✓ teeth: NONCHAR 11,514 fires (the additive slot bijection breaks
+  type preservation massively — value-layer bijectivity alone is NOT the
+  mechanism; the character form is load-bearing), NONUNIT 37 (one per
+  tower: a non-unit rescale moves the position every time), COB 487
+  (the dropped-u corruption breaks the law whenever u_{γ+γ′} ≠ 1),
+  SHAPE 1 (the C2A/C2B control pair's records differ).
+* P-7 — no falsifier fired; nothing to diagnose upstream.
+
+**Consequence for the grade box:** the lemma stands as composed — PROVED on
+the stated perimeter with the S4 boxes, battery GREEN, attempt 0/2. The
+J-D block's next unit (W-10 at the (2,1,1) shape) may consume S2 with the
+value-layer fences deleted per S1/S6.1.
+
+---
+
+### Dated adjudication + corrections (2026-08-12 — sol certification C10/E8: the as-built challenge adjudicated at HEAD)
+
+The sol-5.6 as-built read of this note (gpt-5.6-sol high,
+runs/cert/C10_jd0_output.log, 2026-08-12) returned CHALLENGE with 12
+findings including a claimed CRITICAL. The E8 certification run
+(gpt-5.6-sol high, runs/cert2/E8_jd0_output.log) adjudicated 6 REAL /
+6 ARTIFACT — in particular the claimed CRITICAL (the "every
+1-cochain" quantifier) is an ARTIFACT: S0 documents the quantified
+cochain action as R(y) ↦ ξ^{−deg R}R(ξy), and the counterexample's
+independent slot rescaling is outside that documented class. The six
+REAL findings are repaired by the single S10 correction block below
+(the full count-shape T̂ with Λ_j and 𝒢; the corrected LEMMA J-D0
+display; degreewise multiplicativity replacing the automorphism
+claim; the cohomology-class correction; classifier-identification
+scope; consumer sweep). Everything above this heading is
+byte-untouched by this append. The E8 adjudication, transcribed
+unaltered:
+
+The displayed theorem needs six repairs. The other six findings misread either the stated perimeter or the role of the battery/algebra shadow.
+
+## Adjudication
+
+1. **ARTIFACT.** The counterexample uses an independent diagonal rescaling of polynomial coefficients, which is not the note’s defined carry-gauge action. S0 explicitly specifies the action of the quantified cochain:
+
+> “Its full documented action: … residual: \(R(y)\mapsto \xi^{-\deg R}R(\xi y)\).”
+
+BOX-2 excludes “any value layer NOT of that form”; it does not narrow “every 1-cochain” to a subset after the fact. The warrant that the weld induces this action is priced at GRTJA 1/2, but that is supplier conditionality, not a quantifier contradiction.
+
+2. **REAL.** The explicit definition of shape lists only \(d_0,(e_j,h_j,g_j)\) and the induced field sizes. It never includes the residual factorization predicate consumed by \(L3_j\). The phrase “prescribed degree/type” later in S0 cannot repair that omission.
+
+3. **REAL.** The normalized degreewise map is not an algebra automorphism of \(K_j[y]\). Factorization preservation needs the degreewise multiplicativity argument supplied below.
+
+4. **REAL.** “[C]omputed from the eq-12 splits alone” proves dependence on the chosen splits, not dependence only on \((e_j,h_j)\). No section-independence or canonical-section lemma appears at HEAD. The honest proved scope must retain the split/grid record as part of the count-shape.
+
+5. **REAL.** S2.3 independently proves cochain-value blindness by non-occurrence of \(c\), but S3’s explanation incorrectly attributes the death of the entire class to constancy on gauge orbits. Gauge invariance alone only compares coboundary-related representatives.
+
+6. **ARTIFACT.** S2.4 is explicitly called:
+
+> “The algebra-level shadow”
+
+and S7 expressly says:
+
+> “S2.4 only, not load-bearing for S2.1–S2.3.”
+
+The note does not use equality of dimensions to prove equality of counts or algebra isomorphism across distinct twisting classes.
+
+7. **ARTIFACT.** The battery accurately says that its blind pairs have different letters; it does not say that they realize distinct cohomology classes. Clause (ii)’s carry-class independence is argued in S2.3 from:
+
+> “the letters \(z_j\) and the carry values \(c(\gamma,\gamma')\) appear at NO point of the assembly.”
+
+Thus this finding correctly describes test coverage but incorrectly treats that limitation as a proof gap.
+
+8. **REAL.** BOX-4 cites exact verification through OM order 4 while the surrounding prose claims classifier identification “at all orders.” A finite verified range cannot supply the universal identification. The formal-product theorem remains universal; its transfer to the actual classifier must be limited to the supplier’s established perimeter.
+
+9. **REAL.** “Factoring through the type map” is strictly weaker than being constant on fibers of `type → shape`. The uniformized integral class must be stated using the latter condition.
+
+10. **ARTIFACT.** JD0-T-SHAPE concerns the particular registered pair `(C2A,C2B)`, whose records were expected to differ. The note never claims that the count function is injective on all shapes. Calling this one fixture a “different-shape control” does not assert the converse of shape-blindness.
+
+11. **ARTIFACT.** S0 defines “stratum count” as the object consumed by the “per-cell coefficient,” including its \(q^{\pm B}\) factor. S6.1 then explicitly identifies \(q^{-3}\) as:
+
+> “q-power \(q^{-3}\) in density normalization.”
+
+Thus \((q-1)/q^3\) is not being presented as a raw finite-set cardinality. “Stratum count” is locally defined terminology for the normalized coefficient.
+
+12. **ARTIFACT.** The finite scope is disclosed verbatim:
+
+> “degree \(D\le3\) … capped \(|K|^D\le20000\)”
+
+and:
+
+> “37/37 towers, 68,523 checks.”
+
+The universal argument is the symbolic proof in S2; the battery is recorded as supporting machine evidence. No sentence claims that the finite enumeration proves the universal quantifiers.
+
+## Verbatim-ready repair append
+
+This single append repairs findings 2, 3, 4, 5, 8, and 9.
+
+---
+
+## S10. CORRECTION (2026-08-12 — count-shape, degreewise residual action, and consumer scope)
+
+This correction is controlling wherever the earlier wording says merely
+“shape data,” calls the normalized residual map an algebra automorphism,
+derives cross-class blindness from gauge-orbit constancy, identifies the
+L3 × L4 assembly with the classifier at all orders, or equates factoring
+through type with factoring through shape.
+
+### S10.1 The full count-shape and corrected display
+
+For each level j, let Λ_j denote the complete LETTER-FREE residual census
+condition consumed by L3_j: its total polynomial degree, its full
+factorization-degree multiset with multiplicities, and any nonzero-constant
+or distinguished-factor DEGREE conditions. Λ_j contains no specified
+residual root or coefficient value.
+
+Let 𝒢 denote the complete discrete lattice datum consumed by L4: the chosen
+eq-12 splits t_j, their induced integers
+
+    D_j = t_j(β″_j) − t_j(β_j) − t_j(β′_j),
+
+the corresponding δ-data, and the side/grid positions from which B is
+computed. No assertion is made here that the chosen t_j, D_j, δ, or B are
+determined by the shorter tuple (e_j,h_j)_j; proving such a reduction is a
+separate grid/split theorem.
+
+The COUNT-SHAPE is therefore
+
+    T̂ = (d0, (e_j,h_j,g_j)_j, (Λ_j)_j, 𝒢).
+
+Its residual fields still have
+
+    r_j = |K_j| = q^(d0·g_0···g_{j−1}).
+
+The letters z_j and all carry-cochain values c(γ,γ′) are not part of T̂.
+
+For the normalization fixed by L2core, write
+
+    μ_T̂(q) = q^(±B(𝒢)) · ∏_j N_{Λ_j}(r_j),
+
+where N_{Λ_j}(r_j) is the finite-field census satisfying Λ_j. This μ_T̂(q)
+is the “stratum count” or normalized per-cell coefficient used throughout
+this note; N_{Λ_j}(r_j) is the raw residual cardinality.
+
+> **LEMMA J-D0 (corrected display).**
+> (i) [GAUGE-INVARIANCE] For every decided count-shape T̂, every prime
+> power q, and every unit-valued carry gauge having the documented S0
+> residual action
+>
+>     R(y) ↦ ξ^(−deg R) R(ξy),
+>
+> the normalized coefficient μ_T̂(q) computed through the gauged read
+> equals the direct coefficient.
+>
+> (ii) [VALUE-BLINDNESS] Any two realized decided types with the same
+> count-shape T̂ have equal normalized coefficients at every q, regardless
+> of their residual letters and regardless of whether their carry
+> cochains are cohomologous.
+>
+> Consequently μ_T̂(q) is a function of the full combinatorial count-shape
+> T̂ alone.
+
+Derivation of the repaired L4 clause: equality of 𝒢 fixes the chosen splits,
+so the displayed formula D_j = ∂t_j gives equal D_j term by term; it fixes
+the corresponding δ and grid positions as well. Hence it fixes B(𝒢).
+Unit gauges do not move any of these positions because units have valuation
+zero. This proves the L4 assertion at exactly the scope established by
+S2.1, without inferring that an arbitrary change of section leaves D_j or
+B unchanged.
+
+Derivation of clause (ii): equality of T̂ gives the same fields K_j, the
+same predicates Λ_j, and the same lattice exponent B(𝒢). Therefore every
+factor N_{Λ_j}(r_j) and the q-power agree. The displayed formula for
+μ_T̂(q) contains neither z_j nor c(γ,γ′), so equality holds even for carry
+cochains in distinct cohomology classes. ∎
+
+### S10.2 Correction to S2.2(f)
+
+Delete the sentence
+
+    “σ_ξ extends the identity of K_j to a degree-preserving
+     K_j-algebra automorphism of K_j[y]”
+
+and replace it by the following derivation.
+
+For each fixed degree D define
+
+    σ_{ξ,D}(R)(y) = ξ^(−D) R(ξy)
+
+on the monic degree-D polynomials. It is a bijection with inverse
+σ_{ξ^−1,D}. It is not asserted to be additive on polynomials of different
+degrees. Instead, if R = AB with deg A = a, deg B = b, and D = a+b, then
+
+    σ_{ξ,D}(R)
+      = ξ^(−a−b) A(ξy)B(ξy)
+      = σ_{ξ,a}(A) · σ_{ξ,b}(B).
+
+Thus a factorization of R gives a factorization with exactly the same
+factor degrees. Conversely, applying the degreewise inverse to a
+factorization of σ_{ξ,D}(R) gives a factorization of R. Hence irreducibility
+and the complete factorization-degree multiset are preserved. Monicity is
+preserved because the leading coefficient is multiplied by ξ^(−D)ξ^D = 1,
+and a constant term is nonzero exactly when its nonzero scalar multiple
+ξ^(−D)R(0) is nonzero. This proves the pointwise preservation required by
+S2.2(g).
+
+### S10.3 Cohomology-class correction
+
+Gauge invariance and cochain-value blindness have different proofs.
+Clause (i) compares presentations inside one coboundary orbit:
+c and c·∂u. It makes no assertion that distinct cohomology classes are
+gauge-related. Clause (ii) compares distinct classes because the coefficient
+
+    μ_T̂(q) = q^(±B(𝒢)) · ∏_j N_{Λ_j}(r_j)
+
+contains no carry-cochain value at all. Accordingly, replace the S3 claim
+that the entire value realization “enters the classifier only through the
+gauge orbit” by:
+
+    Unit gauges do not change the coefficient within a coboundary orbit;
+    more strongly, the L3 × L4 formula is constant across different
+    cohomology classes because no value of c occurs in that formula.
+
+The algebra discussion in S2.4 remains only an algebra-level shadow and is
+not proof of cross-class blindness.
+
+### S10.4 Classifier-identification scope
+
+J-D0 proves the preceding statements universally for the displayed formal
+L3 × L4 coefficient. Its identification with L2core’s actual per-cell
+classifier coefficient may be consumed only on the perimeter on which the
+L2core supplier has established that identification. The cited exact
+instances through OM order 4 do not, by themselves, prove an all-orders
+identification.
+
+Therefore “valid at every residue characteristic, wild included” is
+unconditional for the formal coefficient μ_T̂(q). The same conclusion for
+the actual classifier coefficient is unconditional through the supplier’s
+proved/verified range and is conditional, at any further order, on a
+general L2core assembly-identification theorem.
+
+### S10.5 Corrected integral class
+
+Let
+
+    π : decided type → count-shape
+
+forget the residual letters and carry-cochain values. A bounded function f
+is uniformized by J-D0 precisely when it is constant on every fiber of π;
+equivalently, when
+
+    f = w ∘ π
+
+for a weight w on count-shapes. Requiring the displayed rule for f to have
+no explicit p-dependent coefficient is not sufficient: a rule can be
+p-free while still distinguishing letters or carry values.
+
+For f = w ∘ π with p-free w, grouping the integral by fibers gives
+
+    ∫ f = ∑_T̂ w(T̂) μ_T̂(q),
+
+so J-D0 supplies the carry-value blindness of the mass terms. This is the
+correct scope of the H-C positioning sentence.
+
+### S10.6 Consumer sweep
+
+1. **W-10 at the (2,1,1) Eisenstein shape survives.** Its residual
+   condition Λ, its eq-12 split/grid record 𝒢, and hence B are fixed in
+   that row. The value-layer fences remain absent because neither its
+   letter nor its carry-cochain values occur in μ_T̂(q). BOX-1’s outstanding
+   grid/proviso obligations remain exactly as stated.
+
+2. **W-11 survives with the corrected key.** The grown menu may be keyed by
+   the full count-shape T̂. If W-11 wants to key it only by
+   (d0,(e_j,h_j,g_j)_j), it separately owes proofs that Λ_j and 𝒢, or at
+   least all their consumed censuses and B, are determined by that shorter
+   tuple. No letter or carry-cochain value must be added to the key.
+
+3. **W-12 / J-D1 survives.** It consumes the same coefficient equality,
+   now at its exact proved scope.
+
+4. **H-C survives with the correction in S10.5.** Its admissible weights
+   are the p-free weights constant on fibers of type → count-shape.
+
+5. **Fence bookkeeping survives.** PERIM-μ, (C-coll), (R-coll), and (VD-m)
+   remain unnecessary for count-layer consumers whenever the consumer uses
+   the L3 × L4 coefficient and the documented gauge dictionary. The repair
+   does not promote the finite L2core checks into an all-orders
+   assembly-identification theorem.
+
+*(The adjudication above was produced by the E8 certification run
+(gpt-5.6-sol high, runs/cert2/E8_jd0_output.log, 2026-08-12);
+orchestrator verification before transcription — the ARTIFACT
+rebuttals checked against S0's documented action, S2.4's
+"algebra-level shadow" disclosure, and S0's stratum-count
+definition; S10.2's degreewise identity re-derived
+(ξ^{−a−b}A(ξy)B(ξy) = σ_{ξ,a}(A)·σ_{ξ,b}(B); leading coefficient
+ξ^{−D}ξ^{D} = 1; nonzero constant preserved); S10.1's class-blindness
+checked (μ_T̂(q) = q^{±B(𝒢)}·Π N_{Λ_j}(r_j) contains neither letters
+nor carry values); the L4-clause derivation checked (equal 𝒢 fixes
+each D_j = ∂t_j, δ, and B — no cross-section claim); the honest new
+obligation noted (W-11's shorter menu key owes a Λ/𝒢-reduction proof
+if it drops the full count-shape). Transcribed unaltered per the
+standing division of labor. Ledger: row 28 → six repairs folded,
+awaiting sol discharge (cert3).)*
+
+=== THE REVISED T1 ===
+# T1 — LEMMA GAUGE-COCYCLE
+
+## The wrap/\(\vartheta\) recursion, exact lifts, and normalization bridges, stated once
+
+**RCT unit:** S-1-T1-gauge-cocycle, revision pass S-1, 2026-08-12  
+**Status:** revised candidate of record; hostile arc not yet run on this revision  
+**Supersedes:** the composed 2026-08-10 T1 draft and its inline repair riders
+
+This revision folds the certified 2026-08-12 gauge-seam corrections into the statement rather than leaving them as riders. In particular:
+
+- exact integral \(K_1\)-lifts are asserted on the proved live domain \(M>D'h\), and the composed-key coefficient contains the positive \(\eta^{W(t)}\) wrap correction;
+- the canonical minimal-grid twist is separated from the actual print twist by the attained-origin factor \(z^\nu\);
+- the weld is used only at the proved scope of the five-field package WELD-M-PKG; no cross-face coherence or uniqueness is asserted; and
+- the HE6 slot coefficient is the normalized coefficient sum \(\gamma_k(A)\), not the generally vacuous sum of bare coefficient residues.
+
+The lemma is one source of the tower gauge formulas. It organizes those fields of WELD-M-PKG that consume the formulas around the same cocycle, but it does not upgrade the package to a single coherent map.
+
+## 1. Statement
+
+### LEMMA GAUGE-COCYCLE
+
+#### 1.1 Carrier and domain
+
+Fix a discretely valued base field with uniformizer \(\pi\), residue field \(\mathbf F_Q\), and a MacLane/Okutsu tower with level-\(i\) residue field \(K_i\). At level \(1\), fix
+
+\[
+e_1,f_1,h\ge1,\qquad \gcd(e_1,h)=1,\qquad D'=e_1f_1,
+\]
+
+with
+
+\[
+dv_1(x)=h,\qquad dv_1(\pi)=e_1,
+\qquad
+\eta=\operatorname{res}\!\left(\frac{x^{e_1}}{\pi^h}\right),
+\qquad
+K_1=\mathbf F_Q(\eta),
+\]
+
+and chosen basis \(1,\eta,\ldots,\eta^{f_1-1}\).
+
+For every integer height \(k\), let
+
+\[
+\widehat n_1(k)=x^{i(k)}\pi^{a(k)},\qquad
+0\le i(k)<e_1,\qquad i(k)h+a(k)e_1=k.
+\]
+
+This is a Laurent normalizer at an arbitrary integer height. A full integral \(K_1\)-digit slot is asserted below only on the proved live domain \(k>D'h\). No full \(K_1\)-slot is asserted at \(k\le D'h\).
+
+At a general level \(i\), fix exact-height normalizers \(\widehat n_i(m)\) in the prescribed bounded-exponent tower normal form, stage data
+
+\[
+e_{i+1},\qquad f_{i+1},\qquad u_{i+1},
+\]
+
+and
+
+\[
+\psi_{i+1}(y)
+=
+y^{f_{i+1}}-\sum_{t<f_{i+1}}c_ty^t
+\in K_i[y],
+\qquad c_0\ne0.
+\]
+
+Whenever an exact-height lift is invoked, assume it lies in its stated integral domain and satisfies
+
+\[
+dv_i(\operatorname{lift}_i(d;m))=m,
+\qquad
+\operatorname{res}\!\left(
+\frac{\operatorname{lift}_i(d;m)}{\widehat n_i(m)}
+\right)=d.
+\]
+
+Zero is lifted as zero. At level \(1\), conclusion (C6) supplies this lift uniformly when \(m>D'h\).
+
+Define the repo and canonical letters
+
+\[
+\eta_{i+1}
+=
+\operatorname{res}\!\left(
+\frac{\Phi_i^{e_{i+1}}}{\widehat n_i(u_{i+1})}
+\right),
+\qquad
+z_{i+1}
+=
+\operatorname{res}\!\left(
+\frac{\Phi_i^{e_{i+1}}}{\pi_{i+1}^{u_{i+1}}}
+\right).
+\]
+
+At level \(1\), write
+
+\[
+\pi_2=x^{\ell_1}\pi^{\ell'_1},
+\qquad
+\ell_1h+\ell'_1e_1=1,
+\qquad
+0\le\ell_1<e_1.
+\]
+
+For a homogeneous slot of height \(su_{i+1}\), distinguish:
+
+1. its coherent digit \(\Gamma\), read against \(\widehat n_i(su_{i+1})\);
+2. its multiplicative coefficient, read against \(\widehat n_i(u_{i+1})^s\); and
+3. its canonical residual read \(R_{i+1,\beta}\).
+
+Assume at the consumed sites that the canonical residual read is multiplicative on the relevant ladder monomials and agrees with residue on value-zero factors. This is a site obligation, not an assertion about every homogeneous initial form.
+
+Put
+
+\[
+\bar\kappa_i=\frac{u_{i+1}}{e(\mu_i)},
+\qquad
+w_i
+=
+R_{i+1,\bar\kappa_i}
+\bigl(\widehat n_i(u_{i+1})\bigr)
+\in K_i^\times.
+\]
+
+The carrier contains no letter recursion, cocycle identity, corrected-key formula, read dictionary, print-origin bridge, or weld coherence theorem.
+
+#### (C1) Letter recursion
+
+At every defined level,
+
+\[
+\boxed{
+z_{i+1}=\eta_{i+1}\rho_i,
+\qquad
+\rho_i=
+\operatorname{res}\!\left(
+\frac{\widehat n_i(u_{i+1})}
+{\pi_{i+1}^{u_{i+1}}}
+\right).
+}
+\tag{C1-general}
+\]
+
+The quotient has value zero. Successive reduction by the tower relations expresses \(\rho_i\) as a monomial in preceding canonical letters. This is a terminating reduction algorithm; no closed exponent formula is asserted at arbitrary depth.
+
+At level \(2\),
+
+\[
+\boxed{
+z_2=\eta_2z_1^{-\lfloor\ell_1u_2/e_1\rfloor}.
+}
+\tag{C1-level-2}
+\]
+
+#### (C2) The normalized wrap cocycle and its telescope
+
+Define
+
+\[
+\operatorname{wrap}(a,b)
+=
+\left\lfloor
+\frac{i(a)+i(b)}{e_1}
+\right\rfloor
+\in\{0,1\}.
+\]
+
+Then
+
+\[
+\boxed{
+\widehat n_1(a)\widehat n_1(b)
+=
+\widehat n_1(a+b)
+\left(\frac{x^{e_1}}{\pi^h}\right)^{\operatorname{wrap}(a,b)}.
+}
+\tag{C2-wrap}
+\]
+
+For
+
+\[
+\tau_i(a,b)
+=
+\frac{\widehat n_i(a)\widehat n_i(b)}
+{\widehat n_i(a+b)},
+\]
+
+associativity gives the normalized two-cocycle law
+
+\[
+\tau_i(0,a)=\tau_i(a,0)=1,
+\qquad
+\boxed{
+\tau_i(a,b)\tau_i(a+b,c)
+=
+\tau_i(b,c)\tau_i(a,b+c).
+}
+\tag{C2-cocycle}
+\]
+
+Define the building-orientation telescope unit
+
+\[
+\boxed{
+\vartheta_{i,s}
+=
+\operatorname{res}\!\left(
+\frac{\widehat n_i(u_{i+1})^s}
+{\widehat n_i(su_{i+1})}
+\right)
+\in K_i^\times.
+}
+\tag{C2-vartheta}
+\]
+
+Then
+
+\[
+\boxed{
+\vartheta_{i,0}=\vartheta_{i,1}=1,
+\qquad
+\vartheta_{i,s+1}
+=
+\vartheta_{i,s}\,
+\operatorname{res}
+\bigl(\tau_i(su_{i+1},u_{i+1})\bigr).
+}
+\tag{C2-recursion}
+\]
+
+At level \(1\),
+
+\[
+\widehat n_1(u_2)^s
+=
+\widehat n_1(su_2)
+\left(\frac{x^{e_1}}{\pi^h}\right)^{
+\lfloor s\,i(u_2)/e_1\rfloor},
+\]
+
+and hence
+
+\[
+\boxed{
+\vartheta_{1,s}
+=
+\eta^{\lfloor s\,i(u_2)/e_1\rfloor}.
+}
+\tag{C2-level-1}
+\]
+
+For \(s=f_2-t\), put
+
+\[
+W(t)
+=
+\left\lfloor
+\frac{(f_2-t)i(u_2)}{e_1}
+\right\rfloor.
+\]
+
+Thus
+
+\[
+\vartheta_{1,f_2-t}=\eta^{W(t)}.
+\]
+
+The exponent has the displayed positive sign.
+
+#### (C3) Corrected key and read dictionary
+
+For \(s=f_{i+1}-t\), let \(\Gamma_t\) denote the coherent digit against \(\widehat n_i(su_{i+1})\), and let \(c_t^{\mathrm{mult}}\) denote the coefficient against \(\widehat n_i(u_{i+1})^s\). Then
+
+\[
+\boxed{
+\Gamma_t
+=
+c_t^{\mathrm{mult}}\vartheta_{i,s},
+\qquad
+c_t^{\mathrm{mult}}
+=
+\Gamma_t\vartheta_{i,s}^{-1}.
+}
+\tag{C3-dictionary}
+\]
+
+The corrected composed key is
+
+\[
+\boxed{
+\Phi_{i+1}
+=
+\Phi_i^{e_{i+1}f_{i+1}}
+-
+\sum_{t<f_{i+1}}
+\widehat k_t\Phi_i^{e_{i+1}t},
+}
+\tag{C3-key}
+\]
+
+where
+
+\[
+\boxed{
+\widehat k_t
+=
+\operatorname{lift}_i\!\left(
+c_t\vartheta_{i,f_{i+1}-t};
+(f_{i+1}-t)u_{i+1}
+\right).
+}
+\tag{C3-corrected-lift}
+\]
+
+At level \(1\), whenever
+
+\[
+M_t=(f_2-t)u_2>D'h,
+\]
+
+this is the explicit integral coefficient
+
+\[
+\boxed{
+\widehat k_t
+=
+L_{M_t}\bigl(c_t\eta^{W(t)}\bigr).
+}
+\tag{C3-level-1-key}
+\]
+
+Its multiplicative coefficient is exactly \(c_t\).
+
+The naive and corrected recipes agree in slot \(t\) exactly when
+
+\[
+c_t
+\bigl(
+\vartheta_{i,f_{i+1}-t}-1
+\bigr)=0.
+\]
+
+They therefore agree if every relevant telescope unit is \(1\), including the cases \(\eta=1\) at level \(1\) and \(f_{i+1}=1\). This says nothing about whether arbitrary \(K_1\)-digits are \(x\)-free.
+
+For the B-law orientation define
+
+\[
+\boxed{
+\Theta_i(t)
+=
+\vartheta_{i,f_{i+1}-t}^{-1}
+=
+\operatorname{res}\!\left(
+\frac{
+\widehat n_i((f_{i+1}-t)u_{i+1})
+}{
+\widehat n_i(u_{i+1})^{f_{i+1}-t}
+}
+\right).
+}
+\tag{C3-Theta}
+\]
+
+Let \(\beta_t\) be the slot grade and set
+
+\[
+u(\beta_t)
+=
+R_{i+1,\beta_t}
+\bigl(
+\widehat n_i((f_{i+1}-t)u_{i+1})
+\bigr).
+\]
+
+At every site where the stated ladder-multiplicativity obligation is discharged,
+
+\[
+\boxed{
+u(\beta_t)
+=
+\Theta_i(t)w_i^{f_{i+1}-t}.
+}
+\tag{C3-B-law}
+\]
+
+Consequently a slot with coherent digit \(\Gamma_t\) has canonical read
+
+\[
+\boxed{
+R_{i+1,\beta_t}(\text{slot }t)
+=
+w_i^{f_{i+1}-t}\Theta_i(t)\Gamma_t.
+}
+\tag{C3-canonical-read}
+\]
+
+At the corrected key,
+
+\[
+\Gamma_t
+=
+c_t\vartheta_{i,f_{i+1}-t},
+\]
+
+so the \(\vartheta/\Theta\) factors cancel. The three reads are therefore
+
+\[
+\boxed{
+\begin{aligned}
+\text{multiplicative residual}
+&=\psi_{i+1}(y),\\
+\text{coherent digits}
+&=
+\bigl(
+c_t\vartheta_{i,f_{i+1}-t}
+\bigr)_{t<f_{i+1}},\\
+\text{canonical residual}
+&=
+\psi_{i+1}^{(w_i)}(y)
+:=
+w_i^{f_{i+1}}\psi_{i+1}(y/w_i).
+\end{aligned}
+}
+\tag{C3-three-reads}
+\]
+
+The map
+
+\[
+P(y)\longmapsto w_i^{\deg P}P(y/w_i)
+\]
+
+preserves irreducible-factor degrees and multiplicities. Residual factor patterns, and verdict data depending only on those patterns, are gauge-invariant. Conversion of a residual factor pattern to a p-adic splitting type still uses the surrounding tower correctness theorem.
+
+#### (C4) Attained-origin normalization bridge
+
+This clause records the correction that is independent of the \(\vartheta\)-telescope but belongs to the same gauge seam. At a print level write
+
+\[
+s_{\min}(\beta)=\ell\beta\bmod e,
+\qquad
+t_{\min}(\beta)
+=
+\frac{\ell\beta-s_{\min}(\beta)}e,
+\qquad
+\varepsilon(\beta)=z^{-t_{\min}(\beta)}.
+\]
+
+If the actual attained initial abscissa is
+
+\[
+s_{\mathrm{act}}
+=
+s_{\min}(\beta)+\nu e,
+\qquad
+\nu\in\mathbf Z_{\ge0},
+\]
+
+then the print Definition-\(t(i)\) exponent in print orientation is
+
+\[
+t_{\mathrm{Def}}
+=
+\frac{s_{\mathrm{act}}-\ell\beta}{e}
+=
+\nu-t_{\min}(\beta).
+\]
+
+Therefore
+
+\[
+\boxed{
+z^{t_{\mathrm{Def}}}
+=
+z^\nu\varepsilon(\beta),
+\qquad
+\varepsilon(\beta)
+=
+z^{t_{\mathrm{Def}}-\nu}.
+}
+\tag{C4-origin}
+\]
+
+Raw equality
+
+\[
+z^{t_{\mathrm{Def}}}=\varepsilon(\beta)
+\]
+
+holds exactly when \(z^\nu=1\); it holds in particular when \(\nu=0\). It is false in general to identify the canonical minimal-grid factor with the raw print factor without displaying \(z^\nu\).
+
+If \(H(y)\) is the harness residual and \(P(y)\) the normalized print residual, the corresponding support statement is
+
+\[
+H(y)=y^\nu Q(y),
+\qquad
+P(y)=aQ(by),
+\qquad
+a,b\in K^\times.
+\]
+
+Thus, for nonzero residuals,
+
+\[
+\boxed{
+\operatorname{Supp}_y(H)
+=
+\nu+\operatorname{Supp}_y(P),
+\qquad
+\deg H=\deg P+\nu.
+}
+\tag{C4-support}
+\]
+
+Attained abscissas and normalized support widths agree. Ordinary exponent supports and ordinary degrees agree only after translating the harness origin by \(\nu\).
+
+#### (C5) HE6 normalized slot coefficient and canonical-normalizer read
+
+Let
+
+\[
+A(x)=\sum_{j<D'}a_jx^j,
+\qquad
+k=dv(A),
+\qquad
+i=i(k),
+\qquad
+n(k)=x^i\pi^{(k-ih)/e_1}.
+\]
+
+Define
+
+\[
+\boxed{
+\gamma_k(A)
+=
+\sum_{\substack{t\ge0\\i+e_1t<D'}}
+\operatorname{res}\!\left(
+a_{i+e_1t}
+\pi^{-(k-(i+e_1t)h)/e_1}
+\right)\eta^t.
+}
+\tag{C5-gamma}
+\]
+
+A coefficient whose pin lies strictly above height \(k\) contributes zero.
+
+For every tower point \(\xi\) carrying the specified residue embedding \(\iota_\xi\),
+
+\[
+\boxed{
+\operatorname{res}\!\left(
+\frac{A(\xi)}{n(k)(\xi)}
+\right)
+=
+\iota_\xi\bigl(\gamma_k(A)\bigr).
+}
+\tag{C5-normalizer-read}
+\]
+
+Let \(i_0\in[0,e_1)\) satisfy
+
+\[
+i_0h\equiv1\pmod {e_1},
+\]
+
+and define
+
+\[
+q(k)=\frac{i_0k-i(k)}{e_1}.
+\]
+
+For the canonical level-one normalizer
+
+\[
+\varpi
+=
+x^{i_0}\pi^{(1-i_0h)/e_1},
+\]
+
+one has
+
+\[
+\operatorname{res}\!\left(
+\frac{n(k)(\xi)}
+{\varpi(\xi)^k}
+\right)
+=
+\eta_\xi^{-q(k)}.
+\]
+
+Hence
+
+\[
+\boxed{
+\operatorname{res}\!\left(
+\frac{A(\xi)}
+{\varpi(\xi)^k}
+\right)
+=
+\iota_\xi\bigl(\gamma_k(A)\bigr)
+\eta_\xi^{-q(k)}.
+}
+\tag{C5-varpi-read}
+\]
+
+The coefficient normalizers in (C5-gamma) are essential. Replacing each normalized coefficient residue by \(\operatorname{res}(a_j)\) is generally false and may make all tying contributions vanish.
+
+The same integer function records the carry:
+
+\[
+\boxed{
+q(a+b)
+=
+q(a)+q(b)+\operatorname{wrap}(a,b).
+}
+\tag{C5-carry}
+\]
+
+#### (C6) Exact integral \(K_1\)-lift and the \(x\)-free criterion
+
+Let \(M>D'h\), put
+
+\[
+i=i(M),
+\qquad
+a=\frac{M-ih}{e_1},
+\]
+
+and write uniquely
+
+\[
+\lambda
+=
+\sum_{r=0}^{f_1-1}\lambda_r\eta^r,
+\qquad
+\lambda_r\in\mathbf F_Q.
+\]
+
+Define
+
+\[
+\boxed{
+L_M(\lambda)
+=
+\sum_{r=0}^{f_1-1}
+\widetilde{\lambda_r}
+x^{i+e_1r}\pi^{a-rh}.
+}
+\tag{C6-lift}
+\]
+
+Then
+
+\[
+L_M(\lambda)\in\widehat O[x],
+\qquad
+\deg L_M(\lambda)<D',
+\qquad
+dv(L_M(\lambda))=M
+\]
+
+for \(\lambda\ne0\). Every nonzero summand has exact height \(M\), and
+
+\[
+\boxed{
+\operatorname{res}\!\left(
+\frac{L_M(\lambda)(\theta)}
+{n(M)(\theta)}
+\right)
+=
+\lambda.
+}
+\tag{C6-residue}
+\]
+
+For \(\lambda\ne0\),
+
+\[
+\boxed{
+L_M(\lambda)\text{ is an }x\text{-free monomial}
+\iff
+i(M)=0
+\text{ and }
+\lambda\in\mathbf F_Q.
+}
+\tag{C6-x-free}
+\]
+
+The hypothesis \(M>D'h\) is the simple sufficient domain used by all live consumers here. This theorem makes no universal full-slot assertion at lower heights.
+
+In the composed-key application, put
+
+\[
+r=f_2-t,
+\qquad
+M=ru_2>D'h.
+\]
+
+Then
+
+\[
+L_{ru_2}\bigl(c_t\eta^{W(t)}\bigr)
+\]
+
+has coherent digit \(c_t\eta^{W(t)}\) and multiplicative coefficient \(c_t\).
+
+If the tower additionally has
+
+\[
+u_2>e_2D'h,
+\]
+
+every monomial in this lift, after multiplication by a monomial of \(\Phi'^{e_2t}\), clears the outer side by at least
+
+\[
+\boxed{
+\frac{r(u_2-e_2D'h)}{e_1}>0.
+}
+\tag{C6-clearance}
+\]
+
+Collection and \(\Phi'\)-carry can cancel terms or move them upward, but cannot create a term below that side.
+
+#### (C7) WELD-M-PKG interface and scope fence
+
+Let
+
+\[
+\mathbf T_T
+=
+(\mathbf T_{M0},\mathbf T_{M1},\mathbf T_{M2},
+ \mathbf T_{M3},\mathbf T_{M4})
+\]
+
+denote the anchored five-field package of WELD-M-PKG. T1 relates to its fields only as follows:
+
+| Package field | T1 datum available to that field |
+|---|---|
+| \(M0\), division chains | Common tower and canonical division-chain anchor; no new identity is proved here. |
+| \(M1\), shear and \(w_m=v_{m+1}\) | The carrier unit \(w_i\) and letter recursion (C1); the shear, equality, and membership fences remain supplier facts. |
+| \(M2\), per-slot character transport | The dictionary and canonical read in (C3), together with the origin correction (C4). |
+| \(M3\), multiplication transport | The cocycle/telescope (C2) and canonical twist in (C3), only on the scored stratum. |
+| \(M4\), lift covariance | The exact-height formulas (C5)–(C6), only at W2-C3’s accepted fence. |
+
+Accordingly,
+
+\[
+\boxed{
+\begin{gathered}
+\text{T1 organizes five named fields around one tower cocycle;}\\
+\text{it proves no cross-face coherence theorem.}
+\end{gathered}
+}
+\tag{C7-scope}
+\]
+
+It also proves no uniqueness of the gauge. Gauges with a fixed coboundary may differ by a character. WELD-M-PKG is an existence package assembled field by field, and T1 neither identifies its heterogeneous fields as restrictions of one map nor supplies compatibility beyond the anchors explicitly displayed in the package theorem.
+
+## 2. Proof
+
+### 2.1 Letter recursion
+
+Divide the defining fractions for \(z_{i+1}\) and \(\eta_{i+1}\):
+
+\[
+z_{i+1}
+=
+\eta_{i+1}
+\operatorname{res}\!\left(
+\frac{\widehat n_i(u_{i+1})}
+{\pi_{i+1}^{u_{i+1}}}
+\right).
+\]
+
+Both normalizers have height \(u_{i+1}\), so the quotient has value zero. Successively remove the highest key by the corresponding value-zero tower relation. Coprimality forces the highest exponent into the required ramification-index class; iteration terminates at a value-zero \(x,\pi\)-monomial, hence a power of \(x^{e_1}/\pi^h\). This proves (C1-general) and the asserted reduction algorithm.
+
+At level \(2\), with \(u=u_2\),
+
+\[
+\frac{\widehat n_1(u)}{\pi_2^u}
+=
+x^{i(u)-\ell_1u}
+\pi^{a(u)-\ell'_1u}.
+\]
+
+The congruences
+
+\[
+i(u)h\equiv u\equiv\ell_1uh\pmod {e_1}
+\]
+
+give
+
+\[
+i(u)
+=
+\ell_1u
+-
+e_1
+\left\lfloor
+\frac{\ell_1u}{e_1}
+\right\rfloor.
+\]
+
+The value-zero equation supplies the corresponding \(\pi\)-exponent, so the quotient is
+
+\[
+\left(\frac{x^{e_1}}{\pi^h}\right)^{
+-\lfloor\ell_1u/e_1\rfloor}.
+\]
+
+Taking residues proves (C1-level-2).
+
+### 2.2 Cocycle and telescope
+
+The reduced representative of \(i(a)+i(b)\) is \(i(a+b)\). Hence
+
+\[
+i(a)+i(b)
+=
+i(a+b)+e_1\operatorname{wrap}(a,b).
+\]
+
+Height additivity gives
+
+\[
+a(a)+a(b)
+=
+a(a+b)-h\operatorname{wrap}(a,b),
+\]
+
+which proves (C2-wrap). Comparing the two parenthesizations of
+
+\[
+\widehat n_i(a)\widehat n_i(b)\widehat n_i(c)
+\]
+
+proves (C2-cocycle).
+
+For \(u=u_{i+1}\),
+
+\[
+\frac{\widehat n_i(u)^{s+1}}
+{\widehat n_i((s+1)u)}
+=
+\frac{\widehat n_i(u)^s}
+{\widehat n_i(su)}
+\frac{\widehat n_i(su)\widehat n_i(u)}
+{\widehat n_i((s+1)u)}.
+\]
+
+Taking residues proves the recursion.
+
+At level \(1\), reducing the \(x\)-exponent \(s\,i(u_2)\) modulo \(e_1\) gives exactly
+
+\[
+\left\lfloor\frac{s\,i(u_2)}{e_1}\right\rfloor
+\]
+
+copies of \(x^{e_1}/\pi^h\), proving (C2-level-1) and the positive \(\eta^{W(t)}\) sign.
+
+### 2.3 Corrected key and the three reads
+
+If a height-\(su\) element has coherent digit \(\Gamma\), division first by \(\widehat n_i(su)\) and then by \(\widehat n_i(u)^s\) gives
+
+\[
+c^{\mathrm{mult}}
+=
+\Gamma
+\operatorname{res}\!\left(
+\frac{\widehat n_i(su)}
+{\widehat n_i(u)^s}
+\right)
+=
+\Gamma\vartheta_{i,s}^{-1}.
+\]
+
+This proves the dictionary. Choosing
+
+\[
+\Gamma_t=c_t\vartheta_{i,f-t}
+\]
+
+therefore makes the multiplicative coefficient exactly \(c_t\), proving the corrected-key and degeneracy claims.
+
+Put
+
+\[
+N=\widehat n_i(u),
+\qquad
+M_s=\widehat n_i(su).
+\]
+
+At a consumed site, ladder multiplicativity and the value-zero rule give
+
+\[
+w_i^s
+=
+R(N^s)
+=
+R(M_s)\operatorname{res}(N^s/M_s)
+=
+R(M_s)\vartheta_{i,s}.
+\]
+
+Thus
+
+\[
+R(M_s)
+=
+w_i^s\vartheta_{i,s}^{-1},
+\]
+
+which is the B-law. Multiplying by a coherent digit proves (C3-canonical-read).
+
+At the corrected key, the inverse telescope factors cancel slotwise, and summing gives
+
+\[
+y^f-\sum_{t<f}c_tw_i^{f-t}y^t
+=
+w_i^f\psi(y/w_i).
+\]
+
+Scaling the variable by a unit transports factorizations bijectively and preserves degrees, multiplicities, and irreducibility.
+
+### 2.4 Attained-origin bridge
+
+Substitution of
+
+\[
+s_{\mathrm{act}}=s_{\min}+\nu e
+\]
+
+gives
+
+\[
+t_{\mathrm{Def}}
+=
+\frac{s_{\min}+\nu e-\ell\beta}{e}
+=
+\nu-t_{\min}.
+\]
+
+Exponentiating by \(z\) proves (C4-origin).
+
+The support and degree formulas follow because multiplication by \(y^\nu\) translates ordinary exponents, whereas multiplication by a unit and substitution by a unit preserve them.
+
+### 2.5 Normalized slot coefficient and carry
+
+For \(j=i+e_1t\), direct division gives
+
+\[
+\frac{a_j\xi^j}{n(k)(\xi)}
+=
+\left(
+a_j\pi^{-(k-jh)/e_1}
+\right)
+\left(
+\xi^{e_1}\pi^{-h}
+\right)^t.
+\]
+
+Indices outside the class \(i\bmod e_1\) have strictly larger value and vanish after reduction; pins above \(k\) also reduce to zero. Summing the surviving residues proves (C5-normalizer-read).
+
+Composing with
+
+\[
+\operatorname{res}
+\left(
+\frac{n(k)}
+{\varpi^k}
+\right)
+=
+\eta^{-q(k)}
+\]
+
+proves (C5-varpi-read).
+
+Finally,
+
+\[
+\begin{aligned}
+e_1\bigl(q(a+b)-q(a)-q(b)\bigr)
+&=
+i(a)+i(b)-i(a+b)\\
+&=
+e_1\operatorname{wrap}(a,b),
+\end{aligned}
+\]
+
+which proves (C5-carry).
+
+### 2.6 Exact integral lift
+
+For \(0\le r<f_1\),
+
+\[
+i+e_1r\le D'-1,
+\]
+
+and
+
+\[
+a-rh
+=
+\frac{M-(i+e_1r)h}{e_1}
+\ge0
+\]
+
+because \(M>D'h\). Thus every displayed term is integral and has degree less than \(D'\).
+
+Its height is
+
+\[
+e_1(a-rh)+(i+e_1r)h=M.
+\]
+
+After division by \(n(M)\), its residue is \(\lambda_r\eta^r\). Basis independence prevents cancellation and proves (C6-residue).
+
+The \(x\)-exponents \(i+e_1r\) are distinct and nonnegative. A nonzero lift is one \(x\)-free monomial exactly when only \(r=0\) occurs and \(i=0\), equivalently when
+
+\[
+i(M)=0
+\quad\text{and}\quad
+\lambda\in\mathbf F_Q.
+\]
+
+The corrected-key and clearance applications are then the substitutions stated in (C6).
+
+### 2.7 Package boundary
+
+WELD-M-PKG is proved by choosing five witnesses and applying a product/record constructor. Conclusions (C1)–(C6) give common tower formulas that individual fields may cite, exactly as listed in (C7).
+
+Nothing in those proofs supplies:
+
+- a map with all five heterogeneous source and target types;
+- a compatibility square between distinct fields; or
+- uniqueness of the gauge.
+
+Hence only the organization claim in (C7-scope) follows.
+
+## 3. Absorption map
+
+“Verbatim” means that, after replacing local names by the displayed T1 names, the certified local mathematical display is an immediate specialization with no added hypothesis or conclusion.
+
+“Adapted” means that T1 deliberately changes notation, carries a certified domain or fence, or separates a normalization that the old annex conflated.
+
+| Annex | Local site | T1 conclusion | Mode and specialization |
+|---|---|---|---|
+| A1 GENHN | GENHN-LIFT | C6 | **Verbatim** on \(M>D'h\): same component formula, integrality, degree, exact height, and residue. |
+| A1 GENHN | Corrected T(b)\('\) coefficient | C2, C3, C6 | **Verbatim** with \(M=(f_2-t)u_2\): \(L_M(c_t\eta^{W(t)})\); the clearance bound is retained. |
+| A2 HETOW | Wrap/carry preamble | C2, C5 | **Verbatim**: the wrap identity and \(q(a+b)=q(a)+q(b)+\operatorname{wrap}(a,b)\). |
+| A2 HETOW | Telescope and corrected key | C2, C3 | **Verbatim** after \(s=f_2-t\); T1 makes the positive \(\eta^{W(t)}\) sign explicit. |
+| A3 GENTOW1 | Corrected coefficient pin | C3 | **Adapted only in notation**: the local coherent digit \(\gamma_t\) is T1’s \(\Gamma_t\), avoiding collision with HE6’s \(\gamma_k(A)\). |
+| A3 GENTOW1 | Value-blind budgets/floors | C3 | **Adapted/fenced**: corrected and naive lifts have equal exact height where the integral lift exists; budgets and floors themselves are not reproved. |
+| A4 GENTOW3 | Gauge-annex corrected key | C3, C6 | **Verbatim** on the live lift domain. |
+| A4 GENTOW3 | \(x\)-free rescope | C6 | **Verbatim**: \(x\)-free iff \(i(M)=0\) and the digit lies in \(\mathbf F_Q\); T1 withdraws any full-slot claim below \(D'h\). |
+| A5 GENTOW4 | S0 naive key | C3, C6 | **Adapted** by the explicit domain and corrected coherent digit. |
+| A5 GENTOW4 | 4.1(c)/S3 bridge | C3, C4 | **Adapted**: the \(\vartheta\)-cancellation is verbatim, but any raw-print identification must also carry \(z^\nu\). |
+| A5 GENTOW4 | BOX-3 no-\(\eta\) axis | C2, C3 | **Verbatim**: a \(\vartheta=1\) battery cannot test naive versus corrected. |
+| A5 GENTOW4 | S4 residue-one relation | C2, C6 | **Verbatim**: \(\eta=1\) is not \(f_1=1\), and does not make arbitrary digits \(x\)-free. |
+| A6 GENTOW6 | Corrected coefficient/full support | C3, C6 | **Adapted**: full support is proved on \(M>D'h\), with normalized coefficients when a slot is read coefficientwise. |
+| A6 GENTOW6 | 6.3 scalar read | C5, C6 | **Materially adapted**: use \(\gamma_k(A)\) with coefficient normalizers; the bare-residue formula is not absorbed. Overflow uses the actual top exponent. |
+| A7 GENTOW2 | S5.1 letter formula | C1 | **Verbatim** at level \(2\). |
+| A7 GENTOW2 | S5.2 B-law | C3 | **Verbatim** after the explicit inverse orientation \(\Theta=\vartheta^{-1}\), at sites where ladder multiplicativity is discharged. |
+| A7 GENTOW2 | Factor-pattern invariance | C3 | **Verbatim**: \(\psi^{(w)}=w^f\psi(y/w)\). |
+
+Supporting context, not counted as a separate A1–A7 annex:
+
+- GENTOW5’s definitions of \(w\) and \(\psi^{(w)}\) are absorbed verbatim; its dictionary is absorbed with the \(\Gamma/\gamma_k\) notation separation.
+- GRTJA’s JA-EPS-CORR is absorbed verbatim in (C4), including the exact root-of-unity criterion \(z^\nu=1\).
+- WELD-M-PKG is not absorbed as a stronger theorem: (C7) is only an interface map and scope fence.
+- HE6-0\(''\) is absorbed with adapted names but with its corrected normalized coefficient formula verbatim.
+
+The B-law rows consume only ladder-monomial multiplicativity and the value-zero digit read at their stated sites. At \(i=2\), these are supplied by GENTOW2-B\(''\). For \(i\ge3\), they must cite the accepted status, if any, of the level-general GENTOW5-W(i) supplier. T1 does not promote that sitewise result to an unproved theorem about all homogeneous initial forms.
+
+## 4. Verification record and revision battery
+
+### 4.1 Inherited sealed evidence
+
+The 2026-08-10 sealed battery remains historical evidence, not a certification of this revised text. Its computed surface had 83 computed-versus-registered rows plus two literal bookkeeping rows.
+
+All substantive rows were green except the preregistered F4-JOINT display slip. The correct value is
+
+\[
+\psi(y)=y^2+y+\omega,
+\qquad
+w=\omega
+\quad\Longrightarrow\quad
+\boxed{
+\psi^{(w)}(y)=y^2+\omega y+1.
+}
+\]
+
+The old instrument’s orientation tooth scored only one B-unit and did not score the promised full three-slot canonical vector. Neither defect is carried forward as a passed check.
+
+The inherited exact frames remain:
+
+| Frame | Essential axes |
+|---|---|
+| X | \(p=3\), \(e_1=2,f_1=1,h=1,\eta=2,u_2=3\); corrected versus naive p-adic split. |
+| FR-G | The GENTOW4 partial-side witness and separator regression. |
+| F4-JOINT | \(K_1=\mathbf F_4\), \(e_1=2,f_1=2,h=1,\eta=w=\omega\), live wrap, quadratic and \(\mu=3\) legs. |
+| LP/LD | Recorded GENTOW2 letter and inverse-cocycle geography. |
+
+The inherited exact predictions are unchanged except for the corrected F4-JOINT value above. At the F4-JOINT quadratic,
+
+\[
+R_{\mathrm{corr}}=y^2+y+\omega,
+\qquad
+R_{\mathrm{naive}}=y^2+y+1,
+\qquad
+\psi^{(w)}=y^2+\omega y+1.
+\]
+
+At its \(\mu=3\) leg,
+
+\[
+(\vartheta_0,\vartheta_1,\vartheta_2,\vartheta_3)
+=
+(1,1,\omega,\omega),
+\]
+
+\[
+(\Gamma_2,\Gamma_1,\Gamma_0)
+=
+(1,\omega,\omega),
+\]
+
+\[
+\bigl(
+u(\beta_2),u(\beta_1),u(\beta_0)
+\bigr)
+=
+(\omega,\omega,\omega^2),
+\]
+
+and the full canonical coefficient vector is
+
+\[
+(\omega,\omega^2,1),
+\]
+
+giving \((y+\omega)^3\).
+
+### 4.2 Required revision checks
+
+The new hostile battery must add the following scored rows before this revision can receive a clean grade.
+
+1. **GENHN-LIFT boundary.** Check integrality, degree, height, and residue for several \(M>D'h\), including \(f_1\ge2\). Also instantiate a low-height counterexample such as
+
+   \[
+   (e_1,f_1,h,M)=(1,2,1,0)
+   \]
+
+   to ensure the code does not infer a full \(K_1\)-slot from integrality of \(n(M)\) alone.
+
+2. **Positive-wrap sign.** Re-run the corrected/naive and wrong-sign teeth. Exact coefficient equality, not merely factor pattern, must be scored.
+
+3. **JA origin.** For \(\nu=0\), verify raw and canonical factors agree. For \(\nu>0\) and \(z^\nu\ne1\), verify the raw equality fails by exactly \(z^\nu\). Add a root-of-unity case with \(\nu>0\) and \(z^\nu=1\), so the battery rejects the overstatement “iff \(\nu=0\).” Score the support and degree translation by \(\nu\).
+
+4. **HE6 coefficient normalization.** Use a tying coefficient of positive valuation for which
+
+   \[
+   \operatorname{res}(a_j)=0
+   \]
+
+   but
+
+   \[
+   \operatorname{res}\!\left(
+   a_j\pi^{-(k-jh)/e_1}
+   \right)\ne0.
+   \]
+
+   Score (C5-normalizer-read), (C5-varpi-read), and the \(-q(k)\) sign.
+
+5. **Full orientation tooth.** With \(\Theta\) intentionally replaced by \(\vartheta\), score all three entries of the canonical \(\mu=3\) vector, not only the \(s=2\) B-unit.
+
+6. **Weld scope lint.** Fail the document check if T1 contains “one transport map,” “unique gauge,” or an unqualified cross-face compatibility claim. Confirm every \(M3\) use retains the scored-stratum fence and every \(M4\) use the accepted W2-C3 fence.
+
+The four original planted teeth remain mandatory:
+
+- gauge-naive;
+- wrong-sign;
+- misindexed telescope; and
+- inverse-orientation confusion.
+
+Every tooth must fire.
+
+## 5. Honesty ledger
+
+1. A closed canonical-letter exponent vector is proved only at level \(2\). General depth has a terminating reduction algorithm.
+2. The B-law is conditional on the stated sitewise residual-read facts. T1 does not assume or prove multiplicativity on all homogeneous initial forms.
+3. \(\vartheta_{i,s}\) is the building/dictionary orientation, while
+
+   \[
+   \Theta_i(t)=\vartheta_{i,f-t}^{-1}
+   \]
+
+   is the B-law orientation.
+4. The canonical residual is
+
+   \[
+   \psi^{(w)}=w^f\psi(y/w).
+   \]
+
+   This preserves factor patterns, not literal coefficients.
+5. The canonical minimal-grid factor \(\varepsilon\) and the raw print factor differ by \(z^\nu\). Raw equality is equivalent to \(z^\nu=1\), not to \(\nu=0\) unless an additional order hypothesis makes those equivalent.
+6. The full integral level-one lift is proved here on \(M>D'h\). No universal full \(K_1\)-slot is claimed at lower heights.
+7. The HE6 digit is \(\gamma_k(A)\) with coefficient normalizers. It is different from the coherent corrected-key digit \(\Gamma_t\).
+8. \(\eta=1\) removes the level-one wrap correction but does not imply \(f_1=1\) or make arbitrary digits \(x\)-free.
+9. Gauge-invariant residual factor patterns become splitting types only through the surrounding tower correctness theorem.
+10. T1 does not prove note-specific budgets, floors, fullness counts, separator inequalities, clearance outside (C6-clearance), or the remaining extraction and attainment claims of GENTOW6 6.3\('\).
+11. WELD-M-PKG is five heterogeneously typed fields assembled into one named record. T1 proves neither a single cross-face map nor compatibility beyond the package’s displayed anchors.
+12. Gauge uniqueness is not asserted. Fixed-coboundary gauges form a torsor under the available character group.
+13. F4-JOINT remains a finite graded-carrier model, not an explicit p-adic realization. Its formal sigma values are not PARI measurements.
+14. The explicit joint p-adic realization remains open and is not required for the algebraic lemma.
+
+## 6. CHANGES from the 2026-08-10 composition
+
+| Revision | Driver | Annex effect |
+|---|---|---|
+| Replaced the conditional old C4 lift by (C6) on the uniform live domain \(M>D'h\), including integrality, residue, degree, and clearance. | GENHN-LIFT and the later occupied-height tightening | A1 GENHN becomes verbatim; A4 GENTOW3 and A6 GENTOW6 are absorbed with the live-domain fence. |
+| Made \(L_{(f_2-t)u_2}(c_t\eta^{W(t)})\) the level-one corrected coefficient, with positive wrap exponent. | GENHN-LIFT application and HETOW wrap correction | A1 and A2 are verbatim; A3, A5, and A6 specialize with notation adaptation. |
+| Renamed coherent digits from \(\gamma_t\) to \(\Gamma_t\). | HE6’s corrected, reserved \(\gamma_k(A)\) | A3, A5, A6, and the GENTOW5 dictionary rows are notational adaptations; no formula changes. |
+| Added the normalized coefficient formula (C5-gamma) and the \(\eta^{-q(k)}\) canonical-normalizer factor. | HE6 F-1 | A6’s scalar-reading site is materially adapted; the old bare-residue formula is rejected rather than absorbed. |
+| Added (C4-origin) and the \(\nu\)-translated support/degree law. | JA-EPS-CORR and JA-MIN-CORR | A5 bridge consumption is adapted: tower \(\vartheta\)-cancellation survives, but raw print equality carries \(z^\nu\). |
+| Stated raw print/canonical equality as iff \(z^\nu=1\), with \(\nu=0\) only a sufficient special case. | JA-EPS-CORR | Prevents a new false “iff \(\nu=0\)” strengthening. |
+| Added the five-row package interface and boxed no-cross-face-coherence fence. | WELD-M-PKG | No local annex is strengthened. T1 organizes M0–M4 citations but does not absorb or reprove the package as one map. |
+| Withdrew any gauge-uniqueness implication and recorded character-torsor ambiguity. | WELDMASTER C6 F-1/F-2 | Scope correction across all annex consumers; formulas C1–C6 are unchanged. |
+| Narrowed the residual-read carrier assumption to the ladder monomials consumed at B-law sites. | Earlier T1 G-2 plus WELD package-scoping discipline | A5/A7/GENTOW5 B-law rows remain supplier-dependent rather than globally assumed. |
+| Corrected F4-JOINT \(\psi^{(w)}\) to \(y^2+\omega y+1\) in the draft body. | Sealed P-J2 diagnosis | A7 factor-pattern absorption remains verbatim; the exact-value defect is removed. |
+| Required the orientation tooth to score the full three-slot vector. | Sealed instrument disclosure F-5 | Verification-only change; no annex statement changes. |
+| Reclassified the sealed 2026-08-10 run as inherited evidence rather than certification of the revised statement. | Revision integrity | All seven annex consumptions must be rechecked against this text. |
+
+## 7. Hostile arc plan
+
+The first hostile pass should attack, in this order:
+
+1. **Normalization composition at a live \(\nu>0\), live-wrap, \(w\ne1\) slot.** Verify that \(\vartheta\), \(w\), and \(z^\nu\) occur in distinct places and that no cancellation silently drops the attained-origin factor.
+
+2. **HE6-to-C3 digit typing.** Attempt to substitute a bare coefficient residue for \(\gamma_k(A)\), and attempt to identify \(\gamma_k(A)\) with \(\Gamma_t\) without the exact-height normalizer. A successful substitution would expose a type or normalization error.
+
+3. **Lift-domain boundary.** Probe \(M=D'h\) and lower heights, especially \(f_1>1\), for any sentence that still promises a full integral \(K_1\)-slot or silently uses one.
+
+4. **Weld scope.** Search every proof and absorption row for an inferred compatibility between M0–M4, a single-map interpretation, or gauge uniqueness. None is available from record assembly.
+
+5. **B-law supplier perimeter.** Check each A5/A7/GENTOW5 consumer against the actual accepted grade and level range of GENTOW2-B\(''\)/GENTOW5-W(i), including any unresolved \(i=1\) tie.
+
+6. **Root-of-unity exception.** Use \(\nu>0\) with \(z^\nu=1\) to refute any accidental replacement of the exact JA criterion by “only at \(\nu=0\).”
+
+7. **Sign and inverse conventions.** Re-run the positive-\(W\), wrong-sign, misindexed-telescope, and full-vector \(\Theta=\vartheta^{-1}\) teeth.
+
+8. **Consumption sweep.** For each of A1–A7, verify that the local theorem uses no stronger lift domain, raw-print equality, scalar gauge, or weld coherence than the corresponding T1 row supplies.
+
+A clean first pass must either discharge all eight attacks or return a finding with an exact statement span and a live consumer. Only after repair should the second independent hostile pass run.
+
+The acceptance gate remains two clean hostile passes plus the revised machine battery. The historical 2026-08-10 run does not count as either clean pass.
+
+
+---
+
+## r1 (2026-08-12): the three T1A gaps repaired
+
+*(Derived by the T1R1 run (gpt-5.6-sol high, runs/cert5/T1R1_output.log) from the T1A pass-1 findings; transcribed unaltered; pass 2 of the arc follows.)*
+
+## T1 r1 corrections — 2026-08-12
+
+### R1-1 — Define the base canonical letter
+
+In §1.1, immediately after
+
+\[
+\eta=\operatorname{res}\!\left(\frac{x^{e_1}}{\pi^h}\right),
+\qquad
+K_1=\mathbf F_Q(\eta),
+\]
+
+insert:
+
+> Set the base canonical residue letter
+> \[
+> \boxed{z_1:=\eta.}
+> \tag{C1-base-letter}
+> \]
+> Thus the level-two recursion below uses a defined letter; this is a notation convention, not an additional relation among higher-level letters.
+
+In §2.1, replace the final sentence
+
+> Taking residues proves (C1-level-2).
+
+with:
+
+> Taking residues and using the base convention \(z_1=\eta\) proves (C1-level-2).
+
+This makes
+
+\[
+z_2=\eta_2z_1^{-\lfloor\ell_1u_2/e_1\rfloor}
+\]
+
+identical to the computed residue
+
+\[
+\eta_2\eta^{-\lfloor\ell_1u_2/e_1\rfloor}.
+\]
+
+### R1-2 — Normalize every height-zero normalizer
+
+In §1.1, replace
+
+> At a general level \(i\), fix exact-height normalizers \(\widehat n_i(m)\) in the prescribed bounded-exponent tower normal form, stage data
+
+with:
+
+> At a general level \(i\), fix exact-height normalizers \(\widehat n_i(m)\) in the prescribed bounded-exponent tower normal form, with the height-zero normalization
+> \[
+> \boxed{\widehat n_i(0)=1.}
+> \tag{C2-zero-normalizer}
+> \]
+> Fix also stage data
+
+In §2.2, replace
+
+> Comparing the two parenthesizations of
+> \[
+> \widehat n_i(a)\widehat n_i(b)\widehat n_i(c)
+> \]
+> proves (C2-cocycle).
+
+with:
+
+> Comparing the two parenthesizations of
+> \[
+> \widehat n_i(a)\widehat n_i(b)\widehat n_i(c)
+> \]
+> proves the cocycle identity. The convention \(\widehat n_i(0)=1\) gives
+> \[
+> \tau_i(0,a)=\tau_i(a,0)=1
+> \]
+> and also
+> \[
+> \vartheta_{i,0}
+> =
+> \operatorname{res}\!\left(\widehat n_i(0)^{-1}\right)
+> =1.
+> \]
+> Exact-height equality gives \(\vartheta_{i,1}=1\). This proves the normalized assertions in (C2-cocycle) and (C2-recursion).
+
+### R1-3 — Respect the carrier implication \(\eta=1\Rightarrow f_1=1\)
+
+In the absorption map, replace the A5 row
+
+> | A5 GENTOW4 | S4 residue-one relation | C2, C6 | **Verbatim**: \(\eta=1\) is not \(f_1=1\), and does not make arbitrary digits \(x\)-free. |
+
+with:
+
+> | A5 GENTOW4 | S4 residue-one relation | C2, C6 | **Adapted to the carrier**: because \(K_1=\mathbf F_Q(\eta)\) with basis \(1,\eta,\ldots,\eta^{f_1-1}\), the specialization \(\eta=1\) forces \(K_1=\mathbf F_Q\) and hence \(f_1=1\). It removes the level-one wrap correction, but it does not by itself make an arbitrary lift \(x\)-free: (C6-x-free) still additionally requires \(i(M)=0\). |
+
+Replace honesty-ledger item 8 with:
+
+> 8. Under the stated carrier, \(\eta=1\) forces \(K_1=\mathbf F_Q\) and \(f_1=1\); these are not independent specialization axes. The condition \(\eta=1\) removes the level-one wrap correction, but it does not by itself make arbitrary digits \(x\)-free, because (C6-x-free) still requires \(i(M)=0\).
+
+Add this row to §6:
+
+> | Defined \(z_1=\eta\), normalized \(\widehat n_i(0)=1\), and corrected the A5 residue-one specialization to record \(\eta=1\Rightarrow f_1=1\) under the carrier. | T1A hostile pass, findings G1–G3, 2026-08-12 r1 | Repairs the level-two letter formula and normalized cocycle endpoints; A5 is adapted rather than falsely marked verbatim. |
