@@ -1,0 +1,18 @@
+Finding 1 — DISCHARGED
+
+ANNEX B cures the formal (A1)-indexing defect:
+
+- Fixing \(\lambda\) gives disjoint families with a single coefficient and splitting type because \(\lambda\) is already part of each deterministic raw key.
+- All five residual censuses are correct, including for small \(q\), where some families simply have zero coefficient.
+- The refined counts are
+  \[
+  I=11,\qquad II=11,\qquad B=12\cdot2=24,
+  \]
+  hence \(46\) TRP and \(46+4+3=53\) complete formal families.
+- Refinement preserves the parameter sets, thresholds, exponents, disjoint union, total counts, and density formulas.
+
+Finding 3 — DISCHARGED
+
+ANNEX C correctly withdraws Annex A’s false “changes no statement’s content” claim. Restricting from every lift to every disc-\(\ne0\) lift is a strict weakening. The witness \(y^3+t\) over \(\mathbf F_3[[t]]\) satisfies \(F'=0\) and \(\operatorname{disc}(F)=0\), so it belongs to the original quantified domain but has no separable splitting type and is excluded by the corrected assertion. The downstream argument only consumes the disc-\(\ne0\) form, so its conclusions remain intact.
+
+OUTCOMES: DISCHARGED, DISCHARGED
