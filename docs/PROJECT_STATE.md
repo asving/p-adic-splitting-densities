@@ -3963,3 +3963,21 @@ numerical-experiment fallback), E12/E13 GENTOW5/GENTOW3 residuals
 NEXT: fold cert2 outputs as they land (same discipline: verify by
 hand, transcribe unaltered, ledger + commit); crash recovery: trim
 NAMES to remaining runs, never relaunch whole.
+
+**2026-08-12 APPEND #27a (micro) — 15/29 CERTIFIED.** Since #27: D2
+discharges landed (HE6, HE3 CERTIFIED; W-12 3/3 + HE6R1 3/3
+discharged, their proof units remain; GENHN 4/5 + the occupied-height
+corrigendum folded at sol's m > D′h fix, one re-confirm owed; GENIND
+re-pass CHALLENGE → C2-G1/G2 + side-length display, cert3); annex
+folds E9/E10/E11 verified + transcribed (W-11, SIGMALAW,
+GENTOW6_BOXES all CERTIFIED). REMAINING FOLD QUEUE (verify by hand →
+transcribe unaltered w/ attribution bracket → ledger → commit):
+E1_liftcorner (2 REAL + 1 RESOLVED + 1 ARTIFACT + 1 OBSTRUCTED),
+E2_grtja (4 REAL), E3–E8 + E12/E13 as they land
+(runs/cert2/progress.txt). CERT3 QUEUE TO ASSEMBLE when cert2 drains:
+GENIND-C2 round-2 repair (C2-G1: derive M* ≥ e(N−1−H) from (CS-1) at
+embedded/mixed genres; C2-G2: well-founded descent; side-length
+S ≥ L display), GENHN A(ii)-corrigendum re-confirm, E-run discharge
+confirmations, GENTOW residual confirmations. Proof units parked:
+W-12 all-degree history lemma + GENHN f₁ ≥ 2 count re-run (both
+numerical-first, task list).
