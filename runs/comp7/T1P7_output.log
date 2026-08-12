@@ -1,0 +1,65 @@
+Not clean. The core C1–C7 algebra survives the hostile checks, but two exported absorption claims are not justified at their stated scope.
+
+### G1 — The zero-lift correction was not propagated into the A3 pin
+
+A3 asserts unconditionally:
+
+> \[
+> dv_1(\widehat k_t)=M_t.
+> \]
+
+But r4 explicitly establishes:
+
+> \[
+> \operatorname{lift}_i(0;m)=0,
+> \qquad
+> dv_i(0)=+\infty.
+> \]
+
+Only \(c_0\ne0\) is assumed; coefficients \(c_t\) for \(t>0\) may vanish. When \(c_t=0\),
+
+\[
+\Gamma_t=c_t\eta^{W(t)}=0,\qquad
+\widehat k_t=L_{M_t}(0)=0,
+\]
+
+so \(dv_1(\widehat k_t)=+\infty\), not \(M_t\). Therefore the displayed A3 consumption implication is false for an allowed coefficient slot.
+
+The same scope tension appears in A6’s unqualified phrase “with its full displayed support and exact height,” although C6 supplies exact height only for \(\lambda\ne0\).
+
+Classification: GAP — false exported pin on the allowed zero-coefficient branch.
+
+### G2 — The A2 carry derivation silently requires a binary second-level carry
+
+The imported interface states only
+
+> \[
+> w_2=\left\lfloor\frac{s(k)+s(k')}{e_2}\right\rfloor,
+> \qquad
+> m(k+k')=m(k)+m(k')+w_2u_2.
+> \]
+
+It does not state \(0\le s(k)<e_2\), or equivalently \(w_2\in\{0,1\}\). Nevertheless the proof claims that two uses of C5-carry yield
+
+\[
+Q(m+m'+w_2u_2)-Q(m)-Q(m')
+=
+\operatorname{wrap}_1(m,m')
++w_2\!\left(Q(u_2)+\operatorname{wrap}_1(m+m',u_2)\right).
+\]
+
+That formula follows from C5-carry only when \(w_2=0\) or \(1\). For larger \(w_2\), successive additions of \(u_2\) generally have different wrap terms.
+
+For example, take \(e_1=2,h=1,i_0=1\), so \(q(n)=\lfloor n/2\rfloor\), and let
+
+\[
+m=m'=0,\qquad u_2=1,\qquad w_2=2.
+\]
+
+These values are not excluded by the displayed supplier interface. The left side is \(q(2)=1\), while the claimed right side is \(0\). Thus the third pinned HETOW display is not a consequence of the named interface plus C5 as written.
+
+Classification: GAP — the re-scoped A2 implication lacks a supplier fact used essentially by its proof.
+
+The positive wrap sign, \(\Theta=\vartheta^{-1}\), canonical \(w\)-twist, \(-q(k)\) sign, \(z^\nu\) bridge, general-stage height typing, and C7 weld fences otherwise remain mutually consistent.
+
+VERDICT: FINDINGS | FINDINGS: 0C + 2G + 0m
