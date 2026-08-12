@@ -1,0 +1,67 @@
+GENHN-ERR-1 CORRECTED-FLOOR STAGE COUNT
+Q=2, K=F_4, count gauge=untwisted, arithmetic=exact
+
+==============================================================================
+F=(e1,f1,mu)=(1,2,2)
+D'=2  S=e1*h=1  B=D'*h=2  stage-cap M=7
+CORRECTED PHI'-COEFFICIENT RANGES
+  A1: i=0: coefficient heights r=3..7
+  A1: i=1: coefficient heights r=2..6
+  A0: i=0: coefficient heights r=5..7
+  A0: i=1: coefficient heights r=4..6
+SLOTS=8  MEASURED-TOTAL=65536  CORRECTED-PREDICTED-TOTAL=65536
+OLD-S-NODE-TOTAL=4194304  OLD/CORRECTED=64
+PER-KEY TABLE
+  2SIDED(w=3,u=7)                            measured=      2304 predicted=      2304 sealed=      2304 OK
+  ALPHA(k=3,s=1) -> RAM(u=7)                 measured=       768 predicted=       768 sealed=         0 MISMATCH
+  ALPHA(k=3,s=1) -> UND                      measured=       256 predicted=       256 sealed=      1024 MISMATCH
+  ALPHA(k=3,s=1+a) -> RAM(u=7)               measured=       768 predicted=       768 sealed=         0 MISMATCH
+  ALPHA(k=3,s=1+a) -> UND                    measured=       256 predicted=       256 sealed=      1024 MISMATCH
+  ALPHA(k=3,s=a) -> RAM(u=7)                 measured=       768 predicted=       768 sealed=         0 MISMATCH
+  ALPHA(k=3,s=a) -> UND                      measured=       256 predicted=       256 sealed=      1024 MISMATCH
+  INERT(k=3)                                 measured=      6144 predicted=      6144 sealed=      6144 OK
+  RAM(u=5)                                   measured=     49152 predicted=     49152 sealed=     49152 OK
+  RAM(u=7)                                   measured=       768 predicted=       768 sealed=       768 OK
+  SPLITEQ(k=3)                               measured=      3072 predicted=      3072 sealed=      3072 OK
+  SPLTAIL(w=3)                               measured=       768 predicted=       768 sealed=       768 OK
+  UND                                        measured=       256 predicted=       256 sealed=       256 OK
+  RAW-ALPHA-FIBER k=3: measured=3072 predicted=3072
+  MASS-BRACKET-REFERENCE k=3: 3072 (not scored: different ghost normalization)
+BOUNDARY-PIN CENSUS
+  height=7 comp=1: measured=1 predicted=Q^comp-1=1 OK
+
+==============================================================================
+MIXED=(e1,f1,mu)=(2,2,2)
+D'=4  S=e1*h=2  B=D'*h=4  stage-cap M=11
+CORRECTED PHI'-COEFFICIENT RANGES
+  A1: i=0: coefficient heights r=3..5
+  A1: i=1: coefficient heights r=2..5
+  A1: i=2: coefficient heights r=2..4
+  A1: i=3: coefficient heights r=1..4
+  A0: i=0: coefficient heights r=5..5
+  A0: i=1: coefficient heights r=4..5
+  A0: i=2: coefficient heights r=4..4
+  A0: i=3: coefficient heights r=3..4
+SLOTS=10  MEASURED-TOTAL=1048576  CORRECTED-PREDICTED-TOTAL=1048576
+OLD-S-NODE-TOTAL=4294967296  OLD/CORRECTED=4096
+PER-KEY TABLE
+  2SIDED(w=5,u=11)                           measured=     36864 predicted=     36864 sealed=     36864 OK
+  ALPHA(k=5,s=1) -> RAM(u=11)                measured=     12288 predicted=     12288 sealed=         0 MISMATCH
+  ALPHA(k=5,s=1) -> UND                      measured=      4096 predicted=      4096 sealed=     16384 MISMATCH
+  ALPHA(k=5,s=1+a) -> RAM(u=11)              measured=     12288 predicted=     12288 sealed=         0 MISMATCH
+  ALPHA(k=5,s=1+a) -> UND                    measured=      4096 predicted=      4096 sealed=     16384 MISMATCH
+  ALPHA(k=5,s=a) -> RAM(u=11)                measured=     12288 predicted=     12288 sealed=         0 MISMATCH
+  ALPHA(k=5,s=a) -> UND                      measured=      4096 predicted=      4096 sealed=     16384 MISMATCH
+  INERT(k=5)                                 measured=     98304 predicted=     98304 sealed=     98304 OK
+  RAM(u=11)                                  measured=     12288 predicted=     12288 sealed=     12288 OK
+  RAM(u=9)                                   measured=    786432 predicted=    786432 sealed=    786432 OK
+  SPLITEQ(k=5)                               measured=     49152 predicted=     49152 sealed=     49152 OK
+  SPLTAIL(w=5)                               measured=     12288 predicted=     12288 sealed=     12288 OK
+  UND                                        measured=      4096 predicted=      4096 sealed=      4096 OK
+  RAW-ALPHA-FIBER k=5: measured=49152 predicted=49152
+  MASS-BRACKET-REFERENCE k=5: 786432 (not scored: different ghost normalization)
+BOUNDARY-PIN CENSUS
+  height=12 comp=1: measured=1 predicted=Q^comp-1=1 OK
+  height=13 comp=1: measured=1 predicted=Q^comp-1=1 OK
+
+FINAL VERDICT: MISMATCH (F=(e1,f1,mu)=(1,2,2):ALPHA(k=3,s=1) -> RAM(u=7), F=(e1,f1,mu)=(1,2,2):ALPHA(k=3,s=1) -> UND, F=(e1,f1,mu)=(1,2,2):ALPHA(k=3,s=1+a) -> RAM(u=7), F=(e1,f1,mu)=(1,2,2):ALPHA(k=3,s=1+a) -> UND, F=(e1,f1,mu)=(1,2,2):ALPHA(k=3,s=a) -> RAM(u=7), F=(e1,f1,mu)=(1,2,2):ALPHA(k=3,s=a) -> UND, MIXED=(e1,f1,mu)=(2,2,2):ALPHA(k=5,s=1) -> RAM(u=11), MIXED=(e1,f1,mu)=(2,2,2):ALPHA(k=5,s=1) -> UND, MIXED=(e1,f1,mu)=(2,2,2):ALPHA(k=5,s=1+a) -> RAM(u=11), MIXED=(e1,f1,mu)=(2,2,2):ALPHA(k=5,s=1+a) -> UND, MIXED=(e1,f1,mu)=(2,2,2):ALPHA(k=5,s=a) -> RAM(u=11), MIXED=(e1,f1,mu)=(2,2,2):ALPHA(k=5,s=a) -> UND)
