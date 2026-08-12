@@ -1,0 +1,43 @@
+1. “**VERIFY-TARGET for the arc: the clause-(ii) census at rungs ≥ 2 … is NOT re-proved here.**” / “**(5) PROP's rung-≥2 clause-(ii) census is OWED**” — **CRITICAL**
+
+   PROP nevertheless concludes that “**the discharge lifts to every rung**,” S5 says “**ITER-LAW-n holds for EVERY lawful monic Φ₁, every n**,” and FC-2 executes that rider rewrite. The acceptance record conspicuously omits PROP from “WHAT IS ACCEPTED.” Thus an explicitly owed premise was promoted into an all-level conclusion.
+
+   Counter-configuration: two orbit members can share monicity, degree, \(w_1\), and the proved level-1 package while a rung-\(\ge2\) construction inspects a coefficient of \(\Phi_1\). Nothing proved here excludes that behavior; the owed census is exactly what would exclude it. Consequently COR 1 does not presently entail PROP or the executed S5 rewrite.
+
+2. “**NR-1's discharge is hereby at ACCEPTED grade modulo the W-2 cap.**” — **GAP**
+
+   The live fence says the opposite at the broader recorded scope: “**Under the ILNRES S1 ‘at any level’ reading a deeper-level remainder survives**” and “**this unit does not choose between them**.” FC-1 repeats the unqualified discharge claim.
+
+   Counter-configuration: let \(g_1=1\) and replace canonical \(\Phi_2\) by a lawful noncanonical lift while keeping the now-covered \(\Phi_1\). No theorem here transports reads across that deeper lift. Under ILNRES S1’s literal “at any level” interpretation, NR-1 therefore survives. Only the \(\Phi_1\) corner is established.
+
+3. “**CONTENT (sub-lemma). For monic Φ, the digits of dev(F, Φ) satisfy w₀-content ≥ w₀-content(F).**” — **GAP**
+
+   Monicity alone is insufficient; integrality of the non-leading coefficients is required. PE9 silently strengthens the hypothesis to “**Let Φ ∈ O[x] be monic**” in its purported re-derivation.
+
+   Counterexample: over \(\mathbb Q_p\), take \(\Phi=x+p^{-1}\) and \(F=x\). Then
+   \[
+   x=\Phi-p^{-1},
+   \]
+   so the remainder digit has valuation \(-1<w_0(F)=0\). The actual uses with the integral key \(\Phi_0\) survive, but the displayed sub-lemma is false as stated.
+
+4. “**Anchors and δ₁ = 0 products are π^uΦ₀^sK^S with s < e₀ < deg**” — **MINOR**
+
+   The literal inequality is false at \(d_0=1\): \(\deg\Phi' = e_0d_0=e_0\), so \(e_0<\deg\Phi'\) fails. For example \(d_0=1,e_0=2\) gives \(2<2\). The load-bearing comparison is instead \(\deg(\Phi_0^s)=sd_0<e_0d_0=\deg\Phi'\), so the READ-EQ conclusion is not damaged.
+
+5. PE9: “**both machine legs reproduce bit-exactly (modulo disclosed wall-clock fields)**” — **MINOR**
+
+   Its own §1 reports six differing output lines per side. Equality after timing normalization is not bit-exact reproduction—the exact terminology error earlier repaired in F-C/F4-3. Only the runner bytes and regenerated children table are bit-identical.
+
+CHECKED CLEAN — The seven-genre census is exhaustive algebraically, and row 7b strictly lowers \(\deg a\) when it preserves \(m\).
+
+CHECKED CLEAN — The lexicographic induction, \(\rho\)-depth bound, finite-branching argument, and eight ledger-gain bounds hold for the integral-key applications actually used.
+
+CHECKED CLEAN — READ-EQ’s level-2 \(\delta_1=1\) comparison closes once TAIL-STAB is restricted to its actual integral-key setting.
+
+CHECKED CLEAN — THEOREM, COR 1, and COR 2 survive at their stated 2-read, harness-\(\Phi_1\)-orbit scope.
+
+CHECKED CLEAN — The \(\chi\)-ratio algebra \(z_1=\xi z_1'\) and \(c_{\rm base}=c^{\Phi'}\xi^{D_1}\) is correct.
+
+CHECKED CLEAN — The displayed count reconciliation \(25{,}409\), the \(2e_0+3\) branching arithmetic, and the counter-instance calculations are internally consistent.
+
+OUTCOME: CHALLENGE
