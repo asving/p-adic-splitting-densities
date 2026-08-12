@@ -2202,3 +2202,20 @@ hostile-pass credit: the acceptance counter stays 0/2. A fresh
 hostile pass must re-resolve the six-plus-five span stacks,
 re-grade the \(\mathfrak M\) quantification, and re-adjudicate the
 R5-63A consumption display.
+
+
+---
+
+**Dated rider (2026-08-12, post-pass — the single minor of the clean
+Fable pass, folded per the minors-only precedent, no grade event).**
+The 𝔐-definition's level-1 gloss "Equivalently at the level-1 read —
+by the same Step-0 carry conversion…" is read as the ONE-DIRECTIONAL
+"In particular, at the level-1 read…" (𝔐 ⟹ the weak entry bound —
+the only direction any current consumer uses). The converse (weak
+entry bound ⟹ 𝔐) is TRUE but rides GT3 Step 1's weight-monotone
+K₂-division + Step 2's re-expansion (inside pinned GT3 span 1), not
+the Step-0 carry conversion alone — a consumer needing the converse
+must cite those two legs. Pass of record: the Fable-arm hostile pass
+returned 0C + 0G + 1m with the 𝔐 mechanism, the 6.3(a)+(b)
+full-exposure discharge, all 25 pins, and the boundary cases verified
+sound — clean pass 1 of 2.
