@@ -1,0 +1,13 @@
+1. **DISCHARGED.** C2-1 correctly derives \(t_{\mathrm{Def}}=\nu-t_{\min}\), hence \(z^{t_{\mathrm{Def}}}=z^\nu\varepsilon_m(\beta)\), and accurately scopes the surviving consumers.
+
+2. **DISCHARGED.** C2-2 correctly translates exponent support by \(\nu\), giving \(\deg H=\deg P+\nu\) for nonzero residuals. The recovery and \(\operatorname{ord}_\psi\) claims are valid because \(\psi\ne y\).
+
+3. **NEW-ISSUE.** The boxed scalar-gauge equivalence fails when \(S_A=\varnothing\), a case the frozen note itself permits via the “zero-read escape.” Then
+   \[
+   \exists c\in F^\times\ \forall i\in S_A,\ c_i=cC_i
+   \]
+   is vacuously true, while \(|\chi(S_A)|=0\), not \(1\). Repair by either assuming \(S_A\ne\varnothing\), or replacing the right side with \(|\chi(S_A)|\le1\). The two-distinct-character criterion remains correct for genuine refutations.
+
+4. **DISCHARGED.** C2-4 correctly separates the unconditional congruence/carry facts from print-side existence, which requires \(u(V)\ge0\). The counterexample and consumer containment are mathematically sound.
+
+OUTCOMES: DISCHARGED, DISCHARGED, NEW-ISSUE, DISCHARGED

@@ -1,0 +1,3 @@
+[12:31:05] cert3 queue start
+[12:31:05] D3a_grtja start
+[12:31:37] D3a_grtja exit 0 (1129 B; OUTCOMES: DISCHARGED, DISCHARGED, NEW-ISSUE, DISCHARGED)
