@@ -1,0 +1,76 @@
+The post-r1 target is not consumable. No files were changed.
+
+1. **[CRITICAL] HEAD-pin validation remains operationally unresolved.**
+
+   R1 states:
+
+   > “Both instance records remain non-consumable until their HEAD pins are successfully validated.”
+
+   The fresh validation attempt again failed before either source was read:
+
+   > “bubblewrap is unavailable”
+
+   Consequently none of the eight spans, later riders, or supersession conditions was checked. PE1 condition 7 fails, and the acceptance counter remains 0/2.
+
+2. **[CRITICAL] R1-G2 deletes the definition of \(\operatorname{gr}_m\).**
+
+   R1 directs:
+
+   > “Replace S0 from ‘For a member \(f\), write’ through the statement of the key’s honest coordinates…”
+
+   That replaced interval contains T4’s sole definition:
+
+   > “For any coordinate digit string \(A\), let \(\operatorname{gr}_m(A)\) denote its canonical assembled digit…”
+
+   The replacement text does not restore it. In the merged document, \(\omega_j\), (FLOOR), and \(\nu_j\) all use an undefined operation. This destroys the central touched-coordinate definition.
+
+3. **[GAP] The FLOOR hypothesis retains an unbound \(f\).**
+
+   T4.2 says:
+
+   > “Assume … \(\operatorname{gr}_m(\Delta_j(f))=0\) for every \(m<\Theta_j\)…”
+
+   R1-G2 removes the preceding “For a member \(f\)” passage and introduces only quantified \(q\). T4.2 never quantifies \(f\) universally or specializes FLOOR to \(f_{\mathrm{key}}\), yet its proof immediately concludes
+   \(\nu_j(f_{\mathrm{key}})\ge\Theta_j\).
+
+4. **[GAP] T4.2(b)’s perturbation domain is still absent from its statement.**
+
+   The statement remains:
+
+   > “If \(f=f_{\mathrm{key}}+g\) and …”
+
+   It does not require \(f\) to be a member or \(g\in\mathscr D_{<\mu_2}\). The revised proof silently adds:
+
+   > “Therefore, for \(g\in\mathscr D_{<\mu_2}\)…”
+
+   A proof-side restriction cannot repair the theorem statement; as written, \(\Delta_j(g)\) need not even be defined.
+
+5. **[GAP] The higher-\(\mu_2\) record does not discharge its new exposure premise, while S6 still authorizes consumption.**
+
+   R1-G1 says:
+
+   > “For the exposed-slot inference, impose the additional hypothesis (EXPOSE-6.5)…”
+
+   and admits:
+
+   > “if GENTOW-6.5 supplies only the computation … and not the exposure hypothesis, T4 records that expression only as a candidate witness and does not invoke T4.2(c).”
+
+   But S6 still says the later \(\mu_2\ge3\) computation:
+
+   > “use[s] the same exposed-slot clause with [its] recorded scope.”
+
+   The instance record never establishes that GENTOW-6.5 discharges EXPOSE-6.5. Thus it remains a conditional candidate, not a validated literal instance eligible for the stated compression.
+
+6. **[MINOR] The claimed equivalence defining EXPOSE-6.5 is false.**
+
+   R1-G1 calls these equivalent:
+
+   > “the slot … receives exactly one single-extraction contribution”
+
+   and
+
+   > “the displayed expression is the complete assembled value of that canonical slot.”
+
+   The second does not imply the first: additional contributions may be present and sum to zero. The nonzero assembled-value condition would still prove touchedness directly, but it does not satisfy T4.2(c)’s unique-contribution premise.
+
+VERDICT: NOT CLEAN | FINDINGS: 2C + 3G + 1m

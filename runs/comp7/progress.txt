@@ -3,3 +3,5 @@
 [20:45:16] T1P7 exit 0 (2280 B; VERDICT: FINDINGS | FINDINGS: 0C + 2G + 0m)
 [20:45:16] T2R2 start
 [20:47:27] T2R2 exit 0 (10955 B; SUMMARY: 6 REAL (repairs delivered))
+[20:47:27] T4P2 start
+[20:50:26] T4P2 exit 0 (3319 B; VERDICT: NOT CLEAN | FINDINGS: 2C + 3G + 1m)
