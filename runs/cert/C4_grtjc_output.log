@@ -1,0 +1,96 @@
+Challenge: the principal theorem appears true conditionally, but the note’s own W-8 proof contains a quotient-lifting error precisely on the TC-3 load set.
+
+1. **CRITICAL — W-8 turns equality modulo \(\psi_m\) into polynomial equality.**
+
+> “Let \(c := c_{m+1}(\gamma,\gamma′)\) be defined by the fence-clean equation … **in the TC-transported ring**.”
+
+> “Apply \(\rho_{\lambda+N}\) … leaving  
+> \[
+> \rho_N(\operatorname{in}\Lambda_N(c))
+> = A(\gamma,\gamma′)\rho_N(\operatorname{in}X_N). \tag{‡}
+> \]”
+
+> “\((‡)\) becomes \(\widetilde c(y)=A(\gamma,\gamma′)\).”
+
+The TC-transported ring has already imposed TC-3, so equality there gives only
+\[
+\widetilde c(y)\equiv A(\gamma,\gamma′)\pmod{\psi_m},
+\]
+not equality in \(K_m[y]\).
+
+Counter-configuration: take any load-set pair with \(g_m=1,\delta=1\). Then
+\[
+A=(u/a_\lambda)y
+\]
+has degree \(1\), whereas \(\widetilde c\), the canonical representative of an element of \(K=K_m[y]/(\psi_m)\), has degree \(<1\), hence is constant. They agree modulo the linear \(\psi_m\), but cannot be equal as polynomials. This is exactly why JC-LOAD says RAW equality fails on those pairs.
+
+PE8’s alternative argument correctly switches to congruence modulo \(\psi_m\), inadvertently confirming the defect, but the note’s displayed proof remains invalid. Since W-8 is advertised as an “honest proof” and feeds JC-INNER/W-7’s value clause, this breaks the written proof chain.
+
+2. **GAP — the “not obtainable before TC-3” claim contradicts JC-LOAD off the load set.**
+
+> “the outer factor \(\bar z^\delta\) … [is] **not obtainable from TC-1/TC-2 alone**”
+
+and:
+
+> “\(c_T\)'s OUTER factor \(\bar z^\delta\) … is NOT obtainable from TC-1/TC-2 alone”
+
+Counter-configuration: \(g_m=2,\delta=1\), such as the note’s C2I/C4I genre. Then \(y\) has degree \(1<g_m\), so JC-SCAL puts it in the pre-TC-3 scalar image: choose \(c=\bar z\), whose canonical representative is \(y\). Accordingly JC-LOAD itself says RAW is solvable.
+
+Thus non-obtainability holds only when \(\delta\ge g_m\), not for the outer factor universally. The exact load-set theorem survives; its boxed interpretation is overstated.
+
+3. **GAP — the sole load-bearing literature identity is asserted, not actually citation-derived.**
+
+> “via JC-LOC it is the content of (IN-3)(c)”
+
+> “The literature identity is stated for the FGMN operator \(R^{GMN}\)”
+
+The displayed (IN-3)(c) and PDF annex establish rank-one freeness and the representation
+\[
+H_\mu(g)=\varphi_r(\alpha)R_{r,\alpha}(g)(y_r).
+\]
+They do not quote the asserted product law
+\[
+R^{GMN}_{\lambda+\mu}(fg)=y^\delta R^{GMN}_\lambda(f)R^{GMN}_\mu(g).
+\]
+
+That formula may be derivable from the printed coordinate formula, anchor multiplication and abscissa arithmetic, but that derivation is absent. Annex #3 verifies Thm. 4.2, Thm. 4.8/Cor. 4.9 and Cor. 2.7—not a printed residual-multiplicativity statement with its hypotheses. Since (DMULT-w) is declared the sole external input carrying COORD-B(2), MULT-B, W-8 and much of W-7, this missing bridge has a wide blast radius.
+
+4. **GAP — the as-built status has two incompatible live “current” states.**
+
+> “**[r6] S-STATUS (CURRENT …): attempt grade, acceptance counter 0/2”
+
+> “\(\to\) JC-PE7 = the next acceptance attempt”
+
+but later:
+
+> “**THIS NOTE IS ACCEPTED at 2/2**”
+
+Unlike the older status blocks, the r6 block is not marked superseded. Multiple other live body clauses still say “own acceptance counter 0/2” and prohibit proof-grade consumption. The acceptance tail may be intended to override them, but no in-note supersession rule converts an explicitly “CURRENT” 0/2 statement into a dated round record. This is a genuine as-built grade/consumer ambiguity, not merely historical prose.
+
+5. **MINOR — the scalar lift is ill-defined at \(c=0\).**
+
+> “the scalar lift \(\Lambda_N(c):=\operatorname{realize}(NR,c,N)\) for \(c\in K\) … by R2/R3, \(w(\Lambda_N(c))=N\) and \(\operatorname{read}(N,\Lambda_N(c))=c\).”
+
+At \(c=0\), REALIZE’s cited nonzero-target hypothesis does not apply; the zero polynomial cannot have weight \(N\). JC-SCAL likewise begins with an unrestricted \(c\), although the runners represent the zero lift as undefined. Downstream load arguments use \(K^*\), so this does not damage them, but the definition and quantifier are literally false at zero.
+
+CHECKED CLEAN — JC-DOM and JC-GAUGE correctly justify localization and the \(\mathbb Z\to\mathbb Z/E\) grading collapse.
+
+CHECKED CLEAN — JC-PER and JC-FIB correctly establish anchor periodicity and the residue-class/abscissa-tuple bijection.
+
+CHECKED CLEAN — JC-ANCHMON and JC-SPAN’s singleton-slot conclusion are sound under \(e_m\ge2\); JC-BOX-4 honestly records the alternate top-flat footprint.
+
+CHECKED CLEAN — JC-LOAD’s operational equivalence \(\mathrm{RAW}\iff\delta<g_m\) survives; finding 2 concerns only its unqualified interpretation.
+
+CHECKED CLEAN — JC-PSIKER’s repaired zero/nonzero ranges distinguish the integral graded ring from its localization correctly.
+
+CHECKED CLEAN — W-7’s structural carrier, grading, spanning and independence claims survive on COORD-B/MULT-B, conditional on (DMULT-w).
+
+CHECKED CLEAN — PE8’s modulo-\(\psi_m\) alternative establishes the W-8 conclusion conditionally, though it does not validate the note’s written §4.1 proof.
+
+CHECKED CLEAN — W-9’s cocycle identities, twisted-group-algebra description and abstract cyclic presentation follow from associativity and the repaired carrier dimensions.
+
+CHECKED CLEAN — JC-CYC’s distinction between abstract cyclicity and the anchor-indexed letter-monomial genre is coherent with the stated fences.
+
+CHECKED CLEAN — Annex #3 faithfully verifies the displayed FGMN theorem numbering and the quotient-field pair-citation; it does not discharge finding 3’s missing multiplicativity bridge.
+
+OUTCOME: CHALLENGE
