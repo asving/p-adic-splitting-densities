@@ -1703,3 +1703,5 @@ def main() -> int:
 
 if __name__ == "__main__":
     raise SystemExit(main())
+
+# re-seal 2026-08-12: runner pinned as child of prereg commit
