@@ -1271,3 +1271,230 @@ In the GT6 consumption check, replace the first sentence with:
 ```
 
 This closes the invalid inference from “one single-extraction contribution” to “nothing can cancel it” without attributing the stronger exposure fact to either pinned source before validation.
+
+
+---
+
+## r4 (2026-08-12): arc repairs
+
+*(Fable-arm repair under the 2026-08-12 parallel regime; findings runs/comp11/T4P4_output.log; counter resets.)*
+
+Five verbatim-ready r4 repairs follow, one per T4P4 finding. Unlike the r1 and r2 rounds, byte-literal pin validation could be executed this round; the complete grep evidence (occurrence count, 1-based line, 0-based byte offset for every marker of the post-r4 stacks) is recorded in R4-C1's S5.1 replacement below.
+
+### R4-C1 — the reversed GT6 BOX-4 pin re-anchored to the actual discharge record (finding 1, CRITICAL)
+
+Diagnosis, confirmed byte-literally at HEAD: in `GENTOW6_PROOF_2026-08-09.md` the r0 span-4 END substring `6.3' keeps its prose-only grading in the note's own terms.` occurs exactly once — at line 673 (byte 38211), inside the S5 acceptance-fold bracket — while the span-4 BEGIN substring occurs exactly once at line 1249 (byte 70410), in the final dated append. BEGIN does not precede END, S5 condition 3 fails, and the BOX-4 span — hence `GT6-CERT-TOP` — correctly failed closed. The actual BOX-4 discharge record is the closing block of the final dated append (lines 1249–1265, the end of the source).
+
+In S4's "Marker-delimited source pins, HEAD." list, replace span 4 with:
+
+```markdown
+4. BEGIN substring  
+   `**GENTOW6-BOX-4 (the f1 >= 2 x-ful-digit sealed battery row):`  
+   END substring  
+   `output md5 2d8d617a, verdict commit follows this append.`
+```
+
+The new END is the source's final line. The half-open span covers the entire BOX-4 discharge record that S4.2 consumes — the four x-ful \(f_1=2\) rows at sealed-battery grade, GREEN 265/0, certificate pins \(=\Theta_0\) exactly on the floor, and 6.3′'s derivation keeping the prose grade of the source arc — and excludes only the closing artifact-hash clause, which T4 does not consume. The retired r0 END substring remains where it always was, in the earlier S5 bracket; it is no longer a marker.
+
+Replace S5.1 (the R2-C1 text) with:
+
+```markdown
+### S5.1 R4 PIN-VALIDATION RECORD (2026-08-12)
+
+On 2026-08-12 the r4 round executed the byte-literal validation
+that the R1 and R2 attempts could not run. Every BEGIN and END
+substring of the post-r4 pin lists was matched literally
+(`grep -F`) against its named HEAD source. Occurrence counts,
+1-based line numbers, and 0-based byte offsets:
+
+Source `GENTOW3_PROOF_2026-08-09.md` (1,041 lines) — the GT3
+stack of six spans:
+
+| marker (role) | count | line | byte |
+|---|---|---|---|
+| `## S0. THE ONE CONSTANT AND THE THRESHOLD` (1-BEGIN) | 1 | 74 | 3886 |
+| `## S3. COROLLARY GENTOW-3.C` (1-END) | 1 | 317 | 17886 |
+| `### S7.1 THE DATED GAUGE ANNEX (F-1 repair): the corrected chat_t` (2-BEGIN) | 1 | 504 | 28156 |
+| `### S7.2 (m-1 repair): the (iv) certificate's digit-value` (2-END) | 1 | 610 | 33968 |
+| `## S7.6 [GT3-r2] PE2 REPAIR RECORD:` (3-BEGIN) | 1 | 680 | 37757 |
+| `## S7.7 [GT3-r3] PE3 REPAIR RECORD:` (3-END, 4-BEGIN) | 1 | 763 | 42380 |
+| `### Dated acceptance record` (4-END, 5-BEGIN) | 1 | 817 | 45302 |
+| `## S8. [GT3-r4] CODEX TOWERRAT2 RUN B REPAIRS` (5-END) | 1 | 880 | 48739 |
+| `### S8.1 [B-F1, GAP] Clause (iv)'s deep-perturbation persistence:` (6-BEGIN) | 1 | 894 | 49488 |
+| `### S8.2 [B-F2, GAP]` (6-END) | 1 | 941 | 52157 |
+
+Source `GENTOW6_PROOF_2026-08-09.md` (1,265 lines) — the GT6
+stack of four spans:
+
+| marker (role) | count | line | byte |
+|---|---|---|---|
+| `## S3. THEOREM GENTOW-6.3` (1-BEGIN) | 1 | 344 | 19136 |
+| `## S4. MACHINE LEG` (1-END) | 1 | 529 | 29718 |
+| `### S6.1 THE DATED GAUGE ANNEX` (2-BEGIN) | 1 | 702 | 39709 |
+| `### S6.2 THE 𝒯-FREE CAP LEMMA` (2-END) | 1 | 851 | 47646 |
+| `**GENTOW6-BOX-1 (mu2 >= 3 attainment): CLOSED AT f1 = 1**` (3-BEGIN) | 1 | 1204 | 67667 |
+| `**GENTOW6-BOX-4 (the f1 >= 2 x-ful-digit sealed battery row):` (3-END, 4-BEGIN) | 1 | 1249 | 70410 |
+| `output md5 2d8d617a, verdict commit follows this append.` (4-END) | 1 | 1265 | 71408 |
+
+Every count is exactly 1 (S5 conditions 1–2); every match lies in
+its named source (condition 4); within each pair the BEGIN byte
+offset strictly precedes the END byte offset, and each stack's
+spans occur in the recorded byte order (conditions 3 and 5). The
+retired r0 GT6 span-4 END substring `6.3' keeps its prose-only
+grading in the note's own terms.` occurs once at line 673 (byte
+38211), before the span-4 BEGIN at byte 70410 — the reversal this
+record retires.
+
+Rider audit (condition 6), for the spans r4 adds or repairs. GT3
+spans 2 and 5: the dated appends after them are S8 (GT3-r4) and
+S8.4 (GT3-r5, 2026-08-12); S8.4 fences itself — "This correction
+changes only S8.2's non-functionality scope" — and no sentence of
+S8–S8.4 supersedes the S7.1 FR-GL row or the acceptance record's
+FR5X measurements. GT6 span 4: nothing follows its END, which is
+the source's final line. For the five pairs r4 does not touch,
+the T4P4 audit found unique, correctly ordered markers and raised
+no supersession finding.
+
+This record supersedes the R1 and R2 pin-validation records. It
+is a pin-validation result, not hostile-pass credit: the
+acceptance counter stays 0/2, and `GT6-CERT-TOP`'s invocation of
+T4.2(c) additionally awaits the source-owned full-exposure
+calculation required by the r3 repairs.
+```
+
+### R4-G1 — T4.2(d)'s exclusion hypothesis extended to every assembled provenance (finding 2, GAP)
+
+After r3, \(\omega_j\) assembles single-\(\Phi'\)-extraction routes, all other branch terms, and every incoming carry and recarry. Excluding single-extraction sources alone therefore no longer forces \(\omega_j=0\), and (FLOOR) supplies no such exclusion. The repair strengthens (d)'s hypothesis to all provenances; the clause claims strictly less than before, and no consumer is affected: the instance records invoke (d) only through its cancellation leg (FR-M3's measured \(\omega_0=0\)) and its no-other-member warning, never through the no-source leg.
+
+Replace T4.2(d) in full with:
+
+```markdown
+> **(d) No-contribution criterion.** Suppose that, after every
+> branch term and every incoming carry and recarry has been
+> propagated to the canonical grid, no summand of any provenance
+> lands in any slot of coordinate \(j\) at height \(\Theta_j\) —
+> the single-\(\Phi'\)-extraction routes, all other branch terms,
+> and every incoming carry and recarry are excluded alike. Or
+> suppose the complete assembled contribution cancels. Then
+> \(\omega_j=0\).
+>
+> Absence of single-extraction sources alone does not discharge
+> the first hypothesis: the exclusion must cover every provenance
+> named in DEFINITION T4.1's assembly. No attainment statement
+> for another member follows: entry-driven content may still
+> attain \(\Theta_j\).
+```
+
+Replace the proof's clause-(d) sentences ("Clause (d) is the definition after complete assembly. Its final warning is necessary because \(\omega_j\) classifies the key-power witness, not all members of the genre.") with:
+
+```markdown
+Clause (d) is the definition after complete assembly, read under
+its all-provenance hypothesis: if no summand of any provenance
+lands in any height-\(\Theta_j\) slot of coordinate \(j\), the
+assembled graded digit is empty, and if the complete assembled
+contribution cancels, it is zero; in either case \(\omega_j=0\).
+Excluding single-extraction sources alone would leave the other
+branch terms and the incoming carries and recarries unaccounted,
+which is why the weaker hypothesis proves nothing. The final
+warning is necessary because \(\omega_j\) classifies the
+key-power witness, not all members of the genre.
+```
+
+### R4-G2 — the GT3 stack extended to cover the FR-GL and FR5X records (finding 3, GAP)
+
+The instance claims "FAM-A5/A7/B/C and FR-GL have \(\omega_j\ne0\) at the recorded coordinates" and "FR5X supplies coordinates on which the complete self-shadow coordinate vanishes", and PE2 requires re-inspecting both. FR-GL is recorded in GENTOW3 S7.1 (the adopted \(\eta\ne1\) machine row: corrected key, \(\Theta=(13,7)\), floor attained at both coordinates), which fell in the gap between span 1's END and span 2's BEGIN; FR5X is recorded in the post-PE5 dated acceptance record (PE5 obs-1: \(\mu_2=2\) pins \([61,\mathrm{None}]\), attained at \(\Theta_0=61\) with \(j=1\) identically zero; \(\mu_2=3\) pins \([91,61,\mathrm{None}]\) against \(\Theta=[87,61,35]\), slack at \(j=0\), attained at \(j=1\), identically zero at \(j=2\)), which fell after span 3's END. Neither claim was recoverable from the recorded stack. The repair adds the two missing spans; no instance claim is widened.
+
+In S3's "Marker-delimited source pins, HEAD." block, replace the four-item span list with:
+
+```markdown
+1. BEGIN substring  
+   `## S0. THE ONE CONSTANT AND THE THRESHOLD`  
+   END substring  
+   `## S3. COROLLARY GENTOW-3.C`
+
+2. BEGIN substring  
+   `### S7.1 THE DATED GAUGE ANNEX (F-1 repair): the corrected chat_t`  
+   END substring  
+   `### S7.2 (m-1 repair): the (iv) certificate's digit-value`
+
+3. BEGIN substring  
+   `## S7.6 [GT3-r2] PE2 REPAIR RECORD:`  
+   END substring  
+   `## S7.7 [GT3-r3] PE3 REPAIR RECORD:`
+
+4. BEGIN substring  
+   `## S7.7 [GT3-r3] PE3 REPAIR RECORD:`  
+   END substring  
+   `### Dated acceptance record`
+
+5. BEGIN substring  
+   `### Dated acceptance record`  
+   END substring  
+   `## S8. [GT3-r4] CODEX TOWERRAT2 RUN B REPAIRS`
+
+6. BEGIN substring  
+   `### S8.1 [B-F1, GAP] Clause (iv)'s deep-perturbation persistence:`  
+   END substring  
+   `### S8.2 [B-F2, GAP]`
+```
+
+The sentence following the list ("The later S8.2/S8.4 non-functionality scope is not consumed by this instance.") is retained unchanged: new span 5 is half-open at the S8 heading and consumes nothing of S8–S8.4, and span 6 is half-open at S8.2. New span 2 supplies the FR-GL configuration and the corrected-\(\widehat c_t\) gauge annex it sits in; new span 5 supplies the FR5X measurements and the arc's three measured certificate configurations. Validation and rider audit for both new spans are in the S5.1 R4 record.
+
+### R4-m1 — S6's pre-r3 uniqueness terminology upgraded to assembled-slot exposure (finding 4, MINOR)
+
+In S6, replace:
+
+```markdown
+- GENTOW-6.3(b)’s final implication from the unique CERT-TOP slot
+  to threshold attainment becomes `GT6-CERT-TOP`;
+```
+
+with:
+
+```markdown
+- GENTOW-6.3(b)’s final implication from the fully exposed
+  assembled CERT-TOP slot to threshold attainment becomes
+  `GT6-CERT-TOP`;
+```
+
+and replace:
+
+```markdown
+The algebra that computes a proposed witness is not deleted:
+GENTOW-6 still owns the top-slot uniqueness calculation, the
+corrected-lift support calculation, and the higher-\(\mu_2\)
+binomial coefficient.
+```
+
+with:
+
+```markdown
+The algebra that computes a proposed witness is not deleted:
+GENTOW-6 still owns the complete assembled-slot exposure
+calculation — the exclusion, in S0's full-exposure sense, of
+every other branch term and every incoming carry and recarry
+from the slot, not merely uniqueness among single-extraction
+branches — together with the corrected-lift support calculation
+and the higher-\(\mu_2\) binomial coefficient.
+```
+
+This brings S6's compression instructions to the same assembled-slot standard r3 imposed on T4.2(c), S4.1/S4.2, and S8.
+
+### R4-m2 — the governing status label brought to r4 (finding 5, MINOR)
+
+Replace the governing status block (the R1-C1 replacement of the title status line) with:
+
+```markdown
+**STATUS: R4 TEXT REPAIRED; UNRESOLVED at attempt grade 0/2.**
+No clean hostile pass has been earned. The r4 round repaired the
+reversed GT6 BOX-4 pin, extended the GT3 stack to cover the FR-GL
+and FR5X records, and byte-validated every listed marker (S5.1 R4
+record). Consumption still awaits a clean hostile re-resolution,
+and `GT6-CERT-TOP`'s invocation of T4.2(c) additionally awaits
+the source-owned full-exposure calculation required by r3. The
+acceptance counter remains 0/2.
+```
+
+The unresolved conclusion is unchanged; only the stale revision label and its reason are updated.
+
+No source file is touched by r4; all five corrections are dated, verbatim-ready replacements within this note. The acceptance counter remains 0/2; a fresh hostile pass must re-resolve the repaired pins and re-grade the note.
