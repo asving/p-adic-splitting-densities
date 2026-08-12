@@ -1,0 +1,1750 @@
+## 1. Preregistered prediction / teeth block
+
+Expected sealed verdict: `PASS`.
+
+The runner registers exactly **213 rows**:
+
+| Group | Rows |
+|---|---:|
+| two-commit seal | 5 |
+| C1 letter recursion | 24 |
+| C2 wrap/cocycle/telescope/carry | 48 |
+| C3 corrected key and three reads | 24 |
+| C4 attained-origin bridge | 18 |
+| C5 normalized coefficient reads | 12 |
+| C6 live lifts, boundary refusals, clearance | 35 |
+| historical-coverage regressions | 23 |
+| revised-note scope lint | 12 |
+| mutation-tooth firing assertions | 12 |
+| **Total** | **213** |
+
+The historical regression rows cover X, FR-G, F4-JOINT’s quadratic and full \(\mu=3\) legs, and LP/LD. They are freshly recomputed; the 2026-08-10 verdict is not imported.
+
+Every mutation must produce exactly the following failure set:
+
+| Tooth | Mutation | Rows that must break |
+|---|---|---|
+| `gauge_naive` | Use \(\Gamma_t=c_t\), omitting \(\vartheta_s\) | `C3.F4Q.coherent_vector` |
+| `wrong_sign` | Replace \(\eta^{\lfloor si(u)/e_1\rfloor}\) by its inverse | `C3.P5.coherent_vector` |
+| `misindexed_telescope` | Use \(\lfloor (s+1)i(u)/e_1\rfloor\) | `C3.F4MU3.theta_vector` |
+| `inverse_orientation` | Use \(\Theta=\vartheta\) instead of \(\vartheta^{-1}\) | `regression.F4MU3.canonical.t1`, `regression.F4MU3.canonical.t0` |
+| `origin_drop_nu` | Identify the raw factor with \(\varepsilon\), dropping \(z^\nu\) | `C4.nu2_nonroot.raw_bridge` |
+| `origin_iff_nu0` | Replace \(z^\nu=1\) by \(\nu=0\) as the equality criterion | `C4.nu2_root.equality_criterion` |
+| `he6_bare_residue` | Replace normalized coefficient residues by bare residues | `C5.A.gamma_exact` |
+| `he6_q_sign` | Replace \(\eta^{-q(k)}\) by \(\eta^{q(k)}\) | `C5.A.varpi_read` |
+| `lift_boundary_accept` | Admit \(M=D'h\) by changing `>` to `>=` | `C6.boundary_eq.refused` |
+| `eta_implies_xfree` | Infer \(x\)-freeness from \(\eta=1\) alone | `C6.eta1.xfree` |
+| `weld_single_map` | Insert the affirmative claim “T1 proves one transport map” | `lint.no_single_transport_map` |
+| `weld_drop_fences` | Remove the M3 scored-stratum and M4 accepted-W2-C3 fences | `lint.M3_scored_stratum`, `lint.M4_W2C3_fence` |
+
+For `inverse_orientation`, all three canonical slots are evaluated. The `t2` control survives because \(\vartheta_1=1\); the `t1` and `t0` entries must fail.
+
+## 2. Complete runner
+
+```python
+#!/usr/bin/env python3
+"""
+Sealed T1 gauge-cocycle machine battery.
+
+Protocol:
+  1. Commit the preregistration document.
+  2. Commit this runner as the immediately following commit.
+  3. Run, for example:
+
+     python3 t1_battery.py \
+       --prereg path/to/T1_prereg.md \
+       --note path/to/T1_note.md \
+       --artifact runs/T1_battery.json
+
+The runner emits no verdict to stdout. The verdict and all evidence are written
+to the new artifact named by --artifact. Existing artifacts are never replaced.
+
+Arithmetic is exact. Only the Python standard library is used.
+"""
+
+from __future__ import annotations
+
+import argparse
+import hashlib
+import itertools
+import json
+import subprocess
+import sys
+from collections import Counter
+from dataclasses import dataclass
+from fractions import Fraction
+from pathlib import Path
+from typing import Any, Dict, Iterable, List, Mapping, Sequence, Set, Tuple
+
+
+EXPECTED_COUNTS = {
+    "seal": 5,
+    "C1": 24,
+    "C2": 48,
+    "C3": 24,
+    "C4": 18,
+    "C5": 12,
+    "C6": 35,
+    "regression": 23,
+    "lint": 12,
+    "teeth": 12,
+}
+EXPECTED_TOTAL = 213
+
+EXPECTED_TOOTH_FAILURES = {
+    "gauge_naive": ["C3.F4Q.coherent_vector"],
+    "wrong_sign": ["C3.P5.coherent_vector"],
+    "misindexed_telescope": ["C3.F4MU3.theta_vector"],
+    "inverse_orientation": [
+        "regression.F4MU3.canonical.t1",
+        "regression.F4MU3.canonical.t0",
+    ],
+    "origin_drop_nu": ["C4.nu2_nonroot.raw_bridge"],
+    "origin_iff_nu0": ["C4.nu2_root.equality_criterion"],
+    "he6_bare_residue": ["C5.A.gamma_exact"],
+    "he6_q_sign": ["C5.A.varpi_read"],
+    "lift_boundary_accept": ["C6.boundary_eq.refused"],
+    "eta_implies_xfree": ["C6.eta1.xfree"],
+    "weld_single_map": ["lint.no_single_transport_map"],
+    "weld_drop_fences": [
+        "lint.M3_scored_stratum",
+        "lint.M4_W2C3_fence",
+    ],
+}
+
+
+class Field:
+    """Finite field F_p[X]/(modulus), with a monic modulus."""
+
+    def __init__(self, p: int, modulus: Sequence[int], name: str):
+        if p < 2:
+            raise ValueError("p must be prime")
+        mod = tuple(int(x) % p for x in modulus)
+        if len(mod) < 2 or mod[-1] != 1:
+            raise ValueError("modulus must be monic and have positive degree")
+        self.p = p
+        self.modulus = mod
+        self.degree = len(mod) - 1
+        self.order = p ** self.degree
+        self.name = name
+
+    def element(self, value: Any) -> "FE":
+        if isinstance(value, FE):
+            if value.field is not self:
+                raise TypeError("field mismatch")
+            return value
+        if isinstance(value, int):
+            coeffs = [0] * self.degree
+            coeffs[0] = value % self.p
+            return FE(self, tuple(coeffs))
+        vals = [int(x) % self.p for x in value]
+        if len(vals) > self.degree:
+            vals = self._reduce(vals)
+        vals += [0] * (self.degree - len(vals))
+        return FE(self, tuple(vals[: self.degree]))
+
+    def _reduce(self, coeffs: Sequence[int]) -> List[int]:
+        work = [int(x) % self.p for x in coeffs]
+        while len(work) > self.degree:
+            lead = work[-1] % self.p
+            top = len(work) - 1
+            if lead:
+                shift = top - self.degree
+                for j in range(self.degree + 1):
+                    work[shift + j] = (
+                        work[shift + j] - lead * self.modulus[j]
+                    ) % self.p
+            work.pop()
+        work += [0] * (self.degree - len(work))
+        return work
+
+    @property
+    def zero(self) -> "FE":
+        return self.element(0)
+
+    @property
+    def one(self) -> "FE":
+        return self.element(1)
+
+    def elements(self) -> Iterable["FE"]:
+        for coeffs in itertools.product(range(self.p), repeat=self.degree):
+            yield FE(self, tuple(coeffs))
+
+    def __call__(self, value: Any) -> "FE":
+        return self.element(value)
+
+
+@dataclass(frozen=True)
+class FE:
+    field: Field
+    coeffs: Tuple[int, ...]
+
+    def _coerce(self, other: Any) -> "FE":
+        return self.field.element(other)
+
+    def __add__(self, other: Any) -> "FE":
+        rhs = self._coerce(other)
+        return FE(
+            self.field,
+            tuple(
+                (a + b) % self.field.p
+                for a, b in zip(self.coeffs, rhs.coeffs)
+            ),
+        )
+
+    __radd__ = __add__
+
+    def __neg__(self) -> "FE":
+        return FE(
+            self.field,
+            tuple((-a) % self.field.p for a in self.coeffs),
+        )
+
+    def __sub__(self, other: Any) -> "FE":
+        return self + (-self._coerce(other))
+
+    def __rsub__(self, other: Any) -> "FE":
+        return self._coerce(other) - self
+
+    def __mul__(self, other: Any) -> "FE":
+        rhs = self._coerce(other)
+        d = self.field.degree
+        product = [0] * (2 * d - 1)
+        for i, a in enumerate(self.coeffs):
+            for j, b in enumerate(rhs.coeffs):
+                product[i + j] = (
+                    product[i + j] + a * b
+                ) % self.field.p
+        return FE(self.field, tuple(self.field._reduce(product)))
+
+    __rmul__ = __mul__
+
+    def __pow__(self, exponent: int) -> "FE":
+        if exponent < 0:
+            return self.inverse() ** (-exponent)
+        result = self.field.one
+        base = self
+        n = exponent
+        while n:
+            if n & 1:
+                result = result * base
+            base = base * base
+            n >>= 1
+        return result
+
+    def inverse(self) -> "FE":
+        if self == self.field.zero:
+            raise ZeroDivisionError("zero has no inverse")
+        return self ** (self.field.order - 2)
+
+    def __truediv__(self, other: Any) -> "FE":
+        return self * self._coerce(other).inverse()
+
+    def __bool__(self) -> bool:
+        return any(self.coeffs)
+
+    def __str__(self) -> str:
+        return f"{self.field.name}{self.coeffs}"
+
+
+F2 = Field(2, [0, 1], "F2")
+F3 = Field(3, [0, 1], "F3")
+F5 = Field(5, [0, 1], "F5")
+F7 = Field(7, [0, 1], "F7")
+F4 = Field(2, [1, 1, 1], "F4")
+OMEGA = F4((0, 1))
+
+
+def p_trim(poly: Sequence[FE]) -> List[FE]:
+    out = list(poly)
+    while len(out) > 1 and not out[-1]:
+        out.pop()
+    return out
+
+
+def p_add(a: Sequence[FE], b: Sequence[FE]) -> List[FE]:
+    field = a[0].field if a else b[0].field
+    n = max(len(a), len(b))
+    out = []
+    for i in range(n):
+        av = a[i] if i < len(a) else field.zero
+        bv = b[i] if i < len(b) else field.zero
+        out.append(av + bv)
+    return p_trim(out)
+
+
+def p_sub(a: Sequence[FE], b: Sequence[FE]) -> List[FE]:
+    field = a[0].field if a else b[0].field
+    n = max(len(a), len(b))
+    out = []
+    for i in range(n):
+        av = a[i] if i < len(a) else field.zero
+        bv = b[i] if i < len(b) else field.zero
+        out.append(av - bv)
+    return p_trim(out)
+
+
+def p_mul(a: Sequence[FE], b: Sequence[FE]) -> List[FE]:
+    field = a[0].field
+    out = [field.zero] * (len(a) + len(b) - 1)
+    for i, av in enumerate(a):
+        for j, bv in enumerate(b):
+            out[i + j] = out[i + j] + av * bv
+    return p_trim(out)
+
+
+def p_divmod(
+    numerator: Sequence[FE], denominator: Sequence[FE]
+) -> Tuple[List[FE], List[FE]]:
+    num = p_trim(numerator)
+    den = p_trim(denominator)
+    field = den[0].field
+    if len(den) == 1 and not den[0]:
+        raise ZeroDivisionError("zero polynomial")
+    if len(num) < len(den):
+        return [field.zero], num
+
+    quotient = [field.zero] * (len(num) - len(den) + 1)
+    den_lead_inv = den[-1].inverse()
+    while len(num) >= len(den) and not (
+        len(num) == 1 and not num[0]
+    ):
+        shift = len(num) - len(den)
+        coeff = num[-1] * den_lead_inv
+        quotient[shift] = quotient[shift] + coeff
+        subtractor = [field.zero] * shift + [coeff * x for x in den]
+        num = p_sub(num, subtractor)
+    return p_trim(quotient), p_trim(num)
+
+
+def p_monic(poly: Sequence[FE]) -> List[FE]:
+    poly = p_trim(poly)
+    inv = poly[-1].inverse()
+    return [x * inv for x in poly]
+
+
+def monic_polynomials(field: Field, degree: int) -> Iterable[List[FE]]:
+    for coeffs in itertools.product(list(field.elements()), repeat=degree):
+        yield list(coeffs) + [field.one]
+
+
+def factor_degrees(poly: Sequence[FE]) -> List[int]:
+    poly = p_monic(poly)
+    degree = len(poly) - 1
+    if degree <= 1:
+        return [degree] if degree else []
+
+    field = poly[0].field
+    for divisor_degree in range(1, degree // 2 + 1):
+        for divisor in monic_polynomials(field, divisor_degree):
+            quotient, remainder = p_divmod(poly, divisor)
+            if len(remainder) == 1 and not remainder[0]:
+                return sorted(
+                    factor_degrees(divisor) + factor_degrees(quotient)
+                )
+    return [degree]
+
+
+def psi_from_c(field: Field, degree: int, c: Mapping[int, FE]) -> List[FE]:
+    coeffs = [field.zero] * (degree + 1)
+    coeffs[degree] = field.one
+    for t in range(degree):
+        coeffs[t] = -c.get(t, field.zero)
+    return p_trim(coeffs)
+
+
+def twisted_poly(poly: Sequence[FE], w: FE) -> List[FE]:
+    degree = len(poly) - 1
+    return [coeff * (w ** (degree - t)) for t, coeff in enumerate(poly)]
+
+
+@dataclass(frozen=True)
+class Frame:
+    name: str
+    field: Field
+    e1: int
+    f1: int
+    h: int
+    eta: FE
+    u2: int
+
+    @property
+    def D(self) -> int:
+        return self.e1 * self.f1
+
+    @property
+    def inv_h(self) -> int:
+        return pow(self.h, -1, self.e1)
+
+    def i(self, k: int) -> int:
+        return (self.inv_h * k) % self.e1
+
+    def a(self, k: int) -> int:
+        return (k - self.i(k) * self.h) // self.e1
+
+    def normalizer_exponents(self, k: int) -> Tuple[int, int]:
+        return self.i(k), self.a(k)
+
+    def wrap(self, a: int, b: int) -> int:
+        return (self.i(a) + self.i(b)) // self.e1
+
+    def q(self, k: int) -> int:
+        return (self.inv_h * k - self.i(k)) // self.e1
+
+    def theta(self, s: int) -> FE:
+        return self.eta ** ((s * self.i(self.u2)) // self.e1)
+
+
+FRAMES = [
+    Frame("P3_WRAP", F3, 2, 1, 1, F3(2), 3),
+    Frame("P3_ETA1", F3, 2, 1, 1, F3(1), 3),
+    Frame("P5", F5, 3, 1, 2, F5(2), 4),
+    Frame("P5_ROOT", F5, 2, 1, 1, F5(4), 3),
+    Frame("F4", F4, 2, 2, 1, OMEGA, 3),
+    Frame("LP", F7, 5, 1, 2, F7(3), 4),
+]
+FRAME_BY_NAME = {frame.name: frame for frame in FRAMES}
+
+
+@dataclass(frozen=True)
+class Stage:
+    name: str
+    frame: Frame
+    f2: int
+    c: Mapping[int, FE]
+    w: FE
+
+
+STAGES = [
+    Stage(
+        "X",
+        FRAME_BY_NAME["P3_WRAP"],
+        2,
+        {0: F3(2), 1: F3(0)},
+        F3(2),
+    ),
+    Stage(
+        "F4Q",
+        FRAME_BY_NAME["F4"],
+        2,
+        {0: OMEGA, 1: F4(1)},
+        OMEGA,
+    ),
+    Stage(
+        "F4MU3",
+        FRAME_BY_NAME["F4"],
+        3,
+        {0: F4(1), 1: F4(1), 2: F4(1)},
+        OMEGA,
+    ),
+    Stage(
+        "P5",
+        FRAME_BY_NAME["P5"],
+        2,
+        {0: F5(3), 1: F5(2)},
+        F5(3),
+    ),
+]
+STAGE_BY_NAME = {stage.name: stage for stage in STAGES}
+
+
+def stage_theta(
+    stage: Stage, mutation: str | None = None
+) -> List[FE]:
+    frame = stage.frame
+    values = []
+    for s in range(stage.f2 + 1):
+        exponent = (s * frame.i(frame.u2)) // frame.e1
+        if mutation == "wrong_sign":
+            exponent = -exponent
+        elif mutation == "misindexed_telescope":
+            exponent = ((s + 1) * frame.i(frame.u2)) // frame.e1
+        values.append(frame.eta ** exponent)
+    return values
+
+
+def stage_gamma(
+    stage: Stage, mutation: str | None = None
+) -> Dict[int, FE]:
+    theta = stage_theta(stage, mutation if mutation == "wrong_sign" else None)
+    gamma = {}
+    for t in range(stage.f2):
+        s = stage.f2 - t
+        if mutation == "gauge_naive":
+            gamma[t] = stage.c[t]
+        else:
+            gamma[t] = stage.c[t] * theta[s]
+    return gamma
+
+
+def stage_multiplicative(
+    stage: Stage, gamma: Mapping[int, FE], theta: Sequence[FE]
+) -> Dict[int, FE]:
+    return {
+        t: gamma[t] / theta[stage.f2 - t]
+        for t in range(stage.f2)
+    }
+
+
+def stage_canonical_slots(
+    stage: Stage,
+    gamma: Mapping[int, FE],
+    theta: Sequence[FE],
+    inverse_orientation: bool = True,
+) -> Dict[int, FE]:
+    result = {}
+    for t in range(stage.f2):
+        s = stage.f2 - t
+        orientation = theta[s].inverse() if inverse_orientation else theta[s]
+        result[t] = (stage.w ** s) * orientation * gamma[t]
+    return result
+
+
+def canonical_poly_from_slots(stage: Stage, slots: Mapping[int, FE]) -> List[FE]:
+    coeffs = [stage.frame.field.zero] * (stage.f2 + 1)
+    coeffs[stage.f2] = stage.frame.field.one
+    for t, value in slots.items():
+        coeffs[t] = -value
+    return p_trim(coeffs)
+
+
+@dataclass(frozen=True)
+class C5Term:
+    j: int
+    valuation: int
+    unit: FE
+
+
+@dataclass(frozen=True)
+class C5Case:
+    name: str
+    frame: Frame
+    k: int
+    terms: Tuple[C5Term, ...]
+
+
+C5_CASES = [
+    C5Case(
+        "A",
+        FRAME_BY_NAME["F4"],
+        5,
+        (
+            C5Term(1, 2, F4(1)),
+            C5Term(3, 1, OMEGA),
+        ),
+    ),
+    C5Case(
+        "B",
+        FRAME_BY_NAME["F4"],
+        5,
+        (
+            C5Term(1, 2, OMEGA),
+            C5Term(3, 2, OMEGA ** 2),
+        ),
+    ),
+]
+C5_BY_NAME = {case.name: case for case in C5_CASES}
+
+
+def coefficient_normalized_residue(
+    term: C5Term, required_valuation: int
+) -> FE:
+    if term.valuation == required_valuation:
+        return term.unit
+    if term.valuation > required_valuation:
+        return term.unit.field.zero
+    raise ValueError("coefficient lies below the claimed pin")
+
+
+def gamma_k(case: C5Case, bare: bool = False) -> FE:
+    frame = case.frame
+    result = frame.field.zero
+    i = frame.i(case.k)
+    by_j = {term.j: term for term in case.terms}
+    for t in range(frame.f1):
+        j = i + frame.e1 * t
+        if j >= frame.D or j not in by_j:
+            continue
+        term = by_j[j]
+        required = (case.k - j * frame.h) // frame.e1
+        if bare:
+            residue = term.unit if term.valuation == 0 else frame.field.zero
+        else:
+            residue = coefficient_normalized_residue(term, required)
+        result = result + residue * (frame.eta ** t)
+    return result
+
+
+def direct_normalizer_read(case: C5Case) -> FE:
+    frame = case.frame
+    i = frame.i(case.k)
+    result = frame.field.zero
+    for term in case.terms:
+        height = frame.e1 * term.valuation + term.j * frame.h
+        if height != case.k:
+            continue
+        if (term.j - i) % frame.e1:
+            continue
+        t = (term.j - i) // frame.e1
+        result = result + term.unit * (frame.eta ** t)
+    return result
+
+
+@dataclass(frozen=True)
+class LiftTerm:
+    r: int
+    coefficient: FE
+    x_exponent: int
+    pi_exponent: int
+
+
+def lift_domain(frame: Frame, M: int) -> bool:
+    return M > frame.D * frame.h
+
+
+def lift_terms(frame: Frame, M: int, lambdas: Sequence[int]) -> List[LiftTerm]:
+    i = frame.i(M)
+    a = frame.a(M)
+    terms = []
+    for r, scalar in enumerate(lambdas):
+        coefficient = frame.field(scalar)
+        if coefficient:
+            terms.append(
+                LiftTerm(
+                    r=r,
+                    coefficient=coefficient,
+                    x_exponent=i + frame.e1 * r,
+                    pi_exponent=a - r * frame.h,
+                )
+            )
+    return terms
+
+
+def lambda_value(frame: Frame, lambdas: Sequence[int]) -> FE:
+    result = frame.field.zero
+    for r, scalar in enumerate(lambdas):
+        result = result + frame.field(scalar) * (frame.eta ** r)
+    return result
+
+
+def lift_residue(frame: Frame, terms: Sequence[LiftTerm]) -> FE:
+    result = frame.field.zero
+    for term in terms:
+        result = result + term.coefficient * (frame.eta ** term.r)
+    return result
+
+
+def actual_xfree_monomial(terms: Sequence[LiftTerm]) -> bool:
+    return len(terms) == 1 and terms[0].x_exponent == 0
+
+
+def predicted_xfree(frame: Frame, M: int, lambdas: Sequence[int]) -> bool:
+    nonzero_indices = [r for r, x in enumerate(lambdas) if frame.field(x)]
+    digit_in_base = all(r == 0 for r in nonzero_indices)
+    return frame.i(M) == 0 and digit_in_base
+
+
+def c4_data(
+    field: Field,
+    z: FE,
+    ell: int,
+    beta: int,
+    e: int,
+    nu: int,
+    support: Sequence[int],
+) -> Dict[str, Any]:
+    s_min = (ell * beta) % e
+    t_min = (ell * beta - s_min) // e
+    s_act = s_min + nu * e
+    t_def = (s_act - ell * beta) // e
+    epsilon = z ** (-t_min)
+    raw = z ** t_def
+    znu = z ** nu
+    p_support = sorted(support)
+    h_support = sorted(nu + x for x in support)
+    return {
+        "s_min": s_min,
+        "t_min": t_min,
+        "s_act": s_act,
+        "t_def": t_def,
+        "epsilon": epsilon,
+        "raw": raw,
+        "znu": znu,
+        "p_support": p_support,
+        "h_support": h_support,
+    }
+
+
+C4_CASES = [
+    ("nu0", F5, F5(2), 2, 3, 0, [0, 2, 4]),
+    ("nu2_nonroot", F5, F5(2), 2, 3, 2, [0, 1, 4]),
+    ("nu2_root", F5, F5(4), 1, 2, 2, [0, 3]),
+    ("nu3_root", F4, OMEGA, 1, 2, 3, [0, 1, 3]),
+]
+
+
+def jsonable(value: Any) -> Any:
+    if isinstance(value, FE):
+        return {
+            "field": value.field.name,
+            "coefficients": list(value.coeffs),
+        }
+    if isinstance(value, Fraction):
+        return {
+            "numerator": value.numerator,
+            "denominator": value.denominator,
+        }
+    if isinstance(value, Path):
+        return str(value)
+    if isinstance(value, dict):
+        return {
+            str(key): jsonable(item)
+            for key, item in sorted(value.items(), key=lambda kv: str(kv[0]))
+        }
+    if isinstance(value, (list, tuple)):
+        return [jsonable(item) for item in value]
+    if isinstance(value, set):
+        return sorted(jsonable(item) for item in value)
+    return value
+
+
+class Battery:
+    def __init__(self) -> None:
+        self.rows: List[Dict[str, Any]] = []
+        self.tooth_evidence: Dict[str, Any] = {}
+
+    def check(
+        self,
+        group: str,
+        name: str,
+        got: Any,
+        want: Any = True,
+    ) -> None:
+        self.rows.append(
+            {
+                "group": group,
+                "name": name,
+                "got": jsonable(got),
+                "want": jsonable(want),
+                "pass": got == want,
+            }
+        )
+
+    def tooth(
+        self,
+        name: str,
+        observed_failures: Iterable[str],
+    ) -> None:
+        observed = sorted(set(observed_failures))
+        expected = sorted(EXPECTED_TOOTH_FAILURES[name])
+        self.tooth_evidence[name] = {
+            "expected_failures": expected,
+            "observed_failures": observed,
+        }
+        self.check(
+            "teeth",
+            f"teeth.{name}.fires_exactly",
+            observed,
+            expected,
+        )
+
+
+def git(root: Path, *args: str) -> Tuple[int, str]:
+    proc = subprocess.run(
+        ["git", *args],
+        cwd=str(root),
+        stdout=subprocess.PIPE,
+        stderr=subprocess.PIPE,
+        text=True,
+        check=False,
+    )
+    return proc.returncode, proc.stdout.strip()
+
+
+def last_commit_for(root: Path, path: Path) -> str:
+    relative = path.resolve().relative_to(root.resolve())
+    code, out = git(root, "log", "-1", "--format=%H", "--", str(relative))
+    return out if code == 0 else ""
+
+
+def blob_exists(root: Path, commit: str, path: Path) -> bool:
+    try:
+        relative = path.resolve().relative_to(root.resolve())
+    except ValueError:
+        return False
+    code, _ = git(root, "cat-file", "-e", f"{commit}:{relative}")
+    return code == 0
+
+
+def battery_seal(
+    battery: Battery, prereg_path: Path, runner_path: Path
+) -> Dict[str, str]:
+    code, root_text = git(Path.cwd(), "rev-parse", "--show-toplevel")
+    repository_ok = code == 0 and bool(root_text)
+    battery.check("seal", "seal.git_repository", repository_ok)
+
+    if not repository_ok:
+        battery.check("seal", "seal.committed_blobs", False)
+        battery.check("seal", "seal.distinct_commits", False)
+        battery.check("seal", "seal.prereg_is_runner_parent", False)
+        battery.check("seal", "seal.head_is_runner_commit", False)
+        return {"root": "", "prereg_commit": "", "runner_commit": "", "head": ""}
+
+    root = Path(root_text)
+    prereg_commit = last_commit_for(root, prereg_path)
+    runner_commit = last_commit_for(root, runner_path)
+    code, head = git(root, "rev-parse", "HEAD")
+    if code != 0:
+        head = ""
+
+    committed_blobs = (
+        bool(prereg_commit)
+        and bool(runner_commit)
+        and blob_exists(root, prereg_commit, prereg_path)
+        and blob_exists(root, runner_commit, runner_path)
+    )
+    battery.check("seal", "seal.committed_blobs", committed_blobs)
+    battery.check(
+        "seal",
+        "seal.distinct_commits",
+        bool(prereg_commit and runner_commit and prereg_commit != runner_commit),
+    )
+
+    code, parent = (
+        git(root, "rev-parse", f"{runner_commit}^")
+        if runner_commit
+        else (1, "")
+    )
+    battery.check(
+        "seal",
+        "seal.prereg_is_runner_parent",
+        code == 0 and parent == prereg_commit,
+    )
+    battery.check(
+        "seal",
+        "seal.head_is_runner_commit",
+        bool(head and head == runner_commit),
+    )
+    return {
+        "root": str(root),
+        "prereg_commit": prereg_commit,
+        "runner_commit": runner_commit,
+        "head": head,
+    }
+
+
+def battery_c1(battery: Battery) -> None:
+    for frame in FRAMES:
+        prefix = f"C1.{frame.name}"
+        ell = frame.inv_h
+        ell_prime = (1 - ell * frame.h) // frame.e1
+        quotient_x = frame.i(frame.u2) - ell * frame.u2
+        quotient_pi = frame.a(frame.u2) - ell_prime * frame.u2
+        carry = (ell * frame.u2) // frame.e1
+        rho_from_quotient = frame.eta ** (quotient_x // frame.e1)
+        rho_formula = frame.eta ** (-carry)
+        eta2 = frame.field.one
+        z2_direct = eta2 * rho_from_quotient
+        z2_formula = eta2 * (frame.eta ** (-carry))
+
+        battery.check(prefix.split(".")[0], f"{prefix}.base_z1", frame.eta, frame.eta)
+        battery.check(
+            "C1",
+            f"{prefix}.bezout",
+            ell * frame.h + ell_prime * frame.e1,
+            1,
+        )
+        battery.check(
+            "C1",
+            f"{prefix}.quotient_exponents",
+            (quotient_x, quotient_pi),
+            (-frame.e1 * carry, frame.h * carry),
+        )
+        battery.check(
+            "C1",
+            f"{prefix}.level2_letter",
+            (rho_from_quotient, z2_direct),
+            (rho_formula, z2_formula),
+        )
+
+
+def battery_c2(battery: Battery) -> None:
+    values = range(-4, 5)
+    for frame in FRAMES:
+        prefix = f"C2.{frame.name}"
+
+        congruence_ok = all(
+            frame.i(k) * frame.h + frame.a(k) * frame.e1 == k
+            and 0 <= frame.i(k) < frame.e1
+            for k in values
+        )
+        battery.check("C2", f"{prefix}.normalizer_heights", congruence_ok)
+
+        wrap_identity_ok = True
+        wrap_range_ok = True
+        carry_ok = True
+        for a in values:
+            for b in values:
+                wrap = frame.wrap(a, b)
+                ia, aa = frame.normalizer_exponents(a)
+                ib, ab = frame.normalizer_exponents(b)
+                iab, aab = frame.normalizer_exponents(a + b)
+                wrap_identity_ok &= (
+                    ia + ib - iab == frame.e1 * wrap
+                    and aa + ab - aab == -frame.h * wrap
+                )
+                wrap_range_ok &= wrap in (0, 1)
+                carry_ok &= (
+                    frame.q(a + b)
+                    == frame.q(a) + frame.q(b) + wrap
+                )
+
+        battery.check("C2", f"{prefix}.wrap_identity", wrap_identity_ok)
+        battery.check("C2", f"{prefix}.wrap_range", wrap_range_ok)
+
+        cocycle_ok = True
+        for a in values:
+            for b in values:
+                for c in values:
+                    left = (
+                        frame.eta ** frame.wrap(a, b)
+                    ) * (
+                        frame.eta ** frame.wrap(a + b, c)
+                    )
+                    right = (
+                        frame.eta ** frame.wrap(b, c)
+                    ) * (
+                        frame.eta ** frame.wrap(a, b + c)
+                    )
+                    cocycle_ok &= left == right
+        battery.check("C2", f"{prefix}.cocycle", cocycle_ok)
+
+        battery.check(
+            "C2",
+            f"{prefix}.normalized_endpoints",
+            (frame.theta(0), frame.theta(1)),
+            (frame.field.one, frame.field.one),
+        )
+
+        recursion_ok = True
+        running = frame.field.one
+        for s in range(0, 6):
+            if s == 0:
+                running = frame.field.one
+            else:
+                running = running * (
+                    frame.eta
+                    ** frame.wrap((s - 1) * frame.u2, frame.u2)
+                )
+            recursion_ok &= running == frame.theta(s)
+        battery.check("C2", f"{prefix}.theta_recursion", recursion_ok)
+
+        closed_ok = all(
+            frame.theta(s)
+            == frame.eta
+            ** ((s * frame.i(frame.u2)) // frame.e1)
+            for s in range(7)
+        )
+        battery.check("C2", f"{prefix}.theta_closed_form", closed_ok)
+        battery.check("C2", f"{prefix}.q_carry", carry_ok)
+
+
+def battery_c3(battery: Battery) -> None:
+    for stage in STAGES:
+        prefix = f"C3.{stage.name}"
+        theta = stage_theta(stage)
+        gamma = stage_gamma(stage)
+        multiplicative = stage_multiplicative(stage, gamma, theta)
+        canonical = stage_canonical_slots(stage, gamma, theta)
+        psi = psi_from_c(stage.frame.field, stage.f2, stage.c)
+        canonical_poly = canonical_poly_from_slots(stage, canonical)
+        twist = twisted_poly(psi, stage.w)
+
+        expected_theta = [
+            stage.frame.eta
+            ** (
+                (s * stage.frame.i(stage.frame.u2))
+                // stage.frame.e1
+            )
+            for s in range(stage.f2 + 1)
+        ]
+        expected_gamma = {
+            t: stage.c[t] * theta[stage.f2 - t]
+            for t in range(stage.f2)
+        }
+        expected_canonical = {
+            t: stage.c[t] * (stage.w ** (stage.f2 - t))
+            for t in range(stage.f2)
+        }
+
+        battery.check(
+            "C3", f"{prefix}.theta_vector", theta, expected_theta
+        )
+        battery.check(
+            "C3", f"{prefix}.coherent_vector", gamma, expected_gamma
+        )
+        battery.check(
+            "C3",
+            f"{prefix}.multiplicative_restored",
+            multiplicative,
+            dict(stage.c),
+        )
+        battery.check(
+            "C3",
+            f"{prefix}.canonical_vector",
+            canonical,
+            expected_canonical,
+        )
+        battery.check(
+            "C3",
+            f"{prefix}.twisted_coefficients",
+            canonical_poly,
+            twist,
+        )
+        battery.check(
+            "C3",
+            f"{prefix}.factor_pattern",
+            factor_degrees(canonical_poly),
+            factor_degrees(psi),
+        )
+
+
+def battery_c4(battery: Battery) -> Dict[str, Dict[str, Any]]:
+    evidence: Dict[str, Dict[str, Any]] = {}
+    for name, field, z, ell, beta, e, nu, support in [
+        (x[0], x[1], x[2], x[3], 5, x[4], x[5], x[6])
+        for x in C4_CASES
+    ]:
+        data = c4_data(field, z, ell, beta, e, nu, support)
+        evidence[name] = data
+        prefix = f"C4.{name}"
+
+        battery.check(
+            "C4",
+            f"{prefix}.raw_bridge",
+            data["raw"],
+            data["znu"] * data["epsilon"],
+        )
+        battery.check(
+            "C4",
+            f"{prefix}.equality_criterion",
+            data["raw"] == data["epsilon"],
+            data["znu"] == field.one,
+        )
+        battery.check(
+            "C4",
+            f"{prefix}.support_translation",
+            data["h_support"],
+            [nu + x for x in data["p_support"]],
+        )
+        battery.check(
+            "C4",
+            f"{prefix}.degree_translation",
+            max(data["h_support"]),
+            max(data["p_support"]) + nu,
+        )
+
+    frame = FRAME_BY_NAME["P5"]
+    theta = frame.theta(2)
+    w = F5(3)
+    znu = F5(4)
+    c = F5(2)
+    coherent = c * theta
+    canonical = (w ** 2) * theta.inverse() * coherent
+    composed = znu * canonical
+
+    battery.check(
+        "C4",
+        "C4.live_joint.distinct_slots",
+        len({theta.coeffs, w.coeffs, znu.coeffs}),
+        3,
+    )
+    battery.check(
+        "C4",
+        "C4.live_joint.composition",
+        composed,
+        znu * (w ** 2) * c,
+    )
+    return evidence
+
+
+def battery_c5(battery: Battery) -> Dict[str, Dict[str, FE]]:
+    evidence: Dict[str, Dict[str, FE]] = {}
+    for case in C5_CASES:
+        frame = case.frame
+        prefix = f"C5.{case.name}"
+        gamma = gamma_k(case)
+        direct = direct_normalizer_read(case)
+        q_value = frame.q(case.k)
+        varpi_minus = gamma * (frame.eta ** (-q_value))
+        varpi_plus = gamma * (frame.eta ** q_value)
+        bare = gamma_k(case, bare=True)
+
+        evidence[case.name] = {
+            "gamma": gamma,
+            "direct": direct,
+            "varpi_minus": varpi_minus,
+            "varpi_plus": varpi_plus,
+            "bare": bare,
+        }
+
+        battery.check("C5", f"{prefix}.gamma_exact", gamma, direct)
+        battery.check(
+            "C5", f"{prefix}.normalizer_read", direct, gamma
+        )
+        battery.check(
+            "C5",
+            f"{prefix}.varpi_read",
+            varpi_minus,
+            direct * (frame.eta ** (-q_value)),
+        )
+        battery.check(
+            "C5", f"{prefix}.minus_q_sign", varpi_minus != varpi_plus
+        )
+        battery.check("C5", f"{prefix}.bare_residue_rejected", bare != gamma)
+
+        above_terms = [
+            term
+            for term in case.terms
+            if frame.e1 * term.valuation + term.j * frame.h > case.k
+        ]
+        above_zero = all(
+            coefficient_normalized_residue(
+                term,
+                (case.k - term.j * frame.h) // frame.e1,
+            )
+            == frame.field.zero
+            for term in above_terms
+        )
+        battery.check("C5", f"{prefix}.pins_above_zero", above_zero)
+    return evidence
+
+
+def battery_c6(battery: Battery) -> None:
+    f4 = FRAME_BY_NAME["F4"]
+    p3 = FRAME_BY_NAME["P3_WRAP"]
+    live_cases = [
+        ("F4_M5", f4, 5, [1, 1]),
+        ("F4_M6", f4, 6, [1, 0]),
+        ("F4_M9", f4, 9, [0, 1]),
+        ("P3_M4", p3, 4, [2]),
+    ]
+
+    for name, frame, M, lambdas in live_cases:
+        prefix = f"C6.{name}"
+        terms = lift_terms(frame, M, lambdas)
+        battery.check("C6", f"{prefix}.domain", lift_domain(frame, M))
+        battery.check(
+            "C6",
+            f"{prefix}.integral",
+            all(term.pi_exponent >= 0 for term in terms),
+        )
+        battery.check(
+            "C6",
+            f"{prefix}.degree",
+            max(term.x_exponent for term in terms) < frame.D,
+        )
+        battery.check(
+            "C6",
+            f"{prefix}.exact_heights",
+            all(
+                frame.e1 * term.pi_exponent
+                + frame.h * term.x_exponent
+                == M
+                for term in terms
+            ),
+        )
+        battery.check(
+            "C6",
+            f"{prefix}.residue",
+            lift_residue(frame, terms),
+            lambda_value(frame, lambdas),
+        )
+        battery.check(
+            "C6",
+            f"{prefix}.xfree_criterion",
+            actual_xfree_monomial(terms),
+            predicted_xfree(frame, M, lambdas),
+        )
+
+    boundary_cases = [
+        (
+            "low_counterexample",
+            Frame("BOUNDARY_LOW", F4, 1, 2, 1, OMEGA, 1),
+            0,
+            [0, 1],
+        ),
+        ("boundary_eq", f4, 4, [1, 1]),
+        ("boundary_below", f4, 3, [1, 1]),
+    ]
+    for name, frame, M, lambdas in boundary_cases:
+        battery.check(
+            "C6",
+            f"C6.{name}.refused",
+            lift_domain(frame, M),
+            False,
+        )
+        battery.check(
+            "C6",
+            f"C6.{name}.no_full_slot_assertion",
+            M <= frame.D * frame.h,
+            True,
+        )
+
+    low_frame = boundary_cases[0][1]
+    low_terms = lift_terms(low_frame, 0, [0, 1])
+    battery.check(
+        "C6",
+        "C6.low_counterexample.nonintegral_digit",
+        any(term.pi_exponent < 0 for term in low_terms),
+    )
+
+    eta1 = FRAME_BY_NAME["P3_ETA1"]
+    eta1_terms = lift_terms(eta1, 3, [2])
+    battery.check(
+        "C6",
+        "C6.eta1.xfree",
+        actual_xfree_monomial(eta1_terms),
+        False,
+    )
+
+    clearance_values = [
+        Fraction(r * (11 - 2 * f4.D * f4.h), f4.e1)
+        for r in (1, 2, 3)
+    ]
+    for r, got, want in zip(
+        (1, 2, 3),
+        clearance_values,
+        [Fraction(3, 2), Fraction(3, 1), Fraction(9, 2)],
+    ):
+        battery.check(
+            "C6",
+            f"C6.clearance.r{r}",
+            (got, got > 0),
+            (want, True),
+        )
+
+
+def battery_regressions(battery: Battery) -> None:
+    x_stage = STAGE_BY_NAME["X"]
+    x_theta = stage_theta(x_stage)
+    x_gamma = stage_gamma(x_stage)
+    x_correct_mult = stage_multiplicative(x_stage, x_gamma, x_theta)
+    x_correct = psi_from_c(F3, 2, x_correct_mult)
+
+    x_naive_gamma = stage_gamma(x_stage, "gauge_naive")
+    x_naive_mult = stage_multiplicative(
+        x_stage, x_naive_gamma, x_theta
+    )
+    x_naive = psi_from_c(F3, 2, x_naive_mult)
+
+    battery.check(
+        "regression",
+        "regression.X.corrected_polynomial",
+        x_correct,
+        [F3(1), F3(0), F3(1)],
+    )
+    battery.check(
+        "regression",
+        "regression.X.naive_polynomial",
+        x_naive,
+        [F3(2), F3(0), F3(1)],
+    )
+    battery.check(
+        "regression",
+        "regression.X.split_separation",
+        (factor_degrees(x_correct), factor_degrees(x_naive)),
+        ([2], [1, 1]),
+    )
+
+    side = lambda j: 12 - 2 * j
+    occupied = {0: 12, 2: 8, 5: 2}
+    separator = (3, 7)
+    battery.check(
+        "regression",
+        "regression.FRG.partial_side",
+        all(height == side(j) for j, height in occupied.items()),
+    )
+    battery.check(
+        "regression",
+        "regression.FRG.separator",
+        separator[1] - side(separator[0]),
+        1,
+    )
+    battery.check(
+        "regression",
+        "regression.FRG.partial_not_full",
+        sorted(set(range(6)) - set(occupied)),
+        [1, 3, 4],
+    )
+    battery.check(
+        "regression",
+        "regression.FRG.support_width",
+        max(occupied) - min(occupied),
+        5,
+    )
+
+    f4q = STAGE_BY_NAME["F4Q"]
+    f4q_theta = stage_theta(f4q)
+    f4q_gamma = stage_gamma(f4q)
+    f4q_mult = stage_multiplicative(f4q, f4q_gamma, f4q_theta)
+    f4q_correct = psi_from_c(F4, 2, f4q_mult)
+    f4q_naive_mult = stage_multiplicative(
+        f4q, stage_gamma(f4q, "gauge_naive"), f4q_theta
+    )
+    f4q_naive = psi_from_c(F4, 2, f4q_naive_mult)
+    f4q_twist = twisted_poly(f4q_correct, OMEGA)
+
+    battery.check(
+        "regression",
+        "regression.F4Q.corrected",
+        f4q_correct,
+        [OMEGA, F4(1), F4(1)],
+    )
+    battery.check(
+        "regression",
+        "regression.F4Q.naive",
+        f4q_naive,
+        [F4(1), F4(1), F4(1)],
+    )
+    battery.check(
+        "regression",
+        "regression.F4Q.psi_twist",
+        f4q_twist,
+        [F4(1), OMEGA, F4(1)],
+    )
+    battery.check(
+        "regression",
+        "regression.F4Q.corrected_naive_patterns",
+        (factor_degrees(f4q_correct), factor_degrees(f4q_naive)),
+        ([2], [1, 1]),
+    )
+    battery.check(
+        "regression",
+        "regression.F4Q.twist_pattern",
+        factor_degrees(f4q_twist),
+        factor_degrees(f4q_correct),
+    )
+
+    mu = STAGE_BY_NAME["F4MU3"]
+    mu_theta = stage_theta(mu)
+    mu_gamma = stage_gamma(mu)
+    b_units = {
+        t: (mu.w ** (mu.f2 - t))
+        * mu_theta[mu.f2 - t].inverse()
+        for t in range(mu.f2)
+    }
+    canonical = stage_canonical_slots(mu, mu_gamma, mu_theta)
+    cube = canonical_poly_from_slots(mu, canonical)
+    expected_cube = p_mul(
+        p_mul([OMEGA, F4(1)], [OMEGA, F4(1)]),
+        [OMEGA, F4(1)],
+    )
+
+    battery.check(
+        "regression",
+        "regression.F4MU3.theta",
+        mu_theta,
+        [F4(1), F4(1), OMEGA, OMEGA],
+    )
+    battery.check(
+        "regression",
+        "regression.F4MU3.gamma",
+        [mu_gamma[2], mu_gamma[1], mu_gamma[0]],
+        [F4(1), OMEGA, OMEGA],
+    )
+    battery.check(
+        "regression",
+        "regression.F4MU3.B_units",
+        [b_units[2], b_units[1], b_units[0]],
+        [OMEGA, OMEGA, OMEGA ** 2],
+    )
+    battery.check(
+        "regression",
+        "regression.F4MU3.canonical.t2",
+        canonical[2],
+        OMEGA,
+    )
+    battery.check(
+        "regression",
+        "regression.F4MU3.canonical.t1",
+        canonical[1],
+        OMEGA ** 2,
+    )
+    battery.check(
+        "regression",
+        "regression.F4MU3.canonical.t0",
+        canonical[0],
+        F4(1),
+    )
+    battery.check(
+        "regression",
+        "regression.F4MU3.cube",
+        cube,
+        expected_cube,
+    )
+    battery.check(
+        "regression",
+        "regression.F4MU3.factor_pattern",
+        factor_degrees(cube),
+        [1, 1, 1],
+    )
+
+    lp = FRAME_BY_NAME["LP"]
+    ell = lp.inv_h
+    carry = (ell * lp.u2) // lp.e1
+    eta2 = F7(2)
+    z2 = eta2 * (lp.eta ** (-carry))
+    battery.check(
+        "regression",
+        "regression.LP.level2_letter",
+        z2,
+        eta2 * (F7(3) ** -2),
+    )
+    battery.check(
+        "regression",
+        "regression.LD.inverse_cocycle",
+        lp.theta(2) * lp.theta(2).inverse(),
+        F7(1),
+    )
+    battery.check(
+        "regression",
+        "regression.LD.negative_geography",
+        -carry,
+        -2,
+    )
+
+
+def compact_tex(text: str) -> str:
+    return "".join(text.split())
+
+
+def has_affirmative_phrase(text: str, phrase: str) -> bool:
+    phrase = phrase.lower()
+    negations = (
+        " no ",
+        " not ",
+        "neither",
+        "does not",
+        "proves no",
+        "without",
+        "cannot",
+        "isn't",
+        "is not",
+    )
+    for raw_line in text.splitlines():
+        line = " " + raw_line.lower().strip() + " "
+        if phrase in line and not any(token in line for token in negations):
+            return True
+    return False
+
+
+def lint_results(note_text: str) -> Dict[str, bool]:
+    doctrine = note_text.split("## 4.", 1)[0]
+    compact_all = compact_tex(note_text)
+    compact_doctrine = compact_tex(doctrine)
+
+    return {
+        "lint.base_z1_defined": r"z_1:=\eta" in compact_all,
+        "lint.zero_normalizer": (
+            r"\widehatn_i(0)=1" in compact_all
+            or r"\widehat{n}_i(0)=1" in compact_all
+        ),
+        "lint.eta1_implies_f1": (
+            r"\eta=1\Rightarrowf_1=1" in compact_all
+            or (
+                r"\eta=1" in compact_all
+                and "forces" in note_text
+                and r"f_1=1" in compact_all
+            )
+        ),
+        "lint.positive_wrap_sign": r"\eta^{W(t)}" in compact_doctrine,
+        "lint.gamma_has_coefficient_normalizer": (
+            r"\pi^{-(k-(i+e_1t)h)/e_1}" in compact_doctrine
+        ),
+        "lint.live_domain_strict": r"M>D'h" in compact_doctrine,
+        "lint.no_single_transport_map": not has_affirmative_phrase(
+            doctrine, "one transport map"
+        ),
+        "lint.no_unique_gauge": not has_affirmative_phrase(
+            doctrine, "unique gauge"
+        ),
+        "lint.no_cross_face_claim": not (
+            has_affirmative_phrase(doctrine, "cross-face compatibility")
+            or has_affirmative_phrase(doctrine, "cross-face coherence")
+        ),
+        "lint.M3_scored_stratum": (
+            "M3" in doctrine
+            and "only on the scored stratum" in doctrine
+        ),
+        "lint.M4_W2C3_fence": (
+            "M4" in doctrine
+            and "W2-C3" in doctrine
+            and "accepted fence" in doctrine
+        ),
+        "lint.B_law_sitewise_fence": (
+            "ladder-multiplicativity obligation" in doctrine
+            or "sitewise residual-read facts" in doctrine
+        ),
+    }
+
+
+def battery_lint(battery: Battery, note_text: str) -> Dict[str, bool]:
+    results = lint_results(note_text)
+    for name, passed in results.items():
+        battery.check("lint", name, passed)
+    return results
+
+
+def battery_teeth(
+    battery: Battery,
+    c4_evidence: Mapping[str, Mapping[str, Any]],
+    c5_evidence: Mapping[str, Mapping[str, FE]],
+    note_text: str,
+) -> None:
+    f4q = STAGE_BY_NAME["F4Q"]
+    baseline_gamma = stage_gamma(f4q)
+    mutant_gamma = stage_gamma(f4q, "gauge_naive")
+    failures = []
+    if mutant_gamma != baseline_gamma:
+        failures.append("C3.F4Q.coherent_vector")
+    battery.tooth("gauge_naive", failures)
+
+    p5 = STAGE_BY_NAME["P5"]
+    baseline_gamma = stage_gamma(p5)
+    mutant_gamma = stage_gamma(p5, "wrong_sign")
+    failures = []
+    if mutant_gamma != baseline_gamma:
+        failures.append("C3.P5.coherent_vector")
+    battery.tooth("wrong_sign", failures)
+
+    mu = STAGE_BY_NAME["F4MU3"]
+    normal_theta = stage_theta(mu)
+    shifted_theta = stage_theta(mu, "misindexed_telescope")
+    failures = []
+    if shifted_theta != normal_theta:
+        failures.append("C3.F4MU3.theta_vector")
+    battery.tooth("misindexed_telescope", failures)
+
+    gamma = stage_gamma(mu)
+    correct = stage_canonical_slots(mu, gamma, normal_theta, True)
+    wrong = stage_canonical_slots(mu, gamma, normal_theta, False)
+    failures = []
+    for t in (2, 1, 0):
+        if wrong[t] != correct[t]:
+            failures.append(f"regression.F4MU3.canonical.t{t}")
+    battery.tooth("inverse_orientation", failures)
+
+    origin = c4_evidence["nu2_nonroot"]
+    failures = []
+    mutant_raw = origin["epsilon"]
+    correct_raw = origin["znu"] * origin["epsilon"]
+    if mutant_raw != correct_raw:
+        failures.append("C4.nu2_nonroot.raw_bridge")
+    battery.tooth("origin_drop_nu", failures)
+
+    root_case = c4_evidence["nu2_root"]
+    actual_equality = root_case["raw"] == root_case["epsilon"]
+    mutant_prediction = False
+    failures = []
+    if mutant_prediction != actual_equality:
+        failures.append("C4.nu2_root.equality_criterion")
+    battery.tooth("origin_iff_nu0", failures)
+
+    case_a = C5_BY_NAME["A"]
+    failures = []
+    if gamma_k(case_a, bare=True) != c5_evidence["A"]["gamma"]:
+        failures.append("C5.A.gamma_exact")
+    battery.tooth("he6_bare_residue", failures)
+
+    failures = []
+    if (
+        c5_evidence["A"]["varpi_plus"]
+        != c5_evidence["A"]["varpi_minus"]
+    ):
+        failures.append("C5.A.varpi_read")
+    battery.tooth("he6_q_sign", failures)
+
+    f4 = FRAME_BY_NAME["F4"]
+    boundary_M = f4.D * f4.h
+    mutant_accepts = boundary_M >= f4.D * f4.h
+    failures = []
+    if mutant_accepts != lift_domain(f4, boundary_M):
+        failures.append("C6.boundary_eq.refused")
+    battery.tooth("lift_boundary_accept", failures)
+
+    eta1 = FRAME_BY_NAME["P3_ETA1"]
+    M = 3
+    lambdas = [2]
+    actual = actual_xfree_monomial(lift_terms(eta1, M, lambdas))
+    mutant_prediction = eta1.eta == eta1.field.one
+    failures = []
+    if mutant_prediction != actual:
+        failures.append("C6.eta1.xfree")
+    battery.tooth("eta_implies_xfree", failures)
+
+    injected = note_text.split("## 4.", 1)[0] + (
+        "\nT1 proves one transport map.\n"
+    )
+    failures = []
+    if has_affirmative_phrase(injected, "one transport map"):
+        failures.append("lint.no_single_transport_map")
+    battery.tooth("weld_single_map", failures)
+
+    mutant_note = note_text.replace(
+        "only on the scored stratum", "on the relevant material"
+    ).replace(
+        "only at W2-C3’s accepted fence", "at its consumer sites"
+    )
+    mutant_lint = lint_results(mutant_note)
+    failures = []
+    if not mutant_lint["lint.M3_scored_stratum"]:
+        failures.append("lint.M3_scored_stratum")
+    if not mutant_lint["lint.M4_W2C3_fence"]:
+        failures.append("lint.M4_W2C3_fence")
+    battery.tooth("weld_drop_fences", failures)
+
+
+def sha256_file(path: Path) -> str:
+    digest = hashlib.sha256()
+    with path.open("rb") as handle:
+        for block in iter(lambda: handle.read(1024 * 1024), b""):
+            digest.update(block)
+    return digest.hexdigest()
+
+
+def build_artifact(
+    battery: Battery,
+    seal: Mapping[str, str],
+    prereg_path: Path,
+    note_path: Path,
+    runner_path: Path,
+    fatal: str | None = None,
+) -> Dict[str, Any]:
+    actual_counts = Counter(row["group"] for row in battery.rows)
+    counts_match = (
+        dict(actual_counts) == EXPECTED_COUNTS
+        and len(battery.rows) == EXPECTED_TOTAL
+    )
+    rows_pass = all(row["pass"] for row in battery.rows)
+    teeth_complete = (
+        set(battery.tooth_evidence) == set(EXPECTED_TOOTH_FAILURES)
+    )
+    verdict = (
+        "PASS"
+        if fatal is None and counts_match and rows_pass and teeth_complete
+        else "FAIL"
+    )
+
+    hashes: Dict[str, str] = {}
+    for label, path in (
+        ("prereg", prereg_path),
+        ("note", note_path),
+        ("runner", runner_path),
+    ):
+        try:
+            hashes[label] = sha256_file(path)
+        except OSError:
+            hashes[label] = ""
+
+    return {
+        "schema": "S-1-T1-gauge-cocycle-battery-v1",
+        "verdict": verdict,
+        "fatal": fatal,
+        "prediction": {
+            "expected_total": EXPECTED_TOTAL,
+            "expected_counts": EXPECTED_COUNTS,
+            "expected_tooth_failures": EXPECTED_TOOTH_FAILURES,
+        },
+        "observed": {
+            "total": len(battery.rows),
+            "counts": dict(sorted(actual_counts.items())),
+            "counts_match": counts_match,
+            "all_rows_pass": rows_pass,
+            "teeth_complete": teeth_complete,
+        },
+        "seal": dict(seal),
+        "sha256": hashes,
+        "tooth_evidence": battery.tooth_evidence,
+        "rows": battery.rows,
+    }
+
+
+def parse_args() -> argparse.Namespace:
+    parser = argparse.ArgumentParser()
+    parser.add_argument("--prereg", required=True, type=Path)
+    parser.add_argument("--note", required=True, type=Path)
+    parser.add_argument("--artifact", required=True, type=Path)
+    return parser.parse_args()
+
+
+def main() -> int:
+    args = parse_args()
+    runner_path = Path(__file__).resolve()
+    prereg_path = args.prereg.resolve()
+    note_path = args.note.resolve()
+    artifact_path = args.artifact.resolve()
+
+    battery = Battery()
+    seal: Dict[str, str] = {}
+    fatal: str | None = None
+
+    try:
+        if artifact_path.exists():
+            raise FileExistsError(
+                f"refusing to replace existing artifact: {artifact_path}"
+            )
+
+        seal = battery_seal(battery, prereg_path, runner_path)
+        note_text = note_path.read_text(encoding="utf-8")
+
+        battery_c1(battery)
+        battery_c2(battery)
+        battery_c3(battery)
+        c4_evidence = battery_c4(battery)
+        c5_evidence = battery_c5(battery)
+        battery_c6(battery)
+        battery_regressions(battery)
+        battery_lint(battery, note_text)
+        battery_teeth(
+            battery,
+            c4_evidence,
+            c5_evidence,
+            note_text,
+        )
+    except Exception as exc:
+        fatal = f"{type(exc).__name__}: {exc}"
+
+    artifact = build_artifact(
+        battery,
+        seal,
+        prereg_path,
+        note_path,
+        runner_path,
+        fatal,
+    )
+
+    try:
+        artifact_path.parent.mkdir(parents=True, exist_ok=True)
+        with artifact_path.open("x", encoding="utf-8") as handle:
+            json.dump(
+                artifact,
+                handle,
+                indent=2,
+                sort_keys=True,
+                ensure_ascii=False,
+            )
+            handle.write("\n")
+    except Exception as exc:
+        sys.stderr.write(
+            f"artifact creation failed: {type(exc).__name__}: {exc}\n"
+        )
+        return 2
+
+    sys.stdout.write(str(artifact_path) + "\n")
+    return 0 if artifact["verdict"] == "PASS" else 1
+
+
+if __name__ == "__main__":
+    raise SystemExit(main())
+```
