@@ -1,0 +1,1930 @@
+```python
+#!/usr/bin/env python3
+from __future__ import annotations
+
+import contextlib
+import copy
+import dataclasses
+import functools
+import hashlib
+import importlib
+import inspect
+import io
+import itertools
+import json
+import os
+import pprint
+import subprocess
+import sys
+from collections import Counter, defaultdict
+from fractions import Fraction
+from pathlib import Path
+from typing import Any, Iterable, Mapping, Sequence
+
+
+ROOT = Path(__file__).resolve().parents[2]
+READER_NAMES = (
+    "gentow3_checks",
+    "gentow3_pe1_fresh",
+    "gentow3_pe2_fresh",
+    "gentow3_pe3_fresh",
+    "gentow3_pe5_fresh",
+)
+READER_PATHS = {
+    name: ROOT / "verification" / "openmath" / f"{name}.py"
+    for name in READER_NAMES
+}
+sys.path.insert(0, str(Path(__file__).resolve().parent))
+
+INF = ("DISTINGUISHED_ABSENT_PIN",)
+MISSING = object()
+
+
+def norm_name(name: str) -> str:
+    return "".join(ch.lower() for ch in name if ch.isalnum())
+
+
+def sort_key(value: Any) -> bytes:
+    return json.dumps(value, sort_keys=True, separators=(",", ":")).encode()
+
+
+def canonical(value: Any, active: set[int] | None = None) -> Any:
+    if active is None:
+        active = set()
+
+    if value is None:
+        return None
+    if isinstance(value, bool):
+        return ("bool", value)
+    if isinstance(value, int):
+        return ("int", value)
+    if isinstance(value, Fraction):
+        return ("fraction", value.numerator, value.denominator)
+    if isinstance(value, str):
+        return ("str", value)
+    if isinstance(value, bytes):
+        return ("bytes", tuple(value))
+    if isinstance(value, float):
+        raise TypeError("floating-point data are forbidden")
+
+    oid = id(value)
+    if oid in active:
+        raise TypeError("cyclic object is not a canonical exact value")
+
+    active.add(oid)
+    try:
+        if dataclasses.is_dataclass(value) and not isinstance(value, type):
+            return (
+                "record",
+                type(value).__qualname__,
+                tuple(
+                    (field.name, canonical(getattr(value, field.name), active))
+                    for field in dataclasses.fields(value)
+                ),
+            )
+
+        if isinstance(value, Mapping):
+            items = [
+                (canonical(key, active), canonical(item, active))
+                for key, item in value.items()
+            ]
+            items.sort(key=sort_key)
+            return ("map", tuple(items))
+
+        if isinstance(value, (tuple, list)):
+            return ("seq", tuple(canonical(item, active) for item in value))
+
+        if isinstance(value, (set, frozenset)):
+            items = [canonical(item, active) for item in value]
+            items.sort(key=sort_key)
+            return ("set", tuple(items))
+
+        if hasattr(value, "coeffs") and not callable(value.coeffs):
+            return (
+                "coeff-object",
+                type(value).__qualname__,
+                canonical(value.coeffs, active),
+            )
+
+        if hasattr(value, "coefficients"):
+            coeffs = value.coefficients
+            coeffs = coeffs() if callable(coeffs) else coeffs
+            return (
+                "coefficient-object",
+                type(value).__qualname__,
+                canonical(coeffs, active),
+            )
+
+        if hasattr(value, "__dict__"):
+            public = {
+                key: item
+                for key, item in vars(value).items()
+                if not key.startswith("_")
+                and not callable(item)
+                and not inspect.ismodule(item)
+            }
+            if public:
+                return (
+                    "object",
+                    type(value).__qualname__,
+                    canonical(public, active),
+                )
+
+        raise TypeError(
+            f"unsupported exact value type: {type(value).__qualname__}"
+        )
+    finally:
+        active.remove(oid)
+
+
+def plain(value: Any) -> Any:
+    if value == INF:
+        return "INF"
+    if value is None or isinstance(value, (bool, int, str)):
+        return value
+    if isinstance(value, Fraction):
+        return {
+            "numerator": value.numerator,
+            "denominator": value.denominator,
+        }
+    if isinstance(value, bytes):
+        return tuple(value)
+    if dataclasses.is_dataclass(value) and not isinstance(value, type):
+        return {
+            field.name: plain(getattr(value, field.name))
+            for field in dataclasses.fields(value)
+        }
+    if isinstance(value, Mapping):
+        return tuple(
+            sorted(
+                ((plain(key), plain(item)) for key, item in value.items()),
+                key=sort_key,
+            )
+        )
+    if isinstance(value, (tuple, list)):
+        return tuple(plain(item) for item in value)
+    if isinstance(value, (set, frozenset)):
+        return tuple(sorted((plain(item) for item in value), key=sort_key))
+    if hasattr(value, "coeffs") and not callable(value.coeffs):
+        return plain(value.coeffs)
+    if hasattr(value, "coefficients"):
+        coeffs = value.coefficients
+        return plain(coeffs() if callable(coeffs) else coeffs)
+    if hasattr(value, "__dict__"):
+        return {
+            key: plain(item)
+            for key, item in vars(value).items()
+            if not key.startswith("_")
+            and not callable(item)
+            and not inspect.ismodule(item)
+        }
+    raise TypeError(f"cannot print {type(value).__qualname__}")
+
+
+def safe_copy(value: Any) -> Any:
+    try:
+        return copy.deepcopy(value)
+    except Exception:
+        return value
+
+
+def children(value: Any) -> Iterable[tuple[str, Any]]:
+    if isinstance(value, Mapping):
+        for key, item in value.items():
+            if isinstance(key, str):
+                yield key, item
+    elif dataclasses.is_dataclass(value) and not isinstance(value, type):
+        for field in dataclasses.fields(value):
+            yield field.name, getattr(value, field.name)
+    elif hasattr(value, "__dict__") and not inspect.ismodule(value):
+        for key, item in vars(value).items():
+            if not key.startswith("_"):
+                yield key, item
+
+
+def find_named(
+    roots: Sequence[Any],
+    aliases: Sequence[str],
+    *,
+    max_depth: int = 6,
+) -> Any:
+    wanted = {norm_name(alias) for alias in aliases}
+    queue = [(root, 0) for root in roots]
+    seen: set[int] = set()
+
+    while queue:
+        value, depth = queue.pop(0)
+        oid = id(value)
+        if oid in seen:
+            continue
+        seen.add(oid)
+
+        for key, item in children(value):
+            if norm_name(key) in wanted:
+                return item
+
+        if depth >= max_depth:
+            continue
+
+        for _, item in children(value):
+            if isinstance(item, Mapping):
+                queue.append((item, depth + 1))
+            elif dataclasses.is_dataclass(item) and not isinstance(item, type):
+                queue.append((item, depth + 1))
+            elif hasattr(item, "__dict__") and not inspect.ismodule(item):
+                queue.append((item, depth + 1))
+
+    return MISSING
+
+
+def all_strings(value: Any, max_depth: int = 5) -> list[str]:
+    answer: list[str] = []
+    queue = [(value, 0)]
+    seen: set[int] = set()
+
+    while queue:
+        item, depth = queue.pop(0)
+        oid = id(item)
+        if oid in seen:
+            continue
+        seen.add(oid)
+
+        if isinstance(item, str):
+            answer.append(item)
+            continue
+        if depth >= max_depth:
+            continue
+        if isinstance(item, Mapping):
+            queue.extend((child, depth + 1) for child in item.values())
+        elif isinstance(item, (tuple, list, set, frozenset)):
+            queue.extend((child, depth + 1) for child in item)
+        elif dataclasses.is_dataclass(item) and not isinstance(item, type):
+            queue.extend(
+                (getattr(item, field.name), depth + 1)
+                for field in dataclasses.fields(item)
+            )
+
+    return answer
+
+
+def normalize_pins(value: Any) -> Any:
+    if value is None:
+        return INF
+    if isinstance(value, Mapping):
+        return {
+            key: normalize_pins(item)
+            for key, item in value.items()
+        }
+    if isinstance(value, (tuple, list)):
+        return tuple(normalize_pins(item) for item in value)
+    return value
+
+
+def normalize_sigma(value: Any) -> Any:
+    if value is MISSING or value is None:
+        return MISSING
+    if isinstance(value, Mapping):
+        expanded = []
+        for pair, multiplicity in value.items():
+            if not isinstance(multiplicity, int) or multiplicity < 0:
+                return value
+            expanded.extend([pair] * multiplicity)
+        return tuple(
+            sorted(expanded, key=lambda item: sort_key(canonical(item)))
+        )
+    if isinstance(value, (tuple, list, set, frozenset)):
+        return tuple(
+            sorted(tuple(value), key=lambda item: sort_key(canonical(item)))
+        )
+    return value
+
+
+def normalize_labels(value: Any) -> Any:
+    if value is MISSING or value is None:
+        return MISSING
+    if isinstance(value, str):
+        return (value,)
+    if isinstance(value, (tuple, list)):
+        return tuple(value)
+    if isinstance(value, (set, frozenset)):
+        return MISSING
+    return (value,)
+
+
+def is_exact_zero(value: Any) -> bool:
+    if isinstance(value, bool):
+        return not value
+    if isinstance(value, int):
+        return value == 0
+    if isinstance(value, Fraction):
+        return value == 0
+    if isinstance(value, (tuple, list)):
+        return all(is_exact_zero(item) for item in value)
+    if hasattr(value, "is_zero"):
+        marker = value.is_zero
+        marker = marker() if callable(marker) else marker
+        if isinstance(marker, bool):
+            return marker
+    return canonical(value) == canonical(0)
+
+
+def poly_strip(poly: Sequence[int]) -> list[int]:
+    answer = list(poly)
+    while len(answer) > 1 and answer[-1] == 0:
+        answer.pop()
+    return answer or [0]
+
+
+def poly_add(left: Sequence[int], right: Sequence[int]) -> list[int]:
+    answer = [0] * max(len(left), len(right))
+    for index, value in enumerate(left):
+        answer[index] += value
+    for index, value in enumerate(right):
+        answer[index] += value
+    return poly_strip(answer)
+
+
+def poly_scale(scalar: int, poly: Sequence[int]) -> list[int]:
+    return poly_strip([scalar * value for value in poly])
+
+
+def poly_mul(left: Sequence[int], right: Sequence[int]) -> list[int]:
+    if not left or not right:
+        return [0]
+    answer = [0] * (len(left) + len(right) - 1)
+    for i, a in enumerate(left):
+        for j, b in enumerate(right):
+            answer[i + j] += a * b
+    return poly_strip(answer)
+
+
+def poly_pow(poly: Sequence[int], exponent: int) -> list[int]:
+    answer = [1]
+    base = list(poly)
+    n = exponent
+    while n:
+        if n & 1:
+            answer = poly_mul(answer, base)
+        base = poly_mul(base, base)
+        n >>= 1
+    return answer
+
+
+def looks_like_polynomial(value: Any) -> bool:
+    if value is MISSING or isinstance(value, (str, bytes, bool, float)):
+        return False
+    if hasattr(value, "coeffs") or hasattr(value, "coefficients"):
+        try:
+            canonical(value)
+            return True
+        except Exception:
+            return False
+    if isinstance(value, (tuple, list)) and value:
+        try:
+            canonical(value)
+        except Exception:
+            return False
+        return all(
+            isinstance(item, (int, bool, Fraction))
+            for item in value
+        )
+    return False
+
+
+def looks_like_coordinate_array(value: Any) -> bool:
+    return (
+        isinstance(value, (tuple, list))
+        and bool(value)
+        and all(looks_like_polynomial(item) for item in value)
+    )
+
+
+def import_readers() -> dict[str, Any]:
+    modules: dict[str, Any] = {}
+    captured = io.StringIO()
+    import importlib.util
+    with contextlib.redirect_stdout(captured), contextlib.redirect_stderr(captured):
+        for name in READER_NAMES:
+            spec = importlib.util.spec_from_file_location(name, READER_PATHS[name])
+            mod = importlib.util.module_from_spec(spec)
+            sys.modules[name] = mod
+            try:
+                spec.loader.exec_module(mod)
+            except SystemExit:
+                # sealed runner exits at module level after its battery;
+                # its definitions are complete in the module object we hold
+                pass
+            modules[name] = mod
+    return modules
+
+
+@dataclasses.dataclass
+class Invocation:
+    module: str
+    surface: str
+    function: Any
+    args: tuple[Any, ...]
+    kwargs: dict[str, Any]
+    bound: dict[str, Any]
+    result: Any
+    ordinal: int
+
+
+@dataclasses.dataclass
+class Record:
+    source_tags: list[str]
+    module: str
+    surface: str
+    frame_display: Any
+    frame_key: Any
+    polynomial: Any
+    polynomial_key: Any
+    pins: Any = MISSING
+    pins_key: Any = MISSING
+    residues: Any = MISSING
+    residues_key: Any = MISSING
+    sigma: Any = MISSING
+    sigma_key: Any = MISSING
+    labels: Any = MISSING
+    labels_key: Any = MISSING
+    shadow_arrays: Any = MISSING
+    shadow_key: Any = MISSING
+    theta: Any = MISSING
+    t_maps: Any = MISSING
+    t_key: Any = MISSING
+    reasons: list[str] = dataclasses.field(default_factory=list)
+
+    @property
+    def eligible(self) -> bool:
+        return not self.reasons
+
+    @property
+    def honest_key(self) -> Any:
+        return (
+            self.pins_key,
+            self.residues_key,
+            self.sigma_key,
+            self.labels_key,
+        )
+
+
+SURFACE_NAMES = {
+    "membercheck",
+    "memberverdict",
+    "verdict",
+    "honestverdict",
+    "checkmember",
+    "memberread",
+    "readmember",
+    "runmember",
+}
+
+
+def is_committed_surface(name: str, function: Any, module: Any) -> bool:
+    if not inspect.isfunction(function):
+        return False
+    if function.__module__ != module.__name__:
+        return False
+    normalized = norm_name(name)
+    return (
+        normalized in SURFACE_NAMES
+        or ("member" in normalized and "check" in normalized)
+        or normalized.endswith("verdict")
+    )
+
+
+def no_required_arguments(function: Any) -> bool:
+    try:
+        signature = inspect.signature(function)
+    except (TypeError, ValueError):
+        return False
+    return not any(
+        parameter.default is inspect.Parameter.empty
+        and parameter.kind
+        in (
+            inspect.Parameter.POSITIONAL_ONLY,
+            inspect.Parameter.POSITIONAL_OR_KEYWORD,
+            inspect.Parameter.KEYWORD_ONLY,
+        )
+        for parameter in signature.parameters.values()
+    )
+
+
+def bind_arguments(
+    function: Any,
+    args: Sequence[Any],
+    kwargs: Mapping[str, Any],
+) -> dict[str, Any]:
+    try:
+        return dict(inspect.signature(function).bind_partial(
+            *args, **kwargs
+        ).arguments)
+    except Exception:
+        return {
+            "arg%d" % index: value
+            for index, value in enumerate(args)
+        } | dict(kwargs)
+
+
+def call_committed_roster(
+    modules: Mapping[str, Any],
+) -> tuple[list[Invocation], list[str]]:
+    invocations: list[Invocation] = []
+    failures: list[str] = []
+    ordinal = 0
+
+    for module_name, module in modules.items():
+        originals: dict[str, Any] = {}
+        surfaces = [
+            (name, function)
+            for name, function in vars(module).items()
+            if is_committed_surface(name, function, module)
+        ]
+
+        if not surfaces:
+            failures.append(
+                f"{module_name}: no committed member-check/verdict call surface"
+            )
+            continue
+
+        for surface_name, original in surfaces:
+            originals[surface_name] = original
+
+            def make_wrapper(name: str, function: Any) -> Any:
+                @functools.wraps(function)
+                def wrapper(*args: Any, **kwargs: Any) -> Any:
+                    nonlocal ordinal
+                    # This is the required direct call.  No tracing, profiling,
+                    # frame-local harvesting, or print parsing is used.
+                    result = function(*args, **kwargs)
+                    ordinal += 1
+                    invocations.append(
+                        Invocation(
+                            module=module_name,
+                            surface=name,
+                            function=function,
+                            args=tuple(args),
+                            kwargs=dict(kwargs),
+                            bound=bind_arguments(function, args, kwargs),
+                            result=safe_copy(result),
+                            ordinal=ordinal,
+                        )
+                    )
+                    return result
+
+                return wrapper
+
+            setattr(module, surface_name, make_wrapper(surface_name, original))
+
+        before = len(invocations)
+        entrypoints = []
+        for name in ("main", "run", "run_checks", "check_all"):
+            function = getattr(module, name, None)
+            if callable(function) and no_required_arguments(function):
+                if function not in entrypoints:
+                    entrypoints.append(function)
+
+        sink = io.StringIO()
+        try:
+            for entrypoint in entrypoints:
+                try:
+                    with contextlib.redirect_stdout(sink), \
+                            contextlib.redirect_stderr(sink):
+                        entrypoint()
+                except SystemExit as exc:
+                    if exc.code not in (None, 0):
+                        failures.append(
+                            f"{module_name}.{entrypoint.__name__} "
+                            f"exited with {exc.code}"
+                        )
+                except Exception as exc:
+                    failures.append(
+                        f"{module_name}.{entrypoint.__name__} failed: "
+                        f"{type(exc).__name__}: {exc}"
+                    )
+        finally:
+            for surface_name, original in originals.items():
+                setattr(module, surface_name, original)
+
+        if len(invocations) == before:
+            failures.append(
+                f"{module_name}: committed runner made no "
+                "member-check/verdict calls"
+            )
+
+    return invocations, failures
+
+
+def frame_object(
+    invocation: Invocation,
+    module: Any,
+) -> Any:
+    for name, value in invocation.bound.items():
+        if norm_name(name) in {"f", "fam", "family", "frame"} and all(
+            hasattr(value, attr)
+            for attr in ("p", "PHI1", "PHI2", "mu2")
+        ):
+            return value
+
+    for value in invocation.args:
+        if all(
+            hasattr(value, attr)
+            for attr in ("p", "PHI1", "PHI2", "mu2")
+        ):
+            return value
+
+    candidates = [
+        value
+        for name, value in vars(module).items()
+        if norm_name(name) in {"f", "fam", "family", "frame"}
+        and all(
+            hasattr(value, attr)
+            for attr in ("p", "PHI1", "PHI2", "mu2")
+        )
+    ]
+    return candidates[0] if len(candidates) == 1 else MISSING
+
+
+def exact_attribute(value: Any, aliases: Sequence[str]) -> Any:
+    if value is MISSING:
+        return MISSING
+    for alias in aliases:
+        if hasattr(value, alias):
+            answer = getattr(value, alias)
+            if not callable(answer):
+                return answer
+    return MISSING
+
+
+FRAME_FIELDS = (
+    ("p", ("p", "prime")),
+    ("Q", ("Q", "q")),
+    ("Phi_prime", ("PHI1", "Phi_prime", "PhiPrime", "PHIP")),
+    ("e1", ("e1",)),
+    ("f1", ("f1",)),
+    ("h", ("h",)),
+    ("eta", ("eta",)),
+    ("e2", ("e2",)),
+    ("f2", ("f2",)),
+    ("u2", ("u2",)),
+    ("mu2", ("mu2",)),
+    ("Phi2", ("PHI2", "Phi2", "phi2")),
+    ("N", ("N", "precision", "consultation_bound")),
+)
+
+
+def extract_frame(
+    frame: Any,
+    invocation: Invocation,
+    module: Any,
+) -> tuple[Any, Any, list[str]]:
+    roots = (
+        invocation.bound,
+        invocation.result,
+        vars(module),
+    )
+    displayed = []
+    missing = []
+
+    for label, aliases in FRAME_FIELDS:
+        value = exact_attribute(frame, aliases)
+        if value is MISSING:
+            value = find_named(roots, aliases)
+
+        if label == "Q" and value is MISSING:
+            p = exact_attribute(frame, ("p",))
+            f1 = exact_attribute(frame, ("f1",))
+            if isinstance(p, int) and isinstance(f1, int):
+                value = p ** f1
+
+        if value is MISSING:
+            displayed.append((label, "<UNAVAILABLE>"))
+            if label in {
+                "p", "Phi_prime", "e1", "f1",
+                "e2", "f2", "mu2", "Phi2", "N",
+            }:
+                missing.append(f"frame field {label} unavailable")
+        else:
+            try:
+                canonical(value)
+            except Exception as exc:
+                displayed.append((label, "<NONCANONICAL>"))
+                missing.append(f"frame field {label} noncanonical: {exc}")
+            else:
+                displayed.append((label, plain(value)))
+
+    options = []
+    option_words = (
+        "normalizer", "normalisation", "normalization", "gauge",
+        "basis", "slotorder", "slotgrid", "window",
+        "consultationwindow", "labelorder", "coordinateorder",
+    )
+    for key, value in vars(module).items():
+        normalized = norm_name(key)
+        if not any(word in normalized for word in option_words):
+            continue
+        if callable(value) or inspect.ismodule(value):
+            continue
+        try:
+            canonical(value)
+        except Exception:
+            continue
+        options.append((key, value))
+    displayed.insert(-1, (
+        "normalizer/gauge/options",
+        plain(tuple(sorted(options))),
+    ))
+
+    if missing:
+        return tuple(displayed), MISSING, missing
+    return tuple(displayed), canonical(tuple(displayed)), []
+
+
+def bound_value(
+    bound: Mapping[str, Any],
+    exact_names: Sequence[str],
+) -> Any:
+    for name in exact_names:
+        if name in bound:
+            return bound[name]
+    wanted = {norm_name(name) for name in exact_names}
+    for name, value in bound.items():
+        if norm_name(name) in wanted:
+            return value
+    return MISSING
+
+
+def reconstruct_from_level_one(
+    frame: Any,
+    coefficients: Any,
+) -> Any:
+    phi1 = exact_attribute(frame, ("PHI1", "Phi_prime"))
+    if (
+        phi1 is MISSING
+        or not isinstance(coefficients, (tuple, list))
+        or not coefficients
+        or not all(looks_like_polynomial(item) for item in coefficients)
+    ):
+        return MISSING
+
+    answer = [0]
+    power = [1]
+    for coefficient in coefficients:
+        answer = poly_add(answer, poly_mul(list(coefficient), power))
+        power = poly_mul(power, list(phi1))
+    return answer
+
+
+def extract_polynomial(
+    invocation: Invocation,
+    frame: Any,
+) -> Any:
+    # Case matters here: "f" is the member; "F" is commonly the frame.
+    for name in (
+        "f", "poly", "polynomial", "member_f",
+        "member_polynomial", "input_f", "f_coeffs",
+    ):
+        if name in invocation.bound:
+            value = invocation.bound[name]
+            if looks_like_polynomial(value):
+                return value
+
+    for name in ("G", "g_coeffs", "level1_coeffs", "member_G"):
+        if name in invocation.bound:
+            value = invocation.bound[name]
+            reconstructed = reconstruct_from_level_one(frame, value)
+            if reconstructed is not MISSING:
+                return reconstructed
+            try:
+                canonical(value)
+            except Exception:
+                continue
+            return value
+
+    value = find_named(
+        (invocation.result, invocation.bound),
+        (
+            "member_f", "member_polynomial", "polynomial",
+            "input_f", "f_coeffs",
+        ),
+    )
+    return value if looks_like_polynomial(value) else MISSING
+
+
+def extract_tags(invocation: Invocation) -> list[str]:
+    roots = (invocation.bound, invocation.result)
+    preferred = find_named(
+        roots,
+        (
+            "source_tag", "source_tags", "member_tag", "row_tag",
+            "tag", "name", "member_name", "family", "fam", "label",
+        ),
+    )
+    strings = all_strings(preferred) if preferred is not MISSING else []
+    if not strings:
+        for root in roots:
+            strings.extend(all_strings(root, max_depth=3))
+
+    markers = (
+        "FAM-", "A7-BAND", "PE1-", "FR-GL", "FR-M3",
+        "W-A", "W-B", "W-", "FR5X",
+    )
+    accepted = [
+        string
+        for string in strings
+        if any(marker in string.upper() for marker in markers)
+    ]
+    if not accepted:
+        accepted = [
+            f"{invocation.module}:{invocation.surface}:"
+            f"{invocation.ordinal}"
+        ]
+    return list(dict.fromkeys(accepted))
+
+
+def excluded_nonmember(tags: Sequence[str]) -> bool:
+    text = " ".join(tags).upper()
+    return any(
+        marker in text
+        for marker in (
+            "MUTANT",
+            "ALTERED-EXPECTED",
+            "ALTERED_EXPECTED",
+            "THRESHOLD",
+            "TOOTH",
+            "CARRIER-ONLY",
+            "CARRIER_ONLY",
+            "PREDICATE",
+        )
+    )
+
+
+def function_from(
+    module: Any,
+    names: Sequence[str],
+) -> Any:
+    wanted = {norm_name(name) for name in names}
+    for name, value in vars(module).items():
+        if norm_name(name) in wanted and callable(value):
+            return value
+    return MISSING
+
+
+def call_if_bindable(function: Any, alternatives: Sequence[tuple[Any, ...]]) -> Any:
+    if function is MISSING:
+        return MISSING
+    try:
+        signature = inspect.signature(function)
+    except (TypeError, ValueError):
+        return MISSING
+
+    for args in alternatives:
+        try:
+            signature.bind(*args)
+        except TypeError:
+            continue
+        sink = io.StringIO()
+        try:
+            with contextlib.redirect_stdout(sink), \
+                    contextlib.redirect_stderr(sink):
+                return function(*args)
+        except Exception:
+            continue
+    return MISSING
+
+
+def honest_coordinates(
+    invocation: Invocation,
+    module: Any,
+    frame: Any,
+    polynomial: Any,
+) -> Any:
+    value = find_named(
+        (invocation.result,),
+        (
+            "honest_coordinates", "honest_coords", "honest_C",
+            "honest_coefficients", "composed_coordinates",
+            "composed_coefficients", "Cs",
+        ),
+    )
+    if looks_like_coordinate_array(value):
+        return value
+
+    function = function_from(
+        module,
+        (
+            "honest_coords", "honest_coordinates",
+            "composed_read", "honest_read",
+        ),
+    )
+    value = call_if_bindable(
+        function,
+        (
+            (frame, polynomial),
+            (polynomial,),
+            tuple(invocation.args),
+        ),
+    )
+    if (
+        isinstance(value, tuple)
+        and value
+        and looks_like_coordinate_array(value[0])
+    ):
+        value = value[0]
+    return value if looks_like_coordinate_array(value) else MISSING
+
+
+def shadow_coordinates(
+    invocation: Invocation,
+    module: Any,
+    frame: Any,
+    polynomial: Any,
+) -> Any:
+    value = find_named(
+        (invocation.result,),
+        (
+            "ShCs", "ShC", "shadow_C", "shadow_coordinates",
+            "stage_shadow", "shadow_content_arrays",
+        ),
+    )
+    if looks_like_coordinate_array(value):
+        return value
+
+    function = function_from(
+        module,
+        (
+            "shadow_read", "shadow_coords",
+            "shadow_coordinates", "stage_shadow_read",
+        ),
+    )
+    value = call_if_bindable(
+        function,
+        (
+            (frame, polynomial),
+            (polynomial,),
+            tuple(invocation.args),
+        ),
+    )
+    if (
+        isinstance(value, tuple)
+        and value
+        and looks_like_coordinate_array(value[0])
+    ):
+        value = value[0]
+    return value if looks_like_coordinate_array(value) else MISSING
+
+
+def pin_rows(frame: Any, coordinates: Any) -> Any:
+    pin = exact_attribute(frame, ("pin",))
+    if pin is MISSING or not callable(pin):
+        return MISSING
+    answer = []
+    for coordinate in coordinates:
+        try:
+            row = pin(list(coordinate))
+        except Exception:
+            return MISSING
+        if not isinstance(row, (tuple, list)) or len(row) < 2:
+            return MISSING
+        answer.append((row[0], row[1]))
+    return tuple(answer)
+
+
+def verdict_shape(value: Any) -> bool:
+    return (
+        isinstance(value, (tuple, list))
+        and len(value) >= 4
+        and isinstance(value[2], str)
+        and all(
+            item is None or isinstance(item, int)
+            for item in value[:2]
+        )
+    )
+
+
+def find_verdict_shape(value: Any, max_depth: int = 4) -> Any:
+    queue = [(value, 0)]
+    seen: set[int] = set()
+    while queue:
+        item, depth = queue.pop(0)
+        oid = id(item)
+        if oid in seen:
+            continue
+        seen.add(oid)
+        if verdict_shape(item):
+            return item
+        if depth >= max_depth:
+            continue
+        if isinstance(item, Mapping):
+            queue.extend((child, depth + 1) for child in item.values())
+        elif isinstance(item, (tuple, list)):
+            queue.extend((child, depth + 1) for child in item)
+        elif dataclasses.is_dataclass(item) and not isinstance(item, type):
+            queue.extend(
+                (getattr(item, field.name), depth + 1)
+                for field in dataclasses.fields(item)
+            )
+    return MISSING
+
+
+def direct_honest_verdict(invocation: Invocation) -> Any:
+    result = invocation.result
+    surface = norm_name(invocation.surface)
+
+    # gentow3_checks.member_check returns
+    # (mindiffs, honest_label2_verdict, shadow_label2_verdict).
+    if surface == "membercheck":
+        if (
+            isinstance(result, (tuple, list))
+            and len(result) >= 2
+            and verdict_shape(result[1])
+        ):
+            return result[1]
+
+    # A committed verdict surface's own return is the honest verdict.
+    if "verdict" in surface and verdict_shape(result):
+        return result
+
+    named = find_named(
+        (result,),
+        (
+            "honest_verdict", "honest_read", "honest_result",
+            "rh", "verdict_honest",
+        ),
+    )
+    if verdict_shape(named):
+        return named
+
+    return find_verdict_shape(result)
+
+
+def deciding_residues_label2(
+    frame: Any,
+    rows: Sequence[tuple[Any, Any]],
+    verdict: Sequence[Any],
+) -> Any:
+    if len(rows) < 2 or len(verdict) < 3:
+        return MISSING
+
+    u, ru = rows[0]
+    w, rw = rows[1]
+    label = verdict[2]
+    p = exact_attribute(frame, ("p",))
+
+    if u is None or label == "DRAIN":
+        return ()
+    if w is None or u < 2 * w:
+        if u % 2 == 1 or p == 2:
+            return ()
+        return (ru,)
+    if u == 2 * w:
+        return (ru, rw)
+    return ()
+
+
+def decode_honest_tuple(
+    invocation: Invocation,
+    frame: Any,
+    pin_data: Any,
+) -> tuple[Any, Any, Any, Any]:
+    roots = (invocation.result,)
+    pins = find_named(
+        roots,
+        (
+            "honest_pins", "composed_pins", "pin_vector",
+            "pins_honest", "pins",
+        ),
+    )
+    residues = find_named(
+        roots,
+        (
+            "deciding_residues", "honest_deciding_residues",
+            "consulted_residues", "decision_residues",
+            "deciding_digits", "decision_trace",
+        ),
+    )
+    sigma = find_named(
+        roots,
+        (
+            "honest_sigma", "sigma_honest",
+            "splitting_type", "sigma",
+        ),
+    )
+    labels = find_named(
+        roots,
+        (
+            "honest_labels", "verdict_labels",
+            "labels_honest", "labels",
+        ),
+    )
+
+    result = invocation.result
+    if (
+        isinstance(result, (tuple, list))
+        and len(result) == 4
+        and isinstance(result[0], (tuple, list, Mapping))
+        and isinstance(result[1], (tuple, list, Mapping))
+    ):
+        if pins is MISSING:
+            pins = result[0]
+        if residues is MISSING:
+            residues = result[1]
+        if sigma is MISSING:
+            sigma = result[2]
+        if labels is MISSING:
+            labels = result[3]
+
+    if (
+        isinstance(result, (tuple, list))
+        and len(result) >= 6
+        and all(
+            item is None or isinstance(item, int)
+            for item in (result[0], result[2])
+        )
+        and isinstance(result[4], str)
+    ):
+        if pins is MISSING:
+            pins = (result[0], result[2])
+        if residues is MISSING:
+            residues = (result[1], result[3])
+        if labels is MISSING:
+            labels = (result[4],)
+        if sigma is MISSING:
+            sigma = result[5]
+
+    verdict = direct_honest_verdict(invocation)
+    if verdict is not MISSING:
+        if pins is MISSING:
+            pins = tuple(verdict[:2])
+        if labels is MISSING:
+            labels = (verdict[2],)
+        if sigma is MISSING and len(verdict) >= 4:
+            sigma = verdict[3]
+        if residues is MISSING and pin_data is not MISSING:
+            residues = deciding_residues_label2(
+                frame, pin_data, verdict
+            )
+
+    if pin_data is not MISSING and pins is MISSING:
+        pins = tuple(row[0] for row in pin_data)
+
+    return pins, residues, sigma, labels
+
+
+def theta_for(
+    module: Any,
+    frame: Any,
+    coordinates: int,
+    invocation: Invocation,
+) -> Any:
+    value = find_named(
+        (invocation.result, invocation.bound),
+        ("Theta", "THETA", "theta_vector", "thresholds"),
+    )
+    if value is not MISSING:
+        return value
+
+    function = function_from(module, ("theta",))
+    if function is not MISSING:
+        answer = []
+        for coordinate in range(coordinates):
+            value = call_if_bindable(
+                function,
+                ((frame, coordinate), (coordinate,)),
+            )
+            if not isinstance(value, int):
+                return MISSING
+            answer.append(value)
+        return tuple(answer)
+
+    mu2 = exact_attribute(frame, ("mu2",))
+    e2_height = exact_attribute(frame, ("E2",))
+    u2 = exact_attribute(frame, ("u2",))
+    e2 = exact_attribute(frame, ("e2",))
+    dp = exact_attribute(frame, ("Dp", "Dprime", "D_prime"))
+    h = exact_attribute(frame, ("h",))
+    if all(
+        isinstance(item, int)
+        for item in (mu2, e2_height, u2, e2, dp, h)
+    ):
+        delta = u2 - e2 * dp * h
+        return tuple(
+            (mu2 - coordinate) * e2_height + delta
+            for coordinate in range(coordinates)
+        )
+    return MISSING
+
+
+def theta_vector(theta: Any, coordinates: int) -> Any:
+    if isinstance(theta, int):
+        return (theta,) * coordinates
+    if isinstance(theta, Mapping):
+        answer = []
+        for coordinate in range(coordinates):
+            value = theta.get(
+                coordinate, theta.get(str(coordinate), MISSING)
+            )
+            if not isinstance(value, int):
+                return MISSING
+            answer.append(value)
+        return tuple(answer)
+    if isinstance(theta, (tuple, list)) and len(theta) >= coordinates:
+        answer = tuple(theta[:coordinates])
+        if all(isinstance(item, int) for item in answer):
+            return answer
+    return MISSING
+
+
+def p_adic_digits(
+    module: Any,
+    coefficient: int,
+    p: int,
+    precision: int,
+) -> Any:
+    function = function_from(module, ("to_digits",))
+    if function is MISSING:
+        g1 = getattr(module, "g1", MISSING)
+        function = getattr(g1, "to_digits", MISSING)
+
+    value = call_if_bindable(
+        function,
+        (
+            (coefficient, p, precision),
+            (coefficient, precision, p),
+        ),
+    )
+    if (
+        isinstance(value, (tuple, list))
+        and all(isinstance(item, int) for item in value)
+    ):
+        return tuple(value)
+
+    # Exact fallback matching the finite O/p^N consultation window.
+    modulus = p ** precision
+    residue = coefficient % modulus
+    answer = []
+    for _ in range(precision):
+        answer.append(residue % p)
+        residue //= p
+    return tuple(answer)
+
+
+def phi_development(
+    module: Any,
+    coordinate: Sequence[int],
+    phi1: Sequence[int],
+    slots: int,
+) -> Any:
+    function = function_from(module, ("dev",))
+    if function is MISSING:
+        g1 = getattr(module, "g1", MISSING)
+        function = getattr(g1, "dev", MISSING)
+
+    value = call_if_bindable(
+        function,
+        ((list(coordinate), list(phi1), slots),),
+    )
+    if (
+        isinstance(value, (tuple, list))
+        and len(value) == 2
+        and isinstance(value[0], (tuple, list))
+    ):
+        coefficients, top = value
+        if top and not is_exact_zero(top):
+            return MISSING
+        return tuple(tuple(poly) for poly in coefficients)
+
+    return MISSING
+
+
+def canonical_shadow_slot_maps(
+    module: Any,
+    frame: Any,
+    shadow: Any,
+    theta: Any,
+) -> Any:
+    if not looks_like_coordinate_array(shadow):
+        return MISSING
+
+    p = exact_attribute(frame, ("p",))
+    precision = exact_attribute(
+        frame, ("N", "precision", "consultation_bound")
+    )
+    phi1 = exact_attribute(frame, ("PHI1", "Phi_prime"))
+    e2 = exact_attribute(frame, ("e2",))
+    f2 = exact_attribute(frame, ("f2",))
+    pin = exact_attribute(frame, ("pin",))
+
+    if not (
+        isinstance(p, int)
+        and isinstance(precision, int)
+        and isinstance(phi1, (tuple, list))
+        and isinstance(e2, int)
+        and isinstance(f2, int)
+        and callable(pin)
+    ):
+        return MISSING
+
+    thetas = theta_vector(theta, len(shadow))
+    if thetas is MISSING:
+        return MISSING
+
+    answer = []
+    phi_powers = [
+        poly_pow(list(phi1), b)
+        for b in range(e2 * f2)
+    ]
+
+    for coordinate_index, coordinate in enumerate(shadow):
+        development = phi_development(
+            module, coordinate, phi1, e2 * f2
+        )
+        if development is MISSING:
+            return MISSING
+
+        sparse: dict[tuple[int, int, int], Any] = {}
+        for phi_slot, x_poly in enumerate(development):
+            for x_slot, coefficient in enumerate(x_poly):
+                if not isinstance(coefficient, int):
+                    return MISSING
+                digits = p_adic_digits(
+                    module, coefficient, p, precision
+                )
+                if digits is MISSING:
+                    return MISSING
+
+                for valuation, digit in enumerate(digits):
+                    digit %= p
+                    if digit == 0:
+                        continue
+
+                    x_monomial = [0] * x_slot + [
+                        digit * (p ** valuation)
+                    ]
+                    term = poly_mul(
+                        x_monomial, phi_powers[phi_slot]
+                    )
+                    try:
+                        pin_result = pin(term)
+                    except Exception:
+                        return MISSING
+                    if (
+                        not isinstance(pin_result, (tuple, list))
+                        or not pin_result
+                        or not isinstance(pin_result[0], int)
+                    ):
+                        return MISSING
+                    height = pin_result[0]
+                    if height >= thetas[coordinate_index]:
+                        key = (height, x_slot, phi_slot)
+                        if key in sparse and sparse[key] != digit:
+                            return MISSING
+                        sparse[key] = digit
+
+        answer.append(tuple(sorted(sparse.items())))
+
+    return tuple(answer)
+
+
+def normalize_explicit_t_maps(value: Any) -> Any:
+    if value is MISSING or value is None:
+        return MISSING
+
+    if isinstance(value, Mapping):
+        coordinate_keys = sorted(
+            value, key=lambda key: sort_key(canonical(key))
+        )
+        coordinates = [value[key] for key in coordinate_keys]
+    elif isinstance(value, (tuple, list)):
+        coordinates = list(value)
+    else:
+        return MISSING
+
+    answer = []
+    for coordinate_map in coordinates:
+        rows = []
+        if isinstance(coordinate_map, Mapping):
+            iterator = coordinate_map.items()
+        elif isinstance(coordinate_map, (tuple, list)):
+            iterator = coordinate_map
+        else:
+            return MISSING
+
+        for row in iterator:
+            if (
+                isinstance(row, (tuple, list))
+                and len(row) == 2
+            ):
+                slot, digit = row
+            else:
+                return MISSING
+            if (
+                not isinstance(slot, (tuple, list))
+                or len(slot) != 3
+                or not all(isinstance(item, int) for item in slot)
+            ):
+                return MISSING
+            try:
+                canonical(digit)
+            except Exception:
+                return MISSING
+            if not is_exact_zero(digit):
+                rows.append((tuple(slot), digit))
+        answer.append(tuple(sorted(rows, key=lambda row: row[0])))
+
+    return tuple(answer)
+
+
+def build_record(
+    invocation: Invocation,
+    module: Any,
+) -> Record | None:
+    tags = extract_tags(invocation)
+    if excluded_nonmember(tags):
+        return None
+
+    frame = frame_object(invocation, module)
+    polynomial = extract_polynomial(invocation, frame)
+    if polynomial is MISSING:
+        return None
+    try:
+        polynomial_key = canonical(polynomial)
+    except Exception:
+        return None
+
+    frame_display, frame_key, frame_reasons = extract_frame(
+        frame, invocation, module
+    )
+    record = Record(
+        source_tags=tags,
+        module=invocation.module,
+        surface=invocation.surface,
+        frame_display=frame_display,
+        frame_key=frame_key,
+        polynomial=polynomial,
+        polynomial_key=polynomial_key,
+        reasons=list(frame_reasons),
+    )
+
+    honest = honest_coordinates(
+        invocation, module, frame, polynomial
+    )
+    shadow = shadow_coordinates(
+        invocation, module, frame, polynomial
+    )
+    pin_data = (
+        pin_rows(frame, honest)
+        if honest is not MISSING
+        else MISSING
+    )
+
+    pins, residues, sigma, labels = decode_honest_tuple(
+        invocation, frame, pin_data
+    )
+
+    if pins is MISSING:
+        record.reasons.append("honest pins unavailable")
+    else:
+        record.pins = normalize_pins(pins)
+        record.pins_key = canonical(record.pins)
+
+    if residues is MISSING or residues is None:
+        record.reasons.append("deciding-residue tuple unavailable")
+    else:
+        record.residues = residues
+        record.residues_key = canonical(residues)
+
+    record.sigma = normalize_sigma(sigma)
+    if record.sigma is MISSING:
+        record.reasons.append("honest sigma unavailable")
+    else:
+        record.sigma_key = canonical(record.sigma)
+
+    record.labels = normalize_labels(labels)
+    if record.labels is MISSING:
+        record.reasons.append("ordered honest labels unavailable")
+    else:
+        record.labels_key = canonical(record.labels)
+
+    if shadow is MISSING:
+        record.reasons.append(
+            "complete shadow coordinate arrays unavailable"
+        )
+    else:
+        record.shadow_arrays = shadow
+        record.shadow_key = canonical(shadow)
+
+    coordinate_count = (
+        len(shadow)
+        if isinstance(shadow, (tuple, list))
+        else exact_attribute(frame, ("mu2",))
+    )
+    if not isinstance(coordinate_count, int):
+        coordinate_count = 0
+
+    theta = theta_for(
+        module, frame, coordinate_count, invocation
+    )
+    if theta is MISSING:
+        record.reasons.append("THETA vector unavailable")
+    else:
+        record.theta = theta
+
+    explicit = find_named(
+        (invocation.result,),
+        (
+            "canonical_shadow_slot_map",
+            "shadow_slot_map",
+            "shadow_at_or_above_theta",
+            "high_shadow_content",
+            "shadow_high_map",
+            "T_map",
+            "T_maps",
+        ),
+    )
+    t_maps = normalize_explicit_t_maps(explicit)
+    if (
+        t_maps is MISSING
+        and shadow is not MISSING
+        and theta is not MISSING
+    ):
+        t_maps = canonical_shadow_slot_maps(
+            module, frame, shadow, theta
+        )
+
+    if t_maps is MISSING:
+        record.reasons.append(
+            "committed canonical high-shadow slot map unavailable"
+        )
+    else:
+        record.t_maps = t_maps
+        record.t_key = canonical(t_maps)
+
+    record.reasons = list(dict.fromkeys(record.reasons))
+    return record
+
+
+def merge_records(left: Record, right: Record) -> Record:
+    if len(right.reasons) < len(left.reasons):
+        left, right = right, left
+    left.source_tags = list(dict.fromkeys(
+        left.source_tags + right.source_tags
+    ))
+    return left
+
+
+def deduplicate(records: Sequence[Record]) -> list[Record]:
+    unique: dict[tuple[Any, Any], Record] = {}
+    for record in records:
+        frame_part = (
+            record.frame_key
+            if record.frame_key is not MISSING
+            else ("missing-frame", record.module)
+        )
+        key = (frame_part, record.polynomial_key)
+        if key in unique:
+            unique[key] = merge_records(unique[key], record)
+        else:
+            unique[key] = record
+    return list(unique.values())
+
+
+def tag_text(record: Record) -> str:
+    return " | ".join(record.source_tags)
+
+
+def pair_priority(pair: tuple[Record, Record]) -> tuple[Any, ...]:
+    left, right = pair
+    tags = {tag_text(left), tag_text(right)}
+    preferred = any("PE1-1" in tag for tag in tags) and any(
+        "PE1-2" in tag for tag in tags
+    )
+    return (
+        0 if preferred else 1,
+        sort_key(left.frame_key),
+        tag_text(left),
+        tag_text(right),
+        sort_key(left.polynomial_key),
+        sort_key(right.polynomial_key),
+    )
+
+
+def make_pairs(
+    records: Sequence[Record],
+) -> tuple[list[tuple[Record, Record]], Counter[Any]]:
+    by_frame: dict[Any, list[Record]] = defaultdict(list)
+    for record in records:
+        if record.eligible:
+            by_frame[record.frame_key].append(record)
+
+    pairs = []
+    tested_by_frame: Counter[Any] = Counter()
+    for frame_key, rows in by_frame.items():
+        rows.sort(key=lambda row: (
+            tag_text(row), sort_key(row.polynomial_key)
+        ))
+        for left, right in itertools.combinations(rows, 2):
+            if left.polynomial_key == right.polynomial_key:
+                continue
+            pairs.append((left, right))
+            tested_by_frame[frame_key] += 1
+
+    pairs.sort(key=pair_priority)
+    return pairs, tested_by_frame
+
+
+def first_shadow_difference(
+    left: Record,
+    right: Record,
+) -> tuple[Any, Any, Any]:
+    def flatten(t_maps: Any) -> dict[tuple[int, int, int, int], Any]:
+        answer = {}
+        for coordinate, coordinate_map in enumerate(t_maps):
+            for slot, digit in coordinate_map:
+                height, x_slot, phi_slot = slot
+                answer[
+                    (coordinate, height, x_slot, phi_slot)
+                ] = digit
+        return answer
+
+    left_map = flatten(left.t_maps)
+    right_map = flatten(right.t_maps)
+    for key in sorted(set(left_map) | set(right_map)):
+        left_digit = left_map.get(key, 0)
+        right_digit = right_map.get(key, 0)
+        if canonical(left_digit) != canonical(right_digit):
+            coordinate, height, x_slot, phi_slot = key
+            return (
+                (coordinate, height, (x_slot, phi_slot)),
+                left_digit,
+                right_digit,
+            )
+    raise AssertionError("unequal T maps have no differing digit")
+
+
+def git_head() -> str:
+    return subprocess.check_output(
+        ["git", "rev-parse", "HEAD"],
+        cwd=ROOT,
+        text=True,
+    ).strip()
+
+
+def sha256_file(path: Path) -> str:
+    digest = hashlib.sha256()
+    with path.open("rb") as handle:
+        for block in iter(lambda: handle.read(1 << 20), b""):
+            digest.update(block)
+    return digest.hexdigest()
+
+
+def pp(label: str, value: Any) -> None:
+    print(f"{label}:")
+    print(pprint.pformat(
+        plain(value), width=120, sort_dicts=False
+    ))
+
+
+def print_provenance() -> None:
+    print(f"HEAD: {git_head()}")
+    print("READER SHA256:")
+    for name in READER_NAMES:
+        path = READER_PATHS[name]
+        print(
+            f"  {path.relative_to(ROOT)}  {sha256_file(path)}"
+        )
+
+
+def frame_census(records: Sequence[Record]) -> dict[Any, dict[str, Any]]:
+    grouped: dict[Any, list[Record]] = defaultdict(list)
+    for record in records:
+        key = (
+            record.frame_key
+            if record.frame_key is not MISSING
+            else ("missing-frame", record.module)
+        )
+        grouped[key].append(record)
+
+    answer = {}
+    for key, rows in grouped.items():
+        answer[key] = {
+            "frame": rows[0].frame_display,
+            "rows": len(rows),
+            "eligible": sum(row.eligible for row in rows),
+            "ineligible": sum(not row.eligible for row in rows),
+        }
+    return answer
+
+
+def print_census(
+    direct_calls: int,
+    raw_count: int,
+    records: Sequence[Record],
+    tested_by_frame: Counter[Any],
+) -> None:
+    print("ROSTER CENSUS:")
+    print(f"  committed member-check/verdict calls: {direct_calls}")
+    print(
+        "  semantic rows before exact (frame, polynomial) "
+        f"deduplication: {raw_count}"
+    )
+    print(
+        "  rows after exact semantic deduplication: "
+        f"{len(records)}"
+    )
+    print(
+        f"  eligible rows: "
+        f"{sum(record.eligible for record in records)}"
+    )
+    print(
+        f"  ineligible rows: "
+        f"{sum(not record.eligible for record in records)}"
+    )
+    print("  totals by frame:")
+
+    census = frame_census(records)
+    ordered = sorted(census.items(), key=lambda item: sort_key(item[0]))
+    for index, (frame_key, data) in enumerate(ordered):
+        print(
+            f"    frame[{index}]: rows={data['rows']} "
+            f"eligible={data['eligible']} "
+            f"ineligible={data['ineligible']} "
+            f"pairs_tested={tested_by_frame.get(frame_key, 0)}"
+        )
+        print(
+            "      key="
+            + pprint.pformat(data["frame"], width=110)
+        )
+
+    print("INELIGIBLE ROWS:")
+    ineligible = sorted(
+        (record for record in records if not record.eligible),
+        key=lambda record: (
+            record.module, record.surface, tag_text(record)
+        ),
+    )
+    if not ineligible:
+        print("  []")
+    else:
+        for record in ineligible:
+            print(
+                f"  tags={record.source_tags!r}; "
+                f"module={record.module}; "
+                f"surface={record.surface}; "
+                f"reasons={record.reasons!r}"
+            )
+
+
+def print_hit(index: int, left: Record, right: Record) -> None:
+    print(f"HIT CERTIFICATE {index}")
+    print(f"LEFT SOURCE TAGS: {left.source_tags!r}")
+    print(f"RIGHT SOURCE TAGS: {right.source_tags!r}")
+    pp("EXACT FRAME KEY", left.frame_display)
+    pp("LEFT EXACT MEMBER POLYNOMIAL", left.polynomial)
+    pp("RIGHT EXACT MEMBER POLYNOMIAL", right.polynomial)
+
+    left_h = (
+        left.pins, left.residues, left.sigma, left.labels
+    )
+    right_h = (
+        right.pins, right.residues, right.sigma, right.labels
+    )
+    pp("LEFT COMPLETE HONEST TUPLE H", left_h)
+    pp("RIGHT COMPLETE HONEST TUPLE H", right_h)
+
+    print(f"PINS EQUAL: {left.pins_key == right.pins_key}")
+    print(
+        "DECIDING RESIDUES EQUAL: "
+        f"{left.residues_key == right.residues_key}"
+    )
+    print(f"HONEST SIGMA EQUAL: {left.sigma_key == right.sigma_key}")
+    print(
+        f"HONEST LABELS EQUAL: "
+        f"{left.labels_key == right.labels_key}"
+    )
+
+    pp(
+        "LEFT COMPLETE SHADOW COORDINATE ARRAYS",
+        left.shadow_arrays,
+    )
+    pp(
+        "RIGHT COMPLETE SHADOW COORDINATE ARRAYS",
+        right.shadow_arrays,
+    )
+    pp("LEFT CANONICAL HIGH-SHADOW SLOT MAPS", left.t_maps)
+    pp("RIGHT CANONICAL HIGH-SHADOW SLOT MAPS", right.t_maps)
+
+    location, left_digit, right_digit = first_shadow_difference(
+        left, right
+    )
+    coordinate, height, slot = location
+    print(
+        "LEXICOGRAPHICALLY FIRST DIFFERING "
+        f"(coordinate, height, slot): "
+        f"{(coordinate, height, slot)!r}"
+    )
+    pp("LEFT DIGIT", left_digit)
+    pp("RIGHT DIGIT", right_digit)
+    print("VERDICT: HIT")
+
+
+def main() -> None:
+    os.chdir(ROOT)
+    modules = import_readers()
+    invocations, runner_failures = call_committed_roster(modules)
+
+    raw_records = []
+    extraction_failures = []
+    calls_by_module: Counter[str] = Counter(
+        invocation.module for invocation in invocations
+    )
+
+    for invocation in invocations:
+        try:
+            record = build_record(
+                invocation, modules[invocation.module]
+            )
+        except Exception as exc:
+            extraction_failures.append(
+                f"{invocation.module}.{invocation.surface}"
+                f"#{invocation.ordinal}: "
+                f"{type(exc).__name__}: {exc}"
+            )
+            continue
+        if record is not None:
+            raw_records.append(record)
+
+    for module_name in READER_NAMES:
+        if calls_by_module[module_name] == 0:
+            reason = (
+                f"{module_name}: zero direct committed "
+                "member-check/verdict calls"
+            )
+            if reason not in runner_failures:
+                runner_failures.append(reason)
+
+    records = deduplicate(raw_records)
+    pairs, tested_by_frame = make_pairs(records)
+
+    hits = []
+    for left, right in pairs:
+        if left.frame_key != right.frame_key:
+            continue
+        if left.polynomial_key == right.polynomial_key:
+            continue
+        if left.pins_key != right.pins_key:
+            continue
+        if left.residues_key != right.residues_key:
+            continue
+        if left.sigma_key != right.sigma_key:
+            continue
+        if left.labels_key != right.labels_key:
+            continue
+        if left.t_key == right.t_key:
+            continue
+        hits.append((left, right))
+
+    print_provenance()
+    print_census(
+        len(invocations),
+        len(raw_records),
+        records,
+        tested_by_frame,
+    )
+    print(
+        "SAME-FRAME DISTINCT-POLYNOMIAL PAIRS TESTED: "
+        f"{len(pairs)}"
+    )
+
+    if hits:
+        print(f"HITS: {len(hits)}")
+        for index, (left, right) in enumerate(hits, 1):
+            print_hit(index, left, right)
+        print("FINAL VERDICT: HIT (certificate)")
+        return
+
+    incomplete = []
+    incomplete.extend(runner_failures)
+    incomplete.extend(extraction_failures)
+    for record in records:
+        if not record.eligible:
+            incomplete.append(
+                f"{tag_text(record)}: "
+                + ", ".join(record.reasons)
+            )
+    incomplete = list(dict.fromkeys(incomplete))
+
+    if incomplete:
+        print("HITS: 0")
+        print("NO COLLISION AMONG ELIGIBLE ROWS")
+        reason_text = "; ".join(incomplete)
+        print(f"FINAL VERDICT: INCOMPLETE ({reason_text})")
+        raise SystemExit(2)
+
+    print("HITS: 0")
+    print("FINAL VERDICT: EMPTY")
+
+
+if __name__ == "__main__":
+    main()
+```
