@@ -1,0 +1,135 @@
+1. Normalization composition — CLEAN
+
+The three factors remain separated:
+
+- coherent/multiplicative conversion:  
+  “\(\Gamma_t=c_t^{\mathrm{mult}}\vartheta_{i,s}\)” in (C3-dictionary);
+- canonical read:  
+  “\(R(\text{slot }t)=w_i^{f-t}\Theta_i(t)\Gamma_t\)” in (C3-canonical-read);
+- attained-origin bridge:  
+  “\(z^{t_{\mathrm{Def}}}=z^\nu\varepsilon(\beta)\)” in (C4-origin).
+
+Only \(\vartheta\Theta=1\) cancels at the corrected key. No display cancels or absorbs \(z^\nu\) into \(w\) or \(\vartheta\).
+
+2. HE6-to-C3 digit typing — CLEAN
+
+(C5-gamma) requires the normalized coefficient
+
+\[
+\operatorname{res}\!\left(a_{i+e_1t}\pi^{-(k-(i+e_1t)h)/e_1}\right),
+\]
+
+not \(\operatorname{res}(a_j)\). For example, with \(e_1=h=1\) and \(A=\pi+x\), the tying constant term has bare residue \(0\) but normalized residue \(1\). Thus the attempted bare-residue substitution fails.
+
+The note also explicitly separates \(\gamma_k(A)\), read against \(n(k)\), from the coherent slot digit \(\Gamma_t\), read against \(\widehat n_i((f-t)u)\); see (C5-gamma), (C3-dictionary), and honesty-ledger item 7.
+
+3. Lift-domain boundary — CLEAN
+
+The carrier states:
+
+> “A full integral \(K_1\)-digit slot is asserted below only on the proved live domain \(k>D'h\). No full \(K_1\)-slot is asserted at \(k\le D'h\).”
+
+(C6) repeats \(M>D'h\), and the level-one corrected key says “whenever \(M_t>D'h\).” At \((e_1,f_1,h,M)=(1,2,1,0)\), the \(r=1\) summand would contain \(\pi^{-1}\), so the promised boundary is genuinely necessary. No lower-height promise was found.
+
+4. Weld scope — CLEAN
+
+(C7-scope) explicitly says:
+
+> “T1 organizes five named fields around one tower cocycle; it proves no cross-face coherence theorem.”
+
+The table retains the scored-stratum fence for \(M3\) and W2-C3 fence for \(M4\). Section 2.7 separately excludes a common map, compatibility squares, and uniqueness. No internal absorption row strengthens these claims.
+
+5. B-law supplier perimeter — CLEAN
+
+The B-law is always conditional:
+
+> “At every site where the stated ladder-multiplicativity obligation is discharged…”
+
+The absorption map says \(i=2\) is supplied by GENTOW2-B\(''\), while \(i\ge3\) must cite whatever accepted status GENTOW5-W(i) actually has. It does not declare the unresolved \(i=1\) perimeter discharged. External verification of those supplier grades remains correctly deferred to pass 2.
+
+6. Root-of-unity exception — CLEAN
+
+(C4-origin) states exact equality precisely when \(z^\nu=1\), with \(\nu=0\) only sufficient. Thus \(\nu>0\) and \(z^\nu=1\) is admitted. Honesty-ledger item 5 repeats the exact criterion and rejects “iff \(\nu=0\).”
+
+7. Sign and inverse conventions — FINDINGS
+
+FINDING G1 — GAP: the level-two formula uses an undefined base letter.
+
+Verbatim:
+
+> “At level \(2\),  
+> \[
+> z_2=\eta_2z_1^{-\lfloor\ell_1u_2/e_1\rfloor}.
+> \]”
+
+But the proof obtains
+
+> “\[
+> \left(\frac{x^{e_1}}{\pi^h}\right)^{-\lfloor\ell_1u/e_1\rfloor}.
+> \]”
+
+whose residue is \(\eta^{-\lfloor\ell_1u/e_1\rfloor}\). No displayed hypothesis identifies \(z_1=\eta\).
+
+Counter-configuration: take \(K_1=\mathbf F_3\), \(e_1=2,f_1=h=1\), \(\eta=2\), \(\ell_1=1\), and \(u_2=3\). The computed quotient has residue \(\eta^{-1}=2\). Because the carrier leaves \(z_1\) unconstrained, assigning \(z_1=1\) makes (C1-level-2) predict residue \(1\).
+
+FINDING G2 — GAP: normalized cocycle identities require an unstated zero-height normalization.
+
+Verbatim:
+
+> “At a general level \(i\), fix exact-height normalizers \(\widehat n_i(m)\)…”
+
+followed by
+
+> “\[
+> \tau_i(0,a)=\tau_i(a,0)=1
+> \]”
+
+and
+
+> “\[
+> \vartheta_{i,0}=\vartheta_{i,1}=1.
+> \]”
+
+Exact height alone does not imply \(\widehat n_i(0)=1\) or even residue \(1\).
+
+Counter-configuration: choose a residue unit \(\lambda\ne1\), replace only \(\widehat n_i(0)\) by a value-zero unit with residue \(\lambda\), and leave all nonzero-height normalizers unchanged. This preserves every displayed exact-height condition, but
+
+\[
+\tau_i(0,a)=\widehat n_i(0),\qquad
+\vartheta_{i,0}=\operatorname{res}(\widehat n_i(0)^{-1})=\lambda^{-1},
+\]
+
+contradicting the boxed normalization.
+
+Apart from these gaps, the positive \(W(t)\), inverse \(\Theta=\vartheta^{-1}\), telescope indexing, and recorded three-entry F4 vector are algebraically consistent.
+
+8. T1-internal A1–A7 consumption sweep — FINDING
+
+- A1: CLEAN — both lift uses inherit \(M>D'h\); clearance remains conditional on \(u_2>e_2D'h\).
+- A2: CLEAN — positive wrap and telescope orientations match C2–C3.
+- A3: CLEAN — notation-only identification is explicit; budgets remain fenced.
+- A4: CLEAN — live lift domain and \(x\)-free criterion match C6.
+- A5: FINDING G3 below; its other rows retain the lift and \(z^\nu\) fences.
+- A6: CLEAN — the row explicitly rejects bare residues and uses \(\gamma_k(A)\).
+- A7: its letter row inherits G1; its B-law and factor-pattern rows otherwise retain their sitewise and scalar-gauge fences.
+
+FINDING G3 — GAP: the claimed \(\eta=1\) versus \(f_1=1\) separation contradicts the carrier.
+
+Verbatim A5 row:
+
+> “\(\eta=1\) is not \(f_1=1\)…”
+
+and honesty-ledger item 8:
+
+> “\(\eta=1\) … does not imply \(f_1=1\)…”
+
+But the carrier states
+
+> “\(K_1=\mathbf F_Q(\eta)\),”  
+> with chosen basis “\(1,\eta,\ldots,\eta^{f_1-1}\).”
+
+If \(\eta=1\), then \(K_1=\mathbf F_Q\), and the displayed powers cannot form a basis of length \(f_1>1\). Hence the carrier forces \(f_1=1\).
+
+Counter-configuration attempt: \(f_1=2,\eta=1\) produces the purported independent axis, but its alleged basis is \((1,1)\), so it violates the carrier. Consequently the A5 “verbatim” consumption cannot represent a valid specialization with \(\eta=1,f_1>1\).
+
+VERDICT: FINDINGS | FINDINGS: 0C + 3G + 0m

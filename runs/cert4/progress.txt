@@ -13,3 +13,5 @@
 [13:44:31] P2_genhn_count exit 0 (9479 B; SUMMARY: LEMMA PROVED)
 [13:44:31] P3_opacity start
 [13:49:21] P3_opacity exit 0 (10321 B; SUMMARY: OBSTRUCTED (ITERLAWN S4.6, the \(m=1\) display \(f\widehat C_1=R+Q\Phi_1\), prove)
+[13:49:21] T1A_arc1 start
+[13:54:00] T1A_arc1 exit 0 (5814 B; VERDICT: FINDINGS | FINDINGS: 0C + 3G + 0m)
