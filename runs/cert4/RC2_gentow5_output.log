@@ -1,0 +1,3 @@
+**DISCHARGED.** The corrigendum correctly shifts the twist to \(\psi_j^{(\omega_{j-1})}\), handles the outer \(\psi_1\) leg separately, and places the dependency chain under \(\mathcal W_{\le n}\). The top term now uses \(w_n\), not the unavailable \(w_{n+1}\). R-i4 remains discharged.
+
+OUTCOMES: DISCHARGED
