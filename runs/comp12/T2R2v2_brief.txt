@@ -1,3 +1,9 @@
+ARC r2 REPAIR (v2) (you are gpt-5.6-sol high). A model-diverse hostile pass on the T2 master (below, incl. r1) found 0C + 4G + 4m (findings below — note the verifier itself re-verified the master proof core, the redlines, and the instance-pin contents; those are confirmed clean). Derive the r2 repairs verbatim-ready. Constraints: (F1) do NOT install synthetic marker lines into the accepted source notes — switch the pin convention to marker-delimited spans over EXISTING unique source text (the T4 note's convention), re-deriving all 26 pins as existing-text pairs (the verifier's spot-checks name the exact source displays); (F2) the LABEL-DEG parent-multiplicity tie is disclaimed by the corpus (HE6R1: 'stays unproved and unneeded') — re-route clause 4 on the block's OWN residual data exactly as the sources do, dropping the parent-multiplicity tie from the hypothesis set; (F3) add the missing mid-chain peel / key-divides case to the induction (the sources' LEMMA HE6R1-3 / HE7-8 [r3] mechanism: f_S ↦ f_S′, μ₂ drops by 1 — a fourth case with its own rank decrease); (F4) supply or honestly fence the level-one label-block carrier (if no pinned source supplies it at HE3/HE6, state it as the named instance obligation). Also cure the 4 minors. End with: SUMMARY: <n> REAL (repairs delivered)
+
+=== THE FABLE-ARM FINDINGS ===
+F1 GAP: pin system uninstalled (grep -c T2V2PIN = 0 on all six sources; fail-closed rejects all routes). F2 GAP: LABEL-DEG/LABEL-PURE parent-multiplicity tie unsourced; HE7-13' proves c·r^k with k = L/(l2·deg r) only; HE6R1 disclaims the closed form; GENTOW-4.2 = pure-power sides only; counter-config R_λ = (Z−a)²(Z−b) with (k_a,k_b) = (1,2) → clause 4 falsely terminal. F3 GAP: recentering can make the key DIVIDE the block (HE7-13'(b) dv2 possibly ∞; HE7-8 [r3] mid-chain peel drops μ₂ by 1; machine-real 8/1587) — no peel case in the induction; (WINDOW) finiteness violated at such states. F4 GAP: S1.7A's label-block carrier unpinned at level-one instances (HE6.A step 1 = separable only; §S6.3 = repeated-linear class size only; bouquet = GENTOW-4.A(i) unpinned). F5 m: KEY-BOUNDARY assumes each residual block satisfies the full hypothesis suite, undeclared. F6 m: orbit size = e·f uses the fundamental identity, never invoked. F7 m: gcd(h,e₁) = 1 unhypothesized in the master's level-one display; e₁,h,D′,η,π,ϖ,q(k) unbound in master vocabulary; ϑ_s omits its evaluation point. F8 m: multi-side states never explicitly treated in the induction (the side split (LABEL-PROD) displayed but uninvoked).
+
+=== T2 AT HEAD ===
 # T2 v2 — THE σ-LADDER MASTER: one original-\(O\) theorem and five span-pinned mathematical instances
 
 **Unit:** T2 / σ-ladder master re-composition.  
@@ -1563,554 +1569,90 @@ Add at the end of S0.2:
 
 > “Source pins” below means installed and audited spans, not proposed future anchors. The r1 source bundle is valid only when all 26 begin/end pairs occur in the six named source files, each marker occurs exactly once, each begin precedes its matching end, and each resulting span contains the complete cited source unit. The expected audit total is 52 marker-only lines: 26 begin markers and 26 end markers. The T2 text alone cannot discharge this source-edit obligation.
 
-
----
-
-## r2 (2026-08-12): the model-diverse pass findings repaired
-
-*(gpt-5.6-sol high, runs/comp12/T2R2v2_output.log, from the Fable-arm pass of record (0C+4G+4m); transcribed unaltered; counter resets.)*
-
-## r2 repair 1 — replace synthetic pins by immutable existing-text spans
-
-Delete S0.2 and replace it with:
-
-> ### S0.2 Existing-text span convention
->
-> No source file is edited to install a pin.
->
-> For a unique complete source unit \(U\), write
->
-> \[
-> \langle\operatorname{first}(U),\operatorname{last}(U)\rangle
-> \]
->
-> for the closed span beginning with the complete first nonblank source line of \(U\) and ending with its complete last nonblank source line. Both delimiter lines must already occur in the accepted source.
->
-> The unit boundaries are the Markdown structural boundaries already present in the source: a theorem, lemma, definition, numbered clause, proof, annex, or redline unit ends immediately before the next unit of equal or higher structural rank. For a subclause pin, the unit ends immediately before the next sibling subclause.
->
-> A pin is valid only if:
->
-> 1. its named source unit occurs exactly once in the named file;
-> 2. its first and last delimiter lines each occur exactly once;
-> 3. the first delimiter precedes the last delimiter;
-> 4. the resulting span contains the complete named unit.
->
-> Failure of any condition makes that route fail closed. A line number, synthetic comment, prospective anchor, or text inserted after source acceptance is not a pin.
->
-> The 26 pins are the following existing-text pairs:
->
-> \[
-> \begin{array}{c|l|l}
-> \text{file}&\text{pin}&\text{unique complete source unit }U\\ \hline
-> \text{HE3}&\texttt{HE3-A-STMT}&\text{the statement display of THEOREM HE3.A}\\
-> &\texttt{HE3-A-PROOF}&\text{the proof unit belonging to THEOREM HE3.A}\\
-> &\texttt{HE3-DEF1}&\text{DEFINITION 1}\\
-> &\texttt{HE3-HE3-1L}&\text{LEMMA HE3-1L}\\
-> &\texttt{HE3-HE3-6}&\text{LEMMA HE3-6}\\
-> &\texttt{HE3-R8-2}&\text{the complete R8.2 redline unit}\\
-> &\texttt{HE3-R8-3}&\text{the complete R8.3 redline unit}\\
-> &\texttt{HE3-R8-4}&\text{the complete R8.4 redline unit}\\
-> &\texttt{HE3-R8-5}&\text{the complete R8.5 redline unit}\\ \hline
-> \text{HE6}&\texttt{HE6-FAMILY}&\text{the complete HE6 test-family display}\\
-> &\texttt{HE6-PROOF}&\text{the complete proof unit of THEOREM HE6.A}\\
-> &\texttt{HE6-SLOT-SEAM}&\text{the corrected normalized-slot/seam display}\\ \hline
-> \text{HE7}&\texttt{HE7-A-STMT}&\text{the statement display of THEOREM HE7.A}\\
-> &\texttt{HE7-SLOT-TRANSFER}&\text{the complete level-two slot-transfer display}\\
-> &\texttt{HE7-MIXED-13P}&\text{ANNEX-LEMMA HE7-13'}\\
-> &\texttt{HE7-COCYCLE-2P-THROUGH-R1D}&
-> \text{the complete accepted cocycle chain from ANNEX 2-P through R1-D}\\ \hline
-> \text{HE6R1}&\texttt{HE6R1-1}&\text{LEMMA HE6R1-1}\\
-> &\texttt{HE6R1-2}&\text{LEMMA HE6R1-2}\\
-> &\texttt{HE6R1-3}&\text{LEMMA HE6R1-3}\\ \hline
-> \text{HETOW}&\texttt{HETOW-LABELS}&\text{the complete HETOW label dictionary}\\
-> &\texttt{HETOW-A}&\text{the statement and proof unit of THEOREM HETOW.A}\\
-> &\texttt{HETOW-NORMALIZER-4}&\text{the complete HETOW-4 normalizer comparison}\\ \hline
-> \text{GENTOW4}&\texttt{GENTOW-4-1}&\text{the complete GENTOW-4.1 unit}\\
-> &\texttt{GENTOW-4-A}&\text{THEOREM GENTOW-4.A, including clause (i)}\\
-> &\texttt{GENTOW-4-2}&\text{the complete GENTOW-4.2 unit}\\
-> &\texttt{GENTOW-ACCEPTANCE-FOLD}&
-> \text{the complete GENTOW4 acceptance-fold unit}
-> \end{array}
-> \tag{PINS}
-> \]
->
-> Thus, for example,
->
-> \[
-> \texttt{HE7-MIXED-13P}
-> =
-> \langle
-> \operatorname{first}(\text{ANNEX-LEMMA HE7-13'}),
-> \operatorname{last}(\text{ANNEX-LEMMA HE7-13'})
-> \rangle,
-> \]
->
-> and
->
-> \[
-> \texttt{GENTOW-4-A}
-> =
-> \langle
-> \operatorname{first}(\text{THEOREM GENTOW-4.A}),
-> \operatorname{last}(\text{THEOREM GENTOW-4.A})
-> \rangle;
-> \]
->
-> the latter span therefore contains the bouquet carrier in GENTOW-4.A(i).
->
-> These pins lie in the six files listed below `(PINS)`. “Source pins” means these audited existing-text spans. The expected source edit count is zero.
-
-Delete r1 repair 3 in its entirety. Replace S7’s pin gate by:
-
-> 7. **Pin gate.** Resolve every pin in `(PINS)` to its existing first/last delimiter pair. Check uniqueness, ordering, structural completeness, and containment of the cited display. Also check that the six accepted source files contain no `T2V2PIN` line. The expected pin count is 26 and the expected synthetic-marker count is zero.
-
----
-
-## r2 repair 2 — replace the false parent-multiplicity tie by block-owned residual data
-
-Delete r1’s S1.7A and replace it with:
-
-> ### S1.7A Side and label blocks
->
-> Let \(F\) be a state to which the carrier’s block theorem applies. Its roots first decompose by their actual \(\Phi\)-value:
->
-> \[
-> F=\prod_\lambda F_\lambda,
-> \tag{SIDE-PROD}
-> \]
->
-> where \(F_\lambda\in O[x]\) is monic and separable, its roots are exactly the roots satisfying
->
-> \[
-> d(\Phi(\rho))=\lambda,
-> \]
->
-> and the root sets of the \(F_\lambda\) are pairwise disjoint and exhaustive.
->
-> Each \(F_\lambda\) has a full, key-free \(\Phi\)-development whose lower hull is its single side of slope \(\lambda=u'/e'\). If its normalized residual is mixed, its roots decompose further into their actual label classes:
->
-> \[
-> F_\lambda=\prod_{r'}F_{\lambda,r'}.
-> \tag{LABEL-PROD}
-> \]
->
-> Here \(F_{\lambda,r'}\in O[x]\) is monic and separable and its roots are exactly the roots in the \(r'\)-label class. Its root set is Galois-stable; the label-block root sets are pairwise disjoint and exhaustive.
->
-> Put
->
-> \[
-> \nu_{\lambda,r'}
-> =
-> \frac{\deg F_{\lambda,r'}}{D}.
-> \]
->
-> The block theorem asserts that this is a positive integer and supplies a full development
->
-> \[
-> F_{\lambda,r'}
-> =
-> \Phi^{\nu_{\lambda,r'}}
-> +
-> \sum_{j<\nu_{\lambda,r'}}
-> A^{(\lambda,r')}_j\Phi^j.
-> \tag{LABEL-DEV}
-> \]
->
-> Its lower hull is its own single side of slope \(\lambda\) and length
->
-> \[
-> L(F_{\lambda,r'})=\nu_{\lambda,r'}.
-> \tag{LABEL-LENGTH}
-> \]
->
-> After the prescribed frame and origin normalization, its own residual polynomial is
->
-> \[
-> R(F_{\lambda,r'};Y)
-> =
-> c_{\lambda,r'}\,r'(Y)^{k_{\lambda,r'}},
-> \qquad
-> c_{\lambda,r'}\in K^\times,
-> \tag{LABEL-PURE}
-> \]
->
-> where
->
-> \[
-> \boxed{
-> k_{\lambda,r'}
-> =
-> \frac{\nu_{\lambda,r'}}{e'\deg r'}
-> =
-> \frac{\deg F_{\lambda,r'}}
->        {De'\deg r'}
-> \in\mathbf Z_{\ge1}.}
-> \tag{LABEL-OWN}
-> \]
->
-> This is the HE7-13′ block calculation. No equality between
->
-> \[
-> k_{\lambda,r'}
-> \quad\text{and}\quad
-> m_{\lambda,r'}
-> \]
->
-> from the parent residual factorization is assumed. In particular, neither
->
-> \[
-> \nu_{\lambda,r'}=e'm_{\lambda,r'}\deg r'
-> \]
->
-> nor the former `(LABEL-DEG)` is a carrier hypothesis or a conclusion of this master.
->
-> Each block inherits the window, cap, occupied-height, legal-lift, test, accounting, and root-preserving continuation assertions needed for its own read. Its accounting identity is
->
-> \[
-> \sum_{\rho:F_{\lambda,r'}(\rho)=0}
-> \min(d(\Phi(\rho)),\kappa)
-> =
-> D\nu_{\lambda,r'}\min(\lambda,\kappa).
-> \tag{LABEL-ACCOUNT}
-> \]
->
-> A multi-side split or mixed-label split preserves the polynomial product and the disjoint exhaustive root partition. If it is nontrivial, every emitted block has degree strictly smaller than the unsplit state.
->
-> The parent multiplicities in `(RES-FACT)` may be recorded as parent residual data, but terminality and continuation of \(F_{\lambda,r'}\) are decided only from the exponent \(k_{\lambda,r'}\) in the block’s own normalized residual `(LABEL-PURE)`.
-
-Replace S1.8’s mixed-residual paragraph by:
-
-> At a multi-side state, first apply `(SIDE-PROD)`. At a mixed side, next apply `(LABEL-PROD)`. Every emitted label block is read from its own development and residual data. A block with
->
-> \[
-> k_{\lambda,r'}=1
-> \]
->
-> has separable residual \(c_{\lambda,r'}r'\) and is terminal by clause 2. A block with
->
-> \[
-> k_{\lambda,r'}\ge2
-> \]
->
-> is continued independently by the product-\(1\)/product-\(\ge2\) alternatives. No decision is made from the multiplicity of \(r'\) in the parent residual.
-
-Replace clause 4 of HE7.A by:
-
-> 4. a state with more than one side is first replaced by its side blocks \(F_\lambda\) using `(SIDE-PROD)`. A mixed side is then replaced by the monic blocks \(F_{\lambda,r'}\) using `(LABEL-PROD)`. Each label block has its own pure residual
->
->    \[
->    c_{\lambda,r'}r'^{\,k_{\lambda,r'}},
->    \qquad
->    k_{\lambda,r'}
->    =
->    \frac{\deg F_{\lambda,r'}}
->         {De'\deg r'}.
->    \]
->
->    The block is terminal when \(k_{\lambda,r'}=1\), and is continued by clause 3 when \(k_{\lambda,r'}\ge2\). No equality with the parent residual multiplicity is used;
-
-In the proof, replace the r1 mixed-residual passage with:
-
-> If the hull has several sides, invoke `(SIDE-PROD)` before applying any single-side continuation. If a resulting side residual is mixed, invoke `(LABEL-PROD)`. The emitted label block \(F_{\lambda,r'}\) is read using its own exponent \(k_{\lambda,r'}\) from `(LABEL-OWN)`.
->
-> If \(k_{\lambda,r'}=1\), its normalized residual is \(c_{\lambda,r'}r'\), so the separable-side argument gives one orbit of size
->
-> \[
-> De'\deg r'.
-> \]
->
-> If \(k_{\lambda,r'}\ge2\), clause 3 applies to that block alone. The product identities and disjoint root partitions ensure that no side or companion label is lost, duplicated, recentered, or absorbed.
-
----
-
-## r2 repair 3 — add the mid-chain key-divides peel
-
-Insert in S1.8 immediately before the paragraph beginning “The states carry a well-founded rank”:
-
-> ### Mid-chain boundary produced by recentering
->
-> Key-freeness is required before applying `(WINDOW)`, `(ACCOUNT)`, or a Newton-side read. It need not persist automatically after replacing a key by a recentered key.
->
-> Let a recursive state have current monic key \(\widetilde\Phi\) of degree \(D\) and monic separable represented polynomial
->
-> \[
-> G
-> =
-> \widetilde\Phi^\nu
-> +
-> \sum_{j<\nu}C_j\widetilde\Phi^j.
-> \]
->
-> Before invoking the window, test whether
->
-> \[
-> \widetilde\Phi\mid G.
-> \]
->
-> In that case put
->
-> \[
-> G'=\frac{G}{\widetilde\Phi}.
-> \tag{MID-PEEL}
-> \]
->
-> Then \(G'\in O[x]\) is monic,
->
-> \[
-> \deg G'=D(\nu-1),
-> \qquad
-> \mu(G')=\nu-1,
-> \tag{MID-MASS}
-> \]
->
-> and separability of \(G\) gives
->
-> \[
-> \gcd_{K_0[x]}(G',\widetilde\Phi)=1.
-> \]
->
-> Thus \(G'\) is the next key-free state. Its represented roots are the roots of \(G\) not lying on the peeled current-key boundary. The roots on that boundary are emitted through the state’s certified key-boundary/orbit decomposition; the monic key itself is not declared irreducible merely because it is a key.
->
-> This is the HE6R1-3/HE7-8 `[r3]` mid-chain peel. The value
->
-> \[
-> d(\widetilde\Phi(\rho))=+\infty
-> \]
->
-> is never fed into `(WINDOW)`: the boundary branch is taken first.
->
-> If a proper nontrivial gcd with \(\widetilde\Phi\), rather than the whole key, occurs, use the general key-boundary decomposition of S1.9 before any window assertion.
-
-Replace the well-founded-rank paragraph of S1.8 by:
-
-> The states carry a well-founded lexicographic rank. The permitted nonterminal transitions are:
->
-> 1. a nontrivial side split, which strictly decreases represented degree;
-> 2. a nontrivial label split, which strictly decreases represented degree;
-> 3. a mid-chain key-boundary peel `(MID-PEEL)`, which changes
->
->    \[
->    \nu\longmapsto\nu-1;
->    \]
->
-> 4. a product-\(\ge2\) child jump, which strictly decreases mass, or a product-\(1\) linear recentering, which strictly decreases the finite secondary discriminant/slope rank.
->
-> Every transition preserves the represented roots or partitions them into explicitly disjoint exhaustive child root sets, and transports the corresponding polynomial product. Consequently there is no infinite branch.
-
-Insert a new clause before the termination clause of HE7.A, renumbering the old clause 5 as clause 6:
-
-> 5. if a recentered current key divides its represented block, the algorithm performs `(MID-PEEL)` before asserting `(WINDOW)`. The quotient is key-free and has mass smaller by one; the peeled boundary roots are discharged by their certified boundary/orbit decomposition;
-
-Replace the induction’s final paragraph by:
-
-> Finally apply well-founded induction to the rank of a state. A terminal separable class yields the irreducible factor proved in clause 2.
->
-> A multi-side split invokes `(SIDE-PROD)`; a mixed-label split invokes `(LABEL-PROD)`. In either case every emitted block has smaller represented degree, and the product identity reassembles the exhaustive child factorizations.
->
-> In the mid-chain key-divides case, `(MID-PEEL)` emits the certified boundary factors and replaces \(G\) by the key-free quotient \(G'\), whose mass is \(\nu-1\). The induction hypothesis applies to \(G'\). This case is taken before `(WINDOW)`, so no infinite key value enters the Newton-side argument.
->
-> A product-\(1\) linear refinement preserves its represented roots and decreases the secondary rank. A product-\(\ge2\) child jump replaces its state by finitely many smaller-mass states. The induction hypothesis applies in each case. All product identities and root partitions are disjoint and exhaustive, so their terminal factors multiply to the parent polynomial.
-
----
-
-## r2 repair 4 — fence the unsupported level-one label-block carrier
-
-Insert after S1.7A:
-
-> ### S1.7B Named level-one block obligation
->
-> The generic carrier hypothesis in S1.7A is not inferred from label equivariance, class cardinalities, or the existence of HE6 test polynomials.
->
-> For the HE3+HE6 level-one records, denote the missing assertion by
->
-> \[
-> \boxed{\operatorname{LB}_1(\mathrm{HE3{+}HE6}).}
-> \tag{LB1}
-> \]
->
-> It is the assertion that every mixed nonseparable level-one side has the monic side and label blocks of S1.7A, with their own full developments, pure residuals, product identities, disjoint exhaustive root partitions, and inherited continuation data.
->
-> None of `HE3-A-STMT`, `HE3-A-PROOF`, `HE3-DEF1`, `HE3-HE3-1L`, `HE3-HE3-6`, `HE3-R8-2`–`HE3-R8-5`, `HE6-FAMILY`, `HE6-PROOF`, or `HE6-SLOT-SEAM` is claimed to prove `(LB1)`. HE6.A step 1 supplies the separable read, and the repeated-linear class-size calculation does not manufacture a monic label block.
->
-> Consequently the HE3.A and HE6 instance records are unconditional for separable sides and for already-pure repeated sides. Their application to a mixed nonseparable level-one side is conditional on the separately supplied obligation `(LB1)`.
->
-> At level two, `HE7-MIXED-13P` supplies the corresponding carrier through ANNEX-LEMMA HE7-13′. For the partial-tower instance, `GENTOW-4-A` is deliberately the span of the complete theorem, including GENTOW-4.A(i), which supplies the bouquet blocks. Neither source is used to prove `(LB1)` retroactively at level one.
-
-Append to S3.1 and S3.2:
-
-> **Level-one fence.** This record does not discharge `(LB1)`. Therefore no mixed nonseparable level-one state is advertised as an unconditional instance of clause 4. Such a state may enter only after `(LB1)` has been supplied as an additional named instance obligation.
-
-Replace the relevant S3.3 sentence by:
-
-> ANNEX-LEMMA HE7-13′ supplies the level-two side and per-label blocks with their own residual exponents `(LABEL-OWN)`. It does not supply, and this record does not use, an equality between those exponents and multiplicities in a parent residual polynomial. HE6R1-3 together with HE7-8 `[r3]` supplies the mid-chain peel `(MID-PEEL)`.
-
-Replace the GENTOW4 bouquet sentence by:
-
-> GENTOW-4.A(i), contained in the existing-text span `GENTOW-4-A`, supplies the monic bouquet blocks
->
-> \[
-> f=\prod_{(\kappa,r)}f_{\kappa,r}.
-> \]
->
-> This is the block carrier used by the partial-tower instance; it is not inferred from GENTOW-4.2.
-
----
-
-## r2 repair 5 — strengthen KEY-BOUNDARY’s declared hypotheses
-
-In S1.9, after “A key-boundary decomposition consists of”, insert:
-
-> Every residual block \(B_j\) is a σ-block for the same carrier and satisfies the complete HE7.A input suite applicable to that block: its full development, point condition, key-freeness, window and cap safety, frame and origin data, occupied-height and lift conditions, residual-degree identity, accounting identity, test assertions, and root-preserving continuation assertions. Where a side or label split is invoked, the applicable S1.7A block theorem is also part of the residual block’s data.
-
-Replace the first sentence of T2.KEY-BOUNDARY by:
-
-> Let \(F\) be a monic separable input with a key-boundary decomposition `(BOUNDARY-PROD)`, and suppose every residual block \(B_j\) satisfies the full HE7.A hypothesis suite declared in S1.9.
-
----
-
-## r2 repair 6 — invoke the fundamental identity in the orbit count
-
-Replace the paragraph beginning “The test assertions give nonempty” by:
-
-> The test assertions give nonempty, disjoint, exhaustive, Galois-stable classes \(S_{\lambda,r'}\). Choose a root \(\rho\) in one Galois orbit \(\Omega\subseteq S_{\lambda,r'}\). Since \(K_0\) is complete discretely valued and the orbit extension is finite separable, the fundamental identity gives
->
-> \[
-> |\Omega|
-> =
-> [K_0(\rho):K_0]
-> =
-> e(\rho/K_0)f(\rho/K_0).
-> \tag{FUND}
-> \]
->
-> Local forcing says
->
-> \[
-> e_{\mathcal C}e'\mid e(\rho/K_0),
-> \qquad
-> f_{\mathcal C}\deg r'\mid f(\rho/K_0).
-> \]
->
-> Hence, using `(DEG-EF)`,
->
-> \[
-> |\Omega|
-> \ge
-> (e_{\mathcal C}e')
-> (f_{\mathcal C}\deg r')
-> =
-> De'\deg r'.
-> \]
->
-> Thus every orbit contained in \(S_{\lambda,r'}\) has at least \(De'\deg r'\) elements, and in particular
->
-> \[
-> |S_{\lambda,r'}|\ge De'\deg r'.
-> \]
-
-After obtaining equality for the class, replace the one-orbit conclusion by:
-
-> Since every orbit in the nonempty class has at least \(De'\deg r'\) elements and the entire class has exactly that cardinality, the class contains exactly one orbit. Moreover `(FUND)` and the two divisibilities have product equal to \(De'\deg r'\); therefore both divisibilities are equalities:
->
-> \[
-> e(\rho/K_0)=e_{\mathcal C}e',
-> \qquad
-> f(\rho/K_0)=f_{\mathcal C}\deg r'.
-> \]
-
----
-
-## r2 repair 7 — bind the level-one vocabulary and repair \(\vartheta_s\)
-
-Insert immediately before the level-one formula in S1.2:
-
-> The following paragraph is level-one instance notation, not unbound master vocabulary. Fix positive integers
->
-> \[
-> e_1,\ f_1,\ D',\ h,
-> \qquad
-> D'=e_1f_1,
-> \qquad
-> \gcd(h,e_1)=1,
-> \]
->
-> and a monic polynomial \(\Phi'\in O[x]\) of degree \(D'\). The symbol \(\pi\) is the ground uniformizer fixed in S1.1. Define the level-one integer-normalized coefficient height by
->
-> \[
-> dv\!\left(\sum_j a_jx^j\right)
-> =
-> \min_j\{e_1v(a_j)+jh\}.
-> \]
->
-> Fix the HE6 print normalizer
->
-> \[
-> \varpi\in K_0(x)^\times,
-> \qquad
-> dv(\varpi(\xi))=1,
-> \]
->
-> the residual letter
->
-> \[
-> \eta\in K^\times,
-> \qquad
-> \eta_\xi=\iota_\xi(\eta),
-> \]
->
-> and the integer-valued comparison function \(q(k)\) characterized on the occupied heights by
->
-> \[
-> \operatorname{res}\!\left(
-> \frac{n(k)(\xi)}{\varpi(\xi)^k}
-> \right)
-> =
-> \eta_\xi^{-q(k)}.
-> \tag{Q-DEF}
-> \]
->
-> These objects are supplied by the HE3+HE6 instance and are used only in `(GAMMA)` and `(HE6-SEAM)`.
-
-Replace the first two sentences of S1.3’s next-step-normalizer paragraph by:
-
-> For a next-step numerator \(u\), let \(\vartheta_s\in K^\times\) be the source-supplied element independent of \(\xi\) characterized by
->
-> \[
-> \boxed{
-> \iota_\xi(\vartheta_s)
-> =
-> \operatorname{res}\!\left(
-> \frac{n(u)(\xi)^s}{n(su)(\xi)}
-> \right)}
-> \tag{THETA-EVAL}
-> \]
->
-> for every relevant \(\xi\in\operatorname{Pt}\), and put
->
-> \[
-> \Theta_s=\vartheta_s^{-1}.
-> \]
-
-Add \(\gcd(h,e_1)=1\) to the boxed HE3 and HE6 instance data.
-
----
-
-## r2 repair 8 — make the multi-side induction branch explicit
-
-In addition to `(SIDE-PROD)` above, insert before the mixed-label part of the proof:
-
-> A recursive state is not silently treated as single-sided. If its complete lower hull has at least two sides, `(SIDE-PROD)` is invoked first. Every side block has strictly smaller represented degree, so the induction hypothesis applies separately to all of them. Their root sets are disjoint and exhaustive and their polynomials multiply to the state polynomial. Only after this side split is a residual factorization read and, when necessary, a label split performed.
-
-Add to S5:
-
-> 13. Multi-side states invoke `(SIDE-PROD)` as an explicit degree-decreasing induction case.
->
-> 14. Label-block terminality uses the block-owned exponent `(LABEL-OWN)`, never the parent residual multiplicity.
->
-> 15. A recentered key-divides state invokes `(MID-PEEL)` before `(WINDOW)`; its mass decreases by one.
->
-> 16. Mixed nonseparable level-one reads remain conditional on the named obligation `(LB1)`.
-
-In S4.1, replace “the five pinned source displays give the intended substitutions” by:
-
-> the pinned source displays give the intended substitutions subject to the explicitly named level-one obligation `(LB1)`; HE3.A and HE6 are not represented as unconditional mixed-nonseparable label-block instances.
+=== HE7-13'/HE7-8 SOURCE REGIONS ===
+223:>    refine chain is FINITE (LEMMA HE7-8), so the read continues — **[r2,
+228:>    that LEMMA HE7-8 consumes is **LEMMA HE7-13**, derived, not assumed;
+266:> (LEMMA HE7-8) and every other step strictly decreases μ. In particular:
+802:key Ψ − w after an α-refine (HE7.A(3), §S8 row 5, inside LEMMA HE7-8's
+849:> ⋯ of LEMMA HE7-13, inductively available at each step — the two lemmas
+## ANNEX F-1 (2026-08-09, post-acceptance; PE3 F-1) — the mixed-residual rider: ANNEX-LEMMA HE7-13′ (the refine acts PER CLASS), the block reading of HE7.A(3)/§S6(iii), and the R-a disposition. The frozen accepted body above is NOT edited.
+
+**Provenance and scope.** HE7 was **ACCEPTED 2/2** at PE3 (report
+`HE7_passPE3_report.md`, commit 111ac7f): 0 CRITICAL, 0 GAP, 1 MINOR —
+FINDING F-1, with remark R-a folded into it. The accepted text is
+byte-frozen; per the report's closing sentence the owed repair is this
+dated annex (the HMENU3 ANNEX-A pattern: appended, dated, nothing above
+edited). The annex covers exactly PE3 F-1 plus the folded R-a remark and
+NOTHING else. Honesty of grade: the annex text itself is a
+post-acceptance append and has NOT been through a hostile pass; what it
+formalizes is the per-class continuation the PE3 verifier derived and
+machine-verified at the defect's exact configuration (144/144 PARI,
+artifacts committed at b574f25), plus the additive annex leg below.
+
+**The defect (as found at PE3).** THEOREM HE7.A(3) [r2] fires the
+α-refine at any slope λ₂ = u₂/ℓ₂ whose residual R_{λ₂} has a repeated
+irreducible factor r₂ with ℓ₂·deg r₂ = 1 — including MIXED residuals
+(the repeated linear factor shares its side with other classes, e.g.
+R_{λ₂} = (Z−a)²(Z−b), b ≠ a), first live at μ₂ = 3, i.e. n = 12, inside
+COROLLARY HE7.B(i)'s n = 12–15 sub-region, and vacuous at every
+machine-certified degree (μ₂ = 2 forces pure). But the lemmas the wiring
+cites there have pure-node hypotheses: LEMMA HE7-13 supposes "the single
+side of integer slope λ₂ … with residual R₂ = (Z − s₂)^{μ₂}", and LEMMA
+HE7-8's chain hypothesis likewise. HE7-13's conclusion-as-stated is
+genuinely FALSE at mixed nodes: PE3's constructed counter-instance
+(p, u, s, λ₂) = (5, 5, 1, 11), R₂ = (Z−1)²(Z−2), pins
+(0,33),(1,23),(2,11),(3,0), has post-refine polygon (0,34),(2,11),(3,0)
+— **the λ₂ = 11 side SURVIVES the refine**, carrying the b = 2 class
+(PARI σ = {(4,1),(8,1)}, the (4,1) factor = the undisturbed b-class).
+And §S6(iii)'s per-block sentence names only "several distinct REPEATED
+factors at one node", not a repeated factor mixed with simple ones.
+
+**The two display sentences this annex riders (named exactly; neither is
+edited).**
+
+1. **THEOREM HE7.A(3), the [r2, HE7-PE1 F-1] wiring sentence** ("the
+   read AT the refined key Ψ − w (and at every iterate Ψ − W of the
+   chain) is licensed by **LEMMA HE7-12** (§S5.8) … and the strict slope
+   increase λ₂^{(0)} < λ₂^{(1)} < ⋯ that LEMMA HE7-8 consumes is
+   **LEMMA HE7-13**, derived, not assumed"). **Read as:** at a PURE node
+   (R_{λ₂} a power of Z − s₂ on a single side) — verbatim. At a MIXED
+   node, the citation routes through ANNEX-LEMMA HE7-13′ below: the node
+   is first split into its class blocks (clause (a)); the refine is the
+   α-refine OF THE REPEATED CLASS'S OWN BLOCK, whose node IS pure, so
+   LEMMAS HE7-12/HE7-13/HE7-8 apply to it verbatim; every other class is
+   read at its own block.
+2. **§S6(iii)'s block sentence** ("*Several distinct repeated factors at
+   one node.* Then the classification above is applied **per distinct
+   factor**, each with its own block, by LEMMA HE6R1-2"). **Read as:**
+   "per distinct factor, REPEATED OR NOT — mixed nodes included";
+   ANNEX-LEMMA HE7-13′(a) is the displayed level-2 form of that block
+   split (proved from HE7-6/HE7-9/HE7-10/HE7-11, i.e. inside the §S5
+   package, so it transfers level-i by §S6's substitution table exactly
+   like every other §S5 item).
+
+LEMMA HE7-8's [r2] box ("the hypothesis set is the read's ACTUAL
+configuration, derived") and LEMMA HE7-12(d)'s [r3] parenthetical (the
+pairwise-distinct dv₂(w_i)) inherit the same reading: through HE7-13′
+their justifications route per block, where the displayed arguments
+apply verbatim (see "wiring" below). No other display is touched.
+
+> **ANNEX-LEMMA HE7-13′ (mixed residual nodes: the block split, and the
+> per-class effect of one α-refine).** Let Ψ̃ = Ψ − W with W = 0 or as in
+> LEMMA HE7-12(d), and let f_S satisfy the standing convention at Ψ̃
+> (Ψ̃ ∤ f_S), all roots level-2 points. Write P₂ for the polygon of f_S
+> with respect to Ψ̃, and for each side of slope λ = u₂/ℓ₂ and each
+> distinct monic irreducible r | R_λ let
+>
+>     C_{λ,r} := { ρ : f_S(ρ) = 0, dv₂(Ψ̃(ρ)) = λ,
+>                  ι_ρ^{(2)}(r)(β_{2,ρ}) = 0 }
+>
+> (the level-2 label classes of COROLLARY HE7-7″; they partition the
+> roots of f_S, since the label's factor is the minimal polynomial of
+> β_{2,ρ} over ι^{(2)}(K₂)). Then:
+>
+> (a) *(the block split: a mixed node is a bouquet of PURE nodes)* each
+> C_{λ,r} is nonempty (LEMMA HE7-10), Galois-stable (LEMMA HE7-11), and
+> is the root set of a monic block factor f_{λ,r} ∈ O[x] with
+> f_S = Π_{(λ,r)} f_{λ,r} and D″ℓ₂·deg r | deg f_{λ,r} (LEMMA HE7-6's
+> argument with LEMMA HE7-5's forcing); the polygon of f_{λ,r} with
+> respect to Ψ̃ is the SINGLE side of slope λ, of length
