@@ -2311,3 +2311,22 @@ moves. At unoccupied low heights no slot exists — witness
 (e₁, f₁, h) = (3, 1, 2), m = 1: i(1) = 2 forces a(1) = −1 (the
 R4/A2 counterexample, recorded in the obstruction record above).
 The e₁-class separation and F_Q-independence clauses are unchanged.
+
+**Dated corrigendum (2026-08-12, post-D2b — the occupied-height
+scope tightened).** The D2b discharge pass (gpt-5.6-sol high,
+runs/cert2/D2b_genhn_output.log) adjudicated the re-display above
+NEW-ISSUE: "occupied" as normalizer-integrality (a(m) ≥ 0) is too
+weak at f₁ > 1 — the full K-digit slot needs every component
+monomial x^{i+e₁s}π^{a−sh} integral, i.e. a(m) ≥ (f₁−1)h; sol's
+witness (e₁, f₁, h, m) = (1, 2, 1, 0): n(0) = 1 is integral while
+the η-component would require xπ^{−1}. Per sol's own recommendation
+and the simplicity preference, the scope is tightened to the
+consumed domain: GENHN.A(ii)'s slot clause holds per integer
+dv-height m with **D′h < m**, below the window cap — there LEMMA
+GENHN-LIFT's proof gives a − sh = (m − (i+e₁s)h)/e₁ ≥ 0 for every
+component (i + e₁s ≤ D′ − 1), so the full K-slot exists — and every
+pin the note's laws consume sits in that domain (the stage-initial
+node floor {dv(A_j) ≥ (μ−j)D′h + 1} and the refine floors). At
+m ≤ D′h the clause is withdrawn entirely: a K-slot may be partial
+(the sol witness) or absent (the R4/A2 witness). Awaiting sol
+re-confirmation in the next queue.
