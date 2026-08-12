@@ -13,3 +13,5 @@
 [10:57:05] D2f_genind exit 0 (2843 B; STACK-VERDICT: CHALLENGE)
 [10:57:05] E9_w11_annex start
 [11:00:47] E9_w11_annex exit 0 (12243 B; SUMMARY: 4 REAL (repairs delivered) / 0 RESOLVED-ALREADY / 0 ARTIFACT / 0 OBSTRUCTED)
+[11:00:47] E10_sigmalaw_annex start
+[11:03:08] E10_sigmalaw_annex exit 0 (5842 B; SUMMARY: 4 REAL (repairs delivered) / 1 RESOLVED-ALREADY / 0 ARTIFACT / 0 OBSTRUCTED)
