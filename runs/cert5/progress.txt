@@ -1,0 +1,3 @@
+[14:00:13] cert5 queue start
+[14:00:13] TC1_w12ht start
+[14:00:20] TC1_w12ht exit 0 (131 B; OUTCOMES: DISCHARGED)
