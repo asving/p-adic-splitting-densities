@@ -1,0 +1,254 @@
+The minimal honest r1 cannot preserve the current “GO / five literal instances / first gate passed” language. The following six repairs close the reported defects without assuming key irreducibility or changing the coefficient DVR.
+
+### R1-1 — C1: replace the invalid peel dichotomy
+
+Replace S1.5(3), S2.1, and every “after the \(\Phi\)-peel” reference with:
+
+> **Key-boundary condition.** For a block to enter HE7.A, require
+>
+> \[
+> \boxed{
+> \gcd_{K_0[x]}(F_{K_0},\Phi_{K_0})=1.}
+> \tag{KEY-FREE}
+> \]
+>
+> The weaker condition \(\Phi\nmid F\) is not sufficient when \(\Phi\) is reducible.
+>
+> A non-key-free input must first carry a **key-boundary certificate**. Writing
+>
+> \[
+> G=\operatorname{monicGCD}_{K_0[x]}(F_{K_0},\Phi_{K_0}),
+> \]
+>
+> that certificate supplies:
+>
+> 1. monic polynomials \(P_i\in O[x]\) whose images in \(K_0[x]\) are the distinct irreducible factors of \(G\) occurring in \(F\);
+> 2. the corresponding Galois-orbit, irreducibility, and local \((e,f)\) certificates for every \(P_i\);
+> 3. zero or more residual blocks \(B_j\), each satisfying `(KEY-FREE)` and every other hypothesis of HE7.A;
+> 4. the product identity
+>
+>    \[
+>    F=\prod_i P_i\prod_j B_j.\operatorname{poly},
+>    \]
+>
+>    together with disjointness and exhaustion of the associated root classes; and
+> 5. strict degree descent for every nonterminal residual block.
+>
+> Since \(F\) is separable, the \(P_i\) occur simply. No assertion is made that \(G\) equals \(\Phi\), that \(\Phi\) is one irreducible factor, that the peel decreases \(\mu\) by one, or that it fires at most once.
+>
+> **LEMMA T2.KEY-BOUNDARY.** Apply HE7.A separately to the certified `(KEY-FREE)` blocks and adjoin the certified factors \(P_i\). The resulting factors exhaust \(F\).
+>
+> This lemma requires no `Irreducible Φ` hypothesis. Irreducibility is required only for each emitted orbit factor \(P_i\), as part of the key-boundary certificate.
+
+In `SigmaBlock`, replace
+
+```lean
+proper : ¬ C.key ∣ poly
+```
+
+by the mapped-polynomial coprimality certificate
+
+```lean
+keyCoprime : IsCoprime (poly.map C.ground.inclusion)
+                         (C.key.map C.ground.inclusion)
+```
+
+Delete `sigma_peel`; replace `PeelResult` by the explicit key-boundary result described above.
+
+### R1-2 — G1: make the first gate honest and inspectable
+
+Replace “First-gate result” and S8(1) with:
+
+> **First-gate status (r1): NOT YET RUN.** The prose schema contains no `keyIrreducible` field, but that is not an elaboration result. A first-gate pass exists only after the following declarations and an HE7 constructor term have elaborated:
+>
+> - the original-ground DVR record;
+> - `SigmaLadderCarrier`;
+> - `SigmaBlock`, including `(KEY-FREE)`;
+> - the side-accounting certificate;
+> - the complete test-family certificate;
+> - mixed-block step data;
+> - the well-founded recursion data; and
+> - the key-boundary result.
+>
+> The constructor-generated obligation manifest must contain exactly the following groups:
+>
+> 1. original-\(O\) ground, fraction-field, valuation, residue, and completeness obligations;
+> 2. `keyMonic`, positive degree, and degree equality;
+> 3. inherited \(e_{\mathcal C}\) and \(f_{\mathcal C}\);
+> 4. point, embedding, normalizer, slot, lift-domain, and cocycle obligations;
+> 5. development, `(KEY-FREE)`, roots, window, cap, frame, and origin obligations;
+> 6. finite occupied- and lift-height sets with `(OCC)`;
+> 7. side accounting and complete test certificates;
+> 8. mixed-block transition and `step_wf`; and
+> 9. the key-boundary certificate when the input is not key-free.
+>
+> It may require `Irreducible r` for residual labels and `Irreducible P_i` for emitted boundary factors. It must not require `Irreducible C.key`.
+>
+> Until an elaborated constructor and its generated goals are recorded, this note claims only that the proposed interface does not visibly request `keyIrreducible`; it does not claim that the first gate has passed.
+
+The previously opaque declarations must expose, at minimum, these fields:
+
+```text
+BaseChangeFreeTestFamily:
+  test polynomial; integrality; monicity; degree;
+  root disk/label equivalence; local e- and f-forcing;
+  nonemptiness; disjointness; side exhaustion;
+  Galois equivariance.
+
+SigmaStepData:
+  state type; next relation; linear-refine transition;
+  child-jump transition; mixed-block transition;
+  degree/mass/secondary-budget decrease certificates.
+
+KeyBoundaryResult:
+  common-factor list; irreducibility and orbit certificates;
+  residual block list; product/root-partition certificate;
+  local invariants; strict degree descent.
+```
+
+None of these declarations may contain `Irreducible C.key`.
+
+### R1-3 — G2: replace every informal span with paired anchors
+
+Insert marker-only lines immediately before and after each cited source unit, and replace all informal pins by:
+
+```text
+:: «<!-- T2PIN:<NAME>:BEGIN -->»
+..< «<!-- T2PIN:<NAME>:END -->»
+```
+
+Use these unique names:
+
+```text
+HE3-DEF1
+HE3-HE3-1L
+HE3-HE3-6
+HE3-R8-2
+HE3-R8-3
+HE3-R8-4
+HE3-R8-5
+HE6-SLOT-SEAM
+HE7-MIXED-13P
+HE7-COCYCLE-2P-THROUGH-R1D
+HETOW-NORMALIZER-4
+GENTOW-ACCEPTANCE-FOLD
+```
+
+Replace the HE6 inclusive `..` by `..<`. Delete the phrases “ending after its wiring paragraph and three bullets,” “ending with its proof,” and every begin-only pin.
+
+Add:
+
+> A source pin is valid only when both named markers occur exactly once and the begin marker precedes the end marker. Marker insertion changes no mathematical source text. Until every pair exists, the corresponding instance fails closed.
+
+### R1-4 — G3: remove undeclared generic tests from the proof
+
+Add to `SigmaBlock`:
+
+> **Side-accounting certificate.** The block supplies a certificate, in the coherent frame, that:
+>
+> \[
+> \lambda>T,\qquad
+> \sum_\lambda L_\lambda=\mu,\qquad
+> |S_\lambda|=D L_\lambda
+> \]
+>
+> for every consumed side \(\lambda\). The certificate records its finite side set and the root partition inducing the final equality.
+
+Replace the first three substantive paragraphs of the proof of HE7.A with:
+
+> `(SLOT)` and `(COC)` identify the coherent coefficient pins and residual polynomials. The side-accounting certificate gives clause 1 and the total cardinality \(DL_\lambda\) of each side class.
+>
+> For a separable side residual, the test-family certificate supplies nonemptiness, disjointness, exhaustion, Galois equivariance, and local forcing for each irreducible residual factor. Local forcing gives the lower bound \(De'\deg r'\). Since the classes exhaust the side and their lower bounds sum to the certified side total, equality holds termwise; each class is one Galois orbit.
+>
+> No generic test factor, \(\rho\)-side equality/strictness theorem, or resultant-symmetry theorem is invoked by the master proof. If an instance derives its side-accounting or nonemptiness certificate using those tools, they belong to that instance’s certificate proof, not to the master interface.
+
+Add to the honesty ledger:
+
+> HE7.A is an interface-composition theorem. Side accounting, nonemptiness, and exhaustion are explicit inputs, not outputs newly proved by the abstract master.
+
+### R1-5 — G4: complete the record shape and retract premature instance claims
+
+Add to `SigmaLadderCarrier`:
+
+```lean
+inheritedE       : ℕ
+inheritedF       : ℕ
+inheritedE_pos   : 0 < inheritedE
+inheritedF_pos   : 0 < inheritedF
+```
+
+Add to `SigmaBlock`:
+
+```lean
+sideAccounting    : SideAccountingCertificate C poly
+originBridge_ok   : originBridge
+mixedBlockRule    : MixedBlockCertificate C poly
+keyBoundary       : Option (KeyBoundaryCertificate C poly)
+```
+
+Replace the opening of S3 with:
+
+> ## S3. FIVE CANDIDATE INSTANCE OBLIGATION RECORDS
+>
+> The following subsections are source-routing ledgers, not yet Lean instances. A literal instance exists only when the repository contains named elaborated terms
+>
+> ```text
+> <name>.carrier
+> <name>.block
+> <name>.sideAccounting
+> <name>.testFamily
+> <name>.stepData
+> <name>.step_wf
+> <name>.keyBoundary
+> ```
+>
+> and a constructor check records their generated obligations.
+>
+> Each record must instantiate, without prose inheritance: the original ground token; \(e_{\mathcal C},f_{\mathcal C}\); finite occupied and lift-height sets; `(OCC)`; normalizer and cocycle laws; slot and lift laws; side accounting; complete tests; `(KEY-FREE)` or a key-boundary certificate; window, cap, frame, and origin bridges; the mixed-block rule; and `step_wf`.
+>
+> HETOW and GENTOW4 may transport these fields only through a typed transport certificate preserving each named field. “As in HE7,” “through HETOW,” and similar prose do not instantiate a field.
+
+Rename the five subsection headings from `INSTANCE` to `CANDIDATE INSTANCE`. Replace every “literal instance” and “First-gate result” claim accordingly.
+
+For HE6, a one-shot record may use the empty transition relation and its immediate well-foundedness proof. HETOW and GENTOW4 must use, respectively, a typed pullback and a typed restriction of the HE7 transition relation; well-foundedness then follows by inverse image or restriction, not by prose.
+
+### R1-6 — G5: anchor every carrier to a genuine original DVR object
+
+Replace `CompleteDVRData` by an ambient ground record containing, at minimum:
+
+> An **original-DVR ground** \(\mathscr O\) contains:
+>
+> - the coefficient ring \(O\);
+> - its fraction field \(K_0\);
+> - an injective inclusion \(O\hookrightarrow K_0\);
+> - an `IsFractionRing O K₀` witness;
+> - an `IsDiscreteValuationRing O` witness;
+> - the normalized valuation on \(K_0\) and its uniformizer compatibility;
+> - identification of the residue field with \(k_0\); and
+> - completeness of \(K_0\) for the topology induced by that valuation.
+>
+> `SigmaLadderCarrier` is parameterized by a fixed \(\mathscr O\); it does not contain a replaceable DVR field. Every child carrier, test family, block, lift, and polynomial remains parameterized by the same \(\mathscr O\). A stage order or quotient may occur only in optional auxiliary data and cannot occupy the ground slot.
+
+The signature header becomes schematically:
+
+```lean
+structure OriginalDVRGround (O K₀ k₀ : Type*) := ...
+
+structure SigmaLadderCarrier
+    (G : OriginalDVRGround O K₀ k₀)
+    (Kres Ω : Type*) where
+  -- no independent `dvr` field
+  ...
+```
+
+Add:
+
+> Equality of the ground parameter is part of every carrier-transport and child-carrier constructor. Consequently a purported stage ring cannot replace \(O\) during recursion. This is the formal content of the original-\(O\) redline.
+
+Finally replace S9 by:
+
+> **R1 COMPOSITION VERDICT: HOLD.** The repaired conditional master uses one fixed original-\(O\) ground and no current-key irreducibility assumption. The reducible-key boundary is now an explicit gcd/orbit decomposition rather than a false divisibility dichotomy.
+>
+> The five source routes remain candidate obligation records until their paired source anchors, explicit constructors, field witnesses, and generated obligation manifests are present. No acceptance, literal-instance, or passed-first-gate claim is made by this r1 text.
+
+SUMMARY: 6 REAL (repairs delivered)
