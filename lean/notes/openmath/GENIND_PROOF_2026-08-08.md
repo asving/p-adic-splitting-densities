@@ -3292,3 +3292,297 @@ scored rows, by the measured slopes at 7 ratio pairs, and by the
 fired T-SLOPE tooth. MINOR-1 and MINOR-2 executed inline. The annex
 stack remains 0/2 — this r1 answers the ANNEX R pass and queues for
 its own scoped hostile pass behind the chain notes.
+
+---
+
+### Dated corrections (2026-08-12 — sol certification R9: the annex-pass d-factor GAP repaired at HEAD)
+
+The sol-5.6 annex read (runs/residues/R1_drainn4_output.log,
+2026-08-12) found the d-factor GAP in ANNEX-LEMMA GENIND-C2 plus
+three riding MINORs. The R9 certification run (gpt-5.6-sol high,
+runs/cert/R9_drain_repair_output.log) re-adjudicated all four
+against HEAD (all REAL) and derived the repairs — the dated
+replacement passage and three riding folds below. Everything above
+this heading is byte-untouched by this append.
+
+### Dated correction (2026-08-12): ANNEX-LEMMA GENIND-C2 — the residue-degree factor retained through the height sum
+
+**Supersession and scope.** This passage supersedes r1.1's
+ANNEX-LEMMA GENIND-C2 statement, proof, displayed instances, and
+conditionality paragraph. The defect was confined to the last
+normalization and height summation: the preceding stage calculation
+retained \(d\), but the conclusion changed from \(Q=q^d\) to \(q\).
+The repair below keeps \(Q\) from entry pricing through the final
+sum. No accepted theorem statement is weakened; no count law or
+frozen number moves.
+
+> **ANNEX-LEMMA GENIND-C2 (the CS-drain rate, \(Q\)-normalized;
+> conditional on the (CS-1) clause family only).** Fix a cluster
+> system \((m,d,N)\), put \(Q:=q^d\), and fix a composite block in a
+> CS genre. Write
+>
+> \[
+>   \gamma:=\deg\psi,\qquad a:=e\gamma,\qquad
+>   L:=e\mu\gamma,\qquad |K|=q^{d\gamma}=Q^\gamma .
+> \]
+>
+> Thus \(a\ge2\), \(\mu\ge2\), and
+>
+> \[
+>   L\ge2a,\qquad
+>   b:=\frac{L+1}{2}\ge a+\frac12.                 \tag{C2.0}
+> \]
+>
+> Let \(H\) be the vertical drop of the side carrying the composite
+> block. On a full side \(H=v(a_0)\); at an embedded side the other
+> sides and split-off pieces impose additional conditions and can
+> only decrease the relative entry mass. Assume (CS-1) for this
+> stage and, recursively, for any composite stages occurring inside
+> it. Then the contribution in which this stage remains
+> conservative-undecided satisfies
+>
+> \[
+>   \frac{u^{\mathrm{CS}}_{m,d}(N)}
+>        {Q^{m(N-1)}}
+>       \le K_c N^{B_c}Q^{-(N-c_c)}
+> \]
+>
+> for constants \(K_c,B_c,c_c\) depending only on the fixed
+> degree/genre data.
+>
+> **Proof.**
+>
+> **(i) Stage-window supply in \(Q\)-units.** By (CS-1), the stage is
+> a \((\mu,K)\)-cluster read at a ragged-corrected stage window
+> \(M^\star\) satisfying
+>
+> \[
+>   M^\star\ge e(N-1-H).
+> \]
+>
+> This is S7.1's slot geometry: one \(K\)-digit per \(v'\)-height,
+> \(E=e\) such heights per old valuation unit. At the quartic
+> e-first stage, for example,
+> \(M^\star=2N-2-4h=2(N-1-H)\) with \(H=2h\).
+>
+> **(ii) Stage-drain rate.** If \(\mu\le3\), the stage is CS-free by
+> S5.1, so GENIND.C′ applied over \(K\) gives
+>
+> \[
+>   \delta_{\mathrm{stage}}(M^\star)
+>       \le K_\star(M^\star)^{B_\star}
+>          |K|^{-(M^\star-c_\star)}.
+> \]
+>
+> If \(\mu\ge4\), use the same estimate by joint lexicographic
+> induction with GENIND.C′ and this lemma. Indeed
+> \(\mu d\gamma\le md\) follows from
+> \(m\ge e\mu\gamma\); when equality of product degrees is possible
+> (\(e=1\)), the visible opening has \(H>0\), hence
+> \(M^\star<N\). Thus either degree or window strictly decreases.
+> In terms of \(Q\), part (i) gives
+>
+> \[
+> \begin{aligned}
+>   \delta_{\mathrm{stage}}(M^\star)
+>   &\le K_\star N^{B_\star}
+>       (Q^\gamma)^{-(M^\star-c_\star)}\\
+>   &\le K_\star N^{B_\star}
+>       Q^{-e\gamma(N-1-H)+\gamma c_\star}\\
+>   &=K_\star N^{B_\star}
+>       Q^{-a(N-1-H)+\gamma c_\star}.             \tag{C2.1}
+> \end{aligned}
+> \]
+>
+> **(iii) Entry pricing and the missing height comparison.** S2.2's
+> slot count supplies, for fixed side/partition data,
+>
+> \[
+>   \rho_H\le Q^{-bH+C_0},
+>   \qquad b=\frac{L+1}{2},                        \tag{C2.2}
+> \]
+>
+> with \(C_0=O_m(1)\). Indeed, relative to the right endpoint, the
+> supporting line forces the \(L\) coefficient valuations at heights
+>
+> \[
+>   \frac{H}{L},\frac{2H}{L},\ldots,\frac{LH}{L};
+> \]
+>
+> their sum is
+>
+> \[
+>   \sum_{r=1}^{L}\frac{rH}{L}
+>      =\frac{L+1}{2}H=bH.
+> \]
+>
+> Passing to lattice ceilings and remembering that the level-zero
+> digits are already pinned changes this by only \(O_m(1)\) slots;
+> the residual-factor and letter census contributes only another
+> \(Q^{O_m(1)}\). Extra sides, vertices, and decided pieces add
+> constraints, so ignoring them is a valid upper bound.
+>
+> Combining (C2.1) and (C2.2), the normalized contribution at height
+> \(H\), while the stage-window estimate is live, is
+>
+> \[
+> \begin{aligned}
+>   \rho_H\,\delta_{\mathrm{stage}}(M^\star)
+>   &\le K_1N^{B_\star}
+>      Q^{-bH-a(N-1-H)+C_1}\\
+>   &=K_1N^{B_\star}
+>      Q^{-a(N-1)-(b-a)H+C_1}\\
+>   &\le K_1N^{B_\star}
+>      Q^{-a(N-1)-H/2+C_1},                       \tag{C2.3}
+> \end{aligned}
+> \]
+>
+> where the last inequality is exactly (C2.0):
+>
+> \[
+>   b-a=\frac{L+1}{2}-e\deg\psi\ge\frac12.
+> \]
+>
+> Thus the stage factor's growth with \(H\) is strictly dominated by
+> the entry-price decay; entry decay alone was not the reason the
+> height sum converges.
+>
+> **(iv) Height summation, retaining \(Q=q^d\).** Summing (C2.3)
+> gives
+>
+> \[
+> \begin{aligned}
+>   \sum_H \rho_H\,\delta_{\mathrm{stage}}(M^\star)
+>   &\le K_1N^{B_\star}Q^{-a(N-1)+C_1}
+>      \sum_{H\ge0}Q^{-H/2}\\
+>   &\le K_2N^{B_\star}Q^{-a(N-1)+C_1},
+>                                                        \tag{C2.4}
+> \end{aligned}
+> \]
+>
+> because \(Q\ge2\) and
+> \(\sum_{H\ge0}Q^{-H/2}\le(1-2^{-1/2})^{-1}\).
+> Since \(a=e\deg\psi\ge2\), the right side is
+>
+> \[
+>   \le K_2N^{B_\star}Q^{-(N-c_2)}
+> \]
+>
+> for an \(N\)-independent \(c_2\).
+>
+> For the floor-adjacent range in which the quantitative stage
+> estimate is not invoked, fix its finite threshold \(M_0\).
+> From \(M^\star\ge e(N-1-H)\) and \(M^\star<M_0\) one gets
+>
+> \[
+>   H>N-1-\frac{M_0}{e}.
+> \]
+>
+> The trivial stage-drain bound \(1\), together with (C2.2), then
+> gives
+>
+> \[
+>   \rho_H
+>      \le Q^{-b(N-1)+O_{m,M_0}(1)}
+>      \le Q^{-(N-c_3)},
+> \]
+>
+> since \(b\ge a+\tfrac12\ge\tfrac52\). Hence the boundary range has
+> the same required species without using a child-window limit.
+>
+> Finally, for fixed \(m\), GENIND-C1(iv) gives at most
+> \(\widetilde p(m)N^m\) live genre/height arrangements. Multiplying
+> (C2.4) by this polynomial and summing over the finitely many
+> composite blocks preserves the form
+>
+> \[
+>   K_cN^{B_c}Q^{-(N-c_c)}.
+> \]
+>
+> At MIXED genres, the stage-drain term and the β-child drain terms
+> combine by GENIND-6(d); the union bound of GENIND-C1(ii)/R6.2
+> applies. The child terms are supplied by GENIND-C1 and the stage
+> terms by the calculation above. No use of (CS-EXACT) is made:
+> this is a bound, not the exact-complement identity. ∎
+>
+> **Displayed checks in the corrected normalization.**
+>
+> * **CS4-E(h):**
+>   \(\rho=(Q-1)Q^{1-5h}\), \(H=2h\),
+>   \(M^\star=2N-2-4h\), and \(|K|=Q\). Hence
+>   \[
+>     \rho\,\delta_{\mathrm{stage}}
+>        \le \operatorname{poly}(N)
+>           Q^{-2N-h+O(1)}.
+>   \]
+> * **CS4-F(k):**
+>   \(\rho=(Q(Q-1)/2)Q^{-10k}\), \(H=4k\),
+>   \(M^\star=N-1-4k\), and \(|K|=Q^2\). Hence
+>   \[
+>     \rho\,\delta_{\mathrm{stage}}
+>        \le \operatorname{poly}(N)
+>           Q^{-2N-2k+O(1)}.
+>   \]
+> * **CS5-V1E2(h):**
+>   \[
+>     \rho=(Q-1)Q^{\,2-(15h+1)/2}
+>       \left(1-Q^{-(N-(5h+1)/2)}\right),
+>   \]
+>   while \(H=2h\) and \(M^\star=2N-2-4h\). Therefore
+>   \[
+>     \rho\,\delta_{\mathrm{stage}}
+>        \le \operatorname{poly}(N)
+>           Q^{-2N-(7/2)h+O(1)}.
+>   \]
+>   The fifth root's headroom is a decided-piece fiber; it does not
+>   weaken the stage-drain estimate. CS5-V4E2 and the remaining
+>   embedded \((2,2)\)-type genres have the same species: their
+>   additional vertex and split-piece constraints only strengthen
+>   (C2.2).
+>
+> **Conditionality.** GENIND-C2 consumes the (CS-1) clause family
+> only, including recursively realized stage genres. It consumes
+> neither (CS-2), (CS-3), nor (CS-EXACT). At \(n=4\), (CS-1) is
+> de facto discharged by the pinned GENH4 package identified in
+> Step 4. At higher degrees it is already a component of
+> [GENIND-H], the hypothesis of GENIND.B. Consequently the FULL
+> complement used in GENIND-C1 has (A2-RATE): its simple part comes
+> from GENIND.C′, and its CS-drain part comes from this lemma in the
+> required base
+>
+> \[
+>   Q=q^d,
+> \]
+>
+> not merely in base \(q\).
+
+**The three riding folds (R9 findings 2–4).**
+
+* **[2026-08-12, riding MINOR-A]** In r1.1's preregistration, read “P1 … at 10 scored fresh rows” as “P1 … at 11 scored fresh rows”; the roster has 12 fresh rows, of which the floor-adjacent F row \((q,k,N)=(3,1,6)\) has \(M^\star=1\) and was disclosed but not scored, leaving exactly 11 scored rows as the committed record reports.
+
+* **[2026-08-12, riding MINOR-B]** Supersede R1.4's “five committed displays” census by this enumerated consumed-surface census: W-11's \(R(M)\); HEX3.A's exact law; HEX3.B's rate; GT-BDRAIN's \(n=4,5\) first-step recursions; GENIND-BOX-4's pricing sentence; the M6 and PSTEEP3/PSTEEP4 locus data used in GENIND-C1(i); and the six extraction identities used in GENIND-C1(iii), namely M6, TWOCHILD-A, TWOCHILD-B, PSTEEP3, PSTEEP4, and SS6.
+
+* **[2026-08-12, riding MINOR-C]** Replace “the entry mass \(\rho\) decays geometrically in \(H\), so the height sum converges” by: “S2.2 gives \(\rho_H\le Q^{-((L+1)/2)H+O_m(1)}\), while the stage factor is at most \(Q^{-e\deg\psi\,(N-1-H)+O(1)}\); since \(L\ge e\mu\deg\psi\ge2e\deg\psi\), one has \((L+1)/2-e\deg\psi\ge1/2\), so the composed summand is at most \(Q^{-e\deg\psi\,(N-1)-H/2+O(1)}\), whose \(H\)-sum is geometric.”
+
+*(The replacement lemma and three folds above were derived by the R9
+certification run (gpt-5.6-sol high,
+runs/cert/R9_drain_repair_output.log, 2026-08-12); orchestrator
+verification before transcription — the d-factor defect confirmed at
+HEAD (r1.1's C2(iii) conclusion displays q^{−(N−c_c)} against the
+Q^{m(N−1)} normalization, while its own stage estimate retains
+e·d·deg ψ); the replacement's algebra re-derived by hand: (C2.0)
+L = eμγ ≥ 2a and b − a = (L+1)/2 − eγ ≥ 1/2; the entry-price
+exponent Σ_{r≤L} rH/L = (L+1)H/2; the composition
+Q^{−a(N−1)−(b−a)H}; the lexicographic descent at μ ≥ 4 (μγ ≤ m,
+equality only at e = 1 where H > 0 shrinks the window); the
+floor-adjacent branch (b ≥ 5/2); and all three displayed checks
+(CS4-E: exponent 1−5h−2(N−1−2h) = −2N−h+O(1); CS4-F:
+−10k−2(N−1−4k) = −2N−2k+O(1); CS5-V1E2: 2−(15h+1)/2−2(N−1−2h) =
+−2N−(7/2)h+O(1)). MINOR-A checked against the committed machine
+record (P1 GREEN 11/0, the (3,1,6) row disclosed-not-scored, roster
+count 12 re-added); MINOR-B's enumerated census verified for
+existence of every named object at its committed instance rows (the
+item-by-item consumed-surface attribution is sol's enumeration);
+MINOR-C is the (C2.0)-domination just verified. Transcribed
+unaltered per the standing division of labor. Ledger: row 17 →
+repaired, awaiting the clean sol re-pass.)*
