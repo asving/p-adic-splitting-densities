@@ -1,0 +1,71 @@
+C1 — Recursive exhaustion is unsupported.
+
+> “`SigmaStepData`: state type and next relation; … existence of a next state … degree, mass, or secondary-budget decrease for every transition.”
+
+versus:
+
+> “the recursive read terminates and its terminal irreducible factors … exhaust the roots of \(F\).”
+
+The interface ensures transition existence and well-foundedness, but does not require transitions to preserve or partition root classes, transport the polynomial, compose inherited \((e,f)\), or make terminal outputs exhaustive. Well-foundedness proves termination only; clause 5 does not follow.
+
+G1 — The valued closure has no valuation or reduction structure.
+
+> `[Algebra K₀ Kbar]`  
+> `valuedClosure_algebraic : Algebra.IsAlgebraic K₀ Kbar`  
+> `valuedClosure_closed : IsAlgClosed Kbar`
+
+These fields do not supply the extended valuation on `Kbar`, its valuation ring, or a residue map into `kbar`. Consequently expressions underlying `d(A(ξ))`, `(WINDOW)`, and  
+\(\operatorname{res}(A(\xi)/n(k)(\xi))\) remain unrepresented.
+
+G2 — The result signature is proposition-valued data, not the asserted theorem.
+
+> `structure HE7AResult ... : Prop where`  
+> `slopes_gt_threshold : Prop`  
+> `side_lengths_sum : Prop`  
+> `...`
+
+A constructor merely chooses propositions for these fields; it supplies no proofs of the displayed conclusions. Taking every field to be `True` inhabits the result. The same placeholder problem affects several carrier laws such as:
+
+> `normalizerValue : ∀ k, Prop`  
+> `slotExact : ... → Prop`
+
+Thus the sketch cannot yet expose or verify the claimed obligation shape.
+
+G3 — The formal cocycle is not connected to the normalizer.
+
+> `cocycle : ℤ → ℤ → Kresˣ`
+
+with only normalization and the cocycle law.
+
+No field identifies it with the residue of  
+\(n(a)n(b)/n(a+b)\). In particular, the trivial cocycle satisfies the displayed formal fields even when the required HE7 value is the nontrivial \(\beta^c\). The prose definition of \(\tau\) is therefore not encoded by the proposed interface.
+
+G4 — The degree-sum step used in the orbit count is absent from the certificates.
+
+> “The irreducible residual degrees, with the side denominator \(e'\), sum to the certified side length…”
+
+Neither the listed `SideAccountingCertificate` fields nor the listed `BaseChangeFreeTestFamily` fields assert  
+\(\deg R_\lambda=L_\lambda/e'\), the complete factorization of \(R_\lambda\), or the resulting identity  
+\(e'\sum\deg r'=L_\lambda\). The termwise-equality argument depends on this undeclared bridge.
+
+G5 — The paired-anchor repair does not name all cited source units.
+
+> “replace all informal pins by…”  
+> “Use these unique names: `HE3-DEF1`, …, `GENTOW-ACCEPTANCE-FOLD`”
+
+The twelve names omit paired anchors for numerous cited primary spans, including the HE3.A theorem/proof, the principal HE6 span, HE7.A and the three HE6R1 lemmas, HETOW.A, and the main GENTOW4 theorem spans. Therefore the instruction cannot replace “all informal pins” as stated, and those candidate routes remain fail-closed for lack of a specified anchor pair.
+
+m1 — The inherited invariant fields are added twice.
+
+R1-5 adds:
+
+> `inheritedE`, `inheritedF`, `inheritedE_pos`, `inheritedF_pos`
+
+and R2-1 again says:
+
+> “In `SigmaLadderCarrier`, add:”  
+> `inheritedE`, `inheritedF`, `inheritedE_pos`, `inheritedF_pos`
+
+Literal sequential application creates duplicate field names; the evident intended consolidation is not stated.
+
+VERDICT: FINDINGS: 1C + 5G + 1m

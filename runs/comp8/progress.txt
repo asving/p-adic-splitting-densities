@@ -1,3 +1,5 @@
 [20:56:50] comp8 queue start
 [20:56:50] T1R6 start
 [20:57:48] T1R6 exit 0 (5511 B; SUMMARY: 2 REAL (repairs delivered))
+[20:57:48] T2P3 start
+[21:01:01] T2P3 exit 0 (3542 B; VERDICT: FINDINGS: 1C + 5G + 1m)
