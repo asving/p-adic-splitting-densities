@@ -941,3 +941,178 @@ was cured in place by this same [JA-r1] bracket (the correct
 child-prescription anchor is tex 1200–1201), and the slip is anchor-only
 (picture-environment line numbers), semantically nil at both notes.
 Direction: NEUTRAL-FAVORABLE (pointer superseded; no consumer affected).
+
+---
+
+### Dated adjudication + corrections (2026-08-12 — sol certification C2/E2: the as-built challenge adjudicated at HEAD)
+
+The sol-5.6 as-built read of this note (gpt-5.6-sol high,
+runs/cert/C2_grtja_output.log, 2026-08-12) returned CHALLENGE
+(1 CRITICAL + GAPs). The E2 certification run (gpt-5.6-sol high,
+runs/cert2/E2_grtja_output.log) adjudicated all four findings REAL
+and derived the repairs below (annexes C2-1..C2-4), each with
+derivation and consumer sweep; the CRITICAL is cured by THEOREM
+JA-EPS-CORR — the canonical-normalization bridge replacing raw
+print-twist equality. Everything above this heading is byte-untouched
+by this append. The E2 adjudication, transcribed unaltered:
+
+All four findings are REAL. None of FC-1–FC-4 addresses them; those annexes concern supplier motion and grade billing.
+
+### 1. REAL — JA-EPS omits the attained-origin shift
+
+The challenge is correct. Section 3.2 itself acknowledges that Definition `t(i)` differs “further by the ν-shift,” while §3.4 later retains precisely that shift through \(s_0=s(\beta)+\nu e\). Thus the canonical identity is correct, but the labels identifying it directly with the print’s actual twist are not.
+
+Verbatim-ready repair:
+
+> **[ANNEX 2026-08-12, certifier repair C2-1 — JA-EPS is the canonical-normalization bridge, not raw Definition-`t(i)` equality.]** In frozen §3.2, retain the proved integer identity
+> \[
+> \varepsilon_m(\beta)=z_m^{-t_{\min}(\beta)},\qquad
+> t_{\min}(\beta):=\frac{\ell_{m-1}\beta-s_{\min}(\beta)}{e_{m-1}},
+> \quad s_{\min}(\beta):=\ell_{m-1}\beta\bmod e_{m-1}.
+> \]
+> The genre phrases “\(\varepsilon=\) the print twist,” “the harness \(\varepsilon\)-kit IS the print’s `t(i)`-twist,” and their §7 consequence-table repetitions are superseded by the following exact normalization statement.
+>
+> **THEOREM JA-EPS-CORR.** Let an actual print side with ordinate argument \(\beta\) have initial attained abscissa
+> \[
+> s_{\mathrm{act}}=s_{\min}(\beta)+\nu e_{m-1},\qquad \nu\in\mathbb Z_{\ge0}.
+> \]
+> Its Definition-`t(i)` exponent, in the print’s orientation, is
+> \[
+> t_{\mathrm{Def}}
+>   =\frac{s_{\mathrm{act}}-\ell_{m-1}\beta}{e_{m-1}}
+>   =\nu-t_{\min}(\beta).
+> \]
+> Consequently
+> \[
+> \boxed{\ z_m^{t_{\mathrm{Def}}}=z_m^\nu\,\varepsilon_m(\beta)\ },
+> \qquad
+> \boxed{\ \varepsilon_m(\beta)=z_m^{t_{\mathrm{Def}}-\nu}\ }.
+> \]
+> Thus raw equality between the print factor and \(\varepsilon_m(\beta)\) holds exactly when \(z_m^\nu=1\), in particular when \(\nu=0\). The first boxed identity follows simply by substituting
+> \(s_{\mathrm{act}}=s_{\min}+\nu e_{m-1}\) and using the already-proved
+> \(\varepsilon_m(\beta)=z_m^{-t_{\min}(\beta)}\); no new lemma is used.
+>
+> **Consumer sweep.** Section 3.4 JA-RES survives unchanged: it uses the actual Definition-`t(i)` exponent together with
+> \(\tau=(s_{\mathrm{act}}-\ell\beta)/e\), so the same \(\nu\)-term cancels in \(t(i)-\tau\). JA-VDIND survives unchanged; its proof already states
+> \(\tau_m(A)-\nu=\operatorname{exp}(\varepsilon_m(\beta))\). W2-L2, W2-L3, CK-EPS, and ORB-EPS survive as statements about the canonical minimal-grid exponent \(t_{\min}\). The §4(iii) orbit formula is retained with that explicit meaning. The §5 N-1 citation and §7.2 JA-EPS row survive at this corrected normalization-bridge scope. The grade-cap and §7.3 claims of raw print-twist equality are superseded by JA-EPS-CORR.
+
+### 2. REAL — ordinary polynomial degrees are shifted by \(\nu\)
+
+The frozen general formula already proves the challenge. If \(H(y)=R_mv(A)\) is the packed harness polynomial and \(P(y)=R_m(A)(y)\) the normalized print residual, then
+\[
+H(y)=y^\nu Q_A(y),\qquad
+P(y)=z^{-s_0A_{m-1}}Q_A(\vartheta_my).
+\]
+Their abscissa supports agree, but their ordinary exponent supports differ by translation by \(\nu\).
+
+Verbatim-ready repair:
+
+> **[ANNEX 2026-08-12, certifier repair C2-2 — JA-MIN support and degree normalization.]** The frozen JA-MIN phrase “supports and degrees agree slot-for-slot” is superseded as follows. Put
+> \[
+> s_0=s(\beta)+\nu e_{m-1},\qquad
+> H(y):=R_mv(A),\qquad P(y):=R_m(A)(y).
+> \]
+> The frozen §3.4 conjugation formula gives
+> \[
+> H(y)=y^\nu Q_A(y),\qquad
+> P(y)=z_{m-1}^{-s_0A_{m-1}}Q_A(\vartheta_my),
+> \quad
+> \vartheta_m=z_{m-1}^{-e_{m-1}A_{m-1}}.
+> \]
+> Since the displayed scalar and \(\vartheta_m\) are units,
+> \[
+> \operatorname{Supp}_y(H)=\nu+\operatorname{Supp}_y(P).
+> \]
+> Hence, for nonzero residuals,
+> \[
+> \boxed{\ \deg H=\deg P+\nu\ },
+> \]
+> and ordinary degrees agree iff \(\nu=0\). What agrees without qualification is the set of attained **abscissas**: the per-slot unit law gives
+> \(c_i=0\iff C_i=0\) for every attained \(i\). Equivalently, the normalized support widths agree after translating the harness exponent origin by \(\nu\).
+>
+> **COROLLARY JA-MIN-CORR.** On the JA-RES perimeter, attained-abscissa support and every print residual coefficient are recoverable from the harness read, and conversely. Explicitly, divide \(H\) by the known exact factor \(y^\nu\) to recover \(Q_A\), then apply the displayed unit scalar and substitution \(y\mapsto\vartheta_my\) to recover \(P\). Therefore the claimed computability of \(\operatorname{ord}_\psi\) data survives. Since \(\psi\ne y\), the removable factor \(y^\nu\) contributes no \(\psi\)-factor; the known \(\vartheta_m\)-substitution must still be applied.
+>
+> **Consumer sweep.** JA-RES, JA-VDIND, R-coll, and all CK-RES/CK-VDM machine claims are coefficientwise and survive unchanged. The §7.2 JA-MIN row survives with “attained-abscissa support and normalized degree/width” replacing ordinary degree equality. Frozen §3.4 already says nothing downstream in this note consumes JA-MIN, so there is no internal consumer of the false degree clause. Intended J-B/W-5 consumers must use the boxed degree-shift formula, not unshifted degree equality.
+
+### 3. REAL — nonidentity is weaker than failure of a scalar gauge
+
+The per-slot theorem gives the exact criterion. A single nonunit character value still supplies a perfectly valid scalar on a singleton support.
+
+Verbatim-ready repair:
+
+> **[ANNEX 2026-08-12, certifier repair C2-3 — exact scalar-gauge criterion.]** The frozen JA-BOX-1 assertion that slot-independent scalar form fails whenever the character is merely nontrivial on the read support, and the sentence identifying arbitrary scalar form exactly with JA-VDIND collapse, are superseded.
+>
+> For a fixed read \(A\), let
+> \[
+> S_A:=\{\,i:C_i\ne0\,\},\qquad
+> \chi(i):=z_{m-1}^{-iA_{m-1}}.
+> \]
+> JA-RES says \(c_i=\chi(i)C_i\). Therefore
+> \[
+> \boxed{\ \exists c\in F^\times\ \forall i\in S_A,\ c_i=cC_i
+> \iff |\chi(S_A)|=1\ }.
+> \]
+> Indeed, if such \(c\) exists, division by \(C_i\ne0\) gives
+> \(\chi(i)=c\) for every \(i\in S_A\); the converse is immediate. Equivalently, after choosing \(i_0\in S_A\),
+> \[
+> z_{m-1}^{-(i-i_0)A_{m-1}}=1
+> \quad\text{for every }i\in S_A.
+> \]
+> In particular, every singleton support admits a scalar, even when
+> \(\chi(i_0)\ne1\). A read refutes slot-independent scalar form precisely when its support contains \(i,i'\) with
+> \[
+> z_{m-1}^{-(i-i')A_{m-1}}\ne1.
+> \]
+> The JA-VDIND hypothesis is the stronger **absolute** condition
+> \(\chi(i)=1\) for every attained \(i\). It is exactly the \(c=1\) case needed for the evaluated VD identity, not the criterion for existence of an arbitrary scalar.
+>
+> **Consumer sweep.** The JA-RES per-slot law and conjugation formula survive unchanged. JA-VDIND, root-inclusive R-coll, and JA-BOX-2 survive because they explicitly require absolute character triviality. The §6 and §7.2 descriptions of JA-BOX-1 must use “the character takes at least two values on active support.” CK-BPREF hits count as blueprint refutations only under that two-value predicate—the predicate used by the accepted PE8 check—not merely because some active value differs from \(1\). The frozen parenthetical conditions on \(e\), \(A\), and \(\operatorname{ord}(z)\) establish a nontrivial character step but require two suitably separated active slots before yielding a refutation.
+
+### 4. REAL — only the arithmetic grid and carry are unconditional
+
+The frozen [JA-r2] bracket explicitly says the downstream proviso is “CARRIED AND UNDISCHARGED,” and the note gives \((e,h,V)=(2,3,1)\) as a counterexample to print-side existence.
+
+Verbatim-ready repair:
+
+> **[ANNEX 2026-08-12, certifier repair C2-4 — exact scope of JA-GRID/W-4.]** The frozen phrases “the grid/carry tie is PROVED unconditionally,” “Grade: PROVED, unconditional,” and “W-4 in full” are superseded by the following split statement.
+>
+> **THEOREM JA-GRID-CORR.** Let \(e,h\ge1\), \(\gcd(e,h)=1\), and let \(\ell h\equiv1\pmod e\). For every \(V\ge0\), define
+> \[
+> s(V):=\ell V\bmod e,\qquad
+> u(V):=\frac{V-s(V)h}{e}\in\mathbb Z.
+> \]
+> Then \(s(V)\) is unconditionally the unique least element of \([0,e)\) for which \(V-s(V)h\) is divisible by \(e\). The print’s nonnegative-coordinate \(T\)-side initial point exists with coordinates \((s(V),u(V))\) only under
+> \[
+> \boxed{\ u(V)\ge0\ },\qquad\text{equivalently}\qquad V\ge s(V)h.
+> \]
+> Under that hypothesis, JA-GRID(a)/(b), including the print-object and point-for-point slot identification, holds. Without it there is only the integer-line congruence datum, not a print \(T\)-point; for example
+> \[
+> (e,h,V)=(2,3,1)\quad\Longrightarrow\quad s=1,\quad u=-1.
+> \]
+> Independently of this existence condition, for all \(V,V'\ge0\),
+> \[
+> s(V)+s(V')-s(V+V')=e\delta,\qquad
+> \delta\in\{0,1\},\qquad
+> \delta=1\iff s(V)+s(V')\ge e.
+> \]
+> Thus the congruence grid and single-level carry identity are unconditional; identification with the print’s nonnegative \(T\)-side is proviso-scoped.
+>
+> **Consumer sweep.** Section 3.3’s own Prop-`construct` sites survive because the print hypothesis supplies the required nonnegative \(T\)-side there. The [JA-r2] downstream JB rows survive only with their already-recorded membership/\(u\ge0\) hypothesis carried; this annex does not discharge it. GD-8 and JA-GRID(c) consume only the unconditional carry identity and survive. CK-GRID’s congruence and carry legs survive but do not certify a nonexistent print point when \(u<0\). In the grade cap, §7.2, and §7.3, “unconditional” and “W-4 in full” henceforth refer only to the arithmetic grid/carry clauses; every print-object consumption of JA-GRID(a)/(b) must carry \(u\ge0\) or a previously proved sufficient membership hypothesis.
+
+*(The adjudication above was produced by the E2 certification run
+(gpt-5.6-sol high, runs/cert2/E2_grtja_output.log, 2026-08-12);
+orchestrator verification before transcription — C2-1's arithmetic
+re-derived (s_act = s_min + νe gives t_Def = ν − t_min by
+substitution, so z^{t_Def} = z^ν·ε_m(β); raw equality iff z^ν = 1);
+C2-2's translation re-derived from the note's own conjugation
+formula (H = y^ν·Q_A, P = unit·Q_A(ϑ_m y) with ϑ_m a unit ⟹
+Supp H = ν + Supp P, deg H = deg P + ν; ψ ≠ y so y^ν adds no
+ψ-factor); C2-3's criterion re-derived (a scalar exists iff χ is
+constant on the active support — singleton supports always pass, so
+refutation needs two active slots with distinct χ-values); C2-4's
+grid facts re-checked (s(V) = ℓV mod e is the unique least residue
+with e | V − s(V)h since ℓh ≡ 1; the (e,h,V) = (2,3,1) witness gives
+u = −1, so the print T-point needs the boxed u(V) ≥ 0; the carry
+identity is unconditional). Transcribed unaltered per the standing
+division of labor. Ledger: row 20 → all four repairs folded,
+awaiting sol discharge-confirmation (cert3).)*
