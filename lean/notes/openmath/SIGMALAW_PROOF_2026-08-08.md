@@ -631,3 +631,162 @@ bare-θ variants refuted by construction) + THEOREM OPEN-2a-Σ's firing
 (the (OPEN-2a) forward direction at every m ≥ 2, given OA-L1–L4) +
 COROLLARIES, at the displayed boxes; the converse's UNPROVED status
 unchanged.
+
+---
+
+### Dated annex fold (2026-08-12 — sol certification C9/E10: the annex repaired at HEAD)
+
+The sol-5.6 as-built ratification of this note (gpt-5.6-sol high,
+runs/cert/C9_sigmalaw_output.log, 2026-08-12) returned
+RATIFIED-WITH-ANNEX: the central Σ-law survives; one GAP + four
+MINORs owed. The E10 fold run (gpt-5.6-sol high,
+runs/cert2/E10_sigmalaw_annex_output.log) adjudicated the GAP
+(THEOREM SL-1's quantifier) RESOLVED-ALREADY — the dated acceptance
+append already re-displays the accepted theorem at its
+proved-and-consumed shared-below scope, and the off-perimeter
+counter-configuration violates that premise — and the four MINORs
+REAL with the verbatim repairs below. Everything above this heading
+is byte-untouched by this append. The E10 adjudication text,
+transcribed unaltered:
+
+### 1. RESOLVED-ALREADY — SL-1 scope
+
+The isolated `(VD-q)` display is broader-looking than its proof, but the dated acceptance append already re-displays the accepted theorem at its proved-and-consumed scope:
+
+> “**WHAT IS ACCEPTED**: THEOREM SL-1 (the Σ-LAW: Prnt_j(A) =  
+> u_j·Σ_m(R_m v(A)) with closed-form slot constant, **every on-line  
+> level-m object at every shared-below junction, every m ≥ 1**, via the  
+> (VD-q)+(EC-q)+(SC-q) ladder...)”
+
+That scope also agrees with §1’s governing setting:
+
+> “Junction at level m+1 ... keys byte-shared below”
+
+and with the ladder’s explicit restriction:
+
+> “Every interior level 2 ≤ q ≤ m is byte-equal on the shared-below perimeter.”
+
+The proposed off-perimeter counter-configuration is expressly the note’s eigen-MISMATCH control, which “fails m = 2 byte-equality, 1/1”; it therefore violates the accepted theorem’s shared-below premise. Under the delegated end-to-end-proof criterion, the acceptance record is already the correct re-display. No further repair is required.
+
+### 2. REAL — ξ₁ is undefined
+
+Verbatim-ready append:
+
+**[APPEND 2026-08-12 — base-character convention.]** Extend the ledger-character definitions in §1 by
+
+    ξ₁ := 1.
+
+This convention is forced by Σ₁ = id and makes the displayed base clause (SC-1) literal: for every y ∈ K₁ and every grid weight w,
+
+    Σ₁(ε₁(w)·y)
+      = ε₁(w)·y
+      = ε₁(w)·ξ₁^{E(w)}·Σ₁(y),
+
+because Σ₁ = id and ξ₁^{E(w)} = 1. Thus (SC-1) is the stated trivial base of the (VD-q)+(EC-q)+(SC-q) ladder. No higher-level definition or theorem statement changes.
+
+Consumer sweep: `(SC-1)` becomes well-formed; the bases `(VD-1)` and SL-L2 at `q=1` are unchanged; `(EC-q)`, `(SC-q)`, `(VD-q)`, SL-C1, and SL-C2 retain exactly their existing proofs.
+
+### 3. REAL — SEP-A uses “supp” inconsistently
+
+Verbatim-ready append:
+
+**[APPEND 2026-08-12 — SEP-A support notation correction.]** In §5, SEP-A, replace
+
+    ψ₁ = y⁴ + z₁^k (supp {0,4} ≡ 0 mod 4)
+
+by
+
+    ψ₁ = y⁴ + z₁^k. Its nonzero polynomial exponents are {0,4}, both
+    congruent to 0 modulo 4; under §1's formal lower-coefficient convention,
+    however, supp(ψ₁) = {0}, since the monic exponent j = g₁ = 4 is excluded.
+    The required support-invisibility is exactly
+    ξ₂^{g₁−0} = ξ₂⁴ = 1, because ξ₂ has order 4.
+
+Thus the SEP-A construction and its invisibility calculation are unchanged; only the misuse of the formal word “supp” is corrected.
+
+The derivation uses only the already stated `ord(ξ₂)=4`. SEP-A, SL-SEP2, the bare-θ separation, and all later consumers survive unchanged.
+
+### 4. REAL — the transcribable annex still contains contaminated totals
+
+The adjacent `[r1, PE1 F2]` bracket diagnoses and corrects the counts, but it explicitly says:
+
+> “mirroring this caveat there is an orchestrator action ... owed”
+
+Therefore the proposed annex itself remains unrepaired for future transcription.
+
+Verbatim-ready append:
+
+**[APPEND 2026-08-12 — §8 annex machine-count correction.]** For every future transcription of the proposed annex, supersede its machine-count sentence by:
+
+> Machine: 1,211 walked junction rows (539 towers: the full
+> OPEN2ATTACK battery reproduced + 150 constructed separator towers).
+> The leak-free battery totals are SL-VDM 2,828 / SL-DELTA 1,414 /
+> SL-PHIR 1,414 / SL-GAP 680 samples (340 gap slots), with 0 violations
+> and exit 0; all three teeth were caught 2/2 each. These figures follow
+> by removing the exactly measured tooth-run leakage from the runner's
+> printed totals:
+>
+>     2,854 − 26 = 2,828,
+>     1,427 − 13 = 1,414,
+>     1,427 − 13 = 1,414,
+>       688 −  8 =   680.
+>
+> Because ROWS was restored around tooth runs, the SEP2 = 96, SEP3 = 27,
+> and 340-gap-slot censuses are already exact. The genuine reconciliation
+> census is SL-INVREC = 218/218 OA-battery δ ≠ 1 slot-samples; the printed
+> 221 included three TEETH-PR mutation artifacts.
+
+The historical machine output remains preserved as printed, but the corrected leak-free figures above are the evidence to be quoted in the annex.
+
+Consumer sweep: only evidentiary bookkeeping changes. SL-1, SL-C1, SL-C2, the separator results, the zero-violation conclusion, and the acceptance grade do not depend on the contaminated totals.
+
+### 5. REAL — SL-C1 has a dangling ellipsis
+
+Verbatim-ready append:
+
+**[APPEND 2026-08-12 — formal SL-C1 quotient calculation.]** In the proof of COROLLARY SL-C1, replace the dangling calculation beginning
+
+    δ_j = ρ_j·Σ_m(x/y) = ρ_j·Σ_m(ρ_j^{−1}·...)
+
+and its subsequent restart by the following single derivation.
+
+Let
+
+    x := R_m v(C_j),    y := R_m v(P_j).
+
+By the definition of ρ_j used in OA-L2, y = ρ_jx, so ρ_j = y/x. By
+(Σ-LEDGER),
+
+    Prnt_j(C_j) = u_j·Σ_m(x),
+    Prnt_j(P_j) = u_j·Σ_m(y).
+
+Consequently,
+
+    δ_j
+      = [Prnt_j(C_j)/x] / [Prnt_j(P_j)/y]
+      = [u_jΣ_m(x)/x] / [u_jΣ_m(y)/y]
+      = (y/x)·Σ_m(x)/Σ_m(y).
+
+The eigen-coefficient laws (EC-q) make Σ_m a ring automorphism; hence
+
+    Σ_m(y) = Σ_m(ρ_jx) = Σ_m(ρ_j)·Σ_m(x).
+
+Substitution gives, without any omitted term,
+
+    δ_j = ρ_j / Σ_m(ρ_j).
+
+This is exactly the displayed conclusion of SL-C1.
+
+Consumer sweep: SL-C2 consumes only the unchanged identity `δ_j=ρ_j/Σ_m(ρ_j)` and injectivity of `Σ_m`; §5’s separator laws, §6’s `SL-DELTA` family, §7’s OPEN-2a conclusion, and §8’s theorem summary therefore survive verbatim.
+
+*(The adjudication above was produced by the E10 certification run
+(gpt-5.6-sol high, runs/cert2/E10_sigmalaw_annex_output.log,
+2026-08-12); orchestrator verification before transcription — the
+RESOLVED-ALREADY quote checked against the acceptance append at HEAD;
+ξ₁ := 1 forced by Σ₁ = id (trivial); the SEP-A convention re-checked
+(monic exponent j = g₁ = 4 excluded, ξ₂⁴ = 1 from ord(ξ₂) = 4); the
+leak-free arithmetic re-computed (2,854−26 = 2,828; 1,427−13 = 1,414
+twice; 688−8 = 680; 221−3 = 218); SL-C1's quotient derivation
+re-checked (Σ_m a ring automorphism by (EC-q), δ_j = (y/x)·Σ(x)/Σ(y)
+with y = ρ_j·x). Transcribed unaltered per the standing division of
+labor. Ledger: row 27 → CERTIFIED (RATIFIED-W-ANNEX, annex folded).)*
