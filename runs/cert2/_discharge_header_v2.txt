@@ -1,0 +1,16 @@
+DISCHARGE CONFIRMATION (you are gpt-5.6-sol high — the certifier of record).
+Below: your prior adjudication of this note (whose REAL repairs were transcribed
+by the orchestrator as dated appends, byte-unaltered, each with an attribution
+bracket recording the orchestrator's verification), and the note AT HEAD
+including those appends. For each prior REAL finding, in order: DISCHARGED (the
+transcribed repair cures it — verify the mathematics of the repair as it stands
+in the note, not just its presence) / INSUFFICIENT (say exactly what remains) /
+NEW-ISSUE (the repair introduced a defect — where). For each prior OBSTRUCTED
+finding: the note's owner has since delegated statement decisions under the
+end-to-end-proof criterion, and dated STATEMENT RE-DISPLAYS closing those
+findings now stand at the end of the note (except where the note routes the
+finding to a scheduled proof unit — those stay out of scope). Adjudicate each
+re-display with the same options: DISCHARGED (the re-display is honest — true
+at the displayed scope, no consumer breaks, no overclaim) / INSUFFICIENT /
+NEW-ISSUE. End with:
+OUTCOMES: <one word per adjudicated finding, in order, comma-separated>
