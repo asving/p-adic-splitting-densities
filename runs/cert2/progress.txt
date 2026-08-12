@@ -17,3 +17,5 @@
 [11:03:08] E10_sigmalaw_annex exit 0 (5842 B; SUMMARY: 4 REAL (repairs delivered) / 1 RESOLVED-ALREADY / 0 ARTIFACT / 0 OBSTRUCTED)
 [11:03:08] E11_boxes_annex start
 [11:04:07] E11_boxes_annex exit 0 (4725 B; SUMMARY: 4 REAL (repairs delivered) / 0 RESOLVED-ALREADY / 0 ARTIFACT / 0 OBSTRUCTED)
+[11:04:07] E1_liftcorner start
+[11:08:12] E1_liftcorner exit 0 (8562 B; SUMMARY: 2 REAL (repairs delivered) / 1 RESOLVED-ALREADY / 1 ARTIFACT / 1 OBSTRUCTED)
