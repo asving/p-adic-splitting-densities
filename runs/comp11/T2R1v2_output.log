@@ -1,0 +1,241 @@
+## r1 repair 1 — install the mixed-residual block theorem
+
+Insert after S1.7:
+
+> ### S1.7A Label-block decomposition
+>
+> Let \(\lambda=u'/e'\) be a side of a \(\sigma\)-block \(F\), and write
+>
+> \[
+> R_\lambda(Y)=\prod_{r'}r'(Y)^{m_{\lambda,r'}}.
+> \]
+>
+> For every factor \(r'\), the carrier supplies a monic separable polynomial
+>
+> \[
+> F_{\lambda,r'}\in O[x]
+> \]
+>
+> whose roots are exactly the roots in the \(r'\)-label class. Put
+>
+> \[
+> \mu_{\lambda,r'}
+> =
+> e'm_{\lambda,r'}\deg r'.
+> \]
+>
+> The polynomial \(F_{\lambda,r'}\) has degree
+>
+> \[
+> \deg F_{\lambda,r'}
+> =
+> D\mu_{\lambda,r'}
+> =
+> De'm_{\lambda,r'}\deg r',
+> \tag{LABEL-DEG}
+> \]
+>
+> and a full \(\Phi\)-development
+>
+> \[
+> F_{\lambda,r'}
+> =
+> \Phi^{\mu_{\lambda,r'}}
+> +
+> \sum_{j<\mu_{\lambda,r'}}A^{(\lambda,r')}_j\Phi^j.
+> \tag{LABEL-DEV}
+> \]
+>
+> This development is key-free, has a single lower-hull side of slope \(\lambda\) and length \(\mu_{\lambda,r'}\), and, after the prescribed frame and origin normalization, has residual polynomial
+>
+> \[
+> R_{\lambda,r'}(Y)
+> =
+> c_{\lambda,r'}\,r'(Y)^{m_{\lambda,r'}},
+> \qquad
+> c_{\lambda,r'}\in K^\times.
+> \tag{LABEL-PURE}
+> \]
+>
+> Each \(F_{\lambda,r'}\) inherits the window, cap, occupied-height, legal-lift, test, accounting, and root-preserving continuation assertions required by HE7.A. In particular,
+>
+> \[
+> \sum_{\rho:F_{\lambda,r'}(\rho)=0}
+> \min(d(\Phi(\rho)),\kappa)
+> =
+> D\mu_{\lambda,r'}\min(\lambda,\kappa)
+> \tag{LABEL-ACCOUNT}
+> \]
+>
+> for every allowed \(\kappa\).
+>
+> For a fixed side, the block polynomials multiply to the polynomial of the roots belonging to that side, and the products over all sides multiply to the parent:
+>
+> \[
+> F_\lambda
+> =
+> \prod_{r'}F_{\lambda,r'},
+> \qquad
+> F
+> =
+> \prod_\lambda F_\lambda.
+> \tag{LABEL-PROD}
+> \]
+>
+> Their root sets are pairwise disjoint and exhaustive, and these product identities are preserved by every later transition. If \(R_\lambda\) contains at least two distinct irreducible factors, every \(F_{\lambda,r'}\) has degree strictly smaller than the polynomial represented by the unsplit side state.
+>
+> This is the mixed-residual block theorem. Galois stability of label classes or disjointness alone is not used as a substitute for `(LABEL-DEG)`–`(LABEL-PROD)`.
+
+Replace the mixed-residual paragraph in S1.8 with:
+
+> At a mixed residual, first apply the label-block decomposition of S1.7A. Each multiplicity-one block has residual \(c\,r'\) and is therefore terminal by clause 2 of HE7.A. Each block with multiplicity at least two is continued independently by the product-\(1\)/product-\(\ge2\) alternatives above. Refining one block never recenters, absorbs, or changes a companion block.
+
+Replace clause 4 of HE7.A with:
+
+> 4. if a residual contains more than one distinct irreducible factor, the label-block theorem first replaces the side state by the monic blocks \(F_{\lambda,r'}\). These blocks have pure residuals \(c_{\lambda,r'}r'^{m_{\lambda,r'}}\), pairwise disjoint exhaustive root sets, and product equal to the side polynomial. A block with \(m_{\lambda,r'}=1\) is terminal by clause 2; a block with \(m_{\lambda,r'}\ge2\) is continued by clause 3;
+
+Replace the two sentences beginning “At a mixed residual” in the proof with:
+
+> If a residual is mixed, invoke `(LABEL-PROD)` before performing any refinement. The resulting \(F_{\lambda,r'}\) are valid smaller HE7.A states with single-side residual \(c_{\lambda,r'}r'^{m_{\lambda,r'}}\). When \(m_{\lambda,r'}=1\), the original separable-side argument applied to this block gives one orbit of size
+>
+> \[
+> De'\deg r'.
+> \]
+>
+> When \(m_{\lambda,r'}\ge2\), clause 3 applies to that block alone. The disjoint root partition and polynomial product in `(LABEL-PROD)` ensure that no simple companion class is omitted and that refinement of a repeated class cannot absorb another label class.
+
+In the well-founded-induction paragraph, insert before the linear-refinement case:
+
+> A mixed-label split replaces its state by the strictly smaller label blocks of S1.7A. The induction hypothesis applies to every such block, and `(LABEL-PROD)` reassembles their exhaustive factorizations.
+
+This supplies the missing terminal case for a simple factor beside a repeated factor and the missing transition/product theorem for every mixed residual.
+
+## r1 repair 2 — make HE3 explicitly consume HE6
+
+Replace the source-pin paragraph at the start of S3.1 with:
+
+> **Source pins:** `HE3-A-STMT`, `HE3-A-PROOF`, `HE3-DEF1`, `HE3-HE3-1L`, `HE3-HE3-6`, `HE3-R8-2` through `HE3-R8-5`, together with `HE6-FAMILY`, `HE6-PROOF`, and `HE6-SLOT-SEAM`.
+>
+> The HE3 pins supply the base carrier, exact slots, legal full-height lifts, full development, hull/window/cap data, and label equivariance. They are not credited with the master’s universal test package or with `(ACCOUNT)`.
+>
+> For every side denominator \(e'\) and every monic irreducible residual factor \(r'\), the HE6 pins supply the monic test polynomial
+>
+> \[
+> \Psi_{\lambda,r'}\in O[x],
+> \qquad
+> \deg\Psi_{\lambda,r'}=D'e'\deg r',
+> \]
+>
+> together with its intended-disk and label properties, generic and raised evaluation values, resultant nonemptiness, disjointness and exhaustion, Galois equivariance, local divisibility, integrality, and the quantitative identity `(ACCOUNT)`. Thus this record is a composite HE3+HE6 discharge of the master hypotheses; it is not an HE3-only discharge.
+
+Delete:
+
+> Every height used by the test family lies above \(D'h>(D'-1)h\), so `(OCC)` holds.
+
+Replace it with:
+
+> The HE3-1L full-height result, together with the coefficient-height bounds in `HE6-FAMILY` and `HE6-PROOF`, proves `(OCC)` for every coefficient lift used by the HE6 test family.
+
+Replace:
+
+> A key-free HE3 block enters HE7.A directly.
+
+with:
+
+> A key-free HE3 block enters HE7.A only through this composite HE3+HE6 route. No claim is made that the HE3 pins alone cover the fractional-slope, residual-degree-\(\ge2\) test branch.
+
+This preserves the HE3 carrier while explicitly sourcing the universal tests and `(ACCOUNT)` from HE6.
+
+## r1 repair 3 — install and audit all advertised source markers
+
+Do not weaken the fail-closed convention. Insert the following exact marker-only lines immediately before and after the complete source unit named by each pin.
+
+For `HE3_PROOF_2026-08-08.md`:
+
+```html
+<!-- T2V2PIN:HE3-A-STMT:BEGIN -->
+<!-- T2V2PIN:HE3-A-STMT:END -->
+<!-- T2V2PIN:HE3-A-PROOF:BEGIN -->
+<!-- T2V2PIN:HE3-A-PROOF:END -->
+<!-- T2V2PIN:HE3-DEF1:BEGIN -->
+<!-- T2V2PIN:HE3-DEF1:END -->
+<!-- T2V2PIN:HE3-HE3-1L:BEGIN -->
+<!-- T2V2PIN:HE3-HE3-1L:END -->
+<!-- T2V2PIN:HE3-HE3-6:BEGIN -->
+<!-- T2V2PIN:HE3-HE3-6:END -->
+<!-- T2V2PIN:HE3-R8-2:BEGIN -->
+<!-- T2V2PIN:HE3-R8-2:END -->
+<!-- T2V2PIN:HE3-R8-3:BEGIN -->
+<!-- T2V2PIN:HE3-R8-3:END -->
+<!-- T2V2PIN:HE3-R8-4:BEGIN -->
+<!-- T2V2PIN:HE3-R8-4:END -->
+<!-- T2V2PIN:HE3-R8-5:BEGIN -->
+<!-- T2V2PIN:HE3-R8-5:END -->
+```
+
+For `HE6_PROOF_2026-08-08.md`:
+
+```html
+<!-- T2V2PIN:HE6-FAMILY:BEGIN -->
+<!-- T2V2PIN:HE6-FAMILY:END -->
+<!-- T2V2PIN:HE6-PROOF:BEGIN -->
+<!-- T2V2PIN:HE6-PROOF:END -->
+<!-- T2V2PIN:HE6-SLOT-SEAM:BEGIN -->
+<!-- T2V2PIN:HE6-SLOT-SEAM:END -->
+```
+
+For `HE7_PROOF_2026-08-08.md`:
+
+```html
+<!-- T2V2PIN:HE7-A-STMT:BEGIN -->
+<!-- T2V2PIN:HE7-A-STMT:END -->
+<!-- T2V2PIN:HE7-SLOT-TRANSFER:BEGIN -->
+<!-- T2V2PIN:HE7-SLOT-TRANSFER:END -->
+<!-- T2V2PIN:HE7-MIXED-13P:BEGIN -->
+<!-- T2V2PIN:HE7-MIXED-13P:END -->
+<!-- T2V2PIN:HE7-COCYCLE-2P-THROUGH-R1D:BEGIN -->
+<!-- T2V2PIN:HE7-COCYCLE-2P-THROUGH-R1D:END -->
+```
+
+The `HE7-MIXED-13P` span must contain the complete source theorem supplying `(LABEL-DEG)`–`(LABEL-PROD)`, not merely the sentence directing per-label processing.
+
+For `HE6R1_RECON_2026-08-08.md`:
+
+```html
+<!-- T2V2PIN:HE6R1-1:BEGIN -->
+<!-- T2V2PIN:HE6R1-1:END -->
+<!-- T2V2PIN:HE6R1-2:BEGIN -->
+<!-- T2V2PIN:HE6R1-2:END -->
+<!-- T2V2PIN:HE6R1-3:BEGIN -->
+<!-- T2V2PIN:HE6R1-3:END -->
+```
+
+For `HETOW_RECON_2026-08-09.md`:
+
+```html
+<!-- T2V2PIN:HETOW-LABELS:BEGIN -->
+<!-- T2V2PIN:HETOW-LABELS:END -->
+<!-- T2V2PIN:HETOW-A:BEGIN -->
+<!-- T2V2PIN:HETOW-A:END -->
+<!-- T2V2PIN:HETOW-NORMALIZER-4:BEGIN -->
+<!-- T2V2PIN:HETOW-NORMALIZER-4:END -->
+```
+
+For `GENTOW4_PROOF_2026-08-09.md`:
+
+```html
+<!-- T2V2PIN:GENTOW-4-1:BEGIN -->
+<!-- T2V2PIN:GENTOW-4-1:END -->
+<!-- T2V2PIN:GENTOW-4-A:BEGIN -->
+<!-- T2V2PIN:GENTOW-4-A:END -->
+<!-- T2V2PIN:GENTOW-4-2:BEGIN -->
+<!-- T2V2PIN:GENTOW-4-2:END -->
+<!-- T2V2PIN:GENTOW-ACCEPTANCE-FOLD:BEGIN -->
+<!-- T2V2PIN:GENTOW-ACCEPTANCE-FOLD:END -->
+```
+
+Add at the end of S0.2:
+
+> “Source pins” below means installed and audited spans, not proposed future anchors. The r1 source bundle is valid only when all 26 begin/end pairs occur in the six named source files, each marker occurs exactly once, each begin precedes its matching end, and each resulting span contains the complete cited source unit. The expected audit total is 52 marker-only lines: 26 begin markers and 26 end markers. The T2 text alone cannot discharge this source-edit obligation.
+
+SUMMARY: 3 REAL (repairs delivered)
