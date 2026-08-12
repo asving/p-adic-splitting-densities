@@ -1,0 +1,589 @@
+TRANSCRIPTION CONFIRMATION (gpt-5.6-sol high). Your P2 run composed LEMMA GENHN-COUNT-RERUN; the orchestrator transcribed it as the dated proof completion at the note's tail (byte-unaltered, attribution bracket appended). Confirm it stands and settles GENHN-ERR-1: DISCHARGED / INSUFFICIENT / NEW-ISSUE. End with: OUTCOMES: <one word>
+
+=== GENHN_PROOF AT HEAD (the 2026-08-12 appends) ===
+### Dated adjudication + corrections (2026-08-12 — sol certification A2: the R4 chain challenge adjudicated at HEAD)
+
+The sol-5.6 chain read of this note (gpt-5.6-sol high,
+runs/residues/R4_genhn_output.log, 2026-08-12) returned CHALLENGE
+with five findings. The A2 certification run (gpt-5.6-sol high,
+runs/cert/A2_genhn_output.log) re-adjudicated all five against HEAD
+including every dated append (E1–E3, the [r2] annex, [r3], the HETOW
+erratum): findings F-1, F-3, F-5 are REAL with derived repairs — the
+three dated blocks below; findings F-2 and F-4 are REAL but
+OBSTRUCTED — the displayed clauses are false as stated and every
+honest repair weakens an accepted statement display, so no
+admissible repair exists; the two dated obstruction records below
+transcribe the A2 adjudications verbatim. Everything above this
+heading is byte-untouched by this append.
+
+### Dated correction (2026-08-12, R4 F-1 — the general boundary projection and the meaning of “ragged band”)
+
+**THE TERMINOLOGY DEFECT.** GENHN.A(iii), GENHN-3(b), and the OB-a paragraph use “ragged band is never consulted” for two different objects: the interval of slot HEIGHTS beyond the shortest class string, and the UNREAD coefficient components occurring at those heights. The first usage is false: the `[r2]` annex itself proves that a first-band height can support a lift-stable terminal decision. The correct invariant is that no UNREAD coefficient digit is consulted.
+
+**LEMMA GENHN-CAP-GEN (general finite-window boundary projection).** Fix any ordinary stage genre \((e_1,f_1,\mu)\) and a truncated coefficient state. For a slot height \(m\), let \(V_m\subseteq K\) be the \(F_Q\)-span of those basis components \(\eta^t\) whose coefficient digits occur below their coordinate windows, and put
+
+\[
+\operatorname{comp}(m):=\dim_{F_Q}V_m.
+\]
+
+Let \(\operatorname{Comp}(z)\) be the set of all full coefficient strings agreeing with the truncated state \(z\). The finite-window stage reader obeys the following rule:
+
+1. if some unread coefficient can undercut the provisional minimum, return `UND`;
+2. otherwise GENHN-2 makes the provisional value exact; if its residue is only partially visible, return a decided leaf exactly when every member of \(\operatorname{Comp}(z)\) has the same dictionary output, and return `UND` otherwise;
+3. perform a recursive refine only when every \(K\)-component of every pin required by that refine is visible.
+
+Then the output is a function of the truncated data, no unread digit is consulted, and every recursive history stops before an incomplete pin.
+
+**PROOF.** GENHN-2 expresses every queried value as the minimum of the individual coefficient heights and proves independence of the tying residues. If an unread coefficient can lie lower, two compatible completions can have different values, so conservative drainage forces `UND`. If none can lie lower, the value is fixed; at an equal-height tie, independence of the visible and missing \(\eta^t\)-components prevents the missing components from cancelling a nonzero visible part. A leaf is lift-stable precisely when its dictionary output is constant on the affine completion set. Finally, an incomplete refine pin cannot determine its \(K\)-letter, so clause 3 is forced by the same completion test. This proves all three clauses.
+
+**COUNT TRANSPORT.** GENHN-1’s triangular coefficient bijection transports this completion rule directly from W-12.A’s conservative finite-window read. A nonzero visible boundary pin has
+
+\[
+Q^{\operatorname{comp}(m)}-1
+\]
+
+choices, exactly as ERRATUM E2 states; unread components are free completion fibers, and deeper value-unstable strata drain to `UND`. Interior refinements still use complete \(K\)-pins, so GENHN-2(b)’s bracket and GENHN.A(iv) are unchanged. Thus CS-1 and CS-2 hold at ordinary \(f_1\ge2\), \(\mu\ge3\), and mixed genres without a new box.
+
+The `[r2]` rule for \((e_1,\mu)=(1,2)\) is the specialization: at the first band height \(N\), a nonzero visible part fixes \(u=N\); `2SIDED` or odd `RAM` is returned when that conclusion is constant over all missing components, while the even residue-dependent branch drains. At deeper band heights an unread digit can undercut, so clause 1 drains.
+
+**RIDERS.** Read “the ragged band is never consulted” everywhere in GENHN.A(iii), S5, and the OB-a paragraph as “the unread component cells of the ragged band are never consulted.” Visible components at a boundary height may be used once by the completion-invariant terminal rule above. Read GENHN-3(a)’s “iff \(<e_1N\)” as the sufficient interior criterion together with GENHN-CAP-GEN’s exact boundary criterion; the previously proved stability below \(e_1N\) is unchanged.
+
+### Dated obstruction record (2026-08-12, R4 F-2 — GENHN.CLASS's finiteness display; the A2 adjudication transcribed verbatim)
+
+The finding stands. GENHN.CLASS explicitly includes \(Q\) and \(h\) in \(G\), while its finiteness proof counts only discrete schemas \((e_1,f_1,\mu,\text{entry-family})\).
+
+For fixed \(n=4,Q=2\), every positive odd \(h\) gives a distinct datum
+\[
+(2;2,1,2;h,\mathrm{entry})
+\]
+once \(N\ge2h+1\). Thus the declared data set is infinite.
+
+The only honest correction would replace “finitely many genre data” by “finitely many parameterized genre schemas, with \(Q,h,N\) and prehistory depths as parameters.” That weakens the accepted theorem’s displayed finiteness assertion, which the instructions prohibit. No new lemma can prove the existing false statement.
+
+### Dated proof completion (2026-08-12, R4 F-3 — the exact-height \(K\)-lift in T(b)′(i))
+
+**LEMMA GENHN-LIFT.** Let \(M>D'h=e_1f_1h\), and let \(i=i(M)\), \(0\le i<e_1\), be determined by
+
+\[
+ih\equiv M\pmod{e_1},\qquad a=(M-ih)/e_1.
+\]
+
+Write \(\lambda\in K\) uniquely as
+
+\[
+\lambda=\sum_{s=0}^{f_1-1}\lambda_s\eta^s,\qquad \lambda_s\in F_Q,
+\]
+
+and define
+
+\[
+L_M(\lambda):=
+\sum_{s=0}^{f_1-1}
+\widetilde{\lambda_s}\,
+x^{\,i+e_1s}\pi^{\,a-sh}.
+\]
+
+Then \(L_M(\lambda)\in\widehat O[x]\), \(\deg L_M(\lambda)<D'\), every nonzero summand has exact \(dv\)-height \(M\), and
+
+\[
+\operatorname{res}\!\left(\frac{L_M(\lambda)(\theta)}
+{n(M)(\theta)}\right)=\lambda .
+\]
+
+**PROOF.** Since \(i+e_1s\le D'-1\) and \(M>D'h\),
+
+\[
+a-sh=\frac{M-(i+e_1s)h}{e_1}\ge0,
+\]
+
+so every summand is integral and has degree \(<D'\). Its evaluated height is
+
+\[
+e_1(a-sh)+(i+e_1s)h=M.
+\]
+
+Dividing by \(n(M)=x^i\pi^a\) leaves residue
+\(\lambda_s\eta^s\); GENHN-2’s independence gives their sum
+\(\lambda\), with no cancellation. ∎
+
+**APPLICATION TO THE COMPOSED KEY.** Put \(r=f_2-t\), \(M=ru_2\), and
+
+\[
+W(t)=\left\lfloor\frac{r\,i(u_2)}{e_1}\right\rfloor .
+\]
+
+Replace the gauge-naive coefficient term in T(b)′ by
+
+\[
+L_{ru_2}\!\bigl(c_t\eta^{W(t)}\bigr)\,\Phi'^{\,e_2t}.
+\]
+
+Because
+
+\[
+\operatorname{res}\!\left(\frac{n(u_2)^r}{n(ru_2)}\right)
+=\eta^{W(t)},
+\]
+
+its coefficient relative to the coherent power normalizer
+\(n(u_2)^r\) is exactly \(c_t\). Hence the inner residual is
+precisely \(\psi_2\), not its gauge-naive twist.
+
+For every monomial \(x^\ell\pi^b\) occurring in this lift,
+\(e_1b+\ell h=ru_2\). Multiplying by a monomial of
+\(\Phi'^{e_2t}\), the clearance above the outer \(x\)-polygon side
+is bounded below by
+
+\[
+\frac{r(u_2-e_2D'h)}{e_1}>0,
+\]
+
+exactly the inequality used in T(b)′(i). Thus every component
+clears the side. Polynomial collection and \(\Phi'\)-carry can
+only cancel terms or move them upward; they cannot create a term
+below the side. Since \(L_M(\lambda)\) already has degree \(<D'\),
+the literal \(\Phi'\)-development also has the asserted
+exact-height coefficient and residual.
+
+Therefore T(b)′(i)’s one-side polygon, \(\psi_2\)-residual,
+carrier forcing chain, irreducibility, and residue-field
+conclusion hold at the corrected composed key. Clauses (ii)–(v)
+then proceed exactly as written.
+
+### Dated obstruction record (2026-08-12, R4 F-4 — GENHN.A(ii)'s universal slot display; the A2 adjudication transcribed verbatim)
+
+The counterexample is correct. For \((e_1,f_1,h,m)=(3,1,2,1)\), the unique normalizer exponent is \(a=-1\), so neither an integral normalizer nor a variable \(K\)-slot exists at height \(1\).
+
+The downstream laws are protected because their live pins satisfy \(m>D'h\), where integrality follows, but the displayed universal assertion “one \(K\)-digit slot per integer \(dv\)-height” is false. Its necessary repair would restrict it to occupied heights—particularly the live stage domain \(m>D'h\), subject also to the upper window cap. That is a weakening of GENHN.A(ii)’s accepted statement display, so no admissible repair can be supplied under the stated constraint.
+
+### Dated correction (2026-08-12, R4 F-5 — the first tower’s residual)
+
+In S8’s proof of LEMMA GENHN-T(a), replace
+
+> “residual \((T^2-c)^2\) over \(K\)”
+
+by
+
+> “residual \((T-c)^2\) over \(K\)”.
+
+**DERIVATION.** A side of abscissa length \(4\) and denominator
+\(e_2=2\) has residual degree \(4/e_2=2\). An inner repeated factor
+with \(f_2=1,\mu_2=2\) therefore has residual
+\((T-c)^2\), of degree \(2\). The displayed \((T^2-c)^2\) has
+degree \(4\) and would require side length \(e_2\cdot4=8\).
+The corrected form is exactly the later GN-TOWER witness
+\((T-1)^2\), so the positive-locus realization and the first-live
+threshold \(n=8\) remain unchanged.
+
+*(The three repairs and two obstruction records above were derived
+by the A2 certification run (gpt-5.6-sol high,
+runs/cert/A2_genhn_output.log, 2026-08-12); orchestrator
+verification before transcription — F-1: the "ragged band is never
+consulted" spans re-read at HEAD (GENHN.A(iii), GENHN-3(b)/(d), the
+OB-a paragraph); the [r2] annex confirmed to prove a lift-stable
+dv = e₁N at the first band height (refuting GENHN-3(a)'s "iff" as
+written, so the rider is needed); ERRATUM E1's exclusion ("at f₁ ≥ 2
+genres beyond [μ = 2] … NO band-adjudication display — that surface
+sits with the S9 boxes") checked against S9's actual box list
+(BOX-1 grades, BOX-2 refine-transfer bookkeeping, BOX-3 machine
+coverage only, BOX-4 extraction, BOX-5 P(5) density, [GENHN-TOW-1]
+towers) — no ordinary-stage box holds it, confirming the omission;
+GENHN-CAP-GEN's load-bearing step (missing η^t-components occupy
+complementary basis directions, so no completion cancels a nonzero
+visible part) re-derived from GENHN-2's F_Q-independence; the
+specializations re-checked against the E1 r3 trichotomy and the
+[r2] annex clauses (1)–(3) including the Q^{comp(m)}−1 census =
+ERRATUM E2's clause. Citation note: the repair's "GENHN-2(b)'s
+bracket" has no literal referent — GENHN-2 is unlettered; the
+referent is the stage bracket (CS-2) of THEOREM GENHN.B / S6.2,
+which is what interior refinements with complete K-pins leave
+unchanged. F-3: the HETOW erratum confirmed to CONSUME the
+exact-height (LIFT) operator without an in-note lemma; GENHN-LIFT's
+algebra re-derived by hand (integrality a−sh ≥ 0 from M > D′h;
+degree i+e₁s ≤ D′−1; exact height e₁(a−sh)+(i+e₁s)h = M; residue
+Σλ_sη^s = λ by GENHN-2's independence; the wrap identity
+res(n(u₂)^r/n(ru₂)) = η^{W(t)} re-derived from
+e₁(r·a(u₂)−a(ru₂)) = −e₁W(t)h, matching the erratum's own cocycle
+display); the clearance bound r(u₂−e₂D′h)/e₁ checked
+character-for-character against T(b)′(i)'s proof (the [r1] NODE
+FLOOR u₂ > e₂D′h). F-5: the span located (S8 GENHN-T(a) proof,
+"residual (T² − c)² over K" on the length-4 stage-e = 2 side);
+residual degree = 4/e₂ = 2 re-derived; the GN-TOWER witness's
+residual confirmed as ψ₂² = (T+1)² = (T−1)² over F₂, the
+squared-linear form; no prior dated append touches the line. F-2:
+G's inclusion of Q and h confirmed (GENHN.CLASS (i)); S2's
+finiteness proof confirmed to count triples + entry-pattern
+families only; the counterexample arithmetic checked (genre
+(2; 2,1,2; h) with h odd, e₁f₁μ = 4 ≤ n, visible once N ≥ 2h+1 —
+the note's own E3(h)/E31(h) instance tables display the same
+h-parameterization); the data set as declared is infinite. F-4:
+the counterexample arithmetic checked (2i ≡ 1 mod 3 ⟹ i = 2,
+a = (1−4)/3 = −1); the protection claim checked (the post-r1
+stage-initial node floor {dv(A_j) ≥ (μ−j)D′h + 1} and the [r1]
+NODE FLOOR put every live pin at dv > D′h, exactly GENHN-LIFT's
+integrality domain). Repairs transcribed unaltered per the standing
+division of labor. Ledger: GENHN's row stays OPEN — the three
+repairs await sol discharge-confirmation; the two obstructions
+close only by re-displayed statements (requires owner sign-off per
+the statement fence) or new mathematics.)*
+
+---
+
+### Dated statement re-displays (2026-08-12 — the two A2 obstructions closed under the owner's directive)
+
+Asvin (2026-08-12) delegated proof-related statement decisions under
+the end-to-end-proof criterion: the right display for any lemma is
+the one the complete proof of the pinned main theorem consumes,
+stated as simply as possible. Under that authority the two OBSTRUCTED
+findings of the A2 adjudication above are closed by the following
+re-displays, each at exactly the scope its proof establishes and its
+consumers consume. Orchestrator-composed from the A2 obstruction
+records' own option text; consumer safety verified at HEAD before
+folding; subject to sol discharge-confirmation in the cert2 pass.
+
+**Dated statement re-display (2026-08-12, R4 F-2 — GENHN.CLASS's
+finiteness clause).** THEOREM GENHN.CLASS's header gloss "finite per
+n" and clause (ii) FINITE are re-displayed at the scope S2's proof
+establishes: at fixed n, the genres form FINITELY MANY PARAMETERIZED
+GENRE SCHEMAS — the triples (e₁, f₁, μ) with e₁f₁ ≥ 2, e₁f₁μ ≤ n,
+each carrying finitely many (A1)-admissible entry-pattern families —
+with the residue field Q, the slope numerator h (gcd(h, e₁) = 1),
+the window N, and the prehistory depths as the schemas' parameters.
+The genre DATUM G = (Q; e₁, f₁, μ; h, entry) ranges over infinitely
+many parameter values at fixed n (every odd h with N ≥ 2h + 1
+realizes (2; 2,1,2; h, entry) at n = 4 — the R4 witness); the note's
+own instance tables already display exactly this parameterization
+(E3(h), E31(h): "visible iff 3h ≤ N−1"), and every count law
+attached to a genre is an (A1)-family law in those parameters
+(geometric in h), which is the form GENHN.B's assembly and the
+battery grammar consume. Clauses (i) and (iii) are unchanged; no
+consumer reads the withdrawn datum-set finiteness.
+
+**Dated statement re-display (2026-08-12, R4 F-4 — GENHN.A(ii)'s
+slot clause).** GENHN.A(ii)'s display "each A_j carries exactly ONE
+K-digit slot per integer dv-height" is re-displayed at its true
+scope: per OCCUPIED integer dv-height — a height m admitting an
+integral normalizer monomial n(m) = x^{i(m)}π^{a(m)} with
+0 ≤ i(m) < e₁ and a(m) = (m − i(m)h)/e₁ ≥ 0 — below the window cap.
+Every height m > D′h is occupied, with the explicit lift supplied by
+LEMMA GENHN-LIFT (the A2 fold above); every pin the note's laws
+consume sits at dv > D′h (the stage-initial node floor
+{dv(A_j) ≥ (μ−j)D′h + 1} and the refine floors), so no consumer
+moves. At unoccupied low heights no slot exists — witness
+(e₁, f₁, h) = (3, 1, 2), m = 1: i(1) = 2 forces a(1) = −1 (the
+R4/A2 counterexample, recorded in the obstruction record above).
+The e₁-class separation and F_Q-independence clauses are unchanged.
+
+**Dated corrigendum (2026-08-12, post-D2b — the occupied-height
+scope tightened).** The D2b discharge pass (gpt-5.6-sol high,
+runs/cert2/D2b_genhn_output.log) adjudicated the re-display above
+NEW-ISSUE: "occupied" as normalizer-integrality (a(m) ≥ 0) is too
+weak at f₁ > 1 — the full K-digit slot needs every component
+monomial x^{i+e₁s}π^{a−sh} integral, i.e. a(m) ≥ (f₁−1)h; sol's
+witness (e₁, f₁, h, m) = (1, 2, 1, 0): n(0) = 1 is integral while
+the η-component would require xπ^{−1}. Per sol's own recommendation
+and the simplicity preference, the scope is tightened to the
+consumed domain: GENHN.A(ii)'s slot clause holds per integer
+dv-height m with **D′h < m**, below the window cap — there LEMMA
+GENHN-LIFT's proof gives a − sh = (m − (i+e₁s)h)/e₁ ≥ 0 for every
+component (i + e₁s ≤ D′ − 1), so the full K-slot exists — and every
+pin the note's laws consume sits in that domain (the stage-initial
+node floor {dv(A_j) ≥ (μ−j)D′h + 1} and the refine floors). At
+m ≤ D′h the clause is withdrawn entirely: a K-slot may be partial
+(the sol witness) or absent (the R4/A2 witness). Awaiting sol
+re-confirmation in the next queue.
+
+---
+
+### Dated proof completion (2026-08-12 — GENHN-COUNT-RERUN, \(\mu=2\), corrected node)
+
+**Certificate interpretation.** The rerun’s terminal `MISMATCH` concerns only the sealed alpha-child column. On every emitted key, `measured = predicted`. The sealed table incorrectly assigned the entire fixed-letter alpha slice to `UND`. The actual and predicted partitions are
+
+\[
+\begin{array}{c|cc|cc}
+(e_1,f_1,2)&\multicolumn{2}{c|}{\text{sealed}}&
+\multicolumn{2}{c}{\text{actual}=\text{predicted}}\\
+&\mathrm{RAM}&\mathrm{UND}&\mathrm{RAM}&\mathrm{UND}\\ \hline
+(1,2,2)&0&1024&768&256\\
+(2,2,2)&0&16384&12288&4096.
+\end{array}
+\]
+
+Thus the certificate confirms the corrected-node law and refutes the sealed child displays exactly where refine transfer says it must.
+
+> **LEMMA GENHN-COUNT-RERUN (\(\mu=2\), corrected node).**  
+> Let
+>
+> \[
+> G=(Q;e_1,f_1,2;h,\mathrm{entry}),
+> \qquad D'=e_1f_1,\qquad
+> K=\mathbf F_{Q^{f_1}},
+> \qquad B=D'h,
+> \]
+>
+> where \(h\ge1\) and \(\gcd(e_1,h)=1\). For every component-complete finite stage cap \(M\), let
+>
+> \[
+> \mathcal N_B(M)=
+> \left\{
+> (A_1,A_0):
+> dv(A_1)>B,\quad
+> dv(A_0)>2B,\quad
+> \text{all retained heights are }\le M
+> \right\}.
+> \]
+>
+> Then the GENHN-2 slot map induces a bijection
+>
+> \[
+> \mathcal N_B(M)\;\xrightarrow{\sim}\;
+> K^{\{B+1,\ldots ,M\}}
+> \times
+> K^{\{2B+1,\ldots ,M\}}.
+> \tag{CR-1}
+> \]
+>
+> Under this bijection:
+>
+> 1. the finite-stage reader is exactly the finite-window \((2,K)\)-cluster reader at lower node \(B\);
+> 2. its `RAM`, `2SIDED`, `SPLTAIL`, `SPLITEQ`, `INERT`, and recursively alpha-refined per-key cardinalities are the standard \((2,K)\) cell-law cardinalities at that node;
+> 3. for every alpha height \(\kappa>B\) and every fixed \(s\in K^\times\), recentering is a count-bijection from the \((\kappa,s)\)-slice onto \(\mathcal N_\kappa(M)\). Consequently
+>
+>    \[
+>    \#\{\text{alpha states at height }\kappa\}
+>    =(|K|-1)\,|\mathcal N_\kappa(M)|;
+>    \tag{CR-2}
+>    \]
+>
+> 4. at a common coefficient-window boundary, a nonzero visible pin of dimension \(\operatorname{comp}(m)\) has census
+>
+>    \[
+>    Q^{\operatorname{comp}(m)}-1,
+>    \tag{CR-3}
+>    \]
+>
+>    and its decision is governed by GENHN-CAP-GEN’s completion-invariance rule.
+>
+> Therefore every ordinary \(\mu=2\) GENHN count display survives the floor correction after
+>
+> \[
+> S=e_1h\quad\rightsquigarrow\quad
+> B=D'h=e_1f_1h.
+> \tag{CR-4}
+> \]
+>
+> The literal numeric \(S\)-node law survives uniformly in the stage cap exactly when \(f_1=1\). In particular, for \(M\ge2B\),
+>
+> \[
+> |\mathcal N_B(M)|
+> =|K|^{(M-B)+(M-2B)},
+> \tag{CR-5}
+> \]
+>
+> while the old \(S\)-node volume is larger by
+>
+> \[
+> |K|^{3(B-S)}.
+> \tag{CR-6}
+> \]
+
+**Proof.** Put \(q_K:=|K|=Q^{f_1}\). We use only occupied heights \(m>B=D'h\), the certified scope of the corrected GENHN.A(ii) slot clause.
+
+For any such \(m\), the congruence
+
+\[
+i_0h\equiv m\pmod {e_1},
+\qquad 0\le i_0<e_1,
+\]
+
+has a unique solution because \(\gcd(e_1,h)=1\). Set
+
+\[
+i_s=i_0+e_1s,\qquad
+r_s=\frac{m-i_sh}{e_1},
+\qquad 0\le s<f_1.
+\]
+
+Since \(m>D'h\) and \(i_s<D'\), every \(r_s\) is nonnegative. LEMMA GENHN-LIFT therefore gives, for every
+
+\[
+\lambda=\sum_{s=0}^{f_1-1}\lambda_s\eta^s\in K,
+\]
+
+the integral polynomial
+
+\[
+L_m(\lambda)
+=
+\sum_{s=0}^{f_1-1}
+\widetilde{\lambda_s}\,
+x^{i_s}\pi^{r_s},
+\]
+
+of degree \(<D'\), whose nonzero terms all have exact \(dv\)-height \(m\), and whose normalized residue is \(\lambda\).
+
+Conversely, GENHN-2 says that the \(f_1\) coefficient digits at these positions assemble into exactly one \(K\)-digit: the powers
+
+\[
+1,\eta,\ldots,\eta^{f_1-1}
+\]
+
+are \(F_Q\)-independent, so no nonzero combination can cancel. Different heights use disjoint coefficient-digit positions, because a position \((i,r)\) has the unique height \(e_1r+ih\). Hence the maps supplied by GENHN-2 and GENHN-LIFT are inverse slotwise bijections.
+
+For \(A_1\), the corrected floor is \(dv(A_1)>B\), so its retained slots are precisely \(B+1,\ldots,M\). For \(A_0\), the floor is \(dv(A_0)>2B\), so its retained slots are \(2B+1,\ldots,M\). The two coordinates are independent. This proves (CR-1).
+
+Write the resulting slot series as
+
+\[
+\mathscr A_j(t)=\sum_m\lambda_{j,m}t^m.
+\]
+
+By GENHN-2, the least nonzero slot height is exactly \(dv(A_j)\), and its \(K\)-coefficient is exactly the normalized leading residue used by the stage polygon. Thus the polygon of
+
+\[
+Y^2+A_1Y+A_0
+\]
+
+and every residual quadratic read from it agree, point for point, with those of
+
+\[
+Y^2+\mathscr A_1(t)Y+\mathscr A_0(t)
+\]
+
+over the integer \(t\)-ladder with coefficient field \(K\).
+
+GENHN-3 gives the required finite-window compatibility: decisions below the cap depend only on retained digits, and carries move upward. GENHN-CAP-GEN supplies the exact conservative rule where a coefficient window leaves only part of a slot visible. Therefore the slot bijection conjugates the GENHN reader to the finite-window \((2,K)\)-reader at node \(B\). This proves clause 1.
+
+For completeness, the transported depth-zero counts may be read directly. Let \(b\) be a lower node. If \(A_0\) vanishes through \(M\), an exact value \(w>b\) of \(A_1\) contributes
+
+\[
+(q_K-1)q_K^{M-w}
+\]
+
+states and is `SPLTAIL` precisely when \(2w<M+1\); the remaining states are `UND`.
+
+If \(A_0\) has exact value \(u\), its number of choices is
+
+\[
+(q_K-1)q_K^{M-u}.
+\]
+
+For every \(w>b\) with \(2w<u\), the `2SIDED` count is
+
+\[
+(q_K-1)^2q_K^{(M-u)+(M-w)}.
+\]
+
+If \(u\) is odd, the remaining states are `RAM`, with the free \(A_1\)-tail beginning at \(\lceil u/2\rceil\).
+
+If \(u=2\kappa\), the leading residual is
+
+\[
+T^2+aT+b,\qquad a\in K,\quad b\in K^\times.
+\]
+
+The finite-field censuses are
+
+\[
+\#\mathrm{SPLITEQ}
+ =\frac{(q_K-1)(q_K-2)}2,
+\qquad
+\#\mathrm{INERT}
+ =\frac{q_K(q_K-1)}2,
+\qquad
+\#\mathrm{ALPHA}
+ =q_K-1.
+\]
+
+Each residual choice has the common free-tail factor
+
+\[
+q_K^{(M-\kappa)+(M-2\kappa)}
+=|\mathcal N_\kappa(M)|.
+\tag{CR-7}
+\]
+
+These are exactly the standard \((2,K)\) depth-zero cell counts.
+
+Now fix an alpha letter \(s\in K^\times\). Its residual is \((T-s)^2\). Since \(\kappa>B\), GENHN-LIFT supplies the required exact-height \(K\)-lift of \(s\). GENHN-4 then applies: recentering the key by that lift kills the two alpha pins, sends the slice into
+
+\[
+dv(A_1')>\kappa,\qquad dv(A_0')>2\kappa,
+\]
+
+and acts triangularly on all deeper digits. GENHN-3 shows that the induced truncated transformation respects the cap. The opposite translation is its inverse. Hence, for fixed \(s\),
+
+\[
+\{\text{\((\kappa,s)\)-slice}\}
+\;\xrightarrow{\sim}\;
+\mathcal N_\kappa(M).
+\tag{CR-8}
+\]
+
+The child reader is therefore the same reader at lower node \(\kappa\), so every recursively refined key has exactly its standard child-node cardinality. Summing (CR-8) over the \(q_K-1\) nonzero letters proves (CR-2) and clause 3. It also proves clause 2 by induction on the finite recursive history.
+
+At a common coefficient-window boundary, let \(V_m\subseteq K\) be the visible \(F_Q\)-subspace. Its nonzero readable vectors number
+
+\[
+|V_m|-1=Q^{\dim_{F_Q}V_m}-1
+       =Q^{\operatorname{comp}(m)}-1.
+\]
+
+GENHN-CAP-GEN says that an unread component is never consulted: an undercuttable value drains to `UND`; otherwise a terminal result is returned exactly when it is constant on the affine completion set; an alpha refine is performed only with a complete \(K\)-pin. This proves (CR-3) and clause 4.
+
+Finally, for arbitrary \(M\),
+
+\[
+|\mathcal N_b(M)|
+=q_K^{(M-b)_+ +(M-2b)_+}.
+\]
+
+When \(M\ge2B\), this gives (CR-5). Since \(S\le B\),
+
+\[
+\frac{|\mathcal N_S(M)|}{|\mathcal N_B(M)|}
+=
+q_K^{(2M-3S)-(2M-3B)}
+=
+q_K^{3(B-S)}.
+\]
+
+Because \(B-S=e_1h(f_1-1)\), the ratio is \(1\) exactly when \(f_1=1\), and is strictly greater than \(1\) for \(f_1\ge2\). This proves (CR-4)–(CR-6). ∎
+
+**Consumer sweep.**
+
+1. **GENHN-ERR-1 is settled.** The ordinary \(\mu=2\) stage law is the \((2,K)\)-law at \(B=D'h\), not at the old numeric node \(S=e_1h\). No entry fiber, sibling factor, key-center factor, or ghost normalization is part of the raw node count.
+
+2. **The alpha mismatch is resolved.** For fixed \(s\), \(|\mathcal N_\kappa(M)|\) is the total alpha-child slice, not its `UND` subcell. Thus the rerun’s \(768+256=1024\) and \(12288+4096=16384\) partitions are forced by refine transfer. The sealed `UND` entries \(1024\) and \(16384\) were totals attached to the wrong child key.
+
+3. **GENHN.A(v) and S6.2 are re-grounded.** Every phrase “the \((2,K)\)-cluster read at the \(S\)-node” is read count-side as “at the \(B=D'h\)-node.” The local mass-normalized bracket
+   \[
+   b_{2,K}(\kappa)=(|K|-1)|K|^{2\kappa-1}
+   \]
+   is unchanged: it is indexed by the actual refine height \(\kappa\) and uses a different ghost normalization from the raw finite-node cardinality.
+
+4. **All ordinary \(f_1\ge2\), \(\mu=2\) count displays are restored on the corrected node.** Interior pins use the full \(K\)-census; boundary pins retain the already-corrected census \(Q^{\operatorname{comp}(m)}-1\). Mixed \((e_1,f_1)\) genres require no further count-side exception.
+
+5. **HE6R1’s completion-statement clause is restored with no wording change.** Its quantification over compatible completions is exactly GENHN-CAP-GEN’s completion-invariance assertion. The correction changes the initial count node from \(S\) to \(D'h\); it does not change HE6R1’s completion predicate, its \(D'h\)-based root separation, or its conclusion.
+
+*(LEMMA GENHN-COUNT-RERUN above was composed by the P2 certification
+run (gpt-5.6-sol high, runs/cert4/P2_genhn_count_output.log,
+2026-08-12) from the N3 design after its machine certificate
+confirmed the table (verification/openmath/genhn_f2_count_check.py:
+measured = predicted on every key at (1,2,2) and the first-ever
+mixed-genre contact (2,2,2); the sealed S-node child displays
+refuted exactly as predicted — sealed RAM 0 / UND 1024 vs actual
+768 / 256, and 0 / 16384 vs 12288 / 4096). Orchestrator verification
+before transcription — the proof consumes exactly this campaign's
+certified pillars (GENHN-LIFT at the corrigendum's m > D′h scope,
+cited as such; GENHN-CAP-GEN for the boundary clause; GENHN-2's
+independence; GENHN-3's cap respect); the slot-position uniqueness
+((i, r) ↦ e₁r + ih injective on the retained range) checked; the
+ratio |N_S|/|N_B| = q_K^{3(B−S)} with B − S = e₁h(f₁ − 1)
+re-computed; the α-mismatch autopsy (sealed totals attached to the
+wrong child key) consistent with the measurement; the sweep's
+restoration of HE6R1's completion clause with no wording change
+confirmed as the directive's prove-don't-qualify outcome. GENHN-ERR-1
+is SETTLED. Transcribed unaltered per the standing division of
+labor. Ledger: row 15 → the count re-run obligation is DISCHARGED; a
+final transcription-confirmation rides the next queue.)*
