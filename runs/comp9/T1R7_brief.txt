@@ -1,3 +1,31 @@
+ARC r7 REPAIR (gpt-5.6-sol high). T1P8 found 0C + 1G + 1m (below) on T1 (below). Derive r7 repairs verbatim-ready. End with: SUMMARY: <n> REAL (repairs delivered)
+
+=== T1P8 ===
+### G1 — Zero coherent digits are not covered by the C3 read proof
+
+The proof universally states:
+
+> “A slot with coherent digit \(\Gamma_t\) is represented … as  
+> \(M_sg_t,\quad dv_i(g_t)=0,\quad \operatorname{res}(g_t)=\Gamma_t.\)”
+
+But T1 explicitly permits \(c_t=0\), hence \(\Gamma_t=0\). A value-zero factor cannot have zero residue. Therefore this representation and the stated graded scalar-covariance argument do not cover zero slots. The formula may still be true there, but (C3-canonical-read), and consequently the slotwise derivation of (C3-three-reads), has an unproved zero-coefficient branch.
+
+Classification: GAP.
+
+### m1 — The coefficient representatives defining \(L_M\) remain unbound
+
+(C6) says:
+
+> “Define  
+> \(L_M(\lambda)=\sum_{r=0}^{f_1-1}\widetilde{\lambda_r}x^{i+e_1r}\pi^{a-rh}.\)”
+
+No residue-section or choice of representatives \(\lambda_r\mapsto\widetilde{\lambda_r}\) is fixed. Thus \(L_M\) is not literally a defined function from the displayed carrier data, although its asserted valuation and residue properties are independent of the usual permissible choice.
+
+Classification: MINOR.
+
+VERDICT: FINDINGS: 0C + 1G + 1m
+
+=== T1 ===
 # T1 — LEMMA GAUGE-COCYCLE
 
 ## The wrap/\(\vartheta\) recursion, exact lifts, and normalization bridges, stated once
@@ -2976,226 +3004,3 @@ Append to the honesty ledger:
 Add to §6:
 
 > | Propagated the zero-lift branch into the A3 and A6 absorption pins, and imported the canonical \(s\)-range and binary second-level carry required by the A2 derivation. | T1P7, 2026-08-12 r6 | Repairs 2 GAP findings: no finite exact height is assigned to a zero coefficient, and the HETOW carry proof now states and uses \(w_2\in\{0,1\}\). |
-
-
----
-
-## r7 (2026-08-12): arc repairs
-
-*(gpt-5.6-sol high, runs/comp9/T1R7_output.log; transcribed unaltered; counter resets.)*
-
-# T1 r7 corrections — 2026-08-12
-
-These edits repair the zero-coefficient read gap and bind the coefficient representatives defining \(L_M\).
-
-## R7-1 — Add the zero-coefficient branch to the C3 canonical read
-
-In §1.1, immediately after (C3-graded-scalar-covariance), insert:
-
-> At every consumed grade, the read is also defined on the zero homogeneous component and satisfies
-> \[
-> \boxed{
-> R_{i+1,\beta}(0)=0.
-> }
-> \tag{C3-zero-read}
-> \]
-> A coherent digit \(\Gamma=0\) means that the homogeneous component at the displayed grade is zero; an underlying representative may instead have strictly larger value. Such a component is not represented by multiplication by a value-zero factor of residue zero.
-
-In (C3), replace the paragraph
-
-> Consequently a slot with coherent digit \(\Gamma_t\) has canonical read
-> \[
-> \boxed{
-> R_{i+1,\beta_t}(\text{slot }t)
-> =
-> w_i^{f_{i+1}-t}\Theta_i(t)\Gamma_t.
-> }
-> \tag{C3-canonical-read}
-> \]
-
-with:
-
-> Consequently the homogeneous component at grade
-> \(\beta_t\) of a slot with coherent digit \(\Gamma_t\) has canonical read
-> \[
-> \boxed{
-> R_{i+1,\beta_t}(\text{slot }t)
-> =
-> w_i^{f_{i+1}-t}\Theta_i(t)\Gamma_t.
-> }
-> \tag{C3-canonical-read}
-> \]
-> If \(\Gamma_t\ne0\), this follows from graded scalar covariance using a value-zero factor of residue \(\Gamma_t\). If \(\Gamma_t=0\), the homogeneous slot component is zero and the formula follows from (C3-zero-read).
-
-In §2.3, replace the paragraph beginning
-
-> A slot with coherent digit \(\Gamma_t\) is represented, at the consumed read site, as
-
-and the following paragraph beginning
-
-> At the corrected key, the inverse telescope factors cancel slotwise
-
-with:
-
-> Let \(X_t\) denote the homogeneous component of slot \(t\) at grade
-> \(\beta_t\). If \(\Gamma_t\ne0\), then
-> \[
-> X_t=M_sg_t,
-> \qquad
-> dv_i(g_t)=0,
-> \qquad
-> \operatorname{res}(g_t)=\Gamma_t.
-> \]
-> Graded scalar covariance therefore gives
-> \[
-> \begin{aligned}
-> R_{i+1,\beta_t}(X_t)
-> &=
-> R_{i+1,\beta_t}(M_s)\Gamma_t\\
-> &=
-> w_i^s\Theta_i(t)\Gamma_t.
-> \end{aligned}
-> \]
-> If \(\Gamma_t=0\), then \(X_t=0\) at grade \(\beta_t\), and
-> (C3-zero-read) gives
-> \[
-> R_{i+1,\beta_t}(X_t)
-> =
-> 0
-> =
-> w_i^s\Theta_i(t)\Gamma_t.
-> \]
-> This proves (C3-canonical-read) in both branches.
->
-> At the corrected key,
-> \[
-> \Gamma_t=c_t\vartheta_{i,s},
-> \qquad
-> \Theta_i(t)=\vartheta_{i,s}^{-1}.
-> \]
-> If \(c_t\ne0\), graded scalar covariance and cancellation of the inverse telescope factors give
-> \[
-> R_{i+1,\beta_t}(X_t)
-> =
-> c_tw_i^s.
-> \]
-> If \(c_t=0\), then \(\Gamma_t=0\), the zero-lift convention makes the corresponding key term absent, and (C3-zero-read) gives the same identity with both sides zero. Thus the cancellation holds slotwise for every \(t\), and summing gives
-> \[
-> y^f-\sum_{t<f}c_tw_i^{f-t}y^t
-> =
-> w_i^f\psi(y/w_i).
-> \]
-
-Replace honesty-ledger item 2 with:
-
-> 2. The B-law is conditional on the sitewise graded read facts (C3-ladder-multiplicativity), (C3-slot-grade), and (C3-graded-scalar-covariance). For a zero coherent digit, the displayed homogeneous component is zero and its read is governed separately by (C3-zero-read); no value-zero factor with residue zero is asserted. T1 proves no multiplicativity theorem for all homogeneous initial forms.
-
-In the supporting-context paragraph following the absorption map, replace the sentence beginning
-
-> The B-law rows consume (C3-ladder-multiplicativity) …
-
-with:
-
-> The B-law rows consume (C3-ladder-multiplicativity), the grade identity
-> \(\beta_t=(f_{i+1}-t)\bar\kappa_i\), and
-> (C3-graded-scalar-covariance) for nonzero coherent digits at their stated sites. Zero coherent digits use the separate zero-component rule (C3-zero-read).
-
-## R7-2 — Fix a residue section for the definition of \(L_M\)
-
-At the beginning of (C6), before
-
-> Let \(M>D'h\), put …
-
-insert:
-
-> Fix once and for all a set-theoretic section of the coefficient residue map
-> \[
-> \boxed{
-> \sigma:\mathbf F_Q\longrightarrow\widehat O,
-> \qquad
-> \operatorname{res}(\sigma(a))=a,
-> \qquad
-> \sigma(0)=0.
-> }
-> \tag{C6-residue-section}
-> \]
-> Write
-> \[
-> \widetilde a:=\sigma(a).
-> \]
-> Thus
-> \[
-> a\ne0
-> \Longrightarrow
-> dv(\widetilde a)=0.
-> \]
-> No additive or multiplicative compatibility of \(\sigma\) is assumed. Every occurrence of \(L_M\) below uses this fixed section.
-
-Immediately after (C6-lift), insert:
-
-> The polynomial \(L_M(\lambda)\) may depend on the fixed section
-> \(\sigma\). Its displayed support, integrality, exact-height, residue, and \(x\)-free conclusions do not depend on that choice.
-
-In §2.6, replace the opening proof through the proof of (C6-residue) with:
-
-> For \(0\le r<f_1\),
-> \[
-> i+e_1r\le D'-1,
-> \]
-> and
-> \[
-> a-rh
-> =
-> \frac{M-(i+e_1r)h}{e_1}
-> \ge0
-> \]
-> because \(M>D'h\). Hence every summand lies in
-> \(\widehat O[x]\), and every occurring \(x\)-exponent is less than
-> \(D'\).
->
-> If \(\lambda_r\ne0\), then (C6-residue-section) gives
-> \[
-> dv(\widetilde{\lambda_r})=0.
-> \]
-> The corresponding nonzero summand therefore has height
-> \[
-> e_1(a-rh)+(i+e_1r)h=M.
-> \]
-> If \(\lambda_r=0\), that summand is absent because
-> \(\widetilde{\lambda_r}=\sigma(0)=0\).
->
-> After evaluation at \(\theta\) and division by \(n(M)(\theta)\), the \(r\)-th nonzero summand has residue
-> \[
-> \iota_\theta(\lambda_r)\,
-> \operatorname{res}\!\left(
-> \frac{\theta^{e_1}}{\pi^h}
-> \right)^r
-> =
-> \iota_\theta(\lambda_r\eta^r).
-> \]
-> Summing gives
-> \[
-> \operatorname{res}\!\left(
-> \frac{L_M(\lambda)(\theta)}
-> {n(M)(\theta)}
-> \right)
-> =
-> \iota_\theta(\lambda).
-> \]
-> If \(\lambda\ne0\), injectivity of \(\iota_\theta\) prevents cancellation at height \(M\), so
-> \[
-> dv(L_M(\lambda))=M.
-> \]
-> This proves (C6-residue) and the asserted exact-height statement.
-
-Under **A6 — GENTOW6**, immediately after the displayed lift formula, insert:
-
-> Here every representative
-> \(\widetilde{\lambda_r}\) is taken using the fixed section
-> (C6-residue-section); the pinned lift is therefore a literally defined function of \(M\) and \(\lambda\).
-
-## Consequential record edit
-
-Add to §6:
-
-> | Added the zero-homogeneous-component branch to the C3 canonical read and fixed a residue section for all coefficient representatives in \(L_M\). | T1P8, 2026-08-12 r7 | Repairs 1 GAP and 1 MINOR finding: zero coherent digits now satisfy the canonical-read and three-reads formulas without a nonexistent value-zero representative, and \(L_M\) is a literally defined section-dependent function. |
