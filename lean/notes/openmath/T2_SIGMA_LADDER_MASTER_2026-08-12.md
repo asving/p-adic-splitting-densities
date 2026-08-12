@@ -1349,3 +1349,343 @@ Finally replace S9 by:
 > **R1 COMPOSITION VERDICT: HOLD.** The repaired conditional master uses one fixed original-\(O\) ground and no current-key irreducibility assumption. The reducible-key boundary is now an explicit gcd/orbit decomposition rather than a false divisibility dichotomy.
 >
 > The five source routes remain candidate obligation records until their paired source anchors, explicit constructors, field witnesses, and generated obligation manifests are present. No acceptance, literal-instance, or passed-first-gate claim is made by this r1 text.
+
+
+---
+
+## r2 (2026-08-12): arc repairs
+
+*(gpt-5.6-sol high, runs/comp7/T2R2_output.log; transcribed unaltered; counter resets.)*
+
+The minimal honest r2 consists of the following six repairs. It preserves the fixed original-\(O\) ground, requires only a monic current key, and leaves all five source routes as candidate obligation records.
+
+### R2-1 — C1: impose degree/invariant compatibility
+
+In S1.1, immediately after the inherited invariants are introduced, insert:
+
+> **Degree/invariant compatibility.** The carrier’s inherited invariants satisfy
+>
+> \[
+> e_{\mathcal C}>0,\qquad f_{\mathcal C}>0,\qquad
+> \boxed{D=e_{\mathcal C}f_{\mathcal C}.}
+> \tag{DEG-EF}
+> \]
+>
+> This is a carrier obligation, not a consequence of monicity or of the key-degree field. It ensures that local forcing
+>
+> \[
+> e=e_{\mathcal C}e',
+> \qquad
+> f=f_{\mathcal C}\deg r'
+> \]
+>
+> gives orbit degree
+>
+> \[
+> ef
+> =e_{\mathcal C}f_{\mathcal C}e'\deg r'
+> =De'\deg r'.
+> \]
+
+In `SigmaLadderCarrier`, add:
+
+```lean
+inheritedE              : ℕ
+inheritedF              : ℕ
+inheritedE_pos          : 0 < inheritedE
+inheritedF_pos          : 0 < inheritedF
+keyDegree_eq_inherited  :
+  keyDegree = inheritedE * inheritedF
+```
+
+Replace the separable-factor paragraph of the proof of HE7.A by:
+
+> For a separable side residual, the test-family certificate supplies nonemptiness, disjointness, exhaustion, Galois equivariance, and local forcing for every irreducible residual factor \(r'\). By `(DEG-EF)`, local forcing gives
+>
+> \[
+> ef
+> =(e_{\mathcal C}e')
+>  (f_{\mathcal C}\deg r')
+> =De'\deg r',
+> \]
+>
+> so each nonempty class has cardinality at least \(De'\deg r'\). The irreducible residual degrees, with the side denominator \(e'\), sum to the certified side length; hence these lower bounds sum to the certified side total \(DL_\lambda\). Equality therefore holds termwise, and each class is one Galois orbit.
+
+Add to the candidate-instance obligation ledger:
+
+> Every candidate must prove `(DEG-EF)` explicitly. The intended equalities are
+>
+> \[
+> \begin{array}{c|c|c|c}
+> \text{candidate}&D&e_{\mathcal C}&f_{\mathcal C}\\ \hline
+> \text{HE3/HE6}&D'=e_1f_1&e_1&f_1\\
+> \text{HE7}&D'\ell d_r&e_1\ell&f_1d_r\\
+> \text{HETOW/GENTOW4}&D'e_2f_2&e_1e_2&f_1f_2.
+> \end{array}
+> \]
+>
+> These remain obligations until supplied by elaborated terms.
+
+### R2-2 — G1: identify consumed sides with all lower-hull sides
+
+Replace the r1 side-accounting addition by:
+
+> **Complete side-accounting certificate.** For the lower hull \(P\) of the proper development, the block supplies a finite set
+>
+> \[
+> \operatorname{Sides}(B)
+> \]
+>
+> together with:
+>
+> 1. **exact coverage**
+>
+>    \[
+>    \boxed{
+>    \lambda\in\operatorname{Sides}(B)
+>    \Longleftrightarrow
+>    \lambda\text{ is a side of }P;}
+>    \tag{SIDE-COVER}
+>    \]
+>
+> 2. a proof that every \(\lambda\in\operatorname{Sides}(B)\) has slope strictly greater than \(T\);
+> 3. the length identity
+>
+>    \[
+>    \sum_{\lambda\in\operatorname{Sides}(B)}L_\lambda=\mu;
+>    \]
+>
+> 4. a root partition by these sides; and
+> 5. the side cardinalities
+>
+>    \[
+>    |S_\lambda|=DL_\lambda.
+>    \]
+>
+> The phrase “consumed side” means precisely membership in this certified set. No proper subset of the sides of \(P\) may be used.
+
+The formal record must expose at least:
+
+```text
+SideAccountingCertificate:
+  finite side set;
+  side-set membership iff actual lower-hull side;
+  slope-greater-than-threshold proof for each member;
+  side lengths and their sum;
+  root partition indexed by the side set;
+  cardinality D * sideLength for each side.
+```
+
+Replace the opening of the proof of HE7.A by:
+
+> `(SLOT)` and `(COC)` identify the coherent coefficient pins and residual polynomials. By `(SIDE-COVER)`, the side-accounting certificate ranges over every side of \(P\). Its slope and length fields therefore prove clause 1, and its root partition gives the total cardinality \(DL_\lambda\) for every side used in clause 2.
+
+Replace every remaining occurrence of “for every consumed side” in the master statement or proof by:
+
+> for every side of \(P\), equivalently every member of the certified side set.
+
+### R2-3 — G2: move key-boundary preprocessing outside `SigmaBlock`
+
+Delete from `SigmaBlock`:
+
+```lean
+keyBoundary : Option (KeyBoundaryCertificate C poly)
+```
+
+A `SigmaBlock` always contains:
+
+```lean
+keyCoprime : IsCoprime (poly.map C.ground.inclusion)
+                         (C.key.map C.ground.inclusion)
+```
+
+Insert the following separate input and result interfaces after `SigmaBlock`:
+
+```text
+SigmaInput:
+  polynomial;
+  monicity and separability;
+  designated root class and its exhaustion certificate;
+  the window, frame, and origin data needed before decomposition.
+
+KeyBoundaryResult C I:
+  monic common-boundary factors Pᵢ;
+  irreducibility, orbit, and local-(e,f) certificates for each Pᵢ;
+  a finite list of residual SigmaBlock objects, hence each key-free;
+  the polynomial product identity;
+  disjointness and exhaustion of all boundary and residual root classes;
+  strict degree descent for every nonterminal residual block.
+```
+
+Use two distinct typed entry points:
+
+```lean
+theorem HE7_A_master
+    (C : SigmaLadderCarrier G Kres Kbar kbar)
+    (B : SigmaBlock C) :
+    HE7AResult C B := by
+  sorry
+
+theorem sigma_key_boundary
+    (C : SigmaLadderCarrier G Kres Kbar kbar)
+    (I : SigmaInput C)
+    (R : KeyBoundaryResult C I) :
+    KeyBoundaryFactorizationResult C I := by
+  sorry
+```
+
+Replace the key-boundary prose by:
+
+> A key-free polynomial enters `HE7_A_master` through a `SigmaBlock`. A non-key-free polynomial cannot inhabit `SigmaBlock`; it enters only through `SigmaInput` together with a separately typed `KeyBoundaryResult`. The theorem `sigma_key_boundary` emits the certified boundary factors and applies `HE7_A_master` to each residual `SigmaBlock`.
+>
+> Thus key-boundary preprocessing is neither optional data inside an already key-free block nor an implicit operation performed by HE7.A.
+
+Replace the candidate constructor naming requirement by:
+
+```text
+For a key-free route:
+  <name>.carrier
+  <name>.block
+  <name>.sideAccounting
+  <name>.testFamily
+  <name>.stepData
+  <name>.step_wf
+
+For a non-key-free raw route:
+  <name>.input
+  <name>.keyBoundary
+```
+
+### R2-4 — G3: forbid unjustified empty transition relations
+
+Delete:
+
+> For HE6, a one-shot record may use the empty transition relation and its immediate well-foundedness proof.
+
+Replace the minimum `SigmaStepData` interface by:
+
+```text
+SigmaStepData:
+  state type and next relation;
+  for every repeated residual factor with e' * degree r' = 1,
+    existence of a next state carrying the certified linear refinement;
+  for every repeated residual factor with e' * degree r' ≥ 2,
+    existence of a next state carrying the certified child jump;
+  for every repeated class on a mixed side,
+    the corresponding per-block transition;
+  degree, mass, or secondary-budget decrease for every transition.
+```
+
+Add:
+
+> An empty transition relation is admissible only when the block also supplies a terminality certificate
+>
+> \[
+> \boxed{
+> \text{no side residual of the block has a repeated irreducible factor}.}
+> \tag{NO-REPEAT}
+> \]
+>
+> Under `(NO-REPEAT)`, HE7.A clauses 3–5 are vacuous and empty-transition well-foundedness is legitimate. “One-shot theorem” is not itself a terminality certificate.
+
+Replace the HE6 transition paragraph in S3.2 by:
+
+> The HE6 candidate may use the empty transition relation only if it supplies `(NO-REPEAT)`. No such HE6 hypothesis has presently been routed. Otherwise it must supply the linear-refine, child-jump, and mixed-block transitions required by `SigmaStepData`, using the same fixed original-\(O\) ground. Until one of these alternatives is exhibited by typed terms, HE6 remains a candidate test-family/source route and is not a complete master instance.
+
+### R2-5 — G4: separate valued points from residue targets
+
+Replace the single parameter `Ω` throughout S4 by two ambient fields:
+
+```lean
+universe uO uK uκ uKbar ukbar
+
+structure SigmaLadderCarrier
+    (G : OriginalDVRGround O K₀ k₀)
+    (Kres : Type uκ)
+    (Kbar : Type uKbar)
+    (kbar : Type ukbar)
+    [Field Kres] [Field Kbar] [Field kbar]
+    [Algebra K₀ Kbar]
+    [Algebra k₀ Kres]
+    [Algebra k₀ kbar] where
+```
+
+Replace:
+
+```lean
+point        : Ω → Prop
+residueEmbed : ∀ ξ, point ξ → Kres →+* Ω
+```
+
+by:
+
+```lean
+point        : Kbar → Prop
+residueEmbed : ∀ ξ, point ξ → Kres →+* kbar
+```
+
+Add the ambient-field obligations:
+
+```lean
+valuedClosure_algebraic : Algebra.IsAlgebraic K₀ Kbar
+valuedClosure_closed    : IsAlgClosed Kbar
+residueClosure_closed   : IsAlgClosed kbar
+```
+
+Replace all binders of `SigmaBlock`, `SideAccountingCertificate`, `BaseChangeFreeTestFamily`, `SigmaStepData`, and `HE7AResult` accordingly.
+
+Add:
+
+> Points, polynomial evaluations, valuation windows, and root classes live in `Kbar`. Slot residues, residual labels, cocycles, and residue-field embeddings live in `kbar`. No carrier type is used for both roles.
+
+### R2-6 — G5: encode \(K/k_0\) as a finite compatible extension
+
+In the signature header, require:
+
+```lean
+[Finite k₀]
+[Algebra k₀ Kres]
+[FiniteDimensional k₀ Kres]
+[Algebra k₀ kbar]
+```
+
+Add to `SigmaLadderCarrier`:
+
+```lean
+residueEmbed_base :
+  ∀ ξ (hξ : point ξ),
+    (residueEmbed ξ hξ).comp (algebraMap k₀ Kres) =
+      algebraMap k₀ kbar
+```
+
+Insert in S1.1(2):
+
+> The current label field is not an independent field parameter. It carries a specified finite extension structure
+>
+> \[
+> k_0\longrightarrow K,
+> \qquad
+> [K:k_0]<\infty.
+> \tag{FINITE-RES}
+> \]
+>
+> For every carrier point \(\xi\), its residue-label embedding is a \(k_0\)-embedding:
+>
+> \[
+> \boxed{
+> \iota_\xi\circ(k_0\hookrightarrow K)
+> =k_0\hookrightarrow\overline k.}
+> \tag{RES-COMP}
+> \]
+>
+> Child label fields such as \(K[Z]/(r)\) must carry the induced algebra structure and finite-dimensionality witness. Extending the label field does not alter the fixed `OriginalDVRGround`.
+
+Add to the first-gate obligation manifest:
+
+> The carrier constructor must generate the \(k_0\)-algebra structure on `Kres`, its finite-dimensionality witness, and `(RES-COMP)`. Independent field instances for `k₀` and `Kres` do not discharge these obligations.
+
+Replace the final verdict by:
+
+> **R2 COMPOSITION VERDICT: HOLD.** The repaired conditional interface now identifies key degree with inherited ramification times inherited residue degree; accounts for every lower-hull side; separates key-boundary preprocessing from key-free blocks; requires real repeated-factor transitions unless terminality is certified; separates the valued and residue algebraic closures; and records \(K/k_0\) as a compatible finite extension.
+>
+> The fixed original-\(O\) ground and the absence of `Irreducible C.key` are unchanged. The five source routes remain candidate obligation records until their anchors, typed constructors, transition witnesses, and generated obligation manifests are present.
