@@ -9,6 +9,16 @@ sorry-statements in fenced campaign files; the repo's zero-banked-sorries policy
 governs the trusted corpus, which this file is outside of). `sorryAx` is expected
 in THIS file and nowhere else.
 
+**⚠ DESIGN DEFECT FLAGGED (2026-08-12, leansimp review — DO NOT TARGET
+THESE STATEMENTS UNTIL REVISED).** `uniformity_target` fixes (num, den)
+BEFORE quantifying over q and R, but `RealInstanceAt q n` admits arbitrary
+unrelated instances: nothing forces two instances at the same q to share a
+density, so the statement is false as stated (an adversarial abstract
+instance defeats any single law). The fix (review D1/D6/D8): a canonical
+`RealCountingFamily` with cross-prime coherent menu/coefficients replaces
+the free bundle; the target quantifies over faithful views of THAT.
+Revision awaits Asvin's sign-off (he reviewed the current form).
+
 **TRUST BOUNDARY — REVIEW REQUESTED.** Lean checks proofs, not statements; this
 statement and the `RealInstanceAt` parameter bundle below are new formalized
 statements and are flagged for Asvin's review BEFORE any unit targets them

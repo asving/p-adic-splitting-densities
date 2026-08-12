@@ -16008,3 +16008,36 @@ are committed), WI r1 nonemptiness repair → pass 3 (full consumer
 paste), DRAIN-N4 acceptance pass (census #1), FGMN-WELD cite
 re-verification, the Opus/Sonnet translation trial (gated on the
 leansimp design decisions + Asvin sign-off).
+
+## LEANSIMP REVIEW FOLD (2026-08-12) — 12 design decisions; a STOP-THE-LINE catch on the Stage2 anchor
+
+The review (runs/leansimp_output.log, 24,766 B, DECISIONS: 12)
+delivered overnight. HEADLINE: **the Stage2 anchor as signed has a
+genuine quantifier defect** — uniformity_target fixes (num, den)
+before ∀q ∀R, but RealInstanceAt admits arbitrary unrelated abstract
+instances; two instances at the same q need not share a density, so
+the statement is FALSE-AS-STATED (adversarial instance construction).
+Neither my drafting, Asvin's review, nor my RealInstance explainer
+caught it; the decorrelated architect did — statements are where
+errors hide, again. The anchor is now defect-flagged in-file (no unit
+may target it); the fix = D1 (canonical RealCountingFamily with
+p.Prime + cross-prime coherent menu/coefficients) + D6 (the
+coefficient-uniformity theorem — the engine that legitimately moves
+∃(num,den) outside ∀p) + D8 (prove uniformity_core WITHOUT the tame
+hypothesis, derive the signed statement by discharging its legacy
+hypothesis unused). Statement revision awaits Asvin.
+
+THE VERDICTS: trusted island FROZEN (V2 capstone graph + facades);
+REDESIGN into five-node libraries (Reduction/Induction/StageLaws/
+Ladder/Towers + Core/* + Counting/* + Gauge/* — the Lean-T1) for
+OM/-reusables, MovesS/Sp/C/Gr/RBase, Kernels-pure; RETIRE (quarantine)
+HC1/HC2/MovesU/V/T/X/Moves/MovesD/B2D + ~60 OM/ exploration modules
+(self-loop campaign, per-example QpType chains, scratch bridges,
+superseded instances W3-W5). Other key decisions: D2 counting primary,
+measure route frozen-not-deleted; D5 REJECT merging DensityFoundation/
+CountingModel (split Interface instead); D7 FiniteCountingModel/
+HasDecidedLimit/UndecidedVanishes separation; D9 fullDensity as an
+actual formal object; D10 ℕ-counts; D12 facades + ledger hashes.
+18-step migration plan with per-step safety (AxChk on every
+trusted-path touch). AWAITING ASVIN: the anchor revision (D1/D6/D8)
++ the retirement scale + the decision list overall.

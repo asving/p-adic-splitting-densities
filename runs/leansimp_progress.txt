@@ -1,1 +1,2 @@
 [21:17:44] leansimp (post-crash relaunch, stdin, in-repo) start
+[21:22:13] exit 0 (24766 B; DECISIONS: 12)
