@@ -1,0 +1,67 @@
+1. Verbatim quote:
+
+> “where γ = Σ_t res(a_{i₀+e₁t})η_θ^{t} ∈ K is the level-1 slot residue”
+
+**GAP.** This residue formula omits the coefficient normalizers. If \(k=dv(A)\), the correct slot coefficient is
+\[
+\operatorname{res}\!\left(a_i\pi^{-(k-ih)/e_1}\right),
+\]
+not \(\operatorname{res}(a_i)\).
+
+Counter-configuration: take \(O=\mathbf Z_3\), \(e_1=h=1\), and
+\[
+\Phi'=x^2+9x+9.
+\]
+Its residual polynomial at height \(1\) is \(T^2+1\), irreducible over \(\mathbf F_3\), so the stated frame applies. Let \(A=3\). Then \(dv(A)=1\), \(\varpi=3\), and
+\[
+\operatorname{res}(A(\theta)/\varpi)=1.
+\]
+The printed formula instead gives \(\gamma=\operatorname{res}(3)=0\), hence predicts residue \(0\). Thus LEMMA HE6-0″ is false verbatim. Its qualitative transport principle is repairable, but HE6-1, HE6-2, and HE6-2′ explicitly consume that residue clause; the accepted proof therefore contains an unstated normalization correction.
+
+2. Verbatim quote:
+
+> “Taking κ in the … interval \((D′h,\lambda_1)\) … forces \(\sum_i c_{\lambda_i}=0\) and \(c_0=0\); as all slopes are \(>0\) this gives \(L_\lambda=0\) for every \(\lambda\le D′h\).”
+
+**GAP.** Positivity of every polygon slope has not been proved here; coefficients in \(O[x]\) give only nonnegative slopes. A zero-slope side contributes
+\[
+L_0\cdot 0=0
+\]
+to \(c_0\), so \(c_0=0\) cannot eliminate it. Abstractly, \(L_0=1\) and any collection of positive sides already shows the stated inference fails: \(c_0=0\) regardless of \(L_0\).
+
+The conclusion can likely be recovered from the other equation \(\sum_i c_{\lambda_i}=0\), together with
+\[
+\sum_\lambda n_\lambda=\deg f=D′\mu,\qquad \sum_\lambda L_\lambda=\mu,
+\]
+which would force the total omitted length to vanish. That argument is not given. Since HE6-3 feeds HE6-4 and THEOREM HE6.A, this is a load-bearing missing step rather than a cosmetic omission.
+
+3. Verbatim quote:
+
+> “its own slot values satisfy … with equality exactly at the slots \(i=e_1t\)”
+
+**MINOR.** Divisibility by \(e_1\) is necessary for equality, not sufficient. In the same example
+\[
+\Phi'=x^2+9x+9,\quad e_1=1,\quad h=1,
+\]
+the middle slot \(i=1=e_1t\) has
+\[
+v(9)+1=3>D′h=2.
+\]
+The subsequent residual-polynomial calculation still works if above-line coefficients are read as zero, but “exactly” is false.
+
+4. Verbatim quote:
+
+> “All of \(\Phi′,\varpi\in O[x]\) have \(g\)-fixed coefficients”
+
+**MINOR.** The note previously and correctly states that \(\varpi\) may lie only in \(K_0[x]\), for example \(\varpi=x\pi^{-1}\). The Galois argument needs fixed coefficients, not integrality, so the proof survives after deleting the false membership assertion.
+
+CHECKED CLEAN — The corrected \(\eta_\theta^{-q(k)}\) coset factor and the \(-q\) sign in HE6-0″ agree algebraically.
+
+CHECKED CLEAN — The PE4 correction restricting \(\beta\) to the case \(\delta=\kappa\) resolves the stated domain problem.
+
+CHECKED CLEAN — The Galois identity \(\iota_{g\rho}=\bar g\circ\iota_\rho\) genuinely keeps the same abstract factor \(r\), including when \(f_1>1\).
+
+CHECKED CLEAN — Conditional on HE6-3 and the corrected slot-residue formula, THEOREM HE6.A’s nonemptiness/orbit-size/sum sandwich is valid.
+
+CHECKED CLEAN — The corrected totals \(986\) unique perturbations and \(2{,}958\) configuration instances reconcile with the pasted row counts.
+
+OUTCOME: CHALLENGE

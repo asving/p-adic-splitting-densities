@@ -9,3 +9,5 @@
 [08:17:22] R4_genhn exit 0 (5663 B; OUTCOME: CHALLENGE)
 [08:17:22] R5_hex3 start
 [08:21:44] R5_hex3 exit 0 (3011 B; OUTCOME: RATIFIED-WITH-ANNEX)
+[08:21:44] R6_he6 start
+[08:26:01] R6_he6 exit 0 (3411 B; OUTCOME: CHALLENGE)
