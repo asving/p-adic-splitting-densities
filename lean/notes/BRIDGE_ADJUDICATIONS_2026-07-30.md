@@ -16097,3 +16097,20 @@ insertion transcribed unaltered; both consumers confirmed
 unrestricted. WI pass 3 (acceptance, with the FULL consumer paste
 this time) queues as R10. Chain ratifications R3–R8 running (R3 W-12
 in flight).
+
+**RESIDUE QUEUE COMPLETE (2026-08-12, 08:39; all 8 outputs committed
+by the runner)** — the chain-leg model-diversity gap is closed, and
+the harvest is substantial: R5 HEX3 = RATIFIED-WITH-ANNEX; R3 W-12,
+R4 GENHN, R6 HE6, R7 HE6R1, R8 HE3 = **CHALLENGE** (headline counts:
+~5 CRITICAL + ~8 GAP + minors across the five, each with 4-6
+checked-clean lines). Notable finding shapes at first read: R3's
+order-1-layer completeness at repeated residuals + the census orbit
+factor; R4's window-theorem internal refutation at ordinary non-tower
+genres; R8's silent D' ≥ 2 hypothesis in the "n ≤ 7" claim; several
+findings visibly reference post-acceptance errata (RESOLVED-ALREADY
+candidates — Codex read pasted snapshots). ADJUDICATION NEXT, per the
+tower precedent (acceptances annotated never revoked; findings →
+REAL/ARTIFACT/RESOLVED-ALREADY; REAL → repair-derivation Codex runs
+whose outputs the orchestrator verifies and transcribes; re-passes
+after). The R9+ queue: the DRAIN-N4 d-factor repair, WI pass 3, then
+the challenge repairs in adjudicated order.
