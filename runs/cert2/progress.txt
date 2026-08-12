@@ -29,3 +29,5 @@
 [11:22:45] E5_grtw2 exit 0 (10134 B; SUMMARY: 4 REAL (repairs delivered) / 0 RESOLVED-ALREADY / 1 ARTIFACT / 0 OBSTRUCTED)
 [11:22:45] E6_weldmaster start
 [11:24:43] E6_weldmaster exit 0 (9742 B; SUMMARY: 3 REAL (repairs delivered) / 1 RESOLVED-ALREADY / 0 ARTIFACT / 0 OBSTRUCTED)
+[11:24:43] E7_hmenu3 start
+[11:27:09] E7_hmenu3 exit 0 (9779 B; SUMMARY: 2 REAL (repairs delivered) / 1 RESOLVED-ALREADY / 0 ARTIFACT / 0 OBSTRUCTED)
