@@ -3,3 +3,5 @@
 [20:57:48] T1R6 exit 0 (5511 B; SUMMARY: 2 REAL (repairs delivered))
 [20:57:48] T2P3 start
 [21:01:01] T2P3 exit 0 (3542 B; VERDICT: FINDINGS: 1C + 5G + 1m)
+[21:01:01] T4R2 start
+[21:02:55] T4R2 exit 0 (7757 B; SUMMARY: 5 REAL (repairs delivered))
