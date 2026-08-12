@@ -16114,3 +16114,21 @@ REAL/ARTIFACT/RESOLVED-ALREADY; REAL → repair-derivation Codex runs
 whose outputs the orchestrator verifies and transcribes; re-passes
 after). The R9+ queue: the DRAIN-N4 d-factor repair, WI pass 3, then
 the challenge repairs in adjudicated order.
+
+**GOAL SET (Asvin 2026-08-12): SOL-5.6 END-TO-END CERTIFICATION** —
+ledger docs/SOL_CERTIFICATION_LEDGER_2026-08-12.md (29 cone rows: 8
+certified at goal-set, 21 open). Certifier = gpt-5.6-sol high (the
+-pro slug re-probed, still 400 on this account; upgrade-by-amendment
+if access lands). THE CERT RUNNER LIVE (runs/cert/, 21 sequential
+runs, each committed): A0 HEX3 annex fold; A1–A5 adjudicate+repair
+of the five fresh chain challenges (sol adjudicates its own findings
+against HEAD — RESOLVED-ALREADY/ARTIFACT/REAL-with-derived-repair —
+orchestrator verifies + transcribes the repairs); R9 the DRAIN-N4
+d-factor re-derivation; R10 WI pass 3 (acceptance, full consumer
+paste, T1 declared out-of-cone); D1a/D1b discharge confirmations for
+the landed GENTOW5/GENTOW3 repairs; C1–C11 the never-read as-builts
+(the ten weld notes + GENTOW6_BOXES; C6 carries the weld-face-audit
+charge; C10 = JD0's certification pass 1). Estimated wall ~2h.
+Repairs that come back REAL get orchestrator-verified transcription
++ discharge runs in the NEXT queue; the goal closes when every
+ledger row reads CERTIFIED.

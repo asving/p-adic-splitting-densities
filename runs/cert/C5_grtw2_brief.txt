@@ -1,0 +1,2817 @@
+ADVERSARIAL AS-BUILT RATIFICATION (decorrelated certifier; you are gpt-5.6-sol
+high). The note below was ACCEPTED after a same-model-family 2-clean hostile arc;
+YOU attack what those passes may share blind spots on. Treat the pasted
+acceptance reports' CHECKED-CLEAN claims as targets, not evidence. Fresh context;
+everything needed is pasted. Quote-and-classify, FIX NOTHING; per finding:
+verbatim quote, CRITICAL/GAP/MINOR, the precise failure with a
+counter-configuration where possible. Survivors get one CHECKED CLEAN line each.
+End with: OUTCOME: RATIFIED | RATIFIED-WITH-ANNEX | CHALLENGE
+
+=== THE NOTE: GRTW2_PROOF_2026-08-08.md ===
+# GRTW2 — W-2, THE LIFT JUNCTION, in its corrected three-clause form: admissible representative + unit covariance (the (ξ,w) closed form) + ψ-transport threaded through the tower
+
+**Unit:** W-2 COMPOSER (the first weld-junction composition of the Q4 campaign;
+per the corrected target of the probe verdict, ledger 874d26b). **Genre:
+PROOF NOTE at attempt grade (acceptance counter 0/2; no gate fires; ~~no
+acceptance arc opened by this note~~ **[r3, o2: r0 composition-time wording,
+superseded — the acceptance arc is OPEN; S-STATUS below]**), with
+sealed-runner machine brackets.**
+
+**[r4] S-STATUS (CURRENT): attempt grade, acceptance counter 0/2 (ZERO clean
+passes), FOUR hostile passes RUN and FOUR repair rounds applied. Arc:
+composed at 5463f2a → W2-PE1 (`GRTW2_passPE1_report.md`, 083adff — 0
+CRITICAL + 2 JUSTIFICATION GAPS + 5 minor, NOT CLEAN; core mathematics
+CONFIRMED by full independent re-derivation; machine leg bit-identical,
+6,403/0, exit 0) → r1 (8d5e3fa, NOTE-ONLY: the W2-C3 HONEST RE-SCOPE —
+proved to each chamber's first ξ ≠ 1 junction, MEASURED above it — with the
+open box W2-OPEN-2 after a four-route derivability adjudication; the W2-C1a
+chamber qualifier; minors F3–F7; round block §7) → W2-PE2
+(`GRTW2_passPE2_report.md`, 79e796b — 0 CRITICAL + 2 JUSTIFICATION GAPS +
+1 minor, NOT CLEAN; the four-route adjudication HELD at source under a
+deliberate fifth-route hunt; machine leg byte-identical; fresh leg 16/16 at
+m = 1 plus hand T3B/T3F r = 4) → r2 (ffa1e57, NOTE-ONLY: **P1** — LEMMA
+W2-ID1 displayed (§5.2), the m ≥ 2 case folded into W2-OPEN-2 as its premise
+sub-clause (OPEN-2a), the grade sentence scoped to the instance census;
+**P2** — the [r1, F6] §4.3 sign flip REVERTED to the r0 sign t ↦ t − k·u_i,
+faithful to tex 1431's literal Def-`t(i)`, the naming conflation split at
+§2.3; **P3** — W2-OPEN-2's premise pairing corrected to Φ_{q−1}; round
+block §8) → W2-PE3 (`GRTW2_passPE3_report.md`, 9bd938f — 0 CRITICAL + 1
+JUSTIFICATION GAP (minor, CONFIRMED by construction), NOT CLEAN; W2-ID1's
+statement and proof CONFIRMED sound by re-derivation; (OPEN-2a) confirmed
+exactly the m ≥ 2 step the warrant needs; the 36+2 census recomputed exact;
+the P2 revert verified faithful at source; machine leg re-run exit 0,
+6,403/0, bit-identical mod timing; FRESH full-roster leg — own tower-field
+arithmetic vs the committed ledger modulo the support stabilizer — 22/22
+plus the I4B r = 5 boundary reproduced from scratch) → r3 (79d1d9c,
+NOTE-ONLY: **P1** — the two-sided "identification PROVED at m = 1" claims
+SCOPED to the proved direction at all four sites: LEMMA W2-ID1 proves
+recorded ξ = 1 ⟹ byte-equal at m = 1 (so NO byte-divergence strictly below
+the first recorded twist); the CONVERSE — recorded ξ ≠ 1 ⟹ byte-RED — is
+UNPROVED at every m, riding the never-pinned recorded-pair selection rule,
+and PE3's class-pin m = 1 counter-instance to it under the sealed scan's
+own enumeration-order selection (K₁ = F₄, ψ₁ = y³ + ζ, e₀ = 1: byte-equal
+junction, recorded pair (ζ, 1); roster-invisible at the g ≤ 2 builder
+limit) is RECORDED at §5.2 as the lemma's honest boundary; converse flag
+added inside W2-OPEN-2's premise; the §5.2 warrant, (OPEN-2a), and the
+36+2 census re-checked — each consumes ONLY the proved direction; plus the
+two ungraded observations (o1 WM line drift, o2 the stale Genre
+parenthetical); round block §9) → W2-PE4 (`GRTW2_passPE4_report.md`,
+e92cb22 — 0 CRITICAL + 1 JUSTIFICATION GAP (minor) + 1 minor, NOT CLEAN;
+everything r3 set out to do verified done correctly and faithfully, edit
+site by edit site; the counter-instance re-derived TRUE from scratch by
+own field arithmetic; the W2-OPEN-2 converse flag adjudicated SUFFICIENT —
+NO finding; machine leg re-run exit 0, 6,403/0, results JSON byte-identical
+incl. elapsed_s; FRESH selection-geography leg 33,408/0 over 4,173 monic
+irreducibles × 7 fields — the r3 disclosure condition confirmed the EXACT
+characterization, W2-ID1's forward direction 29,223 grid points / 0
+violations) → r4 (this round, NOTE-ONLY: **P1** — the one-directional
+scoping COMPLETED across the species: the three same-species surfaces the
+r3 sweep missed (§6.3(d)'s carry item, the §5.2 (OPEN-2a) opening gloss,
+§6.4's [r2] record) scoped to the proved direction, one clause each, PLUS
+the sweep-completing sites found by this round's full-note grep (the §6.2
+W2-ID1-row appositive (PE4 o-d), the adjacent W2-OPEN-2-row label, the
+[r1, F1] block's roster-instance qualifier (PE4 o-b)); **P2** — the footer
+dateline extended (r3 + r4); plus o-c (the `orbit_scan` line figure
+135–163) and o-e (the counter-instance chamber's 3-read extension
+precision); round block §10). A repair round is NOT a pass, so the
+counter stays 0/2; W2-PE5 — a fresh hostile pass on THIS post-r4 text — is
+the next acceptance attempt. The runner `grt_w2_checks.py` (sha256
+71f8fc90f7543fd3…, PE4-verified byte-identical across working tree, 5463f2a,
+and HEAD) and both artifacts remain BYTE-FROZEN; r4 touches only this note.**
+
+**Object:** the blueprint junction **W-2** (`docs/in-progress/
+GRT_WELD_BLUEPRINT_2026-08-08.md` §3.2), restated after the probe
+(`lean/notes/openmath/GRTWELD_PROBE_2026-08-08.md`) falsified its
+byte-equality branch: for every realized principal-read OM type chain in the
+[ILN]† S0.1 class pin,
+
+> **(CLAUSE 1, admissible representative)** the harness canonical
+> ε-corrected lift Φ_{m+1} is a GMN Def-2.12 admissible key-polynomial
+> representative at every level — of the ξ-CONJUGATE residual class under
+> the pinned (P-ell) convention, of the type itself exactly when the
+> junction character is support-trivial;
+> **(CLAUSE 2, unit covariance)** the slot ratio between the harness lift
+> and the classifier's print-convention key is a pure z-monomial character
+> ξ^j in the slot index, with the per-level (ξ, w) an explicit function of
+> the read data (closed form in §3.4);
+> **(CLAUSE 3, ψ-transport)** conjugating each deeper residual ψ through
+> the recorded (ξ, w) BEFORE the next lift makes the full tower transport:
+> on the transported chain the harness lift is a STRICT Def-2.12
+> representative at every level, no junction ever degenerates to a
+> weight/support split, and every probed value-layer statement of the
+> corpus holds verbatim on the transported classifier lifts (the probe's
+> 96 F3 violations all turn GREEN).
+
+**Grade cap (read first).** Clause 2 is PROVED at attempt grade at m = 1
+junctions and, at m ≥ 2, proved-given-the-displayed-collapse-perimeter with
+the exact recursion (HR-REC) unconditional on the shared-key scope; clause 1
+is PROVED at attempt grade on the same perimeter ~~(its two polygon legs
+unconditionally)~~ **[r1, F2] (its two polygon legs at every junction whose
+below-junction chain is byte-shared with the harness chain — the HARNESS-side
+line content is level-unconditional; the GMN v_r/polygon reading carries the
+chamber qualifier of LEMMA W2-C1a as repaired)**; ~~clause 3's chain-level
+statements are PROVED at attempt grade given clauses 1–2~~ **[r1, F1]
+clause 3's chain-level statements are PROVED at attempt grade given clauses
+1–2 UP TO AND INCLUDING the first ξ ≠ 1 junction of each transported chamber
+(38 of the roster's 44 junction-levels) and MEASURED above it (the remaining
+6 junction-levels: TW-ADM/TW-STRICT 44/44, TW-STRICT SAME-adjacent), riding
+the displayed open bridging lemma W2-OPEN-2 (§5.2)** **[r2, P1: the proved
+scope's boundary is keyed to the first RECORDED ξ ≠ 1 junction; ~~that this
+coincides with the first BYTE-divergence is PROVED at m = 1 (LEMMA W2-ID1,
+§5.2) and at m ≥ 2 is W2-OPEN-2's own premise sub-clause (OPEN-2a)~~
+**[r3, PE3-P1: one direction only — LEMMA W2-ID1 (§5.2) proves at m = 1
+that recorded ξ = 1 ⟹ byte-equal, i.e. NO byte-divergence strictly below
+the first recorded twist, and at m ≥ 2 that same forward direction is
+W2-OPEN-2's premise sub-clause (OPEN-2a); the CONVERSE (recorded ξ ≠ 1 ⟹
+byte-RED) is UNPROVED at every m — it rides the unpinned recorded-pair
+selection rule, with PE3's off-roster m = 1 counter-instance under the
+sealed scan's own selection recorded at §5.2]** — on the
+roster the identification is instance-exact (recorded ξ ≠ 1 ⟺ byte-RED at
+22/22 walked junctions; every below-r₀ junction byte-GREEN — PE2's
+recomputation), so the 38/44 proved-scope census is fully §3-derived except
+where an m ≥ 2 recorded-trivial junction sits below (this roster: I4A/I4B
+at r = 5), where it stands as instance evidence riding (OPEN-2a)]**, and
+its value-layer
+statement (the corpus battery
+on transported lifts) is **machine-confirmed instance evidence, displayed as
+the open lemma W2-OPEN-1** — not a proven theorem. Nothing here fires the
+BLOCKED-ON-CARRIER-TIE gate, touches any accepted text, or advances W-1's
+operator dictionary beyond the level-1 value dictionary proved below.
+
+**Literature consumption (faithfulness discipline).** The classifier side is
+consumed as LITERATURE from the GMN print `docs/references/HigherNewton.tex`
+("Newton polygons of higher order in algebraic number theory"): Proposition
+`construct` (tex 1166–1258, hypothesis V ≥ e_{r−1}f_{r−1}v_r(φ_{r−1})),
+Theorem `phir` (tex 1257–1283, with eq. `vrphir`), the representative
+Definition (tex 1285 — the project's "Thm 2.11/Def 2.12" cite per
+`docs/GMN_citations.md`), Definition `t(i)` (tex 1431), Definition
+`rescoeff` (tex 1447), Definition `defresidual` (tex 1497), Proposition
+`propertiesv` items 3/4 (tex 1028), and the Bézout convention ℓ_r h_r −
+ℓ′_r e_r = 1 with **no pinned representative** (tex ~1291). Every print
+formula used below is quoted with its tex anchor; the machine transcription
+of these formulas is the SEALED probe leg (`grt_weld_probe.GmnLeg`,
+commit 55f7416), imported verbatim by this unit's runner — this note adds
+NO new print transcription. Where the print's convention is genuinely
+underdetermined (the unpinned-ℓ orbit), this is said explicitly and
+parametrized (§4.3); the ℓ-orbit reading of Def 2.12 remains a convention
+analysis, review-owed (probe fence inherited).
+
+**Machine bracket:** `verification/openmath/grt_w2_checks.py` (this unit;
+outputs `grt_w2_checks_output.txt`, `grt_w2_checks_results.json`; 6,403
+samples, 0 violations, 17 check families all GREEN, teeth caught) layered
+on the sealed probe artifacts (`grt_weld_probe*`; 1,391 samples). Roster:
+the probe's 16 towers (ℤ₂/ℤ₃/F₂[[t]]/F₃[[t]], 2–4 reads, wild p | e_j rows,
+d₀ = 2 rows, g ≥ 2 rows, flat rows, I4A/I4B/I4C verbatim) + the 5 concrete
+quartic/cubic shapes with fresh extraction; PARI `factorpadic`/
+`idealprimedec` external anchors.
+
+---
+
+## §1. Setting, indexing, and the junction notation
+
+### 1.1 The two legs (fixed once)
+
+Harness: the [ILN]† S0.1 class pin verbatim (`ITERLAWN_PROOF_2026-08-08.md`
+S0.1–S0.2): DVR O, uniformizer π, reads (e_j, h_j, g_j), j = 0..n, with
+e_j, h_j, g_j ≥ 1, gcd(e_j, h_j) = 1; normalized Bézout pairs ℓ_j h_j +
+ℓ_j′ e_j = 1 with 0 ≤ ℓ_j < e_j (so ℓ_j = 0 ⟺ e_j = 1); residue chain
+K_{j+1} = K_j[z_{j+1}]/(ψ_j), ψ_j monic irreducible with ψ_j(0) ≠ 0;
+weights γ₁ = h₀, γ_{j+1} = e_j·w_jΦ_j + h_j, w_jΦ_j = e_{j−1}g_{j−1}γ_j;
+the standard lift Φ₁ and the canonical ε-corrected lifts
+
+    Φ_{m+1} = Σ_{k ≤ g_m, ψ_{m,k} ≠ 0} C_k·Φ_m^{e_m k},   C_{g_m} = 1,
+    C_k := realize_m( ε_m(β_k)^{−1}·ψ_{m,k},  β_k ),   β_k := (g_m−k)γ_{m+1},
+
+with ε_m(β) := z_m^{ℓ′_{m−1}s − ℓ_{m−1}u}, (s,u) := eq12(β; e_{m−1},
+h_{m−1}), ε₀ := 1; harness reads R_m v and weights w_m per S0.2 (level-m
+read of f at weight λ: dev by Φ_{m−1}, grid s(λ) + je_{m−1}, packed
+C_j = ε_{m−1}(β_digit)·R_{m−1}v(A) into Σ_j C_j z_m^j).
+
+Classifier: the GMN print objects above, transcribed fresh in the sealed
+probe leg.
+
+### 1.2 The P-index dictionary (the probe's pins, restated once)
+
+GMN level i = harness read i−1 throughout: (e_i, h_i, f_i)^GMN =
+(e_{i−1}, h_{i−1}, g_{i−1})^har; ψ_i^GMN = ψ_{i−1}^har; F_i = K_{i−1};
+z_i^GMN = z_i^har (both the class of y in F_{i+1} = K_i); ℓ_i^GMN ≡
+ℓ_{i−1}^har (same normalized representative under (P-ell)); GMN keys
+φ_i = harness Φ_{i−1}; valuations v_i^GMN = harness w_{i−1} (same
+recursion, `propertiesv` item 3 vs the S0.2 weight recursion; in
+particular v_i(φ_i) = w_{i−1}Φ_{i−1} and v_{i+1}(φ_i) = γ_i^har);
+residual operators: GMN order-q residual R_q (dev by φ_q = Φ_{q−1})
+pairs with the harness level-q read R_q v. Pins (P-ell)/(P-lift)/
+(P-root)/(P-index) as sealed in the probe docstring.
+
+### 1.3 Junction notation
+
+**The junction at level m+1** (1 ≤ m ≤ n; GMN r := m+2) compares the
+harness lift Φ_{m+1} with the print key φ_r built by Prop-`construct` +
+Thm-`phir` on the same type data. Both are
+
+    (key)^{e_m g_m} + (slot coefficients)·(key)^{e_m·j},  j < g_m,
+
+key = Φ_m = φ_{r−1}, slot j carrying weight β_j = (g_m−j)γ_{m+1}
+(harness) = the T-side ordinate data u_j = g_m γ_{m+1} − j·h_m, V_j =
+u_j − j e_m·w_mΦ_m (print; V_j = β_j — same integers, §2.1). The slot
+coefficients live at harness level m, values in K_m. A junction is
+**shared-key** if Φ_q^har = φ_{q+1}^cls byte-for-byte for all q ≤ m (the
+first-divergence perimeter). The three read-data quantities of the note:
+
+    A_m := ℓ_{m−1}·g_{m−1}·γ_m ∈ ℤ_{≥0}      (A_m = 0 ⟺ e_{m−1} = 1),
+    c₁ = z_m^{−A_m}   [THE Thm-phir constant: the print's
+         c₁ = (z_{r−2})^{−ℓ_{r−2}v_{r−1}(φ_{r−1})/e_{r−2}}, tex 1270,
+         since v_{r−1}(φ_{r−1}) = w_mΦ_m = e_{m−1}g_{m−1}γ_m],
+    c  = c₁^{e_m g_m}  [Thm-phir's residual scalar: R_{r−1}(φ_r) = c·ψ_{r−1}].
+
+---
+
+## §2. The three base lemmas (all proved; machine families CK-MM / CK-HR1 / CK-VD1)
+
+### 2.1 Lemma W2-L0 (grid/weight tie; used silently everywhere)
+
+The print's T-side initial abscissa (tex 1176: "the greatest side T
+contained in L whose end points have nonnegative integer coordinates";
+initial point (s,u)) equals the eq12 offset: s = ℓV mod e, u = (V − sh)/e.
+*Proof.* An abscissa x on L of slope −h/e and value V has integer ordinate
+iff xh ≡ V (mod e) iff x ≡ ℓV (mod e); the smallest nonnegative such x is
+ℓV mod e. ∎ Consequently the print's slot grid s + je and slot values V_j
+coincide with the harness grid and digit weights: V_j = u_j − (s+je_m)w_mΦ_m
+= (V − (s+je_m)γ_{m+1})/e_m = β-digit weight (expand γ_{m+1} = e_m w_mΦ_m +
+h_m). The two legs' polygons agree point-for-point at every junction slot.
+
+### 2.2 Lemma W2-L1 (the base builder; GMN r = 2 collapses to the harness read)
+
+Let V ≥ e₁f₁v₂(φ₁) (GMN indexing; the print's own hypothesis) and
+φ(y) = Σ_{j<f₁} c_j y^j over F₁ = K₀. The print's order-2 construction
+(tex 1183–1190) P = Σ_j π^{u−jh₁}c_j(x)φ₁^{s+je₁} satisfies, in HARNESS
+semantics,
+
+    w₁(P) = V   and   R₁v(P) = φ(z₁) = Σ_j c_j z₁^j.
+
+*Proof.* The Φ₀-development of P is exactly the placed digits (deg c_j(x)
+< d₀). Digit at abscissa s+je₀ has level-0 weight u_j = u − jh₀, on the
+line by W2-L0. The level-1 read packs C_j = ε₀·R₀v(π^{u_j}c_j(x)) = c_j
+(ε₀ = 1; res at exact weight recovers the digit), so R₁v(P) = Σ c_j z₁^j. ∎
+
+**Corollary TH-BASE (r = 2 junctions byte-equal).** At the base junction
+both recipes place the same digits: harness C_k = realize₀(ψ_{0,k},
+(g₀−k)γ₁) = π^{(g₀−k)h₀}·lift(ψ_{0,k}); print slots π^{u_j}c_j(x)φ₁^{je₁}
+with c₁ = 1 (tex 1270, r = 2 case), u_j = (g₀−j)h₀, same digit lifts under
+(P-lift). Φ₁^har = φ₂^cls byte-for-byte. [Machine: probe F0 21/21; runner
+CK-SLOT r = 2 rows 16/16.]
+
+### 2.3 Lemma W2-L2 (MISMATCH — the Bézout bridge between the print's twist and the harness ε)
+
+Fix a read (e, h) with normalized Bézout (ℓ, ℓ′), ℓh + ℓ′e = 1. Let V, u
+∈ ℤ with u − V = kW for some k ∈ ℤ and W ∈ eℤ ∩ (the key weight, W = e·g·γ
+in every use). Put 𝔰 := ℓV mod e, u′ := (V − 𝔰h)/e, and T := (ℓu − 𝔰)/e
+~~(the print's Def-`t(i)`/Prop-`construct` twist exponent at ordinate u)~~
+**[r2, P2] (the print's Prop-`construct` CHILD twist exponent at ordinate
+u — tex 1201, y^{(ℓ_{r−2}u_j − 𝔰_j)/e_{r−2}}, 𝔰_j the ideal on-line
+initial abscissa. NOT the print's Def-`t(i)`: tex 1431 arranges
+t_{r−1}(a)_i = (s_{r−1}(a) − ℓ_{r−1}·v_r(aφ_r^i))/e_{r−1} — the
+(s − ℓu)/e order, the near-negative of T. The r0 parenthetical conflated
+these two opposite-signed exponents under one name; PE1's F6 computed with
+the conflated alias and the r1 §4.3 sign flip implemented that finding —
+both reverted/split this round, see §4.3 [r2, P2]. The identity below and
+every use of it are about T itself and are machine-keyed (CK-MM 4,396);
+only this naming line was off.)**
+Then
+
+    T + (ℓ′𝔰 − ℓu′)  =  ℓ(u − V)/e  =  (ℓW/e)·k.
+
+*Proof.* ℓ′𝔰 − ℓu′ = ℓ′𝔰 − ℓ(V − 𝔰h)/e = 𝔰(eℓ′ + ℓh)/e − ℓV/e =
+(𝔰 − ℓV)/e. Add T = (ℓu − 𝔰)/e. ∎
+
+In the junction use W = w_mΦ_m, e = e_{m−1}, ℓ = ℓ_{m−1}: ℓW/e = A_m, so
+**ε_m(V)·z_m^{T} = z_m^{A_m·k}** as field elements — the print's total
+per-node twist and the harness ε-correction differ by the pure character
+z_m^{A_m·k} in the key exponent k. [Machine: CK-MM, 4,396 integer + element
+samples, 0 violations.] Reconciliation with the probe's T2A hand account:
+there the harness ε-exponent ℓu − ℓ′s = 4 and the print total twist
+⌊ℓγ₂/e⌋ − ℓf₁h₁e₂ = 0 differ by A₁e₁g₁ = 4, ratio z₁^{−4} = z₁² — the
+k = e₁g₁ = top-slot instance of this identity.
+
+### 2.4 Lemma W2-L3 (VD-1 — the level-1 packed-value dictionary IS the ε-kit)
+
+For nonzero A ∈ O[x], deg A < deg Φ₁, on-line at β := w₁(A), let s₁(A) be
+the initial attained abscissa of its level-1 polygon and τ₁(A) :=
+(s₁(A) − ℓ₀β)/e₀. Then
+
+    z₁^{τ₁(A)} · R₁(A)(z₁)  =  ε₁(β) · R₁v(A),
+
+R₁ the print's order-1 residual (order-one `rescoeff`, c_i = red(a_i/π^{u_i})).
+*Proof.* Write s₁(A) = s + νe₀ (ν the first attained grid slot). The print
+coefficients equal the harness digit reads (both are res at exact weight),
+so R₁v(A) = z₁^ν·R₁(A)(z₁). And τ₁(A) − ν = (s − ℓ₀β)/e₀ = ℓ′₀s − ℓ₀u =
+the ε₁-exponent (the 𝔰 = s, k = 0 case of W2-L2's computation). ∎
+[Machine: CK-VD1, 156 samples, 0 violations.]
+
+This is the structural reason the harness ε-kit exists: **the ε-correction
+is exactly the print's t(i)-twist rewritten in eq12-canonical coordinates.**
+At levels ≥ 2 the dictionary is NOT a scalar gauge — it is a conjugation
+(§3.2) — and that conjugation is the entire content of the W-2 covariance.
+
+---
+
+## §3. CLAUSE 2 — the unit-covariance law and the (ξ, w) closed form
+
+Throughout §3 the junction at level m+1 is **shared-key** (§1.3). This is
+the honest scope: above an interior byte-divergence the print chain
+multiplies by ITS OWN keys and the harness-read comparison is a different
+computation (the runner marks those junctions SKIP — exactly the probe's
+6 above-twist rows; clause 3 removes them by transport **[r1, F1: at the
+re-scoped grade — the cure at the transported chamber's above-twist
+junctions is MEASURED, riding W2-OPEN-2; §5.2]**).
+
+### 3.1 The exact transfer recursion (HR-REC)
+
+Let P = construct(r, V, φ) be a print output at GMN order r ≥ 3 (output
+harness level Q := r−1), children P_j = construct(r−1, V_j, φ_j) at slots
+k_j = s + je_{Q−1}, with the print's child prescription (tex 1213–1218)
+
+    φ_j(y) ≡ y^{T_j}·c_j(y)  (mod ψ_{Q−2}),   T_j = (ℓ_{Q−2}u_j − 𝔰_j)/e_{Q−2}.
+
+Then, digits being on-grid and on-line (W2-L0), the harness read obeys
+
+    (HR-REC)   R_Q v(P) = Σ_j ε_{Q−1}(V_j) · R_{Q−1}v(P_j) · z_Q^j ,
+
+and by W2-L2 the ε-and-twist pair collapses per node:
+ε_{Q−1}(V_j)·z_{Q−1}^{T_j} = z_{Q−1}^{A_{Q−1}·k_j}. With the base
+R₁v(construct(2, V, φ)) = φ(z₁) (W2-L1), the recursion computes the
+harness read of EVERY print construction from read data alone, with no
+polynomial arithmetic. [Machine: CK-REC — the semantic simulator equals
+the actual harness read at every node of every shared-key roster junction,
+55 nodes, 0 violations.]
+
+### 3.2 Why the dictionary is a conjugation, and the collapse perimeter
+
+Unfolding one level: R_Q v(P) = Σ_j Θ_{Q−1}(V_j)·z_{Q−1}^{A_{Q−1}k_j}·c_j·z_Q^j,
+where Θ_{Q−1}(V_j) is the gauge accumulated in R_{Q−1}v(P_j) below. Two
+non-scalar effects appear for Q ≥ 3:
+
+* the **letter twist**: the j-dependent part of the character rides
+  z_{Q−1}^{A_{Q−1}e_{Q−1}·j}, i.e. the letter z_Q is effectively replaced
+  by ϑ_Q·z_Q with ϑ_Q := (junction character at level Q)^{−1} — the deeper
+  covariance re-appearing inside the dictionary;
+* the **mod-wrap**: the child prescription is the REDUCED representative
+  y^{T_j}c_j(y) mod ψ_{Q−2}, and reduction does not commute with y ↦ ϑy
+  unless ϑ acts trivially or the representative stays a monomial.
+
+**The collapse perimeter (C-coll):** every interior junction character is
+trivial as a field element — ξ_Q = 1 for 2 ≤ Q ≤ m (ξ_Q per §3.4's
+formula). On (C-coll) all wraps drop, every Θ is a z-monomial linear in
+its weight argument, and the whole dictionary is scalar per slot.
+Junctions with m = 1 have no interior levels: (C-coll) is vacuous there.
+Outside (C-coll) the law is still the exact recursion (HR-REC), which is
+closed in the read data; only the two-parameter SCALAR normal form below
+needs the perimeter. Boundary witness: §3.5.
+
+### 3.3 THEOREM W2-C2 (the slot-ratio law)
+
+At a shared-key junction at level m+1 define the slot ratio ρ_j :=
+(level-m read of the print slot P_j) / (level-m read of the harness slot
+C_j), j < g_m with ψ_{m,j} ≠ 0 (the harness read of C_j is
+ε_m(β_j)^{−1}ψ_{m,j} by REALIZE R3).
+
+**(a) m = 1 (unconditional).** ρ_j = c · z₁^{A₁e₁·j}. *Proof.* By W2-L1
+the print slot reads to φ_j(z₁) = z₁^{T_j}·c·ψ_{1,j}; multiply by
+ε₁(V_j)ψ_{1,j}^{−1} and apply W2-L2 with u_j − V_j = k_j·w₁Φ₁, k_j = je₁
+(top junction has s = 0 since V = e₁g₁·... ≡ 0 mod e₁... V = e_m g_m
+γ_{m+1}·(e-divisible): s = 0). ∎ [Machine: CK-SLOT-M1, all 16 r = 3
+junctions exact.]
+
+**(b) general m on (C-coll).** ρ_j = c · Θ_m(V_j) · z_m^{A_m e_m·j} with
+Θ_m the collapsed gauge (linearized recursion of §3.4); the ratios are
+geometric in j and the (ξ, w) normal form of §3.4 holds. *Proof at attempt
+grade:* induction on the level through (HR-REC), all wraps dropping on
+(C-coll); the linearization step (replacing 𝔰(V) = ℓV mod e by ℓV) changes
+the value by a power of the trivial interior character. ∎ [Machine:
+CK-SLOT — sim-predicted ratios equal the actual slot ratios at ~~ALL 24~~
+**[r1, F3] all 22** shared-key junctions r ≥ 3 **(the roster has 28 r ≥ 3
+junctions, of which 6 — exactly the probe's above-twist rows — are marked
+SKIP and carry no shared-key comparison; CK-SLOT's 44 samples = 16 r = 2
+rows + 28 r ≥ 3 rows, the ratio law checked on the 22 non-SKIP)**,
+including the non-perimeter ones (there the
+sim prediction is the recursion, not the scalar form); 0 violations.]
+
+**(c) exact general law.** At every shared-key junction the slot ratios
+are computed by (HR-REC) + W2-L1/L2 — a finite explicit recursion in the
+read data. This is the general closed form; (a)/(b) are its scalar
+specializations. [Machine: CK-SLOT under (c) reading, 0 violations.]
+
+### 3.4 THE (ξ, w) CLOSED FORM (the display of record)
+
+    A_m  := ℓ_{m−1}·g_{m−1}·γ_m                 (m ≥ 1;  A_m = 0 ⟺ e_{m−1} = 1)
+    χ_1  := 1 ;
+    χ_m  := χ_{m−1}^{ ℓ′_{m−1} − ℓ_{m−1}·w_{m−1}Φ_{m−1} } · z_{m−1}^{ A_{m−1}·ℓ_{m−1} }   (m ≥ 2)
+    ─────────────────────────────────────────────────────────────────────
+    ξ_{m+1} := χ_m^{ γ_{m+1} } · z_m^{ −e_m·A_m }
+    w_{m+1} := χ_m^{ −g_m·γ_{m+1} }
+    ─────────────────────────────────────────────────────────────────────
+    R_{r−1}( Φ_{m+1}^{har} )(y)  =  w_{m+1} · ψ_m( ξ_{m+1}·y )     [GMN r = m+2]
+
+with the print tie z_m^{−A_m} = c₁ (the Theorem-`phir` constant), so at
+m = 1 the pair is exactly
+
+    (any m = 1 junction)   ξ = c₁^{e₁} = z₁^{−e₁·ℓ₀·g₀·h₀},   w = 1.
+
+Validity: m = 1 unconditional (THM W2-C2(a) + §4.2); m ≥ 2 on (C-coll);
+outside (C-coll) the pair is read off the exact recursion (§3.3(c)).
+Structural remarks, each load-bearing downstream:
+
+1. **The whole covariance is generated by the print's own normalization
+   constant**: at m = 1, ξ = c₁^{e_m} and w = 1 — the covariance is
+   Thm-`phir`'s c₁ raised to the ramification of the read. The χ-chain is
+   the accumulated lower-level gauge; its composition exponent
+   ℓ′_{m−1} − ℓ_{m−1}w_{m−1}Φ_{m−1} is the SAME descent operator as the
+   [ILN]† shift recursion S_{j−1} = D_jγ_j + S_j(ℓ′_{j−1} −
+   ℓ_{j−1}w_{j−1}Φ_{j−1}) — the covariance gauge composes by the cocycle
+   shift chain.
+2. **Non-uniqueness (support stabilizer).** The orbit pair (ξ, w) with
+   R = w·ψ(ξy) is unique only modulo the stabilizer of supp(ψ_m): if
+   ψ_m is sparse (e.g. ψ = y² + c over F₃), distinct characters satisfy
+   the same equations. The closed form is stated as: THE DISPLAYED PAIR
+   SATISFIES the orbit equations. [Machine: CK-XI, 21 perimeter junctions,
+   0 violations; the I4B r = 4 junction is byte-equal yet carries the
+   nontrivial formula character ξ = −1 invisibly on supp(ψ₂) = {0, 2} —
+   the invisible-twist genre.]
+3. **Byte-equality law (the F1 verdict from read data).** A shared-key
+   junction is byte-equal iff every node value of the two builders' shared
+   recursion tree agrees; at m = 1 this is: c·z₁^{A₁e₁j} = 1 for every
+   j ∈ supp(ψ_m) ∩ [0, g_m). This reproduces the probe's full F1 verdict
+   pattern ~~(which 18 junctions RED, which 12 GREEN)~~ **[r1, F3] (on this
+   runner's own 28-junction r ≥ 3 roster: which 18 RED, which 10 GREEN —
+   the 12-GREEN figure was the probe note's, from its differently-counted
+   30-junction table, copied without reconciliation)**. [Machine: CK-BYTE —
+   walk verdict ≡ actual byte compare at ~~all 28 walked~~ **[r1, F3] all
+   22 walked** junctions **(+ the 6 above-twist SKIP junctions, recorded as
+   CK-BYTE samples with a byte verdict — all 6 byte-RED — but no walk:
+   28 samples total)**, 0
+   violations.]
+
+### 3.5 The boundary witness (I4B r = 5) and the honest box W2-BOX-1
+
+I4B (ℤ₃; reads (3,2,1),(2,1,1),(1,1,2),(2,1,1)) at r = 5: the interior
+formula character ~~ξ₄~~ **ξ₃ [r1, F5]** = χ₂^{γ₃}z₂^{−e₂A₂} = (−1)^{−13} = −1 is nontrivial
+(so (C-coll) fails) yet support-invisible at its own junction (ψ₂ = 1+y²,
+even support: r = 4 byte-equal). At r = 5 it re-emerges through the
+mod-wrap: the recorded orbit is (ξ, w) = (−1, −1) while the χ-formula
+gives (1, 1)·… — off by exactly a power of the interior ~~ϑ₄~~ **ϑ₃ [r1,
+F5]** = −1 entering
+through the monomial reduction y^{T+1} mod (y²+1) = ±y^{(T+1) mod 2}.
+**[r1, F5 — indexing: §3.2's ϑ_Q and §3.4's ξ_{m+1} are LEVEL-indexed, and
+the displayed formula is ξ_{m+1} at m = 2 — the level-3 junction, GMN
+r = 4 — so its level-indexed name is ξ₃ (with ϑ₃ = ξ₃^{−1}). The r0 text
+named it ξ₄/ϑ₄ (r-indexed), colliding with the level-indexed
+ξ₄ = χ₃^{γ₄}z₃^{−e₃A₃}, a DIFFERENT element (= 1 on I4B). Renamed;
+arithmetic unchanged (PE1 re-verified: ℓ₀ = 2, χ₂ = z₁⁴ = 1, A₂ = 13,
+z₂ = −1, recorded r = 5 orbit (−1,−1) per the JSON, formula pair (1,1)).]**
+**W2-BOX-1 (the exact residue of clause 2):** a two-parameter scalar
+formula on ALL junctions would need the monomial-collapse exponents (the
+ϑ-powers picked up by reduced representatives) tracked explicitly; the
+exact law is (HR-REC), the scalar form is proved only on (C-coll). On the
+roster every junction is either on (C-coll) or monomial-collapsing with
+scalar orbit anyway (CK-SLOT 0 violations; exactly 1 boundary junction).
+
+---
+
+## §4. CLAUSE 1 — admissibility (GMN Def-2.12, tex 1285)
+
+### 4.1 The two polygon legs (unconditional)
+
+**LEMMA W2-C1a.** ~~At every level m+1 (no shared-key hypothesis needed for
+the harness-side data):~~ **[r1, F2] At every junction level m+1, evaluated
+in a chamber whose keys BELOW the junction are byte-shared with the harness
+chain (the §1.3 perimeter restricted to q ≤ m; NO hypothesis on the junction
+itself, so every first-divergence junction is in scope):**
+v_r(Φ_{m+1}^har) = e_{r−1}f_{r−1}v_r(φ_{r−1}) and
+the order-(r−1) polygon of Φ_{m+1}^har is one-sided with support exactly
+{0, e_m g_m} ∪ (attained interior grid slots), initial abscissa 0, final
+abscissa e_m g_m. **[r1, F2 — the honest split the probe's own record
+forces: the HARNESS-SIDE content (slots at exact level-m weights, all on
+one line — the proof below) holds at every level of every tower with no
+chamber hypothesis. What the qualifier fences is the GMN READING: v_r and
+the order-(r−1) polygon are ambient-chamber quantities, identified with the
+harness line through the P-index tie, and the sealed probe's own F2 record
+has exactly 6 vok/onesided FAILURES of the unqualified statement — at
+raw-chain junctions above an interior twist (the WEIGHT/SUPPORT splits of
+§5.1's mechanism paragraph). In transported chambers the statement is
+TW-ADM's MEASURED content (44/44), riding W2-OPEN-2 above each chamber's
+first twist. Consumer note (PE1 §C.4 adjudication): the accepted [JB]'s
+§0M column (d) already consumes the REPAIRED pairing — "W2-C1a for the
+window object; W2-C3 for the transported chamber", with W-2 clause 1's own
+conditionality riding — so no accepted text is falsified by this
+qualifier.]** *Proof.* The slots C_k sit at abscissas e_m k with exact
+level-m weights β_k = (g_m−k)γ_{m+1} (REALIZE R2), so every attained point
+lies ON the line e_m·β + abscissa·h-value = e_m g_m γ_{m+1} = v_r-value =
+e_{r−1}f_{r−1}v_r(φ_{r−1}) (`vrphir`, tex 1259, through the P-index tie
+γ_{m+1} = v_r(φ_{r−1})). The initial slot k = 0 is attained because
+ψ_m(0) ≠ 0 (class pin); the final slot is the monic top. ∎ [Machine:
+probe F2 vok/onesided green at all 45 first-divergence/top junctions;
+runner TW-ADM 44/44 in the transported chambers.]
+
+### 4.2 The residual leg and the verdict
+
+**THEOREM W2-C1 (admissible representative, clause 1).** At a shared-key
+junction on the §3 perimeter, the print residual of the harness lift is
+
+    R_{r−1}(Φ_{m+1}^har)(y) = w_{m+1}·ψ_m(ξ_{m+1}·y)
+
+with (ξ, w) the §3.4 pair. Consequently, under the pinned (P-ell)
+convention Φ_{m+1}^har is a monic polynomial of type-degree m_r whose
+residual is a UNIT MULTIPLE OF THE ξ-CONJUGATE of ψ_m: it is a strict
+Def-2.12 representative of the ξ-conjugate type t^ξ (ψ_m replaced by
+ψ_m^{(ξ)}(y) := ξ^{−g_m}ψ_m(ξy), a monic irreducible with the same
+(e, h, g) data), and a representative of t ITSELF iff the character is
+support-trivial (ξ^j constant on supp ψ_m — e.g. always when ξ = 1;
+the I4B r = 4 even-support case shows support-triviality is weaker than
+ξ = 1). *Proof.* The slot-j residual coefficient of Φ^har is the slot-j
+coefficient of R(φ_r^cls) divided by ρ_j (the reads differ by ρ_j and the
+print evaluator is value-functorial on on-line digits — this is the same
+HR-REC mechanics read backwards); Thm-`phir` gives R(φ_r^cls) = c·ψ_m,
+and c/ρ_j = w·ξ^j by §3.3–3.4. Irreducibility and the (e,f) data of the
+conjugate: PARI leg. ∎ [Machine: probe F2-orbit 45/45 + F4 24/24 (both
+top lifts irreducible with (e,f) = (∏e_j, d₀∏g_j)); runner CK-XI.]
+
+### 4.3 The unpinned-ℓ parametrization (the convention analysis, displayed)
+
+The print fixes only ℓ_r h_r − ℓ′_r e_r = 1 (tex ~1291) — no
+representative is pinned. Shifting ℓ_{r−2} ↦ ℓ_{r−2} + k·e_{r−2}
+changes Def-`t(i)` by **t ↦ t − k·u_i** ~~[r1, F6] t ↦ t + k·u_i (direct
+computation: t(i) = (ℓu_i − s_i)/e_{r−2} with s_i = ℓV mod e
+ℓ-shift-invariant — the r0 sign was flipped. The rescaling display below
+and the "T2A: h = 1, k = 2" instance are as-written correct under
+k ↦ −k, i.e. they are the ℓ ↦ ℓ − k·e_{r−2} shift)~~ **[r2, P2 — the r1
+"fix" REVERTED as unfaithful to the named source; the r0 sign was CORRECT.
+Tex 1431's literal Def-`t(i)` is t_{r−1}(a)_i =
+(s_{r−1}(a) − ℓ_{r−1}·v_r(aφ_r^i))/e_{r−1} — the (s − ℓu)/e arrangement,
+with u_i = v_r(a_iφ_r^i) the polygon ordinate (tex 1373) and s_{r−1}(a)
+the attained initial abscissa, both ℓ-shift-INVARIANT — so
+ℓ_{r−2} ↦ ℓ_{r−2} + k·e_{r−2} gives t ↦ t − k·u_i directly, and the
+rescaling display below is as-written consistent with it through
+Def-`rescoeff` (tex 1447, c_i = z_{r−2}^{t(i)}·R_{r−2}(a_i)) with NO
+k ↦ −k gloss. The r1 bracket's premise formula "(ℓu_i − s_i)/e" is a
+DIFFERENT print object — Prop-`construct`'s child twist exponent (tex
+1201), near-negative of Def-`t(i)` — inherited from W2-L2's r0 naming
+parenthetical, which conflated the two opposite-signed exponents (split
+at §2.3 [r2, P2]); PE1's F6 computed with the conflated alias, r1
+implemented that finding, PE2 re-derived the sign at source. Recorded
+here so no future round re-flips it. The section's conclusions — orbit =
+characters ξ ∈ ⟨z_m^{h_m}⟩ with coupled w, reachability iff
+gcd(h_m, ord z_m) divides the ξ-exponent — quantify over all k ∈ ℤ and
+are sign-invariant under either convention, so nothing downstream moved
+in either round. The section stays inside its review-owed fence.]**,
+hence rescales the order-(r−1)
+residual coefficients on a side with initial point (s₀, u₀) by
+c_i ↦ z_{r−2}^{−k(u₀ − jh_{r−1})}·c_i:
+
+    R^{(ℓ+ke)}(X)(y) = z_{r−2}^{−k·u₀} · R^{(ℓ)}(X)( z_{r−2}^{k·h_{r−1}}·y ).
+
+So the ℓ-orbit acts on residuals exactly by the covariance characters
+with ξ ∈ ⟨z_m^{h_m}⟩ and coupled w = z_m^{−k·g_mγ_{m+1}}. The harness
+lift's character ξ = §3.4 is REACHABLE by an ℓ-shift iff
+z_m^{k·h_m} = ξ^{−1} is solvable in k, i.e. iff gcd(h_m, ord z_m) divides
+the ξ-exponent — true on many rows (e.g. T2A: h = 1, k = 2) but NOT a
+theorem of the class pin. Honest summary: **whether Def-2.12's "R ∼ ψ" is
+read strictly at a pinned ℓ or up to the ℓ-orbit is genuinely
+underdetermined by the print; under the strict pinned reading clause 1
+holds for the conjugate type t^ξ, under the orbit reading it holds for t
+itself exactly on the reachable rows.** This parametrization stands
+review-owed (probe fence inherited); nothing downstream consumes the
+orbit reading — clause 3 removes the ambiguity by transporting the type.
+
+---
+
+## §5. CLAUSE 3 — ψ-transport threaded through the tower
+
+### 5.1 The transported type (definition, iterative)
+
+Fix a harness tower T in the class pin. Define the **transported type
+data** t^tw level by level, ascending. Start from T's own (e, h, ψ)
+ledger. At each junction level m+1 = 2, 3, …, working in the CURRENT
+(already partially transported) classifier chamber:
+
+1. build the print chain on the current ledger and evaluate the Def-2.12
+   criterion on the harness lift Φ_{m+1}^har; record the junction pair
+   (ξ, w) with R(Φ^har)(y) = w·ψ^cur(ξy); **[r1, F1: above the chamber's
+   first ξ ≠ 1 junction the EXISTENCE of this pair is not §3-derived —
+   (C-coll) is NOT tracked through the transport, and §3.4's scalar warrant
+   stops at the first twist. The recording itself is a per-instance exact
+   computation (the finite orbit scan), well defined whenever the pair
+   exists; existence at every roster junction is the machine record TW-ADM
+   44/44, and existence in general is part of the open box W2-OPEN-2
+   (§5.2).]**
+2. if ξ ≠ 1, replace the current level-m modulus by its ξ-conjugate
+   ψ^tw(y) := ξ^{−g_m}·ψ^cur(ξ·y) (monic, irreducible, ψ^tw(0) ≠ 0, same
+   (e, h, g) read data — the class the harness lift ACTUALLY represents),
+   and re-coordinate every higher-level residual datum through the letter
+   identification z_old = ξ·z_new (coordinate rescale (a_i) ↦ (a_i·ξ^i)
+   at the K_{m+1}-layer of every nested tuple).
+
+The w of the pair is recorded but not consumed by the transport (classes
+are scalar-free); it is the value-layer bookkeeping unit of §3.4.
+
+**Mechanism (why this is forced — the probe's finding (4) restated as
+mathematics).** After a twisted junction the same ψ-bytes denote DIFFERENT
+residue classes in the two chains: the classifier's letter and the
+harness's letter differ by the character ξ. Without step 2 the classifier
+chain continued on raw ψ-bytes is a valid GMN type chain — of the
+CONJUGATE type — and above the twist the two keys differ at key weight
+(v(φ^cls − Φ^har) = v(key)): different induced valuations, WEIGHT/SUPPORT
+splits, and the value layer breaks (probe F2: 6, F3: 96). The transport
+makes the classifier chain lift the classes the harness chain actually
+carries.
+
+### 5.2 THEOREM W2-C3 (chain level; attempt grade given §3–§4) **[r1, F1: RE-SCOPED — proved to each chamber's first twist, MEASURED above it; grade split and the open bridging box W2-OPEN-2 below]**
+
+On the transported ledger, at every level m+1:
+
+  (i) the junction is shared-perimeter-type: the two keys agree in
+      weights and support (one-sided, same polygon; no WEIGHT/SUPPORT
+      degeneration at any level of any tower);
+  (ii) Φ_{m+1}^har is a **STRICT** (pinned-ℓ) Def-2.12 representative of
+      the transported type t^tw at level m+1 — R(Φ^har) ∼ ψ^tw exactly,
+      no orbit needed;
+  (iii) the transported print key φ^tw and Φ^har represent THE SAME type
+      (both strict representatives of t^tw; equal (e,f) by the PARI leg)
+      — the probe's conjugate-type split is cured. This is the precise
+      cash-out of "the twisted chains are MacLane-equivalent level by
+      level": equivalence as type data (same residual classes, same
+      induced valuation data), NOT byte-equality of keys (junction unit
+      ratios persist and are the §3.4 characters of the transported
+      chamber).
+
+*Proof sketch at attempt grade.* (ii) is clause 1 applied in the
+transported chamber: R(Φ^har) = w·ψ^cur(ξy) = w·ξ^{g_m}·ψ^tw(y) — a scalar
+multiple of the new modulus, i.e. strict ∼. (i): with the classes matched,
+both builders place slots on the same one-sided polygon (W2-C1a for the
+harness side, Prop-`construct`/Thm-`phir` for the print side, on the same
+(e, h, g, γ) data — transport changes no weights). (iii) from (ii). The
+induction is over junctions ascending; the re-coordination step is an
+isomorphism of the residual ledger, so each chamber stays in the class
+pin. ∎ [Machine: TW-RATIO 44/44 junction comparisons with NO weight/
+support mismatch (the probe's 6 such rows all cure); TW-ADM 44/44;
+TW-STRICT 44/44 — strict unit at EVERY level of EVERY tower; TW-PARI
+12/12 transported top lifts irreducible with (e,f) = (∏e_j, d₀∏g_j);
+TW-QO 7/7 on the extracted concrete shapes; MT-TW teeth: a garbled
+character (ξ·z₁) is caught on both designated rows.]
+
+**[r1, F1 — THE HONEST RE-SCOPE (PE1's major gap, cured by re-fencing; no
+statement above is changed, the GRADE is).** The sketch applies clause 1
+(THEOREM W2-C1) inside the transported chamber; clause 1 is proved AT A
+SHARED-KEY JUNCTION (§1.3: byte-equality of all keys below). In a
+transported chamber this warrant holds up to and including the chamber's
+FIRST ξ ≠ 1 junction r₀ — junctions below r₀ recorded ξ = 1, so no
+conjugation fired ~~and every key below r₀ is byte-equal to the harness key;
+the criterion AT r₀ is therefore evaluated over byte-shared lower keys and
+clauses 1–2 apply~~ **[r2, P1] — and the further step "recorded ξ = 1 ⟹
+byte-equal" (what makes the criterion at-or-below r₀ evaluate over
+byte-shared lower keys, so that clauses 1–2 apply) is NOT definitional: the
+recorded pair sees only the top-layer reads, while the byte law (§3.4 rk. 3)
+quantifies over EVERY node value of the recursion tree — a read-invisible
+deeper-node divergence (the §3.5 invisible-twist genre one layer down)
+would be byte-RED with recorded ξ = 1. That step is PROVED at m = 1
+(LEMMA W2-ID1 below) and at m ≥ 2 is exactly W2-OPEN-2's premise sub-clause
+(OPEN-2a); on the committed roster it is instance-exact — recorded ξ ≠ 1 ⟺
+byte-RED at 22/22 walked junctions, and every junction below every
+chamber's r₀ is byte-GREEN (PE2's recomputation from the committed JSON)**.
+ABOVE r₀ the transported print keys and the harness
+keys are byte-DIFFERENT **[r4, PE4 o-b: roster instance (all 6 above-r₀
+SKIP junctions byte-RED — PE2/PE4 recomputation); in general UNPROVED —
+the same converse+persistence content flagged inside W2-OPEN-2's premise
+[r3]; this block's conclusion consumes only the ABSENCE of the byte-share
+warrant, which holds either way]** (the persistent unit ratios of (iii)'s
+own wording), every higher junction sits OFF the §3 perimeter, and clauses
+1–2 AS PROVED do not apply there. Honest grade, per junction-level of the
+roster's 44 (per-tower first-twist census recomputed this round from the
+committed ξ-ledger): **PROVED at attempt grade given §3–§4 at the 38
+junction-levels at-or-below each chamber's first twist; MEASURED at the 6
+junction-levels above a first twist** — T3A/T3C/T3D/T3E at r = 4 and I4C
+at r = 4, 5, exactly the interior-twist geography the transport exists to
+cure — where (i)–(iii) hold conditionally on the open bridging lemma
+W2-OPEN-2 displayed below. **[r2, P1 — the proved-scope sentence, scoped
+to what carries it: at the proved-scope junction-levels whose strictly-
+below junctions all sit at m ≤ 1 (GMN r ≤ 4; TH-BASE + LEMMA W2-ID1 cover
+the below-chain), the byte-share warrant is fully §3-derived; at the
+proved-scope junction-levels with an m ≥ 2 recorded-trivial junction below
+— on this roster exactly I4A r = 5 and I4B r₀ = 5 (read off the per-chamber
+first-twist census this round) — the warrant is INSTANCE EVIDENCE (every
+below-r₀ junction byte-GREEN, 22/22 walked equivalence — PE2's
+recomputation) riding (OPEN-2a). The 38/44 census stands as exactly that:
+36 junction-levels fully warranted + 2 instance-warranted, not a uniform
+theorem-grade 38.]** (The final-chamber scans stand in for the
+mid-transport states: later junctions never touch the data a lower
+junction's residual depends on — PE1 §A.9 verified this index-by-index in
+`transport_leg`.) Two companion honesty items: (a) whether (C-coll)
+survives into each transported chamber is NOT tracked, so above r₀ the
+recorded (ξ, w) is the orbit scan's exact per-instance value, not the
+§3.4 scalar formula (§5.1 step 1's [r1] bracket); (b) evidence-class
+reclassification (PE1 §C.5): **TW-STRICT is SAME-ADJACENT evidence given
+TW-ADM** — once the orbit pair exists, the §5.1 conjugation makes
+strictness an identity — so the bracket above reads honestly as TW-ADM
+44/44 plus a construction-forced strictness confirmation, NOT two
+independent 44/44 legs.]**
+
+**LEMMA W2-ID1 (recorded-ξ triviality ⟹ byte-equality at m = 1). [r2, P1]**
+At an m = 1 junction (GMN r = 3, the first junction of any chamber — lower
+keys byte-shared unconditionally by TH-BASE, so no transport has fired
+below and ψ^cur = ψ₁), if the §5.1 step-1 recorded pair has ξ = 1, then the
+junction is byte-equal. *Proof (from W2-C2(a) + §3.4).* At m = 1 the §3.4
+display is unconditional: R₂(Φ₂^har)(y) = ψ₁(ξ_f·y) with the formula pair
+(ξ_f, w_f) = (z₁^{−e₁A₁}, 1). A recorded pair (1, w) means
+R₂(Φ₂^har) = w·ψ₁(y); equating the two at j = 0 (ψ₁(0) ≠ 0, class pin)
+forces w = 1, so ψ₁(ξ_f·y) = ψ₁(y), i.e. ξ_f^j = 1 for every
+j ∈ supp(ψ₁) — including the monic top j = g₁. Hence on supp(ψ₁) ∩ [0, g₁):
+c·z₁^{A₁e₁·j} = ξ_f^{g₁}·ξ_f^{−j} = ξ_f^{g₁−j} = 1 (using c = c₁^{e₁g₁} =
+ξ_f^{g₁} and z₁^{A₁e₁j} = ξ_f^{−j}) — exactly §3.4 rk. 3's m = 1
+byte-equality law, so the junction is byte-equal. ∎ ~~Consequently the
+identification "first recorded ξ ≠ 1 junction = first byte-divergence" is
+PROVED for every junction whose strictly-below junctions all sit at m ≤ 1
+(ascending: r = 2 by TH-BASE, r = 3 by this lemma); at m ≥ 2 it is OPEN —
+the premise sub-clause (OPEN-2a) of the box below.~~ **[r3, PE3-P1 —
+scoped to the proved direction:** consequently, at every junction whose
+strictly-below junctions all sit at m ≤ 1 (ascending: r = 2 by TH-BASE,
+r = 3 by this lemma), NO byte-divergence occurs strictly below the first
+recorded ξ ≠ 1 junction — the HALF of the identification "first recorded
+ξ ≠ 1 junction = first byte-divergence" that every consuming surface of
+this note uses (the §5.2 re-scope warrant, (OPEN-2a), and the 36+2 census
+each re-read one-directional this round, agreeing with PE3 §P1 "blast
+radius: contained"); at m ≥ 2 this same forward direction is the premise
+sub-clause (OPEN-2a) of the box below; the CONVERSE — recorded ξ ≠ 1 ⟹
+byte-RED — is UNPROVED at every m including m = 1: it is a property of the
+recorded-pair SELECTION RULE, which this note never pins (§3.4 rk. 2's
+non-uniqueness on sparse support; §5.1 step 1 just says "record the
+junction pair"), and it is FALSE under the sealed scan's actual selection —
+the counter-instance recorded below.**]** [Machine: instance-exact
+on the roster — recorded ξ ≠ 1 ⟺ byte-RED at all 22 walked junctions, of
+which the m = 1 slice is the 16 r = 3 rows (PE2 recomputation).]
+
+**[r3] THE CONVERSE'S HONEST BOUNDARY — PE3's class-pin counter-instance
+at m = 1, recorded here next to the lemma (`GRTW2_passPE3_report.md` §P1;
+quoted, since it is the exact reason the converse direction is not
+claimed).** The sealed `orbit_scan` (grt_w2_checks.py lines ~~135–164~~
+**135–163 [r4, PE4 o-c: `return out` at 163; 164 is the trailing blank —
+re-verified at the sealed source this round]**)
+records the FIRST satisfying ξ in `F.elems()` enumeration order, and for
+extension residue fields that order yields the generator BEFORE 1
+(`Ext.elems` = `itertools.product(base.elems(), repeat=g)`,
+iterlawn_pe_reimpl.py line 220: for F₄, (0,1) = ζ precedes (1,0) = 1).
+PE3's construction, quoted: "Tower: ℤ₂ (or F₂[[t]]), d₀ = 1, Φ₀ = x; read
+0 = (e₀,h₀,g₀) = (1,1,2) with ψ₀ = y²+y+1 (K₁ = F₄, ζ := z₁); read 1 =
+(2,1,3) with ψ₁ = y³ + ζ (monic, irreducible — x³ = 1 for all x ∈ F₄* so
+no root, and a cubic factorization needs a root — ψ₁(0) = ζ ≠ 0; in the
+[ILN]† S0.1 pin). At the m = 1 junction: e₀ = 1 ⟹ ℓ₀ = 0 ⟹ A₁ = 0 ⟹
+c = 1 and the §3.4 rk. 3 byte law holds trivially — the junction is
+byte-equal, formula pair (1,1). But supp(ψ₁) = {0,3} and ξ³ = 1 for EVERY
+ξ ∈ F₄*, so all three units satisfy the orbit equations, and the sealed
+scan's enumeration records (ζ, 1) — recorded ξ ≠ 1 at a byte-equal
+junction." For that chamber "first recorded ξ ≠ 1 junction = first
+byte-divergence" is FALSE (its ledger r₀ = 3 with no byte-divergence
+anywhere), and the transport fires a spurious conjugation — ψ^tw = ψ since
+ζ stabilizes the support, but the §5.1 step-2 re-coordination
+(a_i) ↦ (a_i·ζ^i) of higher data is nontrivial. Machine-probed by PE3 with
+the scan's ξ-loop semantics copied verbatim (`/tmp/w2_pe3_fresh.py`).
+ROSTER-INVISIBLE: the Tower builder implements only g ∈ {1,2} ("only g in
+{1,2} implemented", iterlawn_pe_reimpl.py line 311), and for g_m ≤ 2 no
+support-stabilizing unit with zero constant coefficient exists (g = 1:
+stabilizer trivial; g = 2 sparse: stabilizer {±1}, nonzero constant term),
+so on the committed roster enumeration order coincides with a ξ = 1
+preference everywhere — consistent with the 22/22 census; the failure
+needs g_m ≥ 3. Under a trivial-preferring selection rule the converse
+WOULD hold at every m (byte-equal ⟹ the trivial pair (1, c) satisfies the
+orbit equations by Thm-`phir` ⟹ recorded ξ = 1 under the preference); this
+note pins no such rule and the sealed runner is BYTE-FROZEN, so the
+converse stays UNCLAIMED — any future round pinning the ξ = 1 preference
+must also disclose that the sealed scan realizes it only where no
+nontrivial support-stabilizing unit precedes 1 in enumeration order (on
+this roster: everywhere; off-roster: not guaranteed, as above).
+
+**W2-OPEN-2 (the chain-level bridging lemma — this note's own open box at
+the chain level; OPEN, instance-confirmed).** In a transported chamber
+with first recorded ξ ≠ 1 junction r₀, consider any junction at GMN order
+r > r₀ (harness level m+1 = r−1). The chamber's keys φ_q^tw are byte-equal
+to the harness keys ~~Φ_q~~ **Φ_{q−1} [r2, P3 — the note's own §1.2
+dictionary (φ_i^GMN = Φ_{i−1}^har) pairs the order-q key with the harness
+Φ_{q−1}; as previously written the comparanda had different degrees]** for
+q < r₀ and byte-DIFFERENT for r₀ ≤ q < r **[r3, PE3-P1: this byte-DIFFERENT
+clause is the CONVERSE direction of the identification (recorded ξ ≠ 1 ⟹
+byte-RED) — unproved at every m and FALSE under the sealed scan's selection
+off-roster (the counter-instance recorded at LEMMA W2-ID1 above) **[r4,
+PE4 o-e: that chamber's top junction IS its r₀ — 2 reads, so this box's
+range r > r₀ is empty there; instantiating THIS clause's falsity strictly
+means appending any third read, immediate since appending a read leaves
+all lower junction data unchanged and the q = r₀ keys stay byte-equal as
+recorded]**; it stands
+here as part of this OPEN box's premise, alongside (OPEN-2a), not as a
+proved fact]** —
+same weights, same one-sided support, both strict Def-2.12 representatives
+of the same transported type, differing by persistent on-line unit ratios.
+**[r2, P1] (OPEN-2a) — the premise's own open sub-clause ~~(the junction
+identification at m ≥ 2): the byte-equality below r₀ just asserted IS the
+identification "first recorded ξ ≠ 1 junction = first byte-divergence",
+which this note does NOT prove at m ≥ 2.~~ **[r4, PE4-P1 — the opening
+gloss scoped to the proved direction, matching the sub-clause statement it
+glosses (the pre-r4 gloss equated the forward half with the whole and
+implicated an m = 1 proof of the whole): (the junction identification's
+FORWARD direction at m ≥ 2): the byte-equality below r₀ just asserted IS
+that identification's forward half (recorded ξ = 1 ⟹ byte-equal — the
+HALF of "first recorded ξ ≠ 1 junction = first byte-divergence" that every
+consuming surface of this note uses), which this note does NOT prove at
+m ≥ 2; the CONVERSE is UNPROVED at every m including m = 1, PE3's
+counter-instance recorded at LEMMA W2-ID1 above.]** Sub-clause statement: at a
+junction at level m+1 with m ≥ 2, keys below byte-shared and recorded
+ξ = 1, the raw print key is byte-equal to the harness key. Status: PROVED
+at m = 1 (LEMMA W2-ID1 above); OPEN at m ≥ 2 — the recorded pair sees only
+the top-layer reads while the byte law (§3.4 rk. 3) quantifies over every
+node value of the recursion tree, so a read-invisible deeper-node
+divergence (a character invisible on sparse support — the genre this
+note's own I4B exhibits one layer down) would break it; instance-exact on
+the committed roster (22/22 walked junctions; every below-r₀ junction
+byte-GREEN — PE2's recomputation). A class-pin chamber violating (OPEN-2a)
+would carry a byte divergence below its r₀ with the transport never firing
+there, putting this box's premise out of reach — which is why the
+sub-clause lives INSIDE the box as part of its premise rather than being
+imported silently.**
+CLAIM:
+
+    (a) v_r(Φ_{m+1}^har) = e_{r−1}f_{r−1}v_r(φ_{r−1}^tw), and the
+        order-(r−1) polygon of Φ_{m+1}^har IN THE TRANSPORTED CHAMBER is
+        one-sided with the harness support        [TW-ADM's vok/onesided];
+    (b) R_{r−1}(Φ_{m+1}^har) = (unit)·ψ_m^tw exactly — STRICT; in
+        particular the (ξ, w) recording of §5.1 step 1 exists at every
+        junction and the transport never aborts    [TW-ADM orbit +
+                                                    TW-STRICT].
+
+Equivalent sufficient form (the key-carry statement — the chain-level
+shadow of §5.4's analysis): writing Φ_q^har = φ_q^tw + D_q with
+deg D_q < deg φ_q and D_q on-or-above the key line, the φ^tw-devs of the
+powers (φ^tw + D)^{e_m k} pick up only slot-character corrections — the
+binomial cross-terms (whose devs fire carries exactly as in §5.4 channel
+(b), here for KEY objects rather than anchors) never produce a weight drop
+or a support split at any node of the (HR-REC) recursion tree.
+Alternative discharge route: a faithfully transcribed GMN
+representative-independence statement — NOT in this note's
+literature-consumption list; taking it would be a NEW consumption under
+the faithfulness discipline, with its own transcription and audit.
+
+**Derivability adjudication (r1; four routes, each checked at source —
+none supplies the lemma, which is why it is boxed OPEN rather than cited):**
+(1) **[JC] (COORD-B)/JC-LOC:** machinery for ONE valuation — the harness w
+of a fixed tower, anchors built from harness data. Its
+normalized-coordinate invariance under line-wise rescaling (ρ_λ = 𝑅_λ/a_λ)
+is the right mechanism SHAPE but is proved chamber-internally only; and
+the corpus's sharpest two-operator dictionary, open lemma TR-3′-GEN, is
+OPEN beyond {all order-2} ∪ {order-3 all-e_j = 1}, with its units-only
+phrasing PERMANENTLY REFUTED on the order-3 stratum (ii) (the discrepancy
+is a slot-keyed character) — the accepted corpus itself prices the needed
+two-chain comparison as open. (2) **[JB]'s transport:** JB-DEV/JB-VTX/
+JB-TREE are single-chain harness dev/polygon/tree laws; the Σ(S) transport
+is a WEIGHT-FRAME reparameterization, never a key-representative change
+(JB row 15's 8 chamber walks are machine legs, not theorems). (3)
+**Classical MacLane key-equivalence invariance does not apply:** equal
+augmented valuations require v_{r−1}(Φ^har − φ^tw) ≥ γ (the ASSIGNED
+value); the recorded data warrant only ≥ key weight — with equality
+generic (proportional residuals differing by the unit w·ξ^{g_m}/c) —
+strictly BELOW γ, so the two chains' inductive valuations may genuinely
+differ as functions on O[x], and the lemma is irreducibly a statement
+about the CANONICAL lifts, not an instance of representative-invariance
+of the valuation. (4) **The GMN print:** develops the order-r theory over
+an arbitrary FIXED representative (tex 1288 "we fix a representative …
+without necessarily assuming that it has been constructed by the method
+of Proposition construct"; tex 1719) and itself flags
+representative-DEPENDENCE of derived objects (tex 2053); no independence
+proposition is among this note's consumed anchors, and even one would
+leave the two-recipe comparison (harness canonical lift vs print chamber)
+to prove. **Status: OPEN.** Machine: TW-ADM/TW-STRICT 44/44 junction-levels
+across all 16 transported chambers, of which exactly 6 lie above a first
+twist (the lemma's live region); teeth MT-TW 2/2.
+
+### 5.3 The value layer: W2-OPEN-1 (displayed open lemma, machine-confirmed)
+
+**W2-OPEN-1.** On every tower of the class pin, the committed value/
+cocycle battery — K5 = L6-(n) anchor values, K6 = W-MULT top, K7 = THE LAW
+c_{n+1} = z̄^δ·∏_j z_j^{D_j}, K12 = π-shift/ρ-monodromy, K1–K4/K13 riding —
+holds verbatim with the TRANSPORTED classifier lifts substituted for the
+harness lifts (the ClsTower reading: all valuations/reads/anchors/cocycles
+computed ON the transported keys against the harness ψ-byte ledger).
+
+Status: **instance-confirmed, not proved.** [Machine: TW-F3 = 0 violations
+on ALL 16 towers, 684 sample groups — in particular the probe's 96 RED
+(K6: 48, K7: 48 on T3A/T3C/T3D/I4C) all GREEN; TW-F3b control unchanged
+0.] The honest distance to a proof: the battery's laws are corpus theorems
+about the HARNESS lifts; transporting them across the junction units needs
+the anchor-product carry analysis of §5.4 run level-generically (the
+transported key differs from the harness key by on-line unit ratios, and
+the battery consumes key bytes only through overflow carries — §5.4 —
+whose reads shift by exactly the recorded characters on both sides of the
+cocycle ratio). That analysis is the W-2 → W-5 seam (the correction-tree
+junction J-B) and is NOT claimed here. **[r1, F1: its CHAIN-LEVEL shadow —
+the same carry analysis run on the key objects instead of the anchors — is
+now displayed as the open box W2-OPEN-2 in §5.2.]**
+
+### 5.4 The T3E residue EXPLAINED (the probe's unexplained observation)
+
+Probe finding: T3E (ℤ₂; reads (2,1,2),(1,1,1),(2,3,1); flat middle
+e₁ = 1) transports the full battery DESPITE interior divergence, while
+T3A/T3C/T3D/I4C break. Mechanism, now located and machine-confirmed:
+
+**LEMMA W2-T3E (carry-inertness of a flat-shielded twist).** The battery
+consumes a diverged key Φ_j only through two channels: (a) exact powers
+in anchors and their products (byte-inert: the dev of a product of pure
+key powers by the key is exact, and the digit is the byte-shared lower
+part); (b) the division carry Φ_{j−1}^{e_{j−1}} ↦ Φ_j − Ĉ fired when an
+anchor product overflows, i.e. when s_j(γ) + s_j(γ′) ≥ e_{j−1} — ONLY
+then do the twisted correction bytes Ĉ enter a read. If e_{j−1} = 1
+directly below the (unique) diverged key, then s_j ≡ 0 identically and
+channel (b) never fires: the twist is CARRY-INERT and every battery
+quantity is byte-identical to the harness computation.
+
+On T3E the only battery-consumed diverged key is the top anchor key Φ₂
+with e₁ = 1 below it: s₂ ≡ 0 on the whole window. [Machine CK-T3E:
+s₂-census = {0}; 0 byte-differing battery digits across all pairs; 0
+violations.] On T3A (e₁ = 2) the overflow pairs exist and are exactly
+where the twisted bytes enter: every K6/K7-failing pair is an overflow
+pair whose top-dev digits differ in bytes (16 failing pairs ⊆ 24
+byte-diff pairs; the reverse containment fails honestly — a carry can be
+read-invisible or a common character can cancel in the cocycle ratio).
+[Machine CK-T3E: containment exact.] **[r1, F7 — machine-key scope: CK-T3E
+keys exactly the byte-diff containment (16 ⊆ 24) and the s₂-censuses ({0}
+on T3E, {0,1} on T3A); the identification of the 24 byte-diff pairs as
+s₂-OVERFLOW pairs is the mechanism's reading (channel (b) of LEMMA
+W2-T3E), asserted per-mechanism and not machine-keyed pair-by-pair.]** T3E is therefore NOT an anomaly: it
+is the e = 1 passthrough leg (the K13 genre) of the same mechanism that
+breaks the other rows — and after transport the question is moot
+(TW-F3 = 0 everywhere).
+
+---
+
+## §6. Records
+
+### 6.1 Machine bracket (this unit's runner, sealed roster; 0 violations, 6,403 samples)
+
+| family | claim keyed | samples | verdict |
+|---|---|---|---|
+| CK-MM | W2-L2 mismatch identity (integers + elements) | 4,396 | GREEN |
+| CK-HR1 | W2-L1 base builder read | 156 | GREEN |
+| CK-VD1 | W2-L3 level-1 packed dictionary | 156 | GREEN |
+| CK-REC | (HR-REC) at every shared-key node | 55 | GREEN |
+| CK-SLOT / CK-SLOT-M1 | W2-C2 slot-ratio law / m = 1 exact form | 44 / 16 | GREEN |
+| CK-XI | §3.4 (ξ,w) satisfies the orbit equations (21 perimeter junctions; 1 recorded boundary = I4B r=5) | 22 | GREEN |
+| CK-BYTE | byte law ⟺ node-value walk | 28 | GREEN |
+| TW-RATIO / TW-ADM / TW-STRICT | W2-C3 (i)/(ii) **[r1, F1: 38 of the 44 junction-levels sit at-or-below a chamber's first twist (proved scope), 6 above it (measured scope — the W2-OPEN-2 region); TW-STRICT is SAME-adjacent evidence given TW-ADM (construction-forced strictness), not an independent leg; **[r2, P1] the proved-scope boundary rides W2-ID1 at m = 1 and (OPEN-2a) at m ≥ 2 — see §5.2**]** | 44 each | GREEN |
+| TW-F3 / TW-F3b | W2-OPEN-1 (96 → 0) / control | 684 / 684 | GREEN |
+| TW-PARI / TW-QO | transported (e,f) ties / concrete shapes | 12 / 7 | GREEN |
+| CK-T3E | W2-T3E mechanism (both directions) | 2 | GREEN |
+| MT-TW | teeth (garbled character caught) | 2 | GREEN |
+
+**[r1, F4 — prereg disclosure (the runner is byte-frozen, so the
+correction lives here):** the sealed runner's docstring preregisters
+"TW-PARI … PREDICT: 24/24", but the family as executed has **12** samples —
+ONE top lift per ℤ_p row (the transported classifier top); the 24 was the
+probe's both-legs count, copied into the seal. The substantive prediction
+(0 violations) HELD and the note's TW-PARI 12/12 figures are correct; the
+seal's sample-count miscount is disclosed here rather than silently
+absorbed.]**
+
+### 6.2 Claims table (grades)
+
+| claim | statement | grade |
+|---|---|---|
+| W2-L0/L1/L2/L3 | grid tie; base builder; mismatch identity; VD-1 | PROVED (attempt grade 0/2) |
+| TH-BASE | r = 2 junctions byte-equal | PROVED |
+| W2-C1a | vok + one-sided polygon of the harness lift, ~~every level~~ **[r1, F2] every junction with byte-shared below-chain (chamber qualifier; harness-side line content unconditional; transported chambers = TW-ADM measured, riding W2-OPEN-2 above a first twist)** | PROVED **as qualified [r1, F2]** |
+| W2-C2(a) | slot law + (ξ,w) = (c₁^{e_m}, 1) at m = 1 | PROVED |
+| W2-C2(b) + §3.4 | scalar (ξ,w) closed form at m ≥ 2 | PROVED **on (C-coll)**; outside: exact recursion (c), boundary boxed W2-BOX-1 |
+| W2-C1 | clause 1 verdict (strict rep of t^ξ; of t iff support-trivial) | PROVED on the §3 perimeter |
+| §4.3 | unpinned-ℓ parametrization | CONVENTION ANALYSIS, review-owed |
+| W2-ID1 [r2] | recorded ξ = 1 ⟹ byte-equal at m = 1 junctions ~~(the boundary identification, m = 1 case)~~ **[r4, PE4 o-d: (the FORWARD half of the boundary identification, m = 1 case; the converse is unproved at every m — §5.2 [r3])]** | PROVED (from W2-C2(a) + §3.4 rk. 3; §5.2) |
+| W2-C3 (i)–(iii) | clause 3 chain level (strict rep of t^tw, no splits, same-type) | ~~PROVED at attempt grade given §3–§4; machine 44/44/44~~ **[r1, F1] PROVED at attempt grade given §3–§4 up to and including each chamber's first ξ ≠ 1 junction (38/44 junction-levels); MEASURED above it (6/44: T3A/T3C/T3D/T3E r = 4, I4C r = 4,5) riding W2-OPEN-2** **[r2, P1: "first ξ ≠ 1" = first RECORDED — ~~the coincidence with first byte-divergence is W2-ID1 at m = 1, (OPEN-2a) at m ≥ 2~~ **[r3: W2-ID1/(OPEN-2a) carry the FORWARD direction only (recorded ξ = 1 ⟹ byte-equal, so nothing byte-RED below the first recorded twist — all the proved scope needs); the converse is unproved at every m, PE3's counter-instance recorded at §5.2]**; of the 38, the 2 with an m ≥ 2 recorded-trivial junction below (I4A/I4B r = 5) are instance-warranted, the other 36 fully derived]**; machine TW-RATIO/TW-ADM 44/44 (TW-STRICT SAME-adjacent) |
+| W2-OPEN-2 [r1] | chain-level bridging lemma (criterion transfer + strictness across byte-different same-type lower keys; §5.2 box) **[r2: now carries its premise sub-clause (OPEN-2a) — the m ≥ 2 junction identification **[r4: = its FORWARD direction only (recorded ξ = 1 ⟹ byte-equal); §5.2 [r3]/[r4]]** — and the P3 pairing fix Φ_{q−1}]** | **OPEN**, instance-confirmed 44/44 (live region = the 6 above-twist junction-levels + (OPEN-2a) at m ≥ 2); not derivable from the accepted corpus (four-route adjudication displayed) |
+| W2-OPEN-1 | clause 3 value layer (battery on transported lifts) | **OPEN**, instance-confirmed 684 groups / 0 |
+| W2-T3E | flat-shielded twists are carry-inert | PROVED (mechanism) + machine both directions |
+
+### 6.3 Consequence display (what J-A / J-B can now consume, with caps)
+
+* **For J-A (W-1, the operator dictionary):** W2-L3 is the level-1 value
+  dictionary IN PROVED FORM (ε = the print twist in canonical
+  coordinates), and (HR-REC) is the exact level-generic transfer shape;
+  but W-1 at orders ≥ 3 is NOT advanced — the level-≥2 dictionary is a
+  conjugation whose scalar collapse needs (C-coll).
+* **For W-2's consumers ([ILN]† applicability):** the corrected W-2 now
+  states — and this note proves at its displayed grades — that the
+  classifier's canonical keys are unit-covariant images of the harness
+  lifts with EXPLICIT characters, and that after ψ-transport the harness
+  value-layer corpus is instance-verified verbatim on classifier lifts.
+  Any consumer citing this must carry: (a) the (C-coll)/recursion split
+  of clause 2; (b) W2-OPEN-1's open status for the general value-layer
+  theorem; (c) the §4.3 convention fence; **(d) [r1, F1] W2-OPEN-2's open
+  status for clause 3's chain level ABOVE each transported chamber's first
+  ξ ≠ 1 junction (the grade split proved-to-first-twist / measured-above),
+  and the chamber qualifier on W2-C1a [r1, F2]** **[r2, P1: including
+  W2-OPEN-2's own premise sub-clause (OPEN-2a) — ~~the recorded-ξ/byte-
+  divergence identification at m ≥ 2, proved only at m = 1 (W2-ID1),~~
+  **[r4, PE4-P1: the FORWARD direction of the recorded-ξ/byte-divergence
+  identification at m ≥ 2 (recorded ξ = 1 ⟹ byte-equal — all the proved
+  scope needs), proved at m = 1 (W2-ID1); the CONVERSE (recorded ξ ≠ 1 ⟹
+  byte-RED) is UNPROVED at every m, PE3's counter-instance recorded at
+  §5.2]**,
+  instance-exact on the roster].**
+* **NOT unlocked:** W-5 (correction-tree transfer: the §5.4 carry
+  analysis is its opening move, not its proof), the J-C block W-6..W-9
+  (no gr claim anywhere here; BLOCKED-ON-CARRIER-TIE stands), J-D counts,
+  and every Phase-B Lean obligation. The P0 application gate stands.
+
+### 6.4 Dependency line
+
+CONSUMES: [ILN]† S0.1/S0.2 (accepted package: class pin, canonical lifts,
+REALIZE/WELL-DEF, reads) · GMN print as literature (§ header list, tex
+anchors) · the sealed probe artifacts + its GmnLeg transcription (commit
+55f7416/a6f7653 line) · GRB D-REAL only as context (no consumption) ·
+GRW2_TIE_DESIGN OB-1..6 only as the named downstream (no consumption).
+CONSUMED BY (intended): the W-1 dictionary unit, the W-5 tree unit, and
+the weld campaign's J-A ledger. Fences: instance evidence = 16 towers
+(reads ≤ 4 + top, residue fields ≤ F₉, wild rows included) + 5 shapes;
+F_p[[t]] rows have no PARI leg (displayed deferral, inherited); nothing
+here is a Lean artifact; ~~no acceptance arc opened — hostile passes owed
+before any consumption at proof grade~~ **[r1] the acceptance arc is OPEN
+(S-STATUS block, top): PE1 run (0C + 2G + 5m), r1 applied, counter 0/2 —
+2-clean owed before any consumption at proof grade. The note's open boxes
+after r1: W2-OPEN-1 (value layer) + W2-OPEN-2 (chain level above a first
+twist) + W2-BOX-1 (scalar form off (C-coll)) + the §4.3 convention fence.**
+**[r2] PE2 run (0C + 2G + 1m, 79e796b), r2 applied, counter 0/2, PE3 next;
+open boxes unchanged in count — W2-OPEN-2 now carries its premise
+sub-clause (OPEN-2a) explicitly, and the new proved lemma W2-ID1 (§5.2)
+closes the m = 1 slice of that identification **[r4, PE4-P1: = of its
+FORWARD direction only (recorded ξ = 1 ⟹ byte-equal); the converse is
+UNPROVED at every m — §5.2 [r3]]**.** **[r3] PE3 run (0C + 1G
+minor, 9bd938f), r3 applied, counter 0/2, PE4 next; open boxes unchanged in
+count — the "identification PROVED at m = 1" claims scoped to the proved
+direction at the four flagged sites (W2-ID1 = recorded ξ = 1 ⟹ byte-equal;
+the converse UNPROVED at every m, PE3's counter-instance recorded at §5.2),
+and the converse flag added inside W2-OPEN-2's premise.** **[r4] PE4 run
+(0C + 1G minor + 1m, e92cb22), r4 applied, counter 0/2, PE5 next; open
+boxes unchanged in count — the residual two-sided vocabulary scoped to the
+proved direction at the three surfaces the r3 sweep missed plus the
+sweep-completing sites (§10), the footer dateline extended, and the
+o-b/o-c/o-e precisions applied.**
+
+---
+
+## §7. Arc record — round r1 (2026-08-06, note-only)
+
+**Against:** W2-PE1 (`GRTW2_passPE1_report.md`, commit 083adff; target
+5463f2a) — 0 CRITICAL, 2 JUSTIFICATION GAPS, 5 minor; core mathematics
+CONFIRMED by full re-derivation (PE1 §A), machine leg re-run bit-identical
+(PE1 §B). Repair map, finding → edit site:
+
+* **F1 (major gap) → THE HONEST RE-SCOPE.** Per the dispatch, r1 FIRST
+  adjudicated whether the missing bridging lemma is DERIVABLE from the
+  accepted corpus ([JC]'s (COORD-B)/JC-LOC coordinate calculus, [JB]'s
+  transport, classical MacLane equivalence, the GMN print) — four routes,
+  each checked at source, NONE supplies it (the adjudication is displayed
+  inside the W2-OPEN-2 box, §5.2). Verdict: **RE-SCOPED, not bridged.**
+  W2-C3 regraded proved-to-first-twist / measured-above (grade cap, §5.2
+  header + [r1, F1] block, §6.1 row, §6.2 row); the bridging lemma
+  displayed as this note's own open box **W2-OPEN-2** with its exact
+  statement, the key-carry sufficient form, and the alternative
+  GMN-citation route named as a NEW consumption if ever taken; (C-coll)
+  tracking honesty added at §5.1 step 1; TW-STRICT reclassified
+  SAME-adjacent given TW-ADM (§5.2, §6.1); consumer face gains carry item
+  (d) (§6.3). Proved/measured census recomputed this round from the
+  committed ξ-ledger: 38/44 at-or-below a first twist, 6/44 above
+  (T3A/T3C/T3D/T3E r = 4; I4C r = 4, 5).
+* **F2 (moderate gap) → the W2-C1a chamber qualifier** (statement §4.1,
+  grade cap "unconditionally", claims-table row), with the honest split:
+  harness-side line content level-unconditional, GMN v_r reading fenced to
+  byte-shared-below chambers (probe F2's 45 GREEN) + transported chambers
+  (TW-ADM 44/44, measured). The accepted [JB]'s §0M column (d) already
+  consumes the REPAIRED pairing (PE1 §C.4) — no accepted text falsified.
+* **F3 → the three machine-count corrections**: 24 → 22 shared-key r ≥ 3
+  (§3.3(b)); 28 walked → 22 walked + 6 recorded SKIP (§3.4 rk. 3);
+  12 GREEN → 10 GREEN on this runner's 28-junction roster, probe's
+  30-junction figure reconciled (§3.4 rk. 3). All re-verified against the
+  committed JSON this round (independent recount: 28 = 22 + 6 SKIP;
+  walked split 10 GREEN/12 RED; the 6 SKIPs all byte-RED → 18/10).
+* **F4 → prereg disclosure** (§6.1): runner docstring "TW-PARI PREDICT
+  24/24" vs the executed family's 12 samples; prediction (0 violations)
+  held; runner byte-frozen so the disclosure lives in the note.
+* **F5 → the ξ₄/ϑ₄ → ξ₃/ϑ₃ renaming** (§3.5): level-indexed per §3.2/§3.4;
+  the r-indexed name collided with the level-indexed ξ₄ (= 1 on I4B), a
+  different element; arithmetic unchanged.
+* **F6 → the §4.3 sign fix** (t ↦ t + k·u_i, bracketed inside the
+  review-owed fence; display + T2A instance correct under k ↦ −k;
+  conclusions sign-invariant).
+* **F7 → the T3A overflow-pair scope bracket** (§5.4): machine keys the
+  16 ⊆ 24 containment + s₂-censuses; the overflow identification of the
+  24 is per-mechanism, not per-pair.
+
+**Fold implications recorded for the orchestrator (accepted texts are
+NEVER edited by this unit):** WELDMASTER's (M4) face quotes W2-C3
+("ψ-transport: strict representative at every level of the transported
+chain, no weight/support splits") under its as-of pin [W2]@5463f2a (WM
+r3's O-1 pin group) — the pin makes that face drift-proof and PE1
+adjudicated that it carries the conditionality BY CITATION, so nothing is
+falsified; at the next ledger fold a dated annotation pointing (M4)'s
+W2-C3 cite at the re-scoped grade (proved-to-first-twist / measured-above
+/ W2-OPEN-2) is owed, and likewise JB §0M row 15's subordinate
+"(representative reading; W2-C3 chamber off the byte perimeter)" cell.
+Both are orchestrator actions, not r1 edits.
+
+**Freeze:** r1 is note-only. `grt_w2_checks.py` (sha256 71f8fc90f7543fd3…,
+PE1-verified bit-identical to 5463f2a) and both artifacts untouched; a
+stray working-tree drift on `grt_w2_checks_results.json` (elapsed_s only,
+left by a prior pass's re-run) was restored to the committed bytes before
+this round's edits. **Counter 0/2 (ZERO clean passes); W2-PE2 — a fresh
+hostile pass on this post-r1 text — is the next acceptance attempt.**
+
+---
+
+## §8. Arc record — round r2 (2026-08-07, note-only)
+
+**Against:** W2-PE2 (`GRTW2_passPE2_report.md`, commit 79e796b; target
+8d5e3fa) — 0 CRITICAL, 2 JUSTIFICATION GAPS (P1 moderate, P2 minor),
+1 minor (P3), NOT CLEAN. PE2 also CONFIRMED: the four-route derivability
+adjudication holds at source, with a deliberate fifth-route hunt finding
+no supplier (Lemma `extension`/Prop `extensionr` are unramified base-change
+with an exact multiplicative factor ρ_r — no supplier for the ADDITIVE
+two-recipe comparison; `admissible2` is the right genre but its cross-term
+control IS W2-OPEN-2's open content); machine leg re-run byte-identical
+(exit 0, 6,403/0, 17 GREEN, both artifacts byte-identical incl. elapsed);
+fresh leg — the §3.4 display evaluated against the committed ξ-ledger by
+from-scratch arithmetic, 16/16 at m = 1 (unique pairs, full support) plus
+hand re-derivations T3B/T3F r = 4 matching the ledger. Repair map, finding
+→ edit site:
+
+* **P1 (moderate gap) → the boundary identification made honest.** The
+  [r1, F1] re-scope warrant and W2-OPEN-2's premise both rode the unproven
+  identification "first recorded ξ ≠ 1 junction = first byte-divergence"
+  ("recorded ξ = 1 ⟹ byte-equal" is not definitional: the recorded pair
+  sees top-layer reads; the byte law quantifies over every recursion-tree
+  node — the read-invisible-divergence genre, I4B exhibiting the mechanism
+  one layer down). (a) The m = 1 case is PROVED and displayed as **LEMMA
+  W2-ID1** (§5.2; from W2-C2(a) + §3.4 rk. 3: recorded ξ = 1 forces w = 1
+  at j = 0, then ξ_f^j = 1 on supp(ψ₁) incl. the monic top, which is
+  rk. 3's byte law) **[r3, PE3-P1: "the m = 1 case" here = the FORWARD
+  direction only (recorded ξ = 1 ⟹ byte-equal); the converse is unproved
+  at every m — scoping applied at all four claim sites this round, PE3's
+  counter-instance recorded at §5.2]**. (b) The m ≥ 2 case is folded INTO W2-OPEN-2 as its
+  own premise sub-clause **(OPEN-2a)** — the box carries its premise
+  honestly. (c) The general grade sentence is scoped to the instance
+  census: recorded ξ ≠ 1 ⟺ byte-RED at 22/22 walked junctions and every
+  below-r₀ junction byte-GREEN (PE2's recomputation from the committed
+  JSON); of the 38 proved-scope junction-levels, 36 (all strictly-below
+  junctions at m ≤ 1) are fully §3-derived via TH-BASE + W2-ID1, and 2
+  (I4A r = 5, I4B r₀ = 5 — an m ≥ 2 recorded-trivial junction below) are
+  instance evidence riding (OPEN-2a); the 38/44 census stands as exactly
+  that. Edit sites: grade cap, §5.2 warrant + W2-ID1 + (OPEN-2a) + grade
+  sentence, §6.1 row, §6.2 rows (new W2-ID1 row), §6.3(d), §6.4.
+* **P2 (minor gap, review-owed fence) → the [r1, F6] sign flip REVERTED.**
+  PE2 verified at source that tex 1431's literal Def-`t(i)` =
+  (s_{r−1}(a) − ℓ_{r−1}·v_r(aφ_r^i))/e_{r−1} — the (s − ℓu)/e arrangement,
+  s and u_i both ℓ-shift-invariant — gives t ↦ t − k·u_i under
+  ℓ ↦ ℓ + k·e: **the r0 sign was CORRECT**, and the rescaling display is
+  directly consistent through Def-`rescoeff` (tex 1447) with no k ↦ −k
+  gloss (this round re-verified those anchors in the print before
+  editing). The r1 bracket's premise formula "(ℓu_i − s_i)/e" is
+  Prop-`construct`'s child twist exponent (tex 1201), the near-negative —
+  W2-L2's r0 naming parenthetical had conflated the two opposite-signed
+  exponents under one name, PE1's F6 computed with the conflated alias,
+  and r1 implemented that finding. r2 restores the r0 sign with tex 1431
+  displayed (§4.3 [r2, P2]), splits the W2-L2 parenthetical into its two
+  print referents (§2.3 [r2, P2]), and deletes the k ↦ −k gloss — recorded
+  in both brackets so no future round re-flips it. The section's
+  conclusions were sign-invariant both rounds; review-owed fence stands.
+* **P3 (minor) → the premise pairing.** W2-OPEN-2's premise paired φ_q^tw
+  with Φ_q; the note's own §1.2 dictionary (φ_i^GMN = Φ_{i−1}^har) makes
+  the comparandum **Φ_{q−1}**. One-token fix + bracket (§5.2).
+
+**Fold implications (orchestrator; accepted texts are NEVER edited by this
+unit):** unchanged from r1 — the WM (M4) annotation and the JB §0M row 15
+annotation — PLUS one new item recorded this round per PE2: **WM line 88's
+"its only commit" (inside the [W2]@5463f2a as-of pin's parenthetical) is
+STALE** **[r3, o1: WM r5 (f8c2c09) moved that parenthetical to WM line 111
+— line drift only, the item's content stands]** — W2 now has post-5463f2a
+commits (8d5e3fa r1, this r2). The pin
+itself keeps WM's (M4) face drift-proof, so nothing is falsified; the
+one-line staleness fix rides the same orchestrator fold. Not an r2 edit.
+
+**Freeze:** r2 is note-only. `grt_w2_checks.py` (sha256 71f8fc90f7543fd3…,
+PE2-verified byte-identical across working tree, 5463f2a, and HEAD) and
+both artifacts untouched. **Counter 0/2 (ZERO clean passes); W2-PE3 — a
+fresh hostile pass on this post-r2 text — is the next acceptance attempt.**
+
+---
+
+## §9. Arc record — round r3 (2026-08-07, note-only)
+
+**Against:** W2-PE3 (`GRTW2_passPE3_report.md`, commit 9bd938f; target
+ffa1e57) — 0 CRITICAL, 1 JUSTIFICATION GAP (minor; P1, CONFIRMED by
+construction + probe), NOT CLEAN. PE3 also CONFIRMED: LEMMA W2-ID1's
+statement and proof SOUND (re-derived from the §3.4 display, valid for any
+recorded pair with ξ = 1); (OPEN-2a) exactly the m ≥ 2 inductive step the
+re-scope warrant needs — nothing weaker suffices, nothing stronger
+smuggled; the 36+2 census exact (recomputed from the committed JSON with an
+independent is-one test — 36 fully derived = 16 r = 2 + 16 r = 3 + 4 r = 4,
+the 2 instance-warranted = I4A/I4B r = 5); the P2 sign revert faithful at
+source (tex 1431/1373/1447/1201 line-exact, shift computation re-derived,
+no k ↦ −k gloss) and the anti-re-flip records adequate; the P3 pairing
+dictionary-correct; machine leg re-run exit 0, 6,403/0, 17 GREEN,
+bit-identical mod timing, both seals intact; FRESH LEG (route unused by
+PE1/PE2) — own tower-field arithmetic + own §3.4 evaluator vs the committed
+ledger modulo the support stabilizer at FULL roster scope, 22/22 (incl. the
+invisible-twist I4B r = 4 consistent and T3B/T3F r = 4 exact) + the I4B
+r = 5 boundary reproduced from scratch. Repair map, finding → edit site:
+
+* **P1 (minor gap) → the identification claims SCOPED to the proved
+  direction.** LEMMA W2-ID1 proves ONE direction — recorded ξ = 1 ⟹
+  byte-equal at m = 1, hence no byte-divergence strictly below the first
+  recorded twist. The r2 wording at four sites claimed the TWO-SIDED
+  identification "first recorded ξ ≠ 1 junction = first byte-divergence"
+  PROVED at m = 1; the converse (recorded ξ ≠ 1 ⟹ byte-RED) additionally
+  needs a recorded-pair selection rule preferring ξ = 1 whenever a trivial
+  pair exists — never pinned (§3.4 rk. 2's non-uniqueness; §5.1 step 1 just
+  says "record") — and the sealed scan's actual enumeration-order selection
+  VIOLATES it off-roster: PE3 constructed a class-pin m = 1
+  counter-instance (K₁ = F₄, ψ₁ = y³ + ζ, e₀ = 1: byte-equal junction, all
+  of F₄* satisfies the orbit equations, the scan records (ζ, 1) and a
+  spurious transport fires; roster-invisible under the g ≤ 2 builder limit,
+  the failure needs g_m ≥ 3). Cure, per PE3's repair queue: (a) all four
+  sites scoped, one sentence each — the W2-ID1 "Consequently" sentence
+  (§5.2), the grade-cap [r2, P1] bracket, the §6.2 W2-C3 row, S-STATUS +
+  this §8's P1(a); (b) the counter-instance RECORDED next to LEMMA W2-ID1
+  (§5.2), quoting PE3's construction verbatim — the honest boundary of the
+  lemma; (c) the converse-direction flag added inside W2-OPEN-2's
+  "byte-DIFFERENT for r₀ ≤ q < r" premise clause, alongside (OPEN-2a);
+  (d) consuming surfaces re-checked this round by verbatim re-read: the
+  §5.2 re-scope warrant ("recorded ξ = 1 ⟹ byte-equal"), (OPEN-2a)'s
+  sub-clause statement, and the 36+2 census ("below-chain = TH-BASE +
+  W2-ID1 at the recorded-trivial r = 3") each consume ONLY the proved
+  direction — agreeing with PE3 §P1 "blast radius: contained". The
+  alternative cure (pin the ξ = 1 preference into §5.1) is NOT taken: the
+  sealed scan is byte-frozen and implements enumeration order, so a pinned
+  preference would misdescribe the note's own machine bracket off-roster;
+  the scoping route leaves nothing riding the converse.
+* **The two ungraded observations → one line each.** (o1) the §8 fold
+  item's "WM line 88" pointer annotated: WM r5 (f8c2c09) moved that
+  parenthetical to WM line 111 — line drift only, content stands. (o2) the
+  header Genre line's r0 parenthetical "no acceptance arc opened by this
+  note" struck as superseded by S-STATUS (both prior passes had seen it;
+  now silenced). (o3 — JA PE4's fold observation — accrues to JA's ledger,
+  not this note's; no edit.)
+
+**Freeze:** r3 is note-only. `grt_w2_checks.py` (sha256 71f8fc90f7543fd3…,
+PE3-verified byte-identical across working tree, 5463f2a, and HEAD) and
+both artifacts untouched. **Counter 0/2 (ZERO clean passes); W2-PE4 — a
+fresh hostile pass on THIS post-r3 text — is the next acceptance attempt.**
+
+---
+
+## §10. Arc record — round r4 (2026-08-07, note-only)
+
+**Against:** W2-PE4 (`GRTW2_passPE4_report.md`, commit e92cb22; target
+79d1d9c) — 0 CRITICAL, 1 JUSTIFICATION GAP (minor; P1, the residual of
+PE3-P1's species at sites the r3 sweep did not reach), 1 minor (P2, the
+footer dateline), NOT CLEAN. PE4 also CONFIRMED: the r3 diff faithful at
+every edit site; the counter-instance TRUE by from-scratch re-derivation
+(own field arithmetic, checks B1–B8 all PASS; the sealed enum order
+(0,1) = ζ before (1,0) = 1 cross-checked at source); the [r3] converse
+flag inside W2-OPEN-2's premise SUFFICES — the premise does NOT need
+restating (PE4 §ADJ: the clause functions as scope, not warrant; restating
+would change the box's mathematical content; no consumer needs the clause
+off-roster — NO finding); machine leg re-run exit 0, 6,403/0, 17 GREEN,
+results JSON byte-identical incl. elapsed_s, both seals intact; FRESH LEG
+(route unused by PE1–PE3) — exhaustive selection-geography mapping at
+m = 1: 33,408 checks / 0 failures over 4,173 monic irreducibles × 7
+fields; spurious set exactly {(F₄, g = 3, supp {0,3}), (F₉, g = 4,
+supp {0,4})}, ZERO at g ≤ 2 (roster-invisibility exhaustive); the r3
+disclosure condition confirmed the EXACT characterization; W2-ID1's
+forward direction 29,223 grid points / 0 violations incl. g ∈ {3,4}.
+Repair map, finding → edit site:
+
+* **P1 (minor gap) → the r3 scoping COMPLETED across the species.** The
+  r3 sweep stopped at PE3's four listed sites; three same-species surfaces
+  still carried the two-sided "identification … proved at m = 1"
+  vocabulary. Cure, per PE4's repair queue — one clause each, the r3
+  wording: (a) §6.3(d)'s carry item "proved only at m = 1 (W2-ID1)" scoped
+  to the forward direction; (b) the §5.2 (OPEN-2a) opening gloss ("IS the
+  identification …") scoped to the forward half, matching the sub-clause
+  statement it glosses; (c) §6.4's [r2] "closes the m = 1 slice of that
+  identification" annotated inline (the dated-record convention r3 used at
+  §8 P1(a)). SWEEP COMPLETION — the r3 lesson applied (a species sweep
+  must exhaust the species, not stop at the reviewer's site list): this
+  round grepped every "identification" token at HEAD and dispositioned
+  each. Additionally scoped: the §6.2 W2-ID1-row appositive "(the boundary
+  identification, m = 1 case)" (PE4 o-d, the named sweep candidate) and
+  the adjacent W2-OPEN-2-row label "the m ≥ 2 junction identification"
+  (same appositive species, weakest form); the [r1, F1] block's universal
+  "ABOVE r₀ … byte-DIFFERENT" got PE4's prescribed roster-instance
+  qualifier (o-b). Every remaining token verified in place: correctly
+  scoped [r3]/[r4] sites; historical records that QUOTE the species
+  vocabulary as the thing being cured (S-STATUS, §6.4 [r3], §8 P1, §9 P1);
+  the on-roster instance-exactness statements (machine-true two-sidedly:
+  recorded ξ ≠ 1 ⟺ byte-RED at 22/22, PE2/PE3/PE4 recomputations); and
+  different senses entirely (§5.1's letter identification z_old = ξ·z_new;
+  §5.4/§7's overflow identification of the 24 byte-diff pairs). Blast
+  radius nil before and after: PE4 re-read every load-bearing consumption
+  one-directional; this round changed no operative statement — display
+  brackets only.
+* **P2 (minor) → the footer dateline extended** with "; r3 2026-08-07;
+  r4 2026-08-07" (r3's omitted entry + this round's own, per the arc's
+  convention that each round extends the dateline).
+* **The observations → one line each.** (o-a) no edit: PE4 §ADJ
+  adjudicated the [r3] flag sufficient; the operative marking covers all
+  q. (o-b) folded into the P1 sweep above. (o-c) the counter-instance
+  block's `orbit_scan` line figure corrected to 135–163 (`return out` at
+  163; 164 is the trailing blank — re-verified at the sealed source this
+  round, seal 71f8fc90 intact). (o-d) folded into the P1 sweep above.
+  (o-e) a one-sentence precision added inside the W2-OPEN-2 [r3] flag:
+  the recorded chamber's top junction IS its r₀ (2 reads), so
+  instantiating the premise clause's falsity strictly means appending any
+  third read — immediate, lower junction data unchanged.
+
+**Freeze:** r4 is note-only. `grt_w2_checks.py` (sha256 71f8fc90f7543fd3…,
+PE4-verified byte-identical across working tree, 5463f2a, and HEAD) and
+both artifacts untouched. **Counter 0/2 (ZERO clean passes); W2-PE5 — a
+fresh hostile pass on THIS post-r4 text — is the next acceptance attempt.**
+
+— W-2 COMPOSER unit, campaign date 2026-08-08; r1 2026-08-06; r2 2026-08-07;
+r3 2026-08-07; r4 2026-08-07.
+
+---
+
+## ★ ACCEPTANCE RECORD (orchestrator, 2026-08-07) ★
+
+**THIS NOTE IS ACCEPTED at 2/2** — PE5 (ba2c47c, CLEAN; the 17-theorem
+Lean leg) and PE6 (9d8aba0, CLEAN; the Sylvester-resultant route on 566
+junctions incl. 560 off-roster, the functional-equation re-derivation of
+HR-REC, the PE5 Lean appendix recompiled). Full arc: composed → PE1
+(0C+2G+5m) → r1 (the honest W2-C3 re-scope; the four-route adjudication;
+W2-OPEN-2 minted) → PE2 (0C+2G+1m) → r2 (LEMMA W2-ID1; OPEN-2a folded in;
+the sign reverted) → PE3 (0C+1Gm) → r3 (the proved-direction scoping +
+THE CONVERSE'S HONEST BOUNDARY) → PE4 (0C+1Gm+1m) → r4 (five surfaces,
+completeness grep) → PE5 CLEAN → PE6 CLEAN. **WHAT IS ACCEPTED**: the
+(ξ,w) covariance closed form, HR-REC, W2-L0–L3, W2-C1 (chamber-qualified),
+W2-C2, W2-C3 at its honest grade (proved-to-first-twist 38/44 = 36
+derived + 2 instance-warranted; measured above), LEMMA W2-ID1 (forward
+direction, with the converse's counter-instance displayed), and
+**W2-OPEN-2/OPEN-2a as the note's fenced OPEN box — the weld's one open
+lemma, accepted AS A BOX, not as a theorem.** CONSEQUENCE: consumers
+riding W-2 at attempt grade (the accepted LIFTCORNER's shift-descent
+consumption; JB's W2-C1 restriction; WM's M4 face) now ride an ACCEPTED
+supplier at its fenced scope.
+
+---
+
+## ANNEX (dated append; the frozen body is not edited)
+
+> **[ANNEX 2026-08-08, orchestrator, fold-carry closure — the §[r1] fold
+implications, both discharged.]** The r1 round record's bracket "Fold
+implications recorded for the orchestrator (accepted texts are NEVER
+edited by this unit)" left two dated annotations owed at the next ledger
+fold: (i) GRTJB §0M row 15's subordinate "(representative reading; W2-C3
+chamber off the byte perimeter)" cell — EXECUTED at 5054d69 (2026-08-07,
+GRTJB fold-annex erratum E-2: row-15 W-2 grade citations governed by
+supplier HEAD); (ii) WELDMASTER (M4)'s W2-C3 cite pointed at the
+re-scoped grade — EXECUTED at THIS fold (WELDMASTER annex O-1, this
+commit), the half that had to wait for WELDMASTER's own acceptance
+(66b3498) to become an accepted-text annex item (while WM was in-arc its
+own rounds carried it, per ledger 5054d69). Both annotations point at
+this note's accepted form (2/2 at adc6cf3: W2-C3 proved-to-first-twist
+38/44 / MEASURED above, riding W2-OPEN-2/OPEN-2a — the accepted BOX).
+Nothing else in the r1 record remains orchestrator-owed. Direction:
+NEUTRAL (bookkeeping discharge; no grade or statement moves).
+
+> **[ANNEX 2026-08-08, orchestrator, OPEN-2a NARROWED — the OPEN2ATTACK
+> unit (`OPEN2ATTACK_2026-08-08.md`, sealed battery
+> `open2attack_checks.py` + disclosed extension `open2attack_ext.py`;
+> seal commit bd82766, verdict commit = this fold).]** The (OPEN-2a)
+> box's forward direction at m ≥ 2 is reduced, at attempt grade with no
+> new literature consumption, to a single displayed lemma: (i)
+> strict-form identification ⟺ infeasibility of the defeat system
+> δ_j = ρ_j ∧ ρ ≢ 1 (slot calculus, OPEN2ATTACK §1), with recorded
+> ξ = 1 ⟹ strict under every selection rule; (ii) the premise's own
+> byte-share clause makes the interior twist a K₁-automorphism σ′ and
+> the measured gauge law is the coboundary δ_j = ρ_j·σ′(ρ_j)^{∓1}
+> (Σ-LAW: 468 sealed + 24 extension m ≥ 2 junction rows, 0 violations,
+> every gap row included), under which the defeat is infeasible and the
+> m ≥ 2 forward direction FOLLOWS (THEOREM OPEN-2a-Σ, conditional); the
+> surviving open step is the Σ-LAW at proof grade — the level-m
+> generalization of LEMMA W2-L3, strictly smaller than (OPEN-2a).
+> (iii) Instance geography: the identification is instance-exact at 468
+> fresh m ≥ 2 junction-levels (engineered invisible-twist chambers; the
+> I4A/I4B r = 5 geography swept 50 rows), so the two instance-warranted
+> census entries now ride a 470-point instance base plus a displayed
+> mechanism. (iv) The converse's honest boundary extends to m ≥ 2 as
+> predicted: 16 constructed spurious-selection witnesses (F₉ y⁴+c
+> recorded ord-4; F₆₄ y³+c recorded ord-3; byte-equal strict (C-coll)
+> junctions), PE4 o-e's third-read instantiation measured, the
+> d-torsion selection-geography law green at every m (604 byte-equal
+> rows). Direction: box NARROWED (forward direction now one
+> evaluator-ledger lemma wide), NOT closed; W2-OPEN-2's chain-level
+> claim above r₀ and the converse's UNPROVED status are unchanged.**
+
+> **[ANNEX 2026-08-08, orchestrator, Σ-LAW PROVED — the SIGMALAW unit
+> (`SIGMALAW_PROOF_2026-08-08.md`, sealed battery `sigmalaw_checks.py`;
+> seal commit 8064ae3, verdict commit 59c1ff2 = the §6R fold).]** The (Σ-LAW box) displayed at
+> OPEN2ATTACK §6 is CLOSED at attempt grade, with two corrections to the
+> boxed display: the covariance map is the **ξ-formula composite** (the
+> §3.4 characters ξ_q = χ_{q−1}^{γ_q}z_{q−1}^{−e_{q−1}A_{q−1}}, χ-chain
+> included — NOT the bare interior twist z_{q−1}^{A_{q−1}e_{q−1}}), and
+> the sign is fixed: δ_j = ρ_j/Σ_m(ρ_j). Proof: the per-coordinate
+> ledger identity Prnt_j(A) = u_j·Σ_m(R_m v(A)) with EXPLICIT
+> slot-constant u_j = z_m^{−k_jA_m}ε_m(β_j)U_m(β_j), by double recursion
+> (the gap terms cancel per node inside each builder's own evaluator —
+> the attained-start τ-normalization is W2-L3's mechanism at every
+> level, so gap rows carry NO correction term; and the gauge-ratio
+> recursion Λ_q(w) = χ_q^{−w} REDERIVES the §3.4 χ/ξ recursion from the
+> evaluator side). Machine: 1,211 walked junction rows (539 towers:
+> the full OPEN2ATTACK battery reproduced + 150 constructed separator
+> towers), SL-VDM 2,854 / SL-DELTA 1,427 / SL-GAP 688 samples (340 gap
+> slots), 0 violations, exit 0, 3 teeth caught 2/2 each; the sign/map
+> corrections are witnessed by 96 constructed non-involution separator
+> rows at m = 2 and 27 at m = 3 where the ξ-law holds and BOTH boxed
+> variants fail — the sealed battery's involution degeneracy is thereby
+> explained (its entire δ ≠ 1 record sits where the maps coincide,
+> 218/218 slot-samples). Consequence:
+> THEOREM OPEN-2a-Σ fires unconditionally on its Σ-leg — at every
+> shared-below junction at every m, strict ⟹ byte-equal and recorded
+> ξ = 1 ⟹ byte-equal under every selection rule, at attempt grade given
+> OA-L1–L4 — so **(OPEN-2a)'s forward direction at m ≥ 2 is PROVED at
+> attempt grade** and the simultaneous-defeat system is infeasible on
+> the whole shared-below perimeter. The converse's UNPROVED status and
+> W2-OPEN-2's above-r₀ chain claims are unchanged.
+
+> **[ANNEX 2026-08-08 #2, orchestrator] Count correction to the Σ-LAW annex above (flagged by SIGMALAW r1, 6b24942, per its PE1 Finding 2): the quoted machine figures included tooth-run leakage (+26/+13/+13/+8/+3); the genuine battery figures are SL-VDM 2,828 / SL-DELTA 1,414 / SL-GAP 1,414 / SL-PHIR 680 (340 gap slots stands), and the involution-record census is 218 EXACTLY (3 garbled-print tooth artifacts excluded). All verdicts unaffected; the Σ-LAW's zero-violation record stands on the corrected denominators. Since the annex above was applied, the Σ-LAW has been PROVED in sharper form (THEOREM SL-1, SIGMALAW_PROOF_2026-08-08.md, arc 0/2 post-r1) — the "sign undetermined" clause superseded per that note's [r1] instrument record.**
+
+> **[ERRATUM 2026-08-08 to ANNEX #2 above, orchestrator — own transposition, caught by SIGMALAW PE2 (6e57e03)]: the corrected figures were themselves transposed; the genuine battery figures are SL-VDM 2,828 / SL-DELTA 1,414 / SL-PHIR 1,414 / SL-GAP 680 (= 2×340 gap slots, consistent with the "340 gap slots stands" clause). INVREC = 218 exactly stands. Verified against the committed JSON by the PE2 recount (Σ|supp| = 1,414 = 1,060 OA + 354 SEP).**
+
+> **[ANNEX 2026-08-08 #3, orchestrator] Supplier upgrade: the Σ-LAW note (SIGMALAW_PROOF_2026-08-08.md) is ACCEPTED at 2/2 (PE2+PE3 clean; acceptance record at its tail). The (OPEN-2a) forward direction at every m ≥ 2 now rides an ACCEPTED supplier via THEOREM OPEN-2a-Σ. W2-OPEN-2's residual open surface: the converse (recorded ξ ≠ 1 ⟹ byte-RED) only, as fenced since PE3's counter-instance.**
+
+=== ACCEPTANCE REPORT: GRTW2_passPE5_report.md ===
+# GRTW2 passPE5 report — hostile pass 5 on `GRTW2_PROOF_2026-08-08.md` (post-r4; acceptance attempt)
+
+**Verifier:** Fable hostile pass PE5, fresh context, wallclock 2026-08-07.
+**Target:** `lean/notes/openmath/GRTW2_PROOF_2026-08-08.md` at HEAD (last note
+commit 94534df = the r4 repair round, 2026-08-07 14:20 UTC; working tree
+byte-clean, `git status` clean on `verification/`). **Inputs read:** the
+PE1/PE2/PE3/PE4 reports (083adff / 79e796b / 9bd938f / e92cb22), the full
+r4 diff (79d1d9c → 94534df, note-only +142/−21), the full note at HEAD
+(1,330 lines), the sealed runner `grt_w2_checks.py` + committed artifacts +
+`iterlawn_pe_reimpl.py` at the cited lines, the PE3 report's construction
+block at source. I fixed nothing.
+
+## VERDICT
+
+**0 CRITICAL ERRORS. 0 JUSTIFICATION GAPS. 0 minor defects. CLEAN — the
+counter advances 0/2 → 1/2** (a clean pass starts the 2-clean count;
+**W2-PE6 is the would-be accepting attempt**). Everything r4 SET OUT to do
+is done correctly and faithfully: the five same-species "identification"
+surfaces (the three PE4-listed misses §6.3(d) / §5.2 (OPEN-2a) gloss /
+§6.4 [r2], plus the two sweep-completing appositive sites §6.2 W2-ID1-row
+and W2-OPEN-2-row) are scoped to the proved direction in the r3 wording
+family, byte-preserving every struck span (§A); the o-b roster-instance
+qualifier, the o-c line-figure fix (verified at the sealed source:
+`orbit_scan` def at line 135, `return out` at 163, 164 blank), and the o-e
+3-read extension precision are all accurate as written (§A); **my own full
+grep of every "identification" token at HEAD (27 hits) confirms the
+disposition is complete — the species is exhausted** (§A.2), and a
+variant-vocabulary sweep ("coincidence", "proved at m = 1", ⟺/iff tokens)
+finds no residual two-sided assertion outside struck spans, dated records,
+scoped brackets, roster-instance claims, and different senses. The whole
+note is statement-level TRUE at HEAD (§B), with my own census
+recomputation from the committed JSON reproducing every figure the fences
+carry. The machine leg reproduces (exit 0, 6,403/0, 17 GREEN, results JSON
+byte-identical including elapsed_s; §C). A fresh leg by a route unused by
+PE1–PE4 — **the Lean kernel: the note's integer-exponent system proved as
+17 general ∀-theorems, `lake env lean` exit 0, zero sorry, Lean-core
+axioms only** — confirms W2-L0, W2-L2 with its integrality warrants, the
+Bézout/A_m facts, the m = 1 closed-form tie, the W2-ID1 exponent chain,
+and the counter-instance pins at full generality (§D). Arc accounting is
+consistent and true at every surface, including the previously-stale
+footer dateline (§E). Three nil-weight observations, no repair owed.
+
+---
+
+## §A. Charge 1 — the r4 diff, line-by-line: FAITHFUL at every edit site
+
+### A.1 The scoped surfaces (all match the r3 wording family)
+
+* **§6.3(d) carry item:** struck span "~~the recorded-ξ/byte-divergence
+  identification at m ≥ 2, proved only at m = 1 (W2-ID1),~~" byte-equal to
+  the pre-r4 text (diff-verified, wrap-insensitively) ✓; the [r4, PE4-P1]
+  replacement asserts exactly the r3 content: forward direction (recorded
+  ξ = 1 ⟹ byte-equal), proved at m = 1 (W2-ID1) — TRUE of the direction;
+  converse UNPROVED at every m with the §5.2 pointer ✓. The retained
+  "instance-exact on the roster" is machine-true two-sidedly (my §B.2
+  recomputation: recorded ξ ≠ 1 ⟺ byte-RED at 22/22) ✓.
+* **§5.2 (OPEN-2a) opening gloss:** struck span byte-preserves the [r2]
+  gloss ✓; the replacement's "IS that identification's forward half
+  (recorded ξ = 1 ⟹ byte-equal — the HALF … that every consuming surface
+  of this note uses)" matches the r3-corrected W2-ID1 "Consequently"
+  wording and the sub-clause statement it glosses (which is unchanged,
+  with its exact Status line: PROVED at m = 1, OPEN at m ≥ 2) ✓; the
+  appended converse sentence is the r3 formula verbatim in content ✓.
+* **§6.4 [r2] record:** inline [r4, PE4-P1] annotation ("= of its FORWARD
+  direction only …; the converse is UNPROVED at every m — §5.2 [r3]"),
+  original record text preserved un-struck — the dated-record convention
+  r3 used at §8 P1(a) (verified present at §8) ✓.
+* **§6.2 W2-ID1 row (PE4 o-d):** appositive "(the boundary identification,
+  m = 1 case)" struck byte-exact; [r4] replacement "(the FORWARD half …;
+  the converse is unproved at every m — §5.2 [r3])" ✓. Statement column
+  unchanged and correctly one-directional ✓.
+* **§6.2 W2-OPEN-2 row (adjacent label):** "[r4: = its FORWARD direction
+  only (recorded ξ = 1 ⟹ byte-equal); §5.2 [r3]/[r4]]" — accurate: the
+  (OPEN-2a) sub-clause statement IS the forward direction at m ≥ 2 ✓;
+  both cited brackets exist at §5.2 ✓.
+* **[r1, F1] block (PE4 o-b):** the universal "ABOVE r₀ … byte-DIFFERENT"
+  now carries "[r4, PE4 o-b: roster instance (all 6 above-r₀ SKIP
+  junctions byte-RED — PE2/PE4 recomputation); in general UNPROVED …;
+  this block's conclusion consumes only the ABSENCE of the byte-share
+  warrant, which holds either way]" — every clause verified: my own
+  recomputation confirms all 6 SKIPs byte-RED (§B.2); the
+  consumes-only-absence logic is sound (the grade split needs the proved
+  warrant to be MISSING above r₀, which is the case whether or not the
+  keys are byte-different) ✓.
+* **o-c:** "lines ~~135–164~~ 135–163" — verified at the sealed source
+  this pass: `def orbit_scan` at runner line 135, `return out` at 163,
+  line 164 blank; seal 71f8fc90…ba52 intact ✓.
+* **o-e:** the [r4] precision inside the [r3] converse flag — verified
+  mathematically: the counter-instance chamber has reads 0–1 only, so its
+  junctions are r = 2, 3 and its top junction r = 3 IS its r₀; the box's
+  range r > r₀ is empty there; appending ANY third read creates the r = 4
+  junction with q = r₀ = 3 in the byte-DIFFERENT range while the q = 3
+  junction stays byte-equal (lower junction data is computed from lower
+  reads only) — falsity instantiated, exactly as written ✓.
+* **S-STATUS [r4] + §10 round block + footer:** every arc fact checked
+  against git and the PE4 report — see §E. The §10 summary of PE4's
+  findings/confirmations is clause-accurate vs the committed report
+  (B1–B8, §ADJ's three-point adjudication, 33,408/0, 4,173 × 7, 29,223/0,
+  o-a..o-e handling) ✓.
+
+### A.2 The token disposition — COMPLETE (my own grep, 27 hits)
+
+`grep -n identification` at HEAD: **scoped [r3]/[r4] sites** (119, 727,
+789, 807/809, 979, 981, 1006, 1036) ✓ each one-directional or
+roster-scoped; **struck spans preserved as record** (720, 802–803, 1004)
+✓; **historical records quoting the species as the thing cured**
+(36 S-STATUS, 1040 §6.4 [r3], 1137/1139 §8 P1, 1217/1221 §9 P1,
+1285–1306 §10 itself) ✓; **different senses** (600 §5.1 letter
+identification z_old = ξ·z_new; 931 + 1097 §5.4/§7 overflow
+identification of the 24 byte-diff pairs) ✓. Variant sweep: "coincidence"
+(110, 980 — both inside struck spans; 229, 770 — different senses),
+"proved (only) at m = 1" (all sites either struck, records, or attached
+to the forward direction/W2-ID1, each TRUE), ⟺/iff tokens (roster
+instance-exactness — machine-true, §B.2 — or proved mathematical iffs).
+**No residual two-sided surface exists at HEAD.**
+
+## §B. Charge 2 — statement-level truth of the whole note at HEAD
+
+### B.1 The clauses, the lemma, the boxes (re-read + spot re-derivations)
+
+* **W2-C1/W2-C1a** with the [r1, F2] chamber qualifier: accurate (probe F2
+  record's 6 vok/onesided failures are exactly what the qualifier fences;
+  harness-side content unconditional per the displayed proof) ✓.
+* **W2-C2(a)/(b)/(c) + §3.4:** the m = 1 form re-derived by hand
+  (ξ = χ₁^{γ₂}·z₁^{−e₁A₁} = z₁^{−e₁ℓ₀g₀h₀} = c₁^{e₁}, w = 1 ✓); the s = 0
+  top-slot warrant (e ∣ V ⟹ ℓV mod e = 0) and the W2-L2 identity with both
+  integrality warrants re-derived AND kernel-checked (§D) ✓; the (C-coll)
+  fencing and W2-BOX-1 accurate; the §3.5 boundary-witness integer
+  skeleton independently recomputed (ℓ₀ = 2, ℓ₁ = 1, γ₂ = 13, A₁ = 4,
+  A₂ = 13, χ₂ = z₁⁴ = 1, ξ₃ = z₂^{−13} = z₂ = −1) and its group algebra
+  kernel-checked (§D) ✓ — consistent with the committed I4B ledger.
+* **LEMMA W2-ID1:** statement + proof sound (re-derived: recorded (1, w)
+  forces w = 1 at j = 0 since ψ₁(0) ≠ 0; then ξ_f^j = 1 on supp(ψ₁)
+  including the monic top; then c·z₁^{A₁e₁j} = ξ_f^{g₁−j} = 1 — rk. 3's
+  m = 1 byte law; exponent chain kernel-checked §D) ✓. The [r3]
+  "Consequently" is exactly one-directional ✓. The counter-instance block
+  TRUE (re-verified: F₄* has order 3 so ξ³ = 1 for every unit —
+  kernel-checked for EVERY 4-element field §D; ψ₁ = y³ + ζ irreducible,
+  byte-equal junction at e₀ = 1, scan records first satisfying ξ in enum
+  order, ζ = (0,1) precedes 1 = (1,0) at the sealed reimpl line 220 —
+  read at source this pass) ✓; the PE3 quote spans word-exact at the
+  committed PE3 report (bold markers dropped as PE4 disclosed) ✓;
+  roster-invisibility ("only g in {1,2} implemented", reimpl line 311 —
+  verified) ✓.
+* **W2-C3 + the [r1]–[r4] grade machinery:** the 38/44–6/44 split, the
+  36 + 2 decomposition, and every consuming surface re-read
+  one-directional — all confirmed by my own recomputation (§B.2) ✓.
+* **W2-OPEN-2/(OPEN-2a) + W2-OPEN-1:** correctly OPEN; the premise carries
+  the [r3] converse flag + [r4] o-e precision + (OPEN-2a) honestly; the
+  four-route adjudication stands (PE1/PE2-verified at source; not
+  re-opened by r4, no new consumption) ✓.
+
+### B.2 My own census recomputation (committed JSON, own is-one test, own SKIP/walk classification)
+
+44 junction-levels = 16 r = 2 + 28 r ≥ 3 ✓; 22 walked + 6 SKIP, **all 6
+SKIPs byte-RED** (T3A/T3C/T3D/T3E r = 4, I4C r = 4, 5 — exactly the 6
+above-twist junction-levels) ✓; walked split 12 RED / 10 GREEN (→ 18/10)
+✓; **recorded ξ ≠ 1 ⟺ byte-RED at 22/22 walked, 0 exceptions** ✓; every
+below-r₀ junction byte-GREEN ✓; first-twist census T2A/C/D/G = 3,
+T3A/C/D/E = 3, T3B/F = 4, I4B = 5, I4C = 3, T2B/E/F + I4A none ✓; 38
+at-or-below = **36 fully derived + 2 instance-warranted (exactly I4A r = 5,
+I4B r = 5)** ✓; I4B ledger [(3, 1), (4, 1), (5, (−1,−1))] with r = 4
+byte-equal and r = 5 byte-RED ✓. Every figure carried by the grade cap,
+§5.2, §6.1, §6.2 matches.
+
+## §C. Machine leg (re-run this pass)
+
+* **Seals:** `grt_w2_checks.py` sha256 71f8fc90…ba52 byte-identical at
+  working tree, seal commit 5463f2a, and HEAD ✓ (git log: untouched since
+  5463f2a); `grt_weld_probe.py` 107c92b6…4ea9 ✓; both committed artifacts
+  hash-identical at HEAD vs working tree ✓; `git status verification/`
+  clean before and after ✓.
+* **Re-run (in a /tmp copy of the three sealed modules): exit 0. 6,403
+  samples, 0 violations, 17 families GREEN, boundary junctions = 1.**
+  Produced results JSON **byte-identical to the committed artifact
+  including elapsed_s (3.2)** — `diff` empty; stdout differs only in two
+  intermediate timing figures + the JSON-path line (expected from /tmp).
+  Per-family counts match §6.1 exactly (CK-MM 4,396 · CK-HR1/VD1 156 ·
+  CK-REC 55 · CK-SLOT 44/16 · CK-XI 22 · CK-BYTE 28 · TW-R/A/S 44 ·
+  TW-F3/F3b 684 · TW-PARI 12 · TW-QO 7 · CK-T3E 2 · MT-TW 2).
+* **Total reconciled this pass** (no earlier report displayed it): the 17
+  scored families sum to 6,396; TOTAL 6,403 = 6,396 + 6 CK-REC-SKIP
+  (the 6 non-shared junctions) + 1 CK-XI-BOUNDARY (I4B r = 5, recorded
+  not scored) — the runner's own note counters; the note's figures quote
+  the runner's verdict line and per-family table consistently. CK-XI's
+  22 = 21 perimeter (theta-trivial, scored) + 1 boundary as the §6.1 row
+  states (code read at runner lines 575–596) ✓.
+
+## §D. Charge 3 — fresh route unused by PE1–PE4: THE LEAN KERNEL
+
+PE1 re-derived the system by hand; PE2 evaluated the m = 1 roster slice;
+PE3 walked the full roster with own arithmetic; PE4 exhaustively mapped
+the selection geography. THIS pass proved the note's integer-exponent
+system as **general ∀-theorems over ℤ (and abstract groups/fields),
+kernel-checked**: no sampling, no roster, no pool — full generality where
+every prior leg was instance evidence or prose derivation.
+
+**Artifact:** `/tmp/W2PE5_fresh.lean` (source embedded in Appendix I for
+durability), compiled against the repo's pinned toolchain + Mathlib:
+`lake env lean` **exit 0, zero sorry, 17 declarations**; `#print axioms`
+on the load-bearing seven: Lean-core only ({propext, Classical.choice,
+Quot.sound} or subsets). Contents:
+
+* **L0_grid_congr + L0_least_abscissa** — W2-L0 in full: x·h ≡ V (mod e)
+  ⟺ x ≡ ℓV (mod e) given a Bézout inverse, and s = (ℓV) mod e is the
+  least nonnegative solution (0 ≤ s < e, solves, ≤ every nonneg solution).
+* **L2_warrant1/L2_warrant2** — the two integrality warrants the note
+  uses silently (e ∣ V − 𝔰h and e ∣ ℓu − 𝔰 for u = V + kW, W ∈ eℤ, any
+  𝔰 ≡ ℓV): the well-definedness of u′ and T.
+* **L2_mismatch** — THE W2-L2 identity T + (ℓ′𝔰 − ℓu′) = (ℓW/e)·k as a
+  general theorem with exact-division witnesses, for ANY 𝔰 in the residue
+  class (covers the print's ideal abscissa 𝔰_j, not just the canonical
+  representative). **L2_element_form** — the ε·z^T = z^{A·k} element form
+  in an arbitrary commutative group, A = ℓ·g·γ.
+* **bezout_ell_zero_iff + A_nonneg_and_zero_iff** — the §1.1/§1.3 pins:
+  under the normalized convention, ℓ = 0 ⟺ e = 1; A_m ≥ 0 and
+  A_m = 0 ⟺ e_{m−1} = 1.
+* **slot_weight_tie** — §2.1's V_j = β_j under γ = eW + h.
+  **top_slot_s_zero** — §3.3(a)'s s = 0 warrant (e ∣ V ⟹ ℓV mod e = 0).
+* **m1_xi_is_c1_pow** — §3.4's m = 1 tie z^{−eA} = (z^{−A})^e = c₁^e.
+* **id1_chain + id1_w_forcing** — LEMMA W2-ID1's algebra: w forced to 1
+  at j = 0 in any field; and ξ^g = 1 ∧ ξ^j = 1 ⟹ ξ^g·(ξ^{−1})^j = 1 —
+  rk. 3's byte law — in any commutative group.
+* **four_field_cube + orbit_eq_all_units** — the counter-instance pins at
+  full generality: in ANY field of exactly 4 elements every nonzero x has
+  x³ = 1, and any ξ with ξ³ = 1 gives (ξy)³ + c = y³ + c identically —
+  so the ENTIRE unit group of K₁ satisfies ψ₁ = y³ + ζ's orbit equations,
+  for every 4-element field and every ζ: the ambiguity the sealed scan's
+  enum-order selection resolves spuriously is now a kernel fact, not a
+  probe observation.
+* **i4b_skeleton + i4b_character** — the §3.5 boundary-witness numbers
+  (ℓ₀ = 2, ℓ₁ = 1, γ₂ = 13, A₁ = 4, A₂ = 13) and the character collapse
+  (z² = 1 ⟹ z₁⁴ = 1 ∧ z₂^{−13} = z₂) — the note's bracket figures.
+
+All 17 prove on the first-principles statements as displayed in the note
+(with the note's own hypotheses, nothing weakened). **0 discrepancies.**
+
+## §E. Charges 1+4 — arc accounting: CONSISTENT AND TRUE at every surface
+
+* **The chain vs git:** composed 5463f2a (08-04 15:59) → PE1 083adff
+  (08-06 19:16; report verdict 0C+2G+5m = S-STATUS ✓) → r1 8d5e3fa
+  (19:45) → PE2 79e796b (08-07 08:20; 0C+2G+1m ✓) → r2 ffa1e57 (08:35) →
+  PE3 9bd938f (09:18; 0C+1G minor ✓) → r3 79d1d9c (09:31) → PE4 e92cb22
+  (14:03; 0C+1Gm+1m ✓) → r4 94534df (14:20). Clock-ordered, hashes exact,
+  every verdict checked against its committed report ✓.
+* **One CURRENT status** ([r4] S-STATUS); counter 0/2 + "W2-PE5 next" at
+  all three live surfaces (S-STATUS, §6.4 [r4], §10 freeze) ✓; the dated
+  round records §7/§8/§9 retain their contemporaneous pointers per the
+  arc convention ✓; the Genre line's struck r0 parenthetical stands ✓.
+* **The footer dateline** now complete: "r1 2026-08-06; r2 2026-08-07;
+  r3 2026-08-07; r4 2026-08-07" — all four dates git-verified ✓ (PE4's P2
+  cured, including the r3 back-fill).
+* **Freeze claims:** r4 touched only the note (diff = 1 file) ✓; runner +
+  artifacts byte-frozen through all four rounds (hash-verified at
+  5463f2a/HEAD/tree this pass) ✓.
+
+**Ungraded observations (nil weight, no repair owed):**
+* (o-i) §10's compression of PE4's spurious set — "{(F₄, g = 3,
+  supp {0,3}), (F₉, g = 4, supp {0,4})}" — drops PE4 §D's F₉-modulus
+  qualifier ("with modulus y²+1"); enumeration order is
+  representation-dependent, so the F₉ family is exact relative to PE4's
+  fixed field constructions. The dated record cites the report, which
+  carries the qualifier.
+* (o-ii) §6.3(d)'s [r4] apposition "the FORWARD direction of the …
+  identification at m ≥ 2 …, proved at m = 1 (W2-ID1)" reads elliptically
+  (the m ≥ 2 sub-clause is not itself an m = 1 statement); the direction
+  parenthetical and §5.2's exact Status line disambiguate — no unproved
+  statement is asserted proved.
+* (o-iii) The 6,403-vs-6,396 total reconciliation (§C) was displayed by
+  no earlier pass; recorded here so no future pass re-derives it.
+
+## Repair queue implied
+
+**None.** This pass grades the post-r4 text CLEAN. Counter 1/2; W2-PE6 —
+a fresh hostile pass on THIS text, same bar — is the accepting attempt.
+
+---
+
+## Appendix I — the fresh-leg Lean source (compiled exit 0 this pass)
+
+```lean
+/- GRTW2 PE5 fresh leg — the note's integer-exponent system as KERNEL-CHECKED
+   ∀-theorems (route unused by PE1–PE4: Lean kernel; no sampling, no pool). -/
+import Mathlib
+
+namespace W2PE5
+
+theorem L0_grid_congr (e ℓ h V x : ℤ) (hbez : e ∣ (ℓ*h - 1)) :
+    e ∣ (x*h - V) ↔ e ∣ (x - ℓ*V) := by
+  constructor <;> intro hd
+  · have hx : x - ℓ*V = ℓ*(x*h - V) - x*(ℓ*h - 1) := by ring
+    rw [hx]; exact dvd_sub (hd.mul_left ℓ) (hbez.mul_left x)
+  · have hx : x*h - V = h*(x - ℓ*V) + V*(ℓ*h - 1) := by ring
+    rw [hx]; exact dvd_add (hd.mul_left h) (hbez.mul_left V)
+
+theorem L0_least_abscissa (e ℓ h V : ℤ) (he : 0 < e) (hbez : e ∣ (ℓ*h - 1)) :
+    0 ≤ (ℓ*V) % e ∧ (ℓ*V) % e < e ∧ e ∣ (((ℓ*V) % e)*h - V) ∧
+    ∀ x, 0 ≤ x → e ∣ (x*h - V) → (ℓ*V) % e ≤ x := by
+  refine ⟨Int.emod_nonneg _ (ne_of_gt he), Int.emod_lt_of_pos _ he, ?_, ?_⟩
+  · rw [L0_grid_congr e ℓ h V _ hbez]
+    have h1 : e * (ℓ*V / e) + (ℓ*V) % e = ℓ*V := Int.ediv_add_emod _ _
+    exact ⟨-(ℓ*V/e), by rw [mul_neg]; linarith⟩
+  · intro x hx hsol
+    have hcong : e ∣ (x - ℓ*V) := (L0_grid_congr e ℓ h V x hbez).mp hsol
+    have hmod : x % e = (ℓ*V) % e := Int.ModEq.symm (Int.modEq_iff_dvd.mpr hcong)
+    have hdiv : 0 ≤ x / e := Int.ediv_nonneg hx (le_of_lt he)
+    have hsplit : e * (x / e) + x % e = x := Int.ediv_add_emod x e
+    nlinarith [mul_nonneg (le_of_lt he) hdiv]
+
+theorem L2_warrant1 (e ℓ ℓ' h V s : ℤ) (hbez : ℓ*h + ℓ'*e = 1)
+    (hs : e ∣ (s - ℓ*V)) : e ∣ (V - s*h) := by
+  have hx : V - s*h = (-h)*(s - ℓ*V) + (V*ℓ')*e := by linear_combination (-V)*hbez
+  rw [hx]; exact dvd_add (hs.mul_left (-h)) (dvd_mul_left e (V*ℓ'))
+
+theorem L2_warrant2 (e ℓ V u k W' s : ℤ) (hu : u = V + k*(e*W'))
+    (hs : e ∣ (s - ℓ*V)) : e ∣ (ℓ*u - s) := by
+  have hx : ℓ*u - s = -(s - ℓ*V) + e*(ℓ*k*W') := by rw [hu]; ring
+  rw [hx]; exact dvd_add (dvd_neg.mpr hs) ⟨ℓ*k*W', rfl⟩
+
+theorem L2_mismatch (e ℓ ℓ' h V u k W' s x y : ℤ) (he : e ≠ 0)
+    (hbez : ℓ*h + ℓ'*e = 1) (hu : u = V + k*(e*W'))
+    (hx : V - s*h = e*x) (hy : ℓ*u - s = e*y) :
+    y + (ℓ'*s - ℓ*x) = ℓ*W'*k := by
+  have key : e*(y + (ℓ'*s - ℓ*x)) = e*(ℓ*W'*k) := by
+    linear_combination (-1)*hy + ℓ*hu + ℓ*hx + s*hbez
+  exact mul_left_cancel₀ he key
+
+theorem L2_element_form {G : Type*} [CommGroup G] (z : G)
+    (e ℓ ℓ' h V u k gγ s x y : ℤ) (he : e ≠ 0)
+    (hbez : ℓ*h + ℓ'*e = 1) (hu : u = V + k*(e*gγ))
+    (hx : V - s*h = e*x) (hy : ℓ*u - s = e*y) :
+    z^(ℓ'*s - ℓ*x) * z^y = z^((ℓ*gγ)*k) := by
+  rw [← zpow_add]
+  congr 1
+  have := L2_mismatch e ℓ ℓ' h V u k gγ s x y he hbez hu hx hy
+  linarith
+
+theorem bezout_ell_zero_iff (e ℓ ℓ' h : ℤ) (he : 1 ≤ e) (h0 : 0 ≤ ℓ)
+    (hlt : ℓ < e) (hbez : ℓ*h + ℓ'*e = 1) : ℓ = 0 ↔ e = 1 := by
+  constructor
+  · intro hl
+    have hd : e ∣ 1 := ⟨ℓ', by rw [hl] at hbez; linarith [mul_comm e ℓ']⟩
+    have := Int.le_of_dvd one_pos hd
+    omega
+  · intro he1; omega
+
+theorem A_nonneg_and_zero_iff (e ℓ ℓ' h g γ : ℤ) (he : 1 ≤ e) (h0 : 0 ≤ ℓ)
+    (hlt : ℓ < e) (hbez : ℓ*h + ℓ'*e = 1) (hg : 1 ≤ g) (hγ : 1 ≤ γ) :
+    0 ≤ ℓ*g*γ ∧ (ℓ*g*γ = 0 ↔ e = 1) := by
+  constructor
+  · positivity
+  · rw [← bezout_ell_zero_iff e ℓ ℓ' h he h0 hlt hbez]
+    constructor
+    · intro hA
+      rcases mul_eq_zero.mp hA with h1 | h2
+      · rcases mul_eq_zero.mp h1 with h3 | h4
+        · exact h3
+        · omega
+      · omega
+    · intro hl; rw [hl]; ring
+
+theorem slot_weight_tie (g j h e W γ : ℤ) (hγ : γ = e*W + h) :
+    (g*γ - j*h) - j*(e*W) = (g - j)*γ := by subst hγ; ring
+
+theorem top_slot_s_zero (e ℓ V : ℤ) (hV : e ∣ V) : (ℓ*V) % e = 0 :=
+  Int.emod_eq_zero_of_dvd (hV.mul_left ℓ)
+
+theorem m1_xi_is_c1_pow {G : Type*} [CommGroup G] (z : G) (e A : ℤ) :
+    z^(-(e*A)) = (z^(-A))^e := by
+  rw [← zpow_mul]; ring_nf
+
+theorem id1_chain {G : Type*} [CommGroup G] (ξ zAe : G) (g j : ℤ)
+    (hz : zAe = ξ⁻¹) (hg : ξ^g = 1) (hj : ξ^j = 1) :
+    ξ^g * zAe^j = 1 := by
+  rw [hz, inv_zpow, hg, hj]; simp
+
+theorem id1_w_forcing {F : Type*} [Field F] (w a : F) (ha : a ≠ 0)
+    (hw : w * a = a) : w = 1 := by
+  field_simp at hw; exact hw
+
+theorem four_field_cube (F : Type*) [Field F] [Fintype F]
+    (h4 : Fintype.card F = 4) (x : F) (hx : x ≠ 0) : x^3 = 1 := by
+  have := FiniteField.pow_card_sub_one_eq_one x hx
+  rw [h4] at this; norm_num at this; exact this
+
+theorem orbit_eq_all_units {F : Type*} [Field F] (ξ c y : F) (h3 : ξ^3 = 1) :
+    (ξ*y)^3 + c = y^3 + c := by
+  have : (ξ*y)^3 = ξ^3 * y^3 := by ring
+  rw [this, h3, one_mul]
+
+theorem i4b_skeleton :
+    (2*2) % 3 = 1 ∧ (1*1) % 2 = 1 ∧
+    (2:ℤ)*(3*1*2) + 1 = 13 ∧
+    (2:ℤ)*1*2 = 4 ∧
+    (1:ℤ)*1*13 = 13 := by
+  norm_num
+
+theorem i4b_character {G : Type*} [CommGroup G] (z1 z2 : G)
+    (h1 : z1^(2:ℤ) = 1) (h2 : z2^(2:ℤ) = 1) :
+    z1^(4:ℤ) = 1 ∧ z2^(-13:ℤ) = z2 := by
+  constructor
+  · have : z1^(4:ℤ) = (z1^(2:ℤ))^(2:ℤ) := by rw [← zpow_mul]; norm_num
+    rw [this, h1, one_zpow]
+  · have : z2^(-13:ℤ) = (z2^(2:ℤ))^(-7:ℤ) * z2 := by
+      rw [← zpow_mul, ← zpow_add_one]; norm_num
+    rw [this, h2, one_zpow, one_mul]
+
+end W2PE5
+```
+
+(Compile record: `lake env lean /tmp/W2PE5_fresh.lean` exit 0, two
+deprecation warnings only (`Int.ediv_add_emod`), zero sorry; `#print
+axioms` on L0_least_abscissa / L2_mismatch / L2_element_form /
+A_nonneg_and_zero_iff / four_field_cube: Lean-core only; id1_chain:
+[propext]; i4b_character: [propext, Quot.sound].)
+
+— PE5, GRTW2 acceptance arc, 2026-08-07.
+
+=== ACCEPTANCE REPORT: GRTW2_passPE6_report.md ===
+# GRTW2 passPE6 report — hostile pass 6 on `GRTW2_PROOF_2026-08-08.md` (post-r4; THE would-be accepting attempt)
+
+**Verifier:** Fable hostile pass PE6, fresh context, wallclock 2026-08-07.
+**Target:** `lean/notes/openmath/GRTW2_PROOF_2026-08-08.md` at HEAD — byte-identical
+to r4 commit 94534df (`git diff 94534df..HEAD -- <note>` empty; working tree clean
+on `verification/` and the note). **Bar:** identical to every prior pass; the
+1/2 counter did not soften it. **Inputs read:** all five committed reports
+(PE1 083adff / PE2 79e796b / PE3 9bd938f / PE4 e92cb22 / PE5 ba2c47c), the full
+note at HEAD (1,331 lines), the GMN print `docs/references/HigherNewton.tex`
+at tex 1160–1291 (construct r = 2 and r ≥ 3, Thm `phir` + c₁, the representative
+Definition, the fixed-representative sentence), the sealed runner + probe leg +
+`iterlawn_pe_reimpl.py` at the cited lines, the committed artifacts. I fixed
+nothing.
+
+## VERDICT
+
+**0 CRITICAL ERRORS. 0 JUSTIFICATION GAPS. 0 minor defects. CLEAN — the counter
+advances 1/2 → 2/2: this is the arc's second consecutive clean pass, so the
+note is ACCEPTED under the arc rule** (the acceptance fold is the
+orchestrator's action, not this pass's). The whole note is statement-level TRUE
+at HEAD: every box (W2-BOX-1, W2-OPEN-1, W2-OPEN-2 with (OPEN-2a) and the [r3]
+converse flag + [r4] o-e precision), the grade cap, the claims table, the
+consumer carry-list, and the §4.3 fence are internally consistent and
+faithful to their sources; my own census recomputation from the committed JSON
+reproduces every figure the fences carry (§D). The machine leg reproduces
+byte-for-byte (exit 0, 6,403/0, 17 GREEN, results JSON byte-identical
+including elapsed_s; §C). TWO components were re-derived by routes different
+from all five prior reports (§A, §B): (1) the m = 1 (ξ, w) closed form, the
+W2-C2(a) slot law, Thm-`phir`, the §3.4 display, and the rk. 3 byte law by
+**from-definitions two-recipe construction with an independent engine on 560
+FRESH OFF-ROSTER junctions (g₁ up to 4, residue fields up to F₂₅ — both beyond
+the roster) plus a Sylvester-resultant leg** — 5,568 checks, 0 failures, both
+teeth caught; (2) **(HR-REC) by a functional-equation/uniqueness route** in
+which W2-L0 and W2-L2 never enter — the recursion is forced by read-additivity
+plus the single-slot normalization (derivation displayed in §B, machine-keyed
+at the same 566 junctions). Arc accounting is consistent and true at every
+surface; PE5's Lean fresh leg was re-extracted from the committed report and
+recompiled this pass — exit 0, zero sorry, only the two disclosed deprecation
+warnings (§E). Three nil-weight observations; no repair owed.
+
+---
+
+## §A. Fresh component 1 (route unused by PE1–PE5): FROM-DEFINITIONS TWO-RECIPE CONSTRUCTION + SYLVESTER RESULTANT, on fresh off-roster instances
+
+Route decorrelation: PE1 re-derived the closed form algebraically by hand;
+PE2 evaluated the displayed formula against the committed ledger (m = 1 slice
++ two hand m = 2 cases); PE3 walked the full committed roster with its own
+field arithmetic and formula evaluator; PE4 exhaustively mapped the m = 1
+selection geography (residual-level only — no polynomial construction); PE5
+proved the integer-exponent system in the Lean kernel. **No prior pass ever
+CONSTRUCTED the two competing polynomials from their raw definitions** — the
+only existing constructions live in the sealed code (reimpl + GmnLeg), which
+every prior instance figure ultimately rode. This pass built both recipes
+independently (own field tower, own exact ℤ[x] arithmetic, own Φ-adic dev,
+own reads; the print side transcribed directly from tex 1166–1283 — the r = 2
+construct display, the r ≥ 3 child prescription y^{(ℓu_j−𝔰_j)/e}c_j(y) mod ψ,
+Thm-`phir`'s c₁ and φ(y) = c(ψ − y^f); the harness side from the note's
+§1.1 S0.1/S0.2 restatement, semantics cross-checked against the sealed reimpl
+by READING, no imports), then compared them at m = 1 junctions (d₀ = 1,
+GMN r = 3). Artifact: `/tmp/w2_pe6_fresh.py`, source embedded in Appendix I.
+
+Per junction, EIGHT checks, all from first principles:
+
+* **A (REALIZE R3):** R₁v(C_k, β_k) = ε₁(β_k)⁻¹ψ₁,k for every harness slot.
+* **B (THM W2-C2(a)):** ρ_j = R₁v(P_j)/R₁v(C_j) = c·z₁^{A₁e₁j} exactly.
+* **C (Thm-`phir` on my own transcription):** my order-2 print residual
+  (rescoeff c_i = z₁^{t(i)}R₁(a_i)(z₁), t(i) = (s₁(a_i) − ℓ₀u_i)/e₀ — the
+  (s − ℓu)/e arrangement, transcribed from the construct proof / tex 1431
+  genre) of my constructed φ₃ equals c·ψ₁ — validating the transcription
+  against the print's own theorem before it judges the harness lift.
+* **D (THE §3.4 DISPLAY):** R₂(Φ₂^har)(y) = w·ψ₁(ξ·y) with the DISPLAYED
+  pair (ξ, w) = (z₁^{−e₁A₁}, 1) — the print residual of the harness lift
+  computed from raw definitions, coefficient by coefficient.
+* **E (the resultant leg):** the conjugate built a THIRD way — C(y) :=
+  Res_t(ψ₁(t), y − ξ⁻¹t) as my own Sylvester determinant over K₁[y]
+  (cofactor expansion, polynomial entries) — equals ξ^{−g₁}ψ₁(ξy)
+  coefficientwise, and w·ξ^{g₁}·C(y) equals the constructed residual of D.
+  (Run at the 263 extension-residue-field junctions, g₀ = 2.)
+* **F (rk. 3 byte law):** exact ℤ[x] coefficient-list equality of Φ₂^har vs
+  φ₃^cls ⟺ c·z₁^{A₁e₁j} = 1 on supp(ψ₁) ∩ [0, g₁).
+* **G (HR-REC):** R₂v(P) = Σ_j ε₁(V_j)·R₁v(P_j)·z₂^j — LHS through my own
+  dev + eq12 grid + exact-weight packed read in K₂ = K₁[z₂]/(ψ₁); RHS
+  semantic (§B keys what this tests).
+* **H (orbit):** the formula pair satisfies the orbit equations against the
+  constructed residual (scan-independent).
+
+**Instance set.** Calibration: 6 junctions — the roster's five d₀ = 1 m = 1
+junctions (T2A, T2B, T2C, T3B r = 3, T3F r = 3) plus PE3's counter-instance
+chamber (F₄, ψ₁ = y³ + ζ, e₀ = 1). My recorded data reproduce the committed
+ledger exactly: T2A ξ = z₁² byte-RED, T2C ξ = −1 byte-RED, T2B/T3B/T3F ξ = 1
+byte-GREEN, and the counter-instance junction byte-EQUAL with formula pair
+(1, 1) — the first reproduction of that chamber's byte side by actual
+polynomial construction (PE3/PE4 probed it at the residual level only).
+Fresh sweep: **560 off-roster junctions**, deterministic enumeration —
+p ∈ {2, 3, 5}; g₀ ∈ {1, 2} (residue fields F₂ … F₂₅ — the roster stops at
+F₉); (e₀, h₀) ∈ {(1,1), (2,1), (3,1), (3,2), (4,3)}; (e₁, h₁) ∈ {(1,1),
+(2,1), (3,1), (3,2)}; **g₁ ∈ {2, 3, 4}** — the sealed Tower builder
+implements only g ≤ 2 (reimpl line 311), so the g₁ ∈ {3, 4} block (including
+every sparse-support high-degree ψ₁) is terrain NO roster evidence ever
+touched.
+
+**Result: 566 junctions, 5,568 individual checks (A/B 1,106 each; C/D/F/G/H
+566 each; E/E2 263 each), 0 failures. Exit 0.** Teeth: (T1) dropping the
+ε⁻¹-correction from the harness slots (on the T2A shape, where
+ε₁(γ₂) = z₁² ≠ 1) breaks check D — CAUGHT; (T2) forcing the print child
+twist T_j = 0 (same shape, T₀ = 4 with z₁⁴ = z₁ ≠ 1) breaks check C —
+CAUGHT. Byproduct worth recording: among the 560 fresh junctions, 195 carry
+formula ξ ≠ 1 but only 153 are byte-RED — **42 fresh support-invisible-twist
+instances at m = 1** (ξ ≠ 1 with ξ^j ≡ 1 on supp ψ₁), abundantly confirming
+off-roster the support-triviality-weaker-than-ξ = 1 distinction that W2-C1
+and §3.4 rk. 2 fence (the roster exhibits the genre only at I4B r = 4).
+
+Verdict on the closed form: **CONFIRMED on a route independent of every
+prior leg and of the sealed code** — the displayed m = 1 pair, the slot law,
+the byte law, and the conjugation display all hold from raw definitions on
+terrain the roster cannot see.
+
+## §B. Fresh component 2 (route unused by PE1–PE5): (HR-REC) by the functional-equation/uniqueness route
+
+PE1's §A.4 derived (HR-REC) by unfolding the S0.2 read recursion node-by-node
+with W2-L0 and the child prescription. This pass derives it so that **neither
+W2-L0's grid tie nor W2-L2's Bézout bridge enters** — the recursion is forced
+by additivity and the single-slot normalization alone:
+
+Fix level Q, weight λ = V, and the eq12 grid s + je_{Q−1}. Let M_λ be the
+O-module of f whose Φ_{Q−1}-dev digits A_i sit at grid abscissas with
+w_{Q−1}(A_{s+je}) ≥ V_j, V_j := (λ − (s+je)γ_Q)/e_{Q−1}. Consider the two
+functionals M_λ → K_Q: Ψ₁ := the S0.2 level-Q read at λ, and Ψ₂(f) :=
+Σ_j ε_{Q−1}(V_j)·R_{Q−1}v(A_{s+je})·z_Q^j.
+
+1. **(Additivity.)** Both are additive on M_λ: the dev is additive, and each
+   level read at a fixed weight is additive on the weight-≥ module — by
+   induction from level 0, where res(·/π^β) is additive on {v ≥ β}, with
+   strictly-above digits reading 0.
+2. **(Single-slot law.)** On a single-slot element A·Φ_{Q−1}^{s+je}
+   (deg A < deg Φ_{Q−1}), Ψ₁ gives ε_{Q−1}(V_j)·R_{Q−1}v(A)·z_Q^j — this IS
+   the packed-read definition (S0.2's C_j), not a computation; Ψ₂ gives the
+   same by construction.
+3. **(Spanning.)** The dev decomposition writes every f ∈ M_λ as a finite
+   sum of single-slot elements.
+
+Hence Ψ₁ = Ψ₂ on all of M_λ. The print output P = construct(r, V, φ) =
+Σ_j P_j·φ_{r−1}^{s+je_{r−1}} lies in M_λ with dev digits EXACTLY the
+children: (i) deg P_j < m_{r−1} = deg Φ_{Q−1} (the construct's own degree
+property, tex (ef)) makes the defining sum its own base-Φ expansion, by
+uniqueness of the dev; (ii) the slots are on-line at exactly V_j — the
+construct property v_{r−1}(P_j) = V_j through the v = w dictionary (the
+probe's sealed P-index pin). Applying Ψ₁ = Ψ₂ to P is verbatim (HR-REC). ∎
+
+The ε-and-twist collapse ε(V_j)·z^{T_j} = z^{A·k_j} is the SUBSEQUENT
+sentence of §3.1 (that one is W2-L2, machine-keyed CK-MM) — the display
+(HR-REC) itself needs none of it, and the note's presentation (recursion
+first, collapse second) is faithful to this structure. Machine key: §A's
+G-check exercises exactly the three legs — dev = placement (uniqueness),
+slot weights = V_j (on-line), grid/packing alignment — plus the identity, at
+566 junctions including all 560 fresh, 0 failures. **CONFIRMED by a route on
+which the recursion is a uniqueness theorem, not a computation.**
+
+## §C. Machine leg (re-run this pass)
+
+* **Seals:** `grt_w2_checks.py` sha256 `71f8fc90…ba52` byte-identical at
+  working tree, seal commit 5463f2a, and HEAD ✓; `grt_weld_probe.py`
+  `107c92b6…4ea9` byte-identical to seal commit 55f7416 and HEAD ✓; both
+  committed artifacts hash-identical to HEAD before the run ✓
+  (results JSON e6e845ed…, output ace257b6…).
+* **Re-run (in a /tmp copy of the three sealed modules): exit 0. 6,403
+  samples, 0 violations, 17 families GREEN, boundary junctions = 1, teeth
+  MT-TW CAUGHT.** Produced results JSON **byte-identical to the committed
+  artifact including elapsed_s (3.2)** — `diff` empty; stdout differs only
+  in one intermediate timing figure (1.0 → 0.9 s at the T3D row) and the
+  JSON-path line (expected from /tmp). Per-family counts match §6.1 exactly
+  (CK-MM 4,396 · CK-HR1/VD1 156 · CK-REC 55 · CK-SLOT 44/16 · CK-XI 22 ·
+  CK-BYTE 28 · TW-RATIO/ADM/STRICT 44 each · TW-F3/F3b 684 each · TW-PARI
+  12 · TW-QO 7 · CK-T3E 2 · MT-TW 2). `git status verification/` clean
+  before and after.
+
+## §D. Statement-level truth of the whole note at HEAD
+
+* **Census recomputation (committed JSON, own parser, own is-one test, own
+  SKIP/walk classification):** 44 junction-levels = 16 r = 2 + 28 r ≥ 3 ✓;
+  22 walked + 6 SKIP, all 6 SKIPs byte-RED ✓; walked split 12 RED/10 GREEN
+  (→ 18/10) ✓; recorded ξ ≠ 1 ⟺ byte-RED at 22/22 walked, 0 exceptions ✓;
+  every below-r₀ junction byte-GREEN ✓; first-twist census T2A/C/D/G = 3,
+  T3A/C/D/E = 3, T3B/F = 4, I4B = 5, I4C = 3, T2B/E/F + I4A none ✓;
+  above-twist = exactly {T3A/T3C/T3D/T3E r = 4; I4C r = 4, 5} ⟹ 38/6 ✓;
+  instance-warranted = exactly {I4A r = 5, I4B r = 5} ⟹ 36 + 2 ✓; I4B
+  ledger [(3, (1,1)), (4, (1,1)), (5, (−1,−1))], r = 4 byte-equal, r = 5
+  byte-RED, the run's sole CK-XI boundary ✓. Every figure carried by the
+  grade cap, §5.2, §6.1, §6.2, §6.3(d) matches.
+* **The §3.5 boundary witness, recomputed from the committed I4B spec**
+  (reads (3,2,1),(2,1,1),(1,1,2),(2,1,1), ψ₀ = y+1, ψ₂ = 1+y²): ℓ₀ = 2,
+  γ₂ = 13, A₁ = 4, A₂ = 13, χ₂ = z₁⁴ = 1, ξ₃ = z₂^{−13} = −1, invisible on
+  supp {0, 2}; ξ₄: e₂ = 1 ⟹ ℓ₂ = 0 ⟹ A₃ = 0, χ₃ = χ₂ = 1 ⟹ ξ₄ = 1 —
+  every bracket figure exact ✓.
+* **LEMMA W2-ID1** re-derived (recorded (1, w) + the unconditional display ⟹
+  w = 1 at j = 0 via ψ₁(0) ≠ 0 ⟹ ξ_f^j = 1 on supp incl. the monic top ⟹
+  c·z₁^{A₁e₁j} = ξ_f^{g₁−j} = 1 on supp ∩ [0, g₁) = rk. 3's byte law) —
+  sound; its premise (the m = 1 display) now carries §A's from-definitions
+  confirmation. The [r3] "Consequently" one-directional ✓; the
+  counter-instance block faithful and TRUE (my §A calibration constructs the
+  chamber; c = 1, byte-equal, all of F₄* in the stabilizer) ✓.
+* **Identification-token disposition (my own grep at HEAD): 31 tokens on 30
+  lines** — scoped [r3]/[r4] sites (119, 727, 789, 807/809, 979, 981, 1006,
+  1036) each one-directional or roster-scoped ✓; struck spans preserved as
+  record (720, 802–803, 1004) ✓; historical/arc records quoting the cured
+  species (36, 1040, 1137/1139, 1217/1221, 1285–1306) ✓; different senses
+  (600 letter identification; 931/1097 overflow identification) ✓; the
+  instance-exactness claims machine-true two-sidedly (22/22, §D bullet 1) ✓.
+  **No residual two-sided assertion at HEAD.** (See o-1 on PE5's count
+  figure.)
+* **Boxes and fences:** W2-OPEN-1 statement matches what TW-F3 runs (684
+  groups, 0; control 0) and stays OPEN ✓; W2-OPEN-2's premise carries the
+  P3-corrected Φ_{q−1} pairing (dictionary-exact per §1.2), the [r3]
+  converse flag, the [r4] o-e precision (the recorded chamber's top junction
+  IS its r₀ — 2 reads — verified), and (OPEN-2a) stated one-directionally
+  with honest Status ✓; W2-BOX-1 matches CK-SLOT/CK-XI (exactly 1 boundary)
+  ✓; the §4.3 fence stands with the r2-reverted sign — my own read of the
+  print's construct proof (t(j) = (s_{r−2}(P_j) − ℓ_{r−2}u_j)/e_{r−2}, the
+  (s − ℓu)/e arrangement) and of tex 1201's child exponent
+  (ℓ_{r−2}u_j − 𝔰_j)/e_{r−2} confirms the two-referent split of §2.3
+  [r2, P2] and the r0 sign t ↦ t − k·u_i ✓.
+* **Source-line citations re-verified at the seals:** `orbit_scan` def at
+  runner line 135, `return out` at 163, 164 blank ✓ (o-c figure exact);
+  "only g in {1,2} implemented" at reimpl line 311 ✓; `Ext.elems` product
+  comprehension at reimpl 220–222, (0,1) = ζ before (1,0) = 1 for F₄ ✓
+  (see o-2); TW-PARI "PREDICT: 24/24" at runner docstring line 77 vs the
+  executed 12 ✓ (the [r1, F4] disclosure accurate).
+* **Grade cap / claims table / consumer face:** internally consistent; every
+  PROVED row is proved at the stated scope (clause 2 m = 1 now confirmed on
+  a from-definitions route; m ≥ 2 correctly split (C-coll)/recursion/
+  boundary); every OPEN row is genuinely open; the four-route adjudication
+  stands as displayed (verified at source by PE1/PE2 with a fifth-route
+  hunt; not re-opened — no new consumption since) ✓.
+
+## §E. The arc system — CONSISTENT AND TRUE; the counter
+
+* **Chain vs git (clock-ordered, hashes and verdicts exact):** composed
+  5463f2a (08-04 15:59) → PE1 083adff (08-06 19:16; 0C+2G+5m ✓) → r1
+  8d5e3fa (19:45) → PE2 79e796b (08-07 08:20; 0C+2G+1m ✓) → r2 ffa1e57
+  (08:35) → PE3 9bd938f (09:18; 0C+1G ✓) → r3 79d1d9c (09:31) → PE4
+  e92cb22 (14:03; 0C+1G+1m ✓) → r4 94534df (14:20) → PE5 ba2c47c (15:03;
+  CLEAN, counter 0/2 → 1/2 ✓). Note byte-frozen since 94534df ✓; runner +
+  artifacts byte-frozen through the whole arc ✓.
+* **The note's [r4] S-STATUS ("counter 0/2, FOUR passes run, PE5 next") is a
+  dated as-of-r4 record** — correct under the freeze convention (a clean
+  pass edits nothing; the counter lives in the committed reports; the
+  2-clean rule requires PE6 to grade the SAME text PE5 graded, which this
+  pass did). The live counter per PE5's committed report: 1/2 with PE6 the
+  would-be accepting attempt — this pass ✓.
+* **PE5's fresh leg re-verified:** Appendix I of the committed PE5 report
+  extracted verbatim and recompiled against the repo's pinned toolchain —
+  `lake env lean` **exit 0, zero sorry**, exactly the two disclosed
+  `Int.ediv_add_emod` deprecation warnings. The arc's first clean pass
+  stands on a reproducible leg.
+* **Verdict of this pass: CLEAN. Counter 1/2 → 2/2 — two consecutive clean
+  passes on the same frozen text: the note is ACCEPTED at its displayed
+  grades and conditionality** (clause 2 m = 1 unconditional / m ≥ 2 on
+  (C-coll) with (HR-REC) exact and W2-BOX-1; clause 1 on the byte-shared
+  perimeter with the W2-C1a chamber qualifier; clause 3 proved-to-first-
+  recorded-twist riding W2-ID1/(OPEN-2a) one-directionally, MEASURED above
+  riding W2-OPEN-2; value layer = W2-OPEN-1, open; §4.3 review-owed).
+  Orchestrator items at the fold, unchanged from the r1/r2 records: the WM
+  (M4) annotation + "its only commit" staleness (now WM line 111), the JB
+  §0M row-15 annotation.
+
+**Ungraded observations (nil weight, no repair owed):**
+
+* **(o-1)** PE5 §A.2's headline figure "27 hits" for the `identification`
+  grep does not reproduce: at the identical frozen text the count is 31
+  tokens on 30 lines. PE5's own disposition list COVERS all 30 lines (its
+  enumerated sites plus the 1285–1306 range), and my independent
+  disposition (§D) confirms completeness — the figure reads as a count of
+  grouped sites, not tokens. A slip inside a committed report, invisible to
+  the note and to every consumer; verdict-irrelevant then and now.
+* **(o-2)** The counter-instance block cites "`Ext.elems` =
+  `itertools.product(base.elems(), repeat=g)`, iterlawn_pe_reimpl.py line
+  220": the `def` header sits at 220, the product expression at 221.
+  Content-true as cited by PE3/PE4/PE5; sub-token imprecision.
+* **(o-3)** §A's fresh sweep shows the invisible-twist genre is ABUNDANT at
+  m = 1 off-roster (42 of 560 junctions: ξ ≠ 1, byte-GREEN, ξ support-
+  trivial) — strong independent corroboration of §3.4 rk. 2 / W2-C1's
+  support-triviality fence and of why the converse selection question
+  (PE3's counter-instance) had to stay unclaimed. Recorded for any future
+  round that considers pinning a selection rule.
+
+## Repair queue implied
+
+**None.** CLEAN; counter 2/2; acceptance per the arc rule, fold owed to the
+orchestrator.
+
+---
+
+## Appendix I — the fresh-leg source (`/tmp/w2_pe6_fresh.py`, run exit 0 this pass)
+
+```python
+#!/usr/bin/env python3
+# -*- coding: utf-8 -*-
+"""
+GRTW2 PE6 fresh leg — route unused by PE1-PE5: FROM-DEFINITIONS TWO-RECIPE
+CONSTRUCTION at m=1 junctions (d0=1), on FRESH OFF-ROSTER instances
+(g1 up to 4; the roster builder caps g<=2), with a SYLVESTER-RESULTANT leg
+for the conjugate polynomial.
+
+Independent of the sealed runner/reimpl/probe: no imports from them; own
+field tower, own integer-polynomial arithmetic, own dev, own reads, own
+print transcription straight from HigherNewton.tex 1166-1283 (construct r=2
+and r=3, Thm phir c1), own rescoeff/t(i) order-2 residual (tex 1431/1447).
+
+Per instance (p, (e0,h0,g0,psi0), (e1,h1,g1,psi1)):
+  HARNESS: Phi1 (std lift), Phi2 = Phi1^{e1g1} + sum realize1(eps1^{-1}psi1k)
+  PRINT:   phi3 = Phi1^{e1g1} + sum construct(2,Vj,phij)*Phi1^{j e1}  [tex]
+  CHECKS:
+   A  REALIZE-R3: R1v(C_k, beta_k) == eps1(beta_k)^{-1} psi1_k
+   B  W2-C2(a) slot law: rho_j = R1v(P_j)/R1v(C_j) == c * z1^{A1 e1 j}
+   C  Thm-phir on own transcription: R2print(phi3) == c * psi1
+   D  THE DISPLAY: R2print(Phi2^har)(y) == w * psi1(xi*y), (xi,w)=(z1^{-e1A1},1)
+   E  RESULTANT: Sylvester Res_t(psi1(t), y - xi^{-1} t) == xi^{-g1} psi1(xi y)
+      and display RHS == w * xi^{g1} * that resultant
+   F  BYTE LAW (rk.3): bytes(Phi2)==bytes(phi3) <=> c*z1^{A1 e1 j}==1 on supp
+   G  HR-REC at the junction: R2v(P) == sum_j eps1(V_j) R1v(P_j) z2^j
+   H  ORBIT: the formula pair satisfies the orbit equations (scan all units)
+  TEETH: (T1) drop the eps^{-1} correction in Phi2 -> D must fail somewhere
+         (T2) force T_j = 0 in the print child -> C must fail somewhere
+  CALIBRATION: roster m=1 junctions T2A/T2B/T2C/T3B/T3F + PE3's
+  counter-instance; recorded pairs and byte verdicts vs the committed ledger.
+"""
+import sys, json, itertools
+from math import gcd
+
+# ---------------- fields: F_p and one extension step ----------------
+class Fp:
+    def __init__(s, p): s.p = p
+    def zero(s): return 0
+    def one(s): return 1
+    def add(s,a,b): return (a+b)%s.p
+    def sub(s,a,b): return (a-b)%s.p
+    def mul(s,a,b): return (a*b)%s.p
+    def neg(s,a): return (-a)%s.p
+    def inv(s,a):
+        assert a%s.p, "inv 0"
+        return pow(a, s.p-2, s.p)
+    def is_zero(s,a): return a%s.p==0
+    def eq(s,a,b): return (a-b)%s.p==0
+    def elems(s): return list(range(s.p))
+    def lift(s,a): return a%s.p     # canonical lift to {0..p-1}
+
+class Ext:
+    """K = base[t]/mod, mod monic (list of base elems, len g+1, mod[-1]=1).
+    Elements: tuples of base elems, length g."""
+    def __init__(s, base, mod):
+        s.B, s.mod = base, mod
+        s.g = len(mod)-1
+        assert base.eq(mod[-1], base.one())
+    def zero(s): return tuple(s.B.zero() for _ in range(s.g))
+    def one(s):  return tuple(s.B.one() if i==0 else s.B.zero() for i in range(s.g))
+    def from_base(s,a): return tuple(a if i==0 else s.B.zero() for i in range(s.g))
+    def gen(s):  return tuple(s.B.one() if i==1 else s.B.zero() for i in range(s.g))
+    def add(s,a,b): return tuple(s.B.add(x,y) for x,y in zip(a,b))
+    def sub(s,a,b): return tuple(s.B.sub(x,y) for x,y in zip(a,b))
+    def neg(s,a): return tuple(s.B.neg(x) for x in a)
+    def is_zero(s,a): return all(s.B.is_zero(x) for x in a)
+    def eq(s,a,b): return s.is_zero(s.sub(a,b))
+    def reduce_list(s, L):
+        L = list(L)
+        while len(L) > s.g:
+            c = L.pop()
+            if s.B.is_zero(c): continue
+            d = len(L) - s.g   # x^{len(L)} = x^{d} * x^{g}; x^g = -sum mod[i] x^i
+            for i in range(s.g):
+                L[d+i] = s.B.sub(L[d+i], s.B.mul(c, s.mod[i]))
+        while len(L) < s.g: L.append(s.B.zero())
+        return tuple(L[:s.g])
+    def mul(s,a,b):
+        L = [s.B.zero()]*(2*s.g-1)
+        for i,x in enumerate(a):
+            if s.B.is_zero(x): continue
+            for j,y in enumerate(b):
+                if s.B.is_zero(y): continue
+                L[i+j] = s.B.add(L[i+j], s.B.mul(x,y))
+        return s.reduce_list(L)
+    def inv(s,a):
+        # extended Euclid in base[t] on (mod, a)
+        assert not s.is_zero(a)
+        B = s.B
+        def pdeg(f):
+            d=-1
+            for i,c in enumerate(f):
+                if not B.is_zero(c): d=i
+            return d
+        def pscale(f,c): return [B.mul(x,c) for x in f]
+        def psub(f,g):
+            n=max(len(f),len(g)); f=f+[B.zero()]*(n-len(f)); g=g+[B.zero()]*(n-len(g))
+            return [B.sub(x,y) for x,y in zip(f,g)]
+        def pmulx(f,k): return [B.zero()]*k + f
+        r0, r1 = list(s.mod), list(a)
+        s0, s1 = [B.zero()], [B.one()]
+        while True:
+            d1 = pdeg(r1)
+            assert d1 >= 0
+            if d1 == 0:
+                c = B.inv(r1[0])
+                return s.reduce_list(pscale(s1, c))
+            d0 = pdeg(r0)
+            if d0 < d1:
+                r0, r1, s0, s1 = r1, r0, s1, s0; continue
+            c = B.mul(r0[pdeg(r0)], B.inv(r1[d1]))
+            k = pdeg(r0) - d1
+            r0 = psub(r0, pmulx(pscale(r1, c), k))
+            s0 = psub(s0, pmulx(pscale(s1, c), k))
+    def elems(s):
+        return [tuple(t) for t in itertools.product(s.B.elems(), repeat=s.g)]
+    def lift(s,a): raise NotImplementedError
+
+def fpow(F, z, k):
+    if k < 0: return fpow(F, F.inv(z), -k)
+    r = F.one()
+    b = z; kk = k
+    while kk:
+        if kk & 1: r = F.mul(r, b)
+        b = F.mul(b, b); kk >>= 1
+    return r
+
+# poly-over-field helpers (lists of field elems, index = degree)
+def fp_trim(F, f):
+    while f and F.is_zero(f[-1]): f.pop()
+    return f
+def fp_eval(F, f, x):
+    r = F.zero()
+    for c in reversed(f): r = F.add(F.mul(r,x), c)
+    return r
+def fp_mul(F, f, g):
+    if not f or not g: return []
+    L = [F.zero()]*(len(f)+len(g)-1)
+    for i,a in enumerate(f):
+        if F.is_zero(a): continue
+        for j,b in enumerate(g):
+            if F.is_zero(b): continue
+            L[i+j] = F.add(L[i+j], F.mul(a,b))
+    return L
+def fp_is_irred(F, f):
+    # monic deg<=4 over small field: no root (deg 2,3); deg 4 also no monic quad factor
+    d = len(f)-1
+    assert F.eq(f[-1], F.one())
+    if d == 1: return True
+    for x in F.elems():
+        if F.is_zero(fp_eval(F, f, x)): return False
+    if d <= 3: return True
+    if d == 4:
+        for a in F.elems():
+            for b in F.elems():
+                # divide f by t^2 + a t + b, check remainder zero
+                q = list(f)
+                for i in range(d, 1, -1):
+                    c = q[i]
+                    if F.is_zero(c):
+                        continue
+                    q[i] = F.zero()
+                    q[i-1] = F.sub(q[i-1], F.mul(c,a))
+                    q[i-2] = F.sub(q[i-2], F.mul(c,b))
+                if F.is_zero(q[0]) and F.is_zero(q[1]): return False
+        return True
+    raise NotImplementedError
+
+# ---------------- integer polynomial layer (O = Z, pi = p, exact) ----------
+def zp_trim(f):
+    while f and f[-1]==0: f.pop()
+    return f
+def zp_add(f,g):
+    n=max(len(f),len(g)); f=f+[0]*(n-len(f)); g=g+[0]*(n-len(g))
+    return zp_trim([a+b for a,b in zip(f,g)])
+def zp_mul(f,g):
+    if not f or not g: return []
+    L=[0]*(len(f)+len(g)-1)
+    for i,a in enumerate(f):
+        if a==0: continue
+        for j,b in enumerate(g):
+            if b==0: continue
+            L[i+j]+=a*b
+    return zp_trim(L)
+def zp_pow(f,k):
+    r=[1]
+    for _ in range(k): r=zp_mul(r,f)
+    return r
+def zp_dev(f, Phi):
+    """base-Phi digits (Phi monic over Z): [A_0, A_1, ...], deg A_i < deg Phi."""
+    f=list(f); out=[]
+    dP=len(Phi)-1
+    while f:
+        if len(f)-1 < dP:
+            out.append(zp_trim(list(f))); f=[]
+            break
+        # divmod by monic Phi
+        q=[0]*(len(f)-dP)
+        r=list(f)
+        for i in range(len(f)-1, dP-1, -1):
+            c=r[i]
+            if c:
+                q[i-dP]=c
+                for k2 in range(dP+1):
+                    r[i-dP+k2]-=c*Phi[k2]
+        out.append(zp_trim(r[:dP]))
+        f=zp_trim(q)
+    return out
+def vp(n, p):
+    assert n!=0
+    v=0
+    while n%p==0: n//=p; v+=1
+    return v
+
+# ---------------- one m=1 junction: everything from definitions ------------
+class Junction:
+    def __init__(s, p, e0,h0,g0, psi0, e1,h1,g1, psi1):
+        s.p=p; s.e0,s.h0,s.g0=e0,h0,g0; s.e1,s.h1,s.g1=e1,h1,g1
+        s.F0=Fp(p)
+        s.psi0=psi0  # list over F0, monic deg g0, psi0[0]!=0
+        if g0==1:
+            s.K1=s.F0; s.z1=s.F0.neg(psi0[0])
+            s.K1_from0=lambda a:a
+        else:
+            s.K1=Ext(s.F0, psi0); s.z1=s.K1.gen()
+            s.K1_from0=lambda a:s.K1.from_base(a)
+        s.psi1=psi1  # list over K1, monic deg g1, psi1[0]!=0
+        s.K2=Ext(s.K1, psi1); s.z2=s.K2.gen()
+        s.l0,s.lp0 = s.bez(e0,h0); s.l1,s.lp1 = s.bez(e1,h1)
+        s.gam1=h0; s.wPhi1=e0*g0*h0; s.gam2=e1*s.wPhi1+h1
+        s.A1=s.l0*g0*s.gam1
+        s.Phi1=s.build_Phi1()
+    @staticmethod
+    def bez(e,h):
+        if e==1: return 0,1
+        l=next(x for x in range(e) if (x*h)%e==1)
+        return l,(1-l*h)//e
+    # canonical lift K1 -> Z[x]-coefficient... for d0=1 digits are ints
+    def liftF0(s,a): return a % s.p
+    def K1coords(s,a):
+        return [a] if s.g0==1 else list(a)
+    def eq12(s, beta, e,h,l):
+        sx=(l*beta)%e; u=(beta-sx*h)//e
+        assert u*e+sx*h==beta
+        return sx,u
+    def eps1(s, beta):
+        sx,u=s.eq12(beta, s.e0,s.h0,s.l0)
+        return fpow(s.K1, s.z1, s.lp0*sx - s.l0*u)
+    def build_Phi1(s):
+        out=[0]*(s.e0*s.g0)+[1]
+        for k in range(s.g0):
+            ck = s.psi0[k]
+            if s.F0.is_zero(ck): continue
+            term=[0]*(s.e0*k); term=term+[ (s.p**((s.g0-k)*s.h0)) * s.liftF0(ck) ]
+            out=zp_add(out, term)
+        return out
+    def realize1(s, tau, beta):
+        sx,u=s.eq12(beta, s.e0,s.h0,s.l0)
+        out=[]
+        for nu,c in enumerate(s.K1coords(tau)):
+            if s.F0.is_zero(c): continue
+            expo=u-nu*s.h0
+            assert expo>=0, "negative pi exponent in realize1"
+            mono=[0]*(sx+nu*s.e0)+[(s.p**expo)*s.liftF0(c)]
+            out=zp_add(out,mono)
+        return out
+    def w1(s, A):
+        assert A
+        return min(s.e0*vp(c,s.p)+i*s.h0 for i,c in enumerate(A) if c)
+    def R1v(s, A, beta):
+        """level-1 read at weight beta (requires w1(A)>=beta)."""
+        sx,u=s.eq12(beta, s.e0,s.h0,s.l0)
+        r=s.K1.zero() if s.g0>1 else 0
+        for a in range(sx, len(A), s.e0):
+            c=A[a]
+            if c==0: continue
+            sw=(beta-a*s.gam1)//s.e0
+            assert (beta-a*s.gam1)%s.e0==0
+            v=vp(c,s.p)
+            assert v>=sw, "digit below line"
+            if v>sw: continue
+            digit=(c//(s.p**sw))%s.p
+            j=(a-sx)//s.e0
+            term=fpow(s.K1, s.z1, j)
+            term=s.K1.mul(s.K1_from0(digit), term)
+            r=s.K1.add(r,term) if s.g0>1 else s.F0.add(r,term)
+        return r
+    def build_Phi2(s, garble_eps=False):
+        out=zp_pow(s.Phi1, s.e1*s.g1)
+        s.har_slots={}
+        for k in range(s.g1):
+            ck=s.psi1[k] if s.g1>0 else None
+            if s.K1.is_zero(ck) if s.g0>1 else s.F0.is_zero(ck): continue
+            bk=(s.g1-k)*s.gam2
+            e=s.eps1(bk)
+            tau = ck if garble_eps else s.K1.mul(s.K1.inv(e), ck)
+            Ck=s.realize1(tau, bk)
+            s.har_slots[k]=Ck
+            out=zp_add(out, zp_mul(Ck, zp_pow(s.Phi1, s.e1*k)))
+        return out
+    # ---- print side (tex transcription) ----
+    def print_construct_r3(s, force_Tj_zero=False):
+        K1=s.K1
+        c1=fpow(K1, s.z1, -s.l0*s.g0*s.h0)      # tex 1270 via v2(phi2)=e0 g0 h0
+        c=fpow(K1, c1, s.e1*s.g1)
+        V=s.e1*s.g1*s.gam2
+        sx=(s.l1*V)%s.e1                        # W2-L0 initial abscissa of T
+        u=(V-sx*s.h1)//s.e1
+        assert sx==0, "top junction s=0 expected"
+        s.print_slots={}
+        P=[]
+        for j in range(s.g1):
+            cj_res = s.psi1[j]
+            if (K1.is_zero(cj_res) if s.g0>1 else s.F0.is_zero(cj_res)): continue
+            cj=K1.mul(c, cj_res)
+            uj=u-j*s.h1
+            Vj=uj-(sx+j*s.e1)*s.wPhi1
+            sj=(s.l0*Vj)%s.e0
+            upj=(Vj-sj*s.h0)//s.e0
+            assert (s.l0*uj-sj)%s.e0==0, "T_j not integral"
+            Tj=0 if force_Tj_zero else (s.l0*uj-sj)//s.e0
+            phij=K1.mul(fpow(K1, s.z1, Tj), cj)   # the child residual element
+            # construct(2, Vj, phij): place the K0-coordinates of phij
+            Pj=[]
+            for nu,cc in enumerate(s.K1coords(phij)):
+                if s.F0.is_zero(cc): continue
+                expo=upj-nu*s.h0
+                assert expo>=0, "negative exponent in construct2"
+                mono=[0]*(sj+nu*s.e0)+[(s.p**expo)*s.liftF0(cc)]
+                Pj=zp_add(Pj,mono)
+            s.print_slots[j]=(Pj, Vj)
+            P=zp_add(P, zp_mul(Pj, zp_pow(s.Phi1, sx+j*s.e1)))
+        s.c1, s.c, s.V = c1, c, V
+        phi3=zp_add(zp_pow(s.Phi1, s.e1*s.g1), P)
+        return phi3, P
+    # ---- print order-2 residual (rescoeff + t(i), tex 1373/1431/1447) ----
+    def R1_print(s, a):
+        """order-1 residual of a in O[x] on its own lambda_1-side: attained
+        initial abscissa s1(a), coefficients red(a_i/pi^{u_nu})."""
+        beta=s.w1(a)
+        att=[i for i,c in enumerate(a) if c and s.e0*vp(c,s.p)+i*s.h0==beta]
+        s1=min(att)
+        out=[]
+        i=s1; nu=0
+        while i < len(a):
+            c=a[i] if i<len(a) else 0
+            w=(beta-i*s.h0)
+            if c and s.e0*vp(c,s.p)==w:
+                assert w%s.e0==0
+                out.append(s.K1_from0((c//(s.p**(w//s.e0)))%s.p))
+            else:
+                out.append(s.K1.zero() if s.g0>1 else 0)
+            i+=s.e0; nu+=1
+        while out and (s.K1.is_zero(out[-1]) if s.g0>1 else s.F0.is_zero(out[-1])):
+            out.pop()
+        return s1, out
+    def R2_print(s, X):
+        """order-2 residual of X on the junction-slope side (lambda = h1/e1),
+        via dev by phi2=Phi1, ordinates u_i = w1(a_i) + i*v2(phi2),
+        rescoeff c_i = z1^{t(i)} R1(a_i)(z1), t(i)=(s1(a_i)-l0*u_i)/e0."""
+        dv=zp_dev(X, s.Phi1)
+        v2phi2=s.wPhi1
+        pts={}
+        for i,A in enumerate(dv):
+            if not A: continue
+            pts[i]=s.w1(A)+i*v2phi2
+        m=min(s.e1*u+i*s.h1 for i,u in pts.items())
+        onside=sorted(i for i,u in pts.items() if s.e1*u+i*s.h1==m)
+        s2=onside[0]
+        out=[]
+        i=s2
+        while i<=onside[-1]:
+            if i in pts and s.e1*pts[i]+i*s.h1==m:
+                A=dv[i]; ui=pts[i]
+                s1a,R1a=s.R1_print(A)
+                assert (s1a-s.l0*ui)%s.e0==0, "t(i) not integral"
+                ti=(s1a-s.l0*ui)//s.e0
+                val=fp_eval(s.K1, R1a, s.z1)
+                ci=s.K1.mul(fpow(s.K1,s.z1,ti), val)
+            else:
+                ci=s.K1.zero() if s.g0>1 else 0
+            out.append(ci)
+            i+=s.e1
+        while out and (s.K1.is_zero(out[-1]) if s.g0>1 else s.F0.is_zero(out[-1])):
+            out.pop()
+        return s2, out
+    # ---- level-2 read (for HR-REC) ----
+    def w2(s, f):
+        dv=zp_dev(f, s.Phi1)
+        return min(s.e1*s.w1(A)+j*s.gam2 for j,A in enumerate(dv) if A)
+    def R2v(s, f, lam):
+        dv=zp_dev(f, s.Phi1)
+        sx,u=s.eq12(lam, s.e1,s.h1,s.l1)
+        r=s.K2.zero()
+        for a in range(sx, len(dv), s.e1):
+            A=dv[a]
+            if not A: continue
+            sw=(lam-a*s.gam2)//s.e1
+            assert (lam-a*s.gam2)%s.e1==0
+            wA=s.w1(A)
+            assert wA>=sw, "digit below line (R2v)"
+            if wA>sw: continue
+            cj=s.K1.mul(s.eps1(sw), s.R1v(A,sw)) if s.g0>1 else \
+               s.F0.mul(s.eps1(sw), s.R1v(A,sw))
+            j=(a-sx)//s.e1
+            term=s.K2.mul(s.K2.from_base(cj), fpow(s.K2, s.z2, j))
+            r=s.K2.add(r,term)
+        return r
+    # ---- Sylvester resultant conjugate ----
+    def conj_by_resultant(s, xi):
+        """C(y) = Res_t(psi1(t), y - xi^{-1} t) as poly in y over K1,
+        via Sylvester determinant with symbolic y (poly-in-y entries)."""
+        K1=s.K1
+        g=s.g1
+        xinv=K1.inv(xi)
+        def kconst(c): return [c]
+        Y=[K1.zero(), K1.one()]
+        Z=[]
+        psirow=[kconst(s.psi1[g-i]) if i<=g else Z for i in range(g+1)]
+        M=[psirow]
+        for r in range(g):
+            row=[Z]*(g+1)
+            row[r]=kconst(K1.neg(xinv))
+            row[r+1]=Y
+            M.append(row)
+        def padd(f,gp):
+            n=max(len(f),len(gp)); f=f+[K1.zero()]*(n-len(f)); gp=gp+[K1.zero()]*(n-len(gp))
+            out=[K1.add(a,b) for a,b in zip(f,gp)]
+            while out and K1.is_zero(out[-1]): out.pop()
+            return out
+        def pmul(f,gp):
+            if not f or not gp: return []
+            L=[K1.zero()]*(len(f)+len(gp)-1)
+            for i,a in enumerate(f):
+                if K1.is_zero(a): continue
+                for j,b in enumerate(gp):
+                    if K1.is_zero(b): continue
+                    L[i+j]=K1.add(L[i+j],K1.mul(a,b))
+            while L and K1.is_zero(L[-1]): L.pop()
+            return L
+        def pneg(f): return [K1.neg(a) for a in f]
+        def det(Mx):
+            n=len(Mx)
+            if n==1: return Mx[0][0]
+            out=[]
+            for c in range(n):
+                e=Mx[0][c]
+                if not e: continue
+                sub=[[Mx[r][cc] for cc in range(n) if cc!=c] for r in range(1,n)]
+                term=pmul(e, det(sub))
+                out=padd(out, term if c%2==0 else pneg(term))
+            return out
+        return det(M)
+
+    def K1_is_one(s, a):
+        return s.K1.eq(a, s.K1.one()) if s.g0>1 else s.F0.eq(a,1)
+    def K1eq(s,a,b):
+        return s.K1.eq(a,b) if s.g0>1 else s.F0.eq(a,b)
+    def K1mul(s,a,b):
+        return s.K1.mul(a,b) if s.g0>1 else s.F0.mul(a,b)
+    def K1inv(s,a):
+        return s.K1.inv(a) if s.g0>1 else s.F0.inv(a)
+    def K1zero(s,a):
+        return s.K1.is_zero(a) if s.g0>1 else s.F0.is_zero(a)
+
+def run_junction(J, checks, teeth=False):
+    fails=[]
+    K1=J.K1; F0=J.F0
+    Phi2=J.build_Phi2()
+    phi3, P = J.print_construct_r3()
+    xi=fpow(K1, J.z1, -J.e1*J.A1)
+    w=K1.one() if J.g0>1 else 1
+    # A: REALIZE R3
+    for k,Ck in J.har_slots.items():
+        bk=(J.g1-k)*J.gam2
+        want=J.K1mul(J.K1inv(J.eps1(bk)), J.psi1[k])
+        got=J.R1v(Ck, bk)
+        checks['A']+=1
+        if not J.K1eq(got,want): fails.append(('A',k))
+    # B: slot ratio law
+    for j,(Pj,Vj) in J.print_slots.items():
+        rp=J.R1v(Pj, Vj)
+        rh=J.R1v(J.har_slots[j], (J.g1-j)*J.gam2)
+        rho=J.K1mul(rp, J.K1inv(rh))
+        want=J.K1mul(J.c, fpow(K1, J.z1, J.A1*J.e1*j))
+        checks['B']+=1
+        if not J.K1eq(rho,want): fails.append(('B',j))
+    # C: Thm-phir on own transcription
+    s2,R=J.R2_print(phi3)
+    want=[J.K1mul(J.c, cj) for cj in J.psi1]
+    got=list(R)
+    while len(got)<len(want): got.append(K1.zero() if J.g0>1 else 0)
+    checks['C']+=1
+    okC=(s2==0 and len(got)==len(want) and all(J.K1eq(a,b) for a,b in zip(got,want)))
+    if not okC: fails.append(('C',s2))
+    # D: THE DISPLAY on the harness lift
+    s2h,Rh=J.R2_print(Phi2)
+    disp=[J.K1mul(w, J.K1mul(fpow(K1,xi,j), J.psi1[j])) for j in range(J.g1+1)]
+    goth=list(Rh)
+    while len(goth)<len(disp): goth.append(K1.zero() if J.g0>1 else 0)
+    checks['D']+=1
+    okD=(s2h==0 and all(J.K1eq(a,b) for a,b in zip(goth,disp)))
+    if not okD: fails.append(('D',s2h))
+    # E: resultant conjugate (K1 an Ext; run when g0>1)
+    if J.g0>1:
+        C=J.conj_by_resultant(xi)
+        conj=[J.K1mul(fpow(K1,xi,j-J.g1), J.psi1[j]) for j in range(J.g1+1)]
+        got=list(C)
+        while len(got)<len(conj): got.append(K1.zero())
+        checks['E']+=1
+        if not all(J.K1eq(a,b) for a,b in zip(got,conj)): fails.append(('E',))
+        rhs=[J.K1mul(w, J.K1mul(fpow(K1,xi,J.g1), c)) for c in got]
+        gothp=list(goth)
+        while len(gothp)<len(rhs): gothp.append(K1.zero())
+        checks['E2']+=1
+        if not all(J.K1eq(a,b) for a,b in zip(gothp,rhs)): fails.append(('E2',))
+    # F: byte law
+    byte_eq = (zp_trim(list(Phi2))==zp_trim(list(phi3)))
+    law = all(J.K1_is_one(J.K1mul(J.c, fpow(K1,J.z1,J.A1*J.e1*j)))
+              for j in range(J.g1) if not J.K1zero(J.psi1[j]))
+    checks['F']+=1
+    if byte_eq != law: fails.append(('F',byte_eq,law))
+    # G: HR-REC
+    if P:
+        lhs=J.R2v(P, J.V)
+        rhs=J.K2.zero()
+        for j,(Pj,Vj) in J.print_slots.items():
+            cj=J.K1mul(J.eps1(Vj), J.R1v(Pj,Vj))
+            rhs=J.K2.add(rhs, J.K2.mul(J.K2.from_base(cj), fpow(J.K2,J.z2,j)))
+        checks['G']+=1
+        if not J.K2.eq(lhs,rhs): fails.append(('G',))
+    # H: orbit — formula pair satisfies the orbit equations
+    def satisfies(xih, wh):
+        pred=[J.K1mul(wh, J.K1mul(fpow(K1,xih,j), J.psi1[j])) for j in range(J.g1+1)]
+        return all(J.K1eq(a,b) for a,b in zip(goth+[K1.zero() if J.g0>1 else 0]*(len(pred)-len(goth)), pred))
+    checks['H']+=1
+    if not satisfies(xi,w): fails.append(('H',))
+    return fails, byte_eq, xi, w
+
+def main():
+    total=0; nfail=0; results=[]
+    checks=dict(A=0,B=0,C=0,D=0,E=0,E2=0,F=0,G=0,H=0)
+    # ---------- calibration: roster m=1 junctions ----------
+    cal=[]
+    F2=Fp(2); F3=Fp(3)
+    K1_T2A=Ext(F2,[1,1,1])
+    cal.append(('T2A', Junction(2, 2,1,2,[1,1,1], 2,1,1,[K1_T2A.gen(),K1_T2A.one()]),
+                False, 'z^2'))  # ledger xi=1+z=z^2, byte RED
+    cal.append(('T2B', Junction(3, 3,1,1,[1,1], 2,1,1,[2,1]), True, '1'))
+    cal.append(('T2C', Junction(3, 2,1,1,[1,1], 3,2,1,[2,1]), False, '2'))
+    cal.append(('T3B_r3', Junction(3, 3,1,1,[1,1], 2,1,1,[1,1]), True, '1'))
+    K1_T3F=Ext(F3,[1,0,1])
+    cal.append(('T3F_r3', Junction(3, 1,2,2,[1,0,1], 3,1,1,[K1_T3F.gen(),K1_T3F.one()]), True, '1'))
+    K1_CI=Ext(F2,[1,1,1])
+    ci_psi1=[K1_CI.gen(), K1_CI.zero(), K1_CI.zero(), K1_CI.one()]
+    cal.append(('PE3-CI', Junction(2, 1,1,2,[1,1,1], 2,1,3,ci_psi1), True, '1'))
+    print("== CALIBRATION (roster + PE3 counter-instance) ==")
+    for name,J,exp_byte,exp_xi in cal:
+        fails, byte_eq, xi, w = run_junction(J, checks)
+        total+=1
+        K1=J.K1
+        if exp_xi=='1': xok=J.K1_is_one(xi)
+        elif exp_xi=='2': xok=J.K1eq(xi,2)
+        elif exp_xi=='z^2': xok=J.K1eq(xi, K1.mul(K1.gen(),K1.gen()))
+        print(f"  {name:8s} byte_eq={byte_eq} (exp {exp_byte})  xi_ok={xok}  fails={fails}")
+        if fails or byte_eq!=exp_byte or not xok: nfail+=1
+    # ---------- fresh off-roster sweep ----------
+    print("== FRESH OFF-ROSTER SWEEP (g1 up to 4) ==")
+    def irred_polys(F, g, limit):
+        out=[]
+        for tail in itertools.product(F.elems(), repeat=g):
+            if F.is_zero(tail[0]): continue
+            f=list(tail)+[F.one()]
+            if fp_is_irred(F,f): out.append(f)
+            if len(out)>=limit: break
+        return out
+    count=0
+    byte_green=0; byte_red=0; xi_nontriv=0
+    for p in (2,3,5):
+        F=Fp(p)
+        for g0 in (1,2):
+            if g0==1:
+                psi0s=[[a,1] for a in range(1,p)][:2]
+            else:
+                psi0s=[f for f in irred_polys(F,2,2)]
+            for psi0 in psi0s:
+                if g0==1:
+                    K1=F
+                else:
+                    K1=Ext(F,psi0)
+                for e0,h0 in ((1,1),(2,1),(3,1),(3,2),(4,3)):
+                    if gcd(e0,h0)!=1: continue
+                    for e1,h1 in ((1,1),(2,1),(3,1),(3,2)):
+                        if gcd(e1,h1)!=1: continue
+                        for g1 in (2,3,4):
+                            if p**(g0*1)>9 and g1>3: continue
+                            psi1s=irred_polys(K1,g1,1)
+                            for psi1 in psi1s:
+                                J=Junction(p, e0,h0,g0, psi0, e1,h1,g1, psi1)
+                                fails, byte_eq, xi, w = run_junction(J, checks)
+                                total+=1; count+=1
+                                if fails:
+                                    nfail+=1
+                                    print(f"  FAIL p={p} e0h0g0=({e0},{h0},{g0}) psi0={psi0} "
+                                          f"e1h1g1=({e1},{h1},{g1}) psi1={psi1}: {fails}")
+                                if byte_eq: byte_green+=1
+                                else: byte_red+=1
+                                if not J.K1_is_one(xi): xi_nontriv+=1
+    print(f"  fresh junctions: {count}  byte GREEN/RED: {byte_green}/{byte_red}  "
+          f"xi nontrivial: {xi_nontriv}")
+    # ---------- teeth ----------
+    print("== TEETH ==")
+    KT=Ext(Fp(2),[1,1,1])
+    JT=Junction(2, 2,1,2,[1,1,1], 2,1,1,[KT.gen(),KT.one()])
+    Phi2g=JT.build_Phi2(garble_eps=True)
+    JT.print_construct_r3()
+    s2g,Rg=JT.R2_print(Phi2g)
+    xi=fpow(JT.K1, JT.z1, -JT.e1*JT.A1)
+    disp=[JT.K1mul(fpow(JT.K1,xi,j), JT.psi1[j]) for j in range(JT.g1+1)]
+    gotg=list(Rg)
+    while len(gotg)<len(disp): gotg.append(JT.K1.zero())
+    t1_caught = not (s2g==0 and all(JT.K1eq(a,b) for a,b in zip(gotg,disp)))
+    print(f"  T1 (eps dropped): display violated = {t1_caught}")
+    JT2=Junction(2, 2,1,2,[1,1,1], 2,1,1,[KT.gen(),KT.one()])
+    JT2.build_Phi2()
+    phi3g,_=JT2.print_construct_r3(force_Tj_zero=True)
+    s2t,Rt=JT2.R2_print(phi3g)
+    wantC=[JT2.K1mul(JT2.c,cj) for cj in JT2.psi1]
+    gotC=list(Rt)
+    while len(gotC)<len(wantC): gotC.append(JT2.K1.zero())
+    t2_caught = not (s2t==0 and all(JT2.K1eq(a,b) for a,b in zip(gotC,wantC)))
+    print(f"  T2 (T_j forced 0): phir residual violated = {t2_caught}")
+    if not (t1_caught and t2_caught): nfail+=1
+    print("== SUMMARY ==")
+    print(f"  junctions total: {total}   check counts: {checks}")
+    print(f"  FAILURES: {nfail}")
+    return 0 if nfail==0 else 1
+
+if __name__=='__main__':
+    sys.exit(main())
+```
+
+(Run record this pass: the source above was extracted from this appendix
+back to `/tmp/w2_pe6_fresh.py` and run VERBATIM as the final leg — exit 0;
+calibration 6/6 with ledger-exact ξ and byte verdicts; fresh 560 junctions,
+byte 407 GREEN / 153 RED, ξ ≠ 1 on 195; check counts A/B 1,106 each,
+C/D/F/G/H 566 each, E/E2 263 each — 5,568 checks, 0 failures; teeth T1/T2
+both caught. Two earlier runs of comment-level variants of the same source
+produced figure-identical output.)
+
+— PE6, GRTW2 acceptance arc, 2026-08-07.

@@ -1,0 +1,1047 @@
+ADJUDICATE-AND-REPAIR (you are gpt-5.6-sol high — the certifier of record).
+Below: a proof note AT HEAD (including every dated append), followed by YOUR OWN
+prior challenge findings (produced from a snapshot). For EACH finding, in order:
+(a) RESOLVED-ALREADY — the note at HEAD already contains the cure (cite the exact
+dated append/bracket text); (b) ARTIFACT — the finding misread the note (rebut
+citing the note's own lines); or (c) REAL — the defect stands at HEAD: DERIVE THE
+REPAIR — the exact dated append/correction text, verbatim-ready for the
+orchestrator to transcribe, RE-DERIVED from the note's own lemmas (honest and
+minimal: display the fix's derivation inside the repair text; if a repair needs a
+genuinely new lemma, state and prove it in the repair text; if something cannot
+be repaired honestly, say OBSTRUCTED and display why). Statement displays of
+accepted theorems may not be weakened. End with:
+SUMMARY: <n> REAL (repairs delivered) / <n> RESOLVED-ALREADY / <n> ARTIFACT / <n> OBSTRUCTED
+NOTE: your outcome was RATIFIED-WITH-ANNEX; treat each annex item as a finding per the protocol above.
+
+=== THE NOTE AT HEAD: HEX3_PROOF_2026-08-08.md ===
+# HEX3 — THE U₃^TRP EXACT LAW (the (hExhaust-3) attack on W-12's BOX-3): the conservative-convention triple-center residue obeys a CLOSED-FORM law at every prime power, both characteristics — proved by per-center transport (THEOREM HEX3.A), with the n = 3 drainage vanishing bound as a corollary (THEOREM HEX3.B) and the wave-12 characteristic-independence bonus fact EXPLAINED (COROLLARY HEX3.C)
+
+**Unit:** HEXHAUST-3 (the U₃ exact-law attack; W-12's BOX-3 = the
+(hExhaust-3) obstruction of THEOREM W-12.D at n = 3). **Attempt grade
+0/2** (arc: composed → PE1 NOT CLEAN 0C+2G+2m @ d177fd8 → r1
+(note-only, [r1] tags — F1 the H-2(i) ghost-zone pairing + F2 the
+P-1 never-measured census + m1/m2 repaired in place) → PE2 NOT CLEAN
+0C+1G+1m @ f60348b → r2 (note-only, [r2] tags, minimality
+contract — F1 the never-measured census corrected AGAIN, 11 → TWELVE
+pairs ((8,3) restored, verifier-confirmed) + m1 the S8.2 k = 1 mass
+factor) → PE3 CLEAN 0C+0G+0m @ fca1a97 (first clean pass, counter
+1/2) → PE4 NOT CLEAN 0C+0G+1m @ 34a946b (cross-note verdict POSITIVE:
+the discharge survives W-12's r3 σ-pin and is parse-robust; counter
+RESETS 0/2) → r3 THIS REPAIR, note-only, [r3] tag, minimality
+contract — m1 the S8.2 W-12.B consistency clause conditionalized
+(BOX-1's open lemma no longer asserted as fact); counter 0/2; PE5
+next). **Instrument:** sealed two-commit
+battery `verification/openmath/hex3_checks.py` — 46 census rows =
+67,410,225 per-center states read individually (21 mixed-characteristic
+ℤ_p rows incl. q = 13, 25 equal-characteristic 𝔽_q[[t]] rows incl.
+q = 4, 8, 9; 17 cross-characteristic (q, N) pairs; ~~11~~ **twelve [r2, PE2 F1:
+the [r1] count was itself one pair short — see the S7 P-1 r2
+bracket]** (q, N) pairs
+NEVER measured before this unit, incl. N = 9 at q = 2 and N = 6 at
+q = 3), with the depth-0 species decomposition checked key-by-key both
+directions, a pointwise tie to the SEALED w12 reader, the tie to the
+COMMITTED w12 JSON, and three teeth at preregistered exact fire counts.
+Verdict §S10, appended at commit 2 FROM the committed artifacts.
+
+**What HEX3 is (one breath).** THEOREM W-12.C proved
+undecided(3, q, N) = (q−1)q^{2N−1} + U₃^TRP with the double-root term
+exact and only the bracket q^N ≤ U₃^TRP ≤ q^{3N−2} known; W12-BOX-3
+displayed the exact obstruction (the two-species TRP node calculus +
+the tail convention) and the w12 battery MEASURED U₃ under a disclosed
+conservative convention, observing (exploratory) that the measured
+value is characteristic-independent at every shared (q, N). This unit,
+examples-first (Asvin 2026-08-05): STAGE 1 read the closed form off the
+committed table + an extended per-center battery with the undecided set
+decomposed BY DEPTH-0 SPECIES (the species table is what made the law
+visible term by term); STAGE 2 proved it by the W-11 per-center method
+— the four depth-0 refine species transport onto scaled copies of the
+TRP system (α, self-similar) and of the W-11/W12-L1 double-root system
+(β, three entry routes), the drain masses assemble into a first-step
+recursion, and the recursion TELESCOPES into a direct closed sum. The
+(hExhaust-3) vanishing upper bound follows: the n = 3 drainage half of
+W-12.D's conditionality is discharged; the menu half ((hMenu-3),
+W12-BOX-2) is untouched here.
+
+---
+
+## S0. RECONCILIATION WITH W-12 (what BOX-3 asked; what is delivered)
+
+**W12-BOX-3, verbatim** (W12_PROOF_2026-08-08.md §S6):
+
+> **W12-BOX-3 (U₃^TRP; (hExhaust-3)).** The exact triple-center
+> drainage law is not derived; obstruction: the same two-species node
+> calculus, plus a TRP tail-σ-certification lemma (the n = 3
+> SPLIT-TAIL analogue: a visible deep vertex can certify a split-off
+> (1,1) piece even with b₀ window-hidden), which this note's
+> instrument deliberately does NOT attempt: the battery's TRP reader
+> certifies NO tail σ (conservative convention, disclosed in the
+> runner), so its measured U₃^TRP is an UPPER count for the
+> σ-convention residue — EXPLORATORY grade, no closed form
+> preregistered. The proved content is the pair of bounds (S3.2 +
+> trivial).
+
+**The two quantities, kept razor-separate throughout** (the W12-BOX-7
+convention seam):
+
+* **U₃^σ(q, N)** := the σ-undecided TRP mass — the quantity in THEOREM
+  W-12.C's identity (members of the triple-repeated-root level-0
+  stratum admitting two disc ≠ 0 lifts of different splitting type).
+* **U₃^conv(q, N)** := the CONSERVATIVE-CONVENTION residue — the
+  members the disclosed w12 TRP reader exits UNDECIDED (tail rule: any
+  read state with v(B₀) ≥ N exits UNDECIDED, no tail σ-certification).
+  This is what the w12 battery measured and reported, and what its
+  bonus fact (characteristic-independence) is about.
+
+Every conservative-DECIDED member is σ-decided (its read terminates
+with all consulted data in-window and separable residuals: Ore applies
+to every disc ≠ 0 lift — W-12 S2.3, post-[r4] form), so **U₃^σ ≤
+U₃^conv always** **[r4, PE5 m1: the sealed clause read "every lift" —
+the over-claim W-12's own r4 struck from S2.3 with a counter-instance
+(equal characteristic 3: an in-window TRP-RAM3(h) member, 3 ∤ h, with
+b₁ = b₂ = 0 admits the lift F = y³ + b₀, F′ ≡ 0, so disc = 0 and no σ
+at all). The inequality stands at the pinned notion: U₃^σ (first
+bullet above) counts members with two disc ≠ 0 lifts of different σ,
+and post-r4 S2.3 pins one σ across a decided member's disc ≠ 0 lifts
+from its read data alone, so no conservative-DECIDED member enters
+U₃^σ — the disc = 0 lifts of the counter-instance member carry no σ
+and cannot witness membership. W-12 r4's m2 sweep (W12_PROOF L1768)
+dispositions this site "conclusion UNAFFECTED"; no number and no box
+moves]**; and LEMMA
+W12-S3.2's constructed species gives q^N ≤ U₃^σ.
+
+**Delivered here:** the EXACT closed-form law for U₃^conv (THEOREM
+HEX3.A — the two-species node calculus of the obstruction is executed:
+the (α) triple-cluster species' instance bracket AND the (β)
+DBL-re-entry species' window-transfer law are both derived, which is
+exactly the calculus BOX-3 named), hence a vanishing upper bound for
+U₃^σ (THEOREM HEX3.B) — the (hExhaust-3) obstruction in W-12.D's
+n = 3 conditionality is DISCHARGED at composition grade. NOT delivered:
+the tail-σ-certification lemma, hence no exact law for U₃^σ itself —
+that residue is HEX3-BOX-1, priced with its exact mechanism (it is the
+tail half of (hMenu-3), i.e. W-13's floor, not this unit's charge).
+This note does not edit W12_PROOF; the proposed BOX-3 annex text is
+§S8.1.
+
+## S1. STATEMENT
+
+Conventions as in W-12 §S1 (O a complete DVR with residue field F_q,
+either characteristic; window N ≥ 2; the recursive OM-convention read).
+The TRP stratum at window N = monic cubics over O/π^N with f̄ = (x−c̄)³
+for some c̄ (q·q^{3(N−1)} members: q centers × the recentered
+coefficient states (b₂, b₁, b₀) ∈ (πO/π^N)³, an exact translation
+bijection). The CONSERVATIVE READER = the sealed w12 `read_trp`
+convention: recursive polygon/residual read at the (recentered) triple
+center; repeated residual root ⟹ recenter deeper; separable residuals
+⟹ DECIDED; any state with v(B₀) ≥ N (B₀ = 0 in-window) ⟹ UNDECIDED, no
+tail certification. U₃^conv(q, N) := #{TRP members the conservative
+reader exits UNDECIDED}.
+
+> **THEOREM HEX3.A (the exact conservative-residue law).** For every
+> prime power q, both characteristics, every N ≥ 1:
+>
+>     U₃^conv(q, N) = q · u(q, N),
+>
+>     u(q, N) = q^{2N−2}
+>             + (q−1) · Σ_{k=1}^{⌊(N−1)/3⌋} q^{4k−1} · (q^{N−3k} − 1) · R(N−3k),
+>
+>     R(M) = q^{M−1} + ⌊(M−1)/2⌋ · (q−1) · q^{M−2}   (R(1) = 1),
+>
+> a polynomial in q for each N, independent of the characteristic and
+> of which DVR realizes F_q. Equivalently (the first-step form, proved
+> first and telescoped): u(1) = 1 and for N ≥ 2
+>
+>     u(N) = q^{2N−2} + Σ_{k=1}^{⌊(N−1)/3⌋} (q−1) q^{3k} ·
+>              [ u(N−3k) + (q^{N−3k} − 1)·R(N−3k) − q^{2(N−3k)−2} ].
+>
+> Moreover the undecided set decomposes by depth-0 species with each
+> species' locus AND drained sub-count in closed form (the table of
+> S5.1) — the per-key content the battery checks in both directions.
+>
+> **THEOREM HEX3.B (the (hExhaust-3) vanishing bound).** For all q, N ≥ 2:
+>
+>     u(q, N) ≤ q^{2N−2} · (1 + N/(2(q+1))) ≤ N·q^{2N−2},
+>
+> hence q^N ≤ U₃^σ(q, N) ≤ U₃^conv(q, N) ≤ N·q^{2N−1}, and
+>
+>     undecided(3, q, N) / q^{3N} ≤ (1 + N)·q^{−N} → 0   (N → ∞),
+>
+> i.e. the n = 3 drainage hypothesis (A2)'s σ-undecided part vanishes:
+> the (hExhaust-3) obstruction of THEOREM W-12.D at n = 3 — "a
+> vanishing U₃^TRP upper bound" (W12-BOX-3) — is DISCHARGED. (The full
+> (A2) at n = 3 also needs the menu (A1) to absorb the decided mass —
+> that is (hMenu-3) = W12-BOX-2, untouched here; see S6.)
+>
+> **COROLLARY HEX3.C (characteristic-independence, the w12 bonus fact
+> explained).** U₃^conv(q, N) is the same integer over ℤ_p-type and
+> F_q[[t]]-type O at every (q, N): the law's data is (q, N) only. The
+> proof mechanism is J-D0's: every step of the derivation is a pinned-
+> digit locus count whose pins are universal polynomial identities in
+> residual letters (valid verbatim in char 2 and 3, where 2z or 3z
+> degenerate), and every transport is a digit bijection available in
+> both ring types; carries (mixed characteristic) never enter counts.
+>
+> **GRADE: HEX3.A/B/C composed at attempt 0/2, machine-sealed on 46
+> rows both characteristics. The σ-residue U₃^σ itself: bracketed, not
+> exactly known (HEX3-BOX-1).**
+
+Numerical anchors (per center; whole space = ×q): u(q,2) = q²,
+u(q,3) = q⁴ (the k-sum is empty — the w12 N ≤ 3 columns q³, q⁵ whole-
+space); u(q,4) = q⁶ + (q−1)²q³ (= 72, 837 at q = 2, 3 — the first
+window where the depth-0 refine species drain); u(2,7) = 5664 =
+2^{12} + 1504 + 64 (k = 1 and k = 2 terms both alive; FIRST-STEP-form
+k-terms — 8·[u(4) + 15·R(4) − 2⁶] = 1504, 64·[u(1) + R(1) − 1] = 64;
+the TELESCOPED display's k-terms are 1440 + 128, same total) [r1,
+PE1 m1: form tag added — the anchor sits directly under the
+telescoped display but decomposes by the first-step form, so an
+untagged term-by-term check against the telescoped law would
+spuriously mismatch; both decompositions re-verified to 5664]. The committed
+w12 table (23 rows) matches the law at every entry — disclosed: the
+law was FITTED on that committed table plus prototype rows and then
+derived; the battery's force is the ~~11~~ **twelve [r2, PE2 F1]**
+never-measured (q, N) pairs
+of §S7 P-1's corrected census plus the species tables.
+
+## S2. THE DEPTH-0 PARTITION (LEMMA H-1)
+
+Fix a center; the state is (B₂, B₁, B₀) ∈ (πO/π^N)³ (q^{3(N−1)}
+states). The first read computes the lower hull of {(0, v(B₀)),
+(1, v(B₁)), (2, v(B₂)), (3, 0)} and the residual per side. By W-12
+S2.4's depth-0 completeness (every exact visible polygon falls in
+exactly one family; residual-type trichotomy per side: separable /
+repeated degree-1 root / —, with e ≥ 2 sides carrying g = 1 residuals
+that never repeat at n = 3), the state space partitions EXACTLY as:
+
+* **(B0ZERO)** v(B₀) ≥ N (B₀ = 0): the reader exits UNDECIDED at once.
+  Locus: q^{2(N−1)} (B₁, B₂ free). All drained.
+* **(DEC)** the seven decided families (RAM3, 3LIN, LINRAM2, RAM2LIN,
+  VERT1/VERT2 with separable quadratic residual, FULL with separable
+  cubic residual): decided at the first read, never drained.
+* **(α) = FULL(k)-⟨1³⟩**, 1 ≤ k, 3k ≤ N−1: v(B₀) = 3k exactly,
+  v(B₁) ≥ 2k, v(B₂) ≥ k, and the g = 3 residual (c₂, c₁, c₀) =
+  (digit_k(B₂), digit_{2k}(B₁), digit_{3k}(B₀)) equals the coefficient
+  triple of (y−z)³ for some z ∈ F_q^× (q−1 letters; z ≠ 0 forced by
+  c₀ = −z³ ≠ 0; the pins are (−3z, 3z², −z³) — in char 3 they
+  degenerate to (0, 0, −z³), still ONE pinned triple per letter).
+  Locus: (q−1)·q^{3N−3−6k} (three pinned digits, all deeper digits
+  free: q^{(N−1−k)+(N−1−2k)+(N−1−3k)}).
+* **(β1) = FULL(k)-⟨1²,1⟩**: same frame, residual (y−z)²(y−z′) with
+  z ≠ z′, both ≠ 0 (c₀ = −z²z′ ≠ 0): (q−1)(q−2) letters. Locus:
+  (q−1)(q−2)·q^{3N−3−6k}.
+* **(β2) = VERT1(u₀,k)-⟨1²⟩**, 1 ≤ k, 3k < u₀ ≤ N−1: polygon vertex at
+  (1, 2k) (digit_{2k}(B₁) ≠ 0), v(B₀) = u₀ exactly with free nonzero
+  digit (q−1 letters), v(B₂) ≥ k, right-side monic residual
+  y² + digit_k(B₂)·y + digit_{2k}(B₁) = (y−z)², z ∈ F_q^× (q−1
+  letters; pins digit_k(B₂) = −2z, digit_{2k}(B₁) = z² — injective in
+  z in every characteristic: −2z in odd char, z² Frobenius in char 2).
+  Locus: (q−1)²·q^{3N−3−u₀−3k}.
+* **(β3) = VERT2(u₀,t)-⟨1²⟩**, 1 ≤ t, u₀ > 3t, u₀ ≡ t (mod 2),
+  u₀ ≤ N−1, j := (u₀−3t)/2 ≥ 1: vertex at (2, t) with unit lead
+  λ = digit_t(B₂) (q−1 letters), v(B₀) = u₀ exactly, left side slope
+  k := t + j = (u₀−t)/2 [r1, PE1 m1 (typography): the sealed line
+  garbled the equality; content unchanged], interior lattice point
+  (1, (u₀+t)/2);
+  residual (y−z)², z ∈ F_q^× (q−1 letters; pins digit_{(u₀+t)/2}(B₁) =
+  −2zλ, digit_{u₀}(B₀) = z²λ ≠ 0 — the B₀-digit is DETERMINED, not a
+  letter). Locus: (q−1)²·q^{3N−3−u₀−t−(u₀+t)/2}.
+
+The refine depth of (β3) is k = (u₀−t)/2 > t; of (β2) it is the right-
+side slope k < u₀ − 2k; of (α)/(β1) it is k. Every letter/pin count
+above is a digit-slot count (W-10's cell template); the partition is
+checked per state by the battery (HEX3-SPECIES both directions +
+partition sum). ∎
+
+## S3. THE TRANSPORT LEMMAS
+
+Throughout, "drains" = the conservative chain from the state reaches a
+state with B₀ = 0; the chain recenters by s = ẑπ^m at each repeated
+residual root (depths strictly increase).
+
+### S3.1 LEMMA H-2 (window coherence + scaling, the α-transport)
+
+Let D_k := {v(B₂) ≥ k+1, v(B₁) ≥ 2k+1, v(B₀) ≥ 3k+1} (the post-α node)
+and let σ_k(B₂, B₁, B₀) = (B₂/π^k, B₁/π^{2k}, B₀/π^{3k}) taken mod
+π^{N−3k} per coordinate — a depth-0 state of the window-(N−3k) system.
+Then:
+
+(i) **[window coherence]** the drain verdict of X ∈ D_k depends only on
+(B₂ mod π^{N−2k}, B₁ mod π^{N−k}, B₀). *Proof.* Along any chain from
+D_k every recentering has v(s) ≥ k+1. Reads: the hull heights at
+abscissa j are ≤ (3−j)/3·(N−1) (convexity from (0, u₀ ≤ N−1) to
+(3,0)), and (3−j)(N−1)/3 < N−jk for k ≤ (N−1)/3 — the ghost zone at
+abscissa j is {≥ N−jk} (the retained windows pair as B₂ = abscissa
+2 ↔ {≥ N−2k}, B₁ = abscissa 1 ↔ {≥ N−k}); at j = 2 the inequality
+⟺ k < (2N+1)/6, true since k ≤ (2N−2)/6; at j = 1 it ⟺ k < (N+2)/3,
+true since k ≤ (N−1)/3 — so consulted digits sit strictly below the
+ghost zones {≥ N−2k} (B₂), {≥ N−k} (B₁). [r1, PE1 F1 (justification
+gap): the sealed display paired the thresholds BACKWARDS —
+"(3−j)(N−1)/3 < N−(3−j)k" — which is FALSE at j = 1 for N ≥ 4 at the
+k = ⌊(N−1)/3⌋ corner (N = 7, k = 2: it reads 4 < 3), exactly the
+corner BOX-2(c) told a hostile pass to attack; with the corrected
+pairing N−jk the inequality holds on the whole range, re-checked at
+(N,k) = (7,2): j = 1 gives 4 < 5, j = 2 gives 2 < 3. The conclusion
+(window coherence, hence H-2(ii)/(iii) and the α-term
+(q−1)q^{3k}u(N−3k)) survives: PE1 re-derived (i) with the corrected
+pairing, and the α route is machine-tied per key at the ALPHA(2)
+corner rows (2,7)/(2,8)/(2,9), all exact.] Updates: shift3 needs B₁
+mod π^{N−v(s)} ⊆ mod π^{N−k−1} and B₂
+mod π^{N−2v(s)} ⊆ mod π^{N−2k−2} to determine B₀′ mod π^N; B₂ mod
+π^{N−2k−1} to determine B₁′ mod π^{N−k}; B₂′ = B₂ + 3s preserves the
+B₂-window. All ring operations respect the quotient maps (O/π^N →
+O/π^m is a ring hom), so the ghost digits never contaminate the
+consulted windows, in both ring types (carries move upward only). ∎
+
+(ii) **[shear correspondence]** the chain of X and the chain of
+σ_k(X) (window N−3k) correspond step for step: heights shear by
+(j, v) ↦ (j, v−(3−j)k), an affine-in-j map preserving lower hulls,
+lattice points, side subdivisions and residual coefficient positions;
+f(π^k(y+s̃))= π^{3k}·f̃(y+s̃) makes recentering commute with σ_k
+(s = π^k s̃); and v(B₀) ≥ N ⟺ v(B̃₀) ≥ N−3k (exact division).
+Hence **drain(X) ⟺ drain_{N−3k}(σ_k(X))**, and with (i): the D_k
+drain count = q^{3k} · u(N−3k) (each scaled state has exactly q^{3k}
+ghost-fiber preimages: 2k free B₂-digits + k free B₁-digits). ∎
+
+(iii) **[the α-map is onto]** recentering by ẑπ^k maps the (α)
+z-slice into D_k: the three pinned digits cancel —
+digit_k(B₂+3ẑπ^k) = c₂+3z = 0, digit_{2k}(B₁′) = c₁+2c₂z+3z² = 0,
+digit_{3k}(B₀′) = c₀+c₁z+c₂z²+z³ = 0, universal identities from
+(y−z)³ valid in every characteristic — and it is injective (a shift)
+with #slice = q^{3N−3−6k} = #D_k: a bijection. (Deep ramified
+configurations — cluster pairs at half-integer valuations — are in the
+image: their preimages have all three residual roots equal, i.e. ARE
+⟨1³⟩ states; the polygon of a D_k state automatically lies above the
+slope-k shear line, so no case is missed.) Hence the (α)-species drain
+contribution at depth k is **(q−1) · q^{3k} · u(N−3k)**. ∎
+
+### S3.2 LEMMA H-3 (the β-transports: three entries into one system)
+
+After a (β)-refinement the read continues on the full cubic whose
+polygon shows a split-off simple root plus a double cluster; the drain
+tracks the cluster: writing the post-state as (block)·(x − r) with the
+current center inside the cluster, B₀-at-center = (block value at
+center)·(center − r), and v(center − r) is CONSTANT along the rest of
+the chain (all deeper recenterings are deeper than the separation
+depth), so B₀ = 0 ⟺ the block's constant coefficient A₀ reaches 0 at
+the corresponding fixed window. Concretely, scaling by π^m (m = the
+final valuation of the split root's coordinate; window coherence as in
+H-2(i) with the same v(s) ≥ m+1 bound along β-chains) turns the
+post-state into a LEVEL-0 double-root member of the window-(N−3m)
+system, where LEMMA W12-L1(a)(b) (consumed at pin: the Hensel product
+bijection + the read equivalence, both machine-checked pointwise on
+2.9M lifts by the sealed w12 battery) identifies the continuing read
+with the W-11 block read and the drain event with the block chain
+reaching A₀ = 0 in window M := N−3m. Define
+
+    R(M) := #{block states (A₁, A₀) ∈ (πO/π^M)² whose W-11 chain
+             reaches A₀ = 0}.
+
+Route by route (each map injective by construction — recenter, then
+σ_m — with image and fibers counted by pinned-digit slots exactly as
+in S2; the refine isomorphism "z-slice ↦ ONTO the post node" is W-11
+S2.3 consumed through W12-L0's induction step):
+
+* **(β1) FULL(k)-⟨1²,1⟩, m = k** (the split root z′ lands at exact
+  depth k after recentering: digit z′−z ≠ 0): the (z, z′)-slice maps
+  ONTO the scaled DBL pattern-slice (cluster at 0, unit root pinned to
+  z′−z, deeper root digits FREE: q^{M−1}; blocks free: q^{2(M−1)};
+  ghost fiber q^{3k}) — cardinalities match (q^{3M−3}·q^{3k} =
+  q^{3N−3−6k}). Drained: blocks reaching A₀ = 0 with r free:
+  **contribution (q−1)(q−2) · q^{3k} · q^{M−1} · R(M)**.
+* **(β2) VERT1(u₀,k)-⟨1²⟩, m = k** (the split root has pre-depth
+  u₀−2k > k, post-recentering depth exactly k, and its deeper digits
+  remember u₀: v(r̃ + ẑ) = w := u₀−3k exactly, (q−1)q^{M−1−w} fibers —
+  the u₀-fibers tile the pattern-slice's non-degenerate r̃ range as u₀
+  runs over 3k+1..N−1): drained per (u₀, k): **(q−1)² · q^{3k} ·
+  q^{M−1−w} · R(M)**. (Summed over u₀: (q−1)·q^{3k}·R(M)·(q^{M−1}−1).)
+* **(β3) VERT2(u₀,t)-⟨1²⟩, m = t** (the split root sits at depth t
+  BELOW the cluster; scaling by π^t gives the standard DBL pattern
+  with the CLUSTER deep: the block enters at its refine locus of depth
+  j = (u₀−3t)/2, and the block z-slice maps onto the depth-j block
+  node, of drain count q^j·R(M−2j), M = N−3t): drained per (u₀, t):
+  **(q−1)² · q^{3t} · q^{M−1} · q^{j} · R(M−2j)**. (Summed over u₀ at
+  fixed t, via the R-recursion of S4: (q−1)·q^{3t}·q^{M−1}·(R(M) −
+  q^{M−1}).)
+
+Each bullet's drained count is checked EXACTLY per (u₀, k/t) key on
+every battery row (HEX3-SPECIES). ∎
+
+## S4. LEMMA H-4 (the block drain count R(M), from W12-L0)
+
+The W-11 chain reaches A₀ = 0 iff its exit is SPLIT-TAIL or UNDECIDED
+(those two exits have A₀ = 0 at the exit state, and a state with
+A₀ = 0 exits immediately; the other four exits have A₀ ≠ 0). By LEMMA
+W12-L0 (history-resolved laws, consumed at pin) summed over histories
+with the W-11 instance bracket Σ_{H: s ≤ w−1} (q−1)^t = q^{w−1}:
+
+    R(M) = q^{M−1}  [UNDECIDED aggregate, W-11 (iii)]
+         + Σ_{w=1}^{⌊(M−1)/2⌋} (q−1)q^{M−1−w} · q^{w−1}
+         = q^{M−1} + ⌊(M−1)/2⌋·(q−1)·q^{M−2},
+
+R(1) = 1 (the singleton zero state). Both summands are W-11-proved
+aggregates (the tail law is W-11's Σ SPLIT-TAIL = ⌊(M−1)/2⌋(q−1)q^{M−2}
+per center, quoted in W-12 S3.4's r(N) display). The same R-recursion
+used in S3.2's (β3) bullet — R(M) = q^{M−1} + (q−1)Σ_{j≥1, 2j≤M−1}
+q^j·R(M−2j) — is the first-step form of the same count (refine at
+depth j: q−1 letters, node ≅ q^j × window-(M−2j) by the W-11 shear,
+the n = 2 instance of H-2), and evaluates to the same closed form by
+the identical bracket telescoping. ∎
+
+## S5. ASSEMBLY: THE RECURSION, AND THE TELESCOPED CLOSED FORM
+
+### S5.1 The species table and the first-step recursion
+
+Summing S2's partition with S3's per-species drain masses (per center;
+M = N−3k resp. N−3t; w = u₀−3k; j = (u₀−3t)/2):
+
+| depth-0 species | locus | drained |
+|---|---|---|
+| B0ZERO | q^{2N−2} | q^{2N−2} (all) |
+| DEC (7 families) | complement | 0 |
+| ALPHA(k) | (q−1)q^{3N−3−6k} | (q−1)q^{3k}·u(N−3k) |
+| FULL11SQ(k) | (q−1)(q−2)q^{3N−3−6k} | (q−1)(q−2)q^{3k+M−1}·R(M) |
+| VERT1(u₀,k) | (q−1)²q^{3N−3−u₀−3k} | (q−1)²q^{3k+M−1−w}·R(M) |
+| VERT2(u₀,t) | (q−1)²q^{3N−3−u₀−t−(u₀+t)/2} | (q−1)²q^{3t+M−1+j}·R(M−2j) |
+
+Summing the β-rows at fixed k (u₀-sums as in S3.2) and adding the α
+row: the k-indexed bracket is u(M) + (q−2)q^{M−1}R + R(q^{M−1}−1) +
+q^{M−1}R − q^{2M−2} = u(M) + (q^M−1)R(M) − q^{2M−2}, giving the
+first-step recursion of THEOREM HEX3.A. ∎
+
+### S5.2 The telescoping
+
+Claim: the recursion's solution is the direct sum u(N) = q^{2N−2} +
+(q−1)Σ_k q^{4k−1}·t(N−3k), t(M) := (q^M−1)R(M). Induction on N:
+substituting the claim for the u(N−3k) inside the recursion, the
+coefficient of t(N−3l) on the right is
+
+    (q−1)q^{3l} + (q−1)² Σ_{k+j=l, k,j≥1} q^{3k}·q^{4j−1}
+      = (q−1)[ q^{3l} + q^{3l−1}(q^l − q)/(q−1)·(q−1) ]
+      = (q−1)[ q^{3l} + q^{3l−1}(q^l − q) ] = (q−1)·q^{4l−1},
+
+and the −q^{2M−2} terms cancel against the claim's own leading terms
+(q^{2(N−3k)−2} = the substituted u(N−3k)'s head). [Generating-function
+form, equivalent: U = S + A·(U + T − S) with A = Σ(q−1)q^{3k}x^{3k}
+gives U = S + T·A/(1−A) and A/(1−A) = (q−1)q³x³/(1−q⁴x³) — the
+denominator 1−A = (1−q⁴x³)/(1−q³x³) telescopes.] THEOREM HEX3.A. ∎
+
+### S5.3 The bound (THEOREM HEX3.B)
+
+R(M) ≤ q^{M−1}(M+1)/2 (as 2q + (M−1)(q−1) ≤ q(M+1) ⟺ M ≥ 1), so the
+k-term is ≤ (q−1)(M+1)/2·q^{2N−2k−2} ≤ (q−1)(N−2)/2·q^{2N−2}·q^{−2k};
+summing the geometric series: u(N) ≤ q^{2N−2}(1 + (N−2)/(2(q+1))) ≤
+q^{2N−2}(1 + N/(2(q+1))) ≤ N·q^{2N−2} for N ≥ 2. With U₃^σ ≤ U₃^conv
+= q·u and THEOREM W-12.C: undecided(3,q,N) ≤ (q−1)q^{2N−1} + Nq^{2N−1}
+≤ (1+N)q^{2N}, so undecided/q^{3N} ≤ (1+N)q^{−N} → 0. Both W-12.C
+brackets are respected (q^{2N−1} ≤ U₃^conv is the B0ZERO term alone;
+N·q^{2N−1} ≤ q^{3N−2} ⟺ N ≤ q^{N−1}, true for q ≥ 2). ∎
+
+### S5.4 Characteristic-independence (COROLLARY HEX3.C)
+
+Every count in S2–S5 is a pinned-digit slot count; every pin is a
+universal polynomial identity in residual letters ((y−z)³, (y−z)²(y−z′)
+expansions — their degenerations at char 2, 3 change WHICH values are
+pinned, never HOW MANY); every transport (σ_k, recentering, W12-L1's
+product bijection) is a digit bijection available verbatim in both
+ring types; window coherence (H-2(i)) is a quotient-hom statement that
+holds with or without carries. So u(q, N) is one polynomial law in
+(q, N) — the w12 bonus fact is the shadow of J-D0's gauge-blindness at
+the drainage level. ∎
+
+## S6. HONEST BOXES
+
+* **HEX3-BOX-1 (the σ-residue; the tail-certification lemma).** The
+  exact law is for U₃^conv. The σ-undecided mass satisfies
+  q^N ≤ U₃^σ ≤ U₃^conv = q·u(q,N) and its exact law is NOT derived:
+  the missing piece is precisely BOX-3's TRP tail-σ-certification
+  lemma (when does a B₀ = 0 exit state's VISIBLE data pin σ for all
+  disc ≠ 0 lifts?). The mechanism is displayed by this note's own
+  machinery: every drain event happens inside a transported W-11 block
+  frame, where R(M) = q^{M−1} [strictly hidden] + ⌊(M−1)/2⌋(q−1)q^{M−2}
+  [W-11 SPLIT-TAIL states, block-certifiable] — so the certifiable
+  candidates are exactly the transported SPLIT-TAIL masses plus the
+  B0ZERO states with visible separated B₁-vertex, and a certification
+  lemma would turn the same species table into the U₃^σ law by
+  replacing R with its certified/uncertified split. Deliberately not
+  attempted here (it is the tail half of (hMenu-3), W-13's floor; the
+  w12 instrument was DESIGNED not to need it). The S3.2-species lower
+  bound (each member genuinely ambiguous: two disc ≠ 0 lifts of
+  distinct σ) shows U₃^σ ≥ q^N is attained by states with all
+  separation data (B₁, B₀) hidden — b₂ stays free and visible
+  **[r4, PE5 m2: the sealed parenthetical read "(all lifts genuinely
+  ambiguous)" — a category slip: ambiguity is member-level per LEMMA
+  W12-S3.2 (a member admits TWO disc ≠ 0 lifts of distinct σ; a single
+  lift carries one σ); and "fully-hidden states" over-claimed —
+  W12-S3.2's species is b₁ = b₀ = 0 with b₂ FREE (q centers × q^{N−1}
+  free b₂), so certification is blocked by the hidden separation data
+  (B₁, B₀), not by total hiddenness. The consuming sites of the q^N
+  lower bound (S0 at LEMMA W12-S3.2's cite, the S1 display, this box's
+  own bracket, the S8.1 annex bracket) each carry W12-S3.2's statement
+  form, not this parenthetical; no number and no box moves]**;
+  whether U₃^σ is also characteristic-
+  independent is open (expected: yes, by the same mechanism, once the
+  certification lemma is proved).
+* **HEX3-BOX-2 (attempt grade; the transports' ledger detail).** 0/2 —
+  composed this session; arc since: PE1 NOT CLEAN 0C+2G+2m @ d177fd8,
+  r1 applied, counter 0/2 [r1]; PE2 NOT CLEAN 0C+1G+1m @ f60348b
+  (every theorem-level claim and all r1 mathematical repairs
+  re-derived and CONFIRMED; the gap was the [r1] census itself, one
+  pair short — see S7 P-1; machine leg bit-reconciled GREEN, fresh
+  route incl. a first-ever q = 27 row), r2 applied, counter 0/2
+  [r2]; PE3 CLEAN 0C+0G+0m @ fca1a97 (first clean pass of the arc:
+  census audited from primary sources and confirmed at TWELVE; β₁
+  route re-derived in full + machine-checked at letter resolution;
+  counter 1/2); PE4 NOT CLEAN 0C+0G+1m @ 34a946b (cross-note verdict
+  POSITIVE — the (hExhaust-3) discharge survives W-12's r3 σ-pin
+  (b17238a) and is parse-ROBUST; α-route re-derived from scratch;
+  machine leg fresh full run GREEN 158,512/0, seal byte-intact; the
+  finding was the S8.2 aside's W-12.B consistency clause, zero
+  theorem blast radius), r3 applied, counter 0/2 [r3]. The
+  window-coherence and
+  shear lemmas (H-2, and H-3's β-variants) are proved at the
+  displayed level of detail; the fully expanded digit ledgers (every
+  shift3 congruence at every chain step, the exact fiber counts of
+  each β-route image) are compressed into the slot-counting arguments
+  + the machine leg: HEX3-SPECIES checks every per-key (locus,
+  drained) pair exactly, per row, both directions — 46 rows × every
+  realized key, so a ledger error in ANY route would surface as a
+  per-key integer mismatch. A hostile pass should attack: (a) the
+  onto-ness of the (β2)/(β3) images (the r̃-fiber tiling), (b) the
+  m-choice (final split-root valuation) in each β-route, (c) H-2(i)'s
+  consulted-height bound at the k = ⌊(N−1)/3⌋ corner. [r1: PE1
+  attacked exactly these — (a)/(b) survived full re-derivation;
+  (c) CAUGHT the F1 pairing defect, repaired in S3.1 with the
+  conclusion intact.]
+* **HEX3-BOX-3 (inherited seams).** W12-BOX-5/6/7 inherited verbatim:
+  the readers are convention-faithful reimplementations (this note
+  adds a pointwise fresh-vs-sealed tie, HEX3-XREAD, on every small
+  row); no PARI leg here (σ-content was oracled by the sealed w12
+  battery; this unit's claim is a count law of a disclosed
+  convention); eq-char prime powers carried by Fqt rows only; the
+  lift-convention seam (W-2/LIFTCORNER) untouched.
+* **HEX3-BOX-4 ((hMenu-3) untouched; what "discharged" means).**
+  THEOREM HEX3.B discharges W12-BOX-3's named obligation — "a
+  vanishing U₃^TRP upper bound" — i.e. the σ-undecided part of (A2)
+  at n = 3. The FULL (A2) (r(N)/q^{3N} → 0 with r = everything not in
+  a visible core family) additionally requires the core menu (A1) to
+  absorb the decided mass: that is (hMenu-3) = W12-BOX-2 (the depth-≥1
+  refinement families' laws — for which S3's transports are the
+  evident engine: each refine family's DECIDED continuation is the
+  same transported W-11/TRP menu, so the W-13 work order now has its
+  mechanism on the table). No claim that W-12.D fires at n = 3 yet.
+* **HEX3-BOX-5 (N = 1 corner).** u(q,1) = 1 is the empty-window
+  convention (the single zero state), used only as the recursion seed;
+  all battery rows have N ≥ 2.
+
+## S7. THE SEALED BATTERY (two-commit; verdict from artifacts)
+
+**Runner:** `verification/openmath/hex3_checks.py`. Exact integer
+arithmetic, no floats, deterministic, no subprocess. Per-center
+enumeration (exact for the whole space by the translation bijection;
+whole-space U₃ = q·u). Families: HEX3-PIN [NONE] (md5 pins:
+w12_checks.py 7dc040d94fbbb1e8d20ac817b665d418, w11_checks.py
+500aae152bb5b5e9df3712904a6d73a6, w10_checks.py
+a9c34244a3af19f5fa864375b494380b, w12_checks_results.json
+05776c9e00071c5d7524abdfbe894442); HEX3-LAW [SAME]; HEX3-SPECIES
+[SAME, both directions]; HEX3-XREAD [SEAL-TIE: pointwise vs the sealed
+w12 `read_trp` on every row with ≤ 65,536 states]; HEX3-W12TIE [NONE:
+vs the committed w12 JSON, all 23 cubic rows]; HEX3-CHAR [SAME: full
+species-tally equality at all 17 shared (q,N)].
+
+**ROSTER (46 rows, 67,410,225 states):** ℤ_p: (2,3..9), (3,2..6),
+(5,2..4), (7,2..3), (11,2..3), (13,2..3) [21]. 𝔽_q[[t]]: (2,3..8),
+(3,2..5), (4,2..5), (5,2..4), (7,2..3), (8,2..3), (9,2..3), (11,2..3)
+[25].
+
+**PRE-SEAL SMOKE DISCLOSED.** Prototype (outside the repo, /tmp)
+developed and confirmed on 18 rows (docstring lists them); the law was
+fitted on the COMMITTED w12 U₃ table + prototype rows, then derived
+(S2–S5). Sealed runner `--smoke` run ONCE pre-seal: 12 rows, PIN 4/0,
+LAW 24/0, SPECIES 30/0, XREAD 26,730/0, W12TIE 12/0, CHAR 4/0, teeth
+fired 1/4/1, GREEN, 0.4 s. No full run before the seal.
+
+**PREREGISTERED PREDICTIONS:**
+* **P-1 [the law]** HEX3-LAW 0 violations on all 46 rows: measured
+  U₃^conv = q·u(q,N) with u as in THEOREM HEX3.A. ~~ELEVEN rows are NEW
+  (never measured by any battery): whole-space values (2,8): 50,176;
+  (2,9): 206,336; (3,5): 23,571; (3,6): 240,327; (4,4): 18,688;
+  (4,5): 308,224; (5,3): 3,125; (5,4): 88,125; (7,3): 16,807;
+  (9,3): 59,049; (11,3): 161,051; (13,3): 371,293.~~ **[r1, PE1 F2:
+  the sealed list carried TWELVE entries under the label ELEVEN, and
+  two of them — (5,3), (7,3) — were prototype-measured pre-seal by
+  this note's OWN disclosed smoke record (the /tmp prototype rows,
+  S7 above + the runner docstring), so they are not "never measured"
+  in any reading that counts the disclosed prototype. The ~~honest
+  11-set~~ [r2: itself one pair short — see the r2 bracket below]
+  of (q,N) pairs first measured by the sealed battery, with
+  whole-space values: (2,8): 50,176; (2,9): 206,336; (3,5): 23,571;
+  (3,6): 240,327; (4,4): 18,688; (4,5): 308,224; (5,4): 88,125;
+  (9,3): 59,049; (11,3): 161,051; (13,2): 2,197; (13,3): 371,293.
+  (13,2) (= 13³, a first-q = 13 row) was genuinely never measured but
+  omitted from the sealed itemized list — its value rode the blanket
+  46-row law prediction only; (5,3)/(7,3) did hit their listed values
+  exactly, at prototype-corroborated rather than never-measured
+  force. The runner docstring (byte-frozen at seal e3f3459) repeats
+  the sealed 12-entry list; this bracket is the note-side
+  correction.]** **[r2, PE2 F1: the [r1] census is ITSELF miscounted
+  — the genuinely never-measured set has TWELVE pairs; (8,3)
+  (𝔽_q[[t]] only, whole-space 32,768 = 8⁵) was omitted, by verbatim
+  inheritance of PE1-F2's own census (the extraction-inheritance
+  trap). Basis, re-derived by the PE2 verifier from the frozen
+  sources: the roster carries 29 distinct (q,N) pairs (21 ℤ_p + 25
+  𝔽_q[[t]] rows, 17 shared); measured pre-seal = the committed w12
+  cubic table's 14 pairs {(2,3..7), (3,2..4), (4,2), (4,3), (5,2),
+  (7,2), (8,2), (9,2)} + the disclosed /tmp prototype's {(5,3),
+  (7,3), (11,2)} = 17 pairs (the pre-seal --smoke rows all lie
+  inside that union); 29 − 17 = 12. The honest 12-set, whole-space
+  values: (2,8): 50,176; (2,9): 206,336; (3,5): 23,571; (3,6):
+  240,327; (4,4): 18,688; (4,5): 308,224; (5,4): 88,125; (8,3):
+  32,768; (9,3): 59,049; (11,3): 161,051; (13,2): 2,197; (13,3):
+  371,293. (8,3) qualifies under [r1]'s own standard exactly as
+  (13,2) does: q = 8 appears in the prior corpus only at N = 2, it
+  is in no prototype/smoke list, and its value rode the blanket
+  46-row law prediction only; the PE2 verifier measured (Fqt,8,3)
+  INDEPENDENTLY with its own no-runner-imports enumerator (own F₈
+  field tables): 32,768 on the nose — the law confirmed at the
+  recovered pair. The [r1] 11-item list above stands as history; the
+  honest count happens to equal the sealed label's twelve entries,
+  but as a DIFFERENT set ((5,3), (7,3) out; (8,3), (13,2) in).]**
+  (The N ≤ 3 entries
+  among these are the pure-head law q³/q⁵ at fresh q — incl. q = 13,
+  a prime the corpus never enumerated.)
+* **P-2 [species]** HEX3-SPECIES 0 violations — every realized depth-0
+  key's (locus, drained) pair equals the S5.1 table, both directions,
+  46 rows. Spot values (per center, computed from the closed forms at
+  composition time): (Zp,2,7): ALPHA(1) = (4096, 576), ALPHA(2) =
+  (64, 64), VERT1(4,1) = (2048, 384), VERT1(6,1) = (512, 96),
+  VERT2(5,1) = (512, 256), FULL11SQ ABSENT (exact zero at q = 2);
+  (Zp,3,6): FULL11SQ(1) = (39366, 7290), VERT2(5,1) = (2916, 2916)
+  (a fully-drained species: M−2j = 1); (Fqt,4,4): ALPHA(1) =
+  (192, 192), FULL11SQ(1) = (384, 384); (Zp,2,9): VERT1(8,2) =
+  (1024, 384), VERT2(8,2) = (512, 512).
+* **P-3 [seal tie]** HEX3-XREAD 0 divergences (drain verdict +
+  first-read-decidedness) against the pinned w12 reader on every
+  ≤ 65,536-state row.
+* **P-4 [committed tie]** HEX3-W12TIE 23/23: q·u_measured equals the
+  committed w12 U3TRP value on every w12 cubic row — in particular
+  the w12 EXPLORATORY column is retro-predicted by the law with zero
+  free parameters.
+* **P-5 [char]** HEX3-CHAR 0 violations on all 17 pairs — full
+  species tallies (not just totals) identical across ℤ_p/𝔽_q[[t]].
+* **P-6 [teeth, exact counts]** HEX3-T-FLOOR fires on EXACTLY 10 rows
+  (the roster rows with some N−3k even: N ∈ {5,7,8,9}); HEX3-T-ALPHA
+  on EXACTLY 20 rows (N ≥ 4); HEX3-T-VERT1 on EXACTLY 13 rows
+  (N ≥ 5). A tooth off its exact count = RED.
+* **P-7 [falsifiers]** a LAW violation on a NEW deep row with the
+  committed-table rows clean refutes the transport lemmas (H-2/H-3)
+  before the partition (diagnose the k = ⌊(N−1)/3⌋ corner first); a
+  SPECIES violation localized to one route names the broken transport
+  directly (that is what the per-key design is FOR); a CHAR violation
+  refutes HEX3.C and would hit J-D0 upstream — stop-the-line; an
+  XREAD divergence means the fresh reader is NOT the disclosed
+  convention (voids the battery, not the theorems); a W12TIE
+  violation with LAW clean means the committed artifacts moved.
+
+**VERDICT: PENDING — commit 1 seals this note + the runner; commit 2
+appends §S10 from `hex3_checks_output.txt` /
+`hex3_checks_results.json`.**
+
+## S8. CONSUMERS
+
+### S8.1 Proposed annex to W12-BOX-3 (text offered; W12_PROOF not edited)
+
+> **[BOX-3 ANNEX, 2026-08-08, HEX3]** The conservative-convention
+> residue now has an EXACT law: U₃^conv(q,N) = q·[q^{2N−2} +
+> (q−1)Σ_{k≥1} q^{4k−1}(q^{N−3k}−1)R(N−3k)], R(M) = q^{M−1} +
+> ⌊(M−1)/2⌋(q−1)q^{M−2} (HEX3_PROOF_2026-08-08.md, THEOREM HEX3.A;
+> sealed battery, 46 rows, both characteristics). Since U₃^σ ≤
+> U₃^conv ≤ N·q^{2N−1}, the box's named obligation — a vanishing
+> U₃^TRP upper bound, (hExhaust-3) — is DISCHARGED at composition
+> grade (attempt 0/2); the exact U₃^σ law remains open exactly at the
+> tail-σ-certification lemma (HEX3-BOX-1). The exploratory
+> characteristic-independence observation is now COROLLARY HEX3.C.
+> W-12.C's bracket sharpens to q^N ≤ U₃^σ ≤ q·u(q,N) with
+> U₃^conv = q·u exactly.
+
+### S8.2 Downstream
+
+1. **W-13 ((hMenu-3))** — S3's transports are the menu engine: each
+   refine species' DECIDED continuations are the transported W-11/
+   depth-0-TRP menus at shifted windows, so the depth-≥1 TRP family
+   laws should fall to the same three routes + the certification
+   lemma (HEX3-BOX-1's mechanism display is the work order).
+2. **The hExhaust program** — n = 2 exact (W-11), n = 3: DBL term
+   exact (W-12.C) + TRP residue exact-in-convention with vanishing
+   σ-bound (HEX3.A/B). W-12.B's shape (c_n(q)·q^{(n−1)N} order) is
+   now corroborated at n = 3 with c₃ head 1·q^{2N−2}·q/q^{2N}... the
+   normalized head U₃^conv/q^{2N} = q^{−1}(1 + o(1))·
+   (1 + Θ(N(q−1)²q^{−3})) = q^{−1}(1 + o(1))(1 + Θ(N/q)) — NOTE: u
+   has an N-linear subleading family (the R-tails): the exact k = 1
+   N-linear mass of U₃^conv is ⌊(N−4)/2⌋(q−1)²q^{2N−4}·(1 −
+   q^{−(N−3)}) (+ smaller k ≥ 2 terms) [r2, PE2 m1: the main line
+   had displayed "exact ... ⌊(N−4)/2⌋(q−1)²q^{2N−4} (+ smaller
+   k ≥ 2 terms)", dropping the (1 − q^{−(N−3)}) factor — 1024 at
+   (2,7) against the [r1] re-check's own correct 960; the −q^{N−1}
+   correction is the k = 1 term's own (the (q^{N−3} − 1) factor of
+   the law's k = 1 summand), not a "smaller k ≥ 2 term"; Θ-claims
+   unchanged], so the conservative residue sits
+   Θ(N(q−1)²·q^{2N−4}) above its head [r1, PE1 m2: the sealed aside
+   dropped the (q−1)² — "Θ(N·q^{2N−4})" / "(1 + Θ(Nq^{−3}))"
+   understated the joint (N,q) relative rate by (q−1)² ≈ q²; the
+   corrected relative rate Θ(N/q) matches S5.3's own rigorous bound
+   1 + N/(2(q+1)); re-checked at (2,7): whole-space N-linear mass
+   ⌊3/2⌋(q−1)²q^{10}(1 − q^{−4}) = 960 exactly] — consistent
+   with W-12.B IF this SPLIT-TAIL-type mass belongs to (A2)'s
+   boundary-family (σ-certified) component: at n = 2 that membership
+   is W-11-PROVED (W-12 S3.4's r(N) display), and the n = 3 DBL
+   analogue is proved (W-12 r2's G2 leg — W-11 certification through
+   W12-L1(c), no scaling), but for the transported TRP mass here it
+   is precisely HEX3-BOX-1's OPEN tail-σ-certification lemma (the σ_m
+   transport loses ghost digits — exactly why BOX-1 is open). The
+   price if it fails: an uncertified mass sits in U₃^σ, and
+   undecided(3,q,N)·q^{−2N} then diverges linearly in N (all-k slope
+   (q−1)/(2q²(q+1)), = 1/24 at q = 2; under S5.3's rigorous excess
+   bound, slope 1/(2q(q+1))) — W-12.B would be FALSE at n = 3. Under
+   W-12's r3 σ-pin (b17238a, the BOX-7 lift-certification notion) the
+   ROBUST reading is the one the PE4 cross-note check verified
+   positively (HEX3_passPE4_report.md, charge 2): U₃^conv =
+   (σ-undecided TRP) ∪ (certified TRP boundary tails) EXACTLY, so
+   THEOREM HEX3.B's bound dominates BOTH r(3,N) TRP legs however
+   BOX-1 resolves — the (hExhaust-3) discharge never needed the
+   split; only this aside's W-12.B corroboration is conditional on
+   it. [r3, PE4 m1: the sealed clause read "consistent with W-12.B
+   only because the SPLIT-TAIL-type mass belongs to (A2)'s boundary
+   families, exactly as at n = 2" — asserting AS FACT the
+   σ-decidedness of the transported TRP SPLIT-TAIL mass, which is
+   exactly BOX-1's open lemma, and conflating the PROVED DBL side
+   with the OPEN TRP side; conditionalized, divergence price
+   displayed, pin-robust route cited; arithmetic re-verified at
+   repair: (2,7) mass 960 from the k = 1 summand, slope 1/24 at
+   q = 2 numeric at N = 200, S5.3 domination exact.]
+3. **Phase-B Lean** — the law is a single-recursion integer family:
+   a `hex3Law` evaluator + the 46-row table is a cheap Lean-side
+   certificate target once the (hMenu-3) side stabilizes
+   (math-first discipline: Lean waits).
+
+## S9. CONDITIONALITY STACK (consumed suppliers, as-of pins)
+
+* **THEOREM W-11(n = 2)** @ seal 7020ceb / verdict cb05127 / r2 HEAD
+  31506b3 — clause (iii) (undecided aggregate q^{M−1}), the SPLIT-TAIL
+  aggregate, S2.3's refine isomorphism (consumed through W12-L0).
+* **W-12 suppliers** @ seal f669cb0 / verdict c16c717 / adjudication
+  97122f2: LEMMA W12-L0 (history-resolved laws + bracket — S4 here),
+  LEMMA W12-L1(a)(b) (DBL product bijection + read equivalence — the
+  β-transports' engine), S2.4 depth-0 completeness (the partition),
+  THEOREM W-12.C (the identity this unit's B closes into), W12-BOX-3/7
+  (the convention definition). The w12 instrument consumed at its
+  sealed bytes (md5 pins in the runner).
+* **LEMMA J-D0** @ 1642275/9387eb1 — the gauge-blindness frame behind
+  HEX3.C (corroborated, not load-bearing for the counts: the S2–S5
+  arguments are self-contained slot counts).
+* **This note's own lemmas** H-1..H-4 + the S5 assembly — new, graded
+  0/2, machine leg as displayed.
+* **Classical:** Hensel (via W12-L1), Ore (via W-12 S2.3, only for the
+  DEC families' decidedness), lower-hull geometry.
+* **NOT consumed:** the weld notes ([W12-H] untouched — everything
+  here is order-1 digit calculus), PARI (no new oracle rows), the
+  measure route, `htameFE`.
+
+**One line: THEOREM HEX3.A's hypothesis set = {W-11 @ pins, W12-L0/L1
++ S2.4 @ pins, this note's transport lemmas}; HEX3.B = {HEX3.A +
+W-12.C @ pin}; HEX3.C = {HEX3.A's proof, inspected}. No axiom, no
+weld face, no oracle.**
+
+---
+## S10. VERDICT (commit 2 — from the committed artifacts)
+
+**GREEN. 158,512 checks, 0 violations in every family, all three teeth
+fired at their EXACTLY-preregistered counts, zero skips.** 46/46 rows
+(67,410,225 per-center states read individually; 21 ℤ_p + 25
+𝔽_q[[t]]), single fresh run, elapsed 326.9 s, exit 0; artifacts
+`hex3_checks_output.txt` (md5 6e4b3207562d8ba93811d77ab41f0391),
+`hex3_checks_results.json` (md5 ce6f41162a22b0bd66a641e98cb4d56e);
+runner byte-identical to the sealed commit e3f3459 (empty `git diff`).
+
+Prediction scorecard (all seven confirmed):
+* P-1 ✓ [the law] HEX3-LAW 92 checks / 0 — measured U₃^conv = q·u(q,N)
+  on ALL 46 rows. Every value in the sealed P-1 list hit
+  EXACTLY: (2,8) 50,176; (2,9) 206,336 (16.7M
+  states, the deepest window enumerated in this corpus, 71.7 s); (3,5)
+  23,571; (3,6) 240,327; (4,4) 18,688; (4,5) 308,224 (16.7M states,
+  eq-char q = 4, 126.7 s); (5,3) 3,125; (5,4) 88,125; (7,3) 16,807;
+  (9,3) 59,049; (11,3) 161,051; (13,3) 371,293 — the first q = 13 rows
+  in the corpus; and (13,2) measured 2,197 = 13³ per the law. [r1,
+  PE1 F2: the sealed line labeled the twelve listed values "the
+  ELEVEN never-measured (q,N)" — the honest never-measured ~~11-set~~
+  set
+  swaps the prototype-measured (5,3)/(7,3) for the omitted (13,2)
+  (see the corrected P-1 bracket in S7); all listed values hit, the
+  two swapped-out rows counting as prototype-corroborated, not
+  never-measured, force.] **[r2, PE2 F1: the honest never-measured
+  set has TWELVE pairs, not eleven — (8,3), omitted by the [r1]
+  census too, was measured 32,768 = 8⁵ in this very run (it is a
+  roster row) and INDEPENDENTLY by the PE2 verifier's own enumerator,
+  hitting the law exactly; the full corrected census with its basis
+  is the S7 P-1 r2 bracket.]**
+* P-2 ✓ [species] HEX3-SPECIES 172 checks / 0 — every realized depth-0
+  key's (locus, drained) pair equals the S5.1 closed forms, both
+  directions, on all 46 rows; all preregistered spot values hit (incl.
+  (Zp,2,7) ALPHA(2) = (64, 64), (Zp,3,6) VERT2(5,1) = (2916, 2916)
+  fully drained, (Zp,2,9) VERT1(8,2) = (1024, 384)): the transport
+  lemmas H-2/H-3 machine-checked ROUTE BY ROUTE.
+* P-3 ✓ [seal tie] HEX3-XREAD 158,204 pointwise states / 0 divergences
+  — the fresh reader IS the disclosed w12 convention.
+* P-4 ✓ [committed tie] HEX3-W12TIE 23/23 — the law retro-predicts the
+  committed w12 EXPLORATORY column with zero free parameters.
+* P-5 ✓ [char] HEX3-CHAR 17/17 pairs — FULL species tallies identical
+  across ℤ_p/𝔽_q[[t]] at every shared (q,N): COROLLARY HEX3.C
+  machine-confirmed at tally granularity.
+* P-6 ✓ teeth — T-FLOOR = 10, T-ALPHA = 20, T-VERT1 = 13: every count
+  exactly as preregistered.
+* P-7 ✓ — no falsifier fired; nothing to diagnose upstream.
+
+**Consequence for the grade box:** THEOREM HEX3.A (the exact U₃^conv
+law) and THEOREM HEX3.B (the (hExhaust-3) vanishing bound) stand as
+composed, machine-sealed on 46 rows both characteristics with the
+species decomposition confirmed term by term — the per-key design
+means a ledger error in ANY transport route would have surfaced as an
+integer mismatch, and none did; COROLLARY HEX3.C confirmed at tally
+granularity. W-12's BOX-3 obligation ("a vanishing U₃^TRP upper
+bound", (hExhaust-3)) is DISCHARGED at attempt grade 0/2 (~~the
+hostile arc has not begun~~ **[r1] arc: composed → PE1 NOT CLEAN
+0C+2G+2m @ d177fd8 (every theorem-level claim survived full
+re-derivation; machine leg re-run GREEN 158,512/0 with the seal
+byte-intact; fresh-route enumerator == law at 9 rows both ring types
+and all 46 committed values — arc facts) → r1 THIS REPAIR (all four
+findings, note-only, [r1] tags, minimality contract; runner +
+artifacts byte-frozen at seal e3f3459); counter 0/2; PE2 next**
+**[r2] arc cont.: → PE2 NOT CLEAN 0C+1G+1m @ f60348b (every
+theorem-level claim and both r1 mathematical repairs re-derived and
+CONFIRMED; machine leg bit-reconciled GREEN 158,512/0, seal
+byte-intact; fresh route: polynomial-identity proof of the
+telescoping for N ≤ 40, own W-11 block reader — R(M) 39 cases both
+parities — and own-field-table enumeration incl. the recovered
+(8,3) = 32,768 and a first-ever q = 27 row, 19,683 = 27³ exact; the
+gap was the [r1] census itself, one pair short) → r2 THIS REPAIR
+(F1 the census 11 → TWELVE + m1 the S8.2 k = 1 factor; note-only,
+[r2] tags, minimality contract; runner + artifacts byte-frozen at
+seal e3f3459); counter 0/2; PE3 next**
+**[r3] arc cont.: → PE3 CLEAN 0C+0G+0m @ fca1a97 (FIRST clean pass
+of the arc: the twice-burned census audited from primary sources and
+FINALLY RIGHT at twelve; β₁ route re-derived in full + letter-
+resolution fibers machine-checked; fresh route: renewal-GF series
+inversion + nine never-instantiated DVR types incl. first-ever
+q = 25/49; counter 1/2) → PE4 NOT CLEAN 0C+0G+1m @ 34a946b
+(cross-note verdict POSITIVE: the (hExhaust-3) discharge SURVIVES
+W-12's r3 σ-pin (b17238a) and is parse-ROBUST — U₃^conv =
+(σ-undecided TRP) ∪ (certified TRP boundary tails) exactly, HEX3.B
+dominating both r(3,N) TRP legs however BOX-1 resolves; α-route
+re-derived from scratch; machine leg fresh full run GREEN exit 0
+158,512/0, runner md5 == seal e3f3459; fresh route: partial-fraction
+GF with structural minimal denominator + six further never-
+instantiated DVR types, all law+species exact; the finding: the S8.2
+aside's W-12.B consistency clause asserted BOX-1's open lemma as
+fact — counter RESETS 0/2) → r3 THIS REPAIR (m1 the S8.2 consistency
+clause conditionalized; note-only, [r3] tag, minimality contract;
+runner + artifacts byte-frozen at seal e3f3459); counter 0/2; PE5
+next**);
+the σ-residue exact law remains open exactly at
+the tail-σ-certification lemma (HEX3-BOX-1) — W-13's floor together
+with (hMenu-3) = W12-BOX-2.
+
+---
+
+### Dated corrections (2026-08-09, post-PE6)
+
+*The rider owed at the wave-16 adjudication (ledgered in
+`lean/notes/BRIDGE_ADJUDICATIONS_2026-07-30.md`, wave-16 fold @
+91ec856: the charge bar — nothing GAP-or-worse = CLEAN — is the
+standing convention; HEX3's clean count HOLDS AT 1/2). Discipline:
+dated append only — the sealed body above (lines 1–832) is
+byte-untouched by this rider; runner + artifacts stay frozen at seal
+e3f3459 (runner md5 83faf7edb554811cd657691d7ea256cc, results JSON
+ce6f41162a22b0bd66a641e98cb4d56e); the PE6 report is byte-frozen at
+md5 42d86c7aeb3f5652657d44d6608fb247. Two corrections, one per PE6
+MINOR (`HEX3_passPE6_report.md` @ d9c5ef8).*
+
+**Correction 1 (PE6 m1 — the HEX3-BOX-1 mechanism gloss).** The BOX-1
+clause "every drain event happens inside a transported W-11 block
+frame" (S6) is FALSE and is superseded by the drain typology that
+S5.1's own table enumerates, three genres by row:
+(i) **B0ZERO drains** — the reader exits UNDECIDED at the TRP frame
+itself (drained column q^{2N−2}, the DOMINANT drained mass; no block
+frame); (ii) **α-chain drains** — exit at an α-recentered scaled TRP
+frame (drained column (q−1)q^{3k}·u(N−3k), recursively the scaled
+window's own three genres, bottoming out in B0ZERO/seed exits; no
+block frame on the B0ZERO-terminated chains); (iii) **β-route
+drains** — only the three R(M)-carrying rows (FULL11SQ, VERT1, VERT2)
+drain inside transported W-11 block frames. Witness, quoted from the
+committed `hex3_checks_results.json` row (kind Zp, q = 2, N = 4):
+states 512, u_measured 72 = u_law; species_tally B0ZERO [64, 64] +
+ALPHA(1) [8, 8] + DECIDED [440, 0], no β key realized — genres
+(i) + (ii) carry 100% of that committed row's 72 drains (64 + 8),
+zero W-11 block frames, refuting the sealed clause at that row. The
+same sentence's certifiable-candidates list already names the B0ZERO
+leg and stands. Its trailing shorthand ("a certification lemma would
+turn the same species table into the U₃^σ law by replacing R with its
+certified/uncertified split") under-covers genre (i) and is corrected
+to: replacing EACH drained column of the S5.1 table with its
+certified/uncertified split — the R-split covers only the three R(M)
+rows; the B0ZERO row's drained column is q^{2N−2}, not an
+R-expression, and its own split (exactly BOX-3's visible-B₁-vertex
+question) is ALSO needed for the U₃^σ law, with the ALPHA rows taking
+the scaled window's split recursively. Seal-era text, unflagged by
+PE1–PE5; blast radius zero on HEX3.A/B/C and the S5.1 table (PE6
+verified: no theorem, count, or consumer consumes the clause).
+
+**Correction 2 (PE6 m2 — the arc record cured by one dated line).**
+The r4 repair updated its two repair sites but not the three arc
+record sites; at the sealed body above, the header grade block, the
+HEX3-BOX-2 record, and §S10's [r3] bracket each still end "…counter
+0/2; PE5 next" / "r3 applied, counter 0/2 [r3]". Those three endings
+are superseded by this single dated arc line:
+
+> **ARC (dated 2026-08-09; supersedes the three r3-era record
+> endings — header, HEX3-BOX-2, §S10):** → PE5 NOT CLEAN 0C+0G+2m @
+> 5919e2f (target r3 @ b6a1d69; m1 = the S0 "every lift" Ore-warrant
+> over-claim struck by W-12's own r4, m2 = the S3.2-species
+> parenthetical's category slip; machine leg isolated GREEN
+> 158,512/0; fresh route ~149B states / 27 rows exact incl. (2,12)
+> and (16,4) at the preregistered 17,698,816) → r4 @ fa7b70d
+> (note-only, [r4] tags at S0 + S6, minimality contract; runner +
+> artifacts byte-frozen at seal e3f3459) → PE6 CLEAN under the charge
+> bar 0C+0G+2m @ d9c5ef8 (nothing GAP-or-worse; counter 0/2 → 1/2;
+> the PE4/PE5-era any-finding reading — NOT CLEAN, counter 0/2 — was
+> displayed for adjudication, and the wave-16 orchestrator
+> adjudication AT THE LEDGER (91ec856) ruled the charge bar the
+> standing convention, so the count HOLDS AT 1/2, minors-only
+> precedent; r4 lines verified faithful clause by clause; (A2)
+> handoff faithful at W-12 HEAD; machine leg isolated GREEN
+> 158,512/0; fresh route = the arc's first PARI/σ leg, wild cell
+> (Zp, 3, 4) end-to-end, 58,158 oracle lifts, 0 pin / 0 read-tie
+> violations, 27/27 S3.2 species members ambiguous) → r5 = THIS RIDER
+> (dated corrections, append-only; PE6 m1 + m2 repaired above; sealed
+> body + runner + artifacts + PE6 report byte-frozen, md5s displayed
+> in the rider head); counter 1/2; PE7 next.
+
+---
+
+### Dated acceptance record + corrections (2026-08-09, post-PE7)
+
+**ACCEPTANCE.** PE6 CLEAN under the charge bar @ d9c5ef8 (adjudicated
+91ec856) + PE7 CLEAN under the charge bar @ 237c753 (0C + 0G + 2m;
+`HEX3_passPE7_report.md`, md5 4049109c272617c10acb62f77fbf0c2e,
+byte-frozen) — counter 1/2 → 2/2: **HEX3 is ACCEPTED** (the fifth
+chain note through the bar). This note is FROZEN: dated appends only.
+Everything above this heading — sealed body L1–832, the post-PE6
+rider, the arc line — is byte-untouched by this append (pre-append
+file md5 b92f47a8895f8c7040c8fe9d7db4473d is the prefix); runner +
+artifacts stay at seal e3f3459. PE7's machine leg: isolated GREEN
+158,512/0; PE7's fresh route: 53 (ring, q, M) cells ≈ 2.9B states,
+0 violations, R(M) measured to M = 16 at q = 2 (both ring types) and
+at first-ever q ∈ {7, 11, 13, 25}. The two PE7 MINORs land here.
+
+**Correction A (PE7 m1 — the "tail half of (hMenu-3)" residence).**
+The attribution at S0 L104–105 and HEX3-BOX-1 L447–449 ("it is the
+tail half of (hMenu-3), W-13's floor"), echoed in S8.2 item 1's
+ingredient list ("the same three routes + the certification lemma"),
+is superseded: the tail-σ-certification lemma was never part of
+(hMenu-3). Verified against the two suppliers' frozen texts at this
+append: (a) W12-BOX-2 (W12_PROOF L1218–1224) defines (hMenu-3) as
+exactly the two node-species transfer laws — (α) the triple-cluster
+node and (β) the DBL-re-entry node at reduced window — with no
+tail-certification content; the lemma is named in W12-BOX-3's
+obstruction (L1225–1235) for the σ-side U₃^TRP law. (b) The ACCEPTED
+HMENU3 discharged (hMenu-3) in full WITHOUT the lemma, and says so
+(HMENU3 S5.4 L465–467: "The tail-σ-certification lemma remains what
+it was: the missing piece of the exact U₃^σ law ONLY (HEX3-BOX-1,
+inherited open, price unchanged)"). Corrected reading: HEX3-BOX-1's
+lemma = the missing piece of the exact U₃^σ law only; (hMenu-3) is
+discharged without it; S8.2-1's ingredient list drops the
+certification lemma for the depth-≥1 DECIDED-family laws (HM3.A
+proved them via this note's transports alone). BOX-1's open price is
+unchanged.
+
+**Correction B (PE7 m2 — the rider's "DOMINANT drained mass"
+superlative, L854, scoped).** Genre (i)'s clause "the DOMINANT
+drained mass" holds at the rows the arc measured — the two boundary
+fractions: the deepest committed row (Zp, q = 2, N = 9) has B0ZERO
+65,536 of u = 103,168 drains = 63.5%, and the arc's deepest
+fresh-route row (PE5's (Fqt, 2, 12)) has 4,194,304 of 7,936,000 =
+52.8% — but it is FALSE in the N → ∞ regime THEOREM HEX3.B is about:
+u(q, N) = q^{2N−2}(1 + Θ(N/q)) (S5.3's own excess; S8.2-2's N-linear
+display), so B0ZERO's fraction q^{2N−2}/u → 0 at fixed q. Crossover,
+RE-DERIVED at this append from the S5.1/S5.2 closed forms (evaluator
+validated against the committed anchors u(2,4) = 72, u(2,7) = 5664,
+u(3,4) = 837 and both measured fractions above): at q = 2, B0ZERO's
+share of u(N) first drops below 1/2 at N = 14 (0.4846; N = 13 is
+0.5186), and the β genre (the three R(M)-carrying rows) alone first
+exceeds B0ZERO at N = 18 (ratio 1.1042; N = 17 is 0.9771); the α
+column alone overtakes only at N = 77 (1.0036; N = 76 is 0.9862) —
+these exact values supersede the PE7 report's coarse "N ≈ 45 even
+the α genre alone" aside (its Θ-claims stand). Corrected clause:
+"(i) B0ZERO drains — … drained column q^{2N−2}, the dominant drained
+mass at each row the arc measured (boundary fractions 63.5% at
+(Zp,2,9) committed, 52.8% at (Fqt,2,12) fresh); the R-carrying β
+rows overtake it from N = 18 on at q = 2 and its fraction → 0 as
+N → ∞ per S5.3 — no block frame".
+
+=== YOUR RATIFICATION (WITH-ANNEX) OUTPUT: runs/residues/R5_hex3_output.log ===
+1. Verbatim quote:
+
+> “46 rows × every realized key, so a ledger error in ANY route would surface as a per-key integer mismatch.”
+
+Classification: MINOR.
+
+This overstates the finite battery. Its roster has \(N\le 9\), so it realizes only bounded depths. For example:
+
+- \(\alpha(k=3)\) first exists when \(N\ge10\);
+- \(\beta_2(k=3)\) requires \(u_0>9\), hence \(N\ge11\);
+- \(\beta_3(t=3)\) requires \(u_0>9\) with matching parity, hence minimally \(u_0=11,\ N\ge12\).
+
+A ledger error confined to any of those depths would produce no mismatch on the 46 sealed rows. The generic slot-count argument may still prove the formulas, but the machine leg cannot justify “ANY route error would surface.”
+
+2. Verbatim quote:
+
+> “a LAW violation on a NEW deep row with the committed-table rows clean refutes the transport lemmas (H-2/H-3) before the partition”
+
+Classification: MINOR.
+
+That diagnosis is not logically forced. A range, parity, or completeness defect in H-1 that first appears at an untested depth—such as omitting an \(\alpha(3)\) or \(\beta_3(t=3)\) locus—would leave every committed row clean and make a new deep LAW row fail. A LAW failure alone does not distinguish partition failure from transport failure; the accompanying species diagnostics would be needed.
+
+3. Verbatim quote:
+
+> “its fraction → 0 as \(N \to \infty\) per S5.3”
+
+Classification: MINOR.
+
+S5.3 supplies only
+\[
+u(N)\le q^{2N-2}\left(1+\frac{N}{2(q+1)}\right).
+\]
+This implies a lower bound
+\[
+\frac{q^{2N-2}}{u(N)}
+ \ge \frac{1}{1+N/(2(q+1))},
+\]
+whose right side tends to zero; it does not prove that the fraction itself tends to zero. The claimed limit is nevertheless correct from the exact law: the positive \(k=1\) \(R\)-tail grows linearly in \(N\) relative to \(q^{2N-2}\). Thus this is a bad attribution, not a false asymptotic conclusion.
+
+4. Verbatim quote:
+
+> “So \(u(q,N)\) is one polynomial law in \((q,N)\)”
+
+Classification: MINOR.
+
+Literally, it is not polynomial jointly in \(q\) and \(N\): the formula contains \(\lfloor(M-1)/2\rfloor\), \(\lfloor(N-1)/3\rfloor\), and exponential terms \(q^N\). The earlier formulation—“a polynomial in \(q\) for each \(N\)”—is correct. This appears to be loose terminology in S5.4, with no effect on characteristic-independence.
+
+THEOREM HEX3.A’s recursion, β-row assembly, and telescoping coefficient: CHECKED CLEAN.
+
+THEOREM HEX3.B’s geometric estimate, normalization, and vanishing conclusion: CHECKED CLEAN.
+
+The \(R(M)\) closed form and its first-step recursion: CHECKED CLEAN.
+
+The characteristic-independence argument, conditional on the pinned W-11/W-12 transport suppliers: CHECKED CLEAN.
+
+The dated corrections to the BOX-1 typology and the residence of the tail-certification lemma: CHECKED CLEAN.
+
+No CRITICAL or theorem-level GAP survives. The annex consists of three evidentiary/diagnostic overclaims and one terminology defect; none changes HEX3.A/B/C or the \((hExhaust\text{-}3)\) discharge.
+
+OUTCOME: RATIFIED-WITH-ANNEX
