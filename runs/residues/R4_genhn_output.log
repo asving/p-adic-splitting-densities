@@ -1,0 +1,91 @@
+1. **CRITICAL — the proved window theorem is internally refuted, leaving ordinary non-tower genres outside the conditionality list.**
+
+> “the ragged band … is never consulted”
+
+and
+
+> “Hence deep histories never consult the ragged band”
+
+are contradicted by the later erratum:
+
+> “at the band read dv0 = N …  
+> (a) N > 2w … → DECIDED 2SIDED …  
+> (b) N ≤ 2w, N odd → DECIDED RAM(N)”
+
+Counter-configuration: take the stated \((e_1,f_1,\mu)=(1,2,2)\) genre with \(k=1\), odd \(N=7\), and \(w=3\). The height-\(N\) slot lies in the ragged band, yet \(N>2w\), so the reader consults that band datum and returns `DECIDED 2SIDED`. Thus GENHN.A(iii)’s “never consulted” assertion is literally false.
+
+More seriously, the erratum says:
+
+> “at \(f_1 \ge 2\) genres beyond it (\(\mu \ge 3\), or \(e_1 \ge 2\) mixed …) this note claims the LIFT-STABILITY content of (a) only and NO band-adjudication display — that surface sits with the S9 boxes.”
+
+But no corresponding mathematics box appears in S9 for ordinary stage reads. `[GENHN-HE]` covers only σ, and `[GENHN-TOW-1]` covers towers. Hence the first-live \(n=6\) genre \((1,2,3)\) has unproved band drainage/count transport that is neither HE nor TOW, while GENHN.B claims CS-1/CS-2 there and claims its remaining list is exact. The same omission affects non-tower mixed \((2,2,2)\) stages at \(n=8\). This invalidates the advertised exact conditionality and “only unproved clause” claims.
+
+2. **GAP — “finite per \(n\)” is false for the theorem’s declared genre datum.**
+
+> “Every composite-stage opening … is classified by the LOCAL GENRE DATUM  
+> \(G=(Q;e_1,f_1,\mu;h,\text{ entry pattern})\)”
+
+followed by
+
+> “FINITE: at fixed \(n\) the triples … number at most … \(<\infty\)”
+
+does not prove finiteness of \(G\). It counts only \((e_1,f_1,\mu)\), omitting \(Q\), \(h\), the window, and parameterized prehistories.
+
+Even fixing \(Q=2\) and \(n=4\), the genres
+\[
+(2;2,1,2;h,\text{entry})
+\]
+exist for every positive odd \(h\), after choosing a sufficiently large window, for example \(N\ge 2h+1\). Since \(h\) is explicitly part of \(G\), these are infinitely many distinct genre data at fixed \(n\). Allowing \(Q\) or arbitrarily long α-prehistories adds further infinitude. What is finite is at most a collection of parameterized genre schemas, not the datum set asserted by GENHN.CLASS(ii).
+
+3. **GAP — the post-acceptance composed-key erratum changes the proof input without supplying the required general proof.**
+
+The erratum replaces the naive coefficient by
+
+> “\(\hat c_t := \operatorname{lift}(c_t\eta^{W(t)})\) (per digit at \(f_1\ge2\): the exact-height (LIFT) output \(L_{(f_2-t)u_2}(c_t\eta^{W(t)})\)).”
+
+It then claims:
+
+> “T(b)′’s PROOF mechanism is unaffected”
+
+Yet T(b)′(i)’s written proof specifically treats each coefficient as a single scalar-times-normalizer monomial:
+
+> “each lift-term monomial — \(x^i\pi^a\) from \(\hat n(\cdots)\) times an \(x^c\pi^g\) monomial…”
+
+For \(c_t\in K\setminus F_Q\), the corrected exact-height lift is generally a polynomial assembling several \(F_Q\)-components, not that single monomial. The note does not define this `LIFT` operator or prove inside T(b)′ that all its components:
+
+- have the required exact composed height,
+- clear the outer \(x\)-polygon side,
+- survive \(\Phi'\)-carry without changing the residual, and
+- produce precisely \(c_t\) in the coherent-normalizer gauge.
+
+The note’s own \(p=3,\eta=2\) counter-configuration proves that the original proof input can yield the wrong carrier \(\{(4,1)\}\) instead of \(\{(2,2)\}\). Referring to a downstream HETOW reconstruction does not supply the missing argument inside this theorem or its stated supplier stack. Thus the corrected carrier is plausible, but T(b)′(i) is no longer proved by the displayed proof at its full claimed generality.
+
+4. **MINOR — the universal one-\(K\)-slot-per-height statement ignores the lower boundary.**
+
+> “Hence each \(A_j\) carries exactly ONE \(K\)-digit slot per integer \(dv\)-height”
+
+and
+
+> “for each \(dv\)-height \(m\) pick \(n(m):=x^{i(m)}\pi^{a(m)}\) …”
+
+are false at small heights when \(a(m)\) would be negative. Take \(e_1=3\), \(f_1=1\), \(h=2\), and \(m=1\). The congruence \(2i\equiv1\pmod3\) forces \(i=2\), hence
+\[
+a=(1-2\cdot2)/3=-1.
+\]
+Thus \(n(1)=x^2\pi^{-1}\notin O[x]\), and no coefficient digit of a degree-\(<3\) integral polynomial occupies height \(1\). The valuation-min formula remains valid, and live stage nodes lie well above this lower boundary, so this does not by itself refute the downstream laws.
+
+5. **MINOR — the displayed \(n=8\) tower realization has an impossible residual degree.**
+
+> “the stage side \((0,u_0)–(4,0)\) … residual \((T^2-c)^2\) over \(K\) (stage-\(e=2\), stage-\(\mu=2\), stage-CS abscissa budget \(4\le4\))”
+
+A length-4 side with \(e_2=2\) has residual degree \(4/2=2\), whereas \((T^2-c)^2\) has degree \(4\). The compatible residual is a repeated linear factor such as \((T-c)^2\), matching the note’s later machine witness \((T-1)^2\). The existence claim survives via that witness, but this proof sentence is mathematically inconsistent.
+
+T(b)′’s two-step slot-independence argument, conditional on a valid corrected composed key: **CHECKED CLEAN**.
+
+The \(n=8\) first-tower and \(n=16\) first-depth-3 arithmetic thresholds: **CHECKED CLEAN**.
+
+The corrected GENHN-1 floor formula and its \(f_1\ge2\) sign calculation: **CHECKED CLEAN**.
+
+The μ=2 σ dictionaries in S7, including the RAM lcm rider and 2SIDED norm split: **CHECKED CLEAN**.
+
+OUTCOME: CHALLENGE
