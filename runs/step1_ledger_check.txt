@@ -1,0 +1,2 @@
+CHECK: 166 baseline statements; 0 changed, 0 deleted, 0 added.
+GREEN: every baseline statement byte-stable (normalized).

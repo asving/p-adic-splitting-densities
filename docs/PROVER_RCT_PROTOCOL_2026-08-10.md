@@ -189,3 +189,20 @@ passes, but I dont want to burn through it."
   PC passes) — Codex passes count, with the model recorded per pass.
 - The B25 Fable wave was STOPPED on receipt of this directive (the
   tightness census completed before the stop and is delivered).
+
+## Amendment 5 (2026-08-12, owner directive)
+
+Asvin, verbatim intent: "Continue to use codex pro 5.6 sol for
+everything heavy hitting, use lower tier codex or sonnet/opus for
+formalizing specific straightforward targets." Plus: anchor revision
+SIGNED OFF; the leansimp reorganization APPROVED for execution.
+
+- HEAVY (design, hard proofs, hostile passes, migration steps tagged
+  [hard]): Codex gpt-5.6-sol, model_reasoning_effort=high.
+- STRAIGHTFORWARD FORMALIZATION (units with complete translation
+  specs; migration steps tagged [mechanical]/[standard]): lower-tier
+  Codex (default effort) OR Claude Sonnet/Opus subagents — the
+  Amendment-4 Fable-subagent ban is relaxed to this extent (Sonnet/
+  Opus for spec-complete mechanical targets only); every such unit
+  gates on compile + statement-fidelity + AxChk where trusted-path.
+- Fable remains the orchestrator.
