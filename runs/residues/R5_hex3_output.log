@@ -1,0 +1,60 @@
+1. Verbatim quote:
+
+> “46 rows × every realized key, so a ledger error in ANY route would surface as a per-key integer mismatch.”
+
+Classification: MINOR.
+
+This overstates the finite battery. Its roster has \(N\le 9\), so it realizes only bounded depths. For example:
+
+- \(\alpha(k=3)\) first exists when \(N\ge10\);
+- \(\beta_2(k=3)\) requires \(u_0>9\), hence \(N\ge11\);
+- \(\beta_3(t=3)\) requires \(u_0>9\) with matching parity, hence minimally \(u_0=11,\ N\ge12\).
+
+A ledger error confined to any of those depths would produce no mismatch on the 46 sealed rows. The generic slot-count argument may still prove the formulas, but the machine leg cannot justify “ANY route error would surface.”
+
+2. Verbatim quote:
+
+> “a LAW violation on a NEW deep row with the committed-table rows clean refutes the transport lemmas (H-2/H-3) before the partition”
+
+Classification: MINOR.
+
+That diagnosis is not logically forced. A range, parity, or completeness defect in H-1 that first appears at an untested depth—such as omitting an \(\alpha(3)\) or \(\beta_3(t=3)\) locus—would leave every committed row clean and make a new deep LAW row fail. A LAW failure alone does not distinguish partition failure from transport failure; the accompanying species diagnostics would be needed.
+
+3. Verbatim quote:
+
+> “its fraction → 0 as \(N \to \infty\) per S5.3”
+
+Classification: MINOR.
+
+S5.3 supplies only
+\[
+u(N)\le q^{2N-2}\left(1+\frac{N}{2(q+1)}\right).
+\]
+This implies a lower bound
+\[
+\frac{q^{2N-2}}{u(N)}
+ \ge \frac{1}{1+N/(2(q+1))},
+\]
+whose right side tends to zero; it does not prove that the fraction itself tends to zero. The claimed limit is nevertheless correct from the exact law: the positive \(k=1\) \(R\)-tail grows linearly in \(N\) relative to \(q^{2N-2}\). Thus this is a bad attribution, not a false asymptotic conclusion.
+
+4. Verbatim quote:
+
+> “So \(u(q,N)\) is one polynomial law in \((q,N)\)”
+
+Classification: MINOR.
+
+Literally, it is not polynomial jointly in \(q\) and \(N\): the formula contains \(\lfloor(M-1)/2\rfloor\), \(\lfloor(N-1)/3\rfloor\), and exponential terms \(q^N\). The earlier formulation—“a polynomial in \(q\) for each \(N\)”—is correct. This appears to be loose terminology in S5.4, with no effect on characteristic-independence.
+
+THEOREM HEX3.A’s recursion, β-row assembly, and telescoping coefficient: CHECKED CLEAN.
+
+THEOREM HEX3.B’s geometric estimate, normalization, and vanishing conclusion: CHECKED CLEAN.
+
+The \(R(M)\) closed form and its first-step recursion: CHECKED CLEAN.
+
+The characteristic-independence argument, conditional on the pinned W-11/W-12 transport suppliers: CHECKED CLEAN.
+
+The dated corrections to the BOX-1 typology and the residence of the tail-certification lemma: CHECKED CLEAN.
+
+No CRITICAL or theorem-level GAP survives. The annex consists of three evidentiary/diagnostic overclaims and one terminology defect; none changes HEX3.A/B/C or the \((hExhaust\text{-}3)\) discharge.
+
+OUTCOME: RATIFIED-WITH-ANNEX
