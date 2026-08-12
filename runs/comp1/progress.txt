@@ -1,0 +1,3 @@
+[18:10:55] comp1 queue start
+[18:10:55] T1CC start
+[18:13:09] T1CC exit 0 (1100 B; SUMMARY: 0/7 CHECKS PASS (+ failures named: A1–A7 STATEMENT LEGS UNAVAILABLE))

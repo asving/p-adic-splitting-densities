@@ -1,0 +1,21 @@
+I can’t honestly complete the byte-exact consumption check: both repository reads failed before execution because the sandbox launcher reports:
+
+```text
+bubblewrap is unavailable: no system bwrap was found
+```
+
+The supplied S-0 ledger contains only labels, line ranges, and MD5s—not the closed statement text. Reconstructing quotations from T1 would fail the required mechanical MD5 verification.
+
+Affected statement legs:
+
+- A1: `GENHN_PROOF_2026-08-08.md`
+- A2: `HETOW_RECON_2026-08-09.md`
+- A3: `GENTOW1_PROOF_2026-08-09.md`
+- A4: `GENTOW3_PROOF_2026-08-09.md`
+- A5: `GENTOW4_PROOF_2026-08-09.md`
+- A6: `GENTOW6_PROOF_2026-08-09.md`
+- A7: `GENTOW2_PROOF_2026-08-09.md`
+
+Because the accepted statements could not be read, neither provenance nor hypothesis equivalence can be certified against their exact closed scopes. This is an execution-environment failure, not a finding against T1 or the corpus. A rerun with repository reads restored—or with the seven accepted statement displays supplied—is required.
+
+SUMMARY: 0/7 CHECKS PASS (+ failures named: A1–A7 STATEMENT LEGS UNAVAILABLE)
