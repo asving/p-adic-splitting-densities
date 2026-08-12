@@ -1,0 +1,1152 @@
+RE-CONFIRMATION (gpt-5.6-sol high). Your D3a pass returned NEW-ISSUE on the C2-3 box at S_A = ∅; the orchestrator folded your fix the same day (right side re-displayed as |χ(S_A)| ≤ 1 — dated corrigendum at the note's tail). Confirm: DISCHARGED / INSUFFICIENT / NEW-ISSUE. End with: OUTCOMES: <one word>
+
+=== YOUR D3a OUTPUT ===
+1. **DISCHARGED.** C2-1 correctly derives \(t_{\mathrm{Def}}=\nu-t_{\min}\), hence \(z^{t_{\mathrm{Def}}}=z^\nu\varepsilon_m(\beta)\), and accurately scopes the surviving consumers.
+
+2. **DISCHARGED.** C2-2 correctly translates exponent support by \(\nu\), giving \(\deg H=\deg P+\nu\) for nonzero residuals. The recovery and \(\operatorname{ord}_\psi\) claims are valid because \(\psi\ne y\).
+
+3. **NEW-ISSUE.** The boxed scalar-gauge equivalence fails when \(S_A=\varnothing\), a case the frozen note itself permits via the “zero-read escape.” Then
+   \[
+   \exists c\in F^\times\ \forall i\in S_A,\ c_i=cC_i
+   \]
+   is vacuously true, while \(|\chi(S_A)|=0\), not \(1\). Repair by either assuming \(S_A\ne\varnothing\), or replacing the right side with \(|\chi(S_A)|\le1\). The two-distinct-character criterion remains correct for genuine refutations.
+
+4. **DISCHARGED.** C2-4 correctly separates the unconditional congruence/carry facts from print-side existence, which requires \(u(V)\ge0\). The counterexample and consumer containment are mathematically sound.
+
+OUTCOMES: DISCHARGED, DISCHARGED, NEW-ISSUE, DISCHARGED
+
+=== GRTJA AT HEAD ===
+# GRTJA — J-A, THE DICTIONARY JUNCTION: type data → tower data, the four operator equalities, and the covariance-corrected residual tie
+
+**Unit:** J-A COMPOSER (weld dependency order: consumes W-2 clause 1 at attempt
+grade; per `docs/in-progress/GRT_WELD_BLUEPRINT_2026-08-08.md` §S2.1/S3.1
+rows W-0/W-1/W-4). **Genre: PROOF NOTE at attempt grade (acceptance ARC
+OPEN: round 1 = the 2026-08-04 JA-PE1 pass (gaps-only, repaired at r1),
+round 2 = JA-PE2 (1 critical + 3 gaps + 1 minor, repaired at r2 below),
+round 3 = JA-PE3 (CLEAN; counter reached 1/2), round 4 = JA-PE4
+(0 critical + 1 gap, repaired at r3; counter reset), round 5 = JA-PE5
+(0 critical + 1 justification gap (minor), repaired at r4 below), round 6
+= JA-PE6 (0 critical + 2 justification gaps (both minor, both
+arc-accounting), repaired at r5 below);
+counter 0 CLEAN passes of the 2 consecutive required; no gate fires; next
+pass = JA-PE7 = the acceptance attempt), with sealed-runner machine
+brackets** (`verification/openmath/grt_ja_checks.py`, two-commit seal).
+[JA-r2 2026-08-08 (wallclock 2026-08-06), per JA-PE2 FINDING 4: the stale
+"no acceptance arc opened" header contradicted §8's own r1 record ("round
+1 of the acceptance arc") at HEAD; the counter is normalized to the
+0/2-CLEAN convention at every surface (§8's "0/1" denominator wobble
+included).] [JA-r4 2026-08-08 (wallclock 2026-08-07), per JA-PE5
+FINDING 1: the r3 repair left this genre line reading "next pass =
+JA-PE3" (and §7.3 "next = PE3") against §8's own r3 record ("rounds 1–4
+complete … next pass = JA-PE5") at HEAD — PE4's n3 staleness warrant
+("no repair round since") lapsed when r3 edited the note; the r2
+FINDING-4 normalization re-applied at both live surfaces (round
+inventory extended through PE5, next pass named).]
+
+**Grade cap (read first).** J-A-PIN (§2) is PROVED at attempt grade (its legs
+are the print's own definitions plus one one-line argument), with its lift
+clause consumed from W-2 clause 1 AT ATTEMPT GRADE and W-2's conditionality
+carried verbatim. Of the four operator equalities (§3): (i) w = v and (iii)
+ε = the print twist are PROVED unconditionally on the shared-key perimeter;
+(iv) the grid/carry tie is PROVED unconditionally; (ii) the residual
+dictionary is PROVED at m = 1 (= W2-L3, consumed) and at m = 2
+(unconditional per-slot character-gauge law, new here), and at m ≥ 3 is
+PROVED under the displayed per-digit collapse proviso — outside it the exact
+law is the recursion, W-2 §3.3(c) genre. One blueprint display is CORRECTED:
+the J-A(ii) "slot-independent c" form is false at m ≥ 2 (JA-BOX-1). Nothing
+here fires any gate, touches any accepted text, makes any gr/carrier (J-C)
+claim, or advances any density (J-D) statement.
+
+**Literature consumption (faithfulness discipline).** The classifier side is
+the GMN print `docs/references/HigherNewton.tex` ("Newton polygons of higher
+order in algebraic number theory"), consumed as literature with tex anchors
+per formula, through the SEALED probe transcription `grt_weld_probe.GmnLeg`
+(no new print transcription in this unit; the fresh legs of the runner are
+integer/geometric recomputations, not new print readings). Anchors used:
+sides/slopes in lowest terms (tex 220, 828, 912); order-one and order-r type
+data ψ monic irreducible ≠ y, F_r := F_{r−1}[y]/(ψ_{r−1}) (tex 829, 882);
+principal polygon = negative-slope sides (tex 449, 1377); residual polynomials
+never divisible by y (tex 1149); Proposition `construct` (tex 1166–1258,
+hypothesis V ≥ e_{r−1}f_{r−1}v_r(φ_{r−1})); Theorem `phir` + eq `vrphir`
+(tex 1257–1283); the representative definition = the project's "Def 2.12"
+(tex 1285); Bézout ℓ_r h_r − ℓ′_r e_r = 1 with NO pinned representative
+(tex 1291); Proposition `propertiesv` items 3/4 (tex 1028); Definitions
+`t(i)`/`rescoeff`/`defresidual` (tex 1431/1447/1497 and the order-one base
+tex ~460/534). The FGMN print enters ONLY through the accepted N-1 base case
+(§5) — a second, independent print of the same operators.
+
+**Machine bracket:** `grt_ja_checks.py` — both sides of every §2/§3 equality
+computed on the weld probe's 16-tower roster + the 5 concrete wild
+polynomials (fresh QO extraction) + 4 FRESH d₀ ≥ 2 shapes (d₀ = 3 root keys
+and a p = 5 row, certified through `engine_ext` per its standing rule),
+LAW-KEYED with teeth. Verdict in §7 (commit 2).
+
+---
+
+## §1. Setting and indexing (fixed once)
+
+Harness: the [ILN]† S0.1 class pin verbatim **[JA-r3 2026-08-08 (wallclock
+2026-08-07): [ILN]† consumed as-of ced7dbb — the as-of pin owed since PE2
+o2 / PE3 o3, executed with the FINDING 1 pin sweep; ITERLAWN_PROOF
+motion-free since]** (DVR O, uniformizer π, reads
+(e_j, h_j, g_j) for j = 0..n with e_j, h_j, g_j ≥ 1 and gcd(e_j, h_j) = 1;
+normalized Bézout ℓ_j h_j + ℓ′_j e_j = 1 with 0 ≤ ℓ_j < e_j; residue chain
+K_{j+1} = K_j[z_{j+1}]/(ψ_j), ψ_j monic irreducible, ψ_j(0) ≠ 0; weights
+γ₁ = h₀, γ_{j+1} = e_j·w_jΦ_j + h_j, w_jΦ_j = e_{j−1}g_{j−1}γ_j; the
+standard lift Φ₁, the canonical ε-corrected lifts Φ_{m+1}, the units
+ε_m(β) = z_m^{ℓ′_{m−1}s − ℓ_{m−1}u} with (s, u) = eq12(β; e_{m−1}, h_{m−1}),
+the level-m weights w_m and reads R_m v of S0.2). Classifier: the GMN print
+objects, as transcribed in the sealed probe leg.
+
+**The P-index dictionary** (probe pins, restated once; W-2 §1.2): GMN level
+i = harness read i−1: (e_i, h_i, f_i)^GMN = (e_{i−1}, h_{i−1}, g_{i−1})^har;
+ψ_i^GMN = ψ_{i−1}^har; F_i = K_{i−1}; z_i^GMN = z_i^har; ℓ_i^GMN ≡ ℓ_{i−1}^har
+under (P-ell); GMN keys φ_i = harness Φ_{i−1}; GMN valuations v_i = harness
+w_{i−1} (THEOREM JA-VAL below is exactly this pin proved); in particular
+v_i(φ_i) = w_{i−1}Φ_{i−1} and v_{i+1}(φ_i) = γ_i^har. The GMN order-q
+residual operator R_q (φ_q-adic dev) pairs with the harness level-q read
+R_q v. Convention pins (P-ell)/(P-lift)/(P-root)/(P-index) as sealed in the
+probe docstring. **Shared-key perimeter at level m**: Φ_q^har = φ_{q+1}^cls
+byte-for-byte for all q ≤ m−1 (all operators at level m consume only keys
+that deep). The read-data quantities of W-2, reused throughout:
+
+    A_m := ℓ_{m−1}·g_{m−1}·γ_m ∈ ℤ_{≥0}   (m ≥ 1; A_m = 0 ⟺ e_{m−1} = 1),
+    W_m := w_mΦ_m = e_{m−1}g_{m−1}γ_m     (so A_m = ℓ_{m−1}W_m/e_{m−1}).
+
+---
+
+## §2. THEOREM JA-PIN (= blueprint W-0): the dictionary map and the class-pin membership, clause by clause
+
+**Definition (the dictionary map T).** For a realized principal-read OM type
+t of order r on a separable monic f ∈ O[x], O ∈ {ℤ_p, F_p[[t]]} — GMN data
+(φ_i, λ_i = −h_i/e_i, ψ_i)_{i≤r}, f_i = deg ψ_i, φ₁ the order-0 key — set
+
+    T(t) := ( Φ₀ := φ₁;  reads (e_j, h_j, g_j) := (e_{j+1}, h_{j+1}, f_{j+1})^GMN,
+              j = 0..r−1;  residue chain K_{j+1} := K_j[z_{j+1}]/(ψ_j),
+              ψ_j := ψ_{j+1}^GMN;  weights by the harness recursion ).
+
+**THEOREM JA-PIN.** T(t) satisfies every clause of the [ILN]† S0.1 class pin
+EXCEPT the lift clause, each clause forced by the print's own hypotheses:
+
+1. **DVR base.** O = ℤ_p is the print's own base (𝒪 the valuation ring of a
+   local field); the F_p[[t]] instance is the displayed equal-characteristic
+   deferral (JA-BOX-4) — construction-identical, machine-covered, no PARI leg.
+2. **e_j ≥ 1, h_j ≥ 1, gcd(e_j, h_j) = 1.** The print DEFINES every side
+   slope as λ = −h/e "with h, e positive coprime integers" (tex 220 order
+   one; tex 828 type datum; tex 912 order r). Positivity of h is the
+   PRINCIPAL restriction: types are built from the principal polygon
+   N_r^−(f), the negative-slope sides only (tex 449, 1377). Slope-0 legs
+   never enter a type; they are dispatched by Hensel/L1 at order 0 (the
+   machine-checked capstone leg), so the weld quantifies over principal
+   reads only — displayed, blueprint pin honored.
+3. **g_j ≥ 1.** g_j = f_{j+1} = deg ψ_{j+1}; ψ monic irreducible forces
+   deg ≥ 1 (tex 829/882).
+4. **ψ_j monic irreducible.** Verbatim print hypothesis (tex 829 order one,
+   tex 882 order r).
+5. **ψ_j(0) ≠ 0.** The print requires ψ ≠ y (tex 829/882; used again at tex
+   1149: "the residual polynomials are never divisible by y, and
+   ψ_{r−1}(y) ≠ y"). One line: if ψ(0) = 0 then y | ψ, and ψ monic
+   irreducible forces ψ = y — excluded. ∎
+6. **Residue chain.** F_{r} := F_{r−1}[y]/(ψ_{r−1}(y)) is the print's own
+   definition (tex 882); under F_i = K_{i−1} and z_i^GMN = z_i^har this IS
+   the pin's chain K_{j+1} = K_j[z_{j+1}]/(ψ_j).
+7. **Weights.** The print's v_{i+1}(φ_i) = e_i v_i(φ_i) + h_i and
+   v_{i+1}(φ_{i+1}) = e_i f_i v_{i+1}(φ_i) (Prop `propertiesv` tex 1028; eq
+   `vrphir` tex 1259) transcribe under P-index to EXACTLY the pin's
+   γ_{j+1} = e_j·w_jΦ_j + h_j and w_{j+1}Φ_{j+1} = e_j g_j γ_{j+1}, with
+   base v₁(φ₁) = 0, v₂(φ₁) = h₁^GMN = h₀ = γ₁ (the uniformizing
+   convention). Integer identity, machine family JA-PIN.
+8. **THE LIFT CLAUSE (the sole exception) = W-2, consumed at attempt
+   grade.** GRTW2_PROOF_2026-08-08.md supplies it in the corrected
+   three-clause form: Φ_{m+1}^har is a strict GMN Def-2.12 representative
+   (tex 1285) of the ξ-CONJUGATE type under the pinned (P-ell) convention
+   (W2-C1, proved on the §3 perimeter there), and of the TRANSPORTED type
+   t^tw ~~strictly at every level (W2-C3, attempt grade, machine
+   44/44/44)~~ at the supplier's CURRENT grade: W2-C3 PROVED at attempt
+   grade given its §3–§4 up to and including each chamber's first ξ ≠ 1
+   junction (38/44 junction-levels; 36 fully derived + 2
+   instance-warranted I4A/I4B r = 5), MEASURED above it (6/44:
+   T3A/T3C/T3D/T3E r = 4, I4C r = 4,5) riding W2-OPEN-2; machine
+   TW-RATIO/TW-ADM 44/44 with TW-STRICT SAME-adjacent (NOT three
+   independent 44/44 legs). Conditionality carried verbatim per W-2
+   §6.3's consumer contract: (a) the (C-coll)/recursion split, (b)
+   W2-OPEN-1 (value layer) OPEN, (c) the §4.3 ℓ-orbit convention fence,
+   and (d) W2-OPEN-2's open status for clause 3's chain level above each
+   chamber's first ξ ≠ 1 junction (the proved-to-first-twist /
+   measured-above grade split), the W2-C1a chamber qualifier, and
+   (OPEN-2a) — W2-OPEN-2's own premise sub-clause, the
+   recorded-ξ/byte-divergence identification, proved only at m = 1
+   (W2-ID1). **[JA-r3 2026-08-08 (wallclock 2026-08-07), per JA-PE4
+   FINDING 1: the struck grade text and the closed (a)/(b)/(c) carry-list
+   predated the supplier's motion — W2 r1 (8d5e3fa, nine minutes after
+   JA r2) struck that exact W2-C3 grade text and W2 r1/r2 added §6.3's
+   mandatory carry item (d); this cite — and every W-2 cite in this
+   note — is henceforth pinned as-of [W2] := GRTW2_PROOF_2026-08-08.md
+   @ ffa1e57 (post-W2-r2). No JA derivation consumed the retracted
+   strength (clause 8 is consumption billing; TW-INST is JA's own
+   instance evidence, unaffected; the W2-C1 leg did not move).]**
+
+*Proof.* Clauses 1–7 are the cited definitions plus the displayed one-line
+arguments; clause 8 is consumption. ∎ Grade: PROVED at attempt grade; the
+Bézout normalization 0 ≤ ℓ < e is OURS not the print's (tex 1291 pins
+nothing — JA-BOX-3). [Machine: JA-PIN — clauses 2–7 re-verified by fresh
+integer/field computations on every roster + QO + d₀ ≥ 2 level; clause 1
+is not machine-checkable and clause 8 is consumption ([JA-r1] per JA-PE1
+GAP-5a: "every clause" corrected to the runner's own coverage).]
+
+---
+
+## §3. The four operator equalities (= blueprint W-1 (i)–(iii) + W-4 (iv))
+
+Throughout §3 the level-m statements are on the shared-key perimeter (§1);
+§4 states what survives off it and across the orbit.
+
+### 3.1 THEOREM JA-VAL (J-A(i): w_m = v_{m+1})
+
+**Statement.** For every m ≥ 0 and every nonzero A ∈ O[x]:
+w_m(A) = v_{m+1}(A), where v is the print's MacLane/GMN valuation of the
+type prefix (order-one v₁ = min coefficient π-valuation, tex ~460 region;
+order-r recursion v_r(A) = min_i (e_{r−1}·v_{r−1}(a_i) + i·v_r(φ_{r−1})),
+Prop `propertiesv` item 3, tex 1028, hypothesis: φ_{r−1}-adic development).
+
+*Proof.* Induction on m. Base m = 0: w₀ = min coefficient valuation = v₁ by
+definition on both sides. Step: under shared keys the φ_{m+1}-adic dev IS
+the Φ_m-dev (same monic key, same canonical division), and the two
+recursions are the same integer min — v_{m+2}(A) = min_i(e_m^har·v_{m+1}(a_i)
++ i·v_{m+2}(φ_{m+1})) with v_{m+2}(φ_{m+1}) = γ_{m+1} (JA-PIN clause 7)
+versus w_{m+1}(A) = min_i(e_m·w_m(a_i) + i·γ_{m+1}); the inductive
+hypothesis identifies the arguments. ∎ Grade: PROVED (attempt grade),
+unconditional on the shared-key perimeter. This is the P-index pin
+v_i = w_{i−1} PROVED rather than assumed; it is stated in the GD-2 frame
+normalization (the sheared eq-(12) presentation of ordinates — the T-F
+machine check's convention pin) — the identity lives at the v-level where
+no shear ambiguity exists. [Machine: CK-VAL, both engines on the same
+samples, every shared level of every roster/QO/d₀ ≥ 2 tower.]
+
+### 3.2 THEOREM JA-EPS (J-A(iii): ε_m = the print's twist unit)
+
+**Statement.** For every m ≥ 1 and every β ∈ ℤ in the level-m weight
+lattice: ε_m(β) = z_m^{−t_m(β)}, where t_m(β) := (ℓ_{m−1}β − s(β))/e_{m−1}
+evaluated at the point of ordinate-argument β on its own side, s(β) =
+ℓ_{m−1}β mod e_{m−1} (integrality by W2-L0). SIGN CONVENTION (explicit):
+t_m carries the Prop-`construct` CHILD orientation (ℓu − 𝔰)/e — the child
+prescription φ_j(y) ≡ y^{(ℓ_{r−2}u_j−𝔰_j)/e_{r−2}}c_j(y), tex 1200–1201;
+Definition `t(i)` (tex 1431) defines the print twist with the OPPOSITE
+sign, (s_{r−1}(a) − ℓ_{r−1}u)/e_{r−1} (differing further by the ν-shift
+s(a_i) vs 𝔰); the clean print-side carrier of the (𝔰 − ℓu)/e exponent is
+Lemma `enlarge` (tex 1528–1541). JA-RES (§3.4) uses the Def-`t(i)` sign.
+[JA-r1 2026-08-08 (wallclock 2026-08-04), per JA-PE1 GAP-1: anchor
+corrected — tex 1213–1218 is picture-environment drawing code; the earlier
+gloss "the print's twist exponent (Definition t(i))" was sign-loose and is
+superseded by this display. The same inherited 1213–1218 range stands in
+W-2 §3.1 — cure owed to that note's own arc. Equality + machine leg
+unchanged.] More generally, for u = β + k·W_m (weight
+shifts by key multiples): ε_m(β)·z_m^{t_m-at-u} = z_m^{A_m·k} — W2-L2
+consumed proved (the Bézout bridge; hypothesis list: gcd(e, h) = 1,
+normalized (ℓ, ℓ′), u − β ∈ W_m·ℤ).
+
+*Proof.* The k = 0 case of W2-L2: T + (ℓ′s − ℓu′) = ℓ(u − V)/e = 0 at
+u = V = β, i.e. the ε-exponent ℓ′s − ℓu′ = −t_m(β). ∎ Grade: PROVED,
+unconditional (pure read-data integers; no key bytes consumed). This is
+W-2 §2.4's structural sentence promoted to the J-A ledger: **the harness
+ε-kit IS the print's t(i)-twist rewritten in eq12-canonical coordinates.**
+[Machine: CK-EPS — committed T.eps vs fresh geometric-scan integers;
+k-grid covariance included.]
+
+### 3.3 THEOREM JA-GRID (J-A(iv): eq-(12-int) digits = abscissa/side coordinates, + the carry clause)
+
+**Statement.** Fix a read (e, h), gcd(e, h) = 1, h, e ≥ 1, and V ∈ ℤ_{≥0}
+with u := (V − s·h)/e ≥ 0 — the proviso holds at every PRINT-SIDE
+consumption site IN THIS NOTE (the sites where Prop `construct`'s own
+hypothesis V ≥ e_{r−1}f_{r−1}v_r(φ_{r−1}), tex 1167–1168, is in force);
+for small V off it the print-side T has no such point (e.g.
+(e,h) = (2,3), V = 1 ⟹ u = −1). [JA-r2 2026-08-08 (wallclock 2026-08-06),
+per JA-PE2 FINDING 2: the r1 gloss's unquantified "at every consumption
+site" was over-broad read consumer-facing — DOWNSTREAM consumers do NOT
+inherit a discharge from tex 1167–1168. The consumer-facing truth is the
+accepted JB's own matrix, §0M column (b) as of 4c4ee56: the proviso is
+“**CARRIED AND UNDISCHARGED** (r2, G2-5; r1's "discharge" retracted)”,
+then (ellipses ours) “[r5, F-3 — STATUS NARROWED: u ≥ 0 is now PROVED on
+ALL of the level-m weight lattice 𝒲_m … The carried residue at the two
+consuming rows (4 and 12) is … the MEMBERSHIP hypothesis
+V = w_{q+1}(f) ∈ 𝒲_{q+1} … CARRIED, NARROWED; not fully discharged.]” At JB's sites V = w_{q+1}(f)
+is a harness weight for which the print hypothesis supplies nothing; the
+discharge sentence above is scoped to this note's print-side sites ONLY.
+The proviso OBJECT and the shared-key perimeter are unchanged — PE2
+verified them fenced identically to JB's consumption.]
+(a) The print's T-side initial point (Prop `construct` tex 1176: "the greatest side T contained in L whose end points have
+nonnegative integer coordinates", initial point (s, u); the T-side object
+genuinely reappears at Lemma `enlarge`, tex ~1528–1531) is EXACTLY
+eq12(V; e, h): s = ℓV mod e = the smallest nonnegative abscissa with
+integer ordinate on the line, u = (V − sh)/e. (= W2-L0, consumed proved.)
+[JA-r1 2026-08-08 (wallclock 2026-08-04), per JA-PE1 GAP-4: the u ≥ 0/
+print-hypothesis proviso added (the bare V ∈ ℤ_{≥0} quantifier was false
+at small V); the "same object at tex 1498" gloss corrected — the (s, u)
+at tex 1498 is the initial point of the ACTUAL side S, ≠ eq12 when the
+first grid slot is unattained. The machine's geometric leg checks the
+unconditionally-true integer-ordinate characterization; (b)/(c) unaffected.]
+(b) Consequently the print's slot grid s + je and slot values V_j equal the
+harness digit grid and digit weights at every junction slot (W2-L0's
+consequence display: the two legs' polygons agree point-for-point).
+(c) CARRY CLAUSE (elementary, new display): for V, V′ ≥ 0,
+
+    s(V) + s(V′) − s(V + V′) = e·δ,   δ ∈ {0, 1},   δ = 1 ⟺ s(V) + s(V′) ≥ e,
+
+and δ = 1 exactly when the concatenated grid offsets cross a lattice point
+of the coarser (period-e) grid — the plain carry δ^pl of the harness
+eq-(12-int) split IS the side-lattice crossing indicator (GD-8's exact-key
+seam genre at order 1; the print-side reading of the same integer).
+
+*Proof of (c).* s(V+V′) ≡ ℓ(V+V′) ≡ s(V) + s(V′) (mod e) and all three lie
+in [0, e), so the difference is 0 or e; it is e iff s(V) + s(V′) ≥ e. ∎
+Grade: PROVED, unconditional. SCOPE: this is the single-level additive
+statement only; the multi-level defect/carry chains (S_j, D_j) are [ILN]†'s
+content, consumed not re-proved (fence displayed). [Machine: CK-GRID —
+geometric brute scan (no ℓ, no eq12) vs eq12 on both (a) and (c).]
+
+### 3.4 THEOREM JA-RES (J-A(ii): the residual dictionary — the per-slot character-gauge law)
+
+Notation: at level m ≥ 2, for nonzero A ∈ O[x] with deg A < deg Φ_m, let
+β = w_m(A); dev A by Φ_{m−1} with digits a_i; harness packed coefficients
+C_i := ε_{m−1}(β_i)·R_{m−1}v(a_i) at the exact-weight abscissas i (grid
+s(β) + j·e_{m−1}, β_i = (β − i·γ_m)/e_{m−1}, so R_m v(A) = Σ_j C_{i_j}z_m^j);
+print residual coefficients c_i := z_{m−1}^{t(i)}·R_{m−1}(a_i)(z_{m−1})
+(Definition `rescoeff` tex 1447 at order ≥ 2, `defresidual` tex 1497;
+t(i) = (s_{m−1}(a_i) − ℓ_{m−2}u_i)/e_{m−2} per Definition `t(i)` tex 1431,
+u_i = v_m(a_i·Φ_{m−1}^i); order-one base c_i = red(a_i/π^{u_i}), tex ~460).
+
+**(VD-m), the evaluated dictionary at level m** (the inductive interface):
+
+    z_m^{τ_m(A)} · R_m(A)(z_m) = ε_m(β) · R_m v(A),
+    τ_m(A) := (s_m(A) − ℓ_{m−1}β)/e_{m−1},  s_m(A) = initial attained abscissa.
+
+(VD-1) is W2-L3, PROVED (consumed).
+
+**THEOREM JA-RES (per-slot law).** Level m ≥ 2, shared keys below m. IF
+(VD-(m−1)) holds at every on-line digit a_i of A (the PER-DIGIT PROVISO),
+THEN for every attained abscissa i:
+
+    c_i = z_{m−1}^{−i·A_{m−1}} · C_i .
+
+The print's order-m residual coefficient equals the harness packed digit
+times the PURE CHARACTER z_{m−1}^{−i·A_{m−1}} in the abscissa. At m = 2 the
+proviso is (VD-1) = W2-L3: **the law is UNCONDITIONAL at m = 2.**
+
+*Proof.* By the proviso, R_{m−1}(a_i)(z_{m−1}) = z_{m−1}^{−τ_{m−1}(a_i)}·
+ε_{m−1}(β_i)·R_{m−1}v(a_i) = z_{m−1}^{−τ_{m−1}(a_i)}·C_i. So c_i =
+z_{m−1}^{t(i) − τ_{m−1}(a_i)}·C_i, and with u_i = β_i + i·W_{m−1} (both
+ordinates of the same on-line point, W_{m−1} = w_{m−1}Φ_{m−1} = the print's
+v_m(φ_m), JA-PIN clause 7):
+
+    t(i) − τ_{m−1}(a_i) = [s_{m−1}(a_i) − ℓ_{m−2}u_i − s_{m−1}(a_i)
+        + ℓ_{m−2}β_i]/e_{m−2} = −ℓ_{m−2}·i·W_{m−1}/e_{m−2} = −i·A_{m−1}. ∎
+
+**COROLLARY JA-VDIND (the induction step and its exact boundary).** Under
+the per-slot law, (VD-m) holds for A IF the slot character is trivial
+ABSOLUTELY on A's attained abscissas: z_{m−1}^{i·A_{m−1}} = 1 for every
+attained i (sufficient: A_{m−1} = 0, i.e. e_{m−2} = 1; or
+ord(z_{m−1}) | A_{m−1} and the abscissa condition; NOT sufficient:
+single-slot support alone — the constant z^{−s₀A} survives). Conversely,
+when the absolute character is nontrivial on the attained set, the two
+sides of (VD-m) differ by z_{m−1}^{−s₀A}·(the ϑ-twisted packed sum vs the
+packed sum), which is generically nonzero — the converse is NOT sealed
+(cancellations and the zero-read escape R_m v(A) = 0 are possible).
+*Proof of the forward direction.* Summing the per-slot law along the grid,
+with s₀ = s(β) + ν·e_{m−1}: R_m(A)(z_m) = Σ_att z^{−iA_{m−1}}·C_i·
+z_m^{(i−s₀)/e_{m−1}} = z_m^{−ν}·Σ_att C_i z_m^{(i−s)/e_{m−1}} under the
+absolute triviality, = z_m^{−ν}·R_m v(A); and τ_m(A) − ν = the
+ε_m(β)-exponent (W2-L2 at k = 0, as in W2-L3's proof). ∎ [The FULL general
+form, off the collapse: R_m(A)(y) = z^{−s₀A_{m−1}}·Q_A(ϑ_m·y),
+ϑ_m := z_{m−1}^{−e_{m−1}A_{m−1}}, Q_A(y)·y^ν = the packed polynomial — the
+same-polynomial instance of W-2 §3.2's conjugation; the dictionary at
+levels ≥ 3 is a CONJUGATION, scalar only on the collapse perimeter.]
+
+**Definition (R-coll, the residual collapse perimeter at level m —
+ROOT-INCLUSIVE, [r2]).** Every level-q instance of the JA-VDIND condition,
+**2 ≤ q ≤ m**, collapses: at every recursion node — INCLUDING THE ROOT
+(the q = m instance: A's own attained abscissas) — the slot character is
+trivial on that node's attained abscissas. On (R-coll): the per-slot law
+and (VD-m) hold at all levels up to m by induction with base (VD-1). Off
+it: the exact law is the per-slot law fed by the recursion (HR-REC genre),
+not a scalar form — JA-BOX-2.
+
+[JA-r2 2026-08-08 (wallclock 2026-08-06), per JA-PE2 FINDING 1
+(CRITICAL): the quantifier formerly read "2 ≤ q ≤ m−1" — the recursion
+nodes BELOW the root only — and the displayed conclusion "(VD-m) hold at
+all levels up to m" is FALSE from that root-exclusive definition: PE2
+constructed 8 machine witnesses at m = 3 sitting ON the old perimeter
+(every level-2 node character trivial) with (VD-3) FALSE (T3B/T3F/I4B;
+e.g. T3B deg A = 6, attained {1}, A₂ = 7), plus 58 at m = 2 where the old
+range [2, m−1] is empty. The cure is the one-line root-inclusive
+extension above (the quantifier gains the q = m root condition, which IS
+the JA-VDIND hypothesis for the top-level step). WITNESS RE-CHECK (r2
+/tmp probe over the sealed engines and pools, committed artifacts
+byte-frozen; preregistered 5/5 PASS): PE2's census reproduced EXACTLY
+(66 = 58 at m = 2 + 8 at m = 3; the 8 ON the old perimeter, rows
+T3B/T3F/I4B); every one of the 66 witnesses has the ROOT character
+visible (z_{m−1}^{i·A_{m−1}} ≠ 1 at some attained i), so ALL 66 lie OFF
+the extended perimeter — excluded exactly by the new q = m condition; and
+on the extended perimeter (VD-m) evaluates TRUE on every proviso-holding
+instance (330 scored, 0 violations). CK-VDM's `triv` gate IS the q = m
+root condition (per-digit proviso + root triviality ⟹ (VD-m), 443/0 in
+the sealed battery), so the sealed family keys the extended form's
+induction step — PE2's cure line: "after which both displays are true,
+CK-VDM keys them"; JA-VDIND itself and the per-slot law were never in
+question (PE2 fresh leg 396/0). Cross-note state: the
+extended display now COINCIDES with the accepted JB's OPERATIVE fence —
+root triviality a HYPOTHESIS at every m ≥ 2 (JB §0M col (c) at 4c4ee56)
+— which PE2 itself adjudicated correct and uncontaminated ("the false
+clause has no accepted consumer"); JB col (c)'s subordinate "(R-coll)"
+label and WM-FENCE (a)'s "(2 ≤ q ≤ m−1)" range gloss inherited the old
+reading — the WM companion line is being fixed in parallel by the WM arc
+and the JB erratum ANNOTATION is owed at the fold (ledger
+BRIDGE_ADJUDICATIONS entry at commit 3626f55); accepted texts are not
+edited from this note.]
+
+**COROLLARY JA-MIN (the DICTIONARY HALF of the MIN CORE, GD-3 genre at
+orders ≥ 2).** On the per-slot law's perimeter, the gauge is a unit per
+slot: c_i = 0 ⟺ C_i = 0, supports and degrees agree slot-for-slot, and
+ord_ψ data of the print residual is computable from the harness read (and
+conversely) — same conditionality as JA-RES (JA-BOX-2), not unconditional.
+[JA-r1 2026-08-08 (wallclock 2026-08-04), per JA-PE1 GAP-3 — RESCOPED:
+the earlier close "The GD-3 MIN CORE at orders ≥ 2 is therefore a theorem
+WHERE THE DICTIONARY REACHES" overstated. GD-3's MIN CORE per
+`docs/MATH_COMPLETION_TREE_2026-08-01.md` is ord_{ψ̂_hom}(in(f)) =
+ord_ψ(R_λ(f)); what is established here is its DICTIONARY HALF only —
+ord_ψ(R_λ(f)) computable from the harness read on the per-slot law's
+perimeter. The graded-initial-form leg (the in(f) tie, a graded-carrier
+object) is NEITHER derived NOR cited in this note and stays OPEN with
+GD-3 (blueprint taxonomy: inside J-A(ii), so a gap, not a J-C fence
+violation; nothing downstream in this note consumes JA-MIN).]
+
+Grades: JA-RES PROVED at m = 2 (attempt grade); PROVED-under-proviso at
+m ≥ 3, unconditional on (R-coll) (root-inclusive as defined above, [r2]);
+JA-VDIND PROVED; JA-MIN rides JA-RES.
+[Machine: CK-RES1 (m = 1, W2-L3 both sides), CK-RES (per-slot, proviso
+machine-evaluated per digit; scored where the proviso holds, boundary rows
+recorded with counts), CK-VDM (JA-VDIND forward direction), CK-BPREF (the
+JA-BOX-1 refutation census: the slot-independent form must FAIL on
+designated character-visible rows).]
+
+---
+
+## §4. Covariance: how each equality transports (the (ξ, w) orbit and the transported chamber)
+
+**The orbit action** (W-2 §4.3, consumed as convention analysis; machine
+family ORB-RES gives it a machine leg it did not have): shifting the print's
+free Bézout representative ℓ_{m−2} ↦ ℓ_{m−2} + κ·e_{m−2} (tex 1291 pins
+none) changes Def-`t(i)` by t(i) ↦ t(i) − κ·u_i and hence rescales the
+order-m residual on a side with initial attained point (s₀, u₀) by
+
+    (ORB-RES)   R^{(ℓ+κe)}(A)(y) = z_{m−1}^{−κ·u₀} · R^{(ℓ)}(A)( z_{m−1}^{κ·h} · y ),
+
+h = the level-m grid height (u drops by h per grid slot). Against this
+action, clause by clause:
+
+* **(i) w = v: ℓ-ORBIT-INVARIANT, with the MacLane representative caveat
+  across chambers.** v never consumes ℓ (Prop `propertiesv`'s recursion is
+  ℓ-free); JA-VAL is orbit-blind. ACROSS the W-2 clause-3 transported
+  chamber, blanket operator equality on the OTHER chain's keys is FALSE:
+  two strict representatives φ, φ′ of the same type with different strict
+  units satisfy v_{r+1}(φ − φ′) = e_r·v_r(φ) < v_{r+1}(φ), so the two
+  augmented valuations already disagree AT the key class (A = φ genre) —
+  the standard MacLane representative-dependence, surfaced here rather
+  than hidden. The honest transport of (i) is (a) the CHAIN level: key
+  polygons and weights agree (W2-C3(i), machine 44/44 in the W-2 runner
+  **[JA-r3 2026-08-08 (wallclock 2026-08-07), per JA-PE4 FINDING 1: at
+  [W2 @ ffa1e57]'s current grade — W2-C3 is proved up to and including
+  each chamber's first ξ ≠ 1 junction (38/44 junction-levels), MEASURED
+  above it (6/44) riding W2-OPEN-2; the machine figure (TW-RATIO 44/44)
+  stands, the former "strictly at every level" grade gloss does not]**),
+  and (b) RE-INSTANTIATION (last bullet): inside the transported chamber
+  J-A holds verbatim with the chamber's own keys on both sides.
+  [Machine: TW-INST.]
+* **(ii) the residual dictionary: SHAPE-COVARIANT.** Under the κ-shift the
+  per-slot law keeps its unit-times-character form with transported data:
+  c_i ↦ z^{−κu_i}c_i and u_i = β_i + i·W_{m−1}, β_{i_j} = β₀ − j·γ_m along
+  the grid, so in grid coordinates the law transports to
+  c_j = (w·z^{−κβ₀−κs₀W̃})·(ξ·z^{κ(γ_m − e_{m−1}W_{m−1})})^j·C_j-shape,
+  where W̃ := W_{m−1} ([JA-r2 2026-08-08 (wallclock 2026-08-06), per
+  JA-PE2 FINDING 5: symbol previously undefined; the exponents are
+  otherwise exact per PE2's re-derivation]) —
+  i.e. the ORBIT of laws {c_j = w·ξ^j·C_j} is stable, with the DISPLAYED
+  (character = z^{−iA_{m−1}}, unit = 1) values valid at the pinned (P-ell)
+  representative only. This is the same orbit as W-2 §3.4's (ξ, w)
+  non-uniqueness — J-A adds no new pinning (JA-BOX-3). [Machine: ORB-RES —
+  the displayed rescaling law verified by running the sealed print
+  transcription with a shifted ℓ at one level, fixed keys.]
+* **(iii) ε = twist: PINNED-CONVENTION STATEMENT.** Under the κ-shift
+  t_m(β) ↦ t_m(β) + κβ, so the identity transports to
+  ε_m(β)·z_m^{t^{(κ)}(β)} = z_m^{κ·β}. The harness ε is canonical (its own
+  normalized Bézout); the print twist is orbit-valued. [Machine: ORB-EPS.]
+* **(iv) grid: INVARIANT.** s = ℓV mod e and u = (V − sh)/e depend on ℓ
+  only mod e — eq12 and the carry clause are orbit-blind (and ℓ-free by the
+  geometric characterization). [Machine: CK-GRID's geometric leg IS the
+  invariance witness.]
+* **The lift tie rides W-2 clause 2 verbatim:** R(Φ_{m+1}^har) =
+  w_{m+1}·ψ_m(ξ_{m+1}·y) with the §3.4 (ξ, w) closed form — JA-RES is the
+  standalone per-slot mechanism behind that tie ("the same HR-REC mechanics
+  read backwards", W2-C1's proof), now displayed as a theorem about
+  ARBITRARY on-line A, not only the lifts.
+* **Transported chamber (the transport of J-A is RE-INSTANTIATION, not
+  cross-key operator equality):** the transported ledger is itself a
+  class-pin instance (W2-C3's induction **[JA-r3 2026-08-08 (wallclock
+  2026-08-07), per JA-PE4 FINDING 1: at [W2 @ ffa1e57]'s current grade
+  the induction is proved-to-first-twist and MEASURED above it (riding
+  W2-OPEN-2/(OPEN-2a)), so above a chamber's first ξ ≠ 1 junction the
+  class-pin-instance warrant is supplier instance evidence plus JA's own
+  TW-INST leg (all 20 ledgers), not derivation]**), so §2/§3 apply
+  VERBATIM inside it — harness tower REBUILT on the transported ψ-ledger
+  against the
+  chamber's print chain, same theorems, new instance. The cross-chamber
+  letter identification z_old = ξ·z_new is W-2 §5.1 step 2, consumed.
+  [Machine: TW-INST — the FIELD-DEPENDENT families
+  JA-PIN/CK-VAL/CK-RES1/CK-RES/CK-VDM re-run on the transported instance
+  (SpecTower on the transported ledger + its own GmnLeg; the sealed
+  runner's own docstring: "the field-dependent families");
+  CK-EPS/CK-GRID/ORB-EPS/ORB-RES are NOT re-run inside the chamber.
+  Coverage: ALL 16 roster + 4 d₀ ledgers unconditionally (§7.1's "all 20
+  ledgers"), not a nontrivial-ledger subset. [JA-r2 2026-08-08 (wallclock
+  2026-08-06), per JA-PE2 FINDING 3: the earlier "the full CK battery
+  re-run … every roster tower with a nontrivial transport ledger"
+  overstated the runner on both counts.]]
+
+---
+
+## §5. Base cases consumed (accepted partials, with their exact grades)
+
+* **N-1 (order 2) = the GRB order-2 numeric harness** (`grb_order2_check.py`;
+  record `GRB_ORDER2_2026-08-05.md` REV 11/14): **EXECUTED and GREEN
+  (2026-08-08) at family-ledger scope** — harness operators = FGMN print
+  operators (Def 3.15/3.16/3.18, eq (12)) at order 2, with the ǫ
+  extraction-artifact CORRECTED reading ǫ_i(α) = z_i^{ℓ′_i s(α) − ℓ_i u(α)}
+  pinned three independent ways (FGMN's own ǫ₀ ≡ 1 remark; Lemma 4.3's
+  Bézout algebra, 0/23,111; the external PARI kill-shot P12). Consumed as:
+  the ACCEPTED order-2 instance of JA-VAL/JA-EPS and the operator half of
+  JA-RES — against a SECOND print (FGMN), decorrelated from this unit's
+  GMN/HigherNewton literature leg. Its honest deferral rides: the
+  garbled-prime genre at e₀ ≥ 2 was N-1's teeth, reused here (MJ-EPS).
+  N-1 does NOT cover: the carrier identification (C15 separation), orders
+  ≥ 3, the lift construction (that is W-2).
+* **GD-5 (order 1) = base-read conformance, NEARLY CLOSED by composition**
+  (`docs/MATH_COMPLETION_TREE_2026-08-01.md` §D2.2 row GD-5): O-2a OL-5
+  (b′)+(c′) = O-1thr's PROVED (V1)/(V2)-at-order-1 layer (VAL1 + KEY1 +
+  DIV1 + ROOT-M + WGEO) composed with O-2a's PROVED (D3); residue = the S-1
+  transcription audit + the degree-g > 1 root-key KEY1 generalization.
+  Consumed as: the order-1 floor of JA-VAL/JA-GRID and (with W2-L3) of
+  JA-RES. Riding machine partials, cited not re-run: GD-2's T-F check
+  (41,720 instances, 0 violations sheared / 7,472 violations unsheared —
+  the convention pin this note's §3.1 sentence honors) and GD-8's order-1
+  exact-key harness (871 forced samples, 0 findings) for the §3.3 carry
+  clause's order-1 layer.
+* **W-2 clause 1/2/3** (`GRTW2_PROOF_2026-08-08.md`): consumed AT ATTEMPT
+  GRADE (0/2 hostile passes) with its full conditionality ledger — the §2
+  clause-8 citation, W2-L0/L2/L3 in §3, and the §4 transport. Nothing here
+  upgrades W-2's grades.
+
+## §6. Honest boxes
+
+* **JA-BOX-1 (blueprint correction, review-owed).** Blueprint J-A(ii)
+  displays "R_{m,λ} = c·R_λ^GMN with c ∈ F^× slot-independent". FALSE as
+  stated at m ≥ 2 whenever the character z_{m−1}^{−i·A_{m−1}} is nontrivial
+  on the read support (A_{m−1} > 0 rows abound: any e_{m−2} ≥ 2 with
+  ℓ_{m−2} ≥ 1 and ord(z_{m−1}) ∤ e_{m−1}A_{m−1}). The CORRECTED display is
+  JA-RES (unit-per-slot CHARACTER gauge). The slot-independent form is
+  exactly the JA-VDIND collapse case. [Machine: CK-BPREF census — refuting
+  samples counted on designated rows; prediction ≥ 1 per designated row.]
+* **JA-BOX-2 (the collapse perimeter, inherited genre W2-BOX-1).** At
+  m ≥ 3 the scalar/evaluated forms are PROVED only on (R-coll) —
+  ROOT-INCLUSIVE per the §3.4 [r2] extension ([JA-r2 2026-08-08 (wallclock
+  2026-08-06), per JA-PE2 FINDING 1: on the old root-exclusive perimeter
+  this "evaluated … PROVED" clause was FALSE — 8 machine witnesses; true
+  as now defined, CK-VDM-keyed]) ([JA-r1] per JA-PE1 GAP-5b: "hold only
+  on" overstated — by the unsealed JA-VDIND converse the per-digit proviso
+  can hold off (R-coll) by cancellation); the exact law off it is the
+  per-slot law fed by the recursion. A two-parameter scalar
+  formula on ALL levels would need the monomial-collapse exponents tracked
+  explicitly — same residue as W-2 clause 2's. W-1's FULL "operator
+  dictionary at all orders" therefore remains OPEN beyond the displayed
+  forms; J-A does not claim it.
+* **JA-BOX-3 (the unpinned-ℓ convention, inherited from the probe/W-2
+  §4.3, review-owed).** Every §3 equality involving print twists/residuals
+  is stated at the pinned (P-ell) representative; the print pins no ℓ (tex
+  1291). §4 displays the exact orbit action; whether Def-2.12-genre
+  statements are read strictly-at-pinned-ℓ or up-to-orbit is genuinely
+  underdetermined by the print. Nothing downstream may consume a pinned
+  reading silently.
+* **JA-BOX-4 (equal characteristic).** The print is mixed-characteristic;
+  the F_p[[t]] rows ride construction-identity + the machine leg only (no
+  PARI entry point) — displayed deferral, inherited from the probe.
+* **JA-BOX-5 (scope fences).** "Realized principal-read" only (slope-0 →
+  Hensel/L1 at order 0; JA-PIN clause 2). Single-level carry clause only
+  (§3.3 fence). No gr/carrier claim (J-C untouched; BLOCKED-ON-CARRIER-TIE
+  stands), no count/menu claim (J-D untouched), no advance on W2-OPEN-1,
+  and the P0 application gate stands.
+
+## §7. Records (commit 2 — from the sealed artifacts)
+
+### 7.1 Machine bracket — **ALL 17 FAMILIES GREEN, 10,311 samples, 0 violations, every sealed prediction hit exactly** (`grt_ja_checks_output.txt` / `grt_ja_checks_results.json`, elapsed 7.4 s; seal commit 696eae8)
+
+| family | claim keyed | samples | verdict |
+|---|---|---|---|
+| EXT-GATE | engine_ext pins + agreement gate re-run (standing rule) | 1 | GREEN |
+| JA-PIN | §2 clauses 2–7, fresh legs, every level of 16+5+4 towers | 111 | GREEN |
+| CK-VAL | JA-VAL: wlev == vgen, shared levels, full pools | 1,132 | GREEN |
+| CK-EPS | JA-EPS: ε == z^{−t} fresh/geometric + W2-L2 k-grid | 872 | GREEN |
+| ORB-EPS | §4(iii) orbit covariance ε·z^{t_κ} = z^{κV} | 1,744 | GREEN |
+| CK-GRID | JA-GRID: geometric scan == eq12 + carry clause | 3,248 | GREEN |
+| CK-RES1 | (VD-1), both sides | 340 | GREEN |
+| CK-RES | JA-RES per-slot law, proviso machine-evaluated | 443 scored | GREEN |
+| CK-VDM | JA-VDIND forward (absolute character) | 443 | GREEN |
+| CK-BPREF | JA-BOX-1 census: designated rows T2A/T3A/T3E fire | 26 hits | GREEN |
+| ORB-RES | §4 ℓ-shift rescale law on fixed keys (κ ∈ {1,2}) | 444 | GREEN |
+| TW-INST | transported-chamber re-instantiation (all 20 ledgers) | 1,452 | GREEN |
+| JA-QO | 5 shapes: extraction complete 5/5 + PARI ties + families | 5 | GREEN |
+| JA-D0 | 4 fresh d₀ ≥ 2 shapes (JD5A/JD3A/JD3B/JD3C) + PARI | 4 | GREEN |
+| MJ-EPS / MJ-VAL / MJ-GRID | teeth (P-reading ε 8/9/8; unsheared v 11/11; garbled grid 12/18 catches) | 3/2/2 rows | GREEN |
+
+Censuses (the note's displayed conditionality, quantified): CK-RES
+boundary (proviso-failing, recorded not scored) = **16, ALL on the two
+interior-twist towers T3B (4 + 3 transported) and I4B (5 + 4 transported)**
+— exactly the W-2 collapse-boundary geography; every other row scored
+fully. CK-BPREF refuting samples = **26 = 22 roster hits on 10 roster rows
+(T2A, T2C, T2D, T2G, T3A, T3C, T3D, T3E, T3F, I4C) + 4 d₀ hits (one on
+each fresh d₀ ≥ 2 row)** — the blueprint's slot-independent form is
+refuted wherever the character is visible, including at d₀ = 3 and p = 5.
+[JA-r1 2026-08-08 (wallclock 2026-08-04), per JA-PE1 GAP-2: "across 12
+roster rows" corrected to the committed JSON's 10 (PE1 recount +
+bit-identical re-run); the total 26, the d₀ clause, and the refutation
+are unaffected.]
+
+### 7.2 Claims table (grades)
+
+| claim | statement | grade |
+|---|---|---|
+| JA-PIN | T(t) in the class pin except lift; each clause from the print | PROVED (attempt grade 0/2) |
+| JA-PIN cl. 8 | lift clause | CONSUMED from W-2 clauses 1–3 at attempt grade, conditionality verbatim **[JA-r3 2026-08-08 (wallclock 2026-08-07), per JA-PE4 FINDING 1: carry-list = W-2 §6.3's current (a)–(d), incl. (d)'s W2-OPEN-2/(OPEN-2a), the W2-C3 proved-to-first-twist (38/44) / measured-above (6/44) grade split, and the W2-C1a chamber qualifier; pinned as-of [W2 @ ffa1e57]]** |
+| JA-VAL | w_m = v_{m+1}, shared-key perimeter | PROVED (attempt grade) |
+| JA-EPS | ε_m = z^{−t_m} + k-grid covariance | PROVED |
+| JA-GRID | eq-(12-int) = T-side initial point; carry = lattice crossing | PROVED (single-level scope fence) |
+| JA-RES | per-slot law c_i = z^{−iA}·C_i | PROVED at m = 2; PROVED-under-proviso m ≥ 3 |
+| JA-VDIND | absolute-character collapse ⟹ (VD-m) | PROVED (forward; converse unsealed) |
+| JA-MIN | DICTIONARY HALF of the MIN CORE at orders ≥ 2 (in(f) leg OPEN, [JA-r1]) | rides JA-RES (same perimeter) |
+| §4 transport | orbit action + re-instantiation | ORB legs PROVED/machine; chamber = W2-C3 consumption **[JA-r3 2026-08-08 (wallclock 2026-08-07), per JA-PE4 FINDING 1: at its current re-scoped grade — proved-to-first-twist / measured-above riding W2-OPEN-2/(OPEN-2a) — as-of [W2 @ ffa1e57]]** |
+| JA-BOX-1 | blueprint J-A(ii) slot-independent c | REFUTED at m ≥ 2 (26 machine witnesses) |
+
+### 7.3 Consequence display and dependency line
+
+**What J-A now supplies (at attempt grade, hostile passes owed):** the
+blueprint's W-0 in full; W-1's (i)/(iii) in full on the shared-key
+perimeter and (ii) in the corrected per-slot form (unconditional at
+m ≤ 2, proviso-scoped above); W-4 in full. **NOT supplied:** W-1's
+uncollapsed all-orders scalar dictionary (JA-BOX-2), W-2's own grades
+(consumed, not upgraded), W-3/W-5 (J-B), the J-C block (no gr claim;
+BLOCKED-ON-CARRIER-TIE stands), J-D counts/menus, W2-OPEN-1. The P0
+application gate stands.
+
+CONSUMES: [ILN]† S0.1/S0.2 (accepted) · GMN HigherNewton as literature
+(§ header anchors) · the sealed probe transcription + W-2 note at attempt
+grade · N-1 (accepted, family-ledger) + GD-5 (nearly closed) as §5 base
+cases · engine_ext (standing rule honored in-unit). CONSUMED BY
+(intended): the W-3/W-4 development unit (J-B), the W-5 tree unit, the
+weld campaign ledger at J-A. Fences: instance evidence = the §7.1 roster
+(reads ≤ 4+top, residue fields ≤ F₉ + F₈/F₂₅ via the d₀ leg, wild rows
+included); F_p[[t]] rows have no PARI leg (JA-BOX-4); acceptance arc OPEN,
+counter 0/2 CLEAN (rounds 1–6 = PE1 → r1 → PE2 → r2 → PE3 CLEAN → PE4
+0C+1G → r3 → PE5 0C+1Gm → r4 → PE6 0C+2Gm → r5; counter reset by PE4;
+next = PE7, the acceptance attempt, [r5]) — nothing here may be consumed
+at proof grade before acceptance.
+
+— J-A COMPOSER unit, campaign date 2026-08-08.
+
+---
+
+## §8. Arc record (rounds 1–6)
+
+### r1 record (round 1 of the acceptance arc — the 2026-08-04 JA-PE1 pass)
+
+**JA-PE1 (fresh hostile Fable context; report `GRTJA_passPE1_report.md`,
+instrument `verification/openmath/ja_pe1_ext.py`): VERDICT GAPS-ONLY —
+0 critical, 5 gaps.** The machine bracket re-ran BIT-IDENTICAL (17
+families, 10,311 samples, 0 violations; JSON identical except elapsed_s);
+all four operator equalities re-derived by hand, hardest-first on the (ii)
+chain, with the 26 JA-BOX-1 witnesses recounted from the committed JSON;
+JA-PIN re-derived clause-by-clause at the print anchors; per-ring hand
+instances (ℤ_p and F_p[[t]]) green. The five gaps — GAP-1 anchor/sign
+attribution (§3.2), GAP-2 census row count (§7.1), GAP-3 JA-MIN over-reach
+(§3.4), GAP-4 JA-GRID(a) quantifier + tex-1498 gloss (§3.3), GAP-5 two
+wording overstatements (§2, JA-BOX-2) — are all repaired in place in the
+dated [JA-r1 2026-08-08 (wallclock 2026-08-04)] brackets above. No grade
+changes; no statement's mathematical content altered. ~~**Arc: 0/1 CLEAN
+(gaps-only, repaired); round 2 = the Codex leg (Thursday window).**~~
+[JA-r2: superseded — round 2 was the Fable JA-PE2 pass (below), not the
+planned Codex leg; the counter convention is normalized to 0/2 CLEAN (0
+clean passes of the 2 consecutive required), per JA-PE2 FINDING 4.]
+
+### r2 record (round 2 of the acceptance arc — JA-PE2, + this repair)
+
+**JA-PE2 (fresh hostile Fable context; report
+`GRTJA_passPE2_report.md`, commit 9040961): VERDICT NOT CLEAN — 1
+CRITICAL, 3 gaps, 1 minor.** Dispatch/path note: the pass was dispatched
+under the colliding name "passPE1"; the verifier filed it as PE2 to
+protect this section's cited r1 record (the committed 2026-08-04
+`GRTJA_passPE1_report.md`) — correct deviation, adopted here. The machine
+bracket re-ran BIT-IDENTICAL (exit 0, 17 families, 10,311 samples, 0
+violations; JSON identical except elapsed_s), censuses independently
+recounted, seals verified; the per-slot gauge law, JA-EPS, JA-VDIND
+forward, and ORB-RES were re-derived exactly, and all five r1 repair
+brackets hostile-verified TRUE at source. THE CRITICAL (FINDING 1):
+§3.4's (R-coll) quantifier "2 ≤ q ≤ m−1" omitted the ROOT (level-m)
+JA-VDIND condition, falsifying the "(VD-m) at all levels up to m"
+conclusion as defined — 8 witnesses at m = 3 ON the old perimeter with
+(VD-3) FALSE + 58 at m = 2 (range empty). The gaps: (2) the [JA-r1]
+u ≥ 0 gloss's unquantified universal (consumer-facing false at accepted
+JB's sites); (3) the TW-INST "full CK battery" coverage overstatement;
+(4) the header/§8 arc-record contradiction + the dispatch-name collision.
+Minor (5): W̃ undefined. **All five repaired in place in the dated
+[JA-r2 2026-08-08 (wallclock 2026-08-06)] brackets above** — the
+root-inclusive (R-coll) extension (§3.4, with the witness re-check probe:
+PE2's 66 witnesses reproduced exactly, 66/66 root-character-visible,
+66/66 OFF the extended perimeter, extended perimeter ⟹ (VD-m) 330/0;
+preregistered 5/5 PASS; sealed runner + artifacts BYTE-FROZEN, md5s
+re-verified 5972d412/0d6d0522/13ab52ab), the print-side scoping of the
+u ≥ 0 discharge sentence with JB's col-(b) truth quoted at its 4c4ee56
+pin (§3.3), the TW-INST family-list correction (§4), the arc-record
+normalization (header/§7.3/§8), and the W̃ := W_{m−1} definition (§4(ii)).
+Grade changes: NONE (the §3.4/JA-BOX-2 statements are REPAIRED to the
+root-inclusive form under which the existing grades and machine keys are
+correct; the per-slot law, JA-VDIND, and all other theorems were never in
+question). Cross-note state per PE2 and the ledger (3626f55): accepted
+JB's operative fence correct and uncontaminated; the JB erratum
+annotation (col (c) subordinate clause) is the orchestrator's at the
+fold; WM-FENCE (a)'s range gloss is the parallel WM r4 companion line.
+PE2's ungraded observations (o1)–(o4) are recorded there, not repaired
+here (o2's [ILN]† as-of pin owed at the next round/fold stands). **Arc:
+rounds 1–2 complete; counter 0/2 CLEAN; next pass = JA-PE3.**
+
+### r3 record (rounds 3–4 of the acceptance arc — JA-PE3 CLEAN, JA-PE4, + this repair)
+
+**JA-PE3 (fresh hostile Fable context; report `GRTJA_passPE3_report.md`,
+commit c77ae6f, 2026-08-07): CLEAN — 0 critical, 0 gaps, 0 minor, 4
+ungraded observations (o1–o4); counter reached 1/2 (ledger action
+a83c108). JA-PE4 (fresh hostile Fable context; report
+`GRTJA_passPE4_report.md`, commit 535e79f; the acceptance attempt at
+1/2): NOT CLEAN — 0 critical, 1 JUSTIFICATION GAP, 0 minor; the counter
+RESETS.** PE4's machine leg re-ran bit-identical (exit 0, 17 families,
+10,311 samples, 0 violations; seals 5972d412/0d6d0522/13ab52ab intact at
+pins and worktree); the gauge law and JA-VDIND's triviality theory were
+re-derived by routes unused by PE1–PE3, with four previously
+machine-unkeyed displays instance-verified 396/396 and the census
+third-reproduced. THE GAP (FINDING 1): the W-2 consumption was UNPINNED
+and drifted — W2 r1 (8d5e3fa, nine minutes after JA r2) struck the exact
+W2-C3 grade text this note carried ("strictly at every level", "machine
+44/44/44"), re-grading it proved-to-first-twist (38/44) /
+measured-above (6/44) riding W2-OPEN-2, and W-2 §6.3's consumer contract
+gained mandatory carry item (d) postdating clause 8's closed (a)/(b)/(c)
+list. **Repaired in place in the dated [JA-r3 2026-08-08 (wallclock
+2026-08-07)] brackets above at PE4's five sites** — §2 clause 8 (grade
+text re-quoted at the supplier's current form + carry-list extended to
+§6.3's (a)–(d)), §4(i)'s chain-level bullet, §4's transported-chamber
+bullet, and the two §7.2 rows (JA-PIN cl. 8, §4 transport) — every W-2
+cite now pinned as-of [W2] := GRTW2_PROOF_2026-08-08.md @ ffa1e57
+(post-W2-r2, the supplier's HEAD at this repair). Also executed: the
+[ILN]† as-of pin (ced7dbb) owed since PE2 o2 / PE3 o3 (§1). Grade
+changes: NONE (clause 8 is consumption billing; no JA derivation
+consumed the retracted strength; TW-INST is JA's own instance evidence,
+unaffected). Runner + artifacts BYTE-FROZEN. **Arc: rounds 1–4 complete
+(PE1 → r1 → PE2 → r2 → PE3 CLEAN → PE4 0C+1G → r3); counter 0/2 CLEAN
+(reset by PE4); next pass = JA-PE5 = the acceptance attempt.**
+
+### r4 record (round 5 of the acceptance arc — JA-PE5, + this repair)
+
+**JA-PE5 (fresh hostile Fable context; report `GRTJA_passPE5_report.md`,
+commit 6a216b9; the acceptance attempt at 0/2 post-r3): NOT CLEAN — 0
+critical, 1 JUSTIFICATION GAP (minor), 0 minor; the counter stays 0/2.**
+PE5's machine leg re-ran bit-identical (exit 0, 17 families, 10,311
+samples, 0 violations, boundary 16, bpref 26; seals
+5972d412/0d6d0522/13ab52ab intact at pins and worktree); the r3 diff was
+verified faithful at all six edit sites, with the new W-2 grade text,
+machine gloss, and (a)–(d) carry-list byte-checked against the supplier
+at the ffa1e57 pin; the pin system was swept COMPLETE for live-arc edges
+(W2 blanket @ ffa1e57, [ILN]† @ ced7dbb, JB @ 4c4ee56, all verified at
+source and motion-free since); and the entire §3/§4 exponent system was
+re-derived from a single coset master lemma by a route unused by
+PE1–PE4 — every integrality warrant derived, the W2-L2 covariance
+display derived from scratch — confirmed by the arc's first engine-free,
+pool-free probe (358,127 checks, 0 violations, incl. negative-k shifts
+no sealed family exercises; 1,194 u < 0 instances = the JA-GRID(a)
+proviso non-vacuous). THE GAP (FINDING 1): the r3 repair left the two
+live arc surfaces contradicting the arc record it wrote — the header
+still read "next pass = JA-PE3" and §7.3 "next = PE3" while §8's r3
+record (same commit) stated "rounds 1–4 complete … next pass = JA-PE5";
+PE4's n3 staleness warrant was expressly conditioned on "no repair round
+since" and lapsed when r3 edited the note. NOT critical: no mathematical
+content moves; the counter VALUE 0/2 was true at every surface.
+**Repaired in place in the dated [JA-r4 2026-08-08 (wallclock
+2026-08-07)] brackets above at the two surfaces** — the header genre
+line and the §7.3 fence re-normalized to the r2 FINDING-4 convention
+(round inventory through PE5, counter 0/2, next pass named). Note-only;
+nothing else touched. Grade changes: NONE. PE5's ungraded observations
+(m1)–(m3) are recorded there, not repaired here (m1: the carried
+(OPEN-2a)/W2-ID1 language is faithful at the ffa1e57 pin but W2-PE3 has
+since confirmed W2-ID1 one-directional, contained — re-quote owed at the
+fold or when W2 r3 lands **[JA-r5 2026-08-08 (wallclock 2026-08-07), per
+JA-PE6 FINDING 2: this deferral rode a FIRED trigger — W2 r3 (79d1d9c,
+09:31:14) had landed 15 minutes BEFORE r4 (debf99d, 09:46:49), and the
+r4-dispatching commit (a48c22d, 09:44) presupposes the landing; the owed
+re-quote, executable at write time, is executed here as-of
+[W2 @ 94534df] (the supplier's HEAD at this repair — W2 r4 has since
+landed too): the supplier's W2-C3 claims-table row now carries, on the
+exact (OPEN-2a)/W2-ID1 clause this note's clause 8 carries, the [r3]
+bracket "W2-ID1/(OPEN-2a) carry the FORWARD direction only (recorded
+ξ = 1 ⟹ byte-equal, so nothing byte-RED below the first recorded twist —
+all the proved scope needs); the converse is unproved at every m, PE3's
+counter-instance recorded at §5.2", and §6.3(d)'s (OPEN-2a) carry item
+itself is re-scoped [r4, PE4-P1] to "the FORWARD direction of the
+recorded-ξ/byte-divergence identification at m ≥ 2 (recorded ξ = 1 ⟹
+byte-equal — all the proved scope needs), proved at m = 1 (W2-ID1); the
+CONVERSE (recorded ξ ≠ 1 ⟹ byte-RED) is UNPROVED at every m, PE3's
+counter-instance recorded at §5.2". Clause 8's
+carried "(OPEN-2a) … proved only at m = 1 (W2-ID1)" is henceforth read
+with that one-direction scoping. Blast radius nil, PE6-verified three
+ways: the blanket as-of pin covers the consumption; W-2 §6.3 is
+byte-identical between ffa1e57 and 79d1d9c (the later 94534df motion
+being this very forward-only scoping — the weakening direction); no JA
+derivation rides the converse.]**; m2: standing PE4 items n1/o2 ride; m3: the
+blueprint/completion-tree cites remain commit-unpinned, motion-free
+suppliers). Runner + artifacts BYTE-FROZEN. **Arc: rounds 1–5 complete
+(PE1 → r1 → PE2 → r2 → PE3 CLEAN → PE4 0C+1G → r3 → PE5 0C+1Gm → r4);
+counter 0/2 CLEAN (reset by PE4); next pass = JA-PE6 = the acceptance
+attempt.**
+
+### r5 record (round 6 of the acceptance arc — JA-PE6, + this repair)
+
+**JA-PE6 (fresh hostile Fable context; report `GRTJA_passPE6_report.md`,
+commit 8b2fbed; the acceptance attempt at 0/2 post-r4): NOT CLEAN — 0
+critical, 2 JUSTIFICATION GAPS (both minor, both arc-accounting), 0
+minor; the counter stays 0/2.** PE6's machine leg re-ran bit-identical
+(exit 0, 17 families, 10,311 samples, 0 violations, boundary 16, bpref
+26; seals 5972d412/0d6d0522/13ab52ab intact at pins and worktree; every
+§7.1 census recounted exact from the committed JSON); the r4 diff was
+verified faithful at all three edit sites with every bracket fact exact
+against git and the PE5 report; all four theorem displays were verified
+statement-level TRUE at HEAD with their fences; and — the pass's fresh
+route, unused by PE1–PE5 — the ENTIRE §3/§4 integer exponent system was
+PROVED as GENERAL ∀-theorems over ℤ by the Lean kernel (19 declarations,
+`lake env lean` exit 0, zero `sorry`: the master lemma both directions,
+W2-L0 integrality, least-abscissa, the JA-EPS exponent, the carry clause
+with its biconditional, W2-L2 covariance, the JA-RES per-slot exponent,
+both orbit shifts, the conjugation split, A = 0 ⟺ e = 1, and the
+(2,3,1) ⟹ u = −1 counter-instance), reaching past interpolation
+(mod/min content is not polynomial) and past exhaustion (unbounded
+quantifiers). THE GAPS: (FINDING 1) the §8 heading still read "(rounds
+1–2)" against the section's own rounds-1–5 contents — stale since r3,
+survived PE5's sweep and two repairs; (FINDING 2) the r4 record's m1
+clause repeated the deferral "re-quote owed at the fold or when W2 r3
+lands" although W2 r3 (79d1d9c, 09:31:14) had landed 15 minutes before
+r4 (debf99d, 09:46:49) — a deferral riding a FIRED trigger, PE5
+FINDING 1's own species; blast radius nil (as-of pin; W-2 §6.3
+byte-identical at ffa1e57 vs 79d1d9c; no JA derivation rides the
+converse). **Repaired in place at the two sites** — the §8 heading's
+range extended to the true rounds 1–6 (this record included; the range
+is a live surface, owed extension at every future round), and the dated
+[JA-r5] bracket at the r4 record's m1 clause executing the owed
+one-directional re-quote of the supplier's W2-C3 row as-of
+[W2 @ 94534df] (the supplier's HEAD at this repair, post-W2-r4).
+Housekeeping (this commit): PE6's Lean leg was rescued from /tmp into
+`verification/openmath/ja_pe6_lean_leg.lean` at orchestrator commit
+9dfd8fc (md5 `52a81e63` preserved) — the campaign's FIRST kernel-checked
+leg, a future Lean-campaign seed. Grade changes: NONE. PE6's ungraded
+observations (p1)–(p3) are recorded there, not repaired here (p1: §7.3's
+short-form [rN] bracket, r2-precedent convention; p2: the
+blueprint/completion-tree cites remain commit-unpinned, motion-free
+suppliers — PE5 m3 standing; p3: §5's GRB dated-REV cite rides — PE4 n1
+standing); p4 (the Lean leg available for sealing) is EXECUTED by the
+rescue above. Runner + artifacts BYTE-FROZEN. **Arc: rounds 1–6 complete
+(PE1 → r1 → PE2 → r2 → PE3 CLEAN → PE4 0C+1G → r3 → PE5 0C+1Gm → r4 →
+PE6 0C+2Gm → r5); counter 0/2 CLEAN (reset by PE4); next pass = JA-PE7 =
+the acceptance attempt.**
+
+---
+
+## ★ ACCEPTANCE RECORD (orchestrator, 2026-08-07) ★
+
+**THIS NOTE IS ACCEPTED at 2/2** — PE7 (1670f67, CLEAN) and PE8 (0efa82e,
+CLEAN; the two routes unused by PE1–PE7: the GENERATING-FUNCTION route —
+rational-abscissa GF with the carry as the GF defect, the graded
+carry-marker algebra ℤ[x,T,T⁻¹]/(xᵉ−T) giving JA-EPS by normal-form
+uniqueness, Bézout technology #4, 385,057/0 — and the GALOIS-DESCENT
+route — isotypic decomposition, the conjugation split as a μ_d-torsor,
+JA-VDIND by descent with both boundary fences positively witnessed
+including CONSTRUCTED converse-escape cancellation instances ≥3 per
+field up to 𝔽₂₅, 5,519/0; sealed runner 10,311/0 across 17 families;
+PE6 Lean leg recompiled 0-sorry). Full arc: composed → PE1 → r1 → PE2 →
+r2 → PE3 CLEAN → PE4 (0C+1G; counter reset) → r3 → PE5 (0C+1Gm) → r4 →
+PE6 (0C+2Gm) → r5 → PE7 CLEAN → PE8 CLEAN. Eight passes, five repairs.
+
+**FREEZE-CONVENTION STAMP** (the s2 item, W2 precedent): the accepted
+text is the post-r5 body, md5 cba309ce, byte-frozen since f131c53; both
+clean passes read that identical text; this record and any future annex
+are dated appends — the frozen body is never edited inline.
+
+**WHAT IS ACCEPTED**: the J-A junction — the operator dictionary and the
+per-slot character-gauge law (JA-RES, JA-EPS, JA-GRID, JA-VDIND with its
+fences, ORB-RES, JA-PIN, the boxes) at their displayed grades and
+conditionality, sealed-runner-keyed, with the 𝔽_p[[t]] no-PARI-leg
+disclosure (JA-BOX-4) standing.
+
+**FOLD-CARRY INVENTORY** (PE8's s1, all pin-protected and
+favorable-direction — owed at the next annex, never as inline edits):
+§1's ILN "motion-free since" (ILN has since gained the 5054d69 rider
+rewrite + adc6cf3 supplement, both pure appends); §5's suppliers still
+billed "(0/2 hostile passes)" (JB/JC/W2/WM since ACCEPTED); the
+grade-cap attempt-grade billing (W-2 cap now an accepted supplier);
+§3.2's "cure owed to that note's own arc" (the W-2 arc closed with
+tex-1213–1218 standing). s3: the converse-escape fence now positively
+witnessed off-roster. s4: standing PE4-n1/PE6-p1/PE5-m3.
+
+---
+
+## ANNEX (dated appends; the frozen body — md5 cba309ce, byte-frozen since f131c53 — is not edited)
+
+> **[ANNEX 2026-08-08, orchestrator, fold-carry closure FC-1 — the §1 ILN
+motion clause.]** The frozen §1 pin bracket closes "…[ILN]† consumed as-of
+ced7dbb — the as-of pin owed since PE2 o2 / PE3 o3, executed with the
+FINDING 1 pin sweep; **ITERLAWN_PROOF motion-free since**". The supplier
+is no longer motion-free: `ITERLAWN_PROOF_2026-08-08.md` has moved exactly
+twice since ced7dbb — the 5054d69 NR-1 rider-rewrite (LIFTCORNER's
+acceptance license executed as an append-only fold annex) and the adc6cf3
+rider supplement (the W-2 cap = an accepted supplier) — re-verified at
+this fold by `git diff ced7dbb HEAD`: 33 insertions, 0 deletions, both
+dated appends after [ILN]'s acceptance record; S0.1/S0.2 (everything this
+note consumes) byte-identical ced7dbb → HEAD (PE8's check, standing).
+Direction: FAVORABLE (pure-append supplier motion; the as-of pin was and
+remains exact).
+
+> **[ANNEX 2026-08-08, FC-2 — the supplier arc-grade billings.]** The
+frozen §5 entry bills "**W-2 clause 1/2/3** (`GRTW2_PROOF_2026-08-08.md`):
+consumed AT ATTEMPT GRADE (0/2 hostile passes) with its full
+conditionality ledger", and the same arc-grade billing rides at §2
+clause 8, the §7.2 JA-PIN-cl.-8 and §4-transport rows (as-of
+[W2 @ ffa1e57]), and the [JB]-pinned spans (4c4ee56). Every supplier this
+note bills at an open arc grade has since been ACCEPTED at 2/2: GRTW2 at
+adc6cf3 (2026-08-07; W2-C3 at its honest proved-to-first-twist (38/44) /
+measured-above grade, W2-OPEN-2/OPEN-2a the accepted BOX), GRTJB + GRTJC
+at 83f47f4 (2026-08-06), WELDMASTER at 66b3498 (2026-08-07). The as-of
+pins protect every quote; the suppliers' accepted HEADs govern their
+grades. Direction: FAVORABLE ("(0/2 hostile passes)" is now a conservative
+understatement everywhere it appears; nothing this note consumes
+weakened).
+
+> **[ANNEX 2026-08-08, FC-3 — the grade-cap billing.]** The frozen header
+reads "**Grade cap (read first).** J-A-PIN (§2) is PROVED at attempt grade
+…, with its lift clause consumed from W-2 clause 1 AT ATTEMPT GRADE and
+W-2's conditionality carried verbatim." The cap's supplier is now ACCEPTED
+(GRTW2 2/2 at adc6cf3): the lift-clause consumption rides an accepted
+supplier at its fenced scope (the supplier's acceptance-record CONSEQUENCE
+names exactly this consumer species), and this note itself stands ACCEPTED
+at 2/2 (17d2a32). Direction: FAVORABLE.
+
+> **[ANNEX 2026-08-08, FC-4 — the §3.2 cure pointer.]** The frozen [JA-r1]
+bracket at §3.2 reads "The same inherited 1213–1218 range stands in W-2
+§3.1 — cure owed to that note's own arc." That arc has since CLOSED
+(GRTW2 ACCEPTED 2/2 at adc6cf3) with the tex-1213–1218 cite STANDING at
+the accepted W-2 §3.1 (the HR-REC head, verified at HEAD this fold), so
+the pointer is superseded: the accepted W-2 is under the dated-annex
+discipline, and the cure, if ever executed, is a W-2 annex item — no
+longer "that note's own arc". Nothing rides it: this note's own display
+was cured in place by this same [JA-r1] bracket (the correct
+child-prescription anchor is tex 1200–1201), and the slip is anchor-only
+(picture-environment line numbers), semantically nil at both notes.
+Direction: NEUTRAL-FAVORABLE (pointer superseded; no consumer affected).
+
+---
+
+### Dated adjudication + corrections (2026-08-12 — sol certification C2/E2: the as-built challenge adjudicated at HEAD)
+
+The sol-5.6 as-built read of this note (gpt-5.6-sol high,
+runs/cert/C2_grtja_output.log, 2026-08-12) returned CHALLENGE
+(1 CRITICAL + GAPs). The E2 certification run (gpt-5.6-sol high,
+runs/cert2/E2_grtja_output.log) adjudicated all four findings REAL
+and derived the repairs below (annexes C2-1..C2-4), each with
+derivation and consumer sweep; the CRITICAL is cured by THEOREM
+JA-EPS-CORR — the canonical-normalization bridge replacing raw
+print-twist equality. Everything above this heading is byte-untouched
+by this append. The E2 adjudication, transcribed unaltered:
+
+All four findings are REAL. None of FC-1–FC-4 addresses them; those annexes concern supplier motion and grade billing.
+
+### 1. REAL — JA-EPS omits the attained-origin shift
+
+The challenge is correct. Section 3.2 itself acknowledges that Definition `t(i)` differs “further by the ν-shift,” while §3.4 later retains precisely that shift through \(s_0=s(\beta)+\nu e\). Thus the canonical identity is correct, but the labels identifying it directly with the print’s actual twist are not.
+
+Verbatim-ready repair:
+
+> **[ANNEX 2026-08-12, certifier repair C2-1 — JA-EPS is the canonical-normalization bridge, not raw Definition-`t(i)` equality.]** In frozen §3.2, retain the proved integer identity
+> \[
+> \varepsilon_m(\beta)=z_m^{-t_{\min}(\beta)},\qquad
+> t_{\min}(\beta):=\frac{\ell_{m-1}\beta-s_{\min}(\beta)}{e_{m-1}},
+> \quad s_{\min}(\beta):=\ell_{m-1}\beta\bmod e_{m-1}.
+> \]
+> The genre phrases “\(\varepsilon=\) the print twist,” “the harness \(\varepsilon\)-kit IS the print’s `t(i)`-twist,” and their §7 consequence-table repetitions are superseded by the following exact normalization statement.
+>
+> **THEOREM JA-EPS-CORR.** Let an actual print side with ordinate argument \(\beta\) have initial attained abscissa
+> \[
+> s_{\mathrm{act}}=s_{\min}(\beta)+\nu e_{m-1},\qquad \nu\in\mathbb Z_{\ge0}.
+> \]
+> Its Definition-`t(i)` exponent, in the print’s orientation, is
+> \[
+> t_{\mathrm{Def}}
+>   =\frac{s_{\mathrm{act}}-\ell_{m-1}\beta}{e_{m-1}}
+>   =\nu-t_{\min}(\beta).
+> \]
+> Consequently
+> \[
+> \boxed{\ z_m^{t_{\mathrm{Def}}}=z_m^\nu\,\varepsilon_m(\beta)\ },
+> \qquad
+> \boxed{\ \varepsilon_m(\beta)=z_m^{t_{\mathrm{Def}}-\nu}\ }.
+> \]
+> Thus raw equality between the print factor and \(\varepsilon_m(\beta)\) holds exactly when \(z_m^\nu=1\), in particular when \(\nu=0\). The first boxed identity follows simply by substituting
+> \(s_{\mathrm{act}}=s_{\min}+\nu e_{m-1}\) and using the already-proved
+> \(\varepsilon_m(\beta)=z_m^{-t_{\min}(\beta)}\); no new lemma is used.
+>
+> **Consumer sweep.** Section 3.4 JA-RES survives unchanged: it uses the actual Definition-`t(i)` exponent together with
+> \(\tau=(s_{\mathrm{act}}-\ell\beta)/e\), so the same \(\nu\)-term cancels in \(t(i)-\tau\). JA-VDIND survives unchanged; its proof already states
+> \(\tau_m(A)-\nu=\operatorname{exp}(\varepsilon_m(\beta))\). W2-L2, W2-L3, CK-EPS, and ORB-EPS survive as statements about the canonical minimal-grid exponent \(t_{\min}\). The §4(iii) orbit formula is retained with that explicit meaning. The §5 N-1 citation and §7.2 JA-EPS row survive at this corrected normalization-bridge scope. The grade-cap and §7.3 claims of raw print-twist equality are superseded by JA-EPS-CORR.
+
+### 2. REAL — ordinary polynomial degrees are shifted by \(\nu\)
+
+The frozen general formula already proves the challenge. If \(H(y)=R_mv(A)\) is the packed harness polynomial and \(P(y)=R_m(A)(y)\) the normalized print residual, then
+\[
+H(y)=y^\nu Q_A(y),\qquad
+P(y)=z^{-s_0A_{m-1}}Q_A(\vartheta_my).
+\]
+Their abscissa supports agree, but their ordinary exponent supports differ by translation by \(\nu\).
+
+Verbatim-ready repair:
+
+> **[ANNEX 2026-08-12, certifier repair C2-2 — JA-MIN support and degree normalization.]** The frozen JA-MIN phrase “supports and degrees agree slot-for-slot” is superseded as follows. Put
+> \[
+> s_0=s(\beta)+\nu e_{m-1},\qquad
+> H(y):=R_mv(A),\qquad P(y):=R_m(A)(y).
+> \]
+> The frozen §3.4 conjugation formula gives
+> \[
+> H(y)=y^\nu Q_A(y),\qquad
+> P(y)=z_{m-1}^{-s_0A_{m-1}}Q_A(\vartheta_my),
+> \quad
+> \vartheta_m=z_{m-1}^{-e_{m-1}A_{m-1}}.
+> \]
+> Since the displayed scalar and \(\vartheta_m\) are units,
+> \[
+> \operatorname{Supp}_y(H)=\nu+\operatorname{Supp}_y(P).
+> \]
+> Hence, for nonzero residuals,
+> \[
+> \boxed{\ \deg H=\deg P+\nu\ },
+> \]
+> and ordinary degrees agree iff \(\nu=0\). What agrees without qualification is the set of attained **abscissas**: the per-slot unit law gives
+> \(c_i=0\iff C_i=0\) for every attained \(i\). Equivalently, the normalized support widths agree after translating the harness exponent origin by \(\nu\).
+>
+> **COROLLARY JA-MIN-CORR.** On the JA-RES perimeter, attained-abscissa support and every print residual coefficient are recoverable from the harness read, and conversely. Explicitly, divide \(H\) by the known exact factor \(y^\nu\) to recover \(Q_A\), then apply the displayed unit scalar and substitution \(y\mapsto\vartheta_my\) to recover \(P\). Therefore the claimed computability of \(\operatorname{ord}_\psi\) data survives. Since \(\psi\ne y\), the removable factor \(y^\nu\) contributes no \(\psi\)-factor; the known \(\vartheta_m\)-substitution must still be applied.
+>
+> **Consumer sweep.** JA-RES, JA-VDIND, R-coll, and all CK-RES/CK-VDM machine claims are coefficientwise and survive unchanged. The §7.2 JA-MIN row survives with “attained-abscissa support and normalized degree/width” replacing ordinary degree equality. Frozen §3.4 already says nothing downstream in this note consumes JA-MIN, so there is no internal consumer of the false degree clause. Intended J-B/W-5 consumers must use the boxed degree-shift formula, not unshifted degree equality.
+
+### 3. REAL — nonidentity is weaker than failure of a scalar gauge
+
+The per-slot theorem gives the exact criterion. A single nonunit character value still supplies a perfectly valid scalar on a singleton support.
+
+Verbatim-ready repair:
+
+> **[ANNEX 2026-08-12, certifier repair C2-3 — exact scalar-gauge criterion.]** The frozen JA-BOX-1 assertion that slot-independent scalar form fails whenever the character is merely nontrivial on the read support, and the sentence identifying arbitrary scalar form exactly with JA-VDIND collapse, are superseded.
+>
+> For a fixed read \(A\), let
+> \[
+> S_A:=\{\,i:C_i\ne0\,\},\qquad
+> \chi(i):=z_{m-1}^{-iA_{m-1}}.
+> \]
+> JA-RES says \(c_i=\chi(i)C_i\). Therefore
+> \[
+> \boxed{\ \exists c\in F^\times\ \forall i\in S_A,\ c_i=cC_i
+> \iff |\chi(S_A)|=1\ }.
+> \]
+> Indeed, if such \(c\) exists, division by \(C_i\ne0\) gives
+> \(\chi(i)=c\) for every \(i\in S_A\); the converse is immediate. Equivalently, after choosing \(i_0\in S_A\),
+> \[
+> z_{m-1}^{-(i-i_0)A_{m-1}}=1
+> \quad\text{for every }i\in S_A.
+> \]
+> In particular, every singleton support admits a scalar, even when
+> \(\chi(i_0)\ne1\). A read refutes slot-independent scalar form precisely when its support contains \(i,i'\) with
+> \[
+> z_{m-1}^{-(i-i')A_{m-1}}\ne1.
+> \]
+> The JA-VDIND hypothesis is the stronger **absolute** condition
+> \(\chi(i)=1\) for every attained \(i\). It is exactly the \(c=1\) case needed for the evaluated VD identity, not the criterion for existence of an arbitrary scalar.
+>
+> **Consumer sweep.** The JA-RES per-slot law and conjugation formula survive unchanged. JA-VDIND, root-inclusive R-coll, and JA-BOX-2 survive because they explicitly require absolute character triviality. The §6 and §7.2 descriptions of JA-BOX-1 must use “the character takes at least two values on active support.” CK-BPREF hits count as blueprint refutations only under that two-value predicate—the predicate used by the accepted PE8 check—not merely because some active value differs from \(1\). The frozen parenthetical conditions on \(e\), \(A\), and \(\operatorname{ord}(z)\) establish a nontrivial character step but require two suitably separated active slots before yielding a refutation.
+
+### 4. REAL — only the arithmetic grid and carry are unconditional
+
+The frozen [JA-r2] bracket explicitly says the downstream proviso is “CARRIED AND UNDISCHARGED,” and the note gives \((e,h,V)=(2,3,1)\) as a counterexample to print-side existence.
+
+Verbatim-ready repair:
+
+> **[ANNEX 2026-08-12, certifier repair C2-4 — exact scope of JA-GRID/W-4.]** The frozen phrases “the grid/carry tie is PROVED unconditionally,” “Grade: PROVED, unconditional,” and “W-4 in full” are superseded by the following split statement.
+>
+> **THEOREM JA-GRID-CORR.** Let \(e,h\ge1\), \(\gcd(e,h)=1\), and let \(\ell h\equiv1\pmod e\). For every \(V\ge0\), define
+> \[
+> s(V):=\ell V\bmod e,\qquad
+> u(V):=\frac{V-s(V)h}{e}\in\mathbb Z.
+> \]
+> Then \(s(V)\) is unconditionally the unique least element of \([0,e)\) for which \(V-s(V)h\) is divisible by \(e\). The print’s nonnegative-coordinate \(T\)-side initial point exists with coordinates \((s(V),u(V))\) only under
+> \[
+> \boxed{\ u(V)\ge0\ },\qquad\text{equivalently}\qquad V\ge s(V)h.
+> \]
+> Under that hypothesis, JA-GRID(a)/(b), including the print-object and point-for-point slot identification, holds. Without it there is only the integer-line congruence datum, not a print \(T\)-point; for example
+> \[
+> (e,h,V)=(2,3,1)\quad\Longrightarrow\quad s=1,\quad u=-1.
+> \]
+> Independently of this existence condition, for all \(V,V'\ge0\),
+> \[
+> s(V)+s(V')-s(V+V')=e\delta,\qquad
+> \delta\in\{0,1\},\qquad
+> \delta=1\iff s(V)+s(V')\ge e.
+> \]
+> Thus the congruence grid and single-level carry identity are unconditional; identification with the print’s nonnegative \(T\)-side is proviso-scoped.
+>
+> **Consumer sweep.** Section 3.3’s own Prop-`construct` sites survive because the print hypothesis supplies the required nonnegative \(T\)-side there. The [JA-r2] downstream JB rows survive only with their already-recorded membership/\(u\ge0\) hypothesis carried; this annex does not discharge it. GD-8 and JA-GRID(c) consume only the unconditional carry identity and survive. CK-GRID’s congruence and carry legs survive but do not certify a nonexistent print point when \(u<0\). In the grade cap, §7.2, and §7.3, “unconditional” and “W-4 in full” henceforth refer only to the arithmetic grid/carry clauses; every print-object consumption of JA-GRID(a)/(b) must carry \(u\ge0\) or a previously proved sufficient membership hypothesis.
+
+*(The adjudication above was produced by the E2 certification run
+(gpt-5.6-sol high, runs/cert2/E2_grtja_output.log, 2026-08-12);
+orchestrator verification before transcription — C2-1's arithmetic
+re-derived (s_act = s_min + νe gives t_Def = ν − t_min by
+substitution, so z^{t_Def} = z^ν·ε_m(β); raw equality iff z^ν = 1);
+C2-2's translation re-derived from the note's own conjugation
+formula (H = y^ν·Q_A, P = unit·Q_A(ϑ_m y) with ϑ_m a unit ⟹
+Supp H = ν + Supp P, deg H = deg P + ν; ψ ≠ y so y^ν adds no
+ψ-factor); C2-3's criterion re-derived (a scalar exists iff χ is
+constant on the active support — singleton supports always pass, so
+refutation needs two active slots with distinct χ-values); C2-4's
+grid facts re-checked (s(V) = ℓV mod e is the unique least residue
+with e | V − s(V)h since ℓh ≡ 1; the (e,h,V) = (2,3,1) witness gives
+u = −1, so the print T-point needs the boxed u(V) ≥ 0; the carry
+identity is unconditional). Transcribed unaltered per the standing
+division of labor. Ledger: row 20 → all four repairs folded,
+awaiting sol discharge-confirmation (cert3).)*
+
+
+**Dated corrigendum (2026-08-12, post-D3a — the C2-3 box at empty
+support).** The D3a discharge pass (gpt-5.6-sol high,
+runs/cert3/D3a_grtja_output.log) adjudicated the C2-3 annex NEW-ISSUE
+at one corner: when S_A = ∅ (the frozen note's zero-read escape), the
+boxed equivalence's left side is vacuously true while |χ(S_A)| = 0.
+Per sol's own fix and the simplicity preference, the box's right side
+is re-displayed as
+
+    |χ(S_A)| ≤ 1 ,
+
+which is correct in every case: at S_A = ∅ both sides hold vacuously;
+at S_A ≠ ∅, |χ(S_A)| ≤ 1 ⟺ |χ(S_A)| = 1, the original criterion. The
+two-distinct-character refutation criterion is unchanged. Awaiting
+sol re-confirmation in the next queue.
