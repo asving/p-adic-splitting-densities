@@ -1,0 +1,92 @@
+I do not ratify the note as written. There is one explicit low-degree counter-configuration, one admitted unresolved dependency, and two smaller false claims.
+
+1. **CRITICAL**
+
+> “A boxed configuration needs … ℓ·d_r ≥ 2 … and a composite stage has D′ ≥ 2 … hence n ≥ D′μ ≥ 8.”
+
+> “At any level i, a node requires a level jump exactly when its side carries … ℓ_i·deg r_i ≥ 2.”
+
+> “J ≤ log₂ μ − 1 ≤ log₂ n − 2.”
+
+The second statement says “at any level,” but the degree bound silently assumes every such event occurs after a composite key with \(D'\ge2\). Degree-one stage keys provide counterexamples.
+
+Take \(K_0=\mathbf Q_3\), \(\pi=3\), \(y=x-\pi\), and the degree-one stage key
+\[
+\Phi'=y,\qquad D'=e_1=f_1=h=1.
+\]
+Let
+\[
+f=(y^2+\pi^4)^2+\pi^9.
+\]
+Its \(\Phi'\)-adic Newton pins are
+\[
+(4,0),\ (2,4),\ (0,8),
+\]
+so the side has integer slope \(\lambda=2>D'h=1\), and its residual is
+\[
+Z^4+2Z^2+1=(Z^2+1)^2\in\mathbf F_3[Z].
+\]
+Here \(r=Z^2+1\) is irreducible, \(m=2\), \(\ell=1\), and
+\(\ell\deg r=2\). Also \(\Phi'\nmid f\), and \(f\) is squarefree: its derivative is \(4y(y^2+\pi^4)\), while neither possible derivative-zero locus is a zero of \(f\). Thus this is a stage-CS event with
+\[
+\mu=n=4,\qquad D'=1.
+\]
+
+By HE6R1-1’s own criterion it requires one jump, yet its asserted bound gives
+\[
+J\le\log_2(4)-2=0.
+\]
+It also contradicts “both branches … first bite at \(n=8\).” If “stage-CS” was intended to exclude degree-one stages, then the note’s “any level,” “a node,” and “exact complement” claims lack that essential restriction and do not establish the advertised global statement.
+
+2. **GAP**
+
+> “what is NOT settled here is whether GENHN’s own \(f_1\ge2\) count-side displays that substitute the numeric value \(S\) for the node height need re-reading with \(f_1S\)”
+
+> “every named box in the theorem chain \(W\text{-}12.D\circ GENIND.B\circ GENHN.B\circ HE6.A(r1)\circ HE7.A\) is closed at composition grade”
+
+> “none of them an open piece of mathematics”
+
+These assertions are incompatible. The note explicitly leaves unsettled whether a consumed theorem’s \(f_1\ge2\) counting regions use the wrong node height, then declares every named box composition-closed.
+
+The numerical regions genuinely differ. For \(f_1=2\), the corrected node height is \(D'h=2S\). With \(\mu-j=1\), valuation data
+\[
+dv(A_j)=S+1
+\]
+satisfy an \(S\)-based lower bound but fail the corrected \(2S+1\) bound. Until the GENHN count argument is checked against the corrected region, acceptance grades and the assertion that downstream HE6/HE7 use only GENHN-2 do not prove the stronger displayed composition chain containing GENHN.B.
+
+3. **MINOR**
+
+> “\(\Phi'\)’s own slots have \(e_1v(a_i)+i\cdot h\ge D'h\) with equality exactly at \(i=e_1t\) (\(t\le f_1\))”
+
+This is false when the residual polynomial has zero intermediate coefficients. For example, with
+\[
+e_1=1,\quad f_1=2,\quad h=1,\quad
+\Phi'=x^2+\pi^2
+\]
+over \(\mathbf Q_3\), the residual is \(\psi(Z)=Z^2+1\). At \(t=1\), \(i=e_1t=1\), but \(a_1=0\), so
+\[
+e_1v(a_1)+ih=\infty\ne D'h=2.
+\]
+The subsequent \(\psi(\eta_\xi)\) cancellation can still work because the missing term contributes zero, but the claimed characterization of equality is mathematically false. The standing “nonzero terms” convention is later and scopes the §S4 displays, not this §S3.1 assertion.
+
+4. **MINOR**
+
+> “every \(k\) above the closed-form threshold … \(=\lambda+1\) is onto (so the closed form is sufficient, and by 1 not tight)”
+
+> “the machine leg establishes … that \((\mathrm{LIFT}_2)\)’s threshold is exactly the closed form at \(d_r\ge2\)”
+
+These statements contradict each other. The displayed machine result is onset of surjectivity at \(k=\lambda\), while the closed-form sufficient threshold is \(k=\lambda+1\). Therefore the experiment establishes that the closed form is sufficient but non-sharp in those frames, not that it is “exactly” the threshold.
+
+CHECKED CLEAN — Under \(\operatorname{disc}f\ne0\), the equivalence \(\Psi\nmid f_S\iff\Psi\nmid f\) follows from the definition of the complete label block and squarefreeness.
+
+CHECKED CLEAN — RIDER HE6R1-2R is evaluand-blind once \(\deg C_j<D''\), \(C_0\ne0\), and SLOT₂ exactness are assumed.
+
+CHECKED CLEAN — The block-projection support-function argument and radical comparison survive, with the scalar understood per side through the final pin-height cocycle rider.
+
+CHECKED CLEAN — The level-2 peel’s degree/orbit pinch proves \(\Psi\) irreducible and permits at most one peel under squarefreeness.
+
+CHECKED CLEAN — The ten-item \(\ell=1\) specialization itself has no identified degeneration; the failure above concerns its claimed global starting degree and jump bound.
+
+CHECKED CLEAN — The pasted 12 BADTOTAL / 5 oracle-visible / 4 SEP2 taxonomy and the \(677=682-5\) rescore are arithmetically consistent.
+
+OUTCOME: CHALLENGE
