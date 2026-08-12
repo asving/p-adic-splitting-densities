@@ -1,0 +1,19 @@
+1. **DISCHARGED.** The correction properly separates OPEN-2a’s shared-below implication from the still-open above-\(r_0\) carry lemma W2-OPEN-2(a)–(b). The stated consumer statuses follow.
+
+2. **DISCHARGED.** The scalar-orbit conclusion is now restricted exactly to \(m=1\), (C-coll), or the explicit coefficientwise geometricity test. The relation \(a_j=c/\rho_j\) gives the stated condition, including \(\rho_1^2=\rho_0\rho_2\) on support \(\{0,1,2\}\). The \(37+1+6=44\) census correctly isolates I4B \(r=5\).
+
+3. **DISCHARGED.** The corrected dictionary \(\phi_q^{tw}\leftrightarrow\Phi_{q-1}^{har}\) makes the summands degree-matched. With \(q=r-1\), the displayed expansion correctly becomes
+\[
+(\Phi_m^{har})^{e_mk}
+=(\phi_{r-1}^{tw}+D_{r-1})^{e_mk}.
+\]
+
+4. **DISCHARGED.** The replacement confines W2-C3 to residual/type-ledger equivalence. The augmentation calculation is correct:
+\[
+\mu_{\phi,\gamma}(\Phi)=\min\{\gamma,\mu(D)\}<\gamma
+\quad\text{while}\quad
+\mu_{\Phi,\gamma}(\Phi)=\gamma,
+\]
+so equality of induced valuation functions is no longer claimed.
+
+OUTCOMES: DISCHARGED, DISCHARGED, DISCHARGED, DISCHARGED
