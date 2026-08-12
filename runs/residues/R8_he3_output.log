@@ -1,0 +1,57 @@
+1. **GAP — the window-resolution law overclaims “one more window unit.”**
+
+> “the ALPHA-type members … need the DEEPER read … hence one more window unit than the split types at the same λ”
+
+That conclusion does not follow from HE3-5 and is false generally. Take \(O=\mathbf Z_5\), \(e_1=1,f_1=2,D'=2,h=1\), an admissible key \(\Phi'\), \(\lambda=3>D'h=2\), a height-\(3\) carrier \(C\), and
+\[
+F(Y)=(Y-C)^3+5^M,\qquad M\gg 9.
+\]
+The initial residual is \((Z-s)^3\), so this is an ALPHA member at slope \(3\). After recentering it becomes \(Y'^3+5^M\); resolving the new stage requires seeing height \(M\), which can be arbitrarily many window units beyond the split threshold \(3\lambda=9\), not one unit. Thus the claimed “exact answer” for decided leaves and the ensuing boundary interpretation are not established by the lemma. The machine’s two-step behavior verifies only its selected rows.
+
+2. **GAP — the claimed single \(\mu\ge4\) reservation contradicts the proof’s own unramified-base-change failure.**
+
+> “with the single reservation that at μ ≥ 4 the proof invokes LEMMA HE3-4’s ramified-base-change branch (ii)”
+
+But §S6.2 expressly says:
+
+> “BOTH are stated too cheaply … Both branches below are therefore to be read as BOXED … not proved.”
+
+Branch (i) is independently load-bearing. For example, let \(f_1=2\), \(\mu=4\), and let an integer-slope residual be \(R_\lambda=r_1r_2\), with two distinct irreducible quadratics over \(K\). A degree-2 unramified extension rationalizing these factors has
+\(\gcd(f_1,2)=2\), so \(\Phi'\) splits and each new stage key has degree \(D'/2\). The preceding rational peel therefore supplies \(D'/2\), not \(D'\), roots per component and per residual root. Recombining the split stage components requires a separate descent/equivariance argument that is absent. Consequently the general-\(\mu\) result is conditional on at least two unresolved mechanisms, even if both are administratively placed in HE3-BOX-6.
+
+3. **GAP — “degrees \(n\le7\)” silently requires \(D'=e_1f_1\ge2\).**
+
+> “the branch is reachable only when … μ ≥ 4, i.e. degree \(n \ge e_1f_1\mu \ge 8\).”
+
+The second inequality has no stated justification in the pasted note. If \(D'=1\) is allowed, take
+\[
+\Phi'=x-5,\quad \mu=4,\quad
+F(Y)=Y^4+2\cdot5^3Y^2+2\cdot5^6
+\]
+over \(\mathbf Z_5\). Its stage polygon is one side of slope \(3/2\), with \(\ell=2,d=2\), so precisely the boxed ramified-side branch occurs in total degree \(4\), while the roots remain in the opening cluster around \(x=5\). Either GENHN.CLASS must explicitly exclude \(D'=1\) here, or the advertised unconditional range \(n\le7\) does not follow.
+
+4. **MINOR — the ramified label class is still defined using a nonexistent normalizer.**
+
+> “\(S_r := \{\rho:\dots \operatorname{res}(\Phi'(\rho)/n(\lambda)(\rho))\text{ is a root of }r\}\).”
+
+For \(\lambda=u/\ell\) with \(\ell\ge2\), \(n(\lambda)\) is undefined; the note itself repaired the root read elsewhere to
+\[
+\operatorname{res}\!\left(\Phi'(\rho)^\ell/n(u)(\rho)\right).
+\]
+The parenthetical “see the proof” does not repair the displayed definition. This is localized to the already-boxed ramified branch, but the stated \(S_r\) is not a mathematical set there.
+
+5. **MINOR — HE3-0 still invokes the supplier in the exact form the repair record says is false.**
+
+> “the SLOT LEMMA (GENHN-2) is stated for any ξ with (T1)/(T2)”
+
+The note’s own §S0 says GENHN-2 applies only at roots of \(\Phi'\), and that arbitrary \((T1)/(T2)\) points require HE6-0″. Since HE3-0 applies the read at \(\rho\), this proof sentence cites a false hypothesis. HE6-0″ appears elsewhere and evidently supplies the intended repair, so this is a provenance defect rather than a new mathematical obstruction.
+
+CHECKED CLEAN — DEFINITION 1’s coherent residual construction, its \(W(k)\) formula, and the two coboundary cancellations are internally consistent.
+
+CHECKED CLEAN — the \(\mu\le3\) Ψ-comparison proving the corrected \(D'h\)-node survives the low/mid-side case split.
+
+CHECKED CLEAN — the \(\mu\le3\) slope-count inversion, including the letter-starved consecutive-triple supplement, survives.
+
+CHECKED CLEAN — the base-change-free \(\mu\le3\) residue peel and HE3-6 Galois-equivariance argument survive.
+
+OUTCOME: CHALLENGE
