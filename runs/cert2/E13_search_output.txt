@@ -1,0 +1,227 @@
+HEAD: ec99befb6842e6f0c5421fa73ba8264444cc9315
+READER SHA256:
+  verification/openmath/gentow3_checks.py  38ad26f5d0a4c43c6580b3730d2f493b2eec48ff933e2523fffaa6550f5fa216
+  verification/openmath/gentow3_pe1_fresh.py  2c520ebdd3562158f2198b4355ee313fb54efa8497700832f31b305742bf6d81
+  verification/openmath/gentow3_pe2_fresh.py  7ec434657fc6688195097b53f967c9e625649e0a17f1aadaf27e9ef1a201d08a
+  verification/openmath/gentow3_pe3_fresh.py  bd9317235a9f6a06caac788681f844241a8d3a0dc99f282c57f6284d6521d419
+  verification/openmath/gentow3_pe5_fresh.py  f390594d870dcf1528bec5ec75d37feff88e829b3fa1799465f5a515aa227e0c
+ROSTER CENSUS:
+  semantic rows before exact (frame, polynomial) deduplication: 137
+  rows after exact semantic deduplication: 135
+  eligible rows: 0
+  ineligible rows: 135
+  totals by frame:
+    frame[0]: rows=27 eligible=0 ineligible=27 pairs_tested=0
+      key=(('p', ((1,),)),
+ ('Q', ((1,),)),
+ ('Phi_prime', '<UNAVAILABLE>'),
+ ('e1', 2),
+ ('f1', 1),
+ ('h', 1),
+ ('eta', '<UNAVAILABLE>'),
+ ('e2', 1),
+ ('f2', 2),
+ ('u2', 3),
+ ('mu2', 2),
+ ('Phi2', (-4, 4, -4, -2, 1)),
+ ('normalizer/gauge/options', ()),
+ ('N', 8))
+    frame[1]: rows=26 eligible=0 ineligible=26 pairs_tested=0
+      key=(('p', ((1,),)),
+ ('Q', ((1,),)),
+ ('Phi_prime', '<UNAVAILABLE>'),
+ ('e1', 2),
+ ('f1', 1),
+ ('h', 1),
+ ('eta', '<UNAVAILABLE>'),
+ ('e2', 1),
+ ('f2', 2),
+ ('u2', 3),
+ ('mu2', 2),
+ ('Phi2', (36, 0, -6, 0, 1)),
+ ('normalizer/gauge/options', ()),
+ ('N', 8))
+    frame[2]: rows=27 eligible=0 ineligible=27 pairs_tested=0
+      key=(('p', ((1,),)),
+ ('Q', ((1,),)),
+ ('Phi_prime', '<UNAVAILABLE>'),
+ ('e1', 2),
+ ('f1', 1),
+ ('h', 1),
+ ('eta', '<UNAVAILABLE>'),
+ ('e2', 2),
+ ('f2', 1),
+ ('u2', 5),
+ ('mu2', 2),
+ ('Phi2', (4, -4, -4, 0, 1)),
+ ('normalizer/gauge/options', ()),
+ ('N', 8))
+    frame[3]: rows=28 eligible=0 ineligible=28 pairs_tested=0
+      key=(('p', ((1,),)),
+ ('Q', ((1,),)),
+ ('Phi_prime', '<UNAVAILABLE>'),
+ ('e1', 2),
+ ('f1', 1),
+ ('h', 1),
+ ('eta', '<UNAVAILABLE>'),
+ ('e2', 2),
+ ('f2', 1),
+ ('u2', 7),
+ ('mu2', 2),
+ ('Phi2', (4, -8, -4, 0, 1)),
+ ('normalizer/gauge/options', ()),
+ ('N', 8))
+    frame[4]: rows=27 eligible=0 ineligible=27 pairs_tested=0
+      key=(('p', ((1,),)),
+ ('Q', ((1,),)),
+ ('Phi_prime', '<UNAVAILABLE>'),
+ ('e1', 2),
+ ('f1', 1),
+ ('h', 1),
+ ('eta', '<UNAVAILABLE>'),
+ ('e2', 3),
+ ('f2', 1),
+ ('u2', 7),
+ ('mu2', 2),
+ ('Phi2', (-8, -8, 12, 0, -6, 0, 1)),
+ ('normalizer/gauge/options', ()),
+ ('N', 12))
+INELIGIBLE ROWS:
+  tags=['A7-BAND30']; module=gentow3_checks; reasons=['honest pins unavailable', 'deciding-residue array unavailable', 'honest sigma unavailable', 'ordered honest labels unavailable', 'committed canonical high-shadow slot map unavailable']
+  tags=['FAM-A5-G3EQ']; module=gentow3_checks; reasons=['honest pins unavailable', 'deciding-residue array unavailable', 'honest sigma unavailable', 'ordered honest labels unavailable', 'committed canonical high-shadow slot map unavailable']
+  tags=['FAM-A5-G3N0']; module=gentow3_checks; reasons=['honest pins unavailable', 'deciding-residue array unavailable', 'honest sigma unavailable', 'ordered honest labels unavailable', 'committed canonical high-shadow slot map unavailable']
+  tags=['FAM-A5-G3N0p']; module=gentow3_checks; reasons=['honest pins unavailable', 'deciding-residue array unavailable', 'honest sigma unavailable', 'ordered honest labels unavailable', 'committed canonical high-shadow slot map unavailable']
+  tags=['FAM-A5-G3N1']; module=gentow3_checks; reasons=['honest pins unavailable', 'deciding-residue array unavailable', 'honest sigma unavailable', 'ordered honest labels unavailable', 'committed canonical high-shadow slot map unavailable']
+  tags=['FAM-A5-G3N2']; module=gentow3_checks; reasons=['honest pins unavailable', 'deciding-residue array unavailable', 'honest sigma unavailable', 'ordered honest labels unavailable', 'committed canonical high-shadow slot map unavailable']
+  tags=['FAM-A5-G3N3']; module=gentow3_checks; reasons=['honest pins unavailable', 'deciding-residue array unavailable', 'honest sigma unavailable', 'ordered honest labels unavailable', 'committed canonical high-shadow slot map unavailable']
+  tags=['FAM-A5-G3N3p']; module=gentow3_checks; reasons=['honest pins unavailable', 'deciding-residue array unavailable', 'honest sigma unavailable', 'ordered honest labels unavailable', 'committed canonical high-shadow slot map unavailable']
+  tags=['FAM-A5-G3N4']; module=gentow3_checks; reasons=['honest pins unavailable', 'deciding-residue array unavailable', 'honest sigma unavailable', 'ordered honest labels unavailable', 'committed canonical high-shadow slot map unavailable']
+  tags=['FAM-A5-G3N5']; module=gentow3_checks; reasons=['honest pins unavailable', 'deciding-residue array unavailable', 'honest sigma unavailable', 'ordered honest labels unavailable', 'committed canonical high-shadow slot map unavailable']
+  tags=['FAM-A5-G3N6']; module=gentow3_checks; reasons=['honest pins unavailable', 'deciding-residue array unavailable', 'honest sigma unavailable', 'ordered honest labels unavailable', 'committed canonical high-shadow slot map unavailable']
+  tags=['FAM-A5-G3N6p']; module=gentow3_checks; reasons=['honest pins unavailable', 'deciding-residue array unavailable', 'honest sigma unavailable', 'ordered honest labels unavailable', 'committed canonical high-shadow slot map unavailable']
+  tags=['FAM-A5-G3N7']; module=gentow3_checks; reasons=['honest pins unavailable', 'deciding-residue array unavailable', 'honest sigma unavailable', 'ordered honest labels unavailable', 'committed canonical high-shadow slot map unavailable']
+  tags=['FAM-A5-G3N8']; module=gentow3_checks; reasons=['honest pins unavailable', 'deciding-residue array unavailable', 'honest sigma unavailable', 'ordered honest labels unavailable', 'committed canonical high-shadow slot map unavailable']
+  tags=['FAM-A5-G3N9']; module=gentow3_checks; reasons=['honest pins unavailable', 'deciding-residue array unavailable', 'honest sigma unavailable', 'ordered honest labels unavailable', 'committed canonical high-shadow slot map unavailable']
+  tags=['FAM-A5-G3N9p']; module=gentow3_checks; reasons=['honest pins unavailable', 'deciding-residue array unavailable', 'honest sigma unavailable', 'ordered honest labels unavailable', 'committed canonical high-shadow slot map unavailable']
+  tags=['FAM-A5-G3R0']; module=gentow3_checks; reasons=['honest pins unavailable', 'deciding-residue array unavailable', 'honest sigma unavailable', 'ordered honest labels unavailable', 'committed canonical high-shadow slot map unavailable']
+  tags=['FAM-A5-G3R1']; module=gentow3_checks; reasons=['honest pins unavailable', 'deciding-residue array unavailable', 'honest sigma unavailable', 'ordered honest labels unavailable', 'committed canonical high-shadow slot map unavailable']
+  tags=['FAM-A5-G3R10']; module=gentow3_checks; reasons=['honest pins unavailable', 'deciding-residue array unavailable', 'honest sigma unavailable', 'ordered honest labels unavailable', 'committed canonical high-shadow slot map unavailable']
+  tags=['FAM-A5-G3R11']; module=gentow3_checks; reasons=['honest pins unavailable', 'deciding-residue array unavailable', 'honest sigma unavailable', 'ordered honest labels unavailable', 'committed canonical high-shadow slot map unavailable']
+  tags=['FAM-A5-G3R2']; module=gentow3_checks; reasons=['honest pins unavailable', 'deciding-residue array unavailable', 'honest sigma unavailable', 'ordered honest labels unavailable', 'committed canonical high-shadow slot map unavailable']
+  tags=['FAM-A5-G3R3']; module=gentow3_checks; reasons=['honest pins unavailable', 'deciding-residue array unavailable', 'honest sigma unavailable', 'ordered honest labels unavailable', 'committed canonical high-shadow slot map unavailable']
+  tags=['FAM-A5-G3R4']; module=gentow3_checks; reasons=['honest pins unavailable', 'deciding-residue array unavailable', 'honest sigma unavailable', 'ordered honest labels unavailable', 'committed canonical high-shadow slot map unavailable']
+  tags=['FAM-A5-G3R5']; module=gentow3_checks; reasons=['honest pins unavailable', 'deciding-residue array unavailable', 'honest sigma unavailable', 'ordered honest labels unavailable', 'committed canonical high-shadow slot map unavailable']
+  tags=['FAM-A5-G3R6']; module=gentow3_checks; reasons=['honest pins unavailable', 'deciding-residue array unavailable', 'honest sigma unavailable', 'ordered honest labels unavailable', 'committed canonical high-shadow slot map unavailable']
+  tags=['FAM-A5-G3R7']; module=gentow3_checks; reasons=['honest pins unavailable', 'deciding-residue array unavailable', 'honest sigma unavailable', 'ordered honest labels unavailable', 'committed canonical high-shadow slot map unavailable']
+  tags=['FAM-A5-G3R8']; module=gentow3_checks; reasons=['honest pins unavailable', 'deciding-residue array unavailable', 'honest sigma unavailable', 'ordered honest labels unavailable', 'committed canonical high-shadow slot map unavailable']
+  tags=['FAM-A5-G3R9']; module=gentow3_checks; reasons=['honest pins unavailable', 'deciding-residue array unavailable', 'honest sigma unavailable', 'ordered honest labels unavailable', 'committed canonical high-shadow slot map unavailable']
+  tags=['FAM-A7-G3EQ', 'A7-BAND29']; module=gentow3_checks; reasons=['honest pins unavailable', 'deciding-residue array unavailable', 'honest sigma unavailable', 'ordered honest labels unavailable', 'committed canonical high-shadow slot map unavailable']
+  tags=['FAM-A7-G3N0']; module=gentow3_checks; reasons=['honest pins unavailable', 'deciding-residue array unavailable', 'honest sigma unavailable', 'ordered honest labels unavailable', 'committed canonical high-shadow slot map unavailable']
+  tags=['FAM-A7-G3N0p']; module=gentow3_checks; reasons=['honest pins unavailable', 'deciding-residue array unavailable', 'honest sigma unavailable', 'ordered honest labels unavailable', 'committed canonical high-shadow slot map unavailable']
+  tags=['FAM-A7-G3N1']; module=gentow3_checks; reasons=['honest pins unavailable', 'deciding-residue array unavailable', 'honest sigma unavailable', 'ordered honest labels unavailable', 'committed canonical high-shadow slot map unavailable']
+  tags=['FAM-A7-G3N2']; module=gentow3_checks; reasons=['honest pins unavailable', 'deciding-residue array unavailable', 'honest sigma unavailable', 'ordered honest labels unavailable', 'committed canonical high-shadow slot map unavailable']
+  tags=['FAM-A7-G3N3']; module=gentow3_checks; reasons=['honest pins unavailable', 'deciding-residue array unavailable', 'honest sigma unavailable', 'ordered honest labels unavailable', 'committed canonical high-shadow slot map unavailable']
+  tags=['FAM-A7-G3N3p']; module=gentow3_checks; reasons=['honest pins unavailable', 'deciding-residue array unavailable', 'honest sigma unavailable', 'ordered honest labels unavailable', 'committed canonical high-shadow slot map unavailable']
+  tags=['FAM-A7-G3N4']; module=gentow3_checks; reasons=['honest pins unavailable', 'deciding-residue array unavailable', 'honest sigma unavailable', 'ordered honest labels unavailable', 'committed canonical high-shadow slot map unavailable']
+  tags=['FAM-A7-G3N5']; module=gentow3_checks; reasons=['honest pins unavailable', 'deciding-residue array unavailable', 'honest sigma unavailable', 'ordered honest labels unavailable', 'committed canonical high-shadow slot map unavailable']
+  tags=['FAM-A7-G3N6']; module=gentow3_checks; reasons=['honest pins unavailable', 'deciding-residue array unavailable', 'honest sigma unavailable', 'ordered honest labels unavailable', 'committed canonical high-shadow slot map unavailable']
+  tags=['FAM-A7-G3N6p']; module=gentow3_checks; reasons=['honest pins unavailable', 'deciding-residue array unavailable', 'honest sigma unavailable', 'ordered honest labels unavailable', 'committed canonical high-shadow slot map unavailable']
+  tags=['FAM-A7-G3N7']; module=gentow3_checks; reasons=['honest pins unavailable', 'deciding-residue array unavailable', 'honest sigma unavailable', 'ordered honest labels unavailable', 'committed canonical high-shadow slot map unavailable']
+  tags=['FAM-A7-G3N8']; module=gentow3_checks; reasons=['honest pins unavailable', 'deciding-residue array unavailable', 'honest sigma unavailable', 'ordered honest labels unavailable', 'committed canonical high-shadow slot map unavailable']
+  tags=['FAM-A7-G3N9']; module=gentow3_checks; reasons=['honest pins unavailable', 'deciding-residue array unavailable', 'honest sigma unavailable', 'ordered honest labels unavailable', 'committed canonical high-shadow slot map unavailable']
+  tags=['FAM-A7-G3N9p']; module=gentow3_checks; reasons=['honest pins unavailable', 'deciding-residue array unavailable', 'honest sigma unavailable', 'ordered honest labels unavailable', 'committed canonical high-shadow slot map unavailable']
+  tags=['FAM-A7-G3R0']; module=gentow3_checks; reasons=['honest pins unavailable', 'deciding-residue array unavailable', 'honest sigma unavailable', 'ordered honest labels unavailable', 'committed canonical high-shadow slot map unavailable']
+  tags=['FAM-A7-G3R1']; module=gentow3_checks; reasons=['honest pins unavailable', 'deciding-residue array unavailable', 'honest sigma unavailable', 'ordered honest labels unavailable', 'committed canonical high-shadow slot map unavailable']
+  tags=['FAM-A7-G3R10']; module=gentow3_checks; reasons=['honest pins unavailable', 'deciding-residue array unavailable', 'honest sigma unavailable', 'ordered honest labels unavailable', 'committed canonical high-shadow slot map unavailable']
+  tags=['FAM-A7-G3R11']; module=gentow3_checks; reasons=['honest pins unavailable', 'deciding-residue array unavailable', 'honest sigma unavailable', 'ordered honest labels unavailable', 'committed canonical high-shadow slot map unavailable']
+  tags=['FAM-A7-G3R2']; module=gentow3_checks; reasons=['honest pins unavailable', 'deciding-residue array unavailable', 'honest sigma unavailable', 'ordered honest labels unavailable', 'committed canonical high-shadow slot map unavailable']
+  tags=['FAM-A7-G3R3']; module=gentow3_checks; reasons=['honest pins unavailable', 'deciding-residue array unavailable', 'honest sigma unavailable', 'ordered honest labels unavailable', 'committed canonical high-shadow slot map unavailable']
+  tags=['FAM-A7-G3R4']; module=gentow3_checks; reasons=['honest pins unavailable', 'deciding-residue array unavailable', 'honest sigma unavailable', 'ordered honest labels unavailable', 'committed canonical high-shadow slot map unavailable']
+  tags=['FAM-A7-G3R5']; module=gentow3_checks; reasons=['honest pins unavailable', 'deciding-residue array unavailable', 'honest sigma unavailable', 'ordered honest labels unavailable', 'committed canonical high-shadow slot map unavailable']
+  tags=['FAM-A7-G3R6']; module=gentow3_checks; reasons=['honest pins unavailable', 'deciding-residue array unavailable', 'honest sigma unavailable', 'ordered honest labels unavailable', 'committed canonical high-shadow slot map unavailable']
+  tags=['FAM-A7-G3R7']; module=gentow3_checks; reasons=['honest pins unavailable', 'deciding-residue array unavailable', 'honest sigma unavailable', 'ordered honest labels unavailable', 'committed canonical high-shadow slot map unavailable']
+  tags=['FAM-A7-G3R8']; module=gentow3_checks; reasons=['honest pins unavailable', 'deciding-residue array unavailable', 'honest sigma unavailable', 'ordered honest labels unavailable', 'committed canonical high-shadow slot map unavailable']
+  tags=['FAM-A7-G3R9']; module=gentow3_checks; reasons=['honest pins unavailable', 'deciding-residue array unavailable', 'honest sigma unavailable', 'ordered honest labels unavailable', 'committed canonical high-shadow slot map unavailable']
+  tags=['FAM-B-G3EQ']; module=gentow3_checks; reasons=['honest pins unavailable', 'deciding-residue array unavailable', 'honest sigma unavailable', 'ordered honest labels unavailable', 'committed canonical high-shadow slot map unavailable']
+  tags=['FAM-B-G3N0']; module=gentow3_checks; reasons=['honest pins unavailable', 'deciding-residue array unavailable', 'honest sigma unavailable', 'ordered honest labels unavailable', 'committed canonical high-shadow slot map unavailable']
+  tags=['FAM-B-G3N0p']; module=gentow3_checks; reasons=['honest pins unavailable', 'deciding-residue array unavailable', 'honest sigma unavailable', 'ordered honest labels unavailable', 'committed canonical high-shadow slot map unavailable']
+  tags=['FAM-B-G3N1']; module=gentow3_checks; reasons=['honest pins unavailable', 'deciding-residue array unavailable', 'honest sigma unavailable', 'ordered honest labels unavailable', 'committed canonical high-shadow slot map unavailable']
+  tags=['FAM-B-G3N2']; module=gentow3_checks; reasons=['honest pins unavailable', 'deciding-residue array unavailable', 'honest sigma unavailable', 'ordered honest labels unavailable', 'committed canonical high-shadow slot map unavailable']
+  tags=['FAM-B-G3N3']; module=gentow3_checks; reasons=['honest pins unavailable', 'deciding-residue array unavailable', 'honest sigma unavailable', 'ordered honest labels unavailable', 'committed canonical high-shadow slot map unavailable']
+  tags=['FAM-B-G3N3p']; module=gentow3_checks; reasons=['honest pins unavailable', 'deciding-residue array unavailable', 'honest sigma unavailable', 'ordered honest labels unavailable', 'committed canonical high-shadow slot map unavailable']
+  tags=['FAM-B-G3N4']; module=gentow3_checks; reasons=['honest pins unavailable', 'deciding-residue array unavailable', 'honest sigma unavailable', 'ordered honest labels unavailable', 'committed canonical high-shadow slot map unavailable']
+  tags=['FAM-B-G3N5']; module=gentow3_checks; reasons=['honest pins unavailable', 'deciding-residue array unavailable', 'honest sigma unavailable', 'ordered honest labels unavailable', 'committed canonical high-shadow slot map unavailable']
+  tags=['FAM-B-G3N6']; module=gentow3_checks; reasons=['honest pins unavailable', 'deciding-residue array unavailable', 'honest sigma unavailable', 'ordered honest labels unavailable', 'committed canonical high-shadow slot map unavailable']
+  tags=['FAM-B-G3N6p']; module=gentow3_checks; reasons=['honest pins unavailable', 'deciding-residue array unavailable', 'honest sigma unavailable', 'ordered honest labels unavailable', 'committed canonical high-shadow slot map unavailable']
+  tags=['FAM-B-G3N7']; module=gentow3_checks; reasons=['honest pins unavailable', 'deciding-residue array unavailable', 'honest sigma unavailable', 'ordered honest labels unavailable', 'committed canonical high-shadow slot map unavailable']
+  tags=['FAM-B-G3N8']; module=gentow3_checks; reasons=['honest pins unavailable', 'deciding-residue array unavailable', 'honest sigma unavailable', 'ordered honest labels unavailable', 'committed canonical high-shadow slot map unavailable']
+  tags=['FAM-B-G3N9']; module=gentow3_checks; reasons=['honest pins unavailable', 'deciding-residue array unavailable', 'honest sigma unavailable', 'ordered honest labels unavailable', 'committed canonical high-shadow slot map unavailable']
+  tags=['FAM-B-G3N9p']; module=gentow3_checks; reasons=['honest pins unavailable', 'deciding-residue array unavailable', 'honest sigma unavailable', 'ordered honest labels unavailable', 'committed canonical high-shadow slot map unavailable']
+  tags=['FAM-B-G3R0']; module=gentow3_checks; reasons=['honest pins unavailable', 'deciding-residue array unavailable', 'honest sigma unavailable', 'ordered honest labels unavailable', 'committed canonical high-shadow slot map unavailable']
+  tags=['FAM-B-G3R1']; module=gentow3_checks; reasons=['honest pins unavailable', 'deciding-residue array unavailable', 'honest sigma unavailable', 'ordered honest labels unavailable', 'committed canonical high-shadow slot map unavailable']
+  tags=['FAM-B-G3R10']; module=gentow3_checks; reasons=['honest pins unavailable', 'deciding-residue array unavailable', 'honest sigma unavailable', 'ordered honest labels unavailable', 'committed canonical high-shadow slot map unavailable']
+  tags=['FAM-B-G3R11']; module=gentow3_checks; reasons=['honest pins unavailable', 'deciding-residue array unavailable', 'honest sigma unavailable', 'ordered honest labels unavailable', 'committed canonical high-shadow slot map unavailable']
+  tags=['FAM-B-G3R2']; module=gentow3_checks; reasons=['honest pins unavailable', 'deciding-residue array unavailable', 'honest sigma unavailable', 'ordered honest labels unavailable', 'committed canonical high-shadow slot map unavailable']
+  tags=['FAM-B-G3R3']; module=gentow3_checks; reasons=['honest pins unavailable', 'deciding-residue array unavailable', 'honest sigma unavailable', 'ordered honest labels unavailable', 'committed canonical high-shadow slot map unavailable']
+  tags=['FAM-B-G3R4']; module=gentow3_checks; reasons=['honest pins unavailable', 'deciding-residue array unavailable', 'honest sigma unavailable', 'ordered honest labels unavailable', 'committed canonical high-shadow slot map unavailable']
+  tags=['FAM-B-G3R5']; module=gentow3_checks; reasons=['honest pins unavailable', 'deciding-residue array unavailable', 'honest sigma unavailable', 'ordered honest labels unavailable', 'committed canonical high-shadow slot map unavailable']
+  tags=['FAM-B-G3R6']; module=gentow3_checks; reasons=['honest pins unavailable', 'deciding-residue array unavailable', 'honest sigma unavailable', 'ordered honest labels unavailable', 'committed canonical high-shadow slot map unavailable']
+  tags=['FAM-B-G3R7']; module=gentow3_checks; reasons=['honest pins unavailable', 'deciding-residue array unavailable', 'honest sigma unavailable', 'ordered honest labels unavailable', 'committed canonical high-shadow slot map unavailable']
+  tags=['FAM-B-G3R8']; module=gentow3_checks; reasons=['honest pins unavailable', 'deciding-residue array unavailable', 'honest sigma unavailable', 'ordered honest labels unavailable', 'committed canonical high-shadow slot map unavailable']
+  tags=['FAM-B-G3R9']; module=gentow3_checks; reasons=['honest pins unavailable', 'deciding-residue array unavailable', 'honest sigma unavailable', 'ordered honest labels unavailable', 'committed canonical high-shadow slot map unavailable']
+  tags=['FAM-C-G3EQ']; module=gentow3_checks; reasons=['honest pins unavailable', 'deciding-residue array unavailable', 'honest sigma unavailable', 'ordered honest labels unavailable', 'committed canonical high-shadow slot map unavailable']
+  tags=['FAM-C-G3N0']; module=gentow3_checks; reasons=['honest pins unavailable', 'deciding-residue array unavailable', 'honest sigma unavailable', 'ordered honest labels unavailable', 'committed canonical high-shadow slot map unavailable']
+  tags=['FAM-C-G3N0p']; module=gentow3_checks; reasons=['honest pins unavailable', 'deciding-residue array unavailable', 'honest sigma unavailable', 'ordered honest labels unavailable', 'committed canonical high-shadow slot map unavailable']
+  tags=['FAM-C-G3N1']; module=gentow3_checks; reasons=['honest pins unavailable', 'deciding-residue array unavailable', 'honest sigma unavailable', 'ordered honest labels unavailable', 'committed canonical high-shadow slot map unavailable']
+  tags=['FAM-C-G3N2']; module=gentow3_checks; reasons=['honest pins unavailable', 'deciding-residue array unavailable', 'honest sigma unavailable', 'ordered honest labels unavailable', 'committed canonical high-shadow slot map unavailable']
+  tags=['FAM-C-G3N3']; module=gentow3_checks; reasons=['honest pins unavailable', 'deciding-residue array unavailable', 'honest sigma unavailable', 'ordered honest labels unavailable', 'committed canonical high-shadow slot map unavailable']
+  tags=['FAM-C-G3N3p']; module=gentow3_checks; reasons=['honest pins unavailable', 'deciding-residue array unavailable', 'honest sigma unavailable', 'ordered honest labels unavailable', 'committed canonical high-shadow slot map unavailable']
+  tags=['FAM-C-G3N4']; module=gentow3_checks; reasons=['honest pins unavailable', 'deciding-residue array unavailable', 'honest sigma unavailable', 'ordered honest labels unavailable', 'committed canonical high-shadow slot map unavailable']
+  tags=['FAM-C-G3N5']; module=gentow3_checks; reasons=['honest pins unavailable', 'deciding-residue array unavailable', 'honest sigma unavailable', 'ordered honest labels unavailable', 'committed canonical high-shadow slot map unavailable']
+  tags=['FAM-C-G3N6']; module=gentow3_checks; reasons=['honest pins unavailable', 'deciding-residue array unavailable', 'honest sigma unavailable', 'ordered honest labels unavailable', 'committed canonical high-shadow slot map unavailable']
+  tags=['FAM-C-G3N6p']; module=gentow3_checks; reasons=['honest pins unavailable', 'deciding-residue array unavailable', 'honest sigma unavailable', 'ordered honest labels unavailable', 'committed canonical high-shadow slot map unavailable']
+  tags=['FAM-C-G3N7']; module=gentow3_checks; reasons=['honest pins unavailable', 'deciding-residue array unavailable', 'honest sigma unavailable', 'ordered honest labels unavailable', 'committed canonical high-shadow slot map unavailable']
+  tags=['FAM-C-G3N8']; module=gentow3_checks; reasons=['honest pins unavailable', 'deciding-residue array unavailable', 'honest sigma unavailable', 'ordered honest labels unavailable', 'committed canonical high-shadow slot map unavailable']
+  tags=['FAM-C-G3N9']; module=gentow3_checks; reasons=['honest pins unavailable', 'deciding-residue array unavailable', 'honest sigma unavailable', 'ordered honest labels unavailable', 'committed canonical high-shadow slot map unavailable']
+  tags=['FAM-C-G3N9p']; module=gentow3_checks; reasons=['honest pins unavailable', 'deciding-residue array unavailable', 'honest sigma unavailable', 'ordered honest labels unavailable', 'committed canonical high-shadow slot map unavailable']
+  tags=['FAM-C-G3R0']; module=gentow3_checks; reasons=['honest pins unavailable', 'deciding-residue array unavailable', 'honest sigma unavailable', 'ordered honest labels unavailable', 'committed canonical high-shadow slot map unavailable']
+  tags=['FAM-C-G3R1']; module=gentow3_checks; reasons=['honest pins unavailable', 'deciding-residue array unavailable', 'honest sigma unavailable', 'ordered honest labels unavailable', 'committed canonical high-shadow slot map unavailable']
+  tags=['FAM-C-G3R10']; module=gentow3_checks; reasons=['honest pins unavailable', 'deciding-residue array unavailable', 'honest sigma unavailable', 'ordered honest labels unavailable', 'committed canonical high-shadow slot map unavailable']
+  tags=['FAM-C-G3R11']; module=gentow3_checks; reasons=['honest pins unavailable', 'deciding-residue array unavailable', 'honest sigma unavailable', 'ordered honest labels unavailable', 'committed canonical high-shadow slot map unavailable']
+  tags=['FAM-C-G3R2']; module=gentow3_checks; reasons=['honest pins unavailable', 'deciding-residue array unavailable', 'honest sigma unavailable', 'ordered honest labels unavailable', 'committed canonical high-shadow slot map unavailable']
+  tags=['FAM-C-G3R3']; module=gentow3_checks; reasons=['honest pins unavailable', 'deciding-residue array unavailable', 'honest sigma unavailable', 'ordered honest labels unavailable', 'committed canonical high-shadow slot map unavailable']
+  tags=['FAM-C-G3R4']; module=gentow3_checks; reasons=['honest pins unavailable', 'deciding-residue array unavailable', 'honest sigma unavailable', 'ordered honest labels unavailable', 'committed canonical high-shadow slot map unavailable']
+  tags=['FAM-C-G3R5']; module=gentow3_checks; reasons=['honest pins unavailable', 'deciding-residue array unavailable', 'honest sigma unavailable', 'ordered honest labels unavailable', 'committed canonical high-shadow slot map unavailable']
+  tags=['FAM-C-G3R6']; module=gentow3_checks; reasons=['honest pins unavailable', 'deciding-residue array unavailable', 'honest sigma unavailable', 'ordered honest labels unavailable', 'committed canonical high-shadow slot map unavailable']
+  tags=['FAM-C-G3R7']; module=gentow3_checks; reasons=['honest pins unavailable', 'deciding-residue array unavailable', 'honest sigma unavailable', 'ordered honest labels unavailable', 'committed canonical high-shadow slot map unavailable']
+  tags=['FAM-C-G3R8']; module=gentow3_checks; reasons=['honest pins unavailable', 'deciding-residue array unavailable', 'honest sigma unavailable', 'ordered honest labels unavailable', 'committed canonical high-shadow slot map unavailable']
+  tags=['FAM-C-G3R9']; module=gentow3_checks; reasons=['honest pins unavailable', 'deciding-residue array unavailable', 'honest sigma unavailable', 'ordered honest labels unavailable', 'committed canonical high-shadow slot map unavailable']
+  tags=['FAM-D-G3N0']; module=gentow3_checks; reasons=['honest pins unavailable', 'deciding-residue array unavailable', 'honest sigma unavailable', 'ordered honest labels unavailable', 'committed canonical high-shadow slot map unavailable']
+  tags=['FAM-D-G3N0p']; module=gentow3_checks; reasons=['honest pins unavailable', 'deciding-residue array unavailable', 'honest sigma unavailable', 'ordered honest labels unavailable', 'committed canonical high-shadow slot map unavailable']
+  tags=['FAM-D-G3N1']; module=gentow3_checks; reasons=['honest pins unavailable', 'deciding-residue array unavailable', 'honest sigma unavailable', 'ordered honest labels unavailable', 'committed canonical high-shadow slot map unavailable']
+  tags=['FAM-D-G3N2']; module=gentow3_checks; reasons=['honest pins unavailable', 'deciding-residue array unavailable', 'honest sigma unavailable', 'ordered honest labels unavailable', 'committed canonical high-shadow slot map unavailable']
+  tags=['FAM-D-G3N3']; module=gentow3_checks; reasons=['honest pins unavailable', 'deciding-residue array unavailable', 'honest sigma unavailable', 'ordered honest labels unavailable', 'committed canonical high-shadow slot map unavailable']
+  tags=['FAM-D-G3N3p']; module=gentow3_checks; reasons=['honest pins unavailable', 'deciding-residue array unavailable', 'honest sigma unavailable', 'ordered honest labels unavailable', 'committed canonical high-shadow slot map unavailable']
+  tags=['FAM-D-G3N4']; module=gentow3_checks; reasons=['honest pins unavailable', 'deciding-residue array unavailable', 'honest sigma unavailable', 'ordered honest labels unavailable', 'committed canonical high-shadow slot map unavailable']
+  tags=['FAM-D-G3N5']; module=gentow3_checks; reasons=['honest pins unavailable', 'deciding-residue array unavailable', 'honest sigma unavailable', 'ordered honest labels unavailable', 'committed canonical high-shadow slot map unavailable']
+  tags=['FAM-D-G3N6']; module=gentow3_checks; reasons=['honest pins unavailable', 'deciding-residue array unavailable', 'honest sigma unavailable', 'ordered honest labels unavailable', 'committed canonical high-shadow slot map unavailable']
+  tags=['FAM-D-G3N6p']; module=gentow3_checks; reasons=['honest pins unavailable', 'deciding-residue array unavailable', 'honest sigma unavailable', 'ordered honest labels unavailable', 'committed canonical high-shadow slot map unavailable']
+  tags=['FAM-D-G3N7']; module=gentow3_checks; reasons=['honest pins unavailable', 'deciding-residue array unavailable', 'honest sigma unavailable', 'ordered honest labels unavailable', 'committed canonical high-shadow slot map unavailable']
+  tags=['FAM-D-G3N8']; module=gentow3_checks; reasons=['honest pins unavailable', 'deciding-residue array unavailable', 'honest sigma unavailable', 'ordered honest labels unavailable', 'committed canonical high-shadow slot map unavailable']
+  tags=['FAM-D-G3N9']; module=gentow3_checks; reasons=['honest pins unavailable', 'deciding-residue array unavailable', 'honest sigma unavailable', 'ordered honest labels unavailable', 'committed canonical high-shadow slot map unavailable']
+  tags=['FAM-D-G3N9p']; module=gentow3_checks; reasons=['honest pins unavailable', 'deciding-residue array unavailable', 'honest sigma unavailable', 'ordered honest labels unavailable', 'committed canonical high-shadow slot map unavailable']
+  tags=['FAM-D-G3R0']; module=gentow3_checks; reasons=['honest pins unavailable', 'deciding-residue array unavailable', 'honest sigma unavailable', 'ordered honest labels unavailable', 'committed canonical high-shadow slot map unavailable']
+  tags=['FAM-D-G3R1']; module=gentow3_checks; reasons=['honest pins unavailable', 'deciding-residue array unavailable', 'honest sigma unavailable', 'ordered honest labels unavailable', 'committed canonical high-shadow slot map unavailable']
+  tags=['FAM-D-G3R10']; module=gentow3_checks; reasons=['honest pins unavailable', 'deciding-residue array unavailable', 'honest sigma unavailable', 'ordered honest labels unavailable', 'committed canonical high-shadow slot map unavailable']
+  tags=['FAM-D-G3R11']; module=gentow3_checks; reasons=['honest pins unavailable', 'deciding-residue array unavailable', 'honest sigma unavailable', 'ordered honest labels unavailable', 'committed canonical high-shadow slot map unavailable']
+  tags=['FAM-D-G3R2']; module=gentow3_checks; reasons=['honest pins unavailable', 'deciding-residue array unavailable', 'honest sigma unavailable', 'ordered honest labels unavailable', 'committed canonical high-shadow slot map unavailable']
+  tags=['FAM-D-G3R3', 'FAM-D-G3EQ']; module=gentow3_checks; reasons=['honest pins unavailable', 'deciding-residue array unavailable', 'honest sigma unavailable', 'ordered honest labels unavailable', 'committed canonical high-shadow slot map unavailable']
+  tags=['FAM-D-G3R4']; module=gentow3_checks; reasons=['honest pins unavailable', 'deciding-residue array unavailable', 'honest sigma unavailable', 'ordered honest labels unavailable', 'committed canonical high-shadow slot map unavailable']
+  tags=['FAM-D-G3R5']; module=gentow3_checks; reasons=['honest pins unavailable', 'deciding-residue array unavailable', 'honest sigma unavailable', 'ordered honest labels unavailable', 'committed canonical high-shadow slot map unavailable']
+  tags=['FAM-D-G3R6']; module=gentow3_checks; reasons=['honest pins unavailable', 'deciding-residue array unavailable', 'honest sigma unavailable', 'ordered honest labels unavailable', 'committed canonical high-shadow slot map unavailable']
+  tags=['FAM-D-G3R7']; module=gentow3_checks; reasons=['honest pins unavailable', 'deciding-residue array unavailable', 'honest sigma unavailable', 'ordered honest labels unavailable', 'committed canonical high-shadow slot map unavailable']
+  tags=['FAM-D-G3R8']; module=gentow3_checks; reasons=['honest pins unavailable', 'deciding-residue array unavailable', 'honest sigma unavailable', 'ordered honest labels unavailable', 'committed canonical high-shadow slot map unavailable']
+  tags=['FAM-D-G3R9']; module=gentow3_checks; reasons=['honest pins unavailable', 'deciding-residue array unavailable', 'honest sigma unavailable', 'ordered honest labels unavailable', 'committed canonical high-shadow slot map unavailable']
+SAME-FRAME DISTINCT-POLYNOMIAL PAIRS TESTED: 0
+NO COLLISION AMONG ELIGIBLE ROWS
+SEARCH INCOMPLETE: rows lacking a defined full honest tuple or canonical high-shadow map cannot support EMPTY
