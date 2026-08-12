@@ -1,0 +1,221 @@
+# T1 r4 corrections — 2026-08-12
+
+These edits repair the two gaps and one instrumentation minor found by T1P3.
+
+## R4-1 — Type the general-stage key height
+
+In §1.1, immediately after (C1-stage-uniformizer), insert:
+
+> Fix also the stage key \(\Phi_i\) with the stage-height identity
+> \[
+> \boxed{
+> dv_i\!\left(\Phi_i^{e_{i+1}}\right)
+> =
+> u_{i+1}.
+> }
+> \tag{C1-stage-key-height}
+> \]
+> Consequently, for every \(s\in\mathbf Z_{\ge0}\),
+> \[
+> dv_i\!\left(\Phi_i^{e_{i+1}s}\right)
+> =
+> su_{i+1}.
+> \]
+> This identity is part of the typed stage data. It is used both in the definitions of the residue letters and in the equal-height composed-key calculation.
+
+Immediately after the definitions of \(\eta_{i+1}\) and \(z_{i+1}\), insert:
+
+> By exact height, (C1-stage-uniformizer), and
+> (C1-stage-key-height),
+> \[
+> \begin{aligned}
+> dv_i\!\left(\Phi_i^{e_{i+1}}\right)
+> &=
+> dv_i\!\left(\widehat n_i(u_{i+1})\right)\\
+> &=
+> dv_i\!\left(\pi_{i+1}^{u_{i+1}}\right)
+> =
+> u_{i+1}.
+> \end{aligned}
+> \]
+> Hence both displayed quotients defining
+> \(\eta_{i+1}\) and \(z_{i+1}\) have value zero, so both residue letters are typed.
+
+In §2.1, replace the opening argument through the sentence preceding the level-two computation with:
+
+> By (C1-stage-key-height),
+> \[
+> dv_i\!\left(\Phi_i^{e_{i+1}}\right)
+> =
+> u_{i+1}.
+> \]
+> Exact height and (C1-stage-uniformizer) give
+> \[
+> dv_i\!\left(\widehat n_i(u_{i+1})\right)
+> =
+> dv_i\!\left(\pi_{i+1}^{u_{i+1}}\right)
+> =
+> u_{i+1}.
+> \]
+> Thus both defining fractions for
+> \(\eta_{i+1}\) and \(z_{i+1}\), as well as
+> \[
+> \frac{\widehat n_i(u_{i+1})}
+> {\pi_{i+1}^{u_{i+1}}},
+> \]
+> have value zero. Multiplicativity of residue on these value-zero factors gives
+> \[
+> z_{i+1}
+> =
+> \eta_{i+1}
+> \operatorname{res}\!\left(
+> \frac{\widehat n_i(u_{i+1})}
+> {\pi_{i+1}^{u_{i+1}}}
+> \right),
+> \]
+> proving the unconditional content of (C1-general).
+>
+> The carrier supplies no control of the remaining residue-unit part. Formula (C1-JA-specialization), when used, is exactly the imported hypothesis
+> \(\mathrm{(H\!-\!JA\!-\!CONJ)}_i\), not an additional conclusion of this proof.
+>
+> The following level-two computation is independent of that supplier hypothesis.
+
+Immediately after (C3-corrected-lift), insert:
+
+> Put \(s=f_{i+1}-t\). If \(c_t\ne0\), then
+> \(\vartheta_{i,s}\in K_i^\times\) implies
+> \(c_t\vartheta_{i,s}\ne0\), and the exact-height lift contract gives
+> \[
+> dv_i(\widehat k_t)=su_{i+1}.
+> \]
+> By (C1-stage-key-height),
+> \[
+> dv_i\!\left(\Phi_i^{e_{i+1}t}\right)
+> =
+> tu_{i+1}.
+> \]
+> Therefore every nonzero lower term has height
+> \[
+> \boxed{
+> dv_i\!\left(
+> \widehat k_t\Phi_i^{e_{i+1}t}
+> \right)
+> =
+> (s+t)u_{i+1}
+> =
+> f_{i+1}u_{i+1}.
+> }
+> \tag{C3-common-height}
+> \]
+> The leading term has the same height:
+> \[
+> dv_i\!\left(
+> \Phi_i^{e_{i+1}f_{i+1}}
+> \right)
+> =
+> f_{i+1}u_{i+1}.
+> \]
+> If \(c_t=0\), then \(\widehat k_t=0\) by the zero-lift convention and the corresponding lower term is absent; no finite exact height is assigned to that zero term.
+
+In §2.3, replace
+
+> Choosing
+> \[
+> \Gamma_t=c_t\vartheta_{i,f-t}
+> \]
+> therefore makes the multiplicative coefficient exactly \(c_t\), proving the corrected-key and degeneracy claims.
+
+with:
+
+> Choosing
+> \[
+> \Gamma_t=c_t\vartheta_{i,f-t}
+> \]
+> makes the multiplicative coefficient exactly \(c_t\). If
+> \(c_t\ne0\), the lift has exact height \((f-t)u\), and
+> (C1-stage-key-height) makes its product with
+> \(\Phi_i^{e_{i+1}t}\) a term of height \(fu\). If
+> \(c_t=0\), the lift and the corresponding key term are zero, and their coherent and multiplicative reads are both zero. Thus all nonzero terms participating in the residual-key calculation have the common height asserted in (C3-common-height).
+
+## R4-2 — Separate the nonzero exact-height lift contract from the zero lift
+
+In §1.1, replace the general lift contract
+
+> Whenever an exact-height lift is invoked, assume it lies in its stated integral domain and satisfies
+> \[
+> dv_i(\operatorname{lift}_i(d;m))=m,
+> \qquad
+> \operatorname{res}\!\left(
+> \frac{\operatorname{lift}_i(d;m)}{\widehat n_i(m)}
+> \right)=d.
+> \]
+>
+> Zero is lifted as zero.
+
+with:
+
+> Whenever a lift is invoked, assume that \(m\) lies in its stated integral domain and that
+> \[
+> \boxed{
+> \operatorname{res}\!\left(
+> \frac{\operatorname{lift}_i(d;m)}
+> {\widehat n_i(m)}
+> \right)
+> =
+> d
+> \qquad(d\in K_i).
+> }
+> \tag{C3-lift-residue}
+> \]
+> Exact height is asserted only for a nonzero digit:
+> \[
+> \boxed{
+> dv_i\!\left(\operatorname{lift}_i(d;m)\right)
+> =
+> m
+> \qquad(d\in K_i^\times).
+> }
+> \tag{C3-lift-height}
+> \]
+> The zero convention is
+> \[
+> \boxed{
+> \operatorname{lift}_i(0;m)=0,
+> \qquad
+> dv_i(0)=+\infty.
+> }
+> \tag{C3-zero-lift}
+> \]
+> Thus the residue identity remains valid at \(d=0\), but no finite exact-height assertion is made for the zero lift. At level \(1\), conclusion (C6) supplies this contract uniformly when \(m>D'h\).
+
+This replacement, together with the zero branch in (C3-common-height), permits vanishing \(c_t\) without assigning finite valuation to zero.
+
+## R4-3 — Make the weld-scope lint exclude its own specification
+
+Replace required revision check 6 with:
+
+> 6. **Weld scope lint.** Build the lint target from assertion-bearing T1 prose after excluding this numbered check, quoted rejected formulations, and matches lying within the scope of an explicit negation. On that target, fail on either literal-pattern regex
+>    \[
+>    \texttt{\textbackslash bone\textbackslash s+transport\textbackslash s+map\textbackslash b}
+>    \qquad\text{or}\qquad
+>    \texttt{\textbackslash bunique\textbackslash s+gauge\textbackslash b}.
+>    \]
+>    Also fail on an affirmative assertion that distinct \(M0\)–\(M4\) fields satisfy a compatibility relation without a named displayed package anchor. Occurrences inside this lint specification, quotations of rejected language, and explicit scope-fence negations are nonmatches. Confirm independently that every \(M3\) use retains the scored-stratum fence and every \(M4\) use retains the accepted W2-C3 fence.
+
+This preserves the intended scope check while preventing its pattern specification from triggering the document lint.
+
+## Consequential record edits
+
+Append to the honesty ledger:
+
+> 15. The general residue letters and the common-height composed-key calculation use the explicit stage identity
+> \[
+> dv_i\!\left(\Phi_i^{e_{i+1}}\right)=u_{i+1}.
+> \]
+> Exact lift height is asserted only for nonzero digits. A zero digit is lifted to zero, has residue zero after normalization, and contributes no finite-height key term.
+
+Add to §6:
+
+> | Added the general stage-key height identity; separated the nonzero exact-height lift contract from the zero-lift convention; and made the weld lint exclude its own specification, quotations, and negated scope fences. | T1P3, 2026-08-12 r4 | Repairs 2 GAP and 1 MINOR findings and types the letter residues, composed-key heights, and vanishing-coefficient branch. |
+
+SUMMARY: 3 REAL (repairs delivered)
