@@ -1,0 +1,76 @@
+No clean-pass credit. The fresh HEAD-validation attempt failed before either source could be read, and the merged text retains two substantive proof gaps.
+
+1. **C — Both instance records remain fail-closed.**
+
+   > “none of the eight listed half-open spans … has been checked”
+
+   > “`GT3-THRESHOLD` and `GT6-CERT-TOP` remain **UNRESOLVED**, and consumption stops.”
+
+   The fresh command attempt again failed with `bubblewrap is unavailable`. Consequently PE1 condition 7, source supersession review, and both requested regression consumptions remain unperformed. This is infrastructure failure, not evidence of a marker mismatch.
+
+2. **G — T4.2(c) does not exclude all assembled-slot cancellation.**
+
+   S0 defines the graded digit using:
+
+   > “all branches, carries, recarries, and terms landing in the same canonical \(K_2\)-slot”
+
+   But T4.2(c) assumes only:
+
+   > “exactly one single-extraction contribution”
+
+   Its proof then strengthens that premise without justification:
+
+   > “has no second contribution with which to cancel.”
+
+   “No second single-extraction contribution” is not literally “no second contribution.” Neither FLOOR nor the lemma statement establishes that the critical slot contains only single-extraction inputs and no other term or incoming carry/recarry. Thus the shared exposed-slot implication is not proved at its stated abstraction level.
+
+3. **G — T4.2(b) uses unestablished additivity of canonical digits.**
+
+   The proof says:
+
+   > “Taking the height-\(\Theta_j\) graded component proves the first assertion of (b).”
+
+   Linearity of \(\Delta_j\) alone does not establish
+   \(\operatorname{gr}_{\Theta_j}(A+B)
+   =\operatorname{gr}_{\Theta_j}(A)+\operatorname{gr}_{\Theta_j}(B)\)
+   for the defined canonical digits, which explicitly include carries and recarries. The text neither declares `gr` to be an additive associated-graded map on the relevant filtration layer nor first proves that all three discrepancies lie in that layer. Therefore the general perturbation assertion has a proof gap, even though the stronger in-budget specialization may avoid lower-height carries.
+
+4. **m — R2-G1 duplicates the lemma heading under literal application.**
+
+   It instructs replacement beginning at:
+
+   > “Assume the GENTOW-3 discrepancy floor”
+
+   but its replacement begins with:
+
+   > “**LEMMA T4.2 (certificate witness and threshold attainment).**”
+
+   The original lemma heading lies outside the stated replacement range, so byte-literal application leaves two consecutive T4.2 headings.
+
+5. **m — The hostile plan retains the withdrawn higher-\(\mu_2\) formulation.**
+
+   S4.3 now records only an:
+
+   > “unassembled candidate witness”
+
+   and makes no binomial attainment implication. S8 nevertheless requests checking:
+
+   > “the higher-\(\mu_2\) binomial condition is not stated as necessary”
+
+   and:
+
+   > “the one-sided binomial statement.”
+
+   Those checks describe the pre-r2 sufficient-condition formulation rather than the candidate-only record now in force.
+
+6. **m — The merged status label is stale.**
+
+   The operative status remains:
+
+   > “**STATUS: R1 TEXT REPAIRED; UNRESOLVED at attempt grade 0/2.**”
+
+   R2 supersedes several textual provisions, but never updates the `R1 TEXT REPAIRED` label. The unresolved grade remains accurate; only the repair-generation label is stale.
+
+No files were changed.
+
+VERDICT: NOT CLEAN | FINDINGS: 1C + 2G + 3m
