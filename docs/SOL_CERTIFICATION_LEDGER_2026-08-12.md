@@ -27,7 +27,7 @@ proof consumes (tightness census + consumption map).
 | 11 | HEX3 | RATIFIED-W-ANNEX (fresh) | **CERTIFIED 2026-08-12** — A0 adjudicated all 4 annex minors REAL at HEAD; repairs verified + folded as Corrections C–F (note append) |
 | 12 | W-12 | CHALLENGE (fresh, R3) | A1 done 2026-08-12: 3 REAL verified + folded (dated corrections: κ(T) orbit factor, c_F ∈ ℚ(X) in (A1), BOX-1 (H-a)–(H-e)); 1 OBSTRUCTED (all-degree order-1 history-transfer lemma owed — dated obstruction record in note). Remaining: prove the lemma + sol discharge |
 | 13 | GENHN | CHALLENGE (fresh, R4) | A2 done 2026-08-12: 3 REAL verified + folded (LEMMA GENHN-CAP-GEN band projection, LEMMA GENHN-LIFT for T(b)′(i), T(a) residual (T−c)²); 2 OBSTRUCTED (GENHN.CLASS finiteness display, GENHN.A(ii) universal slot claim — both need statement re-display, owner sign-off, records in note). Remaining: sol discharge + the 2 statement decisions |
-| 14 | HE6 | CHALLENGE (fresh, R6) | adjudicate+repair (A3) → discharge |
+| 14 | HE6 | CHALLENGE (fresh, R6) | A3 done 2026-08-12: 4 REAL verified + folded (γ_k normalizers in HE6-0″, HE6-3(a) length argument, HE6-0 equality scoping, ϖ ∈ K₀[x] in HE6-5) — all four dated corrections in note. Remaining: sol discharge |
 | 15 | HE6R1 | CHALLENGE (fresh, R7) | adjudicate+repair (A4) → discharge |
 | 16 | HE3 | CHALLENGE (fresh, R8) | adjudicate+repair (A5) → discharge |
 | 17 | GENIND ANNEX | sol pass found d-factor GAP | repair (R9) → clean sol pass |
