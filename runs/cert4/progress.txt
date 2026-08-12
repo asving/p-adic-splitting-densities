@@ -3,3 +3,5 @@
 [13:24:14] RC1_grtja exit 0 (209 B; OUTCOMES: DISCHARGED)
 [13:24:15] RC2_gentow5 start
 [13:24:29] RC2_gentow5 exit 0 (309 B; OUTCOMES: DISCHARGED)
+[13:24:29] RP1_genind start
+[13:27:32] RP1_genind exit 0 (1256 B; )

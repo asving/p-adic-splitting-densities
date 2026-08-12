@@ -1,0 +1,24 @@
+RATIFIED. No CRITICAL or GAP survives in the corrected annex stack.
+
+Key checks:
+
+- C2Q’s exponent composition is correct:
+  \[
+  -b_SH-C_{\rm extra}-a(N-1-H)+\gamma\Delta
+  \le -a(N-1)-H/2+O(1).
+  \]
+- The floor-adjacent case follows from the same two (CS-1Q) inequalities using the trivial stage-drain bound.
+- C2D supplies a genuinely well-founded recursion: strict product-degree descent unless \(e=1,D'=D\), where truncation to \(T\le N-1\) gives strict window descent. The undecided-fraction monotonicity has the correct direction.
+- Truncation preserves the lower window bound needed by C2Q.
+- C2E correctly prices the actual side length \(S\):
+  \[
+  \sum_{r=1}^{S}\left(\left\lceil rH/S\right\rceil-1\right)
+  =\frac{S+1}{2}H-O_m(1),
+  \]
+  and \(S\ge L\ge2a\) yields the required \(b_S-a\ge\frac12\) margin.
+- The normalization remains in \(Q=q^d\) throughout.
+- The remaining per-genre (CS-1Q) verification obligation is explicitly disclosed and is not silently promoted to a theorem.
+
+The phrase in C2Q attributing the full stage estimate to GENIND.C′ alone must be read through C2D’s subsequently displayed joint induction; the consumer sweep makes that wiring explicit, so it does not leave a mathematical gap.
+
+STACK-VERDICT: RATIFIED
