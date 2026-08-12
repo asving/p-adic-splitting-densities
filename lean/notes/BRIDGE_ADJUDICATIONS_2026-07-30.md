@@ -16041,3 +16041,24 @@ actual formal object; D10 ℕ-counts; D12 facades + ledger hashes.
 18-step migration plan with per-step safety (AxChk on every
 trusted-path touch). AWAITING ASVIN: the anchor revision (D1/D6/D8)
 + the retirement scale + the decision list overall.
+
+**RESIDUE-PRIORITY DIRECTIVE (Asvin 2026-08-12: "prioritize the honest
+residues")** — the soundness residue jumps the queue, ahead of the
+reorganization's remaining steps. THE BATCH, running now:
+- Sequential Codex-high runner (runs/residues/, 8 runs, each output
+  committed as it lands): R1 = DRAIN-N4 annex acceptance pass (the
+  full-density tie's only conditional; 1/2 → 2/2 if clean); R2 = the
+  WI nonemptiness repair DERIVATION (P_{i+1} from the tower datum, or
+  the honest scope + consumer check; orchestrator transcribes); R3–R8
+  = as-built Codex ratifications of the SIX chain notes without
+  decorrelated cycles (W-12, GENHN, HEX3, HE6, HE6R1, HE3) — closing
+  the model-diversity gap on the chain leg.
+- FGMN-WELD cite verification → an OPUS agent (Amendment 5's
+  spec-complete tier; PDF two-leg method per GENTOW2 S6.1 precedent;
+  frozen-note append only if clean).
+- JD0's formal arc + the WELD-FACE-AUDIT queue behind the runner
+  (briefs to assemble when R1–R8 clear).
+Also this morning: ANCHOR REV 2 landed (Asvin sign-off; compiles
+green) + Amendment 5 recorded + migration step 1 baseline frozen
+(ledger 166/0/0/0 + AxChk exit 0). The reorganization's steps 2+
+resume after the residue batch.

@@ -1,0 +1,1640 @@
+REPAIR DERIVATION (you are gpt-5.6-sol high; output = the exact dated repair
+text for the orchestrator to transcribe — you cannot edit files). The note
+below is at 1/2; its Codex pass (pasted) found ONE GAP: the ambient setting
+assumes P_{i+1} nonempty while the fenced statement quantifies over every
+3 <= i < r unconditionally. YOUR TASK: derive, from the pasted DEF GENTOW5-1
+tower-datum definition and the note's own setting, whether P_{i+1} is
+automatically nonempty at every permitted level of a tower datum (prove it),
+OR if not, produce the minimal honest scoping clause for the statement plus
+the consumer-context check (the pasted consumers: GENTOW5's S11.2 fence and
+WFRAME OPEN-1 — do their contexts supply nonemptiness?). Deliver: (1) the
+verdict (DERIVABLE / SCOPE-NEEDED), (2) the proof or the scoping clause
+verbatim as a dated [r1] insertion, (3) one machine check the orchestrator
+can run. End with OUTCOME: <verdict>.
+=== THE NOTE (GENTOW5_WI_2026-08-10.md, verbatim at HEAD) ===
+# [GENTOW5-W(i)] — the i >= 3 monomial form of the B''-transport, PROVED
+## RCT unit GENTOW5-W-i-lemma (FABLE arm) — 2026-08-10 — grade 0/2, hostile arc follows
+
+**Charge.** The named open lemma [GENTOW5-W(i)] (GENTOW5_PROOF
+S11.2 @ b0e5c648, the A-F2 fence): the single-w monomial form of the
+B''-transport at levels i >= 3. GENTOW5's note is FROZEN
+post-acceptance (its S11.6 byte-freeze), so this companion note is
+the lemma's home: statement (byte-matching the fenced display),
+proof, consumption census (R.1 three-leg), machine leg (two-commit
+seal; the committed depth-4/5/6 witnesses reproduced EXACTLY + one
+NEW letter-live level-3 frame). The route is the one the fence
+itself names: GENTOW2-B'''s computation run at level i — ratio of
+normalizers -> tau_i-cocycle -> residue letter — with the HETOW-4
+telescope as sibling precedent. Nothing in GENTOW5_PROOF or
+GENTOW2_PROOF is edited; this note ADDS.
+
+**Verdict up front.** [GENTOW5-W(i)] is PROVED at every level
+i >= 3 of a DEF GENTOW5-1 tower datum (S2 below). The proof is
+GENTOW2-B'''s four-step computation (peel / expand / j >= 1 kill /
+j = 0 digit read) run at level i, with TWO structural
+simplifications over the i = 2 original, both disclosed and both
+consumption-REDUCING: the grade-0 ladder lift z-hat is eliminated
+(the test element is G := N^d itself, digit theta^{-1} carried
+through instead of digit 1 arranged), so neither the T(b)'(iii)
+grade-0 lift supply nor the Thm 4.8 grade-0 read — the two B''-proof
+inputs with NO accepted level-i analogue — is consumed. Every
+surviving input is either level-general in FGMN's source statements
+or on the accepted record at level i (LEMMA GENTOW5-C; the S3 (B-2)
+leg's u_i-family, which S11.2's own adjudication places on the
+PROVED side of the fence).
+
+**Sections.** S1 setting + the fenced statement · S2 the proof ·
+S3 consumption census (R.1 three-leg) · S4 what discharges
+downstream · S5 machine leg (two-commit seal: preregistered
+predictions + teeth) · S6 run verdict (appended from artifacts) ·
+S7 grade box + honest residue.
+
+---
+
+## S1. SETTING + STATEMENT
+
+Ambient setting: a DEF GENTOW5-1 depth-r tower datum (GENTOW5_PROOF
+S2.1 @ b0e5c648: stage data (e_j, f_j, psi_j), properness l_j >= 2
+at j >= 2, heights u_j with the floor chain u_{j+1} > e_{j+1}E_j and
+gcd(u_{j+1}, e_{j+1}) = 1, normalizer recursion nhat, recipe keys),
+with P_{i+1} nonempty, at a level i with 3 <= i < r. All symbols as
+in GENTOW5_PROOF @ b0e5c648 and GENTOW2_PROOF @ 33f86204; nothing is
+re-founded. The objects of the statement:
+
+* the recipe geometry at level i: slots t < f_{i+1}, slot grades
+  beta_t := u_{i+1}(f_{i+1}-t)/e(mu_i) in Gamma_i, top-slot grade
+  kbar_i := beta_{f_{i+1}-1} = u_{i+1}/e(mu_i);
+* the B'-TRANSPORT UNIT FAMILY u_i(beta) in K_i^x — the (B-2 at
+  level i) leg of THEOREM GENTOW5-B's proof (@ b0e5c648 L915–936):
+  u_i(beta) := R_{i+1,beta}(nhat_i(beta-hat)) (beta-hat :=
+  e(mu_i)beta), per-grade, x0-free and g-free, with the repo
+  K_i-digit read and FGMN's Def 3.16 epsilon-normalized coordinate
+  agreeing up to it:  R_{i+1,beta}(g) = u_i(beta) * digit_i(g) for
+  Phi_i-free g of exact grade beta.  At i >= 3 this family is on the
+  PROVED side of the S11.2 fence ("per-grade FIXEDNESS of u_i(beta)
+  ..., x0-freeness and g-freeness", @ b0e5c648 L1904–1908); at i = 2
+  it is LEMMA GENTOW2-B'(3) verbatim;
+* the level-i nhat-cocycle
+  theta_i(t) := res((nhat_i(u_{i+1}(f_{i+1}-t)) /
+  nhat_i(u_{i+1})^{f_{i+1}-t})(x0)) in K_i^x — a FIXED letter unit
+  (S2.3 step (3)'s tau_i-cocycle computation, accepted), reciprocal
+  to S2.1's telescope: theta_i(t) = vartheta_{i,f_{i+1}-t}^{-1}
+  (@ b0e5c648 L938–940);
+* digit_i(g) := res(g(x0)/nhat_i(beta-hat)(x0)), the (R-repo)
+  coherent read at level i, x0 a Phi_i-root, through the canonical
+  evaluation identification k(L_i) ~ F_{i+1} ~ K_i (Prop 1.15(1)/(2),
+  stated in FGMN for every chain level — GENTOW2 S6.1 row 17, PDF
+  p.7 + p.15) — the identification the accepted (B-2 at level i) leg
+  already consumes at exactly this site.
+
+**LEMMA [GENTOW5-W(i)] (i >= 3).** For each recipe slot t < f_{i+1},
+with w_i := u_i(kbar_i) = R_{i+1,kbar_i}(nhat_i(u_{i+1})) in K_i^x:
+
+      u_i(beta_t) = theta_i(t) * w_i^{f_{i+1}-t},
+      w_i = R_{i+1,kbar_i}(nhat_i(u_{i+1})).
+
+This is the fenced display byte-for-byte (GENTOW5_PROOF S11.2
+@ b0e5c648 L1912–1913, ASCII form; u_i(beta_t) = theta_i(t) *
+w_i^{f_{i+1}-t} with the single cross-frame unit w_i). At i = 2 the
+identity is LEMMA GENTOW2-B'' (accepted, ledger row GENTOW2 #4); the
+lemma below extends it to every level i >= 3 of the datum.
+
+---
+
+## S2. PROOF
+
+Fix t < f_{i+1} and write d := f_{i+1} - t >= 1, N :=
+nhat_i(u_{i+1}), M := nhat_i(u_{i+1}d), G := N^d. N and M are ladder
+monomials in pi, x, Phi_1, ..., Phi_{i-1} (the unrolled recursion,
+DEF GENTOW5-1): deg N, deg M < D_i, Phi_i-free, at dv_i-heights
+u_{i+1} resp. u_{i+1}d exactly. deg G <= d(D_i - 1) < f_{i+1}D_i <=
+D_{i+1}.
+
+*(0) Exact grades.* mu_{i+1}(N) = mu_i(N) (Prop 1.9(2): Phi_i-free
+implies nu = mu_i — level-general, GENTOW2 S6.1 row 22), and
+mu_i(N) = kbar_i: N is a monomial, a valuation is additive on
+products, and each factor's value is the chain's exact key value
+(mu_i(Phi_j) = u_{j+1}/ehat_{j+1} in v-normalization for j < i — the
+chain data; equivalently: N is a one-slot element of dv_i-height
+u_{i+1} and LEMMA GENTOW5-C's value clause identifies dv_i ladder
+height with mu_i-value on deg < D_i elements). Hence mu_{i+1}(G) =
+d * kbar_i = beta_t exactly (additivity again), and likewise
+mu_{i+1}(M) = beta_t.
+
+*(i) Peel:* R_{i+1,beta_t}(G) = R_{i+1,kbar_i}(N)^d = w_i^d, a
+y-degree-0 scalar. Iterate Cor 4.7(2) [Q8] d-1 times (no degree
+hypothesis — GENTOW2-B''(i)'s own precedent); at each peel the
+split-off factor N has grade kbar_i = u_{i+1}/e(mu_i) in Gamma_i =
+(1/e(mu_i))Z. Each factor R_{i+1,kbar_i}(N) is a y-degree-0 scalar
+(deg N < D_i = m_{i+1}, Phi_i-free single-point N_{i+1}-polygon —
+Cor 4.4(3)) and nonzero (Cor 4.4(1) at the exact grade of step (0));
+and R_{i+1,kbar_i}(N) = u_i(kbar_i) = w_i by the u_i-family's
+definitional display (S1). [This step is where GENTOW2-B''(i)'s
+z-hat factor is DROPPED: no grade-0 lift is multiplied in, so
+R_{3,0}(z-hat) = d — the Thm 4.8 + T(b)'(iii) step — has no level-i
+analogue to consume.]
+
+*(ii) Expand:* G = Sum_{j>=0} Q_j Phi_i^j, deg Q_j < D_i (the
+Phi_i-adic expansion). By Def 1.8 (nu = mu_{i+1} is DEFINED by the
+expansion minimum — level-general, GENTOW2 S6.1 row 21):
+mu_{i+1}(G) = min_j mu_{i+1}(Q_j Phi_i^j) = beta_t, so every term
+has value >= beta_t, and Cor 4.7(1) [Q8] gives
+
+    R_{i+1,beta_t}(G) = Sum_j R_{i+1,beta_t}(Q_j Phi_i^j).
+
+*(iii) Every j >= 1 term contributes 0 at y-degree 0* — GENTOW2-
+B''(iii) verbatim with (e_3, lam_3, Gamma_2) -> (e_{i+1}, lam_{i+1},
+Gamma_i): if mu_{i+1}(Q_j Phi_i^j) > beta_t it dies by Lemma 3.17
+(row 15); if = beta_t then either e_{i+1} does not divide j —
+impossible, since mu_{i+1}(Q_j) = mu_i(Q_j) in Gamma_i (Prop 1.9(2),
+deg Q_j < D_i) while j*lam_{i+1} not in Gamma_i (gcd(h_{i+1},
+e_{i+1}) = 1) would put the term's value outside Gamma_i, which
+contains beta_t — or e_{i+1} | j, and Cor 4.7(2) + eq (14) [Q7]
+place R_{i+1,beta_t}(Q_j Phi_i^j) = R_{i+1,mu(Q_j)}(Q_j) *
+y^{j/e_{i+1}} at y-degree j/e_{i+1} >= 1. (Both ramification legs
+covered: at e_{i+1} = 1 every j >= 1 term sits at y-degree j >= 1
+directly.)
+
+*(iv) The j = 0 term.* x0 is a Phi_i-root, so evaluation kills every
+j >= 1 term of the expansion: Q_0(x0) = G(x0) = N(x0)^d. Hence
+
+    digit_i(Q_0) = res((N^d / M)(x0)) = theta_i(t)^{-1} != 0:
+
+N^d/M is a value-0 Laurent monomial in pi, x, Phi_1, ..., Phi_{i-1}
+(both N^d and M at dv_i-height u_{i+1}d), so its residue is a FIXED
+letter unit by the level-i gamma-calculus — S2.3 step (3)'s
+tau_i-cocycle computation (accepted; equivalently res((M/N^d)(x0)) =
+theta_i(t) = vartheta_{i,d}^{-1} by the S2.1 reciprocity) — and x0
+lies in P_i with every monomial factor at its exact value (clause
+(b) of THEOREM GENTOW5-B at index i-1: the recipe's roots ARE
+depth-i node points; a w-blind clause, unconditional per the S11.2
+scope walk), so the evaluation is legitimate and exact:
+dv_i(Q_0(x0)) = dv_i(N(x0)^d) = u_{i+1}d exactly. LEMMA GENTOW5-C's
+value clause (deg Q_0 < D_i, level i — the (B-1 at level i) proviso
+of GENTOW5-B's proof) turns the exact evaluation height into the
+exact value mu_i(Q_0) = beta_t, and Prop 1.9(2) gives
+mu_{i+1}(Q_0) = beta_t. Now the u_i-family's factorization (S1, the
+accepted (B-2 at level i) leg) applies to Q_0 (Phi_i-free, exact
+grade beta_t):
+
+    R_{i+1,beta_t}(Q_0) = u_i(beta_t) * digit_i(Q_0)
+                        = u_i(beta_t) * theta_i(t)^{-1},
+
+a y-degree-0 scalar (deg Q_0 < D_i, single-point polygon, Cor
+4.4(3)).
+
+*Equate.* By (ii)+(iii), the y-degree-0 part of R_{i+1,beta_t}(G) is
+the j = 0 term alone; by (i) it is w_i^d. Hence
+
+    w_i^d = u_i(beta_t) * theta_i(t)^{-1},   i.e.
+    u_i(beta_t) = theta_i(t) * w_i^{f_{i+1}-t}.  QED
+
+*Consistency corner (d = 1, the top slot).* theta_i(f_{i+1}-1) =
+res(N/N) = 1 and the identity reads u_i(kbar_i) = w_i — the
+definition of w_i; the proof specializes to a tautology there, as at
+i = 2.
+
+*Why the fence's underdetermination worry does not bite.* The fence
+was right that per-grade fixedness alone underdetermines the single-w
+form (fixed families exist fitting no single w); the proof above does
+not argue from fixedness — it COMPUTES each u_i(beta_t) against the
+one monomial N^d, and the single w_i enters as the d-th power of the
+one peeled factor R_{i+1,kbar_i}(N). The geometry (every slot grade
+beta_t a multiple of the top-slot grade kbar_i by the SAME ladder
+monomial's powers) is what makes one unit suffice; that geometry is
+the recipe's, at every level alike.
+
+---
+
+## S3. CONSUMPTION CENSUS (three-leg checks per R.1)
+
+**The absorbed-statement census (9 items).** Rowed (S-0 ledger,
+GENTOW2_PROOF @ 33f86204): C-1 LEMMA GENTOW2-B'' — the i = 2
+precedent whose proof shape is transported, NOT consumed as a
+premise (row GENTOW2 #4, md5-8 `d4c8b885`, L729–738; proof
+L740–778). Span-pinned (R.1(a) span-pin rule, byte-frozen sources):
+C-2 the (B-2 at level i) leg of THEOREM GENTOW5-B's proof — the
+u_i-family: definitional display, per-grade shape, x0-freeness,
+g-freeness, and the factorization R = u * digit at i >= 3
+(GENTOW5_PROOF @ b0e5c648 L915–936, consumed AT THE FENCE'S OWN
+ADJUDICATION: S11.2's proved list L1904–1908 places exactly this on
+the proved side; this note adds no strength to it); C-3 LEMMA
+GENTOW5-C — the value clause (= (B-1 at level i)) and step (3)'s
+tau_i-cocycle letter computation (@ b0e5c648 L544–613; accepted at
+the annex acceptance grade per its own grade-honesty box); C-4 the
+S2.1 reciprocity theta_i(t) = vartheta_{i,f_{i+1}-t}^{-1}
+(@ b0e5c648 L938–940, on S11.2's proved list); C-5 THEOREM
+GENTOW5-B clause (b) at index i-1 — Phi_i-roots are P_i points with
+exact monomial values (@ b0e5c648 L821–833; w-blind per the S11.2
+scope sentence L1925–1928, so consuming it here is NOT circular:
+the fence conditions only (a)'s psi^{(w)} display + certificate legs
+and (b)'s FGMN-side residual DISPLAYS, never the exact-value/P-locus
+clause); C-6 the (R-repo) coherent read + canonical evaluation
+identification at level i (GENTOW2_PROOF (R-repo) display L500–516,
+level-general via Prop 1.15 — the same site the accepted C-2 leg
+already consumes it); C-7 DEF GENTOW5-1's normalizer recursion +
+floor chain (@ b0e5c648 L387–398). FGMN statements (each verified
+MATCH in GENTOW2 S6.1's PDF-provenance table; each stated in the
+source at arbitrary chain level/inductive valuation): C-8 the
+graded-residual kit — Def 1.8 (row 21), Prop 1.9(2) (row 22), Lemma
+3.17 (row 15), Cor 4.4(1)/(3) (row 5), Cor 4.7(1)/(2) (row 6),
+eq (14) (row 9), Prop 1.15(1)/(2) (row 17); C-9 — deliberately
+EMPTY: Thm 4.8 (row 16) and T(b)'(iii)'s grade-0 lift supply, both
+consumed by GENTOW2-B''s i = 2 proof, are consumed NOWHERE here
+(the S2(i) bracket) — the two inputs with no accepted level-i
+analogue are out of the footprint by construction.
+
+**Leg (a) — STATEMENT.** C-1's display is quoted at its ledger md5;
+`statement_ledger.py --check` green at this note's final commit
+(S6). This note prefixes NO binder, hypothesis, or fixed-witness
+clause to any absorbed statement: C-2..C-5 are consumed at their
+source scope (level i of the same datum), and the one narrowing —
+this note's lemma binds i >= 3 — narrows the CONCLUSION's home, not
+any consumed premise. The proved lemma's statement is byte-matched
+to the fenced display (S1).
+
+**Leg (b) — PROOF-SHAPE.** The transported proof consumes the same
+FGMN kit as the i = 2 original MINUS two items (C-9), and each
+surviving cite is level-general in the source's own quantifier
+(checked row-by-row against S6.1's quoted forms: Def 1.8 defines
+nu for every augmentation; Prop 1.9, Lemma 3.17, Cor 4.4, Cor 4.7,
+eq (14), Prop 1.15 are stated for an arbitrary inductive valuation
+mu / chain level i). No step of S2 instantiates a statement outside
+its source quantifier.
+
+**Leg (c) — CIRCULARITY.** The lemma's conclusion conditions (per
+S11.2's scope) clause (a)'s psi^{(w)} display, (a)'s certificate
+legs, and (b)'s FGMN-side residual displays at i >= 3. The proof
+consumes: C-2 (proved side of the fence), C-3/C-4 (proved side),
+C-5 (the w-blind clause of (b), explicitly OUTSIDE the fence's
+conditional list), C-6..C-8 (accepted/source). No consumed item
+sits behind [GENTOW5-W(i)] itself: the walk above is the
+no-circularity check, item by item.
+
+---
+
+## S4. WHAT DISCHARGES DOWNSTREAM (display; the frozen notes are
+## not edited)
+
+With [GENTOW5-W(i)] proved at i >= 3, the S3(a) algebra of
+GENTOW5_PROOF (@ b0e5c648 L941–954: coherent digit c_t *
+vartheta_{i,f_{i+1}-t}, the theta leg cancels, the w-leg survives)
+runs UNCONDITIONALLY at i >= 3:
+
+    R_{nu_i}(Phi_{i+1}) = psi_{i+1}^{(w_i)},
+
+so the fence's conditional list — clause (a)'s realized-residual
+display psi_{i+1}^{(w_i)} at i >= 3, the (a)-certificate legs
+consuming that form (KP membership via admissibility of psi^{(w)},
+prime, non-equivalence), and (b)'s FGMN-side residual displays at
+the same indices — is DISCHARGED: those clauses now rest on this
+note's lemma instead of an open hypothesis. Unchanged elsewhere:
+the i = 2 level stays on the landed GENTOW2 r3 B-law (verbatim);
+the i = 1 shape + the OPEN u1 = w_1 tie (S11.3 / WFRAME OPEN-2) are
+NOT touched by this note — [GENTOW5-W(i)] binds i >= 3 only, and
+the i = 1 display is a different species (no recipe-slot geometry
+at the outer stage). WFRAME_NOTE's OPEN-1 (grade 0/2, unconsumed
+here) points at the fence this note closes; its ladder §3 reads,
+post-acceptance of this note: i = 2 unconditional, i >= 3
+unconditional at the same display, i = 1 tie open. OPEN-3 (a
+closed-form w-LAW) remains open and is NOT claimed: this note
+proves the SHAPE u = theta * w^d with w_i the R-read of one ladder
+monomial; it computes no w value at any frame — values stay
+measurement territory (S5).
+
+---
+
+## S5. MACHINE LEG (gentow5_wi_checks.py — two-commit seal)
+
+**Instrument.** verification/openmath/gentow5_wi_checks.py, NEW
+(own polynomial kit: integer coefficient lists, Sylvester/Bareiss
+exact resultants, own nhat recursion + exponent-lattice solver; gp
+subprocess for the PARI leg, budget-guarded). Committed BEFORE the
+run with the predictions below in its docstring (seal commit); the
+run appends its output artifact + S6's verdict in a second commit.
+RED outcomes are kept with diagnosis, never tuned away.
+
+**Frames.** (F-A) The committed q = 2 witness chain (GENTOW5 S4:
+u = 1, 5, 21, 85, 341; keys Phi_1 = x^2-2, Phi_2 = Phi_1^2-4x,
+Phi_3 = Phi_2^2-16Phi_1, Phi_4 = Phi_3^2-256Phi_2; f32 =
+Phi_4^2-2^16 Phi_3) + the committed depth-6 objects (gentow5_pe3
+D-legs: f64 = f32^2-2^32 Phi_4; mutants f32m = Phi_4^2-2^20 Phi_1,
+f64m = f32^2-2^40 Phi_2). (F-LW3) THE NEW FRAME, letter-live at
+level 3 — first of its kind on the record: p = 3, h = 1, stage data
+(e, f) = (2,1),(2,1),(2,1),(1,2), heights u = (1, 5, 21, 43) (floor
+chain: 5 > 4, 21 > 20, 43 > 42; gcd's 1), psi_1 = y-2, psi_2 = y-2,
+psi_3 = y-2, psi_4 = y^2-y-1 (irreducible over F_3, c_1 = c_0 = 1):
+
+    Phi_1 = x^2 - 6           (letter z_1 = res(x0^2/3) = 2)
+    Phi_2 = Phi_1^2 - 18x     (nhat_1(5) = 9x, digit 2; z_2 = 2)
+    Phi_3 = Phi_2^2 - 162Phi_1 (nhat_2(21) = 81Phi_1, digit 2; z_3 = 2)
+    Phi_4 = Phi_3^2 - 3xPhi_1Phi_2*Phi_3 - 2*3^9*xPhi_1   (deg 16)
+
+with the level-3 recipe data: nhat_3(43) = 3xPhi_1Phi_2, nhat_3(86)
+= 3^9 xPhi_1 (hand recursion, derived twice: level-by-level solve
+and direct unrolled solve); coherent digits khat_1 = lift_3(c_1 *
+vartheta_{3,1}; 43) = nhat_3(43), khat_0 = lift_3(c_0 *
+vartheta_{3,2}; 86) = 2*nhat_3(86). HAND-DERIVED LATTICE VALUES
+(pre-seal, the instrument re-derives independently):
+nhat_3(86)/nhat_3(43)^2 = 3^7/(x Phi_1 Phi_2^2) = gamma_1^{-1}
+gamma_2^{-1} gamma_3^{-1} (gamma_1 = x^2/3, gamma_2 = Phi_1^2/(9x),
+gamma_3 = Phi_2^2/(81Phi_1)), so theta_3(0) = (z_1 z_2 z_3)^{-1} =
+8^{-1} = 2 in F_3^x — LETTER-LIVE — and vartheta_{3,2} =
+theta_3(0)^{-1} = 2; theta_3(1) = 1 (top slot). The naive twin
+Phi_4n := Phi_3^2 - 3xPhi_1Phi_2*Phi_3 - 3^9*xPhi_1 (digit 1 at
+slot 0 — the gauge-naive prescription).
+
+**Preregistered predictions (sealed; teeth marked T).**
+* P-A1 nhat reproduction, committed chain: nhat_1(5) = 4x,
+  nhat_2(21) = 16Phi_1, nhat_3(85) = 256Phi_2, nhat_4(341) =
+  2^16 Phi_3 — the S4.1/S2.2 committed values EXACTLY.
+* P-A2 nhat at F-LW3: the four displayed values above EXACTLY.
+* P-A3 lattice: theta_3(0) exponent split (-1,-1,-1) on
+  (gamma_1, gamma_2, gamma_3); value 2; reciprocity vartheta_{3,2}
+  * theta_3(0) = 1 in F_3^x.
+* P-B1 committed resultant ladders EXACT (the S4.3 + pe3 D-A3
+  values): v2(Res(Phi_4, g)) = (8, 20, 42, 85) and v2(Res(f32, g))
+  = (16, 40, 84, 170, 341) for g = (x, Phi_1, Phi_2, Phi_3[,
+  Phi_4]); v2(Res(f64, g)) = (32, 80, 168, 340, 682, 1365) for
+  g = (x, Phi_1, Phi_2, Phi_3, Phi_4, f32).
+* P-B2 (T, committed teeth reproduced): Res(f32m, Phi_3) = 0 (drain
+  collapse) and Res(f64m, Phi_4) = 0.
+* P-C1 F-LW3 exact route: v3(Res(Phi_4LW, g)) = (8, 20, 42, 86)
+  for g = (x, Phi_1, Phi_2, Phi_3); the naive twin has the SAME
+  ladder (86 at Phi_3) — resultants are height-level and do NOT
+  discriminate the gauge; the residue does (P-D).
+* P-D1 PARI, coherent key: factorpadic(Phi_4LW, 3) = ONE factor of
+  degree 16; nfinit + idealprimedec: a single prime, (e, f) =
+  (8, 2); nfeltval ladder (x, Phi_1, Phi_2, Phi_3) = (4, 10, 21,
+  43) (v * e(pr), e(pr) = 8).
+* P-D2 letters: res(gamma_1) = res(gamma_2) = res(gamma_3) = 2 at
+  the measured prime (the psi_j-root classes of the datum).
+* P-D3 THE LAW ([GENTOW5-W(3)], the point of the instrument). With
+  P_3 := Phi_2 x^20 / Phi_1^{10} (v = 1/8; the Def 3.12-shape
+  uniformizer, P_4 = P_3 at e_4 = 1) and the avatar w_av :=
+  res((nhat_3(43)/P_3^{43})(xi)) in F_3^x (measured, NOT
+  predicted which value), and Y := res((Phi_3/(3xPhi_1Phi_2))(xi))
+  in F_9 the level-4 residue class:
+    LAW-1  tr(Y) = Y + Y^3 = w_av            (slot t = 1: u_3(kbar)
+                                              = theta_3(1) w = w)
+    LAW-2  norm(Y) = Y^4 = 2 * w_av^2        (slot t = 0: u_3(b_0)
+                                              = theta_3(0) w^2 = 2w^2,
+                                              norm = -k0digit*u = 2w^2
+                                              since -2*2 = 2 in F_3)
+    LAW-3  psi_4^{(w_av)}(Y) = 0 where psi^{(w)} := w^2 psi(y/w)
+  — three measurements (w_av, tr Y, norm Y), two independent
+  equations: the B''(6)-closure of GENTOW2 PE6, one level up, at a
+  letter-live level-3 frame.
+* P-D4 (T, single-w discrimination): psi_4^{(w')}(Y) != 0 at the
+  OTHER unit w' in F_3^x \ {w_av} — exactly one of the two twisted
+  quadratics vanishes at Y; kills "any w fits".
+* P-D5 (T, the no-theta law killed, w-FREE): norm(Y) != (tr Y)^2,
+  i.e. u_3(beta_0) != u_3(beta_1)^2 — preregistered from
+  theta_3(0) = 2 != 1: the theta-free power law u(beta_t) = w^{f-t}
+  is REFUTED at this frame regardless of w_av's value. [Arithmetic:
+  norm/tr^2 = 2w^2/w^2... = u(b_0)*(-k0 digit sign) — see LAW-2
+  bracket; the instrument asserts the displayed F_9 inequality.]
+* P-D6 (T, conditional nose): if w_av != 1 then psi_4(Y) != 0 (the
+  on-the-nose reading fails when the twist is live).
+* P-D7 (T, gauge-naive twin, disjunctive — the B-law predicts its
+  slot-0 residual coefficient u_3(beta_0)*1 = 2w^2 against target
+  coefficient... realized residual y^2 - w y - 2w^2 = (y + w)^2 in
+  F_3[y], a REPEATED-ROOT residual, so the naive twin CANNOT carry
+  the coherent key's certificate): factorpadic(Phi_4n, 3) is NOT
+  (one degree-16 factor with residue degree 2 and psi_4^{(w_av)}
+  vanishing at its residue class) — i.e. at least one of {>1
+  factors; f != 2; psi_4^{(w_av)}(Y') != 0} fires. The observed
+  branch is RECORDED, not predicted.
+
+**Budget + hygiene.** gp legs behind timeouts; if PARI is
+infeasible the exact-integer legs stand and the gp rows are
+DISCLOSED as not-run (not silently green). Output artifact:
+gentow5_wi_checks_output.txt, md5 recorded in S6. No committed
+sealed artifact is edited or re-run; F-A reproduction is by THIS
+instrument's own kit.
+
+---
+
+## S6. RUN RECORD (VERDICT — from the committed artifacts)
+
+**RUN 1 (2026-08-10, under the 07fa3676 seal): RED, KEPT** as
+gentow5_wi_checks_output_run1_RED.txt (md5 598d6704) — 58 checks,
+5 violations, every one instrument-side; diagnosis in the runner's
+DATED REPAIR block. The record: (i) 34/34 exact-integer checks GREEN
+first try — the committed depth-4/5/6 witnesses reproduced EXACTLY
+(nhat values, three resultant ladders, both drain teeth) and the
+LW3 ladders exact; (ii) the 5 red rows were a gp stdin parse defect
+(multi-line statements executed as fragments; the "failed" ladder
+row was a missing print — the probe shows (4,10,21,43) exact) plus
+an AVATAR MIS-KEY: the seal's LAW-1/LAW-3 rows consumed avatar = w
+(GENTOW2 S6.1 row 23, DESCRIPTIVE status) — and LW3 is the first
+measured geography where that leg has a genuinely nontrivial gap
+unit. The intrinsic data run 1 already measured: tr(Y) = 1,
+norm(Y) = 2, i.e. u_3(beta_1) = w_3 = 1 and u_3(beta_0) = 2 =
+theta_3(0) * w_3^2 — [GENTOW5-W(3)] HOLDS on the nose; the avatar
+measured 2 = w_3 * (row-23 gap unit). The lemma (an R-read
+statement) never consumed the avatar leg; the run-2 rows are
+re-keyed to the intrinsic content, with the avatar demoted to a
+record + its own cocycle-closure row (IDY). Run-2 preregistration
+(P-D1', P-D3', P-D4', P-D5, P-D6', P-D7', P-D8) is sealed in the
+repaired runner's docstring with [probe] provenance disclosed per
+row (diagnosis-probe observations run 2 must reproduce).
+
+**RUN 2 (2026-08-10, under the repaired seal, runner md5 c8c5d129):
+GREEN — 60 checks, 0 violations; isolated re-run BIT-IDENTICAL
+(artifact gentow5_wi_checks_output.txt, md5 b0a8c3c4, exit 0 both
+runs).** The rows, read against the preregistration:
+* COMMITTED-WITNESS REPRODUCTION (P-A1/P-B1/P-B2): the q = 2
+  depth-4/5/6 ladder values came out EXACTLY at the committed
+  numbers — v2(Res(Phi_4, g)) = (8, 20, 42, 85), v2(Res(f32, g)) =
+  (16, 40, 84, 170, 341), v2(Res(f64, g)) = (32, 80, 168, 340, 682,
+  1365) — and both committed drain teeth reproduced (Res(f32m,
+  Phi_3) = 0, Res(f64m, Phi_4) = 0), by this instrument's own kit.
+* THE NEW FRAME LW3 (first letter-live level-3 machine contact):
+  chain valid ((e,f) = (8,2) single prime, ladder (4, 10, 21, 43)
+  exact, letters (2, 2, 2) as pinned, theta_3(0) = 2 LIVE at the
+  measured prime = the hand lattice value).
+* THE LAW (P-D3'): measured u_3(beta_1) = tr(Y) = 1 = w_3 (top-slot
+  read) and norm(Y) = 2 = theta_3(0) * w_3^2 — the [GENTOW5-W(3)]
+  display at both slots, with the two-slot closure LAW-I1 EXACT and
+  the single-w twisted realization psi_4^{(w_3)}(Y) = 0 on the nose.
+* TEETH, each FIRED: P-D4' (the other unit's twist does NOT
+  vanish), P-D5 (the theta-free power law u = w^{f-t} is DEAD at
+  this frame — w-free kill), P-B2 (both drains), P-D7' (the
+  gauge-naive twin VERDICT-KILLED: (e, f) = (16, 1) against the
+  coherent key's (8, 2); its Phi_3-value stays exact at 86 — the
+  kill is ramification-theoretic, the repeated-root residual
+  (y+w)^2 predicted at composition time).
+* THE ROW-23 RECORD (P-D8): avatar w_av = 2 = w_3 * (gap unit 2);
+  the avatar family itself closes its own cocycle law (IDY
+  U0 = T0 * w_av^2 with T0 = 2 = the lattice pin) — filed to
+  WFRAME OPEN-3's geography as the first measured instance where
+  avatar != intrinsic w; no clause of this note's lemma consumes
+  the avatar identification.
+
+---
+
+## S7. GRADE BOX + HONEST RESIDUE
+
+**Grade: 0/2 (composed; hostile arc owed).** Machine record: run 1
+RED kept (598d6704, 5 instrument-side rows, diagnosis in the
+runner), run 2 GREEN 60/0 bit-identical re-run; two-commit seal
+honored on both runs (seal 07fa3676 before run 1; repair commit
+before run 2; verdicts from artifacts).
+
+**What this note claims.** [GENTOW5-W(i)] is PROVED at i >= 3 (S2)
+on the consumption footprint of S3 — the fenced display is now a
+lemma, not an open transported hypothesis, and S4's discharge list
+follows. The machine leg verifies the i = 3 instance's measurable
+content at one letter-live frame (LW3) and reproduces the committed
+w-trivial witnesses exactly.
+
+**What this note does NOT claim.** (1) No closed-form w-law: w_3
+was MEASURED (= 1 at LW3's prime); OPEN-3 stands. (2) The avatar =
+w identification (row 23, descriptive) is NOT consumed and is now
+measured to GAP at LW3 (gap unit 2) — a record for row 23's
+elevation obligation, strengthening the case that it must stay
+descriptive pending the s(alpha)-bookkeeping. (3) The i = 1 tie
+u1 = w_1 (S11.3 / OPEN-2) is untouched. (4) Coverage: the LW3
+letter-live test has K_3 = F_3 (two units) and f_4 = 2 (two slots);
+deeper alphabets (K_3 = F_4, F_9) and f_{i+1} >= 3 slot counts are
+machine-unexplored at i >= 3 — the PROOF is uniform in these, the
+record is not. (5) GENTOW5_PROOF and GENTOW2_PROOF are byte-frozen;
+their fences stand as written with this note as the named
+discharge; WFRAME (grade 0/2) is cited as geography only, never
+consumed.
+
+**Ledger.** statement_ledger.py --check green at the final commit
+(this note ADDS statements, changes none). Artifacts:
+gentow5_wi_checks.py (c8c5d129), gentow5_wi_checks_output.txt
+(b0a8c3c4), gentow5_wi_checks_output_run1_RED.txt (598d6704).
+
+=== PRIOR REPORT / CONTEXT: GENTOW5_WI_passPE1_report.md ===
+# GENTOW5-W(i) passPE1 — hostile verification report
+
+Target: `lean/notes/openmath/GENTOW5_WI_2026-08-10.md` at HEAD (note
+state = ec30256c chain; commits 07fa3676 → 4c959409 → ec30256c).
+Claim under test: [GENTOW5-W(i)] u_i(β_t) = ϑ_i(t)·w_i^{f_{i+1}−t}
+PROVED at levels i ≥ 3, by GENTOW2-B″'s four-step computation run at
+level i with the ẑ grade-0 lift eliminated. Sources read at their
+pinned commits: GENTOW5_PROOF @ b0e5c648, GENTOW2_PROOF @ 33f86204.
+AS-OF state read: T1/WFRAME/WI parallel 0/2 arcs; this note consumes
+neither T1 nor WFRAME (WFRAME cited as geography only — declared in
+S4/S7 and confirmed by grep).
+
+## VERDICT: CLEAN — nothing at GAP-or-worse survives verification.
+Four MINOR findings below. The machine leg re-verified bit-identical;
+the fresh leg produced an i = 4 letter-live contact (one level above
+LW3, the first i = 4 geometry on the record) and the [GENTOW5-W(4)]
+display held on the nose, 15 checks / 0 violations, dual exact
+oracles bit-equal.
+
+---
+
+## SURFACE 1 — THE PROOF, re-derived step by step at level i
+
+*(0) Exact grades.* Verified. Additionally re-proved (my own leg,
+not in the note): deg n̂_i(m) < D_i holds by the telescoping bound
+(e_1−1) + Σ_j (e_{j+1}−1)D_j ≤ D_i − 1, from the unrolled recursion's
+exponent bounds i0 < e_1, b_j < e_{j+1} (DEF GENTOW5-1 @ b0e5c648
+L387–398, read at source). μ_{i+1}(G) = d·κ̄_i = β_t is exact
+arithmetic (β_t = u_{i+1}d/e(μ_i) = d·κ̄_i).
+
+*(i) Peel.* Verified against the i = 2 original (B″ proof @ 33f86204
+L740–778). The ẑ-drop is algebraically sound: the i = 2 equate was
+ϑ·w^d = u(β_t)·1 (digit arranged to 1 via ẑ); here w^d =
+u_i(β_t)·ϑ_i(t)^{−1} (digit ϑ^{−1} carried) — the same identity.
+R_{i+1,κ̄}(N) = w_i is definitional (u_i-family display, β̂ = u_{i+1}
+at β = κ̄). Cor 4.7(2) iteration matches the i = 2 precedent's
+no-degree-hypothesis use (justified explicitly in B′'s proof text).
+
+*(iii) The j ≥ 1 kill is level-uniform* — the charge's specific
+worry checked and cleared: the dichotomy consumes gcd(h_{i+1},
+e_{i+1}) = 1 (e_{i+1} is BY DEFINITION the denominator of λ_{i+1}
+over Γ_i), the group structure of Γ_i, Prop 1.9(2) at deg Q_j < D_i
+(level-general, S6.1 row 22 MATCH re-read), and eq (14)'s y-degree
+j/e_{i+1} (row 9). The e_{i+1} = 1 branch is covered explicitly. No
+i = 2-specific arithmetic found in the step.
+
+*(iv) Digit read.* Verified: β̂_t = e(μ_i)β_t = u_{i+1}d so
+n̂_i(β̂_t) = M and digit_i(Q_0) = res((N^d/M)(x0)) = ϑ_i(t)^{−1} by
+the ϑ definition (inverse read of the same monomial quotient — the
+S2.1 reciprocity @ b0e5c648 L938–940, on S11.2's proved list).
+Evaluation legitimacy: clause (b) of GENTOW5-B at index i−1
+(@ L821–833) — its exact-value + P-membership clause sits on the
+S11.2 fence's NOT-conditional list ("the repo-side residue classes
+and P-membership clauses ... w-blind there", read at source), so the
+consumption is not circular. The exact-height→exact-value conversion
+is GENTOW5-C's value clause consumed at the accepted (B-1 at level i)
+adjudication of GENTOW5-B's own proof. The u_i-family factorization
+is applied at one g (= Q_0: Φ_i-free, deg < D_i, exact grade) —
+within the (B-2) leg's stated scope.
+
+*Equate + corner.* w^d = u·ϑ^{−1} ⟺ the fenced display; the d = 1
+corner tautologizes as disclosed.
+
+*Circularity walk (S3 leg (c)).* Re-walked item by item: C-2/C-3/C-4
+on S11.2's proved side (L1904–1908 quote verified at source);
+C-5 w-blind; C-6..C-8 accepted/source-level-general. No consumed item
+found behind [GENTOW5-W(i)] itself.
+
+## SURFACE 2 — FOOTPRINT (Thm 4.8 / T(b)′(iii) out)
+
+Verified DIRECTLY: the note's mentions of Thm 4.8/T(b)′(iii) are at
+lines 24–25, 120, 228 — each a disclaimer site; S2 consumes neither.
+Cross-checked transitively: GENTOW2-B′'s i = 2 proof DOES consume
+Thm 4.8 at its grade-0 step (@ 33f86204, "R_{3,0}(ẑ_d) = d ... Thm
+4.8"), but the i ≥ 3 (B-2) leg's derivation is credited by the fence
+to (SLOT_i) + the S2.3 cocycle computation, and GENTOW5-C's proof
+consumes four clauses (SLOT induction, P-membership, gcd, basis) —
+Thm 4.8 is not among them (@ b0e5c648 L580–588 read at source). The
+elimination claim survives; see MINOR-2 for its exact resting point.
+
+## SURFACE 3 — BYTE-MATCH
+
+`cat -A` comparison of note L79–80 vs fence L1912–1913 @ b0e5c648:
+the equation bodies are byte-identical; differences are the fence's
+`[GENTOW5-W(i)]` label, leading indentation, and the terminal `,`
+vs `.` on the second line. See MINOR-1.
+
+## SURFACE 4 — WITNESSES + LW3 HAND-DERIVATION
+
+Committed values confirmed at their sources: (8,20,42,85) and
+(16,40,84,170,341) at GENTOW5_PROOF L1185–1186/S4.3;
+(32,80,168,340,682,1365) in the pe3 fresh artifacts (DLAD row). The
+LW3 frame's hand arithmetic re-derived independently by this
+verifier: n̂_3(43) = 3xΦ_1Φ_2 (b-chain 1,1; a=1,i0=1), n̂_3(86) =
+3⁹xΦ_1 (b-chain 1,0; a=9,i0=1), M/N² = 3⁷/(xΦ_1Φ_2²) =
+γ_1^{−1}γ_2^{−1}γ_3^{−1}, letters (2,2,2) from the key digits,
+ϑ_3(0) = 8^{−1} = 2 in F_3^× — matching the note at each value.
+Ledger row C-1 md5-8 `d4c8b885` matches `statement_ledger_baseline
+.json`; row 23 (avatar) confirmed DESCRIPTIVE at GENTOW2 L1339–1342.
+
+## MACHINE LEG
+
+- md5 seals: instrument c8c5d129, run-2 artifact b0a8c3c4, run-1 RED
+  598d6704 — each matches the note's S6/S7.
+- Seal chain: 07fa3676 (instrument sealed UNRUN, predictions +
+  teeth in docstring) → 4c959409 (run-1 RED KEPT + dated repair,
+  run-2 prereg with [probe] provenance disclosed) → ec30256c
+  (verdict). Order and contents verified via git.
+- Isolated re-run (fresh copy in /tmp, this session): 60 checks /
+  0 violations, exit 0, output BIT-IDENTICAL to the committed
+  artifact (md5 b0a8c3c4).
+- Run-1 RED artifact: 58/5 with the 5 violations exactly the rows
+  the diagnosis names (P-D1 ladder print, P-D3 LAW-1/LAW-3, P-D4,
+  P-D6) — gp-parse + avatar-key side; the 34 exact-integer rows
+  green in run 1, matching the note's account.
+- `statement_ledger.py --check`: GREEN (166 baseline; 0 changed,
+  0 deleted, 0 added).
+- Tautology audit: predictions are hard-coded expected values, not
+  read-backs; the kit is self-contained (own Bareiss resultants, own
+  nhat solver, own lattice split). Residual weaknesses → MINOR-3.
+
+## FRESH LEG — the i = 4 LIVE contact (first anywhere)
+
+Verifier-constructed frame FR4 (no committed source): p = 3, stages
+(2,1)×4 + (1,2), u = (1,5,21,85,171) (floors 5>4, 21>20, 85>84,
+171>170), keys Φ_1 = x²−6, Φ_2 = Φ_1²−18x, Φ_3 = Φ_2²−162Φ_1,
+Φ_4 = Φ_3²−3⁸Φ_2 (stage-4 digit 1 ⇒ letters (2,2,2,1)), hand-solved
+n̂_4(171) = 3xΦ_1Φ_2Φ_3, n̂_4(342) = 3¹⁷xΦ_1Φ_2, lattice split
+(−1,−1,−1,−1) ⇒ ϑ_4(0) = (2·2·2·1)^{−1} = 2 LETTER-LIVE at i = 4;
+Φ_5 = Φ_4² − n̂_4(171)Φ_4 − 2·n̂_4(342), deg 32. Preregistered in
+the runner docstring before its run. Result 15/0
+(`verification/openmath/gentow5_wi_pe1_fresh_i4.py` md5 02d14bdd,
+output 8316f0c5): factorpadic ONE deg-32 factor, single prime
+(e,f) = (16,2), nfeltval ladder (8,20,42,85,171) exact, letters
+(2,2,2,1) at the prime, T0 = ϑ_4(0) = 2 measured live, Y generates
+F_9, measured w_4 = tr(Y) = 1, norm(Y) = 2 = ϑ_4(0)·w_4², and
+ψ_5^{(w_4)}(Y) = 0 — the [GENTOW5-W(4)] display at both slots; teeth
+fired (other-unit twist nonzero; norm ≠ tr², ϑ-free law dead at
+i = 4). Exact ladder v_3(Res(Φ_5,g)) = (16,40,84,170,342) by DUAL
+oracles: my own subresultant-PRS integers bit-equal to gp
+polresultant integers (a different algorithm from the instrument's
+Bareiss — three implementations now agree on this family). Note the
+last rung 342 = 2·171 ≠ 340: the frame is NOT a doubling chain at
+the top, so the contact is not a disguised F-A reproduction.
+
+---
+
+## FINDINGS (quote-and-classify; nothing fixed)
+
+**MINOR-1 (byte-match wording).** S1: "This is the fenced display
+byte-for-byte". True of the equation bodies; the second line ends
+`.` where the fence has `,`, and the label/indent differ. Failure
+scenario: a later pass diffing whole lines flags a mismatch and
+burns a round re-adjudicating. The parenthetical "(ASCII form)"
+already hedges; a one-word "modulo label/punctuation" would close it.
+
+**MINOR-2 (footprint resting point).** S1/S3-C-9: "the two B″-proof
+inputs with NO accepted level-i analogue [are] out of the footprint
+by construction." Verified for this note's own steps; but the
+consumed C-2 leg's i = 2 ancestor (B′(3)) consumes Thm 4.8 in its
+proof, so the elimination ultimately rests on the fence's S11.2
+proved-list adjudication that the i ≥ 3 leg derives via
+(SLOT_i)/cocycle instead — an accepted-record dependence the note
+discloses ("at the fence's own adjudication ... adds no strength"),
+not a hidden consumption. Failure scenario avoided; recorded so the
+acceptance pass knows the exact resting point.
+
+**MINOR-3 (tooth independence at LW3).** Given YGEN + LAW-I1 +
+WSTAR, the rows LAW-I2, P-D4′, and P-D5 are mutually implied
+(minpoly uniqueness in F_9): the intrinsic LW3 law contact reduces
+to ONE substantive F_3 equation, norm(Y) = 2·tr(Y)², plus the
+independent kills (P-B2 drains; P-D7′ naive-twin (e,f) = (16,1)).
+Also P-A3's reciprocity row (ϑ·ϑ^{−1} = 1) cannot fail in F_3^×
+(exponent-2 group). Failure scenario: a reader counts "60 checks"
+as 60 independent contacts. The note's own coverage box (S7 item 4)
+already discloses the K_3 = F_3 thinness; my i = 4 leg widens the
+record at the same alphabet.
+
+**MINOR-4 (probe provenance).** Run-2 rows marked [probe] were
+observed once in the post-RED diagnosis probe before the run-2
+seal — disclosed in the docstring and in S6, so run 2 is a
+reproduction test, not a blind prediction, for those rows. Honest
+as labeled; recorded for the arc.
+
+## GRADE LINE
+
+passPE1 verdict: **CLEAN** (0 CRITICAL, 0 GAP, 4 MINOR). The
+CLEAN bar (nothing at GAP-or-worse) is met. Note grade advances
+0/2 → 1/2 pending the second hostile pass. The fresh i = 4
+letter-live contact (FR4, 15/0, dual oracles) is new record the
+second pass can reuse as a committed battery row.
+
+=== PRIOR REPORT / CONTEXT: verification/openmath/wipe2_codex_pass_output.txt ===
+Reading additional input from stdin...
+OpenAI Codex v0.145.0
+--------
+workdir: /data/users/asvin/math-and-lean/p-adic-splitting-densities
+model: gpt-5.6-sol
+provider: openai
+approval: never
+sandbox: workspace-write [workdir, /tmp, $TMPDIR]
+reasoning effort: high
+reasoning summaries: none
+session id: 019ff057-363a-7601-a6d0-1cf288fb47d1
+--------
+user
+HOSTILE VERIFICATION PASS — passPE2, THE ACCEPTANCE ATTEMPT, on the note
+pasted below ([GENTOW5-W(i)], counter 1/2 after a CLEAN Fable PE1, whose full
+report is also pasted). You are a hostile mathematical verifier in a fresh
+context with zero prior stake; you CANNOT read files — everything needed is
+pasted. If nothing at GAP-or-worse survives your own verification, the note is
+ACCEPTED 2/2 (this is a model-diverse second pass; you are gpt-5.6-sol).
+
+PROTOCOL (strict): quote-and-classify, FIX NOTHING. Classifications:
+CRITICAL ERROR (breaks the chain) / JUSTIFICATION GAP (conclusion may hold;
+argument does not establish it) / MINOR (display/hygiene). Concrete failure
+scenario per finding. Do NOT re-walk the PE1 report's verified routes (its
+clean charges are listed inside it) — attack by a route DISJOINT from PE1's.
+
+SURFACES FOR ACCEPTANCE: (1) the proof as ONE composed argument (the four
+B''-shaped steps' interfaces; the quantifier over the level i; any hidden
+induction); (2) the S11.2 resting point (the footprint claim's foundation —
+re-derive the proved-list adjudication of the (B-2) leg from the pasted
+material); (3) the statement's fitness for its consumers (GENTOW5's i>=3
+fence; the w-frame note's OPEN-1; T1's item-9 — each quoted in the pasted
+consumer appendix): does the statement supply EXACTLY what each consumes?;
+(4) free hunt. The machine legs were verified bit-identical at PE1 — treat
+the committed numbers as ground data; your job is the MATHEMATICS.
+
+DELIVERABLE: numbered findings (or 'no findings' per surface), each
+quote+classification+reason; then a one-line verdict:
+VERDICT: CLEAN | NOT CLEAN (counts by class); then the single line
+GRADE: ACCEPTED 2/2 | STAYS 1/2.
+
+=== THE NOTE (GENTOW5_WI_2026-08-10.md, verbatim at HEAD) ===
+# [GENTOW5-W(i)] — the i >= 3 monomial form of the B''-transport, PROVED
+## RCT unit GENTOW5-W-i-lemma (FABLE arm) — 2026-08-10 — grade 0/2, hostile arc follows
+
+**Charge.** The named open lemma [GENTOW5-W(i)] (GENTOW5_PROOF
+S11.2 @ b0e5c648, the A-F2 fence): the single-w monomial form of the
+B''-transport at levels i >= 3. GENTOW5's note is FROZEN
+post-acceptance (its S11.6 byte-freeze), so this companion note is
+the lemma's home: statement (byte-matching the fenced display),
+proof, consumption census (R.1 three-leg), machine leg (two-commit
+seal; the committed depth-4/5/6 witnesses reproduced EXACTLY + one
+NEW letter-live level-3 frame). The route is the one the fence
+itself names: GENTOW2-B'''s computation run at level i — ratio of
+normalizers -> tau_i-cocycle -> residue letter — with the HETOW-4
+telescope as sibling precedent. Nothing in GENTOW5_PROOF or
+GENTOW2_PROOF is edited; this note ADDS.
+
+**Verdict up front.** [GENTOW5-W(i)] is PROVED at every level
+i >= 3 of a DEF GENTOW5-1 tower datum (S2 below). The proof is
+GENTOW2-B'''s four-step computation (peel / expand / j >= 1 kill /
+j = 0 digit read) run at level i, with TWO structural
+simplifications over the i = 2 original, both disclosed and both
+consumption-REDUCING: the grade-0 ladder lift z-hat is eliminated
+(the test element is G := N^d itself, digit theta^{-1} carried
+through instead of digit 1 arranged), so neither the T(b)'(iii)
+grade-0 lift supply nor the Thm 4.8 grade-0 read — the two B''-proof
+inputs with NO accepted level-i analogue — is consumed. Every
+surviving input is either level-general in FGMN's source statements
+or on the accepted record at level i (LEMMA GENTOW5-C; the S3 (B-2)
+leg's u_i-family, which S11.2's own adjudication places on the
+PROVED side of the fence).
+
+**Sections.** S1 setting + the fenced statement · S2 the proof ·
+S3 consumption census (R.1 three-leg) · S4 what discharges
+downstream · S5 machine leg (two-commit seal: preregistered
+predictions + teeth) · S6 run verdict (appended from artifacts) ·
+S7 grade box + honest residue.
+
+---
+
+## S1. SETTING + STATEMENT
+
+Ambient setting: a DEF GENTOW5-1 depth-r tower datum (GENTOW5_PROOF
+S2.1 @ b0e5c648: stage data (e_j, f_j, psi_j), properness l_j >= 2
+at j >= 2, heights u_j with the floor chain u_{j+1} > e_{j+1}E_j and
+gcd(u_{j+1}, e_{j+1}) = 1, normalizer recursion nhat, recipe keys),
+with P_{i+1} nonempty, at a level i with 3 <= i < r. All symbols as
+in GENTOW5_PROOF @ b0e5c648 and GENTOW2_PROOF @ 33f86204; nothing is
+re-founded. The objects of the statement:
+
+* the recipe geometry at level i: slots t < f_{i+1}, slot grades
+  beta_t := u_{i+1}(f_{i+1}-t)/e(mu_i) in Gamma_i, top-slot grade
+  kbar_i := beta_{f_{i+1}-1} = u_{i+1}/e(mu_i);
+* the B'-TRANSPORT UNIT FAMILY u_i(beta) in K_i^x — the (B-2 at
+  level i) leg of THEOREM GENTOW5-B's proof (@ b0e5c648 L915–936):
+  u_i(beta) := R_{i+1,beta}(nhat_i(beta-hat)) (beta-hat :=
+  e(mu_i)beta), per-grade, x0-free and g-free, with the repo
+  K_i-digit read and FGMN's Def 3.16 epsilon-normalized coordinate
+  agreeing up to it:  R_{i+1,beta}(g) = u_i(beta) * digit_i(g) for
+  Phi_i-free g of exact grade beta.  At i >= 3 this family is on the
+  PROVED side of the S11.2 fence ("per-grade FIXEDNESS of u_i(beta)
+  ..., x0-freeness and g-freeness", @ b0e5c648 L1904–1908); at i = 2
+  it is LEMMA GENTOW2-B'(3) verbatim;
+* the level-i nhat-cocycle
+  theta_i(t) := res((nhat_i(u_{i+1}(f_{i+1}-t)) /
+  nhat_i(u_{i+1})^{f_{i+1}-t})(x0)) in K_i^x — a FIXED letter unit
+  (S2.3 step (3)'s tau_i-cocycle computation, accepted), reciprocal
+  to S2.1's telescope: theta_i(t) = vartheta_{i,f_{i+1}-t}^{-1}
+  (@ b0e5c648 L938–940);
+* digit_i(g) := res(g(x0)/nhat_i(beta-hat)(x0)), the (R-repo)
+  coherent read at level i, x0 a Phi_i-root, through the canonical
+  evaluation identification k(L_i) ~ F_{i+1} ~ K_i (Prop 1.15(1)/(2),
+  stated in FGMN for every chain level — GENTOW2 S6.1 row 17, PDF
+  p.7 + p.15) — the identification the accepted (B-2 at level i) leg
+  already consumes at exactly this site.
+
+**LEMMA [GENTOW5-W(i)] (i >= 3).** For each recipe slot t < f_{i+1},
+with w_i := u_i(kbar_i) = R_{i+1,kbar_i}(nhat_i(u_{i+1})) in K_i^x:
+
+      u_i(beta_t) = theta_i(t) * w_i^{f_{i+1}-t},
+      w_i = R_{i+1,kbar_i}(nhat_i(u_{i+1})).
+
+This is the fenced display byte-for-byte (GENTOW5_PROOF S11.2
+@ b0e5c648 L1912–1913, ASCII form; u_i(beta_t) = theta_i(t) *
+w_i^{f_{i+1}-t} with the single cross-frame unit w_i). At i = 2 the
+identity is LEMMA GENTOW2-B'' (accepted, ledger row GENTOW2 #4); the
+lemma below extends it to every level i >= 3 of the datum.
+
+---
+
+## S2. PROOF
+
+Fix t < f_{i+1} and write d := f_{i+1} - t >= 1, N :=
+nhat_i(u_{i+1}), M := nhat_i(u_{i+1}d), G := N^d. N and M are ladder
+monomials in pi, x, Phi_1, ..., Phi_{i-1} (the unrolled recursion,
+DEF GENTOW5-1): deg N, deg M < D_i, Phi_i-free, at dv_i-heights
+u_{i+1} resp. u_{i+1}d exactly. deg G <= d(D_i - 1) < f_{i+1}D_i <=
+D_{i+1}.
+
+*(0) Exact grades.* mu_{i+1}(N) = mu_i(N) (Prop 1.9(2): Phi_i-free
+implies nu = mu_i — level-general, GENTOW2 S6.1 row 22), and
+mu_i(N) = kbar_i: N is a monomial, a valuation is additive on
+products, and each factor's value is the chain's exact key value
+(mu_i(Phi_j) = u_{j+1}/ehat_{j+1} in v-normalization for j < i — the
+chain data; equivalently: N is a one-slot element of dv_i-height
+u_{i+1} and LEMMA GENTOW5-C's value clause identifies dv_i ladder
+height with mu_i-value on deg < D_i elements). Hence mu_{i+1}(G) =
+d * kbar_i = beta_t exactly (additivity again), and likewise
+mu_{i+1}(M) = beta_t.
+
+*(i) Peel:* R_{i+1,beta_t}(G) = R_{i+1,kbar_i}(N)^d = w_i^d, a
+y-degree-0 scalar. Iterate Cor 4.7(2) [Q8] d-1 times (no degree
+hypothesis — GENTOW2-B''(i)'s own precedent); at each peel the
+split-off factor N has grade kbar_i = u_{i+1}/e(mu_i) in Gamma_i =
+(1/e(mu_i))Z. Each factor R_{i+1,kbar_i}(N) is a y-degree-0 scalar
+(deg N < D_i = m_{i+1}, Phi_i-free single-point N_{i+1}-polygon —
+Cor 4.4(3)) and nonzero (Cor 4.4(1) at the exact grade of step (0));
+and R_{i+1,kbar_i}(N) = u_i(kbar_i) = w_i by the u_i-family's
+definitional display (S1). [This step is where GENTOW2-B''(i)'s
+z-hat factor is DROPPED: no grade-0 lift is multiplied in, so
+R_{3,0}(z-hat) = d — the Thm 4.8 + T(b)'(iii) step — has no level-i
+analogue to consume.]
+
+*(ii) Expand:* G = Sum_{j>=0} Q_j Phi_i^j, deg Q_j < D_i (the
+Phi_i-adic expansion). By Def 1.8 (nu = mu_{i+1} is DEFINED by the
+expansion minimum — level-general, GENTOW2 S6.1 row 21):
+mu_{i+1}(G) = min_j mu_{i+1}(Q_j Phi_i^j) = beta_t, so every term
+has value >= beta_t, and Cor 4.7(1) [Q8] gives
+
+    R_{i+1,beta_t}(G) = Sum_j R_{i+1,beta_t}(Q_j Phi_i^j).
+
+*(iii) Every j >= 1 term contributes 0 at y-degree 0* — GENTOW2-
+B''(iii) verbatim with (e_3, lam_3, Gamma_2) -> (e_{i+1}, lam_{i+1},
+Gamma_i): if mu_{i+1}(Q_j Phi_i^j) > beta_t it dies by Lemma 3.17
+(row 15); if = beta_t then either e_{i+1} does not divide j —
+impossible, since mu_{i+1}(Q_j) = mu_i(Q_j) in Gamma_i (Prop 1.9(2),
+deg Q_j < D_i) while j*lam_{i+1} not in Gamma_i (gcd(h_{i+1},
+e_{i+1}) = 1) would put the term's value outside Gamma_i, which
+contains beta_t — or e_{i+1} | j, and Cor 4.7(2) + eq (14) [Q7]
+place R_{i+1,beta_t}(Q_j Phi_i^j) = R_{i+1,mu(Q_j)}(Q_j) *
+y^{j/e_{i+1}} at y-degree j/e_{i+1} >= 1. (Both ramification legs
+covered: at e_{i+1} = 1 every j >= 1 term sits at y-degree j >= 1
+directly.)
+
+*(iv) The j = 0 term.* x0 is a Phi_i-root, so evaluation kills every
+j >= 1 term of the expansion: Q_0(x0) = G(x0) = N(x0)^d. Hence
+
+    digit_i(Q_0) = res((N^d / M)(x0)) = theta_i(t)^{-1} != 0:
+
+N^d/M is a value-0 Laurent monomial in pi, x, Phi_1, ..., Phi_{i-1}
+(both N^d and M at dv_i-height u_{i+1}d), so its residue is a FIXED
+letter unit by the level-i gamma-calculus — S2.3 step (3)'s
+tau_i-cocycle computation (accepted; equivalently res((M/N^d)(x0)) =
+theta_i(t) = vartheta_{i,d}^{-1} by the S2.1 reciprocity) — and x0
+lies in P_i with every monomial factor at its exact value (clause
+(b) of THEOREM GENTOW5-B at index i-1: the recipe's roots ARE
+depth-i node points; a w-blind clause, unconditional per the S11.2
+scope walk), so the evaluation is legitimate and exact:
+dv_i(Q_0(x0)) = dv_i(N(x0)^d) = u_{i+1}d exactly. LEMMA GENTOW5-C's
+value clause (deg Q_0 < D_i, level i — the (B-1 at level i) proviso
+of GENTOW5-B's proof) turns the exact evaluation height into the
+exact value mu_i(Q_0) = beta_t, and Prop 1.9(2) gives
+mu_{i+1}(Q_0) = beta_t. Now the u_i-family's factorization (S1, the
+accepted (B-2 at level i) leg) applies to Q_0 (Phi_i-free, exact
+grade beta_t):
+
+    R_{i+1,beta_t}(Q_0) = u_i(beta_t) * digit_i(Q_0)
+                        = u_i(beta_t) * theta_i(t)^{-1},
+
+a y-degree-0 scalar (deg Q_0 < D_i, single-point polygon, Cor
+4.4(3)).
+
+*Equate.* By (ii)+(iii), the y-degree-0 part of R_{i+1,beta_t}(G) is
+the j = 0 term alone; by (i) it is w_i^d. Hence
+
+    w_i^d = u_i(beta_t) * theta_i(t)^{-1},   i.e.
+    u_i(beta_t) = theta_i(t) * w_i^{f_{i+1}-t}.  QED
+
+*Consistency corner (d = 1, the top slot).* theta_i(f_{i+1}-1) =
+res(N/N) = 1 and the identity reads u_i(kbar_i) = w_i — the
+definition of w_i; the proof specializes to a tautology there, as at
+i = 2.
+
+*Why the fence's underdetermination worry does not bite.* The fence
+was right that per-grade fixedness alone underdetermines the single-w
+form (fixed families exist fitting no single w); the proof above does
+not argue from fixedness — it COMPUTES each u_i(beta_t) against the
+one monomial N^d, and the single w_i enters as the d-th power of the
+one peeled factor R_{i+1,kbar_i}(N). The geometry (every slot grade
+beta_t a multiple of the top-slot grade kbar_i by the SAME ladder
+monomial's powers) is what makes one unit suffice; that geometry is
+the recipe's, at every level alike.
+
+---
+
+## S3. CONSUMPTION CENSUS (three-leg checks per R.1)
+
+**The absorbed-statement census (9 items).** Rowed (S-0 ledger,
+GENTOW2_PROOF @ 33f86204): C-1 LEMMA GENTOW2-B'' — the i = 2
+precedent whose proof shape is transported, NOT consumed as a
+premise (row GENTOW2 #4, md5-8 `d4c8b885`, L729–738; proof
+L740–778). Span-pinned (R.1(a) span-pin rule, byte-frozen sources):
+C-2 the (B-2 at level i) leg of THEOREM GENTOW5-B's proof — the
+u_i-family: definitional display, per-grade shape, x0-freeness,
+g-freeness, and the factorization R = u * digit at i >= 3
+(GENTOW5_PROOF @ b0e5c648 L915–936, consumed AT THE FENCE'S OWN
+ADJUDICATION: S11.2's proved list L1904–1908 places exactly this on
+the proved side; this note adds no strength to it); C-3 LEMMA
+GENTOW5-C — the value clause (= (B-1 at level i)) and step (3)'s
+tau_i-cocycle letter computation (@ b0e5c648 L544–613; accepted at
+the annex acceptance grade per its own grade-honesty box); C-4 the
+S2.1 reciprocity theta_i(t) = vartheta_{i,f_{i+1}-t}^{-1}
+(@ b0e5c648 L938–940, on S11.2's proved list); C-5 THEOREM
+GENTOW5-B clause (b) at index i-1 — Phi_i-roots are P_i points with
+exact monomial values (@ b0e5c648 L821–833; w-blind per the S11.2
+scope sentence L1925–1928, so consuming it here is NOT circular:
+the fence conditions only (a)'s psi^{(w)} display + certificate legs
+and (b)'s FGMN-side residual DISPLAYS, never the exact-value/P-locus
+clause); C-6 the (R-repo) coherent read + canonical evaluation
+identification at level i (GENTOW2_PROOF (R-repo) display L500–516,
+level-general via Prop 1.15 — the same site the accepted C-2 leg
+already consumes it); C-7 DEF GENTOW5-1's normalizer recursion +
+floor chain (@ b0e5c648 L387–398). FGMN statements (each verified
+MATCH in GENTOW2 S6.1's PDF-provenance table; each stated in the
+source at arbitrary chain level/inductive valuation): C-8 the
+graded-residual kit — Def 1.8 (row 21), Prop 1.9(2) (row 22), Lemma
+3.17 (row 15), Cor 4.4(1)/(3) (row 5), Cor 4.7(1)/(2) (row 6),
+eq (14) (row 9), Prop 1.15(1)/(2) (row 17); C-9 — deliberately
+EMPTY: Thm 4.8 (row 16) and T(b)'(iii)'s grade-0 lift supply, both
+consumed by GENTOW2-B''s i = 2 proof, are consumed NOWHERE here
+(the S2(i) bracket) — the two inputs with no accepted level-i
+analogue are out of the footprint by construction.
+
+**Leg (a) — STATEMENT.** C-1's display is quoted at its ledger md5;
+`statement_ledger.py --check` green at this note's final commit
+(S6). This note prefixes NO binder, hypothesis, or fixed-witness
+clause to any absorbed statement: C-2..C-5 are consumed at their
+source scope (level i of the same datum), and the one narrowing —
+this note's lemma binds i >= 3 — narrows the CONCLUSION's home, not
+any consumed premise. The proved lemma's statement is byte-matched
+to the fenced display (S1).
+
+**Leg (b) — PROOF-SHAPE.** The transported proof consumes the same
+FGMN kit as the i = 2 original MINUS two items (C-9), and each
+surviving cite is level-general in the source's own quantifier
+(checked row-by-row against S6.1's quoted forms: Def 1.8 defines
+nu for every augmentation; Prop 1.9, Lemma 3.17, Cor 4.4, Cor 4.7,
+eq (14), Prop 1.15 are stated for an arbitrary inductive valuation
+mu / chain level i). No step of S2 instantiates a statement outside
+its source quantifier.
+
+**Leg (c) — CIRCULARITY.** The lemma's conclusion conditions (per
+S11.2's scope) clause (a)'s psi^{(w)} display, (a)'s certificate
+legs, and (b)'s FGMN-side residual displays at i >= 3. The proof
+consumes: C-2 (proved side of the fence), C-3/C-4 (proved side),
+C-5 (the w-blind clause of (b), explicitly OUTSIDE the fence's
+conditional list), C-6..C-8 (accepted/source). No consumed item
+sits behind [GENTOW5-W(i)] itself: the walk above is the
+no-circularity check, item by item.
+
+---
+
+## S4. WHAT DISCHARGES DOWNSTREAM (display; the frozen notes are
+## not edited)
+
+With [GENTOW5-W(i)] proved at i >= 3, the S3(a) algebra of
+GENTOW5_PROOF (@ b0e5c648 L941–954: coherent digit c_t *
+vartheta_{i,f_{i+1}-t}, the theta leg cancels, the w-leg survives)
+runs UNCONDITIONALLY at i >= 3:
+
+    R_{nu_i}(Phi_{i+1}) = psi_{i+1}^{(w_i)},
+
+so the fence's conditional list — clause (a)'s realized-residual
+display psi_{i+1}^{(w_i)} at i >= 3, the (a)-certificate legs
+consuming that form (KP membership via admissibility of psi^{(w)},
+prime, non-equivalence), and (b)'s FGMN-side residual displays at
+the same indices — is DISCHARGED: those clauses now rest on this
+note's lemma instead of an open hypothesis. Unchanged elsewhere:
+the i = 2 level stays on the landed GENTOW2 r3 B-law (verbatim);
+the i = 1 shape + the OPEN u1 = w_1 tie (S11.3 / WFRAME OPEN-2) are
+NOT touched by this note — [GENTOW5-W(i)] binds i >= 3 only, and
+the i = 1 display is a different species (no recipe-slot geometry
+at the outer stage). WFRAME_NOTE's OPEN-1 (grade 0/2, unconsumed
+here) points at the fence this note closes; its ladder §3 reads,
+post-acceptance of this note: i = 2 unconditional, i >= 3
+unconditional at the same display, i = 1 tie open. OPEN-3 (a
+closed-form w-LAW) remains open and is NOT claimed: this note
+proves the SHAPE u = theta * w^d with w_i the R-read of one ladder
+monomial; it computes no w value at any frame — values stay
+measurement territory (S5).
+
+---
+
+## S5. MACHINE LEG (gentow5_wi_checks.py — two-commit seal)
+
+**Instrument.** verification/openmath/gentow5_wi_checks.py, NEW
+(own polynomial kit: integer coefficient lists, Sylvester/Bareiss
+exact resultants, own nhat recursion + exponent-lattice solver; gp
+subprocess for the PARI leg, budget-guarded). Committed BEFORE the
+run with the predictions below in its docstring (seal commit); the
+run appends its output artifact + S6's verdict in a second commit.
+RED outcomes are kept with diagnosis, never tuned away.
+
+**Frames.** (F-A) The committed q = 2 witness chain (GENTOW5 S4:
+u = 1, 5, 21, 85, 341; keys Phi_1 = x^2-2, Phi_2 = Phi_1^2-4x,
+Phi_3 = Phi_2^2-16Phi_1, Phi_4 = Phi_3^2-256Phi_2; f32 =
+Phi_4^2-2^16 Phi_3) + the committed depth-6 objects (gentow5_pe3
+D-legs: f64 = f32^2-2^32 Phi_4; mutants f32m = Phi_4^2-2^20 Phi_1,
+f64m = f32^2-2^40 Phi_2). (F-LW3) THE NEW FRAME, letter-live at
+level 3 — first of its kind on the record: p = 3, h = 1, stage data
+(e, f) = (2,1),(2,1),(2,1),(1,2), heights u = (1, 5, 21, 43) (floor
+chain: 5 > 4, 21 > 20, 43 > 42; gcd's 1), psi_1 = y-2, psi_2 = y-2,
+psi_3 = y-2, psi_4 = y^2-y-1 (irreducible over F_3, c_1 = c_0 = 1):
+
+    Phi_1 = x^2 - 6           (letter z_1 = res(x0^2/3) = 2)
+    Phi_2 = Phi_1^2 - 18x     (nhat_1(5) = 9x, digit 2; z_2 = 2)
+    Phi_3 = Phi_2^2 - 162Phi_1 (nhat_2(21) = 81Phi_1, digit 2; z_3 = 2)
+    Phi_4 = Phi_3^2 - 3xPhi_1Phi_2*Phi_3 - 2*3^9*xPhi_1   (deg 16)
+
+with the level-3 recipe data: nhat_3(43) = 3xPhi_1Phi_2, nhat_3(86)
+= 3^9 xPhi_1 (hand recursion, derived twice: level-by-level solve
+and direct unrolled solve); coherent digits khat_1 = lift_3(c_1 *
+vartheta_{3,1}; 43) = nhat_3(43), khat_0 = lift_3(c_0 *
+vartheta_{3,2}; 86) = 2*nhat_3(86). HAND-DERIVED LATTICE VALUES
+(pre-seal, the instrument re-derives independently):
+nhat_3(86)/nhat_3(43)^2 = 3^7/(x Phi_1 Phi_2^2) = gamma_1^{-1}
+gamma_2^{-1} gamma_3^{-1} (gamma_1 = x^2/3, gamma_2 = Phi_1^2/(9x),
+gamma_3 = Phi_2^2/(81Phi_1)), so theta_3(0) = (z_1 z_2 z_3)^{-1} =
+8^{-1} = 2 in F_3^x — LETTER-LIVE — and vartheta_{3,2} =
+theta_3(0)^{-1} = 2; theta_3(1) = 1 (top slot). The naive twin
+Phi_4n := Phi_3^2 - 3xPhi_1Phi_2*Phi_3 - 3^9*xPhi_1 (digit 1 at
+slot 0 — the gauge-naive prescription).
+
+**Preregistered predictions (sealed; teeth marked T).**
+* P-A1 nhat reproduction, committed chain: nhat_1(5) = 4x,
+  nhat_2(21) = 16Phi_1, nhat_3(85) = 256Phi_2, nhat_4(341) =
+  2^16 Phi_3 — the S4.1/S2.2 committed values EXACTLY.
+* P-A2 nhat at F-LW3: the four displayed values above EXACTLY.
+* P-A3 lattice: theta_3(0) exponent split (-1,-1,-1) on
+  (gamma_1, gamma_2, gamma_3); value 2; reciprocity vartheta_{3,2}
+  * theta_3(0) = 1 in F_3^x.
+* P-B1 committed resultant ladders EXACT (the S4.3 + pe3 D-A3
+  values): v2(Res(Phi_4, g)) = (8, 20, 42, 85) and v2(Res(f32, g))
+  = (16, 40, 84, 170, 341) for g = (x, Phi_1, Phi_2, Phi_3[,
+  Phi_4]); v2(Res(f64, g)) = (32, 80, 168, 340, 682, 1365) for
+  g = (x, Phi_1, Phi_2, Phi_3, Phi_4, f32).
+* P-B2 (T, committed teeth reproduced): Res(f32m, Phi_3) = 0 (drain
+  collapse) and Res(f64m, Phi_4) = 0.
+* P-C1 F-LW3 exact route: v3(Res(Phi_4LW, g)) = (8, 20, 42, 86)
+  for g = (x, Phi_1, Phi_2, Phi_3); the naive twin has the SAME
+  ladder (86 at Phi_3) — resultants are height-level and do NOT
+  discriminate the gauge; the residue does (P-D).
+* P-D1 PARI, coherent key: factorpadic(Phi_4LW, 3) = ONE factor of
+  degree 16; nfinit + idealprimedec: a single prime, (e, f) =
+  (8, 2); nfeltval ladder (x, Phi_1, Phi_2, Phi_3) = (4, 10, 21,
+  43) (v * e(pr), e(pr) = 8).
+* P-D2 letters: res(gamma_1) = res(gamma_2) = res(gamma_3) = 2 at
+  the measured prime (the psi_j-root classes of the datum).
+* P-D3 THE LAW ([GENTOW5-W(3)], the point of the instrument). With
+  P_3 := Phi_2 x^20 / Phi_1^{10} (v = 1/8; the Def 3.12-shape
+  uniformizer, P_4 = P_3 at e_4 = 1) and the avatar w_av :=
+  res((nhat_3(43)/P_3^{43})(xi)) in F_3^x (measured, NOT
+  predicted which value), and Y := res((Phi_3/(3xPhi_1Phi_2))(xi))
+  in F_9 the level-4 residue class:
+    LAW-1  tr(Y) = Y + Y^3 = w_av            (slot t = 1: u_3(kbar)
+                                              = theta_3(1) w = w)
+    LAW-2  norm(Y) = Y^4 = 2 * w_av^2        (slot t = 0: u_3(b_0)
+                                              = theta_3(0) w^2 = 2w^2,
+                                              norm = -k0digit*u = 2w^2
+                                              since -2*2 = 2 in F_3)
+    LAW-3  psi_4^{(w_av)}(Y) = 0 where psi^{(w)} := w^2 psi(y/w)
+  — three measurements (w_av, tr Y, norm Y), two independent
+  equations: the B''(6)-closure of GENTOW2 PE6, one level up, at a
+  letter-live level-3 frame.
+* P-D4 (T, single-w discrimination): psi_4^{(w')}(Y) != 0 at the
+  OTHER unit w' in F_3^x \ {w_av} — exactly one of the two twisted
+  quadratics vanishes at Y; kills "any w fits".
+* P-D5 (T, the no-theta law killed, w-FREE): norm(Y) != (tr Y)^2,
+  i.e. u_3(beta_0) != u_3(beta_1)^2 — preregistered from
+  theta_3(0) = 2 != 1: the theta-free power law u(beta_t) = w^{f-t}
+  is REFUTED at this frame regardless of w_av's value. [Arithmetic:
+  norm/tr^2 = 2w^2/w^2... = u(b_0)*(-k0 digit sign) — see LAW-2
+  bracket; the instrument asserts the displayed F_9 inequality.]
+* P-D6 (T, conditional nose): if w_av != 1 then psi_4(Y) != 0 (the
+  on-the-nose reading fails when the twist is live).
+* P-D7 (T, gauge-naive twin, disjunctive — the B-law predicts its
+  slot-0 residual coefficient u_3(beta_0)*1 = 2w^2 against target
+  coefficient... realized residual y^2 - w y - 2w^2 = (y + w)^2 in
+  F_3[y], a REPEATED-ROOT residual, so the naive twin CANNOT carry
+  the coherent key's certificate): factorpadic(Phi_4n, 3) is NOT
+  (one degree-16 factor with residue degree 2 and psi_4^{(w_av)}
+  vanishing at its residue class) — i.e. at least one of {>1
+  factors; f != 2; psi_4^{(w_av)}(Y') != 0} fires. The observed
+  branch is RECORDED, not predicted.
+
+**Budget + hygiene.** gp legs behind timeouts; if PARI is
+infeasible the exact-integer legs stand and the gp rows are
+DISCLOSED as not-run (not silently green). Output artifact:
+gentow5_wi_checks_output.txt, md5 recorded in S6. No committed
+sealed artifact is edited or re-run; F-A reproduction is by THIS
+instrument's own kit.
+
+---
+
+## S6. RUN RECORD (VERDICT — from the committed artifacts)
+
+**RUN 1 (2026-08-10, under the 07fa3676 seal): RED, KEPT** as
+gentow5_wi_checks_output_run1_RED.txt (md5 598d6704) — 58 checks,
+5 violations, every one instrument-side; diagnosis in the runner's
+DATED REPAIR block. The record: (i) 34/34 exact-integer checks GREEN
+first try — the committed depth-4/5/6 witnesses reproduced EXACTLY
+(nhat values, three resultant ladders, both drain teeth) and the
+LW3 ladders exact; (ii) the 5 red rows were a gp stdin parse defect
+(multi-line statements executed as fragments; the "failed" ladder
+row was a missing print — the probe shows (4,10,21,43) exact) plus
+an AVATAR MIS-KEY: the seal's LAW-1/LAW-3 rows consumed avatar = w
+(GENTOW2 S6.1 row 23, DESCRIPTIVE status) — and LW3 is the first
+measured geography where that leg has a genuinely nontrivial gap
+unit. The intrinsic data run 1 already measured: tr(Y) = 1,
+norm(Y) = 2, i.e. u_3(beta_1) = w_3 = 1 and u_3(beta_0) = 2 =
+theta_3(0) * w_3^2 — [GENTOW5-W(3)] HOLDS on the nose; the avatar
+measured 2 = w_3 * (row-23 gap unit). The lemma (an R-read
+statement) never consumed the avatar leg; the run-2 rows are
+re-keyed to the intrinsic content, with the avatar demoted to a
+record + its own cocycle-closure row (IDY). Run-2 preregistration
+(P-D1', P-D3', P-D4', P-D5, P-D6', P-D7', P-D8) is sealed in the
+repaired runner's docstring with [probe] provenance disclosed per
+row (diagnosis-probe observations run 2 must reproduce).
+
+**RUN 2 (2026-08-10, under the repaired seal, runner md5 c8c5d129):
+GREEN — 60 checks, 0 violations; isolated re-run BIT-IDENTICAL
+(artifact gentow5_wi_checks_output.txt, md5 b0a8c3c4, exit 0 both
+runs).** The rows, read against the preregistration:
+* COMMITTED-WITNESS REPRODUCTION (P-A1/P-B1/P-B2): the q = 2
+  depth-4/5/6 ladder values came out EXACTLY at the committed
+  numbers — v2(Res(Phi_4, g)) = (8, 20, 42, 85), v2(Res(f32, g)) =
+  (16, 40, 84, 170, 341), v2(Res(f64, g)) = (32, 80, 168, 340, 682,
+  1365) — and both committed drain teeth reproduced (Res(f32m,
+  Phi_3) = 0, Res(f64m, Phi_4) = 0), by this instrument's own kit.
+* THE NEW FRAME LW3 (first letter-live level-3 machine contact):
+  chain valid ((e,f) = (8,2) single prime, ladder (4, 10, 21, 43)
+  exact, letters (2, 2, 2) as pinned, theta_3(0) = 2 LIVE at the
+  measured prime = the hand lattice value).
+* THE LAW (P-D3'): measured u_3(beta_1) = tr(Y) = 1 = w_3 (top-slot
+  read) and norm(Y) = 2 = theta_3(0) * w_3^2 — the [GENTOW5-W(3)]
+  display at both slots, with the two-slot closure LAW-I1 EXACT and
+  the single-w twisted realization psi_4^{(w_3)}(Y) = 0 on the nose.
+* TEETH, each FIRED: P-D4' (the other unit's twist does NOT
+  vanish), P-D5 (the theta-free power law u = w^{f-t} is DEAD at
+  this frame — w-free kill), P-B2 (both drains), P-D7' (the
+  gauge-naive twin VERDICT-KILLED: (e, f) = (16, 1) against the
+  coherent key's (8, 2); its Phi_3-value stays exact at 86 — the
+  kill is ramification-theoretic, the repeated-root residual
+  (y+w)^2 predicted at composition time).
+* THE ROW-23 RECORD (P-D8): avatar w_av = 2 = w_3 * (gap unit 2);
+  the avatar family itself closes its own cocycle law (IDY
+  U0 = T0 * w_av^2 with T0 = 2 = the lattice pin) — filed to
+  WFRAME OPEN-3's geography as the first measured instance where
+  avatar != intrinsic w; no clause of this note's lemma consumes
+  the avatar identification.
+
+---
+
+## S7. GRADE BOX + HONEST RESIDUE
+
+**Grade: 0/2 (composed; hostile arc owed).** Machine record: run 1
+RED kept (598d6704, 5 instrument-side rows, diagnosis in the
+runner), run 2 GREEN 60/0 bit-identical re-run; two-commit seal
+honored on both runs (seal 07fa3676 before run 1; repair commit
+before run 2; verdicts from artifacts).
+
+**What this note claims.** [GENTOW5-W(i)] is PROVED at i >= 3 (S2)
+on the consumption footprint of S3 — the fenced display is now a
+lemma, not an open transported hypothesis, and S4's discharge list
+follows. The machine leg verifies the i = 3 instance's measurable
+content at one letter-live frame (LW3) and reproduces the committed
+w-trivial witnesses exactly.
+
+**What this note does NOT claim.** (1) No closed-form w-law: w_3
+was MEASURED (= 1 at LW3's prime); OPEN-3 stands. (2) The avatar =
+w identification (row 23, descriptive) is NOT consumed and is now
+measured to GAP at LW3 (gap unit 2) — a record for row 23's
+elevation obligation, strengthening the case that it must stay
+descriptive pending the s(alpha)-bookkeeping. (3) The i = 1 tie
+u1 = w_1 (S11.3 / OPEN-2) is untouched. (4) Coverage: the LW3
+letter-live test has K_3 = F_3 (two units) and f_4 = 2 (two slots);
+deeper alphabets (K_3 = F_4, F_9) and f_{i+1} >= 3 slot counts are
+machine-unexplored at i >= 3 — the PROOF is uniform in these, the
+record is not. (5) GENTOW5_PROOF and GENTOW2_PROOF are byte-frozen;
+their fences stand as written with this note as the named
+discharge; WFRAME (grade 0/2) is cited as geography only, never
+consumed.
+
+**Ledger.** statement_ledger.py --check green at the final commit
+(this note ADDS statements, changes none). Artifacts:
+gentow5_wi_checks.py (c8c5d129), gentow5_wi_checks_output.txt
+(b0a8c3c4), gentow5_wi_checks_output_run1_RED.txt (598d6704).
+
+
+=== THE PE1 REPORT (verbatim) ===
+# GENTOW5-W(i) passPE1 — hostile verification report
+
+Target: `lean/notes/openmath/GENTOW5_WI_2026-08-10.md` at HEAD (note
+state = ec30256c chain; commits 07fa3676 → 4c959409 → ec30256c).
+Claim under test: [GENTOW5-W(i)] u_i(β_t) = ϑ_i(t)·w_i^{f_{i+1}−t}
+PROVED at levels i ≥ 3, by GENTOW2-B″'s four-step computation run at
+level i with the ẑ grade-0 lift eliminated. Sources read at their
+pinned commits: GENTOW5_PROOF @ b0e5c648, GENTOW2_PROOF @ 33f86204.
+AS-OF state read: T1/WFRAME/WI parallel 0/2 arcs; this note consumes
+neither T1 nor WFRAME (WFRAME cited as geography only — declared in
+S4/S7 and confirmed by grep).
+
+## VERDICT: CLEAN — nothing at GAP-or-worse survives verification.
+Four MINOR findings below. The machine leg re-verified bit-identical;
+the fresh leg produced an i = 4 letter-live contact (one level above
+LW3, the first i = 4 geometry on the record) and the [GENTOW5-W(4)]
+display held on the nose, 15 checks / 0 violations, dual exact
+oracles bit-equal.
+
+---
+
+## SURFACE 1 — THE PROOF, re-derived step by step at level i
+
+*(0) Exact grades.* Verified. Additionally re-proved (my own leg,
+not in the note): deg n̂_i(m) < D_i holds by the telescoping bound
+(e_1−1) + Σ_j (e_{j+1}−1)D_j ≤ D_i − 1, from the unrolled recursion's
+exponent bounds i0 < e_1, b_j < e_{j+1} (DEF GENTOW5-1 @ b0e5c648
+L387–398, read at source). μ_{i+1}(G) = d·κ̄_i = β_t is exact
+arithmetic (β_t = u_{i+1}d/e(μ_i) = d·κ̄_i).
+
+*(i) Peel.* Verified against the i = 2 original (B″ proof @ 33f86204
+L740–778). The ẑ-drop is algebraically sound: the i = 2 equate was
+ϑ·w^d = u(β_t)·1 (digit arranged to 1 via ẑ); here w^d =
+u_i(β_t)·ϑ_i(t)^{−1} (digit ϑ^{−1} carried) — the same identity.
+R_{i+1,κ̄}(N) = w_i is definitional (u_i-family display, β̂ = u_{i+1}
+at β = κ̄). Cor 4.7(2) iteration matches the i = 2 precedent's
+no-degree-hypothesis use (justified explicitly in B′'s proof text).
+
+*(iii) The j ≥ 1 kill is level-uniform* — the charge's specific
+worry checked and cleared: the dichotomy consumes gcd(h_{i+1},
+e_{i+1}) = 1 (e_{i+1} is BY DEFINITION the denominator of λ_{i+1}
+over Γ_i), the group structure of Γ_i, Prop 1.9(2) at deg Q_j < D_i
+(level-general, S6.1 row 22 MATCH re-read), and eq (14)'s y-degree
+j/e_{i+1} (row 9). The e_{i+1} = 1 branch is covered explicitly. No
+i = 2-specific arithmetic found in the step.
+
+*(iv) Digit read.* Verified: β̂_t = e(μ_i)β_t = u_{i+1}d so
+n̂_i(β̂_t) = M and digit_i(Q_0) = res((N^d/M)(x0)) = ϑ_i(t)^{−1} by
+the ϑ definition (inverse read of the same monomial quotient — the
+S2.1 reciprocity @ b0e5c648 L938–940, on S11.2's proved list).
+Evaluation legitimacy: clause (b) of GENTOW5-B at index i−1
+(@ L821–833) — its exact-value + P-membership clause sits on the
+S11.2 fence's NOT-conditional list ("the repo-side residue classes
+and P-membership clauses ... w-blind there", read at source), so the
+consumption is not circular. The exact-height→exact-value conversion
+is GENTOW5-C's value clause consumed at the accepted (B-1 at level i)
+adjudication of GENTOW5-B's own proof. The u_i-family factorization
+is applied at one g (= Q_0: Φ_i-free, deg < D_i, exact grade) —
+within the (B-2) leg's stated scope.
+
+*Equate + corner.* w^d = u·ϑ^{−1} ⟺ the fenced display; the d = 1
+corner tautologizes as disclosed.
+
+*Circularity walk (S3 leg (c)).* Re-walked item by item: C-2/C-3/C-4
+on S11.2's proved side (L1904–1908 quote verified at source);
+C-5 w-blind; C-6..C-8 accepted/source-level-general. No consumed item
+found behind [GENTOW5-W(i)] itself.
+
+## SURFACE 2 — FOOTPRINT (Thm 4.8 / T(b)′(iii) out)
+
+Verified DIRECTLY: the note's mentions of Thm 4.8/T(b)′(iii) are at
+lines 24–25, 120, 228 — each a disclaimer site; S2 consumes neither.
+Cross-checked transitively: GENTOW2-B′'s i = 2 proof DOES consume
+Thm 4.8 at its grade-0 step (@ 33f86204, "R_{3,0}(ẑ_d) = d ... Thm
+4.8"), but the i ≥ 3 (B-2) leg's derivation is credited by the fence
+to (SLOT_i) + the S2.3 cocycle computation, and GENTOW5-C's proof
+consumes four clauses (SLOT induction, P-membership, gcd, basis) —
+Thm 4.8 is not among them (@ b0e5c648 L580–588 read at source). The
+elimination claim survives; see MINOR-2 for its exact resting point.
+
+## SURFACE 3 — BYTE-MATCH
+
+`cat -A` comparison of note L79–80 vs fence L1912–1913 @ b0e5c648:
+the equation bodies are byte-identical; differences are the fence's
+`[GENTOW5-W(i)]` label, leading indentation, and the terminal `,`
+vs `.` on the second line. See MINOR-1.
+
+## SURFACE 4 — WITNESSES + LW3 HAND-DERIVATION
+
+Committed values confirmed at their sources: (8,20,42,85) and
+(16,40,84,170,341) at GENTOW5_PROOF L1185–1186/S4.3;
+(32,80,168,340,682,1365) in the pe3 fresh artifacts (DLAD row). The
+LW3 frame's hand arithmetic re-derived independently by this
+verifier: n̂_3(43) = 3xΦ_1Φ_2 (b-chain 1,1; a=1,i0=1), n̂_3(86) =
+3⁹xΦ_1 (b-chain 1,0; a=9,i0=1), M/N² = 3⁷/(xΦ_1Φ_2²) =
+γ_1^{−1}γ_2^{−1}γ_3^{−1}, letters (2,2,2) from the key digits,
+ϑ_3(0) = 8^{−1} = 2 in F_3^× — matching the note at each value.
+Ledger row C-1 md5-8 `d4c8b885` matches `statement_ledger_baseline
+.json`; row 23 (avatar) confirmed DESCRIPTIVE at GENTOW2 L1339–1342.
+
+## MACHINE LEG
+
+- md5 seals: instrument c8c5d129, run-2 artifact b0a8c3c4, run-1 RED
+  598d6704 — each matches the note's S6/S7.
+- Seal chain: 07fa3676 (instrument sealed UNRUN, predictions +
+  teeth in docstring) → 4c959409 (run-1 RED KEPT + dated repair,
+  run-2 prereg with [probe] provenance disclosed) → ec30256c
+  (verdict). Order and contents verified via git.
+- Isolated re-run (fresh copy in /tmp, this session): 60 checks /
+  0 violations, exit 0, output BIT-IDENTICAL to the committed
+  artifact (md5 b0a8c3c4).
+- Run-1 RED artifact: 58/5 with the 5 violations exactly the rows
+  the diagnosis names (P-D1 ladder print, P-D3 LAW-1/LAW-3, P-D4,
+  P-D6) — gp-parse + avatar-key side; the 34 exact-integer rows
+  green in run 1, matching the note's account.
+- `statement_ledger.py --check`: GREEN (166 baseline; 0 changed,
+  0 deleted, 0 added).
+- Tautology audit: predictions are hard-coded expected values, not
+  read-backs; the kit is self-contained (own Bareiss resultants, own
+  nhat solver, own lattice split). Residual weaknesses → MINOR-3.
+
+## FRESH LEG — the i = 4 LIVE contact (first anywhere)
+
+Verifier-constructed frame FR4 (no committed source): p = 3, stages
+(2,1)×4 + (1,2), u = (1,5,21,85,171) (floors 5>4, 21>20, 85>84,
+171>170), keys Φ_1 = x²−6, Φ_2 = Φ_1²−18x, Φ_3 = Φ_2²−162Φ_1,
+Φ_4 = Φ_3²−3⁸Φ_2 (stage-4 digit 1 ⇒ letters (2,2,2,1)), hand-solved
+n̂_4(171) = 3xΦ_1Φ_2Φ_3, n̂_4(342) = 3¹⁷xΦ_1Φ_2, lattice split
+(−1,−1,−1,−1) ⇒ ϑ_4(0) = (2·2·2·1)^{−1} = 2 LETTER-LIVE at i = 4;
+Φ_5 = Φ_4² − n̂_4(171)Φ_4 − 2·n̂_4(342), deg 32. Preregistered in
+the runner docstring before its run. Result 15/0
+(`verification/openmath/gentow5_wi_pe1_fresh_i4.py` md5 02d14bdd,
+output 8316f0c5): factorpadic ONE deg-32 factor, single prime
+(e,f) = (16,2), nfeltval ladder (8,20,42,85,171) exact, letters
+(2,2,2,1) at the prime, T0 = ϑ_4(0) = 2 measured live, Y generates
+F_9, measured w_4 = tr(Y) = 1, norm(Y) = 2 = ϑ_4(0)·w_4², and
+ψ_5^{(w_4)}(Y) = 0 — the [GENTOW5-W(4)] display at both slots; teeth
+fired (other-unit twist nonzero; norm ≠ tr², ϑ-free law dead at
+i = 4). Exact ladder v_3(Res(Φ_5,g)) = (16,40,84,170,342) by DUAL
+oracles: my own subresultant-PRS integers bit-equal to gp
+polresultant integers (a different algorithm from the instrument's
+Bareiss — three implementations now agree on this family). Note the
+last rung 342 = 2·171 ≠ 340: the frame is NOT a doubling chain at
+the top, so the contact is not a disguised F-A reproduction.
+
+---
+
+## FINDINGS (quote-and-classify; nothing fixed)
+
+**MINOR-1 (byte-match wording).** S1: "This is the fenced display
+byte-for-byte". True of the equation bodies; the second line ends
+`.` where the fence has `,`, and the label/indent differ. Failure
+scenario: a later pass diffing whole lines flags a mismatch and
+burns a round re-adjudicating. The parenthetical "(ASCII form)"
+already hedges; a one-word "modulo label/punctuation" would close it.
+
+**MINOR-2 (footprint resting point).** S1/S3-C-9: "the two B″-proof
+inputs with NO accepted level-i analogue [are] out of the footprint
+by construction." Verified for this note's own steps; but the
+consumed C-2 leg's i = 2 ancestor (B′(3)) consumes Thm 4.8 in its
+proof, so the elimination ultimately rests on the fence's S11.2
+proved-list adjudication that the i ≥ 3 leg derives via
+(SLOT_i)/cocycle instead — an accepted-record dependence the note
+discloses ("at the fence's own adjudication ... adds no strength"),
+not a hidden consumption. Failure scenario avoided; recorded so the
+acceptance pass knows the exact resting point.
+
+**MINOR-3 (tooth independence at LW3).** Given YGEN + LAW-I1 +
+WSTAR, the rows LAW-I2, P-D4′, and P-D5 are mutually implied
+(minpoly uniqueness in F_9): the intrinsic LW3 law contact reduces
+to ONE substantive F_3 equation, norm(Y) = 2·tr(Y)², plus the
+independent kills (P-B2 drains; P-D7′ naive-twin (e,f) = (16,1)).
+Also P-A3's reciprocity row (ϑ·ϑ^{−1} = 1) cannot fail in F_3^×
+(exponent-2 group). Failure scenario: a reader counts "60 checks"
+as 60 independent contacts. The note's own coverage box (S7 item 4)
+already discloses the K_3 = F_3 thinness; my i = 4 leg widens the
+record at the same alphabet.
+
+**MINOR-4 (probe provenance).** Run-2 rows marked [probe] were
+observed once in the post-RED diagnosis probe before the run-2
+seal — disclosed in the docstring and in S6, so run 2 is a
+reproduction test, not a blind prediction, for those rows. Honest
+as labeled; recorded for the arc.
+
+## GRADE LINE
+
+passPE1 verdict: **CLEAN** (0 CRITICAL, 0 GAP, 4 MINOR). The
+CLEAN bar (nothing at GAP-or-worse) is met. Note grade advances
+0/2 → 1/2 pending the second hostile pass. The fresh i = 4
+letter-live contact (FR4, 15/0, dual oracles) is new record the
+second pass can reuse as a committed battery row.
+
+
+=== CONSUMER APPENDIX 1: GENTOW5's S11.2 fence (verbatim, L1880-1970) ===
+**Honest residue.** The repaired Step 2 consumes (b)@(i+1) before
+(c)@(i+1) inside the step (the note's stated order), floor rungs
+j..i+1, (SLOT_{j-1}), and the forward direction of LEMMA GENTOW5-D —
+nothing outside the note's own pin stack. A grep audit this round
+("same condition on every grid", "two-directional", "both grids
+agree") finds the withdrawn closure consumed at S3(c) Step 2's
+parenthetical and nowhere else in the body above.
+
+### S11.2 [A-F2, GAP] The i >= 3 B''-transport: the ride citation
+### FENCED to what this note's own sections prove
+
+**Superseded reading (quoted).** S3(a)'s (B-2) leg: "at i >= 3 the
+same derivation transports with (SLOT_i) = LEMMA GENTOW5-C in place
+of B-1" and "transported to i >= 3 on the same S2.3 annex-precedent
+ride". As consumption of the MONOMIAL LAW those sentences overclaim:
+the ride carries (SLOT_i)/(LIFT_i) counting statements, not
+GENTOW2-B'''s normalizer-cocycle monomial computation.
+
+**What IS proved, per level (the accepted GENTOW2 consumption-walk
+shape):**
+* i = 2 — VERBATIM: the landed GENTOW2 r3 B-law (LEMMA GENTOW2-B
+  [r3 RESTATED] + LEMMA GENTOW2-B'' @ d798529), u_2(beta_t) =
+  theta_2(t) * w_2^{f_3 - t} with the single cross-frame unit w_2 —
+  the level this note's (a)/(B-2) display cites at source.
+* i >= 3 — PROVED by this note's own sections: per-grade FIXEDNESS
+  of u_i(beta) (S2.3 step (3)'s tau_i-cocycle letter computation:
+  each grade's unit is a fixed K_i^x-value), x0-freeness and
+  g-freeness (the (SLOT_i) value clause), and the definitional
+  reciprocity theta_i(t) = vartheta_{i,f_{i+1}-t}^{-1} (S2.1's same
+  monomial quotient, inverse read). NOT PROVED at i >= 3: the
+  single-w geometric form
+
+      [GENTOW5-W(i)]   u_i(beta_t) = theta_i(t) * w_i^{f_{i+1}-t},
+                       w_i = R_{i+1,kbar_i}(nhat_i(u_{i+1})),
+
+  which per-grade fixedness underdetermines (fixed families exist
+  that fit no single w) — this is GENTOW2-B'''s computation run at
+  level i, which this note does not reproduce. [GENTOW5-W(i)] is
+  hereby an OPEN transported lemma, the honest-sorry analogue.
+**Scope of the fence (what rides on [GENTOW5-W(i)] at i >= 3 and
+what does not).** Conditional on it: clause (a)'s realized-residual
+display psi_{i+1}^{(w_i)} AND the (a)-certificate legs that consume
+that form (KP membership via admissibility of psi^{(w)}, prime,
+non-equivalence), and with them (b)'s FGMN-side residual DISPLAYS at
+i >= 3 (the (b)-cite enters through (a)'s certificate at the same
+index). Not conditional (the [GT5-r2] per-consumer walk, unchanged):
+sigma, values, degrees, irreducibility transport, the repo-side
+residue classes and P-membership clauses, (c)'s budgets, (d), (e) —
+w-blind there. At i = 2 the display is unconditional (the landed
+law); at i = 1 see S11.3. The S4 depth-4 witness is w-trivial
+(K_i = F_2), so the machine record does not discriminate this fence
+— disclosed at S6's coverage box already.
+
+### S11.3 [A-F3, GAP] (a)@i=1: the pinned-w_1 display RE-SCOPED to
+### the fold's own discharged shape
+
+**The two sentences in tension (quoted).** The statement's (a)
+displays R_{nu_i}(Phi_{i+1}) = psi_{i+1}^{(w_i)} at the pinned
+w_i = R_{i+1,kbar_i}(nhat_i(u_{i+1})), claimed at i >= 1; the
+PE5-F-2 acceptance fold discharges the i = 1 line at the shape "a
+psi_2^{(u)} with u a fixed z_1-letter power" and closes "an
+exponent-level tie of the w_1 display to the letter formula is NOT
+claimed."
+
+**Adjudicated from the fold's own scope bracket: the DISCLAIMER is
+right; the statement's i = 1 instance is corrected.** The fold's
+derivation is GENTOW2-A(c)'s letter-formula content (z_2 = eta_2 *
+z_1^{-floor(l_1 u_2/e_1)}): it pins the SPECIES of the twist unit (a
+fixed z_1-letter power) and never evaluates the residue
+R_{2,kbar_1}(nhat_1(u_2)) — so it cannot identify the unit with the
+pinned w_1, and different units give different residual polynomials
+(the twist acts on coefficients grade-by-grade). Dated statement
+correction (honest re-scope, standing authority): clause (a) AT
+i = 1 reads
+
+    R_{nu_1}(Phi_2) = psi_2^{(u1)},  u1 in K_1^x a FIXED
+    z_1-letter-power unit (the letter formula's species);
+    the tie u1 = w_1 = R_{2,kbar_1}(nhat_1(u_2)) is OPEN.
+
+Consumers: the fold's grep audit (zero instantiations of the w_1
+display against the letter formula; no consumer on the record read
+needs the tie) re-verified this round. Net position after
+S11.2 + S11.3: the pinned-w_i form is unconditionally realized at
+i = 2 exactly; at i = 1 the shape is proved with the tie open; at
+i >= 3 the form is open behind [GENTOW5-W(i)].
+
+### S11.4 [A-F4, MINOR] The lift_i(c; m) display gains its m-range
+
+Dated bracket on the S2.2 K_i-digit-lifts display: the flavor
+display and the realization sentence ("O-digit coefficients d_{r,t}
+realizing c") read AT HEIGHTS m IN (LIFT_i)'S VALIDITY RANGE —
+
+
+=== CONSUMER APPENDIX 2: WFRAME OPEN-1 (grep with context) ===
+338:**OPEN-1 — [GENTOW5-W(i)], the single-w form at i ≥ 3.** Statement
+339-and status exactly as GENTOW5 S11.2 (span pin @ b0e5c648
+340-L1888–1933; displayed in §3). Conditional on it at i ≥ 3: clause
+341-(a)'s realized-residual display ψ_{i+1}^{(w_i)}, the (a)-certificate
+342-legs that consume that form (KP membership via ψ^{(w)}
+343-admissibility, prime, non-equivalence), and (b)'s FGMN-side residual
+344-displays at the same indices. NOT conditional (w-blind): σ, exact
+345-values, degrees, irreducibility transport, repo-side residue
+346-classes and P-membership, (c)'s budgets, (d), (e). The committed
+--
+352:accepted-corpus rule keeps the fence up, and OPEN-1's conditional
+353-scope reads as-of that note.]
+354-
+355-**OPEN-2 — the u1 = w₁ tie at i = 1.** The proved i = 1 shape is
+356-ψ₂^{(u1)} with u1 a fixed z₁-letter-power unit (species from the
+357-letter formula); the tie u1 = w₁ = R_{2,κ̄₁}(n̂₁(u₂)) is OPEN
+358-(GENTOW5 S11.3, span pin @ b0e5c648 L1933–1964). The fold's grep
+359-audit found zero consumers needing the tie; it stays a
+360-statement-level open item, not a load-bearing gap.
+--
+542:  added to OPEN-1; R-7 (GF29, the 8th prime) appended to §4 per
+543-  this section's append rule. Sealed artifacts untouched.
+544-* **Grade line:** this note is grade 0/2 (RCT unit T5, FABLE arm);
+545-  the 2-clean hostile arc follows. It consumes ACCEPTED texts only
+546-  (GENTOW2 2/2 @ PE6; GENTOW5 2/2-annotated with its S11 repairs)
+547-  plus committed, sealed pass-record artifacts cited at their
+548-  seals. Nothing in this note upgrades any source's grade or
+549-  status.
+warning: Codex could not find bubblewrap on PATH. Install bubblewrap with your OS package manager. See the sandbox prerequisites: https://developers.openai.com/codex/concepts/sandboxing#prerequisites. Codex will use the bundled bubblewrap in the meantime.
+codex
+I’ll treat the numerical artifacts as ground data and audit only the mathematics, using routes not already discharged in PE1. I’m concentrating on the composed interfaces, the exact logical content of S11.2’s proved list, and whether the stated lemma matches each downstream consumer.
+codex
+## Surface 1 — Composed argument
+
+1. **“Ambient setting: … with \(P_{i+1}\) nonempty”** versus **“This note prefixes NO binder, hypothesis, or fixed-witness clause”** — **JUSTIFICATION GAP**.
+
+   The lemma is formally proved only under \(P_{i+1}\neq\varnothing\), while the fenced statement and WFRAME OPEN-1 quantify over every \(3\le i<r\) without that condition. Nothing pasted establishes that \(P_{i+1}\) is automatically nonempty, and the proof does not consume this assumption. An unused assumption does not enlarge the formally stated theorem.
+
+   Concrete failure scenario: a permitted tower level has \(P_{i+1}=\varnothing\). The consumer requests [GENTOW5-W(i)] there, but this note’s scoped lemma is unavailable.
+
+   Apart from this scope mismatch, no new composed-interface or hidden-induction failure survives. In particular, clause (b) at index \(i-1\) is explicitly classified as w-blind, so its use does not inductively assume W(i−1).
+
+## Surface 2 — S11.2 resting point
+
+No findings.
+
+From the pasted adjudication, the (B-2) leg supplies per-grade fixedness together with \(x_0\)- and \(g\)-freeness. Evaluating the resulting grade-\(\beta\) ratio at \(g=\widehat n_i(\widehat\beta)\), whose digit is \(1\), identifies the fixed ratio with
+\[
+u_i(\beta)=R_{i+1,\beta}(\widehat n_i(\widehat\beta)).
+\]
+Thus the factorization \(R_{i+1,\beta}(g)=u_i(\beta)\operatorname{digit}_i(g)\) used in step (iv) rests on the proved (B-2) leg, not on the open single-\(w\) law. The excluded grade-zero lift and Thm. 4.8 do not re-enter through this route.
+
+## Surface 3 — Consumer fitness
+
+2. **“T1’s item-9 — each quoted in the pasted consumer appendix”** — **JUSTIFICATION GAP**.
+
+   No T1 item-9 appears anywhere in either pasted consumer appendix. Only GENTOW5 S11.2/S11.3 and WFRAME OPEN-1/OPEN-2 are supplied. Therefore the required “EXACTLY what each consumes” comparison cannot be performed for T1.
+
+   Concrete failure scenario: T1 item-9 requires an unrestricted level statement, the \(i=1\) tie, or a closed-form value of \(w_i\), none of which this lemma supplies. Without the missing consumer text, that incompatibility cannot be excluded.
+
+   For the consumers actually pasted, the algebraic conclusion has the requested single-\(w_i\) form at \(i\ge3\); subject to Finding 1’s extra hypothesis, it matches GENTOW5 S11.2 and WFRAME OPEN-1. It does not claim to close OPEN-2 or OPEN-3.
+
+## Surface 4 — Free hunt
+
+No additional findings.
+
+VERDICT: NOT CLEAN (0 CRITICAL ERROR, 2 JUSTIFICATION GAP, 0 MINOR)  
+GRADE: STAYS 1/2
+tokens used
+24,207
+## Surface 1 — Composed argument
+
+1. **“Ambient setting: … with \(P_{i+1}\) nonempty”** versus **“This note prefixes NO binder, hypothesis, or fixed-witness clause”** — **JUSTIFICATION GAP**.
+
+   The lemma is formally proved only under \(P_{i+1}\neq\varnothing\), while the fenced statement and WFRAME OPEN-1 quantify over every \(3\le i<r\) without that condition. Nothing pasted establishes that \(P_{i+1}\) is automatically nonempty, and the proof does not consume this assumption. An unused assumption does not enlarge the formally stated theorem.
+
+   Concrete failure scenario: a permitted tower level has \(P_{i+1}=\varnothing\). The consumer requests [GENTOW5-W(i)] there, but this note’s scoped lemma is unavailable.
+
+   Apart from this scope mismatch, no new composed-interface or hidden-induction failure survives. In particular, clause (b) at index \(i-1\) is explicitly classified as w-blind, so its use does not inductively assume W(i−1).
+
+## Surface 2 — S11.2 resting point
+
+No findings.
+
+From the pasted adjudication, the (B-2) leg supplies per-grade fixedness together with \(x_0\)- and \(g\)-freeness. Evaluating the resulting grade-\(\beta\) ratio at \(g=\widehat n_i(\widehat\beta)\), whose digit is \(1\), identifies the fixed ratio with
+\[
+u_i(\beta)=R_{i+1,\beta}(\widehat n_i(\widehat\beta)).
+\]
+Thus the factorization \(R_{i+1,\beta}(g)=u_i(\beta)\operatorname{digit}_i(g)\) used in step (iv) rests on the proved (B-2) leg, not on the open single-\(w\) law. The excluded grade-zero lift and Thm. 4.8 do not re-enter through this route.
+
+## Surface 3 — Consumer fitness
+
+2. **“T1’s item-9 — each quoted in the pasted consumer appendix”** — **JUSTIFICATION GAP**.
+
+   No T1 item-9 appears anywhere in either pasted consumer appendix. Only GENTOW5 S11.2/S11.3 and WFRAME OPEN-1/OPEN-2 are supplied. Therefore the required “EXACTLY what each consumes” comparison cannot be performed for T1.
+
+   Concrete failure scenario: T1 item-9 requires an unrestricted level statement, the \(i=1\) tie, or a closed-form value of \(w_i\), none of which this lemma supplies. Without the missing consumer text, that incompatibility cannot be excluded.
+
+   For the consumers actually pasted, the algebraic conclusion has the requested single-\(w_i\) form at \(i\ge3\); subject to Finding 1’s extra hypothesis, it matches GENTOW5 S11.2 and WFRAME OPEN-1. It does not claim to close OPEN-2 or OPEN-3.
+
+## Surface 4 — Free hunt
+
+No additional findings.
+
+VERDICT: NOT CLEAN (0 CRITICAL ERROR, 2 JUSTIFICATION GAP, 0 MINOR)  
+GRADE: STAYS 1/2

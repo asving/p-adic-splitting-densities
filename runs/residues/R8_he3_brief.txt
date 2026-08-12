@@ -1,0 +1,2138 @@
+ADVERSARIAL AS-BUILT RATIFICATION (decorrelated model; you are gpt-5.6-sol
+high). The note below was ACCEPTED after a same-model-family 2-clean hostile
+arc; YOU attack what those passes may share blind spots on. Treat the pasted
+acceptance reports' CHECKED-CLEAN claims as targets, not evidence. Fresh
+context; you CANNOT read files — everything is pasted. Quote-and-classify,
+FIX NOTHING; per finding: verbatim quote, CRITICAL/GAP/MINOR, the precise
+mathematical failure with a counter-configuration where possible. If a charged
+item survives, say CHECKED CLEAN in one line. End with:
+OUTCOME: RATIFIED | RATIFIED-WITH-ANNEX | CHALLENGE
+
+=== THE NOTE (HE3_PROOF_2026-08-08.md, verbatim at HEAD) ===
+# HE3 — [GENHN-HE(μ ≥ 3)] CLOSED AT ITS FIRST-LIVE CASE (μ = 3, degrees n ≤ 7: UNCONDITIONAL) AND REDUCED TO ONE NAMED BRANCH AT μ ≥ 4 (HE3-BOX-6): the σ-decision at composite stages of ANY multiplicity, by THEOREM HE3.A (the stage-σ recursion: σ at a μ-stage = the label read of the degree-μ stage resolvent over the stage ring, composed multiplicatively) + COROLLARY HE3.B ([GENHN-HE(μ)] for ALL μ by induction with strict descent μ′ ≤ μ/2, base μ ≤ 3 composite-stage-free) **[r1 2026-08-09: repaired in place after Fable PE1's two f₁ ≥ 2 CRITICALs; the μ ≤ 3 headline survives WITH the corrected machinery (HE3-1L letters, D′h thresholds, HE3-6 equivariance) — §S0′ for the record, §S9′ for the supplementary machine leg; grade 0/2]** **[r2 2026-08-09: repaired in place after Fable PE2's 2 GAPs (the R_λ coherent-convention seam, now PINNED at DEFINITION 1 [r2] with the coboundary Remark; the §S1 attainment step, now the Ψ-comparison) + 3 MINORs — §S0″ for the record; grade stays 0/2, PE3 next]**
+
+**Unit:** HE3 (the last open mathematics of the uniformity program).
+**Status:** complete at commit 3; **[r1] REPAIR ROUND 2026-08-09** applied
+in place (this note is at attempt grade 0/2, unaccepted, so tagged in-place
+repairs per the GENHN [r1] mechanism; the sealed battery runner and its
+artifacts are byte-untouched). Statements §S1, mechanism §S2, proofs
+§S3–S6, boxes §S7, sealed battery §S8, verdict §S9 (GREEN, 0 violations).
+**Attempt grade 0/2 on the μ ≤ 3 statement**: the first counted
+fresh-context pass (Fable PE1, `HE3_passPE1_report.md` @ 7950ee4) returned
+NOT CLEAN — 2 CRITICAL + 4 GAP + 2 MINOR, confined at CRITICAL level to the
+f₁ ≥ 2 geography — and this [r1] round repairs the 8 findings at their
+sites (see the [r1] REPAIR RECORD in §S0′). The earlier Codex pass
+adjudicated in the composer's own context is preserved at
+`CODEX_HE3PE1_2026-08-08.md` and does not count toward the grade.
+**Instruments:** `verification/openmath/he3_checks.py` (sealed battery;
+artifacts `he3_checks_output.txt`, `he3_checks_results.json`; ℤ_p rows,
+PARI σ-oracle, 4 wired teeth — see HE3-BOX-4b) and, this round,
+`verification/openmath/he3r1_supp.py` (additive leg: the repaired peel at
+the PE1 counter-instance and f₁ ∈ {2, 3} sweeps; §S9′).
+
+---
+
+## S0. WHAT THIS UNIT CONSUMES (pins, and what it does NOT consume)
+
+Consumed at pin (HEAD = f2a7164 unless stated):
+
+* **GENHN @ HEAD** (`GENHN_PROOF_2026-08-08.md`, battery GREEN
+  2,223,050/0 per its §S12 — machine-verified, contrary to the charge's
+  assumption of an unrun battery):
+  - THEOREM GENHN.CLASS (the genre datum G = (Q; e₁, f₁, μ; h, entry);
+    finiteness; uniformity in n) — consumed as the *definition layer*.
+  - GENHN.A(i) LEMMA GENHN-1 (the stage ring R = Ô[x]/(Φ′) with
+    e = e₁, f = f₁, K = F_{Q^{f₁}} — carrier corrected, see the [r1, F7]
+    note at §S1; the Φ′-development f = Φ′^μ + Σ_{j<μ}A_jΦ′^j; the node
+    ~~dv(A_j) ≥ (μ−j)S + 1, S = e₁h~~ **[r1, F2: GENHN at HEAD carries
+    erratum [r1 2026-08-08] — the stage-initial node at f₁ ≥ 2 is
+    {dv(A_j) ≥ (μ−j)·D′h + 1}, D′h = e₁f₁h = f₁S; at f₁ = 1 the two
+    coincide. HE3's pin f2a7164 predates that erratum; this note now
+    consumes the corrected node and re-derives it from its own locus in
+    §S1]**, dv := e₁v).
+  - **GENHN.A(ii) LEMMA GENHN-2 (THE SLOT LEMMA) — the single most
+    load-bearing import**: ~~for A = Σ_{i<D′}a_i x^i and ANY element ξ
+    with (T1)/(T2)~~ **[r1, F4: GENHN's LEMMA GENHN-2 is stated at roots
+    θ of Φ′ only ("for every root θ of Φ′ and every lift"), not at
+    arbitrary (T1)/(T2) points; the paste above overconsumed it. The
+    ξ-form this note uses at roots of f and at roots of test keys is
+    LEMMA HE6-0″ (`HE6_PROOF_2026-08-08.md` §S1, frozen at HEAD, cited
+    as-of 2026-08-09), whose one-paragraph proof re-runs GENHN-2's
+    mechanism: (T1) is used only to separate the e₁ slot classes
+    (i ↦ ih mod e₁ bijective since gcd(h,e₁) = 1), (T2) only to make
+    {1, η_ξ, …, η_ξ^{f₁−1}} F_Q-independent; Φ′(ξ) = 0 is never used.]**
+    For A = Σ_{i<D′}a_i x^i and any point ξ with (T1) v(ξ) = h/e₁,
+    gcd(h, e₁) = 1 and (T2) η_ξ := res(ξ^{e₁}π^{−h}) a root of ψ
+    (deg ψ = f₁),
+        dv(A(ξ)) = min_i (e₁·v(a_i) + i·h)   EXACTLY,
+    and the residue of the attaining slot is the universal polynomial
+    Σ_t res(a_{i+e₁t})·η_ξ^t evaluated at η_ξ [by GENHN-2 at ξ = θ; by
+    HE6-0″ at other (T1)/(T2) points, up to its fixed normalizer-ratio
+    twist, which the n(κ)-reads below never see].
+  - GENHN.A(iii) LEMMA GENHN-3 (window ledger: lift-stability iff
+    dv < e₁N; consulted digits in-window; carries upward only).
+  - GENHN.C (σ at every μ = 2 stage) — consumed as a CROSS-CHECK only:
+    §S6 re-derives it as the μ = 2 case of HE3.A, so no circularity.
+  - GENHN's §S11.F extraction-certified perimeter (embedded genres:
+    the ambient window certifies stage leaves only below explicit
+    per-coordinate floors) — consumed as the machine-side gate.
+* **GENIND @ 4682bcf**: THEOREM GENIND.A(I) (the species partition
+  DRAIN/DEC/α/β/CS) and **GENIND.A(IV) (THE COMPOSITE CRITERION: a CS
+  event inside a system of multiplicity μ requires abscissa length
+  ≥ 4, hence needs μ ≥ 4)** — this is the descent engine of
+  COROLLARY HE3.B.
+* **GENIND-3** (scale-then-Hensel sibling fibration) — embedded genres.
+* **Classical:** Hensel; the ultrametric Newton-polygon read of a
+  polynomial over a complete DVR (values = slopes, residues = roots of
+  the residual polynomial); Galois theory of local fields (e, f
+  multiplicativity, unramified base change); resultants/norms.
+
+**NOT consumed (deliberate).** (a) **GENHN.A(iv)/LEMMA GENHN-4 is NOT
+consumed**, hence **the W-9 graded weld face (GENHN-BOX-2) is NOT
+inherited**: GENHN-4 is the *digit-space bijection* used for COUNT
+laws; this unit needs only the *valuations and residues* of a
+recentered development, which §S5 proves elementarily (LEMMA HE3-2).
+So HE3's σ-theorem stands on strictly fewer weld faces than GENHN's
+count laws. (b) The Montes/GMN order-≥2 index theorem — named in
+GENHN's box as the "faithful-cite target" — is **not** cited: §S3–S6
+prove what is needed from the resultant identity + the ultrametric
+read. (c) SIGMALAW, JC-LOAD, DULEMMA: not consumed.
+
+---
+
+## S0′. [r1] REPAIR RECORD (2026-08-09, after Fable PE1 @ 7950ee4)
+
+Repairs are re-derived from this note's lemmas and the finding
+mechanisms, tagged in place; the sealed battery and its artifacts are
+byte-untouched. Finding → disposition, with the site:
+
+| # | PE1 finding | disposition at [r1] |
+|---|---|---|
+| F1 | CRITICAL: peel letters reach only F_Q ⊊ K at f₁ ≥ 2 | REPAIRED: LEMMA HE3-1L (§S3, derived from HE6-1L's mechanism at the n(κ)-read, where the coset factor cancels); peel re-run with C-letters (§S6.2); verified on the PE1 counter-instance + f₁ ∈ {2,3} sweeps (§S9′) |
+| F2 | CRITICAL: S = e₁h thresholds false at f₁ ≥ 2 | REPAIRED: node → (μ−j)D′h + 1 re-derived from the locus (§S1); HE3-1's band > D′h with the x²+18/x²+27 counter-instances recorded; HE3-2(c), HE3-1′, §S6.1 samples, (SEP) index re-keyed; leg-A2 off-locus member fenced by locus scoping (§S1); PE1's own MODERATION verified the on-locus μ ≤ 3 values survive the S → D′h repair, and §S9′ re-verifies on fresh members |
+| F3 | GAP: headline vs the assumed finding-6 clause | DISCHARGED: LEMMA HE3-6 (§S6.3, level-1 derivation, HE6-5 template); headline rescope block at HE3.B |
+| F4 | GAP: GENHN-2 overconsumed at ξ ≠ roots of Φ′ | REPAIRED: §S0 import restated at roots θ; ξ-form routed through LEMMA HE6-0″ (as-of cite, frozen at HEAD); §S4 proof-sketch cite corrected |
+| F5 | GAP: two mutually-canceling false displays | REPAIRED: §S6.2 equivalence single-clause + the direct route (class size = D′m) operative; HE3-2(b) collapse clause with (Z+s)^T·R_λ(Z+s)/Z^m; §S6.3 stage-α sentence re-keyed to the above-λ read |
+| F6 | GAP: n(λ)-read at ℓ ≥ 2 undefined | REPAIRED: β = res(y^ℓ/n(u)) in HE3-0(iii)/HE3-0′ (HE6-0′ form); μ ≤ 3-vacuous, μ ≥ 4 display corrected |
+| F7 | MINOR: "R a complete DVR" | REPAIRED: order-in-L carrier (§S1); HE3-1 norm through the field L″; stage-CS O_L note (μ ≥ 4, boxed region) |
+| F8 | MINOR: ±s sign seam across three sites | REPAIRED: minus convention Φ″ = Φ′ − C; the three sites now agree; battery semantics invariant under s ↦ −s |
+| N1 | self-found this round (not in PE1) | the old HE3-3 step (3) is silent at three CONSECUTIVE integer slopes when K^× has no generic letter ((Q,f₁) = (2,1)); closed by the recenter-then-invert supplement (§S6.1), both branches machine-demonstrated (§S9′); LEMMA HE6-3 covers it independently as-of 2026-08-09 |
+
+**CONSUMER TRACE (the frozen/accepted consumers of HE3's exports, at the
+repaired text).**
+
+| consumer | pin | consumed clauses | verdict at [r1] |
+|---|---|---|---|
+| HE6 (frozen) | HE3 @ 7a95449 | DEF 1; DEF 2; HE3-0 (locus (T1)/(T2)); HE3-1 (resultant identity); (★) of HE3-3 step 1; §S6.3 assembly + HE3.B descent; HE3-2(b)+HE3-3 for the stage-α class size (its §S6.3) | SAFE. DEF 1 and (★) byte-unchanged; DEF 2 renamed node only; HE3-0's consumed clauses byte-unchanged ((iii)'s ℓ ≥ 2 read is re-proved inside HE6 as HE6-2″, not consumed); HE3-1 consumed only at HE6's own test heights κ > D′h (DEFINITION HE6-1's floor), inside the corrected hypothesis — the [r1] band repair VALIDATES HE6's stricter usage, which its §S3.1 Remark had already recorded; HE3-2(b)'s consumed clause (above-λ length = m·ℓ) survives verbatim in the corrected display; the assembly is strengthened (its assumed finding-6 clause is now LEMMA HE3-6) |
+| HE7 (frozen) | HE3 @ 7a95449 | DEF 1/2; the convex duality (★) of HE3-3 step 1 | SAFE — both byte-unchanged in content (DEF 2's [r1] tag renames the node only) |
+| GENHN (accepted-track, at HEAD with [r1]/[r2]/[e2] errata) | HE3-0 cited in its [r1] node erratum | (T1)/(T2) on the opening locus | SAFE — clauses byte-unchanged; HE3's [r1] node display now MATCHES GENHN's [r1] erratum (the stale-at-HEAD divergence PE1 F2 reported is closed) |
+| GENIND (accepted) | — | no consumption site of HE3 found in `GENIND_PROOF_2026-08-08.md` (grep, this round) | N/A — trivially safe |
+
+## S0″. [r2] REPAIR RECORD (2026-08-09, after Fable PE2 @ 6d0ff09)
+
+PE2's verdict: NOT CLEAN — 2 GAP + 3 MINOR, 0 CRITICAL; the eight r1
+repairs, HE3-1L, HE3-5, HE3-6, the N1 supplement and the consumer trace
+HELD under that pass's attacks, and its fresh e₁ ≥ 2 ∧ f₁ ≥ 2 route ran
+GREEN (`he3_pe2fresh.py`, 7/7 PARI members, 0 violations). The five
+findings are repaired below, re-derived in place; the §S8 battery and
+its artifacts stay byte-frozen; `he3r1_supp.py` is touched at the
+docstring only (F-4: stdout byte-identical, §S9′ pin updated).
+DEFINITION 1, HE3-2(b)'s consumed above-λ clause, and the (★) display
+stay byte-identical (the frozen consumers' pins).
+
+| # | PE2 finding | disposition at [r2] |
+|---|---|---|
+| F-1 | GAP: R_λ construction unpinned; the §S3 Remark's twist-invariance sentence false as displayed (machine-adjudicated type flip at (e₁,f₁) = (2,2)) | REPAIRED: DEFINITION 1 [r2] construction pin (the coherent assembly — HE6 ϖ-CONVENTION / GENHN §S4 class); §S3 Remark's false sentence struck, replaced by the coboundary statement with the (3;2,2,2;1) witness re-derived (naive (Z−1)² phantom refine vs coherent irreducible, PARI σ = {(2,4)}); pointers at the grep sites (§S3 HE3-1′ proof, §S4 (ii), §S5 (b) display + proof, §S6.2 HE3-4) |
+| F-2 | GAP: the §S1 node re-derivation inferred polygon slopes from root values without attainment | REPAIRED: the Ψ-comparison display (j = 0 pin direct; general pin via COUNT + R(D′h+1) with the μ ≤ 3 low/mid enumeration; honest scope — the letter-starved corner and μ ≥ 4 consumed from GENHN [r1] via HE6-3(a); the fence stands as independent support) |
+| F-3 | MINOR: HE3-3 step (2) justified by the retired monomial carrier | REPAIRED: parenthetical re-keyed to the ξ-form slot read at ρ (HE6-0″ / HE3-1L mechanism, F_Q-independence of {η_ρ^t}) |
+| F-4 | MINOR: supp P4 quasi-tautological; docstring sympy/Bareiss slip | DISCLOSED + FIXED: P4's scope stated at §S9′ (T(κ) bookkeeping, not residue arithmetic); PE2's FR-C (`nfeltval`/`nfmodpr`, κ = 0..5 at (2,2,1)) cited as the decorrelated leg; docstring corrected, runner pin updated, [r2] re-run stdout byte-identical |
+| F-5 | MINOR: [r1-N1] demo geography label loose | DISCLOSED: the (3,2) demo scope stated at the §S9′ pin; PE2's FR-D (both branches over ℤ₂ at the live (2,1) geography) cited as the machine contact; coverage note dated |
+
+---
+
+## S1. STATEMENTS
+
+Throughout: O a complete DVR with finite residue field F_Q, both
+characteristics; π a uniformizer; v the valuation with v(π) = 1,
+extended to a fixed algebraic closure of K₀ := Frac(O). G a composite-
+stage genre with data (Q; e₁, f₁, μ; h, entry); D′ := e₁f₁; Φ′ the
+current key (monic, degree D′, irreducible, roots of valuation h/e₁);
+R := O[x]/(Φ′) = O[θ] the stage ring ~~(complete DVR, e = e₁, f = f₁,
+residue field K = F_{Q^{f₁}})~~ **[r1, F7: R = O[θ] is an O-ORDER in the
+field L := K₀(θ), not a complete DVR in general — at (e₁,f₁,h) = (1,2,1),
+Φ′ = x²+9 over ℤ₃, R = ℤ₃[3i] ⊊ ℤ₃[i] = O_L is not integrally closed
+(GENHN's erratum [e2-E3 2026-08-09] carries the same correction one level
+up). The invariants are carried by L and its valuation ring O_L:
+e(L/K₀) = e₁, f(L/K₀) = f₁, residue field k_L = K = F_{Q^{f₁}}; dv := e₁·v
+is still ℤ-valued on R (v(A(θ)) ∈ (1/e₁)ℤ needs only (T1)). Every use
+below runs through L, not through R's ring structure: LEMMA HE3-1's norm
+is Nm_{L″/K₀} through the FIELD L″, and residues are read in k_{L}. The
+only site that instantiated "R a complete DVR" as a hypothesis is the
+stage-CS step of §S6.3, which lives in the boxed μ ≥ 4 region; the [r1]
+note there records the O_L re-carrier it needs.]**; S := e₁h (a name kept
+for f₁ = 1 continuity; **the operative threshold everywhere below is
+D′h = e₁f₁h = f₁S** — see the next display). For f monic on the genre-G
+opening locus,
+
+    f = Φ′^μ + Σ_{j<μ} A_j Φ′^j ,  deg A_j < D′,
+    ~~dv(A_j) ≥ (μ−j)S + 1~~  **[r1, F2] dv(A_j) ≥ (μ−j)·D′h + 1** ,
+
+**[r1, F2 — the corrected node, re-derived from the locus rather than
+transcribed; derivation re-displayed at [r2] 2026-08-09 (PE2 F-2: the r1
+chain "root values > D′h ⟹ every side's slope > D′h" consumed the
+ATTAINMENT direction it never proved — HE3-0(iii) gives roots → slopes,
+not the converse; the display below routes through the Ψ-comparison,
+this note's own instrument).** Every root ρ of f on the opening locus
+satisfies (T1)/(T2) (LEMMA HE3-0), hence dv(Φ′(ρ)) > D′h (the
+ψ-cancellation computation: res(Φ′(ξ)/π^{f₁h}) = ψ(η_ξ) by the slot read
+at Φ′'s own single entry side, and ψ(η_ρ) = 0 forces the attaining terms
+to cancel — LEMMA HE6-0's argument, one level down). From root values to
+pins:
+
+(i) THE j = 0 PIN, directly: LEMMA HE3-1 at Φ″ = Φ′ gives
+D′·dv(A₀) = Σ_ρ dv(Φ′(ρ)) > D′μ·D′h, so dv(A₀) ≥ μD′h + 1 (dv(A₀) ∈ ℤ).
+
+(ii) THE GENERAL PIN — the Ψ-comparison (the attainment direction). If
+some pin had dv(A_{j*}) ≤ (μ−j*)D′h (1 ≤ j* < μ), the hull right of j*
+would have length-weighted mean slope ≤ dv(A_{j*})/(μ−j*) ≤ D′h, so
+P(F) would own a side of slope λ_low ≤ D′h — a side NO root value
+attains. Such a side is refuted by the two exact reads of
+Ψ(κ, s) := Σ_ρ dv(Φ′_{κ,s}(ρ)) (§S6.1's instrument; the lemmas cited
+consume only dv(Φ″ − Φ′) > D′h and the locus, never this node — no
+circularity). Write n_λ := #{ρ : dv(Φ′(ρ)) = λ}, c_λ := n_λ − D′L_λ.
+COUNT (free): Σ_λ n_λ = D′μ = Σ_λ D′L_λ, i.e. Σ_λ c_λ = 0 (root values
+are slopes, HE3-0(iii); side lengths sum to μ). SAMPLE at a LEGAL
+κ > D′h (κ not a slope, or a slope whose coherent residual has a
+non-root letter s ∈ K^×): the root side reads Σ_λ n_λ·min(λ, κ)
+exactly (per root, dv(Φ′(ρ) − C(ρ)) = min(λ_ρ, κ): dv(C(ρ)) = κ by the
+ξ-form slot read at ρ — §S6.1 step (2) [r2, F3] — and at λ_ρ = κ the
+residues cannot cancel, since β_ρ is a root of ι_ρ(R_κ) by HE3-0(iii)
+while ι_ρ(s) is not, ι_ρ being a field embedding and R_κ(s) ≠ 0); the
+test side reads D′·h_F(κ) = Σ_λ D′L_λ·min(λ, κ) (LEMMA HE3-1 +
+HE3-1′'s equality clause + the convex duality (★) of §S6.1). Hence
+
+    R(κ): Σ_λ c_λ·min(λ, κ) = 0 ;  R(κ) − κ·COUNT:
+    Σ_{λ < κ} c_λ·(κ − λ) = 0 .                                (∗∗)
+
+At the sample κ = D′h + 1 the slopes < κ are the hypothetical low
+side(s) (where c_λ = −D′L_λ, since n_λ = 0 there) and any MID sides
+(fractional λ ∈ (D′h, D′h+1), horizontal length ℓd ≥ 2). At μ ≤ 3,
+(∗∗) closes the claim: with no mid side it reads
+Σ_low D′L_λ(κ − λ) = 0 with every summand ≥ D′L_λ > 0 — contradiction;
+with a mid side, mid length ≥ 2 plus L_low ≥ 1 forces μ = 3 and the
+polygon exactly {low L = 1, mid L = 2}, COUNT gives c_mid = −c_low =
+D′, and (∗∗) reads D′(κ − λ_low) = D′(κ − λ_mid), i.e. λ_low = λ_mid —
+contradicting λ_low ≤ D′h < λ_mid. So no pin sits on or below the
+D′h-line: dv(A_j) > (μ−j)D′h, i.e. ≥ (μ−j)D′h + 1 since dv is ℤ-valued
+on the A_j.
+
+(iii) HONEST SCOPE + THE FENCE. The sample κ = D′h+1 is legal except in
+the letter-starved corner — D′h+1 a slope whose residual carries no
+non-root letter, needing |K^×| = Q^{f₁} − 1 ≤ d_λ ≤ μ (at μ ≤ 3 only
+(Q,f₁) ∈ {(2,1), (3,1), (2,2)} can be starved). That corner, and μ ≥ 4
+(where one sample does not exhaust the (SEP)-like configurations —
+compare §S6.1), are NOT closed by this display; there the node is
+CONSUMED from GENHN's [r1] ERRATUM 2026-08-08, whose derivation runs
+through LEMMA HE6-3(a) (slope counts with no (SEP) hypothesis and no
+letter consumption — the enlarged test family). The GENHN [r1]
+consumption ALSO stands as independent support for the display as a
+whole: the fence PE2 recorded stays in force.
+
+At f₁ = 1, D′h = S and the old display is unchanged. **LOCUS SCOPING (the
+PE1 leg-A2 member):** a member satisfying the stale S-floors but not the
+D′h-node is OFF-LOCUS — its ambient residual is not ψ^μ — and no display
+of this note admits it; PE1's f = (x²+9)³ + 9(x²+9)² + 81(x²+9) + 729
+(face-value dictionary {(1,2)³} vs PARI σ = {(1,1),(1,1),(1,4)}) is the
+concrete witness that enumerating "stage coordinates + the stale node"
+emits wrong σ at f₁ ≥ 2. The §S8 battery enumerates at f₁ = 1 only, where
+the two nodes coincide.]**
+
+(full-side genre; embedded genres split the sibling factor off first
+by GENIND-3 and apply everything below to the extracted block).
+
+> **DEFINITION 1 (the stage resolvent and its label set).**
+> F(Y) := Y^μ + Σ_{j<μ} A_j(θ) Y^j ∈ R[Y], monic of degree μ. Its
+> dv-Newton polygon P(F) is the lower hull of {(j, dv(A_j))}_{j≤μ}
+> (A_μ = 1, dv = 0); each side has a dv-slope λ = u/ℓ in lowest terms
+> (u, ℓ > 0), horizontal length L_λ = ℓ·d_λ, and a residual polynomial
+> R_λ ∈ K[Z] of degree d_λ with R_λ(0) ≠ 0. A **label** is a pair
+> (λ, r) with λ a slope of P(F) and r an irreducible factor of R_λ
+> over K; its **stage invariants** are e_s(λ, r) := ℓ,
+> f_s(λ, r) := deg r. Bookkeeping: Σ_{labels} e_s f_s = μ whenever
+> every R_λ is separable.
+
+**[r2, F1 2026-08-09 — THE CONSTRUCTION PIN (PE2's twist seam):
+R_λ is the COHERENT (twisted) assembly, and the pin is load-bearing at
+e₁ ≥ 2.** DEFINITION 1 above (byte-frozen: HE6/HE7 pin it) names R_λ
+without displaying a construction, and PE2 exhibited a member where two
+natural constructions differ in factorization type. The construction
+this note and its consumers use is the coherent one — HE6's frozen
+ϖ-CONVENTION; GENHN §S4's coherent-normalizer computation — displayed
+here in this note's n-monomial vocabulary. For the side of P(F) with
+slope λ = u/ℓ in lowest terms, left endpoint (j₀, κ₀), lattice
+abscissas j₀ + ℓk (k = 0, …, d_λ; the line heights κ₀ − ku ∈ ℤ):
+
+    R_λ(Z) := Σ_{k=0}^{d_λ} res( A_{j₀+ℓk}(θ)·n(u)(θ)^k / n(κ₀)(θ) )·Z^k ,
+
+the k-th ratio having dv = (κ₀ − ku) + ku − κ₀ = 0 when the pin sits on
+the line (so its residue exists; a pin strictly above the line
+contributes 0, and the k = 0 read is the vertex read, so R_λ(0) ≠ 0).
+The normalizers M_k := n(κ₀)/n(u)^k form a GEOMETRIC system — powers of
+one fixed height-u monomial against one anchor — which is the entire
+content of "coherent": replacing them by another geometric system of
+the right heights (e.g. HE6's ϖ^{κ₀−ku}, ϖ = x^{i₀}π^{a₀} with
+i₀h + e₁a₀ = 1) changes R_λ by one global nonzero scalar and Z ↦ cZ,
+so root sets rescale and factorization TYPE is unchanged. What is NOT
+in the class is the naive per-slot read
+a_k := res(A_{j₀+ℓk}(θ)/n(κ₀−ku)(θ)): it differs from the coherent
+coefficient by the diagonal η^{W(k)},
+η^{W(k)} = res(n(κ₀−ku)(θ)·n(u)(θ)^k/n(κ₀)(θ)), i.e.
+W(k) = (i₀(κ₀−ku) + k·i₀(u) − i₀(κ₀))/e₁ — exact monomial arithmetic,
+no carry corrections — and W need not be affine in k, so the naive
+assembly can have a DIFFERENT factorization type. The §S3 Remark [r2]
+carries the arithmetic, the machine-adjudicated witness, and why the
+chain's identities hold with the coherent read on both sides. At
+e₁ = 1 every n-monomial is a power of π, the two reads coincide
+(W ≡ 0), and the seam is invisible — which is why the r1 sweeps could
+not see it.]**
+
+> **DEFINITION 2 (the stage read; decided leaves).** The stage read is
+> the (μ, K)-cluster read of F over R in dv-units at the stage-initial
+> node **[r1, F2: formerly "the S-node"; the node height is D′h at
+> f₁ ≥ 2 per §S1 — GENHN's law is stated as the read AT THE NODE,
+> whatever its height]** (GENHN.A(v)). A leaf ℓ is **decided** iff (a) the read TERMINATES with
+> every TERMINAL residual polynomial separable — repeated residual roots
+> are allowed at intermediate nodes, where they are exactly what drives
+> the stage-α refinement — and (b) every event along the history is
+> lift-stable at the stage window (GENHN-3(a));
+> [**REPAIR, PE1 finding 5:** an earlier version of this definition
+> demanded separability of every residual CONSULTED, which contradicted
+> §S6.3's stage-α step (that step handles a residual root of multiplicity
+> m ≥ 2, i.e. a non-separable consulted residual) and would have made the
+> induction range over impossible histories. Separability is required at
+> the TERMINAL nodes only — Ore-regularity at the leaf. No mathematical
+> content changes; §S6.3's steps are unaffected.] the leaf's **stage
+> type** is the multiset
+> τ_stage(ℓ) := {(e_s^{(i)}, f_s^{(i)})}_{i=1..k}, Σ_i e_s^{(i)}f_s^{(i)}
+> = μ, obtained by composing the labels of the terminal keys along the
+> history: a stage-α refine (recentering the key at a K-rational
+> residual root) contributes nothing on its own, a stage-CS event of
+> inner data (e₁′, f₁′, μ′) contributes the inner types multiplied by
+> (e₁′, f₁′).
+
+> **THEOREM HE3.A (THE STAGE-σ RECURSION — the mechanism).** Let
+> G be any composite-stage genre, ℓ any DECIDED stage leaf with stage
+> type τ_stage(ℓ) = {(e_s^{(i)}, f_s^{(i)})}_i, and let f be any lift
+> on ℓ with disc(f) ≠ 0. Then f factors over O into exactly k monic
+> irreducible factors, in bijection with the members of τ_stage(ℓ),
+> the i-th of degree D′·e_s^{(i)}f_s^{(i)} with
+>
+>     e = e₁·e_s^{(i)} ,   f = f₁·f_s^{(i)}      (i = 1, …, k),
+>
+> i.e. σ(f) = {(e₁e_s^{(i)}, f₁f_s^{(i)})}_i as blocks relative to the
+> ambient. Equivalently: **the σ-decision at a multiplicity-μ stage is
+> the σ-decision at DEGREE μ over the stage ring R, transported by the
+> multiplicative re-basing (e, f) ↦ (e₁e, f₁f).**
+>
+> The proof needs, beyond the pinned suppliers: LEMMA HE3-1 (the
+> resultant identity), LEMMA HE3-2 (recentering valuations), LEMMA
+> HE3-3 (the slope count Ψ-inversion), LEMMA HE3-4 (the residue peel +
+> unramified base change), and — only when the leaf's history contains
+> a stage-CS event of inner multiplicity μ′ — THEOREM HE3.A itself at
+> multiplicity μ′ ≤ μ/2.
+
+> **COROLLARY HE3.B ([GENHN-HE(μ)]: UNCONDITIONAL for μ ≤ 3 — the
+> first-live case, degrees n ≤ 7 — and for μ ≥ 4 conditional on ONE named
+> branch, HE3-BOX-6).**
+> **[r1 HEADLINE RESCOPE, 2026-08-09.** PE1 struck this headline at
+> f₁ ≥ 2 (its two CRITICALs: the peel letters reached only F_Q ⊊ K, and
+> the S = e₁h thresholds were false in the band S < κ ≤ D′h). The claim
+> SURVIVES WITH THE CORRECTED MACHINERY of this [r1] round, on which the
+> μ ≤ 3 proof now runs at every f₁: LEMMA HE3-1L letters over the full
+> K^× (F1), the D′h thresholds re-derived from the locus (F2), LEMMA
+> HE3-6 discharging the equivariance gap the old text ASSUMED at f₁ ≥ 2
+> (F3 — "unconditional" was internally contradicted by that assumption;
+> it no longer is), the ℓ ≥ 2 residue read (F6), and the [r1-N1]
+> consecutive-triple supplement. "UNCONDITIONAL" continues to mean: no
+> assumed hypothesis inside this note's mathematics at μ ≤ 3. It does
+> NOT upgrade the grade: the note is at attempt 0/2 and every
+> consequence carries HE3-BOX-1's supplier-stack conditionality.]**
+> [GENHN-HE(μ)] holds for every μ ≥ 2, hence for every μ ≥ 3 — with the
+> single reservation that at μ ≥ 4 the proof invokes LEMMA HE3-4's
+> ramified-base-change branch (ii), whose stated justification is
+> insufficient (HE3-BOX-6, found by this unit's own review; repair route
+> named there). At μ ≤ 3 that branch is unreachable (it needs a side with
+> ℓ ≥ 2 and residual degree ≥ 2, hence length ℓd ≥ 4 ≤ μ), so μ = 2 and
+> μ = 3 are unconditional. Proof:
+> induction on μ. THEOREM HE3.A at multiplicity μ requires HE3.A at
+> the inner multiplicities μ′ of stage-CS events occurring inside a
+> DEGREE-μ system. By GENIND.A(IV) such an event has inner key degree
+> e₁′f₁′ ≥ 2 and inner multiplicity μ′ ≥ 2 with e₁′f₁′μ′ ≤ μ, hence
+>
+>     μ′ ≤ μ/2 < μ      (STRICT DESCENT),
+>
+> and in particular μ ≥ 4 is necessary for any stage-CS event at all.
+> Therefore μ = 2 and μ = 3 are **composite-stage-free**: their leaves'
+> histories consist of order-1 reads and stage-α refines only, so HE3.A
+> at μ ∈ {2, 3} needs no recursive input and is proved outright by
+> §S3–S6. Induction then gives every μ. ∎
+
+> **COROLLARY HE3.C (the program consequence).** In THEOREM GENHN.B
+> the clause list {[GENHN-HE(μ ≥ 3)]} is discharged OUTRIGHT for every
+> degree n ≤ 7, and for n ≥ 8 is reduced to the single branch of
+> HE3-BOX-6. Hence [GENIND-H(n)] holds for every n with no open σ clause
+> beyond that branch, and
+> the FULL UNIFORMITY THEOREM (one R_τ ∈ ℚ(q) per splitting type at
+> every degree, every prime power, both characteristics, Σ_τ R_τ = 1)
+> is conditional exactly on {GENHN's S9 compression/coverage boxes} ∪
+> {the hostile-arc grade stack} — the mathematics is composed-complete.
+> (Grade discipline: HE3 is itself at attempt grade 0/2; see §S7.)
+
+---
+
+## S2. THE MECHANISM, AND WHY THE μ = 2 ARGUMENT STOPS AT μ = 2
+
+**The two-line mechanism.** (1) Every root ρ of f satisfies the same
+two transported facts (T1)/(T2) as a root of Φ′, so by the SLOT LEMMA
+the polynomial relation satisfied by y_ρ := Φ′(ρ) over L_ρ := K₀(ρ),
+namely Y^μ + Σ_j A_j(ρ)Y^j = 0, has *exactly the stage polygon* and
+*Frobenius-conjugates of the stage residuals*; hence each root of f
+carries a LABEL (λ, r), and its label forces e₁e_s | e(L_ρ) and
+f₁f_s | f(L_ρ). (2) The label CLASS SIZES are pinned by the family of
+resultant valuations v(Res(f, Φ′_t)) over test keys Φ′_t = Φ′ − C
+**[r1, F1/F8: C the letter-carriers of LEMMA HE3-1L, reaching ALL of
+K^× at the test heights; the old display ŝ·n(κ) reached only F_Q^×]**
+— the ultrametric distance function from f's root multiset to the test
+points — and they come out to exactly D′e_sf_s, whereupon the degree
+count Σ_labels D′e_sf_s = D′μ = deg f forces each class to be a single
+Galois orbit with e = e₁e_s, f = f₁f_s exactly.
+
+**Why GENHN.C's μ = 2 argument stops.** GENHN.C (§S7 there) reads the
+Y-quadratic and closes each case with ONE of two devices: (a) the label
+set is a SINGLETON (stage-RAM: one side, ℓ = 2, u odd; stage-INERT: one
+side, residual irreducible of degree 2), in which case all D′μ roots
+carry that label and no counting is needed; or (b) the label set has
+exactly TWO members (stage-2SIDED, and stage-SPLITEQ after one refine
+step reduces it to 2SIDED), in which case the two class sizes n₁, n₂
+are determined by the two linear equations
+
+    n₁ + n₂ = D′μ ,      n₁λ₁ + n₂λ₂ = D′·dv(A₀)
+
+(root count + the single resultant identity Σ_ρ dv(Φ′(ρ)) = D′dv(A₀)),
+a 2 × 2 system with λ₁ ≠ λ₂, hence invertible.
+
+At μ = 2 those are the only possibilities: Σ e_sf_s = 2 admits only
+{(2,1)}, {(1,2)}, {(1,1),(1,1)}. **At μ ≥ 3 the label set can have
+THREE or more members** — Σ e_sf_s = 3 admits {(1,1),(1,1),(1,1)} —
+and then the two identities are underdetermined; worse, if the three
+labels sit on the SAME side (one slope λ, residual = three distinct
+K-rational roots) the second equation degenerates to λ times the
+first and carries **zero** information. That is the exact failure, and
+it is the first-live μ = 3 configuration at n = 6 (a sextic splitting
+into three ramified quadratics when e₁ = 2, f₁ = 1). Battery tooth
+HE-T-UNDET certifies the underdetermination numerically.
+
+**What replaces it.** The single identity is replaced by the whole
+FAMILY of identities indexed by test keys: define, for integer κ and
+a letter s ∈ K^×,
+
+    Ψ(κ, s) := Σ_ρ dv(Φ′_{κ,s}(ρ)) = D′·dv_t(f mod Φ′_{κ,s})
+    where Φ′_{κ,s} := Φ′ − C_{κ,s}   [r1: C_{κ,s} the LEMMA HE3-1L
+    letter-carrier for s at height κ; formerly Φ′ + ŝ·n(κ), which
+    carries only F_Q-letters and the opposite sign].
+
+For s generic at height κ (not a residual root of the height-κ side)
+Ψ(κ, s) = D′·min_j(dv(A_j) + jκ) — the polygon's support function
+scaled by D′ — and on the root side Ψ(κ, s) = Σ_labels n_λ·min(λ, κ).
+Sampling κ over the integers inverts (LEMMA HE3-3) to give the slope
+counts n_λ = D′L_λ; recentering at each K-rational residual root and
+re-running the same inversion peels the residue classes (LEMMA HE3-4),
+with unramified base change supplying letters for the non-rational
+residual factors. Two features of this replacement are worth naming:
+it is *characteristic-free* (no binomial expansion is used — only the
+substitution identity for residual polynomials), and it is *degree-
+generic* (nothing in it caps μ), which is why the same argument closes
+the whole family rather than one more case.
+
+---
+
+## S3. LEMMA HE3-1 (the resultant identity at every test key)
+
+> **LEMMA HE3-1.** Let Φ″ ∈ O[x] be monic of degree D′ with Φ″ ≡ Φ′
+> modulo terms of dv-height ~~> S~~ **[r1, F2] > D′h** (so Φ″ is again
+> irreducible with e = e₁, f = f₁, roots satisfying (T1)/(T2), and the
+> field L″ := K₀(θ″) again has e = e₁, f = f₁, residue field K **[r1,
+> F7: carrier through the field L″, not "R″ a complete DVR"]**). Write
+> f ≡ B₀ mod Φ″ with deg B₀ < D′. Then
+>
+> **[r1, F2 — WHY D′h AND NOT S; the old parenthetical is FALSE in the
+> band S < dv ≤ D′h, with exact counter-instances.]** At (e₁,f₁,h) =
+> (1,2,1), Φ′ = x²+9 over ℤ₃ (D′h = 2, S = 1), the height-2
+> perturbations Φ″ = x²+18 (SPLIT over ℚ₃: root residues ±1 ∉ roots(ψ),
+> ψ = y²+1) and Φ″ = x²+27 (RAMIFIED, (T1) broken) both violate the old
+> display — PE1 leg A1, PARI-exact. Re-derivation of the corrected
+> clause: dv(w) > D′h for w := Φ″ − Φ′ means e₁v(w_i) + ih > D′h for
+> each coefficient, i.e. v(w_i) > (D′−i)h/e₁ = the height of Φ′'s
+> single entry side at abscissa i; so Φ″ has the SAME entry polygon
+> (one side, slope h/e₁, length D′) and the SAME residual ψ
+> (irreducible, degree f₁, lattice length f₁), whence Φ″ is irreducible
+> with e = e₁, f = f₁, its roots satisfy (T1)/(T2), and k_{L″} ⊇
+> K = F_Q(η). At dv(w) = D′h the perturbation reaches ψ's own pins and
+> the two counter-instances above are exactly what happens. At f₁ = 1,
+> S = D′h and the band S < dv ≤ D′h is empty — the sealed battery's
+> geography is unaffected.
+>
+>     Σ_{ρ : f(ρ) = 0} dv(Φ″(ρ)) = D′ · dv(B₀)        (HE3-1a)
+>
+> and B₀(θ″) = F(−w)(θ″) where w := Φ″ − Φ′ and F is the stage
+> resolvent of DEFINITION 1, θ″ any root of Φ″. Consequently the left
+> side is computable from the stage read data alone.
+
+*Proof.* Both f and Φ″ are monic, so
+Res(f, Φ″) = Π_ρ Φ″(ρ) = ± Π_{θ″} f(θ″) = ± Nm_{L″/K₀}(B₀(θ″)) (the
+second equality is the standard resultant symmetry; the third is
+f(θ″) = B₀(θ″); **[r1, F7]** the norm is through the FIELD L″ — Φ″
+irreducible makes the θ″ a full conjugate set — so no DVR-ness of
+O[x]/(Φ″) is consulted). Taking v: Σ_ρ v(Φ″(ρ)) = v(Nm B₀(θ″)) =
+D′·v(B₀(θ″)) = f₁·dv(B₀) (v is Galois-invariant, so v(Nm x) =
+[L″:K₀]·v(x)). Multiply by e₁ to convert the left side to
+dv: Σ_ρ dv(Φ″(ρ)) = e₁f₁·dv(B₀) = D′·dv(B₀). For the second clause,
+Φ′ ≡ −w mod Φ″, so f = Φ′^μ + ΣA_jΦ′^j ≡ (−w)^μ + ΣA_j(−w)^j = F(−w)
+mod Φ″. ∎
+
+**Remark (no refine transfer).** LEMMA HE3-1 uses only the resultant
+symmetry and the norm; the *value* dv(B₀) = dv(F(−w)) is then an
+ultrametric evaluation of F at an element of dv-height κ, computed by
+the SLOT LEMMA (exact dv(A_j)) plus the residual substitution identity
+of §S5. No digit-space bijection, hence no W-9 face.
+
+> **LEMMA HE3-1L [r1, F1 — THE LETTER LIFT AT LEVEL 1, back-propagated
+> from LEMMA HE6-1L's mechanism].** Let κ ∈ ℤ, κ ≥ 0, and let
+> i₀ = i₀(κ) be the unique 0 ≤ i₀ < e₁ with i₀h ≡ κ (mod e₁), and
+> n(κ) := x^{i₀}π^{(κ−i₀h)/e₁} the canonical height-κ monomial. The set
+> of residues realised as res(C(θ)/n(κ)(θ)) by C ∈ O[x] with
+> deg C < D′ and dv(C) = κ is EXACTLY
+>
+>     { Σ_{t ∈ T(κ)} c_t·η_θ^{t} : c_t ∈ F_Q, not all 0 } ,
+>     T(κ) := { t < f₁ : κ ≥ (i₀ + e₁t)·h } ;
+>
+> it is ALL of K^× iff T(κ) = {0, …, f₁−1} iff
+> κ ≥ (i₀(κ) + e₁(f₁−1))h, for which κ ≥ (D′−1)h is a κ-uniform
+> sufficient condition. **In particular every test height this note
+> uses — κ > D′h > (D′−1)h — reaches every letter of K^×.** At f₁ = 1
+> the set is F_Q^× = K^× at every κ ≥ i₀h, which is why the defect was
+> invisible to the sealed battery.
+>
+> *Proof (derived at level 1, not transcribed — HE6-1L is the same
+> genus one level up, and its ϖ-read coset factor η_θ^{−q(κ)} does NOT
+> appear here because this note reads residues against n(κ) itself,
+> the reading HE6's RIDER calls the n(k)-read).* Write
+> C = Σ_{i<D′} c_i x^i. By GENHN-2 at θ, dv(C(θ)) =
+> min_i(e₁v(c_i) + ih), and a slot i contributes at height κ only if
+> ih ≡ κ (mod e₁), i.e. i = i₀ + e₁t for some 0 ≤ t < f₁ (h is
+> invertible mod e₁), with v(c_i) = (κ − (i₀+e₁t)h)/e₁ — a nonnegative
+> integer exactly when t ∈ T(κ). For such a slot,
+> c_i θ^{i₀+e₁t} / n(κ)(θ) = c_i·(θ^{e₁}π^{−h})^{t}·(unit-free exact
+> monomial arithmetic: the π-exponents cancel to −th), whose residue is
+> res(c_i)·η_θ^{t}. Summing the attaining slots: the realised residue is
+> Σ_{t ∈ T(κ)} res(c_{i₀+e₁t})·η_θ^{t}, the coefficients ranging over
+> F_Q freely and independently; since {1, η_θ, …, η_θ^{f₁−1}} is an
+> F_Q-basis of K, a not-all-zero choice gives a NONZERO sum (so
+> dv(C(θ)) = κ exactly, no cancellation possible at level 1), and the
+> realised set is the punctured F_Q-span displayed. Fullness: the span
+> is K iff T(κ) is full iff the largest slot requirement
+> κ ≥ (i₀ + e₁(f₁−1))h holds; i₀ ≤ e₁−1 gives (i₀ + e₁(f₁−1))h ≤
+> (D′−1)h. ∎
+>
+> **[r1, F1 — what this repairs.]** The old HE3-1′ took w = ŝ·n(κ) with
+> ŝ ∈ O a LIFT of s: res(ŝ) ∈ F_Q, so only the f₁ = 1 letter set
+> F_Q^× ⊆ K^× was reachable — at f₁ ≥ 2 the K∖F_Q-rational residual
+> roots (6 of the 8 letters at K = F₉) had no carrier and could not be
+> peeled as displayed (PE1 F1, CRITICAL; the same genus HE6's r1 round
+> struck in its (LIFT) display). Every site below now takes
+> **w := −C** with C a letter-carrier from this lemma (the sign is the
+> [r1, F8] convention: with Φ″ := Φ′ − C the three residue sites — this
+> lemma's test R_λ(s) = 0, §S5's recentered residual R_λ(Z+s), §S6.2's
+> absorbed class S_{Z−s} — agree with no sign seam; under the old +
+> convention they disagreed pairwise by s ↦ −s).
+
+> **LEMMA HE3-1′ (the evaluation display) [r1: letters generalized,
+> band corrected, sign fixed].** Let κ ~~> S~~ **> D′h** be an integer,
+> s ∈ K^×, C a letter-carrier for s at height κ (LEMMA HE3-1L),
+> Φ″ := Φ′ − C. Then with B₀ := f mod Φ″,
+>
+>     dv(B₀) = min_{0 ≤ j ≤ μ} ( dv(A_j) + jκ )                (generic)
+>
+> whenever κ is NOT a slope of P(F), and also whenever κ IS a slope λ of
+> P(F) but s is NOT a root of the residual polynomial R_λ; and
+> dv(B₀) > min_j(dv(A_j) + jκ) exactly when κ = λ is a slope and
+> R_λ(s) = 0 (with the excess governed by the multiplicity, LEMMA
+> HE3-2).
+
+*Proof.* By LEMMA HE3-1 (whose hypothesis dv(Φ″ − Φ′) = κ > D′h now
+holds), B₀(θ″) = F(−w)(θ″) = F(C)(θ″) = Σ_j A_j(θ″)·C(θ″)^j (here
+w = Φ″ − Φ′ = −C, so −w = C — the sign convention makes the test key
+carry the letter POSITIVELY). Each summand has dv exactly
+dv(A_j) + jκ: dv(A_j(θ″)) = dv(A_j) and dv(C(θ″)) = κ by the ξ-form
+slot lemma at θ″ (LEMMA HE6-0″ as-of; θ″ satisfies (T1)/(T2) by the
+[r1]-corrected invariant maintenance). By the ultrametric inequality
+dv(B₀) ≥ min_j(…), with equality unless the minimum is attained at ≥ 2
+indices AND their residues cancel. Group the indices attaining the
+minimum: they are exactly the j on the height-κ supporting line of
+P(F), i.e. the lattice points of the side of slope κ if κ is a slope,
+and a single vertex otherwise. In the former case the sum of the
+residues of the attaining summands is, after dividing by the common
+normalizer n(min) and folding the normalizer wrap through η (S4 of
+GENHN, the cocycle n(κ)^t = ẑ^{fl}n(tκ)), precisely R_λ(s) up to a
+nonzero K-factor **[r2, F1: with DEFINITION 1's [r2] COHERENT R_λ the
+folding is exact and the K-factor is a single global one — the sum is
+res(n(κ₀)(θ″)n(λ)(θ″)^{j₀}/n(min)(θ″))·s^{j₀}·R_λ(s) (j₀ the side's
+left-endpoint abscissa, κ₀ its height), the per-term wraps
+having cancelled identically against the coherent normalizers (the
+coboundary computation, §S3 Remark [r2]); read with the NAIVE per-slot
+residuals the display is false at e₁ ≥ 2 — the witness in the Remark]**
+— the letter s enters through res(C(θ″)/n(κ)(θ″)) =
+ι_{θ″}(s), the same universal expression as at θ by HE6-0″'s residue
+clause; so cancellation ⟺ R_λ(s) = 0. In the latter case a single
+summand attains the minimum and no cancellation is possible. ∎
+
+**Remark (what the twist does and does not do) [r2, F1 2026-08-09 —
+the old invariance sentence was FALSE as displayed; struck and
+replaced by the coboundary statement, with PE2's machine-adjudicated
+witness].** ~~The wrap factors ẑ^{fl} are nonzero constants of K
+depending only on (κ, t, e₁, h); they rescale the coefficients of R_λ
+by a fixed nonzero diagonal, hence change neither its root set up to
+that rescaling nor its factorization TYPE.~~ A diagonal rescaling of
+coefficients preserves root sets and factorization type only when it
+is GEOMETRIC (a_k ↦ c·d^k a_k, i.e. one global scalar plus Z ↦ dZ);
+the wraps that actually occur are η^{W(k)} with
+W(k) = (i₀(κ₀−ku) + k·i₀(u) − i₀(κ₀))/e₁ (DEFINITION 1 [r2]), and W
+need not be affine in k — at (e₁,h) = (2,1), λ = 3, κ₀ = 9 the
+exponents on the line are W = (0,0,1,1) at k = 0..3. What IS true, and
+what the chain uses, is that across any identity comparing two reads
+of one supporting line the wrap is a COBOUNDARY, W(i) − W(j), which
+cancels when both sides are read coherently:
+* in LEMMA HE3-1′'s proof, the attaining residues at an integer slope
+  λ (span left endpoint (j₀, κ₀), intercept c = κ₀ + j₀λ) sum to
+  res(C(θ″)^{j₀}·n(κ₀)(θ″)/n(c)(θ″)) · Σ_k ã_k s^k — the k-dependent
+  normalizer monomials M_k·n(λ)^{j₀+k}/n(c) collapse to the SAME
+  height-0 monomial for k = 0, …, d (exact cancellation of the n(λ)^k
+  legs against M_k = n(κ₀)/n(λ)^k), so the sum is ONE global nonzero
+  K-factor times s^{j₀}·R_λ(s), with R_λ the coherent object;
+* in LEMMA HE3-2(b)'s proof, the (i → j) substitution summand carries
+  M_i·n(λ)^{i−j}/M_j = 1 IDENTICALLY as monomials, so
+  G″(Z) = G(Z+s) holds wrap-free with coherent reads on both sides.
+
+**THE WITNESS (PE2's adjudicated member, re-derived).** Genre
+(3; 2,2,2; 1), Φ′ = x⁴+9 over ℤ₃ (D′ = 4, h = 1, e₁ = f₁ = 2,
+K = F₉ = F₃(η), η² = −1), f = Φ′² + 9x·Φ′ + 243: pins (2,0), (1,5),
+(0,10), the three on the λ = 5 line (dv(9xθ-read) = 2(2 + 1/2) = 5,
+dv(3⁵) = 10). Naive read (n(10) = 3⁵, n(5) = 9x, n(0) = 1):
+a = (1,1,1), Z² + Z + 1 = (Z−1)² in char 3 — a repeated K-rational
+root, scheduling a stage-α refine with predicted above-λ length 2 at
+s = 1 (HE3-2(b)). Coherent read: W = (0,1,1) from κ₀ = 10, u = 5
+(i₀(10) = 0, i₀(5) = 1, i₀(0) = 0), so ã = (1, η, η) and
+R_λ = η·(Z² + Z − η), disc(Z² + Z − η) = 1 + η ∉ (F₉^×)² = {±1, ±η} —
+IRREDUCIBLE, no refine, σ = {(2,4)}. PARI (PE2's fresh leg
+`he3_pe2fresh.py`, member `ma`): σ = {(2,4)}, and the measured
+above-λ length is 0 at each of the 8 letters of F₉^× — the naive read
+flips the factorization type and schedules a PHANTOM refine; the
+coherent read is what the chain computes. (PE2's report displays the
+same residual as Z² − Z − η: the Z ↦ −Z member of the geometric class,
+same type — the [r1, F8] sign seam.) What survives of the old
+sentence: the uses below consult (a) whether R_λ(s) = 0 and (b) the
+degrees of the irreducible factors of R_λ — both well-defined for the
+COHERENT R_λ and invariant under the geometric freedom (anchor choice
+n(κ₀) vs ϖ^{κ₀}, the sign seam s ↦ −s); and the battery detects
+residual roots by measuring dv(B₀), which consults the coherent object
+automatically (the measurement IS LEMMA HE3-1′'s evaluation identity,
+whose right side is the coherent R_λ(s)). At e₁ = 1 the two reads
+coincide and the r1 sweeps were immune; at e₁ ≥ 2 a transcription
+that assembles R_λ from the untwisted slot residues emits the wrong σ
+inside the μ ≤ 3 headline's scope — the witness above is the
+demonstration.
+
+---
+
+## S4. THE LABEL OF A ROOT (the per-root read)
+
+> **LEMMA HE3-0.** Every root ρ of f on the genre-G opening locus
+> satisfies (T1) v(ρ) = h/e₁ with gcd(h, e₁) = 1 and (T2)
+> η_ρ := res(ρ^{e₁}π^{−h}) is a root of ψ. Consequently
+> (i) dv(A_j(ρ)) = dv(A_j) for every j (the SAME integers the stage
+> read consults), (ii) the residual polynomials of the Y-polygon of
+> F_ρ(Y) := Y^μ + Σ_j A_j(ρ)Y^j over L_ρ are the images of the stage
+> residuals R_λ **[r2, F1: R_λ in DEFINITION 1's coherent convention;
+> the L_ρ-side residuals are read with the matching coherent
+> normalizers n(κ₀)(ρ), n(u)(ρ) — the comparison is convention-matched
+> on both sides]** under the F_Q-embedding K = F_Q(η_θ) → k̄, η_θ ↦ η_ρ
+> — in particular they have the same factorization type over K, and
+> (iii) y_ρ := Φ′(ρ) satisfies F_ρ(y_ρ) = 0, so dv(y_ρ) is a slope λ
+> of P(F) and — writing λ = u/ℓ in lowest terms — the residue
+> **β_ρ := res(y_ρ/n(λ)(ρ)) at ℓ = 1, β_ρ := res(y_ρ^ℓ/n(u)(ρ)) at
+> ℓ ≥ 2 [r1, F6: normalizers exist at INTEGER dv-heights only, so the
+> old uniform display res(y_ρ/n(λ)(ρ)) is undefined at ℓ ≥ 2; the
+> ℓ-power read is HE6-0′'s repair form, applied here — y_ρ^ℓ/n(u)(ρ)
+> has dv = ℓλ − u = 0, so its residue exists. At μ ≤ 3, ℓ ≥ 2 forces
+> d = 1 and the residue never selects among factors (R_λ is linear in
+> its lattice variable), so no μ ≤ 3 conclusion consults this read;
+> at μ ≥ 4 it is load-bearing, inside HE3-BOX-6's territory as repaired
+> by HE6]** — is a root of (the image of) R_λ. The
+> resulting pair (λ, r) — r the irreducible factor of R_λ whose image
+> β is that residue — is the **label** of ρ.
+
+*Proof sketch (completed at commit 2).* (T1)/(T2): the opening locus
+is by definition the locus where the ambient polygon has the side of
+slope h/e₁ carrying residual ψ^μ, so every root of the block has that
+valuation and its η is a root of ψ. (i)/(ii): the SLOT LEMMA
+(GENHN-2) is stated for any ξ with (T1)/(T2), and its residue formula
+is the universal polynomial Σ_t res(a_{j,i+e₁t})η^t — the SAME
+polynomial in η at ξ = ρ as at ξ = θ; two roots of the irreducible ψ
+differ by an F_Q-automorphism of K, which preserves factorization
+type. (iii): f(ρ) = 0 rewrites as F_ρ(y_ρ) = 0; then the classical
+Newton-polygon read over the complete field L_ρ. ∎
+
+> **COROLLARY HE3-0′ (the local forcing).** If ρ has label (λ, r) with
+> λ = u/ℓ in lowest terms and f_s = deg r, then
+> e₁ℓ | e(L_ρ) and f₁f_s | f(L_ρ), hence
+> [L_ρ : K₀] ≥ e₁ℓ·f₁f_s = D′e_sf_s.
+
+*Proof.* e₁ | e(L_ρ) by (T1). Writing e(L_ρ) = e₁e′ and
+v(y_ρ) = u/(e₁ℓ) ∈ (1/e(L_ρ))ℤ gives e′u/ℓ ∈ ℤ, and gcd(u, ℓ) = 1
+forces ℓ | e′. For f: K = F_Q(η_ρ) ⊆ k_{L_ρ} by (T2), and **[r1, F6:
+the integer-height normalizer n(u)(ρ) = ρ^{i}π^{a} lies in L_ρ (the old
+display consulted n(λ), which does not exist at ℓ ≥ 2), so
+y_ρ^ℓ/n(u)(ρ) is a unit of O_{L_ρ} and β = res(y_ρ^ℓ/n(u)(ρ)) ∈
+k_{L_ρ}]**; [K(β) : K] = f_s since β is a root of the irreducible
+image of r. ∎
+
+---
+
+## S5. LEMMA HE3-2 (recentering: valuations and residuals, elementarily)
+
+> **LEMMA HE3-2.** Keep κ ~~> S~~ **[r1, F2] > D′h**, s ∈ K^×,
+> w **[r1, F1/F8: w := −C with C ∈ O[x], deg C < D′, dv(C) = κ,
+> res(C(θ)/n(κ)(θ)) = s — the general letter-carrier of LEMMA HE3-1L,
+> §S3; the old monomial ŝ·n(κ) reaches only s ∈ F_Q^× and the old +
+> sign made the three residue sites disagree]**, Φ″ = Φ′ + w = Φ′ − C,
+> and let f = Σ_j A_j′Φ″^j be the Φ″-development. Then:
+> (a) [VALUES] dv(A_j′) ≥ min_{i ≥ j}(dv(A_i) + (i−j)κ) for every j,
+> with equality unless the attaining indices' residues cancel;
+> (b) [THE RECENTERED POLYGON] if κ is not a slope of P(F), P(F″) is
+> P(F) truncated at height κ (all slopes < κ preserved, all slopes > κ
+> replaced by the single slope κ on the same span); if κ = λ IS a slope
+> with residual R_λ and s is a root of R_λ of multiplicity m ≥ 1, then
+> the portion of P(F″) of slope > λ has horizontal length exactly
+> m·ℓ = m (ℓ = 1 for an integer slope λ), and — **[r1, F5: the old
+> clauses "the portion of slope λ has length reduced by m" and "all
+> other sides are unchanged" were FALSE for the sides of slope > λ;
+> a Lean transcription of the old (b) is refutable at any two-side
+> polygon]** — the sides of slope < λ are unchanged; the sides of
+> slope > λ COLLAPSE onto the λ-line (each of their roots y of F has
+> y″ = y − C(·) with dv(y″) = λ exactly and residue 0 − s = −s ≠ 0);
+> the slope-λ side of P(F″) has length (L_λ − m) + T, where T is the
+> horizontal length of P(F) above λ, and its residual is
+>
+>     (R_λ(Z + s)/Z^m)·(Z + s)^{T}    up to the twist rescaling
+>     [r2, F1: "the twist rescaling" = ONE global nonzero K-factor
+>     (a geometric rescaling) once both residuals are the coherent
+>     objects of DEFINITION 1 [r2] — type-preserving; §S3 Remark [r2]]
+>
+> (roots: the shifted old λ-residues z − s over z ≠ s, plus −s with
+> multiplicity T from the collapsed material). The ONE clause the
+> onward argument consults is unchanged from the old display: the
+> part of P(F″) STRICTLY ABOVE λ is the absorbed sub-block alone,
+> of length exactly m — the collapsed material never appears there;
+> (c) [IN-WINDOW, UPWARD] every new digit consulted lies strictly inside
+> its class's window and is determined by old digits at weakly lower
+> dv-heights (GENHN-3(c)(d)); the key invariants of S3.1 — the constant
+> term's valuation f₁h and the residual η — are untouched, since
+> dv(w) = κ ~~> S = e₁h~~ **[r1, F2] > D′h = e₁f₁h** places w strictly
+> above the key's own side **[the key's side has dv-height D′h at
+> abscissa 0, not S: HE3-1's counter-instances x²+18 / x²+27 sit at
+> κ = 2 = D′h > S = 1 and DO touch the invariants — κ > S places w
+> above the side only when f₁ = 1]**.
+> **No graded frame and no digit-space bijection is used: (a)–(c) are
+> statements about valuations and residues only.** Both characteristics:
+> the only algebraic input is the SUBSTITUTION identity Z ↦ Z + s
+> applied to R_λ, which is characteristic-free.
+
+*Proof.* Φ′ = Φ″ − w, so
+f = Σ_i A_i(Φ″ − w)^i = Σ_j Φ″^j·[ Σ_{i ≥ j} binom(i, j)(−w)^{i−j}A_i ],
+whence A_j′ ≡ Σ_{i≥j} binom(i,j)(−w)^{i−j}A_i modulo the reduction of
+x-degrees ≥ D′ against Φ″ (which only moves terms upward in dv, by
+GENHN-3(d), because Φ″ is monic with all lower coefficients of positive
+dv). Each summand has dv ≥ dv(A_i) + (i−j)κ, by the SLOT LEMMA and
+dv(w) = κ, giving (a).
+
+**[REPAIR, PE1 finding 4 — the binomial valuations.]** An earlier version
+of this proof asserted that each summand has dv EXACTLY dv(A_i)+(i−j)κ.
+That is false: the summand carries binom(i, j), whose valuation can be
+positive in mixed characteristic (e.g. i = p, j = 1) and which can vanish
+in equal characteristic p, so a purported unique minimiser can rise or
+disappear with no cancellation among residues. Only the INEQUALITY in (a)
+survives summand-wise. The proof of (b) is therefore run entirely at the
+RESIDUE level, where the binomial coefficients appear only through their
+images in K, and the statement needed is the char-free one:
+
+> the residue attached to A_j′ on the height-λ supporting line is exactly
+> the coefficient of Z^{j} in **R_λ(Z + s) computed in K[Z]** (binomial
+> coefficients reduced into K — that is what "computed in K" means), and
+> for any field K, if s is a root of R_λ of multiplicity exactly m then
+> Z^m ‖ R_λ(Z + s).
+
+The multiplicity fact is purely algebraic ((Z−s)^m ‖ R_λ ⟹
+R_λ(Z+s) = Z^m·(unit at 0)) and holds in every characteristic. So (b)'s
+conclusion — dv(A_j′) exceeds the λ-line height exactly for j < m — is
+intact, and it no longer rests on any summand-wise exact valuation.
+
+For (b) **[r1, F5 — run on the WHOLE λ-supporting line, which is what
+the old proof skipped when it asserted "all other sides unchanged"]**:
+the height of P(F″) at abscissa j is dv(A_j′). Below the λ-line's
+touching span — the sides of slope < λ — the minima in (a) are attained
+at one index and equality holds: those sides are unchanged, as in the
+truncation statement. On the λ-supporting line, let g_j be the λ-line
+residue of A_j (zero off the old λ-side's span [T, T+L], where T is the
+horizontal length of P(F) above λ, since the lower hull sits strictly
+above its slope-λ supporting line off that side), so that
+G(Z) := Σ_j g_jZ^j = Z^{T}·R_λ(Z) up to the twist diagonal **[r2, F1:
+with the g_j read against the COHERENT normalizers M_j = n(c)/n(λ)^j
+(c the λ-line intercept at abscissa 0; DEFINITION 1 [r2]),
+G(Z) = Z^T·R_λ(Z) up to ONE global nonzero K-factor — no diagonal;
+and in the substitution below the (i → j) summand's normalizer ratio
+M_i·n(λ)^{i−j}/M_j = 1 identically, so the wrap constants cancel
+term-by-term (the coboundary, §S3 Remark [r2]) rather than needing a
+folding]**. The
+residues of the attaining summands of A_j′ assemble (after dividing by
+the common normalizer, folding the wrap constants as in LEMMA HE3-1′)
+to the SUBSTITUTION
+
+    G″(Z) = G(Z + s) = (Z + s)^{T}·R_λ(Z + s)     (computed in K[Z]),
+
+with the binomial coefficients entering only through their images in K
+(the char-free reading of the earlier repair). Since s is a root of R_λ
+of multiplicity m and −s ≠ 0, G″ vanishes at Z = 0 to order exactly m;
+hence dv(A_j′) > (λ-line height) exactly for j < m — the portion of
+P(F″) strictly above λ has length m — and the slope-λ side of P(F″)
+runs from abscissa m to T + L with residual G″(Z)/Z^m =
+(Z+s)^T·R_λ(Z+s)/Z^m: the old above-λ sides have collapsed onto the
+λ-line (root −s, multiplicity T). The length bookkeeping is immediate.
+(c) is GENHN-3(c)(d) verbatim plus dv(w) = κ > D′h **[r1, F2]**. ∎
+
+**COROLLARY HE3-2′ (separability is preserved along stage-α chains).**
+If R_λ is separable then so is R_λ(Z+s)/Z^m, and m = 1 for every root s
+of a separable R_λ; hence at a DECIDED leaf every stage-α refine peels
+exactly one simple residual root, and the recursion in LEMMA HE3-4 has
+depth ≤ d_λ.
+
+## S6. LEMMA HE3-3 (Ψ-inversion: the slope counts), LEMMA HE3-4 (the
+## residue peel), and the PROOF OF THEOREM HE3.A
+
+### S6.1 LEMMA HE3-3 (the slope counts)
+
+For an integer κ **[r1, F2] > D′h** and s ∈ K^× put
+**[r1, F1/F8]** Φ′_{κ,s} := Φ′ − C_{κ,s}, where C_{κ,s} ∈ O[x] is a
+letter-carrier for s at height κ (deg C < D′, dv(C) = κ,
+res(C(θ)/n(κ)(θ)) = s — existence for every s ∈ K^× is LEMMA HE3-1L,
+since κ > D′h > (D′−1)h), and
+
+    Ψ(κ, s) := Σ_{ρ : f(ρ) = 0} dv(Φ′_{κ,s}(ρ))  ∈ ℤ.
+
+> **LEMMA HE3-3.** Let n_λ := #{ρ : dv(Φ′(ρ)) = λ} for λ a slope of
+> P(F) (LEMMA HE3-0(iii) guarantees every root's dv is a slope). Then
+> **n_λ = D′·L_λ** for every slope λ, where L_λ is the horizontal
+> length of the λ-side of P(F).
+
+*Proof.* Three steps.
+
+*(1) The stage side.* By LEMMA HE3-1 and HE3-1′, for every κ **[r1,
+F2] > D′h** and every s that is not a residual root at height κ,
+
+    Ψ(κ, s) = D′·dv(B₀^{(κ,s)}) = D′·min_j( dv(A_j) + jκ )  =: D′·h_F(κ),
+
+so Ψ(κ, s) is independent of such s; call it Ψ(κ). (If K^× happens to
+contain no non-root at height κ — possible only when κ is a slope and
+R_λ has |K^×| distinct roots — omit that κ from the sample; the argument
+below needs only the integers κ that are NOT slopes of P(F), of which
+there are arbitrarily many.) Note h_F is the support function of P(F):
+by elementary convex duality,
+
+    h_F(κ) = min_j (dv(A_j) + jκ) = Σ_{slopes λ} L_λ · min(λ, κ) .   (★)
+
+[Proof of (★): both sides are concave piecewise-linear in κ. For
+κ ≥ max slope both equal Σ_λ L_λλ = dv(A₀) (left side: the minimum is at
+j = 0). For κ ≤ min slope both equal μκ (left side: minimum at j = μ,
+where dv(A_μ) = 0). Between consecutive slopes both are affine with the
+same increment: d/dκ of the right side is Σ_{λ ≥ κ} L_λ, and the left
+side's minimising index j(κ) is the abscissa of the vertex where the
+supporting line of slope κ touches P(F), i.e. exactly Σ_{λ ≥ κ}L_λ. ∎]
+
+*(2) The root side.* Fix κ **[r1, F2] > D′h** not a slope, and any s.
+For each root ρ
+with dv(Φ′(ρ)) = λ we have dv(Φ′_{κ,s}(ρ)) = dv(Φ′(ρ) + w(ρ)) =
+min(λ, κ) exactly, since λ ≠ κ and dv(w(ρ)) = κ **[r2, F3 2026-08-09 —
+the justification re-keyed: the old parenthetical read "because ρ
+satisfies (T1), so dv(n(κ)(ρ)) = κ", the reason for the RETIRED
+monomial carrier ŝ·n(κ); after [r1, F1/F8], w = −C_{κ,s} is a general
+letter-carrier, and the height at ρ is the ξ-form slot read at ξ = ρ
+(LEMMA HE6-0″ as-of / LEMMA HE3-1L's mechanism at ρ): the slots of C
+attaining height κ contribute the residue Σ_{t ∈ T(κ)}
+res(c_{i₀+e₁t})·η_ρ^{t}, nonzero because {1, η_ρ, …, η_ρ^{f₁−1}} is
+F_Q-independent (η_ρ a root of the degree-f₁ irreducible ψ, by (T2)) —
+no level-1 cancellation can lift dv(C(ρ)) above κ, so
+dv(C(ρ)) = κ exactly]**. Summing over roots,
+
+    Ψ(κ) = Σ_λ n_λ · min(λ, κ) .                                   (★★)
+
+*(3) Inversion.* Comparing (★) with (★★) via step (1):
+
+    Σ_λ ( n_λ − D′L_λ ) · min(λ, κ) = 0   for every non-slope integer
+    κ > D′h [r1, F2].
+
+The finitely many slopes λ are known and distinct. Sampling κ over any
+set of ≥ #slopes + 1 non-slope integers spanning the slope range, the
+functions κ ↦ min(λ, κ) for distinct λ are linearly independent (for
+λ₁ < λ₂ a relation c₁min(λ₁,κ) + c₂min(λ₂,κ) ≡ 0 forces c₁ + c₂ = 0 by
+the small-κ regime, where both are κ, and then c₁λ₁ + c₂λ₂ = 0 in the
+large-κ regime, i.e. c₁(λ₁ − λ₂) = 0, so c₁ = c₂ = 0; the general case
+is the same triangular argument on the breakpoints, taking κ in the
+integer gaps, which exist because two distinct slopes with denominators
+≤ μ differ by ≥ 1/μ² and we may sample κ over a full integer interval
+containing all slopes — see the Remark). Hence n_λ = D′L_λ. ∎
+
+**[REPAIR, PE1 finding 3 — integer sampling does NOT always suffice; the
+inversion needs a hypothesis, satisfied automatically at μ ≤ 3.]** The
+independence claim above is FALSE in general. Counterexample (Codex PE1):
+if three distinct slopes all lie in one open integer interval — say
+S + 1/4, S + 1/3, S + 1/2 — then every legal sample has κ ≥ S + 1, so all
+sampled functions min(λ_i, ·) are the CONSTANTS λ_i, and the system
+collapses to Σc_i = 0, Σc_iλ_i = 0, which has a nonzero solution for
+three unknowns. So LEMMA HE3-3 must carry the hypothesis
+
+    (SEP)  the AVAILABLE samples separate the slopes: the vectors
+           (min(λ, κ))_κ for the distinct slopes λ, indexed over the
+           integers κ **[r1, F2] > D′h** at which Ψ(κ) is measurable —
+           the non-slope integers, plus the slope integers λ at which
+           K^× contains a non-root of R_λ — together with the free
+           root-count relation (see the [r1] supplement below), are
+           independent.
+
+**[r1: the old index set read "κ ∈ ℤ, κ > S" — stale at f₁ ≥ 2 (the band
+S < κ ≤ D′h breaks invariant maintenance, LEMMA HE3-1); and the old
+formulation quantified over ALL integers where the proof can only sample
+the measurable ones.]**
+
+**(SEP) holds at μ ≤ 3 — [r1] RE-DERIVED with its honest sub-cases (the
+old one-sentence reason hid a real configuration).** Σ_λ ℓ_λ d_λ = μ, so
+at μ ≤ 3: (a) if some slope is non-integral (ℓ ≥ 2, forcing ℓd ≥ 2),
+P(F) has at most TWO sides, and two slope-classes are separated with no
+interior sample at all — the root count Σ_λ n_λ = D′μ = Σ_λ D′L_λ gives
+c₁ + c₂ = 0 for free, and samples above the top slope give
+c₁λ₁ + c₂λ₂ = 0, whence c₁(λ₁ − λ₂) = 0. (b) if there are three sides,
+they are three distinct INTEGER slopes with d = 1 each; the free root
+count plus the above-top samples give two relations, and one interior
+integer sample κ* strictly between two slopes (which exists unless the
+three slopes are CONSECUTIVE integers a, a+1, a+2) closes the triangular
+system. (c) three consecutive integer slopes: sample AT the middle slope
+a+1 with a letter s that is not the (single, since d = 1) residual root —
+available iff |K^×| ≥ 2, i.e. (Q, f₁) ≠ (2, 1); at (Q, f₁) = (2, 1) no
+such letter exists (K^× = {1} IS the root) and the recenter-then-invert
+supplement below closes the case. Three slopes crammed into one OPEN
+integer interval (the Codex-PE1 counterexample shape) need denominators
+≥ 2, 3, 4, i.e. μ ≥ 9. For general μ, (SEP) is a real hypothesis, and
+lifting it needs the same enlarged test family as HE3-BOX-6 (test
+polynomials of higher degree, reaching fractional heights) — LEMMA
+HE6-3 (frozen at HEAD) proves the slope counts (SEP)-free by exactly
+that family.
+
+**[r1-N1, self-found this round — THE (2,1)-CONSECUTIVE-TRIPLE
+SUPPLEMENT (a justification gap of the old step (3) at μ = 3 not listed
+by PE1: at (Q, f₁) = (2, 1) and slopes a, a+1, a+2, the old sample set
+carries only the two relations Σc = 0 and Σcλ = 0 for three unknowns).**
+Recenter at the TOP side: Φ″ := Φ′ − ŝn(a+2) with s = 1 the top side's
+single residual root (1 ∈ F_Q is always a reachable letter). CASE
+A₀′ ≠ 0: by LEMMA HE3-2(b), P(F″) keeps the sides at a and a+1
+(below the recentering height) and its portion above a+2 is the single
+absorbed pin, a side of INTEGER slope δ := dv(A₀′) − dv(A₁′) ≥ a+3; so
+P(F″)'s slopes {a, a+1, δ} have the non-slope integer a+2 strictly
+inside the gap (a+1, δ), and the inversion applied at the key Φ″ — the
+free root count, the sample κ = a+2, and the above-δ samples form an
+invertible triangular system — pins its classes at D′·(1,1,1); the
+Φ″-classes are the Φ′-classes (dv(Φ″(ρ)) = a, a+1 exactly on the slope-a
+and slope-(a+1) classes since a, a+1 < a+2 = dv(ŝn(a+2)(ρ)), and > a+2
+exactly on the top class by the residue cancellation), so n_λ = D′L_λ at
+each of the three sides. CASE A₀′ = 0: then Φ″ | f exactly (disc f ≠ 0
+gives Φ″ ∤ f/Φ″), the top class contains Φ″'s D′ roots, and the
+development of g := f/Φ″ at Φ″ is P(F″) shifted left by one abscissa —
+a TWO-slope polygon at {a, a+1}, inverted as in sub-case (a); g has no
+root with dv(Φ″(ρ)) > a+2 (its Φ″-slopes are a, a+1), so
+n_{a+2} = D′·1 and n_a = n_{a+1} = D′·1 again. Either way the three-
+consecutive-slope configuration is inverted at level 1 with no new
+instrument; independently, LEMMA HE6-3 (frozen) covers it as-of
+2026-08-09.]**
+
+**Remark (integer sampling suffices under (SEP)) [r1, F2/N1 —
+recipe corrected].** Only the values of the concave function at integer
+heights are available (letter-carriers exist at integer dv-heights
+only). ~~Concretely, with κ₀ := ⌊min slope⌋ …~~ the old recipe could
+land at κ₀ ≤ D′h, where the test key perturbs the residual ψ itself
+(LEMMA HE3-1's counter-instances); the corrected sample set is
+
+    κ ∈ { D′h + 1, …, ⌈max slope⌉ + 1 } ∖ { slopes without a generic
+    letter } ,
+
+together with the FREE relation Σ_λ n_λ = D′μ = Σ_λ D′L_λ (the root
+count — every root carries a slope by LEMMA HE3-0(iii), and the side
+lengths sum to μ), which replaces the below-minimum regime: no sample
+below the smallest slope is needed. The triangular elimination proceeds
+from the largest slope downward over these samples, per the (SEP)
+sub-cases above; the second difference of Ψ at an available integer κ is
+supported on the slopes.
+
+### S6.2 LEMMA HE3-4 (the residue peel)
+
+> **LEMMA HE3-4.** Fix a slope λ and write R_λ **[r2, F1: the coherent
+> R_λ of DEFINITION 1 [r2]]** = Π_r r^{m_r} (r
+> irreducible over K); at a DECIDED leaf all m_r = 1. Let, for each r,
+> S_r := {ρ : dv(Φ′(ρ)) = λ and res(Φ′(ρ)/n(λ)(ρ)) is a root of r}.
+> Then |S_r| = D′·ℓ·deg r = D′·e_s·f_s. (For ℓ = e_s ≥ 2 the classes
+> S_r are indexed by the residual of the λ-side in its own lattice
+> normalization; see the proof.)
+
+*Proof.* First assume λ is an integer (ℓ = 1) and r = Z − s is linear
+with s ∈ K^× **[r1, F1: s ranges over ALL of K^×, carried by
+C = C_{λ,s} from LEMMA HE3-1L — at f₁ ≥ 2 this is the repaired letter
+reach; λ > D′h > (D′−1)h makes every letter available]**. Apply LEMMA
+HE3-3 to the recentered key Φ″ = Φ′_{λ,s} = Φ′ − C: its own polygon
+P(F″) is described by LEMMA HE3-2(b), and its slope counts are D′ times
+its side lengths. Now for a root ρ,
+
+    dv(Φ″(ρ)) > λ ⟺ dv(Φ′(ρ)) = λ and res(Φ′(ρ)/n(λ)(ρ)) = ι_ρ(s)
+
+**[r1, F5 — the old display carried a second disjunct "or
+dv(Φ′(ρ)) > λ", which is FALSE: such a root has
+res(Φ″(ρ)/n(λ)(ρ)) = 0 − ι_ρ(s) ≠ 0, hence dv(Φ″(ρ)) = λ EXACTLY —
+under recentering the above-λ material COLLAPSES onto the λ-line
+rather than passing through. The corrected equivalence is one clause:
+Φ″(ρ) = Φ′(ρ) − C(ρ) with dv(C(ρ)) = λ exactly (HE6-0″ at ρ), so
+dv(Φ″(ρ)) > λ demands dv(Φ′(ρ)) = λ AND residue cancellation.]**
+Hence — the DIRECT route, now the operative argument, with no
+subtraction of above-λ counts —
+
+    |S_{Z−s}| = #{ρ : dv(Φ″(ρ)) > λ} = D′·(length of P(F″) above λ)
+              = D′·m_s = D′
+
+by LEMMA HE3-3 applied at the key Φ″ and LEMMA HE3-2(b)'s [r1]
+corrected clause (the portion of P(F″) above λ has length exactly m_s,
+the multiplicity of s in R_λ; = 1 here at a decided leaf). ✓ **[The old
+display subtracted #{dv(Φ′(ρ)) > λ} from #{dv(Φ″(ρ)) > λ}; its two
+errors — the false second disjunct here and the false "all other sides
+are unchanged" in HE3-2(b) — cancelled to the same |S_{Z−s}| = D′m_s,
+which is why the sealed battery never caught either (PE1 F5).]**
+
+**[REPAIR, PE1 findings 1+2 — μ ≤ 3 IS BASE-CHANGE-FREE; the two
+base-change reductions below are μ ≥ 4-only and are BOXED.]** Before the
+general reductions, note that at μ ≤ 3 neither is needed:
+* *ℓ ≥ 2 sides.* ℓd ≤ μ ≤ 3 with ℓ ≥ 2 forces d = 1, so the side carries
+  a SINGLE label and |S| = D′L_λ = D′ℓ holds by LEMMA HE3-3 alone (all
+  roots at that slope carry that one label). No peel, no base change.
+* *non-K-rational residual factors on an integer-slope side.* After
+  peeling every K-rational root by the recentering paragraph above (which
+  uses no base change) **[r1, F1: "every K-rational root" is now an honest
+  clause — at f₁ ≥ 2 the roots s ∈ K^× ∖ F_Q^× are carried by LEMMA
+  HE3-1L's C-letters, unreachable under the old ŝ·n(λ) display; on PE1's
+  counter-instance — genre (3;1,2,3;1), K = F₉, single side λ = 3,
+  residual (Z−1)(Z−i)(Z+i) — the repaired peel pins |S_{Z−1}| =
+  |S_{Z−i}| = |S_{Z+i}| = D′ = 2 severally, where the old text peeled
+  s = 1 and had no instrument against (4,0)/(2,2)/(0,4) splits of the
+  {i, −i} mass; machine-verified this round, §S9′ P1]**, the leftover
+  part of R_λ has degree ≤ d ≤ 3 and NO
+  K-rational root, hence is a SINGLE irreducible factor r (degree 2 or 3).
+  Its class size is then FORCED by subtraction: LEMMA HE3-3 gives
+  D′d roots at the slope, the peeled rational roots account for
+  D′·(d − deg r) of them (each simple at a decided leaf), so
+  |S_r| = D′·deg r — with no nonemptiness assumption and no base change.
+  Two distinct non-rational factors on one side would need d ≥ 4, i.e.
+  μ ≥ 4.
+So THEOREM HE3.A at μ ≤ 3 — the first-live case of [GENHN-HE], degrees
+n ≤ 7 — uses only the rational peel and this subtraction. The two
+reductions below are what μ ≥ 4 needs, and they are exactly what
+HE3-BOX-6 boxes; Codex PE1 findings 1 and 2 show that BOTH are stated too
+cheaply (not just the ramified one): under an unramified base change of
+degree c, Φ′ splits into gcd(f₁, c) factors and the stage key degree drops
+from D′ to D′/gcd(f₁, c), so "each rational residual root contributes
+D′ roots" is false as written and the counts do not transfer verbatim;
+choosing c coprime to f₁ repairs it only when gcd(deg r, f₁) = 1. Under
+the ramified base change, rescaling dv does not multiply a root-set
+cardinality, the label can split into several integer-slope labels, and
+when char K | ℓ the new residual can turn inseparable. **Both branches
+below are therefore to be read as BOXED (HE3-BOX-6), not proved.**
+
+Next, general (ℓ, deg r) — two reductions [BOXED, μ ≥ 4 only].
+(i) *Non-rational residual factors: unramified base change.* Let c ≥ 1
+and let O₁/O be the unramified extension with residue field
+F_{Q^{c}}; it is again a complete DVR with the same uniformizer π and
+value group, Φ′ remains irreducible over O₁ or splits into unramified-
+conjugate factors — in either case the SET of roots of f in the fixed
+algebraic closure, the valuations dv, the polygon P(F), and every label
+are UNCHANGED (only the coefficient field of the residual polynomials
+grows, from K to K·F_{Q^c}). Choose c divisible by every deg r and by
+enough to make |K·F_{Q^c}|^× > μ; over O₁ every residual root is
+rational and the previous paragraph gives |S_{Z−β}| = D′ for each of
+the deg r roots β of r. Since S_r = ⊔_{β | r} S_{Z−β} as sets of roots
+of f (the same sets before and after base change), |S_r| = D′·deg r. ✓
+(ii) *Ramified sides (ℓ ≥ 2).* Here the λ-side's residual lives on the
+lattice of abscissae ≡ j₁ mod ℓ and no integer-height normalizer meets
+it; the substitute is again a base change, this time RAMIFIED: adjoin
+π^{1/ℓ}′ — formally, replace O by O₂ := O[Π]/(Π^ℓ − π), a complete DVR
+with the same residue field and dv scaled by ℓ. Over O₂ the slope λ
+becomes the integer ℓλ = u in the rescaled ladder, the λ-side's
+residual becomes the residual of an integer-slope side of the SAME
+degree d_λ, and (i) applies, giving the class sizes ℓ-fold rescaled:
+|S_r| = D′·ℓ·deg r. Again the root set and the labels of f are
+unchanged by the base change (only the ambient value group is refined),
+so the count transfers verbatim to O. ✓
+
+The three displayed reductions are compatible (base changes commute and
+neither touches the root set), which finishes the proof. ∎
+
+**Consistency check.** Σ_{λ} Σ_{r | R_λ} D′ℓ_λ deg r = D′ Σ_λ ℓ_λ d_λ
+= D′ Σ_λ L_λ = D′μ = deg f. So the label classes exactly partition the
+roots — no root is unaccounted and none is double-counted.
+
+### S6.3 PROOF OF THEOREM HE3.A
+
+Let ℓ be a decided leaf and f a lift with disc(f) ≠ 0. Induct on the
+number of stage-α refines and stage-CS events in ℓ's history; the
+statement to prove at each stage is the displayed dictionary.
+
+*Base (depth-0 decided read).* The stage type is
+τ = {(ℓ_λ, deg r)}_{(λ, r)} over the labels of P(F). By LEMMA HE3-0 every
+root of f carries a label; by LEMMA HE3-4 the class of each label has
+exactly D′·e_s·f_s elements; by the consistency check the classes
+partition the D′μ roots. Each class S_{λ,r} is stable under
+Gal(K̄₀/K₀): Galois preserves dv and acts on residues through
+k̄-automorphisms, and it permutes the roots of the irreducible r, so it
+permutes ⊔_{β|r}S_{Z−β} = S_{λ,r}. By COROLLARY HE3-0′ each ρ ∈ S_{λ,r}
+has [K₀(ρ) : K₀] ≥ e₁ℓ_λ·f₁ deg r = D′e_sf_s = |S_{λ,r}|. A Galois-stable
+set of size N all of whose elements have orbit size ≥ N is a single
+orbit of size exactly N.
+~~[JUSTIFICATION GAP, PE1 finding 6 — the semilinearity of the Galois
+action on residues. … Assume it and continue.]~~ **[r1, F3 — the gap is
+DISCHARGED at level 1; nothing is assumed.** The missing composition is
+the following lemma, the level-1 form of LEMMA HE6-5 (frozen at HEAD,
+cited as the template; the two displays below are re-derived in this
+note's frame, where the label of ρ is (λ, r) with r ∈ K[Z] read via the
+F_Q-embedding ι_ρ : K → k̄, η_θ ↦ η_ρ, and β_ρ := res(y_ρ/n(λ)(ρ)) at
+ℓ = 1, β_ρ := res(y_ρ^ℓ/n(u)(ρ)) at ℓ ≥ 2 per the [r1, F6] read).
+
+> **LEMMA HE3-6 [r1] (Galois equivariance of labels).** For
+> g ∈ Gal(K̄₀/K₀) and ρ a root of f with label (λ, r), the root gρ has
+> label (λ, r) — the SAME r ∈ K[Z]. Hence every class S_{λ,r} is
+> Galois-stable, at every f₁.
+
+*Proof.* Φ′ and the normalizer monomials n(λ) (ℓ = 1) resp. n(u)
+(ℓ ≥ 2) lie in O[x] — their coefficients are Galois-fixed (the needed
+π-exponents are positive: λ > D′h > (e₁−1)h ≥ i₀h, and u = ℓλ > D′h
+likewise) — and v is Galois-invariant (uniqueness of its extension to
+K̄₀). So dv(Φ′(gρ)) = dv(g(Φ′(ρ))) = λ: gρ sits at the same slope; and
+g maps O_{K̄₀} to itself, inducing ḡ ∈ Gal(k̄/F_Q) on residues, so
+
+    η_{gρ} = res((gρ)^{e₁}π^{−h}) = ḡ(η_ρ) ,
+    β_{gρ} = res(Φ′(gρ)^{ℓ}/n(u)(gρ)) = ḡ(β_ρ)   (ℓ = 1: n(λ) read).
+
+ι_ρ is THE F_Q-embedding with η_θ ↦ η_ρ, so ḡ∘ι_ρ is an F_Q-embedding
+with η_θ ↦ ḡ(η_ρ) = η_{gρ}, i.e. ι_{gρ} = ḡ∘ι_ρ; therefore
+ι_{gρ}(r)(β_{gρ}) = ḡ(ι_ρ(r)(β_ρ)) = ḡ(0) = 0, and gρ carries the same
+(λ, r). ∎ — The two semilinear twists cancel BECAUSE the label is
+defined relative to the fixed K-object r through the root-dependent
+embedding; this is §S4's universality-in-η observation composed with
+ρ ↦ gρ, the composition PE1 F6 asked for. At f₁ = 1 it degenerates to
+the old sentence (K = F_Q fixed pointwise).]** Hence S_{λ,r} is the
+root set of a single monic
+irreducible factor of f, of degree D′e_sf_s, and its e ≥ e₁e_s,
+f ≥ f₁f_s with ef = degree forces
+
+    e = e₁·e_s ,   f = f₁·f_s   exactly.
+
+Doing this for every label gives σ(f) = {(e₁e_s^{(i)}, f₁f_s^{(i)})}_i.
+
+*Stage-α step.* If the read refines at (λ, s) (a residual root of
+multiplicity m ≥ 2 — so the leaf is not decided at this node), then by
+LEMMA HE3-2(b) the recentered key Φ″ has a polygon whose portion above
+λ has length exactly m, the corresponding block of D′m roots is
+S_{λ, Z−s} (LEMMA HE3-4's computation, which did not use m = 1 —
+it gives |S_{λ,Z−s}| = D′m, by the [r1] direct route), and this block's
+own labels are read at Φ″ — **[r1, F5: specifically, at the part of
+P(F″) STRICTLY ABOVE λ, which by the corrected LEMMA HE3-2(b) is the
+absorbed sub-block alone; the collapsed above-λ material of the other
+blocks sits ON the λ-line of P(F″) and never enters the sub-block's
+onward read. The old sentence "the blocks at slope λ with other
+residues, and at other slopes, are untouched (their labels at Φ″ agree
+with those at Φ′)" leaned on the false clause of the old (b): the
+above-λ blocks' labels are NOT readable at Φ″ — they are read at Φ′
+(or at their own recenterings), where the induction reads them]**.
+Apply the inductive hypothesis to the sub-block: it is the
+label-class of a multiplicity-m system over the SAME stage ring, with
+the same (e₁, f₁), so its pieces compose into the dictionary as claimed.
+Termination: each refine strictly increases the floor λ and dv-heights
+are bounded by the leaf's window (GENHN-3(a)), so the chain is finite —
+and at a decided leaf it ends with all residuals separable.
+
+*Stage-CS step.* If at some node the block's residual has a repeated
+irreducible factor of degree ≥ 2, or the side's denominator ℓ′ ≥ 2 with
+residual degree ≥ 2 — i.e. the inner data (e₁′, f₁′, μ′) with
+e₁′f₁′ ≥ 2, μ′ ≥ 2 — then the block is a composite stage OF THE STAGE
+SYSTEM: a genre in the sense of GENHN.CLASS with base ring ~~R (a
+complete DVR with finite residue field K)~~ **[r1, F7: O_L, the
+valuation ring of L = K₀(θ) — a complete DVR with residue field K; the
+order R = O[θ] need not be one, so the re-instantiation must carry the
+development over O_L. This step is reachable only at μ ≥ 4 (GENIND.A(IV)
+descent), i.e. inside the HE3-BOX-6 region, where the O_L re-carrier is
+recorded as part of the box]**, key degree e₁′f₁′,
+multiplicity μ′, and its own integer value ladder. Every hypothesis of
+THEOREM HE3.A holds for it (nothing in §S3–S6 used anything about O
+beyond "complete DVR with finite residue field", and GENHN's supplier
+lemmas are proved at general (Q, e₁, f₁, μ) hence apply over R with
+Q ↦ |K|). Apply THEOREM HE3.A at multiplicity μ′: the inner pieces are
+(e_s′, f_s′) relative to R′ = R[y]/(inner key), which relative to R
+read (e₁′e_s′, f₁′f_s′), and relative to O read
+(e₁e₁′e_s′, f₁f₁′f_s′) — the multiplicative composition of LEMMA
+GENHN-T(b), here PROVED for σ rather than assumed, because (T1)/(T2)
+stack: an inner root has v in (1/e₁e₁′e_s′)ℤ-classes with the stated
+denominator, and its residue field contains F_{Q^{f₁f₁′f_s′}}. Since
+e₁′f₁′μ′ ≤ μ with e₁′f₁′ ≥ 2, we have μ′ ≤ μ/2 < μ, so the recursion
+is well-founded on μ.
+
+*Embedded genres.* If the genre is embedded (the frame is the stage
+block times sibling blocks), LEMMA GENIND-3's scale-then-Hensel step
+(@ pin) splits the sibling factor off over O first; σ(f) is then the
+disjoint union of the sibling blocks' own σ and the stage block's,
+computed above. (The machine-side caveat — which stage leaves an
+AMBIENT window certifies — is GENHN-BOX-4/S11.F, a statement about
+window data, not about this theorem; see HE3-BOX-2.)
+
+This exhausts the species (GENIND.A(I)) reachable inside a decided
+leaf's history, so THEOREM HE3.A is proved. ∎
+
+### S6.4 PROOF OF COROLLARY HE3.B (all μ), and the μ = 2 cross-check
+
+The induction is the one displayed in §S1: HE3.A at multiplicity μ
+consumes HE3.A only at inner multiplicities μ′ ≤ μ/2, and by
+GENIND.A(IV) no inner composite stage exists unless μ ≥ 4. Hence μ = 2
+and μ = 3 are proved outright by §S6.3's base + stage-α steps, and
+every μ ≥ 4 follows by induction. In particular [GENHN-HE(μ)] holds for
+all μ ≥ 3. ∎
+
+*Cross-check at μ = 2 (no circularity: GENHN.C is not used above).*
+Σ e_sf_s = 2 gives exactly three stage types, and §S6.3 returns
+{(2e₁, f₁)} for (2,1) [one side, ℓ = 2, u odd], {(e₁, 2f₁)} for (1,2)
+[one side, integer slope, residual irreducible quadratic], and
+{(e₁,f₁),(e₁,f₁)} for (1,1)+(1,1) [two sides, or one side with two
+distinct rational residual roots — GENHN.C's 2SIDED / SPLITEQ /
+SPLTAIL]. These are GENHN.C's dictionary verbatim, re-derived from the
+label calculus. At μ = 3 the five types and their σ are displayed in the
+battery docstring; the new one — with no μ = 2 analogue — is
+(1,1)+(1,1)+(1,1), σ = {(e₁,f₁),(e₁,f₁),(e₁,f₁)}: at (e₁,f₁) = (2,1) a
+SEXTIC SPLITTING INTO THREE RAMIFIED QUADRATICS.
+
+### S6.5 LEMMA HE3-5 (THE σ-RESOLUTION BOUNDARY — which leaves a
+### window decides, machine-surfaced then derived)
+
+THEOREM HE3.A is a statement about STAGE data at a DECIDED leaf. The
+complementary question — which members of a windowed enumeration are
+decided — has an exact answer, and getting it wrong is a live failure
+mode (a first version of this unit's reader silently dropped
+out-of-window recentered digits and thereby mis-read SPLIT residuals as
+INERT; the mis-read is caught below and by tooth HE-T-CAP).
+
+> **LEMMA HE3-5.** Work at window N (dv-cap e₁N: a dv-value is
+> lift-stable iff < e₁N, GENHN-3(a)). Consider a side of P(F) with
+> integer dv-slope λ, left endpoint (j₁, m₁) and residual degree
+> d ≥ 2, and a letter s ∈ K^×. Recentering at (λ, s) determines the
+> multiplicity m_s of s as a residual root iff, for every j in the
+> side's span, the recentered value dv(A_j′) is either
+> (i) < e₁N (read exactly), or
+> (ii) ≥ e₁N with e₁N > m₁ − λ(j − j₁), the λ-line height at j — in
+> which case "dv(A_j′) ≥ e₁N" ALREADY certifies "dv(A_j′) > line",
+> i.e. certifies that the pin is LIFTED, which is the only fact the
+> multiplicity count consults.
+> Otherwise the member's σ is UNDECIDED at window N. In particular:
+> * a side spanning the whole polygon (j₁ = 0, m₁ = μλ) is decided as
+>   soon as **e₁N > μλ**;
+> * the ALPHA-type members (residual = (Z − s)^μ, a single root of full
+>   multiplicity) need the DEEPER read of the recentered system, hence
+>   one more window unit than the split types at the same λ — they are
+>   the last species to resolve as N grows;
+> * consequently the σ-undecided mass of a μ-stage row is exactly the
+>   mass of members whose deepest consulted height reaches the cap, an
+>   exact q-power per stratum (measured per row by battery leg HE-BND).
+
+*Proof.* Immediate from LEMMA HE3-2(b) (the multiplicity is read as the
+number of pins lifted strictly above the λ-line) plus GENHN-3(a) (a
+computed dv-value is lift-stable iff < e₁N, and a value at or above the
+cap is only known to be ≥ e₁N). Clause (ii) is the observation that a
+one-sided bound suffices for a strict inequality against a KNOWN
+threshold. ∎
+
+**Interpretation (the honest reading of the charge's question "what
+exact q-power is the σ-undecided mass").** The undecided mass is NOT a
+defect of THEOREM HE3.A: it is the window's own resolution, and it
+composes exactly as GENHN-BOX-4/S11.F predicted for embedded genres
+(there the loss is the sibling Hensel precision; here, at a full-side
+genre, the loss is the cap on the recentered digits). The theorem's
+hypothesis "DECIDED leaf" is precisely LEMMA HE3-5's condition, so the
+theorem and the boundary are complementary, not competing.
+
+## S7. BOXES, GRADE, AND COVERAGE
+
+* **HE3-BOX-1 (grade).** ~~Attempt grade 1/2~~ **[r1] Attempt grade 0/2
+  on the μ ≤ 3 statement** — the old 1/2 counted a Codex pass adjudicated
+  in the composer's own context (now preserved at
+  `CODEX_HE3PE1_2026-08-08.md`), which the orchestrator's counter does
+  not; the first counted fresh-context pass (Fable PE1 @ 7950ee4)
+  returned NOT CLEAN (2 CRITICAL at f₁ ≥ 2), repaired by the [r1]
+  round; the second (Fable PE2 @ 6d0ff09) returned NOT CLEAN
+  (2 GAP + 3 MINOR, 0 CRITICAL — the r1 repairs and the core lemmas
+  HELD; fresh e₁ ≥ 2 ∧ f₁ ≥ 2 route GREEN 7/7), repaired by the [r2]
+  round (§S0″); PE3 is next. μ ≥ 4 is BOXED, not graded. THEOREM HE3.A and COROLLARY HE3.B inherit the
+  MINIMUM grade over their supplier stack: {GENHN 0/2 (battery GREEN),
+  GENIND 0/2, W-12 0/2 (PE3 owed), GRTJC/JC-LOAD 2/2 (NOT consumed
+  here), W-11 2/2 (not consumed), classical}. Every consequence is a
+  CONDITIONAL STRUCTURE at exactly that stack. **The one improvement
+  over GENHN's own σ position: HE3 does not consume LEMMA GENHN-4, so
+  the W-9 weld face (GENHN-BOX-2) is absent from the σ chain** — it
+  survives only inside GENHN's COUNT laws.
+* **HE3-BOX-2 (embedded-genre certification perimeter).** Inherited
+  verbatim from GENHN-BOX-4/S11.F: at an embedded genre read through an
+  ambient window, the stage digits are determined only below explicit
+  per-coordinate floors, so the set of leaves an AMBIENT window
+  certifies is strictly smaller than the stage window suggests. This is
+  a statement about window data, not about THEOREM HE3.A (whose leaf is
+  stage data). The battery gates its σ legs at that perimeter on
+  embedded rows and measures the uncertified tail as diagnostics.
+* **HE3-BOX-3 (machine coverage).** Rows exercise: the full-side genre
+  E3 = (Q; 2, 1, 3; h) at (p, N, h) with p ∈ {2, 3} (full windowed
+  enumeration, census tied to GENHN's committed E3 totals) and
+  p ∈ {5, 7} (constructed slope-aligned loci — the only place |K^×| ≥ 3
+  makes the 3-label stage type (1,1)³ realizable at f₁ = 1). NOT
+  exercised by machine: f₁ ≥ 2 stage genres at μ = 3 (F3/E13, visibility
+  floor N ≥ 7), μ ≥ 4 (where LEMMA HE3-4's ramified base-change branch
+  and the stage-CS recursion first bite), d ≥ 2 ambients, and the
+  char-p side of the resultant leg (see HE3-BOX-4). The PROOFS are
+  uniform in all of these; the gap is machine-side and named here.
+* **HE3-BOX-4 (characteristic coverage of the machine leg).** The
+  reader, the norm identity and the σ dictionary are characteristic-free
+  as PROVED (§S3–S6 use only the substitution identity R_λ(Z + s) and
+  ultrametric facts). The MACHINE leg runs both characteristics for the
+  reader/census, but PARI's `factorpadic` σ-oracle exists only on the
+  ℤ_p side (an oracle asymmetry every prior unit in this program
+  inherits), so the char-p rows are scored against the reader plus the
+  internal resultant identity, not against an independent oracle.
+* **HE3-BOX-4b (SEALED-VS-DELIVERED — disclosed, not papered over).**
+  The runner docstring sealed at commit 1 promised (i) both
+  characteristics, (ii) five teeth (HE-T-UNDET / -SIG / -NODE / -PSI /
+  -CERT), and (iii) an n = 7 embedded slice. The run delivered: ℤ_p rows
+  only; FOUR teeth wired (UNDET, SIG, CAP — the last one NEW, added when
+  the reader bug of LEMMA HE3-5 was found, and it is the strongest of the
+  four — plus NODE); no embedded n = 7 row. Furthermore **HE-T-NODE as
+  coded does not test what its name claims** (it reports how many
+  floor-dropped members remain inside the node rather than asserting that
+  the parse breaks), so it should be read as a diagnostic, not a tooth.
+  HE-T-PSI (corrupted slope set) and HE-T-CERT (embedded uncertified
+  tail) are OWED. Nothing in §S3–S6 depends on the missing rows; this is
+  machine coverage, and the verdict below is scored only on what ran.
+* **HE3-BOX-6 (THE ONE SURVIVING GAP — found by this unit's own review,
+  before any hostile pass; it localizes to μ ≥ 4, so μ = 3 is
+  unconditional).** LEMMA HE3-4's branch (ii) (a side of dv-slope
+  λ = u/ℓ with ℓ ≥ 2 AND residual degree d ≥ 2) is the only place the
+  argument leaves the ground it stands on. The reason is sharp: **no
+  element of R has non-integer dv** (dv is ℤ-valued on R), so NO test key
+  of the form Φ′ + w, w ∈ R, can sit at such a side's height, and the
+  peel of §S6.2 has nothing to recenter on. The note's substitute is the
+  ramified base change O ↝ O₂ = O[Π]/(Π^ℓ − π), which rescales dv by ℓ
+  and makes the height integral. That step is stated too cheaply:
+  **Φ′ need not remain irreducible over O₂** (it typically does not, when
+  gcd(ℓ, e₁) > 1), so R ⊗ O₂ need not be a DVR, and both the SLOT LEMMA
+  and LEMMA HE3-1's norm computation — which assume a DVR stage ring —
+  are not available verbatim on the other side of that base change.
+  SCOPE OF THE DAMAGE, exactly: the branch is reachable only when
+  ℓd ≤ μ with ℓ ≥ 2, d ≥ 2, i.e. **μ ≥ 4**, i.e. degree
+  n ≥ e₁f₁μ ≥ 8. Hence
+  - THEOREM HE3.A and [GENHN-HE(μ)] are **UNCONDITIONAL for μ ≤ 3** —
+    which is exactly the first-live case of GENHN's box (n = 6, 7) —
+    and unconditional for every degree n ≤ 7;
+  - for μ ≥ 4 (degrees n ≥ 8) COROLLARY HE3.B rests on this branch and
+    must be read as CONDITIONAL on it. The counting failure mode it must
+    exclude is concrete: with ℓ = 2, d = 2 and R_λ = (Z−s₁)(Z−s₂), the
+    two labels each need class size D′ℓ = 2D′, and the degree count alone
+    permits one class to be empty while the other carries two Galois
+    orbits.
+  IDENTIFIED REPAIR ROUTE (not executed here): enlarge the test family
+  from degree-D′ recenterings Φ′ + w to **test polynomials of higher
+  degree** sitting at fractional heights — the resultant
+  v(Res(f, Ψ)) = Σ_ρ Σ_{ξ : Ψ(ξ)=0} v(ρ − ξ) separates labels at
+  half-integer heights as soon as Ψ has degree D′ℓ with roots on the
+  side. This is the higher-order Montes construction, and it is the
+  natural completion of §S6's family; what it needs is the analogue of
+  LEMMA HE3-1 for a higher-degree test polynomial, i.e. the slot lemma at
+  Ψ's roots. That is a genuine further step, not a rewording.
+* **HE3-BOX-5 (what a hostile pass should attack first).** In priority
+  order: (1) LEMMA HE3-4's ramified base-change branch (ℓ ≥ 2 sides with
+  residual degree ≥ 2 — machine-unreachable at μ = 3, first live at
+  μ = 4); (2) the claim that unramified/ramified base change leaves the
+  LABELS of f unchanged (used twice, stated as "the root set and the
+  labels are unchanged" — the residual coefficient field grows, and the
+  argument needs that no label MERGES under the growth); (3) LEMMA
+  HE3-3's integer-sampling independence argument at slopes with equal
+  integer parts; (4) whether "decided leaf" as defined in DEFINITION 2
+  coincides exactly with LEMMA HE3-5's window condition on every row
+  (the battery measures both).
+
+## S8. THE BATTERY (`verification/openmath/he3_checks.py`)
+
+**Instrument.** A FRESH reader, independent of GENHN's: it detects
+residual roots by MEASURING dv(f mod Φ′_{κ,s}) at test keys — i.e. it
+implements the proof's own mechanism (LEMMA HE3-1′/HE3-2) — so it builds
+no residual polynomial and carries no twist bookkeeping. Members are
+enumerated in STAGE COORDINATES (legitimate by LEMMA GENHN-1's digit
+bijection), which is what makes the census tie below possible.
+
+**Rows.** GROUP A: the full windowed E3 enumeration at the two rows
+GENHN committed, (ℤ₂, N = 5, h = 1) and (ℤ₃, N = 4, h = 1). GROUP B:
+constructed slope-aligned loci at (ℤ₅, N = 6, λ = 3) and
+(ℤ₇, N = 6, λ = 3) — the ONLY place the 3-label type is reachable at
+f₁ = 1, because it needs three distinct residual roots in K^× = F_p^×,
+hence p ≥ 5. GROUP C: the σ-resolution boundary profile, N = 4…7.
+
+**Legs.** HE-NORM (LEMMA HE3-1 at the entry key on EVERY member, by
+exact Bareiss/Sylvester integer resultants) · HE-PSI (the same identity
+at EVERY test key (κ, s), plus HE3-1′'s inequality dv(B₀) ≥ generic, plus
+the convex-duality identity (★)) · HE-SIG (PARI `sig(f,p)` =
+factorpadic-200 + idealprimedec, the pinned w12_checks question, against
+the HE3.A dictionary) · HE-BND (the decided/undecided profile vs window).
+
+## S9. VERDICT (from the committed artifacts)
+
+**GREEN — 0 violations, all wired teeth fired, 17.0 s.** Artifacts:
+`he3_checks_output.txt`, `he3_checks_results.json` (hashes in the commit
+message; runner-as-run in the same commit). Totals: 72,134 entry-key
+resultant identities, 43,528 test-key HE-NORM/HE-PSI checks, 72,602
+reader classifications, 947 PARI σ jobs, 3,744 boundary reads.
+
+**Q1 (HE-NORM) ✓** 0 violations of Σ_ρ dv(Φ″(ρ)) = D′·dv(B₀) — at the
+entry key on all 72,134 enumerated members and at every test key of
+every oracled member. The engine of the proof is machine-real.
+
+**Q2 (HE-PSI) ✓** 0 violations, 43,528 checks: dv(B₀^{(κ,s)}) never
+falls below min_j(dv(A_j) + jκ), and the support-function identity (★)
+holds at every sampled κ on every in-window polygon.
+
+**Q3 (HE-SIG) ✓ 947 PARI jobs, 0 bad.** ALL FIVE μ = 3 stage types are
+realized and confirmed:
+
+    stage type            predicted σ at (e₁,f₁) = (2,1)   members (p=5 / p=7)
+    (3,1)                 {(6,1)}                            4 /   6
+    (1,3)                 {(2,3)}                           40 / 112
+    (1,1)+(2,1)           {(2,1),(4,1)}                      8 /  24
+    (1,1)+(1,2)           {(2,1),(2,2)}                     40 / 128
+    (1,1)+(1,1)+(1,1)     {(2,1),(2,1),(2,1)}                4 /  21
+
+The last row is the one with NO μ = 2 analogue: **25 sextics that split
+into three ramified quadratics, each PARI-confirmed** — the first machine
+confirmation of a 3-label stage σ anywhere in this program.
+
+**Q4 (the census tie — the strongest single number in this note) ✓** The
+fresh reader reproduces GENHN's committed E3 rows EXACTLY:
+
+    row            members   this reader                    GENHN @ pin
+    (ℤ₃, 4, 1)      39,366   drain 13,122 · {(6,1)} 26,244   UND3 13,122 · RAM3(7) 26,244
+    (ℤ₂, 5, 1)      32,768   {(6,1)} 20,480                  RAM3(7) 16,384 + RAM3(8) 4,096
+
+with 13,122 + 26,244 = 39,366 = the whole row, exactly as GENHN's §S12
+P6 records. The (ℤ₂,5,1) row additionally resolves classes GENHN's spot
+list did not break out: {(2,1),(4,1)} 6,144 · {(2,3)} 1,024 ·
+{(2,1),(2,2)} 512 · drain 4,608 (total 32,768). Two independently written
+readers agreeing to the digit on 72,134 members is the decorrelation this
+program asks for.
+
+**Q5 (teeth).** HE-T-UNDET ✓ **fired, and it is the mechanism
+certificate**: on the 3-label members the two identities GENHN.C's μ = 2
+proof uses admit **10** nonnegative solutions (all class sizes multiples
+of D′e_sf_s = 2, summing to D′μ = 6) where the truth is the single vector
+(2,2,2) — e.g. (6,0,0), (4,2,0), (2,4,0) all satisfy both identities.
+The μ = 2 argument is therefore not merely unproven at μ = 3, it is
+**information-theoretically insufficient**, and the full test-key family
+of §S6 is what closes the gap. HE-T-SIG ✓ 6/6 flipped dictionaries caught
+by PARI on each of the two rows. **HE-T-CAP ✓ (added mid-run, the
+strongest tooth): the earlier reader variant that dropped out-of-window
+recentered digits disagrees with the sound reader on 17 (p = 5) and 43
+(p = 7) members — the soundness bug of LEMMA HE3-5 is real and is caught.**
+HE-T-NODE: fired but MIS-SPECIFIED (see HE3-BOX-4b) — read as a
+diagnostic. HE-T-PSI, HE-T-CERT: owed.
+
+**HE-BND (the boundary law) ✓ PREDICTION CONFIRMED.** LEMMA HE3-5
+predicts that the aligned λ = 3, μ = 3 locus is undecidable until
+e₁N > μλ = 9, i.e. N ≥ 5, and that the ALPHA types (residual a perfect
+cube / a repeated root) need one further window unit. Measured decided
+counts, p = 5 (of 125 members) and p = 7 (of 343):
+
+    N        4      5      6      7        cap e₁N   (μλ = 9)
+    p = 5    0     84     96     97          8/10/12/14
+    p = 7    0    258    291    292
+
+Zero at N = 4 (cap 8 < 9), the bulk at N = 5 (cap 10 > 9), the ALPHA
+remainder at N = 6, saturation thereafter — exactly the predicted
+two-step. The residual 28 (p = 5) / 51 (p = 7) never-decided members are
+the 25 / 49 with vanishing residual constant (no full side: outside the
+genre) plus 3 / 2 genuinely deeper members, reported as-is.
+
+**What the machine leg establishes** (instrument grade, not acceptance):
+LEMMA HE3-1's resultant identity at every test key of every member; the
+HE3.A dictionary at ALL FIVE μ = 3 stage types under an independent
+oracle, including the 3-label type that has no μ = 2 analogue; the
+underdetermination of the μ = 2 method at μ = 3 as an explicit count of
+spurious solutions; the σ-resolution boundary law of LEMMA HE3-5 with its
+predicted two-step; and a digit-exact tie of a freshly written reader to
+GENHN's committed E3 census. Grade box HE3-BOX-1 unchanged: **attempt
+0/2, no hostile arc has run**; nothing here upgrades the conditionality
+display of COROLLARY HE3.C.
+
+## S9′. [r1] SUPPLEMENTARY MACHINE LEG (`verification/openmath/
+## he3r1_supp.py` — additive; the §S8 battery and artifacts byte-frozen)
+
+**VERDICT GREEN — 0 violations, exit 0** (artifacts
+`he3r1_supp_output.txt`, `he3r1_supp_results.json`; runner md5
+93681e8d47d447dcbfd46db0ddfe0c55 **[r2 2026-08-09, F-4: docstring-only
+fix — the sympy/Bareiss slip corrected and the P4 caveat added; the r1
+runner md5 was 9cd132a8ce174f5703542757675f7960; the [r2] re-run's
+stdout is BYTE-IDENTICAL to the committed r1 output and the results
+JSON is content-identical, GREEN, 0 violations]**, output md5
+65ed06e49f4c54abf1b143513633f143). What ran, keyed to the repairs:
+
+* **P1 (the repaired peel at PE1's counter-instance, F1).** Genre
+  (3;1,2,3;1), K = F₉, member with single side λ = 3 and residual
+  (Z−1)(Z−η)(Z+η) — PE1's {1, i, −i}. Measured with LEMMA HE3-1L
+  carriers under the minus convention, on the exact member AND a
+  junk-perturbed variant: m_s = 1 at each of the 3 residual roots
+  (including both K∖F₃ letters, which the old ŝ·n(λ) display cannot
+  carry) and m_s = 0 at the other 5 letters of F₉^×; Σ_s D′m_s = 6 =
+  deg f; PARI σ = {(1,2),(1,2),(1,2)} on both variants. The class-size
+  splits (4,0)/(2,2)/(0,4) that PE1 showed the old text could not
+  exclude are excluded by measurement.
+* **P2 (f₁ = 2 sweep, 8/8 members).** At Φ′ = x²+9: three 3-letter
+  rational configs (incl. a Frobenius-conjugate pair), a (1,2)+(1,4)
+  member (irreducible quadratic residual), a (1,6) member (irreducible
+  cubic residual Z³+2Z+1), the three-CONSECUTIVE-integer-slope member
+  (slopes 3,4,5 — the [r1-N1] geography), an ℓ = 2 member (λ = 7/2,
+  block (2,2)), and a mixed (1,2)+(2,2) member — dictionary vs PARI
+  agree on each, HE3-1a asserted at the entry key of each (exact
+  Bareiss/Sylvester resultants, no sympy).
+* **P2-N1 (the supplement, both branches).** On the consecutive-slope
+  member, recentering the TOP side at its residual root: the exact
+  member lands in the CASE A₀′ = 0 branch (Φ″ | f exactly; the quotient
+  development at Φ″ has slopes {3, 4} as the supplement's case B
+  states), and the junk variant lands in CASE A₀′ ≠ 0 with recentered
+  slopes {3, 4, 8} — the non-slope integer 5 appears in the gap,
+  exactly the sample the supplement's inversion consumes.
+  **[r2, F-5 2026-08-09 — geography scope at the pin.]** This demo ran
+  at (Q,f₁) = (3,2) (K = F₉, letters abundant), a geography where the
+  N1 gap is not LIVE — the gap needs K^× = {1}, i.e. (Q,f₁) = (2,1).
+  The true gap geography has machine contact as of PE2:
+  `he3_pe2fresh.py` FR-D runs both branches over ℤ₂ at Φ′ = x−2,
+  slopes 2,3,4 (PARI σ = {(1,1)}³; the exact member in the A₀′ = 0
+  branch with quotient development slopes {2,3}; a junk variant in
+  CASE A₀′ ≠ 0 with slopes {2,3,6} and the non-slope 4 in the gap) —
+  both branches behave as the supplement states.
+* **P3 (f₁ = 3 sweep, 4/4 members + the 26-letter peel).** At
+  Φ′ = x³−9x+27 (K = F₂₇, D′h = 3, test height λ = 4): {1,2,η}, the
+  Frobenius orbit {η, η³, η⁹} peeled as three separate C-letters, a
+  (1,3)+(1,6) member, and an irreducible-cubic (1,9) member — PARI
+  agrees on each. The repaired-peel profile over the FULL F₂₇^×:
+  m_s = 1 at exactly the 3 residual roots, 0 at the other 23 letters;
+  Σ D′m = 9 = deg f.
+* **P4 (LEMMA HE3-1L's exact set) [r2, F-4 2026-08-09: scope
+  disclosed — quasi-tautological as a residue check].** At
+  (e₁,f₁,h) = (1,2,1), the enumerated realized residues at
+  κ ∈ {0,1,2,3} equal the displayed T(κ)-span exactly: 2 letters
+  (F₃^×) at κ = 0, all 8 of F₉^× at κ ≥ 1 = (D′−1)h — the fullness
+  threshold as displayed. **What P4 does and does not test:** its
+  "realized residues" are computed BY the lemma's own slot-digit
+  extraction (`c0 = (C[0]//3**kap)%3 ...`), so P4 verifies the T(κ)
+  BOOKKEEPING (which slots are available at which heights), not the
+  residue arithmetic; the r1 sentence above ("the enumerated realized
+  residues res(C(theta)/n(kappa)(theta)) equal the displayed span")
+  overstated the leg's independence. The decorrelated residue test
+  exists as of PE2: `he3_pe2fresh.py` FR-C computes the realized
+  residues at (2,2,1) by PARI valuations + residue-field reduction
+  (`nfeltval`/`nfmodpr`, no slot formula), κ = 0..5, sizes
+  {2,2,8,8,8,8} = the T(κ)-span exactly, including the boundary
+  κ = 3 = (i₀+e₁(f₁−1))h. The runner docstring's "sympy integer
+  resultants" line was a slip (the code is the no-sympy
+  Sylvester/Bareiss route) — fixed in place at [r2]; runner pin
+  updated above, stdout byte-identical.
+
+Coverage note (honest): the sweeps run e₁ = 1 genres (f₁ ∈ {2,3}) over
+ℤ₃; e₁ ≥ 2 at f₁ ≥ 2 (where i₀(κ) cycles) is machine-exercised only
+through HE6's frozen battery (its (2,2,3) frame) and remains owed to a
+future HE3-side row; the μ ≤ 3 proofs are uniform in e₁.
+**[r2 2026-08-09]:** that row exists as of PE2 — `he3_pe2fresh.py`
+(committed at 6d0ff09) runs the (3;2,2,μ;1) family at Φ′ = x⁴+9 over
+ℤ₃ (e₁ = 2 ∧ f₁ = 2, 7/7 PARI members incl. a μ = 3 degree-12 member,
+HE3-1a/HE-NORM asserted at e₁ = 2, peel profiles over F₉^×, and the
+twist adjudicator `ma` — §S3 Remark [r2]); this note's own §S8/§S9′
+sweeps stay as recorded.
+
+---
+
+### Dated correction (2026-08-09, post-PE3)
+
+**PE3 verdict (Fable, fresh context, `HE3_passPE3_report.md`): CLEAN —
+0 CRITICAL, 0 GAP, 1 MINOR (M-1, corrected below). The
+consecutive-clean count moves 0/2 → 1/2 and HOLDS at 1/2 through this
+correction (minors-only precedent: the CLEAN bar is GAP-or-worse, and
+this repair touches a display parenthetical, not a consumed clause).**
+PE3's fresh route ran GREEN, 0 violations, at three geographies
+disjoint from the prior legs — the (2,1)/(3,1) letter-starved corners,
+a μ = 3 coherent family at (e₁,f₁) = (3,1), and non-prime Q = 4 over
+F₄[[t]] — with the coherent-vs-naive flip machine-adjudicated at each
+of the three, siding with the coherent read each time. The body above,
+§S1 (iii) included, stays BYTE-FROZEN; the correction lives here.
+
+**M-1 (the §S1 (iii) starved-corner parenthetical), corrected in both
+readings.** The frozen parenthetical reads: "needing |K^×| =
+Q^{f₁} − 1 ≤ d_λ ≤ μ (at μ ≤ 3 only (Q,f₁) ∈ {(2,1), (3,1), (2,2)} can
+be starved)". Neither of its two readings matches that list:
+
+* **Under the displayed bound d_λ ≤ μ (= 3):** Q^{f₁} − 1 ≤ 3 ⟺
+  Q^{f₁} ∈ {2, 3, 4} (Q a prime power) ⟺ (Q,f₁) ∈
+  {(2,1), (3,1), (2,2), (4,1)}. The (4,1) omission is CURED here:
+  Q = 4 base rings are legal in this program (the equal-characteristic
+  F₄[[t]] base; PE3's FR3 runs one), and |F₄^×| = 3 ≤ 3.
+* **Under the in-context bound d_λ ≤ μ − 1 (≤ 2):** the sample
+  κ = D′h+1 is consumed only while a hypothetical low side is being
+  refuted, and that low side occupies horizontal length ≥ 1 of the
+  μ-budget, so the κ-side has d_λ ≤ μ − 1 ≤ 2. Then Q^{f₁} − 1 ≤ 2 ⟺
+  Q^{f₁} ∈ {2, 3}, and the reachable corner is (Q,f₁) ∈
+  {(2,1), (3,1)}: the listed (2,2) is UNREACHABLE at this site, and
+  (4,1) is excluded the same way.
+
+**Why the frozen fence stands (conservativity, per PE3 M-1).** §S1
+(iii) consumes GENHN's [r1] ERRATUM 2026-08-08 on the LISTED corner
+{(2,1), (3,1), (2,2)} — a superset of the in-context reachable corner
+{(2,1), (3,1)} — so the consumption covers the corner the display
+needs, and the fence PE2 recorded stays in force as written. The
+imprecision is live only for a future consumer re-using the
+parenthetical at a site where the starved side can fill the whole
+polygon (d_λ = μ, e.g. a single-side sampling argument): that consumer
+must take the four-element list of the first bullet, which adds Q = 4
+base rings to the fence.
+
+=== PRIOR REPORT / CONTEXT: HE3_passPE3_report.md ===
+# HE3 passPE3 — THIRD FRESH-CONTEXT HOSTILE PASS (Fable, zero prior stake)
+
+**VERDICT: CLEAN — 0 CRITICAL, 0 GAP, 1 MINOR. The counter starts:
+0/2 → 1/2.** Each surface on this pass's attack list was re-derived or
+machine-adjudicated independently and HELD: the [r2] coherent-convention
+pin (the W(k) wrap formula re-derived from monomial arithmetic, its
+integrality proved, the non-affine claim confirmed, the coboundary
+cancellations verified at both propagated identity sites, the witness
+recomputed to the digit), the Ψ-comparison node route (closure at μ ≤ 3
+exhaustive on my own case split; no-circularity verified consumer by
+consumer), HE3-2(a) under vanishing binomials (sound under the residue-sum
+reading the lemma's own repair block pins), and the F-3/F-4/F-5 repairs.
+The fresh route ran GREEN (0 violations) at three geographies disjoint
+from every prior leg — the letter-starved corner ((2,1) and (3,1),
+including a depth-2 ALPHA cascade at K^× = {1}), a μ = 3 coherent-read
+family at the new (e₁,f₁) = (3,1), and non-prime q = 4 over F₄[[t]] —
+with the coherent-vs-naive flip PARI- or construction-adjudicated at all
+three, siding with the coherent read each time. The one MINOR is a
+display imprecision in §S1 (iii)'s starved-corner list; its fence is
+conservative, so nothing downstream moves.
+
+**Pass metadata.** Target `HE3_PROOF_2026-08-08.md` at HEAD (r2 =
+b78e56a/79b604c/f045ee4/5aca99b/5babe16 on PE2 @ 6d0ff09, r1 on PE1 @
+7950ee4). Protocol: quote-and-classify, fix nothing. PE1's and PE2's
+routes not re-walked; this pass's surfaces per the charge: the [r2]
+repairs as displayed, the PE2-suggested PE3 charges, and a fresh route
+disjoint from PE1 legs A/B/C, PE2 FR-A/B/C/D, and the note's §S8/§S9′
+rows.
+
+---
+
+## FINDINGS (ranked)
+
+### M-1 — MINOR. §S1 (iii)'s starved-corner characterization is not exact
+### in either of its two possible readings; the fence is conservative, so
+### the chain is unharmed.
+
+QUOTE (§S1 (iii)): "needing |K^×| = Q^{f₁} − 1 ≤ d_λ ≤ μ (at μ ≤ 3 only
+(Q,f₁) ∈ {(2,1), (3,1), (2,2)} can be starved)". Two readings, neither
+matching the list: (i) under the displayed bound d_λ ≤ μ = 3, the
+geography (Q,f₁) = (4,1) also satisfies |F₄^×| = 3 ≤ 3 (Q ranges over
+prime powers in this program — the equal-char F₄[[t]] base is legal, and
+this pass's FR3 runs one) yet is omitted from the "only" list; (ii) in
+the display's own context the sample is needed only while refuting a
+hypothetical low side, which occupies horizontal length ≥ 1 of the
+μ-budget, so the κ = D′h+1 side has d_λ ≤ μ − 1 ≤ 2 and the true
+starvable list is {(2,1), (3,1)} — the listed (2,2) is unreachable
+there, and (4,1) is excluded for the same reason. Because the fence
+consumes GENHN's [r1] erratum on the LISTED corner, a superset of the
+true in-context corner, no conclusion of the display rests on the
+imprecision. FAILURE SCENARIO: a consumer re-using the parenthetical's
+list at a site where the starved side can fill the whole polygon
+(d_λ = μ, e.g. a future single-side sampling argument) would omit Q = 4
+base rings from the fence; at THIS site nothing fails.
+
+---
+
+## CLEAN CHARGES (attacked, survived this pass's own verification)
+
+* **Attack 1a — the W(k) wrap formula (DEFINITION 1 [r2]).** Re-derived
+  from scratch: with n(κ) = x^{i₀(κ)}π^{(κ−i₀(κ)h)/e₁}, the monomial
+  ratio n(κ₀−ku)·n(u)^k/n(κ₀) works out to exactly
+  (x^{e₁}π^{−h})^{W(k)} with W(k) = (i₀(κ₀−ku) + k·i₀(u) − i₀(κ₀))/e₁
+  — x-exponents give e₁W, π-exponents independently give −hW, total dv
+  0, residue η^{W(k)}. INTEGRALITY: i₀(κ₀−ku) + k·i₀(u) ≡
+  h^{−1}(κ₀−ku) + kh^{−1}u = h^{−1}κ₀ ≡ i₀(κ₀) (mod e₁) since
+  gcd(h,e₁) = 1, so e₁ | the numerator — W ∈ ℤ, as the display
+  presumes. NON-AFFINE: at (e₁,h) = (2,1), λ = 3, κ₀ = 9 I compute
+  W = (0,0,1,1) (increments 1,0 — not affine), matching the Remark's
+  hand check; at the witness (κ₀,u) = (10,5): W = (0,1,1) ✓; at ℓ ≥ 2
+  the same congruence runs on κ₀ − ku with u ∈ ℤ, so the formula and
+  its integrality cover fractional slopes.
+* **Attack 1b — the coboundary statement at the propagated sites.** All
+  five [r2, F1] sites grep-present (§S3 HE3-1′ proof, §S4 (ii), §S5 (b)
+  display, §S5 (b) proof, §S6.2 HE3-4). The two identity-site
+  cancellations verified by direct computation: (HE3-1′) the k-th
+  attaining summand's residue factors as ã_k·ι(s)^{j₀+k}·
+  res(n(κ₀)n(λ)^{j₀}/n(c)) with the second factor k-INDEPENDENT of dv 0
+  (c = κ₀ + j₀λ), so the sum is one global K-factor times
+  s^{j₀}R_λ(s), exactly the [r2] insertion; (HE3-2(b)) with
+  M_j = n(c)/n(λ)^j the (i → j) summand's ratio M_i·n(λ)^{i−j}/M_j
+  telescopes to 1 identically as monomials, so g″_j =
+  Σ binom̄(i,j)s^{i−j}g_i = [Z^j]G(Z+s) wrap-free; and g_{T+k} =
+  ã_k·res(n(κ₀)n(λ)^T/n(c)) gives G = const·Z^T·R_λ with no diagonal —
+  the three [r2] displays are exactly these three computations.
+* **Attack 1c — the witness reconciliation.** Recomputed: pins (2,0),
+  (1,5), (0,10) on the λ = 5 line ✓; naive a = (1,1,1) → (Z−1)² in
+  char 3 ✓; W = (0,1,1) from i₀(10) = 0, i₀(5) = 1 ✓; ã = (1,η,η) →
+  η(Z² + Z − η) with η(Z²+Z−η) = ηZ²+ηZ+1 ✓ (η² = −1); disc = 1+4η =
+  1+η in char 3, and (F₉^×)² = {±1, ±η} (squares recomputed) excludes
+  it → irreducible ✓; s = 1 is not a root of the coherent residual
+  (R(1) = η(2−η) ≠ 0), consistent with the measured above-λ length 0.
+  The Z ↦ −Z reconciliation with PE2's Z² − Z − η is a geometric
+  rescaling (c = −1), same type — the claim is correct. MACHINE TIE
+  (this pass, FR2b): PARI nfmodpr computes the DEF-1 coherent
+  coefficients of the witness directly (no W formula, no slot formula):
+  (1, η, η) exactly.
+* **Attack 2 — the Ψ-comparison node route (§S1 (ii)).** Re-derived in
+  full. The j = 0 pin: HE3-1 at Φ″ = Φ′ (hypothesis trivially met),
+  Σ_ρ dv(Φ′(ρ)) > D′μ·D′h from the locus computation — sound, and the
+  ψ-cancellation argument for dv(Φ′(ρ)) > D′h checks (entry-side slots
+  i = e₁t, residue sum = ψ(η_ρ) = 0). The general pin: the hull-mean
+  argument (a failing pin at j* puts the hull at j* at height
+  ≤ (μ−j*)D′h, forcing a side of slope ≤ D′h), COUNT from HE3-0(iii) +
+  length sum, R(κ) from the two exact reads, and R(κ) − κ·COUNT = (∗∗)
+  all verified. THE μ ≤ 3 ENUMERATION IS EXHAUSTIVE on my own case
+  split: no-mid → all summands of Σ_low D′L_λ(κ−λ) strictly positive
+  (κ−λ ≥ 1) — contradiction, and this subsumes the all-low degenerate
+  case; mid → length budget forces exactly {low 1, mid 2} at μ = 3
+  (mid needs ℓd ≥ 2; two mids or mid ≥ 3 overflow; μ = 2 cannot host a
+  mid), κ = D′h+1 is then NOT a slope so the sample is legal
+  unconditionally, and c_mid = −c_low = D′ gives λ_low = λ_mid, absurd.
+  Per-root exactness at λ_ρ = κ: β_ρ ∈ roots(ι_ρ(R_κ)), ι_ρ(s) not
+  (field embedding, R_κ(s) ≠ 0) — verified against HE3-0(iii)'s
+  provenance. NO-CIRCULARITY: HE3-1 consumes dv(Φ″−Φ′) > D′h only
+  (resultant symmetry + norm); HE3-1′'s proof consumes the slot lemma
+  at θ″ + coherent reads; (★) is polygon geometry; HE3-1L and HE6-0″
+  consume the locus only; HE3-0(iii) is the classical read at ρ — none
+  consults the node. Letter availability at κ = D′h+1 > (D′−1)h ✓.
+  The honest scope (iii) is honest (its one imprecision is M-1), and
+  the GENHN [r1] fence stands as independent support.
+* **Attack 3 — HE3-2(a) under vanishing binomials (PE2's suggested
+  charge).** The (a) display's equality clause is sound under the
+  residue-sum reading, which the lemma's own [REPAIR, PE1 finding 4]
+  block pins two paragraphs below: "residues cancel" = the sum of the
+  attaining summands' residues (each carrying the binomial coefficient
+  through its image in K) vanishes — a single attaining summand with
+  p | binom(i,j) has residue 0 and is a degenerate cancellation, so
+  equality correctly fails there; the block itself warns "Only the
+  INEQUALITY in (a) survives summand-wise". The multiplicity fact
+  (Z−s)^m ‖ R_λ ⟹ Z^m ‖ R_λ(Z+s) is binomial-free in every
+  characteristic (R_λ(Z+s) = Z^m·g(Z+s), g(s) ≠ 0). Grep: no site in
+  the note consumes "(a)"'s equality clause by name; (b)'s proof is
+  run at the residue level and consumes only the inequality plus the
+  substitution identity. No finding.
+* **Attack 4 — the F-3/F-4/F-5 repairs.** F-3: the re-keyed step (2)
+  parenthetical is correct AND the mechanism is genuinely exact — the
+  attaining slots of C at ρ live in one class i₀ + e₁t (distinct
+  classes cannot share the integer min, h invertible mod e₁), each
+  attaining res(c_i) ≠ 0, and an F_Q-combination of {η_ρ^t} with a
+  nonzero coefficient is nonzero — so dv(C(ρ)) = κ exactly, no
+  level-1 cancellation. F-4: the §S9′ disclosure matches the code (P4
+  extracts slot digits, verified quasi-tautological on inspection);
+  docstring corrected; FR-C correctly cited as the decorrelated leg;
+  pins updated and verified below. F-5: the geography scope block at
+  P2-N1 states the (3,2) demo vs the (2,1) live-gap geography and
+  cites PE2 FR-D accurately (checked against the FR-D output shape at
+  6d0ff09).
+* **Free hunt (r1+r2 text).** §S4 (ii)'s convention-matching insert is
+  consistent with the self-normalizing n-read (both sides anchored at
+  n(κ₀)(·), n(u)(·)); DEF 1 [r2]'s "pin strictly above the line
+  contributes 0" and the vertex reads at k = 0, d_λ check; the
+  geometric-freedom claim (anchor swap = one global scalar + Z ↦ cZ)
+  verified by the ratio argument (ϖ^{κ₀−ku} vs M_k differ by
+  η^{A+Bk}); the §S0″ record's five-row table matches PE2's report;
+  HE3-BOX-1's arc line matches the actual arc.
+
+## MACHINE LEG (pins, byte-freeze, isolated re-run, tautology audit)
+
+* **Pins re-verified at HEAD**: `he3r1_supp.py` md5 =
+  93681e8d47d447dcbfd46db0ddfe0c55 = the §S9′ [r2] pin; committed
+  output md5 = 65ed06e49f4c54abf1b143513633f143 = the §S9′ pin; the
+  r2 runner diff (b78e56a) is docstring-only, as §S0″ claims.
+* **Byte-freeze verified**: DEFINITION 1's blockquote and the (★)
+  display + proof are byte-identical to HE3 @ 7a95449 (HE6's frozen
+  pin) — diff empty on both extracts; `he3_checks.py` + both battery
+  artifacts last touched at 872327b (pre-r1), per git log.
+* **Isolated re-run** (`/tmp/he3pe3_iso`, runner copied alone): exit 0,
+  stdout BYTE-IDENTICAL to the committed `he3r1_supp_output.txt`,
+  results JSON content-identical. GREEN, 0 violations.
+* **Tautology audit**: the note's [r2] claim that the battery/supp
+  measurement route consults the coherent object automatically is
+  correct (the measurement is dv(B₀) at test keys — convention-free);
+  P4's quasi-tautology is now disclosed in both the runner docstring
+  and §S9′ (F-4 executed as recorded). This pass's own fresh legs are
+  decorrelated: members built as explicit products or from hand-picked
+  developments, predictions hand-derived from the displays before
+  running, oracles = PARI factorpadic/idealprimedec (ℤ_p rows),
+  explicit construction (F₄[[t]] row), and nfeltval/nfmodpr residue
+  arithmetic (W-direct leg, no slot or W formula in the loop).
+
+## FRESH ROUTE (`verification/openmath/he3_pe3fresh.py`, GREEN, exit 0,
+## 0 violations — geographies disjoint from PE1 A/B/C, PE2 FR-A/B/C/D,
+## and the note's own rows)
+
+* **FR1a/FR1b — the letter-starved corner at (Q,f₁) = (2,1)** (the
+  honest scope's own geography, never run as a starved-σ family):
+  e₁ = 1 member (x−14)(x−22)(x−10) over ℤ₂ — base {2:2, 3:1}, ALPHA at
+  the single letter, measured m = 2, recentered polygon {2:1, 3:1, 4:1}
+  with the collapsed λ-side of length 1 and residue 1 = −s (HE3-2(b)'s
+  [r1] collapse clause quantitatively confirmed), PARI σ = {(1,1)}³;
+  e₁ = 2, μ = 3 member (x²−2x−10)(x²−2x−34)(x²−2x−130) at Φ′ = x²−2 —
+  single side λ = 3 = D′h+1, d = 3, all letters 1 (starved ALPHA,
+  m = 3), sub-block slopes {6,10,14} at Φ″ = x²−2x−2, HE3-1a asserted,
+  PARI σ = {(2,1)}³. Depth-2 cascade entirely inside K^× = {1}.
+* **FR1c — starved slope + coherent adjudicator at f₁ = 1, (3,1)** (a
+  NEW seam geography: PE2's witness was f₁ = 2): Φ′ = x²+3 over ℤ₃
+  (η = −1), f = Φ′² − 9Φ′ + 27 = (x²−3x+3)(x²+3x+3), single side
+  λ = 3 = D′h+1, middle pin lifted. Naive read Z²+1 — IRREDUCIBLE over
+  F₃, would predict σ = {(2,2)} and m ≡ 0; coherent read (W = (0,1,1),
+  η = −1) = −(Z−1)(Z+1) — split at BOTH letters, a genuinely starved
+  slope. PARI: σ = {(2,1),(2,1)}; measured m = {1:1, 2:1}. The
+  coherent read wins at f₁ = 1. FR1d: (3,1) e₁ = 2 μ = 3 with the
+  slope-3 side consuming all of K^× — σ = {(2,1)}³, 3/3.
+* **FR2 — μ = 3 coherent family at the new (e₁,f₁) = (3,1)**:
+  Φ′ = x³+3 over ℤ₃ (D′ = 3, D′h = 3, η = −1), λ = 4 line, κ₀ = 12,
+  W = (0,1,1,1) (non-affine). f = Φ′³ − 3xΦ′² + 9x²Φ′ − 81 (degree 9,
+  pins (0,12),(1,8),(2,4) on the line). Naive (Z−1)(Z²+1) would
+  predict {(3,1),(3,2)} and m_1 = 1; coherent −(Z³−Z²+Z+1) is an
+  irreducible cubic predicting {(3,3)}. PARI: σ = {(3,3)} — one nonic,
+  e = 3, f = 3; measured m = {1:0, 2:0}. Coherent confirmed at e₁ = 3.
+* **FR2b — the W-formula DIRECT leg**: the coherent coefficients
+  res(A_k(θ)n(u)(θ)^k/n(κ₀)(θ)) computed by PARI residue arithmetic
+  (nfeltval/nfmodpr — neither the slot formula nor the W formula in
+  the loop): FR2 member → (2,2,1,2) = the formula's η^W-twisted values;
+  PE2's witness `ma` → (1, η, η) = the §S3 Remark [r2] display. The
+  DEF 1 [r2] construction is machine-real coefficient-by-coefficient.
+* **FR3 — non-prime q = 4 on the coherent displays, equal char, BY
+  CONSTRUCTION**: O = F₄[[t]], Φ′ = x² + ωt (η = ω), f = g₁g₂ with
+  g₁ = x²+tx+ωt (letter 1), g₂ = x²+ωtx+ωt (letter ω) — both slope-1/2
+  irreducible, so σ = {(2,1),(2,1)} is KNOWN with no oracle.
+  Development verified exactly: A₁ = ω²tx+ωt², A₀ = ω²t³, pins
+  (0,6),(1,3),(2,0) on the λ = 3 line. Naive read (ω²,ω²,1): NO
+  F₄-root — would predict the inert type {(2,2)}. Coherent read
+  (W = (0,1,1), η = ω): (ω²,1,ω) = ω(Z−1)(Z−ω) — split exactly at the
+  two letters. The direct symbolic residues in F₄[t][θ]/(θ²−ωt) equal
+  the W-formula values. First run of the coherent seam at a non-prime
+  base anywhere in the arc.
+
+## GRADE LINE
+
+**Pass verdict: CLEAN (1 MINOR, 0 GAP, 0 CRITICAL — the bar is
+GAP-or-worse). Counter: 0/2 → 1/2.** The r2 repairs held under this
+pass's attacks; the fresh route sided with the note's displays at each
+of its three new geographies, and the machine pins/freezes are exact.
+Suggested next-pass charges (PE4, for the orchestrator): the M-1
+corner-list display (one-line repair candidate); HE3-5's clause (ii)
+boundary at e₁N = m₁ − λ(j−j₁) + 1 (never separately attacked); a
+starved (2,2)-geography σ family (K = F₄ over a ramified-quadratic
+stage, the one listed corner geography no pass has machine-run); and
+the §S6.3 stage-α onward-read sentence as repaired at [r1, F5].
+
+=== PRIOR REPORT / CONTEXT: HE3_passPE4_report.md ===
+# HE3 passPE4 — FOURTH FRESH-CONTEXT HOSTILE PASS (Fable, zero prior stake; THE ACCEPTANCE ATTEMPT)
+
+**VERDICT: CLEAN — 0 CRITICAL, 0 GAP, 2 MINOR. The counter completes:
+1/2 → 2/2. HE3 IS ACCEPTED.** The never-owned surfaces of this pass's
+charge were re-derived end-to-end and HELD: the §S2/§S6.4 simple-case
+(μ = 2) dictionaries (all three stage types re-derived from the label
+calculus and machine-tied at four frames new to the arc), the (SEP)
+index apparatus (re-keyed at r1, here re-derived sub-case by sub-case,
+the [r1-N1] supplement's both branches re-proved, and the inversion
+machine-run AS an inversion for the first time), the HE3-4/§S6.2
+recentering composite (walked end-to-end through the [r2] coboundary,
+including the anchor-consistency computation tying HE3-0's root residue
+β_ρ = res(y_ρ/n(λ)(ρ)) to DEFINITION 1 [r2]'s coherent assembly), the
+battery's check-family design (audited at code level against what §S8
+and HE3-BOX-4b claim — they match), and the post-PE3 dated-correction
+rider (both of its corrected lists recomputed exactly; the
+conservativity argument verified). The fresh route ran GREEN (0
+violations, 4/4 teeth) at geographies and reads disjoint from all prior
+legs, including the wrap seam adjudicated in a NEW frame and
+characteristic in BOTH flip directions, with PARI siding with the
+coherent read both times. The two MINORs are display-locality defects
+in the (SEP) block of the same genre as PE3's accepted-through M-1; no
+conclusion moves.
+
+**Pass metadata.** Target `HE3_PROOF_2026-08-08.md` at HEAD = 8ba8c87
+(the post-PE3 dated-correction rider; body byte-frozen — the rider
+commit is a pure EOF append, verified from the commit diff). Arc: PE1
+(2C+4G+2m) @ 7950ee4 → r1 → PE2 (2G+3m) @ 6d0ff09 → r2 → PE3 CLEAN
+(0C/0G/1m) @ c40cbf0, counter 1/2 → rider 8ba8c87. Protocol:
+quote-and-classify, fix nothing. All three prior reports read; their
+routes not re-walked.
+
+---
+
+## FINDINGS (ranked)
+
+### M-A — MINOR. The [r1] "(SEP) holds at μ ≤ 3" sub-case enumeration
+### has no header for the all-integer ≤ 2-side configuration; the
+### closing argument for it is displayed one line up inside (a).
+
+QUOTE (§S6.1 repair block): "Σ_λ ℓ_λ d_λ = μ, so at μ ≤ 3: (a) if some
+slope is non-integral (ℓ ≥ 2, forcing ℓd ≥ 2), P(F) has at most TWO
+sides, and two slope-classes are separated with no interior sample at
+all — the root count ... gives c₁ + c₂ = 0 for free, and samples above
+the top slope give c₁λ₁ + c₂λ₂ = 0 ... (b) if there are three sides
+... (c) three consecutive integer slopes ...". The configurations with
+one or two sides ALL of integer slope (e.g. every 2SIDED member — this
+pass's FR-A frames run several) fall under none of the three headers:
+(a)'s hypothesis fails, (b)/(c) require three sides. The two-relation
+argument displayed inside (a) ("two slope-classes are separated with no
+interior sample at all") closes them verbatim (one side: the free count
+alone gives c = 0), so the derivation is complete in substance and no
+conclusion rests on the omission. FAILURE SCENARIO: a Lean
+transcription that cases exactly on the three displayed headers has an
+uncovered case whose proof is the (a) tail; nothing false is provable.
+
+### M-B — MINOR. (★★)'s root-side read at AT-SLOPE samples is consumed
+### by (SEP)/sub-case (c) but displayed only in §S1 (ii), not in
+### HE3-3's own step (2).
+
+QUOTE (§S6.1 step (2)): "Fix κ **not a slope**, and any s"; QUOTE
+((SEP)): the measurable index set includes "the slope integers λ at
+which K^× contains a non-root of R_λ"; QUOTE (sub-case (c)): "sample AT
+the middle slope a+1 with a letter s that is not the ... residual
+root". Step (1) covers the STAGE side at such samples (HE3-1′'s
+at-slope non-root clause), but the ROOT side of (★★) at a root ρ with
+λ_ρ = κ needs the residue-mismatch argument, which is displayed only in
+§S1 (ii)'s parenthetical ("at λ_ρ = κ the residues cannot cancel, since
+β_ρ is a root of ι_ρ(R_κ) ... while ι_ρ(s) is not"). The justification
+exists in the note; the locality is the defect. This pass's FR-B
+machine-verified the at-slope equality at 12 samples (below). FAILURE
+SCENARIO: a reader reconstructing HE3-3's proof from §S6.1 alone has an
+unproven step at the (c)-sample; the cure is a cross-reference.
+
+---
+
+## CLEAN CHARGES (attacked, survived this pass's own verification)
+
+* **§S2 + §S6.4, the μ = 2 dictionaries (surface 1, never the main
+  target before).** Re-derived: Σ e_sf_s = 2 admits exactly {(2,1)},
+  {(1,2)}, {(1,1),(1,1)}; the label calculus returns {(2e₁,f₁)} [one
+  side ℓ = 2, u odd — d = 1 forced], {(e₁,2f₁)} [integer slope,
+  irreducible quadratic residual, peel-free by the subtraction bullet],
+  {(e₁,f₁)²} [two sides via HE3-3 alone, or one side two rational roots
+  via the peel] — GENHN.C's dictionary verbatim, no circularity (the
+  2×2-system description in §S2 is exposition of the SUPPLIER's method;
+  §S6.4 does not consume it; the SPLITEQ λ₁ = λ₂ degeneration is
+  correctly deferred to "after one refine step"). The μ = 3 degeneration
+  claim recomputed: single side, three labels → second identity = λ ×
+  first; the 10 spurious solutions of HE-T-UNDET = the C(5,2) ordered
+  triples — reconfirmed in the isolated battery re-run. Machine: FR-A
+  ties all three μ = 2 types at (4,1), (2,3), and two equal-char frames.
+* **The (SEP) apparatus (surface 2).** The corrected index set (κ >
+  D′h; measurable = non-slopes plus generic-lettered slopes) re-derived
+  against HE3-1/1′/1L (every test height reaches all of K^×; the band
+  S < κ ≤ D′h correctly excluded — the x²+18/x²+27 counter-instances
+  re-checked from the display). Sub-cases (b)/(c) re-solved by hand
+  (both interior-sample positions; the at-middle-slope sample) — det-1
+  triangular systems. The [r1-N1] supplement re-proved: CASE A₀′ ≠ 0
+  (dv(A₁′) = 2a+1 preserved — unique attaining index verified; δ ≥ a+3
+  integer; {a, a+1, δ} with a+2 in the gap — invertible; class
+  transfer exact); CASE A₀′ = 0 (left-shift development; two-slope
+  polygon; n_{a+2} = D′ from Φ″'s own roots); termination in one step
+  (neither branch reproduces a consecutive triple). Machine: FR-B runs
+  the inversion AS an inversion on measured Ψ.
+* **HE3-4 / §S6.2 end-to-end (surface 3, the [r2]-touched composite).**
+  Walked: (i) the one-clause equivalence (three dv cases; the F5-
+  repaired collapse residue −ι_ρ(s) ≠ 0); (ii) HE3-3 applied AT Φ″
+  (invariant maintenance gives (T1)/(T2) at θ″; P(F″)'s slopes all >
+  D′h — preserved-below + collapse + absorbed structure; (SEP) at Φ″ by
+  the same μ ≤ 3 derivation); (iii) HE3-2(b)'s substitution re-computed:
+  M_i·n(λ)^{i−j}/M_j = 1 identically, G″ = G(Z+s), order-m vanishing,
+  above-λ length = m, the λ-side residual (Z+s)^T R_λ(Z+s)/Z^m with the
+  collapsed root −s of multiplicity T — sign-coherent with [r1, F8];
+  (iv) THE ANCHOR CONSISTENCY (this pass's own computation): the side
+  part Σ_k A_{j₀+k}(ρ)Y^k under Y = n(λ)(ρ)·Z̃, divided by n(κ₀)(ρ),
+  has residue ι_ρ(R_λ)(Z̃) with R_λ EXACTLY DEFINITION 1 [r2]'s
+  assembly, and its roots are res(y/n(λ)(ρ)) — i.e. HE3-0's β_ρ read
+  and DEF 1's coherent object are convention-matched with no residual
+  Z ↦ cZ seam (the anchor swap n(c)/n(λ)^T vs n(κ₀) is one global
+  scalar, type-preserving); (v) the μ ≤ 3 base-change-free block: the
+  no-root-⟹-irreducible step for degree ≤ 3, the subtraction |S_r| =
+  D′·deg r, disjointness by coprimality of distinct irreducible images;
+  the starved corner needs no peel complement (all letters are roots —
+  FR-C machine-runs exactly this). The stage-α onward read ([r1, F5]
+  re-key) consumes only heights > λ of P(F″), where the collapsed
+  material never appears — consistent.
+* **The battery design (surface 4, code-level audit).** `leg_norm_psi`
+  asserts HE-NORM as v_p(Res(f,Φ″)) = f₁·dv(B₀) — the HE3-1a identity
+  in v-units, two independent computations (Bareiss resultant vs
+  development read); HE-PSI asserts the INEQUALITY dv(B₀) ≥ generic
+  plus (★) — exactly what §S8's text claims, no more (the equality
+  clause has indirect cover via HE-SIG + the census tie, and now direct
+  cover via FR-B); the (★) float tolerance is benign (integer-valued
+  sums, error ≪ 1e-9); the κ-range starts at S+1 = D′h+1 legitimately
+  (f₁ = 1 geography only, as §S1's scoping note states); HE-T-CAP keeps
+  the genuinely buggy reader as a tooth; HE-T-NODE is the disclosed
+  diagnostic. Sealed-vs-delivered matches HE3-BOX-4b's disclosure. No
+  family asserts a tautology beyond the P4 case already disclosed at
+  [r2, F-4].
+* **The rider (the post-PE3 dated correction, verified as charged).**
+  Both corrected lists recomputed: under d_λ ≤ 3, Q^{f₁} ∈ {2,3,4} ⟺
+  (Q,f₁) ∈ {(2,1),(3,1),(2,2),(4,1)} — the (4,1) cure is exact (F₄
+  bases are legal; PE3's FR3 ran one); under the in-context d_λ ≤ μ−1
+  (the low side consumes ≥ 1 of the μ-budget while the sample is
+  consumed — re-derived), Q^{f₁} ∈ {2,3} ⟺ {(2,1),(3,1)}, with (2,2)
+  unreachable and (4,1) excluded. Conservativity: the fence consumes
+  GENHN [r1] on the LISTED corner ⊇ the reachable corner. The
+  1/2-holds-through-minors-only reading matches the program's bar
+  (CLEAN = nothing GAP-or-worse) and PE3's precedent. Body byte-frozen:
+  the rider commit diff is additions-only at EOF.
+* **HE3-5's iff, necessity direction (PE3's suggested charge).**
+  Re-verified: a pin failing both (i) and (ii) forces e₁N ≤ line(j) ≤
+  m₁ = line(j₁), and convexity puts dv(A′_{j₁}) ≥ m₁ ≥ e₁N, so the
+  LEFT endpoint is already uncertifiable — genuinely undecided; the
+  boundary is strict (at e₁N = line(j), "≥ e₁N" cannot certify "> line").
+* **§S1 (ii) the Ψ-comparison** (re-walked while auditing the (SEP)
+  consumption): the hull-mean step, COUNT, R(κ) − κ·COUNT, the no-mid
+  positivity, the mid case's forced {low 1, mid 2} with c_mid = −c_low
+  = D′ ⟹ λ_low = λ_mid absurd, and κ = D′h+1 not a slope in the mid
+  case — sound; the ψ-cancellation entry-side argument for dv(Φ′(ρ)) >
+  D′h checks.
+* **Cross-round coherence (surface 5).** §S0′'s eight-row and §S0″'s
+  five-row tables match the PE1/PE2 reports' findings and dispositions;
+  the §S3 Remark [r2] witness block is arithmetic-exact (recomputed:
+  W = (0,1,1), ã = (1,η,η), disc 1+η ∉ (F₉^×)², the Z ↦ −Z
+  reconciliation with PE2's display); HE3-BOX-1's arc line matches the
+  actual arc; the [r2] coverage-note addendum correctly cites
+  he3_pe2fresh.py at 6d0ff09.
+
+## MACHINE LEG (pins, isolated re-runs, tautology audit)
+
+* **Pins at HEAD**: `he3r1_supp.py` md5 93681e8d47d447dcbfd46db0ddfe0c55
+  = the §S9′ [r2] pin; committed supp output md5
+  65ed06e49f4c54abf1b143513633f143 = the pin; `he3_checks.py` and both
+  battery artifacts last touched at 872327b (pre-r1), per git log —
+  byte-frozen through r1/r2/rider.
+* **Isolated re-runs** (`/tmp/he3pe4_iso`, runners copied with import
+  closure): battery — VERDICT GREEN, 0 violations, 17.0 s, stdout
+  BYTE-IDENTICAL to `he3_checks_output.txt`, results JSON md5
+  1b679cd23e337f3e45cfb72ade74fffe = the committed artifact
+  bit-identical; supp — exit 0, stdout BYTE-IDENTICAL; `he3_pe2fresh.py`
+  — exit 0, GREEN 0 violations, FR-A/B/C/D content matching PE2's
+  report (ma → {(2,4)}; HE3-1L sizes {2,2,8,8,8,8}; FR-D both
+  branches); `he3_pe3fresh.py` — exit 0, stdout BYTE-IDENTICAL, results
+  JSON content-identical. NOTE (observation, not a finding): the
+  battery's import closure spans ~20 sibling modules (w12 → w10 →
+  iterlawn/grt_jc/... chains) — a "runner copied alone" re-run fails on
+  ModuleNotFound; and `he3_pe2fresh.py` has NO committed output
+  artifact (PE2 committed the runner only), so its evidence rests on
+  PE2's report plus re-runs like this pass's.
+* **Tautology audit**: battery families audited at code level (above) —
+  decorrelation as PE1 found it, plus the two design softnesses (HE-PSI
+  inequality-only; P4 slot-extraction) both DISCLOSED in the note's own
+  text and both now covered by decorrelated legs (FR-B here; PE2 FR-C).
+  This pass's own instrument: measurements are python-exact Bareiss
+  resultants + hull/m-reads with predictions hand-derived and sealed
+  before the run; oracles are PARI factorpadic/idealprimedec (pinned
+  w12 convention), PARI nfmodpr residue arithmetic (no slot/W formula
+  in the loop), explicit constructions, and F₉[[t]]/F₂[[s]] Hensel
+  root reads; the one note-derived ingredient in a measurement loop is
+  the HE3-1L carrier construction, cross-checked by the nfmodpr leg.
+
+## FRESH ROUTE (`verification/openmath/he3_pe4fresh.py` @ 0c16b6a,
+## GREEN, exit 0, 0 violations, 4/4 teeth — disjoint from PE1 A/B/C,
+## PE2 FR-A/B/C/D, PE3 FR1/FR2/FR3, and the note's §S8/§S9′ rows)
+
+* **FR-A (μ = 2 dictionary at frames new to the whole arc).**
+  (4,1) @ ℤ₃ (first e₁ = 4 anywhere): RAM {(8,1)}, INERT {(4,2)},
+  SPLIT {(4,1)²} (a starved slope at (3,1): both letters roots, peel
+  m = (1,1)), 2SIDED {(4,1)²} — 4/4 PARI, node floors + HE3-1a exact
+  per member. (2,3) @ ℤ₂ (first f₁ = 3 wrap contact, first char-2
+  residue-seam contact): RAM {(4,3)}; INERT with coherent R̃ =
+  η(Z²+Z+1) irreducible → PARI {(2,6)} while the NAIVE read Z²+Z+η
+  SPLITS (tooth T-FLIP-1); SPLIT = (Φ′−4x³)(Φ′−2x⁵) with coherent
+  η(Z+η)(Z+η²) → PARI {(2,3)²} = construction while the NAIVE read is
+  IRREDUCIBLE (tooth T-FLIP-2 — the flip fires in BOTH directions at
+  this frame, PARI siding with DEFINITION 1 [r2] both times); peel
+  profiles over all 7 letters of F₈^× exact; W-DIRECT: all 12 coherent
+  and naive coefficients computed by nfmodpr (no slot formula, no W
+  formula) equal the hand values, η := image of θ²/2; tooth T-REACH:
+  the retired ŝ·n(κ) display reaches {1} ⊊ F₈^×, missing both SPLIT
+  roots. EQUAL CHAR: q = 3, (1,2) — the arc's FIRST equal-char f₁ ≥ 2
+  row: Φ′ = x²+t² over F₃[[t]], f = (x²−t²x+t²)(x²+t²x+t²), σ =
+  {(1,2)²} by construction, development A₁ = −t⁴/A₀ = t⁶ symbolic,
+  R = Z²+1 split at {η,−η}, and PER-ROOT label reads by Hensel in
+  F₉[[t]] at ALL FOUR roots: g₁'s two Frobenius branches BOTH carry
+  (3, Z−η), g₂'s BOTH carry (3, Z+η) — LEMMA HE3-6's equivariance
+  machine-run at f₁ = 2 for the first time. q = 2, (3,1): Φ′ = x³+t,
+  2SIDED {(3,1)²} by construction, slopes {4,5}, per-root dv = 4/5 via
+  F₂[[s]] Hensel.
+* **FR-B ((SEP) direct).** ℤ₅, (2,1), slopes {3,4,5} CONSECUTIVE
+  (sub-case (c) at |K^×| ≥ 2): Ψ(κ,s) measured by resultants at 16
+  samples on two members (exact product + junk variant f+5⁹):
+  equality Ψ = D′h_F at all 13 non-root samples INCLUDING the
+  never-machine-run at-slope generic-letter samples; strict excess at
+  the root samples (exact member: Key | f, Ψ = +∞, recorded; junk:
+  finite, 36 > 18/22/24); THE INVERSION solved on measured Ψ →
+  n = (2,2,2) = construction on both members; PARI {(2,1)³} on both
+  (the junk member is a dictionary-only prediction); tooth T-INV:
+  corrupted Ψ(4)+2 breaks the solve.
+* **FR-C (the starved (2,2) corner — the one listed §S1 (iii)/fence
+  geography never machine-run, PE3's suggested charge).** ℤ₂, (1,2),
+  Φ′ = x²+2x+4, K = F₄, μ = 3: single side λ = 3 = D′h+1 of length 3,
+  R = Z³+1 with root set ALL of F₄^× (genuinely starved — verified by
+  F₄ arithmetic), development pins (9,7,4) exact, peel m_s = 1 at each
+  of {1, ω, ω²} via HE3-1L carriers, σ = {(1,2)³} by PARI AND by
+  construction (three unramified quadratics; 5, −3, 5 mod 8
+  nonsquares). The corner the GENHN [r1] fence covers is machine-real
+  and the dictionary holds on it.
+
+## GRADE LINE
+
+**Pass verdict: CLEAN (2 MINOR, 0 GAP, 0 CRITICAL — the bar is
+GAP-or-worse). Counter: 1/2 → 2/2. HE3 IS ACCEPTED: text frozen, dated
+appends only.** With HE3 through the bar, the last of the nine closure
+notes below the bar is closed: THE CHAIN'S DEPENDENCY CLOSURE IS
+COMPLETE AT THE BAR. (Conditionality unchanged in kind: HE3-BOX-1's
+supplier-stack grades and the μ ≥ 4 HE3-BOX-6 box remain exactly as the
+note displays them.) Cure suggestions for the two MINORs (dated-append
+candidates, not executed here): M-A — one clause under the (SEP)
+sub-cases naming the all-integer ≤ 2-side configuration and pointing at
+(a)'s two-relation argument; M-B — a cross-reference in §S6.1 step (2)
+to §S1 (ii)'s at-slope residue-mismatch parenthetical.
