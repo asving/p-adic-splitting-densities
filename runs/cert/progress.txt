@@ -35,3 +35,5 @@
 [10:23:37] C7_w11 exit 0 (5044 B; OUTCOME: RATIFIED-WITH-ANNEX)
 [10:23:37] C8_hmenu3 start
 [10:32:22] C8_hmenu3 exit 0 (5002 B; OUTCOME: CHALLENGE)
+[10:32:22] C9_sigmalaw start
+[10:34:50] C9_sigmalaw exit 0 (4189 B; OUTCOME: RATIFIED-WITH-ANNEX)

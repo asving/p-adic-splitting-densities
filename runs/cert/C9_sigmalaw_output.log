@@ -1,0 +1,76 @@
+The central Σ-law survives, but the frozen note needs a scope-and-bookkeeping annex. I found one genuine statement-level gap and four minor defects.
+
+## Findings
+
+1. **GAP — THEOREM SL-1’s written quantifier exceeds the proved perimeter**
+
+> “**THEOREM SL-1.** For every on-line level-q object A at weight β, q ≥ 1:  
+> `(VD-q) P_q(A) = ε_q(β) · U_q(β) · Σ_q(H_q(A)).`”
+
+But the proof later states:
+
+> “**(EC-q) is DERIVABLE on the shared-below perimeter**”
+
+and requires “the shared-below premise’s byte-equal interior junctions” at every level. Thus `(VD-q)` is not proved for an arbitrary on-line object or arbitrary tower: it is proved only for `1 ≤ q ≤ m` inside the fixed level-`m+1` shared-below setting of §1.
+
+A counter-configuration is already mathematically specified in the pasted material: the doubly-twisted chamber with the `(2,1,2)` top makes `(EC-3)` require `4k ≡ 2 (mod 8)`, which has no solution; consequently `(SC-3)` and `Λ₃ = χ₃^{-w}` fail off-perimeter. Therefore the unrestricted reading of THEOREM SL-1 is false or at least unproved. The accepted headline result—SL-1 for objects at a shared-below junction—survives.
+
+2. **MINOR — ξ₁ is used but never defined**
+
+> “`ξ_q = ... (q ≥ 2)`”
+
+but later:
+
+> “`(SC-q) Σ_q(ε_q(w) · y) = ε_q(w)·ξ_q^{E(w)}·Σ_q(y)`”
+
+and:
+
+> “`(VD-1)/(SC-1) are trivial (Σ₁ = id)`”
+
+`SC-1` is not literally well-formed because `ξ₁` has no definition. The intended convention `ξ₁ := 1` is forced by `Σ₁ = id`, so this does not affect the induction.
+
+3. **MINOR — the formal support convention is contradicted in SEP-A**
+
+> “`supp = {j < g : ψ_{m,j} ≠ 0}`”
+
+versus:
+
+> “`ψ₁ = y⁴ + z₁^k (supp {0,4} ≡ 0 mod 4)`”
+
+Under the note’s definition, the monic leading term `j=g=4` is excluded, so the coefficient support is `{0}`, not `{0,4}`. The invisibility calculation remains valid because the relevant exponent at `j=0` is `g−j=4`.
+
+4. **MINOR — the proposed annex advertises contaminated family totals as its headline evidence**
+
+> “`SL-VDM 2,854 / SL-DELTA 1,427 / SL-GAP 688 samples`”
+
+The note itself later establishes that these totals include tooth-run leakage. The genuine battery totals are `2,828 / 1,414 / 680`, with `SL-PHIR = 1,414`. The adjacent `[r1]` caveat discloses this correctly, so no theorem or zero-violation result is lost, but the proposed annex is not self-sufficient without that caveat.
+
+5. **MINOR — SL-C1 contains a non-formal, dangling derivation**
+
+> “`δ_j = ρ_j·Σ_m(x/y) = ρ_j·Σ_m(ρ_j^{−1}·...)`”
+
+The ellipsis has no defined mathematical continuation. The subsequent restarted calculation is valid:
+
+`δ = (y/x)Σ(x)/Σ(y) = ρ/Σ(ρ)`
+
+using `y=ρx` and the established automorphism property. This is a presentation defect, not a failure of SL-C1.
+
+## Survivors
+
+CHECKED CLEAN — SL-L1’s attained-start calculation cancels `ν₀` internally and introduces no cross-builder gap-ledger assumption.
+
+CHECKED CLEAN — Under the explicit shared-below scope, the dependency order `EC-q → SC-q → SL-L2@q → VD-q` is well-founded and does not use the level-`q` conclusion to obtain `EC-q`.
+
+CHECKED CLEAN — The eigen-coefficient condition is exactly the relation-descent condition making the recursive coordinate map `Σ_q` a ring automorphism.
+
+CHECKED CLEAN — The algebra reducing the evaluator ratio to `λ_j = ξ_q^{g_{q−1}-j}` has the correct exponents and sign.
+
+CHECKED CLEAN — Given scoped SL-1, SL-C1 correctly yields `δ_j = ρ_j/Σ_m(ρ_j)`; arbitrary-unit multiplicativity is supplied by the automorphism result.
+
+CHECKED CLEAN — SL-C2’s strict implication is valid: `δ=ρ` and SL-C1 give `Σ_m(ρ)=1`, and injectivity with `Σ_m(1)=1` gives `ρ=1`.
+
+CHECKED CLEAN — The distinction between the ξ-composite and the bare interior twist, including the inverse at level two and the χ-chain correction at higher levels, is algebraically consistent.
+
+CHECKED CLEAN — The corrected leak-free recount `2,828/1,414/1,414/680`, 340 gap slots, SEP2 `96`, SEP3 `27`, and INVREC `218` is internally arithmetically consistent.
+
+OUTCOME: RATIFIED-WITH-ANNEX
