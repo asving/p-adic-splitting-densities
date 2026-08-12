@@ -1,0 +1,23 @@
+I could not land or verify T2 because the workspace sandbox cannot start:
+
+```text
+bubblewrap is unavailable: no system bwrap was found on PATH
+```
+
+`apply_patch` also failed for both the workspace and `/tmp`, so no file was changed. The intended target is:
+
+`lean/notes/openmath/T2_SIGMA_LADDER_MASTER_2026-08-12.md`
+
+The completed draft follows the required structure:
+
+- Original-\(O\) carrier; no complete-DVR stage quotient.
+- Monic key with no irreducibility hypothesis.
+- A single general statement of THEOREM HE7.A, proved by the original-\(O\) slot argument.
+- Five literal records: HE3.A, HE6, HE7+HE6R1, HETOW, GENTOW4.
+- Explicit `Full`/`OCC`, cocycle, window, cap, origin, test-family, refinement, and termination obligations.
+- HE6’s \(\gamma_k(A)\eta^{-q(k)}\) seam and HE7’s genuine \(\beta^c\) twist.
+- Blockwise treatment of mixed residuals.
+- Honesty ledger, ten changes from blueprint, five-hazard closure, and the two-clean arc plan.
+- Attempt grade \(0/2\), with the first gate requiring the HE7 instance to generate no `keyIrreducible` obligation.
+
+Please rerun this unit after the sandbox’s `bubblewrap` installation is restored; the composition still needs repository inspection, immutable source-span pins, and file-level verification before it can honestly be delivered.
