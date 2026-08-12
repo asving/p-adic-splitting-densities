@@ -1,0 +1,66 @@
+1. **JUSTIFICATION GAP — the CS-drain estimate loses the residue-degree factor \(d\).**
+
+Quoted target from R1.1:
+
+> “\(u_{\mu,d}(M)/Q^{\mu(M-1)} \le K M^B Q^{-(M-c)}\),”  
+> with \(Q=q^d\).
+
+But ANNEX-LEMMA GENIND-C2 concludes only:
+
+> “CS-drain part … \(\le K_c N^{B_c} q^{-(N-c_c)}\).”
+
+For \(d>1\), this is strictly weaker than the required
+\[
+Q^{-(N-c)}=q^{-d(N-c)}.
+\]
+No \(N\)-independent constant converts \(q^{-N}\) into \(q^{-dN}\). The preceding calculation retains \(d\),
+\[
+|K|^{-M^\star}\le q^{-e d\deg(\psi)(N-1-H)+O(1)},
+\]
+but the final height summation drops it without deriving the needed \(q^{-dN}\) bound. Thus C2, as displayed, does not supply the full \((A2\text{-RATE})\) member subsequently consumed by C1.
+
+Concrete failure scenario: take \(d=2\), \(Q=q^2\), and a hypothetical CS-child drain fraction \(q^{-3M/2}\). It satisfies C2’s stated \(O(q^{-M})\) conclusion but violates every \(O(\mathrm{poly}(M)Q^{-M})=O(\mathrm{poly}(M)q^{-2M})\) bound. In C1’s growing-window regime, multiplying by the route factor \(Q^{-D}=q^{-2D}\) then gives \(q^{-2N+M/2}\), not the claimed \(Q^{-N}\)-scale decay. The stronger conclusion may follow after retaining \(d\) throughout, but the written argument does not establish it.
+
+This route is disjoint from the prior reports’ \(d=1\) GENH4 window/slope analysis.
+
+2. **MINOR — riding MINOR-A remains present.**
+
+Quoted preregistration:
+
+> “P1 … at 10 scored fresh rows”
+
+The committed record says:
+
+> “P1 GREEN 11/0 — … all 11 scored fresh rows”
+
+Concrete failure scenario: an auditor reasonably infers that the roster changed after sealing, although the disclosed script history says it did not.
+
+3. **MINOR — riding MINOR-B remains present.**
+
+Quoted census:
+
+> “Of the five committed displays this section consults…”
+
+The same section also consumes the M6 and PSTEEP3/PSTEEP4 locus data and the committed extraction identities.
+
+Concrete failure scenario: a later supplier re-pin follows this census and fails to re-check a changed M6 locus law used in C1(i).
+
+4. **MINOR — riding MINOR-C remains present.**
+
+Quoted inference:
+
+> “The entry mass \(\rho\) decays geometrically in \(H\) … so the height sum converges.”
+
+The stage-drain factor grows with \(H\), so geometric decay of \(\rho\) alone is insufficient. The needed comparison
+\[
+(L+1)/2\ge e\deg\psi+1/2
+\]
+is supplied only in the prior report, not in the annex lemma.
+
+Concrete failure scenario: if entry decay were \(r^H\) while the stage factor grew as \(r^{-H}\), every summand would remain constant and the height sum would grow linearly. The actual inventory reportedly has a positive margin, so this is a display omission rather than a mathematical counterexample.
+
+VERDICT: NOT CLEAN (0 CRITICAL, 1 JUSTIFICATION GAP, 3 MINOR)
+
+GRADE: Annex counter remains 1/2; the full-density tie’s conditional does not close on this pass.
+
+SCOPE: the ANNEX STACK ONLY (R1-R6 + close + the GENHN supplier append + ANNEX-LEMMA GENIND-C2)
