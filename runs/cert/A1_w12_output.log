@@ -1,0 +1,198 @@
+Adjudication against HEAD, including all dated appends:
+
+### 1. Full order-1 claim versus refinement histories
+
+**OBSTRUCTED — real defect, but no honest all-degree repair follows from the note’s lemmas.**
+
+The challenge is correct. W-12.A assumes that the displayed branch polygons have “all residuals separable,” so its formula counts a terminal, unrefined order-1 cell. But S2.6 explicitly says:
+
+> “Each history-resolved key is its own decided shape … the refinement tower never leaves key degree 1.”
+
+For \(H=(1)\), followed by `SPLITEQ(k=2)`, W12-L0 gives
+
+\[
+(q-1)\frac{(q-1)(q-2)}2q^{2N-8}.
+\]
+
+The initial \(q-1\) is the census of the earlier repeated residual root. It is absent from W-12.A’s single-polygon product.
+
+None of the later appends repairs the all-degree claim:
+
+- W12-L0 proves the transition law only for \(n=2\).
+- W12-L1 merely transports that quadratic system into the cubic DBL stratum.
+- ANNEX 2 imports HMENU3’s two node-transfer laws only for \(n=3\).
+- S2.2 proves the digit count for one fixed \(\Phi\)-adic polygon, not the simultaneous count through successive key changes.
+- S2.2’s own convention note leaves deep lift/member-set compatibility at the W-2/LIFTCORNER seam.
+
+A compliant repair cannot narrow the accepted theorem to depth zero. It requires a genuinely new all-degree history-transfer lemma, including its explicit fiber exponent. That lemma is not derivable from the displayed arguments at HEAD.
+
+Verbatim-ready obstruction record:
+
+> ### Dated obstruction (2026-08-12): W-12.A and order-1 refinement histories
+>
+> W-12.A’s displayed count presently proves the depth-zero order-1 cell law, but does not prove its stated coverage of the full order-1 layer. An order-1 refinement history may contain earlier repeated residuals even though its terminal residual is separable. For example, at \(n=2\), \(q\ge3\), \(N\ge5\), history \(H=(1)\) followed by `SPLITEQ(k=2)`, LEMMA W12-L0 gives the per-center count
+>
+> \[
+> (q-1)\frac{(q-1)(q-2)}2q^{2N-8}.
+> \]
+>
+> The terminal separable node contributes only
+>
+> \[
+> \frac{(q-1)(q-2)}2q^{2N-8};
+> \]
+>
+> the first \(q-1\) is the census of the earlier repeated-residual letter. W-12.A’s displayed single-polygon product contains no factor for that earlier node.
+>
+> Repair at the theorem’s accepted strength requires the following genuinely new input: an **all-degree order-1 history-transfer lemma** proving that, after every repeated linear residual root on an \(e=1\) side, the refinement locus for each residual letter is carried to the next degree-\(d\) node by an explicit uniform finite-window fiber bijection; the lemma must give the fiber’s exact \(q\)-exponent, prove compatibility under concatenation and branch splitting, and show that the product of the intermediate residual censuses and fiber factors terminates in the stated Ore certificate. W12-L0 supplies this only for \(n=2\), W12-L1 only transports that case, and ANNEX 2 supplies the two cubic node species only at \(n=3\). No such all-degree lemma is proved at HEAD.
+>
+> Consequently the displayed formula and the claims “the order-1 layer at all degrees” and “every W-11 row is an instance” cannot all be certified from the present proof. Narrowing W-12.A to depth-zero shapes would weaken an accepted theorem statement and is therefore not an admissible repair. The all-degree history-transfer lemma above must be proved before this obstruction can be closed.
+
+### 2. Missing orbit factor for indistinguishable branches
+
+**REAL — repair delivered.**
+
+The challenge is correct. S2.1 makes \(C_0(q)\) the census of undecorated level-0 factorizations. For branches with the same \((d,m)\), that census treats the irreducibles as an unordered set. Assigning distinct branch decorations introduces an orbit factor not present in W-12.A.
+
+Verbatim-ready correction:
+
+> ### Dated correction (2026-08-12): the level-0 decoration-orbit factor in W-12.A
+>
+> In W-12.A’s displayed count, the level-0 prefactor \(C_0(q)\) is corrected to
+>
+> \[
+> \kappa(T)\,C_0(q).
+> \]
+>
+> For every pair \((d,m)\), let \(r_{d,m}\) be the number of level-0 branches of degree \(d\) and multiplicity \(m\). Let \(D\) range over the complete letter-free branch decorations occurring on those branches — polygon, residual factorization data, and, wherever supplied, the complete refinement history — and let \(r_{d,m,D}\) be the multiplicity of decoration \(D\). Define
+>
+> \[
+> \kappa(T):=
+> \prod_{d,m}
+> \frac{r_{d,m}!}{\prod_D r_{d,m,D}!}.
+> \]
+>
+> Thus the corrected depth-zero display is
+>
+> \[
+> \#T(N)=
+> \kappa(T)C_0(q)\!
+> \prod_{i:m_i=1}q^{d_i(N-1)}
+> \prod_{i:m_i\ge2}
+> \left[
+> \left(\prod_S S_{\lambda_{i,S}}(q^{d_i})\right)
+> q^{d_iB_i(N)}
+> \right].
+> \]
+>
+> **Derivation.** Fix an undecorated level-0 configuration counted by \(C_0(q)\). Within a class of \(r_{d,m}\) distinct irreducible branches having the same degree and multiplicity, the branch polynomials are distinguishable after the configuration is fixed, while the shape records only the multiset of letter-free decorations. The number of assignments of that multiset to the \(r_{d,m}\) actual branches is
+>
+> \[
+> \frac{r_{d,m}!}{\prod_D r_{d,m,D}!}.
+> \]
+>
+> By LEMMA W12-S2.1, the branch fibers multiply; permuting the decorations therefore leaves the product of the branch counts unchanged. Multiplying over the \((d,m)\)-classes gives \(\kappa(T)\). No factor is introduced when all decorations in a class agree, because then \(\kappa=1\).
+>
+> For the diagnostic shape
+>
+> \[
+> \bar f=(x-a)^2(x-b)^2,\qquad a\ne b,
+> \]
+>
+> decorated by `RAM(1)` and `RAM(3)`, one has
+>
+> \[
+> C_0(q)=\binom q2,\qquad
+> A_1=(q-1)q^{2N-3},\qquad
+> A_3=(q-1)q^{2N-6},
+> \]
+>
+> and \(\kappa(T)=2\). Hence the corrected law gives
+>
+> \[
+> 2\binom q2A_1A_3=q(q-1)A_1A_3,
+> \]
+>
+> exactly the two possible assignments of the distinct decorations to \(\{a,b\}\). If both decorations agree, \(\kappa(T)=2!/2!=1\), so no double-counting occurs.
+>
+> This orbit correction is independent of the separate order-1 history-transfer obstruction.
+
+### 3. Missing rational-function hypothesis on \(c_F\)
+
+**REAL — repair delivered.**
+
+The challenge is correct. Step 1 begins by multiplying \(c_F(q)\) by geometric-series factors and concludes the result is in \(\mathbb Q(q)\), but (A1) never states that \(c_F\) is rational. The phrase “all data … independent of \(q\)” also conflicts literally with the \(n=2\) coefficients.
+
+Verbatim-ready correction:
+
+> ### Dated correction (2026-08-12): rationality and uniformity of the core coefficient
+>
+> In W-12.D hypothesis (A1), replace
+>
+> > “a density law \(\operatorname{dens}_F(x)=c_F(q)q^{-\ell_F(x)}\) … with all data (families, \(c_F\), \(\ell_F\), \(P_F\), \(\nu_F\)) independent of \(q\) and of the characteristic”
+>
+> by
+>
+> > “a density law
+> > \[
+> > \operatorname{dens}_F(x)=c_F(q)q^{-\ell_F(x)},
+> > \]
+> > where a single rational function \(c_F(X)\in\mathbb Q(X)\) is fixed for the family and \(c_F(q)\) denotes its evaluation at \(X=q\); the family list, \(\ell_F\), \(P_F\), \(\nu_F\), and the rational expression \(c_F(X)\) are independent of the characteristic and of the chosen prime power \(q\).”
+>
+> **Derivation of Step 1 under the corrected hypothesis.** On a shifted product
+>
+> \[
+> P_F=\prod_i(a_i+b_i\mathbb Z_{\ge0}),
+> \]
+>
+> first absorb every point coordinate \(b_i=0\), as already prescribed in Step 1. For every remaining coordinate, integer-valuedness of \(\ell_F\) on \(P_F\) gives
+>
+> \[
+> m_ib_i=\ell_F(x+b_ie_i)-\ell_F(x)\in\mathbb Z_{>0},
+> \]
+>
+> while
+>
+> \[
+> \ell_F(a)=m_0+\sum_i m_ia_i\in\mathbb Z.
+> \]
+>
+> Therefore
+>
+> \[
+> \sum_{x\in P_F}\operatorname{dens}_F(x)
+> =
+> c_F(q)q^{-\ell_F(a)}
+> \prod_i(1-q^{-m_ib_i})^{-1},
+> \]
+>
+> which is the evaluation at \(X=q\) of
+>
+> \[
+> c_F(X)X^{-\ell_F(a)}
+> \prod_i(1-X^{-m_ib_i})^{-1}\in\mathbb Q(X).
+> \]
+>
+> Finite unions follow by inclusion–exclusion, and the finite sum over families remains in \(\mathbb Q(X)\). This proves both rationality and the “same expression at every prime power” conclusion. The \(n=2\) coefficients such as \(q-1\) and \((q-1)/(2q)\) now satisfy (A1) as evaluations of fixed rational functions, rather than as constants independent of \(q\).
+
+### 4. BOX-1 omits `(H-e)`
+
+**REAL — repair delivered.**
+
+The localized reference is wrong. S4.2 explicitly says there are five inputs and separately identifies `(H-e)` as the higher-order leaf/σ-decision input. No dated append corrects the `(H-a)–(H-d)` text in W12-BOX-1.
+
+Verbatim-ready correction:
+
+> ### Dated correction (2026-08-12): W12-BOX-1 dependency range
+>
+> In W12-BOX-1, the reference
+>
+> > “the route is priced in S4.2 ((H-a)–(H-d))”
+>
+> is corrected to
+>
+> > “the route is priced in S4.2 ((H-a)–(H-e)).”
+>
+> S4.2 explicitly enumerates five inputs. In particular, `(H-e)` is the order-\(\ge2\) GMN leaf/σ-decision theorem together with the in-window pinning supplied by `(H-a)` and `(H-b)`; it is separately load-bearing for the composite-stage analogue of S2.3 and for W-12.D’s σ-labeling requirement. The correction changes no mathematical conclusion; it restores the box’s dependency record to the five-input list already displayed in S4.2.
+
+SUMMARY: 3 REAL (repairs delivered) / 0 RESOLVED-ALREADY / 0 ARTIFACT / 1 OBSTRUCTED
