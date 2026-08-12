@@ -1,0 +1,16 @@
+1. **DISCHARGED.** The factor
+\[
+\kappa(T)=\prod_{d,m}\frac{r_{d,m}!}{\prod_D r_{d,m,D}!}
+\]
+is exactly the multinomial number of assignments of the decoration multiset to the distinct irreducible branches within each common \((d,m)\)-class. S2.1 makes the branch fibers multiplicative, so each assignment has the same product count. The `RAM(1)`/`RAM(3)` diagnostic correctly yields the missing factor \(2\), while identical decorations yield \(\kappa=1\).
+
+2. **DISCHARGED.** Requiring a fixed \(c_F(X)\in\mathbb Q(X)\) supplies precisely the missing rationality and uniformity hypothesis. After removing point coordinates, integer-valuedness gives \(m_i b_i\in\mathbb Z_{>0}\) and \(\ell_F(a)\in\mathbb Z\), so every family sum is the evaluation of
+\[
+c_F(X)X^{-\ell_F(a)}
+\prod_i(1-X^{-m_i b_i})^{-1}\in\mathbb Q(X).
+\]
+Inclusion–exclusion and the finite family sum preserve rationality. The formerly conflicting \(q\)-dependent coefficients are now correctly evaluations of fixed rational functions.
+
+3. **DISCHARGED.** Changing `(H-a)–(H-d)` to `(H-a)–(H-e)` makes W12-BOX-1 accurately reference all five inputs enumerated in S4.2. In particular, `(H-e)` supplies the separately required higher-order leaf/σ-decision and window-pinning input. No mathematical claim is otherwise altered.
+
+OUTCOMES: DISCHARGED, DISCHARGED, DISCHARGED
