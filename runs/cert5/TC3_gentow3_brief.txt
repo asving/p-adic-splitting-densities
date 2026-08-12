@@ -1,0 +1,84 @@
+DISCHARGE CONFIRMATION (gpt-5.6-sol high). Your E13 run delivered the S8.4 fallback scope correction, activated by the orchestrator on non-implementability grounds (two instrument runs found no committed call surface for the full verdict tuple — activation note in the append). Confirm the folded S8.4 discharges the D1b INSUFFICIENT finding at the corrected scope: DISCHARGED / INSUFFICIENT / NEW-ISSUE. End with: OUTCOMES: <one word>
+
+=== GENTOW3 AT HEAD (the 2026-08-12 appends) ===
+**Activation note (orchestrator, 2026-08-12).** The E13 search spec
+was implemented twice against the committed readers (tracing, then
+direct call-surface extraction: gentow3_shadow_search.py / _v2.py;
+outputs runs/cert2/E13_search_output.txt +
+runs/cert4/X1_search_output.txt). Both runs returned INCOMPLETE with
+the same diagnosis: NO committed call surface computes the
+verdict-level tuple (pins, deciding residues, σ, labels) or the
+canonical high-shadow slot map — the stronger claim's own terms are
+not committed objects, so the full-output-matched search is not
+implementable against committed semantics (a stronger ground for
+scope reduction than an EMPTY sweep). Under the owner's 2026-08-12
+delegated authority (end-to-end-proof criterion: S8.2 is a side
+observation, not load-bearing for the uniformity theorem), the
+fallback below is activated with "returns EMPTY" read as "is not
+supported by the committed evidence". The correction text is sol's
+E13 delivery, transcribed unaltered:
+
+## S8.4 [GT3-r5] RESIDUAL D1b SCOPE CORRECTION
+## (2026-08-12 — dated append; activated only after the committed
+## full-output collision search returns EMPTY on its complete roster)
+
+The residual search compared members only within an identical
+committed reader frame and required equality of the ENTIRE
+verdict-level honest output: pins, deciding residues, sigma, and
+labels. It found no pair on the committed roster having that full
+honest-output tuple identical and shadow content different at
+heights >= THETA_j. An EMPTY finite-roster search does not prove
+that no such pair exists on the full tower locus; it shows that
+the committed evidence does not establish the stronger
+full-verdict-output scope.
+
+**S8.2 supersession.** The S8.2 corrected sentence beginning
+"The shadow read's content at heights >= THETA_j is not a
+function of the honest read's OUTPUT" is WITHDRAWN. Its reference
+to the full verdict-level tuple "(pins, deciding residues, sigma,
+labels)" is likewise WITHDRAWN.
+
+**Final corrected claim.** The shadow read's content at heights
+>= THETA_j is not a function of the honest read's sigma.
+
+**Proof from the committed instances.** PE1-0 and PE1-1 have the
+same honest sigma, namely {(8,1)}, while their shadow reads differ:
+PE1-0 has shadow pins (21,14) and label tRAM, whereas PE1-1 has
+shadow pins (28,14) and label tINERT. In particular their shadow
+content differs at coordinate 0 at heights >= THETA_0 = 21.
+Hence equal honest sigma can have different shadow content, so no
+function of honest sigma alone determines that content. The same
+fixed-honest-sigma variation is also visible across the full PE1
+triple. No non-functionality claim for the larger tuple of honest
+pins, deciding residues, sigma, and labels is retained.
+
+This correction changes only S8.2's non-functionality scope.
+S8.1's repaired margin proof, THEOREM GENTOW-3(i)-(iii), the
+certificate-scoped persistence statement, and the accepted
+machine records are untouched.
+
+*(Fallback derived by the E13 run (gpt-5.6-sol high,
+runs/cert2/E13_gentow3_output.log); the PE1-0/PE1-1 witness pair
+re-checked against the committed records (same honest σ = {(8,1)},
+shadow pins (21,14)/tRAM vs (28,14)/tINERT). Ledger: row 9 → folded,
+awaiting discharge-confirm (cert5).)*
+
+=== YOUR D1b OUTPUT ===
+1. **DISCHARGED.** The repaired filtration argument is mathematically valid. For in-budget \(g\), the \(+1\) margin survives composition and the linear division ledger:
+\[
+\mathrm{wt}(\widehat G_j(g))\ge(\mu_2-j)E_2+1.
+\]
+Every discrepancy branch then adds at least \(\delta\), including recarry branches, so
+\[
+\operatorname{supp}(\operatorname{Sh}(g)-C(g))_j
+ \subseteq [\Theta_j+1,\infty).
+\]
+Consequently its height-\(\Theta_j\) digit is zero and cannot cancel the key-power certificate digit. The FR-M3 perturbation is correctly excluded: its total slot weights are \(9<10=\mu_2E_2+1\).
+
+2. **INSUFFICIENT.** The claim is now scoped, but the cited evidence does not prove the stated scope. To show that shadow content is not a function of the full verdict-level honest output
+\[
+(\text{pins},\text{deciding residues},\sigma,\text{labels}),
+\]
+one needs two members with that entire tuple identical and different shadow content. S8.2 cites only variation at fixed honest \(\sigma\); it does not establish equality of pins and deciding residues. The S8.1 pair proves the reverse non-functionality—different honest reads can share shadow output—which does not imply that shadow content is not determined by honest output. The claim would be discharged if reduced to “not a function of honest \(\sigma\),” or if a full-output-matched witness pair were supplied.
+
+OUTCOMES: DISCHARGED, INSUFFICIENT
