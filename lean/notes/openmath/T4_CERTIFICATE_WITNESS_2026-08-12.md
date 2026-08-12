@@ -2219,3 +2219,26 @@ must cite those two legs. Pass of record: the Fable-arm hostile pass
 returned 0C + 0G + 1m with the 𝔐 mechanism, the 6.3(a)+(b)
 full-exposure discharge, all 25 pins, and the boundary cases verified
 sound — clean pass 1 of 2.
+
+
+---
+
+## ACCEPTANCE RECORD (2026-08-12): T4 ACCEPTED 2/2 (model-diverse pair)
+
+Arc: composed (comp4 T4C2) → r1–r3 (sol-arm passes with repairs;
+pins blocked by the sandboxed executor until the pasted-source
+protocol) → r4 (Fable arm: the reversed GT6 BOX-4 pin re-anchored,
+17-marker validation record) → r5 (Fable arm: the member class 𝔐
+defined on the sources' weak coefficient slice — no disc hypothesis;
+the stale CERT-TOP sentence withdrawn; 𝒜_j defined; GT6 6.3(a)+(b)
+certified as discharging r3's full-exposure premise at f₁ = 1,
+μ₂ = 2 only) → PASS 1: Fable-arm hostile, 0C + 0G + 1m (the
+𝔐-gloss direction rider, folded per the minors-only precedent) →
+PASS 2: sol confirmation (gpt-5.6-sol high,
+runs/comp12/T4P7_output.log), VERDICT CLEAN (0C + 0G + 0m —
+"clean mathematical confirmation"). Two consecutive clean
+fresh-context passes on model-diverse arms: **THE CERTIFICATE
+WITNESS NOTE IS ACCEPTED at 2/2.** Consumption checks + the
+absorbed notes' dated appends ride the next queue. Standing fences
+unchanged and displayed: f₁ ≥ 2 (BOX-4 residue), μ₂ ≥ 3 (candidate
+only), the disc ≠ 0 quarantine at the σ-read legs.
