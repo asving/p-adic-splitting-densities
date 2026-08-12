@@ -1,0 +1,19 @@
+1. **Nonemptiness binder — NO FINDING.** The [r1] derivation closes the former gap: the recipe supplies a positive-degree \(\Phi_{i+1}\); a root exists; unconditional, w-blind clause (b) places that root in \(P_{i+1}\). Thus “with \(P_{i+1}\) nonempty” is derivable for every \(3\le i<r\), not an extra consumer restriction. No circular use of [GENTOW5-W(i)] occurs.
+
+2. **Constant-coefficient interface — NO FINDING.** The proof only needs the \(y^0\)-coefficient. Peel makes \(R_{i+1,\beta_t}(G)=w_i^d\) scalar; every \(j\ge1\) summand is zero or has positive \(y\)-degree; and the \(j=0\) summand is \(u_i(\beta_t)\theta_i(t)^{-1}\). Possible cancellation among positive-degree terms cannot affect the comparison
+   \[
+   w_i^d=u_i(\beta_t)\theta_i(t)^{-1}.
+   \]
+
+3. **Single-unit and root-choice scope — NO FINDING.** The quoted definition
+   \(w_i=u_i(\bar\kappa_i)=R_{i+1,\bar\kappa_i}(\widehat n_i(u_{i+1}))\)
+   is independent of \(t\). The accepted fixedness statements make both \(u_i(\beta)\) and \(\theta_i(t)\) independent of the auxiliary \(\Phi_i\)-root used for evaluation. Exact grade makes every relevant residue nonzero, so all inverses and twists lie in \(K_i^\times\).
+
+4. **Consumer fitness — NO FINDING.** GENTOW5 S11.2 and WFRAME OPEN-1 request exactly the proved \(i\ge3\) formula with the same intrinsic \(w_i\). Substitution into the established coefficient calculation cancels
+   \(\theta_i(t)\vartheta_{i,f_{i+1}-t}=1\), yielding the required coefficients \(c_t w_i^{f_{i+1}-t}\). Neither consumer demands the \(i=1\) tie, a closed-form \(w\)-law, or the avatar identification. T1 item-9 is expressly out of cone and therefore is not an omitted theorem consumer.
+
+5. **Free hunt — NO FINDING.** The \(f_{i+1}=1\) edge reduces to the disclosed top-slot tautology, and the proof does not silently promote the machine coverage or the avatar record to theorem-strength premises.
+
+No CRITICAL ERROR, JUSTIFICATION GAP, or MINOR survives this disjoint pass.
+
+VERDICT + GRADE: CERTIFIED 2/2
