@@ -1123,3 +1123,151 @@ with:
 This also repairs the minor false-equivalence claim: the new text states only the valid one-way implication and explicitly rejects its converse.
 
 No files were changed. C1 remains an infrastructure blocker; the other five findings are repaired textually.
+
+
+---
+
+## r3 (2026-08-12): arc repairs
+
+*(gpt-5.6-sol high, runs/comp10/T4R3_output.log; transcribed unaltered; counter resets.)*
+
+## r3 (2026-08-12): assembled-slot cancellation repair
+
+### R3-G1 — strengthen exposure to exclude every assembled-slot input
+
+Insert in S0 immediately after the definition of \(\operatorname{gr}_m\):
+
+```markdown
+A canonical slot is **fully exposed by a contribution \(\xi\)**
+if, after every branch term and every incoming carry and recarry
+has been propagated to the canonical grid, the complete list of
+summands landing in that slot consists of \(\xi\) alone.
+
+Full exposure therefore quantifies over contributions of every
+provenance. Uniqueness merely among single-extraction
+contributions does not imply full exposure.
+```
+
+In DEFINITION T4.1, replace the paragraph beginning
+“Equivalently, \(\omega_j\) is” with:
+
+```markdown
+> Equivalently, \(\omega_j\) is the fully assembled
+> height-\(\Theta_j\) \(K_2\)-digit of the key power. Its assembly
+> includes every input landing in the canonical composed grid,
+> including all single-\(\Phi'\)-extraction routes, all other
+> branch terms, and every incoming carry and recarry. Every
+> collision and cancellation is completed before the digit is
+> taken.
+```
+
+Replace T4.2(c) in full with:
+
+```markdown
+> **(c) Fully exposed assembled-slot criterion.** Suppose a
+> canonical slot of coordinate \(j\) at height \(\Theta_j\) is
+> fully exposed by a single-extraction contribution whose
+> normalized digit is nonzero. Then that slot is a nonzero
+> component of \(\omega_j\). Consequently
+>
+> \[
+> \omega_j\ne0,
+> \]
+>
+> so \(j\) is touched and the floor is attained there.
+>
+> Uniqueness only among single-extraction contributions does not
+> discharge this premise: the exposure calculation must also
+> exclude every other term and every incoming carry or recarry
+> from the slot.
+```
+
+Replace T4.2(c)’s proof paragraph with:
+
+```markdown
+For (c), full exposure says that, after complete propagation and
+assembly, the selected slot has exactly the displayed
+single-extraction contribution as its assembled value. No other
+branch term, carry, or recarry supplies a summand that could alter
+or cancel it. Its normalized digit is nonzero, so the selected
+slot is a nonzero component of the height-\(\Theta_j\) assembled
+graded digit. Distinct canonical slots are separate components;
+hence \(\omega_j\ne0\).
+```
+
+In S4.1, replace the paragraph beginning “Maximality of \(t^*\)”
+and ending with the displayed formula for \(\Theta_{j^*}\) with:
+
+```markdown
+Maximality of \(t^*\) excludes competing branches of the displayed
+pair type. To invoke T4.2(c), the CERT-TOP slot-isolation
+calculation must establish the stronger assembled-slot fact that,
+after every branch term and every incoming carry and recarry has
+been propagated, the displayed contribution is the sole summand
+in its canonical height-\(\Theta_{j^*}\) slot.
+
+When that source-owned calculation establishes this full
+exposure, the nonzero displayed digit gives
+
+\[
+\omega_{j^*}\ne0
+\]
+
+by T4.2(c). Hence \(j^*\) is touched and the discrepancy first
+occurs at
+
+\[
+\Theta_{j^*}=(2-j^*)E_2+\delta.
+\]
+
+If the pinned source span establishes uniqueness only among
+single-extraction branches, the premise of T4.2(c) is not
+discharged and `GT6-CERT-TOP` remains unresolved; neither FLOOR
+nor maximality alone supplies the missing exclusion.
+```
+
+In S4.2, replace:
+
+```markdown
+It is nonzero and uniquely exposed. Thus T4.2(c) again gives
+\(\omega_{j^*}\ne0\). At \(f_1=1\), \(I_t=i_t\) and this
+specializes to S4.1.
+```
+
+with:
+
+```markdown
+It is nonzero. The annex may invoke T4.2(c) only when its
+slot-isolation calculation proves that this contribution is fully
+exposed in the assembled-slot sense of S0: no other branch term
+and no incoming carry or recarry lands in the same canonical
+height-\(\Theta_{j^*}\) slot. Under that premise,
+
+\[
+\omega_{j^*}\ne0.
+\]
+
+Uniqueness only among top-monomial or single-extraction candidates
+does not suffice. If the pinned annex proves only that weaker
+uniqueness, this invocation remains unresolved. At \(f_1=1\),
+\(I_t=i_t\) and the fully exposed case specializes to S4.1.
+```
+
+In S8, replace PE1 item 5 with:
+
+```markdown
+5. that CERT-TOP is invoked through T4.2(c) only after the source
+   calculation excludes every other assembled-slot input,
+   including other terms and incoming carries and recarries;
+```
+
+In the GT6 consumption check, replace the first sentence with:
+
+```markdown
+- **GT6 consumption:** recover CERT-TOP solely through T4.2(c)
+  after retaining GENTOW-6’s complete assembled-slot exposure
+  calculation. Uniqueness only among single-extraction branches
+  does not count as consumption of T4.2(c).
+```
+
+This closes the invalid inference from “one single-extraction contribution” to “nothing can cancel it” without attributing the stronger exposure fact to either pinned source before validation.
