@@ -7,3 +7,4 @@
 [20:33:14] T4R1 exit 0 (6384 B; SUMMARY: 4 REAL (repairs delivered))
 [20:33:14] T5R1 start
 [20:35:58] T5R1 exit 0 (6076 B; SUMMARY: 1 REAL (repairs delivered))
+[20:35:58] comp6 queue done
