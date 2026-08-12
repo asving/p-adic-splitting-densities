@@ -27,3 +27,5 @@
 [10:06:43] C3_grtjb exit 0 (3930 B; OUTCOME: CHALLENGE)
 [10:06:43] C4_grtjc start
 [10:13:21] C4_grtjc exit 0 (5948 B; OUTCOME: CHALLENGE)
+[10:13:21] C5_grtw2 start
+[10:16:01] C5_grtw2 exit 0 (5096 B; OUTCOME: CHALLENGE)

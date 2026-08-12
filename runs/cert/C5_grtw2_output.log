@@ -1,0 +1,72 @@
+1. **CRITICAL — the final annex falsely closes the central above-\(r_0\) box.**
+
+> “The converse's UNPROVED status and W2-OPEN-2's above-r₀ chain claims are unchanged.”
+
+> “W2-OPEN-2's residual open surface: the converse (recorded ξ ≠ 1 ⟹ byte-RED) only”
+
+These statements are incompatible. The Σ-LAW annex closes only OPEN-2a’s shared-below forward implication. It does not prove W2-OPEN-2(a)–(b), namely polygon/valuation transfer and strict residual transport above the first twist. Indeed, the preceding annex explicitly says those claims remain unchanged. Moreover, the converse is a flagged premise condition, not W2-OPEN-2’s chain-level conclusion. Annex #3 therefore records an unsupported closure of the note’s principal open lemma.
+
+2. **GAP — W2-C1 assumes a scalar orbit outside the only perimeter where scalarity is proved.**
+
+> “Outside (C-coll) the law is still the exact recursion (HR-REC) … only the two-parameter SCALAR normal form below needs the perimeter.”
+
+> “At a shared-key junction on the §3 perimeter, the print residual of the harness lift is  
+> \(R_{r-1}(\Phi_{m+1}^{har})(y)=w_{m+1}\cdot\psi_m(\xi_{m+1}\cdot y)\).”
+
+> “the exact law is (HR-REC), the scalar form is proved only on (C-coll). On the roster every junction is either on (C-coll) or monomial-collapsing with scalar orbit anyway”
+
+The proof of W2-C1 says \(c/\rho_j=w\xi^j\), but §3.3(c) supplies only recursively computed \(\rho_j\), not their geometricity. The roster’s single non-collapse example having a scalar orbit is instance evidence, not a general theorem.
+
+Counter-configuration criterion: take a legal non-collapse junction with \(0,1,2\in\operatorname{supp}\psi_m\). A scalar orbit requires
+\[
+\rho_1^2=\rho_0\rho_2.
+\]
+HR-REC plus noncommuting mod-wrap supplies no identity forcing this relation. Until such an identity is proved, W2-C1 is justified only at \(m=1\), on (C-coll), or on individually scanned scalar-orbit instances.
+
+3. **GAP — W2-OPEN-2’s advertised “equivalent sufficient form” is degree-inconsistent with the note’s own index dictionary.**
+
+> “GMN keys \(\phi_i\) = harness \(\Phi_{i-1}\)”
+
+> “writing \(\Phi_q^{har}=\phi_q^{tw}+D_q\) with \(\deg D_q<\deg\phi_q\)”
+
+These cannot hold generally. The dictionary pairs \(\phi_q^{tw}\) with \(\Phi_{q-1}^{har}\), not \(\Phi_q^{har}\). For any junction with \(e_{q-1}g_{q-1}>1\),
+\[
+\deg\Phi_q=e_{q-1}g_{q-1}\deg\Phi_{q-1}>\deg\phi_q,
+\]
+so \(\Phi_q-\phi_q\) retains the degree of \(\Phi_q\) and cannot have degree below \(\phi_q\). The earlier P3 repair corrected the premise but missed this second occurrence, leaving the proposed discharge route malformed.
+
+4. **GAP — “same induced valuation data” contradicts the note’s own reason representative invariance is unavailable.**
+
+> “equivalence as type data (same residual classes, same induced valuation data)”
+
+> “the recorded data warrant only ≥ key weight — with equality generic … strictly BELOW γ, so the two chains' inductive valuations may genuinely differ as functions on \(O[x]\)”
+
+The second quote directly denies the first if “induced valuation data” includes the augmented valuations. Counter-configuration: if \(\Phi=\phi+D\) with \(\mu(D)=\mu(\phi)<\gamma\), the \(\phi\)-augmentation gives
+\[
+\mu_\phi(\Phi)=\min(\gamma,\mu(D))=\mu(D)<\gamma,
+\]
+whereas the \(\Phi\)-augmentation assigns \(\Phi\) value \(\gamma\). Thus strict representatives of the same residual modulus need not induce the same valuation function. W2-C3 may claim matched residual/type ledger data at its fenced scope, but the stronger parenthetical is not established.
+
+5. **GAP — PE5/PE6 do not certify the as-built annexed document.**
+
+> “Target … byte-identical to r4 commit 94534df”
+
+> “The note is ACCEPTED … PE5 … and PE6 … CLEAN”
+
+Both clean passes examined the frozen post-r4 body. The acceptance record and subsequent OPEN2ATTACK/Σ-LAW annexes were appended afterward. Consequently, their clean verdicts provide no review coverage for the annex language—precisely where Finding 1 occurs. The annex mechanism may be legitimate ledger procedure, but it is not a two-clean certification of the present as-built text.
+
+CHECKED CLEAN — W2-L0–L3 and the displayed HR-REC remain coherent as exact read recursions; this does not imply scalar-orbit existence.
+
+CHECKED CLEAN — W2-C2(a) and the \(m=1\) displayed \((\xi,w)\) formula survive.
+
+CHECKED CLEAN — W2-ID1 proves exactly the forward implication “recorded \(\xi=1\) implies byte-equality” at \(m=1\).
+
+CHECKED CLEAN — the \(F_4,\ y^3+\zeta\) counter-instance correctly defeats the unpinned converse selection rule.
+
+CHECKED CLEAN — the §4.3 distinction between Def-\(t(i)\) and the construct child exponent has the stated sign behavior.
+
+CHECKED CLEAN — W2-OPEN-1 remains honestly classified as machine-confirmed and open.
+
+CHECKED CLEAN — the Σ-LAW annex, as stated, upgrades OPEN-2a’s shared-below forward direction only; it does not discharge the above-\(r_0\) chain lemma.
+
+OUTCOME: CHALLENGE
