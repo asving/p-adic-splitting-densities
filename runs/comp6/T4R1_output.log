@@ -1,0 +1,242 @@
+Four verbatim-ready r1 repairs follow. C1 remains operationally unresolved; its repair makes T4 correctly fail closed without alleging a marker mismatch.
+
+### R1-C1 — fail-closed pin status
+
+Replace the status line with:
+
+```markdown
+**STATUS: R1 TEXT REPAIRED; UNRESOLVED at attempt grade 0/2.**
+No clean hostile pass has been earned. Both instance records remain
+non-consumable until their HEAD pins are successfully validated.
+```
+
+Insert after S5’s numbered conditions:
+
+```markdown
+### S5.1 R1 PIN-VALIDATION RECORD — UNRESOLVED
+
+On 2026-08-12, byte-literal validation was attempted against the
+two named HEAD sources. The workspace command runner failed before
+either source could be read because `bubblewrap is unavailable`.
+
+Consequently none of the eight listed half-open spans—four in the
+GT3 stack and four in the GT6 stack—was checked for occurrence
+count, source identity, byte order, stack order, or later
+supersession. Under the convention above, `GT3-THRESHOLD` and
+`GT6-CERT-TOP` are therefore **UNRESOLVED**, and consumption stops.
+
+This is an infrastructure result. It is neither evidence that a
+marker mismatches nor a clean hostile pass. The acceptance counter
+remains 0/2.
+
+A later validation record may supersede this rider only after it
+reports, for every listed BEGIN and END substring, its exact
+occurrence count and resolved byte position, verifies the recorded
+stack order, and checks all later dated riders and appends for
+supersession.
+```
+
+### R1-G2 — define the perturbation domain
+
+Replace S0 from “For a member \(f\), write” through the statement of the key’s honest coordinates with:
+
+```markdown
+Let \(\mathscr D_{\le\mu_2}\) be the ambient module of dividends to
+which the composed \(K_2(x,Y)\)-division applies and whose honest
+\(\Phi_2\)-development has degree at most \(\mu_2\). For
+\(q\in\mathscr D_{\le\mu_2}\), write uniquely
+
+\[
+q=\sum_{k\le\mu_2}C_k(q)\Phi_2^k.
+\]
+
+Let
+
+\[
+\mathscr D_{<\mu_2}
+:=
+\{q\in\mathscr D_{\le\mu_2}:C_{\mu_2}(q)=0\}.
+\]
+
+The member family lies in the affine slice
+\(C_{\mu_2}(q)=1\), while differences of members with the same
+leading key power lie in \(\mathscr D_{<\mu_2}\).
+
+For every \(q\in\mathscr D_{\le\mu_2}\), define
+\(\operatorname{Sh}C_j(q)\) to be the \(j\)-th stage-shadow
+coordinate produced by applying the \(K_2(x,Y)\)-division over
+\(\widehat{\mathcal O}[x]/(\Phi')\) to the dividend \(q\). Thus
+
+\[
+C_j,\operatorname{Sh}C_j:
+\mathscr D_{\le\mu_2}\longrightarrow\mathscr A_j
+\]
+
+are the coefficient maps of two linear division operators. Put
+
+\[
+\Delta_j(q):=\operatorname{Sh}C_j(q)-C_j(q)
+\qquad(q\in\mathscr D_{\le\mu_2}).
+\]
+
+This is the required linear extension of the notation from the
+member affine slice to lower perturbations; in particular,
+\(\Delta_j(g)\) is defined for
+\(g\in\mathscr D_{<\mu_2}\).
+
+The distinguished certificate member is
+
+\[
+f_{\mathrm{key}}:=\Phi_2^{\mu_2}.
+\]
+
+It belongs to \(\mathscr D_{\le\mu_2}\), and its honest lower
+coordinates vanish:
+
+\[
+C_j(f_{\mathrm{key}})=0\qquad(j<\mu_2).
+\]
+```
+
+Replace the opening of T4.2(b)’s proof with:
+
+```markdown
+By the definitions in S0, \(C_j\) and
+\(\operatorname{Sh}C_j\) are linear maps on
+\(\mathscr D_{\le\mu_2}\); hence so is \(\Delta_j\). Therefore,
+for \(g\in\mathscr D_{<\mu_2}\),
+
+\[
+\Delta_j(f_{\mathrm{key}}+g)
+=
+\Delta_j(f_{\mathrm{key}})+\Delta_j(g).
+\]
+```
+
+### R1-m1 — totalize first-discrepancy height
+
+Insert immediately before LEMMA T4.2:
+
+```markdown
+For \(q\in\mathscr D_{\le\mu_2}\), define its first discrepancy
+height at coordinate \(j\) by
+
+\[
+\nu_j(q)
+:=
+\min\{m:\operatorname{gr}_m(\Delta_j(q))\ne0\},
+\]
+
+with the convention
+
+\[
+\min\varnothing:=+\infty.
+\]
+
+Thus \(\nu_j(q)=+\infty\) exactly when
+\(\Delta_j(q)\) is identically zero.
+```
+
+Replace T4.2(a) with:
+
+```markdown
+**(a) Exact attainment for the key power.**
+
+\[
+j\text{ is touched}
+\quad\Longleftrightarrow\quad
+\nu_j(f_{\mathrm{key}})=\Theta_j.
+\]
+
+Thus a touched coordinate attains the GENTOW-3 floor exactly.
+At an untouched coordinate,
+
+\[
+\nu_j(f_{\mathrm{key}})>\Theta_j,
+\]
+
+where \(+\infty>\Theta_j\) includes the case of an identically
+zero discrepancy.
+```
+
+Replace the first proof paragraph with:
+
+```markdown
+By (FLOOR),
+
+\[
+\nu_j(f_{\mathrm{key}})\ge\Theta_j.
+\]
+
+Equality holds exactly when the height-\(\Theta_j\) assembled
+graded digit is nonzero. That digit is \(\omega_j\), so
+
+\[
+\nu_j(f_{\mathrm{key}})=\Theta_j
+\quad\Longleftrightarrow\quad
+\omega_j\ne0.
+\]
+
+This proves (a), including the identically-zero case through the
+convention \(\nu_j(f_{\mathrm{key}})=+\infty\).
+```
+
+### R1-G1 — expose the higher-\(\mu_2\) slot explicitly
+
+Replace S4.3 in full with:
+
+```markdown
+### S4.3 The later \(\mu_2\ge3\) refinement
+
+GENTOW-6.5’s \(f_1=1\) refinement computes, in a distinguished
+canonical certificate slot of some coordinate \(j\) at height
+\(\Theta_j\), a single-extraction contribution proportional to
+
+\[
+\binom{\mu_2}{2}
+(\widehat c_{t^*})^2\pi^{2a_{t^*}}
+\cdot(\text{wrap unit}).
+\tag{6.5-CAND}
+\]
+
+For the exposed-slot inference, impose the additional hypothesis
+
+\[
+\tag{EXPOSE-6.5}
+\text{the slot containing \((6.5\text{-CAND})\) receives exactly
+one single-extraction contribution.}
+\]
+
+Equivalently, under (EXPOSE-6.5), the displayed expression is the
+complete assembled value of that canonical slot, rather than one
+unassembled summand of it.
+
+If the residue characteristic does not divide
+\(\binom{\mu_2}{2}\), then the displayed contribution is nonzero.
+Together with (EXPOSE-6.5), T4.2(c) gives
+
+\[
+\omega_j\ne0,
+\]
+
+so \(j\) is touched and its discrepancy first occurs at
+\(\Theta_j\).
+
+Without (EXPOSE-6.5), nonvanishing of the displayed contribution
+alone proves no touchedness statement: another contribution may
+land in the same canonical slot and cancel it after assembly.
+Accordingly, if GENTOW-6.5 supplies only the computation
+\((6.5\text{-CAND})\) and not the exposure hypothesis, T4 records
+that expression only as a candidate witness and does not invoke
+T4.2(c).
+
+No converse is retained. Vanishing of this particular assembled
+slot, when it is assembled, does not imply \(\omega_j=0\), because
+another canonical slot may attain the same coordinate’s floor.
+The committed BP3 and FR5X measurements exhibit the two possible
+outcomes.
+```
+
+No files were changed, and no claim of successful HEAD-pin validation is made.
+
+SUMMARY: 4 REAL (repairs delivered)
