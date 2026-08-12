@@ -5,3 +5,5 @@
 [14:00:42] TC2_genhn_cr exit 0 (222 B; OUTCOMES: DISCHARGED)
 [14:00:42] TC3_gentow3 start
 [14:00:50] TC3_gentow3 exit 0 (333 B; OUTCOMES: DISCHARGED)
+[14:00:50] T1R1 start
+[14:01:24] T1R1 exit 0 (3252 B; SUMMARY: 3 REAL (repairs delivered))
