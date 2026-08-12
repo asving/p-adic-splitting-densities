@@ -1355,3 +1355,14 @@ S-2 protocol's three) ride the next queue; the absorbed notes'
 dated "absorbed by S-2" appends land after those pass. Runs of
 record: runs/comp1/T3R_output.log, runs/comp2/T3P1_output.log +
 T3R1, runs/comp3/T3P2_output.log, runs/comp4/T3P3_output.log.
+
+
+**Consumption-check record (2026-08-12, post-acceptance; S-2 protocol).**
+The three-leg checks (gpt-5.6-sol high, runs/comp5/T3CC_output.log):
+GENTOW2-B″ PASS, HETOW-4 PASS; GENTOW-6.4 confirmed NOT ABSORBED —
+in exact agreement with this note's own (G6-NONINSTANCE) display.
+The unit's scope of record is therefore TWO absorptions + one
+documented non-instance; GENTOW-6.4 retains its own certified proof
+(the blueprint's third target was honestly narrowed at revision).
+The absorbed notes' dated "absorbed by S-2 as instance" appends may
+now land for the two passing absorptions.
