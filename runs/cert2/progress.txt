@@ -25,3 +25,5 @@
 [11:15:55] E3_grtjb exit 0 (7177 B; SUMMARY: 2 REAL (repairs delivered) / 1 RESOLVED-ALREADY / 1 ARTIFACT / 0 OBSTRUCTED)
 [11:15:55] E4_grtjc start
 [11:19:22] E4_grtjc exit 0 (12528 B; SUMMARY: 5 REAL (repairs delivered) / 0 RESOLVED-ALREADY / 0 ARTIFACT / 0 OBSTRUCTED)
+[11:19:22] E5_grtw2 start
+[11:22:45] E5_grtw2 exit 0 (10134 B; SUMMARY: 4 REAL (repairs delivered) / 0 RESOLVED-ALREADY / 1 ARTIFACT / 0 OBSTRUCTED)

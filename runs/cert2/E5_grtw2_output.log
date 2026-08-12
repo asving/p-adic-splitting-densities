@@ -1,0 +1,156 @@
+## 1. REAL — Annex #3 falsely closes W2-OPEN-2
+
+The two quoted statements are contradictory. The Σ-LAW annex proves OPEN-2a’s shared-below forward implication only. Nothing in it proves W2-OPEN-2(a)–(b) above \(r_0\).
+
+Verbatim-ready repair:
+
+> **[ANNEX 2026-08-12, certifier correction to ANNEX 2026-08-08 #3 — W2-OPEN-2 STATUS.]** The final sentence of ANNEX #3,
+> “W2-OPEN-2's residual open surface: the converse (recorded ξ ≠ 1 ⟹ byte-RED) only,” is **WITHDRAWN**. THEOREM OPEN-2a-Σ, using the accepted Σ-LAW supplier, proves only the shared-below forward implication
+> \[
+> \text{recorded }\xi=1\Longrightarrow\text{byte-equal}
+> \]
+> at every \(m\). It does not prove W2-OPEN-2(a)–(b) at any junction above the first recorded twist \(r_0\).
+>
+> **Derivation.** OPEN-2a concerns a junction whose lower keys are byte-shared and excludes a hidden byte divergence before transport fires. W2-OPEN-2(a)–(b), by contrast, concerns a later junction whose lower transported keys may already be byte-different and asks for preservation of the valuation/polygon and strict residual criterion through binomial key-change carries. The Σ-LAW supplies an evaluator identity on the shared-below perimeter; it contains no estimate for those key-change cross-terms. Therefore no implication from the Σ-LAW to W2-OPEN-2(a)–(b) has been displayed.
+>
+> **Correct current status:** OPEN-2a’s forward direction is PROVED at attempt grade through the accepted Σ-LAW supplier. W2-OPEN-2(a)–(b), the chain-level transfer above \(r_0\), remains **OPEN and instance-confirmed on the six live roster junction-levels**. The converse “recorded \(\xi\ne1\Rightarrow\) byte-RED” remains separately UNPROVED as a recorded-pair selection/premise issue; it is not a substitute for, nor the conclusion of, the above-\(r_0\) chain lemma.
+>
+> **Consumer sweep.** The Acceptance Record’s statement that W2-OPEN-2 is accepted AS A BOX survives. W2-C3 remains measured/open above the first twist. W2-OPEN-1 remains open. Neither the Σ-LAW theorem nor W2-ID1 is weakened.
+
+## 2. REAL — W2-C1 lacks scalar-orbit geometricity outside (C-coll)
+
+Section 3.3(c) computes the slot ratios but does not prove they form a geometric progression. Thus the general scalar orbit asserted in W2-C1 does not follow from HR-REC.
+
+Verbatim-ready repair:
+
+> **[ANNEX 2026-08-12, certifier correction — W2-C1 SCALAR-ORBIT SCOPE.]** The universal reading of THEOREM W2-C1 outside the scalar-collapse perimeter is **SUPERSEDED** by the following proved display.
+>
+> **THEOREM W2-C1-CORR (admissibility at the proved scalar scope).** Let
+> \[
+> B_m(y):=R_{r-1}(\Phi_{m+1}^{har})(y)
+> \]
+> at a shared-key junction, with W2-C1a’s chamber qualifier understood.
+>
+> 1. If \(m=1\), then unconditionally
+>    \[
+>    B_m(y)=w_{m+1}\psi_m(\xi_{m+1}y)
+>    \]
+>    with the pair of §3.4.
+> 2. If \(m\ge2\) and (C-coll) holds, the same display follows from W2-C2(b) and §3.4.
+> 3. At a general shared-key junction outside (C-coll), HR-REC computes \(B_m\) exactly, but no scalar orbit is asserted without the following finite geometricity condition. Writing
+>    \[
+>    a_j:=\frac{[y^j]B_m}{\psi_{m,j}}
+>    \qquad(j\in\operatorname{supp}\psi_m),
+>    \]
+>    a scalar orbit exists exactly when there are units \(w,\xi\in K_m^\times\) such that
+>    \[
+>    a_j=w\xi^j\qquad
+>    \text{for every }j\in\operatorname{supp}\psi_m.
+>    \]
+>    When this condition holds, \(B_m(y)=w\psi_m(\xi y)\), and the admissibility conclusion of the former W2-C1 follows. Otherwise HR-REC alone gives no ξ-conjugate representative theorem.
+>
+> **Derivation.** W2-C2(a) proves item 1. W2-C2(b) proves item 2 because (C-coll) makes the ratios geometric. In general, §4.2 reads the residual coefficient as
+> \[
+> [y^j]B_m=\frac{c}{\rho_j}\psi_{m,j}.
+> \]
+> Hence \(B_m=w\psi_m(\xi y)\) is equivalent coefficient-by-coefficient to
+> \(c/\rho_j=w\xi^j\) on the support. For example, if
+> \(0,1,2\in\operatorname{supp}\psi_m\), this necessarily gives
+> \[
+> \rho_1^2=\rho_0\rho_2.
+> \]
+> HR-REC computes the three \(\rho_j\) but supplies no identity forcing this equation when mod-wrap does not collapse. The roster’s I4B \(r=5\) calculation establishes its own scalar orbit only as an individually checked boundary instance; it does not prove the universal relation.
+>
+> **Consequent statement correction.** CLAUSE 1 and the §6.2 W2-C1 row are proved universally only at \(m=1\) and on (C-coll), and conditionally at other shared-key junctions when the displayed geometricity test is established. Outside that scope the proved conclusion consists of W2-C1a’s polygon statement plus the exact HR-REC residual.
+>
+> **Consumer sweep.**
+>
+> * W2-C2(a), W2-ID1, HR-REC, and the §3.4 scalar display on (C-coll) survive unchanged.
+> * The transported-chain proof survives theoremically at every first-twist-or-below junction covered by \(m=1\) or (C-coll). After the accepted OPEN-2a/Σ-LAW upgrade, the roster census is honestly re-displayed as **37/44 theorem-derived, 1/44 individually scalar-orbit-confirmed (I4B \(r=5\)), and 6/44 above-twist junctions riding W2-OPEN-2**.
+> * At a general non-collapse first twist, §5.1’s ξ-transport is conditional on the geometricity test. Above the first twist, scalar-orbit existence remains part of W2-OPEN-2(b), hence OPEN.
+> * Section 4.3’s \(\ell\)-orbit analysis applies only after a scalar pair exists. W2-OPEN-1 remains open and unchanged.
+
+No new lemma derivable from the displayed material forces geometricity, so this re-display is the honest end-to-end theorem scope.
+
+## 3. REAL — the sufficient-form key comparison is misindexed
+
+The prior P3 correction fixed the premise but missed this later occurrence.
+
+Verbatim-ready repair:
+
+> **[ANNEX 2026-08-12, certifier correction — W2-OPEN-2 KEY-CARRY INDEX.]** In W2-OPEN-2’s “Equivalent sufficient form,” replace
+> \[
+> \Phi_q^{har}=\phi_q^{tw}+D_q,\qquad \deg D_q<\deg\phi_q
+> \]
+> by
+> \[
+> \boxed{\Phi_{q-1}^{har}=\phi_q^{tw}+D_q,\qquad
+>        \deg D_q<\deg\phi_q.}
+> \]
+> At the junction \(r=m+2\), take \(q=r-1\); thus the actual expansion is
+> \[
+> \Phi_m^{har}=\phi_{r-1}^{tw}+D_{r-1},
+> \qquad
+> (\Phi_m^{har})^{e_mk}
+>   =(\phi_{r-1}^{tw}+D_{r-1})^{e_mk}.
+> \]
+>
+> **Derivation.** The fixed P-index dictionary is
+> \(\phi_q^{GMN}=\Phi_{q-1}^{har}\). The two corrected summands therefore have the same monic degree, making \(\deg D_q<\deg\phi_q\) possible. With the former indexing, \(\Phi_q\) has degree
+> \(e_{q-1}g_{q-1}\deg\Phi_{q-1}\), so whenever \(e_{q-1}g_{q-1}>1\), the difference \(\Phi_q-\phi_q\) cannot have degree below \(\phi_q\).
+>
+> **Consumer sweep.** This repairs only the proposed discharge route. W2-OPEN-2 remains OPEN; its claims (a)–(b), HR-REC, the corrected premise pairing \(\phi_q^{tw}\leftrightarrow\Phi_{q-1}^{har}\), and every proved theorem outside the box are unchanged.
+
+## 4. REAL — “same induced valuation data” is too strong
+
+The note itself proves that equality of augmented valuation functions is unavailable. The parenthetical must be narrowed to ledger data.
+
+Verbatim-ready repair:
+
+> **[ANNEX 2026-08-12, certifier correction — W2-C3 EQUIVALENCE SCOPE.]** In W2-C3, the phrase
+> “equivalence as type data (same residual classes, same induced valuation data)”
+> and the subsequent description “MacLane-equivalent level by level” are **SUPERSEDED** by:
+>
+> > **ledger-equivalent at the displayed scope:** the transported print key and the harness lift have the same transported residual modulus/class and the same numerical \((e,h,g)\), degree and one-sided polygon ledger asserted in W2-C3(i)–(iii). No equality of the augmented valuation functions induced by the two different key representatives is claimed.
+>
+> Accordingly W2-C3(iii) is re-displayed as:
+>
+> > **(iii)** the transported print key and \(\Phi^{har}\), evaluated in their respective displayed chambers, are strict representatives of the same transported residual ledger and have the same stated \((e,f)\) invariants. This is a residual/type-ledger assertion, not an assertion that the two key augmentations define the same valuation on \(O[x]\).
+>
+> **Derivation.** Let the common lower valuation be \(\mu\), let
+> \(\Phi=\phi+D\), and suppose—as W2-OPEN-2’s route (3) permits generically—
+> \[
+> \mu(D)=\mu(\phi)<\gamma.
+> \]
+> Then the \(\phi\)-augmentation satisfies
+> \[
+> \mu_{\phi,\gamma}(\Phi)
+>   =\min\{\gamma,\mu(D)\}
+>   =\mu(D)<\gamma,
+> \]
+> whereas the \(\Phi\)-augmentation assigns
+> \(\mu_{\Phi,\gamma}(\Phi)=\gamma\). Thus matching residual moduli,
+> polygon data and numerical invariants does not prove equality of the
+> induced valuation functions.
+>
+> **Consumer sweep.** W2-C3(i)’s polygon statement and W2-C3(ii)’s strict-residual statement do not use equality of valuation functions and survive at their separately corrected grades. W2-OPEN-2’s route-(3) obstruction now agrees with W2-C3. W2-OPEN-1 remains a comparison computed separately on the transported keys and remains OPEN. The W-1/W-5/J-A consumer statements claim no equality of augmented valuations and survive.
+
+## 5. ARTIFACT — PE5/PE6 certification scope
+
+This finding correctly observes that PE5/PE6 predate the annexes, but it misreads what the note says those passes certify.
+
+The note explicitly separates the accepted frozen body from later ledger entries:
+
+> “## ANNEX (dated append; the frozen body is not edited)”
+
+The Acceptance Record also enumerates “WHAT IS ACCEPTED” and expressly includes:
+
+> “W2-OPEN-2/OPEN-2a as the note's fenced OPEN box — … accepted AS A BOX, not as a theorem.”
+
+Later supplier status is independently recorded:
+
+> “Supplier upgrade: the Σ-LAW note … is ACCEPTED at 2/2”
+
+Thus PE5/PE6 certify the frozen post-r4 proof body; they are not represented as clean passes over future orchestrator annexes. The erroneous Annex #3 status sentence is a real ledger defect—repaired under Finding 1—but it does not retroactively invalidate the frozen body’s 2/2 acceptance.
+
+SUMMARY: 4 REAL (repairs delivered) / 0 RESOLVED-ALREADY / 1 ARTIFACT / 0 OBSTRUCTED
