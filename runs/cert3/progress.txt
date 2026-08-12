@@ -21,3 +21,5 @@
 [12:38:04] D3j_genhn_corr exit 0 (239 B; OUTCOMES: DISCHARGED)
 [12:38:04] R11_genind start
 [12:44:47] R11_genind exit 0 (9858 B; SUMMARY: 2 REAL (repairs delivered) / 1 OBSTRUCTED)
+[12:44:47] N1_w12_history start
+[12:55:49] N1_w12_history exit 0 (32760 B; )
