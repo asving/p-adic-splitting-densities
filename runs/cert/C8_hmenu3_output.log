@@ -1,0 +1,95 @@
+The frozen proof was not clean: Annex A correctly exposes the shared equal-characteristic blind spot. More importantly, a separate unannexed (A1) indexing gap remains.
+
+### Finding 1 — GAP: the “seven families” are not families in the stated (A1) sense
+
+> “**I (7 families):** the depth-0 W-12.A laws (m = 0).”
+
+> “Every family is (A1)-ADMISSIBLE … one \(c_F(q)\) per family…”
+
+But the raw terminal keys explicitly include
+
+> “`('VERT1', u₀, k, λ)` / `('VERT2', u₀, t, λ)` / `('FULL', k, λ)`”
+
+and (A1) requires each \(F\) to have one fixed splitting type \(\sigma_F\) and one coefficient \(c_F(q)\).
+
+Counter-configuration: take \(q=5\), a sufficiently visible FULL depth, and compare:
+
+- \(\lambda=(1,1,1)\): splitting type \((1,1)^3\), residual census \(S_{(1,1,1)}=(q-1)(q-2)(q-3)/6=4\).
+- \(\lambda=(3)\): splitting type \((1,3)\), residual census \(S_{(3)}=(q^3-q)/3=40\).
+
+Both belong to the stated I-FULL “family,” but they have different \(\sigma\) and different \(c(q)\). VERT1 and VERT2 similarly split between quadratic residual types \((1,1)\) and \((2)\). Tier II inherits the same problem.
+
+PE4 came directly to this seam but misclassified it:
+
+> “**The \(S_\lambda\) censuses are nowhere displayed in this note** … Not a defect — the note consumes tier I by pointer…”
+
+The supplier pointer supplies the laws, but it does not make a λ-varying schema into an (A1) family with fixed \(\sigma_F\).
+
+This also invalidates the literal family counts. The natural formal refinement has:
+
+- I: \(4+2+2+3=11\), not 7.
+- II: 11, not 7.
+- B: 24 after the already-admitted \(m=0\)/\(m\ge1\) split.
+- TRP total: 46; full menu total: \(46+4+3=53\).
+
+Consequently, both
+
+> “≤ 45 TRP aggregate families + 4 DBL + 3 SEP”
+
+and the acceptance record’s
+
+> “complete 33-family cubic core menu”
+
+are not correct as formal (A1) family counts. They count schemas while calling them families. The density arithmetic may survive a finite refinement, but that refinement is not stated or annexed.
+
+### Finding 2 — GAP, resolved only by Annex A: the accepting passes certified a false lift quantifier
+
+Frozen theorem:
+
+> “so Ore certifies **EVERY lift**”
+
+Frozen proof:
+
+> “assigns the SAME \(\sigma\) to every \(O\)-lift **(not only disc ≠ 0 ones)**”
+
+PE4 explicitly targeted and endorsed that assertion:
+
+> “(A0) as consumed claims **EVERY lift** of every menu member carries the family \(\sigma\)”
+
+Counter-configuration: let \(O=\mathbf F_3[[t]]\), take the RAM3(1) window member with \(b_2=b_1=0\) and \(b_0=t\), and choose the lift
+\[
+F(y)=y^3+t.
+\]
+It is conservatively classified by the RAM3(1) Newton data, but \(F'(y)=0\) and \(\operatorname{disc}(F)=0\). It is purely inseparable and has no separable splitting type of the kind used by \(R_\tau\).
+
+PE4’s “wildcard” checked only mixed-characteristic \(\mathbf Z_p\) lifts, so it could not detect this. Thus PE3/PE4’s zero-gap verdicts were false for the frozen post-r2 body. Annex A correctly restricts (A0) to disc-\(\ne0\) lifts, which is the form W-12.D actually consumes.
+
+### Finding 3 — MINOR: Annex A misdescribes its own logical effect
+
+> “This annex changes no statement’s content and no proof step”
+
+The second clause is supported: the stronger quantifier was not needed downstream. The first is literally false. Replacing “every lift” by “every disc-\(\ne0\) lift” is a strict weakening, as the \(\mathbf F_3[[t]]\), \(y^3+t\) counterexample demonstrates. The accurate conclusion is that the annex changes the frozen statement while preserving the intended (A0) clause and all downstream conclusions.
+
+### Survivors
+
+CHECKED CLEAN — LEMMA HM3-1’s two-phase grammar and the α/β exclusion argument expose no additional overlapping route.
+
+CHECKED CLEAN — LEMMA HM3-2’s shear amounts \(+3k,+2k,+k\) and its \(q^{3k}\) ghost-fiber count are mutually consistent.
+
+CHECKED CLEAN — LEMMA HM3-3’s β dictionary, persistent split-depth argument, and \(j\)-entry ranges are algebraically coherent.
+
+CHECKED CLEAN — LEMMA HM3-4’s generating function gives \(b(m)=(q-1)q^{4m-1}\) exactly.
+
+CHECKED CLEAN — HM3.A’s raw-key recursion remains internally exact and disjoint, independent of the aggregate-family naming defect.
+
+CHECKED CLEAN — HM3.B’s displayed count laws and geometric aggregations survive; the failure is their formal λ-packaging into fixed-\(\sigma\) (A1) families.
+
+CHECKED CLEAN — HM3.C’s (A0) claim survives in Annex A’s disc-\(\ne0\) form.
+
+CHECKED CLEAN — HM3.C’s exact DBL-plus-TRP complement has the claimed \(o(q^{3N})\) normalization.
+
+CHECKED CLEAN — The five displayed \(R_\tau\) satisfy \(\sum_\tau R_\tau=1\), the \(q=2,3\) anchors, and \(3R_{\rm split}+R_{1+2}+R_{\rm partial}=q/(q+1)\).
+
+CHECKED CLEAN — The S10 check ledger is internally consistent: its component counts sum to 183,387, and 9,956 oracle checks decompose as 9,952 σ reads plus four row-count checks.
+
+OUTCOME: CHALLENGE
