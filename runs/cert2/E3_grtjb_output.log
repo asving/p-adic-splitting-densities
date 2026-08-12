@@ -1,0 +1,138 @@
+1. ARTIFACT — the 2/2 acceptance is recorded at HEAD.
+
+The finding treats PE9’s contemporaneous “FIRST clean pass … 1/2” as the final state and requires the PE10 report to be embedded in this proof note. But the later authoritative block states:
+
+> “**THIS NOTE IS ACCEPTED at 2/2** — PE9 (b0b4c3a, CLEAN …) and PE10 (6d548f3, CLEAN …).”
+
+It also records:
+
+> “Full arc: … PE9 CLEAN → PE10 CLEAN. Ten hostile passes, eight repair rounds.”
+
+Thus PE9’s 1/2 statement is historically correct at PE9, while the dated orchestrator acceptance record certifies the subsequent second clean pass. The proof note’s acceptance record—not an inline copy of every hostile-pass report—is the procedural source of record.
+
+2. REAL — JB-VTX(c) confuses preservation of abscissa run with preservation of ambient lattice data.
+
+The determinant objection is correct. Append this verbatim-ready repair:
+
+```markdown
+## ★ CERTIFIER ANNEX (2026-08-12): corrections of record to the frozen accepted body ★
+
+**E-3 (JB-VTX(c): abscissa run, not ambient lattice data).** The sentence in
+§3(c) saying that the shear “preserves lattice data” is WITHDRAWN. The shear
+
+    Σ_q(i,u) = (i, e_q·u + h_q·i)
+
+is not unimodular when e_q > 1. For an edge with difference vector
+(Δi, Δu), its image has difference vector
+
+    (Δi, e_q·Δu + h_q·Δi),
+
+so the abscissa run Δi is preserved and the slope transforms by
+
+    σ′ = e_q·σ + h_q,
+
+but the ambient-lattice primitive step and lattice length need not be
+preserved. For example, at (e_q,h_q) = (2,1), the edge from (0,1) to (2,0)
+maps to the horizontal edge from (0,2) to (2,2), whose ambient lattice
+contains the additional point (1,2).
+
+**CORRECTED DISPLAY OF JB-VTX(c).** A print side of slope σ over
+[i₀,i₁] maps to a sheared side of slope e_q·σ+h_q over the same
+[i₀,i₁]; hence its abscissa run Δi := i₁−i₀ is preserved. If the source
+slope is −h/e in lowest terms, its PRINT-side degree remains the
+source-defined integer d := Δi/e and is recoverable from the preserved run
+together with the source slope data. This does NOT say that d is the ambient
+lattice length of the sheared edge. On the realized side, identifying d with
+a count of e_q-spaced attained-grid intervals is instead a consequence of
+JB-VTX(d4), and therefore carries row 12's full scope: the `P<q` and W2-C1
+fences, together with the narrowed lattice-membership/u ≥ 0 residue and its
+NO-MACHINE-LEG disclosure.
+
+**CONSUMER SWEEP.**
+1. §0M row 10 is re-read as “JB-VTX(c), slope/abscissa-run”; its existing
+   proviso cells remain correct because the displayed slope/run calculation
+   uses only the pointwise shear.
+2. The §3 proof and the `hull_sides` machine leg survive unchanged: they
+   establish slope transformation and equality of endpoint abscissas/runs,
+   not unimodularity.
+3. The grade cap, §3 ∎ Grade surface, §7.2's JB-VTX row and §7.3's W-3
+   polygon bullet read every occurrence of “slope/length” as
+   “slope/abscissa-run”.
+4. Every use of an attained-slot or harness-grid count is routed to
+   JB-VTX(d4), §0M row 12. Its existing membership residue and NO-LEG status
+   therefore remain visible; the four-member frontier is unchanged.
+
+No hull, vertex, slope, abscissa-run, JB-TREE or JB-CREAD identity moves.
+Only the false ambient-lattice extension is removed.
+```
+
+3. RESOLVED-ALREADY — Fold Annex E-2 already propagates W2-C3’s mixed grade.
+
+The exact correction-of-record says:
+
+> “W-2’s W2-C3 was re-graded … to proved-to-first-twist (38/44) / measured above (6/44, riding W2-OPEN-2).”
+
+Crucially, it then gives the global propagation rule:
+
+> “**Wherever this note cites W2-C3’s grade, the supplier’s current form … governs.**”
+
+The later `[ANNEX 2026-08-08, orchestrator, fold-carry closure]` preserves rather than upgrades that split:
+
+> “W2-C3 at its honest proved-to-first-twist (38/44) / measured-above grade, W2-OPEN-2/OPEN-2a the accepted BOX.”
+
+Therefore the frozen body’s earlier `PROVED` labels cannot be read as proving the six above-first-twist instances: E-2 makes the supplier’s proved/measured split govern every W2-C3 citation, including row 15 and the JB-TREE surfaces. Acceptance of W-2 accepts the honest box; it does not turn its measured-above region into a theorem. The prior finding overlooked the annex’s explicit “wherever … governs” propagation rule.
+
+4. REAL — byte disagreement removes the cited license but does not imply semantic falsity.
+
+Append this immediately after E-3:
+
+```markdown
+**E-4 (off-perimeter status: NOT SUPPLIED, not pointwise FALSE).** Every live
+sentence saying that JB-DEV(iii)(VAL) or JB-VTX(a) is “FALSE, not merely
+unproved” off the shared-key perimeter is corrected to “NOT SUPPLIED by this
+note outside the stated perimeter.” Byte inequality of representatives removes
+the J-A theorem instance cited by the proof, but does not by itself imply
+inequality of the induced values on every polynomial.
+
+The distinction is forced already by the constant polynomial f = 1. Its
+development at every monic key has the sole digit A₀ = 1; normalized
+valuations give
+
+    w_q(A₀) = w_q(1) = 0 = v_{q+1}(1) = v_{q+1}(A₀),
+
+and both point sets are the singleton {(0,0)}, fixed by Σ_q. Thus (VAL) and
+the pointwise shear hold for this instance independently of the bytes of all
+positive-level keys. Conversely, JB-DEV(iv)'s representative-dependence
+warning rules out a blanket cross-representative identity, but supplies no
+derivation that every off-perimeter instance fails. The honest status is
+therefore absence of a theorem outside the fence, with possible instancewise
+agreement.
+
+**CORRECTED SCOPE DISPLAY.**
+* JB-DEV(iii)(VAL) and (GRID) are asserted on `P<q` only; outside `P<q` this
+  note makes no claim about their truth.
+* JB-VTX(a), and consequently (b)/(c)/(d1)/(d2)/(d4) at the theorem's common
+  head, are asserted on `P<q` only; outside it this note makes no claim.
+* The separately deeper fences remain unchanged: JB-DEV(iii)(RES) and
+  JB-VTX(d3) continue to require `P≤q`.
+* “Different bytes” is henceforth used only as a proof-license boundary, not
+  as a semantic-negation principle.
+
+**CONSUMER SWEEP.**
+1. §0M rows 3–5 and 8–12 already encode positive assertion scopes through
+   their `P<q`/`P≤q` cells; no matrix cell changes.
+2. In the grade cap, §2(iii), §2 ∎ Grade, the JB-VTX theorem head, §3 ∎ Grade,
+   §7.2's JB-DEV/JB-VTX rows and §7.3's W-3 bullet, every live occurrence of
+   “FALSE, not merely unproved” is read as “NOT SUPPLIED outside the stated
+   perimeter”.
+3. JB-BOX-2's perimeter enumeration survives verbatim: it records where the
+   claims are supplied and makes no off-perimeter theorem.
+4. Every downstream consumption already occurs on the positive matrix
+   perimeter, so JB-TREE, JB-CREAD and the W-3/W-5 hand-offs retain their
+   proved identities and existing fences.
+
+No perimeter is widened and no on-perimeter proof moves; only the unsupported
+off-perimeter negation is withdrawn.
+```
+
+SUMMARY: 2 REAL (repairs delivered) / 1 RESOLVED-ALREADY / 1 ARTIFACT / 0 OBSTRUCTED
