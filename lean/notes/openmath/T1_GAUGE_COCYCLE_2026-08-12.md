@@ -3199,3 +3199,258 @@ Under **A6 — GENTOW6**, immediately after the displayed lift formula, insert:
 Add to §6:
 
 > | Added the zero-homogeneous-component branch to the C3 canonical read and fixed a residue section for all coefficient representatives in \(L_M\). | T1P8, 2026-08-12 r7 | Repairs 1 GAP and 1 MINOR finding: zero coherent digits now satisfy the canonical-read and three-reads formulas without a nonexistent value-zero representative, and \(L_M\) is a literally defined section-dependent function. |
+
+
+---
+
+## r8 (2026-08-12): arc repairs
+
+*(gpt-5.6-sol high, runs/comp11/T1R8_output.log; transcribed unaltered; counter resets.)*
+
+# T1 r8 corrections — 2026-08-12
+
+These edits repair the general corrected-key coefficient-space gap and the unsupported nonvanishing of the canonical ladder unit.
+
+## R8-1 — Import the bounded coefficient space into the corrected-key lift contract
+
+In §1.1, replace the opening of the stage-key paragraph introduced by R4-1,
+
+> Fix also the stage key \(\Phi_i\) with the stage-height identity
+
+with:
+
+> Fix also a monic stage key \(\Phi_i\), put
+> \[
+> d_i:=\deg\Phi_i>0,
+> \]
+> and assume the stage-height identity
+
+Immediately after (C3-zero-lift), insert:
+
+> Every lift used as a coefficient in (C3-key) is additionally required to lie in the standard bounded coefficient space
+> \[
+> \mathcal C_i
+> :=
+> \left\{
+> A:\deg A<\deg\Phi_i
+> \right\},
+> \]
+> with the convention \(\deg0=-\infty\). Thus the corrected-key lift contract includes
+> \[
+> \boxed{
+> \deg\!\left(
+> \operatorname{lift}_i(d;m)
+> \right)
+> <
+> \deg\Phi_i
+> \qquad(d\in K_i).
+> }
+> \tag{C3-lift-coefficient-space}
+> \]
+> This coefficient-space condition is an independent part of the lift contract imported from the corrected-coefficient supplier. It does not follow from exact height or normalized residue. In particular, a higher-degree, strictly higher-value perturbation of a valid representative is not an admissible corrected-key lift.
+>
+> At a level-one consumer with
+> \(\deg\Phi_1=D'\), the degree conclusion in (C6) discharges
+> (C3-lift-coefficient-space) on the live domain \(m>D'h\).
+
+Immediately after (C3-corrected-lift), insert:
+
+> In addition to the residue, zero, and nonzero-height clauses, this coefficient is chosen under (C3-lift-coefficient-space):
+> \[
+> \boxed{
+> \deg\widehat k_t<\deg\Phi_i.
+> }
+> \tag{C3-corrected-coefficient-bound}
+> \]
+
+In §2.3, immediately after the proof of (C3-common-height), insert:
+
+> It remains to check the polynomial shape. Put
+> \[
+> d_i=\deg\Phi_i.
+> \]
+> For every nonzero lower coefficient and every \(t<f_{i+1}\),
+> \[
+> \begin{aligned}
+> \deg\!\left(
+> \widehat k_t\Phi_i^{e_{i+1}t}
+> \right)
+> &<
+> d_i+e_{i+1}t\,d_i\\
+> &=
+> \bigl(e_{i+1}t+1\bigr)d_i\\
+> &\le
+> e_{i+1}f_{i+1}d_i\\
+> &=
+> \deg\!\left(
+> \Phi_i^{e_{i+1}f_{i+1}}
+> \right).
+> \end{aligned}
+> \]
+> The inequality is strict even in the boundary case
+> \(e_{i+1}=1\) and \(t=f_{i+1}-1\), because
+> \(\deg\widehat k_t<d_i\). A zero coefficient contributes no term. Since \(\Phi_i\) is monic, (C3-key) is therefore monic of degree
+> \[
+> e_{i+1}f_{i+1}\deg\Phi_i
+> \]
+> and has coefficients reduced modulo \(\Phi_i\) in the asserted
+> \(\Phi_i\)-adic shape.
+>
+> This proves only the monicity and bounded-coefficient shape of the displayed composed polynomial. Any further assertion that it is a key polynomial uses the surrounding tower supplier theorem.
+
+Under **A7 — GENTOW2**, insert before **B-law classification**:
+
+> **COEFFICIENT-SPACE PIN.** The accepted GENTOW2 corrected-coefficient construction selects each coefficient in the bounded space
+> \[
+> \boxed{
+> \deg\widehat k_t<\deg\Phi_i.
+> }
+> \]
+> T1 imports precisely this condition as
+> (C3-lift-coefficient-space) and
+> (C3-corrected-coefficient-bound). Exact height and normalized residue supply no substitute for this bound. No general lift-existence theorem beyond the stated integral domains is imported from GENTOW2.
+
+## R8-2 — Make ladder nonvanishing an explicit certified-site obligation
+
+In §1.1, immediately after (C3-zero-read), insert:
+
+> At every consumed site where \(w_i\) and the unit-rescaling conclusion in (C3) are used, assume the base ladder read is nonzero:
+> \[
+> \boxed{
+> R_{i+1,\bar\kappa_i}
+> \bigl(
+> \widehat n_i(u_{i+1})
+> \bigr)
+> \ne0.
+> }
+> \tag{C3-ladder-nonvanishing}
+> \]
+> This is an independent site obligation. It does not follow from ladder multiplicativity, graded scalar covariance, agreement with residue in grade zero, or (C3-zero-read). Those obligations alone permit a read that vanishes on every positive-grade homogeneous component.
+>
+> At \(i=2\), the accepted GENTOW2-B\('\)/B\(''\) supplier discharges (C3-ladder-nonvanishing) at its local site. At \(i\ge3\), every consumer must cite a level-general residual-read supplier that includes this nonvanishing conclusion; T1 does not infer it from the other read axioms.
+
+Replace the definition of \(w_i\) by:
+
+> Put
+> \[
+> \bar\kappa_i=\frac{u_{i+1}}{e(\mu_i)},
+> \qquad
+> N_i:=\widehat n_i(u_{i+1}),
+> \]
+> and define
+> \[
+> w_i
+> =
+> R_{i+1,\bar\kappa_i}(N_i).
+> \]
+> At every consumed site carrying
+> (C3-ladder-nonvanishing),
+> \[
+> \boxed{w_i\in K_i^\times.}
+> \tag{C3-ladder-unit}
+> \]
+
+In (C3), immediately before (C3-three-reads), insert:
+
+> Assume for the remainder of the three-read and factor-pattern conclusions that the consumed site discharges
+> (C3-ladder-multiplicativity),
+> (C3-graded-scalar-covariance),
+> (C3-zero-read), and
+> (C3-ladder-nonvanishing). In particular,
+> \(w_i\in K_i^\times\).
+
+In §2.3, immediately before the B-law calculation, insert:
+
+> By (C3-ladder-nonvanishing),
+> \[
+> w_i
+> =
+> R_{i+1,\bar\kappa_i}(N)
+> \ne0.
+> \]
+> Hence \(w_i\in K_i^\times\).
+
+Replace the final factor-pattern paragraph of §2.3 with:
+
+> By (C3-ladder-nonvanishing), \(w_i\) is a unit. Therefore
+> \[
+> y\longmapsto y/w_i
+> \]
+> is an automorphism of \(K_i[y]\), and multiplication by
+> \(w_i^{\deg P}\) is multiplication by a nonzero scalar. Consequently
+> \[
+> P(y)\longmapsto
+> w_i^{\deg P}P(y/w_i)
+> \]
+> transports factorizations bijectively and preserves degrees, multiplicities, irreducibility, and a nonzero constant term. This proves the factor-pattern conclusion. Without
+> (C3-ladder-nonvanishing), neither division by \(w_i\) nor the unit-substitution argument is asserted.
+
+In the A7 **B-law classification**, replace the residual-obligation sentence with:
+
+> The residual obligation is the accepted GENTOW2-B\('\)/B\(''\) per-grade-unit theorem discharging the slot-grade identity, ladder multiplicativity, graded scalar covariance for the consumed value-zero factors, and
+> \[
+> R_{i+1,\bar\kappa_i}
+> \bigl(
+> \widehat n_i(u_{i+1})
+> \bigr)\ne0.
+> \]
+> Only after this nonvanishing clause is supplied may T1 regard \(w_i\) as an element of \(K_i^\times\), form
+> \[
+> \psi_{i+1}^{(w_i)}(y)
+> =
+> w_i^{f_{i+1}}\psi_{i+1}(y/w_i),
+> \]
+> and invoke unit-substitution invariance.
+
+Replace the supporting-context paragraph following the absorption map with:
+
+> The B-law rows consume (C3-ladder-multiplicativity), the grade identity
+> \(\beta_t=(f_{i+1}-t)\bar\kappa_i\), and
+> (C3-graded-scalar-covariance) for nonzero coherent digits at their stated sites. Zero coherent digits use the separate zero-component rule (C3-zero-read). The three-read rescaling and factor-pattern conclusion additionally consume
+> (C3-ladder-nonvanishing). At \(i=2\), these obligations are supplied at the accepted GENTOW2-B\('\)/B\(''\) site. For \(i\ge3\), they must be included explicitly in the cited level-general residual-read supplier.
+
+## Consequential scope and verification edits
+
+Replace honesty-ledger item 2 with:
+
+> 2. The B-law is conditional on the sitewise graded read facts
+> (C3-ladder-multiplicativity), (C3-slot-grade), and
+> (C3-graded-scalar-covariance). For a zero coherent digit, the displayed homogeneous component is zero and its read is governed separately by (C3-zero-read). The assertion
+> \(w_i\in K_i^\times\), and hence the unit-rescaling and factor-pattern argument, additionally require the independent site obligation
+> (C3-ladder-nonvanishing). T1 proves none of these facts for all homogeneous initial forms.
+
+Append to the honesty ledger:
+
+> 18. Exact height and normalized residue do not determine an admissible corrected-key representative. Every coefficient used in (C3-key) must also satisfy
+> \[
+> \deg\widehat k_t<\deg\Phi_i.
+> \]
+> Higher-degree, higher-value perturbations are excluded by the coefficient-space contract.
+>
+> 19. The displayed residual-read axioms do not imply that the base ladder read is nonzero. The status
+> \(w_i\in K_i^\times\) is asserted only at sites carrying
+> (C3-ladder-nonvanishing), supplied locally by GENTOW2-B\('\)/B\(''\) or by an explicitly cited level-general analogue.
+
+Append to §4.2:
+
+> 7. **General coefficient-space bound.** For every corrected-key coefficient, score
+>    \[
+>    \deg\widehat k_t<\deg\Phi_i.
+>    \]
+>    Add a mock representative obtained from a valid lift by adding a sufficiently high-degree, strictly higher-value term. Confirm that it still passes the height and residue checks but is rejected by
+>    (C3-lift-coefficient-space). Score that the accepted coefficients make every lower key term have degree strictly below the leading term.
+>
+> 8. **Ladder nonvanishing.** Instantiate a mock residual read that is zero on every positive-grade homogeneous component while satisfying ladder multiplicativity, graded scalar covariance, the grade-zero residue rule, and
+>    \(R_{i+1,\beta}(0)=0\). Confirm that it is rejected precisely by
+>    (C3-ladder-nonvanishing), and that no expression containing
+>    \(y/w_i\) or unit-substitution factor transport is accepted without that clause.
+
+In the \(M2\) row of (C7), add:
+
+> Corrected-key coefficients additionally use
+> (C3-lift-coefficient-space), and canonical factor-pattern transport uses
+> (C3-ladder-nonvanishing).
+
+Add to §6:
+
+> | Imported the GENTOW2 bounded coefficient space into the general corrected-key lift contract and made base-ladder nonvanishing an explicit certified-site obligation. | T1P9, 2026-08-12 r8 | Repairs 2 GAP findings: higher-degree higher-value perturbations are excluded, so the composed polynomial retains its monic bounded \(\Phi_i\)-adic shape; and \(w_i\in K_i^\times\), division by \(w_i\), and factor-pattern transport are asserted only where nonvanishing is supplied. |
