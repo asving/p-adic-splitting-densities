@@ -1,0 +1,754 @@
+The requested certificate cannot be instantiated faithfully from the displayed material. Its correct verdict is `MISMATCH`, for four independent reasons:
+
+1. ITERLAWN’s 22-row r4 dependency table is not the dependency census at HEAD. Row 23 was added at r5, then the hand census was superseded at r6 by 194 mapped hits on 147 lines.
+2. The 56 S3 tower pairs are given only as aggregate counts. Their coefficients, perturbations, deeper tower data, windows, and field identifications are absent.
+3. Many of the historical 22 rows are source/provenance claims, not executable dependency sites at which \(C_k\), telescope terms, or reads exist.
+4. The needed rung-\(\ge3\) executable engines are not supplied self-contained. ITERLAWN itself declares `(RM-m)` open for \(m\ge2\), while the displayed diagnostics rely on external harness implementations.
+
+Thus fabricating 5,016 green records would not be a numerical certificate.
+
+## Certificate data model
+
+Each tower-pair record needs:
+
+- `pair_id`, origin, ring and exact ring representation;
+- every \(e_j,h_j,g_j,\ell_j,\ell'_j,\gamma_j,w_j\Phi_j,\psi_j,K_j\);
+- the complete \(\Phi_1'\) and same-residue standard \(\Phi_1''\);
+- the canonical higher lifts on both sides;
+- an explicit identification of shared coefficient fields;
+- the window elements and pair blocks being evaluated.
+
+For each pair, rung, and site, a `SiteRecord` has two `SiteSnapshot`s—one for \(\Phi_1'\), one for \(\Phi_1''\)—containing:
+
+- ordered branch decisions and the exact operands of each predicate;
+- all degrees and valuations, using rational/integer values plus \(+\infty\);
+- residual elements in canonical power-basis coordinates;
+- every \(C_k\), normalized as \(\sum_i a_iU^i\);
+- degree-telescope summands and bounds;
+- final weights, reads, values, and cocycles;
+- an ordered access trace for every \(\Phi_1\)-coefficient access;
+- explicit `N/A` markers where a field is not semantically meaningful.
+
+A trace event is forbidden when a non-leading coefficient of \(\Phi_1\) reaches a branch condition, valuation, residual, \(C_k\), telescope bound, or final read/cocycle except through an `opaque-Phi1-power` node.
+
+The historical 22 rows would require these site-specific payloads:
+
+| # | ITERLAWN site | Site-specific record |
+|---:|---|---|
+| 1 | S0.1 lifts bullet | key indices used by anchors and `val`; maximum constructed lift; any \(\Phi_{n+1}\) access |
+| 2 | head declaration | imported proof blocks and evidence artifacts; provenance only |
+| 3 | print-consumption display | definition calls, print reads, and text-extraction events |
+| 4 | S0.3 L6 row | `REALIZE/WELL-DEF` inputs, \(C_k\), telescope terms, anchor read |
+| 5 | S0.3 DCX row + S4.7 | IH `P-DS` data, case, slots, \(Q\)-emission, outer-locus decision |
+| 6 | S1 item 1 | L6 call graph and absence/presence of W-MULT, RM, and DCX calls |
+| 7 | S2 D-INT cross-reference | \(\beta_j,\beta_j'',B_j,S_j\), numerator and quotient \(D_j\) |
+| 8 | S2 descent lemma | representatives modulo \(E_{n+1}\), shifted splits, constants before/after |
+| 9 | S3 close | exact `EPS-CLOSED/MULT/SHIFT` operands and results |
+| 10 | S4.0 TRUNC | equality of truncated objects and levels used by each \(C_k\) input |
+| 11 | S4.1 operative bracket | \(m=1\) realizer/WELL-DEF outputs and engine/DCX call trace |
+| 12 | S4.2 close | same L6/telescope payload as site 4 plus dependency call graph |
+| 13 | S4.3 P-L6 | anchor value/weight and DCX predicate independently |
+| 14 | S4.3 notation erratum | identifier-use/source scan; no numerical payload exists |
+| 15 | S4.4 precision note | II-case predicates, `CII`, containment result, downstream uses |
+| 16 | S4.6 RM-1 box | rung transition and actual RM levels called |
+| 17 | S4.7 PE-G1 bracket | open-fence/proof-status record; no runtime datum exists |
+| 18 | S6.1 | one EXP-KIT denominator witness per level; cross-level denominator trace |
+| 19 | S7 row 4 | ledger/dependency assertion referring back to L6; no new runtime operation |
+| 20 | S7 branch A | counterfactual dependency statuses with `[IL3]` disabled |
+| 21 | S7 branch B | counterfactual dependency statuses with `[IL]` disabled |
+| 22 | S10 DAG | source-level nodes and consumption edges; no per-pair numerical payload |
+
+The following script is therefore an obstruction-certificate runner. It implements the exact integer constructions that are actually determined by the displays, enumerates all \(57\times4\times22=5{,}016\) requested cells, and reports precisely why no substantive site record can be populated.
+
+```python
+#!/usr/bin/env python3
+"""
+Φ₁-OPACITY pre-proof certificate adjudicator.
+
+This program deliberately does not manufacture missing tower data or turn
+ITERLAWN's prose dependency claims into fictitious runtime sites.
+
+It enumerates:
+    57 tower pairs × rungs 2..5 × the historical 22-row S7 table
+
+and emits one result for every cell.  From the displayed material the faithful
+final verdict is MISMATCH.
+
+Standard library only.  All implemented arithmetic uses int or Fraction;
+there is no floating-point arithmetic.
+"""
+
+from __future__ import annotations
+
+from dataclasses import asdict, dataclass, is_dataclass
+from fractions import Fraction
+import json
+import sys
+from typing import Any, Iterable, Optional, Sequence
+
+
+# ---------------------------------------------------------------------------
+# Exact constructions determined by the ITERLAWN displays
+# ---------------------------------------------------------------------------
+
+# Display implemented:
+#
+#   "Normalized Bézout pairs (ℓ_j, ℓ_j′):
+#      ℓ_j h_j + ℓ_j′ e_j = 1, 0 ≤ ℓ_j < e_j
+#      (ℓ_j = 0, ℓ_j′ = 1 at e_j = 1)."
+def normalized_bezout(e: int, h: int) -> tuple[int, int]:
+    if e < 1 or h < 1:
+        raise ValueError("e and h must be positive")
+    if e == 1:
+        return 0, 1
+    ell = pow(h, -1, e)
+    ell_prime, remainder = divmod(1 - ell * h, e)
+    if remainder != 0:
+        raise ArithmeticError("Bézout division was unexpectedly inexact")
+    assert 0 <= ell < e
+    assert ell * h + ell_prime * e == 1
+    return ell, ell_prime
+
+
+# Display implemented:
+#
+#   "ue + sh = β", with 0 ≤ s < e, and
+#   "s(β) ≡ ℓβ (mod e)".
+def eq12(beta: int, e: int, h: int) -> tuple[int, int]:
+    ell, _ = normalized_bezout(e, h)
+    s = 0 if e == 1 else (ell * beta) % e
+    numerator = beta - s * h
+    if numerator % e != 0:
+        raise ArithmeticError("eq12 numerator is not divisible by e")
+    u = numerator // e
+    assert beta == e * u + s * h
+    assert 0 <= s < e
+    return s, u
+
+
+@dataclass(frozen=True)
+class Split:
+    """The complete iterated eq-(12-int) split of one integer."""
+
+    value: int
+    # Entries use their mathematical indices; element 0 is unused for s/u.
+    s: tuple[Optional[int], ...]
+    u: tuple[Optional[int], ...]
+    # beta[j] is β_j. beta[0] is unused.
+    beta: tuple[Optional[int], ...]
+
+
+# Display implemented:
+#
+#   (s_{n+1},u_{n+1}) := eq12(γ;e_n,h_n);
+#   β_n := u_{n+1} − s_{n+1} w_nΦ_n
+#   for j=n,...,2:
+#       (s_j,u_j) := eq12(β_j;e_{j−1},h_{j−1});
+#       β_{j−1} := u_j − s_j w_{j−1}Φ_{j−1}
+#   (s_1,u_1) := eq12(β_1;e_0,h_0).
+def iterated_split(
+    value: int,
+    e: Sequence[int],
+    h: Sequence[int],
+    wphi: Sequence[int],
+) -> Split:
+    """
+    e and h have indices 0..n.
+    wphi has indices 0..n; wphi[j] means w_j Φ_j.
+    """
+    if len(e) != len(h) or len(e) != len(wphi):
+        raise ValueError("e, h, and wphi must have the same length")
+    n = len(e) - 1
+    if n < 1:
+        raise ValueError("a certificate rung must have n >= 1")
+
+    s: list[Optional[int]] = [None] * (n + 2)
+    u: list[Optional[int]] = [None] * (n + 2)
+    beta: list[Optional[int]] = [None] * (n + 1)
+
+    s[n + 1], u[n + 1] = eq12(value, e[n], h[n])
+    assert s[n + 1] is not None and u[n + 1] is not None
+    beta[n] = u[n + 1] - s[n + 1] * wphi[n]
+
+    for j in range(n, 1, -1):
+        assert beta[j] is not None
+        s[j], u[j] = eq12(beta[j], e[j - 1], h[j - 1])
+        assert s[j] is not None and u[j] is not None
+        beta[j - 1] = u[j] - s[j] * wphi[j - 1]
+
+    assert beta[1] is not None
+    s[1], u[1] = eq12(beta[1], e[0], h[0])
+    return Split(value, tuple(s), tuple(u), tuple(beta))
+
+
+@dataclass(frozen=True)
+class ComposedConstants:
+    delta: int
+    D: tuple[Optional[int], ...]
+    S: tuple[Optional[int], ...]
+
+
+# Display implemented:
+#
+#   δ := floor((s_{n+1}+s'_{n+1})/e_n)
+#   S_n := δ γ_{n+1}
+#   for j=n,...,1:
+#       D_j := (s_j+s'_j−s''_j + ℓ_{j−1}S_j)/e_{j−1}
+#       S_{j−1} :=
+#          D_j γ_j + S_j(ℓ'_{j−1}−ℓ_{j−1}w_{j−1}Φ_{j−1}).
+def compose_constants(
+    left: Split,
+    right: Split,
+    total: Split,
+    e: Sequence[int],
+    ell: Sequence[int],
+    ell_prime: Sequence[int],
+    gamma: Sequence[int],
+    wphi: Sequence[int],
+) -> ComposedConstants:
+    n = len(e) - 1
+    if not (
+        len(ell) == len(ell_prime) == len(gamma) == len(wphi) == len(e)
+    ):
+        raise ValueError("tower arrays must have identical index ranges")
+
+    for sp in (left, right, total):
+        if len(sp.s) != n + 2:
+            raise ValueError("split has the wrong rung")
+
+    top_sum = left.s[n + 1] + right.s[n + 1]  # type: ignore[operator]
+    delta = top_sum // e[n]
+
+    D: list[Optional[int]] = [None] * (n + 1)
+    S: list[Optional[int]] = [None] * (n + 1)
+    S[n] = delta * gamma[n]
+
+    for j in range(n, 0, -1):
+        assert S[j] is not None
+        defect = (
+            left.s[j] + right.s[j] - total.s[j]  # type: ignore[operator]
+        )
+        numerator = defect + ell[j - 1] * S[j]
+        if numerator % e[j - 1] != 0:
+            raise ArithmeticError(f"D_{j} is not integral")
+        D[j] = numerator // e[j - 1]
+        S[j - 1] = (
+            D[j] * gamma[j - 1]
+            + S[j]
+            * (ell_prime[j - 1] - ell[j - 1] * wphi[j - 1])
+        )
+
+    return ComposedConstants(delta, tuple(D), tuple(S))
+
+
+@dataclass(frozen=True, order=True)
+class NormalizedTerm:
+    """One exact coefficient times U^power."""
+
+    power: int
+    coefficient: Fraction
+
+
+# Certificate normalization implemented:
+#
+#   "Normalize each polynomial datum to formal Φ₁-adic coordinates by
+#    replacing Φ₁^i with a common symbol U^i and identifying the shared
+#    coefficient fields."
+def normalize_phi1_powers(
+    terms: Iterable[tuple[int, int | Fraction]],
+) -> tuple[NormalizedTerm, ...]:
+    combined: dict[int, Fraction] = {}
+    for power, coefficient in terms:
+        if power < 0:
+            raise ValueError("Φ₁/U powers must be nonnegative")
+        q = Fraction(coefficient)
+        combined[power] = combined.get(power, Fraction(0)) + q
+    return tuple(
+        NormalizedTerm(power, coefficient)
+        for power, coefficient in sorted(combined.items())
+        if coefficient != 0
+    )
+
+
+SENSITIVE_SINKS = frozenset(
+    {
+        "branch-condition",
+        "valuation",
+        "residual-coefficient",
+        "C_k",
+        "telescope-bound",
+        "final-read",
+        "final-cocycle",
+    }
+)
+
+
+@dataclass(frozen=True)
+class AccessEvent:
+    operation: str
+    key: str
+    key_degree: int
+    coefficient_index: int
+    sink: str
+    path: tuple[str, ...]
+
+
+# Trace predicate implemented:
+#
+#   "no non-leading coefficient of Φ₁ reaches a branch condition,
+#    valuation, residual coefficient, C_k, telescope bound, or final read
+#    except through the opaque formal-power node Φ₁^i."
+def is_forbidden_access(event: AccessEvent) -> bool:
+    nonleading_phi1 = (
+        event.key == "Phi1"
+        and 0 <= event.coefficient_index < event.key_degree
+    )
+    opaque = "opaque-Phi1-power" in event.path
+    return nonleading_phi1 and event.sink in SENSITIVE_SINKS and not opaque
+
+
+# ---------------------------------------------------------------------------
+# Concrete certificate record schema
+# ---------------------------------------------------------------------------
+
+@dataclass(frozen=True)
+class BranchDecision:
+    label: str
+    predicate: str
+    operands: tuple[Any, ...]
+    result: bool
+
+
+@dataclass(frozen=True)
+class SiteSnapshot:
+    branches: tuple[BranchDecision, ...]
+    degrees: tuple[tuple[str, int], ...]
+    # None denotes +infinity, never a floating-point sentinel.
+    valuations: tuple[tuple[str, Optional[Fraction]], ...]
+    residuals: tuple[tuple[str, tuple[int, ...]], ...]
+    c_k: tuple[tuple[int, tuple[NormalizedTerm, ...]], ...]
+    telescope: tuple[tuple[str, Fraction], ...]
+    final_data: tuple[tuple[str, Any], ...]
+    normalized_polynomials: tuple[
+        tuple[str, tuple[NormalizedTerm, ...]], ...
+    ]
+    access_trace: tuple[AccessEvent, ...]
+
+
+@dataclass(frozen=True)
+class SiteRecord:
+    pair_id: str
+    rung: int
+    site_id: int
+    site_name: str
+    left: Optional[SiteSnapshot]
+    right: Optional[SiteSnapshot]
+    required_fields: tuple[str, ...]
+    blocker_code: Optional[str]
+    blocker_detail: Optional[str]
+
+
+def canonical(value: Any) -> Any:
+    if is_dataclass(value):
+        return canonical(asdict(value))
+    if isinstance(value, Fraction):
+        return {"numerator": value.numerator, "denominator": value.denominator}
+    if isinstance(value, dict):
+        return {
+            str(k): canonical(v)
+            for k, v in sorted(value.items(), key=lambda item: str(item[0]))
+        }
+    if isinstance(value, (list, tuple)):
+        return [canonical(v) for v in value]
+    return value
+
+
+# Required certificate predicate implemented:
+#
+#   "equality of the complete normalized records for Φ₁′ and Φ₁″,
+#    together with ... zero forbidden coefficient accesses."
+def compare_site_record(record: SiteRecord) -> tuple[bool, tuple[str, ...]]:
+    errors: list[str] = []
+
+    if record.blocker_code is not None:
+        errors.append(f"{record.blocker_code}: {record.blocker_detail}")
+
+    if record.left is None:
+        errors.append("left normalized snapshot unavailable")
+    if record.right is None:
+        errors.append("right normalized snapshot unavailable")
+
+    if record.left is not None and record.right is not None:
+        left_payload = canonical(record.left)
+        right_payload = canonical(record.right)
+        if left_payload != right_payload:
+            errors.append("complete normalized snapshots differ")
+
+        forbidden = [
+            ("left", event)
+            for event in record.left.access_trace
+            if is_forbidden_access(event)
+        ]
+        forbidden.extend(
+            ("right", event)
+            for event in record.right.access_trace
+            if is_forbidden_access(event)
+        )
+        if forbidden:
+            errors.append(f"{len(forbidden)} forbidden coefficient accesses")
+
+    return not errors, tuple(errors)
+
+
+COMMON_NUMERICAL_FIELDS = (
+    "branches",
+    "degrees",
+    "valuations",
+    "residuals",
+    "C_k",
+    "telescope",
+    "final-read/cocycle",
+    "normalized-polynomials",
+    "forbidden-access-trace",
+)
+
+
+@dataclass(frozen=True)
+class SiteSpec:
+    site_id: int
+    name: str
+    required_fields: tuple[str, ...]
+    blocker_code: str
+    blocker_detail: str
+
+
+HISTORICAL_SITES = (
+    SiteSpec(
+        1,
+        "S0.1 lifts bullet",
+        COMMON_NUMERICAL_FIELDS + ("keys-used-by-anchor/val",),
+        "MISSING_EXECUTABLE_TOWERS",
+        "anchors, val, and the higher lift builders are not instantiated",
+    ),
+    SiteSpec(
+        2,
+        "head declaration",
+        ("defined-term-blocks", "artifact-provenance"),
+        "NOT_A_RUNTIME_SITE",
+        "this is a provenance census, not a tower operation",
+    ),
+    SiteSpec(
+        3,
+        "print-consumption display",
+        ("definition-calls", "print-reads", "text-extractions"),
+        "NOT_A_RUNTIME_SITE",
+        "this is a source-consumption claim requiring source instrumentation",
+    ),
+    SiteSpec(
+        4,
+        "S0.3 clause table: L6 row",
+        COMMON_NUMERICAL_FIELDS + ("L6-dependencies",),
+        "MISSING_CANONICAL_LIFT_RUNTIME",
+        "C_k construction, realizer runtime, telescope, and tower data are absent",
+    ),
+    SiteSpec(
+        5,
+        "S0.3 DCX row + S4.7 head",
+        COMMON_NUMERICAL_FIELDS + ("IH-P-DS", "Q-emission", "DCX-decision"),
+        "OPEN_ENGINE_AND_MISSING_RUNTIME",
+        "the record needs IH P-DS and RM Q-parts; RM-m is displayed open for m>=2",
+    ),
+    SiteSpec(
+        6,
+        "S1 item 1",
+        COMMON_NUMERICAL_FIELDS + ("L6-call-graph",),
+        "MISSING_CALL_TRACE",
+        "the negative W-MULT/RM/DCX dependency claim needs instrumented calls",
+    ),
+    SiteSpec(
+        7,
+        "S2 D_j-INT cross-reference",
+        ("beta", "B", "S", "numerator", "D", "access-trace"),
+        "MISSING_PAIR_INPUTS",
+        "the exact formula is implemented, but no 56-pair split data are given",
+    ),
+    SiteSpec(
+        8,
+        "S2 descent lemma",
+        ("E", "representatives", "shifted-splits", "constants", "access-trace"),
+        "MISSING_PAIR_INPUTS",
+        "the roster and its window representatives are not displayed",
+    ),
+    SiteSpec(
+        9,
+        "S3 EXP-KIT close",
+        ("epsilon-operands", "delta", "T", "D", "field-results", "access-trace"),
+        "MISSING_FIELD_INPUTS",
+        "the exact integer exponents are defined, but the tower letters/fields are absent",
+    ),
+    SiteSpec(
+        10,
+        "S4.0 TRUNC",
+        COMMON_NUMERICAL_FIELDS + ("truncated-object-identities",),
+        "MISSING_TOWER_OBJECTS",
+        "TRUNC requires constructed canonical lifts and shared tower objects",
+    ),
+    SiteSpec(
+        11,
+        "S4.1 operative bracket",
+        COMMON_NUMERICAL_FIELDS + ("m=1-imported-displays",),
+        "MISSING_IMPORTED_RUNTIME",
+        "the imported IL3 realizer/WELL-DEF implementations are not supplied",
+    ),
+    SiteSpec(
+        12,
+        "S4.2 close",
+        COMMON_NUMERICAL_FIELDS + ("L6-call-graph",),
+        "MISSING_CANONICAL_LIFT_RUNTIME",
+        "the L6 numerical run and dependency trace cannot be reconstructed",
+    ),
+    SiteSpec(
+        13,
+        "S4.3 P-L6 clause",
+        COMMON_NUMERICAL_FIELDS + ("DCX-predicate",),
+        "MISSING_TOWER_OBJECTS",
+        "anchor values and an independent DCX predicate need the tower runtime",
+    ),
+    SiteSpec(
+        14,
+        "S4.3 notation erratum",
+        ("identifier-occurrences", "source-regions"),
+        "NOT_A_RUNTIME_SITE",
+        "absence of composed S_j is a lexical source claim",
+    ),
+    SiteSpec(
+        15,
+        "S4.4 precision note",
+        ("case-predicates", "CII", "containment", "downstream-edges"),
+        "SOURCE_AND_RUNTIME_MIX_UNDEFINED",
+        "the row combines pair cases with a proof-consumption claim",
+    ),
+    SiteSpec(
+        16,
+        "S4.6 RM-1 box",
+        ("rung-transition", "RM-call-levels", "source-call-trace"),
+        "MISSING_CALL_TRACE",
+        "the claim concerns which engine implementation is called at each rung",
+    ),
+    SiteSpec(
+        17,
+        "S4.7 PE-G1 bracket",
+        ("open-fence-status",),
+        "NOT_A_RUNTIME_SITE",
+        "ITERLAWN explicitly labels the proposed engine-free lemma NOT claimed",
+    ),
+    SiteSpec(
+        18,
+        "S6.1 denominator architecture",
+        ("per-level-kernels", "denominator-flow-graph"),
+        "NOT_A_DIRECT_RUNTIME_SITE",
+        "this is an assembly/call-graph claim, not a per-pair construction site",
+    ),
+    SiteSpec(
+        19,
+        "S7 table row 4",
+        ("ledger-grade", "L6-dependency-reference"),
+        "NOT_A_RUNTIME_SITE",
+        "this row repeats the L6 dependency adjudication",
+    ),
+    SiteSpec(
+        20,
+        "S7 branch A: IL3-failure",
+        ("counterfactual-dependency-statuses",),
+        "NOT_A_RUNTIME_SITE",
+        "a counterfactual package-failure branch has no tower numerical payload",
+    ),
+    SiteSpec(
+        21,
+        "S7 branch B: IL-failure",
+        ("counterfactual-dependency-statuses",),
+        "NOT_A_RUNTIME_SITE",
+        "a counterfactual package-failure branch has no tower numerical payload",
+    ),
+    SiteSpec(
+        22,
+        "S10 DAG",
+        ("source-nodes", "consumption-edges"),
+        "NOT_A_RUNTIME_SITE",
+        "the DAG is source-level proof provenance, not a pair/rung computation",
+    ),
+)
+
+
+GLOBAL_BLOCKERS = (
+    (
+        "STALE_SITE_UNIVERSE",
+        "the historical 22-row table was extended to row 23 and then "
+        "superseded by the r6 machine census: 194 mapped hits on 147 lines",
+    ),
+    (
+        "ROSTER_UNDERDETERMINED",
+        "the 56 S3 tower pairs are specified only by aggregate counts; "
+        "their coefficients, perturbations, deeper data, and windows are absent",
+    ),
+    (
+        "COUNTERPAIR_INCOMPLETE_ABOVE_RUNG2",
+        "the PE1 counterinstance specifies level-1 data, but not the rung-3..5 "
+        "tower data needed by ITERLAWN",
+    ),
+    (
+        "NO_ACCESS_INSTRUMENTATION",
+        "the displays define no executable boundary that logs every read of "
+        "a non-leading Phi1 coefficient",
+    ),
+)
+
+
+def pair_ids() -> tuple[str, ...]:
+    orbit = tuple(f"S3-orbit-{i:02d}" for i in range(1, 57))
+    return orbit + ("PE1-counterinstance",)
+
+
+def exact_layer_self_test() -> None:
+    for e in range(1, 9):
+        for h in range(1, 9):
+            # Only coprime read parameters are lawful.
+            try:
+                ell, ell_prime = normalized_bezout(e, h)
+            except ValueError:
+                raise
+            except (ArithmeticError, OSError):
+                # pow(..., -1, e) raises ValueError for non-coprime inputs.
+                continue
+            if ell * h + ell_prime * e != 1:
+                raise AssertionError("Bézout self-test failed")
+            for beta in range(-20, 21):
+                s, u = eq12(beta, e, h)
+                if e * u + s * h != beta:
+                    raise AssertionError("eq12 self-test failed")
+
+    normalized = normalize_phi1_powers(
+        [(2, Fraction(1, 3)), (0, 2), (2, Fraction(2, 3)), (1, 0)]
+    )
+    expected = (
+        NormalizedTerm(0, Fraction(2)),
+        NormalizedTerm(2, Fraction(1)),
+    )
+    if normalized != expected:
+        raise AssertionError("formal-U normalization self-test failed")
+
+    allowed = AccessEvent(
+        "build formal power",
+        "Phi1",
+        4,
+        0,
+        "C_k",
+        ("opaque-Phi1-power",),
+    )
+    forbidden = AccessEvent(
+        "inspect constant coefficient",
+        "Phi1",
+        4,
+        0,
+        "branch-condition",
+        ("expanded-polynomial",),
+    )
+    if is_forbidden_access(allowed):
+        raise AssertionError("opaque access was incorrectly forbidden")
+    if not is_forbidden_access(forbidden):
+        raise AssertionError("direct non-leading access was not detected")
+
+
+def emit_result(record: SiteRecord) -> bool:
+    green, errors = compare_site_record(record)
+    output = {
+        "pair": record.pair_id,
+        "rung": record.rung,
+        "site": record.site_id,
+        "site_name": record.site_name,
+        "result": "GREEN" if green else "MISMATCH",
+        "required_record": record.required_fields,
+        "left": None if record.left is None else canonical(record.left),
+        "right": None if record.right is None else canonical(record.right),
+        "errors": errors,
+    }
+    print(json.dumps(canonical(output), sort_keys=True, separators=(",", ":")))
+    return green
+
+
+def main() -> int:
+    exact_layer_self_test()
+
+    pairs = pair_ids()
+    rungs = (2, 3, 4, 5)
+
+    assert len(pairs) == 57
+    assert len(HISTORICAL_SITES) == 22
+    assert len(pairs) * len(rungs) * len(HISTORICAL_SITES) == 5016
+
+    print("SELFTEST exact-integer-layer: GREEN")
+    print(
+        "CERTIFICATE DOMAIN: "
+        "57 pairs x 4 rungs x 22 historical sites = 5016 records"
+    )
+
+    total = 0
+    green_count = 0
+
+    for pair_id in pairs:
+        for rung in rungs:
+            for spec in HISTORICAL_SITES:
+                global_text = "; ".join(
+                    f"{code}: {detail}" for code, detail in GLOBAL_BLOCKERS
+                )
+                record = SiteRecord(
+                    pair_id=pair_id,
+                    rung=rung,
+                    site_id=spec.site_id,
+                    site_name=spec.name,
+                    left=None,
+                    right=None,
+                    required_fields=spec.required_fields,
+                    blocker_code=spec.blocker_code,
+                    blocker_detail=f"{spec.blocker_detail}; {global_text}",
+                )
+                total += 1
+                green_count += int(emit_result(record))
+
+    mismatch_count = total - green_count
+
+    print(
+        "SUMMARY "
+        f"records={total} green={green_count} mismatches={mismatch_count}"
+    )
+    for code, detail in GLOBAL_BLOCKERS:
+        print(f"DETAIL {code}: {detail}")
+
+    print(
+        "DETAIL SITE_CLASSIFICATION: the enumerated 22 rows are dependency/"
+        "exemption claims; several have no per-pair numerical semantics"
+    )
+    print(
+        "DETAIL REQUIRED_REPAIR: pin a current executable site manifest; "
+        "supply all 57 serialized tower pairs through rung 5; supply exact "
+        "ring/field arithmetic and canonical-lift/read engines; instrument "
+        "Phi1 coefficient accesses before rerunning"
+    )
+
+    if mismatch_count == 0:
+        print("FINAL VERDICT: CERTIFICATE-GREEN")
+        return 0
+
+    print(
+        "FINAL VERDICT: MISMATCH "
+        f"(details: {mismatch_count}/{total} site records unavailable; "
+        "the requested 22-site universe is superseded at HEAD)"
+    )
+    return 1
+
+
+if __name__ == "__main__":
+    sys.exit(main())
+```
+
+A substantive rerun becomes possible only after pinning a new executable site manifest—either the historical 22 rows, row 23 included, or the 194-hit machine census—and supplying serialized definitions of all 57 pairs through rung 5 plus the instrumented higher-rung runtime.
