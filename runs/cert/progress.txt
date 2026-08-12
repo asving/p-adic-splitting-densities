@@ -29,3 +29,5 @@
 [10:13:21] C4_grtjc exit 0 (5948 B; OUTCOME: CHALLENGE)
 [10:13:21] C5_grtw2 start
 [10:16:01] C5_grtw2 exit 0 (5096 B; OUTCOME: CHALLENGE)
+[10:16:01] C6_weldmaster start
+[10:20:05] C6_weldmaster exit 0 (7126 B; OUTCOME: CHALLENGE)

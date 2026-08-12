@@ -1,0 +1,99 @@
+No CRITICAL error found in the component formulas. I found three GAPS and one MINOR in the as-built theorem/certification surface.
+
+## Findings
+
+### F-1 — GAP: the “ONE transport” is never constructed as one coherent object
+
+> “there is ONE transport 𝕋 between the harness calculus … and the classifier/print calculus … with five clauses”
+
+> “*Proof = the face table.* Each clause IS the cited composed theorem, at that theorem’s own grade and on its own perimeter”
+
+The table proves five separately typed correspondences—division chains, polygon shears, residual-character formulas, algebra multiplication, and representative covariance. It neither defines a common domain/codomain for `𝕋` nor proves compatibility of those components. Citation of each face does not establish that the cited maps assemble into one transport.
+
+There is also no uniqueness statement capable of supporting the emphatic “ONE.” For example, with \(E=2\), \(K=\mathbf F_5\), and the nontrivial character \(\eta(\nu)=(-1)^\nu\), replacing a gauge \(\widetilde E\) by \(\widetilde E\eta\) leaves its coboundary—and hence the M3 multiplication cocycle—unchanged while changing the gauge-level transport data. Thus M3 does not force the M2/M4 component.
+
+If “ONE” means only “one organizational heading,” the remark says that; then it is not the theorem-level existential assertion displayed in WELD-M. Downstream may consume individual faces, but cross-face coherence is not licensed.
+
+### F-2 — GAP: PE10’s claimed \(H^1=0\) uniqueness route is false
+
+> “the DIRECT-H²/bar-resolution route proving Ẽ is THE canonical gauge — constructed from the cocycle alone and forced by H¹ = 0 uniqueness”
+
+For the trivial coefficient action used by an ordinary twisted group algebra,
+\[
+H^1(C_E,K^\*)=\operatorname{Hom}(C_E,K^\*)=\mu_E(K),
+\]
+which is not generally zero.
+
+Counter-configuration: \(E=2\), \(K=\mathbf F_5\). Then \(-1\in K^\*\) defines a nontrivial character \(\eta:C_2\to K^\*\). If \(\widetilde E\) is one gauge, then
+\[
+\partial(\widetilde E\eta)=\partial\widetilde E
+\]
+because \(\partial\eta=1\). Hence the gauge is not unique. Moreover, the displayed \(\widetilde E=E\circ\sigma\) is constructed from the pre-existing cochain \(E\) and chosen section \(\sigma\), not from the cocycle alone.
+
+This does not refute WM-CLASS’s existence/class identity; it refutes the advertised decorrelated certification route and the word “canonical.”
+
+### F-3 — MINOR: the final acceptance summary overstates WM-COB’s scope
+
+> “WM-COB proved unconditional”
+
+The theorem’s own clauses say otherwise:
+
+> “(iii) … adds the [ILN]† VALUE LAW, scored stratum”
+
+Only WM-COB(i), and the ε-kit field identity in (ii), are pair-unconditional. The composite identity involving \(c_{n+1}\) remains restricted to the scored stratum. On an off-stratum pair, \(D_j=\partial t_j\) remains licensed, but substitution of the cocycle value law does not.
+
+The acceptance paragraph later says “at its displayed conditionality,” limiting the damage, so this is MINOR rather than a second theorem-level gap. Nevertheless, “WM-COB proved unconditional” cannot itself be used as a downstream scope grant.
+
+### F-4 — GAP: the declared J-D consumption asks WM-FENCE for “freedom” it does not prove
+
+> “the J-D block … consumes WM-FENCE’s (F-b)-freedom observation only through the already-adjudicated (J-D0) route”
+
+WM-FENCE supplies character-triviality criteria:
+\[
+\operatorname{ord}(z_\mu)\mid A_\mu
+\quad\text{or}\quad
+\operatorname{ord}(z_\mu)\mid e_\mu A_\mu.
+\]
+It proves no freedom to vary \(z_\mu\), \(A_\mu\), the attained set, or the representative so that those divisibilities hold.
+
+Counter-configuration: take \(K_\mu=\mathbf F_5\), \(z_\mu=2\) of order \(4\), \(A_\mu=1\), and an attained set containing \(1\). Absolute PERIM fails, and WM-FENCE provides no operation that can make it true. Any freedom or existence assertion must come independently from J-D0. The downstream design is explicitly “not executed,” so the present blast radius is nil, but the stated face-to-consumer interface is not licensed.
+
+## R.4 weld-face consumption audit
+
+| Face | Downstream consumption disclosed in the pasted record | Licensed scope |
+|---|---|---|
+| M0 | No executed downstream mathematical consumption identified; only the aggregate “full six-note weld” acceptance | Division-chain identity, JA-PIN domain, representative legitimacy, and its byte/shared-key fences only |
+| M1 | No executed downstream mathematical consumption identified | Shear/vertex/weight correspondence only on the split `P<q`/`P≤q` perimeters, with membership and NO-LEG riders |
+| M2 | No executed downstream mathematical consumption identified | Per-slot character laws and exact recursion; it does not license global scalarization across χ-chain or mod-wrap |
+| M3 | DULEMMA’s `(DMULT-s)` continuation uses the multiplication setting | Licensed for the target algebra and scored-stratum value framework. M3 itself does not prove `(DMULT-s)`; that upgrade must come from DU/DU-A/DU-B, as the annex says |
+| M4 | The first annex updates the W2-C3 supplier scope | Licensed only proved-to-first-twist, measured above, with W2-OPEN-2/OPEN-2a carried. The annex correctly preserves that narrowing |
+| WM-COB(i) | Available to DULEMMA as an integer coboundary template | Arbitrary integer pairs, including off-window/DCX |
+| WM-COB(ii) | Available as the ε-kit field identity | Arbitrary ε-kit arguments; the print interpretation remains lattice-scoped |
+| WM-COB(iii) | Available to DULEMMA only inside its stated perimeter | Scored stratum only; the acceptance record’s “unconditional” shorthand grants nothing more |
+| WM-FENCE/F-b | Planned J-D consumption | Character-triviality criterion only; the claimed “freedom observation” is unlicensed |
+
+The DULEMMA annex’s new statement \(\partial u\equiv1\) is not a consequence of WM-COB, which concerns \(\partial E\). It is licensed only if DU-A/DU-B supply the missing relation, exactly as the annex’s dependency list indicates.
+
+## Survivors
+
+CHECKED CLEAN — the r7 plus-form Bézout normalization and its counterexamples to the former minus form.
+
+CHECKED CLEAN — WM-COB(i)’s sign, shift substitution, and integer arithmetic.
+
+CHECKED CLEAN — WM-COB(ii), with the ε-kit/print-carrier distinction retained.
+
+CHECKED CLEAN — WM-COB(iii), when restricted to the scored stratum.
+
+CHECKED CLEAN — WM-RHO’s period exponent \(-\ell_{j-1}E_{j-1}\).
+
+CHECKED CLEAN — WM-CLASS’s coboundary-class identity as an existence statement; not PE10’s uniqueness gloss.
+
+CHECKED CLEAN — WM-FENCE(a)/(b) with the root-inclusive range.
+
+CHECKED CLEAN — WM-FENCE(c) only under trivial lower χ, with χ-chain and mod-wrap caveats.
+
+CHECKED CLEAN — S5’s arithmetic totals and its withdrawal of WM-SHEAR as independent M1 evidence.
+
+CHECKED CLEAN — the DULEMMA perimeter recorded in the annex: scored stratum, \(m\ge1\), \(e_m\ge2\), with \(e_m=1\) measured and off-stratum pairs open.
+
+OUTCOME: CHALLENGE
