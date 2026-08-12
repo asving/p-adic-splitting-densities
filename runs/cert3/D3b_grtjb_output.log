@@ -1,0 +1,5 @@
+1. **DISCHARGED** — E-3 correctly computes the shear’s determinant and edge transformation. It preserves abscissa run and sends \(\sigma\) to \(e_q\sigma+h_q\), but need not preserve primitive lattice steps or ambient lattice length. The example is valid. The corrected degree statement remains source-side, while realized-grid counting is properly routed through JB-VTX(d4) with all its fences and open residue.
+
+2. **DISCHARGED** — E-4 correctly withdraws the universal off-perimeter falsity claim. For \(f=1\), both valuations are \(0\), both point sets are \(\{(0,0)\}\), and the shear fixes that point regardless of key-byte disagreement. “NOT SUPPLIED” is therefore the justified status; the positive `P<q`/`P≤q` scopes and downstream fences remain unchanged.
+
+OUTCOMES: DISCHARGED, DISCHARGED
