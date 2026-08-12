@@ -1,0 +1,9 @@
+No critical mathematical overclaim survives in T5’s conditional formulation, but the hostile pass is not clean.
+
+- **G-1 — Supplier scope is unresolved and inaccurately characterized.** T5 says the companion “does not promote the displayed implication to a hypothesis-free law.” The pasted WI source explicitly claims the opposite: “runs UNCONDITIONALLY at \(i\ge3\)” and “[GENTOW5-W(i)] is PROVED.” Yet WI treats clause (b), including \(P\)-membership, as unconditional, while the later S12.1 expressly withdraws that status and makes all of clause (b) conditional on \(\mathcal W_{\le n}\). An induction using \(\mathcal W_{\le i-1}\) may repair the proof, but that induction is not the supplier argument as written. T5’s conditional theorem is safe; its description of the companion’s actual statement and proof status is not source-faithful.
+
+- **G-2 — Acceptance evidence remains incomplete.** The pasted material supports the \(\bar k_i=\bar\kappa_i\) bridge, theta orientation, LW3 records, cumulative chain, and corrected \(j-1\) twist index. It does not independently verify T1 C3/A7, GENTOW2-B\(^{\prime\prime}\), PE6, PE3, repository hashes/spans, or the WI run artifacts. Repository execution again failed because `bwrap` is unavailable. Under r3’s own gate, no hostile-pass credit can be awarded.
+
+The \(i=1/2/\ge3\) fences, top twist \(w_n\), avatar separation, and rejection of the theta-free law otherwise agree with the supplied excerpts.
+
+VERDICT: FINDINGS: 0C + 2G + 0m
