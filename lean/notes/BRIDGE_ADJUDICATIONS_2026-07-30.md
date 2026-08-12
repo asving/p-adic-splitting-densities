@@ -16077,3 +16077,23 @@ now supplied; annex #2's readings confirmed at the print. The W-1
 transport correctly stays ATTEMPT (not a citation obligation).
 Census: 4 of 5 in-cone items now closed or in-runner; JD0 + the
 weld-face audit queue behind R1–R8.
+
+**RESIDUE RUNS R1+R2 FOLDED (2026-08-12)** — R1 (DRAIN-N4 acceptance
+attempt): **NOT CLEAN — 1 GAP + 3 riding minors; annex STAYS 1/2.**
+The GAP is real and sharp: ANNEX-LEMMA GENIND-C2's CS-drain estimate
+LOSES THE RESIDUE-DEGREE FACTOR d — it concludes q^{-(N-c)} where the
+consumed (A2-RATE) member needs Q^{-(N-c)} = q^{-d(N-c)}; at d=1 they
+coincide (why prior legs at prime Q missed it), at d ≥ 2 strictly
+weaker; the preceding calculation RETAINS d and the height summation
+drops it. Repair = re-derive the summation keeping Q = q^d (the
+margin is present in the retained line; likely a display-to-final
+slip, but the honest grade is GAP until re-derived). Repair
+derivation queued as R9 after the chain ratifications. R2 (WI
+nonemptiness): **DERIVABLE** — P_{i+1} ≠ ∅ follows from the recipe
+key's roots landing in P_{i+1} via clause (b), non-circular (the
+P-membership clause is w-blind, outside the fence); the three-span
+machine check verified by the orchestrator at b0e5c648; the [r1]
+insertion transcribed unaltered; both consumers confirmed
+unrestricted. WI pass 3 (acceptance, with the FULL consumer paste
+this time) queues as R10. Chain ratifications R3–R8 running (R3 W-12
+in flight).
