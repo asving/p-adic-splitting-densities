@@ -1,3 +1,4 @@
 [19:08:22] comp3 queue start
 [19:08:22] S6R start
 [19:18:08] S6R exit 0 (38883 B; )
+[19:18:08] T1P3 start
