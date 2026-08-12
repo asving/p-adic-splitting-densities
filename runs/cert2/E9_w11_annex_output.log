@@ -1,0 +1,259 @@
+All four findings remain real at HEAD. The acceptance append ratifies the post-r2 mathematics but does not cure these representation and side-claim defects. The following four dated blocks can be appended after the freeze stamp without altering the frozen body.
+
+### 1. REAL — `SPLIT-TAIL` is not a decided `typeOf` shape
+
+The existing r1/F5 bracket only proves that the tail specializes to `2SIDED` after lifting; it does not make the finite-window cell a shape. BOX-5 expressly says its type parameters are unread, and S4.1 correctly omits it from every `omMenu`.
+
+Verbatim-ready repair:
+
+```text
+## ★ C7-F1 CORRECTION — SHAPE MENU VERSUS σ-BOUNDARY
+(orchestrator append, 2026-08-12)
+
+This append supersedes every occurrence of “seven-family decided menu,”
+“the decided leaves are exactly the seven families,” and “Rows (i) with
+counts (ii) are the complete specification the grown omMenu must
+transcribe” by the following precise statement.
+
+(i′) [SIX SHAPE FAMILIES + ONE FINITE-WINDOW σ-BOUNDARY FAMILY]
+The decided typeOf-keyed leaves of the recursive n = 2 read are EXACTLY
+the following six families:
+
+  SEP-SPLIT, SEP-INERT, RAM(h), 2SIDED(w₁,w₂),
+  SPLITEQ(k), INERTDEEP(k),
+
+with h ≥ 1 odd, k ≥ 1, and 1 ≤ w₁ < w₂. Their σ-values, shape data,
+limit densities, and exact visible-row counts are exactly those displayed
+in S1(i)–(ii).
+
+At a finite window N there is in addition the σ-decided boundary family
+
+  SPLIT-TAIL_N(w),  1 ≤ w ≤ ⌊(N−1)/2⌋.
+
+It is a family of window cells, not a decided shape and not a typeOf key.
+At a node instance its defining data are A₀ ≡ 0 mod π^N and v(A₁) = w.
+Every lift has u = v(A₀) ≥ N > 2w and hence lies in the split two-sided
+case, but its second root valuation is u−w and is not determined by the
+window. Indeed, choosing lifts with u = 2w+r gives the distinct shapes
+2SIDED(w,w+r), while the exact lift A₀ = 0 is x(x+A₁). Thus σ = split is
+certified, whereas no single typeOf shape is certified.
+
+Accordingly, the exact finite-window partition in clause (iii) is:
+
+  six genuine decided-shape families
+  ⊔ SPLIT-TAIL_N boundary cells
+  ⊔ σ-UNDECIDED cells.
+
+The limit typeOf menu contains only the six genuine shape families.
+SPLIT-TAIL_N contributes to the finite-window split count and is absorbed
+into the 2SIDED sum as N → ∞, apart from the measure-zero A₀ = 0 locus;
+it is never an omMenu shape entry.
+
+CONSUMER SWEEP. S2.2’s σ-assignment survives because every tail lift is
+split. S2.4’s finite-window partition survives with SPLIT-TAIL understood
+as a boundary cell. S2.5’s finite telescope survives and still requires
+that boundary cell. Clause (iii), the q^N σ-drainage law, and the
+every-window split = inert identity are unchanged. S4.1 now consistently
+specifies only the six typeOf families. S4.2 and BOX-5 retain their two
+undecided conventions verbatim: the σ-convention counts the boundary as
+decided, while the shape convention counts it as undecided. The S7/S10
+SPLIT-TAIL census keys remain valid as window-cell keys, not typeOf keys.
+W-12/J-D1 consumes the unchanged exhaustive partition; Phase-B consumes
+only the six-family shape target; the general W-10/W-11 template and the
+public density story consume unchanged counts and limits. The acceptance
+record’s phrase “seven-family decided menu” is henceforth read as “six
+decided shape families plus one finite-window σ-boundary family.”
+```
+
+### 2. REAL — the current `omMenu` interface cannot literally hold the infinite shape menu
+
+S4.1 acknowledges “either parametrized shape families or a per-window finite menu,” but chooses neither. BOX-2 discloses missing code; it does not resolve the mismatch between an infinite type-indexed family and the displayed bounded, window-free Lean interface.
+
+The missing mathematical aggregation lemma is derivable directly from the displayed densities. It should be recorded while leaving the genuinely code-level representation choice open.
+
+Verbatim-ready repair:
+
+```text
+## ★ C7-F2 CORRECTION — TRUE SCOPE OF CLAUSE (iv)
+(orchestrator append, 2026-08-12)
+
+Clause (iv), S4.1’s “complete specification,” and the corresponding
+acceptance language are superseded by the following display.
+
+(iv′) [MATHEMATICAL TYPE-INDEXED TARGET + FINITE DENSITY COROLLARY]
+The six genuine shape families of C7-F1 form the countable mathematical
+menus
+
+  M_split = {SEP-SPLIT}
+            ⊔ {2SIDED(w₁,w₂) : 1 ≤ w₁ < w₂}
+            ⊔ {SPLITEQ(k) : k ≥ 1},
+
+  M_inert = {SEP-INERT}
+            ⊔ {INERTDEEP(k) : k ≥ 1},
+
+  M_ram   = {RAM(2k−1) : k ≥ 1}.
+
+Each individual key carries the rational density displayed in S1(i);
+the exact window counts in S1(ii) prove those densities. These data are
+the complete MATHEMATICAL typeOf-keyed target. They are not, by
+themselves, a term of the current bounded omMenu interface, which has
+neither a countable-sum constructor nor a window parameter.
+
+For the density-only consumer, the infinite families admit the following
+finite aggregate corollary, derived from their displayed row densities:
+
+  Σ_{k≥1} (q−1)/q^(2k) = 1/(q+1),                         [RAM]
+
+  Σ_{k≥1} (q−1)/(2q^(2k+1)) = 1/(2q(q+1)),               [INERTDEEP]
+
+  Σ_{1≤w₁<w₂} (q−1)²/q^(w₁+w₂+2)
+    = 1/(q²(q+1)),                                       [2SIDED]
+
+  Σ_{k≥1} (q−1)(q−2)/(2q^(2k+2))
+    = (q−2)/(2q²(q+1)),                                  [SPLITEQ]
+
+and hence
+
+  Σ 2SIDED + Σ SPLITEQ = 1/(2q(q+1))
+                        = Σ INERTDEEP.
+
+Adding the SEP rows gives
+
+  density_split = density_inert = q/(2(q+1)),
+  density_ram = 1/(q+1).
+
+Thus an end-to-end Lean implementation has two honest possible designs:
+(a) extend the interface to a countable summable menu and retain one key
+per typeOf shape; or (b) add explicit finite summary keys carrying the
+aggregate rational functions above, sufficient for the density theorem
+but not literally one key per typeOf shape. A per-window finite menu is
+not an implementation of the current interface unless N is added to that
+interface. This note proves the mathematical inputs for both designs but
+does not choose or implement either design; that choice remains Phase-B
+code/API work under BOX-2.
+
+CONSUMER SWEEP. Clauses (i′)–(iii) are unchanged. S4.1 is now a
+mathematical target rather than a claim of immediate transcription into
+the present API. S4.2’s q = 2 capstone computation consumes the aggregate
+INERTDEEP value 1/(2q(q+1)) and survives verbatim. The order-0 Lean anchor
+omMenu_order0 remains unchanged. Phase-B/DecidedOmCountTie must choose
+design (a) or (b); no existing Lean theorem is claimed to make that
+choice. W-12/J-D1 and the PE3 W-12/HMENU3 consumption audit use the proved
+exhaustiveness and aggregate densities, so they survive. BOX-2 remains
+open, now without the overclaim that it is merely a transcription of an
+already API-complete specification.
+```
+
+### 3. REAL — the no-truncation sentence improperly includes `SPLIT-TAIL`
+
+Neither r2/PE2-F1’s finite telescope nor any acceptance text corrects this sentence. The tail has a moving finite-window density and limit zero.
+
+Verbatim-ready repair:
+
+```text
+## ★ C7-F3 CORRECTION — EXACT COUNTS VERSUS BOUNDARY MASS
+(orchestrator append, 2026-08-12)
+
+The sentence in S2.5 beginning “NOTE the counts are EXACT window counts
+equal to (limit density)·q^(2N)” is superseded by the following.
+
+For SEP and each fixed genuine shape row RAM(h), 2SIDED(w₁,w₂),
+SPLITEQ(k), and INERTDEEP(k), once the row is visible at window N, its
+whole-space count (the displayed per-center count multiplied by q
+centers) is EXACTLY
+
+  (that row’s fixed limit density) · q^(2N).
+
+There is no truncation error for those genuine rows.
+
+SPLIT-TAIL_N(w) is different because it is a moving window-boundary cell,
+not a fixed limiting row. For one center, the number of coefficients with
+v(A₁) = w is (q−1)q^(N−w−1), and the history bracket below w is q^(w−1);
+therefore
+
+  #SPLIT-TAIL_N(w) per center
+    = (q−1)q^(N−w−1)q^(w−1)
+    = (q−1)q^(N−2).
+
+After multiplying by q centers its whole-space count and normalized mass
+are
+
+  q(q−1)q^(N−2),             (q−1)q^(−N−1),
+
+respectively. The latter tends to zero for fixed q, so the boundary family
+has no positive fixed-row limit density. At q = 2, N = 4, w = 1 this gives
+8/2^8 = 1/32, exactly as required.
+
+CONSUMER SWEEP. All clause-(ii) count formulas remain unchanged with
+their stated per-center convention. S2.5’s finite telescope still uses
+the nonzero tail count and therefore still proves split-decided =
+inert-decided at every window. Clause (iii)’s partition and q^N drainage
+law are unchanged. S4.2’s shape-undecided correction retains this same
+boundary mass. The S7/S10 census values are unchanged; only the false
+identification of the boundary count with a fixed limit-density multiple
+is removed.
+```
+
+### 4. REAL — inseparable equal-characteristic members should not be called “wild” without qualification
+
+The prior finding’s battery objection is partly a misreading: S2.2’s machine bracket, BOX-4, and S7 already disclose that PARI/TAMEDISC is mixed-characteristic-only. Nevertheless, the mathematical terminology defect remains because S2.2 still says “every p = 2 member is wildly ramified,” and S5 applies “genuinely wild” across the inseparable case.
+
+Verbatim-ready repair:
+
+```text
+## ★ C7-F4 CORRECTION — SEPARABLE WILDNESS AND THE INSEPARABLE CASE
+(orchestrator append, 2026-08-12)
+
+Every unqualified assertion in S2.2, S5, S7/S10, or the acceptance record
+that “every p = 2 RAM member is wild” is superseded by the following
+case distinction.
+
+In mixed characteristic with residue characteristic 2, every RAM(h)
+quadratic is separable, has ramification index e = 2, and is wildly
+ramified because the residue characteristic divides e.
+
+In equal characteristic 2 the derivative of the recentered polynomial
+
+  f(x) = x² + A₁x + A₀
+
+is f′ = A₁.
+
+* If A₁ ≠ 0, the RAM(h) extension is separable. It has e = 2 in residue
+  characteristic 2 and is therefore wildly ramified.
+
+* If A₁ = 0, then f = x² + A₀. In the RAM(h) row, v(A₀) = h is odd, so
+  A₀ cannot be a square because every square has even valuation.
+  Consequently f is irreducible and defines a degree-two purely
+  inseparable extension with e = 2. It is ramified and is not tame, but
+  it is not called “wildly ramified” here because the usual tame/wild
+  ramification dichotomy and different-exponent comparison are being
+  used only for finite separable extensions. The example x² + t lies in
+  exactly this case and has polynomial discriminant zero.
+
+Thus the uniform counting row RAM(h) legitimately contains three
+arithmetic subcases: mixed-characteristic separable wild, equal-
+characteristic separable wild, and equal-characteristic purely
+inseparable ramified. The count and σ = ram assignment are uniform across
+all three; only the terminology differs.
+
+The TAMEDISC statement is also henceforth scoped exactly as follows:
+the tooth fires once for every p = 2 RAM member in the disclosed
+mixed-characteristic PARI oracle rows — 1,440 such sampled members. It
+supplies no equal-characteristic evidence. The equal-characteristic
+conclusions above follow instead from f′ = A₁, the odd valuation of A₀,
+and e = 2.
+
+CONSUMER SWEEP. S2.1’s RAM classification, every count law, and σ = ram
+survive. S2.2’s discriminant spectra survive as polynomial-discriminant
+statements, but the tame/wild comparison is applied only in the separable
+subcases. S5’s uniformity claim survives because it concerns counts, not
+separability. BOX-4, P-6, P-7, and S10 already restrict PARI to mixed
+characteristic and remain correct under the explicit scope above.
+W-12/J-D1, hExhaust, the density totals, and all Lean consumers use only
+the unchanged counts and σ-partition. The acceptance phrase “wild p = 2
+included” is henceforth read as asserting the included separable wild
+members, alongside separately included purely inseparable ramified
+members.
+```
+
+SUMMARY: 4 REAL (repairs delivered) / 0 RESOLVED-ALREADY / 0 ARTIFACT / 0 OBSTRUCTED
