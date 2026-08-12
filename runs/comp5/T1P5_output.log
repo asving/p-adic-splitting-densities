@@ -1,0 +1,56 @@
+Applying r1–r4, I find no critical error, but two proof/scope gaps and one editorial minor.
+
+1. **GAP — C3’s residual-read assumptions do not entail the canonical slot read.**
+
+   The carrier assumes only that the read is:
+
+   > “multiplicative on the relevant ladder monomials and agrees with residue on value-zero factors.”
+
+   It then asserts:
+
+   > “Consequently a slot with coherent digit \(\Gamma_t\) has canonical read  
+   > \(R_{i+1,\beta_t}(\text{slot }t)=w_i^{f_{i+1}-t}\Theta_i(t)\Gamma_t.\)”
+
+   and the proof says:
+
+   > “Multiplying by a coherent digit proves (C3-canonical-read).”
+
+   Agreement with residue on a value-zero factor \(g\) gives \(R(g)=\operatorname{res}(g)\); it does not imply the scalar-covariance identity
+   \[
+   R(M_sg)=R(M_s)\operatorname{res}(g)
+   \]
+   when \(g=\widehat k_t/\widehat n_i(su)\) is not itself a ladder monomial. Moreover, \(\beta_t\) is merely called “the slot grade”; the required relation \(\beta_t=s\bar\kappa_i\) is not stated. Thus the displayed hypotheses justify the ladder B-unit calculation only under an unstated graded scalar-compatibility convention. The gap propagates to (C3-canonical-read), (C3-three-reads), and the A7 cancellation claim.
+
+2. **GAP — the revised A2 consumption implication still absorbs unstated HETOW structure.**
+
+   A2 claims:
+
+   > “\(\text{T1 (C5-monomial-ratio) + (C5-carry)}
+   > \Longrightarrow
+   > \text{the three pinned HETOW displays}.\)”
+
+   But those displays contain the local objects
+   \[
+   \widehat n_2(k),\ n_2(k),\ m(k),\ Q,\ \tau(k),\ s(k),\ w_2
+   \]
+   and require, among other facts, the first equality
+   \[
+   \frac{\widehat n_2(k)}{n_2(k)}
+   =
+   \frac{\widehat n(m(k))}{\varpi^{m(k)}}
+   \]
+   and the second-level relation governing \(m(k+k')\) and the carry \(w_2\). Neither follows from C5, and these local identities are not stated as hypotheses in the span pin. C5 supplies the base monomial-ratio and \(q\)-carry algebra, but does not by itself imply all three quoted HETOW displays. This violates the exact-span rule introduced by r2.
+
+3. **MINOR — r1 leaves the carrier sentence grammatically detached.**
+
+   R1-1 inserts the \(z_1=\eta\) paragraph immediately after
+   \[
+   K_1=\mathbf F_Q(\eta),
+   \]
+   while the original text continues afterward with:
+
+   > “and chosen basis \(1,\eta,\ldots,\eta^{f_1-1}\).”
+
+   In the resulting text, that phrase is no longer syntactically attached to “fix” or “with.” The intended basis datum remains recoverable, so this is editorial rather than mathematical.
+
+VERDICT: FINDINGS | FINDINGS: 0C + 2G + 1m

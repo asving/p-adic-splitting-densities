@@ -1,0 +1,3 @@
+[20:01:25] comp5 queue start
+[20:01:25] T1P5 start
+[20:04:52] T1P5 exit 0 (2616 B; VERDICT: FINDINGS | FINDINGS: 0C + 2G + 1m)
