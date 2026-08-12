@@ -1,0 +1,37 @@
+The core one-step argument is sound: `(ACCOUNT)` implies `(SIDE-COUNT)`, the orbit-size sandwich closes termwise, the valued and residue closures remain distinct, and the proof does not use key irreducibility or a changed coefficient DVR.
+
+1. **GAP — mixed-residual recursion lacks the block theorem needed for exhaustion.**
+
+   The master says:
+
+   > “At a mixed residual, this operation is performed separately on each label block.”
+
+   and clause 4 says:
+
+   > “mixed residuals are first split into their Galois-stable label blocks, and clauses 2–3 are applied independently to those blocks.”
+
+   But the hypotheses never state the necessary intermediate result: for every label \(r\), its class is represented by a monic block polynomial whose polygon is a single side and whose residual is \(c\,r^k\), with the block polynomials multiplying to the parent.
+
+   This matters when the whole residual is inseparable but contains a simple factor. Clause 2 cannot apply because it assumes the whole residual is separable; clause 3 applies only to repeated factors. Root-class disjointness from S1.7 does not itself provide the required block development, residual purity, window/cap assertions, or accounting identity. Consequently the final well-founded induction has no displayed terminal or transition case for a simple companion class inside a mixed residual. This is precisely the substantive content of source ANNEX-LEMMA HE7-13′, but that content is not installed as a master hypothesis.
+
+2. **GAP — HE3.A is not a demonstrated instance of the master.**
+
+   S3.1 discharges lifts, hull/window/cap data, and equivariance, but it does not discharge the master’s universal test package or `(ACCOUNT)`.
+
+   The master requires, for every side denominator \(e'\) and every residual factor \(r'\), a degree-\(De'\deg r'\) test polynomial with the S1.7 properties. The supplied HE3 source explicitly leaves the fractional-slope, residual-degree-\(\ge2\) branch boxed and names higher-degree test polynomials as the missing mechanism; that mechanism belongs to HE6. S3.1 neither restricts the HE3 instance to the source’s unboxed range nor pins HE6 for this route.
+
+   Thus the assertion
+
+   > “A key-free HE3 block enters HE7.A directly.”
+
+   is unsupported under the stated HE3-only pins. It silently omits master premises, contrary to S3’s own rule.
+
+3. **GAP — every marker-delimited source pin fails on the supplied source text.**
+
+   S0.2 declares:
+
+   > “Missing, repeated, or reversed markers cause the corresponding source route to fail closed.”
+
+   None of the supplied HE3, HE6, HE7, HE6R1, HETOW, or GENTOW4 texts contains a `<!-- T2V2PIN:...:BEGIN -->` or `...:END -->` marker-only line. Accordingly none of the 26 advertised marker pairs can be checked for existence, uniqueness, order, or containment from the supplied sources. Under the master’s own convention, all five instance routes therefore fail closed.
+
+VERDICT: NOT CLEAN | FINDINGS: 0C + 3G + 0m

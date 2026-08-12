@@ -5,3 +5,5 @@
 [21:31:36] T5R3 exit 0 (4133 B; SUMMARY: 1 REAL (repairs delivered))
 [21:31:36] T1P9 start
 [21:35:22] T1P9 exit 0 (1815 B; VERDICT: NOT CLEAN | FINDINGS: 0C + 2G + 0m)
+[21:35:22] T2P1v2 start
+[21:38:43] T2P1v2 exit 0 (3003 B; VERDICT: NOT CLEAN | FINDINGS: 0C + 3G + 0m)
