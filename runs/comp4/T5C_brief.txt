@@ -1,0 +1,3084 @@
+COMPOSITION, unit S-4 (T5 w-FRAME NOTE) (gpt-5.6-sol high). Per the blueprint (section below): define the cross-frame unit w and psi^(w) ONCE in the w-inclusive canonical frame; the per-note riders become instances. CRITICAL CONTEXT: the WI note ([GENTOW5-W(i)]) is now CERTIFIED (its content below), and GENTOW5's S12.1 chain + the psi_j^(omega_{j-1}) twist-index corrigendum (below) govern the tower conditionality; T1 (below) is the gauge frame of record. Compose the T5 note: the w-frame definition + the single w-law statement at its certified scope + instance records for the per-note riders w/ span pins + honesty ledger (what stays conditional on [GENTOW5-W(i)] at i >= 3) + arc plan. Attempt 0/2.
+
+=== BLUEPRINT §2 ===
+## 2. COMPRESSION TARGETS, ranked by revision-scope-reduction
+
+Ranking criterion (Asvin's): how much future-revision surface one unified lemma
+removes — measured as (notes whose local arguments become instances) × (the
+demonstrated frequency of errata in that layer). Each target lists WHAT the
+unified lemma is, what it ABSORBS, what gets SHORTER, and the RE-VERIFY scope.
+
+### T1 — LEMMA GAUGE-COCYCLE (the ϑ/wrap recursion, stated once) — RANK 1
+
+- **WHAT.** One lemma on the composed tower's letter layer: the canonical letter
+  recursion z_{i+1} = η_{i+1}·z_i^{−⌊ℓ_i u_{i+1}/e_i⌋} (GENTOW2's formula), its
+  wrap correction W(t) = ⌊(f₂−t)·i(u₂)/e₁⌋ (HETOW [r1]), and gauge-invariance of
+  reads under it — proved once in the w-inclusive canonical frame, as a cocycle
+  statement over the composed carrier (the WELDMASTER gauge c = z̄^δ·∂Ẽ
+  specialized to towers).
+- **ABSORBS (enumerated, 7 sites).** HETOW's [r1] ϖ-wrap seam repair; GENTOW1's
+  gauge annex; GENTOW2's canonical-letter derivation; GENTOW3's gauge annex;
+  GENTOW4's four-site gauge annex; GENTOW5's frame normalization; GENTOW6's
+  gauge annex ([r] repair of the 6.3 scalar reading at f₁ ≥ 2).
+- **WHY RANK 1.** The gauge seam produced findings on the seven tower first
+  passes (appends #17–#20: the notes predated the wrap erratum) — the same fact,
+  re-proved in seven local coordinate systems, drifted seven times. A future
+  letter-layer erratum currently ripples through 7 notes; after T1, through 1.
+- **SHORTER / RE-VERIFY.** Each gauge annex → one displayed substitution
+  (~600–900 lines net removal across the seven). New lemma: full 2-clean arc +
+  sealed battery (frames must include the recorded first-instances: q=4 letters,
+  η≠1, f₁=2 letter-live, μ₂=3, w≠1) + seven consumption checks (§5.3).
+
+### T2 — THE σ-LADDER MASTER INSTANCE (HE7.A at a general carrier) — RANK 2
+
+- **WHAT.** Restate THEOREM HE7.A once over an abstract carrier (a complete DVR
+  stage ring with the ladder data: sides, residuals, test family, termination
+  measure), so that the existing instantiations become instances of ONE theorem.
+- **ABSORBS (enumerated, 5 sites).** HE6R1's reconciliation (HE7 covers the
+  widened box branch "as a LITERAL INSTANCE"); HETOW.A (tower σ read = literal
+  HE7.A instance, bridges HETOW-1/2/3/4 becoming the carrier-checking clauses);
+  GENTOW4's per-block literal HE7.A instances; HE3.A's recursion step (the
+  degree-μ stage resolvent read = the base instance); HE6's ℓ ≥ 2 branch (via
+  HE6R1's own reduction).
+- **WHY RANK 2.** Two accepted notes (HE6R1, HETOW) already PROVE the
+  instance-hood — the mathematics is done; what's missing is the inversion:
+  state once, instantiate five times. This is the "the ladder is ONE induction"
+  observation (HE7 §S6 + heuristics §C1) promoted to the corpus level. Risk: the
+  general-carrier statement must carry HE6's test-family hypotheses abstractly —
+  a real statement-design task, not a transcription.
+- **SHORTER / RE-VERIFY.** HE6R1's and HETOW's instantiation maps become worked
+  examples of one definition; the σ-chain's Lean surface shrinks from 4 bridge
+  layers to 1 theorem + instance records. The master statement is NEW (highest
+  statement-design risk of the five): Codex plan-level adversarial pass BEFORE
+  composing, then the full 2-clean arc + five consumption checks.
+
+### T3 — LEMMA COCYCLE-TELESCOPE (one shape for B″ / HETOW-4 / the cap) — RANK 3
+
+- **WHAT.** One lemma: a cocycle-weighted product along a tower height ladder
+  telescopes to (boundary value) × (monomial in the gauge letter) — the common
+  shape of GENTOW2-B″ (u(β_t) = ϑ(t)·w^{f₃−t}), HETOW-4 (ρ_t = ρ̂_t·τ(H₀)·δ^{−t},
+  i.e. R = τ(H₀)·R̂(Z/δ) — "exactly the J-D0-covered species"), and
+  GENTOW-6.4 (the 𝒯-free window cap).
+- **ABSORBS.** Three separately-proved telescopes; both Codex-challenge repair
+  lemmas (HETOW-4, the 𝒯-free cap) land as instances rather than one-off
+  patches.
+- **SHORTER.** Three proofs → one proof + three two-line instantiations.
+- **RE-VERIFY.** 2-clean arc; three consumption checks; battery re-uses the
+  committed HETOW-4 frames (203 checks / 37 dual-route gp jobs) as regression.
+
+### T4 — THE CERTIFICATE WITNESS (Θ_j threshold + CERT-TOP unified) — RANK 4
+
+- **WHAT.** One definition (touched coordinate, certificate sense — GENTOW3's
+  GT3-r2 pin) + one attainment lemma covering GENTOW3's faithfulness threshold
+  Θ_j = (μ₂−j)E₂ + δ and GENTOW6's CERT-TOP.
+- **ABSORBS.** Two certificate machineries; also gives the four count-grade
+  sub-boxes (GENTOW6-BOX-1/2/3, BOX-4) ONE home — they are refinements of this
+  lemma's count side, so their eventual closure revises one text.
+- **SHORTER.** GENTOW6's CERT-TOP section becomes an instance; the sub-box
+  ledger consolidates.
+- **RE-VERIFY.** 2-clean arc; two consumption checks; the GENTOW3 acceptance
+  battery frames (incl. FR-M3 measured slack) re-run as regression.
+
+### T5 — THE w-FRAME NOTE (ψ^{(w)} and the cross-frame unit w, once) — RANK 5
+
+- **WHAT.** One short note defining the cross-frame unit w and the w-twisted
+  realized residual ψ^{(w)} in the w-inclusive canonical frame, with the
+  measured record attached (GENTOW2-PE6: w ≠ 1 at 6 primes / 4 frames, avatars
+  z₁, z₁², z₂², z₂; GENTOW5-PE3: ψ₃^{(w)}(Y) = 0 on the nose at a 7th prime).
+- **ABSORBS.** GENTOW5's ψ^{(w)} re-scope machinery + the w-facts currently
+  scattered across GENTOW2/GENTOW5 pass records; the owed "w ≠ 1 as-of note"
+  (append #16) lands here instead of as another rider.
+- **SHORTER.** Rider scatter → one citable definition. The w = 1 question stays
+  honestly open and gets its one named home.
+- **RE-VERIFY.** Light: mostly definitional + record consolidation; 2-clean arc
+  at reduced size; no absorbed statement changes.
+
+**Not targets (deliberate).** (a) The four count-grade sub-boxes: open refinement
+work, not compression — they ride T4's home but are a separate track. (b) The
+distribution suite (BCFGTIE/MOMENTS/TAMEK/TAMEKQX): outside the 26-text corpus,
+arcs not yet run. (c) The weld notes themselves: accepted and byte-frozen;
+compression of their CONSUMPTION is SG-2 below, not a rewrite of the notes.
+
+---
+
+## 3. SECOND-GENERATION PROOF CANDIDATES (sketch level; graded honestly)
+
+=== GENTOW5_WI AT HEAD ===
+# [GENTOW5-W(i)] — the i >= 3 monomial form of the B''-transport, PROVED
+## RCT unit GENTOW5-W-i-lemma (FABLE arm) — 2026-08-10 — grade 0/2, hostile arc follows
+
+**Charge.** The named open lemma [GENTOW5-W(i)] (GENTOW5_PROOF
+S11.2 @ b0e5c648, the A-F2 fence): the single-w monomial form of the
+B''-transport at levels i >= 3. GENTOW5's note is FROZEN
+post-acceptance (its S11.6 byte-freeze), so this companion note is
+the lemma's home: statement (byte-matching the fenced display),
+proof, consumption census (R.1 three-leg), machine leg (two-commit
+seal; the committed depth-4/5/6 witnesses reproduced EXACTLY + one
+NEW letter-live level-3 frame). The route is the one the fence
+itself names: GENTOW2-B'''s computation run at level i — ratio of
+normalizers -> tau_i-cocycle -> residue letter — with the HETOW-4
+telescope as sibling precedent. Nothing in GENTOW5_PROOF or
+GENTOW2_PROOF is edited; this note ADDS.
+
+**Verdict up front.** [GENTOW5-W(i)] is PROVED at every level
+i >= 3 of a DEF GENTOW5-1 tower datum (S2 below). The proof is
+GENTOW2-B'''s four-step computation (peel / expand / j >= 1 kill /
+j = 0 digit read) run at level i, with TWO structural
+simplifications over the i = 2 original, both disclosed and both
+consumption-REDUCING: the grade-0 ladder lift z-hat is eliminated
+(the test element is G := N^d itself, digit theta^{-1} carried
+through instead of digit 1 arranged), so neither the T(b)'(iii)
+grade-0 lift supply nor the Thm 4.8 grade-0 read — the two B''-proof
+inputs with NO accepted level-i analogue — is consumed. Every
+surviving input is either level-general in FGMN's source statements
+or on the accepted record at level i (LEMMA GENTOW5-C; the S3 (B-2)
+leg's u_i-family, which S11.2's own adjudication places on the
+PROVED side of the fence).
+
+**Sections.** S1 setting + the fenced statement · S2 the proof ·
+S3 consumption census (R.1 three-leg) · S4 what discharges
+downstream · S5 machine leg (two-commit seal: preregistered
+predictions + teeth) · S6 run verdict (appended from artifacts) ·
+S7 grade box + honest residue.
+
+---
+
+## S1. SETTING + STATEMENT
+
+Ambient setting: a DEF GENTOW5-1 depth-r tower datum (GENTOW5_PROOF
+S2.1 @ b0e5c648: stage data (e_j, f_j, psi_j), properness l_j >= 2
+at j >= 2, heights u_j with the floor chain u_{j+1} > e_{j+1}E_j and
+gcd(u_{j+1}, e_{j+1}) = 1, normalizer recursion nhat, recipe keys),
+with P_{i+1} nonempty, at a level i with 3 <= i < r. All symbols as
+in GENTOW5_PROOF @ b0e5c648 and GENTOW2_PROOF @ 33f86204; nothing is
+re-founded. The objects of the statement:
+
+* the recipe geometry at level i: slots t < f_{i+1}, slot grades
+  beta_t := u_{i+1}(f_{i+1}-t)/e(mu_i) in Gamma_i, top-slot grade
+  kbar_i := beta_{f_{i+1}-1} = u_{i+1}/e(mu_i);
+* the B'-TRANSPORT UNIT FAMILY u_i(beta) in K_i^x — the (B-2 at
+  level i) leg of THEOREM GENTOW5-B's proof (@ b0e5c648 L915–936):
+  u_i(beta) := R_{i+1,beta}(nhat_i(beta-hat)) (beta-hat :=
+  e(mu_i)beta), per-grade, x0-free and g-free, with the repo
+  K_i-digit read and FGMN's Def 3.16 epsilon-normalized coordinate
+  agreeing up to it:  R_{i+1,beta}(g) = u_i(beta) * digit_i(g) for
+  Phi_i-free g of exact grade beta.  At i >= 3 this family is on the
+  PROVED side of the S11.2 fence ("per-grade FIXEDNESS of u_i(beta)
+  ..., x0-freeness and g-freeness", @ b0e5c648 L1904–1908); at i = 2
+  it is LEMMA GENTOW2-B'(3) verbatim;
+* the level-i nhat-cocycle
+  theta_i(t) := res((nhat_i(u_{i+1}(f_{i+1}-t)) /
+  nhat_i(u_{i+1})^{f_{i+1}-t})(x0)) in K_i^x — a FIXED letter unit
+  (S2.3 step (3)'s tau_i-cocycle computation, accepted), reciprocal
+  to S2.1's telescope: theta_i(t) = vartheta_{i,f_{i+1}-t}^{-1}
+  (@ b0e5c648 L938–940);
+* digit_i(g) := res(g(x0)/nhat_i(beta-hat)(x0)), the (R-repo)
+  coherent read at level i, x0 a Phi_i-root, through the canonical
+  evaluation identification k(L_i) ~ F_{i+1} ~ K_i (Prop 1.15(1)/(2),
+  stated in FGMN for every chain level — GENTOW2 S6.1 row 17, PDF
+  p.7 + p.15) — the identification the accepted (B-2 at level i) leg
+  already consumes at exactly this site.
+
+**LEMMA [GENTOW5-W(i)] (i >= 3).** For each recipe slot t < f_{i+1},
+with w_i := u_i(kbar_i) = R_{i+1,kbar_i}(nhat_i(u_{i+1})) in K_i^x:
+
+      u_i(beta_t) = theta_i(t) * w_i^{f_{i+1}-t},
+      w_i = R_{i+1,kbar_i}(nhat_i(u_{i+1})).
+
+This is the fenced display byte-for-byte (GENTOW5_PROOF S11.2
+@ b0e5c648 L1912–1913, ASCII form; u_i(beta_t) = theta_i(t) *
+w_i^{f_{i+1}-t} with the single cross-frame unit w_i). At i = 2 the
+identity is LEMMA GENTOW2-B'' (accepted, ledger row GENTOW2 #4); the
+lemma below extends it to every level i >= 3 of the datum.
+
+---
+
+## S2. PROOF
+
+Fix t < f_{i+1} and write d := f_{i+1} - t >= 1, N :=
+nhat_i(u_{i+1}), M := nhat_i(u_{i+1}d), G := N^d. N and M are ladder
+monomials in pi, x, Phi_1, ..., Phi_{i-1} (the unrolled recursion,
+DEF GENTOW5-1): deg N, deg M < D_i, Phi_i-free, at dv_i-heights
+u_{i+1} resp. u_{i+1}d exactly. deg G <= d(D_i - 1) < f_{i+1}D_i <=
+D_{i+1}.
+
+*(0) Exact grades.* mu_{i+1}(N) = mu_i(N) (Prop 1.9(2): Phi_i-free
+implies nu = mu_i — level-general, GENTOW2 S6.1 row 22), and
+mu_i(N) = kbar_i: N is a monomial, a valuation is additive on
+products, and each factor's value is the chain's exact key value
+(mu_i(Phi_j) = u_{j+1}/ehat_{j+1} in v-normalization for j < i — the
+chain data; equivalently: N is a one-slot element of dv_i-height
+u_{i+1} and LEMMA GENTOW5-C's value clause identifies dv_i ladder
+height with mu_i-value on deg < D_i elements). Hence mu_{i+1}(G) =
+d * kbar_i = beta_t exactly (additivity again), and likewise
+mu_{i+1}(M) = beta_t.
+
+*(i) Peel:* R_{i+1,beta_t}(G) = R_{i+1,kbar_i}(N)^d = w_i^d, a
+y-degree-0 scalar. Iterate Cor 4.7(2) [Q8] d-1 times (no degree
+hypothesis — GENTOW2-B''(i)'s own precedent); at each peel the
+split-off factor N has grade kbar_i = u_{i+1}/e(mu_i) in Gamma_i =
+(1/e(mu_i))Z. Each factor R_{i+1,kbar_i}(N) is a y-degree-0 scalar
+(deg N < D_i = m_{i+1}, Phi_i-free single-point N_{i+1}-polygon —
+Cor 4.4(3)) and nonzero (Cor 4.4(1) at the exact grade of step (0));
+and R_{i+1,kbar_i}(N) = u_i(kbar_i) = w_i by the u_i-family's
+definitional display (S1). [This step is where GENTOW2-B''(i)'s
+z-hat factor is DROPPED: no grade-0 lift is multiplied in, so
+R_{3,0}(z-hat) = d — the Thm 4.8 + T(b)'(iii) step — has no level-i
+analogue to consume.]
+
+*(ii) Expand:* G = Sum_{j>=0} Q_j Phi_i^j, deg Q_j < D_i (the
+Phi_i-adic expansion). By Def 1.8 (nu = mu_{i+1} is DEFINED by the
+expansion minimum — level-general, GENTOW2 S6.1 row 21):
+mu_{i+1}(G) = min_j mu_{i+1}(Q_j Phi_i^j) = beta_t, so every term
+has value >= beta_t, and Cor 4.7(1) [Q8] gives
+
+    R_{i+1,beta_t}(G) = Sum_j R_{i+1,beta_t}(Q_j Phi_i^j).
+
+*(iii) Every j >= 1 term contributes 0 at y-degree 0* — GENTOW2-
+B''(iii) verbatim with (e_3, lam_3, Gamma_2) -> (e_{i+1}, lam_{i+1},
+Gamma_i): if mu_{i+1}(Q_j Phi_i^j) > beta_t it dies by Lemma 3.17
+(row 15); if = beta_t then either e_{i+1} does not divide j —
+impossible, since mu_{i+1}(Q_j) = mu_i(Q_j) in Gamma_i (Prop 1.9(2),
+deg Q_j < D_i) while j*lam_{i+1} not in Gamma_i (gcd(h_{i+1},
+e_{i+1}) = 1) would put the term's value outside Gamma_i, which
+contains beta_t — or e_{i+1} | j, and Cor 4.7(2) + eq (14) [Q7]
+place R_{i+1,beta_t}(Q_j Phi_i^j) = R_{i+1,mu(Q_j)}(Q_j) *
+y^{j/e_{i+1}} at y-degree j/e_{i+1} >= 1. (Both ramification legs
+covered: at e_{i+1} = 1 every j >= 1 term sits at y-degree j >= 1
+directly.)
+
+*(iv) The j = 0 term.* x0 is a Phi_i-root, so evaluation kills every
+j >= 1 term of the expansion: Q_0(x0) = G(x0) = N(x0)^d. Hence
+
+    digit_i(Q_0) = res((N^d / M)(x0)) = theta_i(t)^{-1} != 0:
+
+N^d/M is a value-0 Laurent monomial in pi, x, Phi_1, ..., Phi_{i-1}
+(both N^d and M at dv_i-height u_{i+1}d), so its residue is a FIXED
+letter unit by the level-i gamma-calculus — S2.3 step (3)'s
+tau_i-cocycle computation (accepted; equivalently res((M/N^d)(x0)) =
+theta_i(t) = vartheta_{i,d}^{-1} by the S2.1 reciprocity) — and x0
+lies in P_i with every monomial factor at its exact value (clause
+(b) of THEOREM GENTOW5-B at index i-1: the recipe's roots ARE
+depth-i node points; a w-blind clause, unconditional per the S11.2
+scope walk), so the evaluation is legitimate and exact:
+dv_i(Q_0(x0)) = dv_i(N(x0)^d) = u_{i+1}d exactly. LEMMA GENTOW5-C's
+value clause (deg Q_0 < D_i, level i — the (B-1 at level i) proviso
+of GENTOW5-B's proof) turns the exact evaluation height into the
+exact value mu_i(Q_0) = beta_t, and Prop 1.9(2) gives
+mu_{i+1}(Q_0) = beta_t. Now the u_i-family's factorization (S1, the
+accepted (B-2 at level i) leg) applies to Q_0 (Phi_i-free, exact
+grade beta_t):
+
+    R_{i+1,beta_t}(Q_0) = u_i(beta_t) * digit_i(Q_0)
+                        = u_i(beta_t) * theta_i(t)^{-1},
+
+a y-degree-0 scalar (deg Q_0 < D_i, single-point polygon, Cor
+4.4(3)).
+
+*Equate.* By (ii)+(iii), the y-degree-0 part of R_{i+1,beta_t}(G) is
+the j = 0 term alone; by (i) it is w_i^d. Hence
+
+    w_i^d = u_i(beta_t) * theta_i(t)^{-1},   i.e.
+    u_i(beta_t) = theta_i(t) * w_i^{f_{i+1}-t}.  QED
+
+*Consistency corner (d = 1, the top slot).* theta_i(f_{i+1}-1) =
+res(N/N) = 1 and the identity reads u_i(kbar_i) = w_i — the
+definition of w_i; the proof specializes to a tautology there, as at
+i = 2.
+
+*Why the fence's underdetermination worry does not bite.* The fence
+was right that per-grade fixedness alone underdetermines the single-w
+form (fixed families exist fitting no single w); the proof above does
+not argue from fixedness — it COMPUTES each u_i(beta_t) against the
+one monomial N^d, and the single w_i enters as the d-th power of the
+one peeled factor R_{i+1,kbar_i}(N). The geometry (every slot grade
+beta_t a multiple of the top-slot grade kbar_i by the SAME ladder
+monomial's powers) is what makes one unit suffice; that geometry is
+the recipe's, at every level alike.
+
+---
+
+## S3. CONSUMPTION CENSUS (three-leg checks per R.1)
+
+**The absorbed-statement census (9 items).** Rowed (S-0 ledger,
+GENTOW2_PROOF @ 33f86204): C-1 LEMMA GENTOW2-B'' — the i = 2
+precedent whose proof shape is transported, NOT consumed as a
+premise (row GENTOW2 #4, md5-8 `d4c8b885`, L729–738; proof
+L740–778). Span-pinned (R.1(a) span-pin rule, byte-frozen sources):
+C-2 the (B-2 at level i) leg of THEOREM GENTOW5-B's proof — the
+u_i-family: definitional display, per-grade shape, x0-freeness,
+g-freeness, and the factorization R = u * digit at i >= 3
+(GENTOW5_PROOF @ b0e5c648 L915–936, consumed AT THE FENCE'S OWN
+ADJUDICATION: S11.2's proved list L1904–1908 places exactly this on
+the proved side; this note adds no strength to it); C-3 LEMMA
+GENTOW5-C — the value clause (= (B-1 at level i)) and step (3)'s
+tau_i-cocycle letter computation (@ b0e5c648 L544–613; accepted at
+the annex acceptance grade per its own grade-honesty box); C-4 the
+S2.1 reciprocity theta_i(t) = vartheta_{i,f_{i+1}-t}^{-1}
+(@ b0e5c648 L938–940, on S11.2's proved list); C-5 THEOREM
+GENTOW5-B clause (b) at index i-1 — Phi_i-roots are P_i points with
+exact monomial values (@ b0e5c648 L821–833; w-blind per the S11.2
+scope sentence L1925–1928, so consuming it here is NOT circular:
+the fence conditions only (a)'s psi^{(w)} display + certificate legs
+and (b)'s FGMN-side residual DISPLAYS, never the exact-value/P-locus
+clause); C-6 the (R-repo) coherent read + canonical evaluation
+identification at level i (GENTOW2_PROOF (R-repo) display L500–516,
+level-general via Prop 1.15 — the same site the accepted C-2 leg
+already consumes it); C-7 DEF GENTOW5-1's normalizer recursion +
+floor chain (@ b0e5c648 L387–398). FGMN statements (each verified
+MATCH in GENTOW2 S6.1's PDF-provenance table; each stated in the
+source at arbitrary chain level/inductive valuation): C-8 the
+graded-residual kit — Def 1.8 (row 21), Prop 1.9(2) (row 22), Lemma
+3.17 (row 15), Cor 4.4(1)/(3) (row 5), Cor 4.7(1)/(2) (row 6),
+eq (14) (row 9), Prop 1.15(1)/(2) (row 17); C-9 — deliberately
+EMPTY: Thm 4.8 (row 16) and T(b)'(iii)'s grade-0 lift supply, both
+consumed by GENTOW2-B''s i = 2 proof, are consumed NOWHERE here
+(the S2(i) bracket) — the two inputs with no accepted level-i
+analogue are out of the footprint by construction.
+
+**Leg (a) — STATEMENT.** C-1's display is quoted at its ledger md5;
+`statement_ledger.py --check` green at this note's final commit
+(S6). This note prefixes NO binder, hypothesis, or fixed-witness
+clause to any absorbed statement: C-2..C-5 are consumed at their
+source scope (level i of the same datum), and the one narrowing —
+this note's lemma binds i >= 3 — narrows the CONCLUSION's home, not
+any consumed premise. The proved lemma's statement is byte-matched
+to the fenced display (S1).
+
+**Leg (b) — PROOF-SHAPE.** The transported proof consumes the same
+FGMN kit as the i = 2 original MINUS two items (C-9), and each
+surviving cite is level-general in the source's own quantifier
+(checked row-by-row against S6.1's quoted forms: Def 1.8 defines
+nu for every augmentation; Prop 1.9, Lemma 3.17, Cor 4.4, Cor 4.7,
+eq (14), Prop 1.15 are stated for an arbitrary inductive valuation
+mu / chain level i). No step of S2 instantiates a statement outside
+its source quantifier.
+
+**Leg (c) — CIRCULARITY.** The lemma's conclusion conditions (per
+S11.2's scope) clause (a)'s psi^{(w)} display, (a)'s certificate
+legs, and (b)'s FGMN-side residual displays at i >= 3. The proof
+consumes: C-2 (proved side of the fence), C-3/C-4 (proved side),
+C-5 (the w-blind clause of (b), explicitly OUTSIDE the fence's
+conditional list), C-6..C-8 (accepted/source). No consumed item
+sits behind [GENTOW5-W(i)] itself: the walk above is the
+no-circularity check, item by item.
+
+---
+
+## S4. WHAT DISCHARGES DOWNSTREAM (display; the frozen notes are
+## not edited)
+
+With [GENTOW5-W(i)] proved at i >= 3, the S3(a) algebra of
+GENTOW5_PROOF (@ b0e5c648 L941–954: coherent digit c_t *
+vartheta_{i,f_{i+1}-t}, the theta leg cancels, the w-leg survives)
+runs UNCONDITIONALLY at i >= 3:
+
+    R_{nu_i}(Phi_{i+1}) = psi_{i+1}^{(w_i)},
+
+so the fence's conditional list — clause (a)'s realized-residual
+display psi_{i+1}^{(w_i)} at i >= 3, the (a)-certificate legs
+consuming that form (KP membership via admissibility of psi^{(w)},
+prime, non-equivalence), and (b)'s FGMN-side residual displays at
+the same indices — is DISCHARGED: those clauses now rest on this
+note's lemma instead of an open hypothesis. Unchanged elsewhere:
+the i = 2 level stays on the landed GENTOW2 r3 B-law (verbatim);
+the i = 1 shape + the OPEN u1 = w_1 tie (S11.3 / WFRAME OPEN-2) are
+NOT touched by this note — [GENTOW5-W(i)] binds i >= 3 only, and
+the i = 1 display is a different species (no recipe-slot geometry
+at the outer stage). WFRAME_NOTE's OPEN-1 (grade 0/2, unconsumed
+here) points at the fence this note closes; its ladder §3 reads,
+post-acceptance of this note: i = 2 unconditional, i >= 3
+unconditional at the same display, i = 1 tie open. OPEN-3 (a
+closed-form w-LAW) remains open and is NOT claimed: this note
+proves the SHAPE u = theta * w^d with w_i the R-read of one ladder
+monomial; it computes no w value at any frame — values stay
+measurement territory (S5).
+
+---
+
+## S5. MACHINE LEG (gentow5_wi_checks.py — two-commit seal)
+
+**Instrument.** verification/openmath/gentow5_wi_checks.py, NEW
+(own polynomial kit: integer coefficient lists, Sylvester/Bareiss
+exact resultants, own nhat recursion + exponent-lattice solver; gp
+subprocess for the PARI leg, budget-guarded). Committed BEFORE the
+run with the predictions below in its docstring (seal commit); the
+run appends its output artifact + S6's verdict in a second commit.
+RED outcomes are kept with diagnosis, never tuned away.
+
+**Frames.** (F-A) The committed q = 2 witness chain (GENTOW5 S4:
+u = 1, 5, 21, 85, 341; keys Phi_1 = x^2-2, Phi_2 = Phi_1^2-4x,
+Phi_3 = Phi_2^2-16Phi_1, Phi_4 = Phi_3^2-256Phi_2; f32 =
+Phi_4^2-2^16 Phi_3) + the committed depth-6 objects (gentow5_pe3
+D-legs: f64 = f32^2-2^32 Phi_4; mutants f32m = Phi_4^2-2^20 Phi_1,
+f64m = f32^2-2^40 Phi_2). (F-LW3) THE NEW FRAME, letter-live at
+level 3 — first of its kind on the record: p = 3, h = 1, stage data
+(e, f) = (2,1),(2,1),(2,1),(1,2), heights u = (1, 5, 21, 43) (floor
+chain: 5 > 4, 21 > 20, 43 > 42; gcd's 1), psi_1 = y-2, psi_2 = y-2,
+psi_3 = y-2, psi_4 = y^2-y-1 (irreducible over F_3, c_1 = c_0 = 1):
+
+    Phi_1 = x^2 - 6           (letter z_1 = res(x0^2/3) = 2)
+    Phi_2 = Phi_1^2 - 18x     (nhat_1(5) = 9x, digit 2; z_2 = 2)
+    Phi_3 = Phi_2^2 - 162Phi_1 (nhat_2(21) = 81Phi_1, digit 2; z_3 = 2)
+    Phi_4 = Phi_3^2 - 3xPhi_1Phi_2*Phi_3 - 2*3^9*xPhi_1   (deg 16)
+
+with the level-3 recipe data: nhat_3(43) = 3xPhi_1Phi_2, nhat_3(86)
+= 3^9 xPhi_1 (hand recursion, derived twice: level-by-level solve
+and direct unrolled solve); coherent digits khat_1 = lift_3(c_1 *
+vartheta_{3,1}; 43) = nhat_3(43), khat_0 = lift_3(c_0 *
+vartheta_{3,2}; 86) = 2*nhat_3(86). HAND-DERIVED LATTICE VALUES
+(pre-seal, the instrument re-derives independently):
+nhat_3(86)/nhat_3(43)^2 = 3^7/(x Phi_1 Phi_2^2) = gamma_1^{-1}
+gamma_2^{-1} gamma_3^{-1} (gamma_1 = x^2/3, gamma_2 = Phi_1^2/(9x),
+gamma_3 = Phi_2^2/(81Phi_1)), so theta_3(0) = (z_1 z_2 z_3)^{-1} =
+8^{-1} = 2 in F_3^x — LETTER-LIVE — and vartheta_{3,2} =
+theta_3(0)^{-1} = 2; theta_3(1) = 1 (top slot). The naive twin
+Phi_4n := Phi_3^2 - 3xPhi_1Phi_2*Phi_3 - 3^9*xPhi_1 (digit 1 at
+slot 0 — the gauge-naive prescription).
+
+**Preregistered predictions (sealed; teeth marked T).**
+* P-A1 nhat reproduction, committed chain: nhat_1(5) = 4x,
+  nhat_2(21) = 16Phi_1, nhat_3(85) = 256Phi_2, nhat_4(341) =
+  2^16 Phi_3 — the S4.1/S2.2 committed values EXACTLY.
+* P-A2 nhat at F-LW3: the four displayed values above EXACTLY.
+* P-A3 lattice: theta_3(0) exponent split (-1,-1,-1) on
+  (gamma_1, gamma_2, gamma_3); value 2; reciprocity vartheta_{3,2}
+  * theta_3(0) = 1 in F_3^x.
+* P-B1 committed resultant ladders EXACT (the S4.3 + pe3 D-A3
+  values): v2(Res(Phi_4, g)) = (8, 20, 42, 85) and v2(Res(f32, g))
+  = (16, 40, 84, 170, 341) for g = (x, Phi_1, Phi_2, Phi_3[,
+  Phi_4]); v2(Res(f64, g)) = (32, 80, 168, 340, 682, 1365) for
+  g = (x, Phi_1, Phi_2, Phi_3, Phi_4, f32).
+* P-B2 (T, committed teeth reproduced): Res(f32m, Phi_3) = 0 (drain
+  collapse) and Res(f64m, Phi_4) = 0.
+* P-C1 F-LW3 exact route: v3(Res(Phi_4LW, g)) = (8, 20, 42, 86)
+  for g = (x, Phi_1, Phi_2, Phi_3); the naive twin has the SAME
+  ladder (86 at Phi_3) — resultants are height-level and do NOT
+  discriminate the gauge; the residue does (P-D).
+* P-D1 PARI, coherent key: factorpadic(Phi_4LW, 3) = ONE factor of
+  degree 16; nfinit + idealprimedec: a single prime, (e, f) =
+  (8, 2); nfeltval ladder (x, Phi_1, Phi_2, Phi_3) = (4, 10, 21,
+  43) (v * e(pr), e(pr) = 8).
+* P-D2 letters: res(gamma_1) = res(gamma_2) = res(gamma_3) = 2 at
+  the measured prime (the psi_j-root classes of the datum).
+* P-D3 THE LAW ([GENTOW5-W(3)], the point of the instrument). With
+  P_3 := Phi_2 x^20 / Phi_1^{10} (v = 1/8; the Def 3.12-shape
+  uniformizer, P_4 = P_3 at e_4 = 1) and the avatar w_av :=
+  res((nhat_3(43)/P_3^{43})(xi)) in F_3^x (measured, NOT
+  predicted which value), and Y := res((Phi_3/(3xPhi_1Phi_2))(xi))
+  in F_9 the level-4 residue class:
+    LAW-1  tr(Y) = Y + Y^3 = w_av            (slot t = 1: u_3(kbar)
+                                              = theta_3(1) w = w)
+    LAW-2  norm(Y) = Y^4 = 2 * w_av^2        (slot t = 0: u_3(b_0)
+                                              = theta_3(0) w^2 = 2w^2,
+                                              norm = -k0digit*u = 2w^2
+                                              since -2*2 = 2 in F_3)
+    LAW-3  psi_4^{(w_av)}(Y) = 0 where psi^{(w)} := w^2 psi(y/w)
+  — three measurements (w_av, tr Y, norm Y), two independent
+  equations: the B''(6)-closure of GENTOW2 PE6, one level up, at a
+  letter-live level-3 frame.
+* P-D4 (T, single-w discrimination): psi_4^{(w')}(Y) != 0 at the
+  OTHER unit w' in F_3^x \ {w_av} — exactly one of the two twisted
+  quadratics vanishes at Y; kills "any w fits".
+* P-D5 (T, the no-theta law killed, w-FREE): norm(Y) != (tr Y)^2,
+  i.e. u_3(beta_0) != u_3(beta_1)^2 — preregistered from
+  theta_3(0) = 2 != 1: the theta-free power law u(beta_t) = w^{f-t}
+  is REFUTED at this frame regardless of w_av's value. [Arithmetic:
+  norm/tr^2 = 2w^2/w^2... = u(b_0)*(-k0 digit sign) — see LAW-2
+  bracket; the instrument asserts the displayed F_9 inequality.]
+* P-D6 (T, conditional nose): if w_av != 1 then psi_4(Y) != 0 (the
+  on-the-nose reading fails when the twist is live).
+* P-D7 (T, gauge-naive twin, disjunctive — the B-law predicts its
+  slot-0 residual coefficient u_3(beta_0)*1 = 2w^2 against target
+  coefficient... realized residual y^2 - w y - 2w^2 = (y + w)^2 in
+  F_3[y], a REPEATED-ROOT residual, so the naive twin CANNOT carry
+  the coherent key's certificate): factorpadic(Phi_4n, 3) is NOT
+  (one degree-16 factor with residue degree 2 and psi_4^{(w_av)}
+  vanishing at its residue class) — i.e. at least one of {>1
+  factors; f != 2; psi_4^{(w_av)}(Y') != 0} fires. The observed
+  branch is RECORDED, not predicted.
+
+**Budget + hygiene.** gp legs behind timeouts; if PARI is
+infeasible the exact-integer legs stand and the gp rows are
+DISCLOSED as not-run (not silently green). Output artifact:
+gentow5_wi_checks_output.txt, md5 recorded in S6. No committed
+sealed artifact is edited or re-run; F-A reproduction is by THIS
+instrument's own kit.
+
+---
+
+## S6. RUN RECORD (VERDICT — from the committed artifacts)
+
+**RUN 1 (2026-08-10, under the 07fa3676 seal): RED, KEPT** as
+gentow5_wi_checks_output_run1_RED.txt (md5 598d6704) — 58 checks,
+5 violations, every one instrument-side; diagnosis in the runner's
+DATED REPAIR block. The record: (i) 34/34 exact-integer checks GREEN
+first try — the committed depth-4/5/6 witnesses reproduced EXACTLY
+(nhat values, three resultant ladders, both drain teeth) and the
+LW3 ladders exact; (ii) the 5 red rows were a gp stdin parse defect
+(multi-line statements executed as fragments; the "failed" ladder
+row was a missing print — the probe shows (4,10,21,43) exact) plus
+an AVATAR MIS-KEY: the seal's LAW-1/LAW-3 rows consumed avatar = w
+(GENTOW2 S6.1 row 23, DESCRIPTIVE status) — and LW3 is the first
+measured geography where that leg has a genuinely nontrivial gap
+unit. The intrinsic data run 1 already measured: tr(Y) = 1,
+norm(Y) = 2, i.e. u_3(beta_1) = w_3 = 1 and u_3(beta_0) = 2 =
+theta_3(0) * w_3^2 — [GENTOW5-W(3)] HOLDS on the nose; the avatar
+measured 2 = w_3 * (row-23 gap unit). The lemma (an R-read
+statement) never consumed the avatar leg; the run-2 rows are
+re-keyed to the intrinsic content, with the avatar demoted to a
+record + its own cocycle-closure row (IDY). Run-2 preregistration
+(P-D1', P-D3', P-D4', P-D5, P-D6', P-D7', P-D8) is sealed in the
+repaired runner's docstring with [probe] provenance disclosed per
+row (diagnosis-probe observations run 2 must reproduce).
+
+**RUN 2 (2026-08-10, under the repaired seal, runner md5 c8c5d129):
+GREEN — 60 checks, 0 violations; isolated re-run BIT-IDENTICAL
+(artifact gentow5_wi_checks_output.txt, md5 b0a8c3c4, exit 0 both
+runs).** The rows, read against the preregistration:
+* COMMITTED-WITNESS REPRODUCTION (P-A1/P-B1/P-B2): the q = 2
+  depth-4/5/6 ladder values came out EXACTLY at the committed
+  numbers — v2(Res(Phi_4, g)) = (8, 20, 42, 85), v2(Res(f32, g)) =
+  (16, 40, 84, 170, 341), v2(Res(f64, g)) = (32, 80, 168, 340, 682,
+  1365) — and both committed drain teeth reproduced (Res(f32m,
+  Phi_3) = 0, Res(f64m, Phi_4) = 0), by this instrument's own kit.
+* THE NEW FRAME LW3 (first letter-live level-3 machine contact):
+  chain valid ((e,f) = (8,2) single prime, ladder (4, 10, 21, 43)
+  exact, letters (2, 2, 2) as pinned, theta_3(0) = 2 LIVE at the
+  measured prime = the hand lattice value).
+* THE LAW (P-D3'): measured u_3(beta_1) = tr(Y) = 1 = w_3 (top-slot
+  read) and norm(Y) = 2 = theta_3(0) * w_3^2 — the [GENTOW5-W(3)]
+  display at both slots, with the two-slot closure LAW-I1 EXACT and
+  the single-w twisted realization psi_4^{(w_3)}(Y) = 0 on the nose.
+* TEETH, each FIRED: P-D4' (the other unit's twist does NOT
+  vanish), P-D5 (the theta-free power law u = w^{f-t} is DEAD at
+  this frame — w-free kill), P-B2 (both drains), P-D7' (the
+  gauge-naive twin VERDICT-KILLED: (e, f) = (16, 1) against the
+  coherent key's (8, 2); its Phi_3-value stays exact at 86 — the
+  kill is ramification-theoretic, the repeated-root residual
+  (y+w)^2 predicted at composition time).
+* THE ROW-23 RECORD (P-D8): avatar w_av = 2 = w_3 * (gap unit 2);
+  the avatar family itself closes its own cocycle law (IDY
+  U0 = T0 * w_av^2 with T0 = 2 = the lattice pin) — filed to
+  WFRAME OPEN-3's geography as the first measured instance where
+  avatar != intrinsic w; no clause of this note's lemma consumes
+  the avatar identification.
+
+---
+
+## S7. GRADE BOX + HONEST RESIDUE
+
+**Grade: 0/2 (composed; hostile arc owed).** Machine record: run 1
+RED kept (598d6704, 5 instrument-side rows, diagnosis in the
+runner), run 2 GREEN 60/0 bit-identical re-run; two-commit seal
+honored on both runs (seal 07fa3676 before run 1; repair commit
+before run 2; verdicts from artifacts).
+
+**What this note claims.** [GENTOW5-W(i)] is PROVED at i >= 3 (S2)
+on the consumption footprint of S3 — the fenced display is now a
+lemma, not an open transported hypothesis, and S4's discharge list
+follows. The machine leg verifies the i = 3 instance's measurable
+content at one letter-live frame (LW3) and reproduces the committed
+w-trivial witnesses exactly.
+
+**What this note does NOT claim.** (1) No closed-form w-law: w_3
+was MEASURED (= 1 at LW3's prime); OPEN-3 stands. (2) The avatar =
+w identification (row 23, descriptive) is NOT consumed and is now
+measured to GAP at LW3 (gap unit 2) — a record for row 23's
+elevation obligation, strengthening the case that it must stay
+descriptive pending the s(alpha)-bookkeeping. (3) The i = 1 tie
+u1 = w_1 (S11.3 / OPEN-2) is untouched. (4) Coverage: the LW3
+letter-live test has K_3 = F_3 (two units) and f_4 = 2 (two slots);
+deeper alphabets (K_3 = F_4, F_9) and f_{i+1} >= 3 slot counts are
+machine-unexplored at i >= 3 — the PROOF is uniform in these, the
+record is not. (5) GENTOW5_PROOF and GENTOW2_PROOF are byte-frozen;
+their fences stand as written with this note as the named
+discharge; WFRAME (grade 0/2) is cited as geography only, never
+consumed.
+
+**Ledger.** statement_ledger.py --check green at the final commit
+(this note ADDS statements, changes none). Artifacts:
+gentow5_wi_checks.py (c8c5d129), gentow5_wi_checks_output.txt
+(b0a8c3c4), gentow5_wi_checks_output_run1_RED.txt (598d6704).
+
+
+---
+
+**[r1, 2026-08-12 — P_{i+1}-nonemptiness is derived, not a
+hypothesis.]** For every permitted level 3 <= i < r, DEF GENTOW5-1
+supplies the recipe key Phi_{i+1}; it is a monic polynomial of
+positive degree. Choose a root alpha of Phi_{i+1} in the fixed
+algebraic closure. THEOREM GENTOW5-B clause (b), at index i, gives
+
+    alpha in P_{i+1}.
+
+This use is noncircular: S11.2 expressly places the repo-side
+P-membership clause outside the [GENTOW5-W(i)] fence and classifies
+it as w-blind. Hence P_{i+1} is automatically nonempty for every
+3 <= i < r. Accordingly, S1's words "with P_{i+1} nonempty" record
+a derived fact and impose no additional hypothesis; the lemma
+quantifies unconditionally over every such i, exactly as the fenced
+statement does.
+
+Consumer check: GENTOW5 S11.2 has the required nonemptiness because
+its unconditional clause (b) puts every Phi_{i+1}-root in P_{i+1}.
+WFRAME OPEN-1 inherits the same context: it explicitly lists
+P-membership among the w-blind, nonconditional clauses and points
+to S11.2 for the statement and status. Thus neither consumer needs
+a P_{i+1}-nonemptiness restriction.
+
+*(Derived by the R2 residue run (gpt-5.6-sol high, runs/residues/
+R2_wi_r1_output.log); machine check — the three spans at b0e5c648
+L387-398 / L821-833 / L1925-1928 — verified by the orchestrator
+before transcription; transcribed unaltered per the standing
+division of labor. Repairs the Codex passPE2 finding G-1.)*
+
+=== GENTOW5 2026-08-12 APPENDS ===
+## S12. [GT5-r5] RESIDUAL DISCHARGE REPAIRS (2026-08-12 — dated append; acceptance 2/2 remains ANNOTATED)
+
+### S12.1 [R-i2] `[GENTOW5-W(i)]` CONDITIONALITY PROPAGATED THROUGH THE COMPLETE CONSUMER CHAIN
+
+**Superseded scope in S11.2.** S11.2 correctly leaves open, for every \(i\ge 3\),
+
+\[
+[{\rm GENTOW5\!-\!W}(i)]\qquad
+u_i(\beta_t)=\theta_i(t)\,w_i^{\,f_{i+1}-t},
+\qquad
+w_i=R_{i+1,\bar k_i}(\widehat n_i(u_{i+1})),
+\]
+
+but its subsequent assertion that exact values, repo-side residue classes, \(P\)-membership, clause (c), and clause (e) remain unconditional is WITHDRAWN. A fixed per-grade unit family is not enough: “\(w\)-blind” means invariance AFTER the family has been proved to have the single-\(w_i\) geometric form. It does not construct that form.
+
+For \(n\ge3\), write
+
+\[
+\mathcal W_{\le n}:=
+\bigwedge_{3\le q\le n}[{\rm GENTOW5\!-\!W}(q)].
+\]
+
+The cumulative condition records the induction history; locally, the new input at rung \(n\) is \([{\rm GENTOW5\!-\!W}(n)]\).
+
+**Correct conditional scope.**
+
+1. **Clause (a).** At index \(n\ge3\), conditional on \(\mathcal W_{\le n}\), the pinned recipe has
+
+   \[
+   R_{\nu_n}(\Phi_{n+1})
+   =\psi_{n+1}^{(w_n)}
+   :=w_n^{f_{n+1}}\psi_{n+1}(y/w_n),
+   \]
+
+   and the admissibility, key-polynomial membership, prime/irreducibility certificate, and non-equivalence conclusions follow as written. Without \([{\rm GENTOW5\!-\!W}(n)]\), per-grade fixedness supplies no single substitution \(y\mapsto w_ny\), so none of those certificate legs is established for the pinned key.
+
+2. **Clause (b), including exact values and \(P\)-membership.** Corollary 6.4 fires only after clause (a) has supplied the key-polynomial/prime certificate for \(\Phi_{n+1}\). Consequently, at index \(n\ge3\), ALL of clause (b) is conditional on \(\mathcal W_{\le n}\): one-sidedness at every lower level, the corrected residual powers
+
+   \[
+   R_{j-1}(\Phi_{n+1})
+   =\bigl(\psi_j^{(\omega_j)}\bigr)^{\,l_{j+1}\cdots l_{n+1}}
+   \qquad(1\le j\le n+1),
+   \]
+
+   the exact intermediate values
+
+   \[
+   v(\Phi_{j-1}(\xi))=\frac{u_j}{\widehat e_j},
+   \]
+
+   the repo-side residue-class identifications, and therefore
+   \(\xi\in P_{n+1}\). Here \(\omega_1\) is S11.3’s proved fixed
+   \(z_1\)-letter-power unit, \(\omega_2=w_2\) from the landed
+   GENTOW2 law, and \(\omega_j=w_j\) for \(j\ge3\). The B'' root
+   correspondence is usable only after the corresponding common
+   \(\omega_j\) exists; it cannot turn an arbitrary per-grade unit
+   family into a geometric twist.
+
+3. **S11.1 and clause (c).** The numerical \(\rho\)-ladder of
+   S11.1.2 is unconditional floor arithmetic, but S11.1.1 and
+   S11.1.3 consume clause (b): S11.1.1 obtains the one-sided
+   polygons and
+
+   \[
+   \operatorname{descmin}(\Phi_k)=L_k\lambda
+   \]
+
+   from \((b)@(k-1)\), while S11.1.3 compares \(g\) against those
+   sides and their exact pins. Thus clause (c) at index \(n\ge3\),
+   including its sufficiency direction, deeper-read ascent,
+   fibration, node pins, and field-floor conclusion, is conditional
+   on \(\mathcal W_{\le n}\). Step 1 already consumes \((b)@n\);
+   the repaired Step 2 additionally consumes the earlier
+   \((b)@q\) instances occurring in its descent.
+
+4. **Clause (e) and the induction feed.** Clause (e) at index
+   \(n\ge3\) consumes clause (c)’s pins, so its automatic next-floor
+   conclusion
+
+   \[
+   u_{n+2}>e_{n+2}E_{n+1}
+   \]
+
+   is conditional on \(\mathcal W_{\le n}\) as well. Later arguments
+   may still use that inequality unconditionally when it is included
+   explicitly in the fixed tower datum; only its claimed automatic
+   derivation from the recipe is conditional.
+
+The complete dependency chain is therefore
+
+\[
+[{\rm GENTOW5\!-\!W}(n)]
+\Longrightarrow (a)@n
+\Longrightarrow {\rm Corollary\ 6.4}\Longrightarrow (b)@n
+\Longrightarrow {\rm S11.1.1/S11.1.3}
+\Longrightarrow (c)@n
+\Longrightarrow (e)@n
+\Longrightarrow\text{the next automatic floor}.
+\]
+
+**Unaffected scope.** The \(i=2\) rung remains unconditional by the landed GENTOW2 law; the \(i=1\) residual remains exactly S11.3’s fixed-letter-power statement with only its identification with the displayed \(w_1\) open. LEMMAS GENTOW5-A0/A1, the refine-transfer clause (d) at its stated event hypotheses, LEMMA GENTOW5-D under an explicitly supplied floor-chain datum, formal monicity/degrees and recipe-height arithmetic, and the S4 witness remain unaffected. At S4 every \(K_i^\times=\{1\}\), so each required geometric law is tautological there.
+
+### S12.2 [R-i4] THE LIFT RUNG, RECIPE RANGE, AND ALL LIFT CONSUMERS CORRECTED
+
+**Superseded S11.4 bracket.** The sentence placing the displayed
+\(\operatorname{lift}_i(c;m)\) above \(\operatorname{bound}_{i+1}\)
+is WITHDRAWN. That display realizes \(c\in K_i\) by a polynomial of
+degree \(<D_i\); hence it consumes the PRECEDING lift instance and
+has threshold \(\operatorname{bound}_i\), not
+\(\operatorname{bound}_{i+1}\).
+
+Precisely,
+
+\[
+\operatorname{lift}_i(c;m)\in\mathcal O[x],\qquad
+\deg\operatorname{lift}_i(c;m)<D_i,\qquad
+\operatorname{res}\!\left(
+ \frac{\operatorname{lift}_i(c;m)}{\widehat n_i(m)}
+\right)=\iota^{(i)}(c)
+\]
+
+is valid for
+
+\[
+m>\operatorname{bound}_i.
+\]
+
+For \(i\ge2\) this is supplied by \(({\rm LIFT}_{i-1})\); for \(i=1\)
+it is the accepted base lift. By contrast, the clause labelled
+\(({\rm LIFT}_i)\) in LEMMA GENTOW5-C constructs \(K_{i+1}\)-digits
+of degree \(<D_{i+1}\) and therefore correctly has threshold
+
+\[
+\operatorname{bound}_{i+1}
+=(l_{i+1}-1)u_{i+1}
+ +e_{i+1}\operatorname{bound}_i.
+\]
+
+**The bound needed by every recipe lift is automatically met.**
+At the base,
+
+\[
+\operatorname{bound}_1=(l_1-1)u_1<E_1=l_1u_1.
+\]
+
+Inductively, if
+\(\operatorname{bound}_{i-1}<E_{i-1}\), the floor rung
+\(u_i>e_iE_{i-1}\) gives
+
+\[
+e_i\operatorname{bound}_{i-1}<u_i
+\]
+
+and hence
+
+\[
+\operatorname{bound}_i
+=(l_i-1)u_i+e_i\operatorname{bound}_{i-1}
+<l_i u_i=E_i.
+\]
+
+Thus
+
+\[
+\boxed{\operatorname{bound}_i<E_i\quad\text{for every }i\ge1.}
+\]
+
+For a nonzero recipe coefficient \(c_t\), put
+\(s=f_{i+1}-t\). Since \(t<f_{i+1}\), one has \(s\ge1\), and the
+recipe height is
+
+\[
+m_t=s\,u_{i+1}\ge u_{i+1}
+>e_{i+1}E_i\ge E_i>\operatorname{bound}_i.
+\]
+
+Therefore the required preceding-rung lift exists and gives
+
+\[
+\widehat k_t
+=\operatorname{lift}_i
+ \bigl(c_t\vartheta_{i,s};\,s u_{i+1}\bigr)
+\in\mathcal O[x],\qquad
+\deg\widehat k_t<D_i,
+\]
+
+with exact \(dv_i\)-height \(s u_{i+1}\) and the prescribed coherent
+\(K_i\)-digit. When \(c_t=0\), \(\widehat k_t=0\) and no lift is
+required. Consequently every nonzero recipe side term has exact
+\(dv_{i+1}\)-height
+
+\[
+e_{i+1}s u_{i+1}+e_{i+1}t u_{i+1}
+=e_{i+1}f_{i+1}u_{i+1}=E_{i+1},
+\]
+
+and its degree is \(<D_{i+1}\).
+
+No recipe consumer needs
+\(m_t>\operatorname{bound}_{i+1}\). The corrected consumer sweep is:
+
+* DEF GENTOW5-1 and clause (a) need the preceding-rung
+  \(K_i\)-digit lift above \(\operatorname{bound}_i\), proved above.
+* LEMMA GENTOW5-D’s \(({\rm INV}\!-\!j)\) carry display needs only
+  \(\deg\widehat k_t<D_i\) and the exact height
+  \(s u_{i+1}\), both now proved in the correct range.
+* Clause (c), including Step 1 and Step 5, consumes those same exact
+  side heights and coherent digits; it does not consume
+  \(\operatorname{bound}_{i+1}\) for a recipe coefficient.
+* The S4 recipe keys consume respectively
+  \(\operatorname{bound}_1,\operatorname{bound}_2,
+  \operatorname{bound}_3,\operatorname{bound}_4\), never the next
+  bounds.
+
+The depth-4 witness makes the rung distinction explicit:
+
+\[
+(\operatorname{bound}_1,\operatorname{bound}_2,
+  \operatorname{bound}_3,\operatorname{bound}_4)
+=(1,7,35,155),
+\]
+
+while its successive recipe heights are
+
+\[
+5,\ 21,\ 85,\ 341.
+\]
+
+Thus \(5>1\), \(21>7\), \(85>35\), and \(341>155\), exactly as
+required. The rejected next-rung demands would be \(5>7\),
+\(21>35\), \(85>155\), and \(341>651\), explaining why S11.4’s
+range assertion was false while every actual recipe lift remains
+valid.
+
+Finally, genuine refine consumers use the other rung correctly:
+\(\operatorname{lift}_{i+1}(s;\lambda)\) realizes \(K_{i+1}\) with
+degree \(<D_{i+1}\), so it needs
+\(\lambda>\operatorname{bound}_{i+1}\). Their event hypothesis gives
+
+\[
+\lambda>E_{i+1}>\operatorname{bound}_{i+1},
+\]
+
+by the boxed inequality. Hence THEOREM GENTOW5-A and clause (d)’s
+refine lifts also land in their required ranges. This proves every
+actual lift consumption; no qualification of the recipe or refine
+statements is needed.
+
+*(The S12 append above was derived by the E12 certification run
+(gpt-5.6-sol high, runs/cert2/E12_gentow5_output.log, 2026-08-12),
+repairing the two D1a residuals (INSUFFICIENT finding 2 and
+NEW-ISSUE finding 4); orchestrator verification before
+transcription — R-i2's dependency chain checked against the D1a
+finding ((a)@n needs [W(n)]; Corollary 6.4 fires only after (a);
+(b) ⟹ S11.1.1/S11.1.3 ⟹ (c) ⟹ (e)), with the unaffected scope
+(i = 2 by the landed GENTOW2 law; S4's trivial K_i^×) named;
+R-i4's rung logic checked (lift_i realizes K_i with deg < D_i, so
+its threshold is bound_i — the level-i instance) and the depth-4
+witness re-computed (bounds (1,7,35,155) vs recipe heights
+(5,21,85,341): each exceeds its level-i bound, none the next-rung
+bound — 5>1, 21>7, 85>35, 341>155 vs the failing 5>7 etc.); refine
+consumers correctly use lift_{i+1} at λ > E_{i+1} > bound_{i+1}.
+Transcribed unaltered per the standing division of labor. Ledger:
+row 10 → both residuals repaired, awaiting sol discharge (cert3).)*
+
+
+**Dated corrigendum (2026-08-12, post-D3i — S12.1's residual-twist
+index).** The D3i discharge pass (gpt-5.6-sol high,
+runs/cert3/D3i_gentow5_output.log) adjudicated S12.1 NEW-ISSUE at one
+index: clause (a) at index r supplies the twist w_r for ψ_{r+1}, so
+in clause (b)'s corrected residual display the twist attached to ψ_j
+is INDEXED j−1: ψ₂ carries S11.3's fixed letter-power unit, ψ₃
+carries w₂, and ψ_j carries w_{j−1} for j ≥ 4 — read every
+ψ_j^{(ω_j)} in S12.1's clause (b) as ψ_j^{(ω_{j−1})} with ω₁ = the
+S11.3 unit (the outer ψ₁ leg handled separately as accepted). The
+display as first written demanded w_{n+1} at the top term,
+exceeding the assumed 𝒲_{≤n}. Correspondingly, the dependency chain
+diagram is read under the ambient hypothesis 𝒲_{≤n} as a whole (its
+first arrow consumes [GENTOW5-W(n)] with the earlier instances
+ambient). R-i4 (the lift rung) is unaffected and was DISCHARGED.
+Awaiting sol re-confirmation in the next queue.
+
+=== T1 AT HEAD ===
+# T1 — LEMMA GAUGE-COCYCLE
+
+## The wrap/\(\vartheta\) recursion, exact lifts, and normalization bridges, stated once
+
+**RCT unit:** S-1-T1-gauge-cocycle, revision pass S-1, 2026-08-12  
+**Status:** revised candidate of record; hostile arc not yet run on this revision  
+**Supersedes:** the composed 2026-08-10 T1 draft and its inline repair riders
+
+This revision folds the certified 2026-08-12 gauge-seam corrections into the statement rather than leaving them as riders. In particular:
+
+- exact integral \(K_1\)-lifts are asserted on the proved live domain \(M>D'h\), and the composed-key coefficient contains the positive \(\eta^{W(t)}\) wrap correction;
+- the canonical minimal-grid twist is separated from the actual print twist by the attained-origin factor \(z^\nu\);
+- the weld is used only at the proved scope of the five-field package WELD-M-PKG; no cross-face coherence or uniqueness is asserted; and
+- the HE6 slot coefficient is the normalized coefficient sum \(\gamma_k(A)\), not the generally vacuous sum of bare coefficient residues.
+
+The lemma is one source of the tower gauge formulas. It organizes those fields of WELD-M-PKG that consume the formulas around the same cocycle, but it does not upgrade the package to a single coherent map.
+
+## 1. Statement
+
+### LEMMA GAUGE-COCYCLE
+
+#### 1.1 Carrier and domain
+
+Fix a discretely valued base field with uniformizer \(\pi\), residue field \(\mathbf F_Q\), and a MacLane/Okutsu tower with level-\(i\) residue field \(K_i\). At level \(1\), fix
+
+\[
+e_1,f_1,h\ge1,\qquad \gcd(e_1,h)=1,\qquad D'=e_1f_1,
+\]
+
+with
+
+\[
+dv_1(x)=h,\qquad dv_1(\pi)=e_1,
+\qquad
+\eta=\operatorname{res}\!\left(\frac{x^{e_1}}{\pi^h}\right),
+\qquad
+K_1=\mathbf F_Q(\eta),
+\]
+
+and chosen basis \(1,\eta,\ldots,\eta^{f_1-1}\).
+
+For every integer height \(k\), let
+
+\[
+\widehat n_1(k)=x^{i(k)}\pi^{a(k)},\qquad
+0\le i(k)<e_1,\qquad i(k)h+a(k)e_1=k.
+\]
+
+This is a Laurent normalizer at an arbitrary integer height. A full integral \(K_1\)-digit slot is asserted below only on the proved live domain \(k>D'h\). No full \(K_1\)-slot is asserted at \(k\le D'h\).
+
+At a general level \(i\), fix exact-height normalizers \(\widehat n_i(m)\) in the prescribed bounded-exponent tower normal form, stage data
+
+\[
+e_{i+1},\qquad f_{i+1},\qquad u_{i+1},
+\]
+
+and
+
+\[
+\psi_{i+1}(y)
+=
+y^{f_{i+1}}-\sum_{t<f_{i+1}}c_ty^t
+\in K_i[y],
+\qquad c_0\ne0.
+\]
+
+Whenever an exact-height lift is invoked, assume it lies in its stated integral domain and satisfies
+
+\[
+dv_i(\operatorname{lift}_i(d;m))=m,
+\qquad
+\operatorname{res}\!\left(
+\frac{\operatorname{lift}_i(d;m)}{\widehat n_i(m)}
+\right)=d.
+\]
+
+Zero is lifted as zero. At level \(1\), conclusion (C6) supplies this lift uniformly when \(m>D'h\).
+
+Define the repo and canonical letters
+
+\[
+\eta_{i+1}
+=
+\operatorname{res}\!\left(
+\frac{\Phi_i^{e_{i+1}}}{\widehat n_i(u_{i+1})}
+\right),
+\qquad
+z_{i+1}
+=
+\operatorname{res}\!\left(
+\frac{\Phi_i^{e_{i+1}}}{\pi_{i+1}^{u_{i+1}}}
+\right).
+\]
+
+At level \(1\), write
+
+\[
+\pi_2=x^{\ell_1}\pi^{\ell'_1},
+\qquad
+\ell_1h+\ell'_1e_1=1,
+\qquad
+0\le\ell_1<e_1.
+\]
+
+For a homogeneous slot of height \(su_{i+1}\), distinguish:
+
+1. its coherent digit \(\Gamma\), read against \(\widehat n_i(su_{i+1})\);
+2. its multiplicative coefficient, read against \(\widehat n_i(u_{i+1})^s\); and
+3. its canonical residual read \(R_{i+1,\beta}\).
+
+Assume at the consumed sites that the canonical residual read is multiplicative on the relevant ladder monomials and agrees with residue on value-zero factors. This is a site obligation, not an assertion about every homogeneous initial form.
+
+Put
+
+\[
+\bar\kappa_i=\frac{u_{i+1}}{e(\mu_i)},
+\qquad
+w_i
+=
+R_{i+1,\bar\kappa_i}
+\bigl(\widehat n_i(u_{i+1})\bigr)
+\in K_i^\times.
+\]
+
+The carrier contains no letter recursion, cocycle identity, corrected-key formula, read dictionary, print-origin bridge, or weld coherence theorem.
+
+#### (C1) Letter recursion
+
+At every defined level,
+
+\[
+\boxed{
+z_{i+1}=\eta_{i+1}\rho_i,
+\qquad
+\rho_i=
+\operatorname{res}\!\left(
+\frac{\widehat n_i(u_{i+1})}
+{\pi_{i+1}^{u_{i+1}}}
+\right).
+}
+\tag{C1-general}
+\]
+
+The quotient has value zero. Successive reduction by the tower relations expresses \(\rho_i\) as a monomial in preceding canonical letters. This is a terminating reduction algorithm; no closed exponent formula is asserted at arbitrary depth.
+
+At level \(2\),
+
+\[
+\boxed{
+z_2=\eta_2z_1^{-\lfloor\ell_1u_2/e_1\rfloor}.
+}
+\tag{C1-level-2}
+\]
+
+#### (C2) The normalized wrap cocycle and its telescope
+
+Define
+
+\[
+\operatorname{wrap}(a,b)
+=
+\left\lfloor
+\frac{i(a)+i(b)}{e_1}
+\right\rfloor
+\in\{0,1\}.
+\]
+
+Then
+
+\[
+\boxed{
+\widehat n_1(a)\widehat n_1(b)
+=
+\widehat n_1(a+b)
+\left(\frac{x^{e_1}}{\pi^h}\right)^{\operatorname{wrap}(a,b)}.
+}
+\tag{C2-wrap}
+\]
+
+For
+
+\[
+\tau_i(a,b)
+=
+\frac{\widehat n_i(a)\widehat n_i(b)}
+{\widehat n_i(a+b)},
+\]
+
+associativity gives the normalized two-cocycle law
+
+\[
+\tau_i(0,a)=\tau_i(a,0)=1,
+\qquad
+\boxed{
+\tau_i(a,b)\tau_i(a+b,c)
+=
+\tau_i(b,c)\tau_i(a,b+c).
+}
+\tag{C2-cocycle}
+\]
+
+Define the building-orientation telescope unit
+
+\[
+\boxed{
+\vartheta_{i,s}
+=
+\operatorname{res}\!\left(
+\frac{\widehat n_i(u_{i+1})^s}
+{\widehat n_i(su_{i+1})}
+\right)
+\in K_i^\times.
+}
+\tag{C2-vartheta}
+\]
+
+Then
+
+\[
+\boxed{
+\vartheta_{i,0}=\vartheta_{i,1}=1,
+\qquad
+\vartheta_{i,s+1}
+=
+\vartheta_{i,s}\,
+\operatorname{res}
+\bigl(\tau_i(su_{i+1},u_{i+1})\bigr).
+}
+\tag{C2-recursion}
+\]
+
+At level \(1\),
+
+\[
+\widehat n_1(u_2)^s
+=
+\widehat n_1(su_2)
+\left(\frac{x^{e_1}}{\pi^h}\right)^{
+\lfloor s\,i(u_2)/e_1\rfloor},
+\]
+
+and hence
+
+\[
+\boxed{
+\vartheta_{1,s}
+=
+\eta^{\lfloor s\,i(u_2)/e_1\rfloor}.
+}
+\tag{C2-level-1}
+\]
+
+For \(s=f_2-t\), put
+
+\[
+W(t)
+=
+\left\lfloor
+\frac{(f_2-t)i(u_2)}{e_1}
+\right\rfloor.
+\]
+
+Thus
+
+\[
+\vartheta_{1,f_2-t}=\eta^{W(t)}.
+\]
+
+The exponent has the displayed positive sign.
+
+#### (C3) Corrected key and read dictionary
+
+For \(s=f_{i+1}-t\), let \(\Gamma_t\) denote the coherent digit against \(\widehat n_i(su_{i+1})\), and let \(c_t^{\mathrm{mult}}\) denote the coefficient against \(\widehat n_i(u_{i+1})^s\). Then
+
+\[
+\boxed{
+\Gamma_t
+=
+c_t^{\mathrm{mult}}\vartheta_{i,s},
+\qquad
+c_t^{\mathrm{mult}}
+=
+\Gamma_t\vartheta_{i,s}^{-1}.
+}
+\tag{C3-dictionary}
+\]
+
+The corrected composed key is
+
+\[
+\boxed{
+\Phi_{i+1}
+=
+\Phi_i^{e_{i+1}f_{i+1}}
+-
+\sum_{t<f_{i+1}}
+\widehat k_t\Phi_i^{e_{i+1}t},
+}
+\tag{C3-key}
+\]
+
+where
+
+\[
+\boxed{
+\widehat k_t
+=
+\operatorname{lift}_i\!\left(
+c_t\vartheta_{i,f_{i+1}-t};
+(f_{i+1}-t)u_{i+1}
+\right).
+}
+\tag{C3-corrected-lift}
+\]
+
+At level \(1\), whenever
+
+\[
+M_t=(f_2-t)u_2>D'h,
+\]
+
+this is the explicit integral coefficient
+
+\[
+\boxed{
+\widehat k_t
+=
+L_{M_t}\bigl(c_t\eta^{W(t)}\bigr).
+}
+\tag{C3-level-1-key}
+\]
+
+Its multiplicative coefficient is exactly \(c_t\).
+
+The naive and corrected recipes agree in slot \(t\) exactly when
+
+\[
+c_t
+\bigl(
+\vartheta_{i,f_{i+1}-t}-1
+\bigr)=0.
+\]
+
+They therefore agree if every relevant telescope unit is \(1\), including the cases \(\eta=1\) at level \(1\) and \(f_{i+1}=1\). This says nothing about whether arbitrary \(K_1\)-digits are \(x\)-free.
+
+For the B-law orientation define
+
+\[
+\boxed{
+\Theta_i(t)
+=
+\vartheta_{i,f_{i+1}-t}^{-1}
+=
+\operatorname{res}\!\left(
+\frac{
+\widehat n_i((f_{i+1}-t)u_{i+1})
+}{
+\widehat n_i(u_{i+1})^{f_{i+1}-t}
+}
+\right).
+}
+\tag{C3-Theta}
+\]
+
+Let \(\beta_t\) be the slot grade and set
+
+\[
+u(\beta_t)
+=
+R_{i+1,\beta_t}
+\bigl(
+\widehat n_i((f_{i+1}-t)u_{i+1})
+\bigr).
+\]
+
+At every site where the stated ladder-multiplicativity obligation is discharged,
+
+\[
+\boxed{
+u(\beta_t)
+=
+\Theta_i(t)w_i^{f_{i+1}-t}.
+}
+\tag{C3-B-law}
+\]
+
+Consequently a slot with coherent digit \(\Gamma_t\) has canonical read
+
+\[
+\boxed{
+R_{i+1,\beta_t}(\text{slot }t)
+=
+w_i^{f_{i+1}-t}\Theta_i(t)\Gamma_t.
+}
+\tag{C3-canonical-read}
+\]
+
+At the corrected key,
+
+\[
+\Gamma_t
+=
+c_t\vartheta_{i,f_{i+1}-t},
+\]
+
+so the \(\vartheta/\Theta\) factors cancel. The three reads are therefore
+
+\[
+\boxed{
+\begin{aligned}
+\text{multiplicative residual}
+&=\psi_{i+1}(y),\\
+\text{coherent digits}
+&=
+\bigl(
+c_t\vartheta_{i,f_{i+1}-t}
+\bigr)_{t<f_{i+1}},\\
+\text{canonical residual}
+&=
+\psi_{i+1}^{(w_i)}(y)
+:=
+w_i^{f_{i+1}}\psi_{i+1}(y/w_i).
+\end{aligned}
+}
+\tag{C3-three-reads}
+\]
+
+The map
+
+\[
+P(y)\longmapsto w_i^{\deg P}P(y/w_i)
+\]
+
+preserves irreducible-factor degrees and multiplicities. Residual factor patterns, and verdict data depending only on those patterns, are gauge-invariant. Conversion of a residual factor pattern to a p-adic splitting type still uses the surrounding tower correctness theorem.
+
+#### (C4) Attained-origin normalization bridge
+
+This clause records the correction that is independent of the \(\vartheta\)-telescope but belongs to the same gauge seam. At a print level write
+
+\[
+s_{\min}(\beta)=\ell\beta\bmod e,
+\qquad
+t_{\min}(\beta)
+=
+\frac{\ell\beta-s_{\min}(\beta)}e,
+\qquad
+\varepsilon(\beta)=z^{-t_{\min}(\beta)}.
+\]
+
+If the actual attained initial abscissa is
+
+\[
+s_{\mathrm{act}}
+=
+s_{\min}(\beta)+\nu e,
+\qquad
+\nu\in\mathbf Z_{\ge0},
+\]
+
+then the print Definition-\(t(i)\) exponent in print orientation is
+
+\[
+t_{\mathrm{Def}}
+=
+\frac{s_{\mathrm{act}}-\ell\beta}{e}
+=
+\nu-t_{\min}(\beta).
+\]
+
+Therefore
+
+\[
+\boxed{
+z^{t_{\mathrm{Def}}}
+=
+z^\nu\varepsilon(\beta),
+\qquad
+\varepsilon(\beta)
+=
+z^{t_{\mathrm{Def}}-\nu}.
+}
+\tag{C4-origin}
+\]
+
+Raw equality
+
+\[
+z^{t_{\mathrm{Def}}}=\varepsilon(\beta)
+\]
+
+holds exactly when \(z^\nu=1\); it holds in particular when \(\nu=0\). It is false in general to identify the canonical minimal-grid factor with the raw print factor without displaying \(z^\nu\).
+
+If \(H(y)\) is the harness residual and \(P(y)\) the normalized print residual, the corresponding support statement is
+
+\[
+H(y)=y^\nu Q(y),
+\qquad
+P(y)=aQ(by),
+\qquad
+a,b\in K^\times.
+\]
+
+Thus, for nonzero residuals,
+
+\[
+\boxed{
+\operatorname{Supp}_y(H)
+=
+\nu+\operatorname{Supp}_y(P),
+\qquad
+\deg H=\deg P+\nu.
+}
+\tag{C4-support}
+\]
+
+Attained abscissas and normalized support widths agree. Ordinary exponent supports and ordinary degrees agree only after translating the harness origin by \(\nu\).
+
+#### (C5) HE6 normalized slot coefficient and canonical-normalizer read
+
+Let
+
+\[
+A(x)=\sum_{j<D'}a_jx^j,
+\qquad
+k=dv(A),
+\qquad
+i=i(k),
+\qquad
+n(k)=x^i\pi^{(k-ih)/e_1}.
+\]
+
+Define
+
+\[
+\boxed{
+\gamma_k(A)
+=
+\sum_{\substack{t\ge0\\i+e_1t<D'}}
+\operatorname{res}\!\left(
+a_{i+e_1t}
+\pi^{-(k-(i+e_1t)h)/e_1}
+\right)\eta^t.
+}
+\tag{C5-gamma}
+\]
+
+A coefficient whose pin lies strictly above height \(k\) contributes zero.
+
+For every tower point \(\xi\) carrying the specified residue embedding \(\iota_\xi\),
+
+\[
+\boxed{
+\operatorname{res}\!\left(
+\frac{A(\xi)}{n(k)(\xi)}
+\right)
+=
+\iota_\xi\bigl(\gamma_k(A)\bigr).
+}
+\tag{C5-normalizer-read}
+\]
+
+Let \(i_0\in[0,e_1)\) satisfy
+
+\[
+i_0h\equiv1\pmod {e_1},
+\]
+
+and define
+
+\[
+q(k)=\frac{i_0k-i(k)}{e_1}.
+\]
+
+For the canonical level-one normalizer
+
+\[
+\varpi
+=
+x^{i_0}\pi^{(1-i_0h)/e_1},
+\]
+
+one has
+
+\[
+\operatorname{res}\!\left(
+\frac{n(k)(\xi)}
+{\varpi(\xi)^k}
+\right)
+=
+\eta_\xi^{-q(k)}.
+\]
+
+Hence
+
+\[
+\boxed{
+\operatorname{res}\!\left(
+\frac{A(\xi)}
+{\varpi(\xi)^k}
+\right)
+=
+\iota_\xi\bigl(\gamma_k(A)\bigr)
+\eta_\xi^{-q(k)}.
+}
+\tag{C5-varpi-read}
+\]
+
+The coefficient normalizers in (C5-gamma) are essential. Replacing each normalized coefficient residue by \(\operatorname{res}(a_j)\) is generally false and may make all tying contributions vanish.
+
+The same integer function records the carry:
+
+\[
+\boxed{
+q(a+b)
+=
+q(a)+q(b)+\operatorname{wrap}(a,b).
+}
+\tag{C5-carry}
+\]
+
+#### (C6) Exact integral \(K_1\)-lift and the \(x\)-free criterion
+
+Let \(M>D'h\), put
+
+\[
+i=i(M),
+\qquad
+a=\frac{M-ih}{e_1},
+\]
+
+and write uniquely
+
+\[
+\lambda
+=
+\sum_{r=0}^{f_1-1}\lambda_r\eta^r,
+\qquad
+\lambda_r\in\mathbf F_Q.
+\]
+
+Define
+
+\[
+\boxed{
+L_M(\lambda)
+=
+\sum_{r=0}^{f_1-1}
+\widetilde{\lambda_r}
+x^{i+e_1r}\pi^{a-rh}.
+}
+\tag{C6-lift}
+\]
+
+Then
+
+\[
+L_M(\lambda)\in\widehat O[x],
+\qquad
+\deg L_M(\lambda)<D',
+\qquad
+dv(L_M(\lambda))=M
+\]
+
+for \(\lambda\ne0\). Every nonzero summand has exact height \(M\), and
+
+\[
+\boxed{
+\operatorname{res}\!\left(
+\frac{L_M(\lambda)(\theta)}
+{n(M)(\theta)}
+\right)
+=
+\lambda.
+}
+\tag{C6-residue}
+\]
+
+For \(\lambda\ne0\),
+
+\[
+\boxed{
+L_M(\lambda)\text{ is an }x\text{-free monomial}
+\iff
+i(M)=0
+\text{ and }
+\lambda\in\mathbf F_Q.
+}
+\tag{C6-x-free}
+\]
+
+The hypothesis \(M>D'h\) is the simple sufficient domain used by all live consumers here. This theorem makes no universal full-slot assertion at lower heights.
+
+In the composed-key application, put
+
+\[
+r=f_2-t,
+\qquad
+M=ru_2>D'h.
+\]
+
+Then
+
+\[
+L_{ru_2}\bigl(c_t\eta^{W(t)}\bigr)
+\]
+
+has coherent digit \(c_t\eta^{W(t)}\) and multiplicative coefficient \(c_t\).
+
+If the tower additionally has
+
+\[
+u_2>e_2D'h,
+\]
+
+every monomial in this lift, after multiplication by a monomial of \(\Phi'^{e_2t}\), clears the outer side by at least
+
+\[
+\boxed{
+\frac{r(u_2-e_2D'h)}{e_1}>0.
+}
+\tag{C6-clearance}
+\]
+
+Collection and \(\Phi'\)-carry can cancel terms or move them upward, but cannot create a term below that side.
+
+#### (C7) WELD-M-PKG interface and scope fence
+
+Let
+
+\[
+\mathbf T_T
+=
+(\mathbf T_{M0},\mathbf T_{M1},\mathbf T_{M2},
+ \mathbf T_{M3},\mathbf T_{M4})
+\]
+
+denote the anchored five-field package of WELD-M-PKG. T1 relates to its fields only as follows:
+
+| Package field | T1 datum available to that field |
+|---|---|
+| \(M0\), division chains | Common tower and canonical division-chain anchor; no new identity is proved here. |
+| \(M1\), shear and \(w_m=v_{m+1}\) | The carrier unit \(w_i\) and letter recursion (C1); the shear, equality, and membership fences remain supplier facts. |
+| \(M2\), per-slot character transport | The dictionary and canonical read in (C3), together with the origin correction (C4). |
+| \(M3\), multiplication transport | The cocycle/telescope (C2) and canonical twist in (C3), only on the scored stratum. |
+| \(M4\), lift covariance | The exact-height formulas (C5)–(C6), only at W2-C3’s accepted fence. |
+
+Accordingly,
+
+\[
+\boxed{
+\begin{gathered}
+\text{T1 organizes five named fields around one tower cocycle;}\\
+\text{it proves no cross-face coherence theorem.}
+\end{gathered}
+}
+\tag{C7-scope}
+\]
+
+It also proves no uniqueness of the gauge. Gauges with a fixed coboundary may differ by a character. WELD-M-PKG is an existence package assembled field by field, and T1 neither identifies its heterogeneous fields as restrictions of one map nor supplies compatibility beyond the anchors explicitly displayed in the package theorem.
+
+## 2. Proof
+
+### 2.1 Letter recursion
+
+Divide the defining fractions for \(z_{i+1}\) and \(\eta_{i+1}\):
+
+\[
+z_{i+1}
+=
+\eta_{i+1}
+\operatorname{res}\!\left(
+\frac{\widehat n_i(u_{i+1})}
+{\pi_{i+1}^{u_{i+1}}}
+\right).
+\]
+
+Both normalizers have height \(u_{i+1}\), so the quotient has value zero. Successively remove the highest key by the corresponding value-zero tower relation. Coprimality forces the highest exponent into the required ramification-index class; iteration terminates at a value-zero \(x,\pi\)-monomial, hence a power of \(x^{e_1}/\pi^h\). This proves (C1-general) and the asserted reduction algorithm.
+
+At level \(2\), with \(u=u_2\),
+
+\[
+\frac{\widehat n_1(u)}{\pi_2^u}
+=
+x^{i(u)-\ell_1u}
+\pi^{a(u)-\ell'_1u}.
+\]
+
+The congruences
+
+\[
+i(u)h\equiv u\equiv\ell_1uh\pmod {e_1}
+\]
+
+give
+
+\[
+i(u)
+=
+\ell_1u
+-
+e_1
+\left\lfloor
+\frac{\ell_1u}{e_1}
+\right\rfloor.
+\]
+
+The value-zero equation supplies the corresponding \(\pi\)-exponent, so the quotient is
+
+\[
+\left(\frac{x^{e_1}}{\pi^h}\right)^{
+-\lfloor\ell_1u/e_1\rfloor}.
+\]
+
+Taking residues proves (C1-level-2).
+
+### 2.2 Cocycle and telescope
+
+The reduced representative of \(i(a)+i(b)\) is \(i(a+b)\). Hence
+
+\[
+i(a)+i(b)
+=
+i(a+b)+e_1\operatorname{wrap}(a,b).
+\]
+
+Height additivity gives
+
+\[
+a(a)+a(b)
+=
+a(a+b)-h\operatorname{wrap}(a,b),
+\]
+
+which proves (C2-wrap). Comparing the two parenthesizations of
+
+\[
+\widehat n_i(a)\widehat n_i(b)\widehat n_i(c)
+\]
+
+proves (C2-cocycle).
+
+For \(u=u_{i+1}\),
+
+\[
+\frac{\widehat n_i(u)^{s+1}}
+{\widehat n_i((s+1)u)}
+=
+\frac{\widehat n_i(u)^s}
+{\widehat n_i(su)}
+\frac{\widehat n_i(su)\widehat n_i(u)}
+{\widehat n_i((s+1)u)}.
+\]
+
+Taking residues proves the recursion.
+
+At level \(1\), reducing the \(x\)-exponent \(s\,i(u_2)\) modulo \(e_1\) gives exactly
+
+\[
+\left\lfloor\frac{s\,i(u_2)}{e_1}\right\rfloor
+\]
+
+copies of \(x^{e_1}/\pi^h\), proving (C2-level-1) and the positive \(\eta^{W(t)}\) sign.
+
+### 2.3 Corrected key and the three reads
+
+If a height-\(su\) element has coherent digit \(\Gamma\), division first by \(\widehat n_i(su)\) and then by \(\widehat n_i(u)^s\) gives
+
+\[
+c^{\mathrm{mult}}
+=
+\Gamma
+\operatorname{res}\!\left(
+\frac{\widehat n_i(su)}
+{\widehat n_i(u)^s}
+\right)
+=
+\Gamma\vartheta_{i,s}^{-1}.
+\]
+
+This proves the dictionary. Choosing
+
+\[
+\Gamma_t=c_t\vartheta_{i,f-t}
+\]
+
+therefore makes the multiplicative coefficient exactly \(c_t\), proving the corrected-key and degeneracy claims.
+
+Put
+
+\[
+N=\widehat n_i(u),
+\qquad
+M_s=\widehat n_i(su).
+\]
+
+At a consumed site, ladder multiplicativity and the value-zero rule give
+
+\[
+w_i^s
+=
+R(N^s)
+=
+R(M_s)\operatorname{res}(N^s/M_s)
+=
+R(M_s)\vartheta_{i,s}.
+\]
+
+Thus
+
+\[
+R(M_s)
+=
+w_i^s\vartheta_{i,s}^{-1},
+\]
+
+which is the B-law. Multiplying by a coherent digit proves (C3-canonical-read).
+
+At the corrected key, the inverse telescope factors cancel slotwise, and summing gives
+
+\[
+y^f-\sum_{t<f}c_tw_i^{f-t}y^t
+=
+w_i^f\psi(y/w_i).
+\]
+
+Scaling the variable by a unit transports factorizations bijectively and preserves degrees, multiplicities, and irreducibility.
+
+### 2.4 Attained-origin bridge
+
+Substitution of
+
+\[
+s_{\mathrm{act}}=s_{\min}+\nu e
+\]
+
+gives
+
+\[
+t_{\mathrm{Def}}
+=
+\frac{s_{\min}+\nu e-\ell\beta}{e}
+=
+\nu-t_{\min}.
+\]
+
+Exponentiating by \(z\) proves (C4-origin).
+
+The support and degree formulas follow because multiplication by \(y^\nu\) translates ordinary exponents, whereas multiplication by a unit and substitution by a unit preserve them.
+
+### 2.5 Normalized slot coefficient and carry
+
+For \(j=i+e_1t\), direct division gives
+
+\[
+\frac{a_j\xi^j}{n(k)(\xi)}
+=
+\left(
+a_j\pi^{-(k-jh)/e_1}
+\right)
+\left(
+\xi^{e_1}\pi^{-h}
+\right)^t.
+\]
+
+Indices outside the class \(i\bmod e_1\) have strictly larger value and vanish after reduction; pins above \(k\) also reduce to zero. Summing the surviving residues proves (C5-normalizer-read).
+
+Composing with
+
+\[
+\operatorname{res}
+\left(
+\frac{n(k)}
+{\varpi^k}
+\right)
+=
+\eta^{-q(k)}
+\]
+
+proves (C5-varpi-read).
+
+Finally,
+
+\[
+\begin{aligned}
+e_1\bigl(q(a+b)-q(a)-q(b)\bigr)
+&=
+i(a)+i(b)-i(a+b)\\
+&=
+e_1\operatorname{wrap}(a,b),
+\end{aligned}
+\]
+
+which proves (C5-carry).
+
+### 2.6 Exact integral lift
+
+For \(0\le r<f_1\),
+
+\[
+i+e_1r\le D'-1,
+\]
+
+and
+
+\[
+a-rh
+=
+\frac{M-(i+e_1r)h}{e_1}
+\ge0
+\]
+
+because \(M>D'h\). Thus every displayed term is integral and has degree less than \(D'\).
+
+Its height is
+
+\[
+e_1(a-rh)+(i+e_1r)h=M.
+\]
+
+After division by \(n(M)\), its residue is \(\lambda_r\eta^r\). Basis independence prevents cancellation and proves (C6-residue).
+
+The \(x\)-exponents \(i+e_1r\) are distinct and nonnegative. A nonzero lift is one \(x\)-free monomial exactly when only \(r=0\) occurs and \(i=0\), equivalently when
+
+\[
+i(M)=0
+\quad\text{and}\quad
+\lambda\in\mathbf F_Q.
+\]
+
+The corrected-key and clearance applications are then the substitutions stated in (C6).
+
+### 2.7 Package boundary
+
+WELD-M-PKG is proved by choosing five witnesses and applying a product/record constructor. Conclusions (C1)–(C6) give common tower formulas that individual fields may cite, exactly as listed in (C7).
+
+Nothing in those proofs supplies:
+
+- a map with all five heterogeneous source and target types;
+- a compatibility square between distinct fields; or
+- uniqueness of the gauge.
+
+Hence only the organization claim in (C7-scope) follows.
+
+## 3. Absorption map
+
+“Verbatim” means that, after replacing local names by the displayed T1 names, the certified local mathematical display is an immediate specialization with no added hypothesis or conclusion.
+
+“Adapted” means that T1 deliberately changes notation, carries a certified domain or fence, or separates a normalization that the old annex conflated.
+
+| Annex | Local site | T1 conclusion | Mode and specialization |
+|---|---|---|---|
+| A1 GENHN | GENHN-LIFT | C6 | **Verbatim** on \(M>D'h\): same component formula, integrality, degree, exact height, and residue. |
+| A1 GENHN | Corrected T(b)\('\) coefficient | C2, C3, C6 | **Verbatim** with \(M=(f_2-t)u_2\): \(L_M(c_t\eta^{W(t)})\); the clearance bound is retained. |
+| A2 HETOW | Wrap/carry preamble | C2, C5 | **Verbatim**: the wrap identity and \(q(a+b)=q(a)+q(b)+\operatorname{wrap}(a,b)\). |
+| A2 HETOW | Telescope and corrected key | C2, C3 | **Verbatim** after \(s=f_2-t\); T1 makes the positive \(\eta^{W(t)}\) sign explicit. |
+| A3 GENTOW1 | Corrected coefficient pin | C3 | **Adapted only in notation**: the local coherent digit \(\gamma_t\) is T1’s \(\Gamma_t\), avoiding collision with HE6’s \(\gamma_k(A)\). |
+| A3 GENTOW1 | Value-blind budgets/floors | C3 | **Adapted/fenced**: corrected and naive lifts have equal exact height where the integral lift exists; budgets and floors themselves are not reproved. |
+| A4 GENTOW3 | Gauge-annex corrected key | C3, C6 | **Verbatim** on the live lift domain. |
+| A4 GENTOW3 | \(x\)-free rescope | C6 | **Verbatim**: \(x\)-free iff \(i(M)=0\) and the digit lies in \(\mathbf F_Q\); T1 withdraws any full-slot claim below \(D'h\). |
+| A5 GENTOW4 | S0 naive key | C3, C6 | **Adapted** by the explicit domain and corrected coherent digit. |
+| A5 GENTOW4 | 4.1(c)/S3 bridge | C3, C4 | **Adapted**: the \(\vartheta\)-cancellation is verbatim, but any raw-print identification must also carry \(z^\nu\). |
+| A5 GENTOW4 | BOX-3 no-\(\eta\) axis | C2, C3 | **Verbatim**: a \(\vartheta=1\) battery cannot test naive versus corrected. |
+| A5 GENTOW4 | S4 residue-one relation | C2, C6 | **Verbatim**: \(\eta=1\) is not \(f_1=1\), and does not make arbitrary digits \(x\)-free. |
+| A6 GENTOW6 | Corrected coefficient/full support | C3, C6 | **Adapted**: full support is proved on \(M>D'h\), with normalized coefficients when a slot is read coefficientwise. |
+| A6 GENTOW6 | 6.3 scalar read | C5, C6 | **Materially adapted**: use \(\gamma_k(A)\) with coefficient normalizers; the bare-residue formula is not absorbed. Overflow uses the actual top exponent. |
+| A7 GENTOW2 | S5.1 letter formula | C1 | **Verbatim** at level \(2\). |
+| A7 GENTOW2 | S5.2 B-law | C3 | **Verbatim** after the explicit inverse orientation \(\Theta=\vartheta^{-1}\), at sites where ladder multiplicativity is discharged. |
+| A7 GENTOW2 | Factor-pattern invariance | C3 | **Verbatim**: \(\psi^{(w)}=w^f\psi(y/w)\). |
+
+Supporting context, not counted as a separate A1–A7 annex:
+
+- GENTOW5’s definitions of \(w\) and \(\psi^{(w)}\) are absorbed verbatim; its dictionary is absorbed with the \(\Gamma/\gamma_k\) notation separation.
+- GRTJA’s JA-EPS-CORR is absorbed verbatim in (C4), including the exact root-of-unity criterion \(z^\nu=1\).
+- WELD-M-PKG is not absorbed as a stronger theorem: (C7) is only an interface map and scope fence.
+- HE6-0\(''\) is absorbed with adapted names but with its corrected normalized coefficient formula verbatim.
+
+The B-law rows consume only ladder-monomial multiplicativity and the value-zero digit read at their stated sites. At \(i=2\), these are supplied by GENTOW2-B\(''\). For \(i\ge3\), they must cite the accepted status, if any, of the level-general GENTOW5-W(i) supplier. T1 does not promote that sitewise result to an unproved theorem about all homogeneous initial forms.
+
+## 4. Verification record and revision battery
+
+### 4.1 Inherited sealed evidence
+
+The 2026-08-10 sealed battery remains historical evidence, not a certification of this revised text. Its computed surface had 83 computed-versus-registered rows plus two literal bookkeeping rows.
+
+All substantive rows were green except the preregistered F4-JOINT display slip. The correct value is
+
+\[
+\psi(y)=y^2+y+\omega,
+\qquad
+w=\omega
+\quad\Longrightarrow\quad
+\boxed{
+\psi^{(w)}(y)=y^2+\omega y+1.
+}
+\]
+
+The old instrument’s orientation tooth scored only one B-unit and did not score the promised full three-slot canonical vector. Neither defect is carried forward as a passed check.
+
+The inherited exact frames remain:
+
+| Frame | Essential axes |
+|---|---|
+| X | \(p=3\), \(e_1=2,f_1=1,h=1,\eta=2,u_2=3\); corrected versus naive p-adic split. |
+| FR-G | The GENTOW4 partial-side witness and separator regression. |
+| F4-JOINT | \(K_1=\mathbf F_4\), \(e_1=2,f_1=2,h=1,\eta=w=\omega\), live wrap, quadratic and \(\mu=3\) legs. |
+| LP/LD | Recorded GENTOW2 letter and inverse-cocycle geography. |
+
+The inherited exact predictions are unchanged except for the corrected F4-JOINT value above. At the F4-JOINT quadratic,
+
+\[
+R_{\mathrm{corr}}=y^2+y+\omega,
+\qquad
+R_{\mathrm{naive}}=y^2+y+1,
+\qquad
+\psi^{(w)}=y^2+\omega y+1.
+\]
+
+At its \(\mu=3\) leg,
+
+\[
+(\vartheta_0,\vartheta_1,\vartheta_2,\vartheta_3)
+=
+(1,1,\omega,\omega),
+\]
+
+\[
+(\Gamma_2,\Gamma_1,\Gamma_0)
+=
+(1,\omega,\omega),
+\]
+
+\[
+\bigl(
+u(\beta_2),u(\beta_1),u(\beta_0)
+\bigr)
+=
+(\omega,\omega,\omega^2),
+\]
+
+and the full canonical coefficient vector is
+
+\[
+(\omega,\omega^2,1),
+\]
+
+giving \((y+\omega)^3\).
+
+### 4.2 Required revision checks
+
+The new hostile battery must add the following scored rows before this revision can receive a clean grade.
+
+1. **GENHN-LIFT boundary.** Check integrality, degree, height, and residue for several \(M>D'h\), including \(f_1\ge2\). Also instantiate a low-height counterexample such as
+
+   \[
+   (e_1,f_1,h,M)=(1,2,1,0)
+   \]
+
+   to ensure the code does not infer a full \(K_1\)-slot from integrality of \(n(M)\) alone.
+
+2. **Positive-wrap sign.** Re-run the corrected/naive and wrong-sign teeth. Exact coefficient equality, not merely factor pattern, must be scored.
+
+3. **JA origin.** For \(\nu=0\), verify raw and canonical factors agree. For \(\nu>0\) and \(z^\nu\ne1\), verify the raw equality fails by exactly \(z^\nu\). Add a root-of-unity case with \(\nu>0\) and \(z^\nu=1\), so the battery rejects the overstatement “iff \(\nu=0\).” Score the support and degree translation by \(\nu\).
+
+4. **HE6 coefficient normalization.** Use a tying coefficient of positive valuation for which
+
+   \[
+   \operatorname{res}(a_j)=0
+   \]
+
+   but
+
+   \[
+   \operatorname{res}\!\left(
+   a_j\pi^{-(k-jh)/e_1}
+   \right)\ne0.
+   \]
+
+   Score (C5-normalizer-read), (C5-varpi-read), and the \(-q(k)\) sign.
+
+5. **Full orientation tooth.** With \(\Theta\) intentionally replaced by \(\vartheta\), score all three entries of the canonical \(\mu=3\) vector, not only the \(s=2\) B-unit.
+
+6. **Weld scope lint.** Fail the document check if T1 contains “one transport map,” “unique gauge,” or an unqualified cross-face compatibility claim. Confirm every \(M3\) use retains the scored-stratum fence and every \(M4\) use the accepted W2-C3 fence.
+
+The four original planted teeth remain mandatory:
+
+- gauge-naive;
+- wrong-sign;
+- misindexed telescope; and
+- inverse-orientation confusion.
+
+Every tooth must fire.
+
+## 5. Honesty ledger
+
+1. A closed canonical-letter exponent vector is proved only at level \(2\). General depth has a terminating reduction algorithm.
+2. The B-law is conditional on the stated sitewise residual-read facts. T1 does not assume or prove multiplicativity on all homogeneous initial forms.
+3. \(\vartheta_{i,s}\) is the building/dictionary orientation, while
+
+   \[
+   \Theta_i(t)=\vartheta_{i,f-t}^{-1}
+   \]
+
+   is the B-law orientation.
+4. The canonical residual is
+
+   \[
+   \psi^{(w)}=w^f\psi(y/w).
+   \]
+
+   This preserves factor patterns, not literal coefficients.
+5. The canonical minimal-grid factor \(\varepsilon\) and the raw print factor differ by \(z^\nu\). Raw equality is equivalent to \(z^\nu=1\), not to \(\nu=0\) unless an additional order hypothesis makes those equivalent.
+6. The full integral level-one lift is proved here on \(M>D'h\). No universal full \(K_1\)-slot is claimed at lower heights.
+7. The HE6 digit is \(\gamma_k(A)\) with coefficient normalizers. It is different from the coherent corrected-key digit \(\Gamma_t\).
+8. \(\eta=1\) removes the level-one wrap correction but does not imply \(f_1=1\) or make arbitrary digits \(x\)-free.
+9. Gauge-invariant residual factor patterns become splitting types only through the surrounding tower correctness theorem.
+10. T1 does not prove note-specific budgets, floors, fullness counts, separator inequalities, clearance outside (C6-clearance), or the remaining extraction and attainment claims of GENTOW6 6.3\('\).
+11. WELD-M-PKG is five heterogeneously typed fields assembled into one named record. T1 proves neither a single cross-face map nor compatibility beyond the package’s displayed anchors.
+12. Gauge uniqueness is not asserted. Fixed-coboundary gauges form a torsor under the available character group.
+13. F4-JOINT remains a finite graded-carrier model, not an explicit p-adic realization. Its formal sigma values are not PARI measurements.
+14. The explicit joint p-adic realization remains open and is not required for the algebraic lemma.
+
+## 6. CHANGES from the 2026-08-10 composition
+
+| Revision | Driver | Annex effect |
+|---|---|---|
+| Replaced the conditional old C4 lift by (C6) on the uniform live domain \(M>D'h\), including integrality, residue, degree, and clearance. | GENHN-LIFT and the later occupied-height tightening | A1 GENHN becomes verbatim; A4 GENTOW3 and A6 GENTOW6 are absorbed with the live-domain fence. |
+| Made \(L_{(f_2-t)u_2}(c_t\eta^{W(t)})\) the level-one corrected coefficient, with positive wrap exponent. | GENHN-LIFT application and HETOW wrap correction | A1 and A2 are verbatim; A3, A5, and A6 specialize with notation adaptation. |
+| Renamed coherent digits from \(\gamma_t\) to \(\Gamma_t\). | HE6’s corrected, reserved \(\gamma_k(A)\) | A3, A5, A6, and the GENTOW5 dictionary rows are notational adaptations; no formula changes. |
+| Added the normalized coefficient formula (C5-gamma) and the \(\eta^{-q(k)}\) canonical-normalizer factor. | HE6 F-1 | A6’s scalar-reading site is materially adapted; the old bare-residue formula is rejected rather than absorbed. |
+| Added (C4-origin) and the \(\nu\)-translated support/degree law. | JA-EPS-CORR and JA-MIN-CORR | A5 bridge consumption is adapted: tower \(\vartheta\)-cancellation survives, but raw print equality carries \(z^\nu\). |
+| Stated raw print/canonical equality as iff \(z^\nu=1\), with \(\nu=0\) only a sufficient special case. | JA-EPS-CORR | Prevents a new false “iff \(\nu=0\)” strengthening. |
+| Added the five-row package interface and boxed no-cross-face-coherence fence. | WELD-M-PKG | No local annex is strengthened. T1 organizes M0–M4 citations but does not absorb or reprove the package as one map. |
+| Withdrew any gauge-uniqueness implication and recorded character-torsor ambiguity. | WELDMASTER C6 F-1/F-2 | Scope correction across all annex consumers; formulas C1–C6 are unchanged. |
+| Narrowed the residual-read carrier assumption to the ladder monomials consumed at B-law sites. | Earlier T1 G-2 plus WELD package-scoping discipline | A5/A7/GENTOW5 B-law rows remain supplier-dependent rather than globally assumed. |
+| Corrected F4-JOINT \(\psi^{(w)}\) to \(y^2+\omega y+1\) in the draft body. | Sealed P-J2 diagnosis | A7 factor-pattern absorption remains verbatim; the exact-value defect is removed. |
+| Required the orientation tooth to score the full three-slot vector. | Sealed instrument disclosure F-5 | Verification-only change; no annex statement changes. |
+| Reclassified the sealed 2026-08-10 run as inherited evidence rather than certification of the revised statement. | Revision integrity | All seven annex consumptions must be rechecked against this text. |
+
+## 7. Hostile arc plan
+
+The first hostile pass should attack, in this order:
+
+1. **Normalization composition at a live \(\nu>0\), live-wrap, \(w\ne1\) slot.** Verify that \(\vartheta\), \(w\), and \(z^\nu\) occur in distinct places and that no cancellation silently drops the attained-origin factor.
+
+2. **HE6-to-C3 digit typing.** Attempt to substitute a bare coefficient residue for \(\gamma_k(A)\), and attempt to identify \(\gamma_k(A)\) with \(\Gamma_t\) without the exact-height normalizer. A successful substitution would expose a type or normalization error.
+
+3. **Lift-domain boundary.** Probe \(M=D'h\) and lower heights, especially \(f_1>1\), for any sentence that still promises a full integral \(K_1\)-slot or silently uses one.
+
+4. **Weld scope.** Search every proof and absorption row for an inferred compatibility between M0–M4, a single-map interpretation, or gauge uniqueness. None is available from record assembly.
+
+5. **B-law supplier perimeter.** Check each A5/A7/GENTOW5 consumer against the actual accepted grade and level range of GENTOW2-B\(''\)/GENTOW5-W(i), including any unresolved \(i=1\) tie.
+
+6. **Root-of-unity exception.** Use \(\nu>0\) with \(z^\nu=1\) to refute any accidental replacement of the exact JA criterion by “only at \(\nu=0\).”
+
+7. **Sign and inverse conventions.** Re-run the positive-\(W\), wrong-sign, misindexed-telescope, and full-vector \(\Theta=\vartheta^{-1}\) teeth.
+
+8. **Consumption sweep.** For each of A1–A7, verify that the local theorem uses no stronger lift domain, raw-print equality, scalar gauge, or weld coherence than the corresponding T1 row supplies.
+
+A clean first pass must either discharge all eight attacks or return a finding with an exact statement span and a live consumer. Only after repair should the second independent hostile pass run.
+
+The acceptance gate remains two clean hostile passes plus the revised machine battery. The historical 2026-08-10 run does not count as either clean pass.
+
+
+---
+
+## r1 (2026-08-12): the three T1A gaps repaired
+
+*(Derived by the T1R1 run (gpt-5.6-sol high, runs/cert5/T1R1_output.log) from the T1A pass-1 findings; transcribed unaltered; pass 2 of the arc follows.)*
+
+## T1 r1 corrections — 2026-08-12
+
+### R1-1 — Define the base canonical letter
+
+In §1.1, immediately after
+
+\[
+\eta=\operatorname{res}\!\left(\frac{x^{e_1}}{\pi^h}\right),
+\qquad
+K_1=\mathbf F_Q(\eta),
+\]
+
+insert:
+
+> Set the base canonical residue letter
+> \[
+> \boxed{z_1:=\eta.}
+> \tag{C1-base-letter}
+> \]
+> Thus the level-two recursion below uses a defined letter; this is a notation convention, not an additional relation among higher-level letters.
+
+In §2.1, replace the final sentence
+
+> Taking residues proves (C1-level-2).
+
+with:
+
+> Taking residues and using the base convention \(z_1=\eta\) proves (C1-level-2).
+
+This makes
+
+\[
+z_2=\eta_2z_1^{-\lfloor\ell_1u_2/e_1\rfloor}
+\]
+
+identical to the computed residue
+
+\[
+\eta_2\eta^{-\lfloor\ell_1u_2/e_1\rfloor}.
+\]
+
+### R1-2 — Normalize every height-zero normalizer
+
+In §1.1, replace
+
+> At a general level \(i\), fix exact-height normalizers \(\widehat n_i(m)\) in the prescribed bounded-exponent tower normal form, stage data
+
+with:
+
+> At a general level \(i\), fix exact-height normalizers \(\widehat n_i(m)\) in the prescribed bounded-exponent tower normal form, with the height-zero normalization
+> \[
+> \boxed{\widehat n_i(0)=1.}
+> \tag{C2-zero-normalizer}
+> \]
+> Fix also stage data
+
+In §2.2, replace
+
+> Comparing the two parenthesizations of
+> \[
+> \widehat n_i(a)\widehat n_i(b)\widehat n_i(c)
+> \]
+> proves (C2-cocycle).
+
+with:
+
+> Comparing the two parenthesizations of
+> \[
+> \widehat n_i(a)\widehat n_i(b)\widehat n_i(c)
+> \]
+> proves the cocycle identity. The convention \(\widehat n_i(0)=1\) gives
+> \[
+> \tau_i(0,a)=\tau_i(a,0)=1
+> \]
+> and also
+> \[
+> \vartheta_{i,0}
+> =
+> \operatorname{res}\!\left(\widehat n_i(0)^{-1}\right)
+> =1.
+> \]
+> Exact-height equality gives \(\vartheta_{i,1}=1\). This proves the normalized assertions in (C2-cocycle) and (C2-recursion).
+
+### R1-3 — Respect the carrier implication \(\eta=1\Rightarrow f_1=1\)
+
+In the absorption map, replace the A5 row
+
+> | A5 GENTOW4 | S4 residue-one relation | C2, C6 | **Verbatim**: \(\eta=1\) is not \(f_1=1\), and does not make arbitrary digits \(x\)-free. |
+
+with:
+
+> | A5 GENTOW4 | S4 residue-one relation | C2, C6 | **Adapted to the carrier**: because \(K_1=\mathbf F_Q(\eta)\) with basis \(1,\eta,\ldots,\eta^{f_1-1}\), the specialization \(\eta=1\) forces \(K_1=\mathbf F_Q\) and hence \(f_1=1\). It removes the level-one wrap correction, but it does not by itself make an arbitrary lift \(x\)-free: (C6-x-free) still additionally requires \(i(M)=0\). |
+
+Replace honesty-ledger item 8 with:
+
+> 8. Under the stated carrier, \(\eta=1\) forces \(K_1=\mathbf F_Q\) and \(f_1=1\); these are not independent specialization axes. The condition \(\eta=1\) removes the level-one wrap correction, but it does not by itself make arbitrary digits \(x\)-free, because (C6-x-free) still requires \(i(M)=0\).
+
+Add this row to §6:
+
+> | Defined \(z_1=\eta\), normalized \(\widehat n_i(0)=1\), and corrected the A5 residue-one specialization to record \(\eta=1\Rightarrow f_1=1\) under the carrier. | T1A hostile pass, findings G1–G3, 2026-08-12 r1 | Repairs the level-two letter formula and normalized cocycle endpoints; A5 is adapted rather than falsely marked verbatim. |
+
+
+---
+
+## r2 (2026-08-12): the T1P findings + the A2–A7 consumption re-scope
+
+*(Derived by the T1R2 run (gpt-5.6-sol high, runs/comp1/T1R2_output.log) from the T1P pass findings (1C+3G+1m) and the strict consumption-check results (A1 pass; A2–A7 re-scoped to pinned gauge subclaims per the blueprint's non-row-annex provision); transcribed unaltered; the arc counter resets — two consecutive clean passes owed from here.)*
+
+# T1 r2 corrections — 2026-08-12
+
+These edits are statement-narrowing repairs. Supplier-dependent facts are named explicitly and are not counted as proved by T1.
+
+## R2-1 — Remove the unsupported arbitrary-depth letter reduction
+
+In §1.1, after the general-level normalizer paragraph, insert:
+
+> No normalization of the residue-unit part of \(\widehat n_i(m)\) is imposed at arbitrary depth. Consequently, exact height and bounded-exponent normal form alone do not imply that a value-zero quotient of tower normalizers is a monomial in the preceding canonical letters.
+>
+> If such a description is consumed at level \(i\ge2\), it must cite the following named supplier hypothesis:
+>
+> \[
+> \boxed{
+> \begin{minipage}{0.88\linewidth}
+> \(\mathrm{(H\!-\!JA\!-\!CONJ)}_i\): the accepted JA conjugation formula supplies a specified Laurent monomial
+> \[
+> J_i(Z_1,\ldots,Z_i)
+> \]
+> such that
+> \[
+> \operatorname{res}\!\left(
+> \frac{\widehat n_i(u_{i+1})}
+> {\pi_{i+1}^{u_{i+1}}}
+> \right)
+> =
+> J_i(z_1,\ldots,z_i).
+> \]
+> \end{minipage}
+> }
+> \tag{H-JA-CONJ}
+> \]
+>
+> This is a site hypothesis imported from the JA supplier, not a consequence of the T1 carrier. The explicit level-two calculation below does not require it.
+
+In (C1), replace
+
+> The quotient has value zero. Successive reduction by the tower relations expresses \(\rho_i\) as a monomial in preceding canonical letters. This is a terminating reduction algorithm; no closed exponent formula is asserted at arbitrary depth.
+
+with:
+
+> The quotient has value zero. No arbitrary-depth canonical-letter monomial assertion follows from the T1 carrier. At a site carrying \(\mathrm{(H\!-\!JA\!-\!CONJ)}_i\), one may additionally conclude
+> \[
+> \boxed{\rho_i=J_i(z_1,\ldots,z_i).}
+> \tag{C1-JA-specialization}
+> \]
+> The level-two formula below is unconditional and is proved directly from the displayed level-one normalizers.
+
+In §2.1, replace the arbitrary-depth reduction paragraph beginning
+
+> Both normalizers have height \(u_{i+1}\), so the quotient has value zero. Successively remove the highest key …
+
+with:
+
+> Both normalizers have height \(u_{i+1}\), so the quotient has value zero. This proves the unconditional content of (C1-general). The carrier supplies no control of the remaining residue-unit part. Formula (C1-JA-specialization), when used, is exactly the imported hypothesis \(\mathrm{(H\!-\!JA\!-\!CONJ)}_i\), not an additional conclusion of this proof.
+>
+> The following level-two computation is independent of that supplier hypothesis.
+
+This defeats the unit-twist counter-configuration without enlarging T1.
+
+## R2-2 — Make the harness/print polynomial comparison a named supplier fact
+
+In (C4), replace the paragraph beginning
+
+> If \(H(y)\) is the harness residual and \(P(y)\) the normalized print residual, the corresponding support statement is …
+
+with:
+
+> The attained-origin calculation above concerns one normalization exponent. It does not by itself compare all coefficients of a harness residual and a normalized print residual.
+>
+> A support comparison may be invoked only under the following named supplier hypothesis:
+>
+> \[
+> \boxed{
+> \begin{minipage}{0.88\linewidth}
+> \(\mathrm{(H\!-\!JA\!-\!RES\!-\!CONJ)}\): for specified nonzero
+> \(H,P,Q\in K[y]\), the accepted harness/print conjugation formula supplies
+> \[
+> H(y)=y^\nu Q(y),
+> \qquad
+> P(y)=aQ(by),
+> \qquad
+> a,b\in K^\times.
+> \]
+> \end{minipage}
+> }
+> \tag{H-JA-RES-CONJ}
+> \]
+>
+> Under \(\mathrm{(H\!-\!JA\!-\!RES\!-\!CONJ)}\), multiplication by \(y^\nu\) translates exponent support, while multiplication by a unit and substitution by a unit preserve it. Hence
+> \[
+> \boxed{
+> \operatorname{Supp}_y(H)
+> =
+> \nu+\operatorname{Supp}_y(P),
+> \qquad
+> \deg H=\deg P+\nu.
+> }
+> \tag{C4-support}
+> \]
+>
+> Thus attained abscissas and normalized support widths agree at sites carrying the supplier comparison. Neither the polynomial identities nor their support consequences follow from (C4-origin) alone.
+
+Replace the final paragraph of §2.4 with:
+
+> This proves (C4-origin). The proof of (C4-origin) stops here.
+>
+> If \(\mathrm{(H\!-\!JA\!-\!RES\!-\!CONJ)}\) is cited, its two polynomial identities immediately give (C4-support). T1 does not derive those identities from the attained-origin exponent calculation.
+
+## R2-3 — Type the evaluation point and its residue embedding
+
+Immediately before (C6), insert:
+
+> Fix a level-one tower point \(\theta\) together with the specified residue embedding
+> \[
+> \iota_\theta:K_1\hookrightarrow\kappa(\theta)
+> \]
+> satisfying
+> \[
+> \boxed{
+> \operatorname{res}\!\left(
+> \frac{\theta^{e_1}}{\pi^h}
+> \right)
+> =
+> \iota_\theta(\eta).
+> }
+> \tag{C6-theta}
+> \]
+> Whenever \(K_1\) is identified with its image under \(\iota_\theta\), the symbol \(\iota_\theta(\lambda)\) may be written simply as \(\lambda\).
+
+Replace (C6-residue) by:
+
+\[
+\boxed{
+\operatorname{res}\!\left(
+\frac{L_M(\lambda)(\theta)}
+{n(M)(\theta)}
+\right)
+=
+\iota_\theta(\lambda).
+}
+\tag{C6-residue}
+\]
+
+In §2.6, replace
+
+> After division by \(n(M)\), its residue is \(\lambda_r\eta^r\). Basis independence prevents cancellation and proves (C6-residue).
+
+with:
+
+> After evaluation at \(\theta\) and division by \(n(M)(\theta)\), the \(r\)-th summand has residue
+> \[
+> \iota_\theta(\lambda_r)\,
+> \operatorname{res}\!\left(
+> \frac{\theta^{e_1}}{\pi^h}
+> \right)^r
+> =
+> \iota_\theta(\lambda_r\eta^r).
+> \]
+> Summing and using the chosen \(K_1\)-basis gives
+> \[
+> \operatorname{res}\!\left(
+> \frac{L_M(\lambda)(\theta)}
+> {n(M)(\theta)}
+> \right)
+> =
+> \iota_\theta(\lambda).
+> \]
+> Under the declared identification of \(K_1\) with its image, this is the accepted GENHN display with right-hand side \(\lambda\).
+
+## R2-4 — Turn clearance into an explicit GENHN supplier interface
+
+Replace (C6-clearance) and its following collection sentence with:
+
+> The exact-lift theorem above contains no definition of \(\Phi'\), its monomial valuations, or the outer polygon side. Consequently it proves no clearance estimate by itself.
+>
+> At the composed GENHN application, clearance may be used only after citing:
+>
+> \[
+> \boxed{
+> \begin{minipage}{0.88\linewidth}
+> \(\mathrm{(H\!-\!GENHN\!-\!CLEAR)}\): \(\Phi'\), the outer side, and the collection/\(\Phi'\)-carry operation are those of the accepted \(T(b)'(i)\) site. For
+> \[
+> r=f_2-t,\qquad M=ru_2,\qquad u_2>e_2D'h,
+> \]
+> that supplier proves that every product of a monomial of
+> \[
+> L_{ru_2}\!\bigl(c_t\eta^{W(t)}\bigr)
+> \]
+> with a monomial of \(\Phi'^{e_2t}\) clears the outer side by at least
+> \[
+> \frac{r(u_2-e_2D'h)}{e_1}>0,
+> \]
+> and that collection and \(\Phi'\)-carry can only cancel terms or move them upward.
+> \end{minipage}
+> }
+> \tag{H-GENHN-CLEAR}
+> \]
+>
+> Thus T1 supplies the exact-height coefficient used at that site; the outer-side estimate remains the named GENHN supplier fact.
+
+Replace the last sentence of §2.6 with:
+
+> Substitution of \(M=ru_2\) proves the corrected coefficient, its coherent digit, and its multiplicative coefficient. Any subsequent outer-side clearance assertion is an invocation of \(\mathrm{(H\!-\!GENHN\!-\!CLEAR)}\); it is not derived in T1.
+
+The second A1 absorption row must consequently end:
+
+> T1 absorbs the corrected coefficient and its exact-lift properties. The clearance sentence is retained only by the explicit citation \(\mathrm{(H\!-\!GENHN\!-\!CLEAR)}\), not as a T1 consequence.
+
+## R2-5 — Type the modular-origin data
+
+Replace the opening of (C4) by:
+
+> Fix
+> \[
+> e\in\mathbf Z_{>0},
+> \qquad
+> \ell,\beta\in\mathbf Z,
+> \qquad
+> z\in K^\times.
+> \]
+> Let \(s_{\min}(\beta)\) be the unique representative in
+> \(\{0,\ldots,e-1\}\) of the integer residue class
+> \(\ell\beta\bmod e\), and put
+> \[
+> s_{\min}(\beta)
+> =
+> \operatorname{rem}_e(\ell\beta),
+> \qquad
+> t_{\min}(\beta)
+> =
+> \frac{\ell\beta-s_{\min}(\beta)}e
+> \in\mathbf Z,
+> \qquad
+> \varepsilon(\beta)=z^{-t_{\min}(\beta)}.
+> \]
+
+The remaining attained-origin calculation is unchanged.
+
+## Pin-enabling C5 corollary
+
+After the definition of \(\varpi\), insert the directly derived identity
+
+\[
+\boxed{
+\frac{n(k)}{\varpi^k}
+=
+\left(\frac{x^{e_1}}{\pi^h}\right)^{-q(k)}.
+}
+\tag{C5-monomial-ratio}
+\]
+
+In §2.5, derive it before taking residues:
+
+\[
+i(k)-i_0k=-e_1q(k),
+\qquad
+\frac{k-i(k)h}{e_1}
+-
+\frac{k-i_0kh}{e_1}
+=
+hq(k).
+\]
+
+This adds no hypothesis and makes the HETOW ratio pin a literal specialization.
+
+# Replacement §3 — Exact-span absorption map
+
+Replace the introductory paragraphs of §3 with:
+
+> Under the revised blueprint’s non-row-annex provision, an A-row absorbs only the closed sub-display quoted in that row. A theorem or lemma identifier is a span locator; it does not mean that T1 implies the entire containing statement.
+>
+> Each row must have the form
+> \[
+> \text{specified T1 clause}
+> \Longrightarrow
+> \text{quoted pinned subclaim}.
+> \]
+> If the containing result needs geometry, routing, membership, extraction, or a site theorem not supplied by T1, the row is labeled “supplies the gauge input to,” and the residual obligation is named explicitly.
+
+## A2 — HETOW
+
+**SPAN PIN.** Accepted file `HETOW`, LEMMA HETOW-4, `md5=2500c2f458b6647e9bedeee8c84009a0`, parts (a)–(b):
+
+\[
+\boxed{
+\frac{\widehat n_2(k)}{n_2(k)}
+=
+\frac{\widehat n(m(k))}{\varpi^{m(k)}}
+=
+\left(\frac{x^{e_1}}{\pi^h}\right)^{-Q(m(k))}
+}
+\]
+
+and
+
+\[
+\boxed{
+\operatorname{res}\!\left(
+\frac{\widehat n_2(k)(\xi)}{n_2(k)(\xi)}
+\right)
+=
+\eta_\xi^{-Q(m(k))}
+=
+\iota_\xi\!\left(\eta^{-Q(m(k))}\right).
+}
+\]
+
+With \(w_2=\lfloor(s(k)+s(k'))/e_2\rfloor\), the pinned carry display is
+
+\[
+\boxed{
+\frac{\tau(k)\tau(k')}{\tau(k+k')}
+=
+\eta^{
+\operatorname{wrap}_1(m(k),m(k'))
++
+w_2\left(
+Q(u_2)+
+\operatorname{wrap}_1(m(k)+m(k'),u_2)
+\right)
+}.
+}
+\]
+
+**Consumption check.**
+
+\[
+\boxed{
+\text{T1 (C5-monomial-ratio) + (C5-carry)}
+\Longrightarrow
+\text{the three pinned HETOW displays}.
+}
+\]
+
+**Scope.** T1 does not absorb HETOW-4(c)–(d). The side-assembly brackets, telescoping coefficient identity, side-letter equality, routing transport, and common refinement polynomial remain HETOW/HE7 supplier conclusions.
+
+## A3 — GENTOW1
+
+**SPAN PIN.** Accepted file `GENTOW1`, the gauge-correction display attached to the level-one coefficient pin preceding LEMMA GENTOW-1 (`md5=4b4d9f21dae75e08d515ff8a7263b559`):
+
+\[
+\boxed{
+M_t=(f_2-t)u_2>D'h,
+\qquad
+\gamma_t=c_t\eta^{W(t)},
+\qquad
+\widehat k_t=L_{M_t}(\gamma_t),
+}
+\]
+
+with the closed read statement
+
+\[
+\boxed{
+dv_1(\widehat k_t)=M_t,
+\qquad
+c_t^{\mathrm{mult}}
+=
+\gamma_t\eta^{-W(t)}
+=
+c_t.
+}
+\]
+
+Here the accepted local \(\gamma_t\) is T1’s coherent digit \(\Gamma_t\), not HE6’s \(\gamma_k(A)\).
+
+**Consumption check.**
+
+\[
+\boxed{
+\text{T1 (C2-level-1) + (C3-dictionary) + (C6)}
+\Longrightarrow
+\text{the pinned corrected-coefficient display}.
+}
+\]
+
+**Classification.** T1 **supplies the gauge input to** LEMMA GENTOW-1.
+
+**Residual obligation.** The characterization of \(\mathcal T\), budget floors, triangular-unimodular fibration, digit counts, sharp node bounds, class separation, and the field-root inequality in GENTOW-1(a)–(d) remain GENTOW1/GENHN-2′/HE6 supplier results. Equal exact height only says that an already-established value-blind budget is unchanged by the gauge correction.
+
+## A4 — GENTOW3
+
+**SPAN PIN.** Accepted file `GENTOW3`, gauge-annex corrected-key and \(x\)-free-rescope displays associated with THEOREM GENTOW-3 (`md5=a6d97dfefeb2be042cada0d9ca46c31e`):
+
+\[
+\boxed{
+M_t=(f_2-t)u_2>D'h,
+\qquad
+\widehat k_t
+=
+L_{M_t}\!\bigl(c_t\eta^{W(t)}\bigr),
+}
+\]
+
+and, for a nonzero digit \(\lambda\),
+
+\[
+\boxed{
+L_M(\lambda)\text{ is an \(x\)-free monomial}
+\iff
+i(M)=0
+\text{ and }
+\lambda\in\mathbf F_Q.
+}
+\]
+
+**Consumption check.**
+
+\[
+\boxed{
+\text{T1 (C3-level-1-key) + (C6-x-free)}
+\Longrightarrow
+\text{the two pinned GENTOW3 gauge displays}.
+}
+\]
+
+**Classification.** T1 **supplies the corrected-key and \(x\)-free inputs to** THEOREM GENTOW-3.
+
+**Residual obligation.** The definitions and comparison of \(ShC_j\) and \(C_j\), the \(\Theta_j\) floor, faithful-band equality, zero-discrepancy theorem, self-overflow certificate, attainment, and deep-perturbation conclusions remain GENTOW3 results.
+
+## A5 — GENTOW4
+
+**SPAN PIN.** Accepted file `GENTOW4`, S3 corrected-key bridge attached to LEMMA GENTOW-4.1 (`md5=d7d1bf2b130424408025b37187067507`):
+
+\[
+\boxed{
+\Phi_2
+=
+\Phi'^{\,e_2f_2}
+-
+\sum_{t<f_2}
+L_{(f_2-t)u_2}
+\!\bigl(c_t\eta^{W(t)}\bigr)
+\Phi'^{\,e_2t},
+}
+\]
+
+on the displayed live domain \((f_2-t)u_2>D'h\).
+
+The separately pinned attained-origin equation is
+
+\[
+\boxed{
+z^{t_{\mathrm{Def}}}
+=
+z^\nu\varepsilon(\beta).
+}
+\]
+
+Any support comparison additionally cites \(\mathrm{(H\!-\!JA\!-\!RES\!-\!CONJ)}\).
+
+**Consumption checks.**
+
+\[
+\boxed{
+\text{T1 (C2-level-1) + (C3-level-1-key) + (C6)}
+\Longrightarrow
+\text{the pinned corrected-key display},
+}
+\]
+
+\[
+\boxed{
+\text{T1 (C4-origin)}
+\Longrightarrow
+z^{t_{\mathrm{Def}}}=z^\nu\varepsilon(\beta).
+}
+\]
+
+**Classification.** T1 **supplies the gauge input to** GENTOW-4.1(c)/S3.
+
+**Residual obligation.** The all-sides slope bound, nonzero residual constants, level-2 point-set identification, \(\Psi\)-membership, the HE7 routing/refinement package, both frame peels, and their splitting contributions remain GENTOW4/HETOW/HE7 supplier conclusions. In particular, T1 does not imply
+
+\[
+\Phi_2=\Psi_{\kappa_2,\widetilde r}-w,
+\qquad
+w=0\ \text{or}\ dv_2(w)>T_2.
+\]
+
+## A6 — GENTOW6
+
+**SPAN PIN.** Accepted file `GENTOW6`, normalized scalar-read display used by THEOREM GENTOW-6.3 (`md5=05fc38817b8c75297267bb57089e898f`):
+
+\[
+\boxed{
+\gamma_k(A)
+=
+\sum_{\substack{t\ge0\\i(k)+e_1t<D'}}
+\operatorname{res}\!\left(
+a_{i(k)+e_1t}
+\pi^{-(k-(i(k)+e_1t)h)/e_1}
+\right)\eta^t,
+}
+\]
+
+\[
+\boxed{
+\operatorname{res}\!\left(
+\frac{A(\xi)}{n(k)(\xi)}
+\right)
+=
+\iota_\xi\bigl(\gamma_k(A)\bigr),
+\qquad
+\operatorname{res}\!\left(
+\frac{A(\xi)}{\varpi(\xi)^k}
+\right)
+=
+\iota_\xi\bigl(\gamma_k(A)\bigr)\eta_\xi^{-q(k)}.
+}
+\]
+
+The associated lift pin is
+
+\[
+\boxed{
+L_M(\lambda)
+=
+\sum_{r=0}^{f_1-1}
+\widetilde{\lambda_r}
+x^{i(M)+e_1r}\pi^{a-rh},
+\qquad
+M>D'h,
+}
+\]
+
+with its full displayed support and exact height.
+
+**Consumption check.**
+
+\[
+\boxed{
+\text{T1 (C5-gamma) + (C5-normalizer-read)
++ (C5-varpi-read) + (C6-lift)}
+\Longrightarrow
+\text{the pinned GENTOW6 scalar-read and lift displays}.
+}
+\]
+
+**Classification.** T1 **supplies the normalized scalar-read and exact-lift inputs to** THEOREM GENTOW-6.3.
+
+**Residual obligation.** The \(f_1=1\) scope, shadow/composed grids, single-\(\Phi'\)-extraction census, unique top branch, noncancellation certificate, no-overflow equality, regime-3 witness, and attainment statements remain GENTOW6 results. No part of GENTOW-6.3(a)–(d) is absorbed merely from C5–C6.
+
+## A7 — GENTOW2
+
+**SPAN PIN 1.** Accepted file `GENTOW2`, S5.1 level-two letter display:
+
+\[
+\boxed{
+z_2
+=
+\eta_2z_1^{-\lfloor\ell_1u_2/e_1\rfloor}.
+}
+\]
+
+**Consumption check.**
+
+\[
+\boxed{
+\text{T1 (C1-base-letter) + (C1-level-2)}
+\Longrightarrow
+\text{the pinned S5.1 letter display}.
+}
+\]
+
+**SPAN PIN 2.** LEMMA GENTOW2-B, `md5=8a00bf44d21f87e878c0be6226b13b61`, terminal rescaling display:
+
+\[
+\boxed{
+\psi_3^{(w)}(y)
+=
+w^{f_3}\psi_3(y/w).
+}
+\]
+
+The pinned consequences are: monicity after the displayed renormalization, preservation of degree and irreducibility, preservation of a nonzero constant term, and preservation of irreducible-factor degrees and multiplicities.
+
+**Consumption check.**
+
+\[
+\boxed{
+\text{T1 (C3-three-reads) and its unit-substitution argument}
+\Longrightarrow
+\text{the pinned rescaling and factor-pattern subclaim}.
+}
+\]
+
+**B-law classification.** T1 only **supplies the gauge algebra to** the preceding B-law display. The residual obligation is the accepted GENTOW2-B″ per-grade-unit theorem discharging ladder multiplicativity and the value-zero read:
+
+\[
+u(\beta_t)
+=
+\Theta(t)w^{f_3-t}.
+\]
+
+T1 may then perform the slotwise cancellation
+
+\[
+\Gamma_t=c_t\vartheta_{f_3-t},
+\qquad
+\Theta(t)=\vartheta_{f_3-t}^{-1},
+\]
+
+but it does not prove the supplier identity itself. Thus the B-law is no longer labeled “absorbed verbatim.”
+
+# Consequential scope edits
+
+Replace honesty-ledger items 1, 5, and 10 by:
+
+> 1. At arbitrary depth, T1 proves only the value-zero ratio in (C1-general). A preceding-letter monomial description requires the named supplier hypothesis \(\mathrm{(H\!-\!JA\!-\!CONJ)}_i\). The level-two formula is proved directly and is unconditional.
+
+> 5. The canonical minimal-grid factor and raw print factor differ by \(z^\nu\). The exponent identity (C4-origin) does not imply a comparison of whole residual polynomials. The support and degree formulas require \(\mathrm{(H\!-\!JA\!-\!RES\!-\!CONJ)}\).
+
+> 10. T1 does not prove note-specific budgets, floors, fullness counts, separator inequalities, polygon geometry, or extraction and attainment claims. In particular, outer-side clearance is available only through the named supplier input \(\mathrm{(H\!-\!GENHN\!-\!CLEAR)}\).
+
+In (C7), amend the affected package rows to read:
+
+| Package field | T1 datum available to that field |
+|---|---|
+| \(M1\) | The unconditional value-zero ratio and level-two letter formula in (C1); arbitrary-depth letter monomiality only under \(\mathrm{(H\!-\!JA\!-\!CONJ)}_i\). |
+| \(M2\) | The dictionary and canonical read in (C3), plus (C4-origin); support transport only under \(\mathrm{(H\!-\!JA\!-\!RES\!-\!CONJ)}\). |
+| \(M4\) | The exact-height formulas (C5)–(C6), at W2-C3’s accepted fence; polygon clearance only under \(\mathrm{(H\!-\!GENHN\!-\!CLEAR)}\). |
+
+Add to §6:
+
+> | Removed the unsupported arbitrary-depth unit reduction; made harness/print polynomial conjugation and GENHN clearance explicit supplier inputs; typed the modular-origin data; fixed the \(C6\) evaluation embedding; and re-scoped A2–A7 to closed gauge spans with named residual obligations. | T1P and T1CC2, 2026-08-12 r2 | Repairs 1 CRITICAL, 3 GAP, and 1 MINOR finding; prevents theorem-wide absorption from gauge-input rows. |
+
+
+---
+
+## r3 (2026-08-12): arc repairs
+
+*(Derived by gpt-5.6-sol high, runs/comp2/T1R3_output.log; transcribed unaltered; counter resets.)*
+
+# T1 r3 corrections — 2026-08-12
+
+These edits repair the three gaps and one minor found by T1P2.
+
+## R3-1 — Type the general canonical letter
+
+In §1.1, immediately after the general-level stage data
+
+\[
+e_{i+1},\qquad f_{i+1},\qquad u_{i+1},
+\]
+
+insert:
+
+> Fix also the stage element \(\pi_{i+1}\) with
+> \[
+> \boxed{dv_i(\pi_{i+1})=1.}
+> \tag{C1-stage-uniformizer}
+> \]
+> Hence
+> \[
+> dv_i\!\left(\pi_{i+1}^{u_{i+1}}\right)=u_{i+1}.
+> \]
+> At level \(1\), this condition follows from
+> \[
+> \pi_2=x^{\ell_1}\pi^{\ell'_1},
+> \qquad
+> \ell_1h+\ell'_1e_1=1.
+> \]
+
+In §2.1, replace
+
+> Both normalizers have height \(u_{i+1}\), so the quotient has value zero.
+
+with:
+
+> By exact height,
+> \[
+> dv_i\!\left(\widehat n_i(u_{i+1})\right)=u_{i+1},
+> \]
+> while (C1-stage-uniformizer) gives
+> \[
+> dv_i\!\left(\pi_{i+1}^{u_{i+1}}\right)=u_{i+1}.
+> \]
+> Hence their quotient has value zero.
+
+## R3-2 — Type the C5 residue embedding
+
+In (C5), replace
+
+> Let
+> \[
+> A(x)=\sum_{j<D'}a_jx^j,
+> \qquad
+> k=dv(A),
+> \qquad
+> i=i(k),
+> \qquad
+> n(k)=x^i\pi^{(k-ih)/e_1}.
+> \]
+
+with:
+
+> Let
+> \[
+> 0\ne A(x)=\sum_{j<D'}a_jx^j,
+> \qquad
+> k=dv(A),
+> \qquad
+> i=i(k),
+> \qquad
+> n(k)=x^i\pi^{(k-ih)/e_1}.
+> \]
+
+Replace
+
+> For every tower point \(\xi\) carrying the specified residue embedding \(\iota_\xi\),
+
+with:
+
+> For every level-one tower point \(\xi\), fix the specified residue embedding
+> \[
+> \iota_\xi:K_1\hookrightarrow\kappa(\xi)
+> \]
+> satisfying
+> \[
+> \boxed{
+> \operatorname{res}\!\left(
+> \frac{\xi^{e_1}}{\pi^h}
+> \right)
+> =
+> \iota_\xi(\eta).
+> }
+> \tag{C5-xi}
+> \]
+> Write
+> \[
+> \eta_\xi
+> :=
+> \operatorname{res}\!\left(
+> \frac{\xi^{e_1}}{\pi^h}
+> \right)
+> =
+> \iota_\xi(\eta).
+> \]
+> Then
+
+In §2.5, after
+
+\[
+\frac{a_j\xi^j}{n(k)(\xi)}
+=
+\left(
+a_j\pi^{-(k-jh)/e_1}
+\right)
+\left(
+\xi^{e_1}\pi^{-h}
+\right)^t,
+\]
+
+insert:
+
+> By (C5-xi), the residue of the second factor is
+> \[
+> \eta_\xi^t=\iota_\xi(\eta^t).
+> \]
+
+## R3-3 — Remove the unsupported character-torsor classification
+
+In (C7), replace
+
+> It also proves no uniqueness of the gauge. Gauges with a fixed coboundary may differ by a character.
+
+with:
+
+> It also proves no uniqueness of the gauge and makes no classification of the fiber of gauges having a fixed coboundary. Any torsor or character description requires separately stated coefficient actions, admissibility conditions, and a supplier theorem.
+
+Replace honesty-ledger item 12 with:
+
+> 12. Gauge uniqueness is not asserted. T1 defines no gauge space, coefficient action, or character group and therefore asserts no character-torsor classification of fixed-coboundary gauges.
+
+In §6, replace the row beginning
+
+> | Withdrew any gauge-uniqueness implication and recorded character-torsor ambiguity.
+
+with:
+
+> | Withdrew any gauge-uniqueness implication and made no classification of fixed-coboundary gauge fibers. | WELDMASTER C6 F-1/F-2 and T1P2 finding G3 | Scope correction across all annex consumers; formulas C1–C6 are unchanged. |
+
+## R3-4 — Record this repair pass
+
+Add to §6:
+
+> | Required \(dv_i(\pi_{i+1})=1\) at general depth; required \(A\ne0\) and a compatible C5 residue embedding; and removed the untyped character-torsor assertion. | T1P2, 2026-08-12 r3 | Repairs 3 GAP and 1 MINOR findings without strengthening the mathematical conclusions. |
