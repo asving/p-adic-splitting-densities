@@ -11,3 +11,5 @@
 [09:36:52] A4_he6r1 exit 0 (5004 B; SUMMARY: 2 REAL (repairs delivered) / 0 RESOLVED-ALREADY / 0 ARTIFACT / 2 OBSTRUCTED)
 [09:36:52] A5_he3 start
 [09:41:03] A5_he3 exit 0 (10459 B; SUMMARY: 5 REAL (repairs delivered) / 0 RESOLVED-ALREADY / 0 ARTIFACT / 0 OBSTRUCTED)
+[09:41:03] R9_drain_repair start
+[09:47:41] R9_drain_repair exit 0 (10893 B; SUMMARY: 4 REAL (repairs delivered) / 0 RESOLVED-ALREADY / 0 ARTIFACT / 0 OBSTRUCTED)
