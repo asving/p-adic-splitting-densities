@@ -1,0 +1,50 @@
+Scope: the six rows re-scoped in r2, A2–A7. A1 is excluded because r2 records it as already passed rather than re-scoped. Thus there are 18 checks.
+
+| Row | Statement leg | Provenance | Definition audit |
+|---|---|---|---|
+| A2 HETOW | PASS | PASS | PASS |
+| A3 GENTOW1 | PASS | PASS | PASS |
+| A4 GENTOW3 | PASS | PASS | PASS |
+| A5 GENTOW4 | PASS | PASS | PASS |
+| A6 GENTOW6 | PASS | PASS | PASS |
+| A7 GENTOW2 | PASS | PASS | PASS |
+
+- **A2 — HETOW-4(a)–(b), md5 `2500c2f458b6647e9bedeee8c84009a0`.** The closed claim is only the normalizer ratio, its residue, and the displayed carry quotient. Expanding the HETOW definitions gives
+  \[
+  \widehat n_2(k)/n_2(k)=\widehat n_1(m(k))/\varpi^{m(k)}.
+  \]
+  C5-monomial-ratio supplies the remaining equality. Here HETOW’s
+  \(Q(r)=\lfloor i_0r/e_1\rfloor\) equals T1’s
+  \(q(r)=(i_0r-i(r))/e_1\). Using
+  \(m(k+k')=m(k)+m(k')+w_2u_2\), C5-carry gives exactly the pinned exponent. HETOW-4(c)–(d) is not consumed.
+
+- **A3 — GENTOW1 corrected-coefficient display preceding GENTOW-1, md5 `4b4d9f21dae75e08d515ff8a7263b559`.** On an occupied coefficient pin—equivalently \(c_t\ne0\)—C6 gives
+  \(dv_1(L_{M_t}(c_t\eta^{W(t)}))=M_t\), while C2 and C3 give
+  \[
+  c_t^{\mathrm{mult}}
+  =(c_t\eta^{W(t)})\eta^{-W(t)}=c_t.
+  \]
+  If \(c_t=0\), the lift is zero and there is no finite-height pin; the row must retain this standard occupied-pin reading. Local \(\gamma_t\) is correctly identified with T1’s \(\Gamma_t\), not HE6’s \(\gamma_k(A)\). Budgets and fibration remain supplier facts.
+
+- **A4 — GENTOW3 gauge-annex displays associated with GENTOW-3, md5 `a6d97dfefeb2be042cada0d9ca46c31e`.** C3 plus C6 gives the corrected coefficient on \(M_t>D'h\). C6-x-free gives the second pin exactly for nonzero \(\lambda\):
+  \[
+  L_M(\lambda)\text{ is \(x\)-free}\iff i(M)=0\ \text{and}\ \lambda\in\mathbf F_Q.
+  \]
+  No geography, shadow comparison, or attainment conclusion is inferred.
+
+- **A5 — GENTOW4 S3 corrected-key bridge attached to GENTOW-4.1, md5 `d7d1bf2b130424408025b37187067507`, plus the separately identified JA attained-origin display.** C2, C3, and C6 reproduce the corrected key on the live domain. C4-origin independently gives
+  \[
+  z^{t_{\mathrm{Def}}}=z^\nu\varepsilon(\beta).
+  \]
+  The modular data are now typed, and no polynomial-support conclusion is drawn without `(H-JA-RES-CONJ)`. The \(\Psi\)-membership and HE7 routing claims remain outside T1.
+
+- **A6 — GENTOW6 normalized scalar-read and lift displays used by GENTOW-6.3, md5 `05fc38817b8c75297267bb57089e898f`.** C5-gamma gives the normalized coefficient sum; evaluation at a typed tower point gives the \(n(k)\)-read, and C5-monomial-ratio supplies the \(\eta_\xi^{-q(k)}\) factor for the \(\varpi^k\)-read. C6 supplies the lift, with exact height understood for nonzero \(\lambda\). The embeddings agree through
+  \(\eta_\xi=\iota_\xi(\eta)\). None of GENTOW-6.3’s extraction or attainment assertions is consumed.
+
+- **A7 — GENTOW2 S5.1 and GENTOW2-B, md5 `8a00bf44d21f87e878c0be6226b13b61`.** With the r1 definition \(z_1=\eta\), C1 yields the pinned level-two letter formula. C3 gives
+  \[
+  \psi_3^{(w)}(y)=w^{f_3}\psi_3(y/w),
+  \]
+  and unit substitution preserves monicity, degree, irreducibility, nonzero constant term, and factor degrees/multiplicities. The per-grade B-law identity remains explicitly dependent on GENTOW2-B″; T1 supplies only the subsequent \(\vartheta/\Theta\) cancellation.
+
+SUMMARY: 18/18 CHECKS PASS
