@@ -3857,3 +3857,38 @@ REQUESTED (trust boundary: statements are where errors hide): Asvin
 on the two statements + the bundle's fields, before units target
 them. The statement_ledger --check stays green (the file is Lean;
 the 166 informal pins untouched).
+
+**2026-08-12 DATED APPEND #25 — SESSION CHECKPOINT: THE SOL
+CERTIFICATION CAMPAIGN IS LIVE; RESUME FROM HERE** — Active goal
+(Asvin): the mathematics certified by sol 5.6 end to end. THE LEDGER:
+docs/SOL_CERTIFICATION_LEDGER_2026-08-12.md — 29 cone rows, 8
+CERTIFIED at goal-set, 21 open. THE RUNNER: runs/cert/runner.sh,
+detached (survives session end), 21 sequential gpt-5.6-sol-high runs,
+EACH OUTPUT AUTO-COMMITTED as it lands; progress =
+runs/cert/progress.txt. Queue: A0 HEX3-annex-fold, A1–A5
+adjudicate+repair (the five fresh chain challenges: W-12, GENHN, HE6,
+HE6R1, HE3 — sol re-reads its findings against HEAD, delivers
+RESOLVED-ALREADY/ARTIFACT/REAL-with-derived-repair), R9 DRAIN-N4
+d-factor re-derivation, R10 WI pass 3 (acceptance; T1 declared
+out-of-cone), D1a/D1b GENTOW5/GENTOW3 discharge confirmations, C1–C11
+as-builts (ten weld notes + GENTOW6_BOXES; C6 carries the weld-face
+audit; C10 = JD0 pass 1). NEXT SESSION'S FIRST MOVES: (1) read
+runs/cert/progress.txt; (2) fold outcomes into the certification
+ledger (rows → CERTIFIED / repairs-owed); (3) for every REAL repair
+delivered: VERIFY the derivation against sources (the R2 precedent:
+check the cited spans by hand) then transcribe UNALTERED with an
+attribution bracket; (4) assemble the discharge-confirmation queue
+for transcribed repairs + re-passes for A-runs (a second runner in
+runs/cert2/); (5) if the runner died mid-queue (server crash), edit
+its name list to the REMAINING runs only (completed outputs are
+committed) and relaunch. REGIME (Amendments 4+5, governing): NO
+Fable subagents — Fable = orchestrator only (limited Claude account);
+gpt-5.6-sol high = the certifier and all heavy work (-pro 400s on
+this account; upgrade by amendment if access lands); Sonnet/Opus only
+for spec-complete mechanical tasks. PARKED BEHIND THE GOAL: the
+reorganization (step 1 baseline frozen a95cc545; steps 2–18 in
+runs/leansimp_output.log), the Lean unit trial, the exposition
+E-units, T1/T3/SG2/X-lemma simplification arcs. Standing anchors:
+anchor rev 2 signed off (Stage2/UniformityTarget.lean, 2 sorries,
+fenced on the faithfulAt gates unit); statement ledger 166 rows
+green; AxChk baseline a95cc545.
