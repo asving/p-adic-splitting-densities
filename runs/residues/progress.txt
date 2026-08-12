@@ -3,3 +3,5 @@
 [08:02:54] R1_drainn4 exit 0 (3010 B; SCOPE: the ANNEX STACK ONLY (R1-R6 + close + the GENHN supplier append)
 [08:02:54] R2_wi_r1 start
 [08:05:32] R2_wi_r1 exit 0 (1595 B; OUTCOME: DERIVABLE)
+[08:05:32] R3_w12 start
+[08:09:29] R3_w12 exit 0 (4300 B; OUTCOME: CHALLENGE)

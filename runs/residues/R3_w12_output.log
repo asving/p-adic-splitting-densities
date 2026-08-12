@@ -1,0 +1,69 @@
+1. **“W-10(2,1,1) and every W-11 row are instances”** / **“THEOREM W-12.A — the order-1 shape-generic count law … PROVED at all degrees”**
+
+**CRITICAL.** The displayed theorem only counts a single polygon whose side residuals are all separable. That is not the full order-1 layer as defined here: degree-1 refinements keep the key degree equal to \(d\), hence remain order 1, but their earlier residuals are repeated.
+
+Counter-configuration: \(n=2\), \(q\ge3\), \(N\ge5\), history \(H=(1)\), followed by a terminal `SPLITEQ(k=2)` leaf. W12-L0 itself gives the per-center count
+
+\[
+(q-1)\frac{(q-1)(q-2)}2q^{2N-8}.
+\]
+
+The terminal separable polygon contributes only
+
+\[
+\frac{(q-1)(q-2)}2q^{2N-8};
+\]
+
+the extra \(q-1\) records the earlier repeated-residual letter. The W-12.A product has no product over refinement stages and no history factor. Thus either:
+
+- the theorem excludes this order-1 decided shape, falsifying “the order-1 layer” and “every W-11 row”; or
+- it includes it, in which case its displayed count is short by \(q-1\).
+
+2. **“\(C_0(q)\) is the classical level-0 configuration census”** and  
+**“\(\#T(N)=C_0(q)\cdot\ldots\), … counts factorizing cell by cell”**
+
+**CRITICAL.** The formula omits the automorphism/orbit factor when indistinguishable level-0 branches receive different decorations. None of the cubic tests exercises two repeated branches of identical degree and multiplicity.
+
+Counter-configuration: take \(n=4\), \(N\ge4\), and
+
+\[
+\bar f=(x-a)^2(x-b)^2,\qquad a\ne b.
+\]
+
+Give one quadratic branch the one-side `RAM(1)` shape and the other `RAM(3)`. Both are order-1 separable-residual shapes. Their per-center counts are
+
+\[
+A_1=(q-1)q^{2N-3},\qquad A_3=(q-1)q^{2N-6}.
+\]
+
+The ordinary level-0 census is \(C_0(q)=\binom q2\). But each unordered pair \(\{a,b\}\) has two assignments of the distinct decorations, so the actual count is
+
+\[
+2\binom q2 A_1A_3=q(q-1)A_1A_3,
+\]
+
+whereas the display gives only \(\binom q2A_1A_3\).
+
+Declaring the branches ordered does not repair the stated law: then \(C_0\) is no longer the undecorated level-0 census, and identical decorations would instead be double-counted. A decoration-dependent stabilizer factor is required.
+
+3. **“\(\operatorname{dens}_F(x)=c_F(q)q^{-\ell_F(x)}\)”** together with  
+**“all data (families, \(c_F\), \(\ell_F\), \(P_F\), \(\nu_F\)) independent of \(q\)”**, followed by  
+**“\(\sum_{x\in P_F}\operatorname{dens}_F(x)\in\mathbb Q(q)\)”**
+
+**GAP.** The hypothesis never states \(c_F(q)\in\mathbb Q(q)\). Multiplying an unspecified function \(c_F(q)\) by a rational geometric series does not prove the result lies in \(\mathbb Q(q)\). Exact integral counts at prime-power evaluations do not, by themselves, imply rational-function interpolation.
+
+There is also a literal inconsistency: if “\(c_F\) independent of \(q\)” means constant, the claimed \(n=2\) firing does not satisfy (A1), since its coefficients include \(q-1\), \((q-1)/(2q)\), and similar \(q\)-dependent expressions. If it means “one uniform formula,” the missing condition is precisely that this formula belongs to \(\mathbb Q(q)\). Consequently Step 1 and the “SAME expression” conclusion do not follow from the written hypotheses without choosing an unstated interpretation.
+
+4. **“W12-BOX-1 … the route is priced in S4.2 ((H-a)–(H-d))”**
+
+**MINOR.** S4.2 explicitly declares five inputs, `(H-a)` through `(H-e)`, and says `(H-e)` is separately load-bearing for window-level leaf/σ-decision. BOX-1’s four-item reference therefore understates its own dependency box. Other prominent statements do name `(H-e)`, so this is a localized conditionality-record defect.
+
+CHECKED CLEAN — The repaired \(b_2=0\) construction with \(B=\pi^N\) gives two congruent, separable lifts of distinct splitting types, including the \(t=N\) parity corner.
+
+CHECKED CLEAN — W-12.D Step 4’s lower and upper Haar bounds both follow from the strengthened (A1) σ-labeling clause; (A0) is indeed redundant there.
+
+CHECKED CLEAN — LEMMA W12-L1’s blockwise lift-product argument and the exact DBL drainage term \((q-1)q^{2N-1}\) survive.
+
+CHECKED CLEAN — W-12.D needs only per-\(q\) drainage \(r(N)/q^{nN}\to0\); it does not require a uniform-in-\(q\) rate.
+
+OUTCOME: CHALLENGE
