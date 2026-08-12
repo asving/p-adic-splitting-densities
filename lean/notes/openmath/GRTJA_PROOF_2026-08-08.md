@@ -1116,3 +1116,19 @@ u = −1, so the print T-point needs the boxed u(V) ≥ 0; the carry
 identity is unconditional). Transcribed unaltered per the standing
 division of labor. Ledger: row 20 → all four repairs folded,
 awaiting sol discharge-confirmation (cert3).)*
+
+
+**Dated corrigendum (2026-08-12, post-D3a — the C2-3 box at empty
+support).** The D3a discharge pass (gpt-5.6-sol high,
+runs/cert3/D3a_grtja_output.log) adjudicated the C2-3 annex NEW-ISSUE
+at one corner: when S_A = ∅ (the frozen note's zero-read escape), the
+boxed equivalence's left side is vacuously true while |χ(S_A)| = 0.
+Per sol's own fix and the simplicity preference, the box's right side
+is re-displayed as
+
+    |χ(S_A)| ≤ 1 ,
+
+which is correct in every case: at S_A = ∅ both sides hold vacuously;
+at S_A ≠ ∅, |χ(S_A)| ≤ 1 ⟺ |χ(S_A)| = 1, the original criterion. The
+two-distinct-character refutation criterion is unchanged. Awaiting
+sol re-confirmation in the next queue.
