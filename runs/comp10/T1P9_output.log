@@ -1,0 +1,31 @@
+Two gaps remain after applying r1–r7.
+
+[G1 — GAP] General corrected-key lifts lack a coefficient-space bound.
+
+T1 assumes only:
+
+> “\(m\) lies in its stated integral domain”  
+> \(dv_i(\operatorname{lift}_i(d;m))=m\) for \(d\ne0\), together with the normalized residue condition.
+
+It then declares:
+
+> “The corrected composed key is  
+> \(\Phi_{i+1}=\Phi_i^{e_{i+1}f_{i+1}}-\sum_t\widehat k_t\Phi_i^{e_{i+1}t}\).”
+
+Nothing at general level requires \(\widehat k_t\) to lie in the bounded coefficient space—typically \(\deg\widehat k_t<\deg\Phi_i\). That condition is explicit in the absorbed GENTOW2 source. Adding a sufficiently high-degree, strictly higher-value term to a valid lift preserves every displayed T1 lift contract but can make a nominal lower term exceed the leading term’s degree. Thus the formula need not define a monic key of the asserted \(\Phi_i\)-adic shape. C6 protects level one only; general C3 remains under-specified.
+
+[G2 — GAP] The unit status of \(w_i\) is not supplied by the stated residual-read obligations.
+
+T1 writes:
+
+> \(w_i=R_{i+1,\bar\kappa_i}(\widehat n_i(u_{i+1}))\in K_i^\times\)
+
+but assumes only ladder multiplicativity, graded scalar covariance, agreement with residue in grade zero, and \(R_{i+1,\beta}(0)=0\). Those axioms permit a read that vanishes on every positive-grade homogeneous component. It satisfies the displayed obligations while giving \(w_i=0\).
+
+Consequently the subsequent expressions
+
+> \(\psi_{i+1}^{(w_i)}(y)=w_i^{f_{i+1}}\psi_{i+1}(y/w_i)\)
+
+and the unit-substitution factor-pattern argument are not entailed at the general T1 perimeter. GENTOW2-B′/B″ supplies nonvanishing at its local site, but T1’s general C3 statement does not import an equivalent unit/nondegeneracy fact.
+
+VERDICT: NOT CLEAN | FINDINGS: 0C + 2G + 0m
