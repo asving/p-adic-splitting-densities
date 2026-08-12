@@ -1,0 +1,29 @@
+No findings. I treated r1’s §8.2 replacement as authoritative.
+
+- **GENTOW2-B″ — no finding.** The quoted unit
+  \[
+  \vartheta_{\rm G2}(t)=\operatorname{res}\!\left(N(sq)/N(q)^s\right)=\Theta_N(s;q)
+  \]
+  has the correct inverse orientation. Substitution into T3-BR gives \(u(\beta_t)=\vartheta_{\rm G2}(t)w^s\), and the polynomial identity expands exactly.
+
+- **GENTOW5-W — no finding.** Its \(\theta_i(t)\) uses the same B-law orientation, while the recipe-lift \(\vartheta_{i,s}\) remains the coherent-digit orientation. The cumulative \(\mathcal W_{\le n}\), \(j-1\) twist index, top \(w_n\), and preceding-rung lift bound are consistently fenced.
+
+- **HETOW descending telescope — no finding.** From \(H_r=H_{r+1}+q\),
+  \[
+  \tau_N(H_{r+1},q)=N(H_{r+1})N(q)/N(H_r),
+  \]
+  so the displayed product has the claimed endpoint orientation.
+
+- **HETOW section comparison — no finding.** With \(\chi=\widehat N/N\),
+  \[
+  \rho_t/\widehat\rho_t=\chi(H_0)\chi(q)^{-t}.
+  \]
+  Hence \(Z\mapsto Z/\delta\), the monic normalization
+  \(\delta^m\widehat r(Z/\delta)\), and the root direction
+  \(\widehat s\mapsto\delta\widehat s\) are all correct. No character law is smuggled in.
+
+- **Comparison frame after r1 — no finding.** The separated choices \(q_{\rm BR}=1\) and \(q_{\rm CMP}=2\) remove the earlier convention collision. For the latter, \(\delta=\chi(2)=2\) and \(\chi(6)=3\), giving \(R(Z)=3\widehat R(Z/2)\). Although the selected chain uses even heights, the independent test \(\chi(1)^2\ne\chi(2)\) still kills the global character mutant.
+
+- **GENTOW-6.4 non-instance — no finding.** The quoted carrier is additive translation plus a filtration cap. Neither additive cancellation nor the E11 regression riders supplies a multiplicative section, height-zero quotient, cocycle bracket, or boundary peel. The absorption count therefore remains three.
+
+VERDICT: CLEAN | FINDINGS: 0C + 0G + 0m
