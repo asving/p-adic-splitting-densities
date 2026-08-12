@@ -950,3 +950,246 @@ loose phrasing with its U₃^σ ≤ U₃^conv conclusion UNAFFECTED, a phrasing
 correction owed at HEX3's own arc; GENH4.C/GENHN.C are already stated
 with "EVERY lift with disc ≠ 0"); W-12 PE5's verification that HM3.C's
 substance and all counts survive (c3e2f8e).
+
+---
+
+### Dated adjudication + corrections (2026-08-12 — sol certification C8/E7: the as-built challenge adjudicated at HEAD)
+
+The sol-5.6 as-built read of this note (gpt-5.6-sol high,
+runs/cert/C8_hmenu3_output.log, 2026-08-12) returned CHALLENGE (the
+(A1)-indexing GAP). The E7 certification run (gpt-5.6-sol high,
+runs/cert2/E7_hmenu3_output.log) adjudicated: finding 1 REAL —
+repaired by ANNEX B below (the fixed-λ refinement lemma: 7+7 shape
+schemas refine to 11+11 formal fixed-σ (A1) families, B splits to
+24, total 46 TRP + 4 DBL + 3 SEP = 53 formal families; no count,
+law, or R_τ moves); finding 2 RESOLVED-ALREADY (Annex A's disc ≠ 0
+scoping); finding 3 REAL — repaired by ANNEX C below (Annex A's
+logical effect stated accurately: a strict weakening of the frozen
+unrestricted quantifier that preserves every consumed step).
+Everything above this heading is byte-untouched by this append. The
+E7 adjudication, transcribed unaltered:
+
+Finding 1 — REAL
+
+No existing append cures this. HM3-BOX-5 only splits each B-schema according to the two formulas for \(b(m)\); it does not fix \(\lambda\) in I or II. Meanwhile S1’s raw keys explicitly retain \(\lambda\), and HM3.A assigns \(\sigma\) from that terminal leaf. Thus the note already contains the data needed for the finite refinement, but HM3.B packages it incorrectly.
+
+The proposed counts are correct:
+
+\[
+I=4+2+2+3=11,\qquad II=11,\qquad B=3\cdot4\cdot2=24,
+\]
+so there are \(46\) formal TRP families and \(46+4+3=53\) formal families in the complete menu.
+
+Verbatim-ready repair:
+
+## ANNEX B (dated append, 2026-08-12, post-acceptance): HM3.B's shape schemas refined into formal fixed-σ (A1) families
+
+**Defect corrected.** In the frozen statement of THEOREM HM3.B, the
+words "I (7 families)" and "II (7 families)" count terminal SHAPE
+SCHEMAS, not formal (A1) families. Three of those schemas retain the
+terminal residual-factorization label λ:
+
+    ('VERT1', u₀, k, λ),   ('VERT2', u₀, t, λ),
+    ('FULL', k, λ).
+
+A formal (A1) family must have one fixed coefficient c_F(q) and one
+fixed splitting type σ_F. Consequently λ must be fixed in the family
+index. The raw-key recursion already records λ, so this is a finite
+refinement of the stated disjoint fibers, not a change to HM3.A or to
+any count.
+
+**Fixed-label refinement lemma.** Let a q-independent finite set Λ
+index disjoint raw-key fibers F_λ, and suppose the existing exact law
+for each raw key has the form
+
+    count(F_λ(x) in window N)
+      = S_λ(q) C(q) q^{3N-ℓ(x)}
+
+with the same parameter set, visibility threshold and affine exponent
+as the containing schema, while the terminal leaf table assigns a
+fixed σ_λ to λ. Then the F_λ, λ ∈ Λ, are formal (A1) families:
+c_{F_λ}(q) = S_λ(q)C(q), ℓ and the parameter set are unchanged,
+σ_{F_λ} = σ_λ, and their disjoint union is the original schema.
+
+*Proof.* Disjointness follows because λ is part of the deterministic
+raw key (§S1 and THEOREM HM3.A). Fixing one value of a finite label
+does not change the parameter set, visibility threshold or affine
+exponent. The displayed count supplies one q-polynomial coefficient,
+and the terminal leaf table supplies one splitting type. Summing over
+the finite set Λ recovers the original schema count. ∎
+
+Here the required residual censuses are themselves q-polynomials.
+For a separable quadratic residual with nonzero constant,
+
+    S^{(2)}_{(1,1)}(q) = binom(q−1,2)
+                       = (q−1)(q−2)/2,
+    S^{(2)}_{(2)}(q)   = (q²−q)/2
+                       = q(q−1)/2.
+
+The first formula chooses an unordered pair of distinct nonzero
+residue roots. For the second, the q²−q elements of
+F_{q²} \ F_q form Frobenius orbits of size two; an irreducible
+quadratic automatically has nonzero constant term.
+
+For a separable cubic residual with nonzero constant,
+
+    S^{(3)}_{(1,1,1)}(q) = binom(q−1,3)
+                         = (q−1)(q−2)(q−3)/6,
+    S^{(3)}_{(1,2)}(q)   = (q−1)(q²−q)/2
+                         = q(q−1)²/2,
+    S^{(3)}_{(3)}(q)     = (q³−q)/3.
+
+The first formula chooses three distinct nonzero roots. The second
+chooses one nonzero linear root and one irreducible quadratic; the
+two factors are automatically coprime. For the last formula,
+F_{q³} \ F_q consists of Frobenius orbits of size three, and an
+irreducible cubic again has nonzero constant term.
+
+Apply the lemma to VERT1 and VERT2 with
+
+    Λ₂ = {(1,1), (2)}
+
+and to FULL with
+
+    Λ₃ = {(1,1,1), (1,2), (3)}.
+
+The coefficient in each refined family is the λ-independent monomial
+factor in the cited W-12.A S2.4 law multiplied by the corresponding
+S^{(2)}_λ or S^{(3)}_λ above. Its σ is the terminal leaf-table entry:
+for a vertex leaf, λ = (1,1) gives the split linear pair together with
+the remaining linear factor, while λ = (2) gives an inert quadratic
+together with the remaining linear factor; for FULL, λ gives,
+respectively, the three unramified cubic types
+(1,1)³, (1,2)+(1,1), and (1,3).
+
+**Correct formal family counts.**
+
+* Tier I consists of four λ-free families
+  (RAM3, 3LIN, LINRAM2, RAM2LIN), two VERT1 families, two VERT2
+  families and three FULL families: 4+2+2+3 = 11.
+* Tier II has the same fixed-λ refinement and therefore has 11
+  families.
+* B1/B2/B3 with L ∈ {RAM, 2SIDED, SPLITEQ, INERTDEEP} give twelve
+  fixed-σ schemas. As already required by HM3.B and HM3-BOX-5, each
+  splits into its m = 0 and m ≥ 1 regimes because b(m) has two
+  formulas. Hence B contributes 12·2 = 24 formal families.
+
+Thus THEOREM HM3.B's TRP menu has exactly
+
+    11 + 11 + 24 = 46
+
+formal (A1) families. Adding the four DBL and three SEP families,
+THEOREM HM3.C's complete cubic menu has exactly 53 formal (A1)
+families.
+
+Accordingly, the frozen displays are read as follows:
+
+* "I (7 families)" means "I (7 shape schemas; 11 formal fixed-λ
+  (A1) families)".
+* "II (7 families)" means "II (7 shape schemas; 11 formal fixed-λ
+  (A1) families)".
+* "B1/B2/B3 (12 families)" means "B1/B2/B3 (12 fixed-σ schemas;
+  24 formal (A1) families after the required m = 0 / m ≥ 1 split)".
+* HM3-BOX-5's "≤ 45 TRP aggregate families + 4 DBL + 3 SEP" is
+  withdrawn and read as "exactly 46 formal TRP families + 4 DBL +
+  3 SEP = 53 formal (A1) families".
+* The ACCEPTANCE RECORD's "complete 33-family cubic core menu" is
+  withdrawn and read as "complete 53-formal-family cubic core menu
+  (33 shape schemas before the fixed-λ and b-regime refinements)".
+
+**Consumer sweep.**
+
+* THEOREM HM3.A and §S3.3 survive unchanged: HM3.A is already stated
+  per raw key, and λ is part of each affected raw key.
+* THEOREM HM3.B and its §S4 proof survive after the displayed finite
+  refinement: fixing λ does not change any exponent, range,
+  visibility threshold, α-prefix bracket, β transport or block
+  aggregation.
+* THEOREM HM3.C and §S5.1 survive: the refined fibers have the same
+  disjoint union as the former schemas, and now each formal family
+  literally has the fixed σ_F required by (A1).
+* Annex A's corrected (A0) clause survives: for each fixed λ and each
+  disc ≠ 0 lift, the terminal leaf table supplies the same fixed
+  σ_{F_λ}.
+* §S5.3's exact complement and (A2) survive because the total visible
+  union and its count are unchanged.
+* §S5.5 and COROLLARY HM3.D survive because a finite disjoint
+  refinement only replaces a schema contribution by the sum of its
+  fixed-λ contributions. The construction there already groups the
+  Group-I terms as T⁰_τ by terminal σ, so the five R_τ formulas and
+  Σ_τ R_τ = 1 are unchanged.
+* The S7/S10 battery survives: it enumerates the full raw keys,
+  including λ, and therefore already measured the refined fibers.
+  All check totals, oracle totals and numerical identities remain
+  unchanged.
+* The §S8.1 W12-BOX-2 annex survives: it consumes existence of a
+  finite exact (A1) menu, which the 53-family refinement supplies.
+
+This annex repairs a formal indexing gap. It changes no raw-key law,
+density, complement, splitting-type formula, machine result or
+conditionality.
+
+Finding 2 — RESOLVED-ALREADY
+
+Annex A, dated 2026-08-08, gives the exact cure at both defective sites:
+
+- For HM3.C: “**Read as:** ‘… so Ore certifies every lift **with disc ≠ 0** …’.”
+- For §S5.2: “**Read as:** ‘… assigns the SAME σ to every O-lift **with disc ≠ 0** at the terminal frame’, the parenthetical WITHDRAWN.”
+
+It also states the corrected consumed clause explicitly:
+
+> “every window member of every core-menu family is conservative-DECIDED, and every disc ≠ 0 lift of that member has σ = the leaf table’s entry.”
+
+The same append supplies the \(\mathbf F_3[[t]],\,y^3+t\) counterexample and explains why W-12.D only consumes the corrected disc-\(\ne0\) assertion. No additional mathematical repair is needed.
+
+Finding 3 — REAL
+
+Annex A’s statement that it “changes no statement’s content” is false: its correction strictly weakens the quantified theorem. Only its claim that no consumed proof step or conclusion changes is justified.
+
+Verbatim-ready repair:
+
+## ANNEX C (dated append, 2026-08-12, post-acceptance): logical effect of ANNEX A stated accurately
+
+ANNEX A's sentence
+
+    "This annex changes no statement's content and no proof step"
+
+is withdrawn and read as follows:
+
+    "This annex changes the frozen statement's content by strictly
+    weakening its two unrestricted lift assertions to the intended
+    disc ≠ 0 (A0) assertion. It changes no proof step consumed by
+    W-12.D and no downstream conclusion."
+
+**Derivation of strictness.** Let P be the frozen assertion that every
+lift of every member has the leaf-table splitting type, and let Q be
+the corrected assertion restricted to lifts with disc ≠ 0. Then
+P implies Q because the lifts quantified over by Q form a subset of
+those quantified over by P. The inclusion is strict: ANNEX A's member
+TRP-RAM3(1) over F₃[[t]] admits the lift F(y) = y³+t, for which
+F′ = 0 and disc(F) = 0. That lift lies in P's quantified domain but
+not Q's, and it has no separable splitting type. Hence P is false
+while the removal of that lift is material; the correction is a
+strict weakening of the frozen statement.
+
+The downstream proof nevertheless survives because §S0 already states
+(A0) using only disc ≠ 0 lifts, W-12.D's σ-labeling and Step-4 bounds
+quantify only over disc ≠ 0 lifts, and the disc-zero locus is handled
+separately as a null set. Thus ANNEX A changes statement content but
+preserves the intended theorem, all five R_τ formulas, their sum,
+the machine ledger and the corrected 2/2 acceptance.
+
+*(The adjudication above was produced by the E7 certification run
+(gpt-5.6-sol high, runs/cert2/E7_hmenu3_output.log, 2026-08-12);
+orchestrator verification before transcription — the refinement
+lemma's mechanism checked (λ is part of the deterministic raw key,
+so fixing it refines disjoint fibers without touching parameter
+sets, thresholds, or exponents; summing over Λ recovers the schema);
+every census polynomial re-derived ((q−1)(q−2)/2 unordered nonzero
+pairs; q(q−1)/2 Frobenius orbits; (q−1)(q−2)(q−3)/6; q(q−1)²/2;
+(q³−q)/3 — the W-11/S2.1 classical forms); the counts re-added
+(4+2+2+3 = 11 per tier; 12·2 = 24; 46+7 = 53); ANNEX C's strictness
+witness checked (y³+t over F₃[[t]]: F′ = 0, disc = 0, in P's domain
+but not Q's). Transcribed unaltered per the standing division of
+labor. Ledger: row 26 → both repairs folded, awaiting sol discharge
+(cert3).)*
