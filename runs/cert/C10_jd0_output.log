@@ -1,0 +1,151 @@
+The note is not ratifiable as written. Two central claims exceed the proved perimeter: “every 1-cochain” is silently narrowed to geometric character gauges, and the advertised shape data do not specify the residual factorization condition whose census is being counted.
+
+### Findings
+
+1. Verbatim quote:
+
+> “For every decided shape T, every prime power q, and every 1-cochain u with unit values, the stratum count of T computed through the u-gauged read equals the direct stratum count.”
+
+> “J-D0's proof covers unit-character gauges; any value layer NOT of that form is outside the perimeter”
+
+**CRITICAL.** These are different quantifiers. An arbitrary unit-valued cochain need not act on all coefficients of a residual polynomial through a single geometric progression
+\(\xi^{i-D}\). Independent unit rescalings of coefficient slots can change factorization type.
+
+Counter-configuration: over \(\mathbf F_5\), \(R(y)=y^2+2\) is irreducible, while the unit diagonal rescaling that fixes the leading coefficient and multiplies the constant slot by \(2\) gives \(y^2+4=(y-1)(y+1)\). The proof must either derive the geometric-character relation from every allowed cochain or restrict clause (i). BOX-2 expressly concedes the restriction, so the displayed lemma is unproved and generally false under its literal quantifier.
+
+2. Verbatim quote:
+
+> “Fix a decided OM shape (type skeleton) T of order m: the degree d0 of the level-0 factor and the read triples (e_j, h_j, g_j)”
+
+> “L3_j = the residual-factorization count … of the prescribed degree/type”
+
+> “Any two towers/types with the same shape data (d0, (e_j, h_j, g_j)_j) and residual-degree structure have EQUAL stratum counts”
+
+**CRITICAL.** The factorization type being counted is not included in the stated shape data. The later proof invokes \(S_\lambda(q)\), but \(\lambda\) never appears in the definition of \(T\). Knowing the selected residual degree \(g_j\) and the resulting field sizes does not determine the factorization pattern of the entire residual polynomial.
+
+Counter-configuration: over \(\mathbf F_3\), degree-four residual polynomials of type \((1,3)\) with nonzero roots number \(2\cdot8=16\), whereas squarefree type \((1,1,2)\) number \(1\cdot3=3\). Both can expose a selected degree-one branch, hence the same next residue-field degree \(g_j=1\), while their L3 censuses differ. If the full \(\lambda\)-data are intended to be part of “residual-degree structure,” that must be stated; the displayed definition instead explains that structure by the field sizes \(|K_j|\).
+
+3. Verbatim quote:
+
+> “σ_ξ extends the identity of K_j to a degree-preserving K_j-algebra automorphism of K_j[y]”
+
+**GAP.** This is false. The degree-normalized map
+\[
+R\mapsto \xi^{-\deg R}R(\xi y)
+\]
+is not additive across unequal degrees and hence is not an algebra automorphism.
+
+Counter-configuration: for \(\xi\ne1\),
+\[
+\sigma_\xi(1+y)=\xi^{-1}+y
+\quad\text{but}\quad
+\sigma_\xi(1)+\sigma_\xi(y)=1+y.
+\]
+The desired factorization preservation can be established by degreewise bijectivity and multiplicativity, but the proof actually printed is invalid.
+
+4. Verbatim quote:
+
+> “The integer carry layer is split-only.”
+
+> “positions and integer carry data — by (b)/(c) functions of the splits, i.e. of (e_j, h_j)-data”
+
+**GAP.** “Computed from a split” does not imply “determined by the numerical data being split.” If \(t\) is a section and \(t'=t+Ek\) is another section of the same quotient data, then
+\[
+\partial t'=\partial t+E\,\partial k.
+\]
+Thus \(D_j=\partial t_j\) can vary while \(e_j,h_j\) remain fixed. The note neither includes the chosen eq-12 splits in the shape nor proves that they are canonical or that \(B\) is invariant under changing them. Calling \(D_j\) “split-only” is therefore insufficient for clause (ii).
+
+5. Verbatim quote:
+
+> “gauging moves WITHIN the cohomology class”
+
+> “Everything the wild carry layer could contribute … enters the classifier only through the gauge orbit, and counts are constant on gauge orbits.”
+
+**GAP.** Constancy on coboundary orbits proves nothing about distinct cohomology classes. For a cyclic order-two layer over \(\mathbf F_5\), the cocycles represented by \(1\) and the nonsquare \(2\) lie in different classes of
+\(\mathbf F_5^\*/(\mathbf F_5^\*)^2\). No unit cochain relates them. Full cochain-value blindness must come from the separate claim that the assembly never consumes \(c\), not from gauge invariance.
+
+6. Verbatim quote:
+
+> “dim_K 𝒜(T) = E — independent of c.”
+
+> “J-D0 is the count-level statement of the same death”
+
+**GAP.** Equal dimension is much weaker than blindness to the twisting class. Over \(\mathbf F_5\),
+\[
+\mathbf F_5[v]/(v^2-1)\cong\mathbf F_5\times\mathbf F_5,
+\]
+whereas
+\[
+\mathbf F_5[v]/(v^2-2)\cong\mathbf F_{25}.
+\]
+Both have dimension two but are nonisomorphic and have different representation/idempotent structure. The algebra display is not evidence that counts ignore the class.
+
+7. Verbatim quote:
+
+> “full stratum-count records EQUAL across each pair”
+
+> “regardless of their letters and carry cochains”
+
+**GAP.** The three blind pairs are documented as differing in letters; no pair is shown to carry distinct, non-cohomologous carry classes. JD0-COB tests only the prescribed coboundary law, hence gauge-related presentations. The battery therefore does not test the strongest portion of clause (ii): independence across genuinely different carry classes.
+
+8. Verbatim quote:
+
+> “Counts of decided strata are shape-only … valid at every residue characteristic, wild included.”
+
+> “That the L3 × L4 assembly IS L2core's per-cell coefficient at all orders is L2core's own verified content (exact instances through OM order 4 …) — consumed, not re-proved.”
+
+**GAP.** Exact instances through order four do not establish the identification “at all orders.” The proof establishes invariance of the displayed formal product, conditional on that product actually being the classifier coefficient. Consequently the unconditional all-orders and all-characteristics conclusion in S3 exceeds BOX-4’s stated evidence.
+
+9. Verbatim quote:
+
+> “The class of integrals the carry algebra uniformizes = bounded functions factoring through the type map with p-free weights — i.e. through the shape”
+
+**GAP.** Factoring through the type map is not equivalent to factoring through shape. A bounded rule such as
+\[
+f(T,z,c)=\mathbf1_{\{z=1\}}
+\]
+is type-dependent and can be specified without an explicit \(p\)-dependent coefficient, but it is not shape-dependent or gauge-invariant. The conclusion only applies to weights constant on every fiber of `type → shape`.
+
+10. Verbatim quote:
+
+> “the (C2A, C2B) control differs.”
+
+> “the different-shape control pair must differ — the SHAPE tooth.”
+
+**MINOR.** Shape-only dependence does not imply injectivity in the shape. Two different shapes may accidentally have equal L3 products and equal exponents, either identically or at a particular \(q\). This is a useful implementation regression test, but its failure would not refute J-D0.
+
+11. Verbatim quote:
+
+> “The stratum count”
+
+> “stratum count (q−1)/q³”
+
+**MINOR.** \((q-1)/q^3\) is a normalized Haar mass/coefficient, not a cardinality. The invariance argument can apply to either object after normalization is fixed, but “count,” “coefficient,” and “density” are used interchangeably. This obscures exactly what W-10 is supposed to equate.
+
+12. Verbatim quote:
+
+> “full enumeration of every monic R of degree D ≤ 3 … capped |K|^D ≤ 20000”
+
+> “37/37 towers, 68,523 checks”
+
+**MINOR.** The battery is a finite regression suite, not certification of the universal degree, field, cochain, or order quantifiers. In particular, it cannot cover the missing non-geometric unit gauges or untested cohomology classes. Its green result is consistent with a harness whose gauge generator already enforces the desired conclusion.
+
+### Survivors
+
+CHECKED CLEAN — Multiplication by a unit preserves valuation, so the valuation-coordinate claim in S2.1(a) is valid.
+
+CHECKED CLEAN — From \(a'_\gamma=u_\gamma a_\gamma\), the displayed transformation \(c'=c\,\partial u\) follows directly.
+
+CHECKED CLEAN — For a genuinely geometric residual action \(R\mapsto\xi^{-\deg R}R(\xi y)\), degree, monicity, nonzero constant term, irreducibility, and factor-degree multiset are preserved.
+
+CHECKED CLEAN — A fixed factorization census over \(\mathbf F_r\) depends only on \(r\) and the fully specified factorization type.
+
+CHECKED CLEAN — Conditional on \(B\) being shape-determined and every L3 condition being fully included in the shape, the displayed product is gauge-invariant.
+
+CHECKED CLEAN — The disclosure that clause (i) is vacuous over \(\mathbf F_2\) is correct because \(\mathbf F_2^\*=\{1\}\).
+
+CHECKED CLEAN — The order-zero Lean signature is correctly presented only as a degenerate definitional anchor, not as evidence for positive order.
+
+CHECKED CLEAN — BOX-1, BOX-3, BOX-5, and BOX-6 appropriately delimit several claims they do not prove.
+
+OUTCOME: CHALLENGE
