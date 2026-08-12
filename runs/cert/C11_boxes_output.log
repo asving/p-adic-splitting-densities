@@ -1,0 +1,55 @@
+Independent ratification found no CRITICAL or GAP defect. Four localized MINORs remain.
+
+### Findings
+
+1. **MINOR — a uniformizer power is incorrectly called a unit.**
+
+   Verbatim quote: “`chat_{t*}, the wrap, and pi^{2a} normalization are units`.”
+
+   Unless \(a_{t*}=0\), \(\pi^{2a_{t*}}\) is not a unit; its valuation is \(2a_{t*}\). Counter-configuration: FR5X has \(a_0=6\), so \(\pi^{2a_0}=2^{12}=4096\) has valuation \(12\). The intended statement is that, after removing the prescribed \(\pi^{2a_{t*}}\) valuation, the remaining graded coefficient is a unit. The surrounding height calculation makes that intent unambiguous, so the binomial residue criterion survives.
+
+2. **MINOR — the S13 rider overstates what the chi criterion alone decides.**
+
+   Verbatim quote: “`exact-THETA attainment is genre-decided (THEOREM 6.7's chi criterion)`.”
+
+   Theorem 6.7’s \(\chi\) controls only the maximal-\(s^*\) slots. Clause 6.7(b2) expressly leaves lower-\(s\) cascade slots to separate arithmetic. R3A is the note’s own counter-configuration to a global chi-only reading: its \(s^*\)-slot is grade-killed at \(j=1\), while the lower cascade attains at \(j=0\). The correct formulation appears elsewhere as “chi + the displayed cascade digits,” so this is a localized stale shorthand, not a theorem defect.
+
+3. **MINOR — S12 counts kills as kill-count fields.**
+
+   Verbatim quote: “`the five preregistered kill counts were exact`.”
+
+   The displayed census has three kill-count fields: `T-OBSTR 1`, `T-NODELTA 2`, and `T-BELOW 2`; these total five kills. Thus “five kills” or “three preregistered kill counts” is accurate.
+
+4. **MINOR — S13’s frozen-artifact count is false.**
+
+   Verbatim quote: “`The ten sealed artifact md5 pairs named in this note's S12 list`.”
+
+   S12’s final byte-frozen list names six runner/output pairs—box1 through box4, pe1_fresh, and pe2_fresh—plus a separate proof prefix. Counting the r2 member-pair artifacts named earlier in S12 gives seven, still not ten. This affects only the record census; no quoted digest is thereby contradicted.
+
+### Survivors
+
+CHECKED CLEAN — Theorem 6.5(a): the corrected deficit identity precisely isolates the \(e_2(f_2-t^*)=1\), \(k\ge3\) equality branches.
+
+CHECKED CLEAN — Theorem 6.5(b)–(d): slot displacement and the weight fence exclude those exceptional branches from the certificate digit; above-top vanishing and no-overflow exactness do not consume the old false uniqueness claim.
+
+CHECKED CLEAN — The repaired treatment of 6.5(b2): it kills only the named certificate slot and no longer asserts the false converse that \(p\mid\binom m2\) prevents all floor attainment.
+
+CHECKED CLEAN — BOX-4: the four \(f_1\ge2,\mu_2=2\) rows match the stated x-ful lift ledger, certificate slots, valuations, and honest scope fence.
+
+CHECKED CLEAN — Theorem 6.6(a)–(c): the Sylvester derivative, \(k\ge c+1\) Newton estimate, lattice image, depth bound, and \(q^c\) local fiber law are mutually consistent.
+
+CHECKED CLEAN — Theorem 6.6(d): the resultant constant has the stated degree normalization, and the rider’s product-box hypotheses and nondecreasing \(N_0\) argument close the multi-class iteration.
+
+CHECKED CLEAN — Theorem 6.7: its ceiling and \(\chi\)-digit statements are correctly limited to maximal-\(s^*\) slots; it does not claim the converse for lower cascade slots.
+
+CHECKED CLEAN — Lemma 6.7D and Corollary 6.7C′: the corrected coefficient identity
+\[
+(m-2)\binom m2-\binom m3=2\binom m3
+\]
+and its descent multiplicity are correct.
+
+CHECKED CLEAN — Lemma 6.7E: linearity and the \(+\delta\) extraction cost place every in-budget entry discrepancy strictly above the relevant \(\Theta_j\), including merged-branch cancellations.
+
+CHECKED CLEAN — The dated correction structure consistently leaves the refuted 6.7C and member-obstruction prose visibly superseded; no live theorem consumes either withdrawn claim.
+
+OUTCOME: RATIFIED-WITH-ANNEX
