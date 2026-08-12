@@ -1,0 +1,41 @@
+[C1 — Critical] The \(i\ge3\) B-law and realized residual are promoted to unconditional certified facts.
+
+Conflicting quotations include:
+
+- “At every certified recipe rung \(2\le i<r\),” preceding (WF-law).
+- “hence \(R_{\nu_i}(\Phi_{i+1})=\psi_{i+1}^{(w_i)}\) at every certified rung \(i\ge2\).”
+- “The companion certifies this for every permitted \(i\ge3\).”
+- “The certified WI note discharges these conjuncts in its tower range.”
+- Honesty ledger: “(WF-law) is certified for \(i=2\) and every permitted \(i\ge3\).”
+
+For \(i\ge3\), “certified” cannot remove the explicit hypothesis from the statement. In cumulative GENTOW5 use, the scope must remain
+
+\[
+\mathcal W_{\le i}
+\Longrightarrow
+\text{(WF-law)}_i
+\Longrightarrow
+\text{(WF-realized)}_i.
+\]
+
+Only \(i=2\) is unconditional. Section 4 correctly preserves the downstream arrows, but its claim that certification “discharges” the conjuncts—and the categorical assertions elsewhere—undoes that preservation at the supplier level.
+
+The corrected index itself is clean. Boundary expansion of (WF-index) gives:
+
+\[
+\begin{array}{c|c}
+j&\text{twist}\\ \hline
+2&\psi_2^{(\omega_1)}\\
+3&\psi_3^{(\omega_2)}=\psi_3^{(w_2)}\\
+4&\psi_4^{(\omega_3)}=\psi_4^{(w_3)}\\
+n+1&\psi_{n+1}^{(\omega_n)}=\psi_{n+1}^{(w_n)}
+\end{array}
+\]
+
+Thus the top term uses \(w_n\), never \(w_{n+1}\), matching the stated S12 corrigendum.
+
+No \(i=1\) promotion, theta-free law, universal \(w=1\), or avatar identity appears.
+
+No files were changed. Exact repository span-pin verification was unavailable because the workspace command launcher failed before execution; the finding above follows directly from the supplied T5 and the governing conditionality requirement.
+
+VERDICT: NOT CLEAN | FINDINGS: 1C + 0G + 0m
