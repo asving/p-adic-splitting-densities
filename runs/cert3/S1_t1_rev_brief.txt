@@ -1,0 +1,2473 @@
+COMPRESSION CAMPAIGN S-1, REVISION PASS (you are gpt-5.6-sol high). The
+simplification blueprint's target T1 — ONE gauge/ϑ-cocycle lemma absorbing
+the wrap/gauge annexes proved locally in seven tower notes — has a composed
+draft (below). Since composition, the sol certification campaign landed
+dated corrections across the gauge seam (the four append sections below):
+LEMMA GENHN-LIFT (the exact-height K-lift with the η^{W} wrap correction),
+THEOREM JA-EPS-CORR (the z^ν normalization bridge: raw print-twist equality
+only at ν = 0), THEOREM WELD-M-PKG (the weld transport re-displayed as a
+five-field package — no cross-face coherence is proved), and HE6's
+normalized slot coefficients γ_k. REVISE THE T1 DRAFT against this
+certified-at-HEAD gauge seam. Deliver:
+(1) the complete revised T1 note text (it will be committed as the new
+draft of record), reconciling every clause with the corrections above —
+in particular T1's unification must state honestly whether it supplies the
+cross-face coherence WELD-M-PKG scoped away, or organizes the five fields
+around the single cocycle without claiming coherence;
+(2) a CHANGES section: each revision, its driver (which correction), and
+which of the seven local gauge annexes the revised lemma absorbs verbatim
+vs with adaptation;
+(3) the arc plan: what a hostile pass on the revised T1 should attack first.
+
+=== THE T1 DRAFT (composed 2026-08-10, RCT sol-arm) ===
+# T1 — LEMMA GAUGE-COCYCLE (the ϑ/wrap recursion, stated once)
+## RCT unit S-1-T1-gauge-cocycle — CODEX arm — 2026-08-10
+
+**[RCT CODEX-arm: composed by gpt-5.6-sol high; transcribed unaltered.]**
+Everything below the marker line is the composing model's text, VERBATIM
+(source: `verification/openmath/t1_codex_run1_output.txt` @ 6e9968bd, the
+final agent message, log lines 2509–3777; one foreground call, wall 6m02s,
+46,892 tokens, no continuation). Per the prover-RCT protocol
+(docs/PROVER_RCT_PROTOCOL_2026-08-10.md §3) the lab tech may NOT alter
+mathematical content; this header is the tech's record, not part of the
+composed note.
+
+**GRADE: attempt 0/2.** The 2-clean hostile arc has not run. Charge and
+gate: blueprint T1 (docs/SIMPLIFICATION_BLUEPRINT_2026-08-10.md §2) as
+amended by Plan revision 1 §R.2's S-1a gate + §R.3's joint-frame rule.
+
+**S-1a gate record (tech audit of FORM, not content).** (i) Conclusions:
+FIVE displayed theorem conclusions (C1 letter recursion; C2 wrap cocycle /
+telescope / corrected key; C3 read dictionary + B-law + gauge-invariance;
+C4 exact-height lift shape + x-free criterion; C5 Q-bookkeeping) — the
+gate's ≥ 3 met; the carrier-rule audit sentence is displayed in §1.
+(ii) Absorption map: 17 site rows over the seven annexes (GENTOW4 = 4
+sites, as required) + 2 supporting-context rows (GENTOW5) = 19 table
+rows. [T1 r1 2026-08-10 REPAIR (passPE1 F-4): the original tech record
+said "18 site rows"; hand recount of the §3 table gives A1:2 A2:2 A3:2
+A4:2 A5:4 A6:2 A7:3 = 17 annex-site rows, + 2 supporting rows = 19 —
+the composed "18" matches neither the annex-site count nor the total.
+Gate consequences unchanged: ≥ 3 conclusions and GENTOW4 = 4 sites
+both hold on the recount.] (iii) The R.3
+joint frame (f₁ = 2 ∧ w ≠ 1 ∧ live wrap): PRESENT in the composed plan as
+frame F4-JOINT (also η = ω ≠ 1 and a μ = 3 three-digit leg) — no
+tech-added leg was needed.
+
+**[T1 r1 2026-08-10 REPAIR (passPE1 F-6)] Parallel-note definitions
+dependence, DECLARED.** The brief's [S2] block hands the composer DEF
+W-1/W-2 (the carrier unit w_i; ψ^{(w)}(y) := w^f ψ(y/w)) as restated in
+WFRAME_NOTE_2026-08-10.md — a parallel RCT arc, grade 0/2 as of this
+repair — and those definitions surface in the composed text as carrier
+items 9–10 and (C3-three-reads). The dependence is defs-only: both [S2]
+definitions carry accepted-corpus span pins (GENTOW2 @ 33f86204,
+GENTOW5 @ b0e5c648), and WFRAME's own passPE1 GAP sat in its §S4 tower
+data (the LP1 Φ′ datum, repaired at 9d157fda), not in the [S2]
+definitions. This declaration is the mutual-consumption edge the tech
+header omitted: if WFRAME's arc revises DEF W-1/W-2, this note's
+carrier drifts, and this edge is what catches it.
+
+**TECH-RECORDED GAPS (recorded, NOT fixed — they are the arc's data).**
+- **G-1 (computational slip in M2, F4-JOINT quadratic test).** The
+  composed text predicts ψ^{(w)} = y² + ωy + ω for ψ = y² + y + ω,
+  w = ω. By the note's own (C3-three-reads) / the standing DEF W-2
+  (ψ^{(w)} = w^f ψ(y/w)): w²ψ(y/w) = y² + ωy + ω³ = y² + ωy + 1, and the
+  note's own slot computation gives the coefficients (c₁w, c₀w²) =
+  (ω, 1) — so the predicted polynomial should be y² + ωy + 1. Both
+  candidates are irreducible over F₄, so the invariance CLAUSE is
+  unaffected; the displayed exact value is wrong. The sealed instrument
+  preregisters Codex's value as written and scores it (expected RED on
+  that row); the note text stays untouched.
+- **G-2 (interface-strength note, C3 proof).** The abstract proof of the
+  B-law consumes carrier item 9's "canonical residual map is
+  multiplicative on homogeneous initial forms" as carrier data. In the
+  absorbed corpus (GENTOW2-B″) the corresponding step is PROVED via the
+  Φ₂-adic expansion argument (steps (ii)–(iv), Cor 4.7 + Lemma 3.17 +
+  eq (14)), not assumed. The abstract lemma is sound relative to its
+  carrier; whether the FGMN instance discharges item 9 at B″'s
+  generality is a consumption-check obligation (R.1 leg (b)/(c)), open
+  here. Not a defect of the statement; a named obligation.
+  [T1 r1 2026-08-10 REPAIR (passPE1 F-1 = this G-2): DISCHARGED BY
+  CITATION, conditionally. The companion note GENTOW5_WI_2026-08-10.md
+  proves [GENTOW5-W(i)] at every level i ≥ 3 (@ ec30256c; **attempt
+  grade 1/2** — PE1 CLEAN @ 884edd2c, PE2 in progress at this repair —
+  the conditionality of this discharge). Its statement IS this note's
+  (C3-B-law): its u_i(β_t) = R_{i+1,β_t}(n̂_i((f_{i+1}−t)u_{i+1})) and
+  θ_i(t) = ϑ_{i,f_{i+1}−t}⁻¹ are the same objects, same orientation, as
+  this note's u(β_t) and Θ_i(t) (its S1 vs this note's C3-B-cocycle
+  display). And its proof derives, from level-general sources, exactly
+  the item-9 facts C3's B-law consumes, AT the sites C3 consumes them:
+  (1) multiplicativity on ladder-monomial powers, R(N^d) = R(N)^d =
+  its S2 step (i) peel (Cor 4.7(2) iterated, no degree hypothesis,
+  level-general in FGMN's own quantifier per its S3 leg (b); y-degree-0
+  + nonzero from Cor 4.4(3)/(1) at step (0)'s exact grades); (2) the
+  value-zero read of N^d/M = θ = its S2 step (iv) digit read (the
+  level-i τ_i-cocycle γ-calculus, GENTOW5-C step (3), accepted at
+  level i); (3) the scalar-digit read R(g) = γ·R(M_s) = the accepted
+  (B-2 at level i) factorization R = u·digit (GENTOW5-B proof, on
+  S11.2's proved side). Level coverage: i = 2 is LEMMA GENTOW2-B″
+  itself (accepted corpus @ 33f86204); i ≥ 3 is [GENTOW5-W(i)] at its
+  1/2 grade; the i = 1 tie stays open (WFRAME OPEN-2) and no absorbed
+  B-law site sits there. So the three conditional absorption rows —
+  A7/2 (S5.2 B-law), A5/2 (its C3 half), S1/2 (B-law orientation
+  half) — rest on an accepted i = 2 leg plus the 1/2-grade
+  level-general leg, and REVERT to conditional-on-the-open-check if
+  the W(i) arc is refuted. Scope honesty: W(i) derives the site
+  conclusions directly and never states abstract item 9 over ALL
+  homogeneous initial forms — item 9 stays carrier data of the
+  abstract lemma as written; what is discharged is the consumption
+  obligation at the B-law sites. Committed-frame verification: at
+  W(i)'s letter-live i = 3 frame LW3 (sealed GREEN 60/0, output md5
+  b0a8c3c4), the sealed rows give Θ_3(0) = θ_3(0) = 2 (reciprocity row
+  P-A3) and measure u_3(β_1) = w_3, u_3(β_0) = 2·w_3² (row LAW-I1) —
+  this note's (C3-B-law) at both slots of f_4 = 2, at a level no T1
+  battery reaches, with the θ-leg live (tooth P-D5: the θ-free power
+  law u = w^{f−t} is dead at that frame).]
+- **G-3 (honest scope, recorded by the composer itself).** (C1) is fully
+  explicit at level 2 only; the general level gets ρ_i by a terminating
+  reduction algorithm with no closed exponent formula (Honesty ledger
+  item 1) — matches the brief's allowance. The F4-JOINT frame is a
+  finite graded-carrier model, not a claimed Q_p-realization (ledger
+  item 8 + OPEN SUB-LEMMA JOINT-PADIC-REALIZATION, item 9).
+
+**Machine leg (sealed separately, two-commit).** Instrument
+`verification/openmath/t1_gauge_checks.py`: implements M1–M4 as
+specified (frames X / FR-G / F4-JOINT / LP-LD; exact F₄ + integer
+arithmetic; dual PARI routes on X and FR-G; the four planted teeth; the
+FR-G member-level preregistrations discharged by re-running the
+COMMITTED instrument `gentow4_pe1_fresh.py` UNMODIFIED as a regression
+leg, per blueprint §5.3-2). Verdict appended below the composed text
+after the sealed run, from artifacts only.
+
+---- BEGIN VERBATIM COMPOSED TEXT (gpt-5.6-sol high, 2026-08-10) ----
+## 1. STATEMENT
+
+### LEMMA GAUGE-COCYCLE
+
+#### Carrier data
+
+Fix the following data.
+
+1. A discretely valued base field with uniformizer \(\pi\), residue field
+   \(\mathbf F_Q\), and a MacLane/Okutsu tower whose level-\(i\) residue field is
+   \(K_i\).
+
+2. Level \(1\) integers
+   \[
+   e_1\ge 1,\qquad f_1\ge 1,\qquad h\ge 1,\qquad \gcd(e_1,h)=1,
+   \qquad D'=e_1f_1.
+   \]
+   The base key is \(x\), with \(dv_1(x)=h\) and \(dv_1(\pi)=e_1\).
+
+3. The level-\(1\) stage letter
+   \[
+   \eta:=\operatorname{res}\!\left(\frac{x^{e_1}}{\pi^h}\right)\in K_1^\times,
+   \qquad K_1=\mathbf F_Q(\eta),
+   \]
+   where \(1,\eta,\ldots,\eta^{f_1-1}\) is the chosen
+   \(\mathbf F_Q\)-basis.
+
+4. For every integer \(k\ge0\), the level-\(1\) ladder normalizer
+   \[
+   \widehat n_1(k)=x^{i(k)}\pi^{a(k)},\qquad
+   0\le i(k)<e_1,\qquad i(k)h+a(k)e_1=k.
+   \]
+
+5. At a general level \(i\), ladder normalizers
+   \(\widehat n_i(m)\) of exact \(dv_i\)-height \(m\), in the prescribed
+   bounded-exponent normal form in
+   \(\pi,x,\Phi_2,\ldots,\Phi_i\).
+
+6. Stage data
+   \[
+   e_{i+1},\quad f_{i+1},\quad u_{i+1},
+   \]
+   and a monic residual polynomial
+   \[
+   \psi_{i+1}(y)=y^{f_{i+1}}-\sum_{t<f_{i+1}}c_ty^t
+   \in K_i[y],\qquad c_0\ne0.
+   \]
+
+7. Exact-height lift maps
+   \[
+   \operatorname{lift}_i(d;m)
+   \]
+   satisfying
+   \[
+   dv_i(\operatorname{lift}_i(d;m))=m,\qquad
+   \operatorname{res}\!\left(
+      \frac{\operatorname{lift}_i(d;m)}
+           {\widehat n_i(m)}
+   \right)=d.
+   \]
+   Zero is lifted as zero.
+
+8. The repo letter
+   \[
+   \eta_{i+1}:=
+   \operatorname{res}\!\left(
+      \frac{\Phi_i^{e_{i+1}}}{\widehat n_i(u_{i+1})}
+   \right),
+   \]
+   the canonical FGMN uniformizer \(\pi_{i+1}\), and the canonical FGMN
+   letter
+   \[
+   z_{i+1}:=
+   \operatorname{res}\!\left(
+      \frac{\Phi_i^{e_{i+1}}}{\pi_{i+1}^{u_{i+1}}}
+   \right).
+   \]
+   At level \(1\),
+   \[
+   \pi_2=x^{\ell_1}\pi^{\ell'_1},\qquad
+   \ell_1h+\ell'_1e_1=1,\qquad 0\le\ell_1<e_1.
+   \]
+
+9. Three reads of a homogeneous slot of height \(su_{i+1}\):
+
+   - its coherent digit, read against \(\widehat n_i(su_{i+1})\);
+   - its multiplicative coefficient, read against
+     \(\widehat n_i(u_{i+1})^s\);
+   - its canonical FGMN residual read \(R_{i+1,\beta}\).
+
+   The canonical residual map is multiplicative on homogeneous initial
+   forms and agrees with residue evaluation on value-zero elements.
+
+10. For the top slot grade
+    \[
+    \bar\kappa_i:=u_{i+1}/e(\mu_i),
+    \]
+    define only the carrier unit
+    \[
+    w_i:=
+    R_{i+1,\bar\kappa_i}\bigl(\widehat n_i(u_{i+1})\bigr)\in K_i^\times.
+    \]
+
+**Carrier-rule audit.**
+\[
+\boxed{\text{The carrier data contain neither the letter recursion (C1), nor
+the cocycle/corrected-key identities (C2), nor the read dictionary and
+gauge-invariance assertions (C3).}}
+\]
+
+### (C1) Letter recursion
+
+At every level for which the displayed canonical and repo letters are defined,
+\[
+\boxed{
+z_{i+1}
+ =\eta_{i+1}\rho_i,\qquad
+\rho_i:=
+\operatorname{res}\!\left(
+ \frac{\widehat n_i(u_{i+1})}{\pi_{i+1}^{u_{i+1}}}
+\right).
+}
+\tag{C1-general}
+\]
+The quotient has value zero. Reduction by the successive tower relations
+expresses \(\rho_i\) as a monomial in the preceding canonical letters
+\(z_1,\ldots,z_i\).
+
+At level \(2\), this recursion is explicit:
+\[
+\boxed{
+z_2=\eta_2\,z_1^{-\lfloor\ell_1u_2/e_1\rfloor}.
+}
+\tag{C1-level-2}
+\]
+
+### (C2) Gauge cocycle, telescope, and corrected key
+
+Define
+\[
+\operatorname{wrap}(a,b):=
+\left\lfloor\frac{i(a)+i(b)}{e_1}\right\rfloor\in\{0,1\}.
+\]
+Then
+\[
+\boxed{
+\widehat n_1(a)\widehat n_1(b)
+ =
+\widehat n_1(a+b)
+ \left(\frac{x^{e_1}}{\pi^h}\right)^{\operatorname{wrap}(a,b)}.
+}
+\tag{C2-wrap}
+\]
+
+This is a normalized multiplicative \(2\)-cocycle:
+\[
+\tau_1(a,b):=
+\frac{\widehat n_1(a)\widehat n_1(b)}{\widehat n_1(a+b)},\qquad
+\tau_1(0,a)=\tau_1(a,0)=1,
+\]
+and
+\[
+\boxed{
+\tau_1(a,b)\tau_1(a+b,c)
+ =
+\tau_1(b,c)\tau_1(a,b+c).
+}
+\tag{C2-cocycle}
+\]
+
+For \(s\ge0\),
+\[
+\boxed{
+\widehat n_1(u_2)^s
+ =
+\widehat n_1(su_2)
+ \left(\frac{x^{e_1}}{\pi^h}\right)^{
+       \lfloor s\,i(u_2)/e_1\rfloor}.
+}
+\tag{C2-telescope-1}
+\]
+Thus, for \(s=f_2-t\),
+\[
+W(t):=\left\lfloor
+       \frac{(f_2-t)i(u_2)}{e_1}
+      \right\rfloor
+\]
+and
+\[
+\boxed{
+\widehat n_1(u_2)^{f_2-t}
+ =
+\widehat n_1((f_2-t)u_2)
+ \left(\frac{x^{e_1}}{\pi^h}\right)^{W(t)}.
+}
+\tag{C2-telescope-2}
+\]
+
+At a general level define the building-orientation telescope unit
+\[
+\boxed{
+\vartheta_{i,s}:=
+\operatorname{res}\!\left(
+ \frac{\widehat n_i(u_{i+1})^s}
+      {\widehat n_i(su_{i+1})}
+\right)\in K_i^\times.
+}
+\tag{C2-vartheta}
+\]
+Then
+\[
+\boxed{
+\vartheta_{i,0}=\vartheta_{i,1}=1,\qquad
+\vartheta_{i,s+1}
+ =
+\vartheta_{i,s}\,
+\operatorname{res}\bigl(\tau_i(su_{i+1},u_{i+1})\bigr),
+}
+\tag{C2-recursion}
+\]
+where
+\[
+\tau_i(a,b):=
+\frac{\widehat n_i(a)\widehat n_i(b)}
+     {\widehat n_i(a+b)}.
+\]
+At level \(1\),
+\[
+\boxed{
+\vartheta_{1,s}
+ =
+\eta^{\lfloor s\,i(u_2)/e_1\rfloor}.
+}
+\tag{C2-level-1-vartheta}
+\]
+
+The corrected composed key is
+\[
+\boxed{
+\Phi_{i+1}
+ =
+\Phi_i^{e_{i+1}f_{i+1}}
+ -
+\sum_{t<f_{i+1}}
+ \widehat k_t\,\Phi_i^{e_{i+1}t},
+}
+\tag{C2-key}
+\]
+with
+\[
+\boxed{
+\widehat k_t
+ :=
+\operatorname{lift}_i\!\left(
+ c_t\vartheta_{i,f_{i+1}-t};
+ u_{i+1}(f_{i+1}-t)
+\right).
+}
+\tag{C2-corrected-lift}
+\]
+
+In particular,
+\[
+\boxed{
+\widehat c_t
+ =
+\operatorname{lift}\bigl(c_t\eta^{W(t)}\bigr),
+}
+\]
+and, when \(f_1\ge2\), the entire coefficient block is
+\[
+\boxed{
+L_{(f_2-t)u_2}\bigl(c_t\eta^{W(t)}\bigr).
+}
+\tag{C2-level-2-key}
+\]
+
+The naive and corrected recipes coincide precisely when
+\[
+c_t\bigl(\vartheta_{i,f_{i+1}-t}-1\bigr)=0
+\quad\text{for every }t.
+\]
+In particular they coincide when all relevant letters equal \(1\), and when
+\(f_{i+1}=1\).
+
+### (C3) Gauge-invariance of reads
+
+For \(s=f_{i+1}-t\), let
+
+- \(\gamma_t\) be the coherent digit against
+  \(\widehat n_i(su_{i+1})\);
+- \(c_t^{\mathrm{mult}}\) be the multiplicative coefficient against
+  \(\widehat n_i(u_{i+1})^s\).
+
+Then
+\[
+\boxed{
+\gamma_t=c_t^{\mathrm{mult}}\vartheta_{i,s},
+\qquad
+c_t^{\mathrm{mult}}=\gamma_t\vartheta_{i,s}^{-1}.
+}
+\tag{C3-dictionary}
+\]
+
+To match the orientation used in the B-law, define
+\[
+\boxed{
+\Theta_i(t):=\vartheta_{i,f_{i+1}-t}^{-1}
+ =
+\operatorname{res}\!\left(
+ \frac{\widehat n_i((f_{i+1}-t)u_{i+1})}
+      {\widehat n_i(u_{i+1})^{f_{i+1}-t}}
+\right).
+}
+\tag{C3-B-cocycle}
+\]
+Thus \(\Theta_i(t)\) is the object denoted \(\vartheta(t)\) in
+GENTOW2-B″; it is the inverse of the building-orientation
+\(\vartheta_{i,s}\).
+
+Let \(\beta_t\) be the grade of that slot and put
+\[
+u(\beta_t):=
+R_{i+1,\beta_t}\bigl(
+ \widehat n_i((f_{i+1}-t)u_{i+1})
+\bigr).
+\]
+Then
+\[
+\boxed{
+u(\beta_t)
+ =
+\Theta_i(t)\,w_i^{f_{i+1}-t}.
+}
+\tag{C3-B-law}
+\]
+Consequently, for an element with coherent digit \(\gamma_t\),
+\[
+\boxed{
+R_{i+1,\beta_t}(\text{element})
+ =
+w_i^{f_{i+1}-t}\Theta_i(t)\gamma_t.
+}
+\tag{C3-FGMN-read}
+\]
+
+At the corrected key,
+\[
+\gamma_t=c_t\vartheta_{i,f_{i+1}-t},
+\]
+so the letter cocycles cancel:
+\[
+R_{i+1,\beta_t}(\text{slot }t)
+ =
+c_t w_i^{f_{i+1}-t}.
+\]
+Therefore the three reads of the corrected key are
+\[
+\boxed{
+\begin{aligned}
+\text{multiplicative residual}&=\psi_{i+1}(y),\\
+\text{coherent digits}&=
+ \bigl(c_t\vartheta_{i,f_{i+1}-t}\bigr)_{t<f_{i+1}},\\
+\text{FGMN residual}&=
+ \psi_{i+1}^{(w_i)}(y)
+ :=w_i^{f_{i+1}}\psi_{i+1}(y/w_i).
+\end{aligned}
+}
+\tag{C3-three-reads}
+\]
+
+The substitution \(y\mapsto w_i y\) is an automorphism of \(K_i[y]\).
+Hence \(\psi\) and \(\psi^{(w_i)}\) have identical irreducible-factor
+degrees and multiplicities. All verdict-level data depending only on those
+patterns—splitting types, admissible residual genres, and their counts—are
+gauge-invariant.
+
+### (C4) Exact-height lift shape and x-free criterion
+
+At level \(1\), write
+\[
+m=i(m)h+a(m)e_1,\qquad
+d=\sum_{r<f_1}\lambda_r\eta^r.
+\]
+Then
+\[
+\boxed{
+L_m(d)=
+\sum_{r<f_1}
+ \operatorname{lift}(\lambda_r)
+ x^{i(m)+e_1r}\pi^{a(m)-rh}.
+}
+\tag{C4-LIFT}
+\]
+Every nonzero monomial has height \(m\), and the \(x\)-exponents are
+pairwise distinct and less than \(D'=e_1f_1\). Subject to the tower's
+integrality/clearance inequality \(a(m)-rh\ge0\), this is an integral
+polynomial lift.
+
+For \(d\ne0\),
+\[
+\boxed{
+L_m(d)\text{ is an \(x\)-free monomial}
+\iff i(m)=0\ \text{and}\ d\in\mathbf F_Q.
+}
+\tag{C4-x-free}
+\]
+Thus \(\eta=1\) makes corrected and naive coefficients equal, but does not,
+when \(f_1\ge2\), imply that arbitrary \(K_1\)-digits are \(x\)-free.
+
+### (C5) \(Q\)-bookkeeping
+
+Let \(i_0\in[0,e_1)\) satisfy \(i_0h\equiv1\pmod {e_1}\), and put
+\[
+Q(k):=\frac{i_0k-i(k)}{e_1}.
+\]
+Then
+\[
+\boxed{
+Q(a+b)=Q(a)+Q(b)+\operatorname{wrap}(a,b).
+}
+\tag{C5}
+\]
+
+## 2. PROOF
+
+### Proof of (C1)
+
+From the definitions,
+\[
+z_{i+1}
+ =
+\operatorname{res}\!\left(
+ \frac{\Phi_i^{e_{i+1}}}{\pi_{i+1}^{u_{i+1}}}
+\right)
+\]
+and
+\[
+\eta_{i+1}
+ =
+\operatorname{res}\!\left(
+ \frac{\Phi_i^{e_{i+1}}}{\widehat n_i(u_{i+1})}
+\right).
+\]
+Dividing the first fraction by the second gives
+\[
+z_{i+1}
+ =
+\eta_{i+1}
+ \operatorname{res}\!\left(
+ \frac{\widehat n_i(u_{i+1})}
+      {\pi_{i+1}^{u_{i+1}}}
+ \right).
+\]
+Both denominator normalizations have height \(u_{i+1}\), so their quotient
+has value zero. This proves (C1-general).
+
+Successive reduction of a value-zero Laurent monomial gives a preceding-letter
+monomial as follows. At the highest key occurring in the quotient, the
+value-zero equation, reduced modulo the corresponding ramification index,
+forces that key's exponent to be divisible by that index because the stage
+numerator and ramification index are coprime. Remove the corresponding power
+of the defining value-zero element
+\(\Phi_j^{e_j}/\widehat n_{j-1}(u_j)\). Repeat at level \(j-1\).
+The process terminates with a value-zero \(x,\pi\)-monomial, which is a power
+of \(x^{e_1}/\pi^h\). Taking residues expresses \(\rho_i\) as a monomial in
+\(z_1,\ldots,z_i\). No closed formula for its exponent vector is asserted
+beyond this reduction algorithm.
+
+At level \(2\), put \(u=u_2\), \(i=i(u)\), and \(a=a(u)\). Then
+\[
+\frac{\widehat n_1(u)}{\pi_2^u}
+ =
+x^{i-\ell_1u}\pi^{a-\ell'_1u}.
+\]
+Because
+\[
+ih+ae_1=u
+\]
+and
+\[
+\ell_1h+\ell'_1e_1=1,
+\]
+the quotient has value zero. Reducing the two identities modulo \(e_1\)
+gives
+\[
+ih\equiv u\equiv \ell_1uh\pmod {e_1}.
+\]
+Since \(h\) is invertible modulo \(e_1\),
+\[
+i\equiv\ell_1u\pmod {e_1}.
+\]
+The constraints \(0\le i,\ell_1<e_1\) give
+\[
+i=\ell_1u-e_1\left\lfloor\frac{\ell_1u}{e_1}\right\rfloor.
+\]
+Therefore
+\[
+i-\ell_1u
+ =
+-e_1\left\lfloor\frac{\ell_1u}{e_1}\right\rfloor.
+\]
+The value-zero equation then forces
+\[
+a-\ell'_1u
+ =
+h\left\lfloor\frac{\ell_1u}{e_1}\right\rfloor.
+\]
+Hence
+\[
+\frac{\widehat n_1(u)}{\pi_2^u}
+ =
+\left(\frac{x^{e_1}}{\pi^h}\right)^{
+ -\lfloor\ell_1u/e_1\rfloor}.
+\]
+Taking residues proves
+\[
+z_2=\eta_2z_1^{-\lfloor\ell_1u_2/e_1\rfloor}.
+\]
+
+### Proof of (C2)
+
+Write
+\[
+\widehat n_1(a)=x^{i(a)}\pi^{a(a)},\qquad
+\widehat n_1(b)=x^{i(b)}\pi^{a(b)}.
+\]
+Since \(i(a+b)\) is the unique representative in \([0,e_1)\) congruent to
+\(i(a)+i(b)\) modulo \(e_1\),
+\[
+i(a)+i(b)
+ =
+i(a+b)+e_1\operatorname{wrap}(a,b).
+\]
+Using height additivity,
+\[
+a(a)+a(b)
+ =
+a(a+b)-h\operatorname{wrap}(a,b).
+\]
+Consequently
+\[
+\begin{aligned}
+\widehat n_1(a)\widehat n_1(b)
+ &=
+x^{i(a+b)+e_1\operatorname{wrap}(a,b)}
+\pi^{a(a+b)-h\operatorname{wrap}(a,b)}\\
+&=
+\widehat n_1(a+b)
+\left(\frac{x^{e_1}}{\pi^h}\right)^{
+ \operatorname{wrap}(a,b)}.
+\end{aligned}
+\]
+This proves (C2-wrap).
+
+Associativity of multiplication gives
+\[
+\frac{\widehat n(a)\widehat n(b)\widehat n(c)}
+     {\widehat n(a+b+c)}
+\]
+in either parenthesization, yielding (C2-cocycle).
+
+For \(s\ge0\), the \(x\)-exponent of \(\widehat n_1(u)^s\) is
+\(s\,i(u)\). Its reduced representative is \(i(su)\), so
+\[
+s\,i(u)
+ =
+i(su)+e_1\left\lfloor\frac{s\,i(u)}{e_1}\right\rfloor.
+\]
+The equality of heights then determines the corresponding
+\(\pi\)-exponent. This proves (C2-telescope-1), and substituting
+\(s=f_2-t\) proves (C2-telescope-2). Taking residues gives
+\[
+\vartheta_{1,s}
+ =
+\eta^{\lfloor s\,i(u_2)/e_1\rfloor}.
+\]
+
+At a general level,
+\[
+\frac{\widehat n_i(u)^{s+1}}{\widehat n_i((s+1)u)}
+ =
+\frac{\widehat n_i(u)^s}{\widehat n_i(su)}
+\frac{\widehat n_i(su)\widehat n_i(u)}
+     {\widehat n_i((s+1)u)}.
+\]
+Taking residues proves (C2-recursion). The cases \(s=0,1\) are immediate.
+
+Now let \(s=f_{i+1}-t\) and let the coherent digit of
+\(\widehat k_t\) be
+\[
+\gamma_t=c_t\vartheta_{i,s}.
+\]
+Its multiplicative coefficient is
+\[
+\begin{aligned}
+\operatorname{res}\!\left(
+ \frac{\widehat k_t}{\widehat n_i(u_{i+1})^s}
+\right)
+&=
+\operatorname{res}\!\left(
+ \frac{\widehat k_t}{\widehat n_i(su_{i+1})}
+\right)
+\operatorname{res}\!\left(
+ \frac{\widehat n_i(su_{i+1})}
+      {\widehat n_i(u_{i+1})^s}
+\right)\\
+&=
+\gamma_t\vartheta_{i,s}^{-1}\\
+&=c_t.
+\end{aligned}
+\]
+Thus the residual coefficient in slot \(t\) is exactly \(c_t\). This proves
+the corrected recipe.
+
+A naive digit \(\gamma_t=c_t\) instead gives multiplicative coefficient
+\(c_t\vartheta_{i,s}^{-1}\). It agrees with \(c_t\) exactly when
+\(c_t(\vartheta_{i,s}-1)=0\). This proves the degeneracy clause.
+
+### Proof of (C3)
+
+Let an exact-height element \(g\) have coherent digit \(\gamma\) at height
+\(su_{i+1}\). Then
+\[
+\operatorname{in}(g)
+ =
+\gamma\,\operatorname{in}(\widehat n_i(su_{i+1})).
+\]
+Reading instead against \(\widehat n_i(u_{i+1})^s\) gives
+\[
+c^{\mathrm{mult}}
+ =
+\gamma\operatorname{res}\!\left(
+ \frac{\widehat n_i(su_{i+1})}
+      {\widehat n_i(u_{i+1})^s}
+\right)
+ =
+\gamma\vartheta_{i,s}^{-1}.
+\]
+This is (C3-dictionary).
+
+Put
+\[
+N:=\widehat n_i(u_{i+1}),\qquad
+M_s:=\widehat n_i(su_{i+1}).
+\]
+By multiplicativity of canonical homogeneous initial forms,
+\[
+R(N^s)=R(N)^s=w_i^s.
+\]
+On the other hand,
+\[
+N^s=M_s\,(N^s/M_s).
+\]
+The second factor has value zero, and its canonical read is its residue,
+namely \(\vartheta_{i,s}\). Therefore
+\[
+w_i^s=R(M_s)\vartheta_{i,s}.
+\]
+Thus
+\[
+R(M_s)=w_i^s\vartheta_{i,s}^{-1}
+      =w_i^s\Theta_i(t),
+\]
+which proves the B-law.
+
+Since
+\[
+\operatorname{in}(g)=\gamma\,\operatorname{in}(M_s),
+\]
+canonical reading gives
+\[
+R(g)=\gamma R(M_s)
+    =w_i^s\Theta_i(t)\gamma.
+\]
+At the corrected key,
+\[
+\gamma=c_t\vartheta_{i,s}.
+\]
+Hence
+\[
+R(g)=c_tw_i^s.
+\]
+Summing the slots gives
+\[
+y^f-\sum_{t<f}c_tw_i^{f-t}y^t
+ =
+w_i^f\psi(y/w_i).
+\]
+
+Finally, the map
+\[
+K_i[y]\longrightarrow K_i[y],\qquad
+P(y)\longmapsto w_i^{\deg P}P(y/w_i)
+\]
+sends a factorization \(P=\prod P_j\) to the corresponding factorization
+\(\prod P_j^{(w_i)}\), preserving each factor's degree, multiplicity, and
+irreducibility. This proves gauge-invariance of factor patterns and all
+splitting/count data derived from them.
+
+### Proof of (C4)
+
+Because
+\[
+\widehat n_1(m)=x^{i(m)}\pi^{a(m)}
+\]
+and \(\eta\) is represented by \(x^{e_1}/\pi^h\), the lift of
+\[
+d=\sum_{r<f_1}\lambda_r\eta^r
+\]
+against \(\widehat n_1(m)\) is
+\[
+\sum_{r<f_1}
+ \operatorname{lift}(\lambda_r)
+ \widehat n_1(m)
+ \left(\frac{x^{e_1}}{\pi^h}\right)^r.
+\]
+Expanding gives (C4-LIFT).
+
+Each term has height
+\[
+i(m)h+e_1rh+\bigl(a(m)-rh\bigr)e_1=m.
+\]
+The \(x\)-exponents \(i(m)+e_1r\) are pairwise distinct. Moreover
+\[
+0\le i(m)+e_1r
+ \le(e_1-1)+e_1(f_1-1)=D'-1.
+\]
+Thus no \(x\)-overflow or cancellation between different \(r\)'s occurs.
+
+For a nonzero lift to be one \(x\)-free monomial, exactly one coefficient
+\(\lambda_r\) may be nonzero and its exponent \(i(m)+e_1r\) must be zero.
+Both summands are nonnegative, so this is equivalent to \(i(m)=0\) and
+\(r=0\), which is equivalent to \(i(m)=0\) and \(d\in\mathbf F_Q\).
+
+### Proof of (C5)
+
+By definition,
+\[
+e_1Q(k)=i_0k-i(k).
+\]
+Therefore
+\[
+\begin{aligned}
+e_1\bigl(Q(a+b)-Q(a)-Q(b)\bigr)
+ &=i(a)+i(b)-i(a+b)\\
+ &=e_1\operatorname{wrap}(a,b).
+\end{aligned}
+\]
+Division by \(e_1\) proves (C5).
+
+## 3. ABSORPTION MAP
+
+| Annex | Site | Absorbing conclusion | Specialization |
+|---|---|---|---|
+| A1 GENHN | Dated-erratum corrected display | C2 | \(i=1,\ s=f_2-t\): \(\vartheta_{1,s}=\eta^{W(t)}\), hence \(\widehat c_t=L_{su_2}(c_t\eta^{W(t)})\). |
+| A1 GENHN | “Corrected = naive at \(\eta=1\)” | C2 | If \(\eta=1\), every \(\vartheta_{1,s}=1\). |
+| A2 HETOW | Wrap-cocycle preamble | C2, C5 | C2-wrap and \(Q(a+b)=Q(a)+Q(b)+\operatorname{wrap}(a,b)\). |
+| A2 HETOW | Telescope and wrap-corrected key | C2 | \(s=f_2-t\) gives \(W(t)\) and the corrected exact-height lift. |
+| A3 GENTOW1 | S0/S2/S3 corrected \(\widehat c_t\) pin | C2 | The multiplicative slot coefficient of the corrected lift is exactly \(c_t\). |
+| A3 GENTOW1 | Value-blindness of budgets and floors | C2 | Corrected and naive lifts have the same exact height \(su_2\); they differ only by a residue unit. |
+| A4 GENTOW3 | Corrected key pin | C2 | Same level-\(1\) specialization. |
+| A4 GENTOW3 | x-free equivalence re-scope | C4 | \(L_m(d)\) is x-free iff \(i(m)=0\) and \(d\in\mathbf F_Q\); the \(i(m)=0\) test alone is valid only when \(f_1=1\). |
+| A5 GENTOW4 | S0 naive key display | C2 | Replace plain lifts by \(L_{(f_2-t)u_2}(c_t\eta^{W(t)})\). |
+| A5 GENTOW4 | 4.1(c)/S3 consumption of bridge lemmas | C2, C3 | The bridge residual is valid at the corrected key because its multiplicative coefficients are exactly \(c_t\). |
+| A5 GENTOW4 | BOX-3 uniformity with no \(\eta\)-axis | C2 | A battery confined to \(\vartheta=1\) cannot test the corrected-versus-naive distinction. |
+| A5 GENTOW4 | S4 residue-\(1\) x-relation | C2, C4 | The residue relation \(x^{e_1}/\pi^h=1\) is the condition \(\eta=1\), not the condition \(f_1=1\). |
+| A6 GENTOW6 | S3 corrected coefficient and full digit support | C2, C4 | The corrected digit is \(L_m(c_t\eta^{W(t)})\), with support \(i(m)+e_1r<D'\). |
+| A6 GENTOW6 | ANNEX-THEOREM 6.3′ scope repair | C4 | Overflow must be tested using the actual top exponent \(I_t\), not merely \(i_t\); the remainder of 6.3′ is not proved by this lemma. |
+| A7 GENTOW2 | S5.1 LETTER FORMULA | C1 | \(z_2=\eta_2z_1^{-\lfloor\ell_1u_2/e_1\rfloor}\). |
+| A7 GENTOW2 | S5.2 B-law | C3 | With \(\Theta_i(t)=\vartheta_{i,f-t}^{-1}\), \(u(\beta_t)=\Theta_i(t)w_i^{f-t}\). |
+| A7 GENTOW2 | Factor-pattern invariance under \(w\) | C3 | The canonical residual is \(w^f\psi(y/w)\), which has the same factor degrees and multiplicities as \(\psi\). |
+| S1 GENTOW5 | Supporting-context GT5-r1 gauge pin | C2, C3 | The general recipe \(\widehat k_t=\operatorname{lift}_i(c_t\vartheta_{i,f-t};(f-t)u)\) is C2-corrected-lift. |
+| S1 GENTOW5 | Supporting-context dictionary lemma | C3 | \(\gamma=c^{\mathrm{mult}}\vartheta\), with the B-law cocycle using the inverse orientation. |
+
+[T1 r1 2026-08-10 REPAIR (passPE1 F-1) — row annotation. The three
+B-law-consuming rows above — A7 "S5.2 B-law", the C3 half of A5
+"4.1(c)/S3 consumption of bridge lemmas", and S1 "Supporting-context
+dictionary lemma" (its B-law orientation half) — carry the tech
+header's G-2 discharge: the item-9 facts the (C3) proof consumes at
+its B-law sites are supplied level-generally by [GENTOW5-W(i)]
+(GENTOW5_WI_2026-08-10.md @ ec30256c, attempt grade 1/2 — the
+conditionality) at i ≥ 3, and by the accepted LEMMA GENTOW2-B″ at
+i = 2. Full derivation, level coverage, scope honesty (item 9 stays
+carrier data as written), and the LW3 committed-frame verification:
+the G-2 repair bracket in the tech header. If the W(i) arc is
+refuted, these three rows revert to conditional-on-the-open-check.
+This bracket annotates these three rows and claims nothing about
+the table's other rows.]
+
+## 4. MACHINE PLAN
+
+### M1. Frames
+
+Use exact finite-field arithmetic and exact integer/rational polynomial
+arithmetic. PARI is used only for the explicitly p-adic rows.
+
+Let \(\omega\in\mathbf F_4\) satisfy
+\[
+\omega^2+\omega+1=0,\qquad \omega^3=1.
+\]
+
+| Frame | Purpose | Data |
+|---|---|---|
+| X | Canonical \(\eta\ne1\) p-adic witness | \(p=3,\ \Phi'=x^2-6,\ e_1=2,\ f_1=1,\ h=1,\eta=2,\ (e_2,f_2)=(1,2),u_2=3\). |
+| FR-G | Partial-side p-adic witness | Same level-\(1\) data as X, with the exact GENTOW4 corrected and naive keys below. |
+| F4-JOINT | Joint \(f_1=2\), \(w\ne1\), live-wrap, three-digit frame | \(K_1=\mathbf F_4,\ e_1=2,\ f_1=2,\ h=1,\eta=\omega,\ u=3,\ i(u)=1,\ w=\omega\). Test both \(f=2\) key construction and \(\mu=3\) read conversion. This is a finite graded-carrier frame, not a claimed explicit \(\mathbf Q_p\)-polynomial realization. |
+| LP/LD | Recorded GENTOW2 letter/cocycle geography | \(K_2=\mathbf F_4,\ z_1=\omega,\ z_2=1,\ e_1=2,h=1,\ell_1=1,u_2=9;\ e_3=1,f_3=2,u_3=19;\ N=4x\Phi', M=512x\). Test LD1 and LD2. |
+
+F4-JOINT simultaneously has \(f_1=2\), \(\eta=\omega\ne1\),
+\(w=\omega\ne1\), \(W(0)=1\), and a \(\mu=3\) three-digit read.
+
+### M2. Preregistered exact predictions
+
+#### Frame X
+
+Here
+\[
+i(3)=1,\qquad W(1)=0,\qquad W(0)=1,
+\]
+and
+\[
+(\vartheta_{1,1},\vartheta_{1,2})=(1,2).
+\]
+
+The exact keys are
+\[
+\Phi_X^{\mathrm{naive}}
+ =(x^2-6)^2+3x(x^2-6)+54,
+\]
+\[
+\Phi_X^{\mathrm{corr}}
+ =(x^2-6)^2+3x(x^2-6)+108.
+\]
+
+Predictions:
+\[
+\sigma(\Phi_X^{\mathrm{naive}})=\{(4,1)\},
+\qquad
+\sigma(\Phi_X^{\mathrm{corr}})=\{(2,2)\}.
+\]
+The naive slot polynomial is
+\[
+(Z+1)^2=Z^2+2Z+1.
+\]
+In the recorded root coordinate
+\(\beta=\eta^{-1}\eta_2\), the corrected slot polynomial is
+\[
+Z^2+2Z+2.
+\]
+The corrected multiplicative residual in the repo \(\eta_2\)-coordinate is
+\[
+\psi_2(Z)=Z^2+Z+2.
+\]
+
+#### Frame FR-G
+
+Again
+\[
+W(1)=0,\qquad W(0)=1,\qquad
+(\vartheta_{1,1},\vartheta_{1,2})=(1,2).
+\]
+
+The exact keys are
+\[
+\Phi_{\mathrm{FRG}}^{\mathrm{naive}}
+ =(x^2-6)^2-6x(x^2-6)-27,
+\]
+\[
+\Phi_{\mathrm{FRG}}^{\mathrm{corr}}
+ =(x^2-6)^2-6x(x^2-6)-54.
+\]
+
+Predictions:
+\[
+\sigma(\Phi_{\mathrm{FRG}}^{\mathrm{naive}})=\{(4,1)\},
+\qquad
+\sigma(\Phi_{\mathrm{FRG}}^{\mathrm{corr}})=\{(2,2)\}.
+\]
+The corrected multiplicative residual is
+\[
+Z^2+Z+2;
+\]
+the naive residual is
+\[
+(Z-1)^2=Z^2+Z+1.
+\]
+
+For the two recorded partial-side members, preregister:
+
+- corrected \(\mu_2^\*=2\);
+- naive \(\mu_2^\*=0\);
+- the naive initial segment above \(T_2=6\) is empty;
+- corrected class valuations are strictly above the separator;
+- naive class valuations land exactly on the separator.
+
+#### Frame F4-JOINT: quadratic key test
+
+Use
+\[
+\widehat n(3)=\pi x,\qquad
+\widehat n(6)=\pi^3,
+\]
+so
+\[
+W(1)=0,\qquad W(0)=1,\qquad
+\vartheta_1=1,\quad\vartheta_2=\omega.
+\]
+
+Take
+\[
+\psi(y)=y^2+y+\omega.
+\]
+In the convention
+\(\psi=y^2-\sum c_ty^t\), characteristic \(2\) gives
+\[
+c_1=1,\qquad c_0=\omega.
+\]
+
+Corrected coherent digits:
+\[
+\gamma_1=1,\qquad
+\gamma_0=\omega\vartheta_2=\omega^2.
+\]
+Naive coherent digits:
+\[
+\gamma_1^{N}=1,\qquad
+\gamma_0^{N}=\omega.
+\]
+
+Using \(\omega^2=\omega+1\),
+\[
+L_3(1)=\pi x,
+\]
+\[
+L_6(\omega)=x^2\pi^2,
+\]
+\[
+L_6(\omega^2)=\pi^3+x^2\pi^2.
+\]
+
+Thus the associated-graded key representatives are
+\[
+\Phi_{\mathrm{corr}}
+ =\Phi^2+\pi x\,\Phi+\pi^3+x^2\pi^2,
+\]
+\[
+\Phi_{\mathrm{naive}}
+ =\Phi^2+\pi x\,\Phi+x^2\pi^2.
+\]
+
+Multiplicative residuals:
+\[
+R_{\mathrm{corr}}(y)=y^2+y+\omega,
+\]
+\[
+R_{\mathrm{naive}}(y)=y^2+y+1.
+\]
+Over \(\mathbf F_4\),
+\[
+y^2+y+\omega\quad\text{is irreducible},
+\]
+because \(\operatorname{Tr}_{\mathbf F_4/\mathbf F_2}(\omega)=1\), while
+\[
+y^2+y+1=(y+\omega)(y+\omega^2).
+\]
+
+Formal tower splitting predictions are therefore
+\[
+\sigma_{\mathrm{corr}}=\{(2,4)\},
+\qquad
+\sigma_{\mathrm{naive}}=\{(2,2),(2,2)\}.
+\]
+These are residual-to-tower predictions inside the finite graded model, not
+PARI claims about an unstated p-adic lift.
+
+With \(w=\omega\), the FGMN residual is
+\[
+\psi^{(w)}(y)
+ =y^2+\omega y+1.
+\]
+It is irreducible, as required by gauge-invariance.
+
+[T1 r1 2026-08-10 REPAIR (passPE1 F-2 = tech gap G-1): the composed
+text displayed \(\psi^{(w)}=y^2+\omega y+\omega\) here — a copy-slip
+(the wrong value coincides with the LD1 residual in M2's LP/LD frame,
+where that value is correct). Corrected above per the note's OWN
+(C3-three-reads) definition: \(\psi^{(w)}=w^2\psi(y/w)\) at
+\(\psi=y^2+y+\omega\), \(w=\omega\) gives slot coefficients
+\((c_1w,\,c_0w^2)=(\omega,\,\omega^3)=(\omega,1)\), i.e.
+\(y^2+\omega y+1\). Machine-adjudicated: sealed row P-J2 preregistered
+the composed value AS WRITTEN and went RED computing
+\(y^2+\omega y+1\); the invariance clause is separately scored green
+(P-J2b — both candidates irreducible over \(\mathbf F_4\)).
+Display-only per the passPE1 adjudication: the \(\mu=3\) leg computes
+the same operation correctly (\((y+\omega)^3\)), and no tooth,
+absorption row, or other display consumes the wrong value. The sealed
+instrument + output artifacts stay byte-frozen (the P-J2 RED remains
+the honest record of the slip).]
+
+#### Frame F4-JOINT: \(\mu=3\) three-digit test
+
+Use the same \(e_1,h,u,\eta,w\). Then
+\[
+(\vartheta_0,\vartheta_1,\vartheta_2,\vartheta_3)
+ =(1,1,\omega,\omega).
+\]
+For slots \(t=0,1,2\), with \(s=3-t\),
+\[
+(\Theta(0),\Theta(1),\Theta(2))
+ =(\omega^2,\omega^2,1).
+\]
+
+Take the multiplicative residual
+\[
+\psi(y)=(y+1)^3=y^3+y^2+y+1.
+\]
+The corrected coherent digits, ordered \(t=2,1,0\), are
+\[
+(\gamma_2,\gamma_1,\gamma_0)=(1,\omega,\omega).
+\]
+
+The B-law units are
+\[
+\begin{aligned}
+u(\beta_2)&=\Theta(2)w=\omega,\\
+u(\beta_1)&=\Theta(1)w^2=\omega,\\
+u(\beta_0)&=\Theta(0)w^3=\omega^2.
+\end{aligned}
+\]
+Their products with the corrected coherent digits are
+\[
+(\omega,\omega^2,1),
+\]
+so the canonical residual is
+\[
+\psi^{(w)}(y)
+ =y^3+\omega y^2+\omega^2y+1
+ =(y+\omega)^3.
+\]
+
+For comparison, naive coherent digits \((1,1,1)\) give multiplicative residual
+\[
+y^3+y^2+\omega^2y+\omega^2
+ =(y+1)(y+\omega)^2
+\]
+and canonical residual
+\[
+y^3+\omega y^2+\omega y+\omega^2
+ =(y+\omega)(y+\omega^2)^2.
+\]
+
+#### Frame LP/LD
+
+The letter prediction is
+\[
+z_2=\eta_2z_1^{-\lfloor9/2\rfloor}
+   =\eta_2z_1^{-4}
+   =\eta_2z_1^2.
+\]
+With \(z_2=1\), this gives
+\[
+\eta_2=z_1=\omega.
+\]
+
+At stage \(3\),
+\[
+N=\widehat n_2(19)=4x\Phi',\qquad
+M=\widehat n_2(38)=512x.
+\]
+The exact cocycle is
+\[
+\operatorname{res}(N^2/M)=z_1^2=\omega^2.
+\]
+Hence
+\[
+\vartheta_{2,2}=\omega^2,\qquad
+\Theta(0)=\omega,\qquad
+\Theta(1)=1.
+\]
+
+In the \(w\)-quotiented decode frame:
+
+- LD1 coherent digits are
+  \[
+  (c_1,c_0)=(\omega,1),
+  \]
+  multiplicative digits are
+  \[
+  (\omega,\omega),
+  \]
+  and the residual is
+  \[
+  y^2+\omega y+\omega;
+  \]
+
+- LD2 coherent digits are
+  \[
+  (c_1,c_0)=(\omega,\omega^2),
+  \]
+  multiplicative digits are
+  \[
+  (\omega,1),
+  \]
+  and the residual is
+  \[
+  y^2+\omega y+1.
+  \]
+
+Both quadratics are irreducible over \(\mathbf F_4\). The supplied record does
+not determine the raw canonical \(w\) in these LP/LD rows; therefore no
+numerical raw-\(w\) value or p-adic key sigma is preregistered for them.
+
+### Exact implementation
+
+1. Implement \(\mathbf F_4\) as pairs \((a,b)\in\mathbf F_2^2\) representing
+   \(a+b\omega\), reduced by \(\omega^2=\omega+1\).
+
+2. Implement
+   \[
+   i(k)=h^{-1}k\bmod e_1,\qquad
+   a(k)=\frac{k-i(k)h}{e_1}.
+   \]
+
+3. Verify the wrap identity for every \(0\le a,b\le100\) in each numerical
+   \((e_1,h)\)-frame by comparing exponent pairs exactly.
+
+4. Verify telescopes for \(0\le s\le20\), both by direct exponent reduction and
+   by the recursive product of \(\tau(su,u)\).
+
+5. Implement coherent, multiplicative, and canonical coefficient conversions
+   as
+   \[
+   \gamma=c\vartheta,\qquad
+   c=\gamma\vartheta^{-1},\qquad
+   R=\Theta w^s\gamma.
+   \]
+
+6. Factor every finite-field residual by exhaustive monic division, not by a
+   probabilistic routine.
+
+7. For X and FR-G, use two independent PARI routes:
+
+   - Route A: expand each key in \(\mathbf Z[x]\), call `factorpadic(P,p,N)`
+     with increasing \(N=20,30,40\), and extract each stable factor's degree,
+     ramification index, and residue degree.
+
+   - Route B: for every irreducible factor found over \(\mathbf Q_p\), construct
+     its number field with `nfinit`, compute primes above \(p\) with
+     `idealprimedec`, and recover \(e,f\); additionally evaluate \(\Phi'\) with
+     `nfeltval` at the selected prime to check the prescribed tower height.
+     Reject the run unless Routes A and B give identical multisets.
+
+### M3. Planted teeth
+
+1. **Gauge-naive tooth.**
+
+   Replace every corrected digit \(c_t\vartheta_{i,s}\) by \(c_t\).
+
+   Expected signatures:
+
+   - X: constant \(108\to54\), sigma
+     \(\{(2,2)\}\to\{(4,1)\}\), residual
+     \(Z^2+2Z+2\to(Z+1)^2\).
+   - FR-G: constant \(-54\to-27\), sigma
+     \(\{(2,2)\}\to\{(4,1)\}\), residual
+     \(Z^2+Z+2\to(Z-1)^2\).
+   - F4-JOINT: corrected constant digit
+     \(\omega^2\to\omega\), residual
+     \(y^2+y+\omega\to y^2+y+1\), irreducible to split.
+
+2. **Wrong-sign tooth.**
+
+   Use \(\eta^{-W(t)}\) instead of \(\eta^{W(t)}\).
+
+   In F4-JOINT quadratic degree \(2\), the constant coherent digit becomes
+   \[
+   \omega\omega^{-1}=1
+   \]
+   instead of \(\omega^2\), and the multiplicative constant becomes
+   \[
+   1/\omega=\omega^2
+   \]
+   instead of \(\omega\). The realized residual is
+   \[
+   y^2+y+\omega^2,
+   \]
+   so the exact coefficient comparison must fail even though this wrong
+   residual is also irreducible. This tooth must not rely only on sigma.
+
+3. **Misindexed-telescope tooth.**
+
+   Replace
+   \[
+   \vartheta_{s+1}
+   =\vartheta_s\operatorname{res}\tau(su,u)
+   \]
+   by
+   \[
+   \vartheta_{s+1}
+   =\vartheta_s\operatorname{res}\tau((s+1)u,u).
+   \]
+   In F4-JOINT, the wrong recursion yields
+   \(\vartheta_2=1\) instead of \(\omega\). It therefore changes the corrected
+   quadratic constant digit from \(\omega^2\) to \(\omega\), reproducing the
+   split naive residual \(y^2+y+1\). In the three-digit test it also changes
+   at least one of \(\vartheta_2,\vartheta_3\), so the vector
+   \((1,\omega,\omega)\) must fail.
+
+4. **Orientation-confusion tooth.**
+
+   Use \(\Theta=\vartheta\) rather than \(\Theta=\vartheta^{-1}\) in the
+   B-law. In F4-JOINT with \(s=2\), the predicted B-unit becomes
+   \[
+   \omega\cdot\omega^2=1
+   \]
+   instead of
+   \[
+   \omega^2\cdot\omega^2=\omega.
+   \]
+   The canonical three-digit coefficient vector ceases to equal
+   \((\omega,\omega^2,1)\).
+
+Every tooth must fire. A run in which any planted tooth passes is invalid,
+even if all positive tests pass.
+
+### M4. Annex-to-frame coverage
+
+| Annex | Frames exercising its geography |
+|---|---|
+| A1 GENHN | X, FR-G |
+| A2 HETOW | X, FR-G, F4-JOINT |
+| A3 GENTOW1 | X and FR-G for the corrected carrier; F4-JOINT for \(f_1=2\) digits |
+| A4 GENTOW3 | F4-JOINT for the x-free re-scope and nontrivial digit support |
+| A5 GENTOW4 | FR-G for all four seam sites; F4-JOINT for the missing \(f_1/\eta\) axes |
+| A6 GENTOW6 | F4-JOINT for full \(f_1=2\) lift support and overflow-sensitive top exponents |
+| A7 GENTOW2 | LP/LD for the recorded letter and \(\Theta\) values; F4-JOINT for an explicit \(w\ne1\) B-law |
+| S1 GENTOW5 | F4-JOINT three-digit test for \(\gamma=c\vartheta\) and the general corrected recipe |
+
+## 5. HONESTY LEDGER
+
+1. The fully explicit canonical-letter exponent formula is proved only at
+   level \(2\). At general level the theorem proves
+   \[
+   z_{i+1}=\eta_{i+1}\rho_i
+   \]
+   and gives the terminating lattice-reduction algorithm expressing
+   \(\rho_i\) as a preceding-letter monomial. It does not claim a closed
+   formula for the exponent vector at arbitrary depth.
+
+2. The general letter-monomial reduction uses the standard MacLane tower
+   normal forms and coprimality relations included in the stated tower data.
+   A different normalizer or canonical-uniformizer convention changes the
+   exponent vector but not the ratio formula.
+
+3. The symbols have two inverse orientations in the pasted corpus. This note
+   fixes them explicitly:
+   \[
+   \vartheta_{i,s}
+    =\operatorname{res}\frac{\widehat n_i(u)^s}{\widehat n_i(su)}
+   \]
+   is the building/dictionary unit, while
+   \[
+   \Theta_i(t)=\vartheta_{i,f-t}^{-1}
+   \]
+   is GENTOW2-B″'s slot cocycle. Identifying these without inversion is false.
+
+4. Gauge-invariance proves invariance of residual factor degrees and
+   multiplicities. Translating those residual patterns into p-adic splitting
+   types additionally uses the surrounding tower correctness theorem; that
+   theorem is not reproved here.
+
+5. C4 proves the support and x-free classification of exact-height lifts. It
+   does not prove every note-specific clearance inequality
+   \(a(m)-rh\ge0\); those inequalities remain obligations of the relevant
+   tower genre.
+
+6. This lemma does not prove GENTOW1's budgets, floors, or refinement
+   transport; GENTOW4's fullness counts or separator inequalities; or the
+   monomial-pair uniqueness, extraction, and attainment claims of
+   GENTOW6 ANNEX-THEOREM 6.3′. It supplies only their gauge correction and
+   the correct full-digit support on which those arguments must operate.
+
+7. The LP/LD source determines the \(w\)-quotiented values
+   \((\Theta(1),\Theta(0))=(1,\omega)\), but does not determine the raw
+   canonical value of \(w\). This note therefore makes no invented numerical
+   claim for raw \(w\) in those recorded frames.
+
+8. F4-JOINT is a sealed exact finite graded-carrier test. It is sufficient to
+   test the algebraic conclusions of this lemma, including the joint
+   \(f_1=2\), \(w\ne1\), live-wrap defect. No explicit p-adic polynomial
+   realizing that entire joint frame is supplied. Its displayed sigma values
+   are formal residual-to-tower predictions and must not be reported as PARI
+   measurements.
+
+9. **OPEN SUB-LEMMA JOINT-PADIC-REALIZATION.** Construct an explicit polynomial
+   over a specified finite extension of \(\mathbf Q_2\) whose tower data realize
+   the complete F4-JOINT carrier, including canonical \(w=\omega\), and verify
+   its corrected and naive sigma values by two independent p-adic oracle
+   routes. This existence statement is not needed for the algebraic
+   gauge-cocycle lemma and is not proved here.
+
+---- END VERBATIM COMPOSED TEXT ----
+
+---- TECH VERDICT (commit 2 of 2; from artifacts only) ----
+
+**Sealed run record (2026-08-10).** Instrument `t1_gauge_checks.py`
+(sealed @ 921a8547) run once; artifacts
+`verification/openmath/t1_gauge_checks_output.txt`. **85 checks,
+1 violation, exit 1 — VERDICT: RED, kept with diagnosis.**
+
+[T1 r1 2026-08-10 REPAIR (passPE1 F-3): honest scored count. Two of
+the 85 rows are literal-vs-literal (instrument lines 287–288, the
+SEC-B "formal sigma corr"/"formal sigma naive" rows: `[(2,4)] ==
+[(2,2*2)]` and `sorted([(2,2),(2,2)]) == [(2,2*1)]*2`) — green by
+construction, so the computed-vs-preregistered scored surface is
+**83 rows**, not 85. The substantive content those two rows notate
+(rc irreducible / rn splits) is independently scored two rows above
+them in the same SEC-B block. The sealed instrument and output stay
+byte-frozen; this bracket is the count disclosure.]
+
+[T1 r1 2026-08-10 REPAIR (passPE1 F-5): T-4 as coded is weaker than
+the composed tooth. Composed tooth 4 (M3) requires the canonical
+three-digit coefficient vector to cease to equal (ω,ω²,1); the sealed
+instrument scores only the s = 2 B-unit signature (`buw == 1 != W`)
+and leaves `canw` (instrument line 416) computed but never scored —
+dead code. The tooth DID fire on the B-unit signature, but the
+vector-level clause is unexercised: an implementation bug confined to
+the other two slots' canonical coefficients would not be caught by
+T-4 as coded. Disclosed here against the machine table; the sealed
+artifacts stay byte-frozen.]
+
+**The one red row is the preregistered-expected one.** P-J2: the
+composed note's M2 predicts ψ^{(w)} = y² + ωy + ω at the F4-JOINT
+quadratic (ψ = y² + y + ω, w = ω); the instrument computes
+w^f·ψ(y/w) per the note's OWN definition and gets y² + ωy + 1 —
+exactly tech gap G-1, now machine-confirmed. The invariance CLAUSE
+survives (P-J2b green: the computed ψ^{(w)} is irreducible, matching
+ψ's factor pattern). No other row went red.
+
+**Green rows (enumerated by section).** SEC-A: 20/20 (wrap ∈ {0,1},
+n̂-product identity, C5 Q-bookkeeping at a,b ∈ [0,100]; telescope
+dual-route s ≤ 20; ϑ_{1,s} exponent law — at the 4 (e₁,h) frames
+(2,1),(3,1),(4,3),(5,2)). SEC-B F4-JOINT quadratic: every M2 value
+except P-J2 confirmed (W(t), ϑ, the three (LIFT) outputs with
+exact-height + distinct x-support < D′, corrected/naive digits, both
+mult residuals with the predicted factor patterns). SEC-C μ=3
+three-digit: ϑ=(1,1,ω,ω), Θ=(ω²,ω²,1), digits (1,ω,ω), B-units
+(ω,ω,ω²), canonical coeffs (ω,ω²,1), canonical residual =
+(y+ω)³ = w³ψ(y/w), both naive comparison residuals + root multisets.
+SEC-D LP/LD: the letter formula (η₂ = z₁ = ω at z₂ = 1), the lattice
+split (1,−5,2) = 1·(−9,0,2)+5·(2,−1,0), ϑ_{2,2} = ω², Θ = (ω, 1),
+LD1/LD2 residuals + irreducibility. SEC-E: teeth T-1..T-4 each FIRED
+with the composed signatures (T-2 confirmed sigma-blind: wrong
+residual y²+y+ω² irreducible, caught by coefficient comparison only;
+T-3 read at the note's own C2-recursion base ϑ₀=ϑ₁=1, under which
+Codex's predicted signature ϑ′₂ = 1, vector (1,1,1,ω) is exact).
+SEC-F PARI dual routes (factorpadic 20/30/40 stability + factor/Q →
+nfinit → idealprimedec): σ(X naive) = {(4,1)}, σ(X corr) = {(2,2)},
+σ(FRG naive) = {(4,1)}, σ(FRG corr) = {(2,2)}; nfeltval rows
+[[2,2,3]] on both corrected keys (v(Φ′) = u₂ = 3); the X slot-poly
+finite leg (β = 2η₂ kills Z²+2Z+2; naive (Z+1)² degenerate). SEC-G:
+committed `gentow4_pe1_fresh.py` re-run UNMODIFIED — exit 0,
+"TOTAL: 93 checks, 0 violations", VERDICT: GREEN (discharges the
+composed FR-G member preregistrations: corrected μ₂* = 2, naive
+μ₂* = 0, separator rows).
+
+**Standing for the arc.** The RED is a single M2 display-value defect
+in the composed note (an exact-value slip, invariance clause
+unaffected); the LEMMA's conclusions C1–C5 took no machine hit on any
+scored row. Grade stays attempt 0/2; G-1 (now machine-adjudicated),
+G-2, G-3 are the recorded gaps for the hostile arc + repair pipeline.
+Per the RCT protocol the tech fixed nothing.
+
+=== BLUEPRINT T1 SECTION ===
+## 2. COMPRESSION TARGETS, ranked by revision-scope-reduction
+
+Ranking criterion (Asvin's): how much future-revision surface one unified lemma
+removes — measured as (notes whose local arguments become instances) × (the
+demonstrated frequency of errata in that layer). Each target lists WHAT the
+unified lemma is, what it ABSORBS, what gets SHORTER, and the RE-VERIFY scope.
+
+### T1 — LEMMA GAUGE-COCYCLE (the ϑ/wrap recursion, stated once) — RANK 1
+
+- **WHAT.** One lemma on the composed tower's letter layer: the canonical letter
+  recursion z_{i+1} = η_{i+1}·z_i^{−⌊ℓ_i u_{i+1}/e_i⌋} (GENTOW2's formula), its
+  wrap correction W(t) = ⌊(f₂−t)·i(u₂)/e₁⌋ (HETOW [r1]), and gauge-invariance of
+  reads under it — proved once in the w-inclusive canonical frame, as a cocycle
+  statement over the composed carrier (the WELDMASTER gauge c = z̄^δ·∂Ẽ
+  specialized to towers).
+- **ABSORBS (enumerated, 7 sites).** HETOW's [r1] ϖ-wrap seam repair; GENTOW1's
+  gauge annex; GENTOW2's canonical-letter derivation; GENTOW3's gauge annex;
+  GENTOW4's four-site gauge annex; GENTOW5's frame normalization; GENTOW6's
+  gauge annex ([r] repair of the 6.3 scalar reading at f₁ ≥ 2).
+- **WHY RANK 1.** The gauge seam produced findings on the seven tower first
+  passes (appends #17–#20: the notes predated the wrap erratum) — the same fact,
+  re-proved in seven local coordinate systems, drifted seven times. A future
+  letter-layer erratum currently ripples through 7 notes; after T1, through 1.
+- **SHORTER / RE-VERIFY.** Each gauge annex → one displayed substitution
+  (~600–900 lines net removal across the seven). New lemma: full 2-clean arc +
+  sealed battery (frames must include the recorded first-instances: q=4 letters,
+  η≠1, f₁=2 letter-live, μ₂=3, w≠1) + seven consumption checks (§5.3).
+
+### T2 — THE σ-LADDER MASTER INSTANCE (HE7.A at a general carrier) — RANK 2
+
+- **WHAT.** Restate THEOREM HE7.A once over an abstract carrier (a complete DVR
+  stage ring with the ladder data: sides, residuals, test family, termination
+  measure), so that the existing instantiations become instances of ONE theorem.
+- **ABSORBS (enumerated, 5 sites).** HE6R1's reconciliation (HE7 covers the
+  widened box branch "as a LITERAL INSTANCE"); HETOW.A (tower σ read = literal
+  HE7.A instance, bridges HETOW-1/2/3/4 becoming the carrier-checking clauses);
+  GENTOW4's per-block literal HE7.A instances; HE3.A's recursion step (the
+  degree-μ stage resolvent read = the base instance); HE6's ℓ ≥ 2 branch (via
+  HE6R1's own reduction).
+- **WHY RANK 2.** Two accepted notes (HE6R1, HETOW) already PROVE the
+  instance-hood — the mathematics is done; what's missing is the inversion:
+  state once, instantiate five times. This is the "the ladder is ONE induction"
+  observation (HE7 §S6 + heuristics §C1) promoted to the corpus level. Risk: the
+  general-carrier statement must carry HE6's test-family hypotheses abstractly —
+  a real statement-design task, not a transcription.
+- **SHORTER / RE-VERIFY.** HE6R1's and HETOW's instantiation maps become worked
+  examples of one definition; the σ-chain's Lean surface shrinks from 4 bridge
+  layers to 1 theorem + instance records. The master statement is NEW (highest
+  statement-design risk of the five): Codex plan-level adversarial pass BEFORE
+  composing, then the full 2-clean arc + five consumption checks.
+
+### T3 — LEMMA COCYCLE-TELESCOPE (one shape for B″ / HETOW-4 / the cap) — RANK 3
+
+- **WHAT.** One lemma: a cocycle-weighted product along a tower height ladder
+  telescopes to (boundary value) × (monomial in the gauge letter) — the common
+  shape of GENTOW2-B″ (u(β_t) = ϑ(t)·w^{f₃−t}), HETOW-4 (ρ_t = ρ̂_t·τ(H₀)·δ^{−t},
+  i.e. R = τ(H₀)·R̂(Z/δ) — "exactly the J-D0-covered species"), and
+  GENTOW-6.4 (the 𝒯-free window cap).
+- **ABSORBS.** Three separately-proved telescopes; both Codex-challenge repair
+  lemmas (HETOW-4, the 𝒯-free cap) land as instances rather than one-off
+  patches.
+- **SHORTER.** Three proofs → one proof + three two-line instantiations.
+- **RE-VERIFY.** 2-clean arc; three consumption checks; battery re-uses the
+  committed HETOW-4 frames (203 checks / 37 dual-route gp jobs) as regression.
+
+### T4 — THE CERTIFICATE WITNESS (Θ_j threshold + CERT-TOP unified) — RANK 4
+
+- **WHAT.** One definition (touched coordinate, certificate sense — GENTOW3's
+  GT3-r2 pin) + one attainment lemma covering GENTOW3's faithfulness threshold
+  Θ_j = (μ₂−j)E₂ + δ and GENTOW6's CERT-TOP.
+- **ABSORBS.** Two certificate machineries; also gives the four count-grade
+  sub-boxes (GENTOW6-BOX-1/2/3, BOX-4) ONE home — they are refinements of this
+  lemma's count side, so their eventual closure revises one text.
+- **SHORTER.** GENTOW6's CERT-TOP section becomes an instance; the sub-box
+  ledger consolidates.
+- **RE-VERIFY.** 2-clean arc; two consumption checks; the GENTOW3 acceptance
+  battery frames (incl. FR-M3 measured slack) re-run as regression.
+
+### T5 — THE w-FRAME NOTE (ψ^{(w)} and the cross-frame unit w, once) — RANK 5
+
+- **WHAT.** One short note defining the cross-frame unit w and the w-twisted
+  realized residual ψ^{(w)} in the w-inclusive canonical frame, with the
+  measured record attached (GENTOW2-PE6: w ≠ 1 at 6 primes / 4 frames, avatars
+  z₁, z₁², z₂², z₂; GENTOW5-PE3: ψ₃^{(w)}(Y) = 0 on the nose at a 7th prime).
+- **ABSORBS.** GENTOW5's ψ^{(w)} re-scope machinery + the w-facts currently
+  scattered across GENTOW2/GENTOW5 pass records; the owed "w ≠ 1 as-of note"
+  (append #16) lands here instead of as another rider.
+- **SHORTER.** Rider scatter → one citable definition. The w = 1 question stays
+  honestly open and gets its one named home.
+- **RE-VERIFY.** Light: mostly definitional + record consolidation; 2-clean arc
+  at reduced size; no absorbed statement changes.
+
+**Not targets (deliberate).** (a) The four count-grade sub-boxes: open refinement
+work, not compression — they ride T4's home but are a separate track. (b) The
+distribution suite (BCFGTIE/MOMENTS/TAMEK/TAMEKQX): outside the 26-text corpus,
+arcs not yet run. (c) The weld notes themselves: accepted and byte-frozen;
+compression of their CONSUMPTION is SG-2 below, not a rewrite of the notes.
+
+---
+
+## 3. SECOND-GENERATION PROOF CANDIDATES (sketch level; graded honestly)
+
+=== GENHN 2026-08-12 APPENDS (from the A2 adjudication on) ===
+### Dated adjudication + corrections (2026-08-12 — sol certification A2: the R4 chain challenge adjudicated at HEAD)
+
+The sol-5.6 chain read of this note (gpt-5.6-sol high,
+runs/residues/R4_genhn_output.log, 2026-08-12) returned CHALLENGE
+with five findings. The A2 certification run (gpt-5.6-sol high,
+runs/cert/A2_genhn_output.log) re-adjudicated all five against HEAD
+including every dated append (E1–E3, the [r2] annex, [r3], the HETOW
+erratum): findings F-1, F-3, F-5 are REAL with derived repairs — the
+three dated blocks below; findings F-2 and F-4 are REAL but
+OBSTRUCTED — the displayed clauses are false as stated and every
+honest repair weakens an accepted statement display, so no
+admissible repair exists; the two dated obstruction records below
+transcribe the A2 adjudications verbatim. Everything above this
+heading is byte-untouched by this append.
+
+### Dated correction (2026-08-12, R4 F-1 — the general boundary projection and the meaning of “ragged band”)
+
+**THE TERMINOLOGY DEFECT.** GENHN.A(iii), GENHN-3(b), and the OB-a paragraph use “ragged band is never consulted” for two different objects: the interval of slot HEIGHTS beyond the shortest class string, and the UNREAD coefficient components occurring at those heights. The first usage is false: the `[r2]` annex itself proves that a first-band height can support a lift-stable terminal decision. The correct invariant is that no UNREAD coefficient digit is consulted.
+
+**LEMMA GENHN-CAP-GEN (general finite-window boundary projection).** Fix any ordinary stage genre \((e_1,f_1,\mu)\) and a truncated coefficient state. For a slot height \(m\), let \(V_m\subseteq K\) be the \(F_Q\)-span of those basis components \(\eta^t\) whose coefficient digits occur below their coordinate windows, and put
+
+\[
+\operatorname{comp}(m):=\dim_{F_Q}V_m.
+\]
+
+Let \(\operatorname{Comp}(z)\) be the set of all full coefficient strings agreeing with the truncated state \(z\). The finite-window stage reader obeys the following rule:
+
+1. if some unread coefficient can undercut the provisional minimum, return `UND`;
+2. otherwise GENHN-2 makes the provisional value exact; if its residue is only partially visible, return a decided leaf exactly when every member of \(\operatorname{Comp}(z)\) has the same dictionary output, and return `UND` otherwise;
+3. perform a recursive refine only when every \(K\)-component of every pin required by that refine is visible.
+
+Then the output is a function of the truncated data, no unread digit is consulted, and every recursive history stops before an incomplete pin.
+
+**PROOF.** GENHN-2 expresses every queried value as the minimum of the individual coefficient heights and proves independence of the tying residues. If an unread coefficient can lie lower, two compatible completions can have different values, so conservative drainage forces `UND`. If none can lie lower, the value is fixed; at an equal-height tie, independence of the visible and missing \(\eta^t\)-components prevents the missing components from cancelling a nonzero visible part. A leaf is lift-stable precisely when its dictionary output is constant on the affine completion set. Finally, an incomplete refine pin cannot determine its \(K\)-letter, so clause 3 is forced by the same completion test. This proves all three clauses.
+
+**COUNT TRANSPORT.** GENHN-1’s triangular coefficient bijection transports this completion rule directly from W-12.A’s conservative finite-window read. A nonzero visible boundary pin has
+
+\[
+Q^{\operatorname{comp}(m)}-1
+\]
+
+choices, exactly as ERRATUM E2 states; unread components are free completion fibers, and deeper value-unstable strata drain to `UND`. Interior refinements still use complete \(K\)-pins, so GENHN-2(b)’s bracket and GENHN.A(iv) are unchanged. Thus CS-1 and CS-2 hold at ordinary \(f_1\ge2\), \(\mu\ge3\), and mixed genres without a new box.
+
+The `[r2]` rule for \((e_1,\mu)=(1,2)\) is the specialization: at the first band height \(N\), a nonzero visible part fixes \(u=N\); `2SIDED` or odd `RAM` is returned when that conclusion is constant over all missing components, while the even residue-dependent branch drains. At deeper band heights an unread digit can undercut, so clause 1 drains.
+
+**RIDERS.** Read “the ragged band is never consulted” everywhere in GENHN.A(iii), S5, and the OB-a paragraph as “the unread component cells of the ragged band are never consulted.” Visible components at a boundary height may be used once by the completion-invariant terminal rule above. Read GENHN-3(a)’s “iff \(<e_1N\)” as the sufficient interior criterion together with GENHN-CAP-GEN’s exact boundary criterion; the previously proved stability below \(e_1N\) is unchanged.
+
+### Dated obstruction record (2026-08-12, R4 F-2 — GENHN.CLASS's finiteness display; the A2 adjudication transcribed verbatim)
+
+The finding stands. GENHN.CLASS explicitly includes \(Q\) and \(h\) in \(G\), while its finiteness proof counts only discrete schemas \((e_1,f_1,\mu,\text{entry-family})\).
+
+For fixed \(n=4,Q=2\), every positive odd \(h\) gives a distinct datum
+\[
+(2;2,1,2;h,\mathrm{entry})
+\]
+once \(N\ge2h+1\). Thus the declared data set is infinite.
+
+The only honest correction would replace “finitely many genre data” by “finitely many parameterized genre schemas, with \(Q,h,N\) and prehistory depths as parameters.” That weakens the accepted theorem’s displayed finiteness assertion, which the instructions prohibit. No new lemma can prove the existing false statement.
+
+### Dated proof completion (2026-08-12, R4 F-3 — the exact-height \(K\)-lift in T(b)′(i))
+
+**LEMMA GENHN-LIFT.** Let \(M>D'h=e_1f_1h\), and let \(i=i(M)\), \(0\le i<e_1\), be determined by
+
+\[
+ih\equiv M\pmod{e_1},\qquad a=(M-ih)/e_1.
+\]
+
+Write \(\lambda\in K\) uniquely as
+
+\[
+\lambda=\sum_{s=0}^{f_1-1}\lambda_s\eta^s,\qquad \lambda_s\in F_Q,
+\]
+
+and define
+
+\[
+L_M(\lambda):=
+\sum_{s=0}^{f_1-1}
+\widetilde{\lambda_s}\,
+x^{\,i+e_1s}\pi^{\,a-sh}.
+\]
+
+Then \(L_M(\lambda)\in\widehat O[x]\), \(\deg L_M(\lambda)<D'\), every nonzero summand has exact \(dv\)-height \(M\), and
+
+\[
+\operatorname{res}\!\left(\frac{L_M(\lambda)(\theta)}
+{n(M)(\theta)}\right)=\lambda .
+\]
+
+**PROOF.** Since \(i+e_1s\le D'-1\) and \(M>D'h\),
+
+\[
+a-sh=\frac{M-(i+e_1s)h}{e_1}\ge0,
+\]
+
+so every summand is integral and has degree \(<D'\). Its evaluated height is
+
+\[
+e_1(a-sh)+(i+e_1s)h=M.
+\]
+
+Dividing by \(n(M)=x^i\pi^a\) leaves residue
+\(\lambda_s\eta^s\); GENHN-2’s independence gives their sum
+\(\lambda\), with no cancellation. ∎
+
+**APPLICATION TO THE COMPOSED KEY.** Put \(r=f_2-t\), \(M=ru_2\), and
+
+\[
+W(t)=\left\lfloor\frac{r\,i(u_2)}{e_1}\right\rfloor .
+\]
+
+Replace the gauge-naive coefficient term in T(b)′ by
+
+\[
+L_{ru_2}\!\bigl(c_t\eta^{W(t)}\bigr)\,\Phi'^{\,e_2t}.
+\]
+
+Because
+
+\[
+\operatorname{res}\!\left(\frac{n(u_2)^r}{n(ru_2)}\right)
+=\eta^{W(t)},
+\]
+
+its coefficient relative to the coherent power normalizer
+\(n(u_2)^r\) is exactly \(c_t\). Hence the inner residual is
+precisely \(\psi_2\), not its gauge-naive twist.
+
+For every monomial \(x^\ell\pi^b\) occurring in this lift,
+\(e_1b+\ell h=ru_2\). Multiplying by a monomial of
+\(\Phi'^{e_2t}\), the clearance above the outer \(x\)-polygon side
+is bounded below by
+
+\[
+\frac{r(u_2-e_2D'h)}{e_1}>0,
+\]
+
+exactly the inequality used in T(b)′(i). Thus every component
+clears the side. Polynomial collection and \(\Phi'\)-carry can
+only cancel terms or move them upward; they cannot create a term
+below the side. Since \(L_M(\lambda)\) already has degree \(<D'\),
+the literal \(\Phi'\)-development also has the asserted
+exact-height coefficient and residual.
+
+Therefore T(b)′(i)’s one-side polygon, \(\psi_2\)-residual,
+carrier forcing chain, irreducibility, and residue-field
+conclusion hold at the corrected composed key. Clauses (ii)–(v)
+then proceed exactly as written.
+
+### Dated obstruction record (2026-08-12, R4 F-4 — GENHN.A(ii)'s universal slot display; the A2 adjudication transcribed verbatim)
+
+The counterexample is correct. For \((e_1,f_1,h,m)=(3,1,2,1)\), the unique normalizer exponent is \(a=-1\), so neither an integral normalizer nor a variable \(K\)-slot exists at height \(1\).
+
+The downstream laws are protected because their live pins satisfy \(m>D'h\), where integrality follows, but the displayed universal assertion “one \(K\)-digit slot per integer \(dv\)-height” is false. Its necessary repair would restrict it to occupied heights—particularly the live stage domain \(m>D'h\), subject also to the upper window cap. That is a weakening of GENHN.A(ii)’s accepted statement display, so no admissible repair can be supplied under the stated constraint.
+
+### Dated correction (2026-08-12, R4 F-5 — the first tower’s residual)
+
+In S8’s proof of LEMMA GENHN-T(a), replace
+
+> “residual \((T^2-c)^2\) over \(K\)”
+
+by
+
+> “residual \((T-c)^2\) over \(K\)”.
+
+**DERIVATION.** A side of abscissa length \(4\) and denominator
+\(e_2=2\) has residual degree \(4/e_2=2\). An inner repeated factor
+with \(f_2=1,\mu_2=2\) therefore has residual
+\((T-c)^2\), of degree \(2\). The displayed \((T^2-c)^2\) has
+degree \(4\) and would require side length \(e_2\cdot4=8\).
+The corrected form is exactly the later GN-TOWER witness
+\((T-1)^2\), so the positive-locus realization and the first-live
+threshold \(n=8\) remain unchanged.
+
+*(The three repairs and two obstruction records above were derived
+by the A2 certification run (gpt-5.6-sol high,
+runs/cert/A2_genhn_output.log, 2026-08-12); orchestrator
+verification before transcription — F-1: the "ragged band is never
+consulted" spans re-read at HEAD (GENHN.A(iii), GENHN-3(b)/(d), the
+OB-a paragraph); the [r2] annex confirmed to prove a lift-stable
+dv = e₁N at the first band height (refuting GENHN-3(a)'s "iff" as
+written, so the rider is needed); ERRATUM E1's exclusion ("at f₁ ≥ 2
+genres beyond [μ = 2] … NO band-adjudication display — that surface
+sits with the S9 boxes") checked against S9's actual box list
+(BOX-1 grades, BOX-2 refine-transfer bookkeeping, BOX-3 machine
+coverage only, BOX-4 extraction, BOX-5 P(5) density, [GENHN-TOW-1]
+towers) — no ordinary-stage box holds it, confirming the omission;
+GENHN-CAP-GEN's load-bearing step (missing η^t-components occupy
+complementary basis directions, so no completion cancels a nonzero
+visible part) re-derived from GENHN-2's F_Q-independence; the
+specializations re-checked against the E1 r3 trichotomy and the
+[r2] annex clauses (1)–(3) including the Q^{comp(m)}−1 census =
+ERRATUM E2's clause. Citation note: the repair's "GENHN-2(b)'s
+bracket" has no literal referent — GENHN-2 is unlettered; the
+referent is the stage bracket (CS-2) of THEOREM GENHN.B / S6.2,
+which is what interior refinements with complete K-pins leave
+unchanged. F-3: the HETOW erratum confirmed to CONSUME the
+exact-height (LIFT) operator without an in-note lemma; GENHN-LIFT's
+algebra re-derived by hand (integrality a−sh ≥ 0 from M > D′h;
+degree i+e₁s ≤ D′−1; exact height e₁(a−sh)+(i+e₁s)h = M; residue
+Σλ_sη^s = λ by GENHN-2's independence; the wrap identity
+res(n(u₂)^r/n(ru₂)) = η^{W(t)} re-derived from
+e₁(r·a(u₂)−a(ru₂)) = −e₁W(t)h, matching the erratum's own cocycle
+display); the clearance bound r(u₂−e₂D′h)/e₁ checked
+character-for-character against T(b)′(i)'s proof (the [r1] NODE
+FLOOR u₂ > e₂D′h). F-5: the span located (S8 GENHN-T(a) proof,
+"residual (T² − c)² over K" on the length-4 stage-e = 2 side);
+residual degree = 4/e₂ = 2 re-derived; the GN-TOWER witness's
+residual confirmed as ψ₂² = (T+1)² = (T−1)² over F₂, the
+squared-linear form; no prior dated append touches the line. F-2:
+G's inclusion of Q and h confirmed (GENHN.CLASS (i)); S2's
+finiteness proof confirmed to count triples + entry-pattern
+families only; the counterexample arithmetic checked (genre
+(2; 2,1,2; h) with h odd, e₁f₁μ = 4 ≤ n, visible once N ≥ 2h+1 —
+the note's own E3(h)/E31(h) instance tables display the same
+h-parameterization); the data set as declared is infinite. F-4:
+the counterexample arithmetic checked (2i ≡ 1 mod 3 ⟹ i = 2,
+a = (1−4)/3 = −1); the protection claim checked (the post-r1
+stage-initial node floor {dv(A_j) ≥ (μ−j)D′h + 1} and the [r1]
+NODE FLOOR put every live pin at dv > D′h, exactly GENHN-LIFT's
+integrality domain). Repairs transcribed unaltered per the standing
+division of labor. Ledger: GENHN's row stays OPEN — the three
+repairs await sol discharge-confirmation; the two obstructions
+close only by re-displayed statements (requires owner sign-off per
+the statement fence) or new mathematics.)*
+
+---
+
+### Dated statement re-displays (2026-08-12 — the two A2 obstructions closed under the owner's directive)
+
+Asvin (2026-08-12) delegated proof-related statement decisions under
+the end-to-end-proof criterion: the right display for any lemma is
+the one the complete proof of the pinned main theorem consumes,
+stated as simply as possible. Under that authority the two OBSTRUCTED
+findings of the A2 adjudication above are closed by the following
+re-displays, each at exactly the scope its proof establishes and its
+consumers consume. Orchestrator-composed from the A2 obstruction
+records' own option text; consumer safety verified at HEAD before
+folding; subject to sol discharge-confirmation in the cert2 pass.
+
+**Dated statement re-display (2026-08-12, R4 F-2 — GENHN.CLASS's
+finiteness clause).** THEOREM GENHN.CLASS's header gloss "finite per
+n" and clause (ii) FINITE are re-displayed at the scope S2's proof
+establishes: at fixed n, the genres form FINITELY MANY PARAMETERIZED
+GENRE SCHEMAS — the triples (e₁, f₁, μ) with e₁f₁ ≥ 2, e₁f₁μ ≤ n,
+each carrying finitely many (A1)-admissible entry-pattern families —
+with the residue field Q, the slope numerator h (gcd(h, e₁) = 1),
+the window N, and the prehistory depths as the schemas' parameters.
+The genre DATUM G = (Q; e₁, f₁, μ; h, entry) ranges over infinitely
+many parameter values at fixed n (every odd h with N ≥ 2h + 1
+realizes (2; 2,1,2; h, entry) at n = 4 — the R4 witness); the note's
+own instance tables already display exactly this parameterization
+(E3(h), E31(h): "visible iff 3h ≤ N−1"), and every count law
+attached to a genre is an (A1)-family law in those parameters
+(geometric in h), which is the form GENHN.B's assembly and the
+battery grammar consume. Clauses (i) and (iii) are unchanged; no
+consumer reads the withdrawn datum-set finiteness.
+
+**Dated statement re-display (2026-08-12, R4 F-4 — GENHN.A(ii)'s
+slot clause).** GENHN.A(ii)'s display "each A_j carries exactly ONE
+K-digit slot per integer dv-height" is re-displayed at its true
+scope: per OCCUPIED integer dv-height — a height m admitting an
+integral normalizer monomial n(m) = x^{i(m)}π^{a(m)} with
+0 ≤ i(m) < e₁ and a(m) = (m − i(m)h)/e₁ ≥ 0 — below the window cap.
+Every height m > D′h is occupied, with the explicit lift supplied by
+LEMMA GENHN-LIFT (the A2 fold above); every pin the note's laws
+consume sits at dv > D′h (the stage-initial node floor
+{dv(A_j) ≥ (μ−j)D′h + 1} and the refine floors), so no consumer
+moves. At unoccupied low heights no slot exists — witness
+(e₁, f₁, h) = (3, 1, 2), m = 1: i(1) = 2 forces a(1) = −1 (the
+R4/A2 counterexample, recorded in the obstruction record above).
+The e₁-class separation and F_Q-independence clauses are unchanged.
+
+**Dated corrigendum (2026-08-12, post-D2b — the occupied-height
+scope tightened).** The D2b discharge pass (gpt-5.6-sol high,
+runs/cert2/D2b_genhn_output.log) adjudicated the re-display above
+NEW-ISSUE: "occupied" as normalizer-integrality (a(m) ≥ 0) is too
+weak at f₁ > 1 — the full K-digit slot needs every component
+monomial x^{i+e₁s}π^{a−sh} integral, i.e. a(m) ≥ (f₁−1)h; sol's
+witness (e₁, f₁, h, m) = (1, 2, 1, 0): n(0) = 1 is integral while
+the η-component would require xπ^{−1}. Per sol's own recommendation
+and the simplicity preference, the scope is tightened to the
+consumed domain: GENHN.A(ii)'s slot clause holds per integer
+dv-height m with **D′h < m**, below the window cap — there LEMMA
+GENHN-LIFT's proof gives a − sh = (m − (i+e₁s)h)/e₁ ≥ 0 for every
+component (i + e₁s ≤ D′ − 1), so the full K-slot exists — and every
+pin the note's laws consume sits in that domain (the stage-initial
+node floor {dv(A_j) ≥ (μ−j)D′h + 1} and the refine floors). At
+m ≤ D′h the clause is withdrawn entirely: a K-slot may be partial
+(the sol witness) or absent (the R4/A2 witness). Awaiting sol
+re-confirmation in the next queue.
+
+=== GRTJA 2026-08-12 APPENDS ===
+### Dated adjudication + corrections (2026-08-12 — sol certification C2/E2: the as-built challenge adjudicated at HEAD)
+
+The sol-5.6 as-built read of this note (gpt-5.6-sol high,
+runs/cert/C2_grtja_output.log, 2026-08-12) returned CHALLENGE
+(1 CRITICAL + GAPs). The E2 certification run (gpt-5.6-sol high,
+runs/cert2/E2_grtja_output.log) adjudicated all four findings REAL
+and derived the repairs below (annexes C2-1..C2-4), each with
+derivation and consumer sweep; the CRITICAL is cured by THEOREM
+JA-EPS-CORR — the canonical-normalization bridge replacing raw
+print-twist equality. Everything above this heading is byte-untouched
+by this append. The E2 adjudication, transcribed unaltered:
+
+All four findings are REAL. None of FC-1–FC-4 addresses them; those annexes concern supplier motion and grade billing.
+
+### 1. REAL — JA-EPS omits the attained-origin shift
+
+The challenge is correct. Section 3.2 itself acknowledges that Definition `t(i)` differs “further by the ν-shift,” while §3.4 later retains precisely that shift through \(s_0=s(\beta)+\nu e\). Thus the canonical identity is correct, but the labels identifying it directly with the print’s actual twist are not.
+
+Verbatim-ready repair:
+
+> **[ANNEX 2026-08-12, certifier repair C2-1 — JA-EPS is the canonical-normalization bridge, not raw Definition-`t(i)` equality.]** In frozen §3.2, retain the proved integer identity
+> \[
+> \varepsilon_m(\beta)=z_m^{-t_{\min}(\beta)},\qquad
+> t_{\min}(\beta):=\frac{\ell_{m-1}\beta-s_{\min}(\beta)}{e_{m-1}},
+> \quad s_{\min}(\beta):=\ell_{m-1}\beta\bmod e_{m-1}.
+> \]
+> The genre phrases “\(\varepsilon=\) the print twist,” “the harness \(\varepsilon\)-kit IS the print’s `t(i)`-twist,” and their §7 consequence-table repetitions are superseded by the following exact normalization statement.
+>
+> **THEOREM JA-EPS-CORR.** Let an actual print side with ordinate argument \(\beta\) have initial attained abscissa
+> \[
+> s_{\mathrm{act}}=s_{\min}(\beta)+\nu e_{m-1},\qquad \nu\in\mathbb Z_{\ge0}.
+> \]
+> Its Definition-`t(i)` exponent, in the print’s orientation, is
+> \[
+> t_{\mathrm{Def}}
+>   =\frac{s_{\mathrm{act}}-\ell_{m-1}\beta}{e_{m-1}}
+>   =\nu-t_{\min}(\beta).
+> \]
+> Consequently
+> \[
+> \boxed{\ z_m^{t_{\mathrm{Def}}}=z_m^\nu\,\varepsilon_m(\beta)\ },
+> \qquad
+> \boxed{\ \varepsilon_m(\beta)=z_m^{t_{\mathrm{Def}}-\nu}\ }.
+> \]
+> Thus raw equality between the print factor and \(\varepsilon_m(\beta)\) holds exactly when \(z_m^\nu=1\), in particular when \(\nu=0\). The first boxed identity follows simply by substituting
+> \(s_{\mathrm{act}}=s_{\min}+\nu e_{m-1}\) and using the already-proved
+> \(\varepsilon_m(\beta)=z_m^{-t_{\min}(\beta)}\); no new lemma is used.
+>
+> **Consumer sweep.** Section 3.4 JA-RES survives unchanged: it uses the actual Definition-`t(i)` exponent together with
+> \(\tau=(s_{\mathrm{act}}-\ell\beta)/e\), so the same \(\nu\)-term cancels in \(t(i)-\tau\). JA-VDIND survives unchanged; its proof already states
+> \(\tau_m(A)-\nu=\operatorname{exp}(\varepsilon_m(\beta))\). W2-L2, W2-L3, CK-EPS, and ORB-EPS survive as statements about the canonical minimal-grid exponent \(t_{\min}\). The §4(iii) orbit formula is retained with that explicit meaning. The §5 N-1 citation and §7.2 JA-EPS row survive at this corrected normalization-bridge scope. The grade-cap and §7.3 claims of raw print-twist equality are superseded by JA-EPS-CORR.
+
+### 2. REAL — ordinary polynomial degrees are shifted by \(\nu\)
+
+The frozen general formula already proves the challenge. If \(H(y)=R_mv(A)\) is the packed harness polynomial and \(P(y)=R_m(A)(y)\) the normalized print residual, then
+\[
+H(y)=y^\nu Q_A(y),\qquad
+P(y)=z^{-s_0A_{m-1}}Q_A(\vartheta_my).
+\]
+Their abscissa supports agree, but their ordinary exponent supports differ by translation by \(\nu\).
+
+Verbatim-ready repair:
+
+> **[ANNEX 2026-08-12, certifier repair C2-2 — JA-MIN support and degree normalization.]** The frozen JA-MIN phrase “supports and degrees agree slot-for-slot” is superseded as follows. Put
+> \[
+> s_0=s(\beta)+\nu e_{m-1},\qquad
+> H(y):=R_mv(A),\qquad P(y):=R_m(A)(y).
+> \]
+> The frozen §3.4 conjugation formula gives
+> \[
+> H(y)=y^\nu Q_A(y),\qquad
+> P(y)=z_{m-1}^{-s_0A_{m-1}}Q_A(\vartheta_my),
+> \quad
+> \vartheta_m=z_{m-1}^{-e_{m-1}A_{m-1}}.
+> \]
+> Since the displayed scalar and \(\vartheta_m\) are units,
+> \[
+> \operatorname{Supp}_y(H)=\nu+\operatorname{Supp}_y(P).
+> \]
+> Hence, for nonzero residuals,
+> \[
+> \boxed{\ \deg H=\deg P+\nu\ },
+> \]
+> and ordinary degrees agree iff \(\nu=0\). What agrees without qualification is the set of attained **abscissas**: the per-slot unit law gives
+> \(c_i=0\iff C_i=0\) for every attained \(i\). Equivalently, the normalized support widths agree after translating the harness exponent origin by \(\nu\).
+>
+> **COROLLARY JA-MIN-CORR.** On the JA-RES perimeter, attained-abscissa support and every print residual coefficient are recoverable from the harness read, and conversely. Explicitly, divide \(H\) by the known exact factor \(y^\nu\) to recover \(Q_A\), then apply the displayed unit scalar and substitution \(y\mapsto\vartheta_my\) to recover \(P\). Therefore the claimed computability of \(\operatorname{ord}_\psi\) data survives. Since \(\psi\ne y\), the removable factor \(y^\nu\) contributes no \(\psi\)-factor; the known \(\vartheta_m\)-substitution must still be applied.
+>
+> **Consumer sweep.** JA-RES, JA-VDIND, R-coll, and all CK-RES/CK-VDM machine claims are coefficientwise and survive unchanged. The §7.2 JA-MIN row survives with “attained-abscissa support and normalized degree/width” replacing ordinary degree equality. Frozen §3.4 already says nothing downstream in this note consumes JA-MIN, so there is no internal consumer of the false degree clause. Intended J-B/W-5 consumers must use the boxed degree-shift formula, not unshifted degree equality.
+
+### 3. REAL — nonidentity is weaker than failure of a scalar gauge
+
+The per-slot theorem gives the exact criterion. A single nonunit character value still supplies a perfectly valid scalar on a singleton support.
+
+Verbatim-ready repair:
+
+> **[ANNEX 2026-08-12, certifier repair C2-3 — exact scalar-gauge criterion.]** The frozen JA-BOX-1 assertion that slot-independent scalar form fails whenever the character is merely nontrivial on the read support, and the sentence identifying arbitrary scalar form exactly with JA-VDIND collapse, are superseded.
+>
+> For a fixed read \(A\), let
+> \[
+> S_A:=\{\,i:C_i\ne0\,\},\qquad
+> \chi(i):=z_{m-1}^{-iA_{m-1}}.
+> \]
+> JA-RES says \(c_i=\chi(i)C_i\). Therefore
+> \[
+> \boxed{\ \exists c\in F^\times\ \forall i\in S_A,\ c_i=cC_i
+> \iff |\chi(S_A)|=1\ }.
+> \]
+> Indeed, if such \(c\) exists, division by \(C_i\ne0\) gives
+> \(\chi(i)=c\) for every \(i\in S_A\); the converse is immediate. Equivalently, after choosing \(i_0\in S_A\),
+> \[
+> z_{m-1}^{-(i-i_0)A_{m-1}}=1
+> \quad\text{for every }i\in S_A.
+> \]
+> In particular, every singleton support admits a scalar, even when
+> \(\chi(i_0)\ne1\). A read refutes slot-independent scalar form precisely when its support contains \(i,i'\) with
+> \[
+> z_{m-1}^{-(i-i')A_{m-1}}\ne1.
+> \]
+> The JA-VDIND hypothesis is the stronger **absolute** condition
+> \(\chi(i)=1\) for every attained \(i\). It is exactly the \(c=1\) case needed for the evaluated VD identity, not the criterion for existence of an arbitrary scalar.
+>
+> **Consumer sweep.** The JA-RES per-slot law and conjugation formula survive unchanged. JA-VDIND, root-inclusive R-coll, and JA-BOX-2 survive because they explicitly require absolute character triviality. The §6 and §7.2 descriptions of JA-BOX-1 must use “the character takes at least two values on active support.” CK-BPREF hits count as blueprint refutations only under that two-value predicate—the predicate used by the accepted PE8 check—not merely because some active value differs from \(1\). The frozen parenthetical conditions on \(e\), \(A\), and \(\operatorname{ord}(z)\) establish a nontrivial character step but require two suitably separated active slots before yielding a refutation.
+
+### 4. REAL — only the arithmetic grid and carry are unconditional
+
+The frozen [JA-r2] bracket explicitly says the downstream proviso is “CARRIED AND UNDISCHARGED,” and the note gives \((e,h,V)=(2,3,1)\) as a counterexample to print-side existence.
+
+Verbatim-ready repair:
+
+> **[ANNEX 2026-08-12, certifier repair C2-4 — exact scope of JA-GRID/W-4.]** The frozen phrases “the grid/carry tie is PROVED unconditionally,” “Grade: PROVED, unconditional,” and “W-4 in full” are superseded by the following split statement.
+>
+> **THEOREM JA-GRID-CORR.** Let \(e,h\ge1\), \(\gcd(e,h)=1\), and let \(\ell h\equiv1\pmod e\). For every \(V\ge0\), define
+> \[
+> s(V):=\ell V\bmod e,\qquad
+> u(V):=\frac{V-s(V)h}{e}\in\mathbb Z.
+> \]
+> Then \(s(V)\) is unconditionally the unique least element of \([0,e)\) for which \(V-s(V)h\) is divisible by \(e\). The print’s nonnegative-coordinate \(T\)-side initial point exists with coordinates \((s(V),u(V))\) only under
+> \[
+> \boxed{\ u(V)\ge0\ },\qquad\text{equivalently}\qquad V\ge s(V)h.
+> \]
+> Under that hypothesis, JA-GRID(a)/(b), including the print-object and point-for-point slot identification, holds. Without it there is only the integer-line congruence datum, not a print \(T\)-point; for example
+> \[
+> (e,h,V)=(2,3,1)\quad\Longrightarrow\quad s=1,\quad u=-1.
+> \]
+> Independently of this existence condition, for all \(V,V'\ge0\),
+> \[
+> s(V)+s(V')-s(V+V')=e\delta,\qquad
+> \delta\in\{0,1\},\qquad
+> \delta=1\iff s(V)+s(V')\ge e.
+> \]
+> Thus the congruence grid and single-level carry identity are unconditional; identification with the print’s nonnegative \(T\)-side is proviso-scoped.
+>
+> **Consumer sweep.** Section 3.3’s own Prop-`construct` sites survive because the print hypothesis supplies the required nonnegative \(T\)-side there. The [JA-r2] downstream JB rows survive only with their already-recorded membership/\(u\ge0\) hypothesis carried; this annex does not discharge it. GD-8 and JA-GRID(c) consume only the unconditional carry identity and survive. CK-GRID’s congruence and carry legs survive but do not certify a nonexistent print point when \(u<0\). In the grade cap, §7.2, and §7.3, “unconditional” and “W-4 in full” henceforth refer only to the arithmetic grid/carry clauses; every print-object consumption of JA-GRID(a)/(b) must carry \(u\ge0\) or a previously proved sufficient membership hypothesis.
+
+*(The adjudication above was produced by the E2 certification run
+(gpt-5.6-sol high, runs/cert2/E2_grtja_output.log, 2026-08-12);
+orchestrator verification before transcription — C2-1's arithmetic
+re-derived (s_act = s_min + νe gives t_Def = ν − t_min by
+substitution, so z^{t_Def} = z^ν·ε_m(β); raw equality iff z^ν = 1);
+C2-2's translation re-derived from the note's own conjugation
+formula (H = y^ν·Q_A, P = unit·Q_A(ϑ_m y) with ϑ_m a unit ⟹
+Supp H = ν + Supp P, deg H = deg P + ν; ψ ≠ y so y^ν adds no
+ψ-factor); C2-3's criterion re-derived (a scalar exists iff χ is
+constant on the active support — singleton supports always pass, so
+refutation needs two active slots with distinct χ-values); C2-4's
+grid facts re-checked (s(V) = ℓV mod e is the unique least residue
+with e | V − s(V)h since ℓh ≡ 1; the (e,h,V) = (2,3,1) witness gives
+u = −1, so the print T-point needs the boxed u(V) ≥ 0; the carry
+identity is unconditional). Transcribed unaltered per the standing
+division of labor. Ledger: row 20 → all four repairs folded,
+awaiting sol discharge-confirmation (cert3).)*
+
+=== WELDMASTER 2026-08-12 APPENDS ===
+### Dated adjudication + corrections (2026-08-12 — sol certification C6/E6: the as-built challenge adjudicated at HEAD)
+
+The sol-5.6 as-built read of this note (gpt-5.6-sol high,
+runs/cert/C6_weldmaster_output.log, 2026-08-12; the WELD-FACE-AUDIT
+charge) returned CHALLENGE (3 GAP + 1 MINOR, no CRITICAL in the
+component formulas). The E6 certification run (gpt-5.6-sol high,
+runs/cert2/E6_weldmaster_output.log) adjudicated F-1/F-2/F-4 REAL
+with the repairs below (THEOREM WELD-M-PKG — the five-field package
+re-display with the record-assembly lemma; the withdrawal of PE10's
+H¹ = 0 uniqueness gloss with the torsor derivation; the WM-FENCE
+consumption scoping) and F-3 RESOLVED-ALREADY (the acceptance
+record's own scope qualifier). Everything above this heading is
+byte-untouched by this append. The E6 adjudication, transcribed
+unaltered:
+
+Adjudication: F-1, F-2, and F-4 are REAL. F-3 is RESOLVED-ALREADY by the acceptance record’s own scope qualifier and the theorem’s explicit clause-level perimeter. No finding is obstructed.
+
+### F-1 — REAL
+
+The frozen theorem asserts a single transport object, but the proof constructs only five heterogeneously typed faces. “ONE” cannot mean uniqueness—the character twist \(\widetilde E\mapsto\widetilde E\eta\) disproves that—and no common map with cross-face compatibility is constructed.
+
+The honest consumed scope is a five-field anchored transport package. The face table proves that package by record assembly.
+
+Verbatim-ready append:
+
+> **[ANNEX 2026-08-12, correction C6 F-1 — WELD-M re-displayed at its proved-and-consumed package scope.]** The frozen S1 wording “there is ONE transport \(\mathbb T\) … with five clauses” is stronger than its citation-table proof: the five cited faces have different source/target types, and the table supplies no additional theorem asserting that they are restrictions of a single map. The accepted live display is therefore:
+>
+> **THEOREM WELD-M-PKG (the anchored five-face transport package).** For every tower \(T\) on the frozen S1 perimeter, there exists one named package
+> \[
+> \mathbf T_T=(\mathbf T_{M0},\mathbf T_{M1},\mathbf T_{M2},
+>              \mathbf T_{M3},\mathbf T_{M4})
+> \]
+> whose fields are exactly the frozen clauses:
+>
+> \[
+> \begin{array}{ll}
+> \mathbf T_{M0}:&\text{the identity of the two canonical division chains;}\\
+> \mathbf T_{M1}:&w_m=v_{m+1}\text{ and the affine shear }
+>                  \Sigma_q(i,u)=(i,e_qu+h_qi),\\
+>                &\text{with the frozen vertex, slope, key and membership fences;}\\
+> \mathbf T_{M2}:&\text{the per-slot read/operator character transport generated by }
+>                  t_j/\varepsilon_j,\\
+>                &\text{with exact recursion off the scalar perimeter;}\\
+> \mathbf T_{M3}:&\text{the multiplication transport to }
+>                  K^c[\mathbb Z/E]\text{ on the scored stratum;}\\
+> \mathbf T_{M4}:&\text{the representative/lift covariance field at W2-C3’s
+>                  accepted fenced scope.}
+> \end{array}
+> \]
+>
+> The shared anchors and identifications are precisely those displayed in the frozen face table: the same tower and canonical division chain, \(w_m=v_{m+1}\), the \(t_j/\varepsilon_j\) seed, harness-val \(=\) TC-read, and the displayed \(\psi\)-transport. No compatibility beyond those displayed ties is asserted.
+>
+> **RECORD-ASSEMBLY LEMMA.** If, for fixed \(T\), the supplier theorems prove the five field propositions \(P_{M0}(T),\ldots,P_{M4}(T)\), then they prove
+> \[
+> P_{M0}(T)\times P_{M1}(T)\times P_{M2}(T)\times
+> P_{M3}(T)\times P_{M4}(T).
+> \]
+> **Proof.** Choose the five cited witnesses and apply the product/record constructor. The frozen face table supplies exactly those five witnesses, at its displayed per-field perimeters. \(\square\)
+>
+> Thus “one” means one named five-field package, not uniqueness and not a further unproved common-map coherence theorem. In particular, if \(\eta:\mathbb Z/E\to K^\ast\) is a character, replacing a gauge \(\widetilde E\) by \(\widetilde E\eta\) may produce a different package with the same \(M3\) coboundary; WELD-M-PKG asserts existence only.
+>
+> **Consumer sweep.**
+>
+> 1. The frozen S1 face table survives verbatim: each row constructs the correspondingly named package field.
+> 2. S6/WM1 survives when read as “WELD-M-PKG, fields (M0)–(M4), proved by citation.”
+> 3. The S6 dependency line survives: the four junction notes supply the five package fields.
+> 4. The acceptance record’s “THEOREM WELD-M” is henceforth the accepted package theorem above; no uniqueness or extra coherence is part of that acceptance.
+> 5. The 2026-08-08 O-1 annex survives because it updates only the \(M4\) field’s W2-C3 scope.
+> 6. DULEMMA’s disclosed consumption survives because it uses only the \(M3\) field and supplies its own DU-A/DU-B argument.
+> 7. No executed consumer disclosed in this note uses a cross-face compatibility theorem; \(M0\), \(M1\), and \(M2\) have no separately identified executed downstream consumption.
+
+### F-2 — REAL
+
+PE10’s \(H^1=0\) uniqueness claim is false for the ordinary trivial coefficient action. Nothing in either dated annex repairs it. This affects only the certification narrative, not WM-CLASS’s proved existence/class identity.
+
+Verbatim-ready append:
+
+> **[ANNEX 2026-08-12, correction C6 F-2 — withdrawal of PE10’s \(H^1=0\) uniqueness gloss.]** In the 2026-08-07 ACCEPTANCE RECORD, the phrase
+>
+> “the DIRECT-\(H^2\)/bar-resolution route proving \(\widetilde E\) is THE canonical gauge — constructed from the cocycle alone and forced by \(H^1=0\) uniqueness”
+>
+> is withdrawn and replaced by:
+>
+> “the DIRECT-\(H^2\)/bar-resolution route independently re-verifying the WM-CLASS cohomology-class identity; the displayed gauge is the explicit section gauge \(\widetilde E=E\circ\sigma\), determined relative to the already fixed weld cochain \(E\) and minimal-window section \(\sigma\), with no uniqueness-from-\(H^1\) claim.”
+>
+> **Derivation of the correction.** With the trivial action on \(K^\ast\),
+> \[
+> H^1(\mathbb Z/E,K^\ast)
+>   =\operatorname{Hom}(\mathbb Z/E,K^\ast)
+>   =\mu_E(K),
+> \]
+> which need not vanish. If \(F\) and \(G\) are two gauges with
+> \(\partial F=\partial G\), put \(\eta=F/G\). Then
+> \[
+> 1=\frac{\partial F}{\partial G}
+>   =\partial\eta,\qquad
+> \frac{\eta(\nu)\eta(\nu')}{\eta(\nu+\nu')}=1,
+> \]
+> so \(\eta\) is a character. Conversely, for every character \(\eta\),
+> \[
+> \partial(F\eta)=(\partial F)(\partial\eta)=\partial F.
+> \]
+> Hence gauges with a fixed coboundary form a torsor under
+> \(\operatorname{Hom}(\mathbb Z/E,K^\ast)\), rather than being unique. For
+> \(E=2\) and \(K=\mathbf F_5\), the character
+> \(\eta(\nu)=(-1)^\nu\) is already a nontrivial witness.
+>
+> WM-CLASS itself is unchanged: its proof uses the explicitly defined
+> \(\widetilde E=E\circ\sigma\), WM-RHO, and
+> \[
+> \partial\widetilde E=\partial E\cdot\rho_T^\kappa,
+> \]
+> and requires neither reconstruction from \(c\) alone nor uniqueness.
+>
+> **Consumer sweep.** WM-CLASS’s display and S6/WM6 survive unchanged.
+> DULEMMA’s use of the coboundary identity survives unchanged. WELD-M-PKG’s
+> \(M3\) field asserts no gauge uniqueness. PE10’s corrected route remains
+> an independent verification of the class identity only.
+
+### F-3 — RESOLVED-ALREADY
+
+The isolated shorthand is poor, but HEAD expressly prevents it from granting unconditional scope to clause (iii).
+
+The exact cure occurs in the same dated acceptance paragraph:
+
+> “the weld’s consolidation, **at its displayed conditionality**”
+
+The displayed conditionality is unambiguous:
+
+> “**(iii) [composite display — adds the [ILN]† VALUE LAW, scored stratum].**”
+
+and S6 repeats:
+
+> “WM4 | WM-COB(iii) \(c_{n+1}=\bar z^\delta\cdot\partial E\) | **PROVED on the scored stratum**”
+
+The 2026-08-08 O-2 annex additionally records DULEMMA’s consumed perimeter as:
+
+> “the measured perimeter (**[ILN]† scored stratum**, \(m\ge1\), \(e_m\ge2\)) … off-stratum pairs open”
+
+Thus “WM-COB proved unconditional” is globally qualified by “at its displayed conditionality”: clauses (i)–(ii) are arbitrary-pair identities, while clause (iii) remains scored-stratum-only. It supplies no off-stratum downstream grant.
+
+### F-4 — REAL
+
+WM-FENCE proves a criterion for fixed data, not freedom to alter the data until the criterion holds. The phrase “WM-FENCE’s (F-b)-freedom observation” therefore misattributes any required existence or variation theorem. The “through J-D0” qualification limits the blast radius but does not cure the attribution.
+
+Verbatim-ready append:
+
+> **[ANNEX 2026-08-12, correction C6 F-4 — J-D consumes an F-b criterion, not freedom supplied by WM-FENCE.]** The frozen S6 downstream-design clause
+>
+> “the J-D block … consumes WM-FENCE’s (F-b)-freedom observation only through the already-adjudicated (J-D0) route”
+>
+> is replaced by:
+>
+> “the J-D block (J-D0 \(\to\) W-10 at the \((2,1,1)\) shape \(\to\) W-11) may consume WM-FENCE only as the fixed-data (F-b) character-triviality criterion, and only through the already-adjudicated J-D0 route. WM-FENCE supplies no freedom or existence theorem for varying \(z_\mu\), \(A_\mu\), the attained set, or the representative. Any such choice or variation required by J-D must be proved by J-D0 independently.”
+>
+> **Derivation.** For the fixed data, WM-FENCE proves exactly
+> \[
+> \chi_i^{(\mu)}=1\ \forall i\in\mathbb Z
+> \iff \operatorname{ord}(z_\mu)\mid A_\mu
+> \]
+> in the absolute form, and
+> \[
+> \chi_i^{(\mu)}=1\ \forall i\in e_\mu\mathbb Z
+> \iff \operatorname{ord}(z_\mu)\mid e_\mu A_\mu
+> \]
+> in the slot-grid form. Neither display contains an existential
+> quantifier over the fixed inputs. For example, with
+> \(K_\mu=\mathbf F_5\), \(z_\mu=2\), \(\operatorname{ord}(z_\mu)=4\),
+> \(A_\mu=1\), and attained set containing \(1\),
+> \[
+> \chi^{(\mu)}_1=2^{-1}\ne1,
+> \]
+> so absolute PERIM fails, and WM-FENCE specifies no operation that changes
+> this datum.
+>
+> **Consumer sweep.** WM-FENCE(a), (b), and (c), including the
+> root-inclusive repair and the \(\chi\)-chain/mod-wrap caveats, survive
+> unchanged. The correction touches only the unexecuted S6 J-D design
+> sentence. No executed downstream consumption identified at HEAD relies
+> on an WM-FENCE freedom theorem. A future J-D proof must cite J-D0 for any
+> required existence or variation and WM-FENCE only to test the resulting
+> character-triviality condition.
+
+*(The adjudication above was produced by the E6 certification run
+(gpt-5.6-sol high, runs/cert2/E6_weldmaster_output.log, 2026-08-12);
+orchestrator verification before transcription — F-1: the package
+re-display matches the frozen face table's five heterogeneously
+typed rows, and the η-gauge instance (Ẽη has the same M3 coboundary)
+refutes uniqueness, so existence-of-package is the honest scope; the
+consumer sweep's key claim (DULEMMA consumes only the M3 field; no
+executed consumer uses cross-face compatibility) is sol's read of
+the note's own disclosure lines. F-2: the torsor derivation
+re-checked (H¹(ℤ/E, K*) = Hom = μ_E(K); ∂(Fη) = ∂F for characters η;
+gauges with fixed coboundary form a Hom-torsor — at E = 2, K = F₅
+the character η(ν) = (−1)^ν is nontrivial, exactly the C6 witness).
+F-4: WM-FENCE's two displayed criteria re-read — both are fixed-data
+iff-statements with no existential quantifier, and the F₅ instance
+(z = 2, ord 4, A = 1: χ₁ = 2^{−1} ≠ 1) confirms no freedom is
+supplied. Transcribed unaltered per the standing division of labor.
+Ledger: row 24 → three repairs folded, awaiting sol discharge
+(cert3).)*
+
+=== HE6 2026-08-12 APPENDS ===
+### Dated corrections (2026-08-12 — sol certification A3: the R6 chain challenge adjudicated at HEAD)
+
+The sol-5.6 chain read of this note (gpt-5.6-sol high,
+runs/residues/R6_he6_output.log, 2026-08-12) returned CHALLENGE with
+four findings. The A3 certification run (gpt-5.6-sol high,
+runs/cert/A3_he6_output.log) re-adjudicated all four against HEAD
+including every dated append: all four are REAL with derived repairs
+— the four dated corrections below. Everything above this heading is
+byte-untouched by this append.
+
+**Dated correction (2026-08-12, post-acceptance challenge F-1 — normalized slot coefficients in LEMMA HE6-0″).** The displayed definition
+
+\[
+\gamma=\sum_t\operatorname{res}(a_{i_0+e_1t})\eta_\theta^t
+\]
+
+omitted the coefficient normalizers. Let \(k:=dv(A)\), let \(i=i(k)\) be the unique integer \(0\le i<e_1\) satisfying \(ih\equiv k\pmod{e_1}\), and put
+
+\[
+n(k):=x^i\pi^{(k-ih)/e_1}.
+\]
+
+Read the slot residue in LEMMA HE6-0″ as
+
+\[
+\gamma_k(A):=
+\sum_{\substack{t\ge0\\i+e_1t<D'}}
+\operatorname{res}\!\left(
+a_{i+e_1t}\pi^{-(k-(i+e_1t)h)/e_1}
+\right)\eta_\theta^t\in K,
+\]
+
+where a coefficient whose pin lies strictly above height \(k\) contributes zero. Indeed, for \(j=i+e_1t\),
+
+\[
+\frac{a_j\xi^j}{n(k)(\xi)}
+=
+\left(a_j\pi^{-(k-jh)/e_1}\right)
+\left(\xi^{e_1}\pi^{-h}\right)^t,
+\]
+
+while every index outside the class \(i\bmod e_1\) has strictly larger value and vanishes after reduction. Hence
+
+\[
+\operatorname{res}\!\left(\frac{A(\xi)}{n(k)(\xi)}\right)
+=\iota_\xi(\gamma_k(A)).
+\]
+
+Since the RIDER gives
+
+\[
+\operatorname{res}\!\left(\frac{n(k)(\xi)}{\varpi(\xi)^k}\right)
+=\eta_\xi^{-q(k)},
+\]
+
+the corrected conclusion of LEMMA HE6-0″ is
+
+\[
+\operatorname{res}\!\left(\frac{A(\xi)}{\varpi(\xi)^k}\right)
+=\iota_\xi(\gamma_k(A))\,\eta_\xi^{-q(k)}.
+\]
+
+At \(\xi=\theta\), this is precisely the \(\varpi\)-read residue used to choose each \(B_t\); therefore at an arbitrary \((T1)/(T2)\) point it transports to its \(\iota_\xi\)-image. Thus the residue computations in LEMMA HE6-1, LEMMA HE6-2 and LEMMA HE6-2′ remain valid with this corrected formula. No theorem statement is weakened.
+
+**Dated correction (2026-08-12, post-acceptance challenge F-2 — completion of LEMMA HE6-3(a)).** In the proof of LEMMA HE6-3(a), replace the inference
+
+> “\(c_0=0\); as all slopes are \(>0\) this gives \(L_\lambda=0\) for every \(\lambda\le D'h\)”
+
+by the following length argument. Sampling \(\kappa\in(D'h,\lambda_1)\) gives both
+
+\[
+\sum_i c_{\lambda_i}=0
+\qquad\text{and}\qquad
+c_0=0.
+\]
+
+Every root label satisfies \(\lambda_\rho>D'h\) by LEMMA HE6-0 and HE3-0, and \(f\) is separable of degree \(D'\mu\); hence
+
+\[
+\sum_{\lambda>D'h}n_\lambda=D'\mu.
+\]
+
+Because \(A_0\ne0\), the polygon runs from abscissa \(0\) to \(\mu\), so
+
+\[
+\sum_\lambda L_\lambda=\mu.
+\]
+
+Writing \(B:=\sum_{\lambda\le D'h}L_\lambda\), the already obtained coefficient equation becomes
+
+\[
+0=\sum_i c_{\lambda_i}
+=\sum_{\lambda>D'h}n_\lambda
+  -D'\sum_{\lambda>D'h}L_\lambda
+=D'\mu-D'(\mu-B)=D'B.
+\]
+
+Thus \(B=0\). Since every \(L_\lambda\) is a nonnegative horizontal length,
+
+\[
+L_\lambda=0\qquad(\lambda\le D'h).
+\]
+
+This proves LEMMA HE6-3(a) without assuming that polygon slopes are strictly positive. Part (b) and all consumers are unchanged.
+
+**Dated correction (2026-08-12, post-acceptance challenge F-3 — equality slots in LEMMA HE6-0).** In §S3.1, read
+
+> “with equality exactly at the slots \(i=e_1t\)”
+
+as
+
+> “with equality possible only at the slots \(i=e_1t\).”
+
+Indeed,
+
+\[
+e_1v(a_i)+ih=D'h
+\quad\Longrightarrow\quad
+e_1\mid(D'-i)h
+\quad\Longrightarrow\quad
+e_1\mid i,
+\]
+
+using \(\gcd(h,e_1)=1\) and \(e_1\mid D'\). The converse need not hold: a slot \(i=e_1t\) may lie strictly above the line. The following residual-polynomial display already handles this correctly, because then
+
+\[
+v\!\left(a_{e_1t}\pi^{-(f_1-t)h}\right)>0
+\]
+
+and its residue is zero. Therefore
+
+\[
+\operatorname{res}\!\left(\Phi'(\xi)/\pi^{f_1h}\right)=\psi(\eta_\xi)
+\]
+
+and the remainder of the disk-criterion proof are unchanged.
+
+**Dated correction (2026-08-12, post-acceptance challenge F-4 — coefficient ring of \(\varpi\) in LEMMA HE6-5).** In §S6.1, read
+
+> “All of \(\Phi',\varpi\in O[x]\) have \(g\)-fixed coefficients”
+
+as
+
+> “The polynomial \(\Phi'\in O[x]\) and the normalizer \(\varpi\in K_0[x]\) both have \(g\)-fixed coefficients.”
+
+This follows because \(g\in\operatorname{Gal}(\overline K_0/K_0)\) fixes every coefficient in \(K_0\). Consequently
+
+\[
+\Phi'(g\rho)=g(\Phi'(\rho)),
+\qquad
+\varpi(g\rho)=g(\varpi(\rho)),
+\]
+
+exactly as required by the remainder of the proof. No integrality of the coefficients of \(\varpi\) is used.
+
+*(Corrections F-1..F-4 derived by the A3 certification run
+(gpt-5.6-sol high, runs/cert/A3_he6_output.log, 2026-08-12);
+orchestrator verification before transcription — F-1: HE6-0″'s
+unnormalized γ display confirmed at HEAD (the tying coefficients
+have positive valuation (k−jh)/e₁, so the bare res(a_j) reading is
+vacuous); the exponent identity a_jξ^j/n(k)(ξ) =
+(a_jπ^{−(k−jh)/e₁})(ξ^{e₁}π^{−h})^t re-derived by hand
+((k−jh)/e₁ + th = (k−ih)/e₁ at j = i+e₁t); the RIDER composition
+checked against the note's own definition η_θ^{q(k)} :=
+res(ϖ(θ)^k/n(k)(θ)) and the r2-corrected −q sign; consistency with
+DEFINITION HE6-1's B_t choice rule and with S3.1's own normalized
+display res(a_{e₁t}π^{−(f₁−t)h}) confirmed. F-2: the quoted
+inference located (S5, HE6-3(a)); the gap confirmed real (c₀ =
+−D′Σ_{λ≤D′h}L_λ·λ = 0 cannot exclude a zero-slope side, and the
+(SEP)-free setting does not exclude a unit development
+coefficient); the replacement re-derived line by line (root count
+Σ_{λ>D′h}n_λ = D′μ from separability + all labels > D′h; abscissa
+count Σ_λL_λ = μ from A₀ ≠ 0; Σᵢc_{λᵢ} = D′B), using only the
+sampling equality the note already proved. F-3: the span located
+(S3.1 L392–393); the note's own justification is the "only if"
+direction, so the repair matches the proof as written; the
+downstream display confirmed to zero out above-the-line slots via
+its normalizers. F-4: the r1 R7/F8 convention located (L106–107,
+"ϖ ∈ K₀[x], not O[x]", with the explicit witness ϖ = xπ^{−1});
+the contradicting S6.1 sentence located (L612); the proof re-read —
+only g-fixedness of coefficients in K₀ is consumed, never
+integrality. Transcribed unaltered per the standing division of
+labor. Ledger: HE6's row → repairs folded, awaiting sol
+discharge-confirmation.)*
