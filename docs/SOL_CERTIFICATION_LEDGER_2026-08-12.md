@@ -32,8 +32,8 @@ proof consumes (tightness census + consumption map).
 | 16 | HE3 | CHALLENGE (fresh, R8) | A5 done 2026-08-12: 5 REAL verified + folded (HE3-5 recursive criterion + counterexample; LEMMA HE3-4U proves the unramified branch — BOX-6 narrows to branch (ii) alone; LEMMA HE3-4D1 closes D′=1; piecewise β_ρ in HE3-4; HE3-0 provenance). No display weakened. Remaining: sol discharge |
 | 17 | GENIND ANNEX | sol pass found d-factor GAP | R9 done 2026-08-12: 4 REAL verified + folded (GENIND-C2 superseded by the Q-normalized replacement — the (L+1)/2 − e·degψ ≥ ½ domination; 3 riding MINORs folded). Remaining: clean sol re-pass (cert2) |
 | 18 | WI ([GENTOW5-W(i)]) | r1 landed; sol PE2 was the challenge | **CERTIFIED 2026-08-12** — R10 pass 3: zero findings on all five charges, sol verdict "CERTIFIED 2/2" (runs/cert/R10_wi_pass3_output.log) |
-| 19 | LIFTCORNER | never sol-read as-built | ratification (C1) |
-| 20 | GRTJA | never sol-read as-built | ratification (C2) |
+| 19 | LIFTCORNER | never sol-read as-built | C1 2026-08-12: CHALLENGE — 1 CRITICAL (PROP's owed rung-≥2 clause-(ii) census promoted into the all-level conclusion + S5/FC-2 rewrite), 2 GAP (NR-1 discharge grade vs the live ILNRES fence; CONTENT sub-lemma needs Φ ∈ O[x], counterexample Φ = x+p^{−1}), 2 MINOR. Adjudicate+repair (cert2) |
+| 20 | GRTJA | never sol-read as-built | C2 2026-08-12: CHALLENGE — 1 CRITICAL (J-A(iii) proves the minimal-grid ε, not the print's t(i) exponent: z^{t_Def} = z^ν·ε_m(β), the ν-shifted supports the note allows break the standalone equality), + GAPs. Adjudicate+repair (cert2) |
 | 21 | GRTJB | never sol-read as-built | ratification (C3) |
 | 22 | GRTJC | never sol-read as-built (cites now PDF-verified) | ratification (C4) |
 | 23 | GRTW2 | never sol-read as-built | ratification (C5) |

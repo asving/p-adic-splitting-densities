@@ -3892,3 +3892,44 @@ E-units, T1/T3/SG2/X-lemma simplification arcs. Standing anchors:
 anchor rev 2 signed off (Stage2/UniformityTarget.lean, 2 sorries,
 fenced on the faithfulAt gates unit); statement ledger 166 rows
 green; AxChk baseline a95cc545.
+
+**2026-08-12 DATED APPEND #26 — SESSION CHECKPOINT: FIRST FOLD WAVE
+COMPLETE (A0–A5 + R9 verified & transcribed; WI CERTIFIED); RESUME
+FROM HERE** — The runner (runs/cert/runner.sh, detached, alive) has
+completed A0–A5, R9, R10, D1a/b, C1–C2 and continues through C3–C11;
+every output auto-committed. ORCHESTRATOR FOLDS DONE (each REAL
+repair verified by hand against sources then transcribed unaltered
+with an attribution bracket — the R2-spans discipline, commits
+fb83ff16/9eaf8ca7/d86b867c/a5d8eb01/2a72b9de/62400944/8a681557):
+HEX3 → CERTIFIED (A0, Corrections C–F); WI → CERTIFIED (R10 clean
+2/2); W-12 folded (3 REAL: κ(T) orbit factor, c_F ∈ ℚ(X), BOX-1
+(H-a)–(H-e)); GENHN folded (3 REAL incl. LEMMAS GENHN-CAP-GEN +
+GENHN-LIFT); HE6 folded (4 REAL: γ_k normalizers, HE6-3(a) length
+argument, equality scoping, ϖ ∈ K₀[x]); HE6R1 folded (2 REAL);
+HE3 folded (5 REAL incl. LEMMAS HE3-4U + HE3-4D1, no display
+weakened); GENIND ANNEX folded (Q-normalized GENIND-C2 supersession
++ 3 riders). LEDGER: 10 of 29 CERTIFIED. DISCOVERED OBLIGATIONS
+(all recorded as dated obstruction records in the notes + ledger):
+(1) W-12 all-degree order-1 history-transfer lemma (A1 item 1 —
+blocks row 12); (2) GENHN.CLASS finiteness display + GENHN.A(ii)
+universal slot claim (A2 — 2 statement re-displays needing Asvin's
+sign-off); (3) HE6R1-1's global J ≤ log₂n−2 bound (D′ = 1
+counterexample) + the completion statement vs GENHN-ERR-1 (A4 — 1
+statement decision + 1 new lemma: re-run GENHN's f₁ ≥ 2 counts on
+the corrected node floor); (4) GENTOW5 residuals (D1a: conditionality
+propagation + the S11.4 lift-bound rung NEW-ISSUE); (5) GENTOW3
+residual (D1b: shadow-content scope reduction OR witness pair).
+C1 (LIFTCORNER) and C2 (GRTJA) returned CHALLENGE with 1 CRITICAL
+each — findings in the ledger, adjudicate+repair owed. NEXT MOVES:
+(1) keep folding C3–C11 as they land (CHALLENGEs → ledger + queue,
+RATIFIEDs → CERTIFIED); (2) when the runner drains, assemble
+runs/cert2/ — discharge-confirmation briefs for the 6 repaired notes
+(W-12, GENHN, HE6, HE6R1, HE3, GENIND-ANNEX re-pass) + adjudicate+
+repair briefs for the C-run challenges + the GENTOW3/5 residual
+cures; NEVER relaunch the first runner whole. (3) Surface the 5
+statement decisions to Asvin (GENHN ×2, HE6R1 ×2 — options recorded
+in the obstruction records — and whether to schedule the W-12
+all-degree lemma + the GENHN f₁ ≥ 2 count re-run as proof units).
+Crash recovery, regime (Amendments 4+5: no Fable subagents, sol =
+certifier + heavy work), and the parked queue: unchanged from
+append #25.
