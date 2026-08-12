@@ -3613,3 +3613,30 @@ Append to the honesty ledger:
 Add to §6:
 
 > | Re-attributed the A6 scalar-read pin to HE6 F-1 (`GENTOW6` has no \(\gamma_k\)/\(\varpi\) display); fenced (C2-vartheta)’s \(K_i^\times\) membership behind \(\mathrm{(H\!-\!VARTHETA\!-\!RES)}_i\) at depth \(i\ge3\) and threaded the fence through (C3-corrected-lift)/(C3-key)/the R4-1 nonvanishing step; fixed the A3 \(\gamma_t\) naming; scoped the A7 PIN 2 consequence list to the pinned span; documented the md5 pin normalization convention; refreshed the front-matter status line. | model-diverse pass of record, 2026-08-12 r9 (Fable arm) | Repairs 2 GAP and 4 MINOR findings: absorption provenance now names the actual supplier note, and depth-\(\ge3\) residue membership is an explicit named supplier hypothesis rather than an unproved boxed claim. |
+
+---
+
+## r10 (2026-08-12): C7 fence completion
+
+*(Fable-arm; the single T1P10 finding; counter resets.)*
+
+# T1 r10 correction — 2026-08-12
+
+This edit repairs the single finding of T1P10 (0 CRITICAL / 1 GAP / 0 MINOR).
+
+## R10-1 (G-1) — Propagate \(\mathrm{(H\!-\!VARTHETA\!-\!RES)}_i\) into (C7)’s \(M2\) and \(M3\) rows
+
+**Finding G-1.** (C7) introduces its interface table with “T1 relates to its fields only as follows,” yet its effective \(M2\) row (the r2 replacement as extended by the r8 addition) and its \(M3\) row (unamended since the original table) omit \(\mathrm{(H\!-\!VARTHETA\!-\!RES)}_i\), which both fields consume at depth \(i\ge3\): \(M2\) uses \(\vartheta_{i,s}\), the inverses \(\Theta_i(t)\), and the corrected digits \(c_t\vartheta_{i,f_{i+1}-t}\) as \(K_i\)-scalars, and \(M3\) uses the \(K_i^\times\)-valued telescope — while r9 requires that every consumer at depth \(i\ge3\) carry the named supplier hypothesis. The scored-stratum and residual-read obligations already listed in those rows do not themselves establish that the normalizer-quotient residue lies in \(K_i\), so without the fence the table is not the complete standalone WELD-M-PKG interface it claims to be.
+
+In (C7), supersede the \(M2\) row (as amended by r2 and r8) and the \(M3\) row (as in the original table) with the following rows; each is its predecessor verbatim with \(\mathrm{(H\!-\!VARTHETA\!-\!RES)}_i\) \((i\ge3)\) appended to its fence list, and nothing else changed:
+
+| Package field | T1 datum available to that field |
+|---|---|
+| \(M2\) | The dictionary and canonical read in (C3), plus (C4-origin); support transport only under \(\mathrm{(H\!-\!JA\!-\!RES\!-\!CONJ)}\). Corrected-key coefficients additionally use (C3-lift-coefficient-space), and canonical factor-pattern transport uses (C3-ladder-nonvanishing). At depth \(i\ge3\), the scalars \(\vartheta_{i,s}\), their inverses \(\Theta_i(t)\), and the corrected digits \(c_t\vartheta_{i,f_{i+1}-t}\) are \(K_i\)-scalars only under \(\mathrm{(H\!-\!VARTHETA\!-\!RES)}_i\) \((i\ge3)\). |
+| \(M3\) | The cocycle/telescope (C2) and canonical twist in (C3), only on the scored stratum. At depth \(i\ge3\), the \(K_i^\times\)-valued telescope is available only under \(\mathrm{(H\!-\!VARTHETA\!-\!RES)}_i\) \((i\ge3)\). |
+
+The \(M0\), \(M1\), and \(M4\) rows are unchanged: those fields consume no \(\vartheta_{i,s}\) datum, so \(\mathrm{(H\!-\!VARTHETA\!-\!RES)}_i\) does not enter their fence lists.
+
+Add to §6:
+
+> | Propagated \(\mathrm{(H\!-\!VARTHETA\!-\!RES)}_i\) (depth \(i\ge3\)) into (C7)’s \(M2\) and \(M3\) interface rows, completing the r9 fence at the WELD-M-PKG interface. | T1P10, 2026-08-12 r10 (Fable arm) | Repairs 1 GAP finding: the “only as follows” table now carries the depth-\(\ge3\) residue-membership hypothesis on both fields that consume it; formulas C1–C6 and all other rows unchanged. |
