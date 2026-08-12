@@ -1,0 +1,249 @@
+## S12. [GT5-r5] RESIDUAL DISCHARGE REPAIRS (2026-08-12 — dated append; acceptance 2/2 remains ANNOTATED)
+
+### S12.1 [R-i2] `[GENTOW5-W(i)]` CONDITIONALITY PROPAGATED THROUGH THE COMPLETE CONSUMER CHAIN
+
+**Superseded scope in S11.2.** S11.2 correctly leaves open, for every \(i\ge 3\),
+
+\[
+[{\rm GENTOW5\!-\!W}(i)]\qquad
+u_i(\beta_t)=\theta_i(t)\,w_i^{\,f_{i+1}-t},
+\qquad
+w_i=R_{i+1,\bar k_i}(\widehat n_i(u_{i+1})),
+\]
+
+but its subsequent assertion that exact values, repo-side residue classes, \(P\)-membership, clause (c), and clause (e) remain unconditional is WITHDRAWN. A fixed per-grade unit family is not enough: “\(w\)-blind” means invariance AFTER the family has been proved to have the single-\(w_i\) geometric form. It does not construct that form.
+
+For \(n\ge3\), write
+
+\[
+\mathcal W_{\le n}:=
+\bigwedge_{3\le q\le n}[{\rm GENTOW5\!-\!W}(q)].
+\]
+
+The cumulative condition records the induction history; locally, the new input at rung \(n\) is \([{\rm GENTOW5\!-\!W}(n)]\).
+
+**Correct conditional scope.**
+
+1. **Clause (a).** At index \(n\ge3\), conditional on \(\mathcal W_{\le n}\), the pinned recipe has
+
+   \[
+   R_{\nu_n}(\Phi_{n+1})
+   =\psi_{n+1}^{(w_n)}
+   :=w_n^{f_{n+1}}\psi_{n+1}(y/w_n),
+   \]
+
+   and the admissibility, key-polynomial membership, prime/irreducibility certificate, and non-equivalence conclusions follow as written. Without \([{\rm GENTOW5\!-\!W}(n)]\), per-grade fixedness supplies no single substitution \(y\mapsto w_ny\), so none of those certificate legs is established for the pinned key.
+
+2. **Clause (b), including exact values and \(P\)-membership.** Corollary 6.4 fires only after clause (a) has supplied the key-polynomial/prime certificate for \(\Phi_{n+1}\). Consequently, at index \(n\ge3\), ALL of clause (b) is conditional on \(\mathcal W_{\le n}\): one-sidedness at every lower level, the corrected residual powers
+
+   \[
+   R_{j-1}(\Phi_{n+1})
+   =\bigl(\psi_j^{(\omega_j)}\bigr)^{\,l_{j+1}\cdots l_{n+1}}
+   \qquad(1\le j\le n+1),
+   \]
+
+   the exact intermediate values
+
+   \[
+   v(\Phi_{j-1}(\xi))=\frac{u_j}{\widehat e_j},
+   \]
+
+   the repo-side residue-class identifications, and therefore
+   \(\xi\in P_{n+1}\). Here \(\omega_1\) is S11.3’s proved fixed
+   \(z_1\)-letter-power unit, \(\omega_2=w_2\) from the landed
+   GENTOW2 law, and \(\omega_j=w_j\) for \(j\ge3\). The B'' root
+   correspondence is usable only after the corresponding common
+   \(\omega_j\) exists; it cannot turn an arbitrary per-grade unit
+   family into a geometric twist.
+
+3. **S11.1 and clause (c).** The numerical \(\rho\)-ladder of
+   S11.1.2 is unconditional floor arithmetic, but S11.1.1 and
+   S11.1.3 consume clause (b): S11.1.1 obtains the one-sided
+   polygons and
+
+   \[
+   \operatorname{descmin}(\Phi_k)=L_k\lambda
+   \]
+
+   from \((b)@(k-1)\), while S11.1.3 compares \(g\) against those
+   sides and their exact pins. Thus clause (c) at index \(n\ge3\),
+   including its sufficiency direction, deeper-read ascent,
+   fibration, node pins, and field-floor conclusion, is conditional
+   on \(\mathcal W_{\le n}\). Step 1 already consumes \((b)@n\);
+   the repaired Step 2 additionally consumes the earlier
+   \((b)@q\) instances occurring in its descent.
+
+4. **Clause (e) and the induction feed.** Clause (e) at index
+   \(n\ge3\) consumes clause (c)’s pins, so its automatic next-floor
+   conclusion
+
+   \[
+   u_{n+2}>e_{n+2}E_{n+1}
+   \]
+
+   is conditional on \(\mathcal W_{\le n}\) as well. Later arguments
+   may still use that inequality unconditionally when it is included
+   explicitly in the fixed tower datum; only its claimed automatic
+   derivation from the recipe is conditional.
+
+The complete dependency chain is therefore
+
+\[
+[{\rm GENTOW5\!-\!W}(n)]
+\Longrightarrow (a)@n
+\Longrightarrow {\rm Corollary\ 6.4}\Longrightarrow (b)@n
+\Longrightarrow {\rm S11.1.1/S11.1.3}
+\Longrightarrow (c)@n
+\Longrightarrow (e)@n
+\Longrightarrow\text{the next automatic floor}.
+\]
+
+**Unaffected scope.** The \(i=2\) rung remains unconditional by the landed GENTOW2 law; the \(i=1\) residual remains exactly S11.3’s fixed-letter-power statement with only its identification with the displayed \(w_1\) open. LEMMAS GENTOW5-A0/A1, the refine-transfer clause (d) at its stated event hypotheses, LEMMA GENTOW5-D under an explicitly supplied floor-chain datum, formal monicity/degrees and recipe-height arithmetic, and the S4 witness remain unaffected. At S4 every \(K_i^\times=\{1\}\), so each required geometric law is tautological there.
+
+### S12.2 [R-i4] THE LIFT RUNG, RECIPE RANGE, AND ALL LIFT CONSUMERS CORRECTED
+
+**Superseded S11.4 bracket.** The sentence placing the displayed
+\(\operatorname{lift}_i(c;m)\) above \(\operatorname{bound}_{i+1}\)
+is WITHDRAWN. That display realizes \(c\in K_i\) by a polynomial of
+degree \(<D_i\); hence it consumes the PRECEDING lift instance and
+has threshold \(\operatorname{bound}_i\), not
+\(\operatorname{bound}_{i+1}\).
+
+Precisely,
+
+\[
+\operatorname{lift}_i(c;m)\in\mathcal O[x],\qquad
+\deg\operatorname{lift}_i(c;m)<D_i,\qquad
+\operatorname{res}\!\left(
+ \frac{\operatorname{lift}_i(c;m)}{\widehat n_i(m)}
+\right)=\iota^{(i)}(c)
+\]
+
+is valid for
+
+\[
+m>\operatorname{bound}_i.
+\]
+
+For \(i\ge2\) this is supplied by \(({\rm LIFT}_{i-1})\); for \(i=1\)
+it is the accepted base lift. By contrast, the clause labelled
+\(({\rm LIFT}_i)\) in LEMMA GENTOW5-C constructs \(K_{i+1}\)-digits
+of degree \(<D_{i+1}\) and therefore correctly has threshold
+
+\[
+\operatorname{bound}_{i+1}
+=(l_{i+1}-1)u_{i+1}
+ +e_{i+1}\operatorname{bound}_i.
+\]
+
+**The bound needed by every recipe lift is automatically met.**
+At the base,
+
+\[
+\operatorname{bound}_1=(l_1-1)u_1<E_1=l_1u_1.
+\]
+
+Inductively, if
+\(\operatorname{bound}_{i-1}<E_{i-1}\), the floor rung
+\(u_i>e_iE_{i-1}\) gives
+
+\[
+e_i\operatorname{bound}_{i-1}<u_i
+\]
+
+and hence
+
+\[
+\operatorname{bound}_i
+=(l_i-1)u_i+e_i\operatorname{bound}_{i-1}
+<l_i u_i=E_i.
+\]
+
+Thus
+
+\[
+\boxed{\operatorname{bound}_i<E_i\quad\text{for every }i\ge1.}
+\]
+
+For a nonzero recipe coefficient \(c_t\), put
+\(s=f_{i+1}-t\). Since \(t<f_{i+1}\), one has \(s\ge1\), and the
+recipe height is
+
+\[
+m_t=s\,u_{i+1}\ge u_{i+1}
+>e_{i+1}E_i\ge E_i>\operatorname{bound}_i.
+\]
+
+Therefore the required preceding-rung lift exists and gives
+
+\[
+\widehat k_t
+=\operatorname{lift}_i
+ \bigl(c_t\vartheta_{i,s};\,s u_{i+1}\bigr)
+\in\mathcal O[x],\qquad
+\deg\widehat k_t<D_i,
+\]
+
+with exact \(dv_i\)-height \(s u_{i+1}\) and the prescribed coherent
+\(K_i\)-digit. When \(c_t=0\), \(\widehat k_t=0\) and no lift is
+required. Consequently every nonzero recipe side term has exact
+\(dv_{i+1}\)-height
+
+\[
+e_{i+1}s u_{i+1}+e_{i+1}t u_{i+1}
+=e_{i+1}f_{i+1}u_{i+1}=E_{i+1},
+\]
+
+and its degree is \(<D_{i+1}\).
+
+No recipe consumer needs
+\(m_t>\operatorname{bound}_{i+1}\). The corrected consumer sweep is:
+
+* DEF GENTOW5-1 and clause (a) need the preceding-rung
+  \(K_i\)-digit lift above \(\operatorname{bound}_i\), proved above.
+* LEMMA GENTOW5-D’s \(({\rm INV}\!-\!j)\) carry display needs only
+  \(\deg\widehat k_t<D_i\) and the exact height
+  \(s u_{i+1}\), both now proved in the correct range.
+* Clause (c), including Step 1 and Step 5, consumes those same exact
+  side heights and coherent digits; it does not consume
+  \(\operatorname{bound}_{i+1}\) for a recipe coefficient.
+* The S4 recipe keys consume respectively
+  \(\operatorname{bound}_1,\operatorname{bound}_2,
+  \operatorname{bound}_3,\operatorname{bound}_4\), never the next
+  bounds.
+
+The depth-4 witness makes the rung distinction explicit:
+
+\[
+(\operatorname{bound}_1,\operatorname{bound}_2,
+  \operatorname{bound}_3,\operatorname{bound}_4)
+=(1,7,35,155),
+\]
+
+while its successive recipe heights are
+
+\[
+5,\ 21,\ 85,\ 341.
+\]
+
+Thus \(5>1\), \(21>7\), \(85>35\), and \(341>155\), exactly as
+required. The rejected next-rung demands would be \(5>7\),
+\(21>35\), \(85>155\), and \(341>651\), explaining why S11.4’s
+range assertion was false while every actual recipe lift remains
+valid.
+
+Finally, genuine refine consumers use the other rung correctly:
+\(\operatorname{lift}_{i+1}(s;\lambda)\) realizes \(K_{i+1}\) with
+degree \(<D_{i+1}\), so it needs
+\(\lambda>\operatorname{bound}_{i+1}\). Their event hypothesis gives
+
+\[
+\lambda>E_{i+1}>\operatorname{bound}_{i+1},
+\]
+
+by the boxed inequality. Hence THEOREM GENTOW5-A and clause (d)’s
+refine lifts also land in their required ranges. This proves every
+actual lift consumption; no qualification of the recipe or refine
+statements is needed.
+
+SUMMARY: 2 REAL (repairs delivered) / 0 OBSTRUCTED

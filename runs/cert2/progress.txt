@@ -33,3 +33,5 @@
 [11:27:09] E7_hmenu3 exit 0 (9779 B; SUMMARY: 2 REAL (repairs delivered) / 1 RESOLVED-ALREADY / 0 ARTIFACT / 0 OBSTRUCTED)
 [11:27:09] E8_jd0 start
 [11:31:29] E8_jd0 exit 0 (12327 B; SUMMARY: 6 REAL (repairs delivered) / 0 RESOLVED-ALREADY / 6 ARTIFACT / 0 OBSTRUCTED)
+[11:31:29] E12_gentow5 start
+[11:34:48] E12_gentow5 exit 0 (8508 B; SUMMARY: 2 REAL (repairs delivered) / 0 OBSTRUCTED)
