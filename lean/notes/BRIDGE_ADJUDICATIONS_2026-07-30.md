@@ -16062,3 +16062,18 @@ Also this morning: ANCHOR REV 2 landed (Asvin sign-off; compiles
 green) + Amendment 5 recorded + migration step 1 baseline frozen
 (ledger 166/0/0/0 + AxChk exit 0). The reorganization's steps 2+
 resume after the residue batch.
+
+**RESIDUE ITEM 3 CLOSED (2026-08-12, Opus unit, 39918b0a)** —
+FGMN-WELD cite verification: ALL THREE VERIFIED at the print (Cor 2.7
+p.10 — the note's s(fg)=s(f)+s(g) is the corollary's own in-proof
+equivalent form; Thm 4.2 p.20 — both renderings already-disclosed
+transports, not drift; Thm 4.8+Cor 4.9 p.22 — the pair-cite closes
+via the §3.3 ψ-definition at p.17). GRTJC ANNEX #3 landed as a pure
+append (8+/0−, prefix byte-unchanged); census row I-4 →
+cite-VERIFIED. Bonus catch: the earlier annex-#2 numbering discharge
+was against the TEXT EXTRACTION only — under the
+extraction-decorrelation rule the PDF leg was genuinely owed, and is
+now supplied; annex #2's readings confirmed at the print. The W-1
+transport correctly stays ATTEMPT (not a citation obligation).
+Census: 4 of 5 in-cone items now closed or in-runner; JD0 + the
+weld-face audit queue behind R1–R8.
