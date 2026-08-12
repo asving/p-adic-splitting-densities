@@ -1,0 +1,15 @@
+- **[C1 — acceptance blocker]** “every marker pin resolves uniquely and in order.” The two named HEAD sources could not be read because the workspace command runner failed (`bubblewrap is unavailable`). Therefore none of the seven spans or later-supersession checks was verified. Under T4’s own fail-closed convention, this pass cannot count as clean. This is an infrastructure finding, not evidence that a marker actually mismatches.
+
+- **[G1 — exposed-slot hypothesis missing]** S4.3 says GENTOW-6.5 computes “a distinguished certificate-slot component” and that its nonvanishing “proves touchedness by T4.2(c).” But T4.2(c) requires the canonical slot to receive **exactly one** contribution. A nonzero component can still cancel against another contribution in the same assembled slot. Unlike S4.1 and S4.2, S4.3 never states uniqueness or identifies the displayed expression as the complete assembled slot.
+
+- **[G2 — perturbation expression is outside the defined domain]** S0 defines \(C_j(f)\), \(\operatorname{Sh}C_j(f)\), and hence \(\Delta_j(f)\) only “for a member \(f\),” whose development contains the leading term \(\Phi_2^{\mu_2}\). T4.2(b) then uses \(\Delta_j(g)\), although \(g=f-f_{\mathrm{key}}\) is a lower perturbation and generally not a member in that sense. “Both reads are linear in the dividend” asserts, but does not define, the required linear extension.
+
+- **[m1 — empty minimum]** T4.2(a) writes
+  \[
+  \min\{m:\operatorname{gr}_m(\Delta_j(f_{\mathrm{key}}))\ne0\}.
+  \]
+  This is undefined when the discrepancy is identically zero—an outcome explicitly retained through FR5X. The following prose recognizes that case, but the displayed equivalence itself lacks an empty-set convention.
+
+No files were changed.
+
+VERDICT: FINDINGS | FINDINGS: 1C + 2G + 1m
