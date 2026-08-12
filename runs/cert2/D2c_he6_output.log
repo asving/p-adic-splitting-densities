@@ -1,0 +1,9 @@
+1. **DISCHARGED.** The normalized coefficients have valuation zero exactly for pins at height \(k\), while higher pins reduce to zero. The identity with \(n(k)\) is correct, and composing with \(\operatorname{res}(n(k)/\varpi^k)=\eta^{-q(k)}\) gives the required transported \(\varpi\)-read residue.
+
+2. **DISCHARGED.** Separability and \(\Phi'\nmid f\) give \(D'\mu\) finite root labels, all above \(D'h\). Together with the polygon’s total horizontal length \(\mu\), the sampled equation yields \(D'B=0\), hence no side of slope \(\le D'h\), including slope zero.
+
+3. **DISCHARGED.** The divisibility proves only that equality can occur at indices divisible by \(e_1\). Slots lying strictly above the line contribute zero after normalization, so the residual polynomial remains \(\psi\) and the disk criterion is unchanged.
+
+4. **DISCHARGED.** Although \(\varpi\) need not lie in \(O[x]\), its coefficients lie in \(K_0\) and are therefore fixed by every \(g\in\operatorname{Gal}(\overline K_0/K_0)\). This is exactly what the equivariance proof uses; coefficient integrality is unnecessary.
+
+OUTCOMES: DISCHARGED, DISCHARGED, DISCHARGED, DISCHARGED
