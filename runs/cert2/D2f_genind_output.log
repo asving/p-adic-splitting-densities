@@ -1,0 +1,48 @@
+## Part 1
+
+1. **NEW-ISSUE.** The original \(d\)-factor error is algebraically repaired: \(|K|=Q^\gamma\), so the stage factor becomes
+   \[
+   Q^{-a(N-1-H)+O(1)},
+   \]
+   and combining it with \(Q^{-bH+O(1)}\), where \(b-a\ge \tfrac12\), gives the required \(Q\)-normalized geometric sum.
+
+   However, two new proof gaps occur inside the replacement:
+
+   - C2(i) asserts the universal bound
+     \[
+     M^\star\ge e(N-1-H)
+     \]
+     from (CS-1), but the cited (CS-1) material supplies genre-dependent ragged windows and explicitly permits sibling-Hensel losses. No derivation establishes this bound for general embedded or mixed genres, nor separately prices ragged boundary bands.
+   - In C2(ii), when product degrees are equal, the proof says \(H>0\), “hence \(M^\star<N\).” This does not follow from the displayed lower bound \(M^\star\ge N-1-H\). An upper bound, or an explicit truncation-and-monotonicity argument using the core window \(N-1-H\), is required for the lexicographic induction to be well-founded.
+
+2. **DISCHARGED.** The roster arithmetic is correct: 12 fresh rows minus the disclosed, unscored \((q,k,N)=(3,1,6)\) row leaves exactly 11 scored rows, matching “P1 GREEN 11/0.”
+
+3. **DISCHARGED.** The replacement census now enumerates the surfaces actually consumed: the five named supplier/display classes, the three locus-data instances, and the six extraction identities.
+
+4. **DISCHARGED.** The replacement supplies the missing domination:
+   \[
+   b-a=\frac{L+1}{2}-e\deg\psi\ge\frac12,
+   \]
+   hence the composed summand is
+   \[
+   O\!\left(Q^{-a(N-1)-H/2}\right),
+   \]
+   whose height sum is uniformly geometric. This fixes the specific riding MINOR-C implication, conditional on the stage-window estimate.
+
+## Part 2 — Fresh annex-stack pass
+
+**CHALLENGE.**
+
+Two GAPs survive in the corrected C2 passage:
+
+- **C2-G1 — unsupported general stage-window transfer.** The lower bound \(M^\star\ge e(N-1-H)\), including treatment of ragged bands and sibling losses, is not derived from the displayed (CS-1) clause for every embedded or mixed genre. This estimate is load-bearing in (C2.1).
+- **C2-G2 — induction descent not established.** In the \(e=1\), equal-product-degree case, \(M^\star<N\) is asserted from a lower bound and \(H>0\). The recursive invocation therefore lacks a displayed strictly decreasing measure.
+
+There is also a local display issue: \(L=e\mu\gamma\) is the composite block length, not necessarily the whole side length when other residual blocks share the side. The claimed heights \(rH/L\) are then incorrect. The desired entry bound is recoverable by introducing the actual side length \(S\ge L\) and using
+\[
+\frac{S+1}{2}H\ge\frac{L+1}{2}H,
+\]
+but that repair is not presently written.
+
+OUTCOMES: NEW-ISSUE, DISCHARGED, DISCHARGED, DISCHARGED  
+STACK-VERDICT: CHALLENGE
