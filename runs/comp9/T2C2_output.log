@@ -1,0 +1,1317 @@
+# T2 v2 — THE σ-LADDER MASTER: one original-\(O\) theorem and five span-pinned mathematical instances
+
+**Unit:** T2 / σ-ladder master re-composition.  
+**Date:** 2026-08-12.  
+**Status:** mathematical composition draft, attempt grade \(0/2\).
+
+This note states and proves one mathematical master theorem, HE7.A, over the original complete DVR \(O\). It records five source instances:
+
+\[
+\mathrm{HE3.A},\qquad
+\mathrm{HE6},\qquad
+\mathrm{HE7+HE6R1},\qquad
+\mathrm{HETOW},\qquad
+\mathrm{GENTOW4}.
+\]
+
+It contains no Lean signature, record declaration, or interface sketch. Formal encodings belong to the S-5 probe output and to stage 2 of the arc.
+
+## S0. VERDICT, REDLINE, AND SOURCE PINS
+
+### S0.1 Structural redline
+
+**S-6 GO for mathematical composition.** The master carrier is defined over the original complete DVR \(O\). A stage order, integral closure, or quotient may appear as auxiliary instance data, but it never replaces \(O\) as coefficient ring or ground DVR.
+
+The current key \(\Phi\in O[x]\) is required to be monic, with
+
+\[
+D=\deg\Phi>0.
+\]
+
+There is deliberately no hypothesis that \(\Phi\) is irreducible:
+
+\[
+\boxed{\Phi\text{ is monic; irreducibility is not assumed.}}
+\tag{NO-IRR}
+\]
+
+This is essential for the level-two instance, whose key is the HE6 test polynomial
+
+\[
+\Psi_{\lambda,r}\in O[x].
+\]
+
+That polynomial is monic but is not assumed irreducible. Neither a complete-DVR structure on \(O[x]/(\Phi)\) nor irreducibility of \(\Phi\) may enter the master proof.
+
+### S0.2 Marker-delimited span convention
+
+Every cited source unit is bounded by a pair of marker-only lines
+
+\[
+\texttt{<!-- T2V2PIN:NAME:BEGIN -->},
+\qquad
+\texttt{<!-- T2V2PIN:NAME:END -->}.
+\]
+
+The corresponding pin is the half-open span beginning at the first marker and ending immediately before the second.
+
+A pin is valid only if both markers occur exactly once in the named file and the begin marker precedes the end marker. Missing, repeated, or reversed markers cause the corresponding source route to fail closed. Marker insertion changes no mathematical source text.
+
+The complete pin inventory is:
+
+\[
+\begin{array}{c|l}
+\text{source}&\text{paired pin names}\\ \hline
+\text{HE3}&
+\begin{array}{l}
+\texttt{HE3-A-STMT},\ \texttt{HE3-A-PROOF},\ \texttt{HE3-DEF1},\\
+\texttt{HE3-HE3-1L},\ \texttt{HE3-HE3-6},\\
+\texttt{HE3-R8-2},\ \texttt{HE3-R8-3},\
+\texttt{HE3-R8-4},\ \texttt{HE3-R8-5}
+\end{array}\\[2mm]
+\text{HE6}&
+\texttt{HE6-FAMILY},\ \texttt{HE6-PROOF},\ \texttt{HE6-SLOT-SEAM}\\[1mm]
+\text{HE7}&
+\begin{array}{l}
+\texttt{HE7-A-STMT},\ \texttt{HE7-SLOT-TRANSFER},\\
+\texttt{HE7-MIXED-13P},\
+\texttt{HE7-COCYCLE-2P-THROUGH-R1D}
+\end{array}\\[2mm]
+\text{HE6R1}&
+\texttt{HE6R1-1},\ \texttt{HE6R1-2},\ \texttt{HE6R1-3}\\[1mm]
+\text{HETOW}&
+\texttt{HETOW-LABELS},\ \texttt{HETOW-A},\
+\texttt{HETOW-NORMALIZER-4}\\[1mm]
+\text{GENTOW4}&
+\begin{array}{l}
+\texttt{GENTOW-4-1},\ \texttt{GENTOW-4-A},\\
+\texttt{GENTOW-4-2},\ \texttt{GENTOW-ACCEPTANCE-FOLD}
+\end{array}
+\end{array}
+\tag{PINS}
+\]
+
+These pins lie in:
+
+\[
+\begin{aligned}
+&\texttt{lean/notes/openmath/HE3\_PROOF\_2026-08-08.md},\\
+&\texttt{lean/notes/openmath/HE6\_PROOF\_2026-08-08.md},\\
+&\texttt{lean/notes/openmath/HE7\_PROOF\_2026-08-08.md},\\
+&\texttt{lean/notes/openmath/HE6R1\_RECON\_2026-08-08.md},\\
+&\texttt{lean/notes/openmath/HETOW\_RECON\_2026-08-09.md},\\
+&\texttt{lean/notes/openmath/GENTOW4\_PROOF\_2026-08-09.md}.
+\end{aligned}
+\]
+
+No unpinned source material is used to manufacture a theorem hypothesis.
+
+## S1. THE ORIGINAL-\(O\) σ-LADDER
+
+### S1.1 Ground data and inherited invariants
+
+Fix a complete DVR \(O\) with fraction field \(K_0\), uniformizer \(\pi\), finite residue field
+
+\[
+k_0=\mathbf F_Q,
+\]
+
+and normalized valuation \(v(\pi)=1\). Fix an algebraic closure \(\overline K_0\), the unique extension of \(v\) to \(\overline K_0\), an algebraic closure \(\overline k\) of \(k_0\), and the associated reduction maps on value-zero elements.
+
+Every carrier occurring in the recursion uses this same \(O\), \(K_0\), valuation, and residue field. Child construction may enlarge a residue-label field, but it does not change the ground DVR.
+
+A σ-ladder carrier has a finite extension
+
+\[
+k_0\hookrightarrow K,\qquad [K:k_0]<\infty,
+\tag{FINITE-RES}
+\]
+
+and a monic key
+
+\[
+\Phi\in O[x],\qquad D=\deg\Phi>0.
+\]
+
+It also carries positive inherited ramification and residue invariants
+
+\[
+e_{\mathcal C}>0,\qquad f_{\mathcal C}>0,
+\]
+
+satisfying the compatibility relation
+
+\[
+\boxed{D=e_{\mathcal C}f_{\mathcal C}.}
+\tag{DEG-EF}
+\]
+
+This equality is an explicit mathematical hypothesis. It is not inferred from monicity.
+
+The carrier has an integer-normalized value \(d\), an inherited threshold \(T\in\mathbf Z\), and a class of points
+
+\[
+\operatorname{Pt}\subseteq\overline K_0.
+\]
+
+Every \(\xi\in\operatorname{Pt}\) has a \(k_0\)-embedding
+
+\[
+\iota_\xi:K\hookrightarrow\overline k,
+\qquad
+\iota_\xi|_{k_0}=\operatorname{id}_{k_0}.
+\tag{RES-COMP}
+\]
+
+Valuations and polynomial evaluations take place in \(\overline K_0\); residual digits and embeddings take place in \(\overline k\). These two ambient fields are never identified.
+
+### S1.2 Exact slots
+
+For every nonzero \(A\in O[x]\) with \(\deg A<D\), the carrier assigns
+
+\[
+h(A)\in\mathbf Z,
+\qquad
+\operatorname{dig}(A)\in K^\times,
+\]
+
+such that, for every \(\xi\in\operatorname{Pt}\),
+
+\[
+d(A(\xi))=h(A)
+\tag{SLOT-V}
+\]
+
+and
+
+\[
+\operatorname{res}\!\left(
+\frac{A(\xi)}{n(h(A))(\xi)}
+\right)
+=
+\iota_\xi(\operatorname{dig}(A)).
+\tag{SLOT-R}
+\]
+
+Here \(n(h(A))(\xi)\) has the same value as \(A(\xi)\), so the quotient is a value-zero element and its residue is defined.
+
+When total notation is useful, set
+
+\[
+h(0)=+\infty,\qquad \operatorname{dig}(0)=0.
+\]
+
+Outside \(\operatorname{Pt}\), only the lower bounds supplied by the preceding-key development are asserted. No exact slot formula is claimed at arbitrary points of \(\overline K_0\).
+
+At level one, for
+
+\[
+A=\sum_{j<D'}a_jx^j,\qquad k=dv(A),
+\]
+
+let \(0\le i<e_1\) be the unique residue class satisfying
+
+\[
+ih\equiv k\pmod{e_1}.
+\]
+
+The coherent digit is
+
+\[
+\boxed{
+\gamma_k(A)=
+\sum_{\substack{t\ge0\\i+e_1t<D'}}
+\operatorname{res}\!\left(
+a_{i+e_1t}
+\pi^{-(k-(i+e_1t)h)/e_1}
+\right)\eta^t.}
+\tag{GAMMA}
+\]
+
+Terms strictly above height \(k\) contribute zero. Thus the HE6 carrier has
+
+\[
+\operatorname{dig}(A)=\gamma_k(A).
+\]
+
+When the HE6 print frame divides by \(\varpi^k\) rather than by the coherent normalizer \(n(k)\), the correct conversion is
+
+\[
+\boxed{
+\operatorname{res}\!\left(
+\frac{A(\xi)}{\varpi(\xi)^k}
+\right)
+=
+\iota_\xi(\gamma_k(A))\,\eta_\xi^{-q(k)}.}
+\tag{HE6-SEAM}
+\]
+
+The coefficient normalizers inside \(\gamma_k(A)\) and the negative sign on \(q(k)\) are mandatory.
+
+### S1.3 Normalizers and the actual cocycle
+
+The carrier has exact-height normalizers
+
+\[
+n:\mathbf Z\longrightarrow K_0(x)^\times,
+\qquad
+n(0)=1,
+\]
+
+such that
+
+\[
+d(n(k)(\xi))=k
+\]
+
+for every \(k\) used by the construction and every \(\xi\in\operatorname{Pt}\).
+
+Normalizers may be Laurent polynomials or rational functions. Integrality is required of the constructed lifts and test polynomials, not of the auxiliary functions used to read residues.
+
+The cocycle is not independent data. It is defined from the normalizers by
+
+\[
+\boxed{
+\tau_\xi(a,b)
+=
+\operatorname{res}\!\left(
+\frac{n(a)(\xi)n(b)(\xi)}
+     {n(a+b)(\xi)}
+\right).}
+\tag{COC-DEF}
+\]
+
+The carrier hypotheses say that this residue is the image under \(\iota_\xi\) of an element
+
+\[
+\tau(a,b)\in K^\times
+\]
+
+independent of \(\xi\). Hence
+
+\[
+\tau(0,a)=\tau(a,0)=1
+\]
+
+and
+
+\[
+\tau(a,b)\tau(a+b,c)
+=
+\tau(b,c)\tau(a,b+c).
+\tag{COC}
+\]
+
+Every residual product in the coherent frame includes these cocycle factors.
+
+For a next-step numerator \(u\), put
+
+\[
+\vartheta_s=
+\operatorname{res}\!\left(\frac{n(u)^s}{n(su)}\right),
+\qquad
+\Theta_s=\vartheta_s^{-1}.
+\]
+
+At HE7 level two,
+
+\[
+n_2(k)=\varpi^{m(k)}{\Phi'}^{s(k)},
+\qquad
+\ell m(k)+s(k)u=k,
+\qquad
+0\le s(k)<\ell,
+\]
+
+and
+
+\[
+\frac{n_2(k)n_2(k')}{n_2(k+k')}
+=
+\left(\frac{{\Phi'}^\ell}{\varpi^u}\right)^c,
+\qquad
+c=\frac{s(k)+s(k')-s(k+k')}{\ell}.
+\]
+
+Its residue is therefore the genuine twist
+
+\[
+\boxed{\tau(k,k')=\beta^c.}
+\tag{BETA}
+\]
+
+It is not replaced by \(1\). At deeper levels the same construction gives a monomial in all preceding residual letters.
+
+### S1.4 Full heights and legal lifts
+
+The carrier specifies which integer heights are full. At a full height \(k\), every digit \(c\in K\) has an integral lift
+
+\[
+L_k(c)\in O[x],\qquad \deg L_k(c)<D,
+\]
+
+such that
+
+\[
+L_k(0)=0
+\]
+
+and, for \(c\ne0\),
+
+\[
+h(L_k(c))=k,
+\qquad
+\operatorname{dig}(L_k(c))=c.
+\tag{LIFT}
+\]
+
+For each theorem block \(B\), let
+
+\[
+H_{\mathrm{occ}}(B),\qquad H_{\mathrm{lift}}(B)
+\]
+
+be finite sets containing, respectively, all coefficient heights read by the proof and all heights at which a new digit is constructed. The visible domain obligation is
+
+\[
+\boxed{
+H_{\mathrm{lift}}(B)
+\subseteq
+\{k:k\text{ is full}\}.}
+\tag{OCC}
+\]
+
+There is no all-height lift hypothesis.
+
+For HE6,
+
+\[
+k\text{ is full}
+\Longleftrightarrow
+k\ge(i(k)+e_1(f_1-1))h,
+\]
+
+and \(k\ge(D'-1)h\) is uniformly sufficient.
+
+For HE7 level two, a sufficient condition is
+
+\[
+m(k)\ge(d_r-1)u+(D'-1)h,
+\tag{FULL2}
+\]
+
+with uniform sufficient bound
+
+\[
+k\ge(\ell d_r-1)u+\ell(D'-1)h.
+\tag{FULL2-U}
+\]
+
+### S1.5 Key-free blocks, hulls, and residuals
+
+A σ-block consists of a monic separable polynomial \(F\in O[x]\), an integer \(\mu\ge1\), and a \(\Phi\)-development
+
+\[
+F=\Phi^\mu+\sum_{j<\mu}A_j\Phi^j,
+\qquad
+\deg A_j<D,
+\qquad
+\deg F=\mu D.
+\tag{DEV}
+\]
+
+Its roots form a designated Galois-stable class contained in \(\operatorname{Pt}\).
+
+Because \(\Phi\) may be reducible, the correct boundary condition is not merely \(\Phi\nmid F\). A block entering HE7.A must satisfy
+
+\[
+\boxed{
+\gcd_{K_0[x]}(F,\Phi)=1.}
+\tag{KEY-FREE}
+\]
+
+In particular, \(A_0\ne0\), so the lower hull of the points
+
+\[
+(j,h(A_j)),\qquad 0\le j\le\mu,
+\]
+
+runs from abscissa \(0\) to abscissa \(\mu\). Denote this lower hull by \(P\). Its side lengths therefore satisfy
+
+\[
+\sum_{\lambda\in\operatorname{Sides}(P)}L_\lambda=\mu.
+\tag{HULL-LENGTH}
+\]
+
+Every root \(\rho\) of \(F\) satisfies the finite window condition
+
+\[
+T<d(\Phi(\rho))<\infty.
+\tag{WINDOW}
+\]
+
+Any proxy, truncated, or tower-print development used by an instance must agree with the full development on every lower-hull side under consideration. In addition, omitted terms, collected terms, and key carries must lie strictly above those sides. These are the mathematical `WindowSafe` and `CapSafe` assertions; they are not inferred merely from the phrase “arising from a label.”
+
+Let \(\lambda=u'/e'\) be a side slope in lowest terms. After removal of any raw-origin factor, its coherent normalized residual polynomial satisfies
+
+\[
+R_\lambda(Y)
+=
+\prod_{r'}r'(Y)^{m_{\lambda,r'}},
+\tag{RES-FACT}
+\]
+
+where the product is over distinct monic irreducible polynomials in \(K[Y]\). Its degree and the side length are related by
+
+\[
+\boxed{
+\deg R_\lambda=\frac{L_\lambda}{e'},
+\qquad
+e'\sum_{r'}m_{\lambda,r'}\deg r'=L_\lambda.}
+\tag{RES-DEG}
+\]
+
+This displayed identity is part of the Newton-side calculation. It is the degree bridge used in the orbit count.
+
+### S1.6 Frame and origin changes
+
+The master uses the coherent normalizer frame: every pin is divided by the normalizer of its total height, and every cocycle bracket is included in residual assembly.
+
+If a source uses a multiplicative or print normalizer, the comparison has the form
+
+\[
+\Gamma_s=c_s^{\mathrm{mult}}\vartheta_s,
+\qquad
+R_{\mathrm{can}}(Y)=w^mR_{\mathrm{mult}}(Y/w)
+\tag{FRAME}
+\]
+
+for a fixed \(w\in K^\times\).
+
+If the source’s first attained grid point is
+
+\[
+s_{\mathrm{act}}=s_{\min}+\nu e,
+\]
+
+then
+
+\[
+\boxed{
+R_{\mathrm{raw}}(Y)=Y^\nu aR_{\mathrm{norm}}(bY)}
+\tag{ORIGIN}
+\]
+
+for fixed \(a,b\in K^\times\). The factor \(Y^\nu\) is recorded and removed before the normalized residual is factored.
+
+Frame changes preserve factor degrees, multiplicities, separability, and transported root classes. Literal coefficient strings are not asserted to be invariant.
+
+### S1.7 Test polynomials and quantitative side accounting
+
+For every side \(\lambda=u'/e'\) and every monic irreducible factor \(r'\) of \(R_\lambda\), the carrier supplies a monic polynomial
+
+\[
+\Psi_{\lambda,r'}\in O[x],
+\qquad
+\deg\Psi_{\lambda,r'}=De'\deg r'.
+\tag{TEST}
+\]
+
+The test polynomial is not assumed irreducible.
+
+Its proved properties are:
+
+1. its roots lie in the intended disk and carry the label defined by \(r'\);
+
+2. for roots of \(F\), its generic evaluation value is attained away from that label class and rises strictly on that class;
+
+3. resultant symmetry makes the target class nonempty;
+
+4. the classes associated with the distinct \(r'\) are disjoint and exhaust the roots belonging to the side;
+
+5. the label construction is Galois equivariant;
+
+6. every point in the \(r'\)-class has local invariants divisible by
+
+   \[
+   e_{\mathcal C}e',
+   \qquad
+   f_{\mathcal C}\deg r';
+   \]
+
+7. all tests and coefficient lifts remain in \(O[x]\).
+
+Passing from \(K\) to \(K[Y]/(r')\) enlarges only the finite residue-label field. It does not base-change \(O\).
+
+The test argument also supplies the quantitative Newton accounting identity. If
+
+\[
+w_\rho=d(\Phi(\rho))
+\]
+
+for the roots \(\rho\) of \(F\), counted with multiplicity, then, for every rational \(\kappa>T\) outside the finite set of critical values,
+
+\[
+\boxed{
+\sum_{\rho:F(\rho)=0}\min(w_\rho,\kappa)
+=
+D\sum_{\lambda\in\operatorname{Sides}(P)}
+L_\lambda\min(\lambda,\kappa).}
+\tag{ACCOUNT}
+\]
+
+This is the only side-accounting identity used by the master proof. An instance may prove it using generic tests, the \(\xi\)- and \(\rho\)-side evaluations, and resultant symmetry, but those arguments remain inside that instance’s pinned proof.
+
+### S1.8 Repeated factors and root-preserving continuation
+
+Suppose \(r'\) occurs in \(R_\lambda\) with multiplicity at least two.
+
+If
+
+\[
+e'\deg r'=1,
+\]
+
+then \(e'=1\) and \(r'=Y-s\) for some \(s\in K\). The required refinement height lies in \(H_{\mathrm{lift}}\), so `(OCC)` supplies a legal lift. The new key is
+
+\[
+\Phi_{\mathrm{new}}=\Phi-L_k(s).
+\]
+
+This recentering keeps the same original ground \(O\), the same root block, and the same inherited \((e_{\mathcal C},f_{\mathcal C})\). The above-line perturbation, window, and cap calculations provide a new valid development.
+
+If
+
+\[
+e'\deg r'\ge2,
+\]
+
+the test polynomial becomes the monic key of a child carrier over the same \(O\). Its inherited invariants are
+
+\[
+e_{\mathrm{child}}=e_{\mathcal C}e',
+\qquad
+f_{\mathrm{child}}=f_{\mathcal C}\deg r',
+\]
+
+and hence, by `(DEG-EF)`,
+
+\[
+\deg\Psi_{\lambda,r'}
+=
+e_{\mathrm{child}}f_{\mathrm{child}}
+=
+De'\deg r'.
+\]
+
+The \(r'\)-label class is partitioned into finitely many Galois-stable child blocks. Their monic polynomials multiply to the polynomial of that class, their root sets are pairwise disjoint and exhaustive, and every nonterminal child satisfies
+
+\[
+\mu_{\mathrm{child}}
+\le
+\frac{\mu}{e'\deg r'}
+\le\frac{\mu}{2}.
+\tag{MASS}
+\]
+
+At a mixed residual, this operation is performed separately on each label block. Refining one repeated class does not sequentially recenter the whole polynomial or absorb companion classes.
+
+Finally, every transition preserves the represented root set or partitions it into explicitly disjoint child root sets; transports the polynomial product identity; and composes the inherited ramification and residue invariants by the displayed multiplication laws.
+
+The states carry a well-founded rank. A child jump strictly decreases mass, a split or boundary decomposition strictly decreases degree, and a linear recentering decreases a finite secondary discriminant/slope rank. Every nonterminal repeated class has one of the transitions just described. Consequently there is no infinite branch.
+
+These root-partition and invariant-transport assertions are essential: well-foundedness alone would prove termination but not exhaustion.
+
+### S1.9 Key-boundary preprocessing
+
+A polynomial not satisfying `(KEY-FREE)` does not enter HE7.A.
+
+For a monic separable input \(F\), write
+
+\[
+G=\operatorname{monicGCD}_{K_0[x]}(F,\Phi).
+\]
+
+A key-boundary decomposition consists of monic polynomials \(P_i\in O[x]\) and key-free residual blocks \(B_j\) such that:
+
+\[
+F=\prod_iP_i\prod_jB_j;
+\tag{BOUNDARY-PROD}
+\]
+
+the \(P_i\) are the distinct irreducible factors of \(G\) occurring in \(F\); their root sets and the residual-block root sets are pairwise disjoint and exhaustive; each \(P_i\) has its proved orbit and local-\((e,f)\) description; and every nonterminal \(B_j\) has strictly smaller degree than \(F\).
+
+Separability makes each \(P_i\) simple. Nothing asserts that \(G=\Phi\), that \(\Phi\) is irreducible, that one factor \(\Phi\) is peeled, or that a peel lowers \(\mu\) by exactly one.
+
+## S2. THE MASTER THEOREM
+
+> **THEOREM HE7.A (σ-LADDER MASTER).**  
+> Let \(\mathcal C\) be a σ-ladder carrier over the fixed original complete DVR \(O\), satisfying `(NO-IRR)`, `(DEG-EF)`, `(FINITE-RES)`, `(RES-COMP)`, the exact slot and lift formulas, the normalizer-defined cocycle law, and the base-change-free test assertions of S1.
+>
+> Let \(F\) be a key-free σ-block with development
+>
+> \[
+> F=\Phi^\mu+\sum_{j<\mu}A_j\Phi^j,
+> \]
+>
+> and suppose its window, cap, frame, origin, residual-degree, accounting, and root-preserving continuation assertions hold.
+>
+> Then:
+>
+> 1. every side \(\lambda\) of the complete lower hull \(P\) satisfies
+>
+>    \[
+>    \lambda>T,
+>    \qquad
+>    \sum_{\lambda\in\operatorname{Sides}(P)}L_\lambda=\mu;
+>    \]
+>
+> 2. if \(\lambda=u'/e'\) is in lowest terms and \(R_\lambda\) is separable, then every monic irreducible factor \(r'\mid R_\lambda\) determines a Galois-stable root class
+>
+>    \[
+>    S_{\lambda,r'}
+>    \]
+>
+>    with
+>
+>    \[
+>    |S_{\lambda,r'}|
+>    =De'\deg r'.
+>    \]
+>
+>    This class is one Galois orbit and therefore is the root set of one monic irreducible factor of \(F\). Its invariants are
+>
+>    \[
+>    e=e_{\mathcal C}e',
+>    \qquad
+>    f=f_{\mathcal C}\deg r';
+>    \]
+>
+> 3. if \(r'\) is repeated, the continuation is decided by the product \(e'\deg r'\). Product \(1\) gives the certified linear recentering; product at least \(2\) gives the certified child carrier and the mass bound `(MASS)`;
+>
+> 4. mixed residuals are first split into their Galois-stable label blocks, and clauses 2–3 are applied independently to those blocks;
+>
+> 5. the recursive read terminates. Its terminal monic irreducible factors have pairwise disjoint root sets, their product is \(F\), and their ramification and residue degrees are obtained by multiplying the successive displayed \(e\)- and \(f\)-increments.
+
+**Proof.**
+
+Because \(F\) is key-free, \(A_0\ne0\), and the lower hull spans the full interval from \(0\) to \(\mu\). Thus `(HULL-LENGTH)` gives
+
+\[
+\sum_{\lambda\in\operatorname{Sides}(P)}L_\lambda=\mu.
+\]
+
+All \(\mu D\) roots of \(F\) lie in the window, so every number
+
+\[
+w_\rho=d(\Phi(\rho))
+\]
+
+is finite and strictly greater than \(T\).
+
+Apply `(ACCOUNT)` for \(\kappa>T\). On a sufficiently small interval immediately above \(T\), the left side has slope \(\mu D\), since every \(w_\rho\) exceeds \(\kappa\). The right side has slope
+
+\[
+D\sum_{\lambda>\kappa}L_\lambda.
+\]
+
+It follows that the sides of slope greater than \(T\) already have total length \(\mu\). Since all side lengths are positive and their total length is \(\mu\), there can be no side of slope at most \(T\). This proves clause 1.
+
+Group the roots according to the value \(w_\rho\), and let \(n_\lambda\) denote the number for which \(w_\rho=\lambda\). The two sides of `(ACCOUNT)` are finite sums of the functions \(\min(a,\kappa)\). Their slope jumps at \(\kappa=\lambda\) are respectively \(n_\lambda\) and \(DL_\lambda\). Equality on the complement of the finite critical set, followed by continuity, therefore gives
+
+\[
+n_\lambda=DL_\lambda
+\tag{SIDE-COUNT}
+\]
+
+for every side \(\lambda\).
+
+Now suppose \(R_\lambda\) is separable. Then
+
+\[
+R_\lambda=\prod_{r'\mid R_\lambda}r'
+\]
+
+with distinct irreducible factors, and `(RES-DEG)` gives
+
+\[
+e'\sum_{r'\mid R_\lambda}\deg r'=L_\lambda.
+\tag{DEG-SUM}
+\]
+
+The test assertions give nonempty, disjoint, exhaustive, Galois-stable classes \(S_{\lambda,r'}\). Local forcing and `(DEG-EF)` show that every orbit in such a class has size at least
+
+\[
+(e_{\mathcal C}e')
+(f_{\mathcal C}\deg r')
+=
+De'\deg r'.
+\]
+
+Hence
+
+\[
+|S_{\lambda,r'}|\ge De'\deg r'.
+\]
+
+Summing these inequalities and using `(DEG-SUM)` gives
+
+\[
+\sum_{r'}|S_{\lambda,r'}|
+\ge
+De'\sum_{r'}\deg r'
+=
+DL_\lambda.
+\]
+
+The classes exhaust the side, whose cardinality is exactly \(DL_\lambda\) by `(SIDE-COUNT)`. Equality must therefore hold term by term:
+
+\[
+|S_{\lambda,r'}|=De'\deg r'.
+\]
+
+A nonempty Galois-stable class with no room for two locally forced orbits is one orbit. Its orbit polynomial is monic, irreducible over \(K_0\), divides \(F\), and has the asserted \(e\)- and \(f\)-values. This proves clause 2.
+
+For a repeated \(r'\), if \(e'\deg r'=1\), then \(e'=1\) and \(r'=Y-s\). The required height is in \(H_{\mathrm{lift}}\); `(OCC)` supplies \(L_k(s)\); and the linear recentering of S1.8 gives the next block while preserving its root set and inherited invariants.
+
+If \(e'\deg r'\ge2\), the child construction partitions the \(r'\)-class into child blocks over the same original DVR and satisfies `(MASS)`. The child invariants are precisely
+
+\[
+e_{\mathcal C}e',
+\qquad
+f_{\mathcal C}\deg r'.
+\]
+
+At a mixed residual, disjointness of the label classes permits these operations to be performed independently. The root-partition identities show that no class is lost or counted twice.
+
+Finally apply well-founded induction to the rank of a state. A terminal separable class yields the irreducible factor proved in clause 2. A nonterminal linear refinement preserves the represented roots and has smaller secondary rank. A child jump or split replaces the state by finitely many smaller states whose root sets are disjoint and exhaustive and whose polynomials multiply to the parent polynomial. The induction hypothesis therefore gives exhaustive irreducible factorizations of all children; multiplying them gives the corresponding factorization of the parent. The invariant-transport formulas compose along each branch.
+
+Thus every branch terminates, the terminal factors exhaust \(F\), and the successive \(e\)- and \(f\)-multipliers give their final local invariants. No step assumes that \(\Phi\) is irreducible, that \(O[x]/(\Phi)\) is a DVR, or that the coefficient DVR has changed. ∎
+
+### S2.1 Boundary theorem
+
+> **THEOREM T2.KEY-BOUNDARY.**  
+> Let \(F\) be a monic separable input with a key-boundary decomposition `(BOUNDARY-PROD)`. Adjoin the certified irreducible boundary factors \(P_i\), and apply HE7.A separately to each key-free residual block \(B_j\). The resulting irreducible factors have disjoint root sets and exhaust the roots of \(F\).
+
+**Proof.** The boundary decomposition already gives the polynomial product and the disjoint exhaustive partition into boundary and residual root classes. Each \(P_i\) is terminal by its orbit certificate. HE7.A factors every residual block without changing or losing its root class. Multiplying the resulting identities proves the assertion. ∎
+
+This replaces the invalid reducible-key “\(\Phi\)-peel” dichotomy.
+
+## S3. FIVE SPAN-PINNED MATHEMATICAL INSTANCE RECORDS
+
+The following are mathematical substitutions into HE7.A. Local source strength may be forgotten, but no instance may add a premise absent from the master or silently omit one of its hypotheses.
+
+### S3.1 HE3.A — base-stage resolvent read
+
+**Source pins:** `HE3-A-STMT`, `HE3-A-PROOF`, `HE3-DEF1`, `HE3-HE3-1L`, `HE3-HE3-6`, and `HE3-R8-2` through `HE3-R8-5`.
+
+The instance substitution is
+
+\[
+\boxed{
+\begin{aligned}
+K&=\mathbf F_{Q^{f_1}},\\
+\Phi&=\Phi',\\
+D&=D'=e_1f_1,\\
+(e_{\mathcal C},f_{\mathcal C})&=(e_1,f_1),\\
+d&=dv=e_1v,\\
+T&=D'h,\\
+\operatorname{dig}(A)&=\gamma_{dv(A)}(A).
+\end{aligned}}
+\tag{HE3-INSTANCE}
+\]
+
+The points are the HE3 `(T1)/(T2)` points, with
+
+\[
+\iota_\xi(\eta_\theta)=\eta_\xi.
+\]
+
+The original coefficient DVR is \(O\). The order \(O[\theta]\) is auxiliary and is not asserted to be a complete DVR.
+
+The source proves more than the master requests by having an irreducible local key. The instance forgets that strength and exports only monicity, degree, and `(DEG-EF)`.
+
+The HE3-1L span supplies the required full-height domain. Every height used by the test family lies above \(D'h>(D'-1)h\), so `(OCC)` holds. The full development supplies the hull, window, and cap assertions. HE3-6 supplies label equivariance.
+
+A key-free HE3 block enters HE7.A directly. A raw block meeting a proper factor of \(\Phi'\) may enter only through the separate key-boundary theorem; no assertion that one copy of \(\Phi'\) can be peeled is used.
+
+The resulting dictionary is
+
+\[
+(e,f)=(e_1e_s,f_1f_s).
+\]
+
+### S3.2 HE6 — enlarged fractional-height tests
+
+**Source pins:** `HE6-FAMILY`, `HE6-PROOF`, and `HE6-SLOT-SEAM`.
+
+The ground data, label field, key, and inherited invariants are those of HE3:
+
+\[
+\boxed{
+\begin{aligned}
+K&=\mathbf F_{Q^{f_1}},\\
+\Phi&=\Phi',\\
+D&=D'=e_1f_1,\\
+(e_{\mathcal C},f_{\mathcal C})&=(e_1,f_1),\\
+d&=dv,\\
+T&=D'h.
+\end{aligned}}
+\tag{HE6-INSTANCE}
+\]
+
+Its coherent slot digit is exactly `(GAMMA)`. The print-frame read is exactly
+
+\[
+\operatorname{res}(A/\varpi^k)
+=
+\iota(\gamma_k(A))\eta^{-q(k)}.
+\]
+
+The bare sum of coefficient residues is not an admissible substitute.
+
+The test family is
+
+\[
+\Psi_{\kappa,r}
+=
+{\Phi'}^{\ell d}
++\sum_{t<d}B_t{\Phi'}^{\ell t}
+\in O[x],
+\]
+
+with
+
+\[
+\deg\Psi_{\kappa,r}=D'\ell d.
+\]
+
+It is monic and is not assumed irreducible. HE6’s ξ-side, evaluation formulas, slope count, resultant argument, and equivariance supply the test assertions and `(ACCOUNT)`.
+
+The corrected HE6 full-height condition makes all coefficient lifts \(B_t\) legal. The instance therefore requires neither a ramified base change nor a stage complete DVR.
+
+For a separable residual factor \(r\),
+
+\[
+|S_{\lambda,r}|=D'\ell\deg r,
+\qquad
+(e,f)=(e_1\ell,f_1\deg r).
+\]
+
+On a block whose residuals are all separable, this is a terminal instance of the full theorem. When repeated factors occur, HE6 supplies the test step and the continuation is the level-two construction recorded in the next instance; an empty continuation is not inferred merely from the fact that HE6 is a one-round theorem.
+
+### S3.3 HE7 + HE6R1 — level two
+
+**Source pins:** `HE7-A-STMT`, `HE7-SLOT-TRANSFER`, `HE7-MIXED-13P`, `HE7-COCYCLE-2P-THROUGH-R1D`, `HE6R1-1`, `HE6R1-2`, and `HE6R1-3`.
+
+Given a level-one label \((\lambda,r)\), write
+
+\[
+\lambda=\frac{u}{\ell}>D'h,
+\qquad
+d_r=\deg r,
+\qquad
+K_2=K[Y]/(r)=K(\beta).
+\]
+
+The instance is
+
+\[
+\boxed{
+\begin{aligned}
+K_{\mathcal C}&=K_2,\\
+\Phi&=\Psi_{\lambda,r},\\
+D&=D''=D'\ell d_r,\\
+(e_{\mathcal C},f_{\mathcal C})
+&=(e_1\ell,f_1d_r),\\
+d&=dv_2=\ell\,dv,\\
+T&=T_2=\ell d_ru.
+\end{aligned}}
+\tag{HE7-INSTANCE}
+\]
+
+Thus
+
+\[
+D''
+=
+(e_1\ell)(f_1d_r)
+=
+e_{\mathcal C}f_{\mathcal C}.
+\]
+
+The key \(\Psi_{\lambda,r}\) is monic. Its irreducibility is not a premise.
+
+The level-two point class and embeddings are the source’s
+
+\[
+\operatorname{Pt}_2,\qquad
+\iota_\xi^{(2)}:K_2\hookrightarrow\overline k.
+\]
+
+The normalizers are
+
+\[
+n_2(k)=\varpi^{m(k)}{\Phi'}^{s(k)},
+\]
+
+the slot is `(SLOT₂)`, and the legal lift domain is `(FULL2)`, with `(FULL2-U)` as a uniform sufficient bound.
+
+The cocycle is the actual residue of the normalizer quotient and equals the nontrivial \(\beta^c\) twist. The HE7 test coefficients contain the corresponding inverse twists.
+
+HE6R1-2 transports the \(>T_2\) hull, lengths, and residual factors to the selected block. HE7’s above-line perturbation argument supplies the window and cap assertions. HE7-13′ supplies the per-label treatment of mixed residuals. The refinement package supplies root-preserving linear steps, child partitions, invariant transport, and the well-founded rank.
+
+The repeated-factor branch is
+
+\[
+\ell_2\deg r_2=1
+\quad\text{versus}\quad
+\ell_2\deg r_2\ge2.
+\]
+
+The conclusion is
+
+\[
+|S_{\lambda_2,r_2}|
+=
+D''\ell_2\deg r_2,
+\]
+
+with
+
+\[
+e=e_1\ell\ell_2,
+\qquad
+f=f_1d_r\deg r_2.
+\]
+
+The only irreducibility assumptions are those on residual labels such as \(r\) and \(r_2\). No irreducibility of the current key is used.
+
+### S3.4 HETOW — full inner tower sides
+
+**Source pins:** `HETOW-LABELS`, `HETOW-A`, and `HETOW-NORMALIZER-4`.
+
+For full tower-side data \((e_2,f_2,u_2,\psi_2)\), the instance is
+
+\[
+\boxed{
+\begin{aligned}
+K_{\mathcal C}&=K_2
+ \cong\mathbf F_{Q^{f_1f_2}},\\
+\Phi&=\Phi_2,\\
+D&=D_2=D'e_2f_2,\\
+(e_{\mathcal C},f_{\mathcal C})
+&=(e_1e_2,f_1f_2),\\
+d&=dv_2=e_1e_2v,\\
+T&=T_2=e_2f_2u_2.
+\end{aligned}}
+\tag{HETOW-INSTANCE}
+\]
+
+Since \(D'=e_1f_1\),
+
+\[
+D_2=(e_1e_2)(f_1f_2).
+\]
+
+The key \(\Phi_2\) is the wrap-corrected composed key. HETOW-2 identifies it with a genuine HE6-family key in the legal lifted form, or with an allowed above-line perturbation.
+
+The transported letter is
+
+\[
+\beta=\eta^{-Q(u_2)}\eta_2,
+\]
+
+and \(\widetilde r\) is its minimal polynomial.
+
+The coherent normalizer is HE7’s \(n_2\). The tower-print normalizer \(\widehat n_2\) is compared through HETOW-4. Per-height residues satisfy
+
+\[
+\tau(k)=\eta^{-Q(m(k))}
+\]
+
+but are not declared equal. After complete bracket assembly,
+
+\[
+R_{\lambda_2}(Z)
+=
+\tau(H_0)\,
+\widehat R_{\lambda_2}(Z/\delta),
+\qquad
+\delta=\tau(u_3)\in K^\times.
+\]
+
+This is the frame bridge. It preserves separability, residual factor degrees, multiplicities, product branches, and refined root classes.
+
+The full-side identity gives \(f_S=f\). Any key-boundary contribution is handled by T2.KEY-BOUNDARY, not by a purported single \(\Phi_2\)-peel.
+
+The corrected-key and carry audit gives the window and cap assertions. Any attained-origin shift is retained through `(ORIGIN)` and removed before factor comparison.
+
+The output is
+
+\[
+e=e_1e_2\ell_2,
+\qquad
+f=f_1f_2\deg r_2.
+\]
+
+No equality of raw tower-print and coherent coefficient arrays is claimed.
+
+### S3.5 GENTOW4 — partial inner sides, per block
+
+**Source pins:** `GENTOW-4-1`, `GENTOW-4-A`, `GENTOW-4-2`, and `GENTOW-ACCEPTANCE-FOLD`.
+
+The ground carrier is the HETOW carrier:
+
+\[
+\boxed{
+\begin{aligned}
+K_{\mathcal C}&=K_2,\\
+\Phi&=\Phi_2,\\
+D&=D_2=D'e_2f_2,\\
+(e_{\mathcal C},f_{\mathcal C})
+&=(e_1e_2,f_1f_2),\\
+d&=dv_2,\\
+T&=T_2.
+\end{aligned}}
+\tag{GENTOW4-INSTANCE}
+\]
+
+The level-one decomposition is a bouquet
+
+\[
+f=\prod_{(\kappa,r)}f_{\kappa,r}.
+\]
+
+For a selected class,
+
+\[
+F=f_S=f_{\kappa,r}.
+\]
+
+No whole-polynomial monicity or length hypothesis is transferred to \(f_S\) without proof.
+
+Writing
+
+\[
+g=f/f_S,
+\]
+
+HE6R1-2 gives a constant
+
+\[
+c_g=dv_2(g(\xi))
+\]
+
+and identifies the \(>T_2\) hull of \(f\) with the hull of \(f_S\) translated vertically by \(c_g\). Hence the correct block mass is
+
+\[
+\mu_2^*
+=
+\sum_{\lambda_2>T_2}L_{\lambda_2}(f),
+\qquad
+\deg f_S=D_2\mu_2^*.
+\]
+
+Residual polynomials agree only up to the fixed nonzero scalar and cocycle unit supplied by pin-height normalization. Parity and residual decisions are made after subtracting \(c_g\).
+
+The projection identity supplies the window assertion. The partial-side cap and collection calculation supplies cap safety: sibling terms cannot create a lower face beneath the selected \(>T_2\) segment. The frame data separately records the \(c_g\)-translation, variable rescaling, and any nonzero raw-origin factor \(Y^\nu\).
+
+Mixed sides are read per label block. The unproved equality between level-one residual multiplicity and projected block length is not assumed; \(\mu_2^*\) is read from the projected hull itself.
+
+The conclusion on each selected block is
+
+\[
+e=e_1e_2\ell_2,
+\qquad
+f=f_1f_2\deg r_2.
+\]
+
+The factorization of \(f\) is the disjoint union of the bouquet-block factorizations together with any separately certified key-boundary factors.
+
+The count-side mixed-multiplicity tie, partial-side budgets, and density laws are not conclusions of this σ-decision instance.
+
+## S4. HONESTY LEDGER
+
+### S4.1 Scope and grade
+
+This note proves a mathematical composition theorem: the displayed original-\(O\) hypotheses suffice for one HE7.A argument, and the five pinned source displays give the intended substitutions.
+
+It does not rerun supplier batteries, certify marker installation, construct a Lean term, or upgrade a documentary grade.
+
+The consumption grade is
+
+\[
+\operatorname{grade}(I)
+=
+\min(
+g_{\mathrm{master}},
+g_{\mathrm{carrier}},
+g_{\mathrm{frame}},
+g_{\mathrm{local}}
+).
+\tag{GRADE}
+\]
+
+This v2 master begins at attempt grade \(0/2\). Consequently every composed instance remains \(0/2\) until this note completes its own hostile arc, regardless of the supplier’s grade.
+
+At the supplied source HEAD:
+
+- HE6 is accepted \(2/2\), including its corrected normalized-slot formula.
+- HE7 is accepted \(2/2\), including the corrected all-level cocycle and mixed-residual rider.
+- HE6R1 is accepted \(2/2\). Its separate count-side unit is not used here.
+- HETOW is accepted \(2/2\); the HETOW-4 normalizer bridge is essential.
+- GENTOW4 is accepted \(2/2\); its boxed count budgets are not imported.
+- HE3 is consumed at the grade stated by its supplied HEAD.
+
+The theorem assumes the explicit quantitative consequences `(ACCOUNT)`, `(RES-DEG)`, nonemptiness, exhaustion, and root-preserving continuation. These are source obligations, not conclusions obtained merely by naming a carrier.
+
+### S4.2 Explicit exclusions
+
+The master does not claim:
+
+- a complete-DVR structure on \(O[x]/(\Phi)\);
+- irreducibility of the current key;
+- that \(\Phi\nmid F\) is sufficient for key-freeness;
+- that a common key boundary is one copy of \(\Phi\);
+- all-height lift surjectivity;
+- a residue map without its valuation domain;
+- equality of raw and coherent residual coefficient arrays;
+- termination without root preservation and root partition;
+- the mixed-multiplicity product formula;
+- partial-side budget or density laws;
+- an elaborated formal instance;
+- acceptance before two clean hostile passes.
+
+## S5. RE-COMPOSITION LEDGER
+
+The P1–P3 defects are closed mathematically as follows.
+
+1. The invalid reducible-key peel is replaced by `(KEY-FREE)` and the separate gcd/orbit boundary theorem.
+
+2. The note makes no claim that a formal first gate has run. Formal declarations and obligation manifests belong to stage 2.
+
+3. Every cited source unit has a named paired begin/end pin.
+
+4. The master consumes only the explicitly displayed test consequences, including `(ACCOUNT)` and `(RES-DEG)`.
+
+5. All five substitutions display \(D\), \(e_{\mathcal C}\), and \(f_{\mathcal C}\), with \(D=e_{\mathcal C}f_{\mathcal C}\).
+
+6. The complete lower hull is used; there is no unspecified subset of “consumed sides.”
+
+7. Key-boundary preprocessing is outside the key-free block theorem.
+
+8. An empty transition is allowed only for a genuinely terminal block with no repeated residual factor.
+
+9. Valued points live in \(\overline K_0\), while residual labels live in \(\overline k\).
+
+10. The finite extension \(K/k_0\) and compatibility of every \(\iota_\xi\) are explicit.
+
+11. The cocycle is defined as the residue of the normalizer quotient, so the HE7 \(\beta^c\) twist cannot be replaced by a trivial cocycle.
+
+12. Recursive transitions preserve or partition root classes, transport polynomial products, and compose invariants; well-foundedness then proves both termination and exhaustion.
+
+## S6. FIVE-HAZARD CLOSURE
+
+| Hazard | Verdict | Mathematical closure |
+|---|---|---|
+| Hypothesis migration | **Closed for composition** | Key-freeness, finite windows, lift domains, accounting, residual degree, frame/origin changes, cap safety, and recursive root preservation are displayed hypotheses. |
+| Instance-strength collapse | **Closed** | The key is monic only; \(D=e_{\mathcal C}f_{\mathcal C}\); lifts exist only at full heights; repeated branches split on \(e'\deg r'\). |
+| Hidden perimeter enlargement | **Closed** | Every instance must prove its full-hull or projected-hull identity and its cap assertion. Mixed residuals are processed per block. |
+| Convention seam | **Closed** | `(GAMMA)`, `(HE6-SEAM)`, `(COC-DEF)`, `(BETA)`, `(FRAME)`, `(ORIGIN)`, the HETOW bridge, and the \(c_g\)-translation govern all comparisons. |
+| Grade laundering | **Closed for composition; open for acceptance** | `(GRADE)` takes the minimum of the master, carrier, frame, and local grades. |
+
+No mathematical hazard blocks composition. Acceptance remains a separate arc.
+
+## S7. ARC PLAN AND FILE-LEVEL GATES
+
+The v2 arc consists of two hostile passes over this post-composition text. A gap-or-worse repair resets the clean count.
+
+### Pass 1
+
+1. **Pure-mathematics theorem gate.** Check every implication in HE7.A, especially `(ACCOUNT)` to `(SIDE-COUNT)`, `(RES-DEG)` to the termwise orbit equality, and root-preserving well-founded induction to exhaustion.
+
+2. **Reducible-key boundary gate.** Test a monic reducible \(\Phi\) for which \(\gcd(F,\Phi)\) is a proper nontrivial factor. HE7.A must refuse the raw input, while T2.KEY-BOUNDARY must handle it without asserting that \(\Phi\) itself is irreducible.
+
+3. **HE6 seam gate.** Verify normalized coefficients in \(\gamma_k(A)\) and the exact factor \(\eta^{-q(k)}\).
+
+4. **HE7 cocycle gate.** Force a carry and verify the live factor \(\beta^c\) in the assembled residual.
+
+5. **HETOW frame gate.** Compare coherent and print residuals only after bracket assembly and after recording any nonzero origin shift.
+
+6. **GENTOW4 perimeter gate.** Check the projected \(>T_2\) hull, \(c_g\)-translation, cap safety, and per-block residual reading without using the boxed mixed-multiplicity tie.
+
+7. **Pin gate.** Check every marker pair in `(PINS)` for existence, uniqueness, ordering, and containment of the cited source unit.
+
+### Pass 2
+
+The second pass attacks a disjoint surface:
+
+- a reducible key with several boundary factors;
+- a sub-threshold lift request, which must be refused;
+- a mixed residual with two repeated label classes;
+- a deep cocycle involving more than one preceding letter;
+- a proxy development with a dangerous collected term;
+- a nonzero raw-origin shift;
+- a transition that is well-founded but fails to preserve roots, which must be rejected;
+- a residual factorization with a missing `(RES-DEG)` bridge, which must be rejected.
+
+### Stage 2 formal gate
+
+Only after the mathematical passes are clean does the S-5 formal probe encode the theorem. That later encoding must preserve:
+
+- the fixed original-\(O\) ground;
+- separate valued and residue closures;
+- finite compatible \(K/k_0\);
+- `(DEG-EF)`;
+- the normalizer-defined cocycle;
+- legal lift domains;
+- complete lower-hull coverage;
+- residual degree accounting;
+- key-boundary preprocessing outside key-free blocks;
+- root-preserving recursive transitions.
+
+Its HE7 construction may require irreducibility of residual labels and emitted boundary factors. It must generate no obligation asserting irreducibility of the current key.
+
+This v2 note does not claim that the formal gate has already passed.
+
+## S8. FINAL COMPOSITION VERDICT
+
+**S-6 GO for the pure-mathematics master.**
+
+HE7.A is now stated and proved over one fixed original complete DVR \(O\). The current key is monic of degree
+
+\[
+D=e_{\mathcal C}f_{\mathcal C},
+\]
+
+but need not be irreducible.
+
+The proof uses:
+
+- exact normalized slots;
+- legal finite lift domains;
+- the actual normalizer cocycle;
+- complete lower-hull accounting;
+- the residual degree identity;
+- base-change-free tests;
+- explicit frame and origin bridges;
+- key-free blocks;
+- root-preserving, invariant-preserving, well-founded continuation.
+
+A reducible key boundary is handled by a separate gcd/orbit decomposition, never by a false one-factor peel.
+
+The five source substitutions are recorded by paired span pins. HE6 enters through
+
+\[
+\gamma_k(A)\eta^{-q(k)};
+\]
+
+HE7 enters with the genuine \(\beta^c\) twist; and HETOW and GENTOW4 enter through explicit frame, origin, window, cap, and block-projection formulas.
+
+No complete-DVR quotient, current-key irreducibility, all-height lift, raw-frame coefficient invariance, or unsupported recursive exhaustion is claimed.
+
+\[
+\boxed{
+\text{Any later HE7 formalization that requires irreducibility of the current key is not a formalization of this theorem.}}
+\]
