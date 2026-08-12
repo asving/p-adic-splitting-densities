@@ -1,0 +1,20 @@
+### G1 — Span-pin verification remains unavailable
+
+> “Recheck every span pin and record the exact hash or ledger identifier.”
+
+> “two consecutive clean hostile passes + all instance span pins verified.”
+
+But r2 itself records:
+
+> “Repository span-pin verification was again unavailable because the workspace executor could not launch without `bwrap`.”
+
+The same launcher failure occurred in this pass. Therefore T1 C3, GENTOW2-B\(^{\prime\prime}\), PE6, PE3, S12.1, the corrigendum, companion lines 1912–1913, and the WI 60/60 census could not be independently checked. The acceptance gate is unmet; this is an evidence gap, not a demonstrated mathematical error.
+
+The supplied r2-effective text otherwise passes internal checks:
+
+- \(i=1\) remains unasserted; \(i=2\) is unconditional; \(i\ge3\) retains \(\mathcal W_{\le i}\).
+- The \(\bar k_i=\bar\kappa_i\) bridge is explicit.
+- Index checks give \(\omega_1,w_2,w_3,w_n\) at \(j=2,3,4,n+1\), respectively.
+- No positive universal \(w=1\), avatar identity, theta-free law, or superseded \(\psi_j^{(\omega_j)}\) occurrence survives.
+
+VERDICT: FINDINGS | FINDINGS: 0C + 1G + 0m
