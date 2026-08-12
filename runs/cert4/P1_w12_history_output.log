@@ -1,0 +1,247 @@
+The lemma is proved. One correction is essential: the internal orbit factor must be side-local,
+\(\kappa_v=\prod_{S,a}r_{v,S,a}!/\prod_Hr_{v,S,a,H}!\), exactly as evaluated by the GREEN certificate. Roots on different polygon sides cannot be permuted.
+
+I could not apply the append because the workspace sandbox fails before every command and patch operation: its `bubblewrap` executable is missing. The following is verbatim-ready for `lean/notes/openmath/W12_PROOF_2026-08-08.md`.
+
+---
+
+### Dated discharge (2026-08-12): ALL-DEGREE ORDER-1 HISTORY-TRANSFER LEMMA
+
+This append discharges the dated obstruction immediately above. It consumes W-12 S2.1 (coprime branch multiplication), W-12 S2.2 (the \(\Phi\)-adic digit calculus and right-to-left residual normalization), W-11 S2.3 (finite-window recentering measure isomorphism), W12-L0, W12-L1, and GENIND-1 (fracture permanence, at its stated **PROVED** grade). From GENIND-1 only fracture permanence is used: after a coprime residual fracture, later translations internal to one repeated cluster neither alter nor re-couple the other clusters. No order-\(\ge2\) leaf theorem or open \(\mu\ge3\) assertion is consumed.
+
+#### Statement
+
+Fix a letter-free, history-resolved, window-visible decided order-1 key \(T\). Its level-0 datum is the unordered combinatorial configuration
+\[
+\{(d_i,m_i)\}_i,\qquad \sum_i d_im_i=n,
+\]
+while the actual distinct irreducibles \(\bar P_i\) are the letters ranged over by \(C_0(q)\). Put \(Q_i=q^{d_i}\).
+
+For each repeated branch \(i\), let \(T_i\) be its complete order-1 refinement tree. A node \(v\in T_i\) has multiplicity \(m_v\), previous center depth \(s_v\) (zero at the root), exact polygon \(P_v\), and residual factorization type \(\lambda_{v,S}\) on every side \(S\). Its children are precisely the repeated linear factors
+\[
+(Y-z)^{m_u}
+\]
+on \(e=1\) sides. If the side has slope \(-s_u\), the child is the degree-\(d_i\) conservative node of multiplicity \(m_u\) and depth \(s_u\). Repeated factors of degree \(>1\), and repeated factors on \(e>1\) sides, open composite stages and are outside this order-1 statement. Every leaf of a decided order-1 key has separable residuals.
+
+Define
+\[
+B_v(N)=m_vN-\sum_{j<m_v}\lceil P_v(j)\rceil-L_v,
+\qquad
+L_v=\#\{j<m_v:P_v(j)\in\mathbb Z\},
+\]
+and, for a non-root node,
+\[
+D_v(N)=\sum_{j<m_v}
+\max\!\bigl(N-((m_v-j)s_v+1),0\bigr).
+\]
+Thus
+\[
+C_{m_v}(s_v)=
+\{(a_j)_{j<m_v}:v(a_j)\ge(m_v-j)s_v+1\}
+\]
+has exactly \(Q_i^{D_v(N)}\) elements.
+
+The internal orbit factor is side-local. For a side \(S\), multiplicity \(a\), and child history \(H\), let \(r_{v,S,a,H}\) count the repeated linear roots on \(S\) of multiplicity \(a\) carrying \(H\), and put \(r_{v,S,a}=\sum_Hr_{v,S,a,H}\). Define
+\[
+\kappa_v=
+\prod_{S,a}\frac{r_{v,S,a}!}{\prod_Hr_{v,S,a,H}!}.
+\tag{HT-orbit}
+\]
+Equivalently, in the abbreviated notation
+\(\prod_a r_{v,a}!/\prod_Hr_{v,a,H}!\), the multiplicity label \(a\) is understood to include its side. The side tag is necessary because roots on different sides cannot be permuted; it is exactly the `side_index` convention used by the N1 certificate.
+
+> **LEMMA W12-HT (ALL-DEGREE ORDER-1 HISTORY TRANSFER).** After fixing the actual normalized residual polynomial on every side of a node \(v\), there is a finite-window bijection
+> \[
+> \mathcal E_v(\mathbf R)
+> \simeq
+> \mathcal U_v(\mathbf R)\times
+> \prod_{u\text{ child of }v}C_{m_u}(s_u),
+> \tag{HT-fiber}
+> \]
+> compatible with further recentering and with coprime branch fracture, where \(\mathcal E_v(\mathbf R)\) is the exact polygon cell with those residual letters and
+> \[
+> \#\mathcal U_v(\mathbf R)
+> =
+> Q_i^{B_v(N)-\sum_{u\text{ child}}D_u(N)}.
+> \tag{HT-free}
+> \]
+> The bijection and its fiber size are independent of the residual letters. Consequently
+> \[
+> \#(v)=
+> Q_i^{B_v(N)}
+> \left(\prod_{S\subset P_v}S_{\lambda_{v,S}}(Q_i)\right)
+> \kappa_v
+> \prod_{u\text{ child}}
+> \frac{\#(u)}{Q_i^{D_u(N)}}.
+> \tag{HT-rec}
+> \]
+> The recursion terminates at separable Ore leaves, and hence
+> \[
+> \boxed{
+> \mathcal H_i(T,N)=
+> \left(
+> \prod_{v\in T_i}\kappa_v
+> \prod_{S\subset P_v}S_{\lambda_{v,S}}(Q_i)
+> \right)
+> Q_i^{
+> \sum_{v\in T_i}B_v(N)-
+> \sum_{\substack{v\in T_i\\v\ne\mathrm{root}}}D_v(N)}.}
+> \tag{HT-branch}
+> \]
+
+At level zero, let \(r_{d,m,H}\) count branches of degree \(d\) and multiplicity \(m\) carrying complete decoration/history \(H\), and set
+\[
+\kappa_0(T)=
+\prod_{d,m}\frac{r_{d,m}!}{\prod_Hr_{d,m,H}!}.
+\]
+Then
+\[
+\boxed{
+\#T(N)=
+\kappa_0(T)C_0(q)
+\prod_{i:m_i=1}q^{d_i(N-1)}
+\prod_{i:m_i\ge2}\mathcal H_i(T,N).}
+\tag{HT-global}
+\]
+
+#### Proof
+
+**1. The exact node cell.** Work on one degree-\(d_i\) branch and write \(Q=Q_i\). Monic division by the current degree-\(d_i\) key polynomial gives
+\[
+F=\Phi^m+\sum_{j<m}a_j\Phi^j,
+\qquad
+a_j\in(\mathcal O/\pi^N)[x]_{<d_i}.
+\]
+Each digit of \(a_j\) is one element of \(\mathbb F_Q\). Prescribing \(P_v\) leaves
+\[
+mN-\sum_{j<m}\lceil P_v(j)\rceil
+\]
+slots. At each of the \(L_v\) integral boundary positions, one digit is priced by the residual polynomial rather than left free. Therefore, after fixing the actual residual polynomials \(\mathbf R=(R_S)_S\),
+\[
+\#\mathcal E_v(\mathbf R)=Q^{B_v(N)}.
+\tag{1}
+\]
+This is S2.2’s digit calculation and does not require separability. Its right-to-left sweep also applies unchanged: one side’s monic normalization fixes the shared vertex unit for the next side. Summing residual letters of the prescribed types therefore contributes exactly
+\[
+\prod_SS_{\lambda_{v,S}}(Q),
+\]
+with no additional unit factor.
+
+**2. Transfer at one repeated linear root.** Let \((Y-z)^a\) be a repeated factor on an \(e=1\) side of slope \(-k\). Isolate its degree-\(a\) cluster by the coprime residual factorization. If \(G\) denotes the monic cluster factor, its slope-normalized reduction is \((Y-z)^a\).
+
+Choose a lift \(\widetilde z\), put
+\[
+\Psi=\Phi-\widetilde z\pi^k,
+\qquad
+G=\Psi^a+\sum_{j<a}b_j\Psi^j.
+\]
+After dividing the coefficient of \(\Psi^j\) by \(\pi^{(a-j)k}\), its residue is the corresponding coefficient of
+\[
+(Y+z-z)^a=Y^a,
+\]
+and hence vanishes. Thus
+\[
+v(b_j)\ge(a-j)k+1\qquad(j<a).
+\tag{2}
+\]
+Therefore \((b_j)\in C_a(k)\). Conversely, (2) makes the normalized residual of the inverse translate equal to \((Y-z)^a\).
+
+Translation is unitriangular on the finite coefficient module, with inverse translation by \(-\widetilde z\pi^k\). When \(d_i>1\), multiplication by a degree-\(<d_i\) representative of \(z\) may create degree-\(\ge d_i\) terms; monic redivision by the new key absorbs them, and the change between the two \(\Phi\)-adic developments remains block-unitriangular on the \(d_i\)-dimensional digit blocks. This is exactly S2.2’s monic-division digit calculus. Hence the map is bijective in every characteristic and at every finite window, including when some conservative lower bounds lie beyond the window.
+
+This is W-11 S2.3’s measure-isomorphism mechanism without the quadratic restriction. It gives
+\[
+\#C_a(k)
+=
+\prod_{j<a}Q^{\max(N-((a-j)k+1),0)}
+=
+Q^{D_u(N)}.
+\tag{3}
+\]
+Changing the chosen lift of \(z\) composes the map with another unitriangular translation and changes neither the node nor its fiber size.
+
+**3. Simultaneous children and the free fiber.** On one side, the distinct residual factors are coprime. Factors belonging to different sides have already fractured in the Newton decomposition. At each weighted digit height, the linearization of multiplication is
+\[
+(A_\alpha)_\alpha\longmapsto
+\sum_\alpha A_\alpha\prod_{\beta\ne\alpha}\bar G_\beta.
+\tag{4}
+\]
+If (4) vanishes, reduction modulo each \(\bar G_\alpha\), coprimality, and the degree bound force every \(A_\alpha=0\). Source and target have the same digit dimension, so (4) is an isomorphism. Solving successively by height gives the finite-window multiplication bijection, exactly as in W12-S2.1, now on the weighted side modules.
+
+At general degree, GENIND-1’s proved fracture permanence says that later translations internal to one cluster do not change or re-couple its coprime siblings. Thus the child coordinates from Step 2 occur independently and simultaneously. All remaining factor and higher-digit coordinates form \(\mathcal U_v(\mathbf R)\), proving (HT-fiber). Comparing (1) and (3) gives
+\[
+\#\mathcal U_v(\mathbf R)
+=
+Q^{B_v(N)-\sum_uD_u(N)}.
+\]
+In particular, the exponent is a nonnegative integer; divisibility by the complete child-node volumes is a consequence of the bijection, not an assumption.
+
+Every matrix used here is either block-unitriangular or a coprime multiplication matrix. The construction is therefore independent of the residual letters. It specializes to W-11 S2.3 for one quadratic cluster and to W12-L1’s unit-scaled-letter calculation for the first fractured case.
+
+**4. Histories and orbit factors.** In (HT-fiber), replace each complete ambient node \(C_{m_u}(s_u)\) by the subset realizing the selected child history. Bijectivity makes its relative factor exactly
+\[
+\frac{\#(u)}{Q^{D_u(N)}}.
+\]
+For a fixed actual residual polynomial, its repeated roots are distinguished by their values. If the letter-free key records only a multiset of histories among the \(r_{v,S,a}\) roots on one side having multiplicity \(a\), the number of assignments to those actual roots is
+\[
+\frac{r_{v,S,a}!}{\prod_Hr_{v,S,a,H}!}.
+\]
+Multiplication over \((S,a)\) gives \(\kappa_v\). Summing the actual residual polynomials supplies the residual censuses of Step 1. These independent choices inserted into (HT-fiber) prove (HT-rec).
+
+The construction respects concatenation: the child tuple output by one transfer is the input tuple for the next, and unitriangular translations compose. It respects fracture: uniqueness in the multiplication bijection identifies the same cluster before and after operations on its siblings, while GENIND-1 prevents re-coupling.
+
+Thus every non-root node occurs once as a child and contributes \(-D_v(N)\) exactly once. Every node contributes \(B_v(N)\), its side censuses, and \(\kappa_v\) exactly once. Iteration proves (HT-branch).
+
+**5. Termination and Ore certification.** At depth \(s_v\), the conservative inequalities put every point \(j<m_v\) strictly above the line of slope \(-s_v\) ending at \((m_v,0)\). If a side has slope \(-k\), writing its endpoint heights as
+\[
+y=(m_v-j)s_v+\delta,\qquad \delta>0,
+\]
+and using lower-polygon convexity shows first that the rightmost \(k>s_v\), and then that every earlier principal-side \(k\) is at least as large. Hence every eligible \(e=1\) child satisfies
+\[
+s_u=k\ge s_v+1.
+\tag{5}
+\]
+For a window-visible node,
+\[
+m_vs_v+1\le P_v(0)\le N-1,
+\]
+so \(s_v\) is bounded in terms of \(N\). Therefore no root-to-leaf chain is infinite. Fracture can only split total cluster multiplicity, and GENIND-1 says clusters never merge again.
+
+The recursion consequently terminates. By the definition of a decided order-1 key, every terminal residual is separable. S2.3’s order-1 Ore theorem then certifies, for every disc-nonzero lift, one étale piece for each terminal side factor with its displayed \((e,f)\). A repeated factor of residual degree \(>1\), or one occurring on an \(e>1\) side, instead opens an order-\(\ge2\) key and remains under [W12-H].
+
+**6. Level zero.** W12-S2.1 makes the actual level-0 branches independent. After an undecorated configuration counted by \(C_0(q)\) is fixed, its irreducible factors are distinguishable. Assigning the recorded multiset of complete decorations to the \(r_{d,m}\) factors in one \((d,m)\)-class contributes
+\[
+\frac{r_{d,m}!}{\prod_Hr_{d,m,H}!}.
+\]
+Permuting decorations does not change the product of branch counts. Multiplication over \((d,m)\) gives \(\kappa_0(T)\); simple branches contribute \(q^{d_i(N-1)}\), and repeated branches contribute (HT-branch). This proves (HT-global). \(\square\)
+
+#### Consumer sweep and restoration of W-12.A
+
+- **The dated obstruction is discharged.** For \(H=(1)\) followed by `SPLITEQ(2)`,
+  \[
+  B_{\mathrm{root}}=D_{\mathrm{child}}=2N-5.
+  \]
+  The root census is \(S_{(1^2)}(q)=q-1\); the leaf census is \((q-1)(q-2)/2\); and the remaining leaf exponent is \(2N-8\). Hence (HT-branch) gives
+  \[
+  (q-1)\frac{(q-1)(q-2)}2q^{2N-8},
+  \]
+  exactly W12-L0’s count.
+
+- **W-12.A regains full order-1 coverage.** Its controlling formula is (HT-global), with complete histories, transfer normalization, and the dated level-0 orbit correction. The former display is the depth-zero specialization: there are no non-root \(D_v\)-terms and no internal history orbit.
+
+- **W12-L0 is recovered.** At multiplicity two, a nonterminal node has one repeated root, so \(\kappa_v=1\), and its free exponent equals the next conservative-node exponent. The exponents telescope, while every repeated residual supplies \(q-1\). This is W12-L0’s \((q-1)^t\) factor and its six leaf laws.
+
+- **W12-L1 is compatible.** Its quadratic block is one child coordinate of (HT-fiber); the coprime linear branch supplies \(q^{N-1}\). Its unit-scaled letters are the two-factor instance of the letter-blind construction above.
+
+- **The cubic consumers agree.** HM3.A’s \(\alpha\)- and \(\beta\)-species are respectively the unfractured and fractured cases of (HT-fiber); the raw-key dictionary is the child-coordinate identification above.
+
+- **Both orbit corrections are complete.** Branches sharing \((d,m)\) are handled by \(\kappa_0(T)\). Repeated roots on one residual side are handled by \(\kappa_v\). The side tag prevents false permutations across polygon sides and matches the certificate’s grouping.
+
+- **Composite-stage and drainage boxes do not move.** The lemma stops where an order-2 key opens. [W12-H], W12-BOX-1’s inputs (H-a)–(H-e), W-12.B, and the tail problems are unchanged.
+
+- **Phase-B transcription.** A history-resolved order-1 menu entry must implement (HT-rec), retaining complete child-history multisets, side tags, \(D_v\), \(\kappa_v\), and \(\kappa_0\).
+
+- **Machine certificate.** The independent certificate reports 1,196 per-key comparisons and zero mismatches for \(n\in\{3,4\}\), \(q\in\{2,3\}\), \(N\le6\). Its teeth fire 302 (`DROP-HISTORY-CENSUS`), 22 (`BASE-q-LETTERS`), 370 (`DROP-KAPPA0`), and 1,136 (`DROP-L`). All 300 translation-rank and 322 coprime-multiplication-rank tests pass. These checks corroborate the local normalizations and side-local orbit convention; the proof above supplies the all-degree warrant.
+
+**Discharge conclusion.** The dated obstruction is closed. The corrected W-12.A law for every window-visible decided order-1 shape is (HT-global), with per-branch term (HT-branch). Thus “the order-1 layer at all degrees” and “every W-11 row is an instance” are again justified by the note’s proved mechanisms.
+
+SUMMARY: LEMMA PROVED

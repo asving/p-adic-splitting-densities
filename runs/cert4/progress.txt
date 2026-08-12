@@ -7,3 +7,5 @@
 [13:27:32] RP1_genind exit 0 (1256 B; )
 [13:27:32] X1_e13 start
 [13:34:51] X1_e13 exit 0 (55551 B; )
+[13:34:51] P1_w12_history start
+[13:41:38] P1_w12_history exit 0 (14747 B; SUMMARY: LEMMA PROVED)
