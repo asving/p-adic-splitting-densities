@@ -2264,3 +2264,50 @@ division of labor. Ledger: GENHN's row stays OPEN — the three
 repairs await sol discharge-confirmation; the two obstructions
 close only by re-displayed statements (requires owner sign-off per
 the statement fence) or new mathematics.)*
+
+---
+
+### Dated statement re-displays (2026-08-12 — the two A2 obstructions closed under the owner's directive)
+
+Asvin (2026-08-12) delegated proof-related statement decisions under
+the end-to-end-proof criterion: the right display for any lemma is
+the one the complete proof of the pinned main theorem consumes,
+stated as simply as possible. Under that authority the two OBSTRUCTED
+findings of the A2 adjudication above are closed by the following
+re-displays, each at exactly the scope its proof establishes and its
+consumers consume. Orchestrator-composed from the A2 obstruction
+records' own option text; consumer safety verified at HEAD before
+folding; subject to sol discharge-confirmation in the cert2 pass.
+
+**Dated statement re-display (2026-08-12, R4 F-2 — GENHN.CLASS's
+finiteness clause).** THEOREM GENHN.CLASS's header gloss "finite per
+n" and clause (ii) FINITE are re-displayed at the scope S2's proof
+establishes: at fixed n, the genres form FINITELY MANY PARAMETERIZED
+GENRE SCHEMAS — the triples (e₁, f₁, μ) with e₁f₁ ≥ 2, e₁f₁μ ≤ n,
+each carrying finitely many (A1)-admissible entry-pattern families —
+with the residue field Q, the slope numerator h (gcd(h, e₁) = 1),
+the window N, and the prehistory depths as the schemas' parameters.
+The genre DATUM G = (Q; e₁, f₁, μ; h, entry) ranges over infinitely
+many parameter values at fixed n (every odd h with N ≥ 2h + 1
+realizes (2; 2,1,2; h, entry) at n = 4 — the R4 witness); the note's
+own instance tables already display exactly this parameterization
+(E3(h), E31(h): "visible iff 3h ≤ N−1"), and every count law
+attached to a genre is an (A1)-family law in those parameters
+(geometric in h), which is the form GENHN.B's assembly and the
+battery grammar consume. Clauses (i) and (iii) are unchanged; no
+consumer reads the withdrawn datum-set finiteness.
+
+**Dated statement re-display (2026-08-12, R4 F-4 — GENHN.A(ii)'s
+slot clause).** GENHN.A(ii)'s display "each A_j carries exactly ONE
+K-digit slot per integer dv-height" is re-displayed at its true
+scope: per OCCUPIED integer dv-height — a height m admitting an
+integral normalizer monomial n(m) = x^{i(m)}π^{a(m)} with
+0 ≤ i(m) < e₁ and a(m) = (m − i(m)h)/e₁ ≥ 0 — below the window cap.
+Every height m > D′h is occupied, with the explicit lift supplied by
+LEMMA GENHN-LIFT (the A2 fold above); every pin the note's laws
+consume sits at dv > D′h (the stage-initial node floor
+{dv(A_j) ≥ (μ−j)D′h + 1} and the refine floors), so no consumer
+moves. At unoccupied low heights no slot exists — witness
+(e₁, f₁, h) = (3, 1, 2), m = 1: i(1) = 2 forces a(1) = −1 (the
+R4/A2 counterexample, recorded in the obstruction record above).
+The e₁-class separation and F_Q-independence clauses are unchanged.
