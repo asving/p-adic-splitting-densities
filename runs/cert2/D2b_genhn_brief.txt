@@ -1,0 +1,2511 @@
+DISCHARGE CONFIRMATION (you are gpt-5.6-sol high — the certifier of record).
+Below: your prior adjudication of this note (whose REAL repairs were transcribed
+by the orchestrator as dated appends, byte-unaltered, each with an attribution
+bracket recording the orchestrator's verification), and the note AT HEAD
+including those appends. For each prior REAL finding, in order: DISCHARGED (the
+transcribed repair cures it — verify the mathematics of the repair as it stands
+in the note, not just its presence) / INSUFFICIENT (say exactly what remains) /
+NEW-ISSUE (the repair introduced a defect — where). For each prior OBSTRUCTED
+finding: the note's owner has since delegated statement decisions under the
+end-to-end-proof criterion, and dated STATEMENT RE-DISPLAYS closing those
+findings now stand at the end of the note (except where the note routes the
+finding to a scheduled proof unit — those stay out of scope). Adjudicate each
+re-display with the same options: DISCHARGED (the re-display is honest — true
+at the displayed scope, no consumer breaks, no overclaim) / INSUFFICIENT /
+NEW-ISSUE. End with:
+OUTCOMES: <one word per adjudicated finding, in order, comma-separated>
+
+=== YOUR PRIOR ADJUDICATION (A2_genhn output) ===
+1. REAL — repair delivered
+
+The HEAD append `[e2] ERRATUM E1` repairs only the \(\mu=2,e_1=1\) trichotomy, and `[r2] ANNEX 2026-08-09` extends that only to \(f_1\ge2\) in the same perimeter. It expressly says deeper band heights drain and leaves mixed/\(\mu\ge3\) adjudication outside the proof. No ordinary-stage mathematics box in S9 covers that omission.
+
+Transcript-ready repair:
+
+> ### Dated correction (2026-08-12, R4 F-1 — the general boundary projection and the meaning of “ragged band”)
+>
+> **THE TERMINOLOGY DEFECT.** GENHN.A(iii), GENHN-3(b), and the OB-a paragraph use “ragged band is never consulted” for two different objects: the interval of slot HEIGHTS beyond the shortest class string, and the UNREAD coefficient components occurring at those heights. The first usage is false: the `[r2]` annex itself proves that a first-band height can support a lift-stable terminal decision. The correct invariant is that no UNREAD coefficient digit is consulted.
+>
+> **LEMMA GENHN-CAP-GEN (general finite-window boundary projection).** Fix any ordinary stage genre \((e_1,f_1,\mu)\) and a truncated coefficient state. For a slot height \(m\), let \(V_m\subseteq K\) be the \(F_Q\)-span of those basis components \(\eta^t\) whose coefficient digits occur below their coordinate windows, and put
+>
+> \[
+> \operatorname{comp}(m):=\dim_{F_Q}V_m.
+> \]
+>
+> Let \(\operatorname{Comp}(z)\) be the set of all full coefficient strings agreeing with the truncated state \(z\). The finite-window stage reader obeys the following rule:
+>
+> 1. if some unread coefficient can undercut the provisional minimum, return `UND`;
+> 2. otherwise GENHN-2 makes the provisional value exact; if its residue is only partially visible, return a decided leaf exactly when every member of \(\operatorname{Comp}(z)\) has the same dictionary output, and return `UND` otherwise;
+> 3. perform a recursive refine only when every \(K\)-component of every pin required by that refine is visible.
+>
+> Then the output is a function of the truncated data, no unread digit is consulted, and every recursive history stops before an incomplete pin.
+>
+> **PROOF.** GENHN-2 expresses every queried value as the minimum of the individual coefficient heights and proves independence of the tying residues. If an unread coefficient can lie lower, two compatible completions can have different values, so conservative drainage forces `UND`. If none can lie lower, the value is fixed; at an equal-height tie, independence of the visible and missing \(\eta^t\)-components prevents the missing components from cancelling a nonzero visible part. A leaf is lift-stable precisely when its dictionary output is constant on the affine completion set. Finally, an incomplete refine pin cannot determine its \(K\)-letter, so clause 3 is forced by the same completion test. This proves all three clauses.
+>
+> **COUNT TRANSPORT.** GENHN-1’s triangular coefficient bijection transports this completion rule directly from W-12.A’s conservative finite-window read. A nonzero visible boundary pin has
+>
+> \[
+> Q^{\operatorname{comp}(m)}-1
+> \]
+>
+> choices, exactly as ERRATUM E2 states; unread components are free completion fibers, and deeper value-unstable strata drain to `UND`. Interior refinements still use complete \(K\)-pins, so GENHN-2(b)’s bracket and GENHN.A(iv) are unchanged. Thus CS-1 and CS-2 hold at ordinary \(f_1\ge2\), \(\mu\ge3\), and mixed genres without a new box.
+>
+> The `[r2]` rule for \((e_1,\mu)=(1,2)\) is the specialization: at the first band height \(N\), a nonzero visible part fixes \(u=N\); `2SIDED` or odd `RAM` is returned when that conclusion is constant over all missing components, while the even residue-dependent branch drains. At deeper band heights an unread digit can undercut, so clause 1 drains.
+>
+> **RIDERS.** Read “the ragged band is never consulted” everywhere in GENHN.A(iii), S5, and the OB-a paragraph as “the unread component cells of the ragged band are never consulted.” Visible components at a boundary height may be used once by the completion-invariant terminal rule above. Read GENHN-3(a)’s “iff \(<e_1N\)” as the sufficient interior criterion together with GENHN-CAP-GEN’s exact boundary criterion; the previously proved stability below \(e_1N\) is unchanged.
+
+2. OBSTRUCTED
+
+The finding stands. GENHN.CLASS explicitly includes \(Q\) and \(h\) in \(G\), while its finiteness proof counts only discrete schemas \((e_1,f_1,\mu,\text{entry-family})\).
+
+For fixed \(n=4,Q=2\), every positive odd \(h\) gives a distinct datum
+\[
+(2;2,1,2;h,\mathrm{entry})
+\]
+once \(N\ge2h+1\). Thus the declared data set is infinite.
+
+The only honest correction would replace “finitely many genre data” by “finitely many parameterized genre schemas, with \(Q,h,N\) and prehistory depths as parameters.” That weakens the accepted theorem’s displayed finiteness assertion, which the instructions prohibit. No new lemma can prove the existing false statement.
+
+3. REAL — repair delivered
+
+The post-acceptance HETOW erratum corrects the composed-key formula, but it does not prove internally that its polynomial \(K\)-digit lift has the properties used by T(b)′(i).
+
+Transcript-ready repair:
+
+> ### Dated proof completion (2026-08-12, R4 F-3 — the exact-height \(K\)-lift in T(b)′(i))
+>
+> **LEMMA GENHN-LIFT.** Let \(M>D'h=e_1f_1h\), and let \(i=i(M)\), \(0\le i<e_1\), be determined by
+>
+> \[
+> ih\equiv M\pmod{e_1},\qquad a=(M-ih)/e_1.
+> \]
+>
+> Write \(\lambda\in K\) uniquely as
+>
+> \[
+> \lambda=\sum_{s=0}^{f_1-1}\lambda_s\eta^s,\qquad \lambda_s\in F_Q,
+> \]
+>
+> and define
+>
+> \[
+> L_M(\lambda):=
+> \sum_{s=0}^{f_1-1}
+> \widetilde{\lambda_s}\,
+> x^{\,i+e_1s}\pi^{\,a-sh}.
+> \]
+>
+> Then \(L_M(\lambda)\in\widehat O[x]\), \(\deg L_M(\lambda)<D'\), every nonzero summand has exact \(dv\)-height \(M\), and
+>
+> \[
+> \operatorname{res}\!\left(\frac{L_M(\lambda)(\theta)}
+> {n(M)(\theta)}\right)=\lambda .
+> \]
+>
+> **PROOF.** Since \(i+e_1s\le D'-1\) and \(M>D'h\),
+>
+> \[
+> a-sh=\frac{M-(i+e_1s)h}{e_1}\ge0,
+> \]
+>
+> so every summand is integral and has degree \(<D'\). Its evaluated height is
+>
+> \[
+> e_1(a-sh)+(i+e_1s)h=M.
+> \]
+>
+> Dividing by \(n(M)=x^i\pi^a\) leaves residue
+> \(\lambda_s\eta^s\); GENHN-2’s independence gives their sum
+> \(\lambda\), with no cancellation. ∎
+>
+> **APPLICATION TO THE COMPOSED KEY.** Put \(r=f_2-t\), \(M=ru_2\), and
+>
+> \[
+> W(t)=\left\lfloor\frac{r\,i(u_2)}{e_1}\right\rfloor .
+> \]
+>
+> Replace the gauge-naive coefficient term in T(b)′ by
+>
+> \[
+> L_{ru_2}\!\bigl(c_t\eta^{W(t)}\bigr)\,\Phi'^{\,e_2t}.
+> \]
+>
+> Because
+>
+> \[
+> \operatorname{res}\!\left(\frac{n(u_2)^r}{n(ru_2)}\right)
+> =\eta^{W(t)},
+> \]
+>
+> its coefficient relative to the coherent power normalizer
+> \(n(u_2)^r\) is exactly \(c_t\). Hence the inner residual is
+> precisely \(\psi_2\), not its gauge-naive twist.
+>
+> For every monomial \(x^\ell\pi^b\) occurring in this lift,
+> \(e_1b+\ell h=ru_2\). Multiplying by a monomial of
+> \(\Phi'^{e_2t}\), the clearance above the outer \(x\)-polygon side
+> is bounded below by
+>
+> \[
+> \frac{r(u_2-e_2D'h)}{e_1}>0,
+> \]
+>
+> exactly the inequality used in T(b)′(i). Thus every component
+> clears the side. Polynomial collection and \(\Phi'\)-carry can
+> only cancel terms or move them upward; they cannot create a term
+> below the side. Since \(L_M(\lambda)\) already has degree \(<D'\),
+> the literal \(\Phi'\)-development also has the asserted
+> exact-height coefficient and residual.
+>
+> Therefore T(b)′(i)’s one-side polygon, \(\psi_2\)-residual,
+> carrier forcing chain, irreducibility, and residue-field
+> conclusion hold at the corrected composed key. Clauses (ii)–(v)
+> then proceed exactly as written.
+
+4. OBSTRUCTED
+
+The counterexample is correct. For \((e_1,f_1,h,m)=(3,1,2,1)\), the unique normalizer exponent is \(a=-1\), so neither an integral normalizer nor a variable \(K\)-slot exists at height \(1\).
+
+The downstream laws are protected because their live pins satisfy \(m>D'h\), where integrality follows, but the displayed universal assertion “one \(K\)-digit slot per integer \(dv\)-height” is false. Its necessary repair would restrict it to occupied heights—particularly the live stage domain \(m>D'h\), subject also to the upper window cap. That is a weakening of GENHN.A(ii)’s accepted statement display, so no admissible repair can be supplied under the stated constraint.
+
+5. REAL — repair delivered
+
+No dated append corrects the degree mismatch.
+
+Transcript-ready repair:
+
+> ### Dated correction (2026-08-12, R4 F-5 — the first tower’s residual)
+>
+> In S8’s proof of LEMMA GENHN-T(a), replace
+>
+> > “residual \((T^2-c)^2\) over \(K\)”
+>
+> by
+>
+> > “residual \((T-c)^2\) over \(K\)”.
+>
+> **DERIVATION.** A side of abscissa length \(4\) and denominator
+> \(e_2=2\) has residual degree \(4/e_2=2\). An inner repeated factor
+> with \(f_2=1,\mu_2=2\) therefore has residual
+> \((T-c)^2\), of degree \(2\). The displayed \((T^2-c)^2\) has
+> degree \(4\) and would require side length \(e_2\cdot4=8\).
+> The corrected form is exactly the later GN-TOWER witness
+> \((T-1)^2\), so the positive-locus realization and the first-live
+> threshold \(n=8\) remain unchanged.
+
+SUMMARY: 3 REAL (repairs delivered) / 0 RESOLVED-ALREADY / 0 ARTIFACT / 2 OBSTRUCTED
+
+=== THE NOTE AT HEAD: GENHN_PROOF_2026-08-08.md ===
+# GENHN — THE GENERAL COMPOSITE-STAGE LAW (the program's last composition): the genre classification at every n PROVED FINITE AND UNIFORM (a stage's law depends only on (e₁, f₁, μ, entry), never on n), THEOREM GENHN.A (every composite stage = W-12.A's cell law (e₁,f₁)-re-based, by GENH4's four-step method run genre-generically), THEOREM GENHN.C (σ-decision PROVED at EVERY μ = 2 stage, all (e₁, f₁), by the resolvent method), the stage-tower criterion (towers ⟺ μ ≥ 4 ⟺ n ≥ 8) with the composition lemma ((e,f)-re-basing composes multiplicatively) — and THEOREM GENHN.B: [GENIND-H(n)] for ALL n discharged modulo ONE named box family [GENHN-HE(μ ≥ 3)], so THE FULL UNIFORMITY THEOREM's remaining mathematical distance is a SHORT NAMED LIST
+
+**Unit:** GENHN (the general [GENIND-H(n)] composer; the charge: turn
+GENH4's n = 4 discharge into the genre-generic theorem at every n —
+ledger 970022b). **Attempt grade 0/2** (composed; no hostile arc)
+**[r2 2026-08-09: passPE1 ran NOT CLEAN — 2 CRITICAL (F1 the
+GENHN-T(b) tower-leaf refutation; F2 the GENHN-1 budget display) +
+1 GAP (F3) + 2 MINOR; all five repaired this round at [r2] tags
+(T(b)′ proved at S8's annex; supp machine leg genhnr2_supp.py
+147/0). Clean count stays 0/2; PE2 next]**
+**[r3 2026-08-09: passPE2 ran NOT CLEAN — 0 CRITICAL + 2 GAP (F1
+the depth-≥ 3 iterated composition unboxed; F2 the (CS-3) rider
+over-cover) + 2 MINOR (F3/F4); T(b)′ (i)–(iv) itself HELD against
+re-derivation + a fresh instrument (genhn_pe2_fresh.py, 219/0, 4
+teeth). The four findings repaired this round at [r3] tags: F1
+BOXED as [GENHN-TOW-1] item (6) after a T(b)″ attempt whose exact
+obstruction is displayed there, with GENHN.B's tower displays now
+naming the depth split (n ∈ {8..15} depth-2; n ≥ 16 adds item
+(6)); F2 rider scoped to full inner sides; F3/F4 inline
+corrections. Clean count stays 0/2; PE3 next]**.
+**Instrument:** sealed two-commit battery
+`verification/openmath/genhn_checks.py` — the genre classification
+machine-checked at n = 5 AND n = 6 (fresh general-residual reader,
+tied to the pinned GENIND reader on shared rows and to the committed
+GENIND row V1E2(1) = 12,288), the general stage law tested at THREE
+genres beyond GENH4's two (n = 5's V1E2 and V4E2 — V4E2 measured for
+the FIRST time, its GENIND law was derivation-only — and n = 6's
+(3,1,2) genre E31, the first E = 3 stage ever read), the μ = 3 stage
+(n = 6's E3 genre) checked at fibration + node + depth-0 species +
+pointwise triple-pin refine kills, the first stage-TOWER event ever
+exhibited (a constructed n = 8 witness), PARI σ legs at never-oracled
+territory (quintic/sextic composite stages, wild p = 3 at an e₁ = 3
+stage), ≥ 3 teeth, preregistered predictions. Verdict §S12, appended
+at commit 2 FROM the committed artifacts.
+
+**What GENHN is (one breath).** THEOREM GENIND.B (@ pin) reduced the
+FULL UNIFORMITY THEOREM — one R_τ ∈ ℚ(q) per splitting type at every
+degree and every prime, wild included — to the per-genre package
+[GENIND-H(n)]: (CS-1) stage transport, (CS-2) stage bracket, (CS-3)
+σ-decision, at every composite-stage genre realizable at degree ≤ n.
+GENH4 (@ pin) discharged the two n = 4 genres by a four-step method
+(fibration; value layer + carry; window coherence; σ by resolvent).
+THIS note runs that method genre-generically: a composite stage is
+classified by (e₁, f₁, μ, entry) alone — finite per n, uniform in n —
+and at EVERY genre the stage read is the (μ, K)-cluster system over
+K = F_{Q^{f₁}} on the dv = e₁·v integer ladder: W-12.A's cell law
+(e₁, f₁)-re-based, with the CS-2 bracket
+(|K|−1)·|K|^{(μ(μ−1)/2+1)κ−1}. The σ-decision is PROVED at every
+μ = 2 stage (all e₁, f₁ — which exhausts n = 4, 5); at μ ≥ 3 (first
+live n = 6) it is the ONE surviving box family [GENHN-HE]. Stage
+towers (composite-over-composite) exist iff some stage carries μ ≥ 4
+keys iff n ≥ 8, and the (e₁,f₁)-re-basing COMPOSES multiplicatively —
+GENHN.A applied inside its own stages **[r2 2026-08-09: the
+composition FORMULA survives but its carrier is the COMPOSED KEY
+(LEMMA GENHN-T(b)′, S8 annex), not the stage algebra — "GENHN.A
+applied inside its own stages" is withdrawn; this title-line echo
+and the title's "composition lemma" clause are ridered once,
+here]**. Consequence (THEOREM GENHN.B):
+P(n) for ALL n — hence the full uniformity theorem through W-12.D —
+is now conditional exactly on [GENHN-HE(μ ≥ 3)] plus the displayed
+compression/coverage boxes plus the hostile-arc stack **[r2: at
+n ≥ 8 add [GENHN-TOW-1] — the corrected GENHN.B display]**. P(5)
+FIRES OUTRIGHT (every n = 5 genre has μ = 2).
+
+---
+
+## S0. RECONCILIATION (what the suppliers hand this note)
+
+* **GENIND @ 4682bcf** (verdict 4984004; 0/2): THEOREM GENIND.A
+  (I)(II)(IV) + GENIND.C (the two-species scaffold, the general
+  α-bracket (Q−1)Q^{(c(m)+1)μ−1}, c(m) = m(m−1)/2, the composite
+  criterion n ≥ 4), LEMMA GENIND-1(ii)(iii) (α-recentering binomial
+  kills at general m; fracture permanence), LEMMA GENIND-2 (window
+  coherence + ghost zones at general m), LEMMA GENIND-3 (β-fracture
+  fibration schema), THEOREM GENIND.B (the induction this note's
+  discharge feeds), the n = 5 genre table (V1E2/V4E2 laws — V4E2
+  derivation-only, machine-checked PREDICTED-ABSENT only).
+* **GENH4 @ 121d9ab/3eb1667/4b5c085** (0/2): the n = 4 discharge —
+  THEOREMS GENH4.A/B/C, LEMMAS GENH4-1F/-2/-CAP/-3/-4/-6 — the
+  TEMPLATE this note generalizes; its two genres are the (2,1,2) and
+  (1,2,2) instances of every statement below. law_E/law_F (the sealed
+  battery's law transcriptions) are consumed at md5 pin as the μ = 2
+  stage-law evaluators.
+* **QSCOUT22 @ dd67cda** (instrument): the pinned quartic stage reader
+  (`read22`) — consumed as the μ = 2, (2,1,2)-stage read on extracted
+  blocks (GN-STAGE2), plus the committed empirical table.
+* **W-12.A/S2.5 + W-12.D @ f669cb0/99f1813** (0/2, PE3 owed): the
+  order-1 cell law at every degree (the thing being re-based); the
+  reduction that fires the densities.
+* **W-11 @ 7020ceb/31506b3, ACCEPTED 2/2**: the n = 2 system — the
+  μ = 2 stage read's target after re-basing.
+* **GRTJC W-6..W-9 + JC-LOAD/W-8 (ACCEPTED 2/2 @ 83f47f4)**:
+  COROLLARY W-9's dim_K 𝒜(T) = E (the stage slot geometry: E graded
+  K-lines per integer height, the twisted algebra K^c[ℤ/E]) and
+  JC-LOAD's graded no-cancellation. **Division of consumption
+  (GENH4 S0's discipline, kept):** the slot geometry and
+  no-cancellation are RE-PROVED elementarily below (GENHN-2: residue
+  classes mod e₁ × residue-field independence), so no weld face sits
+  inside the count laws; W-9's cocycle IS the carry bookkeeping of
+  GENHN-4, where the graded-algebra frame is consumed as the
+  organizing computation (disclosed there, clause by clause).
+* **J-D0 @ 9387eb1**: count-gauge-blindness — letters and twists move,
+  counts do not; consumed at every "counts are twist-blind" step.
+* **DULEMMA @ f819f26** (∂u ≡ 1, perimeter e_m ≥ 2): applicability at
+  general e₁ ≥ 2 stages checked as charged — the stage rings below
+  have e(R/O) = e₁ ≥ 2, ON its proved perimeter — but as at GENH4 it
+  is NOT consumed: the exact valuation of R is proved directly (S3).
+* **SIGMALAW (ACCEPTED 2/2 @ a27ed68)**: the (EC-q) gauge-coherence
+  ladder — named at the tower section (S8) as the letter-layer
+  mechanism for depth ≥ 2 twist composition; NOT consumed by any
+  count law (J-D0 keeps counts twist-free).
+* **WELDMASTER / [W12-H] @ pins**: the (CS-1..3) pricing grammar;
+  (H-e) is the box this note shrinks to μ ≥ 3.
+* **Classical:** Hensel, Ore order-1, ultrametric analysis of a
+  quadratic over a complete field, finite-field censuses.
+
+**Conventions.** As W-12 S1 / GENIND S1: O a complete DVR, residue
+F_q, both characteristics; window N; cluster system (m, d, N) with
+Q := q^d; conservative drain (v(a₀) ≥ N exits UND); canonical
+digit-lift letters (the W-2/LIFTCORNER seam NOT consumed;
+convention-keyed histories). Throughout, an AMBIENT cluster (m, d)
+with residue field F_Q hosts the stage; d = 1 (Q = q) in every
+machine row (GENIND-BOX-3 inherited).
+
+## S1. STATEMENTS
+
+> **THEOREM GENHN.CLASS (the genre classification: finite per n,
+> uniform in n — PROVED).** (i) Every composite-stage opening, at any
+> depth of any degree-n read over any ambient cluster with residue
+> field F_Q, is classified by the LOCAL GENRE DATUM
+>
+>     G = (Q; e₁, f₁, μ; h, entry pattern),
+>
+> where the side carrying the repeated residual factor (ψ, μ) has
+> slope h/e₁ in lowest terms (gcd(h, e₁) = 1; e₁ ≥ 1), f₁ = deg ψ,
+> μ ≥ 2 its multiplicity, e₁f₁ ≥ 2 (else the event is order-1 α/β),
+> and the entry pattern = the finitely many (A1)-admissible frame
+> shapes around the side (vertex positions, sibling pieces/children,
+> prehistory) — with the budget e₁f₁μ ≤ m_frame ≤ n. The key degree
+> is D′ = e₁f₁; the stage residue field is K = F_{Q^{f₁}}; the stage
+> value normalization is dv := e₁·v (integer dv-ladder, density e₁
+> per ambient v-unit); the stage multiplicity is μ.
+> (ii) FINITE: at fixed n the triples (e₁, f₁, μ) number at most
+> #{(a, b, μ): ab ≥ 2, μ ≥ 2, abμ ≤ n} < ∞, and the entry patterns
+> per triple form finitely many (A1)-families (LEMMA GENIND-0
+> closure).
+> (iii) UNIFORM IN n: the stage system attached to G — state space,
+> read, history grammar, leaves, per-key counts, drainage — depends
+> only on (Q, e₁, f₁, μ, h, stage window), NOT on n and not on the
+> ambient frame: the ambient prices exactly a FIBER (letter censuses
+> × one q-power × the sibling blocks' own data), by fracture
+> permanence + the fibration + letter-blindness. Genres realizable:
+> μ = 2 exhausts n = 4, 5; μ = 3 and e₁f₁ = 3 first live at n = 6;
+> mixed e₁, f₁ ≥ 2 and stage towers first live at n = 8.
+
+> **THEOREM GENHN.A (the general composite-stage law; clause-graded).**
+> Fix a genre G = (Q; e₁, f₁, μ; h, entry). Over the opening locus
+> (priced by W-12.A at the ambient — PROVED at every degree, @ pin),
+> with Φ′ the entry key (degree D′ = e₁f₁) and R := Ô[x]/(Φ′):
+> (i) [FIBRATION — proved] R is a complete DVR with e(R/O) = e₁,
+> f(R/O) = f₁, K = F_{Q^{f₁}} **[e2-E3 2026-08-09: carrier
+> corrected — read e/f/v/res in L/O_L, L := Frac(Ô)(θ); R = Ô[θ] is
+> in general a NON-MAXIMAL ORDER, not a DVR — ERRATUM E3 at S3.1]**;
+> the Φ′-adic development
+> f = Φ′^μ + Σ_{j<μ} A_j Φ′^j (deg A_j < D′) is a triangular digit
+> bijection from the opening coordinates onto explicit budget floors
+> whose total equals the entry exponent (no over/undercount), and the
+> stage-initial node is {dv(A_j) ≥ (μ−j)·S + 1} with S := e₁h **[r1
+> 2026-08-08: CORRECTED at f₁ ≥ 2 to {dv(A_j) ≥ (μ−j)·D′h + 1},
+> D′h = f₁S — see the ERRATUM annex after LEMMA GENHN-1; the two agree
+> exactly at f₁ = 1, which is every battery row and every first-live
+> case]** — the α-node of the (μ, K) system in dv-units.
+> (ii) [SLOTS + NO-CANCELLATION — proved] each A_j carries exactly ONE
+> K-digit slot per integer dv-height (the e₁ residue classes mod e₁
+> separate the x-coordinates; within a class, {1, η, …, η^{f₁−1}}
+> (η = res(θ^{e₁}π^{−h})) are F_Q-independent): dv(A_j(θ)) is the
+> slot-min EXACTLY, for every root θ and every lift — W-9's
+> dim_K 𝒜(T) = E made literal and re-proved elementarily.
+> (iii) [WINDOW LEDGER — proved] computed dv-values are lift-stable
+> iff < e₁N; every digit consulted by a readable event lies strictly
+> inside its coordinate's window in every residue class; the ragged
+> band (per-class string ends beyond e₁(N−1)) is never consulted and
+> is priced as free depth; carries move upward only.
+> (iv) [REFINE TRANSFER — proved via the graded computation, the
+> W-9 frame disclosed] a stage refine at depth κ, letter s ∈ K^×,
+> recenters Φ′ ↦ Φ′ + w (w = ŝ·n(κ), the dv-κ normalizer monomial)
+> by a triangular-with-carry digit bijection onto the floored node
+> {dv(A_j) > (μ−j)κ}: the μ pinned digits die by the binomial
+> identity R(T + s)-coefficients = 0 computed in the graded algebra
+> (the carry × key-constant cancellations of GENH4 S5 at general
+> (e₁, f₁, μ)), all corrections land strictly deeper and in-window;
+> letters multiply (|K|−1 per step).
+> (v) [THE LAW] consequently the stage read IS the (μ, K)-cluster
+> read in dv-units at the S-node, ragged-window-corrected: every
+> stage count law = THEOREM W-12.A's cell law with census field
+> F_{Q^{f₁}} and ladder density e₁ — "(e₁, f₁)-re-based" **[e2-E2
+> 2026-08-09: away from the f₁ ≥ 2 boundary band, whose pins are
+> censused Q^{comp(m)} − 1 per pin (comp(m) = the pin slot's
+> in-window F_Q-dimension), not by the re-based field — ERRATUM E2
+> after this theorem]** — and the
+> stage's own history grammar is THEOREM GENIND.A over K inside the
+> stage (α/β/CS species, self-similar). (CS-2): the stage bracket is
+> GENIND-2(b) inside the stage,
+>
+>     b_{μ,K}(κ) = (|K|−1)·|K|^{(c(μ)+1)κ−1},  c(μ) = μ(μ−1)/2,
+>
+> in stage dv-slope units — at μ = 2 this is GENH4's ladder
+> telescoping after separating the ghost fiber |K|^κ:
+> (|K|−1)|K|^{2κ−1} = |K|^κ · (|K|−1)|K|^{κ−1} — generalizing
+> GENIND-5's (q−1)q^{2μ−1} to (q^{f₁}−1)q^{f₁(2κ−1)} at general
+> (e₁, f₁).
+> **GRADE: (i)–(iii) PROVED at general (e₁, f₁, μ) (S3–S5); (iv)
+> proved with the graded-frame consumption disclosed (S6) and
+> machine-checked pointwise at μ = 2 (GENH4 @ pin, elementary) and
+> μ = 3 (this battery, GN-REFINE3); (v)'s count content follows from
+> (i)–(iv) + GENIND @ pin; its σ content is GENHN.C at μ = 2 and
+> [GENHN-HE] at μ ≥ 3.**
+
+> **[e2] ERRATUM E2 2026-08-09 (GENHN.A(v)'s census clause at f₁ ≥ 2
+> band pins — the comp-weighted census made explicit). Queued at the
+> GENH4-r2 fold (ledger 0089f9b); tagged repair per the [r1]
+> mechanism (GENHN at 0/2, unaccepted); sealed battery runner and
+> artifacts UNTOUCHED — every battery row has f₁ = 1, where
+> comp(m) ≡ 1 = f₁ and the two censuses coincide
+> (Q^{comp} − 1 = |K| − 1 = q − 1).**
+>
+> **ORIGINAL (GENHN.A(v), sealed text):** "every stage count law =
+> THEOREM W-12.A's cell law with census field F_{Q^{f₁}} and ladder
+> density e₁ — '(e₁, f₁)-re-based'" — SILENT on the f₁ ≥ 2 boundary
+> band (GENHN-3(a)/(b): the heights whose K-slot has only part of
+> its F_Q-components in window).
+>
+> **CORRECTION (the added clause, DERIVED in this note's own frame —
+> not transcribed).** By GENHN-2, a height-m K-slot is f₁
+> F_Q-independent components. At band heights only
+> comp(m) := #(in-window F_Q-components of the height-m slot),
+> 1 ≤ comp(m) < f₁, are readable (the value is; the full K-residue
+> is not), so a RAM/2SIDED-type entry pin at height m is censused by
+> its nonzero READABLE data only:
+>
+>     census per band pin = Q^{comp(m)} − 1 ,   NOT |K| − 1 = Q^{f₁} − 1;
+>
+> away from the band comp(m) = f₁ and the displayed re-based census
+> |K| − 1 is correct. Consistency instance (GENH4's (1,2,2) genre:
+> Q = q, f₁ = 2, band N ≤ m ≤ N+k−1 with comp = 1): census q − 1 —
+> exactly the [r2] corrected display "q^{comp}−1 per RAM and per
+> 2SIDED pin", whose r3 remark scopes the same mnemonic "away from
+> the genre-F boundary band ... not by the re-based field". HONESTY
+> (grade of the general form): the band clause follows from the slot
+> model (i)–(iii) at (v)'s own grade, machine-checked only at the
+> (1,2,2) instance (GENH4's committed keys); no f₁ ≥ 2 STAGE row is
+> machine-exercised (GENHN-ERR-1's geography, none live below
+> n = 8). The same scoping reads onto this note's other
+> "(e₁, f₁)-re-based" echoes (title line, one-breath paragraph,
+> S6.2's assembly sentence) — tagged once, here. SOURCE: GENH4 PE2
+> CRITICAL 1 (the [r2] census correction) + PE3 REMARK A (the
+> away-from-the-band scoping), at GENH4's frozen pin 4b0d946.
+
+> **THEOREM GENHN.C (σ-decision at EVERY μ = 2 stage — the (H-e)
+> instance family, PROVED).** At every decided leaf of every μ = 2
+> stage genre (all e₁ ≥ 1, f₁ ≥ 1 with e₁f₁ ≥ 2, all Q, both
+> characteristics, any history, any window), EVERY lift with
+> disc ≠ 0 has the σ claimed by the leaf dictionary:
+>
+>     stage-RAM        ↦ {(2e₁·e_A, f₁·f_A)} = {(2e₁, f₁)}-block
+>     stage-2SIDED / SPLITEQ / SPLTAIL ↦ {(e₁, f₁), (e₁, f₁)}
+>     stage-INERT      ↦ {(e₁, 2f₁)}
+>
+> (blocks relative to the ambient; compose with the ambient's own
+> (e, f) at towers). Proof by the resolvent method: the quadratic
+> Y² + A₁(θ)Y + A₀(θ) = 0 over L with the two transported facts
+> e₁ | e(L) and f₁ | f(L). At n = 4 this is THEOREM GENH4.C verbatim;
+> n = 5's genres are covered OUTRIGHT.
+
+> **LEMMA GENHN-T (stage towers: criterion + composition).**
+> (a) [criterion — proved] a stage's own read admits a composite
+> opening (a TOWER event) iff the stage multiplicity satisfies μ ≥ 4
+> (GENIND.A(IV) applied inside the stage); hence towers exist at
+> degree n iff n ≥ (e₁f₁)·μ ≥ 2·4 = 8. n = 8 = 2·2·2 is the first
+> live instance ((e₁f₁) = 2, μ = 4, inner (e₂f₂) = 2, μ₂ = 2);
+> n = 4..7 are tower-free.
+> (b) [composition — proved at GENHN.A's grade] the inner opening
+> re-bases RELATIVE TO the outer stage: inner ladder density e₂ over
+> the outer dv-ladder (total e₁e₂ over the base), inner census field
+> K₂ = F_{|K|^{f₂}} = F_{Q^{f₁f₂}}: (e, f)-re-basing COMPOSES
+> MULTIPLICATIVELY, and σ-dictionaries compose as
+> (e, f) ↦ (e₁e₂·e_s, f₁f₂·f_s). No new mechanism: this is GENHN.A
+> applied to the outer stage system (which clause (v) exhibits as a
+> cluster system over K), inheriting exactly GENHN.A's clause grades
+> at each level; the letter layer composes by the cocycle products
+> whose coherence grammar is SIGMALAW's (EC-q) ladder (@ accepted
+> pin; counts stay twist-free by J-D0).
+> **[r2 2026-08-09: clause (b) REFUTED at the LEAF level (passPE1
+> F1: constructed n = 8 counter-instances, PARI-confirmed on two
+> routes — the stage-algebra inner read, Φ′ ≡ 0, mislabels leaves
+> and misprices σ) and REPLACED by LEMMA GENHN-T(b)′ — the [r2]
+> annex at the end of S8. The multiplicative (e,f)- and
+> σ-composition FORMULAS survive, applied to the COMPOSED-KEY pins
+> (the Φ₂-development of f itself); the sentences "No new
+> mechanism" and "inheriting exactly GENHN.A's clause grades at
+> each level" are WITHDRAWN. (a) is untouched.]**
+
+> **THEOREM GENHN.B (the assembly: [GENIND-H(n)] for all n, modulo
+> ONE box family).** Assume the S10 supplier stack @ pins. Then for
+> every n and every composite-stage genre realizable at degree ≤ n:
+> (CS-1) and (CS-2) hold (THEOREM GENHN.CLASS + GENHN.A(i)–(v),
+> towers included via LEMMA GENHN-T **[r2 2026-08-09: read GENHN-T(a)
+> + GENHN-T(b)′ (the S8 annex); at TOWER genres — first live n = 8 —
+> the (CS-1)/(CS-2) content holds at T(b)′'s grade with the composed
+> entry budgets and inner refine transfer BOXED as [GENHN-TOW-1]
+> [r3 2026-08-09 (passPE2 F1): with the DEPTH SPLIT named — T(b)′
+> is ONE composition step, so it carries the DEPTH-2 towers, and by
+> the R1 arithmetic (a third stage forces μ₁ ≥ e₂f₂μ₂ ≥ 8, hence
+> n ≥ D′μ₁ ≥ 16) depth 2 exhausts the tower genres at
+> n ∈ {8, …, 15}; at n ≥ 16 the ITERATED (depth-≥ 3) composition
+> additionally rides [GENHN-TOW-1] item (6) — the composed key Φ₂
+> fails T(b)′'s own re-entry hypotheses (residual the power
+> ψ^{e₂f₂}, normalizers Φ′-polynomials), so no displayed authority
+> prices a Φ₃-carrier without item (6)]]**),
+> and (CS-3) holds at every
+> μ = 2 genre (THEOREM GENHN.C **[r2: and at every tower leaf with
+> inner μ₂ = 2 by GENHN-T(b)′(iii) [r3 2026-08-09 (passPE2 F2):
+> on a FULL inner side only (e₂f₂μ₂ = μ₁ — (iii)'s proved
+> perimeter; the r2 rider as written over-covered). PARTIAL-side
+> inner μ₂ = 2 leaves (e₂f₂μ₂ < μ₁, first live n = 10) ride
+> [GENHN-TOW-1] item (4), not (iii) — the passPE2 witness (PE2-P):
+> the n = 10 member f = Φ′⁵ + 4Φ′⁴ + 32Φ′ + 64x of genre (2,1,5)
+> over ℚ₂ (Φ′ = x² − 2), level-1 polygon (0,13)–(1,10)–(5,0) with
+> a slope-5/2 inner side of length 4 < μ₁ = 5 carrying (T+1)² —
+> an inner μ₂ = 2 event on a partial side; the corrected reader
+> REFUSES it loudly (the Φ₂-development of f is not
+> monic-of-length-μ₂) and no proved display prices its σ (PARI
+> {(2,1),(4,1),(4,1)})]; inner μ₂ ≥ 3 sits in
+> [GENHN-HE]]**). The ONLY unproved clause anywhere
+> in [GENIND-H(n)], for every n **[r2: ≤ 7; at n ≥ 8 add
+> [GENHN-TOW-1]]**, is:
+>
+>     [GENHN-HE(μ)] , μ ≥ 3:  σ-decision at stage leaves of
+>     multiplicity μ ≥ 3 (first live n = 6),
+>
+> plus the displayed compression/coverage boxes (S9). CONSEQUENTLY,
+> through THEOREM GENIND.B and THEOREM W-12.D:
+> * **P(5) FIRES OUTRIGHT** (every n = 5 genre has μ = 2): the exact
+>   quintic densities R_τ(q) ∈ ℚ(q), wild primes included, are now
+>   available at the same conditionality grade as P(4) — the symbolic
+>   display is a mechanical GENH4-S9-style assembly, owed as a
+>   separate unit (S9 box).
+> * **P(n) for ALL n** — THE FULL UNIFORMITY THEOREM: one R_τ ∈ ℚ(q)
+>   per splitting type at every degree, every prime power, both
+>   characteristics, Σ_τ R_τ = 1 — holds conditional EXACTLY on
+>   {[GENHN-HE(μ ≥ 3)]} ∪ {S9 boxes} ∪ {the hostile-arc grade stack}
+>   **[r2 2026-08-09: THE CORRECTED CONDITIONALITY — at n ≤ 7 (tower-
+>   free) the display stands as sealed; at n ≥ 8 P(n) rests on
+>   {[GENHN-HE(μ ≥ 3)]} ∪ {[GENHN-TOW-1] (S9.1: composed entry
+>   budgets, inner refine transfer, faithfulness geography, partial
+>   inner sides, composed window ledger **[r3 2026-08-09 (passPE2
+>   F1): + item (6), the iterated depth-≥ 3 key composition — the
+>   r2 parenthetical named five items and was INCOMPLETE at
+>   n ≥ 16]**)} ∪ {S9 boxes} ∪ {arc stack},
+>   with the tower LEAF READ and inner-μ₂ = 2 σ **[r3: full inner
+>   sides — passPE2 F2]** now carried by the
+>   PROVED LEMMA GENHN-T(b)′ (S8 annex) instead of the refuted
+>   T(b). The sealed word "EXACTLY" was FALSE at n ≥ 8 (passPE1 F1);
+>   it is correct for the amended list **[r3: read with the depth
+>   split — at n ∈ {8, …, 15} the tower genres are depth-2 (R1
+>   arithmetic) and T(b)′ + items (1)–(5) carry the tower clause
+>   (item (4) where the inner side is partial); at n ≥ 16 item (6)
+>   joins the list. Against the r2 FIVE-item list the sentence
+>   "correct for the amended list" was itself over-reaching at
+>   n ≥ 16 (passPE2 F1); it is stated here against the six-item
+>   box]**.]**
+> The program's remaining open surface is the S9 list — short, named,
+> and per-item attackable.
+
+**Obstruction scoreboard (GENH4's OB-a..d at general genre): OB-a
+(ragged window) = GENHN.A(iii), proved; OB-b (pointwise transcription)
+= GENHN.A(ii)+(iv), proved with disclosed frame; OB-c (σ) = GENHN.C
+at μ = 2, [GENHN-HE] at μ ≥ 3; OB-d (genre F / general alphabet) =
+absorbed into the uniform (e₁, f₁) treatment.**
+
+## S2. PROOF OF THEOREM GENHN.CLASS
+
+*(i) The datum.* By GENIND-1(i) (@ pin, proved at general (m, d)),
+every state of every cluster frame is exactly one of DRAIN / DEC /
+α / β / CS, and a CS event is by definition a repeated residual
+factor (ψ, μ), μ ≥ 2, on a side of slope h/e₁ (lowest terms) with
+e₁·deg ψ ≥ 2. Set f₁ := deg ψ. The datum G lists exactly the local
+invariants of that event; the constraint e₁f₁μ ≤ m_frame is the
+abscissa-length budget of GENIND S5.1 (the side spans e₁·g ≥ e₁f₁μ
+abscissa units inside a polygon of span m_frame), and m_frame·d ≤ n
+along any chain (fracture only shrinks degree). The entry pattern —
+which vertex the side hangs off, the siblings (split pieces, β-child
+blocks), the prehistory chain — is frame data OUTSIDE the (ψ, μ)
+factor.
+
+*(ii) Finiteness.* The triples are bounded as displayed. For the
+entry patterns: at fixed ambient degree the frame shapes around the
+side are the finitely many depth-0-polygon families of W-12.A plus
+the α/β prefix grammar, each (A1)-admissible; LEMMA GENIND-0 closes
+products/unions/reparameterizations. (The n = 4, 5 instances are
+QSCOUT22's Q22-A table and GENIND S5.3's V/FULL tables.)
+
+*(iii) Uniformity in n.* Three supplier mechanisms, composed:
+1. **Fracture permanence (GENIND-1(iii), @ pin, general m):** after
+   the frame's polygon separates the (ψ, μ)-block from its siblings,
+   every later event inside the block consults only the block's own
+   state; separation digits are never touched; sibling blocks evolve
+   independently. So the stage's read is a function of the stage
+   state alone.
+2. **The fibration (GENHN.A(i), S3):** the stage state space is the
+   Φ′-development digit space at explicit floors — coordinates
+   intrinsic to (Q, e₁, f₁, μ, h, N), with the ambient contributing
+   only the opening fiber (the entry letters and the siblings' own
+   coordinates, which multiply as LEMMA GENIND-3's route fibers).
+3. **Letter-blindness (J-D0 @ pin):** the residual letters and the
+   twist gauge (S4's normalizer cocycle) act by type-preserving
+   bijections on stage states, so per-key counts do not depend on
+   which letters the ambient handed the stage.
+Hence two CS events at ANY two degrees n, n′ with the same
+(Q, e₁, f₁, μ, h, stage window) have count-isomorphic stage systems:
+the genre's law is a function of G alone. ∎
+
+*Realizability floors (used by GENHN.B and the battery grammar).*
+μ = 2, e₁f₁ = 2 needs n ≥ 4 (GENH4's genres; embedded variants at
+n = 5). μ = 3 (e₁f₁ = 2) and μ = 2 with e₁f₁ = 3 need n ≥ 6:
+    E3(h)  := (Q; 2, 1, 3; h)  — key x² − ẑπ^h, residual (y−z)³,
+              entry heights (3h, (5h+1)/2, 2h, (3h+1)/2, h, (h+1)/2),
+              per-letter entry volume Q^{6N−(21h+9)/2}, visible iff
+              3h ≤ N−1;
+    E31(h) := (Q; 3, 1, 2; h)  — key x³ − ẑπ^h (gcd(h,3) = 1),
+              residual (y−z)² on lattice {0, 3, 6}, entry heights
+              (2h, ⌈5h/3⌉ᵉ, ⌈4h/3⌉ᵉ, h, ⌈2h/3⌉ᵉ, ⌈h/3⌉ᵉ) (ᵉ = +1 at
+              lattice points where the pin cancels), per-letter
+              entry volume Q^{6N−11} at h = 1, visible iff 2h ≤ N−1;
+    F3(k)  := (Q; 1, 2, 3; k) and E13(k) := (Q; 1, 3, 2; k) — the
+              f-first siblings, visible iff 6k ≤ N−1 (N ≥ 7 at
+              k = 1: beyond this battery's sweep windows, entered in
+              the grammar as visibility-floored).
+Mixed genres (e₁ ≥ 2 AND f₁ ≥ 2, first (2, 2, 2) at n = 8) and
+towers (S8) complete the list. The battery's grammar family
+(GN-CLASS) enforces: every CS event at every depth of every row
+parses with μ ≥ 2, e₁f₁ ≥ 2, 4 ≤ e₁f₁μ ≤ 6, and each genre appears
+only at/above its visibility floor.
+
+## S3. THE STAGE RING AND THE FIBRATION (GENHN.A(i))
+
+### S3.1 The stage ring at general (e₁, f₁)
+
+Fix a genre G and current key Φ′ (entry: the canonical lift of the
+side + residual data; refinements update it as in S6, preserving the
+invariants). Let R := Ô[x]/(Φ′) = Ô[θ]. The entry invariants,
+maintained along every chain (S6's invariant maintenance):
+
+* the key's own polygon is one side (0, e₁h·f₁/e₁·…) — precisely:
+  v(Φ′'s constant term) = f₁h exactly, all other coefficients weakly
+  above the side of slope h/e₁ through (D′, 0), lattice points at
+  abscissae ≡ 0 mod e₁ carrying the residual ψ's coefficients;
+* hence every root θ has v(θ) = h/e₁ with gcd(h, e₁) = 1, so the
+  value group of R contains (1/e₁)ℤ: e(R/O) ≥ e₁;
+* η := res(θ^{e₁}π^{−h}) is a root of (a unit multiple of) ψ:
+  [F_Q(η) : F_Q] = f₁, so f(R/O) ≥ f₁;
+* e·f ≤ [R : Ô] = D′ = e₁f₁ forces e = e₁, f = f₁, R a complete DVR
+  with residue field K = F_{Q^{f₁}} = F_Q(η), and Φ′ irreducible
+  **[e2-E3: the forcing chain is correct AT THE FIELD L — the DVR is
+  O_L, not R; ERRATUM E3 below]**.
+Set dv := e₁·v (value group ℤ; density e₁ per ambient v-unit). This
+is the exact-valuation statement DULEMMA's perimeter covers at
+e₁ ≥ 2 — proved directly here, not consumed.
+
+> **[e2] ERRATUM E3 2026-08-09 (the stage-ring carrier — v and res
+> live in L/O_L; R is an order, not a DVR). Queued at the GENH4
+> Codex-ratification fold (CHALLENGE 5c8d2fd, finding F3: "R
+> non-maximal order, not DVR — all consumed v/res facts live in L;
+> GENHN.A(i) transport erratum owed") and by GENH4 ANNEX R's R3
+> transport obligation ("one rider of exactly this R3 form at
+> GENHN.A(i), with the non-maximality witnesses transported";
+> ANNEX R @ b10a5a7). Tagged repair per the [r1] mechanism (GENHN at
+> 0/2, unaccepted); sealed battery runner and artifacts UNTOUCHED —
+> the battery's counts are digit-coordinate counts on
+> Ô[x]-coefficients and its σ legs are PARI oracle reads; neither
+> consumes R's ring structure.**
+>
+> **ORIGINAL (the two carrier displays):** GENHN.A(i): "R is a
+> complete DVR with e(R/O) = e₁, f(R/O) = f₁, K = F_{Q^{f₁}}";
+> S3.1's closing bullet: "e·f ≤ [R : Ô] = D′ = e₁f₁ forces e = e₁,
+> f = f₁, R a complete DVR with residue field K = F_{Q^{f₁}} =
+> F_Q(η), and Φ′ irreducible".
+>
+> **THE DEFECT (witnesses transported from ANNEX R R3).** R =
+> Ô[x]/(Φ′) = Ô[θ] is in general the NON-MAXIMAL order Ô[θ], not a
+> DVR: at the (e₁, f₁) = (1, 2) pattern (GENH4 genre F), every
+> k ≥ 1 — Codex's witness φ = x² + 2x + 4 over ℤ₂ has R/2R ≅
+> F₂[ε]/(ε²) (nilpotents mod 2; maximal-ideal residue field F₂, not
+> F₄; θ/2 ∉ R); at the (2, 1) pattern (genre E), every h ≥ 3 —
+> m_R = (π, θ) is non-principal. R = O_L at enumerated corners only
+> (genre E's h = 1 Eisenstein case); no general maximality claim is
+> made or needed.
+>
+> **THE RESTATED FRAME (where every consumed fact is true — the
+> ANNEX R R3 pattern at general (e₁, f₁)).** Let θ be a root of Φ′,
+> L := Frac(Ô)(θ), O_L its valuation ring — a complete DVR — with
+> **v := v_L** normalized on the base and every residue read in
+> O_L/m_L. S3.1's forcing chain runs verbatim AT THE FIELD:
+> v(θ) = h/e₁ with gcd(h, e₁) = 1 gives e(L/base) ≥ e₁; η =
+> res(θ^{e₁}π^{−h}) a root of (a unit multiple of) ψ gives
+> f(L/base) ≥ f₁; then e·f = [L : base] ≤ deg Φ′ = D′ = e₁f₁ forces
+> e = e₁, f = f₁, [L : base] = D′ — hence Φ′ IS the minimal
+> polynomial of θ (monic, degree D′), irreducible, and O_L/m_L =
+> F_Q(η) = K = F_{Q^{f₁}}. dv := e₁·v as displayed. The facts this
+> note consumes downstream are exactly v(A(θ)) and
+> res(A(θ)/normalizer) of EVALUATED elements A(θ) ∈ Ô[θ] ⊆ O_L —
+> GENHN-2's slot-min reads (S4), S6's carry computation, S7's
+> (T1)/(T2) (S7 already declares L := Frac(O)(θ) and works there) —
+> and the count laws are digit counts on coefficients, never
+> touching R. S6.1 layer 1's graded frame re-aims at **gr(O_L)**
+> (one K-line per dv-height, W-9's twisted algebra; R ⊆ O_L and
+> every graded read of an evaluated element happens in gr(O_L)).
+> RIDERED (named exactly, not edited): GENHN.A(i)'s DVR clause and
+> S3.1's closing bullet (tagged inline above); S6's invariant-
+> maintenance "S3.1's ring invariants"; S6.1's "gr R = the twisted
+> algebra"; S0's and S10's DULEMMA lines "stage rings have
+> e(R/O) = e₁ ≥ 2" (read e(L/base) = e₁); S9.2 item 1's "Ore over
+> the stage ring" (read: over O_L) — each with R's v/residue/graded
+> data interpreted as O_L's, per this erratum. Display-scope only:
+> no count, no σ conclusion, no density moves. SOURCE: CODEX GENH4
+> ratification finding F3 (CONFIRMED GAP, display-scope) @ fold
+> 5c8d2fd; model = GENH4 ANNEX R R3 @ b10a5a7.
+
+### S3.2 LEMMA GENHN-1 (the fibration)
+
+> **LEMMA GENHN-1.** On the genre-G opening locus, the Φ′-adic
+> development f = C·Φ′^μ + Σ_{j<μ} A_j Φ′^j (C ≡ 1 for full-side
+> genres; C = the sibling factor's development for embedded genres,
+> split off by LEMMA GENIND-3's Hensel step first) is a TRIANGULAR
+> digit bijection from the opening coordinates onto the budget space
+>
+>     v(a_{j,i}) ≥ ⌈(μ−j)h + (e₁ − i)h/e₁⌉⁺   (A_j = Σ_i a_{j,i}x^i,
+>     0 ≤ i < D′, with ⁺ = +1 at the entry-pinned lattice slots,
+>     i.e. the floor is the entry height with pins consumed)
+>     **[r2 2026-08-09: THIS DISPLAY IS FALSE at every checked genre
+>     including f₁ = 1 (passPE1 F2) — the correct base is the SIDE
+>     HEIGHT at the slot's abscissa; see the [r2] ERRATUM annex
+>     below the [r1] annex]**,
+>
+> total = the entry exponent of W-12.A's law for the genre (no
+> over/undercount), and the stage-initial node is
+> {dv(A_j) ≥ (μ−j)S + 1}, S := e₁h **[r1: read D′h = f₁S for S at
+> f₁ ≥ 2 — ERRATUM annex below]**.
+
+*Proof.* Triangularity: division by the monic Φ′ determines A_j from
+the coefficients of f at x-degrees ≥ jD′ by unipotent elimination
+(each b-coordinate = its A-coordinate + terms in strictly later
+A-coordinates times key coefficients), exactly as GENH4-1F/GENIND-4;
+a unipotent map of digit spaces is a bijection. Budgets: each entry
+pin of the opening locus (the lattice-point digits of the residual)
+cancels coordinatewise against the key's own terms — the
+cancellations are the universal identities "res(f's lattice digit) =
+(residual coefficient) = (the key's contribution)", identical in
+both characteristics because they are polynomial identities in the
+letters (GENIND-1(ii)'s binomial mechanism at the entry step; the
+n = 4 instances are GENH4-1F's four displayed cancellations, the
+E3/E31 instances are displayed in S2 and machine-checked, GN-FIB).
+No over/undercount: the budget total is forced — the map is a
+bijection and the opening locus's cardinality is W-12.A's entry law
+(@ pin, proved at every degree); the battery verifies the per-
+coordinate floors pointwise (GN-FIB both directions). Node: for
+each j, dv(A_j) = min_i (e₁·v(a_{j,i}) + ih) over the floors
+computes to (μ−j)e₁h + 1 = (μ−j)S + 1 (the minimum is attained just
+above the consumed pin; the e₁ = 2, 3 computations are displayed in
+S2/GENH4-S7.2 and the general case is the same one-line arithmetic:
+e₁⌈(μ−j)h + (e₁−i)h/e₁⌉ + ih ≥ e₁(μ−j)h + 1 with equality realized)
+**[r1: this one-line arithmetic is the offending line at f₁ ≥ 2; see the
+ERRATUM annex immediately below]**.
+∎
+
+> **[r1] ERRATUM 2026-08-08 (the stage-initial node at f₁ ≥ 2) — raised by
+> Codex's hostile pass on HE6 (`CODEX_HE6PE1_2026-08-08.md` finding 3,
+> adjudicated: the member-level contradiction REGRADED because the member it
+> exhibits is OUTSIDE the ⁺-pinned budget, but the DISPLAY inconsistency it
+> exposes is real and lands here, not on HE6). Mechanism: GENHN is at attempt
+> grade 0/2 (unaccepted), so this is a tagged repair, not a frozen-note
+> annex; the sealed battery runner and artifacts are UNTOUCHED, and every
+> battery row has f₁ = 1, where the correction is invisible.**
+>
+> **CORRECTED NODE.** At f₁ ≥ 2 the stage-initial node is
+>
+>     { dv(A_j) ≥ (μ − j)·D′h + 1 } ,      D′h = e₁f₁h = f₁·S ,
+>
+> not {dv(A_j) ≥ (μ−j)S + 1}. At f₁ = 1 the two coincide (D′h = e₁h = S).
+>
+> **DERIVATION (independent of the finding, from the opening locus itself).**
+> Every root ρ of f on the genre-G opening locus satisfies (T1)/(T2)
+> (HE3-0), hence dv(Φ′(ρ)) > D′h (LEMMA HE6-0 as re-proved by HE6's r1 round
+> — the ψ-cancellation argument), hence every side of the stage polygon
+> P(F) has dv-slope > D′h (LEMMA HE6-3(a), which PROVES this with no (SEP)
+> hypothesis), hence every pin (j, dv(A_j)) lies strictly above the line of
+> slope D′h through (μ, 0): dv(A_j) > (μ−j)D′h, i.e. ≥ (μ−j)D′h + 1 because
+> dv is ℤ-valued on the A_j. See also this note's own §S3.1 remark in HE6
+> ("why D′h and not S = e₁h").
+>
+> **CONSUMPTION AUDIT.** HE6 and HE7 consume **LEMMA GENHN-2** (the SLOT
+> LEMMA) and HE3-0's locus, never GENHN-1's node display, so nothing in the
+> σ-decision chain propagates this erratum; HE6's f₁ ≥ 2 σ-prediction
+> {(2,2),(2,2)} at genre (1,2,4) is proof-only and rests on HE6's own D′h
+> remark. **RESIDUE (GENHN-ERR-1, named honestly):** whether GENHN's own
+> f₁ ≥ 2 count-side displays that substitute the numeric value S = e₁h for
+> the node height (the (μ,K)-cluster read "at the S-node", and any entry-
+> exponent arithmetic keyed to it) need re-reading with D′h is NOT settled
+> here. The law's FORM is unaffected (it is stated as the cluster read AT THE
+> NODE, whatever the node height is), no f₁ ≥ 2 stage genre is machine-
+> exercised, and none is live below n = 8.
+
+> **[r2] ERRATUM 2026-08-09 (LEMMA GENHN-1's per-coordinate budget
+> display — the floor base is the SIDE HEIGHT at the slot's
+> abscissa). Source: passPE1 F2 (CRITICAL, display-scope; count
+> content intact elsewhere — S2's lists, the laws, and the sealed
+> runner's gen_* constructions all use the truth). Tagged repair
+> per the [r1] mechanism; sealed battery untouched.**
+>
+> **ORIGINAL (the boxed display, tagged above):**
+> v(a_{j,i}) ≥ ⌈(μ−j)h + (e₁ − i)h/e₁⌉⁺.
+>
+> **CORRECTED DISPLAY.** The opening-locus floor of the digit
+> coordinate a_{j,i} (abscissa jD′ + i of the entry polygon) is the
+> entry side's height there, ceiled to the digit grid, plus one
+> consumed digit at each entry pin:
+>
+>     v(a_{j,i}) ≥ ⌈((μ−j)D′ − i)·h / e₁⌉ + [pin],
+>     [pin] = 1 iff jD′ + i is an e₁-lattice point whose entry
+>     (residual) digit is consumed — NOT +h,
+>
+> the side of slope h/e₁ through (μD′, 0) evaluated at jD′ + i.
+> The old base (μ−j)h + (e₁−i)h/e₁ = ((μ−j+1)e₁ − i)h/e₁ is the
+> side height ONE KEY-DEGREE too high: at f₁ = 1 (D′ = e₁) it
+> exceeds the truth by exactly h at every slot **[r3 2026-08-09
+> (passPE2 F3): the erratum's own f₁ ≥ 2 magnitude parenthetical
+> — "at f₁ ≥ 2 by more ((μ−j)e₁(f₁−1)h/e₁ + h)" — had the WRONG
+> SIGN and is superseded here. Re-derived: old − correct =
+> ((μ−j+1)e₁ − i)h/e₁ − ((μ−j)e₁f₁ − i)h/e₁ = h(1 − (μ−j)(f₁−1)).
+> At f₁ = 1 this is +h (the clause above stands); at f₁ ≥ 2 the
+> old base does NOT exceed the truth — it COINCIDES at
+> (μ−j)(f₁−1) = 1 and UNDERSHOOTS by (μ−j)(f₁−1)h − h at
+> (μ−j)(f₁−1) ≥ 2. Instance (genre F = (1,2,2), h = 1, j = 0,
+> i = 0): old base 3 < correct base 4. "Too high" is the f₁ = 1
+> story; at f₁ ≥ 2 the old display erred in the OTHER direction —
+> either way the totals at the three instance checks below
+> contradicted the lemma's own no-over/undercount clause, so the
+> correction's substance is unchanged]**. With the old floors the lemma's own
+> clause "total = the entry exponent (no over/undercount)" fails
+> at every checked genre — the display contradicted the statement
+> it sits in.
+>
+> **INSTANCE CHECKS (all data internal to this note + its sealed
+> artifacts):**
+> * E3 = (2,1,3), h = 1: corrected floors (4,3,3,2,2,1), total 15
+>   = S2's entry heights (3h,(5h+1)/2,2h,(3h+1)/2,h,(h+1)/2) + 3
+>   pins = the battery exponent (P6: E3(1) = 512 = 2^{6·4−15}).
+>   Old display: (4,4,3,3,2,2), total 18 ✗.
+> * E31 = (3,1,2), h = 1: corrected (3,2,2,2,1,1), total 11 (P5:
+>   8,192 = 2^{6·4−11}). Old: total 15 ✗.
+> * GENH4 genre E = (2,1,2): corrected (2h+1, ⌈3h/2⌉, h+1, ⌈h/2⌉),
+>   h = 1: (3,2,2,1), total 8 = law_E's exponent
+>   (law_E(2,5,1) = 4,096 = 2^{4·5−8}). Old: total 10 ✗.
+> * NODE RE-DERIVATION (the [r1]/GENHN-ERR-1 seam, arithmetic side
+>   settled at f₁ = 1): from the TRUE floors, dv(A_j) =
+>   min_i(e₁·v(a_{j,i}) + ih) computes to (μ−j)e₁h + 1 = (μ−j)S+1
+>   at f₁ = 1 (min at i = 1: e₁⌈((μ−j)e₁−1)h/e₁⌉ + h) — the
+>   battery-verified node; from the OLD floors it would compute
+>   (μ−j)S + h + 1-ish, contradicting every battery row. At f₁ ≥ 2
+>   the [r1] D′h node stands; GENHN-ERR-1's S-vs-D′h display
+>   residue is otherwise unchanged.
+>
+> **CONSUMPTION AUDIT (every site of the old formula).** (1) The
+> boxed display itself — corrected here, tagged inline. (2) The
+> proof's node parenthetical "e₁⌈(μ−j)h + (e₁−i)h/e₁⌉ + ih ≥
+> e₁(μ−j)h + 1" — already flagged by [r1] at f₁ ≥ 2; now read with
+> the corrected base: e₁⌈((μ−j)D′−i)h/e₁⌉ + ih ≥ (μ−j)D′h + 1 at
+> the unpinned slots, equality realized (the f₁ = 1 case displayed
+> above). (3) No other site: the proof's budget/cancellation text
+> and S2's realizability lists are keyed to the entry heights (the
+> TRUE floors); the sealed runner's gen_E3/gen_E31 use
+> ceil-div TRUE floors (passPE1's tautology audit — battery
+> decorrelated from the false display); GENHN.A(i)'s "explicit
+> budget floors" phrase carries no formula. Downstream consumers
+> (future f-first count units, GENH5-DENS mechanics, Lean
+> fan-outs) must transcribe THIS display, not the sealed one.
+
+**Prehistory/embedding composition (consumed).** Prehistory chains
+compose by GENIND-1(ii) at general m (@ pin); embedded genres (the
+frame = stage × siblings) compose by LEMMA GENIND-3's
+scale-then-Hensel fibration (@ pin), the sibling fiber multiplying
+the stage law — the n = 5 instances (V1E2: sibling fiber
+q^{N−(5h+1)/2} − 1 = the split root's Newton-determined digit count;
+V4E2: fiber (q−1)q^{N−5v₄−1}) are derived in S11's preregistration
+and machine-checked (GN-STAGE2).
+
+## S4. SLOTS AND NO-CANCELLATION (GENHN.A(ii))
+
+> **LEMMA GENHN-2.** Let A = Σ_{i<D′} a_i x^i, a_i ∈ O (any
+> coordinate A_j). Then
+>
+>     dv(A(θ)) = min_i (e₁·v(a_i) + i·h)   EXACTLY,
+>
+> for every root θ of Φ′ and every lift; the minimum's residue class
+> mod e₁ is i·h mod e₁ (distinct for distinct i mod e₁ since
+> gcd(h, e₁) = 1), and at a within-class tie among i, i+e₁, …,
+> i+e₁(f₁−1) the residue is Σ_t res(a_{i+e₁t}θ^{i}·(θ^{e₁}π^{−h})^t
+> π^{ht})-normalized = Σ_t res(a_{i+e₁t})·η^t ≠ 0 because
+> {1, η, …, η^{f₁−1}} are F_Q-independent (deg ψ = f₁). Hence each
+> A_j carries exactly ONE K-digit slot per integer dv-height — the
+> slot's K-digit assembling the f₁ within-class O-digits — and the
+> formal slot-min IS the valuation of the class of A in R: the
+> graded read transcribed pointwise. Across classes there are no
+> ties (distinct residues mod e₁): this is JC-LOAD's no-cancellation
+> holding BY CLASS SEPARATION + RESIDUE-FIELD INDEPENDENCE —
+> elementary, hence not consumed. W-9's dim_K 𝒜(T) = E = e₁ is this
+> statement's graded shadow (cited as frame).
+
+*Proof.* Ultrametric equality when all candidate values are
+attained at distinct heights; distinct classes never tie (dv ≡ ih
+mod e₁). Within a class, divide by the attaining monomial
+θ^iπ^{v}: the competing residues are res(a_{i+e₁t})·η^t, and a
+vanishing F_Q-combination of 1, η, …, η^{f₁−1} with some nonzero
+coefficient contradicts [F_Q(η) : F_Q] = f₁. Residue of the slot =
+that combination — one K-digit. The e₁ = 2, f₁ = 1 instance is
+GENH4-2(E) (parity); e₁ = 1, f₁ = 2 is GENH4-2(F); e₁ = 3, f₁ = 1
+is the E31 three-class computation (machine: the E31 rows). ∎
+
+**The twist (letters only).** Normalizers: for each dv-height m pick
+n(m) := x^{i(m)}π^{a(m)} with i(m)·h + e₁·a(m) = m, 0 ≤ i(m) < e₁.
+Products wrap through θ^{e₁} = (unit lift)·π^h: n(κ)^t =
+ẑ^{fl}·n(tκ) with the explicit integer fl = the wrap count — W-9's
+cocycle, literal. Side residuals assembled with coherent
+normalizers are therefore z-power-twisted slot digits (the S6
+computation and the battery's readers implement exactly this);
+counts are twist-blind (J-D0: (digits) ↦ (twisted digits) is a
+type-preserving bijection), LETTERS are twisted.
+
+## S5. THE WINDOW LEDGER (GENHN.A(iii))
+
+> **LEMMA GENHN-3 (caps, raggedness, consultation).** (a) A computed
+> dv-value is LIFT-STABLE iff < e₁N: an out-of-window O-digit at
+> height v = N in class i = 0 gives dv = e₁N, undercutting every
+> in-window value ≥ e₁N and tying none below it; conversely all
+> in-window slot digits agree across lifts. For f₁ ≥ 2 the boundary
+> band (value readable, K-residue needing an out-of-window
+> component) is adjudicated as GENH4-CAP(F) **[e2-E1 2026-08-09:
+> as CORRECTED at GENH4 r3 (frozen pin 4b0d946) — the band read is a
+> trichotomy of which ONLY the even branch exits UND; the sealed
+> "exits UND exactly as" transcribed the pre-r2 phrasing — ERRATUM E1
+> below]**. (b) The class-i slot
+> string of a coordinate ends at e₁(N−1) + ih: RAGGED across
+> classes; the band beyond min-class end is free depth on every
+> leaf locus. (c) Every digit consulted by a readable event sits
+> strictly inside its class's window: a consulted height m satisfies
+> m < e₁N and m ≡ i(m)h mod e₁, hence m ≤ e₁N − e₁ + (i(m)h mod e₁)
+> ≤ e₁(N−1) + i(m)h — inside the string. (d) Along chains, every
+> update (S6) determines new digits at height d from old digits at
+> heights ≤ d: carries move upward only, both ring types. Hence
+> deep histories never consult the ragged band, and the per-node
+> laws are uniform below the caps. ∎ (proof in the display; (c) is
+> the one-line congruence argument, generalizing GENH4 S4's parity
+> count; (d) is S6's triangularity)
+
+The OB-a resolution, genre-generically: the coherent object is the
+e₁-fold cover (the full integer dv-ladder), raggedness confined to
+the never-consulted band — first measured (QSCOUT22), then a ledger
+(GENH4), now a one-congruence lemma.
+
+> **[e2] ERRATUM E1 2026-08-09 (LEMMA GENHN-3(a)'s band-exit clause —
+> the pre-r2 GENH4-CAP(F) phrasing). Queued at the GENH4-r2 fold
+> (ledger 0089f9b); GENHN is at attempt grade 0/2 (unaccepted), so
+> this is a tagged repair per the [r1] mechanism; the sealed battery
+> runner and artifacts are UNTOUCHED — every battery row has f₁ = 1,
+> where the f₁ ≥ 2 band clause is vacuous.**
+>
+> **ORIGINAL (S5, GENHN-3(a), sealed text):** "For f₁ ≥ 2 the
+> boundary band (value readable, K-residue needing an out-of-window
+> component) exits UND exactly as GENH4-CAP(F)."
+>
+> **CORRECTION.** "Exits UND" transcribes GENH4-CAP(F)'s PRE-r2
+> phrasing (the sealed parenthetical "the reader's dv0 = N → UND
+> exit", found FALSE at GENH4 PE2 GAP 1 and repaired through PE3
+> MINOR 1). The corrected rule — GENH4 r3 at its FROZEN PIN 4b0d946,
+> re-derived there from GENH4-3(i)'s hull partition, checked against
+> the committed counter-keys (2SIDED(3,4) = 384 vs RAM(7) = 128 at
+> (Zp,2,7,k1); 2SIDED(3,5) = 1,536 vs UND = 1,024 at even-N
+> (Zp,2,8,k1)) — is a TRICHOTOMY with pairwise-disjoint antecedents
+> at the band read dv0 = N (w := dv(A₁)):
+>
+>     (a) N > 2w, either parity  → DECIDED 2SIDED(w, N−w);
+>     (b) N ≤ 2w, N odd          → DECIDED RAM(N);
+>     (c) N ≤ 2w, N even         → UND.
+>
+> Only branch (c) exits UND. The sentence is CONDITIONALIZED: at the
+> μ = 2, f₁ ≥ 2 genre the band read follows exactly this r3
+> trichotomy (GENH4-CAP(F)'s own frame, (e₁, f₁) = (1, 2)); at
+> f₁ ≥ 2 genres beyond it (μ ≥ 3, or e₁ ≥ 2 mixed — no battery row,
+> first live n ≥ 8) this note claims the LIFT-STABILITY content of
+> (a) only and NO band-adjudication display — that surface sits with
+> the S9 boxes. GENH4.B's two-term genre-F drainage display (the
+> even-N band term), which S6.3 consumes at pin, is the μ = 2
+> instance of the corrected rule and is unchanged. SOURCE: GENH4 PE2
+> GAP 1 + PE3 MINOR 1; corrected display = GENH4 r3, frozen pin
+> 4b0d946 (accepted body, byte-frozen).
+
+> **[r2] ANNEX 2026-08-09 (the f₁ ≥ 3 band transport DERIVED —
+> discharging passPE1 F3; E2's readability parenthetical scoped to
+> the FIRST band height). E1's corrected sentence claimed the r3
+> trichotomy at every μ = 2, f₁ ≥ 2 genre on (1,2)-shaped authority
+> only; the two-deep band's value-instability (an out-of-window
+> lower-t digit under a computed deeper value) was unhandled. The
+> derivation, in this note's own slot model:**
+>
+> Setting: μ = 2, e₁ = 1 (dv = v, integer slope k = h; the e₁ ≥ 2
+> mixed genres stay OUTSIDE, as E1's exclusion list already
+> scopes). A coordinate's height-m slot assembles the f₁ components
+> res(a_t at v = m − tk)·η^t, t = 0..f₁−1; component t is in-window
+> iff m − tk ≤ N − 1. Heights m ≤ N − 1 are FULLY readable; the
+> band is [N, N + (f₁−1)k − 1] with 1 ≤ comp(m) < f₁.
+> (1) VALUE STABILITY AT m = N. Every unread digit lives at height
+> ≥ N (component t unread ⟹ v(a_t) ≥ N ⟹ height ≥ N + tk ≥ N).
+> At the FIRST band height N the unread data can therefore only
+> JOIN the height-N residue on the complementary basis elements
+> {η^t : t out-of-window}; by GENHN-2's independence a nonzero
+> readable part Σ_{t in-window} res(a_t)η^t cannot be cancelled by
+> any assignment of the unread components: dv₀ = N EXACTLY, for
+> every lift. The full K-residue at N is NOT determined.
+> (2) THE TRICHOTOMY TRANSPORTS VERBATIM AT m = N (band read =
+> readable part nonzero at N, all readable data below N zero;
+> w := dv(A₁)):
+>     (a) N > 2w, either parity → DECIDED 2SIDED: every lift has
+>         u ≥ N > 2w (all determined digits below N vanish) — the
+>         S7 SPLTAIL logic; σ = {(e₁,f₁)} ×2 needs only u > 2w.
+>     (b) N ≤ 2w, N odd → DECIDED RAM(N): by (1) u = N for every
+>         lift; parity consumes no residue.
+>     (c) N ≤ 2w, N even → UND: the 2SIDED-vs-INERT decision at
+>         the halved height needs the FULL K-residue at N, which
+>         comp(N) < f₁ withholds — conservative drain.
+> Census: by (1) the band-pin census at N is Q^{comp(N)} − 1
+> (nonzero READABLE data only) — exactly E2's clause.
+> (3) DEEPER BAND HEIGHTS ARE VALUE-UNSTABLE (the undercut,
+> handled by DRAIN). A first readable-nonzero at m > N leaves
+> u ∈ [N, m] undetermined: an unread component-t digit at any
+> height in [N, m) (e.g. the class-0 digit at exactly N) undercuts
+> the computed m. NO trichotomy is claimed at m > N; those states
+> exit UND conservatively. E2's parenthetical "(the value is
+> [readable]; the full K-residue is not)" is hereby SCOPED to the
+> first band height — at deeper band heights neither is readable.
+> (4) INSTANCES + MACHINE. At (1,2,2), k = 1 the band is the
+> single height N and (1)–(3) collapse to GENH4-CAP(F) r3 (the
+> prior authority). At (1,3,2) — first live f₁ = 3, comp(N) = 2,
+> comp(N+1) = 1 — passPE1's fresh legs adjudicate (2) + the census
+> EXHAUSTIVELY: N = 7 (32,768 states: RAM(7) = 3·2¹³ = (Q²−1)·2¹³,
+> UND = 2¹³) and N = 8 (2,097,152 states: RAM(7) = 7·2¹⁸ =
+> (Q³−1)·2¹⁸ full-slot census below the band, UND = 2¹⁸), plus
+> 36/36 band-RAM PARI jobs at {(2,3)} incl. out-of-window
+> perturbations — machine contact cited, the derivation above is
+> the authority. E1's transport sentence is accordingly UPGRADED
+> from (1,2)-authority to derived at (μ = 2, e₁ = 1, f₁ ≥ 2).
+> SOURCE: passPE1 F3 (GAP) + FR-A/FR-B.
+
+## S6. THE REFINE TRANSFER (GENHN.A(iv)) AND THE BRACKET (CS-2)
+
+### S6.1 LEMMA GENHN-4 (refine transfer at general (e₁, f₁, μ))
+
+Setting: a stage-α event at dv-slope κ (the stage polygon one side
+(0, μκ)–(μ, 0), integer κ > current floor S′, residual (T − s)^μ,
+s ∈ K^×). Recenter Φ′ ↦ Φ′_new := Φ′ + w, w := −ŝ·n(κ)-lift (the
+canonical digit lift; convention-keyed as always).
+
+*The computation, in three layers.*
+1. **Leading graded layer (the kills).** Pass to gr R = the twisted
+   algebra K^c[ℤ/e₁-graded lines] (COROLLARY W-9 @ accepted pin,
+   consumed HERE as the organizing frame — disclosed; GENHN-2 makes
+   the passage pointwise-faithful: one K-slot per height, slot-min =
+   valuation). In gr, the development transforms by the substitution
+   Φ̄′ ↦ Φ̄′ + s̄ on the residual polynomial: the new residual at the
+   node heights is R(T + s) where R(T) = (T − s)^μ, ALL of whose
+   coefficients below degree μ vanish — the μ pins die. The twist
+   powers z^{fl} (S4's cocycle: n(κ)^t = ẑ^{fl_t}n(tκ)) enter both
+   the residual assembly and the carry products IDENTICALLY, so the
+   graded identity holds coefficient for coefficient over K — this
+   is exactly what GENH4 S5 computed by hand at (2,1,2): "the
+   z̄-twist cancels against the key's constant term" is the fl-power
+   bookkeeping at μ = 2, e₁ = 2; and at (1,2,2) the ψ-relation wrap
+   is the f₁-component of the same product rule. Both
+   characteristics: the identity R(T+s) = T^μ is binomial-free as
+   stated (it is a substitution identity, not an expansion).
+2. **Correction layer (everything else lands deeper and in-window).**
+   The non-graded corrections — products w^{i−j}A_i and the x-degree
+   overflow of w·A_i reduced mod Φ′ — have dv strictly greater than
+   the pinned heights: dv(w^{i−j}A_i-correction) ≥ (i−j)κ + (μ−i)κ +
+   1 = (μ−j)κ + 1 (each factor exceeds its side height only in the
+   correction terms; the exact-height products ARE layer 1). By
+   LEMMA GENHN-3(c)(d) they land at in-window positions and move
+   upward only.
+3. **Bijectivity.** The map on digit spaces is triangular (each new
+   digit = old digit + strictly-lower-data), injective, image inside
+   the floored node {dv(A_j) > (μ−j)κ}; onto by cardinality: the
+   refine slice fixes the μ pinned digits and frees exactly the
+   slots above the node floors (slot strings are key-independent —
+   GENHN-2), the same count as the node. Letters: |K| − 1 choices of
+   s per step. ∎
+
+**Grade note (honesty).** At μ = 2 the identity was verified
+pointwise-elementarily by GENH4 (S5, 192,000 refine events, and the
+carry displayed by hand). At general μ, layer 1 CONSUMES the W-9
+graded frame (accepted 2/2) rather than re-deriving the carry
+digit-by-digit; the compensating instrument is GN-REFINE3: every
+stage-α event on the μ = 3 rows is transported by ACTUAL polynomial
+re-division (no formula) and checked to kill exactly the three pins
+and land in the floored node, pointwise. A hostile pass should
+attack layer 2's strictness at mixed (e₁, f₁ ≥ 2) genres (first live
+n = 8, machine-unreachable here — S9 box).
+
+**Invariant maintenance.** Refines add ŝ·n(κ) to the key with
+κ > S′ ≥ e₁h: the key's constant-term valuation f₁h and residual η
+are untouched (the added term sits strictly above the key's own
+side), so S3.1's ring invariants — and with them GENHN-2/-3 — hold
+at every node of every history.
+
+### S6.2 The bracket (CS-2)
+
+By GENHN.A(i)–(iv) the stage system is the (μ, K)-cluster system in
+dv-units at the S-node (ragged-window-corrected). Its own
+α-aggregation is therefore LEMMA GENIND-2(b) @ pin run inside the
+stage verbatim:
+
+    b_{μ,K}(κ) = (|K|−1)·|K|^{(c(μ)+1)κ−1},   c(μ) = μ(μ−1)/2,
+
+per stage-slope-sum κ in dv-units. RECONCILIATION with GENH4 S6.2
+(the μ = 2 display): GENIND's bracket is mass-normalized (it
+includes the ghost fiber |K|^{c(μ)κ} of the α-transport), GENH4's
+ladder telescoping (q−1)q^{δ−1} is the letter-sum with per-node laws
+carrying the floors; they compose as
+(|K|−1)|K|^{2κ−1} = |K|^{κ} · (|K|−1)|K|^{κ−1} (ghost × letters) —
+the two displays are the same law in different normalizations, and
+the (e₁, f₁)-form of GENIND-5's (q−1)q^{2μ−1} is
+(q^{f₁}−1)·q^{f₁(2κ−1)}. One macroscopic rate per ambient v-unit:
+|K|^{e₁·(c(μ)+1)·(v-advance)} — at μ = 2: q^{2e₁f₁Δ}, GENH4's
+q^{e₁f₁Δμ}-per-v₁-half-step, reconciled. [machine: the μ = 3
+bracket exponent c(3)+1 = 4 over K is GENIND's GT-BRACKETID @ pin;
+this battery adds the μ = 3 STAGE realization at the E3 genre.]
+
+### S6.3 Drainage at general genres (GENH4.B's generalization)
+
+Per (entry, history) the conservative exits are slot-string
+computations exactly as GENH4 S6.3: UND = (A₀ all-readable-zero) ×
+(free depth), one exact q-power per stratum, history-dependent only
+through letter factors — the general closed forms are evaluated by
+the slot model (law_Egen in the battery; the e₁ = 3 instances are
+preregistered at never-measured territory). At μ ≥ 3 the stage's
+internal drainage recursion is GENIND.C run inside the stage
+(displayed, same telescoping; its μ ≥ 3 σ-residues sit behind
+[GENHN-HE] exactly as the base case sat behind Ore). No new
+mechanism.
+
+## S7. PROOF OF THEOREM GENHN.C (σ at every μ = 2 stage)
+
+Fix any μ = 2 genre (e₁, f₁ arbitrary, e₁f₁ ≥ 2), any decided stage
+leaf, any lift F ∈ O[x] of a leaf member with disc ≠ 0, any root θ
+of the stage block's factor, L := Frac(O)(θ). Two transported facts
+(both lift-stable by GENHN-3(a), proved exactly as in S3.1 since
+every root of the block shares the key's polygon and residual):
+
+    (T1)  v(θ) = h/e₁, gcd(h, e₁) = 1   ⟹   e₁ | e(L);
+    (T2)  η = res(θ^{e₁}π^{−h}) generates F_{Q^{f₁}} ⊆ k_L
+          ⟹   f₁ | f(L).
+
+Let Y := Φ′^{(t)}(θ) (the current key at θ; S6's chain keeps the
+state exact). Then Y² + A₁(θ)Y + A₀(θ) = 0 with dv(A₁(θ)) = w,
+dv(A₀(θ)) = u EXACTLY (GENHN-2 — which holds verbatim with θ in
+place of a key root: only (T1)/(T2) enter). The block has degree
+2e₁f₁ over the base. The Y-trichotomy (ultrametric analysis of the
+quadratic over L):
+
+* **stage-RAM (u odd, u ≤ 2w).** One-side Y-polygon: v(Y) = u/(2e₁)
+  with u odd ⟹ 2e₁ | e(L) **[r2 2026-08-09: WITH (T1) — v(Y) alone
+  gives only (2e₁/gcd(u, e₁)) | e(L) when gcd(u, e₁) > 1 (e.g.
+  e₁ = 3, u = 9: 2 | e only); gcd(u, e₁) is odd (u odd), so
+  lcm(e₁, 2e₁/gcd(u, e₁)) = 2e₁ — the value-group argument needs
+  both facts. passPE1 F4]**; with (T2): e·f ≥ 2e₁f₁ = block degree ⟹
+  ONE factor, e = 2e₁, f = f₁: σ-block {(2e₁, f₁)}.
+* **stage-2SIDED (u > 2w).** v(Y) ∈ {w/e₁·½·…} — two exact values
+  w/(e₁)−… (in dv-halves: w and u−w, distinct). Norm count: the
+  product of v(Φ′(θᵢ)) over the block's roots equals dv-total u
+  (Res(F_block, Φ′) = ±Nm(A₀), by GENHN-2 at the key's own roots);
+  if the block were irreducible its roots would be conjugate with
+  Galois-invariant v(Φ′(θ)) — contradicted by the two distinct
+  values; j roots at each value with j·w + (2e₁f₁−j)/(2e₁f₁)·…
+  forces the even split j = e₁f₁: two factors, each of degree e₁f₁
+  with (T1)+(T2) forcing e = e₁, f = f₁ on each: {(e₁,f₁),(e₁,f₁)}.
+* **stage-SPLTAIL (A₀ window-hidden, w below the certification
+  bound 2w < e₁N).** Every lift has u_lift ≥ e₁N > 2w (GENHN-3(a)'s
+  undercut floor): a 2SIDED configuration for every lift, including
+  the A₀ = 0 corner (F_block = Φ′(Φ′ + A₁), both factors carrying
+  the key polygon): σ as 2SIDED.
+* **stage-SPLITEQ ('11', roots s₁ ≠ s₂ ∈ K).** One S6 refine step
+  with letter s₁ (the kill needs only R(s₁) = 0) leaves
+  dv(A₁′) = κ exactly with residue s₁ − s₂ ≠ 0 (char 2: = S₁ ≠ 0 by
+  separability) and dv(A₀′) > 2κ: a 2SIDED configuration for every
+  lift — {(e₁, f₁), (e₁, f₁)}. (Hensel at the stage, executed as
+  one refine step.)
+* **stage-INERT ('2', residual irreducible over K).** v(Y) = κ/e₁
+  and Ȳ := res(Y/n(κ)(θ)) is a root of the twisted residual (S4's
+  coherent-normalizer computation): [K(Ȳ) : K] = 2 ⟹
+  [F_Q(Ȳ) : F_Q] = 2f₁ ⟹ f(L) ≥ 2f₁; with (T1) and degree 2e₁f₁:
+  one factor, e = e₁, f = 2f₁: {(e₁, 2f₁)}.
+
+Every case consulted only lift-stable data: (A0)-strong at every
+μ = 2 stage leaf. The (2,1,2)/(1,2,2) instances are THEOREM GENH4.C
+verbatim ({(4,1)}/{(2,1)²}/{(2,2)} and {(2,2)}/{(1,2)²}/{(1,4)});
+the (3,1,2) instance gives {(6,1)}/{(3,1)²}/{(3,2)} — first tested
+here (GN-SIGMA, PARI, wild p = 3 included); (1,3,2) gives
+{(2,3)}/{(1,3)²}/{(1,6)} (visibility-floored, no row — S9 box). ∎
+
+**Remark [r0-battery] (scope: stage data vs ambient window).** The
+theorem's leaf is STAGE data (the A_j digit strings at the stage
+window); "lift-stable" is relative to that data. At EMBEDDED genres
+read through an AMBIENT window N, the stage digits are themselves
+only partially determined by the ambient data — the sibling Hensel
+split loses v(f′(ρ)) digits — so the set of stage leaves CERTIFIED
+by an ambient window is strictly smaller than the stage window
+suggests. This composition fact (machine-surfaced at the smoke run)
+is quantified in GENHN-BOX-4/S11.F; it does not touch this
+theorem's statement or proof.
+
+> **[GENHN-HE(μ ≥ 3)] (THE box; first live n = 6).** At stage
+> leaves of multiplicity μ ≥ 3 (decided by the stage read with
+> separable residuals over K), the σ-decision — every disc ≠ 0 lift
+> factors as the stage dictionary (e₁e_s, f₁f_s) per stage piece —
+> is OPEN. The expected mechanism is this S7 run at degree μ (the
+> norm-count argument needs the case analysis of a degree-μ
+> Y-polygon; equivalently Ore's theorem over the stage ring R),
+> i.e. the same resolvent method one level up; the classical
+> Montes/GMN order-≥2 index theorem is the literature target for a
+> faithful cite. Per-n instance criterion: [GENHN-HE] enters P(n)
+> exactly for the genres with μ ≥ 3 realizable at degree n — none
+> at n ≤ 5; E3/F3 at n = 6, 7; towers add inner instances at
+> n ≥ 8. Machine corroboration (labeled, not proof): GN-SIGMA's E3
+> leg PARI-checks the μ = 3 dictionary on depth-0-decided leaves.
+
+## S8. STAGE TOWERS (LEMMA GENHN-T)
+
+*Proof of (a) (criterion).* By GENHN.A(v) the stage system is a
+(μ, K)-cluster system (in dv-units, ragged-corrected). THEOREM
+GENIND.A(IV) @ pin — whose proof is combinatorial on the polygon
+span and applies verbatim over K on the integer dv-ladder — says a
+CS event inside a system of multiplicity μ requires a side of
+abscissa length ≥ 4: μ ≥ 4. Necessity upward: n ≥ e₁f₁·μ ≥ 2·4 = 8.
+Realization at n = 8: the genre (2, 1, 4) exists with positive
+opening locus at every q (W-12.A entry law); inside it the stage
+side (0, u₀)–(4, 0) with u₀/2 odd and residual (T² − c)² over K
+(stage-e = 2, stage-μ = 2, stage-CS abscissa budget 4 ≤ 4 ✓) has
+positive locus among stage states (the battery's GN-TOWER exhibits
+an explicit member — the first composite-over-composite event ever
+constructed in this program). n = 4..7 tower-free: all realizable μ
+are ≤ 3. ∎
+
+*Proof of (b) (composition).* The inner opening happens inside the
+(μ, K) stage system, which GENHN.A(v) exhibits as a cluster system
+over K with value ladder dv = e₁v and window ledger GENHN-3. Apply
+THEOREM GENHN.CLASS + GENHN.A TO THAT SYSTEM (all of S2–S6 used
+only: complete-DVR base, finite residue field, integer value
+ladder, window with upward carries — all held by the stage system,
+with the ragged band handled by GENHN-3 at each level): the inner
+stage re-bases with (e₂, f₂) relative to K and dv, i.e. ladder
+density e₁e₂ and census field F_{Q^{f₁f₂}} over the base —
+multiplicative composition. σ-dictionaries compose because (T1)/(T2)
+stack: an inner root has v ∈ (1/e₁e₂)ℤ-classes and residue
+generating F_{Q^{f₁f₂}}. Twist layer: the composed normalizer
+cocycles multiply as z-power products; their coherence across
+levels is the (EC-q) ladder grammar (SIGMALAW @ accepted pin — the
+supplier built for exactly this composition), consumed at the
+LETTER layer only; counts remain twist-blind at every level (J-D0).
+GRADE: inherits GENHN.A's clause grades AT EACH LEVEL (in
+particular layer-1 consumption of the graded frame, and
+[GENHN-HE] for inner σ where inner μ ≥ 3 — at n = 8's first tower
+the inner μ = 2, so inner σ is GENHN.C). Depth-≥2 laws are
+machine-unmeasured beyond the GN-TOWER witness (S9 box). ∎
+**[r2 2026-08-09: THIS PROOF OF (b) IS WITHDRAWN — see the annex
+immediately below. Its error: "Apply THEOREM GENHN.CLASS + GENHN.A
+TO THAT SYSTEM" reads the inner opening inside the stage algebra
+R = Ô[x]/(Φ′), where Φ′ ≡ 0; at leaf depth that quotient is not
+evaluation-faithful (the mechanism is derived in the annex).]**
+
+> **[r2] REFUTATION + REPAIR 2026-08-09 (LEMMA GENHN-T(b) → LEMMA
+> GENHN-T(b)′: the tower leaf read is the COMPOSED-KEY development
+> of f itself). Source: GENHN passPE1 F1 (CRITICAL —
+> `GENHN_passPE1_report.md`, instrument `genhn_pe1_fresh.py` FR-D):
+> constructed n = 8 members of the (2,1,4) genre with inner
+> (2,1,2) events, PARI-confirmed on two independent oracle routes,
+> REFUTE the sealed (b): the stage-algebra inner read predicts
+> composed σ {(4,2)} and {(4,1),(4,1)} where the true octics are
+> {(8,1)}; even the σ-agreeing instance had its leaf label
+> mispriced (stage-RAM(21) vs true RAM(25)). Tagged repair per the
+> [r1] mechanism (GENHN at 0/2, unaccepted); sealed battery runner
+> and artifacts UNTOUCHED — the battery had NO tower leaf rows
+> (GENHN-BOX-3 disclosed "tower LAWS (witness only)"); the repair's
+> machine leg is `verification/openmath/genhnr2_supp.py` (GREEN,
+> 147 checks / 0 violations, 3 teeth — the FIRST tower leaf-read
+> coverage: the 4 refuted instances as regression teeth, fresh
+> sweeps at (2,1,4)→(2,1,2) for u₂ ∈ {5,7}, the first f₂ = 2 tower
+> genre (2,1,4)→(1,2,2) over K₂ = F₄, and three parse-gated
+> 3-STAGE instances at n = 16 — corrected read vs PARI exact on
+> every decided leaf, both routes).**
+>
+> **THE MECHANISM (what the stage algebra loses — re-derived, not
+> transcribed).** Work in the two-variable frame: F(x, Y) :=
+> Y^{μ₁} + Σ_J A_J(x)Y^J (the level-1 development with Y a free
+> variable), K₂(x, Y) the inner-key lift, and divide in Ô[x][Y]:
+> F = Σ_j Ĝ_j(x, Y)·K₂^j, deg_Y Ĝ_j < e₂f₂. Monic division is
+> functorial under the coefficient map Ô[x] → R = Ô[x]/(Φ′), so
+> the sealed (b)'s inner read computes EXACTLY Ĝ_j(θ, Y) — every
+> coefficient reduced mod Φ′ (each x-overflow x^{D′+r} priced at
+> its tail value, since Φ′(θ) = 0). But a LEAF evaluates at an
+> actual root x₀ of f, where Φ′(x₀) = Y₀ ≠ 0 — dv₂(Y₀) = u₂ on
+> the node locus — and Ĝ_j(x, Y) − (any lift of Ĝ_j(θ, Y)) ∈
+> Φ′·Ô[x][Y]: the two reads differ by Φ′(x₀)·H_j(x₀, Y₀), a
+> correction at dv₂ = u₂ + dv₂(H_j) which the quotient cannot see
+> and which UNDERCUTS stage-visible pins at leaf depth (the PE1
+> instance: the x-overflow carry 16x² = 16Φ′ + 32 contributes
+> 16Φ′ at dv₂ = 21, under the stage-algebra pin u₂-read 28). The
+> honest leaf object develops f ITSELF by the composed key.
+>
+> **LEMMA GENHN-T(b)′ (tower composition, corrected).** Setting:
+> outer genre (Q; e₁, f₁, μ₁; h), key Φ′ (deg D′ = e₁f₁, S3.1/E3
+> invariants), level-1 development f = Φ′^{μ₁} + Σ_{J<μ₁} A_J Φ′^J;
+> an inner CS event on the stage read: a side of the
+> (J, dv(A_J))-polygon of dv-slope κ₂ = u₂/e₂ (lowest terms,
+> gcd(u₂, e₂) = 1; κ₂ > D′h by the [r1] node floor) carrying
+> residual ψ₂^{μ₂} over K, f₂ := deg ψ₂, e₂f₂μ₂ = μ₁ (FULL inner
+> side — the first-live shape; partial sides sit in
+> [GENHN-TOW-1]). Let Φ₂ ∈ Ô[x] be the COMPOSED KEY: the canonical
+> lift of the inner key,
+>
+>     Φ₂ := Φ′^{e₂f₂} − Σ_{t<f₂} ĉ_t · n̂(u₂(f₂−t)) · Φ′^{e₂t}
+>
+> (ψ₂(T) = T^{f₂} − Σ_t c_t T^t; n̂(m) = x^i π^a the dv-height-m
+> normalizer monomial, i < e₁), monic of degree D₂ := D′e₂f₂. Set
+> dv₂ := e₁e₂·v (the composed ladder). (At f₁ ≥ 2 the coefficient
+> products ĉ_t·n̂ can overflow x-degree D′; their Φ′-carries sit at
+> the same dv-value one Φ′-step right, i.e. STRICTLY ABOVE the
+> inner side — side drop u₂/e₂ per step — so Φ₂'s literal
+> Φ′-development differs from the display only above the side:
+> side and residual are unchanged, and (i)'s proof reads on the
+> literal development.) Then:
+> (i) [COMPOSED CARRIER] every root ξ of Φ₂ has v(ξ) = h/e₁ with
+> η(ξ) a root of ψ, and v(Φ′(ξ)) = u₂/(e₁e₂) with η₂(ξ) :=
+> res(Φ′(ξ)^{e₂}/n̂(u₂)(ξ)) a root of ψ₂; the forcing chain gives
+> e(L₂/base) = e₁e₂, f = f₁f₂, [L₂ : base] = D₂, Φ₂ irreducible,
+> O_{L₂}-residue field K₂ := F_Q(η, η₂) = F_{Q^{f₁f₂}} — carrier
+> in L₂/O_{L₂} per ERRATUM E3 (Ô[x]/(Φ₂) is in general a
+> non-maximal order).
+> (ii) [COMPOSED SLOT LEMMA — GENHN-2′] {x^a Φ′^b : a < D′,
+> b < e₂f₂} is a triangular-unimodular basis of the degree-< D₂
+> polynomials; for A = Σ c_{a,b} x^a Φ′^b (c ∈ Ô) and every x₀ on
+> the tower-node locus ((T1), (T2), and the inner (T1₂): v(Φ′(x₀))
+> = u₂/(e₁e₂) exactly, (T2₂): η₂(x₀) a root of ψ₂ — both proved
+> for the inner block's roots from the level-1 pins as in S7):
+>
+>     dv₂(A(x₀)) = min_{a,b} (e₁e₂·v(c_{a,b}) + a·e₂h + b·u₂)
+>     EXACTLY,
+>
+> and the minimizing residues assemble ONE K₂-digit per
+> dv₂-height.
+> (iii) [THE CORRECTED LEAF READ + σ] with deg f = n = μ₂D₂ the
+> Φ₂-adic development in Ô[x] is f = Φ₂^{μ₂} + Σ_{j<μ₂} C_j Φ₂^j
+> (deg C_j < D₂); the tower-leaf pins are p_j := dv₂(C_j(x₀)) =
+> the composed slot-mins of (ii); the leaf labels and σ are the
+> (μ₂, K₂)-dictionary applied to (p_j) on the dv₂-ladder. At
+> μ₂ = 2 the σ-decision is PROVED (S7 verbatim at the composed
+> data): with (T1′) e₁e₂ | e(L) and (T2′) f₁f₂ | f(L),
+>
+>     composed-RAM (p₀ odd on dv₂, p₀ ≤ 2p₁) ↦ {(2e₁e₂, f₁f₂)}
+>     composed-2SIDED/SPLITEQ/SPLTAIL      ↦ {(e₁e₂, f₁f₂)} ×2
+>     composed-INERT                        ↦ {(e₁e₂, 2f₁f₂)}
+>
+> — the σ-composition FORMULA (e, f) ↦ (e₁e₂·e_s, f₁f₂·f_s) of the
+> sealed (b) SURVIVES, applied to the composed pins; inner μ₂ ≥ 3
+> is [GENHN-HE(μ₂)].
+> (iv) [THE STAGE SHADOW + FAITHFULNESS THRESHOLD] the sealed
+> read = Ĝ_j(θ, Y) (the coefficientwise mod-Φ′ shadow); it agrees
+> with the composed pin at coordinate j iff every discrepancy
+> class Φ′(x₀)·H_j — each at dv₂ ≥ u₂ + dv₂(H_j-class) — sits
+> weakly above BOTH reads' slot-min at j. This inequality HOLDS at
+> the entry/event band (the T(a) geography: entry pins on the
+> inner side, corrections above it — machine-verified at the PE1
+> instances and the P8 witness; its genre-general proof is part of
+> [GENHN-TOW-1]) and FAILS generically at leaf depth (PE1: 3/3
+> constructions; supp sweep: 35/35 COMPARED rows diverge at pin
+> level **[r3 2026-08-09 (passPE2 F4): the r2 figure "35/38"
+> transcribed the output line's "(of 38 tower rows)"; the runner
+> compares stage-vs-corrected pins only on the 35 two-stage rows
+> — the 3 SUPP-C 3-stage rows have no stage read and are skipped
+> before the tally (`continue` at the divergence loop) — and the
+> 35 compared rows ALL diverged; the honest denominator is 35]**).
+> The stage algebra is a projection, not the state.
+> (v) [COUNT-LAW FORM + LEAF LABELS] the tower-leaf STATE is the
+> composed digit strings of (C_j) — one K₂-digit per dv₂-height
+> per coordinate (by (ii)); leaf labels are keyed to COMPOSED pin
+> heights; count laws take the (μ₂, K₂)-cell-law form (W-12.A
+> re-based at (e₁e₂, f₁f₂)) ON THAT KEYING. The sealed note
+> displayed no explicit tower count law (S8(b) priced them only
+> through the withdrawn "no new mechanism" sentence), so the
+> correction is the KEYING plus the label reassignment (see the
+> table below); the composed ENTRY BUDGETS (the GENHN-1 analogue
+> at Φ₂) and the inner refine transfer are NOT derived here —
+> boxed, [GENHN-TOW-1].
+> **GRADE: (i)–(iv) proved below at the displayed generality (full
+> inner side); (v)'s form follows from (ii)+(iii) with the budgets
+> boxed; machine contact = genhnr2_supp.py (first coverage), plus
+> the four PE1 instances as regression teeth.**
+>
+> *Proof of (i).* THE x-POLYGON OF Φ₂ IS ONE SIDE of slope h/e₁
+> through (D₂, 0): the block Φ′^{e₂f₂} sits weakly above that side
+> (multiplicativity of "weakly above a slope") with constant-term
+> valuation e₂f₂·f₁h EXACT (S3.1); each lift-term monomial —
+> x^i π^a from n̂(u₂(f₂−t)) times an x^c π^g monomial of Φ′^{e₂t}
+> (g ≥ (e₂tD′ − c)h/e₁, Φ′^{e₂t}'s own side) — clears the side at
+> abscissa i + c with gap a + g − (D₂ − i − c)h/e₁ ≥
+> u₂(f₂−t)/e₁ − (f₂−t)e₂D′h/e₁ = (f₂−t)(u₂ − e₂D′h)/e₁ > 0, using
+> e₁a + ih = u₂(f₂−t) and THE [r1] NODE FLOOR u₂ > e₂D′h (inner
+> slopes exceed D′h). So the side and its residual ψ^{e₂f₂} come
+> from Φ′^{e₂f₂} alone: v(ξ) = h/e₁, η(ξ) a root of ψ. Next, the
+> level-1 development of Φ₂ is the displayed one BY CONSTRUCTION:
+> 0 = Φ₂(ξ) makes Y_ξ := Φ′(ξ) a root of T^{e₂f₂} −
+> Σ_t ĉ_t(ξ)n̂(ξ)T^{e₂t} whose Newton polygon over L₂ has its pins
+> ON the one side (0, u₂f₂)–(e₂f₂, 0) (monomial values are exact),
+> gcd(u₂, e₂) = 1: v(Y_ξ) = u₂/(e₁e₂) exactly and the twisted side
+> residual is ψ₂ (S4's coherent-normalizer computation, as at
+> S3.1's η): ψ₂(η₂(ξ)) = 0, [K(η₂) : K] = f₂. Forcing chain: the
+> value group contains h/e₁ and u₂/(e₁e₂), and ⟨1/e₁, u₂/(e₁e₂)⟩ =
+> (1/(e₁e₂))·⟨e₂, u₂⟩ = (1/(e₁e₂))ℤ, so e ≥ e₁e₂; f ≥
+> [F_Q(η, η₂) : F_Q] = f₁f₂; ef ≤ [L₂ : base] ≤ deg Φ₂ = D₂ =
+> e₁e₂f₁f₂ forces equality throughout — Φ₂ is the minimal
+> polynomial of ξ, irreducible, O_{L₂}/m = K₂. ∎
+>
+> *Proof of (ii).* Basis: deg(x^a Φ′^b) = a + bD′ hits each degree
+> < D₂ once, leading coefficient 1 — triangular-unimodular. Values:
+> the candidate heights are exact monomial values (dv₂(x^a Φ′^b
+> π^v-part(c)) = e₁e₂v(c) + a·e₂h + b·u₂ by (T1)+(T1₂)); the
+> ultrametric gives ≥ min with equality unless several candidates
+> tie AT the min height. TWO-STEP CLASS SEPARATION: a tie forces,
+> mod e₂: (b − b′)u₂ ≡ 0, hence b ≡ b′ (mod e₂) (gcd(u₂, e₂) = 1);
+> writing b′ = b + e₂t and dividing the height equation by e₂:
+> (a − a′)h ≡ t·u₂ (mod e₁) — so per t the class of a mod e₁ is
+> determined (gcd(h, e₁) = 1): at most f₁ tying monomials per
+> t-value, f₂ t-values, ≤ f₁f₂ in all. TOWER-BASIS INDEPENDENCE:
+> normalizing by the attaining monomial, the competing residues
+> are res(c_{a,b})·u_t·η^s·η₂^t with u_t ∈ K^× fixed units (the
+> wraps x₀^{e₁} = η-unit·π^h, Φ′(x₀)^{e₂} = η₂-unit·n̂(u₂)(x₀),
+> and the S4 normalizer cocycle — all wrap units land in K^×); a
+> vanishing F_Q-combination splits along the K-basis
+> {η₂^t}_{t<f₂} of K₂ into K-components u_t·Σ_s res(c)η^s = 0,
+> each forcing res(c) = 0 ({η^s}_{s<f₁} an F_Q-basis of K). So
+> the min is exact and the height's residue is one K₂-digit. ∎
+> (The e₂ = 1, f₂ = 2 within-class branch — ties resolved by
+> η₂-independence alone — is first machine-exercised by SUPP-B.)
+>
+> *Proof of (iii).* deg f = μ₂D₂ and Φ₂ monic: the development
+> exists, is unique, C_{μ₂} = 1. f(x₀) = 0 makes Y₂ := Φ₂(x₀) a
+> root of T^{μ₂} + Σ_j C_j(x₀)T^j over L := base(x₀) with
+> |C_j(x₀)| read EXACTLY by (ii). (T1′)/(T2′): x₀ lies in the
+> inner block, so v(x₀) = h/e₁ and v(Φ′(x₀)) = u₂/(e₁e₂) with the
+> η/η₂ residues as in (i) — the same forcing gives e₁e₂ | e(L),
+> f₁f₂ | f(L). At μ₂ = 2 run S7's Y-trichotomy verbatim on the
+> quadratic Y₂² + C₁(x₀)Y₂ + C₀(x₀) = 0 with these two transported
+> facts and block degree 2e₁e₂f₁f₂: the three displayed σ-blocks
+> follow exactly as at S7 (RAM: p₀ odd forces 2e₁e₂ | e; 2SIDED:
+> norm count + the even split; INERT: [K₂(Ȳ₂) : K₂] = 2 via the
+> composed slot residue; SPLITEQ/SPLTAIL as at S7). ∎
+>
+> *Proof of (iv).* Functoriality: reducing every coefficient of
+> the division F = Σ Ĝ_j K₂^j under Ô[x] → R is again a monic
+> division in R[Y] with remainders of the same Y-degrees —
+> uniqueness identifies the sealed read with Ĝ_j(θ, Y). The
+> composed object evaluates Ĝ_j(x₀, Y₀) (up to Φ₂-recarry between
+> j-levels, which moves data only within the composed development
+> and does not change the pins p_j of (iii), by uniqueness of that
+> development); Ĝ_j(x, Y) − lift(Ĝ_j(θ, Y)) ∈ Φ′·Ô[x][Y] gives the
+> discrepancy Φ′(x₀)H_j(x₀, Y₀) at dv₂ ≥ u₂ + dv₂(H_j-class); if
+> every discrepancy class clears both slot-mins at j the two reads
+> agree there, else not — and the PE1 instances witness failure.
+> ∎ (No genre-general classification of the faithful region is
+> claimed here — [GENHN-TOW-1].)
+>
+> **CORRECTED LEAF LABELS at the PE1 instances (the (b)-priced
+> labels were wrong even where σ agreed) + supp contact:**
+>
+> | member (n = 8, f = G(x²−2)) | stage-shadow read | corrected read | PARI |
+> |---|---|---|---|
+> | G = Y⁴+16Y+96        | RAM(21) → {(8,1)}          | **RAM(25)** → {(8,1)} | {(8,1)} |
+> | G = Y⁴+16Y³+32Y²+96  | INERT(28,14) → {(4,2)}     | **RAM(21)** → {(8,1)} | {(8,1)} |
+> | G = Y⁴+16Y³+32Y²+224 | 2SIDED(30,14) → {(4,1)²}   | **RAM(21)** → {(8,1)} | {(8,1)} |
+>
+> (+ deep-perturbation variants, identical verdicts; supp sweep:
+> u₂ = 7 rows add stage-INERT(36) vs true RAM(31), and
+> stage-vs-corrected pins diverge on 35/35 compared rows **[r3:
+> the 3 SUPP-C 3-stage rows are excluded from the comparison — no
+> stage read at 3 stages; see the (iv) tally correction above]** —
+> count strata
+> priced through the shadow pins are systematically mislabeled.
+> The f₂ = 2 genre (2,1,4)→(1,2,2): corrected {(4,2)} exact on
+> every decided leaf; 3-stage n = 16: {(16,1)}/{(8,1),(8,1)}
+> exact.)
+>
+> **REMARKS DISPOSITION (passPE1 R1–R4, one line each).** R1: the
+> dispatch's "3-stage tower at n = 8 or 12" is indeed
+> unconstructible (3 stages need μ₁ ≥ e₂f₂μ₂ ≥ 8, n ≥ 16); the
+> supp leg constructs 3-stage members AT n = 16 (parse-gated,
+> PARI-exact) — recorded, no note text change. R2 ([e2]-E3
+> witnesses verified clean): no action. R3 ([e2]-E2 derivation
+> verified; comp = 2 first contact GREEN): consumed by the [r2]
+> annex at E1/E2 (F3 repair), no further action. R4 (GN-TOWER
+> min-n scan verifies the arithmetic minimum only): accurate as
+> stated by the verifier, no action needed.
+
+## S9. HONEST BOXES + THE REMAINING OPEN SURFACE (the endgame list)
+
+### S9.1 This note's boxes
+
+* **GENHN-BOX-1 (grades).** 0/2, composed this session, NO hostile
+  arc. THEOREM GENHN.B inherits the MINIMUM grade over the S10
+  stack: {W-11 ACCEPTED 2/2, GRTJC/JC-LOAD ACCEPTED 2/2, SIGMALAW
+  ACCEPTED 2/2, J-D0 proved @ pin, W-12 0/2 (PE3 owed), HEX3 (r2,
+  PE3 next), HMENU3 (1/2), GENIND 0/2, QSCOUT22 instrument, GENH4
+  0/2, this note 0/2}. Every consequence below is a CONDITIONAL
+  STRUCTURE at exactly that stack — displayed, not upgraded.
+* **GENHN-BOX-2 (the graded-frame consumption).** LEMMA GENHN-4's
+  layer 1 at μ ≥ 3 consumes COROLLARY W-9's twisted algebra as the
+  carry bookkeeping (unlike GENH4, which re-proved its μ = 2
+  instances elementarily). Compensating instrument: GN-REFINE3
+  (pointwise re-division transport at every μ = 3 stage-α event).
+  An elementary general-μ carry display (the GENH4-S5 computation
+  at general (e₁, f₁, μ)) would retire this box; until then the
+  count laws at μ ≥ 3 stand on one accepted weld face.
+* **GENHN-BOX-3 (coverage).** Machine rows exercise: d = 1 ambients,
+  prime q ∈ {2, 3}, genres (2,1,2) [committed n = 4 + fresh n = 5
+  embeddings], (1,2,2) [committed n = 4], (3,1,2) and (2,1,3)
+  [fresh n = 6], one (2,1,4)-tower witness at n = 8. NOT exercised:
+  f-first genres beyond f₁ = 2 (E13/F3: visibility ≥ N = 7 sweeps
+  — constructible in a follow-up), mixed e₁, f₁ ≥ 2 (first live
+  n = 8), tower LAWS (witness only) **[r2: tower LEAF READS now
+  have first coverage — genhnr2_supp.py, 147/0, two genres +
+  3-stage n = 16; tower COUNT laws remain unmeasured,
+  [GENHN-TOW-1]]**, d ≥ 2 ambients (GENIND-BOX-3
+  inherited), q = 4 F-genre rows (QSCOUT22 Q22-BOX-3 inherited).
+  The proofs are uniform in all of these; the coverage gap is
+  machine-side only, named here.
+* **GENHN-BOX-4 (embedded-genre extraction convention + THE
+  CERTIFIED-PERIMETER FINDING [r0-battery]).** The n = 5 stage rows
+  read the extracted block (Newton root + exact division,
+  deterministic); read well-posedness across extraction
+  representatives is GENHN-3(a) + GENIND-1(iii), and the law match
+  is the test. The reader-reimplementation seams of GENH4-BOX-5
+  (pinned QSCOUT22 reader; canonical-lift letters; conservative
+  tails) are inherited verbatim. SHARPENING (machine-surfaced at
+  the smoke run, derivation S11.F): the extracted block is
+  determined by the ambient window-N data only mod explicit
+  per-coefficient floors — the split root is defined mod
+  π^L, L = N − v(f′(ρ)), and solving (x−ρ)(q−Q) = −δQ triangularly
+  gives exact-digit floors per stage coordinate/class. Stage leaves
+  consulting digits at or above the floors are (A0)-WEAK AT THE
+  AMBIENT WINDOW (their σ is not a function of the swept data —
+  verified: PARI exhibits both agreement and disagreement in the
+  uncertified tail, e.g. V1E2(2,5,1)-RAM(9), while every certified
+  leaf matches exactly). COUNT laws are untouched (the truncated
+  read is a bijection of window data — GN-STAGE2 exact at full N).
+  Consequence for the theory: the embedded-genre σ-certification
+  cap composes as N ↦ N − (sibling Hensel loss) coordinate-wise —
+  GENHN-3(a) at the composed read; the battery's σ legs on
+  extracted rows are gated at exactly this perimeter (cert_table_E
+  / leaf_cert_E), with the uncertified tail measured as labeled
+  diagnostics. GENHN.C itself (a statement about stage data) is
+  unaffected.
+* **GENHN-BOX-5 (P(5) density display owed).** P(5) fires (GENHN.B);
+  the SEVENTEEN quintic R_τ(q) displays + Σ = 1 + engine/β₅ tie are
+  a mechanical GENH4-S9-style assembly NOT executed here — a
+  one-unit follow-up (GENH5-DENS), explicitly owed.
+* **[GENHN-TOW-1] [r2 2026-08-09] (the composed-key tower box —
+  what LEMMA GENHN-T(b)′ leaves open at n ≥ 8 tower genres).**
+  T(b)′ (S8 annex) PROVES the composed carrier, the composed slot
+  lemma GENHN-2′, the corrected leaf read with inner-μ₂ = 2 σ, and
+  the stage-shadow faithfulness criterion. STILL OPEN, boxed here:
+  (1) the composed ENTRY BUDGETS (the GENHN-1 analogue at Φ₂: the
+  tower-node locus's per-coordinate composed digit floors) and
+  with them measured tower COUNT laws (supp leg = leaf-read first
+  contact only); (2) the inner REFINE TRANSFER at the composed key
+  (GENHN-4 one level up — needed for deep tower histories); (3)
+  the genre-general FAITHFULNESS geography (in particular T(a)'s
+  event-band survival as a theorem — currently machine-verified at
+  the PE1 instances + the P8 witness); (4) PARTIAL inner sides
+  (e₂f₂μ₂ < μ₁: the inner sibling split at the composed level);
+  (5) the composed WINDOW/certification ledger (GENHN-3 + BOX-4 at
+  dv₂); (6) **[r3 2026-08-09 (passPE2 F1)] the ITERATED key
+  composition (depth ≥ 3; first live n = 16 — the R1 arithmetic: a
+  third stage forces μ₁ ≥ e₂f₂μ₂ ≥ 8, hence n ≥ D′μ₁ ≥ 16).**
+  T(b)′ is ONE composition step and does NOT self-apply: its
+  setting requires a key whose x-polygon residual is IRREDUCIBLE
+  and whose normalizers are the MONOMIALS n̂(m) = x^iπ^a (i < e₁),
+  while the composed key Φ₂ re-enters with residual the POWER
+  ψ^{e₂f₂} ((i)'s proof) and with dv₂-ladder normalizers that are
+  Φ′-POLYNOMIALS. What the iteration IS (re-derived at this repair
+  from the r2 mechanism, matching the supp's 3-stage construction):
+  the level-2 normalizers are the LADDER MONOMIALS n̂₂(m) =
+  π^a x^i Φ′^b (i < e₁, b < e₂), unique in that range per
+  dv₂-height m = a·e₁e₂ + i·e₂h + b·u₂ by GENHN-2′'s two-step
+  class separation — witness n̂₂(21) = 16Φ′ (a = 4, i = 0, b = 1;
+  the supp runner's n₂(21), genhnr2_supp.py 51154c95… L388–389);
+  the level-3 key is Φ₃ := Φ₂^{e₃f₃} − Σ_{t<f₃} k̂_t·Φ₂^{e₃t} with
+  k̂_t a dv₂-height-u₃(f₃−t) ladder lift of the ψ₃-coefficient
+  c_t ∈ K₂ (K₂-digit lifts need (ii)'s slot grammar, not
+  x-monomial lifts — the third re-entry change); witness Φ₃ =
+  Φ₂² − 16Φ′ (ψ₃ = T−1, u₃ = 21). A T(b)″ — the iterated
+  carrier/slot/read at depth ≥ 3 — was ATTEMPTED at this repair
+  and develops one precise hole plus one inherited dependency,
+  both displayed: (α) the level-by-level ascent that forces a
+  Φ₃-root ξ's intermediate data — v(Φ′(ξ)) = u₂/(e₁e₂) exact with
+  η₂(ξ) a ψ₂-root, the input (ii)'s slot lemma needs at ξ — needs
+  the Φ′-adic development of Φ₃ to be ONE-SIDED of
+  slope κ₂ with residual a ψ₂-power. TRUE at the witness by an
+  EXACT CARRY CANCELLATION — Φ₃ = Φ′⁴ − 8xΦ′² + 16x² − 16Φ′, and
+  the x-overflow carry 16x² = 16Φ′ + 32 kills the −16Φ′ term
+  exactly: Φ₃ = Φ′⁴ − 8xΦ′² + 32 (re-computed at this repair),
+  dv-pins (4,0) and (0,10) on the side, (2,7) strictly above
+  (side height 5), one side of slope 5/2 = κ₂, residual
+  T² + 1 = ψ₂² over F₂ — but the genre-general carry-cancellation
+  bookkeeping is genuine Okutsu-optimality content, unproved
+  here; (β) the iterated node floor κ₃ > dv₂(x^{D₂}) (21/2 > 8 at
+  the witness) has no proved provenance at depth ≥ 3 — its level-2
+  analogue was the [r1] node floor, proved from GENHN-1's entry
+  budgets, and the depth-3 analogue rides item (1)'s composed
+  entry budgets. Machine evidence: the supp leg's three
+  parse-gated 3-stage n = 16 instances (SUPP-C) are EXACT vs PARI
+  on both routes ({(16,1)}/{(16,1)}/{(8,1),(8,1)}; output
+  664036bc…) — the iterated read is machine-witnessed TRUE at the
+  first live degree, and unproved. Items (1)–(5) first live
+  n = 8; item (6) first live n = 16; the box is empty at n ≤ 7.
+  Inner μ₂ ≥ 3 σ is NOT
+  here — it is [GENHN-HE(μ₂)].
+
+### S9.2 THE REMAINING OPEN SURFACE (the program's endgame
+inventory — everything between HERE and the unconditional full
+uniformity theorem, by name)
+
+MATHEMATICS (new theorems needed):
+1. **[GENHN-HE(μ ≥ 3)]** — the σ-decision at stage leaves of
+   multiplicity μ ≥ 3 (S7 box; first live n = 6; the resolvent
+   method at degree μ / Ore over the stage ring; Montes order-≥2 is
+   the faithful-cite target). THE one load-bearing open lemma of
+   the whole composite program.
+2. **GENHN-BOX-2's elementary carry** (optional-but-hardening: an
+   elementary general-μ refine-transfer display, retiring the weld
+   face from inside the μ ≥ 3 count laws).
+2b. **[r2] [GENHN-TOW-1]** — the composed-key tower residue (S9.1
+   box): composed entry budgets + inner refine transfer +
+   faithfulness geography + partial inner sides + composed window
+   ledger **[r3 2026-08-09 (passPE2 F1): + the iterated depth-≥ 3
+   key composition (item (6), first live n = 16)]**; load-bearing
+   for P(n) at n ≥ 8 ONLY (empty at n ≤ 7);
+   the leaf read itself and inner-μ₂ = 2 σ **[r3: full inner
+   sides (passPE2 F2); partial sides are item (4)]** are PROVED
+   (LEMMA GENHN-T(b)′, S8 annex).
+
+COMPRESSIONS TO EXPAND (proved-as-schema, per-genre ledgers owed on
+demand — the GENIND-BOX-2 discipline):
+3. **GENIND-3's β-route ledgers** at n ≥ 6 multi-child genres
+   (@ pin) and this note's entry-pattern fibers beyond the n ≤ 6
+   instances.
+
+MACHINE COVERAGE (proofs uniform, rows absent — GENHN-BOX-3):
+4. f-first n = 6, 7 rows (E13/F3), mixed (2,2,2) + tower laws at
+   n = 8, d ≥ 2 ambients, q = 4 genre-F kit.
+
+DISPLAYS OWED (mechanical):
+5. **GENH5-DENS** (the quintic densities; GENHN-BOX-5) and the
+   public-map fold at this milestone (standing directive).
+
+HOSTILE ARCS (process debt, per the acceptance discipline):
+6. GENIND → QSCOUT22-adjacent → GENH4 → THIS NOTE at 0/2; W-12 PE3;
+   HEX3 PE3; HMENU3 PE4 (accepting).
+
+LEAN / PHASE B (unchanged by this note; the standing repo
+obligations): the M9-rebase Phase-B items (omMenu growth beyond
+order 0, SelfLoopHNode legs, hExhaust, faithful tame-FE cite) and
+the eventual formalization of the n-uniform scaffold (math-first
+directive: Lean waits for arc-stable statements).
+
+Items 1 + 6 are the critical path; 2–5 are hardening and owed
+displays. That the whole program's remaining mathematics fits in
+this list is THEOREM GENHN.B's content.
+
+## S10. CONSUMERS + CONDITIONALITY STACK (as-of pins)
+
+* **GENIND** @ 4682bcf (verdict 4984004; 0/2): GENIND.A(I)(II)(IV),
+  GENIND-0/1/2/3, GENIND.C, GENIND.B — the scaffold this note's
+  discharge feeds; the stage-internal reuse of GENIND-1/2/3 over K
+  (S6.2, S8) consumes their proved (m, d)-uniformity.
+* **GENH4** @ 121d9ab/4b5c085 (0/2): the μ = 2 (2,1,2)/(1,2,2)
+  instances of every lemma; law_E/law_F @ runner md5 pin
+  ee8024b7a500220a6408dab373d7432f.
+* **QSCOUT22** @ dd67cda (instrument): the pinned quartic reader
+  (runner md5 cb885663dd4ef6dfda9c28a67c1a076e) + committed table
+  (results md5 6c2441a12cf52ffd43055de912a4affe).
+* **W-12.A/S2.5 + W-12.D** @ f669cb0/99f1813 (0/2, PE3 owed): entry
+  laws at every degree; the firing reduction.
+* **W-11** @ 7020ceb/31506b3 (ACCEPTED 2/2): the μ = 2 re-basing
+  target.
+* **GRTJC W-6..W-9 + JC-LOAD/W-8** @ 83f47f4 (ACCEPTED 2/2):
+  consumed at LEMMA GENHN-4 layer 1 (μ ≥ 3) — the ONE weld face
+  inside a count law, disclosed (GENHN-BOX-2); elsewhere frame-only
+  (GENHN-2 re-proves the slot geometry elementarily).
+* **J-D0** @ 9387eb1 (proved): letter/twist-blindness of counts.
+* **DULEMMA** @ f819f26: applicability checked (stage rings e₁ ≥ 2
+  on its perimeter), NOT consumed (S3.1 proves the valuation
+  directly).
+* **SIGMALAW** @ a27ed68 (ACCEPTED 2/2): the (EC-q) ladder, named at
+  S8(b)'s letter-layer composition only; no count consumption.
+* **HEX3 / HMENU3** @ r2 f60348b + a707430 pins (arcs live): P(3)
+  and the n = 3 telescoping template (via GENIND @ pin).
+* **Classical:** Hensel, Ore order-1, ultrametric quadratic
+  analysis over complete fields, finite-field censuses.
+
+**One line: THEOREM GENHN.CLASS + GENHN.A(i)–(iii) + GENHN.C +
+GENHN-T(a) rest on {GENIND lemmas, W-12.A, W-11, classical} @ pins
+with no weld face; GENHN.A(iv) at μ ≥ 3 adds ONE accepted weld face
+(W-9, disclosed); GENHN.B adds GENIND.B + W-12.D @ pins and the box
+family [GENHN-HE(μ ≥ 3)]. No axiom anywhere; grade = composition
+0/2.**
+
+**[e2] S10 REFRESH 2026-08-09 (dated append at the erratum round;
+as-of the wave-13 fold 606821e + this round's own commits,
+per-commit-timestamp rule). Supplier movements since the pins above
+— enumerated statuses only; the consumed-clause audit for the shared
+suppliers is GENIND S16's fired-clause table @ dcc20bb:**
+* **GENH4: ACCEPTED 2/2, FULLY FROZEN.** Accepted body byte-frozen
+  at r3 4b0d946; annex stack (ANNEX PE5 baf05ed, ANNEX R b10a5a7 =
+  the Codex CHALLENGE 5c8d2fd discharge, ANNEX R2 760d20f, dated
+  corrections 6568114) itself accepted 2/2 at annexpass3 7f27065.
+  Consumed here: law_E/law_F @ runner md5 pin ee8024b7…432f
+  (byte-untouched through the whole arc) + the μ = 2 instances. The
+  three GENH4-side corrections that LAND on this note are executed
+  as this round's errata: E1 (GENHN-3(a) band exit, r3 trichotomy @
+  4b0d946), E2 (GENHN.A(v) comp-weighted band census, [r2] display
+  re-derived), E3 (GENHN.A(i)/S3.1 L/O_L carrier, ANNEX R R3).
+* **HE7: ACCEPTED 2/2, FULLY FROZEN** (final dated corrections
+  ca3754d; body prefix md5 732af1e1, dated appends only). Not a
+  supplier of this note's count laws; its D′h remark is consumed by
+  the [r1] erratum (S3.2 annex) as recorded there.
+* **GENIND: 1/2** — PE7 CLEAN @ 380bc66 + post-PE7 micro-annex
+  b653858 (byte-freeze verified there); acceptance attempt
+  dispatched at wave 14. Its r6 supplier re-pin round (dcc20bb)
+  walked THIS note's consumed surface (7 cite sites, completed at
+  the micro-annex) and reports SURVIVES at 850e77e — the [r1]/[e2]
+  repairs touch none of the 7 consumed sentences' count content.
+* **W-12: r5 @ be4a1dc/ee17210 (0/2), PE6 dispatched (wave 14).**
+  HEX3: r3 @ b6a1d69 (0/2). HMENU3: ACCEPTED @ 050425d + ANNEX A
+  19c0285. W-11, GRTJC, SIGMALAW, J-D0, DULEMMA, QSCOUT22: pins
+  unmoved as listed above.
+* **ARC LINE (honest).** With HE7 and GENH4 through both bars, and
+  the three queued errata (E1/E2/E3) now executed, **GENHN's OWN PE1
+  IS UNBLOCKED**: this note stands at 0/2 (composed, [r1] + [e2]
+  tagged repairs, no hostile pass yet) and is next in the
+  hostile-arc queue. S9.2 item 6's arc list reads accordingly at
+  this date: GENIND 1/2 (accepting), GENH4 DONE (2/2 frozen), THIS
+  NOTE PE1 next; W-12 PE6 and the HEX3/HMENU3 lines as pinned
+  above.**
+* **[r2] ARC LINE UPDATE 2026-08-09.** passPE1 ran (report
+  `GENHN_passPE1_report.md`): NOT CLEAN — F1 CRITICAL refuted
+  LEMMA GENHN-T(b) at n = 8 tower leaves (the program's first
+  displayed-lemma refutation), F2 CRITICAL the GENHN-1 budget
+  display, F3 GAP the f₁ ≥ 3 band transport, F4/F5 minor. THIS
+  round ([r2] tags, commits at the r2 fold): T(b)′ stated and
+  PROVED with machine leg `genhnr2_supp.py` (147/0, 3 teeth, first
+  tower leaf coverage incl. an f₂ = 2 genre and 3-stage n = 16);
+  F2 display corrected + consumption audit; F3 derived (E1
+  upgraded); F4/F5 one-line riders. CONSEQUENCE: GENHN.B's
+  conditionality now carries [GENHN-TOW-1] at n ≥ 8 (n ≤ 7
+  unchanged); consumers with n ≥ 8 instances (GENIND's (CS-1)/
+  (CS-2) citations, the S9.2 endgame list, PROJECT_STATE's
+  uniformity display) inherit that box — cross-note status is the
+  orchestrator's fold, flagged here. Clean count 0/2 → 0/2; PE2
+  next.
+* **[r3] ARC LINE UPDATE 2026-08-09.** passPE2 ran (report
+  `GENHN_passPE2_report.md`, 701c7b1): NOT CLEAN — 0 CRITICAL +
+  2 GAP + 2 MINOR. LEMMA GENHN-T(b)′ (i)–(iv) HELD against
+  re-derivation and against a fresh instrument
+  (`genhn_pe2_fresh.py`, GREEN 219/0, 4 teeth, incl. first
+  outer-f₁ = 2 tower genres, first 2-stage dictionary contact,
+  the η₂-cocycle adjudication, and Q = 4 tower legs); both GAPs
+  were coverage defects of the r2 DISPLAYS around the held
+  lemma. THIS round ([r3] tags): F1 — the depth-≥ 3 iterated key
+  composition (first live n = 16) BOXED as [GENHN-TOW-1] item
+  (6): the iterated ladder-normalizer and key data are DERIVED
+  there (n̂₂(m) = π^a x^i Φ′^b; Φ₃ = Φ₂^{e₃f₃} − Σ k̂_tΦ₂^{e₃t};
+  witnesses n̂₂(21) = 16Φ′, Φ₃ = Φ₂² − 16Φ′) and a T(b)″ was
+  honestly ATTEMPTED — its two open steps are displayed in the
+  item (the intermediate-development one-sidedness, true at the
+  witness by an exact carry cancellation, unproved in general;
+  the depth-≥ 3 node floor's provenance, riding item (1)); the
+  GENHN.B tower clause and corrected-conditionality display now
+  name the depth split (n ∈ {8, …, 15}: depth-2, T(b)′'s one
+  step + items (1)–(5); n ≥ 16: item (6) joins). F2 — the (CS-3)
+  rider scoped to FULL inner sides ((iii)'s proved perimeter);
+  partial-side inner μ₂ = 2 leaves (first live n = 10) ride item
+  (4), with the passPE2 n = 10 witness and the reader's loud
+  refusal cited at the rider. F3 — the budget erratum's f₁ ≥ 2
+  magnitude parenthetical sign corrected (old − correct =
+  h(1 − (μ−j)(f₁−1)); genre-F instance re-derived). F4 — the
+  (iv) divergence tally denominator corrected to 35/35 compared
+  rows (the 3 SUPP-C 3-stage rows have no stage read). Machine
+  support: ADDITIVE citations only (SUPP-C's three 3-stage
+  n = 16 instances at the existing pins 51154c95…/664036bc…;
+  the passPE2 fresh-instrument pins 4a28246e…/10b685b0…); sealed
+  runners and artifacts byte-untouched; the item-(6) witness
+  arithmetic (Φ₃'s carry cancellation, the dv-pins, the F3 sign)
+  re-computed at this repair, not transcribed. Consumers:
+  GENIND's n ≥ 8 conditionality line inherits the refined
+  n ≥ 10 / n ≥ 16 scoping — orchestrator's fold, flagged here.
+  Clean count 0/2 → 0/2; PE3 next.
+
+## S11. THE SEALED BATTERY (sealed at commit 1; predictions
+preregistered BEFORE the first full run)
+
+### S11.A Instrument + provenance
+
+`verification/openmath/genhn_checks.py`, two-commit seal (commit 1 =
+this note + the runner, full battery UNRUN; commit 2 = §S12 verdict
+appended FROM the committed artifacts `genhn_checks_output.txt` /
+`genhn_checks_results.json`). Pins (md5, checked as family GN-PIN):
+genind_checks.py e7ca150b…aca2 · genh4_checks.py ee8024b7…432f ·
+qscout22_checks.py cb885663…076e · w10_checks.py a9c34244…380b ·
+w12_checks.py 7dc040d9…d418 · genind_checks_results.json
+366f2143…96f6 · qscout22_results.json 6c2441a1…4affe.
+PROVENANCE: the runner was drafted by the interrupted prior
+incarnation and re-audited line-by-line as UNTRUSTED by the fresh
+continuation — laws, twist corrections (E31 i₁=2 wrap z⁻¹; the
+E3/tower wrap exponent), node floors, and all flagship volumes
+re-derived by hand — then ADOPTED with two repairs (R1 irreducible
+table 4→6; R2 the three Q-genre names, de-vacuifying their
+PREDICTED-ABSENT checks); disclosed in the runner docstring.
+
+### S11.B Families + teeth
+
+GN-PIN (7 pins) · GN-CLASS (n=5/n=6 sweeps: grammar at all depths,
+flagships, visibility floors, genind-reader tie on n=5) · GN-LAWTIE
+(law_Egen(e₁=2) ≡ pinned law_E, 5 grid points) · GN-FIB (constructed
+loci: frames parse to genre, volumes = entry laws) · GN-STAGE2 (the
+μ=2 stage law at THREE fresh genres, both directions) · GN-E3 (the
+μ=3 stage: species partition + UND3/RAM3/ALPHA3 laws) · GN-REFINE3
+(pointwise μ=3 refine transport: every stage-α event re-divided,
+three pins dead, floored node) · GN-TOWER (criterion + the n=8
+witness + min-n scan) · GN-SIGMA (PARI factorpadic vs dictionary;
+extraction-certified perimeter on V rows — S11.F). TEETH (each must
+fire ≥1 else RED): GN-T-LAT (E31 law collapsed to integer lattice) ·
+GN-T-CEN (INERT census ×2) · GN-T-SIG (E31 RAM σ {(6,1)}→{(3,2)}
+must be caught by PARI) · GN-T-CRIT (grammar bound e₁f₁μ ≥ 4 dropped
+to ≥ 3 must accept an order-1 (3)-child fake that the true grammar
+rejects) · GN-T-NODE (E3 construction a₀₀ floor off-by-one must
+break the volume).
+
+### S11.C Rows
+
+CLASS: (Zp,2,5,n5)+(Fqt,2,5,n5) [tie=ON], (Zp,2,4,n6)+(Fqt,2,4,n6),
+(Zp,3,3,n6)+(Fqt,3,3,n6). ((Zp,2,5,n6) = 16.7M states DROPPED for
+runtime, disclosed.) V1E2: (Zp,2,5,1), (Zp,2,6,1), (Zp,3,4,1),
+(Fqt,2,6,1). V4E2 (v₄=1, h=3): (Zp,2,8,3), (Fqt,2,8,3). E31:
+(Zp,2,4,1), (Zp,2,5,1), (Zp,3,3,1) [wild p=3, e₁=3], (Fqt,2,5,1).
+E3: (Zp,3,4,1), (Zp,2,5,1), (Fqt,2,5,1). TOWER: the constructed
+n=8 witness at (Zp,3,6). ORACLE: PARI legs on all Zp sinks, sampled
+by the per-row steps in main().
+
+### S11.D Preregistered predictions (never-measured territory
+flagged ★)
+
+* **P1 (CLASS flagships).** V1E2(1) = 12,288 at both n=5 rows
+  (= the committed GENIND row, machine-tied); E3(1) = 512 ★ and
+  E31(1) = 8,192 ★ at both (2,4,n6) rows; E31(1) = 4,374 ★ at both
+  (3,3,n6) rows. PREDICTED-ABSENT: V4E2/V1E1Q/V4E1Q/FULLQ at n=5;
+  F3/E13/F2X + E2X at (2,4,n6); F3/E13/F2X + E3 at (3,3,n6). Every
+  CS event at every depth parses under the strict grammar
+  (μ ≥ 2, e₁f₁ ≥ 2, 4 ≤ e₁f₁μ ≤ m ≤ n, span ≥ e₁f₁μ). Tie rows:
+  verdict + σ + depth-0 event agree with the pinned GENIND reader
+  on all 2×2²⁰ states.
+* **P2 (LAWTIE).** law_Egen(q,N,h,e₁=2) ≡ law_E(q,N,h) at (2,5,1),
+  (2,6,1), (2,7,3), (3,5,1), (5,4,1).
+* **P3 (V1E2 re-based law).** obs ≡ law_E(q,N,h) × (q−1)(q^{N−(5h+1)/2}−1)
+  per key, both directions; totals 12,288 / 458,752 / 26,244 /
+  458,752. Escapes = 0.
+* **P4 (V4E2 ★ FIRST measurement — GENIND's law was
+  derivation-only).** obs ≡ law_E(2,8,3) × (q−1)²q^{N−5v₄−1} = ×4;
+  totals 65,536 + 65,536. Escapes = 0.
+* **P5 (E31 ★ the first e₁=3 stage law ever measured).** obs ≡
+  (q−1) × law_Egen(q,N,h,e₁=3) per key; totals 8,192 / 524,288 /
+  4,374 / 524,288; per-member node floors dv₁ > 3h, dv₀ > 6h at
+  entry and > κ-floors along chains.
+* **P6 (E3 ★ the first μ=3 stage ever read).** Totals
+  (q−1)q^{6N−(21h+9)/2}: 39,366 / 32,768 / 32,768; zero stage-CS;
+  per-member floors dv_j > (3−j)·2h. Laws: UND3 = (q−1)q^{#(s₀≥cap)+|s₁|+|s₂|};
+  RAM3(u₀)/ALPHA3(κ) per the coded formulas. Spot instances: at
+  (Zp,3,4,1): UND3 = 13,122, RAM3(7) = 26,244, no ALPHA3, and
+  13,122 + 26,244 = the whole row; at (Zp,2,5,1): UND3 = 4,096,
+  RAM3(7) = 16,384, RAM3(8) = 4,096, ALPHA3(3) = 512.
+* **P7 (REFINE3 ★ the μ=3 transfer, pointwise).** Stage-α events
+  live exactly at the (·,2,5,1) E3 rows (κ=3; the (3,4,1) row has
+  none — 3κ ∉ s₀): 512 events per row, each transported by ACTUAL
+  re-division; all three pins dead and in the floored node — 1,536
+  pin checks per row, 0 violations. This is GENHN-BOX-2's
+  compensating instrument.
+* **P8 (TOWER ★ the first composite-over-composite event ever
+  constructed).** The (Zp,3,6) witness: frame parses
+  ('EMB',8,(0,8),2,1,4,1); stage dvs (10,None,5,None); stage hull
+  one side (0,10)–(4,0), (e_s,g) = (2,2); twisted inner residual
+  rc = (T−1)² — stage-CS FIRES inside the μ=4 stage; min-n scan
+  = 8; zero stage-CS anywhere else in the battery.
+* **P9 (SIGMA).** Certified jobs: 0 bad — V1E2/V4E2 composed
+  σ = SIG_E + {(1,1)}; E31 {(6,1)}/{(3,1)²}/{(3,2)} including
+  ★ wild p=3 at an e₁=3 stage (never-oracled territory); E3
+  depth-0-decided σ ([GENHN-HE(3)] corroboration, labeled — an
+  OPEN box, not proof). Diagnostic tail (S11.F): reported, not
+  scored; at (Zp,2,5,1) it is exactly the RAM(9) family (384 jobs
+  at step 1) and is PREDICTED to contain mismatches.
+* **P10 (teeth).** All five fire; verdict GREEN ⟺ 0 violations ∧
+  all teeth ≥ 1.
+
+### S11.E Smoke record (wiring only; no artifacts written; fully
+disclosed)
+
+Smoke 1 (post-audit-repairs): RED — 6 GN-SIGMA mismatches, ALL at
+(Zp,2,5,1) V1E2 RAM(9) (claimed {(1,1),(4,1)}; PARI {(1,1),(2,2)}
+or {(1,1),(2,1),(2,1)}); every other family clean (1.08M checks).
+Discovery event for S11.F. A lift-perturbation probe + per-u₀
+resampling confirmed: RAM(5)/RAM(7) exact (certified), RAM(9)
+mismatching (uncertified), exactly at the derived floors. Smoke 2
+(certification gate added): GREEN — 1,081,425 checks, 0 violations,
+all 5 teeth, certified σ 720/720, diagnostic tail 24 jobs / 6
+mismatches, 50.8s. No full row ran before seal.
+
+**RE-SEAL (disclosed; predictions byte-unchanged).** Full run 1
+(from the commit-1 seal) CRASHED at the first V4E2 row on
+newton_root's own guard `assert vd <= dvf` — an infrastructure
+bug the audit missed: Newton started at rho = 0, where
+f′(0) = b₁ has v ≥ v₄+(3h+1)/2 > 4v₄ (V1E2 was immune: its b₁ is
+pinned at exactly 2h). Every row completed before the crash matched
+its P1/P3 prediction exactly (all six CLASS flagships; V1E2 totals
+12,288 / 458,752 / 26,244 / 458,752 with 0 violations; log
+preserved). Fix: basin-started Newton — V4E2 rows start at the
+split-side residual root −res(b₄,v₄)·π^{v₄} (dominant balance
+x⁴(x+b₄)); v(f′) = 4v₄ throughout the basin and the loss law
+L = N−4v₄ of S11.F is unchanged. No prediction, law, gate, or
+dictionary was touched. **RE-SEAL 2 (disclosed; predictions still
+byte-unchanged).** Full run 2 completed end-to-end — 2,223,050
+checks with ZERO mathematical violations, all five teeth (fired
+2/2/2/2/1 across rows), certified σ 0-bad on every ANSWERED job,
+and the diagnostic tails exactly as S11.F predicts (V p=2:
+1,216 uncertified jobs / 350 mismatches **[r2 2026-08-09
+reconciliation vs S12 P9's 349 (passPE1 F5): run 2's 350 counts
+one of the 4 gp precision-misses below — a tail job scored None —
+as a mismatch; the retry-laddered scoring run 3 answers it and
+reproduces 349 deterministically (passPE1's isolated re-run
+concurs). 350 = 349 + 1 None; no tail row changed]**; V p=3:
+241/58; all
+full-side legs 0/0) — but went RED on ONE oracle-infrastructure
+seam: 4 of the 20,800 V p=2 gp jobs got no answer
+(`idealprimedec: precision too low in get_norm` inside the pinned
+sig's factorpadic-200 lift; the gp REPL skips the erroring line),
+scoring as 1 truncation + 3 None-mismatches. Forensics: the 4 jobs
+were reproduced deterministically and re-asked individually at
+precisions 50/100/400 — all four answer {(1,1),(4,1)}, CONFIRMING
+their prediction. Fix: run_oracle gains a per-miss retry ladder
+(same independent PARI question, different working precision);
+misses surviving the ladder still score as violations. Full run 3
+= the scoring run; artifacts at commit 2 come from it alone.
+
+### S11.F The extraction-certified σ perimeter (the machine-surfaced
+finding, with derivation)
+
+For an embedded genre, the sibling split loses precision: the split
+root ρ of the window-N ambient data is defined only mod π^L,
+L = N − v(f′(ρ)) (V1E2: L = N−2h; V4E2: L = N−4v₄). Writing
+f = (x−ρ)Q exactly and (x−rho)q ≡ f mod π^N for the computed pair,
+the error E := q − Q solves (x−rho)E ≡ −δQ (v(δ) ≥ L) triangularly
+from the top: with entry floors v(Q_j) ≥ (2h,(3h+1)/2,h,(h+1)/2)
+and worst-case v(ρ), E₃ ≥ L, E₂ ≥ min(L+(h+1)/2, v(ρ)+E₃),
+E₁ ≥ min(L+h, v(ρ)+E₂), E₀ ≥ min(L+(3h+1)/2, v(ρ)+E₁); the stage
+coordinates inherit a₁₁ = q₃, a₁₀ = q₂+c, a₀₁ = q₁+ẑπ^h q₃,
+a₀₀ = q₀+ẑπ^h a₁₀+c: exact strictly below the floors, meaningless
+at or above them. Instance (2,5,1): certified digit heights
+(a₀₀,a₀₁,a₁₀,a₁₁) = (4,3,3,2) — RAM(9) reads a₀₁@4: uncertified ✗;
+RAM(7) reads a₀₁@3: certified ✓ — exactly the observed smoke split.
+The battery gates σ-emission on extracted rows by the per-leaf
+consulted-digit set against this table (leaf_cert_E) and measures
+the uncertified tail as diagnostics. Full-side genres (E31, E3 —
+the sextic IS the stage) have no extraction: un-gated. The finding
+is folded into GENHN-BOX-4; it strengthens, not weakens, the window
+story: GENHN-3(a) composes exactly as the ledger predicts.
+
+## S12. VERDICT (commit 2, FROM the committed artifacts)
+
+**GREEN — 2,223,050 checks, 0 violations, all five teeth fired
+(LAT 2 / CEN 2 / SIG 2 / CRIT 2 / NODE 1), 450.0s.** Artifacts:
+`genhn_checks_results.json` md5 dd9edbeadaedf0b19873d58731d92d78 ·
+`genhn_checks_output.txt` md5 7d4a3e86113fb3dbe241788b6c81ab40 ·
+runner-as-run md5 637427dc475d231e803a8219127a5b3e. Arc: seal
+58ae603 → run 1 CRASH (V4E2 Newton basin; re-seal 4e3b2ff) → run 2
+RED on 4/20,800 gp precision misses, zero mathematical violations
+(re-seal 6f977ea) → run 3 GREEN (this verdict). The retry ladder
+recovered exactly the 4 known misses, each answering its predicted
+{(1,1),(4,1)}.
+
+**Prediction scorecard (every P-item, against S11.D as sealed):**
+* P1 ✓ all six CLASS flagships EXACT (V1E2(1) 12,288 ×2 = the
+  committed GENIND row; E3(1) 512 ×2; E31(1) 8,192 ×2; E31(1)
+  4,374 ×2); all PREDICTED-ABSENT genres absent; 2,147,916 GN-CLASS
+  checks incl. the 2×2²⁰-state genind-reader tie, 0 violations.
+* P2 ✓ law_Egen(e₁=2) ≡ law_E on all 5 grid points.
+* P3 ✓ V1E2 totals 12,288 / 458,752 / 26,244 / 458,752, per-key
+  law × fiber both directions, 0 escapes.
+* P4 ✓ ★ V4E2 FIRST measurement: obs ≡ law_E(2,8,3) × 4 exactly,
+  totals 65,536 + 65,536 (GENIND's derivation-only law now
+  machine-real).
+* P5 ✓ ★ E31 (the first e₁ = 3 stage law ever measured): all four
+  rows ≡ (q−1)·law_Egen(q,N,h,3), totals 8,192 / 524,288 / 4,374 /
+  524,288, node floors clean.
+* P6 ✓ ★ E3 (the first μ = 3 stage ever read): totals 39,366 /
+  32,768 / 32,768, zero stage-CS, spot laws EXACT (UND3 13,122 +
+  RAM3(7) 26,244 = the whole (3,4,1) row; (2,5,1): 4,096 / 16,384 /
+  4,096 / ALPHA3(3) 512).
+* P7 ✓ ★ GN-REFINE3 = 3,072 pin checks exactly (= 2 rows × 1,536),
+  0 violations — every μ = 3 stage-α event transported by actual
+  re-division kills all three pins into the floored node
+  (GENHN-BOX-2's compensating instrument, delivered).
+* P8 ✓ ★ the tower witness: frame ('EMB',8,(0,8),2,1,4,1), stage
+  dvs (10,·,5,·), hull (0,10)–(4,0) with (e_s,g) = (2,2), inner
+  residual (T−1)² — stage-CS fired inside the μ = 4 stage; min-n
+  = 8; zero stage-CS anywhere else in the battery.
+* P9 ✓ certified σ 37,792 jobs / 0 bad across six oracle batches —
+  V composed σ (19,584 + 2,915), E31 4,992 + 1,944 (★ wild p = 3
+  at e₁ = 3), E3 1,792 + 6,565 ([GENHN-HE(3)] corroboration,
+  labeled). Diagnostic tails measured as predicted: V p=2
+  1,216 / 349 mismatches, V p=3 241 / 58, all full-side legs 0/0 —
+  the S11.F perimeter is REAL on both sides (certified exact,
+  uncertified genuinely mixed).
+* P10 ✓ all teeth; GREEN.
+
+**What the machine leg establishes** (instrument grade, not
+acceptance): the genre classification at n = 5 AND n = 6 sweeps;
+the (e₁,f₁)-re-based stage law at THREE genres beyond GENH4's two,
+including first-ever e₁ = 3 and first-ever μ = 3 territory; the
+μ = 3 refine transfer pointwise; the first composite-over-composite
+event; σ dictionaries at never-oracled wild territory; and the
+machine-surfaced extraction-certified perimeter (S11.F) — a
+sharpening, not a defect, of the window ledger. Grade box
+(GENHN-BOX-1) unchanged: attempt 0/2, no hostile arc yet; nothing
+here upgrades the conditionality display of THEOREM GENHN.B.
+
+---
+
+### Dated corrections (2026-08-09, post-PE3)
+
+*Discipline (the HEX3 post-PE6 minors-only precedent; charge bar =
+nothing GAP-or-worse is CLEAN): PE3 returned CLEAN — 0 CRITICAL +
+0 GAP + 2 MINOR (`GENHN_passPE3_report.md` @ 7a058c8, byte-frozen
+at md5 5ea120909ad8c007bbf57aee9c15c475) — so the clean count set
+there (0/2 → 1/2) HOLDS AT 1/2 and this is a dated append only: the
+body above (lines 1–1857, byte-identical beadeeb → this append;
+pre-append file md5 c38f52834879f76d618b1709146a3991 is the prefix)
+is byte-untouched, and the sealed runners/artifacts stay frozen
+(PE3's fresh instrument `verification/openmath/genhn_pe3_fresh.py`,
+md5 f70d3d564ffe04337b2f3cb7cd136550, GREEN 176/0 on its first full
+run, is the report's leg, cited here read-only). Two corrections,
+one per PE3 MINOR.*
+
+**Correction 1 (PE3 F-1 — item (6)(α)'s mechanism attribution).**
+[GENHN-TOW-1] item (6)(α)'s sentence "TRUE at the witness by an
+EXACT CARRY CANCELLATION" (body L1423–1424) over-attributes: the
+displayed cancellation arithmetic is correct (re-verified at PE3),
+but the cancellation is witness-specific arithmetic, NOT the
+mechanism the one-sidedness rides. Read the sentence as: **"TRUE at
+the witness because the carry terms CLEAR the side (at the witness
+they also cancel exactly — witness arithmetic, not the mechanism):
+the would-be surviving b = 1 term 16Φ′ sits at dv 8 > 15/2 = the
+side height at b = 1 (a b = 1 pin has integer dv against a
+half-integral side height, so it cannot sit ON this side), and the
+one-sidedness rides the carry CONSTANT 32 landing exactly on the
+side endpoint (0, 10) — without it Φ′ | Φ₃."** Refuting witness for
+the cancellation-as-mechanism reading (PE3 FR3, quoted from the
+report @ 7a058c8; the derived data RE-VERIFIED by PARI/gp at this
+append — development identity exact, (e, f) = (8, 1), nfeltval
+triple and leaf σ as cited): the SECOND iterated key
+Φ₃ = Φ₂² − 16xΦ′ (u₃ = 23 = 4·4 + 2·1 + 5·1, n̂₂(23) = 16xΦ′,
+gcd(23, 2) = 1, κ₃ = 23/2 > 8) keeps its carry UNCANCELLED —
+development Φ′⁴ − 8xΦ′² + (16 − 16x)Φ′ + 32, dv-pins
+(0,10), (1,8), (2,7), (4,0) — and is STILL one-sided of slope
+5/2 = κ₂ with residual T² + 1 = ψ₂², carrier (8, 1), the full
+intermediate ascent data (v_pr(x), v_pr(Φ′), v_pr(Φ₂)) =
+(4, 10, 23) exact by nfeltval, and its n = 16 leaf RAM(93) →
+{(16,1)} PARI-exact on both routes. Consequence for a T(b)″ prover:
+the general (α) target is the side-clearing bookkeeping (carry
+terms clearing the side with the constant landing exactly), NOT
+"the carries cancel exactly at general genres" — the latter is
+FALSE as a general lemma (FR3 is a valid iterated key where they do
+not cancel). The box's bottom line stands unchanged: one-sidedness
+at general genres is genuine Okutsu-optimality content, unproved
+here; item (6) remains OPEN; no σ or count is priced through it.
+
+**Correction 2 (PE3 F-2 — the "full inner sides" scope word at the
+three residual echo sites).** The passPE2-F2 scope word reached 3
+of 4 echo sites at r3; the three residual same-species sites
+(enumerated, not quantified) are read with the scope word attached
+here: (i) **S9.1 [GENHN-TOW-1] preamble** (L1383–1386): read "the
+corrected leaf read with inner-μ₂ = 2 σ" as "the corrected leaf
+read with inner-μ₂ = 2 σ on a FULL inner side only (e₂f₂μ₂ = μ₁ —
+(iii)'s proved perimeter; partial sides are the box's own item (4),
+six lines below)". (ii) **the GENHN.B [r3] depth-split sentence**
+(L311–312): read "T(b)′ is ONE composition step, so it carries the
+DEPTH-2 towers" with its conditionality-display twin's
+parenthetical (L367) attached — "(item (4) where the inner side is
+partial)". (iii) **the [r2] title-line rider** (L53–58): read "its
+carrier is the COMPOSED KEY (LEMMA GENHN-T(b)′, S8 annex)" with the
+r3 depth split attached — T(b)′ is ONE composition step (the
+depth-2 towers, full inner sides); at depth ≥ 3 the carrier is
+item (6)'s unproved iteration, and "survives" (= not refuted)
+remains accurate. Per PE3, none of the three sites carries a
+quantifier and each is disambiguated within its own display; these
+riders align the wording with the r3 scope.
+
+---
+
+### Dated acceptance record + correction (2026-08-09, post-PE4)
+
+*Discipline (the HEX3 minors-only precedent; the CLEAN bar = nothing at
+GAP-or-worse): this is a dated append only. The body (lines 1–1857,
+prefix md5 c38f52834879f76d618b1709146a3991) and the post-PE3 dated
+corrections above are byte-untouched (pre-append file md5
+8c6d2291b9b9b8baa57f490a8f79fa09 is this append's prefix); the sealed
+runners and artifacts stay frozen at their pins.*
+
+**ACCEPTANCE (2/2).** passPE3 returned CLEAN — 0 CRITICAL + 0 GAP +
+2 MINOR (`GENHN_passPE3_report.md` @ 7a058c8, byte-frozen md5
+5ea120909ad8c007bbf57aee9c15c475; clean count 0/2 → 1/2). passPE4
+returned CLEAN — 0 CRITICAL + 0 GAP + 1 MINOR
+(`GENHN_passPE4_report.md` @ 6053c3d, byte-frozen at md5
+ec64f3616a04e96fa0e2381e1656ff3a; its fresh leg
+`verification/openmath/genhn_pe4_fresh.py` GREEN 145 checks / 0
+violations on its first full run, first f₁ = 4 / comp = 3 / F₁₆
+contact; the five prior instruments re-run isolated GREEN, the sealed
+battery at 2,223,050 checks / 0 violations). Clean count 1/2 → **2/2:
+GENHN is ACCEPTED — the text is FROZEN, dated appends only from
+here** (this line carries the counter past the title box's round-dated
+0/2 and the post-PE3 append's 1/2). The arc in one breath: LEMMA
+GENHN-T(b) REFUTED at PE1 → T(b)′ PROVED at r2 → T(b)′ HELD at fresh
+configs through PE2, PE3 and PE4.
+
+**Correction (PE4 F-1 — the [r1] GENHN-ERR-1 residue clause "none is
+live below n = 8", echoed at [e2]-E2).** The clause (RESIDUE
+paragraph, body L609–611: "no f₁ ≥ 2 stage genre is machine-exercised,
+and none is live below n = 8"; echo at [e2]-E2, L251–253) conflates
+"mixed" with "f₁ ≥ 2" and contradicts S2's own realizability list —
+re-verified against the body at this append: genre F = (1,2,2) is an
+f₁ = 2 stage genre live at n = 4 (e₁f₁μ = 4) with machine contact
+(GENH4's committed genre-F keys, consumed at pin by this note;
+[e2]-E2's own consistency instance IS that genre), and the f-first
+siblings F3 = (1,2,3) / E13 = (1,3,2) are first live at n = 6
+(e₁f₁μ = 6; S2's floors display, visibility-floored beyond the
+battery's sweep windows at N ≥ 7 — GENHN-BOX-3). Read the clause at
+both sites as: **"no row of THIS battery exercises an f₁ ≥ 2 stage
+genre (passPE4's design audit: the battery's rows are f₁ = 1 rows);
+MIXED e₁, f₁ ≥ 2 genres first live at n = 8 (first (2,2,2) — S2); the
+f-first genres (1,2,2)/(1,2,3)/(1,3,2) are live at n = 4/6/6, and
+their S-keyed display re-read remains OWED with the residue
+(GENHN-ERR-1 stays unsettled exactly as displayed)."** The correction
+is a scope re-reading only: the law's node form ("the cluster read AT
+THE NODE, whatever the node height is"), the [r1] corrected node
+D′h + 1 (machine-confirmed at (1,3,2) by PE1), and the σ dictionary
+are byte-untouched by it.
+
+### Dated erratum (2026-08-09, from HETOW PE1 F-1)
+
+**The seam.** LEMMA GENHN-T(b)′'s DISPLAY of the composed key's lift
+coefficients is gauge-naive: the displayed
+
+    Φ₂ := Φ′^{e₂f₂} − Σ_{t<f₂} ĉ_t · n̂(u₂(f₂−t)) · Φ′^{e₂t}
+
+with ĉ_t a plain lift of ψ₂'s coefficient c_t carries a wrap seam at
+η ≠ 1 frames. The normalizer monomials are not multiplicative —
+n̂(u₂)^{f₂−t} = n̂((f₂−t)u₂)·(x^{e₁}/π^{h})^{W(t)} with
+W(t) = ⌊(f₂−t)·i(u₂)/e₁⌋ — so the displayed coefficient's residue
+against S4's coherent normalizers (the ones (i)'s proof computes the
+side residual with) is c_t·η^{−W(t)}, not c_t: for the slot residues
+to equal the residual's coefficients (and for the key's roots to
+satisfy ψ₂(η₂(ξ)) = 0), the lifts need the correction absorbing that
+wrap factor,
+
+    ĉ_t := lift(c_t·η^{W(t)})   (per digit at f₁ ≥ 2:
+    the exact-height (LIFT) output L_{(f₂−t)u₂}(c_t·η^{W(t)})).
+
+This is the CORRECTED DISPLAY. At any frame where each
+c_t·(η^{W(t)} − 1) = 0 — in particular at η = 1 — corrected = naive.
+
+**Machine confirmation (frame X — the first η ≠ 1 tower contact).**
+HETOW passPE1 (`HETOW_passPE1_report.md` @ 5f821dc, fresh instrument
+`hetow_pe1_fresh.py`, dual PARI routes agreeing): p = 3, Φ′ = x² − 6
+(legal outer genre (3; 2,1,1), η = 2), (e₂,f₂) = (1,2), u₂ = 3,
+ψ₂ = Z² + Z + 2, W(0) = 1. The DISPLAYED key Φ′² + 3xΦ′ + 54 has
+PARI σ = {(4,1)} ≠ {(e₁e₂, f₁f₂)} = {(2,2)} and degenerate slot
+polynomial (Z+1)² — it is not the composed carrier, and (i)'s letter
+claim fails at its roots. The CORRECTED key Φ′² + 3xΦ′ + 108 has
+σ = {(2,2)} with slot polynomial = minpoly(η^{−1}η₂) = Z² + 2Z + 2.
+Re-confirmed at two further η ≠ 1 frames (p = 5, Φ′ = x² − 10 with
+ord(η) = 4; p = 5, Φ′ = x³ − 10 at e₁ = 3) by `hetowr1_supp.py`
+(sealed @ d0d3ca6, artifacts @ 5335ae3: GREEN, 29 gp jobs + 15 exact
+checks, 0 violations; the gauge-naive tooth fired at each of the
+three frames).
+
+**Scope.** T(b)′'s PROOF mechanism is unaffected: the carrier forcing
+chain, the composed slot lemma (ii), and the σ clauses (iii)–(v) hold
+AT THE CORRECTED KEY — the proof of (i) already computes the side
+residual through S4's coherent normalizers, and the polygon/clearance
+computation (L1216–1226) is unit-blind; what was wrong is the
+DISPLAY's lift prescription (L1136–1148, including the f₁ ≥ 2
+overflow parenthetical — see HETOW [r1] F-4 for the pinned
+no-overflow (LIFT) form) feeding that proof, which transcribed the
+gauge-naive lifts. This note's committed tower machine contact is
+untouched: `genhnr2_supp.py`'s tower frames sit at q = 2
+(Φ′ = x² − 2, K = F₂), where η = 1 forcibly and the two prescriptions
+coincide; the sealed battery had no tower-leaf rows (GENHN-BOX-3).
+Downstream consumption: HETOW_RECON_2026-08-09.md [r1 2026-08-09]
+carries the corrected key, the restated bridge lemmas HETOW-1/2
+re-proved at it, and the wrap-cocycle derivation (its §S2 preamble).
+
+**Freeze discipline.** GENHN stays ACCEPTED 2/2, text FROZEN,
+dated-appends-only: this erratum is an append; the body above it is
+byte-identical to the acceptance state (pre-append file md5
+13e087d62b4dad5a5724d337576f3411 = the file at acceptance commit
+ba3de2a, verified at this append).
+
+---
+
+### Dated adjudication + corrections (2026-08-12 — sol certification A2: the R4 chain challenge adjudicated at HEAD)
+
+The sol-5.6 chain read of this note (gpt-5.6-sol high,
+runs/residues/R4_genhn_output.log, 2026-08-12) returned CHALLENGE
+with five findings. The A2 certification run (gpt-5.6-sol high,
+runs/cert/A2_genhn_output.log) re-adjudicated all five against HEAD
+including every dated append (E1–E3, the [r2] annex, [r3], the HETOW
+erratum): findings F-1, F-3, F-5 are REAL with derived repairs — the
+three dated blocks below; findings F-2 and F-4 are REAL but
+OBSTRUCTED — the displayed clauses are false as stated and every
+honest repair weakens an accepted statement display, so no
+admissible repair exists; the two dated obstruction records below
+transcribe the A2 adjudications verbatim. Everything above this
+heading is byte-untouched by this append.
+
+### Dated correction (2026-08-12, R4 F-1 — the general boundary projection and the meaning of “ragged band”)
+
+**THE TERMINOLOGY DEFECT.** GENHN.A(iii), GENHN-3(b), and the OB-a paragraph use “ragged band is never consulted” for two different objects: the interval of slot HEIGHTS beyond the shortest class string, and the UNREAD coefficient components occurring at those heights. The first usage is false: the `[r2]` annex itself proves that a first-band height can support a lift-stable terminal decision. The correct invariant is that no UNREAD coefficient digit is consulted.
+
+**LEMMA GENHN-CAP-GEN (general finite-window boundary projection).** Fix any ordinary stage genre \((e_1,f_1,\mu)\) and a truncated coefficient state. For a slot height \(m\), let \(V_m\subseteq K\) be the \(F_Q\)-span of those basis components \(\eta^t\) whose coefficient digits occur below their coordinate windows, and put
+
+\[
+\operatorname{comp}(m):=\dim_{F_Q}V_m.
+\]
+
+Let \(\operatorname{Comp}(z)\) be the set of all full coefficient strings agreeing with the truncated state \(z\). The finite-window stage reader obeys the following rule:
+
+1. if some unread coefficient can undercut the provisional minimum, return `UND`;
+2. otherwise GENHN-2 makes the provisional value exact; if its residue is only partially visible, return a decided leaf exactly when every member of \(\operatorname{Comp}(z)\) has the same dictionary output, and return `UND` otherwise;
+3. perform a recursive refine only when every \(K\)-component of every pin required by that refine is visible.
+
+Then the output is a function of the truncated data, no unread digit is consulted, and every recursive history stops before an incomplete pin.
+
+**PROOF.** GENHN-2 expresses every queried value as the minimum of the individual coefficient heights and proves independence of the tying residues. If an unread coefficient can lie lower, two compatible completions can have different values, so conservative drainage forces `UND`. If none can lie lower, the value is fixed; at an equal-height tie, independence of the visible and missing \(\eta^t\)-components prevents the missing components from cancelling a nonzero visible part. A leaf is lift-stable precisely when its dictionary output is constant on the affine completion set. Finally, an incomplete refine pin cannot determine its \(K\)-letter, so clause 3 is forced by the same completion test. This proves all three clauses.
+
+**COUNT TRANSPORT.** GENHN-1’s triangular coefficient bijection transports this completion rule directly from W-12.A’s conservative finite-window read. A nonzero visible boundary pin has
+
+\[
+Q^{\operatorname{comp}(m)}-1
+\]
+
+choices, exactly as ERRATUM E2 states; unread components are free completion fibers, and deeper value-unstable strata drain to `UND`. Interior refinements still use complete \(K\)-pins, so GENHN-2(b)’s bracket and GENHN.A(iv) are unchanged. Thus CS-1 and CS-2 hold at ordinary \(f_1\ge2\), \(\mu\ge3\), and mixed genres without a new box.
+
+The `[r2]` rule for \((e_1,\mu)=(1,2)\) is the specialization: at the first band height \(N\), a nonzero visible part fixes \(u=N\); `2SIDED` or odd `RAM` is returned when that conclusion is constant over all missing components, while the even residue-dependent branch drains. At deeper band heights an unread digit can undercut, so clause 1 drains.
+
+**RIDERS.** Read “the ragged band is never consulted” everywhere in GENHN.A(iii), S5, and the OB-a paragraph as “the unread component cells of the ragged band are never consulted.” Visible components at a boundary height may be used once by the completion-invariant terminal rule above. Read GENHN-3(a)’s “iff \(<e_1N\)” as the sufficient interior criterion together with GENHN-CAP-GEN’s exact boundary criterion; the previously proved stability below \(e_1N\) is unchanged.
+
+### Dated obstruction record (2026-08-12, R4 F-2 — GENHN.CLASS's finiteness display; the A2 adjudication transcribed verbatim)
+
+The finding stands. GENHN.CLASS explicitly includes \(Q\) and \(h\) in \(G\), while its finiteness proof counts only discrete schemas \((e_1,f_1,\mu,\text{entry-family})\).
+
+For fixed \(n=4,Q=2\), every positive odd \(h\) gives a distinct datum
+\[
+(2;2,1,2;h,\mathrm{entry})
+\]
+once \(N\ge2h+1\). Thus the declared data set is infinite.
+
+The only honest correction would replace “finitely many genre data” by “finitely many parameterized genre schemas, with \(Q,h,N\) and prehistory depths as parameters.” That weakens the accepted theorem’s displayed finiteness assertion, which the instructions prohibit. No new lemma can prove the existing false statement.
+
+### Dated proof completion (2026-08-12, R4 F-3 — the exact-height \(K\)-lift in T(b)′(i))
+
+**LEMMA GENHN-LIFT.** Let \(M>D'h=e_1f_1h\), and let \(i=i(M)\), \(0\le i<e_1\), be determined by
+
+\[
+ih\equiv M\pmod{e_1},\qquad a=(M-ih)/e_1.
+\]
+
+Write \(\lambda\in K\) uniquely as
+
+\[
+\lambda=\sum_{s=0}^{f_1-1}\lambda_s\eta^s,\qquad \lambda_s\in F_Q,
+\]
+
+and define
+
+\[
+L_M(\lambda):=
+\sum_{s=0}^{f_1-1}
+\widetilde{\lambda_s}\,
+x^{\,i+e_1s}\pi^{\,a-sh}.
+\]
+
+Then \(L_M(\lambda)\in\widehat O[x]\), \(\deg L_M(\lambda)<D'\), every nonzero summand has exact \(dv\)-height \(M\), and
+
+\[
+\operatorname{res}\!\left(\frac{L_M(\lambda)(\theta)}
+{n(M)(\theta)}\right)=\lambda .
+\]
+
+**PROOF.** Since \(i+e_1s\le D'-1\) and \(M>D'h\),
+
+\[
+a-sh=\frac{M-(i+e_1s)h}{e_1}\ge0,
+\]
+
+so every summand is integral and has degree \(<D'\). Its evaluated height is
+
+\[
+e_1(a-sh)+(i+e_1s)h=M.
+\]
+
+Dividing by \(n(M)=x^i\pi^a\) leaves residue
+\(\lambda_s\eta^s\); GENHN-2’s independence gives their sum
+\(\lambda\), with no cancellation. ∎
+
+**APPLICATION TO THE COMPOSED KEY.** Put \(r=f_2-t\), \(M=ru_2\), and
+
+\[
+W(t)=\left\lfloor\frac{r\,i(u_2)}{e_1}\right\rfloor .
+\]
+
+Replace the gauge-naive coefficient term in T(b)′ by
+
+\[
+L_{ru_2}\!\bigl(c_t\eta^{W(t)}\bigr)\,\Phi'^{\,e_2t}.
+\]
+
+Because
+
+\[
+\operatorname{res}\!\left(\frac{n(u_2)^r}{n(ru_2)}\right)
+=\eta^{W(t)},
+\]
+
+its coefficient relative to the coherent power normalizer
+\(n(u_2)^r\) is exactly \(c_t\). Hence the inner residual is
+precisely \(\psi_2\), not its gauge-naive twist.
+
+For every monomial \(x^\ell\pi^b\) occurring in this lift,
+\(e_1b+\ell h=ru_2\). Multiplying by a monomial of
+\(\Phi'^{e_2t}\), the clearance above the outer \(x\)-polygon side
+is bounded below by
+
+\[
+\frac{r(u_2-e_2D'h)}{e_1}>0,
+\]
+
+exactly the inequality used in T(b)′(i). Thus every component
+clears the side. Polynomial collection and \(\Phi'\)-carry can
+only cancel terms or move them upward; they cannot create a term
+below the side. Since \(L_M(\lambda)\) already has degree \(<D'\),
+the literal \(\Phi'\)-development also has the asserted
+exact-height coefficient and residual.
+
+Therefore T(b)′(i)’s one-side polygon, \(\psi_2\)-residual,
+carrier forcing chain, irreducibility, and residue-field
+conclusion hold at the corrected composed key. Clauses (ii)–(v)
+then proceed exactly as written.
+
+### Dated obstruction record (2026-08-12, R4 F-4 — GENHN.A(ii)'s universal slot display; the A2 adjudication transcribed verbatim)
+
+The counterexample is correct. For \((e_1,f_1,h,m)=(3,1,2,1)\), the unique normalizer exponent is \(a=-1\), so neither an integral normalizer nor a variable \(K\)-slot exists at height \(1\).
+
+The downstream laws are protected because their live pins satisfy \(m>D'h\), where integrality follows, but the displayed universal assertion “one \(K\)-digit slot per integer \(dv\)-height” is false. Its necessary repair would restrict it to occupied heights—particularly the live stage domain \(m>D'h\), subject also to the upper window cap. That is a weakening of GENHN.A(ii)’s accepted statement display, so no admissible repair can be supplied under the stated constraint.
+
+### Dated correction (2026-08-12, R4 F-5 — the first tower’s residual)
+
+In S8’s proof of LEMMA GENHN-T(a), replace
+
+> “residual \((T^2-c)^2\) over \(K\)”
+
+by
+
+> “residual \((T-c)^2\) over \(K\)”.
+
+**DERIVATION.** A side of abscissa length \(4\) and denominator
+\(e_2=2\) has residual degree \(4/e_2=2\). An inner repeated factor
+with \(f_2=1,\mu_2=2\) therefore has residual
+\((T-c)^2\), of degree \(2\). The displayed \((T^2-c)^2\) has
+degree \(4\) and would require side length \(e_2\cdot4=8\).
+The corrected form is exactly the later GN-TOWER witness
+\((T-1)^2\), so the positive-locus realization and the first-live
+threshold \(n=8\) remain unchanged.
+
+*(The three repairs and two obstruction records above were derived
+by the A2 certification run (gpt-5.6-sol high,
+runs/cert/A2_genhn_output.log, 2026-08-12); orchestrator
+verification before transcription — F-1: the "ragged band is never
+consulted" spans re-read at HEAD (GENHN.A(iii), GENHN-3(b)/(d), the
+OB-a paragraph); the [r2] annex confirmed to prove a lift-stable
+dv = e₁N at the first band height (refuting GENHN-3(a)'s "iff" as
+written, so the rider is needed); ERRATUM E1's exclusion ("at f₁ ≥ 2
+genres beyond [μ = 2] … NO band-adjudication display — that surface
+sits with the S9 boxes") checked against S9's actual box list
+(BOX-1 grades, BOX-2 refine-transfer bookkeeping, BOX-3 machine
+coverage only, BOX-4 extraction, BOX-5 P(5) density, [GENHN-TOW-1]
+towers) — no ordinary-stage box holds it, confirming the omission;
+GENHN-CAP-GEN's load-bearing step (missing η^t-components occupy
+complementary basis directions, so no completion cancels a nonzero
+visible part) re-derived from GENHN-2's F_Q-independence; the
+specializations re-checked against the E1 r3 trichotomy and the
+[r2] annex clauses (1)–(3) including the Q^{comp(m)}−1 census =
+ERRATUM E2's clause. Citation note: the repair's "GENHN-2(b)'s
+bracket" has no literal referent — GENHN-2 is unlettered; the
+referent is the stage bracket (CS-2) of THEOREM GENHN.B / S6.2,
+which is what interior refinements with complete K-pins leave
+unchanged. F-3: the HETOW erratum confirmed to CONSUME the
+exact-height (LIFT) operator without an in-note lemma; GENHN-LIFT's
+algebra re-derived by hand (integrality a−sh ≥ 0 from M > D′h;
+degree i+e₁s ≤ D′−1; exact height e₁(a−sh)+(i+e₁s)h = M; residue
+Σλ_sη^s = λ by GENHN-2's independence; the wrap identity
+res(n(u₂)^r/n(ru₂)) = η^{W(t)} re-derived from
+e₁(r·a(u₂)−a(ru₂)) = −e₁W(t)h, matching the erratum's own cocycle
+display); the clearance bound r(u₂−e₂D′h)/e₁ checked
+character-for-character against T(b)′(i)'s proof (the [r1] NODE
+FLOOR u₂ > e₂D′h). F-5: the span located (S8 GENHN-T(a) proof,
+"residual (T² − c)² over K" on the length-4 stage-e = 2 side);
+residual degree = 4/e₂ = 2 re-derived; the GN-TOWER witness's
+residual confirmed as ψ₂² = (T+1)² = (T−1)² over F₂, the
+squared-linear form; no prior dated append touches the line. F-2:
+G's inclusion of Q and h confirmed (GENHN.CLASS (i)); S2's
+finiteness proof confirmed to count triples + entry-pattern
+families only; the counterexample arithmetic checked (genre
+(2; 2,1,2; h) with h odd, e₁f₁μ = 4 ≤ n, visible once N ≥ 2h+1 —
+the note's own E3(h)/E31(h) instance tables display the same
+h-parameterization); the data set as declared is infinite. F-4:
+the counterexample arithmetic checked (2i ≡ 1 mod 3 ⟹ i = 2,
+a = (1−4)/3 = −1); the protection claim checked (the post-r1
+stage-initial node floor {dv(A_j) ≥ (μ−j)D′h + 1} and the [r1]
+NODE FLOOR put every live pin at dv > D′h, exactly GENHN-LIFT's
+integrality domain). Repairs transcribed unaltered per the standing
+division of labor. Ledger: GENHN's row stays OPEN — the three
+repairs await sol discharge-confirmation; the two obstructions
+close only by re-displayed statements (requires owner sign-off per
+the statement fence) or new mathematics.)*
+
+---
+
+### Dated statement re-displays (2026-08-12 — the two A2 obstructions closed under the owner's directive)
+
+Asvin (2026-08-12) delegated proof-related statement decisions under
+the end-to-end-proof criterion: the right display for any lemma is
+the one the complete proof of the pinned main theorem consumes,
+stated as simply as possible. Under that authority the two OBSTRUCTED
+findings of the A2 adjudication above are closed by the following
+re-displays, each at exactly the scope its proof establishes and its
+consumers consume. Orchestrator-composed from the A2 obstruction
+records' own option text; consumer safety verified at HEAD before
+folding; subject to sol discharge-confirmation in the cert2 pass.
+
+**Dated statement re-display (2026-08-12, R4 F-2 — GENHN.CLASS's
+finiteness clause).** THEOREM GENHN.CLASS's header gloss "finite per
+n" and clause (ii) FINITE are re-displayed at the scope S2's proof
+establishes: at fixed n, the genres form FINITELY MANY PARAMETERIZED
+GENRE SCHEMAS — the triples (e₁, f₁, μ) with e₁f₁ ≥ 2, e₁f₁μ ≤ n,
+each carrying finitely many (A1)-admissible entry-pattern families —
+with the residue field Q, the slope numerator h (gcd(h, e₁) = 1),
+the window N, and the prehistory depths as the schemas' parameters.
+The genre DATUM G = (Q; e₁, f₁, μ; h, entry) ranges over infinitely
+many parameter values at fixed n (every odd h with N ≥ 2h + 1
+realizes (2; 2,1,2; h, entry) at n = 4 — the R4 witness); the note's
+own instance tables already display exactly this parameterization
+(E3(h), E31(h): "visible iff 3h ≤ N−1"), and every count law
+attached to a genre is an (A1)-family law in those parameters
+(geometric in h), which is the form GENHN.B's assembly and the
+battery grammar consume. Clauses (i) and (iii) are unchanged; no
+consumer reads the withdrawn datum-set finiteness.
+
+**Dated statement re-display (2026-08-12, R4 F-4 — GENHN.A(ii)'s
+slot clause).** GENHN.A(ii)'s display "each A_j carries exactly ONE
+K-digit slot per integer dv-height" is re-displayed at its true
+scope: per OCCUPIED integer dv-height — a height m admitting an
+integral normalizer monomial n(m) = x^{i(m)}π^{a(m)} with
+0 ≤ i(m) < e₁ and a(m) = (m − i(m)h)/e₁ ≥ 0 — below the window cap.
+Every height m > D′h is occupied, with the explicit lift supplied by
+LEMMA GENHN-LIFT (the A2 fold above); every pin the note's laws
+consume sits at dv > D′h (the stage-initial node floor
+{dv(A_j) ≥ (μ−j)D′h + 1} and the refine floors), so no consumer
+moves. At unoccupied low heights no slot exists — witness
+(e₁, f₁, h) = (3, 1, 2), m = 1: i(1) = 2 forces a(1) = −1 (the
+R4/A2 counterexample, recorded in the obstruction record above).
+The e₁-class separation and F_Q-independence clauses are unchanged.

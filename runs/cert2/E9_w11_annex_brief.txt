@@ -1,0 +1,819 @@
+ADJUDICATE-AND-REPAIR (you are gpt-5.6-sol high — the certifier of record).
+Below: a proof note AT HEAD (including every dated append), followed by YOUR OWN
+prior challenge findings (produced from the same text earlier today). For EACH
+finding, in order: (a) RESOLVED-ALREADY — the note at HEAD already contains the
+cure (cite the exact dated append/bracket text); (b) ARTIFACT — the finding
+misread the note (rebut citing the note's own lines); or (c) REAL — the defect
+stands at HEAD: DERIVE THE REPAIR — the exact dated append/correction text,
+verbatim-ready for the orchestrator to transcribe, RE-DERIVED from the note's
+own lemmas (honest and minimal: display the fix's derivation inside the repair
+text; if a repair needs a genuinely new lemma, state and prove it in the repair
+text). STATEMENT DISPLAYS: the owner has delegated statement decisions under the
+end-to-end-proof criterion — the right display for any lemma is the one the
+complete proof of the pinned main theorem consumes, stated as simply as
+possible, and "qualify the theorem" always loses to "prove the missing lemma"
+where a proof is derivable. So an accepted display MAY be re-displayed at its
+true proved-and-consumed scope when that is the honest fix: deliver the
+re-display verbatim-ready WITH a consumer sweep (name each consumption site and
+why it survives). Where the honest fix needs genuinely new mathematics you
+cannot derive, say OBSTRUCTED, display why, and specify the exact numerical
+experiment (predicate + roster) that would certify the conjectured statement
+before proving it. End with:
+SUMMARY: <n> REAL (repairs delivered) / <n> RESOLVED-ALREADY / <n> ARTIFACT / <n> OBSTRUCTED
+
+=== THE NOTE AT HEAD: W11_PROOF_2026-08-08.md ===
+# W11 — THE MENU TIE AT n = 2 (J-D's exhaustiveness leg, first slice): the COMPLETE decided menu of monic quadratics — every decided shape a single ℚ(q)-family, exhaustiveness Σ = 1 PROVED, and the EXACT drainage law (σ-undecided mass = q^(−N)) — hExhaust instantiated as a theorem at n = 2, the general program stated as mathematics
+
+**Unit:** W-11, the J-D block's rung after THEOREM W-10(2,1,1)
+(GRT_WELD_BLUEPRINT_2026-08-08 §S3.1 row W-11; WELD_SYNTHESIS_2026-08-05
+§4(ii) execution order step (3)). **Attempt grade 0/2** ~~(composed; no hostile
+arc)~~ **[r1→r2] S-STATUS (CURRENT): arc = composed (seal 7020ceb, verdict
+cb05127) → PE1 hostile pass NOT CLEAN, 2 CRITICAL + 2 GAPS + 2 MINOR
+(`W11_passPE1_report.md`, fbf0a02; every finding display/side-claim level,
+zero count/box/machine impact) → r1 note-only repair (commit 8c87fa3: all six
+findings F1–F6 + this S-STATUS line and its S10 echo, minimality contract —
+no other line touched) → PE2 hostile pass NOT CLEAN, 0 CRITICAL + 1 GAP +
+1 MINOR (`W11_passPE2_report.md`, 473a993; both findings display-level,
+zero count/box/machine impact; all six r1 repairs re-verified; fresh
+machine route incl. a NEW independent ℚ_p square-class σ-oracle,
+38,592 lift checks / 0 disagreements) → r2 note-only repair (this
+commit: F1 = the finite telescoping identity displayed at S2.5's
+"whence"; F2 = the v(2) = 1 pin at S1/S2.2/S5 with the Z₂[√2]
+counterexample + sweep; this S-STATUS line and its S10 echo —
+minimality contract, no other line touched). Acceptance
+counter 0/2 (no clean pass yet); PE3 = the next attempt. ARC FACTS from
+PE1, part of the record: clauses (i)–(iii) SURVIVED the verifier's full
+independent re-derivation; FRESH machine route (the verifier's OWN
+classifier + own closed forms, no imports from the runner — 7 census rows,
+≈ 345k polynomials, 0 mismatches, per-key identical to the committed JSON);
+seal leg re-run (runner md5-identical to 7020ceb, exit 0 GREEN, 1,250,280
+checks / 0 violations, all counts == §S10, artifact diff timing-only);
+LEAN-GATE leg (the capstone tie re-checked against `gate3_inert_q2`,
+`OM/OMCountV2.lean:646`, and the `hExhaust` hypothesis quoted faithfully vs
+`montes_unconditional_exhaustive`, `OM/RealInstanceV2.lean:439–442`).**
+Per the effort directive (Asvin 2026-08-05) this is an INTERMEDIATE
+theorem: disclosure-grade honesty, honest boxes over reach. **Instrument:**
+sealed two-commit battery `verification/openmath/w11_checks.py` (30 census
+rows = 1,235,872 monic quadratics enumerated at the seal commit's row list;
+8-tower frozen-roster realization leg incl. a (2,3,1) wild realization;
+PARI/GP independent per-polynomial oracle leg); verdict §S10, appended at
+commit 2 FROM the committed artifacts.
+
+**What W-11 is (one breath).** W-10 proved ONE menu row's count equality
+(the (2,1,1) Eisenstein stratum). W-11 asks the next J-D question: WHICH
+decided shapes exist, do their densities exhaust the space, and does the
+undecided residue drain — the mathematics behind the Lean capstone's
+`hExhaust` hypothesis (`montes_unconditional_exhaustive`,
+`OM/RealInstanceV2.lean`: `undecidedCount N / realP^(nN) → 0`) and behind
+the omMenu growth obligation (PROJECT_STATE Phase B). THIS note answers all
+three AT n = 2, COMPLETELY: the full decided menu (seven leaf families,
+each ONE polynomial/rational family in q, both characteristics, wild p = 2
+included), the exact window-N count of every row, the exhaustiveness sum
+= 1, and the drainage law EXACTLY — the σ-undecided mass at window N is
+q^(−N), not merely o(1). The general-n menu tie is STATED as mathematics
+with its obligations displayed (S4.3), not claimed.
+
+---
+
+## S0. RECONCILIATION WITH THE BLUEPRINT (charge-mandated display)
+
+**The blueprint's W-11 row, verbatim** (GRT_WELD_BLUEPRINT_2026-08-08
+§S3.1):
+
+> | **W-11** | menu tie: decided order-r shapes ↔ grown omMenu entries
+> (typeOf-keyed), hExhaust program stated as mathematics | J-D | **M** |
+> W-10 | omMenu order-0 slice (Lean, capstone); L5fix menu finiteness
+> (math) |
+
+**What this note composes and why.** Exactly the blueprint's W-11, executed
+instance-first at the n = 2 slice — the same pattern W-10 set (prove the
+first concrete rung completely; state the general rung as a program):
+
+* "decided order-r shapes ↔ grown omMenu entries (typeOf-keyed)" → the
+  COMPLETE decided menu at n = 2, proved (S2), displayed as the exact
+  row-list the grown `omMenu 2 σ` must equal (S4.1) — the mathematical
+  side of the tie is now a theorem; the Lean side (writing the order-≥ 1
+  `omMenu`/`omCount` entries) remains the Phase-B code obligation (BOX-2).
+* "hExhaust program stated as mathematics" → EXCEEDED at n = 2: not only
+  stated but PROVED, with an exact law (clause (iii): σ-undecided count
+  = q^N of q^(2N), so the normalized undecided mass is exactly q^(−N));
+  stated as mathematics at general n (S4.3).
+
+**Divergence box (charge: box any divergence).** The charge named two
+alternative readings of "the natural next rung": (a) generalizing W-10's
+count equality toward the shape-generic statement, and (b) the R_τ ∈ ℚ(q)
+tie. Neither is the blueprint's W-11, and neither is composed AS SUCH here:
+(a) the shape-generic W-10 (all decided shapes at all orders/degrees)
+remains OPEN — W10-BOX-1 stands untouched; within n = 2, however, the count
+equality IS proved for every menu row (clause (ii)), which is the n = 2
+restriction of general W-10 as a by-product of the menu proof. (b) the
+R_τ ∈ ℚ(q) tie falls out at n = 2 as a corollary (every menu row and every
+σ-total is one rational function of q, S2.5/S5) — delivered as display, not
+as the general-r theorem. No other divergence: the statement below IS the
+blueprint row at its first slice.
+
+## S1. STATEMENT
+
+Fix n = 2. Let O be a complete DVR with residue field F_q (either
+characteristic: mixed Z_p-type **[r2, PE2-F2 pin: "mixed Z_p-type" =
+ABSOLUTELY UNRAMIFIED, v(p) = 1 — a residue field alone does not pin
+absolute ramification. The pin is load-bearing ONLY for the two mixed-2
+disc-spectrum displays (S2.2 RAM bullet, S5); clauses (i)–(iii) and
+every count/σ law hold over any ramified mixed base too — the proof
+never uses v(p) (S2.3's mixed-2 leg needs only v(2s) ≥ k+1, true for
+any v(2))]** or equal F_q[[t]]-type), π a uniformizer,
+N ≥ 2 a truncation window; enumerate monic quadratics f = x² + a₁x + a₀
+over O/π^N (q^(2N) of them). The classifier read is the RECURSIVE n = 2
+read: level-0 factorization of f̄; on a double root, recenter (W-10 S2.1
+mechanics) and read the Newton polygon on {(0, u = v(a₀′)), (1, w =
+v(a₁′)), (2, 0)}; on a residual double root (the refinement case),
+recenter again at depth k and recurse. σ ∈ {split, inert, ram} is the
+splitting type.
+
+> **THEOREM W-11(n = 2).** For every prime power q, both characteristics,
+> and every N ≥ 2:
+>
+> (i) [MENU] The decided leaves of the n = 2 read are EXACTLY the seven
+>     families (params absolute; k ≥ 1, h ≥ 1 odd, 1 ≤ w₁ < w₂):
+>
+>     | leaf | shape data | σ | limit density (whole space) |
+>     |---|---|---|---|
+>     | SEP-SPLIT | order-0, two distinct linear | split | (q−1)/(2q) |
+>     | SEP-INERT | order-0, irreducible quadratic | inert | (q−1)/(2q) |
+>     | RAM(h) | d0 = 1, one side (e,h,g) = (2,h,1) | ram | (q−1)/q^(h+1) |
+>     | 2SIDED(w₁,w₂) | two length-1 sides, slopes w₁,w₂ | split | (q−1)²/q^(w₁+w₂+2) |
+>     | SPLITEQ(k) | e = 1 side at height k, residual sep-split | split | (q−1)(q−2)/(2q^(2k+2)) |
+>     | INERTDEEP(k) | e = 1 side at height k, residual irreducible | inert | (q−1)/(2q^(2k+1)) |
+>     | SPLIT-TAIL(w) | σ-decided split, shape-truncated at the window | split | (window boundary family; ~~absorbed into 2SIDED/SPLITEQ as N → ∞~~ **[r1, F5] absorbed into 2SIDED only as N → ∞ (plus the measure-zero exact x(x+A₁) locus): tail members have w < N/2 ≤ u/2, so every lift's roots sit at strictly distinct valuations — SPLITEQ (equal-valuation roots) is unreachable from the tail**) |
+>
+> (ii) [COUNT LAWS] Every window-visible row's count is ONE q-polynomial,
+>     EXACT (no truncation error), summed over all refinement histories
+>     (per center; q centers): RAM(h = 2k−1): (q−1)·q^(2N−2k−1);
+>     2SIDED(w₁,w₂): (q−1)²·q^(2N−3−w₁−w₂); SPLITEQ(k):
+>     ((q−1)(q−2)/2)·q^(2N−2k−3); INERTDEEP(k): ((q−1)/2)·q^(2N−2k−2);
+>     SPLIT-TAIL(w): (q−1)·q^(N−2), independent of w; SEP-SPLIT =
+>     SEP-INERT = ((q²−q)/2)·q^(2N−2) (whole space, no center factor). The
+>     k = 1 RAM row IS THEOREM W-10(2,1,1), consumed at pin (S2.1).
+>
+> (iii) [EXHAUSTIVENESS + THE EXACT DRAINAGE LAW] The families of (i) plus
+>     the σ-undecided residue partition all q^(2N) polynomials, and the
+>     σ-undecided count is EXACTLY q^N — normalized undecided mass q^(−N)
+>     → 0: the hExhaust statement is TRUE at n = 2 with exact rate. The
+>     limit densities sum to 1: split-total = inert-total = q/(2(q+1)),
+>     ram-total = 1/(q+1). Moreover split-decided = inert-decided EXACTLY
+>     at EVERY window (not just in the limit).
+>
+> (iv) [MENU TIE, typeOf-keyed] Rows (i) with counts (ii) are the complete
+>     specification the grown `omMenu 2 σ` / `omCount` must transcribe
+>     (S4.1); the order-0 slice already in Lean (`omMenu_order0` =
+>     `sepShapesOf`) is exactly the SEP rows; the capstone's decided
+>     order-0 inert value 1/4 at q = 2 (`gate3_inert_q2`) + the proved
+>     deep-inert tail 1/12 = the full inert density 1/3 = q/(2(q+1)).
+>
+> **GRADE: PROVED at n = 2 ((i)–(iii) mathematics S2 + sealed battery S7
+> + independent PARI leg per polynomial; (iv) = the proved spec display).
+> The GENERAL W-11 (all degrees/orders) is a stated program (S4.3), NOT
+> proved — BOX-1. Attempt 0/2.**
+
+## S2. PROOF
+
+Work per center c̄ (the level-0 double-root menu: q centers, W-10 S2.1's
+recentering is a measure-preserving bijection per center — consumed, not
+re-proved). After recentering, (a₀′, a₁′) ∈ (πO)² =: C(1,1). Write
+C(a,b) = {(A₀,A₁) : v(A₀) ≥ a, v(A₁) ≥ b}; over O/π^N, #C(a,b) =
+q^(N−a)·q^(N−b).
+
+### S2.1 The node trichotomy (one polygon read; both characteristics)
+
+At a node C(2s+1, s+1) (s = 0 is the root; the invariant is proved in
+S2.3), let u = v(A₀), w = v(A₁). The lower hull of (0,u),(1,w),(2,0):
+
+* **u odd, w ≥ (u+1)/2** — one side, slope u/2, denominator e = 2, length
+  2, residual degree 1, letter res(A₀/π^u) ≠ 0: **RAM(u)**, decided. At
+  u = 1 (only possible at the root: refined nodes have u ≥ 3) this is
+  T(2,1,1) — THEOREM W-10 verbatim, consumed at pin 2e6fdd8/9506a55: count
+  per center (q−1)q^(2N−3), density (q−1)/q³. [machine: W11-W10TIE,
+  pointwise per polynomial against the SEALED w10_checks classifier.]
+* **w < u/2** — two sides, slopes w and u−w, each length 1, each carrying
+  a monic degree-1 factor (side of length one ⟹ a root in O, by the
+  factorization step at a one-point side — degree-1 Hensel): **2SIDED(w,
+  u−w)**, decided, σ = split, roots at valuations w < u−w.
+* **u = 2k even, w ≥ k** — one side, integer slope k, e = 1, length 2:
+  substitute x = π^k y and reduce: the residual quadratic R(y) = y² + c₁y
+  + c₀ over F_q, c₁ = digit_k(A₁) (zero iff w > k), c₀ = digit_2k(A₀) ≠ 0.
+  Hensel at the separable residual:
+  - R separable with two roots: **SPLITEQ(k)** (split; roots at equal
+    valuation k, distinct leading digits);
+  - R irreducible: **INERTDEEP(k)** (inert: f irreducible, unramified,
+    residual degree 2);
+  - R = (y − z̄)², z̄ ≠ 0: NOT decided — **REFINE** (S2.3).
+
+Completeness: every (u,w) with u ≤ N−1 exact falls in exactly one bullet
+(u odd: w ≥ (u+1)/2 xor 2w < u; u even: w ≥ k xor 2w < u). The window
+cases u ≥ N are S2.4's tail. ∎(trichotomy)
+
+**The residual census (the L3 leg at the deep rows), both
+characteristics.** Pairs (c₁, c₀) ∈ F_q × F_q^*, counted by the type of R:
+
+| type of R | char ≠ 2 locus | char 2 locus | COUNT (both) |
+|---|---|---|---|
+| separable split | c₁² − 4c₀ a nonzero square | c₁ ≠ 0, Tr(c₀/c₁²) = 0 | (q−1)(q−2)/2 |
+| irreducible | c₁² − 4c₀ a nonsquare | c₁ ≠ 0, Tr(c₀/c₁²) = 1 | q(q−1)/2 |
+| double root ≠ 0 | c₁ ≠ 0, c₀ = c₁²/4 | c₁ = 0, c₀ arbitrary ≠ 0 | q − 1 |
+
+(Char ≠ 2: per c₁, the split count is #{nonzero squares s ≠ c₁²} = (q−3)/2
+for c₁ ≠ 0 and (q−1)/2 for c₁ = 0, total (q−1)(q−2)/2; irreducible:
+(q−1)/2 per c₁, total q(q−1)/2; double: one c₀ per c₁ ≠ 0. Char 2: write
+c₀ = c₁²d, d ≠ 0: Artin–Schreier splits by Tr(d): (q/2 − 1) split, q/2
+irreducible, per c₁ ≠ 0; c₁ = 0 makes y² + c₀ the inseparable square
+(y − √c₀)². Row sums: q(q−1) both. ✓) THE LOCI DIFFER ACROSS
+CHARACTERISTICS; THE COUNTS DO NOT — J-D0's value-blindness surfacing at
+the branching level (the mechanism cited from pin 9387eb1; the counts here
+are proved directly, J-D0 is the frame). [machine: inside W11-CENSUS — the
+closed forms below consume exactly these three constants.]
+
+### S2.2 σ-assignment and discriminant laws (the oracle leg's mathematics)
+
+disc f = a₁′² − 4a₀′ is recentering-invariant. For decided leaves:
+* RAM(h): Eisenstein after the slope-h/2 scaling — irreducible, totally
+  ramified e = 2, f = 1. v(disc): p odd: v(a₁′²) ≥ h+1 > h = v(4a₀′) ⟹
+  v(disc) = h (odd — tame). p = 2 mixed **[r2, PE2-F2: the {h+1, h+2}
+  spectrum below assumes the S1 pin v(2) = 1 (it uses v(4a₀′) = h+2);
+  over a ramified mixed-2 base v(disc) = min(2w, 2e₀+h) with e₀ = v(2)
+  (the min is always attained — 2w even, 2e₀+h odd), and the spectrum
+  grows. Counterexample (why the pin is needed): O = Z₂[√2] (e₀ = 2) —
+  a RAM(h) member with w = (h+3)/2 has v(disc) = h+3 ∉ {h+1, h+2}.
+  "Never tame" survives any e₀ (min(2w, 2e₀+h) ≥ h+1 ≥ 2 > 1), as do
+  clauses (i)–(iii) and every count/σ law (the S1 pin). Sweep (r2): the
+  only other in-note consumers of the mixed-2 spectrum are S5's [r1, F4]
+  display (pinned there) and the machine records (the battery's mixed
+  rows are Z_p exactly, v(2) = 1 — no machine surface touched);
+  out-of-scope hit recorded, not repaired: W10_PROOF_2026-08-08.md S1
+  uses the same unpinned "mixed Z_p-type" phrase with its p = 2 disc
+  laws at v(2) = 1 — that note is sealed; same latent fence, its own
+  arc's to carry]**: v(4a₀′) = h+2, v(a₁′²) = 2w ⟹
+  v(disc) = h+1 if w = (h+1)/2, else h+2 — NEVER the tame e−1 = 1: every
+  p = 2 member is wildly ramified (W-10 clause (iii) generalized to all h).
+* 2SIDED(w₁,w₂)/SPLIT-TAIL(w₁): split, roots in O at valuations w₁ (< w₂
+  or < u/2 ≥ N/2 resp.); v(disc) = 2w₁, both characteristics.
+* SPLITEQ(k): split, roots at valuation k, distinct digits; v(disc) = 2k
+  (residual disc ≠ 0; in char 2 separability forces c₁ ≠ 0 hence w = k).
+* INERTDEEP(k): inert — R irreducible ⟹ f irreducible over O with
+  unramified quadratic splitting field (e = 1, f = 2); v(disc) = 2k.
+* ~~Degenerate perfect squares (disc = 0): never decided at any window
+  (v(disc) = ∞ forces u = w = ∞ in-window) — measure zero, part of the
+  undecided residue at every N.~~ **[r1, F2 — the struck side-claim is
+  FALSE in equal characteristic 2, and its displayed mechanism was wrong
+  even in mixed characteristic; the true two-case statement:]** Degenerate
+  disc = 0 members (measure zero in both cases):
+  - MIXED characteristic: disc = 0 exactly ⟺ f is a perfect square, and
+    such f is indeed never decided at any window — but NOT via u = w = ∞:
+    the read runs the refine chain at finite visible (u, w) and exits at
+    the σ-undecided tail cell (u ≥ N, w > (N−1)/2), with w = v(2) +
+    v(root offset) possibly < N and visible. PE1 witness: (x+2)² over Z₂
+    at N = 8 classifies UNDECIDED with realized refine history (1,2,3),
+    all intermediate reads at finite (u, w).
+  - EQUAL characteristic 2: disc = a₁², so disc = 0 ⇎ perfect square, and
+    disc = 0 members CAN be decided. Witness: f = x² + t over F_q[[t]]
+    has disc ≡ 0 identically yet is DECIDED RAM(1) at every window N ≥ 2
+    (u = 1 odd, w = ∞; irreducible, e = 2 in the value-group sense —
+    inseparable; machine-confirmed by PE1's fresh classifier).
+
+  [machine: W11-ORACLE scores every decided polynomial's (σ, e, f,
+  v(disc)) against PARI, and checks disc = 0 ⟹ window-undecided — a
+  PARI-side, hence MIXED-characteristic-only bracket (the only case the
+  oracle leg samples): the runner takes poldisc of the EXACT canonical
+  lift, so its "disc = 0" means exact perfect square, precisely the case
+  where the claim is true; 0 violations is the correct outcome
+  (W11-BOX-4).] **[r1, F2 blast-radius sweep, recorded: grep over lean/,
+  docs/, verification/ for consumers of the struck claim — patterns
+  "never decided at any window", "u = w = ∞", "disc = 0 …
+  undecided/never decided", plus every file citing both W-11 and an
+  S2.2 — finds NO surface outside this bullet, the frozen PE1 report,
+  and the byte-frozen runner's own bracket (the in-note S7/P-6 mentions
+  describe that same mixed-only machine bracket and are true as machine
+  records). No count or density law consumes the struck claim (x² + t is
+  correctly counted in RAM(1) by note, runner, and PE1's fresh census
+  alike; the count laws never reference disc). Zero blast radius on
+  clauses (i)–(iii), as PE1 adjudicated.]**
+
+### S2.3 The refinement isomorphism (the self-similarity)
+
+At the refine case (depth k, letter z̄ ∈ F_q^*), recenter by s = z·π^k (z
+a lift of z̄): A₁ ↦ A₁ + 2s, A₀ ↦ s² + A₁s + A₀. CLAIM: for each letter
+z̄, the refine locus L(z̄) maps isomorphically (affine, Haar-preserving)
+ONTO C(2k+1, k+1).
+
+Char ≠ 2: L(z̄) = {digit_k(A₁) = −2z̄, v(A₀) ≥ 2k, digit_2k(A₀) = z̄²},
+measure q^(−k−1)·q^(−2k−1). Image: digit_k drops to 0 (−2z̄ + 2z̄);
+digit_2k(A₀″) = z̄² − 2z̄² + z̄² = 0; the map is affine invertible on
+(πO)², measures match #C(2k+1,k+1) = q^(−(2k+1))·q^(−(k+1)) — bijective
+onto. Char 2 (equal or mixed): L(z̄) = {v(A₁) ≥ k+1, digit_2k(A₀) = z̄²},
+same measure; A₁ unchanged (+2s has v ≥ k+1 in mixed char 2, = 0 in equal
+char); digit_2k(A₀″) = z̄² + 0 + z̄² = 2z̄² ≡ 0 — same conclusion. In both
+cases the refined state is EXACTLY the node C(2k+1, k+1): the recursion is
+self-similar, the node invariant (lo0, lo1) = (2s+1, s+1) propagates, and
+each refinement step multiplies by q−1 letter branches of equal measure.
+∎(S2.3) [machine: the closed-form predictor implements exactly this
+recursion — a census violation anywhere would break this paragraph.]
+
+### S2.4 The per-node exhaustiveness identity and the window tail
+
+Node mass μ_s = q^(−(3s+2)) (per center, normalized). Summing S2.1's cases
+over u ≥ 2s+1 in the limit N → ∞:
+
+    RAM leg      Σ_{k≥s+1} (1−1/q)·q^(−(3k−1))       = q·X
+    2SIDED leg   Σ_{w≥s+1} Σ_{u≥2w+1} (1−1/q)²q^(−u−w) = X/q
+    e=1 leg      Σ_{k≥s+1} q(q−1)·q^(−3k−2)           = X
+      (all q(q−1) residual pairs: split + irreducible + refine)
+
+with X = (1−1/q)·q^(−3(s+1))/(1−q^(−3)) = q^(−3s−1)/(q²+q+1); total
+q·X + X/q + X = ((q²+q+1)/q)·X = q^(−3s−2) = μ_s exactly. ∎(nothing
+leaks at any node) **[r1, F1 — strike-and-replace of the display's
+evaluations: the r0 legs read q²·X, X, q·X with total (q²+q+1)·X = μ_s;
+every evaluated leg carried a spurious factor q, and the struck total
+equation is FALSE — (q²+q+1)·X = q^(−3s−1) = q·μ_s. The three SUMMANDS
+were and are correct; the leg values above are PE1's re-derived TRUE
+evaluations. Numerical check of the corrected display at q = 2, s = 0:
+X = 1/14, μ₀ = 1/4, and the legs give 1/7 + 1/28 + 1/14 = 1/4 = μ₀ ✓
+(the struck display gave 2/7 + 1/14 + 1/7 = 1/2 = 2μ₀ ✗). The
+conclusion — nothing leaks at any node — is TRUE, re-proved
+independently at PE1, and the finite-window per-key counts the machine
+census checks were never affected.]**
+
+At finite window N (per node instance): every u ≤ N−1 case is fully
+observable (all pinned digits sit at positions ≤ N−1); the tail u ≥ N
+splits into SPLIT-TAIL(w) (w ≤ (N−1)/2: any lift has u > 2w — σ = split
+certified, shape truncated) and the σ-UNDECIDED residue {A₀ ≡ 0 mod π^N,
+w > (N−1)/2 or A₁ ≡ 0} — genuinely ambiguous ~~(contains split, inert AND
+ram lifts)~~ **[r1, F6 — scoped to set level: as a SET the residue
+contains split, inert AND ram lifts; per MEMBER, split and inert lifts
+BOTH always exist (so σ-undecidedness itself is airtight member by
+member), but a ram lift can be ABSENT — a char-2 member with exact
+w = N/2 has only split and inert lifts, its residual c₁ ≠ 0 blocking the
+refine a ram lift would need]**. [machine: W11-CENSUS checks every key
+exactly; W11-EXHAUST the σ-sums.]
+
+### S2.5 Assembly: histories, window laws, the drainage law, σ-totals
+
+**The instance bracket.** A node at state s is reached by histories
+(k₁ < ⋯ < k_t = s); by S2.3 each history contributes (q−1)^t equal-measure
+instances, and Σ_t C(s−1, t−1)(q−1)^t = (q−1)·q^(s−1). Hence for any leaf
+datum read at u (or k) from all nodes below it, the total instance weight
+is Σ_{s<k} instances(s) = 1 + Σ_{s=1}^{k−1}(q−1)q^(s−1) = q^(k−1) — THE
+BRACKET. Every window law in clause (ii) is (leaf count from one node
+instance) × q^(k−1), e.g. RAM(2k−1): (q−1)q^(N−1−(2k−1))·q^(N−k)·q^(k−1)
+= (q−1)q^(2N−2k−1); INERTDEEP(k): (q(q−1)/2)·q^(N−2k−1)·q^(N−k−1)·q^(k−1)
+= ((q−1)/2)q^(2N−2k−2); SPLIT-TAIL(w): (q−1)q^(N−1−w)·q^(w−1) =
+(q−1)q^(N−2) (w-independent). NOTE the counts are EXACT window counts equal
+to (limit density)·q^(2N) — no truncation error on visible rows.
+
+**The drainage law.** σ-undecided per node instance = q^(⌈(N−1)/2⌉)
+(A₀ ≡ 0; A₁ free above position ⌊(N−1)/2⌋, including 0). Reachable states
+s = 0, …, ⌊(N−1)/2⌋; summing the bracket: undecided per center =
+q^(⌈(N−1)/2⌉)·q^(⌊(N−1)/2⌋) = q^(N−1); × q centers = **q^N EXACTLY**.
+Normalized: q^(−N) → 0. ∎(hExhaust at n = 2, exact rate)
+
+**Limit densities and the sum.** Summing each family over histories
+(bracket) and parameters: RAM(h): (q−1)/q^(h+2) per center, total ram =
+Σ_{h odd}(q−1)q^(−h−2)·q = 1/(q+1). Split-deep = 2SIDED + SPLITEQ (+ the
+tail, absorbed as N → ∞): per node q/(2(q²+q+1)) of the node mass — equal
+to INERTDEEP's fraction **[r2, PE2-F1 — the equal limit fractions prove
+the LIMIT equality only; at finite N the tail is load-bearing, and the
+every-window claim rests on the finite telescoping identity (supplied by
+the PE2 report's F1, `W11_passPE2_report.md` @ 473a993; transcribed and
+re-verified): per node instance, per w ∈ {s+1, …, ⌊(N−1)/2⌋}, the split
+legs at A₁-valuation w telescope,
+Σ_{u=2w+1}^{N−1} (q−1)q^(N−1−u) + 1_tail = q^(N−1−2w) (geometric sum
+q^(N−1−2w) − 1, plus the tail cell's 1), so 2SIDED(w,·) + TAIL(w) =
+(q−1)·q^(N−1−w)·q^(N−1−2w); adding SPLITEQ(w) =
+((q−1)(q−2)/2)·q^(N−1−w)·q^(N−1−2w) gives the factor (q−1)(1 + (q−2)/2)
+= q(q−1)/2 = INERTDEEP(w)'s census constant — equality per node
+instance, per w, at every window, both characteristics; the k-ranges
+agree (2w < N ⟺ w ≤ ⌊(N−1)/2⌋ = the SPLITEQ/INERTDEEP range). Checked
+at q = 2: the telescope at N = 6, w = 1 is 4+2+1 + 1_tail = 8 = 2³; the
+factor is 1·(1+0) = 1 = q(q−1)/2 (SPLITEQ empty at q = 2), matching the
+S7 smoke table's (Zp,2,4) 2SIDED(1,2) + SPLIT-TAIL(1) = 8 + 8 = 16 =
+INERTDEEP(1)]**, whence **split-decided = inert-decided at every
+window** (with SEP-SPLIT = SEP-INERT = (q²−q)/2·q^(2N−2) at level 0);
+totals: split = inert = (q−1)/(2q) + 1/(2q(q+1)) = q/(2(q+1)). Sum:
+2·q/(2(q+1)) + 1/(q+1) = 1. ∎(i)(ii)(iii)
+[machine: W11-CENSUS every (leaf, params) key on 30 rows; W11-EXHAUST
+drainage + symmetry + the classical sandwich dec_σ ≤ classical·q^(2N) ≤
+dec_σ + undecided, exact rationals.]
+
+## S3. NOT CONSUMED (perimeter hygiene, displayed)
+
+* **DULEMMA / (DMULT-s)** [PROVED-conditional at 048cf6d/f819f26, perimeter
+  e_m ≥ 2]: NOT consumed anywhere above — no clause needs value-layer
+  multiplicativity, and in particular the e_m = 1 rows here (INERTDEEP,
+  SPLITEQ — e = 1 reads) are COUNT statements, not (DMULT) statements: no
+  stretch of DULEMMA's measured e_m = 1 row occurs.
+* **JC composite-stage warrant** (JC-PSIKER/JC-LOAD @ 83f47f4): not needed
+  at n = 2 — there are no composite stages; the refinement recursion is
+  proved directly (S2.3). Enters only the general-n program (S4.3).
+* **JB row-12 u ≥ 0 proviso** (GRTJB @ 83f47f4): not consumed — all
+  polygons computed outright on the finite grid {0,1,2} (W-10 H-3's
+  pattern). Owed by the general program only.
+
+## S4. THE MENU TIE (clause (iv) unpacked) AND THE hEXHAUST PROGRAM
+
+### S4.1 What the grown omMenu must be at n = 2 (the typeOf-keyed spec)
+
+Lean anchors (`OM/RealInstanceV2.lean`, `OM/OMCountV2.lean`): `density m σ
+q' := Σ_{T ∈ omMenu m σ} omCount T q'`; at R1 the menu is the order-0
+slice, `omMenu_order0 : omMenu n σ = sepShapesOf n σ`. The proved n = 2
+spec: `omMenu 2 split` must grow to {SEP-SPLIT} ∪ {2SIDED(w₁,w₂)} ∪
+{SPLITEQ(k)}, `omMenu 2 inert` to {SEP-INERT} ∪ {INERTDEEP(k)}, `omMenu 2
+ram` to {RAM(h) : h odd} — typeOf-keyed by the shape data of table (i) —
+with `omCount` the S2.5 laws. These are countable menus with geometric
+density tails: the Lean transcription needs either parametrized shape
+families or a per-window finite menu (the window-N visible menu is finite:
+h ≤ N−1, k ≤ (N−1)/2, w₁+w₂ ≤ N−1 — the L5fix menu-finiteness partial's
+shape at this slice). Growing it is Phase-B CODE, not open mathematics —
+at n = 2 the mathematics is now closed (this note).
+
+### S4.2 The capstone tie, numerically anchored
+
+The machine-checked order-0 value (`gate3_inert_q2`): decided order-0
+inert density = (q−1)/(2q) = 1/4 at q = 2. THIS note's deep-inert tail:
+Σ_k (q−1)/(2q^(2k+1))~~·q~~ = 1/(2q(q+1)) = 1/12 at q = 2 **[r1, F3: the
+summand is already the WHOLE-SPACE density (table (i)'s INERTDEEP(k)
+row), so the struck ·q double-applied the center factor — with it the
+left side would be 1/(2(q+1)) = 1/6 at q = 2; the RHS 1/(2q(q+1)) = 1/12
+and the capstone tie below are correct and stand]**. Full inert density
+= 1/4 + 1/12 = 1/3 = q/(2(q+1)) at q = 2. The capstone's honest
+conditionality ("the certified value is the DECIDED density; the
+full-density tie sits behind hExhaust") is exactly this displayed gap, and
+at n = 2 the gap is now priced: the bracket width is q^(−N) exactly
+(clause (iii)), so `montes_unconditional_exhaustive`'s bracket-uniqueness
+conclusion has its hypothesis TRUE at n = 2 as mathematics. Convention
+note: if the Lean `undecidedCount` unfolds to the SHAPE-truncated
+convention (SPLIT-TAIL counted undecided because its type parameters are
+unread), the drainage law becomes q^N + q·⌊(N−1)/2⌋(q−1)q^(N−2) — still
+exact, still O(N·q^(−N)) normalized → 0: hExhaust holds under EITHER
+convention; the term-level Lean tie is Phase-B (BOX-3).
+
+### S4.3 The general-n hExhaust program, stated as mathematics
+
+For general degree n: (P1) the node system = the classifier's
+recenter/rescale states, one per (level, refinement) datum; (P2) the
+per-node exhaustiveness identity (S2.4's analogue): the residual censuses
+S_λ(q) over each K_j sum with the lattice q-powers to the node mass —
+OWED: the universal census polynomials at g ≥ 2 (classical), the JA-GRID/
+JB-VTX position faces at their accepted grades incl. JB row-12's open
+membership residue, and the JC no-cancellation warrant at composite stages
+(the two GRTJC clauses named in S3); (P3) the drainage bound: undecided at
+window N ⊆ {some level's residual datum still degenerate at all read
+depths ≤ N} with per-refinement mass ratio ≤ c(q) < 1 uniformly — at
+n = 2, c = q^(−3)·(q−1) per depth step (S2.3–S2.5); the general claim is
+the same geometric mechanism per tower branch, made uniform over the
+finite window-visible menu (L5fix finiteness). None of (P1)–(P3) is proved
+here beyond n = 2 — this is the program, BOX-1.
+
+## S5. UNIFORMITY CONTENT (why W-11 carries J-D weight)
+
+Every count in this note — all seven families, all windows, the drainage
+law — is ONE expression in q across mixed/equal characteristic and
+tame/wild p. The wild rows are genuinely wild (S2.2: at p = 2 ~~every RAM
+member has v(disc) ∈ {h+1, h+2}~~ **[r1, F4 — the "mixed" fence S2.2
+carries and this sentence dropped, restored:] MIXED every RAM member has
+v(disc) ∈ {h+1, h+2}, while in EQUAL characteristic 2 disc = A₁² gives
+v(disc) = 2w ∈ {h+1, h+3, h+5, …} ∪ {∞} (x² + t realizes ∞)** **[r2,
+PE2-F2: MIXED here = the S1 pin, v(2) = 1; a ramified mixed-2 base
+realizes v(disc) = min(2w, 2e₀+h) ∉ {h+1, h+2} (O = Z₂[√2],
+w = (h+3)/2 ⟹ v(disc) = h+3 — the S2.2 pin)]**, never
+tame — every value ≥ 2 > e−1 = 1, both cases; the battery's TAMEDISC tooth
+fires once per member), and the char-2 residual loci are Artin–Schreier
+where the char-≠2 loci are square-classes (S2.1's table) — DIFFERENT value
+geography, SAME counts. This is J-D0's gauge-blindness realized on an
+entire menu rather than one stratum, and it is the counting-side face of
+HUMAN_PROOF §0's separator: the unramified total q/(q+1) (= split + inert
+here, proved) is the uniform volume; ∫|disc| is not uniform because it
+prices the letters (v(disc) = h, 2k, 2w₁ — letter-adjacent data), which
+the counts never consume.
+
+## S6. HONEST BOXES (where this note stops)
+
+* **W11-BOX-1 (n = 2 only).** The general W-11 — the menu tie at all
+  degrees and orders — is NOT proved: S4.3 is a program with named owed
+  inputs (S_λ(q) censuses, JB row-12 residue, JC warrant, uniform
+  drainage). Nothing at n ≥ 3 is claimed. W10-BOX-1 (shape-generic count
+  equality) also stands untouched.
+* **W11-BOX-2 (the Lean menu is not grown here).** No Lean code is written
+  or changed; `omMenu` remains the order-0 slice at HEAD. Clause (iv) is
+  the proved SPEC (what Phase-B must transcribe), not the transcription.
+  The `DecidedOmCountTie` genre now has its complete n = 2 target table.
+* **W11-BOX-3 (classifier reimplementation).** The battery's recursive
+  classifier is a convention-faithful reimplementation (W10-BOX-3
+  inherited); the engine tie is carried by W11-TOWER (frozen-roster
+  realized (2,h,1) levels incl. h = 3 wild) + the pointwise W11-W10TIE
+  against W-10's SEALED instrument + the accepted JB-VTX face. The Lean
+  evaluator tie remains order-0.
+* **W11-BOX-4 (oracle coverage).** PARI is mixed-characteristic only;
+  eq-char rows are SAME-class (disclosed in the runner; W10-BOX-4
+  inherited verbatim, incl. no mixed-char prime-power rows).
+* **W11-BOX-5 (σ-undecided vs shape-undecided).** The exact q^(−N) law is
+  for the σ-convention; the shape-truncated convention adds the SPLIT-TAIL
+  boundary family (exact law displayed in S4.2, still drains). Which
+  convention `realM2.undecidedCount` unfolds to is a Lean-term question
+  deferred to Phase-B; BOTH mathematical inputs are proved.
+* **W11-BOX-6 (density-chain consumption).** That these counts are what
+  L2core → L6M4 → U-DENS consume is the standing assembly identification
+  (W-10's H-2), consumed not re-proved.
+* **W11-BOX-7 (no per-row FE claim).** The proved split = inert symmetry
+  (every window, exact) is displayed as structure; its relation to the
+  tame functional equation / palindromy (`htameFE`) is NOT claimed — no
+  clause of this note discharges or weakens the htameFE hypothesis.
+
+## S7. THE SEALED BATTERY (two-commit; verdict from artifacts)
+
+**Runner:** `verification/openmath/w11_checks.py`. **Families:** W11-PIN /
+W11-CENSUS (every (leaf,params) key vs closed forms; exhaustiveness sum;
+history-depth census must reach ⌊(N−1)/2⌋) / W11-W10TIE (pointwise, RAM(1)
+⟺ the sealed w10 classifier's '211') / W11-EXHAUST (drainage q^N exact;
+split = inert exact; classical sandwich) / W11-TOWER (8 frozen towers, all
+(2,h,1) levels) / W11-ORACLE (per-polynomial PARI (σ,e,f,v(disc)) vs leaf
+prediction; disc = 0 ⟹ undecided; double-lift well-posedness). **Teeth
+(each ≥ 1 or RED):** W11-T-MISSING / W11-T-SHADOW / W11-T-DRAIN /
+W11-T-SIGMA / W11-T-TAMEDISC (see runner docstring for their plants).
+**Census rows (30):** Zp (p,N) ∈ {2}×{2,3,4,6,8} ∪ {3}×{2,3,4} ∪
+{5,7}×{2,3}; Fqt q ∈ {2,…,9 prime powers} with N ∈ {2,3} + deep rows
+(2,4),(2,6),(2,8),(3,4) — 1,235,872 monic quadratics (unit: polynomials
+enumerated; fixed at the seal commit's row list). Deep rows realize
+chained refinement histories to depth 3 and rows through RAM(7). **Tower
+subset (8):** W-10's seven (C2A, C2C, C2E, C2F, P3A, J7A, P1B) + C3E (the
+(2,3,1) wild p = 2 realization — the charge's ≥ 2 beyond-(2,1,1) shapes are
+carried by the census (RAM(3), RAM(5), RAM(7), INERTDEEP, SPLITEQ, 2SIDED,
+…) AND by this realized roster level). Frozen imports md5-pinned:
+iterlawn_pe_reimpl cae45db2, grt_jc_probe 03811b69, jd0_checks d3a5e13d,
+w10_checks a9c34244 (full md5s in the runner). **Oracle rows:**
+per-polynomial at (p,N) ∈ {(2,3),(2,4),(2,6),(3,2),(3,3),(5,2),(7,2)} =
+8,252 polynomials; double-lift on all 1,070 decided members of
+{(2,3),(2,4),(3,2),(3,3)}. **PRE-SEAL SMOKE DISCLOSED:** developed against
+census rows (Zp,2,3),(Zp,2,4),(Zp,3,2),(Fqt,4,2),(Fqt,9,3), towers
+C2A/C3E, oracle (2,3)+(3,2) with dlift (3,2): all families 0 violations,
+all five teeth fired; the S1 spot tables were hand-computed from the S2
+closed forms FIRST and confirmed at smoke ((Fqt,9,3): SEP 236196 each,
+RAM(1) 52488, INERTDEEP(1) 2916, SPLITEQ(1) 2268, SPLIT-TAIL(1) 648,
+undecided 729 — summing to 531,441; (Zp,2,4): SEP 64 each, RAM(1) 64,
+RAM(3) 16, 2SIDED(1,2) 8, INERTDEEP(1) 16, SPLIT-TAIL(1) 8, undecided 16).
+`gp` availability probed pre-seal (disclosed in the docstring). No full
+run before the seal.
+
+**PREREGISTERED PREDICTIONS (commit 1), evidence class per row (IND =
+independent engine; SAME = this runner's own arithmetic/prediction
+recursion; NONE = bookkeeping):**
+* P-1 [NONE] W11-PIN 0/4 — all four frozen imports unmoved.
+* P-2 [SAME] W11-CENSUS: 0 violations on all 30 rows — every (leaf,params)
+  count equals its closed form; sums q^(2N) exactly; max history depth =
+  ⌊(N−1)/2⌋ on every row (3 at N = 8). Spot values (computed from the
+  closed forms before any full run): (Zp,2,8): RAM(1/3/5/7) = 16384/4096/
+  1024/256, undecided 256; (Fqt,8,3): SEP each 114688, RAM(1) 28672,
+  SPLITEQ(1) 1344, INERTDEEP(1) 1792, SPLIT-TAIL(1) 448, undecided 512
+  (sum 262,144 ✓ precomputed).
+* P-3 [SAME] W11-W10TIE: 0/1,235,872 pointwise — the sealed W-10
+  classifier's '211' bucket ⟺ this note's RAM(1), every polynomial.
+* P-4 [SAME] W11-EXHAUST: undecided = q^N on every row; split-decided =
+  inert-decided on every row; all 90 sandwich inequalities hold as exact
+  rationals.
+* P-5 [SAME] W11-TOWER: 0 violations on all realized (2,h,1) levels of the
+  8 towers; ≥ 1 wild realization and ≥ 1 with h ≠ 1 (predict: C3E level 2
+  = (2,3,1), p = 2, γ = 13, wild — observed at smoke).
+* P-6 [IND] W11-ORACLE: 0 bad among all 8,252 polynomials — every decided
+  leaf's (σ, e, f, v(disc)) confirmed by PARI (incl. the p = 2 wild-disc
+  rule per member); every disc = 0 member window-undecided; 0 double-lift
+  disagreements among the 1,070 decided members.
+* P-7 teeth: all five fire at exactly-predicted counts: MISSING = SHADOW =
+  DRAIN = 30 (once per census row), SIGMA = 3,020 (once per decided inert
+  member per oracle row: 20+80+1344+27+270+250+1029), TAMEDISC = 1,440
+  (once per p = 2 RAM member: 16+80+1344).
+* P-8 (falsifiers, blueprint break-analysis order): a census/model
+  mismatch on a WILD row with tame rows clean refutes the uniformity
+  clause and hits J-D0's mechanism; a drainage violation (undecided ≠ q^N)
+  refutes clause (iii) = the hExhaust instance — diagnose the S2.4/S2.5
+  algebra first; an oracle σ mismatch on a decided leaf means the read
+  does not mean its arithmetic — per GRT_WELD_BLUEPRINT S4's J-D row,
+  diagnose as an upstream WELD error FIRST; a tooth not firing voids the
+  battery, not the theorem.
+
+**VERDICT: PENDING — commit 1 seals this note + the unrun runner; commit 2
+appends §S10 from `w11_checks_output.txt` / `w11_checks_results.json`.**
+
+## S8. CONSUMERS
+
+1. **W-12 / J-D1** — the composition display can now cite a PROVED
+   exhaustiveness instance instead of a bare program row.
+2. **Phase-B omMenu growth / `DecidedOmCountTie`** — S4.1 is the complete
+   n = 2 transcription spec with certified target values.
+3. **The general W-10/W-11** — S2's node system + instance bracket is the
+   template; S4.3 names what each generalization step owes and to whom.
+4. **The public uniformity story** — the smallest COMPLETE display: one
+   degree, the whole menu, densities summing to 1, one formula per row at
+   every prime, PARI confirming wildness where the count never moves; and
+   the capstone's 1/4 vs 1/3 gap priced exactly (S4.2).
+
+## S9. CONDITIONALITY STACK (every consumed supplier with its as-of pin)
+
+* **THEOREM W-10(2,1,1)** — PROVED at the instance, two-commit seal
+  **2e6fdd8/9506a55** (1,090,364 checks / 0 violations at that commit);
+  consumed as: the RAM(1) row (count + arithmetic, S2.1), the recentering
+  mechanics (its S2.1, cited not re-proved), and its SEALED classifier as
+  the W11-W10TIE reference instrument (md5 a9c34244, pinned).
+* **LEMMA J-D0** — PROVED on its perimeter, seal 1642275/**9387eb1**;
+  consumed as the shape-keying/value-blindness FRAME (S2.1's census
+  remark, S5); the n = 2 census equalities are proved directly here, so
+  J-D0 is corroborating at the instance, load-bearing only for the
+  general-program framing (S4.3 inherits its BOX-2 gauge-form perimeter).
+* **Accepted weld suppliers** (all six ACCEPTED 2/2; ledger fold
+  **17d2a32**): GRTJA @ **f131c53**, GRTJB + GRTJC @ **83f47f4**, GRTW2 @
+  **adc6cf3**, LIFTCORNER @ **08f61e9**, WELDMASTER @ **66b3498** — cited
+  for the TEMPLATE faces only (S4.3, W11-TOWER's grid tie γ = e·wPhi + h);
+  S2's n = 2 proofs are self-contained elementary arithmetic + Hensel.
+* **DULEMMA** @ **048cf6d/f819f26** — NOT consumed (S3, displayed).
+* **Lean anchors at HEAD** (`OM/RealInstanceV2.lean`
+  `montes_unconditional_exhaustive`/`hExhaust`, `OMCountV2.omMenu`/
+  `omMenu_order0`, `gate3_inert_q2`) — cited as the tie TARGETS (S4.1/
+  S4.2), no Lean changed.
+* **Classical inputs:** Hensel's lemma (degree-1/separable-residual
+  factorization steps), Eisenstein irreducibility, Artin–Schreier
+  square/trace censuses over F_q — standard, cited without commit pins.
+* **L2core assembly identification** (W-10's H-2) — consumed as stated
+  there (BOX-6).
+
+**One line: the theorem's hypothesis set = {W-10 @ 2e6fdd8, J-D0 @ 9387eb1
+(frame), L2core assembly id, classical Hensel/Eisenstein/AS-census} —
+everything else in S2 is self-contained elementary arithmetic plus the
+sealed machine leg.**
+
+---
+## S10. VERDICT (commit 2 — from the committed artifacts)
+
+**GREEN. 30/30 census rows (1,235,872 polynomials enumerated), 12 realized
+(2,h,1) tower levels (7 wild, 1 beyond-(2,1,1)), 8,252 oracle polynomials
++ 1,070 double-lift members, 1,250,280 checks, 0 violations in every
+family, all five teeth fired at their exactly-predicted counts, zero
+skips.** Artifacts: `w11_checks_output.txt` (md5
+c0b6b10bab40519c5977c397cf29ae9e), `w11_checks_results.json` (md5
+72ad156752788ccfa3a813f7084117da); runner byte-identical to the sealed
+commit 7020ceb (empty `git diff`); elapsed 49.9 s; exit 0; single fresh
+run, no prior artifacts.
+
+Prediction scorecard (all eight confirmed):
+* P-1 ✓ [NONE] W11-PIN 0/4 — all four frozen imports unmoved
+  (iterlawn_pe_reimpl cae45db2, grt_jc_probe 03811b69, jd0_checks
+  d3a5e13d, w10_checks a9c34244).
+* P-2 ✓ [SAME] W11-CENSUS 0/375 — every (leaf, params) key equals its
+  closed form on all 30 rows, both characteristics; every exhaustiveness
+  sum = q^(2N); max history depth = ⌊(N−1)/2⌋ on every row. The
+  preregistered spot values hit EXACTLY: (Zp,2,8): RAM(1/3/5/7) =
+  16384/4096/1024/256, undecided 256, depth-3 histories realized (64
+  members with history (1,2,3)); (Fqt,8,3): SEP 114688 each, RAM(1)
+  28672, SPLITEQ(1) 1344, INERTDEEP(1) 1792, SPLIT-TAIL(1) 448,
+  undecided 512 — sum 262,144. Bonus displays from the artifacts: the
+  (Zp,2,8) 2SIDED spectrum (1,2)…(3,4) all at (q−1)²q^(2N−3−w₁−w₂)
+  (2048/1024/512/256/128/512/256/128/128) and SPLIT-TAIL(1)=(2)=(3)=128 —
+  the w-independence law visible raw.
+* P-3 ✓ [SAME] W11-W10TIE 0/1,235,872 — RAM(1) ⟺ the SEALED w10
+  classifier's '211' bucket, pointwise on every polynomial of every row:
+  THEOREM W-10 consumed at pin with a machine-checked seam.
+* P-4 ✓ [SAME] W11-EXHAUST 0/150 — undecided = q^N EXACTLY on all 30 rows
+  (the drainage law, clause (iii)); split-decided = inert-decided EXACTLY
+  on all 30 rows; all 90 classical-sandwich inequalities hold as exact
+  rationals.
+* P-5 ✓ [SAME] W11-TOWER 0/50 — endpoints (0,γ)–(2,0), γ odd = e·wPhi+h,
+  interior strictly above on all 12 realized (2,h,1) levels; wild
+  realizations 7 (C2A×2, C2E×2, P1B×2, C3E); the beyond-(2,1,1)
+  realization C3E level 2 = (2,3,1), p = 2, γ = 13, WILD — as predicted
+  from smoke.
+* P-6 ✓ [IND] W11-ORACLE 0 bad / 8,252 polynomials — PARI (factorpadic +
+  nfinit/idealprimedec) confirms every decided leaf's (σ, e, f, v(disc))
+  at all seven Z_p rows, including the p = 2 wild-disc rule per member
+  and the (2,6) deep row (4,096 polynomials); every disc = 0 member is
+  window-undecided; double-lift 0 bad / 1,070 decided members
+  (56 + 240 + 72 + 702) — decidedness is lift-well-posed as proved.
+* P-7 ✓ teeth — all five at the EXACT preregistered counts: MISSING =
+  SHADOW = DRAIN = 30 (once per census row), SIGMA = 3,020 (every decided
+  inert member of every oracle row: 20+80+1344+27+270+250+1029),
+  TAMEDISC = 1,440 (every p = 2 RAM member: 16+80+1344 — the tame
+  prediction v(disc) = 1 failed on every wild member).
+* P-8 ✓ — no falsifier fired; nothing to diagnose upstream.
+
+**Consequence for the grade box:** THEOREM W-11(n = 2) stands as composed
+— clauses (i)–(iii) PROVED (elementary proof S2 + GREEN sealed battery +
+independent PARI leg per polynomial), clause (iv) the proved spec display,
+the S6 boxes open exactly as displayed (the general W-11 remains the S4.3
+program per BOX-1). hExhaust at n = 2 is now a THEOREM with exact rate
+q^(−N). Attempt 0/2; ~~the hostile arc has not begun~~ **[r1: commit-2
+wording, superseded — arc status lives in the header S-STATUS: PE1 run
+(2 CRITICAL + 2 GAPS + 2 MINOR, all display/side-claim level), r1
+applied, counter 0/2, PE2 = the next attempt] [r2 echo: PE2 run
+(0 CRITICAL + 1 GAP + 1 MINOR, both display-level, 473a993), r2
+applied, counter 0/2, PE3 = the next attempt]**. The J-D block may
+proceed to W-12 with a proved exhaustiveness instance in hand.
+
+---
+
+## ★ ACCEPTANCE RECORD (orchestrator, 2026-08-08) ★
+
+**THIS NOTE IS ACCEPTED at 2/2** — PE3 (839b735, CLEAN; fresh route:
+1,114,112 quadratics brute-forced on never-checked 𝔽₄ rows;
+downstream-consumption audit of W-12/HMENU3 honest) and PE4 (16d12e1,
+CLEAN; fresh route: disc-fibration counting on new territory incl. 𝔽₉
+N=4 = 43,046,721 pairs, third independent derivation of every-window
+split = inert; PLUS the arc's first 4-mutant audit of the sealed
+battery — all four planted corruptions caught RED). Full arc: composed
+→ seal 7020ceb / verdict cb05127 → PE1 (2C+2G+2m, fbf0a02) → r1
+(8c87fa3) → PE2 (0C+1G+1m, 473a993) → r2 (31506b3) → PE3 CLEAN → PE4
+CLEAN. Five passes, two repairs.
+
+**FREEZE-CONVENTION STAMP**: the accepted text is the post-r2 body,
+byte-frozen since 31506b3 (PE4 verified `git diff` empty AND that each
+prior pass provably read exactly its era's text); this record and any
+future annex are dated appends only.
+
+**WHAT IS ACCEPTED**: THEOREM W-11(n=2) — the seven-family decided
+menu of monic quadratics over any complete DVR with exact q-polynomial
+window counts, σ-undecided EXACTLY q^N (hExhaust at n=2 with exact
+drainage rate), limit densities split = inert = q/(2(q+1)), ram =
+1/(q+1), Σ = 1, both characteristics, wild p=2 included — at its
+displayed boxes and conditionality. Non-finding remarks recorded at
+acceptance: R-a (sealed SPLITEQ k-scaling evidence is k=1; the arc's
+sole k=2 instance is PE3's fresh (Fqt,4,5)); R-b (2SIDED/RAM(h≥3)
+machine-realized at q∈{2,3}, disclosed row-list boundary).
+
+=== YOUR PRIOR CHALLENGE FINDINGS (C7_w11 output) ===
+No CRITICAL defect survives in clauses (i)–(iii), but the menu-tie/specification language has two unresolved representation gaps and two side-claim defects.
+
+1. Verbatim:
+
+> “The decided leaves of the n = 2 read are EXACTLY the seven families”
+
+> “SPLIT-TAIL(w) | σ-decided split, shape-truncated at the window”
+
+> “Rows (i) with counts (ii) are the complete specification the grown `omMenu 2 σ` / `omCount` must transcribe”
+
+Classification: GAP.
+
+SPLIT-TAIL is not a decided `typeOf`-keyed shape: its second root valuation is deliberately unread. For example, at \(q=2,N=4,w=1\), the window cell \(A_0\equiv0\pmod{\pi^4}\), \(v(A_1)=1\) has lifts realizing \(2\mathrm{SIDED}(1,4)\), \(2\mathrm{SIDED}(1,5)\), and so on, while the exact \(A_0=0\) lift is \(x(x+A_1)\). Thus the cell has decided \(\sigma\), but no single decided shape or `typeOf` key. BOX-5 confirms this by counting SPLIT-TAIL as undecided under the shape convention. Correspondingly, S4.1 omits SPLIT-TAIL from every proposed `omMenu`, contradicting the literal claim that all seven rows form its complete transcription specification.
+
+2. Verbatim:
+
+> “`omMenu 2 split` must grow to {SEP-SPLIT} ∪ {2SIDED(w₁,w₂)} ∪ {SPLITEQ(k)}”
+
+> “These are countable menus with geometric density tails: the Lean transcription needs either parametrized shape families or a per-window finite menu”
+
+Classification: GAP.
+
+The displayed Lean interface has no window parameter and uses a bounded menu sum, while the proposed shape-level menu contains infinitely many positive-density entries: all \(\mathrm{RAM}(2k-1)\), \(\mathrm{INERTDEEP}(k)\), \(\mathrm{SPLITEQ}(k)\), and \(2\mathrm{SIDED}(w_1,w_2)\). The two suggested resolutions are materially different and neither is specified:
+
+- A parametrized aggregate entry is not one entry per `typeOf` shape, and its `omCount` must be a summed rational function rather than clause (ii)’s individual window count.
+- A per-window menu requires adding \(N\) to an interface where none is shown.
+
+Consequently clause (iv) is a target/design obligation, not yet a “complete specification” that can simply be transcribed. BOX-2 discloses the missing code but does not resolve this mathematical/API representation choice.
+
+3. Verbatim:
+
+> “NOTE the counts are EXACT window counts equal to (limit density)·q^(2N) — no truncation error on visible rows.”
+
+Classification: MINOR.
+
+This is false for the visible SPLIT-TAIL rows. At \(q=2,N=4,w=1\), the whole-space tail count is
+
+\[
+q(q-1)q^{N-2}=8,
+\]
+
+so its window density is \(8/2^8=1/32\). For fixed \(w\), that density tends to zero as \(N\to\infty\); hence its limit density is zero, and \(0\cdot2^8\neq8\). The asserted identity is correct for SEP, RAM, 2SIDED, SPLITEQ, and INERTDEEP, but not for the boundary family placed immediately before this sentence. This does not affect the partition or drainage calculations.
+
+4. Verbatim:
+
+> “The wild rows are genuinely wild”
+
+> “in EQUAL characteristic 2 disc = A₁² gives v(disc) = … ∪ {∞} (x² + t realizes ∞) … never tame”
+
+> “the battery’s TAMEDISC tooth fires once per member”
+
+Classification: MINOR.
+
+For \(f=x^2+t\) over \(\mathbb F_q((t))\), the derivative is zero and the degree-two extension is purely inseparable. Calling it “wildly ramified” in the same sense as a separable mixed-characteristic quadratic is convention-dependent; the usual tame/wild dichotomy and different-exponent comparison are formulated for finite separable extensions. Moreover, the disclosed PARI/TAMEDISC leg is mixed-characteristic-only, so it cannot certify the equal-characteristic inseparable members “once per member.” The safe mathematical content established here is that these members are ramified and not tame; the counting theorem is unaffected.
+
+CHECKED CLEAN — The node trichotomy is exhaustive, including both residual-characteristic branches and the refinement case.
+
+CHECKED CLEAN — The residual split/irreducible/double-root census totals are correct in odd and characteristic two.
+
+CHECKED CLEAN — The refinement isomorphism and history bracket \(q^{k-1}\) are algebraically consistent, including ramified mixed residue characteristic two.
+
+CHECKED CLEAN — The exact RAM, 2SIDED, SPLITEQ, INERTDEEP, SEP, and SPLIT-TAIL window-count formulas are correct when each is read with its stated per-center/whole-space convention.
+
+CHECKED CLEAN — The \(\sigma\)-undecided count is exactly \(q^N\), hence normalized mass \(q^{-N}\).
+
+CHECKED CLEAN — The repaired finite telescoping identity proves split-decided \(=\) inert-decided at every window.
+
+CHECKED CLEAN — The limiting totals are split \(=\) inert \(=q/(2(q+1))\), ram \(=1/(q+1)\), and sum to one.
+
+CHECKED CLEAN — The \(v(2)=1\) fence is correctly localized; the displayed ramified-base counterexample and generalized discriminant minimum are valid.
+
+CHECKED CLEAN — The repaired discriminant-zero distinction between mixed and equal characteristic two is correct.
+
+OUTCOME: RATIFIED-WITH-ANNEX

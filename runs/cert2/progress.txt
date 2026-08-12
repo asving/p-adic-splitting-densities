@@ -1,3 +1,4 @@
 [10:48:33] cert2 queue start
 [10:48:33] D2a_w12 start
 [10:48:55] D2a_w12 exit 0 (1346 B; OUTCOMES: DISCHARGED, DISCHARGED, DISCHARGED)
+[10:48:55] D2b_genhn start

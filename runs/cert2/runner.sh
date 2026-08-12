@@ -4,7 +4,7 @@
 # (progress.txt shows "cert queue done") — never two codex queues at once.
 # Extend NAMES with C-adjudication briefs (Cx_*_adj) before launching.
 cd /data/users/asvin/math-and-lean/p-adic-splitting-densities
-NAMES="D2a_w12 D2b_genhn D2c_he6 D2d_he6r1 D2e_he3 D2f_genind"
+NAMES="D2a_w12 D2b_genhn D2c_he6 D2d_he6r1 D2e_he3 D2f_genind E9_w11_annex E10_sigmalaw_annex E11_boxes_annex E1_liftcorner E2_grtja E3_grtjb E4_grtjc E5_grtw2 E6_weldmaster E7_hmenu3 E8_jd0 E12_gentow5 E13_gentow3"
 echo "[$(date -u +%H:%M:%S)] cert2 queue start" > runs/cert2/progress.txt
 for name in $NAMES; do
   echo "[$(date -u +%H:%M:%S)] $name start" >> runs/cert2/progress.txt

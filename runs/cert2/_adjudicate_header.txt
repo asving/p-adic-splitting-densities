@@ -1,0 +1,22 @@
+ADJUDICATE-AND-REPAIR (you are gpt-5.6-sol high — the certifier of record).
+Below: a proof note AT HEAD (including every dated append), followed by YOUR OWN
+prior challenge findings (produced from the same text earlier today). For EACH
+finding, in order: (a) RESOLVED-ALREADY — the note at HEAD already contains the
+cure (cite the exact dated append/bracket text); (b) ARTIFACT — the finding
+misread the note (rebut citing the note's own lines); or (c) REAL — the defect
+stands at HEAD: DERIVE THE REPAIR — the exact dated append/correction text,
+verbatim-ready for the orchestrator to transcribe, RE-DERIVED from the note's
+own lemmas (honest and minimal: display the fix's derivation inside the repair
+text; if a repair needs a genuinely new lemma, state and prove it in the repair
+text). STATEMENT DISPLAYS: the owner has delegated statement decisions under the
+end-to-end-proof criterion — the right display for any lemma is the one the
+complete proof of the pinned main theorem consumes, stated as simply as
+possible, and "qualify the theorem" always loses to "prove the missing lemma"
+where a proof is derivable. So an accepted display MAY be re-displayed at its
+true proved-and-consumed scope when that is the honest fix: deliver the
+re-display verbatim-ready WITH a consumer sweep (name each consumption site and
+why it survives). Where the honest fix needs genuinely new mathematics you
+cannot derive, say OBSTRUCTED, display why, and specify the exact numerical
+experiment (predicate + roster) that would certify the conjectured statement
+before proving it. End with:
+SUMMARY: <n> REAL (repairs delivered) / <n> RESOLVED-ALREADY / <n> ARTIFACT / <n> OBSTRUCTED

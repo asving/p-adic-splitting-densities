@@ -3933,3 +3933,33 @@ all-degree lemma + the GENHN f₁ ≥ 2 count re-run as proof units).
 Crash recovery, regime (Amendments 4+5: no Fable subagents, sol =
 certifier + heavy work), and the parked queue: unchanged from
 append #25.
+
+**2026-08-12 DATED APPEND #27 — WAVE 1 DRAINED; CERT2 LIVE; STATEMENT
+AUTHORITY DELEGATED** — Runner 1 finished all 21 runs. Wave-1 final
+outcomes beyond append #26: C8 HMENU3 CHALLENGE ((A1)-indexing gap —
+λ-varying schemas vs fixed-σ_F families); C9 SIGMALAW RATIFIED-W-ANNEX
+(SL-1 quantifier scoped to shared-below + 4 minors); C10 JD0 CHALLENGE
+(CRITICAL: gauge-blindness quantifier "every 1-cochain" false —
+geometric character gauges only, BOX-2 already conceded; consumers use
+exactly those, so the fix is a scoped re-display); C11 GENTOW6_BOXES
+RATIFIED-W-ANNEX (4 minors). NEW AUTHORITY (Asvin, this session,
+memory proof-judgment-delegation): statement decisions delegated under
+the END-TO-END-PROOF criterion (+ simplicity); numerically certify
+uncertain statements first, then prove — complete proof is the goal.
+Executed under it: GENHN.CLASS re-displayed (parameterized schemas),
+GENHN.A(ii) re-displayed (occupied heights), HE6R1-1 re-displayed
+(three-clause jump bound) — 3 of 5 obstructions CLOSED; the other 2
+routed to proof units (W-12 all-degree order-1 history-transfer lemma;
+GENHN f₁ ≥ 2 count re-run on the corrected node floor), both with
+numerical-certification-first recipes in the task list. CERT2 RUNNER
+LIVE (runs/cert2/runner.sh, detached, auto-committing, launched
+10:48): 19 runs — D2a–D2f discharge confirmations (W-12, GENHN incl.
+re-displays, HE6, HE6R1 incl. re-display, HE3, GENIND re-pass), E9–E11
+annex folds (W-11, SIGMALAW, GENTOW6_BOXES), E1–E8 adjudicate+repair
+(LIFTCORNER, GRTJA/B/C, GRTW2, WELDMASTER, HMENU3, JD0 — the
+adjudicate header now carries the delegated statement authority +
+numerical-experiment fallback), E12/E13 GENTOW5/GENTOW3 residuals
+(E13 asks for a witness-search spec + fallback). Codex window 8% used.
+NEXT: fold cert2 outputs as they land (same discipline: verify by
+hand, transcribe unaltered, ledger + commit); crash recovery: trim
+NAMES to remaining runs, never relaunch whole.
