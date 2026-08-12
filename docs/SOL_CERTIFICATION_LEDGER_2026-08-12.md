@@ -22,13 +22,13 @@ proof consumes (tightness census + consumption map).
 | 6 | GENTOW2 | CERTIFIED (batch-1 + RUN E discharge) | — |
 | 7 | GENTOW4 | CERTIFIED (RATIFIED-W-ANNEX, annex repaired) | — |
 | 8 | GENTOW6 | CERTIFIED (challenge dissolved at HEAD) | — |
-| 9 | GENTOW3 | challenged, repairs LANDED | E13 fallback ACTIVATED + folded 2026-08-12 (S8.4 scope correction: "not a function of honest σ", PE1 witness pair; activation ground: two instrument runs prove the full-tuple predicate is not implementable against committed semantics). Remaining: discharge-confirm (cert5) |
+| 9 | GENTOW3 | challenged, repairs LANDED | **CERTIFIED 2026-08-12** — D1b repairs + the S8.4 fallback scope correction DISCHARGED (TC3) |
 | 10 | GENTOW5 | challenged, repairs LANDED | **CERTIFIED 2026-08-12** — D1a 3/5 + E12 residual repairs (S12 conditionality chain, lift rung) DISCHARGED at D3i + the ψ_j^{(ω_{j−1})} twist-index corrigendum DISCHARGED at RC2 |
 | 11 | HEX3 | RATIFIED-W-ANNEX (fresh) | **CERTIFIED 2026-08-12** — A0 adjudicated all 4 annex minors REAL at HEAD; repairs verified + folded as Corrections C–F (note append) |
-| 12 | W-12 | CHALLENGE (fresh, R3) | A1 repairs DISCHARGED (D2a 3/3); the obstruction DISCHARGED by LEMMA W12-HT (P1, sol-composed, machine certificate GREEN 1,196 keys/0 mismatches + rank tests; side-local κ_v; W-12.A regains full order-1 coverage). Remaining: transcription-confirm (cert5) |
+| 12 | W-12 | CHALLENGE (fresh, R3) | **CERTIFIED 2026-08-12** — A1 repairs discharged (D2a 3/3); the obstruction discharged by LEMMA W12-HT (machine certificate GREEN; transcription confirmed at TC1) — W-12.A at full order-1 coverage |
 | 13 | GENHN | CHALLENGE (fresh, R4) | **CERTIFIED 2026-08-12** — A2 repairs (CAP-GEN, GENHN-LIFT, T(a) fix) + 2 statement re-displays + the occupied-height corrigendum all DISCHARGED (D2b 4/5 + D3j corrigendum confirm) |
 | 14 | HE6 | CHALLENGE (fresh, R6) | **CERTIFIED 2026-08-12** — A3's 4 repairs folded; D2c: 4/4 DISCHARGED (runs/cert2/D2c_he6_output.log) |
-| 15 | HE6R1 | CHALLENGE (fresh, R7) | Repairs + re-display DISCHARGED (D2d 3/3); GENHN-ERR-1 SETTLED by LEMMA GENHN-COUNT-RERUN (P2, sol-composed, certificate confirmed both genres; completion clause restored with no wording change). Remaining: transcription-confirm (cert5) |
+| 15 | HE6R1 | CHALLENGE (fresh, R7) | **CERTIFIED 2026-08-12** — repairs + re-display discharged (D2d 3/3); GENHN-ERR-1 settled by LEMMA GENHN-COUNT-RERUN (certificate confirmed; transcription confirmed at TC2) |
 | 16 | HE3 | CHALLENGE (fresh, R8) | **CERTIFIED 2026-08-12** — A5's 5 repairs folded (incl. LEMMAS HE3-4U + HE3-4D1); D2e: 5/5 DISCHARGED (runs/cert2/D2e_he3_output.log) |
 | 17 | GENIND ANNEX | sol pass found d-factor GAP | **CERTIFIED 2026-08-12** — Q-normalized GENIND-C2 + round-2 (C2Q/C2D/C2E) folded; RP1 fresh pass: STACK-VERDICT RATIFIED (exponent composition, well-founded descent, side pricing all re-checked; the per-genre (CS-1Q) obligation disclosed, not promoted) |
 | 18 | WI ([GENTOW5-W(i)]) | r1 landed; sol PE2 was the challenge | **CERTIFIED 2026-08-12** — R10 pass 3: zero findings on all five charges, sol verdict "CERTIFIED 2/2" (runs/cert/R10_wi_pass3_output.log) |

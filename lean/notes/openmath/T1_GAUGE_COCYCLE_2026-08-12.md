@@ -1259,3 +1259,111 @@ The first hostile pass should attack, in this order:
 A clean first pass must either discharge all eight attacks or return a finding with an exact statement span and a live consumer. Only after repair should the second independent hostile pass run.
 
 The acceptance gate remains two clean hostile passes plus the revised machine battery. The historical 2026-08-10 run does not count as either clean pass.
+
+
+---
+
+## r1 (2026-08-12): the three T1A gaps repaired
+
+*(Derived by the T1R1 run (gpt-5.6-sol high, runs/cert5/T1R1_output.log) from the T1A pass-1 findings; transcribed unaltered; pass 2 of the arc follows.)*
+
+## T1 r1 corrections — 2026-08-12
+
+### R1-1 — Define the base canonical letter
+
+In §1.1, immediately after
+
+\[
+\eta=\operatorname{res}\!\left(\frac{x^{e_1}}{\pi^h}\right),
+\qquad
+K_1=\mathbf F_Q(\eta),
+\]
+
+insert:
+
+> Set the base canonical residue letter
+> \[
+> \boxed{z_1:=\eta.}
+> \tag{C1-base-letter}
+> \]
+> Thus the level-two recursion below uses a defined letter; this is a notation convention, not an additional relation among higher-level letters.
+
+In §2.1, replace the final sentence
+
+> Taking residues proves (C1-level-2).
+
+with:
+
+> Taking residues and using the base convention \(z_1=\eta\) proves (C1-level-2).
+
+This makes
+
+\[
+z_2=\eta_2z_1^{-\lfloor\ell_1u_2/e_1\rfloor}
+\]
+
+identical to the computed residue
+
+\[
+\eta_2\eta^{-\lfloor\ell_1u_2/e_1\rfloor}.
+\]
+
+### R1-2 — Normalize every height-zero normalizer
+
+In §1.1, replace
+
+> At a general level \(i\), fix exact-height normalizers \(\widehat n_i(m)\) in the prescribed bounded-exponent tower normal form, stage data
+
+with:
+
+> At a general level \(i\), fix exact-height normalizers \(\widehat n_i(m)\) in the prescribed bounded-exponent tower normal form, with the height-zero normalization
+> \[
+> \boxed{\widehat n_i(0)=1.}
+> \tag{C2-zero-normalizer}
+> \]
+> Fix also stage data
+
+In §2.2, replace
+
+> Comparing the two parenthesizations of
+> \[
+> \widehat n_i(a)\widehat n_i(b)\widehat n_i(c)
+> \]
+> proves (C2-cocycle).
+
+with:
+
+> Comparing the two parenthesizations of
+> \[
+> \widehat n_i(a)\widehat n_i(b)\widehat n_i(c)
+> \]
+> proves the cocycle identity. The convention \(\widehat n_i(0)=1\) gives
+> \[
+> \tau_i(0,a)=\tau_i(a,0)=1
+> \]
+> and also
+> \[
+> \vartheta_{i,0}
+> =
+> \operatorname{res}\!\left(\widehat n_i(0)^{-1}\right)
+> =1.
+> \]
+> Exact-height equality gives \(\vartheta_{i,1}=1\). This proves the normalized assertions in (C2-cocycle) and (C2-recursion).
+
+### R1-3 — Respect the carrier implication \(\eta=1\Rightarrow f_1=1\)
+
+In the absorption map, replace the A5 row
+
+> | A5 GENTOW4 | S4 residue-one relation | C2, C6 | **Verbatim**: \(\eta=1\) is not \(f_1=1\), and does not make arbitrary digits \(x\)-free. |
+
+with:
+
+> | A5 GENTOW4 | S4 residue-one relation | C2, C6 | **Adapted to the carrier**: because \(K_1=\mathbf F_Q(\eta)\) with basis \(1,\eta,\ldots,\eta^{f_1-1}\), the specialization \(\eta=1\) forces \(K_1=\mathbf F_Q\) and hence \(f_1=1\). It removes the level-one wrap correction, but it does not by itself make an arbitrary lift \(x\)-free: (C6-x-free) still additionally requires \(i(M)=0\). |
+
+Replace honesty-ledger item 8 with:
+
+> 8. Under the stated carrier, \(\eta=1\) forces \(K_1=\mathbf F_Q\) and \(f_1=1\); these are not independent specialization axes. The condition \(\eta=1\) removes the level-one wrap correction, but it does not by itself make arbitrary digits \(x\)-free, because (C6-x-free) still requires \(i(M)=0\).
+
+Add this row to §6:
+
+> | Defined \(z_1=\eta\), normalized \(\widehat n_i(0)=1\), and corrected the A5 residue-one specialization to record \(\eta=1\Rightarrow f_1=1\) under the carrier. | T1A hostile pass, findings G1–G3, 2026-08-12 r1 | Repairs the level-two letter formula and normalized cocycle endpoints; A5 is adapted rather than falsely marked verbatim. |
