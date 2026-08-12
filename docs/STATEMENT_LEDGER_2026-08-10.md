@@ -11,9 +11,9 @@ deleted statement; additions allowed. This is blueprint S5.3 item 3's
 tripwire: "a simplification never weakens a statement" — consumption
 checks must display absorbed statements md5-identical to this ledger.
 
-**Baseline:** repo HEAD `1f9e8ae354e0`, generated
-2026-08-10T09:50:00+00:00, extractor S0-v1.
-**Totals:** 166 statements over 26 notes; 4 unlabeled
+**Baseline:** repo HEAD `788bba26932c`, generated
+2026-08-12T18:08:30+00:00, extractor S0-v1.
+**Totals:** 178 statements over 26 notes; 5 unlabeled
 (numbered deterministically); 4 truncated at the 120-line cap.
 
 **Normalization (declared):** blockquote markers stripped as block
@@ -27,7 +27,7 @@ text; U = unlabeled (label assigned by deterministic numbering).
 
 ## S1. The ledger (one row per statement)
 
-### LIFTCORNER_2026-08-08.md — commit `fdf1d995`, grade: ACCEPTED 2/2, 4 statements
+### LIFTCORNER_2026-08-08.md — commit `33225dd9`, grade: ACCEPTED 2/2, 4 statements
 
 | # | label | lines | md5-8 | flags |
 |---|---|---|---|---|
@@ -36,7 +36,7 @@ text; U = unlabeled (label assigned by deterministic numbering).
 | 3 | COR 2 | 1000–1004 | `650d435a` | — |
 | 4 | PROP (unlabeled) | 1034–1069 | `3859bfb8` | TU |
 
-### GRTW2_PROOF_2026-08-08.md — commit `a27ed687`, grade: ACCEPTED 2/2, 4 statements
+### GRTW2_PROOF_2026-08-08.md — commit `8584db40`, grade: ACCEPTED 2/2, 5 statements
 
 | # | label | lines | md5-8 | flags |
 |---|---|---|---|---|
@@ -44,8 +44,9 @@ text; U = unlabeled (label assigned by deterministic numbering).
 | 2 | THEOREM W2-C1 | 507–526 | `ee27f7cd` | — |
 | 3 | LEMMA W2-ID1 | 707–779 | `cd5037b9` | TS |
 | 4 | LEMMA W2-T3E | 910–936 | `6bde997e` | — |
+| 5 | THEOREM W2-C1-CORR | 1486–1529 | `a8ea19b6` | — |
 
-### GRTJA_PROOF_2026-08-08.md — commit `fdf1d995`, grade: ACCEPTED 2/2, 4 statements
+### GRTJA_PROOF_2026-08-08.md — commit `76fa9d51`, grade: ACCEPTED 2/2, 7 statements
 
 | # | label | lines | md5-8 | flags |
 |---|---|---|---|---|
@@ -53,8 +54,11 @@ text; U = unlabeled (label assigned by deterministic numbering).
 | 2 | THEOREM JA-RES | 307–315 | `8a1345fc` | — |
 | 3 | COROLLARY JA-VDIND | 326–335 | `fd8c3357` | — |
 | 4 | COROLLARY JA-MIN | 388–411 | `68a50d4b` | — |
+| 5 | THEOREM JA-EPS-CORR | 975–997 | `cbea05ad` | — |
+| 6 | COROLLARY JA-MIN-CORR | 1033–1035 | `10ce0f52` | — |
+| 7 | THEOREM JA-GRID-CORR | 1079–1100 | `e24b7823` | — |
 
-### GRTJB_PROOF_2026-08-08.md — commit `fdf1d995`, grade: ACCEPTED 2/2, 7 statements
+### GRTJB_PROOF_2026-08-08.md — commit `68a993fa`, grade: ACCEPTED 2/2, 7 statements
 
 | # | label | lines | md5-8 | flags |
 |---|---|---|---|---|
@@ -66,7 +70,7 @@ text; U = unlabeled (label assigned by deterministic numbering).
 | 6 | LEMMA JB-EPS | 2171–2177 | `83fbac6b` | — |
 | 7 | THEOREM JB-CREAD | 2186–2221 | `af2ebcbb` | S |
 
-### GRTJC_PROOF_2026-08-08.md — commit `63091cef`, grade: ACCEPTED 2/2, 11 statements
+### GRTJC_PROOF_2026-08-08.md — commit `e2403a2b`, grade: ACCEPTED 2/2, 13 statements
 
 | # | label | lines | md5-8 | flags |
 |---|---|---|---|---|
@@ -81,22 +85,26 @@ text; U = unlabeled (label assigned by deterministic numbering).
 | 9 | THEOREM JC-IND | 1552–1553 | `72f6a958` | — |
 | 10 | THEOREM W-8 | 1658–1664 | `a400bc0a` | — |
 | 11 | COROLLARY W-9 | 1777–1787 | `222be4a8` | — |
+| 12 | LEMMA JC-RANKMULT | 2919–2932 | `60da5ac7` | — |
+| 13 | COROLLARY (unlabeled) | 2955–3000 | `ac4006e7` | U |
 
-### WELDMASTER_2026-08-08.md — commit `fdf1d995`, grade: ACCEPTED 2/2, 3 statements
+### WELDMASTER_2026-08-08.md — commit `35cc703f`, grade: ACCEPTED 2/2, 4 statements
 
 | # | label | lines | md5-8 | flags |
 |---|---|---|---|---|
 | 1 | THEOREM WELD-M | 284–311 | `30b82e4d` | — |
 | 2 | THEOREM WM-COB | 344–369 | `4813269b` | — |
 | 3 | THEOREM WM-FENCE | 483–599 | `f023af52` | S |
+| 4 | THEOREM WELD-M-PKG | 1123–1152 | `c2cde3b4` | — |
 
-### JD0_PROOF_2026-08-08.md — commit `9387eb1a`, grade: PROVED (machine 68,523/0; sub-bar), 1 statements
+### JD0_PROOF_2026-08-08.md — commit `438afac2`, grade: PROVED (machine 68,523/0; sub-bar), 2 statements
 
 | # | label | lines | md5-8 | flags |
 |---|---|---|---|---|
 | 1 | LEMMA J-D0 | 49–57 | `68254d43` | — |
+| 2 | LEMMA J-D0 #2 | 513–529 | `c2367145` | — |
 
-### SIGMALAW_PROOF_2026-08-08.md — commit `a27ed687`, grade: ACCEPTED 2/2, 5 statements
+### SIGMALAW_PROOF_2026-08-08.md — commit `25ce1e65`, grade: ACCEPTED 2/2, 5 statements
 
 | # | label | lines | md5-8 | flags |
 |---|---|---|---|---|
@@ -106,13 +114,13 @@ text; U = unlabeled (label assigned by deterministic numbering).
 | 4 | COROLLARY SL-C1 | 332–335 | `0f4d08f8` | — |
 | 5 | COROLLARY SL-C2 | 361–372 | `738e49e8` | — |
 
-### W11_PROOF_2026-08-08.md — commit `35e65450`, grade: ACCEPTED 2/2, 1 statements
+### W11_PROOF_2026-08-08.md — commit `87d8923b`, grade: ACCEPTED 2/2, 1 statements
 
 | # | label | lines | md5-8 | flags |
 |---|---|---|---|---|
 | 1 | THEOREM W-11 | 109–148 | `58d463fc` | S |
 
-### W12_PROOF_2026-08-08.md — commit `2fcbd0c7`, grade: ACCEPTED 2/2, 7 statements
+### W12_PROOF_2026-08-08.md — commit `06958241`, grade: ACCEPTED 2/2, 8 statements
 
 | # | label | lines | md5-8 | flags |
 |---|---|---|---|---|
@@ -123,8 +131,9 @@ text; U = unlabeled (label assigned by deterministic numbering).
 | 5 | LEMMA W12-L0 | 694–706 | `239c0ffe` | — |
 | 6 | LEMMA W12-L1 | 742–753 | `3690f7d5` | — |
 | 7 | LEMMA W12-S3.2 | 837–839 | `3ee0843d` | — |
+| 8 | LEMMA W12-HT | 2237–2274 | `bc1c91b9` | — |
 
-### HMENU3_PROOF_2026-08-08.md — commit `19c02857`, grade: ACCEPTED 2/2, 5 statements
+### HMENU3_PROOF_2026-08-08.md — commit `d665620b`, grade: ACCEPTED 2/2, 5 statements
 
 | # | label | lines | md5-8 | flags |
 |---|---|---|---|---|
@@ -134,7 +143,7 @@ text; U = unlabeled (label assigned by deterministic numbering).
 | 4 | COROLLARY HM3.D | 231–267 | `3ba094ba` | — |
 | 5 | LEMMA HM3-4 | 383–385 | `4c9dd40d` | — |
 
-### HEX3_PROOF_2026-08-08.md — commit `7e29d9e5`, grade: ACCEPTED 2/2, 3 statements
+### HEX3_PROOF_2026-08-08.md — commit `fb83ff16`, grade: ACCEPTED 2/2, 3 statements
 
 | # | label | lines | md5-8 | flags |
 |---|---|---|---|---|
@@ -142,7 +151,7 @@ text; U = unlabeled (label assigned by deterministic numbering).
 | 2 | THEOREM HEX3.B | 144–157 | `01183b2d` | — |
 | 3 | COROLLARY HEX3.C | 158–166 | `9b3f15cf` | — |
 
-### GENIND_PROOF_2026-08-08.md — commit `dfd58316`, grade: ACCEPTED 2/2, 8 statements
+### GENIND_PROOF_2026-08-08.md — commit `5e33b01f`, grade: ACCEPTED 2/2, 8 statements
 
 | # | label | lines | md5-8 | flags |
 |---|---|---|---|---|
@@ -170,7 +179,7 @@ text; U = unlabeled (label assigned by deterministic numbering).
 | 9 | LEMMA GENH4-3 | 376–403 | `6067ad94` | — |
 | 10 | LEMMA GENH4-6 | 607–617 | `b1c4f078` | — |
 
-### GENHN_PROOF_2026-08-08.md — commit `59c1966d`, grade: ACCEPTED 2/2, 9 statements
+### GENHN_PROOF_2026-08-08.md — commit `06958241`, grade: ACCEPTED 2/2, 12 statements
 
 | # | label | lines | md5-8 | flags |
 |---|---|---|---|---|
@@ -183,8 +192,11 @@ text; U = unlabeled (label assigned by deterministic numbering).
 | 7 | LEMMA GENHN-2 | 699–717 | `73a1d718` | — |
 | 8 | LEMMA GENHN-3 | 741–763 | `1d6aa5f6` | — |
 | 9 | LEMMA GENHN-T #2 | 1127–1210 | `c932ac30` | — |
+| 10 | LEMMA GENHN-CAP-GEN | 2061–2087 | `cece40d7` | — |
+| 11 | LEMMA GENHN-LIFT | 2103–2189 | `3b70a20f` | — |
+| 12 | LEMMA GENHN-COUNT-RERUN | 2352–2426 | `a95e85a8` | — |
 
-### HE3_PROOF_2026-08-08.md — commit `8ba8c878`, grade: ACCEPTED 2/2, 16 statements
+### HE3_PROOF_2026-08-08.md — commit `62400944`, grade: ACCEPTED 2/2, 16 statements
 
 | # | label | lines | md5-8 | flags |
 |---|---|---|---|---|
@@ -205,7 +217,7 @@ text; U = unlabeled (label assigned by deterministic numbering).
 | 15 | LEMMA HE3-6 | 1118–1121 | `531b7d3b` | — |
 | 16 | LEMMA HE3-5 | 1238–1258 | `b8d77bc3` | — |
 
-### HE6_PROOF_2026-08-08.md — commit `dc63a84e`, grade: ACCEPTED 2/2, 13 statements
+### HE6_PROOF_2026-08-08.md — commit `a5d8eb01`, grade: ACCEPTED 2/2, 13 statements
 
 | # | label | lines | md5-8 | flags |
 |---|---|---|---|---|
@@ -252,7 +264,7 @@ text; U = unlabeled (label assigned by deterministic numbering).
 | 23 | THEOREM HE7.A′ | 1224–1231 | `c934a492` | — |
 | 24 | LEMMA HE6R1-2 #2 | 1337–1346 | `53daa436` | — |
 
-### HE6R1_RECON_2026-08-08.md — commit `06971c36`, grade: ACCEPTED 2/2, 4 statements
+### HE6R1_RECON_2026-08-08.md — commit `d810e100`, grade: ACCEPTED 2/2, 4 statements
 
 | # | label | lines | md5-8 | flags |
 |---|---|---|---|---|
@@ -289,14 +301,14 @@ text; U = unlabeled (label assigned by deterministic numbering).
 | 3 | LEMMA GENTOW2-B′ | 518–538 | `bae471b0` | — |
 | 4 | LEMMA GENTOW2-B″ | 729–738 | `d4c8b885` | — |
 
-### GENTOW3_PROOF_2026-08-09.md — commit `607fc694`, grade: ACCEPTED 2/2, 2 statements
+### GENTOW3_PROOF_2026-08-09.md — commit `3ee83992`, grade: ACCEPTED 2/2, 2 statements
 
 | # | label | lines | md5-8 | flags |
 |---|---|---|---|---|
 | 1 | THEOREM GENTOW-3 | 186–216 | `a6d97dfe` | — |
 | 2 | COROLLARY GENTOW-3.C | 320–338 | `f2459aa5` | — |
 
-### GENTOW4_PROOF_2026-08-09.md — commit `4545b4d7`, grade: ACCEPTED 2/2, 4 statements
+### GENTOW4_PROOF_2026-08-09.md — commit `73b93fd0`, grade: ACCEPTED 2/2, 4 statements
 
 | # | label | lines | md5-8 | flags |
 |---|---|---|---|---|
@@ -305,14 +317,14 @@ text; U = unlabeled (label assigned by deterministic numbering).
 | 3 | LEMMA GENTOW-4.2 | 378–383 | `73f54036` | — |
 | 4 | COROLLARY GENTOW-4.C | 406–416 | `0096e69a` | — |
 
-### GENTOW5_PROOF_2026-08-09.md — commit `43b42e9c`, grade: ACCEPTED 2/2, 2 statements
+### GENTOW5_PROOF_2026-08-09.md — commit `cb010522`, grade: ACCEPTED 2/2, 2 statements
 
 | # | label | lines | md5-8 | flags |
 |---|---|---|---|---|
 | 1 | DEFINITION (unlabeled) | 191–207 | `c9a95972` | U |
 | 2 | LEMMA GENTOW5-A1 | 209–223 | `9d473730` | — |
 
-### GENTOW6_PROOF_2026-08-09.md — commit `b1b6aa61`, grade: ACCEPTED 2/2, 6 statements
+### GENTOW6_PROOF_2026-08-09.md — commit `3d7fc37b`, grade: ACCEPTED 2/2, 6 statements
 
 | # | label | lines | md5-8 | flags |
 |---|---|---|---|---|
@@ -371,7 +383,7 @@ unlabeled and duplicate labels numbered in document order.
    blocks, SIGMALAW's `**(Σ-DEF)`/`**(U-REC)` definitional displays, and
    per-clause `**(a)**...` markers. Audit count of `**(`-opening bold
    lines not captured, per note (size of this residue class):
-   LIFTCORNER 8, GRTW2 6, GRTJA 1, GRTJB 16, GRTJC 18, WELDMASTER 7, JD0 7, SIGMALAW 3, W12 2, GENIND 10, GENH4 1, HE3 1, HE7 19, HE6R1 5.
+   LIFTCORNER 8, GRTW2 6, GRTJA 1, GRTJB 16, GRTJC 18, WELDMASTER 7, JD0 7, SIGMALAW 3, W12 2, GENIND 14, GENH4 1, HE3 1, HE7 19, HE6R1 5.
    These are pinned only when inside a captured span; a statement whose
    ONLY display is such a form has no ledger row.
 4. **Headings are not rows.** Section headings that restate labels
@@ -411,17 +423,3 @@ Verdict-of-record runs are appended below (S5) after the seal commit;
 a --force rebuild regenerates S1-S4 only, so S5 appends must be
 re-attached if the ledger is ever legitimately re-pinned.
 
-## S5. BASELINE-GREEN RUN OF RECORD (commit 2 of 2)
-
-Run at HEAD `f8bd49dd` (the seal commit), 2026-08-10:
-
-```
-CHECK: 166 baseline statements; 0 changed, 0 deleted, 0 added.
-GREEN: every baseline statement byte-stable (normalized).
-exit 0
-```
-
-The tripwire is ARMED from this commit: every S-unit consumption check
-(blueprint S5.3 item 3) must show its absorbed statement md5-identical to
-this ledger, and any CI/manual `--check` run that exits 1 is a
-stop-the-line event for the simplification campaign.

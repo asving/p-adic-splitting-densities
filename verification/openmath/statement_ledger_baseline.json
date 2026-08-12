@@ -1,11 +1,11 @@
 {
  "extractor_version": "S0-v1",
- "head_commit": "1f9e8ae354e02dc33c69b2a77841a3a1cde1583d",
- "generated_at": "2026-08-10T09:50:00+00:00",
+ "head_commit": "788bba26932c59f4d009b31cc005c736b095abc8",
+ "generated_at": "2026-08-12T18:08:30+00:00",
  "notes": {
   "LIFTCORNER_2026-08-08.md": {
    "path": "lean/notes/openmath/LIFTCORNER_2026-08-08.md",
-   "commit": "fdf1d995",
+   "commit": "33225dd9",
    "grade": "ACCEPTED 2/2",
    "statements": [
     {
@@ -60,7 +60,7 @@
   },
   "GRTW2_PROOF_2026-08-08.md": {
    "path": "lean/notes/openmath/GRTW2_PROOF_2026-08-08.md",
-   "commit": "a27ed687",
+   "commit": "8584db40",
    "grade": "ACCEPTED 2/2",
    "statements": [
     {
@@ -110,12 +110,24 @@
      "md5": "6bde997eda2229891d60f2dbf5601bb4",
      "text_norm": "**LEMMA W2-T3E (carry-inertness of a flat-shielded twist).** The battery consumes a diverged key Φ_j only through two channels: (a) exact powers in anchors and their products (byte-inert: the dev of a product of pure key powers by the key is exact, and the digit is the byte-shared lower part); (b) the division carry Φ_{j−1}^{e_{j−1}} ↦ Φ_j − Ĉ fired when an anchor product overflows, i.e. when s_j(γ) + s_j(γ′) ≥ e_{j−1} — ONLY then do the twisted correction bytes Ĉ enter a read. If e_{j−1} = 1 directly below the (unique) diverged key, then s_j ≡ 0 identically and channel (b) never fires: the twist is CARRY-INERT and every battery quantity is byte-identical to the harness computation. On T3E the only battery-consumed diverged key is the top anchor key Φ₂ with e₁ = 1 below it: s₂ ≡ 0 on the whole window. [Machine CK-T3E: s₂-census = {0}; 0 byte-differing battery digits across all pairs; 0 violations.] On T3A (e₁ = 2) the overflow pairs exist and are exactly where the twisted bytes enter: every K6/K7-failing pair is an overflow pair whose top-dev digits differ in bytes (16 failing pairs ⊆ 24 byte-diff pairs; the reverse containment fails honestly — a carry can be read-invisible or a common character can cancel in the cocycle ratio). [Machine CK-T3E: containment exact.] **[r1, F7 — machine-key scope: CK-T3E keys exactly the byte-diff containment (16 ⊆ 24) and the s₂-censuses ({0} on T3E, {0,1} on T3A); the identification of the 24 byte-diff pairs as s₂-OVERFLOW pairs is the mechanism's reading (channel (b) of LEMMA W2-T3E), asserted per-mechanism and not machine-keyed pair-by-pair.]** T3E is therefore NOT an anomaly: it is the e = 1 passthrough leg (the K13 genre) of the same mechanism that breaks the other rows — and after transport the question is moot (TW-F3 = 0 everywhere).",
      "label": "LEMMA W2-T3E"
+    },
+    {
+     "kw": "THEOREM",
+     "tok": "W2-C1-CORR",
+     "form": "A",
+     "start": 1486,
+     "end": 1529,
+     "truncated": false,
+     "struck": false,
+     "md5": "a8ea19b6571c2a459832bdcc745721f3",
+     "text_norm": "**THEOREM W2-C1-CORR (admissibility at the proved scalar scope).** Let \\[ B_m(y):=R_{r-1}(\\Phi_{m+1}^{har})(y) \\] at a shared-key junction, with W2-C1a’s chamber qualifier understood. 1. If \\(m=1\\), then unconditionally \\[ B_m(y)=w_{m+1}\\psi_m(\\xi_{m+1}y) \\] with the pair of §3.4. 2. If \\(m\\ge2\\) and (C-coll) holds, the same display follows from W2-C2(b) and §3.4. 3. At a general shared-key junction outside (C-coll), HR-REC computes \\(B_m\\) exactly, but no scalar orbit is asserted without the following finite geometricity condition. Writing \\[ a_j:=\\frac{[y^j]B_m}{\\psi_{m,j}} \\qquad(j\\in\\operatorname{supp}\\psi_m), \\] a scalar orbit exists exactly when there are units \\(w,\\xi\\in K_m^\\times\\) such that \\[ a_j=w\\xi^j\\qquad \\text{for every }j\\in\\operatorname{supp}\\psi_m. \\] When this condition holds, \\(B_m(y)=w\\psi_m(\\xi y)\\), and the admissibility conclusion of the former W2-C1 follows. Otherwise HR-REC alone gives no ξ-conjugate representative theorem. **Derivation.** W2-C2(a) proves item 1. W2-C2(b) proves item 2 because (C-coll) makes the ratios geometric. In general, §4.2 reads the residual coefficient as \\[ [y^j]B_m=\\frac{c}{\\rho_j}\\psi_{m,j}. \\] Hence \\(B_m=w\\psi_m(\\xi y)\\) is equivalent coefficient-by-coefficient to \\(c/\\rho_j=w\\xi^j\\) on the support. For example, if \\(0,1,2\\in\\operatorname{supp}\\psi_m\\), this necessarily gives \\[ \\rho_1^2=\\rho_0\\rho_2. \\] HR-REC computes the three \\(\\rho_j\\) but supplies no identity forcing this equation when mod-wrap does not collapse. The roster’s I4B \\(r=5\\) calculation establishes its own scalar orbit only as an individually checked boundary instance; it does not prove the universal relation. **Consequent statement correction.** CLAUSE 1 and the §6.2 W2-C1 row are proved universally only at \\(m=1\\) and on (C-coll), and conditionally at other shared-key junctions when the displayed geometricity test is established. Outside that scope the proved conclusion consists of W2-C1a’s polygon statement plus the exact HR-REC residual. **Consumer sweep.** * W2-C2(a), W2-ID1, HR-REC, and the §3.4 scalar display on (C-coll) survive unchanged. * The transported-chain proof survives theoremically at every first-twist-or-below junction covered by \\(m=1\\) or (C-coll). After the accepted OPEN-2a/Σ-LAW upgrade, the roster census is honestly re-displayed as **37/44 theorem-derived, 1/44 individually scalar-orbit-confirmed (I4B \\(r=5\\)), and 6/44 above-twist junctions riding W2-OPEN-2**. * At a general non-collapse first twist, §5.1’s ξ-transport is conditional on the geometricity test. Above the first twist, scalar-orbit existence remains part of W2-OPEN-2(b), hence OPEN. * Section 4.3’s \\(\\ell\\)-orbit analysis applies only after a scalar pair exists. W2-OPEN-1 remains open and unchanged.",
+     "label": "THEOREM W2-C1-CORR"
     }
    ]
   },
   "GRTJA_PROOF_2026-08-08.md": {
    "path": "lean/notes/openmath/GRTJA_PROOF_2026-08-08.md",
-   "commit": "fdf1d995",
+   "commit": "76fa9d51",
    "grade": "ACCEPTED 2/2",
    "statements": [
     {
@@ -165,12 +177,48 @@
      "md5": "68a50d4bcc32a07853521afa19cf8a75",
      "text_norm": "**COROLLARY JA-MIN (the DICTIONARY HALF of the MIN CORE, GD-3 genre at orders ≥ 2).** On the per-slot law's perimeter, the gauge is a unit per slot: c_i = 0 ⟺ C_i = 0, supports and degrees agree slot-for-slot, and ord_ψ data of the print residual is computable from the harness read (and conversely) — same conditionality as JA-RES (JA-BOX-2), not unconditional. [JA-r1 2026-08-08 (wallclock 2026-08-04), per JA-PE1 GAP-3 — RESCOPED: the earlier close \"The GD-3 MIN CORE at orders ≥ 2 is therefore a theorem WHERE THE DICTIONARY REACHES\" overstated. GD-3's MIN CORE per `docs/MATH_COMPLETION_TREE_2026-08-01.md` is ord_{ψ̂_hom}(in(f)) = ord_ψ(R_λ(f)); what is established here is its DICTIONARY HALF only — ord_ψ(R_λ(f)) computable from the harness read on the per-slot law's perimeter. The graded-initial-form leg (the in(f) tie, a graded-carrier object) is NEITHER derived NOR cited in this note and stays OPEN with GD-3 (blueprint taxonomy: inside J-A(ii), so a gap, not a J-C fence violation; nothing downstream in this note consumes JA-MIN).] Grades: JA-RES PROVED at m = 2 (attempt grade); PROVED-under-proviso at m ≥ 3, unconditional on (R-coll) (root-inclusive as defined above, [r2]); JA-VDIND PROVED; JA-MIN rides JA-RES. [Machine: CK-RES1 (m = 1, W2-L3 both sides), CK-RES (per-slot, proviso machine-evaluated per digit; scored where the proviso holds, boundary rows recorded with counts), CK-VDM (JA-VDIND forward direction), CK-BPREF (the JA-BOX-1 refutation census: the slot-independent form must FAIL on designated character-visible rows).]",
      "label": "COROLLARY JA-MIN"
+    },
+    {
+     "kw": "THEOREM",
+     "tok": "JA-EPS-CORR",
+     "form": "A",
+     "start": 975,
+     "end": 997,
+     "truncated": false,
+     "struck": false,
+     "md5": "cbea05ad34e15e865f353630eec46931",
+     "text_norm": "**THEOREM JA-EPS-CORR.** Let an actual print side with ordinate argument \\(\\beta\\) have initial attained abscissa \\[ s_{\\mathrm{act}}=s_{\\min}(\\beta)+\\nu e_{m-1},\\qquad \\nu\\in\\mathbb Z_{\\ge0}. \\] Its Definition-`t(i)` exponent, in the print’s orientation, is \\[ t_{\\mathrm{Def}} =\\frac{s_{\\mathrm{act}}-\\ell_{m-1}\\beta}{e_{m-1}} =\\nu-t_{\\min}(\\beta). \\] Consequently \\[ \\boxed{\\ z_m^{t_{\\mathrm{Def}}}=z_m^\\nu\\,\\varepsilon_m(\\beta)\\ }, \\qquad \\boxed{\\ \\varepsilon_m(\\beta)=z_m^{t_{\\mathrm{Def}}-\\nu}\\ }. \\] Thus raw equality between the print factor and \\(\\varepsilon_m(\\beta)\\) holds exactly when \\(z_m^\\nu=1\\), in particular when \\(\\nu=0\\). The first boxed identity follows simply by substituting \\(s_{\\mathrm{act}}=s_{\\min}+\\nu e_{m-1}\\) and using the already-proved \\(\\varepsilon_m(\\beta)=z_m^{-t_{\\min}(\\beta)}\\); no new lemma is used. **Consumer sweep.** Section 3.4 JA-RES survives unchanged: it uses the actual Definition-`t(i)` exponent together with \\(\\tau=(s_{\\mathrm{act}}-\\ell\\beta)/e\\), so the same \\(\\nu\\)-term cancels in \\(t(i)-\\tau\\). JA-VDIND survives unchanged; its proof already states \\(\\tau_m(A)-\\nu=\\operatorname{exp}(\\varepsilon_m(\\beta))\\). W2-L2, W2-L3, CK-EPS, and ORB-EPS survive as statements about the canonical minimal-grid exponent \\(t_{\\min}\\). The §4(iii) orbit formula is retained with that explicit meaning. The §5 N-1 citation and §7.2 JA-EPS row survive at this corrected normalization-bridge scope. The grade-cap and §7.3 claims of raw print-twist equality are superseded by JA-EPS-CORR.",
+     "label": "THEOREM JA-EPS-CORR"
+    },
+    {
+     "kw": "COROLLARY",
+     "tok": "JA-MIN-CORR",
+     "form": "A",
+     "start": 1033,
+     "end": 1035,
+     "truncated": false,
+     "struck": false,
+     "md5": "10ce0f52b126229f68155038d0f23e27",
+     "text_norm": "**COROLLARY JA-MIN-CORR.** On the JA-RES perimeter, attained-abscissa support and every print residual coefficient are recoverable from the harness read, and conversely. Explicitly, divide \\(H\\) by the known exact factor \\(y^\\nu\\) to recover \\(Q_A\\), then apply the displayed unit scalar and substitution \\(y\\mapsto\\vartheta_my\\) to recover \\(P\\). Therefore the claimed computability of \\(\\operatorname{ord}_\\psi\\) data survives. Since \\(\\psi\\ne y\\), the removable factor \\(y^\\nu\\) contributes no \\(\\psi\\)-factor; the known \\(\\vartheta_m\\)-substitution must still be applied. **Consumer sweep.** JA-RES, JA-VDIND, R-coll, and all CK-RES/CK-VDM machine claims are coefficientwise and survive unchanged. The §7.2 JA-MIN row survives with “attained-abscissa support and normalized degree/width” replacing ordinary degree equality. Frozen §3.4 already says nothing downstream in this note consumes JA-MIN, so there is no internal consumer of the false degree clause. Intended J-B/W-5 consumers must use the boxed degree-shift formula, not unshifted degree equality.",
+     "label": "COROLLARY JA-MIN-CORR"
+    },
+    {
+     "kw": "THEOREM",
+     "tok": "JA-GRID-CORR",
+     "form": "A",
+     "start": 1079,
+     "end": 1100,
+     "truncated": false,
+     "struck": false,
+     "md5": "e24b7823a230a11c0c580f600ffdcad8",
+     "text_norm": "**THEOREM JA-GRID-CORR.** Let \\(e,h\\ge1\\), \\(\\gcd(e,h)=1\\), and let \\(\\ell h\\equiv1\\pmod e\\). For every \\(V\\ge0\\), define \\[ s(V):=\\ell V\\bmod e,\\qquad u(V):=\\frac{V-s(V)h}{e}\\in\\mathbb Z. \\] Then \\(s(V)\\) is unconditionally the unique least element of \\([0,e)\\) for which \\(V-s(V)h\\) is divisible by \\(e\\). The print’s nonnegative-coordinate \\(T\\)-side initial point exists with coordinates \\((s(V),u(V))\\) only under \\[ \\boxed{\\ u(V)\\ge0\\ },\\qquad\\text{equivalently}\\qquad V\\ge s(V)h. \\] Under that hypothesis, JA-GRID(a)/(b), including the print-object and point-for-point slot identification, holds. Without it there is only the integer-line congruence datum, not a print \\(T\\)-point; for example \\[ (e,h,V)=(2,3,1)\\quad\\Longrightarrow\\quad s=1,\\quad u=-1. \\] Independently of this existence condition, for all \\(V,V'\\ge0\\), \\[ s(V)+s(V')-s(V+V')=e\\delta,\\qquad \\delta\\in\\{0,1\\},\\qquad \\delta=1\\iff s(V)+s(V')\\ge e. \\] Thus the congruence grid and single-level carry identity are unconditional; identification with the print’s nonnegative \\(T\\)-side is proviso-scoped. **Consumer sweep.** Section 3.3’s own Prop-`construct` sites survive because the print hypothesis supplies the required nonnegative \\(T\\)-side there. The [JA-r2] downstream JB rows survive only with their already-recorded membership/\\(u\\ge0\\) hypothesis carried; this annex does not discharge it. GD-8 and JA-GRID(c) consume only the unconditional carry identity and survive. CK-GRID’s congruence and carry legs survive but do not certify a nonexistent print point when \\(u<0\\). In the grade cap, §7.2, and §7.3, “unconditional” and “W-4 in full” henceforth refer only to the arithmetic grid/carry clauses; every print-object consumption of JA-GRID(a)/(b) must carry \\(u\\ge0\\) or a previously proved sufficient membership hypothesis.",
+     "label": "THEOREM JA-GRID-CORR"
     }
    ]
   },
   "GRTJB_PROOF_2026-08-08.md": {
    "path": "lean/notes/openmath/GRTJB_PROOF_2026-08-08.md",
-   "commit": "fdf1d995",
+   "commit": "68a993fa",
    "grade": "ACCEPTED 2/2",
    "statements": [
     {
@@ -261,7 +309,7 @@
   },
   "GRTJC_PROOF_2026-08-08.md": {
    "path": "lean/notes/openmath/GRTJC_PROOF_2026-08-08.md",
-   "commit": "63091cef",
+   "commit": "e2403a2b",
    "grade": "ACCEPTED 2/2",
    "statements": [
     {
@@ -395,12 +443,36 @@
      "md5": "222be4a85669d11652f08c140d1d0673",
      "text_norm": "**COROLLARY W-9.** Given W-6, W-7, W-8: (i) c_{m+1} descends to a map ℤ/E × ℤ/E → K^* and **is a 2-cocycle**: c(a,b)c(a+b,c) = c(b,c)c(a,b+c) — this is [ILN]†'s COR-2, and on the gr side it is nothing but **associativity of gr(w)'s multiplication**; (ii) its y-degree part δ satisfies the integer cocycle identity δ(a,b) + δ(a+b,c) = δ(b,c) + δ(a,b+c) (the {0,1}-valued carry cocycle); (iii) 𝒜(T) is the **twisted group algebra** K^{c}[ℤ/E] of the abscissa-coset group over the carry cocycle; (iv) COR-4's monodromy is the **gauge period**: φ_{γ+E} = π·φ_γ (JC-PER) is the period, in(π) is the gauge unit of degree E (JC-DOM), and the E-fold orbit product ζ_T := ∏_{k=1}^{E−1}c(1,k) is exactly the K-scalar by which the E-fold anchor product differs from the π-power that TC-2 sets to 1.",
      "label": "COROLLARY W-9"
+    },
+    {
+     "kw": "LEMMA",
+     "tok": "JC-RANKMULT",
+     "form": "A",
+     "start": 2919,
+     "end": 2932,
+     "truncated": false,
+     "struck": false,
+     "md5": "60da5ac720e7025ee904323c18276cd8",
+     "text_norm": "**LEMMA JC-RANKMULT.** After JC-LOC and W-1 transport, for every \\(n\\in\\mathbb Z\\), \\(B_n\\) is a free rank-one module over \\[ B_0\\simeq\\Delta=K_m[y] \\] on the virtual anchor \\(\\operatorname{in}\\phi_n\\), and \\(\\rho_n^B\\) is its coefficient map. Consequently, for all \\(\\lambda,\\mu\\in\\mathbb Z\\), \\[ \\rho_{\\lambda+\\mu}^B(\\alpha\\beta) =A(\\lambda,\\mu)\\rho_\\lambda^B(\\alpha)\\rho_\\mu^B(\\beta), \\qquad A(\\lambda,\\mu) =\\rho_{\\lambda+\\mu}^B(\\operatorname{in}\\phi_\\lambda\\operatorname{in}\\phi_\\mu). \\tag{RM} \\]",
+     "label": "LEMMA JC-RANKMULT"
+    },
+    {
+     "kw": "COROLLARY",
+     "tok": null,
+     "form": "A",
+     "start": 2955,
+     "end": 3000,
+     "truncated": false,
+     "struck": false,
+     "md5": "ac4006e7df613c2aab546b1183f13ed6",
+     "text_norm": "**COROLLARY (DMULT-w, derived where consumed).** Assume \\(e_m\\ge2\\). For integral \\(f,g\\) of weights \\(\\lambda,\\mu\\), JC-SPAN gives \\[ \\mathcal R_{\\lambda+\\mu}(\\phi_\\lambda\\phi_\\mu) =u_{\\lambda,\\mu}y^{\\delta(\\lambda,\\mu)}, \\qquad u_{\\lambda,\\mu}\\in K_m^*. \\] Hence \\[ A(\\lambda,\\mu) =\\frac{u_{\\lambda,\\mu}}{a_{\\lambda+\\mu}}y^{\\delta(\\lambda,\\mu)}. \\] Substituting \\(\\rho_\\nu=\\mathcal R_\\nu/a_\\nu\\) into (RM) gives \\[ \\frac{\\mathcal R_{\\lambda+\\mu}(fg)}{a_{\\lambda+\\mu}} = \\frac{u_{\\lambda,\\mu}}{a_{\\lambda+\\mu}}y^\\delta \\frac{\\mathcal R_\\lambda(f)}{a_\\lambda} \\frac{\\mathcal R_\\mu(g)}{a_\\mu}, \\] and therefore \\[ \\mathcal R_{\\lambda+\\mu}(fg) = \\underbrace{\\frac{u_{\\lambda,\\mu}}{a_\\lambda a_\\mu}}_{\\displaystyle \\omega(\\lambda,\\mu)\\in K_m^*} y^{\\delta(\\lambda,\\mu)} \\mathcal R_\\lambda(f)\\mathcal R_\\mu(g). \\] This is (DMULT-w), derived from the note’s cited rank-one theorem and its proved anchor-slot lemma. The multiplier depends only on the two lines because \\(u_{\\lambda,\\mu}\\) and the \\(a_\\nu\\) are anchor constants. Clearing powers of \\(\\pi\\), followed by JC-PIINV, gives the same formula on all transported lines. For \\(e_m=1\\), JC-RANKMULT and (RM) remain proved at general \\(m\\), but the last monomial-shape deduction stops at JC-SPAN’s existing top-flat bound. Thus JC-BOX-4 retains its honest FGMN-independent open/measured branch; no claim that the PDF itself supplies a multiplier formula is made. **Consumer sweep.** * (COORD-B)(2) survives at every \\(m\\), now directly from JC-RANKMULT rather than from an unquoted product law. * (MULT-B), JC-IND, W-7’s bijectivity, and W-9 survive at every \\(m\\) by (RM). * JC-CARRY-m and JC-LOAD survive on their displayed \\(e_m\\ge2\\) scope by the derived (DMULT-w). * W-8 survives at general \\(m\\): it needs (RM), offset multiplication by the \\(\\pi\\)-periodic anchor, and the quotient calculation in Annex #4—not a separately quoted residual-product theorem. * JC-COB’s exact multiplier-one refinement remains on (DMULT-s), with the conditional proof and perimeter stated in Annex #1. The current FGMN stack entry is therefore: \\[ \\boxed{\\text{FGMN (a)(b) + Thm 4.2 rank-one freeness on \\(B\\) via JC-LOC + Thm 4.8/Cor 4.9 + Cor 2.7; (DMULT-w) derived above; (DMULT-s) as in Annex #1.}} \\]",
+     "label": "COROLLARY (unlabeled)"
     }
    ]
   },
   "WELDMASTER_2026-08-08.md": {
    "path": "lean/notes/openmath/WELDMASTER_2026-08-08.md",
-   "commit": "fdf1d995",
+   "commit": "35cc703f",
    "grade": "ACCEPTED 2/2",
    "statements": [
     {
@@ -438,12 +510,24 @@
      "md5": "f023af526dbdca7bc1d76a64225cc1c6",
      "text_norm": "**THEOREM WM-FENCE.** The three collapse fences of the weld are three specializations of (PERIM): **(a) [(R-coll), J-A].** JA-VDIND's absolute character-triviality at read level m — \"z_{m−1}^{i·A_{m−1}} = 1 for every attained i\" **[r5, PE5 F-1: quote restored to its byte-form at the ce0469a pin (JA-VDIND's display, wrap-joined there; byte-identical at [JA] HEAD, re-checked this round). The sealed text read \"… for every attained abscissa i\" — the word \"abscissa\" was interpolated by fusion with THEOREM JA-RES's quantifier line (\"THEN for every attained abscissa i:\"), that phrase's only occurrence in [JA]; semantically nil — \"attained i\" ranges over abscissas by JA's own surrounding sentence, and the identification below is unchanged]** — IS (PERIM-(m−1) on the attained abscissa set of the object). (R-coll) at level m is its every-recursion-node form ~~(2 ≤ q ≤ m−1)~~ **(2 ≤ q ≤ m, ROOT-INCLUSIVE — the q = m instance is JA-VDIND itself, the condition at the head of this clause) [r4, JA-COMPANION per ledger 3626f55 — JA PE2 FINDING 1 (report 9040961): [JA]† §3.4's own quantifier \"2 ≤ q ≤ m−1\" (as read at the ce0469a pin) OMITS the root instance, and root-exclusively the display's \"(VD-m) hold at all levels up to m\" conclusion is FALSE — 8 machine witnesses at m = 3 sit ON the root-exclusive perimeter (every level-2 node character trivial) with (VD-3) FALSE (T3B/T3F/I4B; e.g. T3B deg 6, attained {1}, A₂ = 7), plus 58 at m = 2 where the stated range is EMPTY; JA-VDIND itself and the per-slot law STAND (JA PE2's fresh 396/0). Root-inclusive, the condition coincides with accepted [JB]'s operative fence (root triviality a HYPOTHESIS at every m ≥ 2) — exactly (b) below. CONSUMER CHECK (this note): no WM display consumed the root-exclusive range — the (M2) face and S3's seed identities ~~cite JA-VDIND/JA-EPS directly~~ cite JA-EPS + JA-RES (+ W2-C2) and JA-EPS + W2-L2 directly [r5, PE5 O-1: name list corrected to the actual citation cells; JA-VDIND is itself cited at this clause's head and inside (c); the operative claim — those displays rest on JA primitives that STAND per JA PE2's fresh 396/0, not on the (R-coll) range — is unchanged and was independently re-verified by PE5's 8-site sweep]; (F-b) and this section's \"Consequence\" display read through THIS cured clause; the S4 stack carries JA's boxes verbatim at the pin, where JA-BOX-2's \"evaluated\" clause inherits the same slip (recorded here, not consumed by any WM display)]**. *Proof: citation — [JA]† §3.4's display is this condition verbatim for the node instances 2 ≤ q ≤ m−1, JA-VDIND (quoted above) is the root instance; the root inclusion is JA PE2's one-line cure.* **(b) [the (VD-m) proviso, J-B].** JB-CREAD's governing fence consumes JA-VDIND verbatim ([JB]† §5's regenerated fence display — the (VD-m) line of JB's internal [r3, STEP 2] block, citing [row 21]; §0M row 21's own (c) cell is the pointer \"YES — the governing fence\" **[r3, F-1: attribution corrected from \"§0M column (c)\", where the cell carries the same content in paren byte-form; quote + pin unchanged]** **[r2: as of 4c4ee56]**: \"at every m ≥ 2 a HYPOTHESIS — JA-VDIND's ABSOLUTE character-triviality\"); hence = (a) = (PERIM) at the same attained sets. Unconditional at m ≤ 1 only ((VD-1) = W2-L3). *Proof: citation of the r1/F1-repaired fence.* **(c) [(C-coll), W-2].** (C-coll) demands every interior junction character trivial: ξ_Q = 1, ξ_Q = χ_{Q−1}^{γ_Q}·z_{Q−1}^{−e_{Q−1}A_{Q−1}} ([W2]† §3.4). AT TRIVIAL LOWER χ-CHAIN (χ_{Q−1} = 1 — e.g. every m = 2 junction, where χ_1 := 1): ξ_Q = z_{Q−1}^{ −e_{Q−1}·A_{Q−1} } = χ^{(Q−1)}_{e_{Q−1}} = ϑ_Q, exactly JA-VDIND's slot character ϑ — so (C-coll) at that level is (PERIM-(Q−1) on the junction slot grid e_{Q−1}·ℤ): the SLOT-GRID specialization (W-2's junction slots sit at s + j·e_{Q−1}; the j-dependent character part is ϑ_Q^j). *Proof: read off the §3.4 display at χ = 1; the grid statement is [W2]† §3.2's letter-twist sentence.* **The honest caveat (carried, not erased — [SYN] §1.3's own words).** The alignment is exact only MODULO the χ-chain corrections at deeper levels (χ_{Q−1} ≠ 1 makes ξ_Q a χ-corrected character, not a bare χ^{(μ)} value) and the MOD-WRAP boundary (W2-BOX-1's I4B r = 5 witness: a support- invisible interior character re-emerging through monomial reduction). The one-perimeter statement does NOT scalarize the wrap; the exact law off the perimeter remains (HR-REC) [W-2] / the per-slot recursion [J-A] — and the scalar forms of all four notes die together at this same boundary, which is the one-perimeter observation seen from the failure side. **THE THREE-MASTER-FENCE SURFACE (what a consumer of WELD-M carries, replacing four per-note fence systems as a READING AID — the four notes' own surfaces stay authoritative until the next fold):** (F-a) the SHARED-KEY / BYTE perimeter — (M0)'s hypothesis: ~~`P<q` for the (VAL)/(GRID) layers, `P≤q` for the (RES) layer ([JB]† §0M (a1)/(a2))~~ **[r2, F-1 — per [JB]† §0M (a1)/(a2) as of 4c4ee56 (row 11 split at JB r6): `P<q` for the (VAL)/(GRID) layers EXCEPT JB-VTX(d3); `P≤q` (the byte-equal chain THROUGH q) for the (RES) layer AND for (d3)'s min tie w_{q+1}(f) = v_{q+2}(f) — a VAL-family tie that is JA-VAL at level q+1, hence needs the byte-equal chain through q; (a2)'s consumer list there: rows 2, 5, and row 11's (d3)]**; off it the print frame is a different computation. (F-b) the COLLAPSE perimeter — THIS section's (PERIM) condition at the appropriate abscissa sets ((a)/(b)/(c) above), with the χ-chain and mod-wrap caveat displayed. (F-c) the LITERATURE/CONVENTION fence — (DMULT-w) CITED / (DMULT-s) MEASURED ([JC]† tier split), the unpinned-ℓ orbit convention (JA-BOX-3 / [W2]† §4.3), the FGMN numbering re-verification owed, and ~~the [RMG]/LED-Λ attempt grades where [JB]† consumes them~~ **[RMG] at ACCEPTED grade and LED-Λ at ATTEMPT grade, as [JB]† consumes them ([JB]† §4 grade cap: \"consuming [RMG] as ACCEPTED and LED-Λ at ATTEMPT grade\") [r1, F-7]** **[r2: quote as of 4c4ee56]**. **Consequence for the four notes' fence surfaces.** Each note's collapse fence becomes a DERIVABLE DISPLAY of (F-b): (C-coll) = slot-grid (PERIM) + χ-corrections; (R-coll) = absolute (PERIM) at recursion nodes **[r4: nodes AND root, per (a)'s cured root-inclusive range]**; (VD-m) = absolute (PERIM) at attained sets. **No note is edited by this consolidation** — the four fence surfaces stand as committed; if a future fold brackets them onto (F-b), that fold cites this section. (The campaign motivation, recorded: JB's r1–r4 arc exists because per-site fence patching did not converge — \"A fifth sweep would find a sixth site\" **[r6, PE6 F-2: sentence-initial case restored to the pins' byte-form — the sentence begins with capital \"A\" at both byte-sites in the pinned corpus, [JB] 4c4ee56 line 149 and [SYN] f71cd68 line 131; the sealed text's lowercase \"a fifth sweep …\" occurred byte-contiguously at NEITHER pin; semantically nil]**; one perimeter stated once is the same medicine at campaign level.)",
      "label": "THEOREM WM-FENCE"
+    },
+    {
+     "kw": "THEOREM",
+     "tok": "WELD-M-PKG",
+     "form": "A",
+     "start": 1123,
+     "end": 1152,
+     "truncated": false,
+     "struck": false,
+     "md5": "c2cde3b4eed5cecf4ba724b5413f4c93",
+     "text_norm": "**THEOREM WELD-M-PKG (the anchored five-face transport package).** For every tower \\(T\\) on the frozen S1 perimeter, there exists one named package \\[ \\mathbf T_T=(\\mathbf T_{M0},\\mathbf T_{M1},\\mathbf T_{M2}, \\mathbf T_{M3},\\mathbf T_{M4}) \\] whose fields are exactly the frozen clauses: \\[ \\begin{array}{ll} \\mathbf T_{M0}:&\\text{the identity of the two canonical division chains;}\\\\ \\mathbf T_{M1}:&w_m=v_{m+1}\\text{ and the affine shear } \\Sigma_q(i,u)=(i,e_qu+h_qi),\\\\ &\\text{with the frozen vertex, slope, key and membership fences;}\\\\ \\mathbf T_{M2}:&\\text{the per-slot read/operator character transport generated by } t_j/\\varepsilon_j,\\\\ &\\text{with exact recursion off the scalar perimeter;}\\\\ \\mathbf T_{M3}:&\\text{the multiplication transport to } K^c[\\mathbb Z/E]\\text{ on the scored stratum;}\\\\ \\mathbf T_{M4}:&\\text{the representative/lift covariance field at W2-C3’s accepted fenced scope.} \\end{array} \\] The shared anchors and identifications are precisely those displayed in the frozen face table: the same tower and canonical division chain, \\(w_m=v_{m+1}\\), the \\(t_j/\\varepsilon_j\\) seed, harness-val \\(=\\) TC-read, and the displayed \\(\\psi\\)-transport. No compatibility beyond those displayed ties is asserted. **RECORD-ASSEMBLY LEMMA.** If, for fixed \\(T\\), the supplier theorems prove the five field propositions \\(P_{M0}(T),\\ldots,P_{M4}(T)\\), then they prove \\[ P_{M0}(T)\\times P_{M1}(T)\\times P_{M2}(T)\\times P_{M3}(T)\\times P_{M4}(T). \\]",
+     "label": "THEOREM WELD-M-PKG"
     }
    ]
   },
   "JD0_PROOF_2026-08-08.md": {
    "path": "lean/notes/openmath/JD0_PROOF_2026-08-08.md",
-   "commit": "9387eb1a",
+   "commit": "438afac2",
    "grade": "PROVED (machine 68,523/0; sub-bar)",
    "statements": [
     {
@@ -457,12 +541,24 @@
      "md5": "68254d43f67507afff3036d532f3f9ca",
      "text_norm": "**LEMMA J-D0.** (i) [GAUGE-INVARIANCE] For every decided shape T, every prime power q, and every 1-cochain u with unit values, the stratum count of T computed through the u-gauged read equals the direct stratum count. (ii) [VALUE-BLINDNESS] Any two towers/types with the same shape data (d0, (e_j, h_j, g_j)_j) and residual-degree structure have EQUAL stratum counts at every q, regardless of their letters and carry cochains. Consequence: the stratum count is a function of the SHAPE alone — per shape a single expression in q, the same at tame and wild primes.",
      "label": "LEMMA J-D0"
+    },
+    {
+     "kw": "LEMMA",
+     "tok": "J-D0",
+     "form": "A",
+     "start": 513,
+     "end": 529,
+     "truncated": false,
+     "struck": false,
+     "md5": "c23671458031d82190a25c00ff1c9312",
+     "text_norm": "**LEMMA J-D0 (corrected display).** (i) [GAUGE-INVARIANCE] For every decided count-shape T̂, every prime power q, and every unit-valued carry gauge having the documented S0 residual action R(y) ↦ ξ^(−deg R) R(ξy), the normalized coefficient μ_T̂(q) computed through the gauged read equals the direct coefficient. (ii) [VALUE-BLINDNESS] Any two realized decided types with the same count-shape T̂ have equal normalized coefficients at every q, regardless of their residual letters and regardless of whether their carry cochains are cohomologous. Consequently μ_T̂(q) is a function of the full combinatorial count-shape T̂ alone.",
+     "label": "LEMMA J-D0 #2"
     }
    ]
   },
   "SIGMALAW_PROOF_2026-08-08.md": {
    "path": "lean/notes/openmath/SIGMALAW_PROOF_2026-08-08.md",
-   "commit": "a27ed687",
+   "commit": "25ce1e65",
    "grade": "ACCEPTED 2/2",
    "statements": [
     {
@@ -529,7 +625,7 @@
   },
   "W11_PROOF_2026-08-08.md": {
    "path": "lean/notes/openmath/W11_PROOF_2026-08-08.md",
-   "commit": "35e65450",
+   "commit": "87d8923b",
    "grade": "ACCEPTED 2/2",
    "statements": [
     {
@@ -548,7 +644,7 @@
   },
   "W12_PROOF_2026-08-08.md": {
    "path": "lean/notes/openmath/W12_PROOF_2026-08-08.md",
-   "commit": "2fcbd0c7",
+   "commit": "06958241",
    "grade": "ACCEPTED 2/2",
    "statements": [
     {
@@ -634,12 +730,24 @@
      "md5": "3ee0843d08f7b4f8a95e38044bf3b218",
      "text_norm": "**LEMMA W12-S3.2.** Every TRP member with b₁ = b₀ = 0 over O/π^N (after recentering; b₂ ∈ πO/π^N free) is σ-undecided: U₃^TRP(q, N) ≥ q·q^{N−1} = q^N.",
      "label": "LEMMA W12-S3.2"
+    },
+    {
+     "kw": "LEMMA",
+     "tok": "W12-HT",
+     "form": "A",
+     "start": 2237,
+     "end": 2274,
+     "truncated": false,
+     "struck": false,
+     "md5": "bc1c91b966f32de1800fb1d951824d70",
+     "text_norm": "**LEMMA W12-HT (ALL-DEGREE ORDER-1 HISTORY TRANSFER).** After fixing the actual normalized residual polynomial on every side of a node \\(v\\), there is a finite-window bijection \\[ \\mathcal E_v(\\mathbf R) \\simeq \\mathcal U_v(\\mathbf R)\\times \\prod_{u\\text{ child of }v}C_{m_u}(s_u), \\tag{HT-fiber} \\] compatible with further recentering and with coprime branch fracture, where \\(\\mathcal E_v(\\mathbf R)\\) is the exact polygon cell with those residual letters and \\[ \\#\\mathcal U_v(\\mathbf R) = Q_i^{B_v(N)-\\sum_{u\\text{ child}}D_u(N)}. \\tag{HT-free} \\] The bijection and its fiber size are independent of the residual letters. Consequently \\[ \\#(v)= Q_i^{B_v(N)} \\left(\\prod_{S\\subset P_v}S_{\\lambda_{v,S}}(Q_i)\\right) \\kappa_v \\prod_{u\\text{ child}} \\frac{\\#(u)}{Q_i^{D_u(N)}}. \\tag{HT-rec} \\] The recursion terminates at separable Ore leaves, and hence \\[ \\boxed{ \\mathcal H_i(T,N)= \\left( \\prod_{v\\in T_i}\\kappa_v \\prod_{S\\subset P_v}S_{\\lambda_{v,S}}(Q_i) \\right) Q_i^{ \\sum_{v\\in T_i}B_v(N)- \\sum_{\\substack{v\\in T_i\\\\v\\ne\\mathrm{root}}}D_v(N)}.} \\tag{HT-branch} \\]",
+     "label": "LEMMA W12-HT"
     }
    ]
   },
   "HMENU3_PROOF_2026-08-08.md": {
    "path": "lean/notes/openmath/HMENU3_PROOF_2026-08-08.md",
-   "commit": "19c02857",
+   "commit": "d665620b",
    "grade": "ACCEPTED 2/2",
    "statements": [
     {
@@ -706,7 +814,7 @@
   },
   "HEX3_PROOF_2026-08-08.md": {
    "path": "lean/notes/openmath/HEX3_PROOF_2026-08-08.md",
-   "commit": "7e29d9e5",
+   "commit": "fb83ff16",
    "grade": "ACCEPTED 2/2",
    "statements": [
     {
@@ -749,7 +857,7 @@
   },
   "GENIND_PROOF_2026-08-08.md": {
    "path": "lean/notes/openmath/GENIND_PROOF_2026-08-08.md",
-   "commit": "dfd58316",
+   "commit": "5e33b01f",
    "grade": "ACCEPTED 2/2",
    "statements": [
     {
@@ -979,7 +1087,7 @@
   },
   "GENHN_PROOF_2026-08-08.md": {
    "path": "lean/notes/openmath/GENHN_PROOF_2026-08-08.md",
-   "commit": "59c1966d",
+   "commit": "06958241",
    "grade": "ACCEPTED 2/2",
    "statements": [
     {
@@ -1089,12 +1197,48 @@
      "md5": "c932ac301d7daa4bb62b7ff23d7e6331",
      "text_norm": "**LEMMA GENHN-T(b)′ (tower composition, corrected).** Setting: outer genre (Q; e₁, f₁, μ₁; h), key Φ′ (deg D′ = e₁f₁, S3.1/E3 invariants), level-1 development f = Φ′^{μ₁} + Σ_{J<μ₁} A_J Φ′^J; an inner CS event on the stage read: a side of the (J, dv(A_J))-polygon of dv-slope κ₂ = u₂/e₂ (lowest terms, gcd(u₂, e₂) = 1; κ₂ > D′h by the [r1] node floor) carrying residual ψ₂^{μ₂} over K, f₂ := deg ψ₂, e₂f₂μ₂ = μ₁ (FULL inner side — the first-live shape; partial sides sit in [GENHN-TOW-1]). Let Φ₂ ∈ Ô[x] be the COMPOSED KEY: the canonical lift of the inner key, Φ₂ := Φ′^{e₂f₂} − Σ_{t<f₂} ĉ_t · n̂(u₂(f₂−t)) · Φ′^{e₂t} (ψ₂(T) = T^{f₂} − Σ_t c_t T^t; n̂(m) = x^i π^a the dv-height-m normalizer monomial, i < e₁), monic of degree D₂ := D′e₂f₂. Set dv₂ := e₁e₂·v (the composed ladder). (At f₁ ≥ 2 the coefficient products ĉ_t·n̂ can overflow x-degree D′; their Φ′-carries sit at the same dv-value one Φ′-step right, i.e. STRICTLY ABOVE the inner side — side drop u₂/e₂ per step — so Φ₂'s literal Φ′-development differs from the display only above the side: side and residual are unchanged, and (i)'s proof reads on the literal development.) Then: (i) [COMPOSED CARRIER] every root ξ of Φ₂ has v(ξ) = h/e₁ with η(ξ) a root of ψ, and v(Φ′(ξ)) = u₂/(e₁e₂) with η₂(ξ) := res(Φ′(ξ)^{e₂}/n̂(u₂)(ξ)) a root of ψ₂; the forcing chain gives e(L₂/base) = e₁e₂, f = f₁f₂, [L₂ : base] = D₂, Φ₂ irreducible, O_{L₂}-residue field K₂ := F_Q(η, η₂) = F_{Q^{f₁f₂}} — carrier in L₂/O_{L₂} per ERRATUM E3 (Ô[x]/(Φ₂) is in general a non-maximal order). (ii) [COMPOSED SLOT LEMMA — GENHN-2′] {x^a Φ′^b : a < D′, b < e₂f₂} is a triangular-unimodular basis of the degree-< D₂ polynomials; for A = Σ c_{a,b} x^a Φ′^b (c ∈ Ô) and every x₀ on the tower-node locus ((T1), (T2), and the inner (T1₂): v(Φ′(x₀)) = u₂/(e₁e₂) exactly, (T2₂): η₂(x₀) a root of ψ₂ — both proved for the inner block's roots from the level-1 pins as in S7): dv₂(A(x₀)) = min_{a,b} (e₁e₂·v(c_{a,b}) + a·e₂h + b·u₂) EXACTLY, and the minimizing residues assemble ONE K₂-digit per dv₂-height. (iii) [THE CORRECTED LEAF READ + σ] with deg f = n = μ₂D₂ the Φ₂-adic development in Ô[x] is f = Φ₂^{μ₂} + Σ_{j<μ₂} C_j Φ₂^j (deg C_j < D₂); the tower-leaf pins are p_j := dv₂(C_j(x₀)) = the composed slot-mins of (ii); the leaf labels and σ are the (μ₂, K₂)-dictionary applied to (p_j) on the dv₂-ladder. At μ₂ = 2 the σ-decision is PROVED (S7 verbatim at the composed data): with (T1′) e₁e₂ | e(L) and (T2′) f₁f₂ | f(L), composed-RAM (p₀ odd on dv₂, p₀ ≤ 2p₁) ↦ {(2e₁e₂, f₁f₂)} composed-2SIDED/SPLITEQ/SPLTAIL ↦ {(e₁e₂, f₁f₂)} ×2 composed-INERT ↦ {(e₁e₂, 2f₁f₂)} — the σ-composition FORMULA (e, f) ↦ (e₁e₂·e_s, f₁f₂·f_s) of the sealed (b) SURVIVES, applied to the composed pins; inner μ₂ ≥ 3 is [GENHN-HE(μ₂)]. (iv) [THE STAGE SHADOW + FAITHFULNESS THRESHOLD] the sealed read = Ĝ_j(θ, Y) (the coefficientwise mod-Φ′ shadow); it agrees with the composed pin at coordinate j iff every discrepancy class Φ′(x₀)·H_j — each at dv₂ ≥ u₂ + dv₂(H_j-class) — sits weakly above BOTH reads' slot-min at j. This inequality HOLDS at the entry/event band (the T(a) geography: entry pins on the inner side, corrections above it — machine-verified at the PE1 instances and the P8 witness; its genre-general proof is part of [GENHN-TOW-1]) and FAILS generically at leaf depth (PE1: 3/3 constructions; supp sweep: 35/35 COMPARED rows diverge at pin level **[r3 2026-08-09 (passPE2 F4): the r2 figure \"35/38\" transcribed the output line's \"(of 38 tower rows)\"; the runner compares stage-vs-corrected pins only on the 35 two-stage rows — the 3 SUPP-C 3-stage rows have no stage read and are skipped before the tally (`continue` at the divergence loop) — and the 35 compared rows ALL diverged; the honest denominator is 35]**). The stage algebra is a projection, not the state. (v) [COUNT-LAW FORM + LEAF LABELS] the tower-leaf STATE is the composed digit strings of (C_j) — one K₂-digit per dv₂-height per coordinate (by (ii)); leaf labels are keyed to COMPOSED pin heights; count laws take the (μ₂, K₂)-cell-law form (W-12.A re-based at (e₁e₂, f₁f₂)) ON THAT KEYING. The sealed note displayed no explicit tower count law (S8(b) priced them only through the withdrawn \"no new mechanism\" sentence), so the correction is the KEYING plus the label reassignment (see the table below); the composed ENTRY BUDGETS (the GENHN-1 analogue at Φ₂) and the inner refine transfer are NOT derived here — boxed, [GENHN-TOW-1].",
      "label": "LEMMA GENHN-T #2"
+    },
+    {
+     "kw": "LEMMA",
+     "tok": "GENHN-CAP-GEN",
+     "form": "A",
+     "start": 2061,
+     "end": 2087,
+     "truncated": false,
+     "struck": false,
+     "md5": "cece40d77556153d87688ceb1c59721f",
+     "text_norm": "**LEMMA GENHN-CAP-GEN (general finite-window boundary projection).** Fix any ordinary stage genre \\((e_1,f_1,\\mu)\\) and a truncated coefficient state. For a slot height \\(m\\), let \\(V_m\\subseteq K\\) be the \\(F_Q\\)-span of those basis components \\(\\eta^t\\) whose coefficient digits occur below their coordinate windows, and put \\[ \\operatorname{comp}(m):=\\dim_{F_Q}V_m. \\] Let \\(\\operatorname{Comp}(z)\\) be the set of all full coefficient strings agreeing with the truncated state \\(z\\). The finite-window stage reader obeys the following rule: 1. if some unread coefficient can undercut the provisional minimum, return `UND`; 2. otherwise GENHN-2 makes the provisional value exact; if its residue is only partially visible, return a decided leaf exactly when every member of \\(\\operatorname{Comp}(z)\\) has the same dictionary output, and return `UND` otherwise; 3. perform a recursive refine only when every \\(K\\)-component of every pin required by that refine is visible. Then the output is a function of the truncated data, no unread digit is consulted, and every recursive history stops before an incomplete pin. **PROOF.** GENHN-2 expresses every queried value as the minimum of the individual coefficient heights and proves independence of the tying residues. If an unread coefficient can lie lower, two compatible completions can have different values, so conservative drainage forces `UND`. If none can lie lower, the value is fixed; at an equal-height tie, independence of the visible and missing \\(\\eta^t\\)-components prevents the missing components from cancelling a nonzero visible part. A leaf is lift-stable precisely when its dictionary output is constant on the affine completion set. Finally, an incomplete refine pin cannot determine its \\(K\\)-letter, so clause 3 is forced by the same completion test. This proves all three clauses. **COUNT TRANSPORT.** GENHN-1’s triangular coefficient bijection transports this completion rule directly from W-12.A’s conservative finite-window read. A nonzero visible boundary pin has \\[ Q^{\\operatorname{comp}(m)}-1 \\] choices, exactly as ERRATUM E2 states; unread components are free completion fibers, and deeper value-unstable strata drain to `UND`. Interior refinements still use complete \\(K\\)-pins, so GENHN-2(b)’s bracket and GENHN.A(iv) are unchanged. Thus CS-1 and CS-2 hold at ordinary \\(f_1\\ge2\\), \\(\\mu\\ge3\\), and mixed genres without a new box. The `[r2]` rule for \\((e_1,\\mu)=(1,2)\\) is the specialization: at the first band height \\(N\\), a nonzero visible part fixes \\(u=N\\); `2SIDED` or odd `RAM` is returned when that conclusion is constant over all missing components, while the even residue-dependent branch drains. At deeper band heights an unread digit can undercut, so clause 1 drains. **RIDERS.** Read “the ragged band is never consulted” everywhere in GENHN.A(iii), S5, and the OB-a paragraph as “the unread component cells of the ragged band are never consulted.” Visible components at a boundary height may be used once by the completion-invariant terminal rule above. Read GENHN-3(a)’s “iff \\(<e_1N\\)” as the sufficient interior criterion together with GENHN-CAP-GEN’s exact boundary criterion; the previously proved stability below \\(e_1N\\) is unchanged.",
+     "label": "LEMMA GENHN-CAP-GEN"
+    },
+    {
+     "kw": "LEMMA",
+     "tok": "GENHN-LIFT",
+     "form": "A",
+     "start": 2103,
+     "end": 2189,
+     "truncated": false,
+     "struck": false,
+     "md5": "3b70a20ff069a16fbabad0e7b72a825e",
+     "text_norm": "**LEMMA GENHN-LIFT.** Let \\(M>D'h=e_1f_1h\\), and let \\(i=i(M)\\), \\(0\\le i<e_1\\), be determined by \\[ ih\\equiv M\\pmod{e_1},\\qquad a=(M-ih)/e_1. \\] Write \\(\\lambda\\in K\\) uniquely as \\[ \\lambda=\\sum_{s=0}^{f_1-1}\\lambda_s\\eta^s,\\qquad \\lambda_s\\in F_Q, \\] and define \\[ L_M(\\lambda):= \\sum_{s=0}^{f_1-1} \\widetilde{\\lambda_s}\\, x^{\\,i+e_1s}\\pi^{\\,a-sh}. \\] Then \\(L_M(\\lambda)\\in\\widehat O[x]\\), \\(\\deg L_M(\\lambda)<D'\\), every nonzero summand has exact \\(dv\\)-height \\(M\\), and \\[ \\operatorname{res}\\!\\left(\\frac{L_M(\\lambda)(\\theta)} {n(M)(\\theta)}\\right)=\\lambda . \\] **PROOF.** Since \\(i+e_1s\\le D'-1\\) and \\(M>D'h\\), \\[ a-sh=\\frac{M-(i+e_1s)h}{e_1}\\ge0, \\] so every summand is integral and has degree \\(<D'\\). Its evaluated height is \\[ e_1(a-sh)+(i+e_1s)h=M. \\] Dividing by \\(n(M)=x^i\\pi^a\\) leaves residue \\(\\lambda_s\\eta^s\\); GENHN-2’s independence gives their sum \\(\\lambda\\), with no cancellation. ∎ **APPLICATION TO THE COMPOSED KEY.** Put \\(r=f_2-t\\), \\(M=ru_2\\), and \\[ W(t)=\\left\\lfloor\\frac{r\\,i(u_2)}{e_1}\\right\\rfloor . \\] Replace the gauge-naive coefficient term in T(b)′ by \\[ L_{ru_2}\\!\\bigl(c_t\\eta^{W(t)}\\bigr)\\,\\Phi'^{\\,e_2t}. \\] Because \\[ \\operatorname{res}\\!\\left(\\frac{n(u_2)^r}{n(ru_2)}\\right) =\\eta^{W(t)}, \\] its coefficient relative to the coherent power normalizer \\(n(u_2)^r\\) is exactly \\(c_t\\). Hence the inner residual is precisely \\(\\psi_2\\), not its gauge-naive twist. For every monomial \\(x^\\ell\\pi^b\\) occurring in this lift, \\(e_1b+\\ell h=ru_2\\). Multiplying by a monomial of \\(\\Phi'^{e_2t}\\), the clearance above the outer \\(x\\)-polygon side is bounded below by \\[ \\frac{r(u_2-e_2D'h)}{e_1}>0, \\] exactly the inequality used in T(b)′(i). Thus every component clears the side. Polynomial collection and \\(\\Phi'\\)-carry can only cancel terms or move them upward; they cannot create a term below the side. Since \\(L_M(\\lambda)\\) already has degree \\(<D'\\), the literal \\(\\Phi'\\)-development also has the asserted exact-height coefficient and residual. Therefore T(b)′(i)’s one-side polygon, \\(\\psi_2\\)-residual, carrier forcing chain, irreducibility, and residue-field conclusion hold at the corrected composed key. Clauses (ii)–(v) then proceed exactly as written.",
+     "label": "LEMMA GENHN-LIFT"
+    },
+    {
+     "kw": "LEMMA",
+     "tok": "GENHN-COUNT-RERUN",
+     "form": "A",
+     "start": 2352,
+     "end": 2426,
+     "truncated": false,
+     "struck": false,
+     "md5": "a95e85a81ef4daead7004c55162e1621",
+     "text_norm": "**LEMMA GENHN-COUNT-RERUN (\\(\\mu=2\\), corrected node).** Let \\[ G=(Q;e_1,f_1,2;h,\\mathrm{entry}), \\qquad D'=e_1f_1,\\qquad K=\\mathbf F_{Q^{f_1}}, \\qquad B=D'h, \\] where \\(h\\ge1\\) and \\(\\gcd(e_1,h)=1\\). For every component-complete finite stage cap \\(M\\), let \\[ \\mathcal N_B(M)= \\left\\{ (A_1,A_0): dv(A_1)>B,\\quad dv(A_0)>2B,\\quad \\text{all retained heights are }\\le M \\right\\}. \\] Then the GENHN-2 slot map induces a bijection \\[ \\mathcal N_B(M)\\;\\xrightarrow{\\sim}\\; K^{\\{B+1,\\ldots ,M\\}} \\times K^{\\{2B+1,\\ldots ,M\\}}. \\tag{CR-1} \\] Under this bijection: 1. the finite-stage reader is exactly the finite-window \\((2,K)\\)-cluster reader at lower node \\(B\\); 2. its `RAM`, `2SIDED`, `SPLTAIL`, `SPLITEQ`, `INERT`, and recursively alpha-refined per-key cardinalities are the standard \\((2,K)\\) cell-law cardinalities at that node; 3. for every alpha height \\(\\kappa>B\\) and every fixed \\(s\\in K^\\times\\), recentering is a count-bijection from the \\((\\kappa,s)\\)-slice onto \\(\\mathcal N_\\kappa(M)\\). Consequently \\[ \\#\\{\\text{alpha states at height }\\kappa\\} =(|K|-1)\\,|\\mathcal N_\\kappa(M)|; \\tag{CR-2} \\] 4. at a common coefficient-window boundary, a nonzero visible pin of dimension \\(\\operatorname{comp}(m)\\) has census \\[ Q^{\\operatorname{comp}(m)}-1, \\tag{CR-3} \\] and its decision is governed by GENHN-CAP-GEN’s completion-invariance rule. Therefore every ordinary \\(\\mu=2\\) GENHN count display survives the floor correction after \\[ S=e_1h\\quad\\rightsquigarrow\\quad B=D'h=e_1f_1h. \\tag{CR-4} \\] The literal numeric \\(S\\)-node law survives uniformly in the stage cap exactly when \\(f_1=1\\). In particular, for \\(M\\ge2B\\), \\[ |\\mathcal N_B(M)| =|K|^{(M-B)+(M-2B)}, \\tag{CR-5} \\] while the old \\(S\\)-node volume is larger by \\[ |K|^{3(B-S)}. \\tag{CR-6} \\]",
+     "label": "LEMMA GENHN-COUNT-RERUN"
     }
    ]
   },
   "HE3_PROOF_2026-08-08.md": {
    "path": "lean/notes/openmath/HE3_PROOF_2026-08-08.md",
-   "commit": "8ba8c878",
+   "commit": "62400944",
    "grade": "ACCEPTED 2/2",
    "statements": [
     {
@@ -1293,7 +1437,7 @@
   },
   "HE6_PROOF_2026-08-08.md": {
    "path": "lean/notes/openmath/HE6_PROOF_2026-08-08.md",
-   "commit": "dc63a84e",
+   "commit": "a5d8eb01",
    "grade": "ACCEPTED 2/2",
    "statements": [
     {
@@ -1751,7 +1895,7 @@
   },
   "HE6R1_RECON_2026-08-08.md": {
    "path": "lean/notes/openmath/HE6R1_RECON_2026-08-08.md",
-   "commit": "06971c36",
+   "commit": "d810e100",
    "grade": "ACCEPTED 2/2",
    "statements": [
     {
@@ -1983,7 +2127,7 @@
   },
   "GENTOW3_PROOF_2026-08-09.md": {
    "path": "lean/notes/openmath/GENTOW3_PROOF_2026-08-09.md",
-   "commit": "607fc694",
+   "commit": "3ee83992",
    "grade": "ACCEPTED 2/2",
    "statements": [
     {
@@ -2014,7 +2158,7 @@
   },
   "GENTOW4_PROOF_2026-08-09.md": {
    "path": "lean/notes/openmath/GENTOW4_PROOF_2026-08-09.md",
-   "commit": "4545b4d7",
+   "commit": "73b93fd0",
    "grade": "ACCEPTED 2/2",
    "statements": [
     {
@@ -2069,7 +2213,7 @@
   },
   "GENTOW5_PROOF_2026-08-09.md": {
    "path": "lean/notes/openmath/GENTOW5_PROOF_2026-08-09.md",
-   "commit": "43b42e9c",
+   "commit": "cb010522",
    "grade": "ACCEPTED 2/2",
    "statements": [
     {
@@ -2100,7 +2244,7 @@
   },
   "GENTOW6_PROOF_2026-08-09.md": {
    "path": "lean/notes/openmath/GENTOW6_PROOF_2026-08-09.md",
-   "commit": "b1b6aa61",
+   "commit": "3d7fc37b",
    "grade": "ACCEPTED 2/2",
    "statements": [
     {
