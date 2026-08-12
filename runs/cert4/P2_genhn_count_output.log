@@ -1,0 +1,272 @@
+### Dated proof completion (2026-08-12 — GENHN-COUNT-RERUN, \(\mu=2\), corrected node)
+
+**Certificate interpretation.** The rerun’s terminal `MISMATCH` concerns only the sealed alpha-child column. On every emitted key, `measured = predicted`. The sealed table incorrectly assigned the entire fixed-letter alpha slice to `UND`. The actual and predicted partitions are
+
+\[
+\begin{array}{c|cc|cc}
+(e_1,f_1,2)&\multicolumn{2}{c|}{\text{sealed}}&
+\multicolumn{2}{c}{\text{actual}=\text{predicted}}\\
+&\mathrm{RAM}&\mathrm{UND}&\mathrm{RAM}&\mathrm{UND}\\ \hline
+(1,2,2)&0&1024&768&256\\
+(2,2,2)&0&16384&12288&4096.
+\end{array}
+\]
+
+Thus the certificate confirms the corrected-node law and refutes the sealed child displays exactly where refine transfer says it must.
+
+> **LEMMA GENHN-COUNT-RERUN (\(\mu=2\), corrected node).**  
+> Let
+>
+> \[
+> G=(Q;e_1,f_1,2;h,\mathrm{entry}),
+> \qquad D'=e_1f_1,\qquad
+> K=\mathbf F_{Q^{f_1}},
+> \qquad B=D'h,
+> \]
+>
+> where \(h\ge1\) and \(\gcd(e_1,h)=1\). For every component-complete finite stage cap \(M\), let
+>
+> \[
+> \mathcal N_B(M)=
+> \left\{
+> (A_1,A_0):
+> dv(A_1)>B,\quad
+> dv(A_0)>2B,\quad
+> \text{all retained heights are }\le M
+> \right\}.
+> \]
+>
+> Then the GENHN-2 slot map induces a bijection
+>
+> \[
+> \mathcal N_B(M)\;\xrightarrow{\sim}\;
+> K^{\{B+1,\ldots ,M\}}
+> \times
+> K^{\{2B+1,\ldots ,M\}}.
+> \tag{CR-1}
+> \]
+>
+> Under this bijection:
+>
+> 1. the finite-stage reader is exactly the finite-window \((2,K)\)-cluster reader at lower node \(B\);
+> 2. its `RAM`, `2SIDED`, `SPLTAIL`, `SPLITEQ`, `INERT`, and recursively alpha-refined per-key cardinalities are the standard \((2,K)\) cell-law cardinalities at that node;
+> 3. for every alpha height \(\kappa>B\) and every fixed \(s\in K^\times\), recentering is a count-bijection from the \((\kappa,s)\)-slice onto \(\mathcal N_\kappa(M)\). Consequently
+>
+>    \[
+>    \#\{\text{alpha states at height }\kappa\}
+>    =(|K|-1)\,|\mathcal N_\kappa(M)|;
+>    \tag{CR-2}
+>    \]
+>
+> 4. at a common coefficient-window boundary, a nonzero visible pin of dimension \(\operatorname{comp}(m)\) has census
+>
+>    \[
+>    Q^{\operatorname{comp}(m)}-1,
+>    \tag{CR-3}
+>    \]
+>
+>    and its decision is governed by GENHN-CAP-GEN’s completion-invariance rule.
+>
+> Therefore every ordinary \(\mu=2\) GENHN count display survives the floor correction after
+>
+> \[
+> S=e_1h\quad\rightsquigarrow\quad
+> B=D'h=e_1f_1h.
+> \tag{CR-4}
+> \]
+>
+> The literal numeric \(S\)-node law survives uniformly in the stage cap exactly when \(f_1=1\). In particular, for \(M\ge2B\),
+>
+> \[
+> |\mathcal N_B(M)|
+> =|K|^{(M-B)+(M-2B)},
+> \tag{CR-5}
+> \]
+>
+> while the old \(S\)-node volume is larger by
+>
+> \[
+> |K|^{3(B-S)}.
+> \tag{CR-6}
+> \]
+
+**Proof.** Put \(q_K:=|K|=Q^{f_1}\). We use only occupied heights \(m>B=D'h\), the certified scope of the corrected GENHN.A(ii) slot clause.
+
+For any such \(m\), the congruence
+
+\[
+i_0h\equiv m\pmod {e_1},
+\qquad 0\le i_0<e_1,
+\]
+
+has a unique solution because \(\gcd(e_1,h)=1\). Set
+
+\[
+i_s=i_0+e_1s,\qquad
+r_s=\frac{m-i_sh}{e_1},
+\qquad 0\le s<f_1.
+\]
+
+Since \(m>D'h\) and \(i_s<D'\), every \(r_s\) is nonnegative. LEMMA GENHN-LIFT therefore gives, for every
+
+\[
+\lambda=\sum_{s=0}^{f_1-1}\lambda_s\eta^s\in K,
+\]
+
+the integral polynomial
+
+\[
+L_m(\lambda)
+=
+\sum_{s=0}^{f_1-1}
+\widetilde{\lambda_s}\,
+x^{i_s}\pi^{r_s},
+\]
+
+of degree \(<D'\), whose nonzero terms all have exact \(dv\)-height \(m\), and whose normalized residue is \(\lambda\).
+
+Conversely, GENHN-2 says that the \(f_1\) coefficient digits at these positions assemble into exactly one \(K\)-digit: the powers
+
+\[
+1,\eta,\ldots,\eta^{f_1-1}
+\]
+
+are \(F_Q\)-independent, so no nonzero combination can cancel. Different heights use disjoint coefficient-digit positions, because a position \((i,r)\) has the unique height \(e_1r+ih\). Hence the maps supplied by GENHN-2 and GENHN-LIFT are inverse slotwise bijections.
+
+For \(A_1\), the corrected floor is \(dv(A_1)>B\), so its retained slots are precisely \(B+1,\ldots,M\). For \(A_0\), the floor is \(dv(A_0)>2B\), so its retained slots are \(2B+1,\ldots,M\). The two coordinates are independent. This proves (CR-1).
+
+Write the resulting slot series as
+
+\[
+\mathscr A_j(t)=\sum_m\lambda_{j,m}t^m.
+\]
+
+By GENHN-2, the least nonzero slot height is exactly \(dv(A_j)\), and its \(K\)-coefficient is exactly the normalized leading residue used by the stage polygon. Thus the polygon of
+
+\[
+Y^2+A_1Y+A_0
+\]
+
+and every residual quadratic read from it agree, point for point, with those of
+
+\[
+Y^2+\mathscr A_1(t)Y+\mathscr A_0(t)
+\]
+
+over the integer \(t\)-ladder with coefficient field \(K\).
+
+GENHN-3 gives the required finite-window compatibility: decisions below the cap depend only on retained digits, and carries move upward. GENHN-CAP-GEN supplies the exact conservative rule where a coefficient window leaves only part of a slot visible. Therefore the slot bijection conjugates the GENHN reader to the finite-window \((2,K)\)-reader at node \(B\). This proves clause 1.
+
+For completeness, the transported depth-zero counts may be read directly. Let \(b\) be a lower node. If \(A_0\) vanishes through \(M\), an exact value \(w>b\) of \(A_1\) contributes
+
+\[
+(q_K-1)q_K^{M-w}
+\]
+
+states and is `SPLTAIL` precisely when \(2w<M+1\); the remaining states are `UND`.
+
+If \(A_0\) has exact value \(u\), its number of choices is
+
+\[
+(q_K-1)q_K^{M-u}.
+\]
+
+For every \(w>b\) with \(2w<u\), the `2SIDED` count is
+
+\[
+(q_K-1)^2q_K^{(M-u)+(M-w)}.
+\]
+
+If \(u\) is odd, the remaining states are `RAM`, with the free \(A_1\)-tail beginning at \(\lceil u/2\rceil\).
+
+If \(u=2\kappa\), the leading residual is
+
+\[
+T^2+aT+b,\qquad a\in K,\quad b\in K^\times.
+\]
+
+The finite-field censuses are
+
+\[
+\#\mathrm{SPLITEQ}
+ =\frac{(q_K-1)(q_K-2)}2,
+\qquad
+\#\mathrm{INERT}
+ =\frac{q_K(q_K-1)}2,
+\qquad
+\#\mathrm{ALPHA}
+ =q_K-1.
+\]
+
+Each residual choice has the common free-tail factor
+
+\[
+q_K^{(M-\kappa)+(M-2\kappa)}
+=|\mathcal N_\kappa(M)|.
+\tag{CR-7}
+\]
+
+These are exactly the standard \((2,K)\) depth-zero cell counts.
+
+Now fix an alpha letter \(s\in K^\times\). Its residual is \((T-s)^2\). Since \(\kappa>B\), GENHN-LIFT supplies the required exact-height \(K\)-lift of \(s\). GENHN-4 then applies: recentering the key by that lift kills the two alpha pins, sends the slice into
+
+\[
+dv(A_1')>\kappa,\qquad dv(A_0')>2\kappa,
+\]
+
+and acts triangularly on all deeper digits. GENHN-3 shows that the induced truncated transformation respects the cap. The opposite translation is its inverse. Hence, for fixed \(s\),
+
+\[
+\{\text{\((\kappa,s)\)-slice}\}
+\;\xrightarrow{\sim}\;
+\mathcal N_\kappa(M).
+\tag{CR-8}
+\]
+
+The child reader is therefore the same reader at lower node \(\kappa\), so every recursively refined key has exactly its standard child-node cardinality. Summing (CR-8) over the \(q_K-1\) nonzero letters proves (CR-2) and clause 3. It also proves clause 2 by induction on the finite recursive history.
+
+At a common coefficient-window boundary, let \(V_m\subseteq K\) be the visible \(F_Q\)-subspace. Its nonzero readable vectors number
+
+\[
+|V_m|-1=Q^{\dim_{F_Q}V_m}-1
+       =Q^{\operatorname{comp}(m)}-1.
+\]
+
+GENHN-CAP-GEN says that an unread component is never consulted: an undercuttable value drains to `UND`; otherwise a terminal result is returned exactly when it is constant on the affine completion set; an alpha refine is performed only with a complete \(K\)-pin. This proves (CR-3) and clause 4.
+
+Finally, for arbitrary \(M\),
+
+\[
+|\mathcal N_b(M)|
+=q_K^{(M-b)_+ +(M-2b)_+}.
+\]
+
+When \(M\ge2B\), this gives (CR-5). Since \(S\le B\),
+
+\[
+\frac{|\mathcal N_S(M)|}{|\mathcal N_B(M)|}
+=
+q_K^{(2M-3S)-(2M-3B)}
+=
+q_K^{3(B-S)}.
+\]
+
+Because \(B-S=e_1h(f_1-1)\), the ratio is \(1\) exactly when \(f_1=1\), and is strictly greater than \(1\) for \(f_1\ge2\). This proves (CR-4)–(CR-6). ∎
+
+**Consumer sweep.**
+
+1. **GENHN-ERR-1 is settled.** The ordinary \(\mu=2\) stage law is the \((2,K)\)-law at \(B=D'h\), not at the old numeric node \(S=e_1h\). No entry fiber, sibling factor, key-center factor, or ghost normalization is part of the raw node count.
+
+2. **The alpha mismatch is resolved.** For fixed \(s\), \(|\mathcal N_\kappa(M)|\) is the total alpha-child slice, not its `UND` subcell. Thus the rerun’s \(768+256=1024\) and \(12288+4096=16384\) partitions are forced by refine transfer. The sealed `UND` entries \(1024\) and \(16384\) were totals attached to the wrong child key.
+
+3. **GENHN.A(v) and S6.2 are re-grounded.** Every phrase “the \((2,K)\)-cluster read at the \(S\)-node” is read count-side as “at the \(B=D'h\)-node.” The local mass-normalized bracket
+   \[
+   b_{2,K}(\kappa)=(|K|-1)|K|^{2\kappa-1}
+   \]
+   is unchanged: it is indexed by the actual refine height \(\kappa\) and uses a different ghost normalization from the raw finite-node cardinality.
+
+4. **All ordinary \(f_1\ge2\), \(\mu=2\) count displays are restored on the corrected node.** Interior pins use the full \(K\)-census; boundary pins retain the already-corrected census \(Q^{\operatorname{comp}(m)}-1\). Mixed \((e_1,f_1)\) genres require no further count-side exception.
+
+5. **HE6R1’s completion-statement clause is restored with no wording change.** Its quantification over compatible completions is exactly GENHN-CAP-GEN’s completion-invariance assertion. The correction changes the initial count node from \(S\) to \(D'h\); it does not change HE6R1’s completion predicate, its \(D'h\)-based root separation, or its conclusion.
+
+SUMMARY: LEMMA PROVED

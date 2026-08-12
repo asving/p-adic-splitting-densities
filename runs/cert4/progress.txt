@@ -9,3 +9,5 @@
 [13:34:51] X1_e13 exit 0 (55551 B; )
 [13:34:51] P1_w12_history start
 [13:41:38] P1_w12_history exit 0 (14747 B; SUMMARY: LEMMA PROVED)
+[13:41:38] P2_genhn_count start
+[13:44:31] P2_genhn_count exit 0 (9479 B; SUMMARY: LEMMA PROVED)
