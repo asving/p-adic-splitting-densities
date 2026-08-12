@@ -1,0 +1,947 @@
+DISCHARGE CONFIRMATION (you are gpt-5.6-sol high — the certifier of record).
+Below: your prior adjudication of this note (whose REAL repairs — dated
+corrections, re-displays, containment annexes — were transcribed by the
+orchestrator as dated appends, byte-unaltered, each with an attribution
+bracket recording the orchestrator's verification), and the note AT HEAD
+including those appends. For each prior finding you adjudicated REAL, in
+order: DISCHARGED (the transcribed repair cures it — verify the mathematics
+of the repair as it stands in the note, not just its presence) /
+INSUFFICIENT (say exactly what remains) / NEW-ISSUE (the repair introduced a
+defect — where). Findings you adjudicated ARTIFACT or RESOLVED-ALREADY are
+settled and out of scope. Where a repair was delivered as OBSTRUCTED-with-
+containment (a suspension annex naming a missing lemma), confirm only that
+the containment as transcribed is honest; the missing lemma is a scheduled
+proof unit and out of scope. End with:
+OUTCOMES: <one word per adjudicated REAL finding, in order, comma-separated>
+
+=== YOUR PRIOR ADJUDICATION (E8_jd0 output) ===
+The displayed theorem needs six repairs. The other six findings misread either the stated perimeter or the role of the battery/algebra shadow.
+
+## Adjudication
+
+1. **ARTIFACT.** The counterexample uses an independent diagonal rescaling of polynomial coefficients, which is not the note’s defined carry-gauge action. S0 explicitly specifies the action of the quantified cochain:
+
+> “Its full documented action: … residual: \(R(y)\mapsto \xi^{-\deg R}R(\xi y)\).”
+
+BOX-2 excludes “any value layer NOT of that form”; it does not narrow “every 1-cochain” to a subset after the fact. The warrant that the weld induces this action is priced at GRTJA 1/2, but that is supplier conditionality, not a quantifier contradiction.
+
+2. **REAL.** The explicit definition of shape lists only \(d_0,(e_j,h_j,g_j)\) and the induced field sizes. It never includes the residual factorization predicate consumed by \(L3_j\). The phrase “prescribed degree/type” later in S0 cannot repair that omission.
+
+3. **REAL.** The normalized degreewise map is not an algebra automorphism of \(K_j[y]\). Factorization preservation needs the degreewise multiplicativity argument supplied below.
+
+4. **REAL.** “[C]omputed from the eq-12 splits alone” proves dependence on the chosen splits, not dependence only on \((e_j,h_j)\). No section-independence or canonical-section lemma appears at HEAD. The honest proved scope must retain the split/grid record as part of the count-shape.
+
+5. **REAL.** S2.3 independently proves cochain-value blindness by non-occurrence of \(c\), but S3’s explanation incorrectly attributes the death of the entire class to constancy on gauge orbits. Gauge invariance alone only compares coboundary-related representatives.
+
+6. **ARTIFACT.** S2.4 is explicitly called:
+
+> “The algebra-level shadow”
+
+and S7 expressly says:
+
+> “S2.4 only, not load-bearing for S2.1–S2.3.”
+
+The note does not use equality of dimensions to prove equality of counts or algebra isomorphism across distinct twisting classes.
+
+7. **ARTIFACT.** The battery accurately says that its blind pairs have different letters; it does not say that they realize distinct cohomology classes. Clause (ii)’s carry-class independence is argued in S2.3 from:
+
+> “the letters \(z_j\) and the carry values \(c(\gamma,\gamma')\) appear at NO point of the assembly.”
+
+Thus this finding correctly describes test coverage but incorrectly treats that limitation as a proof gap.
+
+8. **REAL.** BOX-4 cites exact verification through OM order 4 while the surrounding prose claims classifier identification “at all orders.” A finite verified range cannot supply the universal identification. The formal-product theorem remains universal; its transfer to the actual classifier must be limited to the supplier’s established perimeter.
+
+9. **REAL.** “Factoring through the type map” is strictly weaker than being constant on fibers of `type → shape`. The uniformized integral class must be stated using the latter condition.
+
+10. **ARTIFACT.** JD0-T-SHAPE concerns the particular registered pair `(C2A,C2B)`, whose records were expected to differ. The note never claims that the count function is injective on all shapes. Calling this one fixture a “different-shape control” does not assert the converse of shape-blindness.
+
+11. **ARTIFACT.** S0 defines “stratum count” as the object consumed by the “per-cell coefficient,” including its \(q^{\pm B}\) factor. S6.1 then explicitly identifies \(q^{-3}\) as:
+
+> “q-power \(q^{-3}\) in density normalization.”
+
+Thus \((q-1)/q^3\) is not being presented as a raw finite-set cardinality. “Stratum count” is locally defined terminology for the normalized coefficient.
+
+12. **ARTIFACT.** The finite scope is disclosed verbatim:
+
+> “degree \(D\le3\) … capped \(|K|^D\le20000\)”
+
+and:
+
+> “37/37 towers, 68,523 checks.”
+
+The universal argument is the symbolic proof in S2; the battery is recorded as supporting machine evidence. No sentence claims that the finite enumeration proves the universal quantifiers.
+
+## Verbatim-ready repair append
+
+This single append repairs findings 2, 3, 4, 5, 8, and 9.
+
+```markdown
+---
+
+## S10. CORRECTION (2026-08-12 — count-shape, degreewise residual action, and consumer scope)
+
+This correction is controlling wherever the earlier wording says merely
+“shape data,” calls the normalized residual map an algebra automorphism,
+derives cross-class blindness from gauge-orbit constancy, identifies the
+L3 × L4 assembly with the classifier at all orders, or equates factoring
+through type with factoring through shape.
+
+### S10.1 The full count-shape and corrected display
+
+For each level j, let Λ_j denote the complete LETTER-FREE residual census
+condition consumed by L3_j: its total polynomial degree, its full
+factorization-degree multiset with multiplicities, and any nonzero-constant
+or distinguished-factor DEGREE conditions. Λ_j contains no specified
+residual root or coefficient value.
+
+Let 𝒢 denote the complete discrete lattice datum consumed by L4: the chosen
+eq-12 splits t_j, their induced integers
+
+    D_j = t_j(β″_j) − t_j(β_j) − t_j(β′_j),
+
+the corresponding δ-data, and the side/grid positions from which B is
+computed. No assertion is made here that the chosen t_j, D_j, δ, or B are
+determined by the shorter tuple (e_j,h_j)_j; proving such a reduction is a
+separate grid/split theorem.
+
+The COUNT-SHAPE is therefore
+
+    T̂ = (d0, (e_j,h_j,g_j)_j, (Λ_j)_j, 𝒢).
+
+Its residual fields still have
+
+    r_j = |K_j| = q^(d0·g_0···g_{j−1}).
+
+The letters z_j and all carry-cochain values c(γ,γ′) are not part of T̂.
+
+For the normalization fixed by L2core, write
+
+    μ_T̂(q) = q^(±B(𝒢)) · ∏_j N_{Λ_j}(r_j),
+
+where N_{Λ_j}(r_j) is the finite-field census satisfying Λ_j. This μ_T̂(q)
+is the “stratum count” or normalized per-cell coefficient used throughout
+this note; N_{Λ_j}(r_j) is the raw residual cardinality.
+
+> **LEMMA J-D0 (corrected display).**
+> (i) [GAUGE-INVARIANCE] For every decided count-shape T̂, every prime
+> power q, and every unit-valued carry gauge having the documented S0
+> residual action
+>
+>     R(y) ↦ ξ^(−deg R) R(ξy),
+>
+> the normalized coefficient μ_T̂(q) computed through the gauged read
+> equals the direct coefficient.
+>
+> (ii) [VALUE-BLINDNESS] Any two realized decided types with the same
+> count-shape T̂ have equal normalized coefficients at every q, regardless
+> of their residual letters and regardless of whether their carry
+> cochains are cohomologous.
+>
+> Consequently μ_T̂(q) is a function of the full combinatorial count-shape
+> T̂ alone.
+
+Derivation of the repaired L4 clause: equality of 𝒢 fixes the chosen splits,
+so the displayed formula D_j = ∂t_j gives equal D_j term by term; it fixes
+the corresponding δ and grid positions as well. Hence it fixes B(𝒢).
+Unit gauges do not move any of these positions because units have valuation
+zero. This proves the L4 assertion at exactly the scope established by
+S2.1, without inferring that an arbitrary change of section leaves D_j or
+B unchanged.
+
+Derivation of clause (ii): equality of T̂ gives the same fields K_j, the
+same predicates Λ_j, and the same lattice exponent B(𝒢). Therefore every
+factor N_{Λ_j}(r_j) and the q-power agree. The displayed formula for
+μ_T̂(q) contains neither z_j nor c(γ,γ′), so equality holds even for carry
+cochains in distinct cohomology classes. ∎
+
+### S10.2 Correction to S2.2(f)
+
+Delete the sentence
+
+    “σ_ξ extends the identity of K_j to a degree-preserving
+     K_j-algebra automorphism of K_j[y]”
+
+and replace it by the following derivation.
+
+For each fixed degree D define
+
+    σ_{ξ,D}(R)(y) = ξ^(−D) R(ξy)
+
+on the monic degree-D polynomials. It is a bijection with inverse
+σ_{ξ^−1,D}. It is not asserted to be additive on polynomials of different
+degrees. Instead, if R = AB with deg A = a, deg B = b, and D = a+b, then
+
+    σ_{ξ,D}(R)
+      = ξ^(−a−b) A(ξy)B(ξy)
+      = σ_{ξ,a}(A) · σ_{ξ,b}(B).
+
+Thus a factorization of R gives a factorization with exactly the same
+factor degrees. Conversely, applying the degreewise inverse to a
+factorization of σ_{ξ,D}(R) gives a factorization of R. Hence irreducibility
+and the complete factorization-degree multiset are preserved. Monicity is
+preserved because the leading coefficient is multiplied by ξ^(−D)ξ^D = 1,
+and a constant term is nonzero exactly when its nonzero scalar multiple
+ξ^(−D)R(0) is nonzero. This proves the pointwise preservation required by
+S2.2(g).
+
+### S10.3 Cohomology-class correction
+
+Gauge invariance and cochain-value blindness have different proofs.
+Clause (i) compares presentations inside one coboundary orbit:
+c and c·∂u. It makes no assertion that distinct cohomology classes are
+gauge-related. Clause (ii) compares distinct classes because the coefficient
+
+    μ_T̂(q) = q^(±B(𝒢)) · ∏_j N_{Λ_j}(r_j)
+
+contains no carry-cochain value at all. Accordingly, replace the S3 claim
+that the entire value realization “enters the classifier only through the
+gauge orbit” by:
+
+    Unit gauges do not change the coefficient within a coboundary orbit;
+    more strongly, the L3 × L4 formula is constant across different
+    cohomology classes because no value of c occurs in that formula.
+
+The algebra discussion in S2.4 remains only an algebra-level shadow and is
+not proof of cross-class blindness.
+
+### S10.4 Classifier-identification scope
+
+J-D0 proves the preceding statements universally for the displayed formal
+L3 × L4 coefficient. Its identification with L2core’s actual per-cell
+classifier coefficient may be consumed only on the perimeter on which the
+L2core supplier has established that identification. The cited exact
+instances through OM order 4 do not, by themselves, prove an all-orders
+identification.
+
+Therefore “valid at every residue characteristic, wild included” is
+unconditional for the formal coefficient μ_T̂(q). The same conclusion for
+the actual classifier coefficient is unconditional through the supplier’s
+proved/verified range and is conditional, at any further order, on a
+general L2core assembly-identification theorem.
+
+### S10.5 Corrected integral class
+
+Let
+
+    π : decided type → count-shape
+
+forget the residual letters and carry-cochain values. A bounded function f
+is uniformized by J-D0 precisely when it is constant on every fiber of π;
+equivalently, when
+
+    f = w ∘ π
+
+for a weight w on count-shapes. Requiring the displayed rule for f to have
+no explicit p-dependent coefficient is not sufficient: a rule can be
+p-free while still distinguishing letters or carry values.
+
+For f = w ∘ π with p-free w, grouping the integral by fibers gives
+
+    ∫ f = ∑_T̂ w(T̂) μ_T̂(q),
+
+so J-D0 supplies the carry-value blindness of the mass terms. This is the
+correct scope of the H-C positioning sentence.
+
+### S10.6 Consumer sweep
+
+1. **W-10 at the (2,1,1) Eisenstein shape survives.** Its residual
+   condition Λ, its eq-12 split/grid record 𝒢, and hence B are fixed in
+   that row. The value-layer fences remain absent because neither its
+   letter nor its carry-cochain values occur in μ_T̂(q). BOX-1’s outstanding
+   grid/proviso obligations remain exactly as stated.
+
+2. **W-11 survives with the corrected key.** The grown menu may be keyed by
+   the full count-shape T̂. If W-11 wants to key it only by
+   (d0,(e_j,h_j,g_j)_j), it separately owes proofs that Λ_j and 𝒢, or at
+   least all their consumed censuses and B, are determined by that shorter
+   tuple. No letter or carry-cochain value must be added to the key.
+
+3. **W-12 / J-D1 survives.** It consumes the same coefficient equality,
+   now at its exact proved scope.
+
+4. **H-C survives with the correction in S10.5.** Its admissible weights
+   are the p-free weights constant on fibers of type → count-shape.
+
+5. **Fence bookkeeping survives.** PERIM-μ, (C-coll), (R-coll), and (VD-m)
+   remain unnecessary for count-layer consumers whenever the consumer uses
+   the L3 × L4 coefficient and the documented gauge dictionary. The repair
+   does not promote the finite L2core checks into an all-orders
+   assembly-identification theorem.
+```
+
+SUMMARY: 6 REAL (repairs delivered) / 0 RESOLVED-ALREADY / 6 ARTIFACT / 0 OBSTRUCTED
+
+=== THE NOTE AT HEAD: JD0_PROOF_2026-08-08.md ===
+# JD0 — LEMMA J-D0 (COUNT GAUGE-BLINDNESS): the classifier stratum counts are invariant under the carry gauge and blind to the entire value layer — counts see the SHAPE, never the letters; the mechanism of uniformity-in-q where the carry class dies
+
+**Unit:** J-D0, the S-priced opener of the J-D block (the last uncomposed weld
+block), per WELD_SYNTHESIS_2026-08-05 §3.2/§4(ii) and the standing FRONTIER
+order (J-D0 → W-10 at the (2,1,1) shape → W-11). **Attempt grade 0/2**
+(composed; the hostile arc has not begun). **Instrument:** sealed two-commit
+battery `verification/openmath/jd0_checks.py` (37 towers = the frozen 29-row
+J-C roster + the out-of-roster p = 7 genre + the constructed same-shape
+pairs); verdict section §S8, appended at commit 2 FROM the committed
+artifacts.
+
+**Provenance of the salvage:** the J-D dimension shortcut (character/orbit
+counting of 𝒜(T)) was REFUTED with an explicit witness (WELD_SYNTHESIS §3.1:
+dim is q-independent, counts are q-rational of unbounded data — already the
+machine-checked order-0 instance separates them). J-D0 is the salvage that
+survived: not "counts = dimensions" but "counts and dimensions are blind to
+the same layer."
+
+---
+
+## S0. STATEMENT
+
+Fix a decided OM shape (type skeleton) T of order m: the degree d0 of the
+level-0 factor and the read triples (e_j, h_j, g_j), j = 0..m, together with
+the residual-degree structure they induce — |K_j| = q^{d0·g_0···g_{j−1}}, the
+residue fields where the level-j residual data live. The letters z_j (the
+realized residual roots) and the carry cochain c (the [ILN]† value ledger) of
+any tower REALIZING T are NOT part of the shape.
+
+**The stratum count.** The count that L2core's per-cell coefficient consumes,
+at each truncation window: the product over levels of
+
+    L3_j  =  the residual-factorization count over F_{r_j}, r_j = |K_j|
+             (the census of residual data of the prescribed degree/type
+              at level j — the universal residue-shape polynomial genre)
+    ×  the L4 lattice q-power  q^{±B}, B = the lattice exponent
+             (the count of digit positions pinned/freed by the polygon
+              side and its grid — integer position data).
+
+**The carry gauge.** A 1-cochain u : γ ↦ u_γ ∈ K^* acting by anchor
+rescaling a_γ ↦ u_γ·a_γ. Its full documented action:
+
+    ledger:    c(γ,γ′)  ↦  c(γ,γ′) · u_γ u_{γ′} u_{γ+γ′}^{−1}   (= c·∂u)
+    slot:      v        ↦  u·v          (unit character, per read slot)
+    residual:  R(y)     ↦  ξ^{−deg R} · R(ξ·y)   (JA-RES geometric
+               character; the (ξ,w) overall unit dies in monic form)
+    positions, δ, D_j, grid abscissas:  UNCHANGED.
+
+> **LEMMA J-D0.** (i) [GAUGE-INVARIANCE] For every decided shape T, every
+> prime power q, and every 1-cochain u with unit values, the stratum count of
+> T computed through the u-gauged read equals the direct stratum count.
+> (ii) [VALUE-BLINDNESS] Any two towers/types with the same shape data
+> (d0, (e_j, h_j, g_j)_j) and residual-degree structure have EQUAL stratum
+> counts at every q, regardless of their letters and carry cochains.
+> Consequence: the stratum count is a function of the SHAPE alone — per
+> shape a single expression in q, the same at tame and wild primes.
+>
+> **GRADE: PROVED on the stated perimeter (unit-character gauges; the
+> L3 × L4 assembly; honest boxes S4), consuming the supplier stack S7 at the
+> grades listed there. Attempt 0/2.**
+
+---
+
+## S1. WHY THIS IS THE LEMMA THAT MATTERS (one paragraph)
+
+The weld's hard open fences — (VD-m), (C-coll), (R-coll), (DMULT-s), the
+one-perimeter character-triviality condition PERIM-μ of WELDMASTER §S3 — are
+ALL value-layer fences: they condition on which unit characters are trivial.
+J-D0 says count-layer statements never see that layer. So W-10 (the J-D2
+count equality, the density bridge's counting leg) escapes the collapse
+perimeter ENTIRELY: its hypotheses reduce to the proved/priced integer-grid
+faces plus classical residual censuses (WELD_SYNTHESIS §3.2). That is the
+single most consequential simplification the synthesis found for J-D.
+
+## S2. PROOF
+
+### S2.1 Leg L4 — positions are gauge-fixed and value-free
+
+**(a) Units do not move valuations.** u_γ has w-value 0, and w is a
+valuation on the graded layer (V1/V2 — the GD-2 spine, consumed at GRTJB's
+ACCEPTED grade through W-3's development/polygon tie): w(u_γ·a_γ) = w(a_γ).
+Every abscissa and ordinate the polygon, the grid, or the development
+consumes is therefore unchanged by the gauge.
+[machine: JD0-COB checks (1) and (3) — gauged anchors sit at their lines;
+gauged anchor products sit at the sum line.]
+
+**(b) The integer carry layer is split-only.** WM-COB(i):
+D_j = t_j(β″_j) − t_j(β_j) − t_j(β′_j) = (∂t_j)(γ,γ′) — computed from the
+eq-12 splits alone, integers in, integers out; likewise δ (the [ILN]† S0.3
+outer count). No letter value enters. Citation note: WM-COB(i)'s footprint is
+[ILN]† SHIFT-(n) + D_j-INT ONLY, both unconditional and ACCEPTED — the
+WELDMASTER note that displays the identity is itself at arc 1/2, but this
+clause rides the accepted [ILN]† layer, not the WM arc.
+[machine: recorded per scored pair (`int_layer_sample`), not scored — the
+split-only property is definitional in the engine.]
+
+**(c) The lattice exponent is shape-only.** B is a function of grid
+positions: the grid = T-side abscissas (JA-GRID — GRTJA, arc 1/2, priced),
+the vertex-for-vertex polygon with slope/length/degree preserved (JB-VTX —
+GRTJB, ACCEPTED 2/2), the same-division transfer (JB-DEV — GRTJB, ACCEPTED).
+By (a) the gauge does not move these positions; by (b) the integer carry
+data they generate are split-only. Hence B(T) is fixed by the shape and
+unchanged under any unit gauge.
+
+**(d) The gauge moves the ledger by exactly a coboundary.** With gauged
+anchors a′_γ = u_γ·a_γ, the carry constant transforms as
+c′(γ,γ′) = c(γ,γ′)·u_γ u_{γ′} u_{γ+γ′}^{−1} = (c·∂u)(γ,γ′): gauging moves
+WITHIN the cohomology class; the class's integer layer is (b); the positions
+are (a). So "carry gauge" is well-named: it is the coboundary action.
+[machine: JD0-COB check (4), exact equality in K_top on every scored pair.]
+
+### S2.2 Leg L3 — slot counts are gauge-fixed and value-free
+
+**(e) The gauge acts on each slot as a unit character.** Through the
+harness, the read of a u-gauged anchor is u·(the direct read) — a bijection
+of the slot's value space K_j.
+[machine: JD0-COB check (2); plus the fuzz leg (5): higher-w junk in the
+representative changes neither position nor read — the read consumes only
+the line.]
+
+**(f) The induced action on residual polynomials preserves factorization
+type POINTWISE.** The slot character acts on the level-j residual polynomial
+by the variable rescaling σ_ξ : R(y) ↦ ξ^{−deg R}·R(ξ·y) (JA-RES's
+z^{−iA}·C_i slot form; the overall unit (ξ,w) is killed by monic
+normalization). σ_ξ extends the identity of K_j to a degree-preserving
+K_j-algebra automorphism of K_j[y]; automorphisms carry factorizations to
+factorizations, so deg, monicity, irreducibility, ψ(0) ≠ 0, and the full
+factorization-degree multiset are preserved for EVERY R — not merely in
+census. Consequently σ_ξ permutes the letter menu (monic irreducibles of
+degree g_j with nonzero constant) and fixes every type census and the menu
+cardinality.
+[machine: JD0-L3 — full enumeration of every monic R of degree D ≤ 3 over
+every roster level field (capped |K|^D ≤ 20000): pointwise type equality,
+bijectivity of the gauged family, census equality, menu-count equality.]
+
+**(g) Hence every L3_j count is gauge-invariant.** The stratum's residual
+condition at level j is SHAPE data — a factorization-degree/type condition
+on the slot value. By (f) the gauge preserves the condition pointwise, so
+the direct and gauged strata are equal AS SETS slotwise; a fortiori the
+counts agree. (More generally, any slot-wise bijection preserving the
+condition preserves the count; the unit character does both. A bijection
+NOT preserving the condition breaks counts — the NONCHAR tooth.)
+
+### S2.3 Assembly and clause (ii)
+
+Clause (i): the assembled count = ∏_j L3_j × q^{±B}; (c) fixes the exponent
+leg, (g) fixes each census leg. ∎(i)
+
+Clause (ii): let T, T′ have equal shape data. The assembly consumes ONLY:
+positions and integer carry data — by (b)/(c) functions of the splits, i.e.
+of (e_j, h_j)-data, equal for T, T′; and censuses over the K_j — the number
+of monic polynomials of degree D with factorization type λ over F_r depends
+only on r (the universal S_λ(q) polynomials; classical), and
+r_j = q^{d0·g_0···g_{j−1}} is fixed by the residual-degree structure. The
+letters z_j and the carry values c(γ,γ′) appear at NO point of the
+assembly. ∎(ii)
+[machine: JD0-BLIND — three constructed same-shape pairs whose letters
+provably differ (different tuples; on two pairs even different
+multiplicative orders): full stratum-count records equal across each pair,
+including the realized polygon integer records (a genuine check that the
+engine's positions do not leak values); the different-shape control pair
+must differ — the SHAPE tooth.]
+
+### S2.4 The algebra-level shadow (ACCEPTED input, displayed)
+
+GRTJC W-9(iii) + JC-F1 [ACCEPTED 2/2]: at every composite stage the carry
+algebra is the twisted group algebra K^c[ℤ/E] and
+
+    𝒜(T) ≅ K[v]/(v^E − ζ_T),   dim_K 𝒜(T) = E   — independent of c.
+
+Dimension is carry-blind; twisting by a coboundary gives an isomorphic
+twisted algebra (K^{c·∂u}[ℤ/E] ≅ K^c[ℤ/E], basis rescale [γ] ↦ u_γ·[γ]).
+And WM-COB(iii) [display owned by WELDMASTER, arc 1/2; value law on its
+scored stratum]: the ENTIRE inner factor of the accepted cocycle is ∂E — a
+coboundary of the ε-kit cochain. So at the algebra level the value layer
+contributes nothing gauge-stable except the outer letter z̄^δ — and its
+EXPONENT δ is integer/split data, already counted in the shape. J-D0 is the
+count-level statement of the same death: what the gauge can move, counts
+cannot see; what counts see (positions, δ, degree structure), the gauge
+cannot move.
+
+## S3. CONSEQUENCE — the uniformity-in-q mechanism at wild primes
+
+Counts of decided strata are shape-only (S2.3), so per shape the count is
+ONE expression in q — the L3 universal residue-shape polynomials times a
+q-power with shape-determined exponent — valid at every residue
+characteristic, wild included. Everything the wild carry layer could
+contribute (letters, cochain values, the realization of its H² class)
+enters the classifier only through the gauge orbit, and counts are constant
+on gauge orbits.
+
+This is the counting-side face of the interpretation note's H-B verdict
+(HIGHLEVEL_INTERPRETATION_2026-08-07 §2, MEASURED): the wild part of the
+carry class DIES over finite residue fields (all-wild classes trivial on
+T3A/T2A; the tame ℤ/2 class survives on T2C). J-D0 prices both halves: the
+wild death is harmless to densities because counts never consumed the class's
+value realization in the first place; the tame survivor enters counts only
+through the integer δ (position data), never through the letter z̄^δ.
+
+And it is the lemma under H-C's positioning sentence (§3.2 there): **"Haar
+volume is carry-gauge-invariant; the discriminant exponent is not."** The
+corpus's own separator (HUMAN_PROOF §0: ∫|disc| = 7/12 ≠ 2/3 at p = 2 while
+the volume is the uniform q/(q+1)) is exactly a functional that PRICES the
+carries (v(disc) pays the wild different letter-by-letter), re-importing the
+value layer that volume quotients out. The class of integrals the carry
+algebra uniformizes = bounded functions factoring through the type map with
+p-free weights — i.e. through the shape, i.e. through what J-D0 proves
+gauge-blind. H-C supplied the vocabulary; this note supplies the lemma.
+
+## S4. HONEST BOXES (where the derivation stops)
+
+* **JD0-BOX-1 (J-D0 is not W-10).** Nothing here proves the count EQUALITY
+  "classifier stratum count = model-side count from (e_j,h_j,g_j) through
+  the welded read" (W-10, M-priced). J-D0 deletes W-10's value-layer
+  hypotheses — the collapse perimeter ((VD-m), (C-coll), (R-coll),
+  (DMULT-s), PERIM-μ) drops out of the count equality's conditionality —
+  but the B(c)-tie to the welded grid still owes JB row 12's u ≥ 0 proviso
+  leg and rides JA-GRID at GRTJA's arc grade.
+* **JD0-BOX-2 (the gauge-form warrant).** That the weld's ENTIRE conditional
+  value dictionary acts by slot-wise unit characters is the synthesis §3.2
+  reading of JA-RES [GRTJA, 1/2], the (ξ,w) covariance family [GRTW2,
+  ACCEPTED], and the ℓ-orbit rescalings ORB-RES [J-A]. J-D0's proof covers
+  unit-character gauges; any value layer NOT of that form is outside the
+  perimeter — and the NONCHAR tooth displays the failure mode (an additive
+  slot shift is a bijection that breaks type preservation, hence counts).
+* **JD0-BOX-3 (the menu is untouched).** WHICH decided shapes exist — the
+  omMenu growth beyond order 0, hExhaust, drainage — is Phase-B. J-D0
+  counts within a shape; it never enumerates shapes.
+* **JD0-BOX-4 (assembly identification).** That the L3 × L4 assembly IS
+  L2core's per-cell coefficient at all orders is L2core's own verified
+  content (exact instances through OM order 4; BB3 counts exact over 8
+  fields) — consumed, not re-proved. J-D0's invariance applies to the
+  assembly as displayed in S0.
+* **JD0-BOX-5 (F₂ degeneracy).** Over K_j = F₂ the unit group is trivial:
+  clause (i) is vacuous at such levels (the battery census reports them;
+  the representative-independence content — re-realized anchors, fuzz
+  blindness — is still checked there). Clause (ii) is NOT vacuous at F₂.
+* **JD0-BOX-6 (wild decidedness warrant).** That "decided shape" is
+  well-posed at wild composite stages — strata do not collapse under the
+  read — is the no-cancellation/level-detection warrant JC-PSIKER(iii) +
+  JC-LOAD, consumed from GRTJC [ACCEPTED] as warrant, exactly as the
+  blueprint's O-1 clause routes it. J-D0 adds no leg to it.
+
+## S5. THE ORDER-0 LEAN TIE (displayed anchor, degenerate instance)
+
+The machine-checked capstone's order-0 count identity
+(`lean/LeanUrat/OM/RealInstanceV2.lean`, `realF2`):
+
+    density m σ q'  :=  ∑_{T ∈ omMenu m σ} omCount T q'
+
+with `omCount : shape → ℕ → ℚ` — the evaluator's SIGNATURE takes the shape
+and q′ only: no letter, no cochain, no tower argument exists to vary. So at
+order 0 clause (ii) holds BY TYPE (definitionally), and clause (i) is empty
+(E = 1, no carries). Displays: `omCount_sepShape_eq_rootCount` (the count as
+a root census — the L3 leg at order 0), the non-vacuity gates
+`gate3_inert_q2` (value 1/4 at n = 2 inert, q′ = 2) and the split ≠ inert
+separation at q′ = 3 (`OM/RealInstanceV2Gates.lean`). The Lean tie is the
+degenerate instance of J-D0 — an anchor for what the order-≥ 1 statement
+must degenerate TO, not evidence for it.
+
+## S6. CONSUMERS
+
+1. **W-10 — OPENS at the (2,1,1) Eisenstein shape.** Its first row: d0 = 1,
+   one read (2,1,1); stratum count (q−1)/q³ = [L3: the residual unit choice,
+   q−1 values] × [L4: v(a₁) ≥ 1 pins one digit, v(a₀) = 1 pins position and
+   frees the unit slot — q-power q^{−3} in density normalization]
+   (WELD_SYNTHESIS §3.1 display). By J-D0 the W-10 equality at this and
+   every decided shape carries NO value-layer hypothesis: its obligations
+   are the integer-grid faces (JA-GRID, JB-VTX(d) — with JB row 12's
+   proviso) + the classical L3 census + the JC warrant (BOX-6).
+2. **W-11** (menu tie, Phase-B) — consumes J-D0(ii) to key the grown menu
+   by shape data alone.
+3. **W-12 / J-D1** — downstream composition; untouched here.
+4. **H-C positioning** — "carry-gauge-invariance of volume" upgraded from
+   vocabulary to lemma (S3); the public-facing uniformity story should cite
+   J-D0 as the mechanism where the cohomology class dies.
+5. **Fence bookkeeping** — count-layer consumers need not carry PERIM-μ /
+   (C-coll)/(R-coll)/(VD-m); this deletes the fence-patching genre from the
+   J-D block entirely.
+
+## S7. CONDITIONALITY STACK
+
+Accepted suppliers (the FOUR weld acceptances + the engine):
+* **[ILN]†** (ACCEPTED): SHIFT-(n), D_j-INT, EXP-KIT(a) — the integer/
+  cochain layer feeding S2.1(b).
+* **GRTJB** (ACCEPTED 2/2): JB-VTX vertex-for-vertex polygon, JB-DEV
+  same-division — the position faces S2.1(a)/(c); row 12's u ≥ 0 proviso
+  carried where B-ties are consumed (BOX-1).
+* **GRTJC** (ACCEPTED 2/2): W-9 + JC-F1 (dim K^c[ℤ/E] = E, the algebra
+  shadow S2.4); JC-PSIKER(iii)/JC-LOAD (the wild decidedness warrant,
+  BOX-6).
+* **GRTW2** (ACCEPTED 2/2): the (ξ,w) covariance family — part of the gauge
+  dictionary (BOX-2); anchor re-choice legitimacy rides the accepted lift
+  covariance (with **LIFTCORNER** [ACCEPTED 2/2] as its corner cap).
+
+Priced non-accepted suppliers:
+* **GRTJA** (arc 1/2): JA-RES slot-character form; JA-GRID grid = T-side
+  abscissas. J-D0 consumes both AT THAT GRADE (BOX-2, S2.1(c)).
+* **WELDMASTER** (arc 1/2): WM-COB display ownership; clause (i) cited at
+  its [ILN]†-only footprint (unconditional), clause (iii) at the WM arc
+  grade (S2.4 only, not load-bearing for S2.1–S2.3).
+* **H-B / H-C** (interpretation note): MEASURED verdicts, cited as
+  interpretation in S3 — no proof weight anywhere in S2.
+
+## S8. THE SEALED BATTERY (two-commit; verdict from artifacts)
+
+**Runner:** `verification/openmath/jd0_checks.py`. **Roster:** the frozen
+29-row J-C roster (md5-pinned imports) + the OUT-OF-ROSTER p = 7 genre
+(J7A wild (7,1,1); J7B d0 = 2, F₄₉, wild top (7,3,1); J7C g₀ = 2 → F₄₉) +
+the constructed same-shape pair members (P1B; P2A/P2B; P3A/P3B) — 37
+towers. Families JD0-PIN / JD0-L3 / JD0-COB / JD0-STRAT / JD0-BLIND and
+teeth JD0-T-NONCHAR / JD0-T-NONUNIT / JD0-T-COB / JD0-T-SHAPE as specified
+in the runner docstring (the note's S2 machine-leg brackets map to them).
+Same-shape pairs and their letter separations: (C2A, P1B) — letters
+X̄ vs X̄² in F₄; (P2A, P2B) — p = 7 wild (7,2,1), letters −1 (ord 2) vs −3
+(ord 3); (P3A, P3B) — p = 3 depth-2 wild, letters 2 (ord 2) vs 1 (trivial).
+Negative control: (C2A, C2B) — different shapes, records MUST differ.
+Gauges are seeded-deterministic, nontrivial wherever the unit group allows
+(census reported; F₂ rows disclosed per BOX-5). PRE-SEAL SMOKE DISCLOSED:
+developed against {C2A, C2I, C2B, J7A, P2A, P2B}; on the smoke rows all
+families 0 violations, all four teeth fired. No full run before the seal.
+
+**PREREGISTERED PREDICTIONS (commit 1):**
+* P-1: JD0-PIN — 0 violations (frozen imports unmoved).
+* P-2: JD0-L3 — 0 violations on ALL towers, levels, degrees (pointwise type
+  preservation, bijectivity, census equality, menu equality), including
+  every p = 7 field and every wild-read level.
+* P-3: JD0-COB — 0 violations: gauged positions exact, character action
+  exact, coboundary law c′ = c·∂u exact in K_top on every scored pair, fuzz
+  blindness exact; ≥ 1 scored pair on every tower.
+* P-4: JD0-STRAT — all 37 towers: assembled count record (direct) =
+  (gauged).
+* P-5: JD0-BLIND — all three same-shape pairs: letters verified DIFFERENT,
+  full count records EQUAL (including realized polygon integer records);
+  the (C2A, C2B) control differs.
+* P-6: all four teeth fire ≥ 1 globally.
+* P-7 (falsifiers, blueprint break-analysis order): a pointwise JD0-L3
+  violation at a wild level refutes S2.2(f); a position move under a unit
+  gauge refutes S2.1(a) and the lemma; a blind-pair mismatch in the polygon
+  records means the engine's positions leak values — diagnose as an
+  upstream weld error FIRST (GRT_WELD_BLUEPRINT S4's J-D row).
+
+**VERDICT: PENDING — commit 1 seals this note + the unrun runner; commit 2
+appends the verdict from `jd0_checks_output.txt` /
+`jd0_checks_results.json`.**
+
+---
+
+## S9. VERDICT (commit 2 — from the committed artifacts)
+
+**GREEN. 37/37 towers, 68,523 checks, 0 violations in every family, all
+four teeth fired, zero skips.** Artifacts: `jd0_checks_output.txt` (md5
+01f5c79509cf3bba8a24569abff081c7), `jd0_checks_results.json` (md5
+6fbc1f03a88bbd5408927bfb8324d415); runner byte-identical to the sealed
+commit; elapsed 77.4 s.
+
+Prediction scorecard (all seven confirmed):
+* P-1 ✓ JD0-PIN 0/2 — frozen imports unmoved.
+* P-2 ✓ JD0-L3 0/60,950 — pointwise type preservation, bijectivity, census
+  and menu equality on every enumerated family, including all five p = 7
+  rows (J7A/J7B/J7C/P2A/P2B) and every wild-read level; 252 residual-gauge
+  levels nontrivial, 57 trivial (F₂/unit-group-1 levels, per BOX-5).
+* P-3 ✓ JD0-COB 0/7,527 — gauged positions exact, character action exact,
+  c′ = c·∂u exact in K_top on every scored pair (≥ 6 pairs per tower, no
+  realize/pair skips), fuzz blindness exact.
+* P-4 ✓ JD0-STRAT 0/37 — assembled count record (direct) = (gauged) on all
+  37 towers; 36/37 with residue-nontrivial gauges (the one residue-trivial
+  row is C4A, the all-F₂ tower, exactly the BOX-5 disclosure).
+* P-5 ✓ JD0-BLIND 0/7 — all three same-shape pairs: letters verified
+  DIFFERENT from the artifacts (C2A/P1B: z₁ = X̄ vs X̄² = X̄+1, both ord 3 —
+  same order, different element, the finest separation; P2A/P2B: ord 2 vs
+  ord 3; P3A/P3B: ord 2 vs the TRIVIAL letter), full stratum-count records
+  EQUAL across each pair including the realized polygon integer records.
+* P-6 ✓ teeth: NONCHAR 11,514 fires (the additive slot bijection breaks
+  type preservation massively — value-layer bijectivity alone is NOT the
+  mechanism; the character form is load-bearing), NONUNIT 37 (one per
+  tower: a non-unit rescale moves the position every time), COB 487
+  (the dropped-u corruption breaks the law whenever u_{γ+γ′} ≠ 1),
+  SHAPE 1 (the C2A/C2B control pair's records differ).
+* P-7 — no falsifier fired; nothing to diagnose upstream.
+
+**Consequence for the grade box:** the lemma stands as composed — PROVED on
+the stated perimeter with the S4 boxes, battery GREEN, attempt 0/2. The
+J-D block's next unit (W-10 at the (2,1,1) shape) may consume S2 with the
+value-layer fences deleted per S1/S6.1.
+
+---
+
+### Dated adjudication + corrections (2026-08-12 — sol certification C10/E8: the as-built challenge adjudicated at HEAD)
+
+The sol-5.6 as-built read of this note (gpt-5.6-sol high,
+runs/cert/C10_jd0_output.log, 2026-08-12) returned CHALLENGE with 12
+findings including a claimed CRITICAL. The E8 certification run
+(gpt-5.6-sol high, runs/cert2/E8_jd0_output.log) adjudicated 6 REAL /
+6 ARTIFACT — in particular the claimed CRITICAL (the "every
+1-cochain" quantifier) is an ARTIFACT: S0 documents the quantified
+cochain action as R(y) ↦ ξ^{−deg R}R(ξy), and the counterexample's
+independent slot rescaling is outside that documented class. The six
+REAL findings are repaired by the single S10 correction block below
+(the full count-shape T̂ with Λ_j and 𝒢; the corrected LEMMA J-D0
+display; degreewise multiplicativity replacing the automorphism
+claim; the cohomology-class correction; classifier-identification
+scope; consumer sweep). Everything above this heading is
+byte-untouched by this append. The E8 adjudication, transcribed
+unaltered:
+
+The displayed theorem needs six repairs. The other six findings misread either the stated perimeter or the role of the battery/algebra shadow.
+
+## Adjudication
+
+1. **ARTIFACT.** The counterexample uses an independent diagonal rescaling of polynomial coefficients, which is not the note’s defined carry-gauge action. S0 explicitly specifies the action of the quantified cochain:
+
+> “Its full documented action: … residual: \(R(y)\mapsto \xi^{-\deg R}R(\xi y)\).”
+
+BOX-2 excludes “any value layer NOT of that form”; it does not narrow “every 1-cochain” to a subset after the fact. The warrant that the weld induces this action is priced at GRTJA 1/2, but that is supplier conditionality, not a quantifier contradiction.
+
+2. **REAL.** The explicit definition of shape lists only \(d_0,(e_j,h_j,g_j)\) and the induced field sizes. It never includes the residual factorization predicate consumed by \(L3_j\). The phrase “prescribed degree/type” later in S0 cannot repair that omission.
+
+3. **REAL.** The normalized degreewise map is not an algebra automorphism of \(K_j[y]\). Factorization preservation needs the degreewise multiplicativity argument supplied below.
+
+4. **REAL.** “[C]omputed from the eq-12 splits alone” proves dependence on the chosen splits, not dependence only on \((e_j,h_j)\). No section-independence or canonical-section lemma appears at HEAD. The honest proved scope must retain the split/grid record as part of the count-shape.
+
+5. **REAL.** S2.3 independently proves cochain-value blindness by non-occurrence of \(c\), but S3’s explanation incorrectly attributes the death of the entire class to constancy on gauge orbits. Gauge invariance alone only compares coboundary-related representatives.
+
+6. **ARTIFACT.** S2.4 is explicitly called:
+
+> “The algebra-level shadow”
+
+and S7 expressly says:
+
+> “S2.4 only, not load-bearing for S2.1–S2.3.”
+
+The note does not use equality of dimensions to prove equality of counts or algebra isomorphism across distinct twisting classes.
+
+7. **ARTIFACT.** The battery accurately says that its blind pairs have different letters; it does not say that they realize distinct cohomology classes. Clause (ii)’s carry-class independence is argued in S2.3 from:
+
+> “the letters \(z_j\) and the carry values \(c(\gamma,\gamma')\) appear at NO point of the assembly.”
+
+Thus this finding correctly describes test coverage but incorrectly treats that limitation as a proof gap.
+
+8. **REAL.** BOX-4 cites exact verification through OM order 4 while the surrounding prose claims classifier identification “at all orders.” A finite verified range cannot supply the universal identification. The formal-product theorem remains universal; its transfer to the actual classifier must be limited to the supplier’s established perimeter.
+
+9. **REAL.** “Factoring through the type map” is strictly weaker than being constant on fibers of `type → shape`. The uniformized integral class must be stated using the latter condition.
+
+10. **ARTIFACT.** JD0-T-SHAPE concerns the particular registered pair `(C2A,C2B)`, whose records were expected to differ. The note never claims that the count function is injective on all shapes. Calling this one fixture a “different-shape control” does not assert the converse of shape-blindness.
+
+11. **ARTIFACT.** S0 defines “stratum count” as the object consumed by the “per-cell coefficient,” including its \(q^{\pm B}\) factor. S6.1 then explicitly identifies \(q^{-3}\) as:
+
+> “q-power \(q^{-3}\) in density normalization.”
+
+Thus \((q-1)/q^3\) is not being presented as a raw finite-set cardinality. “Stratum count” is locally defined terminology for the normalized coefficient.
+
+12. **ARTIFACT.** The finite scope is disclosed verbatim:
+
+> “degree \(D\le3\) … capped \(|K|^D\le20000\)”
+
+and:
+
+> “37/37 towers, 68,523 checks.”
+
+The universal argument is the symbolic proof in S2; the battery is recorded as supporting machine evidence. No sentence claims that the finite enumeration proves the universal quantifiers.
+
+## Verbatim-ready repair append
+
+This single append repairs findings 2, 3, 4, 5, 8, and 9.
+
+---
+
+## S10. CORRECTION (2026-08-12 — count-shape, degreewise residual action, and consumer scope)
+
+This correction is controlling wherever the earlier wording says merely
+“shape data,” calls the normalized residual map an algebra automorphism,
+derives cross-class blindness from gauge-orbit constancy, identifies the
+L3 × L4 assembly with the classifier at all orders, or equates factoring
+through type with factoring through shape.
+
+### S10.1 The full count-shape and corrected display
+
+For each level j, let Λ_j denote the complete LETTER-FREE residual census
+condition consumed by L3_j: its total polynomial degree, its full
+factorization-degree multiset with multiplicities, and any nonzero-constant
+or distinguished-factor DEGREE conditions. Λ_j contains no specified
+residual root or coefficient value.
+
+Let 𝒢 denote the complete discrete lattice datum consumed by L4: the chosen
+eq-12 splits t_j, their induced integers
+
+    D_j = t_j(β″_j) − t_j(β_j) − t_j(β′_j),
+
+the corresponding δ-data, and the side/grid positions from which B is
+computed. No assertion is made here that the chosen t_j, D_j, δ, or B are
+determined by the shorter tuple (e_j,h_j)_j; proving such a reduction is a
+separate grid/split theorem.
+
+The COUNT-SHAPE is therefore
+
+    T̂ = (d0, (e_j,h_j,g_j)_j, (Λ_j)_j, 𝒢).
+
+Its residual fields still have
+
+    r_j = |K_j| = q^(d0·g_0···g_{j−1}).
+
+The letters z_j and all carry-cochain values c(γ,γ′) are not part of T̂.
+
+For the normalization fixed by L2core, write
+
+    μ_T̂(q) = q^(±B(𝒢)) · ∏_j N_{Λ_j}(r_j),
+
+where N_{Λ_j}(r_j) is the finite-field census satisfying Λ_j. This μ_T̂(q)
+is the “stratum count” or normalized per-cell coefficient used throughout
+this note; N_{Λ_j}(r_j) is the raw residual cardinality.
+
+> **LEMMA J-D0 (corrected display).**
+> (i) [GAUGE-INVARIANCE] For every decided count-shape T̂, every prime
+> power q, and every unit-valued carry gauge having the documented S0
+> residual action
+>
+>     R(y) ↦ ξ^(−deg R) R(ξy),
+>
+> the normalized coefficient μ_T̂(q) computed through the gauged read
+> equals the direct coefficient.
+>
+> (ii) [VALUE-BLINDNESS] Any two realized decided types with the same
+> count-shape T̂ have equal normalized coefficients at every q, regardless
+> of their residual letters and regardless of whether their carry
+> cochains are cohomologous.
+>
+> Consequently μ_T̂(q) is a function of the full combinatorial count-shape
+> T̂ alone.
+
+Derivation of the repaired L4 clause: equality of 𝒢 fixes the chosen splits,
+so the displayed formula D_j = ∂t_j gives equal D_j term by term; it fixes
+the corresponding δ and grid positions as well. Hence it fixes B(𝒢).
+Unit gauges do not move any of these positions because units have valuation
+zero. This proves the L4 assertion at exactly the scope established by
+S2.1, without inferring that an arbitrary change of section leaves D_j or
+B unchanged.
+
+Derivation of clause (ii): equality of T̂ gives the same fields K_j, the
+same predicates Λ_j, and the same lattice exponent B(𝒢). Therefore every
+factor N_{Λ_j}(r_j) and the q-power agree. The displayed formula for
+μ_T̂(q) contains neither z_j nor c(γ,γ′), so equality holds even for carry
+cochains in distinct cohomology classes. ∎
+
+### S10.2 Correction to S2.2(f)
+
+Delete the sentence
+
+    “σ_ξ extends the identity of K_j to a degree-preserving
+     K_j-algebra automorphism of K_j[y]”
+
+and replace it by the following derivation.
+
+For each fixed degree D define
+
+    σ_{ξ,D}(R)(y) = ξ^(−D) R(ξy)
+
+on the monic degree-D polynomials. It is a bijection with inverse
+σ_{ξ^−1,D}. It is not asserted to be additive on polynomials of different
+degrees. Instead, if R = AB with deg A = a, deg B = b, and D = a+b, then
+
+    σ_{ξ,D}(R)
+      = ξ^(−a−b) A(ξy)B(ξy)
+      = σ_{ξ,a}(A) · σ_{ξ,b}(B).
+
+Thus a factorization of R gives a factorization with exactly the same
+factor degrees. Conversely, applying the degreewise inverse to a
+factorization of σ_{ξ,D}(R) gives a factorization of R. Hence irreducibility
+and the complete factorization-degree multiset are preserved. Monicity is
+preserved because the leading coefficient is multiplied by ξ^(−D)ξ^D = 1,
+and a constant term is nonzero exactly when its nonzero scalar multiple
+ξ^(−D)R(0) is nonzero. This proves the pointwise preservation required by
+S2.2(g).
+
+### S10.3 Cohomology-class correction
+
+Gauge invariance and cochain-value blindness have different proofs.
+Clause (i) compares presentations inside one coboundary orbit:
+c and c·∂u. It makes no assertion that distinct cohomology classes are
+gauge-related. Clause (ii) compares distinct classes because the coefficient
+
+    μ_T̂(q) = q^(±B(𝒢)) · ∏_j N_{Λ_j}(r_j)
+
+contains no carry-cochain value at all. Accordingly, replace the S3 claim
+that the entire value realization “enters the classifier only through the
+gauge orbit” by:
+
+    Unit gauges do not change the coefficient within a coboundary orbit;
+    more strongly, the L3 × L4 formula is constant across different
+    cohomology classes because no value of c occurs in that formula.
+
+The algebra discussion in S2.4 remains only an algebra-level shadow and is
+not proof of cross-class blindness.
+
+### S10.4 Classifier-identification scope
+
+J-D0 proves the preceding statements universally for the displayed formal
+L3 × L4 coefficient. Its identification with L2core’s actual per-cell
+classifier coefficient may be consumed only on the perimeter on which the
+L2core supplier has established that identification. The cited exact
+instances through OM order 4 do not, by themselves, prove an all-orders
+identification.
+
+Therefore “valid at every residue characteristic, wild included” is
+unconditional for the formal coefficient μ_T̂(q). The same conclusion for
+the actual classifier coefficient is unconditional through the supplier’s
+proved/verified range and is conditional, at any further order, on a
+general L2core assembly-identification theorem.
+
+### S10.5 Corrected integral class
+
+Let
+
+    π : decided type → count-shape
+
+forget the residual letters and carry-cochain values. A bounded function f
+is uniformized by J-D0 precisely when it is constant on every fiber of π;
+equivalently, when
+
+    f = w ∘ π
+
+for a weight w on count-shapes. Requiring the displayed rule for f to have
+no explicit p-dependent coefficient is not sufficient: a rule can be
+p-free while still distinguishing letters or carry values.
+
+For f = w ∘ π with p-free w, grouping the integral by fibers gives
+
+    ∫ f = ∑_T̂ w(T̂) μ_T̂(q),
+
+so J-D0 supplies the carry-value blindness of the mass terms. This is the
+correct scope of the H-C positioning sentence.
+
+### S10.6 Consumer sweep
+
+1. **W-10 at the (2,1,1) Eisenstein shape survives.** Its residual
+   condition Λ, its eq-12 split/grid record 𝒢, and hence B are fixed in
+   that row. The value-layer fences remain absent because neither its
+   letter nor its carry-cochain values occur in μ_T̂(q). BOX-1’s outstanding
+   grid/proviso obligations remain exactly as stated.
+
+2. **W-11 survives with the corrected key.** The grown menu may be keyed by
+   the full count-shape T̂. If W-11 wants to key it only by
+   (d0,(e_j,h_j,g_j)_j), it separately owes proofs that Λ_j and 𝒢, or at
+   least all their consumed censuses and B, are determined by that shorter
+   tuple. No letter or carry-cochain value must be added to the key.
+
+3. **W-12 / J-D1 survives.** It consumes the same coefficient equality,
+   now at its exact proved scope.
+
+4. **H-C survives with the correction in S10.5.** Its admissible weights
+   are the p-free weights constant on fibers of type → count-shape.
+
+5. **Fence bookkeeping survives.** PERIM-μ, (C-coll), (R-coll), and (VD-m)
+   remain unnecessary for count-layer consumers whenever the consumer uses
+   the L3 × L4 coefficient and the documented gauge dictionary. The repair
+   does not promote the finite L2core checks into an all-orders
+   assembly-identification theorem.
+
+*(The adjudication above was produced by the E8 certification run
+(gpt-5.6-sol high, runs/cert2/E8_jd0_output.log, 2026-08-12);
+orchestrator verification before transcription — the ARTIFACT
+rebuttals checked against S0's documented action, S2.4's
+"algebra-level shadow" disclosure, and S0's stratum-count
+definition; S10.2's degreewise identity re-derived
+(ξ^{−a−b}A(ξy)B(ξy) = σ_{ξ,a}(A)·σ_{ξ,b}(B); leading coefficient
+ξ^{−D}ξ^{D} = 1; nonzero constant preserved); S10.1's class-blindness
+checked (μ_T̂(q) = q^{±B(𝒢)}·Π N_{Λ_j}(r_j) contains neither letters
+nor carry values); the L4-clause derivation checked (equal 𝒢 fixes
+each D_j = ∂t_j, δ, and B — no cross-section claim); the honest new
+obligation noted (W-11's shorter menu key owes a Λ/𝒢-reduction proof
+if it drops the full count-shape). Transcribed unaltered per the
+standing division of labor. Ledger: row 28 → six repairs folded,
+awaiting sol discharge (cert3).)*

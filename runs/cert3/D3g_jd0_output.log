@@ -1,0 +1,18 @@
+1. **Finding 2 — DISCHARGED.** The repair includes the complete letter-free residual predicate \(\Lambda_j\) in \(\widehat T\), including degree, factorization multiset, multiplicities, and relevant degree conditions.
+
+2. **Finding 3 — DISCHARGED.** The corrected argument uses degreewise bijections, not an algebra-automorphism claim. The identity
+   \[
+   \sigma_{\xi,a+b}(AB)=\sigma_{\xi,a}(A)\sigma_{\xi,b}(B)
+   \]
+   and the degreewise inverse correctly preserve factorization degrees, irreducibility, monicity, and nonzero constant terms.
+
+3. **Finding 4 — DISCHARGED.** The full lattice datum \(\mathcal G\) now retains the chosen splits, \(D_j\), \(\delta\)-data, and grid positions. Equality of \(\mathcal G\) therefore fixes \(B(\mathcal G)\), without asserting section-independence or reduction to \((e_j,h_j)\).
+
+4. **Finding 5 — DISCHARGED.** The repair correctly separates coboundary-orbit gauge invariance from cross-class blindness. The latter follows from the explicit non-occurrence of \(c\) in \(\mu_{\widehat T}(q)\), not from gauge equivalence.
+
+5. **Finding 8 — DISCHARGED.** Universality is confined to the formal \(L3\times L4\) coefficient. Identification with the actual classifier is limited to the supplier-established range and made conditional beyond it.
+
+6. **Finding 9 — DISCHARGED.** The corrected class is exactly functions constant on fibers of
+   \(\pi:\text{decided type}\to\text{count-shape}\), equivalently \(f=w\circ\pi\), with the additional stated \(p\)-free condition on \(w\).
+
+OUTCOMES: DISCHARGED, DISCHARGED, DISCHARGED, DISCHARGED, DISCHARGED, DISCHARGED
