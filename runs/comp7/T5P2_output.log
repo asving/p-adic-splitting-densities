@@ -1,0 +1,13 @@
+[G1 — notation/supplier gap]
+
+> Canonical definition: \(\bar\kappa_i:=u_{i+1}/e(\mu_i)\).
+
+But I5 quotes the supplier as
+
+> \(w_i=R_{i+1,\bar k_i}(\widehat n_i(u_{i+1}))\).
+
+No identification \(\bar k_i=\bar\kappa_i\) is stated. Therefore I5 does not literally match `(WF-w)`, undermining the claimed single canonical definition and supplier pin.
+
+The r1 scope repairs otherwise remove the visible unconditional higher-rung promotions. Repository span-pin verification could not be completed because the workspace executor failed at launch due to missing `bwrap`; no files were changed.
+
+VERDICT: FINDINGS: 0C + 1G + 0m
