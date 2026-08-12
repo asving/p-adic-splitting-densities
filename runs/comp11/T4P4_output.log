@@ -1,0 +1,61 @@
+Hostile pass result: not clean. No files were changed.
+
+Pin audit against the pasted HEAD sources: all four GT3 pairs and GT6 pairs 1–3 have unique, correctly ordered markers. GT6 pair 4 fails.
+
+1. **CRITICAL — GT6 pin 4 is reversed and therefore unresolved.**
+
+   T4 records BEGIN:
+
+   > `**GENTOW6-BOX-4 (the f1 >= 2 x-ful-digit sealed battery row):`
+
+   and END:
+
+   > `6.3' keeps its prose-only grading in the note's own terms.`
+
+   In GENTOW6, the sole exact END occurrence is in the earlier S5 acceptance-fold bracket. The BEGIN occurs later, in the final dated append. Thus BEGIN does not precede END, violating S5 condition 3. The BOX-4 span—and consequently `GT6-CERT-TOP`—fails closed.
+
+2. **GAP — T4.2(d)’s no-source implication is not justified after r3.**
+
+   R3 defines \(\omega_j\) to include:
+
+   > “all other branch terms, and every incoming carry and recarry.”
+
+   But T4.2(d) still claims:
+
+   > “If no source monomial can undergo a single \(\Phi'\)-extraction into coordinate \(j\) at height \(\Theta_j\), … then \(\omega_j=0\).”
+
+   Under the lemma’s sole assumption, FLOOR, excluding single-extraction sources does not exclude the other provenances now included in \(\omega_j\). The proof’s assertion that this is “the definition after complete assembly” is therefore false unless an additional exhaustive source-classification hypothesis is consumed.
+
+3. **GAP — the GT3 pins do not cover two configurations claimed by the instance and required by PE2.**
+
+   T4 retains:
+
+   > “FAM-A5/A7/B/C and FR-GL…”
+
+   and:
+
+   > “FR5X supplies coordinates…”
+
+   But FR-GL is recorded in GENTOW3 S7.1, omitted between pin span 1’s END at S3 and span 2’s BEGIN at S7.6. FR5X is recorded after `### Dated acceptance record`, while span 3 ends at that heading. Neither claim is recoverable solely from the recorded semantic stack, contrary to the instance’s fail-closed consumption discipline.
+
+4. **MINOR — S6 retains pre-r3 uniqueness terminology.**
+
+   S6 says:
+
+   > “the unique CERT-TOP slot”
+
+   and assigns GENTOW-6 ownership of:
+
+   > “the top-slot uniqueness calculation”
+
+   R3 requires complete assembled-slot exposure, expressly stating that uniqueness among single-extraction branches is insufficient. S8 was updated to this stronger language, but S6’s compression instructions were not.
+
+5. **MINOR — the effective status label is stale after r2 and r3.**
+
+   The governing replacement still reads:
+
+   > `STATUS: R1 TEXT REPAIRED; UNRESOLVED at attempt grade 0/2.`
+
+   Its unresolved conclusion remains correct, but the revision label no longer describes the post-r3 target.
+
+VERDICT: NOT CLEAN | FINDINGS: 1C + 2G + 2m
