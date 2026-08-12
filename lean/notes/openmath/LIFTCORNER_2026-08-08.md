@@ -1599,3 +1599,225 @@ and the (Φ₁-OPACITY) statement + 57-pair certificate spec are
 recorded as the proof unit. Transcribed unaltered per the standing
 division of labor. Ledger: row 19 → AC-2/AC-3 folded; OPEN pending
 (Φ₁-OPACITY) + discharge.)*
+
+---
+
+### Dated source adjudication (2026-08-12 — sol certification P3: (Φ₁-OPACITY) narrowed to the (RM-1) interface)
+
+The P3 certification run (gpt-5.6-sol high,
+runs/cert4/P3_opacity_output.log) adjudicated (Φ₁-OPACITY) directly
+against ITERLAWN's r6 census of record (194 mapped hits): the
+constructor/telescope subgraph is PROVED opaque (the Θ-transport
+sublemma below), and the obstruction survives at exactly one site —
+ITERLAWN S4.6's (RM-1) reduction, which divides by Φ₁ and reads its
+non-leading coefficients. The residual obligation is the (RM-1)
+INTERFACE LEMMA named inside the annex (the four consumed interface
+clauses survive the key swap; full R,Q proof-data equality is the
+wrong statement). Transcribed unaltered:
+
+> **[ANNEX 2026-08-12, certifier AC-4 — \((\Phi _1\)-OPACITY SOURCE ADJUDICATION: CONSTRUCTOR/Telescope SUBGRAPH PROVED; ALL-RUNG LEMMA OBSTRUCTED AT \((RM\text{-}1)\).]**
+>
+> This adjudication uses ITERLAWN’s machine census of record, not the superseded 22-row or 23-row hand tables. The r6 universe is **194 mapped hits on 147 lines**, partitioned as follows:
+>
+> 1. **88** table-row occurrences, duplicates and dated cure-brackets;
+> 2. **21** occurrences in the seven substantive site-families \(F1\)–\(F7\);
+> 3. **53** verification-apparatus occurrences;
+> 4. **8** quotations of external records;
+> 5. **18** non-genre occurrences;
+> 6. **6** positive proof displays.
+>
+> The apparatus, quotation, archive and duplicate classes perform no polynomial operation and therefore cannot inspect a coefficient of \(\Phi _1\). The operative occurrences in the remaining classes reduce to five source-operation classes:
+>
+> * shared numerical and field data: \(e_j,h_j,g_j,\gamma_j,w_j\Phi_j,\psi_j,K_j,z_j,\epsilon_j\);
+> * the recursive realizers \(\operatorname{realize}_m\);
+> * the \(C_k\)-existence and canonical-key construction;
+> * TRUNC, WELL-DEF and the S4.2 degree telescope;
+> * the S4.6 reduction engines \((RM\text{-}m)\).
+>
+> The first four classes are \(\Phi _1\)-opaque in the required formal-power sense. The fifth is not shown opaque and, at \(m=1\), genuinely opens \(\Phi _1\).
+>
+> **Proved sublemma — constructor/telescope opacity.** Let \(\Phi _1'\) and \(\Phi _1''\) be lawful monic level-1 keys having the same residue package, degree, \(w_1\)-value and accepted level-1 data. Fix all remaining tower parameters. In every displayed construction in ITERLAWN S4.1 and S4.2, transport an explicitly displayed \(\Phi _1''\)-normal form by
+> \[
+> \Theta\!\left(\sum_i A_i(\Phi _1'')^i\right)
+>   :=\sum_i\Theta(A_i)(\Phi _1')^i,
+> \]
+> recursively replacing each constructed higher key by its corresponding primed key. Then:
+>
+> 1. \(\Theta(\operatorname{realize}_m''(\tau,\beta))
+>    =\operatorname{realize}_m'(\tau,\beta)\);
+> 2. \(\Theta(C_k'')=C_k'\) for every canonical-lift coefficient;
+> 3. \(\Theta(\Phi _{m+1}'')=\Phi _{m+1}'\);
+> 4. all degree, weight and explicitly constructed single-digit read data in REALIZE-\((m)\), WELL-DEF-\((n)\), TRUNC and L6-\((n)\) agree;
+> 5. the S4.2 degree telescope is identical on the two sides.
+>
+> Here \(\Theta\) is asserted only on the normal forms supplied by the displayed constructions. It is not asserted to commute with arbitrary division or re-development in \(\mathcal O[x]\).
+>
+> *Proof.* Proceed by induction on \(m\).
+>
+> For \(m=1\), the displayed formula
+> \[
+> \operatorname{realize}_1(\tau,\beta)
+>  =\sum_i
+>    \operatorname{realize}_0\!\left(
+>       \epsilon_0(\gamma^{(i)})^{-1}\tau_i,\gamma^{(i)}
+>    \right)\Phi_0^{k_i}
+> \]
+> contains no \(\Phi _1\). Its coordinates \(\tau_i\), slots \(k_i\), weights
+> \(\gamma^{(i)}\), field operations and \(\epsilon\)-factors are shared.
+> Hence the two realizers are literally equal at this level.
+>
+> Assume the assertion below level \(m\). ITERLAWN defines
+> \[
+> \operatorname{realize}_m(\tau,\beta)
+>   =\sum_i
+>      \operatorname{realize}_{m-1}
+>        \!\left(\epsilon_{m-1}(\gamma^{(i)})^{-1}\tau_i,
+>        \gamma^{(i)}\right)\Phi_{m-1}^{k_i}.
+> \]
+> The power-basis coordinates \(\tau_i\), the integers \(k_i\) and
+> \(\gamma^{(i)}\), and the \(\epsilon_{m-1}\)-factors depend only on the
+> shared field/read package. By induction the coefficients correspond, and
+> the final occurrence of \(\Phi_{m-1}\) is an opaque formal power.
+> Therefore the two displayed realizers correspond under \(\Theta\).
+>
+> REALIZE’s clauses (R1)–(R3) do not perform division by a changed key.
+> Clause (R1) uses only
+> \[
+> k_i\le e_{m-1}g_{m-1}-1,\qquad
+> \deg\operatorname{realize}_{m-1}<\deg\Phi_{m-1},
+> \]
+> and
+> \[
+> \deg\Phi_m=e_{m-1}g_{m-1}\deg\Phi_{m-1}.
+> \]
+> Clauses (R2) and (R3) use the already displayed sum as its
+> \(\Phi_{m-1}\)-development: the coefficient-degree bound makes every
+> summand a single legal digit, and distinct \(i\) give distinct slots.
+> Thus no coefficient of \(\Phi_{m-1}\), and hence no non-leading
+> coefficient of \(\Phi _1\), is opened.
+>
+> For \(k<g_m\),
+> \[
+> C_k=\operatorname{realize}_m\!\left(
+>   \epsilon_m((g_m-k)\gamma_{m+1})^{-1}\psi_{m,k},
+>   (g_m-k)\gamma_{m+1}\right).
+> \]
+> Its field input, weight and \(\epsilon_m\)-factor are shared, so the
+> realizer induction gives \(\Theta(C_k'')=C_k'\). Consequently
+> \[
+> \Phi_{m+1}
+>   =\sum_{k\le g_m}C_k\Phi_m^{e_mk},\qquad C_{g_m}=1,
+> \]
+> corresponds term by term. Monicity comes from the top term
+> \(\Phi_m^{e_mg_m}\); every lower term has smaller degree by (R1).
+> This proves equal degree and the WELL-DEF existence claims using only
+> monicity, degree and the shared read package.
+>
+> TRUNC merely discards the top level. On the two towers “identical lifts”
+> must be read as “corresponding lifts under \(\Theta\)”; its split,
+> window and field data are literally shared.
+>
+> Finally, S4.2 uses only
+> \[
+> \deg a=\sum_{j<n}s_{j+1}\deg\Phi_j
+> \le\sum_{j<n}(\deg\Phi_{j+1}-\deg\Phi_j)
+> =\deg\Phi_n-d_0<\deg\Phi_n.
+> \]
+> The degrees and \(s\)-data agree, so this is the same telescope on both
+> towers. It establishes that \(a\) is a single \(\Phi_n\)-digit without
+> opening \(\Phi_n\). Its weight and read then come from the corresponding
+> induction hypothesis. This proves constructor/telescope opacity. ∎
+>
+> **Exact obstruction to the stated all-rung lemma.** ITERLAWN S4.6 contains
+> the load-bearing display
+> \[
+> f\,\widehat C_m=R+Q\Phi_m,\qquad
+> \deg R,\deg Q<\deg\Phi_m,
+> \]
+> with weight bounds and a prescribed read of \(R\). At \(m=1\) this is
+> \[
+> \boxed{\,f\,\widehat C_1=R+Q\Phi_1\,}.
+> \]
+> Its displayed proof status is:
+>
+> > “\(m=1\): PROVED — [IL3] DIGIT-SPLIT + DEV-1 … each coefficient product
+> > splits by DIGIT-SPLIT and reduces by DEV-1.”
+>
+> This reduction genuinely inspects the non-leading coefficients of
+> \(\Phi _1\). In ordinary long division, cancelling a leading term
+> \(\lambda x^t\) subtracts \(\lambda x^{t-d}\Phi _1\); for every \(r<d\)
+> it therefore reads \([x^r]\Phi _1\) and changes the developing remainder
+> by \(-\lambda[x^r]\Phi _1x^{t-d+r}\). In the corner’s \(\Phi _0\)-adic
+> notation the same access is the substitution
+> \[
+> \Phi_0^{e_0}
+>   =\Phi_1-b_0-\sum_{k\ge1}b_k\Phi_0^k,
+> \]
+> which explicitly reads the \(b_0\)-tail and every mid \(b_k\).
+>
+> Algebraically, if
+> \(\Delta=\Phi _1'-\Phi _1''\) and
+> \(F=R''+Q''\Phi _1''\), then
+> \[
+> F=(R''-Q''\Delta)+Q''\Phi _1'.
+> \]
+> Thus the new remainder already contains the non-leading coefficients of
+> \(\Delta\); if its degree is too large, further reductions read them
+> again. Same residue and same \(w_1\)-value can make these new terms
+> strictly above a relevant read line, but do not make them zero and do not
+> make the complete \(R,Q\) data invariant. Formal replacement
+> \((\Phi _1'')^i\leftrightarrow(\Phi _1')^i\) does not remove this
+> difference because \(R\) is a coefficient—the \(U^0\) digit—rather than
+> an opaque key power.
+>
+> This is not bypassed by ITERLAWN’s verified sentence “rung \(\ge3\) steps
+> never consume RM-1.” The all-rung induction must first obtain
+> ITER-PKG-2, the 3-read link. ITERLAWN takes that link from [IL3], and its
+> displayed \(m=1\) engine proof is exactly DIGIT-SPLIT + DEV-1 above.
+> Later transitions call \(RM-m\) with \(m\ge2\), but they cannot climb from
+> an arbitrary \(\Phi _1\) without the rung-2 package.
+>
+> LIFTCORNER’s TAIL-STAB makes an \(RM\)-interface transport plausible:
+> strict-excess terms may be invisible to the particular consumed weight
+> and read clauses. No displayed argument, however, proves that statement
+> for every \(RM\)-1 input \(f\), and TAIL-STAB does not make the complete
+> quotient/remainder records equal. The missing repair is therefore a
+> weaker and accurately scoped lemma:
+>
+> **\((RM\text{-}1\text{-TRANSPORT})\).** Under replacement by a lawful
+> same-residue \(\Phi _1\), the four *consumed interface clauses* of
+> \(RM\)-1—degree bounds, the two weight bounds and the prescribed read of
+> \(R\)—survive for every input class used in constructing ITER-PKG-2.
+>
+> Proving this interface lemma, followed by the S4.4–S4.6 rung-2 package
+> construction, could discharge the all-rung rider. Equality of complete
+> \(R,Q\) proof data should not be required and is generally the wrong
+> statement.
+>
+> **Consumer sweep.**
+>
+> * **LIFTCORNER PROP:** remains SUSPENDED. Constructor/telescope opacity
+>   repairs the S4.1 \(\to\) L6 edge but does not supply arbitrary-\(\Phi _1\)
+>   ITER-PKG-2 across \(RM\)-1.
+> * **LIFTCORNER S5:** its every-\(n\) rider remains conditional on the
+>   missing \(RM\)-1 transport/rung-2 package. TAIL-STAB, READ-EQ, the
+>   THEOREM, COR 1 and COR 2 retain their accepted 2-read scopes.
+> * **FC-2:** its execution of the all-rung rider remains SUSPENDED and must
+>   be read conditionally. The fold’s standard-lift ITERLAWN theorem and
+>   all unrelated accepted conclusions are unchanged.
+> * **ITERLAWN:** S4.1, WELL-DEF-\((n)\), canonical \(C_k\)-existence,
+>   TRUNC and L6-\((n)\) are certified \(\Phi _1\)-opaque in the formal
+>   constructor sense proved above. Its existing standard-lift theorem,
+>   integer layer, EXP-KIT and conditional \(RM\)-ledger are unaffected.
+>
+> Accordingly, AC-1 is narrowed but not discharged: its alleged opacity
+> problem is absent from the constructor/telescope subgraph and survives
+> exactly at the rung-2 \(RM\)-1 reduction interface.
+
+*(Orchestrator verification: the census partition sums to 194
+(88+21+53+8+18+6); the Θ-transport's five clauses ride the same
+block-unitriangular mechanisms verified at P1; the (RM-1) division
+genuinely opens Φ₁ (the m = 1 display f·Ĉ₁ = R + QΦ₁ is proved by
+DIGIT-SPLIT + DEV-1 reduction mod Φ₁ — coefficient-reading is real).
+AC-1 is NARROWED, not discharged. Ledger: row 19 → open on the
+(RM-1) interface lemma only (P4, next queue).)*
