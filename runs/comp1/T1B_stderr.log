@@ -1,0 +1,3152 @@
+OpenAI Codex v0.145.0
+--------
+workdir: /data/users/asvin/math-and-lean/p-adic-splitting-densities
+model: gpt-5.6-sol
+provider: openai
+approval: never
+sandbox: workspace-write [workdir, /tmp, $TMPDIR]
+reasoning effort: high
+reasoning summaries: none
+session id: 019ff72d-9c97-78a0-8447-4cb49fb02625
+--------
+user
+SEALED BATTERY COMPOSITION, unit S-1 (you are gpt-5.6-sol high). Compose the
+revised T1 note's machine battery per the two-commit protocol: OUTPUT (1) the
+preregistered prediction/teeth block (exact counts, what each tooth mutates
+and must break), then (2) a COMPLETE self-contained python script (single
+fenced block, exact arithmetic, stdlib only) implementing the battery: the
+wrap/ϑ recursion laws C1–C4 swept over (e₁, f₁, h, Q) frames including η ≠ 1
+and ν > 0 slots, the C5-gamma normalized-coefficient reads, C6 lift checks on
+the live domain incl. boundary refusals at M ≤ D′h, the orientation tooth
+scoring the full three-slot vector (the r1 repair), and regression frames
+matching the historical 2026-08-10 run's coverage (that run is inherited
+evidence only). The orchestrator seals (commits) prereg + runner BEFORE
+running; verdict from artifacts.
+
+=== THE T1 NOTE AT HEAD ===
+# T1 — LEMMA GAUGE-COCYCLE
+
+## The wrap/\(\vartheta\) recursion, exact lifts, and normalization bridges, stated once
+
+**RCT unit:** S-1-T1-gauge-cocycle, revision pass S-1, 2026-08-12  
+**Status:** revised candidate of record; hostile arc not yet run on this revision  
+**Supersedes:** the composed 2026-08-10 T1 draft and its inline repair riders
+
+This revision folds the certified 2026-08-12 gauge-seam corrections into the statement rather than leaving them as riders. In particular:
+
+- exact integral \(K_1\)-lifts are asserted on the proved live domain \(M>D'h\), and the composed-key coefficient contains the positive \(\eta^{W(t)}\) wrap correction;
+- the canonical minimal-grid twist is separated from the actual print twist by the attained-origin factor \(z^\nu\);
+- the weld is used only at the proved scope of the five-field package WELD-M-PKG; no cross-face coherence or uniqueness is asserted; and
+- the HE6 slot coefficient is the normalized coefficient sum \(\gamma_k(A)\), not the generally vacuous sum of bare coefficient residues.
+
+The lemma is one source of the tower gauge formulas. It organizes those fields of WELD-M-PKG that consume the formulas around the same cocycle, but it does not upgrade the package to a single coherent map.
+
+## 1. Statement
+
+### LEMMA GAUGE-COCYCLE
+
+#### 1.1 Carrier and domain
+
+Fix a discretely valued base field with uniformizer \(\pi\), residue field \(\mathbf F_Q\), and a MacLane/Okutsu tower with level-\(i\) residue field \(K_i\). At level \(1\), fix
+
+\[
+e_1,f_1,h\ge1,\qquad \gcd(e_1,h)=1,\qquad D'=e_1f_1,
+\]
+
+with
+
+\[
+dv_1(x)=h,\qquad dv_1(\pi)=e_1,
+\qquad
+\eta=\operatorname{res}\!\left(\frac{x^{e_1}}{\pi^h}\right),
+\qquad
+K_1=\mathbf F_Q(\eta),
+\]
+
+and chosen basis \(1,\eta,\ldots,\eta^{f_1-1}\).
+
+For every integer height \(k\), let
+
+\[
+\widehat n_1(k)=x^{i(k)}\pi^{a(k)},\qquad
+0\le i(k)<e_1,\qquad i(k)h+a(k)e_1=k.
+\]
+
+This is a Laurent normalizer at an arbitrary integer height. A full integral \(K_1\)-digit slot is asserted below only on the proved live domain \(k>D'h\). No full \(K_1\)-slot is asserted at \(k\le D'h\).
+
+At a general level \(i\), fix exact-height normalizers \(\widehat n_i(m)\) in the prescribed bounded-exponent tower normal form, stage data
+
+\[
+e_{i+1},\qquad f_{i+1},\qquad u_{i+1},
+\]
+
+and
+
+\[
+\psi_{i+1}(y)
+=
+y^{f_{i+1}}-\sum_{t<f_{i+1}}c_ty^t
+\in K_i[y],
+\qquad c_0\ne0.
+\]
+
+Whenever an exact-height lift is invoked, assume it lies in its stated integral domain and satisfies
+
+\[
+dv_i(\operatorname{lift}_i(d;m))=m,
+\qquad
+\operatorname{res}\!\left(
+\frac{\operatorname{lift}_i(d;m)}{\widehat n_i(m)}
+\right)=d.
+\]
+
+Zero is lifted as zero. At level \(1\), conclusion (C6) supplies this lift uniformly when \(m>D'h\).
+
+Define the repo and canonical letters
+
+\[
+\eta_{i+1}
+=
+\operatorname{res}\!\left(
+\frac{\Phi_i^{e_{i+1}}}{\widehat n_i(u_{i+1})}
+\right),
+\qquad
+z_{i+1}
+=
+\operatorname{res}\!\left(
+\frac{\Phi_i^{e_{i+1}}}{\pi_{i+1}^{u_{i+1}}}
+\right).
+\]
+
+At level \(1\), write
+
+\[
+\pi_2=x^{\ell_1}\pi^{\ell'_1},
+\qquad
+\ell_1h+\ell'_1e_1=1,
+\qquad
+0\le\ell_1<e_1.
+\]
+
+For a homogeneous slot of height \(su_{i+1}\), distinguish:
+
+1. its coherent digit \(\Gamma\), read against \(\widehat n_i(su_{i+1})\);
+2. its multiplicative coefficient, read against \(\widehat n_i(u_{i+1})^s\); and
+3. its canonical residual read \(R_{i+1,\beta}\).
+
+Assume at the consumed sites that the canonical residual read is multiplicative on the relevant ladder monomials and agrees with residue on value-zero factors. This is a site obligation, not an assertion about every homogeneous initial form.
+
+Put
+
+\[
+\bar\kappa_i=\frac{u_{i+1}}{e(\mu_i)},
+\qquad
+w_i
+=
+R_{i+1,\bar\kappa_i}
+\bigl(\widehat n_i(u_{i+1})\bigr)
+\in K_i^\times.
+\]
+
+The carrier contains no letter recursion, cocycle identity, corrected-key formula, read dictionary, print-origin bridge, or weld coherence theorem.
+
+#### (C1) Letter recursion
+
+At every defined level,
+
+\[
+\boxed{
+z_{i+1}=\eta_{i+1}\rho_i,
+\qquad
+\rho_i=
+\operatorname{res}\!\left(
+\frac{\widehat n_i(u_{i+1})}
+{\pi_{i+1}^{u_{i+1}}}
+\right).
+}
+\tag{C1-general}
+\]
+
+The quotient has value zero. Successive reduction by the tower relations expresses \(\rho_i\) as a monomial in preceding canonical letters. This is a terminating reduction algorithm; no closed exponent formula is asserted at arbitrary depth.
+
+At level \(2\),
+
+\[
+\boxed{
+z_2=\eta_2z_1^{-\lfloor\ell_1u_2/e_1\rfloor}.
+}
+\tag{C1-level-2}
+\]
+
+#### (C2) The normalized wrap cocycle and its telescope
+
+Define
+
+\[
+\operatorname{wrap}(a,b)
+=
+\left\lfloor
+\frac{i(a)+i(b)}{e_1}
+\right\rfloor
+\in\{0,1\}.
+\]
+
+Then
+
+\[
+\boxed{
+\widehat n_1(a)\widehat n_1(b)
+=
+\widehat n_1(a+b)
+\left(\frac{x^{e_1}}{\pi^h}\right)^{\operatorname{wrap}(a,b)}.
+}
+\tag{C2-wrap}
+\]
+
+For
+
+\[
+\tau_i(a,b)
+=
+\frac{\widehat n_i(a)\widehat n_i(b)}
+{\widehat n_i(a+b)},
+\]
+
+associativity gives the normalized two-cocycle law
+
+\[
+\tau_i(0,a)=\tau_i(a,0)=1,
+\qquad
+\boxed{
+\tau_i(a,b)\tau_i(a+b,c)
+=
+\tau_i(b,c)\tau_i(a,b+c).
+}
+\tag{C2-cocycle}
+\]
+
+Define the building-orientation telescope unit
+
+\[
+\boxed{
+\vartheta_{i,s}
+=
+\operatorname{res}\!\left(
+\frac{\widehat n_i(u_{i+1})^s}
+{\widehat n_i(su_{i+1})}
+\right)
+\in K_i^\times.
+}
+\tag{C2-vartheta}
+\]
+
+Then
+
+\[
+\boxed{
+\vartheta_{i,0}=\vartheta_{i,1}=1,
+\qquad
+\vartheta_{i,s+1}
+=
+\vartheta_{i,s}\,
+\operatorname{res}
+\bigl(\tau_i(su_{i+1},u_{i+1})\bigr).
+}
+\tag{C2-recursion}
+\]
+
+At level \(1\),
+
+\[
+\widehat n_1(u_2)^s
+=
+\widehat n_1(su_2)
+\left(\frac{x^{e_1}}{\pi^h}\right)^{
+\lfloor s\,i(u_2)/e_1\rfloor},
+\]
+
+and hence
+
+\[
+\boxed{
+\vartheta_{1,s}
+=
+\eta^{\lfloor s\,i(u_2)/e_1\rfloor}.
+}
+\tag{C2-level-1}
+\]
+
+For \(s=f_2-t\), put
+
+\[
+W(t)
+=
+\left\lfloor
+\frac{(f_2-t)i(u_2)}{e_1}
+\right\rfloor.
+\]
+
+Thus
+
+\[
+\vartheta_{1,f_2-t}=\eta^{W(t)}.
+\]
+
+The exponent has the displayed positive sign.
+
+#### (C3) Corrected key and read dictionary
+
+For \(s=f_{i+1}-t\), let \(\Gamma_t\) denote the coherent digit against \(\widehat n_i(su_{i+1})\), and let \(c_t^{\mathrm{mult}}\) denote the coefficient against \(\widehat n_i(u_{i+1})^s\). Then
+
+\[
+\boxed{
+\Gamma_t
+=
+c_t^{\mathrm{mult}}\vartheta_{i,s},
+\qquad
+c_t^{\mathrm{mult}}
+=
+\Gamma_t\vartheta_{i,s}^{-1}.
+}
+\tag{C3-dictionary}
+\]
+
+The corrected composed key is
+
+\[
+\boxed{
+\Phi_{i+1}
+=
+\Phi_i^{e_{i+1}f_{i+1}}
+-
+\sum_{t<f_{i+1}}
+\widehat k_t\Phi_i^{e_{i+1}t},
+}
+\tag{C3-key}
+\]
+
+where
+
+\[
+\boxed{
+\widehat k_t
+=
+\operatorname{lift}_i\!\left(
+c_t\vartheta_{i,f_{i+1}-t};
+(f_{i+1}-t)u_{i+1}
+\right).
+}
+\tag{C3-corrected-lift}
+\]
+
+At level \(1\), whenever
+
+\[
+M_t=(f_2-t)u_2>D'h,
+\]
+
+this is the explicit integral coefficient
+
+\[
+\boxed{
+\widehat k_t
+=
+L_{M_t}\bigl(c_t\eta^{W(t)}\bigr).
+}
+\tag{C3-level-1-key}
+\]
+
+Its multiplicative coefficient is exactly \(c_t\).
+
+The naive and corrected recipes agree in slot \(t\) exactly when
+
+\[
+c_t
+\bigl(
+\vartheta_{i,f_{i+1}-t}-1
+\bigr)=0.
+\]
+
+They therefore agree if every relevant telescope unit is \(1\), including the cases \(\eta=1\) at level \(1\) and \(f_{i+1}=1\). This says nothing about whether arbitrary \(K_1\)-digits are \(x\)-free.
+
+For the B-law orientation define
+
+\[
+\boxed{
+\Theta_i(t)
+=
+\vartheta_{i,f_{i+1}-t}^{-1}
+=
+\operatorname{res}\!\left(
+\frac{
+\widehat n_i((f_{i+1}-t)u_{i+1})
+}{
+\widehat n_i(u_{i+1})^{f_{i+1}-t}
+}
+\right).
+}
+\tag{C3-Theta}
+\]
+
+Let \(\beta_t\) be the slot grade and set
+
+\[
+u(\beta_t)
+=
+R_{i+1,\beta_t}
+\bigl(
+\widehat n_i((f_{i+1}-t)u_{i+1})
+\bigr).
+\]
+
+At every site where the stated ladder-multiplicativity obligation is discharged,
+
+\[
+\boxed{
+u(\beta_t)
+=
+\Theta_i(t)w_i^{f_{i+1}-t}.
+}
+\tag{C3-B-law}
+\]
+
+Consequently a slot with coherent digit \(\Gamma_t\) has canonical read
+
+\[
+\boxed{
+R_{i+1,\beta_t}(\text{slot }t)
+=
+w_i^{f_{i+1}-t}\Theta_i(t)\Gamma_t.
+}
+\tag{C3-canonical-read}
+\]
+
+At the corrected key,
+
+\[
+\Gamma_t
+=
+c_t\vartheta_{i,f_{i+1}-t},
+\]
+
+so the \(\vartheta/\Theta\) factors cancel. The three reads are therefore
+
+\[
+\boxed{
+\begin{aligned}
+\text{multiplicative residual}
+&=\psi_{i+1}(y),\\
+\text{coherent digits}
+&=
+\bigl(
+c_t\vartheta_{i,f_{i+1}-t}
+\bigr)_{t<f_{i+1}},\\
+\text{canonical residual}
+&=
+\psi_{i+1}^{(w_i)}(y)
+:=
+w_i^{f_{i+1}}\psi_{i+1}(y/w_i).
+\end{aligned}
+}
+\tag{C3-three-reads}
+\]
+
+The map
+
+\[
+P(y)\longmapsto w_i^{\deg P}P(y/w_i)
+\]
+
+preserves irreducible-factor degrees and multiplicities. Residual factor patterns, and verdict data depending only on those patterns, are gauge-invariant. Conversion of a residual factor pattern to a p-adic splitting type still uses the surrounding tower correctness theorem.
+
+#### (C4) Attained-origin normalization bridge
+
+This clause records the correction that is independent of the \(\vartheta\)-telescope but belongs to the same gauge seam. At a print level write
+
+\[
+s_{\min}(\beta)=\ell\beta\bmod e,
+\qquad
+t_{\min}(\beta)
+=
+\frac{\ell\beta-s_{\min}(\beta)}e,
+\qquad
+\varepsilon(\beta)=z^{-t_{\min}(\beta)}.
+\]
+
+If the actual attained initial abscissa is
+
+\[
+s_{\mathrm{act}}
+=
+s_{\min}(\beta)+\nu e,
+\qquad
+\nu\in\mathbf Z_{\ge0},
+\]
+
+then the print Definition-\(t(i)\) exponent in print orientation is
+
+\[
+t_{\mathrm{Def}}
+=
+\frac{s_{\mathrm{act}}-\ell\beta}{e}
+=
+\nu-t_{\min}(\beta).
+\]
+
+Therefore
+
+\[
+\boxed{
+z^{t_{\mathrm{Def}}}
+=
+z^\nu\varepsilon(\beta),
+\qquad
+\varepsilon(\beta)
+=
+z^{t_{\mathrm{Def}}-\nu}.
+}
+\tag{C4-origin}
+\]
+
+Raw equality
+
+\[
+z^{t_{\mathrm{Def}}}=\varepsilon(\beta)
+\]
+
+holds exactly when \(z^\nu=1\); it holds in particular when \(\nu=0\). It is false in general to identify the canonical minimal-grid factor with the raw print factor without displaying \(z^\nu\).
+
+If \(H(y)\) is the harness residual and \(P(y)\) the normalized print residual, the corresponding support statement is
+
+\[
+H(y)=y^\nu Q(y),
+\qquad
+P(y)=aQ(by),
+\qquad
+a,b\in K^\times.
+\]
+
+Thus, for nonzero residuals,
+
+\[
+\boxed{
+\operatorname{Supp}_y(H)
+=
+\nu+\operatorname{Supp}_y(P),
+\qquad
+\deg H=\deg P+\nu.
+}
+\tag{C4-support}
+\]
+
+Attained abscissas and normalized support widths agree. Ordinary exponent supports and ordinary degrees agree only after translating the harness origin by \(\nu\).
+
+#### (C5) HE6 normalized slot coefficient and canonical-normalizer read
+
+Let
+
+\[
+A(x)=\sum_{j<D'}a_jx^j,
+\qquad
+k=dv(A),
+\qquad
+i=i(k),
+\qquad
+n(k)=x^i\pi^{(k-ih)/e_1}.
+\]
+
+Define
+
+\[
+\boxed{
+\gamma_k(A)
+=
+\sum_{\substack{t\ge0\\i+e_1t<D'}}
+\operatorname{res}\!\left(
+a_{i+e_1t}
+\pi^{-(k-(i+e_1t)h)/e_1}
+\right)\eta^t.
+}
+\tag{C5-gamma}
+\]
+
+A coefficient whose pin lies strictly above height \(k\) contributes zero.
+
+For every tower point \(\xi\) carrying the specified residue embedding \(\iota_\xi\),
+
+\[
+\boxed{
+\operatorname{res}\!\left(
+\frac{A(\xi)}{n(k)(\xi)}
+\right)
+=
+\iota_\xi\bigl(\gamma_k(A)\bigr).
+}
+\tag{C5-normalizer-read}
+\]
+
+Let \(i_0\in[0,e_1)\) satisfy
+
+\[
+i_0h\equiv1\pmod {e_1},
+\]
+
+and define
+
+\[
+q(k)=\frac{i_0k-i(k)}{e_1}.
+\]
+
+For the canonical level-one normalizer
+
+\[
+\varpi
+=
+x^{i_0}\pi^{(1-i_0h)/e_1},
+\]
+
+one has
+
+\[
+\operatorname{res}\!\left(
+\frac{n(k)(\xi)}
+{\varpi(\xi)^k}
+\right)
+=
+\eta_\xi^{-q(k)}.
+\]
+
+Hence
+
+\[
+\boxed{
+\operatorname{res}\!\left(
+\frac{A(\xi)}
+{\varpi(\xi)^k}
+\right)
+=
+\iota_\xi\bigl(\gamma_k(A)\bigr)
+\eta_\xi^{-q(k)}.
+}
+\tag{C5-varpi-read}
+\]
+
+The coefficient normalizers in (C5-gamma) are essential. Replacing each normalized coefficient residue by \(\operatorname{res}(a_j)\) is generally false and may make all tying contributions vanish.
+
+The same integer function records the carry:
+
+\[
+\boxed{
+q(a+b)
+=
+q(a)+q(b)+\operatorname{wrap}(a,b).
+}
+\tag{C5-carry}
+\]
+
+#### (C6) Exact integral \(K_1\)-lift and the \(x\)-free criterion
+
+Let \(M>D'h\), put
+
+\[
+i=i(M),
+\qquad
+a=\frac{M-ih}{e_1},
+\]
+
+and write uniquely
+
+\[
+\lambda
+=
+\sum_{r=0}^{f_1-1}\lambda_r\eta^r,
+\qquad
+\lambda_r\in\mathbf F_Q.
+\]
+
+Define
+
+\[
+\boxed{
+L_M(\lambda)
+=
+\sum_{r=0}^{f_1-1}
+\widetilde{\lambda_r}
+x^{i+e_1r}\pi^{a-rh}.
+}
+\tag{C6-lift}
+\]
+
+Then
+
+\[
+L_M(\lambda)\in\widehat O[x],
+\qquad
+\deg L_M(\lambda)<D',
+\qquad
+dv(L_M(\lambda))=M
+\]
+
+for \(\lambda\ne0\). Every nonzero summand has exact height \(M\), and
+
+\[
+\boxed{
+\operatorname{res}\!\left(
+\frac{L_M(\lambda)(\theta)}
+{n(M)(\theta)}
+\right)
+=
+\lambda.
+}
+\tag{C6-residue}
+\]
+
+For \(\lambda\ne0\),
+
+\[
+\boxed{
+L_M(\lambda)\text{ is an }x\text{-free monomial}
+\iff
+i(M)=0
+\text{ and }
+\lambda\in\mathbf F_Q.
+}
+\tag{C6-x-free}
+\]
+
+The hypothesis \(M>D'h\) is the simple sufficient domain used by all live consumers here. This theorem makes no universal full-slot assertion at lower heights.
+
+In the composed-key application, put
+
+\[
+r=f_2-t,
+\qquad
+M=ru_2>D'h.
+\]
+
+Then
+
+\[
+L_{ru_2}\bigl(c_t\eta^{W(t)}\bigr)
+\]
+
+has coherent digit \(c_t\eta^{W(t)}\) and multiplicative coefficient \(c_t\).
+
+If the tower additionally has
+
+\[
+u_2>e_2D'h,
+\]
+
+every monomial in this lift, after multiplication by a monomial of \(\Phi'^{e_2t}\), clears the outer side by at least
+
+\[
+\boxed{
+\frac{r(u_2-e_2D'h)}{e_1}>0.
+}
+\tag{C6-clearance}
+\]
+
+Collection and \(\Phi'\)-carry can cancel terms or move them upward, but cannot create a term below that side.
+
+#### (C7) WELD-M-PKG interface and scope fence
+
+Let
+
+\[
+\mathbf T_T
+=
+(\mathbf T_{M0},\mathbf T_{M1},\mathbf T_{M2},
+ \mathbf T_{M3},\mathbf T_{M4})
+\]
+
+denote the anchored five-field package of WELD-M-PKG. T1 relates to its fields only as follows:
+
+| Package field | T1 datum available to that field |
+|---|---|
+| \(M0\), division chains | Common tower and canonical division-chain anchor; no new identity is proved here. |
+| \(M1\), shear and \(w_m=v_{m+1}\) | The carrier unit \(w_i\) and letter recursion (C1); the shear, equality, and membership fences remain supplier facts. |
+| \(M2\), per-slot character transport | The dictionary and canonical read in (C3), together with the origin correction (C4). |
+| \(M3\), multiplication transport | The cocycle/telescope (C2) and canonical twist in (C3), only on the scored stratum. |
+| \(M4\), lift covariance | The exact-height formulas (C5)–(C6), only at W2-C3’s accepted fence. |
+
+Accordingly,
+
+\[
+\boxed{
+\begin{gathered}
+\text{T1 organizes five named fields around one tower cocycle;}\\
+\text{it proves no cross-face coherence theorem.}
+\end{gathered}
+}
+\tag{C7-scope}
+\]
+
+It also proves no uniqueness of the gauge. Gauges with a fixed coboundary may differ by a character. WELD-M-PKG is an existence package assembled field by field, and T1 neither identifies its heterogeneous fields as restrictions of one map nor supplies compatibility beyond the anchors explicitly displayed in the package theorem.
+
+## 2. Proof
+
+### 2.1 Letter recursion
+
+Divide the defining fractions for \(z_{i+1}\) and \(\eta_{i+1}\):
+
+\[
+z_{i+1}
+=
+\eta_{i+1}
+\operatorname{res}\!\left(
+\frac{\widehat n_i(u_{i+1})}
+{\pi_{i+1}^{u_{i+1}}}
+\right).
+\]
+
+Both normalizers have height \(u_{i+1}\), so the quotient has value zero. Successively remove the highest key by the corresponding value-zero tower relation. Coprimality forces the highest exponent into the required ramification-index class; iteration terminates at a value-zero \(x,\pi\)-monomial, hence a power of \(x^{e_1}/\pi^h\). This proves (C1-general) and the asserted reduction algorithm.
+
+At level \(2\), with \(u=u_2\),
+
+\[
+\frac{\widehat n_1(u)}{\pi_2^u}
+=
+x^{i(u)-\ell_1u}
+\pi^{a(u)-\ell'_1u}.
+\]
+
+The congruences
+
+\[
+i(u)h\equiv u\equiv\ell_1uh\pmod {e_1}
+\]
+
+give
+
+\[
+i(u)
+=
+\ell_1u
+-
+e_1
+\left\lfloor
+\frac{\ell_1u}{e_1}
+\right\rfloor.
+\]
+
+The value-zero equation supplies the corresponding \(\pi\)-exponent, so the quotient is
+
+\[
+\left(\frac{x^{e_1}}{\pi^h}\right)^{
+-\lfloor\ell_1u/e_1\rfloor}.
+\]
+
+Taking residues proves (C1-level-2).
+
+### 2.2 Cocycle and telescope
+
+The reduced representative of \(i(a)+i(b)\) is \(i(a+b)\). Hence
+
+\[
+i(a)+i(b)
+=
+i(a+b)+e_1\operatorname{wrap}(a,b).
+\]
+
+Height additivity gives
+
+\[
+a(a)+a(b)
+=
+a(a+b)-h\operatorname{wrap}(a,b),
+\]
+
+which proves (C2-wrap). Comparing the two parenthesizations of
+
+\[
+\widehat n_i(a)\widehat n_i(b)\widehat n_i(c)
+\]
+
+proves (C2-cocycle).
+
+For \(u=u_{i+1}\),
+
+\[
+\frac{\widehat n_i(u)^{s+1}}
+{\widehat n_i((s+1)u)}
+=
+\frac{\widehat n_i(u)^s}
+{\widehat n_i(su)}
+\frac{\widehat n_i(su)\widehat n_i(u)}
+{\widehat n_i((s+1)u)}.
+\]
+
+Taking residues proves the recursion.
+
+At level \(1\), reducing the \(x\)-exponent \(s\,i(u_2)\) modulo \(e_1\) gives exactly
+
+\[
+\left\lfloor\frac{s\,i(u_2)}{e_1}\right\rfloor
+\]
+
+copies of \(x^{e_1}/\pi^h\), proving (C2-level-1) and the positive \(\eta^{W(t)}\) sign.
+
+### 2.3 Corrected key and the three reads
+
+If a height-\(su\) element has coherent digit \(\Gamma\), division first by \(\widehat n_i(su)\) and then by \(\widehat n_i(u)^s\) gives
+
+\[
+c^{\mathrm{mult}}
+=
+\Gamma
+\operatorname{res}\!\left(
+\frac{\widehat n_i(su)}
+{\widehat n_i(u)^s}
+\right)
+=
+\Gamma\vartheta_{i,s}^{-1}.
+\]
+
+This proves the dictionary. Choosing
+
+\[
+\Gamma_t=c_t\vartheta_{i,f-t}
+\]
+
+therefore makes the multiplicative coefficient exactly \(c_t\), proving the corrected-key and degeneracy claims.
+
+Put
+
+\[
+N=\widehat n_i(u),
+\qquad
+M_s=\widehat n_i(su).
+\]
+
+At a consumed site, ladder multiplicativity and the value-zero rule give
+
+\[
+w_i^s
+=
+R(N^s)
+=
+R(M_s)\operatorname{res}(N^s/M_s)
+=
+R(M_s)\vartheta_{i,s}.
+\]
+
+Thus
+
+\[
+R(M_s)
+=
+w_i^s\vartheta_{i,s}^{-1},
+\]
+
+which is the B-law. Multiplying by a coherent digit proves (C3-canonical-read).
+
+At the corrected key, the inverse telescope factors cancel slotwise, and summing gives
+
+\[
+y^f-\sum_{t<f}c_tw_i^{f-t}y^t
+=
+w_i^f\psi(y/w_i).
+\]
+
+Scaling the variable by a unit transports factorizations bijectively and preserves degrees, multiplicities, and irreducibility.
+
+### 2.4 Attained-origin bridge
+
+Substitution of
+
+\[
+s_{\mathrm{act}}=s_{\min}+\nu e
+\]
+
+gives
+
+\[
+t_{\mathrm{Def}}
+=
+\frac{s_{\min}+\nu e-\ell\beta}{e}
+=
+\nu-t_{\min}.
+\]
+
+Exponentiating by \(z\) proves (C4-origin).
+
+The support and degree formulas follow because multiplication by \(y^\nu\) translates ordinary exponents, whereas multiplication by a unit and substitution by a unit preserve them.
+
+### 2.5 Normalized slot coefficient and carry
+
+For \(j=i+e_1t\), direct division gives
+
+\[
+\frac{a_j\xi^j}{n(k)(\xi)}
+=
+\left(
+a_j\pi^{-(k-jh)/e_1}
+\right)
+\left(
+\xi^{e_1}\pi^{-h}
+\right)^t.
+\]
+
+Indices outside the class \(i\bmod e_1\) have strictly larger value and vanish after reduction; pins above \(k\) also reduce to zero. Summing the surviving residues proves (C5-normalizer-read).
+
+Composing with
+
+\[
+\operatorname{res}
+\left(
+\frac{n(k)}
+{\varpi^k}
+\right)
+=
+\eta^{-q(k)}
+\]
+
+proves (C5-varpi-read).
+
+Finally,
+
+\[
+\begin{aligned}
+e_1\bigl(q(a+b)-q(a)-q(b)\bigr)
+&=
+i(a)+i(b)-i(a+b)\\
+&=
+e_1\operatorname{wrap}(a,b),
+\end{aligned}
+\]
+
+which proves (C5-carry).
+
+### 2.6 Exact integral lift
+
+For \(0\le r<f_1\),
+
+\[
+i+e_1r\le D'-1,
+\]
+
+and
+
+\[
+a-rh
+=
+\frac{M-(i+e_1r)h}{e_1}
+\ge0
+\]
+
+because \(M>D'h\). Thus every displayed term is integral and has degree less than \(D'\).
+
+Its height is
+
+\[
+e_1(a-rh)+(i+e_1r)h=M.
+\]
+
+After division by \(n(M)\), its residue is \(\lambda_r\eta^r\). Basis independence prevents cancellation and proves (C6-residue).
+
+The \(x\)-exponents \(i+e_1r\) are distinct and nonnegative. A nonzero lift is one \(x\)-free monomial exactly when only \(r=0\) occurs and \(i=0\), equivalently when
+
+\[
+i(M)=0
+\quad\text{and}\quad
+\lambda\in\mathbf F_Q.
+\]
+
+The corrected-key and clearance applications are then the substitutions stated in (C6).
+
+### 2.7 Package boundary
+
+WELD-M-PKG is proved by choosing five witnesses and applying a product/record constructor. Conclusions (C1)–(C6) give common tower formulas that individual fields may cite, exactly as listed in (C7).
+
+Nothing in those proofs supplies:
+
+- a map with all five heterogeneous source and target types;
+- a compatibility square between distinct fields; or
+- uniqueness of the gauge.
+
+Hence only the organization claim in (C7-scope) follows.
+
+## 3. Absorption map
+
+“Verbatim” means that, after replacing local names by the displayed T1 names, the certified local mathematical display is an immediate specialization with no added hypothesis or conclusion.
+
+“Adapted” means that T1 deliberately changes notation, carries a certified domain or fence, or separates a normalization that the old annex conflated.
+
+| Annex | Local site | T1 conclusion | Mode and specialization |
+|---|---|---|---|
+| A1 GENHN | GENHN-LIFT | C6 | **Verbatim** on \(M>D'h\): same component formula, integrality, degree, exact height, and residue. |
+| A1 GENHN | Corrected T(b)\('\) coefficient | C2, C3, C6 | **Verbatim** with \(M=(f_2-t)u_2\): \(L_M(c_t\eta^{W(t)})\); the clearance bound is retained. |
+| A2 HETOW | Wrap/carry preamble | C2, C5 | **Verbatim**: the wrap identity and \(q(a+b)=q(a)+q(b)+\operatorname{wrap}(a,b)\). |
+| A2 HETOW | Telescope and corrected key | C2, C3 | **Verbatim** after \(s=f_2-t\); T1 makes the positive \(\eta^{W(t)}\) sign explicit. |
+| A3 GENTOW1 | Corrected coefficient pin | C3 | **Adapted only in notation**: the local coherent digit \(\gamma_t\) is T1’s \(\Gamma_t\), avoiding collision with HE6’s \(\gamma_k(A)\). |
+| A3 GENTOW1 | Value-blind budgets/floors | C3 | **Adapted/fenced**: corrected and naive lifts have equal exact height where the integral lift exists; budgets and floors themselves are not reproved. |
+| A4 GENTOW3 | Gauge-annex corrected key | C3, C6 | **Verbatim** on the live lift domain. |
+| A4 GENTOW3 | \(x\)-free rescope | C6 | **Verbatim**: \(x\)-free iff \(i(M)=0\) and the digit lies in \(\mathbf F_Q\); T1 withdraws any full-slot claim below \(D'h\). |
+| A5 GENTOW4 | S0 naive key | C3, C6 | **Adapted** by the explicit domain and corrected coherent digit. |
+| A5 GENTOW4 | 4.1(c)/S3 bridge | C3, C4 | **Adapted**: the \(\vartheta\)-cancellation is verbatim, but any raw-print identification must also carry \(z^\nu\). |
+| A5 GENTOW4 | BOX-3 no-\(\eta\) axis | C2, C3 | **Verbatim**: a \(\vartheta=1\) battery cannot test naive versus corrected. |
+| A5 GENTOW4 | S4 residue-one relation | C2, C6 | **Verbatim**: \(\eta=1\) is not \(f_1=1\), and does not make arbitrary digits \(x\)-free. |
+| A6 GENTOW6 | Corrected coefficient/full support | C3, C6 | **Adapted**: full support is proved on \(M>D'h\), with normalized coefficients when a slot is read coefficientwise. |
+| A6 GENTOW6 | 6.3 scalar read | C5, C6 | **Materially adapted**: use \(\gamma_k(A)\) with coefficient normalizers; the bare-residue formula is not absorbed. Overflow uses the actual top exponent. |
+| A7 GENTOW2 | S5.1 letter formula | C1 | **Verbatim** at level \(2\). |
+| A7 GENTOW2 | S5.2 B-law | C3 | **Verbatim** after the explicit inverse orientation \(\Theta=\vartheta^{-1}\), at sites where ladder multiplicativity is discharged. |
+| A7 GENTOW2 | Factor-pattern invariance | C3 | **Verbatim**: \(\psi^{(w)}=w^f\psi(y/w)\). |
+
+Supporting context, not counted as a separate A1–A7 annex:
+
+- GENTOW5’s definitions of \(w\) and \(\psi^{(w)}\) are absorbed verbatim; its dictionary is absorbed with the \(\Gamma/\gamma_k\) notation separation.
+- GRTJA’s JA-EPS-CORR is absorbed verbatim in (C4), including the exact root-of-unity criterion \(z^\nu=1\).
+- WELD-M-PKG is not absorbed as a stronger theorem: (C7) is only an interface map and scope fence.
+- HE6-0\(''\) is absorbed with adapted names but with its corrected normalized coefficient formula verbatim.
+
+The B-law rows consume only ladder-monomial multiplicativity and the value-zero digit read at their stated sites. At \(i=2\), these are supplied by GENTOW2-B\(''\). For \(i\ge3\), they must cite the accepted status, if any, of the level-general GENTOW5-W(i) supplier. T1 does not promote that sitewise result to an unproved theorem about all homogeneous initial forms.
+
+## 4. Verification record and revision battery
+
+### 4.1 Inherited sealed evidence
+
+The 2026-08-10 sealed battery remains historical evidence, not a certification of this revised text. Its computed surface had 83 computed-versus-registered rows plus two literal bookkeeping rows.
+
+All substantive rows were green except the preregistered F4-JOINT display slip. The correct value is
+
+\[
+\psi(y)=y^2+y+\omega,
+\qquad
+w=\omega
+\quad\Longrightarrow\quad
+\boxed{
+\psi^{(w)}(y)=y^2+\omega y+1.
+}
+\]
+
+The old instrument’s orientation tooth scored only one B-unit and did not score the promised full three-slot canonical vector. Neither defect is carried forward as a passed check.
+
+The inherited exact frames remain:
+
+| Frame | Essential axes |
+|---|---|
+| X | \(p=3\), \(e_1=2,f_1=1,h=1,\eta=2,u_2=3\); corrected versus naive p-adic split. |
+| FR-G | The GENTOW4 partial-side witness and separator regression. |
+| F4-JOINT | \(K_1=\mathbf F_4\), \(e_1=2,f_1=2,h=1,\eta=w=\omega\), live wrap, quadratic and \(\mu=3\) legs. |
+| LP/LD | Recorded GENTOW2 letter and inverse-cocycle geography. |
+
+The inherited exact predictions are unchanged except for the corrected F4-JOINT value above. At the F4-JOINT quadratic,
+
+\[
+R_{\mathrm{corr}}=y^2+y+\omega,
+\qquad
+R_{\mathrm{naive}}=y^2+y+1,
+\qquad
+\psi^{(w)}=y^2+\omega y+1.
+\]
+
+At its \(\mu=3\) leg,
+
+\[
+(\vartheta_0,\vartheta_1,\vartheta_2,\vartheta_3)
+=
+(1,1,\omega,\omega),
+\]
+
+\[
+(\Gamma_2,\Gamma_1,\Gamma_0)
+=
+(1,\omega,\omega),
+\]
+
+\[
+\bigl(
+u(\beta_2),u(\beta_1),u(\beta_0)
+\bigr)
+=
+(\omega,\omega,\omega^2),
+\]
+
+and the full canonical coefficient vector is
+
+\[
+(\omega,\omega^2,1),
+\]
+
+giving \((y+\omega)^3\).
+
+### 4.2 Required revision checks
+
+The new hostile battery must add the following scored rows before this revision can receive a clean grade.
+
+1. **GENHN-LIFT boundary.** Check integrality, degree, height, and residue for several \(M>D'h\), including \(f_1\ge2\). Also instantiate a low-height counterexample such as
+
+   \[
+   (e_1,f_1,h,M)=(1,2,1,0)
+   \]
+
+   to ensure the code does not infer a full \(K_1\)-slot from integrality of \(n(M)\) alone.
+
+2. **Positive-wrap sign.** Re-run the corrected/naive and wrong-sign teeth. Exact coefficient equality, not merely factor pattern, must be scored.
+
+3. **JA origin.** For \(\nu=0\), verify raw and canonical factors agree. For \(\nu>0\) and \(z^\nu\ne1\), verify the raw equality fails by exactly \(z^\nu\). Add a root-of-unity case with \(\nu>0\) and \(z^\nu=1\), so the battery rejects the overstatement “iff \(\nu=0\).” Score the support and degree translation by \(\nu\).
+
+4. **HE6 coefficient normalization.** Use a tying coefficient of positive valuation for which
+
+   \[
+   \operatorname{res}(a_j)=0
+   \]
+
+   but
+
+   \[
+   \operatorname{res}\!\left(
+   a_j\pi^{-(k-jh)/e_1}
+   \right)\ne0.
+   \]
+
+   Score (C5-normalizer-read), (C5-varpi-read), and the \(-q(k)\) sign.
+
+5. **Full orientation tooth.** With \(\Theta\) intentionally replaced by \(\vartheta\), score all three entries of the canonical \(\mu=3\) vector, not only the \(s=2\) B-unit.
+
+6. **Weld scope lint.** Fail the document check if T1 contains “one transport map,” “unique gauge,” or an unqualified cross-face compatibility claim. Confirm every \(M3\) use retains the scored-stratum fence and every \(M4\) use the accepted W2-C3 fence.
+
+The four original planted teeth remain mandatory:
+
+- gauge-naive;
+- wrong-sign;
+- misindexed telescope; and
+- inverse-orientation confusion.
+
+Every tooth must fire.
+
+## 5. Honesty ledger
+
+1. A closed canonical-letter exponent vector is proved only at level \(2\). General depth has a terminating reduction algorithm.
+2. The B-law is conditional on the stated sitewise residual-read facts. T1 does not assume or prove multiplicativity on all homogeneous initial forms.
+3. \(\vartheta_{i,s}\) is the building/dictionary orientation, while
+
+   \[
+   \Theta_i(t)=\vartheta_{i,f-t}^{-1}
+   \]
+
+   is the B-law orientation.
+4. The canonical residual is
+
+   \[
+   \psi^{(w)}=w^f\psi(y/w).
+   \]
+
+   This preserves factor patterns, not literal coefficients.
+5. The canonical minimal-grid factor \(\varepsilon\) and the raw print factor differ by \(z^\nu\). Raw equality is equivalent to \(z^\nu=1\), not to \(\nu=0\) unless an additional order hypothesis makes those equivalent.
+6. The full integral level-one lift is proved here on \(M>D'h\). No universal full \(K_1\)-slot is claimed at lower heights.
+7. The HE6 digit is \(\gamma_k(A)\) with coefficient normalizers. It is different from the coherent corrected-key digit \(\Gamma_t\).
+8. \(\eta=1\) removes the level-one wrap correction but does not imply \(f_1=1\) or make arbitrary digits \(x\)-free.
+9. Gauge-invariant residual factor patterns become splitting types only through the surrounding tower correctness theorem.
+10. T1 does not prove note-specific budgets, floors, fullness counts, separator inequalities, clearance outside (C6-clearance), or the remaining extraction and attainment claims of GENTOW6 6.3\('\).
+11. WELD-M-PKG is five heterogeneously typed fields assembled into one named record. T1 proves neither a single cross-face map nor compatibility beyond the package’s displayed anchors.
+12. Gauge uniqueness is not asserted. Fixed-coboundary gauges form a torsor under the available character group.
+13. F4-JOINT remains a finite graded-carrier model, not an explicit p-adic realization. Its formal sigma values are not PARI measurements.
+14. The explicit joint p-adic realization remains open and is not required for the algebraic lemma.
+
+## 6. CHANGES from the 2026-08-10 composition
+
+| Revision | Driver | Annex effect |
+|---|---|---|
+| Replaced the conditional old C4 lift by (C6) on the uniform live domain \(M>D'h\), including integrality, residue, degree, and clearance. | GENHN-LIFT and the later occupied-height tightening | A1 GENHN becomes verbatim; A4 GENTOW3 and A6 GENTOW6 are absorbed with the live-domain fence. |
+| Made \(L_{(f_2-t)u_2}(c_t\eta^{W(t)})\) the level-one corrected coefficient, with positive wrap exponent. | GENHN-LIFT application and HETOW wrap correction | A1 and A2 are verbatim; A3, A5, and A6 specialize with notation adaptation. |
+| Renamed coherent digits from \(\gamma_t\) to \(\Gamma_t\). | HE6’s corrected, reserved \(\gamma_k(A)\) | A3, A5, A6, and the GENTOW5 dictionary rows are notational adaptations; no formula changes. |
+| Added the normalized coefficient formula (C5-gamma) and the \(\eta^{-q(k)}\) canonical-normalizer factor. | HE6 F-1 | A6’s scalar-reading site is materially adapted; the old bare-residue formula is rejected rather than absorbed. |
+| Added (C4-origin) and the \(\nu\)-translated support/degree law. | JA-EPS-CORR and JA-MIN-CORR | A5 bridge consumption is adapted: tower \(\vartheta\)-cancellation survives, but raw print equality carries \(z^\nu\). |
+| Stated raw print/canonical equality as iff \(z^\nu=1\), with \(\nu=0\) only a sufficient special case. | JA-EPS-CORR | Prevents a new false “iff \(\nu=0\)” strengthening. |
+| Added the five-row package interface and boxed no-cross-face-coherence fence. | WELD-M-PKG | No local annex is strengthened. T1 organizes M0–M4 citations but does not absorb or reprove the package as one map. |
+| Withdrew any gauge-uniqueness implication and recorded character-torsor ambiguity. | WELDMASTER C6 F-1/F-2 | Scope correction across all annex consumers; formulas C1–C6 are unchanged. |
+| Narrowed the residual-read carrier assumption to the ladder monomials consumed at B-law sites. | Earlier T1 G-2 plus WELD package-scoping discipline | A5/A7/GENTOW5 B-law rows remain supplier-dependent rather than globally assumed. |
+| Corrected F4-JOINT \(\psi^{(w)}\) to \(y^2+\omega y+1\) in the draft body. | Sealed P-J2 diagnosis | A7 factor-pattern absorption remains verbatim; the exact-value defect is removed. |
+| Required the orientation tooth to score the full three-slot vector. | Sealed instrument disclosure F-5 | Verification-only change; no annex statement changes. |
+| Reclassified the sealed 2026-08-10 run as inherited evidence rather than certification of the revised statement. | Revision integrity | All seven annex consumptions must be rechecked against this text. |
+
+## 7. Hostile arc plan
+
+The first hostile pass should attack, in this order:
+
+1. **Normalization composition at a live \(\nu>0\), live-wrap, \(w\ne1\) slot.** Verify that \(\vartheta\), \(w\), and \(z^\nu\) occur in distinct places and that no cancellation silently drops the attained-origin factor.
+
+2. **HE6-to-C3 digit typing.** Attempt to substitute a bare coefficient residue for \(\gamma_k(A)\), and attempt to identify \(\gamma_k(A)\) with \(\Gamma_t\) without the exact-height normalizer. A successful substitution would expose a type or normalization error.
+
+3. **Lift-domain boundary.** Probe \(M=D'h\) and lower heights, especially \(f_1>1\), for any sentence that still promises a full integral \(K_1\)-slot or silently uses one.
+
+4. **Weld scope.** Search every proof and absorption row for an inferred compatibility between M0–M4, a single-map interpretation, or gauge uniqueness. None is available from record assembly.
+
+5. **B-law supplier perimeter.** Check each A5/A7/GENTOW5 consumer against the actual accepted grade and level range of GENTOW2-B\(''\)/GENTOW5-W(i), including any unresolved \(i=1\) tie.
+
+6. **Root-of-unity exception.** Use \(\nu>0\) with \(z^\nu=1\) to refute any accidental replacement of the exact JA criterion by “only at \(\nu=0\).”
+
+7. **Sign and inverse conventions.** Re-run the positive-\(W\), wrong-sign, misindexed-telescope, and full-vector \(\Theta=\vartheta^{-1}\) teeth.
+
+8. **Consumption sweep.** For each of A1–A7, verify that the local theorem uses no stronger lift domain, raw-print equality, scalar gauge, or weld coherence than the corresponding T1 row supplies.
+
+A clean first pass must either discharge all eight attacks or return a finding with an exact statement span and a live consumer. Only after repair should the second independent hostile pass run.
+
+The acceptance gate remains two clean hostile passes plus the revised machine battery. The historical 2026-08-10 run does not count as either clean pass.
+
+
+---
+
+## r1 (2026-08-12): the three T1A gaps repaired
+
+*(Derived by the T1R1 run (gpt-5.6-sol high, runs/cert5/T1R1_output.log) from the T1A pass-1 findings; transcribed unaltered; pass 2 of the arc follows.)*
+
+## T1 r1 corrections — 2026-08-12
+
+### R1-1 — Define the base canonical letter
+
+In §1.1, immediately after
+
+\[
+\eta=\operatorname{res}\!\left(\frac{x^{e_1}}{\pi^h}\right),
+\qquad
+K_1=\mathbf F_Q(\eta),
+\]
+
+insert:
+
+> Set the base canonical residue letter
+> \[
+> \boxed{z_1:=\eta.}
+> \tag{C1-base-letter}
+> \]
+> Thus the level-two recursion below uses a defined letter; this is a notation convention, not an additional relation among higher-level letters.
+
+In §2.1, replace the final sentence
+
+> Taking residues proves (C1-level-2).
+
+with:
+
+> Taking residues and using the base convention \(z_1=\eta\) proves (C1-level-2).
+
+This makes
+
+\[
+z_2=\eta_2z_1^{-\lfloor\ell_1u_2/e_1\rfloor}
+\]
+
+identical to the computed residue
+
+\[
+\eta_2\eta^{-\lfloor\ell_1u_2/e_1\rfloor}.
+\]
+
+### R1-2 — Normalize every height-zero normalizer
+
+In §1.1, replace
+
+> At a general level \(i\), fix exact-height normalizers \(\widehat n_i(m)\) in the prescribed bounded-exponent tower normal form, stage data
+
+with:
+
+> At a general level \(i\), fix exact-height normalizers \(\widehat n_i(m)\) in the prescribed bounded-exponent tower normal form, with the height-zero normalization
+> \[
+> \boxed{\widehat n_i(0)=1.}
+> \tag{C2-zero-normalizer}
+> \]
+> Fix also stage data
+
+In §2.2, replace
+
+> Comparing the two parenthesizations of
+> \[
+> \widehat n_i(a)\widehat n_i(b)\widehat n_i(c)
+> \]
+> proves (C2-cocycle).
+
+with:
+
+> Comparing the two parenthesizations of
+> \[
+> \widehat n_i(a)\widehat n_i(b)\widehat n_i(c)
+> \]
+> proves the cocycle identity. The convention \(\widehat n_i(0)=1\) gives
+> \[
+> \tau_i(0,a)=\tau_i(a,0)=1
+> \]
+> and also
+> \[
+> \vartheta_{i,0}
+> =
+> \operatorname{res}\!\left(\widehat n_i(0)^{-1}\right)
+> =1.
+> \]
+> Exact-height equality gives \(\vartheta_{i,1}=1\). This proves the normalized assertions in (C2-cocycle) and (C2-recursion).
+
+### R1-3 — Respect the carrier implication \(\eta=1\Rightarrow f_1=1\)
+
+In the absorption map, replace the A5 row
+
+> | A5 GENTOW4 | S4 residue-one relation | C2, C6 | **Verbatim**: \(\eta=1\) is not \(f_1=1\), and does not make arbitrary digits \(x\)-free. |
+
+with:
+
+> | A5 GENTOW4 | S4 residue-one relation | C2, C6 | **Adapted to the carrier**: because \(K_1=\mathbf F_Q(\eta)\) with basis \(1,\eta,\ldots,\eta^{f_1-1}\), the specialization \(\eta=1\) forces \(K_1=\mathbf F_Q\) and hence \(f_1=1\). It removes the level-one wrap correction, but it does not by itself make an arbitrary lift \(x\)-free: (C6-x-free) still additionally requires \(i(M)=0\). |
+
+Replace honesty-ledger item 8 with:
+
+> 8. Under the stated carrier, \(\eta=1\) forces \(K_1=\mathbf F_Q\) and \(f_1=1\); these are not independent specialization axes. The condition \(\eta=1\) removes the level-one wrap correction, but it does not by itself make arbitrary digits \(x\)-free, because (C6-x-free) still requires \(i(M)=0\).
+
+Add this row to §6:
+
+> | Defined \(z_1=\eta\), normalized \(\widehat n_i(0)=1\), and corrected the A5 residue-one specialization to record \(\eta=1\Rightarrow f_1=1\) under the carrier. | T1A hostile pass, findings G1–G3, 2026-08-12 r1 | Repairs the level-two letter formula and normalized cocycle endpoints; A5 is adapted rather than falsely marked verbatim. |
+
+warning: Codex could not find bubblewrap on PATH. Install bubblewrap with your OS package manager. See the sandbox prerequisites: https://developers.openai.com/codex/concepts/sandboxing#prerequisites. Codex will use the bundled bubblewrap in the meantime.
+codex
+I’ll produce a sealed, deterministic instrument only: a preregistered row/teeth contract first, followed by the runner source. I’m treating the 2026-08-10 data strictly as regression fixtures, never as a passed result.
+codex
+## 1. Preregistered prediction / teeth block
+
+Expected sealed verdict: `PASS`.
+
+The runner registers exactly **213 rows**:
+
+| Group | Rows |
+|---|---:|
+| two-commit seal | 5 |
+| C1 letter recursion | 24 |
+| C2 wrap/cocycle/telescope/carry | 48 |
+| C3 corrected key and three reads | 24 |
+| C4 attained-origin bridge | 18 |
+| C5 normalized coefficient reads | 12 |
+| C6 live lifts, boundary refusals, clearance | 35 |
+| historical-coverage regressions | 23 |
+| revised-note scope lint | 12 |
+| mutation-tooth firing assertions | 12 |
+| **Total** | **213** |
+
+The historical regression rows cover X, FR-G, F4-JOINT’s quadratic and full \(\mu=3\) legs, and LP/LD. They are freshly recomputed; the 2026-08-10 verdict is not imported.
+
+Every mutation must produce exactly the following failure set:
+
+| Tooth | Mutation | Rows that must break |
+|---|---|---|
+| `gauge_naive` | Use \(\Gamma_t=c_t\), omitting \(\vartheta_s\) | `C3.F4Q.coherent_vector` |
+| `wrong_sign` | Replace \(\eta^{\lfloor si(u)/e_1\rfloor}\) by its inverse | `C3.P5.coherent_vector` |
+| `misindexed_telescope` | Use \(\lfloor (s+1)i(u)/e_1\rfloor\) | `C3.F4MU3.theta_vector` |
+| `inverse_orientation` | Use \(\Theta=\vartheta\) instead of \(\vartheta^{-1}\) | `regression.F4MU3.canonical.t1`, `regression.F4MU3.canonical.t0` |
+| `origin_drop_nu` | Identify the raw factor with \(\varepsilon\), dropping \(z^\nu\) | `C4.nu2_nonroot.raw_bridge` |
+| `origin_iff_nu0` | Replace \(z^\nu=1\) by \(\nu=0\) as the equality criterion | `C4.nu2_root.equality_criterion` |
+| `he6_bare_residue` | Replace normalized coefficient residues by bare residues | `C5.A.gamma_exact` |
+| `he6_q_sign` | Replace \(\eta^{-q(k)}\) by \(\eta^{q(k)}\) | `C5.A.varpi_read` |
+| `lift_boundary_accept` | Admit \(M=D'h\) by changing `>` to `>=` | `C6.boundary_eq.refused` |
+| `eta_implies_xfree` | Infer \(x\)-freeness from \(\eta=1\) alone | `C6.eta1.xfree` |
+| `weld_single_map` | Insert the affirmative claim “T1 proves one transport map” | `lint.no_single_transport_map` |
+| `weld_drop_fences` | Remove the M3 scored-stratum and M4 accepted-W2-C3 fences | `lint.M3_scored_stratum`, `lint.M4_W2C3_fence` |
+
+For `inverse_orientation`, all three canonical slots are evaluated. The `t2` control survives because \(\vartheta_1=1\); the `t1` and `t0` entries must fail.
+
+## 2. Complete runner
+
+```python
+#!/usr/bin/env python3
+"""
+Sealed T1 gauge-cocycle machine battery.
+
+Protocol:
+  1. Commit the preregistration document.
+  2. Commit this runner as the immediately following commit.
+  3. Run, for example:
+
+     python3 t1_battery.py \
+       --prereg path/to/T1_prereg.md \
+       --note path/to/T1_note.md \
+       --artifact runs/T1_battery.json
+
+The runner emits no verdict to stdout. The verdict and all evidence are written
+to the new artifact named by --artifact. Existing artifacts are never replaced.
+
+Arithmetic is exact. Only the Python standard library is used.
+"""
+
+from __future__ import annotations
+
+import argparse
+import hashlib
+import itertools
+import json
+import subprocess
+import sys
+from collections import Counter
+from dataclasses import dataclass
+from fractions import Fraction
+from pathlib import Path
+from typing import Any, Dict, Iterable, List, Mapping, Sequence, Set, Tuple
+
+
+EXPECTED_COUNTS = {
+    "seal": 5,
+    "C1": 24,
+    "C2": 48,
+    "C3": 24,
+    "C4": 18,
+    "C5": 12,
+    "C6": 35,
+    "regression": 23,
+    "lint": 12,
+    "teeth": 12,
+}
+EXPECTED_TOTAL = 213
+
+EXPECTED_TOOTH_FAILURES = {
+    "gauge_naive": ["C3.F4Q.coherent_vector"],
+    "wrong_sign": ["C3.P5.coherent_vector"],
+    "misindexed_telescope": ["C3.F4MU3.theta_vector"],
+    "inverse_orientation": [
+        "regression.F4MU3.canonical.t1",
+        "regression.F4MU3.canonical.t0",
+    ],
+    "origin_drop_nu": ["C4.nu2_nonroot.raw_bridge"],
+    "origin_iff_nu0": ["C4.nu2_root.equality_criterion"],
+    "he6_bare_residue": ["C5.A.gamma_exact"],
+    "he6_q_sign": ["C5.A.varpi_read"],
+    "lift_boundary_accept": ["C6.boundary_eq.refused"],
+    "eta_implies_xfree": ["C6.eta1.xfree"],
+    "weld_single_map": ["lint.no_single_transport_map"],
+    "weld_drop_fences": [
+        "lint.M3_scored_stratum",
+        "lint.M4_W2C3_fence",
+    ],
+}
+
+
+class Field:
+    """Finite field F_p[X]/(modulus), with a monic modulus."""
+
+    def __init__(self, p: int, modulus: Sequence[int], name: str):
+        if p < 2:
+            raise ValueError("p must be prime")
+        mod = tuple(int(x) % p for x in modulus)
+        if len(mod) < 2 or mod[-1] != 1:
+            raise ValueError("modulus must be monic and have positive degree")
+        self.p = p
+        self.modulus = mod
+        self.degree = len(mod) - 1
+        self.order = p ** self.degree
+        self.name = name
+
+    def element(self, value: Any) -> "FE":
+        if isinstance(value, FE):
+            if value.field is not self:
+                raise TypeError("field mismatch")
+            return value
+        if isinstance(value, int):
+            coeffs = [0] * self.degree
+            coeffs[0] = value % self.p
+            return FE(self, tuple(coeffs))
+        vals = [int(x) % self.p for x in value]
+        if len(vals) > self.degree:
+            vals = self._reduce(vals)
+        vals += [0] * (self.degree - len(vals))
+        return FE(self, tuple(vals[: self.degree]))
+
+    def _reduce(self, coeffs: Sequence[int]) -> List[int]:
+        work = [int(x) % self.p for x in coeffs]
+        while len(work) > self.degree:
+            lead = work[-1] % self.p
+            top = len(work) - 1
+            if lead:
+                shift = top - self.degree
+                for j in range(self.degree + 1):
+                    work[shift + j] = (
+                        work[shift + j] - lead * self.modulus[j]
+                    ) % self.p
+            work.pop()
+        work += [0] * (self.degree - len(work))
+        return work
+
+    @property
+    def zero(self) -> "FE":
+        return self.element(0)
+
+    @property
+    def one(self) -> "FE":
+        return self.element(1)
+
+    def elements(self) -> Iterable["FE"]:
+        for coeffs in itertools.product(range(self.p), repeat=self.degree):
+            yield FE(self, tuple(coeffs))
+
+    def __call__(self, value: Any) -> "FE":
+        return self.element(value)
+
+
+@dataclass(frozen=True)
+class FE:
+    field: Field
+    coeffs: Tuple[int, ...]
+
+    def _coerce(self, other: Any) -> "FE":
+        return self.field.element(other)
+
+    def __add__(self, other: Any) -> "FE":
+        rhs = self._coerce(other)
+        return FE(
+            self.field,
+            tuple(
+                (a + b) % self.field.p
+                for a, b in zip(self.coeffs, rhs.coeffs)
+            ),
+        )
+
+    __radd__ = __add__
+
+    def __neg__(self) -> "FE":
+        return FE(
+            self.field,
+            tuple((-a) % self.field.p for a in self.coeffs),
+        )
+
+    def __sub__(self, other: Any) -> "FE":
+        return self + (-self._coerce(other))
+
+    def __rsub__(self, other: Any) -> "FE":
+        return self._coerce(other) - self
+
+    def __mul__(self, other: Any) -> "FE":
+        rhs = self._coerce(other)
+        d = self.field.degree
+        product = [0] * (2 * d - 1)
+        for i, a in enumerate(self.coeffs):
+            for j, b in enumerate(rhs.coeffs):
+                product[i + j] = (
+                    product[i + j] + a * b
+                ) % self.field.p
+        return FE(self.field, tuple(self.field._reduce(product)))
+
+    __rmul__ = __mul__
+
+    def __pow__(self, exponent: int) -> "FE":
+        if exponent < 0:
+            return self.inverse() ** (-exponent)
+        result = self.field.one
+        base = self
+        n = exponent
+        while n:
+            if n & 1:
+                result = result * base
+            base = base * base
+            n >>= 1
+        return result
+
+    def inverse(self) -> "FE":
+        if self == self.field.zero:
+            raise ZeroDivisionError("zero has no inverse")
+        return self ** (self.field.order - 2)
+
+    def __truediv__(self, other: Any) -> "FE":
+        return self * self._coerce(other).inverse()
+
+    def __bool__(self) -> bool:
+        return any(self.coeffs)
+
+    def __str__(self) -> str:
+        return f"{self.field.name}{self.coeffs}"
+
+
+F2 = Field(2, [0, 1], "F2")
+F3 = Field(3, [0, 1], "F3")
+F5 = Field(5, [0, 1], "F5")
+F7 = Field(7, [0, 1], "F7")
+F4 = Field(2, [1, 1, 1], "F4")
+OMEGA = F4((0, 1))
+
+
+def p_trim(poly: Sequence[FE]) -> List[FE]:
+    out = list(poly)
+    while len(out) > 1 and not out[-1]:
+        out.pop()
+    return out
+
+
+def p_add(a: Sequence[FE], b: Sequence[FE]) -> List[FE]:
+    field = a[0].field if a else b[0].field
+    n = max(len(a), len(b))
+    out = []
+    for i in range(n):
+        av = a[i] if i < len(a) else field.zero
+        bv = b[i] if i < len(b) else field.zero
+        out.append(av + bv)
+    return p_trim(out)
+
+
+def p_sub(a: Sequence[FE], b: Sequence[FE]) -> List[FE]:
+    field = a[0].field if a else b[0].field
+    n = max(len(a), len(b))
+    out = []
+    for i in range(n):
+        av = a[i] if i < len(a) else field.zero
+        bv = b[i] if i < len(b) else field.zero
+        out.append(av - bv)
+    return p_trim(out)
+
+
+def p_mul(a: Sequence[FE], b: Sequence[FE]) -> List[FE]:
+    field = a[0].field
+    out = [field.zero] * (len(a) + len(b) - 1)
+    for i, av in enumerate(a):
+        for j, bv in enumerate(b):
+            out[i + j] = out[i + j] + av * bv
+    return p_trim(out)
+
+
+def p_divmod(
+    numerator: Sequence[FE], denominator: Sequence[FE]
+) -> Tuple[List[FE], List[FE]]:
+    num = p_trim(numerator)
+    den = p_trim(denominator)
+    field = den[0].field
+    if len(den) == 1 and not den[0]:
+        raise ZeroDivisionError("zero polynomial")
+    if len(num) < len(den):
+        return [field.zero], num
+
+    quotient = [field.zero] * (len(num) - len(den) + 1)
+    den_lead_inv = den[-1].inverse()
+    while len(num) >= len(den) and not (
+        len(num) == 1 and not num[0]
+    ):
+        shift = len(num) - len(den)
+        coeff = num[-1] * den_lead_inv
+        quotient[shift] = quotient[shift] + coeff
+        subtractor = [field.zero] * shift + [coeff * x for x in den]
+        num = p_sub(num, subtractor)
+    return p_trim(quotient), p_trim(num)
+
+
+def p_monic(poly: Sequence[FE]) -> List[FE]:
+    poly = p_trim(poly)
+    inv = poly[-1].inverse()
+    return [x * inv for x in poly]
+
+
+def monic_polynomials(field: Field, degree: int) -> Iterable[List[FE]]:
+    for coeffs in itertools.product(list(field.elements()), repeat=degree):
+        yield list(coeffs) + [field.one]
+
+
+def factor_degrees(poly: Sequence[FE]) -> List[int]:
+    poly = p_monic(poly)
+    degree = len(poly) - 1
+    if degree <= 1:
+        return [degree] if degree else []
+
+    field = poly[0].field
+    for divisor_degree in range(1, degree // 2 + 1):
+        for divisor in monic_polynomials(field, divisor_degree):
+            quotient, remainder = p_divmod(poly, divisor)
+            if len(remainder) == 1 and not remainder[0]:
+                return sorted(
+                    factor_degrees(divisor) + factor_degrees(quotient)
+                )
+    return [degree]
+
+
+def psi_from_c(field: Field, degree: int, c: Mapping[int, FE]) -> List[FE]:
+    coeffs = [field.zero] * (degree + 1)
+    coeffs[degree] = field.one
+    for t in range(degree):
+        coeffs[t] = -c.get(t, field.zero)
+    return p_trim(coeffs)
+
+
+def twisted_poly(poly: Sequence[FE], w: FE) -> List[FE]:
+    degree = len(poly) - 1
+    return [coeff * (w ** (degree - t)) for t, coeff in enumerate(poly)]
+
+
+@dataclass(frozen=True)
+class Frame:
+    name: str
+    field: Field
+    e1: int
+    f1: int
+    h: int
+    eta: FE
+    u2: int
+
+    @property
+    def D(self) -> int:
+        return self.e1 * self.f1
+
+    @property
+    def inv_h(self) -> int:
+        return pow(self.h, -1, self.e1)
+
+    def i(self, k: int) -> int:
+        return (self.inv_h * k) % self.e1
+
+    def a(self, k: int) -> int:
+        return (k - self.i(k) * self.h) // self.e1
+
+    def normalizer_exponents(self, k: int) -> Tuple[int, int]:
+        return self.i(k), self.a(k)
+
+    def wrap(self, a: int, b: int) -> int:
+        return (self.i(a) + self.i(b)) // self.e1
+
+    def q(self, k: int) -> int:
+        return (self.inv_h * k - self.i(k)) // self.e1
+
+    def theta(self, s: int) -> FE:
+        return self.eta ** ((s * self.i(self.u2)) // self.e1)
+
+
+FRAMES = [
+    Frame("P3_WRAP", F3, 2, 1, 1, F3(2), 3),
+    Frame("P3_ETA1", F3, 2, 1, 1, F3(1), 3),
+    Frame("P5", F5, 3, 1, 2, F5(2), 4),
+    Frame("P5_ROOT", F5, 2, 1, 1, F5(4), 3),
+    Frame("F4", F4, 2, 2, 1, OMEGA, 3),
+    Frame("LP", F7, 5, 1, 2, F7(3), 4),
+]
+FRAME_BY_NAME = {frame.name: frame for frame in FRAMES}
+
+
+@dataclass(frozen=True)
+class Stage:
+    name: str
+    frame: Frame
+    f2: int
+    c: Mapping[int, FE]
+    w: FE
+
+
+STAGES = [
+    Stage(
+        "X",
+        FRAME_BY_NAME["P3_WRAP"],
+        2,
+        {0: F3(2), 1: F3(0)},
+        F3(2),
+    ),
+    Stage(
+        "F4Q",
+        FRAME_BY_NAME["F4"],
+        2,
+        {0: OMEGA, 1: F4(1)},
+        OMEGA,
+    ),
+    Stage(
+        "F4MU3",
+        FRAME_BY_NAME["F4"],
+        3,
+        {0: F4(1), 1: F4(1), 2: F4(1)},
+        OMEGA,
+    ),
+    Stage(
+        "P5",
+        FRAME_BY_NAME["P5"],
+        2,
+        {0: F5(3), 1: F5(2)},
+        F5(3),
+    ),
+]
+STAGE_BY_NAME = {stage.name: stage for stage in STAGES}
+
+
+def stage_theta(
+    stage: Stage, mutation: str | None = None
+) -> List[FE]:
+    frame = stage.frame
+    values = []
+    for s in range(stage.f2 + 1):
+        exponent = (s * frame.i(frame.u2)) // frame.e1
+        if mutation == "wrong_sign":
+            exponent = -exponent
+        elif mutation == "misindexed_telescope":
+            exponent = ((s + 1) * frame.i(frame.u2)) // frame.e1
+        values.append(frame.eta ** exponent)
+    return values
+
+
+def stage_gamma(
+    stage: Stage, mutation: str | None = None
+) -> Dict[int, FE]:
+    theta = stage_theta(stage, mutation if mutation == "wrong_sign" else None)
+    gamma = {}
+    for t in range(stage.f2):
+        s = stage.f2 - t
+        if mutation == "gauge_naive":
+            gamma[t] = stage.c[t]
+        else:
+            gamma[t] = stage.c[t] * theta[s]
+    return gamma
+
+
+def stage_multiplicative(
+    stage: Stage, gamma: Mapping[int, FE], theta: Sequence[FE]
+) -> Dict[int, FE]:
+    return {
+        t: gamma[t] / theta[stage.f2 - t]
+        for t in range(stage.f2)
+    }
+
+
+def stage_canonical_slots(
+    stage: Stage,
+    gamma: Mapping[int, FE],
+    theta: Sequence[FE],
+    inverse_orientation: bool = True,
+) -> Dict[int, FE]:
+    result = {}
+    for t in range(stage.f2):
+        s = stage.f2 - t
+        orientation = theta[s].inverse() if inverse_orientation else theta[s]
+        result[t] = (stage.w ** s) * orientation * gamma[t]
+    return result
+
+
+def canonical_poly_from_slots(stage: Stage, slots: Mapping[int, FE]) -> List[FE]:
+    coeffs = [stage.frame.field.zero] * (stage.f2 + 1)
+    coeffs[stage.f2] = stage.frame.field.one
+    for t, value in slots.items():
+        coeffs[t] = -value
+    return p_trim(coeffs)
+
+
+@dataclass(frozen=True)
+class C5Term:
+    j: int
+    valuation: int
+    unit: FE
+
+
+@dataclass(frozen=True)
+class C5Case:
+    name: str
+    frame: Frame
+    k: int
+    terms: Tuple[C5Term, ...]
+
+
+C5_CASES = [
+    C5Case(
+        "A",
+        FRAME_BY_NAME["F4"],
+        5,
+        (
+            C5Term(1, 2, F4(1)),
+            C5Term(3, 1, OMEGA),
+        ),
+    ),
+    C5Case(
+        "B",
+        FRAME_BY_NAME["F4"],
+        5,
+        (
+            C5Term(1, 2, OMEGA),
+            C5Term(3, 2, OMEGA ** 2),
+        ),
+    ),
+]
+C5_BY_NAME = {case.name: case for case in C5_CASES}
+
+
+def coefficient_normalized_residue(
+    term: C5Term, required_valuation: int
+) -> FE:
+    if term.valuation == required_valuation:
+        return term.unit
+    if term.valuation > required_valuation:
+        return term.unit.field.zero
+    raise ValueError("coefficient lies below the claimed pin")
+
+
+def gamma_k(case: C5Case, bare: bool = False) -> FE:
+    frame = case.frame
+    result = frame.field.zero
+    i = frame.i(case.k)
+    by_j = {term.j: term for term in case.terms}
+    for t in range(frame.f1):
+        j = i + frame.e1 * t
+        if j >= frame.D or j not in by_j:
+            continue
+        term = by_j[j]
+        required = (case.k - j * frame.h) // frame.e1
+        if bare:
+            residue = term.unit if term.valuation == 0 else frame.field.zero
+        else:
+            residue = coefficient_normalized_residue(term, required)
+        result = result + residue * (frame.eta ** t)
+    return result
+
+
+def direct_normalizer_read(case: C5Case) -> FE:
+    frame = case.frame
+    i = frame.i(case.k)
+    result = frame.field.zero
+    for term in case.terms:
+        height = frame.e1 * term.valuation + term.j * frame.h
+        if height != case.k:
+            continue
+        if (term.j - i) % frame.e1:
+            continue
+        t = (term.j - i) // frame.e1
+        result = result + term.unit * (frame.eta ** t)
+    return result
+
+
+@dataclass(frozen=True)
+class LiftTerm:
+    r: int
+    coefficient: FE
+    x_exponent: int
+    pi_exponent: int
+
+
+def lift_domain(frame: Frame, M: int) -> bool:
+    return M > frame.D * frame.h
+
+
+def lift_terms(frame: Frame, M: int, lambdas: Sequence[int]) -> List[LiftTerm]:
+    i = frame.i(M)
+    a = frame.a(M)
+    terms = []
+    for r, scalar in enumerate(lambdas):
+        coefficient = frame.field(scalar)
+        if coefficient:
+            terms.append(
+                LiftTerm(
+                    r=r,
+                    coefficient=coefficient,
+                    x_exponent=i + frame.e1 * r,
+                    pi_exponent=a - r * frame.h,
+                )
+            )
+    return terms
+
+
+def lambda_value(frame: Frame, lambdas: Sequence[int]) -> FE:
+    result = frame.field.zero
+    for r, scalar in enumerate(lambdas):
+        result = result + frame.field(scalar) * (frame.eta ** r)
+    return result
+
+
+def lift_residue(frame: Frame, terms: Sequence[LiftTerm]) -> FE:
+    result = frame.field.zero
+    for term in terms:
+        result = result + term.coefficient * (frame.eta ** term.r)
+    return result
+
+
+def actual_xfree_monomial(terms: Sequence[LiftTerm]) -> bool:
+    return len(terms) == 1 and terms[0].x_exponent == 0
+
+
+def predicted_xfree(frame: Frame, M: int, lambdas: Sequence[int]) -> bool:
+    nonzero_indices = [r for r, x in enumerate(lambdas) if frame.field(x)]
+    digit_in_base = all(r == 0 for r in nonzero_indices)
+    return frame.i(M) == 0 and digit_in_base
+
+
+def c4_data(
+    field: Field,
+    z: FE,
+    ell: int,
+    beta: int,
+    e: int,
+    nu: int,
+    support: Sequence[int],
+) -> Dict[str, Any]:
+    s_min = (ell * beta) % e
+    t_min = (ell * beta - s_min) // e
+    s_act = s_min + nu * e
+    t_def = (s_act - ell * beta) // e
+    epsilon = z ** (-t_min)
+    raw = z ** t_def
+    znu = z ** nu
+    p_support = sorted(support)
+    h_support = sorted(nu + x for x in support)
+    return {
+        "s_min": s_min,
+        "t_min": t_min,
+        "s_act": s_act,
+        "t_def": t_def,
+        "epsilon": epsilon,
+        "raw": raw,
+        "znu": znu,
+        "p_support": p_support,
+        "h_support": h_support,
+    }
+
+
+C4_CASES = [
+    ("nu0", F5, F5(2), 2, 3, 0, [0, 2, 4]),
+    ("nu2_nonroot", F5, F5(2), 2, 3, 2, [0, 1, 4]),
+    ("nu2_root", F5, F5(4), 1, 2, 2, [0, 3]),
+    ("nu3_root", F4, OMEGA, 1, 2, 3, [0, 1, 3]),
+]
+
+
+def jsonable(value: Any) -> Any:
+    if isinstance(value, FE):
+        return {
+            "field": value.field.name,
+            "coefficients": list(value.coeffs),
+        }
+    if isinstance(value, Fraction):
+        return {
+            "numerator": value.numerator,
+            "denominator": value.denominator,
+        }
+    if isinstance(value, Path):
+        return str(value)
+    if isinstance(value, dict):
+        return {
+            str(key): jsonable(item)
+            for key, item in sorted(value.items(), key=lambda kv: str(kv[0]))
+        }
+    if isinstance(value, (list, tuple)):
+        return [jsonable(item) for item in value]
+    if isinstance(value, set):
+        return sorted(jsonable(item) for item in value)
+    return value
+
+
+class Battery:
+    def __init__(self) -> None:
+        self.rows: List[Dict[str, Any]] = []
+        self.tooth_evidence: Dict[str, Any] = {}
+
+    def check(
+        self,
+        group: str,
+        name: str,
+        got: Any,
+        want: Any = True,
+    ) -> None:
+        self.rows.append(
+            {
+                "group": group,
+                "name": name,
+                "got": jsonable(got),
+                "want": jsonable(want),
+                "pass": got == want,
+            }
+        )
+
+    def tooth(
+        self,
+        name: str,
+        observed_failures: Iterable[str],
+    ) -> None:
+        observed = sorted(set(observed_failures))
+        expected = sorted(EXPECTED_TOOTH_FAILURES[name])
+        self.tooth_evidence[name] = {
+            "expected_failures": expected,
+            "observed_failures": observed,
+        }
+        self.check(
+            "teeth",
+            f"teeth.{name}.fires_exactly",
+            observed,
+            expected,
+        )
+
+
+def git(root: Path, *args: str) -> Tuple[int, str]:
+    proc = subprocess.run(
+        ["git", *args],
+        cwd=str(root),
+        stdout=subprocess.PIPE,
+        stderr=subprocess.PIPE,
+        text=True,
+        check=False,
+    )
+    return proc.returncode, proc.stdout.strip()
+
+
+def last_commit_for(root: Path, path: Path) -> str:
+    relative = path.resolve().relative_to(root.resolve())
+    code, out = git(root, "log", "-1", "--format=%H", "--", str(relative))
+    return out if code == 0 else ""
+
+
+def blob_exists(root: Path, commit: str, path: Path) -> bool:
+    try:
+        relative = path.resolve().relative_to(root.resolve())
+    except ValueError:
+        return False
+    code, _ = git(root, "cat-file", "-e", f"{commit}:{relative}")
+    return code == 0
+
+
+def battery_seal(
+    battery: Battery, prereg_path: Path, runner_path: Path
+) -> Dict[str, str]:
+    code, root_text = git(Path.cwd(), "rev-parse", "--show-toplevel")
+    repository_ok = code == 0 and bool(root_text)
+    battery.check("seal", "seal.git_repository", repository_ok)
+
+    if not repository_ok:
+        battery.check("seal", "seal.committed_blobs", False)
+        battery.check("seal", "seal.distinct_commits", False)
+        battery.check("seal", "seal.prereg_is_runner_parent", False)
+        battery.check("seal", "seal.head_is_runner_commit", False)
+        return {"root": "", "prereg_commit": "", "runner_commit": "", "head": ""}
+
+    root = Path(root_text)
+    prereg_commit = last_commit_for(root, prereg_path)
+    runner_commit = last_commit_for(root, runner_path)
+    code, head = git(root, "rev-parse", "HEAD")
+    if code != 0:
+        head = ""
+
+    committed_blobs = (
+        bool(prereg_commit)
+        and bool(runner_commit)
+        and blob_exists(root, prereg_commit, prereg_path)
+        and blob_exists(root, runner_commit, runner_path)
+    )
+    battery.check("seal", "seal.committed_blobs", committed_blobs)
+    battery.check(
+        "seal",
+        "seal.distinct_commits",
+        bool(prereg_commit and runner_commit and prereg_commit != runner_commit),
+    )
+
+    code, parent = (
+        git(root, "rev-parse", f"{runner_commit}^")
+        if runner_commit
+        else (1, "")
+    )
+    battery.check(
+        "seal",
+        "seal.prereg_is_runner_parent",
+        code == 0 and parent == prereg_commit,
+    )
+    battery.check(
+        "seal",
+        "seal.head_is_runner_commit",
+        bool(head and head == runner_commit),
+    )
+    return {
+        "root": str(root),
+        "prereg_commit": prereg_commit,
+        "runner_commit": runner_commit,
+        "head": head,
+    }
+
+
+def battery_c1(battery: Battery) -> None:
+    for frame in FRAMES:
+        prefix = f"C1.{frame.name}"
+        ell = frame.inv_h
+        ell_prime = (1 - ell * frame.h) // frame.e1
+        quotient_x = frame.i(frame.u2) - ell * frame.u2
+        quotient_pi = frame.a(frame.u2) - ell_prime * frame.u2
+        carry = (ell * frame.u2) // frame.e1
+        rho_from_quotient = frame.eta ** (quotient_x // frame.e1)
+        rho_formula = frame.eta ** (-carry)
+        eta2 = frame.field.one
+        z2_direct = eta2 * rho_from_quotient
+        z2_formula = eta2 * (frame.eta ** (-carry))
+
+        battery.check(prefix.split(".")[0], f"{prefix}.base_z1", frame.eta, frame.eta)
+        battery.check(
+            "C1",
+            f"{prefix}.bezout",
+            ell * frame.h + ell_prime * frame.e1,
+            1,
+        )
+        battery.check(
+            "C1",
+            f"{prefix}.quotient_exponents",
+            (quotient_x, quotient_pi),
+            (-frame.e1 * carry, frame.h * carry),
+        )
+        battery.check(
+            "C1",
+            f"{prefix}.level2_letter",
+            (rho_from_quotient, z2_direct),
+            (rho_formula, z2_formula),
+        )
+
+
+def battery_c2(battery: Battery) -> None:
+    values = range(-4, 5)
+    for frame in FRAMES:
+        prefix = f"C2.{frame.name}"
+
+        congruence_ok = all(
+            frame.i(k) * frame.h + frame.a(k) * frame.e1 == k
+            and 0 <= frame.i(k) < frame.e1
+            for k in values
+        )
+        battery.check("C2", f"{prefix}.normalizer_heights", congruence_ok)
+
+        wrap_identity_ok = True
+        wrap_range_ok = True
+        carry_ok = True
+        for a in values:
+            for b in values:
+                wrap = frame.wrap(a, b)
+                ia, aa = frame.normalizer_exponents(a)
+                ib, ab = frame.normalizer_exponents(b)
+                iab, aab = frame.normalizer_exponents(a + b)
+                wrap_identity_ok &= (
+                    ia + ib - iab == frame.e1 * wrap
+                    and aa + ab - aab == -frame.h * wrap
+                )
+                wrap_range_ok &= wrap in (0, 1)
+                carry_ok &= (
+                    frame.q(a + b)
+                    == frame.q(a) + frame.q(b) + wrap
+                )
+
+        battery.check("C2", f"{prefix}.wrap_identity", wrap_identity_ok)
+        battery.check("C2", f"{prefix}.wrap_range", wrap_range_ok)
+
+        cocycle_ok = True
+        for a in values:
+            for b in values:
+                for c in values:
+                    left = (
+                        frame.eta ** frame.wrap(a, b)
+                    ) * (
+                        frame.eta ** frame.wrap(a + b, c)
+                    )
+                    right = (
+                        frame.eta ** frame.wrap(b, c)
+                    ) * (
+                        frame.eta ** frame.wrap(a, b + c)
+                    )
+                    cocycle_ok &= left == right
+        battery.check("C2", f"{prefix}.cocycle", cocycle_ok)
+
+        battery.check(
+            "C2",
+            f"{prefix}.normalized_endpoints",
+            (frame.theta(0), frame.theta(1)),
+            (frame.field.one, frame.field.one),
+        )
+
+        recursion_ok = True
+        running = frame.field.one
+        for s in range(0, 6):
+            if s == 0:
+                running = frame.field.one
+            else:
+                running = running * (
+                    frame.eta
+                    ** frame.wrap((s - 1) * frame.u2, frame.u2)
+                )
+            recursion_ok &= running == frame.theta(s)
+        battery.check("C2", f"{prefix}.theta_recursion", recursion_ok)
+
+        closed_ok = all(
+            frame.theta(s)
+            == frame.eta
+            ** ((s * frame.i(frame.u2)) // frame.e1)
+            for s in range(7)
+        )
+        battery.check("C2", f"{prefix}.theta_closed_form", closed_ok)
+        battery.check("C2", f"{prefix}.q_carry", carry_ok)
+
+
+def battery_c3(battery: Battery) -> None:
+    for stage in STAGES:
+        prefix = f"C3.{stage.name}"
+        theta = stage_theta(stage)
+        gamma = stage_gamma(stage)
+        multiplicative = stage_multiplicative(stage, gamma, theta)
+        canonical = stage_canonical_slots(stage, gamma, theta)
+        psi = psi_from_c(stage.frame.field, stage.f2, stage.c)
+        canonical_poly = canonical_poly_from_slots(stage, canonical)
+        twist = twisted_poly(psi, stage.w)
+
+        expected_theta = [
+            stage.frame.eta
+            ** (
+                (s * stage.frame.i(stage.frame.u2))
+                // stage.frame.e1
+            )
+            for s in range(stage.f2 + 1)
+        ]
+        expected_gamma = {
+            t: stage.c[t] * theta[stage.f2 - t]
+            for t in range(stage.f2)
+        }
+        expected_canonical = {
+            t: stage.c[t] * (stage.w ** (stage.f2 - t))
+            for t in range(stage.f2)
+        }
+
+        battery.check(
+            "C3", f"{prefix}.theta_vector", theta, expected_theta
+        )
+        battery.check(
+            "C3", f"{prefix}.coherent_vector", gamma, expected_gamma
+        )
+        battery.check(
+            "C3",
+            f"{prefix}.multiplicative_restored",
+            multiplicative,
+            dict(stage.c),
+        )
+        battery.check(
+            "C3",
+            f"{prefix}.canonical_vector",
+            canonical,
+            expected_canonical,
+        )
+        battery.check(
+            "C3",
+            f"{prefix}.twisted_coefficients",
+            canonical_poly,
+            twist,
+        )
+        battery.check(
+            "C3",
+            f"{prefix}.factor_pattern",
+            factor_degrees(canonical_poly),
+            factor_degrees(psi),
+        )
+
+
+def battery_c4(battery: Battery) -> Dict[str, Dict[str, Any]]:
+    evidence: Dict[str, Dict[str, Any]] = {}
+    for name, field, z, ell, beta, e, nu, support in [
+        (x[0], x[1], x[2], x[3], 5, x[4], x[5], x[6])
+        for x in C4_CASES
+    ]:
+        data = c4_data(field, z, ell, beta, e, nu, support)
+        evidence[name] = data
+        prefix = f"C4.{name}"
+
+        battery.check(
+            "C4",
+            f"{prefix}.raw_bridge",
+            data["raw"],
+            data["znu"] * data["epsilon"],
+        )
+        battery.check(
+            "C4",
+            f"{prefix}.equality_criterion",
+            data["raw"] == data["epsilon"],
+            data["znu"] == field.one,
+        )
+        battery.check(
+            "C4",
+            f"{prefix}.support_translation",
+            data["h_support"],
+            [nu + x for x in data["p_support"]],
+        )
+        battery.check(
+            "C4",
+            f"{prefix}.degree_translation",
+            max(data["h_support"]),
+            max(data["p_support"]) + nu,
+        )
+
+    frame = FRAME_BY_NAME["P5"]
+    theta = frame.theta(2)
+    w = F5(3)
+    znu = F5(4)
+    c = F5(2)
+    coherent = c * theta
+    canonical = (w ** 2) * theta.inverse() * coherent
+    composed = znu * canonical
+
+    battery.check(
+        "C4",
+        "C4.live_joint.distinct_slots",
+        len({theta.coeffs, w.coeffs, znu.coeffs}),
+        3,
+    )
+    battery.check(
+        "C4",
+        "C4.live_joint.composition",
+        composed,
+        znu * (w ** 2) * c,
+    )
+    return evidence
+
+
+def battery_c5(battery: Battery) -> Dict[str, Dict[str, FE]]:
+    evidence: Dict[str, Dict[str, FE]] = {}
+    for case in C5_CASES:
+        frame = case.frame
+        prefix = f"C5.{case.name}"
+        gamma = gamma_k(case)
+        direct = direct_normalizer_read(case)
+        q_value = frame.q(case.k)
+        varpi_minus = gamma * (frame.eta ** (-q_value))
+        varpi_plus = gamma * (frame.eta ** q_value)
+        bare = gamma_k(case, bare=True)
+
+        evidence[case.name] = {
+            "gamma": gamma,
+            "direct": direct,
+            "varpi_minus": varpi_minus,
+            "varpi_plus": varpi_plus,
+            "bare": bare,
+        }
+
+        battery.check("C5", f"{prefix}.gamma_exact", gamma, direct)
+        battery.check(
+            "C5", f"{prefix}.normalizer_read", direct, gamma
+        )
+        battery.check(
+            "C5",
+            f"{prefix}.varpi_read",
+            varpi_minus,
+            direct * (frame.eta ** (-q_value)),
+        )
+        battery.check(
+            "C5", f"{prefix}.minus_q_sign", varpi_minus != varpi_plus
+        )
+        battery.check("C5", f"{prefix}.bare_residue_rejected", bare != gamma)
+
+        above_terms = [
+            term
+            for term in case.terms
+            if frame.e1 * term.valuation + term.j * frame.h > case.k
+        ]
+        above_zero = all(
+            coefficient_normalized_residue(
+                term,
+                (case.k - term.j * frame.h) // frame.e1,
+            )
+            == frame.field.zero
+            for term in above_terms
+        )
+        battery.check("C5", f"{prefix}.pins_above_zero", above_zero)
+    return evidence
+
+
+def battery_c6(battery: Battery) -> None:
+    f4 = FRAME_BY_NAME["F4"]
+    p3 = FRAME_BY_NAME["P3_WRAP"]
+    live_cases = [
+        ("F4_M5", f4, 5, [1, 1]),
+        ("F4_M6", f4, 6, [1, 0]),
+        ("F4_M9", f4, 9, [0, 1]),
+        ("P3_M4", p3, 4, [2]),
+    ]
+
+    for name, frame, M, lambdas in live_cases:
+        prefix = f"C6.{name}"
+        terms = lift_terms(frame, M, lambdas)
+        battery.check("C6", f"{prefix}.domain", lift_domain(frame, M))
+        battery.check(
+            "C6",
+            f"{prefix}.integral",
+            all(term.pi_exponent >= 0 for term in terms),
+        )
+        battery.check(
+            "C6",
+            f"{prefix}.degree",
+            max(term.x_exponent for term in terms) < frame.D,
+        )
+        battery.check(
+            "C6",
+            f"{prefix}.exact_heights",
+            all(
+                frame.e1 * term.pi_exponent
+                + frame.h * term.x_exponent
+                == M
+                for term in terms
+            ),
+        )
+        battery.check(
+            "C6",
+            f"{prefix}.residue",
+            lift_residue(frame, terms),
+            lambda_value(frame, lambdas),
+        )
+        battery.check(
+            "C6",
+            f"{prefix}.xfree_criterion",
+            actual_xfree_monomial(terms),
+            predicted_xfree(frame, M, lambdas),
+        )
+
+    boundary_cases = [
+        (
+            "low_counterexample",
+            Frame("BOUNDARY_LOW", F4, 1, 2, 1, OMEGA, 1),
+            0,
+            [0, 1],
+        ),
+        ("boundary_eq", f4, 4, [1, 1]),
+        ("boundary_below", f4, 3, [1, 1]),
+    ]
+    for name, frame, M, lambdas in boundary_cases:
+        battery.check(
+            "C6",
+            f"C6.{name}.refused",
+            lift_domain(frame, M),
+            False,
+        )
+        battery.check(
+            "C6",
+            f"C6.{name}.no_full_slot_assertion",
+            M <= frame.D * frame.h,
+            True,
+        )
+
+    low_frame = boundary_cases[0][1]
+    low_terms = lift_terms(low_frame, 0, [0, 1])
+    battery.check(
+        "C6",
+        "C6.low_counterexample.nonintegral_digit",
+        any(term.pi_exponent < 0 for term in low_terms),
+    )
+
+    eta1 = FRAME_BY_NAME["P3_ETA1"]
+    eta1_terms = lift_terms(eta1, 3, [2])
+    battery.check(
+        "C6",
+        "C6.eta1.xfree",
+        actual_xfree_monomial(eta1_terms),
+        False,
+    )
+
+    clearance_values = [
+        Fraction(r * (11 - 2 * f4.D * f4.h), f4.e1)
+        for r in (1, 2, 3)
+    ]
+    for r, got, want in zip(
+        (1, 2, 3),
+        clearance_values,
+        [Fraction(3, 2), Fraction(3, 1), Fraction(9, 2)],
+    ):
+        battery.check(
+            "C6",
+            f"C6.clearance.r{r}",
+            (got, got > 0),
+            (want, True),
+        )
+
+
+def battery_regressions(battery: Battery) -> None:
+    x_stage = STAGE_BY_NAME["X"]
+    x_theta = stage_theta(x_stage)
+    x_gamma = stage_gamma(x_stage)
+    x_correct_mult = stage_multiplicative(x_stage, x_gamma, x_theta)
+    x_correct = psi_from_c(F3, 2, x_correct_mult)
+
+    x_naive_gamma = stage_gamma(x_stage, "gauge_naive")
+    x_naive_mult = stage_multiplicative(
+        x_stage, x_naive_gamma, x_theta
+    )
+    x_naive = psi_from_c(F3, 2, x_naive_mult)
+
+    battery.check(
+        "regression",
+        "regression.X.corrected_polynomial",
+        x_correct,
+        [F3(1), F3(0), F3(1)],
+    )
+    battery.check(
+        "regression",
+        "regression.X.naive_polynomial",
+        x_naive,
+        [F3(2), F3(0), F3(1)],
+    )
+    battery.check(
+        "regression",
+        "regression.X.split_separation",
+        (factor_degrees(x_correct), factor_degrees(x_naive)),
+        ([2], [1, 1]),
+    )
+
+    side = lambda j: 12 - 2 * j
+    occupied = {0: 12, 2: 8, 5: 2}
+    separator = (3, 7)
+    battery.check(
+        "regression",
+        "regression.FRG.partial_side",
+        all(height == side(j) for j, height in occupied.items()),
+    )
+    battery.check(
+        "regression",
+        "regression.FRG.separator",
+        separator[1] - side(separator[0]),
+        1,
+    )
+    battery.check(
+        "regression",
+        "regression.FRG.partial_not_full",
+        sorted(set(range(6)) - set(occupied)),
+        [1, 3, 4],
+    )
+    battery.check(
+        "regression",
+        "regression.FRG.support_width",
+        max(occupied) - min(occupied),
+        5,
+    )
+
+    f4q = STAGE_BY_NAME["F4Q"]
+    f4q_theta = stage_theta(f4q)
+    f4q_gamma = stage_gamma(f4q)
+    f4q_mult = stage_multiplicative(f4q, f4q_gamma, f4q_theta)
+    f4q_correct = psi_from_c(F4, 2, f4q_mult)
+    f4q_naive_mult = stage_multiplicative(
+        f4q, stage_gamma(f4q, "gauge_naive"), f4q_theta
+    )
+    f4q_naive = psi_from_c(F4, 2, f4q_naive_mult)
+    f4q_twist = twisted_poly(f4q_correct, OMEGA)
+
+    battery.check(
+        "regression",
+        "regression.F4Q.corrected",
+        f4q_correct,
+        [OMEGA, F4(1), F4(1)],
+    )
+    battery.check(
+        "regression",
+        "regression.F4Q.naive",
+        f4q_naive,
+        [F4(1), F4(1), F4(1)],
+    )
+    battery.check(
+        "regression",
+        "regression.F4Q.psi_twist",
+        f4q_twist,
+        [F4(1), OMEGA, F4(1)],
+    )
+    battery.check(
+        "regression",
+        "regression.F4Q.corrected_naive_patterns",
+        (factor_degrees(f4q_correct), factor_degrees(f4q_naive)),
+        ([2], [1, 1]),
+    )
+    battery.check(
+        "regression",
+        "regression.F4Q.twist_pattern",
+        factor_degrees(f4q_twist),
+        factor_degrees(f4q_correct),
+    )
+
+    mu = STAGE_BY_NAME["F4MU3"]
+    mu_theta = stage_theta(mu)
+    mu_gamma = stage_gamma(mu)
+    b_units = {
+        t: (mu.w ** (mu.f2 - t))
+        * mu_theta[mu.f2 - t].inverse()
+        for t in range(mu.f2)
+    }
+    canonical = stage_canonical_slots(mu, mu_gamma, mu_theta)
+    cube = canonical_poly_from_slots(mu, canonical)
+    expected_cube = p_mul(
+        p_mul([OMEGA, F4(1)], [OMEGA, F4(1)]),
+        [OMEGA, F4(1)],
+    )
+
+    battery.check(
+        "regression",
+        "regression.F4MU3.theta",
+        mu_theta,
+        [F4(1), F4(1), OMEGA, OMEGA],
+    )
+    battery.check(
+        "regression",
+        "regression.F4MU3.gamma",
+        [mu_gamma[2], mu_gamma[1], mu_gamma[0]],
+        [F4(1), OMEGA, OMEGA],
+    )
+    battery.check(
+        "regression",
+        "regression.F4MU3.B_units",
+        [b_units[2], b_units[1], b_units[0]],
+        [OMEGA, OMEGA, OMEGA ** 2],
+    )
+    battery.check(
+        "regression",
+        "regression.F4MU3.canonical.t2",
+        canonical[2],
+        OMEGA,
+    )
+    battery.check(
+        "regression",
+        "regression.F4MU3.canonical.t1",
+        canonical[1],
+        OMEGA ** 2,
+    )
+    battery.check(
+        "regression",
+        "regression.F4MU3.canonical.t0",
+        canonical[0],
+        F4(1),
+    )
+    battery.check(
+        "regression",
+        "regression.F4MU3.cube",
+        cube,
+        expected_cube,
+    )
+    battery.check(
+        "regression",
+        "regression.F4MU3.factor_pattern",
+        factor_degrees(cube),
+        [1, 1, 1],
+    )
+
+    lp = FRAME_BY_NAME["LP"]
+    ell = lp.inv_h
+    carry = (ell * lp.u2) // lp.e1
+    eta2 = F7(2)
+    z2 = eta2 * (lp.eta ** (-carry))
+    battery.check(
+        "regression",
+        "regression.LP.level2_letter",
+        z2,
+        eta2 * (F7(3) ** -2),
+    )
+    battery.check(
+        "regression",
+        "regression.LD.inverse_cocycle",
+        lp.theta(2) * lp.theta(2).inverse(),
+        F7(1),
+    )
+    battery.check(
+        "regression",
+        "regression.LD.negative_geography",
+        -carry,
+        -2,
+    )
+
+
+def compact_tex(text: str) -> str:
+    return "".join(text.split())
+
+
+def has_affirmative_phrase(text: str, phrase: str) -> bool:
+    phrase = phrase.lower()
+    negations = (
+        " no ",
+        " not ",
+        "neither",
+        "does not",
+        "proves no",
+        "without",
+        "cannot",
+        "isn't",
+        "is not",
+    )
+    for raw_line in text.splitlines():
+        line = " " + raw_line.lower().strip() + " "
+        if phrase in line and not any(token in line for token in negations):
+            return True
+    return False
+
+
+def lint_results(note_text: str) -> Dict[str, bool]:
+    doctrine = note_text.split("## 4.", 1)[0]
+    compact_all = compact_tex(note_text)
+    compact_doctrine = compact_tex(doctrine)
+
+    return {
+        "lint.base_z1_defined": r"z_1:=\eta" in compact_all,
+        "lint.zero_normalizer": (
+            r"\widehatn_i(0)=1" in compact_all
+            or r"\widehat{n}_i(0)=1" in compact_all
+        ),
+        "lint.eta1_implies_f1": (
+            r"\eta=1\Rightarrowf_1=1" in compact_all
+            or (
+                r"\eta=1" in compact_all
+                and "forces" in note_text
+                and r"f_1=1" in compact_all
+            )
+        ),
+        "lint.positive_wrap_sign": r"\eta^{W(t)}" in compact_doctrine,
+        "lint.gamma_has_coefficient_normalizer": (
+            r"\pi^{-(k-(i+e_1t)h)/e_1}" in compact_doctrine
+        ),
+        "lint.live_domain_strict": r"M>D'h" in compact_doctrine,
+        "lint.no_single_transport_map": not has_affirmative_phrase(
+            doctrine, "one transport map"
+        ),
+        "lint.no_unique_gauge": not has_affirmative_phrase(
+            doctrine, "unique gauge"
+        ),
+        "lint.no_cross_face_claim": not (
+            has_affirmative_phrase(doctrine, "cross-face compatibility")
+            or has_affirmative_phrase(doctrine, "cross-face coherence")
+        ),
+        "lint.M3_scored_stratum": (
+            "M3" in doctrine
+            and "only on the scored stratum" in doctrine
+        ),
+        "lint.M4_W2C3_fence": (
+            "M4" in doctrine
+            and "W2-C3" in doctrine
+            and "accepted fence" in doctrine
+        ),
+        "lint.B_law_sitewise_fence": (
+            "ladder-multiplicativity obligation" in doctrine
+            or "sitewise residual-read facts" in doctrine
+        ),
+    }
+
+
+def battery_lint(battery: Battery, note_text: str) -> Dict[str, bool]:
+    results = lint_results(note_text)
+    for name, passed in results.items():
+        battery.check("lint", name, passed)
+    return results
+
+
+def battery_teeth(
+    battery: Battery,
+    c4_evidence: Mapping[str, Mapping[str, Any]],
+    c5_evidence: Mapping[str, Mapping[str, FE]],
+    note_text: str,
+) -> None:
+    f4q = STAGE_BY_NAME["F4Q"]
+    baseline_gamma = stage_gamma(f4q)
+    mutant_gamma = stage_gamma(f4q, "gauge_naive")
+    failures = []
+    if mutant_gamma != baseline_gamma:
+        failures.append("C3.F4Q.coherent_vector")
+    battery.tooth("gauge_naive", failures)
+
+    p5 = STAGE_BY_NAME["P5"]
+    baseline_gamma = stage_gamma(p5)
+    mutant_gamma = stage_gamma(p5, "wrong_sign")
+    failures = []
+    if mutant_gamma != baseline_gamma:
+        failures.append("C3.P5.coherent_vector")
+    battery.tooth("wrong_sign", failures)
+
+    mu = STAGE_BY_NAME["F4MU3"]
+    normal_theta = stage_theta(mu)
+    shifted_theta = stage_theta(mu, "misindexed_telescope")
+    failures = []
+    if shifted_theta != normal_theta:
+        failures.append("C3.F4MU3.theta_vector")
+    battery.tooth("misindexed_telescope", failures)
+
+    gamma = stage_gamma(mu)
+    correct = stage_canonical_slots(mu, gamma, normal_theta, True)
+    wrong = stage_canonical_slots(mu, gamma, normal_theta, False)
+    failures = []
+    for t in (2, 1, 0):
+        if wrong[t] != correct[t]:
+            failures.append(f"regression.F4MU3.canonical.t{t}")
+    battery.tooth("inverse_orientation", failures)
+
+    origin = c4_evidence["nu2_nonroot"]
+    failures = []
+    mutant_raw = origin["epsilon"]
+    correct_raw = origin["znu"] * origin["epsilon"]
+    if mutant_raw != correct_raw:
+        failures.append("C4.nu2_nonroot.raw_bridge")
+    battery.tooth("origin_drop_nu", failures)
+
+    root_case = c4_evidence["nu2_root"]
+    actual_equality = root_case["raw"] == root_case["epsilon"]
+    mutant_prediction = False
+    failures = []
+    if mutant_prediction != actual_equality:
+        failures.append("C4.nu2_root.equality_criterion")
+    battery.tooth("origin_iff_nu0", failures)
+
+    case_a = C5_BY_NAME["A"]
+    failures = []
+    if gamma_k(case_a, bare=True) != c5_evidence["A"]["gamma"]:
+        failures.append("C5.A.gamma_exact")
+    battery.tooth("he6_bare_residue", failures)
+
+    failures = []
+    if (
+        c5_evidence["A"]["varpi_plus"]
+        != c5_evidence["A"]["varpi_minus"]
+    ):
+        failures.append("C5.A.varpi_read")
+    battery.tooth("he6_q_sign", failures)
+
+    f4 = FRAME_BY_NAME["F4"]
+    boundary_M = f4.D * f4.h
+    mutant_accepts = boundary_M >= f4.D * f4.h
+    failures = []
+    if mutant_accepts != lift_domain(f4, boundary_M):
+        failures.append("C6.boundary_eq.refused")
+    battery.tooth("lift_boundary_accept", failures)
+
+    eta1 = FRAME_BY_NAME["P3_ETA1"]
+    M = 3
+    lambdas = [2]
+    actual = actual_xfree_monomial(lift_terms(eta1, M, lambdas))
+    mutant_prediction = eta1.eta == eta1.field.one
+    failures = []
+    if mutant_prediction != actual:
+        failures.append("C6.eta1.xfree")
+    battery.tooth("eta_implies_xfree", failures)
+
+    injected = note_text.split("## 4.", 1)[0] + (
+        "\nT1 proves one transport map.\n"
+    )
+    failures = []
+    if has_affirmative_phrase(injected, "one transport map"):
+        failures.append("lint.no_single_transport_map")
+    battery.tooth("weld_single_map", failures)
+
+    mutant_note = note_text.replace(
+        "only on the scored stratum", "on the relevant material"
+    ).replace(
+        "only at W2-C3’s accepted fence", "at its consumer sites"
+    )
+    mutant_lint = lint_results(mutant_note)
+    failures = []
+    if not mutant_lint["lint.M3_scored_stratum"]:
+        failures.append("lint.M3_scored_stratum")
+    if not mutant_lint["lint.M4_W2C3_fence"]:
+        failures.append("lint.M4_W2C3_fence")
+    battery.tooth("weld_drop_fences", failures)
+
+
+def sha256_file(path: Path) -> str:
+    digest = hashlib.sha256()
+    with path.open("rb") as handle:
+        for block in iter(lambda: handle.read(1024 * 1024), b""):
+            digest.update(block)
+    return digest.hexdigest()
+
+
+def build_artifact(
+    battery: Battery,
+    seal: Mapping[str, str],
+    prereg_path: Path,
+    note_path: Path,
+    runner_path: Path,
+    fatal: str | None = None,
+) -> Dict[str, Any]:
+    actual_counts = Counter(row["group"] for row in battery.rows)
+    counts_match = (
+        dict(actual_counts) == EXPECTED_COUNTS
+        and len(battery.rows) == EXPECTED_TOTAL
+    )
+    rows_pass = all(row["pass"] for row in battery.rows)
+    teeth_complete = (
+        set(battery.tooth_evidence) == set(EXPECTED_TOOTH_FAILURES)
+    )
+    verdict = (
+        "PASS"
+        if fatal is None and counts_match and rows_pass and teeth_complete
+        else "FAIL"
+    )
+
+    hashes: Dict[str, str] = {}
+    for label, path in (
+        ("prereg", prereg_path),
+        ("note", note_path),
+        ("runner", runner_path),
+    ):
+        try:
+            hashes[label] = sha256_file(path)
+        except OSError:
+            hashes[label] = ""
+
+    return {
+        "schema": "S-1-T1-gauge-cocycle-battery-v1",
+        "verdict": verdict,
+        "fatal": fatal,
+        "prediction": {
+            "expected_total": EXPECTED_TOTAL,
+            "expected_counts": EXPECTED_COUNTS,
+            "expected_tooth_failures": EXPECTED_TOOTH_FAILURES,
+        },
+        "observed": {
+            "total": len(battery.rows),
+            "counts": dict(sorted(actual_counts.items())),
+            "counts_match": counts_match,
+            "all_rows_pass": rows_pass,
+            "teeth_complete": teeth_complete,
+        },
+        "seal": dict(seal),
+        "sha256": hashes,
+        "tooth_evidence": battery.tooth_evidence,
+        "rows": battery.rows,
+    }
+
+
+def parse_args() -> argparse.Namespace:
+    parser = argparse.ArgumentParser()
+    parser.add_argument("--prereg", required=True, type=Path)
+    parser.add_argument("--note", required=True, type=Path)
+    parser.add_argument("--artifact", required=True, type=Path)
+    return parser.parse_args()
+
+
+def main() -> int:
+    args = parse_args()
+    runner_path = Path(__file__).resolve()
+    prereg_path = args.prereg.resolve()
+    note_path = args.note.resolve()
+    artifact_path = args.artifact.resolve()
+
+    battery = Battery()
+    seal: Dict[str, str] = {}
+    fatal: str | None = None
+
+    try:
+        if artifact_path.exists():
+            raise FileExistsError(
+                f"refusing to replace existing artifact: {artifact_path}"
+            )
+
+        seal = battery_seal(battery, prereg_path, runner_path)
+        note_text = note_path.read_text(encoding="utf-8")
+
+        battery_c1(battery)
+        battery_c2(battery)
+        battery_c3(battery)
+        c4_evidence = battery_c4(battery)
+        c5_evidence = battery_c5(battery)
+        battery_c6(battery)
+        battery_regressions(battery)
+        battery_lint(battery, note_text)
+        battery_teeth(
+            battery,
+            c4_evidence,
+            c5_evidence,
+            note_text,
+        )
+    except Exception as exc:
+        fatal = f"{type(exc).__name__}: {exc}"
+
+    artifact = build_artifact(
+        battery,
+        seal,
+        prereg_path,
+        note_path,
+        runner_path,
+        fatal,
+    )
+
+    try:
+        artifact_path.parent.mkdir(parents=True, exist_ok=True)
+        with artifact_path.open("x", encoding="utf-8") as handle:
+            json.dump(
+                artifact,
+                handle,
+                indent=2,
+                sort_keys=True,
+                ensure_ascii=False,
+            )
+            handle.write("\n")
+    except Exception as exc:
+        sys.stderr.write(
+            f"artifact creation failed: {type(exc).__name__}: {exc}\n"
+        )
+        return 2
+
+    sys.stdout.write(str(artifact_path) + "\n")
+    return 0 if artifact["verdict"] == "PASS" else 1
+
+
+if __name__ == "__main__":
+    raise SystemExit(main())
+```
+tokens used
+25,955

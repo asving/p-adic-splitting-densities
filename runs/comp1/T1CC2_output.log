@@ -1,0 +1,197 @@
+I use the md5-identified ledger statement most directly named by each A1–A7 absorption row. Under the strict protocol, only A1 passes: the other rows absorb useful gauge subclaims, but T1 does not imply the entire closed ledger statement or introduces an additional site obligation.
+
+## A1 — GENHN
+
+### Statement leg — PASS
+
+**T1 C2 + C3 + C6 ⟹ LEMMA GENHN-LIFT** (`md5=3b70a20ff069a16fbabad0e7b72a825e`):
+
+```text
+**LEMMA GENHN-LIFT.** Let \(M>D'h=e_1f_1h\), and let \(i=i(M)\), \(0\le i<e_1\), be determined by \[ ih\equiv M\pmod{e_1},\qquad a=(M-ih)/e_1. \] Write \(\lambda\in K\) uniquely as \[ \lambda=\sum_{s=0}^{f_1-1}\lambda_s\eta^s,\qquad \lambda_s\in F_Q, \] and define \[ L_M(\lambda):= \sum_{s=0}^{f_1-1} \widetilde{\lambda_s}\, x^{\,i+e_1s}\pi^{\,a-sh}. \] Then \(L_M(\lambda)\in\widehat O[x]\), \(\deg L_M(\lambda)<D'\), every nonzero summand has exact \(dv\)-height \(M\), and \[ \operatorname{res}\!\left(\frac{L_M(\lambda)(\theta)} {n(M)(\theta)}\right)=\lambda . \] **PROOF.** Since \(i+e_1s\le D'-1\) and \(M>D'h\), \[ a-sh=\frac{M-(i+e_1s)h}{e_1}\ge0, \] so every summand is integral and has degree \(<D'\). Its evaluated height is \[ e_1(a-sh)+(i+e_1s)h=M. \] Dividing by \(n(M)=x^i\pi^a\) leaves residue \(\lambda_s\eta^s\); GENHN-2’s independence gives their sum \(\lambda\), with no cancellation. ∎ **APPLICATION TO THE COMPOSED KEY.** Put \(r=f_2-t\), \(M=ru_2\), and \[ W(t)=\left\lfloor\frac{r\,i(u_2)}{e_1}\right\rfloor . \] Replace the gauge-naive coefficient term in T(b)′ by \[ L_{ru_2}\!\bigl(c_t\eta^{W(t)}\bigr)\,\Phi'^{\,e_2t}. \] Because \[ \operatorname{res}\!\left(\frac{n(u_2)^r}{n(ru_2)}\right) =\eta^{W(t)}, \] its coefficient relative to the coherent power normalizer \(n(u_2)^r\) is exactly \(c_t\). Hence the inner residual is precisely \(\psi_2\), not its gauge-naive twist. For every monomial \(x^\ell\pi^b\) occurring in this lift, \(e_1b+\ell h=ru_2\). Multiplying by a monomial of \(\Phi'^{e_2t}\), the clearance above the outer \(x\)-polygon side is bounded below by \[ \frac{r(u_2-e_2D'h)}{e_1}>0, \] exactly the inequality used in T(b)′(i). Thus every component clears the side. Polynomial collection and \(\Phi'\)-carry can only cancel terms or move them upward; they cannot create a term below the side. Since \(L_M(\lambda)\) already has degree \(<D'\), the literal \(\Phi'\)-development also has the asserted exact-height coefficient and residual. Therefore T(b)′(i)’s one-side polygon, \(\psi_2\)-residual, carrier forcing chain, irreducibility, and residue-field conclusion hold at the corrected composed key. Clauses (ii)–(v) then proceed exactly as written.
+```
+
+Supply:
+
+- C6-lift and C6-residue give the identical lift, integrality, degree, height, and residue assertions on \(M>D'h\).
+- C2-level-1 gives \(\vartheta_{1,r}=\eta^{W(t)}\) with the required positive sign.
+- C3-dictionary makes the multiplicative coefficient exactly \(c_t\).
+- C6-clearance gives the displayed positive clearance and upward-only collection conclusion.
+
+### Provenance leg — PASS
+
+T1 §2.6 proves C6 directly from degree bounds, height arithmetic, and basis independence. It does not cite or assume LEMMA GENHN-LIFT.
+
+### Definition-audit leg — PASS
+
+The hypotheses are unchanged: \(M>D'h\), \(D'=e_1f_1\), the chosen \(K_1\)-basis, and—only for the clearance application—\(u_2>e_2D'h\). T1 adds no hypothesis to the ledger statement.
+
+---
+
+## A2 — HETOW
+
+### Statement leg — FAIL
+
+**T1 C1 + C2 + C3 + C5 ⟹ LEMMA HETOW-4** (`md5=2500c2f458b6647e9bedeee8c84009a0`) is false as a whole:
+
+```text
+**LEMMA HETOW-4 (the normalizer bridge).** Notation of §S1/§S2 ([r1] preamble: ϖ = x^{i₀}π^{a₀}, n̂(k) = x^{i(k)}π^{a(k)}, Q(k) = (i₀k − i(k))/e₁ = ⌊i₀k/e₁⌋, wrap₁(a,b) := ⌊(i(a)+i(b))/e₁⌋; letter η; datum (κ₂ = u₂/e₂, r̃), K₂ = K(η₂) = K(β), β = η^{−Q(u₂)}η₂ per HETOW-1). For k ∈ ℤ put s(k) := k·u₂^{−1} mod e₂ ∈ [0, e₂), m(k) := (k − s(k)u₂)/e₂; n₂(k) := ϖ^{m(k)}Φ′^{s(k)} (HE7 §S1) and n̂₂(k) := x^{i}π^{a}Φ′^{b} the tower ladder monomial (i < e₁, b < e₂, e₁e₂a + ie₂h + bu₂ = k; a ∈ ℤ, Laurent). Then: (a) [THE RATIO IS A GRADE-DETERMINED WRAP-LETTER MONOMIAL] b = s(k) and x^{i}π^{a} = n̂(m(k)), so, as Laurent monomials, n̂₂(k)/n₂(k) = n̂(m(k))/ϖ^{m(k)} = (x^{e₁}/π^{h})^{−Q(m(k))}, and at every point ξ of the tower-node locus res(n̂₂(k)(ξ)/n₂(k)(ξ)) = η_ξ^{−Q(m(k))} = ι_ξ(τ(k)), where τ(k) := η^{−Q(m(k))} ∈ K^×. (b) [τ IS A COCYCLE, NOT A CHARACTER] with w₂ := ⌊(s(k)+s(k′))/e₂⌋ ∈ {0,1}, τ(k)·τ(k′)/τ(k+k′) = η^{ wrap₁(m(k), m(k′)) + w₂·( Q(u₂) + wrap₁(m(k)+m(k′), u₂) ) }, the two-floor wrap-cocycle. In particular the per-height twist is neither constant nor geometric in general, and the RAW (bracket- free) pin-residue strings of the two systems differ wherever some τ(H) ≠ 1. (c) [ASSEMBLED RESIDUALS: THE BRACKETS TELESCOPE THE TWIST INTO THE COVERED SPECIES] Let a side of P₂ have slope λ₂ = u₃/ℓ₂ (lowest terms), lattice heights H_t = H₀ − t·u₃, t = 0..d. Each system assembles its side residual WITH ITS OWN cocycle bracket (HE7: §S5.3 Step 2's τ_t with res(τ_t) = β^{c_t}; tower: the S4 coherent-normalizer wrap units, GENTOW-2(iv)'s "coherent normalization, wrap units included"), so the t-coefficient is res(A_{j(t)}·N(u₃)^{t}/N(H₀)) with N = n₂ resp. n̂₂. Hence, with δ := τ(u₃) ∈ K^×, ρ_t = ρ̂_t · τ(H₀) · δ^{−t} , i.e. R_{λ₂}(Z) = τ(H₀) · R̂_{λ₂}(Z/δ) , and the side letters match the rescale: β₂,ξ = res(Φ₂(ξ)^{ℓ₂}/n₂(u₃)(ξ)) = ι_ξ(δ)·ẑ_ξ. (d) [ROUTING TRANSPORT] Under (c): R_{λ₂} separable ⟺ R̂_{λ₂} separable; the multisets of (degree, multiplicity) over irreducible factors are equal, via the degree-preserving bijection r̂₂(Z) ↦ r₂(Z) := δ^{deg r̂₂}·r̂₂(Z/δ) (monic); hence HE7.A(2)'s dictionary (e, f) = (e₁e₂ℓ₂, f₁f₂·deg r₂) and HE7.A(3)'s branch predicate ℓ₂·deg r₂ ∈ {1, ≥2} read identically in the two systems; at the α-refine branch the repeated roots satisfy s₂ = δ·ŝ₂ (δ ∈ K^× ⊂ K₂, so K₂-rational together), and ONE w ∈ O[x] realizes both prescriptions — its residues in the two systems differ by exactly ι(δ) at grade λ₂, which is (a) at k = λ₂ — so the refined key Φ₂ − w and every iterate of the finite chain (LEMMA HE7-8/12/13) are system-independent polynomials.
+```
+
+C2 and C5 supply the elementary wrap/carry mechanism behind parts (a)–(b). C3 supplies a generic unit-rescaling principle. They do **not** supply:
+
+- the side-specific coefficient identity in (c);
+- the HE7 and tower bracket conventions needed to telescope that side;
+- the equality of the two side letters; or
+- the common-refinement-polynomial assertion in (d).
+
+C7 expressly denies the sort of unqualified cross-system coherence needed for the last claim.
+
+### Provenance leg — PASS, for the part actually proved
+
+T1 derives its wrap and carry identities directly and does not cite HETOW-4. Recovering the missing parts (c)–(d) would require an external HETOW/HE7 routing theorem; citing this lemma itself would be circular.
+
+### Definition-audit leg — FAIL
+
+T1’s general carrier does not imply the §S1/§S2 HE7 side setup, the two residual-assembly conventions, or the common refine realization. Adding those facts would migrate hypotheses/supplier conclusions into T1.
+
+**Failure location:** A2 overstates absorption at HETOW-4(c)–(d).
+
+---
+
+## A3 — GENTOW1
+
+### Statement leg — FAIL
+
+**T1 C3 ⟹ LEMMA GENTOW-1** (`md5=4b4d9f21dae75e08d515ff8a7263b559`) is false:
+
+```text
+**LEMMA GENTOW-1.** (a) [WEIGHT CHARACTERIZATION] monic f of degree n lies on 𝒯 iff every composed slot of g := f − Phi2^{mu2} has weight >= mu2*E2+1; equivalently, in f = Phi2^{mu2} + Sum_{j<mu2} C_j Phi2^j, C_j = Sum c_{j,a,b} x^a Phi'^b (a < D', b < e2f2): v(c_{j,a,b}) >= ceil( ((mu2−j)E2 − w(a,b)) / (e1e2) ) + [pin], [pin] = 1 iff e1e2 | (mu2−j)E2 − w(a,b) >= 0, the composed side height at the slot, ceiled to the digit grid, plus one consumed digit at each lattice slot — the r2-F2 level-1 display verbatim with (D'h, ih, e1) ↦ (E2, w(a,b), e1e2). (b) [FIBRATION] f ↦ (c_{j,a,b}) is a triangular-unimodular digit bijection from 𝒯 onto the budget box (digits free above floors); one K2-digit per dv2-height per coordinate (GENHN-2'); per window N the free-O-digit count is Sum_{j,a,b} (N − floor(j,a,b)). (c) [NODE] on 𝒯: p_j := dv2(C_j(x0)) >= (mu2−j)E2 + 1 for j < mu2 at every root x0, equality realizable at every j (two-step class separation supplies a slot in every residue class mod e1e2). (d) [NODE AT THE FIELD] every root x0 of every f in 𝒯 has dv2(Phi2(x0)) > E2 — the psi-cancellation (HE6-0) argument one level up. (dv2(Phi2(x0)) need not be an integer on 𝒯 — RAM leaves have e(L) = 2e1e2; the strict inequality is the statement.)
+```
+
+C3 shows that corrected and naive coefficient representatives have the same exact height on the live lift domain. It proves none of the displayed locus equivalence, budget floors, triangular fibration, free-digit count, sharp node bounds, or field-root inequality. T1 itself says that budgets and floors are not reproved, and honesty-ledger item 10 excludes them.
+
+### Provenance leg — PASS
+
+T1’s dictionary proof does not cite GENTOW-1. It proves only the narrower gauge-neutrality statement.
+
+### Definition-audit leg — FAIL
+
+The tower-entry locus \(\mathcal T\), GENHN-2′ slot theorem, triangular-unimodular coordinate map, two-step class separation, and HE6 cancellation are not implied by T1’s carrier. They would have to be added.
+
+**Failure location:** A3’s “value-blind budgets/floors” row is only a fence about gauge invariance; it cannot absorb LEMMA GENTOW-1(a)–(d).
+
+---
+
+## A4 — GENTOW3
+
+### Statement leg — FAIL
+
+**T1 C3 + C6 ⟹ THEOREM GENTOW-3** (`md5=a6d97dfefeb2be042cada0d9ca46c31e`) is false:
+
+```text
+**THEOREM GENTOW-3 (the faithfulness geography).** Set delta := u2 − e2D'h (≥ 1, the [r1] node floor) and THETA_j := (mu2 − j)·E2 + delta. On 𝒯: (i) [FLOOR] every dv2-height at which ShC_j and C_j carry different slot digits is ≥ THETA_j; equivalently the first disagreeing height pin(ShC_j − C_j) ≥ THETA_j. (ii) [FAITHFUL BAND] at every height m < THETA_j the two reads' digits agree — values, classes, and K2-residues. Consequently any read whose consulted heights at coordinate j are all < THETA_j (pins, deciding residues, event data) returns identical output on both reads; in particular if the composed pin p_j < THETA_j then the shadow pin equals it with the same residue. (iii) [X-FREE EXACTNESS] at an x-free genre the discrepancy is ZERO at every height: ShC_j = C_j identically on 𝒯 — the shadow IS the composed read. (iv) [ATTAINMENT — the leaf-depth failure] at a non-x-free genre whose key power's self-overflow is non-cancelling (certificate below; machine-checked at FAM-A5/A7/B/C), the floor is ATTAINED: f = Phi2^{mu2} has composed read DRAIN (C_j = 0) while its shadow read carries a nonzero digit at exactly THETA_j at the touched coordinate(s) [GT3-r2 PIN: "touched" is the CERTIFICATE sense — coordinate j is touched iff the key power's assembled height-THETA_j K2-digit (the proof's single-Phi'-extraction sum) does not cancel, i.e. GENTOW3-BOX-1's certificate holds at (genre, j); NOT the weaker "ShC_j ≠ 0" — a measured frame separates the two readings (FR-M3 j = 0: ShC_0 = 64 ≠ 0 with pin 12 while the height-THETA_0 = 10 digit cancels), and (iv) is true under the certificate reading only — S7.6] — and deep perturbations (disc ≠ 0) keep the divergence. The shadow read at heights ≥ THETA_j is NOT a function of the honest data.
+```
+
+C3 provides the corrected-key coefficient convention, while C6 characterizes when an individual exact lift is \(x\)-free. Neither clause defines or controls \(ShC_j-C_j\), proves the \(\Theta_j\) discrepancy floor, establishes faithful-band equality, or proves the certificate-based attainment claim.
+
+### Provenance leg — PASS
+
+T1’s lift and dictionary proofs do not consume THEOREM GENTOW-3.
+
+### Definition-audit leg — FAIL
+
+The hypotheses \(f\in\mathcal T\), the shadow construction, the self-overflow certificate, and the deep-perturbation mechanism are not consequences of T1’s carrier. Importing them would expand T1.
+
+**Failure location:** A4 absorbs the corrected-key and \(x\)-free rescope only; it does not absorb GENTOW-3(i)–(iv).
+
+---
+
+## A5 — GENTOW4
+
+### Statement leg — FAIL
+
+**T1 C2 + C3 + C4 + C6 ⟹ LEMMA GENTOW-4.1** (`md5=d7d1bf2b130424408025b37187067507`) is false:
+
+```text
+**LEMMA GENTOW-4.1.** In the S0 setting (partial side): (a) [floor, every side] every side of P(F) has dv-slope > D'h; in particular kappa2 > D'h and every sibling slope qualifies as a level-2 datum slope. (b) [psi2(0) != 0] the residual of EVERY side of P(F) has nonzero constant term; in particular psi2(0) != 0, and HETOW-1 holds verbatim with this in place of its full-side endpoint step: (kappa2, rtilde) is a level-2 datum of DEFINITION HE7-1 over the outer frame, and the tower-node locus is its level-2 point set. (c) [key bridge] HETOW-2 [GT4-r1: = the [r1 2026-08-09]-RESTATED HETOW-2, stated at the WRAP-CORRECTED key of the S0 pin — the gauge-naive form was refuted at eta != 1, f2 = 2 frames (S8; FR-G measured the discrepancy AT dv2 = T2 exactly); the restated display supplies Psi-membership with w = 0 under the (LIFT)-slot form at any f1] holds verbatim: Phi2 = Psi_{kappa2,rtilde} − w with w = 0 or dv2(w) > T2, so by LEMMA HE7-12 the §S5 package, THEOREM HE7.A(1)(2), the refine package (HE7-12/13, HE7-8), the §S1 CONVENTION with LEMMA HE6R1-3's peel, ANNEX-LEMMA HE7-13', and LEMMA HE6R1-2 with RIDER HE6R1-2R all hold with key Phi2. (d) [frame peels] if Phi' | f then Phi' EXACTLY divides f (disc != 0), contributes one irreducible factor with (e, f) = (e1, f1), and the read continues on f/Phi' (whose development is the J-shift); if Phi2 | f likewise via LEMMA HE6R1-3 at key Phi2 ((c)), contributing (e1e2, f1f2) and dropping mu2 by 1. So assume Phi' ∤ f, Phi2 ∤ f below.
+```
+
+C3 and C6 supply the wrap-corrected coefficient on its live domain. C4 prevents an invalid raw-print normalization. They do not prove:
+
+- the all-sides slope bound in (a);
+- the nonzero constant terms or level-2 point-set identity in (b);
+- \(\Psi\)-membership and the complete HE7 package in (c); or
+- either peel and its splitting contribution in (d).
+
+### Provenance leg — PASS
+
+T1 does not consume GENTOW-4.1 in proving C2–C6. The HE7 consequences are simply outside T1.
+
+### Definition-audit leg — FAIL
+
+The S0 partial-side setting, polygon geometry, HETOW-1 point-set result, HE7 membership, squarefreeness, and peel theorems are not implied by T1. C4’s \(z^\nu\) bridge also does not supply any of them.
+
+**Failure location:** A5’s corrected-key specialization is valid, but its claimed absorption cannot reach GENTOW-4.1(a)–(d).
+
+---
+
+## A6 — GENTOW6
+
+### Statement leg — FAIL
+
+**T1 C3 + C5 + C6 ⟹ THEOREM GENTOW-6.3** (`md5=05fc38817b8c75297267bb57089e898f`) is false:
+
+```text
+**THEOREM GENTOW-6.3 (attainment at mu2 = 2, every genre).** For f = Phi2^2 at any tower genre: [GT6-r1 SCOPE PIN (PE1 F-1, CRITICAL): "every genre"/"any tower genre" reads AT f1 = 1, at the corrected chat_t. At f1 >= 2 the displays below read the lift coefficients as x-free scalars and are NOT proved as written: (c)'s hypothesis auto-holds at every f1 >= 2 genre (i_t + i_{t'} <= 2e1−2 < 2e1 <= e1f1 = D') while its conclusion can fail at an x-ful digit; (b) is VACUOUS there (2i_{t*} <= 2e1−2 < D': hypothesis unsatisfiable — true but empty); (a)'s pair census is the r = r' = 0 sub-census of the corrected (LIFT) shape. The f1-general form (a')/(b')/(c') with I_t := i_t + e1·r_max(t) is ANNEX-THEOREM GENTOW-6.3' (S6.1), machine-unexercised at f1 >= 2 (GENTOW6-BOX-4).] (a) [SOURCE CLASSIFICATION] the height-THETA graded layer of the discrepancy (ShC_j − C_j over the composed grid) is a sum of SINGLE-Phi'-extraction branches, one per x-overflowing lift pair: the products (chat_t nhat_t Phi'^{e2t})·(chat_{t'} nhat_{t'} Phi'^{e2t'}), (t, t') in T^2, with i_t + i_{t'} >= D'; a pair's branches enter at two-variable position (x^{i_t+i_{t'}}, Y^{e2(t+t')}), are extracted to Y-exponent e2(t+t') + 1, and every subsequent division/recarry step emits terms of Y-exponent LOWERED by e2f2 − e2s >= e2(f2 − t*) >= e2 > 0 (s in T) at the same weight. Multi-extraction branches sit at weight >= THETA + delta; tail (non-extraction) routes are shared by both reads and cancel. (b) [CERT-TOP: the top-lift certificate] if 2·i_{t*} >= D', the composed slot at two-variable position (x^{2i_{t*}−D'}, Y^{2e2t*+1}) — composed coordinate j* = floor((2e2t*+1)/(e2f2)), slot b* = (2e2t*+1) mod e2f2, a* = 2i_{t*} − D' — receives EXACTLY ONE height-THETA branch, of digit (chat_{t*})^2 · pi^{2a_{t*}} · (wrap unit) , v = 2a_{t*}, nonzero in the field K2: the shadow diverges at height THETA_{j*} = (2−j*)E2 + delta at coordinate j*, exactly on the floor. In particular GENTOW-3(iv)'s certificate holds UNCONDITIONALLY at every genre with 2i_{t*} >= D'. (c) [NO-OVERFLOW EXACTNESS] if i_t + i_{t'} < D' for every pair (t, t') in T^2, then the level-1 development of Phi2^2 equals K2(x, Y)^2 term by term on the grid (no x-carry ever fires), the shadow division is the honest division, and ShC_j = C_j = 0: the key-power witness is shadow-EXACT. (d) [REGIME 3] genres with some i_t >= 1 (non-x-free) and no overflowing pair exist (witness FAM-E, S4: (e1,f1,mu1;h) = (3,1,4;1)/Q2, e2 = 2, f2 = 1, u2 = 7, i_0 = 1, 2i_0 = 2 < 3 = D'), and there the geography's failure clause survives through ENTRY- driven overflows: a displayed member (S4's E-ENTRY row: an entry digit at a slot with a + i_{t} >= D') has shadow read != honest read at a displayed height >= THETA_j, both reads decided, PARI-adjudicated. Attainment AT EXACTLY THETA via entry drivers, and the general classification of which regime-3 members diverge, is NOT claimed as a theorem — GENTOW6-BOX-3 (S5).
+```
+
+C5 repairs the coefficient read by using \(\gamma_k(A)\); C6 supplies full integral support on \(M>D'h\) and the correct \(x\)-free criterion. Those clauses do not prove the extraction census, unique top branch, no-overflow equality of the two divisions, or the regime-3 witness. T1 honesty-ledger item 10 expressly excludes “the remaining extraction and attainment claims of GENTOW6 6.3\('\).”
+
+### Provenance leg — PASS
+
+C5 and C6 are proved directly and do not consume THEOREM GENTOW-6.3.
+
+### Definition-audit leg — FAIL
+
+The specialization \(f=\Phi_2^2\), the \(f_1=1\) scope pin, shadow/composed grids, extraction rules, noncancellation certificate, and machine/PARI witness are not implied by T1.
+
+**Failure location:** A6 correctly absorbs the normalized scalar-read and exact-lift ingredients, but not GENTOW-6.3(a)–(d).
+
+---
+
+## A7 — GENTOW2
+
+### Statement leg — PASS only conditionally; therefore the row fails the protocol
+
+**T1 C1 + C2 + C3 ⟹ LEMMA GENTOW2-B** (`md5=8a00bf44d21f87e878c0be6226b13b61`) once T1’s ladder-multiplicativity site obligation is assumed:
+
+```text
+**LEMMA GENTOW2-B [r3 RESTATED — PE4 F1: the pre-repair conclusion "R_ν(Φ₃) = ψ₃" for the PER-HEIGHT digit string is machine-refuted at letter-live frames (LD2, honesty box); the lemma now carries the MEASURED transformation law and the prescription that realizes any admissible target].** Let the recipe data be as in the r3 box: k̂_t ∈ K[x] with deg k̂_t < deg Φ₂, dv₂-height u₃(f₃ − t), and K₂-digit residual class c_t ∈ K₂ = F₃ (a GENHN-2′ ladder lift; k̂_t = 0 when c_t = 0, c₀ ≠ 0), where u₃ = e₃·κ₃, gcd-normalized so the pins (e₃t, u₃(f₃−t)) lie on the line through (e₃f₃, 0) of dv₂-slope κ₃, with κ₃ > e₂f₂u₂ (equivalently λ₃ := κ₃/(e₁e₂) − ν_{µ₂}(Φ₂)... > 0; the positivity is the [r1]-style node-floor arithmetic, here an explicit HYPOTHESIS). Then Φ₃ := Φ₂^{e₃f₃} − Σ_{t<f₃} k̂_t Φ₂^{e₃t} satisfies (B-law) R_ν(Φ₃) = y^{f₃} − Σ_{t<f₃} u(β_t)·c_t·y^t, u(β_t) = ϑ(t)·w^{f₃−t}, where u(β_t) := R_{3,β_t}(n̂₂(u₃(f₃−t))) is B′'s per-grade unit (S5.1), ϑ(t) := res((n̂₂(u₃(f₃−t))/n̂₂(u₃)^{f₃−t})(x₀)) is the repo-derivable n̂₂-cocycle (grade-determined, x₀-free, a z₁^j z₂^k letter monomial — LEMMA GENTOW2-B″, S5.2; ϑ(f₃−1) = 1), and w := R_{3,κ̄}(n̂₂(u₃)) ∈ K₂^× is a single slot-independent unit (κ̄ := u₃/e(µ₂), the top slot's grade). Consequently, given a TARGET ψ₃ = y^{f₃} − Σ_{t<f₃} a_t y^t ∈ K₂[y] monic irreducible with ψ₃(0) ≠ 0, the MULTIPLICATIVE-CONVENTION prescription c_t := ϑ(t)^{−1}·a_t realizes R_ν(Φ₃) = w^{f₃}·ψ₃(y/w) =: ψ₃^{(w)}, monic irreducible of degree f₃ with ψ₃^{(w)}(0) = w^{f₃}ψ₃(0) ≠ 0 (the substitution y ↦ wy preserves monicity after the renormalization displayed, irreducibility, degree, and the nonzero constant) — an ADMISSIBLE residual, so the recipe realizes THEOREM GENTOW2-A's hypothesis (ii) with residual ψ₃^{(w)} for any admissible target ψ₃. The unadjusted PER-HEIGHT prescription (c_t = a_t) realizes ψ₃ itself iff u(β_t) = 1 at each used slot — holding at each letter-dead slot the standing record tested, and failing at PE4's letter-live LD2 (honesty box below).
+```
+
+Supply:
+
+- C2 gives the coherent/multiplicative telescope.
+- GENTOW2’s \(\vartheta(t)\) is T1’s inverse-orientation \(\Theta_i(t)\).
+- C3-B-law gives \(u(\beta_t)=\Theta_i(t)w_i^{f-t}\).
+- C3-canonical-read gives the coefficient transformation.
+- C3-three-reads gives \(w^f\psi(y/w)\) and factor-pattern invariance.
+- C1 supplies the reduction of the grade unit to preceding canonical letters.
+
+Thus the formula follows **if** canonical residual reads are multiplicative on the relevant ladder monomials.
+
+### Provenance leg — PASS for GENTOW2-B itself
+
+T1 §2.3 does not cite LEMMA GENTOW2-B. It derives the transformation algebraically after assuming the site obligation. T1’s own supplier ledger does, however, identify GENTOW2-B″ as the level-2 source of that obligation.
+
+### Definition-audit leg — FAIL
+
+The closed GENTOW2-B statement derives its per-grade unit law through B′/B″ in the accepted GENTOW2 setting. T1 instead assumes:
+
+> “at the consumed sites that the canonical residual read is multiplicative on the relevant ladder monomials”
+
+That hypothesis is not implied by the explicit recipe hypotheses quoted above. T1’s absorption map also concedes that the A7 B-law remains supplier-dependent. Therefore a hypothesis has migrated from a proved local conclusion into T1’s carrier.
+
+**Failure location:** A7 passes the algebraic transformation but fails the no-hypothesis-migration requirement at C3-B-law’s ladder-multiplicativity obligation.
+
+SUMMARY: 1/7 CHECKS PASS (+ failures A2, A3, A4, A5, A6, A7)

@@ -1,0 +1,628 @@
+# T1 r2 corrections — 2026-08-12
+
+These edits are statement-narrowing repairs. Supplier-dependent facts are named explicitly and are not counted as proved by T1.
+
+## R2-1 — Remove the unsupported arbitrary-depth letter reduction
+
+In §1.1, after the general-level normalizer paragraph, insert:
+
+> No normalization of the residue-unit part of \(\widehat n_i(m)\) is imposed at arbitrary depth. Consequently, exact height and bounded-exponent normal form alone do not imply that a value-zero quotient of tower normalizers is a monomial in the preceding canonical letters.
+>
+> If such a description is consumed at level \(i\ge2\), it must cite the following named supplier hypothesis:
+>
+> \[
+> \boxed{
+> \begin{minipage}{0.88\linewidth}
+> \(\mathrm{(H\!-\!JA\!-\!CONJ)}_i\): the accepted JA conjugation formula supplies a specified Laurent monomial
+> \[
+> J_i(Z_1,\ldots,Z_i)
+> \]
+> such that
+> \[
+> \operatorname{res}\!\left(
+> \frac{\widehat n_i(u_{i+1})}
+> {\pi_{i+1}^{u_{i+1}}}
+> \right)
+> =
+> J_i(z_1,\ldots,z_i).
+> \]
+> \end{minipage}
+> }
+> \tag{H-JA-CONJ}
+> \]
+>
+> This is a site hypothesis imported from the JA supplier, not a consequence of the T1 carrier. The explicit level-two calculation below does not require it.
+
+In (C1), replace
+
+> The quotient has value zero. Successive reduction by the tower relations expresses \(\rho_i\) as a monomial in preceding canonical letters. This is a terminating reduction algorithm; no closed exponent formula is asserted at arbitrary depth.
+
+with:
+
+> The quotient has value zero. No arbitrary-depth canonical-letter monomial assertion follows from the T1 carrier. At a site carrying \(\mathrm{(H\!-\!JA\!-\!CONJ)}_i\), one may additionally conclude
+> \[
+> \boxed{\rho_i=J_i(z_1,\ldots,z_i).}
+> \tag{C1-JA-specialization}
+> \]
+> The level-two formula below is unconditional and is proved directly from the displayed level-one normalizers.
+
+In §2.1, replace the arbitrary-depth reduction paragraph beginning
+
+> Both normalizers have height \(u_{i+1}\), so the quotient has value zero. Successively remove the highest key …
+
+with:
+
+> Both normalizers have height \(u_{i+1}\), so the quotient has value zero. This proves the unconditional content of (C1-general). The carrier supplies no control of the remaining residue-unit part. Formula (C1-JA-specialization), when used, is exactly the imported hypothesis \(\mathrm{(H\!-\!JA\!-\!CONJ)}_i\), not an additional conclusion of this proof.
+>
+> The following level-two computation is independent of that supplier hypothesis.
+
+This defeats the unit-twist counter-configuration without enlarging T1.
+
+## R2-2 — Make the harness/print polynomial comparison a named supplier fact
+
+In (C4), replace the paragraph beginning
+
+> If \(H(y)\) is the harness residual and \(P(y)\) the normalized print residual, the corresponding support statement is …
+
+with:
+
+> The attained-origin calculation above concerns one normalization exponent. It does not by itself compare all coefficients of a harness residual and a normalized print residual.
+>
+> A support comparison may be invoked only under the following named supplier hypothesis:
+>
+> \[
+> \boxed{
+> \begin{minipage}{0.88\linewidth}
+> \(\mathrm{(H\!-\!JA\!-\!RES\!-\!CONJ)}\): for specified nonzero
+> \(H,P,Q\in K[y]\), the accepted harness/print conjugation formula supplies
+> \[
+> H(y)=y^\nu Q(y),
+> \qquad
+> P(y)=aQ(by),
+> \qquad
+> a,b\in K^\times.
+> \]
+> \end{minipage}
+> }
+> \tag{H-JA-RES-CONJ}
+> \]
+>
+> Under \(\mathrm{(H\!-\!JA\!-\!RES\!-\!CONJ)}\), multiplication by \(y^\nu\) translates exponent support, while multiplication by a unit and substitution by a unit preserve it. Hence
+> \[
+> \boxed{
+> \operatorname{Supp}_y(H)
+> =
+> \nu+\operatorname{Supp}_y(P),
+> \qquad
+> \deg H=\deg P+\nu.
+> }
+> \tag{C4-support}
+> \]
+>
+> Thus attained abscissas and normalized support widths agree at sites carrying the supplier comparison. Neither the polynomial identities nor their support consequences follow from (C4-origin) alone.
+
+Replace the final paragraph of §2.4 with:
+
+> This proves (C4-origin). The proof of (C4-origin) stops here.
+>
+> If \(\mathrm{(H\!-\!JA\!-\!RES\!-\!CONJ)}\) is cited, its two polynomial identities immediately give (C4-support). T1 does not derive those identities from the attained-origin exponent calculation.
+
+## R2-3 — Type the evaluation point and its residue embedding
+
+Immediately before (C6), insert:
+
+> Fix a level-one tower point \(\theta\) together with the specified residue embedding
+> \[
+> \iota_\theta:K_1\hookrightarrow\kappa(\theta)
+> \]
+> satisfying
+> \[
+> \boxed{
+> \operatorname{res}\!\left(
+> \frac{\theta^{e_1}}{\pi^h}
+> \right)
+> =
+> \iota_\theta(\eta).
+> }
+> \tag{C6-theta}
+> \]
+> Whenever \(K_1\) is identified with its image under \(\iota_\theta\), the symbol \(\iota_\theta(\lambda)\) may be written simply as \(\lambda\).
+
+Replace (C6-residue) by:
+
+\[
+\boxed{
+\operatorname{res}\!\left(
+\frac{L_M(\lambda)(\theta)}
+{n(M)(\theta)}
+\right)
+=
+\iota_\theta(\lambda).
+}
+\tag{C6-residue}
+\]
+
+In §2.6, replace
+
+> After division by \(n(M)\), its residue is \(\lambda_r\eta^r\). Basis independence prevents cancellation and proves (C6-residue).
+
+with:
+
+> After evaluation at \(\theta\) and division by \(n(M)(\theta)\), the \(r\)-th summand has residue
+> \[
+> \iota_\theta(\lambda_r)\,
+> \operatorname{res}\!\left(
+> \frac{\theta^{e_1}}{\pi^h}
+> \right)^r
+> =
+> \iota_\theta(\lambda_r\eta^r).
+> \]
+> Summing and using the chosen \(K_1\)-basis gives
+> \[
+> \operatorname{res}\!\left(
+> \frac{L_M(\lambda)(\theta)}
+> {n(M)(\theta)}
+> \right)
+> =
+> \iota_\theta(\lambda).
+> \]
+> Under the declared identification of \(K_1\) with its image, this is the accepted GENHN display with right-hand side \(\lambda\).
+
+## R2-4 — Turn clearance into an explicit GENHN supplier interface
+
+Replace (C6-clearance) and its following collection sentence with:
+
+> The exact-lift theorem above contains no definition of \(\Phi'\), its monomial valuations, or the outer polygon side. Consequently it proves no clearance estimate by itself.
+>
+> At the composed GENHN application, clearance may be used only after citing:
+>
+> \[
+> \boxed{
+> \begin{minipage}{0.88\linewidth}
+> \(\mathrm{(H\!-\!GENHN\!-\!CLEAR)}\): \(\Phi'\), the outer side, and the collection/\(\Phi'\)-carry operation are those of the accepted \(T(b)'(i)\) site. For
+> \[
+> r=f_2-t,\qquad M=ru_2,\qquad u_2>e_2D'h,
+> \]
+> that supplier proves that every product of a monomial of
+> \[
+> L_{ru_2}\!\bigl(c_t\eta^{W(t)}\bigr)
+> \]
+> with a monomial of \(\Phi'^{e_2t}\) clears the outer side by at least
+> \[
+> \frac{r(u_2-e_2D'h)}{e_1}>0,
+> \]
+> and that collection and \(\Phi'\)-carry can only cancel terms or move them upward.
+> \end{minipage}
+> }
+> \tag{H-GENHN-CLEAR}
+> \]
+>
+> Thus T1 supplies the exact-height coefficient used at that site; the outer-side estimate remains the named GENHN supplier fact.
+
+Replace the last sentence of §2.6 with:
+
+> Substitution of \(M=ru_2\) proves the corrected coefficient, its coherent digit, and its multiplicative coefficient. Any subsequent outer-side clearance assertion is an invocation of \(\mathrm{(H\!-\!GENHN\!-\!CLEAR)}\); it is not derived in T1.
+
+The second A1 absorption row must consequently end:
+
+> T1 absorbs the corrected coefficient and its exact-lift properties. The clearance sentence is retained only by the explicit citation \(\mathrm{(H\!-\!GENHN\!-\!CLEAR)}\), not as a T1 consequence.
+
+## R2-5 — Type the modular-origin data
+
+Replace the opening of (C4) by:
+
+> Fix
+> \[
+> e\in\mathbf Z_{>0},
+> \qquad
+> \ell,\beta\in\mathbf Z,
+> \qquad
+> z\in K^\times.
+> \]
+> Let \(s_{\min}(\beta)\) be the unique representative in
+> \(\{0,\ldots,e-1\}\) of the integer residue class
+> \(\ell\beta\bmod e\), and put
+> \[
+> s_{\min}(\beta)
+> =
+> \operatorname{rem}_e(\ell\beta),
+> \qquad
+> t_{\min}(\beta)
+> =
+> \frac{\ell\beta-s_{\min}(\beta)}e
+> \in\mathbf Z,
+> \qquad
+> \varepsilon(\beta)=z^{-t_{\min}(\beta)}.
+> \]
+
+The remaining attained-origin calculation is unchanged.
+
+## Pin-enabling C5 corollary
+
+After the definition of \(\varpi\), insert the directly derived identity
+
+\[
+\boxed{
+\frac{n(k)}{\varpi^k}
+=
+\left(\frac{x^{e_1}}{\pi^h}\right)^{-q(k)}.
+}
+\tag{C5-monomial-ratio}
+\]
+
+In §2.5, derive it before taking residues:
+
+\[
+i(k)-i_0k=-e_1q(k),
+\qquad
+\frac{k-i(k)h}{e_1}
+-
+\frac{k-i_0kh}{e_1}
+=
+hq(k).
+\]
+
+This adds no hypothesis and makes the HETOW ratio pin a literal specialization.
+
+# Replacement §3 — Exact-span absorption map
+
+Replace the introductory paragraphs of §3 with:
+
+> Under the revised blueprint’s non-row-annex provision, an A-row absorbs only the closed sub-display quoted in that row. A theorem or lemma identifier is a span locator; it does not mean that T1 implies the entire containing statement.
+>
+> Each row must have the form
+> \[
+> \text{specified T1 clause}
+> \Longrightarrow
+> \text{quoted pinned subclaim}.
+> \]
+> If the containing result needs geometry, routing, membership, extraction, or a site theorem not supplied by T1, the row is labeled “supplies the gauge input to,” and the residual obligation is named explicitly.
+
+## A2 — HETOW
+
+**SPAN PIN.** Accepted file `HETOW`, LEMMA HETOW-4, `md5=2500c2f458b6647e9bedeee8c84009a0`, parts (a)–(b):
+
+\[
+\boxed{
+\frac{\widehat n_2(k)}{n_2(k)}
+=
+\frac{\widehat n(m(k))}{\varpi^{m(k)}}
+=
+\left(\frac{x^{e_1}}{\pi^h}\right)^{-Q(m(k))}
+}
+\]
+
+and
+
+\[
+\boxed{
+\operatorname{res}\!\left(
+\frac{\widehat n_2(k)(\xi)}{n_2(k)(\xi)}
+\right)
+=
+\eta_\xi^{-Q(m(k))}
+=
+\iota_\xi\!\left(\eta^{-Q(m(k))}\right).
+}
+\]
+
+With \(w_2=\lfloor(s(k)+s(k'))/e_2\rfloor\), the pinned carry display is
+
+\[
+\boxed{
+\frac{\tau(k)\tau(k')}{\tau(k+k')}
+=
+\eta^{
+\operatorname{wrap}_1(m(k),m(k'))
++
+w_2\left(
+Q(u_2)+
+\operatorname{wrap}_1(m(k)+m(k'),u_2)
+\right)
+}.
+}
+\]
+
+**Consumption check.**
+
+\[
+\boxed{
+\text{T1 (C5-monomial-ratio) + (C5-carry)}
+\Longrightarrow
+\text{the three pinned HETOW displays}.
+}
+\]
+
+**Scope.** T1 does not absorb HETOW-4(c)–(d). The side-assembly brackets, telescoping coefficient identity, side-letter equality, routing transport, and common refinement polynomial remain HETOW/HE7 supplier conclusions.
+
+## A3 — GENTOW1
+
+**SPAN PIN.** Accepted file `GENTOW1`, the gauge-correction display attached to the level-one coefficient pin preceding LEMMA GENTOW-1 (`md5=4b4d9f21dae75e08d515ff8a7263b559`):
+
+\[
+\boxed{
+M_t=(f_2-t)u_2>D'h,
+\qquad
+\gamma_t=c_t\eta^{W(t)},
+\qquad
+\widehat k_t=L_{M_t}(\gamma_t),
+}
+\]
+
+with the closed read statement
+
+\[
+\boxed{
+dv_1(\widehat k_t)=M_t,
+\qquad
+c_t^{\mathrm{mult}}
+=
+\gamma_t\eta^{-W(t)}
+=
+c_t.
+}
+\]
+
+Here the accepted local \(\gamma_t\) is T1’s coherent digit \(\Gamma_t\), not HE6’s \(\gamma_k(A)\).
+
+**Consumption check.**
+
+\[
+\boxed{
+\text{T1 (C2-level-1) + (C3-dictionary) + (C6)}
+\Longrightarrow
+\text{the pinned corrected-coefficient display}.
+}
+\]
+
+**Classification.** T1 **supplies the gauge input to** LEMMA GENTOW-1.
+
+**Residual obligation.** The characterization of \(\mathcal T\), budget floors, triangular-unimodular fibration, digit counts, sharp node bounds, class separation, and the field-root inequality in GENTOW-1(a)–(d) remain GENTOW1/GENHN-2′/HE6 supplier results. Equal exact height only says that an already-established value-blind budget is unchanged by the gauge correction.
+
+## A4 — GENTOW3
+
+**SPAN PIN.** Accepted file `GENTOW3`, gauge-annex corrected-key and \(x\)-free-rescope displays associated with THEOREM GENTOW-3 (`md5=a6d97dfefeb2be042cada0d9ca46c31e`):
+
+\[
+\boxed{
+M_t=(f_2-t)u_2>D'h,
+\qquad
+\widehat k_t
+=
+L_{M_t}\!\bigl(c_t\eta^{W(t)}\bigr),
+}
+\]
+
+and, for a nonzero digit \(\lambda\),
+
+\[
+\boxed{
+L_M(\lambda)\text{ is an \(x\)-free monomial}
+\iff
+i(M)=0
+\text{ and }
+\lambda\in\mathbf F_Q.
+}
+\]
+
+**Consumption check.**
+
+\[
+\boxed{
+\text{T1 (C3-level-1-key) + (C6-x-free)}
+\Longrightarrow
+\text{the two pinned GENTOW3 gauge displays}.
+}
+\]
+
+**Classification.** T1 **supplies the corrected-key and \(x\)-free inputs to** THEOREM GENTOW-3.
+
+**Residual obligation.** The definitions and comparison of \(ShC_j\) and \(C_j\), the \(\Theta_j\) floor, faithful-band equality, zero-discrepancy theorem, self-overflow certificate, attainment, and deep-perturbation conclusions remain GENTOW3 results.
+
+## A5 — GENTOW4
+
+**SPAN PIN.** Accepted file `GENTOW4`, S3 corrected-key bridge attached to LEMMA GENTOW-4.1 (`md5=d7d1bf2b130424408025b37187067507`):
+
+\[
+\boxed{
+\Phi_2
+=
+\Phi'^{\,e_2f_2}
+-
+\sum_{t<f_2}
+L_{(f_2-t)u_2}
+\!\bigl(c_t\eta^{W(t)}\bigr)
+\Phi'^{\,e_2t},
+}
+\]
+
+on the displayed live domain \((f_2-t)u_2>D'h\).
+
+The separately pinned attained-origin equation is
+
+\[
+\boxed{
+z^{t_{\mathrm{Def}}}
+=
+z^\nu\varepsilon(\beta).
+}
+\]
+
+Any support comparison additionally cites \(\mathrm{(H\!-\!JA\!-\!RES\!-\!CONJ)}\).
+
+**Consumption checks.**
+
+\[
+\boxed{
+\text{T1 (C2-level-1) + (C3-level-1-key) + (C6)}
+\Longrightarrow
+\text{the pinned corrected-key display},
+}
+\]
+
+\[
+\boxed{
+\text{T1 (C4-origin)}
+\Longrightarrow
+z^{t_{\mathrm{Def}}}=z^\nu\varepsilon(\beta).
+}
+\]
+
+**Classification.** T1 **supplies the gauge input to** GENTOW-4.1(c)/S3.
+
+**Residual obligation.** The all-sides slope bound, nonzero residual constants, level-2 point-set identification, \(\Psi\)-membership, the HE7 routing/refinement package, both frame peels, and their splitting contributions remain GENTOW4/HETOW/HE7 supplier conclusions. In particular, T1 does not imply
+
+\[
+\Phi_2=\Psi_{\kappa_2,\widetilde r}-w,
+\qquad
+w=0\ \text{or}\ dv_2(w)>T_2.
+\]
+
+## A6 — GENTOW6
+
+**SPAN PIN.** Accepted file `GENTOW6`, normalized scalar-read display used by THEOREM GENTOW-6.3 (`md5=05fc38817b8c75297267bb57089e898f`):
+
+\[
+\boxed{
+\gamma_k(A)
+=
+\sum_{\substack{t\ge0\\i(k)+e_1t<D'}}
+\operatorname{res}\!\left(
+a_{i(k)+e_1t}
+\pi^{-(k-(i(k)+e_1t)h)/e_1}
+\right)\eta^t,
+}
+\]
+
+\[
+\boxed{
+\operatorname{res}\!\left(
+\frac{A(\xi)}{n(k)(\xi)}
+\right)
+=
+\iota_\xi\bigl(\gamma_k(A)\bigr),
+\qquad
+\operatorname{res}\!\left(
+\frac{A(\xi)}{\varpi(\xi)^k}
+\right)
+=
+\iota_\xi\bigl(\gamma_k(A)\bigr)\eta_\xi^{-q(k)}.
+}
+\]
+
+The associated lift pin is
+
+\[
+\boxed{
+L_M(\lambda)
+=
+\sum_{r=0}^{f_1-1}
+\widetilde{\lambda_r}
+x^{i(M)+e_1r}\pi^{a-rh},
+\qquad
+M>D'h,
+}
+\]
+
+with its full displayed support and exact height.
+
+**Consumption check.**
+
+\[
+\boxed{
+\text{T1 (C5-gamma) + (C5-normalizer-read)
++ (C5-varpi-read) + (C6-lift)}
+\Longrightarrow
+\text{the pinned GENTOW6 scalar-read and lift displays}.
+}
+\]
+
+**Classification.** T1 **supplies the normalized scalar-read and exact-lift inputs to** THEOREM GENTOW-6.3.
+
+**Residual obligation.** The \(f_1=1\) scope, shadow/composed grids, single-\(\Phi'\)-extraction census, unique top branch, noncancellation certificate, no-overflow equality, regime-3 witness, and attainment statements remain GENTOW6 results. No part of GENTOW-6.3(a)–(d) is absorbed merely from C5–C6.
+
+## A7 — GENTOW2
+
+**SPAN PIN 1.** Accepted file `GENTOW2`, S5.1 level-two letter display:
+
+\[
+\boxed{
+z_2
+=
+\eta_2z_1^{-\lfloor\ell_1u_2/e_1\rfloor}.
+}
+\]
+
+**Consumption check.**
+
+\[
+\boxed{
+\text{T1 (C1-base-letter) + (C1-level-2)}
+\Longrightarrow
+\text{the pinned S5.1 letter display}.
+}
+\]
+
+**SPAN PIN 2.** LEMMA GENTOW2-B, `md5=8a00bf44d21f87e878c0be6226b13b61`, terminal rescaling display:
+
+\[
+\boxed{
+\psi_3^{(w)}(y)
+=
+w^{f_3}\psi_3(y/w).
+}
+\]
+
+The pinned consequences are: monicity after the displayed renormalization, preservation of degree and irreducibility, preservation of a nonzero constant term, and preservation of irreducible-factor degrees and multiplicities.
+
+**Consumption check.**
+
+\[
+\boxed{
+\text{T1 (C3-three-reads) and its unit-substitution argument}
+\Longrightarrow
+\text{the pinned rescaling and factor-pattern subclaim}.
+}
+\]
+
+**B-law classification.** T1 only **supplies the gauge algebra to** the preceding B-law display. The residual obligation is the accepted GENTOW2-B″ per-grade-unit theorem discharging ladder multiplicativity and the value-zero read:
+
+\[
+u(\beta_t)
+=
+\Theta(t)w^{f_3-t}.
+\]
+
+T1 may then perform the slotwise cancellation
+
+\[
+\Gamma_t=c_t\vartheta_{f_3-t},
+\qquad
+\Theta(t)=\vartheta_{f_3-t}^{-1},
+\]
+
+but it does not prove the supplier identity itself. Thus the B-law is no longer labeled “absorbed verbatim.”
+
+# Consequential scope edits
+
+Replace honesty-ledger items 1, 5, and 10 by:
+
+> 1. At arbitrary depth, T1 proves only the value-zero ratio in (C1-general). A preceding-letter monomial description requires the named supplier hypothesis \(\mathrm{(H\!-\!JA\!-\!CONJ)}_i\). The level-two formula is proved directly and is unconditional.
+
+> 5. The canonical minimal-grid factor and raw print factor differ by \(z^\nu\). The exponent identity (C4-origin) does not imply a comparison of whole residual polynomials. The support and degree formulas require \(\mathrm{(H\!-\!JA\!-\!RES\!-\!CONJ)}\).
+
+> 10. T1 does not prove note-specific budgets, floors, fullness counts, separator inequalities, polygon geometry, or extraction and attainment claims. In particular, outer-side clearance is available only through the named supplier input \(\mathrm{(H\!-\!GENHN\!-\!CLEAR)}\).
+
+In (C7), amend the affected package rows to read:
+
+| Package field | T1 datum available to that field |
+|---|---|
+| \(M1\) | The unconditional value-zero ratio and level-two letter formula in (C1); arbitrary-depth letter monomiality only under \(\mathrm{(H\!-\!JA\!-\!CONJ)}_i\). |
+| \(M2\) | The dictionary and canonical read in (C3), plus (C4-origin); support transport only under \(\mathrm{(H\!-\!JA\!-\!RES\!-\!CONJ)}\). |
+| \(M4\) | The exact-height formulas (C5)–(C6), at W2-C3’s accepted fence; polygon clearance only under \(\mathrm{(H\!-\!GENHN\!-\!CLEAR)}\). |
+
+Add to §6:
+
+> | Removed the unsupported arbitrary-depth unit reduction; made harness/print polynomial conjugation and GENHN clearance explicit supplier inputs; typed the modular-origin data; fixed the \(C6\) evaluation embedding; and re-scoped A2–A7 to closed gauge spans with named residual obligations. | T1P and T1CC2, 2026-08-12 r2 | Repairs 1 CRITICAL, 3 GAP, and 1 MINOR finding; prevents theorem-wide absorption from gauge-input rows. |
+
+SUMMARY: 11 REAL (repairs delivered)

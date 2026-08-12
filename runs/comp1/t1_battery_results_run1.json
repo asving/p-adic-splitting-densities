@@ -1,7 +1,7 @@
 {
   "fatal": null,
   "observed": {
-    "all_rows_pass": true,
+    "all_rows_pass": false,
     "counts": {
       "C1": 24,
       "C2": 48,
@@ -89,24 +89,24 @@
       "want": true
     },
     {
-      "got": true,
+      "got": false,
       "group": "seal",
       "name": "seal.distinct_commits",
-      "pass": true,
+      "pass": false,
       "want": true
     },
     {
-      "got": true,
+      "got": false,
       "group": "seal",
       "name": "seal.prereg_is_runner_parent",
-      "pass": true,
+      "pass": false,
       "want": true
     },
     {
-      "got": true,
+      "got": false,
       "group": "seal",
       "name": "seal.head_is_runner_commit",
-      "pass": true,
+      "pass": false,
       "want": true
     },
     {
@@ -3550,15 +3550,15 @@
   ],
   "schema": "S-1-T1-gauge-cocycle-battery-v1",
   "seal": {
-    "head": "8ac7bfe8e1adec023a4f1e3750b7c682c7e96116",
-    "prereg_commit": "cd5fad16d8075da3a96fb42a87dd23159df41a46",
+    "head": "90b192e1a51e0f3d957752dbe298a42f2708e1b0",
+    "prereg_commit": "2848258302dba28a2317b3126fa55095f8afea80",
     "root": "/data/users/asvin/math-and-lean/p-adic-splitting-densities",
-    "runner_commit": "8ac7bfe8e1adec023a4f1e3750b7c682c7e96116"
+    "runner_commit": "2848258302dba28a2317b3126fa55095f8afea80"
   },
   "sha256": {
     "note": "ec1f4187297928114c942eb774bac519132d90d13e29acbf792c60804e3f834e",
-    "prereg": "f0a534f5de9cb116d6c84176a42b943e0215b154ed58a5872e8c94834a4b99e4",
-    "runner": "936910e1d064d5c056fec5d98a11b3c085b84c28ad05d005722ee1da387bf1de"
+    "prereg": "9c23fad383f5bfcad14bdba80bbd0ee83c740336f3fa076467138a81fa712e4e",
+    "runner": "ff13e4a699f317b24bfc8ced4e3f6645c500453bb744c1d5d48a2ac28f1e4832"
   },
   "tooth_evidence": {
     "eta_implies_xfree": {
@@ -3662,5 +3662,5 @@
       ]
     }
   },
-  "verdict": "PASS"
+  "verdict": "FAIL"
 }
