@@ -28,7 +28,7 @@ proof consumes (tightness census + consumption map).
 | 12 | W-12 | CHALLENGE (fresh, R3) | A1 done 2026-08-12: 3 REAL verified + folded (dated corrections: κ(T) orbit factor, c_F ∈ ℚ(X) in (A1), BOX-1 (H-a)–(H-e)); 1 OBSTRUCTED (all-degree order-1 history-transfer lemma owed — dated obstruction record in note). Remaining: prove the lemma + sol discharge |
 | 13 | GENHN | CHALLENGE (fresh, R4) | A2 done 2026-08-12: 3 REAL verified + folded (LEMMA GENHN-CAP-GEN band projection, LEMMA GENHN-LIFT for T(b)′(i), T(a) residual (T−c)²); 2 OBSTRUCTED (GENHN.CLASS finiteness display, GENHN.A(ii) universal slot claim — both need statement re-display, owner sign-off, records in note). Remaining: sol discharge + the 2 statement decisions |
 | 14 | HE6 | CHALLENGE (fresh, R6) | A3 done 2026-08-12: 4 REAL verified + folded (γ_k normalizers in HE6-0″, HE6-3(a) length argument, HE6-0 equality scoping, ϖ ∈ K₀[x] in HE6-5) — all four dated corrections in note. Remaining: sol discharge |
-| 15 | HE6R1 | CHALLENGE (fresh, R7) | adjudicate+repair (A4) → discharge |
+| 15 | HE6R1 | CHALLENGE (fresh, R7) | A4 done 2026-08-12: 2 REAL verified + folded (Φ′-line equality scoping; LIFT₂ machine-claim scope); 2 OBSTRUCTED (HE6R1-1's global J ≤ log₂n−2 bound — D′=1 counterexample; completion statement vs GENHN-ERR-1 — needs the f₁≥2 count re-run lemma). Remaining: sol discharge + 2 statement decisions |
 | 16 | HE3 | CHALLENGE (fresh, R8) | adjudicate+repair (A5) → discharge |
 | 17 | GENIND ANNEX | sol pass found d-factor GAP | repair (R9) → clean sol pass |
 | 18 | WI ([GENTOW5-W(i)]) | r1 landed; sol PE2 was the challenge | pass 3 (R10) |
