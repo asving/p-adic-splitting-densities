@@ -2,3 +2,4 @@
 [19:08:22] S6R start
 [19:18:08] S6R exit 0 (38883 B; )
 [19:18:08] T1P3 start
+[19:22:11] T1P3 exit 0 (2499 B; VERDICT: NOT CLEAN | FINDINGS: 0C + 2G + 1m)

@@ -1,0 +1,66 @@
+Hostile pass 1 is not clean. I found no sign, orientation, attained-origin, HE6-normalization, lift-boundary, or weld-scope theorem failure beyond the findings below.
+
+### G1 — General-stage \(\Phi_i\) height remains untyped
+
+The carrier defines
+
+> \[
+> \eta_{i+1}=\operatorname{res}\!\left(
+> \frac{\Phi_i^{e_{i+1}}}{\widehat n_i(u_{i+1})}
+> \right),\qquad
+> z_{i+1}=\operatorname{res}\!\left(
+> \frac{\Phi_i^{e_{i+1}}}{\pi_{i+1}^{u_{i+1}}}
+> \right).
+> \]
+
+R3 supplies \(dv_i(\pi_{i+1})=1\), and the proof establishes that \(\widehat n_i(u_{i+1})/\pi_{i+1}^{u_{i+1}}\) has value zero. But nowhere is
+
+\[
+dv_i\!\left(\Phi_i^{e_{i+1}}\right)=u_{i+1}
+\]
+
+stated or imported.
+
+Consequently, the two displayed letter residues are not shown to be residues of value-zero factors, and the division argument proving (C1-general) is not typed. The same missing relation underlies the equal-height interpretation of the terms in (C3-key). Calling \(e_{i+1},f_{i+1},u_{i+1}\) “stage data” does not supply the required equation inside T1.
+
+Classification: **GAP**.
+
+### G2 — The general lift contract contradicts its zero convention
+
+The carrier states without restricting \(d\):
+
+> \[
+> dv_i(\operatorname{lift}_i(d;m))=m,
+> \qquad
+> \operatorname{res}\!\left(
+> \frac{\operatorname{lift}_i(d;m)}{\widehat n_i(m)}
+> \right)=d.
+> \]
+>
+> Zero is lifted as zero.
+
+For \(d=0\), these require simultaneously
+
+\[
+\operatorname{lift}_i(0;m)=0
+\quad\text{and}\quad
+dv_i(0)=m,
+\]
+
+whereas \(dv_i(0)=+\infty\). This is live in (C3-corrected-lift), since only \(c_0\ne0\) is required and other \(c_t\) may vanish. C6 correctly restricts its exact-height conclusion to \(\lambda\ne0\), but the general lift contract does not.
+
+Classification: **GAP**.
+
+### m1 — The weld-scope lint necessarily matches its own specification
+
+Required revision check 6 says:
+
+> Fail the document check if T1 contains “one transport map,” “unique gauge,” or an unqualified cross-face compatibility claim.
+
+Those first two forbidden strings occur literally in that sentence. A document-level “contains” check therefore fails T1 even when no mathematical assertion uses them. No exclusion for the lint specification, quoted text, or negated occurrences is stated. Since the acceptance gate requires the revised machine battery, this check cannot pass as written.
+
+The substantive C7 scope fence itself is sound; this is an instrumentation defect.
+
+Classification: **MINOR**.
+
+VERDICT: NOT CLEAN | FINDINGS: 0C + 2G + 1m
