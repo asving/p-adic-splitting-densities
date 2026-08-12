@@ -3837,3 +3837,115 @@ Append to the honesty ledger:
 Add to §6:
 
 > | Declared the read codomain ((C3-read-codomain)) and threaded it through the \(w_i\) unit inference, the \(y/w_i\) automorphism, \(\psi_{i+1}^{(w_i)}\), the A7 B-law row, and a new §4.2 codomain tooth; completed the (C7) \(M2\) fence list with the full graded-read bundle; made the front-matter status line self-maintaining (in-place edit of record); renamed the HETOW carry to \(c_2^{\mathrm{HET}}\); defined the grade data \(\mu_i\), \(e(\mu_i)\), \(\Gamma_i=\frac{1}{e(\mu_i)}\mathbb Z\) and fixed unsubscripted \(dv\) to \(dv_1\). | Fable hostile pass, 2026-08-12 r11 (Fable arm) | Repairs 2 GAP and 3 MINOR findings: scalar output of the residual read is now an explicit named obligation with a verified \(i=2\) supplier citation rather than an inference from nonvanishing, and the WELD-M-PKG \(M2\) interface names its complete read fence. |
+
+---
+
+## r12 (2026-08-12): the terminal-valuation binding + 4 typing minors
+
+*(Fable-arm; counter resets.)*
+
+# T1 r12 corrections — 2026-08-12
+
+These edits repair the findings of the latest Fable hostile pass (0 CRITICAL / 1 GAP / 4 MINOR; all mathematics recomputed clean; r11's codomain threading, \(e(\mu)\) form, and check-9 tooth verified): the unbound normalization valuation \(v\) in the r11 grade data (F-1), the \(\Gamma\) symbol collision (m-1), the one-clause \(w_i\in K_i^\times\) gate still standing in honesty-ledger items 2 and 19 (m-2), the R6-2 span whose strict assembly duplicates a sentence (m-3), and the unbound field \(K\) in (C4)/\(\mathrm{(H\!-\!JA\!-\!RES\!-\!CONJ)}\) (m-4). Counter state after this round: the clean-pass counter is RESET (every repair round resets it); the §7 acceptance gate still owes TWO consecutive clean hostile passes; the machine battery, green at its r-early state, is inherited evidence only, pending re-run against the current effective text.
+
+## R12-1 (F-1) — Bind \(v\): the base-normalized terminal tower valuation
+
+**Finding F-1 (GAP).** R11-5's grade data declares heights "integers in the normalization \(dv_i=e(\mu_i)\cdot v\), \(v\) the base-normalized valuation" — but \(v\) is unbound: no clause says which valuation of the tower it is. The natural misreading \(v=\mu_i\) (the level-\(i\) valuation, defined in the same paragraph's opening sentence) FALSIFIES (C1-stage-key-height): on the accepted GENTOW2 witness tower it yields \(dv_2(\Phi_2^{e_3})=20\ne21=u_3\) (displayed below). Only the terminal reading is compatible with the typed stage data.
+
+In the R11-5 §1.1 insertion (the **Grade data (definitions)** paragraph), replace the clause
+
+> are integers in the normalization \(dv_i=e(\mu_i)\cdot v\), \(v\) the base-normalized valuation.
+
+with:
+
+> are integers in the normalization \(dv_i=e(\mu_i)\cdot v\), where \(v\) is the base-normalized TERMINAL valuation of the tower — GENTOW2's \(\nu\), the last valuation of the MacLane chain; equivalently \(\mu_{i+1}\) on the consumed elements — and NOT the level-\(i\) valuation \(\mu_i\). On level-\(i\)-free elements (degree \(<\deg\Phi_i\), \(\Phi_i\)-free) the readings agree, \(\mu_i=v\) there (GENTOW2's standing Prop 1.9 cite); on the consumed powers of the stage key they differ, and only the terminal reading satisfies (C1-stage-key-height).
+
+Immediately after the **Grade data (definitions)** paragraph (as amended above and by R12-2), insert:
+
+> **Terminal-binding verification (the accepted `GENTOW2_PROOF_2026-08-09.md` witness tower, S2 dictionary, genre \((2,1,4)\to(2,1,2)\)).** There \(e(\mu_2)=4\), \(e_3=2\), \(\nu(\Phi_2)=w_3+\lambda_3=\tfrac{21}{8}\), \(\kappa_3=e(\mu_2)\,\nu(\Phi_2)=\tfrac{21}{2}\), and \(u_3=e_3\kappa_3=21\). Under the terminal binding \(v=\nu\ (=\mu_3)\),
+> \[
+> dv_2\!\left(\Phi_2^{e_3}\right)
+> =
+> e(\mu_2)\cdot e_3\cdot\nu(\Phi_2)
+> =
+> 4\cdot2\cdot\tfrac{21}{8}
+> =
+> 21
+> =
+> u_3,
+> \]
+> which is exactly (C1-stage-key-height) at \(i=2\). Under the reading \(v=\mu_2\), the key value drops to \(\mu_2(\Phi_2)=w_3=\nu(\Phi_2)-\lambda_3=\tfrac{5}{2}\) — recomputed this round on the S2 witness: on the \(\Phi'\)-expansion \(\Phi_2=\Phi'^2-4x\), \(\mu_2(\Phi'^2)=2\cdot\tfrac{5}{4}=\tfrac{5}{2}=\mu_1(-4x)\), so \(\mu_2(\Phi_2)=\tfrac{5}{2}\); consistency: \(\lambda_3=\tfrac{21}{8}-\tfrac{5}{2}=\tfrac{1}{8}>0\) with \(e_3=\operatorname{denom}(e(\mu_2)\lambda_3)=\operatorname{denom}(\tfrac{1}{2})=2\), matching the S2 row — so
+> \[
+> dv_2\!\left(\Phi_2^{e_3}\right)\Big|_{v=\mu_2}
+> =
+> 4\cdot2\cdot\tfrac{5}{2}
+> =
+> 20
+> <
+> 21
+> =
+> u_3,
+> \]
+> FALSIFYING (C1-stage-key-height). The unbound clause admitted this reading; the terminal binding excludes it.
+
+## R12-2 (m-1) — Rename the grade group: \(\Lambda_i\), not \(\Gamma_i\)
+
+**Finding m-1 (MINOR).** R11-5's grade group \(\Gamma_i=\frac{1}{e(\mu_i)}\mathbb Z\) collides with the carrier's coherent digits \(\Gamma_t\) ((C3); R1's \(\gamma_t\to\Gamma_t\) rename) and with the F4-JOINT digit tuple \((\Gamma_2,\Gamma_1,\Gamma_0)\): under the \(\Gamma_i\) spelling, \(\Gamma_2\) names both the F4-JOINT digit and the level-2 grade group.
+
+In the R11-5 **Grade data (definitions)** insertion, replace
+
+> lie in the grade group
+> \[
+> \Gamma_i=\frac{1}{e(\mu_i)}\mathbb Z,
+> \]
+> with height-to-grade conversion \(\widehat\beta=e(\mu_i)\beta\).
+
+with:
+
+> lie in the grade group
+> \[
+> \Lambda_i=\frac{1}{e(\mu_i)}\mathbb Z,
+> \]
+> with height-to-grade conversion \(\widehat\beta=e(\mu_i)\beta\). SYMBOL NOTE: the grade group is written \(\Lambda_i\), NOT \(\Gamma_i\), to avoid collision with the coherent digits \(\Gamma_t\) of (C3) and the F4-JOINT digit tuple \((\Gamma_2,\Gamma_1,\Gamma_0)\). The accepted `GENTOW2` writes \(\Gamma_i\) for this group (\(\beta\in\Gamma_2\) throughout; \(\Gamma_2=\tfrac12\mathbb Z\) at its N1 worked frame, where \(e(\mu_2)=2\)): read GENTOW2's \(\Gamma_i\) as T1's \(\Lambda_i\). Precedent: the R9-3 \(\gamma_t/\Gamma_t\) note and the R11-4 \(c_2^{\mathrm{HET}}\) note.
+
+and in R11-5's verification sentence ("The finding's sketch read …"), replace
+
+> \(\Gamma_2=\tfrac12\mathbb Z\) at \(e(\mu_2)=2\)
+
+with
+
+> \(\Lambda_2=\tfrac12\mathbb Z\) at \(e(\mu_2)=2\) (GENTOW2 writes \(\Gamma_2\))
+
+The r11 §6 row's "\(\Gamma_i=\frac{1}{e(\mu_i)}\mathbb Z\)" is a historical record of what r11 wrote and stays byte-unchanged; the effective symbol is \(\Lambda_i\).
+
+## R12-3 (m-2) — The two-clause gate in honesty-ledger items 2 and 19
+
+**Finding m-2 (MINOR).** Items 2 and 19 (their effective r8 forms) still name (C3-ladder-nonvanishing) as the sole gate for \(w_i\in K_i^\times\); after R11-1 the gate is two-clause — (C3-read-codomain) places \(w_i\in K_i\), (C3-ladder-nonvanishing) makes it nonzero (ledger item 22, §4.2 check 9).
+
+Supersede honesty-ledger item 2 with:
+
+> 2. The B-law is conditional on the sitewise graded read facts (C3-ladder-multiplicativity), (C3-slot-grade), and (C3-graded-scalar-covariance). For a zero coherent digit, the displayed homogeneous component is zero and its read is governed separately by (C3-zero-read). The assertion \(w_i\in K_i^\times\), and hence the unit-rescaling and factor-pattern argument, additionally require BOTH independent site obligations (C3-read-codomain) (placing \(w_i\in K_i\)) and (C3-ladder-nonvanishing) (making it nonzero); neither alone yields a unit. T1 proves none of these facts for all homogeneous initial forms.
+
+Supersede honesty-ledger item 19 with:
+
+> 19. The displayed residual-read axioms do not imply that the base ladder read is a nonzero \(K_i\)-scalar. The status \(w_i\in K_i^\times\) is asserted only at sites carrying BOTH (C3-read-codomain) and (C3-ladder-nonvanishing) — at \(i=2\) supplied by the accepted GENTOW2 package (S5.1 (R-FGMN) for the codomain, LEMMA GENTOW2-B\('\)/B\(''\) for nonvanishing), at \(i\ge3\) by an explicitly cited level-general analogue carrying both clauses.
+
+## R12-4 (m-3) — Re-declare the R6-2 span through the substitution sentence
+
+**Finding m-3 (MINOR).** R6-2's directive replaces the A2 consumption paragraph "The supplier relation … and two applications of (C5-carry) give" THROUGH ITS DISPLAYED EQUALITY; but the original (R5-2) text continues past that equality with the sentence "Substitution of \(\tau(k)=\eta^{-Q(m(k))}\) proves the pinned \(\tau\)-ratio.", and R6-2's replacement text supplies the same sentence again before its binary-carry scope note. Strict assembly therefore renders the sentence twice.
+
+Re-declare the span (the replacement text is unchanged): the span replaced by R6-2 runs from the paragraph opening "The supplier relation" through the original trailing sentence "Substitution of \(\tau(k)=\eta^{-Q(m(k))}\) proves the pinned \(\tau\)-ratio." INCLUSIVE — not merely through the displayed equality. Under the re-declared span the strict assembly carries the sentence exactly once, i.e. the effective A2 text every round since r6 has read.
+
+## R12-5 (m-4) — Bind \(K\) in (C4)/\(\mathrm{(H\!-\!JA\!-\!RES\!-\!CONJ)}\)
+
+**Finding m-4 (MINOR).** The R2-2 replacement in (C4) quantifies over "\(H,P,Q\in K[y]\)" and "\(a,b\in K^\times\)" with \(K\) unbound — no clause in the effective (C4) names the field.
+
+In the R2-2 insertion in (C4), immediately after the \(\mathrm{(H\!-\!JA\!-\!RES\!-\!CONJ)}\) boxed display and before the paragraph "Under \(\mathrm{(H\!-\!JA\!-\!RES\!-\!CONJ)}\), multiplication by \(y^\nu\) translates exponent support…", insert:
+
+> Typing: \(K\) is the ambient residue field of the level under comparison — at a level-\(i\) JA harness/print site, \(K=K_i\), the field carrying that site's residuals \(H,P,Q\in K_i[y]\) and units \(a,b\in K_i^\times\). The A5 consumption instantiates \(K=K_2\).
+
+## Consequential record edits
+
+Add to §6:
+
+> | Bound the grade-data normalization \(v\) to the base-normalized terminal tower valuation, with the GENTOW2 witness displayed (\(dv_2(\Phi_2^{e_3})=4\cdot2\cdot\tfrac{21}{8}=21=u_3\); the \(v=\mu_2\) reading gives \(20<21\) and falsifies (C1-stage-key-height)); renamed the grade group to \(\Lambda_i\) (GENTOW2's \(\Gamma_i\); translation noted); superseded honesty-ledger items 2 and 19 with the two-clause \(w_i\in K_i^\times\) gate ((C3-read-codomain) + (C3-ladder-nonvanishing)); re-declared the R6-2 replacement span through the original substitution sentence; bound \(K\) in (C4)/\(\mathrm{(H\!-\!JA\!-\!RES\!-\!CONJ)}\) to the ambient residue field of the level under comparison (A5: \(K=K_2\)). | Fable hostile pass, 2026-08-12 r12 (Fable arm) | Repairs 1 GAP and 4 MINOR findings: the height normalization now names its valuation — the terminal reading verified and the \(\mu_i\) reading falsified on the GENTOW2 witness — and the remaining loose symbols (\(\Gamma\), \(K\)) and the one-clause ledger gate are bound to their typed referents. |
