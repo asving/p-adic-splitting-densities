@@ -1,0 +1,11 @@
+1. **DISCHARGED — containment only.** AC-1 honestly suspends PROP, S5’s all-\(n\) rider, and FC-2 pending \((\Phi_1\)-OPACITY), while preserving only the proved level-2 results. It does not pretend to prove the missing higher-rung lemma.
+
+2. **DISCHARGED.** AC-2 correctly restricts CONTENT to monic integral keys. Monic long division over \(\mathcal O[x]\) preserves the coefficient-valuation lower bound at every subtraction and successive quotient. All identified consumers use the integral key \(\Phi_0\), so the downstream bounds remain valid.
+
+3. **DISCHARGED.** AC-3 replaces the false scalar comparison with the required polynomial-degree inequality:
+\[
+\deg(\Phi_0^s)=sd_0<e_0d_0=\deg\Phi'=\deg\Phi''.
+\]
+This holds for \(d_0=1\) and establishes that the coefficient occupies one key slot without opening the key. No defect is introduced into the separate \(\delta_1=1\) argument.
+
+OUTCOMES: DISCHARGED, DISCHARGED, DISCHARGED
