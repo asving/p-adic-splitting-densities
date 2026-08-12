@@ -1,0 +1,16 @@
+Fresh hostile pass found no live defect after integrating r1–r5.
+
+Key adversarial checks passed:
+
+- Lift boundary: “No universal full \(K_1\)-slot is claimed at lower heights.”
+- B-law perimeter: explicitly conditional on “(C3-ladder-multiplicativity)” and “(C3-graded-scalar-covariance).”
+- Origin bridge: “Raw equality is equivalent to \(z^\nu=1\),” correctly retaining root-of-unity exceptions.
+- Weld scope: “it proves no cross-face coherence theorem,” with M3/M4 fences retained.
+- HETOW consumption: level-two structure is now imported through \(\mathrm{(H\!-\!HETOW\!-\!LOCAL)}\), rather than attributed to C5.
+- Gauge factors remain distinct: \(\vartheta\) corrects coherent digits, \(w\) rescales canonical reads, and \(z^\nu\) records attained origin.
+- Positive-wrap and inverse-orientation formulas are internally consistent.
+- C5’s normalized \(\gamma_k(A)\) remains distinct from C3’s coherent \(\Gamma_t\).
+
+This is a clean statement/proof/scope review only; the revised machine battery remains a separate acceptance gate as T1 itself records.
+
+VERDICT: CLEAN | FINDINGS: 0C + 0G + 0m
