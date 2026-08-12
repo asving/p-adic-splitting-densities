@@ -1,0 +1,29 @@
+### G1 — FRAME-C comparison parameters are inconsistent
+
+> “Retain the original FRAME-C arithmetic … \(q=1\).”
+
+and
+
+> “\(\chi(k)=2^{\lfloor k/2\rfloor}\pmod5\)”
+
+imply
+
+\[
+\delta=\chi(q)=\chi(1)=1.
+\]
+
+But the note then requires
+
+> “\(R(Z)=3\widehat R(Z/2)\).”
+
+By (T3-CMP), the declared frame instead gives
+
+\[
+R(Z)=\chi(H_0)\widehat R(Z),
+\]
+
+and, when \(\chi(H_0)=3\), \(R(Z)=3\widehat R(Z)\). Thus the stated \(Z/2\) comparison does not instantiate the frame’s own \(q\) and \(\chi\). This blocks §8.2’s comparison-port regression and therefore the claimed revised battery/acceptance route. It is not a defect in the abstract lemma or the three absorption derivations, so I classify it G rather than C.
+
+All other audited seams close: BR1–BR5 yield the inverse-oriented boundary law without endpoint import; (T3-BKT), (T3-COB), and (T3-CMP) have the stated directions; HETOW does not assume a character; GENTOW5 cumulative conditionality and \(j-1\) twist indexing are internally consistent; and GENTOW-6.4 remains genuinely outside the multiplicative carrier.
+
+VERDICT: NOT CLEAN | FINDINGS: 0C + 1G + 0m
