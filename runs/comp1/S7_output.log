@@ -1,0 +1,112 @@
+## Consumption trace
+
+GENHN-4 has only one weld dependency: the graded multiplication part of package field M3, supplied directly by W-9. It consumes no J-D0 clause.
+
+| GENHN-4 display | Actual dependency | What is consumed |
+|---|---|---|
+| Recenter \(\Phi'\mapsto\Phi'+w\) | GENHN’s stage lift machinery | No M-field. This is an additive key recentering, not M4 representative covariance. |
+| “Pass to \(\operatorname{gr}R=K^c[\mathbf Z/e_1\text{-graded lines}]\)” | W-9, hence the M3 field | Existence of the graded slots and their carry-twisted multiplication on the scored/exact-height layer. |
+| “one \(K\)-slot per height; slot-min = valuation” | GENHN-2 | Not M1: no affine shear or harness/print valuation comparison is used. |
+| \(\bar\Phi'\mapsto\bar\Phi'+\bar s\), giving \(R(T+s)\) | Formal polynomial substitution plus the M3 multiplication law | Only multiplication of exact-height slot representatives and its carry factors. |
+| \(R(T)=(T-s)^\mu\), hence \(R(T+s)=T^\mu\) | Formal identity | No weld field and no characteristic assumption. |
+| “twist powers … enter residual assembly and carry products identically” | The carry-cocycle portion of M3/W-9 | This is the sole substantive junction-note consumption. It does not use M2’s \(t/\varepsilon\) print-character transport. |
+| Correction inequality \((i-j)\kappa+(\mu-i)\kappa+1=(\mu-j)\kappa+1\) | Native \(dv\)-multiplicativity and strict correction depth | No M1 or M3: these terms have already left the exact graded layer. |
+| Overflow lands in-window and moves upward | GENHN-3(c),(d) | No M0. The reduction is GENHN’s own polynomial redivision, not a comparison of two division calculi. |
+| Triangularity and injectivity | GENHN’s digit ordering | No weld or J-D0 input. |
+| Onto “by cardinality” | GENHN-2 raw slot-string count | No J-D0 input. |
+| \(|K|-1\) choices of \(s\) | Elementary residue-field count | No J-D0 input. |
+| Invariant maintenance after adding \(\hat s\,n(\kappa)\) | Side-height inequality and GENHN’s key invariants | No M4 covariance theorem. |
+
+Thus, field by field:
+
+- M0: not consumed.
+- M1: not consumed.
+- M2: not consumed.
+- M3: consumed only through W-9’s exact-height graded multiplication/carry law.
+- M4: not consumed.
+
+No cross-face coherence is used. WELD-M-PKG’s lack of such coherence is therefore harmless here.
+
+GENHN-4 also does not consume WM-COB, WM-RHO, WM-CLASS, WM-FENCE, or any gauge-uniqueness assertion.
+
+## J-D0 trace
+
+Neither corrected J-D0 clause is load-bearing:
+
+- J-D0(i), gauge invariance, does not apply. Its action is the multiplicative rescaling
+  \[
+  R(y)\longmapsto \xi^{-\deg R}R(\xi y),
+  \]
+  whereas GENHN refines by the additive translation
+  \[
+  R(T)\longmapsto R(T+s).
+  \]
+  J-D0’s own NONCHAR tooth confirms that an additive slot shift is outside its gauge theorem.
+
+- J-D0(ii), value-blindness at fixed full count-shape \(\widehat T\), does not prove GENHN’s surjectivity count. GENHN compares a pinned refine slice with a floored node, not two realizations already known to have the same \((\Lambda_j,\mathcal G)\). Indeed \((T-s)^\mu\) and \(T^\mu\) may differ in nonzero-constant census data recorded by \(\Lambda_j\).
+
+- J-D0’s \(\mu_{\widehat T}(q)\) is a normalized L3×L4 coefficient. GENHN needs literal finite digit-space cardinalities. GENHN-2 supplies those directly.
+
+Therefore the J-D0 replacement map is simply: no edge existed; retain GENHN-2.
+
+## T1 replacement of M3/W-9
+
+The global W-9 frame can be replaced by a local graded-slot corollary of T1.C2.
+
+For exact-height representatives, put
+\[
+\bar\tau_i(a,b)=
+\operatorname{res}\!\left(
+\frac{\widehat n_i(a)\widehat n_i(b)}
+     {\widehat n_i(a+b)}
+\right).
+\]
+T1.C2 gives
+\[
+[d]_a[d']_b=[dd'\bar\tau_i(a,b)]_{a+b},
+\]
+and C2-cocycle gives associativity. Repetition gives
+\[
+\widehat n_i(\kappa)^r
+=
+\widehat n_i(r\kappa)
+\prod_{v=1}^{r-1}\tau_i(v\kappa,\kappa),
+\]
+whose residue is exactly the telescope/twist factor used in GENHN’s \(z^{fl_r}\) bookkeeping.
+
+The remaining identifications route as follows:
+
+| Former M3/W-9 use | T1 replacement |
+|---|---|
+| Twisted multiplication of graded slots | C2-cocycle plus the displayed local slot-product corollary |
+| Powers \(n(\kappa)^r=z^{fl_r}n(r\kappa)\) | C2-vartheta and C2-recursion; C2-level-1 where applicable |
+| Coherent digit versus multiplicative coefficient | C3-dictionary |
+| Identical twist in residual assembly and carry products | C2 telescope together with C3-dictionary |
+| Coefficient killing | The preceding local product law plus the formal identity \(R(T+s)=T^\mu\) |
+
+C3-canonical-read may be cited if GENHN phrases its residual coefficient through that read, but the stronger global B-law or a theorem about all homogeneous initial forms is unnecessary. The GENHN products are the specific exact-height normalizer products handled by C2.
+
+T1.C1, C4, C5, and C6 are not needed for the general refine-transfer argument. In particular, C6’s level-one domain \(M>D'h\) must not be mistaken for the general-stage existence of \(w\); that remains part of GENHN’s own stage-lift setup.
+
+The revised dependency line is therefore
+\[
+\mathrm{GENHN\!-\!4}
+\leftarrow
+\{\mathrm{GENHN\!-\!2},\,
+  \mathrm{GENHN\!-\!3(c,d)},\,
+  \mathrm{T1.C2},\,
+  \mathrm{T1.C3\text{-dictionary}},\,
+  R(T+s)=T^\mu,\,
+  \text{stage lift existence}\}.
+\]
+The direct edge
+\[
+\mathrm{GENHN\!-\!4}\leftarrow W\!-\!9\equiv M3
+\]
+can then be deleted.
+
+## VERDICT: SG-2 VIABLE
+
+The sole junction-note consumption is M3/W-9’s local exact-height carry multiplication, and T1.C2–C3 export precisely the smaller law GENHN-4 needs. M0, M1, M2, M4, and all of J-D0 are absent from the actual load-bearing trace.
+
+This is a structural verdict, not yet a grade upgrade: revised T1 is still awaiting its hostile arc. Before the certified dependency graph is cut over, the local graded-slot corollary above should be stated explicitly and T1 accepted. No cross-face coherence theorem is required.
