@@ -1,0 +1,74 @@
+No CRITICAL defect survives in clauses (i)–(iii), but the menu-tie/specification language has two unresolved representation gaps and two side-claim defects.
+
+1. Verbatim:
+
+> “The decided leaves of the n = 2 read are EXACTLY the seven families”
+
+> “SPLIT-TAIL(w) | σ-decided split, shape-truncated at the window”
+
+> “Rows (i) with counts (ii) are the complete specification the grown `omMenu 2 σ` / `omCount` must transcribe”
+
+Classification: GAP.
+
+SPLIT-TAIL is not a decided `typeOf`-keyed shape: its second root valuation is deliberately unread. For example, at \(q=2,N=4,w=1\), the window cell \(A_0\equiv0\pmod{\pi^4}\), \(v(A_1)=1\) has lifts realizing \(2\mathrm{SIDED}(1,4)\), \(2\mathrm{SIDED}(1,5)\), and so on, while the exact \(A_0=0\) lift is \(x(x+A_1)\). Thus the cell has decided \(\sigma\), but no single decided shape or `typeOf` key. BOX-5 confirms this by counting SPLIT-TAIL as undecided under the shape convention. Correspondingly, S4.1 omits SPLIT-TAIL from every proposed `omMenu`, contradicting the literal claim that all seven rows form its complete transcription specification.
+
+2. Verbatim:
+
+> “`omMenu 2 split` must grow to {SEP-SPLIT} ∪ {2SIDED(w₁,w₂)} ∪ {SPLITEQ(k)}”
+
+> “These are countable menus with geometric density tails: the Lean transcription needs either parametrized shape families or a per-window finite menu”
+
+Classification: GAP.
+
+The displayed Lean interface has no window parameter and uses a bounded menu sum, while the proposed shape-level menu contains infinitely many positive-density entries: all \(\mathrm{RAM}(2k-1)\), \(\mathrm{INERTDEEP}(k)\), \(\mathrm{SPLITEQ}(k)\), and \(2\mathrm{SIDED}(w_1,w_2)\). The two suggested resolutions are materially different and neither is specified:
+
+- A parametrized aggregate entry is not one entry per `typeOf` shape, and its `omCount` must be a summed rational function rather than clause (ii)’s individual window count.
+- A per-window menu requires adding \(N\) to an interface where none is shown.
+
+Consequently clause (iv) is a target/design obligation, not yet a “complete specification” that can simply be transcribed. BOX-2 discloses the missing code but does not resolve this mathematical/API representation choice.
+
+3. Verbatim:
+
+> “NOTE the counts are EXACT window counts equal to (limit density)·q^(2N) — no truncation error on visible rows.”
+
+Classification: MINOR.
+
+This is false for the visible SPLIT-TAIL rows. At \(q=2,N=4,w=1\), the whole-space tail count is
+
+\[
+q(q-1)q^{N-2}=8,
+\]
+
+so its window density is \(8/2^8=1/32\). For fixed \(w\), that density tends to zero as \(N\to\infty\); hence its limit density is zero, and \(0\cdot2^8\neq8\). The asserted identity is correct for SEP, RAM, 2SIDED, SPLITEQ, and INERTDEEP, but not for the boundary family placed immediately before this sentence. This does not affect the partition or drainage calculations.
+
+4. Verbatim:
+
+> “The wild rows are genuinely wild”
+
+> “in EQUAL characteristic 2 disc = A₁² gives v(disc) = … ∪ {∞} (x² + t realizes ∞) … never tame”
+
+> “the battery’s TAMEDISC tooth fires once per member”
+
+Classification: MINOR.
+
+For \(f=x^2+t\) over \(\mathbb F_q((t))\), the derivative is zero and the degree-two extension is purely inseparable. Calling it “wildly ramified” in the same sense as a separable mixed-characteristic quadratic is convention-dependent; the usual tame/wild dichotomy and different-exponent comparison are formulated for finite separable extensions. Moreover, the disclosed PARI/TAMEDISC leg is mixed-characteristic-only, so it cannot certify the equal-characteristic inseparable members “once per member.” The safe mathematical content established here is that these members are ramified and not tame; the counting theorem is unaffected.
+
+CHECKED CLEAN — The node trichotomy is exhaustive, including both residual-characteristic branches and the refinement case.
+
+CHECKED CLEAN — The residual split/irreducible/double-root census totals are correct in odd and characteristic two.
+
+CHECKED CLEAN — The refinement isomorphism and history bracket \(q^{k-1}\) are algebraically consistent, including ramified mixed residue characteristic two.
+
+CHECKED CLEAN — The exact RAM, 2SIDED, SPLITEQ, INERTDEEP, SEP, and SPLIT-TAIL window-count formulas are correct when each is read with its stated per-center/whole-space convention.
+
+CHECKED CLEAN — The \(\sigma\)-undecided count is exactly \(q^N\), hence normalized mass \(q^{-N}\).
+
+CHECKED CLEAN — The repaired finite telescoping identity proves split-decided \(=\) inert-decided at every window.
+
+CHECKED CLEAN — The limiting totals are split \(=\) inert \(=q/(2(q+1))\), ram \(=1/(q+1)\), and sum to one.
+
+CHECKED CLEAN — The \(v(2)=1\) fence is correctly localized; the displayed ramified-base counterexample and generalized discriminant minimum are valid.
+
+CHECKED CLEAN — The repaired discriminant-zero distinction between mixed and equal characteristic two is correct.
+
+OUTCOME: RATIFIED-WITH-ANNEX
