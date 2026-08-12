@@ -2114,3 +2114,144 @@ Add to S5:
 In S4.1, replace “the five pinned source displays give the intended substitutions” by:
 
 > the pinned source displays give the intended substitutions subject to the explicitly named level-one obligation `(LB1)`; HE3.A and HE6 are not represented as unconditional mixed-nonseparable label-block instances.
+
+
+---
+
+## r3 (2026-08-12): pin re-derivation + (MID-PEEL) suite + (LB1) widening
+
+*(Fable-arm; counter resets.)*
+
+## r3 repair 1 — F1+F2 (GAPs): the four defective pins re-derived as verbatim existing-text delimiter pairs
+
+The r2 `(PINS)` table named four units that do not occur in their sources under those descriptions. Each is re-derived below from its actual consumption site in this master. Both delimiter lines of every pin are quoted byte-exactly from the accepted source and were verified by exact-full-line search on 2026-08-12: each occurs exactly once in its file, and each begin precedes its end. One pin resolves into two, so the inventory grows from 26 to 27.
+
+**(a) `HE7-SLOT-TRANSFER`.** Consumption: the S3.3 sentence "the slot is `(SLOT₂)`, and the legal lift domain is `(FULL2)`, with `(FULL2-U)` as a uniform sufficient bound." The consumed source units are the **(SLOT₂) and (LIFT₂) statement displays**, which live in HE7 §S1 (the level-2 frame section, not §S2) and are introduced there as one bundle by the source sentence "The two lemmas HE6 §S7.2 named as its exact residue, stated here in full." The (LIFT₂) display's (†₂)/(‡₂) are exactly this master's `(FULL2)`/`(FULL2-U)`. The pin is NOT ANNEX-THEOREM R1-b: the composed instance is level-two, where ANNEX-COROLLARY R1-d certifies "levels 1 and 2 are byte-unchanged"; the level-\(i\) restatement enters only through the cocycle-chain pin (b). Delimiters:
+
+- first: `> **(SLOT₂) [PROVED, §S3].** Let C ∈ O[x] with deg C < D″ and let`
+- last: `> HE7-T-LIFT2SHARP verifies the exact reachable set by enumeration.`
+
+The span contains both complete displays; the capture of (LIFT₂) beyond the pin's short name is over-capture licensed by condition 4 (see repair 2), and it is itself consumed.
+
+**(b) `HE7-COCYCLE-2P-THROUGH-R1D`.** No source unit named "ANNEX 2-P" exists; the r2 description corrupted the name of **ANNEX-DEF HE7-2′**. The chain's actual endpoint units, named verbatim: **ANNEX-DEF HE7-2′** (the corrected level recursion) and **ANNEX-COROLLARY R1-d** (THEOREM HE7.D and COROLLARY HE7.B(ii), re-proved). Delimiters:
+
+- first: `> **ANNEX-DEF HE7-2′ (the corrected level recursion; replaces DEFINITION`
+- last: `> box, per the honesty invariant.`
+
+The span contains, in source order, ANNEX-DEF HE7-2′, ANNEX-LEMMA R1-a, ANNEX-THEOREM R1-b, ANNEX-THEOREM R1-c, the R1.2 twist-blindness audit, and ANNEX-COROLLARY R1-d — the complete corrected cocycle chain this master consumes at `(COC-DEF)`/`(BETA)` and in S3.3 ("the cocycle ... equals the nontrivial \(\beta^c\) twist").
+
+**(c) `HETOW-LABELS`.** The master consumes two distinct HETOW units, so this pin resolves into two (inventory 26 → 27).
+
+`HETOW-LABELS` := **the §S1 instantiation-map unit** — the tower setting plus the row-by-row dictionary table. It supplies the boxed `(HETOW-INSTANCE)` data: \(K_2\cong\mathbf F_{Q^{f_1f_2}}\), the wrap-corrected key \(\Phi_2\), \(D_2=D'e_2f_2\), \((e_{\mathcal C},f_{\mathcal C})=(e_1e_2,f_1f_2)\), \(dv_2=e_1e_2v\), \(T_2=e_2f_2u_2\). Delimiters:
+
+- first: `## S1. THE INSTANTIATION MAP (every hypothesis of DEFINITION HE7-1 + THEOREM HE7.A at the composed data)`
+- last: `sealed table was sound only on the battery's η = 1 gauge.`
+
+Note at the pin: the span contains the superseded J-D0 normalizer row. This master does not consume that row — its normalizer comparison enters only through `HETOW-NORMALIZER-4` (the HETOW-4 bridge), exactly as S3.4 states.
+
+`HETOW-LABELS-1` := **LEMMA HETOW-1 (label translation)**, statement and proof. It supplies the transported letter \(\beta=\eta^{-Q(u_2)}\eta_2\) and its minimal polynomial \(\widetilde r\), as consumed by S3.4. Delimiters:
+
+- first: `> **LEMMA HETOW-1 (label translation) [r1 2026-08-09 (passPE1 F-1)`
+- last: `σ = {(4,1)} ≠ {(2,2)}. ∎`
+
+Amend the S3.4 source-pin line to: **Source pins:** `HETOW-LABELS`, `HETOW-LABELS-1`, `HETOW-A`, and `HETOW-NORMALIZER-4`.
+
+**(d) `GENTOW-ACCEPTANCE-FOLD`.** The source carries two bracketed fold units ("[acceptance fold (post-PE3) 2026-08-10, m-i — THE CITATION COMPLETED ...]" at the 4.C proof line, and "[acceptance fold (post-PE3) 2026-08-10, m-ii — INSTRUMENT-STRENGTH DISCLOSURE ...]" at the S9 head). This master consumes neither bracket's content; its only consumption is the S4.1 grade line "GENTOW4 is accepted \(2/2\)". The unit carrying that grade is the dated record **"### Dated acceptance record (2026-08-10, post-PE3)"** ("GENTOW4 IS ACCEPTED 2/2 ... two consecutive clean hostile passes"), which also names both fold brackets at their sites. The pin is therefore that record. Delimiters:
+
+- first: `### Dated acceptance record (2026-08-10, post-PE3)`
+- last: `dated brackets only from here.`
+
+(The record ends immediately before the next `###` unit, the TOWERRAT2-C annex.)
+
+Replace the four corresponding rows of the r2 `(PINS)` table by the five entries above; replace "The 26 pins are the following existing-text pairs" by "The 27 pins are the following existing-text pairs"; and in the S7 pin gate replace "The expected pin count is 26" by "The expected pin count is 27".
+
+---
+
+## r3 repair 2 — F3 (minor): unit types "display" and "record", and the nesting rank rule
+
+In S0.2's unit-boundary sentence, extend the type list: "a theorem, lemma, definition, numbered clause, proof, annex, or redline unit" becomes "a theorem, lemma, definition, numbered clause, proof, annex, redline, **named statement display, or dated record** unit". Append to S0.2:
+
+> When units nest, the pin resolves to the OUTERMOST unit bearing the pin's named designation: an inner unit does not truncate a span whose named unit contains it. A span may properly contain other complete units (over-capture) provided condition 4 holds for the named unit. A section-separating horizontal-rule line is a boundary marker, not unit content: a unit's last delimiter is the last nonblank content line before such a boundary.
+
+---
+
+## r3 repair 3 — F4 (minor): the HE6R1-1 competing re-display, noted at the pin
+
+Add at pin `HE6R1-1`:
+
+> The source HEAD carries the "Dated statement re-display (2026-08-12, R7 finding 1 — LEMMA HE6R1-1's global bound)", which re-displays the lemma's global jump bound as three clauses (\(J\le\log_2\mu-1\) in any history; \(J\le\log_2 n-2\) for stage-rooted ladders, \(D'\ge2\); \(J\le\log_2 n-1\) ambient-rooted, sharp). **The 2026-08-12 statement re-display governs.** The clauses this master consumes — the widened jump condition \(\ell_i\deg r_i\ge2\) and the descent \(\mu_{i+1}\le\mu_i/2\) feeding `(MASS)` — are byte-unchanged by the re-display; this master never cites the global \(\log_2 n-2\) form.
+
+---
+
+## r3 repair 4 — F5 (GAP): the (MID-PEEL) carrier suite
+
+r2 repair 5 declared the full input suite for the boundary blocks of S1.9, but the mid-chain peel's quotient received no such declaration: `(MID-PEEL)` produced \(G'\) with only key-freeness and mass proved. Insert into S1.8's "Mid-chain boundary produced by recentering", immediately after the paragraph ending "the monic key itself is not declared irreducible merely because it is a key":
+
+> **(MID-PEEL) input suite.** The peel supplier certifies for the quotient \(G'\) the same carrier data that S1.9 demands of a boundary block:
+>
+> 1. key-freeness: \(\gcd_{K_0[x]}(G',\widetilde\Phi)=1\);
+> 2. `(WINDOW)` for \(G'\): every root \(\rho\) of \(G'\) satisfies \(T<d(\widetilde\Phi(\rho))<\infty\);
+> 3. \(G'\)'s own full development and its accounting identity `(ACCOUNT)`;
+> 4. the test assertions of S1.7 for \(G'\)'s sides and labels, with the occupied-height, lift, frame, origin, and residual-degree data;
+> 5. the peeled key's certified orbit/(e,f) decomposition: the emitted boundary factor's irreducibility, simplicity, and local invariants.
+>
+> None of this is inferred from the peel identity `(MID-PEEL)` alone. At level two the instance discharge is **LEMMA HE6R1-3**: \(\Psi\mid f_S\) forces \(\gcd(f_S,\Psi)=\Psi\) with \(\Psi\) irreducible over \(O\) of degree \(D''\), a simple factor with \(e(\Psi)=e_1\ell\) and \(f(\Psi)=f_1d_r\), and \(f_S'=f_S/\Psi\) key-free with every root still a level-2 point and "THEOREM HE7.A applies to \(f_S'\) with \(\mu_2-1\) in place of \(\mu_2\)" — the source's own assertion that the complete input suite holds for the quotient. That lemma is cited as the instance discharge of this suite.
+
+---
+
+## r3 repair 5 — F6 (minor): the ν = 1 degenerate guard
+
+Insert into the same subsection, immediately after the display `(MID-MASS)`:
+
+> **Degenerate guard.** If \(\nu=1\), then \(G'=1\): the peel emits the certified boundary factors and no successor state exists — the state is decided. This is LEMMA HE7-8's `[r3]` clause "μ₂ = 1 is decided, so at most μ₂ − 1 peels ever fire" in master notation. `(MID-MASS)` and the continuation to a key-free successor apply only at \(\nu\ge2\).
+
+---
+
+## r3 repair 6 — F7 (GAP): (LB1) widened to every clause-4-demanding level-one state
+
+r2 repair 4 fenced only "mixed nonseparable" level-one sides, but repair 8's split-first discipline makes clause 4 demand side-block developments at EVERY multi-side state — including states whose side residuals are each individually separable or already pure. No level-one pin supplies those side-block developments. Replace S1.7B's sentence "It is the assertion that every mixed nonseparable level-one side has the monic side and label blocks of S1.7A, with their own full developments, pure residuals, product identities, disjoint exhaustive root partitions, and inherited continuation data." by:
+
+> It is the assertion that every level-one state whose clause-4 processing demands blocks — every state with at least two sides, and every side whose residual is mixed — has the monic side and label blocks of S1.7A, with their own full developments, single-side hulls, pure residuals, product identities, disjoint exhaustive root partitions, and inherited continuation data.
+>
+> The fence is not limited to nonseparable mixtures. A two-side level-one state whose sides carry, respectively, a separable residual and an already-pure repeated residual has each side individually within the level-one records' strength, yet its `(SIDE-PROD)` side-block developments are supplied by no level-one pin. That state is `(LB1)`-conditional.
+
+Replace S1.7B's sentences "Consequently the HE3.A and HE6 instance records are unconditional for separable sides and for already-pure repeated sides. Their application to a mixed nonseparable level-one side is conditional on the separately supplied obligation `(LB1)`." by:
+
+> Consequently the HE3.A and HE6 instance records are unconditional only for single-side level-one states whose residual is separable or already pure repeated. Every level-one state requiring a side split or a label split — multi-side states included — is conditional on the separately supplied obligation `(LB1)`.
+
+In the S3.1/S3.2 "Level-one fence" appends, replace "Therefore no mixed nonseparable level-one state is advertised as an unconditional instance of clause 4." by "Therefore no level-one state requiring a side split or a label split is advertised as an unconditional instance of clause 4." In S5 item 16, replace "Mixed nonseparable level-one reads remain conditional on the named obligation `(LB1)`." by "Level-one reads demanding side or label blocks remain conditional on the named obligation `(LB1)`."
+
+---
+
+## r3 repair 7 — F8 (minor): the clause-1/2 direct read and the split-first algorithm reconciled
+
+Insert immediately after r2 repair 8's inserted paragraph ("A recursive state is not silently treated as single-sided. ..."):
+
+> Clauses 1 and 2 remain direct statements about the unsplit hull of \(F\): their proofs run on \(F\) itself through `(ACCOUNT)`, `(SIDE-COUNT)`, `(RES-DEG)`, and the test assertions, with no appeal to `(SIDE-PROD)`. The recursive algorithm nevertheless follows the split-first discipline above. The two routes agree: by `(SIDE-PROD)` the roots of \(F_\lambda\) are exactly the side-\(\lambda\) roots of \(F\), and labels attach to roots pointwise (S1.7, clause 1), so the label classes read on the block \(F_\lambda\) are the same root sets as the classes read directly at side \(\lambda\) of \(F\); clause 2 applied to either returns the same Galois orbits with the same \((e,f)\). The algorithm text follows repair 8; the direct read is retained as the stated form of clauses 1–2.
+
+---
+
+## r3 repair 8 — F9 (minor): clause 3's "repeated"/"multiplicity" bound to the block's own residual
+
+Add, as a reading directive attached to clause 3 of HE7.A and to S1.8's opening sentence:
+
+> In clause 3 and in S1.8's "Suppose \(r'\) occurs in \(R_\lambda\) with multiplicity at least two", the hypothesis is read at the state's OWN normalized residual: the state is a single-side block, and "repeated" means that the exponent of \(r'\) in its own residual — \(k_{\lambda,r'}\) of `(LABEL-PURE)`/`(LABEL-OWN)` for an emitted label block, the exponent in its own `(RES-FACT)` for an unsplit pure side — is at least \(2\). A multiplicity recorded in a parent residual factorization triggers nothing: parent data decides neither terminality nor continuation. This binds clause 3's wording to r2 repair 2's discipline.
+
+---
+
+## r3 repair 9 — F10 (minor): the six file-path bindings restored
+
+The r2 S0.2 replacement closes with "These pins lie in the six files listed below `(PINS)`" but deleted the list itself with the old S0.2. Insert, immediately after the `(PINS)` table of S0.2:
+
+> These pins lie in:
+>
+> \[
+> \begin{aligned}
+> &\texttt{lean/notes/openmath/HE3\_PROOF\_2026-08-08.md},\\
+> &\texttt{lean/notes/openmath/HE6\_PROOF\_2026-08-08.md},\\
+> &\texttt{lean/notes/openmath/HE7\_PROOF\_2026-08-08.md},\\
+> &\texttt{lean/notes/openmath/HE6R1\_RECON\_2026-08-08.md},\\
+> &\texttt{lean/notes/openmath/HETOW\_RECON\_2026-08-09.md},\\
+> &\texttt{lean/notes/openmath/GENTOW4\_PROOF\_2026-08-09.md}.
+> \end{aligned}
+> \]
