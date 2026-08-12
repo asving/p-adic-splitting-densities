@@ -1,0 +1,23 @@
+### G1 — Zero coherent digits are not covered by the C3 read proof
+
+The proof universally states:
+
+> “A slot with coherent digit \(\Gamma_t\) is represented … as  
+> \(M_sg_t,\quad dv_i(g_t)=0,\quad \operatorname{res}(g_t)=\Gamma_t.\)”
+
+But T1 explicitly permits \(c_t=0\), hence \(\Gamma_t=0\). A value-zero factor cannot have zero residue. Therefore this representation and the stated graded scalar-covariance argument do not cover zero slots. The formula may still be true there, but (C3-canonical-read), and consequently the slotwise derivation of (C3-three-reads), has an unproved zero-coefficient branch.
+
+Classification: GAP.
+
+### m1 — The coefficient representatives defining \(L_M\) remain unbound
+
+(C6) says:
+
+> “Define  
+> \(L_M(\lambda)=\sum_{r=0}^{f_1-1}\widetilde{\lambda_r}x^{i+e_1r}\pi^{a-rh}.\)”
+
+No residue-section or choice of representatives \(\lambda_r\mapsto\widetilde{\lambda_r}\) is fixed. Thus \(L_M\) is not literally a defined function from the displayed carrier data, although its asserted valuation and residue properties are independent of the usual permissible choice.
+
+Classification: MINOR.
+
+VERDICT: FINDINGS: 0C + 1G + 1m
