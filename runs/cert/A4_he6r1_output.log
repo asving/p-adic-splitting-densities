@@ -1,0 +1,130 @@
+1. **OBSTRUCTED**
+
+The defect stands. No dated append cures it.
+
+HE6R1-1 itself proves only
+
+\[
+\mu_{i+1}\le \mu_i/2,\qquad \mu_i\ge4
+\]
+
+at a jump. Thus, for \(J\) jumps,
+
+\[
+4\le\frac{\mu}{2^{J-1}},
+\qquad
+J\le\log_2\mu-1.
+\]
+
+Globally \(n=D'\mu\) with only \(D'\ge1\), yielding
+
+\[
+J\le\log_2 n-1.
+\]
+
+The stronger \(\log_2 n-2\) bound requires \(D'\ge2\). The supplied \(D'=1,\ n=\mu=4\) example attains \(J=1\), directly contradicting the accepted display’s bound \(J\le0\).
+
+An honest correction must either:
+
+- replace \(\log_2 n-2\) by \(\log_2 n-1\), moving the first possible jump to \(n=4\) and two jumps to \(n=8\); or
+- restrict HE6R1-1 to composite-stage starts \(D'\ge2\), leaving initial degree-one events outside its global claim.
+
+Either change weakens the accepted displayed theorem. HEAD’s “Dated acceptance record” says the note is “ACCEPTED (2/2) and FROZEN,” and the present instruction forbids weakening accepted theorem displays. The counterexample prevents proving the existing display, so no permitted honest repair exists.
+
+2. **OBSTRUCTED**
+
+The defect stands and is expressly admitted at HEAD by:
+
+> **GENHN-ERR-1 (the R9 residue).** Whether GENHN’s \(f_1\ge2\) count-side displays … need re-reading with \(D'h=f_1S\) is NOT settled here.
+
+Neither the “DATED MICRO-ANNEX (2026-08-09, post-PE2)” nor the “Dated acceptance record + corrections (2026-08-09, post-PE3)” resolves that mathematical residue. PE2 F-3 merely re-dates GENHN’s grade.
+
+R9 proves that the correct node is
+
+\[
+dv(A_j)\ge(\mu-j)D'h+1.
+\]
+
+For \(f_1=2\) and \(\mu-j=1\), this is \(dv(A_j)\ge2S+1\), genuinely different from \(dv(A_j)\ge S+1\). Nothing in this note proves that GENHN’s count remains valid after that change.
+
+Repairing the completion statement without weakening it requires a new lemma re-running GENHN’s \(f_1\ge2\) count argument on the corrected region. The requisite count-side displays and argument are absent from this note; indeed, the note explicitly records that check as unsettled. Alternatively, qualifying the composition-complete theorem by GENHN-ERR-1 would weaken an accepted displayed theorem, which is forbidden. Therefore no honest repair can be derived from the supplied note alone.
+
+3. **REAL — repair delivered**
+
+No dated append cures the false “equality exactly” characterization. Append verbatim:
+
+```markdown
+### Dated challenge correction (2026-08-12) — the Φ′ line may have zero coefficients
+
+The R4 description’s sentence
+
+> “Φ′’s own slots have \(e_1v(a_i)+ih\ge D'h\) with equality exactly at
+> \(i=e_1t\)”
+
+is corrected as follows: every slot satisfies
+\[
+e_1v(a_i)+ih\ge D'h,
+\]
+and equality can occur only at an index \(i=e_1t\), \(0\le t\le f_1\);
+it need not occur at every such index. Indeed, if equality holds, then
+\[
+ih\equiv D'h\equiv0\pmod{e_1},
+\]
+because \(D'=e_1f_1\); since \(\gcd(h,e_1)=1\), this forces
+\(e_1\mid i\). Conversely, divisibility \(e_1\mid i\) alone does not force
+the coefficient to be nonzero or its slot to lie on the line.
+
+For \(i=e_1t\), the slot inequality gives
+\[
+v(a_{e_1t})\ge(f_1-t)h.
+\]
+Hence
+\[
+\bar a_t:=
+\operatorname{res}\!\left(
+a_{e_1t}\pi^{-(f_1-t)h}
+\right)
+\]
+is defined and is zero whenever \(a_{e_1t}=0\) or the inequality is
+strict. By the definition of the residual polynomial,
+\[
+\psi(Z)=\sum_{t=0}^{f_1}\bar a_t Z^t.
+\]
+Therefore the attaining-term residue sum at a (T2) point is still
+\[
+\sum_{t=0}^{f_1}\bar a_t\eta_\xi^t
+=\psi(\eta_\xi)=0.
+\]
+Thus the ψ-cancellation proof and its conclusions are unchanged; only the
+false assertion that every index \(e_1t\) attains equality is withdrawn.
+```
+
+4. **REAL — repair delivered**
+
+The P3 paragraph already says the closed-form bound is “sufficient, and by 1 not tight,” but the later completion sentence still says the experiment established it “exactly.” No dated append reconciles them. Append verbatim:
+
+```markdown
+### Dated challenge correction (2026-08-12) — scope of the LIFT₂ machine result
+
+The §S6 sentence saying that the machine leg establishes that
+“(LIFT₂)’s threshold is exactly the closed form at \(d_r\ge2\)” is
+corrected to the following:
+
+> The machine leg verifies the closed-form (LIFT₂) bound as a sufficient
+> bound in the exercised \(d_r=2\) frames, but does not establish it as
+> sharp. In every displayed frame the exhaustive onset of surjectivity is
+> \(k=\lambda\), whereas the closed-form sufficient bound is
+> \[
+> (d_r-1)u+(D'-1)h=\lambda+1.
+> \]
+> Thus \(k=\lambda\) is an explicit attained height below the closed-form
+> bound, proving that the bound is non-sharp by one in these frames. No
+> claim of an exact or generally sharp threshold for arbitrary
+> \(d_r\ge2\) is made.
+
+This is precisely the distinction already recorded in P3: the theorem’s
+closed form is sufficient, while the experimentally exact onset in the
+tested frames is one lower.
+```
+
+SUMMARY: 2 REAL (repairs delivered) / 0 RESOLVED-ALREADY / 0 ARTIFACT / 2 OBSTRUCTED

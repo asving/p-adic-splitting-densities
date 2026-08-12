@@ -7,3 +7,5 @@
 [09:30:51] A2_genhn exit 0 (9293 B; SUMMARY: 3 REAL (repairs delivered) / 0 RESOLVED-ALREADY / 0 ARTIFACT / 2 OBSTRUCTED)
 [09:30:51] A3_he6 start
 [09:32:31] A3_he6 exit 0 (4990 B; SUMMARY: 4 REAL (repairs delivered) / 0 RESOLVED-ALREADY / 0 ARTIFACT / 0 OBSTRUCTED)
+[09:32:31] A4_he6r1 start
+[09:36:52] A4_he6r1 exit 0 (5004 B; SUMMARY: 2 REAL (repairs delivered) / 0 RESOLVED-ALREADY / 0 ARTIFACT / 2 OBSTRUCTED)
