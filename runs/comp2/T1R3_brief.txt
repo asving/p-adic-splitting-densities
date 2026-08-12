@@ -1,3 +1,81 @@
+ARC r3 REPAIR (gpt-5.6-sol high). The T1P2 pass found 0C + 3G + 1m (below) on the T1 note (below). Derive the r3 repairs verbatim-ready, honest and minimal. End with: SUMMARY: <n> REAL (repairs delivered)
+
+=== T1P2 FINDINGS ===
+1. **GAP — the general canonical letter is not well-typed from the stated carrier.**
+
+> “At a general level \(i\), fix exact-height normalizers \(\widehat n_i(m)\) … and stage data
+> \[
+> e_{i+1},\qquad f_{i+1},\qquad u_{i+1}.
+> \]”
+
+followed by
+
+> “\[
+> z_{i+1}
+> =
+> \operatorname{res}\!\left(
+> \frac{\Phi_i^{e_{i+1}}}{\pi_{i+1}^{u_{i+1}}}
+> \right).
+> \]”
+
+and, in the proof,
+
+> “Both normalizers have height \(u_{i+1}\), so the quotient has value zero.”
+
+Only \(\widehat n_i(u_{i+1})\) was declared to have that height. No general-level condition on \(\pi_{i+1}\), such as \(dv_i(\pi_{i+1})=1\), was stated. The explicit level-two Bézout formula supplies this at that level but not at arbitrary depth.
+
+Counter-configuration: at some \(i\ge2\), take \(u_{i+1}=1\), an exact-height-one \(\widehat n_i(1)\), and a nonzero \(\pi_{i+1}\) of height \(2\). Then \(\widehat n_i(1)/\pi_{i+1}\) has height \(-1\), so \(\rho_i\notin K_i^\times\); likewise the displayed definition of \(z_{i+1}\) need not be a degree-zero residue. Neither r1 nor r2 excludes this configuration.
+
+2. **GAP — the C5 residue embedding lacks the compatibility imposed later for C6.**
+
+> “For every tower point \(\xi\) carrying the specified residue embedding \(\iota_\xi\),
+> \[
+> \operatorname{res}\!\left(
+> \frac{A(\xi)}{n(k)(\xi)}
+> \right)
+> =
+> \iota_\xi\bigl(\gamma_k(A)\bigr).
+> \]”
+
+The proof silently uses
+
+\[
+\operatorname{res}\!\left(\frac{\xi^{e_1}}{\pi^h}\right)
+=\iota_\xi(\eta),
+\]
+
+but C5 never states it. R2-3 adds precisely such a compatibility condition for \(\theta\) in C6, leaving C5 asymmetric and still underdetermined.
+
+Counter-configuration: let \(e_1=h=1\), \(K_1=\mathbf F_4=\mathbf F_2(\eta)\), and choose \(\xi\) with
+\[
+\operatorname{res}(\xi/\pi)=\eta.
+\]
+Take the declared embedding to be Frobenius, \(\iota_\xi(\eta)=\eta^2\), which the written C5 hypotheses do not forbid. For \(A(x)=x\), one has \(k=1\), \(n(k)=\pi\), and \(\gamma_k(A)=\eta\). Thus the left side is \(\eta\), while the asserted right side is \(\eta^2\).
+
+3. **GAP — the honesty ledger asserts an untyped character-torsor theorem.**
+
+> “Gauge uniqueness is not asserted. Fixed-coboundary gauges form a torsor under the available character group.”
+
+No gauge space, coefficient action, character group, or closure of the admissible gauges under character multiplication is defined. Equality of coboundaries generally makes the ratio a \(1\)-cocycle; it is an ordinary character only under additional hypotheses such as a trivial coefficient action.
+
+Counter-configuration: let \(G=C_2\) act on \(A=C_3\) by inversion. Every element of \(A\) defines a crossed \(1\)-cocycle, while the ordinary character group \(\operatorname{Hom}(C_2,C_3)\) is trivial. A fixed-coboundary fiber therefore cannot be a torsor under that character group. This does not affect the no-uniqueness fence, but the positive torsor assertion is unsupported at the stated generality.
+
+4. **MINOR — C5 omits the nonzero-polynomial domain needed to define \(k\).**
+
+> “Let
+> \[
+> A(x)=\sum_{j<D'}a_jx^j,
+> \qquad
+> k=dv(A),
+> \qquad
+> i=i(k).
+> \]”
+
+Counter-configuration: take every \(a_j=0\). Then \(A=0\) and \(dv(A)=+\infty\) under the usual convention, so \(i(k)\), \(q(k)\), \(n(k)\), and the integer exponents in \(\gamma_k(A)\) are undefined. The subsequent formulas quantify over this case because \(A\ne0\) is never stated.
+
+VERDICT: FINDINGS: 0C + 3G + 1m
+
+=== THE T1 NOTE ===
 # T1 — LEMMA GAUGE-COCYCLE
 
 ## The wrap/\(\vartheta\) recursion, exact lifts, and normalization bridges, stated once
@@ -2001,165 +2079,3 @@ In (C7), amend the affected package rows to read:
 Add to §6:
 
 > | Removed the unsupported arbitrary-depth unit reduction; made harness/print polynomial conjugation and GENHN clearance explicit supplier inputs; typed the modular-origin data; fixed the \(C6\) evaluation embedding; and re-scoped A2–A7 to closed gauge spans with named residual obligations. | T1P and T1CC2, 2026-08-12 r2 | Repairs 1 CRITICAL, 3 GAP, and 1 MINOR finding; prevents theorem-wide absorption from gauge-input rows. |
-
-
----
-
-## r3 (2026-08-12): arc repairs
-
-*(Derived by gpt-5.6-sol high, runs/comp2/T1R3_output.log; transcribed unaltered; counter resets.)*
-
-# T1 r3 corrections — 2026-08-12
-
-These edits repair the three gaps and one minor found by T1P2.
-
-## R3-1 — Type the general canonical letter
-
-In §1.1, immediately after the general-level stage data
-
-\[
-e_{i+1},\qquad f_{i+1},\qquad u_{i+1},
-\]
-
-insert:
-
-> Fix also the stage element \(\pi_{i+1}\) with
-> \[
-> \boxed{dv_i(\pi_{i+1})=1.}
-> \tag{C1-stage-uniformizer}
-> \]
-> Hence
-> \[
-> dv_i\!\left(\pi_{i+1}^{u_{i+1}}\right)=u_{i+1}.
-> \]
-> At level \(1\), this condition follows from
-> \[
-> \pi_2=x^{\ell_1}\pi^{\ell'_1},
-> \qquad
-> \ell_1h+\ell'_1e_1=1.
-> \]
-
-In §2.1, replace
-
-> Both normalizers have height \(u_{i+1}\), so the quotient has value zero.
-
-with:
-
-> By exact height,
-> \[
-> dv_i\!\left(\widehat n_i(u_{i+1})\right)=u_{i+1},
-> \]
-> while (C1-stage-uniformizer) gives
-> \[
-> dv_i\!\left(\pi_{i+1}^{u_{i+1}}\right)=u_{i+1}.
-> \]
-> Hence their quotient has value zero.
-
-## R3-2 — Type the C5 residue embedding
-
-In (C5), replace
-
-> Let
-> \[
-> A(x)=\sum_{j<D'}a_jx^j,
-> \qquad
-> k=dv(A),
-> \qquad
-> i=i(k),
-> \qquad
-> n(k)=x^i\pi^{(k-ih)/e_1}.
-> \]
-
-with:
-
-> Let
-> \[
-> 0\ne A(x)=\sum_{j<D'}a_jx^j,
-> \qquad
-> k=dv(A),
-> \qquad
-> i=i(k),
-> \qquad
-> n(k)=x^i\pi^{(k-ih)/e_1}.
-> \]
-
-Replace
-
-> For every tower point \(\xi\) carrying the specified residue embedding \(\iota_\xi\),
-
-with:
-
-> For every level-one tower point \(\xi\), fix the specified residue embedding
-> \[
-> \iota_\xi:K_1\hookrightarrow\kappa(\xi)
-> \]
-> satisfying
-> \[
-> \boxed{
-> \operatorname{res}\!\left(
-> \frac{\xi^{e_1}}{\pi^h}
-> \right)
-> =
-> \iota_\xi(\eta).
-> }
-> \tag{C5-xi}
-> \]
-> Write
-> \[
-> \eta_\xi
-> :=
-> \operatorname{res}\!\left(
-> \frac{\xi^{e_1}}{\pi^h}
-> \right)
-> =
-> \iota_\xi(\eta).
-> \]
-> Then
-
-In §2.5, after
-
-\[
-\frac{a_j\xi^j}{n(k)(\xi)}
-=
-\left(
-a_j\pi^{-(k-jh)/e_1}
-\right)
-\left(
-\xi^{e_1}\pi^{-h}
-\right)^t,
-\]
-
-insert:
-
-> By (C5-xi), the residue of the second factor is
-> \[
-> \eta_\xi^t=\iota_\xi(\eta^t).
-> \]
-
-## R3-3 — Remove the unsupported character-torsor classification
-
-In (C7), replace
-
-> It also proves no uniqueness of the gauge. Gauges with a fixed coboundary may differ by a character.
-
-with:
-
-> It also proves no uniqueness of the gauge and makes no classification of the fiber of gauges having a fixed coboundary. Any torsor or character description requires separately stated coefficient actions, admissibility conditions, and a supplier theorem.
-
-Replace honesty-ledger item 12 with:
-
-> 12. Gauge uniqueness is not asserted. T1 defines no gauge space, coefficient action, or character group and therefore asserts no character-torsor classification of fixed-coboundary gauges.
-
-In §6, replace the row beginning
-
-> | Withdrew any gauge-uniqueness implication and recorded character-torsor ambiguity.
-
-with:
-
-> | Withdrew any gauge-uniqueness implication and made no classification of fixed-coboundary gauge fibers. | WELDMASTER C6 F-1/F-2 and T1P2 finding G3 | Scope correction across all annex consumers; formulas C1–C6 are unchanged. |
-
-## R3-4 — Record this repair pass
-
-Add to §6:
-
-> | Required \(dv_i(\pi_{i+1})=1\) at general depth; required \(A\ne0\) and a compatible C5 residue embedding; and removed the untyped character-torsor assertion. | T1P2, 2026-08-12 r3 | Repairs 3 GAP and 1 MINOR findings without strengthening the mathematical conclusions. |
