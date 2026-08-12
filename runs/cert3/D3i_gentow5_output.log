@@ -1,0 +1,19 @@
+1. **[R-i2] NEW-ISSUE.** The conditionality propagation is otherwise correct, but S12.1 introduces an off-by-one error in clause (b)’s residual display. Clause (a) at index \(r\) twists \(\psi_{r+1}\) by \(w_r\). Therefore:
+
+   - \(\psi_2\) uses S11.3’s fixed letter-power unit;
+   - \(\psi_3\) uses \(w_2\);
+   - generally, \(\psi_j\) for \(j\ge4\) uses \(w_{j-1}\).
+
+   As written, the display uses \(\psi_j^{(\omega_j)}\). Its top term therefore requires \(w_{n+1}\), contradicting clause (a)@\(n\), which supplies \(w_n\), and exceeding the assumed condition \(\mathcal W_{\le n}\). The display should use the twist indexed by \(j-1\) for \(j\ge2\), with the accepted outer \(\psi_1\) leg handled separately. Likewise, the final dependency diagram should begin with \(\mathcal W_{\le n}\), or explicitly say it is under the ambient hypothesis \(\mathcal W_{\le n-1}\).
+
+2. **[R-i4] DISCHARGED.** The rung correction is mathematically sound. A lift realizing \(K_i\) with degree \(<D_i\) indeed consumes \((\mathrm{LIFT}_{i-1})\) and requires \(m>\operatorname{bound}_i\). The induction
+   \[
+   \operatorname{bound}_i<E_i
+   \]
+   is valid, and every recipe height satisfies
+   \[
+   s u_{i+1}\ge u_{i+1}>e_{i+1}E_i\ge E_i>\operatorname{bound}_i.
+   \]
+   The exact-height and degree conclusions follow. The witness bounds \((1,7,35,155)\), recipe heights \((5,21,85,341)\), and rejected next bounds are correctly computed. Refine lifts correctly use the next rung, with \(\lambda>E_{i+1}>\operatorname{bound}_{i+1}\).
+
+OUTCOMES: NEW-ISSUE, DISCHARGED
