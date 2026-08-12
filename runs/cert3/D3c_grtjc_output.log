@@ -1,0 +1,29 @@
+1. **DISCHARGED.** Annex #4 correctly keeps the defining equality after TC-3, applies \(q\), and cancels only the nonzero classes of \(A(\lambda,N)\) and \(a_N\). It proves
+   \[
+   c=q(A(\gamma,\gamma'))=c_{\mathrm{val}}.
+   \]
+   It no longer asserts polynomial equality on the load set; there it correctly retains only congruence modulo \(\psi_m\).
+
+2. **DISCHARGED.** Annex #5 gives the exact criterion:
+   \[
+   \mathrm{RAW}\iff \delta<g_m.
+   \]
+   Since the scalar image consists of nonzero degree-\(<g_m\) polynomials and the anchor coordinate is \(u y^\delta\), pre-TC-3 realization is possible precisely when \(\delta<g_m\).
+
+3. **DISCHARGED.** Annex #6 supplies the missing bridge without misattributing a product formula to FGMN. Rank-one freeness makes normalized \(\rho_n^B\) the coefficient map, from which (RM) follows formally. Substitution of
+   \[
+   A(\lambda,\mu)=\frac{u_{\lambda,\mu}}{a_{\lambda+\mu}}y^\delta
+   \]
+   then correctly yields
+   \[
+   \mathcal R_{\lambda+\mu}(fg)
+   =\frac{u_{\lambda,\mu}}{a_\lambda a_\mu}
+   y^\delta\mathcal R_\lambda(f)\mathcal R_\mu(g).
+   \]
+   The \(e_m=1\) limitation is honestly retained.
+
+4. **DISCHARGED.** Annex #7 expressly supersedes every conflicting live \(0/2\), “CURRENT,” “JC-PE7 next,” and proof-consumption status. The resulting HEAD status is unambiguous: accepted at \(2/2\), subject to the stated inputs, fences, and corrections.
+
+5. **DISCHARGED.** Annex #8 restricts REALIZE-based lifts to \(c\in K^*\), correctly handles the zero coordinate through \(0\in B_n\), and preserves surjectivity without claiming a finite-weight representative of weight \(N\) for zero. All named consumers use nonzero lifts or ordinary linear-map surjectivity.
+
+OUTCOMES: DISCHARGED, DISCHARGED, DISCHARGED, DISCHARGED, DISCHARGED
