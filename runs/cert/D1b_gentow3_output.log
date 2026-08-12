@@ -1,0 +1,18 @@
+1. **DISCHARGED.** The repaired filtration argument is mathematically valid. For in-budget \(g\), the \(+1\) margin survives composition and the linear division ledger:
+\[
+\mathrm{wt}(\widehat G_j(g))\ge(\mu_2-j)E_2+1.
+\]
+Every discrepancy branch then adds at least \(\delta\), including recarry branches, so
+\[
+\operatorname{supp}(\operatorname{Sh}(g)-C(g))_j
+ \subseteq [\Theta_j+1,\infty).
+\]
+Consequently its height-\(\Theta_j\) digit is zero and cannot cancel the key-power certificate digit. The FR-M3 perturbation is correctly excluded: its total slot weights are \(9<10=\mu_2E_2+1\).
+
+2. **INSUFFICIENT.** The claim is now scoped, but the cited evidence does not prove the stated scope. To show that shadow content is not a function of the full verdict-level honest output
+\[
+(\text{pins},\text{deciding residues},\sigma,\text{labels}),
+\]
+one needs two members with that entire tuple identical and different shadow content. S8.2 cites only variation at fixed honest \(\sigma\); it does not establish equality of pins and deciding residues. The S8.1 pair proves the reverse non-functionality—different honest reads can share shadow output—which does not imply that shadow content is not determined by honest output. The claim would be discharged if reduced to “not a function of honest \(\sigma\),” or if a full-output-matched witness pair were supplied.
+
+OUTCOMES: DISCHARGED, INSUFFICIENT
