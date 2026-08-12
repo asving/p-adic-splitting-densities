@@ -1,0 +1,1206 @@
+ARC r3 REPAIR (gpt-5.6-sol high). T4P3's genuine finding is the G below (the fail-closed C is an infrastructure artifact — the sources are pasted for the NEXT pass). Derive the r3 repair for the T4.2(c) cancellation gap, verbatim-ready. End with: SUMMARY: <n> REAL (repairs delivered)
+
+=== T4P3 ===
+No clean-pass credit. The fresh HEAD-validation attempt failed before either source could be read, and the merged text retains two substantive proof gaps.
+
+1. **C — Both instance records remain fail-closed.**
+
+   > “none of the eight listed half-open spans … has been checked”
+
+   > “`GT3-THRESHOLD` and `GT6-CERT-TOP` remain **UNRESOLVED**, and consumption stops.”
+
+   The fresh command attempt again failed with `bubblewrap is unavailable`. Consequently PE1 condition 7, source supersession review, and both requested regression consumptions remain unperformed. This is infrastructure failure, not evidence of a marker mismatch.
+
+2. **G — T4.2(c) does not exclude all assembled-slot cancellation.**
+
+   S0 defines the graded digit using:
+
+   > “all branches, carries, recarries, and terms landing in the same canonical \(K_2\)-slot”
+
+   But T4.2(c) assumes only:
+
+   > “exactly one single-extraction contribution”
+
+   Its proof then strengthens that premise without justification:
+
+   > “has no second contribution with which to cancel.”
+
+   “No second single-extraction contribution” is not literally “no second contribution.” Neither FLOOR nor the lemma statement establishes that the critical slot contains only single-extraction inputs and no other term or incoming carry/recarry. Thus the shared exposed-slot implication is not proved at its stated abstraction level.
+
+3. **G — T4.2(b) uses unestablished additivity of canonical digits.**
+
+   The proof says:
+
+   > “Taking the height-\(\Theta_j\) graded component proves the first assertion of (b).”
+
+   Linearity of \(\Delta_j\) alone does not establish
+   \(\operatorname{gr}_{\Theta_j}(A+B)
+   =\operatorname{gr}_{\Theta_j}(A)+\operatorname{gr}_{\Theta_j}(B)\)
+   for the defined canonical digits, which explicitly include carries and recarries. The text neither declares `gr` to be an additive associated-graded map on the relevant filtration layer nor first proves that all three discrepancies lie in that layer. Therefore the general perturbation assertion has a proof gap, even though the stronger in-budget specialization may avoid lower-height carries.
+
+4. **m — R2-G1 duplicates the lemma heading under literal application.**
+
+   It instructs replacement beginning at:
+
+   > “Assume the GENTOW-3 discrepancy floor”
+
+   but its replacement begins with:
+
+   > “**LEMMA T4.2 (certificate witness and threshold attainment).**”
+
+   The original lemma heading lies outside the stated replacement range, so byte-literal application leaves two consecutive T4.2 headings.
+
+5. **m — The hostile plan retains the withdrawn higher-\(\mu_2\) formulation.**
+
+   S4.3 now records only an:
+
+   > “unassembled candidate witness”
+
+   and makes no binomial attainment implication. S8 nevertheless requests checking:
+
+   > “the higher-\(\mu_2\) binomial condition is not stated as necessary”
+
+   and:
+
+   > “the one-sided binomial statement.”
+
+   Those checks describe the pre-r2 sufficient-condition formulation rather than the candidate-only record now in force.
+
+6. **m — The merged status label is stale.**
+
+   The operative status remains:
+
+   > “**STATUS: R1 TEXT REPAIRED; UNRESOLVED at attempt grade 0/2.**”
+
+   R2 supersedes several textual provisions, but never updates the `R1 TEXT REPAIRED` label. The unresolved grade remains accurate; only the repair-generation label is stale.
+
+No files were changed.
+
+VERDICT: NOT CLEAN | FINDINGS: 1C + 2G + 3m
+
+=== T4 ===
+# T4 — THE CERTIFICATE WITNESS
+## One touched-coordinate definition for GENTOW-3’s \(\Theta_j\) threshold and GENTOW-6’s CERT-TOP
+### COMPOSITION unit S-3, 2026-08-12
+
+**STATUS: COMPLETE at attempt grade 0/2. Hostile arc owed.**  
+**SOURCES:** GENTOW-3 and GENTOW-6 at HEAD, including their dated repairs and appends through 2026-08-12.  
+**CHARGE:** define the certificate meaning of “touched coordinate” once; prove one attainment lemma; record GENTOW-3’s threshold certificate and GENTOW-6’s CERT-TOP as literal instances without strengthening either source’s scope.
+
+## S0. SETTING AND NOTATION
+
+Work in the full-side tower setting shared by GENTOW-3 and the certificate part of GENTOW-6. Thus
+
+\[
+D'=e_1f_1,\qquad E_2=e_2f_2u_2,\qquad
+\delta=u_2-e_2D'h\ge 1,
+\]
+
+and for each composed coordinate \(j<\mu_2\),
+
+\[
+\Theta_j=(\mu_2-j)E_2+\delta.
+\]
+
+The composed key is read in the corrected gauge:
+
+\[
+\widehat c_t=\operatorname{lift}\!\left(c_t\eta^{W(t)}\right),
+\qquad
+W(t)=\left\lfloor\frac{(f_2-t)i(u_2)}{e_1}\right\rfloor ,
+\]
+
+with the exact-height lift interpretation at \(f_1\ge2\).
+
+For a member \(f\), write
+
+\[
+f=\Phi_2^{\mu_2}+\sum_{j<\mu_2} C_j(f)\Phi_2^j
+\]
+
+for its honest composed development, and let \(\operatorname{Sh}C_j(f)\) be the stage-shadow coordinate obtained by the \(K_2(x,Y)\)-division over \(\widehat{\mathcal O}[x]/(\Phi')\). Put
+
+\[
+\Delta_j(f):=\operatorname{Sh}C_j(f)-C_j(f).
+\]
+
+For any coordinate digit string \(A\), let
+
+\[
+\operatorname{gr}_m(A)
+\]
+
+denote its canonical assembled digit at \(dv_2\)-height \(m\): all branches, carries, recarries, and terms landing in the same canonical \(K_2\)-slot at height \(m\) are added before the class is taken. Thus cancellation inside a slot is already reflected in \(\operatorname{gr}_m(A)\); distinct canonical slots form separate components. The exact-height separation supplied by GENHN-2′ makes this graded digit unambiguous.
+
+The distinguished certificate member is
+
+\[
+f_{\mathrm{key}}:=\Phi_2^{\mu_2}.
+\]
+
+Its honest coordinates vanish:
+
+\[
+C_j(f_{\mathrm{key}})=0\qquad(j<\mu_2).
+\]
+
+## S1. DEFINITION — THE CERTIFICATE WITNESS
+
+> **DEFINITION T4.1 (touched coordinate; certificate sense).**  
+> For each \(j<\mu_2\), define the certificate witness
+>
+> \[
+> \omega_j
+> :=
+> \operatorname{gr}_{\Theta_j}
+> \bigl(\Delta_j(f_{\mathrm{key}})\bigr)
+> =
+> \operatorname{gr}_{\Theta_j}
+> \bigl(\operatorname{Sh}C_j(\Phi_2^{\mu_2})\bigr).
+> \]
+>
+> Equivalently, \(\omega_j\) is the fully assembled height-\(\Theta_j\)
+> \(K_2\)-digit obtained from all single-\(\Phi'\)-extraction routes
+> of the key power, after every collision and cancellation in the
+> canonical composed grid.
+>
+> The coordinate \(j\) is **touched** iff
+>
+> \[
+> \omega_j\ne0.
+> \]
+>
+> It is **untouched** iff \(\omega_j=0\).
+
+This is the certificate reading pinned by GENTOW-3’s GT3-r2 repair. It is deliberately stronger than either of the following informal readings:
+
+- \(\operatorname{Sh}C_j(\Phi_2^{\mu_2})\ne0\);
+- some unassembled single-extraction branch is nonzero.
+
+A shadow coordinate may be nonzero while its height-\(\Theta_j\) digit cancels. FR-M3 at \(j=0\) is the committed separator: the self-shadow has pin \(12\), but \(\Theta_0=10\) and \(\omega_0=0\).
+
+## S2. LEMMA — CERTIFICATE ATTAINMENT
+
+> **LEMMA T4.2 (certificate witness and threshold attainment).**  
+> Assume the GENTOW-3 discrepancy floor
+>
+> \[
+> \operatorname{gr}_m(\Delta_j(f))=0
+> \qquad\text{for every }m<\Theta_j
+> \tag{FLOOR}
+> \]
+>
+> at each coordinate \(j\). Then:
+>
+> **(a) Exact attainment for the key power.**
+>
+> \[
+> j\text{ is touched}
+> \quad\Longleftrightarrow\quad
+> \min\{m:\operatorname{gr}_m(\Delta_j(f_{\mathrm{key}}))\ne0\}
+> =\Theta_j.
+> \]
+>
+> Thus a touched coordinate attains the GENTOW-3 floor exactly.
+> At an untouched coordinate the key power’s first discrepancy is
+> strictly above \(\Theta_j\), or the discrepancy is identically
+> zero.
+>
+> **(b) Perturbation stability.** If
+>
+> \[
+> f=f_{\mathrm{key}}+g
+> \]
+>
+> and
+>
+> \[
+> \operatorname{gr}_{\Theta_j}(\Delta_j(g))=0,
+> \]
+>
+> then
+>
+> \[
+> \operatorname{gr}_{\Theta_j}(\Delta_j(f))=\omega_j.
+> \]
+>
+> In particular, GENTOW-3’s in-budget hypothesis implies this
+> vanishing: its repaired margin ledger places every discrepancy
+> of \(g\) at height at least \(\Theta_j+1\). Hence every touched
+> coordinate remains divergent exactly at \(\Theta_j\) under an
+> in-budget perturbation.
+>
+> **(c) Exposed-slot criterion.** Suppose a canonical slot of
+> coordinate \(j\) at height \(\Theta_j\) receives exactly one
+> single-extraction contribution and that contribution has
+> nonzero normalized digit. Then \(\omega_j\ne0\), so \(j\) is
+> touched and the floor is attained there.
+>
+> **(d) No-source criterion.** If no source monomial can undergo
+> a single \(\Phi'\)-extraction into coordinate \(j\) at height
+> \(\Theta_j\), or if the complete assembled contribution cancels,
+> then \(\omega_j=0\). No attainment statement for another member
+> follows: entry-driven content may still attain \(\Theta_j\).
+
+*Proof.* By (FLOOR), the key-power discrepancy has no nonzero digit
+below \(\Theta_j\). Its first discrepancy is therefore exactly
+\(\Theta_j\) iff its height-\(\Theta_j\) graded digit is nonzero,
+which is precisely the definition of \(\omega_j\ne0\). This proves
+(a).
+
+Both reads are linear in the dividend, so
+
+\[
+\Delta_j(f_{\mathrm{key}}+g)
+=
+\Delta_j(f_{\mathrm{key}})+\Delta_j(g).
+\]
+
+Taking the height-\(\Theta_j\) graded component proves (b). The
+in-budget specialization is GENTOW-3 S8.1’s repaired ledger:
+starting one weight unit above the key-power source layer and
+adding one extraction cost \(\delta\) places every perturbation
+discrepancy at least one height above \(\Theta_j\).
+
+For (c), the selected slot is a nonzero component of the assembled
+graded digit and has no second contribution with which to cancel.
+Hence \(\omega_j\ne0\). Clause (d) is the definition after complete
+assembly. Its final warning is necessary because \(\omega_j\)
+classifies the key-power witness, not all members of the genre. ∎
+
+## S3. INSTANCE RECORD — GENTOW-3’S \(\Theta_j\) THRESHOLD
+
+<!-- T4-INSTANCE-GT3:BEGIN -->
+
+**Instance name:** `GT3-THRESHOLD`.
+
+**Substitution.**
+
+\[
+\Delta_j=\operatorname{Sh}C_j-C_j,\qquad
+\Theta_j=(\mu_2-j)E_2+\delta,
+\]
+
+with \(\delta=u_2-e_2D'h\), and with \(\omega_j\) the key power’s
+assembled single-\(\Phi'\)-extraction digit.
+
+**Consumed facts.**
+
+1. GENTOW-3(i) supplies (FLOOR).
+2. GENTOW-3(iv), read through GT3-r2 and GT3-r3, supplies the
+   per-genre, per-coordinate computation of \(\omega_j\).
+3. GENTOW-3 S8.1 supplies the \(\Theta_j+1\) perturbation margin
+   used in LEMMA T4.2(b).
+4. GENTOW-3(iii) gives the x-free extreme: every discrepancy is
+   zero, hence every \(\omega_j=0\).
+
+**Result.** GENTOW-3(iv)’s phrase “touched coordinate(s)” is exactly
+DEFINITION T4.1. Its attainment conclusion is LEMMA T4.2(a), and
+its repaired deep-perturbation persistence is LEMMA T4.2(b).
+
+The instance is one-sided at member level. If \(\omega_j=0\), the
+key power does not attain the floor at \(j\); this does not imply
+that no other member can attain it. The committed FR-M3 \(W\)
+member does attain \(\Theta_0=10\) through entry-driven content
+although the key-power certificate at \(j=0\) cancels.
+
+**Measured configurations retained by this instance.**
+
+- **Attained:** FAM-A5/A7/B/C and FR-GL have \(\omega_j\ne0\) at
+  the recorded coordinates.
+- **Cancelled with slack:** FR-M3 has thresholds
+  \([10,7,4]\), self-shadow pins \([12,7,4]\), hence
+  \(\omega_0=0\) and \(\omega_1,\omega_2\ne0\).
+- **Identically zero:** FR5X supplies coordinates on which the
+  complete self-shadow coordinate vanishes.
+- **Other-member attainment at an untouched key-power
+  coordinate:** the FR-M3 \(W\) member has first discrepancy
+  \(10=\Theta_0\); this is compatible with T4.2(d).
+
+**Marker-delimited source pins, HEAD.**
+
+Source:
+`GENTOW3_PROOF_2026-08-09.md`.
+
+The governing semantic stack is the ordered union of these
+half-open spans:
+
+1. BEGIN substring  
+   `## S0. THE ONE CONSTANT AND THE THRESHOLD`  
+   END substring  
+   `## S3. COROLLARY GENTOW-3.C`
+
+2. BEGIN substring  
+   `## S7.6 [GT3-r2] PE2 REPAIR RECORD:`  
+   END substring  
+   `## S7.7 [GT3-r3] PE3 REPAIR RECORD:`
+
+3. BEGIN substring  
+   `## S7.7 [GT3-r3] PE3 REPAIR RECORD:`  
+   END substring  
+   `### Dated acceptance record`
+
+4. BEGIN substring  
+   `### S8.1 [B-F1, GAP] Clause (iv)'s deep-perturbation persistence:`  
+   END substring  
+   `### S8.2 [B-F2, GAP]`
+
+The later S8.2/S8.4 non-functionality scope is not consumed by
+this instance.
+
+<!-- T4-INSTANCE-GT3:END -->
+
+## S4. INSTANCE RECORD — GENTOW-6’S CERT-TOP
+
+<!-- T4-INSTANCE-GT6:BEGIN -->
+
+**Instance name:** `GT6-CERT-TOP`.
+
+### S4.1 The sealed \(f_1=1,\ \mu_2=2\) instance
+
+Let
+
+\[
+T=\{t<f_2:\widehat c_t\ne0\},\qquad t^*=\max T,
+\]
+
+and write the lift monomial at \(t\) as
+
+\[
+\widehat c_t\,\pi^{a_t}x^{i_t}.
+\]
+
+Assume
+
+\[
+2i_{t^*}\ge D'.
+\]
+
+The \((t^*,t^*)\) pair has a direct single-\(\Phi'\)-extraction
+into
+
+\[
+j^*=
+\left\lfloor
+\frac{2e_2t^*+1}{e_2f_2}
+\right\rfloor ,
+\qquad
+b^*=(2e_2t^*+1)\bmod e_2f_2,
+\qquad
+a^*=2i_{t^*}-D'.
+\]
+
+Its normalized digit is
+
+\[
+(\widehat c_{t^*})^2\pi^{2a_{t^*}}
+\cdot(\text{wrap unit}),
+\]
+
+which is nonzero. Maximality of \(t^*\) makes this the unique
+height-\(\Theta_{j^*}\) branch in the displayed slot. LEMMA
+T4.2(c) therefore gives
+
+\[
+\omega_{j^*}\ne0,
+\]
+
+so \(j^*\) is touched and the discrepancy first occurs at
+
+\[
+\Theta_{j^*}=(2-j^*)E_2+\delta.
+\]
+
+This is GENTOW-6.3(b), CERT-TOP, as a literal exposed-slot instance
+of the certificate-witness lemma.
+
+If
+
+\[
+i_t+i_{t'}<D'
+\qquad\text{for every }(t,t')\in T^2,
+\]
+
+there is no overflowing pair. GENTOW-6.3(c) proves the stronger
+conclusion \(\operatorname{Sh}C_j=C_j=0\) for every \(j\), hence
+every coordinate is untouched. Between these regimes, an
+assembled pair sum can vanish; no universal non-cancellation is
+asserted.
+
+### S4.2 The corrected-lift \(f_1\)-general instance
+
+For
+
+\[
+L_{m_t}(c_t\eta^{W(t)})
+=
+\sum_{r<f_1}
+\widetilde\lambda_{t,r}\,
+\pi^{a_t-rh}x^{i_t+e_1r},
+\]
+
+put
+
+\[
+I_t=i_t+e_1r_{\max}(t).
+\]
+
+Under
+
+\[
+2I_{t^*}\ge D',
+\]
+
+ANNEX-THEOREM GENTOW-6.3′ isolates the unique top-monomial slot
+
+\[
+(a^*,b^*)
+=
+\left(
+2I_{t^*}-D',
+\ (2e_2t^*+1)\bmod e_2f_2
+\right)
+\]
+
+in coordinate \(j^*\), with digit
+
+\[
+\widetilde\lambda_{t^*,r^*}^{\,2}
+\pi^{2(a_{t^*}-r^*h)}
+\cdot(\text{wrap unit}),
+\qquad r^*=r_{\max}(t^*).
+\]
+
+It is nonzero and uniquely exposed. Thus T4.2(c) again gives
+\(\omega_{j^*}\ne0\). At \(f_1=1\), \(I_t=i_t\) and this
+specializes to S4.1.
+
+The dated GENTOW6-BOX-4 append supplies sealed-battery-grade
+machine contact for this corrected-lift instance at four
+\(f_1=2\), x-ful rows. It does not change the logical form of the
+instance or erase the source note’s prose-grade ledger for the
+annex derivation.
+
+### S4.3 The later \(\mu_2\ge3\) refinement
+
+GENTOW-6.5’s \(f_1=1\) refinement computes a distinguished
+certificate-slot component proportional to
+
+\[
+\binom{\mu_2}{2}
+(\widehat c_{t^*})^2\pi^{2a_{t^*}}
+\cdot(\text{wrap unit}).
+\]
+
+When the residue characteristic does not divide
+\(\binom{\mu_2}{2}\), this component is nonzero and proves
+touchedness by T4.2(c). The converse is not retained: cancellation
+of that particular slot does not imply \(\omega_j=0\), because
+another slot may attain the same coordinate’s floor. The committed
+BP3 and FR5X measurements exhibit the two possible outcomes.
+
+**Marker-delimited source pins, HEAD.**
+
+Source:
+`GENTOW6_PROOF_2026-08-09.md`.
+
+The governing semantic stack is the ordered union of these spans:
+
+1. BEGIN substring  
+   `## S3. THEOREM GENTOW-6.3`  
+   END substring  
+   `## S4. MACHINE LEG`
+
+2. BEGIN substring  
+   `### S6.1 THE DATED GAUGE ANNEX`  
+   END substring  
+   `### S6.2 THE 𝒯-FREE CAP LEMMA`
+
+3. BEGIN substring  
+   `**GENTOW6-BOX-1 (mu2 >= 3 attainment): CLOSED AT f1 = 1**`  
+   END substring  
+   `**GENTOW6-BOX-4 (the f1 >= 2 x-ful-digit sealed battery row):`
+
+4. BEGIN substring  
+   `**GENTOW6-BOX-4 (the f1 >= 2 x-ful-digit sealed battery row):`  
+   END substring  
+   `6.3' keeps its prose-only grading in the note's own terms.`
+
+<!-- T4-INSTANCE-GT6:END -->
+
+## S5. FAIL-CLOSED PIN CONVENTION
+
+Every pin above is interpreted byte-literally against the named
+source at the revision being consumed.
+
+A pin resolves only if:
+
+1. its BEGIN substring occurs exactly once;
+2. its END substring occurs exactly once;
+3. BEGIN precedes END;
+4. the resolved span belongs to the named source;
+5. the spans in one semantic stack occur in the recorded order;
+6. no later dated rider or append inside or after the pinned stack
+   supersedes a consumed assertion.
+
+If any condition fails, the instance is **UNRESOLVED** and
+consumption stops. The orchestrator must not substitute a nearby
+heading, normalize punctuation, choose among multiple matches, or
+fall back to an earlier revision. A source edit that changes,
+duplicates, removes, or reorders a marker therefore fails closed
+and requires an explicit T4 pin update plus re-verification.
+
+The HTML instance markers in this note delimit the complete
+consumer records. They are not substitutes for validation of the
+source markers.
+
+## S6. COMPRESSION AND CONSUMPTION
+
+After T4 is accepted, the following local arguments may be
+shortened to instance records:
+
+- GENTOW-3’s local definition of “touched coordinate(s)” and its
+  floor-attainment inference become `GT3-THRESHOLD`;
+- GENTOW-6.3(b)’s final implication from the unique CERT-TOP slot
+  to threshold attainment becomes `GT6-CERT-TOP`;
+- GENTOW-6.3′ and the later \(\mu_2\ge3\) certificate computation
+  use the same exposed-slot clause with their recorded scopes.
+
+The algebra that computes a proposed witness is not deleted:
+GENTOW-6 still owns the top-slot uniqueness calculation, the
+corrected-lift support calculation, and the higher-\(\mu_2\)
+binomial coefficient. T4 owns only the shared meaning of the
+assembled witness and the inference from a nonzero critical digit
+to attainment.
+
+No accepted source is rewritten by this composition unit. The
+orchestrator’s later consumption update must preserve the frozen
+source notes through dated references or brackets.
+
+## S7. HONESTY LEDGER
+
+**Delivered here.**
+
+- One canonical definition of touched coordinate in the
+  certificate sense.
+- One attainment lemma, including the repaired perturbation
+  margin and the exposed-slot test.
+- Two source-scoped instance records.
+- Fail-closed, marker-delimited source pins.
+- A single home for later certificate and count refinements.
+
+**Not claimed.**
+
+- No genre-general non-vanishing theorem beyond the hypotheses
+  already proved in GENTOW-6.
+- No converse to CERT-TOP.
+- No claim that an untouched key-power coordinate cannot be
+  reached by another member.
+- No claim that \(\operatorname{Sh}C_j\ne0\) implies touchedness.
+- No promotion of GENTOW-6.3’s sealed \(f_1=1\) statement to
+  \(f_1\ge2\); that scope remains the corrected-lift annex.
+- No promotion of the \(\mu_2\ge3\) sufficient condition to an
+  iff.
+- No closure of entry-driven regime classification.
+- No new count theorem.
+
+**Residue home.**
+
+- `GENTOW6-BOX-1`: lower-coordinate and compound
+  \(f_1\ge2,\mu_2\ge3\) certificate classification.
+- `GENTOW6-BOX-2`: the partial-side product-measure count ledger.
+- `GENTOW6-BOX-3`: entry-driven and non-top-overflow
+  classification.
+- `GENTOW6-BOX-4`: its stated sealed-row ask is discharged at
+  HEAD, but any widening of corrected-lift certificate coverage
+  belongs here.
+- `GENTOW3-BOX-1`: the original genre-general non-cancellation ask
+  is replaced, not magically solved, by the explicit witness
+  \(\omega_j\); deciding its vanishing outside the proved
+  CERT-TOP regimes remains refinement work.
+
+**Evidence status.** This note adds no machine computation. Its
+regression evidence is inherited from the byte-frozen GENTOW-3
+and GENTOW-6 artifacts and their dated hostile-arc instruments.
+Those artifacts support the two instance checks; they are not
+fresh evidence for a stronger theorem.
+
+**GRADE: 0/2 (attempt).** The definition and lemma are new
+composition text. Two consecutive clean hostile passes are
+required before acceptance.
+
+## S8. HOSTILE ARC PLAN
+
+### Pass PE1 — statement and scope attack
+
+The first adversarial pass must check:
+
+1. that \(\operatorname{gr}_{\Theta_j}\) is taken after complete
+   slot assembly and cancellation;
+2. that T4.2(a) uses the GENTOW-3 floor and does not infer a
+   member-general converse;
+3. that T4.2(b) uses the repaired S8.1 margin, not the withdrawn
+   “same shift” inference;
+4. that the \(f_1=1\), corrected-lift \(f_1\)-general, and
+   \(\mu_2\ge3\) scopes remain separated;
+5. that CERT-TOP is used as a sufficient exposed-slot witness;
+6. that the higher-\(\mu_2\) binomial condition is not stated as
+   necessary;
+7. that every marker pin resolves uniquely and in order.
+
+A finding of GAP or CRITICAL resets the counter to 0/2. Repairs
+must be re-derived from the pinned source spans.
+
+### Pass PE2 — independent consumption and regression attack
+
+After a clean PE1, the second pass must re-resolve every pin and
+perform two consumption checks:
+
+- **GT3 consumption:** recover GENTOW-3(iv)’s certificate-scoped
+  attainment and S8.1 persistence solely by substituting
+  DEFINITION T4.1 and LEMMA T4.2. Re-run the accepted GENTOW-3
+  battery and specifically inspect FR-M3’s measured slack
+  \([12,7,4]\) against \([10,7,4]\), the \(W\)-member’s
+  entry-driven attainment at \(j=0\), FR-GL’s two-coordinate
+  attainment, and FR5X’s identically-zero coordinates.
+
+- **GT6 consumption:** recover CERT-TOP solely through T4.2(c)
+  after retaining GENTOW-6’s source-slot uniqueness calculation.
+  Re-run the accepted GENTOW-6 battery, the corrected-lift
+  \(f_1=2\) BOX-4 rows, the gauge-live \(\eta\ne1\) rows, and the
+  no-overflow FAM-E/FAM-D controls. Check the BP3 and FR5X
+  higher-\(\mu_2\) rows against the one-sided binomial statement.
+
+Acceptance requires PE1 CLEAN followed by PE2 CLEAN. Minor-only
+riders may be folded without changing the theorem statement;
+anything that changes the meaning of touchedness, the threshold
+layer, or an instance scope requires a new repair round and
+restarts the two-clean counter.
+
+---
+
+**Composition record, 2026-08-12.** T4 makes no source-file edit
+and no artifact edit. Its sole mathematical compression is:
+
+\[
+\boxed{
+\text{touched at }j
+\;:\Longleftrightarrow\;
+\omega_j\ne0
+\;\Longrightarrow\;
+\text{first discrepancy at }\Theta_j
+}
+\]
+
+with the converse at the key power supplied by the discrepancy
+floor, and with GENTOW-6’s CERT-TOP serving as an explicit,
+unique-slot proof that \(\omega_{j^*}\ne0\).
+
+
+---
+
+## r1 (2026-08-12): arc repairs
+
+*(gpt-5.6-sol high, runs/comp6/T4R1_output.log; transcribed unaltered; counter resets.)*
+
+Four verbatim-ready r1 repairs follow. C1 remains operationally unresolved; its repair makes T4 correctly fail closed without alleging a marker mismatch.
+
+### R1-C1 — fail-closed pin status
+
+Replace the status line with:
+
+```markdown
+**STATUS: R1 TEXT REPAIRED; UNRESOLVED at attempt grade 0/2.**
+No clean hostile pass has been earned. Both instance records remain
+non-consumable until their HEAD pins are successfully validated.
+```
+
+Insert after S5’s numbered conditions:
+
+```markdown
+### S5.1 R1 PIN-VALIDATION RECORD — UNRESOLVED
+
+On 2026-08-12, byte-literal validation was attempted against the
+two named HEAD sources. The workspace command runner failed before
+either source could be read because `bubblewrap is unavailable`.
+
+Consequently none of the eight listed half-open spans—four in the
+GT3 stack and four in the GT6 stack—was checked for occurrence
+count, source identity, byte order, stack order, or later
+supersession. Under the convention above, `GT3-THRESHOLD` and
+`GT6-CERT-TOP` are therefore **UNRESOLVED**, and consumption stops.
+
+This is an infrastructure result. It is neither evidence that a
+marker mismatches nor a clean hostile pass. The acceptance counter
+remains 0/2.
+
+A later validation record may supersede this rider only after it
+reports, for every listed BEGIN and END substring, its exact
+occurrence count and resolved byte position, verifies the recorded
+stack order, and checks all later dated riders and appends for
+supersession.
+```
+
+### R1-G2 — define the perturbation domain
+
+Replace S0 from “For a member \(f\), write” through the statement of the key’s honest coordinates with:
+
+```markdown
+Let \(\mathscr D_{\le\mu_2}\) be the ambient module of dividends to
+which the composed \(K_2(x,Y)\)-division applies and whose honest
+\(\Phi_2\)-development has degree at most \(\mu_2\). For
+\(q\in\mathscr D_{\le\mu_2}\), write uniquely
+
+\[
+q=\sum_{k\le\mu_2}C_k(q)\Phi_2^k.
+\]
+
+Let
+
+\[
+\mathscr D_{<\mu_2}
+:=
+\{q\in\mathscr D_{\le\mu_2}:C_{\mu_2}(q)=0\}.
+\]
+
+The member family lies in the affine slice
+\(C_{\mu_2}(q)=1\), while differences of members with the same
+leading key power lie in \(\mathscr D_{<\mu_2}\).
+
+For every \(q\in\mathscr D_{\le\mu_2}\), define
+\(\operatorname{Sh}C_j(q)\) to be the \(j\)-th stage-shadow
+coordinate produced by applying the \(K_2(x,Y)\)-division over
+\(\widehat{\mathcal O}[x]/(\Phi')\) to the dividend \(q\). Thus
+
+\[
+C_j,\operatorname{Sh}C_j:
+\mathscr D_{\le\mu_2}\longrightarrow\mathscr A_j
+\]
+
+are the coefficient maps of two linear division operators. Put
+
+\[
+\Delta_j(q):=\operatorname{Sh}C_j(q)-C_j(q)
+\qquad(q\in\mathscr D_{\le\mu_2}).
+\]
+
+This is the required linear extension of the notation from the
+member affine slice to lower perturbations; in particular,
+\(\Delta_j(g)\) is defined for
+\(g\in\mathscr D_{<\mu_2}\).
+
+The distinguished certificate member is
+
+\[
+f_{\mathrm{key}}:=\Phi_2^{\mu_2}.
+\]
+
+It belongs to \(\mathscr D_{\le\mu_2}\), and its honest lower
+coordinates vanish:
+
+\[
+C_j(f_{\mathrm{key}})=0\qquad(j<\mu_2).
+\]
+```
+
+Replace the opening of T4.2(b)’s proof with:
+
+```markdown
+By the definitions in S0, \(C_j\) and
+\(\operatorname{Sh}C_j\) are linear maps on
+\(\mathscr D_{\le\mu_2}\); hence so is \(\Delta_j\). Therefore,
+for \(g\in\mathscr D_{<\mu_2}\),
+
+\[
+\Delta_j(f_{\mathrm{key}}+g)
+=
+\Delta_j(f_{\mathrm{key}})+\Delta_j(g).
+\]
+```
+
+### R1-m1 — totalize first-discrepancy height
+
+Insert immediately before LEMMA T4.2:
+
+```markdown
+For \(q\in\mathscr D_{\le\mu_2}\), define its first discrepancy
+height at coordinate \(j\) by
+
+\[
+\nu_j(q)
+:=
+\min\{m:\operatorname{gr}_m(\Delta_j(q))\ne0\},
+\]
+
+with the convention
+
+\[
+\min\varnothing:=+\infty.
+\]
+
+Thus \(\nu_j(q)=+\infty\) exactly when
+\(\Delta_j(q)\) is identically zero.
+```
+
+Replace T4.2(a) with:
+
+```markdown
+**(a) Exact attainment for the key power.**
+
+\[
+j\text{ is touched}
+\quad\Longleftrightarrow\quad
+\nu_j(f_{\mathrm{key}})=\Theta_j.
+\]
+
+Thus a touched coordinate attains the GENTOW-3 floor exactly.
+At an untouched coordinate,
+
+\[
+\nu_j(f_{\mathrm{key}})>\Theta_j,
+\]
+
+where \(+\infty>\Theta_j\) includes the case of an identically
+zero discrepancy.
+```
+
+Replace the first proof paragraph with:
+
+```markdown
+By (FLOOR),
+
+\[
+\nu_j(f_{\mathrm{key}})\ge\Theta_j.
+\]
+
+Equality holds exactly when the height-\(\Theta_j\) assembled
+graded digit is nonzero. That digit is \(\omega_j\), so
+
+\[
+\nu_j(f_{\mathrm{key}})=\Theta_j
+\quad\Longleftrightarrow\quad
+\omega_j\ne0.
+\]
+
+This proves (a), including the identically-zero case through the
+convention \(\nu_j(f_{\mathrm{key}})=+\infty\).
+```
+
+### R1-G1 — expose the higher-\(\mu_2\) slot explicitly
+
+Replace S4.3 in full with:
+
+```markdown
+### S4.3 The later \(\mu_2\ge3\) refinement
+
+GENTOW-6.5’s \(f_1=1\) refinement computes, in a distinguished
+canonical certificate slot of some coordinate \(j\) at height
+\(\Theta_j\), a single-extraction contribution proportional to
+
+\[
+\binom{\mu_2}{2}
+(\widehat c_{t^*})^2\pi^{2a_{t^*}}
+\cdot(\text{wrap unit}).
+\tag{6.5-CAND}
+\]
+
+For the exposed-slot inference, impose the additional hypothesis
+
+\[
+\tag{EXPOSE-6.5}
+\text{the slot containing \((6.5\text{-CAND})\) receives exactly
+one single-extraction contribution.}
+\]
+
+Equivalently, under (EXPOSE-6.5), the displayed expression is the
+complete assembled value of that canonical slot, rather than one
+unassembled summand of it.
+
+If the residue characteristic does not divide
+\(\binom{\mu_2}{2}\), then the displayed contribution is nonzero.
+Together with (EXPOSE-6.5), T4.2(c) gives
+
+\[
+\omega_j\ne0,
+\]
+
+so \(j\) is touched and its discrepancy first occurs at
+\(\Theta_j\).
+
+Without (EXPOSE-6.5), nonvanishing of the displayed contribution
+alone proves no touchedness statement: another contribution may
+land in the same canonical slot and cancel it after assembly.
+Accordingly, if GENTOW-6.5 supplies only the computation
+\((6.5\text{-CAND})\) and not the exposure hypothesis, T4 records
+that expression only as a candidate witness and does not invoke
+T4.2(c).
+
+No converse is retained. Vanishing of this particular assembled
+slot, when it is assembled, does not imply \(\omega_j=0\), because
+another canonical slot may attain the same coordinate’s floor.
+The committed BP3 and FR5X measurements exhibit the two possible
+outcomes.
+```
+
+No files were changed, and no claim of successful HEAD-pin validation is made.
+
+
+---
+
+## r2 (2026-08-12): arc repairs
+
+*(gpt-5.6-sol high, runs/comp8/T4R2_output.log; transcribed unaltered; counter resets.)*
+
+Two criticals come first. The HEAD-pin critical remains operationally blocked; claiming it repaired would be false. The remaining five findings have merge-ready repairs below.
+
+## R2-C1 — HEAD-pin validation remains blocked
+
+Replace S5.1 with:
+
+```markdown
+### S5.1 R2 PIN-VALIDATION RECORD — UNRESOLVED
+
+On 2026-08-12, a fresh byte-literal validation attempt was made
+against the two named HEAD sources. The workspace command runner
+again failed before either source could be read because
+`bubblewrap is unavailable`.
+
+Consequently none of the eight listed half-open spans—four in the
+GT3 stack and four in the GT6 stack—has been checked for occurrence
+count, source identity, byte position, span order, stack order, or
+later supersession. Under S5, `GT3-THRESHOLD` and
+`GT6-CERT-TOP` remain **UNRESOLVED**, and consumption stops.
+
+This supersedes the R1 pin-validation record only as a record of
+the latest attempt. It is not a successful validation, does not
+satisfy PE1 condition 7, and earns no hostile-pass credit. The
+acceptance counter remains 0/2.
+
+Only a later validation record reporting the exact occurrence
+count and byte position of every listed BEGIN and END substring,
+verifying all span and stack orders, and auditing all later dated
+riders and appends for supersession may replace this unresolved
+status.
+```
+
+This is an accurate fail-closed record, not a resolution of C1. A fresh command attempt again failed at the `bubblewrap` boundary before either source was read.
+
+## R2-C2 — restore the deleted definition of \(\operatorname{gr}_m\)
+
+In the R1-G2 replacement for S0, insert immediately after
+
+```markdown
+\[
+\Delta_j(q):=\operatorname{Sh}C_j(q)-C_j(q)
+\qquad(q\in\mathscr D_{\le\mu_2}).
+\]
+```
+
+the following:
+
+```markdown
+For any coordinate digit string \(A\), let
+
+\[
+\operatorname{gr}_m(A)
+\]
+
+denote its canonical assembled digit at \(dv_2\)-height \(m\):
+all branches, carries, recarries, and terms landing in the same
+canonical \(K_2\)-slot at height \(m\) are added before the class
+is taken. Thus cancellation inside a slot is already reflected in
+\(\operatorname{gr}_m(A)\), while distinct canonical slots form
+separate components. The exact-height separation supplied by
+GENHN-2′ makes this graded digit unambiguous.
+```
+
+Also replace:
+
+```markdown
+It belongs to \(\mathscr D_{\le\mu_2}\), and its honest lower
+coordinates vanish:
+```
+
+with:
+
+```markdown
+It is a member, hence belongs to
+\(\mathscr D_{\le\mu_2}\), and its honest lower coordinates
+vanish:
+```
+
+This restores every operation used by \(\omega_j\), (FLOOR), and \(\nu_j\), and makes the key-power specialization below explicit.
+
+## R2-G1 — bind the FLOOR variable
+
+Replace the opening of LEMMA T4.2, from “Assume the GENTOW-3 discrepancy floor” through “Then:”, with:
+
+```markdown
+> **LEMMA T4.2 (certificate witness and threshold attainment).**  
+> Assume the GENTOW-3 discrepancy floor holds for every member:
+>
+> \[
+> \operatorname{gr}_m(\Delta_j(f))=0
+> \qquad
+> \text{for every member \(f\), every \(j<\mu_2\), and every
+> \(m<\Theta_j\).}
+> \tag{FLOOR}
+> \]
+>
+> Then, for each \(j<\mu_2\):
+```
+
+Replace the first proof paragraph supplied by R1-m1 with:
+
+```markdown
+Because \(f_{\mathrm{key}}\) is a member, (FLOOR) specializes to
+
+\[
+\operatorname{gr}_m
+\bigl(\Delta_j(f_{\mathrm{key}})\bigr)=0
+\qquad(m<\Theta_j).
+\]
+
+Hence
+
+\[
+\nu_j(f_{\mathrm{key}})\ge\Theta_j.
+\]
+
+Equality holds exactly when the height-\(\Theta_j\) assembled
+graded digit is nonzero. That digit is \(\omega_j\), so
+
+\[
+\nu_j(f_{\mathrm{key}})=\Theta_j
+\quad\Longleftrightarrow\quad
+\omega_j\ne0.
+\]
+
+This proves (a), including the identically-zero case through the
+convention \(\nu_j(f_{\mathrm{key}})=+\infty\).
+```
+
+## R2-G2 — put the perturbation domain in T4.2(b)
+
+Replace T4.2(b) in full with:
+
+```markdown
+> **(b) Perturbation stability.** Let
+>
+> \[
+> g\in\mathscr D_{<\mu_2},
+> \qquad
+> f:=f_{\mathrm{key}}+g,
+> \]
+>
+> and suppose that \(f\) is a member. If
+>
+> \[
+> \operatorname{gr}_{\Theta_j}(\Delta_j(g))=0,
+> \]
+>
+> then
+>
+> \[
+> \operatorname{gr}_{\Theta_j}(\Delta_j(f))=\omega_j.
+> \]
+>
+> In particular, if \(g\) satisfies GENTOW-3’s in-budget
+> hypotheses, so that \(f_{\mathrm{key}}+g\) is a member, its
+> repaired margin ledger places every discrepancy of \(g\) at
+> height at least \(\Theta_j+1\). Hence every touched coordinate
+> remains divergent exactly at \(\Theta_j\) under such an
+> in-budget perturbation.
+```
+
+Replace T4.2(b)’s proof paragraph with:
+
+```markdown
+Let \(g\in\mathscr D_{<\mu_2}\) and let
+\(f=f_{\mathrm{key}}+g\) be a member. By the definitions in S0,
+\(C_j\) and \(\operatorname{Sh}C_j\) are linear maps on
+\(\mathscr D_{\le\mu_2}\); hence so is \(\Delta_j\). Therefore
+
+\[
+\Delta_j(f)
+=
+\Delta_j(f_{\mathrm{key}})+\Delta_j(g).
+\]
+
+Taking the height-\(\Theta_j\) graded component proves the first
+assertion of (b). Under GENTOW-3’s in-budget hypothesis, S8.1’s
+repaired ledger places every perturbation discrepancy at height
+at least \(\Theta_j+1\), so the required graded component of
+\(\Delta_j(g)\) vanishes. If \(j\) is touched, the resulting
+height-\(\Theta_j\) digit is \(\omega_j\ne0\); (FLOOR), applied
+to the member \(f\), excludes every lower digit. Thus
+\(\nu_j(f)=\Theta_j\).
+```
+
+## R2-G3 — downgrade GENTOW-6.5 from instance to candidate
+
+Replace S4.3 in full with:
+
+```markdown
+### S4.3 The later \(\mu_2\ge3\) candidate
+
+GENTOW-6.5’s \(f_1=1\) refinement computes a distinguished
+single-extraction contribution proportional to
+
+\[
+\binom{\mu_2}{2}
+(\widehat c_{t^*})^2\pi^{2a_{t^*}}
+\cdot(\text{wrap unit}).
+\tag{6.5-CAND}
+\]
+
+The source facts consumed by this record do not prove that the
+canonical slot containing \((6.5\text{-CAND})\) receives exactly
+one single-extraction contribution. They therefore do not
+establish the exposed-slot premise of T4.2(c).
+
+Accordingly, even when the residue characteristic does not divide
+\(\binom{\mu_2}{2}\), the displayed nonzero expression is recorded
+here only as an unassembled candidate witness. This instance does
+not infer that \(\omega_j\ne0\), does not assert that \(j\) is
+touched, and does not assert threshold attainment from
+\((6.5\text{-CAND})\).
+
+If a later source rider proves that this contribution is uniquely
+exposed, that new assertion must be covered by an explicit pin
+update and fresh validation before T4.2(c) may be invoked. Proof
+that an expression is the complete assembled value of a slot
+would prove touchedness directly when that value is nonzero, but
+it is not equivalent to proving that the slot received exactly
+one contribution: additional contributions may be present and
+sum to zero.
+
+No converse is retained. Vanishing or cancellation of this
+candidate does not imply \(\omega_j=0\), because another canonical
+slot may attain the same coordinate’s floor. The committed BP3
+and FR5X measurements remain source measurements of the possible
+outcomes; they are not exposed-slot instances supplied by this
+record.
+```
+
+In S6, replace:
+
+```markdown
+- GENTOW-6.3′ and the later \(\mu_2\ge3\) certificate computation
+  use the same exposed-slot clause with their recorded scopes.
+```
+
+with:
+
+```markdown
+- GENTOW-6.3′ uses the same exposed-slot clause within its recorded
+  corrected-lift scope;
+- the later \(\mu_2\ge3\) computation is not consumable through
+  T4.2(c): it remains the candidate record of S4.3 unless a
+  separately pinned and validated source assertion proves the
+  required exposure premise.
+```
+
+This also repairs the minor false-equivalence claim: the new text states only the valid one-way implication and explicitly rejects its converse.
+
+No files were changed. C1 remains an infrastructure blocker; the other five findings are repaired textually.
