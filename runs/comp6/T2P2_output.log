@@ -1,0 +1,82 @@
+Hostile pass found one theorem-level failure and five formal/interface gaps. No fixes made.
+
+1. **C — missing degree/invariant compatibility.**
+
+   Quotes:
+
+   > `inheritedE : ℕ`  
+   > `inheritedF : ℕ`
+
+   and
+
+   > \(|S_{\lambda,r'}|=De'\deg r'\)
+
+   while
+
+   > \(e=e_{\mathcal C}e'\), \(f=f_{\mathcal C}\deg r'\).
+
+   The carrier never requires
+   \[
+   D=e_{\mathcal C}f_{\mathcal C}.
+   \]
+   Consequently local \(e,f\)-forcing yields orbit degree
+   \[
+   e_{\mathcal C}f_{\mathcal C}e'\deg r',
+   \]
+   not the claimed \(De'\deg r'\). The proof’s lower-bound sum therefore need not equal the side-accounting total. This makes HE7.A false for the stated abstract interface, even though the five intended candidates appear numerically compatible.
+
+2. **G — “consumed sides” do not cover the theorem’s quantifier.**
+
+   R1 supplies accounting only
+
+   > “for every consumed side \(\lambda\)”
+
+   but HE7.A concludes
+
+   > “every side of \(P\) has slope strictly greater than \(T\)”.
+
+   No field identifies the certificate’s finite side set with all sides of the lower hull \(P\). The replacement proof therefore does not establish clause 1 as stated.
+
+3. **G — key-boundary data is attached at the wrong type level.**
+
+   R1 simultaneously requires in `SigmaBlock`
+
+   > `keyCoprime : IsCoprime ...`
+
+   and adds
+
+   > `keyBoundary : Option (KeyBoundaryCertificate C poly)`.
+
+   A non-key-free polynomial cannot inhabit `SigmaBlock`, so the optional certificate there cannot preprocess that polynomial. The promised “key-boundary certificate when the input is not key-free” has no displayed typed entry point outside `SigmaBlock`; `KeyBoundaryResult` is described but not actually signed.
+
+4. **G — the HE6 empty transition relation cannot support the master’s repeated branches.**
+
+   Quote:
+
+   > “For HE6, a one-shot record may use the empty transition relation”
+
+   Yet `SigmaStepData` must expose linear-refine and child-jump transitions, and HE7.A clauses 3 and 5 require continuation whenever a repeated residual factor occurs. No HE6-side hypothesis says all consumed residuals are separable or terminal. Thus the proposed empty relation cannot instantiate the full master record.
+
+5. **G — the Lean sketch conflates valued points with residue targets.**
+
+   Quotes:
+
+   > `point : Ω → Prop`
+
+   and
+
+   > `residueEmbed : ∀ ξ, point ξ → Kres →+* Ω`.
+
+   Mathematically, points lie in \(\overline K_0\), whereas the embedding targets \(\overline k\). One type `Ω` is used for both, and it lacks even the ring structure needed by `Kres →+* Ω`. The displayed carrier cannot elaborate or express S1’s two ambient fields.
+
+6. **G — the formal carrier omits the finite extension \(K/k_0\).**
+
+   S1 requires
+
+   > “\(K/k_0\) is a finite field.”
+
+   The signature has only independent `[Field k₀] [Field Kres]`: no embedding \(k_0\to Kres\), no finiteness witness, and no compatibility between that embedding and `residueEmbed`. The residue-degree multiplication law and constructions \(K[Z]/(r)\) therefore lack their declared formal base.
+
+Repository marker existence could not be independently checked because the workspace sandbox launcher failed before executing read-only commands. This does not affect the findings above, which follow directly from T2+r1.
+
+VERDICT: FINDINGS: 1C + 5G + 0m

@@ -1,3 +1,5 @@
 [20:22:48] comp6 queue start
 [20:22:48] T1P6 start
 [20:27:51] T1P6 exit 0 (1126 B; VERDICT: CLEAN | FINDINGS: 0C + 0G + 0m)
+[20:27:51] T2P2 start
+[20:31:06] T2P2 exit 0 (3371 B; VERDICT: FINDINGS: 1C + 5G + 0m)
